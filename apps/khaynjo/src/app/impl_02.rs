@@ -1738,7 +1738,7 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
                             .iter()
                             .find(|s| s.id == sid)
                             .map(|s| s.name.clone())
-                            .unwrap_or_else(|| unassigned.clone())
+                            .unwrap_or_else(|| sid.to_string())
                     };
                     match out.iter_mut().find(|(n, _)| *n == name) {
                         Some((_, n)) => *n += 1,
@@ -1837,6 +1837,34 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
             self.ui
                 .button(cx, ids!(reprint_kot_btn))
                 .set_text(cx, &reprint_label);
+            let (show_batch_cancel, batch_label) = {
+                let st = app_state().lock().unwrap();
+                let n = st
+                    .cart
+                    .lines
+                    .iter()
+                    .filter(|l| {
+                        l.cancel_pick
+                            && l.is_sent()
+                            && !l.running_line_id.is_empty()
+                            && l.running_line_id != "counter"
+                            && !l.running_line_id.starts_with(QUEUED_LINE)
+                    })
+                    .count();
+                let base = st.t("batch_cancel");
+                let label = if n > 0 {
+                    st.t("batch_cancel_n").replace("{n}", &n.to_string())
+                } else {
+                    base
+                };
+                (n > 0, label)
+            };
+            self.ui
+                .button(cx, ids!(batch_cancel_btn))
+                .set_visible(cx, show_batch_cancel);
+            self.ui
+                .button(cx, ids!(batch_cancel_btn))
+                .set_text(cx, &batch_label);
             self.ui
                 .button(cx, ids!(print_cancelled_kot_btn))
                 .set_visible(cx, show_cancelled_print);
@@ -2505,6 +2533,7 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
             if let Some(action) = line_action {
                 let (title, reason, qty, cooked_btn, target) = match action {
                     LineAction::Cancel => ("cancel_item_title", true, true, true, false),
+                    LineAction::CancelBatch => ("batch_cancel_title", true, false, true, false),
                     LineAction::Complimentary if line_nc => ("charge_again_title", false, false, false, false),
                     LineAction::Complimentary => ("nc_item_title", true, false, false, false),
                     LineAction::Move => ("move_item_title", false, false, false, true),
@@ -3281,10 +3310,10 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
             self.ui
                 .widget(cx, ids!(paired_list))
                 .set_visible(cx, is_shop && is_owner && extra_tills);
-            // Emergency unlock PIN — the Owner, including on an extra till.
+            // Emergency unlock PIN — Owner only (including on an extra till).
+            // FieldInput ignores set_visible; hide the whole `duress_owner_block`.
             {
-                let duress_on = is_owner;
-                let configured = duress_on
+                let configured = is_owner
                     && app_state()
                         .lock()
                         .unwrap()
@@ -3292,18 +3321,10 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
                         .as_ref()
                         .and_then(|s| s.duress_pin_configured().ok())
                         .unwrap_or(false);
-                for id in [
-                    ids!(h_duress_heading),
-                    ids!(h_duress_help),
-                    ids!(duress_status),
-                    ids!(duress_pin_input),
-                    ids!(duress_pin_confirm),
-                    ids!(save_duress_pin),
-                    ids!(clear_duress_pin),
-                ] {
-                    self.ui.widget(cx, id).set_visible(cx, duress_on);
-                }
-                let status = if !duress_on {
+                self.ui
+                    .view(cx, ids!(duress_owner_block))
+                    .set_visible(cx, is_owner);
+                let status = if !is_owner {
                     String::new()
                 } else if configured {
                     app_state().lock().unwrap().t("duress_on")

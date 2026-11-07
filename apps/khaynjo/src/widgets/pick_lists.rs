@@ -249,7 +249,10 @@ impl Widget for StationCheckList {
                     let is_unassigned = row.value.eq_ignore_ascii_case(&unassigned);
                     item.label(cx, ids!(title)).set_text(cx, &row.value);
                     let printer_assign = self.field == "printer_assign";
-                    let station_vps = self.field == "station_vps" || self.field == "bill_printers";
+                    let station_vps = self.field == "station_vps"
+                        || self.field == "bill_printers"
+                        || self.field == "test_printers"
+                        || self.field == "kot_test_printers";
                     let team_stations = self.field == "team_kot_stations";
                     // PrinterAssign / station VPs keep id in subtitle — never show it.
                     item.label(cx, ids!(subtitle)).set_text(
@@ -270,8 +273,12 @@ impl Widget for StationCheckList {
                     item.view(cx, ids!(check_off)).set_visible(cx, !checked);
                     item.view(cx, ids!(check_on)).set_visible(cx, checked);
                     // Team person access: checkboxes only — no print-order ↑↓.
+                    // Test-printer checklists are multi-check only (no priority).
+                    let test_pick =
+                        self.field == "test_printers" || self.field == "kot_test_printers";
                     if team_stations
                         || is_unassigned
+                        || test_pick
                         || ((printer_assign || station_vps) && !checked)
                     {
                         item.label(cx, ids!(prio)).set_visible(cx, false);

@@ -113,6 +113,12 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
             } else if field == SuggestField::BillPrinters {
                 let r = self.ui.button(cx, ids!(bill_printers_dd)).area().rect(cx);
                 r.size.x > 0.0 && r.contains(abs)
+            } else if field == SuggestField::TestPrinters {
+                let r = self.ui.button(cx, ids!(printers_test_dd)).area().rect(cx);
+                r.size.x > 0.0 && r.contains(abs)
+            } else if field == SuggestField::KotTestPrinters {
+                let r = self.ui.button(cx, ids!(kot_test_printers_dd)).area().rect(cx);
+                r.size.x > 0.0 && r.contains(abs)
             } else {
                 false
             };

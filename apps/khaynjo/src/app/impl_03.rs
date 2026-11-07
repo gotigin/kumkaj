@@ -628,6 +628,26 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
         };
         self.show_found_printers(cx);
         self.set_report_rows(cx, ids!(printers_pool_label), pool_rows);
+        let (test_n, test_open) = {
+            let st = app_state().lock().unwrap();
+            (
+                st.test_printer_ids.len(),
+                st.suggest_open == Some(SuggestField::TestPrinters),
+            )
+        };
+        let test_dd = if test_n == 0 {
+            app_t("test_printers_dd")
+        } else {
+            app_t("test_printers_dd_n").replace("{n}", &test_n.to_string())
+        };
+        let test_face = if test_open {
+            app_t("pick_done_dd").replace("{label}", &test_dd)
+        } else {
+            test_dd
+        };
+        self.ui
+            .button(cx, ids!(printers_test_dd))
+            .set_text(cx, &test_face);
         self.set_report_rows(cx, ids!(route_assigned_list), virtual_rows);
         self.ui
             .widget(cx, ids!(route_assigned_empty))
@@ -789,6 +809,7 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
         self.ui.button(cx, ids!(printer_place_dd)).set_visible(cx, false);
         self.ui.widget(cx, ids!(printers_routes_help)).set_visible(cx, false);
         self.ui.button(cx, ids!(route_clear)).set_visible(cx, false);
+        self.ui.button(cx, ids!(printers_test_dd)).set_visible(cx, host);
         self.ui.button(cx, ids!(print_test_btn)).set_visible(cx, host);
         self.ui.button(cx, ids!(printer_wire_escpos)).set_visible(cx, false);
         self.ui.button(cx, ids!(printer_wire_escpos_on)).set_visible(cx, false);

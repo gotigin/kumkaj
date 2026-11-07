@@ -616,8 +616,10 @@ fn drawable(faces: &[Face], c: char) -> bool {
 }
 
 /// `line` laid out, broken at spaces into as many lines as `room` needs.
-/// A single `\t` marks Item / Qty columns: name on the left, qty flush to
-/// the right margin in dots (proportional fonts cannot use space-padding).
+/// `\t` marks columns: the first cell is the flex name on the left; every
+/// following cell packs from the right (Item | Qty | Price | Amount). One
+/// tab is the kitchen Item/Qty case. Proportional fonts cannot pad with
+/// spaces — columns are placed in dots.
 fn wrap(faces: &[Face], line: &str, room: f32, m: &RasterMetrics) -> Vec<Vec<Placed>> {
     wrap_aligned(faces, line, room, m, LineAlign::Start)
 }
@@ -629,8 +631,9 @@ fn wrap_aligned(
     m: &RasterMetrics,
     align: LineAlign,
 ) -> Vec<Vec<Placed>> {
-    if let Some((left, right)) = line.split_once('\t') {
-        return wrap_item_qty(faces, left, right, room, m, align);
+    let parts: Vec<&str> = line.split('\t').collect();
+    if parts.len() >= 2 {
+        return wrap_tab_columns(faces, &parts, room, m, align);
     }
     // A run of dashes is the header rule. Tile it to the content edge so a
     // wider page grows the line instead of leaving a short underscore.
@@ -688,11 +691,17 @@ fn strike_name_end_x(
     m: &RasterMetrics,
     side: f32,
 ) -> f32 {
-    if let Some((left, right)) = line.split_once('\t') {
-        let right_w = layout(faces, right.trim(), m).1;
+    if line.contains('\t') {
+        let parts: Vec<&str> = line.split('\t').collect();
+        let left = parts[0].trim_end();
         let gap = (m.em * 0.35).max(4.0);
-        let name_room = (room - right_w - gap).max(m.em * 2.0);
-        let name_w = layout(faces, left.trim_end(), m).1.min(name_room);
+        let rights_w: f32 = parts[1..]
+            .iter()
+            .map(|p| layout(faces, p.trim(), m).1)
+            .sum::<f32>()
+            + gap * parts[1..].len() as f32;
+        let name_room = (room - rights_w).max(m.em * 2.0);
+        let name_w = layout(faces, left, m).1.min(name_room);
         return side + name_w;
     }
     let name_w = layout(faces, line, m).1.min(room);
@@ -726,55 +735,70 @@ fn paint_strike_line(
     }
 }
 
-/// Name left, qty right-aligned to `room`. Long names wrap under the name
-/// column only — qty stays on the first line with the header column.
-fn wrap_item_qty(
+/// First cell flexes on the left; later cells pack from the right edge.
+/// Long names wrap under the name column only — numeric columns stay on
+/// the first line with the header.
+fn wrap_tab_columns(
     faces: &[Face],
-    left: &str,
-    right: &str,
+    parts: &[&str],
     room: f32,
     m: &RasterMetrics,
     align: LineAlign,
 ) -> Vec<Vec<Placed>> {
-    let left = left.trim_end();
-    let right = right.trim();
-    let (right_glyphs, right_w) = layout(faces, right, m);
-    // Leave a small gap so name never kisses the qty digits.
+    let left = parts[0].trim_end();
+    let rights: Vec<&str> = parts[1..].iter().map(|p| p.trim()).collect();
     let gap = (m.em * 0.35).max(4.0);
-    let name_room = (room - right_w - gap).max(m.em * 2.0);
-    let mut name_rows = wrap(faces, left, name_room, m);
-    if name_rows.len() == 1 {
+    let right_layouts: Vec<(Vec<Placed>, f32)> = rights
+        .iter()
+        .map(|r| layout(faces, r, m))
+        .collect();
+    let rights_w: f32 = right_layouts.iter().map(|(_, w)| *w).sum::<f32>()
+        + gap * right_layouts.len() as f32;
+    let name_room = (room - rights_w).max(m.em * 2.0);
+    let mut name_rows = if left.is_empty() {
+        vec![Vec::new()]
+    } else {
+        wrap(faces, left, name_room, m)
+    };
+    if name_rows.len() == 1 && !left.is_empty() {
         let name_w = layout(faces, left, m).1;
         shift_glyphs(&mut name_rows[0], name_w, name_room, align);
     }
     let mut out = Vec::with_capacity(name_rows.len().max(1));
     for (i, mut row) in name_rows.into_iter().enumerate() {
         if i == 0 {
-            let shift = (room - right_w).max(0.0);
-            for g in &right_glyphs {
-                row.push(Placed {
-                    face: g.face,
-                    glyph: g.glyph,
-                    x: shift + g.x,
-                    dy: g.dy,
-                });
+            let mut cursor = room;
+            for (glyphs, w) in right_layouts.iter().rev() {
+                cursor = (cursor - *w).max(0.0);
+                for g in glyphs {
+                    row.push(Placed {
+                        face: g.face,
+                        glyph: g.glyph,
+                        x: cursor + g.x,
+                        dy: g.dy,
+                    });
+                }
+                cursor = (cursor - gap).max(0.0);
             }
         }
         out.push(row);
     }
     if out.is_empty() {
-        let shift = (room - right_w).max(0.0);
-        out.push(
-            right_glyphs
-                .into_iter()
-                .map(|g| Placed {
+        let mut row = Vec::new();
+        let mut cursor = room;
+        for (glyphs, w) in right_layouts.iter().rev() {
+            cursor = (cursor - *w).max(0.0);
+            for g in glyphs {
+                row.push(Placed {
                     face: g.face,
                     glyph: g.glyph,
-                    x: shift + g.x,
+                    x: cursor + g.x,
                     dy: g.dy,
-                })
-                .collect(),
-        );
+                });
+            }
+            cursor = (cursor - gap).max(0.0);
+        }
+        out.push(row);
     }
     out
 }
@@ -1123,6 +1147,37 @@ mod tests {
         assert!(
             (e_h - room).abs() < 1.5 && (e_a - room).abs() < 1.5 && (e_b - room).abs() < 1.5,
             "edges h={e_h} a={e_a} b={e_b} room={room}"
+        );
+    }
+
+    #[test]
+    fn bill_four_column_tabs_share_the_right_edge() {
+        let m = RasterMetrics::standard();
+        let room = PAPER_DOTS as f32 - 2.0 * m.side;
+        let faces = faces();
+        let header = wrap(&faces, "Item\tQty.\tPrice\tAmount", room, &m);
+        let row = wrap(&faces, "Tea\t5\t10.00\t50.00", room, &m);
+        assert_eq!(header.len(), 1);
+        assert_eq!(row.len(), 1);
+        let right_edge = |placed: &[Placed]| {
+            placed
+                .iter()
+                .map(|g| {
+                    let face = &faces[g.face];
+                    let scale = m.em / face.units_per_em() as f32;
+                    let adv = face
+                        .glyph_hor_advance(GlyphId(g.glyph))
+                        .map(|a| a as f32 * scale)
+                        .unwrap_or(0.0);
+                    g.x + adv
+                })
+                .fold(0.0f32, f32::max)
+        };
+        let e_h = right_edge(&header[0]);
+        let e_r = right_edge(&row[0]);
+        assert!(
+            (e_h - room).abs() < 1.5 && (e_r - room).abs() < 1.5,
+            "Amount column must sit on the right edge: h={e_h} r={e_r} room={room}"
         );
     }
 

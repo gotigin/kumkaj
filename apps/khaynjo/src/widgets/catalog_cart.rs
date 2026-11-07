@@ -390,10 +390,12 @@ impl Widget for CartList {
                                     .iter()
                                     .find(|s| s.id == sid)
                                     .map(|s| s.name.clone())
-                                    .unwrap_or_else(|| locale::t(&lang, "kot_unassigned"))
+                                    .unwrap_or_else(|| sid.to_string())
                             };
                             meta.push_str(&format!(" · → {dest}"));
                         }
+                    } else if line.cancel_pick {
+                        meta.push_str(&format!(" · {}", locale::t(&lang, "cancel_pick_meta")));
                     } else if line.reprint_skip {
                         meta.push_str(&format!(" · {}", locale::t(&lang, "reprint_skip_meta")));
                     }
@@ -453,7 +455,9 @@ impl Widget for CartList {
                     item.view(cx, ids!(stepper)).set_visible(cx, unsent);
                     item.button(cx, ids!(hold_send_btn)).set_visible(cx, unsent);
                     item.button(cx, ids!(reprint_incl_btn)).set_visible(cx, sent);
-                    item.button(cx, ids!(line_cancel_sum)).set_visible(cx, has_running);
+                    item.button(cx, ids!(cancel_pick_btn)).set_visible(cx, has_running);
+                    // Single-item Cancel stays under the expanded details row.
+                    item.button(cx, ids!(line_cancel_sum)).set_visible(cx, false);
                     if unsent {
                         item.button(cx, ids!(hold_send_btn)).set_text(
                             cx,
@@ -481,8 +485,17 @@ impl Widget for CartList {
                         );
                     }
                     if has_running {
-                        item.button(cx, ids!(line_cancel_sum))
-                            .set_text(cx, &locale::t(&lang, "cancel_item_short"));
+                        item.button(cx, ids!(cancel_pick_btn)).set_text(
+                            cx,
+                            &locale::t(
+                                &lang,
+                                if line.cancel_pick {
+                                    "cancel_pick_on"
+                                } else {
+                                    "cancel_pick"
+                                },
+                            ),
+                        );
                     }
                     item.view(cx, ids!(sent_row)).set_visible(cx, on_table);
                     if on_table {

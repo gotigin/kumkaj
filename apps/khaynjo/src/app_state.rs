@@ -65,6 +65,8 @@ struct AppState {
     settings_panel: Option<&'static str>,
     /// Settings → Printers: real printer selected (for new / edit virtual).
     printer_selected_id: Option<String>,
+    /// Pool printers checked for "Print a test page" / "Test KOT" (multi-select).
+    test_printer_ids: Vec<String>,
     /// Draft values for virtual printer create/edit (inline on the VP).
     printer_vp_landscape: bool,
     printer_vp_em: f32,

@@ -10,65 +10,149 @@ fn confirm_line_action(&mut self, cx: &mut Cx) {
                 .line_action
                 .clone()
                 .ok_or_else(|| "Pick an item first".to_string())?;
-            let line = st
-                .cart
-                .lines
-                .iter()
-                .find(|l| l.running_line_id == line_id)
-                .cloned()
-                .ok_or_else(|| "That item is no longer on the order".to_string())?;
-            let request = match action {
-                LineAction::Cancel => {
-                    let qty_milli = match qty_text.trim() {
-                        "" => None,
-                        typed => Some(parse_qty_to_milli(typed)?),
-                    };
-                    net::RunningAction::Cancel {
-                        line_id,
-                        qty_milli,
-                        reason: reason.trim().to_string(),
-                        prepared: st.line_cooked,
-                    }
-                }
-                LineAction::Complimentary => net::RunningAction::Complimentary {
-                    line_id,
-                    on: !line.complimentary,
-                    reason: reason.trim().to_string(),
-                },
-                LineAction::Move => {
-                    let to = st
-                        .tables
+            let auto_print = st
+                .store
+                .as_ref()
+                .map(|s| s.kot_auto_print())
+                .unwrap_or(true);
+            let (request, done, name_hint) = match action {
+                LineAction::CancelBatch => {
+                    let ids: Vec<String> = st
+                        .cart
+                        .lines
                         .iter()
-                        .find(|t| t.name.trim().eq_ignore_ascii_case(target.trim()))
-                        .map(|t| t.id.clone())
-                        .ok_or_else(|| format!("No table named \"{}\"", target.trim()))?;
-                    net::RunningAction::MoveLines {
-                        line_ids: vec![line_id],
-                        to_table_id: to,
+                        .filter(|l| {
+                            l.cancel_pick
+                                && l.is_sent()
+                                && !l.running_line_id.is_empty()
+                                && l.running_line_id != "counter"
+                                && !l.running_line_id.starts_with(QUEUED_LINE)
+                        })
+                        .map(|l| l.running_line_id.clone())
+                        .collect();
+                    if ids.is_empty() {
+                        return Err(st.t("batch_cancel_none"));
                     }
-                }
-            };
-            let done = match action {
-                // Only promise paper when the shop prints KOTs on its own
-                // (a Client's cache does not carry the switch: default on).
-                LineAction::Cancel
-                    if !st.store.as_ref().map(|s| s.kot_auto_print()).unwrap_or(true) =>
-                {
-                    format!(
-                        "{} cancelled — on the Kitchen screen; KOT auto-print is off, so no cancel slip",
-                        line.name
+                    let n = ids.len();
+                    let done = if auto_print {
+                        st.t("batch_cancel_ok")
+                            .replace("{n}", &n.to_string())
+                            .replace("{slips}", "…")
+                            .replace("{kitchens}", &st.t("kitchen"))
+                    } else {
+                        st.t("batch_cancel_ok_noprint")
+                            .replace("{n}", &n.to_string())
+                    };
+                    (
+                        net::RunningAction::CancelBatch {
+                            line_ids: ids,
+                            reason: reason.trim().to_string(),
+                            prepared: st.line_cooked,
+                        },
+                        done,
+                        format!("{n} dishes"),
                     )
                 }
-                LineAction::Cancel => format!("{} cancelled — the kitchen gets a cancel slip", line.name),
-                LineAction::Complimentary if line.complimentary => format!("{} charged again", line.name),
-                LineAction::Complimentary => format!("{} is complimentary (NC)", line.name),
-                LineAction::Move => format!("{} moved to {}", line.name, target.trim()),
+                _ => {
+                    let line = st
+                        .cart
+                        .lines
+                        .iter()
+                        .find(|l| l.running_line_id == line_id)
+                        .cloned()
+                        .ok_or_else(|| "That item is no longer on the order".to_string())?;
+                    let request = match action {
+                        LineAction::Cancel => {
+                            let qty_milli = match qty_text.trim() {
+                                "" => None,
+                                typed => Some(parse_qty_to_milli(typed)?),
+                            };
+                            net::RunningAction::Cancel {
+                                line_id: line_id.clone(),
+                                qty_milli,
+                                reason: reason.trim().to_string(),
+                                prepared: st.line_cooked,
+                            }
+                        }
+                        LineAction::CancelBatch => unreachable!(),
+                        LineAction::Complimentary => net::RunningAction::Complimentary {
+                            line_id: line_id.clone(),
+                            on: !line.complimentary,
+                            reason: reason.trim().to_string(),
+                        },
+                        LineAction::Move => {
+                            let to = st
+                                .tables
+                                .iter()
+                                .find(|t| t.name.trim().eq_ignore_ascii_case(target.trim()))
+                                .map(|t| t.id.clone())
+                                .ok_or_else(|| {
+                                    format!("No table named \"{}\"", target.trim())
+                                })?;
+                            net::RunningAction::MoveLines {
+                                line_ids: vec![line_id.clone()],
+                                to_table_id: to,
+                            }
+                        }
+                    };
+                    let done = match action {
+                        LineAction::Cancel if !auto_print => format!(
+                            "{} cancelled — on the Kitchen screen; KOT auto-print is off, so no cancel slip",
+                            line.name
+                        ),
+                        LineAction::Cancel => {
+                            format!("{} cancelled — the kitchen gets a cancel slip", line.name)
+                        }
+                        LineAction::CancelBatch => unreachable!(),
+                        LineAction::Complimentary if line.complimentary => {
+                            format!("{} charged again", line.name)
+                        }
+                        LineAction::Complimentary => {
+                            format!("{} is complimentary (NC)", line.name)
+                        }
+                        LineAction::Move => {
+                            format!("{} moved to {}", line.name, target.trim())
+                        }
+                    };
+                    (request, done, line.name.clone())
+                }
             };
             let acted = st.table_action(request, &pin, &done, phone::Follow::Refresh)?;
+            if matches!(action, LineAction::CancelBatch) {
+                for line in &mut st.cart.lines {
+                    line.cancel_pick = false;
+                }
+            }
             st.line_action = None;
-            Ok(match acted {
-                Acted::Here(_) => done,
-                Acted::Sent => format!("{} — sending…", line.name),
+            Ok(match (action, acted) {
+                (LineAction::CancelBatch, Acted::Here(Some(raw)))
+                    if raw.starts_with("batch_noprint:") =>
+                {
+                    let n = raw.trim_start_matches("batch_noprint:");
+                    st.t("batch_cancel_ok_noprint").replace("{n}", n)
+                }
+                (LineAction::CancelBatch, Acted::Here(Some(raw)))
+                    if raw.starts_with("batch_ok:") =>
+                {
+                    let rest = raw.trim_start_matches("batch_ok:");
+                    let (main, err) = rest.split_once('|').unwrap_or((rest, ""));
+                    let mut parts = main.splitn(3, ':');
+                    let n = parts.next().unwrap_or("0");
+                    let slips = parts.next().unwrap_or("0");
+                    let kitchens = parts.next().unwrap_or("");
+                    let mut msg = st
+                        .t("batch_cancel_ok")
+                        .replace("{n}", n)
+                        .replace("{slips}", slips)
+                        .replace("{kitchens}", kitchens);
+                    if !err.is_empty() {
+                        msg.push_str(" · ");
+                        msg.push_str(err);
+                    }
+                    msg
+                }
+                (_, Acted::Here(_)) => done,
+                (_, Acted::Sent) => format!("{name_hint} — sending…"),
             })
         })();
         match result {

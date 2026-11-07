@@ -360,11 +360,14 @@ fn pending_kot_destinations_ordered(
         let name = if sid.is_empty() {
             unassigned.to_string()
         } else {
+            // Never relabel a real station id as "Kitchen (no station)" —
+            // that lied on Clients whose station list lagged the menu and
+            // made Send look unassigned while paper still hit a KOT printer.
             stations
                 .iter()
                 .find(|s| s.id == sid)
                 .map(|s| s.name.clone())
-                .unwrap_or_else(|| unassigned.to_string())
+                .unwrap_or_else(|| sid.to_string())
         };
         match out.iter_mut().find(|(id, _, _)| id == sid) {
             Some((_, _, n)) => *n += 1,
@@ -455,10 +458,11 @@ fn printer_display_name(p: &print_share::NamedPrinter, t: impl Fn(&str) -> Strin
     t("printer_target_default")
 }
 
-/// The printers added on this device. `selected` marks the row Remove deletes.
+/// The printers Find saved on this device (read-only names). Selection for a
+/// test page / Test KOT is the StationCheckList under the list.
 fn printers_pool_rows(
     draft: &print_share::DevicePrinters,
-    selected: Option<&str>,
+    _selected: Option<&str>,
     t: impl Fn(&str) -> String,
 ) -> Vec<ReportRow> {
     if draft.printers.is_empty() {
@@ -467,15 +471,62 @@ fn printers_pool_rows(
     draft
         .printers
         .iter()
-        .map(|p| {
-            let mark = if selected == Some(p.id.as_str()) {
-                "› "
-            } else {
-                ""
-            };
-            ReportRow::Line(format!("{mark}{}", printer_display_name(p, &t)))
-        })
+        .map(|p| ReportRow::Line(printer_display_name(p, &t)))
         .collect()
+}
+
+/// Checklist: pool printers for test page / Test KOT. `subtitle` = printer id.
+fn test_printers_suggest_rows(
+    draft: &print_share::DevicePrinters,
+    selected: &[String],
+    t: impl Fn(&str) -> String,
+) -> Vec<suggest::SuggestRow> {
+    use suggest::SuggestRow;
+    let use_l = t("use");
+    let clear_l = t("dont_use");
+    let mut rows = Vec::new();
+    for p in &draft.printers {
+        let name = printer_display_name(p, &t);
+        let on = selected.iter().any(|id| id == &p.id);
+        rows.push(
+            SuggestRow::new(name, p.id.clone()).with_action(if on {
+                clear_l.clone()
+            } else {
+                use_l.clone()
+            }),
+        );
+    }
+    if rows.is_empty() {
+        rows.push(SuggestRow::new(t("printers_pool_empty"), String::new()));
+    }
+    rows
+}
+
+/// Toggle a pool printer in/out of the test-print selection.
+fn toggle_test_printer(st: &mut AppState, printer_id: &str) -> Result<String, String> {
+    if st.device_role == DeviceRole::Client {
+        return Err(st.t("printers_host_only"));
+    }
+    let pid = printer_id.trim();
+    if pid.is_empty() || st.printer_draft.printer_by_id(pid).is_none() {
+        return Err(st.t("printers_pool_empty"));
+    }
+    let name = st
+        .printer_draft
+        .printer_by_id(pid)
+        .map(|p| printer_display_name(p, |k| st.t(k)))
+        .unwrap_or_else(|| pid.to_string());
+    if let Some(i) = st.test_printer_ids.iter().position(|id| id == pid) {
+        st.test_printer_ids.remove(i);
+        if st.printer_selected_id.as_deref() == Some(pid) {
+            st.printer_selected_id = st.test_printer_ids.first().cloned();
+        }
+        Ok(st.t("test_printer_cleared").replace("{name}", &name))
+    } else {
+        st.test_printer_ids.push(pid.to_string());
+        st.printer_selected_id = Some(pid.to_string());
+        Ok(st.t("test_printer_picked").replace("{name}", &name))
+    }
 }
 
 /// Settings → areas / stations / tax rates On/Off (same pattern as units).

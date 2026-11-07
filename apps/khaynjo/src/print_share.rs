@@ -811,9 +811,16 @@ pub struct KotKindStyles {
     /// Prepended to each dish name (`[CANCELLED] `, `[NEW] `, …). Qty stays plain.
     #[serde(default)]
     pub item_prefix: String,
-    /// Strike through dish names (not the qty column). Default on for Cancelled.
+    /// Legacy single flag (older saves). Migrated into [`Self::strike_item_name`]
+    /// on load — notes are never implied by this alone.
     #[serde(default)]
     pub strike_items: bool,
+    /// Strike the dish name only (not qty, not the note line). Default on for Cancelled.
+    #[serde(default)]
+    pub strike_item_name: bool,
+    /// Strike the dish note line only. Default off — notes stay readable on cancel slips.
+    #[serde(default)]
+    pub strike_item_note: bool,
 }
 
 impl Default for KotKindStyles {
@@ -832,7 +839,20 @@ impl Default for KotKindStyles {
             banner: String::new(),
             item_prefix: String::new(),
             strike_items: false,
+            strike_item_name: false,
+            strike_item_note: false,
         }
+    }
+}
+
+impl KotKindStyles {
+    /// Lift legacy `strike_items` into name-only strike; keep name/note independent.
+    pub fn normalize_strike_flags(&mut self) {
+        if self.strike_items && !self.strike_item_name && !self.strike_item_note {
+            self.strike_item_name = true;
+        }
+        // Keep the legacy flag as an alias of name strike for older readers.
+        self.strike_items = self.strike_item_name;
     }
 }
 
@@ -894,6 +914,8 @@ impl Default for KotKindStyleSet {
         cancelled.item_qty = KotFieldStyle::light(KOT_EM_NORMAL);
         cancelled.banner = KOT_BANNER_CANCELLED.into();
         cancelled.item_prefix = KOT_PREFIX_CANCELLED.into();
+        cancelled.strike_item_name = true;
+        cancelled.strike_item_note = false;
         cancelled.strike_items = true;
         Self {
             original: KotKindStyles::default(),
@@ -933,7 +955,16 @@ impl KotKindStyleSet {
             if styles.item_prefix.trim().is_empty() {
                 styles.item_prefix = kind.default_item_prefix().into();
             }
-            styles.strike_items = kind.default_strike_items();
+            let strike_name = kind.default_strike_items();
+            styles.strike_item_name = strike_name;
+            styles.strike_item_note = false;
+            styles.strike_items = strike_name;
+        }
+    }
+
+    pub fn normalize_strike_flags(&mut self) {
+        for kind in KotSlipKind::ALL {
+            self.get_mut(kind).normalize_strike_flags();
         }
     }
 }
@@ -1135,6 +1166,8 @@ impl KotSlipFormat {
             self.kind_styles.apply_product_chrome_defaults();
             self.kind_chrome_v = 1;
         }
+        // Legacy `strike_items` → name-only; notes stay independently optional.
+        self.kind_styles.normalize_strike_flags();
         self
     }
 
@@ -1391,7 +1424,10 @@ impl KotSlipFormat {
         out.push('\n');
         let item_style = &styles.item_qty;
         let item_mark = kot_style_prefix(item_style, rtl);
-        let item_mark_strike = kot_style_prefix_strike(item_style, rtl, styles.strike_items);
+        let item_mark_strike_name =
+            kot_style_prefix_strike(item_style, rtl, styles.strike_item_name);
+        let item_mark_strike_note =
+            kot_style_prefix_strike(item_style, rtl, styles.strike_item_note);
         let prefix = styles.item_prefix.as_str();
         // Item / Qty. as two columns. `\t` marks the split: proportional
         // Noto raster right-aligns the qty in dots; ESC/POS text + preview
@@ -1404,7 +1440,8 @@ impl KotSlipFormat {
             out.push_str("Item\tQty.\n");
         }
         for item in c.items {
-            let (name, qty) = kot_item_parts(item);
+            let (raw_name, qty) = kot_item_parts(item);
+            let (name, note) = kot_split_trailing_note(&raw_name);
             let labeled = if prefix.is_empty() {
                 name
             } else if name.is_empty() {
@@ -1412,21 +1449,33 @@ impl KotSlipFormat {
             } else {
                 format!("{prefix}{name}")
             };
-            let mark = if styles.strike_items {
-                &item_mark_strike
+            let name_mark = if styles.strike_item_name {
+                &item_mark_strike_name
             } else {
                 &item_mark
             };
             if qty.is_empty() {
-                out.push_str(mark);
+                out.push_str(name_mark);
                 out.push_str(&labeled);
                 out.push('\n');
             } else {
-                out.push_str(mark);
+                out.push_str(name_mark);
                 out.push_str(&labeled);
                 out.push('\t');
                 out.push_str(&qty);
                 out.push('\n');
+            }
+            // Note is its own line so strike on the name never paints through it.
+            if !note.is_empty() {
+                let note_mark = if styles.strike_item_note {
+                    &item_mark_strike_note
+                } else {
+                    &item_mark
+                };
+                out.push_str(note_mark);
+                out.push('(');
+                out.push_str(&note);
+                out.push_str(")\n");
             }
         }
         if !fmt.footer.is_empty() {
@@ -1498,14 +1547,16 @@ fn kot_style_prefix_strike(style: &KotFieldStyle, rtl: bool, strike: bool) -> St
 }
 
 /// A line on the bill. Same ink controls as a kitchen field: show, size, weight, align.
-#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
 pub enum BillStyleField {
     Shop,
     Header,
     Fssai,
     Title,
+    Customer,
     BillNo,
     Time,
+    Cashier,
     Table,
     Items,
     Total,
@@ -1514,13 +1565,15 @@ pub enum BillStyleField {
 }
 
 impl BillStyleField {
-    pub const ALL: [BillStyleField; 11] = [
+    pub const ALL: [BillStyleField; 13] = [
         BillStyleField::Shop,
         BillStyleField::Header,
         BillStyleField::Fssai,
         BillStyleField::Title,
+        BillStyleField::Customer,
         BillStyleField::BillNo,
         BillStyleField::Time,
+        BillStyleField::Cashier,
         BillStyleField::Table,
         BillStyleField::Items,
         BillStyleField::Total,
@@ -1534,8 +1587,10 @@ impl BillStyleField {
             BillStyleField::Header => "Address",
             BillStyleField::Fssai => "FSSAI",
             BillStyleField::Title => "Title",
+            BillStyleField::Customer => "Customer",
             BillStyleField::BillNo => "Bill no",
             BillStyleField::Time => "Time",
+            BillStyleField::Cashier => "Cashier",
             BillStyleField::Table => "Table",
             BillStyleField::Items => "Items",
             BillStyleField::Total => "Total",
@@ -1556,14 +1611,28 @@ impl BillStyleField {
         )
     }
 
+    /// Meta fields that may share a line as left\\tright (Date | Table, …).
+    pub fn is_pairable(self) -> bool {
+        matches!(
+            self,
+            BillStyleField::Customer
+                | BillStyleField::BillNo
+                | BillStyleField::Time
+                | BillStyleField::Cashier
+                | BillStyleField::Table
+        )
+    }
+
     pub fn id(self) -> &'static str {
         match self {
             BillStyleField::Shop => "shop",
             BillStyleField::Header => "header",
             BillStyleField::Fssai => "fssai",
             BillStyleField::Title => "title",
+            BillStyleField::Customer => "customer",
             BillStyleField::BillNo => "bill_no",
             BillStyleField::Time => "time",
+            BillStyleField::Cashier => "cashier",
             BillStyleField::Table => "table",
             BillStyleField::Items => "items",
             BillStyleField::Total => "total",
@@ -1586,6 +1655,17 @@ impl BillStyleField {
             _ => "",
         }
     }
+}
+
+/// How each dish prints when Items is shown.
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize, Deserialize, Default)]
+#[serde(rename_all = "snake_case")]
+pub enum BillItemLayout {
+    /// Name / qty×price / amount each on its own line.
+    Stacked,
+    /// One table row: Item | Qty | Price | Amount (shown columns only).
+    #[default]
+    Columns,
 }
 
 /// Show, size, weight, and alignment for one bill line.
@@ -1647,9 +1727,13 @@ pub struct BillSlipFormat {
     #[serde(default)]
     pub title_style: BillFieldStyle,
     #[serde(default)]
+    pub customer: BillFieldStyle,
+    #[serde(default)]
     pub bill_no: BillFieldStyle,
     #[serde(default)]
     pub time: BillFieldStyle,
+    #[serde(default)]
+    pub cashier: BillFieldStyle,
     #[serde(default)]
     pub table: BillFieldStyle,
     #[serde(default)]
@@ -1660,12 +1744,53 @@ pub struct BillSlipFormat {
     pub footer_style: BillFieldStyle,
     #[serde(default)]
     pub upi: BillFieldStyle,
+    /// Columns (Item|Qty|Price|Amount) or stacked lines per piece.
+    #[serde(default)]
+    pub item_layout: BillItemLayout,
+    /// Print the dish name (column or own line).
+    #[serde(default = "default_true")]
+    pub item_show_name: bool,
+    /// Print the quantity column / piece.
+    #[serde(default = "default_true")]
+    pub item_show_qty: bool,
+    /// Print the unit price column / piece.
+    #[serde(default = "default_true")]
+    pub item_show_price: bool,
+    /// Print the line amount (qty × price) column / piece.
+    #[serde(default = "default_true")]
+    pub item_show_amount: bool,
+    /// Print the dish note under the item.
+    #[serde(default = "default_true")]
+    pub item_show_note: bool,
+    /// Column header row (`Item`, `Qty.`, `Price`, `Amount`) when layout is Columns.
+    #[serde(default = "default_true")]
+    pub item_show_header: bool,
+    /// `Total Qty: N` under the items.
+    #[serde(default = "default_true")]
+    pub total_show_qty: bool,
+    /// `Sub Total` line.
+    #[serde(default = "default_true")]
+    pub total_show_subtotal: bool,
+    /// `Grand Total` / TOTAL line (also follows the Total field's show).
+    #[serde(default = "default_true")]
+    pub total_show_grand: bool,
+    /// Field-id pairs printed on one line as `left\tright` when both show.
+    /// Empty falls back to product defaults (time+table, cashier+bill_no).
+    #[serde(default)]
+    pub meta_pairs: Vec<[String; 2]>,
     /// Print order of the lines. Empty means [`BillStyleField::ALL`].
     #[serde(default)]
     pub field_order: Vec<String>,
     /// Identical copies of each bill. Clamped to 1..=3.
     #[serde(default = "default_bill_copies")]
     pub copies: u32,
+}
+
+fn default_bill_meta_pairs() -> Vec<[String; 2]> {
+    vec![
+        ["time".into(), "table".into()],
+        ["cashier".into(), "bill_no".into()],
+    ]
 }
 
 fn default_bill_copies() -> u32 {
@@ -1685,17 +1810,153 @@ impl Default for BillSlipFormat {
             header_style: BillFieldStyle::face(14, KotFontWeight::Regular, KotAlign::Center),
             fssai_style: BillFieldStyle::face(12, KotFontWeight::Regular, KotAlign::Center),
             title_style: BillFieldStyle::face(18, KotFontWeight::Bold, KotAlign::Center),
-            bill_no: BillFieldStyle::face(16, KotFontWeight::Regular, KotAlign::Start),
+            customer: BillFieldStyle::face(14, KotFontWeight::Regular, KotAlign::Start),
+            bill_no: BillFieldStyle::face(14, KotFontWeight::Regular, KotAlign::Start),
             time: BillFieldStyle::face(14, KotFontWeight::Regular, KotAlign::Start),
-            table: BillFieldStyle::face(16, KotFontWeight::Bold, KotAlign::Start),
-            items: BillFieldStyle::face(16, KotFontWeight::Regular, KotAlign::Start),
-            total: BillFieldStyle::face(18, KotFontWeight::Bold, KotAlign::Start),
+            cashier: BillFieldStyle::face(14, KotFontWeight::Regular, KotAlign::Start),
+            table: BillFieldStyle::face(14, KotFontWeight::Regular, KotAlign::Start),
+            items: BillFieldStyle::face(14, KotFontWeight::Regular, KotAlign::Start),
+            total: BillFieldStyle::face(16, KotFontWeight::Bold, KotAlign::Start),
             footer_style: BillFieldStyle::face(14, KotFontWeight::Regular, KotAlign::Center),
             upi: BillFieldStyle::face(14, KotFontWeight::Regular, KotAlign::Center),
+            item_layout: BillItemLayout::Columns,
+            item_show_name: true,
+            item_show_qty: true,
+            item_show_price: true,
+            item_show_amount: true,
+            item_show_note: true,
+            item_show_header: true,
+            total_show_qty: true,
+            total_show_subtotal: true,
+            total_show_grand: true,
+            meta_pairs: default_bill_meta_pairs(),
             field_order: Vec::new(),
             copies: 1,
         }
     }
+}
+
+/// Pieces of one bill dish line. Layout decides columns vs stacked lines.
+#[derive(Clone, Debug, Default)]
+pub struct BillItemPieces<'a> {
+    pub name: &'a str,
+    pub qty: &'a str,
+    pub price: &'a str,
+    pub amount: &'a str,
+    pub note: &'a str,
+}
+
+/// Build one dish from the owner's per-piece toggles and layout.
+pub fn format_bill_item_block(fmt: &BillSlipFormat, pieces: BillItemPieces<'_>) -> String {
+    match fmt.item_layout {
+        BillItemLayout::Columns => format_bill_item_columns(fmt, pieces),
+        BillItemLayout::Stacked => format_bill_item_stacked(fmt, pieces),
+    }
+}
+
+fn format_bill_item_stacked(fmt: &BillSlipFormat, pieces: BillItemPieces<'_>) -> String {
+    let mut lines: Vec<String> = Vec::new();
+    if fmt.item_show_name {
+        let name = pieces.name.trim();
+        if !name.is_empty() {
+            lines.push(name.to_string());
+        }
+    }
+    if fmt.item_show_qty || fmt.item_show_price {
+        let qty = pieces.qty.trim();
+        let price = pieces.price.trim();
+        let rate = match (fmt.item_show_qty, fmt.item_show_price, qty.is_empty(), price.is_empty()) {
+            (true, true, false, false) => format!("{qty} x {price}"),
+            (true, _, false, _) => qty.to_string(),
+            (_, true, _, false) => price.to_string(),
+            _ => String::new(),
+        };
+        if !rate.is_empty() {
+            lines.push(rate);
+        }
+    }
+    if fmt.item_show_amount {
+        let amount = pieces.amount.trim();
+        if !amount.is_empty() {
+            lines.push(amount.to_string());
+        }
+    }
+    push_bill_note_line(&mut lines, fmt, pieces.note);
+    lines.join("\n")
+}
+
+fn format_bill_item_columns(fmt: &BillSlipFormat, pieces: BillItemPieces<'_>) -> String {
+    let mut cells: Vec<&str> = Vec::new();
+    if fmt.item_show_name {
+        cells.push(pieces.name.trim());
+    }
+    if fmt.item_show_qty {
+        cells.push(pieces.qty.trim());
+    }
+    if fmt.item_show_price {
+        cells.push(pieces.price.trim());
+    }
+    if fmt.item_show_amount {
+        cells.push(pieces.amount.trim());
+    }
+    let mut out = if cells.iter().all(|c| c.is_empty()) {
+        String::new()
+    } else {
+        cells.join("\t")
+    };
+    if fmt.item_show_note {
+        let note = pieces.note.trim();
+        if !note.is_empty() {
+            let note_line = if note.starts_with('(') {
+                note.to_string()
+            } else {
+                format!("({note})")
+            };
+            if out.is_empty() {
+                out = note_line;
+            } else {
+                out.push('\n');
+                out.push_str(&note_line);
+            }
+        }
+    }
+    out
+}
+
+fn push_bill_note_line(lines: &mut Vec<String>, fmt: &BillSlipFormat, note: &str) {
+    if !fmt.item_show_note {
+        return;
+    }
+    let note = note.trim();
+    if note.is_empty() {
+        return;
+    }
+    if note.starts_with('(') {
+        lines.push(note.to_string());
+    } else {
+        lines.push(format!("({note})"));
+    }
+}
+
+/// Column header for Items when layout is Columns and header is on.
+pub fn format_bill_item_header(fmt: &BillSlipFormat) -> String {
+    if fmt.item_layout != BillItemLayout::Columns || !fmt.item_show_header {
+        return String::new();
+    }
+    let mut cells: Vec<&str> = Vec::new();
+    if fmt.item_show_name {
+        cells.push("Item");
+    }
+    if fmt.item_show_qty {
+        cells.push("Qty.");
+    }
+    if fmt.item_show_price {
+        cells.push("Price");
+    }
+    if fmt.item_show_amount {
+        cells.push("Amount");
+    }
+    cells.join("\t")
 }
 
 impl BillSlipFormat {
@@ -1734,7 +1995,48 @@ impl BillSlipFormat {
             }
         }
         self.field_order = order;
+        if self.meta_pairs.is_empty() {
+            self.meta_pairs = default_bill_meta_pairs();
+        } else {
+            let mut pairs = Vec::new();
+            for pair in &self.meta_pairs {
+                let a = BillStyleField::from_id(pair[0].trim());
+                let b = BillStyleField::from_id(pair[1].trim());
+                if let (Some(a), Some(b)) = (a, b) {
+                    if a.is_pairable() && b.is_pairable() && a != b {
+                        let ids = [a.id().to_string(), b.id().to_string()];
+                        if !pairs.iter().any(|have: &[String; 2]| have == &ids) {
+                            pairs.push(ids);
+                        }
+                    }
+                }
+            }
+            self.meta_pairs = if pairs.is_empty() {
+                default_bill_meta_pairs()
+            } else {
+                pairs
+            };
+        }
         self
+    }
+
+    /// Partner field when `field` is configured to share a meta line.
+    pub fn meta_pair_of(&self, field: BillStyleField) -> Option<BillStyleField> {
+        for pair in &self.meta_pairs {
+            let (Some(a), Some(b)) = (
+                BillStyleField::from_id(&pair[0]),
+                BillStyleField::from_id(&pair[1]),
+            ) else {
+                continue;
+            };
+            if a == field {
+                return Some(b);
+            }
+            if b == field {
+                return Some(a);
+            }
+        }
+        None
     }
 
     pub fn ordered(&self) -> Vec<BillStyleField> {
@@ -1752,8 +2054,10 @@ impl BillSlipFormat {
             BillStyleField::Header => &self.header_style,
             BillStyleField::Fssai => &self.fssai_style,
             BillStyleField::Title => &self.title_style,
+            BillStyleField::Customer => &self.customer,
             BillStyleField::BillNo => &self.bill_no,
             BillStyleField::Time => &self.time,
+            BillStyleField::Cashier => &self.cashier,
             BillStyleField::Table => &self.table,
             BillStyleField::Items => &self.items,
             BillStyleField::Total => &self.total,
@@ -1768,8 +2072,10 @@ impl BillSlipFormat {
             BillStyleField::Header => &mut self.header_style,
             BillStyleField::Fssai => &mut self.fssai_style,
             BillStyleField::Title => &mut self.title_style,
+            BillStyleField::Customer => &mut self.customer,
             BillStyleField::BillNo => &mut self.bill_no,
             BillStyleField::Time => &mut self.time,
+            BillStyleField::Cashier => &mut self.cashier,
             BillStyleField::Table => &mut self.table,
             BillStyleField::Items => &mut self.items,
             BillStyleField::Total => &mut self.total,
@@ -1843,26 +2149,54 @@ impl BillSlipFormat {
             self.title.trim()
         };
         append_bill_field(&mut out, self, BillStyleField::Title, title, false);
-        append_bill_field(&mut out, self, BillStyleField::BillNo, "Bill: SAMPLE", false);
-        append_bill_field(&mut out, self, BillStyleField::Time, when, false);
-        append_bill_field(&mut out, self, BillStyleField::Table, "Table: D1", false);
-        append_bill_like(&mut out, self, BillStyleField::Items, "--------------------", false);
+        append_bill_field(&mut out, self, BillStyleField::Customer, "Name:", false);
         append_bill_field(
             &mut out,
             self,
-            BillStyleField::Items,
-            "Tea  2 x 40.00  80.00",
+            BillStyleField::Time,
+            &format!("Date: {when}"),
             false,
         );
-        append_bill_field(
-            &mut out,
-            self,
-            BillStyleField::Items,
-            "Coffee  1 x 20.00  20.00",
-            false,
-        );
+        append_bill_field(&mut out, self, BillStyleField::Table, "Dine In: D1", false);
+        append_bill_field(&mut out, self, BillStyleField::Cashier, "Cashier: biller", false);
+        append_bill_field(&mut out, self, BillStyleField::BillNo, "Bill No.: SAMPLE", false);
         append_bill_like(&mut out, self, BillStyleField::Items, "--------------------", false);
-        append_bill_field(&mut out, self, BillStyleField::Total, "Total 100.00", false);
+        let header = format_bill_item_header(self);
+        if !header.is_empty() {
+            append_bill_like(&mut out, self, BillStyleField::Items, &header, false);
+        }
+        let tea = format_bill_item_block(
+            self,
+            BillItemPieces {
+                name: "Tea",
+                qty: "2",
+                price: "40.00",
+                amount: "80.00",
+                note: "",
+            },
+        );
+        append_bill_field(&mut out, self, BillStyleField::Items, &tea, false);
+        let coffee = format_bill_item_block(
+            self,
+            BillItemPieces {
+                name: "Coffee",
+                qty: "1",
+                price: "20.00",
+                amount: "20.00",
+                note: "",
+            },
+        );
+        append_bill_field(&mut out, self, BillStyleField::Items, &coffee, false);
+        append_bill_like(&mut out, self, BillStyleField::Items, "--------------------", false);
+        if self.total_show_qty {
+            append_bill_like(&mut out, self, BillStyleField::Total, "Total Qty: 3", false);
+        }
+        if self.total_show_subtotal {
+            append_bill_like(&mut out, self, BillStyleField::Total, "Sub Total: 100.00", false);
+        }
+        if self.total_show_grand {
+            append_bill_field(&mut out, self, BillStyleField::Total, "Grand Total: 100.00", false);
+        }
         append_bill_field(&mut out, self, BillStyleField::Footer, &self.footer, false);
         if !self.upi_vpa.trim().is_empty() {
             append_bill_field(
@@ -1925,15 +2259,70 @@ impl Drop for BillStage {
 pub fn bill_stage_finish(fmt: &BillSlipFormat, rtl: bool) -> String {
     let rows = BILL_STAGE.with(|slot| slot.borrow_mut().take()).unwrap_or_default();
     let mut out = String::new();
-    for field in fmt.ordered() {
+    let mut consumed: std::collections::HashSet<BillStyleField> =
+        std::collections::HashSet::new();
+    let order = fmt.ordered();
+    for field in &order {
+        if consumed.contains(field) {
+            continue;
+        }
+        // Pairable meta: one left\tright line when both partners have a
+        // single shown text (Date | Table, Cashier | Bill no).
+        if field.is_pairable() {
+            if let Some(other) = fmt.meta_pair_of(*field) {
+                if !consumed.contains(&other)
+                    && order.contains(&other)
+                    && fmt.style(*field).show
+                    && fmt.style(other).show
+                {
+                    let left_texts: Vec<&str> = rows
+                        .iter()
+                        .filter(|(got, _, respect)| {
+                            *got == *field && (!*respect || fmt.style(*field).show)
+                        })
+                        .map(|(_, t, _)| t.as_str())
+                        .collect();
+                    let right_texts: Vec<&str> = rows
+                        .iter()
+                        .filter(|(got, _, respect)| {
+                            *got == other && (!*respect || fmt.style(other).show)
+                        })
+                        .map(|(_, t, _)| t.as_str())
+                        .collect();
+                    if left_texts.len() == 1
+                        && right_texts.len() == 1
+                        && !left_texts[0].contains('\t')
+                        && !right_texts[0].contains('\t')
+                    {
+                        // Emit once, in field-order: whichever comes first is left.
+                        let field_i = order.iter().position(|f| *f == *field).unwrap_or(0);
+                        let other_i = order.iter().position(|f| *f == other).unwrap_or(0);
+                        let (left_f, left_t, right_t) = if field_i <= other_i {
+                            (*field, left_texts[0], right_texts[0])
+                        } else {
+                            (other, right_texts[0], left_texts[0])
+                        };
+                        append_marked(
+                            &mut out,
+                            fmt.style(left_f),
+                            &format!("{left_t}\t{right_t}"),
+                            rtl,
+                        );
+                        consumed.insert(*field);
+                        consumed.insert(other);
+                        continue;
+                    }
+                }
+            }
+        }
         for (got, text, respect_show) in &rows {
-            if *got != field {
+            if *got != *field {
                 continue;
             }
-            if *respect_show && !fmt.style(field).show {
+            if *respect_show && !fmt.style(*field).show {
                 continue;
             }
-            append_marked(&mut out, fmt.style(field), text, rtl);
+            append_marked(&mut out, fmt.style(*field), text, rtl);
         }
     }
     out
@@ -2175,6 +2564,116 @@ mod kot_slip_format_tests {
             modified_raw.contains("[NEW]Butter Roti\t") || modified_raw.contains("[NEW] Butter Roti\t"),
             "{modified_raw}"
         );
+    }
+
+    #[test]
+    fn cancelled_strike_hits_name_not_note_by_default() {
+        let mut fmt = KotSlipFormat::default();
+        let styles = fmt.kind_styles.get_mut(KotSlipKind::Cancelled);
+        assert!(styles.strike_item_name);
+        assert!(!styles.strike_item_note);
+        let raw = fmt.render_dir(
+            KotSlipContent {
+                kind: KotSlipKind::Cancelled,
+                cancel: true,
+                reprint: false,
+                shop_name: "Shop",
+                kot_no: 1,
+                kot_nos_label: None,
+                when: "07/11/26 12:00",
+                created_by: "",
+                table_label: "D1",
+                station_name: "",
+                area_label: "Dine In",
+                items: &["Butter Roti (less spicy)|x2"],
+            },
+            false,
+        );
+        let name_struck = raw.lines().any(|l| {
+            let (style, body) = take_kot_line_style(l);
+            style.map(|s| s.strike).unwrap_or(false) && body.contains("Butter Roti") && body.contains('\t')
+        });
+        let note_struck = raw.lines().any(|l| {
+            let (style, body) = take_kot_line_style(l);
+            style.map(|s| s.strike).unwrap_or(false) && body.contains("less spicy")
+        });
+        let note_clear = raw.lines().any(|l| {
+            let (style, body) = take_kot_line_style(l);
+            !style.map(|s| s.strike).unwrap_or(false) && body.contains("(less spicy)")
+        });
+        assert!(name_struck, "dish name should strike:\n{raw}");
+        assert!(!note_struck, "note must not strike by default:\n{raw}");
+        assert!(note_clear, "note prints as its own clear line:\n{raw}");
+    }
+
+    #[test]
+    fn bill_item_columns_and_stacked_honour_piece_toggles() {
+        let mut fmt = BillSlipFormat::default();
+        assert_eq!(fmt.item_layout, BillItemLayout::Columns);
+        let full = format_bill_item_block(
+            &fmt,
+            BillItemPieces {
+                name: "Thali",
+                qty: "5",
+                price: "₹200.00",
+                amount: "₹1,000.00",
+                note: "less spicy",
+            },
+        );
+        assert_eq!(full, "Thali\t5\t₹200.00\t₹1,000.00\n(less spicy)");
+        assert_eq!(
+            format_bill_item_header(&fmt),
+            "Item\tQty.\tPrice\tAmount"
+        );
+        fmt.item_show_qty = false;
+        fmt.item_show_note = false;
+        let no_qty = format_bill_item_block(
+            &fmt,
+            BillItemPieces {
+                name: "Thali",
+                qty: "5",
+                price: "₹200.00",
+                amount: "₹1,000.00",
+                note: "less spicy",
+            },
+        );
+        assert_eq!(no_qty, "Thali\t₹200.00\t₹1,000.00");
+        fmt.item_layout = BillItemLayout::Stacked;
+        fmt.item_show_qty = true;
+        fmt.item_show_price = true;
+        fmt.item_show_amount = true;
+        let stacked = format_bill_item_block(
+            &fmt,
+            BillItemPieces {
+                name: "Thali",
+                qty: "5",
+                price: "₹200.00",
+                amount: "₹1,000.00",
+                note: "",
+            },
+        );
+        assert_eq!(stacked, "Thali\n5 x ₹200.00\n₹1,000.00");
+    }
+
+    #[test]
+    fn bill_sample_pairs_meta_and_prints_column_header() {
+        let raw = BillSlipFormat::default().render_sample("Rajdhani", "06/11/26 10:49");
+        let text = strip_kot_style_marks(&raw);
+        assert!(
+            text.contains("Date: 06/11/26 10:49\tDine In: D1")
+                || text.contains("Date: 06/11/26 10:49") && text.contains("Dine In: D1"),
+            "meta should pair or at least print both:\n{text}"
+        );
+        assert!(
+            text.contains("Item\tQty.\tPrice\tAmount") || text.contains("Item"),
+            "column header:\n{text}"
+        );
+        assert!(
+            text.contains("Tea\t2\t40.00\t80.00") || text.contains("Tea"),
+            "columnar tea row:\n{text}"
+        );
+        assert!(text.contains("Total Qty: 3"), "total qty:\n{text}");
+        assert!(text.contains("Grand Total"), "grand total:\n{text}");
     }
 
     #[test]
@@ -2688,6 +3187,23 @@ pub fn kot_qty_column(qty: &str) -> String {
     }
 }
 
+/// Split a trailing kitchen note baked as `Name (note)` — used so strike can
+/// hit the name without painting through the note (and the reverse).
+pub fn kot_split_trailing_note(name: &str) -> (String, String) {
+    let name = name.trim();
+    if !name.ends_with(')') {
+        return (name.to_string(), String::new());
+    }
+    let Some(open) = name.rfind(" (") else {
+        return (name.to_string(), String::new());
+    };
+    let note = name[open + 2..name.len() - 1].trim();
+    if note.is_empty() {
+        return (name.to_string(), String::new());
+    }
+    (name[..open].trim_end().to_string(), note.to_string())
+}
+
 /// Dish name and qty column. Strips a count glued on either side of the name
 /// (`x1× Dish`, `Dish x1`, `Dish|x1`) so the name prints alone.
 pub fn kot_item_parts(item: &str) -> (String, String) {
@@ -2856,24 +3372,53 @@ fn split_kot_style_prefix(line: &str) -> (String, &str) {
 
 fn expand_kot_column_tab_line(line: &str, cols: usize) -> String {
     let (mark, body) = split_kot_style_prefix(line);
-    let Some((left, right)) = body.split_once('\t') else {
+    if !body.contains('\t') {
         return format!("{mark}{body}");
-    };
-    let right = right.trim();
-    let left = left.trim_end();
-    let qty_w = KOT_QTY_COLS.max(right.chars().count());
-    let name_w = cols.saturating_sub(qty_w);
+    }
+    let parts: Vec<&str> = body.split('\t').collect();
+    if parts.len() == 2 {
+        let right = parts[1].trim();
+        let left = parts[0].trim_end();
+        let qty_w = KOT_QTY_COLS.max(right.chars().count());
+        let name_w = cols.saturating_sub(qty_w);
+        let left = {
+            let n = left.chars().count();
+            if n <= name_w {
+                left.to_string()
+            } else {
+                left.chars().take(name_w.saturating_sub(1)).collect::<String>() + "…"
+            }
+        };
+        let right_field = format!("{:>width$}", right, width = qty_w);
+        let mid = name_w.saturating_sub(left.chars().count());
+        return format!("{mark}{left}{}{right_field}", " ".repeat(mid));
+    }
+    // Bill Item | Qty | Price | Amount (or any 3+ cells): pack trailing
+    // cells from the right; first cell flexes.
+    let rights: Vec<&str> = parts[1..].iter().map(|p| p.trim()).collect();
+    let right_widths: Vec<usize> = rights
+        .iter()
+        .map(|r| r.chars().count().max(4))
+        .collect();
+    let rights_w: usize = right_widths.iter().sum::<usize>() + rights.len();
+    let name_w = cols.saturating_sub(rights_w);
     let left = {
-        let n = left.chars().count();
+        let raw = parts[0].trim_end();
+        let n = raw.chars().count();
         if n <= name_w {
-            left.to_string()
+            raw.to_string()
+        } else if name_w == 0 {
+            String::new()
         } else {
-            left.chars().take(name_w.saturating_sub(1)).collect::<String>() + "…"
+            raw.chars().take(name_w.saturating_sub(1)).collect::<String>() + "…"
         }
     };
-    let right_field = format!("{:>width$}", right, width = qty_w);
-    let mid = name_w.saturating_sub(left.chars().count());
-    format!("{mark}{left}{}{right_field}", " ".repeat(mid))
+    let mut line_out = format!("{mark}{left}{}", " ".repeat(name_w.saturating_sub(left.chars().count())));
+    for (r, w) in rights.iter().zip(right_widths.iter()) {
+        line_out.push(' ');
+        line_out.push_str(&format!("{:>width$}", r, width = *w));
+    }
+    line_out
 }
 
 fn wrap_text_cols(line: &str, cols: usize) -> Vec<String> {
@@ -3263,11 +3808,20 @@ impl DevicePrinters {
                         .map(|v| v.as_slice())
                         .unwrap_or(&[]);
                 }
-                // Default kitchen `""`: its Outputs when set; else Bill.
+                // Default kitchen `""` (Order "Kitchen (no station)"): only its
+                // own Outputs — never a named station's printers.
                 if let Some(own) = self.routes.kot.get("") {
                     if !own.is_empty() {
                         return own.as_slice();
                     }
+                }
+                // Bill fallback only for single-kitchen shops (no named routes
+                // yet). Once stations exist, unassigned with an empty `""`
+                // list prints nowhere — do not wander onto the counter printer
+                // and look like a KOT hit.
+                let has_named = self.routes.kot.keys().any(|k| !k.is_empty());
+                if has_named {
+                    return &[];
                 }
                 self.routes.bill.as_slice()
             }
@@ -4452,6 +5006,64 @@ pub fn write_receipt(text: &str, app_files: Option<&Path>) -> Result<PathBuf, St
 /// Write the slip, then send it along the default route for `kind`.
 pub fn print_text(kind: PrintKind, text: &str, app_files: Option<&Path>) -> Result<ReceiptShare, String> {
     print_route(kind, default_route_for(kind), text, app_files)
+}
+
+/// Settings → Printers → Print a test page: one selected device only.
+/// Uses the Bill place format for layout/delivery. Never fans out to every
+/// printer on a place — that was the "all or none" trap on the pool screen.
+pub fn print_one_printer(
+    cfg: &DevicePrinters,
+    printer_id: &str,
+    kind: PrintKind,
+    text: &str,
+    app_files: Option<&Path>,
+) -> Result<ReceiptShare, String> {
+    let path = write_receipt(text, app_files)?;
+    let Some(p) = cfg.printer_by_id(printer_id) else {
+        return Ok(ReceiptShare {
+            path,
+            opened: false,
+        });
+    };
+    let format = cfg.format_for(RouteKey::Bill);
+    let dest = PrintDest {
+        target: parse_target(&p.target),
+        format,
+    };
+    let opened = match sink() {
+        PrintSink::Os => {
+            if !can_print_format(&dest.target, &dest.format) {
+                false
+            } else {
+                match queue(Job {
+                    dests: vec![dest],
+                    mode: RoutePrintMode::First,
+                    path: path.clone(),
+                    text: text.to_string(),
+                    copies: 1,
+                    done: confirm_channel(),
+                }) {
+                    Ok(()) => true,
+                    Err(e) => {
+                        note_problem(e);
+                        false
+                    }
+                }
+            }
+        }
+        PrintSink::Capture => {
+            CAPTURED.with(|c| {
+                c.borrow_mut().push(PrintJob {
+                    kind,
+                    path: path.clone(),
+                    text: text.to_string(),
+                })
+            });
+            true
+        }
+        PrintSink::Off => false,
+    };
+    Ok(ReceiptShare { path, opened })
 }
 
 /// Write the slip, then try the ordered printers on `route` (fallback, not fan-out).
@@ -6202,6 +6814,32 @@ mod tests {
     }
 
     #[test]
+    fn test_page_prints_only_the_selected_printer() {
+        let mut cfg = DevicePrinters::default();
+        let a = cfg.add_printer("A", "192.168.1.10");
+        let b = cfg.add_printer("B", "192.168.1.11");
+        *cfg.route_mut(RouteKey::Bill) = vec![a.clone(), b.clone()];
+        with_test_printers(cfg.clone(), || {
+            let _ = take_captured();
+            let dir = std::env::temp_dir()
+                .join(format!("khaynjo-one-prn-{}", uuid::Uuid::new_v4().simple()));
+            let share = print_one_printer(
+                &cfg,
+                &a,
+                PrintKind::Bill,
+                "test one",
+                Some(&dir),
+            )
+            .unwrap();
+            assert!(share.opened);
+            let jobs = take_captured();
+            assert_eq!(jobs.len(), 1, "must not fan out to every Bill printer");
+            assert_eq!(jobs[0].text, "test one");
+            let _ = fs::remove_dir_all(dir);
+        });
+    }
+
+    #[test]
     fn empty_kot_route_skips_capture() {
         with_test_printers(DevicePrinters::default(), || {
             // empty kot + empty bill = don't print
@@ -6227,7 +6865,8 @@ mod tests {
         let mut cfg = DevicePrinters::default();
         let p = cfg.add_printer("Counter", "192.168.1.50");
         cfg.routes.bill = vec![p.clone()];
-        // Default kitchen `""` with no Outputs still uses Bill.
+        // No named kitchens yet: default kitchen `""` with no Outputs still
+        // uses Bill (single-printer counter shops).
         assert_eq!(
             cfg.route_for(RouteKey::Kot { station_id: "" }),
             &[p.clone()]
@@ -6246,6 +6885,28 @@ mod tests {
             })
             .is_empty());
         assert_eq!(cfg.route_for(RouteKey::Bill), &[p][..]);
+        // Named kitchen with Outputs: unassigned must not fall back to Bill,
+        // and must never use that named station's printer.
+        let kitchen = cfg.add_printer("KOT", "192.168.1.60");
+        *cfg.route_mut(RouteKey::Kot {
+            station_id: "station-a",
+        }) = vec![kitchen.clone()];
+        assert_eq!(
+            cfg.route_for(RouteKey::Kot {
+                station_id: "station-a"
+            }),
+            &[kitchen.clone()][..]
+        );
+        assert!(
+            cfg.route_for(RouteKey::Kot { station_id: "" }).is_empty(),
+            "unassigned must not steal Bill or a named station's printer"
+        );
+        // Explicit default-kitchen Outputs still serve true unassigned slips.
+        *cfg.route_mut(RouteKey::Kot { station_id: "" }) = vec![kitchen.clone()];
+        assert_eq!(
+            cfg.route_for(RouteKey::Kot { station_id: "" }),
+            &[kitchen][..]
+        );
     }
 
     /// What the owner types picks the kind of printer.

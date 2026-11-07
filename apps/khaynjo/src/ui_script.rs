@@ -2897,6 +2897,7 @@ script_mod! {
                     spacing: 6
                     hold_send_btn := TicketHoldBtn{text: "Hold"}
                     reprint_incl_btn := TicketHoldBtn{text: "In print" visible: false}
+                    cancel_pick_btn := TicketHoldBtn{text: "Mark" visible: false}
                     line_cancel_sum := QuietFitBtn{text: "Cancel" visible: false}
                 }
             }
@@ -6236,6 +6237,7 @@ script_mod! {
                                                 // the bill, without opening Table actions.
                                                 print_bill_quick := StackSecondaryBtn{text: "Print bill" visible: false}
                                                 reprint_kot_btn := StackLightBtn{text: "Print selected again" visible: false}
+                                                batch_cancel_btn := StackLightBtn{text: "Cancel marked" visible: false}
                                                 print_cancelled_kot_btn := StackLightBtn{text: "Print all cancelled" visible: false}
                                                 next_order_btn := StackLightBtn{text: "Next order (clear desk)" visible: false}
                                             }
@@ -8317,10 +8319,17 @@ script_mod! {
                                     change_my_password := RowSecondaryBtn{text: "Update my password"}
                                 }
                                 }
-                                // Owner-only. Emergency unlock PIN: looks like a
-                                // normal login but wipes books entries first
-                                // (sales/ledgers/history). Menu, staff, settings,
-                                // schema stay — never deletes the local server.
+                                // Owner-only. FieldInput ignores set_visible — hide
+                                // the whole card with this wrapper (Waiter must never
+                                // see Emergency PIN fields).
+                                duress_owner_block := View{
+                                    width: Fill height: Fit
+                                    flow: Down spacing: 0
+                                    visible: false
+                                // Emergency unlock PIN: looks like a normal login
+                                // but wipes books entries first (sales/ledgers/
+                                // history). Menu, staff, settings, schema stay —
+                                // never deletes the local server.
                                 FormCard{
                                 View{
                                     width: Fill height: Fit
@@ -8352,6 +8361,7 @@ script_mod! {
                                 }
                                 save_duress_pin := StackPrimaryBtn{text: "Save emergency PIN"}
                                 clear_duress_pin := RowSecondaryBtn{text: "Turn off emergency PIN"}
+                                }
                                 }
                             }
                         }
@@ -8780,7 +8790,7 @@ sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font
                                     visible: false
                                     FormCard{
                                     printers_panel_help := InfoHelp{
-                                        tip: "Find printers. The operating system names them, and Find keeps that list. Portrait, landscape, and how the job is sent are under Bill & KOT format. Choose a printer for each kitchen station, and for the bill, from that list."
+                                        tip: "Find printers, then open Printers for a test page and check the device(s) to try. Print a test page goes only to those. Assign bill printers under Bill & KOT format → Bill. Assign kitchen printers under Kitchen → Kitchen stations (add a station first — Find does not create stations)."
                                     }
                                     View{width: Fit height: Fit flow: Overlay visible: false
                                         kot_print_off := ChipBtn{text: "Auto-print kitchen tickets: Off"}
@@ -8805,6 +8815,14 @@ sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font
                                     // Legacy — Find used to mirror the pool in a second list.
                                     printers_found_list := mod.widgets.ReportText{visible: false}
                                     printers_pool_help := InfoHelp{tip: " " visible: false}
+                                    printers_test_dd := StackSecondaryBtn{text: "Printers for a test page" flow: Down}
+                                    printers_test_input := FieldInput{
+                                        height: 0.
+                                        empty_text: ""
+                                        margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+                                        padding: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+                                    }
+                                    printers_test_suggest := mod.widgets.StationCheckList{field: "test_printers"}
                                     // Legacy ids (hot-reload) — Find owns the pool; no manual Add/Remove.
                                     printer_manual_legacy := View{width: Fill height: Fit visible: false
                                         printer_target_input := FieldInput{height: 0. empty_text: ""}
@@ -9219,12 +9237,20 @@ View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
                                         bill_pick_title_on := KotRowBtnOn{text: "Title" visible: false}
                                     }
                                     View{width: Fill height: Fit flow: Overlay
+                                        bill_pick_customer := KotRowBtn{text: "Customer"}
+                                        bill_pick_customer_on := KotRowBtnOn{text: "Customer" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
                                         bill_pick_billno := KotRowBtn{text: "Bill no"}
                                         bill_pick_billno_on := KotRowBtnOn{text: "Bill no" visible: false}
                                     }
                                     View{width: Fill height: Fit flow: Overlay
                                         bill_pick_time := KotRowBtn{text: "Time"}
                                         bill_pick_time_on := KotRowBtnOn{text: "Time" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        bill_pick_cashier := KotRowBtn{text: "Cashier"}
+                                        bill_pick_cashier_on := KotRowBtnOn{text: "Cashier" visible: false}
                                     }
                                     View{width: Fill height: Fit flow: Overlay
                                         bill_pick_table := KotRowBtn{text: "Table"}
@@ -9259,6 +9285,128 @@ View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
                                     View{width: Fill height: Fit flow: Overlay
                                         bill_field_hide := SegBtn{text: "Hide"}
                                         bill_field_hide_on := SegBtnOn{text: "Hide" visible: false}
+                                    }
+                                }
+                                // Per-piece toggles for Items / Total — only
+                                // visible while that line is open.
+                                bill_item_pieces := View{
+                                    width: Fill height: Fit
+                                    flow: Down spacing: 8
+                                    visible: false
+                                    h_bill_item_layout := WrapLabel{body: "Item layout" font_color: #x260B08 font_size: 14.}
+                                    View{width: Fill height: Fit flow: Right spacing: 6
+                                        View{width: Fill height: Fit flow: Overlay
+                                            bill_item_layout_columns := SegBtn{text: "Columns"}
+                                            bill_item_layout_columns_on := SegBtnOn{text: "Columns" visible: false}
+                                        }
+                                        View{width: Fill height: Fit flow: Overlay
+                                            bill_item_layout_stacked := SegBtn{text: "Stacked"}
+                                            bill_item_layout_stacked_on := SegBtnOn{text: "Stacked" visible: false}
+                                        }
+                                    }
+                                    h_bill_item_header := WrapLabel{body: "Column headers" font_color: #x260B08 font_size: 14.}
+                                    View{width: Fill height: Fit flow: Right spacing: 6
+                                        View{width: Fill height: Fit flow: Overlay
+                                            bill_item_header_on := SegBtn{text: "On"}
+                                            bill_item_header_on_on := SegBtnOn{text: "On" visible: false}
+                                        }
+                                        View{width: Fill height: Fit flow: Overlay
+                                            bill_item_header_off := SegBtn{text: "Off"}
+                                            bill_item_header_off_on := SegBtnOn{text: "Off" visible: false}
+                                        }
+                                    }
+                                    h_bill_item_name := WrapLabel{body: "Dish name" font_color: #x260B08 font_size: 14.}
+                                    View{width: Fill height: Fit flow: Right spacing: 6
+                                        View{width: Fill height: Fit flow: Overlay
+                                            bill_item_name_on := SegBtn{text: "On"}
+                                            bill_item_name_on_on := SegBtnOn{text: "On" visible: false}
+                                        }
+                                        View{width: Fill height: Fit flow: Overlay
+                                            bill_item_name_off := SegBtn{text: "Off"}
+                                            bill_item_name_off_on := SegBtnOn{text: "Off" visible: false}
+                                        }
+                                    }
+                                    h_bill_item_qty := WrapLabel{body: "Qty" font_color: #x260B08 font_size: 14.}
+                                    View{width: Fill height: Fit flow: Right spacing: 6
+                                        View{width: Fill height: Fit flow: Overlay
+                                            bill_item_qty_on := SegBtn{text: "On"}
+                                            bill_item_qty_on_on := SegBtnOn{text: "On" visible: false}
+                                        }
+                                        View{width: Fill height: Fit flow: Overlay
+                                            bill_item_qty_off := SegBtn{text: "Off"}
+                                            bill_item_qty_off_on := SegBtnOn{text: "Off" visible: false}
+                                        }
+                                    }
+                                    h_bill_item_price := WrapLabel{body: "Price" font_color: #x260B08 font_size: 14.}
+                                    View{width: Fill height: Fit flow: Right spacing: 6
+                                        View{width: Fill height: Fit flow: Overlay
+                                            bill_item_price_on := SegBtn{text: "On"}
+                                            bill_item_price_on_on := SegBtnOn{text: "On" visible: false}
+                                        }
+                                        View{width: Fill height: Fit flow: Overlay
+                                            bill_item_price_off := SegBtn{text: "Off"}
+                                            bill_item_price_off_on := SegBtnOn{text: "Off" visible: false}
+                                        }
+                                    }
+                                    h_bill_item_amount := WrapLabel{body: "Amount" font_color: #x260B08 font_size: 14.}
+                                    View{width: Fill height: Fit flow: Right spacing: 6
+                                        View{width: Fill height: Fit flow: Overlay
+                                            bill_item_amount_on := SegBtn{text: "On"}
+                                            bill_item_amount_on_on := SegBtnOn{text: "On" visible: false}
+                                        }
+                                        View{width: Fill height: Fit flow: Overlay
+                                            bill_item_amount_off := SegBtn{text: "Off"}
+                                            bill_item_amount_off_on := SegBtnOn{text: "Off" visible: false}
+                                        }
+                                    }
+                                    h_bill_item_note := WrapLabel{body: "Dish note" font_color: #x260B08 font_size: 14.}
+                                    View{width: Fill height: Fit flow: Right spacing: 6
+                                        View{width: Fill height: Fit flow: Overlay
+                                            bill_item_note_on := SegBtn{text: "On"}
+                                            bill_item_note_on_on := SegBtnOn{text: "On" visible: false}
+                                        }
+                                        View{width: Fill height: Fit flow: Overlay
+                                            bill_item_note_off := SegBtn{text: "Off"}
+                                            bill_item_note_off_on := SegBtnOn{text: "Off" visible: false}
+                                        }
+                                    }
+                                }
+                                bill_total_pieces := View{
+                                    width: Fill height: Fit
+                                    flow: Down spacing: 8
+                                    visible: false
+                                    h_bill_total_qty := WrapLabel{body: "Total qty" font_color: #x260B08 font_size: 14.}
+                                    View{width: Fill height: Fit flow: Right spacing: 6
+                                        View{width: Fill height: Fit flow: Overlay
+                                            bill_total_qty_on := SegBtn{text: "On"}
+                                            bill_total_qty_on_on := SegBtnOn{text: "On" visible: false}
+                                        }
+                                        View{width: Fill height: Fit flow: Overlay
+                                            bill_total_qty_off := SegBtn{text: "Off"}
+                                            bill_total_qty_off_on := SegBtnOn{text: "Off" visible: false}
+                                        }
+                                    }
+                                    h_bill_total_subtotal := WrapLabel{body: "Sub total" font_color: #x260B08 font_size: 14.}
+                                    View{width: Fill height: Fit flow: Right spacing: 6
+                                        View{width: Fill height: Fit flow: Overlay
+                                            bill_total_subtotal_on := SegBtn{text: "On"}
+                                            bill_total_subtotal_on_on := SegBtnOn{text: "On" visible: false}
+                                        }
+                                        View{width: Fill height: Fit flow: Overlay
+                                            bill_total_subtotal_off := SegBtn{text: "Off"}
+                                            bill_total_subtotal_off_on := SegBtnOn{text: "Off" visible: false}
+                                        }
+                                    }
+                                    h_bill_total_grand := WrapLabel{body: "Grand total" font_color: #x260B08 font_size: 14.}
+                                    View{width: Fill height: Fit flow: Right spacing: 6
+                                        View{width: Fill height: Fit flow: Overlay
+                                            bill_total_grand_on := SegBtn{text: "On"}
+                                            bill_total_grand_on_on := SegBtnOn{text: "On" visible: false}
+                                        }
+                                        View{width: Fill height: Fit flow: Overlay
+                                            bill_total_grand_off := SegBtn{text: "Off"}
+                                            bill_total_grand_off_on := SegBtnOn{text: "Off" visible: false}
+                                        }
                                     }
                                 }
                                 h_bill_field_size := WrapLabel{body: "Font size" font_color: #x260B08 font_size: 14.}
@@ -9348,6 +9496,14 @@ View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
                                     View{width: Fill height: Fit flow: Overlay
                                         bill_ord_10 := KotRowBtn{text: ""}
                                         bill_ord_10_on := KotRowBtnOn{text: "" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        bill_ord_11 := KotRowBtn{text: ""}
+                                        bill_ord_11_on := KotRowBtnOn{text: "" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        bill_ord_12 := KotRowBtn{text: ""}
+                                        bill_ord_12_on := KotRowBtnOn{text: "" visible: false}
                                     }
                                 }
                                 }
@@ -9484,7 +9640,7 @@ View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
                                 }
                                 kot_item_prefix_input := FieldInput{empty_text: "e.g. [CANCELLED] "}
                                 h_kot_strike := WrapLabel{
-                                    body: "Strike item names"
+                                    body: "Strike dish name"
                                     font_color: #x260B08
                                     font_size: 14.
                                 }
@@ -9498,6 +9654,23 @@ View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
                                     View{width: Fill height: Fit flow: Overlay
                                         kot_strike_off := SegBtn{text: "Off"}
                                         kot_strike_off_on := SegBtnOn{text: "Off" visible: false}
+                                    }
+                                }
+                                h_kot_strike_note := WrapLabel{
+                                    body: "Strike dish note"
+                                    font_color: #x260B08
+                                    font_size: 14.
+                                }
+                                View{
+                                    width: Fill height: Fit
+                                    flow: Right spacing: 6
+                                    View{width: Fill height: Fit flow: Overlay
+                                        kot_strike_note_on := SegBtn{text: "On"}
+                                        kot_strike_note_on_on := SegBtnOn{text: "On" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        kot_strike_note_off := SegBtn{text: "Off"}
+                                        kot_strike_note_off_on := SegBtnOn{text: "Off" visible: false}
                                     }
                                 }
                                 // One place per field: pick field → show + font size + weight.
@@ -9751,6 +9924,14 @@ View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
                                     kot_format_preview := mod.widgets.KotSlipPreview{}
                                 }
                                 kot_format_save := StackPrimaryBtn{text: "Save KOT format"}
+                                kot_test_printers_dd := StackSecondaryBtn{text: "Printers for Test KOT" flow: Down}
+                                kot_test_printers_input := FieldInput{
+                                    height: 0.
+                                    empty_text: ""
+                                    margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+                                    padding: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+                                }
+                                kot_test_printers_suggest := mod.widgets.StationCheckList{field: "kot_test_printers"}
                                 kot_format_test := StackSecondaryBtn{text: "Test KOT"}
                                 }
                                 } // kot_format_body

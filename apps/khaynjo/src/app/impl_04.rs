@@ -2119,8 +2119,8 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         self.sync_bill_format_ui(cx);
     }
 
-    /// Print the kitchen-slip preview on a kitchen printer, using the format
-    /// currently on screen (width, layout, delivery, field styles).
+    /// Print the kitchen-slip preview on the checked test printers, using the
+    /// format currently on screen (width, layout, delivery, field styles).
     fn print_kot_format_preview(&mut self, cx: &mut Cx) {
         let title = self.ui.text_input(cx, ids!(kot_title_input)).text();
         let footer = self.ui.text_input(cx, ids!(kot_footer_input)).text();
@@ -2129,6 +2129,10 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             let st = app_state().lock().unwrap();
             if st.device_role == DeviceRole::Client {
                 return Err(st.t("printers_host_only"));
+            }
+            let pids = st.test_printer_ids.clone();
+            if pids.is_empty() {
+                return Err(st.t("test_kot_pick_first"));
             }
             let mut draft = st.kot_slip_draft.clone();
             draft.title = title;
@@ -2160,42 +2164,35 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             {
                 draft.apply_to_print_format_for_kind(f, kind);
             }
-            let stations: Vec<String> = st.stations.iter().map(|s| s.id.clone()).collect();
             let dir = st
                 .store
                 .as_ref()
                 .and_then(|s| s.db_path().parent().map(|p| p.to_path_buf()));
+            let n = pids.len();
             drop(st);
-            // The same route a real kitchen ticket takes: the first station
-            // with a printer, else the default kitchen.
-            let sid = stations
-                .iter()
-                .find(|id| {
-                    !live
-                        .destinations_for(print_share::RouteKey::Kot { station_id: id })
-                        .is_empty()
-                })
-                .cloned()
-                .unwrap_or_default();
-            let key = print_share::RouteKey::Kot { station_id: &sid };
-            if live.destinations_for(key).is_empty() {
-                return Err(app_t("test_print_no_printer"));
+            let mut ok = 0usize;
+            let mut last_err: Option<String> = None;
+            for pid in &pids {
+                match print_share::print_one_printer(
+                    &live,
+                    pid,
+                    print_share::PrintKind::Kot,
+                    &text,
+                    dir.as_deref(),
+                ) {
+                    Ok(share) if share.opened => ok += 1,
+                    Ok(_) => {
+                        last_err = print_share::take_problems().into_iter().next();
+                    }
+                    Err(e) => last_err = Some(e),
+                }
             }
-            let share = print_share::print_route_using(
-                &live,
-                print_share::PrintKind::Kot,
-                key,
-                &text,
-                dir.as_deref(),
-                1,
-            );
-            match share {
-                Ok(s) if s.opened => Ok(app_t("test_kot_sent")),
-                Ok(_) => Err(print_share::take_problems()
-                    .into_iter()
-                    .next()
-                    .unwrap_or_else(|| app_t("test_print_no_printer"))),
-                Err(e) => Err(e),
+            if ok == 0 {
+                Err(last_err.unwrap_or_else(|| app_t("test_print_no_printer")))
+            } else if ok == 1 && n == 1 {
+                Ok(app_t("test_kot_sent"))
+            } else {
+                Ok(app_t("test_kot_sent_n").replace("{n}", &ok.to_string()))
             }
         })();
         match result {
@@ -2271,8 +2268,10 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             (ids!(bill_pick_header), ids!(bill_pick_header_on)),
             (ids!(bill_pick_fssai), ids!(bill_pick_fssai_on)),
             (ids!(bill_pick_title), ids!(bill_pick_title_on)),
+            (ids!(bill_pick_customer), ids!(bill_pick_customer_on)),
             (ids!(bill_pick_billno), ids!(bill_pick_billno_on)),
             (ids!(bill_pick_time), ids!(bill_pick_time_on)),
+            (ids!(bill_pick_cashier), ids!(bill_pick_cashier_on)),
             (ids!(bill_pick_table), ids!(bill_pick_table_on)),
             (ids!(bill_pick_items), ids!(bill_pick_items_on)),
             (ids!(bill_pick_total), ids!(bill_pick_total_on)),
@@ -2304,6 +2303,97 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         }
         self.paint_choice_pair(cx, ids!(bill_field_show), ids!(bill_field_show_on), style.show);
         self.paint_choice_pair(cx, ids!(bill_field_hide), ids!(bill_field_hide_on), !style.show);
+        let items_open = field == print_share::BillStyleField::Items;
+        let total_open = field == print_share::BillStyleField::Total;
+        self.ui.view(cx, ids!(bill_item_pieces)).set_visible(cx, items_open);
+        self.ui.view(cx, ids!(bill_total_pieces)).set_visible(cx, total_open);
+        if items_open {
+            self.ui
+                .widget(cx, ids!(h_bill_item_layout))
+                .set_text(cx, &plain_display_text(&s("bill_item_layout")));
+            self.ui
+                .widget(cx, ids!(h_bill_item_header))
+                .set_text(cx, &plain_display_text(&s("bill_item_header")));
+            self.ui
+                .widget(cx, ids!(h_bill_item_name))
+                .set_text(cx, &plain_display_text(&s("bill_item_name")));
+            self.ui
+                .widget(cx, ids!(h_bill_item_qty))
+                .set_text(cx, &plain_display_text(&s("bill_item_qty")));
+            self.ui
+                .widget(cx, ids!(h_bill_item_price))
+                .set_text(cx, &plain_display_text(&s("bill_item_price")));
+            self.ui
+                .widget(cx, ids!(h_bill_item_amount))
+                .set_text(cx, &plain_display_text(&s("bill_item_amount")));
+            self.ui
+                .widget(cx, ids!(h_bill_item_note))
+                .set_text(cx, &plain_display_text(&s("bill_item_note")));
+            for (idle, on, key) in [
+                (ids!(bill_item_layout_columns), ids!(bill_item_layout_columns_on), "bill_item_layout_columns"),
+                (ids!(bill_item_layout_stacked), ids!(bill_item_layout_stacked_on), "bill_item_layout_stacked"),
+                (ids!(bill_item_header_on), ids!(bill_item_header_on_on), "bill_item_piece_on"),
+                (ids!(bill_item_header_off), ids!(bill_item_header_off_on), "bill_item_piece_off"),
+                (ids!(bill_item_name_on), ids!(bill_item_name_on_on), "bill_item_piece_on"),
+                (ids!(bill_item_name_off), ids!(bill_item_name_off_on), "bill_item_piece_off"),
+                (ids!(bill_item_qty_on), ids!(bill_item_qty_on_on), "bill_item_piece_on"),
+                (ids!(bill_item_qty_off), ids!(bill_item_qty_off_on), "bill_item_piece_off"),
+                (ids!(bill_item_price_on), ids!(bill_item_price_on_on), "bill_item_piece_on"),
+                (ids!(bill_item_price_off), ids!(bill_item_price_off_on), "bill_item_piece_off"),
+                (ids!(bill_item_amount_on), ids!(bill_item_amount_on_on), "bill_item_piece_on"),
+                (ids!(bill_item_amount_off), ids!(bill_item_amount_off_on), "bill_item_piece_off"),
+                (ids!(bill_item_note_on), ids!(bill_item_note_on_on), "bill_item_piece_on"),
+                (ids!(bill_item_note_off), ids!(bill_item_note_off_on), "bill_item_piece_off"),
+            ] {
+                let t = s(key);
+                self.ui.button(cx, idle).set_text(cx, &t);
+                self.ui.button(cx, on).set_text(cx, &t);
+            }
+            let columns = draft.item_layout == print_share::BillItemLayout::Columns;
+            self.paint_choice_pair(cx, ids!(bill_item_layout_columns), ids!(bill_item_layout_columns_on), columns);
+            self.paint_choice_pair(cx, ids!(bill_item_layout_stacked), ids!(bill_item_layout_stacked_on), !columns);
+            self.paint_choice_pair(cx, ids!(bill_item_header_on), ids!(bill_item_header_on_on), draft.item_show_header);
+            self.paint_choice_pair(cx, ids!(bill_item_header_off), ids!(bill_item_header_off_on), !draft.item_show_header);
+            self.paint_choice_pair(cx, ids!(bill_item_name_on), ids!(bill_item_name_on_on), draft.item_show_name);
+            self.paint_choice_pair(cx, ids!(bill_item_name_off), ids!(bill_item_name_off_on), !draft.item_show_name);
+            self.paint_choice_pair(cx, ids!(bill_item_qty_on), ids!(bill_item_qty_on_on), draft.item_show_qty);
+            self.paint_choice_pair(cx, ids!(bill_item_qty_off), ids!(bill_item_qty_off_on), !draft.item_show_qty);
+            self.paint_choice_pair(cx, ids!(bill_item_price_on), ids!(bill_item_price_on_on), draft.item_show_price);
+            self.paint_choice_pair(cx, ids!(bill_item_price_off), ids!(bill_item_price_off_on), !draft.item_show_price);
+            self.paint_choice_pair(cx, ids!(bill_item_amount_on), ids!(bill_item_amount_on_on), draft.item_show_amount);
+            self.paint_choice_pair(cx, ids!(bill_item_amount_off), ids!(bill_item_amount_off_on), !draft.item_show_amount);
+            self.paint_choice_pair(cx, ids!(bill_item_note_on), ids!(bill_item_note_on_on), draft.item_show_note);
+            self.paint_choice_pair(cx, ids!(bill_item_note_off), ids!(bill_item_note_off_on), !draft.item_show_note);
+        }
+        if total_open {
+            self.ui
+                .widget(cx, ids!(h_bill_total_qty))
+                .set_text(cx, &plain_display_text(&s("bill_total_qty")));
+            self.ui
+                .widget(cx, ids!(h_bill_total_subtotal))
+                .set_text(cx, &plain_display_text(&s("bill_total_subtotal")));
+            self.ui
+                .widget(cx, ids!(h_bill_total_grand))
+                .set_text(cx, &plain_display_text(&s("bill_total_grand")));
+            for (idle, on, key) in [
+                (ids!(bill_total_qty_on), ids!(bill_total_qty_on_on), "bill_item_piece_on"),
+                (ids!(bill_total_qty_off), ids!(bill_total_qty_off_on), "bill_item_piece_off"),
+                (ids!(bill_total_subtotal_on), ids!(bill_total_subtotal_on_on), "bill_item_piece_on"),
+                (ids!(bill_total_subtotal_off), ids!(bill_total_subtotal_off_on), "bill_item_piece_off"),
+                (ids!(bill_total_grand_on), ids!(bill_total_grand_on_on), "bill_item_piece_on"),
+                (ids!(bill_total_grand_off), ids!(bill_total_grand_off_on), "bill_item_piece_off"),
+            ] {
+                let t = s(key);
+                self.ui.button(cx, idle).set_text(cx, &t);
+                self.ui.button(cx, on).set_text(cx, &t);
+            }
+            self.paint_choice_pair(cx, ids!(bill_total_qty_on), ids!(bill_total_qty_on_on), draft.total_show_qty);
+            self.paint_choice_pair(cx, ids!(bill_total_qty_off), ids!(bill_total_qty_off_on), !draft.total_show_qty);
+            self.paint_choice_pair(cx, ids!(bill_total_subtotal_on), ids!(bill_total_subtotal_on_on), draft.total_show_subtotal);
+            self.paint_choice_pair(cx, ids!(bill_total_subtotal_off), ids!(bill_total_subtotal_off_on), !draft.total_show_subtotal);
+            self.paint_choice_pair(cx, ids!(bill_total_grand_on), ids!(bill_total_grand_on_on), draft.total_show_grand);
+            self.paint_choice_pair(cx, ids!(bill_total_grand_off), ids!(bill_total_grand_off_on), !draft.total_show_grand);
+        }
         self.paint_choice_pair(
             cx,
             ids!(bill_w_light),
@@ -2600,6 +2690,26 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         self.ui
             .button(cx, ids!(kot_format_save))
             .set_text(cx, &s("save_kot_format"));
+        let (test_n, test_open) = {
+            let st = app_state().lock().unwrap();
+            (
+                st.test_printer_ids.len(),
+                st.suggest_open == Some(SuggestField::KotTestPrinters),
+            )
+        };
+        let test_dd = if test_n == 0 {
+            s("kot_test_printers_dd")
+        } else {
+            s("kot_test_printers_dd_n").replace("{n}", &test_n.to_string())
+        };
+        let test_face = if test_open {
+            s("pick_done_dd").replace("{label}", &test_dd)
+        } else {
+            test_dd
+        };
+        self.ui
+            .button(cx, ids!(kot_test_printers_dd))
+            .set_text(cx, &test_face);
         self.ui
             .button(cx, ids!(kot_format_test))
             .set_text(cx, &s("test_kot_format"));
@@ -2681,6 +2791,9 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             .widget(cx, ids!(h_kot_strike))
             .set_text(cx, &plain_display_text(&s("kot_strike")));
         self.ui
+            .widget(cx, ids!(h_kot_strike_note))
+            .set_text(cx, &plain_display_text(&s("kot_strike_note")));
+        self.ui
             .text_input(cx, ids!(kot_banner_input))
             .set_empty_text(cx, s("kot_banner_ph"));
         self.ui
@@ -2697,6 +2810,16 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         for (idle, active, label) in [
             (ids!(kot_strike_on), ids!(kot_strike_on_on), "kot_strike_on"),
             (ids!(kot_strike_off), ids!(kot_strike_off_on), "kot_strike_off"),
+            (
+                ids!(kot_strike_note_on),
+                ids!(kot_strike_note_on_on),
+                "kot_strike_on",
+            ),
+            (
+                ids!(kot_strike_note_off),
+                ids!(kot_strike_note_off_on),
+                "kot_strike_off",
+            ),
         ] {
             let t = s(label);
             self.ui.button(cx, idle).set_text(cx, &t);
@@ -2706,13 +2829,25 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             cx,
             ids!(kot_strike_on),
             ids!(kot_strike_on_on),
-            kind_chrome.strike_items,
+            kind_chrome.strike_item_name,
         );
         self.paint_choice_pair(
             cx,
             ids!(kot_strike_off),
             ids!(kot_strike_off_on),
-            !kind_chrome.strike_items,
+            !kind_chrome.strike_item_name,
+        );
+        self.paint_choice_pair(
+            cx,
+            ids!(kot_strike_note_on),
+            ids!(kot_strike_note_on_on),
+            kind_chrome.strike_item_note,
+        );
+        self.paint_choice_pair(
+            cx,
+            ids!(kot_strike_note_off),
+            ids!(kot_strike_note_off_on),
+            !kind_chrome.strike_item_note,
         );
         self.paint_choice_pair(cx, ids!(kot_field_show), ids!(kot_field_show_on), shown);
         self.paint_choice_pair(cx, ids!(kot_field_hide), ids!(kot_field_hide_on), !shown);

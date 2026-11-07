@@ -1945,27 +1945,46 @@ impl Store {
                 printed.push(line.clone());
             }
         }
+        let item_header = crate::print_share::format_bill_item_header(&fmt);
+        if !item_header.is_empty() {
+            crate::print_share::append_bill_like(
+                &mut out,
+                &fmt,
+                crate::print_share::BillStyleField::Items,
+                &item_header,
+                rtl,
+            );
+        }
+        let mut total_qty_milli: i64 = 0;
         for line in &printed {
             let unit = Money(line.unit_price_paise).format_localized(&currency, &fiscal_settings);
             let total = Money(line.line_total_paise).format_localized(&currency, &fiscal_settings);
             let qty_raw = format_qty_display(line.qty_milli, line.qty, &line.unit_label);
-            // Piece qty is "x4" — strip so the line reads "Name  4 x ₹…".
+            // Piece qty is "x4" — strip so the qty column reads "4".
             let qty = qty_raw.strip_prefix('x').unwrap_or(qty_raw.as_str());
+            total_qty_milli = total_qty_milli.saturating_add(if line.qty_milli > 0 {
+                line.qty_milli
+            } else {
+                line.qty.saturating_mul(1000)
+            });
             // Names stay as stored (incl. Gujarati/Hindi). Standard print
             // rasterizes with bundled Noto — never depends on the printer font.
-            crate::print_share::append_bill_field(
-                &mut out,
+            let row = crate::print_share::format_bill_item_block(
                 &fmt,
-                crate::print_share::BillStyleField::Items,
-                &format!("{}  {qty} x {unit}  {total}", line.name),
-                rtl,
+                crate::print_share::BillItemPieces {
+                    name: &line.name,
+                    qty,
+                    price: &unit,
+                    amount: &total,
+                    note: line.note.trim(),
+                },
             );
-            if !line.note.is_empty() {
-                crate::print_share::append_bill_like(
+            if !row.is_empty() {
+                crate::print_share::append_bill_field(
                     &mut out,
                     &fmt,
                     crate::print_share::BillStyleField::Items,
-                    &format!("({})", line.note),
+                    &row,
                     rtl,
                 );
             }
@@ -1977,6 +1996,17 @@ impl Store {
             "--------------------",
             rtl,
         );
+        if fmt.total_show_qty {
+            let qty_label = format_qty_display(total_qty_milli, 0, "");
+            let qty_n = qty_label.strip_prefix('x').unwrap_or(qty_label.as_str());
+            crate::print_share::append_bill_like(
+                &mut out,
+                &fmt,
+                crate::print_share::BillStyleField::Total,
+                &format!("Total Qty: {qty_n}"),
+                rtl,
+            );
+        }
         if sale.rounding_paise != 0 {
             crate::print_share::append_bill_like(
                 &mut out,
@@ -2715,6 +2745,10 @@ impl Store {
     }
 
     /// Cache the Server's menu groupings / stations so a Client can route KOTs.
+    ///
+    /// Always writes both lists when either is present — a Client Order desk
+    /// must show the same kitchens as the Server (never only
+    /// "Kitchen (no station)" while dishes still carry a station id).
     pub fn replace_menu_meta_from_sync(
         &self,
         categories: &[Category],
@@ -2756,9 +2790,17 @@ impl Store {
         for s in stations {
             self.conn
                 .execute(
-                    "INSERT OR REPLACE INTO kitchen_stations(id, branch_id, name, sort_order)
-                     VALUES(?1, ?2, ?3, ?4)",
-                    params![s.id, branch_id, s.name, s.sort_order],
+                    "INSERT OR REPLACE INTO kitchen_stations(
+                        id, branch_id, name, sort_order, target_prep_mins, picker_enabled
+                     ) VALUES(?1, ?2, ?3, ?4, ?5, ?6)",
+                    params![
+                        s.id,
+                        branch_id,
+                        s.name,
+                        s.sort_order,
+                        s.target_prep_mins.max(1),
+                        s.picker_enabled as i64
+                    ],
                 )
                 .map_err(|e| e.to_string())?;
         }
@@ -15029,6 +15071,31 @@ mod tests {
             .finalize_sale_tenders(&draft, &[(PayMethod::Cash, 0)], None, None, &owner)
             .is_err());
         store.set_allow_zero_sales(true, &owner).unwrap();
+        let _ = std::fs::remove_file(path);
+    }
+
+    #[test]
+    fn emergency_unlock_pin_is_owner_only_not_waiter() {
+        let path = temp_db();
+        let store = Store::open_path(&path).unwrap();
+        let owner = store.complete_owner_setup("2468").unwrap();
+        store
+            .add_staff("Nawaz", StaffRole::Waiter, "Captain", "2222", &owner)
+            .unwrap();
+        let waiter = store
+            .list_staff()
+            .unwrap()
+            .into_iter()
+            .find(|s| s.name == "Nawaz")
+            .unwrap();
+        let err = store
+            .set_duress_pin("9999", "9999", &waiter)
+            .expect_err("waiter must not set emergency PIN");
+        assert!(
+            err.to_lowercase().contains("owner"),
+            "got: {err}"
+        );
+        assert!(!store.duress_pin_configured().unwrap());
         let _ = std::fs::remove_file(path);
     }
 

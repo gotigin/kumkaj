@@ -2355,6 +2355,10 @@ pub struct CartLine {
     /// Default false = included. Cart-local; not a new Send.
     #[serde(default)]
     pub reprint_skip: bool,
+    /// Sent line: marked for the next batch cancel (one reason, one slip per kitchen).
+    /// Cart-local; cleared after cancel or when the ticket refreshes.
+    #[serde(default)]
+    pub cancel_pick: bool,
 }
 
 /// How many modifier chips fit on one cart row.
@@ -2585,6 +2589,7 @@ impl Cart {
                 hold_send: false,
                 station_id: String::new(),
                 reprint_skip: false,
+                cancel_pick: false,
             };
             line.sync_qty_from_milli();
             self.lines.push(line);
@@ -3024,6 +3029,7 @@ impl Cart {
                         hold_send: false,
                         station_id: l.station_id.clone(),
                         reprint_skip: false,
+                cancel_pick: false,
                     };
                     line.sync_qty_from_milli();
                     line
@@ -4264,6 +4270,7 @@ impl RunningOrder {
                     hold_send: false,
                     station_id: String::new(),
                     reprint_skip: false,
+                cancel_pick: false,
                 };
                 line.sync_qty_from_milli();
                 line

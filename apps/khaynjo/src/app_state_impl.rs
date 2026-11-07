@@ -42,6 +42,7 @@ impl AppState {
             printer_route_key: "bill".into(),
             settings_panel: None,
             printer_selected_id: None,
+            test_printer_ids: Vec::new(),
             printer_vp_landscape: false,
             printer_vp_em: print_share::STD_EM_NORMAL,
             printer_vp_line: 40,
@@ -1244,6 +1245,13 @@ impl AppState {
                 station_virtual_printer_suggest_rows(
                     &self.printer_draft,
                     &self.printer_route_key,
+                    |k| self.t(k),
+                )
+            }
+            SuggestField::TestPrinters | SuggestField::KotTestPrinters => {
+                test_printers_suggest_rows(
+                    &self.printer_draft,
+                    &self.test_printer_ids,
                     |k| self.t(k),
                 )
             }

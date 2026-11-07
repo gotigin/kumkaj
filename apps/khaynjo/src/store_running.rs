@@ -671,6 +671,19 @@ impl Store {
             .unwrap_or_default())
     }
 
+    pub(crate) fn table_area_label(&self, table_id: &str) -> Result<String, String> {
+        Ok(self
+            .conn
+            .query_row(
+                "SELECT COALESCE(area, '') FROM tables_dining WHERE id = ?1",
+                params![table_id],
+                |r| r.get::<_, String>(0),
+            )
+            .optional()
+            .map_err(|e| e.to_string())?
+            .unwrap_or_default())
+    }
+
     /// Send new lines to the kitchen: one KOT per station. With a table,
     /// promotes **pending** running lines (empty `kot_id`) onto KOTs — the
     /// ticket is already the Server order. Without a table (counter), only
@@ -1223,6 +1236,145 @@ impl Store {
                 self.close_order_without_sale(&order, actor, "table.release_all_cancelled")?;
             }
             Ok(kot_id)
+        })
+    }
+
+    /// Cancel several sent lines in one go — one approval, one cancel slip per
+    /// kitchen (not one slip per dish). Full-line cancel only (no partial qty).
+    /// Returns the cancelled rows shaped like [`Self::cancelled_kot_lines`] for
+    /// the batch print path.
+    pub fn cancel_running_lines_batch(
+        &self,
+        line_ids: &[String],
+        reason: &str,
+        prepared: bool,
+        actor: &StaffMember,
+        approval_pin: Option<&str>,
+    ) -> Result<Vec<(String, String, String, String)>, String> {
+        self.assert_server_writer("Cancel items")?;
+        let reason = reason.trim();
+        if reason.is_empty() {
+            return Err("Say why it is cancelled (e.g. guest changed mind, out of stock)".into());
+        }
+        if line_ids.is_empty() {
+            return Err("Mark one or more sent dishes first".into());
+        }
+        let mut unique: Vec<String> = Vec::new();
+        for id in line_ids {
+            let id = id.trim();
+            if id.is_empty() {
+                continue;
+            }
+            if !unique.iter().any(|u| u == id) {
+                unique.push(id.to_string());
+            }
+        }
+        if unique.is_empty() {
+            return Err("Mark one or more sent dishes first".into());
+        }
+        let approver = self.check_right(actor, Right::CancelSentItem, approval_pin)?;
+        let approved_by = approver.as_ref().map(|a| a.name.clone()).unwrap_or_default();
+        self.in_transaction(|| {
+            let mut order_id = String::new();
+            let mut table_id = String::new();
+            let mut area_label = String::new();
+            // station_id → item display lines
+            let mut by_station: Vec<(String, Vec<String>)> = Vec::new();
+            let mut printed_rows: Vec<(String, String, String, String)> = Vec::new();
+            for line_id in &unique {
+                let line = self.running_line(line_id)?;
+                if line.cancelled {
+                    return Err(format!("{} is already cancelled", line.name));
+                }
+                if order_id.is_empty() {
+                    order_id = line.order_id.clone();
+                } else if line.order_id != order_id {
+                    return Err("Marked dishes must be on the same open order".into());
+                }
+                self.conn
+                    .execute(
+                        "UPDATE running_lines
+                            SET cancelled = 1, reason = ?2, prepared = ?3, changed_by = ?4,
+                                approved_by = ?5
+                          WHERE id = ?1",
+                        params![line.id, reason, prepared as i64, actor.name, approved_by],
+                    )
+                    .map_err(|e| e.to_string())?;
+                let (tid, station_id, area): (String, String, String) = self
+                    .conn
+                    .query_row(
+                        "SELECT o.table_id, COALESCE(k.station_id, ''), COALESCE(t.area, '')
+                           FROM running_orders o
+                           LEFT JOIN kot_tickets k ON k.id = ?2
+                           LEFT JOIN tables_dining t ON t.id = o.table_id
+                          WHERE o.id = ?1",
+                        params![line.order_id, line.kot_id],
+                        |r| Ok((r.get(0)?, r.get(1)?, r.get(2)?)),
+                    )
+                    .map_err(|e| e.to_string())?;
+                if table_id.is_empty() {
+                    table_id = tid.clone();
+                }
+                if area_label.is_empty() && !area.is_empty() {
+                    area_label = area.clone();
+                }
+                let qty = crate::domain::format_qty_display(
+                    line.qty_milli,
+                    crate::domain::milli_to_whole_qty(line.qty_milli),
+                    &line.unit_label,
+                );
+                let item = if line.note.trim().is_empty() {
+                    format!("{qty} {}", line.name)
+                } else {
+                    format!("{qty} {} ({})", line.name, line.note.trim())
+                };
+                match by_station.iter_mut().find(|(sid, _)| sid == &station_id) {
+                    Some((_, items)) => items.push(item.clone()),
+                    None => by_station.push((station_id.clone(), vec![item.clone()])),
+                }
+                printed_rows.push((station_id, item, tid, area));
+                self.audit(
+                    actor,
+                    "kot.cancel_item",
+                    &format!(
+                        "{qty} {} · {reason} · {} · approved by {} · batch",
+                        line.name,
+                        if prepared {
+                            "already cooked (wastage)"
+                        } else {
+                            "not cooked"
+                        },
+                        if approved_by.is_empty() {
+                            actor.name.as_str()
+                        } else {
+                            approved_by.as_str()
+                        }
+                    ),
+                )?;
+            }
+            let place = self.table_label(&table_id)?;
+            for (station_id, items) in &by_station {
+                let summary = format!(
+                    "{} · CANCEL {} — {reason}",
+                    place,
+                    items.join(" · ")
+                );
+                let _ = self.insert_kot(
+                    &summary,
+                    station_id,
+                    &table_id,
+                    &order_id,
+                    0,
+                    "cancel",
+                    actor,
+                )?;
+            }
+            if let Some(order) = self.running_order(&table_id)?
+                && order.live_lines().next().is_none()
+            {
+                self.close_order_without_sale(&order, actor, "table.release_all_cancelled")?;
+            }
+            Ok(printed_rows)
         })
     }
 
@@ -1797,8 +1949,8 @@ impl Store {
         crate::print_share::append_bill_field(
             &mut out,
             &fmt,
-            crate::print_share::BillStyleField::Table,
-            &format!("Table: {}", self.table_label(&order.table_id)?),
+            crate::print_share::BillStyleField::Customer,
+            "Name:",
             rtl,
         );
         let when = self
@@ -1812,6 +1964,44 @@ impl Store {
             &format!("Date: {when}"),
             rtl,
         );
+        let table = self.table_label(&order.table_id)?;
+        let area = self
+            .table_area_label(&order.table_id)
+            .unwrap_or_default();
+        let place = if area.trim().is_empty() {
+            format!("Table: {table}")
+        } else {
+            format!("{area}: {table}")
+        };
+        crate::print_share::append_bill_field(
+            &mut out,
+            &fmt,
+            crate::print_share::BillStyleField::Table,
+            &place,
+            rtl,
+        );
+        let cashier = order
+            .live_lines()
+            .find(|l| !l.created_by.trim().is_empty())
+            .map(|l| l.created_by.as_str())
+            .unwrap_or("");
+        crate::print_share::append_bill_field(
+            &mut out,
+            &fmt,
+            crate::print_share::BillStyleField::Cashier,
+            &format!(
+                "Cashier: {}",
+                if cashier.is_empty() { "—" } else { cashier }
+            ),
+            rtl,
+        );
+        crate::print_share::append_bill_field(
+            &mut out,
+            &fmt,
+            crate::print_share::BillStyleField::BillNo,
+            "Bill No.:",
+            rtl,
+        );
         crate::print_share::append_bill_like(
             &mut out,
             &fmt,
@@ -1819,42 +2009,49 @@ impl Store {
             "--------------------------------",
             rtl,
         );
+        let item_header = crate::print_share::format_bill_item_header(&fmt);
+        if !item_header.is_empty() {
+            crate::print_share::append_bill_like(
+                &mut out,
+                &fmt,
+                crate::print_share::BillStyleField::Items,
+                &item_header,
+                rtl,
+            );
+        }
+        let mut total_qty_milli: i64 = 0;
         for line in order.bill_print_lines() {
             // Piece qty from format_qty_display is "x4"; strip the leading
-            // x so the rate line reads "4 x ₹80.00", not "x4 x ₹80.00".
+            // x so the qty column reads "4", not "x4".
             let qty_raw = crate::domain::format_qty_display(
                 line.qty_milli,
                 crate::domain::milli_to_whole_qty(line.qty_milli),
                 &line.unit_label,
             );
             let qty = qty_raw.strip_prefix('x').unwrap_or(qty_raw.as_str());
+            total_qty_milli = total_qty_milli.saturating_add(line.qty_milli);
             let unit = money(line.unit_price_paise);
-            // Name and qty × rate = total on one line (KOT splits already
-            // collapsed by bill_print_lines). The blank line after the rule
-            // above is what starts the first dish on a fresh line.
-            let row = if line.complimentary {
-                format!(
-                    "{}  {qty} x {unit}  NC ({}) {}",
-                    line.name,
-                    money(line.value_paise()),
-                    money(0)
-                )
+            let amount = if line.complimentary {
+                format!("NC ({}) {}", money(line.value_paise()), money(0))
             } else {
-                format!("{}  {qty} x {unit}  {}", line.name, money(line.billed_paise()))
+                money(line.billed_paise())
             };
-            crate::print_share::append_bill_field(
-                &mut out,
+            let row = crate::print_share::format_bill_item_block(
                 &fmt,
-                crate::print_share::BillStyleField::Items,
-                &row,
-                rtl,
+                crate::print_share::BillItemPieces {
+                    name: &line.name,
+                    qty,
+                    price: &unit,
+                    amount: &amount,
+                    note: line.note.trim(),
+                },
             );
-            if !line.note.trim().is_empty() {
-                crate::print_share::append_bill_like(
+            if !row.is_empty() {
+                crate::print_share::append_bill_field(
                     &mut out,
                     &fmt,
                     crate::print_share::BillStyleField::Items,
-                    &format!("({})", line.note.trim()),
+                    &row,
                     rtl,
                 );
             }
@@ -1867,13 +2064,26 @@ impl Store {
             rtl,
         );
         let subtotal = order.total_paise();
-        crate::print_share::append_bill_like(
-            &mut out,
-            &fmt,
-            crate::print_share::BillStyleField::Total,
-            &format!("Sub total: {}", money(subtotal)),
-            rtl,
-        );
+        if fmt.total_show_qty {
+            let qty_label = crate::domain::format_qty_display(total_qty_milli, 0, "");
+            let qty_n = qty_label.strip_prefix('x').unwrap_or(qty_label.as_str());
+            crate::print_share::append_bill_like(
+                &mut out,
+                &fmt,
+                crate::print_share::BillStyleField::Total,
+                &format!("Total Qty: {qty_n}"),
+                rtl,
+            );
+        }
+        if fmt.total_show_subtotal {
+            crate::print_share::append_bill_like(
+                &mut out,
+                &fmt,
+                crate::print_share::BillStyleField::Total,
+                &format!("Sub Total: {}", money(subtotal)),
+                rtl,
+            );
+        }
         let (draft, scheme_notes) = self.order_bill_draft_schemed(order);
         for name in &scheme_notes {
             crate::print_share::append_bill_like(
@@ -1903,19 +2113,21 @@ impl Store {
                     rtl,
                 );
             }
+            if fmt.total_show_grand {
+                crate::print_share::append_bill_field(
+                    &mut out,
+                    &fmt,
+                    crate::print_share::BillStyleField::Total,
+                    &format!("Grand Total: {}", money(total)),
+                    rtl,
+                );
+            }
+        } else if fmt.total_show_grand {
             crate::print_share::append_bill_field(
                 &mut out,
                 &fmt,
                 crate::print_share::BillStyleField::Total,
-                &format!("TOTAL: {}", money(total)),
-                rtl,
-            );
-        } else {
-            crate::print_share::append_bill_field(
-                &mut out,
-                &fmt,
-                crate::print_share::BillStyleField::Total,
-                &format!("TOTAL: {}", money(0)),
+                &format!("Grand Total: {}", money(0)),
                 rtl,
             );
         }
@@ -2394,11 +2606,10 @@ mod tests {
         }
     }
 
-    /// Guest bill: name + qty × rate on one line; first dish after a blank
-    /// line under the rule; KOT splits of the same dish collapse (2 then 3
-    /// Thali → one "5 x …").
+    /// Guest bill: columnar Item|Qty|Price|Amount by default; KOT splits of
+    /// the same dish collapse (2 then 3 Thali → one row with qty 5).
     #[test]
-    fn running_bill_aggregates_kot_splits_with_rate_beside_the_name() {
+    fn running_bill_aggregates_kot_splits_as_item_columns() {
         let shop = shop();
         shop.kot("D1", &[(&shop.thali, 2)]);
         shop.kot("D1", &[(&shop.thali, 3), (&shop.chaas, 1)]);
@@ -2422,32 +2633,23 @@ mod tests {
                 .qty_milli,
             5000
         );
-        // Each bill line carries its print style mark; read the words. A
-        // blank line takes no room on the slip, so the dish follows the rule.
         let text = crate::print_share::strip_kot_style_marks(
             &shop.store.format_running_bill_text(&order).unwrap(),
         );
-        let after_rule = text
-            .lines()
-            .skip_while(|l| !l.starts_with("--------------------------------"))
-            .nth(1)
-            .unwrap_or("");
         assert!(
-            after_rule.starts_with("Thali  "),
-            "first dish must start on a fresh line after the rule, got:\n{text}"
+            text.contains("Item\tQty.\tPrice\tAmount"),
+            "column header under the rule, got:\n{text}"
         );
         assert!(
-            text.contains("Thali  5 x ₹200.00  ₹1,000.00"),
-            "name and qty × rate on one line; 2+3 Thali once as 5, got:\n{text}"
+            text.contains("Thali\t5\t₹200.00\t₹1,000.00"),
+            "columnar Thali once as qty 5, got:\n{text}"
         );
         assert!(
-            !text.contains("Thali\n"),
-            "qty × rate must not wrap under the name, got:\n{text}"
+            text.contains("Chaas\t1\t₹30.00\t₹30.00"),
+            "expected Chaas as columns, got:\n{text}"
         );
-        assert!(
-            text.contains("Chaas  1 x ₹30.00  ₹30.00"),
-            "expected Chaas with rate beside the name, got:\n{text}"
-        );
+        assert!(text.contains("Total Qty:"), "total qty line, got:\n{text}");
+        assert!(text.contains("Grand Total:"), "grand total, got:\n{text}");
     }
 
     /// Punch pending on D1, open D2, reopen D1 — pending still there; Send KOT

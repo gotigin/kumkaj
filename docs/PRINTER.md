@@ -13,6 +13,10 @@ Settings → **Printers** is only the device list.
   Bluetooth) and saves it to this shop’s `printers.json` and the running app.
 - Each row keeps the name the OS already gave it. There is no manual rename
   and no virtual printer to create.
+- Tap one row to **select** it, then **Print a test page** sends only to that
+  device — never every printer at once. Find does **not** create a kitchen
+  station; add stations under Kitchen → Kitchen stations, then attach printers
+  there.
 - The app does not guess inkjet, laser, or thermal from the name.
 
 A kitchen station, and the bill, each pick one or more of these printers.
@@ -60,12 +64,23 @@ then left-align the plain text.
 - Content width (shared with the kitchen ticket).
 - Portrait or landscape.
 - How the job is sent.
-- Type size for the bill.
 - Which real printers may print the bill.
-- Header text where the bill format has it.
+- One editor per bill line: show or hide, point size, weight, and
+  alignment (Start / Center / End), plus typed text where the line has it
+  (address, FSSAI, title, footer, UPI). Lines include shop, address, FSSAI,
+  title, **customer** (`Name:`), bill no, time, **cashier**, table/area,
+  items, total, footer, UPI. Meta lines can share a row as left/right pairs
+  (product default: time with table, cashier with bill no).
+- When **Items** is open: **Columns** (Item | Qty | Price | Amount) or
+  **Stacked** (each piece on its own line). Per-piece On/Off for name, qty,
+  price, amount, note, and the column header row. Shown columns align under
+  their headers on the slip.
+- When **Total** is open: On/Off for **Total qty**, **Sub total**, and
+  **Grand total**.
 
-The bill has no per-field Start / Center / End. Its type size, content
-width, layout, and delivery are the Bill format used when the job is sent.
+Copies (1–3) are one queued job, not a pause between each copy. This is
+configuration to compose bills in that family (and denser ones) — not a
+hardcoded template of one shop's paper.
 
 ### KOT tab
 
@@ -82,7 +97,8 @@ width, layout, and delivery are the Bill format used when the job is sent.
     `PARTIALLY SHIFTED/CANCELLED` and `MODIFIED/UPDATED KOT`).
   - **Item prefix** on dish names (defaults `[CANCELLED] ` / `[NEW] `; blank =
     plain name). Qty stays unprefixed.
-  - **Strike item names** (on by default for Cancelled; qty column stays clear).
+  - **Strike dish name** and **Strike dish note** are separate (on by default
+    for Cancelled name only; note stays readable; qty column stays clear).
     Raster / OS-document jobs draw a real strike; plain preview approximates it.
 - Per-item cancel still prints one cancel slip when a sent line is cancelled.
   **Print all cancelled** on the Order ticket prints one cancel-kind slip per

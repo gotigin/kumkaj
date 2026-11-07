@@ -18,6 +18,8 @@ const LIVE_REFRESH_SECS: f64 = 3.0;
 enum LineAction {
     /// Cancel after KOT (reason, cooked or not, quantity).
     Cancel,
+    /// Cancel every line marked on the ticket — one reason, one slip per kitchen.
+    CancelBatch,
     /// Make complimentary (NC) — or charge again when it already is.
     Complimentary,
     /// Move to another table.
@@ -262,10 +264,14 @@ enum SuggestField {
     StationVps,
     /// Bill & KOT → Bill: real printers that may print the bill.
     BillPrinters,
+    /// Settings → Printers: which pool printers get a test page.
+    TestPrinters,
+    /// Bill & KOT → KOT: which pool printers get a Test KOT.
+    KotTestPrinters,
 }
 
 impl SuggestField {
-    const ALL: [SuggestField; 35] = [
+    const ALL: [SuggestField; 37] = [
         SuggestField::MoveTable,
         SuggestField::LineTable,
         SuggestField::TableArea,
@@ -301,6 +307,8 @@ impl SuggestField {
         SuggestField::StationPrint,
         SuggestField::StationVps,
         SuggestField::BillPrinters,
+        SuggestField::TestPrinters,
+        SuggestField::KotTestPrinters,
     ];
 
     /// The `field:` a `SuggestList` names in the DSL.
@@ -341,6 +349,8 @@ impl SuggestField {
             SuggestField::StationPrint => "station_print",
             SuggestField::StationVps => "station_vps",
             SuggestField::BillPrinters => "bill_printers",
+            SuggestField::TestPrinters => "test_printers",
+            SuggestField::KotTestPrinters => "kot_test_printers",
         }
     }
 
@@ -381,6 +391,8 @@ impl SuggestField {
             SuggestField::StationPrint => ids!(station_print_input),
             SuggestField::StationVps => ids!(station_vps_input),
             SuggestField::BillPrinters => ids!(bill_printers_input),
+            SuggestField::TestPrinters => ids!(printers_test_input),
+            SuggestField::KotTestPrinters => ids!(kot_test_printers_input),
         }
     }
 
@@ -421,6 +433,8 @@ impl SuggestField {
             SuggestField::StationPrint => ids!(station_print_suggest),
             SuggestField::StationVps => ids!(station_vps_suggest),
             SuggestField::BillPrinters => ids!(bill_printers_suggest),
+            SuggestField::TestPrinters => ids!(printers_test_suggest),
+            SuggestField::KotTestPrinters => ids!(kot_test_printers_suggest),
         }
     }
 }

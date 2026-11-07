@@ -130,6 +130,13 @@ pub enum RunningAction {
         #[serde(default)]
         prepared: bool,
     },
+    /// Cancel several marked lines — one reason, one cancel slip per kitchen.
+    CancelBatch {
+        line_ids: Vec<String>,
+        reason: String,
+        #[serde(default)]
+        prepared: bool,
+    },
     Complimentary {
         line_id: String,
         on: bool,
@@ -1361,15 +1368,14 @@ pub fn reprint_selected_kots(
     Ok((dish_n, ok, kitchen_names, errors))
 }
 
-/// One cancel-kind slip per kitchen with **every** cancelled dish still on
-/// this open order. Keeps per-item cancel print; this is the batch recovery
-/// / “all cancelled at once” path. Gated by `kot_stations` like reprint.
-pub fn print_cancelled_kots(
+/// One cancel-kind slip per kitchen for the given cancelled rows
+/// (`station_id`, item line, `table_id`, area). Used by recovery print and
+/// by batch cancel (just-cancelled dishes only).
+pub fn print_cancelled_kot_rows(
     store: &Store,
     actor: &StaffMember,
-    order_id: &str,
+    lines: &[(String, String, String, String)],
 ) -> Result<(usize, usize, Vec<String>, Vec<String>), String> {
-    let lines = store.cancelled_kot_lines(order_id)?;
     if lines.is_empty() {
         return Err("No cancelled dishes on this order".into());
     }
@@ -1380,7 +1386,7 @@ pub fn print_cancelled_kots(
     let mut table_id = String::new();
     let mut area_label = String::new();
     let mut groups: Vec<(String, String, Vec<String>)> = Vec::new();
-    for (station_id, item, tid, area) in &lines {
+    for (station_id, item, tid, area) in lines {
         if table_id.is_empty() && !tid.is_empty() {
             table_id = tid.clone();
         }
@@ -1473,6 +1479,18 @@ pub fn print_cancelled_kots(
     Ok((dish_n, ok, kitchen_names, errors))
 }
 
+/// One cancel-kind slip per kitchen with **every** cancelled dish still on
+/// this open order. Keeps per-item cancel print; this is the batch recovery
+/// / “all cancelled at once” path. Gated by `kot_stations` like reprint.
+pub fn print_cancelled_kots(
+    store: &Store,
+    actor: &StaffMember,
+    order_id: &str,
+) -> Result<(usize, usize, Vec<String>, Vec<String>), String> {
+    let lines = store.cancelled_kot_lines(order_id)?;
+    print_cancelled_kot_rows(store, actor, &lines)
+}
+
 /// Print just-sent KOTs at this (Server) device when the shop prints KOTs
 /// automatically. Counter and waiter KOTs both come through here. Returns
 /// a problem summary if any ticket failed (the KOTs are sent either way).
@@ -1537,6 +1555,49 @@ pub fn apply_running_action(
                 approval_pin,
             )?;
             Ok(RunningDone { text: None, kots: vec![kot_id] })
+        }
+        RunningAction::CancelBatch {
+            line_ids,
+            reason,
+            prepared,
+        } => {
+            let rows = store.cancel_running_lines_batch(
+                line_ids,
+                reason,
+                *prepared,
+                actor,
+                approval_pin,
+            )?;
+            // One Cancelled slip per kitchen for this batch — not N per-item
+            // tickets via print_sent_kots. Print here so Client→Server LAN
+            // and local counter share the same path.
+            let dish_n = rows.len();
+            let text = if !store.kot_auto_print() {
+                Some(format!("batch_noprint:{dish_n}"))
+            } else {
+                match print_cancelled_kot_rows(store, actor, &rows) {
+                    Ok((n, slips, kitchens, errors)) => {
+                        let mut msg = format!(
+                            "batch_ok:{n}:{slips}:{}",
+                            if kitchens.is_empty() {
+                                "Kitchen".into()
+                            } else {
+                                kitchens.join(" · ")
+                            }
+                        );
+                        if !errors.is_empty() {
+                            msg.push('|');
+                            msg.push_str(&errors.join("; "));
+                        }
+                        Some(msg)
+                    }
+                    Err(e) => Some(format!("batch_ok:{dish_n}:0:|{e}")),
+                }
+            };
+            Ok(RunningDone {
+                text,
+                kots: Vec::new(),
+            })
         }
         RunningAction::Complimentary { line_id, on, reason } => {
             store.set_running_line_complimentary(line_id, *on, reason, actor, approval_pin)?;
@@ -3919,12 +3980,88 @@ mod tests {
         assert_eq!(json["request"]["action"], "cancel");
         let back: RemoteRunningRequest = serde_json::from_value(json).unwrap();
         assert!(matches!(back.request, RunningAction::Cancel { prepared: true, .. }));
+        let batch = RemoteRunningRequest {
+            approval_pin: String::new(),
+            request: RunningAction::CancelBatch {
+                line_ids: vec!["l1".into(), "l2".into()],
+                reason: "Table left".into(),
+                prepared: false,
+            },
+        };
+        let bj = serde_json::to_value(&batch).unwrap();
+        assert_eq!(bj["request"]["action"], "cancel_batch");
+        let back_b: RemoteRunningRequest = serde_json::from_value(bj).unwrap();
+        assert!(matches!(
+            back_b.request,
+            RunningAction::CancelBatch { ref line_ids, .. } if line_ids.len() == 2
+        ));
         // An older tablet that sends no PIN still parses.
         let old: RemoteRunningRequest = serde_json::from_str(
             r#"{"request":{"action":"print_bill","table_id":"t1"}}"#,
         )
         .unwrap();
         assert!(old.approval_pin.is_empty());
+    }
+
+    /// Marked cancel: one slip per kitchen for every dish cancelled together.
+    #[test]
+    fn batch_cancel_prints_one_slip_per_kitchen() {
+        let mut printers = crate::print_share::DevicePrinters::default();
+        let kitchen = printers.add_printer("Kitchen", "192.168.1.50");
+        *printers.route_mut(crate::print_share::RouteKey::Kot { station_id: "" }) =
+            vec![kitchen];
+        crate::print_share::with_test_printers(printers, || {
+            let path = std::env::temp_dir().join(format!("khaynjo-batch-cancel-{}.sqlite3", new_id()));
+            let store = Store::open_path(&path).unwrap();
+            let owner = store.list_staff().unwrap().into_iter().next().unwrap();
+            store
+                .upsert_product(&Product::new_basic(new_id(), "Thali", Money::from_rupees(200)))
+                .unwrap();
+            store
+                .upsert_product(&Product::new_basic(new_id(), "Chaas", Money::from_rupees(40)))
+                .unwrap();
+            let products = store.list_products(false).unwrap();
+            let thali = products.iter().find(|p| p.name == "Thali").unwrap().clone();
+            let chaas = products.iter().find(|p| p.name == "Chaas").unwrap().clone();
+            let table = store.add_table_in_area("D1", "Dine In").unwrap();
+            let mut cart = Cart::default();
+            cart.add_or_bump(&thali);
+            cart.add_or_bump(&chaas);
+            store
+                .send_kot(&cart.to_kot_draft().unwrap(), Some(&table.id), &owner)
+                .unwrap();
+            let ids: Vec<String> = store
+                .running_order(&table.id)
+                .unwrap()
+                .unwrap()
+                .lines
+                .iter()
+                .map(|l| l.id.clone())
+                .collect();
+            assert_eq!(ids.len(), 2);
+            crate::print_share::take_captured();
+            let done = apply_running_action(
+                &store,
+                &owner,
+                None,
+                &RunningAction::CancelBatch {
+                    line_ids: ids,
+                    reason: "Table left".into(),
+                    prepared: false,
+                },
+            )
+            .unwrap();
+            assert!(done.kots.is_empty(), "batch cancel must not print via per-item KOT ids");
+            let jobs = crate::print_share::take_captured();
+            assert_eq!(jobs.len(), 1, "one slip for the shared kitchen: {jobs:?}");
+            assert!(
+                jobs[0].text.contains("Thali") && jobs[0].text.contains("Chaas"),
+                "{}",
+                jobs[0].text
+            );
+            assert!(store.running_order(&table.id).unwrap().is_none());
+            let _ = std::fs::remove_file(path);
+        });
     }
 
     /// The LAN endpoint and the counter share one entry point, so a
@@ -4132,6 +4269,59 @@ mod tests {
         let _ = std::fs::remove_file(device_path);
         let _ = std::fs::remove_dir_all(brand);
         let _ = std::fs::remove_dir_all(device.brand_images_dir().unwrap());
+    }
+
+    /// Client Order must show the Server's kitchens — never only
+    /// "Kitchen (no station)" while dishes still carry a station id.
+    #[test]
+    fn client_sync_carries_kitchen_stations_and_dish_routing() {
+        let (path, store, _) = lan_shop();
+        let tandoor = store.add_station("Tandoor").unwrap();
+        let cold = store.add_station("Cold").unwrap();
+        store
+            .set_station_picker_enabled(&cold.id, false, &store.list_staff().unwrap()[0])
+            .unwrap();
+        let mut naan = Product::new_basic(new_id(), "Butter Naan", Money::from_rupees(45));
+        naan.station_id = tandoor.id.clone();
+        store.upsert_product(&naan).unwrap();
+
+        let snap = build_snapshot(&store).unwrap();
+        assert_eq!(snap.stations.len(), 2, "snapshot must list every kitchen");
+        assert!(
+            snap.products.iter().any(|p| p.name == "Butter Naan" && p.station_id == tandoor.id),
+            "snapshot must keep dish → station"
+        );
+
+        let device_path =
+            std::env::temp_dir().join(format!("khaynjo-client-stations-{}.sqlite3", new_id()));
+        let device = Store::open_path(&device_path).unwrap();
+        device.prepare_as_client_terminal().unwrap();
+        apply_snapshot(&device, &snap).unwrap();
+
+        let stations = device.list_stations().unwrap();
+        assert_eq!(
+            stations.len(),
+            2,
+            "Client cache must keep Server kitchens, got {stations:?}"
+        );
+        assert!(stations.iter().any(|s| s.id == tandoor.id && s.name == "Tandoor"));
+        assert!(stations.iter().any(|s| s.id == cold.id && s.name == "Cold" && !s.picker_enabled));
+        let picker = device.list_picker_stations().unwrap();
+        assert_eq!(
+            picker.iter().map(|s| s.name.as_str()).collect::<Vec<_>>(),
+            ["Tandoor"],
+            "Order multi-check shows picker-on kitchens only"
+        );
+        let dish = device
+            .list_products(false)
+            .unwrap()
+            .into_iter()
+            .find(|p| p.name == "Butter Naan")
+            .expect("synced dish");
+        assert_eq!(dish.station_id, tandoor.id, "Client menu must keep station routing");
+
+        let _ = std::fs::remove_file(path);
+        let _ = std::fs::remove_file(device_path);
     }
 
     /// A snapshot lands whole or not at all: one that fails partway (here a
