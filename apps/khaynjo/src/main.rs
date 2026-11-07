@@ -37,7 +37,7 @@ use makepad_widgets::makepad_platform::event::finger::TouchState;
 use makepad_widgets::*;
 use std::path::PathBuf;
 use std::sync::{Mutex, OnceLock};
-use std::time::Duration;
+use std::time::{Duration, Instant};
 
 // Desktop: intercept `--uninstall-wipe …` before Makepad opens a window
 // (MSI / "Delete books data" call this while the exe is still installed).
@@ -87,6 +87,7 @@ include!("app/impl_08.rs");
 include!("helpers_image.rs");
 include!("app/chevrons.rs");
 include!("app/match_event.rs");
+include!("smoke_script.rs");
 include!("app/main_impl.rs");
 include!("shell_tests/nav_order_tests.rs");
 include!("shell_tests/ux_rules_tests.rs");

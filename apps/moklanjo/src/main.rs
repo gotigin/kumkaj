@@ -35,7 +35,7 @@ use makepad_widgets::makepad_platform::event::finger::TouchState;
 use makepad_widgets::*;
 use std::path::PathBuf;
 use std::sync::{Mutex, OnceLock};
-use std::time::Duration;
+use std::time::{Duration, Instant};
 use store::{Store, default_backup_path};
 
 // Desktop: intercept `--uninstall-wipe …` before Makepad opens a window
@@ -94,6 +94,7 @@ include!("app/impl_ha_05.rs");
 include!("app/ops_board.rs");
 include!("app/impl_ha_06.rs");
 include!("app/match_misc.rs");
+include!("smoke_script.rs");
 include!("app/main_impl.rs");
 include!("shell_tests/nav_order_tests.rs");
 include!("shell_tests/report_text_tests.rs");

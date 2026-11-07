@@ -43,6 +43,30 @@ and one Makepad platform — **not** shared product code.
 
 Canonical doctrine: [`KUMKAJ_PRODUCT_VISION_AND_REQUIREMENTS.md`](KUMKAJ_PRODUCT_VISION_AND_REQUIREMENTS.md) §1–2; concepts checklist: [`BUSINESS_BOOKS.md`](BUSINESS_BOOKS.md).
 
+## Test harness (copy-paste — do not rely on memory)
+
+From the **workspace root**. Never opens on your desktop `:0` / Wayland session.
+
+```bash
+# Fast money/KOT/COD/khata paths (Store API, ~seconds, no GUI)
+./scripts/run-user-journeys.sh              # both apps
+./scripts/run-user-journeys.sh khaynjo
+./scripts/run-user-journeys.sh moklanjo
+
+# Real UI on private Xvfb (seed → unlock → peers/actions → PNGs → PASS/FAIL)
+./scripts/run-ui-smoke-isolated.sh          # both apps, full desk day (default)
+./scripts/run-ui-smoke-isolated.sh khaynjo
+./scripts/run-ui-smoke-isolated.sh moklanjo
+SMOKE_SCRIPT=peers ./scripts/run-ui-smoke-isolated.sh khaynjo   # chrome peers only
+SMOKE_SCRIPT=soak KUMKAJ_SMOKE_SOAK_SECS=86400 \
+  ./scripts/run-ui-smoke-isolated.sh khaynjo                    # ~1 day soak
+```
+
+Shots + `RESULT.txt` land under `/tmp/kumkaj-ui-smoke-<pid>/` (or `SMOKE_OUT=…`).
+Detail: § Look at the screen below. Cargo aliases for books only:
+`cargo khaynjo-journeys` / `cargo moklanjo-journeys` (prefer the script so
+printers stay fenced).
+
 ## Live development (Cursor)
 
 **Khaynjo** (restaurant OS, [`apps/khaynjo`](../apps/khaynjo/)) mirrors
@@ -1032,10 +1056,25 @@ paths through the same `Store` API the UI calls, with the OS printer fenced.
 Also `cargo khaynjo-journeys` / `cargo moklanjo-journeys` (set
 `KUMKAJ_PRINT_SINK=capture` yourself if not using the script).
 
-**UI smoke hooks (dev only):** `KUMKAJ_SMOKE_AUTO_SERVER=1` taps Server once on
-DeviceSetup; `KUMKAJ_SMOKE_AUTO_UNLOCK=<pin>` fills Owner PIN once on Lock.
-Both are ignored when `KUMKAJ_ENV=production`. The isolated script sets them
-(PIN **1234**, matching visual seed).
+**UI smoke hooks (dev only, ignored when `KUMKAJ_ENV=production`):**
+
+- `KUMKAJ_SMOKE_AUTO_SERVER=1` — tap Server once on DeviceSetup
+- `KUMKAJ_SMOKE_AUTO_UNLOCK=<pin>` — fill Owner PIN once on Lock (seed uses **1234**)
+- `KUMKAJ_SMOKE_SCRIPT=peers|full|soak` — in-app scripted day (real `go_peer` /
+  Settings panels / books actions), writes `need_shot` for PNGs under
+  `KUMKAJ_SMOKE_OUT`, then exits with `PASS` / `FAIL`
+- `KUMKAJ_SMOKE_SOAK_SECS` — after a full pass, keep peer-cycling (default 1800
+  when mode is `soak`); use `86400` for a day, larger for multi-day soaks on a
+  spare machine / VM with Xvfb
+
+```bash
+./scripts/run-ui-smoke-isolated.sh              # both apps, full script
+SMOKE_SCRIPT=peers ./scripts/run-ui-smoke-isolated.sh khaynjo
+SMOKE_SCRIPT=soak KUMKAJ_SMOKE_SOAK_SECS=86400 ./scripts/run-ui-smoke-isolated.sh moklanjo
+```
+
+Books journeys stay the fast money oracle (`./scripts/run-user-journeys.sh`).
+UI smoke is the slower “what a person sees and taps” layer.
 
 Seed realistic data first (each app's own `tests/visual_seed.rs`, opt-in) so
 every state is on screen, not just the empty one. Both apps accept

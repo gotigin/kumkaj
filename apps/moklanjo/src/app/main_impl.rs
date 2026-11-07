@@ -253,6 +253,7 @@ impl AppMain for App {
             }
             self.maybe_smoke_auto_server(cx);
             self.maybe_smoke_auto_unlock(cx);
+            self.tick_smoke_script(cx);
             let fresh = std::mem::take(&mut firewall_state().lock().unwrap().fresh);
             if fresh {
                 self.sync_chrome(cx);
@@ -292,6 +293,7 @@ impl AppMain for App {
             if accordion_ours {
                 self.tick_ui_state_anims(cx);
             }
+            self.tick_smoke_script(cx);
         }
         if self.pointer_sidebar_settings_drag(cx, event) {
             return;

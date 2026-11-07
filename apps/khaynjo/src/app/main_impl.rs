@@ -397,6 +397,7 @@ impl AppMain for App {
             // Isolated UI smoke: auto Server on DeviceSetup, then auto unlock.
             self.maybe_smoke_auto_server(cx);
             self.maybe_smoke_auto_unlock(cx);
+            self.tick_smoke_script(cx);
         }
         if matches!(event, Event::WindowGeomChange(_)) {
             let restoring = self.apply_pending_window_geom_after_create(cx);
@@ -440,6 +441,7 @@ impl AppMain for App {
             if accordion_ours {
                 self.tick_ui_state_anims(cx);
             }
+            self.tick_smoke_script(cx);
         }
         // A sheet over the window (Add dishes, UPI QR) owns every press: the
         // nav tabs, Floor area tabs, sidebar list, and printer rows behind it
