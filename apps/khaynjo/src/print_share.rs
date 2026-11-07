@@ -1293,7 +1293,15 @@ impl KotSlipFormat {
             }
         };
         if c.reprint {
-            push_styled(&mut out, &styles.title, KOT_BANNER_REPRINT, false);
+            // Recovery reprint uses Duplicate chrome — honour the owner's
+            // Duplicate banner when set; else the stock reprint line.
+            let banner = styles.banner.trim();
+            let line = if !banner.is_empty() {
+                banner
+            } else {
+                KOT_BANNER_REPRINT
+            };
+            push_styled(&mut out, &styles.title, line, false);
         } else {
             let banner = styles.banner.trim();
             if !banner.is_empty() {
@@ -2121,6 +2129,22 @@ mod kot_slip_format_tests {
         assert_eq!(fmt.chars_per_line, KOT_CHARS_MAX);
         assert_eq!(fmt.em, KOT_EM_MIN);
         assert_eq!(fmt.footer, "Rush 100");
+    }
+
+    #[test]
+    fn duplicate_reprint_uses_owner_banner_when_set() {
+        let mut fmt = KotSlipFormat::default();
+        fmt.kind_styles.duplicate.banner = "*** CUSTOM DUPLICATE ***".into();
+        let text =
+            strip_kot_style_marks(&fmt.render_sample_kind("Shop", KotSlipKind::Duplicate));
+        assert!(
+            text.contains("CUSTOM DUPLICATE"),
+            "owner Duplicate banner must print on recovery reprint:\n{text}"
+        );
+        assert!(
+            !text.contains("REPRINT - SAME ORDER"),
+            "stock reprint line must not override a custom banner:\n{text}"
+        );
     }
 
     #[test]

@@ -2565,6 +2565,12 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         let s = |k: &str| locale::t(&lang, k);
         let field_style = draft.field_style(edit_kind, style_field);
         let shown = draft.field_shown(style_field);
+        // Legacy 58/80-only wrap chips — content width lives above the tabs.
+        self.ui.widget(cx, ids!(h_kot_width)).set_visible(cx, false);
+        self.ui.button(cx, ids!(kot_width_58)).set_visible(cx, false);
+        self.ui.button(cx, ids!(kot_width_58_on)).set_visible(cx, false);
+        self.ui.button(cx, ids!(kot_width_80)).set_visible(cx, false);
+        self.ui.button(cx, ids!(kot_width_80_on)).set_visible(cx, false);
         self.ui
             .widget(cx, ids!(h_kot_kind))
             .set_text(cx, &plain_display_text(&s("kot_kind_heading")));

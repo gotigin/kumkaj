@@ -295,10 +295,9 @@ LAN pilot readiness (both apps): [`PRODUCTION_STATE_FOR_OFFLINE_USAGE.md`](../..
   clock checked against the Server, Android backup copies through the
   system save dialog. *2026-10-27:* research Local/LAN catch-up **done**
   ([`COURIER_RESEARCH.md`](COURIER_RESEARCH.md) §7). Not yet run on real
-  hardware. *2026-11-05:* Print nouns — **Printer** (OS device), **Profile**
-  (Thermal / Portrait / Landscape — non-deletable product defaults with
-  side inset 12 / ~40-char wrap for narrow OS trays), **Output** (printers
-  on Receipt or AWB label; first that works). No kitchen station groups.
+  hardware. *2026-11-07:* Print model — **Printer** = OS device (Find).
+  Job format (Receipt | Label) owns content width, layout, and how the
+  job is sent (OS document / raw / ESC/POS). No kitchen station groups.
 
 ## Lessons adopted from Khaynjo (2026-11-02)
 

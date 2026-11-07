@@ -38,6 +38,77 @@ impl App {
         self.sync_chrome(cx);
         end_role_open_busy();
         self.paint_role_open_busy_chrome(cx);
+        self.maybe_smoke_auto_unlock(cx);
+    }
+
+    /// Isolated UI smoke (`scripts/run-ui-smoke-isolated.sh`): auto Server once.
+    fn maybe_smoke_auto_server(&mut self, cx: &mut Cx) {
+        use std::sync::atomic::{AtomicBool, Ordering};
+        static DONE: AtomicBool = AtomicBool::new(false);
+        if DONE.load(Ordering::SeqCst) {
+            return;
+        }
+        if std::env::var("KUMKAJ_ENV").ok().as_deref() == Some("production") {
+            return;
+        }
+        let on = matches!(
+            std::env::var("KUMKAJ_SMOKE_AUTO_SERVER").ok().as_deref(),
+            Some("1" | "true" | "yes" | "on")
+        );
+        if !on {
+            return;
+        }
+        if role_open_busy().load(Ordering::SeqCst) {
+            return;
+        }
+        let on_setup = {
+            let st = app_state().lock().unwrap();
+            st.screen == Screen::DeviceSetup && st.session.is_none()
+        };
+        if !on_setup {
+            return;
+        }
+        DONE.store(true, Ordering::SeqCst);
+        log!("Kumkaj smoke: auto Server");
+        self.begin_server_mode(cx);
+    }
+
+    /// Isolated UI smoke: `KUMKAJ_SMOKE_AUTO_UNLOCK=<pin>` once on Lock.
+    fn maybe_smoke_auto_unlock(&mut self, cx: &mut Cx) {
+        use std::sync::atomic::{AtomicBool, Ordering};
+        static DONE: AtomicBool = AtomicBool::new(false);
+        if DONE.load(Ordering::SeqCst) {
+            return;
+        }
+        if std::env::var("KUMKAJ_ENV").ok().as_deref() == Some("production") {
+            return;
+        }
+        let Ok(pin) = std::env::var("KUMKAJ_SMOKE_AUTO_UNLOCK") else {
+            return;
+        };
+        let pin = pin.trim().to_string();
+        if pin.len() < 4 {
+            return;
+        }
+        let ready = {
+            let st = app_state().lock().unwrap();
+            st.screen == Screen::Lock
+                && st.session.is_none()
+                && st.owner_setup_complete
+                && st.store.is_some()
+                && !st.pin_reset_required
+        };
+        if !ready {
+            return;
+        }
+        DONE.store(true, Ordering::SeqCst);
+        {
+            let mut st = app_state().lock().unwrap();
+            st.lock_as_owner = true;
+            st.pin_buffer = pin;
+        }
+        log!("Kumkaj smoke: auto unlock");
+        self.try_unlock(cx);
     }
 
     /// Wipe a local server from this device. Owner PIN of **that** shop

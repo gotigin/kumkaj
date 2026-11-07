@@ -490,7 +490,8 @@ If app files are already gone but data remains, re-running uninstall still offer
 | Linux install | `./apps/moklanjo/scripts/install-linux-dev.sh` | `./apps/moklanjo/scripts/install-linux.sh` |
 | Linux install (Khaynjo) | `./apps/khaynjo/scripts/install-linux-dev.sh` | `./apps/khaynjo/scripts/install-linux.sh` |
 | Linux uninstall | `./apps/moklanjo/scripts/uninstall-linux-dev.sh` | `./apps/moklanjo/scripts/uninstall-linux-prod.sh` |
-| Windows | `apps\courier\scripts\uninstall-windows-dev.ps1` | `apps\courier\scripts\uninstall-windows-prod.ps1` |
+| Windows (Moklanjo) | `apps\moklanjo\scripts\uninstall-windows-dev.ps1` | `apps\moklanjo\scripts\uninstall-windows-prod.ps1` |
+| Windows (Khaynjo) | `apps\khaynjo\scripts\uninstall-windows.ps1 -Dev` | `apps\khaynjo\scripts\uninstall-windows.ps1 -Prod` |
 | Android | `./apps/moklanjo/scripts/uninstall-android-dev.sh` | `./apps/moklanjo/scripts/uninstall-android-prod.sh` |
 | Android (Khaynjo) | `./apps/khaynjo/scripts/uninstall-android-dev.sh` | `./apps/khaynjo/scripts/uninstall-android-prod.sh` |
 
@@ -600,13 +601,13 @@ A new server seeds an **Owner** whose PIN cannot be used: the first start
 in Server Mode asks the Owner to choose a PIN (`complete_owner_setup`,
 which refuses `0000`). Packages and guides must not mention a default PIN.
 
-After updating past schema v8, all staff PINs reset to `0000` (fast local SHA-256 hasher — Argon2 froze the UI on unlock; local-device PIN threat model).
-
-A shop that was **already trading** when that reset ran gets `meta.pin_reset_required = 1`,
-and the Lock screen then refuses to open the till until the Owner picks a new PIN
-(the first-run setup flow, reused — `Store::complete_pin_reset`, which rejects
-`0000`). The login-id/password route is blocked while the flag is set. Fresh
-installs never set the flag: they already have first-run Owner PIN setup.
+PINs are local SHA-256 hashes (Argon2 froze the UI on unlock; local-device PIN
+threat model). Migrate does **not** rewrite staff PIN hashes and does not force
+`0000`. Shops that still carry `meta.pin_reset_required = 1` from an older
+reset keep the Lock-screen gate until the Owner picks a new PIN
+(`Store::complete_pin_reset`, which rejects `0000`). The login-id/password
+route is blocked while that flag is set. Fresh installs never set the flag:
+they already have first-run Owner PIN setup.
 
 Five consecutive wrong PINs block unlock for 30s with a countdown in the status
 line. The counter and deadline live on `AppState` (in memory) — a restart clears
@@ -615,7 +616,11 @@ protection is physical.
 
 Lock screen: **Owner** | **Staff** (pick staff, then PIN), or optional **login id + password**.
 
-Bottom tabs: **Books** · **Sell** · **Buy** · **More** (Items, sales/day close/reports/inventory/branches/credit/team/backup live under More). Feature flags hide More rows the signed-in person cannot use. Unlock lands on **Books**.
+Chrome peers are a long strip (phone bottom nav / desktop rail), not a More
+bucket — Day book, Booking/Order, Floor/Kitchen (Khaynjo), Sales, Settings,
+Lock, and the rest. Feature flags and person rights hide peers the signed-in
+person cannot use. Unlock lands on the **first permitted peer**
+(`unlocked_home_from`), not a hard-coded Day book.
 
 ## Data location
 
@@ -1011,6 +1016,9 @@ redesign once shipped uncoloured cards, black emoji dots, a lowercase
 change to a screen is checked on the real app before it is called done:
 
 ```bash
+# Prefer the isolated harness (never :0 / never your Wayland session):
+./scripts/run-ui-smoke-isolated.sh khaynjo   # or moklanjo / all
+# Manual equivalent:
 Xvfb :99 -screen 0 1280x900x24 &          # a private display, not the desktop
 env -u WAYLAND_DISPLAY DISPLAY=:99 KUMKAJ_DATA_DIR=/tmp/kd KUMKAJ_PRINT_SINK=off \
     ./target/debug/kumkaj-khaynjo &        # X11 backend on the virtual display
@@ -1018,11 +1026,23 @@ DISPLAY=:99 xdotool mousemove X Y click 1  # drive it
 DISPLAY=:99 import -window root shot.png   # and look
 ```
 
+**Books journeys (no GUI):** `./scripts/run-user-journeys.sh` runs each app's
+`tests/user_journeys.rs` — full dine-in / booking / COD / khata / day-book
+paths through the same `Store` API the UI calls, with the OS printer fenced.
+Also `cargo khaynjo-journeys` / `cargo moklanjo-journeys` (set
+`KUMKAJ_PRINT_SINK=capture` yourself if not using the script).
+
+**UI smoke hooks (dev only):** `KUMKAJ_SMOKE_AUTO_SERVER=1` taps Server once on
+DeviceSetup; `KUMKAJ_SMOKE_AUTO_UNLOCK=<pin>` fills Owner PIN once on Lock.
+Both are ignored when `KUMKAJ_ENV=production`. The isolated script sets them
+(PIN **1234**, matching visual seed).
+
 Seed realistic data first (each app's own `tests/visual_seed.rs`, opt-in) so
-every state is on screen, not just the empty one. Khaynjo: `SEED_DB=<…/khaynjo.sqlite3>`.
-Moklanjo: `SEED_DATA_DIR=<empty folder>` creates the office server there (owner
-PIN 1234, cashier Asha 2222, bookings in every desk state, logos) — start the
-app with `KUMKAJ_DATA_DIR=<same folder>`, pick Server, open "Swift Courier".
+every state is on screen, not just the empty one. Both apps accept
+`SEED_DATA_DIR=<empty folder>` (creates the local Server, Owner PIN **1234**).
+Khaynjo also accepts `SEED_DB=<…/khaynjo.sqlite3>`. Moklanjo seeds cashier
+Asha 2222, bookings in every desk state, logos — start with
+`KUMKAJ_DATA_DIR=<same folder>`, pick Server, unlock.
 
 Makepad visual traps found this way (do not reintroduce):
 

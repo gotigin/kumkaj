@@ -6286,35 +6286,8 @@ impl Store {
             if exists == 0 {
                 return Err("Customer not found".into());
             }
-            // Credit limit gate for account bookings.
-            let credit_amount_estimate = credit_part.unwrap_or_else(|| {
-                if pay.is_credit() {
-                    draft.total_paise
-                } else {
-                    0
-                }
-            });
-            if credit_amount_estimate > 0 {
-                let cust = self
-                    .get_customer(cid)?
-                    .ok_or_else(|| "Customer not found".to_string())?;
-                let gate = crate::consignments::CreditGate::check(
-                    cust.balance_paise,
-                    cust.credit_limit_paise,
-                    credit_amount_estimate,
-                );
-                if let crate::consignments::CreditGate::OverLimit {
-                    balance_paise,
-                    limit_paise,
-                    ..
-                } = gate
-                {
-                    return Err(format!(
-                        "Credit limit exceeded: outstanding {} / limit {} (paise)",
-                        balance_paise, limit_paise
-                    ));
-                }
-            }
+            // Credit limit is checked after tax + service below — the ledger
+            // posts that gross, not the pre-tax cart quote.
         }
 
         let branch_id = self.active_branch_id()?;
@@ -6371,6 +6344,39 @@ impl Store {
             .saturating_add(service_paise);
         let net_paise = fiscal::net_of_tax(draft.total_paise, tax_paise, pricing);
         let tax_label = fiscal_settings.tax_label().to_string();
+
+        // Credit limit uses the amount that will actually hit the ledger.
+        // Split credit tender is already that amount; full Credit uses gross.
+        if let Some(cid) = customer_id {
+            let credit_amount = credit_part.unwrap_or_else(|| {
+                if pay.is_credit() {
+                    total_paise
+                } else {
+                    0
+                }
+            });
+            if credit_amount > 0 {
+                let cust = self
+                    .get_customer(cid)?
+                    .ok_or_else(|| "Customer not found".to_string())?;
+                let gate = crate::consignments::CreditGate::check(
+                    cust.balance_paise,
+                    cust.credit_limit_paise,
+                    credit_amount,
+                );
+                if let crate::consignments::CreditGate::OverLimit {
+                    balance_paise,
+                    limit_paise,
+                    ..
+                } = gate
+                {
+                    return Err(format!(
+                        "Credit limit exceeded: outstanding {} / limit {} (paise)",
+                        balance_paise, limit_paise
+                    ));
+                }
+            }
+        }
 
         let sale_id = new_id();
         let branch_code = self.active_branch()?.code;
@@ -7154,6 +7160,12 @@ impl Store {
                 .map_err(|e| e.to_string())?;
             }
         }
+        // Pending COD must not stay collectible / remittable after void.
+        tx.execute(
+            "DELETE FROM cod_entries WHERE sale_id = ?1 AND status = 'pending'",
+            params![sale_id],
+        )
+        .map_err(|e| e.to_string())?;
         restore_stock_for_sale(&tx, sale_id, "void", actor, &now)?;
         tx.execute(
             "INSERT INTO audit_events(id, created_at, actor_id, actor_name, action, detail)
@@ -7300,6 +7312,52 @@ impl Store {
             return Err("Sale not found or not refundable".into());
         }
         let now = Local::now().to_rfc3339();
+        // Same khata reverse as void — refunded account dockets must leave
+        // the day book *and* clear the party balance.
+        {
+            let mut stmt = tx
+                .prepare(
+                    "SELECT customer_id, kind, amount_paise FROM credit_ledger
+                     WHERE sale_id = ?1 AND kind IN ('sale', 'apply')",
+                )
+                .map_err(|e| e.to_string())?;
+            let rows = stmt
+                .query_map(params![sale_id], |row| {
+                    Ok((
+                        row.get::<_, String>(0)?,
+                        row.get::<_, String>(1)?,
+                        row.get::<_, i64>(2)?,
+                    ))
+                })
+                .map_err(|e| e.to_string())?
+                .collect::<Result<Vec<_>, _>>()
+                .map_err(|e| e.to_string())?;
+            drop(stmt);
+            for (cid, kind, amount) in rows {
+                tx.execute(
+                    "INSERT INTO credit_ledger(
+                        id, customer_id, created_at, kind, amount_paise,
+                        sale_id, pay_method, actor_id, actor_name, detail
+                     ) VALUES(?1, ?2, ?3, 'void', ?4, ?5, NULL, ?6, ?7, ?8)",
+                    params![
+                        new_id(),
+                        cid,
+                        now,
+                        -amount,
+                        sale_id,
+                        actor.id,
+                        actor.name,
+                        format!("Refund {kind} {sale_id}: {reason}")
+                    ],
+                )
+                .map_err(|e| e.to_string())?;
+            }
+        }
+        tx.execute(
+            "DELETE FROM cod_entries WHERE sale_id = ?1 AND status = 'pending'",
+            params![sale_id],
+        )
+        .map_err(|e| e.to_string())?;
         restore_stock_for_sale(&tx, sale_id, "refund", actor, &now)?;
         tx.execute(
             "INSERT INTO audit_events(id, created_at, actor_id, actor_name, action, detail)
@@ -7393,7 +7451,7 @@ impl Store {
                 match PayMethod::parse(&method) {
                     Some(PayMethod::Cash) => totals.cash_paise += amount,
                     Some(PayMethod::Upi) => totals.upi_paise += amount,
-                    Some(PayMethod::Card) => totals.card_paise += amount,
+                    Some(PayMethod::Card) | Some(PayMethod::Bank) => totals.card_paise += amount,
                     Some(PayMethod::Credit) => totals.credit_paise += amount,
                     _ => {}
                 }
@@ -7422,7 +7480,7 @@ impl Store {
                 match PayMethod::parse(&method) {
                     Some(PayMethod::Cash) => totals.cash_paise += amount,
                     Some(PayMethod::Upi) => totals.upi_paise += amount,
-                    Some(PayMethod::Card) => totals.card_paise += amount,
+                    Some(PayMethod::Card) | Some(PayMethod::Bank) => totals.card_paise += amount,
                     _ => {}
                 }
             }
@@ -11198,7 +11256,9 @@ impl Store {
         })
     }
 
-    /// Sum COD on dockets assigned to this rider delivered (or collected) on `date` (YYYY-MM-DD).
+    /// Sum of **pending** COD on this rider's dockets delivered on `date`
+    /// (YYYY-MM-DD). Matches the set [`Self::settle_rider_cod`] clears — not
+    /// yesterday's deliveries or already-collected rows.
     pub fn rider_cod_expected(&self, rider_id: &str, date: &str) -> Result<i64, String> {
         let date = date.trim();
         if rider_id.trim().is_empty() || date.is_empty() {
@@ -11207,22 +11267,15 @@ impl Store {
         let day_prefix = format!("{date}%");
         self.conn
             .query_row(
-                "SELECT COALESCE(SUM(s.cod_paise), 0)
-                 FROM sales s
+                "SELECT COALESCE(SUM(c.cod_paise), 0)
+                 FROM cod_entries c
+                 JOIN sales s ON s.id = c.sale_id
                  WHERE s.rider_id = ?1
-                   AND s.cod_paise > 0
-                   AND (
-                     (s.tracking_status = 'delivered' AND s.created_at LIKE ?2)
-                     OR EXISTS (
-                       SELECT 1 FROM tracking_events e
-                       WHERE e.sale_id = s.id AND e.status = 'delivered'
-                         AND e.created_at LIKE ?2
-                     )
-                     OR EXISTS (
-                       SELECT 1 FROM cod_entries c
-                       WHERE c.sale_id = s.id AND c.status IN ('collected', 'remitted')
-                         AND (c.collected_at LIKE ?2 OR c.created_at LIKE ?2)
-                     )
+                   AND c.status = 'pending'
+                   AND EXISTS (
+                     SELECT 1 FROM tracking_events e
+                     WHERE e.sale_id = s.id AND e.status = 'delivered'
+                       AND e.created_at LIKE ?2
                    )",
                 params![rider_id, day_prefix],
                 |r| r.get(0),
@@ -11244,6 +11297,15 @@ impl Store {
         let today = chrono::Local::now().format("%Y-%m-%d").to_string();
         let expected = self.rider_cod_expected(rider_id, &today)?;
         let handed = handed_in_paise.max(0);
+        // A short bag must not clear the full COD liability — remittance
+        // would then pay the consignor money that never reached the office.
+        if handed < expected {
+            return Err(format!(
+                "Handed in {} is short of expected {} — count the cash again or leave the shortfall unsettled",
+                self.money_display(handed),
+                self.money_display(expected),
+            ));
+        }
         let variance = handed.saturating_sub(expected);
         let riders = self.list_riders()?;
         let rider = riders
@@ -14233,6 +14295,86 @@ mod tests {
         let billed = store.get_sale(&sale.id).unwrap().unwrap();
         assert_eq!(billed.period_bill_id, bill.id);
 
+        let _ = std::fs::remove_file(path);
+    }
+
+    #[test]
+    fn rider_cod_settle_refuses_a_short_bag_and_refund_clears_khata() {
+        let path = temp_db();
+        let store = Store::open_path(&path).unwrap();
+        let owner = store.list_staff().unwrap().into_iter().next().unwrap();
+        let party = store
+            .add_customer_kind("Acme Consignor", "", "Consignor")
+            .unwrap();
+        store.set_customer_credit_limit(&party.id, 500_00).unwrap();
+        let rider = store.add_rider("Ravi", "999", "Bike").unwrap();
+        let rate = Product::new_basic(new_id(), "Surface", Money::from_rupees(40));
+        store.upsert_product(&rate).unwrap();
+        let mut cart = Cart::default();
+        cart.add_or_bump(&rate);
+        let mut draft = cart.to_sale_draft().unwrap();
+        draft.destination = "Pune".into();
+        draft.consignee_name = "Neha".into();
+        draft.chargeable_weight_kg = "1".parse().unwrap();
+        draft.cod_paise = 100_00;
+        let sale = store
+            .finalize_sale(&draft, PayMethod::Credit, Some(&party.id), &owner)
+            .unwrap();
+        assert!(store.customer_balance(&party.id).unwrap() > 0);
+        store
+            .create_manifest(
+                crate::manifest::HandoverKind::OwnFleet,
+                "",
+                &rider.id,
+                &[sale.id.clone()],
+                "run",
+                &owner,
+            )
+            .unwrap();
+        store
+            .advance_tracking(
+                &sale.id,
+                crate::manifest::TrackingStatus::Delivered,
+                "signed",
+                "",
+                &owner,
+            )
+            .unwrap();
+        let expected = store.rider_cod_expected(&rider.id, &chrono::Local::now().format("%Y-%m-%d").to_string()).unwrap();
+        assert!(expected > 0);
+        let short = store.settle_rider_cod(&rider.id, expected.saturating_sub(1), &owner);
+        assert!(short.is_err(), "short COD bag must not clear liability: {short:?}");
+        assert_eq!(store.list_cod_entries("pending").unwrap().len(), 1);
+        store.settle_rider_cod(&rider.id, expected, &owner).unwrap();
+        assert!(store.list_cod_entries("pending").unwrap().is_empty());
+
+        // Separate credit booking: refund must clear khata and drop pending COD.
+        let mut cart2 = Cart::default();
+        cart2.add_or_bump(&rate);
+        let mut draft2 = cart2.to_sale_draft().unwrap();
+        draft2.destination = "Goa".into();
+        draft2.consignee_name = "Asha".into();
+        draft2.chargeable_weight_kg = "1".parse().unwrap();
+        draft2.cod_paise = 50_00;
+        let sale2 = store
+            .finalize_sale(&draft2, PayMethod::Credit, Some(&party.id), &owner)
+            .unwrap();
+        let bal_before = store.customer_balance(&party.id).unwrap();
+        assert!(bal_before > 0);
+        assert!(!store.list_cod_entries("pending").unwrap().is_empty());
+        store.refund_sale(&sale2.id, "cancelled booking", &owner).unwrap();
+        assert!(
+            store.customer_balance(&party.id).unwrap() < bal_before,
+            "refund must reverse the credit sale on the party"
+        );
+        assert!(
+            store
+                .list_cod_entries("pending")
+                .unwrap()
+                .iter()
+                .all(|c| c.sale_id != sale2.id),
+            "pending COD for a refunded booking must not stay collectible"
+        );
         let _ = std::fs::remove_file(path);
     }
 

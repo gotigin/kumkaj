@@ -2006,8 +2006,13 @@ document.getElementById('add').onclick = async () => {{
             .unwrap_or_default();
         self.in_transaction(|| {
             for pid in product_ids {
-                let Some(p) = self.get_product(pid)?.filter(|p| !p.archived && p.available && !p.is_raw()) else {
-                    continue;
+                let Some(p) = self
+                    .get_product(pid)?
+                    .filter(|p| !p.archived && p.available && !p.is_raw())
+                else {
+                    return Err(
+                        "That dish is not on the guest menu — nothing was added".into(),
+                    );
                 };
                 self.bump_pending_product(table_id, &p, 1000, &area, &actor)?;
             }

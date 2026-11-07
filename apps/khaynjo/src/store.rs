@@ -1272,10 +1272,11 @@ impl Store {
             "business_day_mode",
             &crate::business_day::BusinessDayMode::UntilDayClose.as_str(),
         )?;
-        // Auto-clear trading rows older than a few hours; Owner can also clear
-        // everything manually from Settings → Backup.
-        self.meta_set("history_retention", "after_hours")?;
-        self.meta_set("history_retention_hours", "4")?;
+        // Keep trading history by default — a 4-hour auto-wipe on every desk
+        // reload deleted mid-shift sales and khata. Owner turns clearing on
+        // from Settings → Backup when they want it.
+        self.meta_set("history_retention", "off")?;
+        self.meta_set("history_retention_hours", "12")?;
         self.meta_set("show_today_bar", "0")?;
         // FOH-first chrome: Floor / Kitchen / Sell / Sales / Day close stay.
         // Back-office peers stay in the app — unhide in Settings → Sidebar.
@@ -8795,6 +8796,13 @@ impl Store {
                 .map_err(|e| e.to_string())?;
             }
         }
+        // Same as quick undo: open kitchen tickets for this sale leave the list.
+        tx.execute(
+            "UPDATE kot_tickets SET status = 'cancelled'
+             WHERE sale_id = ?1 AND status IN ('new', 'preparing', 'ready')",
+            params![sale_id],
+        )
+        .map_err(|e| e.to_string())?;
         restore_stock_for_sale(&tx, sale_id, "void", actor, &now)?;
         tx.execute(
             "INSERT INTO audit_events(id, created_at, actor_id, actor_name, action, detail)
@@ -8951,6 +8959,47 @@ impl Store {
             return Err("Sale not found or not refundable".into());
         }
         let now = Local::now().to_rfc3339();
+        // Same khata reverse as void — a refunded credit bill must clear the
+        // party balance, not only leave the day book.
+        {
+            let mut stmt = tx
+                .prepare(
+                    "SELECT customer_id, kind, amount_paise FROM credit_ledger
+                     WHERE sale_id = ?1 AND kind IN ('sale', 'apply')",
+                )
+                .map_err(|e| e.to_string())?;
+            let rows = stmt
+                .query_map(params![sale_id], |row| {
+                    Ok((
+                        row.get::<_, String>(0)?,
+                        row.get::<_, String>(1)?,
+                        row.get::<_, i64>(2)?,
+                    ))
+                })
+                .map_err(|e| e.to_string())?
+                .collect::<Result<Vec<_>, _>>()
+                .map_err(|e| e.to_string())?;
+            drop(stmt);
+            for (cid, kind, amount) in rows {
+                tx.execute(
+                    "INSERT INTO credit_ledger(
+                        id, customer_id, created_at, kind, amount_paise,
+                        sale_id, pay_method, actor_id, actor_name, detail
+                     ) VALUES(?1, ?2, ?3, 'void', ?4, ?5, NULL, ?6, ?7, ?8)",
+                    params![
+                        new_id(),
+                        cid,
+                        now,
+                        -amount,
+                        sale_id,
+                        actor.id,
+                        actor.name,
+                        format!("Refund {kind} {sale_id}: {reason}")
+                    ],
+                )
+                .map_err(|e| e.to_string())?;
+            }
+        }
         restore_stock_for_sale(&tx, sale_id, "refund", actor, &now)?;
         tx.execute(
             "INSERT INTO audit_events(id, created_at, actor_id, actor_name, action, detail)
@@ -9047,7 +9096,7 @@ impl Store {
                 match PayMethod::parse(&method) {
                     Some(PayMethod::Cash) => totals.cash_paise += amount,
                     Some(PayMethod::Upi) => totals.upi_paise += amount,
-                    Some(PayMethod::Card) => totals.card_paise += amount,
+                    Some(PayMethod::Card) | Some(PayMethod::Bank) => totals.card_paise += amount,
                     Some(PayMethod::Credit) => totals.credit_paise += amount,
                     _ => {}
                 }
@@ -9076,7 +9125,7 @@ impl Store {
                 match PayMethod::parse(&method) {
                     Some(PayMethod::Cash) => totals.cash_paise += amount,
                     Some(PayMethod::Upi) => totals.upi_paise += amount,
-                    Some(PayMethod::Card) => totals.card_paise += amount,
+                    Some(PayMethod::Card) | Some(PayMethod::Bank) => totals.card_paise += amount,
                     _ => {}
                 }
             }
@@ -10880,18 +10929,25 @@ impl Store {
             )
             .map_err(|e| e.to_string())?;
         let status = KotStatus::parse(&status_s);
-        if from.is_some_and(|seen| seen != status) {
+        let expected = from.unwrap_or(status);
+        if expected != status {
             return Ok(false);
         }
         let Some(next) = status.next() else {
             return Err("Ticket already finished".into());
         };
-        self.conn
+        // One atomic step: a slow writer that still saw New cannot pull a
+        // Ready ticket back to Preparing after another tablet moved it.
+        let n = self
+            .conn
             .execute(
-                "UPDATE kot_tickets SET status = ?1 WHERE id = ?2",
-                params![next.as_str(), kot_id],
+                "UPDATE kot_tickets SET status = ?1 WHERE id = ?2 AND status = ?3",
+                params![next.as_str(), kot_id, expected.as_str()],
             )
             .map_err(|e| e.to_string())?;
+        if n == 0 {
+            return Ok(false);
+        }
         self.audit(
             actor,
             "kot.advance",
@@ -14255,8 +14311,9 @@ mod tests {
         assert!(
             matches!(
                 store.history_retention().unwrap(),
-                crate::business_day::HistoryRetention::AfterHours(4)
-            )
+                crate::business_day::HistoryRetention::Off
+            ),
+            "Rajdhani must not auto-wipe mid-shift trading history"
         );
         let hidden = store.nav_hidden_csv().unwrap().unwrap_or_default();
         for key in ["books", "buy", "menu", "inventory", "branches", "credit", "reports"] {
@@ -15061,6 +15118,30 @@ mod tests {
         assert!(store.void_sale(&sale.id, "", &owner).is_err());
         assert!(store.void_sale(&sale.id, "mistake", &cashier).is_err());
         store.void_sale(&sale.id, "mistake", &owner).unwrap();
+        let _ = std::fs::remove_file(path);
+    }
+
+    #[test]
+    fn refund_clears_khata_like_void() {
+        let path = temp_db();
+        let store = Store::open_path(&path).unwrap();
+        let owner = store.list_staff().unwrap().into_iter().next().unwrap();
+        let party = store.add_customer("Guest on account", "").unwrap();
+        store.upsert_product(&test_product("Thali", 100)).unwrap();
+        let p = store.list_products(false).unwrap().remove(0);
+        let mut cart = Cart::default();
+        cart.add_or_bump(&p);
+        let draft = cart.to_sale_draft().unwrap();
+        let sale = store
+            .finalize_sale(&draft, PayMethod::Credit, None, Some(&party.id), &owner)
+            .unwrap();
+        assert!(store.customer_balance(&party.id).unwrap() > 0);
+        store.refund_sale(&sale.id, "guest returned", &owner).unwrap();
+        assert_eq!(
+            store.customer_balance(&party.id).unwrap(),
+            0,
+            "refund must reverse the credit ledger, not leave khata open"
+        );
         let _ = std::fs::remove_file(path);
     }
 

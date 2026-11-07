@@ -602,7 +602,22 @@ fn handle_client_frame(
                 .map_err(|e| e.to_string())?;
             Ok(())
         }
-        _ => Ok(()),
+        _ => {
+            // A mistyped `t` must not leave the phone waiting forever on
+            // an outbox id — answer so the write can leave the queue.
+            if let Some(id) = v.get("id").and_then(|x| x.as_str()).filter(|s| !s.is_empty()) {
+                let msg = serde_json::json!({
+                    "t": "outbox_reply",
+                    "id": id,
+                    "ok": false,
+                    "status": 400,
+                    "body": { "error": format!("Unknown message type \"{t}\"") },
+                });
+                ws.send(Message::Text(msg.to_string().into()))
+                    .map_err(|e| e.to_string())?;
+            }
+            Ok(())
+        }
     }
 }
 

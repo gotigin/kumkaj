@@ -1467,18 +1467,20 @@ resources they actually consume.
 **Current ship focus: Moklanjo** — see
 [`MOKLANJO.md`](../apps/moklanjo/docs/MOKLANJO.md) and [`USE_CASES.md`](../apps/moklanjo/docs/USE_CASES.md).
 
-Build the concrete courier BOS (books already largely present; next the
-**booking desk**, AWB/barcode, rates/slabs, then tracking/manifest/COD).
+Harden the concrete courier BOS that already ships (booking desk, AWB
+label, rates/slabs, tracking/manifest/COD, LAN `/book` + `/track`). Deepen
+reliability, money correctness, and packaging — not a greenfield desk.
 Do not extract shared crates: when another brand product needs the same
 logic, copy Moklanjo's code into that product and let it diverge (Khaynjo
 was built exactly this way). Food tables/KOT live in Khaynjo, not Moklanjo.
 
-**Existing Makepad codebase** is Moklanjo's starting point (day book, booking
-shell, parties, bank, expenses, P&L, Account/Cash booking tags, units).
-Treat courier-named UX and desk ops as the product work — not a second
-generic “any entity” SKU. Books checklist:
+**Existing Makepad codebase** carries day book, booking desk, parties, bank,
+expenses, P&L, Account/Cash booking tags, units, and ESC/POS / OS document
+print delivery. Treat courier-named UX and desk ops as the product work —
+not a second generic “any entity” SKU. Books checklist:
 [`BUSINESS_BOOKS.md`](BUSINESS_BOOKS.md); IA: [`DESIGN.md`](DESIGN.md).
-Cloud / ESC/POS / statutory e-invoicing remain optional later.
+Cloud and statutory e-invoicing remain optional later; cash-drawer kick
+is still later (§12).
 
 At every stage, keep these in view:
 

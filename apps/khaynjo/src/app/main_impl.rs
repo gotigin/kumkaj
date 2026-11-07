@@ -394,6 +394,9 @@ impl AppMain for App {
             } else if role_open_busy().load(std::sync::atomic::Ordering::SeqCst) {
                 self.paint_role_open_busy_chrome(cx);
             }
+            // Isolated UI smoke: auto Server on DeviceSetup, then auto unlock.
+            self.maybe_smoke_auto_server(cx);
+            self.maybe_smoke_auto_unlock(cx);
         }
         if matches!(event, Event::WindowGeomChange(_)) {
             let restoring = self.apply_pending_window_geom_after_create(cx);

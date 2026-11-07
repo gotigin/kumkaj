@@ -143,7 +143,7 @@ user needs — In / Later, in Khaynjo's own terms:
 |---|---|---|
 | 3-tap billing: tap item → qty → pay | **In (P1)** — the minimal sell path of vision §3 | Order desk |
 | Order types Counter / Dine-in / Takeaway / Delivery | **In (P1)** | Desk segmented grid; `OrderType` |
-| Table floor: tap table → order, table frees when its bill is paid | **Have** — areas/rooms (Add area e.g. AC, then tables into it), D1–D20 ranges; **grid of colour tiles, always 280×178** (2026-11-02). **Area tabs** (horizontal ChipStrip + ‹ ›) — one selected area at a time; **drag a tab to swap** (same as nav; saved as `ui_floor_area_order`); that tab’s body has its own **Columns** dropdown (per device, per area: *Fit screen* or ≥ 1) and its tables; rows wider than the screen **scroll sideways** (mouse/touch press-drag over tiles, gaps, and pads — short press stays a tap). **Columns↔tables whitespace** lives inside `area_scroll` top pad (`floor_area_body` spacing 0) so that strip pans with the Area — not a dead parent gap. Print / view / seat-or-free icons on each card; active table = stronger border. Drawn Grid↔Layout map **removed from Floor chrome** | Floor screen; `floor_area_strip`, `floor_area_body`, `pointer_floor_area_drag`, `floor_columns_for_area`, `FloorTile`, `floor_scroll` |
+| Table floor: tap table → order, table frees when its bill is paid | **Have** — areas/rooms (Add area e.g. AC, then tables into it), D1–D20 ranges; **grid of colour tiles** (base 280×178, scaled by area Columns / Fit screen). **Area tabs** (horizontal ChipStrip + ‹ ›) — one selected area at a time; **drag a tab to swap** (same as nav; saved as `ui_floor_area_order`); that tab’s body has its own **Columns** dropdown (per device, per area: *Fit screen* or ≥ 1) and its tables; rows wider than the screen **scroll sideways** (mouse/touch press-drag over tiles, gaps, and pads — short press stays a tap). **Columns↔tables whitespace** lives inside `area_scroll` top pad (`floor_area_body` spacing 0) so that strip pans with the Area — not a dead parent gap. Print / view / seat-or-free icons on each card; active table = stronger border. Drawn Grid↔Layout map **removed from Floor chrome** | Floor screen; `floor_area_strip`, `floor_area_body`, `pointer_floor_area_drag`, `floor_columns_for_area`, `FloorTile`, `floor_scroll` |
 | Frequent dishes as a menu group (like Bakery Cafe) | **Have 2026-10-27** — Frequent chip next to All items; config on that view (days + count; default 1 day / 24); empty state when no completed sales in the window | Menu window; `frequent_product_ids` |
 | ₹0 menu prices and ₹0 bills (complimentary / owner wish) | **Have 2026-10-27** — allowed by default; Settings → Zero-value sales can require a price above ₹0 | `allow_zero_sales` meta; finalize / Take payment |
 | Table cards that show elapsed time and running amount at a glance | **Have** — name, amount, status · minutes; long status wraps ≤2 lines then ellipsis; tall cards with clear bottom padding | `FloorTile`, Floor |
@@ -203,7 +203,7 @@ internet (vision §20).
 | KOT per station / category printer | **Done** — one ticket per station, numbered per day (`KOT No`), with who sent it | `send_kot`, `format_kot_text` |
 | Table colours Blank / Running / Printed / Paid | **Done, redesigned 2026-10-23; clarified 2026-10-27; grid chrome 2026-11-01** — colour tiles by area (no Layout toggle). Visit colour: Free → **Seated** (no order) → In kitchen → Food ready → **Served** → Bill printed → Free on **payment** (or Free when bill is ₹0). Accidental Print bill → **Undo bill**. Icons on the card (seat / free / print / view); focus = border. **Bugfix 2026-10-27:** pay/free completes leftover open KOTs for *this* seating. Summary + colour key; refresh every 8 s. Floor **View bill** uses `ReportText` (same lines as print) | `FloorState`, `FloorTile`, Floor; `complete_open_kots_for_table` |
 | Kitchen display on a tablet | **Done** — ticket Start/Ready/Done from a paired tablet reaches the Server (it used to change only the tablet's cache); **2026-10-27** ageing colours + Recall | Kitchen; `/kot_advance`, `/kot_recall` |
-| Bill format + UPI QR | **Done** — header / FSSAI / footer; **2026-10-27** UPI VPA + counter QR for the bill amount; **Have 2026-10-29** print brand kit (stamp + static payment QR images on bill faces / LAN `/display`; dynamic amount UPI QR still used when no payment-QR image) | Settings → Bill format; Order desk Show UPI QR |
+| Bill & KOT format + UPI QR | **Done** — header / FSSAI / footer; **2026-10-27** UPI VPA + counter QR for the bill amount; **Have 2026-10-29** print brand kit (stamp + static payment QR images on bill faces / LAN `/display`; dynamic amount UPI QR still used when no payment-QR image) | Settings → Bill & KOT format; Order desk Show UPI QR |
 | Areas (AC / Garden / Parcel) | **Done** — area per table, headings on the floor, range add `D1-D20` | Floor, `add_tables_range` |
 | Move KOT / items, move table, merge tables | **Done** — same order id moves; minutes travel with the guests | ticket Move / merge; `move_*`, `merge_tables` |
 | KOT cancellation with reason, prep status, approver | **Done** — line kept as cancelled, partial qty, cooked = wastage; kitchen gets a cancel-kind slip (banner / `[CANCELLED]` prefix / strike from Bill & KOT kind chrome). **Print all cancelled** on the Order ticket prints one cancel slip per kitchen with every cancelled dish on the open order (keeps per-item cancel) | ticket Cancel; `cancel_running_line`; `print_cancelled_kots` |
@@ -227,7 +227,7 @@ internet (vision §20).
 | Order ticket that stays readable on a busy table | **Done, redesigned 2026-10-23; cart scroll 2026-11-01; selective KOT recovery 2026-11-02** — one compact row per dish: name · amount, then "2 × ₹250 · … · → station" with − qty + on lines not yet sent. Tap a row to open price, applied total, add-ons, note and Cancel / NC / Move (one row open at a time). **Hold** on unsent = skip next Send KOT. **In print / Skip** on sent = include/exclude for recovery paper (not a new Send). **Print selected again** (Reprint right) prints only included dishes, one slip per kitchen, marked REPRINT — shop device only. **Kitchen** station multi-check + ↑↓; Send KOT auto-print unchanged. Cart **expand-to-content** | `CartRow`, `CartList`, `reprint_skip`, `StationCheckList`, Order desk |
 | Settle: customer paid, return, tip | **Done** | Order desk |
 | Search by name / short code | **Done** — aliases double as short codes | Order desk search |
-| Bill format: header, GSTIN, FSSAI, footer | **Done** | Settings → Bill format |
+| Bill & KOT format: header, GSTIN, FSSAI, footer | **Done** | Settings → Bill & KOT format |
 | Day end: cancellations, NC, tips | **Done** on the day close text | `day_close_summary` |
 | Branches | **Done (doctrine)** — offline: one Server install (or OS user) per restaurant; in-book branch switching hidden; multi-server on one install is cloud-only later. Owner wipe: Settings → Backup (records / shop setup / screen prefs) | vision §5 |
 | Sizes (Half/Full) | **Done — each size is an item of its own** (decided 2026-10-23): own UUID, price, photo, station, tax, stock, sold-out, area prices and short code, because each is sold, cooked, cancelled and reported on its own. Quick entry "Half=120, Full=200" on the item form creates "Paneer Tikka (Half)" / "(Full)" with the form's shared settings (not its area prices or short codes, which belong to one size); an optional **dish group** label ("Paneer Tikka") finds and totals them together — a label, never identity. Combos / BOGO / fixed combo **Done 2026-10-27** (components expand on Send KOT; combo price only) | Menu form; `Store::add_variant_items`, `Product::group_name`; day report "By dish group"; Settings → Schemes; `seat_fixed_combo` |
@@ -333,8 +333,8 @@ input fields (vendor patch: `TextFlow::paragraph_align_x`,
    **₹0 is a valid price** (blank = ₹0): complimentary items and
    dishes priced at the counter by their `@`. Menu form, onboarding
    and till agree — only a negative price is refused
-   (`domain::menu_price_error`); a ₹0 line bills, and a bill still
-   needs a positive total.    The shelf itself is **bundled,
+   (`domain::menu_price_error`); a ₹0 line bills, and ₹0 bills are allowed
+   by default (`allow_zero_sales`).    The shelf itself is **bundled,
    read-only art**: the app never writes, moves or deletes it, so
    a dish can always be found and added again.
    *Client menu templates (2026-11-01):* separate from the big shelf —
@@ -388,11 +388,10 @@ input fields (vendor patch: `TextFlow::paragraph_align_x`,
    format chips + assign chips; **drag** to reorder, **tap** to remove.
    Settings “Not Responding” on place tap = `app_state` deadlock in
    `set_status` (DEV.md bug **7a**), not wrap/Fill.
-   *2026-11-05:* Print model nouns — **Printer** (OS device), **Profile**
-   (slip look + preview), **Output** (printer+profile under a place). Assign
-   checklist is one row per printer (`Name · Profile`), not three format
-   faces. First/All only when a place has two+ Outputs. Station groups =
-   apply Outputs to member stations (setup only).
+   *2026-11-07:* Print model — **Printer** = OS device (Settings → Printers,
+   Find). **Bill & KOT format** owns content width, portrait/landscape,
+   how the job is sent (OS document / ESC/POS / raw), type size, and which
+   printers print the bill or each kitchen. See [`PRINTER.md`](../../../docs/PRINTER.md).
    *2026-11-03:* Device setup and Floor accordions keep ℹ **beside** the
    title; a Fill `_ext` sibling makes the rest of the card toggle too
    (DEV.md bug **7c**). Same generous-hit idea for checklist rows; sidebar
@@ -493,14 +492,15 @@ the first build broke and must not break again:
   (Owner/Sales → Day book; Waiter with Floor+Order → Floor) — Day book hub
   rows and money sections use the same rights as nav (DEV.md § Staff rights
   vs chrome).
-- **Floor tiles are a fixed 280×178** (`FLOOR_TILE_W/H`) — columns
-  never shrink them. **Areas are tabs** (`floor_area_strip` + ‹ ›); the
-  selected tab’s body has that area’s **Columns** (`ui_floor_columns_by_area`
-  JSON on this device; legacy `ui_floor_columns` is the fallback) — default
-  **4** when unset (Dine In / Parcel / new areas); *Fit screen* (0) or ≥ 1
-  when chosen. Fit uses the Floor list’s turtle width
-  (`floor_columns_for`). Only the selected area’s tables draw; sideways
-  viewport columns use `floor_col_window` / `floor_first_col`.
+- **Floor tiles** base size is 280×178 (`FLOOR_TILE_W/H`); area Columns /
+  Fit screen scales them (`floor_tile_wh`). **Areas are tabs**
+  (`floor_area_strip` + ‹ ›); the selected tab’s body has that area’s
+  **Columns** (`ui_floor_columns_by_area` JSON on this device; legacy
+  `ui_floor_columns` is the fallback) — default **4** when unset
+  (Dine In / Parcel / new areas); *Fit screen* (0) or ≥ 1 when chosen.
+  Fit uses the Floor list’s turtle width (`floor_columns_for`). Only the
+  selected area’s tables draw; sideways viewport columns use
+  `floor_col_window` / `floor_first_col`.
   Columns + tables sit in `floor_area_body` (`spacing: 0`); the visual gap
   under Columns is `area_scroll` top pad so Area press-drag works there
   (`docs/DEV.md` bug **6e** / native input Floor note).

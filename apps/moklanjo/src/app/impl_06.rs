@@ -2008,5 +2008,6 @@ fn dismiss_soft_keyboard(&mut self, cx: &mut Cx) {
         self.sync_chrome(cx);
         end_role_open_busy();
         self.paint_role_open_busy_chrome(cx);
+        self.maybe_smoke_auto_unlock(cx);
     }
 }

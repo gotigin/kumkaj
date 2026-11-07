@@ -1122,96 +1122,108 @@ impl Store {
         }
         let approved_by = approver.as_ref().map(|a| a.name.clone()).unwrap_or_default();
         let now = Local::now().to_rfc3339();
-        let cancelled_id = if cancel_qty == line.qty_milli {
-            self.conn
-                .execute(
-                    "UPDATE running_lines
-                        SET cancelled = 1, reason = ?2, prepared = ?3, changed_by = ?4,
-                            approved_by = ?5
-                      WHERE id = ?1",
-                    params![line.id, reason, prepared as i64, actor.name, approved_by],
-                )
-                .map_err(|e| e.to_string())?;
-            line.id.clone()
-        } else {
-            // Part of a line: the rest keeps cooking, the cancelled part
-            // becomes its own (cancelled) line right after it.
-            self.conn
-                .execute(
-                    "UPDATE running_lines SET qty_milli = qty_milli - ?2 WHERE id = ?1",
-                    params![line.id, cancel_qty],
-                )
-                .map_err(|e| e.to_string())?;
-            let seq: i64 = self
+        // Line mark + cancel ticket are one unit: a failed insert must not
+        // leave the dish cancelled with no kitchen slip.
+        self.in_transaction(|| {
+            let cancelled_id = if cancel_qty == line.qty_milli {
+                self.conn
+                    .execute(
+                        "UPDATE running_lines
+                            SET cancelled = 1, reason = ?2, prepared = ?3, changed_by = ?4,
+                                approved_by = ?5
+                          WHERE id = ?1",
+                        params![line.id, reason, prepared as i64, actor.name, approved_by],
+                    )
+                    .map_err(|e| e.to_string())?;
+                line.id.clone()
+            } else {
+                // Part of a line: the rest keeps cooking, the cancelled part
+                // becomes its own (cancelled) line right after it.
+                self.conn
+                    .execute(
+                        "UPDATE running_lines SET qty_milli = qty_milli - ?2 WHERE id = ?1",
+                        params![line.id, cancel_qty],
+                    )
+                    .map_err(|e| e.to_string())?;
+                let seq: i64 = self
+                    .conn
+                    .query_row(
+                        "SELECT seq FROM running_lines WHERE id = ?1",
+                        params![line.id],
+                        |r| r.get(0),
+                    )
+                    .map_err(|e| e.to_string())?;
+                let part = RunningLine {
+                    id: new_id(),
+                    qty_milli: cancel_qty,
+                    cancelled: true,
+                    reason: reason.to_string(),
+                    prepared,
+                    changed_by: actor.name.clone(),
+                    approved_by: approved_by.clone(),
+                    created_at: now.clone(),
+                    ..line.clone()
+                };
+                self.insert_running_line(&part, seq)?;
+                part.id
+            };
+            let (table_id, station_id): (String, String) = self
                 .conn
                 .query_row(
-                    "SELECT seq FROM running_lines WHERE id = ?1",
-                    params![line.id],
-                    |r| r.get(0),
+                    "SELECT o.table_id, COALESCE(k.station_id, '')
+                       FROM running_orders o
+                       LEFT JOIN kot_tickets k ON k.id = ?2
+                      WHERE o.id = ?1",
+                    params![line.order_id, line.kot_id],
+                    |r| Ok((r.get(0)?, r.get(1)?)),
                 )
                 .map_err(|e| e.to_string())?;
-            let part = RunningLine {
-                id: new_id(),
-                qty_milli: cancel_qty,
-                cancelled: true,
-                reason: reason.to_string(),
-                prepared,
-                changed_by: actor.name.clone(),
-                approved_by: approved_by.clone(),
-                created_at: now.clone(),
-                ..line.clone()
-            };
-            self.insert_running_line(&part, seq)?;
-            part.id
-        };
-        let (table_id, station_id): (String, String) = self
-            .conn
-            .query_row(
-                "SELECT o.table_id, COALESCE(k.station_id, '')
-                   FROM running_orders o
-                   LEFT JOIN kot_tickets k ON k.id = ?2
-                  WHERE o.id = ?1",
-                params![line.order_id, line.kot_id],
-                |r| Ok((r.get(0)?, r.get(1)?)),
-            )
-            .map_err(|e| e.to_string())?;
-        let qty = crate::domain::format_qty_display(
-            cancel_qty,
-            crate::domain::milli_to_whole_qty(cancel_qty),
-            &line.unit_label,
-        );
-        let kot_id = self.insert_kot(
-            &format!(
-                "{} · CANCEL {qty} {} — {reason}",
-                self.table_label(&table_id)?,
-                line.name
-            ),
-            &station_id,
-            &table_id,
-            &line.order_id,
-            0,
-            "cancel",
-            actor,
-        )?;
-        self.audit(
-            actor,
-            "kot.cancel_item",
-            &format!(
-                "{qty} {} · {reason} · {} · approved by {}",
-                line.name,
-                if prepared { "already cooked (wastage)" } else { "not cooked" },
-                if approved_by.is_empty() { actor.name.as_str() } else { approved_by.as_str() }
-            ),
-        )?;
-        let _ = cancelled_id;
-        // Everything sent is cancelled: no food, no bill — the table frees
-        // instead of staying "Eating" with an empty order.
-        if let Some(order) = self.running_order(&table_id)?
-            && order.live_lines().next().is_none()
-        {
-            self.close_order_without_sale(&order, actor, "table.release_all_cancelled")?;
-        }
-        Ok(kot_id)
+            let qty = crate::domain::format_qty_display(
+                cancel_qty,
+                crate::domain::milli_to_whole_qty(cancel_qty),
+                &line.unit_label,
+            );
+            let kot_id = self.insert_kot(
+                &format!(
+                    "{} · CANCEL {qty} {} — {reason}",
+                    self.table_label(&table_id)?,
+                    line.name
+                ),
+                &station_id,
+                &table_id,
+                &line.order_id,
+                0,
+                "cancel",
+                actor,
+            )?;
+            self.audit(
+                actor,
+                "kot.cancel_item",
+                &format!(
+                    "{qty} {} · {reason} · {} · approved by {}",
+                    line.name,
+                    if prepared {
+                        "already cooked (wastage)"
+                    } else {
+                        "not cooked"
+                    },
+                    if approved_by.is_empty() {
+                        actor.name.as_str()
+                    } else {
+                        approved_by.as_str()
+                    }
+                ),
+            )?;
+            let _ = cancelled_id;
+            // Everything sent is cancelled: no food, no bill — the table frees
+            // instead of staying "Eating" with an empty order.
+            if let Some(order) = self.running_order(&table_id)?
+                && order.live_lines().next().is_none()
+            {
+                self.close_order_without_sale(&order, actor, "table.release_all_cancelled")?;
+            }
+            Ok(kot_id)
+        })
     }
 
     /// Cancelled dishes still on this open order (kept for audit; not on the bill).
@@ -2112,12 +2124,13 @@ impl Store {
 
     /// Tips taken today (paise) — shown on the day close, kept out of sales.
     pub fn today_tips_paise(&self) -> Result<i64, String> {
-        let today = Local::now().format("%Y-%m-%d").to_string();
+        let win = self.current_business_day_window()?;
         self.conn
             .query_row(
                 "SELECT COALESCE(SUM(tip_paise), 0) FROM sales
-                  WHERE created_at >= ?1 AND created_at < ?1 || 'Z' AND status != 'void'",
-                params![today],
+                  WHERE created_at >= ?1 AND created_at < ?2
+                    AND status NOT IN ('voided', 'refunded')",
+                params![win.start, win.end],
                 |r| r.get(0),
             )
             .map_err(|e| e.to_string())

@@ -112,7 +112,7 @@ equal peers in one mental model. The UX must make that model obvious.
 |---|-------------------|-------------------|---------------------|
 | 1 | Who we deal with | **Party** + multi-role `kind_label` (one identity; AR+AP; net report) | Shipped — dual-role OK; see Dual-role parties |
 | 2 | Catalogue + units | **Item** + unit + `units` / `unit_conversions` | Shipped; Settings → Units; item `unit_label` |
-| 3 | Sell / Booking (money in) | Sale lines, pay, invoice, bill-type tag, amend/void/refund | Shipped shell; Moklanjo desk UX next — [`MOKLANJO.md`](../apps/moklanjo/docs/MOKLANJO.md) |
+| 3 | Sell / Booking (money in) | Sale lines, pay, invoice, bill-type tag, amend/void/refund | Shipped — Moklanjo booking desk + ops board; Khaynjo Order / Floor — [`MOKLANJO.md`](../apps/moklanjo/docs/MOKLANJO.md), [`KHAYNJO.md`](../apps/khaynjo/docs/KHAYNJO.md) |
 | 4 | Buy (goods/services in) | Purchases → stock + line cost; party + on-account AP | Shipped — Buy tab; paid or on account |
 | 5 | Running costs | **Expenses** | Shipped (Buy tab + Reports) |
 | 6 | Who owes us (AR) | Credit ledger + aging + write-off | Shipped |
@@ -286,7 +286,8 @@ Use when implementing a row above or a deferred compliance feature.
   derive books totals from it; do not maintain a second handwritten total.
 - **Immutable history:** correct by amend / void / credit note — not silent edit.
 - **Bill-wise AR/AP:** match receipts/payments to specific bills
-  (bill-wise allocation); we have party balance today, open-item allocation is later.
+  (bill-wise allocation). Shipped as linked settlements plus FIFO wash of
+  unlinked ones (`Store::open_credit_bills`); tighten further as needed.
 - **FY and number series:** configurable FY start; gap-free invoice series per
   period (we have `INV-BRANCH-seq`; FY-scoped series is later).
 - **Stock valuation:** FIFO or weighted average when we value stock (LIFO not

@@ -421,6 +421,7 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
         self.sync_chrome(cx);
         end_role_open_busy();
         self.paint_role_open_busy_chrome(cx);
+        self.maybe_smoke_auto_unlock(cx);
     }
 
     fn finish_server_existing_opened(&mut self, cx: &mut Cx, store: Store, switching_in: bool) {
@@ -448,6 +449,7 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
         self.sync_chrome(cx);
         end_role_open_busy();
         self.paint_role_open_busy_chrome(cx);
+        self.maybe_smoke_auto_unlock(cx);
     }
 
     /// Brand-new Server before Owner PIN, and the Rajdhani menu template ships.
@@ -765,6 +767,80 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
         self.sync_chrome(cx);
         end_role_open_busy();
         self.paint_role_open_busy_chrome(cx);
+    }
+
+    /// Isolated UI smoke (`scripts/run-ui-smoke-isolated.sh`): when
+    /// `KUMKAJ_SMOKE_AUTO_SERVER=1`, tap Server once on DeviceSetup so the
+    /// harness never needs fragile xdotool hits on the role buttons.
+    /// Disabled when `KUMKAJ_ENV=production`.
+    fn maybe_smoke_auto_server(&mut self, cx: &mut Cx) {
+        use std::sync::atomic::{AtomicBool, Ordering};
+        static DONE: AtomicBool = AtomicBool::new(false);
+        if DONE.load(Ordering::SeqCst) {
+            return;
+        }
+        if std::env::var("KUMKAJ_ENV").ok().as_deref() == Some("production") {
+            return;
+        }
+        let on = matches!(
+            std::env::var("KUMKAJ_SMOKE_AUTO_SERVER").ok().as_deref(),
+            Some("1" | "true" | "yes" | "on")
+        );
+        if !on {
+            return;
+        }
+        if role_open_busy().load(Ordering::SeqCst) {
+            return;
+        }
+        let on_setup = {
+            let st = app_state().lock().unwrap();
+            st.screen == Screen::DeviceSetup && st.session.is_none() && !st.awaiting_app_template
+        };
+        if !on_setup {
+            return;
+        }
+        DONE.store(true, Ordering::SeqCst);
+        log!("Kumkaj smoke: auto Server");
+        self.begin_server_mode(cx);
+    }
+
+    /// Isolated UI smoke: `KUMKAJ_SMOKE_AUTO_UNLOCK=<pin>` fills the Owner
+    /// PIN once on Lock and calls the same path as OK. Not for production.
+    fn maybe_smoke_auto_unlock(&mut self, cx: &mut Cx) {
+        use std::sync::atomic::{AtomicBool, Ordering};
+        static DONE: AtomicBool = AtomicBool::new(false);
+        if DONE.load(Ordering::SeqCst) {
+            return;
+        }
+        if std::env::var("KUMKAJ_ENV").ok().as_deref() == Some("production") {
+            return;
+        }
+        let Ok(pin) = std::env::var("KUMKAJ_SMOKE_AUTO_UNLOCK") else {
+            return;
+        };
+        let pin = pin.trim().to_string();
+        if pin.len() < 4 {
+            return;
+        }
+        let ready = {
+            let st = app_state().lock().unwrap();
+            st.screen == Screen::Lock
+                && st.session.is_none()
+                && st.owner_setup_complete
+                && st.store.is_some()
+                && !st.pin_reset_required
+        };
+        if !ready {
+            return;
+        }
+        DONE.store(true, Ordering::SeqCst);
+        {
+            let mut st = app_state().lock().unwrap();
+            st.lock_as_owner = true;
+            st.pin_buffer = pin;
+        }
+        log!("Kumkaj smoke: auto unlock");
+        self.try_unlock(cx);
     }
 
     fn paint_role_open_busy_chrome(&mut self, cx: &mut Cx) {

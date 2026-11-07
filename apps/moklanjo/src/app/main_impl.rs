@@ -251,6 +251,8 @@ impl AppMain for App {
             } else if role_open_busy().load(std::sync::atomic::Ordering::SeqCst) {
                 self.paint_role_open_busy_chrome(cx);
             }
+            self.maybe_smoke_auto_server(cx);
+            self.maybe_smoke_auto_unlock(cx);
             let fresh = std::mem::take(&mut firewall_state().lock().unwrap().fresh);
             if fresh {
                 self.sync_chrome(cx);
