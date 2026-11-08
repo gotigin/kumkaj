@@ -2563,92 +2563,126 @@ script_mod! {
 
     // Items tab: manage catalogue. Photo fills the face; a dark foot band
     // under name/price keeps type readable. Actions float as frosted pills.
+    // One dish on the Menu screen — the same card as Add dishes: photo on
+    // the left, name and price on the cream, as many across as fit.
+    // Remove / Unavailable / Restore stay on the card (they are the menu's
+    // own actions). Fixed height: Overlay+Fit collapses the list.
     let MenuCard = View{
-        cursor: MouseCursor.Hand
-        // Fixed height — Overlay+Fit collapses and empties MenuList.
-        // Name/alias wrap inside (no ellipsis).
-        width: Fill height: 152
-        flow: Overlay
-        RoundedView{
-            width: Fill height: Fill
-            align: Align{x: 0.5 y: 0.5}
-            draw_bg.color: #xB43A12
-            draw_bg.color_2: #x69090C
-            draw_bg.border_radius: 16.
-            thumb_initials := Label{
-                width: Fit height: Fit
-                text: ""
-                draw_text.color: #xFFFFFF
-                draw_text.text_style.font_size: 24.
+        width: Fill height: 176
+        tile := View{
+            cursor: MouseCursor.Hand
+            width: Fill height: 176
+            flow: Overlay
+            RoundedView{
+                width: Fill height: Fill
+                draw_bg.color: #xFFF8F3
+                draw_bg.color_2: #xF3E3DA
+                draw_bg.border_radius: 16.
             }
-        }
-        thumb := Image{
-            width: Fill height: Fill
-            fit: ImageFit.CropToFill
-            visible: false
-            draw_bg +: {
-                radius: uniform(16.0)
-                pixel: fn() {
-                    let sdf = Sdf2d.viewport(self.pos * self.rect_size)
-                    sdf.box(0., 0., self.rect_size.x, self.rect_size.y, self.radius)
-                    sdf.fill(self.get_color())
-                    return sdf.result
-                }
-            }
-        }
-        // Darker foot wash so name/price stay readable on bright photos.
-        View{
-            width: Fill height: Fill
-            show_bg: true
-            draw_bg +: {
-                radius: uniform(16.0)
-                pixel: fn() {
-                    let sdf = Sdf2d.viewport(self.pos * self.rect_size)
-                    sdf.box(0., 0., self.rect_size.x, self.rect_size.y, self.radius)
-                    let t = smoothstep(0.40, 0.88, self.pos.y)
-                    sdf.fill(vec4(0.04, 0.01, 0.01, 0.97 * t))
-                    return sdf.result
-                }
-            }
-        }
-        View{
-            width: Fill height: Fill
-            padding: Inset{left: 14. right: 12. top: 10. bottom: 14.}
-            flow: Right spacing: 10
-            align: Align{y: 1.0}
             View{
-                width: Fill height: Fit
-                flow: Down spacing: 3
-                // Fixed photo card: wrap then clean Ellipsis — never mid-glyph crop.
-                name := Label{
-                    width: Fill
-                    text: "Item"
-                    flow: Right{wrap: true}
-                    max_lines: 2
-                    text_overflow: Ellipsis
-                    draw_text.color: #xFFFFFF
-                    draw_text.text_style: theme.font_bold{font_size: 16.}
-                }
-                alias := Label{
-                    visible: false
-                    width: Fill
-                    text: ""
-                    flow: Right{wrap: true}
-                    max_lines: 1
-                    text_overflow: Ellipsis
-                    draw_text.color: #xF3E3DA
-                    draw_text.text_style: theme.font_bold{font_size: 12.}
+                width: Fill height: 176
+                flow: Right spacing: 0
+                View{
+                    width: Fill height: Fill
+                    flow: Overlay
+                    RoundedView{
+                        width: Fill height: Fill
+                        align: Align{x: 0.5 y: 0.5}
+                        draw_bg.color: #xB43A12
+                        draw_bg.color_2: #x69090C
+                        draw_bg.border_radius: 16.
+                        initials_plate := RoundedView{
+                            width: 60 height: 60
+                            align: Align{x: 0.5 y: 0.5}
+                            draw_bg.color: #xFFFFFF24
+                            draw_bg.border_radius: 30.
+                            draw_bg.border_size: 1.5
+                            draw_bg.border_color: #xFFFFFF66
+                            thumb_initials := Label{
+                                width: Fit height: Fit
+                                text: ""
+                                draw_text.color: #xFFFFFF
+                                draw_text.text_style.font_size: 20.
+                            }
+                        }
+                    }
+                    thumb := Image{
+                        width: Fill height: Fill
+                        fit: ImageFit.CropToFill
+                        visible: false
+                        draw_bg +: {
+                            radius: uniform(16.0)
+                            pixel: fn() {
+                                let sdf = Sdf2d.viewport(self.pos * self.rect_size)
+                                sdf.box(0., 0., self.rect_size.x, self.rect_size.y, self.radius)
+                                sdf.fill(self.get_color())
+                                return sdf.result
+                            }
+                        }
+                    }
+                    dim := RoundedView{
+                        visible: false
+                        width: Fill height: Fill
+                        draw_bg.color: #x1A050540
+                        draw_bg.border_radius: 16.
+                    }
+                    View{
+                        width: Fill height: Fit
+                        flow: Right
+                        align: Align{x: 1.0 y: 0.0}
+                        padding: Inset{top: 8. right: 8.}
+                        remove := CloseIconBtn{
+                            width: 32 height: 32
+                            draw_bg +: {
+                                mark_color: #xffffff
+                                color: #x1A0A08CC
+                                color_hover: #x9A0E10
+                                color_down: #x69090C
+                                color_focus: #x1A0A08CC
+                                color_2: #x1A0A08CC
+                                color_2_hover: #x9A0E10
+                                color_2_down: #x69090C
+                                color_2_focus: #x1A0A08CC
+                                border_color: #xFFFFFF88
+                                border_radius: 16.
+                                border_size: 1.
+                            }
+                        }
+                    }
                 }
                 View{
-                    width: Fill height: Fit
-                    flow: Right spacing: 8
-                    align: Align{y: 0.5}
+                    width: Fill height: Fill
+                    flow: Down spacing: 2
+                    padding: Inset{left: 12. right: 10. top: 10. bottom: 10.}
+                    View{
+                        width: Fill height: Fill
+                        flow: Down spacing: 2
+                        name := Label{
+                            width: Fill
+                            text: "Item"
+                            flow: Right{wrap: true}
+                            max_lines: 2
+                            text_overflow: Ellipsis
+                            draw_text.color: #x260B08
+                            draw_text.text_style: theme.font_bold{font_size: 14.}
+                        }
+                        alias := Label{
+                            visible: false
+                            width: Fill
+                            text: ""
+                            flow: Right{wrap: true}
+                            max_lines: 1
+                            text_overflow: Ellipsis
+                            draw_text.color: #x6B4A3F
+                            draw_text.text_style.font_size: 12.
+                        }
+                    }
                     price := Label{
-                        width: Fit
+                        width: Fill
                         text: "0"
                         flow: Right{wrap: false}
                         max_lines: 1
-                        draw_text.color: #xFFD28A
+                        draw_text.color: #x9A0E10
                         draw_text.text_style: theme.font_bold{font_size: 14.}
                     }
                     stock := Label{
@@ -2657,94 +2691,77 @@ script_mod! {
                         flow: Right{wrap: true}
                         max_lines: 1
                         text_overflow: Ellipsis
-                        draw_text.color: #xF6E8DF
+                        draw_text.color: #x6B4A3F
                         draw_text.text_style.font_size: 12.
                     }
-                }
-            }
-            View{
-                width: Fit height: Fill
-                flow: Down spacing: 8
-                align: Align{x: 1.0 y: 0.0}
-                remove := CloseIconBtn{
-                    width: 34 height: 34
-                    draw_bg +: {
-                        // Frosted dark — readable on any photo without a side wash.
-                        mark_color: #xffffff
-                        color: #x1A0A08CC
-                        color_hover: #x9A0E10
-                        color_down: #x69090C
-                        color_focus: #x1A0A08CC
-                        color_2: #x1A0A08CC
-                        color_2_hover: #x9A0E10
-                        color_2_down: #x69090C
-                        color_2_focus: #x1A0A08CC
-                        border_color: #xFFFFFF88
-                        border_radius: 17.
-                        border_size: 1.
-                    }
-                }
-                View{width: Fit height: Fill}
-                sold_out := Button{
-                    text: "Sold Out"
-                    width: Fit height: 28
-                    align: Align{x: 0.5 y: 0.5}
-                    padding: Inset{left: 12. right: 12. top: 5. bottom: 5.}
-                    draw_bg +: {
-                        color: #x1A0A08CC
-                        color_hover: #xB43A12
-                        color_down: #x8A320C
-                        color_focus: #x1A0A08CC
-                        color_2: #x1A0A08CC
-                        color_2_hover: #xB43A12
-                        color_2_down: #x8A320C
-                        color_2_focus: #x1A0A08CC
-                        border_color: #xFFFFFF88
-                        border_radius: 14.
-                        border_size: 1.
-                    }
-                    draw_text +: {
-                        color: #xFFD28A
-                        color_hover: #xffffff
-                        color_down: #xffffff
-                        color_focus: #xFFD28A
-                        text_style +: {font_size: 11.}
-                    }
-                }
-                restore := Button{
-                    text: "Restore"
-                    width: Fit height: 28
-                    align: Align{x: 0.5 y: 0.5}
-                    padding: Inset{left: 12. right: 12. top: 5. bottom: 5.}
-                    draw_bg +: {
-                        color: #x1A0A08CC
-                        color_hover: #xB43A12
-                        color_down: #x69090C
-                        color_focus: #x1A0A08CC
-                        color_2: #x1A0A08CC
-                        color_2_hover: #xB43A12
-                        color_2_down: #x69090C
-                        color_2_focus: #x1A0A08CC
-                        border_color: #xFFFFFF88
-                        border_radius: 14.
-                        border_size: 1.
-                    }
-                    draw_text +: {
-                        color: #xffffff
-                        color_hover: #xffffff
-                        color_down: #xffffff
-                        color_focus: #xffffff
-                        text_style +: {font_size: 11.}
+                    View{
+                        width: Fill height: Fit
+                        flow: Right spacing: 8
+                        align: Align{y: 0.5}
+                        margin: Inset{top: 4.}
+                        sold_out := Button{
+                            text: "Unavailable"
+                            width: Fit height: 28
+                            align: Align{x: 0.5 y: 0.5}
+                            padding: Inset{left: 10. right: 10. top: 4. bottom: 4.}
+                            draw_bg +: {
+                                color: #xFFF8F3
+                                color_hover: #xF3E3DA
+                                color_down: #xE8D0C4
+                                color_focus: #xFFF8F3
+                                color_2: #xFFF8F3
+                                color_2_hover: #xF3E3DA
+                                color_2_down: #xE8D0C4
+                                color_2_focus: #xFFF8F3
+                                border_color: #x9A0E10
+                                border_radius: 10.
+                                border_size: 1.
+                            }
+                            draw_text +: {
+                                color: #x9A0E10
+                                color_hover: #x9A0E10
+                                color_down: #x69090C
+                                color_focus: #x9A0E10
+                                text_style +: {font_size: 12.}
+                            }
+                        }
+                        restore := Button{
+                            text: "Restore"
+                            width: Fit height: 28
+                            visible: false
+                            align: Align{x: 0.5 y: 0.5}
+                            padding: Inset{left: 10. right: 10. top: 4. bottom: 4.}
+                            draw_bg +: {
+                                color: #x9A0E10
+                                color_hover: #xB43A12
+                                color_down: #x69090C
+                                color_focus: #x9A0E10
+                                color_2: #x9A0E10
+                                color_2_hover: #xB43A12
+                                color_2_down: #x69090C
+                                color_2_focus: #x9A0E10
+                                border_color: #x9A0E10
+                                border_radius: 10.
+                                border_size: 0.
+                            }
+                            draw_text +: {
+                                color: #xffffff
+                                color_hover: #xffffff
+                                color_down: #xffffff
+                                color_focus: #xffffff
+                                text_style +: {font_size: 12.}
+                            }
+                        }
                     }
                 }
             }
-        }
-        RoundedView{
-            width: Fill height: Fill
-            draw_bg.color: #x00000000
-            draw_bg.border_radius: 16.
-            draw_bg.border_size: 1.
-            draw_bg.border_color: #xC9B5A8
+            edge := RoundedView{
+                width: Fill height: Fill
+                draw_bg.color: #x00000000
+                draw_bg.border_radius: 16.
+                draw_bg.border_size: 1.
+                draw_bg.border_color: #xD8C7BD
+            }
         }
     }
 
@@ -3639,8 +3656,15 @@ script_mod! {
             scroll_bar: ScrollBar{bar_size: 0.}
             Item := View{
                 width: Fill height: Fit
+                flow: Right spacing: 20
+                padding: Inset{right: 14.}
                 texture_caching: false
-                card := MenuCard{}
+                c0 := MenuCard{}
+                c1 := MenuCard{}
+                c2 := MenuCard{}
+                c3 := MenuCard{}
+                c4 := MenuCard{}
+                c5 := MenuCard{}
             }
         }
         }
@@ -3663,8 +3687,15 @@ script_mod! {
             scroll_bar: ScrollBar{bar_size: 0.}
             Item := View{
                 width: Fill height: Fit
+                flow: Right spacing: 20
+                padding: Inset{right: 14.}
                 texture_caching: false
-                card := MenuCard{}
+                c0 := MenuCard{}
+                c1 := MenuCard{}
+                c2 := MenuCard{}
+                c3 := MenuCard{}
+                c4 := MenuCard{}
+                c5 := MenuCard{}
             }
         }
     }
@@ -3933,106 +3964,119 @@ script_mod! {
         }
     }
 
-    // Dish / category pick row: thumb beside the name, type on the
-    // cream card, Use centered. The photo never fills the row (type on
-    // the food was unreadable, and Use sat on the bottom edge). Whole
-    // row is the tap (nested Button clicks miss inside PortalList).
-    let DishRow = View{
-        cursor: MouseCursor.Hand
-        // Fixed height — Overlay+Fit collapses pick lists.
-        width: Fill height: 104
-        flow: Overlay
-        RoundedView{
-            width: Fill height: Fill
-            draw_bg.color: #xFFF8F3
-            draw_bg.border_radius: 14.
-            draw_bg.border_size: 1.
-            draw_bg.border_color: #xD8C7BD
-        }
-        View{
-            width: Fill height: Fill
-            flow: Right spacing: 12
-            padding: Inset{left: 12. right: 12. top: 12. bottom: 12.}
-            align: Align{y: 0.5}
+    // Item-form pick card: same split as Add dishes (photo | name),
+    // with Use on the cream so it stays visible. The whole card taps.
+    // Fixed height — Overlay+Fit collapses the picker.
+    let PickCard = View{
+        width: Fill height: 176
+        tile := View{
+            cursor: MouseCursor.Hand
+            width: Fill height: 176
+            flow: Overlay
+            RoundedView{
+                width: Fill height: Fill
+                draw_bg.color: #xFFF8F3
+                draw_bg.color_2: #xF3E3DA
+                draw_bg.border_radius: 16.
+            }
             View{
-                width: 80 height: 80
-                flow: Overlay
-                RoundedView{
+                width: Fill height: 176
+                flow: Right spacing: 0
+                View{
                     width: Fill height: Fill
-                    align: Align{x: 0.5 y: 0.5}
-                    draw_bg.color: #xB43A12
-                    draw_bg.color_2: #x69090C
-                    draw_bg.border_radius: 12.
-                    thumb_initials := Label{
-                        width: Fit height: Fit
-                        text: ""
-                        draw_text.color: #xFFFFFF
-                        draw_text.text_style.font_size: 18.
+                    flow: Overlay
+                    RoundedView{
+                        width: Fill height: Fill
+                        align: Align{x: 0.5 y: 0.5}
+                        draw_bg.color: #xB43A12
+                        draw_bg.color_2: #x69090C
+                        draw_bg.border_radius: 16.
+                        initials_plate := RoundedView{
+                            width: 60 height: 60
+                            align: Align{x: 0.5 y: 0.5}
+                            draw_bg.color: #xFFFFFF24
+                            draw_bg.border_radius: 30.
+                            draw_bg.border_size: 1.5
+                            draw_bg.border_color: #xFFFFFF66
+                            thumb_initials := Label{
+                                width: Fit height: Fit
+                                text: ""
+                                draw_text.color: #xFFFFFF
+                                draw_text.text_style.font_size: 20.
+                            }
+                        }
                     }
-                }
-                thumb := Image{
-                    width: Fill height: Fill
-                    fit: ImageFit.CropToFill
-                    visible: false
-                    draw_bg +: {
-                        radius: uniform(12.0)
-                        pixel: fn() {
-                            let sdf = Sdf2d.viewport(self.pos * self.rect_size)
-                            sdf.box(0., 0., self.rect_size.x, self.rect_size.y, self.radius)
-                            sdf.fill(self.get_color())
-                            return sdf.result
+                    thumb := Image{
+                        width: Fill height: Fill
+                        fit: ImageFit.CropToFill
+                        visible: false
+                        draw_bg +: {
+                            radius: uniform(16.0)
+                            pixel: fn() {
+                                let sdf = Sdf2d.viewport(self.pos * self.rect_size)
+                                sdf.box(0., 0., self.rect_size.x, self.rect_size.y, self.radius)
+                                sdf.fill(self.get_color())
+                                return sdf.result
+                            }
                         }
                     }
                 }
+                View{
+                    width: Fill height: Fill
+                    flow: Down spacing: 2
+                    padding: Inset{left: 12. right: 12. top: 10. bottom: 10.}
+                    View{
+                        width: Fill height: Fill
+                        flow: Down spacing: 2
+                        title := Label{
+                            width: Fill
+                            text: ""
+                            flow: Right{wrap: true}
+                            max_lines: 2
+                            text_overflow: Ellipsis
+                            draw_text.color: #x260B08
+                            draw_text.text_style: theme.font_bold{font_size: 14.}
+                        }
+                        alias := Label{
+                            visible: false
+                            width: Fill
+                            text: ""
+                            flow: Right{wrap: true}
+                            max_lines: 1
+                            text_overflow: Ellipsis
+                            draw_text.color: #x6B4A3F
+                            draw_text.text_style.font_size: 12.
+                        }
+                        subtitle := Label{
+                            width: Fill
+                            text: ""
+                            flow: Right{wrap: true}
+                            max_lines: 2
+                            text_overflow: Ellipsis
+                            draw_text.color: #x6B4A3F
+                            draw_text.text_style.font_size: 12.
+                        }
+                    }
+                    action := Label{
+                        width: Fill
+                        text: "Use"
+                        flow: Right{wrap: false}
+                        max_lines: 1
+                        draw_text.color: #x9A0E10
+                        draw_text.text_style: theme.font_bold{font_size: 14.}
+                    }
+                }
             }
-            View{
-                width: Fill height: Fit
-                flow: Down spacing: 2
-                title := Label{
-                    width: Fill
-                    text: ""
-                    flow: Right{wrap: true}
-                    max_lines: 2
-                    text_overflow: Ellipsis
-                    draw_text.color: #x260B08
-                    draw_text.text_style: theme.font_bold{font_size: 15.}
-                }
-                alias := Label{
-                    visible: false
-                    width: Fill
-                    text: ""
-                    flow: Right{wrap: true}
-                    max_lines: 1
-                    text_overflow: Ellipsis
-                    draw_text.color: #x6B4A3F
-                    draw_text.text_style.font_size: 13.
-                }
-                subtitle := Label{
-                    width: Fill
-                    text: ""
-                    flow: Right{wrap: true}
-                    max_lines: 1
-                    text_overflow: Ellipsis
-                    draw_text.color: #x6B4A3F
-                    draw_text.text_style.font_size: 13.
-                }
-            }
-            // Not a Button — the row is the tap. Centered with the thumb.
-            RoundedView{
-                width: Fit height: Fit
-                padding: Inset{left: 14. right: 14. top: 8. bottom: 8.}
-                align: Align{x: 0.5 y: 0.5}
-                draw_bg.color: #x9A0E10
-                draw_bg.border_radius: 12.
-                action := Label{
-                    width: Fit
-                    text: "Use"
-                    draw_text.color: #xFFFFFF
-                    draw_text.text_style.font_size: 13.
-                }
+            edge := RoundedView{
+                width: Fill height: Fill
+                draw_bg.color: #x00000000
+                draw_bg.border_radius: 16.
+                draw_bg.border_size: 1.
+                draw_bg.border_color: #xD8C7BD
             }
         }
     }
+
 
     // The item form's picker: its own scrolling viewport (height set in
     // draw_walk), so only the rows on screen draw — the shelf has ~1,400
@@ -4687,8 +4731,15 @@ script_mod! {
             scroll_bar: ScrollBar{bar_size: 6.}
             Item := View{
                 width: Fill height: Fit
+                flow: Right spacing: 20
+                padding: Inset{right: 14.}
                 texture_caching: false
-                dishrow := DishRow{}
+                c0 := PickCard{}
+                c1 := PickCard{}
+                c2 := PickCard{}
+                c3 := PickCard{}
+                c4 := PickCard{}
+                c5 := PickCard{}
             }
         }
     }
@@ -4706,8 +4757,15 @@ script_mod! {
             scroll_bar: ScrollBar{bar_size: 6.}
             Item := View{
                 width: Fill height: Fit
+                flow: Right spacing: 20
+                padding: Inset{right: 14.}
                 texture_caching: false
-                dishrow := DishRow{}
+                c0 := PickCard{}
+                c1 := PickCard{}
+                c2 := PickCard{}
+                c3 := PickCard{}
+                c4 := PickCard{}
+                c5 := PickCard{}
             }
         }
     }

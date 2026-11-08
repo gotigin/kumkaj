@@ -753,6 +753,24 @@ fn product_grid_cols() -> &'static Mutex<usize> {
     C.get_or_init(|| Mutex::new(2))
 }
 
+/// Columns the Menu screen's item grid last drew (sold-out / remove / open).
+fn menu_grid_cols() -> &'static Mutex<usize> {
+    static C: OnceLock<Mutex<usize>> = OnceLock::new();
+    C.get_or_init(|| Mutex::new(2))
+}
+
+/// Columns the removed-items grid last drew (Restore).
+fn removed_grid_cols() -> &'static Mutex<usize> {
+    static C: OnceLock<Mutex<usize>> = OnceLock::new();
+    C.get_or_init(|| Mutex::new(2))
+}
+
+/// Columns the item-form dish/category picker last drew (Use).
+fn pick_grid_cols() -> &'static Mutex<usize> {
+    static C: OnceLock<Mutex<usize>> = OnceLock::new();
+    C.get_or_init(|| Mutex::new(2))
+}
+
 /// How many whole tiles fit across `width` (or the content width) at
 /// zoom 1.0 — the "Fit screen" column count. At least 1.
 fn floor_columns_for(width: f64) -> usize {

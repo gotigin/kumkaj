@@ -390,11 +390,21 @@ impl Widget for CategoryPickList {
         } else {
             &self.hold_picks
         };
+        let width = cx.turtle().next_walk_width(walk.width, walk.margin);
+        let cols = product_columns(if width.is_finite() && width > 0.0 {
+            width
+        } else {
+            *content_width().lock().unwrap()
+        });
+        if open {
+            *pick_grid_cols().lock().unwrap() = cols;
+        }
+        let grid_rows = draw_picks.len().div_ceil(cols.max(1));
         let logic_open = open && !draw_picks.is_empty();
         let full_h = if draw_picks.is_empty() {
             0.0
         } else {
-            list_content_height(draw_picks.len(), DISH_ROW_H, DISH_ROW_GAP).min(DISH_PICK_MAX_HEIGHT)
+            list_content_height(grid_rows, DISH_ROW_H, DISH_ROW_GAP).min(DISH_PICK_MAX_HEIGHT)
         };
         let (height, should_draw) = list_height_tween("category_pick", logic_open, full_h);
         if list_height_anims()
@@ -410,7 +420,7 @@ impl Widget for CategoryPickList {
             }
             return DrawStep::done();
         }
-        // Same DishRow card as the dish picker.
+        // Same card grid as the dish picker (and Add dishes).
         let walk = Walk {
             height: Size::Fixed(height),
             ..walk
@@ -426,53 +436,76 @@ impl Widget for CategoryPickList {
                 if new_rev {
                     list.set_first_id_and_scroll(0, 0.0);
                 }
-                list.set_item_range(cx, 0, draw_picks.len());
+                list.set_item_range(cx, 0, grid_rows);
+                let slots: [&[LiveId]; 6] =
+                    [ids!(c0), ids!(c1), ids!(c2), ids!(c3), ids!(c4), ids!(c5)];
                 while let Some(item_id) = list.next_visible_item(cx) {
-                    let Some(pick) = draw_picks.get(item_id) else {
+                    if item_id >= grid_rows {
                         continue;
-                    };
+                    }
                     let item = list.item(cx, item_id, id!(Item));
-                    let (title, subtitle, initials_from, alias, photo) = match pick {
-                        CategoryPick::New(name) => (
-                            format!("“{name}”"),
-                            new_text.clone(),
-                            name.clone(),
-                            None,
-                            std::path::PathBuf::new(),
-                        ),
-                        CategoryPick::Mine(id) => match categories.iter().find(|c| &c.id == id) {
-                            Some(c) => (
-                                c.name.clone(),
-                                mine_text.clone(),
-                                c.name.clone(),
-                                c.first_alias(),
-                                if c.image_key.is_empty() {
-                                    std::path::PathBuf::new()
-                                } else {
-                                    image_key_path(Some(&c.image_key), &dir)
-                                },
+                    for (col, path) in slots.iter().enumerate() {
+                        let slot = item.widget(cx, *path);
+                        slot.set_visible(cx, col < cols);
+                        if col >= cols {
+                            continue;
+                        }
+                        let tile = slot.view(cx, ids!(tile));
+                        let Some(pick) = draw_picks.get(item_id * cols + col) else {
+                            tile.set_visible(cx, false);
+                            continue;
+                        };
+                        let (title, subtitle, initials_from, alias, photo) = match pick {
+                            CategoryPick::New(name) => (
+                                format!("“{name}”"),
+                                new_text.clone(),
+                                name.clone(),
+                                None,
+                                std::path::PathBuf::new(),
                             ),
-                            None => continue,
-                        },
-                        CategoryPick::Shelf(f) => (
-                            f.label.clone(),
-                            shelf_text.clone(),
-                            f.label.clone(),
-                            None,
-                            f.photo.clone(),
-                        ),
-                    };
-                    apply_thumb_avatar_kind(
-                        cx,
-                        &item,
-                        &initials_from,
-                        &photo,
-                        thumbs::ThumbKind::Row,
-                    );
-                    item.label(cx, ids!(title)).set_text(cx, &title);
-                    paint_first_alias(cx, &item, alias.as_deref());
-                    item.label(cx, ids!(subtitle)).set_text(cx, &subtitle);
-                    item.label(cx, ids!(action)).set_text(cx, &use_text);
+                            CategoryPick::Mine(id) => {
+                                match categories.iter().find(|c| &c.id == id) {
+                                    Some(c) => (
+                                        c.name.clone(),
+                                        mine_text.clone(),
+                                        c.name.clone(),
+                                        c.first_alias(),
+                                        if c.image_key.is_empty() {
+                                            std::path::PathBuf::new()
+                                        } else {
+                                            image_key_path(Some(&c.image_key), &dir)
+                                        },
+                                    ),
+                                    None => {
+                                        tile.set_visible(cx, false);
+                                        continue;
+                                    }
+                                }
+                            }
+                            CategoryPick::Shelf(f) => (
+                                f.label.clone(),
+                                shelf_text.clone(),
+                                f.label.clone(),
+                                None,
+                                f.photo.clone(),
+                            ),
+                        };
+                        tile.set_visible(cx, true);
+                        apply_thumb_avatar_kind(
+                            cx,
+                            &tile,
+                            &initials_from,
+                            &photo,
+                            thumbs::ThumbKind::Card,
+                        );
+                        let initials = tile.label(cx, ids!(thumb_initials)).text();
+                        tile.view(cx, ids!(initials_plate))
+                            .set_visible(cx, !initials.is_empty());
+                        tile.label(cx, ids!(title)).set_text(cx, &title);
+                        paint_first_alias(cx, &tile, alias.as_deref());
+                        tile.label(cx, ids!(subtitle)).set_text(cx, &subtitle);
+                        tile.label(cx, ids!(action)).set_text(cx, &use_text);
+                    }
                     item.draw_all_unscoped(cx);
                 }
             }
@@ -514,8 +547,8 @@ struct DishPickList {
 
 /// Tallest the picker grows before it scrolls inside itself (css px).
 const DISH_PICK_MAX_HEIGHT: f64 = 420.0;
-/// Must match `DishRow` height and PortalList `spacing` on both pick lists.
-const DISH_ROW_H: f64 = 104.0;
+/// Must match `PickCard` height and PortalList `spacing` on both pick lists.
+const DISH_ROW_H: f64 = 176.0;
 const DISH_ROW_GAP: f64 = 12.0;
 
 impl Widget for DishPickList {
@@ -540,11 +573,21 @@ impl Widget for DishPickList {
         } else {
             &self.hold_picks
         };
+        let width = cx.turtle().next_walk_width(walk.width, walk.margin);
+        let cols = product_columns(if width.is_finite() && width > 0.0 {
+            width
+        } else {
+            *content_width().lock().unwrap()
+        });
+        if open {
+            *pick_grid_cols().lock().unwrap() = cols;
+        }
+        let grid_rows = draw_picks.len().div_ceil(cols.max(1));
         let logic_open = open && !draw_picks.is_empty();
         let full_h = if draw_picks.is_empty() {
             0.0
         } else {
-            list_content_height(draw_picks.len(), DISH_ROW_H, DISH_ROW_GAP).min(DISH_PICK_MAX_HEIGHT)
+            list_content_height(grid_rows, DISH_ROW_H, DISH_ROW_GAP).min(DISH_PICK_MAX_HEIGHT)
         };
         let (height, should_draw) = list_height_tween("dish_pick", logic_open, full_h);
         if list_height_anims()
@@ -578,59 +621,83 @@ impl Widget for DishPickList {
                 if new_rev {
                     list.set_first_id_and_scroll(0, 0.0);
                 }
-                list.set_item_range(cx, 0, draw_picks.len());
+                list.set_item_range(cx, 0, grid_rows);
+                let slots: [&[LiveId]; 6] =
+                    [ids!(c0), ids!(c1), ids!(c2), ids!(c3), ids!(c4), ids!(c5)];
                 while let Some(item_id) = list.next_visible_item(cx) {
-                    let Some(pick) = draw_picks.get(item_id) else {
+                    if item_id >= grid_rows {
                         continue;
-                    };
+                    }
                     let item = list.item(cx, item_id, id!(Item));
-                    let (title, subtitle, action, alias, photo) = match pick {
-                        DishPick::Own(name) => (
-                            format!("“{name}”"),
-                            own_text.clone(),
-                            use_text.clone(),
-                            None,
-                            std::path::PathBuf::new(),
-                        ),
-                        DishPick::Menu(id) => match products.iter().find(|p| &p.id == id) {
-                            Some(p) => (
-                                p.name.clone(),
-                                format!(
-                                    "{on_menu_text} · {}",
-                                    p.price.format_localized(&currency, &fiscal)
-                                ),
-                                edit_text.clone(),
-                                p.first_alias(),
-                                image_key_path(p.image_key.as_deref(), &dir),
-                            ),
-                            None => continue,
-                        },
-                        DishPick::Shelf(i) => match shelf.get(*i) {
-                            Some(d) => (
-                                d.name.clone(),
-                                d.folder.clone(),
+                    for (col, path) in slots.iter().enumerate() {
+                        let slot = item.widget(cx, *path);
+                        slot.set_visible(cx, col < cols);
+                        if col >= cols {
+                            continue;
+                        }
+                        let tile = slot.view(cx, ids!(tile));
+                        let Some(pick) = draw_picks.get(item_id * cols + col) else {
+                            tile.set_visible(cx, false);
+                            continue;
+                        };
+                        let (title, subtitle, action, alias, photo) = match pick {
+                            DishPick::Own(name) => (
+                                format!("“{name}”"),
+                                own_text.clone(),
                                 use_text.clone(),
                                 None,
-                                d.path.clone(),
+                                std::path::PathBuf::new(),
                             ),
-                            None => continue,
-                        },
-                    };
-                    let name_for_initials = match pick {
-                        DishPick::Own(name) => name.as_str(),
-                        _ => title.as_str(),
-                    };
-                    apply_thumb_avatar_kind(
-                        cx,
-                        &item,
-                        name_for_initials,
-                        &photo,
-                        thumbs::ThumbKind::Row,
-                    );
-                    item.label(cx, ids!(title)).set_text(cx, &title);
-                    paint_first_alias(cx, &item, alias.as_deref());
-                    item.label(cx, ids!(subtitle)).set_text(cx, &subtitle);
-                    item.label(cx, ids!(action)).set_text(cx, &action);
+                            DishPick::Menu(id) => match products.iter().find(|p| &p.id == id) {
+                                Some(p) => (
+                                    p.name.clone(),
+                                    format!(
+                                        "{on_menu_text} · {}",
+                                        p.price.format_localized(&currency, &fiscal)
+                                    ),
+                                    edit_text.clone(),
+                                    p.first_alias(),
+                                    image_key_path(p.image_key.as_deref(), &dir),
+                                ),
+                                None => {
+                                    tile.set_visible(cx, false);
+                                    continue;
+                                }
+                            },
+                            DishPick::Shelf(i) => match shelf.get(*i) {
+                                Some(d) => (
+                                    d.name.clone(),
+                                    d.folder.clone(),
+                                    use_text.clone(),
+                                    None,
+                                    d.path.clone(),
+                                ),
+                                None => {
+                                    tile.set_visible(cx, false);
+                                    continue;
+                                }
+                            },
+                        };
+                        tile.set_visible(cx, true);
+                        let name_for_initials = match pick {
+                            DishPick::Own(name) => name.as_str(),
+                            _ => title.as_str(),
+                        };
+                        apply_thumb_avatar_kind(
+                            cx,
+                            &tile,
+                            name_for_initials,
+                            &photo,
+                            thumbs::ThumbKind::Card,
+                        );
+                        let initials = tile.label(cx, ids!(thumb_initials)).text();
+                        tile.view(cx, ids!(initials_plate))
+                            .set_visible(cx, !initials.is_empty());
+                        tile.label(cx, ids!(title)).set_text(cx, &title);
+                        paint_first_alias(cx, &tile, alias.as_deref());
+                        tile.label(cx, ids!(subtitle)).set_text(cx, &subtitle);
+                        tile.label(cx, ids!(action)).set_text(cx, &action);
+                    }
                     item.draw_all_unscoped(cx);
                 }
             }

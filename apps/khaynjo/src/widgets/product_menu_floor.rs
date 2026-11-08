@@ -148,16 +148,23 @@ impl Widget for MenuList {
             )
         };
         let count = products.len();
-        // Fixed pitch, never a measured one: PortalList only draws the
-        // visible slice, so extent/total-count under-measures and the
-        // next list on the page starts early, overlapping the last rows
-        // and stealing their taps. MenuCard height + PortalList spacing
-        // must stay in sync. Only rows inside the page window are drawn.
-        const ROW: f64 = 152.0;
+        // Same column rule as Add dishes. A row is one line of cards, not
+        // one dish — taps map with `menu_grid_cols`.
+        let width = cx.turtle().next_walk_width(walk.width, walk.margin);
+        let cols = product_columns(if width.is_finite() && width > 0.0 {
+            width
+        } else {
+            *content_width().lock().unwrap()
+        });
+        *menu_grid_cols().lock().unwrap() = cols;
+        let grid_rows = count.div_ceil(cols.max(1));
+        // MenuCard is 176; PortalList spacing is the gap. Fixed pitch so the
+        // page window does not overlap the next list.
+        const ROW: f64 = 176.0;
         const GAP: f64 = 12.0;
-        let (first, last) = page_window(cx.turtle().pos().y, count, ROW, GAP);
+        let (first, last) = page_window(cx.turtle().pos().y, grid_rows, ROW, GAP);
         let walk = Walk {
-            height: Size::Fixed(list_content_height(count, ROW, GAP)),
+            height: Size::Fixed(list_content_height(grid_rows, ROW, GAP)),
             ..walk
         };
         if let Some(mut gap) = self.view.view(cx, ids!(top_gap)).borrow_mut() {
@@ -167,6 +174,7 @@ impl Widget for MenuList {
             boxv.walk.height = Size::Fixed(list_content_height(last.saturating_sub(first), ROW, GAP));
         }
         let editing_id = app_state().lock().unwrap().editing_product_id.clone();
+        let slots: [&[LiveId]; 6] = [ids!(c0), ids!(c1), ids!(c2), ids!(c3), ids!(c4), ids!(c5)];
         while let Some(step) = self.view.draw_walk(cx, scope, walk).step() {
             if let Some(mut list) = step.as_portal_list().borrow_mut() {
                 list.set_item_range(cx, first, last);
@@ -175,51 +183,56 @@ impl Widget for MenuList {
                     if item_id < first || item_id >= last {
                         continue;
                     }
-                    let Some(product) = products.get(item_id) else {
-                        continue;
-                    };
                     let item = list.item(cx, item_id, id!(Item));
-                    // The item loaded in the form carries a ✓ so a tap's
-                    // effect is visible in the list itself, not only in
-                    // the form far above.
-                    let shown_name = if editing_id.as_deref() == Some(product.id.as_str()) {
-                        format!("✓ {}", product.name)
-                    } else {
-                        product.name.clone()
-                    };
-                    item.label(cx, ids!(name)).set_text(cx, &shown_name);
-                    paint_first_alias(cx, &item, product.first_alias().as_deref());
-                    item.label(cx, ids!(price))
-                        .set_text(cx, &product.price.format_localized(&currency, &fiscal));
-                    let stock_line = if product.tracks_stock() {
-                        format!(
-                            "{} {}",
-                            product.stock_qty,
-                            locale::t(&lang, "in_stock")
-                        )
-                    } else if product.available {
-                        locale::t(&lang, "not_tracked")
-                    } else {
-                        locale::t(&lang, "marked_sold_out")
-                    };
-                    item.label(cx, ids!(stock)).set_text(cx, &stock_line);
-                    load_product_card_photo(cx, &item, product);
-                    item.button(cx, ids!(sold_out)).set_visible(cx, true);
-                    item.button(cx, ids!(sold_out)).set_text(
-                        cx,
-                        &locale::t(
-                            &lang,
-                            if product.available {
-                                "sold_out"
-                            } else {
-                                "restock"
-                            },
-                        ),
-                    );
-                    item.button(cx, ids!(remove)).set_visible(cx, true);
-                    item.button(cx, ids!(remove)).set_text(cx, "✕");
-                    // Restore belongs to the RemovedList rows only.
-                    item.button(cx, ids!(restore)).set_visible(cx, false);
+                    for (col, path) in slots.iter().enumerate() {
+                        let slot = item.widget(cx, *path);
+                        slot.set_visible(cx, col < cols);
+                        if col >= cols {
+                            continue;
+                        }
+                        let tile = slot.view(cx, ids!(tile));
+                        let Some(product) = products.get(item_id * cols + col) else {
+                            tile.set_visible(cx, false);
+                            continue;
+                        };
+                        tile.set_visible(cx, true);
+                        tile.view(cx, ids!(dim)).set_visible(cx, !product.available);
+                        let shown_name = if editing_id.as_deref() == Some(product.id.as_str()) {
+                            format!("✓ {}", product.name)
+                        } else {
+                            product.name.clone()
+                        };
+                        tile.label(cx, ids!(name)).set_text(cx, &shown_name);
+                        paint_first_alias(cx, &tile, product.first_alias().as_deref());
+                        tile.label(cx, ids!(price))
+                            .set_text(cx, &product.price.format_localized(&currency, &fiscal));
+                        let stock_line = if product.tracks_stock() {
+                            format!(
+                                "{} {}",
+                                product.stock_qty,
+                                locale::t(&lang, "in_stock")
+                            )
+                        } else if product.available {
+                            locale::t(&lang, "not_tracked")
+                        } else {
+                            locale::t(&lang, "marked_sold_out")
+                        };
+                        tile.label(cx, ids!(stock)).set_text(cx, &stock_line);
+                        load_product_card_photo(cx, &tile, product);
+                        let initials = tile.label(cx, ids!(thumb_initials)).text();
+                        tile.view(cx, ids!(initials_plate))
+                            .set_visible(cx, !initials.is_empty());
+                        tile.button(cx, ids!(sold_out)).set_visible(cx, true);
+                        tile.button(cx, ids!(sold_out)).set_text(
+                            cx,
+                            &locale::t(
+                                &lang,
+                                if product.available { "sold_out" } else { "restock" },
+                            ),
+                        );
+                        tile.button(cx, ids!(remove)).set_visible(cx, true);
+                        tile.button(cx, ids!(restore)).set_visible(cx, false);
+                    }
                     item.draw_all_unscoped(cx);
                 }
             }
@@ -261,35 +274,58 @@ impl Widget for RemovedList {
             )
         };
         let count = products.len();
-        // Fixed pitch (see MenuList): the same MenuCard, so the same row.
-        const ROW: f64 = 152.0;
+        let width = cx.turtle().next_walk_width(walk.width, walk.margin);
+        let cols = product_columns(if width.is_finite() && width > 0.0 {
+            width
+        } else {
+            *content_width().lock().unwrap()
+        });
+        *removed_grid_cols().lock().unwrap() = cols;
+        let grid_rows = count.div_ceil(cols.max(1));
+        const ROW: f64 = 176.0;
         const GAP: f64 = 12.0;
         let walk = Walk {
-            height: Size::Fixed(list_content_height(count, ROW, GAP)),
+            height: Size::Fixed(list_content_height(grid_rows, ROW, GAP)),
             ..walk
         };
         let restore_text = locale::t(&lang, "restore_item");
+        let slots: [&[LiveId]; 6] = [ids!(c0), ids!(c1), ids!(c2), ids!(c3), ids!(c4), ids!(c5)];
         while let Some(step) = self.view.draw_walk(cx, scope, walk).step() {
             if let Some(mut list) = step.as_portal_list().borrow_mut() {
-                list.set_item_range(cx, 0, count);
+                list.set_item_range(cx, 0, grid_rows);
                 while let Some(item_id) = list.next_visible_item(cx) {
-                    let Some(product) = products.get(item_id) else {
+                    if item_id >= grid_rows {
                         continue;
-                    };
+                    }
                     let item = list.item(cx, item_id, id!(Item));
-                    item.label(cx, ids!(name)).set_text(cx, &product.name);
-                    paint_first_alias(cx, &item, product.first_alias().as_deref());
-                    item.label(cx, ids!(price))
-                        .set_text(cx, &product.price.format_localized(&currency, &fiscal));
-                    // Removed items are not for sale right now, so the stock
-                    // line would only confuse — say what the row is instead.
-                    item.label(cx, ids!(stock))
-                        .set_text(cx, &locale::t(&lang, "removed_items"));
-                    load_product_card_photo(cx, &item, product);
-                    item.button(cx, ids!(sold_out)).set_visible(cx, false);
-                    item.button(cx, ids!(remove)).set_visible(cx, false);
-                    item.button(cx, ids!(restore)).set_visible(cx, true);
-                    item.button(cx, ids!(restore)).set_text(cx, &restore_text);
+                    for (col, path) in slots.iter().enumerate() {
+                        let slot = item.widget(cx, *path);
+                        slot.set_visible(cx, col < cols);
+                        if col >= cols {
+                            continue;
+                        }
+                        let tile = slot.view(cx, ids!(tile));
+                        let Some(product) = products.get(item_id * cols + col) else {
+                            tile.set_visible(cx, false);
+                            continue;
+                        };
+                        tile.set_visible(cx, true);
+                        tile.view(cx, ids!(dim)).set_visible(cx, false);
+                        tile.label(cx, ids!(name)).set_text(cx, &product.name);
+                        paint_first_alias(cx, &tile, product.first_alias().as_deref());
+                        tile.label(cx, ids!(price))
+                            .set_text(cx, &product.price.format_localized(&currency, &fiscal));
+                        tile.label(cx, ids!(stock))
+                            .set_text(cx, &locale::t(&lang, "removed_items"));
+                        load_product_card_photo(cx, &tile, product);
+                        let initials = tile.label(cx, ids!(thumb_initials)).text();
+                        tile.view(cx, ids!(initials_plate))
+                            .set_visible(cx, !initials.is_empty());
+                        tile.button(cx, ids!(sold_out)).set_visible(cx, false);
+                        tile.button(cx, ids!(remove)).set_visible(cx, false);
+                        tile.button(cx, ids!(restore)).set_visible(cx, true);
+                        tile.button(cx, ids!(restore)).set_text(cx, &restore_text);
+                    }
                     item.draw_all_unscoped(cx);
                 }
             }

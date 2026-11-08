@@ -4482,14 +4482,20 @@ impl MatchEvent for App {
         {
             let widget = self.ui.widget(cx, ids!(category_pick_list));
             let list = widget.portal_list(cx, ids!(list));
+            let cols = (*pick_grid_cols().lock().unwrap()).max(1);
+            let slots: [&[LiveId]; 6] = [ids!(c0), ids!(c1), ids!(c2), ids!(c3), ids!(c4), ids!(c5)];
             let mut picked = None;
-            for (item_id, item) in list.items_with_actions(actions) {
-                let tapped = item
-                    .view(cx, ids!(dishrow))
-                    .finger_up(actions)
-                    .is_some_and(finger_up_is_tap);
-                if tapped {
-                    picked = app_state().lock().unwrap().category_picks.get(item_id).cloned();
+            for (grid_row, item) in list.items_with_actions(actions) {
+                for (col, path) in slots.iter().enumerate().take(cols) {
+                    let index = grid_row * cols + col;
+                    let tapped = item
+                        .widget(cx, *path)
+                        .view(cx, ids!(tile))
+                        .finger_up(actions)
+                        .is_some_and(finger_up_is_tap);
+                    if tapped {
+                        picked = app_state().lock().unwrap().category_picks.get(index).cloned();
+                    }
                 }
             }
             if let Some(pick) = picked {
@@ -4610,48 +4616,52 @@ impl MatchEvent for App {
             self.ui.widget(cx, ids!(product_list_menu)).redraw(cx);
             self.sync_chrome(cx);
         }
-        // Items list: sold out / archive
+        // Items list: sold out / archive. A portal row is one line of cards.
         {
             let widget = self.ui.widget(cx, ids!(product_list_menu));
             let list = widget.portal_list(cx, ids!(list));
+            let cols = (*menu_grid_cols().lock().unwrap()).max(1);
+            let slots: [&[LiveId]; 6] = [ids!(c0), ids!(c1), ids!(c2), ids!(c3), ids!(c4), ids!(c5)];
             let rows = app_state().lock().unwrap().menu_list_indices();
-            for (row_id, item) in list.items_with_actions(actions) {
-                // Rows follow the search; map back to the product.
-                let Some(&item_id) = rows.get(row_id) else {
-                    continue;
-                };
-                let marked = item.button(cx, ids!(sold_out)).clicked(actions);
-                let removed = item.button(cx, ids!(remove)).clicked(actions);
-                if marked {
-                    let result = (|| -> Result<(), String> {
-                        let mut st = app_state().lock().unwrap();
-                        let product = st
-                            .products
-                            .get(item_id)
-                            .cloned()
-                            .ok_or_else(|| "Missing product".to_string())?;
-                        let msg = st.books_op(BooksOp::SetProductAvailable {
-                            id: product.id,
-                            name: product.name.clone(),
-                            available: !product.available,
-                        })?;
-                        st.status = msg;
-                        Ok(())
-                    })();
-                    if let Err(e) = result {
-                        self.set_status(cx, e);
+            for (grid_row, item) in list.items_with_actions(actions) {
+                for (col, path) in slots.iter().enumerate().take(cols) {
+                    let Some(&item_id) = rows.get(grid_row * cols + col) else {
+                        continue;
+                    };
+                    let card = item.widget(cx, *path);
+                    let marked = card.button(cx, ids!(sold_out)).clicked(actions);
+                    let removed = card.button(cx, ids!(remove)).clicked(actions);
+                    if marked {
+                        let result = (|| -> Result<(), String> {
+                            let mut st = app_state().lock().unwrap();
+                            let product = st
+                                .products
+                                .get(item_id)
+                                .cloned()
+                                .ok_or_else(|| "Missing product".to_string())?;
+                            let msg = st.books_op(BooksOp::SetProductAvailable {
+                                id: product.id,
+                                name: product.name.clone(),
+                                available: !product.available,
+                            })?;
+                            st.status = msg;
+                            Ok(())
+                        })();
+                        if let Err(e) = result {
+                            self.set_status(cx, e);
+                        }
+                        self.sync_chrome(cx);
                     }
-                    self.sync_chrome(cx);
-                }
-                if removed {
-                    self.remove_menu_item(cx, item_id);
-                } else if !marked
-                    && item
-                        .view(cx, ids!(card))
-                        .finger_up(actions)
-                        .is_some_and(finger_up_is_tap)
-                {
-                    self.open_menu_item(cx, item_id);
+                    if removed {
+                        self.remove_menu_item(cx, item_id);
+                    } else if !marked
+                        && card
+                            .view(cx, ids!(tile))
+                            .finger_up(actions)
+                            .is_some_and(finger_up_is_tap)
+                    {
+                        self.open_menu_item(cx, item_id);
+                    }
                 }
             }
         }
@@ -4659,9 +4669,14 @@ impl MatchEvent for App {
         {
             let widget = self.ui.widget(cx, ids!(removed_list));
             let list = widget.portal_list(cx, ids!(list));
-            for (item_id, item) in list.items_with_actions(actions) {
-                if item.button(cx, ids!(restore)).clicked(actions) {
-                    self.restore_menu_item(cx, item_id);
+            let cols = (*removed_grid_cols().lock().unwrap()).max(1);
+            let slots: [&[LiveId]; 6] = [ids!(c0), ids!(c1), ids!(c2), ids!(c3), ids!(c4), ids!(c5)];
+            for (grid_row, item) in list.items_with_actions(actions) {
+                for (col, path) in slots.iter().enumerate().take(cols) {
+                    let index = grid_row * cols + col;
+                    if item.widget(cx, *path).button(cx, ids!(restore)).clicked(actions) {
+                        self.restore_menu_item(cx, index);
+                    }
                 }
             }
         }
@@ -4694,14 +4709,20 @@ impl MatchEvent for App {
         {
             let widget = self.ui.widget(cx, ids!(dish_pick_list));
             let list = widget.portal_list(cx, ids!(list));
+            let cols = (*pick_grid_cols().lock().unwrap()).max(1);
+            let slots: [&[LiveId]; 6] = [ids!(c0), ids!(c1), ids!(c2), ids!(c3), ids!(c4), ids!(c5)];
             let mut picked = None;
-            for (item_id, item) in list.items_with_actions(actions) {
-                let tapped = item
-                    .view(cx, ids!(dishrow))
-                    .finger_up(actions)
-                    .is_some_and(finger_up_is_tap);
-                if tapped {
-                    picked = app_state().lock().unwrap().dish_picks.get(item_id).cloned();
+            for (grid_row, item) in list.items_with_actions(actions) {
+                for (col, path) in slots.iter().enumerate().take(cols) {
+                    let index = grid_row * cols + col;
+                    let tapped = item
+                        .widget(cx, *path)
+                        .view(cx, ids!(tile))
+                        .finger_up(actions)
+                        .is_some_and(finger_up_is_tap);
+                    if tapped {
+                        picked = app_state().lock().unwrap().dish_picks.get(index).cloned();
+                    }
                 }
             }
             if let Some(pick) = picked {
