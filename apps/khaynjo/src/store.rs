@@ -5846,8 +5846,11 @@ impl Store {
         self.meta_get("ui_kot_station_priority")
     }
 
+    /// Order-desk Kitchen dropdown ↑↓ order. Device-local UI meta — extra
+    /// tills must write their own SQLite (assert_server_writer used to make
+    /// every Client save fail, so the dropdown forgot the last pick after
+    /// Send KOT / reload).
     pub fn set_kot_station_priority_csv(&self, csv: &str) -> Result<(), String> {
-        self.assert_server_writer("Change the KOT format")?;
         self.meta_set("ui_kot_station_priority", csv)
     }
 
@@ -5857,7 +5860,6 @@ impl Store {
     }
 
     pub fn set_kot_station_default(&self, station_id: &str) -> Result<(), String> {
-        self.assert_server_writer("Change the KOT format")?;
         self.meta_set("ui_kot_station_default", station_id.trim())
     }
 
@@ -5867,7 +5869,6 @@ impl Store {
     }
 
     pub fn set_kot_stations_selected_csv(&self, csv: &str) -> Result<(), String> {
-        self.assert_server_writer("Change the KOT format")?;
         self.meta_set("ui_kot_stations_selected", csv)
     }
 
@@ -16963,6 +16964,36 @@ mod tests {
         }
         assert_eq!(cart.qty_of(&tea.id), 25);
         let _ = std::fs::remove_file(path);
+    }
+
+    /// Order Kitchen dropdown prefs are till-local UI — a Client must be
+    /// able to remember the last multi-check / default after Send KOT.
+    #[test]
+    fn client_till_can_persist_kot_station_dropdown_prefs() {
+        let path = temp_db();
+        let store = Store::open_path(&path).unwrap();
+        store.set_device_role("client").unwrap();
+        store
+            .set_kot_stations_selected_csv("st-grill,st-tandoor")
+            .expect("Client may save Order Kitchen multi-check");
+        store
+            .set_kot_station_default("st-grill")
+            .expect("Client may save Order Kitchen default");
+        store
+            .set_kot_station_priority_csv("st-tandoor,st-grill")
+            .expect("Client may save Order Kitchen ↑↓ order");
+        assert_eq!(
+            store.kot_stations_selected_csv().unwrap().as_deref(),
+            Some("st-grill,st-tandoor")
+        );
+        assert_eq!(
+            store.kot_station_default().unwrap().as_deref(),
+            Some("st-grill")
+        );
+        assert_eq!(
+            store.kot_station_priority_csv().unwrap().as_deref(),
+            Some("st-tandoor,st-grill")
+        );
     }
 
     /// A Client's tables are a sync cache, so local catalogue edits would be

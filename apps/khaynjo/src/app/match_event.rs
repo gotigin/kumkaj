@@ -4871,13 +4871,63 @@ impl MatchEvent for App {
                 self.bump_cart_line(cx, item_id, 1);
                 true
             } else if hold {
-                {
+                // Hold / Unhold: skip the next Send KOT. After a line is sent,
+                // the button is hidden (In print / Cancel take over). When the
+                // line is already on the table order, persist via HoldLine —
+                // a cart-only flip was lost on refresh and the guest bill still
+                // saw `held=0` in the books.
+                let result = (|| -> Result<String, String> {
                     let mut st = app_state().lock().unwrap();
-                    if let Some(line) = st.cart.lines.get_mut(item_id) {
-                        if !line.is_sent() {
-                            line.hold_send = !line.hold_send;
-                        }
+                    let Some(line) = st.cart.lines.get_mut(item_id) else {
+                        return Ok(String::new());
+                    };
+                    if line.is_sent() {
+                        return Err("Only unsent lines can be held".into());
                     }
+                    let new_held = !line.hold_send;
+                    let rid = line.running_line_id.clone();
+                    let on_table = !rid.is_empty()
+                        && rid != "counter"
+                        && !rid.starts_with(QUEUED_LINE);
+                    if on_table {
+                        match st.table_action(
+                            net::RunningAction::HoldLine {
+                                line_id: rid,
+                                held: new_held,
+                            },
+                            "",
+                            if new_held { "Line held" } else { "Line unheld" },
+                            phone::Follow::Refresh,
+                        )? {
+                            Acted::Sent => Ok(if new_held {
+                                "Holding…".into()
+                            } else {
+                                "Unholding…".into()
+                            }),
+                            Acted::Here(_) => {
+                                if let Some(l) = st.cart.lines.get_mut(item_id) {
+                                    l.hold_send = new_held;
+                                }
+                                Ok(if new_held {
+                                    st.t("hold_send_meta")
+                                } else {
+                                    st.t("hold_send")
+                                })
+                            }
+                        }
+                    } else {
+                        line.hold_send = new_held;
+                        Ok(if new_held {
+                            st.t("hold_send_meta")
+                        } else {
+                            st.t("hold_send")
+                        })
+                    }
+                })();
+                match result {
+                    Ok(m) if !m.is_empty() => self.set_status(cx, m),
+                    Ok(_) => {}
+                    Err(e) => self.set_status(cx, e),
                 }
                 self.sync_chrome(cx);
                 true

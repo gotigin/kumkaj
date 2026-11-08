@@ -4,6 +4,11 @@
 // still-installed exe (--uninstall-wipe) from that script.
 // Placeholders __APP_ID__, __APP_LABEL__, __BIN_NAME__ are replaced by build-msi.sh.
 // The whole body is guarded: any failure here must never block uninstall.
+//
+// Scheduled on InstallUISequence (not InstallExecuteSequence): Settings → Apps
+// often runs a basic UI uninstall where execute-sequence UI is suppressed, and
+// INSTALLFOLDER is sometimes empty in that path — both made the three-checkbox
+// dialog vanish silently after the “one dialog” fix shipped.
 function PromptDeleteBooksData() {
     try {
         var shell = new ActiveXObject("WScript.Shell");
@@ -24,21 +29,15 @@ function PromptDeleteBooksData() {
         } catch (ePin) {}
 
         var dir = shell.ExpandEnvironmentStrings("%APPDATA%") + "\\__APP_ID__";
+        // Still offer the dialog when the books folder exists; nothing to ask
+        // about if there is no local data.
         if (!fso.FolderExists(dir)) {
             return;
         }
 
-        var installDir = "";
-        try {
-            installDir = Session.Property("INSTALLFOLDER");
-        } catch (e2) {
-            installDir = "";
-        }
+        var installDir = resolveInstallDir(shell, fso);
         if (!installDir) {
             return;
-        }
-        if (installDir.charAt(installDir.length - 1) !== "\\") {
-            installDir += "\\";
         }
         var wipePs1 = installDir + "delete-books-data.ps1";
         if (!fso.FileExists(wipePs1)) {
@@ -47,7 +46,7 @@ function PromptDeleteBooksData() {
 
         // One dialog with three checkboxes (same as Start Menu "Delete books data").
         // Window style 1 = normal; true = wait. Exe is still on disk
-        // (this action runs Before="RemoveFiles").
+        // (UISequence runs before RemoveFiles).
         try {
             shell.Run(
                 'powershell.exe -NoProfile -ExecutionPolicy Bypass -File "' +
@@ -72,4 +71,36 @@ function PromptDeleteBooksData() {
     } catch (e) {
         // Keep the data and let the uninstall continue.
     }
+}
+
+function resolveInstallDir(shell, fso) {
+    var candidates = [];
+    try {
+        var fromSession = Session.Property("INSTALLFOLDER");
+        if (fromSession) {
+            candidates.push(fromSession);
+        }
+    } catch (e2) {}
+    // Per-user MSI default path — used when Session.Property("INSTALLFOLDER")
+    // is empty during Settings → Apps uninstall (common with wixl MSIs).
+    try {
+        candidates.push(
+            shell.ExpandEnvironmentStrings("%LOCALAPPDATA%") +
+                "\\Programs\\__APP_LABEL__\\"
+        );
+    } catch (e3) {}
+
+    for (var i = 0; i < candidates.length; i++) {
+        var dir = candidates[i];
+        if (!dir) {
+            continue;
+        }
+        if (dir.charAt(dir.length - 1) !== "\\") {
+            dir += "\\";
+        }
+        if (fso.FileExists(dir + "delete-books-data.ps1")) {
+            return dir;
+        }
+    }
+    return "";
 }

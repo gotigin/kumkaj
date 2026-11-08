@@ -4262,9 +4262,14 @@ impl RunningOrder {
     /// Guest-bill view of live lines: same dish at the same rate (and note /
     /// NC flag) is one row with qty summed. KOT sends stay separate on the
     /// order; the bill must not list "2 Thali" then "3 Thali" for five.
+    ///
+    /// Pending coursing holds (`held` with no `kot_id`) stay off the guest
+    /// bill and floor total until Fire / Unhold + Send KOT — same rule as
+    /// kitchen slips. Combo component rows that are complimentary+held are
+    /// skipped here too (the parent carries the combo price).
     pub fn bill_print_lines(&self) -> Vec<RunningLine> {
         let mut out: Vec<RunningLine> = Vec::new();
-        for line in self.live_lines() {
+        for line in self.live_lines().filter(|l| !(l.held && l.kot_id.is_empty())) {
             if let Some(existing) = out.iter_mut().find(|e| {
                 e.product_id == line.product_id
                     && e.unit_price_paise == line.unit_price_paise
@@ -4281,9 +4286,13 @@ impl RunningOrder {
         out
     }
 
-    /// Running amount for the floor card and the bill.
+    /// Running amount for the floor card and the bill (matches
+    /// [`Self::bill_print_lines`] — held-unsent dishes are not owed yet).
     pub fn total_paise(&self) -> i64 {
-        self.lines.iter().map(RunningLine::billed_paise).sum()
+        self.live_lines()
+            .filter(|l| !(l.held && l.kot_id.is_empty()))
+            .map(RunningLine::billed_paise)
+            .sum()
     }
 
     /// The order as cart lines to bill: every live line, marked sent, NC at
@@ -4728,6 +4737,21 @@ mod tests {
         assert!(!lines[0].is_sent());
         assert!(!lines[1].hold_send, "sent line is not a coursing hold on the ticket");
         assert!(lines[1].is_sent());
+        // Guest bill / floor total: pending hold stays off until Fire / Send.
+        let bill = order.bill_print_lines();
+        assert!(
+            bill.iter().all(|l| l.id != "held-1"),
+            "held-unsent Grill must not print on the guest bill"
+        );
+        assert!(
+            bill.iter().any(|l| l.id == "sent-1"),
+            "already-KOTed Soup stays on the bill"
+        );
+        assert_eq!(
+            order.total_paise(),
+            8000,
+            "floor/bill total is Soup only while Grill is held"
+        );
     }
 
     #[test]
