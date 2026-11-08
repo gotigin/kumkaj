@@ -287,9 +287,7 @@ impl AppState {
             .unwrap_or_default()
             .iter()
             .map(|l| {
-                let unit = l.product.unit_label.trim();
-                let qty = l.product.stock_qty.max(0);
-                if unit.is_empty() { format!("{} {qty}", l.product.name) } else { format!("{} {qty} {unit}", l.product.name) }
+                format!("{} {}", l.product.name, l.product.format_on_hand())
             })
             .collect::<Vec<_>>()
             .join(", ");
@@ -1196,12 +1194,10 @@ impl AppState {
                 .into_iter()
                 .map(|p| {
                     let kind = locale::t(&lang, if p.is_raw() { "kind_raw" } else { "kind_resale" });
-                    let unit = p.unit_label.trim();
                     let sub = format!(
-                        "{kind} · {} {}{}",
-                        p.stock_qty.max(0),
-                        unit,
-                        if unit.is_empty() { locale::t(&lang, "in_stock") } else { String::new() }
+                        "{kind} · {} {}",
+                        p.format_on_hand(),
+                        locale::t(&lang, "in_stock")
                     );
                     SuggestRow::new(p.name.clone(), sub.trim().to_string())
                 })
@@ -1632,15 +1628,21 @@ impl AppState {
             lines.push('\n');
             for m in &movements {
                 let when = m.created_at.get(11..16).unwrap_or("");
-                let sign = if m.delta_qty >= 0 { "+" } else { "" };
+                let amount = if m.delta_milli != 0 {
+                    crate::domain::format_signed_stock_milli(m.delta_milli)
+                } else if m.delta_qty > 0 {
+                    format!("+{}", m.delta_qty)
+                } else {
+                    m.delta_qty.to_string()
+                };
                 let note = if m.note.trim().is_empty() {
                     String::new()
                 } else {
                     format!(" · {}", m.note.trim())
                 };
                 lines.push_str(&format!(
-                    "{when}  {}  {sign}{}{note}\n",
-                    m.product_name, m.delta_qty
+                    "{when}  {}  {amount}{note}\n",
+                    m.product_name
                 ));
             }
         }

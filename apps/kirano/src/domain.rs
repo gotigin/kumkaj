@@ -659,6 +659,60 @@ pub fn milli_to_whole_qty(qty_milli: i64) -> i64 {
     }
 }
 
+/// Shelf text for a milli quantity of the item's own unit (`1.75`, `1.75 kg`).
+pub fn format_stock_amount(milli: i64, unit: &str) -> String {
+    let neg = milli < 0;
+    let milli = milli.unsigned_abs();
+    let whole = milli / QTY_MILLI_UNIT as u64;
+    let frac = (milli % QTY_MILLI_UNIT as u64) as u32;
+    let mut num = if frac == 0 {
+        whole.to_string()
+    } else {
+        let mut s = format!("{whole}.{frac:03}");
+        while s.ends_with('0') {
+            s.pop();
+        }
+        s
+    };
+    if neg {
+        num.insert(0, '-');
+    }
+    let unit = unit.trim();
+    if unit.is_empty() {
+        num
+    } else {
+        format!("{num} {unit}")
+    }
+}
+
+/// Movement line: `+1.5`, `-0.25`, `0`.
+pub fn format_signed_stock_milli(delta_milli: i64) -> String {
+    if delta_milli > 0 {
+        format!("+{}", format_stock_amount(delta_milli, ""))
+    } else {
+        format_stock_amount(delta_milli, "")
+    }
+}
+
+/// Apply `delta_milli` to whole units plus a 0–999 remainder.
+/// Refuses untracked stock (`whole < 0`) and a count that would go negative.
+pub fn apply_stock_milli(whole: i64, frac: i64, delta_milli: i64) -> Result<(i64, i64), ()> {
+    if whole < 0 {
+        return Err(());
+    }
+    let frac = frac.clamp(0, 999);
+    let on = whole
+        .checked_mul(QTY_MILLI_UNIT)
+        .ok_or(())?
+        .checked_add(frac)
+        .ok_or(())?;
+    let after = on.checked_add(delta_milli).ok_or(())?;
+    if after < 0 {
+        return Err(());
+    }
+    Ok((after / QTY_MILLI_UNIT, after % QTY_MILLI_UNIT))
+}
+
 /// Display qty for receipts/reports: `x2` (piece) or `1.25 kg` (unit label).
 pub fn format_qty_display(qty_milli: i64, qty_whole: i64, unit_label: &str) -> String {
     let milli = if qty_milli > 0 {
@@ -1837,9 +1891,14 @@ pub struct Product {
     /// [`TaxRate`] this item follows; empty = ad-hoc `tax_bps` only.
     #[serde(default)]
     pub tax_rate_id: String,
-    /// On-hand quantity, or [`STOCK_UNTRACKED`] (−1) when not tracked.
+    /// Whole units on hand, or [`STOCK_UNTRACKED`] (−1) when not tracked.
+    /// The rest of a unit lives in [`Self::stock_frac_milli`].
     #[serde(default = "stock_untracked")]
     pub stock_qty: i64,
+    /// Thousandths of a unit still on the shelf (0–999), on top of [`Self::stock_qty`].
+    /// Selling 250 g of a kg item from 2 kg leaves 1 whole and 750 here.
+    #[serde(default)]
+    pub stock_frac_milli: i64,
     /// JSON array of [`ModifierOption`].
     #[serde(default = "empty_json_array")]
     pub modifiers_json: String,
@@ -1955,6 +2014,7 @@ impl Product {
             tax_bps: 0,
             tax_rate_id: String::new(),
             stock_qty: STOCK_UNTRACKED,
+            stock_frac_milli: 0,
             modifiers_json: "[]".into(),
             aliases_json: "[]".into(),
             branch_id: String::new(),
@@ -2062,10 +2122,24 @@ impl Product {
         !code.is_empty() && self.barcode.trim().eq_ignore_ascii_case(code)
     }
 
-    /// Off-MRP when sell price is below printed MRP (kirana shelf talker).
+    /// Off-MRP when the list price is below printed MRP (kirana shelf talker).
     pub fn off_mrp_paise(&self) -> Option<i64> {
-        if self.mrp_paise > 0 && self.price.0 > 0 && self.mrp_paise > self.price.0 {
-            Some(self.mrp_paise - self.price.0)
+        self.off_mrp_paise_at(self.price.0)
+    }
+
+    /// How far `charged_paise` sits under a printed MRP. `None` when MRP is unset or not above the charge.
+    pub fn off_mrp_paise_at(&self, charged_paise: i64) -> Option<i64> {
+        if self.mrp_paise > 0 && charged_paise > 0 && self.mrp_paise > charged_paise {
+            Some(self.mrp_paise - charged_paise)
+        } else {
+            None
+        }
+    }
+
+    /// How far `charged_paise` sits above a printed MRP. Selling above MRP is not allowed for packaged goods.
+    pub fn above_mrp_paise_at(&self, charged_paise: i64) -> Option<i64> {
+        if self.mrp_paise > 0 && charged_paise > self.mrp_paise {
+            Some(charged_paise - self.mrp_paise)
         } else {
             None
         }
@@ -2113,9 +2187,28 @@ impl Product {
         self.stock_qty >= 0
     }
 
+    /// On-hand in thousandths of this item's unit. −1 when untracked.
+    pub fn on_hand_milli(&self) -> i64 {
+        if self.stock_qty < 0 {
+            return -1;
+        }
+        let frac = self.stock_frac_milli.clamp(0, 999);
+        self.stock_qty
+            .saturating_mul(QTY_MILLI_UNIT)
+            .saturating_add(frac)
+    }
+
+    /// Shelf count for the owner: `12`, `1.75 kg`.
+    pub fn format_on_hand(&self) -> String {
+        if !self.tracks_stock() {
+            return String::new();
+        }
+        format_stock_amount(self.on_hand_milli(), &self.unit_label)
+    }
+
     /// Untracked items are always sellable; tracked items need stock on hand.
     pub fn in_stock(&self) -> bool {
-        !self.tracks_stock() || self.stock_qty > 0
+        !self.tracks_stock() || self.on_hand_milli() > 0
     }
 
     /// Flat option list for chips (each option carries its [`ModifierOption::group`]).
@@ -2363,7 +2456,7 @@ pub struct CartLine {
     pub product_id: String,
     pub name: String,
     pub unit_price: Money,
-    /// Whole-unit mirror of [`Self::qty_milli`] / 1000 (ceil) for stock checks.
+    /// Whole-unit mirror of [`Self::qty_milli`] / 1000 (ceil). Stock and money use `qty_milli`.
     pub qty: i64,
     /// Milli-units (1000 = 1 piece or 1 kg). Source of truth for line math.
     pub qty_milli: i64,
@@ -2687,13 +2780,38 @@ impl Cart {
         if !product.in_stock() {
             return Err(format!("{} is out of stock", product.name));
         }
-        if product.tracks_stock() && self.qty_of(&product.id) >= product.stock_qty {
-            return Err(format!(
-                "Only {} of {} in stock",
-                product.stock_qty, product.name
-            ));
+        if product.tracks_stock() {
+            // Same first-tap step as [`Cart::add_priced`]: 0.1 for a weight unit, 1 otherwise.
+            let step = if product.is_weight_unit() {
+                100
+            } else {
+                QTY_MILLI_UNIT
+            };
+            let next = self.qty_milli_of(&product.id).saturating_add(step);
+            if next > product.on_hand_milli() {
+                return Err(format!(
+                    "Only {} of {} in stock",
+                    product.format_on_hand(),
+                    product.name
+                ));
+            }
         }
         Ok(())
+    }
+
+    /// Milli-units of `product_id` already on this cart (1000 = one of its unit).
+    pub fn qty_milli_of(&self, product_id: &str) -> i64 {
+        self.lines
+            .iter()
+            .filter(|l| l.product_id == product_id)
+            .map(|l| {
+                if l.qty_milli > 0 {
+                    l.qty_milli
+                } else {
+                    l.qty.saturating_mul(QTY_MILLI_UNIT)
+                }
+            })
+            .sum()
     }
 
     /// One fewer of `product_id` (the menu window's −): the line still to
@@ -3265,6 +3383,14 @@ pub struct SaleLine {
 }
 
 impl SaleLine {
+    pub fn effective_qty_milli(&self) -> i64 {
+        if self.qty_milli > 0 {
+            self.qty_milli
+        } else {
+            self.qty.saturating_mul(QTY_MILLI_UNIT)
+        }
+    }
+
     pub fn modifiers(&self) -> Vec<ModifierOption> {
         let s = self.modifiers_json.trim();
         if s.is_empty() {
@@ -4344,7 +4470,8 @@ pub struct OpsReport {
     pub outstanding_credit_paise: i64,
     pub expenses_paise: i64,
     pub expense_count: i64,
-    pub top_items: Vec<(String, i64, i64)>, // name, qty, revenue_paise
+    /// name, qty in milli-units (1000 = one), revenue_paise
+    pub top_items: Vec<(String, i64, i64)>,
     /// Till→bank and other bank posts for the same day (when available).
     #[serde(default)]
     pub bank_net_paise: i64,
@@ -4366,8 +4493,11 @@ pub struct StockMovement {
     pub device_at: String,
     #[serde(default)]
     pub server_at: String,
-    /// Negative for sales/wastage, positive for purchases/corrections.
+    /// Whole-unit change (trunc of [`Self::delta_milli`] / 1000). Piece sales stay −1, −2, …
     pub delta_qty: i64,
+    /// Exact shelf change in thousandths of the item's unit. 0 on rows written before this column.
+    #[serde(default)]
+    pub delta_milli: i64,
     /// `sale` | `purchase` | `adjust` | `wastage` | free text.
     pub reason: String,
     pub note: String,
@@ -4510,6 +4640,37 @@ mod tests {
         assert_eq!(p.margin_vs_mrp_bps(), Some(1_000));
         p.mrp_paise = 0;
         assert_eq!(p.off_mrp_paise(), None);
+        p.mrp_paise = 10_000;
+        p.price = Money(11_000);
+        assert_eq!(p.above_mrp_paise_at(11_000), Some(1_000));
+        assert_eq!(p.off_mrp_paise(), None);
+        assert_eq!(p.above_mrp_paise_at(10_000), None);
+    }
+
+    #[test]
+    fn weight_cart_uses_milli_against_on_hand() {
+        let mut rice = Product::new_basic("rice", "Rice", Money::from_rupees(80));
+        rice.unit_label = "kg".into();
+        rice.stock_qty = 1;
+        let mut cart = Cart::default();
+        for _ in 0..10 {
+            cart.add_or_bump_in_stock(&rice).unwrap();
+        }
+        assert_eq!(cart.qty_milli_of("rice"), 1_000);
+        let err = cart.add_or_bump_in_stock(&rice).unwrap_err();
+        assert!(err.contains("Only 1 kg of Rice"), "{err}");
+        assert_eq!(cart.qty_milli_of("rice"), 1_000);
+    }
+
+    #[test]
+    fn fractional_stock_keeps_the_opened_unit() {
+        assert_eq!(apply_stock_milli(2, 0, -250), Ok((1, 750)));
+        assert_eq!(apply_stock_milli(0, 0, 1_500), Ok((1, 500)));
+        assert_eq!(apply_stock_milli(12, 0, -2_000), Ok((10, 0)));
+        assert!(apply_stock_milli(0, 200, -250).is_err());
+        assert_eq!(format_stock_amount(1_750, "kg"), "1.75 kg");
+        assert_eq!(format_signed_stock_milli(-250), "-0.25");
+        assert_eq!(format_signed_stock_milli(-2_000), "-2");
     }
     #[test]
     fn minus_takes_back_only_what_the_kitchen_has_not_got() {

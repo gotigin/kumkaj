@@ -194,7 +194,7 @@ impl Widget for MenuList {
                     let stock_line = if product.tracks_stock() {
                         format!(
                             "{} {}",
-                            product.stock_qty,
+                            product.format_on_hand(),
                             locale::t(&lang, "in_stock")
                         )
                     } else if product.available {

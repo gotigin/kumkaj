@@ -2028,15 +2028,25 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
 
     /// Status after a Sell add: name, optional MRP/off-MRP, zero-price nudge.
     fn sell_add_status(product: &crate::domain::Product, area: &str, currency: &str) -> String {
-        let price = product.price_in_area(area);
+        let price = product.price_now(area, chrono::Local::now());
         if price.0 == 0 {
             return format!("{} added · it has no price yet — set it on Items", product.name);
         }
         let mut msg = format!("{} added", product.name);
-        if let Some(off) = product.off_mrp_paise() {
+        if let Some(over) = product.above_mrp_paise_at(price.0) {
+            let mrp = locale::format_money(product.mrp_paise, currency);
+            let over_s = locale::format_money(over, currency);
+            msg = format!(
+                "{msg} · above MRP {mrp} by {over_s} — do not sell above the printed MRP"
+            );
+        } else if let Some(off) = product.off_mrp_paise_at(price.0) {
             let mrp = locale::format_money(product.mrp_paise, currency);
             let save = locale::format_money(off, currency);
-            let pct = product.margin_vs_mrp_bps().unwrap_or(0) / 100;
+            let pct = if product.mrp_paise > 0 {
+                off.saturating_mul(10_000) / product.mrp_paise / 100
+            } else {
+                0
+            };
             msg = format!("{msg} · MRP {mrp} · {save} off (~{pct}%)");
         }
         msg

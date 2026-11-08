@@ -1,7 +1,9 @@
 //! Local SQLite persistence for Kumkaj (WAL, restart-safe sales).
 
 use crate::domain::{
-    format_qty_display, milli_to_whole_qty, new_id, normalize_birthday, normalize_party_roles,
+    apply_stock_milli, format_qty_display, format_stock_amount, milli_to_whole_qty, new_id,
+    normalize_birthday,
+    normalize_party_roles,
     AttachmentEntity, AttachmentKind, AuditEvent, BooksOverview, Branch, BranchSnapshot, Category,
     CreditLedgerEntry, Customer, DayTotals, DiningTable, EntryAttachment, EventTimes,
     KitchenStation, KotStatus, KotTicket, Money, MoneyLane, MoneyMoveKind, MoneyMovement, OpenBill,
@@ -609,6 +611,9 @@ impl Store {
             "ALTER TABLE products ADD COLUMN rx_required INTEGER NOT NULL DEFAULT 0",
             "ALTER TABLE products ADD COLUMN mrp_paise INTEGER NOT NULL DEFAULT 0",
             "ALTER TABLE products ADD COLUMN hsn_code TEXT NOT NULL DEFAULT ''",
+            // Remainder of a unit still on the shelf (0–999). Whole units stay in stock_qty.
+            "ALTER TABLE products ADD COLUMN stock_frac_milli INTEGER NOT NULL DEFAULT 0",
+            "ALTER TABLE stock_movements ADD COLUMN delta_milli INTEGER NOT NULL DEFAULT 0",
             "ALTER TABLE products ADD COLUMN allergens TEXT NOT NULL DEFAULT ''",
             // KDS target prep minutes (ageing colours).
             "ALTER TABLE kitchen_stations ADD COLUMN target_prep_mins INTEGER NOT NULL DEFAULT 15",
@@ -3946,13 +3951,15 @@ impl Store {
         let mut top_stmt = self
             .conn
             .prepare(
-                "SELECT l.name, SUM(l.qty), SUM(l.line_total_paise)
+                "SELECT l.name,
+                        SUM(CASE WHEN l.qty_milli > 0 THEN l.qty_milli ELSE l.qty * 1000 END),
+                        SUM(l.line_total_paise)
                  FROM sale_lines l
                  JOIN sales s ON s.id = l.sale_id
                  WHERE s.status = 'completed' AND s.created_at LIKE ?1
                    AND (s.branch_id = ?2 OR s.branch_id = '')
                  GROUP BY l.name
-                 ORDER BY SUM(l.qty) DESC
+                 ORDER BY 2 DESC
                  LIMIT 8",
             )
             .map_err(|e| e.to_string())?;
@@ -4705,8 +4712,8 @@ impl Store {
         Ok(out)
     }
 
-    /// Items sold (sum of line quantities) for completed sales in an
-    /// inclusive day range — the restaurant period-books volume metric.
+    /// Quantity sold for completed sales in an inclusive day range, in
+    /// milli-units of each line (1000 = one piece or one kg).
     pub fn period_items_sold(&self, from_day: &str, to_day: &str) -> Result<i64, String> {
         let branch = self.active_branch_id()?;
         let from = format!("{from_day}T00:00:00");
@@ -4714,7 +4721,8 @@ impl Store {
         let total: i64 = self
             .conn
             .query_row(
-                "SELECT COALESCE(SUM(l.qty), 0) FROM sale_lines l
+                "SELECT COALESCE(SUM(CASE WHEN l.qty_milli > 0 THEN l.qty_milli ELSE l.qty * 1000 END), 0)
+                 FROM sale_lines l
                  JOIN sales s ON s.id = l.sale_id
                  WHERE s.status = 'completed'
                    AND s.created_at >= ?1 AND s.created_at <= ?2
@@ -4968,7 +4976,7 @@ impl Store {
              We owe them (credit / AP) {}\n\
              {}\n",
             books.sale_count,
-            items_sold,
+            format_stock_amount(items_sold, ""),
             Money(books.revenue_paise).format_localized(&currency, &fiscal),
             Money(books.cogs_paise).format_localized(&currency, &fiscal),
             Money(books.gross_paise()).format_localized(&currency, &fiscal),
@@ -6738,7 +6746,7 @@ impl Store {
         let n = self
             .conn
             .execute(
-                "UPDATE products SET stock_qty = ?1 WHERE id = ?2",
+                "UPDATE products SET stock_qty = ?1, stock_frac_milli = 0 WHERE id = ?2",
                 params![qty, product_id],
             )
             .map_err(|e| e.to_string())?;
@@ -6768,20 +6776,23 @@ impl Store {
             .get_product(product_id)?
             .ok_or_else(|| "Product not found".to_string())?;
         let mut new_qty = product.stock_qty;
+        let delta_milli = delta_qty.saturating_mul(1_000);
         if product.tracks_stock() {
-            new_qty = product.stock_qty.saturating_add(delta_qty);
-            if new_qty < 0 {
-                return Err(format!(
-                    "Not enough stock for {}: {} on hand",
-                    product.name, product.stock_qty
-                ));
-            }
+            let (whole, frac) = apply_stock_milli(product.stock_qty, product.stock_frac_milli, delta_milli)
+                .map_err(|_| {
+                    format!(
+                        "Not enough stock for {}: {} on hand",
+                        product.name,
+                        product.format_on_hand()
+                    )
+                })?;
             self.conn
                 .execute(
-                    "UPDATE products SET stock_qty = ?1 WHERE id = ?2",
-                    params![new_qty, product_id],
+                    "UPDATE products SET stock_qty = ?1, stock_frac_milli = ?2 WHERE id = ?3",
+                    params![whole, frac, product_id],
                 )
                 .map_err(|e| e.to_string())?;
+            new_qty = whole;
         }
         let reason = {
             let r = reason.trim();
@@ -6791,7 +6802,7 @@ impl Store {
                 r
             }
         };
-        self.record_stock_movement(product_id, delta_qty, reason, note.trim(), actor, "")?;
+        self.record_stock_movement(product_id, delta_milli, reason, note.trim(), actor, "")?;
         self.audit(
             actor,
             "stock.adjust",
@@ -6800,10 +6811,11 @@ impl Store {
         Ok(new_qty)
     }
 
+    /// `delta_milli` is the exact shelf change (1000 = one unit). `delta_qty` stores the whole-unit trunc so older readers still see −2 for two pieces.
     fn record_stock_movement(
         &self,
         product_id: &str,
-        delta_qty: i64,
+        delta_milli: i64,
         reason: &str,
         note: &str,
         actor: &StaffMember,
@@ -6813,16 +6825,17 @@ impl Store {
         self.conn
             .execute(
                 "INSERT INTO stock_movements(
-                    id, branch_id, product_id, created_at, delta_qty,
+                    id, branch_id, product_id, created_at, delta_qty, delta_milli,
                     reason, note, actor_id, actor_name, ref_id,
                     user_at, device_at, server_at
-                 ) VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13)",
+                 ) VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14)",
                 params![
                     new_id(),
                     self.active_branch_id()?,
                     product_id,
                     times.user_at,
-                    delta_qty,
+                    delta_milli / 1_000,
+                    delta_milli,
                     reason,
                     note,
                     actor.id,
@@ -6961,18 +6974,13 @@ impl Store {
                     ],
                 )
                 .map_err(|e| e.to_string())?;
-            if *tracked {
-                self.conn
-                    .execute(
-                        "UPDATE products SET stock_qty = stock_qty + ?1
-                         WHERE id = ?2 AND stock_qty >= 0",
-                        params![line.qty, line.product_id],
-                    )
-                    .map_err(|e| e.to_string())?;
+            let add_milli = line.effective_qty_milli();
+            if *tracked && add_milli > 0 && !shift_tracked_stock(&self.conn, &line.product_id, add_milli)? {
+                return Err(format!("Could not add stock for {}", line.name));
             }
             self.record_stock_movement(
                 &line.product_id,
-                line.qty,
+                add_milli,
                 "purchase",
                 &supplier_name,
                 actor,
@@ -7031,7 +7039,9 @@ impl Store {
         Ok(self
             .list_products(false)?
             .into_iter()
-            .filter(|p| p.tracks_stock() && p.stock_qty <= threshold)
+            .filter(|p| {
+                p.tracks_stock() && p.on_hand_milli() <= threshold.saturating_mul(1_000)
+            })
             .collect())
     }
 
@@ -7045,7 +7055,8 @@ impl Store {
                         m.reason, m.note, m.actor_id, m.actor_name, m.ref_id,
                         COALESCE(NULLIF(m.user_at, ''), m.created_at),
                         COALESCE(NULLIF(m.device_at, ''), m.created_at),
-                        COALESCE(m.server_at, '')
+                        COALESCE(m.server_at, ''),
+                        COALESCE(m.delta_milli, 0)
                  FROM stock_movements m
                  LEFT JOIN products p ON p.id = m.product_id
                  WHERE m.branch_id = ?1 OR m.branch_id = ''
@@ -7070,6 +7081,7 @@ impl Store {
                     user_at: row.get(11)?,
                     device_at: row.get(12)?,
                     server_at: row.get(13)?,
+                    delta_milli: row.get(14)?,
                 })
             })
             .map_err(|e| e.to_string())?;
@@ -7404,9 +7416,10 @@ impl Store {
                     id, name, price_paise, available, archived, image_key,
                     category_id, station_id, tax_bps, stock_qty, modifiers_json, branch_id,
                     tax_rate_id, aliases_json, unit_label, group_name, area_prices_json, kind,
-                    schedule_json, allergens, barcode, composition, schedule_h, rx_required, mrp_paise, hsn_code
+                    schedule_json, allergens, barcode, composition, schedule_h, rx_required, mrp_paise, hsn_code,
+                    stock_frac_milli
                  )
-                 VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14, ?15, ?16, ?17, ?18, ?19, ?20, ?21, ?22, ?23, ?24, ?25, ?26)
+                 VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14, ?15, ?16, ?17, ?18, ?19, ?20, ?21, ?22, ?23, ?24, ?25, ?26, ?27)
                  ON CONFLICT(id) DO UPDATE SET
                    name=excluded.name,
                    price_paise=excluded.price_paise,
@@ -7432,7 +7445,8 @@ impl Store {
                    schedule_h=excluded.schedule_h,
                    rx_required=excluded.rx_required,
                    mrp_paise=excluded.mrp_paise,
-                   hsn_code=excluded.hsn_code",
+                   hsn_code=excluded.hsn_code,
+                   stock_frac_milli=excluded.stock_frac_milli",
                 params![
                     product.id,
                     product.name,
@@ -7464,6 +7478,7 @@ impl Store {
                     product.rx_required as i64,
                     product.mrp_paise,
                     product.hsn_code.trim(),
+                    product.stock_frac_milli.clamp(0, 999),
                 ],
             )
             .map_err(|e| e.to_string())?;
@@ -8087,26 +8102,29 @@ impl Store {
                     None => by_station.push((station_id, vec![label])),
                 }
             }
-            if tracked && line.qty > 0 {
+            let milli = line.effective_qty_milli();
+            if tracked && milli > 0 {
                 // Aggregate per item: two lines of the same product still have
-                // to fit inside one on-hand count.
+                // to fit inside one on-hand count. Milli, not the ceiled whole qty.
                 match stock_hits.iter_mut().find(|(pid, _)| *pid == line.product_id) {
-                    Some((_, qty)) => *qty = qty.saturating_add(line.qty),
-                    None => stock_hits.push((line.product_id.clone(), line.qty)),
+                    Some((_, qty)) => *qty = qty.saturating_add(milli),
+                    None => stock_hits.push((line.product_id.clone(), milli)),
                 }
             }
         }
         // Refuse the oversell before anything is written. The decrement used to
         // clamp at zero, which quietly sold stock the shop did not have and
-        // left the count lying about it.
-        for (product_id, qty) in &stock_hits {
+        // left the count lying about it. A 250 g sale must not take a whole kg.
+        for (product_id, milli) in &stock_hits {
             let product = self
                 .get_product(product_id)?
                 .ok_or_else(|| "Product not found".to_string())?;
-            if product.stock_qty < *qty {
+            if product.on_hand_milli() < *milli {
                 return Err(format!(
-                    "Not enough stock for {}: {} on hand, {qty} on the bill",
-                    product.name, product.stock_qty
+                    "Not enough stock for {}: {} on hand, {} on the bill",
+                    product.name,
+                    product.format_on_hand(),
+                    format_stock_amount(*milli, &product.unit_label)
                 ));
             }
         }
@@ -8294,31 +8312,26 @@ impl Store {
         };
 
         // Tracked items only: untracked (−1) stock stays untracked. The
-        // `stock_qty >= ?1` guard makes the check above race-proof — a second
+        // on-hand milli guard makes the check above race-proof — a second
         // till that took the last unit first leaves 0 rows updated here.
-        for (product_id, qty) in &stock_hits {
-            let moved = tx
-                .execute(
-                    "UPDATE products SET stock_qty = stock_qty - ?1
-                     WHERE id = ?2 AND stock_qty >= ?1",
-                    params![qty, product_id],
-                )
-                .map_err(|e| e.to_string())?;
-            if moved == 0 {
+        for (product_id, milli) in &stock_hits {
+            if !shift_tracked_stock(&tx, product_id, -milli)? {
                 return Err(format!("Stock ran out while charging {product_id}"));
             }
+            let delta_milli = -milli;
             tx.execute(
                 "INSERT INTO stock_movements(
-                    id, branch_id, product_id, created_at, delta_qty,
+                    id, branch_id, product_id, created_at, delta_qty, delta_milli,
                     reason, note, actor_id, actor_name, ref_id,
                     user_at, device_at, server_at
-                 ) VALUES(?1, ?2, ?3, ?4, ?5, 'sale', '', ?6, ?7, ?8, ?9, ?10, ?11)",
+                 ) VALUES(?1, ?2, ?3, ?4, ?5, ?6, 'sale', '', ?7, ?8, ?9, ?10, ?11, ?12)",
                 params![
                     new_id(),
                     branch_id,
                     product_id,
                     created_at,
-                    -qty,
+                    delta_milli / 1_000,
+                    delta_milli,
                     actor.id,
                     actor.name,
                     sale_id,
@@ -9909,7 +9922,7 @@ impl Store {
             "DELETE FROM lan_replies",
             "DELETE FROM lan_sessions",
             "UPDATE tables_dining SET status = 'available', active_sale_id = NULL, occupied_at = '', paid_at = ''",
-            "UPDATE products SET stock_qty = 0 WHERE stock_qty >= 0",
+            "UPDATE products SET stock_qty = 0, stock_frac_milli = 0 WHERE stock_qty >= 0",
             "DELETE FROM meta WHERE key LIKE 'table_draft_%'",
             "DELETE FROM meta WHERE key IN (
                 'last_day_close_at', 'opening_float_paise', 'shift_opened_at',
@@ -9975,7 +9988,7 @@ impl Store {
             "DELETE FROM lan_replies",
             "DELETE FROM lan_sessions",
             "UPDATE tables_dining SET status = 'available', active_sale_id = NULL, occupied_at = '', paid_at = ''",
-            "UPDATE products SET stock_qty = 0 WHERE stock_qty >= 0",
+            "UPDATE products SET stock_qty = 0, stock_frac_milli = 0 WHERE stock_qty >= 0",
             "DELETE FROM meta WHERE key LIKE 'table_draft_%'",
             "DELETE FROM meta WHERE key IN (
                 'last_day_close_at', 'opening_float_paise', 'shift_opened_at',
@@ -13078,7 +13091,8 @@ const PRODUCT_COLUMNS: &str = "id, name, price_paise, available, archived, image
      COALESCE(schedule_json, '[]'), COALESCE(allergens, ''),
      COALESCE(barcode, ''), COALESCE(composition, ''),
      COALESCE(schedule_h, 0), COALESCE(rx_required, 0),
-     COALESCE(mrp_paise, 0), COALESCE(hsn_code, '')";
+     COALESCE(mrp_paise, 0), COALESCE(hsn_code, ''),
+     COALESCE(stock_frac_milli, 0)";
 
 /// Every column [`row_to_sale`] expects, in order.
 const SALE_COLUMNS: &str = "id, created_at, total_paise,
@@ -13094,6 +13108,26 @@ const SALE_COLUMNS: &str = "id, created_at, total_paise,
      COALESCE(NULLIF(device_at, ''), created_at),
      COALESCE(server_at, ''),
      COALESCE(extras_json, '[]')";
+
+/// Move tracked on-hand by `delta_milli` (negative leaves the shelf).
+/// Returns false when the item is missing, untracked, or the move would go negative.
+fn shift_tracked_stock(conn: &Connection, product_id: &str, delta_milli: i64) -> Result<bool, String> {
+    if delta_milli == 0 {
+        return Ok(true);
+    }
+    let n = conn
+        .execute(
+            "UPDATE products SET
+                stock_qty = (stock_qty * 1000 + stock_frac_milli + ?1) / 1000,
+                stock_frac_milli = (stock_qty * 1000 + stock_frac_milli + ?1) % 1000
+             WHERE id = ?2
+               AND stock_qty >= 0
+               AND (stock_qty * 1000 + stock_frac_milli + ?1) >= 0",
+            params![delta_milli, product_id],
+        )
+        .map_err(|e| e.to_string())?;
+    Ok(n == 1)
+}
 
 /// Put a reversed sale's tracked units back on the shelf and leave a movement
 /// behind. Without this, undoing a mistaken charge would strand stock the shop
@@ -13115,49 +13149,44 @@ fn restore_stock_for_sale(
         .optional()
         .map_err(|e| e.to_string())?
         .unwrap_or_default();
-    let sold: Vec<(String, i64)> = {
+    let sold: Vec<(String, i64, i64)> = {
         let mut stmt = tx
             .prepare(
-                "SELECT product_id, SUM(qty) FROM sale_lines
+                "SELECT product_id, SUM(qty),
+                        SUM(CASE WHEN qty_milli > 0 THEN qty_milli ELSE qty * 1000 END)
+                 FROM sale_lines
                  WHERE sale_id = ?1 GROUP BY product_id",
             )
             .map_err(|e| e.to_string())?;
         let rows = stmt
-            .query_map(params![sale_id], |r| Ok((r.get(0)?, r.get(1)?)))
+            .query_map(params![sale_id], |r| Ok((r.get(0)?, r.get(1)?, r.get(2)?)))
             .map_err(|e| e.to_string())?;
         rows.collect::<Result<Vec<_>, _>>()
             .map_err(|e| e.to_string())?
     };
-    // What the dishes used from the shelf goes back too.
-    let returned: Vec<(String, i64)> = sold.iter().map(|(id, q)| (id.clone(), -q)).collect();
+    // Recipes still follow whole portions (the ceiled `qty` the sale consumed).
+    let returned: Vec<(String, i64)> = sold.iter().map(|(id, q, _)| (id.clone(), -q)).collect();
     recipes::apply_recipe_usage(tx, &returned, "recipe_return", sale_id, &branch_id, actor, at)?;
-    for (product_id, qty) in sold {
-        if qty <= 0 {
+    for (product_id, _qty, milli) in sold {
+        if milli <= 0 {
             continue;
         }
-        let moved = tx
-            .execute(
-                "UPDATE products SET stock_qty = stock_qty + ?1
-                 WHERE id = ?2 AND stock_qty >= 0",
-                params![qty, product_id],
-            )
-            .map_err(|e| e.to_string())?;
-        // 0 rows means the item is untracked or no longer in the catalogue —
-        // there is no count to put anything back into.
-        if moved == 0 {
+        // 0 rows means the item is untracked or no longer in the catalogue.
+        if !shift_tracked_stock(tx, &product_id, milli)? {
             continue;
         }
         tx.execute(
             "INSERT INTO stock_movements(
-                id, branch_id, product_id, created_at, delta_qty,
+                id, branch_id, product_id, created_at, delta_qty, delta_milli,
                 reason, note, actor_id, actor_name, ref_id
-             ) VALUES(?1, ?2, ?3, ?4, ?5, ?6, '', ?7, ?8, ?9)",
+             ) VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7, '', ?8, ?9, ?10)",
             params![
                 new_id(),
                 branch_id,
                 product_id,
                 at,
-                qty,
+                milli / 1_000,
+                milli,
                 reason,
                 actor.id,
                 actor.name,
@@ -13184,66 +13213,68 @@ fn apply_amend_stock(
     actor: &StaffMember,
     at: &str,
 ) -> Result<(), String> {
-    let mut deltas: Vec<(String, i64)> = Vec::new();
-    let mut bump = |product_id: &str, qty: i64| {
-        match deltas.iter_mut().find(|(id, _)| id == product_id) {
+    let mut portions: Vec<(String, i64)> = Vec::new();
+    let mut millis: Vec<(String, i64)> = Vec::new();
+    let bump = |bucket: &mut Vec<(String, i64)>, product_id: &str, qty: i64| {
+        match bucket.iter_mut().find(|(id, _)| id == product_id) {
             Some((_, sum)) => *sum = sum.saturating_add(qty),
-            None => deltas.push((product_id.to_string(), qty)),
+            None => bucket.push((product_id.to_string(), qty)),
         }
     };
     // Positive = goes back on the shelf, negative = leaves the shelf.
+    // Recipes follow whole portions; the shelf follows milli-units.
     for line in &previous.lines {
-        bump(&line.product_id, line.qty);
+        bump(&mut portions, &line.product_id, line.qty);
+        bump(&mut millis, &line.product_id, line.effective_qty_milli());
     }
     for line in &draft.lines {
-        bump(&line.product_id, -line.qty);
+        bump(&mut portions, &line.product_id, -line.qty);
+        bump(&mut millis, &line.product_id, -line.effective_qty_milli());
     }
 
     let branch_id = previous.branch_id.clone();
-    // Recipes follow the portions: a removed dish's usage goes back.
-    let portions: Vec<(String, i64)> = deltas.iter().map(|(id, d)| (id.clone(), -d)).collect();
-    recipes::apply_recipe_usage(tx, &portions, "recipe_amend", sale_id, &branch_id, actor, at)?;
-    for (product_id, delta) in deltas {
-        if delta == 0 {
+    let recipe_portions: Vec<(String, i64)> = portions.iter().map(|(id, d)| (id.clone(), -d)).collect();
+    recipes::apply_recipe_usage(tx, &recipe_portions, "recipe_amend", sale_id, &branch_id, actor, at)?;
+    for (product_id, delta_milli) in millis {
+        if delta_milli == 0 {
             continue;
         }
-        let tracked: Option<(String, i64)> = tx
+        let tracked: Option<(String, i64, i64)> = tx
             .query_row(
-                "SELECT name, stock_qty FROM products WHERE id = ?1",
+                "SELECT name, stock_qty, COALESCE(stock_frac_milli, 0) FROM products WHERE id = ?1",
                 params![product_id],
-                |r| Ok((r.get(0)?, r.get(1)?)),
+                |r| Ok((r.get(0)?, r.get(1)?, r.get(2)?)),
             )
             .optional()
             .map_err(|e| e.to_string())?;
-        let Some((name, on_hand)) = tracked else {
+        let Some((name, on_hand, frac)) = tracked else {
             continue;
         };
         if on_hand < 0 {
             continue;
         }
-        let after = on_hand.saturating_add(delta);
-        if after < 0 {
+        if apply_stock_milli(on_hand, frac, delta_milli).is_err() {
+            let have = format_stock_amount(on_hand.saturating_mul(1_000).saturating_add(frac.clamp(0, 999)), "");
             return Err(format!(
-                "Not enough stock for {name}: {on_hand} on hand, amend needs {}",
-                delta.saturating_abs()
+                "Not enough stock for {name}: {have} on hand, amend needs {}",
+                format_stock_amount(delta_milli.saturating_abs(), "")
             ));
         }
-        tx.execute(
-            "UPDATE products SET stock_qty = ?1 WHERE id = ?2",
-            params![after, product_id],
-        )
-        .map_err(|e| e.to_string())?;
+        if !shift_tracked_stock(tx, &product_id, delta_milli)? {
+            return Err(format!("Not enough stock for {name}"));
+        }
         tx.execute(
             "INSERT INTO stock_movements(
-                id, branch_id, product_id, created_at, delta_qty,
+                id, branch_id, product_id, created_at, delta_qty, delta_milli,
                 reason, note, actor_id, actor_name, ref_id
-             ) VALUES(?1, ?2, ?3, ?4, ?5, 'amend', '', ?6, ?7, ?8)",
+             ) VALUES(?1, ?2, ?3, ?4, ?5, ?6, 'amend', '', ?7, ?8, ?9)",
             params![
                 new_id(),
                 branch_id,
                 product_id,
                 at,
-                delta,
+                delta_milli / 1_000,
+                delta_milli,
                 actor.id,
                 actor.name,
                 sale_id
@@ -13425,6 +13456,7 @@ fn row_to_product(row: &rusqlite::Row<'_>) -> rusqlite::Result<Product> {
         rx_required: row.get::<_, i64>(23).unwrap_or(0) != 0,
         mrp_paise: row.get::<_, i64>(24).unwrap_or(0),
         hsn_code: row.get(25).unwrap_or_default(),
+        stock_frac_milli: row.get::<_, i64>(26).unwrap_or(0),
     })
 }
 
@@ -14170,7 +14202,7 @@ mod tests {
             .unwrap();
         let today = chrono::Local::now().format("%Y-%m-%d").to_string();
         let items = store.period_items_sold(&today, &today).unwrap();
-        assert_eq!(items, 1);
+        assert_eq!(items, 1_000, "one piece is 1000 milli");
         let books = store.books_report_text("today").unwrap();
         assert!(books.contains("Debit / credit"), "{books}");
         assert!(books.contains("balance sheet"), "{books}");
@@ -16159,8 +16191,51 @@ mod tests {
         assert!(reasons.contains(&"wastage"));
         let sale_move = moves.iter().find(|m| m.reason == "sale").unwrap();
         assert_eq!(sale_move.delta_qty, -2);
+        assert_eq!(sale_move.delta_milli, -2_000);
         assert_eq!(sale_move.product_name, "Samosa");
         assert!(!sale_move.ref_id.is_empty());
+        let _ = std::fs::remove_file(path);
+    }
+
+    /// 250 g of a 2 kg bag must leave 1.75 kg, and the bill must charge 250 g.
+    #[test]
+    fn fractional_weight_sale_and_purchase_keep_the_remainder() {
+        let path = temp_db();
+        let store = Store::open_path(&path).unwrap();
+        let owner = store.list_staff().unwrap().into_iter().next().unwrap();
+        let mut rice = test_product("Rice", 80);
+        rice.unit_label = "kg".into();
+        rice.kind = crate::domain::ITEM_KIND_RESALE.into();
+        rice.stock_qty = 2;
+        store.upsert_product(&rice).unwrap();
+
+        store
+            .record_purchase("Mill", &[(rice.id.clone(), 1_500, 4_000)], "", &owner)
+            .unwrap();
+        let after_buy = store.get_product(&rice.id).unwrap().unwrap();
+        assert_eq!(after_buy.stock_qty, 3);
+        assert_eq!(after_buy.stock_frac_milli, 500, "1.5 kg on top of 2 kg is 3.5");
+        assert_eq!(after_buy.on_hand_milli(), 3_500);
+
+        let mut cart = Cart::default();
+        cart.add_or_bump(&after_buy);
+        cart.set_qty_milli(0, 250);
+        let draft = cart.to_sale_draft().unwrap();
+        assert_eq!(draft.lines[0].line_total_paise, 2_000, "₹80/kg × 0.25");
+        store
+            .finalize_sale(&draft, PayMethod::Cash, None, None, &owner)
+            .unwrap();
+        let after_sale = store.get_product(&rice.id).unwrap().unwrap();
+        assert_eq!(after_sale.on_hand_milli(), 3_250);
+        assert_eq!(after_sale.format_on_hand(), "3.25 kg");
+        let sale_move = store
+            .list_stock_movements(10)
+            .unwrap()
+            .into_iter()
+            .find(|m| m.reason == "sale")
+            .unwrap();
+        assert_eq!(sale_move.delta_milli, -250);
+
         let _ = std::fs::remove_file(path);
     }
 

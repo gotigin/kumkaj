@@ -692,8 +692,12 @@ fn confirm_line_action(&mut self, cx: &mut Cx) {
                             .iter()
                             .find(|p| p.id == line.product_id)
                             .filter(|p| p.tracks_stock())
-                            .filter(|p| st.cart.qty_of(&line.product_id) + delta > p.stock_qty)
-                            .map(|p| format!("Only {} of {} in stock", p.stock_qty, p.name))
+                            .filter(|p| {
+                                let step = line.bump_step_milli();
+                                st.cart.qty_milli_of(&line.product_id).saturating_add(step)
+                                    > p.on_hand_milli()
+                            })
+                            .map(|p| format!("Only {} of {} in stock", p.format_on_hand(), p.name))
                     } else {
                         None
                     };
@@ -992,7 +996,8 @@ fn confirm_line_action(&mut self, cx: &mut Cx) {
         }
         let mut st = app_state().lock().unwrap();
         st.editing_product_id = None;
-        st.form_resale = false;
+        // A new grocery item is bought to sell and counted. "Don't count stock" is the exception.
+        st.form_resale = true;
         st.draft_image_key = None;
         st.form_category_id = None;
         st.form_category_label.clear();

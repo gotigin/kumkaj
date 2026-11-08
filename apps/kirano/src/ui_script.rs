@@ -7473,8 +7473,8 @@ script_mod! {
                                     width: Fill height: Fit
                                     flow: Right spacing: 6
                                     View{width: Fill height: Fit flow: Overlay
-                                        menu_kind_dish := SegBtn{text: "Made / packed here"}
-                                        menu_kind_dish_on := SegBtnOn{text: "Made / packed here" visible: false}
+                                        menu_kind_dish := SegBtn{text: "Don't count stock"}
+                                        menu_kind_dish_on := SegBtnOn{text: "Don't count stock" visible: false}
                                     }
                                     View{width: Fill height: Fit flow: Overlay
                                         menu_kind_resale := SegBtn{text: "Bought to sell"}

@@ -167,12 +167,12 @@ mod ux_rules_tests {
         let en = |k: &str| locale::t("en", k);
         let (kind, msg) = kot_sent_status(&en, "Hot kitchen, Bar", true, None);
         assert_eq!(kind, SnackKind::Success);
-        assert_eq!(msg, "KOT sent to Hot kitchen, Bar — printing");
+        assert_eq!(msg, "Slip sent to Hot kitchen, Bar — printing");
         let (kind, msg) = kot_sent_status(&en, "Hot kitchen", true, Some("printer offline"));
         assert_eq!(kind, SnackKind::Error);
-        assert!(msg.contains("printer offline") && msg.contains("Tell the kitchen"), "{msg}");
+        assert!(msg.contains("printer offline") && msg.contains("Tell the shop"), "{msg}");
         let (kind, msg) = kot_sent_status(&en, "Hot kitchen", false, None);
-        assert_eq!((kind, msg.as_str()), (SnackKind::Success, "KOT sent to Hot kitchen"));
+        assert_eq!((kind, msg.as_str()), (SnackKind::Success, "Slip sent to Hot kitchen"));
         assert!(!msg.contains("KOT(s)"));
 
         let gu = |k: &str| locale::t("gu", k);

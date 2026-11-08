@@ -1747,11 +1747,18 @@ impl Store {
             self.add_variant_items(&product, variations, photo_path.as_deref(), actor)?
         };
         let size_names = sizes.iter().map(|p| p.name.as_str()).collect::<Vec<_>>().join(", ");
-        Ok(match (updating, sizes.is_empty()) {
+        let saved = match (updating, sizes.is_empty()) {
             (true, true) => format!("Updated {}", product.name),
             (false, true) => format!("Added {}", product.name),
             (true, false) => format!("Updated {} · added {size_names}", product.name),
             (false, false) => format!("Added {size_names}"),
-        })
+        };
+        let above_mrp = mrp_paise > 0
+            && (price_paise > mrp_paise || area_prices.iter().any(|p| p.price_paise > mrp_paise));
+        if above_mrp {
+            Ok(format!("{saved} · sell price is above the printed MRP"))
+        } else {
+            Ok(saved)
+        }
     }
 }

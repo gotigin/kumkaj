@@ -494,12 +494,13 @@ impl Widget for StockList {
                     item.label(cx, ids!(stock_name)).set_text(cx, &p.name);
                     item.label(cx, ids!(stock_kind))
                         .set_text(cx, if p.is_raw() { &raw } else { &resale });
-                    let on_hand = p.stock_qty.max(0);
-                    let unit = p.unit_label.trim();
                     item.label(cx, ids!(stock_qty))
-                        .set_text(cx, &if unit.is_empty() { format!("{on_hand}") } else { format!("{on_hand} {unit}") });
+                        .set_text(cx, &p.format_on_hand());
                     let reorder_at = levels.get(&p.id).copied().unwrap_or(store::DEFAULT_REORDER_AT);
-                    item.view(cx, ids!(stock_low)).set_visible(cx, on_hand <= reorder_at);
+                    item.view(cx, ids!(stock_low)).set_visible(
+                        cx,
+                        p.on_hand_milli() <= reorder_at.saturating_mul(1_000),
+                    );
                     item.label(cx, ids!(stock_low_text)).set_text(cx, &low);
                     item.draw_all_unscoped(cx);
                 }

@@ -1847,7 +1847,7 @@ fn en(key: &str) -> String {
         "preset_help_rest" => "Cashier: sell. Manager: sell + items + void/amend.",
         "kind_raw" => "Raw material",
         "kind_resale" => "Bought & resold",
-        "kind_dish" => "Made here (unused on counter)",
+        "kind_dish" => "Don't count stock",
         "buy_unit_ph" => "Unit (kg, litre, pcs)",
         "add_another_way" => "+ Add another way",
         "parts_status" => "Entered {a} of {b} · {c} left",
