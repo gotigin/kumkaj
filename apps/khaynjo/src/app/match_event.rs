@@ -5913,6 +5913,9 @@ impl MatchEvent for App {
             client_find_cancel().store(true, std::sync::atomic::Ordering::SeqCst);
             self.paint_submit_busy_chrome(cx);
         }
+        if self.ui.button(cx, ids!(client_pair_cancel)).clicked(actions) {
+            self.abandon_client_pair(cx);
+        }
         if self.ui.button(cx, ids!(client_find_btn)).clicked(actions) {
             if client_find_busy().load(std::sync::atomic::Ordering::SeqCst) {
                 // Looking… — ignore re-taps.
@@ -8020,34 +8023,17 @@ impl MatchEvent for App {
                     .unwrap_or_default();
                 (expect, device_id)
             };
-            if host.trim().is_empty() || code.trim().is_empty() {
-                self.set_status(cx, "Type the shop device's address and its pairing code");
-            } else {
-                app_state().lock().unwrap().pair_note = "Pairing…".into();
-                self.set_status(cx, "Pairing…");
-                self.ui
-                    .widget(cx, ids!(client_pair_status))
-                    .set_text(cx, "Pairing…");
-                self.ui.redraw(cx);
-                let _ = std::thread::Builder::new()
-                    .name("khaynjo-pair".into())
-                    .spawn(move || {
-                        let reply = net::client_pair(
-                            &host,
-                            &code,
-                            name.trim(),
-                            &device_id,
-                            expect_server_id.as_deref(),
-                        );
-                        *lan_once().lock().unwrap() = Some(LanOnce::Paired(reply));
-                        makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal();
-                    });
-            }
+            self.start_client_pair(cx, host, code, name, device_id, expect_server_id);
         }
-        if self.ui.button(cx, ids!(client_sync_btn)).clicked(actions) {
+        if self.ui.button(cx, ids!(client_sync_btn)).clicked(actions)
+            && !client_pair_busy().load(std::sync::atomic::Ordering::SeqCst)
+        {
             phone::want_sync();
-            self.set_status(cx, "Refreshing from the shop…");
-            self.sync_chrome(cx);
+            let msg = "Refreshing from the shop…";
+            self.ui
+                .widget(cx, ids!(client_pair_status))
+                .set_text(cx, msg);
+            self.set_status(cx, msg);
         }
         if self.ui.button(cx, ids!(client_connection_btn)).clicked(actions)
             || self.ui.button(cx, ids!(lock_client_connection)).clicked(actions)

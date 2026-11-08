@@ -68,8 +68,10 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
             || diag_export_busy().load(std::sync::atomic::Ordering::SeqCst)
             || printer_add
             || finding
-            || role_open_busy().load(std::sync::atomic::Ordering::SeqCst);
+            || role_open_busy().load(std::sync::atomic::Ordering::SeqCst)
+            || client_pair_busy().load(std::sync::atomic::Ordering::SeqCst);
         self.paint_submit_busy_chrome(cx);
+        self.paint_pair_busy_chrome(cx);
         if heavy_job {
             self.paint_role_open_busy_chrome(cx);
             if let Some(msg) = books_work_status().lock().unwrap().clone() {
@@ -1955,91 +1957,108 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
         let client_find = client_find_busy().load(std::sync::atomic::Ordering::SeqCst);
         let status = books_work_status().lock().unwrap().clone();
 
-        let (find_label, cancel_lbl) = {
-            let st = app_state().lock().unwrap();
-            (
-                if finding {
-                    st.t("printers_looking")
-                } else {
-                    st.t("find_printers")
-                },
-                "Cancel".to_string(),
-            )
+        let find_label = if finding {
+            app_state().lock().unwrap().t("printers_looking")
+        } else {
+            String::new()
         };
-
-        self.ui.button(cx, ids!(find_printers_btn)).set_text(cx, &find_label);
+        // Never set_text on the Find face (Fill + wrap freezes Settings).
         self.ui
-            .button(cx, ids!(find_printers_cancel))
-            .set_text(cx, &cancel_lbl);
+            .button(cx, ids!(find_printers_btn))
+            .set_visible(cx, !finding);
+        if finding {
+            self.ui.widget(cx, ids!(printers_found_label)).set_text(
+                cx,
+                &plain_display_text(&find_label),
+            );
+            self.ui
+                .widget(cx, ids!(printers_found_label))
+                .set_visible(cx, true);
+        }
         self.ui
             .button(cx, ids!(find_printers_cancel))
             .set_visible(cx, finding);
 
-        // Add/Remove are sync now — never rewrite the Add face while "busy"
-        // (that set_text + wrap path froze Settings and left Adding… stuck).
+        // Add/Remove are sync now — never rewrite the Add face (Fill + wrap
+        // set_text froze Settings and left "Adding…" stuck).
         let _ = (printer_add, &status);
-        self.ui
-            .button(cx, ids!(printer_add))
-            .set_text(cx, &app_state().lock().unwrap().t("add_printer"));
-        self.ui
-            .button(cx, ids!(printer_add_cancel))
-            .set_text(cx, &cancel_lbl);
         self.ui
             .button(cx, ids!(printer_add_cancel))
             .set_visible(cx, false);
 
+        let backup_text = status.as_deref().unwrap_or("Creating backup…");
+        self.ui.button(cx, ids!(backup_btn)).set_visible(cx, !backup);
+        self.ui
+            .widget(cx, ids!(backup_progress))
+            .set_visible(cx, backup);
         if backup {
-            self.ui
-                .button(cx, ids!(backup_btn))
-                .set_text(cx, status.as_deref().unwrap_or("Creating backup…"));
+            self.ui.widget(cx, ids!(backup_progress)).set_text(
+                cx,
+                &plain_display_text(backup_text),
+            );
         }
-        self.ui.button(cx, ids!(backup_cancel)).set_text(cx, &cancel_lbl);
         self.ui.button(cx, ids!(backup_cancel)).set_visible(cx, backup);
 
+        let restore_text = status.as_deref().unwrap_or("Restoring backup…");
+        self.ui
+            .button(cx, ids!(restore_btn))
+            .set_visible(cx, !restore);
+        self.ui
+            .widget(cx, ids!(restore_progress))
+            .set_visible(cx, restore);
         if restore {
-            self.ui
-                .button(cx, ids!(restore_btn))
-                .set_text(cx, status.as_deref().unwrap_or("Restoring backup…"));
-        }
-        self.ui.button(cx, ids!(restore_cancel)).set_text(cx, &cancel_lbl);
-        self.ui.button(cx, ids!(restore_cancel)).set_visible(cx, restore);
-
-        if backup_copy {
-            self.ui
-                .button(cx, ids!(backup_copy_btn))
-                .set_text(cx, status.as_deref().unwrap_or("Making backup copy…"));
+            self.ui.widget(cx, ids!(restore_progress)).set_text(
+                cx,
+                &plain_display_text(restore_text),
+            );
         }
         self.ui
-            .button(cx, ids!(backup_copy_cancel))
-            .set_text(cx, &cancel_lbl);
+            .button(cx, ids!(restore_cancel))
+            .set_visible(cx, restore);
+
+        let copy_text = status.as_deref().unwrap_or("Making backup copy…");
+        self.ui
+            .button(cx, ids!(backup_copy_btn))
+            .set_visible(cx, !backup_copy);
+        self.ui
+            .widget(cx, ids!(backup_copy_progress))
+            .set_visible(cx, backup_copy);
+        if backup_copy {
+            self.ui.widget(cx, ids!(backup_copy_progress)).set_text(
+                cx,
+                &plain_display_text(copy_text),
+            );
+        }
         self.ui
             .button(cx, ids!(backup_copy_cancel))
             .set_visible(cx, backup_copy);
 
-        if csv {
-            let msg = status.as_deref().unwrap_or("Importing…");
-            self.ui.button(cx, ids!(csv_import_items)).set_text(cx, msg);
-            self.ui.button(cx, ids!(csv_import_parties)).set_text(cx, msg);
-            self.ui.button(cx, ids!(csv_import_pincodes)).set_text(cx, msg);
-            self.ui
-                .button(cx, ids!(csv_import_carrier_bill))
-                .set_text(cx, msg);
-        }
+        let csv_text = status.as_deref().unwrap_or("Importing…");
         self.ui
-            .button(cx, ids!(csv_import_cancel))
-            .set_text(cx, &cancel_lbl);
+            .button(cx, ids!(csv_import_items))
+            .set_visible(cx, !csv);
+        self.ui
+            .button(cx, ids!(csv_import_parties))
+            .set_visible(cx, !csv);
+        self.ui
+            .button(cx, ids!(csv_import_pincodes))
+            .set_visible(cx, !csv);
+        self.ui
+            .button(cx, ids!(csv_import_carrier_bill))
+            .set_visible(cx, !csv);
+        self.ui
+            .widget(cx, ids!(csv_import_progress))
+            .set_visible(cx, csv);
+        if csv {
+            self.ui
+                .widget(cx, ids!(csv_import_progress))
+                .set_text(cx, &plain_display_text(csv_text));
+        }
         self.ui
             .button(cx, ids!(csv_import_cancel))
             .set_visible(cx, csv);
 
-        if branch {
-            let msg = status.as_deref().unwrap_or("Working…");
-            if msg.contains("Import") {
-                self.ui.button(cx, ids!(branch_import)).set_text(cx, msg);
-            } else {
-                self.ui.button(cx, ids!(branch_export)).set_text(cx, msg);
-            }
-        }
+        let branch_msg = status.as_deref().unwrap_or("Working…");
         let branch_exporting = branch
             && status
                 .as_deref()
@@ -2047,26 +2066,35 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
                 .unwrap_or(true);
         let branch_importing = branch && !branch_exporting;
         self.ui
-            .button(cx, ids!(branch_export_cancel))
-            .set_text(cx, &cancel_lbl);
+            .button(cx, ids!(branch_export))
+            .set_visible(cx, !branch_exporting);
+        self.ui
+            .widget(cx, ids!(branch_export_progress))
+            .set_visible(cx, branch_exporting);
+        if branch_exporting {
+            self.ui
+                .widget(cx, ids!(branch_export_progress))
+                .set_text(cx, &plain_display_text(branch_msg));
+        }
         self.ui
             .button(cx, ids!(branch_export_cancel))
             .set_visible(cx, branch_exporting);
         self.ui
-            .button(cx, ids!(branch_import_cancel))
-            .set_text(cx, &cancel_lbl);
+            .button(cx, ids!(branch_import))
+            .set_visible(cx, !branch_importing);
+        self.ui
+            .widget(cx, ids!(branch_import_progress))
+            .set_visible(cx, branch_importing);
+        if branch_importing {
+            self.ui
+                .widget(cx, ids!(branch_import_progress))
+                .set_text(cx, &plain_display_text(branch_msg));
+        }
         self.ui
             .button(cx, ids!(branch_import_cancel))
             .set_visible(cx, branch_importing);
 
-        if diag {
-            let msg = status.as_deref().unwrap_or("Exporting…");
-            if msg.contains("share") {
-                self.ui.button(cx, ids!(diag_export_send)).set_text(cx, msg);
-            } else {
-                self.ui.button(cx, ids!(diag_export_local)).set_text(cx, msg);
-            }
-        }
+        let diag_msg = status.as_deref().unwrap_or("Exporting…");
         let diag_send = diag
             && status
                 .as_deref()
@@ -2074,24 +2102,38 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
                 .unwrap_or(false);
         let diag_local = diag && !diag_send;
         self.ui
-            .button(cx, ids!(diag_export_local_cancel))
-            .set_text(cx, &cancel_lbl);
+            .button(cx, ids!(diag_export_local))
+            .set_visible(cx, !diag_local);
+        self.ui
+            .widget(cx, ids!(diag_export_local_progress))
+            .set_visible(cx, diag_local);
+        if diag_local {
+            self.ui
+                .widget(cx, ids!(diag_export_local_progress))
+                .set_text(cx, &plain_display_text(diag_msg));
+        }
         self.ui
             .button(cx, ids!(diag_export_local_cancel))
             .set_visible(cx, diag_local);
         self.ui
-            .button(cx, ids!(diag_export_send_cancel))
-            .set_text(cx, &cancel_lbl);
+            .button(cx, ids!(diag_export_send))
+            .set_visible(cx, !diag_send);
+        self.ui
+            .widget(cx, ids!(diag_export_send_progress))
+            .set_visible(cx, diag_send);
+        if diag_send {
+            self.ui
+                .widget(cx, ids!(diag_export_send_progress))
+                .set_text(cx, &plain_display_text(diag_msg));
+        }
         self.ui
             .button(cx, ids!(diag_export_send_cancel))
             .set_visible(cx, diag_send);
 
-        // Find-server progress stays on status label — never set_text on the
-        // wrapping Find Stack* face (DEV.md bug 7).
-        let _ = client_find;
+        // Find-server progress stays on the label. Hide Find for the scan.
         self.ui
-            .button(cx, ids!(client_find_cancel))
-            .set_text(cx, &cancel_lbl);
+            .button(cx, ids!(client_find_btn))
+            .set_visible(cx, !client_find);
         self.ui
             .button(cx, ids!(client_find_cancel))
             .set_visible(cx, client_find);

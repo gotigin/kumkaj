@@ -4471,6 +4471,13 @@ script_mod! {
                                 // Filled with this device's own name: keep a small label on it.
                                 client_name_input := FieldInput{empty_text: "This device's name"}
                                 client_pair_btn := PinOkKey{text: "Pair now"}
+                                client_pair_progress := WrapLabel{
+                                    visible: false
+                                    body: "Connecting…"
+                                    font_color: #x0B1220
+                                    font_size: 15.
+                                }
+                                client_pair_cancel := QuietFitBtn{text: "Cancel" visible: false}
                                 client_sync_btn := NavBtn{text: "Refresh from shop"}
                                 client_queue_label := mod.widgets.ReportText{}
                                 client_clear_refused := NavBtn{text: "Checked — clear this list" visible: false}
@@ -6631,12 +6638,14 @@ script_mod! {
                                     ActionStack{
                                         backup_copy_btn := NavBtn{text: "Also copy backups to a folder…"}
                                         backup_copy_cancel := RowSecondaryBtn{text: "Cancel" visible: false}
+                                        backup_copy_progress := WrapLabel{visible: false body: "" font_color: #x0B1220 font_size: 15.}
                                     }
                                     db_path_label := WrapLabel{body: "" font_color: #x0B1220}
                                     audit_label := mod.widgets.ReportText{}
                                     ActionStack{
                                         backup_btn := NavBtn{text: "Create backup"}
                                         backup_cancel := RowSecondaryBtn{text: "Cancel" visible: false}
+                                        backup_progress := WrapLabel{visible: false body: "" font_color: #x0B1220 font_size: 15.}
                                     }
                                     backup_path_label := WrapLabel{body: "" font_color: #x0B1220}
                                     h_restore_help := WrapLabel{
@@ -6647,6 +6656,7 @@ script_mod! {
                                     ActionStack{
                                         restore_btn := NavBtn{text: "Restore backup"}
                                         restore_cancel := RowSecondaryBtn{text: "Cancel" visible: false}
+                                        restore_progress := WrapLabel{visible: false body: "" font_color: #x0B1220 font_size: 15.}
                                     }
                                     h_wipe_data := WrapLabel{
                                         width: Fill
@@ -6735,6 +6745,7 @@ script_mod! {
                                     ActionStack{
                                         diag_export_local := RowSecondaryBtn{text: "Export local copy"}
                                         diag_export_local_cancel := RowSecondaryBtn{text: "Cancel" visible: false}
+                                        diag_export_local_progress := WrapLabel{visible: false body: "" font_color: #x0B1220 font_size: 15.}
                                     }
                                     diag_send_help := InfoHelp{
                                         tip: "Approval is one package, then expires. Temporary — used only to fix or improve the product. Not shared with third parties. Works on Linux, Windows, macOS, and Android."
@@ -6746,6 +6757,7 @@ script_mod! {
                                     ActionStack{
                                         diag_export_send := RowSecondaryBtn{text: "Create share package (needs approval)"}
                                         diag_export_send_cancel := RowSecondaryBtn{text: "Cancel" visible: false}
+                                        diag_export_send_progress := WrapLabel{visible: false body: "" font_color: #x0B1220 font_size: 15.}
                                     }
                                     diag_clear := NavBtn{text: "Clear diagnostic logs"}
                                 }
@@ -7095,6 +7107,7 @@ script_mod! {
                                     ActionStack{
                                         csv_import_items := NavBtn{text: "Import items / rates CSV…"}
                                         csv_import_cancel := RowSecondaryBtn{text: "Cancel" visible: false}
+                                        csv_import_progress := WrapLabel{visible: false body: "" font_color: #x0B1220 font_size: 15.}
                                     }
                                     ActionStack{
                                         csv_import_pincodes := RowPrimaryBtn{text: "Import pincodes CSV…"}
@@ -7168,8 +7181,10 @@ script_mod! {
                                 ActionStack{
                                     branch_export := RowPrimaryBtn{text: "Export day"}
                                     branch_export_cancel := RowSecondaryBtn{text: "Cancel" visible: false}
+                                    branch_export_progress := WrapLabel{visible: false body: "" font_color: #x0B1220 font_size: 15.}
                                     branch_import := RowPrimaryBtn{text: "Import day"}
                                     branch_import_cancel := RowSecondaryBtn{text: "Cancel" visible: false}
+                                    branch_import_progress := WrapLabel{visible: false body: "" font_color: #x0B1220 font_size: 15.}
                                     branch_consolidated := RowSecondaryBtn{text: "Roll-up"}
                                 }
                             }

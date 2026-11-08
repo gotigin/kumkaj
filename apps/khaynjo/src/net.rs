@@ -2909,6 +2909,25 @@ fn client_hello(base: &str) -> Result<HelloOk, LanError> {
     reply_json(resp)
 }
 
+static PAIR_ABANDON: AtomicBool = AtomicBool::new(false);
+
+/// Pair now sets this so `/hello`, `/pair`, and `/sync` stop between calls.
+/// A request already on the wire still finishes; the result is then dropped.
+pub fn set_pair_abandoned(abandoned: bool) {
+    PAIR_ABANDON.store(abandoned, Ordering::SeqCst);
+}
+
+fn pair_stop() -> Result<(), LanError> {
+    if PAIR_ABANDON.load(Ordering::SeqCst) {
+        Err(LanError::Refused {
+            message: "Cancelled".into(),
+            code: "cancelled".into(),
+        })
+    } else {
+        Ok(())
+    }
+}
+
 /// Pair with the code shown on the shop device. Returns the Server's
 /// address, this phone's own token, and the first snapshot.
 ///
@@ -2923,7 +2942,9 @@ pub fn client_pair(
     expect_server_id: Option<&str>,
 ) -> Result<(Link, SyncSnapshot), LanError> {
     let base = base_url(host);
+    pair_stop()?;
     let hello = client_hello(&base)?;
+    pair_stop()?;
     if !hello.app.is_empty() && hello.app != DISCOVERY_APP {
         return Err(LanError::Refused {
             message: "That address is not a Khaynjo shop server".into(),
@@ -2953,6 +2974,7 @@ pub fn client_pair(
             code: String::new(),
         });
     }
+    pair_stop()?;
     let resp = agent(Duration::from_secs(8))
         .post(&format!("{base}/pair"))
         .set(HEADER_PROTOCOL, &LAN_PROTOCOL.to_string())
@@ -2969,8 +2991,10 @@ pub fn client_pair(
         session: String::new(),
         server_id: pair.server_id,
     };
+    pair_stop()?;
     let snap = client_sync(&link, "")?
         .ok_or_else(|| LanError::Offline("no books in the reply".into()))?;
+    pair_stop()?;
     Ok((link, snap))
 }
 

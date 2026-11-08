@@ -100,11 +100,15 @@ fn firewall_job(job: fn() -> Result<bool, String>) {
 /// thread; its answer waits here until the UI wakes.
 enum LanOnce {
     /// HTTP pair reply — books apply continues on a worker (`PairApplied`).
-    Paired(Result<(net::Link, net::SyncSnapshot), net::LanError>),
+    /// The `u64` is this Pair now attempt so a late reply cannot apply over Cancel
+    /// or a newer tap.
+    Paired(u64, Result<(net::Link, net::SyncSnapshot), net::LanError>),
     /// Snapshot written off the UI thread (venue label for the status line).
-    PairApplied(Result<String, String>),
+    PairApplied(u64, Result<String, String>),
     /// Books reloaded off the UI thread; the screen may paint Lock.
-    PairBooksReady,
+    PairBooksReady(u64, Result<String, String>),
+    /// Cancel, or this attempt was replaced. The UI ignores a stale id.
+    PairCancelled(u64),
     SignIn {
         staff_id: Option<String>,
         pin: String,
@@ -568,6 +572,67 @@ fn client_find_busy() -> &'static std::sync::atomic::AtomicBool {
 fn client_find_cancel() -> &'static std::sync::atomic::AtomicBool {
     static CANCEL: std::sync::atomic::AtomicBool = std::sync::atomic::AtomicBool::new(false);
     &CANCEL
+}
+
+/// Pair now is in flight (HTTP, snapshot apply, or opening the till).
+fn client_pair_busy() -> &'static std::sync::atomic::AtomicBool {
+    static BUSY: std::sync::atomic::AtomicBool = std::sync::atomic::AtomicBool::new(false);
+    &BUSY
+}
+
+fn client_pair_cancel() -> &'static std::sync::atomic::AtomicBool {
+    static CANCEL: std::sync::atomic::AtomicBool = std::sync::atomic::AtomicBool::new(false);
+    &CANCEL
+}
+
+/// Bumped on every Pair now so a late worker cannot publish over a newer tap.
+fn client_pair_gen() -> &'static std::sync::atomic::AtomicU64 {
+    static GEN: std::sync::atomic::AtomicU64 = std::sync::atomic::AtomicU64::new(0);
+    &GEN
+}
+
+fn client_pair_progress() -> &'static Mutex<String> {
+    static SLOT: OnceLock<Mutex<String>> = OnceLock::new();
+    SLOT.get_or_init(|| Mutex::new(String::new()))
+}
+
+fn client_pair_set_progress(status: &str) {
+    *client_pair_progress().lock().unwrap() = status.to_string();
+}
+
+/// True while this attempt is still the one on screen and Cancel has not been tapped.
+fn client_pair_current(attempt: u64) -> bool {
+    client_pair_gen().load(std::sync::atomic::Ordering::SeqCst) == attempt
+        && !client_pair_cancel().load(std::sync::atomic::Ordering::SeqCst)
+}
+
+fn client_pair_begin(status: &str) -> u64 {
+    let attempt = client_pair_gen().fetch_add(1, std::sync::atomic::Ordering::SeqCst) + 1;
+    client_pair_cancel().store(false, std::sync::atomic::Ordering::SeqCst);
+    net::set_pair_abandoned(false);
+    client_pair_set_progress(status);
+    client_pair_busy().store(true, std::sync::atomic::Ordering::SeqCst);
+    attempt
+}
+
+fn client_pair_clear() {
+    client_pair_busy().store(false, std::sync::atomic::Ordering::SeqCst);
+    client_pair_cancel().store(false, std::sync::atomic::Ordering::SeqCst);
+    net::set_pair_abandoned(false);
+    client_pair_progress().lock().unwrap().clear();
+}
+
+/// Publish only if this attempt is still current. Holds `lan_once` across the
+/// generation check so a newer Pair now cannot be overwritten.
+fn publish_pair(attempt: u64, msg: LanOnce) {
+    {
+        let mut slot = lan_once().lock().unwrap();
+        if client_pair_gen().load(std::sync::atomic::Ordering::SeqCst) != attempt {
+            return;
+        }
+        *slot = Some(msg);
+    }
+    makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal();
 }
 
 /// DeviceSetup role open (Client / new Server / existing Server) off the UI

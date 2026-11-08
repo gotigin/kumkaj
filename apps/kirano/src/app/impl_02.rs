@@ -98,6 +98,10 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
             && !print_share::find_printers_was_cancelled();
         // Find / Add stay on their DSL labels. set_text on those Fill+wrap
         // faces freezes Settings (DEV.md bug 7). Progress stays on the label.
+        let printer_host = app_state().lock().unwrap().device_role != DeviceRole::Client;
+        self.ui
+            .button(cx, ids!(find_printers_btn))
+            .set_visible(cx, printer_host && !finding);
         self.ui
             .button(cx, ids!(find_printers_cancel))
             .set_visible(cx, finding);
@@ -109,12 +113,12 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
             .button(cx, ids!(printer_add_cancel))
             .set_visible(cx, false);
 
-        // Find-server progress stays on `client_found_label` — never set_text
-        // on the wrapping Find Stack* face (DEV.md bug 7).
+        // Find-server progress stays on `client_found_label`. Hide the Find
+        // face for the whole scan — never set_text on that Fill+wrap Stack*.
         let client_busy = client_find_busy().load(std::sync::atomic::Ordering::SeqCst);
         self.ui
-            .button(cx, ids!(client_find_cancel))
-            .set_text(cx, &cancel);
+            .button(cx, ids!(client_find_btn))
+            .set_visible(cx, !client_busy);
         self.ui
             .button(cx, ids!(client_find_cancel))
             .set_visible(cx, client_busy);
@@ -122,60 +126,75 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
         // DeviceSetup Client open (migrate) — WrapLabel + QuietFitBtn Cancel.
         self.paint_role_open_busy_chrome(cx);
 
+        let work = books_work_status().lock().unwrap().clone();
         let backup = backup_busy().load(std::sync::atomic::Ordering::SeqCst);
+        self.ui.button(cx, ids!(backup_btn)).set_visible(cx, !backup);
+        self.ui
+            .widget(cx, ids!(backup_progress))
+            .set_visible(cx, backup);
         if backup {
-            let text = books_work_status()
-                .lock()
-                .unwrap()
+            let text = work
                 .clone()
                 .unwrap_or_else(|| "Creating backup…".into());
-            self.ui.button(cx, ids!(backup_btn)).set_text(cx, &text);
+            self.ui
+                .widget(cx, ids!(backup_progress))
+                .set_text(cx, &plain_display_text(&text));
         }
-        self.ui.button(cx, ids!(backup_cancel)).set_text(cx, &cancel);
         self.ui.button(cx, ids!(backup_cancel)).set_visible(cx, backup);
 
         let restore = restore_busy().load(std::sync::atomic::Ordering::SeqCst);
+        self.ui
+            .button(cx, ids!(restore_btn))
+            .set_visible(cx, !restore);
+        self.ui
+            .widget(cx, ids!(restore_progress))
+            .set_visible(cx, restore);
         if restore {
-            let text = books_work_status()
-                .lock()
-                .unwrap()
+            let text = work
                 .clone()
                 .unwrap_or_else(|| "Restoring backup…".into());
-            self.ui.button(cx, ids!(restore_btn)).set_text(cx, &text);
-        }
-        self.ui.button(cx, ids!(restore_cancel)).set_text(cx, &cancel);
-        self.ui.button(cx, ids!(restore_cancel)).set_visible(cx, restore);
-
-        let copy = backup_copy_busy().load(std::sync::atomic::Ordering::SeqCst);
-        if copy {
-            let text = books_work_status()
-                .lock()
-                .unwrap()
-                .clone()
-                .unwrap_or_else(|| "Making backup copy…".into());
-            self.ui.button(cx, ids!(backup_copy_btn)).set_text(cx, &text);
+            self.ui
+                .widget(cx, ids!(restore_progress))
+                .set_text(cx, &plain_display_text(&text));
         }
         self.ui
-            .button(cx, ids!(backup_copy_cancel))
-            .set_text(cx, &cancel);
+            .button(cx, ids!(restore_cancel))
+            .set_visible(cx, restore);
+
+        let copy = backup_copy_busy().load(std::sync::atomic::Ordering::SeqCst);
+        self.ui
+            .button(cx, ids!(backup_copy_btn))
+            .set_visible(cx, !copy);
+        self.ui
+            .widget(cx, ids!(backup_copy_progress))
+            .set_visible(cx, copy);
+        if copy {
+            let text = work
+                .clone()
+                .unwrap_or_else(|| "Making backup copy…".into());
+            self.ui
+                .widget(cx, ids!(backup_copy_progress))
+                .set_text(cx, &plain_display_text(&text));
+        }
         self.ui
             .button(cx, ids!(backup_copy_cancel))
             .set_visible(cx, copy);
 
         let agg = aggregator_import_busy().load(std::sync::atomic::Ordering::SeqCst);
+        self.ui
+            .button(cx, ids!(aggregator_import_btn))
+            .set_visible(cx, !agg);
+        self.ui
+            .widget(cx, ids!(aggregator_import_progress))
+            .set_visible(cx, agg);
         if agg {
-            let text = books_work_status()
-                .lock()
-                .unwrap()
+            let text = work
                 .clone()
                 .unwrap_or_else(|| "Importing aggregator file…".into());
             self.ui
-                .button(cx, ids!(aggregator_import_btn))
-                .set_text(cx, &text);
+                .widget(cx, ids!(aggregator_import_progress))
+                .set_text(cx, &plain_display_text(&text));
         }
-        self.ui
-            .button(cx, ids!(aggregator_import_cancel))
-            .set_text(cx, &cancel);
         self.ui
             .button(cx, ids!(aggregator_import_cancel))
             .set_visible(cx, agg);
@@ -183,48 +202,57 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
         let diag = diag_export_busy().load(std::sync::atomic::Ordering::SeqCst);
         let diag_send = diag && diag_export_for_send().load(std::sync::atomic::Ordering::SeqCst);
         let diag_local = diag && !diag_send;
+        self.ui
+            .button(cx, ids!(diag_export_local))
+            .set_visible(cx, !diag_local);
+        self.ui
+            .widget(cx, ids!(diag_export_local_progress))
+            .set_visible(cx, diag_local);
         if diag_local {
-            let text = books_work_status()
-                .lock()
-                .unwrap()
+            let text = work
                 .clone()
                 .unwrap_or_else(|| "Exporting diagnostics…".into());
-            self.ui.button(cx, ids!(diag_export_local)).set_text(cx, &text);
+            self.ui
+                .widget(cx, ids!(diag_export_local_progress))
+                .set_text(cx, &plain_display_text(&text));
         }
-        self.ui
-            .button(cx, ids!(diag_export_local_cancel))
-            .set_text(cx, &cancel);
         self.ui
             .button(cx, ids!(diag_export_local_cancel))
             .set_visible(cx, diag_local);
+        self.ui
+            .button(cx, ids!(diag_export_send))
+            .set_visible(cx, !diag_send);
+        self.ui
+            .widget(cx, ids!(diag_export_send_progress))
+            .set_visible(cx, diag_send);
         if diag_send {
-            let text = books_work_status()
-                .lock()
-                .unwrap()
+            let text = work
                 .clone()
                 .unwrap_or_else(|| "Creating share package…".into());
-            self.ui.button(cx, ids!(diag_export_send)).set_text(cx, &text);
+            self.ui
+                .widget(cx, ids!(diag_export_send_progress))
+                .set_text(cx, &plain_display_text(&text));
         }
-        self.ui
-            .button(cx, ids!(diag_export_send_cancel))
-            .set_text(cx, &cancel);
         self.ui
             .button(cx, ids!(diag_export_send_cancel))
             .set_visible(cx, diag_send);
 
         let csv = csv_import_busy().load(std::sync::atomic::Ordering::SeqCst);
-        if csv {
-            let text = books_work_status()
-                .lock()
-                .unwrap()
-                .clone()
-                .unwrap_or_else(|| "Importing…".into());
-            self.ui.button(cx, ids!(csv_import_items)).set_text(cx, &text);
-            self.ui.button(cx, ids!(csv_import_parties)).set_text(cx, &text);
-        }
         self.ui
-            .button(cx, ids!(csv_import_cancel))
-            .set_text(cx, &cancel);
+            .button(cx, ids!(csv_import_items))
+            .set_visible(cx, !csv);
+        self.ui
+            .button(cx, ids!(csv_import_parties))
+            .set_visible(cx, !csv);
+        self.ui
+            .widget(cx, ids!(csv_import_progress))
+            .set_visible(cx, csv);
+        if csv {
+            let text = work.unwrap_or_else(|| "Importing…".into());
+            self.ui
+                .widget(cx, ids!(csv_import_progress))
+                .set_text(cx, &plain_display_text(&text));
+        }
         self.ui
             .button(cx, ids!(csv_import_cancel))
             .set_visible(cx, csv);
@@ -482,9 +510,15 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
             || printer_add_busy().load(std::sync::atomic::Ordering::SeqCst)
             || print_share::is_finding_printers()
             || role_open_busy().load(std::sync::atomic::Ordering::SeqCst);
-        if heavy_job {
-            self.paint_import_progress_chrome(cx);
-            self.paint_role_open_busy_chrome(cx);
+        let pair_busy = client_pair_busy().load(std::sync::atomic::Ordering::SeqCst);
+        if heavy_job || pair_busy {
+            if heavy_job {
+                self.paint_import_progress_chrome(cx);
+                self.paint_role_open_busy_chrome(cx);
+            }
+            if pair_busy {
+                self.paint_pair_busy_chrome(cx);
+            }
             let screen = app_state().lock().unwrap().screen;
             self.show_screen(cx, screen);
             // Printer add/find: never rebuild Settings lists mid-job (looks like a freeze).

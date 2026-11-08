@@ -5,6 +5,20 @@ impl AppMain for App {
     }
 
     fn handle_event(&mut self, cx: &mut Cx, event: &Event) {
+        // Opening the office books holds app_state for the whole load. Do not
+        // wait on that lock — Cancel and the progress line must keep painting.
+        if client_pair_busy().load(std::sync::atomic::Ordering::SeqCst)
+            && app_state().try_lock().is_err()
+        {
+            if let Event::Actions(actions) = event {
+                if self.ui.button(cx, ids!(client_pair_cancel)).clicked(actions) {
+                    self.abandon_client_pair(cx);
+                }
+            }
+            self.ui.handle_event(cx, event, &mut Scope::empty());
+            self.paint_pair_busy_chrome(cx);
+            return;
+        }
         self.sync_tab_chevrons(cx);
         if matches!(event, Event::Startup) {
             // Before CreateWindow: override the DSL default with the last session.

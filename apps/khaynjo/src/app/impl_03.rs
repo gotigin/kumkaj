@@ -1312,9 +1312,18 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
             self.ui.button(cx, id).set_text(cx, &s(key));
         }
         if !client_find_busy().load(std::sync::atomic::Ordering::SeqCst) {
+            self.ui
+                .button(cx, ids!(client_find_btn))
+                .set_visible(cx, true);
             self.ui.button(cx, ids!(client_find_btn)).set_text(cx, &s("find_server"));
         }
         if !aggregator_import_busy().load(std::sync::atomic::Ordering::SeqCst) {
+            self.ui
+                .button(cx, ids!(aggregator_import_btn))
+                .set_visible(cx, true);
+            self.ui
+                .widget(cx, ids!(aggregator_import_progress))
+                .set_visible(cx, false);
             self.ui
                 .button(cx, ids!(aggregator_import_btn))
                 .set_text(cx, &s("import_aggregator_file"));
@@ -1621,6 +1630,8 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
         self.ui.button(cx, ids!(allow_extra_tills)).set_text(cx, &s("allow_extra_tills"));
         self.ui.button(cx, ids!(amend_btn)).set_text(cx, &s("amend"));
         if !backup_busy().load(std::sync::atomic::Ordering::SeqCst) {
+            self.ui.button(cx, ids!(backup_btn)).set_visible(cx, true);
+            self.ui.widget(cx, ids!(backup_progress)).set_visible(cx, false);
             self.ui.button(cx, ids!(backup_btn)).set_text(cx, &s("create_backup"));
         }
         self.ui.button(cx, ids!(backup_cancel)).set_text(cx, &s("cancel"));
@@ -1640,6 +1651,20 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
         self.ui
             .button(cx, ids!(diag_export_send_cancel))
             .set_text(cx, &s("cancel"));
+        if !diag_export_busy().load(std::sync::atomic::Ordering::SeqCst) {
+            self.ui
+                .button(cx, ids!(diag_export_local))
+                .set_visible(cx, true);
+            self.ui
+                .button(cx, ids!(diag_export_send))
+                .set_visible(cx, true);
+            self.ui
+                .widget(cx, ids!(diag_export_local_progress))
+                .set_visible(cx, false);
+            self.ui
+                .widget(cx, ids!(diag_export_send_progress))
+                .set_visible(cx, false);
+        }
         self.ui.button(cx, ids!(bank_bank_to_till)).set_text(cx, &s("bank_to_till"));
         self.ui.button(cx, ids!(bank_in)).set_text(cx, &s("bank_in"));
         self.ui.button(cx, ids!(bank_mark_cleared)).set_text(cx, &s("mark_cleared"));
@@ -1666,7 +1691,16 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
         self.ui.button(cx, ids!(change_my_pin)).set_text(cx, &s("update_my_pin"));
         self.ui.text_input(cx, ids!(client_code_input)).set_empty_text(cx, s("pairing_code_ph"));
         self.ui.text_input(cx, ids!(client_host_input)).set_empty_text(cx, s("server_ip_ph"));
-        self.ui.button(cx, ids!(client_pair_btn)).set_text(cx, &s("pair_now"));
+        if !client_pair_busy().load(std::sync::atomic::Ordering::SeqCst) {
+            self.ui.button(cx, ids!(client_pair_btn)).set_visible(cx, true);
+            self.ui.button(cx, ids!(client_pair_btn)).set_text(cx, &s("pair_now"));
+            self.ui
+                .widget(cx, ids!(client_pair_progress))
+                .set_visible(cx, false);
+            self.ui
+                .button(cx, ids!(client_pair_cancel))
+                .set_visible(cx, false);
+        }
         self.ui.button(cx, ids!(client_skip_lock)).set_text(cx, &s("unlock_after_pairing"));
         self.ui.button(cx, ids!(client_sync_btn)).set_text(cx, &s("refresh_from_shop"));
         self.ui.button(cx, ids!(client_unpair)).set_text(cx, &s("forget_shop"));
@@ -1700,6 +1734,9 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
         self.ui.button(cx, ids!(csv_copy_outstanding)).set_text(cx, &s("copy_outstanding_csv"));
         self.ui.button(cx, ids!(csv_copy_parties)).set_text(cx, &s("copy_parties_csv"));
         if !csv_import_busy().load(std::sync::atomic::Ordering::SeqCst) {
+            self.ui.button(cx, ids!(csv_import_items)).set_visible(cx, true);
+            self.ui.button(cx, ids!(csv_import_parties)).set_visible(cx, true);
+            self.ui.widget(cx, ids!(csv_import_progress)).set_visible(cx, false);
             self.ui.button(cx, ids!(csv_import_items)).set_text(cx, &s("import_items_csv_plain"));
             self.ui.button(cx, ids!(csv_import_parties)).set_text(cx, &s("import_parties_csv"));
         }
@@ -1948,6 +1985,8 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
         self.ui.button(cx, ids!(refund_btn)).set_text(cx, &s("refund"));
         self.ui.button(cx, ids!(reports_copy)).set_text(cx, &s("copy_report"));
         if !restore_busy().load(std::sync::atomic::Ordering::SeqCst) {
+            self.ui.button(cx, ids!(restore_btn)).set_visible(cx, true);
+            self.ui.widget(cx, ids!(restore_progress)).set_visible(cx, false);
             self.ui.button(cx, ids!(restore_btn)).set_text(cx, &s("restore_backup"));
         }
         self.ui.button(cx, ids!(sale_attach_add_note)).set_text(cx, &s("add_note"));
@@ -1976,6 +2015,10 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
         // Android has no folder to copy into each day: the owner saves a
         // copy where they choose (USB stick, SD card, Downloads).
         if !backup_copy_busy().load(std::sync::atomic::Ordering::SeqCst) {
+            self.ui.button(cx, ids!(backup_copy_btn)).set_visible(cx, true);
+            self.ui
+                .widget(cx, ids!(backup_copy_progress))
+                .set_visible(cx, false);
             self.ui.button(cx, ids!(backup_copy_btn)).set_text(
                 cx,
                 &s(if cfg!(target_os = "android") {

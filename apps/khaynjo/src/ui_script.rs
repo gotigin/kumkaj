@@ -5832,6 +5832,13 @@ script_mod! {
                                 // How the shop's server lists this device (Forget picks it by this).
                                 client_name_input := FieldInput{empty_text: "This device's name"}
                                 client_pair_btn := PinOkKey{text: "Pair now"}
+                                client_pair_progress := WrapLabel{
+                                    visible: false
+                                    body: "Connecting…"
+                                    font_color: #x260B08
+                                    font_size: 15.
+                                }
+                                client_pair_cancel := QuietFitBtn{text: "Cancel" visible: false}
                                 client_sync_btn := NavBtn{text: "Refresh from shop"}
                                 client_queue_label := mod.widgets.ReportText{}
                                 client_clear_refused := NavBtn{text: "Checked — clear this list" visible: false}
@@ -10323,6 +10330,7 @@ View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
                                         ActionStack{
                                             aggregator_import_btn := StackSecondaryBtn{text: "Import aggregator file"}
                                             aggregator_import_cancel := StackLightBtn{text: "Cancel" visible: false}
+                                            aggregator_import_progress := WrapLabel{visible: false body: "" font_color: #x260B08 font_size: 15.}
                                         }
                                     }
                                 }
@@ -10356,12 +10364,14 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 20.}
                                 ActionStack{
                                     backup_copy_btn := NavBtn{text: "Also copy backups to a folder…"}
                                     backup_copy_cancel := StackLightBtn{text: "Cancel" visible: false}
+                                    backup_copy_progress := WrapLabel{visible: false body: "" font_color: #x260B08 font_size: 15.}
                                 }
                                 db_path_label := WrapLabel{body: "" font_color: #x260B08}
                                 audit_label := mod.widgets.ReportText{}
                                 ActionStack{
                                     backup_btn := StackPrimaryBtn{text: "Create backup"}
                                     backup_cancel := StackLightBtn{text: "Cancel" visible: false}
+                                    backup_progress := WrapLabel{visible: false body: "" font_color: #x260B08 font_size: 15.}
                                 }
                                 backup_path_label := WrapLabel{body: "" font_color: #x260B08}
                                 h_restore_help := WrapLabel{
@@ -10372,6 +10382,7 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 20.}
                                 ActionStack{
                                     restore_btn := NavBtn{text: "Restore backup"}
                                     restore_cancel := StackLightBtn{text: "Cancel" visible: false}
+                                    restore_progress := WrapLabel{visible: false body: "" font_color: #x260B08 font_size: 15.}
                                 }
                                 h_history_retention := WrapLabel{
                                     width: Fill
@@ -10493,6 +10504,7 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 20.}
                                     ActionStack{
                                         diag_export_local := StackSecondaryBtn{text: "Export local copy"}
                                         diag_export_local_cancel := StackLightBtn{text: "Cancel" visible: false}
+                                        diag_export_local_progress := WrapLabel{visible: false body: "" font_color: #x260B08 font_size: 15.}
                                     }
                                     diag_send_help := InfoHelp{
                                         tip: "Approval is one package, then expires. Temporary — used only to fix or improve the product. Not shared with third parties. Works on Linux, Windows, macOS, and Android."
@@ -10504,6 +10516,7 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 20.}
                                     ActionStack{
                                         diag_export_send := StackSecondaryBtn{text: "Create share package (needs approval)"}
                                         diag_export_send_cancel := StackLightBtn{text: "Cancel" visible: false}
+                                        diag_export_send_progress := WrapLabel{visible: false body: "" font_color: #x260B08 font_size: 15.}
                                     }
                                     diag_clear := NavBtn{text: "Clear diagnostic logs"}
                                 }
@@ -10636,6 +10649,7 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 20.}
                                 ActionStack{
                                     csv_import_items := NavBtn{text: "Import items CSV…"}
                                     csv_import_cancel := StackLightBtn{text: "Cancel" visible: false}
+                                    csv_import_progress := WrapLabel{visible: false body: "" font_color: #x260B08 font_size: 15.}
                                 }
                             }
                         }

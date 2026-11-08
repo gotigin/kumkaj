@@ -1109,6 +1109,7 @@ fn en(key: &str) -> String {
         "copy_pair_code" => "Copy pairing code",
         "new_pair_code" => "New pairing code",
         "pair_finishing" => "Finishing pair… applying the shop's books",
+        "pair_opening" => "Opening the till…",
         "pair_copied" => "Pairing code copied",
         "kot_waiting" => "Waiting to send",
         "lan_offline_waiting" => "Shop server unreachable · {n} waiting",

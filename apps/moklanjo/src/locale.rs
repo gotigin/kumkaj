@@ -987,6 +987,8 @@ fn en(key: &str) -> String {
         "lan_offline" => "Shop server unreachable",
         "lan_offline_waiting" => "Shop server unreachable · {n} waiting",
         "lan_connecting" => "Connecting to shop…",
+        "pair_finishing" => "Finishing pair… applying the office books",
+        "pair_opening" => "Opening the office…",
         "lan_live" => "Live",
         "lan_sending" => "{n} sending",
         "lan_sign_in_to_send" => "Sign in again to send {n}",

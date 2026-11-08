@@ -620,9 +620,20 @@ fn paint_static_texts(&mut self, cx: &mut Cx) {
         self.ui
             .text_input(cx, ids!(client_host_input))
             .set_empty_text(cx, s("server_ip_ph"));
-        self.ui
-            .button(cx, ids!(client_pair_btn))
-            .set_text(cx, &s("pair_now"));
+        if !client_pair_busy().load(std::sync::atomic::Ordering::SeqCst) {
+            self.ui
+                .button(cx, ids!(client_pair_btn))
+                .set_visible(cx, true);
+            self.ui
+                .button(cx, ids!(client_pair_btn))
+                .set_text(cx, &s("pair_now"));
+            self.ui
+                .widget(cx, ids!(client_pair_progress))
+                .set_visible(cx, false);
+            self.ui
+                .button(cx, ids!(client_pair_cancel))
+                .set_visible(cx, false);
+        }
         if !client_find_busy().load(std::sync::atomic::Ordering::SeqCst) {
             self.ui
                 .button(cx, ids!(client_find_btn))

@@ -947,20 +947,140 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
         }
     }
 
+    /// Replace Pair now with the progress line and Cancel for this attempt.
+    fn paint_pair_busy_chrome(&mut self, cx: &mut Cx) {
+        let busy = client_pair_busy().load(std::sync::atomic::Ordering::SeqCst);
+        let status = client_pair_progress().lock().unwrap().clone();
+        self.ui.button(cx, ids!(client_pair_btn)).set_visible(cx, !busy);
+        self.ui
+            .widget(cx, ids!(client_pair_progress))
+            .set_visible(cx, busy);
+        if busy && !status.is_empty() {
+            self.ui
+                .widget(cx, ids!(client_pair_progress))
+                .set_text(cx, &plain_display_text(&status));
+        }
+        self.ui
+            .button(cx, ids!(client_pair_cancel))
+            .set_visible(cx, busy);
+        if busy {
+            // QuietFitBtn — Fit, no wrap. Skip when the books reload holds the lock.
+            let cancel = app_state().try_lock().ok().map(|st| st.t("cancel"));
+            if let Some(cancel) = cancel {
+                self.ui
+                    .button(cx, ids!(client_pair_cancel))
+                    .set_text(cx, &cancel);
+            }
+        }
+    }
+
+    /// Hide Pair now immediately. The worker drops its result when it next looks.
+    fn abandon_client_pair(&mut self, cx: &mut Cx) {
+        if !client_pair_busy().load(std::sync::atomic::Ordering::SeqCst) {
+            return;
+        }
+        net::set_pair_abandoned(true);
+        client_pair_cancel().store(true, std::sync::atomic::Ordering::SeqCst);
+        client_pair_busy().store(false, std::sync::atomic::Ordering::SeqCst);
+        client_pair_progress().lock().unwrap().clear();
+        self.paint_pair_busy_chrome(cx);
+        if let Ok(mut st) = app_state().try_lock() {
+            let msg = st.t("cancelled");
+            st.pair_note = msg.clone();
+            drop(st);
+            self.set_status(cx, msg);
+        }
+    }
+
+    fn finish_pair_cancelled(&mut self, cx: &mut Cx, attempt: u64) {
+        if client_pair_gen().load(std::sync::atomic::Ordering::SeqCst) != attempt {
+            return;
+        }
+        client_pair_clear();
+        self.paint_pair_busy_chrome(cx);
+        if let Ok(mut st) = app_state().try_lock() {
+            let msg = st.t("cancelled");
+            st.pair_note = msg.clone();
+            drop(st);
+            self.set_status(cx, msg);
+        }
+    }
+
+    fn finish_pair_failed(&mut self, cx: &mut Cx, attempt: u64, msg: String) {
+        if client_pair_gen().load(std::sync::atomic::Ordering::SeqCst) != attempt {
+            return;
+        }
+        client_pair_clear();
+        self.paint_pair_busy_chrome(cx);
+        app_state().lock().unwrap().pair_note = msg.clone();
+        self.ui
+            .widget(cx, ids!(client_pair_status))
+            .set_text(cx, &msg);
+        self.set_status(cx, msg);
+    }
+
+    /// Pair now: hide the button, show Connecting… and Cancel, talk off the UI thread.
+    fn start_client_pair(
+        &mut self,
+        cx: &mut Cx,
+        host: String,
+        code: String,
+        name: String,
+        expect_server_id: Option<String>,
+    ) {
+        if client_pair_busy().load(std::sync::atomic::Ordering::SeqCst) {
+            return;
+        }
+        if host.trim().is_empty() || code.trim().is_empty() {
+            self.set_status(cx, "Type the shop device's address and its pairing code");
+            return;
+        }
+        self.dismiss_soft_keyboard(cx);
+        let connecting = app_t("lan_connecting");
+        let attempt = client_pair_begin(&connecting);
+        {
+            let mut st = app_state().lock().unwrap();
+            st.pair_note = connecting.clone();
+        }
+        self.ui
+            .widget(cx, ids!(client_pair_status))
+            .set_text(cx, &connecting);
+        self.paint_pair_busy_chrome(cx);
+        let _ = std::thread::Builder::new()
+            .name("kirano-pair".into())
+            .spawn(move || {
+                let reply = net::client_pair(
+                    &host,
+                    &code,
+                    name.trim(),
+                    expect_server_id.as_deref(),
+                );
+                let abandon = !client_pair_current(attempt)
+                    || matches!(&reply, Err(e) if e.code() == "cancelled");
+                if abandon {
+                    publish_pair(attempt, LanOnce::PairCancelled(attempt));
+                } else {
+                    publish_pair(attempt, LanOnce::Paired(attempt, reply));
+                }
+            });
+    }
+
     /// What the device's LAN threads brought back: pairing, sign-in, the
     /// Server's answers to writes, fresh books.
     fn take_lan_answers(&mut self, cx: &mut Cx) {
         let once = lan_once().lock().unwrap().take();
         match once {
             Some(LanOnce::SignIn { staff_id, pin, reply }) => self.finish_lan_sign_in(cx, staff_id, pin, reply),
-            Some(LanOnce::Paired(reply)) => match reply {
-                Err(e) => {
-                    let msg = e.to_string();
-                    app_state().lock().unwrap().pair_note = msg.clone();
-                    self.set_status(cx, msg);
-                    self.sync_chrome(cx);
-                }
-                Ok((link, snap)) => {
+            Some(LanOnce::Paired(attempt, reply)) => {
+                let cancelled = !client_pair_current(attempt)
+                    || matches!(&reply, Err(e) if e.code() == "cancelled");
+                if client_pair_gen().load(std::sync::atomic::Ordering::SeqCst) != attempt {
+                    // Stale attempt — a newer Pair now owns the screen.
+                } else if cancelled {
+                    self.finish_pair_cancelled(cx, attempt);
+                } else if let Err(e) = reply.as_ref() {
+                    self.finish_pair_failed(cx, attempt, e.to_string());
+                } else if let Ok((link, snap)) = reply {
                     // apply_snapshot is SQLite on a busy shop — never on the UI
                     // thread (Android freezes for seconds; DEV.md bug 7b).
                     let db = {
@@ -969,16 +1089,22 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
                     };
                     if let Some(db) = db {
                         let finishing = app_t("pair_finishing");
+                        client_pair_set_progress(&finishing);
                         {
                             let mut st = app_state().lock().unwrap();
                             st.pair_note = finishing.clone();
                         }
-                        self.set_status(cx, finishing);
-                        self.sync_chrome(cx);
+                        self.ui
+                            .widget(cx, ids!(client_pair_status))
+                            .set_text(cx, &finishing);
+                        self.paint_pair_busy_chrome(cx);
                         let _ = std::thread::Builder::new()
                             .name("kirano-pair-apply".into())
                             .spawn(move || {
                                 let result = (|| -> Result<String, String> {
+                                    if !client_pair_current(attempt) {
+                                        return Err("cancelled".into());
+                                    }
                                     let store = Store::open_path(&db)?;
                                     store.set_client_device_pairing(&link.base, &link.device)?;
                                     // Kept to find the Server again if its address changes.
@@ -993,7 +1119,6 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
                                         &snap.venue_icon_key,
                                     );
                                     crate::lan_images::request_missing_from_store(&store, &link);
-                                    // The shop's name as it saved it; an unnamed shop is "the shop".
                                     let name = [snap.venue_title.trim(), snap.org_name.trim()]
                                         .into_iter()
                                         .find(|n| !n.is_empty())
@@ -1001,68 +1126,126 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
                                         .to_string();
                                     Ok(name)
                                 })();
-                                *lan_once().lock().unwrap() = Some(LanOnce::PairApplied(result));
-                                makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal();
+                                if !client_pair_current(attempt)
+                                    || matches!(&result, Err(e) if e == "cancelled")
+                                {
+                                    if let Ok(store) = Store::open_path(&db) {
+                                        let _ = store.clear_client_pairing();
+                                    }
+                                    publish_pair(attempt, LanOnce::PairCancelled(attempt));
+                                } else {
+                                    publish_pair(attempt, LanOnce::PairApplied(attempt, result));
+                                }
                             });
                     } else {
-                        let msg = "No store".to_string();
-                        app_state().lock().unwrap().pair_note = msg.clone();
-                        self.set_status(cx, msg);
-                        self.sync_chrome(cx);
+                        self.finish_pair_failed(cx, attempt, "No store".into());
                     }
                 }
-            },
-            Some(LanOnce::PairApplied(result)) => {
-                // A focused pairing field makes sync_chrome return before it
-                // paints, and reload_all on this thread freezes the till for
-                // the whole shop download. Show Lock now; load books after.
-                self.dismiss_soft_keyboard(cx);
-                match result {
-                    Ok(name) => {
-                        {
-                            let mut st = app_state().lock().unwrap();
-                            if let Some(store) = st.store.as_ref() {
-                                phone::start(store.db_path().to_path_buf());
+            }
+            Some(LanOnce::PairApplied(attempt, result)) => {
+                if client_pair_gen().load(std::sync::atomic::Ordering::SeqCst) != attempt {
+                    // Stale attempt — a newer Pair now owns the screen.
+                } else if !client_pair_current(attempt) {
+                    self.finish_pair_cancelled(cx, attempt);
+                } else if let Err(e) = result {
+                    self.finish_pair_failed(cx, attempt, e);
+                } else if let Ok(name) = result {
+                    let opening = app_t("pair_opening");
+                    client_pair_set_progress(&opening);
+                    {
+                        let mut st = app_state().lock().unwrap();
+                        st.pair_note = opening.clone();
+                    }
+                    self.ui
+                        .widget(cx, ids!(client_pair_status))
+                        .set_text(cx, &opening);
+                    self.paint_pair_busy_chrome(cx);
+                    let _ = std::thread::Builder::new()
+                        .name("kirano-pair-books".into())
+                        .spawn(move || {
+                            enum BooksOut {
+                                Ready(Option<std::path::PathBuf>),
+                                Cancelled,
+                                Failed(String),
                             }
-                            st.client_paired = true;
-                            st.session = None;
-                            st.clear_team_edit_selection();
-                            st.lock_staff_id = None;
-                            st.lock_as_owner = false;
-                            st.screen = Screen::Lock;
-                            st.pair_note.clear();
-                        }
-                        self.set_status(
-                            cx,
-                            format!("Paired with {name} — opening the till…"),
-                        );
-                        self.show_screen(cx, Screen::Lock);
-                        self.ui.redraw(cx);
-                        let _ = std::thread::Builder::new()
-                            .name("kirano-pair-books".into())
-                            .spawn(|| {
-                                {
-                                    let mut st = app_state().lock().unwrap();
-                                    let _ = st.reload_all();
+                            let outcome = {
+                                let mut st = app_state().lock().unwrap();
+                                if !client_pair_current(attempt) {
+                                    if let Some(store) = st.store.as_ref() {
+                                        let _ = store.clear_client_pairing();
+                                    }
+                                    st.client_paired = false;
+                                    st.screen = Screen::ClientPair;
+                                    BooksOut::Cancelled
+                                } else {
+                                    match st.reload_all() {
+                                        Ok(()) if !client_pair_current(attempt) => {
+                                            if let Some(store) = st.store.as_ref() {
+                                                let _ = store.clear_client_pairing();
+                                            }
+                                            st.client_paired = false;
+                                            st.screen = Screen::ClientPair;
+                                            BooksOut::Cancelled
+                                        }
+                                        Ok(()) => {
+                                            let path = st
+                                                .store
+                                                .as_ref()
+                                                .map(|s| s.db_path().to_path_buf());
+                                            st.client_paired = true;
+                                            st.session = None;
+                                            st.clear_team_edit_selection();
+                                            st.lock_staff_id = None;
+                                            st.lock_as_owner = false;
+                                            st.screen = Screen::Lock;
+                                            st.pair_note.clear();
+                                            BooksOut::Ready(path)
+                                        }
+                                        Err(e) => BooksOut::Failed(e),
+                                    }
                                 }
-                                *lan_once().lock().unwrap() = Some(LanOnce::PairBooksReady);
-                                makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal();
-                            });
-                    }
-                    Err(e) => {
-                        app_state().lock().unwrap().pair_note = e.clone();
-                        self.ui
-                            .widget(cx, ids!(client_pair_status))
-                            .set_text(cx, &e);
-                        self.set_status(cx, e);
-                        self.ui.redraw(cx);
+                            };
+                            match outcome {
+                                BooksOut::Ready(path) => {
+                                    if let Some(path) = path {
+                                        phone::start(path);
+                                    }
+                                    publish_pair(
+                                        attempt,
+                                        LanOnce::PairBooksReady(attempt, Ok(name)),
+                                    );
+                                }
+                                BooksOut::Cancelled => {
+                                    publish_pair(attempt, LanOnce::PairCancelled(attempt));
+                                }
+                                BooksOut::Failed(e) => {
+                                    publish_pair(attempt, LanOnce::PairBooksReady(attempt, Err(e)));
+                                }
+                            }
+                        });
+                }
+            }
+            Some(LanOnce::PairBooksReady(attempt, result)) => {
+                if client_pair_gen().load(std::sync::atomic::Ordering::SeqCst) != attempt {
+                    // Stale attempt — a newer Pair now owns the screen.
+                } else {
+                    match result {
+                        Ok(name) => {
+                            client_pair_clear();
+                            self.paint_pair_busy_chrome(cx);
+                            self.dismiss_soft_keyboard(cx);
+                            self.show_screen(cx, Screen::Lock);
+                            self.set_status(
+                                cx,
+                                format!("Paired with {name} — sign in with your shop PIN"),
+                            );
+                            self.sync_chrome(cx);
+                        }
+                        Err(e) => self.finish_pair_failed(cx, attempt, e),
                     }
                 }
             }
-            Some(LanOnce::PairBooksReady) => {
-                self.set_status(cx, "Paired — sign in with your shop PIN");
-                self.sync_chrome(cx);
-            }
+            Some(LanOnce::PairCancelled(attempt)) => self.finish_pair_cancelled(cx, attempt),
             None => {}
         }
         // The shop forgot this device (Forget on the Server): back to pairing,

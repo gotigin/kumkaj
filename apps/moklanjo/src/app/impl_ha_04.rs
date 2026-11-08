@@ -283,6 +283,9 @@ impl App {
             client_find_cancel_flag().store(true, std::sync::atomic::Ordering::SeqCst);
             self.paint_submit_busy_chrome(cx);
         }
+        if self.ui.button(cx, ids!(client_pair_cancel)).clicked(actions) {
+            self.abandon_client_pair(cx);
+        }
         // Enter on host/code advances via form Tab chain; last field / button pairs.
         let skip_pair_submit = app_state().lock().unwrap().form_tab_skip_submit;
         let pair_enter = !skip_pair_submit
@@ -324,34 +327,17 @@ impl App {
                     .unwrap_or_default();
                 (expect, device_id)
             };
-            if host.trim().is_empty() || code.trim().is_empty() {
-                self.set_status(cx, "Type the office device's address and its pairing code");
-            } else {
-                app_state().lock().unwrap().pair_note = "Pairing…".into();
-                self.set_status(cx, "Pairing…");
-                self.ui
-                    .widget(cx, ids!(client_pair_status))
-                    .set_text(cx, "Pairing…");
-                self.ui.redraw(cx);
-                let _ = std::thread::Builder::new()
-                    .name("courier-pair".into())
-                    .spawn(move || {
-                        let reply = net::client_pair(
-                            &host,
-                            &code,
-                            name.trim(),
-                            &device_id,
-                            expect_server_id.as_deref(),
-                        );
-                        *lan_once().lock().unwrap() = Some(LanOnce::Paired(reply));
-                        makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal();
-                    });
-            }
+            self.start_client_pair(cx, host, code, name, device_id, expect_server_id);
         }
-        if self.ui.button(cx, ids!(client_sync_btn)).clicked(actions) {
+        if self.ui.button(cx, ids!(client_sync_btn)).clicked(actions)
+            && !client_pair_busy().load(std::sync::atomic::Ordering::SeqCst)
+        {
             phone::want_sync();
-            self.set_status(cx, "Refreshing from the office…");
-            self.sync_chrome(cx);
+            let msg = "Refreshing from the office…";
+            self.ui
+                .widget(cx, ids!(client_pair_status))
+                .set_text(cx, msg);
+            self.set_status(cx, msg);
         }
         if self.ui.button(cx, ids!(client_connection_btn)).clicked(actions)
             || self.ui.button(cx, ids!(lock_client_connection)).clicked(actions)
