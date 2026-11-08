@@ -3933,73 +3933,69 @@ script_mod! {
         }
     }
 
-    // Dish / category pick row: photo fills the face; name + category sit in a
-    // solid foot band so type never fights the food photo. Whole row is the
-    // tap target (nested Button clicks are unreliable inside PortalList).
+    // Dish / category pick row: thumb beside the name, type on the
+    // cream card, Use centered. The photo never fills the row (type on
+    // the food was unreadable, and Use sat on the bottom edge). Whole
+    // row is the tap (nested Button clicks miss inside PortalList).
     let DishRow = View{
         cursor: MouseCursor.Hand
-        // Fixed height — Overlay+Fit collapses pick lists. Title wraps inside.
-        width: Fill height: 118
+        // Fixed height — Overlay+Fit collapses pick lists.
+        width: Fill height: 104
         flow: Overlay
         RoundedView{
             width: Fill height: Fill
-            align: Align{x: 0.5 y: 0.5}
-            draw_bg.color: #xB43A12
-            draw_bg.color_2: #x69090C
+            draw_bg.color: #xFFF8F3
             draw_bg.border_radius: 14.
-            thumb_initials := Label{
-                width: Fit height: Fit
-                text: ""
-                draw_text.color: #xFFFFFF
-                draw_text.text_style.font_size: 22.
-            }
-        }
-        thumb := Image{
-            width: Fill height: Fill
-            fit: ImageFit.CropToFill
-            visible: false
-            draw_bg +: {
-                radius: uniform(14.0)
-                pixel: fn() {
-                    let sdf = Sdf2d.viewport(self.pos * self.rect_size)
-                    sdf.box(0., 0., self.rect_size.x, self.rect_size.y, self.radius)
-                    sdf.fill(self.get_color())
-                    return sdf.result
-                }
-            }
-        }
-        // Photo stays open above; dark foot only under the text band.
-        View{
-            width: Fill height: Fill
-            show_bg: true
-            draw_bg +: {
-                radius: uniform(14.0)
-                pixel: fn() {
-                    let sdf = Sdf2d.viewport(self.pos * self.rect_size)
-                    sdf.box(0., 0., self.rect_size.x, self.rect_size.y, self.radius)
-                    let t = smoothstep(0.52, 0.92, self.pos.y)
-                    sdf.fill(vec4(0.04, 0.02, 0.01, 0.88 * t))
-                    return sdf.result
-                }
-            }
+            draw_bg.border_size: 1.
+            draw_bg.border_color: #xD8C7BD
         }
         View{
             width: Fill height: Fill
-            padding: Inset{left: 14. right: 12. top: 10. bottom: 12.}
             flow: Right spacing: 12
-            align: Align{y: 1.0}
+            padding: Inset{left: 12. right: 12. top: 12. bottom: 12.}
+            align: Align{y: 0.5}
+            View{
+                width: 80 height: 80
+                flow: Overlay
+                RoundedView{
+                    width: Fill height: Fill
+                    align: Align{x: 0.5 y: 0.5}
+                    draw_bg.color: #xB43A12
+                    draw_bg.color_2: #x69090C
+                    draw_bg.border_radius: 12.
+                    thumb_initials := Label{
+                        width: Fit height: Fit
+                        text: ""
+                        draw_text.color: #xFFFFFF
+                        draw_text.text_style.font_size: 18.
+                    }
+                }
+                thumb := Image{
+                    width: Fill height: Fill
+                    fit: ImageFit.CropToFill
+                    visible: false
+                    draw_bg +: {
+                        radius: uniform(12.0)
+                        pixel: fn() {
+                            let sdf = Sdf2d.viewport(self.pos * self.rect_size)
+                            sdf.box(0., 0., self.rect_size.x, self.rect_size.y, self.radius)
+                            sdf.fill(self.get_color())
+                            return sdf.result
+                        }
+                    }
+                }
+            }
             View{
                 width: Fill height: Fit
                 flow: Down spacing: 2
-                // Fixed DishRow: wrap then Ellipsis — never mid-glyph crop.
                 title := Label{
                     width: Fill
                     text: ""
                     flow: Right{wrap: true}
                     max_lines: 2
                     text_overflow: Ellipsis
-                    draw_text.color: #xFFFFFF
-                    draw_text.text_style.font_size: 16.
+                    draw_text.color: #x260B08
+                    draw_text.text_style: theme.font_bold{font_size: 15.}
                 }
                 alias := Label{
                     visible: false
@@ -4008,8 +4004,8 @@ script_mod! {
                     flow: Right{wrap: true}
                     max_lines: 1
                     text_overflow: Ellipsis
-                    draw_text.color: #xF3E3DA
-                    draw_text.text_style.font_size: 11.
+                    draw_text.color: #x6B4A3F
+                    draw_text.text_style.font_size: 13.
                 }
                 subtitle := Label{
                     width: Fill
@@ -4017,32 +4013,24 @@ script_mod! {
                     flow: Right{wrap: true}
                     max_lines: 1
                     text_overflow: Ellipsis
-                    draw_text.color: #xFFD28A
-                    draw_text.text_style.font_size: 12.
-                }
-            }
-            // Frosted pill — readable on any photo; not a Button (PortalList).
-            RoundedView{
-                width: Fit height: Fit
-                padding: Inset{left: 14. right: 14. top: 8. bottom: 8.}
-                draw_bg.color: #x1A0A08D9
-                draw_bg.border_radius: 14.
-                draw_bg.border_size: 1.
-                draw_bg.border_color: #xFFFFFF99
-                action := Label{
-                    width: Fit
-                    text: "Use"
-                    draw_text.color: #xFFD28A
+                    draw_text.color: #x6B4A3F
                     draw_text.text_style.font_size: 13.
                 }
             }
-        }
-        RoundedView{
-            width: Fill height: Fill
-            draw_bg.color: #x00000000
-            draw_bg.border_radius: 14.
-            draw_bg.border_size: 1.
-            draw_bg.border_color: #xC9B5A8
+            // Not a Button — the row is the tap. Centered with the thumb.
+            RoundedView{
+                width: Fit height: Fit
+                padding: Inset{left: 14. right: 14. top: 8. bottom: 8.}
+                align: Align{x: 0.5 y: 0.5}
+                draw_bg.color: #x9A0E10
+                draw_bg.border_radius: 12.
+                action := Label{
+                    width: Fit
+                    text: "Use"
+                    draw_text.color: #xFFFFFF
+                    draw_text.text_style.font_size: 13.
+                }
+            }
         }
     }
 

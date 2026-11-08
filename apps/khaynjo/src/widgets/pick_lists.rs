@@ -467,7 +467,7 @@ impl Widget for CategoryPickList {
                         &item,
                         &initials_from,
                         &photo,
-                        thumbs::ThumbKind::Card,
+                        thumbs::ThumbKind::Row,
                     );
                     item.label(cx, ids!(title)).set_text(cx, &title);
                     paint_first_alias(cx, &item, alias.as_deref());
@@ -500,7 +500,7 @@ impl Widget for CategoryPickList {
 
 /// The item form's picker (see [`DishPick`]). Closed, it draws nothing. Open,
 /// it is a scrolling viewport of at most [`DISH_PICK_MAX_HEIGHT`], so only the
-/// rows on screen draw and only their card-sized photo copies are asked for.
+/// rows on screen draw and only their row-sized photo copies are asked for.
 #[derive(Script, ScriptHook, Widget)]
 struct DishPickList {
     #[deref]
@@ -515,7 +515,7 @@ struct DishPickList {
 /// Tallest the picker grows before it scrolls inside itself (css px).
 const DISH_PICK_MAX_HEIGHT: f64 = 420.0;
 /// Must match `DishRow` height and PortalList `spacing` on both pick lists.
-const DISH_ROW_H: f64 = 118.0;
+const DISH_ROW_H: f64 = 104.0;
 const DISH_ROW_GAP: f64 = 12.0;
 
 impl Widget for DishPickList {
@@ -560,8 +560,8 @@ impl Widget for DishPickList {
             }
             return DrawStep::done();
         }
-        // DishRow is a fixed landscape photo card; PortalList spacing matches
-        // DISH_ROW_GAP. Small results shrink the box; long ones scroll inside.
+        // DishRow is a fixed card (thumb beside the name). PortalList spacing
+        // matches DISH_ROW_GAP. Small results shrink the box; long ones scroll.
         let walk = Walk {
             height: Size::Fixed(height),
             ..walk
@@ -625,7 +625,7 @@ impl Widget for DishPickList {
                         &item,
                         name_for_initials,
                         &photo,
-                        thumbs::ThumbKind::Card,
+                        thumbs::ThumbKind::Row,
                     );
                     item.label(cx, ids!(title)).set_text(cx, &title);
                     paint_first_alias(cx, &item, alias.as_deref());
