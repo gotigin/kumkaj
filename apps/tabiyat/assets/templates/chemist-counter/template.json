@@ -1,0 +1,4666 @@
+{
+  "id": "chemist-counter",
+  "title": "Chemist counter",
+  "blurb": "Starter chemist list: generic names, Hindi aliases, example prices, photos. Not a drug database and not medical advice. Schedule and Rx flags stay off until you set them. Prices are examples, not MRP.",
+  "categories": [
+    {
+      "name": "Pain Fever",
+      "image": "shelf:pain-fever/paracetamol-500.webp",
+      "items": [
+        {
+          "name": "Paracetamol 500 tablet",
+          "price": 2,
+          "unit": "pc",
+          "image": "shelf:pain-fever/paracetamol-500.webp",
+          "aliases": [
+            "पैरासिटामोल 500"
+          ]
+        },
+        {
+          "name": "Paracetamol 650 tablet",
+          "price": 3,
+          "unit": "pc",
+          "image": "shelf:pain-fever/paracetamol-650.webp",
+          "aliases": [
+            "पैरासिटामोल 650"
+          ]
+        },
+        {
+          "name": "Paracetamol syrup",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:pain-fever/paracetamol-syrup.webp",
+          "aliases": [
+            "पैरासिटामोल सिरप"
+          ]
+        },
+        {
+          "name": "Paracetamol drops",
+          "price": 35,
+          "unit": "pc",
+          "image": "shelf:pain-fever/paracetamol-drops.webp",
+          "aliases": [
+            "पैरासिटामोल ड्रॉप्स"
+          ]
+        },
+        {
+          "name": "Paracetamol suspension",
+          "price": 45,
+          "unit": "pc",
+          "image": "shelf:pain-fever/paracetamol-suspension.webp",
+          "aliases": [
+            "पैरासिटामोल सस्पेंशन"
+          ]
+        },
+        {
+          "name": "Ibuprofen 200 tablet",
+          "price": 2,
+          "unit": "pc",
+          "image": "shelf:pain-fever/ibuprofen-200.webp",
+          "aliases": [
+            "इबुप्रोफेन 200"
+          ]
+        },
+        {
+          "name": "Ibuprofen 400 tablet",
+          "price": 3,
+          "unit": "pc",
+          "image": "shelf:pain-fever/ibuprofen-400.webp",
+          "aliases": [
+            "इबुप्रोफेन 400"
+          ]
+        },
+        {
+          "name": "Ibuprofen syrup",
+          "price": 50,
+          "unit": "pc",
+          "image": "shelf:pain-fever/ibuprofen-syrup.webp",
+          "aliases": [
+            "इबुप्रोफेन सिरप"
+          ]
+        },
+        {
+          "name": "Ibuprofen gel",
+          "price": 70,
+          "unit": "pc",
+          "image": "shelf:pain-fever/ibuprofen-gel.webp",
+          "aliases": [
+            "इबुप्रोफेन जेल"
+          ]
+        },
+        {
+          "name": "Diclofenac gel",
+          "price": 60,
+          "unit": "pc",
+          "image": "shelf:pain-fever/diclofenac-gel.webp",
+          "aliases": [
+            "डिक्लोफेनाक जेल"
+          ]
+        },
+        {
+          "name": "Diclofenac tablet",
+          "price": 3,
+          "unit": "pc",
+          "image": "shelf:pain-fever/diclofenac-tablet.webp",
+          "aliases": [
+            "डिक्लोफेनाक गोली"
+          ]
+        },
+        {
+          "name": "Aceclofenac tablet",
+          "price": 4,
+          "unit": "pc",
+          "image": "shelf:pain-fever/aceclofenac-tablet.webp",
+          "aliases": [
+            "एसिक्लोफेनाक"
+          ]
+        },
+        {
+          "name": "Aceclofenac gel",
+          "price": 70,
+          "unit": "pc",
+          "image": "shelf:pain-fever/aceclofenac-gel.webp",
+          "aliases": [
+            "एसिक्लोफेनाक जेल"
+          ]
+        },
+        {
+          "name": "Mefenamic acid tablet",
+          "price": 4,
+          "unit": "pc",
+          "image": "shelf:pain-fever/mefenamic-tablet.webp",
+          "aliases": [
+            "मेफेनामिक एसिड"
+          ]
+        },
+        {
+          "name": "Mefenamic acid syrup",
+          "price": 45,
+          "unit": "pc",
+          "image": "shelf:pain-fever/mefenamic-syrup.webp",
+          "aliases": [
+            "मेफेनामिक सिरप"
+          ]
+        },
+        {
+          "name": "Aspirin 75 tablet",
+          "price": 1,
+          "unit": "pc",
+          "image": "shelf:pain-fever/aspirin-75.webp",
+          "aliases": [
+            "एस्प्रिन 75"
+          ]
+        },
+        {
+          "name": "Aspirin 325 tablet",
+          "price": 2,
+          "unit": "pc",
+          "image": "shelf:pain-fever/aspirin-325.webp",
+          "aliases": [
+            "एस्प्रिन 325"
+          ]
+        },
+        {
+          "name": "Nimesulide tablet",
+          "price": 3,
+          "unit": "pc",
+          "image": "shelf:pain-fever/nimesulide-tablet.webp",
+          "aliases": [
+            "निमेसुलाइड"
+          ]
+        },
+        {
+          "name": "Nimesulide gel",
+          "price": 60,
+          "unit": "pc",
+          "image": "shelf:pain-fever/nimesulide-gel.webp",
+          "aliases": [
+            "निमेसुलाइड जेल"
+          ]
+        },
+        {
+          "name": "Paracetamol ibuprofen tablet",
+          "price": 4,
+          "unit": "pc",
+          "image": "shelf:pain-fever/paracetamol-ibuprofen.webp",
+          "aliases": [
+            "पैरा इबु गोली"
+          ]
+        },
+        {
+          "name": "Serratiopeptidase tablet",
+          "price": 6,
+          "unit": "pc",
+          "image": "shelf:pain-fever/tramadol-not.webp",
+          "aliases": [
+            "सेराटियोपेप्टिडेज़"
+          ]
+        },
+        {
+          "name": "Trypsin chymotrypsin tablet",
+          "price": 8,
+          "unit": "pc",
+          "image": "shelf:pain-fever/trypsin-tablet.webp",
+          "aliases": [
+            "ट्रिप्सिन गोली"
+          ]
+        },
+        {
+          "name": "Etoricoxib tablet",
+          "price": 6,
+          "unit": "pc",
+          "image": "shelf:pain-fever/etoricoxib-tablet.webp",
+          "aliases": [
+            "एटोरिकॉक्सीब"
+          ]
+        },
+        {
+          "name": "Piroxicam gel",
+          "price": 55,
+          "unit": "pc",
+          "image": "shelf:pain-fever/piroxicam-gel.webp",
+          "aliases": [
+            "पाइरॉक्सिकैम जेल"
+          ]
+        },
+        {
+          "name": "Pain balm",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:pain-fever/menthol-balm.webp",
+          "aliases": [
+            "दर्द बाम"
+          ]
+        },
+        {
+          "name": "Muscle spray",
+          "price": 90,
+          "unit": "pc",
+          "image": "shelf:pain-fever/muscle-spray.webp",
+          "aliases": [
+            "मसल स्प्रे"
+          ]
+        },
+        {
+          "name": "Hot gel",
+          "price": 80,
+          "unit": "pc",
+          "image": "shelf:pain-fever/hot-gel.webp",
+          "aliases": [
+            "हॉट जेल"
+          ]
+        },
+        {
+          "name": "Cold pack",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:pain-fever/cold-pack.webp",
+          "aliases": [
+            "कोल्ड पैक"
+          ]
+        },
+        {
+          "name": "Fever strip",
+          "price": 15,
+          "unit": "pc",
+          "image": "shelf:pain-fever/fever-strip.webp",
+          "aliases": [
+            "बुखार पट्टी"
+          ]
+        },
+        {
+          "name": "Paracetamol infusion",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:pain-fever/paracetamol-infusion.webp",
+          "aliases": [
+            "पैरासिटामोल इन्फ्यूजन"
+          ]
+        },
+        {
+          "name": "Diclofenac injection",
+          "price": 12,
+          "unit": "pc",
+          "image": "shelf:pain-fever/diclofenac-injection.webp",
+          "aliases": [
+            "डिक्लोफेनाक इंजेक्शन"
+          ]
+        },
+        {
+          "name": "Pain fever combo tablet",
+          "price": 4,
+          "unit": "pc",
+          "image": "shelf:pain-fever/combiflam-style.webp",
+          "aliases": [
+            "दर्द बुखार गोली"
+          ]
+        },
+        {
+          "name": "Pain relief patch",
+          "price": 25,
+          "unit": "pc",
+          "image": "shelf:pain-fever/back-pain-patch.webp",
+          "aliases": [
+            "दर्द पैच"
+          ]
+        },
+        {
+          "name": "Liniment",
+          "price": 50,
+          "unit": "pc",
+          "image": "shelf:pain-fever/liniment.webp",
+          "aliases": [
+            "लिनिमेंट"
+          ]
+        },
+        {
+          "name": "Methyl salicylate cream",
+          "price": 45,
+          "unit": "pc",
+          "image": "shelf:pain-fever/methyl-salicylate.webp",
+          "aliases": [
+            "मिथाइल सैलिसिलेट"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Cough Cold",
+      "image": "shelf:cough-cold/cetirizine-tablet.webp",
+      "items": [
+        {
+          "name": "Cetirizine tablet",
+          "price": 2,
+          "unit": "pc",
+          "image": "shelf:cough-cold/cetirizine-tablet.webp",
+          "aliases": [
+            "सेटिरिज़ीन"
+          ]
+        },
+        {
+          "name": "Cetirizine syrup",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:cough-cold/cetirizine-syrup.webp",
+          "aliases": [
+            "सेटिरिज़ीन सिरप"
+          ]
+        },
+        {
+          "name": "Levocetirizine tablet",
+          "price": 3,
+          "unit": "pc",
+          "image": "shelf:cough-cold/levocetirizine.webp",
+          "aliases": [
+            "लेवोसेटिरिज़ीन"
+          ]
+        },
+        {
+          "name": "Fexofenadine tablet",
+          "price": 6,
+          "unit": "pc",
+          "image": "shelf:cough-cold/fexofenadine.webp",
+          "aliases": [
+            "फेक्सोफेनाडिन"
+          ]
+        },
+        {
+          "name": "Loratadine tablet",
+          "price": 3,
+          "unit": "pc",
+          "image": "shelf:cough-cold/loratadine.webp",
+          "aliases": [
+            "लोराटाडिन"
+          ]
+        },
+        {
+          "name": "Chlorpheniramine tablet",
+          "price": 1,
+          "unit": "pc",
+          "image": "shelf:cough-cold/chlorpheniramine.webp",
+          "aliases": [
+            "क्लोरोफेनिरामाइन"
+          ]
+        },
+        {
+          "name": "Phenylephrine drops",
+          "price": 30,
+          "unit": "pc",
+          "image": "shelf:cough-cold/phenylephrine-drops.webp",
+          "aliases": [
+            "फीनाइलएफ्रिन ड्रॉप्स"
+          ]
+        },
+        {
+          "name": "Xylometazoline drops",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:cough-cold/xylometazoline.webp",
+          "aliases": [
+            "जाइलोमेटोज़ोलिन"
+          ]
+        },
+        {
+          "name": "Saline nasal drops",
+          "price": 25,
+          "unit": "pc",
+          "image": "shelf:cough-cold/saline-nasal.webp",
+          "aliases": [
+            "सलाइन नेज़ल ड्रॉप्स"
+          ]
+        },
+        {
+          "name": "Inhalant capsule",
+          "price": 20,
+          "unit": "pc",
+          "image": "shelf:cough-cold/steam-capsule.webp",
+          "aliases": [
+            "भाप कैप्सूल"
+          ]
+        },
+        {
+          "name": "Dry cough syrup",
+          "price": 70,
+          "unit": "pc",
+          "image": "shelf:cough-cold/cough-syrup-dry.webp",
+          "aliases": [
+            "सूखी खांसी सिरप"
+          ]
+        },
+        {
+          "name": "Wet cough syrup",
+          "price": 70,
+          "unit": "pc",
+          "image": "shelf:cough-cold/cough-syrup-wet.webp",
+          "aliases": [
+            "बलगम खांसी सिरप"
+          ]
+        },
+        {
+          "name": "Ambroxol tablet",
+          "price": 3,
+          "unit": "pc",
+          "image": "shelf:cough-cold/ambroxol-tablet.webp",
+          "aliases": [
+            "एम्ब्रोक्सोल"
+          ]
+        },
+        {
+          "name": "Bromhexine tablet",
+          "price": 2,
+          "unit": "pc",
+          "image": "shelf:cough-cold/bromhexine.webp",
+          "aliases": [
+            "ब्रोमहेक्सीन"
+          ]
+        },
+        {
+          "name": "Guaifenesin syrup",
+          "price": 60,
+          "unit": "pc",
+          "image": "shelf:cough-cold/guaifenesin-syrup.webp",
+          "aliases": [
+            "गुआइफेनेसिन सिरप"
+          ]
+        },
+        {
+          "name": "Dextromethorphan tablet",
+          "price": 3,
+          "unit": "pc",
+          "image": "shelf:cough-cold/dextromethorphan-tablet.webp",
+          "aliases": [
+            "डेक्सट्रोमेथॉर्फन"
+          ]
+        },
+        {
+          "name": "Salbutamol syrup",
+          "price": 30,
+          "unit": "pc",
+          "image": "shelf:cough-cold/salbutamol-syrup.webp",
+          "aliases": [
+            "साल्ब्यूटामोल सिरप"
+          ]
+        },
+        {
+          "name": "Salbutamol inhaler",
+          "price": 120,
+          "unit": "pc",
+          "image": "shelf:cough-cold/salbutamol-inhaler.webp",
+          "aliases": [
+            "साल्ब्यूटामोल इनहेलर"
+          ]
+        },
+        {
+          "name": "Budesonide inhaler",
+          "price": 180,
+          "unit": "pc",
+          "image": "shelf:cough-cold/budesonide-inhaler.webp",
+          "aliases": [
+            "बुडेसोनाइड इनहेलर"
+          ]
+        },
+        {
+          "name": "Montelukast tablet",
+          "price": 6,
+          "unit": "pc",
+          "image": "shelf:cough-cold/montelukast.webp",
+          "aliases": [
+            "मोंटेलुकास्ट"
+          ]
+        },
+        {
+          "name": "Montelukast syrup",
+          "price": 60,
+          "unit": "pc",
+          "image": "shelf:cough-cold/montelukast-syrup.webp",
+          "aliases": [
+            "मोंटेलुकास्ट सिरप"
+          ]
+        },
+        {
+          "name": "Cough lozenge",
+          "price": 2,
+          "unit": "pc",
+          "image": "shelf:cough-cold/cough-lozenge.webp",
+          "aliases": [
+            "कफ लॉज़ेंज"
+          ]
+        },
+        {
+          "name": "Throat spray",
+          "price": 80,
+          "unit": "pc",
+          "image": "shelf:cough-cold/throat-spray.webp",
+          "aliases": [
+            "थ्रोट स्प्रे"
+          ]
+        },
+        {
+          "name": "Vapour rub",
+          "price": 50,
+          "unit": "pc",
+          "image": "shelf:cough-cold/vaporub.webp",
+          "aliases": [
+            "वेपर रब"
+          ]
+        },
+        {
+          "name": "Nasal spray",
+          "price": 70,
+          "unit": "pc",
+          "image": "shelf:cough-cold/nasal-spray.webp",
+          "aliases": [
+            "नेज़ल स्प्रे"
+          ]
+        },
+        {
+          "name": "Steam inhaler",
+          "price": 250,
+          "unit": "pc",
+          "image": "shelf:cough-cold/steam-inhaler.webp",
+          "aliases": [
+            "भाप लेने का यंत्र"
+          ]
+        },
+        {
+          "name": "Cold tablet",
+          "price": 3,
+          "unit": "pc",
+          "image": "shelf:cough-cold/cold-tablet.webp",
+          "aliases": [
+            "सर्दी की गोली"
+          ]
+        },
+        {
+          "name": "Phenylephrine tablet",
+          "price": 2,
+          "unit": "pc",
+          "image": "shelf:cough-cold/phenylephrine-tablet.webp",
+          "aliases": [
+            "फीनाइलएफ्रिन गोली"
+          ]
+        },
+        {
+          "name": "Decongestant tablet",
+          "price": 3,
+          "unit": "pc",
+          "image": "shelf:cough-cold/pseudoephedrine.webp",
+          "aliases": [
+            "डीकंजेस्टेंट गोली"
+          ]
+        },
+        {
+          "name": "Herbal cough syrup",
+          "price": 80,
+          "unit": "pc",
+          "image": "shelf:cough-cold/herbal-cough.webp",
+          "aliases": [
+            "हर्बल कफ सिरप"
+          ]
+        },
+        {
+          "name": "Honey cough syrup",
+          "price": 90,
+          "unit": "pc",
+          "image": "shelf:cough-cold/honey-cough.webp",
+          "aliases": [
+            "शहद कफ सिरप"
+          ]
+        },
+        {
+          "name": "Codeine cough syrup",
+          "price": 90,
+          "unit": "pc",
+          "image": "shelf:cough-cold/codeine-cough.webp",
+          "aliases": [
+            "कोडीन कफ सिरप"
+          ]
+        },
+        {
+          "name": "Levosalbutamol syrup",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:cough-cold/levosalbutamol.webp",
+          "aliases": [
+            "लेवोसाल्ब्यूटामोल"
+          ]
+        },
+        {
+          "name": "Acebrophylline capsule",
+          "price": 8,
+          "unit": "pc",
+          "image": "shelf:cough-cold/acebrophylline.webp",
+          "aliases": [
+            "एसीब्रोफाइलिन"
+          ]
+        },
+        {
+          "name": "Theophylline tablet",
+          "price": 2,
+          "unit": "pc",
+          "image": "shelf:cough-cold/theophylline.webp",
+          "aliases": [
+            "थियोफाइलिन"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Stomach",
+      "image": "shelf:stomach/antacid-tablet.webp",
+      "items": [
+        {
+          "name": "Antacid tablet",
+          "price": 2,
+          "unit": "pc",
+          "image": "shelf:stomach/antacid-tablet.webp",
+          "aliases": [
+            "एंटासिड गोली"
+          ]
+        },
+        {
+          "name": "Antacid gel",
+          "price": 80,
+          "unit": "pc",
+          "image": "shelf:stomach/antacid-gel.webp",
+          "aliases": [
+            "एंटासिड जेल"
+          ]
+        },
+        {
+          "name": "Omeprazole capsule",
+          "price": 4,
+          "unit": "pc",
+          "image": "shelf:stomach/omeprazole.webp",
+          "aliases": [
+            "ओमेप्राज़ोल"
+          ]
+        },
+        {
+          "name": "Pantoprazole tablet",
+          "price": 5,
+          "unit": "pc",
+          "image": "shelf:stomach/pantoprazole.webp",
+          "aliases": [
+            "पैंटोप्राज़ोल"
+          ]
+        },
+        {
+          "name": "Rabeprazole tablet",
+          "price": 6,
+          "unit": "pc",
+          "image": "shelf:stomach/rabeprazole.webp",
+          "aliases": [
+            "रैबेप्राज़ोल"
+          ]
+        },
+        {
+          "name": "Ranitidine tablet",
+          "price": 2,
+          "unit": "pc",
+          "image": "shelf:stomach/ranitidine.webp",
+          "aliases": [
+            "रैनिटिडिन"
+          ]
+        },
+        {
+          "name": "Domperidone tablet",
+          "price": 3,
+          "unit": "pc",
+          "image": "shelf:stomach/domperidone.webp",
+          "aliases": [
+            "डोमपेरिडोन"
+          ]
+        },
+        {
+          "name": "Domperidone syrup",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:stomach/domperidone-syrup.webp",
+          "aliases": [
+            "डोमपेरिडोन सिरप"
+          ]
+        },
+        {
+          "name": "Ondansetron tablet",
+          "price": 5,
+          "unit": "pc",
+          "image": "shelf:stomach/ondansetron.webp",
+          "aliases": [
+            "ऑनडैनसेट्रॉन"
+          ]
+        },
+        {
+          "name": "Ondansetron syrup",
+          "price": 35,
+          "unit": "pc",
+          "image": "shelf:stomach/ondansetron-syrup.webp",
+          "aliases": [
+            "ऑनडैनसेट्रॉन सिरप"
+          ]
+        },
+        {
+          "name": "ORS",
+          "price": 20,
+          "unit": "pc",
+          "image": "shelf:stomach/ors.webp",
+          "aliases": [
+            "ओआरएस"
+          ]
+        },
+        {
+          "name": "ORS drink",
+          "price": 25,
+          "unit": "pc",
+          "image": "shelf:stomach/ors-ready.webp",
+          "aliases": [
+            "ओआरएस ड्रिंक"
+          ]
+        },
+        {
+          "name": "Probiotic capsule",
+          "price": 12,
+          "unit": "pc",
+          "image": "shelf:stomach/probiotic.webp",
+          "aliases": [
+            "प्रोबायोटिक"
+          ]
+        },
+        {
+          "name": "Lactobacillus sachet",
+          "price": 10,
+          "unit": "pc",
+          "image": "shelf:stomach/lactobacillus-sachet.webp",
+          "aliases": [
+            "लैक्टोबैसिलस"
+          ]
+        },
+        {
+          "name": "Loperamide tablet",
+          "price": 3,
+          "unit": "pc",
+          "image": "shelf:stomach/loperamide.webp",
+          "aliases": [
+            "लोपरामाइड"
+          ]
+        },
+        {
+          "name": "Racecadotril sachet",
+          "price": 15,
+          "unit": "pc",
+          "image": "shelf:stomach/racecadotril.webp",
+          "aliases": [
+            "रेसेकाडोट्रिल"
+          ]
+        },
+        {
+          "name": "Ofloxacin ornidazole tablet",
+          "price": 8,
+          "unit": "pc",
+          "image": "shelf:stomach/ofloxacin-ornidazole.webp",
+          "aliases": [
+            "ऑफ्लोक्सासिन ऑर्निडाज़ोल"
+          ]
+        },
+        {
+          "name": "Metronidazole tablet",
+          "price": 2,
+          "unit": "pc",
+          "image": "shelf:stomach/metronidazole.webp",
+          "aliases": [
+            "मेट्रोनिडाज़ोल"
+          ]
+        },
+        {
+          "name": "Metronidazole syrup",
+          "price": 30,
+          "unit": "pc",
+          "image": "shelf:stomach/metronidazole-syrup.webp",
+          "aliases": [
+            "मेट्रोनिडाज़ोल सिरप"
+          ]
+        },
+        {
+          "name": "Albendazole tablet",
+          "price": 8,
+          "unit": "pc",
+          "image": "shelf:stomach/albendazole.webp",
+          "aliases": [
+            "एल्बेंडाज़ोल"
+          ]
+        },
+        {
+          "name": "Albendazole syrup",
+          "price": 25,
+          "unit": "pc",
+          "image": "shelf:stomach/albendazole-syrup.webp",
+          "aliases": [
+            "एल्बेंडाज़ोल सिरप"
+          ]
+        },
+        {
+          "name": "Mebendazole tablet",
+          "price": 6,
+          "unit": "pc",
+          "image": "shelf:stomach/mebendazole.webp",
+          "aliases": [
+            "मेबेंडाज़ोल"
+          ]
+        },
+        {
+          "name": "Ispaghula husk",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:stomach/ispaghula.webp",
+          "aliases": [
+            "इसबगोल"
+          ]
+        },
+        {
+          "name": "Lactulose syrup",
+          "price": 90,
+          "unit": "pc",
+          "image": "shelf:stomach/lactulose.webp",
+          "aliases": [
+            "लैक्टुलोज़"
+          ]
+        },
+        {
+          "name": "Bisacodyl tablet",
+          "price": 2,
+          "unit": "pc",
+          "image": "shelf:stomach/bisacodyl.webp",
+          "aliases": [
+            "बिसाकोडिल"
+          ]
+        },
+        {
+          "name": "Dicyclomine tablet",
+          "price": 2,
+          "unit": "pc",
+          "image": "shelf:stomach/dicyclomine.webp",
+          "aliases": [
+            "डाइसाइक्लोमिन"
+          ]
+        },
+        {
+          "name": "Dicyclomine drops",
+          "price": 30,
+          "unit": "pc",
+          "image": "shelf:stomach/dicyclomine-drops.webp",
+          "aliases": [
+            "डाइसाइक्लोमिन ड्रॉप्स"
+          ]
+        },
+        {
+          "name": "Simethicone drops",
+          "price": 35,
+          "unit": "pc",
+          "image": "shelf:stomach/simethicone.webp",
+          "aliases": [
+            "सिमेथिकोन ड्रॉप्स"
+          ]
+        },
+        {
+          "name": "Digestive enzyme",
+          "price": 5,
+          "unit": "pc",
+          "image": "shelf:stomach/digestive-enzyme.webp",
+          "aliases": [
+            "डाइजेस्टिव एंजाइम"
+          ]
+        },
+        {
+          "name": "Mint drops",
+          "price": 30,
+          "unit": "pc",
+          "image": "shelf:stomach/pudin-hara.webp",
+          "aliases": [
+            "पुदीना अर्क"
+          ]
+        },
+        {
+          "name": "Antacid sachet",
+          "price": 5,
+          "unit": "pc",
+          "image": "shelf:stomach/antacid-sachet.webp",
+          "aliases": [
+            "एंटासिड पाउडर"
+          ]
+        },
+        {
+          "name": "Zinc tablet",
+          "price": 2,
+          "unit": "pc",
+          "image": "shelf:stomach/zinc-ors.webp",
+          "aliases": [
+            "जिंक गोली"
+          ]
+        },
+        {
+          "name": "Zinc syrup",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:stomach/zinc-syrup.webp",
+          "aliases": [
+            "जिंक सिरप"
+          ]
+        },
+        {
+          "name": "Lactase drops",
+          "price": 80,
+          "unit": "pc",
+          "image": "shelf:stomach/lactose-enzyme.webp",
+          "aliases": [
+            "लैक्टेज़ ड्रॉप्स"
+          ]
+        },
+        {
+          "name": "Silymarin tablet",
+          "price": 6,
+          "unit": "pc",
+          "image": "shelf:stomach/hepatoprotective.webp",
+          "aliases": [
+            "सिलीमारिन"
+          ]
+        },
+        {
+          "name": "Ursodeoxycholic tablet",
+          "price": 10,
+          "unit": "pc",
+          "image": "shelf:stomach/ursodiol.webp",
+          "aliases": [
+            "अर्सोडिऑल"
+          ]
+        },
+        {
+          "name": "Mesalazine tablet",
+          "price": 12,
+          "unit": "pc",
+          "image": "shelf:stomach/mesalazine.webp",
+          "aliases": [
+            "मेसालाज़ीन"
+          ]
+        },
+        {
+          "name": "Hyoscine tablet",
+          "price": 4,
+          "unit": "pc",
+          "image": "shelf:stomach/hyoscine.webp",
+          "aliases": [
+            "हायोसीन"
+          ]
+        },
+        {
+          "name": "Activated charcoal",
+          "price": 5,
+          "unit": "pc",
+          "image": "shelf:stomach/activated-charcoal.webp",
+          "aliases": [
+            "एक्टिवेटेड चारकोल"
+          ]
+        },
+        {
+          "name": "Electrolyte sachet",
+          "price": 20,
+          "unit": "pc",
+          "image": "shelf:stomach/electrolyte-sachet.webp",
+          "aliases": [
+            "इलेक्ट्रोलाइट"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Vitamins",
+      "image": "shelf:vitamins/vitamin-c.webp",
+      "items": [
+        {
+          "name": "Vitamin C tablet",
+          "price": 2,
+          "unit": "pc",
+          "image": "shelf:vitamins/vitamin-c.webp",
+          "aliases": [
+            "विटामिन सी"
+          ]
+        },
+        {
+          "name": "Vitamin D sachet",
+          "price": 20,
+          "unit": "pc",
+          "image": "shelf:vitamins/vitamin-d.webp",
+          "aliases": [
+            "विटामिन डी"
+          ]
+        },
+        {
+          "name": "Vitamin D tablet",
+          "price": 8,
+          "unit": "pc",
+          "image": "shelf:vitamins/vitamin-d-tablet.webp",
+          "aliases": [
+            "विटामिन डी गोली"
+          ]
+        },
+        {
+          "name": "B complex tablet",
+          "price": 2,
+          "unit": "pc",
+          "image": "shelf:vitamins/vitamin-b-complex.webp",
+          "aliases": [
+            "बी कॉम्प्लेक्स"
+          ]
+        },
+        {
+          "name": "B complex syrup",
+          "price": 60,
+          "unit": "pc",
+          "image": "shelf:vitamins/b-complex-syrup.webp",
+          "aliases": [
+            "बी कॉम्प्लेक्स सिरप"
+          ]
+        },
+        {
+          "name": "Vitamin B12 tablet",
+          "price": 4,
+          "unit": "pc",
+          "image": "shelf:vitamins/b12-tablet.webp",
+          "aliases": [
+            "विटामिन बी12"
+          ]
+        },
+        {
+          "name": "Vitamin B12 injection",
+          "price": 15,
+          "unit": "pc",
+          "image": "shelf:vitamins/b12-injection.webp",
+          "aliases": [
+            "बी12 इंजेक्शन"
+          ]
+        },
+        {
+          "name": "Folic acid tablet",
+          "price": 1,
+          "unit": "pc",
+          "image": "shelf:vitamins/folic-acid.webp",
+          "aliases": [
+            "फोलिक एसिड"
+          ]
+        },
+        {
+          "name": "Iron tablet",
+          "price": 2,
+          "unit": "pc",
+          "image": "shelf:vitamins/iron-tablet.webp",
+          "aliases": [
+            "आयरन गोली"
+          ]
+        },
+        {
+          "name": "Iron syrup",
+          "price": 70,
+          "unit": "pc",
+          "image": "shelf:vitamins/iron-syrup.webp",
+          "aliases": [
+            "आयरन सिरप"
+          ]
+        },
+        {
+          "name": "Calcium tablet",
+          "price": 3,
+          "unit": "pc",
+          "image": "shelf:vitamins/calcium-tablet.webp",
+          "aliases": [
+            "कैल्शियम"
+          ]
+        },
+        {
+          "name": "Calcium vitamin D",
+          "price": 5,
+          "unit": "pc",
+          "image": "shelf:vitamins/calcium-vitamin-d.webp",
+          "aliases": [
+            "कैल्शियम विटामिन डी"
+          ]
+        },
+        {
+          "name": "Multivitamin tablet",
+          "price": 3,
+          "unit": "pc",
+          "image": "shelf:vitamins/multivitamin-tablet.webp",
+          "aliases": [
+            "मल्टीविटामिन"
+          ]
+        },
+        {
+          "name": "Multivitamin syrup",
+          "price": 80,
+          "unit": "pc",
+          "image": "shelf:vitamins/multivitamin-syrup.webp",
+          "aliases": [
+            "मल्टीविटामिन सिरप"
+          ]
+        },
+        {
+          "name": "Multivitamin drops",
+          "price": 50,
+          "unit": "pc",
+          "image": "shelf:vitamins/multivitamin-drops.webp",
+          "aliases": [
+            "मल्टीविटामिन ड्रॉप्स"
+          ]
+        },
+        {
+          "name": "Zinc vitamin tablet",
+          "price": 3,
+          "unit": "pc",
+          "image": "shelf:vitamins/zinc-vitamin.webp",
+          "aliases": [
+            "जिंक विटामिन"
+          ]
+        },
+        {
+          "name": "Omega 3 capsule",
+          "price": 8,
+          "unit": "pc",
+          "image": "shelf:vitamins/omega-3.webp",
+          "aliases": [
+            "ओमेगा 3"
+          ]
+        },
+        {
+          "name": "Fish oil capsule",
+          "price": 6,
+          "unit": "pc",
+          "image": "shelf:vitamins/fish-oil.webp",
+          "aliases": [
+            "फिश ऑयल"
+          ]
+        },
+        {
+          "name": "Biotin tablet",
+          "price": 5,
+          "unit": "pc",
+          "image": "shelf:vitamins/biotin.webp",
+          "aliases": [
+            "बायोटिन"
+          ]
+        },
+        {
+          "name": "Vitamin E capsule",
+          "price": 3,
+          "unit": "pc",
+          "image": "shelf:vitamins/vitamin-e.webp",
+          "aliases": [
+            "विटामिन ई"
+          ]
+        },
+        {
+          "name": "Vitamin A capsule",
+          "price": 2,
+          "unit": "pc",
+          "image": "shelf:vitamins/vitamin-a.webp",
+          "aliases": [
+            "विटामिन ए"
+          ]
+        },
+        {
+          "name": "Vitamin K injection",
+          "price": 15,
+          "unit": "pc",
+          "image": "shelf:vitamins/vitamin-k.webp",
+          "aliases": [
+            "विटामिन के"
+          ]
+        },
+        {
+          "name": "Protein powder",
+          "price": 400,
+          "unit": "pc",
+          "image": "shelf:vitamins/protein-powder.webp",
+          "aliases": [
+            "प्रोटीन पाउडर"
+          ]
+        },
+        {
+          "name": "ORS zinc kit",
+          "price": 30,
+          "unit": "pc",
+          "image": "shelf:vitamins/ors-zinc-kit.webp",
+          "aliases": [
+            "ओआरएस जिंक किट"
+          ]
+        },
+        {
+          "name": "Prenatal tablet",
+          "price": 6,
+          "unit": "pc",
+          "image": "shelf:vitamins/prenatal.webp",
+          "aliases": [
+            "प्रेग्नेंसी विटामिन"
+          ]
+        },
+        {
+          "name": "Calcium syrup",
+          "price": 70,
+          "unit": "pc",
+          "image": "shelf:vitamins/calcium-syrup.webp",
+          "aliases": [
+            "कैल्शियम सिरप"
+          ]
+        },
+        {
+          "name": "Iron folic tablet",
+          "price": 2,
+          "unit": "pc",
+          "image": "shelf:vitamins/iron-folic.webp",
+          "aliases": [
+            "आयरन फोलिक"
+          ]
+        },
+        {
+          "name": "Methylcobalamin tablet",
+          "price": 6,
+          "unit": "pc",
+          "image": "shelf:vitamins/methylcobalamin.webp",
+          "aliases": [
+            "मिथाइलकोबालामिन"
+          ]
+        },
+        {
+          "name": "B1 B6 B12 tablet",
+          "price": 4,
+          "unit": "pc",
+          "image": "shelf:vitamins/neurobion-style.webp",
+          "aliases": [
+            "बी1 बी6 बी12"
+          ]
+        },
+        {
+          "name": "Antioxidant capsule",
+          "price": 8,
+          "unit": "pc",
+          "image": "shelf:vitamins/antioxidant.webp",
+          "aliases": [
+            "एंटीऑक्सीडेंट"
+          ]
+        },
+        {
+          "name": "Collagen sachet",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:vitamins/collagen.webp",
+          "aliases": [
+            "कोलेजन"
+          ]
+        },
+        {
+          "name": "Magnesium tablet",
+          "price": 5,
+          "unit": "pc",
+          "image": "shelf:vitamins/magnesium.webp",
+          "aliases": [
+            "मैग्नीशियम"
+          ]
+        },
+        {
+          "name": "Potassium sachet",
+          "price": 15,
+          "unit": "pc",
+          "image": "shelf:vitamins/potassium-sachet.webp",
+          "aliases": [
+            "पोटैशियम"
+          ]
+        },
+        {
+          "name": "Vitamin C chewable",
+          "price": 2,
+          "unit": "pc",
+          "image": "shelf:vitamins/vitamin-c-chew.webp",
+          "aliases": [
+            "विटामिन सी चबाने वाली"
+          ]
+        },
+        {
+          "name": "Kids multivitamin",
+          "price": 8,
+          "unit": "pc",
+          "image": "shelf:vitamins/kids-gummies.webp",
+          "aliases": [
+            "बच्चों का विटामिन"
+          ]
+        },
+        {
+          "name": "Cod liver oil",
+          "price": 70,
+          "unit": "pc",
+          "image": "shelf:vitamins/cod-liver.webp",
+          "aliases": [
+            "कॉड लिवर ऑयल"
+          ]
+        },
+        {
+          "name": "Spirulina tablet",
+          "price": 4,
+          "unit": "pc",
+          "image": "shelf:vitamins/spirulina.webp",
+          "aliases": [
+            "स्पिरुलिना"
+          ]
+        },
+        {
+          "name": "Wheatgrass powder",
+          "price": 80,
+          "unit": "pc",
+          "image": "shelf:vitamins/wheatgrass.webp",
+          "aliases": [
+            "वीटग्रास"
+          ]
+        },
+        {
+          "name": "Calcium sachet",
+          "price": 15,
+          "unit": "pc",
+          "image": "shelf:vitamins/calcium-sachet.webp",
+          "aliases": [
+            "कैल्शियम सैशे"
+          ]
+        },
+        {
+          "name": "Vitamin D drops",
+          "price": 60,
+          "unit": "pc",
+          "image": "shelf:vitamins/vitamin-d-drops.webp",
+          "aliases": [
+            "विटामिन डी ड्रॉप्स"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Skin",
+      "image": "shelf:skin/clotrimazole-cream.webp",
+      "items": [
+        {
+          "name": "Clotrimazole cream",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:skin/clotrimazole-cream.webp",
+          "aliases": [
+            "क्लोट्रिमाज़ोल क्रीम"
+          ]
+        },
+        {
+          "name": "Miconazole cream",
+          "price": 45,
+          "unit": "pc",
+          "image": "shelf:skin/miconazole-cream.webp",
+          "aliases": [
+            "माइकोनाज़ोल क्रीम"
+          ]
+        },
+        {
+          "name": "Terbinafine cream",
+          "price": 70,
+          "unit": "pc",
+          "image": "shelf:skin/terbinafine-cream.webp",
+          "aliases": [
+            "टर्बिनाफिन क्रीम"
+          ]
+        },
+        {
+          "name": "Luliconazole cream",
+          "price": 80,
+          "unit": "pc",
+          "image": "shelf:skin/luliconazole.webp",
+          "aliases": [
+            "लुलिकोनाज़ोल"
+          ]
+        },
+        {
+          "name": "Ketoconazole cream",
+          "price": 50,
+          "unit": "pc",
+          "image": "shelf:skin/ketoconazole-cream.webp",
+          "aliases": [
+            "कीटोकोनाज़ोल क्रीम"
+          ]
+        },
+        {
+          "name": "Ketoconazole shampoo",
+          "price": 120,
+          "unit": "pc",
+          "image": "shelf:skin/ketoconazole-shampoo.webp",
+          "aliases": [
+            "कीटोकोनाज़ोल शैम्पू"
+          ]
+        },
+        {
+          "name": "Betamethasone cream",
+          "price": 30,
+          "unit": "pc",
+          "image": "shelf:skin/betamethasone-cream.webp",
+          "aliases": [
+            "बेटामेथासोन क्रीम"
+          ]
+        },
+        {
+          "name": "Hydrocortisone cream",
+          "price": 35,
+          "unit": "pc",
+          "image": "shelf:skin/hydrocortisone-cream.webp",
+          "aliases": [
+            "हाइड्रोकार्टिसोन क्रीम"
+          ]
+        },
+        {
+          "name": "Mometasone cream",
+          "price": 60,
+          "unit": "pc",
+          "image": "shelf:skin/mometasone-cream.webp",
+          "aliases": [
+            "मोमेटासोन क्रीम"
+          ]
+        },
+        {
+          "name": "Fusidic acid cream",
+          "price": 70,
+          "unit": "pc",
+          "image": "shelf:skin/fusidic-cream.webp",
+          "aliases": [
+            "फ्यूसिडिक एसिड क्रीम"
+          ]
+        },
+        {
+          "name": "Mupirocin ointment",
+          "price": 80,
+          "unit": "pc",
+          "image": "shelf:skin/mupirocin.webp",
+          "aliases": [
+            "म्यूपिरोसीन"
+          ]
+        },
+        {
+          "name": "Neomycin cream",
+          "price": 25,
+          "unit": "pc",
+          "image": "shelf:skin/neomycin-cream.webp",
+          "aliases": [
+            "नियोमाइसिन क्रीम"
+          ]
+        },
+        {
+          "name": "Framycetin cream",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:skin/soframycin-style.webp",
+          "aliases": [
+            "फ्रेमाइसेटिन क्रीम"
+          ]
+        },
+        {
+          "name": "Silver sulfadiazine",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:skin/silver-sulfadiazine.webp",
+          "aliases": [
+            "सिल्वर सल्फाडायज़ीन"
+          ]
+        },
+        {
+          "name": "Calamine lotion",
+          "price": 50,
+          "unit": "pc",
+          "image": "shelf:skin/calamine.webp",
+          "aliases": [
+            "कैलामाइन"
+          ]
+        },
+        {
+          "name": "Permethrin cream",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:skin/permethrin.webp",
+          "aliases": [
+            "परमेथ्रिन"
+          ]
+        },
+        {
+          "name": "Lindane lotion",
+          "price": 30,
+          "unit": "pc",
+          "image": "shelf:skin/gamma-benzene.webp",
+          "aliases": [
+            "लिंडेन लोशन"
+          ]
+        },
+        {
+          "name": "Benzyl benzoate",
+          "price": 35,
+          "unit": "pc",
+          "image": "shelf:skin/benzyl-benzoate.webp",
+          "aliases": [
+            "बेंजिल बेंजोएट"
+          ]
+        },
+        {
+          "name": "Salicylic ointment",
+          "price": 30,
+          "unit": "pc",
+          "image": "shelf:skin/salicylic-ointment.webp",
+          "aliases": [
+            "सैलिसिलिक ऑइंटमेंट"
+          ]
+        },
+        {
+          "name": "Benzoyl peroxide gel",
+          "price": 90,
+          "unit": "pc",
+          "image": "shelf:skin/benzoyl-peroxide.webp",
+          "aliases": [
+            "बेंज़ॉयल पेरोक्साइड"
+          ]
+        },
+        {
+          "name": "Adapalene gel",
+          "price": 120,
+          "unit": "pc",
+          "image": "shelf:skin/adapalene.webp",
+          "aliases": [
+            "एडापालीन"
+          ]
+        },
+        {
+          "name": "Clindamycin gel",
+          "price": 80,
+          "unit": "pc",
+          "image": "shelf:skin/clindamycin-gel.webp",
+          "aliases": [
+            "क्लिंडामाइसिन जेल"
+          ]
+        },
+        {
+          "name": "Moisturising cream",
+          "price": 90,
+          "unit": "pc",
+          "image": "shelf:skin/moisturiser.webp",
+          "aliases": [
+            "मॉइस्चराइज़र"
+          ]
+        },
+        {
+          "name": "Urea cream",
+          "price": 110,
+          "unit": "pc",
+          "image": "shelf:skin/urea-cream.webp",
+          "aliases": [
+            "यूरिया क्रीम"
+          ]
+        },
+        {
+          "name": "Petroleum jelly",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:skin/petroleum-jelly.webp",
+          "aliases": [
+            "पेट्रोलियम जेली"
+          ]
+        },
+        {
+          "name": "Antiseptic cream",
+          "price": 30,
+          "unit": "pc",
+          "image": "shelf:skin/antiseptic-cream.webp",
+          "aliases": [
+            "एंटीसेप्टिक क्रीम"
+          ]
+        },
+        {
+          "name": "Burn ointment",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:skin/burn-ointment.webp",
+          "aliases": [
+            "जलने का मरहम"
+          ]
+        },
+        {
+          "name": "Aloe gel",
+          "price": 60,
+          "unit": "pc",
+          "image": "shelf:skin/aloe-gel.webp",
+          "aliases": [
+            "एलोवेरा जेल"
+          ]
+        },
+        {
+          "name": "Sunscreen lotion",
+          "price": 180,
+          "unit": "pc",
+          "image": "shelf:skin/sunscreen.webp",
+          "aliases": [
+            "सनस्क्रीन"
+          ]
+        },
+        {
+          "name": "Medicated soap",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:skin/medicated-soap.webp",
+          "aliases": [
+            "मेडिकेटेड सोप"
+          ]
+        },
+        {
+          "name": "Antifungal powder",
+          "price": 50,
+          "unit": "pc",
+          "image": "shelf:skin/antifungal-powder.webp",
+          "aliases": [
+            "एंटीफंगल पाउडर"
+          ]
+        },
+        {
+          "name": "Clotrimazole powder",
+          "price": 45,
+          "unit": "pc",
+          "image": "shelf:skin/clotrimazole-dusting.webp",
+          "aliases": [
+            "क्लोट्रिमाज़ोल पाउडर"
+          ]
+        },
+        {
+          "name": "Steroid lotion",
+          "price": 70,
+          "unit": "pc",
+          "image": "shelf:skin/steroid-lotion.webp",
+          "aliases": [
+            "स्टेरॉयड लोशन"
+          ]
+        },
+        {
+          "name": "Tacrolimus ointment",
+          "price": 180,
+          "unit": "pc",
+          "image": "shelf:skin/tacrolimus.webp",
+          "aliases": [
+            "टैक्रोलिमस"
+          ]
+        },
+        {
+          "name": "Whitfield ointment",
+          "price": 25,
+          "unit": "pc",
+          "image": "shelf:skin/whitfield.webp",
+          "aliases": [
+            "व्हिटफील्ड"
+          ]
+        },
+        {
+          "name": "Povidone ointment",
+          "price": 30,
+          "unit": "pc",
+          "image": "shelf:skin/povidone-ointment.webp",
+          "aliases": [
+            "पोविडोन ऑइंटमेंट"
+          ]
+        },
+        {
+          "name": "Nadifloxacin cream",
+          "price": 90,
+          "unit": "pc",
+          "image": "shelf:skin/nadifloxacin.webp",
+          "aliases": [
+            "नाडिफ्लोक्सासिन"
+          ]
+        },
+        {
+          "name": "Sertaconazole cream",
+          "price": 90,
+          "unit": "pc",
+          "image": "shelf:skin/sertaconazole.webp",
+          "aliases": [
+            "सर्टाकोनाज़ोल"
+          ]
+        },
+        {
+          "name": "Amorolfine cream",
+          "price": 150,
+          "unit": "pc",
+          "image": "shelf:skin/amorolfine.webp",
+          "aliases": [
+            "अमोरोल्फिन"
+          ]
+        },
+        {
+          "name": "Coal tar solution",
+          "price": 60,
+          "unit": "pc",
+          "image": "shelf:skin/coal-tar.webp",
+          "aliases": [
+            "कोल टार"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Eye Ear",
+      "image": "shelf:eye-ear/refresh-tears.webp",
+      "items": [
+        {
+          "name": "Lubricant eye drops",
+          "price": 80,
+          "unit": "pc",
+          "image": "shelf:eye-ear/refresh-tears.webp",
+          "aliases": [
+            "आँख के ड्रॉप्स"
+          ]
+        },
+        {
+          "name": "CMC eye drops",
+          "price": 90,
+          "unit": "pc",
+          "image": "shelf:eye-ear/carboxymethyl-drops.webp",
+          "aliases": [
+            "सीएमसी आई ड्रॉप्स"
+          ]
+        },
+        {
+          "name": "Ofloxacin eye drops",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:eye-ear/ofloxacin-eye.webp",
+          "aliases": [
+            "ऑफ्लोक्सासिन आई ड्रॉप्स"
+          ]
+        },
+        {
+          "name": "Moxifloxacin eye drops",
+          "price": 60,
+          "unit": "pc",
+          "image": "shelf:eye-ear/moxifloxacin-eye.webp",
+          "aliases": [
+            "मॉक्सीफ्लोक्सासिन आई ड्रॉप्स"
+          ]
+        },
+        {
+          "name": "Tobramycin eye drops",
+          "price": 50,
+          "unit": "pc",
+          "image": "shelf:eye-ear/tobramycin-eye.webp",
+          "aliases": [
+            "टोब्रामाइसिन आई ड्रॉप्स"
+          ]
+        },
+        {
+          "name": "Ciprofloxacin eye drops",
+          "price": 25,
+          "unit": "pc",
+          "image": "shelf:eye-ear/ciprofloxacin-eye.webp",
+          "aliases": [
+            "सिप्रोफ्लोक्सासिन आई ड्रॉप्स"
+          ]
+        },
+        {
+          "name": "Chloramphenicol eye drops",
+          "price": 20,
+          "unit": "pc",
+          "image": "shelf:eye-ear/chloramphenicol-eye.webp",
+          "aliases": [
+            "क्लोरोम्फेनिकॉल आई ड्रॉप्स"
+          ]
+        },
+        {
+          "name": "Olopatadine eye drops",
+          "price": 90,
+          "unit": "pc",
+          "image": "shelf:eye-ear/olopatadine.webp",
+          "aliases": [
+            "ओलोपेटाडिन"
+          ]
+        },
+        {
+          "name": "Naphazoline drops",
+          "price": 30,
+          "unit": "pc",
+          "image": "shelf:eye-ear/naphazoline.webp",
+          "aliases": [
+            "नैफाज़ोलिन"
+          ]
+        },
+        {
+          "name": "Timolol eye drops",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:eye-ear/timolol.webp",
+          "aliases": [
+            "टिमोलोल"
+          ]
+        },
+        {
+          "name": "Eye ointment",
+          "price": 25,
+          "unit": "pc",
+          "image": "shelf:eye-ear/eye-ointment.webp",
+          "aliases": [
+            "आँख का मरहम"
+          ]
+        },
+        {
+          "name": "Antibiotic ear drops",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:eye-ear/ear-drops.webp",
+          "aliases": [
+            "कान के ड्रॉप्स"
+          ]
+        },
+        {
+          "name": "Ear wax drops",
+          "price": 50,
+          "unit": "pc",
+          "image": "shelf:eye-ear/wax-drops.webp",
+          "aliases": [
+            "कान का मैल ड्रॉप्स"
+          ]
+        },
+        {
+          "name": "Clotrimazole ear drops",
+          "price": 45,
+          "unit": "pc",
+          "image": "shelf:eye-ear/clotrimazole-ear.webp",
+          "aliases": [
+            "क्लोट्रिमाज़ोल ईयर ड्रॉप्स"
+          ]
+        },
+        {
+          "name": "Saline nasal spray",
+          "price": 60,
+          "unit": "pc",
+          "image": "shelf:eye-ear/nasal-saline-spray.webp",
+          "aliases": [
+            "सलाइन नेज़ल स्प्रे"
+          ]
+        },
+        {
+          "name": "Budesonide nasal spray",
+          "price": 160,
+          "unit": "pc",
+          "image": "shelf:eye-ear/budesonide-nasal.webp",
+          "aliases": [
+            "बुडेसोनाइड नेज़ल"
+          ]
+        },
+        {
+          "name": "Fluticasone nasal spray",
+          "price": 180,
+          "unit": "pc",
+          "image": "shelf:eye-ear/fluticasone-nasal.webp",
+          "aliases": [
+            "फ्लुटिकासोन नेज़ल"
+          ]
+        },
+        {
+          "name": "Eye wash",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:eye-ear/eye-wash.webp",
+          "aliases": [
+            "आई वॉश"
+          ]
+        },
+        {
+          "name": "Lens solution",
+          "price": 120,
+          "unit": "pc",
+          "image": "shelf:eye-ear/contact-solution.webp",
+          "aliases": [
+            "लेंस सोल्यूशन"
+          ]
+        },
+        {
+          "name": "Eye gel",
+          "price": 100,
+          "unit": "pc",
+          "image": "shelf:eye-ear/artificial-tears-gel.webp",
+          "aliases": [
+            "आई जेल"
+          ]
+        },
+        {
+          "name": "Gentamicin eye drops",
+          "price": 20,
+          "unit": "pc",
+          "image": "shelf:eye-ear/gentamicin-eye.webp",
+          "aliases": [
+            "जेंटामाइसिन आई ड्रॉप्स"
+          ]
+        },
+        {
+          "name": "Dexamethasone eye drops",
+          "price": 30,
+          "unit": "pc",
+          "image": "shelf:eye-ear/dexamethasone-eye.webp",
+          "aliases": [
+            "डेक्सामेथासोन आई ड्रॉप्स"
+          ]
+        },
+        {
+          "name": "Antibiotic steroid eye drops",
+          "price": 45,
+          "unit": "pc",
+          "image": "shelf:eye-ear/antibiotic-steroid-eye.webp",
+          "aliases": [
+            "एंटीबायोटिक स्टेरॉयड आई ड्रॉप्स"
+          ]
+        },
+        {
+          "name": "Ear pain drops",
+          "price": 35,
+          "unit": "pc",
+          "image": "shelf:eye-ear/ear-pain-drops.webp",
+          "aliases": [
+            "कान दर्द ड्रॉप्स"
+          ]
+        },
+        {
+          "name": "Decongestant spray",
+          "price": 55,
+          "unit": "pc",
+          "image": "shelf:eye-ear/nasal-decongestant-spray.webp",
+          "aliases": [
+            "नेज़ल डीकंजेस्टेंट"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Infection",
+      "image": "shelf:infection/amoxicillin-250.webp",
+      "items": [
+        {
+          "name": "Amoxicillin 250 capsule",
+          "price": 4,
+          "unit": "pc",
+          "image": "shelf:infection/amoxicillin-250.webp",
+          "aliases": [
+            "एमोक्सिसिलिन 250"
+          ]
+        },
+        {
+          "name": "Amoxicillin 500 capsule",
+          "price": 6,
+          "unit": "pc",
+          "image": "shelf:infection/amoxicillin-500.webp",
+          "aliases": [
+            "एमोक्सिसिलिन 500"
+          ]
+        },
+        {
+          "name": "Amoxicillin syrup",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:infection/amoxicillin-syrup.webp",
+          "aliases": [
+            "एमोक्सिसिलिन सिरप"
+          ]
+        },
+        {
+          "name": "Amoxicillin clavulanate tablet",
+          "price": 15,
+          "unit": "pc",
+          "image": "shelf:infection/amoxicillin-clav.webp",
+          "aliases": [
+            "एमोक्सीक्लेव"
+          ]
+        },
+        {
+          "name": "Amoxicillin clavulanate syrup",
+          "price": 80,
+          "unit": "pc",
+          "image": "shelf:infection/amoxicillin-clav-syrup.webp",
+          "aliases": [
+            "एमोक्सीक्लेव सिरप"
+          ]
+        },
+        {
+          "name": "Azithromycin 250 tablet",
+          "price": 12,
+          "unit": "pc",
+          "image": "shelf:infection/azithromycin-250.webp",
+          "aliases": [
+            "एज़िथ्रोमाइसिन 250"
+          ]
+        },
+        {
+          "name": "Azithromycin 500 tablet",
+          "price": 18,
+          "unit": "pc",
+          "image": "shelf:infection/azithromycin-500.webp",
+          "aliases": [
+            "एज़िथ्रोमाइसिन 500"
+          ]
+        },
+        {
+          "name": "Azithromycin syrup",
+          "price": 50,
+          "unit": "pc",
+          "image": "shelf:infection/azithromycin-syrup.webp",
+          "aliases": [
+            "एज़िथ्रोमाइसिन सिरप"
+          ]
+        },
+        {
+          "name": "Cefixime tablet",
+          "price": 12,
+          "unit": "pc",
+          "image": "shelf:infection/cefixime-tablet.webp",
+          "aliases": [
+            "सेफिक्सिम"
+          ]
+        },
+        {
+          "name": "Cefixime syrup",
+          "price": 60,
+          "unit": "pc",
+          "image": "shelf:infection/cefixime-syrup.webp",
+          "aliases": [
+            "सेफिक्सिम सिरप"
+          ]
+        },
+        {
+          "name": "Cefpodoxime tablet",
+          "price": 15,
+          "unit": "pc",
+          "image": "shelf:infection/cefpodoxime.webp",
+          "aliases": [
+            "सेफपोडॉक्सिम"
+          ]
+        },
+        {
+          "name": "Cefpodoxime syrup",
+          "price": 70,
+          "unit": "pc",
+          "image": "shelf:infection/cefpodoxime-syrup.webp",
+          "aliases": [
+            "सेफपोडॉक्सिम सिरप"
+          ]
+        },
+        {
+          "name": "Ciprofloxacin tablet",
+          "price": 4,
+          "unit": "pc",
+          "image": "shelf:infection/ciprofloxacin-tablet.webp",
+          "aliases": [
+            "सिप्रोफ्लोक्सासिन"
+          ]
+        },
+        {
+          "name": "Ofloxacin tablet",
+          "price": 5,
+          "unit": "pc",
+          "image": "shelf:infection/ofloxacin-tablet.webp",
+          "aliases": [
+            "ऑफ्लोक्सासिन"
+          ]
+        },
+        {
+          "name": "Levofloxacin tablet",
+          "price": 6,
+          "unit": "pc",
+          "image": "shelf:infection/levofloxacin.webp",
+          "aliases": [
+            "लेवोफ्लोक्सासिन"
+          ]
+        },
+        {
+          "name": "Norfloxacin tablet",
+          "price": 4,
+          "unit": "pc",
+          "image": "shelf:infection/norfloxacin.webp",
+          "aliases": [
+            "नॉरफ्लोक्सासिन"
+          ]
+        },
+        {
+          "name": "Doxycycline capsule",
+          "price": 3,
+          "unit": "pc",
+          "image": "shelf:infection/doxycycline.webp",
+          "aliases": [
+            "डॉक्सीसाइक्लिन"
+          ]
+        },
+        {
+          "name": "Erythromycin tablet",
+          "price": 4,
+          "unit": "pc",
+          "image": "shelf:infection/erythromycin.webp",
+          "aliases": [
+            "एरिथ्रोमाइसिन"
+          ]
+        },
+        {
+          "name": "Clarithromycin tablet",
+          "price": 15,
+          "unit": "pc",
+          "image": "shelf:infection/clarithromycin.webp",
+          "aliases": [
+            "क्लैरिथ्रोमाइसिन"
+          ]
+        },
+        {
+          "name": "Nitrofurantoin tablet",
+          "price": 4,
+          "unit": "pc",
+          "image": "shelf:infection/nitrofurantoin.webp",
+          "aliases": [
+            "नाइट्रोफ्यूरेंटोइन"
+          ]
+        },
+        {
+          "name": "Fluconazole tablet",
+          "price": 8,
+          "unit": "pc",
+          "image": "shelf:infection/fluconazole.webp",
+          "aliases": [
+            "फ्लुकोनाज़ोल"
+          ]
+        },
+        {
+          "name": "Itraconazole capsule",
+          "price": 15,
+          "unit": "pc",
+          "image": "shelf:infection/itraconazole.webp",
+          "aliases": [
+            "इट्राकोनाज़ोल"
+          ]
+        },
+        {
+          "name": "Acyclovir tablet",
+          "price": 8,
+          "unit": "pc",
+          "image": "shelf:infection/acyclovir-tablet.webp",
+          "aliases": [
+            "एसाइक्लोविर"
+          ]
+        },
+        {
+          "name": "Acyclovir cream",
+          "price": 50,
+          "unit": "pc",
+          "image": "shelf:infection/acyclovir-cream.webp",
+          "aliases": [
+            "एसाइक्लोविर क्रीम"
+          ]
+        },
+        {
+          "name": "Oseltamivir capsule",
+          "price": 25,
+          "unit": "pc",
+          "image": "shelf:infection/oseltamivir.webp",
+          "aliases": [
+            "ओसेल्टामिविर"
+          ]
+        },
+        {
+          "name": "Ornidazole tablet",
+          "price": 5,
+          "unit": "pc",
+          "image": "shelf:infection/ornidazole.webp",
+          "aliases": [
+            "ऑर्निडाज़ोल"
+          ]
+        },
+        {
+          "name": "Tinidazole tablet",
+          "price": 4,
+          "unit": "pc",
+          "image": "shelf:infection/tinidazole.webp",
+          "aliases": [
+            "टिनिडाज़ोल"
+          ]
+        },
+        {
+          "name": "Secnidazole tablet",
+          "price": 8,
+          "unit": "pc",
+          "image": "shelf:infection/secnidazole.webp",
+          "aliases": [
+            "सेक्निडाज़ोल"
+          ]
+        },
+        {
+          "name": "Linezolid tablet",
+          "price": 30,
+          "unit": "pc",
+          "image": "shelf:infection/linezolid.webp",
+          "aliases": [
+            "लाइनेज़ोलिड"
+          ]
+        },
+        {
+          "name": "Faropenem tablet",
+          "price": 25,
+          "unit": "pc",
+          "image": "shelf:infection/faropenem.webp",
+          "aliases": [
+            "फैरोपेनेम"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Chronic Support",
+      "image": "shelf:chronic-support/metformin-500.webp",
+      "items": [
+        {
+          "name": "Metformin 500 tablet",
+          "price": 2,
+          "unit": "pc",
+          "image": "shelf:chronic-support/metformin-500.webp",
+          "aliases": [
+            "मेटफॉर्मिन 500"
+          ]
+        },
+        {
+          "name": "Metformin 1000 tablet",
+          "price": 3,
+          "unit": "pc",
+          "image": "shelf:chronic-support/metformin-1000.webp",
+          "aliases": [
+            "मेटफॉर्मिन 1000"
+          ]
+        },
+        {
+          "name": "Glimepiride tablet",
+          "price": 3,
+          "unit": "pc",
+          "image": "shelf:chronic-support/glimepiride.webp",
+          "aliases": [
+            "ग्लिमेपिराइड"
+          ]
+        },
+        {
+          "name": "Gliclazide tablet",
+          "price": 4,
+          "unit": "pc",
+          "image": "shelf:chronic-support/gliclazide.webp",
+          "aliases": [
+            "ग्लिक्लाज़ाइड"
+          ]
+        },
+        {
+          "name": "Teneligliptin tablet",
+          "price": 8,
+          "unit": "pc",
+          "image": "shelf:chronic-support/teneligliptin.webp",
+          "aliases": [
+            "टेनेलिग्लिप्टिन"
+          ]
+        },
+        {
+          "name": "Vildagliptin tablet",
+          "price": 8,
+          "unit": "pc",
+          "image": "shelf:chronic-support/vildagliptin.webp",
+          "aliases": [
+            "विल्डाग्लिप्टिन"
+          ]
+        },
+        {
+          "name": "Insulin pen",
+          "price": 200,
+          "unit": "pc",
+          "image": "shelf:chronic-support/insulin-pen.webp",
+          "aliases": [
+            "इंसुलिन पेन"
+          ]
+        },
+        {
+          "name": "Insulin syringe",
+          "price": 5,
+          "unit": "pc",
+          "image": "shelf:chronic-support/insulin-syringe.webp",
+          "aliases": [
+            "इंसुलिन सिरिंज"
+          ]
+        },
+        {
+          "name": "Glucose strip",
+          "price": 15,
+          "unit": "pc",
+          "image": "shelf:chronic-support/glucose-strip.webp",
+          "aliases": [
+            "शुगर स्ट्रिप"
+          ]
+        },
+        {
+          "name": "Lancet",
+          "price": 2,
+          "unit": "pc",
+          "image": "shelf:chronic-support/lancet.webp",
+          "aliases": [
+            "लैंसेट"
+          ]
+        },
+        {
+          "name": "Amlodipine tablet",
+          "price": 2,
+          "unit": "pc",
+          "image": "shelf:chronic-support/amlodipine.webp",
+          "aliases": [
+            "एम्लोडिपिन"
+          ]
+        },
+        {
+          "name": "Telmisartan tablet",
+          "price": 4,
+          "unit": "pc",
+          "image": "shelf:chronic-support/telmisartan.webp",
+          "aliases": [
+            "टेल्मिसार्टन"
+          ]
+        },
+        {
+          "name": "Losartan tablet",
+          "price": 3,
+          "unit": "pc",
+          "image": "shelf:chronic-support/losartan.webp",
+          "aliases": [
+            "लोसार्टन"
+          ]
+        },
+        {
+          "name": "Atenolol tablet",
+          "price": 2,
+          "unit": "pc",
+          "image": "shelf:chronic-support/atenolol.webp",
+          "aliases": [
+            "एटेनोलोल"
+          ]
+        },
+        {
+          "name": "Metoprolol tablet",
+          "price": 3,
+          "unit": "pc",
+          "image": "shelf:chronic-support/metoprolol.webp",
+          "aliases": [
+            "मेटोप्रोलोल"
+          ]
+        },
+        {
+          "name": "Atorvastatin tablet",
+          "price": 4,
+          "unit": "pc",
+          "image": "shelf:chronic-support/atorvastatin.webp",
+          "aliases": [
+            "एटोरवास्टेटिन"
+          ]
+        },
+        {
+          "name": "Rosuvastatin tablet",
+          "price": 6,
+          "unit": "pc",
+          "image": "shelf:chronic-support/rosuvastatin.webp",
+          "aliases": [
+            "रोसुवास्टेटिन"
+          ]
+        },
+        {
+          "name": "Clopidogrel tablet",
+          "price": 4,
+          "unit": "pc",
+          "image": "shelf:chronic-support/clopidogrel.webp",
+          "aliases": [
+            "क्लोपिडोग्रेल"
+          ]
+        },
+        {
+          "name": "Thyroxine tablet",
+          "price": 2,
+          "unit": "pc",
+          "image": "shelf:chronic-support/thyroxine.webp",
+          "aliases": [
+            "थायरॉक्सिन"
+          ]
+        },
+        {
+          "name": "Thyroxine 50 tablet",
+          "price": 2,
+          "unit": "pc",
+          "image": "shelf:chronic-support/levothyroxine-50.webp",
+          "aliases": [
+            "थायरॉक्सिन 50"
+          ]
+        },
+        {
+          "name": "Carbimazole tablet",
+          "price": 3,
+          "unit": "pc",
+          "image": "shelf:chronic-support/carbimazole.webp",
+          "aliases": [
+            "कार्बिमाज़ोल"
+          ]
+        },
+        {
+          "name": "Allopurinol tablet",
+          "price": 3,
+          "unit": "pc",
+          "image": "shelf:chronic-support/allopurinol.webp",
+          "aliases": [
+            "एलोप्यूरिनॉल"
+          ]
+        },
+        {
+          "name": "Febuxostat tablet",
+          "price": 6,
+          "unit": "pc",
+          "image": "shelf:chronic-support/febuxostat.webp",
+          "aliases": [
+            "फेबक्सोस्टेट"
+          ]
+        },
+        {
+          "name": "Pregabalin capsule",
+          "price": 8,
+          "unit": "pc",
+          "image": "shelf:chronic-support/pregabalin.webp",
+          "aliases": [
+            "प्रीगैबालिन"
+          ]
+        },
+        {
+          "name": "Gabapentin capsule",
+          "price": 6,
+          "unit": "pc",
+          "image": "shelf:chronic-support/gabapentin.webp",
+          "aliases": [
+            "गैबापेंटिन"
+          ]
+        },
+        {
+          "name": "Amitriptyline tablet",
+          "price": 2,
+          "unit": "pc",
+          "image": "shelf:chronic-support/amitriptyline.webp",
+          "aliases": [
+            "एमिट्रिप्टिलाइन"
+          ]
+        },
+        {
+          "name": "Sertraline tablet",
+          "price": 5,
+          "unit": "pc",
+          "image": "shelf:chronic-support/sertraline.webp",
+          "aliases": [
+            "सर्ट्रालीन"
+          ]
+        },
+        {
+          "name": "Escitalopram tablet",
+          "price": 5,
+          "unit": "pc",
+          "image": "shelf:chronic-support/escitalopram.webp",
+          "aliases": [
+            "एस्सिटालोप्राम"
+          ]
+        },
+        {
+          "name": "Alprazolam tablet",
+          "price": 2,
+          "unit": "pc",
+          "image": "shelf:chronic-support/alprazolam.webp",
+          "aliases": [
+            "अल्प्राज़ोलम"
+          ]
+        },
+        {
+          "name": "Clonazepam tablet",
+          "price": 2,
+          "unit": "pc",
+          "image": "shelf:chronic-support/clonazepam.webp",
+          "aliases": [
+            "क्लोनाज़ेपम"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "First Aid",
+      "image": "shelf:first-aid/bandage-roll.webp",
+      "items": [
+        {
+          "name": "Bandage roll",
+          "price": 20,
+          "unit": "pc",
+          "image": "shelf:first-aid/bandage-roll.webp",
+          "aliases": [
+            "पट्टी"
+          ]
+        },
+        {
+          "name": "Cotton roll",
+          "price": 30,
+          "unit": "pc",
+          "image": "shelf:first-aid/cotton-roll.webp",
+          "aliases": [
+            "रुई"
+          ]
+        },
+        {
+          "name": "Cotton wool",
+          "price": 25,
+          "unit": "pc",
+          "image": "shelf:first-aid/cotton-wool.webp",
+          "aliases": [
+            "कॉटन वूल"
+          ]
+        },
+        {
+          "name": "Gauze",
+          "price": 15,
+          "unit": "pc",
+          "image": "shelf:first-aid/gauze.webp",
+          "aliases": [
+            "गॉज"
+          ]
+        },
+        {
+          "name": "Adhesive bandage",
+          "price": 2,
+          "unit": "pc",
+          "image": "shelf:first-aid/adhesive-bandage.webp",
+          "aliases": [
+            "बैंडएज"
+          ]
+        },
+        {
+          "name": "Crepe bandage",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:first-aid/crepe-bandage.webp",
+          "aliases": [
+            "क्रेप बैंडेज"
+          ]
+        },
+        {
+          "name": "Micropore tape",
+          "price": 50,
+          "unit": "pc",
+          "image": "shelf:first-aid/micropore.webp",
+          "aliases": [
+            "माइक्रोपोर टेप"
+          ]
+        },
+        {
+          "name": "Povidone iodine",
+          "price": 60,
+          "unit": "pc",
+          "image": "shelf:first-aid/povidone.webp",
+          "aliases": [
+            "पोविडोन आयोडीन"
+          ]
+        },
+        {
+          "name": "Surgical spirit",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:first-aid/spirit.webp",
+          "aliases": [
+            "स्प्रिट"
+          ]
+        },
+        {
+          "name": "Hydrogen peroxide",
+          "price": 30,
+          "unit": "pc",
+          "image": "shelf:first-aid/hydrogen-peroxide.webp",
+          "aliases": [
+            "हाइड्रोजन पेरोक्साइड"
+          ]
+        },
+        {
+          "name": "Antiseptic liquid",
+          "price": 70,
+          "unit": "pc",
+          "image": "shelf:first-aid/savlon-style.webp",
+          "aliases": [
+            "एंटीसेप्टिक लिक्विड"
+          ]
+        },
+        {
+          "name": "Hand rub",
+          "price": 50,
+          "unit": "pc",
+          "image": "shelf:first-aid/hand-rub.webp",
+          "aliases": [
+            "हैंड रब"
+          ]
+        },
+        {
+          "name": "Exam gloves",
+          "price": 5,
+          "unit": "pc",
+          "image": "shelf:first-aid/gloves.webp",
+          "aliases": [
+            "दस्ताने"
+          ]
+        },
+        {
+          "name": "Face mask",
+          "price": 5,
+          "unit": "pc",
+          "image": "shelf:first-aid/mask.webp",
+          "aliases": [
+            "मास्क"
+          ]
+        },
+        {
+          "name": "Syringe 2 ml",
+          "price": 3,
+          "unit": "pc",
+          "image": "shelf:first-aid/syringe-2.webp",
+          "aliases": [
+            "सिरिंज 2 मिली"
+          ]
+        },
+        {
+          "name": "Syringe 5 ml",
+          "price": 4,
+          "unit": "pc",
+          "image": "shelf:first-aid/syringe-5.webp",
+          "aliases": [
+            "सिरिंज 5 मिली"
+          ]
+        },
+        {
+          "name": "Needle",
+          "price": 2,
+          "unit": "pc",
+          "image": "shelf:first-aid/needle.webp",
+          "aliases": [
+            "सुई"
+          ]
+        },
+        {
+          "name": "IV set",
+          "price": 25,
+          "unit": "pc",
+          "image": "shelf:first-aid/iv-set.webp",
+          "aliases": [
+            "आईवी सेट"
+          ]
+        },
+        {
+          "name": "Cannula",
+          "price": 15,
+          "unit": "pc",
+          "image": "shelf:first-aid/cannula.webp",
+          "aliases": [
+            "कैन्युला"
+          ]
+        },
+        {
+          "name": "Scalpel blade",
+          "price": 5,
+          "unit": "pc",
+          "image": "shelf:first-aid/scalpel.webp",
+          "aliases": [
+            "स्केलपेल"
+          ]
+        },
+        {
+          "name": "Suture",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:first-aid/suture.webp",
+          "aliases": [
+            "टाँका"
+          ]
+        },
+        {
+          "name": "Digital thermometer",
+          "price": 120,
+          "unit": "pc",
+          "image": "shelf:first-aid/thermometer-digital.webp",
+          "aliases": [
+            "डिजिटल थर्मामीटर"
+          ]
+        },
+        {
+          "name": "Clinical thermometer",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:first-aid/thermometer-mercury.webp",
+          "aliases": [
+            "थर्मामीटर"
+          ]
+        },
+        {
+          "name": "Hot water bag",
+          "price": 80,
+          "unit": "pc",
+          "image": "shelf:first-aid/hot-water-bag.webp",
+          "aliases": [
+            "गरम पानी की बोतल"
+          ]
+        },
+        {
+          "name": "Knee cap",
+          "price": 150,
+          "unit": "pc",
+          "image": "shelf:first-aid/knee-cap.webp",
+          "aliases": [
+            "नी कैप"
+          ]
+        },
+        {
+          "name": "Ankle binder",
+          "price": 120,
+          "unit": "pc",
+          "image": "shelf:first-aid/ankle-binder.webp",
+          "aliases": [
+            "टखने की पट्टी"
+          ]
+        },
+        {
+          "name": "Cervical collar",
+          "price": 180,
+          "unit": "pc",
+          "image": "shelf:first-aid/cervical-collar.webp",
+          "aliases": [
+            "सरवाइकल कॉलर"
+          ]
+        },
+        {
+          "name": "Abdominal belt",
+          "price": 250,
+          "unit": "pc",
+          "image": "shelf:first-aid/abdominal-belt.webp",
+          "aliases": [
+            "एब्डॉमिनल बेल्ट"
+          ]
+        },
+        {
+          "name": "Walking stick",
+          "price": 200,
+          "unit": "pc",
+          "image": "shelf:first-aid/walker-stick.webp",
+          "aliases": [
+            "छड़ी"
+          ]
+        },
+        {
+          "name": "First aid kit",
+          "price": 250,
+          "unit": "pc",
+          "image": "shelf:first-aid/first-aid-kit.webp",
+          "aliases": [
+            "फर्स्ट एड किट"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Devices",
+      "image": "shelf:devices/bp-monitor.webp",
+      "items": [
+        {
+          "name": "BP monitor",
+          "price": 1200,
+          "unit": "pc",
+          "image": "shelf:devices/bp-monitor.webp",
+          "aliases": [
+            "बीपी मशीन"
+          ]
+        },
+        {
+          "name": "Glucometer",
+          "price": 700,
+          "unit": "pc",
+          "image": "shelf:devices/glucometer.webp",
+          "aliases": [
+            "ग्लूकोमीटर"
+          ]
+        },
+        {
+          "name": "Pulse oximeter",
+          "price": 800,
+          "unit": "pc",
+          "image": "shelf:devices/pulse-oximeter.webp",
+          "aliases": [
+            "पल्स ऑक्सीमीटर"
+          ]
+        },
+        {
+          "name": "Nebuliser",
+          "price": 1500,
+          "unit": "pc",
+          "image": "shelf:devices/nebuliser.webp",
+          "aliases": [
+            "नेब्युलाइज़र"
+          ]
+        },
+        {
+          "name": "Nebuliser mask",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:devices/nebuliser-mask.webp",
+          "aliases": [
+            "नेब्युलाइज़र मास्क"
+          ]
+        },
+        {
+          "name": "Vaporizer",
+          "price": 300,
+          "unit": "pc",
+          "image": "shelf:devices/vapouriser.webp",
+          "aliases": [
+            "वेपोराइज़र"
+          ]
+        },
+        {
+          "name": "Weighing scale",
+          "price": 400,
+          "unit": "pc",
+          "image": "shelf:devices/weighing-scale.webp",
+          "aliases": [
+            "वजन मशीन"
+          ]
+        },
+        {
+          "name": "Baby scale",
+          "price": 600,
+          "unit": "pc",
+          "image": "shelf:devices/baby-scale.webp",
+          "aliases": [
+            "बेबी स्केल"
+          ]
+        },
+        {
+          "name": "Stethoscope",
+          "price": 400,
+          "unit": "pc",
+          "image": "shelf:devices/stethoscope.webp",
+          "aliases": [
+            "स्टेथोस्कोप"
+          ]
+        },
+        {
+          "name": "BP cuff",
+          "price": 250,
+          "unit": "pc",
+          "image": "shelf:devices/bp-cuff.webp",
+          "aliases": [
+            "बीपी कफ"
+          ]
+        },
+        {
+          "name": "Inhaler spacer",
+          "price": 200,
+          "unit": "pc",
+          "image": "shelf:devices/spacer.webp",
+          "aliases": [
+            "स्पेसर"
+          ]
+        },
+        {
+          "name": "Peak flow meter",
+          "price": 350,
+          "unit": "pc",
+          "image": "shelf:devices/peak-flow.webp",
+          "aliases": [
+            "पीक फ्लो मीटर"
+          ]
+        },
+        {
+          "name": "Heating pad",
+          "price": 300,
+          "unit": "pc",
+          "image": "shelf:devices/heating-pad.webp",
+          "aliases": [
+            "हीटिंग पैड"
+          ]
+        },
+        {
+          "name": "Pill box",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:devices/pill-box.webp",
+          "aliases": [
+            "दवाई बॉक्स"
+          ]
+        },
+        {
+          "name": "Tablet cutter",
+          "price": 30,
+          "unit": "pc",
+          "image": "shelf:devices/medicine-cutter.webp",
+          "aliases": [
+            "गोली कटर"
+          ]
+        },
+        {
+          "name": "Dropper",
+          "price": 10,
+          "unit": "pc",
+          "image": "shelf:devices/dropper.webp",
+          "aliases": [
+            "ड्रॉपर"
+          ]
+        },
+        {
+          "name": "Measuring cup",
+          "price": 10,
+          "unit": "pc",
+          "image": "shelf:devices/measuring-cup.webp",
+          "aliases": [
+            "मापने का कप"
+          ]
+        },
+        {
+          "name": "Adult diaper",
+          "price": 25,
+          "unit": "pc",
+          "image": "shelf:devices/adult-diaper.webp",
+          "aliases": [
+            "एडल्ट डायपर"
+          ]
+        },
+        {
+          "name": "Underpad",
+          "price": 20,
+          "unit": "pc",
+          "image": "shelf:devices/underpad.webp",
+          "aliases": [
+            "अंडरपैड"
+          ]
+        },
+        {
+          "name": "Air cushion",
+          "price": 250,
+          "unit": "pc",
+          "image": "shelf:devices/wheelchair-cushion.webp",
+          "aliases": [
+            "एयर कुशन"
+          ]
+        },
+        {
+          "name": "Compression stocking",
+          "price": 200,
+          "unit": "pc",
+          "image": "shelf:devices/compression-stocking.webp",
+          "aliases": [
+            "कम्प्रेशन स्टॉकिंग"
+          ]
+        },
+        {
+          "name": "Urine pot",
+          "price": 80,
+          "unit": "pc",
+          "image": "shelf:devices/urine-pot.webp",
+          "aliases": [
+            "यूरिन पॉट"
+          ]
+        },
+        {
+          "name": "Bed pan",
+          "price": 150,
+          "unit": "pc",
+          "image": "shelf:devices/bed-pan.webp",
+          "aliases": [
+            "बेड पैन"
+          ]
+        },
+        {
+          "name": "Pediatric oximeter",
+          "price": 900,
+          "unit": "pc",
+          "image": "shelf:devices/oximeter-pediatric.webp",
+          "aliases": [
+            "बच्चों का ऑक्सीमीटर"
+          ]
+        },
+        {
+          "name": "Infrared thermometer",
+          "price": 900,
+          "unit": "pc",
+          "image": "shelf:devices/thermometer-infrared.webp",
+          "aliases": [
+            "इन्फ्रारेड थर्मामीटर"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Baby",
+      "image": "shelf:baby/baby-paracetamol.webp",
+      "items": [
+        {
+          "name": "Baby paracetamol",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:baby/baby-paracetamol.webp",
+          "aliases": [
+            "बेबी पैरासिटामोल"
+          ]
+        },
+        {
+          "name": "Gripe water",
+          "price": 50,
+          "unit": "pc",
+          "image": "shelf:baby/gripe-water.webp",
+          "aliases": [
+            "ग्राइप वाटर"
+          ]
+        },
+        {
+          "name": "Colic drops",
+          "price": 60,
+          "unit": "pc",
+          "image": "shelf:baby/colic-drops.webp",
+          "aliases": [
+            "कोलिक ड्रॉप्स"
+          ]
+        },
+        {
+          "name": "Nappy rash cream",
+          "price": 80,
+          "unit": "pc",
+          "image": "shelf:baby/nappy-rash.webp",
+          "aliases": [
+            "नैपी रैश क्रीम"
+          ]
+        },
+        {
+          "name": "Baby lotion",
+          "price": 90,
+          "unit": "pc",
+          "image": "shelf:baby/baby-lotion.webp",
+          "aliases": [
+            "बेबी लोशन"
+          ]
+        },
+        {
+          "name": "Baby shampoo",
+          "price": 80,
+          "unit": "pc",
+          "image": "shelf:baby/baby-shampoo.webp",
+          "aliases": [
+            "बेबी शैम्पू"
+          ]
+        },
+        {
+          "name": "Baby soap",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:baby/baby-soap.webp",
+          "aliases": [
+            "बेबी सोप"
+          ]
+        },
+        {
+          "name": "Baby oil",
+          "price": 70,
+          "unit": "pc",
+          "image": "shelf:baby/baby-oil.webp",
+          "aliases": [
+            "बेबी ऑयल"
+          ]
+        },
+        {
+          "name": "Baby powder",
+          "price": 60,
+          "unit": "pc",
+          "image": "shelf:baby/baby-powder.webp",
+          "aliases": [
+            "बेबी पाउडर"
+          ]
+        },
+        {
+          "name": "Diaper small",
+          "price": 12,
+          "unit": "pc",
+          "image": "shelf:baby/diaper-small.webp",
+          "aliases": [
+            "डायपर S"
+          ]
+        },
+        {
+          "name": "Diaper medium",
+          "price": 14,
+          "unit": "pc",
+          "image": "shelf:baby/diaper-medium.webp",
+          "aliases": [
+            "डायपर M"
+          ]
+        },
+        {
+          "name": "Baby wipes",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:baby/baby-wipes.webp",
+          "aliases": [
+            "बेबी वाइप्स"
+          ]
+        },
+        {
+          "name": "Feeding bottle",
+          "price": 150,
+          "unit": "pc",
+          "image": "shelf:baby/feeding-bottle.webp",
+          "aliases": [
+            "फीडिंग बोतल"
+          ]
+        },
+        {
+          "name": "Teether",
+          "price": 60,
+          "unit": "pc",
+          "image": "shelf:baby/teether.webp",
+          "aliases": [
+            "टीथर"
+          ]
+        },
+        {
+          "name": "Nasal aspirator",
+          "price": 80,
+          "unit": "pc",
+          "image": "shelf:baby/nasal-aspirator.webp",
+          "aliases": [
+            "नेज़ल एस्पिरेटर"
+          ]
+        },
+        {
+          "name": "Baby vitamin drops",
+          "price": 70,
+          "unit": "pc",
+          "image": "shelf:baby/vitamin-drops-baby.webp",
+          "aliases": [
+            "बेबी विटामिन ड्रॉप्स"
+          ]
+        },
+        {
+          "name": "Baby ORS",
+          "price": 15,
+          "unit": "pc",
+          "image": "shelf:baby/ors-baby.webp",
+          "aliases": [
+            "बेबी ओआरएस"
+          ]
+        },
+        {
+          "name": "Cradle cap lotion",
+          "price": 90,
+          "unit": "pc",
+          "image": "shelf:baby/cradle-cap.webp",
+          "aliases": [
+            "क्रेडल कैप लोशन"
+          ]
+        },
+        {
+          "name": "Baby mosquito patch",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:baby/mosquito-patch-baby.webp",
+          "aliases": [
+            "बेबी मच्छर पैच"
+          ]
+        },
+        {
+          "name": "Breast pad",
+          "price": 50,
+          "unit": "pc",
+          "image": "shelf:baby/breast-pad.webp",
+          "aliases": [
+            "ब्रेस्ट पैड"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Women",
+      "image": "shelf:women/sanitary-pad.webp",
+      "items": [
+        {
+          "name": "Sanitary pad",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:women/sanitary-pad.webp",
+          "aliases": [
+            "सैनिटरी पैड"
+          ]
+        },
+        {
+          "name": "Panty liner",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:women/panty-liner.webp",
+          "aliases": [
+            "पैंटी लाइनर"
+          ]
+        },
+        {
+          "name": "Menstrual cup",
+          "price": 300,
+          "unit": "pc",
+          "image": "shelf:women/menstrual-cup.webp",
+          "aliases": [
+            "मेंस्ट्रुअल कप"
+          ]
+        },
+        {
+          "name": "Pregnancy test",
+          "price": 50,
+          "unit": "pc",
+          "image": "shelf:women/pregnancy-test.webp",
+          "aliases": [
+            "प्रेग्नेंसी टेस्ट"
+          ]
+        },
+        {
+          "name": "Ovulation kit",
+          "price": 150,
+          "unit": "pc",
+          "image": "shelf:women/ovulation-kit.webp",
+          "aliases": [
+            "ओव्यूलेशन किट"
+          ]
+        },
+        {
+          "name": "Folic prenatal",
+          "price": 3,
+          "unit": "pc",
+          "image": "shelf:women/folic-prenatal.webp",
+          "aliases": [
+            "फोलिक प्रेनेटल"
+          ]
+        },
+        {
+          "name": "Pregnancy calcium",
+          "price": 6,
+          "unit": "pc",
+          "image": "shelf:women/calcium-pregnancy.webp",
+          "aliases": [
+            "प्रेग्नेंसी कैल्शियम"
+          ]
+        },
+        {
+          "name": "Pregnancy iron",
+          "price": 4,
+          "unit": "pc",
+          "image": "shelf:women/iron-pregnancy.webp",
+          "aliases": [
+            "प्रेग्नेंसी आयरन"
+          ]
+        },
+        {
+          "name": "Clotrimazole vaginal",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:women/clotrimazole-vaginal.webp",
+          "aliases": [
+            "क्लोट्रिमाज़ोल वेजाइनल"
+          ]
+        },
+        {
+          "name": "Period pain tablet",
+          "price": 3,
+          "unit": "pc",
+          "image": "shelf:women/cramp-tablet.webp",
+          "aliases": [
+            "पीरियड दर्द गोली"
+          ]
+        },
+        {
+          "name": "Period heat bag",
+          "price": 80,
+          "unit": "pc",
+          "image": "shelf:women/hot-bag-period.webp",
+          "aliases": [
+            "हीट बैग"
+          ]
+        },
+        {
+          "name": "Intimate wash",
+          "price": 120,
+          "unit": "pc",
+          "image": "shelf:women/intimate-wash.webp",
+          "aliases": [
+            "इंटिमेट वॉश"
+          ]
+        },
+        {
+          "name": "Contraceptive pill",
+          "price": 30,
+          "unit": "pc",
+          "image": "shelf:women/contraceptive-pill.webp",
+          "aliases": [
+            "गर्भनिरोधक गोली"
+          ]
+        },
+        {
+          "name": "Emergency pill",
+          "price": 80,
+          "unit": "pc",
+          "image": "shelf:women/emergency-pill.webp",
+          "aliases": [
+            "इमरजेंसी पिल"
+          ]
+        },
+        {
+          "name": "Condom",
+          "price": 15,
+          "unit": "pc",
+          "image": "shelf:women/condom.webp",
+          "aliases": [
+            "कंडोम"
+          ]
+        },
+        {
+          "name": "Fertility supplement",
+          "price": 20,
+          "unit": "pc",
+          "image": "shelf:women/fertility-kit.webp",
+          "aliases": [
+            "फर्टिलिटी सप्लीमेंट"
+          ]
+        },
+        {
+          "name": "Menopause supplement",
+          "price": 12,
+          "unit": "pc",
+          "image": "shelf:women/menopause.webp",
+          "aliases": [
+            "मेनोपॉज सप्लीमेंट"
+          ]
+        },
+        {
+          "name": "Lactation tablet",
+          "price": 6,
+          "unit": "pc",
+          "image": "shelf:women/lactation.webp",
+          "aliases": [
+            "लैक्टेशन गोली"
+          ]
+        },
+        {
+          "name": "Stretch mark cream",
+          "price": 150,
+          "unit": "pc",
+          "image": "shelf:women/stretch-mark.webp",
+          "aliases": [
+            "स्ट्रेच मार्क क्रीम"
+          ]
+        },
+        {
+          "name": "Nipple cream",
+          "price": 120,
+          "unit": "pc",
+          "image": "shelf:women/nipple-cream.webp",
+          "aliases": [
+            "निपल क्रीम"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Ayurveda",
+      "image": "shelf:ayurveda/chyawanprash.webp",
+      "items": [
+        {
+          "name": "Chyawanprash",
+          "price": 180,
+          "unit": "pc",
+          "image": "shelf:ayurveda/chyawanprash.webp",
+          "aliases": [
+            "च्यवनप्राश"
+          ]
+        },
+        {
+          "name": "Triphala",
+          "price": 60,
+          "unit": "pc",
+          "image": "shelf:ayurveda/triphala.webp",
+          "aliases": [
+            "त्रिफला"
+          ]
+        },
+        {
+          "name": "Ashwagandha",
+          "price": 80,
+          "unit": "pc",
+          "image": "shelf:ayurveda/ashwagandha.webp",
+          "aliases": [
+            "अश्वगंधा"
+          ]
+        },
+        {
+          "name": "Tulsi drops",
+          "price": 70,
+          "unit": "pc",
+          "image": "shelf:ayurveda/tulsi-drops.webp",
+          "aliases": [
+            "तुलसी ड्रॉप्स"
+          ]
+        },
+        {
+          "name": "Giloy tablet",
+          "price": 4,
+          "unit": "pc",
+          "image": "shelf:ayurveda/giloy-tablet.webp",
+          "aliases": [
+            "गिलोय"
+          ]
+        },
+        {
+          "name": "Giloy juice",
+          "price": 120,
+          "unit": "pc",
+          "image": "shelf:ayurveda/giloy-juice.webp",
+          "aliases": [
+            "गिलोय जूस"
+          ]
+        },
+        {
+          "name": "Aloe juice",
+          "price": 100,
+          "unit": "pc",
+          "image": "shelf:ayurveda/aloe-juice.webp",
+          "aliases": [
+            "एलो जूस"
+          ]
+        },
+        {
+          "name": "Amla juice",
+          "price": 90,
+          "unit": "pc",
+          "image": "shelf:ayurveda/amla-juice.webp",
+          "aliases": [
+            "आंवला जूस"
+          ]
+        },
+        {
+          "name": "Triphala tablet",
+          "price": 3,
+          "unit": "pc",
+          "image": "shelf:ayurveda/triphala-tablet.webp",
+          "aliases": [
+            "त्रिफला गोली"
+          ]
+        },
+        {
+          "name": "Shatavari",
+          "price": 80,
+          "unit": "pc",
+          "image": "shelf:ayurveda/shatavari.webp",
+          "aliases": [
+            "शतावरी"
+          ]
+        },
+        {
+          "name": "Brahmi",
+          "price": 70,
+          "unit": "pc",
+          "image": "shelf:ayurveda/brahmi.webp",
+          "aliases": [
+            "ब्राह्मी"
+          ]
+        },
+        {
+          "name": "Arjuna",
+          "price": 70,
+          "unit": "pc",
+          "image": "shelf:ayurveda/arjuna.webp",
+          "aliases": [
+            "अर्जुन"
+          ]
+        },
+        {
+          "name": "Neem tablet",
+          "price": 3,
+          "unit": "pc",
+          "image": "shelf:ayurveda/neem-tablet.webp",
+          "aliases": [
+            "नीम गोली"
+          ]
+        },
+        {
+          "name": "Turmeric capsule",
+          "price": 5,
+          "unit": "pc",
+          "image": "shelf:ayurveda/turmeric-capsule.webp",
+          "aliases": [
+            "हल्दी कैप्सूल"
+          ]
+        },
+        {
+          "name": "Moringa tablet",
+          "price": 4,
+          "unit": "pc",
+          "image": "shelf:ayurveda/moringa.webp",
+          "aliases": [
+            "मोरिंगा"
+          ]
+        },
+        {
+          "name": "Isabgol",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:ayurveda/isabgol.webp",
+          "aliases": [
+            "इसबगोल"
+          ]
+        },
+        {
+          "name": "Digestive tablet",
+          "price": 1,
+          "unit": "pc",
+          "image": "shelf:ayurveda/hajmola-style.webp",
+          "aliases": [
+            "हजमी गोली"
+          ]
+        },
+        {
+          "name": "Karela juice",
+          "price": 110,
+          "unit": "pc",
+          "image": "shelf:ayurveda/karela-juice.webp",
+          "aliases": [
+            "करेला जूस"
+          ]
+        },
+        {
+          "name": "Noni juice",
+          "price": 200,
+          "unit": "pc",
+          "image": "shelf:ayurveda/noni-juice.webp",
+          "aliases": [
+            "नोनी जूस"
+          ]
+        },
+        {
+          "name": "Honey",
+          "price": 120,
+          "unit": "pc",
+          "image": "shelf:ayurveda/honey-ayur.webp",
+          "aliases": [
+            "शहद"
+          ]
+        },
+        {
+          "name": "Sitopaladi",
+          "price": 50,
+          "unit": "pc",
+          "image": "shelf:ayurveda/sitopaladi.webp",
+          "aliases": [
+            "सितोपलादि"
+          ]
+        },
+        {
+          "name": "Avipattikar",
+          "price": 50,
+          "unit": "pc",
+          "image": "shelf:ayurveda/avipattikar.webp",
+          "aliases": [
+            "अविपत्तिकर"
+          ]
+        },
+        {
+          "name": "Liver tonic tablet",
+          "price": 4,
+          "unit": "pc",
+          "image": "shelf:ayurveda/liv-52-style.webp",
+          "aliases": [
+            "लिवर टॉनिक"
+          ]
+        },
+        {
+          "name": "Kadha",
+          "price": 60,
+          "unit": "pc",
+          "image": "shelf:ayurveda/cough-kadha.webp",
+          "aliases": [
+            "काढ़ा"
+          ]
+        },
+        {
+          "name": "Ayurvedic balm",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:ayurveda/balm-ayur.webp",
+          "aliases": [
+            "आयुर्वेदिक बाम"
+          ]
+        },
+        {
+          "name": "Ayurvedic hair oil",
+          "price": 80,
+          "unit": "pc",
+          "image": "shelf:ayurveda/hair-oil-ayur.webp",
+          "aliases": [
+            "आयुर्वेदिक हेयर ऑयल"
+          ]
+        },
+        {
+          "name": "Kumkumadi oil",
+          "price": 150,
+          "unit": "pc",
+          "image": "shelf:ayurveda/kumkumadi.webp",
+          "aliases": [
+            "कुमकुमादि तेल"
+          ]
+        },
+        {
+          "name": "Bhringraj oil",
+          "price": 90,
+          "unit": "pc",
+          "image": "shelf:ayurveda/bhringraj.webp",
+          "aliases": [
+            "भृंगराज तेल"
+          ]
+        },
+        {
+          "name": "Shankhpushpi",
+          "price": 60,
+          "unit": "pc",
+          "image": "shelf:ayurveda/shankhpushpi.webp",
+          "aliases": [
+            "शंखपुष्पी"
+          ]
+        },
+        {
+          "name": "Chyawanprash sugar free",
+          "price": 220,
+          "unit": "pc",
+          "image": "shelf:ayurveda/chyawanprash-sugarfree.webp",
+          "aliases": [
+            "शुगर फ्री च्यवनप्राश"
+          ]
+        },
+        {
+          "name": "Safed musli",
+          "price": 120,
+          "unit": "pc",
+          "image": "shelf:ayurveda/safed-musli.webp",
+          "aliases": [
+            "सफेद मूसली"
+          ]
+        },
+        {
+          "name": "Shilajit",
+          "price": 200,
+          "unit": "pc",
+          "image": "shelf:ayurveda/shilajit.webp",
+          "aliases": [
+            "शिलाजीत"
+          ]
+        },
+        {
+          "name": "Gokshura",
+          "price": 70,
+          "unit": "pc",
+          "image": "shelf:ayurveda/gokshura.webp",
+          "aliases": [
+            "गोक्षुर"
+          ]
+        },
+        {
+          "name": "Punarnava",
+          "price": 60,
+          "unit": "pc",
+          "image": "shelf:ayurveda/punarnava.webp",
+          "aliases": [
+            "पुनर्नवा"
+          ]
+        },
+        {
+          "name": "Yashtimadhu",
+          "price": 50,
+          "unit": "pc",
+          "image": "shelf:ayurveda/yashtimadhu.webp",
+          "aliases": [
+            "यष्टिमधु"
+          ]
+        },
+        {
+          "name": "Haritaki",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:ayurveda/haritaki.webp",
+          "aliases": [
+            "हरड़"
+          ]
+        },
+        {
+          "name": "Bibhitaki",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:ayurveda/bibhitaki.webp",
+          "aliases": [
+            "बहेड़ा"
+          ]
+        },
+        {
+          "name": "Amalaki",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:ayurveda/amalaki.webp",
+          "aliases": [
+            "आंवला चूर्ण"
+          ]
+        },
+        {
+          "name": "Dashmool",
+          "price": 70,
+          "unit": "pc",
+          "image": "shelf:ayurveda/dashmool.webp",
+          "aliases": [
+            "दशमूल"
+          ]
+        },
+        {
+          "name": "Mahanarayan oil",
+          "price": 90,
+          "unit": "pc",
+          "image": "shelf:ayurveda/mahanarayan-oil.webp",
+          "aliases": [
+            "महानारायण तेल"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Oral",
+      "image": "shelf:oral/toothpaste.webp",
+      "items": [
+        {
+          "name": "Toothpaste",
+          "price": 50,
+          "unit": "pc",
+          "image": "shelf:oral/toothpaste.webp",
+          "aliases": [
+            "टूथपेस्ट"
+          ]
+        },
+        {
+          "name": "Sensitive toothpaste",
+          "price": 90,
+          "unit": "pc",
+          "image": "shelf:oral/sensitive-toothpaste.webp",
+          "aliases": [
+            "सेंसिटिव टूथपेस्ट"
+          ]
+        },
+        {
+          "name": "Mouthwash",
+          "price": 90,
+          "unit": "pc",
+          "image": "shelf:oral/mouthwash.webp",
+          "aliases": [
+            "माउथवॉश"
+          ]
+        },
+        {
+          "name": "Chlorhexidine mouthwash",
+          "price": 70,
+          "unit": "pc",
+          "image": "shelf:oral/chlorhexidine.webp",
+          "aliases": [
+            "क्लोरहेक्सिडिन"
+          ]
+        },
+        {
+          "name": "Toothache gel",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:oral/toothache-gel.webp",
+          "aliases": [
+            "दांत दर्द जेल"
+          ]
+        },
+        {
+          "name": "Dental floss",
+          "price": 60,
+          "unit": "pc",
+          "image": "shelf:oral/dental-floss.webp",
+          "aliases": [
+            "डेंटल फ्लॉस"
+          ]
+        },
+        {
+          "name": "Interdental brush",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:oral/interdental-brush.webp",
+          "aliases": [
+            "इंटरडेंटल ब्रश"
+          ]
+        },
+        {
+          "name": "Denture cleanser",
+          "price": 80,
+          "unit": "pc",
+          "image": "shelf:oral/denture-cleanser.webp",
+          "aliases": [
+            "डेंचर क्लीन्ज़र"
+          ]
+        },
+        {
+          "name": "Gum paint",
+          "price": 50,
+          "unit": "pc",
+          "image": "shelf:oral/gum-paint.webp",
+          "aliases": [
+            "गम पेंट"
+          ]
+        },
+        {
+          "name": "Clove oil",
+          "price": 30,
+          "unit": "pc",
+          "image": "shelf:oral/clove-oil.webp",
+          "aliases": [
+            "लौंग का तेल"
+          ]
+        },
+        {
+          "name": "Soft toothbrush",
+          "price": 30,
+          "unit": "pc",
+          "image": "shelf:oral/toothbrush-soft.webp",
+          "aliases": [
+            "सॉफ्ट टूथब्रश"
+          ]
+        },
+        {
+          "name": "Kids toothpaste",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:oral/kids-toothpaste.webp",
+          "aliases": [
+            "किड्स टूथपेस्ट"
+          ]
+        },
+        {
+          "name": "Tongue cleaner",
+          "price": 20,
+          "unit": "pc",
+          "image": "shelf:oral/tongue-cleaner.webp",
+          "aliases": [
+            "जीभ साफ करने वाला"
+          ]
+        },
+        {
+          "name": "Orthodontic wax",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:oral/ortho-wax.webp",
+          "aliases": [
+            "ऑर्थो वैक्स"
+          ]
+        },
+        {
+          "name": "Whitening toothpaste",
+          "price": 90,
+          "unit": "pc",
+          "image": "shelf:oral/whitening-toothpaste.webp",
+          "aliases": [
+            "व्हाइटनिंग टूथपेस्ट"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Eye Care More",
+      "image": "shelf:eye-care-more/reading-glasses.webp",
+      "items": [
+        {
+          "name": "Reading glasses",
+          "price": 150,
+          "unit": "pc",
+          "image": "shelf:eye-care-more/reading-glasses.webp",
+          "aliases": [
+            "रीडिंग ग्लास"
+          ]
+        },
+        {
+          "name": "Refresh eye drops",
+          "price": 90,
+          "unit": "pc",
+          "image": "shelf:eye-care-more/eye-drop-refresh.webp",
+          "aliases": [
+            "रिफ्रेश आई ड्रॉप्स"
+          ]
+        },
+        {
+          "name": "Eye pad",
+          "price": 10,
+          "unit": "pc",
+          "image": "shelf:eye-care-more/eye-pad.webp",
+          "aliases": [
+            "आई पैड"
+          ]
+        },
+        {
+          "name": "Eye shield",
+          "price": 20,
+          "unit": "pc",
+          "image": "shelf:eye-care-more/eye-shield.webp",
+          "aliases": [
+            "आई शील्ड"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Respiratory More",
+      "image": "shelf:respiratory-more/nebuliser-solution.webp",
+      "items": [
+        {
+          "name": "Saline nebuliser solution",
+          "price": 20,
+          "unit": "pc",
+          "image": "shelf:respiratory-more/nebuliser-solution.webp",
+          "aliases": [
+            "सलाइन नेब्युलाइज़र"
+          ]
+        },
+        {
+          "name": "Levosalbutamol respule",
+          "price": 15,
+          "unit": "pc",
+          "image": "shelf:respiratory-more/levosalbutamol-respule.webp",
+          "aliases": [
+            "लेवोसाल्ब्यूटामोल रेस्प्यूल"
+          ]
+        },
+        {
+          "name": "Budesonide respule",
+          "price": 20,
+          "unit": "pc",
+          "image": "shelf:respiratory-more/budesonide-respule.webp",
+          "aliases": [
+            "बुडेसोनाइड रेस्प्यूल"
+          ]
+        },
+        {
+          "name": "Ipratropium respule",
+          "price": 15,
+          "unit": "pc",
+          "image": "shelf:respiratory-more/ipratropium-respule.webp",
+          "aliases": [
+            "इप्रेट्रोपियम रेस्प्यूल"
+          ]
+        },
+        {
+          "name": "Salbutamol ipratropium respule",
+          "price": 18,
+          "unit": "pc",
+          "image": "shelf:respiratory-more/duolin-style.webp",
+          "aliases": [
+            "डुओलिन रेस्प्यूल"
+          ]
+        },
+        {
+          "name": "Formoterol inhaler",
+          "price": 200,
+          "unit": "pc",
+          "image": "shelf:respiratory-more/formoterol-inhaler.webp",
+          "aliases": [
+            "फॉर्मोटेरोल इनहेलर"
+          ]
+        },
+        {
+          "name": "Tiotropium inhaler",
+          "price": 250,
+          "unit": "pc",
+          "image": "shelf:respiratory-more/tiotropium.webp",
+          "aliases": [
+            "टियोट्रोपियम"
+          ]
+        },
+        {
+          "name": "Nasal filter",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:respiratory-more/nasal-filter.webp",
+          "aliases": [
+            "नेज़ल फ़िल्टर"
+          ]
+        },
+        {
+          "name": "Oxygen mask",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:respiratory-more/oxygen-mask.webp",
+          "aliases": [
+            "ऑक्सीजन मास्क"
+          ]
+        },
+        {
+          "name": "Nasal cannula",
+          "price": 25,
+          "unit": "pc",
+          "image": "shelf:respiratory-more/oxygen-cannula.webp",
+          "aliases": [
+            "नेज़ल कैन्युला"
+          ]
+        },
+        {
+          "name": "Child spacer",
+          "price": 180,
+          "unit": "pc",
+          "image": "shelf:respiratory-more/spacer-child.webp",
+          "aliases": [
+            "बच्चों का स्पेसर"
+          ]
+        },
+        {
+          "name": "Peak flow mouthpiece",
+          "price": 20,
+          "unit": "pc",
+          "image": "shelf:respiratory-more/peak-flow-mouthpiece.webp",
+          "aliases": [
+            "पीक फ्लो माउथपीस"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Wound More",
+      "image": "shelf:wound-more/betadine-ointment.webp",
+      "items": [
+        {
+          "name": "Povidone ointment tube",
+          "price": 35,
+          "unit": "pc",
+          "image": "shelf:wound-more/betadine-ointment.webp",
+          "aliases": [
+            "पोविडोन ट्यूब"
+          ]
+        },
+        {
+          "name": "Sterile gauze pad",
+          "price": 8,
+          "unit": "pc",
+          "image": "shelf:wound-more/sterile-gauze-pad.webp",
+          "aliases": [
+            "स्टेराइल गॉज पैड"
+          ]
+        },
+        {
+          "name": "Transparent dressing",
+          "price": 20,
+          "unit": "pc",
+          "image": "shelf:wound-more/transparent-dressing.webp",
+          "aliases": [
+            "ट्रांसपेरेंट ड्रेसिंग"
+          ]
+        },
+        {
+          "name": "Hydrocolloid dressing",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:wound-more/hydrocolloid.webp",
+          "aliases": [
+            "हाइड्रोकोलॉइड ड्रेसिंग"
+          ]
+        },
+        {
+          "name": "Elastic bandage",
+          "price": 35,
+          "unit": "pc",
+          "image": "shelf:wound-more/elastic-bandage.webp",
+          "aliases": [
+            "इलास्टिक बैंडेज"
+          ]
+        },
+        {
+          "name": "Finger cot",
+          "price": 5,
+          "unit": "pc",
+          "image": "shelf:wound-more/finger-cot.webp",
+          "aliases": [
+            "फिंगर कॉट"
+          ]
+        },
+        {
+          "name": "Alcohol swab",
+          "price": 2,
+          "unit": "pc",
+          "image": "shelf:wound-more/alcohol-swab.webp",
+          "aliases": [
+            "अल्कोहल स्वैब"
+          ]
+        },
+        {
+          "name": "Cotton ball",
+          "price": 20,
+          "unit": "pc",
+          "image": "shelf:wound-more/cotton-ball.webp",
+          "aliases": [
+            "कॉटन बॉल"
+          ]
+        },
+        {
+          "name": "Adhesive remover",
+          "price": 60,
+          "unit": "pc",
+          "image": "shelf:wound-more/adhesive-remover.webp",
+          "aliases": [
+            "एडहेसिव रिमूवर"
+          ]
+        },
+        {
+          "name": "Wound wash",
+          "price": 70,
+          "unit": "pc",
+          "image": "shelf:wound-more/wound-wash.webp",
+          "aliases": [
+            "वुंड वॉश"
+          ]
+        },
+        {
+          "name": "Burn dressing",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:wound-more/burn-dressing.webp",
+          "aliases": [
+            "बर्न ड्रेसिंग"
+          ]
+        },
+        {
+          "name": "Plaster roll",
+          "price": 30,
+          "unit": "pc",
+          "image": "shelf:wound-more/plaster-roll.webp",
+          "aliases": [
+            "प्लास्टर रोल"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Ent More",
+      "image": "shelf:ent-more/betahistine.webp",
+      "items": [
+        {
+          "name": "Betahistine tablet",
+          "price": 4,
+          "unit": "pc",
+          "image": "shelf:ent-more/betahistine.webp",
+          "aliases": [
+            "बेटाहिस्टिन"
+          ]
+        },
+        {
+          "name": "Cinnarizine tablet",
+          "price": 2,
+          "unit": "pc",
+          "image": "shelf:ent-more/cinnarizine.webp",
+          "aliases": [
+            "सिनारिज़ीन"
+          ]
+        },
+        {
+          "name": "Dimenhydrinate tablet",
+          "price": 2,
+          "unit": "pc",
+          "image": "shelf:ent-more/dimenhydrinate.webp",
+          "aliases": [
+            "डाइमेनहाइड्रिनेट"
+          ]
+        },
+        {
+          "name": "Ear plug",
+          "price": 20,
+          "unit": "pc",
+          "image": "shelf:ent-more/ear-plug.webp",
+          "aliases": [
+            "ईयर प्लग"
+          ]
+        },
+        {
+          "name": "Hearing aid battery",
+          "price": 20,
+          "unit": "pc",
+          "image": "shelf:ent-more/hearing-battery.webp",
+          "aliases": [
+            "हियरिंग बैटरी"
+          ]
+        },
+        {
+          "name": "Saline eye wash",
+          "price": 30,
+          "unit": "pc",
+          "image": "shelf:ent-more/saline-eye-wash.webp",
+          "aliases": [
+            "सलाइन आई वॉश"
+          ]
+        },
+        {
+          "name": "Antihistamine eye drops",
+          "price": 70,
+          "unit": "pc",
+          "image": "shelf:ent-more/antihistamine-eye.webp",
+          "aliases": [
+            "एंटीहिस्टामिन आई ड्रॉप्स"
+          ]
+        },
+        {
+          "name": "Lubricant eye gel",
+          "price": 110,
+          "unit": "pc",
+          "image": "shelf:ent-more/lubricant-gel-eye.webp",
+          "aliases": [
+            "लुब्रिकेंट आई जेल"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Supplements More",
+      "image": "shelf:supplements-more/coenzyme-q10.webp",
+      "items": [
+        {
+          "name": "Coenzyme Q10",
+          "price": 15,
+          "unit": "pc",
+          "image": "shelf:supplements-more/coenzyme-q10.webp",
+          "aliases": [
+            "कोएंजाइम क्यू10"
+          ]
+        },
+        {
+          "name": "Glucosamine tablet",
+          "price": 8,
+          "unit": "pc",
+          "image": "shelf:supplements-more/glucosamine.webp",
+          "aliases": [
+            "ग्लूकोसामाइन"
+          ]
+        },
+        {
+          "name": "Chondroitin tablet",
+          "price": 8,
+          "unit": "pc",
+          "image": "shelf:supplements-more/chondroitin.webp",
+          "aliases": [
+            "कॉन्ड्रोइटिन"
+          ]
+        },
+        {
+          "name": "Collagen tablet",
+          "price": 10,
+          "unit": "pc",
+          "image": "shelf:supplements-more/collagen-tablet.webp",
+          "aliases": [
+            "कोलेजन गोली"
+          ]
+        },
+        {
+          "name": "Probiotic sachet",
+          "price": 15,
+          "unit": "pc",
+          "image": "shelf:supplements-more/probiotic-sachet.webp",
+          "aliases": [
+            "प्रोबायोटिक सैशे"
+          ]
+        },
+        {
+          "name": "Protein sachet",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:supplements-more/whey-sachet.webp",
+          "aliases": [
+            "प्रोटीन सैशे"
+          ]
+        },
+        {
+          "name": "ORS apple",
+          "price": 20,
+          "unit": "pc",
+          "image": "shelf:supplements-more/ors-apple.webp",
+          "aliases": [
+            "ओआरएस सेब"
+          ]
+        },
+        {
+          "name": "Vitamin K2 tablet",
+          "price": 8,
+          "unit": "pc",
+          "image": "shelf:supplements-more/vitamin-k2.webp",
+          "aliases": [
+            "विटामिन के2"
+          ]
+        },
+        {
+          "name": "Lutein tablet",
+          "price": 8,
+          "unit": "pc",
+          "image": "shelf:supplements-more/lutein.webp",
+          "aliases": [
+            "ल्यूटिन"
+          ]
+        },
+        {
+          "name": "Cranberry capsule",
+          "price": 8,
+          "unit": "pc",
+          "image": "shelf:supplements-more/cranberry.webp",
+          "aliases": [
+            "क्रैनबेरी"
+          ]
+        },
+        {
+          "name": "Milk thistle",
+          "price": 8,
+          "unit": "pc",
+          "image": "shelf:supplements-more/milk-thistle.webp",
+          "aliases": [
+            "मिल्क थिसल"
+          ]
+        },
+        {
+          "name": "Evening primrose",
+          "price": 8,
+          "unit": "pc",
+          "image": "shelf:supplements-more/evening-primrose.webp",
+          "aliases": [
+            "इवनिंग प्रिमरोज़"
+          ]
+        },
+        {
+          "name": "Garlic capsule",
+          "price": 4,
+          "unit": "pc",
+          "image": "shelf:supplements-more/garlic-capsule.webp",
+          "aliases": [
+            "लहसुन कैप्सूल"
+          ]
+        },
+        {
+          "name": "Ginseng capsule",
+          "price": 8,
+          "unit": "pc",
+          "image": "shelf:supplements-more/ginseng.webp",
+          "aliases": [
+            "जिनसेंग"
+          ]
+        },
+        {
+          "name": "Melatonin tablet",
+          "price": 6,
+          "unit": "pc",
+          "image": "shelf:supplements-more/melatonin.webp",
+          "aliases": [
+            "मेलाटोनिन"
+          ]
+        },
+        {
+          "name": "Kids iron syrup",
+          "price": 70,
+          "unit": "pc",
+          "image": "shelf:supplements-more/iron-syrup-kids.webp",
+          "aliases": [
+            "बच्चों का आयरन सिरप"
+          ]
+        },
+        {
+          "name": "Calcium chewable",
+          "price": 4,
+          "unit": "pc",
+          "image": "shelf:supplements-more/calcium-chew.webp",
+          "aliases": [
+            "कैल्शियम चबाने वाली"
+          ]
+        },
+        {
+          "name": "ORS tetra pack",
+          "price": 20,
+          "unit": "pc",
+          "image": "shelf:supplements-more/ors-tetra.webp",
+          "aliases": [
+            "ओआरएस टेट्रा"
+          ]
+        },
+        {
+          "name": "Ready electrolyte",
+          "price": 30,
+          "unit": "pc",
+          "image": "shelf:supplements-more/electrolyte-ready.webp",
+          "aliases": [
+            "रेडी इलेक्ट्रोलाइट"
+          ]
+        },
+        {
+          "name": "Dextrose powder",
+          "price": 15,
+          "unit": "pc",
+          "image": "shelf:supplements-more/dextrose-sachet.webp",
+          "aliases": [
+            "डेक्सट्रोज"
+          ]
+        },
+        {
+          "name": "Glucose D",
+          "price": 30,
+          "unit": "pc",
+          "image": "shelf:supplements-more/glucose-d.webp",
+          "aliases": [
+            "ग्लूकोज डी"
+          ]
+        },
+        {
+          "name": "Energy drink sachet",
+          "price": 15,
+          "unit": "pc",
+          "image": "shelf:supplements-more/energy-sachet.webp",
+          "aliases": [
+            "एनर्जी सैशे"
+          ]
+        },
+        {
+          "name": "Protein bar",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:supplements-more/protein-bar.webp",
+          "aliases": [
+            "प्रोटीन बार"
+          ]
+        },
+        {
+          "name": "ORS lemon",
+          "price": 20,
+          "unit": "pc",
+          "image": "shelf:supplements-more/ors-lemon.webp",
+          "aliases": [
+            "ओआरएस नींबू"
+          ]
+        },
+        {
+          "name": "Antacid liquid",
+          "price": 70,
+          "unit": "pc",
+          "image": "shelf:supplements-more/antacid-liquid.webp",
+          "aliases": [
+            "एंटासिड लिक्विड"
+          ]
+        },
+        {
+          "name": "Antacid chewable",
+          "price": 2,
+          "unit": "pc",
+          "image": "shelf:supplements-more/digene-style.webp",
+          "aliases": [
+            "एंटासिड चबाने वाली"
+          ]
+        },
+        {
+          "name": "Stool softener",
+          "price": 4,
+          "unit": "pc",
+          "image": "shelf:supplements-more/stool-softener.webp",
+          "aliases": [
+            "स्टूल सॉफ्टनर"
+          ]
+        },
+        {
+          "name": "Glycerin suppository",
+          "price": 8,
+          "unit": "pc",
+          "image": "shelf:supplements-more/glycerin-suppository.webp",
+          "aliases": [
+            "ग्लिसरीन सपोसिटरी"
+          ]
+        },
+        {
+          "name": "Enema",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:supplements-more/enema.webp",
+          "aliases": [
+            "एनीमा"
+          ]
+        },
+        {
+          "name": "Antiseptic powder",
+          "price": 30,
+          "unit": "pc",
+          "image": "shelf:supplements-more/antiseptic-powder.webp",
+          "aliases": [
+            "एंटीसेप्टिक पाउडर"
+          ]
+        },
+        {
+          "name": "Boric powder",
+          "price": 20,
+          "unit": "pc",
+          "image": "shelf:supplements-more/boric-powder.webp",
+          "aliases": [
+            "बोरिक पाउडर"
+          ]
+        },
+        {
+          "name": "Gentian violet",
+          "price": 15,
+          "unit": "pc",
+          "image": "shelf:supplements-more/gentian-violet.webp",
+          "aliases": [
+            "जेंशियन वायलेट"
+          ]
+        },
+        {
+          "name": "Tincture benzoin",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:supplements-more/tincture-benzoin.webp",
+          "aliases": [
+            "टिंक्चर बेंज़ोइन"
+          ]
+        },
+        {
+          "name": "Liquid paraffin",
+          "price": 50,
+          "unit": "pc",
+          "image": "shelf:supplements-more/liquid-paraffin.webp",
+          "aliases": [
+            "लिक्विड पैराफिन"
+          ]
+        },
+        {
+          "name": "Magnesium hydroxide",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:supplements-more/magnesium-hydroxide.webp",
+          "aliases": [
+            "मैग्नीशियम हाइड्रॉक्साइड"
+          ]
+        },
+        {
+          "name": "Sodium bicarbonate",
+          "price": 20,
+          "unit": "pc",
+          "image": "shelf:supplements-more/sodium-bicarb.webp",
+          "aliases": [
+            "सोडियम बाइकार्बोनेट"
+          ]
+        },
+        {
+          "name": "Potassium permanganate",
+          "price": 15,
+          "unit": "pc",
+          "image": "shelf:supplements-more/potassium-permanganate.webp",
+          "aliases": [
+            "पोटैशियम परमैंगनेट"
+          ]
+        },
+        {
+          "name": "Boric ear drops",
+          "price": 20,
+          "unit": "pc",
+          "image": "shelf:supplements-more/boric-ear.webp",
+          "aliases": [
+            "बोरिक ईयर ड्रॉप्स"
+          ]
+        },
+        {
+          "name": "Normal saline",
+          "price": 25,
+          "unit": "pc",
+          "image": "shelf:supplements-more/normal-saline.webp",
+          "aliases": [
+            "नॉर्मल सलाइन"
+          ]
+        },
+        {
+          "name": "Dextrose IV",
+          "price": 30,
+          "unit": "pc",
+          "image": "shelf:supplements-more/dextrose-iv.webp",
+          "aliases": [
+            "डेक्सट्रोज आईवी"
+          ]
+        },
+        {
+          "name": "Ringer lactate",
+          "price": 35,
+          "unit": "pc",
+          "image": "shelf:supplements-more/ringer-lactate.webp",
+          "aliases": [
+            "रिंगर लैक्टेट"
+          ]
+        },
+        {
+          "name": "Distilled water",
+          "price": 20,
+          "unit": "pc",
+          "image": "shelf:supplements-more/distilled-water.webp",
+          "aliases": [
+            "डिस्टिल्ड वाटर"
+          ]
+        },
+        {
+          "name": "Surgical blade",
+          "price": 5,
+          "unit": "pc",
+          "image": "shelf:supplements-more/surgical-blade.webp",
+          "aliases": [
+            "सर्जिकल ब्लेड"
+          ]
+        },
+        {
+          "name": "Crepe bandage 6 inch",
+          "price": 55,
+          "unit": "pc",
+          "image": "shelf:supplements-more/crepe-6.webp",
+          "aliases": [
+            "क्रेप बैंडेज 6"
+          ]
+        }
+      ]
+    }
+  ]
+}

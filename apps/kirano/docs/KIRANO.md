@@ -90,7 +90,7 @@ off and must not appear in owner-facing copy.
 ## 4. Kirano-specific state
 
 - Locked product face: `kirano_kirana` (`src/entity_template.rs`,
-  `VenueMode::Counter`, Tax invoice / Cash memo, **no seed catalogue**).
+  `VenueMode::Counter`, Tax invoice / Cash memo). A new shop stays empty until the owner imports the neighbourhood shelf (`assets/items`, `assets/templates/neighbourhood`).
 - Parties: **Customer** (khata/AR) and **Supplier** / wholesaler (AP) —
   role labels on one party UUID.
 - Shell: **Books · Sell · Buy · Items · Sales · Inventory · Credit ·
@@ -122,6 +122,7 @@ off and must not appear in owner-facing copy.
 | MRP + off-MRP hint on Sell add | **Have** | Items form + Sell status |
 | HSN on item master (optional) | **Have** | Items form |
 | Expiry alerts on Books | **Have** | Books |
+| Starter shelf (500+ WebP items, Hindi aliases) | **Have** | Items → Import neighbourhood grocery |
 | Barcode wedge scan-to-add | **Later** | Sell |
 | Wholesale rate tiers / schemes | **Later** | Items |
 | WhatsApp / SMS khata reminder | **Later** | Notify |

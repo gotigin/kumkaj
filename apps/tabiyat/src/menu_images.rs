@@ -1,8 +1,8 @@
-//! Menu item / party thumb helpers for Tabiyat, and an optional photo shelf
-//! (`assets/items/`). Ships empty — no bundled medicine starter pack.
+//! Menu item / party thumb helpers for Tabiyat, and the bundled chemist shelf
+//! (`assets/items/<folder>/<item>.webp`). Photos are WebP only.
 //!
 //! When a name is set and no photo is chosen, UI shows **name initials**:
-//! - one word → first two letters (`Crocin` → `CR`)
+//! - one word → first two letters (`Paracetamol` → `PA`)
 //! - two+ words → first letter of the first two (`ORS Sachet` → `OS`)
 
 use std::path::{Path, PathBuf};

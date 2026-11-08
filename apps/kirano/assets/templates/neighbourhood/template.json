@@ -1,0 +1,4675 @@
+{
+  "id": "neighbourhood",
+  "title": "Neighbourhood grocery",
+  "blurb": "Starter kirana list: aisles, Hindi aliases, example prices, photos. Prices are not MRP — change them for your shop.",
+  "categories": [
+    {
+      "name": "Staples",
+      "image": "shelf:staples/sona-masoori-rice.webp",
+      "items": [
+        {
+          "name": "Sona masoori rice",
+          "price": 60,
+          "unit": "kg",
+          "image": "shelf:staples/sona-masoori-rice.webp",
+          "aliases": [
+            "सोना मसूरी चावल"
+          ]
+        },
+        {
+          "name": "Basmati rice",
+          "price": 140,
+          "unit": "kg",
+          "image": "shelf:staples/basmati-rice.webp",
+          "aliases": [
+            "बासमती चावल"
+          ]
+        },
+        {
+          "name": "Kolam rice",
+          "price": 70,
+          "unit": "kg",
+          "image": "shelf:staples/kolam-rice.webp",
+          "aliases": [
+            "कोल्हम चावल"
+          ]
+        },
+        {
+          "name": "Brown rice",
+          "price": 90,
+          "unit": "kg",
+          "image": "shelf:staples/brown-rice.webp",
+          "aliases": [
+            "भूरा चावल"
+          ]
+        },
+        {
+          "name": "Boiled rice",
+          "price": 55,
+          "unit": "kg",
+          "image": "shelf:staples/boiled-rice.webp",
+          "aliases": [
+            "उसना चावल"
+          ]
+        },
+        {
+          "name": "Broken rice",
+          "price": 40,
+          "unit": "kg",
+          "image": "shelf:staples/broken-rice.webp",
+          "aliases": [
+            "खिचड़ी चावल"
+          ]
+        },
+        {
+          "name": "Idli rice",
+          "price": 65,
+          "unit": "kg",
+          "image": "shelf:staples/idli-rice.webp",
+          "aliases": [
+            "इडली चावल"
+          ]
+        },
+        {
+          "name": "Thick poha",
+          "price": 50,
+          "unit": "kg",
+          "image": "shelf:staples/poha-thick.webp",
+          "aliases": [
+            "मोटा पोहा"
+          ]
+        },
+        {
+          "name": "Thin poha",
+          "price": 55,
+          "unit": "kg",
+          "image": "shelf:staples/poha-thin.webp",
+          "aliases": [
+            "पतला पोहा"
+          ]
+        },
+        {
+          "name": "Puffed rice",
+          "price": 40,
+          "unit": "kg",
+          "image": "shelf:staples/murmura.webp",
+          "aliases": [
+            "मुरमुरा"
+          ]
+        },
+        {
+          "name": "Sago",
+          "price": 80,
+          "unit": "kg",
+          "image": "shelf:staples/sabudana.webp",
+          "aliases": [
+            "साबूदाना"
+          ]
+        },
+        {
+          "name": "Wheat atta",
+          "price": 45,
+          "unit": "kg",
+          "image": "shelf:staples/wheat-atta.webp",
+          "aliases": [
+            "गेहूं का आटा"
+          ]
+        },
+        {
+          "name": "Multigrain atta",
+          "price": 70,
+          "unit": "kg",
+          "image": "shelf:staples/multigrain-atta.webp",
+          "aliases": [
+            "मल्टीग्रेन आटा"
+          ]
+        },
+        {
+          "name": "Maida",
+          "price": 42,
+          "unit": "kg",
+          "image": "shelf:staples/maida.webp",
+          "aliases": [
+            "मैदा"
+          ]
+        },
+        {
+          "name": "Rava",
+          "price": 48,
+          "unit": "kg",
+          "image": "shelf:staples/rava.webp",
+          "aliases": [
+            "रवा"
+          ]
+        },
+        {
+          "name": "Besan",
+          "price": 90,
+          "unit": "kg",
+          "image": "shelf:staples/besan.webp",
+          "aliases": [
+            "बेसन"
+          ]
+        },
+        {
+          "name": "Rice flour",
+          "price": 50,
+          "unit": "kg",
+          "image": "shelf:staples/rice-flour.webp",
+          "aliases": [
+            "चावल का आटा"
+          ]
+        },
+        {
+          "name": "Corn flour",
+          "price": 60,
+          "unit": "kg",
+          "image": "shelf:staples/corn-flour.webp",
+          "aliases": [
+            "कॉर्न फ्लोर"
+          ]
+        },
+        {
+          "name": "Ragi flour",
+          "price": 70,
+          "unit": "kg",
+          "image": "shelf:staples/ragi-flour.webp",
+          "aliases": [
+            "रागी आटा"
+          ]
+        },
+        {
+          "name": "Jowar flour",
+          "price": 55,
+          "unit": "kg",
+          "image": "shelf:staples/jowar-flour.webp",
+          "aliases": [
+            "ज्वार आटा"
+          ]
+        },
+        {
+          "name": "Bajra flour",
+          "price": 50,
+          "unit": "kg",
+          "image": "shelf:staples/bajra-flour.webp",
+          "aliases": [
+            "बाजरा आटा"
+          ]
+        },
+        {
+          "name": "Makki atta",
+          "price": 48,
+          "unit": "kg",
+          "image": "shelf:staples/makki-atta.webp",
+          "aliases": [
+            "मक्की का आटा"
+          ]
+        },
+        {
+          "name": "Daliya",
+          "price": 45,
+          "unit": "kg",
+          "image": "shelf:staples/daliya.webp",
+          "aliases": [
+            "दलिया"
+          ]
+        },
+        {
+          "name": "Oats",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:staples/oats.webp",
+          "aliases": [
+            "ओट्स"
+          ]
+        },
+        {
+          "name": "Vermicelli",
+          "price": 30,
+          "unit": "pc",
+          "image": "shelf:staples/vermicelli.webp",
+          "aliases": [
+            "सेवई"
+          ]
+        },
+        {
+          "name": "Nylon sago",
+          "price": 90,
+          "unit": "kg",
+          "image": "shelf:staples/sabudana-nylon.webp",
+          "aliases": [
+            "नायलॉन साबूदाना"
+          ]
+        },
+        {
+          "name": "Red poha",
+          "price": 70,
+          "unit": "kg",
+          "image": "shelf:staples/pressed-rice-red.webp",
+          "aliases": [
+            "लाल पोहा"
+          ]
+        },
+        {
+          "name": "Quinoa",
+          "price": 180,
+          "unit": "pc",
+          "image": "shelf:staples/quinoa.webp",
+          "aliases": [
+            "क्विनोआ"
+          ]
+        },
+        {
+          "name": "Corn flakes",
+          "price": 45,
+          "unit": "pc",
+          "image": "shelf:staples/corn-flakes.webp",
+          "aliases": [
+            "कॉर्न फ्लेक्स"
+          ]
+        },
+        {
+          "name": "Muesli",
+          "price": 120,
+          "unit": "pc",
+          "image": "shelf:staples/muesli.webp",
+          "aliases": [
+            "म्यूसली"
+          ]
+        },
+        {
+          "name": "Wheat bran",
+          "price": 35,
+          "unit": "kg",
+          "image": "shelf:staples/wheat-bran.webp",
+          "aliases": [
+            "गेहूं का चोकर"
+          ]
+        },
+        {
+          "name": "Coarse suji",
+          "price": 46,
+          "unit": "kg",
+          "image": "shelf:staples/suji-coarse.webp",
+          "aliases": [
+            "मोटा सूजी"
+          ]
+        },
+        {
+          "name": "Arrowroot",
+          "price": 80,
+          "unit": "pc",
+          "image": "shelf:staples/arrowroot.webp",
+          "aliases": [
+            "अरारोट"
+          ]
+        },
+        {
+          "name": "Tapioca",
+          "price": 70,
+          "unit": "kg",
+          "image": "shelf:staples/tapioca.webp",
+          "aliases": [
+            "टैपिओका"
+          ]
+        },
+        {
+          "name": "Barley",
+          "price": 50,
+          "unit": "kg",
+          "image": "shelf:staples/barley.webp",
+          "aliases": [
+            "जौ"
+          ]
+        },
+        {
+          "name": "Jowar grain",
+          "price": 40,
+          "unit": "kg",
+          "image": "shelf:staples/sorghum-grain.webp",
+          "aliases": [
+            "ज्वार दाना"
+          ]
+        },
+        {
+          "name": "Bajra grain",
+          "price": 38,
+          "unit": "kg",
+          "image": "shelf:staples/pearl-millet.webp",
+          "aliases": [
+            "बाजरा दाना"
+          ]
+        },
+        {
+          "name": "Ragi grain",
+          "price": 55,
+          "unit": "kg",
+          "image": "shelf:staples/finger-millet.webp",
+          "aliases": [
+            "रागी दाना"
+          ]
+        },
+        {
+          "name": "Foxtail millet",
+          "price": 80,
+          "unit": "kg",
+          "image": "shelf:staples/foxtail-millet.webp",
+          "aliases": [
+            "कंगनी"
+          ]
+        },
+        {
+          "name": "Little millet",
+          "price": 75,
+          "unit": "kg",
+          "image": "shelf:staples/little-millet.webp",
+          "aliases": [
+            "कुटकी"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Pulses",
+      "image": "shelf:pulses/toor-dal.webp",
+      "items": [
+        {
+          "name": "Toor dal",
+          "price": 140,
+          "unit": "kg",
+          "image": "shelf:pulses/toor-dal.webp",
+          "aliases": [
+            "अरहर दाल"
+          ]
+        },
+        {
+          "name": "Moong dal",
+          "price": 120,
+          "unit": "kg",
+          "image": "shelf:pulses/moong-dal.webp",
+          "aliases": [
+            "मूंग दाल"
+          ]
+        },
+        {
+          "name": "Whole moong",
+          "price": 110,
+          "unit": "kg",
+          "image": "shelf:pulses/moong-whole.webp",
+          "aliases": [
+            "साबुत मूंग"
+          ]
+        },
+        {
+          "name": "Masoor dal",
+          "price": 100,
+          "unit": "kg",
+          "image": "shelf:pulses/masoor-dal.webp",
+          "aliases": [
+            "मसूर दाल"
+          ]
+        },
+        {
+          "name": "Whole masoor",
+          "price": 95,
+          "unit": "kg",
+          "image": "shelf:pulses/masoor-whole.webp",
+          "aliases": [
+            "साबुत मसूर"
+          ]
+        },
+        {
+          "name": "Chana dal",
+          "price": 90,
+          "unit": "kg",
+          "image": "shelf:pulses/chana-dal.webp",
+          "aliases": [
+            "चना दाल"
+          ]
+        },
+        {
+          "name": "Kabuli chana",
+          "price": 110,
+          "unit": "kg",
+          "image": "shelf:pulses/kabuli-chana.webp",
+          "aliases": [
+            "काबुली चना"
+          ]
+        },
+        {
+          "name": "Kala chana",
+          "price": 85,
+          "unit": "kg",
+          "image": "shelf:pulses/kala-chana.webp",
+          "aliases": [
+            "काला चना"
+          ]
+        },
+        {
+          "name": "Urad dal",
+          "price": 130,
+          "unit": "kg",
+          "image": "shelf:pulses/urad-dal.webp",
+          "aliases": [
+            "उड़द दाल"
+          ]
+        },
+        {
+          "name": "Whole urad",
+          "price": 120,
+          "unit": "kg",
+          "image": "shelf:pulses/urad-whole.webp",
+          "aliases": [
+            "साबुत उड़द"
+          ]
+        },
+        {
+          "name": "Urad chilka",
+          "price": 125,
+          "unit": "kg",
+          "image": "shelf:pulses/urad-chilka.webp",
+          "aliases": [
+            "उड़द छिलका"
+          ]
+        },
+        {
+          "name": "Rajma",
+          "price": 140,
+          "unit": "kg",
+          "image": "shelf:pulses/rajma.webp",
+          "aliases": [
+            "राजमा"
+          ]
+        },
+        {
+          "name": "Lobia",
+          "price": 90,
+          "unit": "kg",
+          "image": "shelf:pulses/lobia.webp",
+          "aliases": [
+            "लोबिया"
+          ]
+        },
+        {
+          "name": "Moth beans",
+          "price": 80,
+          "unit": "kg",
+          "image": "shelf:pulses/moth.webp",
+          "aliases": [
+            "मोठ"
+          ]
+        },
+        {
+          "name": "Horse gram",
+          "price": 90,
+          "unit": "kg",
+          "image": "shelf:pulses/horse-gram.webp",
+          "aliases": [
+            "कुलथी"
+          ]
+        },
+        {
+          "name": "Dry green peas",
+          "price": 80,
+          "unit": "kg",
+          "image": "shelf:pulses/green-peas-dry.webp",
+          "aliases": [
+            "सूखा मटर"
+          ]
+        },
+        {
+          "name": "Soy chunks",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:pulses/soy-chunks.webp",
+          "aliases": [
+            "सोया बड़ी"
+          ]
+        },
+        {
+          "name": "Soy beans",
+          "price": 90,
+          "unit": "kg",
+          "image": "shelf:pulses/soy-beans.webp",
+          "aliases": [
+            "सोयाबीन"
+          ]
+        },
+        {
+          "name": "Field beans",
+          "price": 100,
+          "unit": "kg",
+          "image": "shelf:pulses/val.webp",
+          "aliases": [
+            "वाल"
+          ]
+        },
+        {
+          "name": "Matki",
+          "price": 95,
+          "unit": "kg",
+          "image": "shelf:pulses/matki.webp",
+          "aliases": [
+            "मटकी"
+          ]
+        },
+        {
+          "name": "Moong chilka",
+          "price": 115,
+          "unit": "kg",
+          "image": "shelf:pulses/moong-chilka.webp",
+          "aliases": [
+            "मूंग छिलका"
+          ]
+        },
+        {
+          "name": "Oily toor",
+          "price": 145,
+          "unit": "kg",
+          "image": "shelf:pulses/toor-oily.webp",
+          "aliases": [
+            "तेली अरहर"
+          ]
+        },
+        {
+          "name": "Roasted chana",
+          "price": 30,
+          "unit": "pc",
+          "image": "shelf:pulses/roasted-chana.webp",
+          "aliases": [
+            "भुना चना"
+          ]
+        },
+        {
+          "name": "Sattu",
+          "price": 50,
+          "unit": "kg",
+          "image": "shelf:pulses/chana-sattu.webp",
+          "aliases": [
+            "सत्तू"
+          ]
+        },
+        {
+          "name": "Mixed dal",
+          "price": 110,
+          "unit": "kg",
+          "image": "shelf:pulses/mixed-dal.webp",
+          "aliases": [
+            "मिक्स दाल"
+          ]
+        },
+        {
+          "name": "White peas",
+          "price": 70,
+          "unit": "kg",
+          "image": "shelf:pulses/white-peas.webp",
+          "aliases": [
+            "सफेद मटर"
+          ]
+        },
+        {
+          "name": "Cowpeas",
+          "price": 90,
+          "unit": "kg",
+          "image": "shelf:pulses/cowpeas.webp",
+          "aliases": [
+            "चौला"
+          ]
+        },
+        {
+          "name": "Pinto beans",
+          "price": 160,
+          "unit": "kg",
+          "image": "shelf:pulses/pinto-beans.webp",
+          "aliases": [
+            "पिंटो बीन्स"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Oils Ghee",
+      "image": "shelf:oils-ghee/sunflower-oil.webp",
+      "items": [
+        {
+          "name": "Sunflower oil",
+          "price": 140,
+          "unit": "L",
+          "image": "shelf:oils-ghee/sunflower-oil.webp",
+          "aliases": [
+            "सूरजमुखी तेल"
+          ]
+        },
+        {
+          "name": "Groundnut oil",
+          "price": 180,
+          "unit": "L",
+          "image": "shelf:oils-ghee/groundnut-oil.webp",
+          "aliases": [
+            "मूंगफली तेल"
+          ]
+        },
+        {
+          "name": "Mustard oil",
+          "price": 160,
+          "unit": "L",
+          "image": "shelf:oils-ghee/mustard-oil.webp",
+          "aliases": [
+            "सरसों तेल"
+          ]
+        },
+        {
+          "name": "Coconut oil",
+          "price": 200,
+          "unit": "L",
+          "image": "shelf:oils-ghee/coconut-oil.webp",
+          "aliases": [
+            "नारियल तेल"
+          ]
+        },
+        {
+          "name": "Sesame oil",
+          "price": 280,
+          "unit": "L",
+          "image": "shelf:oils-ghee/sesame-oil.webp",
+          "aliases": [
+            "तिल तेल"
+          ]
+        },
+        {
+          "name": "Rice bran oil",
+          "price": 150,
+          "unit": "L",
+          "image": "shelf:oils-ghee/rice-bran-oil.webp",
+          "aliases": [
+            "राइस ब्रान तेल"
+          ]
+        },
+        {
+          "name": "Soybean oil",
+          "price": 130,
+          "unit": "L",
+          "image": "shelf:oils-ghee/soybean-oil.webp",
+          "aliases": [
+            "सोया तेल"
+          ]
+        },
+        {
+          "name": "Olive oil",
+          "price": 450,
+          "unit": "pc",
+          "image": "shelf:oils-ghee/olive-oil.webp",
+          "aliases": [
+            "जैतून तेल"
+          ]
+        },
+        {
+          "name": "Ghee",
+          "price": 550,
+          "unit": "kg",
+          "image": "shelf:oils-ghee/ghee.webp",
+          "aliases": [
+            "घी"
+          ]
+        },
+        {
+          "name": "Vanaspati",
+          "price": 120,
+          "unit": "kg",
+          "image": "shelf:oils-ghee/vanaspati.webp",
+          "aliases": [
+            "वनस्पति"
+          ]
+        },
+        {
+          "name": "Cow ghee",
+          "price": 700,
+          "unit": "kg",
+          "image": "shelf:oils-ghee/cow-ghee.webp",
+          "aliases": [
+            "गाय का घी"
+          ]
+        },
+        {
+          "name": "Palm oil",
+          "price": 110,
+          "unit": "L",
+          "image": "shelf:oils-ghee/palm-oil.webp",
+          "aliases": [
+            "पाम तेल"
+          ]
+        },
+        {
+          "name": "Flaxseed oil",
+          "price": 250,
+          "unit": "pc",
+          "image": "shelf:oils-ghee/flaxseed-oil.webp",
+          "aliases": [
+            "अलसी तेल"
+          ]
+        },
+        {
+          "name": "Castor oil",
+          "price": 80,
+          "unit": "pc",
+          "image": "shelf:oils-ghee/castor-oil.webp",
+          "aliases": [
+            "अरंडी तेल"
+          ]
+        },
+        {
+          "name": "Refined oil pouch",
+          "price": 20,
+          "unit": "pc",
+          "image": "shelf:oils-ghee/refined-oil-pouch.webp",
+          "aliases": [
+            "रिफाइंड तेल पाउच"
+          ]
+        },
+        {
+          "name": "Ghee jar",
+          "price": 280,
+          "unit": "pc",
+          "image": "shelf:oils-ghee/ghee-jar.webp",
+          "aliases": [
+            "घी का डिब्बा"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Spices",
+      "image": "shelf:spices/turmeric-powder.webp",
+      "items": [
+        {
+          "name": "Turmeric powder",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:spices/turmeric-powder.webp",
+          "aliases": [
+            "हल्दी पाउडर"
+          ]
+        },
+        {
+          "name": "Turmeric fingers",
+          "price": 30,
+          "unit": "pc",
+          "image": "shelf:spices/turmeric-whole.webp",
+          "aliases": [
+            "हल्दी गांठ"
+          ]
+        },
+        {
+          "name": "Red chilli powder",
+          "price": 50,
+          "unit": "pc",
+          "image": "shelf:spices/red-chilli-powder.webp",
+          "aliases": [
+            "लाल मिर्च पाउडर"
+          ]
+        },
+        {
+          "name": "Kashmiri chilli",
+          "price": 70,
+          "unit": "pc",
+          "image": "shelf:spices/kashmiri-chilli.webp",
+          "aliases": [
+            "कश्मीरी मिर्च"
+          ]
+        },
+        {
+          "name": "Green chilli",
+          "price": 40,
+          "unit": "kg",
+          "image": "shelf:spices/green-chilli.webp",
+          "aliases": [
+            "हरी मिर्च"
+          ]
+        },
+        {
+          "name": "Coriander powder",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:spices/coriander-powder.webp",
+          "aliases": [
+            "धनिया पाउडर"
+          ]
+        },
+        {
+          "name": "Coriander seeds",
+          "price": 30,
+          "unit": "pc",
+          "image": "shelf:spices/coriander-seeds.webp",
+          "aliases": [
+            "साबुत धनिया"
+          ]
+        },
+        {
+          "name": "Cumin seeds",
+          "price": 60,
+          "unit": "pc",
+          "image": "shelf:spices/cumin-seeds.webp",
+          "aliases": [
+            "जीरा"
+          ]
+        },
+        {
+          "name": "Cumin powder",
+          "price": 50,
+          "unit": "pc",
+          "image": "shelf:spices/cumin-powder.webp",
+          "aliases": [
+            "जीरा पाउडर"
+          ]
+        },
+        {
+          "name": "Mustard seeds",
+          "price": 25,
+          "unit": "pc",
+          "image": "shelf:spices/mustard-seeds.webp",
+          "aliases": [
+            "राई"
+          ]
+        },
+        {
+          "name": "Fenugreek seeds",
+          "price": 20,
+          "unit": "pc",
+          "image": "shelf:spices/fenugreek-seeds.webp",
+          "aliases": [
+            "मेथी दाना"
+          ]
+        },
+        {
+          "name": "Kasuri methi",
+          "price": 20,
+          "unit": "pc",
+          "image": "shelf:spices/kasuri-methi.webp",
+          "aliases": [
+            "कसूरी मेथी"
+          ]
+        },
+        {
+          "name": "Garam masala",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:spices/garam-masala.webp",
+          "aliases": [
+            "गरम मसाला"
+          ]
+        },
+        {
+          "name": "Black pepper",
+          "price": 80,
+          "unit": "pc",
+          "image": "shelf:spices/black-pepper.webp",
+          "aliases": [
+            "काली मिर्च"
+          ]
+        },
+        {
+          "name": "Pepper powder",
+          "price": 70,
+          "unit": "pc",
+          "image": "shelf:spices/pepper-powder.webp",
+          "aliases": [
+            "काली मिर्च पाउडर"
+          ]
+        },
+        {
+          "name": "Green cardamom",
+          "price": 120,
+          "unit": "pc",
+          "image": "shelf:spices/cardamom-green.webp",
+          "aliases": [
+            "हरी इलायची"
+          ]
+        },
+        {
+          "name": "Black cardamom",
+          "price": 80,
+          "unit": "pc",
+          "image": "shelf:spices/cardamom-black.webp",
+          "aliases": [
+            "बड़ी इलायची"
+          ]
+        },
+        {
+          "name": "Cinnamon",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:spices/cinnamon.webp",
+          "aliases": [
+            "दालचीनी"
+          ]
+        },
+        {
+          "name": "Cloves",
+          "price": 50,
+          "unit": "pc",
+          "image": "shelf:spices/cloves.webp",
+          "aliases": [
+            "लौंग"
+          ]
+        },
+        {
+          "name": "Bay leaf",
+          "price": 15,
+          "unit": "pc",
+          "image": "shelf:spices/bay-leaf.webp",
+          "aliases": [
+            "तेज पत्ता"
+          ]
+        },
+        {
+          "name": "Star anise",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:spices/star-anise.webp",
+          "aliases": [
+            "चक्र फूल"
+          ]
+        },
+        {
+          "name": "Fennel seeds",
+          "price": 30,
+          "unit": "pc",
+          "image": "shelf:spices/fennel-seeds.webp",
+          "aliases": [
+            "सौंफ"
+          ]
+        },
+        {
+          "name": "Ajwain",
+          "price": 25,
+          "unit": "pc",
+          "image": "shelf:spices/ajwain.webp",
+          "aliases": [
+            "अजवाइन"
+          ]
+        },
+        {
+          "name": "Asafoetida",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:spices/asafoetida.webp",
+          "aliases": [
+            "हींग"
+          ]
+        },
+        {
+          "name": "Dry ginger",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:spices/dry-ginger.webp",
+          "aliases": [
+            "सौंठ"
+          ]
+        },
+        {
+          "name": "Fresh ginger",
+          "price": 80,
+          "unit": "kg",
+          "image": "shelf:spices/ginger-fresh.webp",
+          "aliases": [
+            "अदरक"
+          ]
+        },
+        {
+          "name": "Garlic",
+          "price": 120,
+          "unit": "kg",
+          "image": "shelf:spices/garlic.webp",
+          "aliases": [
+            "लहसुन"
+          ]
+        },
+        {
+          "name": "Onion",
+          "price": 30,
+          "unit": "kg",
+          "image": "shelf:spices/onion.webp",
+          "aliases": [
+            "प्याज"
+          ]
+        },
+        {
+          "name": "Tamarind",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:spices/tamarind.webp",
+          "aliases": [
+            "इमली"
+          ]
+        },
+        {
+          "name": "Kokum",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:spices/kokum.webp",
+          "aliases": [
+            "कोकम"
+          ]
+        },
+        {
+          "name": "Curry leaves",
+          "price": 10,
+          "unit": "pc",
+          "image": "shelf:spices/curry-leaves.webp",
+          "aliases": [
+            "कढ़ी पत्ता"
+          ]
+        },
+        {
+          "name": "Coriander leaves",
+          "price": 20,
+          "unit": "pc",
+          "image": "shelf:spices/coriander-leaves.webp",
+          "aliases": [
+            "हरा धनिया"
+          ]
+        },
+        {
+          "name": "Mint",
+          "price": 15,
+          "unit": "pc",
+          "image": "shelf:spices/mint-leaves.webp",
+          "aliases": [
+            "पुदीना"
+          ]
+        },
+        {
+          "name": "Amchur",
+          "price": 35,
+          "unit": "pc",
+          "image": "shelf:spices/mango-powder.webp",
+          "aliases": [
+            "अमचूर"
+          ]
+        },
+        {
+          "name": "Chaat masala",
+          "price": 30,
+          "unit": "pc",
+          "image": "shelf:spices/chaat-masala.webp",
+          "aliases": [
+            "चाट मसाला"
+          ]
+        },
+        {
+          "name": "Pav bhaji masala",
+          "price": 30,
+          "unit": "pc",
+          "image": "shelf:spices/pav-bhaji-masala.webp",
+          "aliases": [
+            "पाव भाजी मसाला"
+          ]
+        },
+        {
+          "name": "Sambar powder",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:spices/sambar-powder.webp",
+          "aliases": [
+            "सांबर पाउडर"
+          ]
+        },
+        {
+          "name": "Rasam powder",
+          "price": 35,
+          "unit": "pc",
+          "image": "shelf:spices/rasam-powder.webp",
+          "aliases": [
+            "रसम पाउडर"
+          ]
+        },
+        {
+          "name": "Kitchen masala",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:spices/kitchen-king.webp",
+          "aliases": [
+            "किचन मसाला"
+          ]
+        },
+        {
+          "name": "Meat masala",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:spices/meat-masala.webp",
+          "aliases": [
+            "मीट मसाला"
+          ]
+        },
+        {
+          "name": "Chicken masala",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:spices/chicken-masala.webp",
+          "aliases": [
+            "चिकन मसाला"
+          ]
+        },
+        {
+          "name": "Chole masala",
+          "price": 30,
+          "unit": "pc",
+          "image": "shelf:spices/chole-masala.webp",
+          "aliases": [
+            "छोले मसाला"
+          ]
+        },
+        {
+          "name": "Biryani masala",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:spices/biryani-masala.webp",
+          "aliases": [
+            "बिरयानी मसाला"
+          ]
+        },
+        {
+          "name": "White pepper",
+          "price": 90,
+          "unit": "pc",
+          "image": "shelf:spices/white-pepper.webp",
+          "aliases": [
+            "सफेद मिर्च"
+          ]
+        },
+        {
+          "name": "Nutmeg",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:spices/nutmeg.webp",
+          "aliases": [
+            "जायफल"
+          ]
+        },
+        {
+          "name": "Mace",
+          "price": 50,
+          "unit": "pc",
+          "image": "shelf:spices/mace.webp",
+          "aliases": [
+            "जावित्री"
+          ]
+        },
+        {
+          "name": "Poppy seeds",
+          "price": 80,
+          "unit": "pc",
+          "image": "shelf:spices/poppy-seeds.webp",
+          "aliases": [
+            "खसखस"
+          ]
+        },
+        {
+          "name": "Sesame seeds",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:spices/sesame-seeds.webp",
+          "aliases": [
+            "तिल"
+          ]
+        },
+        {
+          "name": "Black sesame",
+          "price": 50,
+          "unit": "pc",
+          "image": "shelf:spices/black-sesame.webp",
+          "aliases": [
+            "काला तिल"
+          ]
+        },
+        {
+          "name": "Kalonji",
+          "price": 30,
+          "unit": "pc",
+          "image": "shelf:spices/nigella.webp",
+          "aliases": [
+            "कलौंजी"
+          ]
+        },
+        {
+          "name": "Ajwain whole",
+          "price": 20,
+          "unit": "pc",
+          "image": "shelf:spices/carom-whole.webp",
+          "aliases": [
+            "अजवाइन साबुत"
+          ]
+        },
+        {
+          "name": "Anardana",
+          "price": 50,
+          "unit": "pc",
+          "image": "shelf:spices/pomegranate-seeds.webp",
+          "aliases": [
+            "अनारदाना"
+          ]
+        },
+        {
+          "name": "Saffron",
+          "price": 200,
+          "unit": "pc",
+          "image": "shelf:spices/saffron.webp",
+          "aliases": [
+            "केसर"
+          ]
+        },
+        {
+          "name": "Rock salt",
+          "price": 20,
+          "unit": "pc",
+          "image": "shelf:spices/rock-salt.webp",
+          "aliases": [
+            "सेंधा नमक"
+          ]
+        },
+        {
+          "name": "Black salt",
+          "price": 20,
+          "unit": "pc",
+          "image": "shelf:spices/black-salt.webp",
+          "aliases": [
+            "काला नमक"
+          ]
+        },
+        {
+          "name": "Chaat masala sachet",
+          "price": 5,
+          "unit": "pc",
+          "image": "shelf:spices/chat-masala-small.webp",
+          "aliases": [
+            "चाट मसाला पुड़िया"
+          ]
+        },
+        {
+          "name": "Whole red chilli",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:spices/whole-red-chilli.webp",
+          "aliases": [
+            "सूखी लाल मिर्च"
+          ]
+        },
+        {
+          "name": "Cardamom powder",
+          "price": 90,
+          "unit": "pc",
+          "image": "shelf:spices/green-cardamom-powder.webp",
+          "aliases": [
+            "इलायची पाउडर"
+          ]
+        },
+        {
+          "name": "Jaljeera powder",
+          "price": 30,
+          "unit": "pc",
+          "image": "shelf:spices/jaljeera.webp",
+          "aliases": [
+            "जलजीरा"
+          ]
+        },
+        {
+          "name": "Pickle masala",
+          "price": 35,
+          "unit": "pc",
+          "image": "shelf:spices/pickle-masala.webp",
+          "aliases": [
+            "अचार मसाला"
+          ]
+        },
+        {
+          "name": "Goda masala",
+          "price": 60,
+          "unit": "pc",
+          "image": "shelf:spices/god-masala.webp",
+          "aliases": [
+            "गोडा मसाला"
+          ]
+        },
+        {
+          "name": "Long pepper",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:spices/pepper-long.webp",
+          "aliases": [
+            "पीपली"
+          ]
+        },
+        {
+          "name": "Dry mango",
+          "price": 50,
+          "unit": "pc",
+          "image": "shelf:spices/dry-mango.webp",
+          "aliases": [
+            "सूखा आम"
+          ]
+        },
+        {
+          "name": "Compound hing",
+          "price": 25,
+          "unit": "pc",
+          "image": "shelf:spices/asafoetida-compound.webp",
+          "aliases": [
+            "कम्पाउंड हींग"
+          ]
+        },
+        {
+          "name": "Lemon",
+          "price": 60,
+          "unit": "kg",
+          "image": "shelf:spices/lemon.webp",
+          "aliases": [
+            "नींबू"
+          ]
+        },
+        {
+          "name": "Ginger garlic paste",
+          "price": 30,
+          "unit": "pc",
+          "image": "shelf:spices/ginger-garlic-paste.webp",
+          "aliases": [
+            "अदरक लहसुन पेस्ट"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Salt Sugar",
+      "image": "shelf:salt-sugar/iodised-salt.webp",
+      "items": [
+        {
+          "name": "Iodised salt",
+          "price": 22,
+          "unit": "kg",
+          "image": "shelf:salt-sugar/iodised-salt.webp",
+          "aliases": [
+            "नमक"
+          ]
+        },
+        {
+          "name": "Crystal salt",
+          "price": 18,
+          "unit": "kg",
+          "image": "shelf:salt-sugar/crystal-salt.webp",
+          "aliases": [
+            "खड़ा नमक"
+          ]
+        },
+        {
+          "name": "Sugar",
+          "price": 45,
+          "unit": "kg",
+          "image": "shelf:salt-sugar/sugar.webp",
+          "aliases": [
+            "चीनी"
+          ]
+        },
+        {
+          "name": "Brown sugar",
+          "price": 80,
+          "unit": "kg",
+          "image": "shelf:salt-sugar/brown-sugar.webp",
+          "aliases": [
+            "ब्राउन शुगर"
+          ]
+        },
+        {
+          "name": "Jaggery",
+          "price": 60,
+          "unit": "kg",
+          "image": "shelf:salt-sugar/jaggery.webp",
+          "aliases": [
+            "गुड़"
+          ]
+        },
+        {
+          "name": "Jaggery powder",
+          "price": 70,
+          "unit": "kg",
+          "image": "shelf:salt-sugar/jaggery-powder.webp",
+          "aliases": [
+            "गुड़ पाउडर"
+          ]
+        },
+        {
+          "name": "Mishri",
+          "price": 80,
+          "unit": "kg",
+          "image": "shelf:salt-sugar/mishri.webp",
+          "aliases": [
+            "मिश्री"
+          ]
+        },
+        {
+          "name": "Honey",
+          "price": 120,
+          "unit": "pc",
+          "image": "shelf:salt-sugar/honey.webp",
+          "aliases": [
+            "शहद"
+          ]
+        },
+        {
+          "name": "Sugar substitute",
+          "price": 90,
+          "unit": "pc",
+          "image": "shelf:salt-sugar/sugar-free.webp",
+          "aliases": [
+            "शुगर फ्री"
+          ]
+        },
+        {
+          "name": "Palm sugar",
+          "price": 90,
+          "unit": "kg",
+          "image": "shelf:salt-sugar/palm-sugar.webp",
+          "aliases": [
+            "ताड़ गुड़"
+          ]
+        },
+        {
+          "name": "Icing sugar",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:salt-sugar/icing-sugar.webp",
+          "aliases": [
+            "आइसिंग शुगर"
+          ]
+        },
+        {
+          "name": "Salt sachet",
+          "price": 2,
+          "unit": "pc",
+          "image": "shelf:salt-sugar/salt-sachet.webp",
+          "aliases": [
+            "नमक की पुड़िया"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Tea Coffee",
+      "image": "shelf:tea-coffee/tea-dust.webp",
+      "items": [
+        {
+          "name": "Tea dust",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:tea-coffee/tea-dust.webp",
+          "aliases": [
+            "चाय पत्ती"
+          ]
+        },
+        {
+          "name": "Tea leaf",
+          "price": 80,
+          "unit": "pc",
+          "image": "shelf:tea-coffee/tea-leaf.webp",
+          "aliases": [
+            "चाय की पत्ती"
+          ]
+        },
+        {
+          "name": "Green tea",
+          "price": 90,
+          "unit": "pc",
+          "image": "shelf:tea-coffee/green-tea.webp",
+          "aliases": [
+            "ग्रीन टी"
+          ]
+        },
+        {
+          "name": "Masala tea",
+          "price": 70,
+          "unit": "pc",
+          "image": "shelf:tea-coffee/masala-tea.webp",
+          "aliases": [
+            "मसाला चाय"
+          ]
+        },
+        {
+          "name": "Instant coffee",
+          "price": 90,
+          "unit": "pc",
+          "image": "shelf:tea-coffee/instant-coffee.webp",
+          "aliases": [
+            "इंस्टेंट कॉफी"
+          ]
+        },
+        {
+          "name": "Filter coffee",
+          "price": 120,
+          "unit": "pc",
+          "image": "shelf:tea-coffee/filter-coffee.webp",
+          "aliases": [
+            "फिल्टर कॉफी"
+          ]
+        },
+        {
+          "name": "Coffee beans",
+          "price": 200,
+          "unit": "pc",
+          "image": "shelf:tea-coffee/coffee-beans.webp",
+          "aliases": [
+            "कॉफी बीन्स"
+          ]
+        },
+        {
+          "name": "Chicory",
+          "price": 60,
+          "unit": "pc",
+          "image": "shelf:tea-coffee/chicory.webp",
+          "aliases": [
+            "चिकोरी"
+          ]
+        },
+        {
+          "name": "Cocoa powder",
+          "price": 80,
+          "unit": "pc",
+          "image": "shelf:tea-coffee/cocoa-powder.webp",
+          "aliases": [
+            "कोको पाउडर"
+          ]
+        },
+        {
+          "name": "Drinking chocolate",
+          "price": 70,
+          "unit": "pc",
+          "image": "shelf:tea-coffee/drinking-chocolate.webp",
+          "aliases": [
+            "ड्रिंकिंग चॉकलेट"
+          ]
+        },
+        {
+          "name": "Tea bags",
+          "price": 60,
+          "unit": "pc",
+          "image": "shelf:tea-coffee/tea-bags.webp",
+          "aliases": [
+            "टी बैग"
+          ]
+        },
+        {
+          "name": "Herbal tea",
+          "price": 80,
+          "unit": "pc",
+          "image": "shelf:tea-coffee/herbal-tea.webp",
+          "aliases": [
+            "हर्बल चाय"
+          ]
+        },
+        {
+          "name": "Lemon tea",
+          "price": 50,
+          "unit": "pc",
+          "image": "shelf:tea-coffee/lemon-tea.webp",
+          "aliases": [
+            "लेमन टी"
+          ]
+        },
+        {
+          "name": "Coffee premix",
+          "price": 10,
+          "unit": "pc",
+          "image": "shelf:tea-coffee/coffee-premix.webp",
+          "aliases": [
+            "कॉफी प्रीमिक्स"
+          ]
+        },
+        {
+          "name": "Tea premix",
+          "price": 10,
+          "unit": "pc",
+          "image": "shelf:tea-coffee/tea-premix.webp",
+          "aliases": [
+            "चाय प्रीमिक्स"
+          ]
+        },
+        {
+          "name": "Elaichi tea",
+          "price": 75,
+          "unit": "pc",
+          "image": "shelf:tea-coffee/sugar-candy-tea.webp",
+          "aliases": [
+            "इलायची चाय"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Biscuits",
+      "image": "shelf:biscuits/glucose-biscuit.webp",
+      "items": [
+        {
+          "name": "Glucose biscuit",
+          "price": 10,
+          "unit": "pc",
+          "image": "shelf:biscuits/glucose-biscuit.webp",
+          "aliases": [
+            "ग्लूकोज बिस्कुट"
+          ]
+        },
+        {
+          "name": "Marie biscuit",
+          "price": 15,
+          "unit": "pc",
+          "image": "shelf:biscuits/marie-biscuit.webp",
+          "aliases": [
+            "मैरी बिस्कुट"
+          ]
+        },
+        {
+          "name": "Cream biscuit",
+          "price": 20,
+          "unit": "pc",
+          "image": "shelf:biscuits/cream-biscuit.webp",
+          "aliases": [
+            "क्रीम बिस्कुट"
+          ]
+        },
+        {
+          "name": "Salted cracker",
+          "price": 20,
+          "unit": "pc",
+          "image": "shelf:biscuits/salted-cracker.webp",
+          "aliases": [
+            "नमकीन क्रैकर"
+          ]
+        },
+        {
+          "name": "Digestive biscuit",
+          "price": 30,
+          "unit": "pc",
+          "image": "shelf:biscuits/digestive-biscuit.webp",
+          "aliases": [
+            "डाइजेस्टिव बिस्कुट"
+          ]
+        },
+        {
+          "name": "Oat biscuit",
+          "price": 30,
+          "unit": "pc",
+          "image": "shelf:biscuits/oat-biscuit.webp",
+          "aliases": [
+            "ओट बिस्कुट"
+          ]
+        },
+        {
+          "name": "Cookie",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:biscuits/cookie.webp",
+          "aliases": [
+            "कुकी"
+          ]
+        },
+        {
+          "name": "Rusk",
+          "price": 30,
+          "unit": "pc",
+          "image": "shelf:biscuits/rusk.webp",
+          "aliases": [
+            "रस्क"
+          ]
+        },
+        {
+          "name": "Khari",
+          "price": 25,
+          "unit": "pc",
+          "image": "shelf:biscuits/khari.webp",
+          "aliases": [
+            "खारी"
+          ]
+        },
+        {
+          "name": "Jeera biscuit",
+          "price": 20,
+          "unit": "pc",
+          "image": "shelf:biscuits/jeera-biscuit.webp",
+          "aliases": [
+            "जीरा बिस्कुट"
+          ]
+        },
+        {
+          "name": "Coconut biscuit",
+          "price": 20,
+          "unit": "pc",
+          "image": "shelf:biscuits/coconut-biscuit.webp",
+          "aliases": [
+            "नारियल बिस्कुट"
+          ]
+        },
+        {
+          "name": "Chocolate biscuit",
+          "price": 20,
+          "unit": "pc",
+          "image": "shelf:biscuits/chocolate-biscuit.webp",
+          "aliases": [
+            "चॉकलेट बिस्कुट"
+          ]
+        },
+        {
+          "name": "Wafer",
+          "price": 10,
+          "unit": "pc",
+          "image": "shelf:biscuits/wafer.webp",
+          "aliases": [
+            "वेफर"
+          ]
+        },
+        {
+          "name": "Nice biscuit",
+          "price": 15,
+          "unit": "pc",
+          "image": "shelf:biscuits/nice-biscuit.webp",
+          "aliases": [
+            "नाइस बिस्कुट"
+          ]
+        },
+        {
+          "name": "Arrowroot biscuit",
+          "price": 20,
+          "unit": "pc",
+          "image": "shelf:biscuits/arrowroot-biscuit.webp",
+          "aliases": [
+            "अरारोट बिस्कुट"
+          ]
+        },
+        {
+          "name": "Milk biscuit",
+          "price": 10,
+          "unit": "pc",
+          "image": "shelf:biscuits/milk-biscuit.webp",
+          "aliases": [
+            "मिल्क बिस्कुट"
+          ]
+        },
+        {
+          "name": "Cashew cookie",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:biscuits/cashew-cookie.webp",
+          "aliases": [
+            "काजू कुकी"
+          ]
+        },
+        {
+          "name": "Butter cookie",
+          "price": 35,
+          "unit": "pc",
+          "image": "shelf:biscuits/butter-cookie.webp",
+          "aliases": [
+            "बटर कुकी"
+          ]
+        },
+        {
+          "name": "Multigrain biscuit",
+          "price": 30,
+          "unit": "pc",
+          "image": "shelf:biscuits/multigrain-biscuit.webp",
+          "aliases": [
+            "मल्टीग्रेन बिस्कुट"
+          ]
+        },
+        {
+          "name": "Protein biscuit",
+          "price": 20,
+          "unit": "pc",
+          "image": "shelf:biscuits/protein-biscuit.webp",
+          "aliases": [
+            "प्रोटीन बिस्कुट"
+          ]
+        },
+        {
+          "name": "Toast",
+          "price": 25,
+          "unit": "pc",
+          "image": "shelf:biscuits/toast-biscuit.webp",
+          "aliases": [
+            "टोस्ट"
+          ]
+        },
+        {
+          "name": "Nankhatai",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:biscuits/nankhatai.webp",
+          "aliases": [
+            "नानखटाई"
+          ]
+        },
+        {
+          "name": "Osmania biscuit",
+          "price": 20,
+          "unit": "pc",
+          "image": "shelf:biscuits/osmania-biscuit.webp",
+          "aliases": [
+            "उस्मानिया"
+          ]
+        },
+        {
+          "name": "Fruit biscuit",
+          "price": 15,
+          "unit": "pc",
+          "image": "shelf:biscuits/fruit-biscuit.webp",
+          "aliases": [
+            "फ्रूट बिस्कुट"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Snacks",
+      "image": "shelf:snacks/potato-chips.webp",
+      "items": [
+        {
+          "name": "Potato chips",
+          "price": 20,
+          "unit": "pc",
+          "image": "shelf:snacks/potato-chips.webp",
+          "aliases": [
+            "चिप्स"
+          ]
+        },
+        {
+          "name": "Banana chips",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:snacks/banana-chips.webp",
+          "aliases": [
+            "केले के चिप्स"
+          ]
+        },
+        {
+          "name": "Mixture",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:snacks/namkeen-mixture.webp",
+          "aliases": [
+            "मिक्सचर"
+          ]
+        },
+        {
+          "name": "Bhujia",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:snacks/bhujia.webp",
+          "aliases": [
+            "भुजिया"
+          ]
+        },
+        {
+          "name": "Sev",
+          "price": 30,
+          "unit": "pc",
+          "image": "shelf:snacks/sev.webp",
+          "aliases": [
+            "सेव"
+          ]
+        },
+        {
+          "name": "Chakli",
+          "price": 50,
+          "unit": "pc",
+          "image": "shelf:snacks/chakli.webp",
+          "aliases": [
+            "chakli"
+          ]
+        },
+        {
+          "name": "Murukku",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:snacks/murukku.webp",
+          "aliases": [
+            "मुरुक्कु"
+          ]
+        },
+        {
+          "name": "Chivda",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:snacks/chivda.webp",
+          "aliases": [
+            "चिवड़ा"
+          ]
+        },
+        {
+          "name": "Peanuts",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:snacks/peanuts.webp",
+          "aliases": [
+            "मूंगफली"
+          ]
+        },
+        {
+          "name": "Salted peanuts",
+          "price": 20,
+          "unit": "pc",
+          "image": "shelf:snacks/salted-peanuts.webp",
+          "aliases": [
+            "नमकीन मूंगफली"
+          ]
+        },
+        {
+          "name": "Masala peanuts",
+          "price": 20,
+          "unit": "pc",
+          "image": "shelf:snacks/masala-peanuts.webp",
+          "aliases": [
+            "मसाला मूंगफली"
+          ]
+        },
+        {
+          "name": "Popcorn",
+          "price": 20,
+          "unit": "pc",
+          "image": "shelf:snacks/popcorn.webp",
+          "aliases": [
+            "पॉपकॉर्न"
+          ]
+        },
+        {
+          "name": "Makhana",
+          "price": 80,
+          "unit": "pc",
+          "image": "shelf:snacks/makhana.webp",
+          "aliases": [
+            "मखाना"
+          ]
+        },
+        {
+          "name": "Soya sticks",
+          "price": 20,
+          "unit": "pc",
+          "image": "shelf:snacks/soya-sticks.webp",
+          "aliases": [
+            "सोया स्टिक"
+          ]
+        },
+        {
+          "name": "Corn puffs",
+          "price": 10,
+          "unit": "pc",
+          "image": "shelf:snacks/kurkure-style.webp",
+          "aliases": [
+            "कॉर्न पफ्स"
+          ]
+        },
+        {
+          "name": "Nachos",
+          "price": 30,
+          "unit": "pc",
+          "image": "shelf:snacks/nachos.webp",
+          "aliases": [
+            "नाचोस"
+          ]
+        },
+        {
+          "name": "Papad",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:snacks/papad.webp",
+          "aliases": [
+            "पापड़"
+          ]
+        },
+        {
+          "name": "Masala papad",
+          "price": 10,
+          "unit": "pc",
+          "image": "shelf:snacks/masala-papad.webp",
+          "aliases": [
+            "मसाला पापड़"
+          ]
+        },
+        {
+          "name": "Rice papad",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:snacks/rice-papad.webp",
+          "aliases": [
+            "चावल पापड़"
+          ]
+        },
+        {
+          "name": "Appalam",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:snacks/appalam.webp",
+          "aliases": [
+            "अप्पलम"
+          ]
+        },
+        {
+          "name": "Khakhra",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:snacks/khakhra.webp",
+          "aliases": [
+            "खाखरा"
+          ]
+        },
+        {
+          "name": "Mathri",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:snacks/mathri.webp",
+          "aliases": [
+            "mathri"
+          ]
+        },
+        {
+          "name": "Trail mix",
+          "price": 80,
+          "unit": "pc",
+          "image": "shelf:snacks/dry-fruit-mix.webp",
+          "aliases": [
+            "ड्राई फ्रूट मिक्स"
+          ]
+        },
+        {
+          "name": "Roasted chana pack",
+          "price": 10,
+          "unit": "pc",
+          "image": "shelf:snacks/roasted-chana-pack.webp",
+          "aliases": [
+            "भुना चना पैक"
+          ]
+        },
+        {
+          "name": "Moong dal namkeen",
+          "price": 30,
+          "unit": "pc",
+          "image": "shelf:snacks/moong-dal-namkeen.webp",
+          "aliases": [
+            "मूंग दाल नमकीन"
+          ]
+        },
+        {
+          "name": "Aloo bhujia",
+          "price": 20,
+          "unit": "pc",
+          "image": "shelf:snacks/aloo-bhujia.webp",
+          "aliases": [
+            "आलू भुजिया"
+          ]
+        },
+        {
+          "name": "Corn flakes mixture",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:snacks/corn-flakes-mixture.webp",
+          "aliases": [
+            "कॉर्न फ्लेक्स मिक्सचर"
+          ]
+        },
+        {
+          "name": "Baked namkeen",
+          "price": 30,
+          "unit": "pc",
+          "image": "shelf:snacks/baked-namkeen.webp",
+          "aliases": [
+            "बेक्ड नमकीन"
+          ]
+        },
+        {
+          "name": "Snack rings",
+          "price": 10,
+          "unit": "pc",
+          "image": "shelf:snacks/extruded-rings.webp",
+          "aliases": [
+            "स्नैक रिंग्स"
+          ]
+        },
+        {
+          "name": "Salted cashew pack",
+          "price": 50,
+          "unit": "pc",
+          "image": "shelf:snacks/salted-cashew-pack.webp",
+          "aliases": [
+            "नमकीन काजू"
+          ]
+        },
+        {
+          "name": "Flavoured makhana",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:snacks/flavoured-makhana.webp",
+          "aliases": [
+            "मसाला मखाना"
+          ]
+        },
+        {
+          "name": "Rice crisps",
+          "price": 20,
+          "unit": "pc",
+          "image": "shelf:snacks/rice-crisps.webp",
+          "aliases": [
+            "राइस क्रिस्प"
+          ]
+        },
+        {
+          "name": "Chakli pack",
+          "price": 30,
+          "unit": "pc",
+          "image": "shelf:snacks/chakli-pack.webp",
+          "aliases": [
+            "चकली पैक"
+          ]
+        },
+        {
+          "name": "Farsan",
+          "price": 50,
+          "unit": "pc",
+          "image": "shelf:snacks/farsan.webp",
+          "aliases": [
+            "फरसाण"
+          ]
+        },
+        {
+          "name": "Ganthia",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:snacks/ganthia.webp",
+          "aliases": [
+            "गांठिया"
+          ]
+        },
+        {
+          "name": "Sing bhujia",
+          "price": 30,
+          "unit": "pc",
+          "image": "shelf:snacks/sing-bhujia.webp",
+          "aliases": [
+            "सिंग भुजिया"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Noodles Ready",
+      "image": "shelf:noodles-ready/instant-noodles.webp",
+      "items": [
+        {
+          "name": "Instant noodles",
+          "price": 14,
+          "unit": "pc",
+          "image": "shelf:noodles-ready/instant-noodles.webp",
+          "aliases": [
+            "नूडल्स"
+          ]
+        },
+        {
+          "name": "Atta noodles",
+          "price": 20,
+          "unit": "pc",
+          "image": "shelf:noodles-ready/atta-noodles.webp",
+          "aliases": [
+            "आटा नूडल्स"
+          ]
+        },
+        {
+          "name": "Cup noodles",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:noodles-ready/cup-noodles.webp",
+          "aliases": [
+            "कप नूडल्स"
+          ]
+        },
+        {
+          "name": "Hakka noodles",
+          "price": 30,
+          "unit": "pc",
+          "image": "shelf:noodles-ready/hakka-noodles.webp",
+          "aliases": [
+            "हक्का नूडल्स"
+          ]
+        },
+        {
+          "name": "Pasta",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:noodles-ready/pasta.webp",
+          "aliases": [
+            "पास्ता"
+          ]
+        },
+        {
+          "name": "Macaroni",
+          "price": 35,
+          "unit": "pc",
+          "image": "shelf:noodles-ready/macaroni.webp",
+          "aliases": [
+            "मैकरोनी"
+          ]
+        },
+        {
+          "name": "Spaghetti",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:noodles-ready/spaghetti.webp",
+          "aliases": [
+            "स्पेगेटी"
+          ]
+        },
+        {
+          "name": "Instant upma",
+          "price": 20,
+          "unit": "pc",
+          "image": "shelf:noodles-ready/instant-upma.webp",
+          "aliases": [
+            "इंस्टेंट उपमा"
+          ]
+        },
+        {
+          "name": "Instant poha",
+          "price": 20,
+          "unit": "pc",
+          "image": "shelf:noodles-ready/instant-poha.webp",
+          "aliases": [
+            "इंस्टेंट पोहा"
+          ]
+        },
+        {
+          "name": "Soup sachet",
+          "price": 10,
+          "unit": "pc",
+          "image": "shelf:noodles-ready/soup-sachet.webp",
+          "aliases": [
+            "सूप"
+          ]
+        },
+        {
+          "name": "Pasta sauce",
+          "price": 60,
+          "unit": "pc",
+          "image": "shelf:noodles-ready/pasta-sauce.webp",
+          "aliases": [
+            "पास्ता सॉस"
+          ]
+        },
+        {
+          "name": "Masala oats",
+          "price": 30,
+          "unit": "pc",
+          "image": "shelf:noodles-ready/oats-masala.webp",
+          "aliases": [
+            "मसाला ओट्स"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Breakfast Mixes",
+      "image": "shelf:breakfast-mixes/idli-mix.webp",
+      "items": [
+        {
+          "name": "Idli mix",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:breakfast-mixes/idli-mix.webp",
+          "aliases": [
+            "इडली मिक्स"
+          ]
+        },
+        {
+          "name": "Dosa mix",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:breakfast-mixes/dosa-mix.webp",
+          "aliases": [
+            "डोसा मिक्स"
+          ]
+        },
+        {
+          "name": "Dhokla mix",
+          "price": 30,
+          "unit": "pc",
+          "image": "shelf:breakfast-mixes/dhokla-mix.webp",
+          "aliases": [
+            "ढोकला मिक्स"
+          ]
+        },
+        {
+          "name": "Gulab jamun mix",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:breakfast-mixes/gulab-jamun-mix.webp",
+          "aliases": [
+            "गुलाब जामुन मिक्स"
+          ]
+        },
+        {
+          "name": "Cake mix",
+          "price": 50,
+          "unit": "pc",
+          "image": "shelf:breakfast-mixes/cake-mix.webp",
+          "aliases": [
+            "केक मिक्स"
+          ]
+        },
+        {
+          "name": "Pancake mix",
+          "price": 60,
+          "unit": "pc",
+          "image": "shelf:breakfast-mixes/pancake-mix.webp",
+          "aliases": [
+            "पैनकेक मिक्स"
+          ]
+        },
+        {
+          "name": "Custard powder",
+          "price": 30,
+          "unit": "pc",
+          "image": "shelf:breakfast-mixes/custard-powder.webp",
+          "aliases": [
+            "कस्टर्ड पाउडर"
+          ]
+        },
+        {
+          "name": "Jelly crystals",
+          "price": 20,
+          "unit": "pc",
+          "image": "shelf:breakfast-mixes/jelly-crystals.webp",
+          "aliases": [
+            "जेली"
+          ]
+        },
+        {
+          "name": "Baking powder",
+          "price": 20,
+          "unit": "pc",
+          "image": "shelf:breakfast-mixes/baking-powder.webp",
+          "aliases": [
+            "बेकिंग पाउडर"
+          ]
+        },
+        {
+          "name": "Baking soda",
+          "price": 15,
+          "unit": "pc",
+          "image": "shelf:breakfast-mixes/baking-soda.webp",
+          "aliases": [
+            "बेकिंग सोडा"
+          ]
+        },
+        {
+          "name": "Yeast",
+          "price": 20,
+          "unit": "pc",
+          "image": "shelf:breakfast-mixes/yeast.webp",
+          "aliases": [
+            "यीस्ट"
+          ]
+        },
+        {
+          "name": "Baking cocoa",
+          "price": 80,
+          "unit": "pc",
+          "image": "shelf:breakfast-mixes/cocoa-baking.webp",
+          "aliases": [
+            "बेकिंग कोको"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Dairy",
+      "image": "shelf:dairy/toned-milk.webp",
+      "items": [
+        {
+          "name": "Toned milk",
+          "price": 28,
+          "unit": "pc",
+          "image": "shelf:dairy/toned-milk.webp",
+          "aliases": [
+            "टोन्ड दूध"
+          ]
+        },
+        {
+          "name": "Full cream milk",
+          "price": 32,
+          "unit": "pc",
+          "image": "shelf:dairy/full-cream-milk.webp",
+          "aliases": [
+            "फुल क्रीम दूध"
+          ]
+        },
+        {
+          "name": "Curd",
+          "price": 30,
+          "unit": "pc",
+          "image": "shelf:dairy/curd.webp",
+          "aliases": [
+            "दही"
+          ]
+        },
+        {
+          "name": "Paneer",
+          "price": 90,
+          "unit": "pc",
+          "image": "shelf:dairy/paneer.webp",
+          "aliases": [
+            "पनीर"
+          ]
+        },
+        {
+          "name": "Butter",
+          "price": 55,
+          "unit": "pc",
+          "image": "shelf:dairy/butter.webp",
+          "aliases": [
+            "मक्खन"
+          ]
+        },
+        {
+          "name": "Cheese slice",
+          "price": 80,
+          "unit": "pc",
+          "image": "shelf:dairy/cheese-slice.webp",
+          "aliases": [
+            "चीज़ स्लाइस"
+          ]
+        },
+        {
+          "name": "Cheese block",
+          "price": 110,
+          "unit": "pc",
+          "image": "shelf:dairy/cheese-block.webp",
+          "aliases": [
+            "चीज़ ब्लॉक"
+          ]
+        },
+        {
+          "name": "Milk powder",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:dairy/milk-powder.webp",
+          "aliases": [
+            "दूध पाउडर"
+          ]
+        },
+        {
+          "name": "Condensed milk",
+          "price": 50,
+          "unit": "pc",
+          "image": "shelf:dairy/condensed-milk.webp",
+          "aliases": [
+            "कंडेंस्ड मिल्क"
+          ]
+        },
+        {
+          "name": "Buttermilk",
+          "price": 15,
+          "unit": "pc",
+          "image": "shelf:dairy/buttermilk.webp",
+          "aliases": [
+            "छाछ"
+          ]
+        },
+        {
+          "name": "Lassi",
+          "price": 20,
+          "unit": "pc",
+          "image": "shelf:dairy/lassi.webp",
+          "aliases": [
+            "लस्सी"
+          ]
+        },
+        {
+          "name": "Flavoured milk",
+          "price": 25,
+          "unit": "pc",
+          "image": "shelf:dairy/flavoured-milk.webp",
+          "aliases": [
+            "फ्लेवर्ड मिल्क"
+          ]
+        },
+        {
+          "name": "Fresh cream",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:dairy/cream.webp",
+          "aliases": [
+            "क्रीम"
+          ]
+        },
+        {
+          "name": "Khoya",
+          "price": 200,
+          "unit": "kg",
+          "image": "shelf:dairy/khoya.webp",
+          "aliases": [
+            "खोया"
+          ]
+        },
+        {
+          "name": "Shrikhand",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:dairy/shrikhand.webp",
+          "aliases": [
+            "श्रीखंड"
+          ]
+        },
+        {
+          "name": "Yogurt cup",
+          "price": 30,
+          "unit": "pc",
+          "image": "shelf:dairy/yogurt-cup.webp",
+          "aliases": [
+            "योगर्ट"
+          ]
+        },
+        {
+          "name": "Dairy whitener",
+          "price": 50,
+          "unit": "pc",
+          "image": "shelf:dairy/dairy-whitener.webp",
+          "aliases": [
+            "डेयरी व्हाइटनर"
+          ]
+        },
+        {
+          "name": "Malai paneer",
+          "price": 100,
+          "unit": "pc",
+          "image": "shelf:dairy/malai-paneer.webp",
+          "aliases": [
+            "मलाई पनीर"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Bakery",
+      "image": "shelf:bakery/white-bread.webp",
+      "items": [
+        {
+          "name": "White bread",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:bakery/white-bread.webp",
+          "aliases": [
+            "ब्रेड"
+          ]
+        },
+        {
+          "name": "Brown bread",
+          "price": 45,
+          "unit": "pc",
+          "image": "shelf:bakery/brown-bread.webp",
+          "aliases": [
+            "ब्राउन ब्रेड"
+          ]
+        },
+        {
+          "name": "Milk bread",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:bakery/milk-bread.webp",
+          "aliases": [
+            "मिल्क ब्रेड"
+          ]
+        },
+        {
+          "name": "Pav",
+          "price": 20,
+          "unit": "pc",
+          "image": "shelf:bakery/pav.webp",
+          "aliases": [
+            "पाव"
+          ]
+        },
+        {
+          "name": "Bun",
+          "price": 10,
+          "unit": "pc",
+          "image": "shelf:bakery/bun.webp",
+          "aliases": [
+            "बन"
+          ]
+        },
+        {
+          "name": "Burger bun",
+          "price": 15,
+          "unit": "pc",
+          "image": "shelf:bakery/burger-bun.webp",
+          "aliases": [
+            "बर्गर बन"
+          ]
+        },
+        {
+          "name": "Pizza base",
+          "price": 30,
+          "unit": "pc",
+          "image": "shelf:bakery/pizza-base.webp",
+          "aliases": [
+            "पिज़्ज़ा बेस"
+          ]
+        },
+        {
+          "name": "Croissant",
+          "price": 30,
+          "unit": "pc",
+          "image": "shelf:bakery/croissant.webp",
+          "aliases": [
+            "क्रोइसां"
+          ]
+        },
+        {
+          "name": "Muffin",
+          "price": 25,
+          "unit": "pc",
+          "image": "shelf:bakery/muffin.webp",
+          "aliases": [
+            "मफिन"
+          ]
+        },
+        {
+          "name": "Cake slice",
+          "price": 30,
+          "unit": "pc",
+          "image": "shelf:bakery/cake-slice.webp",
+          "aliases": [
+            "केक"
+          ]
+        },
+        {
+          "name": "Fruit bread",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:bakery/fruit-bread.webp",
+          "aliases": [
+            "फ्रूट ब्रेड"
+          ]
+        },
+        {
+          "name": "Garlic bread",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:bakery/garlic-bread.webp",
+          "aliases": [
+            "गार्लिक ब्रेड"
+          ]
+        },
+        {
+          "name": "Multigrain bread",
+          "price": 50,
+          "unit": "pc",
+          "image": "shelf:bakery/multigrain-bread.webp",
+          "aliases": [
+            "मल्टीग्रेन ब्रेड"
+          ]
+        },
+        {
+          "name": "Kulcha",
+          "price": 15,
+          "unit": "pc",
+          "image": "shelf:bakery/kulcha.webp",
+          "aliases": [
+            "कुलचा"
+          ]
+        },
+        {
+          "name": "Naan pack",
+          "price": 30,
+          "unit": "pc",
+          "image": "shelf:bakery/naan-pack.webp",
+          "aliases": [
+            "नान"
+          ]
+        },
+        {
+          "name": "Tortilla",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:bakery/tortilla.webp",
+          "aliases": [
+            "टॉर्टिया"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Beverages",
+      "image": "shelf:beverages/packaged-water.webp",
+      "items": [
+        {
+          "name": "Packaged water",
+          "price": 20,
+          "unit": "pc",
+          "image": "shelf:beverages/packaged-water.webp",
+          "aliases": [
+            "पानी"
+          ]
+        },
+        {
+          "name": "Soda",
+          "price": 20,
+          "unit": "pc",
+          "image": "shelf:beverages/soda.webp",
+          "aliases": [
+            "सोडा"
+          ]
+        },
+        {
+          "name": "Cola",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:beverages/cola.webp",
+          "aliases": [
+            "कोला"
+          ]
+        },
+        {
+          "name": "Orange drink",
+          "price": 20,
+          "unit": "pc",
+          "image": "shelf:beverages/orange-drink.webp",
+          "aliases": [
+            "ऑरेंज ड्रिंक"
+          ]
+        },
+        {
+          "name": "Lemon drink",
+          "price": 20,
+          "unit": "pc",
+          "image": "shelf:beverages/lemon-drink.webp",
+          "aliases": [
+            "नींबू ड्रिंक"
+          ]
+        },
+        {
+          "name": "Mango drink",
+          "price": 20,
+          "unit": "pc",
+          "image": "shelf:beverages/mango-drink.webp",
+          "aliases": [
+            "आम का जूस"
+          ]
+        },
+        {
+          "name": "Fruit juice",
+          "price": 30,
+          "unit": "pc",
+          "image": "shelf:beverages/fruit-juice.webp",
+          "aliases": [
+            "फ्रूट जूस"
+          ]
+        },
+        {
+          "name": "Coconut water",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:beverages/coconut-water.webp",
+          "aliases": [
+            "नारियल पानी"
+          ]
+        },
+        {
+          "name": "Energy drink",
+          "price": 100,
+          "unit": "pc",
+          "image": "shelf:beverages/energy-drink.webp",
+          "aliases": [
+            "एनर्जी ड्रिंक"
+          ]
+        },
+        {
+          "name": "Glucose drink",
+          "price": 30,
+          "unit": "pc",
+          "image": "shelf:beverages/glucose-drink.webp",
+          "aliases": [
+            "ग्लूकोज"
+          ]
+        },
+        {
+          "name": "Squash",
+          "price": 80,
+          "unit": "pc",
+          "image": "shelf:beverages/squash.webp",
+          "aliases": [
+            "squash"
+          ]
+        },
+        {
+          "name": "Rose syrup",
+          "price": 60,
+          "unit": "pc",
+          "image": "shelf:beverages/rose-syrup.webp",
+          "aliases": [
+            "गुलाब शरबत"
+          ]
+        },
+        {
+          "name": "Sharbat",
+          "price": 50,
+          "unit": "pc",
+          "image": "shelf:beverages/sharbat.webp",
+          "aliases": [
+            "शरबत"
+          ]
+        },
+        {
+          "name": "Buttermilk pack",
+          "price": 15,
+          "unit": "pc",
+          "image": "shelf:beverages/buttermilk-pack.webp",
+          "aliases": [
+            "छाछ पैक"
+          ]
+        },
+        {
+          "name": "Cold coffee",
+          "price": 30,
+          "unit": "pc",
+          "image": "shelf:beverages/cold-coffee.webp",
+          "aliases": [
+            "कोल्ड कॉफी"
+          ]
+        },
+        {
+          "name": "Iced tea",
+          "price": 30,
+          "unit": "pc",
+          "image": "shelf:beverages/iced-tea.webp",
+          "aliases": [
+            "आइस टी"
+          ]
+        },
+        {
+          "name": "Tonic water",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:beverages/tonic-water.webp",
+          "aliases": [
+            "टॉनिक वाटर"
+          ]
+        },
+        {
+          "name": "Sparkling water",
+          "price": 30,
+          "unit": "pc",
+          "image": "shelf:beverages/sparkling-water.webp",
+          "aliases": [
+            "स्पार्कलिंग पानी"
+          ]
+        },
+        {
+          "name": "Apple juice",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:beverages/apple-juice.webp",
+          "aliases": [
+            "सेब का जूस"
+          ]
+        },
+        {
+          "name": "Mixed fruit drink",
+          "price": 25,
+          "unit": "pc",
+          "image": "shelf:beverages/mixed-fruit.webp",
+          "aliases": [
+            "मिक्स फ्रूट"
+          ]
+        },
+        {
+          "name": "Electrolyte drink",
+          "price": 35,
+          "unit": "pc",
+          "image": "shelf:beverages/electrolyte-drink.webp",
+          "aliases": [
+            "इलेक्ट्रोलाइट"
+          ]
+        },
+        {
+          "name": "Lassi bottle",
+          "price": 25,
+          "unit": "pc",
+          "image": "shelf:beverages/lassi-bottle.webp",
+          "aliases": [
+            "लस्सी बोतल"
+          ]
+        },
+        {
+          "name": "Milkshake",
+          "price": 30,
+          "unit": "pc",
+          "image": "shelf:beverages/milkshake.webp",
+          "aliases": [
+            "मिल्कशेक"
+          ]
+        },
+        {
+          "name": "Nimbu pani",
+          "price": 15,
+          "unit": "pc",
+          "image": "shelf:beverages/nimbu-pani.webp",
+          "aliases": [
+            "नींबू पानी"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Personal Care",
+      "image": "shelf:personal-care/bathing-soap.webp",
+      "items": [
+        {
+          "name": "Bathing soap",
+          "price": 30,
+          "unit": "pc",
+          "image": "shelf:personal-care/bathing-soap.webp",
+          "aliases": [
+            "साबुन"
+          ]
+        },
+        {
+          "name": "Beauty soap",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:personal-care/beauty-soap.webp",
+          "aliases": [
+            "ब्यूटी सोप"
+          ]
+        },
+        {
+          "name": "Glycerin soap",
+          "price": 35,
+          "unit": "pc",
+          "image": "shelf:personal-care/glycerin-soap.webp",
+          "aliases": [
+            "ग्लिसरीन सोप"
+          ]
+        },
+        {
+          "name": "Shampoo sachet",
+          "price": 2,
+          "unit": "pc",
+          "image": "shelf:personal-care/shampoo-sachet.webp",
+          "aliases": [
+            "शैम्पू"
+          ]
+        },
+        {
+          "name": "Shampoo bottle",
+          "price": 120,
+          "unit": "pc",
+          "image": "shelf:personal-care/shampoo-bottle.webp",
+          "aliases": [
+            "शैम्पू बोतल"
+          ]
+        },
+        {
+          "name": "Hair oil",
+          "price": 60,
+          "unit": "pc",
+          "image": "shelf:personal-care/hair-oil.webp",
+          "aliases": [
+            "हेयर ऑयल"
+          ]
+        },
+        {
+          "name": "Coconut hair oil",
+          "price": 50,
+          "unit": "pc",
+          "image": "shelf:personal-care/coconut-hair-oil.webp",
+          "aliases": [
+            "नारियल हेयर ऑयल"
+          ]
+        },
+        {
+          "name": "Toothpaste",
+          "price": 50,
+          "unit": "pc",
+          "image": "shelf:personal-care/toothpaste.webp",
+          "aliases": [
+            "टूथपेस्ट"
+          ]
+        },
+        {
+          "name": "Toothbrush",
+          "price": 25,
+          "unit": "pc",
+          "image": "shelf:personal-care/toothbrush.webp",
+          "aliases": [
+            "टूथब्रश"
+          ]
+        },
+        {
+          "name": "Mouthwash",
+          "price": 90,
+          "unit": "pc",
+          "image": "shelf:personal-care/mouthwash.webp",
+          "aliases": [
+            "माउथवॉश"
+          ]
+        },
+        {
+          "name": "Talcum powder",
+          "price": 60,
+          "unit": "pc",
+          "image": "shelf:personal-care/talcum.webp",
+          "aliases": [
+            "टाल्कम"
+          ]
+        },
+        {
+          "name": "Face cream",
+          "price": 80,
+          "unit": "pc",
+          "image": "shelf:personal-care/face-cream.webp",
+          "aliases": [
+            "फेस क्रीम"
+          ]
+        },
+        {
+          "name": "Face wash",
+          "price": 90,
+          "unit": "pc",
+          "image": "shelf:personal-care/face-wash.webp",
+          "aliases": [
+            "फेस वॉश"
+          ]
+        },
+        {
+          "name": "Body lotion",
+          "price": 120,
+          "unit": "pc",
+          "image": "shelf:personal-care/body-lotion.webp",
+          "aliases": [
+            "बॉडी लोशन"
+          ]
+        },
+        {
+          "name": "Petroleum jelly",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:personal-care/petroleum-jelly.webp",
+          "aliases": [
+            "पेट्रोलियम जेली"
+          ]
+        },
+        {
+          "name": "Lip balm",
+          "price": 30,
+          "unit": "pc",
+          "image": "shelf:personal-care/lip-balm.webp",
+          "aliases": [
+            "लिप बाम"
+          ]
+        },
+        {
+          "name": "Razor",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:personal-care/razor.webp",
+          "aliases": [
+            "रेजर"
+          ]
+        },
+        {
+          "name": "Shaving cream",
+          "price": 50,
+          "unit": "pc",
+          "image": "shelf:personal-care/shaving-cream.webp",
+          "aliases": [
+            "शेविंग क्रीम"
+          ]
+        },
+        {
+          "name": "Aftershave",
+          "price": 80,
+          "unit": "pc",
+          "image": "shelf:personal-care/aftershave.webp",
+          "aliases": [
+            "आफ्टरशेव"
+          ]
+        },
+        {
+          "name": "Deodorant",
+          "price": 150,
+          "unit": "pc",
+          "image": "shelf:personal-care/deodorant.webp",
+          "aliases": [
+            "डियोड्रेंट"
+          ]
+        },
+        {
+          "name": "Sanitary pad",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:personal-care/sanitary-pad.webp",
+          "aliases": [
+            "सैनिटरी पैड"
+          ]
+        },
+        {
+          "name": "Cotton buds",
+          "price": 30,
+          "unit": "pc",
+          "image": "shelf:personal-care/cotton-buds.webp",
+          "aliases": [
+            "कॉटन बड्स"
+          ]
+        },
+        {
+          "name": "Comb",
+          "price": 20,
+          "unit": "pc",
+          "image": "shelf:personal-care/hair-comb.webp",
+          "aliases": [
+            "कंघी"
+          ]
+        },
+        {
+          "name": "Hair clip",
+          "price": 15,
+          "unit": "pc",
+          "image": "shelf:personal-care/hair-clip.webp",
+          "aliases": [
+            "हेयर क्लिप"
+          ]
+        },
+        {
+          "name": "Nail cutter",
+          "price": 25,
+          "unit": "pc",
+          "image": "shelf:personal-care/nail-cutter.webp",
+          "aliases": [
+            "नाखून कटर"
+          ]
+        },
+        {
+          "name": "Hand wash",
+          "price": 70,
+          "unit": "pc",
+          "image": "shelf:personal-care/hand-wash.webp",
+          "aliases": [
+            "हैंड वॉश"
+          ]
+        },
+        {
+          "name": "Hand sanitizer",
+          "price": 50,
+          "unit": "pc",
+          "image": "shelf:personal-care/hand-sanitizer.webp",
+          "aliases": [
+            "सैनिटाइजर"
+          ]
+        },
+        {
+          "name": "Sunscreen",
+          "price": 180,
+          "unit": "pc",
+          "image": "shelf:personal-care/sunscreen.webp",
+          "aliases": [
+            "सनस्क्रीन"
+          ]
+        },
+        {
+          "name": "Kajal",
+          "price": 20,
+          "unit": "pc",
+          "image": "shelf:personal-care/kajal.webp",
+          "aliases": [
+            "काजल"
+          ]
+        },
+        {
+          "name": "Bindi",
+          "price": 10,
+          "unit": "pc",
+          "image": "shelf:personal-care/bindi.webp",
+          "aliases": [
+            "बिंदी"
+          ]
+        },
+        {
+          "name": "Hair colour",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:personal-care/hair-colour.webp",
+          "aliases": [
+            "हेयर कलर"
+          ]
+        },
+        {
+          "name": "Conditioner",
+          "price": 120,
+          "unit": "pc",
+          "image": "shelf:personal-care/conditioner.webp",
+          "aliases": [
+            "कंडीशनर"
+          ]
+        },
+        {
+          "name": "Body wash",
+          "price": 140,
+          "unit": "pc",
+          "image": "shelf:personal-care/body-wash.webp",
+          "aliases": [
+            "बॉडी वॉश"
+          ]
+        },
+        {
+          "name": "Baby soap",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:personal-care/baby-soap.webp",
+          "aliases": [
+            "बेबी सोप"
+          ]
+        },
+        {
+          "name": "Baby oil",
+          "price": 70,
+          "unit": "pc",
+          "image": "shelf:personal-care/baby-oil.webp",
+          "aliases": [
+            "बेबी ऑयल"
+          ]
+        },
+        {
+          "name": "Baby powder",
+          "price": 60,
+          "unit": "pc",
+          "image": "shelf:personal-care/baby-powder.webp",
+          "aliases": [
+            "बेबी पाउडर"
+          ]
+        },
+        {
+          "name": "Diaper",
+          "price": 15,
+          "unit": "pc",
+          "image": "shelf:personal-care/diaper.webp",
+          "aliases": [
+            "डायपर"
+          ]
+        },
+        {
+          "name": "Wet wipes",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:personal-care/wet-wipes.webp",
+          "aliases": [
+            "wet wipes"
+          ]
+        },
+        {
+          "name": "Tissue",
+          "price": 30,
+          "unit": "pc",
+          "image": "shelf:personal-care/tissue.webp",
+          "aliases": [
+            "टिशू"
+          ]
+        },
+        {
+          "name": "Toilet roll",
+          "price": 30,
+          "unit": "pc",
+          "image": "shelf:personal-care/toilet-roll.webp",
+          "aliases": [
+            "टॉयलेट रोल"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Home Care",
+      "image": "shelf:home-care/detergent-bar.webp",
+      "items": [
+        {
+          "name": "Detergent bar",
+          "price": 10,
+          "unit": "pc",
+          "image": "shelf:home-care/detergent-bar.webp",
+          "aliases": [
+            "डिटर्जेंट बार"
+          ]
+        },
+        {
+          "name": "Detergent powder",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:home-care/detergent-powder.webp",
+          "aliases": [
+            "डिटर्जेंट पाउडर"
+          ]
+        },
+        {
+          "name": "Liquid detergent",
+          "price": 120,
+          "unit": "pc",
+          "image": "shelf:home-care/liquid-detergent.webp",
+          "aliases": [
+            "लिक्विड डिटर्जेंट"
+          ]
+        },
+        {
+          "name": "Fabric conditioner",
+          "price": 90,
+          "unit": "pc",
+          "image": "shelf:home-care/fabric-conditioner.webp",
+          "aliases": [
+            "फैब्रिक कंडीशनर"
+          ]
+        },
+        {
+          "name": "Dishwash bar",
+          "price": 10,
+          "unit": "pc",
+          "image": "shelf:home-care/dishwash-bar.webp",
+          "aliases": [
+            "बर्तन बार"
+          ]
+        },
+        {
+          "name": "Dishwash liquid",
+          "price": 70,
+          "unit": "pc",
+          "image": "shelf:home-care/dishwash-liquid.webp",
+          "aliases": [
+            "बर्तन लिक्विड"
+          ]
+        },
+        {
+          "name": "Floor cleaner",
+          "price": 80,
+          "unit": "pc",
+          "image": "shelf:home-care/floor-cleaner.webp",
+          "aliases": [
+            "फ्लोर क्लीनर"
+          ]
+        },
+        {
+          "name": "Phenyl",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:home-care/phenyl.webp",
+          "aliases": [
+            "फिनाइल"
+          ]
+        },
+        {
+          "name": "Toilet cleaner",
+          "price": 80,
+          "unit": "pc",
+          "image": "shelf:home-care/toilet-cleaner.webp",
+          "aliases": [
+            "टॉयलेट क्लीनर"
+          ]
+        },
+        {
+          "name": "Glass cleaner",
+          "price": 70,
+          "unit": "pc",
+          "image": "shelf:home-care/glass-cleaner.webp",
+          "aliases": [
+            "ग्लास क्लीनर"
+          ]
+        },
+        {
+          "name": "Bleach",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:home-care/bleach.webp",
+          "aliases": [
+            "ब्लीच"
+          ]
+        },
+        {
+          "name": "Scrubber",
+          "price": 15,
+          "unit": "pc",
+          "image": "shelf:home-care/scrubber.webp",
+          "aliases": [
+            "स्क्रबर"
+          ]
+        },
+        {
+          "name": "Steel wool",
+          "price": 20,
+          "unit": "pc",
+          "image": "shelf:home-care/steel-wool.webp",
+          "aliases": [
+            "स्टील वूल"
+          ]
+        },
+        {
+          "name": "Broom",
+          "price": 60,
+          "unit": "pc",
+          "image": "shelf:home-care/broom.webp",
+          "aliases": [
+            "झाड़ू"
+          ]
+        },
+        {
+          "name": "Mop",
+          "price": 120,
+          "unit": "pc",
+          "image": "shelf:home-care/mop.webp",
+          "aliases": [
+            "पोंछा"
+          ]
+        },
+        {
+          "name": "Dustbin bag",
+          "price": 30,
+          "unit": "pc",
+          "image": "shelf:home-care/dustbin-bag.webp",
+          "aliases": [
+            "कचरे की थैली"
+          ]
+        },
+        {
+          "name": "Aluminium foil",
+          "price": 50,
+          "unit": "pc",
+          "image": "shelf:home-care/aluminium-foil.webp",
+          "aliases": [
+            "एल्युमिनियम फॉइल"
+          ]
+        },
+        {
+          "name": "Cling film",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:home-care/cling-film.webp",
+          "aliases": [
+            "क्लिंग फिल्म"
+          ]
+        },
+        {
+          "name": "Kitchen tissue",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:home-care/tissue-kitchen.webp",
+          "aliases": [
+            "किचन टिशू"
+          ]
+        },
+        {
+          "name": "Matchbox",
+          "price": 2,
+          "unit": "pc",
+          "image": "shelf:home-care/matchbox.webp",
+          "aliases": [
+            "माचिस"
+          ]
+        },
+        {
+          "name": "Candle",
+          "price": 10,
+          "unit": "pc",
+          "image": "shelf:home-care/candle.webp",
+          "aliases": [
+            "मोमबत्ती"
+          ]
+        },
+        {
+          "name": "Mosquito coil",
+          "price": 30,
+          "unit": "pc",
+          "image": "shelf:home-care/mosquito-coil.webp",
+          "aliases": [
+            "मच्छर कॉइल"
+          ]
+        },
+        {
+          "name": "Mosquito liquid",
+          "price": 80,
+          "unit": "pc",
+          "image": "shelf:home-care/mosquito-liquid.webp",
+          "aliases": [
+            "मच्छर लिक्विड"
+          ]
+        },
+        {
+          "name": "Insect spray",
+          "price": 120,
+          "unit": "pc",
+          "image": "shelf:home-care/insect-spray.webp",
+          "aliases": [
+            "कीटनाशक"
+          ]
+        },
+        {
+          "name": "Naphthalene",
+          "price": 20,
+          "unit": "pc",
+          "image": "shelf:home-care/naphthalene.webp",
+          "aliases": [
+            "नेफ्थलीन"
+          ]
+        },
+        {
+          "name": "Room freshener",
+          "price": 90,
+          "unit": "pc",
+          "image": "shelf:home-care/room-freshener.webp",
+          "aliases": [
+            "रूम फ्रेशनर"
+          ]
+        },
+        {
+          "name": "Sponge",
+          "price": 15,
+          "unit": "pc",
+          "image": "shelf:home-care/sponge.webp",
+          "aliases": [
+            "स्पंज"
+          ]
+        },
+        {
+          "name": "Cloth pin",
+          "price": 20,
+          "unit": "pc",
+          "image": "shelf:home-care/cloth-pin.webp",
+          "aliases": [
+            "क्लिप"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Pooja",
+      "image": "shelf:pooja/agarbatti.webp",
+      "items": [
+        {
+          "name": "Agarbatti",
+          "price": 20,
+          "unit": "pc",
+          "image": "shelf:pooja/agarbatti.webp",
+          "aliases": [
+            "अगरबत्ती"
+          ]
+        },
+        {
+          "name": "Dhoop",
+          "price": 20,
+          "unit": "pc",
+          "image": "shelf:pooja/dhoop.webp",
+          "aliases": [
+            "धूप"
+          ]
+        },
+        {
+          "name": "Camphor",
+          "price": 20,
+          "unit": "pc",
+          "image": "shelf:pooja/camphor.webp",
+          "aliases": [
+            "कपूर"
+          ]
+        },
+        {
+          "name": "Cotton wicks",
+          "price": 10,
+          "unit": "pc",
+          "image": "shelf:pooja/cotton-wicks.webp",
+          "aliases": [
+            "बत्ती"
+          ]
+        },
+        {
+          "name": "Kumkum",
+          "price": 15,
+          "unit": "pc",
+          "image": "shelf:pooja/kumkum.webp",
+          "aliases": [
+            "कुमकुम"
+          ]
+        },
+        {
+          "name": "Haldi kumkum",
+          "price": 20,
+          "unit": "pc",
+          "image": "shelf:pooja/haldi-kumkum.webp",
+          "aliases": [
+            "हल्दी कुमकुम"
+          ]
+        },
+        {
+          "name": "Ganga jal",
+          "price": 20,
+          "unit": "pc",
+          "image": "shelf:pooja/ganga-jal.webp",
+          "aliases": [
+            "गंगा जल"
+          ]
+        },
+        {
+          "name": "Puja oil",
+          "price": 30,
+          "unit": "pc",
+          "image": "shelf:pooja/puja-oil.webp",
+          "aliases": [
+            "पूजा तेल"
+          ]
+        },
+        {
+          "name": "Diya",
+          "price": 10,
+          "unit": "pc",
+          "image": "shelf:pooja/diya.webp",
+          "aliases": [
+            "दिया"
+          ]
+        },
+        {
+          "name": "Coconut",
+          "price": 30,
+          "unit": "pc",
+          "image": "shelf:pooja/coconut-whole.webp",
+          "aliases": [
+            "नारियल"
+          ]
+        },
+        {
+          "name": "Betel leaf",
+          "price": 5,
+          "unit": "pc",
+          "image": "shelf:pooja/betel-leaf.webp",
+          "aliases": [
+            "पान"
+          ]
+        },
+        {
+          "name": "Supari",
+          "price": 20,
+          "unit": "pc",
+          "image": "shelf:pooja/supari.webp",
+          "aliases": [
+            "सुपारी"
+          ]
+        },
+        {
+          "name": "Roli",
+          "price": 10,
+          "unit": "pc",
+          "image": "shelf:pooja/roli.webp",
+          "aliases": [
+            "रोली"
+          ]
+        },
+        {
+          "name": "Kalava",
+          "price": 10,
+          "unit": "pc",
+          "image": "shelf:pooja/kalava.webp",
+          "aliases": [
+            "कलावा"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Stationery",
+      "image": "shelf:stationery/notebook.webp",
+      "items": [
+        {
+          "name": "Notebook",
+          "price": 30,
+          "unit": "pc",
+          "image": "shelf:stationery/notebook.webp",
+          "aliases": [
+            "कॉपी"
+          ]
+        },
+        {
+          "name": "Pen",
+          "price": 10,
+          "unit": "pc",
+          "image": "shelf:stationery/pen.webp",
+          "aliases": [
+            "पेन"
+          ]
+        },
+        {
+          "name": "Pencil",
+          "price": 5,
+          "unit": "pc",
+          "image": "shelf:stationery/pencil.webp",
+          "aliases": [
+            "पेंसिल"
+          ]
+        },
+        {
+          "name": "Eraser",
+          "price": 5,
+          "unit": "pc",
+          "image": "shelf:stationery/eraser.webp",
+          "aliases": [
+            "रबर"
+          ]
+        },
+        {
+          "name": "Sharpener",
+          "price": 5,
+          "unit": "pc",
+          "image": "shelf:stationery/sharpener.webp",
+          "aliases": [
+            "शार्पनर"
+          ]
+        },
+        {
+          "name": "Scale",
+          "price": 10,
+          "unit": "pc",
+          "image": "shelf:stationery/scale.webp",
+          "aliases": [
+            "स्केल"
+          ]
+        },
+        {
+          "name": "Geometry box",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:stationery/geometry-box.webp",
+          "aliases": [
+            "ज्योमेट्री बॉक्स"
+          ]
+        },
+        {
+          "name": "Crayon",
+          "price": 30,
+          "unit": "pc",
+          "image": "shelf:stationery/crayon.webp",
+          "aliases": [
+            "क्रेयॉन"
+          ]
+        },
+        {
+          "name": "Glue",
+          "price": 15,
+          "unit": "pc",
+          "image": "shelf:stationery/glue.webp",
+          "aliases": [
+            "गोंद"
+          ]
+        },
+        {
+          "name": "Tape",
+          "price": 20,
+          "unit": "pc",
+          "image": "shelf:stationery/tape.webp",
+          "aliases": [
+            "टेप"
+          ]
+        },
+        {
+          "name": "Envelope",
+          "price": 2,
+          "unit": "pc",
+          "image": "shelf:stationery/envelope.webp",
+          "aliases": [
+            "लिफाफा"
+          ]
+        },
+        {
+          "name": "Chart paper",
+          "price": 10,
+          "unit": "pc",
+          "image": "shelf:stationery/chart-paper.webp",
+          "aliases": [
+            "चार्ट पेपर"
+          ]
+        },
+        {
+          "name": "Stapler",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:stationery/stapler.webp",
+          "aliases": [
+            "स्टेपलर"
+          ]
+        },
+        {
+          "name": "Marker",
+          "price": 20,
+          "unit": "pc",
+          "image": "shelf:stationery/marker.webp",
+          "aliases": [
+            "मार्कर"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Pickles",
+      "image": "shelf:pickles/mango-pickle.webp",
+      "items": [
+        {
+          "name": "Mango pickle",
+          "price": 60,
+          "unit": "pc",
+          "image": "shelf:pickles/mango-pickle.webp",
+          "aliases": [
+            "आम का अचार"
+          ]
+        },
+        {
+          "name": "Lime pickle",
+          "price": 50,
+          "unit": "pc",
+          "image": "shelf:pickles/lime-pickle.webp",
+          "aliases": [
+            "नींबू का अचार"
+          ]
+        },
+        {
+          "name": "Mixed pickle",
+          "price": 55,
+          "unit": "pc",
+          "image": "shelf:pickles/mixed-pickle.webp",
+          "aliases": [
+            "मिक्स अचार"
+          ]
+        },
+        {
+          "name": "Chilli pickle",
+          "price": 50,
+          "unit": "pc",
+          "image": "shelf:pickles/chilli-pickle.webp",
+          "aliases": [
+            "मिर्च का अचार"
+          ]
+        },
+        {
+          "name": "Garlic pickle",
+          "price": 60,
+          "unit": "pc",
+          "image": "shelf:pickles/garlic-pickle.webp",
+          "aliases": [
+            "लहसुन का अचार"
+          ]
+        },
+        {
+          "name": "Murabba",
+          "price": 50,
+          "unit": "pc",
+          "image": "shelf:pickles/murabba.webp",
+          "aliases": [
+            "मुरब्बा"
+          ]
+        },
+        {
+          "name": "Chutney",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:pickles/chutney.webp",
+          "aliases": [
+            "चटनी"
+          ]
+        },
+        {
+          "name": "Tomato ketchup",
+          "price": 70,
+          "unit": "pc",
+          "image": "shelf:pickles/tomato-ketchup.webp",
+          "aliases": [
+            "टमाटर केचप"
+          ]
+        },
+        {
+          "name": "Chilli sauce",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:pickles/sauce.webp",
+          "aliases": [
+            "चिली सॉस"
+          ]
+        },
+        {
+          "name": "Soya sauce",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:pickles/soya-sauce.webp",
+          "aliases": [
+            "सोया सॉस"
+          ]
+        },
+        {
+          "name": "Vinegar",
+          "price": 25,
+          "unit": "pc",
+          "image": "shelf:pickles/vinegar.webp",
+          "aliases": [
+            "सिरका"
+          ]
+        },
+        {
+          "name": "Jam",
+          "price": 60,
+          "unit": "pc",
+          "image": "shelf:pickles/jam.webp",
+          "aliases": [
+            "जैम"
+          ]
+        },
+        {
+          "name": "Peanut butter",
+          "price": 90,
+          "unit": "pc",
+          "image": "shelf:pickles/peanut-butter.webp",
+          "aliases": [
+            "पीनट बटर"
+          ]
+        },
+        {
+          "name": "Mayonnaise",
+          "price": 70,
+          "unit": "pc",
+          "image": "shelf:pickles/mayonnaise.webp",
+          "aliases": [
+            "मेयोनीज"
+          ]
+        },
+        {
+          "name": "Schezwan sauce",
+          "price": 50,
+          "unit": "pc",
+          "image": "shelf:pickles/schezwan.webp",
+          "aliases": [
+            "शेजवान सॉस"
+          ]
+        },
+        {
+          "name": "Mint chutney",
+          "price": 30,
+          "unit": "pc",
+          "image": "shelf:pickles/mint-chutney.webp",
+          "aliases": [
+            "पुदीना चटनी"
+          ]
+        },
+        {
+          "name": "Imli chutney",
+          "price": 30,
+          "unit": "pc",
+          "image": "shelf:pickles/tamarind-chutney.webp",
+          "aliases": [
+            "इमली चटनी"
+          ]
+        },
+        {
+          "name": "Mango pickle kg",
+          "price": 180,
+          "unit": "kg",
+          "image": "shelf:pickles/pickle-mango-kg.webp",
+          "aliases": [
+            "आम अचार किलो"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Dry Fruits",
+      "image": "shelf:dry-fruits/almonds.webp",
+      "items": [
+        {
+          "name": "Almonds",
+          "price": 200,
+          "unit": "pc",
+          "image": "shelf:dry-fruits/almonds.webp",
+          "aliases": [
+            "बादाम"
+          ]
+        },
+        {
+          "name": "Cashews",
+          "price": 220,
+          "unit": "pc",
+          "image": "shelf:dry-fruits/cashews.webp",
+          "aliases": [
+            "काजू"
+          ]
+        },
+        {
+          "name": "Raisins",
+          "price": 80,
+          "unit": "pc",
+          "image": "shelf:dry-fruits/raisins.webp",
+          "aliases": [
+            "किशमिश"
+          ]
+        },
+        {
+          "name": "Pistachios",
+          "price": 250,
+          "unit": "pc",
+          "image": "shelf:dry-fruits/pistachios.webp",
+          "aliases": [
+            "पिस्ता"
+          ]
+        },
+        {
+          "name": "Walnuts",
+          "price": 200,
+          "unit": "pc",
+          "image": "shelf:dry-fruits/walnuts.webp",
+          "aliases": [
+            "अखरोट"
+          ]
+        },
+        {
+          "name": "Dates",
+          "price": 80,
+          "unit": "pc",
+          "image": "shelf:dry-fruits/dates.webp",
+          "aliases": [
+            "खजूर"
+          ]
+        },
+        {
+          "name": "Figs",
+          "price": 150,
+          "unit": "pc",
+          "image": "shelf:dry-fruits/figs.webp",
+          "aliases": [
+            "अंजीर"
+          ]
+        },
+        {
+          "name": "Apricots",
+          "price": 160,
+          "unit": "pc",
+          "image": "shelf:dry-fruits/apricots.webp",
+          "aliases": [
+            "खुबानी"
+          ]
+        },
+        {
+          "name": "Pumpkin seeds",
+          "price": 80,
+          "unit": "pc",
+          "image": "shelf:dry-fruits/pumpkin-seeds.webp",
+          "aliases": [
+            "कद्दू के बीज"
+          ]
+        },
+        {
+          "name": "Sunflower seeds",
+          "price": 50,
+          "unit": "pc",
+          "image": "shelf:dry-fruits/sunflower-seeds.webp",
+          "aliases": [
+            "सूरजमुखी बीज"
+          ]
+        },
+        {
+          "name": "Flax seeds",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:dry-fruits/flax-seeds.webp",
+          "aliases": [
+            "अलसी"
+          ]
+        },
+        {
+          "name": "Chia seeds",
+          "price": 80,
+          "unit": "pc",
+          "image": "shelf:dry-fruits/chia-seeds.webp",
+          "aliases": [
+            "चिया सीड्स"
+          ]
+        },
+        {
+          "name": "Dry coconut",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:dry-fruits/coconut-dry.webp",
+          "aliases": [
+            "सूखा नारियल"
+          ]
+        },
+        {
+          "name": "Copra",
+          "price": 50,
+          "unit": "pc",
+          "image": "shelf:dry-fruits/copra.webp",
+          "aliases": [
+            "कोपरा"
+          ]
+        },
+        {
+          "name": "Desiccated coconut",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:dry-fruits/desiccated-coconut.webp",
+          "aliases": [
+            "सुखा नारियल बुरादा"
+          ]
+        },
+        {
+          "name": "Mixed dry fruit",
+          "price": 180,
+          "unit": "pc",
+          "image": "shelf:dry-fruits/mixed-dry-fruit.webp",
+          "aliases": [
+            "मिक्स ड्राई फ्रूट"
+          ]
+        },
+        {
+          "name": "Anjeer",
+          "price": 90,
+          "unit": "pc",
+          "image": "shelf:dry-fruits/anjeer.webp",
+          "aliases": [
+            "अंजीर पैक"
+          ]
+        },
+        {
+          "name": "Munakka",
+          "price": 90,
+          "unit": "pc",
+          "image": "shelf:dry-fruits/munakka.webp",
+          "aliases": [
+            "मुनक्का"
+          ]
+        },
+        {
+          "name": "Charoli",
+          "price": 120,
+          "unit": "pc",
+          "image": "shelf:dry-fruits/charoli.webp",
+          "aliases": [
+            "चिरौंजी"
+          ]
+        },
+        {
+          "name": "Melon seeds",
+          "price": 60,
+          "unit": "pc",
+          "image": "shelf:dry-fruits/melon-seeds.webp",
+          "aliases": [
+            "खरबूजे के बीज"
+          ]
+        },
+        {
+          "name": "Pista kernel",
+          "price": 280,
+          "unit": "pc",
+          "image": "shelf:dry-fruits/pistachio-kernel.webp",
+          "aliases": [
+            "पिस्ता गिरी"
+          ]
+        },
+        {
+          "name": "Almond flakes",
+          "price": 90,
+          "unit": "pc",
+          "image": "shelf:dry-fruits/almond-flakes.webp",
+          "aliases": [
+            "बादाम कतरन"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Produce",
+      "image": "shelf:produce/potato.webp",
+      "items": [
+        {
+          "name": "Potato",
+          "price": 25,
+          "unit": "kg",
+          "image": "shelf:produce/potato.webp",
+          "aliases": [
+            "आलू"
+          ]
+        },
+        {
+          "name": "Tomato",
+          "price": 30,
+          "unit": "kg",
+          "image": "shelf:produce/tomato.webp",
+          "aliases": [
+            "टमाटर"
+          ]
+        },
+        {
+          "name": "Red onion",
+          "price": 30,
+          "unit": "kg",
+          "image": "shelf:produce/onion-red.webp",
+          "aliases": [
+            "लाल प्याज"
+          ]
+        },
+        {
+          "name": "Cabbage",
+          "price": 25,
+          "unit": "kg",
+          "image": "shelf:produce/cabbage.webp",
+          "aliases": [
+            "पत्ता गोभी"
+          ]
+        },
+        {
+          "name": "Cauliflower",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:produce/cauliflower.webp",
+          "aliases": [
+            "फूल गोभी"
+          ]
+        },
+        {
+          "name": "Carrot",
+          "price": 40,
+          "unit": "kg",
+          "image": "shelf:produce/carrot.webp",
+          "aliases": [
+            "गाजर"
+          ]
+        },
+        {
+          "name": "French beans",
+          "price": 60,
+          "unit": "kg",
+          "image": "shelf:produce/beans.webp",
+          "aliases": [
+            "फ्रेंच बीन्स"
+          ]
+        },
+        {
+          "name": "Green peas",
+          "price": 50,
+          "unit": "kg",
+          "image": "shelf:produce/peas.webp",
+          "aliases": [
+            "मटर"
+          ]
+        },
+        {
+          "name": "Spinach",
+          "price": 20,
+          "unit": "pc",
+          "image": "shelf:produce/spinach.webp",
+          "aliases": [
+            "पालक"
+          ]
+        },
+        {
+          "name": "Methi leaves",
+          "price": 15,
+          "unit": "pc",
+          "image": "shelf:produce/methi-leaves.webp",
+          "aliases": [
+            "मेथी"
+          ]
+        },
+        {
+          "name": "Brinjal",
+          "price": 40,
+          "unit": "kg",
+          "image": "shelf:produce/brinjal.webp",
+          "aliases": [
+            "बैंगन"
+          ]
+        },
+        {
+          "name": "Okra",
+          "price": 50,
+          "unit": "kg",
+          "image": "shelf:produce/okra.webp",
+          "aliases": [
+            "भिंडी"
+          ]
+        },
+        {
+          "name": "Bottle gourd",
+          "price": 30,
+          "unit": "kg",
+          "image": "shelf:produce/bottle-gourd.webp",
+          "aliases": [
+            "लौकी"
+          ]
+        },
+        {
+          "name": "Ridge gourd",
+          "price": 40,
+          "unit": "kg",
+          "image": "shelf:produce/ridge-gourd.webp",
+          "aliases": [
+            "तोरई"
+          ]
+        },
+        {
+          "name": "Bitter gourd",
+          "price": 40,
+          "unit": "kg",
+          "image": "shelf:produce/bitter-gourd.webp",
+          "aliases": [
+            "करेला"
+          ]
+        },
+        {
+          "name": "Cucumber",
+          "price": 30,
+          "unit": "kg",
+          "image": "shelf:produce/cucumber.webp",
+          "aliases": [
+            "खीरा"
+          ]
+        },
+        {
+          "name": "Capsicum",
+          "price": 60,
+          "unit": "kg",
+          "image": "shelf:produce/capsicum.webp",
+          "aliases": [
+            "शिमला मिर्च"
+          ]
+        },
+        {
+          "name": "Fresh peas",
+          "price": 40,
+          "unit": "kg",
+          "image": "shelf:produce/green-peas-fresh.webp",
+          "aliases": [
+            "ताजा मटर"
+          ]
+        },
+        {
+          "name": "Banana",
+          "price": 40,
+          "unit": "kg",
+          "image": "shelf:produce/banana.webp",
+          "aliases": [
+            "केला"
+          ]
+        },
+        {
+          "name": "Apple",
+          "price": 120,
+          "unit": "kg",
+          "image": "shelf:produce/apple.webp",
+          "aliases": [
+            "सेब"
+          ]
+        },
+        {
+          "name": "Orange",
+          "price": 60,
+          "unit": "kg",
+          "image": "shelf:produce/orange.webp",
+          "aliases": [
+            "संतरा"
+          ]
+        },
+        {
+          "name": "Pomegranate",
+          "price": 120,
+          "unit": "kg",
+          "image": "shelf:produce/pomegranate.webp",
+          "aliases": [
+            "अनार"
+          ]
+        },
+        {
+          "name": "Grapes",
+          "price": 80,
+          "unit": "kg",
+          "image": "shelf:produce/grapes.webp",
+          "aliases": [
+            "अंगूर"
+          ]
+        },
+        {
+          "name": "Papaya",
+          "price": 40,
+          "unit": "kg",
+          "image": "shelf:produce/papaya.webp",
+          "aliases": [
+            "पपीता"
+          ]
+        },
+        {
+          "name": "Watermelon",
+          "price": 25,
+          "unit": "kg",
+          "image": "shelf:produce/watermelon.webp",
+          "aliases": [
+            "तरबूज"
+          ]
+        },
+        {
+          "name": "Mango",
+          "price": 80,
+          "unit": "kg",
+          "image": "shelf:produce/mango.webp",
+          "aliases": [
+            "आम"
+          ]
+        },
+        {
+          "name": "Chikoo",
+          "price": 60,
+          "unit": "kg",
+          "image": "shelf:produce/sapota.webp",
+          "aliases": [
+            "चीकू"
+          ]
+        },
+        {
+          "name": "Guava",
+          "price": 50,
+          "unit": "kg",
+          "image": "shelf:produce/guava.webp",
+          "aliases": [
+            "अमरूद"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Eggs Bread More",
+      "image": "shelf:eggs-bread-more/eggs.webp",
+      "items": [
+        {
+          "name": "Eggs",
+          "price": 7,
+          "unit": "pc",
+          "image": "shelf:eggs-bread-more/eggs.webp",
+          "aliases": [
+            "अंडे"
+          ]
+        },
+        {
+          "name": "Brown eggs",
+          "price": 9,
+          "unit": "pc",
+          "image": "shelf:eggs-bread-more/brown-eggs.webp",
+          "aliases": [
+            "ब्राउन अंडे"
+          ]
+        },
+        {
+          "name": "Bread crumbs",
+          "price": 30,
+          "unit": "pc",
+          "image": "shelf:eggs-bread-more/bread-crumbs.webp",
+          "aliases": [
+            "ब्रेड क्रम्ब्स"
+          ]
+        },
+        {
+          "name": "Sweet corn",
+          "price": 30,
+          "unit": "pc",
+          "image": "shelf:eggs-bread-more/corn-kernels.webp",
+          "aliases": [
+            "स्वीट कॉर्न"
+          ]
+        },
+        {
+          "name": "Frozen peas",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:eggs-bread-more/frozen-peas.webp",
+          "aliases": [
+            "फ्रोजन मटर"
+          ]
+        },
+        {
+          "name": "Ice cream",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:eggs-bread-more/ice-cream.webp",
+          "aliases": [
+            "आइसक्रीम"
+          ]
+        },
+        {
+          "name": "Ice cream stick",
+          "price": 20,
+          "unit": "pc",
+          "image": "shelf:eggs-bread-more/ice-cream-stick.webp",
+          "aliases": [
+            "आइसक्रीम स्टिक"
+          ]
+        },
+        {
+          "name": "Curd pouch",
+          "price": 20,
+          "unit": "pc",
+          "image": "shelf:eggs-bread-more/curd-pouch.webp",
+          "aliases": [
+            "दही पाउच"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Canned",
+      "image": "shelf:canned/baked-beans.webp",
+      "items": [
+        {
+          "name": "Baked beans",
+          "price": 50,
+          "unit": "pc",
+          "image": "shelf:canned/baked-beans.webp",
+          "aliases": [
+            "बेक्ड बीन्स"
+          ]
+        },
+        {
+          "name": "Sweet corn can",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:canned/sweet-corn-can.webp",
+          "aliases": [
+            "स्वीट कॉर्न कैन"
+          ]
+        },
+        {
+          "name": "Mushroom can",
+          "price": 50,
+          "unit": "pc",
+          "image": "shelf:canned/mushroom-can.webp",
+          "aliases": [
+            "मशरूम कैन"
+          ]
+        },
+        {
+          "name": "Tomato puree",
+          "price": 30,
+          "unit": "pc",
+          "image": "shelf:canned/tomato-puree.webp",
+          "aliases": [
+            "टमाटर प्यूरी"
+          ]
+        },
+        {
+          "name": "Coconut milk",
+          "price": 60,
+          "unit": "pc",
+          "image": "shelf:canned/coconut-milk.webp",
+          "aliases": [
+            "कोकोनट मिल्क"
+          ]
+        },
+        {
+          "name": "Olives",
+          "price": 90,
+          "unit": "pc",
+          "image": "shelf:canned/olives.webp",
+          "aliases": [
+            "ऑलिव"
+          ]
+        },
+        {
+          "name": "Tuna",
+          "price": 120,
+          "unit": "pc",
+          "image": "shelf:canned/tuna.webp",
+          "aliases": [
+            "टूना"
+          ]
+        },
+        {
+          "name": "Sardine",
+          "price": 40,
+          "unit": "pc",
+          "image": "shelf:canned/sardine.webp",
+          "aliases": [
+            "सार्डिन"
+          ]
+        },
+        {
+          "name": "Fruit cocktail",
+          "price": 70,
+          "unit": "pc",
+          "image": "shelf:canned/fruit-cocktail.webp",
+          "aliases": [
+            "फ्रूट कॉकटेल"
+          ]
+        },
+        {
+          "name": "Pineapple can",
+          "price": 60,
+          "unit": "pc",
+          "image": "shelf:canned/pineapple-can.webp",
+          "aliases": [
+            "अनानास कैन"
+          ]
+        },
+        {
+          "name": "Condensed milk tin",
+          "price": 55,
+          "unit": "pc",
+          "image": "shelf:canned/condensed-milk-tin.webp",
+          "aliases": [
+            "दूध की टिन"
+          ]
+        },
+        {
+          "name": "Ghee tin",
+          "price": 500,
+          "unit": "pc",
+          "image": "shelf:canned/ghee-tin.webp",
+          "aliases": [
+            "घी टिन"
+          ]
+        }
+      ]
+    }
+  ]
+}

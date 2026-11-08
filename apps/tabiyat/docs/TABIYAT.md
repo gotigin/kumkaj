@@ -66,6 +66,7 @@ owner-facing copy.
 - Purchase `batch_code` / `expires_on` + `expiry_alert_text` (7-day)
 - `barcode_scan` module (image decode fallback; wedge remains primary)
 - Theme from `assets/tabiyat-app-icon.png` (teal / lime)
+- Starter shelf: `assets/items` and `assets/templates/chemist-counter` (generic names, WebP photos). Not loaded until the owner imports it. Not a drug database.
 
 ------------------------------------------------------------------------
 
@@ -85,6 +86,7 @@ owner-facing copy.
 | Expiry alerts window 30 days | **Have** | Books |
 | Rx / Schedule H reminder on Sell add | **Have** | Sell status |
 | Counter-only chrome | **Have** | Sell paint |
+| Starter shelf (500+ generic WebP items) | **Have** | Medicines → Import chemist counter |
 | FEFO batch pick at sell | **Later** |
 | Generic substitute links | **Later** |
 | Statutory Form registers | **Out** (no fake compliance) |

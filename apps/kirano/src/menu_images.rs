@@ -1,5 +1,5 @@
-//! Menu item / party thumb helpers for Kirano, and an optional photo shelf
-//! (`assets/items/`). Ships empty — no bundled grocery starter pack.
+//! Menu item / party thumb helpers for Kirano, and the bundled grocery shelf
+//! (`assets/items/<folder>/<item>.webp`). Photos are WebP only.
 //!
 //! When a name is set and no photo is chosen, UI shows **name initials**:
 //! - one word → first two letters (`Atta` → `AT`)

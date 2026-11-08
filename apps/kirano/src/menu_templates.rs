@@ -1,7 +1,7 @@
 //! Named catalogue templates (`assets/templates/<id>/template.json`).
 //!
-//! Kirano ships without a starter catalogue. Drop a folder here only if a
-//! named import is wanted later — discovery is automatic.
+//! Kirano ships `neighbourhood/` — a starter grocery list with Hindi
+//! aliases, example prices, and `shelf:` photos. Discovery is automatic.
 
 use std::path::{Path, PathBuf};
 
@@ -36,11 +36,14 @@ pub struct TemplateItem {
     pub name: String,
     #[serde(default)]
     pub aliases: Vec<String>,
-    /// Rupees (major units). `0` = unpriced / season rate.
+    /// Rupees (major units). `0` = unpriced / set at the counter.
     #[serde(default)]
     pub price: i64,
     #[serde(default)]
     pub image: String,
+    /// Sell unit (`kg`, `g`, `L`, `ml`, `pc`). Empty = each.
+    #[serde(default)]
+    pub unit: String,
 }
 
 impl MenuTemplate {

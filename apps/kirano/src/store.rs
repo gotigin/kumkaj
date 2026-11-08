@@ -6432,7 +6432,8 @@ impl Store {
                 report_import_progress(i + 1, total)?;
                 continue;
             }
-            let mut p = Product::new_basic(new_id(), dish.name.trim(), Money(0));
+            let mut p = Product::new_resale_stock(dish.name.trim(), "");
+            p.id = new_id();
             p.category_id = cat_id;
             // Encode the photo before the upsert so we never sit in a write txn
             // across image codecs.
@@ -6522,11 +6523,9 @@ impl Store {
                     report_import_progress(step.min(total), total)?;
                     continue;
                 }
-                let mut p = Product::new_basic(
-                    new_id(),
-                    name,
-                    Money::from_rupees(item.price.max(0)),
-                );
+                let mut p = Product::new_resale_stock(name, item.unit.trim());
+                p.id = new_id();
+                p.price = Money::from_rupees(item.price.max(0));
                 p.category_id = cat_id.clone();
                 if !item.aliases.is_empty() {
                     p.set_aliases(&item.aliases);
@@ -14410,25 +14409,19 @@ mod tests {
             crate::menu_templates::find("rajdhani").is_none(),
             "restaurant client templates must not ship"
         );
-        assert!(
-            crate::menu_templates::all().is_empty(),
-            "named catalogue templates stay empty until a counter pack is added"
-        );
-    }
-
-
-    #[test]
-    fn empty_photo_shelf_imports_nothing() {
-        let path = temp_db();
-        let store = Store::open_path(&path).unwrap();
+        let tmpl = crate::menu_templates::find("neighbourhood")
+            .expect("neighbourhood grocery template");
+        assert!(tmpl.item_count() >= 500, "{}", tmpl.item_count());
         let shelf = crate::menu_images::shelf();
-        assert!(
-            shelf.is_empty(),
-            "counter shops ship without a restaurant photo shelf"
-        );
-        let summary = store.import_catalogue(shelf).unwrap();
-        assert_eq!((summary.categories_added, summary.items_added), (0, 0));
-        let _ = std::fs::remove_file(path);
+        assert!(shelf.len() >= 500, "starter shelf {}", shelf.len());
+        let sample = tmpl
+            .categories
+            .iter()
+            .flat_map(|c| c.items.iter())
+            .find(|i| !i.image.is_empty() && i.price > 0)
+            .expect("priced photo");
+        let path = tmpl.resolve_image(&sample.image).expect("webp path");
+        assert_eq!(path.extension().and_then(|e| e.to_str()), Some("webp"));
     }
 
 
