@@ -871,7 +871,7 @@ fn en(key: &str) -> String {
         "device_setup_help" => "Server keeps the books here. Client pairs to a Server.",
         // One-shot after create server (before Owner PIN). Menu-only v1.
         "app_template_heading" => "Rajdhani App Template",
-        "app_template_blurb" => "Loads the Rajdhani menu; Owner Zahir (zahir), Admin Asif (asif, PIN 1111), Waiter Nawaz (nawaz, PIN 0000); tax/GST off; FOH sidebar; history clears after 4 hours (and Clear now in Backup); Today strip off; compact KOT + Standard margins for narrow trays. Tax and sidebar peers can be turned back on in Settings.",
+        "app_template_blurb" => "Loads the Rajdhani menu; Owner Zahir (zahir), Admin Asif (asif, PIN 1111), Waiter Nawaz (nawaz, PIN 0000); FOH sidebar; history clears after 4 hours (and Clear now in Backup); Today strip off; compact KOT + Standard margins for narrow trays. Sidebar peers can be turned back on in Settings.",
         "app_template_apply" => "Rajdhani App Template",
         "app_template_skip" => "Skip for now",
         "app_template_status" => "Server ready — apply Rajdhani App Template, or skip",

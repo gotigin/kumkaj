@@ -5404,7 +5404,7 @@ script_mod! {
                                                     font_size: 17.
                                                 }
                                                 app_template_blurb := WrapLabel{
-                                                    body: "Loads the Rajdhani menu, names the Owner Asif, and turns tax/GST off."
+                                                    body: "Loads the Rajdhani menu; Owner Zahir, Admin Asif, Waiter Nawaz."
                                                     font_color: #x6B4A3F
                                                     font_size: 13.
                                                 }
