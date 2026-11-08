@@ -4904,15 +4904,10 @@ impl MatchEvent for App {
             } else {
                 false
             };
-            // ± / Hold / In-print sit inside the row: a step must not also open the details.
-            if !stepped
-                && item
-                    .view(cx, ids!(summary))
-                    .finger_up(actions)
-                    .is_some_and(finger_up_is_tap)
-            {
-                self.toggle_cart_line(cx, item_id);
-            }
+            // Commit Unit @ / Applied / note before any close. A summary tap
+            // while the field is focused used to run toggle→sync_chrome first,
+            // paint the old model back into the input, then "apply" that stale
+            // text — looks like a revert for Owner and Waiter alike.
             let unit_input = item.text_input(cx, ids!(unit_price));
             if let Some((text, _)) = unit_input.returned(actions) {
                 self.apply_cart_unit_price(cx, item_id, &text);
@@ -4933,6 +4928,22 @@ impl MatchEvent for App {
             } else if note_input.key_focus_lost(actions) {
                 let text = note_input.text();
                 self.apply_cart_note(cx, item_id, &text);
+            }
+            // ± / Hold / In-print sit inside the row: a step must not also open the details.
+            if !stepped
+                && item
+                    .view(cx, ids!(summary))
+                    .finger_up(actions)
+                    .is_some_and(finger_up_is_tap)
+            {
+                let closing =
+                    app_state().lock().unwrap().open_cart_line == Some(item_id);
+                if closing {
+                    self.apply_cart_unit_price(cx, item_id, &unit_input.text());
+                    self.apply_cart_line_total(cx, item_id, &line_total_input.text());
+                    self.apply_cart_note(cx, item_id, &note_input.text());
+                }
+                self.toggle_cart_line(cx, item_id);
             }
             self.handle_modifier_chips(cx, actions, &item, item_id, false);
             for (button, action) in [
@@ -4998,13 +5009,6 @@ impl MatchEvent for App {
                     .amend_cart
                     .bump_qty(item_id, 1);
                 self.sync_chrome(cx);
-            } else if !item.button(cx, ids!(minus)).clicked(actions)
-                && item
-                    .view(cx, ids!(summary))
-                    .finger_up(actions)
-                    .is_some_and(finger_up_is_tap)
-            {
-                self.toggle_cart_line(cx, item_id);
             }
             let unit_input = item.text_input(cx, ids!(unit_price));
             if let Some((text, _)) = unit_input.returned(actions) {
@@ -5080,6 +5084,37 @@ impl MatchEvent for App {
                     self.set_status(cx, e);
                 }
                 self.sync_chrome(cx);
+            }
+            // Same as Order cart: commit typed fields before closing the row.
+            if !item.button(cx, ids!(minus)).clicked(actions)
+                && !item.button(cx, ids!(plus)).clicked(actions)
+                && item
+                    .view(cx, ids!(summary))
+                    .finger_up(actions)
+                    .is_some_and(finger_up_is_tap)
+            {
+                let closing =
+                    app_state().lock().unwrap().open_cart_line == Some(item_id);
+                if closing {
+                    let unit_text = unit_input.text();
+                    let total_text = line_total_input.text();
+                    let note_text = note_input.text();
+                    let result = (|| -> Result<(), String> {
+                        let mut st = app_state().lock().unwrap();
+                        let currency = st.locale.currency.clone();
+                        let unit_minor = locale::parse_major_input(&unit_text, &currency)?;
+                        st.amend_cart.set_unit_price(item_id, Money(unit_minor))?;
+                        let total_minor = locale::parse_major_input(&total_text, &currency)?;
+                        st.amend_cart.set_line_total(item_id, Money(total_minor))?;
+                        st.amend_cart.set_note(item_id, note_text)?;
+                        Ok(())
+                    })();
+                    if let Err(e) = result {
+                        self.set_status(cx, e);
+                    }
+                    self.sync_chrome(cx);
+                }
+                self.toggle_cart_line(cx, item_id);
             }
             self.handle_modifier_chips(cx, actions, &item, item_id, true);
         }

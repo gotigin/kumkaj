@@ -1433,16 +1433,42 @@ impl AppState {
     }
 
     /// Menu screen rows: indices into `products` matching the list search
-    /// (all of them while it is empty).
+    /// (all of them while it is empty). Search looks at the name, aliases /
+    /// short codes, and dish group — same handles as the Order Add dishes
+    /// window. Exact alias or name first; then prefix / word / substring.
     fn menu_list_indices(&self) -> Vec<usize> {
         let q = self.menu_list_filter.trim();
-        self.products
+        let unpriced_only = self.menu_unpriced_only;
+        let candidates = self
+            .products
             .iter()
             .enumerate()
-            .filter(|(_, p)| q.is_empty() || menu_images::match_rank(&p.name, q).is_some())
-            .filter(|(_, p)| !self.menu_unpriced_only || p.price.0 == 0)
-            .map(|(i, _)| i)
-            .collect()
+            .filter(|(_, p)| !unpriced_only || p.price.0 == 0);
+        if q.is_empty() {
+            return candidates.map(|(i, _)| i).collect();
+        }
+        let mut ranked: Vec<(u8, usize)> = candidates
+            .filter_map(|(i, p)| {
+                let aliases = p.aliases();
+                if p.name.trim().eq_ignore_ascii_case(q)
+                    || aliases.iter().any(|a| a.trim().eq_ignore_ascii_case(q))
+                {
+                    return Some((0, i));
+                }
+                let best = std::iter::once(menu_images::match_rank(&p.name, q))
+                    .chain(std::iter::once(
+                        (!p.group_name.is_empty())
+                            .then(|| menu_images::match_rank(&p.group_name, q))
+                            .flatten(),
+                    ))
+                    .chain(aliases.iter().map(|a| menu_images::match_rank(a, q)))
+                    .flatten()
+                    .min()?;
+                Some((best + 1, i))
+            })
+            .collect();
+        ranked.sort_by_key(|(rank, _)| *rank);
+        ranked.into_iter().map(|(_, i)| i).collect()
     }
 
     /// Dishes on the menu still at no price.

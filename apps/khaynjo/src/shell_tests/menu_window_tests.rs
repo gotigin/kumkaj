@@ -31,6 +31,45 @@ mod menu_window_tests {
         assert!(names(&st).is_empty());
     }
 
+    /// Menu "Find in your menu" must look at aliases, not only the primary
+    /// name (Gujarati names with English aliases used to vanish on "a").
+    /// Exact alias / name lead; then prefix, word, and substring.
+    #[test]
+    fn menu_find_searches_aliases_and_ranks_exact_first() {
+        let mut st = AppState::boot();
+        st.products = vec![
+            dish("ઈંડા કરી", "egg", &["Inda Curry"]),
+            dish("આમલેટ", "egg", &["Omlet 2 Number"]),
+            dish("Exact Code", "misc", &["A"]),
+            dish("Soup", "misc", &["Idli"]),
+        ];
+        st.menu_list_filter = "a".into();
+        let names = |st: &AppState| {
+            st.menu_list_indices()
+                .into_iter()
+                .map(|i| st.products[i].name.clone())
+                .collect::<Vec<_>>()
+        };
+        let hit = names(&st);
+        assert_eq!(hit[0], "Exact Code", "exact alias \"A\" must lead");
+        assert!(
+            hit.iter().any(|n| n == "ઈંડા કરી"),
+            "alias \"Inda Curry\" must match \"a\": {hit:?}"
+        );
+        assert!(
+            !hit.iter().any(|n| n == "Soup"),
+            "\"Soup\" / \"Idli\" have no a: {hit:?}"
+        );
+        assert!(
+            !hit.iter().any(|n| n == "આમલેટ"),
+            "\"Omlet 2 Number\" has no a — not a false hit: {hit:?}"
+        );
+        st.menu_list_filter = "omlet".into();
+        assert_eq!(names(&st), ["આમલેટ"]);
+        st.menu_list_filter = String::new();
+        assert_eq!(names(&st).len(), 4);
+    }
+
     /// Prefer two readable cards; three only when the window is truly wide.
     #[test]
     fn menu_grid_columns_for_wide_split_tiles() {
