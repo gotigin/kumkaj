@@ -1,0 +1,24 @@
+--- a/widgets/src/button.rs
++++ b/widgets/src/button.rs
+@@ -620,8 +620,13 @@
+                 self.draw_bg.redraw(cx);
+             }
+             Hit::FingerDown(fe) if self.enabled && fe.is_primary_hit() => {
++                // `grab_key_focus: false` must not focus. The old path still
++                // called `set_key_focus` afterwards, so a press on Done blurred
++                // the search field, the button moved, and the finger-up never
++                // counted as a click.
+                 if self.grab_key_focus {
+                     cx.set_key_focus(self.draw_bg.area());
++                    self.set_key_focus(cx);
+                 }
+                 cx.widget_action_with_data(
+                     &self.action_data,
+@@ -639,7 +644,6 @@
+                     );
+                 }
+                 self.animator_play(cx, ids!(hover.down));
+-                self.set_key_focus(cx);
+             }
+             Hit::FingerHoverIn(_) => {
+                 if self.enabled {

@@ -92,6 +92,21 @@ PATCHES=(
   scroll_bar_orphan_unblock         # wheel: clear stuck TextFlow Empty scroll-block (thumb drag still worked)
   scroll_touch_orphan_unblock       # Android: same Empty orphan clear on touch drag (no wheel)
   scroll_axis_lock                  # opt-in: drag direction lock for nested X/Y scroll views; Shift+wheel sideways
+  # Hand edits that lived only in vendor/makepad (gitignored). Captured so a
+  # fresh setup-makepad.sh no longer wipes touch / SSD / tooltip / button fixes.
+  event_window_server_decorations   # Event::WindowServerDecorations (Wayland SSD)
+  finger_touch_tap_distance         # touch tap slop 24px (finger jitter vs mouse)
+  wayland_wl_touch                  # real wl_touch path (scroll / long-press / fling)
+  wayland_compositor_imposed        # maximized/snapped: do not overwrite compositor size
+  wayland_configure_and_touch       # configure commit + touch dispatch on Wayland
+  xlib_touch_and_ssd                # X11 Touch + ServerDecorations event variants
+  x11_touch_dispatch                # dispatch TouchUpdate on X11
+  win32_touch_event                 # Win32 Touch event variant
+  win32_touch_mouse_filter          # drop mouse messages synthesized from touch/pen
+  windows_touch_dispatch            # dispatch TouchUpdate on Windows
+  window_hide_caption_under_ssd     # hide CSD caption when compositor draws the title bar
+  button_honor_grab_key_focus       # grab_key_focus:false must not call set_key_focus
+  callout_tooltip_wrap_cap          # wrap long tips; max bubble width 320
   no_warn_shared_bytes              # wasm: drop unused Read/map_file stub (no allow)
   no_warn_blocking_http_wasm        # wasm: gate native HTTP helpers; keep builder API live
   no_warn_gpu_texture_wasm          # wasm: TextureAlloc imports only where adopt paths compile

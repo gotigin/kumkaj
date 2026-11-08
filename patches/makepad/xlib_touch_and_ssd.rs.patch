@@ -1,0 +1,27 @@
+--- a/platform/src/os/linux/x11/xlib_event.rs
++++ b/platform/src/os/linux/x11/xlib_event.rs
+@@ -2,6 +2,7 @@
+     event::{
+         DragEvent, DropEvent, KeyEvent, MouseDownEvent, MouseMoveEvent, MouseUpEvent,
+         PopupDismissedEvent, ScrollEvent, TextClipboardEvent, TextInputEvent, TimerEvent,
++        TouchUpdateEvent,
+         WindowCloseRequestedEvent, WindowClosedEvent, WindowDragQueryEvent, WindowGeomChangeEvent,
+     },
+     window::WindowId,
+@@ -20,10 +21,16 @@
+     MouseUp(MouseUpEvent),
+     MouseMove(MouseMoveEvent),
+     Scroll(ScrollEvent),
++    /// A finger on the glass. Desktop compositors used to turn this into a
++    /// mouse click, which made text selection and 2px scroll-capture steal
++    /// every tap. Widgets already know what to do with a real touch.
++    Touch(TouchUpdateEvent),
+ 
+     WindowDragQuery(WindowDragQueryEvent),
+     /// Caption double-click → widget maximize toggle (Wayland CSD).
+     ChromeMaximizeToggle(WindowId),
++    /// `true` when the compositor is drawing the title bar (Wayland SSD).
++    ServerDecorations(WindowId, bool),
+     WindowCloseRequested(WindowCloseRequestedEvent),
+     TextInput(TextInputEvent),
+     Drag(WindowId, DragEvent),

@@ -1,0 +1,27 @@
+--- a/platform/src/os/linux/x11/linux_x11.rs
++++ b/platform/src/os/linux/x11/linux_x11.rs
+@@ -225,6 +225,16 @@
+                     });
+                 }
+             }
++            XlibEvent::Touch(mut e) => {
++                let mut cx = self.cx.borrow_mut();
++                for t in &mut e.touches {
++                    cx.dpi_override_scale(&mut t.abs, e.window_id);
++                }
++                cx.fingers.process_touch_update_start(e.time, &e.touches);
++                let touches = e.touches.clone();
++                cx.call_event_handler(&Event::TouchUpdate(e));
++                cx.fingers.process_touch_update_end(&touches);
++            }
+             XlibEvent::MouseDown(mut e) => {
+                 let mut cx = self.cx.borrow_mut();
+                 cx.dpi_override_scale(&mut e.abs, e.window_id);
+@@ -289,6 +299,7 @@
+                 let mut cx = self.cx.borrow_mut();
+                 cx.call_event_handler(&Event::WindowChromeMaximizeToggle(window_id));
+             }
++            XlibEvent::ServerDecorations(_, _) => {}
+             XlibEvent::WindowCloseRequested(e) => {
+                 let mut cx = self.cx.borrow_mut();
+                 cx.call_event_handler(&Event::WindowCloseRequested(e))

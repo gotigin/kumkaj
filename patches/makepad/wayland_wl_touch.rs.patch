@@ -1,0 +1,951 @@
+--- a/platform/src/os/linux/wayland/wayland_state.rs
++++ b/platform/src/os/linux/wayland/wayland_state.rs
+@@ -7,6 +7,7 @@
+     MouseDownEvent, MouseMoveEvent, MouseUpEvent, TextClipboardEvent, TextInputEvent,
+     WindowClosedEvent, WindowDragQueryEvent, WindowDragQueryResponse,
+ };
++use crate::event::{TouchPoint, TouchState, TouchUpdateEvent};
+ use std::{
+     cell::{Cell, RefCell},
+     os::fd::{AsFd, AsRawFd, FromRawFd},
+@@ -21,7 +22,7 @@
+         wl_buffer, wl_callback, wl_compositor, wl_data_device, wl_data_device_manager,
+         wl_data_offer, wl_data_source, wl_keyboard, wl_output,
+         wl_pointer::{self, ButtonState},
+-        wl_registry, wl_seat, wl_shm, wl_shm_pool, wl_surface,
++        wl_registry, wl_seat, wl_shm, wl_shm_pool, wl_surface, wl_touch,
+     },
+     Connection, Dispatch, Proxy, QueueHandle, WEnum,
+ };
+@@ -99,6 +100,21 @@
+     pub(crate) cursor_manager: Option<wp_cursor_shape_manager_v1::WpCursorShapeManagerV1>,
+     pub(crate) cursor_shape: Option<wp_cursor_shape_device_v1::WpCursorShapeDeviceV1>,
+     pub(crate) pointer: Option<wl_pointer::WlPointer>,
++    /// `wl_touch`. Kept alive: dropping it destroys the object and the
++    /// compositor stops sending fingers. A finger used to arrive as
++    /// `wl_pointer`, so every touch-only path (scroll yield, long-press
++    /// select, list fling) stayed dead on a touch screen.
++    pub(crate) touch: Option<wl_touch::WlTouch>,
++    touch_points: Vec<WaylandTouch>,
++    /// Points gathered since the last `wl_touch` Frame.
++    touch_frame: Vec<(WindowId, TouchPoint)>,
++    /// Last finger position and time. A compositor that still synthesizes
++    /// a pointer click for that finger would fire the widget twice; primary
++    /// pointer events this close to it are dropped.
++    last_finger: Option<(f64, Vec2d)>,
++    /// Touch id that armed a caption drag. Pointer caption uses the same
++    /// `pending_caption_move` slot but leaves this empty.
++    caption_touch: Option<i32>,
+     pub(crate) last_mouse_pos: Vec2d,
+     /// Last caption-bar primary press (for double-click maximize, like X11 CSD).
+     /// `(time_now, root/client abs pos, window_id)`.
+@@ -174,6 +190,68 @@
+     key_repeat: Option<KeyRepeatState>,
+ }
+ 
++struct WaylandTouch {
++    id: i32,
++    window_id: WindowId,
++    pos: Vec2d,
++}
++
++/// Corner and edge bands for interactive resize. Wide enough to grab on
++/// the first try, still clear of ordinary controls.
++fn resize_edge_at(
++    pos: Vec2d,
++    ws: Vec2d,
++) -> Option<(
++    xdg_toplevel::ResizeEdge,
++    wp_cursor_shape_device_v1::Shape,
++)> {
++    let corner = 12.0;
++    let edge = 8.0;
++    if pos.x < corner && pos.y < corner {
++        Some((
++            xdg_toplevel::ResizeEdge::TopLeft,
++            wp_cursor_shape_device_v1::Shape::NwResize,
++        ))
++    } else if pos.x < corner && pos.y >= ws.y - corner {
++        Some((
++            xdg_toplevel::ResizeEdge::BottomLeft,
++            wp_cursor_shape_device_v1::Shape::SwResize,
++        ))
++    } else if pos.x >= ws.x - corner && pos.y < corner {
++        Some((
++            xdg_toplevel::ResizeEdge::TopRight,
++            wp_cursor_shape_device_v1::Shape::NeResize,
++        ))
++    } else if pos.x >= ws.x - corner && pos.y >= ws.y - corner {
++        Some((
++            xdg_toplevel::ResizeEdge::BottomRight,
++            wp_cursor_shape_device_v1::Shape::SeResize,
++        ))
++    } else if pos.x < edge {
++        Some((
++            xdg_toplevel::ResizeEdge::Left,
++            wp_cursor_shape_device_v1::Shape::WResize,
++        ))
++    } else if pos.x >= ws.x - edge {
++        Some((
++            xdg_toplevel::ResizeEdge::Right,
++            wp_cursor_shape_device_v1::Shape::EResize,
++        ))
++    } else if pos.y < edge {
++        Some((
++            xdg_toplevel::ResizeEdge::Top,
++            wp_cursor_shape_device_v1::Shape::NResize,
++        ))
++    } else if pos.y >= ws.y - edge {
++        Some((
++            xdg_toplevel::ResizeEdge::Bottom,
++            wp_cursor_shape_device_v1::Shape::SResize,
++        ))
++    } else {
++        None
++    }
++}
++
+ impl WaylandState {
+     pub fn new(event_callback: Box<dyn FnMut(&mut WaylandState, XlibEvent)>) -> Self {
+         Self {
+@@ -194,6 +272,11 @@
+             cursor_manager: None,
+             cursor_shape: None,
+             pointer: None,
++            touch: None,
++            touch_points: Vec::new(),
++            touch_frame: Vec::new(),
++            last_finger: None,
++            caption_touch: None,
+             decoration_manager: None,
+             icon_manager: None,
+             scale_manager: None,
+@@ -250,6 +333,149 @@
+             })
+     }
+ 
++    fn note_finger(&mut self, pos: Vec2d) {
++        self.last_finger = Some((self.time_now(), pos));
++    }
++
++    /// Primary pointer events that belong to a finger already delivered as touch.
++    fn finger_claims_pointer(&self, pos: Vec2d) -> bool {
++        if !self.touch_points.is_empty() || self.caption_touch.is_some() {
++            return true;
++        }
++        let Some((t, at)) = self.last_finger else {
++            return false;
++        };
++        self.time_now() - t < 0.3 && (at - pos).length() < 36.0
++    }
++
++    fn dismiss_popups_on_main_window(&mut self, window_id: WindowId) {
++        if self.windows.iter().any(|w| w.window_id == window_id) && !self.popups.is_empty() {
++            let popup_ids: Vec<_> = self.popups.iter().rev().map(|p| p.window_id).collect();
++            for popup_wid in popup_ids {
++                self.do_callback(XlibEvent::PopupDismissed(PopupDismissedEvent {
++                    window_id: popup_wid,
++                    reason: PopupDismissReason::OutsideClick,
++                }));
++            }
++        }
++    }
++
++    /// Edge resize, Alt-drag, and caption move use the touch-down serial.
++    /// Returns true when the finger must not also click a widget.
++    fn shell_takes_touch(&mut self, window_id: WindowId, pos: Vec2d, serial: u32, id: i32) -> bool {
++        let is_main = self.windows.iter().any(|w| w.window_id == window_id);
++        if !is_main {
++            return false;
++        }
++        let window_size = self
++            .windows
++            .iter()
++            .find(|w| w.window_id == window_id)
++            .map(|w| w.window_geom.inner_size);
++        if let Some(ws) = window_size {
++            if let Some((edge, _)) = resize_edge_at(pos, ws) {
++                if let (Some(seat), Some(window)) = (
++                    self.seat.as_ref(),
++                    self.windows.iter().find(|w| w.window_id == window_id),
++                ) {
++                    window.toplevel.resize(seat, serial, edge);
++                    return true;
++                }
++            }
++        }
++        if self.modifiers.alt {
++            if let (Some(seat), Some(window)) = (
++                self.seat.as_ref(),
++                self.windows.iter().find(|w| w.window_id == window_id),
++            ) {
++                window.toplevel._move(seat, serial);
++                return true;
++            }
++        }
++        let response = Rc::new(Cell::new(WindowDragQueryResponse::NoAnswer));
++        self.do_callback(XlibEvent::WindowDragQuery(WindowDragQueryEvent {
++            window_id,
++            abs: pos,
++            response: response.clone(),
++        }));
++        if matches!(response.get(), WindowDragQueryResponse::Caption) {
++            self.pending_caption_move = Some((serial, window_id, pos));
++            self.caption_touch = Some(id);
++            return true;
++        }
++        false
++    }
++
++    fn drag_caption_if_moved(&mut self, pos: Vec2d) {
++        let Some((serial, move_wid, start)) = self.pending_caption_move else {
++            return;
++        };
++        if (pos.x - start.x).abs() <= 8.0 && (pos.y - start.y).abs() <= 8.0 {
++            return;
++        }
++        if let (Some(seat), Some(window)) = (
++            self.seat.as_ref(),
++            self.windows.iter().find(|w| w.window_id == move_wid),
++        ) {
++            window.toplevel._move(seat, serial);
++        }
++        self.pending_caption_move = None;
++        self.caption_touch = None;
++        self.last_caption_click = None;
++    }
++
++    fn finish_caption_click(&mut self, wid: WindowId, pos: Vec2d) {
++        let now = self.time_now();
++        // A finger is less precise than a mouse double-click.
++        let is_double = self
++            .last_caption_click
++            .map(|(t, p, click_wid)| {
++                click_wid == wid && (now - t) < 0.35 && (pos - p).length() < 24.0
++            })
++            .unwrap_or(false);
++        if is_double {
++            self.last_caption_click = None;
++            self.do_callback(XlibEvent::ChromeMaximizeToggle(wid));
++        } else {
++            self.last_caption_click = Some((now, pos, wid));
++        }
++    }
++
++    fn queue_touch(&mut self, window_id: WindowId, id: i32, pos: Vec2d, touch_state: TouchState) {
++        let uid = u64::try_from(id).unwrap_or(0);
++        self.touch_frame.push((
++            window_id,
++            TouchPoint {
++                state: touch_state,
++                abs: pos,
++                time: self.time_now(),
++                uid,
++                rotation_angle: 0.0,
++                force: 1.0,
++                radius: dvec2(1.0, 1.0),
++                handled: Cell::new(Area::Empty),
++                sweep_lock: Cell::new(Area::Empty),
++            },
++        ));
++    }
++
++    fn emit_touch_frame(&mut self) {
++        let batch = std::mem::take(&mut self.touch_frame);
++        let time = self.time_now();
++        let modifiers = self.modifiers;
++        // One event per point, in order. A single TouchUpdate returns from
++        // the first hit, so a Down and Up in the same event would press a
++        // control and never release it — the tap looks dead.
++        for (window_id, point) in batch {
++            self.do_callback(XlibEvent::Touch(TouchUpdateEvent {
++                time,
++                window_id,
++                modifiers,
++                touches: vec![point],
++            }));
++        }
++    }
++
+     pub(crate) fn xdg_surface_for_window(
+         &self,
+         window_id: WindowId,
+@@ -289,8 +515,15 @@
+                     state.compositor = Some(compositor);
+                 }
+                 "xdg_wm_base" => {
+-                    let wm_base =
+-                        wl_registry.bind::<xdg_wm_base::XdgWmBase, _, _>(name, 1, qhandle, ());
++                    // v2 is where the shell reports tiled edges (snap to a side).
++                    // v6 adds the suspended state. Cap there: the compositor then
++                    // sends those states, and a version-1 bind never receives them.
++                    let wm_base = wl_registry.bind::<xdg_wm_base::XdgWmBase, _, _>(
++                        name,
++                        version.min(6),
++                        qhandle,
++                        (),
++                    );
+                     state.wm_base = Some(wm_base);
+                 }
+                 "wl_seat" => {
+@@ -463,101 +696,14 @@
+                 height,
+                 states,
+             } => {
+-                let now = state.time_now();
+                 let event = state
+                     .windows
+                     .iter_mut()
+                     .find(|win| win.window_id == *window_id)
+                     .map(|window| {
+-                        let is_maximized =
+-                            WaylandState::xdg_toplevel_has_state(&states, 1 /* maximized */);
+-                        let is_fullscreen =
+-                            WaylandState::xdg_toplevel_has_state(&states, 2 /* fullscreen */);
+-                        // Track what the compositor actually reported. Clear on
+-                        // floating configures so we know when a restore has stuck.
+-                        window.compositor_maximized = is_maximized || is_fullscreen;
+-                        // Only SET client_maximized from compositor. Never clear here.
+-                        // Do not drop pending_restore_size on a maximized configure —
+-                        // a stale maximized ack after unset_maximized must not cancel
+-                        // the floating size we are waiting to apply.
+-                        if is_maximized || is_fullscreen {
+-                            window.client_maximized = true;
+-                        }
+-                        let restoring = window.pending_restore_size.is_some();
+-                        let guard_active = now < window.float_guard_until;
+-                        crate::log!(
+-                            "xdg_toplevel configure {}x{} maximized={} fullscreen={} restoring={} pending={:?} guard={}",
+-                            width,
+-                            height,
+-                            is_maximized,
+-                            is_fullscreen,
+-                            restoring,
+-                            window.pending_restore_size.map(|s| (s.x, s.y)),
+-                            guard_active
+-                        );
+-                        let mut inner_size = if width > 0 && height > 0 {
+-                            dvec2(width as f64, height as f64)
+-                        } else {
+-                            window.window_geom.inner_size
+-                        };
+-                        let looks_monitor_fill = width >= 1920 && height >= 900;
+-                        // While restoring: once the compositor drops maximized/fullscreen
+-                        // from states, force the pending floating size (it may still
+-                        // configure the old fullscreen extent). While states still say
+-                        // maximized we must obey the configured size (xdg protocol).
+-                        //
+-                        // After pending clears, Mutter still sends a floating configure at
+-                        // the old maximized extent (logs: 1024×768 agree, then 2560×1048
+-                        // maximized=false). float_guard rejects those so the window stays
+-                        // at the restore size instead of alternating works/broken.
+-                        let report_fullscreen = if is_maximized || is_fullscreen {
+-                            window.float_guard_until = 0.0;
+-                            window.float_guard_size = None;
+-                            true
+-                        } else if let Some(pending) = window.pending_restore_size {
+-                            let compositor_agrees = width <= 0
+-                                || height <= 0
+-                                || ((width as f64 - pending.x).abs() < 2.0
+-                                    && (height as f64 - pending.y).abs() < 2.0);
+-                            inner_size = pending;
+-                            if compositor_agrees {
+-                                window.pending_restore_size = None;
+-                            }
+-                            false
+-                        } else if guard_active && looks_monitor_fill {
+-                            if let Some(guard) = window.float_guard_size {
+-                                crate::log!(
+-                                    "xdg_toplevel ignoring post-restore monitor-fill {}x{} → keeping {:?}",
+-                                    width,
+-                                    height,
+-                                    (guard.x, guard.y)
+-                                );
+-                                inner_size = guard;
+-                            }
+-                            false
+-                        } else {
+-                            if !looks_monitor_fill && width > 0 && height > 0 {
+-                                // Real floating size from user/compositor — drop the guard.
+-                                window.float_guard_until = 0.0;
+-                                window.float_guard_size = None;
+-                            }
+-                            false
+-                        };
+-                        WindowGeomChangeEvent {
+-                            window_id: *window_id,
+-                            old_geom: window.window_geom.clone(),
+-                            new_geom: WindowGeom {
+-                                dpi_factor: window.window_geom.dpi_factor,
+-                                can_fullscreen: false,
+-                                xr_is_presenting: false,
+-                                is_fullscreen: report_fullscreen,
+-                                is_topmost: false,
+-                                position: dvec2(0., 0.),
+-                                inner_size,
+-                                outer_size: inner_size,
+-                                ..Default::default()
+-                            },
+-                        }
++                        WaylandState::apply_xdg_toplevel_configure(
++                            window, *window_id, width, height, &states,
++                        )
+                     });
+                 if let Some(event) = event {
+                     state.do_callback(XlibEvent::WindowGeomChange(event));
+@@ -711,6 +857,99 @@
+                 }
+                 state.pointer = Some(pointer);
+             }
++            // Seat is bound at v9, which includes touch (added in v3).
++            if capabilities.contains(wl_seat::Capability::Touch) && state.touch.is_none() {
++                state.touch = Some(seat.get_touch(qhandle, ()));
++            }
++        }
++    }
++}
++
++impl Dispatch<wl_touch::WlTouch, ()> for WaylandState {
++    fn event(
++        state: &mut Self,
++        _touch: &wl_touch::WlTouch,
++        event: wl_touch::Event,
++        _: &(),
++        _conn: &Connection,
++        _qhandle: &QueueHandle<Self>,
++    ) {
++        match event {
++            wl_touch::Event::Down {
++                serial,
++                time: _,
++                surface,
++                id,
++                x,
++                y,
++            } => {
++                let Some(window_id) = state.window_id_for_surface(&surface) else {
++                    return;
++                };
++                let pos = dvec2(x as f64, y as f64);
++                state.last_mouse_pos = pos;
++                state.note_finger(pos);
++                state.dismiss_popups_on_main_window(window_id);
++                if state.shell_takes_touch(window_id, pos, serial, id) {
++                    return;
++                }
++                state.touch_points.push(WaylandTouch { id, window_id, pos });
++                state.queue_touch(window_id, id, pos, TouchState::Start);
++            }
++            wl_touch::Event::Motion {
++                time: _,
++                id,
++                x,
++                y,
++            } => {
++                let pos = dvec2(x as f64, y as f64);
++                state.last_mouse_pos = pos;
++                state.note_finger(pos);
++                if state.caption_touch == Some(id) {
++                    state.drag_caption_if_moved(pos);
++                    return;
++                }
++                let window_id = {
++                    let Some(point) = state.touch_points.iter_mut().find(|p| p.id == id) else {
++                        return;
++                    };
++                    point.pos = pos;
++                    point.window_id
++                };
++                state.queue_touch(window_id, id, pos, TouchState::Move);
++            }
++            wl_touch::Event::Up {
++                serial: _,
++                time: _,
++                id,
++            } => {
++                state.note_finger(state.last_mouse_pos);
++                if state.caption_touch == Some(id) {
++                    state.caption_touch = None;
++                    if let Some((_, wid, pos)) = state.pending_caption_move.take() {
++                        state.finish_caption_click(wid, pos);
++                    }
++                    return;
++                }
++                let Some(index) = state.touch_points.iter().position(|p| p.id == id) else {
++                    return;
++                };
++                let point = state.touch_points.remove(index);
++                state.note_finger(point.pos);
++                state.queue_touch(point.window_id, id, point.pos, TouchState::Stop);
++            }
++            wl_touch::Event::Frame => state.emit_touch_frame(),
++            wl_touch::Event::Cancel => {
++                let points = std::mem::take(&mut state.touch_points);
++                state.touch_frame.clear();
++                state.caption_touch = None;
++                state.pending_caption_move = None;
++                for point in points {
++                    state.queue_touch(point.window_id, point.id, point.pos, TouchState::Stop);
++                }
++                state.emit_touch_frame();
++            }
++            _ => {}
+         }
+     }
+ }
+@@ -1066,6 +1305,18 @@
+                                     return;
+                                 };
+ 
++                            // Client-side chrome: the compositor has no title bar, so the
++                            // shortcuts it would bind there are delivered to us. Handle
++                            // them on this key press (its serial) and do not repeat them
++                            // into the app.
++                            if state.modifiers.alt
++                                && !state.modifiers.control
++                                && !state.modifiers.logo
++                                && state.client_window_shortcut(key_code, serial)
++                            {
++                                return;
++                            }
++
+                             let primary_mod = state.modifiers.control || state.modifiers.logo;
+                             if primary_mod {
+                                 match key_code {
+@@ -1216,6 +1467,14 @@
+                 state.pointer_window = state.window_id_for_surface(&surface);
+             }
+             wl_pointer::Event::Leave { serial, surface: _ } => {
++                // A finger is not the pointer leaving. Clearing the caption
++                // slot here cancelled a touch-drag of the title bar.
++                if state.caption_touch.is_some() || !state.touch_points.is_empty() {
++                    state.pending_motion = None;
++                    state.pointer_serial = Some(serial);
++                    state.pointer_window = None;
++                    return;
++                }
+                 // Dispatch any buffered motion before the pointer leaves, so the final hover
+                 // position is delivered to the right window first.
+                 state.flush_pending_motion();
+@@ -1233,9 +1492,18 @@
+                 if let Some(window_id) = state.pointer_window {
+                     let pos = dvec2(surface_x as f64, surface_y as f64);
+                     state.last_mouse_pos = pos;
++                    // A finger already owns this contact. Delivering it again as
++                    // a mouse move starts text selection and steals the tap.
++                    if state.finger_claims_pointer(pos) {
++                        state.pending_motion = None;
++                        state.drag_caption_if_moved(pos);
++                        return;
++                    }
+ 
+-                    // Caption press → drag: start interactive move once past threshold
+-                    // (keeps the button serial valid without eating double-click).
++                    // Caption press → drag. The button serial stays valid while
++                    // that button is held; motion does not replace it. Start the
++                    // move on the first motion past the threshold and do not also
++                    // deliver that motion as a widget drag.
+                     if let Some((serial, move_wid, start)) = state.pending_caption_move {
+                         if move_wid == window_id
+                             && ((pos.x - start.x).abs() > 5.0 || (pos.y - start.y).abs() > 5.0)
+@@ -1248,6 +1516,7 @@
+                             }
+                             state.pending_caption_move = None;
+                             state.last_caption_click = None;
++                            return;
+                         }
+                     }
+ 
+@@ -1258,49 +1527,7 @@
+                         .find(|w| w.window_id == window_id)
+                         .map(|w| w.window_geom.inner_size);
+                     if let Some(ws) = window_size {
+-                        let edge = if pos.x < 10.0 && pos.y < 10.0 {
+-                            Some((
+-                                xdg_toplevel::ResizeEdge::TopLeft,
+-                                wp_cursor_shape_device_v1::Shape::NwResize,
+-                            ))
+-                        } else if pos.x < 10.0 && pos.y >= ws.y - 10.0 {
+-                            Some((
+-                                xdg_toplevel::ResizeEdge::BottomLeft,
+-                                wp_cursor_shape_device_v1::Shape::SwResize,
+-                            ))
+-                        } else if pos.x < 5.0 {
+-                            Some((
+-                                xdg_toplevel::ResizeEdge::Left,
+-                                wp_cursor_shape_device_v1::Shape::WResize,
+-                            ))
+-                        } else if pos.x >= ws.x - 10.0 && pos.y < 10.0 {
+-                            Some((
+-                                xdg_toplevel::ResizeEdge::TopRight,
+-                                wp_cursor_shape_device_v1::Shape::NeResize,
+-                            ))
+-                        } else if pos.x >= ws.x - 10.0 && pos.y >= ws.y - 10.0 {
+-                            Some((
+-                                xdg_toplevel::ResizeEdge::BottomRight,
+-                                wp_cursor_shape_device_v1::Shape::SeResize,
+-                            ))
+-                        } else if pos.x >= ws.x - 5.0 {
+-                            Some((
+-                                xdg_toplevel::ResizeEdge::Right,
+-                                wp_cursor_shape_device_v1::Shape::EResize,
+-                            ))
+-                        } else if pos.y < 5.0 {
+-                            Some((
+-                                xdg_toplevel::ResizeEdge::Top,
+-                                wp_cursor_shape_device_v1::Shape::NResize,
+-                            ))
+-                        } else if pos.y >= ws.y - 5.0 {
+-                            Some((
+-                                xdg_toplevel::ResizeEdge::Bottom,
+-                                wp_cursor_shape_device_v1::Shape::SResize,
+-                            ))
+-                        } else {
+-                            None
+-                        };
++                        let edge = resize_edge_at(pos, ws);
+                         if let Some((resize_edge, cursor_shape)) = edge {
+                             state.last_resize_edge = Some(resize_edge);
+                             if let (Some(cursor_dev), Some(serial)) =
+@@ -1336,6 +1563,17 @@
+                 button,
+                 state: key_state,
+             } => {
++                // A compositor that still synthesizes a click for the finger
++                // would toggle the control a second time (the tap looks dead).
++                if let Some(btn) = wayland_type::from_mouse(button) {
++                    if btn == MouseButton::PRIMARY
++                        && state.finger_claims_pointer(state.last_mouse_pos)
++                    {
++                        state.pending_motion = None;
++                        state.pointer_serial = Some(serial);
++                        return;
++                    }
++                }
+                 // Dispatch any buffered motion first so a MouseMove precedes this button's
+                 // down/up (and the WindowDragQuery it triggers) at the correct hover position.
+                 state.flush_pending_motion();
+@@ -1363,6 +1601,11 @@
+                     if let Some(window_id) = state.pointer_window {
+                         match key_state {
+                             WEnum::Value(ButtonState::Pressed) => {
++                                if btn == MouseButton::PRIMARY
++                                    && state.finger_claims_pointer(state.last_mouse_pos)
++                                {
++                                    return;
++                                }
+                                 if btn == MouseButton::PRIMARY {
+                                     if state.windows.iter().any(|win| win.window_id == window_id) {
+                                         // Edge resize takes priority
+@@ -1378,6 +1621,20 @@
+                                                 return;
+                                             }
+                                         }
++                                        // Alt+drag anywhere moves the window, the same
++                                        // gesture other Linux apps take from the desktop.
++                                        if state.modifiers.alt {
++                                            if let (Some(seat), Some(window)) = (
++                                                state.seat.as_ref(),
++                                                state
++                                                    .windows
++                                                    .iter()
++                                                    .find(|win| win.window_id == window_id),
++                                            ) {
++                                                window.toplevel._move(seat, serial);
++                                                return;
++                                            }
++                                        }
+ 
+                                         let response =
+                                             Rc::new(Cell::new(WindowDragQueryResponse::NoAnswer));
+@@ -1392,37 +1649,16 @@
+                                             response.get(),
+                                             WindowDragQueryResponse::Caption
+                                         ) {
+-                                            // Double-click empty caption → same maximize
+-                                            // toggle as the max button (widget path).
+-                                            // Do not start xdg_toplevel.move on the first
+-                                            // press — that ate the double-click and left a
+-                                            // divergent compositor-only toggle.
+-                                            let now = state.time_now();
+-                                            let pos = state.last_mouse_pos;
+-                                            let is_double = state
+-                                                .last_caption_click
+-                                                .map(|(t, p, wid)| {
+-                                                    wid == window_id
+-                                                        && (now - t) < 0.35
+-                                                        && (pos.x - p.x).abs() < 5.0
+-                                                        && (pos.y - p.y).abs() < 5.0
+-                                                })
+-                                                .unwrap_or(false);
+-                                            if is_double {
+-                                                state.last_caption_click = None;
+-                                                state.pending_caption_move = None;
+-                                                crate::log!(
+-                                                    "caption double-click → ChromeMaximizeToggle"
+-                                                );
+-                                                state.do_callback(
+-                                                    XlibEvent::ChromeMaximizeToggle(window_id),
+-                                                );
+-                                                return;
+-                                            }
+-                                            state.last_caption_click =
+-                                                Some((now, pos, window_id));
+-                                            state.pending_caption_move =
+-                                                Some((serial, window_id, pos));
++                                            // Arm a drag with this press's serial. A second
++                                            // press must still be able to drag: deciding
++                                            // "double-click" here turned the next attempt
++                                            // into maximize and the move only worked later.
++                                            // Two releases without a drag maximize instead.
++                                            state.pending_caption_move = Some((
++                                                serial,
++                                                window_id,
++                                                state.last_mouse_pos,
++                                            ));
+                                             return;
+                                         }
+                                     }
+@@ -1437,9 +1673,38 @@
+                                 }))
+                             }
+                             WEnum::Value(ButtonState::Released) => {
+-                                // Click without drag: keep last_caption_click for
+-                                // double-click; drop the deferred move serial.
+-                                state.pending_caption_move = None;
++                                if btn == MouseButton::PRIMARY
++                                    && state.finger_claims_pointer(state.last_mouse_pos)
++                                {
++                                    return;
++                                }
++                                // A caption press that never moved is a click.
++                                // The second such click, close in time and place,
++                                // is the maximize toggle. A drag already cleared
++                                // this on the motion that called `_move`.
++                                if btn == MouseButton::PRIMARY {
++                                    if let Some((_, wid, pos)) = state.pending_caption_move.take()
++                                    {
++                                        let now = state.time_now();
++                                        let is_double = state
++                                            .last_caption_click
++                                            .map(|(t, p, click_wid)| {
++                                                click_wid == wid
++                                                    && (now - t) < 0.35
++                                                    && (pos.x - p.x).abs() < 5.0
++                                                    && (pos.y - p.y).abs() < 5.0
++                                            })
++                                            .unwrap_or(false);
++                                        if is_double {
++                                            state.last_caption_click = None;
++                                            state.do_callback(
++                                                XlibEvent::ChromeMaximizeToggle(wid),
++                                            );
++                                        } else {
++                                            state.last_caption_click = Some((now, pos, wid));
++                                        }
++                                    }
++                                }
+                                 state.do_callback(XlibEvent::MouseUp(MouseUpEvent {
+                                     abs: state.last_mouse_pos,
+                                     button: btn,
+@@ -1628,7 +1893,25 @@
+ delegate_noop!(WaylandState: ignore wp_fractional_scale_manager_v1::WpFractionalScaleManagerV1);
+ delegate_noop!(WaylandState: ignore wl_compositor::WlCompositor);
+ delegate_noop!(WaylandState: ignore zxdg_decoration_manager_v1::ZxdgDecorationManagerV1);
+-delegate_noop!(WaylandState: ignore zxdg_toplevel_decoration_v1::ZxdgToplevelDecorationV1);
++
++impl Dispatch<zxdg_toplevel_decoration_v1::ZxdgToplevelDecorationV1, WindowId> for WaylandState {
++    fn event(
++        state: &mut Self,
++        _decoration: &zxdg_toplevel_decoration_v1::ZxdgToplevelDecorationV1,
++        event: zxdg_toplevel_decoration_v1::Event,
++        window_id: &WindowId,
++        _: &Connection,
++        _: &QueueHandle<Self>,
++    ) {
++        if let zxdg_toplevel_decoration_v1::Event::Configure { mode } = event {
++            let server = matches!(
++                mode,
++                WEnum::Value(zxdg_toplevel_decoration_v1::Mode::ServerSide)
++            );
++            state.do_callback(XlibEvent::ServerDecorations(*window_id, server));
++        }
++    }
++}
+ delegate_noop!(WaylandState: ignore xdg_toplevel_icon_v1::XdgToplevelIconV1);
+ delegate_noop!(WaylandState: ignore wl_shm::WlShm);
+ delegate_noop!(WaylandState: ignore wl_shm_pool::WlShmPool);
+@@ -1692,6 +1975,62 @@
+         }
+     }
+ 
++    /// Alt+F4/F7/F8/F9/F10. These are the shortcuts a desktop binds to a title
++    /// bar. Returns whether this key was one of them.
++    fn client_window_shortcut(&mut self, key_code: KeyCode, serial: u32) -> bool {
++        let wid = match self.keyboard_window.or(self.pointer_window) {
++            Some(wid) => wid,
++            None => return false,
++        };
++        if !self.windows.iter().any(|w| w.window_id == wid) {
++            return false;
++        }
++        match key_code {
++            KeyCode::F4 => {
++                let accept_close = Rc::new(Cell::new(true));
++                self.do_callback(XlibEvent::WindowCloseRequested(WindowCloseRequestedEvent {
++                    window_id: wid,
++                    accept_close,
++                }));
++                true
++            }
++            KeyCode::F7 => {
++                if let Some(seat) = self.seat.as_ref() {
++                    if let Some(window) = self.windows.iter().find(|w| w.window_id == wid) {
++                        window.toplevel._move(seat, serial);
++                    }
++                }
++                true
++            }
++            KeyCode::F8 => {
++                let edge = self
++                    .windows
++                    .iter()
++                    .find(|w| w.window_id == wid)
++                    .and_then(|w| resize_edge_at(self.last_mouse_pos, w.window_geom.inner_size))
++                    .map(|(edge, _)| edge)
++                    .unwrap_or(xdg_toplevel::ResizeEdge::BottomRight);
++                if let Some(seat) = self.seat.as_ref() {
++                    if let Some(window) = self.windows.iter().find(|w| w.window_id == wid) {
++                        window.toplevel.resize(seat, serial, edge);
++                    }
++                }
++                true
++            }
++            KeyCode::F9 => {
++                if let Some(window) = self.windows.iter().find(|w| w.window_id == wid) {
++                    window.toplevel.set_minimized();
++                }
++                true
++            }
++            KeyCode::F10 => {
++                self.do_callback(XlibEvent::ChromeMaximizeToggle(wid));
++                true
++            }
++            _ => false,
++        }
++    }
++
+     fn is_text_mime_type(mime_type: &str) -> bool {
+         matches!(
+             mime_type,
+@@ -1868,6 +2207,110 @@
+             .any(|chunk| u32::from_ne_bytes([chunk[0], chunk[1], chunk[2], chunk[3]]) == needle)
+     }
+ 
++    /// xdg_toplevel.state. Tiled edges are version 2 of the shell (snap to a
++    /// side). The numbers are the protocol values, not a desktop's shortcut.
++    fn xdg_state_tiled(states: &[u8]) -> bool {
++        [5, 6, 7, 8]
++            .iter()
++            .any(|bit| Self::xdg_toplevel_has_state(states, *bit))
++    }
++
++    fn same_extent(a: Vec2d, b: Vec2d) -> bool {
++        (a.x - b.x).abs() < 2.0 && (a.y - b.y).abs() < 2.0
++    }
++
++    /// Apply one xdg_toplevel configure.
++    ///
++    /// Maximized, fullscreen, and tiled (snap) sizes are the compositor's.
++    /// A floating configure that repeats the last imposed rectangle is the
++    /// old extent echoing back after a restore; keep the floating size.
++    /// A 0×0 configure means this client chooses that axis.
++    fn apply_xdg_toplevel_configure(
++        window: &mut WaylandWindow,
++        window_id: WindowId,
++        width: i32,
++        height: i32,
++        states: &[u8],
++    ) -> WindowGeomChangeEvent {
++        let is_maximized = Self::xdg_toplevel_has_state(states, 1);
++        let is_fullscreen = Self::xdg_toplevel_has_state(states, 2);
++        let tiled = Self::xdg_state_tiled(states);
++        let imposed = is_maximized || is_fullscreen || tiled;
++        let was_imposed = window.compositor_imposed;
++        window.compositor_maximized = is_maximized || is_fullscreen;
++        window.compositor_imposed = imposed;
++        let reported = if width > 0 && height > 0 {
++            Some(dvec2(width as f64, height as f64))
++        } else {
++            None
++        };
++        crate::log!(
++            "xdg_toplevel configure {}x{} maximized={} fullscreen={} tiled={} imposed={}",
++            width,
++            height,
++            is_maximized,
++            is_fullscreen,
++            tiled,
++            imposed
++        );
++        let inner_size = if imposed {
++            if !was_imposed {
++                let cur = window.window_geom.inner_size;
++                if cur.x >= 320.0 && cur.y >= 240.0 {
++                    window.restore_inner_size = Some(cur);
++                }
++            }
++            window.pending_restore_size = None;
++            if is_maximized || is_fullscreen {
++                window.client_maximized = true;
++            }
++            let size = reported.unwrap_or(window.window_geom.inner_size);
++            window.imposed_extent = Some(size);
++            size
++        } else {
++            let stale = reported
++                .zip(window.imposed_extent)
++                .is_some_and(|(size, old)| Self::same_extent(size, old));
++            if stale {
++                window
++                    .pending_restore_size
++                    .or(window.restore_inner_size)
++                    .unwrap_or(window.window_geom.inner_size)
++            } else if let Some(size) = reported {
++                window.pending_restore_size = None;
++                window.imposed_extent = None;
++                window.restore_inner_size = Some(size);
++                window.client_maximized = false;
++                size
++            } else if was_imposed {
++                window
++                    .restore_inner_size
++                    .unwrap_or(window.window_geom.inner_size)
++            } else {
++                window.window_geom.inner_size
++            }
++        };
++        // Ack is not enough. The shell applies this configure on the next
++        // commit. A snap onto the size we already have must still commit,
++        // or the compositor repeats the configure and shortcuts look dead.
++        window.configure_commit_owed = true;
++        WindowGeomChangeEvent {
++            window_id,
++            old_geom: window.window_geom.clone(),
++            new_geom: WindowGeom {
++                dpi_factor: window.window_geom.dpi_factor,
++                can_fullscreen: false,
++                xr_is_presenting: false,
++                is_fullscreen: is_maximized || is_fullscreen,
++                is_topmost: false,
++                position: dvec2(0., 0.),
++                inner_size,
++                outer_size: inner_size,
++                ..Default::default()
++            },
++        }
++    }
++
+     fn do_callback(&mut self, event: XlibEvent) {
+         if let Some(mut callback) = self.event_callback.take() {
+             callback(self, event);

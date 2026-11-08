@@ -1,0 +1,44 @@
+--- a/widgets/src/window.rs
++++ b/widgets/src/window.rs
+@@ -331,6 +331,9 @@
+     demo: bool,
+     #[live]
+     show_caption_bar: bool,
++    /// Wayland compositor is drawing the title bar. Our caption would be a second one.
++    #[rust]
++    server_decorations: bool,
+     #[rust]
+     demo_next_frame: NextFrame,
+     #[live]
+@@ -1027,11 +1030,13 @@
+                 // Only show the caption bar if we're drawing our own window chrome
+                 // (e.g. Wayland without server-side decorations). On X11 the WM
+                 // provides native decorations, so we hide the in-app caption bar.
+-                let custom_chrome = params.custom_window_chrome;
++                let os_chrome = params.custom_window_chrome;
++                let custom_chrome = os_chrome && !self.server_decorations;
+                 self.view(cx, ids!(caption_bar))
+                     .set_visible(cx, self.show_caption_bar && custom_chrome);
+-                if custom_chrome {
+-                    self.view(cx, ids!(windows_buttons)).set_visible(cx, true);
++                if os_chrome {
++                    self.view(cx, ids!(windows_buttons))
++                        .set_visible(cx, custom_chrome);
+                 }
+             }
+             OsType::LinuxDirect | OsType::Android(_) => {
+@@ -1633,6 +1638,14 @@
+                 }
+                 true
+             }
++            Event::WindowServerDecorations(window_id, server) => {
++                if *window_id == self.window.window_id() {
++                    self.server_decorations = *server;
++                    self.sync_caption_bar_state(cx);
++                    self.view.redraw(cx);
++                }
++                *window_id != self.window.window_id()
++            }
+             Event::WindowGeomChange(ev) => {
+                 if ev.window_id == self.window.window_id() {
+                     // The caption / buttons may have been re-laid-out; drop the WindowDragQuery

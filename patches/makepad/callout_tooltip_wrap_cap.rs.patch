@@ -1,0 +1,123 @@
+--- a/widgets/src/callout_tooltip.rs
++++ b/widgets/src/callout_tooltip.rs
+@@ -102,6 +102,8 @@
+             tooltip_label := Label {
+                 width: Fit
+                 height: Fit
++                // Must wrap when CalloutTooltip clamps width — never crop mid-word.
++                flow: Right{wrap: true}
+                 draw_text +: {
+                     text_style: theme.font_regular {font_size: 9},
+                     color: #FFF
+@@ -315,17 +317,21 @@
+             };
+         }
+ 
++        // Long tips must wrap — never a single cropped line. Cap readable
++        // bubble width on every OS (phone and desktop).
++        const MAX_TIP_W: f64 = 320.0;
++        let wrap_cap = avail_width.min(MAX_TIP_W).max(24.0);
++
+         match options.position {
+             TooltipPosition::Top | TooltipPosition::Bottom => {
+                 // Center the tooltip horizontally on the target widget.
+                 let mut desired_x = widget_center_x - expected_dimension.x * 0.5;
+-                if expected_dimension.x >= avail_width {
+-                    // Tooltip is (or would be) wider than the available area:
+-                    // pin to the available left edge and clamp the width so
+-                    // the text wraps.
++                if expected_dimension.x >= wrap_cap {
++                    // Wider than the readable/available cap: pin and wrap.
+                     fixed_width = true;
+-                    width_to_be_fixed = avail_width;
+-                    desired_x = avail_left;
++                    width_to_be_fixed = wrap_cap;
++                    desired_x = (widget_center_x - wrap_cap * 0.5)
++                        .clamp(avail_left, (avail_right - wrap_cap).max(avail_left));
+                 } else {
+                     // Clamp so the tooltip stays inside the available rect.
+                     if desired_x < avail_left {
+@@ -367,11 +373,16 @@
+                 }
+             }
+             TooltipPosition::Left => {
+-                tooltip_pos.x = pos.x - expected_dimension.x - triangle_height;
++                let room = (pos.x - triangle_height - avail_left).max(24.0);
++                let use_w = expected_dimension.x.min(room).min(wrap_cap);
++                if expected_dimension.x > use_w {
++                    fixed_width = true;
++                    width_to_be_fixed = use_w;
++                }
++                tooltip_pos.x = pos.x - use_w - triangle_height;
+                 if tooltip_pos.x < avail_left {
+                     fixed_width = true;
+-                    // Leave room for the callout arrow.
+-                    width_to_be_fixed = (pos.x - triangle_height - avail_left).max(24.0);
++                    width_to_be_fixed = room.min(wrap_cap);
+                     tooltip_pos.x = avail_left;
+                 }
+ 
+@@ -387,9 +398,10 @@
+             TooltipPosition::Right => {
+                 tooltip_pos.x = pos.x + size.x;
+                 let available_x = (avail_right - tooltip_pos.x - triangle_height * 2.0).max(0.0);
+-                if expected_dimension.x > available_x {
++                let use_w = expected_dimension.x.min(available_x).min(wrap_cap);
++                if expected_dimension.x > use_w {
+                     fixed_width = true;
+-                    width_to_be_fixed = available_x.max(24.0);
++                    width_to_be_fixed = use_w.max(24.0);
+                 }
+ 
+                 let mut desired_y = widget_center_y - expected_dimension.y * 0.5;
+@@ -475,6 +487,11 @@
+         // resolve to the full pass width on some platforms instead of the
+         // parent's constrained inner width, which is the iOS bug we hit.
+         // `Size::Fixed` removes that ambiguity entirely.
++        //
++        // Label width must also leave room for content padding **and** the
++        // callout triangle inset the SDF draws inside the view — otherwise
++        // wrapped lines are measured wider than the visible bubble and crop
++        // on the right (every InfoHelp tip, not one screen).
+         const CONTENT_PADDING: f64 = 15.0;
+         let content_view = tooltip.view(cx, ids!(content));
+         if let Some(mut view) = content_view.borrow_mut() {
+@@ -493,7 +510,10 @@
+             label.draw_text.color = text_color;
+             if position_calc.fixed_width {
+                 let fixed_width = position_calc.width_to_be_fixed.max(24.0);
+-                let label_width = (fixed_width - CONTENT_PADDING * 2.0).max(24.0);
++                let label_width = (fixed_width
++                    - CONTENT_PADDING * 2.0
++                    - (triangle_height as f64) * 2.0)
++                    .max(24.0);
+                 label.walk.width = Size::Fixed(label_width);
+             } else {
+                 label.walk.width = Size::fit();
+@@ -788,8 +808,9 @@
+             calc.fixed_width,
+             "tooltip wider than screen must trigger fixed_width"
+         );
+-        assert_eq!(calc.tooltip_pos.x, 0.0);
+-        assert_eq!(calc.width_to_be_fixed, 400.0);
++        // Centered on widget then clamped; width capped at MAX_TIP_W (320).
++        assert_eq!(calc.width_to_be_fixed, 320.0);
++        assert_eq!(calc.tooltip_pos.x, 80.0);
+     }
+ 
+     #[test]
+@@ -828,11 +849,9 @@
+         let calc = CalloutTooltip::calculate_position(&options, widget_rect, expected, avail, 7.5);
+ 
+         assert!(calc.fixed_width);
+-        assert_eq!(
+-            calc.tooltip_pos.x, 60.0,
+-            "should pin to safe-area left, not 0"
+-        );
+-        assert_eq!(calc.width_to_be_fixed, 680.0, "should use safe-area width");
++        assert_eq!(calc.width_to_be_fixed, 320.0, "readable wrap cap");
++        // Centered would be 565; clamp so right edge stays in safe area (740-320=420).
++        assert_eq!(calc.tooltip_pos.x, 420.0);
+     }
+ 
+     #[test]

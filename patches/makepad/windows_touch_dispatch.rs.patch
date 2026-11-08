@@ -1,0 +1,18 @@
+--- a/platform/src/os/windows/windows.rs
++++ b/platform/src/os/windows/windows.rs
+@@ -289,6 +289,15 @@
+                 let time_now = with_win32_app(|app| app.time_now());
+                 self.paint_tick(time_now, true, d3d11_cx, d3d11_windows);
+             }
++            Win32Event::Touch(mut e) => {
++                for t in &mut e.touches {
++                    self.dpi_override_scale(&mut t.abs, e.window_id);
++                }
++                self.fingers.process_touch_update_start(e.time, &e.touches);
++                let touches = e.touches.clone();
++                self.call_event_handler(&Event::TouchUpdate(e));
++                self.fingers.process_touch_update_end(&touches);
++            }
+             Win32Event::MouseDown(mut e) => {
+                 self.dpi_override_scale(&mut e.abs, e.window_id);
+                 self.fingers.process_tap_count(e.abs, e.time);

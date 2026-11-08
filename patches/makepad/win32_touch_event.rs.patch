@@ -1,0 +1,24 @@
+--- a/platform/src/os/windows/win32_event.rs
++++ b/platform/src/os/windows/win32_event.rs
+@@ -2,8 +2,8 @@
+     event::{
+         DragEvent, DropEvent, KeyEvent, MouseDownEvent, MouseLeaveEvent, MouseMoveEvent,
+         MouseUpEvent, PopupDismissedEvent, ScrollEvent, TextClipboardEvent, TextInputEvent,
+-        TimerEvent, WindowCloseRequestedEvent, WindowClosedEvent, WindowDragQueryEvent,
+-        WindowGeomChangeEvent,
++        TimerEvent, TouchUpdateEvent, WindowCloseRequestedEvent, WindowClosedEvent,
++        WindowDragQueryEvent, WindowGeomChangeEvent,
+     },
+     window::WindowId,
+ };
+@@ -35,6 +35,10 @@
+     MouseMove(MouseMoveEvent),
+     MouseLeave(MouseLeaveEvent),
+     Scroll(ScrollEvent),
++    /// A finger. Windows turns touch into WM_LBUTTON* unless we read the
++    /// touch signature and send this instead, so text selection and scroll
++    /// capture were treating every tap as a mouse drag.
++    Touch(TouchUpdateEvent),
+ 
+     WindowDragQuery(WindowDragQueryEvent),
+     WindowCloseRequested(WindowCloseRequestedEvent),

@@ -1,0 +1,176 @@
+--- a/platform/src/os/linux/wayland/linux_wayland.rs
++++ b/platform/src/os/linux/wayland/linux_wayland.rs
+@@ -232,10 +232,14 @@
+                         re.new_geom = cx_window.native_window_geom_to_layout(re.new_geom);
+                     }
+                     cx.windows[re.window_id].window_geom = re.new_geom.clone();
+-                    // redraw when the size or scale changed
+-                    if geom_changed {
+-                        if let Some(main_pass_id) = cx.windows[re.window_id].main_pass_id {
++                    // Size change: rebuild. Same pixels (a snap onto the
++                    // current rectangle): still present, so the configure
++                    // commit the shell is waiting for actually happens.
++                    if let Some(main_pass_id) = cx.windows[re.window_id].main_pass_id {
++                        if geom_changed {
+                             cx.redraw_pass_and_child_passes(main_pass_id);
++                        } else if window.configure_commit_owed {
++                            cx.repaint_pass(main_pass_id);
+                         }
+                     }
+                 } else if let Some(window) = state
+@@ -342,6 +346,28 @@
+                 cx.fingers.cycle_hover_area(live_id!(mouse).into());
+                 cx.fingers.switch_captures();
+             }
++            XlibEvent::Touch(mut e) => {
++                let mut cx = self.cx.borrow_mut();
++                for t in &mut e.touches {
++                    cx.dpi_override_scale(&mut t.abs, e.window_id);
++                }
++                // A synthesized mouse press can land before the touch frame.
++                // Release that capture without a MouseUp, or the click fires
++                // twice and the mouse button stays down.
++                if e.touches
++                    .iter()
++                    .any(|t| matches!(t.state, crate::event::TouchState::Start))
++                {
++                    if let Some((button, _)) = cx.fingers.first_mouse_button {
++                        cx.fingers.mouse_up(button);
++                        cx.fingers.cycle_hover_area(live_id!(mouse).into());
++                    }
++                }
++                cx.fingers.process_touch_update_start(e.time, &e.touches);
++                let touches = e.touches.clone();
++                cx.call_event_handler(&Event::TouchUpdate(e));
++                cx.fingers.process_touch_update_end(&touches);
++            }
+             XlibEvent::MouseDown(mut e) => {
+                 let mut cx = self.cx.borrow_mut();
+                 cx.dpi_override_scale(&mut e.abs, e.window_id);
+@@ -371,6 +397,10 @@
+                 let mut cx = self.cx.borrow_mut();
+                 cx.call_event_handler(&Event::WindowChromeMaximizeToggle(window_id));
+             }
++            XlibEvent::ServerDecorations(window_id, server) => {
++                let mut cx = self.cx.borrow_mut();
++                cx.call_event_handler(&Event::WindowServerDecorations(window_id, server));
++            }
+             XlibEvent::WindowCloseRequested(e) => {
+                 let window_id = e.window_id;
+                 let accept_close = e.accept_close.clone();
+@@ -782,20 +812,12 @@
+                                 );
+                             }
+                             window.pending_restore_size = None;
+-                            window.float_guard_until = 0.0;
+-                            window.float_guard_size = None;
+                             let cur = window.window_geom.inner_size;
+-                            if cur.x >= 320.0 && cur.y >= 240.0 {
+-                                // Do not remember a near-fullscreen extent as the
+-                                // floating restore size (persisted max sizes, failed
+-                                // restores). Prefer a conventional desktop size.
+-                                let looks_monitor =
+-                                    cur.x >= 1920.0 && cur.y >= 900.0;
+-                                window.restore_inner_size = Some(if looks_monitor {
+-                                    dvec2(1024.0, 768.0)
+-                                } else {
+-                                    cur
+-                                });
++                            // Remember the size the user had while the compositor
++                            // did not own the window. A snapped or maximized size
++                            // is not that size.
++                            if !window.compositor_imposed && cur.x >= 320.0 && cur.y >= 240.0 {
++                                window.restore_inner_size = Some(cur);
+                             }
+                             crate::log!(
+                                 "MaximizeWindow set_maximized from {:?} restore_as={:?}",
+@@ -825,7 +847,6 @@
+                     }
+                 }
+                 CxOsOp::RestoreWindow(window_id) | CxOsOp::NormalizeWindow(window_id) => {
+-                    let guard_until = state.time_now() + 2.0;
+                     if let Some(window) =
+                         state.windows.iter_mut().find(|w| w.window_id == window_id)
+                     {
+@@ -834,16 +855,12 @@
+                         window.client_maximized = false;
+                         window.window_geom.is_fullscreen = false;
+                         // Wayland floating size = whatever we commit next. Without
+-                        // an explicit shrink, the surface stays fullscreen-sized.
+-                        // Hold the size across later configures that still report
+-                        // the maximized extent after unset_maximized.
++                        // an explicit shrink, the surface stays at the imposed extent.
++                        // Later floating configures that repeat that extent are ignored.
+                         const DEFAULT: Vec2d = dvec2(1024.0, 768.0);
+                         let size = window
+                             .restore_inner_size
+-                            .take()
+                             .filter(|s| s.x >= 320.0 && s.y >= 240.0)
+-                            // Reject near-monitor sizes saved from a previous max.
+-                            .filter(|s| !(s.x >= 1920.0 && s.y >= 900.0))
+                             .unwrap_or(DEFAULT);
+                         crate::log!(
+                             "RestoreWindow unset_maximized → {:?} (compositor_maximized was {})",
+@@ -851,10 +868,7 @@
+                             window.compositor_maximized
+                         );
+                         window.pending_restore_size = Some(size);
+-                        // Mutter follows a correct float configure with another at the
+-                        // old max extent (maximized=false). Guard ~2s against that.
+-                        window.float_guard_size = Some(size);
+-                        window.float_guard_until = guard_until;
++                        window.restore_inner_size = Some(size);
+                         window.window_geom.inner_size = size;
+                         window.window_geom.outer_size = size;
+                         let native_geom = window.window_geom.clone();
+@@ -886,10 +900,10 @@
+                     if let Some(window) =
+                         state.windows.iter_mut().find(|w| w.window_id == window_id)
+                     {
+-                        if window.window_geom.is_fullscreen {
++                        if window.compositor_imposed || window.window_geom.is_fullscreen {
+                             crate::error!(
+-                                "ResizeWindow ignored: a maximized or fullscreen Wayland toplevel \
+-                                 must keep the size the compositor configured."
++                                "ResizeWindow ignored: maximized, fullscreen, or snapped \
++                                 Wayland toplevels keep the size the compositor configured."
+                             );
+                         } else if let Some(size) = crate::screen::sanitize_resize(size) {
+                             // Wayland surface coordinates are already logical points, so unlike
+@@ -1285,7 +1299,19 @@
+                     // (it withholds callbacks entirely while the window is occluded or
+                     // minimized). Skip the present and leave the pass dirty so the
+                     // window repaints when the callback arrives.
+-                    if self.frame_pacing && state.is_frame_callback_pending(window_id) {
++                    let owe_configure = state
++                        .windows
++                        .iter()
++                        .find(|w| w.window_id == window_id)
++                        .is_some_and(|w| w.configure_commit_owed);
++                    // A pending frame callback must not postpone the commit
++                    // that applies a configure. The compositor can withhold
++                    // the callback until that commit, and shortcuts then sit
++                    // dead until some later unrelated redraw.
++                    if self.frame_pacing
++                        && !owe_configure
++                        && state.is_frame_callback_pending(window_id)
++                    {
+                         continue;
+                     }
+                     let mut presented = false;
+@@ -1377,6 +1403,15 @@
+                     if self.frame_pacing && presented {
+                         state.set_frame_callback_pending(window_id);
+                     }
++                    if presented {
++                        if let Some(window) = state
++                            .windows
++                            .iter_mut()
++                            .find(|w| w.window_id == window_id)
++                        {
++                            window.configure_commit_owed = false;
++                        }
++                    }
+                 }
+                 CxDrawPassParent::DrawPass(_) => {
+                     //let dpi_factor = self.get_delegated_dpi_factor(parent_pass_id);

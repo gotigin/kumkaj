@@ -1,0 +1,150 @@
+--- a/platform/src/os/windows/win32_window.rs
++++ b/platform/src/os/windows/win32_window.rs
+@@ -77,7 +77,8 @@
+                     },
+                     WindowsAndMessaging::{
+                         CreateWindowExW, DefWindowProcW, DestroyWindow, GetClientRect,
+-                        GetWindowLongPtrW, GetWindowRect, MoveWindow, PostMessageW,
++                        GetWindowLongPtrW, GetWindowRect, MoveWindow,
++                        PostMessageW,
+                         SetLayeredWindowAttributes, SetWindowLongPtrW, SetWindowPos,
+                         ShowWindow,
+                         CW_USEDEFAULT, GWLP_USERDATA, GWL_EXSTYLE, GWL_STYLE, HTBOTTOM,
+@@ -184,12 +185,30 @@
+     RegisterDragDrop(hwnd.into_param().abi(), pdroptarget.into_param().abi()).ok()
+ }
+ */
++// `GetMessageExtraInfo` is not in the vendored `windows` bindings.
++#[inline]
++unsafe fn GetMessageExtraInfo() -> LPARAM {
++    windows_core::link!("user32.dll" "system" fn GetMessageExtraInfo() -> isize);
++    unsafe { LPARAM(GetMessageExtraInfo()) }
++}
++
++/// Windows stamps this on WM_MOUSE* that it synthesized from a finger or
++/// pen. A real mouse message never carries it.
++fn message_from_touch() -> bool {
++    const TOUCH_OR_PEN: isize = 0xFF515700;
++    unsafe { (GetMessageExtraInfo().0 & 0xFFFFFF00) == TOUCH_OR_PEN }
++}
++
+ //#[derive(Clone)]
+ pub struct Win32Window {
+     pub window_id: WindowId,
+     pub last_window_geom: WindowGeom,
+ 
+     pub mouse_buttons_down: usize,
++    /// The primary button stream is a finger (WM_LBUTTON* with the touch
++    /// signature). Moves and the lift are delivered as touch, not as a mouse
++    /// drag that selects text and steals the tap.
++    touch_finger: bool,
+     pub last_key_mod: KeyModifiers,
+     // Caret/composition line rect in window-relative logical points (size
+     // includes the line height); used to keep the IME candidate off the line.
+@@ -600,6 +619,7 @@
+         Win32Window {
+             window_id,
+             mouse_buttons_down: 0,
++            touch_finger: false,
+             last_window_geom: WindowGeom::default(),
+             last_key_mod: KeyModifiers::default(),
+             ime_rect: Rect::default(),
+@@ -664,6 +684,7 @@
+         Win32Window {
+             window_id,
+             mouse_buttons_down: 0,
++            touch_finger: false,
+             last_window_geom: WindowGeom::default(),
+             last_key_mod: KeyModifiers::default(),
+             ime_rect: Rect::default(),
+@@ -870,11 +891,17 @@
+                 window.send_scroll(Vec2d { x: 0.0, y: -delta }, Self::get_key_modifiers(), true);
+             }
+             WM_LBUTTONDOWN => {
++                // The position lives in this message. A finger often has no
++                // earlier move, and the previous mouse point is the wrong place.
++                window.last_mouse_pos = window.get_mouse_pos_from_lparam(lparam);
+                 // hack for drag/drop: save which window was last clicked on in win32_app
+                 with_win32_app(|app| app.currently_clicked_window_id = Some(window.window_id));
+                 window.send_mouse_down(MouseButton::PRIMARY, Self::get_key_modifiers());
+             }
+-            WM_LBUTTONUP => window.send_mouse_up(MouseButton::PRIMARY, Self::get_key_modifiers()),
++            WM_LBUTTONUP => {
++                window.last_mouse_pos = window.get_mouse_pos_from_lparam(lparam);
++                window.send_mouse_up(MouseButton::PRIMARY, Self::get_key_modifiers());
++            }
+             WM_RBUTTONDOWN => {
+                 window.send_mouse_down(MouseButton::SECONDARY, Self::get_key_modifiers())
+             }
+@@ -1865,6 +1892,16 @@
+     }
+ 
+     pub fn send_mouse_down(&mut self, button: MouseButton, modifiers: KeyModifiers) {
++        if button == MouseButton::PRIMARY && message_from_touch() {
++            self.touch_finger = true;
++            if self.mouse_buttons_down == 0 {
++                unsafe {
++                    SetCapture(self.hwnd);
++                }
++            }
++            self.emit_touch(TouchState::Start, modifiers);
++            return;
++        }
+         if self.mouse_buttons_down == 0 {
+             unsafe {
+                 SetCapture(self.hwnd);
+@@ -1882,6 +1919,16 @@
+     }
+ 
+     pub fn send_mouse_up(&mut self, button: MouseButton, modifiers: KeyModifiers) {
++        if self.touch_finger && button == MouseButton::PRIMARY {
++            self.touch_finger = false;
++            if self.mouse_buttons_down == 0 {
++                unsafe {
++                    ReleaseCapture().unwrap();
++                }
++            }
++            self.emit_touch(TouchState::Stop, modifiers);
++            return;
++        }
+         if self.mouse_buttons_down > 1 {
+             self.mouse_buttons_down -= 1;
+         } else {
+@@ -1901,6 +1948,10 @@
+ 
+     pub fn send_mouse_move(&mut self, pos: Vec2d, modifiers: KeyModifiers) {
+         self.last_mouse_pos = pos;
++        if self.touch_finger {
++            self.emit_touch(TouchState::Move, modifiers);
++            return;
++        }
+         self.do_callback(Win32Event::MouseMove(MouseMoveEvent {
+                 lock_delta: Default::default(),
+             window_id: self.window_id,
+@@ -1911,6 +1962,26 @@
+         }));
+     }
+ 
++    fn emit_touch(&mut self, state: TouchState, modifiers: KeyModifiers) {
++        let time = self.time_now();
++        self.do_callback(Win32Event::Touch(TouchUpdateEvent {
++            time,
++            window_id: self.window_id,
++            modifiers,
++            touches: vec![TouchPoint {
++                state,
++                abs: self.last_mouse_pos,
++                time,
++                uid: 1,
++                rotation_angle: 0.0,
++                force: 1.0,
++                radius: dvec2(1.0, 1.0),
++                handled: Cell::new(Area::Empty),
++                sweep_lock: Cell::new(Area::Empty),
++            }],
++        }));
++    }
++
+     pub fn send_mouse_leave(&mut self, pos: Vec2d, modifiers: KeyModifiers) {
+         self.last_mouse_pos = pos;
+         self.do_callback(Win32Event::MouseLeave(MouseLeaveEvent {

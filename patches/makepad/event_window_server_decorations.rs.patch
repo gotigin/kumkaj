@@ -1,0 +1,28 @@
+--- a/platform/src/event/event.rs
++++ b/platform/src/event/event.rs
+@@ -164,6 +164,9 @@
+     /// Wayland emits this instead of toggling in the compositor path so chrome latch,
+     /// restore size, and Mutter float-guard stay in one place (`Window::toggle_chrome_maximize`).
+     WindowChromeMaximizeToggle(WindowId),
++    /// Wayland compositor granted or refused server-side decorations.
++    /// `true` means the OS title bar owns move, resize, and window shortcuts.
++    WindowServerDecorations(WindowId, bool),
+     VirtualKeyboard(VirtualKeyboardEvent),
+     ClearAtlasses,
+     /// Clear all hover/pressed visual state, e.g. after an overlay that
+@@ -306,6 +309,7 @@
+             16 => "WindowClosed",
+             17 => "WindowGeomChange",
+             73 => "WindowChromeMaximizeToggle",
++            74 => "WindowServerDecorations",
+             18 => "VirtualKeyboard",
+             19 => "ClearAtlasses",
+             72 => "ClearHover",
+@@ -397,6 +401,7 @@
+             Self::WindowClosed(_) => 16,
+             Self::WindowGeomChange(_) => 17,
+             Self::WindowChromeMaximizeToggle(_) => 73,
++            Self::WindowServerDecorations(_, _) => 74,
+             Self::VirtualKeyboard(_) => 18,
+             Self::ClearAtlasses => 19,
+             Self::ClearHover => 72,

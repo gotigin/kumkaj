@@ -1,0 +1,67 @@
+--- a/platform/src/os/linux/wayland/opengl_wayland.rs
++++ b/platform/src/os/linux/wayland/opengl_wayland.rs
+@@ -57,21 +57,23 @@
+     pub client_maximized: bool,
+     /// Last configure `states` included maximized or fullscreen. Updated only
+     /// from the compositor — never optimistically. A second `set_maximized`
+-    /// while this is true makes Mutter try another output on multi-monitor.
++    /// while this is true makes some compositors jump to another output.
+     pub compositor_maximized: bool,
+-    /// Floating size to re-apply after unset_maximized (Wayland will not
+-    /// shrink the surface for us if we keep committing a fullscreen extent).
++    /// Compositor owns the size: maximized, fullscreen, or snapped to an edge.
++    /// A client resize must not overwrite that.
++    pub compositor_imposed: bool,
++    /// Last size the compositor imposed. A later floating configure of this
++    /// exact rectangle is the old extent echoing back, not a new placement.
++    pub imposed_extent: Option<Vec2d>,
++    /// Floating size to re-apply when the compositor releases the window.
+     pub restore_inner_size: Option<Vec2d>,
+-    /// While set, floating configures must keep this size. Compositors often
+-    /// ack unset_maximized with the previous fullscreen extent; without this
+-    /// the surface never shrinks.
++    /// While set, a floating configure that is not this size is still the
++    /// old imposed extent. Cleared once the compositor agrees.
+     pub pending_restore_size: Option<Vec2d>,
+-    /// After restore, Mutter often follows a correct 1024×768 configure with a
+-    /// second floating configure at the old maximized extent (2560×1048) with
+-    /// maximized=false. Keep rejecting those until this time (WaylandState::time_now).
+-    pub float_guard_until: f64,
+-    /// Size to force while `float_guard_until` is active.
+-    pub float_guard_size: Option<Vec2d>,
++    /// An xdg configure was acked and still needs a surface commit. The
++    /// compositor will not apply a snap (and will resend the configure)
++    /// until that commit, even when the pixel size did not change.
++    pub configure_commit_owed: bool,
+     pub cal_size: Vec2d,
+     pub wl_egl_surface: WlEglSurface,
+     pub egl_surface: EGLSurface,
+@@ -112,8 +114,12 @@
+         Self::set_wayland_icon(icon_manager, shm, &toplevel, qhandle);
+ 
+         let decoration = decoration_manager.map(|manager| {
+-            let decoration = manager.get_toplevel_decoration(&toplevel, qhandle, ());
+-            decoration.set_mode(zxdg_toplevel_decoration_v1::Mode::ClientSide);
++            // Ask the compositor for a real title bar so move, resize, snap,
++            // and the desktop's keyboard shortcuts work like any other window.
++            // Compositors that only do client-side chrome answer with Configure
++            // and we keep our own caption.
++            let decoration = manager.get_toplevel_decoration(&toplevel, qhandle, window_id);
++            decoration.set_mode(zxdg_toplevel_decoration_v1::Mode::ServerSide);
+             decoration
+         });
+ 
+@@ -184,10 +190,11 @@
+             window_geom: geom,
+             client_maximized: is_fullscreen,
+             compositor_maximized: false,
++            compositor_imposed: false,
++            imposed_extent: None,
+             restore_inner_size: None,
+             pending_restore_size: None,
+-            float_guard_until: 0.0,
+-            float_guard_size: None,
++            configure_commit_owed: false,
+             wl_egl_surface,
+             egl_surface,
+         }

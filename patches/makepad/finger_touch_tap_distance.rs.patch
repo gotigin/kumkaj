@@ -1,0 +1,38 @@
+--- a/platform/src/event/finger.rs
++++ b/platform/src/event/finger.rs
+@@ -281,6 +281,11 @@
+ //       See Android's ViewConfiguration.getLongPressTimeout().
+ pub const TAP_COUNT_TIME: f64 = 0.5;
+ pub const TAP_COUNT_DISTANCE: f64 = 5.0;
++/// How far a finger may drift and still be a tap. A mouse stays at
++/// `TAP_COUNT_DISTANCE`. A finger always jitters, and a scrolling page
++/// does not take the gesture until 8px, so a 6px touch was neither a tap
++/// nor a scroll — the control looked dead.
++pub const TOUCH_TAP_DISTANCE: f64 = 24.0;
+ 
+ #[derive(Clone, Debug, Default, Eq, Hash, Copy, PartialEq, FromLiveId)]
+ pub struct DigitId(pub LiveId);
+@@ -826,8 +831,13 @@
+         if self.has_long_press_occurred {
+             return false;
+         }
++        let max_move = if self.device.is_touch() {
++            TOUCH_TAP_DISTANCE
++        } else {
++            TAP_COUNT_DISTANCE
++        };
+         self.time - self.capture_time < TAP_COUNT_TIME
+-            && (self.abs_start - self.abs).length() < TAP_COUNT_DISTANCE
++            && (self.abs_start - self.abs).length() < max_move
+     }
+ }
+ 
+@@ -1191,7 +1201,7 @@
+                                 // significantly from start (handles keyboard dismissal moving widgets)
+                                 let layout_shift_fallback = (e.time - capture.time
+                                     < TAP_COUNT_TIME)
+-                                    && ((t.abs - capture.abs_start).length() < TAP_COUNT_DISTANCE);
++                                    && ((t.abs - capture.abs_start).length() < TOUCH_TAP_DISTANCE);
+ 
+                                 let is_over = rect_check || layout_shift_fallback;
+ 
