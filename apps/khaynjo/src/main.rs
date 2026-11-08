@@ -68,6 +68,7 @@ include!("amount_visibility.rs");
 include!("app_state_impl.rs");
 include!("ui_script.rs");
 include!("helpers.rs");
+include!("focus_chain.rs");
 include!("widgets/product_menu_floor.rs");
 include!("widgets/report_sidebar.rs");
 include!("widgets/pick_lists.rs");

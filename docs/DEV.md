@@ -1172,6 +1172,12 @@ Makepad visual traps found this way (do not reintroduce):
 15. **Native input behaviour, every app:** a visible page scrollbar; ↑/↓ a
     line, PgUp/PgDn a screenful, Home/End the ends (skipped only while a
     text field has focus — a focused button must not swallow them);
+    **Tab / Shift+Tab** on multi-field forms only (Client pair, Lock login,
+    Onboard, Order pay / booking desk amount rows, Settings brand/country) —
+    explicit FieldInput chains in each app’s `focus_chain.rs` (not food tiles
+    or nav chrome). Soft-keyboard Next / Enter advances to the next field in
+    the same chain; the last field keeps today’s submit. Makepad `NavControl`
+    still walks Buttons first; the app restores form focus via `form_tab_anchor`.
     Back/Forward history across screens (mouse back/forward buttons,
     Alt+←/→, edge swipe, Android system back). **Model (every OS, both apps):**
     one browser-style visit trail — not “peers without Back.”

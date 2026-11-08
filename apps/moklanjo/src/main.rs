@@ -66,6 +66,7 @@ include!("amount_visibility.rs");
 include!("app_state_impl.rs");
 include!("ui_script.rs");
 include!("helpers.rs");
+include!("focus_chain.rs");
 include!("helpers_books.rs");
 include!("widgets/product_menu_floor.rs");
 include!("widgets/sales_people.rs");

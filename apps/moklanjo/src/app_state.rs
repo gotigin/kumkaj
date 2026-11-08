@@ -115,6 +115,10 @@ struct AppState {
     snack_secs: f64,
     /// Settings hub: the one section open (`None` = the hub list).
     settings_panel: Option<&'static str>,
+    /// Last form FieldInput that held key focus (Tab chain; survives NavControl).
+    form_tab_anchor: Option<LiveId>,
+    /// Enter advanced to the next form field this action pass — skip submit.
+    form_tab_skip_submit: bool,
     /// Keys this user hid while the screen eye is showing (persisted per user).
     amount_keys_hidden: Vec<String>,
     /// Keys this user keeps visible while the screen eye is hiding (persisted

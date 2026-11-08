@@ -71,6 +71,8 @@ impl AppState {
             amounts_screen_hidden: false,
             snack_secs: SnackKind::DEFAULT_SECS,
             settings_panel: None,
+            form_tab_anchor: None,
+            form_tab_skip_submit: false,
             amount_keys_hidden: Vec::new(),
             amount_keys_peek: Vec::new(),
             books_sections_open: Vec::new(),

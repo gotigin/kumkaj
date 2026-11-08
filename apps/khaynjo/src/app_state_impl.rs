@@ -168,6 +168,7 @@ impl AppState {
             split_mode: false,
             split_pick: Vec::new(),
             discount_panel_open: false,
+            form_tab_anchor: None,
             found_servers: Vec::new(),
             category_photo_id: None,
             removed_products: Vec::new(),

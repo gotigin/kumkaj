@@ -283,16 +283,24 @@ impl App {
             client_find_cancel_flag().store(true, std::sync::atomic::Ordering::SeqCst);
             self.paint_submit_busy_chrome(cx);
         }
-        let pair_enter = self
-            .ui
-            .text_input(cx, ids!(client_code_input))
-            .returned(actions)
-            .is_some()
-            || self
+        // Enter on host/code advances via form Tab chain; last field / button pairs.
+        let skip_pair_submit = app_state().lock().unwrap().form_tab_skip_submit;
+        let pair_enter = !skip_pair_submit
+            && (self
                 .ui
-                .text_input(cx, ids!(client_host_input))
+                .text_input(cx, ids!(client_name_input))
                 .returned(actions)
-                .is_some();
+                .is_some()
+                || self
+                    .ui
+                    .text_input(cx, ids!(client_code_input))
+                    .returned(actions)
+                    .is_some()
+                || self
+                    .ui
+                    .text_input(cx, ids!(client_host_input))
+                    .returned(actions)
+                    .is_some());
         if pair_enter || self.ui.button(cx, ids!(client_pair_btn)).clicked(actions) {
             let host = self.ui.text_input(cx, ids!(client_host_input)).text();
             let code = self.ui.text_input(cx, ids!(client_code_input)).text();

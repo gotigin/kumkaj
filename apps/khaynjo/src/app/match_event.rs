@@ -78,6 +78,19 @@ impl MatchEvent for App {
             return;
         }
 
+        // Form FieldInput Tab / Shift+Tab (pair, lock, onboard, pay, settings).
+        // Runs after Makepad NavControl; overwrites chrome focus via form_tab_anchor.
+        if e.key_code == KeyCode::Tab
+            && !e.modifiers.control
+            && !e.modifiers.alt
+            && !e.modifiers.logo
+            && !e.is_repeat
+        {
+            if self.handle_form_field_tab(cx, e.modifiers.shift) {
+                return;
+            }
+        }
+
         // Page ScrollYView: ↑/↓ a line, PgUp/PgDn a screenful, Home/End the ends.
         // Skip when a TextInput (or other widget) holds key focus.
         if self.handle_scroll_key(cx, e) {
@@ -100,6 +113,8 @@ impl MatchEvent for App {
     }
 
     fn handle_actions(&mut self, cx: &mut Cx, actions: &Actions) {
+        self.refresh_form_tab_anchor(cx);
+        let form_returned_advanced = self.handle_form_field_returned(cx, actions);
         self.tab_chevron_clicks(cx, actions);
         for action in actions.iter() {
             if let Some(fd) = action.downcast_ref::<FileDialogAction>() {
@@ -7892,16 +7907,23 @@ impl MatchEvent for App {
                 self.ui.text_input(cx, ids!(client_code_input)).set_text(cx, &digits);
             }
         }
-        let pair_enter = self
-            .ui
-            .text_input(cx, ids!(client_code_input))
-            .returned(actions)
-            .is_some()
-            || self
+        // Enter on host/code advances via `form_returned_advanced`; last field / button pairs.
+        let pair_enter = !form_returned_advanced
+            && (self
                 .ui
-                .text_input(cx, ids!(client_host_input))
+                .text_input(cx, ids!(client_name_input))
                 .returned(actions)
-                .is_some();
+                .is_some()
+                || self
+                    .ui
+                    .text_input(cx, ids!(client_code_input))
+                    .returned(actions)
+                    .is_some()
+                || self
+                    .ui
+                    .text_input(cx, ids!(client_host_input))
+                    .returned(actions)
+                    .is_some());
         if pair_enter || self.ui.button(cx, ids!(client_pair_btn)).clicked(actions) {
             let host = self.ui.text_input(cx, ids!(client_host_input)).text();
             let code = self.ui.text_input(cx, ids!(client_code_input)).text();

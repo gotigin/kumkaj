@@ -317,6 +317,8 @@ struct AppState {
     split_pick: Vec<String>,
     /// Ticket's discount panel is open.
     discount_panel_open: bool,
+    /// Last form FieldInput that held key focus (Tab chain; survives NavControl).
+    form_tab_anchor: Option<LiveId>,
     /// Shop servers found on this Wi‑Fi (Connect screen → Find server).
     found_servers: Vec<net::FoundServer>,
     /// Category whose photo is being picked (file-dialog round trip).

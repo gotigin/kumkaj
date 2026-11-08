@@ -73,6 +73,19 @@ impl MatchEvent for App {
             return;
         }
 
+        // Form FieldInput Tab / Shift+Tab (pair, lock, onboard, booking, settings).
+        // Runs after Makepad NavControl; overwrites chrome focus via form_tab_anchor.
+        if e.key_code == KeyCode::Tab
+            && !e.modifiers.control
+            && !e.modifiers.alt
+            && !e.modifiers.logo
+            && !e.is_repeat
+        {
+            if self.handle_form_field_tab(cx, e.modifiers.shift) {
+                return;
+            }
+        }
+
         // Page ScrollYView: ↑/↓ a line, PgUp/PgDn a screenful, Home/End the ends.
         // Skip when a TextInput (or other widget) holds key focus.
         if self.handle_scroll_key(cx, e) {
@@ -95,6 +108,8 @@ impl MatchEvent for App {
     }
 
     fn handle_actions(&mut self, cx: &mut Cx, actions: &Actions) {
+        self.refresh_form_tab_anchor(cx);
+        let _ = self.handle_form_field_returned(cx, actions);
         self.tab_chevron_clicks(cx, actions);
         self.handle_actions_nav_books_lock(cx, actions);
         self.handle_actions_parties(cx, actions);
