@@ -270,9 +270,9 @@ else
   echo "ResizingLayout has no WindowInsetsAnimation callback to relocate."
 fi
 
-# Soft-keyboard height under adjustNothing (esp. landscape): keep last good
-# overlap and estimate when Type.ime()/visible-frame both report 0, so
-# KeyboardView can lift the focused field instead of doing nothing.
+# Soft-keyboard height under adjustNothing (API 30+, esp. landscape): keep the
+# last measured overlap while the IME stays open when a later onEnd /
+# onGlobalLayout sample reads 0. Never estimates a height.
 if grep -qF 'lastNonZeroOverlapPx' "$JAVA"; then
   echo "MakepadImeInsets lastNonZeroOverlap already present."
 else
@@ -307,15 +307,6 @@ new_report = """        int bottomOverlap = bottomOverlapPx(view, insets);
         } else if (visible && lastNonZeroOverlapPx > keyboardThresholdPx(view)) {
             // Keep the last good height while the IME is still open.
             bottomOverlap = lastNonZeroOverlapPx;
-        } else if (visible && bottomOverlap <= 0) {
-            // Last resort: Type.ime() and visible-frame both report 0 under
-            // adjustNothing, most often in landscape. Estimate a docked IME
-            // so KeyboardView can still lift the focused field.
-            int h = rootHeightPx(view);
-            if (h > 0 && view.getWidth() > view.getHeight()) {
-                bottomOverlap = clampToRootHeight(view, Math.max(keyboardThresholdPx(view), h * 2 / 5));
-                lastNonZeroOverlapPx = bottomOverlap;
-            }
         }
         if (!visible) {
             lastNonZeroOverlapPx = 0;
@@ -328,6 +319,126 @@ if old_report not in text:
     raise SystemExit(f"MakepadImeInsets.report tail not found in {path}")
 path.write_text(text.replace(old_report, new_report, 1))
 print(f"Patched MakepadImeInsets lastNonZeroOverlap into {path}")
+PY
+fi
+
+# Never estimate an IME height. An earlier version of the step above guessed a
+# docked keyboard of 2/5 of the window in landscape whenever no measurement
+# arrived; KeyboardView then lifted fields with no keyboard on screen (beige
+# gap). Strip that branch from activities bridged before it was removed.
+if grep -qF 'h * 2 / 5' "$JAVA"; then
+  python3 - "$JAVA" <<'PY'
+from pathlib import Path
+import sys
+path = Path(sys.argv[1])
+text = path.read_text()
+old = """        } else if (visible && bottomOverlap <= 0) {
+            // Last resort: Type.ime() and visible-frame both report 0 under
+            // adjustNothing, most often in landscape. Estimate a docked IME
+            // so KeyboardView can still lift the focused field.
+            int h = rootHeightPx(view);
+            if (h > 0 && view.getWidth() > view.getHeight()) {
+                bottomOverlap = clampToRootHeight(view, Math.max(keyboardThresholdPx(view), h * 2 / 5));
+                lastNonZeroOverlapPx = bottomOverlap;
+            }
+        }
+"""
+if old not in text:
+    raise SystemExit(f"IME landscape estimate block not found verbatim in {path}; remove it by hand")
+path.write_text(text.replace(old, "        }\n", 1))
+print(f"Removed the IME landscape height estimate from {path}")
+PY
+else
+  echo "MakepadImeInsets has no IME height estimate."
+fi
+
+# Soft-keyboard height on API 26–29. Under adjustNothing WindowManager never
+# folds the IME into this window's visible frame (vf = cf), so
+# MakepadImeInsets measured 0 and native code never got DidShow. Measured on
+# Huawei AGS2-W09 / API 26 / SwiftKey. MakepadImeProbe.java reads the real
+# keyboard top from an adjustResize side panel; MakepadImeInsets uses that
+# overlap when Type.ime() is unavailable. API 30+ never creates the probe.
+PROBE_SRC="$ROOT/patches/makepad/MakepadImeProbe.java"
+PROBE_DST="$JAVA_DIR/MakepadImeProbe.java"
+if [[ ! -f "$PROBE_DST" ]] || ! cmp -s "$PROBE_SRC" "$PROBE_DST"; then
+  cp -f "$PROBE_SRC" "$PROBE_DST"
+  echo "Installed MakepadImeProbe.java into $JAVA_DIR"
+else
+  echo "MakepadImeProbe.java already current."
+fi
+if [[ -f "$COMPILE_RS" ]] && ! grep -qF 'MakepadImeProbe.java' "$COMPILE_RS"; then
+  python3 - "$COMPILE_RS" <<'PY'
+from pathlib import Path
+import sys
+path = Path(sys.argv[1])
+text = path.read_text()
+needle = '        makepad_java_classes_dir.join("MakepadActivity.java"),\n'
+insert = needle + '        // API 26–29 soft-keyboard height probe (adjustNothing hides the IME).\n        makepad_java_classes_dir.join("MakepadImeProbe.java"),\n'
+if needle not in text:
+    raise SystemExit(f"MakepadActivity.java compile.rs entry not found in {path}")
+path.write_text(text.replace(needle, insert, 1))
+print(f"Registered MakepadImeProbe.java in {path}")
+PY
+else
+  echo "cargo-makepad already compiles MakepadImeProbe.java."
+fi
+if grep -qF 'probeOverlapPx' "$JAVA"; then
+  echo "MakepadActivity already wires MakepadImeProbe."
+else
+  python3 - "$JAVA" <<'PY'
+from pathlib import Path
+import sys
+path = Path(sys.argv[1])
+text = path.read_text()
+
+def swap(old, new, what):
+    global text
+    if old not in text:
+        raise SystemExit(f"{what} not found in {path}")
+    text = text.replace(old, new, 1)
+
+swap(
+    "    static int lastNonZeroOverlapPx = 0;\n",
+    "    static int lastNonZeroOverlapPx = 0;\n"
+    "\n"
+    "    // API 26–29: keyboard overlap with the surface, measured by\n"
+    "    // MakepadImeProbe. adjustNothing keeps the IME out of this window's\n"
+    "    // own visible frame below API 30, so that frame always reads 0.\n"
+    "    static int probeOverlapPx = 0;\n",
+    "lastNonZeroOverlapPx field",
+)
+swap(
+    "        int fallback = visibleFrameBottomOverlapPx(view);\n",
+    "        int fallback = Math.max(visibleFrameBottomOverlapPx(view), probeOverlapPx);\n",
+    "visible-frame fallback in bottomOverlapPx",
+)
+swap(
+    "    private MakepadSurface view;\n",
+    "    private MakepadSurface view;\n"
+    "    // API 26–29 keyboard height probe; null on API 30+.\n"
+    "    private MakepadImeProbe mImeProbe;\n",
+    "MakepadSurface view field",
+)
+swap(
+    "        MakepadNative.activityOnCreate(this);\n",
+    "        MakepadNative.activityOnCreate(this);\n"
+    "        if (Build.VERSION.SDK_INT < 30) {\n"
+    "            mImeProbe = new MakepadImeProbe(this, view);\n"
+    "            mImeProbe.attach();\n"
+    "        }\n",
+    "activityOnCreate call",
+)
+swap(
+    "    protected void onDestroy() {\n",
+    "    protected void onDestroy() {\n"
+    "        if (mImeProbe != null) {\n"
+    "            mImeProbe.detach();\n"
+    "            mImeProbe = null;\n"
+    "        }\n",
+    "onDestroy",
+)
+path.write_text(text)
+print(f"Wired MakepadImeProbe into {path}")
 PY
 fi
 

@@ -51,10 +51,9 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
         cx.set_key_focus(Area::Empty);
         // Latch dismissed — `hide_text_ime` clears that latch and let the next
         // focused draw re-open the IME without a tap (felt stuck / random).
+        // The field lift itself is KeyboardView's alone: it drops to 0 on the
+        // platform's DidHide. Never shift or estimate from here (DEV.md 6f).
         cx.text_ime_was_dismissed();
-        if let Ok(mut flag) = ime_suppress_refocus().lock() {
-            *flag = true;
-        }
     }
 
     /// True when a text field holds key focus / soft keyboard (any screen).

@@ -1283,10 +1283,3 @@ fn store_client_paired(store: Option<&Store>) -> bool {
         .unwrap_or(false)
 }
 
-/// After soft-keyboard DidHide, WindowGotFocus may restore the TextInput.
-/// Suppress that for one event cycle so the keyboard stays down.
-fn ime_suppress_refocus() -> &'static Mutex<bool> {
-    static FLAG: OnceLock<Mutex<bool>> = OnceLock::new();
-    FLAG.get_or_init(|| Mutex::new(false))
-}
-

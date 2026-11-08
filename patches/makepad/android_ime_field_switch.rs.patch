@@ -1,0 +1,32 @@
+--- a/platform/src/os/linux/android/android.rs
++++ b/platform/src/os/linux/android/android.rs
+@@ -2515,11 +2515,25 @@
+                     }
+                 },
+                 CxOsOp::HideTextIME => unsafe {
+-                    // Unconditional on purpose: unlike `ShowTextIME` this is not
+-                    // issued per-frame, so there is no thrash to dedup — and a
+-                    // skipped hide would leave the soft keyboard stuck open.
+-                    android_jni::to_java_show_keyboard(false);
++                    // Not issued per-frame, so there is no thrash to dedup.
+                     self.os.last_ime_config = None;
++                    // Focus moved straight from one text field to another: the
++                    // old field's KeyFocusLost queued this hide, and the new
++                    // field's KeyFocus (same event) already asked for the
++                    // keyboard. Its ShowTextIME follows on its next draw and,
++                    // with the config cache cleared above, reconfigures the
++                    // IME for the new field. Hiding here would drop the
++                    // keyboard and raise it a frame later — a flicker, and the
++                    // real DidHide in between latches "dismissed" (see
++                    // FromJavaMessage::ResizeTextIME), so on Huawei AGS2 /
++                    // API 26 the keyboard stayed down after the switch. Any other
++                    // hide (blur to nothing, focus to a button, app dismiss —
++                    // which clears the request via the dismissed latch) still
++                    // reaches Java.
++                    if self.keyboard.ime_show_requested {
++                        continue;
++                    }
++                    android_jni::to_java_show_keyboard(false);
+                 },
+                 CxOsOp::SyncImeState {
+                     text,
