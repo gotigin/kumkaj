@@ -480,7 +480,7 @@ impl PrintFormat {
     }
 
     /// Built-in: portrait layout + ESC/POS send (id kept as `kot` for serde).
-    /// Default wrap matches an 80 mm kitchen slip.
+    /// Default wrap matches an 80 mm kitchen slip; type size matches FOH KOTs.
     pub fn kot() -> Self {
         Self {
             id: FORMAT_KOT.into(),
@@ -488,10 +488,10 @@ impl PrintFormat {
             document: false,
             landscape: false,
             delivery: DELIVERY_ESCPOS.into(),
-            em: 20.0,
+            em: KOT_EM_LARGE as f32,
             line: wrap_cols_for_paper_mm(80),
-            baseline: 22.0,
-            side: 4.0,
+            baseline: (KOT_EM_LARGE as f32) + 2.0,
+            side: 8.0,
         }
     }
 
@@ -677,6 +677,20 @@ impl KotFieldStyle {
             align: KotAlign::Start,
         }
     }
+    pub fn regular_center(size_em: u32) -> Self {
+        Self {
+            size_em,
+            weight: KotFontWeight::Regular,
+            align: KotAlign::Center,
+        }
+    }
+    pub fn bold_center(size_em: u32) -> Self {
+        Self {
+            size_em,
+            weight: KotFontWeight::Bold,
+            align: KotAlign::Center,
+        }
+    }
 }
 
 /// Which slip family is being printed / edited.
@@ -826,18 +840,19 @@ pub struct KotKindStyles {
 }
 
 impl Default for KotKindStyles {
-    /// Matches common kitchen slips: area + table heavier; body regular.
+    /// Rajdhani-like FOH kitchen slip: large bold body, centered header
+    /// (time / KOT / area / table), qty column on the right.
     fn default() -> Self {
         Self {
-            title: KotFieldStyle::bold(KOT_EM_NORMAL),
-            shop: KotFieldStyle::regular(KOT_EM_NORMAL),
-            time: KotFieldStyle::regular(KOT_EM_SMALL),
-            waiter: KotFieldStyle::regular(KOT_EM_SMALL),
-            station: KotFieldStyle::regular(KOT_EM_SMALL),
-            table: KotFieldStyle::bold(KOT_EM_LARGE),
-            kot_no: KotFieldStyle::regular(KOT_EM_NORMAL),
-            area: KotFieldStyle::bold(KOT_EM_NORMAL),
-            item_qty: KotFieldStyle::regular(KOT_EM_NORMAL),
+            title: KotFieldStyle::bold_center(KOT_EM_LARGE),
+            shop: KotFieldStyle::bold_center(KOT_EM_LARGE),
+            time: KotFieldStyle::regular_center(KOT_EM_NORMAL),
+            waiter: KotFieldStyle::regular(KOT_EM_NORMAL),
+            station: KotFieldStyle::regular(KOT_EM_NORMAL),
+            table: KotFieldStyle::bold_center(KOT_EM_XLARGE),
+            kot_no: KotFieldStyle::bold_center(KOT_EM_LARGE),
+            area: KotFieldStyle::bold_center(KOT_EM_LARGE),
+            item_qty: KotFieldStyle::bold(KOT_EM_LARGE),
             banner: String::new(),
             item_prefix: String::new(),
             strike_items: false,
@@ -904,16 +919,16 @@ pub struct KotKindStyleSet {
 impl Default for KotKindStyleSet {
     fn default() -> Self {
         let mut duplicate = KotKindStyles::default();
-        duplicate.title = KotFieldStyle::bold(KOT_EM_LARGE);
+        duplicate.title = KotFieldStyle::bold_center(KOT_EM_XLARGE);
         duplicate.banner = KOT_BANNER_DUPLICATE.into();
         let mut modified = KotKindStyles::default();
-        modified.title = KotFieldStyle::bold(KOT_EM_LARGE);
-        modified.item_qty = KotFieldStyle::bold(KOT_EM_LARGE);
+        modified.title = KotFieldStyle::bold_center(KOT_EM_XLARGE);
+        modified.item_qty = KotFieldStyle::bold(KOT_EM_XLARGE);
         modified.banner = KOT_BANNER_MODIFIED.into();
         modified.item_prefix = KOT_PREFIX_MODIFIED.into();
         let mut cancelled = KotKindStyles::default();
-        cancelled.title = KotFieldStyle::bold(KOT_EM_LARGE);
-        cancelled.item_qty = KotFieldStyle::light(KOT_EM_NORMAL);
+        cancelled.title = KotFieldStyle::bold_center(KOT_EM_XLARGE);
+        cancelled.item_qty = KotFieldStyle::light(KOT_EM_LARGE);
         cancelled.banner = KOT_BANNER_CANCELLED.into();
         cancelled.item_prefix = KOT_PREFIX_CANCELLED.into();
         cancelled.strike_item_name = true;
@@ -1036,7 +1051,41 @@ pub struct KotSlipFormat {
     /// defaults once in [`Self::clamped`]. `1` = chrome already owned by the shop.
     #[serde(default)]
     pub kind_chrome_v: u32,
+    /// Space between Item and Qty columns (em). Default comfortable for FOH.
+    #[serde(default = "default_kot_item_col_gap_em")]
+    pub item_col_gap_em: f32,
+    /// Minimum Qty column width (em) so short digits align under `Qty.`.
+    #[serde(default = "default_kot_item_qty_min_em")]
+    pub item_qty_min_em: f32,
+    /// Align qty digits inside the Qty slot.
+    #[serde(default = "default_kot_item_num_align")]
+    pub item_num_align: KotAlign,
+    /// Header text for the Item column. Empty → `Item`.
+    #[serde(default = "default_bill_header_item")]
+    pub item_header_item: String,
+    /// Header text for the Qty column. Empty → `Qty.`.
+    #[serde(default = "default_bill_header_qty")]
+    pub item_header_qty: String,
 }
+
+fn default_kot_item_col_gap_em() -> f32 {
+    0.7
+}
+fn default_kot_item_qty_min_em() -> f32 {
+    3.5
+}
+fn default_kot_item_num_align() -> KotAlign {
+    KotAlign::End
+}
+
+/// KOT qty column min-width presets (em).
+pub const KOT_QTY_MIN_COMPACT: f32 = 2.8;
+pub const KOT_QTY_MIN_COMFORT: f32 = 3.5;
+pub const KOT_QTY_MIN_WIDE: f32 = 4.5;
+/// KOT column gap presets (em). Tight matches legacy; Comfortable is product default.
+pub const KOT_COL_GAP_TIGHT: f32 = 0.35;
+pub const KOT_COL_GAP_COMFORT: f32 = 0.7;
+pub const KOT_COL_GAP_WIDE: f32 = 1.2;
 
 pub const KOT_CHARS_MIN: u32 = 16;
 /// Wide enough for a 210 mm page (~0.55 cols/mm). 58 mm is 32, 80 mm is 44.
@@ -1048,6 +1097,8 @@ pub const KOT_EM_MAX: u32 = 48;
 pub const KOT_EM_SMALL: u32 = 20;
 pub const KOT_EM_NORMAL: u32 = 24;
 pub const KOT_EM_LARGE: u32 = 28;
+/// Body / table size for the product KOT default (matches common FOH slips).
+pub const KOT_EM_XLARGE: u32 = 32;
 pub const KOT_FOOTER_MAX: usize = 80;
 pub const KOT_TITLE_MAX: usize = 48;
 pub const KOT_COPIES_MIN: u32 = 1;
@@ -1087,8 +1138,9 @@ impl Default for KotSlipFormat {
             show_item_qty_header: true,
             chars_per_line: wrap_cols_for_paper_mm(80),
             content_width_mm: 80,
-            em: KOT_EM_SMALL,
-            side: 4.0,
+            // Match common FOH kitchen slips (Rajdhani sample): large bold body.
+            em: KOT_EM_LARGE,
+            side: 8.0,
             copies: KOT_COPIES_MIN,
             title: String::new(),
             footer: String::new(),
@@ -1100,6 +1152,11 @@ impl Default for KotSlipFormat {
             ],
             kind_styles: KotKindStyleSet::default(),
             kind_chrome_v: 1,
+            item_col_gap_em: default_kot_item_col_gap_em(),
+            item_qty_min_em: default_kot_item_qty_min_em(),
+            item_num_align: default_kot_item_num_align(),
+            item_header_item: default_bill_header_item(),
+            item_header_qty: default_bill_header_qty(),
         }
     }
 }
@@ -1108,6 +1165,61 @@ impl KotSlipFormat {
     /// Alias for [`Default`] (kept for call sites / templates).
     pub fn rajdhani_default() -> Self {
         Self::default().clamped()
+    }
+
+    /// Raster / ESC/POS column metrics for Item | Qty.
+    pub fn item_tab_layout(&self) -> crate::receipt_raster::TabColumnLayout {
+        crate::receipt_raster::TabColumnLayout {
+            gap_em: clamp_bill_col_gap_em(self.item_col_gap_em),
+            min_em: [
+                clamp_bill_col_min_em(self.item_qty_min_em),
+                0.0,
+                0.0,
+                0.0,
+            ],
+            cell_align: match self.item_num_align {
+                KotAlign::Center => crate::receipt_raster::LineAlign::Center,
+                KotAlign::End => crate::receipt_raster::LineAlign::End,
+                KotAlign::Start => crate::receipt_raster::LineAlign::Start,
+            },
+            sep: false,
+        }
+    }
+
+    pub fn set_item_col_gap_preset(&mut self, gap_em: f32) {
+        self.item_col_gap_em = clamp_bill_col_gap_em(gap_em);
+    }
+
+    pub fn item_col_gap_preset(&self) -> f32 {
+        let g = clamp_bill_col_gap_em(self.item_col_gap_em);
+        let opts = [KOT_COL_GAP_TIGHT, KOT_COL_GAP_COMFORT, KOT_COL_GAP_WIDE];
+        *opts
+            .iter()
+            .min_by(|a, b| {
+                (*a - g)
+                    .abs()
+                    .partial_cmp(&(*b - g).abs())
+                    .unwrap_or(std::cmp::Ordering::Equal)
+            })
+            .unwrap_or(&KOT_COL_GAP_COMFORT)
+    }
+
+    pub fn set_item_qty_min_preset(&mut self, min_em: f32) {
+        self.item_qty_min_em = clamp_bill_col_min_em(min_em);
+    }
+
+    pub fn item_qty_min_preset(&self) -> f32 {
+        let have = clamp_bill_col_min_em(self.item_qty_min_em);
+        let opts = [KOT_QTY_MIN_COMPACT, KOT_QTY_MIN_COMFORT, KOT_QTY_MIN_WIDE];
+        *opts
+            .iter()
+            .min_by(|a, b| {
+                (*a - have)
+                    .abs()
+                    .partial_cmp(&(*b - have).abs())
+                    .unwrap_or(std::cmp::Ordering::Equal)
+            })
+            .unwrap_or(&KOT_QTY_MIN_COMFORT)
     }
 
     pub fn parse(raw: &str) -> Self {
@@ -1141,6 +1253,12 @@ impl KotSlipFormat {
         self.em = self.em.clamp(KOT_EM_MIN, KOT_EM_MAX);
         self.copies = self.copies.clamp(KOT_COPIES_MIN, KOT_COPIES_MAX);
         self.side = self.side.clamp(KOT_SIDE_MIN, KOT_SIDE_MAX);
+        self.item_col_gap_em = clamp_bill_col_gap_em(self.item_col_gap_em);
+        self.item_qty_min_em = clamp_bill_col_min_em(self.item_qty_min_em);
+        self.item_header_item =
+            scrub_bill_header_label(&self.item_header_item, "Item");
+        self.item_header_qty =
+            scrub_bill_header_label(&self.item_header_qty, "Qty.");
         // Strip currency marks — a KOT must never carry prices.
         self.title = scrub_kot_text(&self.title, KOT_TITLE_MAX);
         self.footer = scrub_kot_text(&self.footer, KOT_FOOTER_MAX);
@@ -1315,6 +1433,7 @@ impl KotSlipFormat {
         let rule = "-".repeat(cols);
         let compact = !fmt.show_title;
         let mut out = String::new();
+        out.push_str(&encode_slip_tab_layout(&fmt.item_tab_layout()));
         let push_styled = |out: &mut String, style: &KotFieldStyle, line: &str, _center: bool| {
             // Alignment is in the style mark and applied in dots (and in the
             // preview). Space-padding a short date left a wide gap.
@@ -1382,10 +1501,9 @@ impl KotSlipFormat {
                     }
                 }
                 "time" if fmt.show_time && !c.when.is_empty() => {
-                    // Left edge. Centering this short line with spaces left a
-                    // wide gap before the date once the glyphs were drawn.
+                    // Align comes from the field style (product default: Center).
                     if compact {
-                        push_styled(out, style, c.when, false);
+                        push_styled(out, style, c.when, true);
                     } else {
                         push_styled(out, style, &format!("Time: {}", c.when), false);
                     }
@@ -1441,7 +1559,10 @@ impl KotSlipFormat {
         if fmt.show_item_qty_header {
             // Header never takes the kind prefix or strike.
             out.push_str(&item_mark);
-            out.push_str("Item\tQty.\n");
+            out.push_str(&scrub_bill_header_label(&fmt.item_header_item, "Item"));
+            out.push('\t');
+            out.push_str(&scrub_bill_header_label(&fmt.item_header_qty, "Qty."));
+            out.push('\n');
         }
         for item in c.items {
             let (raw_name, qty) = kot_item_parts(item);
@@ -1500,6 +1621,48 @@ impl KotSlipFormat {
                 && self.show_station
                 && !self.show_area)
     }
+
+    /// Pre–FOH type sizes: small body, left-aligned headers, regular items.
+    /// Shops still on that stock get one-shot lift to Rajdhani-like defaults.
+    pub fn looks_like_pre_foh_type(&self) -> bool {
+        let o = &self.kind_styles.original;
+        self.em <= KOT_EM_SMALL
+            && o.time.size_em <= KOT_EM_SMALL
+            && o.item_qty.size_em <= KOT_EM_NORMAL
+            && o.item_qty.weight == KotFontWeight::Regular
+            && o.table.size_em <= KOT_EM_LARGE
+            && o.table.align == KotAlign::Start
+            && o.kot_no.align == KotAlign::Start
+    }
+
+    /// Apply the product FOH type defaults without wiping field show/order.
+    pub fn apply_foh_type_defaults(&mut self) {
+        let chrome = self.kind_styles.clone();
+        self.kind_styles = KotKindStyleSet::default();
+        // Keep owner-edited banners / prefixes / strike when already owned.
+        if self.kind_chrome_v >= 1 {
+            for kind in KotSlipKind::ALL {
+                let from = chrome.get(kind);
+                let to = self.kind_styles.get_mut(kind);
+                if !from.banner.is_empty() {
+                    to.banner = from.banner.clone();
+                }
+                if !from.item_prefix.is_empty() {
+                    to.item_prefix = from.item_prefix.clone();
+                }
+                to.strike_item_name = from.strike_item_name;
+                to.strike_item_note = from.strike_item_note;
+                to.strike_items = from.strike_items;
+            }
+        }
+        self.em = KOT_EM_LARGE;
+        self.side = self.side.max(8.0);
+        if self.content_width_mm == 0 {
+            self.content_width_mm = 80;
+            self.chars_per_line = wrap_cols_for_paper_mm(80);
+        }
+        self.kind_chrome_v = self.kind_chrome_v.max(1);
+    }
 }
 
 /// Fields for one kitchen slip body (real KOT or Settings sample).
@@ -1526,6 +1689,10 @@ pub struct KotSlipContent<'a> {
 /// Private-use prefix on each rendered KOT line: size + weight for ESC/POS.
 /// Preview / raster strip these via [`strip_kot_style_marks`].
 const KOT_STYLE_MARK: char = '\u{E000}';
+/// Document-level `\t` column metrics. One line at the top of a slip:
+/// `\u{E001}T{gap}|{min0}|{min1}|{min2}|{min3}|{S|C|E}`. Survives the print
+/// queue (text-only jobs) so bill/KOT column air is not lost after format.
+const SLIP_TAB_MARK: char = '\u{E001}';
 
 fn kot_style_prefix(style: &KotFieldStyle, rtl: bool) -> String {
     kot_style_prefix_strike(style, rtl, false)
@@ -1672,6 +1839,52 @@ pub enum BillItemLayout {
     Columns,
 }
 
+/// One piece column on a Columns layout bill.
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
+pub enum BillItemCol {
+    Name,
+    Qty,
+    Price,
+    Amount,
+}
+
+impl BillItemCol {
+    pub const ALL: [BillItemCol; 4] = [
+        BillItemCol::Name,
+        BillItemCol::Qty,
+        BillItemCol::Price,
+        BillItemCol::Amount,
+    ];
+
+    pub fn id(self) -> &'static str {
+        match self {
+            BillItemCol::Name => "name",
+            BillItemCol::Qty => "qty",
+            BillItemCol::Price => "price",
+            BillItemCol::Amount => "amount",
+        }
+    }
+
+    pub fn from_id(id: &str) -> Option<Self> {
+        match id.trim() {
+            "name" | "item" => Some(BillItemCol::Name),
+            "qty" | "quantity" => Some(BillItemCol::Qty),
+            "price" | "rate" => Some(BillItemCol::Price),
+            "amount" | "amt" | "total" => Some(BillItemCol::Amount),
+            _ => None,
+        }
+    }
+
+    pub fn label(self) -> &'static str {
+        match self {
+            BillItemCol::Name => "Dish name",
+            BillItemCol::Qty => "Qty",
+            BillItemCol::Price => "Price",
+            BillItemCol::Amount => "Amount",
+        }
+    }
+}
+
 /// Show, size, weight, and alignment for one bill line.
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct BillFieldStyle {
@@ -1769,6 +1982,42 @@ pub struct BillSlipFormat {
     /// Column header row (`Item`, `Qty.`, `Price`, `Amount`) when layout is Columns.
     #[serde(default = "default_true")]
     pub item_show_header: bool,
+    /// Header text for the name column. Empty → `Item`.
+    #[serde(default = "default_bill_header_item")]
+    pub item_header_item: String,
+    /// Header text for the qty column. Empty → `Qty.`.
+    #[serde(default = "default_bill_header_qty")]
+    pub item_header_qty: String,
+    /// Header text for the price column. Empty → `Price`.
+    #[serde(default = "default_bill_header_price")]
+    pub item_header_price: String,
+    /// Header text for the amount column. Empty → `Amount`.
+    #[serde(default = "default_bill_header_amount")]
+    pub item_header_amount: String,
+    /// Space between item columns, in em of the Items type size.
+    /// Product default ~1.15 (comfortable); legacy tight pack was ~0.35.
+    #[serde(default = "default_bill_item_col_gap_em")]
+    pub item_col_gap_em: f32,
+    /// Minimum Qty column width (em). Keeps short digits from crowding Price.
+    #[serde(default = "default_bill_item_qty_min_em")]
+    pub item_qty_min_em: f32,
+    /// Minimum Price column width (em).
+    #[serde(default = "default_bill_item_price_min_em")]
+    pub item_price_min_em: f32,
+    /// Minimum Amount column width (em).
+    #[serde(default = "default_bill_item_amount_min_em")]
+    pub item_amount_min_em: f32,
+    /// Align numbers inside each Qty/Price/Amount slot (End = flush-right).
+    #[serde(default = "default_bill_item_num_align")]
+    pub item_num_align: KotAlign,
+    /// Print order of piece columns (`name`, `qty`, `price`, `amount`).
+    /// Empty → product default. First shown column flexes on the left; the
+    /// rest pack from the right.
+    #[serde(default)]
+    pub item_col_order: Vec<String>,
+    /// Draw thin vertical rules in the gaps between columns.
+    #[serde(default)]
+    pub item_col_sep: bool,
     /// `Total Qty: N` under the items.
     #[serde(default = "default_true")]
     pub total_show_qty: bool,
@@ -1778,6 +2027,19 @@ pub struct BillSlipFormat {
     /// `Grand Total` / TOTAL line (also follows the Total field's show).
     #[serde(default = "default_true")]
     pub total_show_grand: bool,
+    /// Caption before the qty count. Empty → `Total Qty`.
+    #[serde(default = "default_bill_total_qty_label")]
+    pub total_qty_label: String,
+    /// Caption for the subtotal / taxable-value line. Empty → `Sub Total`.
+    #[serde(default = "default_bill_total_subtotal_label")]
+    pub total_subtotal_label: String,
+    /// Caption for the charged total. Empty → `Grand Total` (running) /
+    /// `Total` (settled receipt uses [`Self::total_paid_label`]).
+    #[serde(default = "default_bill_total_grand_label")]
+    pub total_grand_label: String,
+    /// Caption for the settled sale total line. Empty → `Total`.
+    #[serde(default = "default_bill_total_paid_label")]
+    pub total_paid_label: String,
     /// Field-id pairs printed on one line as `left\tright` when both show.
     /// Empty falls back to product defaults (time+table, cashier+bill_no).
     #[serde(default)]
@@ -1809,6 +2071,91 @@ fn default_bill_content_width_mm() -> u32 {
     210
 }
 
+fn default_bill_header_item() -> String {
+    "Item".into()
+}
+fn default_bill_header_qty() -> String {
+    "Qty.".into()
+}
+fn default_bill_header_price() -> String {
+    "Price".into()
+}
+fn default_bill_header_amount() -> String {
+    "Amount".into()
+}
+
+const BILL_HEADER_LABEL_MAX: usize = 24;
+
+fn scrub_bill_header_label(raw: &str, fallback: &str) -> String {
+    let t: String = raw.chars().take(BILL_HEADER_LABEL_MAX).collect();
+    let t = t.trim().to_string();
+    if t.is_empty() {
+        fallback.to_string()
+    } else {
+        t
+    }
+}
+
+fn default_bill_item_col_gap_em() -> f32 {
+    1.15
+}
+fn default_bill_total_qty_label() -> String {
+    "Total Qty".into()
+}
+fn default_bill_total_subtotal_label() -> String {
+    "Sub Total".into()
+}
+fn default_bill_total_grand_label() -> String {
+    "Grand Total".into()
+}
+fn default_bill_total_paid_label() -> String {
+    "Total".into()
+}
+fn default_bill_item_col_order() -> Vec<String> {
+    BillItemCol::ALL
+        .iter()
+        .map(|c| c.id().to_string())
+        .collect()
+}
+fn default_bill_item_qty_min_em() -> f32 {
+    3.5
+}
+fn default_bill_item_price_min_em() -> f32 {
+    7.5
+}
+fn default_bill_item_amount_min_em() -> f32 {
+    8.5
+}
+fn default_bill_item_num_align() -> KotAlign {
+    KotAlign::End
+}
+
+/// Preset gap chips for Settings (Tight / Comfortable / Wide).
+pub const BILL_COL_GAP_TIGHT: f32 = 0.5;
+pub const BILL_COL_GAP_COMFORT: f32 = 1.15;
+pub const BILL_COL_GAP_WIDE: f32 = 1.75;
+
+/// Preset number-column min widths (qty, price, amount) in em.
+pub const BILL_NUM_MIN_COMPACT: [f32; 3] = [2.8, 6.0, 7.0];
+pub const BILL_NUM_MIN_COMFORT: [f32; 3] = [3.5, 7.5, 8.5];
+pub const BILL_NUM_MIN_WIDE: [f32; 3] = [4.5, 9.0, 10.5];
+
+/// Clamp a column gap em into a sane printable range.
+pub fn clamp_bill_col_gap_em(v: f32) -> f32 {
+    if !v.is_finite() {
+        return BILL_COL_GAP_COMFORT;
+    }
+    v.clamp(0.2, 3.0)
+}
+
+/// Clamp a numeric column min-width em.
+pub fn clamp_bill_col_min_em(v: f32) -> f32 {
+    if !v.is_finite() {
+        return 0.0;
+    }
+    v.clamp(0.0, 24.0)
+}
+
 impl Default for BillSlipFormat {
     fn default() -> Self {
         Self {
@@ -1834,8 +2181,9 @@ impl Default for BillSlipFormat {
             time: BillFieldStyle::face(14, KotFontWeight::Regular, KotAlign::Start),
             cashier: BillFieldStyle::face(14, KotFontWeight::Regular, KotAlign::Start),
             table: BillFieldStyle::face(14, KotFontWeight::Regular, KotAlign::Start),
-            items: BillFieldStyle::face(14, KotFontWeight::Regular, KotAlign::Start),
-            total: BillFieldStyle::face(16, KotFontWeight::Bold, KotAlign::Start),
+            // Body items a touch larger than meta — readable Qty/Price/Amount.
+            items: BillFieldStyle::face(16, KotFontWeight::Regular, KotAlign::Start),
+            total: BillFieldStyle::face(18, KotFontWeight::Bold, KotAlign::Start),
             footer_style: BillFieldStyle::face(14, KotFontWeight::Regular, KotAlign::Center),
             upi: BillFieldStyle::face(14, KotFontWeight::Regular, KotAlign::Center),
             item_layout: BillItemLayout::Columns,
@@ -1845,9 +2193,24 @@ impl Default for BillSlipFormat {
             item_show_amount: true,
             item_show_note: true,
             item_show_header: true,
+            item_header_item: default_bill_header_item(),
+            item_header_qty: default_bill_header_qty(),
+            item_header_price: default_bill_header_price(),
+            item_header_amount: default_bill_header_amount(),
+            item_col_gap_em: default_bill_item_col_gap_em(),
+            item_qty_min_em: default_bill_item_qty_min_em(),
+            item_price_min_em: default_bill_item_price_min_em(),
+            item_amount_min_em: default_bill_item_amount_min_em(),
+            item_num_align: default_bill_item_num_align(),
+            item_col_order: default_bill_item_col_order(),
+            item_col_sep: false,
             total_show_qty: true,
             total_show_subtotal: true,
             total_show_grand: true,
+            total_qty_label: default_bill_total_qty_label(),
+            total_subtotal_label: default_bill_total_subtotal_label(),
+            total_grand_label: default_bill_total_grand_label(),
+            total_paid_label: default_bill_total_paid_label(),
             meta_pairs: default_bill_meta_pairs(),
             field_order: Vec::new(),
             copies: 1,
@@ -1907,17 +2270,14 @@ fn format_bill_item_stacked(fmt: &BillSlipFormat, pieces: BillItemPieces<'_>) ->
 
 fn format_bill_item_columns(fmt: &BillSlipFormat, pieces: BillItemPieces<'_>) -> String {
     let mut cells: Vec<&str> = Vec::new();
-    if fmt.item_show_name {
-        cells.push(pieces.name.trim());
-    }
-    if fmt.item_show_qty {
-        cells.push(pieces.qty.trim());
-    }
-    if fmt.item_show_price {
-        cells.push(pieces.price.trim());
-    }
-    if fmt.item_show_amount {
-        cells.push(pieces.amount.trim());
+    for col in fmt.ordered_item_cols() {
+        let cell = match col {
+            BillItemCol::Name => pieces.name.trim(),
+            BillItemCol::Qty => pieces.qty.trim(),
+            BillItemCol::Price => pieces.price.trim(),
+            BillItemCol::Amount => pieces.amount.trim(),
+        };
+        cells.push(cell);
     }
     let mut out = if cells.iter().all(|c| c.is_empty()) {
         String::new()
@@ -1963,18 +2323,14 @@ pub fn format_bill_item_header(fmt: &BillSlipFormat) -> String {
     if fmt.item_layout != BillItemLayout::Columns || !fmt.item_show_header {
         return String::new();
     }
-    let mut cells: Vec<&str> = Vec::new();
-    if fmt.item_show_name {
-        cells.push("Item");
-    }
-    if fmt.item_show_qty {
-        cells.push("Qty.");
-    }
-    if fmt.item_show_price {
-        cells.push("Price");
-    }
-    if fmt.item_show_amount {
-        cells.push("Amount");
+    let mut cells: Vec<String> = Vec::new();
+    for col in fmt.ordered_item_cols() {
+        cells.push(match col {
+            BillItemCol::Name => scrub_bill_header_label(&fmt.item_header_item, "Item"),
+            BillItemCol::Qty => scrub_bill_header_label(&fmt.item_header_qty, "Qty."),
+            BillItemCol::Price => scrub_bill_header_label(&fmt.item_header_price, "Price"),
+            BillItemCol::Amount => scrub_bill_header_label(&fmt.item_header_amount, "Amount"),
+        });
     }
     cells.join("\t")
 }
@@ -2016,6 +2372,43 @@ impl BillSlipFormat {
         }
         self.copies = self.copies.clamp(1, 3);
         self.content_width_mm = self.shown_content_width_mm();
+        self.item_col_gap_em = clamp_bill_col_gap_em(self.item_col_gap_em);
+        self.item_qty_min_em = clamp_bill_col_min_em(self.item_qty_min_em);
+        self.item_price_min_em = clamp_bill_col_min_em(self.item_price_min_em);
+        self.item_amount_min_em = clamp_bill_col_min_em(self.item_amount_min_em);
+        self.item_header_item =
+            scrub_bill_header_label(&self.item_header_item, "Item");
+        self.item_header_qty =
+            scrub_bill_header_label(&self.item_header_qty, "Qty.");
+        self.item_header_price =
+            scrub_bill_header_label(&self.item_header_price, "Price");
+        self.item_header_amount =
+            scrub_bill_header_label(&self.item_header_amount, "Amount");
+        self.total_qty_label =
+            scrub_bill_header_label(&self.total_qty_label, "Total Qty");
+        self.total_subtotal_label =
+            scrub_bill_header_label(&self.total_subtotal_label, "Sub Total");
+        self.total_grand_label =
+            scrub_bill_header_label(&self.total_grand_label, "Grand Total");
+        self.total_paid_label =
+            scrub_bill_header_label(&self.total_paid_label, "Total");
+        self.item_col_order = {
+            let mut seen = std::collections::HashSet::new();
+            let mut order = Vec::new();
+            for id in &self.item_col_order {
+                if let Some(col) = BillItemCol::from_id(id) {
+                    if seen.insert(col) {
+                        order.push(col.id().to_string());
+                    }
+                }
+            }
+            for col in BillItemCol::ALL {
+                if seen.insert(col) {
+                    order.push(col.id().to_string());
+                }
+            }
+            order
+        };
         let mut order = Vec::new();
         for id in &self.field_order {
             if let Some(field) = BillStyleField::from_id(id) {
@@ -2054,6 +2447,159 @@ impl BillSlipFormat {
             };
         }
         self
+    }
+
+    /// Shown piece columns in print order. First flexes left; rest pack right.
+    pub fn ordered_item_cols(&self) -> Vec<BillItemCol> {
+        let order = if self.item_col_order.is_empty() {
+            default_bill_item_col_order()
+        } else {
+            self.item_col_order.clone()
+        };
+        order
+            .iter()
+            .filter_map(|id| BillItemCol::from_id(id))
+            .filter(|col| match col {
+                BillItemCol::Name => self.item_show_name,
+                BillItemCol::Qty => self.item_show_qty,
+                BillItemCol::Price => self.item_show_price,
+                BillItemCol::Amount => self.item_show_amount,
+            })
+            .collect()
+    }
+
+    /// Move a piece column earlier/later in [`Self::item_col_order`].
+    pub fn move_item_col(&mut self, col: BillItemCol, earlier: bool) {
+        if self.item_col_order.is_empty() {
+            self.item_col_order = default_bill_item_col_order();
+        }
+        let Some(i) = self
+            .item_col_order
+            .iter()
+            .position(|id| BillItemCol::from_id(id) == Some(col))
+        else {
+            return;
+        };
+        if earlier && i > 0 {
+            self.item_col_order.swap(i, i - 1);
+        } else if !earlier && i + 1 < self.item_col_order.len() {
+            self.item_col_order.swap(i, i + 1);
+        }
+    }
+
+    /// Raster / ESC/POS column metrics for Items (and other `\t` lines on the bill).
+    /// Mins follow the trailing (right-packed) columns in print order.
+    pub fn item_tab_layout(&self) -> crate::receipt_raster::TabColumnLayout {
+        let cols = self.ordered_item_cols();
+        let mut min_em = [0.0f32; 4];
+        // Skip the flex (left) column; mins apply to right-packed slots.
+        for (i, col) in cols.iter().skip(1).enumerate() {
+            if i >= min_em.len() {
+                break;
+            }
+            min_em[i] = match col {
+                BillItemCol::Name => 0.0,
+                BillItemCol::Qty => clamp_bill_col_min_em(self.item_qty_min_em),
+                BillItemCol::Price => clamp_bill_col_min_em(self.item_price_min_em),
+                BillItemCol::Amount => clamp_bill_col_min_em(self.item_amount_min_em),
+            };
+        }
+        crate::receipt_raster::TabColumnLayout {
+            gap_em: clamp_bill_col_gap_em(self.item_col_gap_em),
+            min_em,
+            cell_align: match self.item_num_align {
+                KotAlign::Center => crate::receipt_raster::LineAlign::Center,
+                KotAlign::End => crate::receipt_raster::LineAlign::End,
+                KotAlign::Start => crate::receipt_raster::LineAlign::Start,
+            },
+            sep: self.item_col_sep,
+        }
+    }
+
+    pub fn caption_total_qty(&self) -> String {
+        scrub_bill_header_label(&self.total_qty_label, "Total Qty")
+    }
+    pub fn caption_subtotal(&self) -> String {
+        scrub_bill_header_label(&self.total_subtotal_label, "Sub Total")
+    }
+    pub fn caption_grand_total(&self) -> String {
+        scrub_bill_header_label(&self.total_grand_label, "Grand Total")
+    }
+    pub fn caption_paid_total(&self) -> String {
+        scrub_bill_header_label(&self.total_paid_label, "Total")
+    }
+
+    /// Pair `field` with `partner`, or clear its pair when `partner` is None.
+    pub fn set_meta_partner(&mut self, field: BillStyleField, partner: Option<BillStyleField>) {
+        if !field.is_pairable() {
+            return;
+        }
+        if self.meta_pairs.is_empty() {
+            self.meta_pairs = default_bill_meta_pairs();
+        }
+        self.meta_pairs
+            .retain(|pair| pair[0] != field.id() && pair[1] != field.id());
+        if let Some(other) = partner {
+            if other.is_pairable() && other != field {
+                self.meta_pairs
+                    .retain(|pair| pair[0] != other.id() && pair[1] != other.id());
+                self.meta_pairs
+                    .push([field.id().to_string(), other.id().to_string()]);
+            }
+        }
+    }
+
+    /// Apply a gap preset chip (Tight / Comfortable / Wide).
+    pub fn set_item_col_gap_preset(&mut self, gap_em: f32) {
+        self.item_col_gap_em = clamp_bill_col_gap_em(gap_em);
+    }
+
+    /// Apply a number-column width preset (Compact / Comfortable / Wide).
+    pub fn set_item_num_min_preset(&mut self, mins: [f32; 3]) {
+        self.item_qty_min_em = clamp_bill_col_min_em(mins[0]);
+        self.item_price_min_em = clamp_bill_col_min_em(mins[1]);
+        self.item_amount_min_em = clamp_bill_col_min_em(mins[2]);
+    }
+
+    /// Which gap preset chip is selected (nearest).
+    pub fn item_col_gap_preset(&self) -> f32 {
+        let g = clamp_bill_col_gap_em(self.item_col_gap_em);
+        let opts = [BILL_COL_GAP_TIGHT, BILL_COL_GAP_COMFORT, BILL_COL_GAP_WIDE];
+        *opts
+            .iter()
+            .min_by(|a, b| {
+                (*a - g)
+                    .abs()
+                    .partial_cmp(&(*b - g).abs())
+                    .unwrap_or(std::cmp::Ordering::Equal)
+            })
+            .unwrap_or(&BILL_COL_GAP_COMFORT)
+    }
+
+    /// Which number-min preset chip is selected (nearest by L1).
+    pub fn item_num_min_preset(&self) -> [f32; 3] {
+        let have = [
+            clamp_bill_col_min_em(self.item_qty_min_em),
+            clamp_bill_col_min_em(self.item_price_min_em),
+            clamp_bill_col_min_em(self.item_amount_min_em),
+        ];
+        let opts = [
+            BILL_NUM_MIN_COMPACT,
+            BILL_NUM_MIN_COMFORT,
+            BILL_NUM_MIN_WIDE,
+        ];
+        *opts
+            .iter()
+            .min_by(|a, b| {
+                let da = (a[0] - have[0]).abs()
+                    + (a[1] - have[1]).abs()
+                    + (a[2] - have[2]).abs();
+                let db = (b[0] - have[0]).abs()
+                    + (b[1] - have[1]).abs()
+                    + (b[2] - have[2]).abs();
+                da.partial_cmp(&db).unwrap_or(std::cmp::Ordering::Equal)
+            })
+            .unwrap_or(&BILL_NUM_MIN_COMFORT)
     }
 
     /// Partner field when `field` is configured to share a meta line.
@@ -2225,13 +2771,31 @@ impl BillSlipFormat {
         append_bill_field(&mut out, self, BillStyleField::Items, &coffee, false);
         append_bill_like(&mut out, self, BillStyleField::Items, "--------------------", false);
         if self.total_show_qty {
-            append_bill_like(&mut out, self, BillStyleField::Total, "Total Qty: 3", false);
+            append_bill_like(
+                &mut out,
+                self,
+                BillStyleField::Total,
+                &format!("{}: 3", self.caption_total_qty()),
+                false,
+            );
         }
         if self.total_show_subtotal {
-            append_bill_like(&mut out, self, BillStyleField::Total, "Sub Total: 100.00", false);
+            append_bill_like(
+                &mut out,
+                self,
+                BillStyleField::Total,
+                &format!("{}: 100.00", self.caption_subtotal()),
+                false,
+            );
         }
         if self.total_show_grand {
-            append_bill_field(&mut out, self, BillStyleField::Total, "Grand Total: 100.00", false);
+            append_bill_field(
+                &mut out,
+                self,
+                BillStyleField::Total,
+                &format!("{}: 100.00", self.caption_grand_total()),
+                false,
+            );
         }
         append_bill_field(&mut out, self, BillStyleField::Footer, &self.footer, false);
         if !self.upi_vpa.trim().is_empty() {
@@ -2295,6 +2859,9 @@ impl Drop for BillStage {
 pub fn bill_stage_finish(fmt: &BillSlipFormat, rtl: bool) -> String {
     let rows = BILL_STAGE.with(|slot| slot.borrow_mut().take()).unwrap_or_default();
     let mut out = String::new();
+    if fmt.item_layout == BillItemLayout::Columns {
+        out.push_str(&encode_slip_tab_layout(&fmt.item_tab_layout()));
+    }
     let mut consumed: std::collections::HashSet<BillStyleField> =
         std::collections::HashSet::new();
     let order = fmt.ordered();
@@ -2513,16 +3080,97 @@ fn take_kot_line_style(line: &str) -> (Option<KotLineStyle>, &str) {
     (None, line)
 }
 
+/// Encode column metrics as a leading slip directive (not drawn).
+fn encode_slip_tab_layout(tab: &crate::receipt_raster::TabColumnLayout) -> String {
+    let align = match tab.cell_align {
+        crate::receipt_raster::LineAlign::Center => 'C',
+        crate::receipt_raster::LineAlign::End => 'E',
+        crate::receipt_raster::LineAlign::Start => 'S',
+    };
+    let sep = if tab.sep { '1' } else { '0' };
+    format!(
+        "{SLIP_TAB_MARK}T{:.2}|{:.2}|{:.2}|{:.2}|{:.2}|{align}|{sep}\n",
+        tab.gap_em, tab.min_em[0], tab.min_em[1], tab.min_em[2], tab.min_em[3]
+    )
+}
+
+/// Pull a leading `\u{E001}T…` directive off `text`. Returns layout + body.
+fn take_slip_tab_layout(
+    text: &str,
+) -> (
+    Option<crate::receipt_raster::TabColumnLayout>,
+    &str,
+) {
+    let mut lines = text.split_inclusive('\n');
+    let Some(first) = lines.next() else {
+        return (None, text);
+    };
+    let (chunk, _) = match first.strip_suffix('\n') {
+        Some(body) => (body, true),
+        None => (first, false),
+    };
+    let mut chars = chunk.chars();
+    if chars.next() != Some(SLIP_TAB_MARK) {
+        return (None, text);
+    }
+    let rest = chars.as_str();
+    if !rest.starts_with('T') {
+        return (None, text);
+    }
+    let payload = &rest[1..];
+    let parts: Vec<&str> = payload.split('|').collect();
+    if parts.len() < 6 {
+        return (None, text);
+    }
+    let parse = |s: &str| s.parse::<f32>().ok().filter(|v| v.is_finite());
+    let (Some(gap), Some(m0), Some(m1), Some(m2), Some(m3)) = (
+        parse(parts[0]),
+        parse(parts[1]),
+        parse(parts[2]),
+        parse(parts[3]),
+        parse(parts[4]),
+    ) else {
+        return (None, text);
+    };
+    let cell_align = match parts[5].chars().next().unwrap_or('E') {
+        'C' => crate::receipt_raster::LineAlign::Center,
+        'S' => crate::receipt_raster::LineAlign::Start,
+        _ => crate::receipt_raster::LineAlign::End,
+    };
+    let sep = parts
+        .get(6)
+        .and_then(|s| s.chars().next())
+        .map(|c| c == '1')
+        .unwrap_or(false);
+    let tab = crate::receipt_raster::TabColumnLayout {
+        gap_em: clamp_bill_col_gap_em(gap),
+        min_em: [
+            clamp_bill_col_min_em(m0),
+            clamp_bill_col_min_em(m1),
+            clamp_bill_col_min_em(m2),
+            clamp_bill_col_min_em(m3),
+        ],
+        cell_align,
+        sep,
+    };
+    let body_start = first.len();
+    (Some(tab), text.get(body_start..).unwrap_or(""))
+}
+
 /// Remove per-field style marks (Settings preview, plain expand).
 /// When a line was marked strike, approximate it with combining long-stroke
 /// overlays on the name (left of `\t`) so the on-screen preview shows the cue.
 pub fn strip_kot_style_marks(text: &str) -> String {
-    let mut out = String::with_capacity(text.len());
-    for line in text.split_inclusive('\n') {
+    let (_, body) = take_slip_tab_layout(text);
+    let mut out = String::with_capacity(body.len());
+    for line in body.split_inclusive('\n') {
         let (chunk, nl) = match line.strip_suffix('\n') {
             Some(body) => (body, true),
             None => (line, false),
         };
+        if chunk.starts_with(SLIP_TAB_MARK) {
+            continue;
+        }
         let (style, bare) = take_kot_line_style(chunk);
         if style.map(|s| s.strike).unwrap_or(false) {
             out.push_str(&strike_approx_text(bare));
@@ -2663,6 +3311,110 @@ mod kot_slip_format_tests {
     }
 
     #[test]
+    fn bill_and_kot_column_headers_are_editable() {
+        let mut bill = BillSlipFormat::default();
+        bill.item_header_item = "Particulars".into();
+        bill.item_header_qty = "Qty".into();
+        bill.item_header_price = "Rate".into();
+        bill.item_header_amount = "Amt".into();
+        assert_eq!(
+            format_bill_item_header(&bill),
+            "Particulars\tQty\tRate\tAmt"
+        );
+        let mut kot = KotSlipFormat::default();
+        kot.item_header_item = "Dish".into();
+        kot.item_header_qty = "Nos".into();
+        let raw = kot.render_sample("Shop");
+        let text = strip_kot_style_marks(&raw);
+        assert!(
+            text.lines().any(|l| l == "Dish\tNos"),
+            "KOT header labels must print:\n{text}"
+        );
+    }
+
+    #[test]
+    fn bill_column_order_sep_labels_and_meta_pair_are_owned() {
+        let mut fmt = BillSlipFormat::default();
+        fmt.item_col_order = vec![
+            "name".into(),
+            "amount".into(),
+            "qty".into(),
+            "price".into(),
+        ];
+        let row = format_bill_item_block(
+            &fmt,
+            BillItemPieces {
+                name: "Tea",
+                qty: "2",
+                price: "40.00",
+                amount: "80.00",
+                note: "",
+            },
+        );
+        assert_eq!(row, "Tea\t80.00\t2\t40.00");
+        assert_eq!(
+            format_bill_item_header(&fmt),
+            "Item\tAmount\tQty.\tPrice"
+        );
+        let tab = fmt.item_tab_layout();
+        // Right packs: amount, qty, price → mins amount, qty, price.
+        assert!((tab.min_em[0] - 8.5).abs() < 0.01);
+        assert!((tab.min_em[1] - 3.5).abs() < 0.01);
+        assert!((tab.min_em[2] - 7.5).abs() < 0.01);
+        fmt.item_col_sep = true;
+        assert!(fmt.item_tab_layout().sep);
+        fmt.total_qty_label = "Nos".into();
+        fmt.total_grand_label = "NET".into();
+        let sample = strip_kot_style_marks(&fmt.render_sample("Shop", "01/01/26 12:00"));
+        assert!(sample.contains("Nos: 3"), "custom qty label:\n{sample}");
+        assert!(sample.contains("NET: 100.00"), "custom grand label:\n{sample}");
+        fmt.set_meta_partner(BillStyleField::Time, Some(BillStyleField::Cashier));
+        assert_eq!(
+            fmt.meta_pair_of(BillStyleField::Time),
+            Some(BillStyleField::Cashier)
+        );
+        assert_eq!(fmt.meta_pair_of(BillStyleField::Table), None);
+        fmt.set_meta_partner(BillStyleField::Time, None);
+        assert_eq!(fmt.meta_pair_of(BillStyleField::Time), None);
+    }
+
+    #[test]
+    fn bill_column_metrics_defaults_and_tab_directive_round_trip() {
+        let fmt = BillSlipFormat::default();
+        assert!((fmt.item_col_gap_em - BILL_COL_GAP_COMFORT).abs() < 0.01);
+        assert_eq!(fmt.item_num_align, KotAlign::End);
+        assert_eq!(fmt.items.size_em, 16);
+        let tab = fmt.item_tab_layout();
+        assert!((tab.gap_em - 1.15).abs() < 0.01);
+        assert!((tab.min_em[0] - 3.5).abs() < 0.01);
+        assert!((tab.min_em[1] - 7.5).abs() < 0.01);
+        assert!((tab.min_em[2] - 8.5).abs() < 0.01);
+        let mut hidden_price = fmt.clone();
+        hidden_price.item_show_price = false;
+        let tab2 = hidden_price.item_tab_layout();
+        // Qty then Amount — Amount keeps amount min, not price min.
+        assert!((tab2.min_em[0] - 3.5).abs() < 0.01);
+        assert!((tab2.min_em[1] - 8.5).abs() < 0.01);
+        assert_eq!(tab2.min_em[2], 0.0);
+        let raw = fmt.render_sample("Shop", "01/01/26 12:00");
+        assert!(
+            raw.starts_with(SLIP_TAB_MARK),
+            "bill sample must carry column metrics for the print queue:\n{raw}"
+        );
+        let (parsed, body) = take_slip_tab_layout(&raw);
+        let parsed = parsed.expect("tab layout");
+        assert!((parsed.gap_em - tab.gap_em).abs() < 0.02);
+        assert!(!body.starts_with(SLIP_TAB_MARK));
+        let lines = styled_slip_lines(&raw, &PrintFormat::standard().raster_metrics());
+        assert!(
+            lines.iter().any(|l| l.text.contains('\t') && l.tab.is_some()),
+            "tab lines must keep layout through styled_slip_lines"
+        );
+        let plain = strip_kot_style_marks(&raw);
+        assert!(!plain.contains(SLIP_TAB_MARK));
+    }
+
+    #[test]
     fn bill_item_columns_and_stacked_honour_piece_toggles() {
         let mut fmt = BillSlipFormat::default();
         assert_eq!(fmt.item_layout, BillItemLayout::Columns);
@@ -2714,10 +3466,54 @@ mod kot_slip_format_tests {
     #[test]
     fn product_defaults_use_page_bill_and_80mm_kot() {
         assert_eq!(BillSlipFormat::default().shown_content_width_mm(), 210);
-        assert_eq!(KotSlipFormat::default().shown_content_width_mm(), 80);
+        let kot = KotSlipFormat::default();
+        assert_eq!(kot.shown_content_width_mm(), 80);
+        assert_eq!(kot.em, KOT_EM_LARGE);
+        let body = &kot.kind_styles.original;
+        assert_eq!(body.item_qty.size_em, KOT_EM_LARGE);
+        assert_eq!(body.item_qty.weight, KotFontWeight::Bold);
+        assert_eq!(body.table.align, KotAlign::Center);
+        assert_eq!(body.kot_no.align, KotAlign::Center);
         assert!(!BillSlipFormat::default().title_style.show);
         assert_eq!(BillSlipFormat::default().footer, "Thanks");
         assert_eq!(KOT_BANNER_DUPLICATE, "Duplicate");
+    }
+
+    #[test]
+    fn pre_foh_type_is_lifted_to_large_centered_defaults() {
+        let mut old = KotSlipFormat {
+            em: KOT_EM_SMALL,
+            kind_styles: {
+                let mut s = KotKindStyleSet::default();
+                // Simulate the old stock (small, left, regular items).
+                s.original = KotKindStyles {
+                    title: KotFieldStyle::bold(KOT_EM_NORMAL),
+                    shop: KotFieldStyle::regular(KOT_EM_NORMAL),
+                    time: KotFieldStyle::regular(KOT_EM_SMALL),
+                    waiter: KotFieldStyle::regular(KOT_EM_SMALL),
+                    station: KotFieldStyle::regular(KOT_EM_SMALL),
+                    table: KotFieldStyle::bold(KOT_EM_LARGE),
+                    kot_no: KotFieldStyle::regular(KOT_EM_NORMAL),
+                    area: KotFieldStyle::bold(KOT_EM_NORMAL),
+                    item_qty: KotFieldStyle::regular(KOT_EM_NORMAL),
+                    banner: String::new(),
+                    item_prefix: String::new(),
+                    strike_items: false,
+                    strike_item_name: false,
+                    strike_item_note: false,
+                };
+                s
+            },
+            ..KotSlipFormat::default()
+        };
+        // em SMALL + left table/kot overrides the new Default() fields above.
+        old.em = KOT_EM_SMALL;
+        assert!(old.looks_like_pre_foh_type());
+        old.apply_foh_type_defaults();
+        assert!(!old.looks_like_pre_foh_type());
+        assert_eq!(old.em, KOT_EM_LARGE);
+        assert_eq!(old.kind_styles.original.table.align, KotAlign::Center);
+        assert_eq!(old.kind_styles.original.item_qty.weight, KotFontWeight::Bold);
     }
 
     #[test]
@@ -2849,6 +3645,7 @@ mod kot_slip_format_tests {
                 weight: crate::receipt_raster::RasterWeight::Regular,
                 align,
                 strike: false,
+                tab: None,
             }];
             let (rows, height) = crate::receipt_raster::draw_lines(&lines, &page);
             let width = page.page_dots();
@@ -3057,6 +3854,7 @@ mod kot_slip_format_tests {
                 weight: crate::receipt_raster::RasterWeight::Bold,
                 align: crate::receipt_raster::LineAlign::Start,
                 strike: false,
+                tab: None,
             }];
             crate::receipt_raster::draw_lines(&lines, &page).1
         };
@@ -3405,14 +4203,21 @@ pub const KOT_QTY_COLS: usize = 4;
 /// and aligns in dots instead.
 pub fn expand_kot_column_tabs(text: &str, cols: usize) -> String {
     let cols = cols.max(8);
-    let mut out = String::with_capacity(text.len().saturating_add(16));
-    for (i, line) in text.lines().enumerate() {
-        if i > 0 {
+    let (tab, body) = take_slip_tab_layout(text);
+    let tab = tab.unwrap_or(crate::receipt_raster::TabColumnLayout::LEGACY);
+    let mut out = String::with_capacity(body.len().saturating_add(16));
+    let mut first = true;
+    for line in body.lines() {
+        if line.starts_with(SLIP_TAB_MARK) {
+            continue;
+        }
+        if !first {
             out.push('\n');
         }
-        out.push_str(&expand_kot_column_tab_line(line, cols));
+        first = false;
+        out.push_str(&expand_kot_column_tab_line(line, cols, tab));
     }
-    if text.ends_with('\n') {
+    if body.ends_with('\n') {
         out.push('\n');
     }
     out
@@ -3437,17 +4242,48 @@ fn split_kot_style_prefix(line: &str) -> (String, &str) {
     }
 }
 
-fn expand_kot_column_tab_line(line: &str, cols: usize) -> String {
+fn expand_kot_column_tab_line(
+    line: &str,
+    cols: usize,
+    tab: crate::receipt_raster::TabColumnLayout,
+) -> String {
     let (mark, body) = split_kot_style_prefix(line);
     if !body.contains('\t') {
         return format!("{mark}{body}");
     }
     let parts: Vec<&str> = body.split('\t').collect();
+    let gap_cols = tab.gap_em.round().clamp(1.0, 4.0) as usize;
+    let gap = if tab.sep {
+        let side = gap_cols.saturating_sub(1) / 2;
+        format!(
+            "{}|{}",
+            " ".repeat(side),
+            " ".repeat(gap_cols.saturating_sub(1 + side))
+        )
+    } else {
+        " ".repeat(gap_cols)
+    };
+    let fmt_cell = |text: &str, width: usize| -> String {
+        match tab.cell_align {
+            crate::receipt_raster::LineAlign::Center => {
+                format!("{:^width$}", text, width = width)
+            }
+            crate::receipt_raster::LineAlign::Start => {
+                format!("{:<width$}", text, width = width)
+            }
+            crate::receipt_raster::LineAlign::End => {
+                format!("{:>width$}", text, width = width)
+            }
+        }
+    };
     if parts.len() == 2 {
         let right = parts[1].trim();
         let left = parts[0].trim_end();
-        let qty_w = KOT_QTY_COLS.max(right.chars().count());
-        let name_w = cols.saturating_sub(qty_w);
+        let min_w = tab.min_em[0].round().max(0.0) as usize;
+        let qty_w = KOT_QTY_COLS
+            .max(right.chars().count())
+            .max(min_w);
+        let name_w = cols.saturating_sub(qty_w.saturating_add(gap_cols.saturating_sub(1)));
         let left = {
             let n = left.chars().count();
             if n <= name_w {
@@ -3456,18 +4292,32 @@ fn expand_kot_column_tab_line(line: &str, cols: usize) -> String {
                 left.chars().take(name_w.saturating_sub(1)).collect::<String>() + "…"
             }
         };
-        let right_field = format!("{:>width$}", right, width = qty_w);
         let mid = name_w.saturating_sub(left.chars().count());
-        return format!("{mark}{left}{}{right_field}", " ".repeat(mid));
+        return format!(
+            "{mark}{left}{}{}",
+            " ".repeat(mid),
+            fmt_cell(right, qty_w)
+        );
     }
     // Bill Item | Qty | Price | Amount (or any 3+ cells): pack trailing
     // cells from the right; first cell flexes.
     let rights: Vec<&str> = parts[1..].iter().map(|p| p.trim()).collect();
     let right_widths: Vec<usize> = rights
         .iter()
-        .map(|r| r.chars().count().max(4))
+        .enumerate()
+        .map(|(i, r)| {
+            let min_w = tab
+                .min_em
+                .get(i)
+                .copied()
+                .unwrap_or(0.0)
+                .round()
+                .max(0.0) as usize;
+            r.chars().count().max(4).max(min_w)
+        })
         .collect();
-    let rights_w: usize = right_widths.iter().sum::<usize>() + rights.len();
+    let rights_w: usize = right_widths.iter().sum::<usize>()
+        + gap_cols.saturating_mul(rights.len().max(1));
     let name_w = cols.saturating_sub(rights_w);
     let left = {
         let raw = parts[0].trim_end();
@@ -3480,10 +4330,13 @@ fn expand_kot_column_tab_line(line: &str, cols: usize) -> String {
             raw.chars().take(name_w.saturating_sub(1)).collect::<String>() + "…"
         }
     };
-    let mut line_out = format!("{mark}{left}{}", " ".repeat(name_w.saturating_sub(left.chars().count())));
+    let mut line_out = format!(
+        "{mark}{left}{}",
+        " ".repeat(name_w.saturating_sub(left.chars().count()))
+    );
     for (r, w) in rights.iter().zip(right_widths.iter()) {
-        line_out.push(' ');
-        line_out.push_str(&format!("{:>width$}", r, width = *w));
+        line_out.push_str(&gap);
+        line_out.push_str(&fmt_cell(r, *w));
     }
     line_out
 }
@@ -5930,12 +6783,18 @@ pub fn raster_pitch_for_em(em: f32) -> usize {
 
 /// One slip line's size, weight, and alignment. Start/Center/End are shifts
 /// across `default.width_dots`, which is the selected content width.
+/// A leading [`SLIP_TAB_MARK`] directive (from the bill/KOT format) sets
+/// `\t` column gap / min widths for every tab line on the slip.
 pub fn styled_slip_lines(
     text: &str,
     default: &crate::receipt_raster::RasterMetrics,
 ) -> Vec<crate::receipt_raster::StyledLine> {
-    text.lines()
+    let (tab, body) = take_slip_tab_layout(text);
+    body.lines()
         .filter(|line| {
+            if line.starts_with(SLIP_TAB_MARK) {
+                return false;
+            }
             let (_, body) = take_kot_line_style(line);
             !body.trim().is_empty()
         })
@@ -5969,6 +6828,7 @@ pub fn styled_slip_lines(
                 weight,
                 align,
                 strike,
+                tab: if body.contains('\t') { tab } else { None },
             }
         })
         .collect()

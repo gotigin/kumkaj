@@ -191,6 +191,8 @@ struct AppState {
     bill_style_field: print_share::BillStyleField,
     /// Which row of the bill print order is selected.
     bill_field_edit_idx: usize,
+    /// Which item column (name/qty/price/amount) is selected for reorder.
+    bill_item_col_edit_idx: usize,
     /// DeviceSetup accordions (`language`, `role`). Default opens `role`.
     device_setup_sections_open: Vec<String>,
     /// Pending custom icon path from picker (before Save brand).

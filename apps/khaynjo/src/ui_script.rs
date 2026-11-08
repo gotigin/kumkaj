@@ -9315,6 +9315,18 @@ View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
                                             bill_item_header_off_on := SegBtnOn{text: "Off" visible: false}
                                         }
                                     }
+                                    bill_item_header_labels := View{
+                                        width: Fill height: Fit
+                                        flow: Down spacing: 8
+                                        h_bill_item_hdr_item := WrapLabel{body: "Item header" font_color: #x260B08 font_size: 14.}
+                                        bill_item_hdr_item_input := FieldInput{empty_text: "Item"}
+                                        h_bill_item_hdr_qty := WrapLabel{body: "Qty header" font_color: #x260B08 font_size: 14.}
+                                        bill_item_hdr_qty_input := FieldInput{empty_text: "Qty."}
+                                        h_bill_item_hdr_price := WrapLabel{body: "Price header" font_color: #x260B08 font_size: 14.}
+                                        bill_item_hdr_price_input := FieldInput{empty_text: "Price"}
+                                        h_bill_item_hdr_amount := WrapLabel{body: "Amount header" font_color: #x260B08 font_size: 14.}
+                                        bill_item_hdr_amount_input := FieldInput{empty_text: "Amount"}
+                                    }
                                     h_bill_item_name := WrapLabel{body: "Dish name" font_color: #x260B08 font_size: 14.}
                                     View{width: Fill height: Fit flow: Right spacing: 6
                                         View{width: Fill height: Fit flow: Overlay
@@ -9370,6 +9382,98 @@ View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
                                             bill_item_note_off_on := SegBtnOn{text: "Off" visible: false}
                                         }
                                     }
+                                    // Column air / reserved widths — only meaningful for Columns layout.
+                                    bill_item_col_metrics := View{
+                                        width: Fill height: Fit
+                                        flow: Down spacing: 8
+                                        h_bill_item_col_order := WrapLabel{body: "Column order" font_color: #x260B08 font_size: 14.}
+                                        View{width: Fill height: Fit flow: Down spacing: 4
+                                            View{width: Fill height: Fit flow: Overlay
+                                                bill_col_ord_0 := KotRowBtn{text: "Dish name"}
+                                                bill_col_ord_0_on := KotRowBtnOn{text: "Dish name" visible: false}
+                                            }
+                                            View{width: Fill height: Fit flow: Overlay
+                                                bill_col_ord_1 := KotRowBtn{text: "Qty"}
+                                                bill_col_ord_1_on := KotRowBtnOn{text: "Qty" visible: false}
+                                            }
+                                            View{width: Fill height: Fit flow: Overlay
+                                                bill_col_ord_2 := KotRowBtn{text: "Price"}
+                                                bill_col_ord_2_on := KotRowBtnOn{text: "Price" visible: false}
+                                            }
+                                            View{width: Fill height: Fit flow: Overlay
+                                                bill_col_ord_3 := KotRowBtn{text: "Amount"}
+                                                bill_col_ord_3_on := KotRowBtnOn{text: "Amount" visible: false}
+                                            }
+                                        }
+                                        View{width: Fill height: Fit flow: Right spacing: 6
+                                            bill_col_ord_up := StackSecondaryBtn{text: "Move up" flow: Down}
+                                            bill_col_ord_down := StackSecondaryBtn{text: "Move down" flow: Down}
+                                        }
+                                        h_bill_item_col_sep := WrapLabel{body: "Column rules" font_color: #x260B08 font_size: 14.}
+                                        View{width: Fill height: Fit flow: Right spacing: 6
+                                            View{width: Fill height: Fit flow: Overlay
+                                                bill_item_sep_on := SegBtn{text: "On"}
+                                                bill_item_sep_on_on := SegBtnOn{text: "On" visible: false}
+                                            }
+                                            View{width: Fill height: Fit flow: Overlay
+                                                bill_item_sep_off := SegBtn{text: "Off"}
+                                                bill_item_sep_off_on := SegBtnOn{text: "Off" visible: false}
+                                            }
+                                        }
+                                        h_bill_item_col_gap := WrapLabel{body: "Column gap" font_color: #x260B08 font_size: 14.}
+                                        View{width: Fill height: Fit flow: Right spacing: 6
+                                            View{width: Fill height: Fit flow: Overlay
+                                                bill_item_gap_tight := SegBtn{text: "Tight"}
+                                                bill_item_gap_tight_on := SegBtnOn{text: "Tight" visible: false}
+                                            }
+                                            View{width: Fill height: Fit flow: Overlay
+                                                bill_item_gap_comfort := SegBtn{text: "Comfortable"}
+                                                bill_item_gap_comfort_on := SegBtnOn{text: "Comfortable" visible: false}
+                                            }
+                                            View{width: Fill height: Fit flow: Overlay
+                                                bill_item_gap_wide := SegBtn{text: "Wide"}
+                                                bill_item_gap_wide_on := SegBtnOn{text: "Wide" visible: false}
+                                            }
+                                        }
+                                        h_bill_item_num_width := WrapLabel{body: "Number columns" font_color: #x260B08 font_size: 14.}
+                                        View{width: Fill height: Fit flow: Right spacing: 6
+                                            View{width: Fill height: Fit flow: Overlay
+                                                bill_item_num_compact := SegBtn{text: "Compact"}
+                                                bill_item_num_compact_on := SegBtnOn{text: "Compact" visible: false}
+                                            }
+                                            View{width: Fill height: Fit flow: Overlay
+                                                bill_item_num_comfort := SegBtn{text: "Comfortable"}
+                                                bill_item_num_comfort_on := SegBtnOn{text: "Comfortable" visible: false}
+                                            }
+                                            View{width: Fill height: Fit flow: Overlay
+                                                bill_item_num_wide := SegBtn{text: "Wide"}
+                                                bill_item_num_wide_on := SegBtnOn{text: "Wide" visible: false}
+                                            }
+                                        }
+                                        h_bill_item_num_align := WrapLabel{body: "Numbers align" font_color: #x260B08 font_size: 14.}
+                                        View{width: Fill height: Fit flow: Right spacing: 6
+                                            View{width: Fill height: Fit flow: Overlay
+                                                bill_item_num_start := SegBtn{text: "Start"}
+                                                bill_item_num_start_on := SegBtnOn{text: "Start" visible: false}
+                                            }
+                                            View{width: Fill height: Fit flow: Overlay
+                                                bill_item_num_center := SegBtn{text: "Center"}
+                                                bill_item_num_center_on := SegBtnOn{text: "Center" visible: false}
+                                            }
+                                            View{width: Fill height: Fit flow: Overlay
+                                                bill_item_num_end := SegBtn{text: "End"}
+                                                bill_item_num_end_on := SegBtnOn{text: "End" visible: false}
+                                            }
+                                        }
+                                        h_bill_item_gap_em := WrapLabel{body: "Gap (em)" font_color: #x260B08 font_size: 14.}
+                                        bill_item_gap_em_input := FieldInput{empty_text: "e.g. 1.15"}
+                                        h_bill_item_qty_min := WrapLabel{body: "Qty min (em)" font_color: #x260B08 font_size: 14.}
+                                        bill_item_qty_min_input := FieldInput{empty_text: "e.g. 3.5"}
+                                        h_bill_item_price_min := WrapLabel{body: "Price min (em)" font_color: #x260B08 font_size: 14.}
+                                        bill_item_price_min_input := FieldInput{empty_text: "e.g. 7.5"}
+                                        h_bill_item_amount_min := WrapLabel{body: "Amount min (em)" font_color: #x260B08 font_size: 14.}
+                                        bill_item_amount_min_input := FieldInput{empty_text: "e.g. 8.5"}
+                                    }
                                 }
                                 bill_total_pieces := View{
                                     width: Fill height: Fit
@@ -9386,6 +9490,8 @@ View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
                                             bill_total_qty_off_on := SegBtnOn{text: "Off" visible: false}
                                         }
                                     }
+                                    h_bill_total_qty_label := WrapLabel{body: "Total qty label" font_color: #x260B08 font_size: 14.}
+                                    bill_total_qty_label_input := FieldInput{empty_text: "Total Qty"}
                                     h_bill_total_subtotal := WrapLabel{body: "Sub total" font_color: #x260B08 font_size: 14.}
                                     View{width: Fill height: Fit flow: Right spacing: 6
                                         View{width: Fill height: Fit flow: Overlay
@@ -9397,6 +9503,8 @@ View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
                                             bill_total_subtotal_off_on := SegBtnOn{text: "Off" visible: false}
                                         }
                                     }
+                                    h_bill_total_subtotal_label := WrapLabel{body: "Sub total label" font_color: #x260B08 font_size: 14.}
+                                    bill_total_subtotal_label_input := FieldInput{empty_text: "Sub Total"}
                                     h_bill_total_grand := WrapLabel{body: "Grand total" font_color: #x260B08 font_size: 14.}
                                     View{width: Fill height: Fit flow: Right spacing: 6
                                         View{width: Fill height: Fit flow: Overlay
@@ -9406,6 +9514,44 @@ View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
                                         View{width: Fill height: Fit flow: Overlay
                                             bill_total_grand_off := SegBtn{text: "Off"}
                                             bill_total_grand_off_on := SegBtnOn{text: "Off" visible: false}
+                                        }
+                                    }
+                                    h_bill_total_grand_label := WrapLabel{body: "Grand total label" font_color: #x260B08 font_size: 14.}
+                                    bill_total_grand_label_input := FieldInput{empty_text: "Grand Total"}
+                                    h_bill_total_paid_label := WrapLabel{body: "Paid total label" font_color: #x260B08 font_size: 14.}
+                                    bill_total_paid_label_input := FieldInput{empty_text: "Total"}
+                                }
+                                bill_meta_pair := View{
+                                    width: Fill height: Fit
+                                    flow: Down spacing: 8
+                                    visible: false
+                                    h_bill_meta_pair := WrapLabel{body: "Share line with" font_color: #x260B08 font_size: 14.}
+                                    View{width: Fill height: Fit flow: Right spacing: 6
+                                        View{width: Fill height: Fit flow: Overlay
+                                            bill_pair_alone := SegBtn{text: "Alone"}
+                                            bill_pair_alone_on := SegBtnOn{text: "Alone" visible: false}
+                                        }
+                                        View{width: Fill height: Fit flow: Overlay
+                                            bill_pair_customer := SegBtn{text: "Customer"}
+                                            bill_pair_customer_on := SegBtnOn{text: "Customer" visible: false}
+                                        }
+                                        View{width: Fill height: Fit flow: Overlay
+                                            bill_pair_billno := SegBtn{text: "Bill no"}
+                                            bill_pair_billno_on := SegBtnOn{text: "Bill no" visible: false}
+                                        }
+                                    }
+                                    View{width: Fill height: Fit flow: Right spacing: 6
+                                        View{width: Fill height: Fit flow: Overlay
+                                            bill_pair_time := SegBtn{text: "Time"}
+                                            bill_pair_time_on := SegBtnOn{text: "Time" visible: false}
+                                        }
+                                        View{width: Fill height: Fit flow: Overlay
+                                            bill_pair_cashier := SegBtn{text: "Cashier"}
+                                            bill_pair_cashier_on := SegBtnOn{text: "Cashier" visible: false}
+                                        }
+                                        View{width: Fill height: Fit flow: Overlay
+                                            bill_pair_table := SegBtn{text: "Table"}
+                                            bill_pair_table_on := SegBtnOn{text: "Table" visible: false}
                                         }
                                     }
                                 }
@@ -9787,6 +9933,65 @@ View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
                                         kot_align_end := SegBtn{text: "End"}
                                         kot_align_end_on := SegBtnOn{text: "End" visible: false}
                                     }
+                                }
+                                // Item / Qty column air — only while that field is open.
+                                kot_item_col_metrics := View{
+                                    width: Fill height: Fit
+                                    flow: Down spacing: 8
+                                    visible: false
+                                    h_kot_item_col_gap := WrapLabel{body: "Column gap" font_color: #x260B08 font_size: 14.}
+                                    View{width: Fill height: Fit flow: Right spacing: 6
+                                        View{width: Fill height: Fit flow: Overlay
+                                            kot_item_gap_tight := SegBtn{text: "Tight"}
+                                            kot_item_gap_tight_on := SegBtnOn{text: "Tight" visible: false}
+                                        }
+                                        View{width: Fill height: Fit flow: Overlay
+                                            kot_item_gap_comfort := SegBtn{text: "Comfortable"}
+                                            kot_item_gap_comfort_on := SegBtnOn{text: "Comfortable" visible: false}
+                                        }
+                                        View{width: Fill height: Fit flow: Overlay
+                                            kot_item_gap_wide := SegBtn{text: "Wide"}
+                                            kot_item_gap_wide_on := SegBtnOn{text: "Wide" visible: false}
+                                        }
+                                    }
+                                    h_kot_item_qty_width := WrapLabel{body: "Qty column" font_color: #x260B08 font_size: 14.}
+                                    View{width: Fill height: Fit flow: Right spacing: 6
+                                        View{width: Fill height: Fit flow: Overlay
+                                            kot_item_num_compact := SegBtn{text: "Compact"}
+                                            kot_item_num_compact_on := SegBtnOn{text: "Compact" visible: false}
+                                        }
+                                        View{width: Fill height: Fit flow: Overlay
+                                            kot_item_num_comfort := SegBtn{text: "Comfortable"}
+                                            kot_item_num_comfort_on := SegBtnOn{text: "Comfortable" visible: false}
+                                        }
+                                        View{width: Fill height: Fit flow: Overlay
+                                            kot_item_num_wide := SegBtn{text: "Wide"}
+                                            kot_item_num_wide_on := SegBtnOn{text: "Wide" visible: false}
+                                        }
+                                    }
+                                    h_kot_item_num_align := WrapLabel{body: "Qty align" font_color: #x260B08 font_size: 14.}
+                                    View{width: Fill height: Fit flow: Right spacing: 6
+                                        View{width: Fill height: Fit flow: Overlay
+                                            kot_item_num_start := SegBtn{text: "Start"}
+                                            kot_item_num_start_on := SegBtnOn{text: "Start" visible: false}
+                                        }
+                                        View{width: Fill height: Fit flow: Overlay
+                                            kot_item_num_center := SegBtn{text: "Center"}
+                                            kot_item_num_center_on := SegBtnOn{text: "Center" visible: false}
+                                        }
+                                        View{width: Fill height: Fit flow: Overlay
+                                            kot_item_num_end := SegBtn{text: "End"}
+                                            kot_item_num_end_on := SegBtnOn{text: "End" visible: false}
+                                        }
+                                    }
+                                    h_kot_item_hdr_item := WrapLabel{body: "Item header" font_color: #x260B08 font_size: 14.}
+                                    kot_item_hdr_item_input := FieldInput{empty_text: "Item"}
+                                    h_kot_item_hdr_qty := WrapLabel{body: "Qty header" font_color: #x260B08 font_size: 14.}
+                                    kot_item_hdr_qty_input := FieldInput{empty_text: "Qty."}
+                                    h_kot_item_gap_em := WrapLabel{body: "Gap (em)" font_color: #x260B08 font_size: 14.}
+                                    kot_item_gap_em_input := FieldInput{empty_text: "e.g. 0.7"}
+                                    h_kot_item_qty_min := WrapLabel{body: "Qty min (em)" font_color: #x260B08 font_size: 14.}
+                                    kot_item_qty_min_input := FieldInput{empty_text: "e.g. 3.5"}
                                 }
                                 // Legacy hot-reload ids — kept hidden so Live reload does not break.
                                 View{width: Fill height: Fit visible: false

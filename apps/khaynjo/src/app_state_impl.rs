@@ -111,6 +111,7 @@ impl AppState {
             bill_slip_draft: print_share::BillSlipFormat::default(),
             bill_style_field: print_share::BillStyleField::Shop,
             bill_field_edit_idx: 0,
+            bill_item_col_edit_idx: 0,
             device_setup_sections_open: vec!["role".into()],
             draft_venue_icon_path: None,
             pending_backup_copy: None,

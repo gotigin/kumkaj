@@ -41,7 +41,7 @@ Offline use is free forever on the device. Extra tills are optional LAN joins. C
 
 **Moklanjo shell:** Day book · Booking · Pay out · More ([`MOKLANJO.md`](../apps/moklanjo/docs/MOKLANJO.md), [`DESIGN.md`](DESIGN.md), [`BUSINESS_BOOKS.md`](BUSINESS_BOOKS.md)).
 
-**UI:** Stitch *Tactile Countertop* (cool surface, navy chrome, terracotta accents). See [`DESIGN.md`](DESIGN.md); full pack at `../../stitch_tactile_countertop_design_system/`. Makepad 2 button selection + label rules for agents: [`DEV.md`](DEV.md) § Makepad 2 UI faces (agent guide).
+**UI:** Stitch *Tactile Countertop* (cool surface, navy chrome, terracotta accents). See [`DESIGN.md`](DESIGN.md); full pack at `../../stitch_tactile_countertop_design_system/`. Makepad 2 button selection + label rules for agents: [`DEV.md`](DEV.md) § Makepad 2 UI faces (agent guide). **Long work (pair, open books, find printers, backup, …):** replace the start CTA with **Progress + Cancel** and never block the UI thread — [`DEV.md`](DEV.md) bug **7b**, `.cursor/rules/busy-action-chrome.mdc`.
 
 **Auth:** Owner hosts the shop; Staff unlock with their own PIN (or optional login) and owner-defined role title. Sale authorship is immutable. Extra tills pair on the outlet Wi‑Fi when the shop allows them — see [`DEV.md`](DEV.md).
 

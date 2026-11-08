@@ -6177,6 +6177,152 @@ impl MatchEvent for App {
                     break;
                 }
             }
+            if self.choice_chip_clicked(
+                cx,
+                actions,
+                ids!(kot_item_gap_tight),
+                ids!(kot_item_gap_tight_on),
+            ) {
+                app_state()
+                    .lock()
+                    .unwrap()
+                    .kot_slip_draft
+                    .set_item_col_gap_preset(print_share::KOT_COL_GAP_TIGHT);
+                slip_changed = true;
+            }
+            if self.choice_chip_clicked(
+                cx,
+                actions,
+                ids!(kot_item_gap_comfort),
+                ids!(kot_item_gap_comfort_on),
+            ) {
+                app_state()
+                    .lock()
+                    .unwrap()
+                    .kot_slip_draft
+                    .set_item_col_gap_preset(print_share::KOT_COL_GAP_COMFORT);
+                slip_changed = true;
+            }
+            if self.choice_chip_clicked(
+                cx,
+                actions,
+                ids!(kot_item_gap_wide),
+                ids!(kot_item_gap_wide_on),
+            ) {
+                app_state()
+                    .lock()
+                    .unwrap()
+                    .kot_slip_draft
+                    .set_item_col_gap_preset(print_share::KOT_COL_GAP_WIDE);
+                slip_changed = true;
+            }
+            if self.choice_chip_clicked(
+                cx,
+                actions,
+                ids!(kot_item_num_compact),
+                ids!(kot_item_num_compact_on),
+            ) {
+                app_state()
+                    .lock()
+                    .unwrap()
+                    .kot_slip_draft
+                    .set_item_qty_min_preset(print_share::KOT_QTY_MIN_COMPACT);
+                slip_changed = true;
+            }
+            if self.choice_chip_clicked(
+                cx,
+                actions,
+                ids!(kot_item_num_comfort),
+                ids!(kot_item_num_comfort_on),
+            ) {
+                app_state()
+                    .lock()
+                    .unwrap()
+                    .kot_slip_draft
+                    .set_item_qty_min_preset(print_share::KOT_QTY_MIN_COMFORT);
+                slip_changed = true;
+            }
+            if self.choice_chip_clicked(
+                cx,
+                actions,
+                ids!(kot_item_num_wide),
+                ids!(kot_item_num_wide_on),
+            ) {
+                app_state()
+                    .lock()
+                    .unwrap()
+                    .kot_slip_draft
+                    .set_item_qty_min_preset(print_share::KOT_QTY_MIN_WIDE);
+                slip_changed = true;
+            }
+            if self.choice_chip_clicked(
+                cx,
+                actions,
+                ids!(kot_item_num_start),
+                ids!(kot_item_num_start_on),
+            ) {
+                app_state().lock().unwrap().kot_slip_draft.item_num_align =
+                    print_share::KotAlign::Start;
+                slip_changed = true;
+            }
+            if self.choice_chip_clicked(
+                cx,
+                actions,
+                ids!(kot_item_num_center),
+                ids!(kot_item_num_center_on),
+            ) {
+                app_state().lock().unwrap().kot_slip_draft.item_num_align =
+                    print_share::KotAlign::Center;
+                slip_changed = true;
+            }
+            if self.choice_chip_clicked(
+                cx,
+                actions,
+                ids!(kot_item_num_end),
+                ids!(kot_item_num_end_on),
+            ) {
+                app_state().lock().unwrap().kot_slip_draft.item_num_align =
+                    print_share::KotAlign::End;
+                slip_changed = true;
+            }
+            if let Some(raw) = self
+                .ui
+                .text_input(cx, ids!(kot_item_hdr_item_input))
+                .changed(actions)
+            {
+                app_state().lock().unwrap().kot_slip_draft.item_header_item = raw;
+                slip_changed = true;
+            }
+            if let Some(raw) = self
+                .ui
+                .text_input(cx, ids!(kot_item_hdr_qty_input))
+                .changed(actions)
+            {
+                app_state().lock().unwrap().kot_slip_draft.item_header_qty = raw;
+                slip_changed = true;
+            }
+            if let Some(raw) = self
+                .ui
+                .text_input(cx, ids!(kot_item_gap_em_input))
+                .changed(actions)
+            {
+                if let Ok(v) = raw.trim().parse::<f32>() {
+                    app_state().lock().unwrap().kot_slip_draft.item_col_gap_em =
+                        print_share::clamp_bill_col_gap_em(v);
+                    slip_changed = true;
+                }
+            }
+            if let Some(raw) = self
+                .ui
+                .text_input(cx, ids!(kot_item_qty_min_input))
+                .changed(actions)
+            {
+                if let Ok(v) = raw.trim().parse::<f32>() {
+                    app_state().lock().unwrap().kot_slip_draft.item_qty_min_em =
+                        print_share::clamp_bill_col_min_em(v);
+                    slip_changed = true;
+                }
+            }
             // Move up/down reorder the print-order row that is selected.
             if self.ui.button(cx, ids!(kot_field_up)).clicked(actions) {
                 let mut st = app_state().lock().unwrap();
@@ -6669,6 +6815,301 @@ impl MatchEvent for App {
                 ids!(bill_item_note_off_on),
             ) {
                 app_state().lock().unwrap().bill_slip_draft.item_show_note = false;
+                bill_changed = true;
+            }
+            if self.choice_chip_clicked(
+                cx,
+                actions,
+                ids!(bill_item_gap_tight),
+                ids!(bill_item_gap_tight_on),
+            ) {
+                app_state()
+                    .lock()
+                    .unwrap()
+                    .bill_slip_draft
+                    .set_item_col_gap_preset(print_share::BILL_COL_GAP_TIGHT);
+                bill_changed = true;
+            }
+            if self.choice_chip_clicked(
+                cx,
+                actions,
+                ids!(bill_item_gap_comfort),
+                ids!(bill_item_gap_comfort_on),
+            ) {
+                app_state()
+                    .lock()
+                    .unwrap()
+                    .bill_slip_draft
+                    .set_item_col_gap_preset(print_share::BILL_COL_GAP_COMFORT);
+                bill_changed = true;
+            }
+            if self.choice_chip_clicked(
+                cx,
+                actions,
+                ids!(bill_item_gap_wide),
+                ids!(bill_item_gap_wide_on),
+            ) {
+                app_state()
+                    .lock()
+                    .unwrap()
+                    .bill_slip_draft
+                    .set_item_col_gap_preset(print_share::BILL_COL_GAP_WIDE);
+                bill_changed = true;
+            }
+            if self.choice_chip_clicked(
+                cx,
+                actions,
+                ids!(bill_item_num_compact),
+                ids!(bill_item_num_compact_on),
+            ) {
+                app_state()
+                    .lock()
+                    .unwrap()
+                    .bill_slip_draft
+                    .set_item_num_min_preset(print_share::BILL_NUM_MIN_COMPACT);
+                bill_changed = true;
+            }
+            if self.choice_chip_clicked(
+                cx,
+                actions,
+                ids!(bill_item_num_comfort),
+                ids!(bill_item_num_comfort_on),
+            ) {
+                app_state()
+                    .lock()
+                    .unwrap()
+                    .bill_slip_draft
+                    .set_item_num_min_preset(print_share::BILL_NUM_MIN_COMFORT);
+                bill_changed = true;
+            }
+            if self.choice_chip_clicked(
+                cx,
+                actions,
+                ids!(bill_item_num_wide),
+                ids!(bill_item_num_wide_on),
+            ) {
+                app_state()
+                    .lock()
+                    .unwrap()
+                    .bill_slip_draft
+                    .set_item_num_min_preset(print_share::BILL_NUM_MIN_WIDE);
+                bill_changed = true;
+            }
+            if self.choice_chip_clicked(
+                cx,
+                actions,
+                ids!(bill_item_num_start),
+                ids!(bill_item_num_start_on),
+            ) {
+                app_state().lock().unwrap().bill_slip_draft.item_num_align =
+                    print_share::KotAlign::Start;
+                bill_changed = true;
+            }
+            if self.choice_chip_clicked(
+                cx,
+                actions,
+                ids!(bill_item_num_center),
+                ids!(bill_item_num_center_on),
+            ) {
+                app_state().lock().unwrap().bill_slip_draft.item_num_align =
+                    print_share::KotAlign::Center;
+                bill_changed = true;
+            }
+            if self.choice_chip_clicked(
+                cx,
+                actions,
+                ids!(bill_item_num_end),
+                ids!(bill_item_num_end_on),
+            ) {
+                app_state().lock().unwrap().bill_slip_draft.item_num_align =
+                    print_share::KotAlign::End;
+                bill_changed = true;
+            }
+            if let Some(raw) = self
+                .ui
+                .text_input(cx, ids!(bill_item_gap_em_input))
+                .changed(actions)
+            {
+                if let Ok(v) = raw.trim().parse::<f32>() {
+                    app_state().lock().unwrap().bill_slip_draft.item_col_gap_em =
+                        print_share::clamp_bill_col_gap_em(v);
+                    bill_changed = true;
+                }
+            }
+            if let Some(raw) = self
+                .ui
+                .text_input(cx, ids!(bill_item_qty_min_input))
+                .changed(actions)
+            {
+                if let Ok(v) = raw.trim().parse::<f32>() {
+                    app_state().lock().unwrap().bill_slip_draft.item_qty_min_em =
+                        print_share::clamp_bill_col_min_em(v);
+                    bill_changed = true;
+                }
+            }
+            if let Some(raw) = self
+                .ui
+                .text_input(cx, ids!(bill_item_price_min_input))
+                .changed(actions)
+            {
+                if let Ok(v) = raw.trim().parse::<f32>() {
+                    app_state().lock().unwrap().bill_slip_draft.item_price_min_em =
+                        print_share::clamp_bill_col_min_em(v);
+                    bill_changed = true;
+                }
+            }
+            if let Some(raw) = self
+                .ui
+                .text_input(cx, ids!(bill_item_amount_min_input))
+                .changed(actions)
+            {
+                if let Ok(v) = raw.trim().parse::<f32>() {
+                    app_state().lock().unwrap().bill_slip_draft.item_amount_min_em =
+                        print_share::clamp_bill_col_min_em(v);
+                    bill_changed = true;
+                }
+            }
+            if let Some(raw) = self
+                .ui
+                .text_input(cx, ids!(bill_item_hdr_item_input))
+                .changed(actions)
+            {
+                app_state().lock().unwrap().bill_slip_draft.item_header_item = raw;
+                bill_changed = true;
+            }
+            if let Some(raw) = self
+                .ui
+                .text_input(cx, ids!(bill_item_hdr_qty_input))
+                .changed(actions)
+            {
+                app_state().lock().unwrap().bill_slip_draft.item_header_qty = raw;
+                bill_changed = true;
+            }
+            if let Some(raw) = self
+                .ui
+                .text_input(cx, ids!(bill_item_hdr_price_input))
+                .changed(actions)
+            {
+                app_state().lock().unwrap().bill_slip_draft.item_header_price = raw;
+                bill_changed = true;
+            }
+            if let Some(raw) = self
+                .ui
+                .text_input(cx, ids!(bill_item_hdr_amount_input))
+                .changed(actions)
+            {
+                app_state().lock().unwrap().bill_slip_draft.item_header_amount = raw;
+                bill_changed = true;
+            }
+            if self.choice_chip_clicked(
+                cx,
+                actions,
+                ids!(bill_item_sep_on),
+                ids!(bill_item_sep_on_on),
+            ) {
+                app_state().lock().unwrap().bill_slip_draft.item_col_sep = true;
+                bill_changed = true;
+            }
+            if self.choice_chip_clicked(
+                cx,
+                actions,
+                ids!(bill_item_sep_off),
+                ids!(bill_item_sep_off_on),
+            ) {
+                app_state().lock().unwrap().bill_slip_draft.item_col_sep = false;
+                bill_changed = true;
+            }
+            for (i, idle, on) in [
+                (0, ids!(bill_col_ord_0), ids!(bill_col_ord_0_on)),
+                (1, ids!(bill_col_ord_1), ids!(bill_col_ord_1_on)),
+                (2, ids!(bill_col_ord_2), ids!(bill_col_ord_2_on)),
+                (3, ids!(bill_col_ord_3), ids!(bill_col_ord_3_on)),
+            ] {
+                if self.choice_chip_clicked(cx, actions, idle, on) {
+                    app_state().lock().unwrap().bill_item_col_edit_idx = i;
+                    bill_changed = true;
+                }
+            }
+            if self.ui.button(cx, ids!(bill_col_ord_up)).clicked(actions) {
+                let mut st = app_state().lock().unwrap();
+                if st.bill_slip_draft.item_col_order.is_empty() {
+                    st.bill_slip_draft.item_col_order = print_share::BillItemCol::ALL
+                        .iter()
+                        .map(|c| c.id().to_string())
+                        .collect();
+                }
+                let i = st
+                    .bill_item_col_edit_idx
+                    .min(st.bill_slip_draft.item_col_order.len().saturating_sub(1));
+                if i > 0 {
+                    st.bill_slip_draft.item_col_order.swap(i, i - 1);
+                    st.bill_item_col_edit_idx = i - 1;
+                    bill_changed = true;
+                }
+            }
+            if self.ui.button(cx, ids!(bill_col_ord_down)).clicked(actions) {
+                let mut st = app_state().lock().unwrap();
+                if st.bill_slip_draft.item_col_order.is_empty() {
+                    st.bill_slip_draft.item_col_order = print_share::BillItemCol::ALL
+                        .iter()
+                        .map(|c| c.id().to_string())
+                        .collect();
+                }
+                let n = st.bill_slip_draft.item_col_order.len();
+                let i = st.bill_item_col_edit_idx.min(n.saturating_sub(1));
+                if i + 1 < n {
+                    st.bill_slip_draft.item_col_order.swap(i, i + 1);
+                    st.bill_item_col_edit_idx = i + 1;
+                    bill_changed = true;
+                }
+            }
+            for (idle, on, partner) in [
+                (ids!(bill_pair_alone), ids!(bill_pair_alone_on), None),
+                (ids!(bill_pair_customer), ids!(bill_pair_customer_on), Some(print_share::BillStyleField::Customer)),
+                (ids!(bill_pair_billno), ids!(bill_pair_billno_on), Some(print_share::BillStyleField::BillNo)),
+                (ids!(bill_pair_time), ids!(bill_pair_time_on), Some(print_share::BillStyleField::Time)),
+                (ids!(bill_pair_cashier), ids!(bill_pair_cashier_on), Some(print_share::BillStyleField::Cashier)),
+                (ids!(bill_pair_table), ids!(bill_pair_table_on), Some(print_share::BillStyleField::Table)),
+            ] {
+                if self.choice_chip_clicked(cx, actions, idle, on) {
+                    let mut st = app_state().lock().unwrap();
+                    let field = st.bill_style_field;
+                    if partner != Some(field) {
+                        st.bill_slip_draft.set_meta_partner(field, partner);
+                        bill_changed = true;
+                    }
+                }
+            }
+            if let Some(raw) = self
+                .ui
+                .text_input(cx, ids!(bill_total_qty_label_input))
+                .changed(actions)
+            {
+                app_state().lock().unwrap().bill_slip_draft.total_qty_label = raw;
+                bill_changed = true;
+            }
+            if let Some(raw) = self
+                .ui
+                .text_input(cx, ids!(bill_total_subtotal_label_input))
+                .changed(actions)
+            {
+                app_state().lock().unwrap().bill_slip_draft.total_subtotal_label = raw;
+                bill_changed = true;
+            }
+            if let Some(raw) = self
+                .ui
+                .text_input(cx, ids!(bill_total_grand_label_input))
+                .changed(actions)
+            {
+                app_state().lock().unwrap().bill_slip_draft.total_grand_label = raw;
+                bill_changed = true;
+            }
+            if let Some(raw) = self
+                .ui
+                .text_input(cx, ids!(bill_total_paid_label_input))
+                .changed(actions)
+            {
+                app_state().lock().unwrap().bill_slip_draft.total_paid_label = raw;
                 bill_changed = true;
             }
             if self.choice_chip_clicked(

@@ -200,6 +200,7 @@ Full cause / approach / code map: [`DEV.md`](DEV.md) § Makepad 2 UI faces (agen
 | Commit work on this form | **One** `RowPrimaryBtn` / `StackPrimaryBtn` (or ticket `PayBtn`) |
 | Cancel / clear / quiet alt | `RowSecondaryBtn` / `StackSecondaryBtn` / outlined `NavBtn` (full width); inline Fit quiet → `QuietFitBtn` (never `Row*` at `width: Fit`) |
 | Void / refund / delete | `DangerBtn` |
+| Long / freezing work in flight | **Replace** the start CTA with **Progress (state) + Cancel** until done or cancelled — never leave one button that freezes the UI (pair, find server, open books, find printers, import, backup, …). Progress on a WrapLabel / Fit face; Cancel is `QuietFitBtn`. Work runs off the UI thread. Canonical: [`DEV.md`](DEV.md) bug **7b**, `.cursor/rules/busy-action-chrome.mdc`. |
 
 Never promote a hub navigate link to filled primary because it is “the main thing.” Day book’s five jumps (Book a parcel / Sell, Expense / Buy, Day close, Reports, Parties) are **equal** `HubDestBtn` rows.
 

@@ -1,0 +1,36 @@
+# Busy actions — Progress + Cancel (every app)
+
+Canonical: `docs/DEV.md` bug **7b**; face table: `docs/DESIGN.md` § Makepad 2 faces.
+
+## Rule
+
+Any CTA that starts work that can freeze the UI or take noticeable time
+(pair, find server, open books / role switch, find printers, firewall,
+template import, create backup, LAN snapshot apply, …) must:
+
+1. Run the heavy work **off the UI thread** (worker + `SignalToUI`).
+2. **Replace** the start button, for the whole busy life, with **two**
+   controls:
+   - **Progress / state** — what is happening now (`Looking…`,
+     `Pairing…`, `Opening…`, `Importing… n/m`). Prefer `WrapLabel` or a
+     Fit progress face — never Fill+wrap Stack\* busy chrome (bug **7**).
+   - **Cancel** — `QuietFitBtn` (or quiet secondary) that aborts /
+     abandons the job and restores the idle CTA.
+
+Busy life includes time **after** the worker returns while the UI still
+finishes (drop previous SQLite off-thread, `reload_all`, `sync_chrome`).
+Gate heavy paint with the same `*_busy` flag (see DeviceSetup
+`role_open_busy`).
+
+## Do not
+
+- Leave the original CTA visible while the main thread blocks.
+- Run HTTP, SQLite replace, `VACUUM INTO`, printer discovery, or
+  firewall prompts on the UI thread.
+- Invent a third busy style when DeviceSetup / Client pair / Find
+  printers already show Progress + Cancel.
+
+## Apps
+
+Duplicate the pattern per app (`apps/moklanjo`, `apps/khaynjo`, future)
+— no shared Kumkaj core. Same UX contract in every product.

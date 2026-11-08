@@ -92,6 +92,69 @@ pub enum LineAlign {
     End,
 }
 
+/// How `\t` columns pack: flex name on the left, reserved slots on the right.
+/// Bills and KOTs carry this so Qty / Price / Amount stay readable instead of
+/// jamming against the dish name with a hairline gap.
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub struct TabColumnLayout {
+    /// Space between columns, in em of the line's type size.
+    pub gap_em: f32,
+    /// Minimum slot width (em) for each right-hand cell, left-to-right
+    /// (qty, then price, then amount, …). `0` = content width only.
+    pub min_em: [f32; 4],
+    /// Align glyph runs inside each numeric slot (End = money flush-right).
+    pub cell_align: LineAlign,
+    /// Paint a thin vertical rule in each inter-column gap.
+    pub sep: bool,
+}
+
+impl TabColumnLayout {
+    /// Legacy tight pack (pre-control default): ~0.35 em gap, no min slots.
+    /// Numbers still flush-right inside their (content-sized) slot — same as
+    /// the old monospace `{:>width$}` expand.
+    pub const LEGACY: Self = Self {
+        gap_em: 0.35,
+        min_em: [0.0; 4],
+        cell_align: LineAlign::End,
+        sep: false,
+    };
+
+    /// Comfortable kitchen Item | Qty.
+    pub const fn kot() -> Self {
+        Self {
+            gap_em: 0.7,
+            min_em: [3.5, 0.0, 0.0, 0.0],
+            cell_align: LineAlign::End,
+            sep: false,
+        }
+    }
+
+    /// Comfortable guest bill Item | Qty | Price | Amount.
+    pub const fn bill() -> Self {
+        Self {
+            gap_em: 1.15,
+            min_em: [3.5, 7.5, 8.5, 0.0],
+            cell_align: LineAlign::End,
+            sep: false,
+        }
+    }
+
+    pub fn gap_dots(self, em: f32) -> f32 {
+        (em * self.gap_em.max(0.0)).max(4.0)
+    }
+
+    pub fn slot_width(self, index: usize, content_w: f32, em: f32) -> f32 {
+        let min = self
+            .min_em
+            .get(index)
+            .copied()
+            .unwrap_or(0.0)
+            .max(0.0)
+            * em;
+        content_w.max(min)
+    }
+}
+
 /// One slip line drawn at its own point size, weight, and alignment.
 pub struct StyledLine {
     pub text: String,
@@ -100,6 +163,8 @@ pub struct StyledLine {
     pub align: LineAlign,
     /// Strike through the name (left of `\t`); qty column stays clear.
     pub strike: bool,
+    /// When set, `\t` lines use these column metrics; else [`TabColumnLayout::LEGACY`].
+    pub tab: Option<TabColumnLayout>,
 }
 
 /// How the slip is drawn: Standard (bills) vs KOT (kitchen tickets).
@@ -338,7 +403,7 @@ pub fn draw_metrics(text: &str, src: &RasterMetrics) -> (Vec<u8>, usize) {
         if is_rule_line(line) {
             built.push(Built::Rule);
         } else {
-            built.extend(wrap(&faces, line, room, &m).into_iter().map(Built::Text));
+            built.extend(wrap(&faces, line, room, &m).0.into_iter().map(Built::Text));
         }
     }
     let rule_px = rule_thickness(m.em, RasterWeight::Regular);
@@ -397,6 +462,8 @@ pub fn draw_lines(lines: &[StyledLine], page: &RasterMetrics) -> (Vec<u8>, usize
         /// Strike through names only; `None` = no strike. Value is content-x
         /// end (dots from left of page content) before the qty column.
         strike_end: Option<f32>,
+        /// Vertical rules between columns (page-x, including side margin).
+        sep_xs: Vec<f32>,
     }
     let mut rows: Vec<Row> = Vec::new();
     for line in lines {
@@ -416,6 +483,7 @@ pub fn draw_lines(lines: &[StyledLine], page: &RasterMetrics) -> (Vec<u8>, usize
                 baseline: rule_px as f32,
                 rule_px,
                 strike_end: None,
+                sep_xs: Vec::new(),
             });
             continue;
         }
@@ -428,12 +496,21 @@ pub fn draw_lines(lines: &[StyledLine], page: &RasterMetrics) -> (Vec<u8>, usize
             side,
             width_dots: width,
         };
+        let tab = line.tab.unwrap_or(TabColumnLayout::LEGACY);
         let strike_end = if line.strike {
-            Some(strike_name_end_x(&faces, &line.text, room, &m, side))
+            Some(strike_name_end_x(
+                &faces,
+                &line.text,
+                room,
+                &m,
+                side,
+                tab,
+            ))
         } else {
             None
         };
-        let wrapped = wrap_aligned(&faces, &line.text, room, &m, line.align);
+        let (wrapped, sep_xs) = wrap_aligned(&faces, &line.text, room, &m, line.align, tab);
+        let sep_xs: Vec<f32> = sep_xs.into_iter().map(|x| side + x).collect();
         for (i, glyphs) in wrapped.into_iter().enumerate() {
             rows.push(Row {
                 glyphs,
@@ -444,6 +521,12 @@ pub fn draw_lines(lines: &[StyledLine], page: &RasterMetrics) -> (Vec<u8>, usize
                 rule_px: 0,
                 // Strike every wrapped name row; qty lives only on row 0.
                 strike_end: if i == 0 { strike_end } else { strike_end },
+                // Column rules only on the first (header-aligned) wrap row.
+                sep_xs: if i == 0 {
+                    sep_xs.clone()
+                } else {
+                    Vec::new()
+                },
             });
         }
     }
@@ -483,6 +566,9 @@ pub fn draw_lines(lines: &[StyledLine], page: &RasterMetrics) -> (Vec<u8>, usize
         if let Some(end_x) = row.strike_end {
             let mid_y = (baseline - row.em * 0.28).round().max(0.0) as usize;
             paint_strike_line(&mut dots, width, mid_y, side, end_x, row.em);
+        }
+        for &sx in &row.sep_xs {
+            paint_col_sep(&mut dots, width, y, row.pitch, sx);
         }
         y += row.pitch;
     }
@@ -574,6 +660,7 @@ fn png_from_dots(rows: &[u8], height: usize, page: usize) -> Result<Vec<u8>, Str
 
 /// One glyph placed on a line: which font, which glyph, where (dots from
 /// the left margin; `dy` up from the baseline).
+#[derive(Clone)]
 struct Placed {
     face: usize,
     glyph: u16,
@@ -620,8 +707,15 @@ fn drawable(faces: &[Face], c: char) -> bool {
 /// following cell packs from the right (Item | Qty | Price | Amount). One
 /// tab is the kitchen Item/Qty case. Proportional fonts cannot pad with
 /// spaces — columns are placed in dots.
-fn wrap(faces: &[Face], line: &str, room: f32, m: &RasterMetrics) -> Vec<Vec<Placed>> {
-    wrap_aligned(faces, line, room, m, LineAlign::Start)
+fn wrap(faces: &[Face], line: &str, room: f32, m: &RasterMetrics) -> (Vec<Vec<Placed>>, Vec<f32>) {
+    wrap_aligned(
+        faces,
+        line,
+        room,
+        m,
+        LineAlign::Start,
+        TabColumnLayout::LEGACY,
+    )
 }
 
 fn wrap_aligned(
@@ -630,20 +724,21 @@ fn wrap_aligned(
     room: f32,
     m: &RasterMetrics,
     align: LineAlign,
-) -> Vec<Vec<Placed>> {
+    tab: TabColumnLayout,
+) -> (Vec<Vec<Placed>>, Vec<f32>) {
     let parts: Vec<&str> = line.split('\t').collect();
     if parts.len() >= 2 {
-        return wrap_tab_columns(faces, &parts, room, m, align);
+        return wrap_tab_columns(faces, &parts, room, m, align, tab);
     }
     // A run of dashes is the header rule. Tile it to the content edge so a
     // wider page grows the line instead of leaving a short underscore.
     if is_rule_line(line) {
-        return vec![rule_across(faces, room, m)];
+        return (vec![rule_across(faces, room, m)], Vec::new());
     }
     let (mut placed, width) = layout(faces, line, m);
     if width <= room {
         shift_glyphs(&mut placed, width, room, align);
-        return vec![placed];
+        return (vec![placed], Vec::new());
     }
     let mut out = Vec::new();
     let mut current = String::new();
@@ -665,7 +760,7 @@ fn wrap_aligned(
     let (mut row, w) = layout(faces, &current, m);
     shift_glyphs(&mut row, w, room, align);
     out.push(row);
-    out
+    (out, Vec::new())
 }
 
 fn shift_glyphs(glyphs: &mut [Placed], width: f32, room: f32, align: LineAlign) {
@@ -690,14 +785,19 @@ fn strike_name_end_x(
     room: f32,
     m: &RasterMetrics,
     side: f32,
+    tab: TabColumnLayout,
 ) -> f32 {
     if line.contains('\t') {
         let parts: Vec<&str> = line.split('\t').collect();
         let left = parts[0].trim_end();
-        let gap = (m.em * 0.35).max(4.0);
+        let gap = tab.gap_dots(m.em);
         let rights_w: f32 = parts[1..]
             .iter()
-            .map(|p| layout(faces, p.trim(), m).1)
+            .enumerate()
+            .map(|(i, p)| {
+                let content = layout(faces, p.trim(), m).1;
+                tab.slot_width(i, content, m.em)
+            })
             .sum::<f32>()
             + gap * parts[1..].len() as f32;
         let name_room = (room - rights_w).max(m.em * 2.0);
@@ -735,60 +835,66 @@ fn paint_strike_line(
     }
 }
 
-/// First cell flexes on the left; later cells pack from the right edge.
-/// Long names wrap under the name column only — numeric columns stay on
-/// the first line with the header.
+/// Thin vertical rule between item columns (one or two dots wide).
+fn paint_col_sep(dots: &mut [bool], width: usize, y0: usize, pitch: usize, x: f32) {
+    let xi = x.round().clamp(0.0, (width.saturating_sub(1)) as f32) as usize;
+    let y1 = (y0 + pitch.saturating_sub(2)).min(dots.len() / width.max(1));
+    let y_start = y0.saturating_add(1);
+    for y in y_start..y1 {
+        let base = y * width;
+        if xi < width {
+            dots[base + xi] = true;
+        }
+        if xi + 1 < width {
+            dots[base + xi + 1] = true;
+        }
+    }
+}
+
+/// First cell flexes on the left; later cells pack from the right edge in
+/// reserved slots ([`TabColumnLayout`]). Long names wrap under the name
+/// column only — numeric columns stay on the first line with the header.
+/// Returns rows plus content-x positions for optional vertical separators.
 fn wrap_tab_columns(
     faces: &[Face],
     parts: &[&str],
     room: f32,
     m: &RasterMetrics,
     align: LineAlign,
-) -> Vec<Vec<Placed>> {
+    tab: TabColumnLayout,
+) -> (Vec<Vec<Placed>>, Vec<f32>) {
     let left = parts[0].trim_end();
     let rights: Vec<&str> = parts[1..].iter().map(|p| p.trim()).collect();
-    let gap = (m.em * 0.35).max(4.0);
-    let right_layouts: Vec<(Vec<Placed>, f32)> = rights
+    let gap = tab.gap_dots(m.em);
+    let right_layouts: Vec<(Vec<Placed>, f32, f32)> = rights
         .iter()
-        .map(|r| layout(faces, r, m))
+        .enumerate()
+        .map(|(i, r)| {
+            let (glyphs, content_w) = layout(faces, r, m);
+            let slot = tab.slot_width(i, content_w, m.em);
+            (glyphs, content_w, slot)
+        })
         .collect();
-    let rights_w: f32 = right_layouts.iter().map(|(_, w)| *w).sum::<f32>()
+    let rights_w: f32 = right_layouts.iter().map(|(_, _, slot)| *slot).sum::<f32>()
         + gap * right_layouts.len() as f32;
     let name_room = (room - rights_w).max(m.em * 2.0);
     let mut name_rows = if left.is_empty() {
         vec![Vec::new()]
     } else {
-        wrap(faces, left, name_room, m)
+        wrap(faces, left, name_room, m).0
     };
     if name_rows.len() == 1 && !left.is_empty() {
         let name_w = layout(faces, left, m).1;
         shift_glyphs(&mut name_rows[0], name_w, name_room, align);
     }
-    let mut out = Vec::with_capacity(name_rows.len().max(1));
-    for (i, mut row) in name_rows.into_iter().enumerate() {
-        if i == 0 {
-            let mut cursor = room;
-            for (glyphs, w) in right_layouts.iter().rev() {
-                cursor = (cursor - *w).max(0.0);
-                for g in glyphs {
-                    row.push(Placed {
-                        face: g.face,
-                        glyph: g.glyph,
-                        x: cursor + g.x,
-                        dy: g.dy,
-                    });
-                }
-                cursor = (cursor - gap).max(0.0);
-            }
-        }
-        out.push(row);
-    }
-    if out.is_empty() {
-        let mut row = Vec::new();
+    let mut sep_xs = Vec::new();
+    let place_rights = |row: &mut Vec<Placed>, seps: &mut Vec<f32>| {
         let mut cursor = room;
-        for (glyphs, w) in right_layouts.iter().rev() {
-            cursor = (cursor - *w).max(0.0);
-            for g in glyphs {
+        for (glyphs, content_w, slot) in right_layouts.iter().rev() {
+            cursor = (cursor - *slot).max(0.0);
+            let mut cell = glyphs.clone();
+            shift_glyphs(&mut cell, *content_w, *slot, tab.cell_align);
+            for g in cell {
                 row.push(Placed {
                     face: g.face,
                     glyph: g.glyph,
@@ -796,11 +902,26 @@ fn wrap_tab_columns(
                     dy: g.dy,
                 });
             }
-            cursor = (cursor - gap).max(0.0);
+            let gap_start = (cursor - gap).max(0.0);
+            if tab.sep && gap > 2.0 {
+                seps.push(gap_start + gap * 0.5);
+            }
+            cursor = gap_start;
+        }
+    };
+    let mut out = Vec::with_capacity(name_rows.len().max(1));
+    for (i, mut row) in name_rows.into_iter().enumerate() {
+        if i == 0 {
+            place_rights(&mut row, &mut sep_xs);
         }
         out.push(row);
     }
-    out
+    if out.is_empty() {
+        let mut row = Vec::new();
+        place_rights(&mut row, &mut sep_xs);
+        out.push(row);
+    }
+    (out, sep_xs)
 }
 
 /// One line shaped left to right as it will be seen: bidi runs in visual
@@ -1039,6 +1160,7 @@ mod tests {
             weight: RasterWeight::Regular,
             align: LineAlign::Start,
             strike: false,
+            tab: None,
         }];
         let metrics = |dots: usize| RasterMetrics {
             em: 20.0,
@@ -1121,9 +1243,9 @@ mod tests {
         let m = RasterMetrics::kot();
         let room = PAPER_DOTS as f32 - 2.0 * m.side;
         let faces = faces();
-        let header = wrap(&faces, "Item\tQty.", room, &m);
-        let row_a = wrap(&faces, "બટર રોટી\t3", room, &m);
-        let row_b = wrap(&faces, "રોસ્ટેડ પાપડ\t2", room, &m);
+        let header = wrap(&faces, "Item\tQty.", room, &m).0;
+        let row_a = wrap(&faces, "બટર રોટી\t3", room, &m).0;
+        let row_b = wrap(&faces, "રોસ્ટેડ પાપડ\t2", room, &m).0;
         assert_eq!(header.len(), 1);
         assert_eq!(row_a.len(), 1);
         assert_eq!(row_b.len(), 1);
@@ -1155,8 +1277,8 @@ mod tests {
         let m = RasterMetrics::standard();
         let room = PAPER_DOTS as f32 - 2.0 * m.side;
         let faces = faces();
-        let header = wrap(&faces, "Item\tQty.\tPrice\tAmount", room, &m);
-        let row = wrap(&faces, "Tea\t5\t10.00\t50.00", room, &m);
+        let header = wrap(&faces, "Item\tQty.\tPrice\tAmount", room, &m).0;
+        let row = wrap(&faces, "Tea\t5\t10.00\t50.00", room, &m).0;
         assert_eq!(header.len(), 1);
         assert_eq!(row.len(), 1);
         let right_edge = |placed: &[Placed]| {
@@ -1178,6 +1300,54 @@ mod tests {
         assert!(
             (e_h - room).abs() < 1.5 && (e_r - room).abs() < 1.5,
             "Amount column must sit on the right edge: h={e_h} r={e_r} room={room}"
+        );
+    }
+
+    #[test]
+    fn tab_column_layout_mins_and_gap() {
+        let t = TabColumnLayout::bill();
+        assert!((t.slot_width(0, 10.0, 16.0) - 3.5 * 16.0).abs() < 0.01);
+        assert!((t.slot_width(0, 80.0, 16.0) - 80.0).abs() < 0.01);
+        assert!((t.gap_dots(16.0) - 16.0 * 1.15).abs() < 0.01);
+        let m = RasterMetrics {
+            em: 16.0,
+            line: 24,
+            baseline: 14.0,
+            side: 8.0,
+            width_dots: 1512,
+        };
+        let room = m.page_dots() as f32 - 2.0 * m.side;
+        let faces = faces();
+        let (tight, _) = wrap_tab_columns(
+            &faces,
+            &["Tea", "2", "40.00", "80.00"],
+            room,
+            &m,
+            LineAlign::Start,
+            TabColumnLayout::LEGACY,
+        );
+        let (airy, _) = wrap_tab_columns(
+            &faces,
+            &["Tea", "2", "40.00", "80.00"],
+            room,
+            &m,
+            LineAlign::Start,
+            TabColumnLayout::bill(),
+        );
+        assert_eq!(tight.len(), 1);
+        assert_eq!(airy.len(), 1);
+        // Comfortable mins push the left edge of the right pack leftward.
+        let pack_left = |row: &[Placed]| {
+            row.iter()
+                .filter(|g| g.x > room * 0.2)
+                .map(|g| g.x)
+                .fold(f32::MAX, f32::min)
+        };
+        assert!(
+            pack_left(&airy[0]) + 12.0 < pack_left(&tight[0]),
+            "bill layout must reserve more right space than legacy (airy={} tight={})",
+            pack_left(&airy[0]),
+            pack_left(&tight[0])
         );
     }
 
@@ -1297,6 +1467,7 @@ mod tests {
                 weight: RasterWeight::Bold,
                 align: LineAlign::Start,
                 strike: false,
+                tab: None,
             }];
             let (rows, height) = draw_lines(&lines, &page);
             ink_rows(&rows, page.page_dots(), height)
@@ -1325,6 +1496,7 @@ mod tests {
             weight: RasterWeight::Regular,
             align: LineAlign::Start,
             strike: false,
+            tab: None,
         }];
         let (rows, height) = draw_lines(&lines, &page);
         let width = page.page_dots();

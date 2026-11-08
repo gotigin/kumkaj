@@ -2080,7 +2080,7 @@ impl Store {
                 &mut out,
                 &fmt,
                 crate::print_share::BillStyleField::Total,
-                &format!("Total Qty: {qty_n}"),
+                &format!("{}: {qty_n}", fmt.caption_total_qty()),
                 rtl,
             );
         }
@@ -2089,7 +2089,7 @@ impl Store {
                 &mut out,
                 &fmt,
                 crate::print_share::BillStyleField::Total,
-                &format!("Sub Total: {}", money(subtotal)),
+                &format!("{}: {}", fmt.caption_subtotal(), money(subtotal)),
                 rtl,
             );
         }
@@ -2127,7 +2127,7 @@ impl Store {
                     &mut out,
                     &fmt,
                     crate::print_share::BillStyleField::Total,
-                    &format!("Grand Total: {}", money(total)),
+                    &format!("{}: {}", fmt.caption_grand_total(), money(total)),
                     rtl,
                 );
             }
@@ -2136,7 +2136,7 @@ impl Store {
                 &mut out,
                 &fmt,
                 crate::print_share::BillStyleField::Total,
-                &format!("Grand Total: {}", money(0)),
+                &format!("{}: {}", fmt.caption_grand_total(), money(0)),
                 rtl,
             );
         }
@@ -2677,8 +2677,8 @@ mod tests {
             text.contains("Chaas\t1\t₹30.00\t₹30.00"),
             "expected Chaas as columns, got:\n{text}"
         );
-        assert!(text.contains("Total Qty:"), "total qty line, got:\n{text}");
-        assert!(text.contains("Grand Total:"), "grand total, got:\n{text}");
+        assert!(text.contains("Total Qty"), "total qty line, got:\n{text}");
+        assert!(text.contains("Grand Total"), "grand total, got:\n{text}");
     }
 
     /// Punch pending on D1, open D2, reopen D1 — pending still there; Send KOT

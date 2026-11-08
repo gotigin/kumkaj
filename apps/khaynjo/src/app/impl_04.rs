@@ -2383,6 +2383,34 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             self.paint_choice_pair(cx, ids!(bill_item_layout_stacked), ids!(bill_item_layout_stacked_on), !columns);
             self.paint_choice_pair(cx, ids!(bill_item_header_on), ids!(bill_item_header_on_on), draft.item_show_header);
             self.paint_choice_pair(cx, ids!(bill_item_header_off), ids!(bill_item_header_off_on), !draft.item_show_header);
+            self.ui
+                .view(cx, ids!(bill_item_header_labels))
+                .set_visible(cx, columns && draft.item_show_header);
+            if columns && draft.item_show_header {
+                self.ui
+                    .widget(cx, ids!(h_bill_item_hdr_item))
+                    .set_text(cx, &plain_display_text(&s("bill_item_hdr_item")));
+                self.ui
+                    .widget(cx, ids!(h_bill_item_hdr_qty))
+                    .set_text(cx, &plain_display_text(&s("bill_item_hdr_qty")));
+                self.ui
+                    .widget(cx, ids!(h_bill_item_hdr_price))
+                    .set_text(cx, &plain_display_text(&s("bill_item_hdr_price")));
+                self.ui
+                    .widget(cx, ids!(h_bill_item_hdr_amount))
+                    .set_text(cx, &plain_display_text(&s("bill_item_hdr_amount")));
+                for (id, val) in [
+                    (ids!(bill_item_hdr_item_input), draft.item_header_item.as_str()),
+                    (ids!(bill_item_hdr_qty_input), draft.item_header_qty.as_str()),
+                    (ids!(bill_item_hdr_price_input), draft.item_header_price.as_str()),
+                    (ids!(bill_item_hdr_amount_input), draft.item_header_amount.as_str()),
+                ] {
+                    let input = self.ui.text_input(cx, id);
+                    if !cx.has_key_focus(input.area()) {
+                        input.set_text(cx, val);
+                    }
+                }
+            }
             self.paint_choice_pair(cx, ids!(bill_item_name_on), ids!(bill_item_name_on_on), draft.item_show_name);
             self.paint_choice_pair(cx, ids!(bill_item_name_off), ids!(bill_item_name_off_on), !draft.item_show_name);
             self.paint_choice_pair(cx, ids!(bill_item_qty_on), ids!(bill_item_qty_on_on), draft.item_show_qty);
@@ -2393,6 +2421,176 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             self.paint_choice_pair(cx, ids!(bill_item_amount_off), ids!(bill_item_amount_off_on), !draft.item_show_amount);
             self.paint_choice_pair(cx, ids!(bill_item_note_on), ids!(bill_item_note_on_on), draft.item_show_note);
             self.paint_choice_pair(cx, ids!(bill_item_note_off), ids!(bill_item_note_off_on), !draft.item_show_note);
+            self.ui
+                .view(cx, ids!(bill_item_col_metrics))
+                .set_visible(cx, columns);
+            if columns {
+                self.ui
+                    .widget(cx, ids!(h_bill_item_col_order))
+                    .set_text(cx, &plain_display_text(&s("bill_item_col_order")));
+                self.ui
+                    .widget(cx, ids!(h_bill_item_col_sep))
+                    .set_text(cx, &plain_display_text(&s("bill_item_col_sep")));
+                self.ui
+                    .button(cx, ids!(bill_col_ord_up))
+                    .set_text(cx, &s("kot_field_up"));
+                self.ui
+                    .button(cx, ids!(bill_col_ord_down))
+                    .set_text(cx, &s("kot_field_down"));
+                let col_order = if draft.item_col_order.is_empty() {
+                    print_share::BillItemCol::ALL
+                        .iter()
+                        .map(|c| c.id().to_string())
+                        .collect::<Vec<_>>()
+                } else {
+                    draft.item_col_order.clone()
+                };
+                let col_idx = {
+                    let st = app_state().lock().unwrap();
+                    st.bill_item_col_edit_idx.min(col_order.len().saturating_sub(1))
+                };
+                let col_slots = [
+                    (ids!(bill_col_ord_0), ids!(bill_col_ord_0_on)),
+                    (ids!(bill_col_ord_1), ids!(bill_col_ord_1_on)),
+                    (ids!(bill_col_ord_2), ids!(bill_col_ord_2_on)),
+                    (ids!(bill_col_ord_3), ids!(bill_col_ord_3_on)),
+                ];
+                for (i, (idle, on)) in col_slots.iter().enumerate() {
+                    let label = col_order
+                        .get(i)
+                        .and_then(|id| print_share::BillItemCol::from_id(id))
+                        .map(|c| s(match c {
+                            print_share::BillItemCol::Name => "bill_item_name",
+                            print_share::BillItemCol::Qty => "bill_item_qty",
+                            print_share::BillItemCol::Price => "bill_item_price",
+                            print_share::BillItemCol::Amount => "bill_item_amount",
+                        }))
+                        .unwrap_or_else(|| format!("Col {}", i + 1));
+                    self.ui.button(cx, *idle).set_text(cx, &label);
+                    self.ui.button(cx, *on).set_text(cx, &label);
+                    self.paint_choice_pair(cx, *idle, *on, i == col_idx);
+                }
+                for (idle, on, key) in [
+                    (ids!(bill_item_sep_on), ids!(bill_item_sep_on_on), "bill_item_piece_on"),
+                    (ids!(bill_item_sep_off), ids!(bill_item_sep_off_on), "bill_item_piece_off"),
+                ] {
+                    let t = s(key);
+                    self.ui.button(cx, idle).set_text(cx, &t);
+                    self.ui.button(cx, on).set_text(cx, &t);
+                }
+                self.paint_choice_pair(cx, ids!(bill_item_sep_on), ids!(bill_item_sep_on_on), draft.item_col_sep);
+                self.paint_choice_pair(cx, ids!(bill_item_sep_off), ids!(bill_item_sep_off_on), !draft.item_col_sep);
+                self.ui
+                    .widget(cx, ids!(h_bill_item_col_gap))
+                    .set_text(cx, &plain_display_text(&s("bill_item_col_gap")));
+                self.ui
+                    .widget(cx, ids!(h_bill_item_num_width))
+                    .set_text(cx, &plain_display_text(&s("bill_item_num_width")));
+                self.ui
+                    .widget(cx, ids!(h_bill_item_num_align))
+                    .set_text(cx, &plain_display_text(&s("bill_item_num_align")));
+                self.ui
+                    .widget(cx, ids!(h_bill_item_gap_em))
+                    .set_text(cx, &plain_display_text(&s("bill_item_gap_em")));
+                self.ui
+                    .widget(cx, ids!(h_bill_item_qty_min))
+                    .set_text(cx, &plain_display_text(&s("bill_item_qty_min")));
+                self.ui
+                    .widget(cx, ids!(h_bill_item_price_min))
+                    .set_text(cx, &plain_display_text(&s("bill_item_price_min")));
+                self.ui
+                    .widget(cx, ids!(h_bill_item_amount_min))
+                    .set_text(cx, &plain_display_text(&s("bill_item_amount_min")));
+                for (idle, on, key) in [
+                    (ids!(bill_item_gap_tight), ids!(bill_item_gap_tight_on), "bill_item_gap_tight"),
+                    (ids!(bill_item_gap_comfort), ids!(bill_item_gap_comfort_on), "bill_item_gap_comfort"),
+                    (ids!(bill_item_gap_wide), ids!(bill_item_gap_wide_on), "bill_item_gap_wide"),
+                    (ids!(bill_item_num_compact), ids!(bill_item_num_compact_on), "bill_item_num_compact"),
+                    (ids!(bill_item_num_comfort), ids!(bill_item_num_comfort_on), "bill_item_num_comfort"),
+                    (ids!(bill_item_num_wide), ids!(bill_item_num_wide_on), "bill_item_num_wide"),
+                    (ids!(bill_item_num_start), ids!(bill_item_num_start_on), "kot_align_start"),
+                    (ids!(bill_item_num_center), ids!(bill_item_num_center_on), "kot_align_center"),
+                    (ids!(bill_item_num_end), ids!(bill_item_num_end_on), "kot_align_end"),
+                ] {
+                    let t = s(key);
+                    self.ui.button(cx, idle).set_text(cx, &t);
+                    self.ui.button(cx, on).set_text(cx, &t);
+                }
+                let gap_preset = draft.item_col_gap_preset();
+                self.paint_choice_pair(
+                    cx,
+                    ids!(bill_item_gap_tight),
+                    ids!(bill_item_gap_tight_on),
+                    (gap_preset - print_share::BILL_COL_GAP_TIGHT).abs() < 0.01,
+                );
+                self.paint_choice_pair(
+                    cx,
+                    ids!(bill_item_gap_comfort),
+                    ids!(bill_item_gap_comfort_on),
+                    (gap_preset - print_share::BILL_COL_GAP_COMFORT).abs() < 0.01,
+                );
+                self.paint_choice_pair(
+                    cx,
+                    ids!(bill_item_gap_wide),
+                    ids!(bill_item_gap_wide_on),
+                    (gap_preset - print_share::BILL_COL_GAP_WIDE).abs() < 0.01,
+                );
+                let num_preset = draft.item_num_min_preset();
+                self.paint_choice_pair(
+                    cx,
+                    ids!(bill_item_num_compact),
+                    ids!(bill_item_num_compact_on),
+                    num_preset == print_share::BILL_NUM_MIN_COMPACT,
+                );
+                self.paint_choice_pair(
+                    cx,
+                    ids!(bill_item_num_comfort),
+                    ids!(bill_item_num_comfort_on),
+                    num_preset == print_share::BILL_NUM_MIN_COMFORT,
+                );
+                self.paint_choice_pair(
+                    cx,
+                    ids!(bill_item_num_wide),
+                    ids!(bill_item_num_wide_on),
+                    num_preset == print_share::BILL_NUM_MIN_WIDE,
+                );
+                self.paint_choice_pair(
+                    cx,
+                    ids!(bill_item_num_start),
+                    ids!(bill_item_num_start_on),
+                    draft.item_num_align == print_share::KotAlign::Start,
+                );
+                self.paint_choice_pair(
+                    cx,
+                    ids!(bill_item_num_center),
+                    ids!(bill_item_num_center_on),
+                    draft.item_num_align == print_share::KotAlign::Center,
+                );
+                self.paint_choice_pair(
+                    cx,
+                    ids!(bill_item_num_end),
+                    ids!(bill_item_num_end_on),
+                    draft.item_num_align == print_share::KotAlign::End,
+                );
+                let fmt_em = |val: f32| -> String {
+                    if (val - val.round()).abs() < 0.05 {
+                        format!("{}", val.round() as i32)
+                    } else {
+                        format!("{val:.2}")
+                    }
+                };
+                for (id, val) in [
+                    (ids!(bill_item_gap_em_input), draft.item_col_gap_em),
+                    (ids!(bill_item_qty_min_input), draft.item_qty_min_em),
+                    (ids!(bill_item_price_min_input), draft.item_price_min_em),
+                    (ids!(bill_item_amount_min_input), draft.item_amount_min_em),
+                ] {
+                    let input = self.ui.text_input(cx, id);
+                    if !cx.has_key_focus(input.area()) {
+                        input.set_text(cx, &fmt_em(val));
+                    }
+                }
+            }
         }
         if total_open {
             self.ui
@@ -2422,6 +2620,58 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             self.paint_choice_pair(cx, ids!(bill_total_subtotal_off), ids!(bill_total_subtotal_off_on), !draft.total_show_subtotal);
             self.paint_choice_pair(cx, ids!(bill_total_grand_on), ids!(bill_total_grand_on_on), draft.total_show_grand);
             self.paint_choice_pair(cx, ids!(bill_total_grand_off), ids!(bill_total_grand_off_on), !draft.total_show_grand);
+            self.ui
+                .widget(cx, ids!(h_bill_total_qty_label))
+                .set_text(cx, &plain_display_text(&s("bill_total_qty_label")));
+            self.ui
+                .widget(cx, ids!(h_bill_total_subtotal_label))
+                .set_text(cx, &plain_display_text(&s("bill_total_subtotal_label")));
+            self.ui
+                .widget(cx, ids!(h_bill_total_grand_label))
+                .set_text(cx, &plain_display_text(&s("bill_total_grand_label")));
+            self.ui
+                .widget(cx, ids!(h_bill_total_paid_label))
+                .set_text(cx, &plain_display_text(&s("bill_total_paid_label")));
+            for (id, val) in [
+                (ids!(bill_total_qty_label_input), draft.total_qty_label.as_str()),
+                (ids!(bill_total_subtotal_label_input), draft.total_subtotal_label.as_str()),
+                (ids!(bill_total_grand_label_input), draft.total_grand_label.as_str()),
+                (ids!(bill_total_paid_label_input), draft.total_paid_label.as_str()),
+            ] {
+                let input = self.ui.text_input(cx, id);
+                if !cx.has_key_focus(input.area()) {
+                    input.set_text(cx, val);
+                }
+            }
+        }
+        let pairable = field.is_pairable();
+        self.ui.view(cx, ids!(bill_meta_pair)).set_visible(cx, pairable);
+        if pairable {
+            self.ui
+                .widget(cx, ids!(h_bill_meta_pair))
+                .set_text(cx, &plain_display_text(&s("bill_meta_pair")));
+            let partner = draft.meta_pair_of(field);
+            for (idle, on, label, other) in [
+                (ids!(bill_pair_alone), ids!(bill_pair_alone_on), s("bill_pair_alone"), None),
+                (ids!(bill_pair_customer), ids!(bill_pair_customer_on), print_share::BillStyleField::Customer.label().to_string(), Some(print_share::BillStyleField::Customer)),
+                (ids!(bill_pair_billno), ids!(bill_pair_billno_on), print_share::BillStyleField::BillNo.label().to_string(), Some(print_share::BillStyleField::BillNo)),
+                (ids!(bill_pair_time), ids!(bill_pair_time_on), print_share::BillStyleField::Time.label().to_string(), Some(print_share::BillStyleField::Time)),
+                (ids!(bill_pair_cashier), ids!(bill_pair_cashier_on), print_share::BillStyleField::Cashier.label().to_string(), Some(print_share::BillStyleField::Cashier)),
+                (ids!(bill_pair_table), ids!(bill_pair_table_on), print_share::BillStyleField::Table.label().to_string(), Some(print_share::BillStyleField::Table)),
+            ] {
+                self.ui.button(cx, idle).set_text(cx, &label);
+                self.ui.button(cx, on).set_text(cx, &label);
+                if other == Some(field) {
+                    self.ui.button(cx, idle).set_visible(cx, false);
+                    self.ui.button(cx, on).set_visible(cx, false);
+                } else {
+                    let selected = match other {
+                        None => partner.is_none(),
+                        Some(o) => partner == Some(o),
+                    };
+                    self.paint_choice_pair(cx, idle, on, selected);
+                }
+            }
         }
         self.paint_choice_pair(
             cx,
@@ -2906,6 +3156,129 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             field_style.weight == print_share::KotFontWeight::Bold,
         );
         self.paint_kot_align(cx, field_style.align, &s);
+        let qty_open = style_field == print_share::KotStyleField::ItemQty;
+        self.ui
+            .view(cx, ids!(kot_item_col_metrics))
+            .set_visible(cx, qty_open);
+        if qty_open {
+            self.ui
+                .widget(cx, ids!(h_kot_item_col_gap))
+                .set_text(cx, &plain_display_text(&s("bill_item_col_gap")));
+            self.ui
+                .widget(cx, ids!(h_kot_item_qty_width))
+                .set_text(cx, &plain_display_text(&s("kot_item_qty_width")));
+            self.ui
+                .widget(cx, ids!(h_kot_item_num_align))
+                .set_text(cx, &plain_display_text(&s("kot_item_num_align")));
+            self.ui
+                .widget(cx, ids!(h_kot_item_hdr_item))
+                .set_text(cx, &plain_display_text(&s("bill_item_hdr_item")));
+            self.ui
+                .widget(cx, ids!(h_kot_item_hdr_qty))
+                .set_text(cx, &plain_display_text(&s("bill_item_hdr_qty")));
+            self.ui
+                .widget(cx, ids!(h_kot_item_gap_em))
+                .set_text(cx, &plain_display_text(&s("bill_item_gap_em")));
+            self.ui
+                .widget(cx, ids!(h_kot_item_qty_min))
+                .set_text(cx, &plain_display_text(&s("bill_item_qty_min")));
+            for (idle, on, key) in [
+                (ids!(kot_item_gap_tight), ids!(kot_item_gap_tight_on), "bill_item_gap_tight"),
+                (ids!(kot_item_gap_comfort), ids!(kot_item_gap_comfort_on), "bill_item_gap_comfort"),
+                (ids!(kot_item_gap_wide), ids!(kot_item_gap_wide_on), "bill_item_gap_wide"),
+                (ids!(kot_item_num_compact), ids!(kot_item_num_compact_on), "bill_item_num_compact"),
+                (ids!(kot_item_num_comfort), ids!(kot_item_num_comfort_on), "bill_item_num_comfort"),
+                (ids!(kot_item_num_wide), ids!(kot_item_num_wide_on), "bill_item_num_wide"),
+                (ids!(kot_item_num_start), ids!(kot_item_num_start_on), "kot_align_start"),
+                (ids!(kot_item_num_center), ids!(kot_item_num_center_on), "kot_align_center"),
+                (ids!(kot_item_num_end), ids!(kot_item_num_end_on), "kot_align_end"),
+            ] {
+                let t = s(key);
+                self.ui.button(cx, idle).set_text(cx, &t);
+                self.ui.button(cx, on).set_text(cx, &t);
+            }
+            let gap_preset = draft.item_col_gap_preset();
+            self.paint_choice_pair(
+                cx,
+                ids!(kot_item_gap_tight),
+                ids!(kot_item_gap_tight_on),
+                (gap_preset - print_share::KOT_COL_GAP_TIGHT).abs() < 0.01,
+            );
+            self.paint_choice_pair(
+                cx,
+                ids!(kot_item_gap_comfort),
+                ids!(kot_item_gap_comfort_on),
+                (gap_preset - print_share::KOT_COL_GAP_COMFORT).abs() < 0.01,
+            );
+            self.paint_choice_pair(
+                cx,
+                ids!(kot_item_gap_wide),
+                ids!(kot_item_gap_wide_on),
+                (gap_preset - print_share::KOT_COL_GAP_WIDE).abs() < 0.01,
+            );
+            let qty_preset = draft.item_qty_min_preset();
+            self.paint_choice_pair(
+                cx,
+                ids!(kot_item_num_compact),
+                ids!(kot_item_num_compact_on),
+                (qty_preset - print_share::KOT_QTY_MIN_COMPACT).abs() < 0.01,
+            );
+            self.paint_choice_pair(
+                cx,
+                ids!(kot_item_num_comfort),
+                ids!(kot_item_num_comfort_on),
+                (qty_preset - print_share::KOT_QTY_MIN_COMFORT).abs() < 0.01,
+            );
+            self.paint_choice_pair(
+                cx,
+                ids!(kot_item_num_wide),
+                ids!(kot_item_num_wide_on),
+                (qty_preset - print_share::KOT_QTY_MIN_WIDE).abs() < 0.01,
+            );
+            self.paint_choice_pair(
+                cx,
+                ids!(kot_item_num_start),
+                ids!(kot_item_num_start_on),
+                draft.item_num_align == print_share::KotAlign::Start,
+            );
+            self.paint_choice_pair(
+                cx,
+                ids!(kot_item_num_center),
+                ids!(kot_item_num_center_on),
+                draft.item_num_align == print_share::KotAlign::Center,
+            );
+            self.paint_choice_pair(
+                cx,
+                ids!(kot_item_num_end),
+                ids!(kot_item_num_end_on),
+                draft.item_num_align == print_share::KotAlign::End,
+            );
+            let fmt_em = |val: f32| -> String {
+                if (val - val.round()).abs() < 0.05 {
+                    format!("{}", val.round() as i32)
+                } else {
+                    format!("{val:.2}")
+                }
+            };
+            for (id, val) in [
+                (ids!(kot_item_hdr_item_input), draft.item_header_item.as_str()),
+                (ids!(kot_item_hdr_qty_input), draft.item_header_qty.as_str()),
+            ] {
+                let input = self.ui.text_input(cx, id);
+                if !cx.has_key_focus(input.area()) {
+                    input.set_text(cx, val);
+                }
+            }
+            for (id, val) in [
+                (ids!(kot_item_gap_em_input), draft.item_col_gap_em),
+                (ids!(kot_item_qty_min_input), draft.item_qty_min_em),
+            ] {
+                let input = self.ui.text_input(cx, id);
+                if !cx.has_key_focus(input.area()) {
+                    input.set_text(cx, &fmt_em(val));
+                }
+            }
+        }
         let copies = draft.copies.clamp(
             print_share::KOT_COPIES_MIN,
             print_share::KOT_COPIES_MAX,

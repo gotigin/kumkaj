@@ -2018,7 +2018,7 @@ impl Store {
                 &mut out,
                 &fmt,
                 crate::print_share::BillStyleField::Total,
-                &format!("Total Qty: {qty_n}"),
+                &format!("{}: {qty_n}", fmt.caption_total_qty()),
                 rtl,
             );
         }
@@ -2049,9 +2049,11 @@ impl Store {
         let tax_label = sale.tax_label();
         if sale.tax_paise > 0 {
             let base_caption = if sale.tax_pricing().is_inside_price() {
-                "Taxable value"
+                "Taxable value".to_string()
+            } else if fmt.total_show_subtotal {
+                fmt.caption_subtotal()
             } else {
-                "Subtotal"
+                "Subtotal".to_string()
             };
             crate::print_share::append_bill_like(
                 &mut out,
@@ -2112,16 +2114,19 @@ impl Store {
                 rtl,
             );
         }
-        crate::print_share::append_bill_field(
-            &mut out,
-            &fmt,
-            crate::print_share::BillStyleField::Total,
-            &format!(
-                "Total {}",
-                Money(sale.total_paise).format_localized(&currency, &fiscal_settings)
-            ),
-            rtl,
-        );
+        if fmt.total_show_grand {
+            crate::print_share::append_bill_field(
+                &mut out,
+                &fmt,
+                crate::print_share::BillStyleField::Total,
+                &format!(
+                    "{} {}",
+                    fmt.caption_paid_total(),
+                    Money(sale.total_paise).format_localized(&currency, &fiscal_settings)
+                ),
+                rtl,
+            );
+        }
         let tenders = self.sale_tenders(sale_id)?;
         if tenders.len() > 1 {
             for (method, amount) in tenders {
@@ -3336,6 +3341,7 @@ impl Store {
     /// One-shot: replace the old verbose default (title / shop / waiter /
     /// station) with the compact client sample (time, KOT -, Dine In,
     /// Table No, Item/Qty) so shops are not stuck on the pre-sample layout.
+    /// A second one-shot lifts pre-FOH tiny type sizes to Rajdhani-like defaults.
     pub fn kot_slip_format(&self) -> Result<crate::print_share::KotSlipFormat, String> {
         let raw = self.meta_get("kot_slip_format")?.unwrap_or_default();
         let mut fmt = crate::print_share::KotSlipFormat::parse(&raw);
@@ -3363,6 +3369,28 @@ impl Store {
                 }
             }
             let _ = self.meta_set("kot_slip_compact_v1", "1");
+        }
+        let type_migrated = self
+            .meta_get("kot_slip_type_v2")?
+            .map(|v| v.trim() == "1")
+            .unwrap_or(false);
+        if !type_migrated {
+            if raw.trim().is_empty() || fmt.looks_like_pre_foh_type() {
+                fmt.apply_foh_type_defaults();
+                let _ = self.meta_set("kot_slip_format", &fmt.to_json());
+                if let Some(base) = self.path.parent() {
+                    let mut printers = crate::print_share::load_device_printers(base);
+                    if let Some(f) = printers
+                        .formats
+                        .iter_mut()
+                        .find(|f| f.id == crate::print_share::FORMAT_KOT)
+                    {
+                        fmt.apply_to_print_format(f);
+                    }
+                    let _ = crate::print_share::write_device_printers(base, &printers);
+                }
+            }
+            let _ = self.meta_set("kot_slip_type_v2", "1");
         }
         Ok(fmt.clamped())
     }
