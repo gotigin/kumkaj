@@ -42,7 +42,7 @@ Sell + credit + day totals
   → optional Kumkaj Cloud (later, usage-billed)
 ```
 
-No Floor, Kitchen, KOT or tables. The venue is locked to **Counter**.
+Venue is **Counter**: no restaurant floor, kitchen tickets, or dining tables. The shop operating system itself stays complete — sell, buy, stock, khata, GST bills, expenses, reports, team, backup, and extra tills on the LAN. Small, medium, and large groceries use the same product; depth is in the books, not in a dining floor.
 
 ------------------------------------------------------------------------
 

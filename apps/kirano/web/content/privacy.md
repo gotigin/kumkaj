@@ -7,9 +7,9 @@ _Last updated: 2026-11-06_
 
 ## The app
 
-Kirano keeps menus, tables, tickets, settle and day books **on the devices you install it on**. Local use does not require a Kumkaj account. Optional shares (WhatsApp of a bill) leave the device only when you choose them.
+Kirano keeps the catalogue, stock, sales, khata and day books **on the devices you install it on**. Local use does not require a Kumkaj account. Optional shares (WhatsApp of a bill) leave the device only when you choose them.
 
-Guest QR, kiosk and token pages — when used — run on the **restaurant Wi‑Fi**, not over mobile data as a public cloud menu.
+Customer pages — when used — run on the **shop Wi‑Fi**. They are not a public cloud catalogue.
 
 ## This website
 

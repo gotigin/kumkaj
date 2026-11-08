@@ -3,7 +3,7 @@ title = "Contact"
 description = "WhatsApp or email for a Kirano demo."
 +++
 
-**WhatsApp for a demo** — open the header link once `TODO_OWNER` is replaced with the Business number (prefilled: restaurant type, tables, city).
+**WhatsApp for a demo** — open the header link once `TODO_OWNER` is replaced with the Business number (prefilled: grocery shop, city).
 
 Email: **TODO_OWNER@gotigin.example**
 

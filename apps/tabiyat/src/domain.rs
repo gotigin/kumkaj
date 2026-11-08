@@ -2719,7 +2719,7 @@ impl Cart {
                 Ok(())
             }
             None if self.lines.iter().any(|l| l.product_id == product_id) => {
-                Err("Already sent to the kitchen — cancel it from the ticket".into())
+                Err("Already sent — cancel it from the bill".into())
             }
             None => Ok(()),
         }
@@ -3121,7 +3121,7 @@ impl Cart {
         if lines.is_empty() {
             let held = self.lines.iter().any(|l| !l.is_sent() && l.hold_send);
             return Err(if held {
-                "Every new dish is on Hold — tap Hold on a line to include it, then Send KOT".into()
+                "Every new medicine is on Hold — tap Hold on a line to include it, then send".into()
             } else {
                 "Nothing new to send — tap items first".into()
             });
@@ -4526,7 +4526,7 @@ mod tests {
         cart.remove_one_of("tea").unwrap();
         assert_eq!(cart.qty_of("tea"), 2);
         let refused = cart.remove_one_of("tea").unwrap_err();
-        assert!(refused.contains("kitchen"), "{refused}");
+        assert!(refused.contains("Already sent"), "{refused}");
         assert_eq!(cart.qty_of("tea"), 2);
     }
 

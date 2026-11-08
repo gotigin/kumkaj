@@ -1345,7 +1345,7 @@ pub fn reprint_selected_kots(
                 Ok(share) if share.opened => printed = true,
                 Ok(_) => {
                     last_err = Some(format!(
-                        "{station_name}: no printer — Kitchen → Kitchen stations → Printers for this station"
+                        "{station_name}: no printer — Settings → Printers"
                     ));
                 }
                 Err(e) => last_err = Some(format!("{station_name}: {e}")),
@@ -1457,7 +1457,7 @@ pub fn print_cancelled_kot_rows(
             Ok(share) if share.opened => printed = true,
             Ok(_) => {
                 last_err = Some(format!(
-                    "{station_name}: no printer — Kitchen → Kitchen stations → Printers for this station"
+                    "{station_name}: no printer — Settings → Printers"
                 ));
             }
             Err(e) => last_err = Some(format!("{station_name}: {e}")),
@@ -1974,6 +1974,11 @@ impl AfterWrite {
             }
         }
         if let Some(text) = &self.bill {
+            // Never put CancelBatch status codes (`batch_ok:` …) on paper —
+            // those are UI protocol, not a guest bill.
+            if text.starts_with("batch_ok:") || text.starts_with("batch_noprint:") {
+                return problems;
+            }
             // A bill printed for a waiter prints at the counter, where the
             // printer is; the text also goes back to the device.
             let copies = store
@@ -2374,8 +2379,12 @@ fn write(store: &Store, route: &str, body: &str, actor: &StaffMember, after: &mu
             let req: RemoteRunningRequest = serde_json::from_str(body).map_err(|e| format!("running json: {e}"))?;
             let pin = Some(req.approval_pin.as_str()).filter(|p| !p.trim().is_empty());
             let done = apply_running_action(store, actor, pin, &req.request)?;
-            // Paper after the books commit (AfterWrite), like a waiter's KOT.
-            after.bill = done.text.clone();
+            // Guest bill paper only for PrintBill. CancelBatch puts
+            // `batch_ok:` / `batch_noprint:` in `done.text` for the UI status
+            // line — that must never hit the bill printer.
+            if matches!(req.request, RunningAction::PrintBill { .. }) {
+                after.bill = done.text.clone();
+            }
             after.kots = done.kots;
             Ok(Reply::json(serde_json::json!({ "ok": true, "text": done.text })))
         }
@@ -3545,6 +3554,60 @@ mod tests {
         });
     }
 
+    /// Batch cancel over LAN must not print `batch_ok:` on the bill printer.
+    #[test]
+    fn tablet_batch_cancel_never_prints_batch_ok_on_the_bill_printer() {
+        let mut printers = crate::print_share::DevicePrinters::default();
+        let kitchen = printers.add_printer("KitchenKOT", "192.168.1.50");
+        let bill = printers.add_printer("Standard", "192.168.1.51");
+        *printers.route_mut(crate::print_share::RouteKey::Kot { station_id: "" }) = vec![kitchen];
+        *printers.route_mut(crate::print_share::RouteKey::Bill) = vec![bill];
+        crate::print_share::with_test_printers(printers, || {
+            let (path, store, guard) = lan_shop();
+            let (device, session) = paired_phone(&path, &store, &guard, "Wasim", "2222");
+            let thali = store.list_products(false).unwrap().remove(0);
+            let mut cart = Cart::default();
+            cart.add_or_bump(&thali);
+            let kot = serde_json::to_string(&RemoteKotRequest {
+                draft: cart.to_kot_draft().unwrap(),
+                table_name: Some("D1".into()),
+                table_id: None,
+            })
+            .unwrap();
+            let post = |route: &str, req: &str, body_text: &str| {
+                let headers = [
+                    (HEADER_DEVICE, device.as_str()),
+                    (HEADER_SESSION, session.as_str()),
+                    (HEADER_REQUEST, req),
+                ];
+                answer(&path, &http("POST", route, &headers, body_text), "10.0.0.5", &guard)
+            };
+            assert_eq!(post("/kot", "bk-1", &kot).status, 200);
+            let _ = crate::print_share::take_captured();
+            let d1 = store.list_tables().unwrap().into_iter().find(|t| t.name == "D1").unwrap();
+            let line = store.running_order(&d1.id).unwrap().unwrap().lines[0].id.clone();
+            let cancel_body = serde_json::to_string(&RemoteRunningRequest {
+                approval_pin: "9999".into(),
+                request: RunningAction::CancelBatch {
+                    line_ids: vec![line],
+                    reason: "Table left".into(),
+                    prepared: false,
+                },
+            })
+            .unwrap();
+            let done = post("/running", "bk-2", &cancel_body);
+            assert_eq!(done.status, 200, "{}", done.body);
+            let reply = body(&done);
+            let text = reply["text"].as_str().unwrap_or_default();
+            assert!(text.starts_with("batch_ok:"), "{text}");
+            let jobs = crate::print_share::take_captured();
+            assert_eq!(jobs.len(), 1, "one kitchen slip only: {jobs:?}");
+            assert_eq!(jobs[0].kind, crate::print_share::PrintKind::Kot);
+            assert!(!jobs.iter().any(|j| j.text.contains("batch_ok:")), "{jobs:?}");
+            let _ = std::fs::remove_file(path);
+        });
+    }
+
     /// Books busy past the wait (a long write elsewhere) is "not now": a
     /// 503 the device keeps its KOT for, with no reply recorded — so the
     /// same request, sent again once the books are free, is done (once).
@@ -4052,6 +4115,8 @@ mod tests {
             )
             .unwrap();
             assert!(done.kots.is_empty(), "batch cancel must not print via per-item KOT ids");
+            let raw = done.text.clone().unwrap_or_default();
+            assert!(raw.starts_with("batch_ok:"), "status stays off paper: {raw}");
             let jobs = crate::print_share::take_captured();
             assert_eq!(jobs.len(), 1, "one slip for the shared kitchen: {jobs:?}");
             assert!(
@@ -4059,6 +4124,12 @@ mod tests {
                 "{}",
                 jobs[0].text
             );
+            assert!(
+                jobs[0].text.contains("Thali\t"),
+                "Item and Qty must be separate columns:\n{}",
+                jobs[0].text
+            );
+            assert!(!jobs.iter().any(|j| j.text.contains("batch_ok:")), "{jobs:?}");
             assert!(store.running_order(&table.id).unwrap().is_none());
             let _ = std::fs::remove_file(path);
         });

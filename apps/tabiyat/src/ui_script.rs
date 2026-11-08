@@ -2496,7 +2496,7 @@ script_mod! {
             // prints, and the kitchen reads the dishes from the summary.
             title := Label{
                 width: Fill
-                text: "Kitchen"
+                text: "Sections"
                 flow: Right{wrap: true}
                 max_lines: 2
                 text_overflow: Ellipsis
@@ -4726,8 +4726,8 @@ script_mod! {
                                 rail_sell_slot := View{
                                     width: Fill height: Fit
                                     flow: Overlay
-                                    rail_sell := TabBtn{text: "Order"}
-                                    rail_sell_on := TabBtnActive{text: "Order" visible: false}
+                                    rail_sell := TabBtn{text: "Sell"}
+                                    rail_sell_on := TabBtnActive{text: "Sell" visible: false}
                                     View{
                                         width: Fit height: 40
                                         align: Align{x: 0.0 y: 0.5}
@@ -4758,8 +4758,8 @@ script_mod! {
                                 rail_rates_slot := View{
                                     width: Fill height: Fit
                                     flow: Overlay
-                                    rail_rates := TabBtn{text: "Menu"}
-                                    rail_rates_on := TabBtnActive{text: "Menu" visible: false}
+                                    rail_rates := TabBtn{text: "Medicines"}
+                                    rail_rates_on := TabBtnActive{text: "Medicines" visible: false}
                                     View{
                                         width: Fit height: 40
                                         align: Align{x: 0.0 y: 0.5}
@@ -4774,8 +4774,8 @@ script_mod! {
                                 rail_ops_slot := View{
                                     width: Fill height: Fit
                                     flow: Overlay
-                                    rail_ops := TabBtn{text: "Floor"}
-                                    rail_ops_on := TabBtnActive{text: "Floor" visible: false}
+                                    rail_ops := TabBtn{text: "Shop"}
+                                    rail_ops_on := TabBtnActive{text: "Shop" visible: false}
                                     View{
                                         width: Fit height: 40
                                         align: Align{x: 0.0 y: 0.5}
@@ -4790,8 +4790,8 @@ script_mod! {
                                 rail_cod_slot := View{
                                     width: Fill height: Fit
                                     flow: Overlay
-                                    rail_cod := TabBtn{text: "Kitchen"}
-                                    rail_cod_on := TabBtnActive{text: "Kitchen" visible: false}
+                                    rail_cod := TabBtn{text: "Sections"}
+                                    rail_cod_on := TabBtnActive{text: "Sections" visible: false}
                                     View{
                                         width: Fit height: 40
                                         align: Align{x: 0.0 y: 0.5}
@@ -6033,8 +6033,8 @@ script_mod! {
                                     width: Fill height: Fit
                                     flow: Right spacing: 8
                                     View{width: Fill height: Fit flow: Overlay
-                                        otype_dinein := SegBtn{text: "Dine-in"}
-                                        otype_dinein_on := SegBtnOn{text: "Dine-in" visible: false}
+                                        otype_dinein := SegBtn{text: "Counter"}
+                                        otype_dinein_on := SegBtnOn{text: "Counter" visible: false}
                                     }
                                     View{width: Fill height: Fit flow: Overlay
                                         otype_takeaway := SegBtn{text: "Takeaway"}
@@ -6217,19 +6217,19 @@ script_mod! {
                                                 visible: false
                                                 flow: Down spacing: 6
                                                 // Dropdown — opens checkbox station list (not a type-in field).
-                                                kot_station_dd := StackSecondaryBtn{text: "Kitchen" flow: Right}
+                                                kot_station_dd := StackSecondaryBtn{text: "Sections" flow: Right}
                                                 // TextInput has no `visible` — collapse height; wrap hides the strip.
                                                 kot_station_input := FieldInput{
                                                     height: 0.
                                                     margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
                                                     padding: Inset{left: 0. right: 0. top: 0. bottom: 0.}
-                                                    empty_text: "Kitchen"
+                                                    empty_text: "Sections"
                                                 }
                                                 kot_station_suggest := mod.widgets.StationCheckList{field: "kot_station"}
                                             }
                                             send_stack := ActionStack{
                                                 kot_set_station := StackLightBtn{text: "Use this station" visible: false}
-                                                send_kot_btn := StackPrimaryBtn{text: "Send KOT to kitchen"}
+                                                send_kot_btn := StackPrimaryBtn{text: "Send slip"}
                                                 // Next step once the kitchen has everything:
                                                 // the bill, without opening Table actions.
                                                 print_bill_quick := StackSecondaryBtn{text: "Print bill" visible: false}
@@ -7281,13 +7281,13 @@ script_mod! {
                                 kitchen_counts := WrapLabel{body: " " font_color: #x025B60 font_size: 15. visible: false}
                                 kitchen_list := mod.widgets.KitchenList{}
                                 kitchen_empty := WrapLabel{
-                                    body: "No open tickets. Send a KOT from the Ordering screen."
+                                    body: "No open slips."
                                     font_color: #x074D3E
                                     font_size: 13.
                                 }
                                 recently_done_heading := WrapLabel{body: "Recently done" font_color: #x023637 font_size: 15. visible: false}
                                 recently_done_label := mod.widgets.ReportText{}
-                                recall_kot_input := FieldInput{empty_text: "KOT # to recall (or tap Recall below)"}
+                                recall_kot_input := FieldInput{empty_text: "Slip number to recall"}
                                 recall_kot_btn := NavBtn{text: "Recall"}
                                 RoundedView{
                                     width: Fill height: Fit
@@ -7311,16 +7311,16 @@ script_mod! {
                                         visible: false
                                         stations_heading := WrapLabel{
                                             width: Fit
-                                            body: "Kitchen stations"
+                                            body: "Dispensary sections"
                                             font_color: #x023637
                                             font_size: 15.
                                             visible: false
                                         }
                                         stations_label := mod.widgets.ReportText{}
-                                        station_add_heading := WrapLabel{body: "Add a kitchen station" font_color: #x023637 font_size: 15.}
-                                        station_name_input := FieldInput{empty_text: "Station name (e.g. Tandoor, Fryer, Cold)"}
+                                        station_add_heading := WrapLabel{body: "Add a dispensary section" font_color: #x023637 font_size: 15.}
+                                        station_name_input := FieldInput{empty_text: "Section name (e.g. OTC, Fridge, Counter)"}
                                         station_add := StackPrimaryBtn{text: "Add station"}
-                                        station_remove_heading := WrapLabel{body: "Remove a kitchen station" font_color: #x023637 font_size: 15.}
+                                        station_remove_heading := WrapLabel{body: "Remove a dispensary section" font_color: #x023637 font_size: 15.}
                                         station_remove_input := FieldInput{empty_text: "Tap a station in the list to remove it"}
                                         station_remove_suggest := mod.widgets.SuggestList{field: "station_remove"}
                                         // Pick removes immediately; button kept for typed + tap.
@@ -7531,7 +7531,7 @@ script_mod! {
                                 // A dearer area (AC) or a parcel price; other areas pay
                                 // the item price.
                                 menu_area_prices_input := FieldInput{empty_text: "Alt prices (optional)"}
-                                menu_schedule_input := FieldInput{empty_text: "Hours / happy hour — Mon-Fri 07:00-11:00 or HappyHour 17:00-19:00=150"}
+                                menu_schedule_input := FieldInput{empty_text: "Hours — Mon-Fri 07:00-11:00 or Evening 17:00-19:00=150"}
                                 // What one portion takes off the shelf.
                                 menu_recipe_input := FieldInput{empty_text: "Recipe (optional — unused on pharmacy counter)"}
                                 View{
@@ -8085,8 +8085,8 @@ script_mod! {
                                         staff_role_cashier_on := SegBtnOn{text: "Cashier" visible: false}
                                     }
                                     View{width: Fill height: Fit flow: Overlay
-                                        staff_role_kitchen := SegBtn{text: "Kitchen"}
-                                        staff_role_kitchen_on := SegBtnOn{text: "Kitchen" visible: false}
+                                        staff_role_kitchen := SegBtn{text: "Store"}
+                                        staff_role_kitchen_on := SegBtnOn{text: "Store" visible: false}
                                     }
                                     View{width: Fill height: Fit flow: Overlay
                                         staff_role_manager := SegBtn{text: "Manager"}
@@ -8173,12 +8173,12 @@ script_mod! {
                                                 feat_credit_on := ChipBtnActive{text: "Credit" visible: false}
                                             }
                                             View{width: Fit height: 40 flow: Overlay
-                                                feat_floor := ChipBtn{text: "Floor"}
-                                                feat_floor_on := ChipBtnActive{text: "Floor" visible: false}
+                                                feat_floor := ChipBtn{text: "Shop"}
+                                                feat_floor_on := ChipBtnActive{text: "Shop" visible: false}
                                             }
                                             View{width: Fit height: 40 flow: Overlay
-                                                feat_kitchen := ChipBtn{text: "Kitchen"}
-                                                feat_kitchen_on := ChipBtnActive{text: "Kitchen" visible: false}
+                                                feat_kitchen := ChipBtn{text: "Sections"}
+                                                feat_kitchen_on := ChipBtnActive{text: "Sections" visible: false}
                                             }
                                             View{width: Fit height: 40 flow: Overlay
                                                 feat_team := ChipBtn{text: "Team"}
@@ -8308,7 +8308,7 @@ script_mod! {
                                 // Kitchen stations this person may send / print KOTs to.
                                 // Bill reprint above is bills only — not kitchen.
                                 h_team_stations_help := WrapLabel{
-                                    body: "Kitchen stations they may use"
+                                    body: "Dispensary sections they may use"
                                     font_color: #x023637
                                     font_size: 13.
                                 }
@@ -8766,7 +8766,7 @@ h_units_heading := WrapLabel{body: "Units" font_color: #x023637 font_size: 20.}
                                     width: Fill height: Fit
                                     flow: Down spacing: 12
                                     visible: false
-sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font_color: #x023637 font_size: 18.}
+sibling_pickers_heading := WrapLabel{body: "Areas · sections · tax rates" font_color: #x023637 font_size: 18.}
                                 sibling_pickers_help := WrapLabel{
                                     width: Fill
                                     body: ""
@@ -8777,12 +8777,12 @@ sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font
                                 sibling_pickers_label := mod.widgets.ReportText{}
                                 FormCard{
                                 station_manage_heading := WrapLabel{
-                                    body: "Add or remove a kitchen station"
+                                    body: "Add or remove a dispensary section"
                                     font_color: #x023637
                                     font_size: 15.
                                 }
                                 // Own ids (Kitchen screen already has station_*).
-                                settings_station_name_input := FieldInput{empty_text: "Station name (e.g. Tandoor, Fryer, Cold)"}
+                                settings_station_name_input := FieldInput{empty_text: "Section name (e.g. OTC, Fridge, Counter)"}
                                 settings_station_add := StackPrimaryBtn{text: "Add station"}
                                 settings_station_remove_input := FieldInput{empty_text: "Station name to remove"}
                                 settings_station_remove_suggest := mod.widgets.SuggestList{field: "settings_station_remove"}
@@ -8790,7 +8790,7 @@ sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font
                                 }
                                 FormCard{
                                 bulk_price_heading := WrapLabel{ width: Fit
-                                                    body: "Bulk menu price" font_color: #x023637 font_size: 18.}
+                                                    body: "Bulk medicine price" font_color: #x023637 font_size: 18.}
                                 bulk_cat_input := FieldInput{empty_text: "Category name"}
                                 bulk_cat_suggest := mod.widgets.SuggestList{field: "bulk_cat"}
                                 FormFieldRow{
@@ -9145,8 +9145,8 @@ sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font
                                             bill_kot_tab_bill_on := SegBtnOn{text: "Bill" visible: false}
                                         }
                                         View{width: Fill height: Fit flow: Overlay
-                                            bill_kot_tab_kot := SegBtn{text: "KOT"}
-                                            bill_kot_tab_kot_on := SegBtnOn{text: "KOT" visible: false}
+                                            bill_kot_tab_kot := SegBtn{text: "Slip"}
+                                            bill_kot_tab_kot_on := SegBtnOn{text: "Slip" visible: false}
                                         }
                                     }
                                     View{
@@ -9883,8 +9883,8 @@ View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
                                         kot_pick_table_on := KotRowBtnOn{text: "Table" visible: false}
                                     }
                                     View{width: Fill height: Fit flow: Overlay
-                                        kot_pick_no := KotRowBtn{text: "KOT no"}
-                                        kot_pick_no_on := KotRowBtnOn{text: "KOT no" visible: false}
+                                        kot_pick_no := KotRowBtn{text: "Ticket no"}
+                                        kot_pick_no_on := KotRowBtnOn{text: "Ticket no" visible: false}
                                     }
                                     View{width: Fill height: Fit flow: Overlay
                                         kot_pick_area := KotRowBtn{text: "Area"}
@@ -10137,7 +10137,7 @@ View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
                                     }
                                 }
                                 kot_title_input := FieldInput{empty_text: "Title (blank = KOT - KITCHEN ORDER)"}
-                                kot_footer_input := FieldInput{empty_text: "Kitchen note (optional, no prices)"}
+                                kot_footer_input := FieldInput{empty_text: "Slip note (optional, no prices)"}
                                 h_kot_preview := WrapLabel{
                                     body: "Preview"
                                     font_color: #x023637
@@ -10175,11 +10175,11 @@ View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
                                                 width: Fit
                                                 body: "Schemes / offers" font_color: #x023637 font_size: 20.}
                                             settings_schemes_help := InfoHelp{
-                                                tip: "Buy X get Y — applied automatically when you settle. Example: Buy 2 Thali get 1 Chaas."
+                                                tip: "Buy X get Y — applied automatically when you settle. Example: Buy 2 paracetamol get 1 vitamin."
                                             }
                                         }
                                         schemes_label := mod.widgets.ReportText{}
-                                        scheme_bogo_input := FieldInput{empty_text: "Buy 2 Thali get 1 Chaas"}
+                                        scheme_bogo_input := FieldInput{empty_text: "Buy 2 paracetamol get 1 vitamin"}
                                         scheme_add := StackPrimaryBtn{text: "Add BOGO"}
                                     }
                                     FormCard{
@@ -10823,8 +10823,8 @@ h_backup := WrapLabel{body: "Backup" font_color: #x023637 font_size: 20.}
                                     nav_sell_slot := View{
                                         width: Fit{min: FitBound.Abs(72.)} height: Fit
                                         flow: Overlay
-                                        nav_sell := NavChip{text: "Order"}
-                                        nav_sell_on := NavChipActive{text: "Order" visible: false}
+                                        nav_sell := NavChip{text: "Sell"}
+                                        nav_sell_on := NavChipActive{text: "Sell" visible: false}
                                         View{
                                             width: Fit height: Fill
                                             align: Align{x: 0.0 y: 0.5}
@@ -10855,8 +10855,8 @@ h_backup := WrapLabel{body: "Backup" font_color: #x023637 font_size: 20.}
                                     nav_menu_slot := View{
                                         width: Fit{min: FitBound.Abs(72.)} height: Fit
                                         flow: Overlay
-                                        nav_menu := NavChip{text: "Menu"}
-                                        nav_menu_on := NavChipActive{text: "Menu" visible: false}
+                                        nav_menu := NavChip{text: "Medicines"}
+                                        nav_menu_on := NavChipActive{text: "Medicines" visible: false}
                                         View{
                                             width: Fit height: Fill
                                             align: Align{x: 0.0 y: 0.5}
@@ -10871,8 +10871,8 @@ h_backup := WrapLabel{body: "Backup" font_color: #x023637 font_size: 20.}
                                     nav_floor_slot := View{
                                         width: Fit{min: FitBound.Abs(72.)} height: Fit
                                         flow: Overlay
-                                        nav_floor := NavChip{text: "Floor"}
-                                        nav_floor_on := NavChipActive{text: "Floor" visible: false}
+                                        nav_floor := NavChip{text: "Shop"}
+                                        nav_floor_on := NavChipActive{text: "Shop" visible: false}
                                         View{
                                             width: Fit height: Fill
                                             align: Align{x: 0.0 y: 0.5}
@@ -10887,8 +10887,8 @@ h_backup := WrapLabel{body: "Backup" font_color: #x023637 font_size: 20.}
                                     nav_kitchen_slot := View{
                                         width: Fit{min: FitBound.Abs(72.)} height: Fit
                                         flow: Overlay
-                                        nav_kitchen := NavChip{text: "Kitchen"}
-                                        nav_kitchen_on := NavChipActive{text: "Kitchen" visible: false}
+                                        nav_kitchen := NavChip{text: "Sections"}
+                                        nav_kitchen_on := NavChipActive{text: "Sections" visible: false}
                                         View{
                                             width: Fit height: Fill
                                             align: Align{x: 0.0 y: 0.5}

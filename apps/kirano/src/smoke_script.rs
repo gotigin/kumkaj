@@ -92,8 +92,12 @@ fn smoke_soak_secs() -> u64 {
         .unwrap_or(0)
 }
 
+fn smoke_shop_has_floor() -> bool {
+    app_state().lock().unwrap().venue_mode.creates_kot()
+}
+
 fn smoke_peer_tour() -> Vec<Screen> {
-    vec![
+    let mut peers = vec![
         Screen::Books,
         Screen::Pos,
         Screen::Buy,
@@ -107,7 +111,12 @@ fn smoke_peer_tour() -> Vec<Screen> {
         Screen::Credit,
         Screen::Settings,
         // Team lives under Settings → Team (not a chrome peer).
-    ]
+    ];
+    // Counter shops (Kirano) have no tables or kitchen. Do not tour those screens.
+    if !smoke_shop_has_floor() {
+        peers.retain(|s| !matches!(s, Screen::Floor | Screen::Kitchen));
+    }
+    peers
 }
 
 impl App {
@@ -299,6 +308,12 @@ impl App {
     fn smoke_run_action(&mut self, cx: &mut Cx, i: usize) -> bool {
         match i {
             0 => {
+                if !smoke_shop_has_floor() {
+                    self.go_peer(cx, Screen::Pos);
+                    self.sync_chrome(cx);
+                    self.smoke_mark(cx, "100_counter_sell");
+                    return false;
+                }
                 self.go_peer(cx, Screen::Floor);
                 self.sync_chrome(cx);
                 // Open first non-free table into the order cart if any.
@@ -318,6 +333,12 @@ impl App {
                 false
             }
             1 => {
+                if !smoke_shop_has_floor() {
+                    self.go_peer(cx, Screen::Books);
+                    self.sync_chrome(cx);
+                    self.smoke_mark(cx, "101_counter_books");
+                    return false;
+                }
                 self.go_peer(cx, Screen::Kitchen);
                 self.sync_chrome(cx);
                 let advanced = (|| -> Result<bool, String> {
@@ -423,8 +444,13 @@ impl App {
             }
             6 => {
                 // Back/Forward visit history: peer jumps must leave ‹ usable.
-                self.go_peer(cx, Screen::Floor);
-                self.go_peer(cx, Screen::Kitchen);
+                if smoke_shop_has_floor() {
+                    self.go_peer(cx, Screen::Floor);
+                    self.go_peer(cx, Screen::Kitchen);
+                } else {
+                    self.go_peer(cx, Screen::Menu);
+                    self.go_peer(cx, Screen::Pos);
+                }
                 let can_back = {
                     let st = app_state().lock().unwrap();
                     !st.nav_back.is_empty()

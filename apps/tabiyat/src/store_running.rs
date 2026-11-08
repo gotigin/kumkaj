@@ -807,7 +807,7 @@ impl Store {
     ) -> Result<Vec<String>, String> {
         self.assert_server_writer("Send a KOT")?;
         if !self.venue_mode()?.creates_kot() {
-            return Err("Turn on Tables & kitchen in Settings to send kitchen tickets".into());
+            return Err("This shop sells at the counter — there is no kitchen ticket to send".into());
         }
         let stations = self.list_stations()?;
         let lines: Vec<_> = draft.lines.iter().filter(|l| !l.kot_sent).collect();
@@ -960,7 +960,7 @@ impl Store {
     ) -> Result<Vec<String>, String> {
         self.assert_server_writer("Send a KOT")?;
         if !self.venue_mode()?.creates_kot() {
-            return Err("Turn on Tables & kitchen in Settings to send kitchen tickets".into());
+            return Err("This shop sells at the counter — there is no kitchen ticket to send".into());
         }
         let tid = table_id.trim();
         if tid.is_empty() {
@@ -1318,15 +1318,19 @@ impl Store {
                 if area_label.is_empty() && !area.is_empty() {
                     area_label = area.clone();
                 }
-                let qty = crate::domain::format_qty_display(
+                let qty = crate::domain::format_kot_qty(
                     line.qty_milli,
                     crate::domain::milli_to_whole_qty(line.qty_milli),
                     &line.unit_label,
                 );
-                let item = if line.note.trim().is_empty() {
-                    format!("{qty} {}", line.name)
+                let note = line.note.trim();
+                let item = if note.is_empty()
+                    || note.starts_with("combo:")
+                    || note.starts_with("Scheme:")
+                {
+                    format!("{}|{qty}", line.name)
                 } else {
-                    format!("{qty} {} ({})", line.name, line.note.trim())
+                    format!("{} ({note})|{qty}", line.name)
                 };
                 match by_station.iter_mut().find(|(sid, _)| sid == &station_id) {
                     Some((_, items)) => items.push(item.clone()),

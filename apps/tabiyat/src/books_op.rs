@@ -496,8 +496,8 @@ impl BooksOp {
             Self::EnsureFloorArea { .. } => "Add floor area",
             Self::AddTablesRange { .. } | Self::AddTable { .. } => "Add tables",
             Self::RemoveTables { .. } => "Remove tables",
-            Self::AddStation { .. } => "Add kitchen stations",
-            Self::RemoveStation { .. } => "Remove kitchen stations",
+            Self::AddStation { .. } => "Add dispensary sections",
+            Self::RemoveStation { .. } => "Remove dispensary sections",
             Self::AddReservation { .. } => "Book tables",
             Self::SetReservationStatus { .. } => "Change bookings",
             Self::AddWaitlist { .. } => "Waitlist",
@@ -1329,17 +1329,17 @@ impl Store {
             }
             BooksOp::AddStation { name } => {
                 if !actor.is_owner() && !actor.can_access_settings() {
-                    return Err("Not allowed to manage kitchen stations".into());
+                    return Err("Not allowed to manage dispensary sections".into());
                 }
                 let station = self.add_station(&name)?;
                 Ok(format!(
-                    "Station {} added — attach its printers: Kitchen → Kitchen stations → Printers for this station",
+                    "Section {} added — attach its printers under Settings → Printers",
                     station.name
                 ))
             }
             BooksOp::RemoveStation { id } => {
                 if !actor.is_owner() && !actor.can_access_settings() {
-                    return Err("Not allowed to manage kitchen stations".into());
+                    return Err("Not allowed to manage dispensary sections".into());
                 }
                 let name = self.remove_station(&id)?;
                 Ok(format!("Station {name} removed"))

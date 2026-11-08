@@ -3609,6 +3609,7 @@ mod kot_slip_format_tests {
         assert_eq!(kot_item_parts("x1× ઈસી B.B.Q."), ("ઈસી B.B.Q.".into(), "1".into()));
         assert_eq!(kot_item_parts("ઈસી B.B.Q. x1"), ("ઈસી B.B.Q.".into(), "1".into()));
         assert_eq!(kot_item_parts("Butter Roti|x1×"), ("Butter Roti".into(), "1".into()));
+        assert_eq!(kot_item_parts("x2 Butter Naan"), ("Butter Naan".into(), "2".into()));
         assert_eq!(kot_qty_column("x1×"), "1");
         let glued = KotSlipFormat::default().render(KotSlipContent {
             kind: KotSlipKind::Original,
@@ -4127,6 +4128,15 @@ fn peel_leading_kot_qty(s: &str) -> Option<(String, String)> {
         .or_else(|| after.strip_prefix('X'))
     {
         (String::new(), name.trim().to_string())
+    } else if after.is_empty() {
+        return None;
+    } else if !after.contains(['×', '✕'])
+        && after
+            .chars()
+            .next()
+            .is_some_and(|c| c.is_alphabetic() || !c.is_ascii())
+    {
+        (String::new(), after.to_string())
     } else {
         let (token, tail) = after.split_once(char::is_whitespace)?;
         let tail = tail.trim_start();
@@ -6213,10 +6223,9 @@ fn note_problem(problem: String) {
     }
 }
 
-/// A kitchen station with no printer attached: where to fix it (the Kitchen
-/// screen's station list, not Settings → Printers, which only finds devices).
+/// A shop section with no printer attached.
 pub const NO_KOT_PRINTER: &str =
-    "No printer for that kitchen station — Kitchen → Kitchen stations → Printers for this station";
+    "No printer for that section — Settings → Printers, then attach it to the bill or the section";
 
 /// Say a printing problem on this device's screen (the same channel the
 /// print worker uses), e.g. a waiter's bill with no bill printer here.

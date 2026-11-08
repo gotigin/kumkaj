@@ -49,9 +49,11 @@ From the **workspace root**. Never opens on your desktop `:0` / Wayland session.
 
 ```bash
 # Fast money/KOT/COD/khata paths (Store API, ~seconds, no GUI)
-./scripts/run-user-journeys.sh              # both apps
+./scripts/run-user-journeys.sh              # khaynjo, moklanjo, kirano, tabiyat
 ./scripts/run-user-journeys.sh khaynjo
 ./scripts/run-user-journeys.sh moklanjo
+./scripts/run-user-journeys.sh kirano
+./scripts/run-user-journeys.sh tabiyat
 
 # Real UI on private Xvfb (seed → unlock → peers/actions → PNGs → PASS/FAIL)
 ./scripts/run-ui-smoke-isolated.sh          # both apps, full desk day (default)

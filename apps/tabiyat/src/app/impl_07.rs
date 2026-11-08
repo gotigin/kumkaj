@@ -376,7 +376,7 @@ fn confirm_line_action(&mut self, cx: &mut Cx) {
                 .clone()
                 .ok_or_else(|| "Open a table first".to_string())?;
             if st.cart.lines.iter().any(|l| !l.is_sent()) {
-                return Err("Send the new items to the kitchen first (Send KOT), then Print bill".into());
+                return Err("Send the new medicines first, then print the bill".into());
             }
             let done = "Bill printed — take payment when the guests pay";
             let acted = st.table_action(

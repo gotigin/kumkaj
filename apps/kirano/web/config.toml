@@ -1,7 +1,7 @@
-# kirano.com — restaurant OS product site
+# kirano.shop — grocery shop operating system
 base_url = "https://kirano.com"
 title = "Kirano"
-description = "Lunch rush. No internet. No problem. From table to counter to bill — on your own devices."
+description = "Grocery counter, stock, khata and day book. Offline on your own devices."
 default_language = "en"
 compile_sass = false
 minify_html = true
@@ -15,7 +15,7 @@ brand = "Kirano"
 product_line = "kirano"
 gotigin_line = "Kirano is a Kumkaj product by Gotigin."
 contact_email = "TODO_OWNER@gotigin.example"
-whatsapp_url = "https://wa.me/TODO_OWNER?text=Kirano%20demo%20%E2%80%94%20restaurant%20type%2C%20tables%2C%20city"
+whatsapp_url = "https://wa.me/TODO_OWNER?text=Kirano%20demo%20%E2%80%94%20grocery%20shop%2C%20city"
 grievance_contact = "TODO_OWNER — grievance officer details pending"
 registered_address = "TODO_OWNER — Gotigin registered address pending"
 kumkaj_url = "https://kumkaj.com"

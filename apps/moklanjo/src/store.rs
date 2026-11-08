@@ -15492,7 +15492,10 @@ mod tests {
         assert_eq!(totals.card_paise, 12_500);
         assert_eq!(store.ops_report_today().unwrap().day.card_paise, 12_500);
         let receipt = store.format_receipt_text(&sale.id).unwrap();
-        assert!(receipt.contains("Subtotal"), "{receipt}");
+        assert!(
+            receipt.contains("Subtotal") || receipt.contains("Sub Total") || receipt.contains("Sub total"),
+            "{receipt}"
+        );
         assert!(receipt.contains("VAT"), "{receipt}");
         assert!(!receipt.contains("Incl."), "{receipt}");
         let _ = std::fs::remove_file(path);

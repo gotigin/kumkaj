@@ -30,7 +30,7 @@ Sell + credit + day totals
   → team, backup, LAN tills
 ```
 
-Venue locked to **Counter**. Floor/Kitchen stay off chrome.
+Venue is **Counter**: no restaurant floor or kitchen tickets. The pharmacy operating system stays complete — medicine sell, buy with batch and expiry, stock alerts, khata, GST bills, reports, team, backup, and extra tills. Small, medium, and large pharmacies use the same product.
 
 ------------------------------------------------------------------------
 

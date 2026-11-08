@@ -1,15 +1,15 @@
 {% extends "base.html" %}
 
-{% block title %}Kirano — lunch rush, internet or not{% endblock %}
-{% block og_title %}Kirano — lunch rush, internet or not{% endblock %}
+{% block title %}Kirano — grocery shop, internet or not{% endblock %}
+{% block og_title %}Kirano — grocery shop, internet or not{% endblock %}
 
 {% block content %}
 <section class="hero">
   <div class="wrap hero-grid">
     <div class="hero-copy">
       <p class="eyebrow">Kirano shop OS</p>
-      <h1>Lunch rush. No internet. No problem.</h1>
-      <p class="lede">From table to counter to bill — on your own devices. Free forever. Built for dine‑in, QSR, café and bakery floors.</p>
+      <h1>Counter rush. No internet. No problem.</h1>
+      <p class="lede">Sell, stock, khata and the day book — on your own devices. Free forever. Built for small, medium and large grocery shops.</p>
       <div class="cta-row">
         <a class="btn btn-primary" href="{{ get_url(path='download/') }}">Download free</a>
         <a class="btn btn-secondary" href="{{ config.extra.whatsapp_url }}">WhatsApp for a demo</a>
@@ -25,9 +25,9 @@
         <rect x="330" y="70" width="70" height="55" rx="6" fill="#C8E6C9"/>
         <circle cx="240" cy="200" r="36" fill="#9A0E10"/>
         <rect x="220" y="188" width="40" height="8" rx="2" fill="#F69D2C"/>
-        <text x="240" y="270" fill="#F9F4F0" font-size="13" text-anchor="middle" font-family="system-ui,sans-serif">Floor colours · cloche</text>
+        <text x="240" y="270" fill="#F9F4F0" font-size="13" text-anchor="middle" font-family="system-ui,sans-serif">Counter · stock · bill</text>
       </svg>
-      <figcaption class="sr-only">Warm restaurant floor grid with visit colours and a cloche.</figcaption>
+      <figcaption class="sr-only">Grocery counter with stock and a bill.</figcaption>
     </figure>
   </div>
 </section>
@@ -36,11 +36,11 @@
   <div class="wrap">
     <h2>What you check first</h2>
     <ul class="card-list">
-      <li><strong>Tables at a glance</strong> — visit colour, minutes and running amount on each card.</li>
-      <li><strong>Kitchen gets the ticket</strong> — send from the floor; bill carries table, waiter and notes — never prices.</li>
-      <li><strong>Rights on tablets</strong> — captains can order; settle is a right you grant.</li>
-      <li><strong>Settle that fits India</strong> — cash, UPI, tip apart, part payment, Due on khata; table frees only when paid.</li>
-      <li><strong>Internet drops</strong> — service continues on the devices in the shop.</li>
+      <li><strong>Fast counter sell</strong> — name, short code or barcode, quantity, then cash, UPI or khata.</li>
+      <li><strong>Stock and suppliers</strong> — buys land in stock; low stock shows on the books.</li>
+      <li><strong>Extra tills</strong> — one Server writes the books; other devices on the shop Wi‑Fi are Clients.</li>
+      <li><strong>GST bills</strong> — tax invoice or cash memo, on the printers you attach.</li>
+      <li><strong>Internet drops</strong> — selling continues on the devices in the shop.</li>
     </ul>
   </div>
 </section>
@@ -48,7 +48,7 @@
 <section class="chapter">
   <div class="wrap">
     <h2>Free forever on your devices</h2>
-    <p>No per‑seat or per‑table fee. Kumkaj Cloud is planned and usage‑based — see <a href="{{ config.extra.kumkaj_url }}/principles/">Kumkaj principles</a>.</p>
+    <p>No per‑seat fee. Kumkaj Cloud is planned and usage‑based — see <a href="{{ config.extra.kumkaj_url }}/principles/">Kumkaj principles</a>.</p>
     <div class="cta-row">
       <a class="btn btn-primary" href="{{ get_url(path='download/') }}">Download</a>
       <a class="btn btn-ghost" href="{{ get_url(path='pricing/') }}">Pricing</a>

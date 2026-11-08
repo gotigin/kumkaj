@@ -188,15 +188,12 @@ mod ux_rules_tests {
         );
     }
 
-    /// Empty states name screens the way the rail does (Order, Menu) — no
-    /// "Ordering screen" or "Menu & items" a waiter cannot find.
+    /// Empty states name the pharmacy rail (Sell, Medicines).
     #[test]
     fn empty_states_name_the_rail_screens() {
-        let kitchen = locale::t("en", "kitchen_empty");
-        assert!(kitchen.contains("Order") && !kitchen.contains("Ordering"), "{kitchen}");
         let menu = locale::t("en", "empty_catalog");
-        assert!(menu.contains("Open Menu,") && !menu.contains("Menu & items"), "{menu}");
-        assert_eq!(locale::t("en", "nav_items"), "Menu");
-        assert_eq!(locale::t("en", "sell"), "Order");
+        assert!(menu.contains("Medicines") && !menu.contains("Menu & items"), "{menu}");
+        assert_eq!(locale::t("en", "nav_items"), "Medicines");
+        assert_eq!(locale::t("en", "sell"), "Sell");
     }
 }

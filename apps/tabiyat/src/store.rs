@@ -6658,7 +6658,7 @@ impl Store {
     }
 
     pub fn add_station(&self, name: &str) -> Result<KitchenStation, String> {
-        self.assert_server_writer("Add kitchen stations")?;
+        self.assert_server_writer("Add dispensary sections")?;
         let name = name.trim();
         if name.is_empty() {
             return Err("Station name required".into());
@@ -6699,7 +6699,7 @@ impl Store {
     /// Remove a kitchen station. Clears `products.station_id` that pointed here.
     /// Open KOTs keep their station name on the ticket; new dishes stop routing here.
     pub fn remove_station(&self, station_id: &str) -> Result<String, String> {
-        self.assert_server_writer("Remove kitchen stations")?;
+        self.assert_server_writer("Remove dispensary sections")?;
         let id = station_id.trim();
         if id.is_empty() {
             return Err("Station required".into());
