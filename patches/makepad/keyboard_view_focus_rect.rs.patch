@@ -1,0 +1,82 @@
+--- a/widgets/src/keyboard_view.rs	2026-11-08 21:44:57.387863288 +0530
++++ b/widgets/src/keyboard_view.rs	2026-11-08 21:44:57.387911027 +0530
+@@ -92,6 +92,28 @@
+ }
+ 
+ impl KeyboardView {
++    /// Live on-screen rect of the focused text field, wherever it sits in the
++    /// tree (page body, sheet, nested scroll, dropdown host drawn under this
++    /// KeyboardView). Prefer the IME area TextInput registered on draw; fall
++    /// back to key-focus when the IME area is stale/empty for this frame so a
++    /// DidShow that races ahead of the field's redraw still has a target.
++    fn focused_field_rect(cx: &Cx) -> Rect {
++        let ime = cx.get_ime_area_rect();
++        if ime.size.y > 0.0 {
++            return ime;
++        }
++        let focus = cx.key_focus();
++        if focus.is_empty() {
++            return Rect::default();
++        }
++        let r = focus.rect(cx);
++        if r.size.y > 0.0 {
++            r
++        } else {
++            Rect::default()
++        }
++    }
++
+     /// Compute the vertical scroll required to keep the focused IME field above
+     /// an on-screen keyboard of `keyboard_height` Makepad layout points.
+     ///
+@@ -105,8 +127,8 @@
+         if keyboard_height <= 0.0 {
+             return 0.0;
+         }
+-        let ime_rect = cx.get_ime_area_rect();
+-        // Without a registered IME area there is no field to keep visible.
++        let ime_rect = Self::focused_field_rect(cx);
++        // Without a registered IME / focus area there is no field to keep visible.
+         if ime_rect.size.y <= 0.0 {
+             return 0.0;
+         }
+@@ -263,16 +285,12 @@
+                 } => {
+                     self.animate_to_zero(cx, *time, *duration, *ease);
+                 }
+-                VirtualKeyboardEvent::DidShow { time, height } => {
++                VirtualKeyboardEvent::DidShow { time: _, height } => {
+                     if *height <= 0.0 {
+-                        self.keyboard_height = 0.0;
+-                        self.animate_to_shift(
+-                            cx,
+-                            *time,
+-                            0.0,
+-                            KEYBOARD_RECONCILE_DURATION,
+-                            KEYBOARD_RECONCILE_EASE,
+-                        );
++                        // Zero height while "open" is usually a floating IME or
++                        // a bad OEM inset sample. Do not collapse an existing
++                        // shift here — DidHide is what clears. Still forward
++                        // the event to children.
+                         self.view.handle_event(cx, event, scope);
+                         return;
+                     }
+@@ -290,7 +308,7 @@
+                     // >200ms once the IME event stream goes quiet). If the IME
+                     // area is not valid yet, fall back to the post-draw
+                     // reconcile below.
+-                    if cx.get_ime_area_rect().size.y > 0.0 {
++                    if Self::focused_field_rect(cx).size.y > 0.0 {
+                         let target = self.compute_target_shift(*height, cx);
+                         self.set_keyboard_shift(cx, target);
+                     }
+@@ -360,7 +378,7 @@
+             // of a second after the keyboard is fully up (e.g. when a cursor
+             // blink redraws the KeyboardView but not the field). A genuine
+             // field move always redraws the field, so this never misses one.
+-            if cx.get_ime_area_rect().size.y > 0.0 {
++            if Self::focused_field_rect(cx).size.y > 0.0 {
+                 let height_changed = (self.keyboard_height
+                     - self.last_reconciled_keyboard_height)
+                     .abs()

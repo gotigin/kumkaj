@@ -1,0 +1,36 @@
+--- a/platform/src/os/linux/android/android.rs	2026-11-08 21:44:16.813172195 +0530
++++ b/platform/src/os/linux/android/android.rs	2026-11-08 21:44:16.813409662 +0530
+@@ -926,15 +926,28 @@
+             } => {
+                 // Java reports the bottom IME occlusion in physical pixels.
+                 // Convert to Makepad layout points and dedup repeated inset/layout
+-                // callbacks. A visible IME may still have zero bottom
+-                // occlusion (floating keyboard, transient animation frame);
+-                // keep it as a visible zero-height keyboard so KeyboardView can
+-                // clear any previous bottom shift without treating focus as
+-                // dismissed.
++                // callbacks.
+                 let height_logical = self.windows[CxWindowPool::id_zero()]
+                     .physical_pixels_to_layout(keyboard_height as f64);
+                 let time = self.os.timers.time_now();
+                 if is_open {
++                    // A visible IME can still report 0 bottom overlap
++                    // (floating keyboard, or adjustNothing + landscape OEMs
++                    // where Type.ime()/visible-frame both lie). Forwarding
++                    // DidShow(0) makes KeyboardView collapse any shift — the
++                    // field stays under the keyboard with "no reaction".
++                    // Keep the last positive height until DidHide or a new
++                    // positive sample arrives.
++                    if height_logical <= 0.0 {
++                        if self.os.last_ime_visible && self.os.last_ime_height > 0.5 {
++                            return;
++                        }
++                        // First open with unknown height: remember visible,
++                        // wait for a positive measurement (Java last-non-zero /
++                        // landscape fallback should follow).
++                        self.os.last_ime_visible = true;
++                        return;
++                    }
+                     if self.os.last_ime_visible
+                         && (height_logical - self.os.last_ime_height).abs() < 0.5
+                     {

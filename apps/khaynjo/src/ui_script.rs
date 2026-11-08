@@ -4826,11 +4826,17 @@ script_mod! {
                 }
                 body +: {
                     width: Fill height: Fill
+                    // Window.body is already KeyboardView (Makepad). Lift the
+                    // focused field just above the soft keyboard; the gap is
+                    // keyboard_min_shift. Position comes from the live IME /
+                    // key-focus area — works for fields anywhere under body
+                    // (scroll pages, sheets, nested lists).
+                    keyboard_min_shift: 16.
                     // Overlay — app_callout must NOT be a Down sibling of
                     // app_hscroll or it steals half the window height.
                     flow: Overlay
-                    // Min layout width 375 css px. Narrower viewports scroll horizontally
-                    // instead of crushing faces below that floor.
+                    // Min layout width 375 css px. Narrower viewports scroll
+                    // horizontally instead of crushing faces below that floor.
                     app_hscroll := ScrollXView{
                         width: Fill height: Fill
                         app_shell := View{

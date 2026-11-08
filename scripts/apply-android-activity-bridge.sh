@@ -270,6 +270,67 @@ else
   echo "ResizingLayout has no WindowInsetsAnimation callback to relocate."
 fi
 
+# Soft-keyboard height under adjustNothing (esp. landscape): keep last good
+# overlap and estimate when Type.ime()/visible-frame both report 0, so
+# KeyboardView can lift the focused field instead of doing nothing.
+if grep -qF 'lastNonZeroOverlapPx' "$JAVA"; then
+  echo "MakepadImeInsets lastNonZeroOverlap already present."
+else
+  python3 - "$JAVA" <<'PY'
+from pathlib import Path
+import sys
+path = Path(sys.argv[1])
+text = path.read_text()
+if "lastNonZeroOverlapPx" in text:
+    raise SystemExit(0)
+marker = "    static boolean imeAnimationInProgress = false;\n"
+insert = marker + """
+    // Last non-zero bottom overlap while the IME was open. adjustNothing +
+    // landscape OEMs often follow a good onProgress height with a final
+    // onGlobalLayout/onEnd sample of 0; without this, native KeyboardView
+    // never lifts the focused field (or collapses a shift it already applied).
+    static int lastNonZeroOverlapPx = 0;
+"""
+if marker not in text:
+    raise SystemExit(f"imeAnimationInProgress marker not found in {path}")
+text = text.replace(marker, insert, 1)
+old_report = """        int bottomOverlap = bottomOverlapPx(view, insets);
+        boolean visible = isVisible(view, bottomOverlap);
+        MakepadNative.surfaceOnResizeTextIME(bottomOverlap, visible);
+    }
+}
+"""
+new_report = """        int bottomOverlap = bottomOverlapPx(view, insets);
+        boolean visible = isVisible(view, bottomOverlap);
+        if (bottomOverlap > keyboardThresholdPx(view)) {
+            lastNonZeroOverlapPx = bottomOverlap;
+        } else if (visible && lastNonZeroOverlapPx > keyboardThresholdPx(view)) {
+            // Keep the last good height while the IME is still open.
+            bottomOverlap = lastNonZeroOverlapPx;
+        } else if (visible && bottomOverlap <= 0) {
+            // Last resort: Type.ime() and visible-frame both report 0 under
+            // adjustNothing, most often in landscape. Estimate a docked IME
+            // so KeyboardView can still lift the focused field.
+            int h = rootHeightPx(view);
+            if (h > 0 && view.getWidth() > view.getHeight()) {
+                bottomOverlap = clampToRootHeight(view, Math.max(keyboardThresholdPx(view), h * 2 / 5));
+                lastNonZeroOverlapPx = bottomOverlap;
+            }
+        }
+        if (!visible) {
+            lastNonZeroOverlapPx = 0;
+        }
+        MakepadNative.surfaceOnResizeTextIME(bottomOverlap, visible);
+    }
+}
+"""
+if old_report not in text:
+    raise SystemExit(f"MakepadImeInsets.report tail not found in {path}")
+path.write_text(text.replace(old_report, new_report, 1))
+print(f"Patched MakepadImeInsets lastNonZeroOverlap into {path}")
+PY
+fi
+
 # LocationListener.onStatusChanged is deprecated (API 29+); default empty — drop override.
 if grep -qF 'onStatusChanged(String provider, int status, Bundle extras)' "$JAVA"; then
   python3 - "$JAVA" <<'PY'
