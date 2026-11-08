@@ -1,9 +1,9 @@
 //! "Type or pick" for every field whose value is usually something the shop
 //! already has — a dish, a supplier, a table, a unit, a tax rate. Nobody
-//! should have to remember how a name was spelt: the field offers what
-//! exists as soon as it is focused (empty = everything), narrows while
-//! typing, and a tap fills it. What the person typed stays theirs; the
-//! list never forces a choice.
+//! should have to remember how a name was spelt: a tap (or typing / ↓) opens
+//! the list (empty = everything), typing narrows it, and a tap fills it.
+//! Focus alone never opens the list — see `popup.rs` / DEV.md § Dropdowns.
+//! What the person typed stays theirs; the list never forces a choice.
 
 use crate::menu_images;
 

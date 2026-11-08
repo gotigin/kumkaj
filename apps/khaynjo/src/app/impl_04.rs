@@ -1246,6 +1246,11 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             st.nav_back.clear();
             st.nav_forward.clear();
         }
+        // Every screen change (peer tab, drill-down, Back, Forward) closes an
+        // open list: the next screen never inherits one (popup.rs).
+        st.suggest_open = None;
+        st.dish_picker_open = false;
+        st.category_picker_open = false;
         st.screen = next;
     }
 
@@ -1344,6 +1349,10 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
                     // Settings tab / peer opens on its hub. History Back into
                     // Settings (set_screen, not go_with) keeps the section.
                     st.settings_panel = None;
+                }
+                if screen == Screen::Kitchen && is_peer {
+                    // Peer jump lands on Live tickets (not a buried Recall tab).
+                    st.kitchen_panel = KitchenPanel::Live;
                 }
                 // Person caps drive these screens on a Client till too —
                 // shop writes go over `/books`. Do not demote capable people.
@@ -1505,7 +1514,11 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             let mut st = app_state().lock().unwrap();
             st.settings_panel = panel;
             st.suggest_open = None;
+            st.dish_picker_open = false;
+            st.category_picker_open = false;
         }
+        // Clear list faces without a full sync_chrome (Settings freeze risk).
+        self.redraw_suggest_lists(cx);
         self.ui
             .view(cx, ids!(settings_screen))
             .set_scroll_pos(cx, dvec2(0.0, 0.0));
@@ -1890,6 +1903,48 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         self.sync_std_print_ui(cx);
         self.fill_kot_format_fields(cx);
         self.sync_bill_kot_tabs(cx);
+    }
+
+    /// Kitchen: Live / Recall / Stations — one panel visible (no long bury).
+    fn sync_kitchen_panels(&mut self, cx: &mut Cx) {
+        let (panel, lang) = {
+            let st = app_state().lock().unwrap();
+            (st.kitchen_panel, st.locale.language.clone())
+        };
+        let s = |k: &str| locale::t(&lang, k);
+        for (idle, on, key) in [
+            (ids!(kitchen_tab_live), ids!(kitchen_tab_live_on), "kitchen_tab_live"),
+            (ids!(kitchen_tab_recall), ids!(kitchen_tab_recall_on), "kitchen_tab_recall"),
+            (
+                ids!(kitchen_tab_stations),
+                ids!(kitchen_tab_stations_on),
+                "kitchen_tab_stations",
+            ),
+        ] {
+            let t = s(key);
+            self.ui.button(cx, idle).set_text(cx, &t);
+            self.ui.button(cx, on).set_text(cx, &t);
+        }
+        let live = panel == KitchenPanel::Live;
+        let recall = panel == KitchenPanel::Recall;
+        let stations = panel == KitchenPanel::Stations;
+        self.paint_choice_pair(cx, ids!(kitchen_tab_live), ids!(kitchen_tab_live_on), live);
+        self.paint_choice_pair(cx, ids!(kitchen_tab_recall), ids!(kitchen_tab_recall_on), recall);
+        self.paint_choice_pair(
+            cx,
+            ids!(kitchen_tab_stations),
+            ids!(kitchen_tab_stations_on),
+            stations,
+        );
+        self.ui.view(cx, ids!(kitchen_panel_live)).set_visible(cx, live);
+        self.ui.view(cx, ids!(kitchen_panel_recall)).set_visible(cx, recall);
+        self.ui
+            .view(cx, ids!(kitchen_panel_stations))
+            .set_visible(cx, stations);
+        // Stations tab owns the body — keep it open (accordion not needed).
+        if stations {
+            self.ui.view(cx, ids!(stations_body)).set_visible(cx, true);
+        }
     }
 
     /// Settings → Bill & KOT format: Bill vs KOT tab under the section header.
@@ -2976,6 +3031,9 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         self.ui
             .button(cx, ids!(kot_format_save))
             .set_text(cx, &s("save_kot_format"));
+        self.ui
+            .button(cx, ids!(kot_format_reset))
+            .set_text(cx, &s("reset_kot_format"));
         let (test_n, test_open) = {
             let st = app_state().lock().unwrap();
             (

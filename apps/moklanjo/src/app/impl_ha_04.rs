@@ -308,14 +308,21 @@ impl App {
             let name = Some(self.ui.text_input(cx, ids!(client_name_input)).text())
                 .filter(|n| !n.trim().is_empty())
                 .unwrap_or_else(device_name);
-            let expect_server_id = {
+            let (expect_server_id, device_id) = {
                 let st = app_state().lock().unwrap();
                 let host_trim = host.trim().to_string();
-                st.found_servers
+                let expect = st
+                    .found_servers
                     .iter()
                     .find(|f| f.host == host_trim)
                     .map(|f| f.server_id.clone())
-                    .filter(|id| !id.trim().is_empty())
+                    .filter(|id| !id.trim().is_empty());
+                let device_id = st
+                    .store
+                    .as_ref()
+                    .and_then(|s| s.lan_client_id().ok())
+                    .unwrap_or_default();
+                (expect, device_id)
             };
             if host.trim().is_empty() || code.trim().is_empty() {
                 self.set_status(cx, "Type the office device's address and its pairing code");
@@ -333,6 +340,7 @@ impl App {
                             &host,
                             &code,
                             name.trim(),
+                            &device_id,
                             expect_server_id.as_deref(),
                         );
                         *lan_once().lock().unwrap() = Some(LanOnce::Paired(reply));

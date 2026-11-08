@@ -386,6 +386,9 @@ pub struct PairRequest {
     /// Shown in the Server's list of paired phones.
     #[serde(default)]
     pub device_name: String,
+    /// Stable install id from the client — upserts the same Other-devices row.
+    #[serde(default)]
+    pub device_id: String,
 }
 
 /// A PIN typed on a phone, checked by the Server. `staff_id` None = Owner.
@@ -1521,11 +1524,14 @@ pub fn print_sent_kots(store: &Store, kot_ids: &[String]) -> Option<String> {
 /// What a table action leaves to do once it is in the books.
 #[derive(Debug, Default)]
 pub struct RunningDone {
-    /// Bill text, when the action printed the bill.
+    /// Guest bill text for [`RunningAction::PrintBill`], or CancelBatch UI
+    /// status (`batch_ok:` / `batch_noprint:`). Only PrintBill text is paper;
+    /// status codes must never reach a printer.
     pub text: Option<String>,
     /// Kitchen tickets it made (a cancel slip, a fired course). The caller
     /// prints them once the books have them — never inside the write, or a
     /// write that rolls back still leaves the kitchen holding its paper.
+    /// CancelBatch prints its own slips and leaves this empty.
     pub kots: Vec<String>,
 }
 
@@ -1974,6 +1980,11 @@ impl AfterWrite {
             }
         }
         if let Some(text) = &self.bill {
+            // Never put CancelBatch status codes (`batch_ok:` …) on paper —
+            // those are UI protocol, not a guest bill.
+            if text.starts_with("batch_ok:") || text.starts_with("batch_noprint:") {
+                return problems;
+            }
             // A bill printed for a waiter prints at the counter, where the
             // printer is; the text also goes back to the device.
             let copies = store
@@ -2172,7 +2183,7 @@ fn pair(store: &Store, req: &Request, peer: &str, guard: &Guard) -> Result<Reply
         return Ok(Reply::refuse(403, "Wrong pairing code — check it on the shop device", ""));
     }
     guard.passed(&key);
-    let (_, token) = store.pair_lan_device(&asked.device_name)?;
+    let (_, token) = store.pair_lan_device(&asked.device_name, &asked.device_id)?;
     Reply::of(&PairOk {
         ok: true,
         venue_title: store.venue_title().unwrap_or_default(),
@@ -2374,8 +2385,12 @@ fn write(store: &Store, route: &str, body: &str, actor: &StaffMember, after: &mu
             let req: RemoteRunningRequest = serde_json::from_str(body).map_err(|e| format!("running json: {e}"))?;
             let pin = Some(req.approval_pin.as_str()).filter(|p| !p.trim().is_empty());
             let done = apply_running_action(store, actor, pin, &req.request)?;
-            // Paper after the books commit (AfterWrite), like a waiter's KOT.
-            after.bill = done.text.clone();
+            // Guest bill paper only for PrintBill. CancelBatch puts
+            // `batch_ok:` / `batch_noprint:` in `done.text` for the UI status
+            // line — that must never hit the bill (standard) printer.
+            if matches!(req.request, RunningAction::PrintBill { .. }) {
+                after.bill = done.text.clone();
+            }
             after.kots = done.kots;
             Ok(Reply::json(serde_json::json!({ "ok": true, "text": done.text })))
         }
@@ -2904,6 +2919,7 @@ pub fn client_pair(
     host: &str,
     code: &str,
     device_name: &str,
+    device_id: &str,
     expect_server_id: Option<&str>,
 ) -> Result<(Link, SyncSnapshot), LanError> {
     let base = base_url(host);
@@ -2943,6 +2959,7 @@ pub fn client_pair(
         .send_json(PairRequest {
             code,
             device_name: device_name.to_string(),
+            device_id: device_id.trim().to_string(),
         })
         .map_err(lan_error)?;
     let pair: PairOk = reply_json(resp)?;
@@ -3545,6 +3562,95 @@ mod tests {
         });
     }
 
+    /// Batch cancel over LAN: kitchen cancel slip only. `batch_ok:` stays in
+    /// the JSON for the UI — it must never print on the bill (standard) printer.
+    #[test]
+    fn tablet_batch_cancel_never_prints_batch_ok_on_the_bill_printer() {
+        let mut printers = crate::print_share::DevicePrinters::default();
+        let kitchen = printers.add_printer("KitchenKOT", "192.168.1.50");
+        let bill = printers.add_printer("Standard", "192.168.1.51");
+        *printers.route_mut(crate::print_share::RouteKey::Kot { station_id: "" }) =
+            vec![kitchen];
+        *printers.route_mut(crate::print_share::RouteKey::Bill) = vec![bill];
+        crate::print_share::with_test_printers(printers, || {
+            let (path, store, guard) = lan_shop();
+            let (device, session) = paired_phone(&path, &store, &guard, "Wasim", "2222");
+            let thali = store.list_products(false).unwrap().remove(0);
+            let mut cart = Cart::default();
+            cart.add_or_bump(&thali);
+            let kot = serde_json::to_string(&RemoteKotRequest {
+                draft: cart.to_kot_draft().unwrap(),
+                table_name: Some("D1".into()),
+                table_id: None,
+            })
+            .unwrap();
+            let post = |route: &str, req: &str, body_text: &str| {
+                let headers = [
+                    (HEADER_DEVICE, device.as_str()),
+                    (HEADER_SESSION, session.as_str()),
+                    (HEADER_REQUEST, req),
+                ];
+                answer(
+                    &path,
+                    &http("POST", route, &headers, body_text),
+                    "10.0.0.5",
+                    &guard,
+                )
+            };
+            assert_eq!(post("/kot", "bk-1", &kot).status, 200);
+            let _ = crate::print_share::take_captured();
+            let d1 = store
+                .list_tables()
+                .unwrap()
+                .into_iter()
+                .find(|t| t.name == "D1")
+                .unwrap();
+            let line = store
+                .running_order(&d1.id)
+                .unwrap()
+                .unwrap()
+                .lines[0]
+                .id
+                .clone();
+            let cancel_body = serde_json::to_string(&RemoteRunningRequest {
+                approval_pin: "9999".into(),
+                request: RunningAction::CancelBatch {
+                    line_ids: vec![line],
+                    reason: "Table left".into(),
+                    prepared: false,
+                },
+            })
+            .unwrap();
+            let done = post("/running", "bk-2", &cancel_body);
+            assert_eq!(done.status, 200, "{}", done.body);
+            let reply = body(&done);
+            let text = reply["text"].as_str().unwrap_or_default();
+            assert!(
+                text.starts_with("batch_ok:"),
+                "UI still gets the status code: {text}"
+            );
+            let jobs = crate::print_share::take_captured();
+            assert_eq!(jobs.len(), 1, "one kitchen cancel slip only: {jobs:?}");
+            assert!(
+                jobs[0].kind == crate::print_share::PrintKind::Kot,
+                "cancel paper is KOT, not Bill: {:?}",
+                jobs[0].kind
+            );
+            assert!(
+                !jobs.iter().any(|j| j.text.contains("batch_ok:")),
+                "batch_ok must never hit any printer: {jobs:?}"
+            );
+            assert!(
+                jobs[0].text.contains("Thali")
+                    && (jobs[0].text.contains("CANCEL")
+                        || jobs[0].text.to_ascii_lowercase().contains("cancel")),
+                "{}",
+                jobs[0].text
+            );
+            let _ = std::fs::remove_file(path);
+        });
+    }
+
     /// Books busy past the wait (a long write elsewhere) is "not now": a
     /// 503 the device keeps its KOT for, with no reply recorded — so the
     /// same request, sent again once the books are free, is done (once).
@@ -4052,12 +4158,27 @@ mod tests {
             )
             .unwrap();
             assert!(done.kots.is_empty(), "batch cancel must not print via per-item KOT ids");
+            let raw = done.text.clone().unwrap_or_default();
+            assert!(
+                raw.starts_with("batch_ok:"),
+                "status protocol for the UI, not paper: {raw}"
+            );
             let jobs = crate::print_share::take_captured();
             assert_eq!(jobs.len(), 1, "one slip for the shared kitchen: {jobs:?}");
             assert!(
                 jobs[0].text.contains("Thali") && jobs[0].text.contains("Chaas"),
                 "{}",
                 jobs[0].text
+            );
+            // Item | Qty columns: dish name and count split by tab, not glued.
+            assert!(
+                jobs[0].text.contains("Thali\t") || jobs[0].text.contains("Thali\t1"),
+                "expected Item\\tQty columns, got:\n{}",
+                jobs[0].text
+            );
+            assert!(
+                !jobs.iter().any(|j| j.text.contains("batch_ok:")),
+                "batch_ok must never reach a printer: {jobs:?}"
             );
             assert!(store.running_order(&table.id).unwrap().is_none());
             let _ = std::fs::remove_file(path);
@@ -4376,7 +4497,14 @@ mod tests {
                     let (base, code, mona) = (base.clone(), code.clone(), mona.clone());
                     s.spawn(move || {
                         let (mut link, snap) =
-                            client_pair(&base, &code, &format!("Tablet {d}"), None).unwrap();
+                            client_pair(
+                                &base,
+                                &code,
+                                &format!("Tablet {d}"),
+                                &format!("tablet-{d}"),
+                                None,
+                            )
+                            .unwrap();
                         assert!(!snap.rev.is_empty() && !link.server_id.is_empty());
                         link.session = client_login(&link, Some(&mona), "9999").unwrap().session;
                         let thali = snap.products.iter().find(|p| p.name == "Thali").unwrap().clone();

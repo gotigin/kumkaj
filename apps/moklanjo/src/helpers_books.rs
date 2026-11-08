@@ -54,7 +54,9 @@ fn menu_row_height() -> &'static Mutex<f64> {
 
 fn cart_row_height() -> &'static Mutex<f64> {
     static HEIGHT: OnceLock<Mutex<f64>> = OnceLock::new();
-    HEIGHT.get_or_init(|| Mutex::new(320.0))
+    // Seed ≈ one closed line; draw shrinks/grows from measured extent.
+    // 320 left a huge empty band under a short cart (same class as Khaynjo).
+    HEIGHT.get_or_init(|| Mutex::new(140.0))
 }
 
 fn sale_row_height() -> &'static Mutex<f64> {

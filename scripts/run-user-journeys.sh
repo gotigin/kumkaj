@@ -17,7 +17,7 @@ APP=all
 FILTERS=()
 while [[ $# -gt 0 ]]; do
   case "$1" in
-    khaynjo | moklanjo | all) APP=$1; shift ;;
+    khaynjo | moklanjo | kirano | tabiyat | all) APP=$1; shift ;;
     --) shift; FILTERS+=("$@"); break ;;
     *) FILTERS+=("$1"); shift ;;
   esac
@@ -50,12 +50,16 @@ run_pkg() {
 case "$APP" in
   khaynjo) run_pkg kumkaj-khaynjo ;;
   moklanjo) run_pkg kumkaj-moklanjo ;;
+  kirano) run_pkg kumkaj-kirano ;;
+  tabiyat) run_pkg kumkaj-tabiyat ;;
   all)
     run_pkg kumkaj-khaynjo
     run_pkg kumkaj-moklanjo
+    run_pkg kumkaj-kirano
+    run_pkg kumkaj-tabiyat
     ;;
   *)
-    echo "usage: $0 [khaynjo|moklanjo|all] [-- test_filter…]" >&2
+    echo "usage: $0 [khaynjo|moklanjo|kirano|tabiyat|all] [-- test_filter…]" >&2
     exit 2
     ;;
 esac

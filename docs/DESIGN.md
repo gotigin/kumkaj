@@ -269,6 +269,40 @@ on `#F9F4F0` 17.0:1, `#260B08` on gold `#F69D2C` 8.6:1, idle nav ink
 used under white text (4.3:1) — it survives only as the sampled
 source colour, darkened to `#B43A12` for shipping faces.
 
+### Color tokens — Kirano (grocery product)
+
+Derived from `apps/kirano/assets/kirano-app-icon.png` (orange cart,
+leaf green, cream field — sampled with ImageMagick). Same contrast
+rules: white glyphs only on orange chrome; dark ink on light faces in
+every state; never flip ink lightness mid-hover.
+
+| Role | Hex | Use |
+|---|---|---|
+| Surface | `#FDF7EA` | App canvas (warm cream) |
+| Surface wells | `#ffffff` / `#FCE1B4` / `#C2B9A9` | Input wells, cards, secondary chips |
+| On-surface | `#031303` | Body ink on light faces |
+| Muted | `#1C460E` / `#56575D` | Hints, placeholders (dark on **white** wells) |
+| Orange chrome | `#CD380E` / `#F96303` | Chrome, tabs, primary actions (logo oranges; deepest for down/hover) |
+| Selection | `#A7A536` | Text selection band |
+| Leaf green | `#1C460E` | Accents, status marks on cream / price ink |
+
+### Color tokens — Tabiyat (pharmacy product)
+
+Derived from `apps/tabiyat/assets/tabiyat-app-icon.png` (teal field,
+lime cross, white type — sampled with ImageMagick). Same contrast
+rules: white glyphs only on teal chrome; dark ink on light faces in
+every state.
+
+| Role | Hex | Use |
+|---|---|---|
+| Surface | `#FBFCFC` | App canvas (cool white) |
+| Surface wells | `#ffffff` / `#A2CFCF` / `#E8F4F4` | Input wells, cards, secondary chips |
+| On-surface | `#023637` | Body ink on light faces |
+| Muted | `#025B60` / `#074D3E` | Hints, placeholders |
+| Teal chrome | `#023637` / `#025B60` / `#017B85` | Chrome, tabs, primary actions |
+| Selection | `#37BE28` | Text selection band (dark ink stays readable) |
+| Lime | `#37BE28` | Accents, medical cross cue, status marks on teal |
+
 ## Contrast checklist (Makepad)
 
 - Theme label ink = `#0B1220` (never white/cream as default).

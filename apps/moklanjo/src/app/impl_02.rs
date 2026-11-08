@@ -1301,27 +1301,7 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
             }
         }
 
-        let image_hint = {
-            let st = app_state().lock().unwrap();
-            let name = self.ui.text_input(cx, ids!(menu_name_input)).text();
-            menu_images::describe_image(st.draft_image_key.as_deref(), &name)
-        };
-        self.ui
-            .widget(cx, ids!(image_status))
-            .set_text(cx, &plain_display_text(&image_hint));
-        {
-            let (draft_key, name) = {
-                let st = app_state().lock().unwrap();
-                (
-                    st.draft_image_key.clone(),
-                    self.ui.text_input(cx, ids!(menu_name_input)).text(),
-                )
-            };
-            let dir = item_images_dir();
-            let path = image_key_path(draft_key.as_deref(), &dir, lan_images::PhotoKind::Item);
-            let preview = self.ui.widget(cx, ids!(draft_preview));
-            apply_thumb_avatar(cx, &preview, &name, &path);
-        }
+        self.paint_menu_draft_thumb(cx);
         let party_image_hint = {
             let st = app_state().lock().unwrap();
             let name = self.ui.text_input(cx, ids!(credit_add_name)).text();

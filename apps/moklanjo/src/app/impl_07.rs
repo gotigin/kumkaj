@@ -1071,6 +1071,109 @@ impl App {
         st.booking_notify_phone = self.ui.text_input(cx, ids!(booking_notify_input)).text();
     }
 
+    /// Draft item thumb + image hint while typing a name (no full chrome).
+    fn paint_menu_draft_thumb(&mut self, cx: &mut Cx) {
+        let image_hint = {
+            let st = app_state().lock().unwrap();
+            let name = self.ui.text_input(cx, ids!(menu_name_input)).text();
+            menu_images::describe_image(st.draft_image_key.as_deref(), &name)
+        };
+        self.ui
+            .widget(cx, ids!(image_status))
+            .set_text(cx, &plain_display_text(&image_hint));
+        let (draft_key, name) = {
+            let st = app_state().lock().unwrap();
+            (
+                st.draft_image_key.clone(),
+                self.ui.text_input(cx, ids!(menu_name_input)).text(),
+            )
+        };
+        let dir = item_images_dir();
+        let path = image_key_path(draft_key.as_deref(), &dir, lan_images::PhotoKind::Item);
+        let preview = self.ui.widget(cx, ids!(draft_preview));
+        apply_thumb_avatar(cx, &preview, &name, &path);
+    }
+
+    /// Chargeable kg + carrier compare labels only — weight/dim typing must not
+    /// rebuild the whole shell (IME freeze on phones).
+    fn paint_booking_weight_preview(&mut self, cx: &mut Cx) {
+        let mut st = app_state().lock().unwrap();
+        let (actual, vol, chargeable) = st.booking_weights();
+        let weight_unit = st.measure_weight_unit.clone();
+        let weight_factor = st.measure_weight_factor;
+        let charge_line = if chargeable > precise::ZERO {
+            if weight_factor == rust_decimal::Decimal::ONE {
+                format!(
+                    "Chargeable {} kg (actual {} · vol {})",
+                    precise::format_kg(chargeable),
+                    precise::format_kg(actual),
+                    precise::format_kg(vol)
+                )
+            } else {
+                format!(
+                    "Chargeable {} {} ({} kg) · actual {} · vol {}",
+                    precise::format_kg(booking::from_base(chargeable, weight_factor)),
+                    weight_unit,
+                    precise::format_kg(chargeable),
+                    precise::format_kg(booking::from_base(actual, weight_factor)),
+                    precise::format_kg(booking::from_base(vol, weight_factor))
+                )
+            }
+        } else {
+            "Chargeable: set weight or L×B×H".into()
+        };
+        let dest = st.booking_destination.trim().to_string();
+        let mut zone_for_compare = st.booking_zone.trim().to_string();
+        let mut pin_line = String::new();
+        if let Some(store) = st.store.as_ref()
+            && rates::is_india_pincode(&dest)
+        {
+            match store.lookup_pincode(&dest) {
+                Ok(hits) if !hits.is_empty() => {
+                    let first = &hits[0];
+                    pin_line = first.serves_label();
+                    if zone_for_compare.is_empty() && !first.zone_name.is_empty() {
+                        zone_for_compare = first.zone_name.clone();
+                    }
+                }
+                Ok(_) => pin_line = "Pincode not in service table".into(),
+                Err(_) => {}
+            }
+        }
+        let currency = st.locale.currency.clone();
+        let consignor = st.selected_customer_id.clone().unwrap_or_default();
+        let mut compare_line = String::new();
+        let mut compare_rows = Vec::new();
+        if chargeable > precise::ZERO
+            && !zone_for_compare.is_empty()
+            && let Some(store) = st.store.as_ref()
+        {
+            let zone_id = store.list_zones().ok().and_then(|zones| {
+                zones.into_iter().find(|z| {
+                    z.id == zone_for_compare || z.name.eq_ignore_ascii_case(&zone_for_compare)
+                })
+            });
+            if let Some(z) = zone_id
+                && let Ok((sell, rows)) =
+                    store.compare_carriers_for_zone(&z.id, chargeable, &consignor)
+            {
+                compare_line = rates::format_carrier_compare(sell, &rows, &currency);
+                compare_rows = rows;
+            }
+        }
+        st.last_carrier_compare = compare_rows;
+        drop(st);
+        self.ui
+            .widget(cx, ids!(chargeable_kg_label))
+            .set_text(cx, &plain_display_text(&charge_line));
+        self.ui
+            .widget(cx, ids!(booking_pincode_label))
+            .set_text(cx, &plain_display_text(&pin_line));
+        self.ui
+            .widget(cx, ids!(booking_compare_label))
+            .set_text(cx, &plain_display_text(&compare_line));
+    }
+
     /// Persist + live-apply booking measure settings. The desk unit chips
     /// and the Settings → Booking measures form both land here, so the
     /// desk reflects a change immediately.

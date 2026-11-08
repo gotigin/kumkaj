@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{% block title %}{{ config.title }}{% endblock %}</title>
+  <meta name="description" content="{% block description %}{{ config.description }}{% endblock %}" />
+  <link rel="canonical" href="{{ current_url | safe }}" />
+  <meta property="og:url" content="{{ current_url | safe }}" />
+  <meta property="og:title" content="{% block og_title %}{{ config.title }}{% endblock %}" />
+  <meta property="og:description" content="{% block og_description %}{{ config.description }}{% endblock %}" />
+  <meta property="og:site_name" content="{{ config.title }}" />
+  <meta property="og:type" content="website" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Tabiyat",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Android, Windows, Linux",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" },
+    "url": "https://tabiyat.com/"
+  }
+  </script>
+  <link rel="stylesheet" href="{{ get_url(path='css/site.css') }}" />
+  {% block head %}{% endblock %}
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="{{ config.base_url }}/">{{ config.title }}</a>
+      <nav class="nav" aria-label="Primary">
+        <a href="{{ get_url(path='download/') }}">Download</a>
+        <a href="{{ get_url(path='pricing/') }}">Pricing</a>
+        <a href="{{ get_url(path='contact/') }}">Contact</a>
+      </nav>
+    </div>
+  </header>
+  <main id="main">
+    {% block content %}{% endblock %}
+  </main>
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <p class="footer-brand">{{ config.extra.gotigin_line }}</p>
+      <nav class="footer-nav" aria-label="Footer">
+        <a href="{{ get_url(path='privacy/') }}">Privacy</a>
+        <a href="{{ get_url(path='terms/') }}">Terms</a>
+        <a href="{{ get_url(path='download/') }}">Download</a>
+        <a href="{{ config.extra.kumkaj_url }}/principles/">Principles</a>
+        <a href="{{ config.extra.kumkaj_url }}">Kumkaj</a>
+        <a href="{{ config.extra.moklanjo_url }}">Moklanjo</a>
+      </nav>
+      <p class="lang-stub">Language: English <span class="muted">(Hindi and Gujarati coming)</span></p>
+    </div>
+  </footer>
+  <script src="{{ get_url(path='js/stage.js') }}" defer></script>
+  {% block scripts %}{% endblock %}
+</body>
+</html>

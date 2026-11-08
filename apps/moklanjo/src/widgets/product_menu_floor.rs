@@ -320,18 +320,25 @@ impl Widget for CartList {
                     let extent = list.drawn_range_extent();
                     if extent > 1.0 {
                         measured_row = extent / count as f64;
-                        // Reserved too short: the note and the options under
-                        // it are clipped inside the list. Learn the pitch and
-                        // redraw once. A redraw from inside this draw is dropped.
-                        if extent > reserved + 1.0 {
-                            *cart_row_height().lock().unwrap() = measured_row.max(row);
-                            self.settle = cx.new_next_frame();
+                        // Grow when clipped; shrink when a tall seed / leftover
+                        // pitch leaves a blank band under few lines.
+                        if extent > reserved + 1.0 || reserved > extent + 24.0 {
+                            let next = measured_row.clamp(72.0, 280.0);
+                            if (next - row).abs() > 4.0 {
+                                *cart_row_height().lock().unwrap() = next;
+                                self.settle = cx.new_next_frame();
+                            }
                         }
                     }
                 }
             }
         }
-        remember_content_row(cx, &mut self.view, cart_row_height(), row, measured_row);
+        if measured_row > 1.0 {
+            let cur = *cart_row_height().lock().unwrap();
+            if (measured_row - cur).abs() <= 4.0 {
+                remember_content_row(cx, &mut self.view, cart_row_height(), row, measured_row);
+            }
+        }
         DrawStep::done()
     }
 

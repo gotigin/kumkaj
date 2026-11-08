@@ -84,11 +84,19 @@ impl Widget for KitchenList {
         // (DEV.md bug 6c). Page ScrollYView still owns the gesture. Do not
         // remeasure from the visible slice — that under-sizes total height.
         const GAP: f64 = 10.0;
-        // KotCard is 200 high (DSL) plus the Item's 8 bottom pad. A Fit card
-        // on a guessed 150 pitch cut the lower tickets off (DEV.md bug 8).
-        const KOT_ROW: f64 = 208.0;
+        // KotCard is 320 high (DSL: room for one dish per line) plus the
+        // Item's 8 bottom pad. A short pitch cut lower tickets off (bug 8);
+        // 200 left long cancel tickets as a · run-on with ellipsis.
+        const KOT_ROW: f64 = 328.0;
         let row = KOT_ROW;
-        let (first, last) = page_window(cx.turtle().pos().y, count, row, GAP);
+        // Short lists: never virtualize. A stale page_window `first` left a
+        // huge top_gap above the only ticket (cream void under "To cook now").
+        // Virtualize only when many cards would freeze Android (bug 6c).
+        let (first, last) = if count <= 8 {
+            (0usize, count)
+        } else {
+            page_window(cx.turtle().pos().y, count, row, GAP)
+        };
         let walk = Walk {
             height: Size::Fixed(list_content_height(count, row, GAP)),
             ..walk
@@ -145,16 +153,10 @@ impl Widget for KitchenList {
                         cx,
                         &format!("{cancel}{number}{station} · {mins} min{by}"),
                     );
-                    // Summary is capped at draw: PortalList rows share one
-                    // measured height, so an unbounded multi-line summary
-                    // would make the measured row oscillate between draws.
-                    // Full text stays on the store record (and prints).
-                    let summary: String = kot.summary.chars().take(140).collect();
-                    let summary = if summary.len() < kot.summary.len() {
-                        format!("{summary}…")
-                    } else {
-                        summary
-                    };
+                    // One dish per line for the cook. Label max_lines + card
+                    // height cap the draw; full text stays on the store /
+                    // print path. Never a single · run-on with a mid-name ….
+                    let summary = kitchen_card_body(&kot.summary);
                     item.label(cx, ids!(kotcard.summary)).set_text(cx, &summary);
                     let (state, next) = match kot.status {
                         KotStatus::New => (
@@ -234,15 +236,18 @@ impl Widget for CartList {
         };
         let count = lines.len();
         // Full list; outer Order ScrollYView scrolls. Closed-row pitch + KOT
-        // group headers ("Not sent yet" / "KOT n"); open details add extra.
+        // group headers ("Not sent yet" / "KOT n"); open details add
+        // `cart_open_extra` only while a **valid** line is open.
         const GAP: f64 = 8.0;
         const KOT_HEAD_H: f64 = 22.0;
-        // Heal only absurd leftover 320 seeds — never squash a learned tall pitch
-        // (the old `> 140 → 96` clamp cropped cart lines into Kitchen).
+        // Closed pitch must never absorb open-details height (that is the
+        // cream band above Kitchen after close). Heal anything past the
+        // closed max back to the seed — do not "learn" 280 from a stale
+        // PortalList sample of a just-closed open row.
         let row = {
             let mut g = cart_row_height().lock().unwrap();
-            if *g > 280.0 {
-                *g = 140.0;
+            if *g > CART_CLOSED_ROW_MAX {
+                *g = CART_CLOSED_ROW_SEED;
             }
             *g
         };
@@ -257,16 +262,32 @@ impl Widget for CartList {
                         .unwrap_or(true)
             })
             .count();
-        let open_extra = if open_line.is_some() {
-            *cart_open_extra().lock().unwrap()
-        } else {
-            0.0
-        };
+        // Stale index (cart shrank) must not keep reserving open_extra with
+        // no details painted — that is empty cream with Kitchen far below.
+        let open_idx = open_line.filter(|&i| i < count);
+        if open_line.is_some() && open_idx.is_none() {
+            app_state().lock().unwrap().open_cart_line = None;
+        }
+        let open_extra = cart_open_extra_reserved(
+            open_idx,
+            count,
+            *cart_open_extra().lock().unwrap(),
+        );
         let (first, last) = (0usize, count);
-        let content_h = (list_content_height(count, row, GAP)
-            + head_n as f64 * KOT_HEAD_H
-            + open_extra)
-            .max(56.0);
+        // Closed: prefer the last measured full extent for this line count
+        // (kills the cream band above Kitchen). Pitch formula is only the
+        // seed / grow path when we have no sample yet. Open: that closed
+        // block + open_extra (details sit in the extra, not in every row).
+        let pitch_h = list_content_height(count, row, GAP) + head_n as f64 * KOT_HEAD_H;
+        let closed_h = {
+            let stored = *cart_closed_extent().lock().unwrap();
+            if stored.0 == count && stored.1 > 1.0 {
+                stored.1
+            } else {
+                pitch_h
+            }
+        };
+        let content_h = (closed_h + open_extra).max(56.0);
         let walk = Walk {
             height: Size::Fixed(content_h),
             ..walk
@@ -405,7 +426,7 @@ impl Widget for CartList {
                     item.widget(cx, ids!(line_meta)).set_text(cx, &plain_display_text(&meta));
                     item.label(cx, ids!(line_amount))
                         .set_text(cx, &applied.format_localized(&currency, &fiscal));
-                    item.view(cx, ids!(details)).set_visible(cx, open_line == Some(item_id));
+                    item.view(cx, ids!(details)).set_visible(cx, open_idx == Some(item_id));
                     let price_input = item.text_input(cx, ids!(unit_price));
                     if !cx.has_key_focus(price_input.area()) {
                         let price_text =
@@ -567,16 +588,17 @@ impl Widget for CartList {
                         measured_row = body / drew as f64;
                         // Reserved too short → learn + one settle frame (draw
                         // cannot grow the walk in-place without flicker).
-                        // Closed rows learn their pitch. An open line learns
-                        // only its own extra, so one tall details block does
-                        // not stretch every other dish — and does not clip
-                        // Cancel / NC / Move into Kitchen station.
-                        if open_line.is_some() {
-                            // Match the drawn line. Too short clips Cancel /
-                            // NC / Move. Too tall is the empty band under them.
-                            // Only trust extent when it is clearly inside or
-                            // clearly past the box — a clip that reports the
-                            // box height must not walk the extra forever.
+                        // Closed rows learn **closed** pitch only. An open
+                        // line learns only `cart_open_extra`, so one tall
+                        // details block does not stretch every other dish
+                        // and does not clip Cancel / NC / Move into Kitchen.
+                        if open_idx.is_some() {
+                            // Match the drawn open line. Too short clips
+                            // Cancel / NC / Move. Too tall is cream under
+                            // the details. Only trust extent when it is
+                            // clearly past or clearly inside the box — a
+                            // clip that reports the box height must not
+                            // walk the extra forever.
                             let next = if extent > content_h + 1.0 {
                                 Some((open_extra + extent - content_h + 8.0).min(640.0))
                             } else if content_h > extent + 24.0 {
@@ -591,17 +613,44 @@ impl Widget for CartList {
                                     self.settle = cx.new_next_frame();
                                 }
                             }
-                        } else if extent > content_h + 1.0 {
-                            *cart_row_height().lock().unwrap() = measured_row.max(row);
-                            self.settle = cx.new_next_frame();
+                        } else {
+                            // Closed: pin the list height to what was drawn.
+                            // Pitch-only shrink often left a cream band when
+                            // the sample would not move row enough; storing
+                            // the full extent removes that gap in one settle.
+                            let pad = 4.0;
+                            let want = (extent + pad).max(56.0);
+                            let mut stored = cart_closed_extent().lock().unwrap();
+                            let extent_moved =
+                                stored.0 != count || (stored.1 - want).abs() > 8.0;
+                            if extent_moved {
+                                *stored = (count, want);
+                                drop(stored);
+                                self.settle = cx.new_next_frame();
+                            }
+                            // Keep pitch in the closed band for the seed /
+                            // first-frame path (and for open-extra math).
+                            if measured_row > 1.0 {
+                                let next = cart_closed_pitch_from_sample(measured_row, row);
+                                if (next - row).abs() > 4.0 {
+                                    *cart_row_height().lock().unwrap() = next;
+                                    self.settle = cx.new_next_frame();
+                                }
+                            }
                         }
                     }
                 }
             }
         }
         // Only learn closed-row pitch — open details must not inflate every line.
-        if open_line.is_none() {
-            remember_content_row(cx, &mut self.view, cart_row_height(), row, measured_row);
+        if open_idx.is_none()
+            && measured_row > 1.0
+            && measured_row <= CART_CLOSED_ROW_MAX
+        {
+            let cur = *cart_row_height().lock().unwrap();
+            if (measured_row - cur).abs() <= 4.0 {
+                remember_content_row(cx, &mut self.view, cart_row_height(), row, measured_row);
+            }
         }
         DrawStep::done()
     }

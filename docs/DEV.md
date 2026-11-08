@@ -134,6 +134,77 @@ regression history.
 Apps (Moklanjo, Khaynjo, …) share the vendored Makepad tree; window/shell
 fixes usually land in `vendor/makepad` (+ patches) and apply to every app.
 
+## Dropdowns, pick lists and tips (every app — do not regress)
+
+Each app owns the code (`apps/<app>/src/popup.rs`, copy-then-diverge);
+the rules are the same. Cursor rule: `.cursor/rules/dropdowns-popups.mdc`.
+They hold for a mouse with or without a wheel, a trackpad, and a finger,
+on every OS — never gate one on the device.
+
+1. **App state is the only switch.** A list is open while `suggest_open`
+   (Khaynjo also `dish_picker_open` / `category_picker_open`) names it.
+   Lists and floating popups read that *at draw time*. Never keep a second
+   open/closed flag next to it — no `Modal` for a dropdown. (Khaynjo's Floor
+   Columns pick was a clear-backdrop `Modal`: after leaving Floor the state
+   was closed but the modal stayed open, invisible over the whole window,
+   and every press on every screen died, 2026-11-08.)
+2. **A tap opens; focus never does.** Press + release on the field (≤ 24 px,
+   < 0.8 s, same field) opens its list — also when the field already has
+   focus (a second tap used to do nothing). Typing opens it narrowed; ↓ opens
+   it from the keyboard; a dropdown button toggles its own list. *Focus alone
+   opens nothing*: `Modal::open` takes key focus and `Modal::close` hands it
+   back with `revert_key_focus`, so "focus opens the list" reopened the
+   Columns pick on every pick and every outside tap. A drag that starts on a
+   field (page swipe, text selection) is not a tap.
+3. **One router closes** (`route_popup_input`, called first in
+   `handle_event`, before every pointer handler that may `return`). A press
+   outside the open list, its field, its dropdown button (`SuggestField::opener`)
+   and its floating panel closes it; the press still reaches what is under it.
+   A pick closes a single-choice list (checklists stay until Done / outside).
+   Back / Escape close it before leaving the screen. `set_screen` closes it
+   on *every* screen change. Only a list marked `stays_open` (Khaynjo Team
+   station checklist) survives an outside press.
+4. **Screen rects for pointers.** Compare `event.abs` with `clipped_rect` —
+   the rect Makepad's own hit test uses (`screen_rect` / `area_hit`) — never
+   `rect()`, whose hidden part (a field scrolled under the header) still
+   "contains" the press. During *draw* clipped rects are not resolved yet
+   (the clip pass runs when the window's root turtle ends): a draw-time test
+   uses `rect()` against `page_viewport()` instead (`popup_anchor_on_page`).
+5. **A floating list follows its field (Khaynjo `AnchoredPopup`).** Put a
+   `PopupAnchor{key}` as the last child of the field's `flow: Overlay` box
+   and an `AnchoredPopup{key}` at the window root, after the page (it draws
+   last and gets events first). Every frame it places the panel 4 px under
+   the field's current rect, flips above when the list fits better there,
+   stays inside the window, and caps the list to the room it has (the rest
+   scrolls). It never takes key focus or blocks scrolling; a wheel over it
+   never scrolls the page; when the field is scrolled away the list hides
+   until it is back. Placing a panel once at open left a gap the size of
+   every later scroll ("huge space between the button and its items").
+   **Opaque Fixed card:** the panel walk is `Fixed` width×height (estimate
+   from row count on first open, then last measure) and `content` is
+   Fill×Fill with a solid `draw_bg` — never `Fit` alone. Fit + PortalList
+   left the cream card at ~0 height so only row chips drew and the Floor
+   (and its ScrollX bar) showed through the gaps (Columns menu, 2026-11-08).
+   Use `begin_overlay_last` so Floor tiles cannot depth-test over the list.
+6. **No wheel needed.** Every list that scrolls by itself sets
+   `mouse_drag_scrolling: true` (press-drag scrolls it); page and desk
+   scroll views keep `mouse_capture_overload`; sideways strips keep ‹ ›.
+7. **Tips close on the next press.** A finger never sends the hover-out that
+   hides an ℹ callout for a mouse, so the router hides `app_callout` on every
+   press; a tap on an ℹ shows its tip again on release.
+8. **Typing that only narrows a list never runs full `sync_chrome`.**
+   Rebuild the list with `redraw_suggest_lists` / the pick-list widget (and
+   a narrow paint when a live label must follow — pay change line, booking
+   chargeable kg, draft thumb). Full `sync_chrome` on every keystroke reloads
+   Settings SQL and can hide the Android IME / freeze the shell. Reserve it
+   for open, pick, Escape, Back, and focus-elsewhere close.
+
+Manual check (mouse *and* finger): open each kind — Floor Columns, a type-or-
+pick field (Buy item), a dropdown button (Order Kitchen, Settings printers) —
+then pick a row, tap outside, tap the field again, scroll the page while it is
+open, drag the list with the button held (no wheel), leave the screen while it
+is open and tap something on the next screen.
+
 ## Desktop window size & maximize
 
 Expected floating-window behaviour on **desktop** Linux, Windows, and macOS
@@ -276,12 +347,35 @@ So “this tab is active” **cannot** be expressed by leaving a Button focused 
    Do **not** keep the original CTA visible and “hope” the frame returns. Do **not** block the UI thread so Cancel cannot paint or receive taps. Gate heavy `sync_chrome` / paint while `*_busy` (same as `role_open_busy`). Canonical examples: DeviceSetup **Opening… / Preparing desk… + Cancel**; Client **Find server / Pair now** busy faces; printer **Looking… + Cancel**. New long work copies that pattern — do not invent a third busy style.
 
    **Pair finish:** `client_pair` HTTP stays on a worker; applying the sync snapshot (`net::apply_snapshot`) must also stay off the UI thread (`LanOnce::PairApplied`) — a busy shop’s SQLite replace froze Android for seconds after “Pair now”. **Soft keyboard on ClientPair / Lock:** do not run a full `sync_chrome` (locale + Settings SQL) while a text field holds focus — that rebuild hid the IME; digits still go into the field, Pair/Unlock triggers a real sync. **Server pairing digits** in Settings (`pairing_code_value`) are a selectable `WrapLabel` (display/copy only — use **Copy pairing code**); the Client types into `client_code_input` (`FieldInput`, `is_numeric_only`). Cursor rule: `.cursor/rules/busy-action-chrome.mdc`.
-7e. **A sheet that fills the window never dismissed (Khaynjo, 2026-11-07)** — Makepad's `Modal` closes on a release outside `content`; Add dishes and the UPI QR set `content` to Fill, so nothing was outside and the dimmed area did nothing. The app decides from the visible sheet (`sheet_press_target` / `sheet_press_closes`): a press on the dim or on Done closes at once; a press on the dishes owns the whole gesture (a scroll ending outside or over Done never closes). While a sheet is open, nav-tab drag, the rail divider, Floor area drag, sidebar drag, printer-row taps and edge swipes do not start under it; mouse Back/Forward still run and `navigate_back` closes the sheet first. A clear-backdrop dropdown modal (Floor Columns) closes on the same outside press, or it swallowed every Floor tap until the next repaint.
+7e. **A sheet that fills the window never dismissed (Khaynjo, 2026-11-07)** — Makepad's `Modal` closes on a release outside `content`; Add dishes and the UPI QR set `content` to Fill, so nothing was outside and the dimmed area did nothing. The app decides from the visible sheet (`sheet_press_target` / `sheet_press_closes`): a press on the dim or on Done closes at once; a press on the dishes owns the whole gesture (a scroll ending outside or over Done never closes). While a sheet is open, nav-tab drag, the rail divider, Floor area drag, sidebar drag, printer-row taps and edge swipes do not start under it; mouse Back/Forward still run and `navigate_back` closes the sheet first. Dropdowns are never modals (§ Dropdowns, pick lists and tips): the Floor Columns pick used to be a clear-backdrop `Modal` and outlived its state.
 7f. **Fit Overlay + Fill layer = zero-height or collapsed row** — In a `flow: Overlay` view with `height: Fit`, a `height: Fill` child gets the height used *so far*. A background layer drawn before the content gets zero (no card, no ageing colour on Kitchen tickets) or a wrong height while a list scrolls (Add dishes rows drew as thick bars). Give the card a fixed height that matches its list pitch (`ProductCard` 176, `KotCard` 200 / `KOT_ROW` 208), or make the background the list item's own (`RoundedView` root; one template per state, e.g. SuggestList `Item` / `ItemSel`). A Fill layer *after* the height-giving child (a hit button) is fine.
 7g. **Edge swipe vs a control in the edge strip** — The 48 px back/forward swipe arms on press, but after the UI handled the press `disarm_edge_swipe_if_claimed` drops it unless nothing, or the page's own scroll view, claimed it (`Event::pointer_claimed_area`). A button, field, card, list, or sideways strip at the edge wins: panning Moklanjo's booking desk or a tab strip from the edge used to also go Back/Forward.
 7h. **Row and card taps use `finger_up_is_tap`, not `was_tap()`** — `was_tap` gives up after 0.5 s or 5 px (mouse), while the page waits 8 px before scrolling: a slow press or a 6 px drift was neither a tap nor a scroll. A tap read from raw pointer events (printer rows) needs press and release on the same row within tap travel — a release alone is the end of a scroll.
 7i. **Never pre-mark a scroll handled before dispatch** — Makepad hands a wheel / trackpad delta to the innermost scroll view that can move and marks the axis handled only when it moved. Setting `handled_x` before `ui.handle_event` (`claim_hstrip_nested_scroll`, removed from Moklanjo 2026-11-02 and Khaynjo 2026-11-07) made each sideways strip move one step and then stop.
-8. **Page-scroll list rows cropped / page won’t scroll** — A `PortalList` inside a page `ScrollYView` must claim **full content height** (`list_content_height` + `page_owns_scroll`) so the page owns the wheel. Guessing a short Fixed row pitch (Khaynjo Inventory `StockList` at 62 while `StockRowView` is Fit, 2026-10) clips the last rows into the next sibling (tip-pool `ReportText`) and leaves the page with almost nothing to scroll — the “missing” rows are clipped *inside* the under-tall list, not below it. The same clip hid Khaynjo’s open ticket line: a fixed 220px extra cut off Cancel / NC / Move under the note and pulled Kitchen station up over them. `cart_open_extra` is the measured details — not a constant, and not a padded blank band under the buttons. Do not auto-scroll the order page to the station control when a line opens. **Rule for every app:** Fit-row expand-to-content lists use a **generous seed + `remember_content_row`** (same pattern as `CustomerList` / Moklanjo `SaleList`); an opened or taller row reserves its **measured** height and redraws once (`CartList` settle) — never a fixed “extra” that is shorter than the details. Fixed-pitch cards (`MenuCard` 140, `DishRow` 104) keep a constant that matches the DSL. Never “fix” one screen’s crop without sweeping the same hardcoded underestimates elsewhere. Do not reintroduce nested list scroll for these lists — that eats the page wheel at the bottom edge.
+7j. **Dropdown that would not close, reopened itself, and drifted (Khaynjo Floor Columns, 2026-11-08)** — Picking a number or tapping outside closed the list and the same frame reopened it (`Modal::close` → `revert_key_focus` → the field's `KeyFocus` → "focus opens the list"); the panel was placed once from the field's rect, so scrolling the Floor left a gap the size of the scroll; leaving Floor with it open left an invisible modal swallowing every press on every screen. Moklanjo had no outside-press close at all (a finger could only pick). Fixed by the rules in § Dropdowns, pick lists and tips — not by patching that one control.
+8. **Page-scroll list rows cropped / page won’t scroll** — A `PortalList` inside a page `ScrollYView` must claim **full content height** (`list_content_height` + `page_owns_scroll`) so the page owns the wheel. Guessing a short Fixed row pitch (Khaynjo Inventory `StockList` at 62 while `StockRowView` is Fit, 2026-10) clips the last rows into the next sibling (tip-pool `ReportText`) and leaves the page with almost nothing to scroll — the “missing” rows are clipped *inside* the under-tall list, not below it. **Over-tall (empty cream band):** Fit-row lists must also **shrink** when `drawn_range_extent` is clearly shorter than the reserved walk (Order cart above Kitchen station; Moklanjo cart). Grow-only `.max(row)` left the gap forever. Kitchen `page_window` virtualization must not run on short lists (≤8) — a bad `first` became a huge `top_gap` under “To cook now”. Kitchen Live / Recall / Stations are **tabs**, not one buried scroll. **Rule for every app:** Fit-row expand-to-content lists use a **generous seed + `remember_content_row`** (same pattern as `CustomerList` / Moklanjo `SaleList`). Fixed-pitch cards (`MenuCard` 140, `DishRow` 104) keep a constant that matches the DSL. Never “fix” one screen’s crop without sweeping the same hardcoded underestimates elsewhere. Do not reintroduce nested list scroll for these lists — that eats the page wheel at the bottom edge.
+
+8b. **Kitchen Live card body is one dish per line** — Store KOT `summary` stays compact (`·` / `, ` joined) for print/sync, but the Live card must not paint that run-on (it truncated mid-name and was unreadable for cooks, cancel slips especially, 2026-11-08). `kitchen_card_body` reformats for the card (table / station on their own lines, `×qty  name` per dish); KotCard height + `max_lines` leave room; paper still has the full ticket.
+
+8a. **Order cart open line: crop vs cream band (do not “fix” one by causing the other)** — Khaynjo ticket lines are Fit rows in an expand-to-content `CartList`. Tapping a line opens Unit @ / Applied / note / Cancel·NC·Move; that block is **much taller** than a closed row. Two failures look opposite and keep getting traded:
+
+    | Symptom | Cause | Wrong “fix” |
+    |---|---|---|
+    | Cancel / NC / Move cropped; Kitchen drawn on top of them | Reserved list height too short for the open details (`cart_open_extra` underestimated, or open height folded into a short closed pitch) | Raise closed `cart_row_height` forever, or pad a huge blank under **closed** rows |
+    | Huge cream gap between the (closed) cart and Kitchen station | Reserved height still includes open details after close, or closed pitch **learned** the open row’s tall PortalList sample / a stale `open_cart_line` index still adds `cart_open_extra` with no details painted | Shrink `cart_open_extra` seed below the real details (brings crop back) or clamp closed pitch to ~96 (brings crop back) |
+
+    **Correct split (Khaynjo `helpers.rs` + `CartList`):**
+    - `cart_row_height` = **closed** pitch seed/clamp only (~72–176). Never 280+.
+    - `cart_closed_extent` = last measured **full closed list height** for this line count. Closed `CartList` uses this as the Fixed walk (not `n × pitch` alone) — pitch shrink alone still left a cream band on multi-line tickets (2026-11-08).
+    - `cart_open_extra` = **only** while `open_cart_line` is `Some(i)` with `i < lines.len()`. Open walk = closed extent + this extra. Closing clears the index so the extra is not reserved.
+    - After close, if a per-row sample still looks open-tall, snap pitch to the seed; the extent store is what removes the band.
+    - Do not auto-scroll the order page to Kitchen station when a line opens.
+    - Do not “solve” the cream band by under-seeding open details, and do not “solve” crop by making every closed row as tall as an open one.
+
+    Regression check: one closed line → Kitchen station sits just under it (no cream band). Open that line → details fully visible including Cancel / NC / Move, then Kitchen below. Close again → band gone.
+
+    **Automated:** `ux_rules_tests::cart_open_extra_not_reserved_when_closed_or_stale` locks the reserve/snap rules; Khaynjo `SMOKE_SCRIPT=full` steps `100a_cart_line_open` / `100b_cart_line_closed` / `100c_floor_bill_view` exercise open → close → Floor bill Cols on private Xvfb (`./scripts/run-ui-smoke-isolated.sh khaynjo`).
+
 9. **Nav hid peers but Day book still showed them (Waiter)** — Chrome used `nav_tab_permitted`; unlock always opened `Screen::Books` and hub rows / TODAY money stayed visible (Khaynjo 2026-11-04). **Rule:** unlock → `unlocked_home_from`; Day book hub slots + money accordions use the same caps as nav. Full table: § Staff rights vs chrome below.
 
 ### Required approach (shipping)
@@ -1144,7 +1238,10 @@ Makepad visual traps found this way (do not reintroduce):
       lists): full content height, `page_owns_scroll`, outer `ScrollYView`
       owns wheel **and** mouse/touch press-drag (`mouse_capture_overload`).
       Do **not** use `page_window` here — variable open/closed row heights
-      made it flicker.
+      made it flicker. Khaynjo cart open/close height is two slots
+      (`cart_row_height` vs `cart_open_extra`) — see bug **8a**; never
+      “fix” crop by leaving a cream band, or the band by clipping
+      Cancel / NC / Move.
     - **Capped nested viewport** (long Menu catalogue, Settings pickers):
       bounded box + thin scrollbar + *scroll chaining*; may use
       `page_window` so only on-screen rows draw.
@@ -1286,6 +1383,16 @@ Makepad visual traps found this way (do not reintroduce):
     the app's `ReportText` card (rows built in code with `set_rows`, or
     printable text through `parse_report`); a blank line (`\n\n`) only
     splits paragraphs of prose.
+18b. **Print `\t` columns are real UI columns in `ReportText`** (`ReportRow::Cols`
+    + `Cols`/`ColsRtl` templates). Printers keep `\t` for raster layout;
+    on screen, `parse_report` splits mid-line tabs into Item **Fill** +
+    Qty/Price/Amount **Fixed** slots (with wrap + a bit more gutter) so
+    values stay under their headers on every width and script — never
+    Fit-per-row (that drifted Qty under Price on phone bills), never paint
+    `\t` as tofu or pad with spaces. Paired meta (`Date\tTable`) uses the
+    Amount slot for the trailing cell so it is not crushed into Qty
+    (Floor View bill, Gujarati, 2026-11-08). Duplicate the same rule in
+    each app's `report_sidebar.rs` / `ui_script.rs`.
 19. **Right-aligned `Label` text overruns its box by a few px** — at a
     clipped edge (a card's right side in right-to-left languages) the
     last glyph is cut. Keep a right `margin` on such labels; `padding`

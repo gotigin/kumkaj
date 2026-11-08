@@ -176,6 +176,9 @@ pub struct PairRequest {
     /// Shown in the Server's list of paired phones.
     #[serde(default)]
     pub device_name: String,
+    /// Stable install id from the client — upserts the same Extra-tills row.
+    #[serde(default)]
+    pub device_id: String,
 }
 
 /// A PIN typed on a phone, checked by the Server. `staff_id` None = Owner.
@@ -1282,7 +1285,7 @@ fn pair(store: &Store, req: &Request, peer: &str, guard: &Guard) -> Result<Reply
         ));
     }
     guard.passed(&key);
-    let (_, token) = store.pair_lan_device(&asked.device_name)?;
+    let (_, token) = store.pair_lan_device(&asked.device_name, &asked.device_id)?;
     Reply::of(&PairOk {
         ok: true,
         venue_title: store.venue_title().unwrap_or_default(),
@@ -1913,6 +1916,7 @@ pub fn client_pair(
     host: &str,
     code: &str,
     device_name: &str,
+    device_id: &str,
     expect_server_id: Option<&str>,
 ) -> Result<(Link, SyncSnapshot), LanError> {
     let base = base_url(host);
@@ -1952,6 +1956,7 @@ pub fn client_pair(
         .send_json(PairRequest {
             code,
             device_name: device_name.to_string(),
+            device_id: device_id.trim().to_string(),
         })
         .map_err(lan_error)?;
     let pair: PairOk = reply_json(resp)?;
@@ -3004,7 +3009,14 @@ mod tests {
                     let (base, code, asha) = (base.clone(), code.clone(), asha.clone());
                     s.spawn(move || {
                         let (mut link, snap) =
-                            client_pair(&base, &code, &format!("Counter {d}"), None).unwrap();
+                            client_pair(
+                                &base,
+                                &code,
+                                &format!("Counter {d}"),
+                                &format!("counter-{d}"),
+                                None,
+                            )
+                            .unwrap();
                         assert!(!snap.rev.is_empty() && !link.server_id.is_empty());
                         link.session = client_login(&link, Some(&asha), "2222").unwrap().session;
                         let rate = snap.products.iter().find(|p| p.name == "Parcel 1kg").unwrap().clone();

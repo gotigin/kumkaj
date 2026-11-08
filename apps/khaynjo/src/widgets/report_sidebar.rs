@@ -6,6 +6,9 @@ enum ReportRow {
     Line(String),
     /// An indented item under a heading ("  Paneer · 3 · ₹720").
     Sub(String),
+    /// Print `\t` columns (bill Item|Qty|Price|Amount, Date|Table, …) as a
+    /// real responsive row — never paint `\t` (tofu) or hope monospace aligns.
+    Cols(Vec<String>),
     Gap,
 }
 
@@ -46,6 +49,13 @@ fn parse_report(text: &str) -> Vec<ReportRow> {
         }
         if indented {
             rows.push(ReportRow::Sub(l.to_string()));
+            continue;
+        }
+        // Mid-line tabs = print columns (bill / KOT / paired meta). Do this
+        // before ": " / trailing-amount heuristics so "Thali\t5\t…" never
+        // becomes a Kv with a tofu tab in the label.
+        if let Some(cols) = report_tab_cols(l) {
+            rows.push(cols);
             continue;
         }
         if l.starts_with("===") {
@@ -128,6 +138,29 @@ fn report_head(text: &str) -> ReportRow {
     ReportRow::Head(text.trim_end().trim_end_matches([':', '：']).trim_end().to_string())
 }
 
+/// `Item\tQty.\tPrice\tAmount` / `Date\tTable` → real columns (cap 4). Empty
+/// cells stay so trailing slots still align under the header.
+fn report_tab_cols(line: &str) -> Option<ReportRow> {
+    if !line.contains('\t') {
+        return None;
+    }
+    let mut cells: Vec<String> = line.split('\t').map(|c| c.trim().to_string()).collect();
+    while cells.last().is_some_and(|c| c.is_empty()) {
+        cells.pop();
+    }
+    if cells.len() < 2 {
+        return None;
+    }
+    if cells.len() > 4 {
+        let rest = cells.split_off(4);
+        if let Some(last) = cells.last_mut() {
+            last.push(' ');
+            last.push_str(&rest.join(" "));
+        }
+    }
+    Some(ReportRow::Cols(cells))
+}
+
 /// A report row's text, right-aligned in right-to-left languages.
 fn set_preview_em(cx: &mut Cx, item: &WidgetRef, id: &[LiveId], em: f32) {
     if let Some(mut label) = item.widget(cx, id).borrow_mut::<WrapLabel>() {
@@ -143,6 +176,62 @@ fn set_report_label(cx: &mut Cx, item: &WidgetRef, id: &[LiveId], text: &str, al
     }
 }
 
+/// Up to four print columns: first cell flexes (item / left meta); Qty /
+/// Price / Amount sit in Fixed slots (see `Cols` DSL) so every row shares
+/// the same gutters. Paired meta (`Date\tTable`) puts the trailing cell in
+/// the Amount slot — not the skinny Qty gutter.
+fn paint_report_cols(
+    cx: &mut Cx,
+    item: &WidgetRef,
+    cells: &[String],
+    align_x: f64,
+    screen_hidden: bool,
+) {
+    const IDS: [&[LiveId]; 4] = [ids!(c0), ids!(c1), ids!(c2), ids!(c3)];
+    let n = cells.len().min(4);
+    // Logical cell → slot. 2-col meta uses Amount's column so "Table: T1"
+    // is not crushed into the Qty width.
+    let slot_for: [Option<usize>; 4] = match n {
+        0 => [None, None, None, None],
+        1 => [Some(0), None, None, None],
+        2 => [Some(0), None, None, Some(1)],
+        3 => [Some(0), Some(1), Some(2), None],
+        _ => [Some(0), Some(1), Some(2), Some(3)],
+    };
+    let headerish = cells.iter().all(|c| !c.chars().any(|ch| ch.is_ascii_digit()));
+    for (slot, path) in IDS.iter().enumerate() {
+        let cell = slot_for[slot].and_then(|i| cells.get(i));
+        let w = item.widget(cx, path);
+        w.set_visible(cx, cell.is_some());
+        let Some(text) = cell else {
+            continue;
+        };
+        let logical = slot_for[slot].unwrap_or(0);
+        let shown = if screen_hidden && logical > 0 && text.chars().any(|c| c.is_ascii_digit()) {
+            mask_money_tokens(text)
+        } else {
+            text.clone()
+        };
+        // Name / left meta follow script direction; numeric slots stay
+        // trailing-edge aligned so Qty/Price/Amount line up under the header.
+        let ax = if slot == 0 {
+            align_x
+        } else if align_x > 0.5 {
+            0.0
+        } else {
+            1.0
+        };
+        set_report_label(cx, item, path, &shown, ax);
+        if let Some(mut label) = w.borrow_mut::<WrapLabel>() {
+            if headerish {
+                label.markdown.text_flow.font_color = vec4(0.42, 0.29, 0.25, 1.0);
+            } else {
+                label.markdown.text_flow.font_color = vec4(0.15, 0.04, 0.03, 1.0);
+            }
+        }
+    }
+}
+
 /// Rows as plain lines (what a [`ReportText`] fed with rows reads back as).
 fn report_rows_text(rows: &[ReportRow]) -> String {
     rows.iter()
@@ -151,6 +240,7 @@ fn report_rows_text(rows: &[ReportRow]) -> String {
             ReportRow::Kv(k, v) => format!("{k}: {v}"),
             ReportRow::Line(t) => t.clone(),
             ReportRow::Sub(t) => format!("  {t}"),
+            ReportRow::Cols(cells) => cells.join("\t"),
             ReportRow::Gap => String::new(),
         })
         .collect::<Vec<_>>()
@@ -271,6 +361,18 @@ impl Widget for ReportText {
                                 t.clone()
                             };
                             set_report_label(cx, &item, ids!(line), &shown, align_x);
+                            item
+                        }
+                        ReportRow::Cols(cells) => {
+                            let item =
+                                list.item(cx, item_id, if rtl { id!(ColsRtl) } else { id!(Cols) });
+                            paint_report_cols(
+                                cx,
+                                &item,
+                                cells,
+                                align_x,
+                                screen_hidden,
+                            );
                             item
                         }
                         ReportRow::Gap => list.item(cx, item_id, id!(Gap)),

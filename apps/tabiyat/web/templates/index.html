@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block title %}Tabiyat — lunch rush, internet or not{% endblock %}
+{% block og_title %}Tabiyat — lunch rush, internet or not{% endblock %}
+
+{% block content %}
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow">Tabiyat shop OS</p>
+      <h1>Lunch rush. No internet. No problem.</h1>
+      <p class="lede">From table to counter to bill — on your own devices. Free forever. Built for dine‑in, QSR, café and bakery floors.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="{{ get_url(path='download/') }}">Download free</a>
+        <a class="btn btn-secondary" href="{{ config.extra.whatsapp_url }}">WhatsApp for a demo</a>
+      </div>
+    </div>
+    <figure class="stage-still" aria-hidden="true">
+      <svg viewBox="0 0 480 300" xmlns="http://www.w3.org/2000/svg" class="still-svg">
+        <rect width="480" height="300" fill="#69090C"/>
+        <rect x="36" y="40" width="408" height="220" rx="12" fill="#F9F4F0"/>
+        <rect x="60" y="70" width="70" height="55" rx="6" fill="#E8F5E9"/>
+        <rect x="150" y="70" width="70" height="55" rx="6" fill="#FFF3CD"/>
+        <rect x="240" y="70" width="70" height="55" rx="6" fill="#FFE0B2"/>
+        <rect x="330" y="70" width="70" height="55" rx="6" fill="#C8E6C9"/>
+        <circle cx="240" cy="200" r="36" fill="#9A0E10"/>
+        <rect x="220" y="188" width="40" height="8" rx="2" fill="#F69D2C"/>
+        <text x="240" y="270" fill="#F9F4F0" font-size="13" text-anchor="middle" font-family="system-ui,sans-serif">Floor colours · cloche</text>
+      </svg>
+      <figcaption class="sr-only">Warm restaurant floor grid with visit colours and a cloche.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="chapter band">
+  <div class="wrap">
+    <h2>What you check first</h2>
+    <ul class="card-list">
+      <li><strong>Tables at a glance</strong> — visit colour, minutes and running amount on each card.</li>
+      <li><strong>Kitchen gets the ticket</strong> — send from the floor; bill carries table, waiter and notes — never prices.</li>
+      <li><strong>Rights on tablets</strong> — captains can order; settle is a right you grant.</li>
+      <li><strong>Settle that fits India</strong> — cash, UPI, tip apart, part payment, Due on khata; table frees only when paid.</li>
+      <li><strong>Internet drops</strong> — service continues on the devices in the shop.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="chapter">
+  <div class="wrap">
+    <h2>Free forever on your devices</h2>
+    <p>No per‑seat or per‑table fee. Kumkaj Cloud is planned and usage‑based — see <a href="{{ config.extra.kumkaj_url }}/principles/">Kumkaj principles</a>.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="{{ get_url(path='download/') }}">Download</a>
+      <a class="btn btn-ghost" href="{{ get_url(path='pricing/') }}">Pricing</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

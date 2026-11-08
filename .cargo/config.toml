@@ -26,6 +26,20 @@ moklanjo-windows-dev = ["run", "-p", "moklanjo-windows-dev", "--"]
 # so the OS printer/opener stay fenced; aliases alone do not install the fake PATH.
 # Usage: cargo khaynjo-journeys / cargo moklanjo-journeys
 khaynjo-journeys = ["test", "-p", "kumkaj-khaynjo", "--test", "user_journeys", "--"]
+
+# Kirano desktop live-dev (apps/kirano, com.kirano.debug).
+# Usage: cargo kirano-dev
+kirano-dev = ["run", "-p", "kirano-dev", "--"]
+kirano-android-dev = ["run", "-p", "kirano-android-dev", "--"]
+kirano-windows-dev = ["run", "-p", "kirano-windows-dev", "--"]
+kirano-journeys = ["test", "-p", "kumkaj-kirano", "--test", "user_journeys", "--"]
+
+tabiyat-dev = ["run", "-p", "tabiyat-dev", "--"]
+tabiyat-android-dev = ["run", "-p", "tabiyat-android-dev", "--"]
+tabiyat-windows-dev = ["run", "-p", "tabiyat-windows-dev", "--"]
+tabiyat-journeys = ["test", "-p", "kumkaj-tabiyat", "--test", "user_journeys", "--"]
+
+
 moklanjo-journeys = ["test", "-p", "kumkaj-moklanjo", "--test", "user_journeys", "--"]
 
 # Cross-link Windows GNU target from Arch (pacman -S mingw-w64-gcc).

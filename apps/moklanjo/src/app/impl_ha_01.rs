@@ -1,48 +1,25 @@
 impl App {
     fn handle_actions_nav_books_lock(&mut self, cx: &mut Cx, actions: &Actions) {
-        // "Type or pick" fields: focus opens the list, typing narrows it, a
-        // tap fills the field, Escape or focusing another field closes it.
+        // "Type or pick" fields (rules in popup.rs): a tap on the field opens
+        // the list, typing narrows it, a tap on a row fills the field, Escape
+        // / Back / an outside press / focusing another field closes it.
         {
             let open = app_state().lock().unwrap().suggest_open;
-            let mut changed = false;
+            // Typing only narrows the list — never full sync_chrome (IME /
+            // Settings SQL freeze). Picks / Escape / focus-elsewhere still paint.
+            let mut typed = false;
+            let mut needs_chrome = false;
             let mut picked: Option<(SuggestField, String)> = None;
             for field in SuggestField::ALL {
                 let input = self.ui.text_input(cx, field.input());
-                let uid = input.widget_uid();
-                let focused = actions
-                    .filter_widget_actions_cast::<TextInputAction>(uid)
-                    .any(|a| matches!(a, TextInputAction::KeyFocus));
-                let typed = input.changed(actions);
-                if focused || typed.is_some() {
-                    let text = typed.unwrap_or_else(|| input.text());
-                    let party_country = if matches!(
-                        field,
-                        SuggestField::PartyCountry | SuggestField::PartyState
-                    ) {
-                        if field == SuggestField::PartyCountry {
-                            text.clone()
-                        } else {
-                            self.ui.text_input(cx, ids!(party_country_input)).text()
-                        }
-                    } else {
-                        String::new()
-                    };
-                    {
-                        let mut st = app_state().lock().unwrap();
-                        if !party_country.is_empty()
-                            || matches!(
-                                field,
-                                SuggestField::PartyCountry | SuggestField::PartyState
-                            )
-                        {
-                            st.party_form_country = party_country;
-                        }
-                        st.open_suggest(field, &text);
-                    }
-                    changed = true;
+                // A tap on the field opens its list (`route_popup_input`);
+                // typing narrows it. Focus alone opens nothing.
+                if let Some(text) = input.changed(actions) {
+                    self.open_suggest_with(cx, field, &text);
+                    typed = true;
                 } else if input.escaped(actions) && open == Some(field) {
                     app_state().lock().unwrap().suggest_open = None;
-                    changed = true;
+                    needs_chrome = true;
                 }
                 if open == Some(field) {
                     let widget = self.ui.widget(cx, field.list());
@@ -68,7 +45,8 @@ impl App {
                 }
             }
             if let Some(field) = open
-                && !changed
+                && !typed
+                && !needs_chrome
             {
                 let mine = self.ui.text_input(cx, field.input()).widget_uid();
                 let elsewhere = actions.iter().filter_map(|a| a.as_widget_action()).any(|wa| {
@@ -77,7 +55,7 @@ impl App {
                 });
                 if elsewhere {
                     app_state().lock().unwrap().suggest_open = None;
-                    changed = true;
+                    needs_chrome = true;
                 }
             }
             if let Some((field, value)) = picked {
@@ -145,13 +123,13 @@ impl App {
                         Err(e) => self.set_status(cx, e),
                     }
                 }
-                changed = true;
+                needs_chrome = true;
             }
-            if changed {
+            if needs_chrome {
                 self.sync_chrome(cx);
-                for field in SuggestField::ALL {
-                    self.ui.widget(cx, field.list()).redraw(cx);
-                }
+                self.redraw_suggest_lists(cx);
+            } else if typed {
+                self.redraw_suggest_lists(cx);
             }
         }
         for action in actions.iter() {

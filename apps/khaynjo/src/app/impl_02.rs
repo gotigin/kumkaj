@@ -1572,16 +1572,39 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
                     st.t("low_stock_alert").replace("{items}", &st.low_stock_line)
                 }
             };
-            let counts = {
-                let st = app_state().lock().unwrap();
-                if st.kitchen_counts_line.is_empty() {
-                    String::new()
-                } else {
-                    st.t("kitchen_all_day").replace("{items}", &st.kitchen_counts_line)
+            // Live tab: one ReportText row per dish (never a · wall that
+            // wraps into unreadable Gujarati / CJK runs).
+            {
+                let (head, rows) = {
+                    let st = app_state().lock().unwrap();
+                    let items = st
+                        .store
+                        .as_ref()
+                        .and_then(|s| s.kitchen_all_day().ok())
+                        .unwrap_or_default();
+                    let head = st.t("kitchen_all_day_head");
+                    let rows: Vec<ReportRow> = items
+                        .into_iter()
+                        .map(|(name, milli)| {
+                            ReportRow::Cols(vec![
+                                name,
+                                format!("× {}", milli_as_count(milli)),
+                            ])
+                        })
+                        .collect();
+                    (head, rows)
+                };
+                let has = !rows.is_empty();
+                let mut out = Vec::new();
+                if has {
+                    out.push(ReportRow::Head(head));
+                    out.extend(rows);
                 }
-            };
-            self.ui.widget(cx, ids!(kitchen_counts)).set_text(cx, &plain_display_text(&counts));
-            self.ui.widget(cx, ids!(kitchen_counts)).set_visible(cx, !counts.is_empty());
+                self.set_report_rows(cx, ids!(kitchen_counts), out);
+                self.ui
+                    .widget(cx, ids!(kitchen_counts))
+                    .set_visible(cx, has);
+            }
             {
                 let st = app_state().lock().unwrap();
                 let station_rows = if st.stations.is_empty() {
@@ -1638,6 +1661,7 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
                     .widget(cx, ids!(recently_done_label))
                     .set_visible(cx, has);
             }
+            self.sync_kitchen_panels(cx);
             {
                 let st = app_state().lock().unwrap();
                 let none = st.reservations.is_empty();

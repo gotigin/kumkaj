@@ -85,6 +85,7 @@ impl App {
             st.settings_panel = panel;
             st.suggest_open = None;
         }
+        self.redraw_suggest_lists(cx);
         // A row hidden under the pointer never hears the mouse leave, so it
         // came back grey (hovered) with the hub — clear every row's face.
         for (_, hub, _, _) in SETTINGS_SECTIONS {

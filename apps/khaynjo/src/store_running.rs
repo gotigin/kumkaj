@@ -1318,15 +1318,21 @@ impl Store {
                 if area_label.is_empty() && !area.is_empty() {
                     area_label = area.clone();
                 }
-                let qty = crate::domain::format_qty_display(
+                // Same `name|qty` shape as cancelled_kot_lines / kot_reprint —
+                // so KotSlipFormat can split Item and Qty into columns.
+                let qty = crate::domain::format_kot_qty(
                     line.qty_milli,
                     crate::domain::milli_to_whole_qty(line.qty_milli),
                     &line.unit_label,
                 );
-                let item = if line.note.trim().is_empty() {
-                    format!("{qty} {}", line.name)
+                let note = line.note.trim();
+                let item = if note.is_empty()
+                    || note.starts_with("combo:")
+                    || note.starts_with("Scheme:")
+                {
+                    format!("{}|{qty}", line.name)
                 } else {
-                    format!("{qty} {} ({})", line.name, line.note.trim())
+                    format!("{} ({note})|{qty}", line.name)
                 };
                 match by_station.iter_mut().find(|(sid, _)| sid == &station_id) {
                     Some((_, items)) => items.push(item.clone()),

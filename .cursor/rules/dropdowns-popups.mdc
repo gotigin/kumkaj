@@ -1,0 +1,41 @@
+---
+description: Dropdowns, type-or-pick lists, floating pick lists and ℹ tips — open/close rules for mouse (with or without wheel), trackpad and finger
+globs: apps/**/popup.rs, apps/**/ui_script.rs, apps/**/widgets/pick_lists.rs, apps/**/app/match_event.rs, apps/**/app/impl_ha_01.rs, apps/**/app/main_impl.rs, apps/**/types.rs
+alwaysApply: false
+---
+
+# Dropdowns & pick lists (do not regress)
+
+Canonical: `docs/DEV.md` § Dropdowns, pick lists and tips (+ bug **7j**). Code: each app's `src/popup.rs` (own copy per app, no shared core).
+
+## Required
+
+```text
+open state          app state only (suggest_open / Khaynjo dish|category_picker_open), read at draw time
+open                tap on the field (press+release ≤24 px, <0.8 s, same field) | typing | ↓ | the dd button
+close               route_popup_input: press outside field+list+opener+panel → close, press still delivered
+                    pick (single choice) · Back/Escape · set_screen (every screen change)
+pointer hit tests   clipped_rect (screen_rect / area_hit) against event.abs
+draw-time tests     rect() + page_viewport() (clipped rects resolve only after the root turtle ends)
+floating list       PopupAnchor{key} in the field box (last, Fill×Fill) + AnchoredPopup{key} at window root
+                    Fixed opaque card (Fill content + solid draw_bg); begin_overlay_last
+no wheel            self-scrolling lists: mouse_drag_scrolling: true
+ℹ tips              hidden on every press (fingers send no hover-out)
+```
+
+- New dd button list → add it to `SuggestField::opener()` (Khaynjo); never a new if-chain.
+- New floating list → add its path to `APP_POPUPS` (Khaynjo).
+- Typing that only narrows a list → `redraw_suggest_lists` (or the pick-list widget). Never full `sync_chrome` on every key (IME / Settings SQL freeze). Reserve `sync_chrome` for open, pick, Escape, Back, and focus-elsewhere close.
+
+## Forbidden
+
+```text
+❌ Modal for a dropdown / pick list            → open flag outlives the state; invisible full-window press sink
+❌ opening a list on TextInputAction::KeyFocus → Modal::close's revert_key_focus reopens it every time
+❌ placing a popup once at open                → gap = scroll distance; drifts off its field
+❌ area().rect() for a pointer hit test        → hidden (scrolled-under) part still "contains" the press
+❌ outside-press close after a pointer handler that can `return` → list carried onto the next screen
+❌ per-control special cases (field == "…")   → fix the rule in popup.rs for every list
+❌ full sync_chrome on every SuggestList keystroke → redraw the list only
+❌ Fit-height floating popup content over a busy page → Floor/scroll shows through; use Fixed opaque card
+```

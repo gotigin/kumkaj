@@ -2455,17 +2455,18 @@ script_mod! {
 
     // Kitchen tab: one card per open KOT — items + state, never prices.
     // Age colour via stacked backgrounds (same idea as FloorTile).
-    // Fixed height (KOT_CARD_H). In a Fit Overlay a Fill layer drawn before
-    // the content gets the height used so far — zero — so the ageing colour
-    // never showed and rows collapsed while the list moved. The KitchenList
-    // pitch (KOT_ROW) is this height plus the item's bottom pad.
+    // Fixed height. In a Fit Overlay a Fill layer drawn before the content
+    // gets the height used so far — zero — so the ageing colour never
+    // showed and rows collapsed while the list moved. KitchenList pitch
+    // (KOT_ROW) is this height plus the item's bottom pad. Tall enough for
+    // one dish per line (cooks cannot read a · run-on with a mid-name …).
     let KotCard = View{
         // The whole card is the kitchen's tap target, like its Start / Ready
         // / Done button (a View only hears the finger with a cursor). The
         // tap moves the ticket only from the state the card showed
         // (`advance_kot_from`), so a double tap never skips Preparing.
         cursor: MouseCursor.Hand
-        width: Fill height: 200
+        width: Fill height: 320
         flow: Overlay
         bg_ok := RoundedView{
             width: Fill height: Fill
@@ -2496,8 +2497,8 @@ script_mod! {
             padding: Inset{left: 12. right: 12. top: 12. bottom: 12.}
             flow: Down spacing: 6
             // Card is a kitchen tap target — plain Labels never take the press.
-            // Capped lines keep every card the same height; the full ticket
-            // prints, and the kitchen reads the dishes from the summary.
+            // Summary is one dish per line (`kitchen_card_body`); max_lines
+            // ellipsis only after many items — the paper still has them all.
             title := Label{
                 width: Fill
                 text: "Kitchen"
@@ -2513,7 +2514,7 @@ script_mod! {
                     width: Fill
                     text: ""
                     flow: Right{wrap: true}
-                    max_lines: 3
+                    max_lines: 12
                     text_overflow: Ellipsis
                     draw_text.color: #x260B08
                     draw_text.text_style.font_size: 15.
@@ -4244,6 +4245,30 @@ script_mod! {
         prio_up := StationPrioBtn{text: "\u{2191}"}
         prio_down := StationPrioBtn{text: "\u{2193}"}
     }
+    // Floating dropdown (popup.rs): PopupAnchor marks the field (last child
+    // of its flow: Overlay box, Fill × Fill); AnchoredPopup at the window
+    // root draws `content` under it every frame while the app state has
+    // that list open. Never a Modal: no focus juggling, no backdrop that
+    // outlives the state, and it follows the field when the page scrolls.
+    mod.widgets.PopupAnchorBase = #(PopupAnchor::register_widget(vm))
+    mod.widgets.PopupAnchor = set_type_default() do mod.widgets.PopupAnchorBase{
+        width: Fill height: Fill
+    }
+    mod.widgets.AnchoredPopupBase = #(AnchoredPopup::register_widget(vm))
+    // `content` is Fill×Fill inside a Fixed walk from AnchoredPopup::draw_walk
+    // so draw_bg paints a solid opaque card over the page (Fit left the Floor
+    // showing through between SuggestList rows).
+    mod.widgets.AnchoredPopup = set_type_default() do mod.widgets.AnchoredPopupBase{
+        content := RoundedView{
+            width: Fill height: Fill
+            padding: Inset{left: 6. right: 6. top: 6. bottom: 6.}
+            flow: Down
+            draw_bg.color: #xFFF8F3
+            draw_bg.border_radius: 12.
+            draw_bg.border_size: 1.
+            draw_bg.border_color: #xE3D3C8
+        }
+    }
     mod.widgets.StationCheckListBase = #(StationCheckList::register_widget(vm))
     mod.widgets.StationCheckList = set_type_default() do mod.widgets.StationCheckListBase{
         width: Fill height: Fit
@@ -4371,6 +4396,79 @@ script_mod! {
                         font_size: 13.
                     }
                 }
+                // Print `\t` columns (bill Item|Qty|Price|Amount, Date|Table):
+                // first cell Fill (wraps); Qty/Price/Amount are Fixed so every
+                // row shares the same gutters — Fit resized per value and
+                // drifted under the wrong header on phone bills. Values wrap
+                // inside their slot when a long amount needs it.
+                Cols := View{
+                    width: Fill height: Fit
+                    padding: Inset{top: 4. bottom: 4.}
+                    flow: Right spacing: 14
+                    align: Align{y: 0.0}
+                    c0 := WrapLabel{
+                        width: Fill
+                        body: ""
+                        flow: Right{wrap: true}
+                        font_color: #x260B08
+                        font_size: 14.
+                    }
+                    c1 := WrapLabel{
+                        width: Fixed(44.)
+                        body: ""
+                        flow: Right{wrap: true}
+                        font_color: #x260B08
+                        font_size: 14.
+                    }
+                    c2 := WrapLabel{
+                        width: Fixed(96.)
+                        body: ""
+                        flow: Right{wrap: true}
+                        font_color: #x260B08
+                        font_size: 14.
+                    }
+                    c3 := WrapLabel{
+                        width: Fixed(96.)
+                        body: ""
+                        flow: Right{wrap: true}
+                        font_color: #x260B08
+                        font_size: 14.
+                    }
+                }
+                ColsRtl := View{
+                    width: Fill height: Fit
+                    padding: Inset{top: 4. bottom: 4.}
+                    flow: Right spacing: 14
+                    align: Align{y: 0.0}
+                    c3 := WrapLabel{
+                        width: Fixed(96.)
+                        body: ""
+                        flow: Right{wrap: true}
+                        font_color: #x260B08
+                        font_size: 14.
+                    }
+                    c2 := WrapLabel{
+                        width: Fixed(96.)
+                        body: ""
+                        flow: Right{wrap: true}
+                        font_color: #x260B08
+                        font_size: 14.
+                    }
+                    c1 := WrapLabel{
+                        width: Fixed(44.)
+                        body: ""
+                        flow: Right{wrap: true}
+                        font_color: #x260B08
+                        font_size: 14.
+                    }
+                    c0 := WrapLabel{
+                        width: Fill
+                        body: ""
+                        flow: Right{wrap: true}
+                        font_color: #x260B08
+                        font_size: 14.
+                    }
+                }
                 Gap := View{
                     width: Fill height: 10
                 }
@@ -4394,10 +4492,10 @@ script_mod! {
             slip := Image{
                 width: Fill
                 height: Fit
-                fit: Stretch
+                fit: ImageFit.Stretch
             }
+            // Zero height keeps it off screen (PortalList has no `visible`).
             list := PortalList{
-                visible: false
                 width: Fill height: 0.
                 spacing: 0
                 drag_scrolling: false
@@ -7058,12 +7156,10 @@ script_mod! {
                                     width: Fill height: Fit
                                     flow: Down spacing: 0
                                     // Columns + zoom (− / + / Auto) for this area (this device).
-                                    // The pick list lives in floor_cols_dd_modal (not here)
-                                    // so opening it cannot stretch this row or shove the grid.
-                                    // Start side of the body (physical left). Window
-                                    // chrome is not mirrored for RTL (DEV.md); only
-                                    // the field's text + chevron trailing edge flip
-                                    // in paint_floor_cols_field_dir.
+                                    // Pick-only dropdown (no FieldInput / soft keyboard):
+                                    // every value is already in the list. The list floats
+                                    // in floor_cols_popup (window root, anchored here) so
+                                    // opening it cannot stretch this row or shove the grid.
                                     floor_cols_row := View{
                                         width: Fill height: Fit
                                         flow: Right spacing: 8
@@ -7073,27 +7169,23 @@ script_mod! {
                                             width: Fixed(176.) height: Fit
                                             flow: Overlay
                                             align: Align{x: 0.0 y: 0.5}
-                                            floor_cols_input := FieldInput{
-                                                margin: Inset{left: 0. right: 0. top: 2. bottom: 2.}
-                                                // Symmetric side pad so the chevron
-                                                // (trailing edge: right LTR / left RTL)
-                                                // never sits on the placeholder.
-                                                padding: Inset{left: 36. right: 36. top: 11. bottom: 11.}
-                                                empty_text: "Columns"
-                                                is_numeric_only: true
-                                            }
-                                            floor_cols_chev_row := View{
-                                                width: Fill height: Fit
+                                            floor_cols_dd := StackSecondaryBtn{
+                                                text: "Columns"
                                                 flow: Right
-                                                align: Align{x: 1.0 y: 0.5}
-                                                floor_cols_chev := Label{
-                                                    width: Fit
-                                                    margin: Inset{right: 14.}
-                                                    text: "\u{f078}"
-                                                    draw_text.color: #x6B4A3F
-                                                    draw_text.text_style.font_size: 11.
+                                            }
+                                            // FieldInput has no `visible`. Keep the legacy
+                                            // id collapsed so SuggestField::input() still
+                                            // resolves without opening an IME.
+                                            View{width: Fill height: Fit visible: false
+                                                floor_cols_input := FieldInput{
+                                                    height: 0.
+                                                    margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+                                                    padding: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+                                                    empty_text: "Columns"
                                                 }
                                             }
+                                            // Last, Fill: takes the button's height.
+                                            mod.widgets.PopupAnchor{key: "floor_cols"}
                                         }
                                         View{
                                             width: Fixed(44.) height: Fit
@@ -7278,22 +7370,50 @@ script_mod! {
                                 flow: Down spacing: 10
                                 padding: Inset{left: 16. right: 16. top: 8. bottom: 120.}
                                 kitchen_help := InfoHelp{
-                                    tip: "Kitchen tickets (KOT), newest last. Start → Ready → Done moves a ticket along. Tickets never show prices."
+                                    tip: "Kitchen tickets (KOT), newest last. Start → Ready → Done moves a ticket along. Tickets never show prices. Use Live / Recall / Stations tabs — do not bury tools under a long scroll."
                                 }
-                                // All-day counts: how much of each dish is still to cook.
-                                kitchen_counts := WrapLabel{body: " " font_color: #x69090C font_size: 15. visible: false}
-                                kitchen_list := mod.widgets.KitchenList{}
-                                kitchen_empty := WrapLabel{
-                                    body: "No open tickets. Send a KOT from the Ordering screen."
-                                    font_color: #x6B4A3F
-                                    font_size: 13.
-                                }
-                                recently_done_heading := WrapLabel{body: "Recently done" font_color: #x260B08 font_size: 15. visible: false}
-                                recently_done_label := mod.widgets.ReportText{}
-                                recall_kot_input := FieldInput{empty_text: "KOT # to recall (or tap Recall below)"}
-                                recall_kot_btn := NavBtn{text: "Recall"}
-                                RoundedView{
+                                // Live | Recall | Stations — one panel at a time
+                                // (phone/desk; same SegBtn pattern as Bill|KOT).
+                                View{
                                     width: Fill height: Fit
+                                    flow: Right spacing: 6
+                                    View{width: Fill height: Fit flow: Overlay
+                                        kitchen_tab_live := SegBtn{text: "Live"}
+                                        kitchen_tab_live_on := SegBtnOn{text: "Live" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        kitchen_tab_recall := SegBtn{text: "Recall"}
+                                        kitchen_tab_recall_on := SegBtnOn{text: "Recall" visible: false}
+                                    }
+                                    View{width: Fill height: Fit flow: Overlay
+                                        kitchen_tab_stations := SegBtn{text: "Stations"}
+                                        kitchen_tab_stations_on := SegBtnOn{text: "Stations" visible: false}
+                                    }
+                                }
+                                kitchen_panel_live := View{
+                                    width: Fill height: Fit
+                                    flow: Down spacing: 10
+                                    // Per-dish still-to-cook (ReportText rows, not one · wall).
+                                    kitchen_counts := mod.widgets.ReportText{}
+                                    kitchen_list := mod.widgets.KitchenList{}
+                                    kitchen_empty := WrapLabel{
+                                        body: "No open tickets. Send a KOT from the Ordering screen."
+                                        font_color: #x6B4A3F
+                                        font_size: 13.
+                                    }
+                                }
+                                kitchen_panel_recall := View{
+                                    width: Fill height: Fit
+                                    flow: Down spacing: 10
+                                    visible: false
+                                    recently_done_heading := WrapLabel{body: "Recently done" font_color: #x260B08 font_size: 15. visible: false}
+                                    recently_done_label := mod.widgets.ReportText{}
+                                    recall_kot_input := FieldInput{empty_text: "KOT # to recall (or tap Recall below)"}
+                                    recall_kot_btn := NavBtn{text: "Recall"}
+                                }
+                                kitchen_panel_stations := RoundedView{
+                                    width: Fill height: Fit
+                                    visible: false
                                     padding: Inset{left: 14. right: 14. top: 10. bottom: 10.}
                                     flow: Down spacing: 7
                                     draw_bg.color: #xffffff
@@ -7304,14 +7424,14 @@ script_mod! {
                                         align: Align{y: 0.5}
                                         stations_hdr := AccordionHdrHitBtn{width: Fit text: "KITCHEN STATIONS"}
                                         stations_help := InfoHelp{
-                                            tip: "Add kitchen stations for dishes and KOT. On each station, attach its printers (found under Settings → Printers), set priority, and choose First that works or Print on all."
+                                            tip: "Add kitchen stations for dishes and KOT. On each station, attach its printers (found under Settings → Printers), set priority, and choose First that works or Print on all. Changes save as you go — no Save button."
                                         }
                                         stations_hdr_ext := AccordionHdrHitBtn{text: ""}
                                     }
                                     stations_body := View{
                                         width: Fill height: Fit
                                         flow: Down spacing: 8
-                                        visible: false
+                                        visible: true
                                         stations_heading := WrapLabel{
                                             width: Fit
                                             body: "Kitchen stations"
@@ -7339,7 +7459,7 @@ script_mod! {
                                                 font_size: 15.
                                             }
                                             station_print_help := InfoHelp{
-                                                tip: "Pick a station, then attach one or more printers. ↑↓ sets try order. First that works stops after the first success; Print on all sends to every attached printer."
+                                                tip: "Pick a station, then attach one or more printers. ↑↓ sets try order. First that works stops after the first success; Print on all sends to every attached printer. Each change saves immediately."
                                             }
                                         }
                                         station_print_input := FieldInput{empty_text: "Station to set printers"}
@@ -7497,8 +7617,8 @@ script_mod! {
                                 }
                                 menu_tax_suggest := mod.widgets.SuggestList{field: "menu_tax"}
                                 menu_category_input := FieldInput{empty_text: "Category — search yours or type a new one"}
-                                // Category picker: opens on focus, searches as you
-                                // type; the typed name is always a row too.
+                                // Category picker: opens on tap / typing / ↓
+                                // (never focus alone); typed name is always a row.
                                 category_pick_list := mod.widgets.CategoryPickList{}
                                 ActionStack{
                                 }
@@ -9674,6 +9794,7 @@ View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
                                     bill_format_preview := mod.widgets.KotSlipPreview{}
                                 }
                                 bill_format_save := StackPrimaryBtn{text: "Save bill format"}
+                                bill_format_reset := StackSecondaryBtn{text: "Reset to default"}
                                 bill_format_test := StackSecondaryBtn{text: "Test bill"}
                                 }
                                 FormCard{
@@ -10129,6 +10250,7 @@ View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
                                     kot_format_preview := mod.widgets.KotSlipPreview{}
                                 }
                                 kot_format_save := StackPrimaryBtn{text: "Save KOT format"}
+                                kot_format_reset := StackSecondaryBtn{text: "Reset to default"}
                                 kot_test_printers_dd := StackSecondaryBtn{text: "Printers for Test KOT" flow: Down}
                                 kot_test_printers_input := FieldInput{
                                     height: 0.
@@ -11056,31 +11178,20 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 20.}
                     // backdrop is overridden transparent and its content
                     // fills the window, so the ghost's abs_pos is in window
                     // coordinates and nothing else is visible.
-                    // Floor Columns pick list — Modal overlay draw list so the
-                    // open menu cannot stretch floor_cols_row / shove tables.
-                    // Transparent dim; panel is positioned under the field in Rust.
-                    floor_cols_dd_modal := Modal{
-                        can_dismiss: true
-                        bg_view +: {
-                            draw_bg +: {color: #x00000000}
-                        }
+                    // Floor Columns pick list: floats under floor_cols_box
+                    // (PopupAnchor "floor_cols") so the open menu never
+                    // stretches floor_cols_row or shoves the tables, and
+                    // follows the field while the Floor scrolls (popup.rs).
+                    floor_cols_popup := mod.widgets.AnchoredPopup{
+                        key: "floor_cols"
+                        min_width: 176.
                         content +: {
-                            width: Fill height: Fill
-                            flow: Overlay
-                            floor_cols_dd_panel := RoundedView{
-                                visible: false
-                                width: Fixed(176.) height: Fit
-                                padding: Inset{left: 6. right: 6. top: 6. bottom: 6.}
-                                flow: Down
-                                draw_bg.color: #xFFF8F3
-                                draw_bg.border_radius: 12.
-                                draw_bg.border_size: 1.
-                                draw_bg.border_color: #xE3D3C8
-                                floor_cols_suggest := mod.widgets.SuggestList{
-                                    field: "floor_cols"
-                                    width: Fill
-                                    height: Fit
-                                }
+                            // Fill the opaque card; list height is capped in
+                            // SuggestList via popup_draw_limit (popup.rs).
+                            floor_cols_suggest := mod.widgets.SuggestList{
+                                field: "floor_cols"
+                                width: Fill
+                                height: Fill
                             }
                         }
                     }

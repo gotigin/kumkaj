@@ -443,6 +443,12 @@ impl AppMain for App {
             }
             self.tick_smoke_script(cx);
         }
+        // Dropdowns first (popup.rs): an outside press closes the open list,
+        // a tap on a type-or-pick field opens its list. Before every pointer
+        // handler below — some of them return early (a nav-tab tap), which
+        // used to carry an open list onto the next screen. The press itself
+        // still reaches whatever is under it.
+        self.route_popup_input(cx, event);
         // A sheet over the window (Add dishes, UPI QR) owns every press: the
         // nav tabs, Floor area tabs, sidebar list, and printer rows behind it
         // must not start a drag under the dishes the finger is scrolling.
@@ -469,9 +475,6 @@ impl AppMain for App {
         // move gets the delta and marks it handled. A pre-claim here
         // (claim_hstrip_nested_scroll) marked the axis handled before
         // dispatch, so each strip moved one step and then never again.
-        // Tap outside a type-or-pick list closes it (before the press is
-        // delivered so Floor tiles / other chrome still receive the click).
-        self.dismiss_suggest_on_outside_press(cx, event);
         // Done and the dimmed area of an open sheet close it before the rest
         // of the UI sees the press (see `sheet_press`).
         if self.sheet_press(cx, event) {

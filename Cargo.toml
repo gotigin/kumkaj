@@ -10,12 +10,22 @@
 members = [
     "apps/moklanjo",
     "apps/khaynjo",
+    "apps/kirano",
+    "apps/tabiyat",
     "sites/kumkaj",
     "sites/moklanjo",
     "sites/khaynjo",
+    "sites/kirano",
+    "sites/tabiyat",
     "tools/khaynjo-dev",
     "tools/khaynjo-android-dev",
     "tools/khaynjo-windows-dev",
+    "tools/kirano-dev",
+    "tools/kirano-android-dev",
+    "tools/kirano-windows-dev",
+    "tools/tabiyat-dev",
+    "tools/tabiyat-android-dev",
+    "tools/tabiyat-windows-dev",
     "tools/moklanjo-dev",
     "tools/moklanjo-android-dev",
     "tools/moklanjo-windows-dev",
@@ -23,6 +33,8 @@ members = [
 default-members = [
     "apps/moklanjo",
     "apps/khaynjo",
+    "apps/kirano",
+    "apps/tabiyat",
 ]
 exclude = [
     "vendor/makepad",

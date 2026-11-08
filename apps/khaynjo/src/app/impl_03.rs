@@ -1293,6 +1293,7 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
             (ids!(table_range_add), "add_these_tables"),
             (ids!(table_remove_btn), "remove_these_tables"),
             (ids!(bill_format_save), "save_bill_format"),
+            (ids!(bill_format_reset), "reset_bill_format"),
             (ids!(bill_format_test), "test_bill_format"),
             (ids!(print_stamp_pick), "choose_stamp"),
             (ids!(print_stamp_clear), "clear_stamp"),

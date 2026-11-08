@@ -375,21 +375,222 @@ fn customer_row_height() -> &'static Mutex<f64> {
     HEIGHT.get_or_init(|| Mutex::new(90.0))
 }
 
+/// Closed cart row pitch only. Open details never live here — see
+/// [`cart_open_extra`]. Seed must clear a wrapped name + Hold/In print chips
+/// (96 clipped them into Kitchen, 2026-11-02). Cap stays below open-details
+/// height so a just-closed line's tall PortalList sample cannot become the
+/// closed pitch (cream band above Kitchen, 2026-11-08).
+const CART_CLOSED_ROW_SEED: f64 = 140.0;
+const CART_CLOSED_ROW_MIN: f64 = 72.0;
+const CART_CLOSED_ROW_MAX: f64 = 176.0;
+
 fn cart_row_height() -> &'static Mutex<f64> {
     static HEIGHT: OnceLock<Mutex<f64>> = OnceLock::new();
-    // Closed CartRow: thumb + name/meta wrap + Hold/Cancel chips. Must start
-    // *above* a short closed row — a 96 seed (2026-11-02) clipped "Not sent
-    // yet" into the Kitchen strip. Open-line details add extra in CartList.
-    HEIGHT.get_or_init(|| Mutex::new(140.0))
+    HEIGHT.get_or_init(|| Mutex::new(CART_CLOSED_ROW_SEED))
 }
 
-/// Extra height for one open ticket line (unit, applied, modifiers, note,
-/// Cancel / NC / Move). Starts near the real block. CartList then sets it
-/// to the measured details — a short value clips the buttons into Kitchen
-/// station, a tall one leaves an empty band under them.
+/// Last measured **closed** cart list extent (all lines, no open details) and
+/// the line count it belongs to. Pitch-only shrink left a cream band when
+/// PortalList's sample would not move `cart_row_height` enough; the next
+/// closed frame uses this extent as the Fixed walk instead.
+fn cart_closed_extent() -> &'static Mutex<(usize, f64)> {
+    static EXT: OnceLock<Mutex<(usize, f64)>> = OnceLock::new();
+    EXT.get_or_init(|| Mutex::new((0, 0.0)))
+}
+
+/// Extra height for **one** open ticket line (unit, applied, modifiers, note,
+/// Cancel / NC / Move). Separate from [`cart_row_height`]: folding this into
+/// the closed pitch after close leaves a permanent cream band under every
+/// closed row. CartList measures it while a line is open — too short clips
+/// Cancel / NC / Move into Kitchen; too tall is empty cream under the open
+/// details (shrinks on the next settle frame).
 fn cart_open_extra() -> &'static Mutex<f64> {
     static EXTRA: OnceLock<Mutex<f64>> = OnceLock::new();
     EXTRA.get_or_init(|| Mutex::new(320.0))
+}
+
+/// Reserved open-details height for the cart list (bug 8a). Zero when nothing
+/// is open, or when the open index is past the cart (stale after lines were
+/// removed) — that case must not leave cream above Kitchen with no details.
+fn cart_open_extra_reserved(open_line: Option<usize>, line_count: usize, extra: f64) -> f64 {
+    if open_line.filter(|&i| i < line_count).is_some() {
+        extra.max(0.0)
+    } else {
+        0.0
+    }
+}
+
+/// Closed pitch after a PortalList sample: keep open-tall samples out of the
+/// closed slot (cream band regression).
+fn cart_closed_pitch_from_sample(sample: f64, current: f64) -> f64 {
+    if sample > CART_CLOSED_ROW_MAX {
+        CART_CLOSED_ROW_SEED
+    } else if sample > 1.0 {
+        sample.clamp(CART_CLOSED_ROW_MIN, CART_CLOSED_ROW_MAX)
+    } else {
+        current.clamp(CART_CLOSED_ROW_MIN, CART_CLOSED_ROW_MAX)
+    }
+}
+
+/// Kitchen Live card body: one dish per line (easy to scan), not a single
+/// `·`-joined run that truncates mid-name. Store summaries stay compact for
+/// print/sync; the card reformats for the cook.
+fn kitchen_card_body(summary: &str) -> String {
+    let s = summary.trim();
+    if s.is_empty() {
+        return String::new();
+    }
+    let (main, reason) = match s.rsplit_once(" — ") {
+        Some((a, b)) if !b.trim().is_empty() => (a.trim(), Some(b.trim())),
+        _ => (s, None),
+    };
+    // Cook summaries often start with `[Station] ` (store send path).
+    let (station, main) = if main.starts_with('[') {
+        if let Some((tag, rest)) = main.split_once(']') {
+            (Some(format!("{tag}]")), rest.trim())
+        } else {
+            (None, main)
+        }
+    } else {
+        (None, main)
+    };
+    let sep = if main.contains(" · ") { " · " } else { ", " };
+    let parts: Vec<&str> = main
+        .split(sep)
+        .map(str::trim)
+        .filter(|p| !p.is_empty())
+        .collect();
+    if parts.len() <= 1 && reason.is_none() && station.is_none() {
+        // Already a single blob (or one item) — still normalize qty display.
+        return kitchen_format_item_part(main);
+    }
+    let mut lines: Vec<String> = Vec::new();
+    if let Some(st) = station {
+        lines.push(st);
+    }
+    let mut start = 0usize;
+    if let Some(first) = parts.first() {
+        if !kitchen_part_is_item(first) {
+            lines.push((*first).to_string());
+            start = 1;
+        }
+    }
+    if parts
+        .get(start)
+        .is_some_and(|p| p.eq_ignore_ascii_case("CANCEL"))
+    {
+        start += 1;
+    }
+    for p in &parts[start..] {
+        lines.push(kitchen_format_item_part(p));
+    }
+    if let Some(r) = reason {
+        lines.push(r.to_string());
+    }
+    lines.join("\n")
+}
+
+fn kitchen_part_is_item(p: &str) -> bool {
+    let t = p.trim();
+    if t.is_empty() || t.eq_ignore_ascii_case("CANCEL") {
+        return false;
+    }
+    if t.contains('|') || t.starts_with("CANCEL ") {
+        return true;
+    }
+    kitchen_split_qty(t).is_some()
+}
+
+fn kitchen_format_item_part(p: &str) -> String {
+    let mut t = p.trim();
+    let cancel = if let Some(rest) = t.strip_prefix("CANCEL ") {
+        t = rest.trim();
+        true
+    } else {
+        false
+    };
+    let body = if let Some((name, qty)) = t.rsplit_once('|') {
+        let qty = qty
+            .trim()
+            .trim_start_matches(['x', 'X', '×', '✕'])
+            .trim();
+        format!("×{qty}  {}", name.trim())
+    } else if let Some((name, qty)) = kitchen_split_qty(t) {
+        format!("×{qty}  {name}")
+    } else {
+        t.to_string()
+    };
+    if cancel {
+        format!("CANCEL  {body}")
+    } else {
+        body
+    }
+}
+
+/// Leading qty on a summary fragment: `x1 Name`, `2×Name`, `1.5 kg×Rice`.
+fn kitchen_split_qty(line: &str) -> Option<(String, String)> {
+    let s = line.trim();
+    let mut rest = s;
+    for mark in ['x', 'X', '×', '✕'] {
+        if let Some(stripped) = rest.strip_prefix(mark) {
+            if stripped.starts_with(|c: char| c.is_ascii_digit()) {
+                rest = stripped;
+            }
+            break;
+        }
+    }
+    if !rest.starts_with(|c: char| c.is_ascii_digit()) {
+        return None;
+    }
+    let mut end = 0usize;
+    let mut seen_digit = false;
+    let mut seen_sep = false;
+    for (i, ch) in rest.char_indices() {
+        if ch.is_ascii_digit() {
+            seen_digit = true;
+            end = i + ch.len_utf8();
+        } else if (ch == '.' || ch == ',') && seen_digit && !seen_sep {
+            seen_sep = true;
+            end = i + ch.len_utf8();
+        } else {
+            break;
+        }
+    }
+    if !seen_digit {
+        return None;
+    }
+    let qty_num = rest[..end].to_string();
+    let after = rest[end..].trim_start();
+    // Optional unit before ×: `kg× Rice` / `kg x Rice`
+    let x_at = after
+        .char_indices()
+        .find(|(_, ch)| matches!(ch, '×' | 'x' | 'X' | '✕'))
+        .map(|(i, _)| i);
+    let (qty, name) = if let Some(x_at) = x_at {
+        let unit = after[..x_at].trim();
+        let mark_len = after[x_at..].chars().next().map(|c| c.len_utf8()).unwrap_or(1);
+        let name = after[x_at + mark_len..]
+            .trim()
+            .trim_start_matches(['×', 'x', 'X', '✕', ' '])
+            .trim()
+            .to_string();
+        let qty = if unit.is_empty() {
+            qty_num
+        } else {
+            format!("{qty_num} {unit}")
+        };
+        (qty, name)
+    } else if after.is_empty() {
+        return None;
+    } else {
+        // `2 Name` / `x1 Name` after the leading mark was stripped
+        (qty_num, after.to_string())
+    };
+    if name.is_empty() {
+        None
+    } else {
+        Some((name, qty))
+    }
 }
 
 fn stock_row_height() -> &'static Mutex<f64> {

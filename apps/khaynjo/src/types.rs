@@ -13,6 +13,15 @@ enum CategoryPick {
 /// Kept short so a paired till sees the Server's KOTs / tables without a long wait.
 const LIVE_REFRESH_SECS: f64 = 3.0;
 
+/// Kitchen screen panel (tabs — not one long scroll burying Recall/Stations).
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Default)]
+enum KitchenPanel {
+    #[default]
+    Live,
+    Recall,
+    Stations,
+}
+
 /// What the ticket's action panel does to one sent line.
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 enum LineAction {
@@ -436,6 +445,42 @@ impl SuggestField {
             SuggestField::TestPrinters => ids!(printers_test_suggest),
             SuggestField::KotTestPrinters => ids!(kot_test_printers_suggest),
         }
+    }
+
+    /// The dropdown button that opens and closes this list, for lists that
+    /// a button opens rather than a type-in field. A press on it is "inside"
+    /// the list: it toggles the list itself, so the outside-press rule must
+    /// not close it first and let the button open it again.
+    fn opener(self) -> Option<&'static [LiveId]> {
+        match self {
+            SuggestField::KotStation => Some(ids!(kot_station_dd)),
+            SuggestField::FloorColumns => Some(ids!(floor_cols_dd)),
+            SuggestField::PrinterPlace => Some(ids!(printer_place_dd)),
+            SuggestField::PrinterAssign => Some(ids!(printer_assign_dd)),
+            SuggestField::StationVps => Some(ids!(station_vps_dd)),
+            SuggestField::BillPrinters => Some(ids!(bill_printers_dd)),
+            SuggestField::TestPrinters => Some(ids!(printers_test_dd)),
+            SuggestField::KotTestPrinters => Some(ids!(kot_test_printers_dd)),
+            _ => None,
+        }
+    }
+
+    /// A list that its own chrome opens (a dropdown button, or always shown
+    /// while its owner is selected) — never a tap or typing in a field.
+    fn opens_by_chrome(self) -> bool {
+        self.opener().is_some() || self == SuggestField::TeamKotStations
+    }
+
+    /// Stays open while its screen shows it (Team station checklist): an
+    /// outside press or a focus change does not close it.
+    fn stays_open(self) -> bool {
+        self == SuggestField::TeamKotStations
+    }
+
+    /// The whole list on open, not only the rows matching what the field
+    /// already shows (a pick-a-number dropdown, not a search).
+    fn opens_unfiltered(self) -> bool {
+        self == SuggestField::FloorColumns
     }
 }
 

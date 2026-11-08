@@ -35,7 +35,8 @@ into shared code.
 |----------|----------|-----------|---------|-------------------|---------|--------------|---------|---------------|
 | Tea / snack counter | Fast tap sell | Buy stock, small expenses | Regulars on credit | Few items, piece | AR common; AP light | Cash + rail | Sales, owed, cash | — |
 | Pushcart (fruit / goods) | Sell by piece/weight | Restock buy | Neighbours / regulars | Units (kg/piece), light stock | AR sometimes | Mostly cash | Day take, restock cost | — |
-| Grocery / kirana | Counter sell | Supplier purchases | Customers + suppliers | Dense catalogue, stock | AR + supplier dues | Cash + bank | Margin, stock, owed | — |
+| Grocery / kirana (Kirano) | Counter sell | Supplier purchases | Customers + suppliers | Dense catalogue, stock | AR + supplier dues | Cash + bank | Margin, stock, owed | — |
+| Pharmacy / chemist (Tabiyat) | Counter sell | Supplier purchases | Customers + suppliers | Dense SKU + barcode/salt; batch/expiry on buy | AR + supplier dues | Cash + bank | Expiry alerts, stock, owed | Owner Rx/Schedule flags (bookkeeping only) |
 | Cloth / perfume / shop | Counter sell | Purchases | Customers; wholesalers | SKUs, sizes/variants | AR; AP to wholesaler | Cash + bank | Sales, stock, dues | — |
 | Salon / service | Service charge | Supplies, rent, pay | Clients | Services as items (often no stock) | AR / packages | Cash + bank | Bookings optional | Appointments later |
 | Restaurant / café | Sell + tables | Purchases, expenses | Diners; suppliers | Menu, modifiers | AR light; AP | Cash + bank + drawer | Day close, food cost | **Tables & kitchen** |

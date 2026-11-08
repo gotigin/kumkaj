@@ -52,6 +52,61 @@ mod ux_rules_tests {
         );
     }
 
+    /// Bug 8a: closed cart pitch and open-details extra stay separate — a
+    /// stale open index or an open-tall sample must not reserve cream above
+    /// Kitchen, and the closed max stays below the open seed.
+    #[test]
+    fn cart_open_extra_not_reserved_when_closed_or_stale() {
+        assert!(CART_CLOSED_ROW_SEED <= CART_CLOSED_ROW_MAX);
+        assert!(
+            CART_CLOSED_ROW_MAX < 320.0,
+            "closed max must stay below the open-details seed"
+        );
+        assert_eq!(cart_open_extra_reserved(None, 3, 320.0), 0.0);
+        assert_eq!(cart_open_extra_reserved(Some(0), 3, 320.0), 320.0);
+        assert_eq!(
+            cart_open_extra_reserved(Some(9), 3, 320.0),
+            0.0,
+            "stale index past cart length"
+        );
+        assert_eq!(
+            cart_closed_pitch_from_sample(460.0, 280.0),
+            CART_CLOSED_ROW_SEED,
+            "open-tall sample snaps to seed, never stays as closed pitch"
+        );
+        assert_eq!(
+            cart_closed_pitch_from_sample(150.0, 140.0),
+            150.0.clamp(CART_CLOSED_ROW_MIN, CART_CLOSED_ROW_MAX)
+        );
+    }
+
+    /// Print `\t` columns (bill Item|Qty|Price|Amount) become real Cols rows —
+    /// never a Line that paints tofu tabs or misaligned monospace.
+    #[test]
+    fn bill_tab_columns_become_report_cols() {
+        let rows = parse_report(
+            "08/11/2026 08:30\tTable: T1\nItem\tQty.\tPrice\tAmount\nથાળી\t2\t₹350.00\t₹700.00\n",
+        );
+        assert_eq!(
+            rows,
+            vec![
+                ReportRow::Cols(vec!["08/11/2026 08:30".into(), "Table: T1".into()]),
+                ReportRow::Cols(vec![
+                    "Item".into(),
+                    "Qty.".into(),
+                    "Price".into(),
+                    "Amount".into()
+                ]),
+                ReportRow::Cols(vec![
+                    "થાળી".into(),
+                    "2".into(),
+                    "₹350.00".into(),
+                    "₹700.00".into()
+                ]),
+            ]
+        );
+    }
+
     /// Settings → Units: each family under its own heading from smallest to
     /// largest (a shop's own unit among them), unlinked units apart, and
     /// one conversions row per unit they start from.
@@ -131,6 +186,33 @@ mod ux_rules_tests {
                 ReportRow::Line("No day close recorded yet.".into()),
             ]
         );
+    }
+
+    /// Kitchen Live card: cooks need one dish per line, not a · run-on that
+    /// truncates mid-name (cancel slips and long KOTs).
+    #[test]
+    fn kitchen_card_body_one_dish_per_line() {
+        let cancel = kitchen_card_body(
+            "T1 · CANCEL x1 ચીકન ટંગડી · x1 ચીકન 65 · x1 મટન B.B.Q. — already cooked",
+        );
+        assert!(
+            cancel.starts_with("T1\n"),
+            "table on its own line: {cancel:?}"
+        );
+        assert!(
+            cancel.contains("CANCEL  ×1  ચીકન ટંગડી"),
+            "cancel item: {cancel:?}"
+        );
+        assert!(
+            cancel.contains("\n×1  ચીકન 65\n"),
+            "next item on its own line: {cancel:?}"
+        );
+        assert!(
+            cancel.ends_with("already cooked"),
+            "reason kept: {cancel:?}"
+        );
+        let cook = kitchen_card_body("[Tandoor] 2×Butter Naan, 1×Dal Fry");
+        assert_eq!(cook, "[Tandoor]\n×2  Butter Naan\n×1  Dal Fry");
     }
 
     /// Kitchen: the whole ticket card advances like its button. Without a

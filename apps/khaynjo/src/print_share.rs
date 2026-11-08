@@ -3609,6 +3609,11 @@ mod kot_slip_format_tests {
         assert_eq!(kot_item_parts("x1× ઈસી B.B.Q."), ("ઈસી B.B.Q.".into(), "1".into()));
         assert_eq!(kot_item_parts("ઈસી B.B.Q. x1"), ("ઈસી B.B.Q.".into(), "1".into()));
         assert_eq!(kot_item_parts("Butter Roti|x1×"), ("Butter Roti".into(), "1".into()));
+        assert_eq!(
+            kot_item_parts("x2 Butter Naan"),
+            ("Butter Naan".into(), "2".into()),
+            "digit qty then name (no ×) still splits Item | Qty"
+        );
         assert_eq!(kot_qty_column("x1×"), "1");
         let glued = KotSlipFormat::default().render(KotSlipContent {
             kind: KotSlipKind::Original,
@@ -4127,6 +4132,16 @@ fn peel_leading_kot_qty(s: &str) -> Option<(String, String)> {
         .or_else(|| after.strip_prefix('X'))
     {
         (String::new(), name.trim().to_string())
+    } else if after.is_empty() {
+        return None;
+    } else if !after.contains(['×', '✕'])
+        && after
+            .chars()
+            .next()
+            .is_some_and(|c| c.is_alphabetic() || !c.is_ascii())
+    {
+        // "x2 Butter Naan" / "2 Paneer" — digit qty then dish name, no × mark.
+        (String::new(), after.to_string())
     } else {
         let (token, tail) = after.split_once(char::is_whitespace)?;
         let tail = tail.trim_start();

@@ -108,6 +108,7 @@ impl AppState {
             kot_edit_kind: print_share::KotSlipKind::Original,
             kot_style_field: print_share::KotStyleField::Area,
             bill_kot_tab_kot: false,
+            kitchen_panel: KitchenPanel::Live,
             bill_slip_draft: print_share::BillSlipFormat::default(),
             bill_style_field: print_share::BillStyleField::Shop,
             bill_field_edit_idx: 0,

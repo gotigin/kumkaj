@@ -310,14 +310,120 @@ impl App {
                         .map(|t| t.id.clone())
                 };
                 if let Some(tid) = tid {
+                    {
+                        let mut st = app_state().lock().unwrap();
+                        let _ = st.load_table_cart(&tid);
+                    }
+                    self.go_peer(cx, Screen::Pos);
+                }
+                // Bug 8a regression needs a multi-line closed ticket — a
+                // two-line seed can hide a cream band that shows at 4+.
+                {
                     let mut st = app_state().lock().unwrap();
-                    let _ = st.load_table_cart(&tid);
+                    let products = st.products.clone();
+                    for p in products.into_iter().take(4) {
+                        st.cart.add_or_bump(&p);
+                    }
                 }
                 self.sync_chrome(cx);
                 self.smoke_mark(cx, "100_floor_live_tables");
                 false
             }
             1 => {
+                // Bug 8a: open a ticket line — details must reserve open_extra,
+                // not inflate closed pitch. Shot for the cream-vs-crop check.
+                let n = app_state().lock().unwrap().cart.lines.len();
+                if n == 0 {
+                    self.smoke_mark(cx, "100a_cart_open_skip");
+                    return false;
+                }
+                self.go_peer(cx, Screen::Pos);
+                self.toggle_cart_line(cx, 0);
+                self.sync_chrome(cx);
+                let open = app_state().lock().unwrap().open_cart_line;
+                if open != Some(0) {
+                    self.smoke_note_fail(format!("cart open: expected Some(0), got {open:?}"));
+                }
+                let reserved = cart_open_extra_reserved(open, n, *cart_open_extra().lock().unwrap());
+                if reserved < 1.0 {
+                    self.smoke_note_fail("cart open: open_extra not reserved".into());
+                }
+                let closed = *cart_row_height().lock().unwrap();
+                if closed > CART_CLOSED_ROW_MAX {
+                    self.smoke_note_fail(format!(
+                        "cart open: closed pitch {closed} absorbed open height"
+                    ));
+                }
+                self.smoke_mark(cx, "100a_cart_line_open");
+                false
+            }
+            2 => {
+                // Close the line — open_extra must drop; closed pitch stays
+                // in the closed band (no cream band above Kitchen).
+                let n = app_state().lock().unwrap().cart.lines.len();
+                if n == 0 {
+                    self.smoke_mark(cx, "100b_cart_close_skip");
+                    return false;
+                }
+                if app_state().lock().unwrap().open_cart_line == Some(0) {
+                    self.toggle_cart_line(cx, 0);
+                }
+                self.sync_chrome(cx);
+                let open = app_state().lock().unwrap().open_cart_line;
+                if open.is_some() {
+                    self.smoke_note_fail(format!("cart close: expected None, got {open:?}"));
+                }
+                let reserved = cart_open_extra_reserved(open, n, *cart_open_extra().lock().unwrap());
+                if reserved > 0.0 {
+                    self.smoke_note_fail("cart close: still reserving open_extra".into());
+                }
+                let closed = *cart_row_height().lock().unwrap();
+                if closed > CART_CLOSED_ROW_MAX {
+                    self.smoke_note_fail(format!(
+                        "cart close: closed pitch {closed} still open-tall"
+                    ));
+                }
+                // Full closed extent must stay in the closed band — n×open
+                // pitch is the cream band above Kitchen on long tickets.
+                let (ext_n, ext_h) = *cart_closed_extent().lock().unwrap();
+                let n_now = app_state().lock().unwrap().cart.lines.len();
+                if ext_n == n_now && n_now > 0 {
+                    let max_ok = n_now as f64 * CART_CLOSED_ROW_MAX
+                        + (n_now.saturating_sub(1) as f64) * 8.0
+                        + 40.0;
+                    if ext_h > max_ok {
+                        self.smoke_note_fail(format!(
+                            "cart close: closed extent {ext_h:.0} for {n_now} lines > {max_ok:.0} (cream band)"
+                        ));
+                    }
+                }
+                self.smoke_mark(cx, "100b_cart_line_closed");
+                false
+            }
+            3 => {
+                // Floor → View bill: ReportText Cols (Item|Qty|Price|Amount).
+                self.go_peer(cx, Screen::Floor);
+                self.sync_chrome(cx);
+                let idx = {
+                    let st = app_state().lock().unwrap();
+                    st.tables
+                        .iter()
+                        .position(|t| t.floor_state != domain::FloorState::Free)
+                };
+                if let Some(idx) = idx {
+                    self.view_floor_table_bill(cx, idx);
+                    self.sync_chrome(cx);
+                    let showing = self.ui.view(cx, ids!(floor_bill_view)).visible();
+                    if !showing {
+                        self.smoke_note_fail("floor bill view not visible after View".into());
+                    }
+                    self.smoke_mark(cx, "100c_floor_bill_view");
+                } else {
+                    self.smoke_mark(cx, "100c_floor_bill_view_skip");
+                }
+                false
+            }
+            4 => {
                 self.go_peer(cx, Screen::Kitchen);
                 self.sync_chrome(cx);
                 let advanced = (|| -> Result<bool, String> {
@@ -345,7 +451,7 @@ impl App {
                 }
                 false
             }
-            2 => {
+            5 => {
                 self.go_peer(cx, Screen::Sales);
                 self.sync_chrome(cx);
                 let sold = (|| -> Result<String, String> {
@@ -376,7 +482,7 @@ impl App {
                 }
                 false
             }
-            3 => {
+            6 => {
                 self.go_peer(cx, Screen::Books);
                 self.sync_chrome(cx);
                 let ok = (|| -> Result<(), String> {
@@ -395,7 +501,7 @@ impl App {
                 self.smoke_mark(cx, "103_day_book");
                 false
             }
-            4 => {
+            7 => {
                 self.go_peer(cx, Screen::Settings);
                 self.sync_chrome(cx);
                 for (panel, tag) in [
@@ -415,13 +521,13 @@ impl App {
                 self.smoke_mark(cx, "104_settings_panels");
                 false
             }
-            5 => {
+            8 => {
                 self.go_peer(cx, Screen::Menu);
                 self.sync_chrome(cx);
                 self.smoke_mark(cx, "105_menu");
                 false
             }
-            6 => {
+            9 => {
                 // Back/Forward visit history: peer jumps must leave ‹ usable.
                 self.go_peer(cx, Screen::Floor);
                 self.go_peer(cx, Screen::Kitchen);

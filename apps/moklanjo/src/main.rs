@@ -71,6 +71,7 @@ include!("helpers_books.rs");
 include!("widgets/product_menu_floor.rs");
 include!("widgets/sales_people.rs");
 include!("widgets/pick_lists.rs");
+include!("popup.rs");
 include!("widgets/misc_lists.rs");
 include!("widgets/ops_board.rs");
 include!("widgets/report_sidebar.rs");

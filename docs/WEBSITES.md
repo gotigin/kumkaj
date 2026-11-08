@@ -21,9 +21,11 @@
 
 | Site | Who arrives | Its job | Main action |
 |---|---|---|---|
-| **kumkaj.com** | Owners comparing systems, partners, press; people looking up Gotigin | Make the promise felt — *the counter keeps working when the internet stops; free forever on your own devices; built for your trade* — then send each visitor to their trade | **Choose your trade** → moklanjo.com / khaynjo.com |
+| **kumkaj.com** | Owners comparing systems, partners, press; people looking up Gotigin | Make the promise felt — *the counter keeps working when the internet stops; free forever on your own devices; built for your trade* — then send each visitor to their trade | **Choose your trade** → moklanjo.com / khaynjo.com / kirano.shop / tabiyat.shop |
 | **moklanjo.com** | Courier / logistics agency owners, franchise counters, own-fleet operators | Show a **courier desk**, not a till: book → label → hand over → track → settle | **Download free** · **WhatsApp for a demo** |
 | **khaynjo.com** | Restaurant, café, QSR, cloud-kitchen, bakery owners and managers | Show a **service running** on the floor and in the kitchen, internet or not | **Download free** · **WhatsApp for a demo** |
+| **kirano.shop** | Kirana / grocery / neighbourhood shop owners | Show a **grocery counter**: sell → khata → stock → day book | **Download free** · **WhatsApp for a demo** |
+| **tabiyat.shop** | Chemist / pharmacy counter owners | Show a **pharmacy counter**: medicine → batch/expiry → bill (owner Rx flags, not fake compliance) | **Download free** · **WhatsApp for a demo** |
 
 Rules (vision §1, §21, §24, §31):
 

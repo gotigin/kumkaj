@@ -161,7 +161,8 @@ impl App {
             }
         }
 
-        // Live chargeable kg as the desk fields change.
+        // Live chargeable kg as the desk fields change — labels only, not
+        // full sync_chrome (IME freeze on phones).
         for id in [
             ids!(booking_actual_kg_input),
             ids!(booking_length_cm_input),
@@ -178,7 +179,7 @@ impl App {
                     .text();
                 st.booking_height_cm = self.ui.text_input(cx, ids!(booking_height_cm_input)).text();
                 drop(st);
-                self.sync_chrome(cx);
+                self.paint_booking_weight_preview(cx);
                 break;
             }
         }
@@ -190,7 +191,7 @@ impl App {
             .changed(actions)
             .is_some()
         {
-            self.sync_chrome(cx);
+            self.paint_menu_draft_thumb(cx);
         }
 
         let total_input = self.ui.text_input(cx, ids!(cart_total_input));

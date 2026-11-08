@@ -185,6 +185,8 @@ struct AppState {
     kot_style_field: print_share::KotStyleField,
     /// Settings → Bill & KOT format: Bill tab vs KOT tab (under the section header).
     bill_kot_tab_kot: bool,
+    /// Kitchen screen: Live tickets / Recall / Stations (mutually exclusive panels).
+    kitchen_panel: KitchenPanel,
     /// Draft bill lines (preview and Test bill) before Save.
     bill_slip_draft: print_share::BillSlipFormat,
     /// Which bill line's show / size / weight / align is open.

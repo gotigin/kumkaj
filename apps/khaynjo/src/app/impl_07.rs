@@ -649,7 +649,16 @@ fn confirm_line_action(&mut self, cx: &mut Cx) {
                     None
                 }
             } else {
-                st.open_cart_line = if st.open_cart_line == Some(index) { None } else { Some(index) };
+                // Toggle open/close. Closing must drop `open_cart_line` so
+                // CartList stops reserving `cart_open_extra` — leaving the
+                // index set (or letting a stale index survive a shorter cart)
+                // is the cream band above Kitchen with no details painted.
+                st.open_cart_line =
+                    if st.open_cart_line == Some(index) {
+                        None
+                    } else {
+                        Some(index)
+                    };
                 None
             }
         };

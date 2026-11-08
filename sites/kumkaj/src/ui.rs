@@ -424,7 +424,7 @@ script_mod! {
                                     spacing: 22
                                     Eyebrow{text: "KUMKAJ · SOFTWARE FOR THE SHOP COUNTER"}
                                     Headline{text: "The internet went down.\nThe counter didn't."}
-                                    Lede{text: "Kumkaj makes business software that runs on your own devices — a courier desk and a restaurant system, each built for its trade."}
+                                    Lede{text: "Kumkaj makes business software that runs on your own devices — courier, restaurant, grocery and pharmacy counters, each built for its trade."}
                                     hero_ctas := View{
                                         width: Fill height: Fit
                                         flow: Right
@@ -458,44 +458,86 @@ script_mod! {
                             Eyebrow{text: "02 · BUILT FOR YOUR TRADE"}
                             Headline{
                                 draw_text.text_style.font_size: 42.
-                                text: "A courier desk for couriers.\nA restaurant system for restaurants."
+                                text: "A desk for each trade.\nNot one app with a switch."
                             }
                             trade_lede := Lede{text: "Not one app with a trade switch. Each product is designed around one kind of counter, in that trade's own words."}
                             cards := View{
                                 width: Fill height: Fit
-                                flow: Right
+                                flow: Down
                                 spacing: 20
-                                mok := Card{
-                                    draw_bg.border_color: #x2A4F9A
-                                    RoundedView{width: 44 height: 5 draw_bg +: {color: MokOrange border_radius: 2.5}}
-                                    mok_kicker := Small{text: "COURIER OFFICES · FRANCHISE COUNTERS · OWN RIDERS"}
-                                    CardName{text: "Moklanjo"}
-                                    Strong{text: "Book → label → hand over → track → settle."}
-                                    mok_points := View{
-                                        width: Fill height: Fit
-                                        flow: Down
-                                        spacing: 6
-                                        Bullet{line.text: "Next booking in one tap"}
-                                        Bullet{line.text: "Actual or volumetric weight, rounded your way"}
-                                        Bullet{line.text: "Rider cash on delivery: expected against handed in"}
+                                View{
+                                    width: Fill height: Fit
+                                    flow: Right
+                                    spacing: 20
+                                    mok := Card{
+                                        draw_bg.border_color: #x2A4F9A
+                                        RoundedView{width: 44 height: 5 draw_bg +: {color: MokOrange border_radius: 2.5}}
+                                        mok_kicker := Small{text: "COURIER OFFICES · FRANCHISE COUNTERS · OWN RIDERS"}
+                                        CardName{text: "Moklanjo"}
+                                        Strong{text: "Book → label → hand over → track → settle."}
+                                        mok_points := View{
+                                            width: Fill height: Fit
+                                            flow: Down
+                                            spacing: 6
+                                            Bullet{line.text: "Next booking in one tap"}
+                                            Bullet{line.text: "Actual or volumetric weight, rounded your way"}
+                                            Bullet{line.text: "Rider cash on delivery: expected against handed in"}
+                                        }
+                                        to_moklanjo := GhostBtn{text: "Visit moklanjo.com  →"}
                                     }
-                                    to_moklanjo := GhostBtn{text: "Visit moklanjo.com  →"}
+                                    kha := Card{
+                                        draw_bg.border_color: #x7A2A2A
+                                        RoundedView{width: 44 height: 5 draw_bg +: {color: KhaGold border_radius: 2.5}}
+                                        kha_kicker := Small{text: "RESTAURANTS · CAFÉS · QUICK SERVICE · BAKERIES"}
+                                        CardName{text: "Khaynjo"}
+                                        Strong{text: "Table → kitchen → bill → day close."}
+                                        kha_points := View{
+                                            width: Fill height: Fit
+                                            flow: Down
+                                            spacing: 6
+                                            Bullet{line.text: "Every table's minutes and bill at a glance"}
+                                            Bullet{line.text: "One KOT per kitchen station — never prices"}
+                                            Bullet{line.text: "Cash, UPI, part payment, Due and tip"}
+                                        }
+                                        to_khaynjo := GhostBtn{text: "Visit khaynjo.com  →"}
+                                    }
                                 }
-                                kha := Card{
-                                    draw_bg.border_color: #x7A2A2A
-                                    RoundedView{width: 44 height: 5 draw_bg +: {color: KhaGold border_radius: 2.5}}
-                                    kha_kicker := Small{text: "RESTAURANTS · CAFÉS · QUICK SERVICE · BAKERIES"}
-                                    CardName{text: "Khaynjo"}
-                                    Strong{text: "Table → kitchen → bill → day close."}
-                                    kha_points := View{
-                                        width: Fill height: Fit
-                                        flow: Down
-                                        spacing: 6
-                                        Bullet{line.text: "Every table's minutes and bill at a glance"}
-                                        Bullet{line.text: "One KOT per kitchen station — never prices"}
-                                        Bullet{line.text: "Cash, UPI, part payment, Due and tip"}
+                                View{
+                                    width: Fill height: Fit
+                                    flow: Right
+                                    spacing: 20
+                                    kir := Card{
+                                        draw_bg.border_color: #xCD380E
+                                        RoundedView{width: 44 height: 5 draw_bg +: {color: #xF96303 border_radius: 2.5}}
+                                        Small{text: "KIRANA · GROCERY · NEIGHBOURHOOD SHOPS"}
+                                        CardName{text: "Kirano"}
+                                        Strong{text: "Sell → khata → stock → day book."}
+                                        View{
+                                            width: Fill height: Fit
+                                            flow: Down
+                                            spacing: 6
+                                            Bullet{line.text: "Fast counter sell with short codes"}
+                                            Bullet{line.text: "Customer credit and supplier dues"}
+                                            Bullet{line.text: "Buy into stock — offline forever"}
+                                        }
+                                        to_kirano := GhostBtn{text: "Visit kirano.shop  →"}
                                     }
-                                    to_khaynjo := GhostBtn{text: "Visit khaynjo.com  →"}
+                                    tab := Card{
+                                        draw_bg.border_color: #x023637
+                                        RoundedView{width: 44 height: 5 draw_bg +: {color: #x37BE28 border_radius: 2.5}}
+                                        Small{text: "CHEMISTS · PHARMACY COUNTERS"}
+                                        CardName{text: "Tabiyat"}
+                                        Strong{text: "Medicine → batch → bill → day close."}
+                                        View{
+                                            width: Fill height: Fit
+                                            flow: Down
+                                            spacing: 6
+                                            Bullet{line.text: "Barcode and salt / composition search"}
+                                            Bullet{line.text: "Batch and expiry alerts on purchases"}
+                                            Bullet{line.text: "Owner Schedule H / Rx notes — not fake compliance"}
+                                        }
+                                        to_tabiyat := GhostBtn{text: "Visit tabiyat.shop  →"}
+                                    }
                                 }
                             }
                         }
@@ -649,6 +691,8 @@ script_mod! {
                                 spacing: 12
                                 close_moklanjo := PrimaryBtn{text: "Moklanjo — courier desk  →"}
                                 close_khaynjo := PrimaryBtn{text: "Khaynjo — restaurant system  →"}
+                                close_kirano := PrimaryBtn{text: "Kirano — grocery counter  →"}
+                                close_tabiyat := PrimaryBtn{text: "Tabiyat — pharmacy counter  →"}
                             }
                             Small{text: "Moklanjo and Khaynjo are Kumkaj products by Gotigin."}
                         }

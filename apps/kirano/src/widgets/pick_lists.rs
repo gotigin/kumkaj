@@ -1,0 +1,656 @@
+/// Under a "type or pick" field (see `suggest.rs`): closed it draws
+/// nothing; open it is a capped scrolling list of what the shop already
+/// has for that field. `field` names which [`SuggestField`] it serves.
+#[derive(Script, ScriptHook, Widget)]
+struct SuggestList {
+    #[deref]
+    view: View,
+    #[live]
+    field: String,
+    #[rust]
+    drawn_rev: u64,
+    /// Rows kept while the close height tween finishes.
+    #[rust]
+    hold_rows: Vec<suggest::SuggestRow>,
+}
+
+impl SuggestList {
+    fn is_open(&self) -> bool {
+        app_state().lock().unwrap().suggest_open.map(|f| f.key()) == Some(self.field.as_str())
+    }
+
+    fn anim_key(&self) -> String {
+        format!("suggest:{}", self.field)
+    }
+}
+
+impl Widget for SuggestList {
+    fn draw_walk(&mut self, cx: &mut Cx2d, scope: &mut Scope, walk: Walk) -> DrawStep {
+        let cols_menu = self.field == "floor_cols";
+        let (open, rows, rev, lang, selected_cols) = {
+            let st = app_state().lock().unwrap();
+            (
+                st.suggest_open.map(|f| f.key()) == Some(self.field.as_str()),
+                st.suggest_rows.clone(),
+                st.suggest_rev,
+                st.locale.language.clone(),
+                st.floor_columns,
+            )
+        };
+        if open && !rows.is_empty() {
+            self.hold_rows = rows.clone();
+        }
+        let draw_rows = if open && !rows.is_empty() {
+            &rows
+        } else {
+            &self.hold_rows
+        };
+        let logic_open = open && !draw_rows.is_empty();
+        let row_h = *suggest_row_height().lock().unwrap();
+        let n = draw_rows.len();
+        let full_h = if n == 0 {
+            0.0
+        } else {
+            list_content_height(n, row_h, 6.0).min(SUGGEST_MAX_HEIGHT)
+        };
+        // Floor Columns lives in a Modal panel — show full height immediately.
+        let (height, should_draw) = if self.field == "floor_cols" {
+            if logic_open {
+                (full_h, true)
+            } else {
+                (0.0, false)
+            }
+        } else {
+            let tweened = list_height_tween(&self.anim_key(), logic_open, full_h);
+            if list_height_anims()
+                .lock()
+                .unwrap()
+                .contains_key(&self.anim_key())
+            {
+                schedule_ui_tween_frame(cx);
+            }
+            tweened
+        };
+        if !should_draw || height < 0.5 || draw_rows.is_empty() {
+            if !should_draw {
+                self.hold_rows.clear();
+            }
+            return DrawStep::done();
+        }
+        let walk = Walk {
+            height: Size::Fixed(height),
+            ..walk
+        };
+        let use_text = locale::t(&lang, "use");
+        let new_rev = self.drawn_rev != rev && open;
+        let mut measured_row = 0.0;
+        while let Some(step) = self.view.draw_walk(cx, scope, walk).step() {
+            if let Some(mut list) = step.as_portal_list().borrow_mut() {
+                // Always open from the top so every value is reachable by scroll.
+                if new_rev {
+                    list.set_first_id_and_scroll(0, 0.0);
+                }
+                list.set_item_range(cx, 0, n);
+                let mut drew = 0usize;
+                while let Some(item_id) = list.next_visible_item(cx) {
+                    let Some(row) = draw_rows.get(item_id) else {
+                        continue;
+                    };
+                    let selected = cols_menu
+                        && selected_cols >= 1
+                        && row.value.parse::<usize>().ok() == Some(selected_cols);
+                    // The selected row is its own template (its background is
+                    // the selected wash); hit Button hover sits on top.
+                    let template = if selected { id!(ItemSel) } else { id!(Item) };
+                    let item = list.item(cx, item_id, template);
+                    item.label(cx, ids!(title)).set_text(cx, &row.value);
+                    item.label(cx, ids!(subtitle)).set_text(cx, &row.subtitle);
+                    item.label(cx, ids!(subtitle)).set_visible(cx, !row.subtitle.is_empty());
+                    if cols_menu {
+                        item.label(cx, ids!(action)).set_visible(cx, selected);
+                        item.label(cx, ids!(action)).set_text(
+                            cx,
+                            if selected { "\u{2713}" } else { "" },
+                        );
+                    } else {
+                        let action = if row.action.trim().is_empty() {
+                            use_text.as_str()
+                        } else {
+                            row.action.as_str()
+                        };
+                        item.label(cx, ids!(action)).set_visible(cx, true);
+                        item.label(cx, ids!(action)).set_text(cx, action);
+                    }
+                    item.draw_all_unscoped(cx);
+                    drew += 1;
+                }
+                if drew > 0 {
+                    let extent = list.drawn_range_extent();
+                    if extent > 1.0 {
+                        measured_row = extent / drew as f64;
+                    }
+                }
+            }
+        }
+        remember_content_row(cx, &mut self.view, suggest_row_height(), row_h, measured_row);
+        self.drawn_rev = rev;
+        DrawStep::done()
+    }
+
+    fn handle_event(&mut self, cx: &mut Cx, event: &Event, scope: &mut Scope) {
+        let live = list_height_anims()
+            .lock()
+            .unwrap()
+            .contains_key(&self.anim_key());
+        if self.is_open() || live {
+            // Keep NextFrame pumping while this list is tweening.
+            if live {
+                schedule_ui_tween_frame(cx);
+            }
+            claim_list_nested_scroll(cx, &self.view, event);
+            self.view.handle_event(cx, event, scope);
+            claim_list_nested_scroll(cx, &self.view, event);
+        }
+    }
+}
+
+/// Tallest a "type or pick" list gets before it scrolls (about six rows).
+const SUGGEST_MAX_HEIGHT: f64 = 330.0;
+
+/// Order-desk kitchen dropdown: same open/rows as [`SuggestList`] for
+/// `kot_station`, but each row is a checkbox item (checked = station is on
+/// unsent dishes / Don't use).
+#[derive(Script, ScriptHook, Widget)]
+struct StationCheckList {
+    #[deref]
+    view: View,
+    #[live]
+    field: String,
+    /// True while the menu was drawn open last frame — scroll resets only
+    /// on open, never on checkbox refresh (that felt like a jump).
+    #[rust]
+    was_open: bool,
+    #[rust]
+    hold_rows: Vec<suggest::SuggestRow>,
+}
+
+impl StationCheckList {
+    fn is_open(&self) -> bool {
+        app_state().lock().unwrap().suggest_open.map(|f| f.key()) == Some(self.field.as_str())
+    }
+
+    fn anim_key(&self) -> String {
+        format!("station:{}", self.field)
+    }
+}
+
+impl Widget for StationCheckList {
+    fn draw_walk(&mut self, cx: &mut Cx2d, scope: &mut Scope, walk: Walk) -> DrawStep {
+        let (open, rows, lang) = {
+            let st = app_state().lock().unwrap();
+            (
+                st.suggest_open.map(|f| f.key()) == Some(self.field.as_str()),
+                st.suggest_rows.clone(),
+                st.locale.language.clone(),
+            )
+        };
+        if open && !rows.is_empty() {
+            self.hold_rows = rows.clone();
+        }
+        let draw_rows = if open && !rows.is_empty() {
+            &rows
+        } else {
+            &self.hold_rows
+        };
+        let logic_open = open && !draw_rows.is_empty();
+        let row_h = *suggest_row_height().lock().unwrap();
+        let n = draw_rows.len();
+        let full_h = if n == 0 {
+            0.0
+        } else {
+            list_content_height(n, row_h, 0.0).min(SUGGEST_MAX_HEIGHT)
+        };
+        let (height, should_draw) = list_height_tween(&self.anim_key(), logic_open, full_h);
+        if list_height_anims()
+            .lock()
+            .unwrap()
+            .contains_key(&self.anim_key())
+        {
+            schedule_ui_tween_frame(cx);
+        }
+        if !should_draw || height < 0.5 || draw_rows.is_empty() {
+            if !should_draw {
+                self.was_open = false;
+                self.hold_rows.clear();
+            }
+            return DrawStep::done();
+        }
+        let just_opened = !self.was_open && open;
+        self.was_open = true;
+        let walk = Walk {
+            height: Size::Fixed(height),
+            ..walk
+        };
+        let use_l = locale::t(&lang, "use");
+        let unassigned = locale::t(&lang, "kot_unassigned");
+        let mut measured_row = 0.0;
+        while let Some(step) = self.view.draw_walk(cx, scope, walk).step() {
+            if let Some(mut list) = step.as_portal_list().borrow_mut() {
+                if just_opened {
+                    list.set_first_id_and_scroll(0, 0.0);
+                }
+                list.set_item_range(cx, 0, n);
+                let mut drew = 0usize;
+                while let Some(item_id) = list.next_visible_item(cx) {
+                    let Some(row) = draw_rows.get(item_id) else {
+                        continue;
+                    };
+                    let item = list.item(cx, item_id, id!(Item));
+                    let is_unassigned = row.value.eq_ignore_ascii_case(&unassigned);
+                    item.label(cx, ids!(title)).set_text(cx, &row.value);
+                    let printer_assign = self.field == "printer_assign";
+                    let station_vps = self.field == "station_vps"
+                        || self.field == "bill_printers"
+                        || self.field == "test_printers"
+                        || self.field == "kot_test_printers";
+                    let team_stations = self.field == "team_kot_stations";
+                    // PrinterAssign / station VPs keep id in subtitle — never show it.
+                    item.label(cx, ids!(subtitle)).set_text(
+                        cx,
+                        if printer_assign || station_vps {
+                            ""
+                        } else {
+                            &row.subtitle
+                        },
+                    );
+                    item.label(cx, ids!(subtitle)).set_visible(
+                        cx,
+                        !printer_assign && !station_vps && !row.subtitle.is_empty(),
+                    );
+                    let action = row.action.trim();
+                    let checked = !action.is_empty() && action != use_l;
+                    // Drawn box / filled+✓ — ☐ was missing from Noto (tofu).
+                    item.view(cx, ids!(check_off)).set_visible(cx, !checked);
+                    item.view(cx, ids!(check_on)).set_visible(cx, checked);
+                    // Team person access: checkboxes only — no print-order ↑↓.
+                    // Test-printer checklists are multi-check only (no priority).
+                    let test_pick =
+                        self.field == "test_printers" || self.field == "kot_test_printers";
+                    if team_stations
+                        || is_unassigned
+                        || test_pick
+                        || ((printer_assign || station_vps) && !checked)
+                    {
+                        item.label(cx, ids!(prio)).set_visible(cx, false);
+                        item.button(cx, ids!(prio_up)).set_visible(cx, false);
+                        item.button(cx, ids!(prio_down)).set_visible(cx, false);
+                    } else {
+                        let mut ord = 0usize;
+                        let mut station_ids: Vec<usize> = Vec::new();
+                        for (i, r) in draw_rows.iter().enumerate() {
+                            if r.value.eq_ignore_ascii_case(&unassigned) {
+                                continue;
+                            }
+                            if printer_assign || station_vps {
+                                let a = r.action.trim();
+                                if a.is_empty() || a == use_l {
+                                    continue;
+                                }
+                            }
+                            station_ids.push(i);
+                            ord += 1;
+                            if i == item_id {
+                                break;
+                            }
+                        }
+                        let can_up = station_ids.len() > 1 && station_ids.first() != Some(&item_id);
+                        let can_down = {
+                            let last = if printer_assign || station_vps {
+                                draw_rows.iter().rposition(|r| {
+                                    let a = r.action.trim();
+                                    !a.is_empty() && a != use_l
+                                })
+                            } else {
+                                draw_rows.iter().rposition(|r| {
+                                    !r.value.eq_ignore_ascii_case(&unassigned)
+                                })
+                            };
+                            last != Some(item_id)
+                        };
+                        item.label(cx, ids!(prio)).set_visible(cx, true);
+                        item.label(cx, ids!(prio)).set_text(cx, &format!("#{ord}"));
+                        item.button(cx, ids!(prio_up)).set_visible(cx, can_up);
+                        item.button(cx, ids!(prio_down)).set_visible(cx, can_down);
+                    }
+                    item.draw_all_unscoped(cx);
+                    drew += 1;
+                }
+                if drew > 0 {
+                    let extent = list.drawn_range_extent();
+                    if extent > 1.0 {
+                        measured_row = extent / drew as f64;
+                    }
+                }
+            }
+        }
+        remember_content_row(cx, &mut self.view, suggest_row_height(), row_h, measured_row);
+        DrawStep::done()
+    }
+
+    fn handle_event(&mut self, cx: &mut Cx, event: &Event, scope: &mut Scope) {
+        let live = list_height_anims()
+            .lock()
+            .unwrap()
+            .contains_key(&self.anim_key());
+        if !self.is_open() && !live {
+            return;
+        }
+        if live {
+            schedule_ui_tween_frame(cx);
+        }
+        claim_list_nested_scroll(cx, &self.view, event);
+        self.view.handle_event(cx, event, scope);
+        claim_list_nested_scroll(cx, &self.view, event);
+    }
+}
+
+/// The item form's category picker (see [`CategoryPick`]) — the item
+/// picker's twin: closed it draws nothing; open it is a capped scrolling
+/// viewport. Rows show the category's photo, else its initials; a shelf
+/// folder shows one of its dishes.
+#[derive(Script, ScriptHook, Widget)]
+struct CategoryPickList {
+    #[deref]
+    view: View,
+    #[rust]
+    drawn_rev: u64,
+    #[rust]
+    hold_picks: Vec<CategoryPick>,
+}
+
+impl Widget for CategoryPickList {
+    fn draw_walk(&mut self, cx: &mut Cx2d, scope: &mut Scope, walk: Walk) -> DrawStep {
+        let (open, picks, rev, categories, lang) = {
+            let st = app_state().lock().unwrap();
+            (
+                st.category_picker_open,
+                st.category_picks.clone(),
+                st.category_picks_rev,
+                st.categories.clone(),
+                st.locale.language.clone(),
+            )
+        };
+        if open && !picks.is_empty() {
+            self.hold_picks = picks.clone();
+        }
+        let draw_picks = if open && !picks.is_empty() {
+            &picks
+        } else {
+            &self.hold_picks
+        };
+        let logic_open = open && !draw_picks.is_empty();
+        let full_h = if draw_picks.is_empty() {
+            0.0
+        } else {
+            list_content_height(draw_picks.len(), DISH_ROW_H, DISH_ROW_GAP).min(DISH_PICK_MAX_HEIGHT)
+        };
+        let (height, should_draw) = list_height_tween("category_pick", logic_open, full_h);
+        if list_height_anims()
+            .lock()
+            .unwrap()
+            .contains_key("category_pick")
+        {
+            schedule_ui_tween_frame(cx);
+        }
+        if !should_draw || height < 0.5 || draw_picks.is_empty() {
+            if !should_draw {
+                self.hold_picks.clear();
+            }
+            return DrawStep::done();
+        }
+        // Same DishRow card as the dish picker.
+        let walk = Walk {
+            height: Size::Fixed(height),
+            ..walk
+        };
+        let dir = item_images_dir();
+        let use_text = locale::t(&lang, "use");
+        let new_text = locale::t(&lang, "new_category_row");
+        let mine_text = locale::t(&lang, "your_category");
+        let shelf_text = locale::t(&lang, "suggested_category");
+        let new_rev = self.drawn_rev != rev && open;
+        while let Some(step) = self.view.draw_walk(cx, scope, walk).step() {
+            if let Some(mut list) = step.as_portal_list().borrow_mut() {
+                if new_rev {
+                    list.set_first_id_and_scroll(0, 0.0);
+                }
+                list.set_item_range(cx, 0, draw_picks.len());
+                while let Some(item_id) = list.next_visible_item(cx) {
+                    let Some(pick) = draw_picks.get(item_id) else {
+                        continue;
+                    };
+                    let item = list.item(cx, item_id, id!(Item));
+                    let (title, subtitle, initials_from, alias, photo) = match pick {
+                        CategoryPick::New(name) => (
+                            format!("“{name}”"),
+                            new_text.clone(),
+                            name.clone(),
+                            None,
+                            std::path::PathBuf::new(),
+                        ),
+                        CategoryPick::Mine(id) => match categories.iter().find(|c| &c.id == id) {
+                            Some(c) => (
+                                c.name.clone(),
+                                mine_text.clone(),
+                                c.name.clone(),
+                                c.first_alias(),
+                                if c.image_key.is_empty() {
+                                    std::path::PathBuf::new()
+                                } else {
+                                    image_key_path(Some(&c.image_key), &dir)
+                                },
+                            ),
+                            None => continue,
+                        },
+                        CategoryPick::Shelf(f) => (
+                            f.label.clone(),
+                            shelf_text.clone(),
+                            f.label.clone(),
+                            None,
+                            f.photo.clone(),
+                        ),
+                    };
+                    apply_thumb_avatar_kind(
+                        cx,
+                        &item,
+                        &initials_from,
+                        &photo,
+                        thumbs::ThumbKind::Card,
+                    );
+                    item.label(cx, ids!(title)).set_text(cx, &title);
+                    paint_first_alias(cx, &item, alias.as_deref());
+                    item.label(cx, ids!(subtitle)).set_text(cx, &subtitle);
+                    item.label(cx, ids!(action)).set_text(cx, &use_text);
+                    item.draw_all_unscoped(cx);
+                }
+            }
+        }
+        self.drawn_rev = rev;
+        DrawStep::done()
+    }
+
+    fn handle_event(&mut self, cx: &mut Cx, event: &Event, scope: &mut Scope) {
+        let live = list_height_anims()
+            .lock()
+            .unwrap()
+            .contains_key("category_pick");
+        if !app_state().lock().unwrap().category_picker_open && !live {
+            return;
+        }
+        if live {
+            schedule_ui_tween_frame(cx);
+        }
+        claim_list_nested_scroll(cx, &self.view, event);
+        self.view.handle_event(cx, event, scope);
+        claim_list_nested_scroll(cx, &self.view, event);
+    }
+}
+
+/// The item form's picker (see [`DishPick`]). Closed, it draws nothing. Open,
+/// it is a scrolling viewport of at most [`DISH_PICK_MAX_HEIGHT`], so only the
+/// rows on screen draw and only their card-sized photo copies are asked for.
+#[derive(Script, ScriptHook, Widget)]
+struct DishPickList {
+    #[deref]
+    view: View,
+    /// `dish_picks_rev` this list last drew; a new one scrolls back to the top.
+    #[rust]
+    drawn_rev: u64,
+    #[rust]
+    hold_picks: Vec<DishPick>,
+}
+
+/// Tallest the picker grows before it scrolls inside itself (css px).
+const DISH_PICK_MAX_HEIGHT: f64 = 420.0;
+/// Must match `DishRow` height and PortalList `spacing` on both pick lists.
+const DISH_ROW_H: f64 = 118.0;
+const DISH_ROW_GAP: f64 = 12.0;
+
+impl Widget for DishPickList {
+    fn draw_walk(&mut self, cx: &mut Cx2d, scope: &mut Scope, walk: Walk) -> DrawStep {
+        let (open, picks, rev, products, currency, fiscal, lang) = {
+            let st = app_state().lock().unwrap();
+            (
+                st.dish_picker_open,
+                st.dish_picks.clone(),
+                st.dish_picks_rev,
+                st.products.clone(),
+                st.locale.currency.clone(),
+                st.fiscal.clone(),
+                st.locale.language.clone(),
+            )
+        };
+        if open && !picks.is_empty() {
+            self.hold_picks = picks.clone();
+        }
+        let draw_picks = if open && !picks.is_empty() {
+            &picks
+        } else {
+            &self.hold_picks
+        };
+        let logic_open = open && !draw_picks.is_empty();
+        let full_h = if draw_picks.is_empty() {
+            0.0
+        } else {
+            list_content_height(draw_picks.len(), DISH_ROW_H, DISH_ROW_GAP).min(DISH_PICK_MAX_HEIGHT)
+        };
+        let (height, should_draw) = list_height_tween("dish_pick", logic_open, full_h);
+        if list_height_anims()
+            .lock()
+            .unwrap()
+            .contains_key("dish_pick")
+        {
+            schedule_ui_tween_frame(cx);
+        }
+        if !should_draw || height < 0.5 || draw_picks.is_empty() {
+            if !should_draw {
+                self.hold_picks.clear();
+            }
+            return DrawStep::done();
+        }
+        // DishRow is a fixed landscape photo card; PortalList spacing matches
+        // DISH_ROW_GAP. Small results shrink the box; long ones scroll inside.
+        let walk = Walk {
+            height: Size::Fixed(height),
+            ..walk
+        };
+        let shelf = menu_images::shelf();
+        let dir = item_images_dir();
+        let use_text = locale::t(&lang, "use");
+        let edit_text = locale::t(&lang, "edit");
+        let own_text = locale::t(&lang, "own_item_name");
+        let on_menu_text = locale::t(&lang, "on_your_menu");
+        let new_rev = self.drawn_rev != rev && open;
+        while let Some(step) = self.view.draw_walk(cx, scope, walk).step() {
+            if let Some(mut list) = step.as_portal_list().borrow_mut() {
+                if new_rev {
+                    list.set_first_id_and_scroll(0, 0.0);
+                }
+                list.set_item_range(cx, 0, draw_picks.len());
+                while let Some(item_id) = list.next_visible_item(cx) {
+                    let Some(pick) = draw_picks.get(item_id) else {
+                        continue;
+                    };
+                    let item = list.item(cx, item_id, id!(Item));
+                    let (title, subtitle, action, alias, photo) = match pick {
+                        DishPick::Own(name) => (
+                            format!("“{name}”"),
+                            own_text.clone(),
+                            use_text.clone(),
+                            None,
+                            std::path::PathBuf::new(),
+                        ),
+                        DishPick::Menu(id) => match products.iter().find(|p| &p.id == id) {
+                            Some(p) => (
+                                p.name.clone(),
+                                format!(
+                                    "{on_menu_text} · {}",
+                                    p.price.format_localized(&currency, &fiscal)
+                                ),
+                                edit_text.clone(),
+                                p.first_alias(),
+                                image_key_path(p.image_key.as_deref(), &dir),
+                            ),
+                            None => continue,
+                        },
+                        DishPick::Shelf(i) => match shelf.get(*i) {
+                            Some(d) => (
+                                d.name.clone(),
+                                d.folder.clone(),
+                                use_text.clone(),
+                                None,
+                                d.path.clone(),
+                            ),
+                            None => continue,
+                        },
+                    };
+                    let name_for_initials = match pick {
+                        DishPick::Own(name) => name.as_str(),
+                        _ => title.as_str(),
+                    };
+                    apply_thumb_avatar_kind(
+                        cx,
+                        &item,
+                        name_for_initials,
+                        &photo,
+                        thumbs::ThumbKind::Card,
+                    );
+                    item.label(cx, ids!(title)).set_text(cx, &title);
+                    paint_first_alias(cx, &item, alias.as_deref());
+                    item.label(cx, ids!(subtitle)).set_text(cx, &subtitle);
+                    item.label(cx, ids!(action)).set_text(cx, &action);
+                    item.draw_all_unscoped(cx);
+                }
+            }
+        }
+        self.drawn_rev = rev;
+        DrawStep::done()
+    }
+
+    fn handle_event(&mut self, cx: &mut Cx, event: &Event, scope: &mut Scope) {
+        let live = list_height_anims()
+            .lock()
+            .unwrap()
+            .contains_key("dish_pick");
+        if !app_state().lock().unwrap().dish_picker_open && !live {
+            return;
+        }
+        if live {
+            schedule_ui_tween_frame(cx);
+        }
+        // Pointer over the picker = it owns the wheel; the page must not move.
+        claim_list_nested_scroll(cx, &self.view, event);
+        self.view.handle_event(cx, event, scope);
+        claim_list_nested_scroll(cx, &self.view, event);
+    }
+}

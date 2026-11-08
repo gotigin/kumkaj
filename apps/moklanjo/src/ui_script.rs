@@ -3325,6 +3325,76 @@ script_mod! {
                         font_size: 12.
                     }
                 }
+                // Print `\t` columns: Item Fill + Fixed Qty/Price/Amount so
+                // every row shares gutters (Fit drifted under wrong headers).
+                Cols := View{
+                    width: Fill height: Fit
+                    padding: Inset{top: 4. bottom: 4.}
+                    flow: Right spacing: 14
+                    align: Align{y: 0.0}
+                    c0 := WrapLabel{
+                        width: Fill
+                        body: ""
+                        flow: Right{wrap: true}
+                        font_color: #x0B1220
+                        font_size: 13.
+                    }
+                    c1 := WrapLabel{
+                        width: Fixed(44.)
+                        body: ""
+                        flow: Right{wrap: true}
+                        font_color: #x0B1220
+                        font_size: 13.
+                    }
+                    c2 := WrapLabel{
+                        width: Fixed(96.)
+                        body: ""
+                        flow: Right{wrap: true}
+                        font_color: #x0B1220
+                        font_size: 13.
+                    }
+                    c3 := WrapLabel{
+                        width: Fixed(96.)
+                        body: ""
+                        flow: Right{wrap: true}
+                        font_color: #x0B1220
+                        font_size: 13.
+                    }
+                }
+                ColsRtl := View{
+                    width: Fill height: Fit
+                    padding: Inset{top: 4. bottom: 4.}
+                    flow: Right spacing: 14
+                    align: Align{y: 0.0}
+                    c3 := WrapLabel{
+                        width: Fixed(96.)
+                        body: ""
+                        flow: Right{wrap: true}
+                        font_color: #x0B1220
+                        font_size: 13.
+                    }
+                    c2 := WrapLabel{
+                        width: Fixed(96.)
+                        body: ""
+                        flow: Right{wrap: true}
+                        font_color: #x0B1220
+                        font_size: 13.
+                    }
+                    c1 := WrapLabel{
+                        width: Fixed(44.)
+                        body: ""
+                        flow: Right{wrap: true}
+                        font_color: #x0B1220
+                        font_size: 13.
+                    }
+                    c0 := WrapLabel{
+                        width: Fill
+                        body: ""
+                        flow: Right{wrap: true}
+                        font_color: #x0B1220
+                        font_size: 13.
+                    }
+                }
                 Gap := View{
                     width: Fill height: 10
                 }

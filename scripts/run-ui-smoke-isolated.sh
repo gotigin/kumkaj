@@ -26,9 +26,9 @@ cd "$ROOT"
 
 APP="${1:-all}"
 case "$APP" in
-  khaynjo | moklanjo | all) ;;
+  khaynjo | moklanjo | kirano | tabiyat | all) ;;
   *)
-    echo "usage: $0 [khaynjo|moklanjo|all]" >&2
+    echo "usage: $0 [khaynjo|moklanjo|kirano|tabiyat|all]" >&2
     exit 2
     ;;
 esac
@@ -166,6 +166,14 @@ smoke_one() {
     crate=kumkaj-khaynjo
     bin=kumkaj-khaynjo
     label=Khaynjo
+  elif [[ "$kind" == "kirano" ]]; then
+    crate=kumkaj-kirano
+    bin=kumkaj-kirano
+    label=Kirano
+  elif [[ "$kind" == "tabiyat" ]]; then
+    crate=kumkaj-tabiyat
+    bin=kumkaj-tabiyat
+    label=Tabiyat
   else
     crate=kumkaj-moklanjo
     bin=kumkaj-moklanjo
@@ -300,9 +308,13 @@ RC=0
 case "$APP" in
   khaynjo) smoke_one khaynjo || RC=1 ;;
   moklanjo) smoke_one moklanjo || RC=1 ;;
+  kirano) smoke_one kirano || RC=1 ;;
+  tabiyat) smoke_one tabiyat || RC=1 ;;
   all)
     smoke_one khaynjo || RC=1
     smoke_one moklanjo || RC=1
+    smoke_one kirano || RC=1
+    smoke_one tabiyat || RC=1
     ;;
 esac
 

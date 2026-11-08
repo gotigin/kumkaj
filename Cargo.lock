@@ -1151,7 +1151,55 @@ name = "khaynjo-windows-dev"
 version = "0.1.0"
 
 [[package]]
+name = "kirano-android-dev"
+version = "0.1.0"
+
+[[package]]
+name = "kirano-dev"
+version = "0.1.0"
+
+[[package]]
+name = "kirano-site"
+version = "0.1.0"
+dependencies = [
+ "makepad-widgets",
+]
+
+[[package]]
+name = "kirano-windows-dev"
+version = "0.1.0"
+
+[[package]]
 name = "kumkaj-khaynjo"
+version = "0.1.0"
+dependencies = [
+ "ab_glyph_rasterizer",
+ "arboard",
+ "chrono",
+ "dirs",
+ "flate2",
+ "hex",
+ "image",
+ "libc",
+ "makepad-widgets",
+ "qrcode",
+ "rand 0.8.8",
+ "rfd",
+ "rusqlite",
+ "rust_decimal",
+ "rustybuzz",
+ "serde",
+ "serde_json",
+ "sha2",
+ "sys-locale",
+ "tungstenite",
+ "unicode-bidi",
+ "ureq",
+ "uuid",
+]
+
+[[package]]
+name = "kumkaj-kirano"
 version = "0.1.0"
 dependencies = [
  "ab_glyph_rasterizer",
@@ -1212,6 +1260,35 @@ name = "kumkaj-site"
 version = "0.1.0"
 dependencies = [
  "makepad-widgets",
+]
+
+[[package]]
+name = "kumkaj-tabiyat"
+version = "0.1.0"
+dependencies = [
+ "ab_glyph_rasterizer",
+ "arboard",
+ "chrono",
+ "dirs",
+ "flate2",
+ "hex",
+ "image",
+ "libc",
+ "makepad-widgets",
+ "qrcode",
+ "rand 0.8.8",
+ "rfd",
+ "rusqlite",
+ "rust_decimal",
+ "rustybuzz",
+ "serde",
+ "serde_json",
+ "sha2",
+ "sys-locale",
+ "tungstenite",
+ "unicode-bidi",
+ "ureq",
+ "uuid",
 ]
 
 [[package]]
@@ -2572,6 +2649,25 @@ checksum = "8eab9a99a024a169fe8a903cf9d4a3b3601109bcc13bd9e3c6fff259138626c4"
 dependencies = [
  "libc",
 ]
+
+[[package]]
+name = "tabiyat-android-dev"
+version = "0.1.0"
+
+[[package]]
+name = "tabiyat-dev"
+version = "0.1.0"
+
+[[package]]
+name = "tabiyat-site"
+version = "0.1.0"
+dependencies = [
+ "makepad-widgets",
+]
+
+[[package]]
+name = "tabiyat-windows-dev"
+version = "0.1.0"
 
 [[package]]
 name = "tempfile"

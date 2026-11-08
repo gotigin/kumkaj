@@ -11,7 +11,7 @@
 //!
 //! In the browser, `#trade` or `#3` in the URL opens that chapter, and a
 //! page served from 127.0.0.1 / localhost links to the local product sites
-//! (moklanjo :8011, khaynjo :8012) instead of the public domains.
+//! (moklanjo :8011, khaynjo :8012, kirano :8013, tabiyat :8014) instead of the public domains.
 
 pub use makepad_widgets;
 
@@ -195,6 +195,8 @@ impl Tier {
 enum Product {
     Moklanjo,
     Khaynjo,
+    Kirano,
+    Tabiyat,
 }
 
 impl Product {
@@ -202,6 +204,8 @@ impl Product {
         match self {
             Self::Moklanjo => "moklanjo.com",
             Self::Khaynjo => "khaynjo.com",
+            Self::Kirano => "kirano.shop",
+            Self::Tabiyat => "tabiyat.shop",
         }
     }
 
@@ -210,6 +214,8 @@ impl Product {
         match self {
             Self::Moklanjo => 8011,
             Self::Khaynjo => 8012,
+            Self::Kirano => 8013,
+            Self::Tabiyat => 8014,
         }
     }
 }
@@ -562,6 +568,16 @@ impl MatchEvent for App {
             || self.ui.button(cx, ids!(gotigin.close_khaynjo)).clicked(actions);
         if khaynjo {
             self.open_product(cx, Product::Khaynjo);
+        }
+        let kirano = self.ui.button(cx, ids!(trade.to_kirano)).clicked(actions)
+            || self.ui.button(cx, ids!(gotigin.close_kirano)).clicked(actions);
+        if kirano {
+            self.open_product(cx, Product::Kirano);
+        }
+        let tabiyat = self.ui.button(cx, ids!(trade.to_tabiyat)).clicked(actions)
+            || self.ui.button(cx, ids!(gotigin.close_tabiyat)).clicked(actions);
+        if tabiyat {
+            self.open_product(cx, Product::Tabiyat);
         }
     }
 }

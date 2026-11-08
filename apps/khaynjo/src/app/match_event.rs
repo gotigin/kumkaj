@@ -3144,12 +3144,12 @@ impl MatchEvent for App {
             // IME and scroll feel broken.
             self.refresh_menu_pick_search(cx);
         }
-        // Customer paid / tip: the change line follows live.
+        // Customer paid / tip: the change line follows live — not full sync_chrome.
         let tendered_changed = self.ui.text_input(cx, ids!(tendered_input)).changed(actions).is_some();
         let tip_changed = self.ui.text_input(cx, ids!(tip_input)).changed(actions).is_some();
         let cash_changed = self.ui.text_input(cx, ids!(mix_cash_input)).changed(actions).is_some();
         if tendered_changed || tip_changed || cash_changed {
-            self.sync_chrome(cx);
+            self.paint_pay_change_line(cx);
         }
         if self.ui.button(cx, ids!(kot_station_dd)).clicked(actions) {
             let empty_msg = {
@@ -3648,27 +3648,18 @@ impl MatchEvent for App {
                 }
             }
         }
-        // Floor columns typed: Enter (or Done on a phone) or leaving the field
-        // applies it. A pick from the list applies above.
-        {
-            let input = self.ui.text_input(cx, ids!(floor_cols_input));
-            if let Some((text, _)) = input.returned(actions) {
-                app_state().lock().unwrap().suggest_open = None;
-                self.place_floor_cols_suggest(cx);
-                self.apply_floor_columns(cx, &text);
-            } else if input.key_focus_lost(actions) {
-                let text = input.text();
-                self.apply_floor_columns(cx, &text);
+        // Floor columns: pick-only dropdown (no soft keyboard). List pick
+        // applies above; the button toggles the floating list.
+        if self.ui.button(cx, ids!(floor_cols_dd)).clicked(actions) {
+            {
+                let mut st = app_state().lock().unwrap();
+                if st.suggest_open == Some(SuggestField::FloorColumns) {
+                    st.suggest_open = None;
+                } else {
+                    st.open_suggest(SuggestField::FloorColumns, "");
+                }
             }
-        }
-        // Tap outside the Columns modal panel dismisses the pick list.
-        if self
-            .ui
-            .modal(cx, ids!(floor_cols_dd_modal))
-            .dismissed(actions)
-        {
-            app_state().lock().unwrap().suggest_open = None;
-            self.place_floor_cols_suggest(cx);
+            self.sync_chrome(cx);
         }
         // Floor zoom − / + (turns Auto off) and Auto fill-width.
         if self.ui.button(cx, ids!(floor_zoom_out)).clicked(actions) {
@@ -4013,45 +4004,30 @@ impl MatchEvent for App {
             }
         }
         self.handle_diag_actions(cx, actions);
-        // "Type or pick" fields (suggest.rs): focus opens the list (empty =
-        // everything the shop has), typing narrows it, a tap fills the field,
-        // Escape or focusing another field closes it. Losing focus alone does
-        // not close it: tapping a row takes focus off the field first.
+        // "Type or pick" fields (suggest.rs, rules in popup.rs): a tap on the
+        // field opens the list (`route_popup_input`), typing narrows it, a
+        // tap on a row fills the field, Escape / Back / an outside press /
+        // focusing another field closes it. Focus alone opens nothing — a
+        // modal closing hands focus back to its field and reopened the list.
         {
             let open = app_state().lock().unwrap().suggest_open;
-            let mut changed = false;
+            // Typing only narrows the open list — never full sync_chrome (IME /
+            // Settings SQL freeze). Picks, Escape, and focus-elsewhere still
+            // need chrome paint.
+            let mut typed = false;
+            let mut needs_chrome = false;
             let mut picked: Option<(SuggestField, String)> = None;
             for field in SuggestField::ALL {
                 // Kitchen / place / printer-assign / team stations open via
                 // chrome (dd or always-open), not type-in.
-                if field != SuggestField::KotStation
-                    && field != SuggestField::PrinterPlace
-                    && field != SuggestField::PrinterAssign
-                    && field != SuggestField::StationVps
-                    && field != SuggestField::BillPrinters
-                    && field != SuggestField::TestPrinters
-                    && field != SuggestField::KotTestPrinters
-                    && field != SuggestField::TeamKotStations
-                {
+                if !field.opens_by_chrome() {
                     let input = self.ui.text_input(cx, field.input());
-                    let uid = input.widget_uid();
-                    let focused = actions
-                        .filter_widget_actions_cast::<TextInputAction>(uid)
-                        .any(|a| matches!(a, TextInputAction::KeyFocus));
-                    let typed = input.changed(actions);
-                    if focused || typed.is_some() {
-                        // A dropdown opens on every choice, not filtered by
-                        // the value already showing (Floor columns).
-                        let text = match typed {
-                            Some(t) => t,
-                            None if field == SuggestField::FloorColumns => String::new(),
-                            None => input.text(),
-                        };
+                    if let Some(text) = input.changed(actions) {
                         app_state().lock().unwrap().open_suggest(field, &text);
-                        changed = true;
+                        typed = true;
                     } else if input.escaped(actions) && open == Some(field) {
                         app_state().lock().unwrap().suggest_open = None;
-                        changed = true;
+                        needs_chrome = true;
                     }
                 }
                 if open == Some(field) {
@@ -4077,7 +4053,7 @@ impl MatchEvent for App {
                                 };
                                 if let Some(to) = to {
                                     self.reorder_kot_station_priority(cx, item_id, to);
-                                    changed = true;
+                                    needs_chrome = true;
                                 }
                                 continue;
                             }
@@ -4094,7 +4070,7 @@ impl MatchEvent for App {
                                 };
                                 if let Some(to) = to {
                                     self.reorder_kot_station_priority(cx, item_id, to);
-                                    changed = true;
+                                    needs_chrome = true;
                                 }
                                 continue;
                             }
@@ -4197,7 +4173,8 @@ impl MatchEvent for App {
             }
             // Another (ordinary) field took focus: the open list is done.
             if let Some(field) = open
-                && !changed
+                && !typed
+                && !needs_chrome
             {
                 let mine = self.ui.text_input(cx, field.input()).widget_uid();
                 let elsewhere = actions.iter().filter_map(|a| a.as_widget_action()).any(|wa| {
@@ -4206,18 +4183,11 @@ impl MatchEvent for App {
                 });
                 if elsewhere {
                     app_state().lock().unwrap().suggest_open = None;
-                    changed = true;
+                    needs_chrome = true;
                 }
             }
             if let Some((field, value)) = picked {
-                if field != SuggestField::KotStation
-                    && field != SuggestField::PrinterPlace
-                    && field != SuggestField::PrinterAssign
-                    && field != SuggestField::StationVps
-                    && field != SuggestField::BillPrinters
-                    && field != SuggestField::TestPrinters
-                    && field != SuggestField::KotTestPrinters
-                {
+                if field.opener().is_none() {
                     self.ui.text_input(cx, field.input()).set_text(cx, &value);
                 }
                 if field == SuggestField::FloorColumns {
@@ -4275,7 +4245,7 @@ impl MatchEvent for App {
                         st.status = format!("Credit customer: {name}");
                     }
                 }
-                changed = true;
+                needs_chrome = true;
                 // Pick = do the thing. No second Confirm/Use/Remove/Switch button.
                 let kot_clear = if field == SuggestField::KotStation {
                     st.suggest_rows
@@ -4393,7 +4363,7 @@ impl MatchEvent for App {
                         self.ui
                             .widget(cx, ids!(printer_assign_suggest))
                             .redraw(cx);
-                        changed = false;
+                        needs_chrome = false;
                     }
                     SuggestField::StationPrint => {
                         let msg = {
@@ -4435,7 +4405,7 @@ impl MatchEvent for App {
                         self.paint_station_print_attach(cx);
                         self.sync_job_drive_ui(cx);
                         self.ui.widget(cx, field.list()).redraw(cx);
-                        changed = false;
+                        needs_chrome = false;
                     }
                     SuggestField::TestPrinters | SuggestField::KotTestPrinters => {
                         let msg = {
@@ -4458,30 +4428,32 @@ impl MatchEvent for App {
                         self.paint_printers_panel(cx);
                         self.sync_kot_format_ui(cx);
                         self.ui.widget(cx, field.list()).redraw(cx);
-                        changed = false;
+                        needs_chrome = false;
                     }
                     _ => {}
                 }
             }
-            if changed {
+            if needs_chrome {
                 self.sync_chrome(cx);
-                self.place_floor_cols_suggest(cx);
-                for field in SuggestField::ALL {
-                    self.ui.widget(cx, field.list()).redraw(cx);
-                }
+                self.redraw_suggest_lists(cx);
+            } else if typed {
+                // Narrow-only: list rows update without rebuilding the shell.
+                self.redraw_suggest_lists(cx);
             }
         }
-        // Category field: same picker behaviour as the item name — opens on
-        // focus (empty = all categories + suggestions), narrows as you type,
-        // Escape closes. Typing makes it the owner's own choice.
+        // Category field: tap / typing / ↓ open (popup.rs); Escape / outside /
+        // focus on another field closes — same as SuggestList.
         {
             let input = self.ui.text_input(cx, ids!(menu_category_input));
-            let focused = actions
-                .filter_widget_actions_cast::<TextInputAction>(input.widget_uid())
-                .any(|a| matches!(a, TextInputAction::KeyFocus));
             let typed = input.changed(actions);
             let escaped = input.escaped(actions);
-            if focused || typed.is_some() || escaped {
+            let cat_open = app_state().lock().unwrap().category_picker_open;
+            let focus_elsewhere = cat_open
+                && actions.iter().filter_map(|a| a.as_widget_action()).any(|wa| {
+                    wa.widget_uid != input.widget_uid()
+                        && matches!(wa.cast::<TextInputAction>(), TextInputAction::KeyFocus)
+                });
+            if typed.is_some() || escaped || focus_elsewhere {
                 let text = typed.clone().unwrap_or_else(|| input.text());
                 {
                     let mut st = app_state().lock().unwrap();
@@ -4495,14 +4467,16 @@ impl MatchEvent for App {
                             st.form_category_photo = None;
                         }
                     }
-                    st.category_picker_open = !escaped;
-                    if !escaped {
+                    if escaped || focus_elsewhere {
+                        st.category_picker_open = false;
+                    } else if typed.is_some() {
+                        st.category_picker_open = true;
                         st.suggest_open = None;
                         st.dish_picker_open = false;
                         st.refresh_category_picks(&text);
                     }
                 }
-                self.sync_chrome(cx);
+                self.ui.widget(cx, ids!(category_pick_list)).redraw(cx);
             }
         }
         {
@@ -4539,31 +4513,34 @@ impl MatchEvent for App {
                 self.sync_chrome(cx);
             }
         }
-        // The picker opens as soon as the name field is focused — empty, it
-        // browses every dish, so an owner who would rather not type (or not
-        // type in English) can just pick. Typing narrows it (your own name
-        // first); clearing the text goes back to browsing. Escape closes it.
-        // Losing focus does not: tapping a row takes focus off the field
-        // before the tap lands. Also keeps the draft thumb's initials live.
+        // Dish picker: tap / typing / ↓ open (popup.rs). Escape / outside /
+        // focus on another field closes — same as SuggestList.
         {
             let name_input = self.ui.text_input(cx, ids!(menu_name_input));
-            let focused = actions
-                .filter_widget_actions_cast::<TextInputAction>(name_input.widget_uid())
-                .any(|a| matches!(a, TextInputAction::KeyFocus));
             let typed = name_input.changed(actions);
             let escaped = name_input.escaped(actions);
-            if focused || typed.is_some() || escaped {
-                let text = typed.unwrap_or_else(|| name_input.text());
+            let dish_open = app_state().lock().unwrap().dish_picker_open;
+            let focus_elsewhere = dish_open
+                && actions.iter().filter_map(|a| a.as_widget_action()).any(|wa| {
+                    wa.widget_uid != name_input.widget_uid()
+                        && matches!(wa.cast::<TextInputAction>(), TextInputAction::KeyFocus)
+                });
+            if typed.is_some() || escaped || focus_elsewhere {
                 {
                     let mut st = app_state().lock().unwrap();
-                    st.dish_picker_open = !escaped;
-                    if !escaped {
+                    if escaped || focus_elsewhere {
+                        st.dish_picker_open = false;
+                    } else if let Some(ref t) = typed {
+                        st.dish_picker_open = true;
                         st.suggest_open = None;
                         st.category_picker_open = false;
-                        st.refresh_dish_picks(&text);
+                        st.refresh_dish_picks(t);
                     }
                 }
-                self.sync_chrome(cx);
+                if typed.is_some() {
+                    self.paint_menu_draft_thumb(cx);
+                }
+                self.ui.widget(cx, ids!(dish_pick_list)).redraw(cx);
             }
         }
 
@@ -6008,6 +5985,45 @@ impl MatchEvent for App {
             }
             self.sync_chrome(cx);
         }
+        if self.ui.button(cx, ids!(bill_format_reset)).clicked(actions) {
+            // Layout/typography back to product default; keep shop address + UPI text.
+            let result = (|| -> Result<String, String> {
+                let mut st = app_state().lock().unwrap();
+                let keep_header = st.bill_slip_draft.header.clone();
+                let keep_fssai = st.bill_slip_draft.fssai.clone();
+                let keep_upi_vpa = st.bill_slip_draft.upi_vpa.clone();
+                let keep_upi_payee = st.bill_slip_draft.upi_payee.clone();
+                let mut fmt = print_share::BillSlipFormat::default();
+                fmt.header = keep_header;
+                fmt.fssai = keep_fssai;
+                fmt.upi_vpa = keep_upi_vpa;
+                fmt.upi_payee = keep_upi_payee;
+                let fmt = fmt.clamped();
+                let em = fmt.style(print_share::BillStyleField::Items).size_em as f32;
+                st.bill_slip_draft = fmt.clone();
+                st.printer_draft.set_standard_em(em);
+                st.books_op(BooksOp::SetBillFormat {
+                    header: fmt.header_lines(),
+                    fssai: fmt.fssai.clone(),
+                    footer: fmt.footer.clone(),
+                    upi_vpa: Some(fmt.upi_vpa.clone()),
+                    upi_payee: Some(fmt.upi_payee.clone()),
+                    styles: fmt.to_json(),
+                })?;
+                st.books_op(BooksOp::SetStandardEm { em })?;
+                Ok(st.t("bill_format_reset"))
+            })();
+            match result {
+                Ok(msg) => {
+                    self.publish_print_formats();
+                    self.fill_bill_format_fields(cx);
+                    self.sync_bill_format_ui(cx);
+                    self.set_status(cx, msg);
+                }
+                Err(e) => self.set_status(cx, e),
+            }
+            self.sync_chrome(cx);
+        }
         // Bill & KOT format — Bill | KOT tabs under the section header.
         {
             let mut tab_changed = false;
@@ -6031,6 +6047,39 @@ impl MatchEvent for App {
             }
             if tab_changed {
                 self.sync_bill_kot_tabs(cx);
+                self.ui.redraw(cx);
+            }
+        }
+        // Kitchen — Live | Recall | Stations (mutually exclusive panels).
+        {
+            let mut tab = None;
+            if self.choice_chip_clicked(
+                cx,
+                actions,
+                ids!(kitchen_tab_live),
+                ids!(kitchen_tab_live_on),
+            ) {
+                tab = Some(KitchenPanel::Live);
+            }
+            if self.choice_chip_clicked(
+                cx,
+                actions,
+                ids!(kitchen_tab_recall),
+                ids!(kitchen_tab_recall_on),
+            ) {
+                tab = Some(KitchenPanel::Recall);
+            }
+            if self.choice_chip_clicked(
+                cx,
+                actions,
+                ids!(kitchen_tab_stations),
+                ids!(kitchen_tab_stations_on),
+            ) {
+                tab = Some(KitchenPanel::Stations);
+            }
+            if let Some(panel) = tab {
+                app_state().lock().unwrap().kitchen_panel = panel;
+                self.sync_kitchen_panels(cx);
                 self.ui.redraw(cx);
             }
         }
@@ -6527,6 +6576,30 @@ impl MatchEvent for App {
                     st.kot_slip_draft = saved;
                 }
                 Ok(st.t("kot_format_saved"))
+            })();
+            match result {
+                Ok(msg) => {
+                    self.publish_print_formats();
+                    self.sync_kot_format_ui(cx);
+                    self.set_status(cx, msg);
+                }
+                Err(e) => self.set_status(cx, e),
+            }
+            self.sync_chrome(cx);
+        }
+        if self.ui.button(cx, ids!(kot_format_reset)).clicked(actions) {
+            let result = (|| -> Result<String, String> {
+                let mut st = app_state().lock().unwrap();
+                let format = print_share::KotSlipFormat::default();
+                st.kot_slip_draft = format.clone();
+                st.books_op(BooksOp::SetKotFormat { format })?;
+                if st.device_role != DeviceRole::Client
+                    && let Some(store) = st.store.as_ref()
+                    && let Ok(saved) = store.kot_slip_format()
+                {
+                    st.kot_slip_draft = saved;
+                }
+                Ok(st.t("kot_format_reset"))
             })();
             match result {
                 Ok(msg) => {
@@ -7931,14 +8004,21 @@ impl MatchEvent for App {
             let name = Some(self.ui.text_input(cx, ids!(client_name_input)).text())
                 .filter(|n| !n.trim().is_empty())
                 .unwrap_or_else(device_name);
-            let expect_server_id = {
+            let (expect_server_id, device_id) = {
                 let st = app_state().lock().unwrap();
                 let host_trim = host.trim().to_string();
-                st.found_servers
+                let expect = st
+                    .found_servers
                     .iter()
                     .find(|f| f.host == host_trim)
                     .map(|f| f.server_id.clone())
-                    .filter(|id| !id.trim().is_empty())
+                    .filter(|id| !id.trim().is_empty());
+                let device_id = st
+                    .store
+                    .as_ref()
+                    .and_then(|s| s.lan_client_id().ok())
+                    .unwrap_or_default();
+                (expect, device_id)
             };
             if host.trim().is_empty() || code.trim().is_empty() {
                 self.set_status(cx, "Type the shop device's address and its pairing code");
@@ -7956,6 +8036,7 @@ impl MatchEvent for App {
                             &host,
                             &code,
                             name.trim(),
+                            &device_id,
                             expect_server_id.as_deref(),
                         );
                         *lan_once().lock().unwrap() = Some(LanOnce::Paired(reply));

@@ -295,6 +295,11 @@ impl AppMain for App {
             }
             self.tick_smoke_script(cx);
         }
+        // Type-or-pick lists first (popup.rs): an outside press closes the
+        // open list, a tap on a field opens its list. Before every pointer
+        // handler below — some return early (a nav-tab tap). The press
+        // itself still reaches whatever is under it.
+        self.route_popup_input(cx, event);
         if self.pointer_sidebar_settings_drag(cx, event) {
             return;
         }

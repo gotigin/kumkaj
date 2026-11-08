@@ -1888,6 +1888,82 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
         self.repair_focused_carets(cx);
     }
 
+    /// Settle change/tip line only — typing tendered/tip/cash must not rebuild
+    /// the whole shell (IME + Settings SQL freeze on phones).
+    fn paint_pay_change_line(&mut self, cx: &mut Cx) {
+        let tendered_text = self.ui.text_input(cx, ids!(tendered_input)).text();
+        let tip_text = self.ui.text_input(cx, ids!(tip_input)).text();
+        let cash_text = self.ui.text_input(cx, ids!(mix_cash_input)).text();
+        let change_line = {
+            let st = app_state().lock().unwrap();
+            let currency = st.locale.currency.clone();
+            let parse = |t: &str| -> i64 {
+                let t = t.trim();
+                if t.is_empty() {
+                    0
+                } else {
+                    locale::parse_major_input(t, &currency).unwrap_or(0)
+                }
+            };
+            let charged = st
+                .cart
+                .to_sale_draft()
+                .ok()
+                .and_then(|d| st.store.as_ref().and_then(|s| s.preview_sale_total(&d).ok()))
+                .unwrap_or(0);
+            let tendered = parse(&tendered_text);
+            let tip = parse(&tip_text);
+            let cash_part = if cash_text.trim().is_empty() {
+                charged
+            } else {
+                parse(&cash_text)
+            };
+            let mut parts = Vec::new();
+            if tendered > 0 {
+                let change = tendered - cash_part - tip;
+                parts.push(if change >= 0 {
+                    format!("{}: {}", st.t("return_to_customer"), st.money(Money(change)))
+                } else {
+                    format!("{} {}", st.t("short_by"), st.money(Money(-change)))
+                });
+            }
+            if tip > 0 {
+                parts.push(format!("{}: {}", st.t("tip_not_sale"), st.money(Money(tip))));
+            }
+            if parts.is_empty() {
+                " ".to_string()
+            } else {
+                parts.join(" · ")
+            }
+        };
+        self.ui
+            .widget(cx, ids!(change_label))
+            .set_text(cx, &plain_display_text(&change_line));
+    }
+
+    /// Draft dish thumb + image hint while typing the Menu name (no full chrome).
+    fn paint_menu_draft_thumb(&mut self, cx: &mut Cx) {
+        let image_hint = {
+            let st = app_state().lock().unwrap();
+            let name = self.ui.text_input(cx, ids!(menu_name_input)).text();
+            menu_images::describe_image(st.draft_image_key.as_deref(), &name)
+        };
+        self.ui
+            .widget(cx, ids!(image_status))
+            .set_text(cx, &plain_display_text(&image_hint));
+        let (draft_key, name) = {
+            let st = app_state().lock().unwrap();
+            (
+                st.draft_image_key.clone(),
+                self.ui.text_input(cx, ids!(menu_name_input)).text(),
+            )
+        };
+        let dir = item_images_dir();
+        let path = image_key_path(draft_key.as_deref(), &dir);
+        let preview = self.ui.widget(cx, ids!(draft_preview));
+        apply_thumb_avatar(cx, &preview, &name, &path);
+    }
+
     /// A tile in the menu window: one more of that dish on the order.
     fn add_product_to_cart(&mut self, cx: &mut Cx, index: usize) {
         self.dismiss_soft_keyboard(cx);
@@ -2317,81 +2393,37 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
         }
     }
 
-    /// Put this area's columns into the Floor field, unless the person is
-    /// typing in it (`force` after applying / switching tabs).
-    fn sync_floor_columns_field(&mut self, cx: &mut Cx, force: bool) {
-        let input = self.ui.text_input(cx, ids!(floor_cols_input));
-        if !force && cx.has_key_focus(input.area()) {
-            return;
+    /// Put this area's columns on the Floor dropdown face (`force` kept for
+    /// call sites after apply / tab switch; there is no type-in focus path).
+    fn sync_floor_columns_field(&mut self, cx: &mut Cx, _force: bool) {
+        let (cols, face) = {
+            let st = app_state().lock().unwrap();
+            let cols = st.floor_columns;
+            let face = if cols == 0 {
+                st.t("floor_cols_ph")
+            } else {
+                cols.to_string()
+            };
+            (cols, face)
+        };
+        let btn = self.ui.button(cx, ids!(floor_cols_dd));
+        if btn.text() != face {
+            btn.set_text(cx, &face);
         }
-        let cols = app_state().lock().unwrap().floor_columns;
-        let want = if cols == 0 { String::new() } else { cols.to_string() };
+        // Keep the collapsed legacy input in sync for SuggestField::input().
+        let input = self.ui.text_input(cx, ids!(floor_cols_input));
+        let want = if cols == 0 {
+            String::new()
+        } else {
+            cols.to_string()
+        };
         if input.text() != want {
             input.set_text(cx, &want);
         }
         self.paint_floor_zoom_chrome(cx);
-        self.paint_floor_cols_field_dir(cx);
-        self.place_floor_cols_suggest(cx);
-    }
-
-    /// Columns field: row stays on the physical start (left) of the body —
-    /// window chrome is not mirrored for RTL (DEV.md). Text alignment comes
-    /// from `apply_text_alignment`; the chevron sits on the trailing edge
-    /// (right in LTR, left in RTL). Field padding is symmetric in DSL so
-    /// either side clears the glyph (TextInput.layout is private).
-    fn paint_floor_cols_field_dir(&mut self, cx: &mut Cx) {
-        let rtl = locale::is_rtl(&app_state().lock().unwrap().locale.language);
-        if let Some(mut row) = self.ui.view(cx, ids!(floor_cols_chev_row)).borrow_mut() {
-            row.layout.align.x = if rtl { 0.0 } else { 1.0 };
-        }
-        if let Some(mut chev) = self.ui.label(cx, ids!(floor_cols_chev)).borrow_mut() {
-            chev.walk.margin = if rtl {
-                Inset {
-                    left: 14.0,
-                    right: 0.0,
-                    top: 0.0,
-                    bottom: 0.0,
-                }
-            } else {
-                Inset {
-                    left: 0.0,
-                    right: 14.0,
-                    top: 0.0,
-                    bottom: 0.0,
-                }
-            };
-        }
-    }
-
-    /// Show / hide the Floor Columns pick modal under `floor_cols_box`.
-    /// Lives in a Modal (overlay draw list) so the open menu never stretches
-    /// the cols row or shoves the table grid.
-    fn place_floor_cols_suggest(&mut self, cx: &mut Cx) {
-        let open = app_state().lock().unwrap().suggest_open == Some(SuggestField::FloorColumns);
-        let panel = self.ui.view(cx, ids!(floor_cols_dd_panel));
-        let modal = self.ui.modal(cx, ids!(floor_cols_dd_modal));
-        if !open {
-            panel.set_visible(cx, false);
-            modal.close(cx);
-            return;
-        }
-        let box_r = self.ui.view(cx, ids!(floor_cols_box)).area().rect(cx);
-        if box_r.size.x < 1.0 || box_r.size.y < 1.0 {
-            return;
-        }
-        let pos = DVec2 {
-            x: box_r.pos.x,
-            y: box_r.pos.y + box_r.size.y + 4.0,
-        };
-        if let Some(mut v) = panel.borrow_mut() {
-            v.walk.abs_pos = Some(pos);
-            v.walk.width = Size::Fixed(box_r.size.x.max(176.0));
-            v.walk.height = Size::fit();
-        }
-        panel.set_visible(cx, true);
-        modal.open(cx);
-        self.ui.widget(cx, ids!(floor_cols_suggest)).redraw(cx);
-        panel.redraw(cx);
+        // The Columns list floats under the button (AnchoredPopup): repaint
+        // it with the new value ticked, or gone when the state closed it.
+        self.redraw_popups(cx);
     }
 
     /// Auto on/off face next to Columns; −/+ stay as SegBtn.

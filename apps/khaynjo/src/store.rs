@@ -1520,6 +1520,17 @@ impl Store {
         Ok(())
     }
 
+    /// Stable id for this install — sent on pair so the shop upserts the same
+    /// Other-devices row instead of adding a duplicate after re-pair.
+    pub fn lan_client_id(&self) -> Result<String, String> {
+        if let Some(id) = self.meta_get("lan_client_id")?.filter(|s| !s.trim().is_empty()) {
+            return Ok(id);
+        }
+        let id = new_id();
+        self.meta_set("lan_client_id", &id)?;
+        Ok(id)
+    }
+
     pub fn client_device_token(&self) -> Result<Option<String>, String> {
         Ok(self.meta_get("device_token")?.filter(|s| !s.trim().is_empty()))
     }
@@ -1550,6 +1561,7 @@ impl Store {
         self.meta_set("client_paired", "0")?;
         self.meta_set("server_url", "")?;
         self.meta_set("paired_server_id", "")?;
+        // Keep `lan_client_id` so re-pair updates the same shop row.
         Ok(())
     }
 
@@ -9413,16 +9425,58 @@ impl Store {
     // ------------------------------------------------------------ LAN: Server
 
     /// Pair a phone: a fresh token (only its hash is kept here).
-    pub fn pair_lan_device(&self, name: &str) -> Result<(String, String), String> {
-        let id = new_id();
+    ///
+    /// When `client_id` matches an existing row (including forgotten), update
+    /// that row in place so Other devices does not grow duplicates on re-pair.
+    pub fn pair_lan_device(&self, name: &str, client_id: &str) -> Result<(String, String), String> {
         let token = random_token()?;
         let name = name.trim();
         let name = if name.is_empty() { "Phone" } else { name };
+        let now = Local::now().to_rfc3339();
+        let client_id = client_id.trim();
+        if !client_id.is_empty() {
+            let exists: bool = self
+                .conn
+                .query_row(
+                    "SELECT COUNT(1) FROM lan_devices WHERE id = ?1",
+                    params![client_id],
+                    |r| r.get::<_, i64>(0),
+                )
+                .map(|n| n > 0)
+                .map_err(|e| e.to_string())?;
+            if exists {
+                self.conn
+                    .execute(
+                        "UPDATE lan_devices
+                            SET name = ?2, token_hash = ?3, paired_at = ?4, last_seen_at = ?4,
+                                revoked_at = ''
+                          WHERE id = ?1",
+                        params![client_id, name, lan_token_hash(&token), now],
+                    )
+                    .map_err(|e| e.to_string())?;
+                let _ = self.conn.execute(
+                    "DELETE FROM lan_sessions WHERE device_id = ?1",
+                    params![client_id],
+                );
+                self.audit_as(client_id, name, "lan.pair", "re-paired with the shop's code")?;
+                return Ok((client_id.to_string(), token));
+            }
+            self.conn
+                .execute(
+                    "INSERT INTO lan_devices(id, name, token_hash, paired_at, last_seen_at)
+                     VALUES(?1, ?2, ?3, ?4, ?4)",
+                    params![client_id, name, lan_token_hash(&token), now],
+                )
+                .map_err(|e| e.to_string())?;
+            self.audit_as(client_id, name, "lan.pair", "paired with the shop's code")?;
+            return Ok((client_id.to_string(), token));
+        }
+        let id = new_id();
         self.conn
             .execute(
                 "INSERT INTO lan_devices(id, name, token_hash, paired_at, last_seen_at)
                  VALUES(?1, ?2, ?3, ?4, ?4)",
-                params![id, name, lan_token_hash(&token), Local::now().to_rfc3339()],
+                params![id, name, lan_token_hash(&token), now],
             )
             .map_err(|e| e.to_string())?;
         // Who joined the shop and when, in the books' own history.

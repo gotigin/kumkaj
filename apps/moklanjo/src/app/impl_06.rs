@@ -112,14 +112,13 @@ fn dismiss_soft_keyboard(&mut self, cx: &mut Cx) {
             let _ = auth;
         }
         // In-screen layers before screen history (native / mouse / Android back).
+        // Suggest list first — clear + redraw so the panel does not linger.
+        if self.close_open_suggest(cx) {
+            self.sync_chrome(cx);
+            return true;
+        }
         {
             let mut st = app_state().lock().unwrap();
-            if st.suggest_open.is_some() {
-                st.suggest_open = None;
-                drop(st);
-                self.sync_chrome(cx);
-                return true;
-            }
             if st.picking_server {
                 st.picking_server = false;
                 drop(st);
