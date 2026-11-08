@@ -4826,8 +4826,9 @@ script_mod! {
                 }
                 body +: {
                     width: Fill height: Fill
-                    // Soft-keyboard field lift disabled for now (KeyboardView
-                    // shift forced to 0) — prior Android lift left beige gaps.
+                    // body is Makepad's KeyboardView: it alone lifts the
+                    // focused field above the soft keyboard from measured
+                    // DidShow/DidHide and snaps to 0 on hide (DEV.md 6f).
                     // Overlay — app_callout must NOT be a Down sibling of
                     // app_hscroll or it steals half the window height.
                     flow: Overlay
