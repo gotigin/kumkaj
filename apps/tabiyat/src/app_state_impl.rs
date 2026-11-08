@@ -922,6 +922,42 @@ impl AppState {
         lines
     }
 
+    /// Push Unit @ / Applied from the open cart row onto the running line
+    /// (so Print bill / Refresh keep the seller's pricing).
+    fn persist_cart_line_pricing(&mut self, index: usize) -> Result<(), String> {
+        let (line_id, unit_price_paise, line_total_paise) = {
+            let line = self
+                .cart
+                .lines
+                .get(index)
+                .ok_or_else(|| "Missing cart line".to_string())?;
+            let line_id = line.running_line_id.trim();
+            if line_id.is_empty() || line_id == "counter" || line_id.starts_with(QUEUED_LINE) {
+                return Ok(());
+            }
+            let line_total_paise = line.line_total_override.map(|m| m.paise()).unwrap_or(-1);
+            (
+                line_id.to_string(),
+                line.unit_price.paise(),
+                line_total_paise,
+            )
+        };
+        // Local table_action skips load_table_cart for SetLinePricing so the
+        // open line stays open. Clients still Follow::Refresh when the books
+        // bump — Applied is restored from running_lines.line_total_paise.
+        self.table_action(
+            net::RunningAction::SetLinePricing {
+                line_id,
+                unit_price_paise,
+                line_total_paise,
+            },
+            "",
+            "",
+            phone::Follow::Refresh,
+        )?;
+        Ok(())
+    }
+
     /// Run a table action where the books are: on the Server directly, or
     /// over the LAN from a paired device. Rights are checked by the Server
     /// either way. `done` is what to say once it is done; a device says it
@@ -948,6 +984,7 @@ impl AppState {
             )?;
             return Ok(Acted::Sent);
         }
+        let pricing_only = matches!(action, net::RunningAction::SetLinePricing { .. });
         let store = self.store.as_ref().ok_or("No store")?;
         let pin = Some(approval_pin).filter(|p| !p.trim().is_empty());
         let done = net::apply_running_action(store, &actor, pin, &action)?;
@@ -960,6 +997,12 @@ impl AppState {
         let text = done.text;
         // Other devices on `/wait` see the bump / seat / cancel at once.
         net::publish_books(store);
+        if pricing_only {
+            // Unit @ / Applied already live in the open cart — do not
+            // load_table_cart (that clears open_cart_line and used to feel
+            // like Print bill / any refresh "reverted" Applied).
+            return Ok(Acted::Here(text));
+        }
         self.reload_all()?;
         if let Some(tid) = self.selected_table_id.clone() {
             self.load_table_cart(&tid)?;

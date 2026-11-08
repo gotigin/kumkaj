@@ -654,7 +654,7 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
             show_staff_role,
             undo_visible,
             undo_snack_text,
-            bill_round_active,
+            _bill_round_active,
         ) = {
             let mut st = app_state().lock().unwrap();
             let session = match &st.session {
@@ -859,7 +859,7 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
                         | Screen::Branches
                 );
             let undo_snack_text = st.undo_snack_text.clone();
-            let bill_round_active = st.cart.charge_total.is_some();
+            let _bill_round_active = st.cart.charge_total.is_some();
             let today_visible = amount_key_visible(
                 st.amounts_screen_hidden,
                 &st.amount_keys_hidden,
@@ -904,7 +904,7 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
                 show_staff_role,
                 undo_visible,
                 undo_snack_text,
-                bill_round_active,
+                _bill_round_active,
             )
         };
 
@@ -2008,18 +2008,10 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
             let total_field = self.ui.text_input(cx, ids!(cart_total_input));
             let shown = total_field.text();
             if shown != total_input {
-                if bill_round_active {
-                    // Seller is editing an explicit bill round — don't clobber mid-type.
-                    if !cx.has_key_focus(total_field.area()) {
-                        total_field.set_text(cx, &total_input);
-                    }
-                } else {
-                    // Default Rounded = Applied. Always mirror the model so a
-                    // stale field from the previous line count cannot stick
-                    // (especially when the input still holds key focus).
-                    if cx.has_key_focus(total_field.area()) {
-                        total_field.take_key_focus(cx);
-                    }
+                // Never rewrite while focused — same rule as Unit @ / Applied.
+                // Stealing focus when Rounded still tracked Applied used to
+                // yank mid-keystroke and look like a revert.
+                if !cx.has_key_focus(total_field.area()) {
                     total_field.set_text(cx, &total_input);
                 }
             }

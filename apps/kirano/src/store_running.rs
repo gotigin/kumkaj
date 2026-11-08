@@ -54,30 +54,31 @@ fn row_to_line(row: &rusqlite::Row<'_>) -> rusqlite::Result<RunningLine> {
         product_id: row.get(3)?,
         name: row.get(4)?,
         unit_price_paise: row.get(5)?,
-        qty_milli: row.get(6)?,
-        unit_label: row.get(7)?,
-        note: row.get(8)?,
-        cancelled: row.get::<_, i64>(9)? != 0,
-        complimentary: row.get::<_, i64>(10)? != 0,
-        reason: row.get(11)?,
-        prepared: row.get::<_, i64>(12)? != 0,
-        changed_by: row.get(13)?,
-        approved_by: row.get(14)?,
-        created_at: row.get(15)?,
-        created_by: row.get(16)?,
-        seat_no: row.get::<_, i64>(17).unwrap_or(0),
-        held: row.get::<_, i64>(18).unwrap_or(0) != 0,
-        course_no: row.get::<_, i64>(19).unwrap_or(0),
+        line_total_paise: row.get::<_, i64>(6).unwrap_or(-1),
+        qty_milli: row.get(7)?,
+        unit_label: row.get(8)?,
+        note: row.get(9)?,
+        cancelled: row.get::<_, i64>(10)? != 0,
+        complimentary: row.get::<_, i64>(11)? != 0,
+        reason: row.get(12)?,
+        prepared: row.get::<_, i64>(13)? != 0,
+        changed_by: row.get(14)?,
+        approved_by: row.get(15)?,
+        created_at: row.get(16)?,
+        created_by: row.get(17)?,
+        seat_no: row.get::<_, i64>(18).unwrap_or(0),
+        held: row.get::<_, i64>(19).unwrap_or(0) != 0,
+        course_no: row.get::<_, i64>(20).unwrap_or(0),
     })
 }
 
 const LINE_COLUMNS: &str = "id, order_id, kot_id, product_id, name, unit_price_paise,
-    qty_milli, unit_label, note, cancelled, complimentary, reason, prepared,
+    line_total_paise, qty_milli, unit_label, note, cancelled, complimentary, reason, prepared,
     changed_by, approved_by, created_at, created_by,
     COALESCE(seat_no, 0), COALESCE(held, 0), COALESCE(course_no, 0)";
 
 const LINE_INSERT_COLUMNS: &str = "id, order_id, kot_id, product_id, name, unit_price_paise,
-    qty_milli, unit_label, note, cancelled, complimentary, reason, prepared,
+    line_total_paise, qty_milli, unit_label, note, cancelled, complimentary, reason, prepared,
     changed_by, approved_by, created_at, created_by, seat_no, held, course_no";
 
 impl Store {
@@ -225,7 +226,7 @@ impl Store {
             .execute(
                 &format!(
                     "INSERT INTO running_lines({LINE_INSERT_COLUMNS}, seq)
-                     VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14, ?15, ?16, ?17, ?18, ?19, ?20, ?21)"
+                     VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14, ?15, ?16, ?17, ?18, ?19, ?20, ?21, ?22)"
                 ),
                 params![
                     l.id,
@@ -234,6 +235,7 @@ impl Store {
                     l.product_id,
                     l.name,
                     l.unit_price_paise,
+                    l.line_total_paise,
                     l.qty_milli,
                     l.unit_label,
                     l.note,
@@ -402,6 +404,8 @@ impl Store {
                     .map_err(|e| e.to_string())?;
             } else {
                 let seq = self.next_line_seq(&order_id)?;
+                let applied = line.applied_total().paise();
+                let actual = line.actual_total().paise();
                 self.insert_running_line(
                     &RunningLine {
                         id: if line.running_line_id.is_empty() {
@@ -413,6 +417,13 @@ impl Store {
                         product_id: line.product_id.clone(),
                         name: line.name.clone(),
                         unit_price_paise: line.unit_price.paise(),
+                        line_total_paise: if line.complimentary {
+                            -1
+                        } else if applied != actual {
+                            applied
+                        } else {
+                            -1
+                        },
                         qty_milli: line.qty_milli,
                         unit_label: line.unit_label.clone(),
                         note: line.note.clone(),
@@ -1439,6 +1450,52 @@ impl Store {
             out.push((station_id, labeled, table_id, area));
         }
         Ok(out)
+    }
+
+    /// Persist unit @ and Applied for an open table line (survives Print bill).
+    pub fn set_running_line_pricing(
+        &self,
+        line_id: &str,
+        unit_price_paise: i64,
+        line_total_paise: i64,
+        actor: &StaffMember,
+    ) -> Result<(), String> {
+        self.assert_server_writer("Change a bill")?;
+        if unit_price_paise < 0 {
+            return Err("Unit price cannot be negative".into());
+        }
+        if line_total_paise < -1 {
+            return Err("Invalid line total".into());
+        }
+        let line = self.running_line(line_id)?;
+        if line.cancelled {
+            return Err("A cancelled item is not on the bill".into());
+        }
+        self.conn
+            .execute(
+                "UPDATE running_lines
+                    SET unit_price_paise = ?2, line_total_paise = ?3
+                  WHERE id = ?1",
+                params![line_id, unit_price_paise, line_total_paise],
+            )
+            .map_err(|e| e.to_string())?;
+        let currency = self.locale_settings()?.currency;
+        let applied = if line_total_paise >= 0 {
+            crate::locale::format_money(line_total_paise, &currency)
+        } else {
+            "unit×qty".into()
+        };
+        self.audit(
+            actor,
+            "bill.line_pricing",
+            &format!(
+                "{} @{} · applied {}",
+                line.name,
+                crate::locale::format_money(unit_price_paise, &currency),
+                applied
+            ),
+        )?;
+        Ok(())
     }
 
     /// Give a sent line free (NC) or charge it again. Kept at its real item,
@@ -2635,6 +2692,31 @@ mod tests {
             cart.lines = order.to_cart_lines();
             cart
         }
+    }
+
+    #[test]
+    fn set_running_line_pricing_survives_reload() {
+        let shop = shop();
+        shop.kot("D1", &[(&shop.thali, 2)]);
+        let order = shop
+            .store
+            .running_order(&shop.table("D1").id)
+            .unwrap()
+            .unwrap();
+        let line_id = order.lines[0].id.clone();
+        shop.store
+            .set_running_line_pricing(&line_id, 18_000, 35_000, &shop.owner)
+            .unwrap();
+        let again = shop.store.running_line(&line_id).unwrap();
+        assert_eq!(again.unit_price_paise, 18_000);
+        assert_eq!(again.line_total_paise, 35_000);
+        let cart = shop.bill_cart("D1");
+        let line = cart
+            .lines
+            .iter()
+            .find(|l| l.running_line_id == line_id)
+            .unwrap();
+        assert_eq!(line.line_total_override, Some(Money(35_000)));
     }
 
     /// Guest bill: columnar Item|Qty|Price|Amount by default; KOT splits of

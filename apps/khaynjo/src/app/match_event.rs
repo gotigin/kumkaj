@@ -1386,6 +1386,8 @@ impl MatchEvent for App {
         }
 
         if self.ui.button(cx, ids!(pay_mix)).clicked(actions) && self.begin_pay(cx) {
+            // Pay runs before the cart portal loop — commit open-line edits first.
+            self.commit_open_cart_line_fields(cx);
             let typed_total = self.ui.text_input(cx, ids!(cart_total_input)).text();
             let cash_text = self.ui.text_input(cx, ids!(mix_cash_input)).text();
             let upi_text = self.ui.text_input(cx, ids!(mix_upi_input)).text();
@@ -3283,6 +3285,8 @@ impl MatchEvent for App {
                 self.set_status(cx, app_t("add_dishes"));
                 self.sync_chrome(cx);
             } else {
+            // Send runs before the cart portal loop — commit open-line edits.
+            self.commit_open_cart_line_fields(cx);
             // Station already applied via checkbox dropdown taps — no type-in
             // field to re-apply on Send.
             // Only the new lines go; what the kitchen already has stays on
@@ -4808,52 +4812,6 @@ impl MatchEvent for App {
         let cart_widget = self.ui.widget(cx, ids!(cart_list));
         let cart_list = cart_widget.portal_list(cx, ids!(list));
         for (item_id, item) in cart_list.items_with_actions(actions) {
-            let stepped = if item.button(cx, ids!(minus)).clicked(actions) {
-                self.bump_cart_line(cx, item_id, -1);
-                true
-            } else if item.button(cx, ids!(plus)).clicked(actions) {
-                self.bump_cart_line(cx, item_id, 1);
-                true
-            } else if item.button(cx, ids!(hold_send_btn)).clicked(actions) {
-                {
-                    let mut st = app_state().lock().unwrap();
-                    if let Some(line) = st.cart.lines.get_mut(item_id) {
-                        if !line.is_sent() {
-                            line.hold_send = !line.hold_send;
-                        }
-                    }
-                }
-                self.sync_chrome(cx);
-                true
-            } else if item.button(cx, ids!(reprint_incl_btn)).clicked(actions) {
-                {
-                    let mut st = app_state().lock().unwrap();
-                    if let Some(line) = st.cart.lines.get_mut(item_id) {
-                        if line.is_sent() {
-                            line.reprint_skip = !line.reprint_skip;
-                        }
-                    }
-                }
-                self.sync_chrome(cx);
-                true
-            } else if item.button(cx, ids!(cancel_pick_btn)).clicked(actions) {
-                {
-                    let mut st = app_state().lock().unwrap();
-                    if let Some(line) = st.cart.lines.get_mut(item_id) {
-                        let has_running = line.is_sent()
-                            && !line.running_line_id.is_empty()
-                            && line.running_line_id != "counter"
-                            && !line.running_line_id.starts_with(QUEUED_LINE);
-                        if has_running {
-                            line.cancel_pick = !line.cancel_pick;
-                        }
-                    }
-                }
-                self.sync_chrome(cx);
-                true
-            } else {
-                false
-            };
             // Commit Unit @ / Applied / note before any close. A summary tap
             // while the field is focused used to run toggle→sync_chrome first,
             // paint the old model back into the input, then "apply" that stale
@@ -4879,31 +4837,80 @@ impl MatchEvent for App {
                 let text = note_input.text();
                 self.apply_cart_note(cx, item_id, &text);
             }
-            // ± / Hold / In-print sit inside the row: a step must not also open the details.
-            if !stepped
-                && item
-                    .view(cx, ids!(summary))
-                    .finger_up(actions)
-                    .is_some_and(finger_up_is_tap)
-            {
-                let closing =
-                    app_state().lock().unwrap().open_cart_line == Some(item_id);
-                if closing {
-                    self.apply_cart_unit_price(cx, item_id, &unit_input.text());
-                    self.apply_cart_line_total(cx, item_id, &line_total_input.text());
-                    self.apply_cart_note(cx, item_id, &note_input.text());
-                }
-                self.toggle_cart_line(cx, item_id);
-            }
-            self.handle_modifier_chips(cx, actions, &item, item_id, false);
-            for (button, action) in [
+            let minus = item.button(cx, ids!(minus)).clicked(actions);
+            let plus = item.button(cx, ids!(plus)).clicked(actions);
+            let hold = item.button(cx, ids!(hold_send_btn)).clicked(actions);
+            let reprint = item.button(cx, ids!(reprint_incl_btn)).clicked(actions);
+            let cancel_pick = item.button(cx, ids!(cancel_pick_btn)).clicked(actions);
+            let summary_tap = item
+                .view(cx, ids!(summary))
+                .finger_up(actions)
+                .is_some_and(finger_up_is_tap);
+            let line_action = [
                 (ids!(line_cancel), LineAction::Cancel),
                 (ids!(line_nc), LineAction::Complimentary),
                 (ids!(line_move), LineAction::Move),
-            ] {
-                if item.button(cx, button).clicked(actions) {
-                    self.open_line_action(cx, item_id, action);
+            ]
+            .into_iter()
+            .find(|(button, _)| item.button(cx, *button).clicked(actions));
+            // Any sync-causing row action must see the typed fields first.
+            if minus || plus || hold || reprint || cancel_pick || summary_tap || line_action.is_some()
+            {
+                self.commit_cart_row_fields(cx, item_id, &item);
+            }
+            let stepped = if minus {
+                self.bump_cart_line(cx, item_id, -1);
+                true
+            } else if plus {
+                self.bump_cart_line(cx, item_id, 1);
+                true
+            } else if hold {
+                {
+                    let mut st = app_state().lock().unwrap();
+                    if let Some(line) = st.cart.lines.get_mut(item_id) {
+                        if !line.is_sent() {
+                            line.hold_send = !line.hold_send;
+                        }
+                    }
                 }
+                self.sync_chrome(cx);
+                true
+            } else if reprint {
+                {
+                    let mut st = app_state().lock().unwrap();
+                    if let Some(line) = st.cart.lines.get_mut(item_id) {
+                        if line.is_sent() {
+                            line.reprint_skip = !line.reprint_skip;
+                        }
+                    }
+                }
+                self.sync_chrome(cx);
+                true
+            } else if cancel_pick {
+                {
+                    let mut st = app_state().lock().unwrap();
+                    if let Some(line) = st.cart.lines.get_mut(item_id) {
+                        let has_running = line.is_sent()
+                            && !line.running_line_id.is_empty()
+                            && line.running_line_id != "counter"
+                            && !line.running_line_id.starts_with(QUEUED_LINE);
+                        if has_running {
+                            line.cancel_pick = !line.cancel_pick;
+                        }
+                    }
+                }
+                self.sync_chrome(cx);
+                true
+            } else {
+                false
+            };
+            // ± / Hold / In-print sit inside the row: a step must not also open the details.
+            if !stepped && summary_tap {
+                self.toggle_cart_line(cx, item_id);
+            }
+            self.handle_modifier_chips(cx, actions, &item, item_id, false);
+            if let Some((_, action)) = line_action {
+                self.open_line_action(cx, item_id, action);
             }
         }
 
@@ -4944,22 +4951,6 @@ impl MatchEvent for App {
         let amend_widget = self.ui.widget(cx, ids!(amend_cart_list));
         let amend_list = amend_widget.portal_list(cx, ids!(list));
         for (item_id, item) in amend_list.items_with_actions(actions) {
-            if item.button(cx, ids!(minus)).clicked(actions) {
-                app_state()
-                    .lock()
-                    .unwrap()
-                    .amend_cart
-                    .bump_qty(item_id, -1);
-                self.sync_chrome(cx);
-            }
-            if item.button(cx, ids!(plus)).clicked(actions) {
-                app_state()
-                    .lock()
-                    .unwrap()
-                    .amend_cart
-                    .bump_qty(item_id, 1);
-                self.sync_chrome(cx);
-            }
             let unit_input = item.text_input(cx, ids!(unit_price));
             if let Some((text, _)) = unit_input.returned(actions) {
                 let result = (|| -> Result<(), String> {
@@ -5035,35 +5026,32 @@ impl MatchEvent for App {
                 }
                 self.sync_chrome(cx);
             }
-            // Same as Order cart: commit typed fields before closing the row.
-            if !item.button(cx, ids!(minus)).clicked(actions)
-                && !item.button(cx, ids!(plus)).clicked(actions)
-                && item
-                    .view(cx, ids!(summary))
-                    .finger_up(actions)
-                    .is_some_and(finger_up_is_tap)
-            {
-                let closing =
-                    app_state().lock().unwrap().open_cart_line == Some(item_id);
-                if closing {
-                    let unit_text = unit_input.text();
-                    let total_text = line_total_input.text();
-                    let note_text = note_input.text();
-                    let result = (|| -> Result<(), String> {
-                        let mut st = app_state().lock().unwrap();
-                        let currency = st.locale.currency.clone();
-                        let unit_minor = locale::parse_major_input(&unit_text, &currency)?;
-                        st.amend_cart.set_unit_price(item_id, Money(unit_minor))?;
-                        let total_minor = locale::parse_major_input(&total_text, &currency)?;
-                        st.amend_cart.set_line_total(item_id, Money(total_minor))?;
-                        st.amend_cart.set_note(item_id, note_text)?;
-                        Ok(())
-                    })();
-                    if let Err(e) = result {
-                        self.set_status(cx, e);
-                    }
-                    self.sync_chrome(cx);
-                }
+            let minus = item.button(cx, ids!(minus)).clicked(actions);
+            let plus = item.button(cx, ids!(plus)).clicked(actions);
+            let summary_tap = item
+                .view(cx, ids!(summary))
+                .finger_up(actions)
+                .is_some_and(finger_up_is_tap);
+            if minus || plus || summary_tap {
+                self.commit_amend_row_fields(cx, item_id, &item);
+            }
+            if minus {
+                app_state()
+                    .lock()
+                    .unwrap()
+                    .amend_cart
+                    .bump_qty(item_id, -1);
+                self.sync_chrome(cx);
+            }
+            if plus {
+                app_state()
+                    .lock()
+                    .unwrap()
+                    .amend_cart
+                    .bump_qty(item_id, 1);
+                self.sync_chrome(cx);
+            }
+            if !minus && !plus && summary_tap {
                 self.toggle_cart_line(cx, item_id);
             }
             self.handle_modifier_chips(cx, actions, &item, item_id, true);

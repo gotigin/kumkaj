@@ -368,6 +368,7 @@ fn confirm_line_action(&mut self, cx: &mut Cx) {
 
     /// Print the open table's bill (table turns 🟢 on every device).
     fn print_table_bill(&mut self, cx: &mut Cx) {
+        self.commit_open_cart_line_fields(cx);
         let pin = self.ui.text_input(cx, ids!(move_pin_input)).text();
         let result = (|| -> Result<String, String> {
             let mut st = app_state().lock().unwrap();
@@ -506,6 +507,13 @@ fn confirm_line_action(&mut self, cx: &mut Cx) {
         };
         if slot.is_none() && page_delta.is_none() {
             return;
+        }
+        // Chip tap can fire while Unit @ / Applied still holds focus — commit
+        // typed values before the modifier reprice + sync_chrome.
+        if amend {
+            self.commit_amend_row_fields(cx, index, item);
+        } else {
+            self.commit_cart_row_fields(cx, index, item);
         }
         let result = (|| -> Result<String, String> {
             let mut st = app_state().lock().unwrap();
@@ -903,6 +911,7 @@ fn confirm_line_action(&mut self, cx: &mut Cx) {
             let currency = st.locale.currency.clone();
             let minor = locale::parse_major_input(text, &currency)?;
             st.cart.set_unit_price(index, Money(minor))?;
+            st.persist_cart_line_pricing(index)?;
             st.status = format!(
                 "Unit price set · line {}",
                 st.money(
@@ -927,6 +936,7 @@ fn confirm_line_action(&mut self, cx: &mut Cx) {
             let currency = st.locale.currency.clone();
             let minor = locale::parse_major_input(text, &currency)?;
             st.cart.set_line_total(index, Money(minor))?;
+            st.persist_cart_line_pricing(index)?;
             st.status = format!(
                 "Line Applied {} · Actual {} · @ unchanged {}",
                 st.money(Money(minor)),
@@ -963,6 +973,66 @@ fn confirm_line_action(&mut self, cx: &mut Cx) {
             self.set_status(cx, e);
         }
         self.sync_chrome(cx);
+    }
+
+    /// Pull Unit @ / Applied / note from a ticket row into the cart before any
+    /// action that sync-paints (close, Cancel/NC/Move, ±, modifiers, pay, Send
+    /// KOT). Quiet — no status spam; caller syncs when needed.
+    fn commit_cart_row_fields(&mut self, cx: &mut Cx, index: usize, item: &WidgetRef) {
+        let unit_text = item.text_input(cx, ids!(unit_price)).text();
+        let total_text = item.text_input(cx, ids!(line_total)).text();
+        let note_text = item.text_input(cx, ids!(note)).text();
+        let result = (|| -> Result<(), String> {
+            let mut st = app_state().lock().unwrap();
+            if index >= st.cart.lines.len() {
+                return Ok(());
+            }
+            let currency = st.locale.currency.clone();
+            let unit_minor = locale::parse_major_input(&unit_text, &currency)?;
+            st.cart.set_unit_price(index, Money(unit_minor))?;
+            let total_minor = locale::parse_major_input(&total_text, &currency)?;
+            st.cart.set_line_total(index, Money(total_minor))?;
+            st.cart.set_note(index, note_text)?;
+            st.persist_cart_line_pricing(index)?;
+            Ok(())
+        })();
+        if let Err(e) = result {
+            self.set_status(cx, e);
+        }
+    }
+
+    fn commit_amend_row_fields(&mut self, cx: &mut Cx, index: usize, item: &WidgetRef) {
+        let unit_text = item.text_input(cx, ids!(unit_price)).text();
+        let total_text = item.text_input(cx, ids!(line_total)).text();
+        let note_text = item.text_input(cx, ids!(note)).text();
+        let result = (|| -> Result<(), String> {
+            let mut st = app_state().lock().unwrap();
+            if index >= st.amend_cart.lines.len() {
+                return Ok(());
+            }
+            let currency = st.locale.currency.clone();
+            let unit_minor = locale::parse_major_input(&unit_text, &currency)?;
+            st.amend_cart.set_unit_price(index, Money(unit_minor))?;
+            let total_minor = locale::parse_major_input(&total_text, &currency)?;
+            st.amend_cart.set_line_total(index, Money(total_minor))?;
+            st.amend_cart.set_note(index, note_text)?;
+            Ok(())
+        })();
+        if let Err(e) = result {
+            self.set_status(cx, e);
+        }
+    }
+
+    /// Commit the open Order line from its widgets — for Take payment / Send
+    /// KOT before the cart portal loop has run this frame.
+    fn commit_open_cart_line_fields(&mut self, cx: &mut Cx) {
+        let Some(index) = app_state().lock().unwrap().open_cart_line else {
+            return;
+        };
+        let host = self.ui.widget(cx, ids!(cart_list));
+        let list = host.portal_list(cx, ids!(list));
+        let item = list.item(cx, index, live_id!(Item));
+        self.commit_cart_row_fields(cx, index, &item);
     }
 
     fn clear_menu_form(&mut self, cx: &mut Cx) {

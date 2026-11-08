@@ -11,6 +11,66 @@ fn apply_cart_note(&mut self, cx: &mut Cx, index: usize, text: &str) {
         self.sync_chrome(cx);
     }
 
+    /// Pull Unit @ / Applied / note from a ticket row into the cart before any
+    /// action that sync-paints (±, modifiers, pay). Quiet — caller syncs when needed.
+    fn commit_cart_row_fields(&mut self, cx: &mut Cx, index: usize, item: &WidgetRef) {
+        let unit_text = item.text_input(cx, ids!(unit_price)).text();
+        let total_text = item.text_input(cx, ids!(line_total)).text();
+        let note_text = item.text_input(cx, ids!(note)).text();
+        let result = (|| -> Result<(), String> {
+            let mut st = app_state().lock().unwrap();
+            if index >= st.cart.lines.len() {
+                return Ok(());
+            }
+            let currency = st.locale.currency.clone();
+            let unit_minor = locale::parse_major_input(&unit_text, &currency)?;
+            st.cart.set_unit_price(index, Money(unit_minor))?;
+            let total_minor = locale::parse_major_input(&total_text, &currency)?;
+            st.cart.set_line_total(index, Money(total_minor))?;
+            st.cart.set_note(index, note_text)?;
+            Ok(())
+        })();
+        if let Err(e) = result {
+            self.set_status(cx, e);
+        }
+    }
+
+    fn commit_amend_row_fields(&mut self, cx: &mut Cx, index: usize, item: &WidgetRef) {
+        let unit_text = item.text_input(cx, ids!(unit_price)).text();
+        let total_text = item.text_input(cx, ids!(line_total)).text();
+        let note_text = item.text_input(cx, ids!(note)).text();
+        let result = (|| -> Result<(), String> {
+            let mut st = app_state().lock().unwrap();
+            if index >= st.amend_cart.lines.len() {
+                return Ok(());
+            }
+            let currency = st.locale.currency.clone();
+            let unit_minor = locale::parse_major_input(&unit_text, &currency)?;
+            st.amend_cart.set_unit_price(index, Money(unit_minor))?;
+            let total_minor = locale::parse_major_input(&total_text, &currency)?;
+            st.amend_cart.set_line_total(index, Money(total_minor))?;
+            st.amend_cart.set_note(index, note_text)?;
+            Ok(())
+        })();
+        if let Err(e) = result {
+            self.set_status(cx, e);
+        }
+    }
+
+    /// Pay runs before the cart portal loop — commit row widgets into the cart.
+    fn commit_cart_widget_fields_before_pay(&mut self, cx: &mut Cx) {
+        let len = app_state().lock().unwrap().cart.lines.len();
+        if len == 0 {
+            return;
+        }
+        let host = self.ui.widget(cx, ids!(cart_list));
+        let list = host.portal_list(cx, ids!(list));
+        for index in 0..len {
+            let item = list.item(cx, index, live_id!(Item));
+            self.commit_cart_row_fields(cx, index, &item);
+        }
+    }
+
     fn clear_menu_form(&mut self, cx: &mut Cx) {
         for path in [
             ids!(menu_name_input),

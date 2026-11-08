@@ -1274,6 +1274,8 @@ impl App {
         }
 
         if self.ui.button(cx, ids!(pay_mix)).clicked(actions) && self.begin_pay(cx) {
+            // Pay runs before the cart portal loop — commit row edits first.
+            self.commit_cart_widget_fields_before_pay(cx);
             let typed_total = self.ui.text_input(cx, ids!(cart_total_input)).text();
             let cash_text = self.ui.text_input(cx, ids!(mix_cash_input)).text();
             let upi_text = self.ui.text_input(cx, ids!(mix_upi_input)).text();

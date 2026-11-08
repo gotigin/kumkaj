@@ -1543,6 +1543,11 @@ impl App {
         if slot.is_none() && page_delta.is_none() {
             return;
         }
+        if amend {
+            self.commit_amend_row_fields(cx, index, item);
+        } else {
+            self.commit_cart_row_fields(cx, index, item);
+        }
         let result = (|| -> Result<String, String> {
             let mut st = app_state().lock().unwrap();
             let product_id = {

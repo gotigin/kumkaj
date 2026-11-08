@@ -210,6 +210,7 @@ impl Store {
             "ALTER TABLE running_lines ADD COLUMN seat_no INTEGER NOT NULL DEFAULT 0",
             "ALTER TABLE running_lines ADD COLUMN held INTEGER NOT NULL DEFAULT 0",
             "ALTER TABLE running_lines ADD COLUMN course_no INTEGER NOT NULL DEFAULT 0",
+            "ALTER TABLE running_lines ADD COLUMN line_total_paise INTEGER NOT NULL DEFAULT -1",
             "ALTER TABLE products ADD COLUMN allergens TEXT NOT NULL DEFAULT ''",
             "ALTER TABLE customers ADD COLUMN loyalty_points INTEGER NOT NULL DEFAULT 0",
             "ALTER TABLE customers ADD COLUMN wallet_paise INTEGER NOT NULL DEFAULT 0",

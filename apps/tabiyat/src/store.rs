@@ -685,6 +685,7 @@ impl Store {
                     product_id TEXT NOT NULL,
                     name TEXT NOT NULL,
                     unit_price_paise INTEGER NOT NULL,
+                    line_total_paise INTEGER NOT NULL DEFAULT -1,
                     qty_milli INTEGER NOT NULL,
                     unit_label TEXT NOT NULL DEFAULT '',
                     note TEXT NOT NULL DEFAULT '',

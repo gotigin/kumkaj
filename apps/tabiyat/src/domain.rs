@@ -4300,9 +4300,13 @@ impl RunningOrderStatus {
     }
 }
 
+fn running_line_total_default() -> i64 {
+    -1
+}
+
 /// One line of a table's open order: what the kitchen was told, kept even
 /// when cancelled or given free (vision §18).
-#[derive(Clone, Debug, Default, PartialEq, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct RunningLine {
     pub id: String,
     pub order_id: String,
@@ -4311,6 +4315,9 @@ pub struct RunningLine {
     pub product_id: String,
     pub name: String,
     pub unit_price_paise: i64,
+    /// Applied amount for billing (paise). `-1` = compute from unit × qty.
+    #[serde(default = "running_line_total_default")]
+    pub line_total_paise: i64,
     pub qty_milli: i64,
     #[serde(default)]
     pub unit_label: String,
@@ -4347,6 +4354,34 @@ pub struct RunningLine {
     pub course_no: i64,
 }
 
+impl Default for RunningLine {
+    fn default() -> Self {
+        Self {
+            id: String::new(),
+            order_id: String::new(),
+            kot_id: String::new(),
+            product_id: String::new(),
+            name: String::new(),
+            unit_price_paise: 0,
+            line_total_paise: running_line_total_default(),
+            qty_milli: 0,
+            unit_label: String::new(),
+            note: String::new(),
+            cancelled: false,
+            complimentary: false,
+            reason: String::new(),
+            prepared: false,
+            changed_by: String::new(),
+            approved_by: String::new(),
+            created_at: String::new(),
+            created_by: String::new(),
+            seat_no: 0,
+            held: false,
+            course_no: 0,
+        }
+    }
+}
+
 impl RunningLine {
     /// Value at the menu price — what the line would cost if charged.
     pub fn value_paise(&self) -> i64 {
@@ -4357,6 +4392,8 @@ impl RunningLine {
     pub fn billed_paise(&self) -> i64 {
         if self.cancelled || self.complimentary {
             0
+        } else if self.line_total_paise >= 0 {
+            self.line_total_paise
         } else {
             self.value_paise()
         }
@@ -4396,6 +4433,7 @@ impl RunningOrder {
             if let Some(existing) = out.iter_mut().find(|e| {
                 e.product_id == line.product_id
                     && e.unit_price_paise == line.unit_price_paise
+                    && e.line_total_paise == line.line_total_paise
                     && e.complimentary == line.complimentary
                     && e.unit_label.trim() == line.unit_label.trim()
                     && e.note.trim() == line.note.trim()
@@ -4439,6 +4477,15 @@ impl RunningOrder {
                 cancel_pick: false,
                 };
                 line.sync_qty_from_milli();
+                let computed = line.actual_total().paise();
+                let effective = if l.line_total_paise >= 0 {
+                    l.line_total_paise
+                } else {
+                    computed
+                };
+                if !l.complimentary && effective != computed {
+                    line.line_total_override = Some(Money(effective));
+                }
                 line
             })
             .collect()
@@ -4825,6 +4872,37 @@ mod tests {
         cart.add_or_bump(&tea);
         assert_eq!(cart.applied_total().paise(), 4600);
         assert_eq!(cart.rounded_total().paise(), 4600);
+    }
+
+    #[test]
+    fn running_order_to_cart_lines_restores_applied_override() {
+        let mut order = RunningOrder::default();
+        order.lines.push(RunningLine {
+            id: "line-1".into(),
+            product_id: "tea".into(),
+            name: "Tea".into(),
+            unit_price_paise: 1300,
+            qty_milli: 4000,
+            line_total_paise: 5000,
+            ..Default::default()
+        });
+        let lines = order.to_cart_lines();
+        assert_eq!(lines.len(), 1);
+        assert_eq!(lines[0].line_total_override, Some(Money(5000)));
+        assert_eq!(lines[0].applied_total().paise(), 5000);
+        assert_eq!(lines[0].actual_total().paise(), 5200);
+    }
+
+    #[test]
+    fn running_line_billed_paise_uses_applied_total() {
+        let line = RunningLine {
+            unit_price_paise: 1300,
+            qty_milli: 4000,
+            line_total_paise: 5000,
+            ..Default::default()
+        };
+        assert_eq!(line.billed_paise(), 5000);
+        assert_eq!(line.value_paise(), 5200);
     }
 
     #[test]

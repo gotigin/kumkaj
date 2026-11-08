@@ -296,12 +296,6 @@ impl App {
         let cart_widget = self.ui.widget(cx, ids!(cart_list));
         let cart_list = cart_widget.portal_list(cx, ids!(list));
         for (item_id, item) in cart_list.items_with_actions(actions) {
-            if item.button(cx, ids!(minus)).clicked(actions) {
-                self.bump_cart_line(cx, item_id, -1);
-            }
-            if item.button(cx, ids!(plus)).clicked(actions) {
-                self.bump_cart_line(cx, item_id, 1);
-            }
             let unit_input = item.text_input(cx, ids!(unit_price));
             if let Some((text, _)) = unit_input.returned(actions) {
                 self.apply_cart_unit_price(cx, item_id, &text);
@@ -322,6 +316,17 @@ impl App {
             } else if note_input.key_focus_lost(actions) {
                 let text = note_input.text();
                 self.apply_cart_note(cx, item_id, &text);
+            }
+            let minus = item.button(cx, ids!(minus)).clicked(actions);
+            let plus = item.button(cx, ids!(plus)).clicked(actions);
+            if minus || plus {
+                self.commit_cart_row_fields(cx, item_id, &item);
+            }
+            if minus {
+                self.bump_cart_line(cx, item_id, -1);
+            }
+            if plus {
+                self.bump_cart_line(cx, item_id, 1);
             }
             self.handle_modifier_chips(cx, actions, &item, item_id, false);
         }
@@ -361,14 +366,6 @@ impl App {
         let amend_widget = self.ui.widget(cx, ids!(amend_cart_list));
         let amend_list = amend_widget.portal_list(cx, ids!(list));
         for (item_id, item) in amend_list.items_with_actions(actions) {
-            if item.button(cx, ids!(minus)).clicked(actions) {
-                app_state().lock().unwrap().amend_cart.bump_qty(item_id, -1);
-                self.sync_chrome(cx);
-            }
-            if item.button(cx, ids!(plus)).clicked(actions) {
-                app_state().lock().unwrap().amend_cart.bump_qty(item_id, 1);
-                self.sync_chrome(cx);
-            }
             let unit_input = item.text_input(cx, ids!(unit_price));
             if let Some((text, _)) = unit_input.returned(actions) {
                 let result = (|| -> Result<(), String> {
@@ -450,6 +447,19 @@ impl App {
                 if let Err(e) = result {
                     self.set_status(cx, e);
                 }
+                self.sync_chrome(cx);
+            }
+            let minus = item.button(cx, ids!(minus)).clicked(actions);
+            let plus = item.button(cx, ids!(plus)).clicked(actions);
+            if minus || plus {
+                self.commit_amend_row_fields(cx, item_id, &item);
+            }
+            if minus {
+                app_state().lock().unwrap().amend_cart.bump_qty(item_id, -1);
+                self.sync_chrome(cx);
+            }
+            if plus {
+                app_state().lock().unwrap().amend_cart.bump_qty(item_id, 1);
                 self.sync_chrome(cx);
             }
             self.handle_modifier_chips(cx, actions, &item, item_id, true);

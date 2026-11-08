@@ -209,6 +209,12 @@ pub enum RunningAction {
         table_id: String,
         kind: String,
     },
+    /// Unit @ and Applied on an open table line (counter Order desk).
+    SetLinePricing {
+        line_id: String,
+        unit_price_paise: i64,
+        line_total_paise: i64,
+    },
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
@@ -1674,6 +1680,19 @@ pub fn apply_running_action(
         }
         RunningAction::WaiterCall { table_id, kind } => {
             store.queue_waiter_call(table_id, kind, actor)?;
+            Ok(RunningDone::none())
+        }
+        RunningAction::SetLinePricing {
+            line_id,
+            unit_price_paise,
+            line_total_paise,
+        } => {
+            store.set_running_line_pricing(
+                line_id,
+                *unit_price_paise,
+                *line_total_paise,
+                actor,
+            )?;
             Ok(RunningDone::none())
         }
     }
