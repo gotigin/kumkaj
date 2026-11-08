@@ -1,5 +1,5 @@
---- a/platform/src/os/linux/android/android.rs	2026-11-08 21:44:16.813172195 +0530
-+++ b/platform/src/os/linux/android/android.rs	2026-11-08 21:44:16.813409662 +0530
+--- a/platform/src/os/linux/android/android.rs
++++ b/platform/src/os/linux/android/android.rs
 @@ -926,15 +926,28 @@
              } => {
                  // Java reports the bottom IME occlusion in physical pixels.

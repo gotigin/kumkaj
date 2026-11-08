@@ -564,6 +564,11 @@ impl App {
                 OpenList::CategoryPicker => st.category_picker_open = false,
             }
         }
+        // Outside tap / Back cleared suggest_open but left the Kitchen
+        // (and similar) face stuck on "Done · …" until a later sync_chrome.
+        if let OpenList::Suggest(SuggestField::KotStation) = list {
+            self.paint_kot_station_dd(cx);
+        }
         self.ui.widget(cx, list.list()).redraw(cx);
         self.redraw_popups(cx);
     }

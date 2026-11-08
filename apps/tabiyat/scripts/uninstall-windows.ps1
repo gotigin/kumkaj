@@ -99,26 +99,28 @@ Write-Host "  Data:      $DataDir"
 $exe = Join-Path $InstallDir "kumkaj-tabiyat.exe"
 $appPresent = Test-Path $exe
 
-# Ask about data while the exe can still wipe SQLite categories.
+# Ask about data while the exe can still wipe SQLite categories — one dialog,
+# three checkboxes (same as MSI uninstall / Delete books data).
 Write-Host ""
 Write-Host "$Label - local data:"
 Write-Host "  $DataDir"
 $wiped = $false
 $cats = @()
 if (Test-Path $DataDir) {
-    Write-Host ""
-    Write-Host "Delete business records (sales, payments, day books)? Shop setup stays."
-    $ansRecords = Read-Host "[y/N]"
-    Write-Host "Delete shop setup (products, rates, staff, brand, empty books)?"
-    $ansSetup = Read-Host "[y/N]"
-    Write-Host "Delete screen preferences (sidebar, amounts, window, language)?"
-    $ansUi = Read-Host "[y/N]"
-    if ($ansSetup -match '^(y|yes)$') {
-        $cats += "schema"
-    } elseif ($ansRecords -match '^(y|yes)$') {
-        $cats += "trading"
+    $prompt = $null
+    foreach ($cand in @(
+            (Join-Path $ScriptDir "windows-wipe-prompt.ps1"),
+            (Join-Path $InstallDir "windows-wipe-prompt.ps1"),
+            (Join-Path $ScriptDir "..\..\..\scripts\windows-wipe-prompt.ps1")
+        )) {
+        if (Test-Path $cand) { $prompt = $cand; break }
     }
-    if ($ansUi -match '^(y|yes)$') { $cats += "ui" }
+    if ($prompt) {
+        . $prompt
+        $cats = @(Get-KumkajWipeCategories -AppLabel $Label -DataDir $DataDir)
+    } else {
+        Write-Host "(wipe prompt UI missing — keeping all local data)"
+    }
     if ($cats.Count -gt 0) {
         if (Test-Path $exe) {
             Write-Host "Wiping: $($cats -join ', ') ..."

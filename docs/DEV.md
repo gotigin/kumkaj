@@ -604,10 +604,11 @@ Dev and prod stay separate (debug suffix on id + install folder).
 
 **Install:** run `install.sh` (Linux) or double-click **`Setup.bat`** (Windows) from the package folder. On Windows, creates **Start Menu**, **Desktop**, and best-effort **taskbar** shortcuts, then **starts the app**; Start Menu also includes **Uninstall …**. Do not open `install.ps1` in Explorer (that often opens Notepad) — use `Setup.bat`.
 
-**Uninstall:** from the menu, Settings → Apps (Windows), double-click `Uninstall.bat`, or re-run `uninstall.sh` / `uninstall.ps1`. Always prompts:
+**Uninstall:** from the menu, Settings → Apps (Windows), double-click `Uninstall.bat`, or re-run `uninstall.sh` / `uninstall.ps1`. Always offers a **single** wipe dialog (three checkboxes; leave unchecked / Cancel to keep everything):
 
-- **Keep data** (default) — books stay; run uninstall again later to delete them  
-- **Remove data** — deletes the app-id data directory  
+- **Business records** — sales, payments, day books (shop setup stays)  
+- **Shop setup** — products, rates, staff, brand, empty books (also clears records)  
+- **Screen preferences** — sidebar, amounts, window, language  
 
 If app files are already gone but data remains, re-running uninstall still offers to remove leftover data.
 
@@ -630,7 +631,7 @@ Each app's installers are its own (`apps/<app>/scripts/`: `install-*.{sh,ps1}`, 
 ## Windows (cross from Arch / native on Windows)
 
 **Decision (product):** Microsoft Store distribution is the **real Windows goal**.  
-**Now:** per-user **MSI** (`./apps/moklanjo/scripts/msi.sh` → `dist/Moklanjo-<ver>.msi`, dev: `./apps/moklanjo/scripts/msi.sh dev`; Khaynjo: `./apps/khaynjo/scripts/msi.sh`) — single file, double-click install, **Start Menu + Desktop** shortcuts, best-effort **taskbar** pin, **launches the app** when setup finishes (skipped for silent `/qn`), uninstall from Settings → Apps. Installs to `%LOCALAPPDATA%\Programs\Moklanjo\`; **no admin**; fresh versions auto-replace old (MajorUpgrade). Uninstall keeps local data by default (`%APPDATA%\com.moklanjo\`) and asks separately whether to delete **business records**, **shop setup** (schema/databases), and **screen preferences**; Start Menu **Delete books data** offers the same categories. (Do not put prompts on the *install* path — that broke real installs earlier.) Folder + `Setup.bat` package remains the fallback.  
+**Now:** per-user **MSI** (`./apps/moklanjo/scripts/msi.sh` → `dist/Moklanjo-<ver>.msi`, dev: `./apps/moklanjo/scripts/msi.sh dev`; Khaynjo / Kirano / Tabiyat: same under `apps/<app>/scripts/msi.sh`) — single file, double-click install, **Start Menu + Desktop** shortcuts, best-effort **taskbar** pin, Finish-page **Launch** checkbox (checked by default; does **not** start the app before Finish; skipped for silent `/qn`), uninstall from Settings → Apps. Installs to `%LOCALAPPDATA%\Programs\<Label>\`; **no admin**; fresh versions auto-replace old (MajorUpgrade). Uninstall keeps local data by default and shows **one** dialog with three checkboxes — **business records**, **shop setup** (schema/databases), **screen preferences**; Start Menu **Delete books data** uses the same dialog. (Do not put prompts on the *install* path — that broke real installs earlier.) Folder + `Setup.bat` package remains the fallback.  
 **Later:** wrap as **MSIX** for Store publish.
 
 One **x86_64** PE binary covers **Windows 10 and Windows 11**. Dev and prod use the same env split as Linux/Android (`com.moklanjo.debug` vs `com.moklanjo`).

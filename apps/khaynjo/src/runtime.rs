@@ -1289,3 +1289,4 @@ fn ime_suppress_refocus() -> &'static Mutex<bool> {
     static FLAG: OnceLock<Mutex<bool>> = OnceLock::new();
     FLAG.get_or_init(|| Mutex::new(false))
 }
+

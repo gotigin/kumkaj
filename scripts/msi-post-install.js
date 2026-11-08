@@ -1,9 +1,25 @@
-// Runs after a successful MSI install (see build-msi.sh): pin the Start Menu
-// shortcut to the taskbar (best-effort on Windows 10/11) and launch the app.
-// Desktop + Start Menu shortcuts are created by WiX; this script does not
-// create those. Placeholders __APP_LABEL__ / __BIN_NAME__ are substituted.
+// Post-install helpers for the MSI (see build-msi.sh).
+// Placeholders __APP_LABEL__ / __BIN_NAME__ are substituted at build time.
 // Must never fail the install (Return=ignore).
-function PostInstall() {
+//
+// Pin runs after InstallFinalize (shortcuts already exist).
+// Launch runs only when the user ticks "Launch …" on the Finish page —
+// never from InstallFinalize (that started the app before Finish).
+
+function PostInstallPin() {
+    try {
+        var shell = new ActiveXObject("WScript.Shell");
+        var fso = new ActiveXObject("Scripting.FileSystemObject");
+        var startLnk = resolveStartShortcut(shell, fso);
+        if (startLnk) {
+            pinToTaskbar(shell, fso, startLnk);
+        }
+    } catch (e) {
+        // ignore — install already succeeded
+    }
+}
+
+function PostInstallLaunch() {
     try {
         var shell = new ActiveXObject("WScript.Shell");
         var fso = new ActiveXObject("Scripting.FileSystemObject");
@@ -18,25 +34,36 @@ function PostInstall() {
         if (!fso.FileExists(exe)) {
             return;
         }
-
-        // Prefer the Start Menu .lnk WiX just wrote (has icon + working dir).
-        var startLnk =
-            shell.SpecialFolders("Programs") +
-            "\\__APP_LABEL__\\__APP_LABEL__.lnk";
-        if (!fso.FileExists(startLnk)) {
-            startLnk = exe;
-        }
-
-        pinToTaskbar(shell, fso, startLnk);
-
-        // Launch only when the user saw the UI (skip msiexec /qn).
+        // Finish-page checkbox / silent installs: only launch when UI asked for it.
         var ui = parseInt(Session.Property("UILevel"), 10);
-        if (isNaN(ui) || ui > 4) {
-            shell.Run('"' + exe + '"', 1, false);
+        if (!isNaN(ui) && ui <= 4) {
+            return;
         }
+        shell.Run('"' + exe + '"', 1, false);
     } catch (e) {
-        // ignore — install already succeeded
+        // ignore
     }
+}
+
+function resolveStartShortcut(shell, fso) {
+    var startLnk =
+        shell.SpecialFolders("Programs") +
+        "\\__APP_LABEL__\\__APP_LABEL__.lnk";
+    if (fso.FileExists(startLnk)) {
+        return startLnk;
+    }
+    var install = Session.Property("INSTALLFOLDER");
+    if (!install) {
+        return null;
+    }
+    if (install.charAt(install.length - 1) !== "\\") {
+        install += "\\";
+    }
+    var exe = install + "__BIN_NAME__.exe";
+    if (fso.FileExists(exe)) {
+        return exe;
+    }
+    return null;
 }
 
 function pinToTaskbar(shell, fso, targetPath) {

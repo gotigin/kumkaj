@@ -395,11 +395,13 @@ impl Store {
                     && l.note == line.note
                     && l.complimentary == line.complimentary
             }) {
+                // Keep a cart Hold when seating onto an existing pending line.
+                let held = existing.held || line.hold_send;
                 self.conn
                     .execute(
-                        "UPDATE running_lines SET qty_milli = qty_milli + ?2, unit_price_paise = ?3
+                        "UPDATE running_lines SET qty_milli = qty_milli + ?2, unit_price_paise = ?3, held = ?4
                           WHERE id = ?1 AND kot_id = ''",
-                        params![existing.id, line.qty_milli, line.unit_price.paise()],
+                        params![existing.id, line.qty_milli, line.unit_price.paise(), held as i64],
                     )
                     .map_err(|e| e.to_string())?;
             } else {
@@ -430,6 +432,7 @@ impl Store {
                         complimentary: line.complimentary,
                         created_at: Local::now().to_rfc3339(),
                         created_by: actor.name.clone(),
+                        held: line.hold_send,
                         ..Default::default()
                     },
                     seq,

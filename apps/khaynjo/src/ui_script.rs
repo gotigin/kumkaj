@@ -4826,12 +4826,8 @@ script_mod! {
                 }
                 body +: {
                     width: Fill height: Fill
-                    // Window.body is already KeyboardView (Makepad). Lift the
-                    // focused field just above the soft keyboard; the gap is
-                    // keyboard_min_shift. Position comes from the live IME /
-                    // key-focus area — works for fields anywhere under body
-                    // (scroll pages, sheets, nested lists).
-                    keyboard_min_shift: 16.
+                    // Soft-keyboard field lift disabled for now (KeyboardView
+                    // shift forced to 0) — prior Android lift left beige gaps.
                     // Overlay — app_callout must NOT be a Down sibling of
                     // app_hscroll or it steals half the window height.
                     flow: Overlay

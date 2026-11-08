@@ -13,13 +13,13 @@
 # The Windows package is always rebuilt first, so the MSI is never stale.
 #
 # The MSI installs to %LOCALAPPDATA%\Programs\<Label>\ (no admin), adds
-# Start Menu + Desktop shortcuts, best-effort taskbar pin, launches the app
-# when the UI install finishes, and appears in Settings -> Apps for uninstall.
-# A full uninstall asks which local data to delete (business records, shop
-# setup / schema, screen preferences under %APPDATA%\<app id>\); upgrades
-# never ask and always keep it. A Start Menu "Delete books data" shortcut
-# offers the same categories on demand. Uses wixl (msitools). If missing, a
-# pinned copy is downloaded to the user cache (Arch package mirrors).
+# Start Menu + Desktop shortcuts, best-effort taskbar pin, and shows a Finish
+# checkbox to launch the app (never starts before Finish). Appears in
+# Settings -> Apps for uninstall. A full uninstall shows one dialog with three
+# checkboxes (business records / shop setup / screen preferences under
+# %APPDATA%\<app id>\); upgrades never ask and always keep data. Start Menu
+# "Delete books data" uses the same dialog. Uses wixl (msitools). If missing,
+# a pinned copy is downloaded to the user cache (Arch package mirrors).
 # Override with WIXL=/path/to/wixl.
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
@@ -73,10 +73,12 @@ APP_ID="$(manifest_get KUMKAJ_APP_ID)"
 # Per-flavor delete-data helper (app id / label / exe name substituted in).
 sed -e "s/__APP_ID__/$APP_ID/g" -e "s/__APP_LABEL__/$LABEL/g" -e "s/__BIN_NAME__/$BIN/g" \
   "$ROOT/scripts/delete-books-data.ps1" >"$PKG/delete-books-data.ps1"
+# Shared checkbox dialog used by delete-books-data.ps1 (no placeholders).
+cp -f "$ROOT/scripts/windows-wipe-prompt.ps1" "$PKG/windows-wipe-prompt.ps1"
 # Uninstall prompt script (same substitution; JScript is all wixl supports).
 sed -e "s/__APP_ID__/$APP_ID/g" -e "s/__APP_LABEL__/$LABEL/g" -e "s/__BIN_NAME__/$BIN/g" \
   "$ROOT/scripts/msi-uninstall-data.js" >"$PKG/msi-uninstall-data.js"
-# Post-install: taskbar pin + launch the app (Desktop/Start Menu are WiX shortcuts).
+# Post-install: taskbar pin after files; launch only from Finish checkbox.
 sed -e "s/__APP_ID__/$APP_ID/g" -e "s/__APP_LABEL__/$LABEL/g" -e "s/__BIN_NAME__/$BIN/g" \
   "$ROOT/scripts/msi-post-install.js" >"$PKG/msi-post-install.js"
 VER="$(sed -n '/^\[package\]/,/^\[/p' "$APP_DIR/Cargo.toml" | sed -n 's/^version = "\(.*\)"/\1/p' | head -1)"
@@ -154,6 +156,13 @@ emit_tree() {
   # Installer wizard (Welcome/License -> progress -> Finish). Without this the
   # MSI installs silently and the window just vanishes on completion.
   printf '    <UIRef Id="WixUI_Minimal"/>\n'
+  # Finish page: optional "Launch <app>" (checked by default). Launch runs from
+  # Finish only — never After InstallFinalize (that started the app early).
+  # Publish lives in a Fragment below: wixl rejects <UI> as a Product child
+  # ("unhandled child Product node UI").
+  printf '    <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOX" Value="1"/>\n'
+  printf '    <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT" Value="Launch %s"/>\n' \
+    "$(printf '%s' "$LABEL" | xml_escape)"
   # Uninstall-only data prompt. Conditioned on a full uninstall that is not
   # an upgrade, Execute=immediate + Return=ignore and a fully guarded script:
   # it cannot run during install and cannot fail the uninstall. (An earlier
@@ -161,12 +170,13 @@ emit_tree() {
   printf '    <Binary Id="UninstallDataJs" SourceFile="%s"/>\n' "$PKG/msi-uninstall-data.js"
   printf '    <CustomAction Id="PromptDeleteBooksData" BinaryKey="UninstallDataJs" JScriptCall="PromptDeleteBooksData" Execute="immediate" Return="ignore"/>\n'
   printf '    <Binary Id="PostInstallJs" SourceFile="%s"/>\n' "$PKG/msi-post-install.js"
-  printf '    <CustomAction Id="PostInstallLaunch" BinaryKey="PostInstallJs" JScriptCall="PostInstall" Execute="immediate" Return="ignore"/>\n'
+  printf '    <CustomAction Id="PostInstallPin" BinaryKey="PostInstallJs" JScriptCall="PostInstallPin" Execute="immediate" Return="ignore"/>\n'
+  printf '    <CustomAction Id="PostInstallLaunch" BinaryKey="PostInstallJs" JScriptCall="PostInstallLaunch" Execute="immediate" Return="ignore"/>\n'
   printf '    <InstallExecuteSequence>\n'
   printf '      <Custom Action="PromptDeleteBooksData" Before="RemoveFiles">REMOVE="ALL" AND NOT UPGRADINGPRODUCTCODE</Custom>\n'
-  # After files + Start/Desktop shortcuts exist: pin taskbar + start the app.
-  # UILevel&gt;4 skips silent /qn installs. Return=ignore so pin/launch never fails setup.
-  printf '      <Custom Action="PostInstallLaunch" After="InstallFinalize">NOT REMOVE AND UILevel &gt; 4</Custom>\n'
+  # After files + Start/Desktop shortcuts exist: pin taskbar only.
+  # Return=ignore so pin never fails setup. Launch is Finish-checkbox only.
+  printf '      <Custom Action="PostInstallPin" After="InstallFinalize">NOT REMOVE AND UILevel &gt; 4</Custom>\n'
   printf '    </InstallExecuteSequence>\n'
   if [[ -f "$PKG/$RES_DIR/resources/icon.ico" ]]; then
     printf '    <Icon Id="AppIcon.ico" SourceFile="%s"/>\n' "$PKG/$RES_DIR/resources/icon.ico"
@@ -178,9 +188,10 @@ emit_tree() {
   printf '          <Directory Id="INSTALLFOLDER" Name="%s">\n' "$(printf '%s' "$LABEL" | xml_escape)"
 } >"$WXS.open"
 
-# exe (with shortcuts) + delete-data helper + <app>/ resources tree
+# exe (with shortcuts) + delete-data helpers + <app>/ resources tree
 emit_file "$WXS.open" "            " "$PKG/$BIN.exe" 1
 emit_file "$WXS.open" "            " "$PKG/delete-books-data.ps1" 2
+emit_file "$WXS.open" "            " "$PKG/windows-wipe-prompt.ps1"
 if [[ -f "$PKG/Quick start.txt" ]]; then
   emit_file "$WXS.open" "            " "$PKG/Quick start.txt" 3
 fi
@@ -219,6 +230,12 @@ fi
   cat "$COMP_REFS_FILE"
   printf '    </Feature>\n'
   printf '  </Product>\n'
+  # Sibling Fragment: wire Finish → PostInstallLaunch when the checkbox is on.
+  printf '  <Fragment>\n'
+  printf '    <UI>\n'
+  printf '      <Publish Dialog="ExitDialog" Control="Finish" Event="DoAction" Value="PostInstallLaunch" Order="1" Condition="WIXUI_EXITDIALOGOPTIONALCHECKBOX = &quot;1&quot; AND NOT Installed"/>\n'
+  printf '    </UI>\n'
+  printf '  </Fragment>\n'
   printf '</Wix>\n'
 } >>"$WXS.open"
 mv "$WXS.open" "$WXS"

@@ -2342,8 +2342,9 @@ pub struct CartLine {
     /// The KOT this sent line went out on ([`RunningLine::kot_id`]); empty
     /// for a line not sent yet. The ticket groups lines by it.
     pub kot_id: String,
-    /// Held back from the next Send KOT (Order desk). Still on the ticket;
-    /// tap Hold again to include it. Not the same as a sent-line kitchen hold.
+    /// Held back from the next Send KOT. Still on the ticket; tap Hold /
+    /// Unhold on the line (or Hold item) to flip it. When the line is on the
+    /// table's running order this mirrors [`RunningLine::held`].
     #[serde(default)]
     pub hold_send: bool,
     /// Kitchen for this ticket line. Empty = use the menu item's station.
@@ -4305,7 +4306,9 @@ impl RunningOrder {
                     running_line_id: l.id.clone(),
                     complimentary: l.complimentary,
                     kot_id: l.kot_id.clone(),
-                    hold_send: false,
+                    // Pending coursing hold — must survive reload or the ticket
+                    // looks "normal" while Send KOT still skips the dish.
+                    hold_send: l.held && l.kot_id.is_empty(),
                     station_id: String::new(),
                     reprint_skip: false,
                 cancel_pick: false,
@@ -4696,6 +4699,35 @@ mod tests {
         assert_eq!(lines[0].line_total_override, Some(Money(5000)));
         assert_eq!(lines[0].applied_total().paise(), 5000);
         assert_eq!(lines[0].actual_total().paise(), 5200);
+    }
+
+    #[test]
+    fn running_order_to_cart_lines_restores_coursing_hold() {
+        let mut order = RunningOrder::default();
+        order.lines.push(RunningLine {
+            id: "held-1".into(),
+            product_id: "grill".into(),
+            name: "Grill".into(),
+            unit_price_paise: 20000,
+            qty_milli: 1000,
+            held: true,
+            ..Default::default()
+        });
+        order.lines.push(RunningLine {
+            id: "sent-1".into(),
+            product_id: "soup".into(),
+            name: "Soup".into(),
+            unit_price_paise: 8000,
+            qty_milli: 1000,
+            kot_id: "kot-1".into(),
+            held: true, // already on a KOT — hold only applies to pending
+            ..Default::default()
+        });
+        let lines = order.to_cart_lines();
+        assert!(lines[0].hold_send, "pending held line shows Held on the ticket");
+        assert!(!lines[0].is_sent());
+        assert!(!lines[1].hold_send, "sent line is not a coursing hold on the ticket");
+        assert!(lines[1].is_sent());
     }
 
     #[test]

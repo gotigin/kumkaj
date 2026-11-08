@@ -535,6 +535,18 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
             self.ui.redraw(cx);
             return;
         }
+        // Soft keyboard open on any screen: a full chrome rebuild (locale +
+        // Settings SQL / reports) freezes Android and can hide the IME.
+        // Digits still land; commit actions sync.
+        if self.text_field_has_focus(cx) {
+            let screen = app_state().lock().unwrap().screen;
+            self.show_screen(cx, screen);
+            self.paint_header_back_chrome(cx);
+            self.lift_footer_above_system_bar(cx);
+            self.repair_focused_carets(cx);
+            self.ui.redraw(cx);
+            return;
+        }
         // Any Settings screen (hub or an open section). A full sync_chrome
         // walks every other screen — reports, audit SQL, stock, RTL on
         // hundreds of labels — and the page sat blank until that finished.
@@ -574,22 +586,6 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
                 self.paint_header_back_chrome(cx);
                 self.lift_footer_above_system_bar(cx);
                 self.repair_focused_carets(cx);
-                self.ui.redraw(cx);
-                return;
-            }
-        }
-        // Soft keyboard open on setup/auth: a full chrome rebuild (locale +
-        // Settings SQL) freezes Android for seconds and can hide the IME.
-        // Digits still land in the field; Pair / Unlock triggers a real sync.
-        if self.text_field_has_focus(cx) {
-            let screen = app_state().lock().unwrap().screen;
-            if matches!(
-                screen,
-                Screen::ClientPair | Screen::Lock | Screen::Onboard | Screen::DeviceSetup
-            ) {
-                self.show_screen(cx, screen);
-                self.paint_header_back_chrome(cx);
-                self.lift_footer_above_system_bar(cx);
                 self.ui.redraw(cx);
                 return;
             }
@@ -1940,37 +1936,8 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
             self.ui
                 .view(cx, ids!(kot_station_wrap))
                 .set_visible(cx, ticket_open);
-            // Dropdown label: Kitchen, or Kitchen · Tandoor, Fryer when set.
-            {
-                let st = app_state().lock().unwrap();
-                let mut names: Vec<String> = Vec::new();
-                for line in st.cart.lines.iter().filter(|l| !l.is_sent() && !l.hold_send) {
-                    let sid = line.kitchen_station_id(&st.products);
-                    if sid.is_empty() {
-                        continue;
-                    }
-                    if let Some(name) = st.stations.iter().find(|s| s.id == sid).map(|s| s.name.clone())
-                    {
-                        if !names.iter().any(|n| n == &name) {
-                            names.push(name);
-                        }
-                    }
-                }
-                let open = st.suggest_open == Some(SuggestField::KotStation);
-                let label = if names.is_empty() {
-                    st.t("kot_station_dd")
-                } else {
-                    st.t("kot_station_dd_n")
-                        .replace("{stations}", &names.join(", "))
-                };
-                let face = if open {
-                    st.t("pick_done_dd").replace("{label}", &label)
-                } else {
-                    label
-                };
-                drop(st);
-                self.ui.button(cx, ids!(kot_station_dd)).set_text(cx, &face);
-            }
+            // Dropdown label: Kitchen, Kitchen · stations, or Done · … while open.
+            self.paint_kot_station_dd(cx);
             // Station applies on checkbox tap. No second "Use this station" button.
             self.ui
                 .button(cx, ids!(kot_set_station))

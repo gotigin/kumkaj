@@ -1403,18 +1403,29 @@ impl AppState {
         self.suggest_rev = self.suggest_rev.wrapping_add(1);
     }
 
-    /// Write Kitchen dropdown priority / multi-check / default into books meta.
+    /// Write Kitchen dropdown priority / multi-check / default into this
+    /// device's books meta. Must be a **local** write — routing through
+    /// Client `books_op` / LAN left the till's SQLite stale, so the next
+    /// `reload_all` wiped the choice and Send KOT asked for a station again.
     fn persist_kot_station_prefs(&mut self) {
-        if self.store.is_none() {
+        let Some(store) = self.store.as_ref() else {
+            return;
+        };
+        let priority = self.kot_station_priority.join(",");
+        let selected = self.kot_stations_selected.join(",");
+        let default = self.kot_station_default.clone();
+        if let Err(e) = (|| -> Result<(), String> {
+            store.set_kot_station_priority_csv(&priority)?;
+            store.set_kot_stations_selected_csv(&selected)?;
+            store.set_kot_station_default(&default)?;
+            Ok(())
+        })() {
+            self.status = e;
             return;
         }
-        let op = BooksOp::SetKotStationPrefs {
-            priority_csv: self.kot_station_priority.join(","),
-            selected_csv: self.kot_stations_selected.join(","),
-            default_id: self.kot_station_default.clone(),
-        };
-        if let Err(e) = self.books_op(op) {
-            self.status = e;
+        // Host: other tills learn the shop-wide priority / default on sync.
+        if self.device_role.is_host() {
+            net::publish_books(store);
         }
     }
 

@@ -60,7 +60,7 @@ PATCHES=(
   android_ime_dismiss               # Android: one keyboard, stays hidden once dismissed
   android_ime_retap_show            # Android: retap field must re-show IME (do not dedupe showKeyboard on last_ime_config alone)
   android_ime_keep_height           # Android: ignore spurious DidShow(0) while IME open (adjustNothing/landscape)
-  keyboard_view_focus_rect          # KeyboardView: shift from live IME/key-focus rect; don't clear on DidShow(0)
+  keyboard_view_focus_rect          # KeyboardView: soft-keyboard field lift disabled (shift always 0)
   android_api26_render_loop         # Android API 26–28: guard bad refresh rates in simple frame pump
   android_post_layout_redraw        # Android: extra redraws after first drawable so layout paints
   android_asset_load_prefix         # Android: assets under the package root; as_mut_ptr read

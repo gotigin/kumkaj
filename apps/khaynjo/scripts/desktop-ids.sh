@@ -116,26 +116,49 @@ desktop_prompt_wipe_data() {
     echo "(non-interactive: keeping all local data)"
     return 1
   fi
-  local ans_records="" ans_setup="" ans_ui=""
-  echo
-  echo "Delete business records (sales, payments, day books)? Shop setup stays. [y/N]"
-  read -r -p "> " ans_records || true
-  echo "Delete shop setup (products, rates, staff, brand, empty books)? [y/N]"
-  read -r -p "> " ans_setup || true
-  echo "Delete screen preferences (sidebar, amounts, window, language)? [y/N]"
-  read -r -p "> " ans_ui || true
   local cats=()
-  case "${ans_setup,,}" in
-    y|yes) cats+=(schema) ;;
-    *)
-      case "${ans_records,,}" in
-        y|yes) cats+=(trading) ;;
-      esac
-      ;;
-  esac
-  case "${ans_ui,,}" in
-    y|yes) cats+=(ui) ;;
-  esac
+  # One checklist when a GUI dialog is available (matches Windows MSI).
+  if command -v zenity >/dev/null 2>&1; then
+    local picked want_records=0 want_setup=0 want_ui=0
+    picked="$(
+      zenity --list --checklist --title="$label — local data" \
+        --text="Choose what to remove. Leave all unchecked / Cancel to keep everything." \
+        --column="Wipe" --column="Category" --width=520 --height=280 \
+        FALSE "Business records (sales, payments, day books) — keep shop setup" \
+        FALSE "Shop setup (products, rates, staff, brand, empty books)" \
+        FALSE "Screen preferences (sidebar, amounts, window, language)" \
+        2>/dev/null || true
+    )"
+    [[ "$picked" == *"Business records"* ]] && want_records=1
+    [[ "$picked" == *"Shop setup"* ]] && want_setup=1
+    [[ "$picked" == *"Screen preferences"* ]] && want_ui=1
+    if (( want_setup )); then
+      cats+=(schema)
+    elif (( want_records )); then
+      cats+=(trading)
+    fi
+    (( want_ui )) && cats+=(ui)
+  else
+    local ans_records="" ans_setup="" ans_ui=""
+    echo
+    echo "Delete business records (sales, payments, day books)? Shop setup stays. [y/N]"
+    read -r -p "> " ans_records || true
+    echo "Delete shop setup (products, rates, staff, brand, empty books)? [y/N]"
+    read -r -p "> " ans_setup || true
+    echo "Delete screen preferences (sidebar, amounts, window, language)? [y/N]"
+    read -r -p "> " ans_ui || true
+    case "${ans_setup,,}" in
+      y|yes) cats+=(schema) ;;
+      *)
+        case "${ans_records,,}" in
+          y|yes) cats+=(trading) ;;
+        esac
+        ;;
+    esac
+    case "${ans_ui,,}" in
+      y|yes) cats+=(ui) ;;
+    esac
+  fi
   if [[ ${#cats[@]} -eq 0 ]]; then
     return 1
   fi

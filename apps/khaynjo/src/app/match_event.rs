@@ -3177,6 +3177,9 @@ impl MatchEvent for App {
             if let Some(msg) = empty_msg {
                 self.set_status(cx, msg);
             }
+            // Always repaint the face here — sync_chrome may early-return
+            // while a field holds focus and leave "Done · …" stuck.
+            self.paint_kot_station_dd(cx);
             self.sync_chrome(cx);
         }
         if self.ui.button(cx, ids!(printer_place_dd)).clicked(actions) {
@@ -3295,6 +3298,9 @@ impl MatchEvent for App {
             // the next sync erased — the kitchen never saw it).
             let result = (|| -> Result<(SnackKind, String), String> {
                 let mut st = app_state().lock().unwrap();
+                // Last Kitchen choice on dishes that still have none — so the
+                // waiter does not re-open the dropdown every Send.
+                st.apply_remembered_kot_to_unassigned();
                 let actor = st.actor()?;
                 st.require_cart_modifiers()?;
                 // Person rights: refuse send if any pending line's kitchen
