@@ -58,6 +58,15 @@ the root docs and are **not restated here** (edit them there, once):
 - Auditable history; owner-controlled retention/backup — vision
   §§18–19.
 
+**Published data contract:** once Khaynjo is on Play / Windows Store /
+AUR, every upgrade must open existing books, migrate forward safely, or
+refuse with a clear message — never crash, never pin a newer schema
+down, never delete client data to “fix” an upgrade. Rules, checklist,
+and schema table: [`DATA_COMPAT.md`](DATA_COMPAT.md). Publish guides:
+[`PUBLISH_PLAY_STORE.md`](PUBLISH_PLAY_STORE.md),
+[`PUBLISH_WINDOWS_STORE.md`](PUBLISH_WINDOWS_STORE.md),
+[`PUBLISH_AUR.md`](PUBLISH_AUR.md); release index [`RELEASE_1_0_0.md`](RELEASE_1_0_0.md).
+
 Khaynjo-specific delta on top of those: India-first also means
 **GST, UPI, and veg/non-veg marking** are first-class in the
 restaurant face from day one.
@@ -173,7 +182,7 @@ user needs — In / Later, in Khaynjo's own terms:
 | Owner controls what non-owners **see** (screens, money, reports), not only what they may **do** | **Done 2026-10-27** — Team Floor/Kitchen chips; nav gates `can_access_*` (Books/Buy/DayClose/Reports for money). **2026-11-04:** job-first Team hire; Settings shell always for signed-in (**My PIN**); hire/edit only `can_manage_team`; own PIN on Client via LAN `/staff_pin`. **Person-driven Client:** Inventory/Branches/Team/shop Settings follow person caps on an extra till too; shop writes use `POST /books` (`BooksOp`); host-only remain pairing/firewall/extra tills/autostart/local backup path+restore | Team; [`KHAYNJO_CLIENTS_REQUIREMENTS.md`](KHAYNJO_CLIENTS_REQUIREMENTS.md) §A; `docs/DEV.md` § Staff rights / LAN |
 | Shop-narrowed pick-lists (units first; same pattern for areas, stations, tax rates, …) | **Done 2026-10-27** — units + areas/stations/tax On/Off in Settings; suggest lists filter | Settings; [`KHAYNJO_CLIENTS_REQUIREMENTS.md`](KHAYNJO_CLIENTS_REQUIREMENTS.md) §B |
 | Mark a table **Occupied** when guests sit, before any dish is punched | **Done 2026-10-27** — `FloorState::Seated` + seat/free without order | Floor; [`KHAYNJO_CLIENTS_REQUIREMENTS.md`](KHAYNJO_CLIENTS_REQUIREMENTS.md) §C |
-| Emergency unlock PIN if forced to open the till | **Done 2026-10-27** — **Offline cloudless LAN only.** Owner sets optional PIN on Team (ℹ tip); unlock with it wipes books entries only (`wipe_trading_data_keep_structure`), keeps schema/config/menu/prices/tables/staff, opens as Owner looking normal — does not delete the shop server. Distinct from Settings → Backup wipe (which can also clear shop setup). Owner may set/clear it from a Client till (`BooksOp` → Server) | Team; `try_duress_unlock` |
+| Emergency unlock PIN if forced to open the till | **Done 2026-10-27** — **Offline cloudless LAN only.** Owner sets optional PIN on Team (ℹ tip); unlock runs the same full clear as Settings → Backup → **Clear history now** / day-close retention (`purge_trading_history_keep_setup`): all trading history gone, stock/loyalty/wallet/till back to zero defaults; schema/config/menu/prices/parties/tables/staff stay; opens as Owner looking normal — does not delete the shop server. Distinct from Settings → Backup uninstall wipe (which can also clear shop setup). Owner may set/clear it from a Client till (`BooksOp` → Server) | Team; `try_duress_unlock` |
 | Order desk: Counter payment docked under scrolling cart lines (no Counter/Items chips) | **In (2026-10-27)** | Order desk `pos_ticket` / `counter_dock` |
 
 Sanitized client tracker (must remain covered):

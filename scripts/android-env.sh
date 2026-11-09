@@ -108,21 +108,80 @@ android_release_opts() {
 # on that device — so packages for shops are signed with the app's own
 # release key. cargo-makepad's `build` always signs with Makepad's bundled
 # debug key; android_release_sign re-signs the APK in place.
-#   KUMKAJ_ANDROID_KEYSTORE       keystore file, made once per app with
-#                                 cargo makepad android keystore-create <path>
-#   KUMKAJ_ANDROID_KEYSTORE_PASS  its password
-#   KUMKAJ_ANDROID_KEY_ALIAS      key alias (default: the keystore's
-#                                 <path>.makepad sidecar, else "upload")
-# Keep the keystore and its password outside the repo, backed up: a lost key
-# means no more updates for installed devices.
+#
+# Release signing. An Android update installs only over an app signed with
+# the same key, and uninstalling to get past a key change deletes the books
+# on that device — so packages for shops are signed with the app's own
+# release key. cargo-makepad's `build` always signs with Makepad's bundled
+# debug key; android_release_sign re-signs the APK in place.
+#
+# Defaults (no env required when these files exist) — same idea as Ghalbol
+# ($HOME/ghalbol-release.jks):
+#   $HOME/<app>-release.jks            production / Play upload keystore
+#   $HOME/<app>-release.jks.password   store+key password (mode 600, one line)
+#   $HOME/<app>-release.jks.makepad    alias sidecar (optional; else "upload")
+# where <app> is the lowercased product label (khaynjo, moklanjo, …) from
+# KUMKAJ_APP_LABEL, else the basename of KUMKAJ_APP_DIR.
+#
+# Debug fingerprint helper default (Android SDK):
+#   $HOME/.android/debug.keystore  (alias androiddebugkey)
+#
+# Optional overrides:
+#   KUMKAJ_ANDROID_KEYSTORE       keystore path
+#   KUMKAJ_ANDROID_KEYSTORE_PASS  password (else read from <keystore>.password)
+#   KUMKAJ_ANDROID_KEY_ALIAS      default: sibling <path>.makepad alias, else "upload"
+#
+# Keep the keystore and its password file outside the repo, backed up: a lost
+# key means no more updates for installed devices.
+
+# Resolved path for the production/upload keystore (file need not exist yet).
+android_release_keystore_path() {
+  if [[ -n "${KUMKAJ_ANDROID_KEYSTORE:-}" ]]; then
+    printf '%s\n' "$KUMKAJ_ANDROID_KEYSTORE"
+    return 0
+  fi
+  local slug=""
+  if [[ -n "${KUMKAJ_APP_LABEL:-}" ]]; then
+    slug="$(printf '%s' "$KUMKAJ_APP_LABEL" | tr '[:upper:]' '[:lower:]' | tr -d '[:space:]')"
+  elif [[ -n "${KUMKAJ_APP_DIR:-}" ]]; then
+    slug="$(basename "$KUMKAJ_APP_DIR")"
+  else
+    slug="kumkaj"
+  fi
+  printf '%s\n' "${HOME}/${slug}-release.jks"
+}
+
+# True when a usable release keystore file is available; exports
+# KUMKAJ_ANDROID_KEYSTORE to the resolved path for callers.
 android_release_keystore_set() {
-  [[ -n "${KUMKAJ_ANDROID_KEYSTORE:-}" ]]
+  local ks
+  ks="$(android_release_keystore_path)"
+  export KUMKAJ_ANDROID_KEYSTORE="$ks"
+  [[ -f "$ks" ]]
+}
+
+# Password from env, else sibling `<keystore>.password` (trim trailing newlines).
+android_release_keystore_pass() {
+  if [[ -n "${KUMKAJ_ANDROID_KEYSTORE_PASS:-}" ]]; then
+    printf '%s\n' "$KUMKAJ_ANDROID_KEYSTORE_PASS"
+    return 0
+  fi
+  local ks passfile
+  ks="${KUMKAJ_ANDROID_KEYSTORE:-$(android_release_keystore_path)}"
+  passfile="${ks}.password"
+  if [[ -f "$passfile" ]]; then
+    # Single-line password file; strip a trailing newline only.
+    tr -d '\r' <"$passfile" | sed -z 's/\n$//'
+    return 0
+  fi
+  return 1
 }
 
 android_key_alias() {
   local alias="${KUMKAJ_ANDROID_KEY_ALIAS:-}"
-  if [[ -z "$alias" && -f "$KUMKAJ_ANDROID_KEYSTORE.makepad" ]]; then
-    alias="$(sed -n 's/^[[:space:]]*alias[[:space:]]*=[[:space:]]*"\{0,1\}\([^"]*\)"\{0,1\}[[:space:]]*$/\1/p' "$KUMKAJ_ANDROID_KEYSTORE.makepad" | head -1)"
+  local ks="${KUMKAJ_ANDROID_KEYSTORE:-$(android_release_keystore_path)}"
+  if [[ -z "$alias" && -f "${ks}.makepad" ]]; then
+    alias="$(sed -n 's/^[[:space:]]*alias[[:space:]]*=[[:space:]]*"\{0,1\}\([^"]*\)"\{0,1\}[[:space:]]*$/\1/p' "${ks}.makepad" | head -1)"
   fi
   echo "${alias:-upload}"
 }
@@ -131,34 +190,40 @@ android_release_sign() {
   local apk="$1" sdk="$2"
   if ! android_release_keystore_set; then
     echo "NOTE: $(basename "$apk") is signed with Makepad's debug key — fine to try out," >&2
-    echo "      not for shops: set KUMKAJ_ANDROID_KEYSTORE and KUMKAJ_ANDROID_KEYSTORE_PASS" >&2
-    echo "      so every later update installs over this one." >&2
+    echo "      not for shops. Create \$HOME/<app>-release.jks and \$HOME/<app>-release.jks.password" >&2
+    echo "      (e.g. khaynjo-release.jks) — or set KUMKAJ_ANDROID_KEYSTORE / _PASS." >&2
     return 0
   fi
-  if [[ ! -f "$KUMKAJ_ANDROID_KEYSTORE" ]]; then
-    echo "KUMKAJ_ANDROID_KEYSTORE not found: $KUMKAJ_ANDROID_KEYSTORE" >&2
+  local pass
+  if ! pass="$(android_release_keystore_pass)"; then
+    echo "Release keystore found at $KUMKAJ_ANDROID_KEYSTORE but no password:" >&2
+    echo "  put it in ${KUMKAJ_ANDROID_KEYSTORE}.password (mode 600) or set KUMKAJ_ANDROID_KEYSTORE_PASS" >&2
     return 1
   fi
-  : "${KUMKAJ_ANDROID_KEYSTORE_PASS:?set KUMKAJ_ANDROID_KEYSTORE_PASS for $KUMKAJ_ANDROID_KEYSTORE}"
   local java="$sdk/openjdk/bin/java"
   [[ -x "$java" ]] || java="$sdk/openjdk/jdk-17.0.2/bin/java"
   local signer="$sdk/build-tools/33.0.1/lib/apksigner.jar"
   # The password goes through the environment, never the command line.
-  KUMKAJ_KS_PASS="$KUMKAJ_ANDROID_KEYSTORE_PASS" "$java" -jar "$signer" sign \
+  KUMKAJ_KS_PASS="$pass" "$java" -jar "$signer" sign \
     --ks "$KUMKAJ_ANDROID_KEYSTORE" --ks-key-alias "$(android_key_alias)" \
     --ks-pass env:KUMKAJ_KS_PASS --key-pass env:KUMKAJ_KS_PASS "$apk"
   "$java" -jar "$signer" verify --print-certs "$apk" | grep -m1 "certificate DN" || true
-  echo "Signed with the release key: $apk"
+  echo "Signed with the release key: $apk ($KUMKAJ_ANDROID_KEYSTORE)"
 }
 
-# Signing options for build-aab: the release key when set (password through
+# Signing options for build-aab: the release key when present (password through
 # MAKEPAD_KEYSTORE_PASS), else nothing — cargo-makepad then uses its debug
 # key, which Play rejects.
 android_aab_sign_opts() {
   ANDROID_AAB_SIGN_OPTS=()
   if android_release_keystore_set; then
-    : "${KUMKAJ_ANDROID_KEYSTORE_PASS:?set KUMKAJ_ANDROID_KEYSTORE_PASS for $KUMKAJ_ANDROID_KEYSTORE}"
-    export MAKEPAD_KEYSTORE_PASS="$KUMKAJ_ANDROID_KEYSTORE_PASS"
+    local pass
+    if ! pass="$(android_release_keystore_pass)"; then
+      echo "Release keystore found at $KUMKAJ_ANDROID_KEYSTORE but no password:" >&2
+      echo "  put it in ${KUMKAJ_ANDROID_KEYSTORE}.password (mode 600) or set KUMKAJ_ANDROID_KEYSTORE_PASS" >&2
+      return 1
+    fi
+    export MAKEPAD_KEYSTORE_PASS="$pass"
     ANDROID_AAB_SIGN_OPTS=(--keystore="$KUMKAJ_ANDROID_KEYSTORE" --keystore-key-alias="$(android_key_alias)")
   fi
 }

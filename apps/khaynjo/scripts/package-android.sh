@@ -4,9 +4,10 @@
 # production app id. No device needed. For live install on a connected
 # device use android-dev.sh (development app id).
 #   apps/khaynjo/scripts/package-android.sh
-# Signed with the release key when KUMKAJ_ANDROID_KEYSTORE (+ _PASS) is set
-# (see scripts/android-env.sh), which also builds the Play bundle
-# dist/khaynjo-android/khaynjo.aab.
+# Signed with the release key when $HOME/khaynjo-release.jks exists and the
+# password is in $HOME/khaynjo-release.jks.password (or KUMKAJ_ANDROID_*
+# overrides) — see scripts/android-env.sh / docs/PUBLISH_PLAY_STORE.md.
+# Also builds the Play bundle dist/khaynjo-android/khaynjo.aab.
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/../../.." && pwd)"
 cd "$ROOT"

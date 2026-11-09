@@ -1,0 +1,27 @@
+---
+description: Khaynjo published books compatibility — never brick client data on upgrade
+globs:
+  - apps/khaynjo/**/*
+alwaysApply: false
+---
+
+# Khaynjo data compatibility (published)
+
+Canonical: `apps/khaynjo/docs/DATA_COMPAT.md`, code in `apps/khaynjo/src/store.rs`.
+
+Khaynjo is shipping (Play / Windows Store / AUR). Client books must survive every upgrade.
+
+## Do
+
+- Bump `SCHEMA_VERSION` only with `migrate_N_to_N+1`, pre-migrate snapshot, and sale-survives tests.
+- Refuse `schema_version` **newer** than this build; leave the file unchanged.
+- Keep `meta.app = khaynjo`; reject other apps’ backups on restore.
+- Prefer additive, nullable/defaulted columns; transform data inside a transaction.
+
+## Do not
+
+- Pin a higher `schema_version` back down to “current”.
+- Delete or reinvent a shop’s DB to fix an upgrade.
+- Add product columns/tables for new features without a schema bump.
+- Change `com.khaynjo` / data-dir identity so upgrades look like a fresh install.
+- Share this store/migration code with Moklanjo or other apps (copy-then-diverge).

@@ -108,12 +108,10 @@ mod info_help_layout_tests {
     #[test]
     fn short_tip_labels_are_fit_wraplabel_not_titled_infohelp() {
         let ui = include_str!("../ui_script.rs");
-        for id in ["server_pick_title", "lock_login_title"] {
-            assert!(
-                ui.contains(&format!("{id} := WrapLabel{{")),
-                "{id} must be a sibling WrapLabel, not InfoHelp title"
-            );
-        }
+        assert!(
+            ui.contains("server_pick_title := WrapLabel{"),
+            "server_pick_title must be a sibling WrapLabel, not InfoHelp title"
+        );
         let pick = ui
             .split("server_pick_title := WrapLabel{")
             .nth(1)
@@ -130,6 +128,66 @@ mod info_help_layout_tests {
         assert!(
             !pick.contains("title:"),
             "server_pick_help must be tip-only (no DSL title:)"
+        );
+    }
+
+    /// Order types: 2×2 equal Fill rows (not Right{wrap}+Fill — turtle coerces).
+    #[test]
+    fn otype_strip_is_two_by_two_fill_rows() {
+        let ui = include_str!("../ui_script.rs");
+        let strip = ui
+            .split("otype_strip := View{")
+            .nth(1)
+            .and_then(|s| s.split("// Ticket:").next())
+            .unwrap_or("");
+        assert!(
+            strip.contains("flow: Down"),
+            "otype_strip must be Down (2×2), not a single wrap row"
+        );
+        assert!(
+            !strip.contains("wrap: true"),
+            "otype_strip must not use Right{{wrap}}+Fill (turtle coerces)"
+        );
+        assert_eq!(
+            strip.matches("otype_dinein := SegBtn").count()
+                + strip.matches("otype_takeaway := SegBtn").count()
+                + strip.matches("otype_delivery := SegBtn").count()
+                + strip.matches("otype_counter := SegBtn").count(),
+            4,
+            "otype_strip must keep all four SegBtn faces"
+        );
+    }
+
+    /// Lock PIN: smaller Fit prompt + tip-only InfoHelp (20pt Fill stacked PASSCOD/E).
+    #[test]
+    fn lock_pin_prompt_is_fit_smaller_type_beside_tip() {
+        let ui = include_str!("../ui_script.rs");
+        let pin = ui
+            .split("pin_prompt := WrapLabel{")
+            .nth(1)
+            .and_then(|s| s.split("lock_pin_input").next())
+            .unwrap_or("");
+        assert!(
+            pin.contains("width: Fit"),
+            "pin_prompt must be Fit so ℹ hugs the label"
+        );
+        assert!(
+            pin.contains("font_size: 15."),
+            "pin_prompt must use 15pt so ENTER OWNER PASSCODE fits on phone"
+        );
+        assert!(
+            pin.contains("pin_help := InfoHelp{"),
+            "pin_help must be tip-only beside pin_prompt"
+        );
+        assert!(!pin.contains("title:"), "pin_help must be tip-only (no DSL title:)");
+        let login = ui
+            .split("lock_login_title := WrapLabel{")
+            .nth(1)
+            .and_then(|s| s.split("lock_login_help").next())
+            .unwrap_or("");
+        assert!(
+            login.contains("width: Fill"),
+            "lock_login_title must be Fill so or_unlock_login wraps"
         );
     }
 

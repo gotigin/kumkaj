@@ -956,8 +956,11 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
             .widget(cx, ids!(menu_status))
             .set_text(cx, &plain_display_text(&menu_status_text));
         {
+            self.ui
+                .widget(cx, ids!(pin_prompt))
+                .set_text(cx, &plain_display_text(&lock_prompt));
             let help = self.ui.widget(cx, ids!(pin_help)).as_info_help();
-            help.set_title(cx, &plain_display_text(&lock_prompt));
+            help.set_title(cx, "");
             help.set_tip(&plain_display_text(&pin_hint));
         }
         {

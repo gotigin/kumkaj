@@ -32,10 +32,15 @@ cargo khaynjo-android-dev              # build + install + launch on device
 cargo khaynjo-windows-dev              # Windows dev package → dist/khaynjo-windows-dev/
 ./apps/khaynjo/scripts/windows-prod.sh  # Windows prod package → dist/khaynjo-windows/
 ./apps/khaynjo/scripts/msi.sh [prod|dev] # MSI (per-user, own upgrade codes) → dist/Khaynjo-<ver>.msi
+./apps/khaynjo/scripts/msix.sh [prod|dev] # MSIX (Store) → dist/Khaynjo-<ver>.msix
+./apps/khaynjo/scripts/package-linux.sh   # Linux prod → dist/khaynjo-linux/
+./apps/khaynjo/scripts/aur-release-tarball.sh  # AUR asset from that Linux package
 ./apps/khaynjo/scripts/dev.sh          # desktop, without the cargo alias
-./apps/khaynjo/scripts/package-android.sh   # tablet APK → dist/khaynjo-android/
+./apps/khaynjo/scripts/package-android.sh   # Play AAB/APK → dist/khaynjo-android/
 ./apps/khaynjo/scripts/uninstall-android-dev.sh  # adb uninstall (…-prod.sh for com.khaynjo)
 ```
+
+**Production version** is Cargo `version` / Android `version_name` (**1.0.0**) — one number for Play, Windows Store, and AUR. Release index: [`docs/RELEASE_1_0_0.md`](docs/RELEASE_1_0_0.md). Publish guides: [`docs/PUBLISH_PLAY_STORE.md`](docs/PUBLISH_PLAY_STORE.md), [`docs/PUBLISH_WINDOWS_STORE.md`](docs/PUBLISH_WINDOWS_STORE.md), [`docs/PUBLISH_AUR.md`](docs/PUBLISH_AUR.md). Local Arch install: [`docs/AUR_LINUX.md`](docs/AUR_LINUX.md).
 
 Tooling mirrors Moklanjo's naming (`moklanjo-dev` → `khaynjo-dev`,
 `moklanjo-android-dev` → `khaynjo-android-dev`, `moklanjo-windows-dev`

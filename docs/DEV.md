@@ -327,7 +327,69 @@ So “this tab is active” **cannot** be expressed by leaving a Button focused 
 6b. **Android 8.0 (API 26) boot crash / black SurfaceView** — (1) `InputDevice.isEnabled()` is API 27+ → `NoSuchMethodError` (guard `SDK_INT >= 27`). (2) Inline `WindowInsetsAnimation.Callback` in `ResizingLayout` makes old ART fail class verify (`ClassNotFoundException`) and leave a black GL surface — keep the callback in `ImeInsetsAnimationHelper.java` and attach only via `Class.forName` when `SDK_INT >= 30` (`scripts/apply-android-activity-bridge.sh`). (3) Cargo plain `dev` on phone is too slow for first paint; use `cargo *-android-dev` (`android-dev` profile). That profile must stay **opt-level 3** with only `debug = "line-tables-only"` — full DWARF (`debug = true`) made a ~400MB `libmakepad.so` whose load alone left a black SurfaceView for many seconds on Mali-T830. (4) First drawable can precede layout settling — Makepad does a few follow-up `redraw_all`s (`android_post_layout_redraw` patch) so DeviceSetup is not stuck on `pass.clear_color`. (5) On some Huawei API 26 devices `adb exec-out screencap` captures only the window background and **misses the Makepad SurfaceView** — use a system screenshot (`adb shell input keyevent 120`) to verify paint.
 6d. **Android soft keyboard ▾ hide bounces back / retap silent** — Two related Makepad IME bugs (patches `android_ime_dismiss` + `android_ime_retap_show`; Java `SHOW_FORCED` / InsetsController via `apply-android-activity-bridge.sh`). **(▾ bounce)** System hide left the `TextInput` focused; a `ShowTextIME` already in `platform_ops` (or the next draw) called `showKeyboard` again after `last_ime_config` was cleared. Fix: on `ResizeTextIME` DidHide (no physical keyboard) call `text_ime_was_dismissed()` only (mirror iOS); skip `ShowTextIME` while `text_ime_dismissed`; never re-arm the dismiss latch in `CxKeyboard::set_key_focus` when the new area is `Empty`. **Do not** `set_key_focus(Empty)` inside DidHide — that fires KeyFocusLost → `hide_text_ime` (clears the latch) and mid-gesture focus loss wrecks Android touch-scroll (ScrollY + ScrollX / `axis_lock` / `capture_overload`). App Back / outside tap still clears focus via `dismiss_soft_keyboard`. Do **not** “fix” bounce by dropping `ime_show_requested` / retap redraw — that regresses retap. **(Retap silent)** Config-only dedupe of `ShowTextIME` left retaps no-ops when OEM dismiss kept `last_ime_config` set. Fix: `request_ime_show()` on KeyFocus / FingerDown + redraw; `ShowTextIME` calls `showKeyboard` when config changed **or** `ime_show_requested`. Never treat `!last_ime_visible` alone as show-again.
 6e. **Do not regress Android / desk touch-scroll when fixing IME** — Load-bearing Makepad patches: `scroll_axis_lock`, `drag_scroll_touch_only`, `scroll_touch_over_buttons`, `scroll_touch_orphan_unblock`, `text_flow_touch_scroll`, `text_input_touch_scroll`, `text_flow_selection`. Page `ScrollYView` and Floor `area_scroll` keep `mouse_capture_overload: true` + `axis_lock: true`. **Never** clear key focus from `ResizeTextIME` DidHide / keyboard-height callbacks (bug **6d**). **Never** “simplify” capture_overload off, drop axis_lock, or re-enable TextFlow / TextInput select-drag on touch FingerMove (that steals vertical swipe — Lock PIN and ClientPair fields need `text_input_touch_scroll`). **`WrapLabel` default is `selectable: true`** (both apps — [`DESIGN.md`](DESIGN.md) § Text selection & copy). Set `selectable: false` **only** inside tap targets (Kitchen KotCard, cart lines, floor tiles, snack bars, button faces, InfoHelp titles) — select-drag there steals the press / can freeze page swipe until FingerUp. Touch select starts on long-press (`text_flow_touch_scroll`); vertical swipe still scrolls. KitchenList (and other heavy expand-to-content lists) use `page_window` + `top_gap`/`list_box` so touch-move redraw does not draw every card (bug **6c**). When adding whitespace above a sideways Area strip (Floor Columns↔tables gap), put the pad **inside** that `ScrollXView` — parent `spacing` between Columns and `FloorList` is a dead zone for Area pan.
-6f. **Android soft-keyboard field lift (API 26–29, `adjustNothing`)** — Measured on Huawei AGS2-W09 / API 26 / SwiftKey. **Root cause of every earlier "no lift" / guessed-height attempt:** below API 30, `adjustNothing` makes WindowManager set the activity window's visible frame equal to its content frame, so neither insets nor `getWindowVisibleDisplayFrame()` ever change when the keyboard opens (`dumpsys window`: app `visible=[0,48][1920,1133]` while the IME covered y 469–1133); `WindowInsets.Type.ime()` is API 30+. Java reported `(0, closed)` forever and Rust never got `DidShow`. **Fix (measured, never estimated):** `MakepadImeProbe.java` (bridge script) attaches a 1 px, untouchable, non-focusable `PopupWindow` in `adjustResize` + `INPUT_METHOD_NEEDED`; WindowManager resizes *that* window to the keyboard top, its global layout fires on every show/hide, and `MakepadImeInsets` uses the overlap → `surfaceOnResizeTextIME` → `DidShow{height}` / `DidHide`. Keep clipping on (`setClippingEnabled(false)` = `FLAG_LAYOUT_NO_LIMITS` → panel never resizes). API 30+ never creates the probe. **Shift:** stock `KeyboardView` lift formula (patch `keyboard_view_focus_rect`); every hide (`DidHide` / `WillHide` / `DidShow(0)`) **snaps** shift to 0 — the eased `NextFrame` close stalled mid-shift on this device (beige strip). Show still eases settle-time corrections (field switch) — measured fine. **Field → field:** the old field's `HideTextIME` is skipped when the new field already requested the IME in the same event (patch `android_ime_field_switch`) — otherwise the real hide→show produced a `DidHide` that latched dismissed (6d) and kept the keyboard down. **Never:** estimate a height (fraction of window, "focus still set" after ▾ — Android keeps focus after ▾), re-apply lift from app code / Draw / focus polls, sticky "suppress show" latches, or lift with no open IME. App glue is only `dismiss_soft_keyboard` (Back / outside tap). EMUI drops app `Log.d` — use `Log.i` for temporary device logs.
+6f. **Android soft-keyboard field lift (focus above the IME)** — When a text
+    field takes focus and the soft keyboard is open, stock Makepad
+    `KeyboardView` shifts the page so the **focused field** stays visible
+    **above** the keyboard (lift from the field rect + measured IME height).
+    Hide snaps the shift to **0**. App glue is only `dismiss_soft_keyboard`
+    (Back / outside tap) — not a second lift engine in the app.
+
+    **How it is supposed to work**
+    1. Focus / tap a `TextInput` / `FieldInput` → `ShowTextIME` → keyboard up.
+    2. Platform reports real IME height via `ResizeTextIME` `DidShow{height}`.
+    3. `KeyboardView` eases the body up so the focused field clears the IME.
+    4. Field → field: keep the keyboard up (do not run a real hide between them).
+    5. ▾ / Back / outside tap → `DidHide` / dismiss → shift snaps to 0.
+
+    **Root cause that blocked earlier attempts (the regression)** — Below API
+    30, with Makepad’s `adjustNothing` activity, WindowManager sets the
+    activity window’s **visible frame equal to its content frame**. When the
+    soft keyboard opens, the app window does **not** shrink: insets and
+    `getWindowVisibleDisplayFrame()` stay full-screen (`dumpsys window` on
+    Huawei AGS2-W09 / API 26 / SwiftKey: app `visible=[0,48][1920,1133]` while
+    the IME covered y 469–1133). `WindowInsets.Type.ime()` is API 30+. So Java
+    reported `(0, closed)` forever, Rust never got a real `DidShow{height}`,
+    and stock `KeyboardView` had **nothing measured to lift from**. That is
+    the platform bug. Everything that followed was treating symptoms.
+
+    **Why hours of “fixes” kept regressing** — Without a measured height,
+    successive attempts invented substitutes. Each one “worked” for a moment
+    and then caused the next failure (do not repeat this cycle):
+    | Attempt (symptom patch) | What broke next |
+    |---|---|
+    | Guess IME height (fraction of window, or “focus still set” after ▾ — Android keeps focus after ▾) | Wrong gap; beige strip under the field; lift with no keyboard |
+    | App-side re-lift from Draw / focus polls / sticky “suppress show” latches | Glitchy height cycling; freeze mid-hide; keyboard bounce; fights **6d** / **6e** |
+    | Drop lift entirely to stop the glitches | Fields buried under the IME again on Lock, ClientPair, Order, Settings — every screen |
+    The feature looked “unimplementable” only because the real IME height was
+    never observed. Patching the app around a missing `DidShow` guaranteed
+    regression.
+
+    **How Claude Opus overcame it in one go (PR #1 / `bd7df19`, 2026-11-09)** —
+    Claude Opus 5.5 shipped an issueless implementation in a **single** attempt
+    by fixing the **cause** (no measured height on API 26–29), not another
+    estimate/hack. Earlier multi-hour attempts had failed on the same device
+    for the reasons above. The one-shot change:
+    1. **Measure** — `MakepadImeProbe.java` (via `apply-android-activity-bridge.sh`):
+       a 1 px untouchable non-focusable `PopupWindow` in `adjustResize` +
+       `INPUT_METHOD_NEEDED`. WindowManager **does** resize *that* panel to the
+       keyboard top; its global layout fires on every show/hide; overlap →
+       `surfaceOnResizeTextIME` → real `DidShow{height}` / `DidHide`. Keep
+       clipping on (`setClippingEnabled(false)` = `FLAG_LAYOUT_NO_LIMITS` →
+       panel never resizes). API 30+ never creates the probe (insets already
+       work).
+    2. **Use stock lift** — `KeyboardView` from the focused field rect (patch
+       `keyboard_view_focus_rect`); no app re-lift. Every hide (`DidHide` /
+       `WillHide` / `DidShow(0)`) **snaps** shift to 0 — eased close had
+       stalled mid-shift on this tablet (beige strip). Show may still ease
+       settle-time corrections (field switch).
+    3. **Keep IME across field switches** — skip the old field’s `HideTextIME`
+       when the new field already requested the IME in the same event (patch
+       `android_ime_field_switch`); otherwise hide→show latched dismissed
+       (**6d**) and dropped the keyboard.
+    Verified on the same API 26 tablet with no beige-gap / freeze / buried-field
+    regress. See **6d** (▾ / retap) and **6e** (never clear focus from DidHide —
+    that breaks touch-scroll). EMUI drops app `Log.d` — use `Log.i` for
+    temporary device logs.
 7. **Settings / CTAs freeze the UI (wrap + Fill)** — Separate from bug **7a**. Makepad turtle used to `error!`/`println!` **every frame** on `flow: Right { wrap: true }` + `width: Fill` child; that log spam freezes the app on every OS, including Windows GUI builds with no console (Khaynjo Settings → Add printer, 2026-10/11). Signature: high CPU / draw path / turtle warning. Hard stop: patch `turtle_wrap_fill_no_spam` logs **once** and still draws. Still avoid the bad layout:
    - **Button face:** any `flow: Right{wrap: true}` face must walk its label as **Fit**. Patch `button_label_center`. **Do not** “fix” by removing wrap or left-aligning labels (bug 3).
    - **Parent View:** never put `width: Fill` children inside `flow: Right{wrap: true}`. Use `ActionStack` / `flow: Down`, or Fit chips.
@@ -560,10 +622,9 @@ shop must carry the app's own release key from the first install. Make one
 per app, once, and keep it (and its password) backed up outside the repo:
 
 ```bash
-cargo run --manifest-path "$MAKEPAD_ROOT/tools/cargo_makepad/Cargo.toml" --release -- \
-  android --sdk-path="$ANDROID_HOME" keystore-create ~/keys/khaynjo.keystore
-KUMKAJ_ANDROID_KEYSTORE=~/keys/khaynjo.keystore KUMKAJ_ANDROID_KEYSTORE_PASS=… \
-  apps/khaynjo/scripts/package-android.sh
+# Defaults: $HOME/<app>-release.jks + $HOME/<app>-release.jks.password
+# (same idea as Ghalbol's $HOME/ghalbol-release.jks). Then:
+./apps/khaynjo/scripts/package-android.sh
 ```
 
 With the keystore set, the package script re-signs the APK (`apksigner`,
@@ -632,8 +693,17 @@ Each app's installers are its own (`apps/<app>/scripts/`: `install-*.{sh,ps1}`, 
 ## Windows (cross from Arch / native on Windows)
 
 **Decision (product):** Microsoft Store distribution is the **real Windows goal**.  
-**Now:** per-user **MSI** (`./apps/moklanjo/scripts/msi.sh` → `dist/Moklanjo-<ver>.msi`, dev: `./apps/moklanjo/scripts/msi.sh dev`; Khaynjo / Kirano / Tabiyat: same under `apps/<app>/scripts/msi.sh`) — single file, double-click install, **Start Menu + Desktop** shortcuts, best-effort **taskbar** pin, Finish-page **Launch** checkbox (checked by default; does **not** start the app before Finish; skipped for silent `/qn`), uninstall from Settings → Apps. Installs to `%LOCALAPPDATA%\Programs\<Label>\`; **no admin**; fresh versions auto-replace old (MajorUpgrade). Uninstall keeps local data by default and shows **one** dialog with three checkboxes — **business records**, **shop setup** (schema/databases), **screen preferences**; Start Menu **Delete books data** uses the same dialog. (Do not put prompts on the *install* path — that broke real installs earlier.) Folder + `Setup.bat` package remains the fallback.  
-**Later:** wrap as **MSIX** for Store publish.
+**MSI (USB / sideload):** per-user **MSI** (`./apps/moklanjo/scripts/msi.sh` → `dist/Moklanjo-<ver>.msi`, dev: `./apps/moklanjo/scripts/msi.sh dev`; Khaynjo / Kirano / Tabiyat: same under `apps/<app>/scripts/msi.sh`) — single file, double-click install, **Start Menu + Desktop** shortcuts, best-effort **taskbar** pin, Finish-page **Launch** checkbox (checked by default; does **not** start the app before Finish; skipped for silent `/qn`), uninstall from Settings → Apps. Installs to `%LOCALAPPDATA%\Programs\<Label>\`; **no admin**; fresh versions auto-replace old (MajorUpgrade). Uninstall keeps local data by default and shows **one** dialog with three checkboxes — **business records**, **shop setup** (schema/databases), **screen preferences**; Start Menu **Delete books data** uses the same dialog. (Do not put prompts on the *install* path — that broke real installs earlier.) Folder + `Setup.bat` package remains the fallback.
+
+**MSIX (Store):** `./apps/<app>/scripts/msix.sh` → `dist/<Label>-<ver>.msix` (and a `*-msix-layout/` folder). Shared packer: `scripts/build-msix.sh` + `scripts/msix/pack_msix.py`. Rebuilds the Windows package first, then packs exe + `<crate>/resources/` + `assets/` with Store logos from `resources/icon_512.png`. Manifest is a packaged classic Win32 app (`uap10:RuntimeBehavior="packagedClassicApp"`, `mediumIL`) so books stay under real `%APPDATA%\com.<app>\` like MSI. Stable Identity Names (do not change after publish): `Kumkaj.Moklanjo`, `Kumkaj.Khaynjo`, `Kumkaj.Kirano`, `Kumkaj.Tabiyat` (dev: `*.Dev`). Default Publisher `CN=Kumkaj` — override with `KUMKAJ_MSIX_PUBLISHER` / `KUMKAJ_MSIX_PUBLISHER_DISPLAY` to match Partner Center. Package from Linux is **unsigned**; before Store upload or sideload, sign on Windows:
+
+```bat
+signtool sign /fd SHA256 /a /f StoreAssociation.pfx /p <password> /tr http://timestamp.digicert.com /td SHA256 dist\Khaynjo-1.0.0.msix
+```
+
+Or set `KUMKAJ_MSIX_PFX` (+ optional `KUMKAJ_MSIX_PFX_PASSWORD`, `KUMKAJ_MSIX_TIMESTAMP_URL`) when `signtool` is on `PATH`. Partner Center: reserve the app name, set Publisher CN to match the signed package, upload the `.msix`.
+
+**Khaynjo 1.0.0 (Play + Windows Store + AUR):** one product version from `apps/khaynjo/Cargo.toml`. Index: [`apps/khaynjo/docs/RELEASE_1_0_0.md`](../apps/khaynjo/docs/RELEASE_1_0_0.md). Per channel: [`PUBLISH_PLAY_STORE.md`](../apps/khaynjo/docs/PUBLISH_PLAY_STORE.md), [`PUBLISH_WINDOWS_STORE.md`](../apps/khaynjo/docs/PUBLISH_WINDOWS_STORE.md), [`PUBLISH_AUR.md`](../apps/khaynjo/docs/PUBLISH_AUR.md).
 
 One **x86_64** PE binary covers **Windows 10 and Windows 11**. Dev and prod use the same env split as Linux/Android (`com.moklanjo.debug` vs `com.moklanjo`).
 
@@ -1624,14 +1694,22 @@ per-user meta).
 
 ## Schema
 
-Current meta `schema_version` **1** (pre-release: one create, no upgrade ladder).
+**Khaynjo (publishing):** `SCHEMA_VERSION` **1** is the first public books
+contract. Open path refuses a **newer** schema (file untouched), runs
+integrity check + optional pre-migrate snapshot before bumps, and never
+pins a higher version down. New features that need tables/columns ship as
+`migrate_N_to_N+1` with tests — see
+[`apps/khaynjo/docs/DATA_COMPAT.md`](../apps/khaynjo/docs/DATA_COMPAT.md).
+Do **not** tell a published shop to delete their DB.
 
-Fresh DBs get the full books shape in a single `CREATE TABLE` pass in `Store::migrate`:
+Each app owns its own `Store::migrate` (no shared schema crate). Fresh DBs
+get the full books shape in a `CREATE TABLE` pass plus idempotent additive
+repairs for that app’s current version:
 
-- org / branches, categories, products/rates (tax, category, modifiers, stock, units), sales (invoice, tax, money lane, authorship, **triple timestamps**), sale lines (milli qty), payments, revisions, customers / credit + payable ledgers, purchases / purchase lines, expenses, money movements, stock movements, tax rates, units + conversions, sync outbox, staff features, **entry_attachments** (notes / WebP images / PDF on sale·party·expense·tracking). Moklanjo carries courier-agency scope only — no dining tables, kitchen stations or KOT schema; a future food product brings its own
-- meta defaults: venue, onboarding, country pack (India until Settings changes it), invoice seq, entity template, etc.
+- org / branches, categories, products/rates (tax, category, modifiers, stock, units), sales (invoice, tax, money lane, authorship, **triple timestamps**), sale lines (milli qty), payments, revisions, customers / credit + payable ledgers, purchases / purchase lines, expenses, money movements, stock movements, tax rates, units + conversions, sync outbox, staff features, **entry_attachments** (notes / WebP images / PDF on sale·party·expense·tracking). Moklanjo carries courier-agency scope only — no dining tables, kitchen stations or KOT schema; Khaynjo owns restaurant/KOT tables in its copy.
+- meta defaults: venue, onboarding, country pack (India until Settings changes it), invoice seq, entity template, `app` mark, etc.
 
-Pre-release: if a local DB from an older numbered schema (2–17) misbehaves, delete it and reopen. After first public release, introduce `schema_version` 2+ only for real upgrades. Triple timestamps: [`BUSINESS_BOOKS.md`](BUSINESS_BOOKS.md).
+Triple timestamps: [`BUSINESS_BOOKS.md`](BUSINESS_BOOKS.md).
 
 ### Invoice numbers
 

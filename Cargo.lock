@@ -1171,7 +1171,7 @@ version = "0.1.0"
 
 [[package]]
 name = "kumkaj-khaynjo"
-version = "0.1.0"
+version = "1.0.0"
 dependencies = [
  "ab_glyph_rasterizer",
  "arboard",

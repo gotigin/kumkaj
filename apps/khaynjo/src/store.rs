@@ -83,9 +83,13 @@ fn migrated_paths() -> &'static std::sync::Mutex<std::collections::HashSet<PathB
     PATHS.get_or_init(Default::default)
 }
 
-/// `PRAGMA user_version` once migrate + seed ran on a file. A file made
-/// again at the same path reads 0 and is migrated again.
-const SCHEMA_STAMP: i64 = 1;
+/// Published Khaynjo books schema (`meta.schema_version` and `PRAGMA user_version`).
+///
+/// **Publishing contract:** bump only with a `migrate_N_to_N+1` step, a
+/// pre-migrate snapshot, and tests. Never reuse a number, never open a
+/// newer schema by "pinning down", never delete a client's books to
+/// "fix" an upgrade. See `apps/khaynjo/docs/DATA_COMPAT.md`.
+pub const SCHEMA_VERSION: i64 = 1;
 
 #[path = "store_running.rs"]
 mod running;
@@ -161,7 +165,7 @@ impl Store {
             .conn
             .query_row("PRAGMA user_version", [], |r| r.get(0))
             .unwrap_or(0);
-        if stamp != SCHEMA_STAMP || !migrated_paths().lock().unwrap().contains(path) {
+        if stamp != SCHEMA_VERSION || !migrated_paths().lock().unwrap().contains(path) {
             store.bring_up_to_date()?;
         }
         Ok(store)
@@ -170,12 +174,120 @@ impl Store {
     /// Schema and first-run data for this build, then remember the file is
     /// done (see [`migrated_paths`]).
     fn bring_up_to_date(&mut self) -> Result<(), String> {
-        self.migrate()?;
+        // meta must exist before we can read schema_version on a new file.
+        self.conn
+            .execute_batch(
+                "CREATE TABLE IF NOT EXISTS meta (
+                    key TEXT PRIMARY KEY,
+                    value TEXT NOT NULL
+                );",
+            )
+            .map_err(|e| e.to_string())?;
+
+        let from = self.schema_version()?;
+        if from > SCHEMA_VERSION {
+            return Err(format!(
+                "These books were written by a newer Khaynjo (schema {from}). \
+                 Install that version to open them — this build only opens schema \
+                 {SCHEMA_VERSION} and older. Your files were not changed."
+            ));
+        }
+        if from > 0 {
+            self.assert_books_intact()?;
+        }
+        if from > 0 && from < SCHEMA_VERSION {
+            self.snapshot_before_migrate(from, SCHEMA_VERSION)?;
+        }
+
+        let mut v = from;
+        if v < 1 {
+            self.migrate()?;
+            self.set_schema_version(1)?;
+            v = 1;
+        } else {
+            // Same published version: idempotent ensure (indexes / v1 column
+            // repairs for books made during pre-release). New features that
+            // need columns go in migrate_N_to_N+1, not here.
+            self.migrate()?;
+        }
+        while v < SCHEMA_VERSION {
+            let next = v + 1;
+            match v {
+                // Next bump: 1 => self.migrate_1_to_2()?,
+                other => {
+                    return Err(format!(
+                        "Khaynjo build is missing migrate_{other}_to_{next} (SCHEMA_VERSION={SCHEMA_VERSION})"
+                    ));
+                }
+            }
+            #[allow(unreachable_code)]
+            {
+                self.set_schema_version(next)?;
+                v = next;
+            }
+        }
+
+        // Persist meta.schema_version when missing or stale (never runs for
+        // from > SCHEMA_VERSION — those return above without writing).
+        match self.meta_get("schema_version")? {
+            Some(s) if s.trim() == SCHEMA_VERSION.to_string() => {}
+            _ => self.set_schema_version(SCHEMA_VERSION)?,
+        }
+
         self.ensure_seed_data()?;
         self.conn
-            .execute_batch(&format!("PRAGMA user_version = {SCHEMA_STAMP}"))
+            .execute_batch(&format!("PRAGMA user_version = {SCHEMA_VERSION}"))
             .map_err(|e| e.to_string())?;
         migrated_paths().lock().unwrap().insert(self.path.clone());
+        Ok(())
+    }
+
+    /// Books schema number on disk (`meta.schema_version`, else `PRAGMA user_version`).
+    pub fn schema_version(&self) -> Result<i64, String> {
+        if let Some(raw) = self.meta_get("schema_version")? {
+            let t = raw.trim();
+            if !t.is_empty() {
+                return t.parse::<i64>().map_err(|_| {
+                    format!("Books meta.schema_version is not a number: {raw:?}")
+                });
+            }
+        }
+        self.conn
+            .query_row("PRAGMA user_version", [], |r| r.get(0))
+            .map_err(|e| e.to_string())
+    }
+
+    fn set_schema_version(&self, version: i64) -> Result<(), String> {
+        self.meta_set("schema_version", &version.to_string())
+    }
+
+    /// Fail closed on a damaged SQLite file before any migrate/write.
+    fn assert_books_intact(&self) -> Result<(), String> {
+        let check: String = self
+            .conn
+            .query_row("PRAGMA quick_check", [], |r| r.get(0))
+            .map_err(|e| format!("Could not check the books: {e}"))?;
+        if check != "ok" {
+            return Err(format!(
+                "These books are damaged ({check}). Restore a backup from Settings → Backup \
+                 (or copy a good .sqlite3 into the backups folder). The file was not upgraded."
+            ));
+        }
+        Ok(())
+    }
+
+    /// Snapshot before a schema bump so a failed migrate never leaves the
+    /// shop with only a half-upgraded file.
+    fn snapshot_before_migrate(&self, from: i64, to: i64) -> Result<(), String> {
+        let dir = self.auto_backup_dir();
+        let stamp = Local::now().format("%Y%m%d-%H%M%S%3f");
+        let dest = dir.join(format!("pre-migrate-v{from}-to-v{to}-{stamp}.sqlite3"));
+        self.backup_to(&dest).map_err(|e| {
+            format!(
+                "Could not snapshot the books before upgrading schema v{from}→v{to}: {e}. \
+                 Fix backup storage (disk space / permission), then open Khaynjo again."
+            )
+        })?;
         Ok(())
     }
 
@@ -198,10 +310,9 @@ impl Store {
         Ok(out)
     }
 
-    /// Create the current books schema (version **1**).
-    ///
-    /// Pre-release: there is no upgrade ladder from older numbered schemas.
-    /// Delete local DBs from earlier builds if open fails after a schema change.
+    /// Ensure the published **schema 1** shape (CREATE IF NOT EXISTS + additive
+    /// column repairs). New published features that need schema changes go in
+    /// `migrate_N_to_N+1`, not as silent alters that skip a version bump.
     fn migrate(&mut self) -> Result<(), String> {
         self.conn
             .execute_batch(
@@ -554,19 +665,9 @@ impl Store {
                 "#,
             )
             .map_err(|e| e.to_string())?;
-        self.conn
-            .execute(
-                "INSERT OR IGNORE INTO meta(key, value) VALUES('schema_version', '1')",
-                [],
-            )
-            .map_err(|e| e.to_string())?;
-        // Always pin to current pre-release schema (drop any leftover 2–17 markers).
-        // Written only when it differs: the LAN server opens the books for
-        // every request, and an unconditional write was a disk sync each time.
-        if self.meta_get("schema_version")?.as_deref() != Some("1") {
-            self.meta_set("schema_version", "1")?;
-        }
-        // Pre-release column adds (no-op when CREATE already has them).
+        // schema_version is owned by bring_up_to_date / set_schema_version —
+        // never pin a higher (newer-app) version back down to 1 here.
+        // Additive column repairs for schema-1 books (no-op when CREATE has them).
         for stmt in [
             "ALTER TABLE sales ADD COLUMN extras_json TEXT NOT NULL DEFAULT '[]'",
             "ALTER TABLE customers ADD COLUMN credit_limit_paise INTEGER NOT NULL DEFAULT 0",
@@ -2555,9 +2656,15 @@ impl Store {
         ))
     }
 
-    /// Purge sales / KOTs / ledgers for retention — keep catalogue, staff,
-    /// printers, settings, and `last_day_close_at` so the next business day
-    /// starts cleanly.
+    /// Full trading-history clear → empty books / zero defaults, setup kept.
+    ///
+    /// Same path for Settings → Backup → **Clear history now**, day-close
+    /// retention, and the emergency unlock PIN. Deletes every book entry
+    /// (sales, ledgers, expenses, purchases, KOTs, open floor work, audit,
+    /// vouchers, outboxes, …), resets tracked stock / loyalty / wallet /
+    /// invoice & KOT sequences to starting defaults, and leaves catalogue
+    /// structure (menu, prices, parties, tables, staff, settings, schema).
+    /// Preserves `last_day_close_at` so the business-day window stays coherent.
     pub fn purge_trading_history_keep_setup(&self) -> Result<(), String> {
         self.assert_server_writer("Clear history")?;
         let last_close = self.last_day_close_at()?;
@@ -2576,6 +2683,12 @@ impl Store {
             "DELETE FROM stock_movements",
             "DELETE FROM purchase_lines",
             "DELETE FROM purchases",
+            "DELETE FROM purchase_order_lines",
+            "DELETE FROM purchase_orders",
+            "DELETE FROM stock_count_lines",
+            "DELETE FROM stock_counts",
+            "DELETE FROM stock_levels",
+            "DELETE FROM stock_carry",
             "DELETE FROM running_lines",
             "DELETE FROM running_orders",
             "DELETE FROM kot_tickets",
@@ -2584,6 +2697,7 @@ impl Store {
             "DELETE FROM waitlist",
             "DELETE FROM waiter_calls",
             "DELETE FROM shift_closes",
+            "DELETE FROM time_clock",
             "DELETE FROM gift_vouchers",
             "DELETE FROM feedback",
             "DELETE FROM audit_events",
@@ -2593,8 +2707,14 @@ impl Store {
             "DELETE FROM sync_outbox",
             "DELETE FROM lan_outbox",
             "DELETE FROM lan_refused",
+            "DELETE FROM lan_replies",
+            "DELETE FROM lan_sessions",
+            // Parties stay; balances live in ledgers (cleared above).
+            "UPDATE customers SET loyalty_points = 0, wallet_paise = 0",
             "UPDATE tables_dining SET status = 'available', active_sale_id = NULL, occupied_at = '', paid_at = ''",
+            "UPDATE products SET stock_qty = 0 WHERE stock_qty >= 0",
             "DELETE FROM meta WHERE key LIKE 'table_draft_%'",
+            "DELETE FROM meta WHERE key LIKE 'kot_seq_%'",
             "DELETE FROM meta WHERE key IN (
                 'opening_float_paise', 'shift_opened_at',
                 'shift_opened_by', 'opening_cash_paise',
@@ -2606,6 +2726,7 @@ impl Store {
             match tx.execute(sql, []) {
                 Ok(_) => {}
                 Err(e) if e.to_string().contains("no such table") => {}
+                Err(e) if e.to_string().contains("no such column") => {}
                 Err(e) => return Err(e.to_string()),
             }
         }
@@ -9911,73 +10032,12 @@ impl Store {
         Err("No Owner account after wipe".into())
     }
 
-    /// Delete sales / history / ledgers / open floor work. Keep catalogue
-    /// structure: products & prices, categories, stations, tables layout,
-    /// tax/units, schemes, staff, venue settings, emergency PIN itself.
+    /// Emergency unlock wipe — same full clear as Settings → Backup →
+    /// **Clear history now** / day-close retention
+    /// ([`purge_trading_history_keep_setup`]): entire trading history gone,
+    /// balances and stock back to starting defaults, setup kept.
     pub fn wipe_trading_data_keep_structure(&self) -> Result<(), String> {
-        self.assert_server_writer("Emergency unlock")?;
-        let tx = self.begin()?;
-        // Order respects FKs where present; most tables are unenforced.
-        for sql in [
-            "DELETE FROM sale_payments",
-            "DELETE FROM sale_lines",
-            "DELETE FROM sale_revisions",
-            "DELETE FROM sale_delivery",
-            "DELETE FROM sales",
-            "DELETE FROM expense_payments",
-            "DELETE FROM expenses",
-            "DELETE FROM credit_ledger",
-            "DELETE FROM payable_ledger",
-            "DELETE FROM money_movements",
-            "DELETE FROM stock_movements",
-            "DELETE FROM purchase_lines",
-            "DELETE FROM purchases",
-            "DELETE FROM purchase_order_lines",
-            "DELETE FROM purchase_orders",
-            "DELETE FROM stock_count_lines",
-            "DELETE FROM stock_counts",
-            "DELETE FROM stock_levels",
-            "DELETE FROM stock_carry",
-            "DELETE FROM running_lines",
-            "DELETE FROM running_orders",
-            "DELETE FROM kot_tickets",
-            "DELETE FROM split_tables",
-            "DELETE FROM reservations",
-            "DELETE FROM waitlist",
-            "DELETE FROM waiter_calls",
-            "DELETE FROM shift_closes",
-            "DELETE FROM time_clock",
-            "DELETE FROM gift_vouchers",
-            "DELETE FROM feedback",
-            "DELETE FROM customers",
-            "DELETE FROM audit_events",
-            "DELETE FROM notify_outbox",
-            "DELETE FROM connector_outbox",
-            "DELETE FROM entry_attachments",
-            "DELETE FROM sync_outbox",
-            "DELETE FROM lan_outbox",
-            "DELETE FROM lan_refused",
-            "DELETE FROM lan_replies",
-            "DELETE FROM lan_sessions",
-            "UPDATE tables_dining SET status = 'available', active_sale_id = NULL, occupied_at = '', paid_at = ''",
-            "UPDATE products SET stock_qty = 0 WHERE stock_qty >= 0",
-            "DELETE FROM meta WHERE key LIKE 'table_draft_%'",
-            "DELETE FROM meta WHERE key IN (
-                'last_day_close_at', 'opening_float_paise', 'shift_opened_at',
-                'shift_opened_by', 'opening_cash_paise'
-             )",
-            "INSERT INTO meta(key, value) VALUES('next_invoice_seq', '1')
-             ON CONFLICT(key) DO UPDATE SET value = excluded.value",
-        ] {
-            // Optional ops tables may be absent on very old DBs — ignore "no such table".
-            match tx.execute(sql, []) {
-                Ok(_) => {}
-                Err(e) if e.to_string().contains("no such table") => {}
-                Err(e) => return Err(e.to_string()),
-            }
-        }
-        tx.commit().map_err(|e| e.to_string())?;
-        Ok(())
+        self.purge_trading_history_keep_setup()
     }
 
     /// Uninstall / "Delete books data": wipe trading rows without the live
@@ -13588,6 +13648,17 @@ pub fn check_backup_file(path: &Path) -> Result<(), String> {
     if (!app.is_empty() && app != APP_MARK) || (!template.is_empty() && !template.starts_with("khaynjo")) {
         return Err(format!("{} is another app's backup, not these books", path.display()));
     }
+    let ver_raw = meta("schema_version");
+    if !ver_raw.is_empty() {
+        if let Ok(n) = ver_raw.trim().parse::<i64>() {
+            if n > SCHEMA_VERSION {
+                return Err(format!(
+                    "{} was made by a newer Khaynjo (schema {n}); this build opens up to schema {SCHEMA_VERSION}",
+                    path.display()
+                ));
+            }
+        }
+    }
     Ok(())
 }
 
@@ -15212,7 +15283,16 @@ mod tests {
             .set_duress_pin("9999", "9999", &owner)
             .unwrap();
         assert!(store.set_duress_pin("2468", "2468", &owner).is_err());
-        store.upsert_product(&test_product("Paneer", 120)).unwrap();
+
+        let party = store.add_customer("Asha", "999").unwrap();
+        store.earn_loyalty_on_sale(&party.id, 25_000, &owner).unwrap();
+        store.wallet_top_up(&party.id, 500, &owner).unwrap();
+        assert!(store.loyalty_points(&party.id).unwrap() > 0);
+        assert_eq!(store.wallet_paise(&party.id).unwrap(), 500);
+
+        let mut tracked = test_product("Paneer", 120);
+        tracked.stock_qty = 10;
+        store.upsert_product(&tracked).unwrap();
         let p = store.list_products(false).unwrap().remove(0);
         let mut cart = Cart::default();
         cart.add_or_bump(&p);
@@ -15220,17 +15300,71 @@ mod tests {
         store
             .finalize_sale(&draft, PayMethod::Cash, None, None, &owner)
             .unwrap();
+        store.add_expense(100, "milk", "", &owner).unwrap();
         assert!(store.today_totals().unwrap().revenue_paise > 0);
+        assert!(store.till_balance_paise().unwrap() != 0);
 
         let unlocked = store.try_duress_unlock("9999").unwrap().expect("owner");
         assert!(unlocked.is_owner());
+
+        // Same outcome as Clear history now: empty books / zero defaults.
         assert_eq!(store.today_totals().unwrap().revenue_paise, 0);
+        assert_eq!(store.today_totals().unwrap().sale_count, 0);
+        assert_eq!(store.today_expenses_total().unwrap(), (0, 0));
+        assert_eq!(store.till_balance_paise().unwrap(), 0);
+        assert_eq!(store.bank_balance_paise().unwrap(), 0);
+        assert!(store.recent_sales(10).unwrap().is_empty());
+        assert_eq!(store.list_audit(20).unwrap().len(), 0);
+
+        // Catalogue structure stays; stock / loyalty / wallet reset to 0.
         assert_eq!(store.list_products(false).unwrap().len(), 1);
         assert_eq!(store.list_products(false).unwrap()[0].name, "Paneer");
+        assert_eq!(store.list_products(false).unwrap()[0].stock_qty, 0);
+        let kept = store.get_customer(&party.id).unwrap().expect("party kept");
+        assert_eq!(kept.name, "Asha");
+        assert_eq!(store.loyalty_points(&party.id).unwrap(), 0);
+        assert_eq!(store.wallet_paise(&party.id).unwrap(), 0);
+        assert_eq!(store.customer_balance(&party.id).unwrap(), 0);
+
         // Real Owner PIN still works afterwards; emergency PIN still set.
         assert!(store.authenticate_owner_pin("2468").unwrap().is_some());
         assert!(store.duress_pin_configured().unwrap());
         assert!(store.try_duress_unlock("2468").unwrap().is_none());
+        let _ = std::fs::remove_file(path);
+    }
+
+    /// Settings → Clear history now uses the same purge as emergency unlock.
+    #[test]
+    fn clear_history_now_resets_books_to_zero_defaults() {
+        let path = temp_db();
+        let store = Store::open_path(&path).unwrap();
+        let owner = store.list_staff().unwrap().into_iter().next().unwrap();
+        let party = store.add_customer("Bala", "").unwrap();
+        store.earn_loyalty_on_sale(&party.id, 10_000, &owner).unwrap();
+        let mut tracked = test_product("Dosa", 80);
+        tracked.stock_qty = 5;
+        store.upsert_product(&tracked).unwrap();
+        let p = store.list_products(false).unwrap().remove(0);
+        let mut cart = Cart::default();
+        cart.add_or_bump(&p);
+        store
+            .finalize_sale(
+                &cart.to_sale_draft().unwrap(),
+                PayMethod::Cash,
+                None,
+                None,
+                &owner,
+            )
+            .unwrap();
+        assert!(store.today_totals().unwrap().sale_count > 0);
+
+        store.purge_trading_history_keep_setup().unwrap();
+
+        assert_eq!(store.today_totals().unwrap().sale_count, 0);
+        assert_eq!(store.till_balance_paise().unwrap(), 0);
+        assert_eq!(store.list_products(false).unwrap()[0].stock_qty, 0);
+        assert_eq!(store.loyalty_points(&party.id).unwrap(), 0);
+        assert!(store.get_customer(&party.id).unwrap().is_some());
         let _ = std::fs::remove_file(path);
     }
 
@@ -16149,12 +16283,14 @@ mod tests {
         let _ = std::fs::remove_file(path);
     }
 
-    /// Fresh DB is schema 1 with org/branch, fiscal pack, units, and triple times.
+    /// Published baseline: fresh books are schema 1 and reopen without rewrite.
     #[test]
     fn fresh_db_is_schema_one_with_books_spine() {
         let path = temp_db();
         let store = Store::open_path(&path).unwrap();
+        assert_eq!(store.schema_version().unwrap(), SCHEMA_VERSION);
         assert_eq!(store.meta_get("schema_version").unwrap().unwrap(), "1");
+        assert_eq!(store.meta_get("app").unwrap().as_deref(), Some(APP_MARK));
         assert_eq!(store.fiscal_settings().unwrap().country_code, "IN");
         assert_eq!(store.list_tax_rates().unwrap().len(), 5);
         let branch = store.active_branch().unwrap();
@@ -16196,6 +16332,93 @@ mod tests {
         assert_eq!(store.today_totals().unwrap().sale_count, 1);
         assert_eq!(store.today_expenses_total().unwrap(), (1, 500));
         let _ = std::fs::remove_file(path);
+    }
+
+    /// Newer Khaynjo must never be "fixed" by writing an older schema over the file.
+    #[test]
+    fn refuses_books_written_by_newer_khaynjo() {
+        let path = temp_db();
+        {
+            let store = Store::open_path(&path).unwrap();
+            store.meta_set("schema_version", "99").unwrap();
+            store
+                .conn
+                .execute_batch("PRAGMA user_version = 99")
+                .unwrap();
+        }
+        migrated_paths().lock().unwrap().remove(&path);
+        let err = Store::open_path(&path).err().expect("must refuse newer schema");
+        assert!(
+            err.contains("newer Khaynjo") && err.contains("schema 99"),
+            "unexpected open error: {err}"
+        );
+        assert!(
+            err.contains("were not changed"),
+            "refusal must promise the file was left alone: {err}"
+        );
+        // On-disk version must still be the future one (no pin-down).
+        let conn = Connection::open(&path).unwrap();
+        let meta: String = conn
+            .query_row(
+                "SELECT value FROM meta WHERE key = 'schema_version'",
+                [],
+                |r| r.get(0),
+            )
+            .unwrap();
+        assert_eq!(meta, "99");
+        let _ = std::fs::remove_file(&path);
+        let _ = std::fs::remove_file(path.with_extension("sqlite3-wal"));
+        let _ = std::fs::remove_file(path.with_extension("sqlite3-shm"));
+    }
+
+    /// A sale written by schema 1 must still load after a clean reopen (upgrade path).
+    #[test]
+    fn schema_one_sale_survives_reopen() {
+        let path = temp_db();
+        let (sale_id, invoice) = {
+            let store = Store::open_path(&path).unwrap();
+            assert_eq!(store.schema_version().unwrap(), 1);
+            let owner = store.list_staff().unwrap().into_iter().next().unwrap();
+            store.upsert_product(&test_product("Idli", 40)).unwrap();
+            let p = store.list_products(false).unwrap().remove(0);
+            let mut cart = Cart::default();
+            cart.add_or_bump(&p);
+            let sale = store
+                .finalize_sale(&cart.to_sale_draft().unwrap(), PayMethod::Cash, None, None, &owner)
+                .unwrap();
+            (sale.id, sale.invoice_no)
+        };
+        migrated_paths().lock().unwrap().remove(&path);
+        let store = Store::open_path(&path).unwrap();
+        assert_eq!(store.schema_version().unwrap(), SCHEMA_VERSION);
+        let sale = store.get_sale(&sale_id).unwrap().expect("sale must remain");
+        assert_eq!(sale.invoice_no, invoice);
+        assert_eq!(store.sale_lines(&sale_id).unwrap().len(), 1);
+        let _ = std::fs::remove_file(&path);
+        let _ = std::fs::remove_file(path.with_extension("sqlite3-wal"));
+        let _ = std::fs::remove_file(path.with_extension("sqlite3-shm"));
+    }
+
+    #[test]
+    fn check_backup_refuses_newer_schema() {
+        let path = temp_db();
+        let backup = path.with_extension("newer.sqlite3");
+        {
+            let store = Store::open_path(&path).unwrap();
+            store.backup_to(&backup).unwrap();
+        }
+        {
+            let conn = Connection::open(&backup).unwrap();
+            conn.execute(
+                "INSERT OR REPLACE INTO meta(key, value) VALUES('schema_version', '50')",
+                [],
+            )
+            .unwrap();
+        }
+        let err = check_backup_file(&backup).expect_err("newer backup must be refused");
+        assert!(err.contains("newer Khaynjo") && err.contains("schema 50"), "{err}");
+        let _ = std::fs::remove_file(&path);
+        let _ = std::fs::remove_file(&backup);
     }
 
     #[test]

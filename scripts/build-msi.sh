@@ -167,18 +167,13 @@ emit_tree() {
   # an upgrade, Execute=immediate + Return=ignore and a fully guarded script:
   # it cannot run during install and cannot fail the uninstall. (An earlier
   # attempt placed a prompt in the install path; that is what broke installs.)
-  # Must run on InstallUISequence: Settings → Apps basic UI suppresses dialogs
-  # spawned from InstallExecuteSequence, so the three-checkbox wipe never
-  # appeared even though the CA was scheduled Before=RemoveFiles.
   printf '    <Binary Id="UninstallDataJs" SourceFile="%s"/>\n' "$PKG/msi-uninstall-data.js"
   printf '    <CustomAction Id="PromptDeleteBooksData" BinaryKey="UninstallDataJs" JScriptCall="PromptDeleteBooksData" Execute="immediate" Return="ignore"/>\n'
   printf '    <Binary Id="PostInstallJs" SourceFile="%s"/>\n' "$PKG/msi-post-install.js"
   printf '    <CustomAction Id="PostInstallPin" BinaryKey="PostInstallJs" JScriptCall="PostInstallPin" Execute="immediate" Return="ignore"/>\n'
   printf '    <CustomAction Id="PostInstallLaunch" BinaryKey="PostInstallJs" JScriptCall="PostInstallLaunch" Execute="immediate" Return="ignore"/>\n'
-  printf '    <InstallUISequence>\n'
-  printf '      <Custom Action="PromptDeleteBooksData" Before="ExecuteAction">REMOVE="ALL" AND NOT UPGRADINGPRODUCTCODE</Custom>\n'
-  printf '    </InstallUISequence>\n'
   printf '    <InstallExecuteSequence>\n'
+  printf '      <Custom Action="PromptDeleteBooksData" Before="RemoveFiles">REMOVE="ALL" AND NOT UPGRADINGPRODUCTCODE</Custom>\n'
   # After files + Start/Desktop shortcuts exist: pin taskbar only.
   # Return=ignore so pin never fails setup. Launch is Finish-checkbox only.
   printf '      <Custom Action="PostInstallPin" After="InstallFinalize">NOT REMOVE AND UILevel &gt; 4</Custom>\n'

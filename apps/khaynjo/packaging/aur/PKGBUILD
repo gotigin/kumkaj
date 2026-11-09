@@ -1,0 +1,53 @@
+# Maintainer: set your AUR account name and email before first push.
+# Binary package of the official Khaynjo Linux build (same product version as
+# Play / Windows Store). Source of truth for pkgver: apps/khaynjo/Cargo.toml.
+# How to build the tarball and publish: apps/khaynjo/docs/PUBLISH_AUR.md
+#
+# shellcheck disable=SC2034
+pkgname=khaynjo-bin
+pkgver=1.0.0
+pkgrel=1
+pkgdesc="Khaynjo — local-first restaurant operating system (tables, KOT, billing, books)"
+arch=('x86_64')
+url="https://khaynjo.com"
+license=('MIT' 'Apache')
+depends=('glibc' 'gcc-libs' 'libx11' 'libxcursor' 'libxi' 'libxrandr' 'libglvnd')
+provides=('khaynjo')
+conflicts=('khaynjo')
+options=('!strip')
+# Replace with your public release URL for this pkgver before pushing to the AUR.
+source=("https://example.com/releases/khaynjo-linux-${pkgver}-x86_64.tar.zst")
+sha256sums=('SKIP') # replace with sha256sum of that tarball before AUR push
+
+package() {
+  cd "${srcdir}/khaynjo-linux" || cd "${srcdir}"
+
+  install -d "${pkgdir}/usr/lib/khaynjo"
+  # Layout matches dist/khaynjo-linux: bin/, kumkaj_khaynjo/resources/, assets/, helpers.
+  cp -a . "${pkgdir}/usr/lib/khaynjo/"
+
+  install -d "${pkgdir}/usr/bin"
+  ln -sf /usr/lib/khaynjo/bin/kumkaj-khaynjo "${pkgdir}/usr/bin/khaynjo"
+  # Keep the crate binary name available for scripts that expect it.
+  ln -sf /usr/lib/khaynjo/bin/kumkaj-khaynjo "${pkgdir}/usr/bin/kumkaj-khaynjo"
+
+  install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/khaynjo.desktop" <<EOF
+[Desktop Entry]
+Type=Application
+Name=Khaynjo
+Comment=Restaurant operating system — floor, kitchen, billing, books
+Exec=khaynjo
+Icon=khaynjo
+Categories=Office;Finance;
+Terminal=false
+StartupWMClass=kumkaj-khaynjo
+EOF
+
+  if [[ -f kumkaj_khaynjo/resources/icon_256.png ]]; then
+    install -Dm644 kumkaj_khaynjo/resources/icon_256.png \
+      "${pkgdir}/usr/share/icons/hicolor/256x256/apps/khaynjo.png"
+  elif [[ -f kumkaj_khaynjo/resources/icon_128.png ]]; then
+    install -Dm644 kumkaj_khaynjo/resources/icon_128.png \
+      "${pkgdir}/usr/share/icons/hicolor/128x128/apps/khaynjo.png"
+  fi
+}

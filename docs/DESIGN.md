@@ -88,6 +88,20 @@ Owner / Sales order after unlock: **Day book** → trade peers (Booking / Order,
 
 The shipping UI is Makepad using these DESIGN tokens. Full Stitch pack pixel parity is not required to ship.
 
+## Soft keyboard (Android — every app)
+
+When a text field is focused and the soft keyboard is open, the focused field
+must sit **above** the keyboard (`KeyboardView` lift from the field rect + a
+**measured** IME height). Hide snaps the shift to zero.
+
+**Cause of the long regression:** on API 26–29 with `adjustNothing`, the
+activity never reports IME height, so lift had nothing real to use. Guessed
+heights, app-side re-lift, and “drop lift to stop glitches” each made the next
+bug (beige gap, freeze, fields buried again). **Solution (Claude Opus, one
+attempt, PR #1):** measure height with `MakepadImeProbe`, use stock
+`KeyboardView`, snap hide to 0 — do not re-add estimates or app re-lift.
+Full cause/solution table: [`DEV.md`](DEV.md) bug **6f** (also **6d**, **6e**).
+
 ## Always responsive (every app)
 
 Layouts must fit the window they are in — no cropped columns, no

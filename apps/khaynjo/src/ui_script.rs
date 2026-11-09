@@ -1224,7 +1224,8 @@ script_mod! {
             color_down: #x9A0E10
             color_focus: #x9A0E10
             ink_centered: true
-            text_style +: {font_size: 13.}
+            // 12: phone 2×2 / equal-share strips keep labels one line.
+            text_style +: {font_size: 12.}
         }
     }
     // Full-width settings row. A real button, so a tap selects that row.
@@ -1831,8 +1832,9 @@ script_mod! {
             // Hidden until set_title — empty title must not take layout.
             visible: false
             // Display title — selectable WrapLabel steals Android page swipe.
+            // 16 (not 20): phone floor keeps long headings on one line.
             selectable: false
-            font_size: 20.
+            font_size: 16.
             font_color: #x260B08
             margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
         }
@@ -5641,8 +5643,22 @@ script_mod! {
                                         draw_bg.border_radius: 12.
                                         draw_bg.border_size: 1.
                                         draw_bg.border_color: #xEFD2BC
-                                        pin_help := InfoHelp{
-                                            tip: "4–12 digits. System keyboard only — Enter unlocks."
+                                        // Phone: smaller type so the line fits
+                                        // (20pt Fill-wrap stacked PASSCOD/E). Tip-only ℹ.
+                                        View{
+                                            width: Fill height: Fit
+                                            flow: Right spacing: 0
+                                            align: Align{y: 0.5}
+                                            pin_prompt := WrapLabel{
+                                                width: Fit
+                                                body: "ENTER OWNER PASSCODE"
+                                                font_color: #x260B08
+                                                font_size: 15.
+                                                selectable: false
+                                            }
+                                            pin_help := InfoHelp{
+                                                tip: "4–12 digits. System keyboard only — Enter unlocks."
+                                            }
                                         }
                                         View{
                                             width: Fill height: Fit
@@ -5669,7 +5685,7 @@ script_mod! {
                                         flow: Right spacing: 0
                                         align: Align{y: 0.5}
                                         lock_login_title := WrapLabel{
-                                            width: Fit
+                                            width: Fill
                                             body: "Or unlock with login"
                                             font_color: #x260B08
                                             font_size: 14.
@@ -6186,24 +6202,34 @@ script_mod! {
                                 padding: Inset{left: 16. right: 16. top: 8. bottom: 8.}
                                 flow: Down spacing: 0
                                 draw_bg.color: #xEFD2BC
+                                // 2×2 equal Fill rows (not Right{wrap}+Fill —
+                                // turtle coerces that; mid-word labels at 375).
                                 otype_strip := View{
                                     width: Fill height: Fit
-                                    flow: Right spacing: 8
-                                    View{width: Fill height: Fit flow: Overlay
-                                        otype_dinein := SegBtn{text: "Dine-in"}
-                                        otype_dinein_on := SegBtnOn{text: "Dine-in" visible: false}
+                                    flow: Down spacing: 8
+                                    View{
+                                        width: Fill height: Fit
+                                        flow: Right spacing: 8
+                                        View{width: Fill height: Fit flow: Overlay
+                                            otype_dinein := SegBtn{text: "Dine-in"}
+                                            otype_dinein_on := SegBtnOn{text: "Dine-in" visible: false}
+                                        }
+                                        View{width: Fill height: Fit flow: Overlay
+                                            otype_takeaway := SegBtn{text: "Takeaway"}
+                                            otype_takeaway_on := SegBtnOn{text: "Takeaway" visible: false}
+                                        }
                                     }
-                                    View{width: Fill height: Fit flow: Overlay
-                                        otype_takeaway := SegBtn{text: "Takeaway"}
-                                        otype_takeaway_on := SegBtnOn{text: "Takeaway" visible: false}
-                                    }
-                                    View{width: Fill height: Fit flow: Overlay
-                                        otype_delivery := SegBtn{text: "Delivery"}
-                                        otype_delivery_on := SegBtnOn{text: "Delivery" visible: false}
-                                    }
-                                    View{width: Fill height: Fit flow: Overlay
-                                        otype_counter := SegBtn{text: "Counter"}
-                                        otype_counter_on := SegBtnOn{text: "Counter" visible: false}
+                                    View{
+                                        width: Fill height: Fit
+                                        flow: Right spacing: 8
+                                        View{width: Fill height: Fit flow: Overlay
+                                            otype_delivery := SegBtn{text: "Delivery"}
+                                            otype_delivery_on := SegBtnOn{text: "Delivery" visible: false}
+                                        }
+                                        View{width: Fill height: Fit flow: Overlay
+                                            otype_counter := SegBtn{text: "Counter"}
+                                            otype_counter_on := SegBtnOn{text: "Counter" visible: false}
+                                        }
                                     }
                                 }
                             }
@@ -6271,6 +6297,7 @@ script_mod! {
                                             text: "+ Add dishes"
                                             align: Align{x: 0.5 y: 0.5}
                                             label_walk: Walk{width: Fit height: Fit}
+                                            draw_text +: {ink_centered: true}
                                         }
                                     }
                                     pos_catalog := View{
@@ -8518,7 +8545,7 @@ script_mod! {
                                         font_size: 15.
                                     }
                                     h_duress_help := InfoHelp{
-                                        tip: "Optional. If this PIN is typed at unlock instead of yours, all books entries are wiped (sales, ledgers, history) and the till opens as Owner looking normal — menu, prices, tables, staff and settings stay. Schema and config are not deleted. Use only if you are forced to unlock. Leave blank and save to turn off. Never the same as anyone's PIN."
+                                        tip: "Optional. If this PIN is typed at unlock instead of yours, trading history is cleared the same way as Settings → Backup → Clear history now: sales, ledgers and open work gone; stock, loyalty, wallet and till back to zero — menu, prices, parties, tables, staff and settings stay. Opens as Owner looking normal. Use only if you are forced to unlock. Leave blank and save to turn off. Never the same as anyone's PIN."
                                     }
                                 }
                                 duress_status := WrapLabel{
@@ -8578,7 +8605,7 @@ script_mod! {
                                     View{
                                         width: Fill height: Fit
                                         flow: Down spacing: 8
-                                        settings_title := WrapLabel{body: "Language & currency" font_color: #x260B08 font_size: 20.}
+                                        settings_title := WrapLabel{body: "Language & currency" font_color: #x260B08 font_size: 16.}
                                     }
                                     locale_label := mod.widgets.ReportText{}
                                     h_language := WrapLabel{body: "Language" font_color: #x260B08 font_size: 15.}
@@ -8621,7 +8648,7 @@ script_mod! {
                                     width: Fill height: Fit
                                     flow: Down spacing: 12
                                     visible: false
-                                    h_country_tax := WrapLabel{body: "Country & tax" font_color: #x260B08 font_size: 20.}
+                                    h_country_tax := WrapLabel{body: "Country & tax" font_color: #x260B08 font_size: 16.}
                                     h_country_pack_help := WrapLabel{
                                         width: Fill
                                         body: ""
@@ -8723,7 +8750,7 @@ View{
                                         width: Fit
                                         body: "Extra tills"
                                         font_color: #x260B08
-                                        font_size: 20.
+                                        font_size: 16.
                                     }
                                     server_pair_help := InfoHelp{
                                         tip: "On the other device: Client Mode → Find server → enter this pairing code."
@@ -8769,7 +8796,7 @@ View{
                                 paired_list := mod.widgets.PairedList{}
                                 // A paired device: its link, what waits, what was not accepted.
                                 client_connection_btn := RowSecondaryBtn{text: "Connection to the shop" visible: false}
-                                h_start_template := WrapLabel{body: "Product" font_color: #x260B08 font_size: 20.}
+                                h_start_template := WrapLabel{body: "Product" font_color: #x260B08 font_size: 16.}
                                 settings_tmpl_label := WrapLabel{
                                     body: "Khaynjo"
                                     font_color: #x6B4A3F
@@ -8788,7 +8815,7 @@ View{
                                     flow: Down spacing: 12
                                     visible: false
                                 FormCard{
-h_your_brand := WrapLabel{body: "Your brand (in-app)" font_color: #x260B08 font_size: 20.}
+h_your_brand := WrapLabel{body: "Your brand (in-app)" font_color: #x260B08 font_size: 16.}
                                 h_brand_shown_help := WrapLabel{
                                     width: Fill
                                     body: ""
@@ -8882,7 +8909,7 @@ h_your_brand := WrapLabel{body: "Your brand (in-app)" font_color: #x260B08 font_
                                     flow: Down spacing: 12
                                     visible: false
                                 FormCard{
-h_units_heading := WrapLabel{body: "Units" font_color: #x260B08 font_size: 20.}
+h_units_heading := WrapLabel{body: "Units" font_color: #x260B08 font_size: 16.}
                                 h_units_help := WrapLabel{
                                     width: Fill
                                     body: ""
@@ -9385,7 +9412,7 @@ sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font
                                 }
                                 FormCard{
 View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
-                                    h_bill_format := WrapLabel{width: Fit body: "Bill format" font_color: #x260B08 font_size: 20.}
+                                    h_bill_format := WrapLabel{width: Fit body: "Bill format" font_color: #x260B08 font_size: 16.}
                                     bill_apply_all := QuietFitBtn{text: "Apply to all"}
                                 }
                                 h_bill_format_help := WrapLabel{
@@ -9861,7 +9888,7 @@ View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
                                     align: Align{x: 0.0 y: 0.5}
                                     h_std_print := WrapLabel{
                                                     width: Fit
-                                                    body: "Bill print size" font_color: #x260B08 font_size: 20.}
+                                                    body: "Bill print size" font_color: #x260B08 font_size: 16.}
                                     std_print_help := InfoHelp{
                                         tip: "Font size for Standard Portrait and Landscape bill jobs on OS / document printers (enter points). Same size on both orientations. Kitchen slip sizes are on the KOT tab."
                                     }
@@ -10330,7 +10357,7 @@ View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
                                             align: Align{x: 0.0 y: 0.5}
                                             h_schemes := WrapLabel{
                                                 width: Fit
-                                                body: "Schemes / offers" font_color: #x260B08 font_size: 20.}
+                                                body: "Schemes / offers" font_color: #x260B08 font_size: 16.}
                                             settings_schemes_help := InfoHelp{
                                                 tip: "Buy X get Y — applied automatically when you settle. Example: Buy 2 Thali get 1 Chaas."
                                             }
@@ -10346,7 +10373,7 @@ View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
                                             align: Align{x: 0.0 y: 0.5}
                                             h_zero_sales := WrapLabel{
                                                 width: Fit
-                                                body: "Zero-value sales" font_color: #x260B08 font_size: 20.}
+                                                body: "Zero-value sales" font_color: #x260B08 font_size: 16.}
                                             settings_zero_sales_help := InfoHelp{
                                                 tip: "Allow dishes priced at zero and bills settled at zero (complimentary). On by default so free covers still appear in Frequent and day books."
                                             }
@@ -10388,7 +10415,7 @@ View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
                                     flow: Down spacing: 12
                                     visible: false
                                     FormCard{
-                                        h_alerts := WrapLabel{body: "Alerts" font_color: #x260B08 font_size: 20.}
+                                        h_alerts := WrapLabel{body: "Alerts" font_color: #x260B08 font_size: 16.}
                                         h_alerts_help := WrapLabel{
                                             width: Fill
                                             body: "How long status messages stay on screen for you (this login)."
@@ -10403,7 +10430,7 @@ View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
                                     width: Fill height: Fit
                                     flow: Down spacing: 12
                                     visible: false
-h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 20.}
+h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 16.}
                                 backup_auto_label := WrapLabel{
                                     width: Fill
                                     body: ""
@@ -10508,7 +10535,7 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 20.}
                                         align: Align{y: 0.5}
                                         h_diag := WrapLabel{
                                                     width: Fit
-                                                    body: "Diagnostics" font_color: #x260B08 font_size: 20.}
+                                                    body: "Diagnostics" font_color: #x260B08 font_size: 16.}
                                         diag_privacy_help := InfoHelp{
                                             tip: "Logs stay on this device. Secrets (PIN, passwords) are never stored. Sharing a package off the device needs your explicit approval each time — never sold or given to third parties."
                                         }
@@ -11353,7 +11380,7 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 20.}
                                     align: Align{x: 0.0 y: 0.5}
                                     upi_qr_title := WrapLabel{
                                                     width: Fit
-                                                    body: "UPI" font_color: #x260B08 font_size: 20.}
+                                                    body: "UPI" font_color: #x260B08 font_size: 16.}
                                     upi_qr_title_help := InfoHelp{
                                         tip: "Guest scans and pays. Tap Take payment after they pay."
                                     }
