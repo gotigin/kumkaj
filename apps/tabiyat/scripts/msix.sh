@@ -9,8 +9,8 @@ ROOT="$(cd "$HERE/../../.." && pwd)"
 export KUMKAJ_APP_DIR="$ROOT/apps/tabiyat"
 export KUMKAJ_BIN_NAME=kumkaj-tabiyat
 export KUMKAJ_MSIX_NAME=Tabiyat
-export KUMKAJ_MSIX_IDENTITY=Kumkaj.Tabiyat
-export KUMKAJ_MSIX_IDENTITY_DEV=Kumkaj.Tabiyat.Dev
+# Store Identity Name — Partner Center Package/Identity/Name (never rename after publish).
+export KUMKAJ_MSIX_IDENTITY=MearajBhagad.Tabiyat
 export KUMKAJ_MSI_PKG_PROD="$ROOT/dist/tabiyat-windows"
 export KUMKAJ_MSI_PKG_DEV="$ROOT/dist/tabiyat-windows-dev"
 export KUMKAJ_MSI_PACKAGE_PROD="$HERE/windows-prod.sh"

@@ -18,6 +18,10 @@
 /vendor/makepad-full/
 **/.makepad/
 
+# Microsoft MSIX SDK build (scripts/msix/ensure-makemsix.sh) + installed tool
+/vendor/msix-packaging/
+/tools/makemsix/
+
 # Large CJK / emoji fonts — copied from vendor by fetch-ui-fonts / package scripts
 /apps/moklanjo/resources/fonts/LXGWWenKai*.ttf
 /apps/moklanjo/resources/fonts/NotoColorEmoji.ttf

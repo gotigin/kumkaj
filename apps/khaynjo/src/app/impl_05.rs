@@ -56,6 +56,271 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
         cx.text_ime_was_dismissed();
     }
 
+    /// If any of these FieldInputs hold key focus, drop IME + focus so a
+    /// soft-keyboard `sync_chrome` early-return cannot latch a closed panel.
+    fn dismiss_if_fields_focused(&mut self, cx: &mut Cx, fields: &[&[LiveId]]) {
+        for id in fields {
+            let field = self.ui.text_input(cx, *id);
+            let area = field.area();
+            if !area.is_empty() && cx.has_key_focus(area) {
+                self.dismiss_soft_keyboard(cx);
+                return;
+            }
+        }
+    }
+
+    /// Bill discount expand/collapse. Must run on the soft-keyboard
+    /// `sync_chrome` early-return too: that path skips the till body paint, so
+    /// a focused amount/reason/PIN field left the panel stuck open forever.
+    /// Closing also clears focus so the early-return cannot latch.
+    fn paint_discount_panel(&mut self, cx: &mut Cx) {
+        let open = app_state().lock().unwrap().discount_panel_open;
+        self.ui.view(cx, ids!(discount_panel)).set_visible(cx, open);
+        if !open {
+            self.dismiss_if_fields_focused(
+                cx,
+                &[
+                    ids!(discount_input),
+                    ids!(discount_reason_input),
+                    ids!(discount_pin_input),
+                ],
+            );
+        }
+    }
+
+    /// Move / merge table panel (target + PIN fields).
+    fn paint_move_panel(&mut self, cx: &mut Cx) {
+        let (table_open, move_open) = {
+            let st = app_state().lock().unwrap();
+            let table_open = st.selected_table_id.is_some()
+                && st.screen == Screen::Pos
+                && st.cart.lines.iter().any(|l| l.is_sent());
+            (table_open, st.move_panel_open)
+        };
+        let show = table_open && move_open;
+        self.ui.view(cx, ids!(table_move_panel)).set_visible(cx, show);
+        if !show {
+            self.dismiss_if_fields_focused(
+                cx,
+                &[ids!(move_target_input), ids!(move_pin_input)],
+            );
+        }
+    }
+
+    /// Cancel / NC / move-line panel and its field wraps.
+    fn paint_line_action_panel(&mut self, cx: &mut Cx) {
+        let (action, cooked, line_nc) = {
+            let st = app_state().lock().unwrap();
+            let line_nc = st.line_action.as_ref().and_then(|(id, _)| {
+                st.cart
+                    .lines
+                    .iter()
+                    .find(|l| &l.running_line_id == id)
+                    .map(|l| l.complimentary)
+            });
+            (
+                st.line_action.as_ref().map(|(_, a)| *a),
+                st.line_cooked,
+                line_nc.unwrap_or(false),
+            )
+        };
+        self.ui
+            .view(cx, ids!(line_action_panel))
+            .set_visible(cx, action.is_some());
+        if let Some(action) = action {
+            let (reason, qty, cooked_btn, target) = match action {
+                LineAction::Cancel => (true, true, true, false),
+                LineAction::CancelBatch => (true, false, true, false),
+                LineAction::Complimentary if line_nc => (false, false, false, false),
+                LineAction::Complimentary => (true, false, false, false),
+                LineAction::Move => (false, false, false, true),
+            };
+            self.ui.view(cx, ids!(line_reason_wrap)).set_visible(cx, reason);
+            self.ui.view(cx, ids!(line_qty_wrap)).set_visible(cx, qty);
+            self.ui.view(cx, ids!(line_cooked_wrap)).set_visible(cx, cooked_btn);
+            self.ui.view(cx, ids!(line_target_wrap)).set_visible(cx, target);
+            if cooked_btn {
+                self.paint_choice_pair(
+                    cx,
+                    ids!(line_cooked_raw),
+                    ids!(line_cooked_raw_on),
+                    !cooked,
+                );
+                self.paint_choice_pair(
+                    cx,
+                    ids!(line_cooked_done),
+                    ids!(line_cooked_done_on),
+                    cooked,
+                );
+            }
+            if !reason {
+                self.dismiss_if_fields_focused(
+                    cx,
+                    &[ids!(line_reason_input), ids!(line_pin_input)],
+                );
+            }
+            if !qty {
+                self.dismiss_if_fields_focused(cx, &[ids!(line_qty_input)]);
+            }
+            if !target {
+                self.dismiss_if_fields_focused(cx, &[ids!(line_target_input)]);
+            }
+        } else {
+            self.dismiss_if_fields_focused(
+                cx,
+                &[
+                    ids!(line_reason_input),
+                    ids!(line_qty_input),
+                    ids!(line_target_input),
+                    ids!(line_pin_input),
+                ],
+            );
+        }
+    }
+
+    /// Pay method wraps + Split/Cash amount panels + Tax invoice chip row.
+    /// Coerces disabled methods / Cash-memo-only lane while IME is up so the
+    /// early-return path cannot leave a closed panel on screen.
+    fn paint_pay_panels(&mut self, cx: &mut Cx) {
+        let (choice, show_tax_invoice, pay_cash, pay_upi, pay_card, pay_credit, pay_split) = {
+            let mut st = app_state().lock().unwrap();
+            let en = |key: &str| {
+                st.store
+                    .as_ref()
+                    .and_then(|s| s.pay_method_enabled(key).ok())
+                    .unwrap_or(true)
+            };
+            let pay_cash = en("cash");
+            let pay_upi = en("upi");
+            let pay_card = en("card");
+            let pay_credit = en("credit");
+            let pay_split = en("split");
+            let show_tax_invoice = st
+                .store
+                .as_ref()
+                .and_then(|s| s.show_tax_invoice().ok())
+                .unwrap_or(true);
+            let choice = match st.pay_choice {
+                PayChoice::Upi if !pay_upi => PayChoice::Cash,
+                PayChoice::Card if !pay_card => PayChoice::Cash,
+                PayChoice::Credit if !pay_credit => PayChoice::Cash,
+                PayChoice::Split if !pay_split => PayChoice::Cash,
+                other => other,
+            };
+            st.pay_choice = choice;
+            if !show_tax_invoice {
+                st.money_lane = MoneyLane::Owner;
+                st.cart.money_lane = MoneyLane::Owner;
+            }
+            (
+                choice,
+                show_tax_invoice,
+                pay_cash,
+                pay_upi,
+                pay_card,
+                pay_credit,
+                pay_split,
+            )
+        };
+        self.ui
+            .view(cx, ids!(lane_declared_wrap))
+            .set_visible(cx, show_tax_invoice);
+        self.ui
+            .view(cx, ids!(lane_owner_wrap))
+            .set_visible(cx, show_tax_invoice);
+        for (wrap, idle, on, c, on_row) in [
+            (ids!(pm_cash_wrap), ids!(pm_cash), ids!(pm_cash_on), PayChoice::Cash, pay_cash),
+            (ids!(pm_upi_wrap), ids!(pm_upi), ids!(pm_upi_on), PayChoice::Upi, pay_upi),
+            (ids!(pm_card_wrap), ids!(pm_card), ids!(pm_card_on), PayChoice::Card, pay_card),
+            (ids!(pm_credit_wrap), ids!(pm_credit), ids!(pm_credit_on), PayChoice::Credit, pay_credit),
+            (ids!(pm_split_wrap), ids!(pm_split), ids!(pm_split_on), PayChoice::Split, pay_split),
+        ] {
+            self.ui.view(cx, wrap).set_visible(cx, on_row);
+            if on_row {
+                self.paint_choice_pair(cx, idle, on, choice == c);
+            }
+        }
+        let split_on = choice == PayChoice::Split;
+        let cash_on = matches!(choice, PayChoice::Cash | PayChoice::Split);
+        self.ui.view(cx, ids!(split_panel)).set_visible(cx, split_on);
+        self.ui.view(cx, ids!(cash_panel)).set_visible(cx, cash_on);
+        if !split_on {
+            self.dismiss_if_fields_focused(
+                cx,
+                &[
+                    ids!(mix_cash_input),
+                    ids!(mix_upi_input),
+                    ids!(mix_card_input),
+                    ids!(mix_credit_input),
+                ],
+            );
+        }
+        if !cash_on {
+            self.dismiss_if_fields_focused(cx, &[ids!(tendered_input), ids!(tip_input)]);
+        }
+    }
+
+    /// Customer / delivery extras under the ticket.
+    fn paint_ticket_extras(&mut self, cx: &mut Cx) {
+        let (extras, delivery) = {
+            let st = app_state().lock().unwrap();
+            let extras = !st.cart.is_empty()
+                && (matches!(st.pay_choice, PayChoice::Credit | PayChoice::Split)
+                    || st.cart.order_type == OrderType::Delivery);
+            let delivery = st.cart.order_type == OrderType::Delivery;
+            (extras, delivery)
+        };
+        self.ui.view(cx, ids!(ticket_extras)).set_visible(cx, extras);
+        self.ui
+            .widget(cx, ids!(delivery_by_input))
+            .set_visible(cx, delivery);
+        if !delivery {
+            self.dismiss_if_fields_focused(cx, &[ids!(delivery_by_input)]);
+        }
+        if !extras {
+            self.dismiss_if_fields_focused(cx, &[ids!(customer_name_input)]);
+        }
+    }
+
+    /// Frequent-category days/limit strip in the dish picker.
+    fn paint_frequent_config(&mut self, cx: &mut Cx) {
+        let on = {
+            let st = app_state().lock().unwrap();
+            st.menu_category.as_deref() == Some(MENU_FREQUENT)
+        };
+        self.ui.view(cx, ids!(frequent_config)).set_visible(cx, on);
+        if !on {
+            self.dismiss_if_fields_focused(
+                cx,
+                &[ids!(frequent_days_input), ids!(frequent_limit_input)],
+            );
+        }
+    }
+
+    /// Split-bill pick bar (no fields — visibility only).
+    fn paint_split_bar(&mut self, cx: &mut Cx) {
+        let show = {
+            let st = app_state().lock().unwrap();
+            let table_open = st.selected_table_id.is_some()
+                && st.screen == Screen::Pos
+                && st.cart.lines.iter().any(|l| l.is_sent());
+            let may_settle = session_may_settle(st.session.as_ref());
+            table_open && st.split_mode && may_settle
+        };
+        self.ui.view(cx, ids!(split_bar)).set_visible(cx, show);
+    }
+
+    /// Every till expand/collapse that soft-keyboard early-return used to skip.
+    fn paint_till_focus_chrome(&mut self, cx: &mut Cx) {
+        self.paint_discount_panel(cx);
+        self.paint_move_panel(cx);
+        self.paint_line_action_panel(cx);
+        self.paint_pay_panels(cx);
+        self.paint_ticket_extras(cx);
+        self.paint_frequent_config(cx);
+        self.paint_split_bar(cx);
+    }
+
     /// True when a text field holds key focus / soft keyboard (any screen).
     ///
     /// Prefer the live IME area TextInput registers while focused+drawn. Do
@@ -383,12 +648,14 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
             if st.screen == Screen::Pos && st.line_action.is_some() {
                 st.line_action = None;
                 drop(st);
+                self.paint_till_focus_chrome(cx);
                 self.sync_chrome(cx);
                 return true;
             }
             if st.screen == Screen::Pos && st.move_panel_open {
                 st.move_panel_open = false;
                 drop(st);
+                self.paint_till_focus_chrome(cx);
                 self.sync_chrome(cx);
                 return true;
             }
@@ -396,6 +663,7 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
                 st.split_mode = false;
                 st.split_pick.clear();
                 drop(st);
+                self.paint_till_focus_chrome(cx);
                 self.sync_chrome(cx);
                 return true;
             }

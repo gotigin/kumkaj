@@ -25,6 +25,25 @@ pub struct Store {
     path: PathBuf,
 }
 
+/// Stable tokens for [`Store::pay_methods_csv`]. Unknown tokens are dropped.
+fn parse_pay_methods_csv(csv: &str) -> Vec<String> {
+    const KNOWN: &[&str] = &["cash", "upi", "card", "credit", "split"];
+    let mut out = Vec::new();
+    for part in csv.split(',') {
+        let key = part.trim().to_ascii_lowercase();
+        if key.is_empty() || !KNOWN.contains(&key.as_str()) {
+            continue;
+        }
+        if !out.iter().any(|m| m == &key) {
+            out.push(key);
+        }
+    }
+    if out.is_empty() {
+        out.extend(KNOWN.iter().map(|s| (*s).to_string()));
+    }
+    out
+}
+
 /// One unit of work on the books: lands whole or not at all. Outside a
 /// transaction it is one (`BEGIN IMMEDIATE`: the write lock is taken up
 /// front, so a check made inside it still holds when the write lands);
@@ -235,6 +254,7 @@ impl Store {
         }
 
         self.ensure_seed_data()?;
+        self.migrate_rajdhani_till_chrome_if_needed()?;
         self.conn
             .execute_batch(&format!("PRAGMA user_version = {SCHEMA_VERSION}"))
             .map_err(|e| e.to_string())?;
@@ -1280,6 +1300,25 @@ impl Store {
         self.meta_set("rajdhani_app_template_done", "1")
     }
 
+    /// Shops that already applied Rajdhani before till-chrome prefs existed get
+    /// Cash-only + hidden tax labels once (only when those meta keys are still
+    /// unset — Owner changes are never overwritten).
+    fn migrate_rajdhani_till_chrome_if_needed(&self) -> Result<(), String> {
+        if !self.rajdhani_app_template_done()? {
+            return Ok(());
+        }
+        if self.meta_get("show_tax_chrome")?.is_none() {
+            self.meta_set("show_tax_chrome", "0")?;
+        }
+        if self.meta_get("show_tax_invoice")?.is_none() {
+            self.meta_set("show_tax_invoice", "0")?;
+        }
+        if self.meta_get("pay_methods")?.is_none() {
+            self.meta_set("pay_methods", "cash")?;
+        }
+        Ok(())
+    }
+
     /// Shop defaults for **Rajdhani App Template**: tax/GST off, Owner **Zahir**,
     /// Admin **Asif**, Waiter **Nawaz**, FOH-first sidebar, history after a few
     /// hours, Today strip off. Does not seed Hot/Cold stations or stock named
@@ -1380,6 +1419,11 @@ impl Store {
         self.meta_set("history_retention", "off")?;
         self.meta_set("history_retention_hours", "12")?;
         self.meta_set("show_today_bar", "0")?;
+        // Quiet counter: no GST labels, no Tax invoice chip; Cash only (Settings
+        // can turn each back on — features stay).
+        self.meta_set("show_tax_chrome", "0")?;
+        self.meta_set("show_tax_invoice", "0")?;
+        self.meta_set("pay_methods", "cash")?;
         // FOH-first chrome: Floor / Kitchen / Sell / Sales / Day close stay.
         // Back-office peers stay in the app — unhide in Settings → Sidebar.
         self.set_nav_hidden_csv("books,buy,menu,inventory,branches,credit,reports")?;
@@ -2642,6 +2686,62 @@ impl Store {
     pub fn set_show_today_bar(&self, on: bool) -> Result<(), String> {
         self.assert_server_writer("Change today strip")?;
         self.meta_set("show_today_bar", if on { "1" } else { "0" })
+    }
+
+    /// Order-desk GST / tax estimate lines and GST-in-price placeholders.
+    /// Default on. Rajdhani App Template turns it off — tax maths and
+    /// Settings → Country & tax stay; only the till wording hides.
+    pub fn show_tax_chrome(&self) -> Result<bool, String> {
+        Ok(match self.meta_get("show_tax_chrome")?.as_deref() {
+            Some(v) => v.trim() != "0",
+            None => true,
+        })
+    }
+
+    pub fn set_show_tax_chrome(&self, on: bool) -> Result<(), String> {
+        self.assert_server_writer("Change tax labels on till")?;
+        self.meta_set("show_tax_chrome", if on { "1" } else { "0" })
+    }
+
+    /// Order-desk **Tax invoice** chip (Cash memo always stays). Default on.
+    /// Rajdhani App Template turns it off — Owner can Show again in Settings.
+    pub fn show_tax_invoice(&self) -> Result<bool, String> {
+        Ok(match self.meta_get("show_tax_invoice")?.as_deref() {
+            Some(v) => v.trim() != "0",
+            None => true,
+        })
+    }
+
+    pub fn set_show_tax_invoice(&self, on: bool) -> Result<(), String> {
+        self.assert_server_writer("Change Tax invoice on till")?;
+        self.meta_set("show_tax_invoice", if on { "1" } else { "0" })
+    }
+
+    /// Payment chips on the order desk. CSV of `cash,upi,card,credit,split`.
+    /// Default all five. Empty / missing → all. Cash is always kept.
+    pub fn pay_methods_csv(&self) -> Result<String, String> {
+        Ok(self
+            .meta_get("pay_methods")?
+            .unwrap_or_else(|| "cash,upi,card,credit,split".into()))
+    }
+
+    pub fn set_pay_methods_csv(&self, csv: &str) -> Result<(), String> {
+        self.assert_server_writer("Change payment methods")?;
+        let mut methods = parse_pay_methods_csv(csv);
+        if !methods.iter().any(|m| *m == "cash") {
+            methods.insert(0, "cash".into());
+        }
+        self.meta_set("pay_methods", &methods.join(","))
+    }
+
+    pub fn pay_method_enabled(&self, method: &str) -> Result<bool, String> {
+        let key = method.trim().to_ascii_lowercase();
+        if key == "cash" {
+            return Ok(true);
+        }
+        Ok(parse_pay_methods_csv(&self.pay_methods_csv()?)
+            .iter()
+            .any(|m| m == &key))
     }
 
     pub fn current_business_day_window(
@@ -14492,6 +14592,29 @@ mod tests {
             "tax picker must be empty after App Template"
         );
         assert_eq!(store.fiscal_settings().unwrap().service_charge_bps, 0);
+        assert!(
+            !store.show_tax_chrome().unwrap(),
+            "Rajdhani hides GST/tax labels on the till by default"
+        );
+        assert!(
+            !store.show_tax_invoice().unwrap(),
+            "Rajdhani hides Tax invoice chip — Cash memo only"
+        );
+        assert_eq!(store.pay_methods_csv().unwrap(), "cash");
+        assert!(store.pay_method_enabled("cash").unwrap());
+        assert!(!store.pay_method_enabled("upi").unwrap());
+        assert!(!store.pay_method_enabled("card").unwrap());
+        assert!(!store.pay_method_enabled("credit").unwrap());
+        assert!(!store.pay_method_enabled("split").unwrap());
+        // Owner can turn chrome / methods back on — features stay.
+        store.set_show_tax_chrome(true).unwrap();
+        assert!(store.show_tax_chrome().unwrap());
+        store.set_show_tax_invoice(true).unwrap();
+        assert!(store.show_tax_invoice().unwrap());
+        store
+            .set_pay_methods_csv("cash,upi,card,credit,split")
+            .unwrap();
+        assert!(store.pay_method_enabled("upi").unwrap());
         let staff = store.list_staff().unwrap();
         let owner = staff.iter().find(|s| s.is_owner()).expect("owner");
         assert_eq!(owner.name, "Zahir");

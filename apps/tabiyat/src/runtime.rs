@@ -393,6 +393,9 @@ fn shelf_materialize_job(db_path: PathBuf) {
     let _ = std::thread::Builder::new()
         .name("tabiyat-shelf-mat".into())
         .spawn(move || {
+            if let Ok(base) = store::data_dir() {
+                menu_images::ensure_android_menu_assets(&base);
+            }
             let result = Store::open_path(&db_path).and_then(|s| s.materialize_shelf_photos());
             store::set_import_progress_notify(None);
             store::set_import_cancel_check(None);
@@ -490,6 +493,9 @@ fn menu_import_job(db_path: PathBuf, kind: MenuImportKind) {
         .name("tabiyat-menu-import".into())
         .spawn(move || {
             let result = (|| -> Result<store::CatalogueImport, String> {
+                if let Ok(base) = store::data_dir() {
+                    menu_images::ensure_android_menu_assets(&base);
+                }
                 let store = Store::open_path(&db_path)?;
                 match &kind {
                     MenuImportKind::Shelf => store.import_catalogue(menu_images::shelf()),
@@ -739,6 +745,8 @@ fn server_new_job(base: PathBuf, name: String) {
         .spawn(move || {
             net::stop_server();
             let result = (|| -> Result<RoleOpenReady, String> {
+                // Unpack APK menu shelf/templates into filesDir before offer/import.
+                menu_images::ensure_android_menu_assets(&base);
                 let (_info, store) = local_servers::create_local_server(&base, &name)?;
                 if role_cancelled() {
                     return Err("Cancelled".into());
@@ -759,6 +767,7 @@ fn server_existing_job(base: PathBuf, server_id: String, switching_in: bool) {
         .spawn(move || {
             net::stop_server();
             let result = (|| -> Result<RoleOpenReady, String> {
+                menu_images::ensure_android_menu_assets(&base);
                 let store = local_servers::open_server(&base, &server_id)?;
                 if role_cancelled() {
                     return Err("Cancelled".into());

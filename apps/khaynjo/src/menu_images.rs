@@ -88,12 +88,19 @@ pub struct ShelfDish {
     pub path: PathBuf,
 }
 
-/// Packaged `assets/…` lookup — same on Windows, Linux, and portable folders.
-/// Tries: `env_key` (if set), cargo manifest (dev), beside the exe, one
-/// level up (Linux `bin/` layout), `MAKEPAD_PACKAGE_DIR`, then cwd.
+/// Packaged `assets/…` lookup — same on Windows, Linux, portable folders, and
+/// Android (after extract into the app files dir).
+/// Tries: `env_key` (if set), Android files dir, cargo manifest (dev), beside
+/// the exe, one level up (Linux `bin/` layout), `MAKEPAD_PACKAGE_DIR`, then cwd.
 pub(crate) fn packaged_assets_dir(rel: &str, env_key: &str) -> Option<PathBuf> {
     if let Ok(dir) = std::env::var(env_key) {
         let p = PathBuf::from(dir);
+        if p.is_dir() {
+            return Some(p);
+        }
+    }
+    if let Some(base) = android_files_dir() {
+        let p = base.join(rel);
         if p.is_dir() {
             return Some(p);
         }
@@ -133,10 +140,128 @@ pub(crate) fn packaged_assets_dir(rel: &str, env_key: &str) -> Option<PathBuf> {
 
 /// Where the provided items live. Dev runs read the workspace copy via
 /// the compile-time manifest dir; packaged builds ship `assets/items`
-/// next to the executable (Windows MSI / portable, Linux package root).
+/// next to the executable (Windows MSI / portable, Linux package root) or
+/// extract them into the Android files dir from the APK.
 /// `KHAYNJO_CATALOGUE_DIR` overrides.
 pub fn catalogue_root() -> Option<PathBuf> {
     packaged_assets_dir("assets/items", "KHAYNJO_CATALOGUE_DIR")
+}
+
+/// Bump when the shipped shelf/templates change without a Cargo version bump.
+#[cfg(target_os = "android")]
+const ANDROID_MENU_PACK_REV: &str = "2026-11-10";
+
+fn android_files_dir_slot() -> &'static std::sync::OnceLock<PathBuf> {
+    static DIR: std::sync::OnceLock<PathBuf> = std::sync::OnceLock::new();
+    &DIR
+}
+
+fn android_files_dir() -> Option<PathBuf> {
+    if let Some(p) = android_files_dir_slot().get() {
+        return Some(p.clone());
+    }
+    crate::store::data_dir().ok()
+}
+
+fn android_menu_ready() -> &'static std::sync::atomic::AtomicBool {
+    static READY: std::sync::atomic::AtomicBool =
+        std::sync::atomic::AtomicBool::new(!cfg!(target_os = "android"));
+    &READY
+}
+
+/// True when menu shelf/templates are available on disk (always on desktop;
+/// after APK extract on Android).
+pub fn menu_assets_ready() -> bool {
+    android_menu_ready().load(std::sync::atomic::Ordering::SeqCst)
+}
+
+#[cfg(target_os = "android")]
+fn android_menu_pack_stamp(data_base: &Path) -> PathBuf {
+    data_base.join("assets/.menu_pack_rev")
+}
+
+#[cfg(target_os = "android")]
+fn android_menu_pack_current(data_base: &Path) -> bool {
+    let stamp = android_menu_pack_stamp(data_base);
+    let Ok(text) = std::fs::read_to_string(&stamp) else {
+        return false;
+    };
+    text.trim() == ANDROID_MENU_PACK_REV
+        && data_base.join("assets/items").is_dir()
+        && data_base.join("assets/templates").is_dir()
+}
+
+/// Remember the app files dir and make sure `assets/items` + `assets/templates`
+/// exist there on Android (copy out of the APK). Safe to call repeatedly; does
+/// the heavy extract on the calling thread so Server open workers finish with
+/// templates ready — same layout as desktop packages.
+pub fn ensure_android_menu_assets(data_base: &Path) {
+    let _ = android_files_dir_slot().set(data_base.to_path_buf());
+    #[cfg(not(target_os = "android"))]
+    {
+        let _ = data_base;
+        android_menu_ready().store(true, std::sync::atomic::Ordering::SeqCst);
+    }
+    #[cfg(target_os = "android")]
+    {
+        static LOCK: std::sync::OnceLock<std::sync::Mutex<()>> = std::sync::OnceLock::new();
+        let lock = LOCK.get_or_init(|| std::sync::Mutex::new(()));
+        let _guard = lock.lock().unwrap_or_else(|e| e.into_inner());
+        if android_menu_pack_current(data_base) {
+            android_menu_ready().store(true, std::sync::atomic::Ordering::SeqCst);
+            return;
+        }
+        match extract_android_menu_assets(data_base) {
+            Ok(n) => {
+                crate::diag::info(
+                    crate::diag::Cat::Store,
+                    "menu_assets",
+                    &format!("extracted {n} files under {}", data_base.display()),
+                );
+            }
+            Err(e) => {
+                crate::diag::warn(
+                    crate::diag::Cat::Store,
+                    "menu_assets",
+                    &format!("extract failed: {e}"),
+                );
+            }
+        }
+        android_menu_ready().store(true, std::sync::atomic::Ordering::SeqCst);
+    }
+}
+
+#[cfg(target_os = "android")]
+fn extract_android_menu_assets(data_base: &Path) -> Result<usize, String> {
+    use makepad_widgets::makepad_platform::os::linux::android::android_jni;
+
+    let crate_name = env!("CARGO_PKG_NAME").replace('-', "_");
+    let list = include_str!(concat!(env!("OUT_DIR"), "/menu_assets_file_list.txt"));
+    let dest_assets = data_base.join("assets");
+    // Replace a previous partial extract.
+    let _ = std::fs::remove_dir_all(dest_assets.join("items"));
+    let _ = std::fs::remove_dir_all(dest_assets.join("templates"));
+    std::fs::create_dir_all(&dest_assets).map_err(|e| e.to_string())?;
+
+    let mut n = 0usize;
+    for rel in list.lines().map(str::trim).filter(|l| !l.is_empty()) {
+        // APK path: assets/makepad/<crate>/assets/items/...
+        let asset_path = format!("makepad/{crate_name}/assets/{rel}");
+        let bytes = unsafe { android_jni::load_asset(&asset_path) }
+            .ok_or_else(|| format!("missing APK asset {asset_path}"))?;
+        let out = dest_assets.join(rel);
+        if let Some(parent) = out.parent() {
+            std::fs::create_dir_all(parent).map_err(|e| e.to_string())?;
+        }
+        std::fs::write(&out, bytes).map_err(|e| e.to_string())?;
+        n += 1;
+    }
+    std::fs::write(
+        android_menu_pack_stamp(data_base),
+        ANDROID_MENU_PACK_REV.as_bytes(),
+    )
+    .map_err(|e| e.to_string())?;
+    Ok(n)
 }
 
 /// Image keys that point into the bundled catalogue: `shelf:<folder>/<file>`.
@@ -169,10 +294,20 @@ pub fn title_from_kebab(s: &str) -> String {
 }
 
 /// Every dish on the shelf, sorted by folder then name. Scanned once per run
-/// (it is bundled and never changes while the app is open).
+/// once the pack is on disk (Android may extract from the APK first).
 pub fn shelf() -> &'static [ShelfDish] {
     static SHELF: std::sync::OnceLock<Vec<ShelfDish>> = std::sync::OnceLock::new();
-    SHELF.get_or_init(|| catalogue_root().map(|r| load_shelf(&r)).unwrap_or_default())
+    if let Some(v) = SHELF.get() {
+        return v.as_slice();
+    }
+    let loaded = catalogue_root()
+        .map(|r| load_shelf(&r))
+        .unwrap_or_default();
+    // Do not cache an empty shelf while Android is still unpacking the APK.
+    if loaded.is_empty() && !menu_assets_ready() {
+        return &[];
+    }
+    SHELF.get_or_init(|| loaded).as_slice()
 }
 
 /// Scan `root/<folder>/<dish>.webp`.

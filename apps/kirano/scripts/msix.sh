@@ -9,8 +9,8 @@ ROOT="$(cd "$HERE/../../.." && pwd)"
 export KUMKAJ_APP_DIR="$ROOT/apps/kirano"
 export KUMKAJ_BIN_NAME=kumkaj-kirano
 export KUMKAJ_MSIX_NAME=Kirano
-export KUMKAJ_MSIX_IDENTITY=Kumkaj.Kirano
-export KUMKAJ_MSIX_IDENTITY_DEV=Kumkaj.Kirano.Dev
+# Store Identity Name — Partner Center Package/Identity/Name (never rename after publish).
+export KUMKAJ_MSIX_IDENTITY=MearajBhagad.Kirano
 export KUMKAJ_MSI_PKG_PROD="$ROOT/dist/kirano-windows"
 export KUMKAJ_MSI_PKG_DEV="$ROOT/dist/kirano-windows-dev"
 export KUMKAJ_MSI_PACKAGE_PROD="$HERE/windows-prod.sh"

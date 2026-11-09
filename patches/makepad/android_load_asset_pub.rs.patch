@@ -1,0 +1,32 @@
+--- a/platform/src/os/linux/android/android_jni.rs
++++ b/platform/src/os/linux/android/android_jni.rs
+@@ -1476,16 +1476,23 @@
+     let length = ndk_sys::AAsset_getLength64(asset);
+ 
+     let mut buffer = vec![0u8; length as usize];
+     // Use as_mut_ptr — casting as_ptr() to *mut is undefined and can leave a
+     // zeroed buffer (black Image widgets) under optimizing compilers.
+-    if length > 0
+-        && ndk_sys::AAsset_read(asset, buffer.as_mut_ptr() as *mut _, length as _) > 0
+-    {
++    if length == 0 {
++        ndk_sys::AAsset_close(asset);
++        return Some(buffer);
++    }
++    if ndk_sys::AAsset_read(asset, buffer.as_mut_ptr() as *mut _, length as _) > 0 {
+         ndk_sys::AAsset_close(asset);
+         return Some(buffer);
+     }
+     ndk_sys::AAsset_close(asset);
+     return None;
+ }
+ 
++/// Apps copy menu shelf / templates out of the APK into getFilesDir (same
++/// layout as desktop `assets/items` and `assets/templates` beside the exe).
++pub unsafe fn load_asset(filepath: &str) -> Option<Vec<u8>> {
++    to_java_load_asset(filepath)
++}
++
+ pub unsafe fn to_java_show_keyboard(visible: bool) {
+     let env = attach_jni_env();
+     ndk_utils::call_void_method!(env, get_activity(), "showKeyboard", "(Z)V", visible as i32);

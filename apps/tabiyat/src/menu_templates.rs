@@ -87,26 +87,36 @@ fn load_one(dir: &Path) -> Option<MenuTemplate> {
 /// Every client template on disk, sorted by title.
 pub fn all() -> &'static [MenuTemplate] {
     static ALL: std::sync::OnceLock<Vec<MenuTemplate>> = std::sync::OnceLock::new();
-    ALL.get_or_init(|| {
-        let Some(root) = templates_root() else {
-            return Vec::new();
-        };
-        let Ok(entries) = std::fs::read_dir(&root) else {
-            return Vec::new();
-        };
-        let mut out = Vec::new();
-        for entry in entries.flatten() {
-            let dir = entry.path();
-            if !dir.is_dir() {
-                continue;
-            }
-            if let Some(tmpl) = load_one(&dir) {
-                out.push(tmpl);
-            }
+    if let Some(v) = ALL.get() {
+        return v.as_slice();
+    }
+    let loaded = load_all_templates();
+    // Do not cache empty while Android is still unpacking the APK pack.
+    if loaded.is_empty() && !menu_images::menu_assets_ready() {
+        return &[];
+    }
+    ALL.get_or_init(|| loaded).as_slice()
+}
+
+fn load_all_templates() -> Vec<MenuTemplate> {
+    let Some(root) = templates_root() else {
+        return Vec::new();
+    };
+    let Ok(entries) = std::fs::read_dir(&root) else {
+        return Vec::new();
+    };
+    let mut out = Vec::new();
+    for entry in entries.flatten() {
+        let dir = entry.path();
+        if !dir.is_dir() {
+            continue;
         }
-        out.sort_by(|a, b| a.title.cmp(&b.title).then_with(|| a.id.cmp(&b.id)));
-        out
-    })
+        if let Some(tmpl) = load_one(&dir) {
+            out.push(tmpl);
+        }
+    }
+    out.sort_by(|a, b| a.title.cmp(&b.title).then_with(|| a.id.cmp(&b.id)));
+    out
 }
 
 pub fn find(id: &str) -> Option<&'static MenuTemplate> {

@@ -152,7 +152,12 @@ emit_tree() {
   printf '    <Property Id="MSIINSTALLPERUSER" Value="1"/>\n'
   # ARPNOMODIFY is defined by WixUI_Minimal - defining it again breaks wixl.
   printf '    <Property Id="ARPNOREPAIR" Value="1"/>\n'
-  printf '    <MajorUpgrade DowngradeErrorMessage="A newer version of %s is already installed."/>\n' "$(printf '%s' "$LABEL" | xml_escape)"
+  # AllowSameVersionUpgrades: Product Id="*" makes a new ProductCode every
+  # rebuild while Version stays e.g. 1.0.0 — without this, Windows treats the
+  # new MSI as a downgrade / missing source for the previous same-version
+  # install (VM symptom: demands Khaynjo-0.1.0.msi after a "successful"
+  # uninstall). Keep books data; only replace the product registration.
+  printf '    <MajorUpgrade AllowSameVersionUpgrades="yes" DowngradeErrorMessage="A newer version of %s is already installed."/>\n' "$(printf '%s' "$LABEL" | xml_escape)"
   # Installer wizard (Welcome/License -> progress -> Finish). Without this the
   # MSI installs silently and the window just vanishes on completion.
   printf '    <UIRef Id="WixUI_Minimal"/>\n'

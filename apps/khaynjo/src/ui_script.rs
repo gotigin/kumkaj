@@ -6712,11 +6712,11 @@ script_mod! {
                                     View{
                                         width: Fill height: Fit
                                         flow: Right spacing: 6
-                                        View{width: Fill height: Fit flow: Overlay
+                                        lane_declared_wrap := View{width: Fill height: Fit flow: Overlay
                                             lane_declared := SegBtn{text: "Tax invoice"}
                                             lane_declared_on := SegBtnOn{text: "Tax invoice" visible: false}
                                         }
-                                        View{width: Fill height: Fit flow: Overlay
+                                        lane_owner_wrap := View{width: Fill height: Fit flow: Overlay
                                             lane_owner := SegBtn{text: "Cash memo"}
                                             lane_owner_on := SegBtnOn{text: "Cash memo" visible: false}
                                         }
@@ -6726,27 +6726,29 @@ script_mod! {
                                         visible: false
                                     }
                                     // How they pay: one tap. A single method takes the
-                                    // whole bill; Split opens the amounts.
+                                    // whole bill; Split opens the amounts. Visibility of
+                                    // each wrap follows Settings → pay methods (Rajdhani:
+                                    // Cash only by default).
                                     View{
                                         width: Fill height: Fit
                                         flow: Right spacing: 4
-                                        View{width: Fill height: Fit flow: Overlay
+                                        pm_cash_wrap := View{width: Fill height: Fit flow: Overlay
                                             pm_cash := SegBtn{text: "Cash"}
                                             pm_cash_on := SegBtnOn{text: "Cash" visible: false}
                                         }
-                                        View{width: Fill height: Fit flow: Overlay
+                                        pm_upi_wrap := View{width: Fill height: Fit flow: Overlay
                                             pm_upi := SegBtn{text: "UPI"}
                                             pm_upi_on := SegBtnOn{text: "UPI" visible: false}
                                         }
-                                        View{width: Fill height: Fit flow: Overlay
+                                        pm_card_wrap := View{width: Fill height: Fit flow: Overlay
                                             pm_card := SegBtn{text: "Card"}
                                             pm_card_on := SegBtnOn{text: "Card" visible: false}
                                         }
-                                        View{width: Fill height: Fit flow: Overlay
+                                        pm_credit_wrap := View{width: Fill height: Fit flow: Overlay
                                             pm_credit := SegBtn{text: "Credit"}
                                             pm_credit_on := SegBtnOn{text: "Credit" visible: false}
                                         }
-                                        View{width: Fill height: Fit flow: Overlay
+                                        pm_split_wrap := View{width: Fill height: Fit flow: Overlay
                                             pm_split := SegBtn{text: "Split"}
                                             pm_split_on := SegBtnOn{text: "Split" visible: false}
                                         }
@@ -8698,6 +8700,98 @@ script_mod! {
                                         empty_text: "Service % optional 0/10/12"
                                     }
                                     fiscal_save := StackPrimaryBtn{text: "Save business id"}
+                                    }
+                                    FormCard{
+                                        View{
+                                            width: Fill height: Fit
+                                            flow: Right spacing: 0
+                                            align: Align{x: 0.0 y: 0.5}
+                                            h_tax_chrome := WrapLabel{
+                                                width: Fit
+                                                body: "Tax labels on till"
+                                                font_color: #x260B08
+                                                font_size: 15.
+                                            }
+                                            settings_tax_chrome_help := InfoHelp{
+                                                tip: "When off, the order desk hides GST/tax estimate lines and GST-in-price placeholders. Tax rates and Country & tax settings stay — turn labels back on any time. Rajdhani App Template starts with this off."
+                                            }
+                                        }
+                                        View{
+                                            width: Fill height: Fit
+                                            flow: Right spacing: 6
+                                            View{width: Fill height: Fit flow: Overlay
+                                                tax_chrome_on_btn := SegBtn{text: "Show"}
+                                                tax_chrome_on_btn_on := SegBtnOn{text: "Show" visible: false}
+                                            }
+                                            View{width: Fill height: Fit flow: Overlay
+                                                tax_chrome_off_btn := SegBtn{text: "Hide"}
+                                                tax_chrome_off_btn_on := SegBtnOn{text: "Hide" visible: false}
+                                            }
+                                        }
+                                        View{
+                                            width: Fill height: Fit
+                                            flow: Right spacing: 0
+                                            align: Align{x: 0.0 y: 0.5}
+                                            h_tax_invoice := WrapLabel{
+                                                width: Fit
+                                                body: "Tax invoice on till"
+                                                font_color: #x260B08
+                                                font_size: 15.
+                                            }
+                                            settings_tax_invoice_help := InfoHelp{
+                                                tip: "When off, the order desk shows Cash memo only (no Tax invoice chip). Rajdhani App Template starts with this off — turn Show back on any time."
+                                            }
+                                        }
+                                        View{
+                                            width: Fill height: Fit
+                                            flow: Right spacing: 6
+                                            View{width: Fill height: Fit flow: Overlay
+                                                tax_invoice_on_btn := SegBtn{text: "Show"}
+                                                tax_invoice_on_btn_on := SegBtnOn{text: "Show" visible: false}
+                                            }
+                                            View{width: Fill height: Fit flow: Overlay
+                                                tax_invoice_off_btn := SegBtn{text: "Hide"}
+                                                tax_invoice_off_btn_on := SegBtnOn{text: "Hide" visible: false}
+                                            }
+                                        }
+                                        View{
+                                            width: Fill height: Fit
+                                            flow: Right spacing: 0
+                                            align: Align{x: 0.0 y: 0.5}
+                                            h_pay_methods := WrapLabel{
+                                                width: Fit
+                                                body: "Payment methods"
+                                                font_color: #x260B08
+                                                font_size: 15.
+                                            }
+                                            settings_pay_methods_help := InfoHelp{
+                                                tip: "Which chips appear on Take payment. Cash always stays. Rajdhani App Template starts with Cash only — turn UPI / Card / Credit / Split back on here."
+                                            }
+                                        }
+                                        View{
+                                            width: Fill height: Fit
+                                            flow: Right spacing: 4
+                                            View{width: Fill height: Fit flow: Overlay
+                                                pay_m_cash := SegBtn{text: "Cash"}
+                                                pay_m_cash_on := SegBtnOn{text: "Cash" visible: false}
+                                            }
+                                            View{width: Fill height: Fit flow: Overlay
+                                                pay_m_upi := SegBtn{text: "UPI"}
+                                                pay_m_upi_on := SegBtnOn{text: "UPI" visible: false}
+                                            }
+                                            View{width: Fill height: Fit flow: Overlay
+                                                pay_m_card := SegBtn{text: "Card"}
+                                                pay_m_card_on := SegBtnOn{text: "Card" visible: false}
+                                            }
+                                            View{width: Fill height: Fit flow: Overlay
+                                                pay_m_credit := SegBtn{text: "Credit"}
+                                                pay_m_credit_on := SegBtnOn{text: "Credit" visible: false}
+                                            }
+                                            View{width: Fill height: Fit flow: Overlay
+                                                pay_m_split := SegBtn{text: "Split"}
+                                                pay_m_split_on := SegBtnOn{text: "Split" visible: false}
+                                            }
+                                        }
                                     }
                                     FormCard{
                                     h_datetime_appearance := WrapLabel{

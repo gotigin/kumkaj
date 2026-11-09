@@ -9,8 +9,8 @@ ROOT="$(cd "$HERE/../../.." && pwd)"
 export KUMKAJ_APP_DIR="$ROOT/apps/moklanjo"
 export KUMKAJ_BIN_NAME=kumkaj-moklanjo
 export KUMKAJ_MSIX_NAME=Moklanjo
-export KUMKAJ_MSIX_IDENTITY=Kumkaj.Moklanjo
-export KUMKAJ_MSIX_IDENTITY_DEV=Kumkaj.Moklanjo.Dev
+# Store Identity Name — Partner Center Package/Identity/Name (never rename after publish).
+export KUMKAJ_MSIX_IDENTITY=MearajBhagad.Moklanjo
 export KUMKAJ_MSI_PKG_PROD="$ROOT/dist/moklanjo-windows"
 export KUMKAJ_MSI_PKG_DEV="$ROOT/dist/moklanjo-windows-dev"
 export KUMKAJ_MSI_PACKAGE_PROD="$HERE/package-windows.sh"

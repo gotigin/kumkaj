@@ -167,7 +167,7 @@ fn set_status(&mut self, cx: &mut Cx, msg: impl Into<String>) {
                 let _ = st.reload_all();
                 // Shelf keys → custom files off the UI thread (webp encode of
                 // many dishes freezes the window). Clients fetch over LAN;
-                // Android has no assets/items pack of its own.
+                // Android Server extracts the same assets/items pack from the APK.
                 let shelf_job = if st.device_role == DeviceRole::Server {
                     st.store.as_ref().map(|s| s.db_path().to_path_buf())
                 } else {

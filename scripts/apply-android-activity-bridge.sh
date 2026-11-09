@@ -624,3 +624,110 @@ PY
 else
   echo "warn: cargo-makepad compile.rs missing — skip asset prune" >&2
 fi
+
+# Pack apps' menu shelf + named templates into the APK/AAB (same trees desktop
+# stages beside the exe). Only assets/items and assets/templates — not
+# Screenshots / store banners under assets/.
+if [[ -f "$COMPILE_RS" ]] && grep -qF 'assets/items' "$COMPILE_RS" && grep -qF 'Menu shelf + named templates' "$COMPILE_RS"; then
+  echo "Android menu assets packaging already present."
+elif [[ -f "$COMPILE_RS" ]]; then
+  python3 - "$COMPILE_RS" <<'PY'
+from pathlib import Path
+import sys
+path = Path(sys.argv[1])
+text = path.read_text()
+if "Menu shelf + named templates" in text:
+    raise SystemExit(0)
+
+apk_insert = '''    add_font_assets_dir_to_apk(
+        &build_paths.out_dir,
+        &mut assets_to_add,
+        build_crate,
+        &build_crate_dir.join("fonts"),
+        &build_crate_dir.join("resources"),
+        config,
+    )?;
+
+    // Menu shelf + named templates (parity with desktop package staging).
+    add_assets_dir_to_apk(
+        &build_paths.out_dir,
+        &mut assets_to_add,
+        build_crate,
+        &build_crate_dir.join("assets/items"),
+        "assets/items",
+        config,
+    )?;
+    add_assets_dir_to_apk(
+        &build_paths.out_dir,
+        &mut assets_to_add,
+        build_crate,
+        &build_crate_dir.join("assets/templates"),
+        "assets/templates",
+        config,
+    )?;
+
+    let deps = get_crate_dep_dirs(build_crate, &build_dir, &android_targets[0].toolchain());
+'''
+
+apk_old = '''    add_font_assets_dir_to_apk(
+        &build_paths.out_dir,
+        &mut assets_to_add,
+        build_crate,
+        &build_crate_dir.join("fonts"),
+        &build_crate_dir.join("resources"),
+        config,
+    )?;
+
+    let deps = get_crate_dep_dirs(build_crate, &build_dir, &android_targets[0].toolchain());
+'''
+if apk_old not in text:
+    raise SystemExit("add_resources menu-assets insert point not found")
+text = text.replace(apk_old, apk_insert, 1)
+
+aab_insert = '''    stage_makepad_font_subdir(
+        assets_root,
+        build_crate,
+        &build_crate_dir.join("fonts"),
+        &build_crate_dir.join("resources"),
+        config,
+    )?;
+
+    // Menu shelf + named templates (parity with desktop package staging).
+    stage_makepad_assets_subdir(
+        assets_root,
+        build_crate,
+        &build_crate_dir.join("assets/items"),
+        "assets/items",
+        config,
+    )?;
+    stage_makepad_assets_subdir(
+        assets_root,
+        build_crate,
+        &build_crate_dir.join("assets/templates"),
+        "assets/templates",
+        config,
+    )?;
+
+    let deps = get_crate_dep_dirs(build_crate, build_dir, &android_targets[0].toolchain());
+'''
+
+aab_old = '''    stage_makepad_font_subdir(
+        assets_root,
+        build_crate,
+        &build_crate_dir.join("fonts"),
+        &build_crate_dir.join("resources"),
+        config,
+    )?;
+
+    let deps = get_crate_dep_dirs(build_crate, build_dir, &android_targets[0].toolchain());
+'''
+if aab_old not in text:
+    raise SystemExit("stage_aab_assets menu-assets insert point not found")
+text = text.replace(aab_old, aab_insert, 1)
+
+path.write_text(text)
+print(f"Patched Android menu assets packaging into {path}")
+PY
+else
+  echo "warn: cargo-makepad compile.rs missing — skip menu assets packaging" >&2
+fi

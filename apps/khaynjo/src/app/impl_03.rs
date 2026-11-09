@@ -1564,6 +1564,17 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
         self.ui.widget(cx, ids!(h_pay_ap_heading)).set_text(cx, &plain_display_text(&s("pay_ap_heading")));
         self.ui.widget(cx, ids!(h_notes_attach_party)).set_text(cx, &plain_display_text(&s("notes_attach_party")));
         self.ui.widget(cx, ids!(h_country_tax)).set_text(cx, &plain_display_text(&s("country_tax")));
+        self.ui.widget(cx, ids!(h_tax_chrome)).set_text(cx, &plain_display_text(&s("tax_chrome")));
+        self.ui.widget(cx, ids!(h_tax_invoice)).set_text(cx, &plain_display_text(&s("tax_invoice_till")));
+        self.ui.widget(cx, ids!(h_pay_methods)).set_text(cx, &plain_display_text(&s("pay_methods")));
+        self.ui.button(cx, ids!(tax_chrome_on_btn)).set_text(cx, &s("tax_chrome_on"));
+        self.ui.button(cx, ids!(tax_chrome_on_btn_on)).set_text(cx, &s("tax_chrome_on"));
+        self.ui.button(cx, ids!(tax_chrome_off_btn)).set_text(cx, &s("tax_chrome_off"));
+        self.ui.button(cx, ids!(tax_chrome_off_btn_on)).set_text(cx, &s("tax_chrome_off"));
+        self.ui.button(cx, ids!(tax_invoice_on_btn)).set_text(cx, &s("tax_invoice_on"));
+        self.ui.button(cx, ids!(tax_invoice_on_btn_on)).set_text(cx, &s("tax_invoice_on"));
+        self.ui.button(cx, ids!(tax_invoice_off_btn)).set_text(cx, &s("tax_invoice_off"));
+        self.ui.button(cx, ids!(tax_invoice_off_btn_on)).set_text(cx, &s("tax_invoice_off"));
         self.ui.widget(cx, ids!(h_language)).set_text(cx, &plain_display_text(&s("language")));
         self.ui.widget(cx, ids!(h_currency)).set_text(cx, &plain_display_text(&s("currency")));
         self.ui.widget(cx, ids!(h_extra_tills_heading)).set_text(cx, &plain_display_text(&s("extra_tills_heading")));
@@ -1951,6 +1962,18 @@ fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
             .widget(cx, ids!(settings_zero_sales_help))
             .as_info_help()
             .set_tip(&plain_display_text(&s("zero_sales_help")));
+        self.ui
+            .widget(cx, ids!(settings_tax_chrome_help))
+            .as_info_help()
+            .set_tip(&plain_display_text(&s("tax_chrome_help")));
+        self.ui
+            .widget(cx, ids!(settings_tax_invoice_help))
+            .as_info_help()
+            .set_tip(&plain_display_text(&s("tax_invoice_help")));
+        self.ui
+            .widget(cx, ids!(settings_pay_methods_help))
+            .as_info_help()
+            .set_tip(&plain_display_text(&s("pay_methods_help")));
         self.ui
             .widget(cx, ids!(settings_schemes_help))
             .as_info_help()

@@ -9,8 +9,11 @@
 #   ./apps/khaynjo/scripts/msix.sh        # prod → dist/Khaynjo-<ver>.msix
 #   ./apps/khaynjo/scripts/msix.sh dev    # → dist/KhaynjoDev-<ver>.msix
 #
-# Publisher CN must match the signing cert / Partner Center publisher.
-# Override: KUMKAJ_MSIX_PUBLISHER='CN=…' KUMKAJ_MSIX_PUBLISHER_DISPLAY='…'
+# Packs with Microsoft makemsix on Linux (valid AppxBlockMap for Partner Center).
+# Bash + ImageMagick — no Python packer.
+#
+# Publisher CN must match Partner Center. Override:
+#   KUMKAJ_MSIX_PUBLISHER='CN=…' KUMKAJ_MSIX_PUBLISHER_DISPLAY='…'
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
@@ -24,8 +27,10 @@ MODE="${1:-prod}"
 : "${KUMKAJ_MSI_PKG_DEV:?}"
 : "${KUMKAJ_MSI_PACKAGE_PROD:?}"
 
-PUBLISHER="${KUMKAJ_MSIX_PUBLISHER:-CN=Kumkaj}"
-PUBLISHER_DISPLAY="${KUMKAJ_MSIX_PUBLISHER_DISPLAY:-Kumkaj}"
+# Defaults match Partner Center (individual publisher). Override if the Store
+# account’s Publisher CN / display name differ.
+PUBLISHER="${KUMKAJ_MSIX_PUBLISHER:-CN=373E2948-B702-453F-A991-0E7B4F78F562}"
+PUBLISHER_DISPLAY="${KUMKAJ_MSIX_PUBLISHER_DISPLAY:-Mearaj Bhagad}"
 
 case "$MODE" in
   prod|production)
@@ -39,13 +44,12 @@ case "$MODE" in
     if [[ -n "${KUMKAJ_MSI_PACKAGE_DEV:-}" ]]; then
       PACKAGE_SCRIPT="$KUMKAJ_MSI_PACKAGE_DEV"
     else
-      # Same as MSI: most apps use windows-dev.sh next to windows-prod.sh
       PACKAGE_SCRIPT="$(dirname "$KUMKAJ_MSI_PACKAGE_PROD")/windows-dev.sh"
       if [[ ! -x "$PACKAGE_SCRIPT" && ! -f "$PACKAGE_SCRIPT" ]]; then
         PACKAGE_SCRIPT="$(dirname "$KUMKAJ_MSI_PACKAGE_PROD")/package-windows-dev.sh"
       fi
     fi
-    IDENTITY="${KUMKAJ_MSIX_IDENTITY_DEV:-${KUMKAJ_MSIX_IDENTITY}.Dev}"
+    IDENTITY="${KUMKAJ_MSIX_IDENTITY_DEV:-$KUMKAJ_MSIX_IDENTITY}"
     LABEL="${KUMKAJ_MSIX_NAME}Dev"
     ;;
   *)
@@ -67,14 +71,14 @@ if [[ ! -f "$PKG/$EXE" ]]; then
   exit 1
 fi
 
-VER="$(python3 - <<PY
-import re, pathlib
-toml = pathlib.Path(r"$KUMKAJ_APP_DIR") / "Cargo.toml"
-text = toml.read_text(encoding="utf-8")
-m = re.search(r'^version\s*=\s*"([^"]+)"', text, re.M)
-print(m.group(1) if m else "0.1.0")
-PY
+# Cargo package version (no Python)
+VER="$(
+  grep -E '^version[[:space:]]*=' "$KUMKAJ_APP_DIR/Cargo.toml" | head -1 \
+    | sed -E 's/^version[[:space:]]*=[[:space:]]*"([^"]+)".*/\1/'
 )"
+if [[ -z "$VER" ]]; then
+  VER="0.1.0"
+fi
 
 ICON=""
 for cand in \
@@ -92,8 +96,8 @@ fi
 OUT="$ROOT/dist/${LABEL}-${VER}.msix"
 LAYOUT="$ROOT/dist/${LABEL}-${VER}-msix-layout"
 
-echo "==> Packing MSIX"
-python3 "$ROOT/scripts/msix/pack_msix.py" \
+echo "==> Packing MSIX (makemsix)"
+bash "$ROOT/scripts/msix/pack_msix.sh" \
   --payload "$PKG" \
   --out "$OUT" \
   --layout "$LAYOUT" \
@@ -106,7 +110,7 @@ python3 "$ROOT/scripts/msix/pack_msix.py" \
   --description "$LABEL business books" \
   --icon-png "$ICON"
 
-# Optional: sign when a PFX is provided (typically on Windows with signtool in PATH).
+# Optional: sign when a PFX is provided (sideload only; Store re-signs).
 if [[ -n "${KUMKAJ_MSIX_PFX:-}" ]]; then
   if command -v signtool >/dev/null 2>&1; then
     echo "==> Signing with signtool"
@@ -125,6 +129,6 @@ fi
 
 echo
 echo "Done: $OUT"
-echo "Layout (MakeAppx fallback): $LAYOUT"
+echo "Layout: $LAYOUT"
 echo "Publisher: $PUBLISHER  Identity: $IDENTITY"
-echo "Store: set KUMKAJ_MSIX_PUBLISHER to your Partner Center Publisher CN, sign with the Store .pfx, upload the .msix."
+echo "Store upload: Identity/Publisher must match Partner Center; unsigned MSIX OK (Store re-signs)."

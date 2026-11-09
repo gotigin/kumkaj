@@ -100,7 +100,7 @@ Release index: [`RELEASE_1_0_0.md`](RELEASE_1_0_0.md). Publish: [`PUBLISH_PLAY_S
 | Channel | Package / id | Data dir (typical) |
 |---------|----------------|--------------------|
 | Play Store | `com.khaynjo` | app-scoped files via Makepad |
-| Microsoft Store (MSIX) | Identity `Kumkaj.Khaynjo` | `%APPDATA%\com.khaynjo\` (packaged classic / mediumIL) |
+| Microsoft Store (MSIX) | Identity `MearajBhagad.Khaynjo` | `%APPDATA%\com.khaynjo\` (packaged classic / mediumIL) |
 | MSI sideload | same app id | same AppData path |
 | Arch AUR | desktop package → `com.khaynjo` | `~/.local/share/com.khaynjo/` (via `dirs::data_dir`) |
 

@@ -1369,12 +1369,21 @@ impl MatchEvent for App {
         }
 
         if self.choice_chip_clicked(cx, actions, ids!(lane_declared), ids!(lane_declared_on)) {
-            {
-                let mut st = app_state().lock().unwrap();
-                st.money_lane = MoneyLane::Declared;
-                st.cart.money_lane = MoneyLane::Declared;
+            let allowed = {
+                let st = app_state().lock().unwrap();
+                st.store
+                    .as_ref()
+                    .and_then(|s| s.show_tax_invoice().ok())
+                    .unwrap_or(true)
+            };
+            if allowed {
+                {
+                    let mut st = app_state().lock().unwrap();
+                    st.money_lane = MoneyLane::Declared;
+                    st.cart.money_lane = MoneyLane::Declared;
+                }
+                self.sync_chrome(cx);
             }
-            self.sync_chrome(cx);
         }
         if self.choice_chip_clicked(cx, actions, ids!(lane_owner), ids!(lane_owner_on)) {
             {
@@ -2539,6 +2548,7 @@ impl MatchEvent for App {
                 if seat_now {
                     self.pick_table_for_order(cx);
                 } else {
+                    self.paint_till_focus_chrome(cx);
                     self.sync_chrome(cx);
                 }
             }
@@ -2552,6 +2562,7 @@ impl MatchEvent for App {
         ] {
             if self.choice_chip_clicked(cx, actions, chip, chip_on) {
                 app_state().lock().unwrap().pay_choice = c;
+                self.paint_till_focus_chrome(cx);
                 self.sync_chrome(cx);
             }
         }
@@ -2794,6 +2805,7 @@ impl MatchEvent for App {
                     let mut st = app_state().lock().unwrap();
                     st.menu_pick_rev = st.menu_pick_rev.wrapping_add(1);
                 }
+                self.paint_till_focus_chrome(cx);
                 self.sync_chrome(cx);
             }
         }
@@ -2881,6 +2893,9 @@ impl MatchEvent for App {
                 let mut st = app_state().lock().unwrap();
                 st.discount_panel_open = !st.discount_panel_open;
             }
+            // Apply visibility (and clear field focus on collapse) before
+            // sync — soft-keyboard early-return used to leave the panel open.
+            self.paint_till_focus_chrome(cx);
             self.sync_chrome(cx);
         }
         if self.ui.button(cx, ids!(discount_remove)).clicked(actions) {
@@ -2890,6 +2905,7 @@ impl MatchEvent for App {
                 st.discount_panel_open = false;
             }
             self.set_status(cx, "Discount removed");
+            self.paint_till_focus_chrome(cx);
             self.sync_chrome(cx);
         }
         if self.ui.button(cx, ids!(discount_apply)).clicked(actions) {
@@ -2931,6 +2947,7 @@ impl MatchEvent for App {
                 }
                 Err(e) => self.set_status(cx, e),
             }
+            self.paint_till_focus_chrome(cx);
             self.sync_chrome(cx);
         }
         // Table actions on the ticket (Print bill · Move / merge · line panel).
@@ -2947,6 +2964,7 @@ impl MatchEvent for App {
                 st.open_cart_line = None;
                 st.move_panel_open = false;
             }
+            self.paint_till_focus_chrome(cx);
             self.sync_chrome(cx);
         }
         if self.ui.button(cx, ids!(split_evenly_btn)).clicked(actions) {
@@ -3064,6 +3082,7 @@ impl MatchEvent for App {
                 st.split_mode = false;
                 st.split_pick.clear();
             }
+            self.paint_till_focus_chrome(cx);
             self.sync_chrome(cx);
         }
         if self.ui.button(cx, ids!(split_go)).clicked(actions) {
@@ -3075,6 +3094,7 @@ impl MatchEvent for App {
                 st.move_panel_open = !st.move_panel_open;
                 st.line_action = None;
             }
+            self.paint_till_focus_chrome(cx);
             self.sync_chrome(cx);
         }
         if self.ui.button(cx, ids!(move_table_go)).clicked(actions) {
@@ -3085,6 +3105,7 @@ impl MatchEvent for App {
         }
         if self.ui.button(cx, ids!(line_action_back)).clicked(actions) {
             app_state().lock().unwrap().line_action = None;
+            self.paint_till_focus_chrome(cx);
             self.sync_chrome(cx);
         }
         if self.ui.button(cx, ids!(line_action_go)).clicked(actions) {
@@ -5820,6 +5841,104 @@ impl MatchEvent for App {
                     } else {
                         "zero_sales_saved_off"
                     });
+                    st.status = msg.clone();
+                    Ok(msg)
+                })();
+                match result {
+                    Ok(msg) => self.set_status(cx, msg),
+                    Err(e) => self.set_status(cx, e),
+                }
+                self.sync_chrome(cx);
+            }
+        }
+        for (id, on) in [
+            (ids!(tax_chrome_on_btn), true),
+            (ids!(tax_chrome_off_btn), false),
+        ] {
+            if self.ui.button(cx, id).clicked(actions) {
+                let result = (|| -> Result<String, String> {
+                    let mut st = app_state().lock().unwrap();
+                    let msg = st.books_op(BooksOp::SetShowTaxChrome { on })?;
+                    st.status = msg.clone();
+                    Ok(msg)
+                })();
+                match result {
+                    Ok(msg) => self.set_status(cx, msg),
+                    Err(e) => self.set_status(cx, e),
+                }
+                self.sync_chrome(cx);
+            }
+        }
+        for (id, on) in [
+            (ids!(tax_invoice_on_btn), true),
+            (ids!(tax_invoice_off_btn), false),
+        ] {
+            if self.ui.button(cx, id).clicked(actions) {
+                let result = (|| -> Result<String, String> {
+                    let mut st = app_state().lock().unwrap();
+                    let msg = st.books_op(BooksOp::SetShowTaxInvoice { on })?;
+                    if !on {
+                        st.money_lane = MoneyLane::Owner;
+                        st.cart.money_lane = MoneyLane::Owner;
+                    }
+                    st.status = msg.clone();
+                    Ok(msg)
+                })();
+                match result {
+                    Ok(msg) => self.set_status(cx, msg),
+                    Err(e) => self.set_status(cx, e),
+                }
+                self.sync_chrome(cx);
+            }
+        }
+        for (id, token) in [
+            (ids!(pay_m_upi), "upi"),
+            (ids!(pay_m_card), "card"),
+            (ids!(pay_m_credit), "credit"),
+            (ids!(pay_m_split), "split"),
+        ] {
+            if self.ui.button(cx, id).clicked(actions)
+                || self
+                    .ui
+                    .button(
+                        cx,
+                        match token {
+                            "upi" => ids!(pay_m_upi_on),
+                            "card" => ids!(pay_m_card_on),
+                            "credit" => ids!(pay_m_credit_on),
+                            _ => ids!(pay_m_split_on),
+                        },
+                    )
+                    .clicked(actions)
+            {
+                let result = (|| -> Result<String, String> {
+                    let mut st = app_state().lock().unwrap();
+                    let store = st.store.as_ref().ok_or_else(|| "No books open".to_string())?;
+                    let mut methods = store
+                        .pay_methods_csv()?
+                        .split(',')
+                        .map(|s| s.trim().to_ascii_lowercase())
+                        .filter(|s| !s.is_empty())
+                        .collect::<Vec<_>>();
+                    if methods.is_empty() {
+                        methods = vec![
+                            "cash".into(),
+                            "upi".into(),
+                            "card".into(),
+                            "credit".into(),
+                            "split".into(),
+                        ];
+                    }
+                    if methods.iter().any(|m| m == token) {
+                        methods.retain(|m| m != token);
+                    } else {
+                        methods.push(token.into());
+                    }
+                    if !methods.iter().any(|m| m == "cash") {
+                        methods.insert(0, "cash".into());
+                    }
+                    let csv = methods.join(",");
+                    let msg = st.books_op(BooksOp::SetPayMethods { csv })?;
                     st.status = msg.clone();
                     Ok(msg)
                 })();

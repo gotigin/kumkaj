@@ -2005,8 +2005,17 @@ impl AppState {
 
     /// One line under the totals strip: tax added at till changes pay; tax
     /// inside price shows the GST already inside the total (and warns when
-    /// dishes have no tax rate so "inclusive GST" looks missing).
+    /// dishes have no tax rate so "inclusive GST" looks missing). Quiet when
+    /// Empty when [`Store::show_tax_chrome`] is off (Rajdhani default).
     fn cart_tax_estimate_line(&self) -> String {
+        let show_tax = self
+            .store
+            .as_ref()
+            .and_then(|s| s.show_tax_chrome().ok())
+            .unwrap_or(true);
+        if !show_tax {
+            return " ".to_string();
+        }
         let tax = self.cart_tax_estimate_paise();
         let service = self.fiscal.service_on(self.cart.line_sum().paise());
         let inside = self.fiscal.tax_pricing.is_inside_price();

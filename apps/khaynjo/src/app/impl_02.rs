@@ -541,6 +541,10 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
         if self.text_field_has_focus(cx) {
             let screen = app_state().lock().unwrap().screen;
             self.show_screen(cx, screen);
+            // Expand/collapse panels that full till paint would own — otherwise
+            // a focused FieldInput latches them open (discount, move, line
+            // action, split/cash, ticket extras, frequent).
+            self.paint_till_focus_chrome(cx);
             self.paint_header_back_chrome(cx);
             self.lift_footer_above_system_bar(cx);
             self.repair_focused_carets(cx);
@@ -980,13 +984,14 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
                 locale::t(&st.locale.language, "unlock")
             },
         );
-        // Owner/Staff: Overlay idle+active faces — Owner must not stay lit after Staff.
-        self.paint_choice_pair(cx, ids!(role_owner), ids!(role_owner_on), lock_as_owner);
+        // Owner/Staff chips: hide the whole row when Staff is not offered —
+        // a lone Owner chip looks tappable but does nothing (same as Cash memo).
+        self.ui
+            .view(cx, ids!(lock_role_tabs))
+            .set_visible(cx, show_staff_role);
         if show_staff_role {
+            self.paint_choice_pair(cx, ids!(role_owner), ids!(role_owner_on), lock_as_owner);
             self.paint_choice_pair(cx, ids!(role_staff), ids!(role_staff_on), !lock_as_owner);
-        } else {
-            self.ui.button(cx, ids!(role_staff)).set_visible(cx, false);
-            self.ui.button(cx, ids!(role_staff_on)).set_visible(cx, false);
         }
         // On the lock screen, surface status (wrong PIN / no store) under the dots.
         let pin_status_text = if screen == Screen::Lock {
@@ -1032,7 +1037,7 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
             .widget(cx, ids!(session_chip)).set_text(cx, &plain_display_text(&session_chip));
         // Order desk: order type chips + expense tender chips.
         {
-            let mut st = app_state().lock().unwrap();
+            let st = app_state().lock().unwrap();
             let cart_active = !st.cart.is_empty();
             self.ui
                 .button(cx, ids!(next_order_btn))
@@ -1085,17 +1090,10 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
                 cx,
                 session_may_settle(st.session.as_ref()),
             );
-            // The customer is asked for only when it matters: credit (khata),
-            // a split that may include credit, or a delivery.
-            self.ui.view(cx, ids!(ticket_extras)).set_visible(
-                cx,
-                !st.cart.is_empty()
-                    && (matches!(st.pay_choice, PayChoice::Credit | PayChoice::Split)
-                        || st.cart.order_type == OrderType::Delivery),
-            );
-            self.ui
-                .widget(cx, ids!(delivery_by_input))
-                .set_visible(cx, st.cart.order_type == OrderType::Delivery);
+            // Customer / delivery extras — also painted on IME early-return.
+            drop(st);
+            self.paint_ticket_extras(cx);
+            let mut st = app_state().lock().unwrap();
             // The total box explains itself; the old rounding note did not.
             self.ui.widget(cx, ids!(cart_round_hint)).set_visible(cx, false);
             let resale = st.form_resale;
@@ -1109,7 +1107,12 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
                 self.ui.button(cx, idle).set_text(cx, &text);
                 self.ui.button(cx, on).set_text(cx, &text);
             }
-            let price_ph = if st.fiscal.tax_pricing.is_inside_price() {
+            let show_tax_ph = st
+                .store
+                .as_ref()
+                .and_then(|s| s.show_tax_chrome().ok())
+                .unwrap_or(true);
+            let price_ph = if show_tax_ph && st.fiscal.tax_pricing.is_inside_price() {
                 st.t("price_ph_gst_inside")
                     .replace("{tax}", st.fiscal.tax_label())
             } else {
@@ -1351,6 +1354,56 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
                 ids!(zero_sales_off_btn_on),
                 allow_zero == Some(false),
             );
+            let show_tax_chrome = st
+                .store
+                .as_ref()
+                .and_then(|s| s.show_tax_chrome().ok())
+                .unwrap_or(true);
+            self.paint_choice_pair(
+                cx,
+                ids!(tax_chrome_on_btn),
+                ids!(tax_chrome_on_btn_on),
+                show_tax_chrome,
+            );
+            self.paint_choice_pair(
+                cx,
+                ids!(tax_chrome_off_btn),
+                ids!(tax_chrome_off_btn_on),
+                !show_tax_chrome,
+            );
+            let show_tax_invoice = st
+                .store
+                .as_ref()
+                .and_then(|s| s.show_tax_invoice().ok())
+                .unwrap_or(true);
+            self.paint_choice_pair(
+                cx,
+                ids!(tax_invoice_on_btn),
+                ids!(tax_invoice_on_btn_on),
+                show_tax_invoice,
+            );
+            self.paint_choice_pair(
+                cx,
+                ids!(tax_invoice_off_btn),
+                ids!(tax_invoice_off_btn_on),
+                !show_tax_invoice,
+            );
+            let pay_en = |key: &str| {
+                st.store
+                    .as_ref()
+                    .and_then(|s| s.pay_method_enabled(key).ok())
+                    .unwrap_or(true)
+            };
+            // Cash is always on (cannot turn off).
+            self.paint_choice_pair(cx, ids!(pay_m_cash), ids!(pay_m_cash_on), true);
+            for (idle, on, key) in [
+                (ids!(pay_m_upi), ids!(pay_m_upi_on), "upi"),
+                (ids!(pay_m_card), ids!(pay_m_card_on), "card"),
+                (ids!(pay_m_credit), ids!(pay_m_credit_on), "credit"),
+                (ids!(pay_m_split), ids!(pay_m_split_on), "split"),
+            ] {
+                self.paint_choice_pair(cx, idle, on, pay_en(key));
+            }
             let has_lines = !st.cart.is_empty();
             self.ui.view(cx, ids!(cart_ticket_card)).set_visible(cx, has_lines);
             self.ui.view(cx, ids!(send_stack)).set_visible(cx, has_lines);
@@ -1358,32 +1411,39 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
             let no_stock = st.stock_items().is_empty();
             self.ui.widget(cx, ids!(stock_empty)).set_visible(cx, no_stock);
             self.ui.widget(cx, ids!(stock_list)).redraw(cx);
-            // One-tap payment row and what each choice needs.
+            // Pay chips / Split·Cash panels / Tax invoice row — shared with
+            // IME early-return (`paint_pay_panels`). Drop `st` first.
+            let (cash_label, upi_label, card_label, credit_label, split_label) = (
+                st.t("cash"),
+                st.fiscal.digital_pay_label().to_string(),
+                st.t("card"),
+                st.t("pay_credit"),
+                st.t("split"),
+            );
+            drop(st);
+            self.paint_pay_panels(cx);
+            let st = app_state().lock().unwrap();
             let choice = st.pay_choice;
-            for (idle, on, c) in [
-                (ids!(pm_cash), ids!(pm_cash_on), PayChoice::Cash),
-                (ids!(pm_upi), ids!(pm_upi_on), PayChoice::Upi),
-                (ids!(pm_card), ids!(pm_card_on), PayChoice::Card),
-                (ids!(pm_credit), ids!(pm_credit_on), PayChoice::Credit),
-                (ids!(pm_split), ids!(pm_split_on), PayChoice::Split),
-            ] {
-                self.paint_choice_pair(cx, idle, on, choice == c);
-            }
+            let pay_upi = st
+                .store
+                .as_ref()
+                .and_then(|s| s.pay_method_enabled("upi").ok())
+                .unwrap_or(true);
             let labels = [
-                (ids!(pm_cash), ids!(pm_cash_on), st.t("cash")),
-                (ids!(pm_upi), ids!(pm_upi_on), st.fiscal.digital_pay_label().to_string()),
-                (ids!(pm_card), ids!(pm_card_on), st.t("card")),
-                (ids!(pm_credit), ids!(pm_credit_on), st.t("pay_credit")),
-                (ids!(pm_split), ids!(pm_split_on), st.t("split")),
+                (ids!(pm_cash), ids!(pm_cash_on), cash_label),
+                (ids!(pm_upi), ids!(pm_upi_on), upi_label),
+                (ids!(pm_card), ids!(pm_card_on), card_label),
+                (ids!(pm_credit), ids!(pm_credit_on), credit_label),
+                (ids!(pm_split), ids!(pm_split_on), split_label),
             ];
             for (idle, on, text) in &labels {
                 self.ui.button(cx, *idle).set_text(cx, text);
                 self.ui.button(cx, *on).set_text(cx, text);
             }
-            self.ui.view(cx, ids!(split_panel)).set_visible(cx, choice == PayChoice::Split);
+            // Show UPI QR whenever UPI is an enabled till method (even on Cash).
             self.ui
-                .view(cx, ids!(cash_panel))
-                .set_visible(cx, matches!(choice, PayChoice::Cash | PayChoice::Split));
+                .button(cx, ids!(show_upi_qr))
+                .set_visible(cx, pay_upi);
             let method_word = match choice {
                 PayChoice::Split => None,
                 _ => labels
@@ -1460,7 +1520,7 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
             self.ui.button(cx, ids!(cat_added)).set_text(cx, &added_label);
             self.ui.button(cx, ids!(cat_added_on)).set_text(cx, &added_label);
             self.paint_choice_pair(cx, ids!(cat_added), ids!(cat_added_on), added_on);
-            self.ui.view(cx, ids!(frequent_config)).set_visible(cx, frequent_on);
+            self.paint_frequent_config(cx);
             if frequent_on {
                 self.ui
                     .widget(cx, ids!(frequent_config_help))
@@ -2529,7 +2589,6 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
                 self.ui
                     .button(cx, ids!(split_evenly_btn))
                     .set_visible(cx, table_open && may_settle);
-                self.ui.view(cx, ids!(split_bar)).set_visible(cx, splitting);
                 self.ui.button(cx, ids!(table_split_btn)).set_text(cx, &st.t("split_bill"));
                 self.ui.button(cx, ids!(split_evenly_btn)).set_text(cx, &st.t("split_evenly"));
                 self.ui.button(cx, ids!(fire_course_btn)).set_text(cx, &st.t("fire_course"));
@@ -2544,37 +2603,24 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
                     .as_info_help()
                     .set_tip(&plain_display_text(&help));
             }
-            self.ui.view(cx, ids!(table_move_panel)).set_visible(cx, table_open && move_open);
+            self.paint_split_bar(cx);
+            self.paint_move_panel(cx);
             // Cancel/NC/Move panel follows the open action — not only when a
             // table chip is lit (that hid Cancel after KOT for many tickets).
-            self.ui
-                .view(cx, ids!(line_action_panel))
-                .set_visible(cx, line_action.is_some());
+            self.paint_line_action_panel(cx);
             if let Some(action) = line_action {
-                let (title, reason, qty, cooked_btn, target) = match action {
-                    LineAction::Cancel => ("cancel_item_title", true, true, true, false),
-                    LineAction::CancelBatch => ("batch_cancel_title", true, false, true, false),
-                    LineAction::Complimentary if line_nc => ("charge_again_title", false, false, false, false),
-                    LineAction::Complimentary => ("nc_item_title", true, false, false, false),
-                    LineAction::Move => ("move_item_title", false, false, false, true),
+                let title = match action {
+                    LineAction::Cancel => "cancel_item_title",
+                    LineAction::CancelBatch => "batch_cancel_title",
+                    LineAction::Complimentary if line_nc => "charge_again_title",
+                    LineAction::Complimentary => "nc_item_title",
+                    LineAction::Move => "move_item_title",
                 };
                 self.ui.widget(cx, ids!(line_action_title)).set_text(cx, &plain_display_text(&t(title)));
-                self.ui.view(cx, ids!(line_reason_wrap)).set_visible(cx, reason);
-                self.ui.view(cx, ids!(line_qty_wrap)).set_visible(cx, qty);
-                self.ui.view(cx, ids!(line_cooked_wrap)).set_visible(cx, cooked_btn);
-                if cooked_btn {
-                    self.paint_choice_pair(
-                        cx,
-                        ids!(line_cooked_raw),
-                        ids!(line_cooked_raw_on),
-                        !cooked,
-                    );
-                    self.paint_choice_pair(
-                        cx,
-                        ids!(line_cooked_done),
-                        ids!(line_cooked_done_on),
-                        cooked,
-                    );
+                if matches!(
+                    action,
+                    LineAction::Cancel | LineAction::CancelBatch
+                ) {
                     for path in [ids!(line_cooked_raw), ids!(line_cooked_raw_on)] {
                         self.ui.button(cx, path).set_text(cx, &t("not_cooked_yet"));
                     }
@@ -2582,12 +2628,12 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
                         self.ui.button(cx, path).set_text(cx, &t("already_cooked"));
                     }
                 }
-                self.ui.view(cx, ids!(line_target_wrap)).set_visible(cx, target);
             }
+            let _ = (move_open, cooked);
             self.ui.widget(cx, ids!(change_label)).set_text(cx, &plain_display_text(&change_line));
-            let (discount_open, discount_line) = {
+            let discount_line = {
                 let st = app_state().lock().unwrap();
-                let line = match &st.cart.discount {
+                match &st.cart.discount {
                     Some(d) => format!(
                         "{} −{} · {}",
                         st.t("discount"),
@@ -2595,10 +2641,9 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
                         d.reason
                     ),
                     None => " ".to_string(),
-                };
-                (st.discount_panel_open, line)
+                }
             };
-            self.ui.view(cx, ids!(discount_panel)).set_visible(cx, discount_open);
+            self.paint_discount_panel(cx);
             self.ui.widget(cx, ids!(discount_label)).set_text(cx, &plain_display_text(&discount_line));
         }
         // Day close: this shift so far (what the drawer should hold).

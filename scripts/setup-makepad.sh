@@ -65,6 +65,7 @@ PATCHES=(
   android_api26_render_loop         # Android API 26–28: guard bad refresh rates in simple frame pump
   android_post_layout_redraw        # Android: extra redraws after first drawable so layout paints
   android_asset_load_prefix         # Android: assets under the package root; as_mut_ptr read
+  android_load_asset_pub            # Android: pub load_asset for menu shelf/templates extract
   android_share_and_content_uri     # Android: share sheet + content:// reads (MakepadActivity-share.java)
   portal_list_stop_at_range         # content-sized PortalList
   portal_list_claim_wheel           # nested list scroll does not also scroll the page

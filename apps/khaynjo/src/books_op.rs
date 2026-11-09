@@ -239,6 +239,18 @@ pub enum BooksOp {
     SetZeroSales {
         allow: bool,
     },
+    /// Till GST/tax estimate lines. Features stay; chrome only.
+    SetShowTaxChrome {
+        on: bool,
+    },
+    /// Order-desk Tax invoice chip (Cash memo always stays).
+    SetShowTaxInvoice {
+        on: bool,
+    },
+    /// Order-desk payment chips CSV (`cash,upi,card,credit,split`). Cash kept.
+    SetPayMethods {
+        csv: String,
+    },
     SetFiscal {
         business_tax_id: String,
         service_bps: i64,
@@ -476,6 +488,9 @@ impl BooksOp {
             Self::ApplyCountry { .. } => "Change the country pack",
             Self::SetTaxPricing { .. } => "Change tax pricing",
             Self::SetZeroSales { .. } => "Change zero-value sales",
+            Self::SetShowTaxChrome { .. } => "Change tax labels on till",
+            Self::SetShowTaxInvoice { .. } => "Change Tax invoice on till",
+            Self::SetPayMethods { .. } => "Change payment methods",
             Self::SetFiscal { .. } => "Set the business id",
             Self::SetDateTimeAppearance { .. } => "Change date and time appearance",
             Self::SetBillFormat { .. }
@@ -578,6 +593,11 @@ impl BooksOp {
             Self::SetTaxPricing { .. } => "Tax pricing saved".into(),
             Self::SetZeroSales { allow: true } => "Zero-value sales on".into(),
             Self::SetZeroSales { .. } => "Zero-value sales off".into(),
+            Self::SetShowTaxChrome { on: true } => "Tax labels on till".into(),
+            Self::SetShowTaxChrome { .. } => "Tax labels hidden on till".into(),
+            Self::SetShowTaxInvoice { on: true } => "Tax invoice on till".into(),
+            Self::SetShowTaxInvoice { .. } => "Tax invoice hidden on till".into(),
+            Self::SetPayMethods { .. } => "Payment methods saved".into(),
             Self::SetFiscal { .. } => "Business id saved".into(),
             Self::SetDateTimeAppearance { .. } => "Date and time appearance saved".into(),
             Self::SetBillFormat { .. } => "Bill format saved".into(),
@@ -1154,6 +1174,35 @@ impl Store {
                 } else {
                     "Zero-value sales off".into()
                 })
+            }
+            BooksOp::SetShowTaxChrome { on } => {
+                if !actor.is_owner() {
+                    return Err("Only the Owner can change tax labels on the till".into());
+                }
+                self.set_show_tax_chrome(on)?;
+                Ok(if on {
+                    "Tax labels on till".into()
+                } else {
+                    "Tax labels hidden on till".into()
+                })
+            }
+            BooksOp::SetShowTaxInvoice { on } => {
+                if !actor.is_owner() {
+                    return Err("Only the Owner can change Tax invoice on the till".into());
+                }
+                self.set_show_tax_invoice(on)?;
+                Ok(if on {
+                    "Tax invoice on till".into()
+                } else {
+                    "Tax invoice hidden — Cash memo only".into()
+                })
+            }
+            BooksOp::SetPayMethods { csv } => {
+                if !actor.is_owner() {
+                    return Err("Only the Owner can change payment methods".into());
+                }
+                self.set_pay_methods_csv(&csv)?;
+                Ok(format!("Payment methods: {}", self.pay_methods_csv()?))
             }
             BooksOp::SetFiscal { business_tax_id, service_bps } => {
                 if !actor.is_owner() {

@@ -69,9 +69,10 @@ Dev reads `CARGO_MANIFEST_DIR/assets/templates`. **Every desktop package**
 (Windows MSI / portable folder, Linux) stages `assets/templates` and
 `assets/items` next to the app (see `copy_app_menu_assets_if_present` in
 `scripts/windows-env.sh`). Runtime also accepts the Linux `bin/` layout
-(package-root `assets/`) and `MAKEPAD_PACKAGE_DIR`. Android still omits the
-~130 MB photo shelf from the APK (Clients pull photos over LAN from a
-desktop Server).
+(package-root `assets/`) and `MAKEPAD_PACKAGE_DIR`. **Android APK/AAB** packs
+the same two folders and extracts them into the app files dir on Server open
+(same paths as desktop). Clients can still pull photos over LAN from any
+Server.
 
 ## `template.json` schema
 

@@ -720,7 +720,7 @@ Each app's installers are its own (`apps/<app>/scripts/`: `install-*.{sh,ps1}`, 
 **Decision (product):** Microsoft Store distribution is the **real Windows goal**.  
 **MSI (USB / sideload):** per-user **MSI** (`./apps/moklanjo/scripts/msi.sh` → `dist/Moklanjo-<ver>.msi`, dev: `./apps/moklanjo/scripts/msi.sh dev`; Khaynjo / Kirano / Tabiyat: same under `apps/<app>/scripts/msi.sh`) — single file, double-click install, **Start Menu + Desktop** shortcuts, best-effort **taskbar** pin, Finish-page **Launch** checkbox (checked by default; does **not** start the app before Finish; skipped for silent `/qn`), uninstall from Settings → Apps. Installs to `%LOCALAPPDATA%\Programs\<Label>\`; **no admin**; fresh versions auto-replace old (MajorUpgrade). Uninstall keeps local data by default and shows **one** dialog with three checkboxes — **business records**, **shop setup** (schema/databases), **screen preferences**; Start Menu **Delete books data** uses the same dialog. (Do not put prompts on the *install* path — that broke real installs earlier.) Folder + `Setup.bat` package remains the fallback.
 
-**MSIX (Store):** `./apps/<app>/scripts/msix.sh` → `dist/<Label>-<ver>.msix` (and a `*-msix-layout/` folder). Shared packer: `scripts/build-msix.sh` + `scripts/msix/pack_msix.py`. Rebuilds the Windows package first, then packs exe + `<crate>/resources/` + `assets/` with Store logos from `resources/icon_512.png`. Manifest is a packaged classic Win32 app (`uap10:RuntimeBehavior="packagedClassicApp"`, `mediumIL`) so books stay under real `%APPDATA%\com.<app>\` like MSI. Stable Identity Names (do not change after publish): `Kumkaj.Moklanjo`, `Kumkaj.Khaynjo`, `Kumkaj.Kirano`, `Kumkaj.Tabiyat` (dev: `*.Dev`). Default Publisher `CN=Kumkaj` — override with `KUMKAJ_MSIX_PUBLISHER` / `KUMKAJ_MSIX_PUBLISHER_DISPLAY` to match Partner Center. Package from Linux is **unsigned**; before Store upload or sideload, sign on Windows:
+**MSIX (Store):** `./apps/<app>/scripts/msix.sh` → `dist/<Label>-<ver>.msix` (and a `*-msix-layout/` folder). Shared packer: `scripts/build-msix.sh` + `scripts/msix/pack_msix.py`. Rebuilds the Windows package first, then packs exe + `<crate>/resources/` + `assets/` with Store logos from `resources/icon_512.png`. Manifest is a packaged classic Win32 app (`uap10:RuntimeBehavior="packagedClassicApp"`, `mediumIL`) so books stay under real `%APPDATA%\com.<app>\` like MSI. Stable Identity Names (do not change after publish): Partner Center **Package/Identity/Name** form `MearajBhagad.<App>` — `MearajBhagad.Khaynjo`, `MearajBhagad.Moklanjo`, `MearajBhagad.Kirano`, `MearajBhagad.Tabiyat`. Default Publisher `CN=373E2948-B702-453F-A991-0E7B4F78F562` / display `Mearaj Bhagad` — override with `KUMKAJ_MSIX_PUBLISHER` / `KUMKAJ_MSIX_PUBLISHER_DISPLAY` if the Store account changes. Packing uses Microsoft **`makemsix`** on Linux (`scripts/msix/ensure-makemsix.sh` + `pack_msix.sh`) so Partner Center gets a valid BlockMap — not the old Python zip writer. Package may be **unsigned** for Store upload (Store re-signs); optional sideload signing on Windows:
 
 ```bat
 signtool sign /fd SHA256 /a /f StoreAssociation.pfx /p <password> /tr http://timestamp.digicert.com /td SHA256 dist\Khaynjo-1.0.0.msix
@@ -803,18 +803,19 @@ by `scripts/apply-android-activity-bridge.sh` before an Android build:
 Because the receipt file is under `getFilesDir`, another app cannot open it
 without a `FileProvider`; the share sheet and clipboard carry the text.
 
-The dish photo shelf (`assets/items`, ~130 MB) is not packed into the APK
-(size). **Desktop packages (Windows MSI / portable, Linux) must ship both
-`assets/items` and `assets/templates`** beside the app — Menu → **Import
-complete template** and **Client menu** (e.g. Rajdhani) disappear if those
-folders are missing. Staging: `copy_app_menu_assets_if_present` in
-`scripts/windows-env.sh` (called from Khaynjo `windows-dev.sh` /
-`package-linux*.sh`); MSI harvests `assets/` via `scripts/build-msi.sh`.
+**Desktop packages (Windows MSI / portable, Linux) and Android APK/AAB** ship
+both `assets/items` (dish photo shelf) and `assets/templates` (e.g. Rajdhani).
+Desktop stages them beside the app (`copy_app_menu_assets_if_present` in
+`scripts/windows-env.sh`; MSI via `scripts/build-msi.sh`). Android packs the
+same two folders into the APK (`apply-android-activity-bridge.sh` →
+cargo-makepad) and extracts them into the app files dir on Server open so
+`catalogue_root` / `templates_root` match desktop. Menu → **Import complete
+template** and **Client menu** disappear only if those folders are missing.
 **Shelf** / **named client** imports run on the Server and copy each photo
-into `item_images` as `custom:…`; Clients (including Android) pull missing
-photos over LAN (`GET /item-image`) into a local cache. Initials show only
-until that fetch lands, or when the Server itself has no file for the key.
-How to add a client template: `apps/khaynjo/assets/templates/README.md`.
+into `item_images` as `custom:…`; Clients pull missing photos over LAN
+(`GET /item-image`) into a local cache. Initials show only until that fetch
+lands, or when the Server itself has no file for the key. How to add a
+client template: `apps/khaynjo/assets/templates/README.md`.
 
 `arboard` and `rfd` are desktop-only dependencies — neither compiles for
 Android, and `arboard` being unconditional used to break the Android build

@@ -84,4 +84,48 @@ fn main() {
     for (key, value) in vars {
         println!("cargo:rustc-env={key}={value}");
     }
+
+    write_android_menu_assets_file_list(&manifest_dir);
+}
+
+/// Paths under `assets/items` + `assets/templates` for Android first-run extract
+/// from the APK (desktop already stages those folders beside the exe).
+fn write_android_menu_assets_file_list(manifest_dir: &PathBuf) {
+    let out_dir = PathBuf::from(env::var("OUT_DIR").unwrap());
+    let list_path = out_dir.join("menu_assets_file_list.txt");
+    let mut lines: Vec<String> = Vec::new();
+    for sub in ["items", "templates"] {
+        let root = manifest_dir.join("assets").join(sub);
+        println!("cargo:rerun-if-changed={}", root.display());
+        if !root.is_dir() {
+            continue;
+        }
+        collect_asset_files(&root, sub, &mut lines);
+    }
+    lines.sort();
+    fs::write(&list_path, lines.join("\n")).expect("write menu_assets_file_list.txt");
+}
+
+fn collect_asset_files(dir: &PathBuf, rel: &str, out: &mut Vec<String>) {
+    let Ok(entries) = fs::read_dir(dir) else {
+        return;
+    };
+    for entry in entries.flatten() {
+        let path = entry.path();
+        let name = entry.file_name();
+        let name = name.to_string_lossy();
+        if name.starts_with('.') {
+            continue;
+        }
+        let child_rel = if rel.is_empty() {
+            name.to_string()
+        } else {
+            format!("{rel}/{name}")
+        };
+        if path.is_dir() {
+            collect_asset_files(&path, &child_rel, out);
+        } else if path.is_file() {
+            out.push(child_rel);
+        }
+    }
 }

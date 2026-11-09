@@ -311,6 +311,15 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
                 st.data_base = Some(dir);
             }
         }
+        let base = st.data_base.clone();
+        drop(st);
+        // Android: start unpacking APK shelf/templates into filesDir early so
+        // Create server often finds them ready (Server jobs also block on ensure).
+        if let Some(base) = base {
+            let _ = std::thread::Builder::new()
+                .name("kirano-menu-assets".into())
+                .spawn(move || menu_images::ensure_android_menu_assets(&base));
+        }
     }
 
     fn persist_setup_language(st: &mut AppState) {
