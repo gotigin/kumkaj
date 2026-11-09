@@ -1,0 +1,30 @@
+---
+description: Play/Android version_code — start at 1, manual +1, never timestamps
+alwaysApply: true
+---
+
+# Play `version_code` (every Kumkaj app)
+
+Canonical: `docs/DEV.md` § Android packaging; Play steps: `apps/khaynjo/docs/PUBLISH_PLAY_STORE.md`.
+
+## Required
+
+- **New application id → `version_code = 1`** in that app’s `Cargo.toml` `[package.metadata.makepad.android]`.
+- **Each Play upload → bump by 1** (small integer). `version_name` / Cargo `version` hold semver (`1.0.0` → `2.0.0`); do **not** encode majors into `version_code`.
+- Packaging / agents: **never** pass `--version-code=auto` and never set codes from dates / `YYYYMMDDHH` / unix time.
+
+## Forbidden
+
+```text
+❌ version_code = 2026110912   # timestamp / date schemes
+❌ cargo-makepad … --version-code=auto
+❌ Seeding “10000” or billions “for headroom”
+```
+
+```text
+✅ First upload / unpublished app: version_code = 1
+✅ Next uploads: 2, 3, …
+✅ Major product bump: version_name = "2.0.0", version_code = previous + 1
+```
+
+All apps (Khaynjo, Moklanjo, Kirano, Tabiyat) start at `1` until Play has a higher code for that package id.

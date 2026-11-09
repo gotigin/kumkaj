@@ -43,7 +43,10 @@ Canonical code: `apps/khaynjo/src/store.rs` (`SCHEMA_VERSION`, `bring_up_to_date
     `version` / `version_name` / MSI / MSIX / AUR `pkgver`) for every
     platform of the same release. Platform-only integers (Play
     `version_code`, AUR `pkgrel`, MSIX fourth digit) may differ but must
-    still move **forward** on each upload. A schema bump is always
+    still move **forward** on each upload. Play `version_code` is a small
+    manual counter in Cargo (**start at `1`**; **+1** per AAB) — never
+    timestamp `auto` / YYYYMMDDHH (see
+    [`PUBLISH_PLAY_STORE.md`](PUBLISH_PLAY_STORE.md)). A schema bump is always
     accompanied by a product version bump so clients are not stuck on a
     build that cannot open their books.
 

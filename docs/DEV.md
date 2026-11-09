@@ -630,12 +630,37 @@ per app, once, and keep it (and its password) backed up outside the repo:
 With the keystore set, the package script re-signs the APK (`apksigner`,
 password through the environment, never argv) and also builds the Play
 bundle (`khaynjo.aab` / `kumkaj-moklanjo.aab`, `build-aab --keystore`).
-Without it the APK is debug-signed and its `README.txt` says so. Package
-builds pass `--version-code=auto` (YYYYMMDDHH), so every build installs as
-an upgrade and Play accepts it; dev builds keep `version_code = 1`. The
-scripts pick their own APK by the production label (`khaynjo.apk`,
-`kumkajcourier.apk`) — Moklanjo's used to copy every APK and AAB under
-`target/`, other apps' and dev builds included.
+Without it the APK is debug-signed and its `README.txt` says so.
+
+**Play `version_code` (every app — do not invent schemes):**
+
+| Rule | Detail |
+|------|--------|
+| **New package id starts at `1`** | First Play-bound (or first Android) `version_code` for a new app / new application id is **`1`**. Not a date, not `10000`, not `YYYYMMDDHH`. |
+| **Bump +1 per Play upload** | Set manually in that app’s `package.metadata.makepad.android.version_code`. Marketing major bumps (`1.0.0` → `2.0.0`) live in `version` / `version_name` only — they do **not** require a large `version_code` jump. |
+| **Never `--version-code=auto`** | Timestamps (YYYYMMDDHH) burn Play’s **2_100_000_000** ceiling and trip Console’s “significantly higher than previous” warning. Packaging must not pass `auto`; cargo-makepad reads Cargo. |
+| **Cannot go backwards** | Once a code is **live or retained** on Play for that package id, every later upload must be **strictly greater**. Until the first accepted upload, keep `1`. Never seed dates/timestamps. |
+
+Canonical Play upload steps: `apps/khaynjo/docs/PUBLISH_PLAY_STORE.md` (copy the same rules into each app’s Play guide when that app ships).
+
+**Play / crash symbol files (every production AAB — useful in prod and
+dev):** `package-android.sh` writes `native-debug-symbols.zip` (Rust
+`libmakepad.so` symbol tables per ABI) and `mapping.txt` (identity Java
+map — Makepad uses D8, not R8 obfuscate). Helper:
+`android_write_play_crash_files` in `scripts/android-env.sh`.
+
+| Use | Why |
+|-----|-----|
+| **Play upload** | Upload both with the AAB or Console keeps the two crash-asset warnings; vitals get readable native stacks |
+| **Shop / sideload prod APK** | Keep the zip with that build; `ndk-stack -sym …/arm64-v8a -dump tombstone` turns addresses into Rust function names |
+| **Development (`*.debug`)** | Same `ndk-stack` flow when a phone native-crashes under `adb`; or point `-sym` at `target/android/aarch64-linux-android/android-dev/` / `release/` `.so` from the build that ran |
+
+Canonical Play + local steps: `apps/khaynjo/docs/PUBLISH_PLAY_STORE.md` § Upload / “Useful in production and development”. Archive **AAB + zip + mapping** per `version_code` — symbols from another build will not match.
+
+The scripts pick
+their own APK by the production label (`khaynjo.apk`, `kumkajcourier.apk`)
+— Moklanjo's used to copy every APK and AAB under `target/`, other apps'
+and dev builds included.
 
 **Emulator on this host (x86_64):** Google's system images here are
 x86_64 without ARM translation, so the arm64 APK will not install. Add

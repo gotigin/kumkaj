@@ -12,6 +12,8 @@ identifier = "com.moklanjo"
 product_name = "Moklanjo"
 
 [package.metadata.makepad.android]
+# Play integer: new package ids start at 1; bump +1 per Play upload.
+# Never YYYYMMDDHH / --version-code=auto (see docs/DEV.md).
 version_code = 1
 version_name = "0.1.0"
 min_sdk_version = 26

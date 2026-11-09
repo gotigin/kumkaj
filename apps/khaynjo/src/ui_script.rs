@@ -6884,6 +6884,7 @@ script_mod! {
                                     draw_bg.color: #x9A0E10
                                     draw_bg.border_radius: 14.
                                     floor_pick_label := WrapLabel{
+                                        width: Fill
                                         selectable: false
                                         body: "Pick a table for this order"
                                         font_color: #xFFFFFF
@@ -6952,6 +6953,7 @@ script_mod! {
                                 // At a glance: busy tables, bills to collect, money on
                                 // the floor.
                                 floor_summary := WrapLabel{
+                                    width: Fill
                                     body: " "
                                     font_color: #x3A2C26
                                     font_size: 14.
@@ -6982,6 +6984,9 @@ script_mod! {
                                     }
                                     View{
                                         width: Fit height: Fit
+                                        // End pad clears the last key past the
+                                        // phone edge / scroll gutter.
+                                        padding: Inset{left: 0. right: 24. top: 0. bottom: 0.}
                                         flow: Right{wrap: false}
                                         spacing: 14
                                         align: Align{y: 0.5}
@@ -7239,17 +7244,19 @@ script_mod! {
                                     width: Fill height: Fit
                                     flow: Down spacing: 0
                                     // Columns + zoom (− / + / Auto) for this area (this device).
+                                    // Phone: stack — Fixed(176)+44+44+72 in one Right
+                                    // cropped Auto past the edge with no scroll.
+                                    // Dropdown Fill; zoom row equal Fill shares.
                                     // Pick-only dropdown (no FieldInput / soft keyboard):
                                     // every value is already in the list. The list floats
                                     // in floor_cols_popup (window root, anchored here) so
                                     // opening it cannot stretch this row or shove the grid.
                                     floor_cols_row := View{
                                         width: Fill height: Fit
-                                        flow: Right spacing: 8
-                                        align: Align{x: 0.0 y: 0.5}
+                                        flow: Down spacing: 8
                                         padding: Inset{top: 2. bottom: 2.}
                                         floor_cols_box := View{
-                                            width: Fixed(176.) height: Fit
+                                            width: Fill height: Fit
                                             flow: Overlay
                                             align: Align{x: 0.0 y: 0.5}
                                             floor_cols_dd := StackSecondaryBtn{
@@ -7271,18 +7278,23 @@ script_mod! {
                                             mod.widgets.PopupAnchor{key: "floor_cols"}
                                         }
                                         View{
-                                            width: Fixed(44.) height: Fit
-                                            floor_zoom_out := SegBtn{text: "\u{f068}"}
-                                        }
-                                        View{
-                                            width: Fixed(44.) height: Fit
-                                            floor_zoom_in := SegBtn{text: "\u{f067}"}
-                                        }
-                                        View{
-                                            width: Fixed(72.) height: Fit
-                                            flow: Overlay
-                                            floor_zoom_auto := SegBtn{text: "Auto"}
-                                            floor_zoom_auto_on := SegBtnOn{text: "Auto" visible: false}
+                                            width: Fill height: Fit
+                                            flow: Right spacing: 8
+                                            align: Align{y: 0.5}
+                                            View{
+                                                width: Fill height: Fit
+                                                floor_zoom_out := SegBtn{text: "\u{f068}"}
+                                            }
+                                            View{
+                                                width: Fill height: Fit
+                                                floor_zoom_in := SegBtn{text: "\u{f067}"}
+                                            }
+                                            View{
+                                                width: Fill height: Fit
+                                                flow: Overlay
+                                                floor_zoom_auto := SegBtn{text: "Auto"}
+                                                floor_zoom_auto_on := SegBtnOn{text: "Auto" visible: false}
+                                            }
                                         }
                                     }
                                     // Tables for the selected area; sideways ScrollXView
@@ -10993,7 +11005,9 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 16.}
                                 // under the bar.
                                 View{
                                     width: Fit height: Fit
-                                    padding: Inset{left: 48. right: 48. top: 6. bottom: 8.}
+                                    // End pad ≥ chevron clear so Kitchen / last
+                                    // peers can sit fully on screen (not under ›).
+                                    padding: Inset{left: 52. right: 52. top: 6. bottom: 8.}
                                     flow: Right spacing: 16
                                     nav_books_slot := View{
                                         width: Fit{min: FitBound.Abs(72.)} height: Fit

@@ -112,6 +112,8 @@ if [[ $STATUS -eq 0 && -n "${APK:-}" && -f "$APK" ]]; then
     if [[ $STATUS -eq 0 && -n "$AAB" ]]; then
       cp -f "$AAB" "$STAGE/kumkaj-moklanjo.aab"
       echo "Play bundle → $OUT/kumkaj-moklanjo.aab"
+      AAB_LIBS="$TARGET_DIR/android/makepad-android-aab/kumkaj_moklanjo/lib"
+      android_write_play_crash_files "$AAB_LIBS" "$STAGE/kumkaj-moklanjo.aab" "$STAGE"
     fi
   fi
 elif [[ $STATUS -eq 0 ]]; then
@@ -126,6 +128,8 @@ if [[ $STATUS -eq 0 ]]; then
   mv "$STAGE" "$OUT"
   trap - EXIT
   echo "Android build succeeded — see $OUT/ and $OUT/build.log"
+  [[ -f "$OUT/native-debug-symbols.zip" ]] && echo "Native debug symbols → $OUT/native-debug-symbols.zip"
+  [[ -f "$OUT/mapping.txt" ]] && echo "Deobfuscation mapping → $OUT/mapping.txt"
 else
   echo "Android build did not complete (exit $STATUS). See $LOG — previous $OUT kept if present."
 fi

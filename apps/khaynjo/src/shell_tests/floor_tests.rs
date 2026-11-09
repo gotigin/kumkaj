@@ -184,6 +184,40 @@ mod floor_tests {
         assert_eq!(parcel, vec![2]);
     }
 
+    /// Phone: Columns dropdown + zoom must stack (not one Right of Fixed
+    /// widths that crop Auto past the edge).
+    #[test]
+    fn floor_cols_row_stacks_on_phone_widths() {
+        let ui = include_str!("../ui_script.rs");
+        let row = ui
+            .split("floor_cols_row := View{")
+            .nth(1)
+            .and_then(|s| s.split("floor_scroll :=").next())
+            .unwrap_or("");
+        assert!(
+            row.contains("flow: Down"),
+            "floor_cols_row must Down-stack dropdown above zoom controls"
+        );
+        assert!(
+            !row.contains("Fixed(176.)"),
+            "floor_cols_box must not be Fixed(176) in a Right strip (crops Auto)"
+        );
+        assert!(
+            row.contains("floor_zoom_auto := SegBtn"),
+            "Auto zoom control must remain"
+        );
+        assert!(
+            ui.contains("floor_summary := WrapLabel{")
+                && ui
+                    .split("floor_summary := WrapLabel{")
+                    .nth(1)
+                    .and_then(|s| s.split("floor_legend").next())
+                    .unwrap_or("")
+                    .contains("width: Fill"),
+            "floor_summary must be Fill so busy/collect/money wraps on phone"
+        );
+    }
+
     #[test]
     fn floor_page_window_only_covers_the_viewport() {
         let rows: Vec<FloorRow> = (0..40).map(|i| FloorRow::Tiles(vec![i])).collect();

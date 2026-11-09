@@ -82,6 +82,9 @@ if android_release_keystore_set; then
   fi
   cp -f "$AAB" "$STAGE/khaynjo.aab"
   echo "Play bundle → $OUT/khaynjo.aab"
+  # Crash symbolication for Play Console (native .so + identity Java mapping).
+  AAB_LIBS="$TARGET_DIR/android/makepad-android-aab/kumkaj_khaynjo/lib"
+  android_write_play_crash_files "$AAB_LIBS" "$STAGE/khaynjo.aab" "$STAGE"
 fi
 cat > "$STAGE/README.txt" <<EOF
 Khaynjo for Android phones and tablets
@@ -101,6 +104,9 @@ At launch pick what this device is:
   Server (Settings → Extra tills → Allow extra tills) → sign in with your PIN.
 The Server can be any device running Khaynjo: Windows, Linux or Android.
 First start in Server Mode asks for the Owner PIN — there is no default PIN.
+
+Play Console (with the .aab): also upload native-debug-symbols.zip and
+mapping.txt from this folder — see apps/khaynjo/docs/PUBLISH_PLAY_STORE.md.
 EOF
 cp -f "$ROOT/docs/LAN_QUICK_START.md" "$STAGE/Quick start.txt"
 # Atomic replace of the published folder (like MSI overwriting the .msi).
@@ -108,3 +114,8 @@ rm -rf "$OUT"
 mv "$STAGE" "$OUT"
 trap - EXIT
 echo "APK → $OUT/kumkaj-khaynjo.apk"
+if [[ -f "$OUT/khaynjo.aab" ]]; then
+  echo "AAB → $OUT/khaynjo.aab"
+  [[ -f "$OUT/native-debug-symbols.zip" ]] && echo "Native debug symbols → $OUT/native-debug-symbols.zip"
+  [[ -f "$OUT/mapping.txt" ]] && echo "Deobfuscation mapping → $OUT/mapping.txt"
+fi

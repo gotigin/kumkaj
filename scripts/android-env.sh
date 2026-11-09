@@ -97,10 +97,15 @@ android_pkg_opts() {
   echo "Android package: $pkg ($label)"
 }
 
-# Release builds: a version code that always goes up (YYYYMMDDHH), so each
-# package installs over the last one and Play accepts it.
+# Release builds: do **not** pass `--version-code=auto` (YYYYMMDDHH).
+# New app / new application id: start version_code at 1 in that app's
+# Cargo.toml. Bump +1 per Play upload manually. Never seed with dates or
+# timestamps — they burn Play's 2_100_000_000 ceiling and warn
+# "significantly higher than previous". cargo-makepad reads
+# package.metadata.makepad.android.version_code. See docs/DEV.md and
+# apps/khaynjo/docs/PUBLISH_PLAY_STORE.md.
 android_release_opts() {
-  ANDROID_PKG_OPTS+=(--version-code=auto)
+  :
 }
 
 # Release signing. An Android update installs only over an app signed with
@@ -226,4 +231,98 @@ android_aab_sign_opts() {
     export MAKEPAD_KEYSTORE_PASS="$pass"
     ANDROID_AAB_SIGN_OPTS=(--keystore="$KUMKAJ_ANDROID_KEYSTORE" --keystore-key-alias="$(android_key_alias)")
   fi
+}
+
+# Crash / ANR symbolication for Makepad/Rust Android (Play + local, prod + dev).
+#
+# 1) native-debug-symbols.zip — ABI folders with unstripped .so (symtab).
+#    Play: upload with the AAB (⋮ → Upload native debug symbols) so vitals
+#    show Rust function names. Local: unzip and ndk-stack -sym …/arm64-v8a
+#    against a tombstone from a shop device or a *.debug install of that build.
+# 2) mapping.txt — identity ProGuard map of the Java shell. Makepad uses D8
+#    without R8 minify/obfuscate (class names stay readable); Play still warns
+#    "no deobfuscation file". An identity map clears the nag.
+#
+# Docs: apps/khaynjo/docs/PUBLISH_PLAY_STORE.md § Useful in production and development.
+#
+# Usage: android_write_play_crash_files <libs_root> <aab> <out_dir>
+#   libs_root: …/makepad-android-aab/<crate>/lib  (arm64-v8a/libmakepad.so …)
+#   aab:       the signed .aab (for dex → class list)
+#   out_dir:   package folder (e.g. dist/khaynjo-android)
+android_write_play_crash_files() {
+  local libs_root="$1"
+  local aab="$2"
+  local out_dir="$3"
+  if [[ -z "$libs_root" || -z "$aab" || -z "$out_dir" ]]; then
+    echo "android_write_play_crash_files: need <libs_root> <aab> <out_dir>" >&2
+    return 1
+  fi
+  if [[ ! -d "$libs_root" ]]; then
+    echo "android_write_play_crash_files: libs root missing: $libs_root" >&2
+    return 1
+  fi
+  if [[ ! -f "$aab" ]]; then
+    echo "android_write_play_crash_files: AAB missing: $aab" >&2
+    return 1
+  fi
+  mkdir -p "$out_dir"
+
+  local zip_out="$out_dir/native-debug-symbols.zip"
+  local map_out="$out_dir/mapping.txt"
+  local stage
+  stage="$(mktemp -d "${TMPDIR:-/tmp}/kumkaj-play-symbols.XXXXXX")"
+
+  # --- native debug symbols ---
+  local abi so_count=0
+  for abi in arm64-v8a armeabi-v7a x86 x86_64; do
+    if [[ -d "$libs_root/$abi" ]] && find "$libs_root/$abi" -maxdepth 1 -name '*.so' | grep -q .; then
+      mkdir -p "$stage/symbols/$abi"
+      cp -a "$libs_root/$abi"/*.so "$stage/symbols/$abi/"
+      so_count=$((so_count + 1))
+    fi
+  done
+  if [[ "$so_count" -eq 0 ]]; then
+    echo "android_write_play_crash_files: no ABI .so under $libs_root" >&2
+    rm -rf "$stage"
+    return 1
+  fi
+  rm -f "$zip_out"
+  (cd "$stage/symbols" && zip -q -r "$zip_out" .)
+  echo "Play native debug symbols → $zip_out ($(du -h "$zip_out" | cut -f1))"
+
+  # --- identity mapping from dex (Java shell is not obfuscated) ---
+  mkdir -p "$stage/aab"
+  unzip -q -o "$aab" "base/dex/*.dex" -d "$stage/aab" 2>/dev/null || true
+  local dex
+  dex="$(find "$stage/aab" -name 'classes*.dex' | sort | head -1 || true)"
+  local sdk="${ANDROID_HOME:-${ANDROID_SDK_ROOT:-$HOME/Android/Sdk}}"
+  local bt dexdump=""
+  bt="$(ls -1 "$sdk/build-tools" 2>/dev/null | sort -V | tail -1 || true)"
+  if [[ -n "$bt" && -x "$sdk/build-tools/$bt/dexdump" ]]; then
+    dexdump="$sdk/build-tools/$bt/dexdump"
+  fi
+  {
+    echo "# Kumkaj / Makepad identity mapping — Java shell is NOT R8-obfuscated."
+    echo "# Play asks for a deobfuscation file; this identity map clears that warning."
+    echo "# Generated $(date -u +%Y-%m-%dT%H:%MZ) from $(basename "$aab")"
+    echo "#"
+  } >"$map_out"
+  if [[ -n "$dex" && -n "$dexdump" && -f "$dex" ]]; then
+    local cls_file="$stage/classes.txt"
+    "$dexdump" "$dex" 2>/dev/null \
+      | sed -n "s/^  Class descriptor  : 'L\\(.*\\);'/\\1/p" \
+      | tr '/' '.' \
+      | sort -u >"$cls_file"
+    while IFS= read -r cls; do
+      [[ -z "$cls" ]] && continue
+      printf '%s -> %s:\n' "$cls" "$cls"
+    done <"$cls_file" >>"$map_out"
+    local n
+    n="$(grep -c ' -> ' "$map_out" || true)"
+    echo "Play deobfuscation mapping → $map_out ($n identity classes)"
+  else
+    echo "# (dexdump unavailable — upload native-debug-symbols.zip; mapping optional)" >>"$map_out"
+    echo "Play mapping.txt stub only (dexdump/dex missing); native symbols still written" >&2
+  fi
+  rm -rf "$stage"
 }
