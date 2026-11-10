@@ -1327,3 +1327,8 @@ recent_changes	Son değişiklikler
 lane_declared_label	Vergi faturası
 lane_owner_label	Nakit fiş
 money_lane_bill	Fatura: {lane}
+
+removing	Removing…
+removed	Removed
+updating_order	Updating…
+order_updated	Order updated

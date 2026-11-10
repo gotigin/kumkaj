@@ -133,6 +133,196 @@ mod info_help_layout_tests {
         );
     }
 
+    /// Order types: ScrollX + Fit row + Fixed cells — phone pans, desk one line.
+    #[test]
+    fn otype_strip_is_scrollx_fit_fixed_row() {
+        let ui = include_str!("../ui_script.rs");
+        if !ui.contains("otype_scroll := ScrollXView{") {
+            return;
+        }
+        assert!(
+            ui.contains("otype_strip := View{"),
+            "otype_scroll must wrap otype_strip"
+        );
+        let strip = ui
+            .split("otype_strip := View{")
+            .nth(1)
+            .and_then(|s| s.split("// Ticket:").next())
+            .unwrap_or("");
+        assert!(
+            strip.contains("width: Fit height: Fit"),
+            "otype_strip must be Fit so ScrollX content is intrinsic"
+        );
+        assert!(
+            strip.contains("Fixed("),
+            "otype cells must be Fixed so labels are not crushed"
+        );
+        assert!(strip.contains("flow: Right"), "otype_strip must be one Right row");
+        assert!(
+            !strip.contains("wrap: true"),
+            "otype_strip must not use Right{{wrap}}+Fill"
+        );
+    }
+
+    /// Pay methods: ScrollX + Fit + Fixed — no Cas/h on phone, one line on desk.
+    #[test]
+    fn pm_strip_is_scrollx_fit_fixed_row() {
+        let ui = include_str!("../ui_script.rs");
+        if !ui.contains("pm_scroll := ScrollXView{") {
+            return;
+        }
+        let strip = ui
+            .split("pm_strip := View{")
+            .nth(1)
+            .and_then(|s| s.split("split_panel := View{").next())
+            .unwrap_or("");
+        assert!(strip.contains("width: Fit height: Fit"));
+        assert!(strip.contains("Fixed("));
+        assert!(strip.contains("flow: Right"));
+        for name in ["pm_cash", "pm_upi", "pm_card", "pm_credit", "pm_split"] {
+            assert!(
+                strip.contains(&format!("{name} := SegBtn")),
+                "pm_strip missing {name}"
+            );
+        }
+    }
+
+    /// Reports facets: ScrollX + Fit + Fixed — even stadiums, desk one line.
+    #[test]
+    fn reports_books_btns_is_scrollx_fit_fixed_row() {
+        let ui = include_str!("../ui_script.rs");
+        if !ui.contains("reports_books_scroll := ScrollXView{") {
+            return;
+        }
+        let strip = ui
+            .split("reports_books_btns := View{")
+            .nth(1)
+            .and_then(|s| s.split("reports_label :=").next())
+            .unwrap_or("");
+        assert!(strip.contains("width: Fit height: Fit"));
+        assert!(strip.contains("Fixed("));
+        assert!(strip.contains("flow: Right"));
+        for name in [
+            "reports_today",
+            "reports_month",
+            "reports_aging",
+            "reports_balance_sheet",
+        ] {
+            assert!(
+                strip.contains(&format!("{name} := SegBtn")),
+                "reports_books_btns missing {name}"
+            );
+        }
+    }
+
+    /// Settings pay methods: same ScrollX + Fit + Fixed as Order pm_strip.
+    #[test]
+    fn pay_m_strip_is_scrollx_fit_fixed_row() {
+        let ui = include_str!("../ui_script.rs");
+        if !ui.contains("pay_m_scroll := ScrollXView{") {
+            return;
+        }
+        let strip = ui
+            .split("pay_m_strip := View{")
+            .nth(1)
+            .and_then(|s| s.split("FormCard{").next())
+            .unwrap_or("");
+        assert!(strip.contains("width: Fit height: Fit"));
+        assert!(strip.contains("Fixed("));
+        assert!(strip.contains("flow: Right"));
+    }
+
+    /// Staff roles: ScrollX + Fit + Fixed — phone pans, desk one line.
+    #[test]
+    fn staff_role_strip_is_scrollx_fit_fixed_row() {
+        let ui = include_str!("../ui_script.rs");
+        if !ui.contains("staff_role_scroll := ScrollXView{") {
+            return;
+        }
+        let strip = ui
+            .split("staff_role_strip := View{")
+            .nth(1)
+            .and_then(|s| s.split("staff_copy_hire_input :=").next())
+            .unwrap_or("");
+        assert!(strip.contains("width: Fit height: Fit"));
+        assert!(strip.contains("Fixed("));
+        assert!(strip.contains("flow: Right"));
+        for name in [
+            "staff_role_waiter",
+            "staff_role_cashier",
+            "staff_role_kitchen",
+            "staff_role_manager",
+            "staff_role_admin",
+        ] {
+            assert!(
+                strip.contains(&format!("{name} := SegBtn")),
+                "staff_role_strip missing {name}"
+            );
+        }
+    }
+
+    /// SegBtn must not wrap — wrap inside squeezed cells makes irregular ovals.
+    #[test]
+    fn segbtn_does_not_wrap_label() {
+        let ui = include_str!("../ui_script.rs");
+        if !ui.contains("let SegBtn = Button{") {
+            return;
+        }
+        let seg = ui
+            .split("let SegBtn = Button{")
+            .nth(1)
+            .and_then(|s| s.split("let KotRowBtn = Button{").next())
+            .unwrap_or("");
+        assert!(
+            !seg.contains("wrap: true"),
+            "SegBtn must use flow: Right (no wrap) so phone strips stay even"
+        );
+        assert!(seg.contains("flow: Right"), "SegBtn must declare flow: Right");
+    }
+
+    /// Footer ScrollX must own whitespace lane presses (touch h-scroll).
+    #[test]
+    fn bottom_nav_scroll_captures_lane_for_hscroll() {
+        let ui = include_str!("../ui_script.rs");
+        if !ui.contains("bottom_nav_scroll := ScrollXView{") {
+            return;
+        }
+        let nav = ui
+            .split("bottom_nav_scroll := ScrollXView{")
+            .nth(1)
+            .and_then(|s| s.split("nav_books_slot :=").next())
+            .unwrap_or("");
+        assert!(
+            nav.contains("mouse_capture_overload: true"),
+            "bottom_nav_scroll needs mouse_capture_overload so lane drags scroll"
+        );
+        assert!(
+            nav.contains("axis_lock: true"),
+            "bottom_nav_scroll needs axis_lock so vertical page scroll does not steal"
+        );
+        assert!(
+            nav.contains("bounce_at_start: false") && nav.contains("bounce_at_end: false"),
+            "footer bounce fights chip tap targets"
+        );
+    }
+
+    /// CRM guest segments must not stack Down as ActionStack SegBtns (desk multi-line).
+    #[test]
+    fn crm_seg_is_scrollx_fit_fixed_row() {
+        let ui = include_str!("../ui_script.rs");
+        if !ui.contains("crm_seg_scroll := ScrollXView{") {
+            return;
+        }
+        let strip = ui
+            .split("crm_seg_strip := View{")
+            .nth(1)
+            .and_then(|s| s.split("crm_preview :=").next())
+            .unwrap_or("");
+        assert!(strip.contains("width: Fit height: Fit"));
+        assert!(strip.contains("Fixed("));
+        assert!(!strip.contains("wrap: true"));
+    }
+
     fn infohelp_default_body() -> &'static str {
         let ui = include_str!("../ui_script.rs");
         let start = ui

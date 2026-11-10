@@ -1349,3 +1349,10 @@ recent_changes	Modifiche recenti
 lane_declared_label	Fattura fiscale
 lane_owner_label	Scontrino
 money_lane_bill	Fattura: {lane}
+
+removing	Removing…
+removed	Removed
+updating_order	Updating…
+order_updated	Order updated
+
+cancelling	Cancellingâ¦

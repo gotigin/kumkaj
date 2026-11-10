@@ -1327,3 +1327,8 @@ recent_changes	Ndryshimet e fundit
 lane_declared_label	Fatura tatimore
 lane_owner_label	Dëftesë me para
 money_lane_bill	Fatura: {lane}
+
+removing	Removing…
+removed	Removed
+updating_order	Updating…
+order_updated	Order updated

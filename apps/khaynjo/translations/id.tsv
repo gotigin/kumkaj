@@ -1349,3 +1349,10 @@ recent_changes	Perubahan terbaru
 lane_declared_label	Faktur pajak
 lane_owner_label	Memo tunai
 money_lane_bill	Tagihan: {lane}
+
+removing	Removing…
+removed	Removed
+updating_order	Updating…
+order_updated	Order updated
+
+cancelling	Cancellingâ¦

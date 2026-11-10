@@ -13,6 +13,12 @@ Local install from this workspace (no AUR): [`AUR_LINUX.md`](AUR_LINUX.md).
 
 ## Prerequisites
 
+- **Product cert green** before publishing (`--tier=full` at least; store if you also ship Play/Windows the same cut):
+
+```bash
+./scripts/product-cert.sh --tier=full khaynjo
+```
+
 - Arch host with the usual build tools (`base-devel`, `git`, `cargo`, `rust`, `rsync`, `clang`)
 - AUR account + SSH key; `aur.archlinux.org` in `known_hosts`
 - Public git tag **`v<pkgver>`** on the commit whose `apps/khaynjo/Cargo.toml` `version` is that `pkgver`. `vendor/makepad` is gitignored; the PKGBUILD runs `scripts/setup-makepad.sh` (pinned Makepad commit + patches).

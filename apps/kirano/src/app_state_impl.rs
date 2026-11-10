@@ -134,6 +134,9 @@ impl AppState {
             menu_pick_rev: 0,
             line_action: None,
             open_cart_line: None,
+            cart_qty_busy: None,
+            pending_cart_bump: None,
+            cart_qty_timer: Timer::empty(),
             picking_table: false,
             picking_from_table_id: None,
             suggest_open: None,
@@ -982,7 +985,7 @@ impl AppState {
             )?;
             return Ok(Acted::Sent);
         }
-        let pricing_only = matches!(action, net::RunningAction::SetLinePricing { .. });
+        let skip_reload = net::running_action_skips_full_reload(&action);
         let store = self.store.as_ref().ok_or("No store")?;
         let pin = Some(approval_pin).filter(|p| !p.trim().is_empty());
         let done = net::apply_running_action(store, &actor, pin, &action)?;
@@ -993,14 +996,23 @@ impl AppState {
             crate::print_share::report_problem(problem);
         }
         let text = done.text;
-        // Other devices on `/wait` see the bump / seat / cancel at once.
-        net::publish_books(store);
-        if pricing_only {
-            // Unit @ / Applied already live in the open cart — do not
-            // load_table_cart (that clears open_cart_line and used to feel
-            // like Print bill / any refresh "reverted" Applied).
+        if skip_reload {
+            // Qty −/+, Hold, Unit @ / Applied already live in the open cart.
+            // Full reload_all froze the till on every tap; publish off-thread.
+            let db_path = store.db_path().to_path_buf();
+            std::thread::Builder::new()
+                .name("kirano-publish".into())
+                .spawn(move || {
+                    if let Ok(s) = crate::store::Store::open_path(&db_path) {
+                        net::publish_books(&s);
+                    }
+                })
+                .ok();
+            self.refresh_live_lists();
             return Ok(Acted::Here(text));
         }
+        // Other devices on `/wait` see the bump / seat / cancel at once.
+        net::publish_books(store);
         self.reload_all()?;
         if let Some(tid) = self.selected_table_id.clone() {
             self.load_table_cart(&tid)?;

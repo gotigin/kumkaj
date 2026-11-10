@@ -113,11 +113,16 @@ pass_tier() {
 
 # ---------- Fast ----------
 run_fast() {
-  local app="$1" crate out
+  local app="$1" crate out rc
   crate="$(crate_for "$app")"
   out="$OUT/fast"
   mkdir -p "$out"
-  {
+  # Subshell + set -e: a `{ … } || fail` group disables errexit in bash, so a
+  # mid-group `cargo test` failure used to still CERT PASS when the last oracle
+  # succeeded.
+  set +e
+  (
+    set -euo pipefail
     echo "== lock-guards =="
     bash "$ROOT/apps/$app/scripts/check-lock-guards.sh"
     echo "== ui-translations =="
@@ -126,11 +131,11 @@ run_fast() {
     bash "$ROOT/apps/$app/scripts/check-tests-never-print.sh"
     echo "== cargo test --lib =="
     cargo test -p "$crate" --lib --no-fail-fast
-    echo "== cargo test (bins/tests, skip long journeys seeds) =="
-    cargo test -p "$crate" --bins --tests --no-fail-fast \
-      -- --skip user_journeys --skip visual_seed --skip seed_visual \
-      || cargo test -p "$crate" --no-fail-fast \
-           -- --skip user_journeys --skip visual_seed --skip seed_visual
+    echo "== cargo test --bins (shell layout / popup oracles) =="
+    # Never fall back to bare `cargo test` — that re-runs --lib and can hang a
+    # GUI binary on the developer's DISPLAY (futex) while fast cert waits.
+    # Integration crates under tests/ are journeys/seeds — run via script below.
+    cargo test -p "$crate" --bins --no-fail-fast
     echo "== user-journeys =="
     bash "$ROOT/scripts/run-user-journeys.sh" "$app"
     echo "== Play crash mitigations present (source) =="
@@ -145,10 +150,92 @@ run_fast() {
       grep -q 'rail_expand_btn' "$ROOT/apps/$app/src/app/main_impl.rs" \
         || { echo "rail_expand_btn missing from HEADER_CONTROLS" >&2; exit 1; }
     fi
-  } >"$out/log.txt" 2>&1 || {
+    echo "== UX glitch oracles (SegBtn / footer lane) =="
+    if [[ -f "$ROOT/apps/$app/src/ui_script.rs" ]]; then
+      # SegBtn wrap:true → irregular stadium ovals when cells squeeze (Reports phone).
+      if awk '
+        /let SegBtn = Button\{/ {inseg=1; next}
+        inseg && /let [A-Za-z]+ = / {exit}
+        inseg && /wrap: true/ {found=1; exit}
+        END {exit found?0:1}
+      ' "$ROOT/apps/$app/src/ui_script.rs"; then
+        echo "SegBtn still has wrap:true — irregular phone pills" >&2
+        exit 1
+      fi
+      if grep -q 'bottom_nav_scroll := ScrollXView{' "$ROOT/apps/$app/src/ui_script.rs"; then
+        awk '
+          /bottom_nav_scroll := ScrollXView\{/ {innav=1; next}
+          innav && /nav_books_slot|nav_sell_slot|nav_home_slot/ {exit}
+          innav {buf = buf $0 ORS}
+          END {
+            if (buf !~ /mouse_capture_overload: true/) exit 1
+            if (buf !~ /axis_lock: true/) exit 1
+          }
+        ' "$ROOT/apps/$app/src/ui_script.rs" \
+          || { echo "bottom_nav_scroll missing capture_overload/axis_lock" >&2; exit 1; }
+      fi
+      # Expense/split pay chips: must not regress to 2×2 Fill (uneven Cash vs UPI).
+      if grep -q 'part_cash := SegBtn' "$ROOT/apps/$app/src/ui_script.rs"; then
+        grep -q 'part_methods_scroll := ScrollXView{' "$ROOT/apps/$app/src/ui_script.rs" \
+          || { echo "PartsList methods missing part_methods_scroll (2×2 Fill regress)" >&2; exit 1; }
+      fi
+      # FieldInput wrap:true → placeholder wraps past Fixed height and crushes the next field.
+      if grep -q 'let FieldInput = TextInput{' "$ROOT/apps/$app/src/ui_script.rs"; then
+        awk '
+          /let FieldInput = TextInput\{/ {inf=1; next}
+          inf && /let [A-Za-z]+ = / {exit}
+          inf && /wrap: true/ {found=1; exit}
+          END {exit found?0:1}
+        ' "$ROOT/apps/$app/src/ui_script.rs" \
+          && { echo "FieldInput still has wrap:true — placeholders will clip" >&2; exit 1; }
+        # Placeholder/value type ≤14 (was 16 — crowded phone wells).
+        awk '
+          /let FieldInput = TextInput\{/ {inf=1; next}
+          inf && /let [A-Za-z]+ = / {exit}
+          inf && /text_style \+: \{font_size: ([0-9.]+)/ {
+            if ($0 ~ /font_size: 1[5-9]\.|font_size: [2-9][0-9]/ found=1
+          }
+          END {exit found?0:1}
+        ' "$ROOT/apps/$app/src/ui_script.rs" \
+          && { echo "FieldInput draw_text font_size still >14 — placeholders too large on phone" >&2; exit 1; }
+      fi
+      # Live nav drag must stay off — reorder is Settings → Sidebar ↑↓.
+      for impl in "$ROOT/apps/$app/src/app/impl_05.rs" "$ROOT/apps/$app/src/app/impl_06.rs"; do
+        [[ -f "$impl" ]] || continue
+        grep -q 'fn pointer_nav_drag' "$impl" || continue
+        if awk '
+          /fn pointer_nav_drag\(/ {inn=1; next}
+          inn && /^    fn / {exit}
+          inn && /Phase::Press|nav_drag_press\(/ {found=1; exit}
+          END {exit found?0:1}
+        ' "$impl"; then
+          echo "pointer_nav_drag still runs live chrome drag in $impl — must stay no-op" >&2
+          exit 1
+        fi
+      done
+      if grep -q 'bottom_nav := SolidView{' "$ROOT/apps/$app/src/ui_script.rs" 2>/dev/null; then
+        grep -q 'move_up := QuietFitBtn' "$ROOT/apps/$app/src/ui_script.rs" \
+          || { echo "Settings Sidebar missing ↑ — chrome reorder has no non-drag path" >&2; exit 1; }
+      fi
+      # Order −/+ must skip full reload_all and show Progress+Cancel (DEV 7b).
+      if grep -q 'BumpPending' "$ROOT/apps/$app/src/net.rs" 2>/dev/null; then
+        grep -q 'fn running_action_skips_full_reload' "$ROOT/apps/$app/src/net.rs" \
+          || { echo "running_action_skips_full_reload missing — −/+ will freeze on reload_all" >&2; exit 1; }
+        grep -q 'BumpPending' "$ROOT/apps/$app/src/net.rs" \
+          && grep -A6 'fn running_action_skips_full_reload' "$ROOT/apps/$app/src/net.rs" \
+            | grep -q 'BumpPending' \
+          || { echo "BumpPending not in running_action_skips_full_reload" >&2; exit 1; }
+        grep -q 'stepper_busy :=' "$ROOT/apps/$app/src/ui_script.rs" \
+          || { echo "CartRow stepper_busy missing — no Removing…/Cancel on −/+" >&2; exit 1; }
+      fi
+    fi
+  ) >"$out/log.txt" 2>&1
+  rc=$?
+  set -e
+  if [[ "$rc" -ne 0 ]]; then
     fail_tier "$app" fast "see $out/log.txt"
     return 1
-  }
+  fi
   pass_tier "$app" fast
 }
 
@@ -269,7 +356,7 @@ run_visual() {
   pass_tier "$app" visual
 }
 
-# ---------- Resilience (smoke soak + log scrape) ----------
+# ---------- Resilience (fault injection + soak + log scrape) ----------
 run_resilience() {
   local app="$1" out
   out="$OUT/resilience"
@@ -279,18 +366,40 @@ run_resilience() {
     echo skipped >"$out/SKIP"
     return 0
   fi
+  # Fault injection lives in full smoke (empty-cart / empty-desk refuse,
+  # settings printers panel, nav back). Re-run full here so resilience
+  # stands alone when UI tier was skipped; ignore if already green.
+  if [[ "${CERT_RESILIENCE_SKIP_FULL:-0}" != "1" ]]; then
+    if ! SMOKE_SCRIPT=full SMOKE_OUT="$out/faults" \
+        bash "$ROOT/scripts/run-ui-smoke-isolated.sh" "$app" \
+        >"$out/faults.log" 2>&1; then
+      fail_tier "$app" resilience "fault full smoke failed — $out/faults.log"
+      return 1
+    fi
+    if ! find "$out/faults" \( -name '*107_*' -o -name 'steps.log' -o -name '*.log' \) \
+        -print0 2>/dev/null | xargs -0 grep -E -l '107_empty_|104_settings|105_settings' \
+        >/dev/null 2>&1; then
+      # Soft: older smoke without 107 still OK if full PASS exists.
+      if ! find "$out/faults" -name PASS -print -quit | grep -q .; then
+        fail_tier "$app" resilience "fault smoke missing PASS / empty-cart marks"
+        return 1
+      fi
+      echo "CERT NOTE [$app/resilience]: no 107_* mark (smoke may predate fault step)" >>"$out/log.txt"
+    fi
+  fi
   if ! KUMKAJ_SMOKE_SOAK_SECS=60 SMOKE_SCRIPT=soak SMOKE_OUT="$out/soak" \
       bash "$ROOT/scripts/run-ui-smoke-isolated.sh" "$app" >"$out/soak.log" 2>&1; then
     fail_tier "$app" resilience "soak failed — $out/soak.log"
     return 1
   fi
-  if grep -E 'panicked at|SIGSEGV|^\[E\] ' "$out/soak.log" >/dev/null 2>&1; then
-    fail_tier "$app" resilience "panic or [E] in soak log"
+  if grep -E 'panicked at|SIGSEGV|^\[E\] ' "$out/soak.log" "$out/faults.log" 2>/dev/null | grep -q .; then
+    fail_tier "$app" resilience "panic or [E] in soak/fault log"
     return 1
   fi
   # App log under soak/<kind>.log
-  if find "$out/soak" -name '*.log' -print0 | xargs -0 grep -E -l 'panicked at|SIGSEGV|^\[E\] ' >/dev/null 2>&1; then
-    fail_tier "$app" resilience "panic or [E] in soak app log"
+  if find "$out/soak" "$out/faults" -name '*.log' -print0 2>/dev/null \
+      | xargs -0 grep -E -l 'panicked at|SIGSEGV|^\[E\] ' >/dev/null 2>&1; then
+    fail_tier "$app" resilience "panic or [E] in soak/fault app log"
     return 1
   fi
   pass_tier "$app" resilience
@@ -298,14 +407,15 @@ run_resilience() {
 
 # ---------- Cross-compile / artifact presence ----------
 run_xcomp() {
-  local app="$1" out
+  local app="$1" out rc
   out="$OUT/xcomp"
   mkdir -p "$out"
-  {
+  set +e
+  (
+    set -euo pipefail
     echo "== android package metadata =="
     grep -E 'version_code|version_name|^version' "$ROOT/apps/$app/Cargo.toml" || true
     echo "== play version_code not date/auto =="
-    local vc
     vc="$(gawk '/\[package.metadata.makepad.android\]/{p=1;next} p&&/^\[/{exit} p&&/version_code/{gsub(/[^0-9]/,"",$3);print $3;exit}' "$ROOT/apps/$app/Cargo.toml")"
     if [[ -z "$vc" ]] || [[ "$vc" =~ ^[0-9]{8,} ]] || [[ "$vc" == "auto" ]]; then
       echo "bad version_code='$vc'" >&2
@@ -321,10 +431,13 @@ run_xcomp() {
     [[ -f "$ROOT/scripts/package-apple-scaffold.sh" ]]
     echo "== linux package script =="
     [[ -f "$ROOT/apps/$app/scripts/package-linux.sh" ]]
-  } >"$out/log.txt" 2>&1 || {
+  ) >"$out/log.txt" 2>&1
+  rc=$?
+  set -e
+  if [[ "$rc" -ne 0 ]]; then
     fail_tier "$app" xcomp "see $out/log.txt"
     return 1
-  }
+  fi
   pass_tier "$app" xcomp
 }
 
@@ -524,7 +637,10 @@ run_android_device() {
     return 1
   fi
   abi="$("$adb_bin" -s "$serial" shell getprop ro.product.cpu.abi | tr -d '\r')"
-  {
+  local rc=0
+  set +e
+  (
+    set -euo pipefail
     echo "serial=$serial apk=$apk pkg=$pkg abi=$abi aab=${aab:-none}"
     "$adb_bin" -s "$serial" logcat -c || true
     "$adb_bin" -s "$serial" install -r "$apk"
@@ -563,39 +679,42 @@ run_android_device() {
     fi
     echo "resumed_or_focused=ok"
     "$adb_bin" -s "$serial" shell am force-stop "$pkg" || true
-  } >"$out/log.txt" 2>&1 || {
+  ) >"$out/log.txt" 2>&1
+  rc=$?
+  set -e
+  if [[ "$rc" -ne 0 ]]; then
     fail_tier "$app" android "device launch failed — $out/log.txt"
     return 1
-  }
+  fi
   pass_tier "$app" android
 }
 
 # ---------- Store pre-upload asserts ----------
 run_store() {
-  local app="$1" out
+  local app="$1" out rc
   out="$OUT/store"
   mkdir -p "$out"
-  {
+  set +e
+  (
+    set -euo pipefail
     echo "== Play / Android =="
-    local vc vn
     vc="$(gawk '/\[package.metadata.makepad.android\]/{p=1;next} p&&/^\[/{exit} p&&/version_code/{gsub(/[^0-9]/,"",$3);print $3;exit}' "$ROOT/apps/$app/Cargo.toml")"
     vn="$(gawk '/\[package.metadata.makepad.android\]/{p=1;next} p&&/^\[/{exit} p&&/version_name/{gsub(/"/,"",$3);print $3;exit}' "$ROOT/apps/$app/Cargo.toml")"
     echo "android version_code=$vc version_name=$vn"
     [[ -n "$vc" && "$vc" -ge 1 ]]
     [[ ! "$vc" =~ ^[0-9]{8,} ]]
-    local aab_dir="dist/${app}-android"
-    local aab_found=0 sym_found=0 map_found=0
+    aab_dir="dist/${app}-android"
+    aab_found=0 sym_found=0 map_found=0
     if [[ -d "$aab_dir" ]]; then
       ls -la "$aab_dir" | head -30
       shopt -s nullglob
-      local aabs=("$aab_dir"/*.aab)
+      aabs=("$aab_dir"/*.aab)
       shopt -u nullglob
       if [[ ${#aabs[@]} -gt 0 ]]; then
         aab_found=1
         echo "AAB: ${aabs[*]}"
         # shellcheck source=android-env.sh
         source "$ROOT/scripts/android-env.sh"
-        local aab
         for aab in "${aabs[@]}"; do
           android_assert_aab_launch_bg "$aab"
         done
@@ -655,10 +774,13 @@ run_store() {
     else
       echo "(set CERT_RUN_APPLE_SCAFFOLD=1 to execute scaffold)"
     fi
-  } >"$out/log.txt" 2>&1 || {
+  ) >"$out/log.txt" 2>&1
+  rc=$?
+  set -e
+  if [[ "$rc" -ne 0 ]]; then
     fail_tier "$app" store "see $out/log.txt"
     return 1
-  }
+  fi
   pass_tier "$app" store
 }
 

@@ -1327,3 +1327,8 @@ recent_changes	ბოლო ცვლილებები
 lane_declared_label	საგადასახადო ინვოისი
 lane_owner_label	ფულადი მემორანდუმი
 money_lane_bill	სტუმრის ანგარიში: {lane}
+
+removing	Removing…
+removed	Removed
+updating_order	Updating…
+order_updated	Order updated

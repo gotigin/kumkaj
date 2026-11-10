@@ -458,14 +458,6 @@ impl App {
         }
         self.match_event(cx, event);
         if let Event::NextFrame(e) = event {
-            let ours = nav_autoscroll_frame()
-                .lock()
-                .unwrap()
-                .map(|frame| e.set.contains(&frame))
-                .unwrap_or(false);
-            if ours {
-                self.nav_drag_autoscroll(cx);
-            }
             let floor_ours = floor_area_autoscroll_frame()
                 .lock()
                 .unwrap()
@@ -495,13 +487,7 @@ impl App {
         // must not start a drag under the dishes the finger is scrolling.
         let sheet_open = self.window_sheet_open(cx);
         if !sheet_open {
-            if self.pointer_sidebar_settings_drag(cx, event) {
-                return;
-            }
             if self.pointer_route_printer_drag(cx, event) {
-                return;
-            }
-            if self.pointer_nav_drag(cx, event) {
                 return;
             }
             if self.pointer_floor_area_drag(cx, event) {

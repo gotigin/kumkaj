@@ -217,6 +217,49 @@ pub enum RunningAction {
     },
 }
 
+
+/// Light till writes that already live in the open cart. Full `reload_all` +
+/// `load_table_cart` after these froze −/+ for seconds (UI looked dead, then
+/// jumped). Callers bump the cart locally and refresh floor lists only.
+pub fn running_action_skips_full_reload(action: &RunningAction) -> bool {
+    matches!(
+        action,
+        RunningAction::SetLinePricing { .. }
+            | RunningAction::BumpPending { .. }
+            | RunningAction::HoldLine { .. }
+    )
+}
+
+#[cfg(test)]
+mod running_action_reload_tests {
+    use super::*;
+
+    #[test]
+    fn qty_hold_and_pricing_skip_full_reload() {
+        assert!(running_action_skips_full_reload(&RunningAction::BumpPending {
+            table_id: "t".into(),
+            product_id: "p".into(),
+            delta_milli: -1000,
+            area: String::new(),
+        }));
+        assert!(running_action_skips_full_reload(&RunningAction::HoldLine {
+            line_id: "l".into(),
+            held: true,
+        }));
+        assert!(running_action_skips_full_reload(&RunningAction::SetLinePricing {
+            line_id: "l".into(),
+            unit_price_paise: 1,
+            line_total_paise: -1,
+        }));
+        assert!(!running_action_skips_full_reload(&RunningAction::Cancel {
+            line_id: "l".into(),
+            qty_milli: Some(1000),
+            reason: "x".into(),
+            prepared: false,
+        }));
+    }
+}
+
 #[derive(Clone, Debug, Serialize, Deserialize)]
 pub struct RemoteRunningRequest {
     #[serde(default)]

@@ -1339,3 +1339,8 @@ recent_changes	Nylige endringer
 lane_declared_label	Mva-faktura
 lane_owner_label	Kontantnota
 money_lane_bill	Regning: {lane}
+
+removing	Removing…
+removed	Removed
+updating_order	Updating…
+order_updated	Order updated

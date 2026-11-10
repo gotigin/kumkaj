@@ -80,7 +80,7 @@ impl Widget for ProductList {
                         tile.view(cx, ids!(edge)).set_visible(cx, !on_order);
                         tile.view(cx, ids!(edge_on)).set_visible(cx, on_order);
                         tile.view(cx, ids!(stepper)).set_visible(cx, on_order);
-                        tile.label(cx, ids!(name)).set_text(cx, &product.name);
+                        tile.widget(cx, ids!(name)).set_text(cx, &plain_display_text(&product.name));
                         paint_first_alias(cx, &tile, product.first_alias().as_deref());
                         let price = tile.label(cx, ids!(price));
                         let price_off = tile.label(cx, ids!(price_off));
@@ -153,8 +153,8 @@ impl Widget for MenuList {
         // next list on the page starts early, overlapping the last rows
         // and stealing their taps. MenuCard height + PortalList spacing
         // must stay in sync. Only rows inside the page window are drawn.
-        const ROW: f64 = 152.0;
-        const GAP: f64 = 12.0;
+        const ROW: f64 = 164.0;
+        const GAP: f64 = 0.0; // MenuCard 152 + Item bottom pad 12
         let (first, last) = page_window(cx.turtle().pos().y, count, ROW, GAP);
         let walk = Walk {
             height: Size::Fixed(list_content_height(count, ROW, GAP)),
@@ -187,7 +187,7 @@ impl Widget for MenuList {
                     } else {
                         product.name.clone()
                     };
-                    item.label(cx, ids!(name)).set_text(cx, &shown_name);
+                    item.widget(cx, ids!(name)).set_text(cx, &plain_display_text(&shown_name));
                     paint_first_alias(cx, &item, product.first_alias().as_deref());
                     item.label(cx, ids!(price))
                         .set_text(cx, &product.price.format_localized(&currency, &fiscal));
@@ -262,8 +262,8 @@ impl Widget for RemovedList {
         };
         let count = products.len();
         // Fixed pitch (see MenuList): the same MenuCard, so the same row.
-        const ROW: f64 = 152.0;
-        const GAP: f64 = 12.0;
+        const ROW: f64 = 164.0;
+        const GAP: f64 = 0.0; // MenuCard 152 + Item bottom pad 12
         let walk = Walk {
             height: Size::Fixed(list_content_height(count, ROW, GAP)),
             ..walk
@@ -277,7 +277,7 @@ impl Widget for RemovedList {
                         continue;
                     };
                     let item = list.item(cx, item_id, id!(Item));
-                    item.label(cx, ids!(name)).set_text(cx, &product.name);
+                    item.widget(cx, ids!(name)).set_text(cx, &plain_display_text(&product.name));
                     paint_first_alias(cx, &item, product.first_alias().as_deref());
                     item.label(cx, ids!(price))
                         .set_text(cx, &product.price.format_localized(&currency, &fiscal));

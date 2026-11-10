@@ -1327,3 +1327,8 @@ recent_changes	Неодамнешни промени
 lane_declared_label	Даночна фактура
 lane_owner_label	Меморандум за готовина
 money_lane_bill	Гостинска сметка за гости: {lane}
+
+removing	Removing…
+removed	Removed
+updating_order	Updating…
+order_updated	Order updated

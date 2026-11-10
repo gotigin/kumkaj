@@ -318,7 +318,7 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             let help = self.ui.widget(cx, ids!(lock_login_help)).as_info_help();
             help.set_title(cx, "");
             // Tip for unlock-with-login (not Team's "optional login" essay).
-            help.set_tip(&plain_display_text(&s("or_unlock_login")));
+            help.set_tip(&plain_display_text(&s("or_unlock_login_help")));
         }
         self.ui
             .button(cx, ids!(server_create_new))
@@ -898,14 +898,6 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
     fn paint_nav_tabs(&mut self, cx: &mut Cx, screen: Screen) {
         let order = current_nav_chrome_order();
         let active = nav_tab_for(screen);
-        // While dragging, the slot under the pointer wears the active face
-        // so the drop target is unmistakable.
-        let drop = nav_drag()
-            .lock()
-            .unwrap()
-            .as_ref()
-            .filter(|d| d.active)
-            .and_then(|d| d.hover.map(|slot| (d.rail, slot)));
         for (rail, pairs) in [(false, self.bottom_nav_pairs()), (true, self.rail_nav_pairs())] {
             let wraps = self.nav_slot_wrappers(rail);
             for (slot, (idle, on)) in pairs.iter().enumerate() {
@@ -918,7 +910,7 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
                     self.ui.button(cx, on).set_visible(cx, false);
                     continue;
                 }
-                let selected = active == Some(order[slot]) || drop == Some((rail, slot));
+                let selected = active == Some(order[slot]);
                 self.ui.button(cx, idle).set_visible(cx, !selected);
                 self.ui.button(cx, on).set_visible(cx, selected);
             }

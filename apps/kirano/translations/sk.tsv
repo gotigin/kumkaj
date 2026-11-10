@@ -1327,3 +1327,8 @@ recent_changes	Najnovšie zmeny
 lane_declared_label	Daňový doklad
 lane_owner_label	Pokladničný doklad
 money_lane_bill	Účet: {lane}
+
+removing	Removing…
+removed	Removed
+updating_order	Updating…
+order_updated	Order updated

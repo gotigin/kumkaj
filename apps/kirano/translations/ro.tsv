@@ -1327,3 +1327,8 @@ recent_changes	Modificări recente
 lane_declared_label	Factură fiscală
 lane_owner_label	Notă de casă
 money_lane_bill	Notă: {lane}
+
+removing	Removing…
+removed	Removed
+updating_order	Updating…
+order_updated	Order updated

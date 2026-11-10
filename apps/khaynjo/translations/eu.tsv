@@ -1349,3 +1349,10 @@ recent_changes	Azken aldaketak
 lane_declared_label	Zerga-faktura
 lane_owner_label	Diru-oharra
 money_lane_bill	Kontua: {lane}
+
+removing	Removing…
+removed	Removed
+updating_order	Updating…
+order_updated	Order updated
+
+cancelling	Cancellingâ¦

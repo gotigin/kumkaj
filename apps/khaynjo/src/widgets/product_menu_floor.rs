@@ -80,7 +80,8 @@ impl Widget for ProductList {
                         tile.view(cx, ids!(edge)).set_visible(cx, !on_order);
                         tile.view(cx, ids!(edge_on)).set_visible(cx, on_order);
                         tile.view(cx, ids!(stepper)).set_visible(cx, on_order);
-                        tile.label(cx, ids!(name)).set_text(cx, &product.name);
+                        tile.widget(cx, ids!(name))
+                            .set_text(cx, &plain_display_text(&product.name));
                         paint_first_alias(cx, &tile, product.first_alias().as_deref());
                         let price = tile.label(cx, ids!(price));
                         let price_off = tile.label(cx, ids!(price_off));
@@ -158,10 +159,10 @@ impl Widget for MenuList {
         });
         *menu_grid_cols().lock().unwrap() = cols;
         let grid_rows = count.div_ceil(cols.max(1));
-        // MenuCard is 176; PortalList spacing is the gap. Fixed pitch so the
-        // page window does not overlap the next list.
-        const ROW: f64 = 176.0;
-        const GAP: f64 = 12.0;
+        // MenuCard outer is 188 (176 tile + 12 gap band). PortalList ignores
+        // layout.spacing between items — the empty band is the visible gap.
+        const ROW: f64 = 188.0;
+        const GAP: f64 = 0.0;
         let (first, last) = page_window(cx.turtle().pos().y, grid_rows, ROW, GAP);
         let walk = Walk {
             height: Size::Fixed(list_content_height(grid_rows, ROW, GAP)),
@@ -202,7 +203,8 @@ impl Widget for MenuList {
                         } else {
                             product.name.clone()
                         };
-                        tile.label(cx, ids!(name)).set_text(cx, &shown_name);
+                        tile.widget(cx, ids!(name))
+                            .set_text(cx, &plain_display_text(&shown_name));
                         paint_first_alias(cx, &tile, product.first_alias().as_deref());
                         tile.label(cx, ids!(price))
                             .set_text(cx, &product.price.format_localized(&currency, &fiscal));
@@ -217,7 +219,8 @@ impl Widget for MenuList {
                         } else {
                             locale::t(&lang, "marked_sold_out")
                         };
-                        tile.label(cx, ids!(stock)).set_text(cx, &stock_line);
+                        tile.widget(cx, ids!(stock))
+                            .set_text(cx, &plain_display_text(&stock_line));
                         load_product_card_photo(cx, &tile, product);
                         let initials = tile.label(cx, ids!(thumb_initials)).text();
                         tile.view(cx, ids!(initials_plate))
@@ -282,8 +285,9 @@ impl Widget for RemovedList {
         });
         *removed_grid_cols().lock().unwrap() = cols;
         let grid_rows = count.div_ceil(cols.max(1));
-        const ROW: f64 = 176.0;
-        const GAP: f64 = 12.0;
+        // Same pitch as MenuList (176 tile + 12 gap band).
+        const ROW: f64 = 188.0;
+        const GAP: f64 = 0.0;
         let walk = Walk {
             height: Size::Fixed(list_content_height(grid_rows, ROW, GAP)),
             ..walk
@@ -311,12 +315,13 @@ impl Widget for RemovedList {
                         };
                         tile.set_visible(cx, true);
                         tile.view(cx, ids!(dim)).set_visible(cx, false);
-                        tile.label(cx, ids!(name)).set_text(cx, &product.name);
+                        tile.widget(cx, ids!(name))
+                            .set_text(cx, &plain_display_text(&product.name));
                         paint_first_alias(cx, &tile, product.first_alias().as_deref());
                         tile.label(cx, ids!(price))
                             .set_text(cx, &product.price.format_localized(&currency, &fiscal));
-                        tile.label(cx, ids!(stock))
-                            .set_text(cx, &locale::t(&lang, "removed_items"));
+                        tile.widget(cx, ids!(stock))
+                            .set_text(cx, &plain_display_text(&locale::t(&lang, "removed_items")));
                         load_product_card_photo(cx, &tile, product);
                         let initials = tile.label(cx, ids!(thumb_initials)).text();
                         tile.view(cx, ids!(initials_plate))

@@ -126,6 +126,51 @@ mod info_help_layout_tests {
         );
     }
 
+    /// SegBtn must not wrap — wrap inside squeezed cells makes irregular ovals.
+    #[test]
+    fn segbtn_does_not_wrap_label() {
+        let ui = include_str!("../ui_script.rs");
+        if !ui.contains("let SegBtn = Button{") {
+            return;
+        }
+        let seg = ui
+            .split("let SegBtn = Button{")
+            .nth(1)
+            .and_then(|s| s.split("let SegBtnOn = SegBtn{").next())
+            .unwrap_or("");
+        assert!(
+            !seg.contains("wrap: true"),
+            "SegBtn must use flow: Right (no wrap) so phone strips stay even"
+        );
+        assert!(seg.contains("flow: Right"), "SegBtn must declare flow: Right");
+    }
+
+    /// Footer ScrollX must own whitespace lane presses (touch h-scroll).
+    #[test]
+    fn bottom_nav_scroll_captures_lane_for_hscroll() {
+        let ui = include_str!("../ui_script.rs");
+        if !ui.contains("bottom_nav_scroll := ScrollXView{") {
+            return;
+        }
+        let nav = ui
+            .split("bottom_nav_scroll := ScrollXView{")
+            .nth(1)
+            .and_then(|s| s.split("nav_books_slot :=").next())
+            .unwrap_or("");
+        assert!(
+            nav.contains("mouse_capture_overload: true"),
+            "bottom_nav_scroll needs mouse_capture_overload so lane drags scroll"
+        );
+        assert!(
+            nav.contains("axis_lock: true"),
+            "bottom_nav_scroll needs axis_lock so vertical page scroll does not steal"
+        );
+        assert!(
+            nav.contains("bounce_at_start: false") && nav.contains("bounce_at_end: false"),
+            "footer bounce fights chip tap targets"
+        );
+    }
+
     fn infohelp_default_body() -> &'static str {
         let ui = include_str!("../ui_script.rs");
         let start = ui

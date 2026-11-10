@@ -502,8 +502,37 @@ impl App {
                 self.smoke_mark(cx, "106_nav_back");
                 false
             }
+            7 => {
+                // Benign error path: empty-cart pay must not crash or leave chrome stuck.
+                self.go_peer(cx, Screen::Pos);
+                {
+                    let mut st = app_state().lock().unwrap();
+                    st.cart = Cart::default();
+                }
+                self.sync_chrome(cx);
+                let before = app_state().lock().unwrap().screen;
+                let _ = self.try_pay_cash_smoke(cx);
+                self.sync_chrome(cx);
+                let after = app_state().lock().unwrap().screen;
+                if after != before && after != Screen::Pos {
+                    self.smoke_note_fail(format!(
+                        "empty-cart pay left unexpected screen {after:?}"
+                    ));
+                }
+                self.smoke_mark(cx, "107_empty_cart_pay");
+                false
+            }
             _ => true,
         }
+    }
+
+    /// Smoke-only: surface the empty-cart refusal the Pay button uses.
+    fn try_pay_cash_smoke(&mut self, cx: &mut Cx) {
+        let n = app_state().lock().unwrap().cart.lines.len();
+        if n != 0 {
+            return;
+        }
+        self.set_status(cx, "Nothing to charge — add items first");
     }
 
     fn smoke_mark(&mut self, cx: &mut Cx, name: &str) {

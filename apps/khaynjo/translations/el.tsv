@@ -1349,3 +1349,10 @@ recent_changes	Πρόσφατες αλλαγές
 lane_declared_label	Φορολογικό τιμολόγιο
 lane_owner_label	Απόδειξη μετρητών
 money_lane_bill	Λογαριασμός: {lane}
+
+removing	Removing…
+removed	Removed
+updating_order	Updating…
+order_updated	Order updated
+
+cancelling	Cancellingâ¦

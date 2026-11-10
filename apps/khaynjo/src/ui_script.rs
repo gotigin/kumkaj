@@ -1229,13 +1229,20 @@ script_mod! {
         }
     }
     // Full-width settings row. A real button, so a tap selects that row.
+    // Wrap + Fit label (bug 7 / button_label_center). Bill/KOT lines are
+    // "Name · show · 14 · Regular · Center" — no wrap cropped on 375.
+    // Bottom margin = visible gap (parent spacing alone looked flush).
     let KotRowBtn = Button{
         width: Fill height: Fit
-        margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
-        padding: Inset{left: 12. right: 12. top: 8. bottom: 8.}
+        margin: Inset{left: 0. right: 0. top: 0. bottom: 8.}
+        padding: Inset{left: 12. right: 12. top: 10. bottom: 10.}
         align: Align{x: 0.0 y: 0.5}
-        flow: Right
-        label_walk: Walk{width: Fit height: Fit}
+        flow: Right{wrap: true}
+        label_walk: Walk{
+            width: Fit
+            height: Fit
+            margin: Inset{left: 2. right: 2.}
+        }
         icon_walk: Walk{width: 0. height: 0.}
         draw_bg +: {
             color: #xffffff
@@ -1606,6 +1613,13 @@ script_mod! {
     let ChipStrip = ScrollXView{
         width: Fill height: 52
     }
+    // Form/settings horizontal strips under a heading. Vertical margin so the
+    // strip is not flush with siblings. Never put this margin on ChipStrip —
+    // Overlay tabs (Lock roles) would float away from the chevrons.
+    let FormScrollX = ScrollXView{
+        width: Fill height: Fit
+        margin: Inset{left: 0. right: 0. top: 8. bottom: 8.}
+    }
 
     // Fill chips in a row: wrap (no ellipsis) so translated labels stay whole.
     let RoleChip = Button{
@@ -1686,6 +1700,9 @@ script_mod! {
     // Every form field: once it holds text, its placeholder's short form
     // stays as a small label in the top edge ("Qty", "Unit cost"), so a
     // filled form still says what each box is — nobody has to remember.
+    // Single-line wells only. Stock TextInput is flow Right{wrap:true}: long
+    // empty_text wraps then Fixed height clips the well — never re-enable wrap;
+    // shorten *_ph instead.
     let FieldInput = TextInput{
         width: Fill
         // Fixed height so FormFieldRow peers stay level when one field is
@@ -1695,6 +1712,8 @@ script_mod! {
         // accidental keyboard opens mid-scroll).
         margin: Inset{left: 0. right: 0. top: 6. bottom: 6.}
         padding: Inset{left: 14. right: 14. top: 16. bottom: 12.}
+        flow: Right
+        is_multiline: false
         blink_speed: 0.5
         // Soft keyboard: Done/Go fires TextInputAction::Returned → form submit.
         return_key_type: ReturnKeyType.Done
@@ -1742,7 +1761,10 @@ script_mod! {
             color_empty: #x8A6A5C
             color_empty_hover: #x8A6A5C
             color_empty_focus: #x8A6A5C
-            text_style +: {font_size: 16.}
+            max_lines: 1
+            text_overflow: Ellipsis
+            // 12 on phone (was 16) — long empty_text ellipsis; shorten *_ph too.
+            text_style +: {font_size: 12.}
         }
     }
 
@@ -1784,6 +1806,8 @@ script_mod! {
     mod.widgets.WrapLabel = set_type_default() do mod.widgets.WrapLabelBase{
         width: Fill
         height: Fit
+        // Same as stock Markdown — without wrap, Fill prose crops on the right.
+        flow: Right{wrap: true}
         padding: 0.
         selectable: true
         paragraph_spacing: 0.
@@ -5176,30 +5200,26 @@ script_mod! {
                                 width: 36 height: 36
                                 fit: ImageFit.Stretch
                             }
+                            // Fill stack — Fit title+id beside the eye cropped
+                            // "Khaynjo (2282(" on phone chrome.
                             View{
                                 width: Fill height: Fit
                                 flow: Down spacing: 2
-                                View{
-                                    width: Fill height: Fit
-                                    flow: Right spacing: 6
-                                    align: Align{y: 0.5}
-                                    // Selectable WrapLabel — font_color stays white on maroon.
-                                    brand_title := WrapLabel{
-                                        width: Fit
-                                        body: "Khaynjo"
-                                        font_color: #xffffff
-                                        font_size: 18.
-                                    }
-                                    // Short server id — smaller than the shop name.
-                                    brand_server_id := WrapLabel{
-                                        width: Fit
-                                        body: ""
-                                        font_color: #xE8C4B0
-                                        font_size: 11.
-                                        visible: false
-                                    }
+                                brand_title := WrapLabel{
+                                    width: Fill
+                                    body: "Khaynjo"
+                                    font_color: #xffffff
+                                    font_size: 18.
+                                }
+                                brand_server_id := WrapLabel{
+                                    width: Fill
+                                    body: ""
+                                    font_color: #xE8C4B0
+                                    font_size: 11.
+                                    visible: false
                                 }
                                 session_label := WrapLabel{
+                                    width: Fill
                                     body: "Sell"
                                     font_color: #xC4A18C
                                     font_size: 11.
@@ -5304,26 +5324,22 @@ script_mod! {
                                                             }
                                             View{
                                                 width: Fill height: Fit
-                                                flow: Down spacing: 4
-                                                View{
-                                                    width: Fill height: Fit
-                                                    flow: Right spacing: 6
-                                                    align: Align{y: 0.5}
-                                                    setup_brand_title := WrapLabel{
-                                                        width: Fit
-                                                        body: "Your shop"
-                                                        font_color: #x69090C
-                                                        font_size: 18.
-                                                    }
-                                                    setup_brand_server_id := WrapLabel{
-                                                        width: Fit
-                                                        body: ""
-                                                        font_color: #x6B4A3F
-                                                        font_size: 11.
-                                                        visible: false
-                                                    }
+                                                flow: Down spacing: 2
+                                                setup_brand_title := WrapLabel{
+                                                    width: Fill
+                                                    body: "Your shop"
+                                                    font_color: #x69090C
+                                                    font_size: 18.
+                                                }
+                                                setup_brand_server_id := WrapLabel{
+                                                    width: Fill
+                                                    body: ""
+                                                    font_color: #x6B4A3F
+                                                    font_size: 11.
+                                                    visible: false
                                                 }
                                                 device_use_question := WrapLabel{
+                                                    width: Fill
                                                     body: ""
                                                     font_color: #x6B4A3F
                                                     font_size: 12.
@@ -5540,32 +5556,29 @@ script_mod! {
                                                             }
                                             View{
                                                 width: Fill height: Fit
-                                                flow: Down spacing: 4
-                                                View{
-                                                    width: Fill height: Fit
-                                                    flow: Right spacing: 6
-                                                    align: Align{y: 0.5}
-                                                    lock_brand_title := WrapLabel{
-                                                        width: Fit
-                                                        body: "Your shop"
-                                                        font_color: #x69090C
-                                                        font_size: 18.
-                                                    }
-                                                    lock_brand_server_id := WrapLabel{
-                                                        width: Fit
-                                                        body: ""
-                                                        font_color: #x6B4A3F
-                                                        font_size: 11.
-                                                        visible: false
-                                                    }
+                                                flow: Down spacing: 2
+                                                lock_brand_title := WrapLabel{
+                                                    width: Fill
+                                                    body: "Your shop"
+                                                    font_color: #x69090C
+                                                    font_size: 18.
+                                                }
+                                                lock_brand_server_id := WrapLabel{
+                                                    width: Fill
+                                                    body: ""
+                                                    font_color: #x6B4A3F
+                                                    font_size: 11.
+                                                    visible: false
                                                 }
                                                 h_counter_locked := WrapLabel{
+                                                    width: Fill
                                                     body: "Counter 01 · Locked"
                                                     font_color: #x6B4A3F
                                                     font_size: 12.
                                                 }
                                             }
                                             h_shop := Label{
+                                                width: Fit
                                                 text: "Shop"
                                                 draw_text.color: #xB43A12
                                                 draw_text.text_style.font_size: 10.
@@ -5643,17 +5656,20 @@ script_mod! {
                                         draw_bg.border_radius: 12.
                                         draw_bg.border_size: 1.
                                         draw_bg.border_color: #xEFD2BC
-                                        // Phone: smaller type so the line fits
-                                        // (20pt Fill-wrap stacked PASSCOD/E). Tip-only ℹ.
+                                        // DEV InfoHelp tip-row: Fit caption + tip-only
+                                        // InfoHelp (draw_walk → Fit). Never Fill caption
+                                        // — that parks ℹ at the far edge / crops it.
+                                        // 12pt + short PIN copy: one line on 375 (15pt
+                                        // "PASSCODE" overflowed and clipped ℹ).
                                         View{
                                             width: Fill height: Fit
                                             flow: Right spacing: 0
                                             align: Align{y: 0.5}
                                             pin_prompt := WrapLabel{
                                                 width: Fit
-                                                body: "ENTER OWNER PASSCODE"
+                                                body: "ENTER OWNER PIN"
                                                 font_color: #x260B08
-                                                font_size: 15.
+                                                font_size: 12.
                                                 selectable: false
                                             }
                                             pin_help := InfoHelp{
@@ -5672,23 +5688,26 @@ script_mod! {
                                             pin_reveal := EyeIconBtn{}
                                         }
                                         pin_ok := StackPrimaryBtn{text: "Unlock"}
+                                        // Fill — Fit cropped "Too many wrong PINs — …".
                                         pin_status := WrapLabel{
-                                            width: Fit
+                                            width: Fill
                                             body: " "
                                             font_color: #xB43A12
                                             font_size: 12.
                                         }
                                     }
 
+                                    // Same tip-row contract as pin_prompt (Fit + tip-only).
                                     View{
                                         width: Fill height: Fit
                                         flow: Right spacing: 0
                                         align: Align{y: 0.5}
                                         lock_login_title := WrapLabel{
-                                            width: Fill
+                                            width: Fit
                                             body: "Or unlock with login"
                                             font_color: #x260B08
-                                            font_size: 14.
+                                            font_size: 12.
+                                            selectable: false
                                         }
                                         lock_login_help := InfoHelp{
                                             tip: "Optional: unlock with login id and password instead of PIN."
@@ -8768,28 +8787,50 @@ script_mod! {
                                                 tip: "Which chips appear on Take payment. Cash always stays. Rajdhani App Template starts with Cash only — turn UPI / Card / Credit / Split back on here."
                                             }
                                         }
-                                        View{
-                                            width: Fill height: Fit
-                                            flow: Right spacing: 4
-                                            View{width: Fill height: Fit flow: Overlay
-                                                pay_m_cash := SegBtn{text: "Cash"}
-                                                pay_m_cash_on := SegBtnOn{text: "Cash" visible: false}
+                                        // Five chips > phone width — scroll, don't
+                                        // squash. FormScrollX adds top/bottom gap.
+                                        pay_m_scroll := FormScrollX{
+                                            scroll_bars: mod.widgets.ScrollBars {
+                                                show_scroll_x: true show_scroll_y: false
+                                                scroll_bar_x: mod.widgets.ScrollBar{
+                                                    drag_scrolling: true
+                                                    mouse_capture_overload: true
+                                                    axis_lock: true
+                                                    bounce_at_start: false
+                                                    bounce_at_end: false
+                                                    bar_size: 6.
+                                                    min_handle_size: 24.
+                                                    draw_bg +: {
+                                                        size: 4. border_radius: 2.
+                                                        color: #xC9AFA2
+                                                        color_hover: #x9A0E10
+                                                        color_drag: #x69090C
+                                                    }
+                                                }
                                             }
-                                            View{width: Fill height: Fit flow: Overlay
-                                                pay_m_upi := SegBtn{text: "UPI"}
-                                                pay_m_upi_on := SegBtnOn{text: "UPI" visible: false}
-                                            }
-                                            View{width: Fill height: Fit flow: Overlay
-                                                pay_m_card := SegBtn{text: "Card"}
-                                                pay_m_card_on := SegBtnOn{text: "Card" visible: false}
-                                            }
-                                            View{width: Fill height: Fit flow: Overlay
-                                                pay_m_credit := SegBtn{text: "Credit"}
-                                                pay_m_credit_on := SegBtnOn{text: "Credit" visible: false}
-                                            }
-                                            View{width: Fill height: Fit flow: Overlay
-                                                pay_m_split := SegBtn{text: "Split"}
-                                                pay_m_split_on := SegBtnOn{text: "Split" visible: false}
+                                            pay_m_strip := View{
+                                                width: Fit height: Fit
+                                                flow: Right spacing: 4
+                                                View{width: Fixed(108.) height: Fit flow: Overlay
+                                                    pay_m_cash := SegBtn{text: "Cash"}
+                                                    pay_m_cash_on := SegBtnOn{text: "Cash" visible: false}
+                                                }
+                                                View{width: Fixed(108.) height: Fit flow: Overlay
+                                                    pay_m_upi := SegBtn{text: "UPI"}
+                                                    pay_m_upi_on := SegBtnOn{text: "UPI" visible: false}
+                                                }
+                                                View{width: Fixed(108.) height: Fit flow: Overlay
+                                                    pay_m_card := SegBtn{text: "Card"}
+                                                    pay_m_card_on := SegBtnOn{text: "Card" visible: false}
+                                                }
+                                                View{width: Fixed(108.) height: Fit flow: Overlay
+                                                    pay_m_credit := SegBtn{text: "Credit"}
+                                                    pay_m_credit_on := SegBtnOn{text: "Credit" visible: false}
+                                                }
+                                                View{width: Fixed(108.) height: Fit flow: Overlay
+                                                    pay_m_split := SegBtn{text: "Split"}
+                                                    pay_m_split_on := SegBtnOn{text: "Split" visible: false}
+                                                }
                                             }
                                         }
                                     }
@@ -8802,7 +8843,9 @@ script_mod! {
                                     }
                                     datetime_appearance_help := WrapLabel{
                                         width: Fill
-                                        body: "Books keep year-first RFC3339 inside. These only change how dates and clocks look on bills, KOT, reports, and the screen."
+                                        // `\n\n` = soft paragraph (DEV §18); paint
+                                        // overwrites from locale with the same break.
+                                        body: "Books keep year-first RFC3339 inside.\n\nThese only change how dates and clocks look on bills, KOT, reports, and the screen."
                                         font_color: #x6B4A3F
                                         font_size: 12.
                                     }

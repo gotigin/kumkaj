@@ -1327,3 +1327,8 @@ recent_changes	Viimeisimmät muutokset
 lane_declared_label	Verolasku
 lane_owner_label	Käteiskuitti
 money_lane_bill	Lasku: {lane}
+
+removing	Removing…
+removed	Removed
+updating_order	Updating…
+order_updated	Order updated

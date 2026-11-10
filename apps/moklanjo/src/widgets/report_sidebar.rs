@@ -518,6 +518,9 @@ impl Widget for SidebarNavList {
                     }
                     item.label(cx, ids!(always_label)).set_visible(cx, always);
                     item.label(cx, ids!(always_label)).set_text(cx, &always_lbl);
+                    item.button(cx, ids!(move_up)).set_visible(cx, item_id > 0);
+                    item.button(cx, ids!(move_down))
+                        .set_visible(cx, item_id + 1 < n);
                     item.draw_all_unscoped(cx);
                 }
                 if n > 0 {
@@ -539,8 +542,7 @@ impl Widget for SidebarNavList {
     }
 
     fn handle_event(&mut self, cx: &mut Cx, event: &Event, scope: &mut Scope) {
-        // Reorder is owned by App::pointer_sidebar_settings_drag (same
-        // ghost chip as the rail). This widget only draws + face taps.
+        // Reorder is ↑↓ on each row (App::handle_sidebar_nav_list_actions).
         if page_owns_scroll(event) {
             return;
         }

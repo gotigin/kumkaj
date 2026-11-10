@@ -1035,106 +1035,6 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
         }
     }
 
-    /// Which nav slot (position) of a surface is under `pos`, if any.
-    /// Which slot (if any) is under `pos`. `pad` grows the drawn face a
-    /// few px — used for drop targeting, where landing in the hairline
-    /// gap between two items should still count. Drag *pickup* passes
-    /// 0: the bars keep whitespace lanes around the items for
-    /// scrolling, and a padded pickup area would eat the lane.
-    fn nav_slot_at(
-        &mut self,
-        cx: &mut Cx,
-        rail: bool,
-        pos: DVec2,
-        pad_x: f64,
-        pad_y: f64,
-    ) -> Option<usize> {
-        let pairs = if rail {
-            self.rail_nav_pairs()
-        } else {
-            self.bottom_nav_pairs()
-        };
-        for (slot, (idle, on)) in pairs.iter().enumerate() {
-            for face in [idle, on] {
-                let rect = self.ui.button(cx, face).area().rect(cx);
-                let hit = rect.size.x > 0.0
-                    && rect.size.y > 0.0
-                    && pos.x >= rect.pos.x - pad_x
-                    && pos.x <= rect.pos.x + rect.size.x + pad_x
-                    && pos.y >= rect.pos.y - pad_y
-                    && pos.y <= rect.pos.y + rect.size.y + pad_y;
-                if hit {
-                    return Some(slot);
-                }
-            }
-        }
-        None
-    }
-
-    /// Drop target during a drag: which slot is under the window
-    /// pointer, computed from the drag's frozen content rects and the
-    /// bar's live scroll offset (widget areas lag during auto-scroll,
-    /// so they cannot be trusted here). Held past the first/last item
-    /// — e.g. against the bar's edge while it auto-scrolls — the
-    /// nearest end item is the target.
-    fn nav_drop_slot(&mut self, cx: &mut Cx, drag: &NavDrag, pos: DVec2) -> Option<usize> {
-        let scroll = if drag.rail {
-            self.ui.view(cx, ids!(rail_scroll)).get_scroll_pos()
-        } else {
-            self.ui.view(cx, ids!(bottom_nav_scroll)).get_scroll_pos()
-        };
-        let pos = DVec2 {
-            x: pos.x + scroll.x,
-            y: pos.y + scroll.y,
-        };
-        let mut first_rect: Option<Rect> = None;
-        let mut last_rect: Option<Rect> = None;
-        for (slot, rect) in drag.rects.iter().enumerate() {
-            if rect.size.x <= 0.0 || rect.size.y <= 0.0 {
-                continue;
-            }
-            if first_rect.is_none() {
-                first_rect = Some(*rect);
-            }
-            last_rect = Some(*rect);
-            let hit = pos.x >= rect.pos.x - 2.0
-                && pos.x <= rect.pos.x + rect.size.x + 2.0
-                && pos.y >= rect.pos.y - 5.0
-                && pos.y <= rect.pos.y + rect.size.y + 5.0;
-            if hit {
-                return Some(slot);
-            }
-        }
-        if let (Some(first), Some(last)) = (first_rect, last_rect) {
-            let last_slot = drag.rects.len() - 1;
-            if drag.rail {
-                let in_band = pos.x >= first.pos.x - 28.0
-                    && pos.x <= first.pos.x + first.size.x + 28.0;
-                if in_band && pos.y >= last.pos.y + last.size.y {
-                    return Some(last_slot);
-                }
-                if in_band && pos.y <= first.pos.y {
-                    return Some(0);
-                }
-            } else {
-                let in_band = pos.y >= first.pos.y - 28.0
-                    && pos.y <= first.pos.y + first.size.y + 28.0;
-                if in_band && pos.x >= last.pos.x + last.size.x {
-                    return Some(last_slot);
-                }
-                if in_band && pos.x <= first.pos.x {
-                    return Some(0);
-                }
-            }
-        }
-        None
-    }
-
-    fn repaint_nav_tabs(&mut self, cx: &mut Cx) {
-        let screen = app_state().lock().unwrap().screen;
-        self.paint_nav_tabs(cx, screen);
-    }
-
     /// Books home accordion bodies + header chevrons from `books_sections_open`.
     /// Skips visibility/height while a section is mid-animation.
     /// Waiters / no-Sales sessions never see money sections (same as today bar).
@@ -1680,9 +1580,30 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
         let list = widget.portal_list(cx, ids!(list));
         let order_len = app_state().lock().unwrap().nav_order.len();
         let mut changed_vis = false;
+        let mut changed_order = false;
         for (item_id, item) in list.items_with_actions(actions) {
             if item_id >= order_len {
                 continue;
+            }
+            let up = item.button(cx, ids!(move_up)).clicked(actions);
+            let down = item.button(cx, ids!(move_down)).clicked(actions);
+            if up || down {
+                let mut st = app_state().lock().unwrap();
+                let target = if up {
+                    item_id.checked_sub(1)
+                } else if item_id + 1 < st.nav_order.len() {
+                    Some(item_id + 1)
+                } else {
+                    None
+                };
+                if let Some(target) = target {
+                    st.nav_order.swap(item_id, target);
+                    if let Some(store) = st.store.as_ref() {
+                        let _ = store.set_nav_order_csv(&nav_order_csv(&st.nav_order));
+                    }
+                    changed_order = true;
+                }
+                break;
             }
             if !item.button(cx, ids!(toggle_hit)).clicked(actions) {
                 continue;
@@ -1703,7 +1624,11 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
             changed_vis = true;
             break;
         }
-        if changed_vis {
+        if changed_order {
+            let msg = app_state().lock().unwrap().t("sidebar_order_saved");
+            self.set_status(cx, msg);
+            self.sync_chrome(cx);
+        } else if changed_vis {
             let msg = app_state().lock().unwrap().t("sidebar_visibility_saved");
             self.set_status(cx, msg);
             self.sync_chrome(cx);
@@ -1733,75 +1658,12 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
         self.sync_chrome(cx);
     }
 
-    /// Display label a nav slot wears for `tab` (same strings as the
-    /// chrome paint in paint_chrome).
-    fn nav_tab_label(&self, tab: NavTab) -> String {
-        let lang = app_state().lock().unwrap().locale.language.clone();
-        let s = |key: &str| locale::t(&lang, key);
-        match tab {
-            NavTab::Books => s("books"),
-            NavTab::Sell => s("sell"),
-            NavTab::Buy => s("buy"),
-            NavTab::Menu => s("nav_items"),
-            NavTab::Floor => s("floor"),
-            NavTab::Kitchen => s("kitchen"),
-            NavTab::Sales => s("sales"),
-            NavTab::DayClose => s("day_close"),
-            NavTab::Reports => s("nav_reports"),
-            NavTab::Inventory => s("inventory"),
-            NavTab::Branches => s("branches"),
-            NavTab::Credit => s("credit"),
-            NavTab::Team => s("team"),
-            NavTab::Settings => s("nav_settings"),
-            NavTab::Lock => s("nav_lock"),
-        }
-    }
-
-    /// Rect of the face currently drawn for `slot` (idle or active).
-    fn nav_slot_rect(&mut self, cx: &mut Cx, rail: bool, slot: usize) -> Option<Rect> {
-        let pairs = if rail {
-            self.rail_nav_pairs()
-        } else {
-            self.bottom_nav_pairs()
-        };
-        let (idle, on) = pairs[slot];
-        for face in [idle, on] {
-            let rect = self.ui.button(cx, face).area().rect(cx);
-            if rect.size.x > 0.0 && rect.size.y > 0.0 {
-                return Some(Rect {
-                    pos: DVec2 {
-                        x: rect.pos.x,
-                        y: rect.pos.y,
-                    },
-                    size: rect.size,
-                });
-            }
-        }
-        None
-    }
-
     fn place_nav_ghost(&mut self, cx: &mut Cx, pos: DVec2) {
         let ghost = self.ui.widget(cx, ids!(nav_drag_ghost));
         if let Some(mut view) = ghost.borrow_mut::<View>() {
             view.walk.abs_pos = Some(pos);
         }
         ghost.redraw(cx);
-    }
-
-    fn show_nav_ghost(&mut self, cx: &mut Cx, tab: NavTab, pos: DVec2) {
-        let label = nav_tab_caption(tab, &self.nav_tab_label(tab));
-        self.ui
-            .widget(cx, ids!(nav_drag_ghost_label))
-            .set_text(cx, &label);
-        let icon = self.ui.image(cx, ids!(nav_drag_ghost_icon));
-        icon.set_visible(cx, true);
-        load_nav_icon_once(cx, &icon, tab);
-        self.place_nav_ghost(cx, pos);
-        self.ui.view(cx, ids!(nav_drag_ghost)).set_visible(cx, true);
-        // The ghost lives in a Modal so it paints on the overlay draw
-        // list, above every scroll view (rail, page, bottom bar alike).
-        self.ui.modal(cx, ids!(nav_drag_modal)).open(cx);
-        cx.redraw_all();
     }
 
     /// Floor area chip ghost — same modal as nav, label only (no peer icon).
@@ -1823,593 +1685,8 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
         self.ui.view(cx, ids!(nav_drag_ghost)).set_visible(cx, false);
     }
 
-    /// Settings → Sidebar list: same ghost-chip drag as the rail/bottom
-    /// bar. Press on a row, move past the threshold → floating chip with
-    /// icon+name; drop on another row to swap. Tap (no move) still
-    /// toggles show/hide via the face button.
-    /// Settings → Sidebar: drag a row's face to reorder (ghost chip), same
-    /// contract as the rail/bottom bar. Touch and mouse share one path —
-    /// Android only gets `TouchUpdate`.
-
-    fn sidebar_settings_drag_press(&mut self, cx: &mut Cx, abs: DVec2, finger: Option<u64>) {
-                *settings_nav_drag().lock().unwrap() = None;
-                if app_state().lock().unwrap().screen != Screen::SidebarSettings {
-                    return;
-                }
-                // Press on the in-row toggle is a flip, not a reorder.
-                if self.sidebar_settings_press_on_toggle(cx, abs) {
-                    return;
-                }
-                if let Some(slot) = self.sidebar_settings_slot_at(cx, abs) {
-                    *nav_drag().lock().unwrap() = None;
-                    self.hide_nav_ghost(cx);
-                    let origin = self
-                        .sidebar_settings_row_rect(cx, slot)
-                        .map(|rect| rect.pos)
-                        .unwrap_or(abs);
-                    let scroll = self
-                        .ui
-                        .view(cx, ids!(sidebar_settings_screen))
-                        .get_scroll_pos();
-                    let n = app_state().lock().unwrap().nav_order.len();
-                    let mut rects = Vec::with_capacity(n);
-                    for i in 0..n {
-                        let mut found = Rect::default();
-                        if let Some(rect) = self.sidebar_settings_row_rect(cx, i) {
-                            found = Rect {
-                                pos: DVec2 {
-                                    x: rect.pos.x + scroll.x,
-                                    y: rect.pos.y + scroll.y,
-                                },
-                                size: rect.size,
-                            };
-                        }
-                        rects.push(found);
-                    }
-                    *settings_nav_drag().lock().unwrap() = Some(SettingsNavDrag {
-                        slot,
-                        start: abs,
-                        last: abs,
-                        origin,
-                        rects,
-                        active: false,
-                        hover: Some(slot),
-                        finger,
-                    });
-                }
-                // armed; tap still goes to the button
-                
-    }
-
-    fn sidebar_settings_drag_move(&mut self, cx: &mut Cx, abs: DVec2, finger: Option<u64>) -> bool {
-                let mut active = false;
-                let mut ghost: Option<(bool, NavTab, DVec2)> = None;
-                let mut suppress_list = false;
-                {
-                    let mut guard = settings_nav_drag().lock().unwrap();
-                    if let Some(d) = guard.as_mut() {
-                        if d.finger != finger {
-                            return false;
-                        }
-                        let was_active = d.active;
-                        if !d.active && (abs - d.start).length() > 10.0 {
-                            d.active = true;
-                            suppress_list = true;
-                        }
-                        if d.active {
-                            active = true;
-                            d.last = abs;
-                            d.hover = self.sidebar_settings_drop_slot(cx, d, abs);
-                            let tab = {
-                                app_state()
-                                    .lock()
-                                    .unwrap()
-                                    .nav_order
-                                    .get(d.slot)
-                                    .copied()
-                            };
-                            if let Some(tab) = tab {
-                                ghost = Some((!was_active, tab, d.origin + (abs - d.start)));
-                            }
-                        }
-                    }
-                }
-                if suppress_list {
-                    let widget = self.ui.widget(cx, ids!(sidebar_nav_list));
-                    if let Some(mut w) = widget.as_sidebar_nav_list().borrow_mut() {
-                        w.suppress_face_click = true;
-                    }
-                }
-                if active {
-                    cx.set_cursor(MouseCursor::Grabbing);
-                }
-                if let Some((first, tab, pos)) = ghost {
-                    if first {
-                        self.show_nav_ghost(cx, tab, pos);
-                    } else {
-                        self.place_nav_ghost(cx, pos);
-                    }
-                }
-                return active;
-    }
-
-    fn sidebar_settings_drag_release(&mut self, cx: &mut Cx, _abs: DVec2, finger: Option<u64>) -> bool {
-                let taken = {
-                    let mut guard = settings_nav_drag().lock().unwrap();
-                    match guard.as_ref() {
-                        Some(d) if d.finger == finger => guard.take(),
-                        _ => None,
-                    }
-                };
-                if let Some(d) = taken {
-                    self.hide_nav_ghost(cx);
-                    if d.active {
-                        cx.set_cursor(MouseCursor::Default);
-                        let swapped = match d.hover {
-                            Some(target) if target != d.slot => {
-                                let mut st = app_state().lock().unwrap();
-                                if d.slot < st.nav_order.len() && target < st.nav_order.len() {
-                                    st.nav_order.swap(d.slot, target);
-                                    if let Some(store) = st.store.as_ref() {
-                                        let _ =
-                                            store.set_nav_order_csv(&nav_order_csv(&st.nav_order));
-                                    }
-                                    true
-                                } else {
-                                    false
-                                }
-                            }
-                            _ => false,
-                        };
-                        if swapped {
-                            let msg = app_state().lock().unwrap().t("sidebar_order_saved");
-                            self.set_status(cx, msg);
-                            self.sync_chrome(cx);
-                        }
-                        return true;
-                    }
-                }
-                false
-    }
-
-
-    fn nav_drag_press(&mut self, cx: &mut Cx, abs: DVec2, finger: Option<u64>) {
-                *nav_drag().lock().unwrap() = None;
-                *floor_area_drag().lock().unwrap() = None;
-                // Do not clear settings_nav_drag here — that peek runs
-                // first and may have just armed a press on the list.
-                // A fresh press starts a fresh gesture — never let a
-                // leftover scroll-suppression eat this tap.
-                *nav_suppress_click().lock().unwrap() = false;
-                // Only hide the ghost when this press is not already a
-                // settings-list arm (otherwise we'd flash the chip away).
-                if settings_nav_drag().lock().unwrap().is_none() {
-                    self.hide_nav_ghost(cx);
-                }
-                let unlocked = {
-                    let st = app_state().lock().unwrap();
-                    !matches!(
-                        st.screen,
-                        Screen::Lock | Screen::DeviceSetup | Screen::Onboard | Screen::ClientPair
-                    )
-                };
-                if !unlocked {
-                    return;
-                }
-                // Only the visible surface can be dragged (mirrors
-                // apply_shell_layout's rail-vs-bottom choice).
-                let shell_wide =
-                    self.window_inner_width(cx) >= store::TABLET_SHELL_BREAKPOINT_CSS;
-                let rail_collapsed = app_state().lock().unwrap().rail_collapsed;
-                if shell_wide && rail_collapsed {
-                    return;
-                }
-                let rail = shell_wide;
-                // The rail divider owns its own drag (resize) — stay out of it.
-                if rail {
-                    let rail_w = app_state().lock().unwrap().rail_width;
-                    if abs.x >= rail_w - 2.0 && abs.x <= rail_w + 14.0 {
-                        return;
-                    }
-                }
-                if let Some(slot) = self.nav_slot_at(cx, rail, abs, 0.0, 0.0) {
-                    *settings_nav_drag().lock().unwrap() = None;
-                    self.hide_nav_ghost(cx);
-                    let origin = self
-                        .nav_slot_rect(cx, rail, slot)
-                        .map(|rect| rect.pos)
-                        .unwrap_or(abs);
-                    // Freeze every slot's rect in content coordinates
-                    // (drawn rect + scroll right now, while settled);
-                    // drag-time hit tests use these, not live areas.
-                    let scroll = if rail {
-                        self.ui.view(cx, ids!(rail_scroll)).get_scroll_pos()
-                    } else {
-                        self.ui.view(cx, ids!(bottom_nav_scroll)).get_scroll_pos()
-                    };
-                    let pairs = if rail {
-                        self.rail_nav_pairs()
-                    } else {
-                        self.bottom_nav_pairs()
-                    };
-                    let mut rects = Vec::with_capacity(pairs.len());
-                    for (idle, on) in &pairs {
-                        let mut found = Rect::default();
-                        for face in [idle, on] {
-                            let rect = self.ui.button(cx, face).area().rect(cx);
-                            if rect.size.x > 0.0 && rect.size.y > 0.0 {
-                                found = Rect {
-                                    pos: DVec2 {
-                                        x: rect.pos.x + scroll.x,
-                                        y: rect.pos.y + scroll.y,
-                                    },
-                                    size: rect.size,
-                                };
-                                break;
-                            }
-                        }
-                        rects.push(found);
-                    }
-                    *nav_drag().lock().unwrap() = Some(NavDrag {
-                        rail,
-                        slot,
-                        start: abs,
-                        last: abs,
-                        origin,
-                        rects,
-                        active: false,
-                        hover: Some(slot),
-                        finger,
-                    });
-                }
-                // armed; tap still goes to the button
-                
-    }
-
-    fn nav_drag_move(&mut self, cx: &mut Cx, abs: DVec2, finger: Option<u64>) -> bool {
-                let mut repaint = false;
-                let mut active = false;
-                let mut ghost: Option<(bool, NavTab, DVec2)> = None;
-                {
-                    let mut guard = nav_drag().lock().unwrap();
-                    if let Some(d) = guard.as_mut() {
-                        if d.finger != finger {
-                            return false;
-                        }
-                        let was_active = d.active;
-                        if !d.active && (abs - d.start).length() > 10.0 {
-                            d.active = true;
-                        }
-                        if d.active {
-                            active = true;
-                            d.last = abs;
-                            if !was_active {
-                                // Start the per-frame edge auto-scroll
-                                // loop for this drag.
-                                *nav_autoscroll_frame().lock().unwrap() =
-                                    Some(cx.new_next_frame());
-                            }
-                            let hover = self.nav_drop_slot(cx, d, abs);
-                            if hover != d.hover {
-                                d.hover = hover;
-                                repaint = true;
-                            }
-                            // Same order the bar paints (rights-filtered), not
-                            // the full preference list — else the ghost label
-                            // is the wrong peer on a waiter / Android till.
-                            let tab = current_nav_chrome_order().get(d.slot).copied();
-                            if let Some(tab) = tab {
-                                ghost = Some((
-                                    !was_active,
-                                    tab,
-                                    d.origin + (abs - d.start),
-                                ));
-                            }
-                        }
-                    }
-                }
-                if active {
-                    // Drag icon for the whole drag — the button's Hand
-                    // hover cursor would otherwise stay on screen.
-                    cx.set_cursor(MouseCursor::Grabbing);
-                }
-                if let Some((first, tab, pos)) = ghost {
-                    if first {
-                        self.show_nav_ghost(cx, tab, pos);
-                    } else {
-                        self.place_nav_ghost(cx, pos);
-                    }
-                }
-                if repaint {
-                    self.repaint_nav_tabs(cx);
-                }
-                return active;
-    }
-
-    fn nav_drag_release(&mut self, cx: &mut Cx, abs: DVec2, finger: Option<u64>) -> bool {
-                // Take in its own scope: an `if let` scrutinee guard would
-                // stay locked across the block and deadlock the repaint
-                // below (paint_nav_tabs reads the same mutex).
-                let taken = {
-                    let mut guard = nav_drag().lock().unwrap();
-                    match guard.as_ref() {
-                        Some(d) if d.finger == finger => guard.take(),
-                        _ => None,
-                    }
-                };
-                if let Some(mut d) = taken {
-                    self.hide_nav_ghost(cx);
-                    if d.active {
-                        // Touch often ends with Stop and no Move on the drop
-                        // slot — recompute the target from the lift point.
-                        let drop_at = if abs.x != 0.0 || abs.y != 0.0 {
-                            abs
-                        } else {
-                            d.last
-                        };
-                        d.hover = self.nav_drop_slot(cx, &d, drop_at);
-                        // Drag over: back to the nav button's pointer when
-                        // still over a slot, plain arrow anywhere else.
-                        cx.set_cursor(if d.hover.is_some() {
-                            MouseCursor::Hand
-                        } else {
-                            MouseCursor::Default
-                        });
-                        // Slots are chrome indices (what the bar shows), not
-                        // raw preference-order indices — using display order
-                        // here swapped the wrong peers and looked like a
-                        // no-op on Android waiter tills.
-                        let chrome = current_nav_chrome_order();
-                        let swapped = match d.hover {
-                            Some(target) if target != d.slot => {
-                                let Some(ta) = chrome.get(d.slot).copied() else {
-                                    *nav_suppress_click().lock().unwrap() = false;
-                                    self.sync_chrome(cx);
-                                    return true;
-                                };
-                                let Some(tb) = chrome.get(target).copied() else {
-                                    *nav_suppress_click().lock().unwrap() = false;
-                                    self.sync_chrome(cx);
-                                    return true;
-                                };
-                                let mut st = app_state().lock().unwrap();
-                                let Some(ia) = st.nav_order.iter().position(|t| *t == ta) else {
-                                    drop(st);
-                                    *nav_suppress_click().lock().unwrap() = false;
-                                    self.sync_chrome(cx);
-                                    return true;
-                                };
-                                let Some(ib) = st.nav_order.iter().position(|t| *t == tb) else {
-                                    drop(st);
-                                    *nav_suppress_click().lock().unwrap() = false;
-                                    self.sync_chrome(cx);
-                                    return true;
-                                };
-                                st.nav_order.swap(ia, ib);
-                                if let Some(store) = st.store.as_ref() {
-                                    let _ =
-                                        store.set_nav_order_csv(&nav_order_csv(&st.nav_order));
-                                }
-                                true
-                            }
-                            _ => false,
-                        };
-                        if swapped {
-                            self.set_status(cx, "Menu order saved");
-                        }
-                        // The release is consumed, so no Button click is
-                        // generated — nothing to suppress afterwards.
-                        *nav_suppress_click().lock().unwrap() = false;
-                        self.sync_chrome(cx);
-                        return true;
-                    }
-                }
-                false
-    }
-
-    fn pointer_sidebar_settings_drag(&mut self, cx: &mut Cx, event: &Event) -> bool {
-        enum Phase {
-            Press(DVec2, Option<u64>),
-            Move(DVec2, Option<u64>),
-            Release(DVec2, Option<u64>),
-        }
-        let phases: Vec<Phase> = match event {
-            Event::MouseDown(e) if e.button.is_primary() => {
-                vec![Phase::Press(e.abs, None)]
-            }
-            Event::MouseMove(e) => vec![Phase::Move(e.abs, None)],
-            Event::MouseUp(e) if e.button.is_primary() => {
-                vec![Phase::Release(e.abs, None)]
-            }
-            Event::TouchUpdate(e) => {
-                let mut out = Vec::new();
-                for t in &e.touches {
-                    match t.state {
-                        TouchState::Start => out.push(Phase::Press(t.abs, Some(t.uid))),
-                        TouchState::Move | TouchState::Stable => {
-                            out.push(Phase::Move(t.abs, Some(t.uid)))
-                        }
-                        TouchState::Stop => out.push(Phase::Release(t.abs, Some(t.uid))),
-                    }
-                }
-                out
-            }
-            _ => return false,
-        };
-        let mut consumed = false;
-        for phase in phases {
-            match phase {
-                Phase::Press(abs, finger) => {
-                    self.sidebar_settings_drag_press(cx, abs, finger);
-                }
-                Phase::Move(abs, finger) => {
-                    if self.sidebar_settings_drag_move(cx, abs, finger) {
-                        consumed = true;
-                    }
-                }
-                Phase::Release(abs, finger) => {
-                    if self.sidebar_settings_drag_release(cx, abs, finger) {
-                        consumed = true;
-                    }
-                }
-            }
-        }
-        consumed
-    }
-
-
-    fn sidebar_settings_row_rect(&mut self, cx: &mut Cx, index: usize) -> Option<Rect> {
-        let list = self
-            .ui
-            .widget(cx, ids!(sidebar_nav_list))
-            .portal_list(cx, ids!(list));
-        let item = list.item(cx, index, id!(Item));
-        let rect = item.button(cx, ids!(face)).area().rect(cx);
-        if rect.size.x > 0.0 && rect.size.y > 0.0 {
-            Some(rect)
-        } else {
-            None
-        }
-    }
-
-    fn sidebar_settings_press_on_toggle(&mut self, cx: &mut Cx, abs: DVec2) -> bool {
-        let list = self
-            .ui
-            .widget(cx, ids!(sidebar_nav_list))
-            .portal_list(cx, ids!(list));
-        let n = app_state().lock().unwrap().nav_order.len();
-        for i in 0..n {
-            let item = list.item(cx, i, id!(Item));
-            let rect = item.button(cx, ids!(toggle_hit)).area().rect(cx);
-            if rect.size.x > 0.0 && rect.size.y > 0.0 && rect.contains(abs) {
-                return true;
-            }
-        }
-        false
-    }
-
-    fn sidebar_settings_slot_at(&mut self, cx: &mut Cx, abs: DVec2) -> Option<usize> {
-        let n = app_state().lock().unwrap().nav_order.len();
-        for i in 0..n {
-            if let Some(rect) = self.sidebar_settings_row_rect(cx, i) {
-                if rect.contains(abs) {
-                    return Some(i);
-                }
-            }
-        }
-        None
-    }
-
-    fn sidebar_settings_drop_slot(
-        &mut self,
-        cx: &mut Cx,
-        drag: &SettingsNavDrag,
-        pos: DVec2,
-    ) -> Option<usize> {
-        let scroll = self
-            .ui
-            .view(cx, ids!(sidebar_settings_screen))
-            .get_scroll_pos();
-        let pos = DVec2 {
-            x: pos.x + scroll.x,
-            y: pos.y + scroll.y,
-        };
-        let mut first_rect: Option<Rect> = None;
-        let mut last_rect: Option<Rect> = None;
-        for (slot, rect) in drag.rects.iter().enumerate() {
-            if rect.size.x <= 0.0 || rect.size.y <= 0.0 {
-                continue;
-            }
-            if first_rect.is_none() {
-                first_rect = Some(*rect);
-            }
-            last_rect = Some(*rect);
-            let hit = pos.x >= rect.pos.x - 2.0
-                && pos.x <= rect.pos.x + rect.size.x + 2.0
-                && pos.y >= rect.pos.y - 5.0
-                && pos.y <= rect.pos.y + rect.size.y + 5.0;
-            if hit {
-                return Some(slot);
-            }
-        }
-        if let (Some(first), Some(last)) = (first_rect, last_rect) {
-            let last_slot = drag.rects.len() - 1;
-            let in_band = pos.x >= first.pos.x - 28.0 && pos.x <= first.pos.x + first.size.x + 28.0;
-            if in_band && pos.y >= last.pos.y + last.size.y {
-                return Some(last_slot);
-            }
-            if in_band && pos.y <= first.pos.y {
-                return Some(0);
-            }
-        }
-        None
-    }
-
-    /// Drag a sidebar / bottom-bar item onto another one to swap them.
-    /// Scroll and drag are separated spatially, not by timing: the bars
-    /// keep whitespace lanes around the items (padding and gaps inside
-    /// the scroll view), so a press on whitespace belongs to the scroll
-    /// view and never reaches this peek — it starts only when the press
-    /// lands on an item. From an item, a plain click navigates and any
-    /// real movement picks the item up; from then on the drag owns the
-    /// gesture so the scroll view cannot scroll the drop target away
-    /// mid-drag. The new arrangement is saved into the books, so it
-    /// survives reinstall.
-    /// Works for mouse (desktop) and touch (Android): phones only get
-    /// `TouchUpdate`, so the same press/move/release path runs for both.
-    /// Returns true when the event was consumed by the drag.
-    fn pointer_nav_drag(&mut self, cx: &mut Cx, event: &Event) -> bool {
-        enum Phase {
-            Press(DVec2, Option<u64>),
-            Move(DVec2, Option<u64>),
-            Release(DVec2, Option<u64>),
-        }
-        let phases: Vec<Phase> = match event {
-            Event::MouseDown(e) if e.button.is_primary() => {
-                vec![Phase::Press(e.abs, None)]
-            }
-            Event::MouseMove(e) => vec![Phase::Move(e.abs, None)],
-            Event::MouseUp(e) if e.button.is_primary() => {
-                vec![Phase::Release(e.abs, None)]
-            }
-            Event::TouchUpdate(e) => {
-                let mut out = Vec::new();
-                for t in &e.touches {
-                    match t.state {
-                        TouchState::Start => out.push(Phase::Press(t.abs, Some(t.uid))),
-                        TouchState::Move | TouchState::Stable => {
-                            out.push(Phase::Move(t.abs, Some(t.uid)))
-                        }
-                        TouchState::Stop => out.push(Phase::Release(t.abs, Some(t.uid))),
-                    }
-                }
-                out
-            }
-            _ => return false,
-        };
-        let mut consumed = false;
-        for phase in phases {
-            match phase {
-                Phase::Press(abs, finger) => {
-                    self.nav_drag_press(cx, abs, finger);
-                }
-                Phase::Move(abs, finger) => {
-                    if self.nav_drag_move(cx, abs, finger) {
-                        consumed = true;
-                    }
-                }
-                Phase::Release(abs, finger) => {
-                    if self.nav_drag_release(cx, abs, finger) {
-                        consumed = true;
-                    }
-                }
-            }
-        }
-        consumed
-    }
-
     /// Slot under the pointer on the Floor area ChipStrip (exact hit, pad 0 —
-    /// same rule as nav: padding would turn lane swipes into swaps).
+    /// padding would turn lane swipes into swaps).
     fn floor_area_slot_at(&mut self, cx: &mut Cx, abs: DVec2) -> Option<usize> {
         let n = self.floor_area_tab_names().len().min(FLOOR_AREA_CHIPS.len());
         for (i, (idle, on)) in FLOOR_AREA_CHIPS.iter().enumerate().take(n) {
@@ -2477,8 +1754,6 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
             return;
         }
         if let Some(slot) = self.floor_area_slot_at(cx, abs) {
-            *nav_drag().lock().unwrap() = None;
-            *settings_nav_drag().lock().unwrap() = None;
             self.hide_nav_ghost(cx);
             let scroll = self
                 .ui
@@ -2625,7 +1900,6 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
     }
 
     /// Floor area tabs: tap selects; press + move swaps (persists order).
-    /// Same mouse/touch path as [`pointer_nav_drag`].
     fn pointer_floor_area_drag(&mut self, cx: &mut Cx, event: &Event) -> bool {
         enum Phase {
             Press(DVec2, Option<u64>),

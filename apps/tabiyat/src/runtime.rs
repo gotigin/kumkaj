@@ -917,41 +917,8 @@ fn rail_resize_drag() -> &'static Mutex<Option<f64>> {
     DRAG.get_or_init(|| Mutex::new(None))
 }
 
-/// In-progress sidebar / bottom-bar drag-to-swap (peeked at App level,
-/// same style as the rail resize drag). `rail` picks the surface, `slot`
-/// is the position the drag started from, `hover` the position under the
-/// pointer right now (drop target).
-#[derive(Clone)]
-struct NavDrag {
-    rail: bool,
-    slot: usize,
-    start: DVec2,
-    /// Latest pointer pos while dragging; edge auto-scroll reads it
-    /// on frames where the pointer itself is standing still.
-    last: DVec2,
-    /// Window pos of the grabbed item's face when the drag began; the
-    /// floating ghost chip tracks `origin + (pointer - start)`.
-    origin: DVec2,
-    /// Every slot's face rect in the bar's *content* coordinates,
-    /// captured at pickup. Widget areas are only trustworthy while
-    /// the layout is settled — during edge auto-scroll they lag the
-    /// scrolling content — so drag-time hit tests use these frozen
-    /// rects plus the live scroll offset instead.
-    rects: Vec<Rect>,
-    active: bool,
-    hover: Option<usize>,
-    /// Touch finger that owns this drag (`None` = mouse / desktop).
-    /// Android only sends `TouchUpdate`, so without this the drag never arms.
-    finger: Option<u64>,
-}
-
-fn nav_drag() -> &'static Mutex<Option<NavDrag>> {
-    static DRAG: OnceLock<Mutex<Option<NavDrag>>> = OnceLock::new();
-    DRAG.get_or_init(|| Mutex::new(None))
-}
-
-/// Floor area ChipStrip drag-to-swap (same contract as [`NavDrag`]:
-/// tap selects; press + move swaps and persists `ui_floor_area_order`).
+/// Floor area ChipStrip drag-to-swap: tap selects; press + move swaps and
+/// persists `ui_floor_area_order`.
 #[derive(Clone)]
 struct FloorAreaDrag {
     slot: usize,
@@ -974,37 +941,10 @@ fn floor_area_autoscroll_frame() -> &'static Mutex<Option<NextFrame>> {
     FRAME.get_or_init(|| Mutex::new(None))
 }
 
-/// Settings → Sidebar list drag-reordered; App syncs chrome when taken.
+/// Settings → Sidebar list reordered (↑↓); App syncs chrome when taken.
 fn sidebar_order_dirty() -> &'static Mutex<bool> {
     static FLAG: OnceLock<Mutex<bool>> = OnceLock::new();
     FLAG.get_or_init(|| Mutex::new(false))
-}
-
-/// Settings → Sidebar list: same ghost-chip drag as the rail/bottom bar
-/// (`pointer_sidebar_settings_drag`), not an in-list swap.
-#[derive(Clone)]
-struct SettingsNavDrag {
-    slot: usize,
-    start: DVec2,
-    last: DVec2,
-    origin: DVec2,
-    rects: Vec<Rect>,
-    active: bool,
-    hover: Option<usize>,
-    /// Touch finger that owns this drag (`None` = mouse / desktop).
-    finger: Option<u64>,
-}
-
-fn settings_nav_drag() -> &'static Mutex<Option<SettingsNavDrag>> {
-    static DRAG: OnceLock<Mutex<Option<SettingsNavDrag>>> = OnceLock::new();
-    DRAG.get_or_init(|| Mutex::new(None))
-}
-
-/// Pending frame callback that keeps edge auto-scroll alive while a
-/// nav drag is held against the bar's edge (see `nav_drag_autoscroll`).
-fn nav_autoscroll_frame() -> &'static Mutex<Option<NextFrame>> {
-    static FRAME: OnceLock<Mutex<Option<NextFrame>>> = OnceLock::new();
-    FRAME.get_or_init(|| Mutex::new(None))
 }
 
 /// Font Awesome solid (`WorldFonts` icons member): chevron-right / chevron-down.

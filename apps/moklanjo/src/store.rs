@@ -128,6 +128,21 @@ impl Store {
     }
 
     pub fn open_path(path: &Path) -> Result<Self, String> {
+        let conn = Self::open_connection(path)?;
+        Self::finish_open(path, conn)
+    }
+
+    /// Cancel-friendly open for DeviceSetup on Android (SQLite interrupt).
+    pub fn open_path_cancellable(
+        path: &Path,
+        register_interrupt: impl FnOnce(rusqlite::InterruptHandle),
+    ) -> Result<Self, String> {
+        let conn = Self::open_connection(path)?;
+        register_interrupt(conn.get_interrupt_handle());
+        Self::finish_open(path, conn)
+    }
+
+    fn open_connection(path: &Path) -> Result<Connection, String> {
         let mut conn = Connection::open(path).map_err(|e| e.to_string())?;
         // Take the write lock when a transaction begins, so it waits out
         // another writer (busy_timeout) instead of failing midway in WAL.
@@ -142,6 +157,10 @@ impl Store {
              PRAGMA foreign_keys=ON;",
         )
         .map_err(|e| e.to_string())?;
+        Ok(conn)
+    }
+
+    fn finish_open(path: &Path, conn: Connection) -> Result<Self, String> {
         let mut store = Self {
             conn,
             path: path.to_path_buf(),

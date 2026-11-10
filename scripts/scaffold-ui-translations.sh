@@ -40,29 +40,32 @@ table_code() {
 
 # Emit KEY<TAB>VALUE for every en() arm (gawk; handles \" \\ \n \t).
 en_pairs() {
+  # Emit KEY<TAB>VALUE. Keep \n/\t as two-char escapes so each en() arm is
+  # one TSV row (real newlines would split rows and wipe packs on rewrite).
+  # Do not use (?:...) — this gawk rejects non-capturing groups and then
+  # emits 0 rows; --standin-english would rewrite every pack empty.
   gawk '
-    function unescape(s,   out, i, c, n) {
-      out = ""
-      n = length(s)
-      for (i = 1; i <= n; i++) {
-        c = substr(s, i, 1)
-        if (c == "\\" && i < n) {
-          i++
-          c = substr(s, i, 1)
-          if (c == "n") out = out "\n"
-          else if (c == "t") out = out "\t"
-          else if (c == "\"") out = out "\""
-          else if (c == "\\") out = out "\\"
-          else out = out c
-        } else out = out c
-      }
-      return out
-    }
     /fn en\(key: &str\) -> String \{/ { in_en=1; next }
     in_en && /_ => key,/ { exit }
     in_en {
-      if (match($0, /^[[:space:]]*"([^"]+)"[[:space:]]*=>[[:space:]]*"((?:\\.|[^"\\])*)"/, m)) {
-        print m[1] "\t" unescape(m[2])
+      if (match($0, /^[[:space:]]*"([^"]+)"[[:space:]]*=>[[:space:]]*"/, m)) {
+        rest = substr($0, RSTART + RLENGTH)
+        val = ""
+        for (i = 1; i <= length(rest); i++) {
+          c = substr(rest, i, 1)
+          if (c == "\\" && i < length(rest)) {
+            i++
+            nxt = substr(rest, i, 1)
+            if (nxt == "\"") val = val "\""
+            else if (nxt == "\\") val = val "\\"
+            else val = val "\\" nxt
+          } else if (c == "\"") {
+            break
+          } else {
+            val = val c
+          }
+        }
+        print m[1] "\t" val
       }
     }
   ' "$1"
@@ -105,6 +108,14 @@ scaffold_app() {
   local codes=()
   mapfile -t codes < <(needed_tables "$locale")
   echo "== $app: $n_en en keys, ${#codes[@]} packs =="
+  # Refuse to rewrite packs when en() scan failed — a 0-key pass used to
+  # truncate every translations/*.tsv to a header-only file.
+  if [[ "$n_en" -lt 100 ]]; then
+    echo "ERROR: en() scan found only $n_en keys in $locale — aborting (packs untouched)." >&2
+    rm -f "$en_file" "$keys_file"
+    echo "$n_en"
+    return 1
+  fi
 
   local gaps=0
   for code in "${codes[@]}"; do
@@ -178,7 +189,10 @@ fi
 
 total=0
 for app in "${apps[@]}"; do
-  out="$(scaffold_app "$app")"
+  if ! out="$(scaffold_app "$app")"; then
+    printf '%s\n' "$out" >&2
+    exit 1
+  fi
   printf '%s\n' "$out"
   g="$(printf '%s\n' "$out" | tail -n1)"
   total=$((total + g))

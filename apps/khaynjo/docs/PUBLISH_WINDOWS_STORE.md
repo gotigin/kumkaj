@@ -10,6 +10,12 @@ Compat: [`DATA_COMPAT.md`](DATA_COMPAT.md). Release index: [`RELEASE_1_0_0.md`](
 
 ## Prerequisites
 
+- **Product cert green** before upload (launch / sidebar / package asserts):
+
+```bash
+./scripts/product-cert.sh --tier=store khaynjo
+```
+
 - Partner Center account; app reserved; Identity Name + **Publisher CN** copied from **Product Identity** (must match the MSIX and the signing cert)
 - Store association / signing `.pfx` from Partner Center
 - Workspace able to cross-build Windows (see root [`docs/DEV.md`](../../../docs/DEV.md) § Windows) — MSIX pack runs from Linux; **signing** is usually on Windows with `signtool`

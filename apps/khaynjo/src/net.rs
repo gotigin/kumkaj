@@ -222,6 +222,53 @@ pub enum RunningAction {
     },
 }
 
+/// Light till writes that already live in the open cart. Full `reload_all` +
+/// `load_table_cart` after these froze −/+ for seconds (UI looked dead, then
+/// jumped). Callers bump the cart locally and refresh floor lists only.
+pub fn running_action_skips_full_reload(action: &RunningAction) -> bool {
+    matches!(
+        action,
+        RunningAction::SetLinePricing { .. }
+            | RunningAction::SetLineStation { .. }
+            | RunningAction::BumpPending { .. }
+            | RunningAction::HoldLine { .. }
+    )
+}
+
+#[cfg(test)]
+mod running_action_reload_tests {
+    use super::*;
+
+    #[test]
+    fn qty_hold_and_pricing_skip_full_reload() {
+        assert!(running_action_skips_full_reload(&RunningAction::BumpPending {
+            table_id: "t".into(),
+            product_id: "p".into(),
+            delta_milli: -1000,
+            area: String::new(),
+        }));
+        assert!(running_action_skips_full_reload(&RunningAction::HoldLine {
+            line_id: "l".into(),
+            held: true,
+        }));
+        assert!(running_action_skips_full_reload(&RunningAction::SetLinePricing {
+            line_id: "l".into(),
+            unit_price_paise: 1,
+            line_total_paise: -1,
+        }));
+        assert!(running_action_skips_full_reload(&RunningAction::SetLineStation {
+            line_id: "l".into(),
+            station_id: String::new(),
+        }));
+        assert!(!running_action_skips_full_reload(&RunningAction::Cancel {
+            line_id: "l".into(),
+            qty_milli: Some(1000),
+            reason: "x".into(),
+            prepared: false,
+        }));
+    }
+}
+
 #[derive(Clone, Debug, Serialize, Deserialize)]
 pub struct RemoteRunningRequest {
     #[serde(default)]
@@ -3580,13 +3627,20 @@ mod tests {
     /// printed after the books committed it, and no paper complaint.
     #[test]
     fn a_tablets_cancel_prints_its_slip_once_the_books_have_it() {
+        let (path, store, guard) = lan_shop();
+        // Named station + route: empty "Kitchen (no station)" never prints
+        // once the shop has kitchens.
+        let hot = store.add_station("Hot").unwrap();
         let mut printers = crate::print_share::DevicePrinters::default();
         let kitchen = printers.add_printer("Kitchen", "192.168.1.50");
-        *printers.route_mut(crate::print_share::RouteKey::Kot { station_id: "" }) = vec![kitchen];
+        *printers.route_mut(crate::print_share::RouteKey::Kot {
+            station_id: &hot.id,
+        }) = vec![kitchen];
         crate::print_share::with_test_printers(printers, || {
-            let (path, store, guard) = lan_shop();
             let (device, session) = paired_phone(&path, &store, &guard, "Wasim", "2222");
-            let thali = store.list_products(false).unwrap().remove(0);
+            let mut thali = store.list_products(false).unwrap().remove(0);
+            thali.station_id = hot.id.clone();
+            store.upsert_product(&thali).unwrap();
             let mut cart = Cart::default();
             cart.add_or_bump(&thali);
             let kot = serde_json::to_string(&RemoteKotRequest {
@@ -3634,16 +3688,20 @@ mod tests {
     /// the JSON for the UI — it must never print on the bill (standard) printer.
     #[test]
     fn tablet_batch_cancel_never_prints_batch_ok_on_the_bill_printer() {
+        let (path, store, guard) = lan_shop();
+        let hot = store.add_station("Hot").unwrap();
         let mut printers = crate::print_share::DevicePrinters::default();
         let kitchen = printers.add_printer("KitchenKOT", "192.168.1.50");
         let bill = printers.add_printer("Standard", "192.168.1.51");
-        *printers.route_mut(crate::print_share::RouteKey::Kot { station_id: "" }) =
-            vec![kitchen];
+        *printers.route_mut(crate::print_share::RouteKey::Kot {
+            station_id: &hot.id,
+        }) = vec![kitchen];
         *printers.route_mut(crate::print_share::RouteKey::Bill) = vec![bill];
         crate::print_share::with_test_printers(printers, || {
-            let (path, store, guard) = lan_shop();
             let (device, session) = paired_phone(&path, &store, &guard, "Wasim", "2222");
-            let thali = store.list_products(false).unwrap().remove(0);
+            let mut thali = store.list_products(false).unwrap().remove(0);
+            thali.station_id = hot.id.clone();
+            store.upsert_product(&thali).unwrap();
             let mut cart = Cart::default();
             cart.add_or_bump(&thali);
             let kot = serde_json::to_string(&RemoteKotRequest {
@@ -4311,8 +4369,9 @@ mod tests {
         });
     }
 
-    /// Auto-print sends one paper per station, without prices; off means
-    /// no paper. Checked against captured jobs — the OS printer is never
+    /// Auto-print sends one paper per **named** station, without prices; off
+    /// means no paper. "Kitchen (no station)" never spools while the shop has
+    /// kitchens. Checked against captured jobs — the OS printer is never
     /// touched by tests.
     #[test]
     fn sent_kots_print_one_paper_per_station_without_prices() {
@@ -4320,11 +4379,16 @@ mod tests {
         let store = Store::open_path(&path).unwrap();
         let owner = store.list_staff().unwrap().into_iter().next().unwrap();
         let tandoor = store.add_station("Tandoor").unwrap();
+        let bar = store.add_station("Bar").unwrap();
         let mut naan = Product::new_basic(new_id(), "Butter Naan", Money::from_rupees(45));
         naan.station_id = tandoor.id.clone();
         store.upsert_product(&naan).unwrap();
+        let mut chaas = Product::new_basic(new_id(), "Chaas", Money::from_rupees(30));
+        chaas.station_id = bar.id.clone();
+        store.upsert_product(&chaas).unwrap();
+        // Unassigned dish: Send still creates a ticket, but paper is refused.
         store
-            .upsert_product(&Product::new_basic(new_id(), "Chaas", Money::from_rupees(30)))
+            .upsert_product(&Product::new_basic(new_id(), "Pickle", Money::from_rupees(5)))
             .unwrap();
         let table = store.add_table_in_area("D1", "Dine In").unwrap();
         let mut cart = Cart::default();
@@ -4332,25 +4396,23 @@ mod tests {
             cart.add_or_bump(&p);
         }
         let ids = store.send_kot(&cart.to_kot_draft().unwrap(), Some(&table.id), &owner).unwrap();
-        assert_eq!(ids.len(), 2, "one KOT per station");
+        assert_eq!(ids.len(), 3, "one KOT per station incl. unassigned");
 
-        // Each station (and the unassigned kitchen) needs its own route —
-        // empty routes skip Capture, matching Settings.
         let mut printers = crate::print_share::DevicePrinters::default();
-        let kitchen = printers.add_printer(
-            "Kitchen", "192.168.1.50");
+        let kitchen = printers.add_printer("Kitchen", "192.168.1.50");
         *printers.route_mut(crate::print_share::RouteKey::Kot { station_id: "" }) =
             vec![kitchen.clone()];
         *printers.route_mut(crate::print_share::RouteKey::Kot {
             station_id: &tandoor.id,
+        }) = vec![kitchen.clone()];
+        *printers.route_mut(crate::print_share::RouteKey::Kot {
+            station_id: &bar.id,
         }) = vec![kitchen];
         crate::print_share::with_test_printers(printers, || {
             let _ = crate::print_share::take_captured();
             assert_eq!(print_sent_kots(&store, &ids), None);
             let jobs = crate::print_share::take_captured();
-            assert_eq!(jobs.len(), 2);
-            // The compact ticket (owner-styled per line) names the KOT and the
-            // table; each station's paper carries only that station's dishes.
+            assert_eq!(jobs.len(), 2, "named stations only — no unassigned paper");
             let papers: Vec<String> = jobs
                 .iter()
                 .map(|j| crate::print_share::strip_kot_style_marks(&j.text))
@@ -4361,11 +4423,13 @@ mod tests {
             );
             assert!(
                 papers.iter().any(|t| t.contains("Chaas") && !t.contains("Butter Naan")),
-                "unassigned-kitchen paper: {papers:?}"
+                "Bar paper: {papers:?}"
+            );
+            assert!(
+                papers.iter().all(|t| !t.contains("Pickle")),
+                "unassigned Pickle must not print: {papers:?}"
             );
             assert!(papers.iter().all(|t| t.contains("KOT") && t.contains("D1")), "{papers:?}");
-            // No money on a kitchen ticket. (Not bare digits: the ticket's
-            // time, e.g. 16:30, may contain them.)
             assert!(
                 jobs.iter().all(|j| !j.text.contains('₹') && !j.text.contains("45.00") && !j.text.contains("30.00")),
                 "no prices"

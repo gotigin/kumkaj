@@ -688,7 +688,77 @@ fn confirm_line_action(&mut self, cx: &mut Cx) {
         self.sync_chrome(cx);
     }
 
+
+    /// Schedule −/+ so Progress + Cancel can paint before books work (DEV 7b).
     fn bump_cart_line(&mut self, cx: &mut Cx, index: usize, delta: i64) {
+        let busy_msg = {
+            let mut st = app_state().lock().unwrap();
+            if st.cart_qty_busy.is_some() || st.pending_cart_bump.is_some() {
+                return;
+            }
+            let Some(line) = st.cart.lines.get(index) else {
+                return;
+            };
+            if line.is_sent() {
+                return;
+            }
+            let removing = if delta < 0 {
+                let step = line.bump_step_milli().saturating_mul(delta.abs());
+                line.qty_milli <= step
+            } else {
+                false
+            };
+            let busy_msg = if removing {
+                st.t("removing")
+            } else {
+                st.t("updating_order")
+            };
+            st.cart_qty_busy = Some((index, removing));
+            st.pending_cart_bump = Some((index, delta));
+            if !st.cart_qty_timer.is_empty() {
+                cx.stop_timer(st.cart_qty_timer);
+            }
+            st.cart_qty_timer = cx.start_timeout(0.0);
+            busy_msg
+        };
+        self.set_status_line_only(cx, &busy_msg);
+        self.sync_chrome(cx);
+    }
+
+    fn cancel_cart_qty_busy(&mut self, cx: &mut Cx) {
+        {
+            let mut st = app_state().lock().unwrap();
+            st.pending_cart_bump = None;
+            st.cart_qty_busy = None;
+            if !st.cart_qty_timer.is_empty() {
+                cx.stop_timer(st.cart_qty_timer);
+                st.cart_qty_timer = Timer::empty();
+            }
+        }
+        self.set_status(cx, app_t("cancelled"));
+        self.sync_chrome(cx);
+    }
+
+    fn run_pending_cart_bump(&mut self, cx: &mut Cx) {
+        let pending = {
+            let mut st = app_state().lock().unwrap();
+            if !st.cart_qty_timer.is_empty() {
+                st.cart_qty_timer = Timer::empty();
+            }
+            st.pending_cart_bump.take()
+        };
+        let Some((index, delta)) = pending else {
+            return;
+        };
+        let (busy_msg, done_msg) = {
+            let st = app_state().lock().unwrap();
+            let removing = st.cart_qty_busy.map(|(_, r)| r).unwrap_or(false);
+            if removing {
+                (st.t("removing"), st.t("removed"))
+            } else {
+                (st.t("updating_order"), st.t("order_updated"))
+            }
+        };
         let err: Option<String> = {
             let mut st = app_state().lock().unwrap();
             match st.cart.lines.get(index).cloned() {
@@ -713,25 +783,48 @@ fn confirm_line_action(&mut self, cx: &mut Cx) {
                         Some(e)
                     } else {
                         let step = line.bump_step_milli().saturating_mul(delta);
+                        let before_len = st.cart.lines.len();
+                        let after_bump = |st: &mut AppState, status: String| {
+                            st.cart.bump_qty(index, delta);
+                            if st.cart.lines.len() < before_len {
+                                match st.open_cart_line {
+                                    Some(open) if open == index => st.open_cart_line = None,
+                                    Some(open) if open > index => {
+                                        st.open_cart_line = Some(open - 1);
+                                    }
+                                    _ => {}
+                                }
+                            }
+                            st.status = status;
+                        };
                         if st.selected_table_id.is_some() {
-                            match st.bump_table_pending(&line.product_id, step, "Order updated") {
+                            match st.bump_table_pending(&line.product_id, step, &done_msg) {
                                 Err(e) => Some(e),
                                 Ok(Acted::Sent) => {
-                                    st.cart.bump_qty(index, delta);
+                                    after_bump(&mut st, busy_msg.clone());
                                     None
                                 }
-                                Ok(Acted::Here(_)) => None,
+                                Ok(Acted::Here(_)) => {
+                                    after_bump(&mut st, done_msg.clone());
+                                    None
+                                }
                             }
                         } else {
-                            st.cart.bump_qty(index, delta);
+                            after_bump(&mut st, done_msg.clone());
                             None
                         }
                     }
                 }
             }
         };
+        app_state().lock().unwrap().cart_qty_busy = None;
         if let Some(e) = err {
             self.set_status(cx, e);
+        } else {
+            let msg = app_state().lock().unwrap().status.clone();
+            if !msg.is_empty() {
+                self.set_status_line_only(cx, &msg);
+            }
         }
         self.sync_chrome(cx);
     }

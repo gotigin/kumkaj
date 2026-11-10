@@ -1000,8 +1000,7 @@ impl App {
             self.begin_client_mode(cx);
         }
         if self.ui.button(cx, ids!(device_role_cancel)).clicked(actions) {
-            role_open_cancel().store(true, std::sync::atomic::Ordering::SeqCst);
-            self.set_status(cx, app_t("cancelled"));
+            request_role_open_cancel();
             self.paint_role_open_busy_chrome(cx);
         }
         if self.ui.button(cx, ids!(server_create_new)).clicked(actions) {

@@ -214,7 +214,7 @@ struct CartList {
 
 impl Widget for CartList {
     fn draw_walk(&mut self, cx: &mut Cx2d, scope: &mut Scope, walk: Walk) -> DrawStep {
-        let (lines, products, stations, currency, fiscal, lang, open_line, kot_heads, split_pick) = {
+        let (lines, products, stations, currency, fiscal, lang, open_line, kot_heads, split_pick, qty_busy) = {
             let st = app_state().lock().unwrap();
             let split_pick = if st.split_mode && st.screen == Screen::Pos { st.split_pick.clone() } else { Vec::new() };
             let lines = if st.screen == Screen::Sales {
@@ -232,6 +232,7 @@ impl Widget for CartList {
                 st.open_cart_line,
                 st.kot_heads.clone(),
                 split_pick,
+                st.cart_qty_busy,
             )
         };
         let count = lines.len();
@@ -473,7 +474,21 @@ impl Widget for CartList {
                     let on_table = has_running;
                     let unsent = !line.is_sent();
                     let sent = line.is_sent();
-                    item.view(cx, ids!(stepper)).set_visible(cx, unsent);
+                    let line_busy = qty_busy.map(|(i, _)| i) == Some(item_id);
+                    let removing = qty_busy.map(|(_, r)| r).unwrap_or(false);
+                    item.view(cx, ids!(stepper)).set_visible(cx, unsent && !line_busy);
+                    item.view(cx, ids!(stepper_busy)).set_visible(cx, unsent && line_busy);
+                    if unsent && line_busy {
+                        item.widget(cx, ids!(qty_busy_label)).set_text(
+                            cx,
+                            &plain_display_text(&locale::t(
+                                &lang,
+                                if removing { "removing" } else { "updating_order" },
+                            )),
+                        );
+                        item.button(cx, ids!(qty_busy_cancel))
+                            .set_text(cx, &locale::t(&lang, "cancel"));
+                    }
                     item.button(cx, ids!(hold_send_btn)).set_visible(cx, unsent);
                     item.button(cx, ids!(reprint_incl_btn)).set_visible(cx, sent);
                     item.button(cx, ids!(cancel_pick_btn)).set_visible(cx, has_running);

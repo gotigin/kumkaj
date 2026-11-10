@@ -1339,3 +1339,8 @@ recent_changes	Changements récents
 lane_declared_label	Facture fiscale
 lane_owner_label	Note de caisse
 money_lane_bill	Facture : {lane}
+
+removing	Removing…
+removed	Removed
+updating_order	Updating…
+order_updated	Order updated

@@ -653,6 +653,26 @@ fn role_open_cancel() -> &'static std::sync::atomic::AtomicBool {
     &CANCEL
 }
 
+fn role_open_interrupt() -> &'static Mutex<Option<rusqlite::InterruptHandle>> {
+    static SLOT: OnceLock<Mutex<Option<rusqlite::InterruptHandle>>> = OnceLock::new();
+    SLOT.get_or_init(|| Mutex::new(None))
+}
+
+fn set_role_open_interrupt(handle: Option<rusqlite::InterruptHandle>) {
+    *role_open_interrupt().lock().unwrap() = handle;
+}
+
+/// Cancel DeviceSetup role open: flip the flag, poke SQLite so migrate/seed
+/// aborts on Android instead of running to completion, and show Cancelling….
+fn request_role_open_cancel() {
+    role_open_cancel().store(true, std::sync::atomic::Ordering::SeqCst);
+    set_books_work_status(&app_t("cancelling"));
+    if let Some(handle) = role_open_interrupt().lock().unwrap().as_ref() {
+        handle.interrupt();
+    }
+    makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal();
+}
+
 enum RoleOpenReady {
     Client(Store),
     ServerNew(Store),
@@ -670,18 +690,19 @@ fn role_open_start(status: &str) -> bool {
         return false;
     }
     role_open_cancel().store(false, std::sync::atomic::Ordering::SeqCst);
+    set_role_open_interrupt(None);
     set_books_work_status(status);
     makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal();
     true
 }
 
 fn role_open_finish(result: Result<RoleOpenReady, String>) {
+    set_role_open_interrupt(None);
     let ok = result.is_ok();
     *role_open_once().lock().unwrap() = Some(result);
     if ok {
-        // Keep busy chrome until finish_* drops the old books + reload_all +
-        // sync_chrome (that can take a long time on a phone — clearing busy
-        // here left a silent freeze with Server/Client still on screen).
+        // Keep busy chrome until finish_* drops the old books + paint
+        // (clearing busy here left a silent freeze with Server/Client still on).
         set_books_work_status(&app_t("preparing_desk"));
     } else {
         role_open_busy().store(false, std::sync::atomic::Ordering::SeqCst);
@@ -720,7 +741,20 @@ fn client_mode_job(base: PathBuf) {
         .spawn(move || {
             net::stop_server();
             let result = (|| -> Result<RoleOpenReady, String> {
-                let store = local_servers::open_client_store(&base)?;
+                if role_cancelled() {
+                    return Err("Cancelled".into());
+                }
+                let store = local_servers::open_client_store_cancellable(&base, |handle| {
+                    set_role_open_interrupt(Some(handle))
+                })
+                .map_err(|e| {
+                    if role_cancelled() {
+                        "Cancelled".into()
+                    } else {
+                        e
+                    }
+                })?;
+                set_role_open_interrupt(None);
                 if role_cancelled() {
                     return Err("Cancelled".into());
                 }
@@ -917,41 +951,8 @@ fn rail_resize_drag() -> &'static Mutex<Option<f64>> {
     DRAG.get_or_init(|| Mutex::new(None))
 }
 
-/// In-progress sidebar / bottom-bar drag-to-swap (peeked at App level,
-/// same style as the rail resize drag). `rail` picks the surface, `slot`
-/// is the position the drag started from, `hover` the position under the
-/// pointer right now (drop target).
-#[derive(Clone)]
-struct NavDrag {
-    rail: bool,
-    slot: usize,
-    start: DVec2,
-    /// Latest pointer pos while dragging; edge auto-scroll reads it
-    /// on frames where the pointer itself is standing still.
-    last: DVec2,
-    /// Window pos of the grabbed item's face when the drag began; the
-    /// floating ghost chip tracks `origin + (pointer - start)`.
-    origin: DVec2,
-    /// Every slot's face rect in the bar's *content* coordinates,
-    /// captured at pickup. Widget areas are only trustworthy while
-    /// the layout is settled — during edge auto-scroll they lag the
-    /// scrolling content — so drag-time hit tests use these frozen
-    /// rects plus the live scroll offset instead.
-    rects: Vec<Rect>,
-    active: bool,
-    hover: Option<usize>,
-    /// Touch finger that owns this drag (`None` = mouse / desktop).
-    /// Android only sends `TouchUpdate`, so without this the drag never arms.
-    finger: Option<u64>,
-}
-
-fn nav_drag() -> &'static Mutex<Option<NavDrag>> {
-    static DRAG: OnceLock<Mutex<Option<NavDrag>>> = OnceLock::new();
-    DRAG.get_or_init(|| Mutex::new(None))
-}
-
-/// Floor area ChipStrip drag-to-swap (same contract as [`NavDrag`]:
-/// tap selects; press + move swaps and persists `ui_floor_area_order`).
+/// Floor area ChipStrip drag-to-swap: tap selects; press + move swaps and
+/// persists `ui_floor_area_order`.
 #[derive(Clone)]
 struct FloorAreaDrag {
     slot: usize,
@@ -974,37 +975,10 @@ fn floor_area_autoscroll_frame() -> &'static Mutex<Option<NextFrame>> {
     FRAME.get_or_init(|| Mutex::new(None))
 }
 
-/// Settings → Sidebar list drag-reordered; App syncs chrome when taken.
+/// Settings → Sidebar list reordered (↑↓); App syncs chrome when taken.
 fn sidebar_order_dirty() -> &'static Mutex<bool> {
     static FLAG: OnceLock<Mutex<bool>> = OnceLock::new();
     FLAG.get_or_init(|| Mutex::new(false))
-}
-
-/// Settings → Sidebar list: same ghost-chip drag as the rail/bottom bar
-/// (`pointer_sidebar_settings_drag`), not an in-list swap.
-#[derive(Clone)]
-struct SettingsNavDrag {
-    slot: usize,
-    start: DVec2,
-    last: DVec2,
-    origin: DVec2,
-    rects: Vec<Rect>,
-    active: bool,
-    hover: Option<usize>,
-    /// Touch finger that owns this drag (`None` = mouse / desktop).
-    finger: Option<u64>,
-}
-
-fn settings_nav_drag() -> &'static Mutex<Option<SettingsNavDrag>> {
-    static DRAG: OnceLock<Mutex<Option<SettingsNavDrag>>> = OnceLock::new();
-    DRAG.get_or_init(|| Mutex::new(None))
-}
-
-/// Pending frame callback that keeps edge auto-scroll alive while a
-/// nav drag is held against the bar's edge (see `nav_drag_autoscroll`).
-fn nav_autoscroll_frame() -> &'static Mutex<Option<NextFrame>> {
-    static FRAME: OnceLock<Mutex<Option<NextFrame>>> = OnceLock::new();
-    FRAME.get_or_init(|| Mutex::new(None))
 }
 
 /// Font Awesome solid (`WorldFonts` icons member): chevron-right / chevron-down.

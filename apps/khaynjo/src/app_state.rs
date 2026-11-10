@@ -244,6 +244,12 @@ struct AppState {
     /// The ticket line whose details (price, note, Cancel / NC / Move) are
     /// open. One at a time; every other line stays a single compact row.
     open_cart_line: Option<usize>,
+    /// Order −/+ busy chrome: `(line_index, removing)`. Progress + Cancel
+    /// replace the stepper until the deferred bump finishes or Cancel.
+    cart_qty_busy: Option<(usize, bool)>,
+    /// Applied on `cart_qty_timer` so Progress paints before books work.
+    pending_cart_bump: Option<(usize, i64)>,
+    cart_qty_timer: Timer,
     /// Floor opened from Order to Choose / Change table. A tap returns to
     /// Order. Floor from nav does not set this — it only opens that ticket.
     picking_table: bool,

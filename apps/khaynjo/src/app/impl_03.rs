@@ -1508,7 +1508,7 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
             .set_text(cx, &plain_display_text(&s("datetime_appearance")));
         self.ui
             .widget(cx, ids!(datetime_appearance_help))
-            .set_text(cx, &plain_display_text(&s("datetime_appearance_help")));
+            .set_text(cx, &plain_display_text(&soft_paragraph_at_dash(&s("datetime_appearance_help"))));
         self.ui
             .widget(cx, ids!(h_date_order))
             .set_text(cx, &plain_display_text(&s("date_order")));

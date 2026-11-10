@@ -162,6 +162,23 @@ impl Store {
     }
 
     pub fn open_path(path: &Path) -> Result<Self, String> {
+        let conn = Self::open_connection(path)?;
+        Self::finish_open(path, conn)
+    }
+
+    /// Like [`Self::open_path`], but Cancel-friendly for DeviceSetup on Android.
+    /// `register_interrupt` receives a handle the UI thread can fire so a long
+    /// migrate/seed aborts instead of ignoring Cancel until open returns.
+    pub fn open_path_cancellable(
+        path: &Path,
+        register_interrupt: impl FnOnce(rusqlite::InterruptHandle),
+    ) -> Result<Self, String> {
+        let conn = Self::open_connection(path)?;
+        register_interrupt(conn.get_interrupt_handle());
+        Self::finish_open(path, conn)
+    }
+
+    fn open_connection(path: &Path) -> Result<Connection, String> {
         let mut conn = Connection::open(path).map_err(|e| e.to_string())?;
         // Take the write lock when a transaction begins, so it waits out
         // another writer (busy_timeout) instead of failing midway in WAL.
@@ -176,6 +193,10 @@ impl Store {
              PRAGMA foreign_keys=ON;",
         )
         .map_err(|e| e.to_string())?;
+        Ok(conn)
+    }
+
+    fn finish_open(path: &Path, conn: Connection) -> Result<Self, String> {
         let mut store = Self {
             conn,
             path: path.to_path_buf(),
@@ -1215,6 +1236,12 @@ impl Store {
             self.meta_set("owner_setup_complete", "1")?;
         }
 
+        // Client cache is overwritten by the next Server snapshot — do not
+        // seed T1..T24 / P1..P24 here. On Android that seed was a multi-second
+        // freeze before ClientPair with Cancel unable to interrupt mid-insert.
+        if self.is_client_cache_path() {
+            return Ok(());
+        }
         // A fresh floor once, ever: a counter shop that removed every table
         // must not find T1..T24 back after the next restart.
         let table_count: i64 = self

@@ -223,6 +223,18 @@ pub fn open_client_store(base: &Path) -> Result<Store, String> {
     Store::open_path(&path)
 }
 
+/// Client Mode open with Cancel: SQLite interrupt from the UI thread.
+pub fn open_client_store_cancellable(
+    base: &Path,
+    register_interrupt: impl FnOnce(rusqlite::InterruptHandle),
+) -> Result<Store, String> {
+    let path = client_db_path(base);
+    if let Some(parent) = path.parent() {
+        fs::create_dir_all(parent).map_err(|e| e.to_string())?;
+    }
+    Store::open_path_cancellable(&path, register_interrupt)
+}
+
 /// Id of the single offline server to open (active, else first registry row).
 pub fn offline_server_id(base: &Path) -> Result<Option<String>, String> {
     let reg = load_registry(base)?;

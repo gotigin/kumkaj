@@ -1349,3 +1349,10 @@ recent_changes	최근 변경
 lane_declared_label	세금 계산서
 lane_owner_label	현금 메모
 money_lane_bill	영수증: {lane}
+
+removing	Removing…
+removed	Removed
+updating_order	Updating…
+order_updated	Order updated
+
+cancelling	Cancellingâ¦

@@ -1327,3 +1327,8 @@ recent_changes	Последние изменения
 lane_declared_label	Налоговый счёт
 lane_owner_label	Кассовый чек
 money_lane_bill	Билл: {lane}
+
+removing	Removing…
+removed	Removed
+updating_order	Updating…
+order_updated	Order updated

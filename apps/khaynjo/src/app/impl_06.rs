@@ -80,77 +80,6 @@ impl App {
         Err(format!("No staff matching \"{raw}\""))
     }
 
-fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
-        let (rail, last) = {
-            let guard = nav_drag().lock().unwrap();
-            match guard.as_ref() {
-                Some(d) if d.active => (d.rail, d.last),
-                _ => return, // drag over: let the frame loop die
-            }
-        };
-        // Keep the loop alive for the whole drag.
-        *nav_autoscroll_frame().lock().unwrap() = Some(cx.new_next_frame());
-        let view = if rail {
-            self.ui.view(cx, ids!(rail_scroll))
-        } else {
-            self.ui.view(cx, ids!(bottom_nav_scroll))
-        };
-        let rect = view.area().rect(cx);
-        if rect.size.x <= 0.0 || rect.size.y <= 0.0 {
-            return;
-        }
-        const ZONE: f64 = 56.0;
-        let (near_start, near_end) = if rail {
-            (
-                (ZONE - (last.y - rect.pos.y)).clamp(0.0, ZONE),
-                (ZONE - (rect.pos.y + rect.size.y - last.y)).clamp(0.0, ZONE),
-            )
-        } else {
-            (
-                (ZONE - (last.x - rect.pos.x)).clamp(0.0, ZONE),
-                (ZONE - (rect.pos.x + rect.size.x - last.x)).clamp(0.0, ZONE),
-            )
-        };
-        let step = |depth: f64| {
-            if depth > 0.0 {
-                2.0 + depth / ZONE * 10.0
-            } else {
-                0.0
-            }
-        };
-        let delta = step(near_end) - step(near_start);
-        if delta == 0.0 {
-            return;
-        }
-        let cur = view.get_scroll_pos();
-        let total = view.get_scroll_view_total();
-        let visible = view.get_scroll_view_visible();
-        let mut next = cur;
-        if rail {
-            next.y = (cur.y + delta).clamp(0.0, (total.y - visible.y).max(0.0));
-        } else {
-            next.x = (cur.x + delta).clamp(0.0, (total.x - visible.x).max(0.0));
-        }
-        if next.x == cur.x && next.y == cur.y {
-            return; // already at the scroll end
-        }
-        view.set_scroll_pos(cx, next);
-        let mut repaint = false;
-        {
-            let mut guard = nav_drag().lock().unwrap();
-            if let Some(d) = guard.as_mut() {
-                let hover = self.nav_drop_slot(cx, d, d.last);
-                if hover != d.hover {
-                    d.hover = hover;
-                    repaint = true;
-                }
-            }
-        }
-        if repaint {
-            self.repaint_nav_tabs(cx);
-        }
-    }
-
     /// Mouse Back/Forward, left-edge swipe → back, right-edge swipe → forward.
     /// TouchUpdate on phones; primary MouseDown/Up edge drag on desktop.
     /// Peer chrome and drill-downs both push visit history, so Back/Forward
@@ -738,6 +667,11 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
     }
 
     /// Apply a Store opened on the client-mode worker (Signal handler).
+    ///
+    /// Do **not** call full `reload_all` here — on Android that was a second
+    /// multi-second UI-thread freeze (Cancel dead) after the worker already
+    /// finished. ClientPair only needs locale + paired flag; the Server
+    /// snapshot fills the rest after Pair.
     fn finish_client_mode_opened(&mut self, cx: &mut Cx, store: Store) {
         // Busy chrome still on ("Preparing desk…") from role_open_finish.
         self.paint_role_open_busy_chrome(cx);
@@ -747,7 +681,9 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
             st.store = Some(store);
             st.picking_server = false;
             let chosen = (st.language_follow_platform, st.locale.language.clone());
-            let _ = st.reload_all();
+            st.client_paired = store_client_paired(st.store.as_ref());
+            // Keep the language the user just picked on DeviceSetup — do not
+            // reload books locale over it (and skip full reload_all on Android).
             st.language_follow_platform = chosen.0;
             st.locale.language = chosen.1;
             Self::persist_setup_language(&mut st);
@@ -759,7 +695,13 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
             st.pin_buffer.clear();
             st.nav_back.clear();
             st.nav_forward.clear();
-            st.client_paired = store_client_paired(st.store.as_ref());
+            st.products.clear();
+            st.tables.clear();
+            st.staff.clear();
+            st.categories.clear();
+            st.stations.clear();
+            st.recent_sales.clear();
+            st.found_servers.clear();
             st.apply_lock_role_selection();
             // Always ClientPair — Find / tap a shop / Pair. Never skip to Lock
             // and trap the till on a previous pairing (multi-server Wi‑Fi).
@@ -2194,12 +2136,10 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
                             &format!("One {} taken off", product.name),
                         ) {
                             Err(e) => Some(e),
-                            Ok(Acted::Sent) => {
+                            Ok(Acted::Sent) | Ok(Acted::Here(_)) => {
+                                // skip_reload: mirror books into the cart (Here
+                                // used to rely on load_table_cart after reload_all).
                                 let _ = st.cart.remove_one_of(&product.id);
-                                st.status = format!("One {} taken off", product.name);
-                                None
-                            }
-                            Ok(Acted::Here(_)) => {
                                 let left = st.cart.lines.iter().any(|l| l.product_id == product.id);
                                 st.status = if left {
                                     format!("One {} taken off", product.name)
@@ -2249,19 +2189,10 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
                             &format!("{} added", product.name),
                         ) {
                             Err(e) => Some(e),
-                            Ok(Acted::Sent) => {
+                            Ok(Acted::Sent) | Ok(Acted::Here(_)) => {
+                                // skip_reload: books already have the line —
+                                // keep the desk cart in step (same as Sent).
                                 let _ = st.cart.add_in_area_in_stock(&product, &area);
-                                st.status = if product.price_in_area(&area).0 == 0 {
-                                    format!(
-                                        "{} added · it has no price yet — set it on Menu",
-                                        product.name
-                                    )
-                                } else {
-                                    format!("{} added", product.name)
-                                };
-                                None
-                            }
-                            Ok(Acted::Here(_)) => {
                                 st.status = if product.price_in_area(&area).0 == 0 {
                                     format!(
                                         "{} added · it has no price yet — set it on Menu",

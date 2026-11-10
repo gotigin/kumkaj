@@ -6,7 +6,7 @@ Canonical: `docs/DEV.md` bug **7b**; face table: `docs/DESIGN.md` § Makepad 2 f
 
 Any CTA that starts work that can freeze the UI or take noticeable time
 (pair, find server, open books / role switch, find printers, firewall,
-template import, create backup, LAN snapshot apply, …) must:
+template import, create backup, LAN snapshot apply, Order cart −/+, …) must:
 
 1. Run the heavy work **off the UI thread** (worker + `SignalToUI`).
 2. **Replace** the start button, for the whole busy life, with **two**
@@ -29,8 +29,17 @@ Gate heavy paint with the same `*_busy` flag (see DeviceSetup
   firewall prompts on the UI thread.
 - Invent a third busy style when DeviceSetup / Client pair / Find
   printers already show Progress + Cancel.
+- Call full `reload_all` + `load_table_cart` after light till writes
+  (`BumpPending`, `HoldLine`, `SetLinePricing`, `SetLineStation`) —
+  that froze −/+ for seconds. Use `running_action_skips_full_reload`,
+  mirror the cart locally, `refresh_live_lists`, publish books off-thread.
+- Patch Progress + Cancel or skip-reload in **one** screen/app only —
+  apply the same contract in every restaurant app that owns a cart
+  (Khaynjo, Kirano, Tabiyat) and every CTA that can stall.
 
 ## Apps
 
-Duplicate the pattern per app (`apps/moklanjo`, `apps/khaynjo`, future)
-— no shared Kumkaj core. Same UX contract in every product.
+Duplicate the pattern per app (`apps/moklanjo`, `apps/khaynjo`,
+`apps/kirano`, `apps/tabiyat`, future) — no shared Kumkaj core. Same UX
+contract in every product. Cart −/+ uses row `stepper_busy`
+(Removing…/Updating… + Cancel) deferred so Progress can paint.

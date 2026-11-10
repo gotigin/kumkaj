@@ -925,14 +925,6 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             (reports_nav, current_nav_chrome_order())
         };
         let active = nav_tab_for(screen, reports_nav);
-        // While dragging, the slot under the pointer wears the active face
-        // so the drop target is unmistakable.
-        let drop = nav_drag()
-            .lock()
-            .unwrap()
-            .as_ref()
-            .filter(|d| d.active)
-            .and_then(|d| d.hover.map(|slot| (d.rail, slot)));
         for (rail, pairs) in [
             (false, self.bottom_nav_pairs()),
             (true, self.rail_nav_pairs()),
@@ -948,7 +940,7 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
                     self.ui.button(cx, on).set_visible(cx, false);
                     continue;
                 }
-                let selected = active == Some(order[slot]) || drop == Some((rail, slot));
+                let selected = active == Some(order[slot]);
                 self.ui.button(cx, idle).set_visible(cx, !selected);
                 self.ui.button(cx, on).set_visible(cx, selected);
             }

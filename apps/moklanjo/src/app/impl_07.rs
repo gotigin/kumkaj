@@ -244,6 +244,8 @@ impl App {
     }
 
     /// Apply a Store opened on the client-mode worker (Signal handler).
+    /// Skip full `reload_all` — on Android that froze the UI (Cancel dead)
+    /// after the worker finished; ClientPair only needs paired + language.
     fn finish_client_mode_opened(&mut self, cx: &mut Cx, store: Store) {
         // Busy chrome still on ("Preparing desk…") from role_open_finish.
         self.paint_role_open_busy_chrome(cx);
@@ -253,7 +255,7 @@ impl App {
             st.store = Some(store);
             st.picking_server = false;
             let chosen = (st.language_follow_platform, st.locale.language.clone());
-            let _ = st.reload_all();
+            st.client_paired = store_client_paired(st.store.as_ref());
             st.language_follow_platform = chosen.0;
             st.locale.language = chosen.1;
             Self::persist_setup_language(&mut st);
@@ -265,7 +267,10 @@ impl App {
             st.pin_buffer.clear();
             st.nav_back.clear();
             st.nav_forward.clear();
-            st.client_paired = store_client_paired(st.store.as_ref());
+            st.products.clear();
+            st.staff.clear();
+            st.recent_sales.clear();
+            st.found_servers.clear();
             st.apply_lock_role_selection();
             // Always ClientPair — Find / tap a shop / Pair. Never skip to Lock
             // and trap the till on a previous pairing (multi-server Wi‑Fi).

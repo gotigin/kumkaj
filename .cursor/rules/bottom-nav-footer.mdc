@@ -1,26 +1,29 @@
 ---
-description: Phone bottom_nav — X scrollbar flush to floor, chips not cropped; lift_footer bottom-only
+description: Phone bottom_nav — X scrollbar flush to floor, chips vertically centered; lift_footer bottom-only; no nav drag
 globs: apps/**/ui_script.rs, apps/**/app/impl_03.rs
 alwaysApply: false
 ---
 
 # Bottom-nav footer floor (do not regress)
 
-Canonical: `docs/DEV.md` bug **7d** and § Native input / sideways strips.
+Canonical: `docs/DEV.md` bug **7d** and § Nav order.
 
-Phone chrome `bottom_nav` (both apps): Fit maroon/navy `SolidView` → overlay tabs + `bottom_nav_scroll` (`ScrollXView`) + ‹ ›. Makepad draws the X bar **over** the bottom `bar_size` of the scroll view.
+Phone chrome `bottom_nav` (every app): Fit maroon/navy `SolidView` → overlay tabs + `bottom_nav_scroll` (`ScrollXView`) + ‹ ›. Makepad draws the X bar **over** the bottom `bar_size` of the scroll view.
 
 ## Required
 
 ```text
 bottom_nav.padding.bottom     = 0 in DSL
+bottom_nav.padding.top        ≈ 4 (balanced with strip — chips look vertically centered)
 lift_footer_above_system_bar  = safe_area.bottom only (0 on desktop); never touch padding.top
-strip inside ScrollX          bottom pad ≥ bar_size (today 8 with bar_size 4)
+strip inside ScrollX          top ≈ 4, bottom ≈ 8 (≥ bar_size; today bar_size 4)
+NavChip / NavChipActive       vertical pad ≈ 8 (not a tall empty band above chips)
 footer scroll_bar_x colours   dark on footer bg (not stock light handle)
 ```
 
 - Scrollbar is the **bottommost** chrome — nothing (no DSL pad, no FOOTER_BOTTOM constant) under it.
 - Strip bottom pad is the **bar’s lane** so chips / ‹ › stay clear of the overlay.
+- **No live nav drag** on footer or rail — reorder in Settings → Sidebar with ↑↓ only.
 - Duplicate the same contract per app — no shared core.
 
 ## Forbidden
@@ -31,4 +34,6 @@ footer scroll_bar_x colours   dark on footer bg (not stock light handle)
 ❌ lift_footer writing padding.top (+ bottom) → Fit footer taller than shell slot → bottom clipped
 ❌ bar_size: 0 “to remove the gap” while keeping chevrons — keep the bar; fix padding instead
 ❌ stock light ScrollX handle on maroon/navy → reads as cream floor strip
+❌ tall outer/strip top pad “for drag lane” → chips look sunken; drag is gone
+❌ reintroducing pointer_nav_drag on live chrome
 ```

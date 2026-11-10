@@ -453,6 +453,26 @@ impl App {
                 self.smoke_mark(cx, "106_nav_back");
                 false
             }
+            7 => {
+                // Benign error path: empty booking desk must not crash or leave chrome stuck.
+                self.smoke_go_tab(cx, NavTab::Sell);
+                {
+                    let mut st = app_state().lock().unwrap();
+                    st.cart = Cart::default();
+                }
+                self.sync_chrome(cx);
+                let before = app_state().lock().unwrap().screen;
+                self.set_status(cx, "Nothing to book — add a parcel first");
+                self.sync_chrome(cx);
+                let after = app_state().lock().unwrap().screen;
+                if after != before && after != Screen::Pos {
+                    self.smoke_note_fail(format!(
+                        "empty-desk refusal left unexpected screen {after:?}"
+                    ));
+                }
+                self.smoke_mark(cx, "107_empty_desk_refuse");
+                false
+            }
             _ => true,
         }
     }

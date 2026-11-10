@@ -35,3 +35,17 @@ fn plain_display_text(s: &str) -> String {
     }
     out
 }
+
+/// Split a long “a — b” prose line into two WrapLabel paragraphs. A single
+/// `\n` is only a space in Markdown; `\n\n` is a real break (DEV.md §18).
+fn soft_paragraph_at_dash(s: &str) -> String {
+    if s.contains("\n\n") {
+        return s.to_string();
+    }
+    for sep in [" — ", " – ", " - "] {
+        if let Some((a, b)) = s.split_once(sep) {
+            return format!("{}\n\n{}", a.trim_end(), b.trim_start());
+        }
+    }
+    s.to_string()
+}

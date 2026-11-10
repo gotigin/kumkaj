@@ -1339,3 +1339,8 @@ recent_changes	Canvis recents
 lane_declared_label	Factura fiscal
 lane_owner_label	Nota d'efectiu
 money_lane_bill	Compte: {lane}
+
+removing	Removing…
+removed	Removed
+updating_order	Updating…
+order_updated	Order updated

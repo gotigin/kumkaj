@@ -1339,3 +1339,8 @@ recent_changes	Соңғы өзгерістер
 lane_declared_label	Салық шот-фактурасы
 lane_owner_label	Кассалық жазба
 money_lane_bill	Шот: {lane}
+
+removing	Removing…
+removed	Removed
+updating_order	Updating…
+order_updated	Order updated

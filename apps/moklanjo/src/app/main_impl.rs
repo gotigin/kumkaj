@@ -318,14 +318,6 @@ impl App {
         }
         self.match_event(cx, event);
         if let Event::NextFrame(e) = event {
-            let ours = nav_autoscroll_frame()
-                .lock()
-                .unwrap()
-                .map(|frame| e.set.contains(&frame))
-                .unwrap_or(false);
-            if ours {
-                self.nav_drag_autoscroll(cx);
-            }
             let accordion_ours = accordion_frame()
                 .lock()
                 .unwrap()
@@ -341,12 +333,6 @@ impl App {
         // handler below — some return early (a nav-tab tap). The press
         // itself still reaches whatever is under it.
         self.route_popup_input(cx, event);
-        if self.pointer_sidebar_settings_drag(cx, event) {
-            return;
-        }
-        if self.pointer_nav_drag(cx, event) {
-            return;
-        }
         if self.pointer_navigates(cx, event) {
             return;
         }

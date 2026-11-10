@@ -39,11 +39,12 @@ impl MatchEvent for App {
             self.ui.widget(cx, ids!(paired_list)).redraw(cx);
             return;
         }
-        let (undo_hit, snack_hit) = {
+        let (undo_hit, snack_hit, cart_qty_hit) = {
             let st = app_state().lock().unwrap();
             (
                 !st.undo_timer.is_empty() && st.undo_timer.is_timer(e).is_some(),
                 !st.snack_timer.is_empty() && st.snack_timer.is_timer(e).is_some(),
+                !st.cart_qty_timer.is_empty() && st.cart_qty_timer.is_timer(e).is_some(),
             )
         };
         if undo_hit {
@@ -52,6 +53,9 @@ impl MatchEvent for App {
         }
         if snack_hit {
             self.clear_snack(cx);
+        }
+        if cart_qty_hit {
+            self.run_pending_cart_bump(cx);
         }
     }
 
@@ -4856,6 +4860,10 @@ impl MatchEvent for App {
             } else if note_input.key_focus_lost(actions) {
                 let text = note_input.text();
                 self.apply_cart_note(cx, item_id, &text);
+            }
+            if item.button(cx, ids!(qty_busy_cancel)).clicked(actions) {
+                self.cancel_cart_qty_busy(cx);
+                continue;
             }
             let minus = item.button(cx, ids!(minus)).clicked(actions);
             let plus = item.button(cx, ids!(plus)).clicked(actions);

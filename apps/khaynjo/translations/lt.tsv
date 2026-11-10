@@ -1349,3 +1349,10 @@ recent_changes	Naujausi pakeitimai
 lane_declared_label	Mokesčių sąskaita faktūra
 lane_owner_label	Kasos memorandumas
 money_lane_bill	Sąskaita: {lane}
+
+removing	Removing…
+removed	Removed
+updating_order	Updating…
+order_updated	Order updated
+
+cancelling	Cancellingâ¦

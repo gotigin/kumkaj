@@ -1349,3 +1349,10 @@ recent_changes	Seneste ændringer
 lane_declared_label	Skattefaktura
 lane_owner_label	Kontantnota
 money_lane_bill	Regning: {lane}
+
+removing	Removing…
+removed	Removed
+updating_order	Updating…
+order_updated	Order updated
+
+cancelling	Cancellingâ¦

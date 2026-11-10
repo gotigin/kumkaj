@@ -1617,7 +1617,7 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
             };
             self.ui
                 .widget(cx, ids!(menu_unpriced_note))
-                .set_text(cx, &plain_display_text(&note));
+                .set_text(cx, &plain_display_text(&soft_paragraph_at_dash(&note)));
             self.ui.widget(cx, ids!(menu_unpriced_note)).set_visible(cx, unpriced > 0);
             self.ui.button(cx, ids!(menu_unpriced_btn)).set_text(cx, &btn);
             let low = {

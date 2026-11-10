@@ -158,7 +158,69 @@ mod info_help_layout_tests {
         );
     }
 
-    /// Lock PIN: smaller Fit prompt + tip-only InfoHelp (20pt Fill stacked PASSCOD/E).
+    /// Brand title+id must be Fill Down stacks — Fit+Fit Right cropped
+    /// "Khaynjo (2282(" on phone chrome (header / Lock / DeviceSetup).
+    #[test]
+    fn brand_title_stacks_are_fill_not_fit_right_pairs() {
+        let ui = include_str!("../ui_script.rs");
+        for id in [
+            "brand_title := WrapLabel{",
+            "lock_brand_title := WrapLabel{",
+            "setup_brand_title := WrapLabel{",
+        ] {
+            let block = ui
+                .split(id)
+                .nth(1)
+                .and_then(|s| s.split('}').next())
+                .unwrap_or("");
+            assert!(
+                block.contains("width: Fill"),
+                "{id} must be Fill so long shop names wrap, got {block:?}"
+            );
+            assert!(
+                !block.lines().take(6).any(|l| l.trim() == "width: Fit"),
+                "{id} must not be Fit beside a peer id (crops on 375)"
+            );
+        }
+        // No nested Fit+Fit Right row wrapping brand_title again.
+        assert!(
+            !ui.contains("brand_title := WrapLabel{\n                                                    width: Fit"),
+            "brand_title must not sit Fit in a Right peer row"
+        );
+    }
+
+    /// Form ScrollX under headings gets vertical margin; ChipStrip does not
+    /// (Overlay Lock tabs would float).
+    #[test]
+    fn form_scroll_x_has_vertical_margin_chipstrip_does_not() {
+        let ui = include_str!("../ui_script.rs");
+        let form = ui
+            .split("let FormScrollX = ScrollXView{")
+            .nth(1)
+            .and_then(|s| s.split("let ").next())
+            .unwrap_or("");
+        assert!(
+            form.contains("top: 8.") && form.contains("bottom: 8."),
+            "FormScrollX must pad top/bottom 8 so strips are not flush"
+        );
+        let chip = ui
+            .split("let ChipStrip = ScrollXView{")
+            .nth(1)
+            .and_then(|s| s.split("let ").next())
+            .unwrap_or("");
+        assert!(
+            !chip.contains("margin:"),
+            "ChipStrip must stay marginless (Overlay chevrons)"
+        );
+        assert!(
+            ui.contains("pay_m_scroll := FormScrollX{"),
+            "payment methods must use FormScrollX (not cramped Fill SegBtns)"
+        );
+    }
+
+    /// Lock tip rows (DEV.md InfoHelp): Fit caption + tip-only InfoHelp.
+    /// Fill caption parks/crops ℹ at the far edge. 12pt + short PIN copy so
+    /// tip-only Fit ℹ still hugs on 375 (15pt PASSCODE overflowed).
     #[test]
     fn lock_pin_prompt_is_fit_smaller_type_beside_tip() {
         let ui = include_str!("../ui_script.rs");
@@ -172,8 +234,12 @@ mod info_help_layout_tests {
             "pin_prompt must be Fit so ℹ hugs the label"
         );
         assert!(
-            pin.contains("font_size: 15."),
-            "pin_prompt must use 15pt so ENTER OWNER PASSCODE fits on phone"
+            !pin.lines().take(8).any(|l| l.trim() == "width: Fill"),
+            "pin_prompt must not be Fill (parks ℹ far)"
+        );
+        assert!(
+            pin.contains("font_size: 12."),
+            "pin_prompt must use 12pt so ENTER OWNER/STAFF PIN fits one line"
         );
         assert!(
             pin.contains("pin_help := InfoHelp{"),
@@ -183,11 +249,24 @@ mod info_help_layout_tests {
         let login = ui
             .split("lock_login_title := WrapLabel{")
             .nth(1)
-            .and_then(|s| s.split("lock_login_help").next())
+            .and_then(|s| s.split("lock_login_id").next())
             .unwrap_or("");
         assert!(
-            login.contains("width: Fill"),
-            "lock_login_title must be Fill so or_unlock_login wraps"
+            login.contains("width: Fit"),
+            "lock_login_title must be Fit — Fill parked/cropped ℹ (DEV tip-row)"
+        );
+        assert!(
+            login.contains("font_size: 12."),
+            "lock_login_title must use 12pt"
+        );
+        let status = ui
+            .split("pin_status := WrapLabel{")
+            .nth(1)
+            .and_then(|s| s.split('}').next())
+            .unwrap_or("");
+        assert!(
+            status.contains("width: Fill"),
+            "pin_status must be Fill so lockout copy wraps"
         );
     }
 

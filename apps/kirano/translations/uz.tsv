@@ -1327,3 +1327,8 @@ recent_changes	Soʻnggi oʻzgarishlar
 lane_declared_label	Soliq hisob-fakturasi
 lane_owner_label	Naqd yozuv
 money_lane_bill	Hisob: {lane}
+
+removing	Removing…
+removed	Removed
+updating_order	Updating…
+order_updated	Order updated

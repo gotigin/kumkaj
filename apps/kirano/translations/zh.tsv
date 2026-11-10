@@ -1327,3 +1327,8 @@ recent_changes	最近变动
 lane_declared_label	税务发票
 lane_owner_label	现金小票
 money_lane_bill	账单：{lane}
+
+removing	Removing…
+removed	Removed
+updating_order	Updating…
+order_updated	Order updated

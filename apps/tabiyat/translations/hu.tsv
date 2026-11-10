@@ -1339,3 +1339,8 @@ recent_changes	Legutóbbi változások
 lane_declared_label	Adószámla
 lane_owner_label	Készpénzes feljegyzés
 money_lane_bill	Számla: {lane}
+
+removing	Removing…
+removed	Removed
+updating_order	Updating…
+order_updated	Order updated

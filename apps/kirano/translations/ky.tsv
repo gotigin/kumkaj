@@ -1327,3 +1327,8 @@ recent_changes	Акыркы өзгөрүүлөр
 lane_declared_label	Салык эсеп-фактурасы
 lane_owner_label	Накталай эсеп
 money_lane_bill	Коноктун эсеби: {lane}
+
+removing	Removing…
+removed	Removed
+updating_order	Updating…
+order_updated	Order updated

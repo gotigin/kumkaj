@@ -1327,3 +1327,8 @@ recent_changes	Thlak hnai
 lane_declared_label	Chhiah bill
 lane_owner_label	Sum lehkha
 money_lane_bill	Bill: {lane}
+
+removing	Removing…
+removed	Removed
+updating_order	Updating…
+order_updated	Order updated

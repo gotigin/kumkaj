@@ -1349,3 +1349,10 @@ recent_changes	Последни промени
 lane_declared_label	Данъчна фактура
 lane_owner_label	Касов бон
 money_lane_bill	Сметка: {lane}
+
+removing	Removing…
+removed	Removed
+updating_order	Updating…
+order_updated	Order updated
+
+cancelling	Cancellingâ¦

@@ -1349,3 +1349,10 @@ recent_changes	Nýlegar breytingar
 lane_declared_label	Skattreikningur
 lane_owner_label	Peningabréf
 money_lane_bill	Reikningur: {lane}
+
+removing	Removing…
+removed	Removed
+updating_order	Updating…
+order_updated	Order updated
+
+cancelling	Cancellingâ¦

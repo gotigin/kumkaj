@@ -105,9 +105,9 @@ impl Widget for SuggestList {
                     // the selected wash); hit Button hover sits on top.
                     let template = if selected { id!(ItemSel) } else { id!(Item) };
                     let item = list.item(cx, item_id, template);
-                    item.label(cx, ids!(title)).set_text(cx, &row.value);
-                    item.label(cx, ids!(subtitle)).set_text(cx, &row.subtitle);
-                    item.label(cx, ids!(subtitle)).set_visible(cx, !row.subtitle.is_empty());
+                    item.widget(cx, ids!(title)).set_text(cx, &plain_display_text(&row.value));
+                    item.widget(cx, ids!(subtitle)).set_text(cx, &plain_display_text(&row.subtitle));
+                    item.widget(cx, ids!(subtitle)).set_visible(cx, !row.subtitle.is_empty());
                     if cols_menu {
                         item.label(cx, ids!(action)).set_visible(cx, selected);
                         item.label(cx, ids!(action)).set_text(
@@ -249,7 +249,7 @@ impl Widget for StationCheckList {
                     };
                     let item = list.item(cx, item_id, id!(Item));
                     let is_unassigned = row.value.eq_ignore_ascii_case(&unassigned);
-                    item.label(cx, ids!(title)).set_text(cx, &row.value);
+                    item.widget(cx, ids!(title)).set_text(cx, &plain_display_text(&row.value));
                     let printer_assign = self.field == "printer_assign";
                     let station_vps = self.field == "station_vps"
                         || self.field == "bill_printers"
@@ -257,15 +257,13 @@ impl Widget for StationCheckList {
                         || self.field == "kot_test_printers";
                     let team_stations = self.field == "team_kot_stations";
                     // PrinterAssign / station VPs keep id in subtitle — never show it.
-                    item.label(cx, ids!(subtitle)).set_text(
-                        cx,
-                        if printer_assign || station_vps {
-                            ""
-                        } else {
-                            &row.subtitle
-                        },
-                    );
-                    item.label(cx, ids!(subtitle)).set_visible(
+                    let sub = if printer_assign || station_vps {
+                        String::new()
+                    } else {
+                        plain_display_text(&row.subtitle)
+                    };
+                    item.widget(cx, ids!(subtitle)).set_text(cx, &sub);
+                    item.widget(cx, ids!(subtitle)).set_visible(
                         cx,
                         !printer_assign && !station_vps && !row.subtitle.is_empty(),
                     );
@@ -501,9 +499,9 @@ impl Widget for CategoryPickList {
                         let initials = tile.label(cx, ids!(thumb_initials)).text();
                         tile.view(cx, ids!(initials_plate))
                             .set_visible(cx, !initials.is_empty());
-                        tile.label(cx, ids!(title)).set_text(cx, &title);
+                        tile.widget(cx, ids!(title)).set_text(cx, &plain_display_text(&title));
                         paint_first_alias(cx, &tile, alias.as_deref());
-                        tile.label(cx, ids!(subtitle)).set_text(cx, &subtitle);
+                        tile.widget(cx, ids!(subtitle)).set_text(cx, &plain_display_text(&subtitle));
                         tile.label(cx, ids!(action)).set_text(cx, &use_text);
                     }
                     item.draw_all_unscoped(cx);
@@ -693,9 +691,9 @@ impl Widget for DishPickList {
                         let initials = tile.label(cx, ids!(thumb_initials)).text();
                         tile.view(cx, ids!(initials_plate))
                             .set_visible(cx, !initials.is_empty());
-                        tile.label(cx, ids!(title)).set_text(cx, &title);
+                        tile.widget(cx, ids!(title)).set_text(cx, &plain_display_text(&title));
                         paint_first_alias(cx, &tile, alias.as_deref());
-                        tile.label(cx, ids!(subtitle)).set_text(cx, &subtitle);
+                        tile.widget(cx, ids!(subtitle)).set_text(cx, &plain_display_text(&subtitle));
                         tile.label(cx, ids!(action)).set_text(cx, &action);
                     }
                     item.draw_all_unscoped(cx);
