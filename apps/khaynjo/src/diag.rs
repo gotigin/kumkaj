@@ -405,6 +405,7 @@ fn install_panic_hook() {
             };
             let msg = redact_text(&format!("panic at {loc}: {payload}"));
             // Best-effort write even if mutex is poisoned.
+            let mut panic_file: Option<PathBuf> = None;
             if let Ok(mut g) = global().lock() {
                 if let Some(st) = g.as_mut() {
                     let ev = Event {
@@ -421,11 +422,57 @@ fn install_panic_hook() {
                         &panic_path,
                         format!("{}\n{}\n", now_rfc3339_pretty(), msg),
                     );
+                    panic_file = Some(panic_path);
                 }
             }
+            // Production Windows is a GUI subsystem PE — panics otherwise vanish.
+            // Surface one modal so a shop / VM isn't stuck on a dead icon.
+            // Shown after the diag lock above is released.
+            #[cfg(target_os = "windows")]
+            {
+                windows_panic_message_box(&msg, panic_file.as_deref());
+            }
+            #[cfg(not(target_os = "windows"))]
+            let _ = panic_file;
             prev(info);
         }));
     });
+}
+
+/// Win32 MessageBox so a GUI-subsystem panic is visible (no console).
+#[cfg(target_os = "windows")]
+fn windows_panic_message_box(msg: &str, panic_file: Option<&std::path::Path>) {
+    use std::ffi::OsStr;
+    use std::os::windows::ffi::OsStrExt;
+    #[link(name = "user32")]
+    unsafe extern "system" {
+        fn MessageBoxW(
+            hwnd: *mut core::ffi::c_void,
+            text: *const u16,
+            caption: *const u16,
+            flags: u32,
+        ) -> i32;
+    }
+    const MB_ICONERROR: u32 = 0x10;
+    const MB_OK: u32 = 0x0;
+    // Truncate on a char boundary: a byte slice through ₹ / Devanagari would
+    // panic inside the panic hook (double panic = silent abort, no box).
+    let shown: String = msg.chars().take(900).collect();
+    let more = if shown.len() < msg.len() { "…" } else { "" };
+    let body = match panic_file {
+        Some(p) => format!("{shown}{more}\n\nAlso saved to {}", p.display()),
+        None => format!("{shown}{more}"),
+    };
+    let text: Vec<u16> = OsStr::new(&body).encode_wide().chain(Some(0)).collect();
+    let caption: Vec<u16> = OsStr::new("Khaynjo crashed").encode_wide().chain(Some(0)).collect();
+    unsafe {
+        MessageBoxW(
+            std::ptr::null_mut(),
+            text.as_ptr(),
+            caption.as_ptr(),
+            MB_OK | MB_ICONERROR,
+        );
+    }
 }
 
 fn write_event(st: &mut State, ev: Event) {

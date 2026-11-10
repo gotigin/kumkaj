@@ -36,4 +36,28 @@ load_kumkaj_env() {
   done <"$file"
   export KUMKAJ_ENV="$name"
   echo "Kumkaj env: $name (APP_ID=${KUMKAJ_APP_ID:-?} LABEL=${KUMKAJ_APP_LABEL:-?})"
+  kumkaj_lock_guard_gate
+}
+
+# Every dev run and every package (Linux, Android, Windows folder → MSI/MSIX)
+# loads its env here, so this is the one place that can stop a build that
+# would freeze. Runs the app's own scripts/check-lock-guards.sh: a repaint
+# helper called while an app_state() guard is live deadlocks the UI thread
+# (std Mutex is not reentrant). Khaynjo 1.0.0–1.0.4 shipped that way — every
+# launch hung before the first window on Windows, Linux and Android, and the
+# checker would have flagged it (DEV.md 7a). KUMKAJ_ALLOW_LOCK_GUARD_FLAGS=1
+# skips the stop for a confirmed false positive only (the scan is heuristic).
+kumkaj_lock_guard_gate() {
+  local checker="${KUMKAJ_APP_DIR:+$KUMKAJ_APP_DIR/scripts/check-lock-guards.sh}"
+  [[ -n "$checker" && -f "$checker" ]] || return 0
+  if bash "$checker"; then
+    return 0
+  fi
+  if [[ "${KUMKAJ_ALLOW_LOCK_GUARD_FLAGS:-}" == "1" ]]; then
+    echo "WARNING: lock-guard flags above ignored (KUMKAJ_ALLOW_LOCK_GUARD_FLAGS=1)." >&2
+    return 0
+  fi
+  echo "Build stopped: the call(s) flagged above lock app_state() under a live guard and freeze the app." >&2
+  echo "Move each after drop(st) / out of the guard's block. See docs/DEV.md 7a." >&2
+  return 1
 }

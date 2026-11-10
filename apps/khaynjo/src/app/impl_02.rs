@@ -1520,7 +1520,9 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
             self.ui.button(cx, ids!(cat_added)).set_text(cx, &added_label);
             self.ui.button(cx, ids!(cat_added_on)).set_text(cx, &added_label);
             self.paint_choice_pair(cx, ids!(cat_added), ids!(cat_added_on), added_on);
-            self.paint_frequent_config(cx);
+            // paint_frequent_config locks app_state itself: it runs after
+            // `drop(st)` below, never here (DEV.md 7a — under this guard it
+            // froze every launch before the first window, all platforms).
             if frequent_on {
                 self.ui
                     .widget(cx, ids!(frequent_config_help))
@@ -1572,6 +1574,7 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
                 self.paint_choice_pair(cx, idle, on, order_type == kind);
             }
             drop(st);
+            self.paint_frequent_config(cx);
         }
         self.set_report_rows(cx, ids!(staff_label), staff_rows);
         self.ui

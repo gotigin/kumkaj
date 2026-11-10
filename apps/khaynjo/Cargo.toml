@@ -1,6 +1,6 @@
 [package]
 name = "kumkaj-khaynjo"
-version = "1.0.0"
+version = "1.0.5"
 edition = "2024"
 description = "Khaynjo — local-first restaurant operating system (tables, KOT, billing, books)"
 license = "MIT OR Apache-2.0"
@@ -15,7 +15,7 @@ product_name = "Khaynjo"
 # Play integer: start at 1; bump +1 per Play upload (manual; never YYYYMMDDHH auto).
 # See docs/DEV.md / .cursor/rules/play-version-code.mdc.
 version_code = 3
-version_name = "1.0.0"
+version_name = "1.0.5"
 min_sdk_version = 26
 
 [dependencies]
