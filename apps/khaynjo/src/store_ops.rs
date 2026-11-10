@@ -559,6 +559,36 @@ impl Store {
         Ok(())
     }
 
+    /// Order Kitchen dropdown pick on a pending line. `station_id` empty =
+    /// "Kitchen (no station)" — kept on the order so a reload does not put
+    /// the menu kitchen back and print paper.
+    pub fn set_pending_line_station(
+        &self,
+        line_id: &str,
+        station_id: &str,
+        actor: &StaffMember,
+    ) -> Result<(), String> {
+        self.assert_server_writer("Set kitchen station")?;
+        let sid = station_id.trim();
+        let n = self
+            .conn
+            .execute(
+                "UPDATE running_lines SET station_id = ?2
+                  WHERE id = ?1 AND kot_id = '' AND cancelled = 0",
+                params![line_id, sid],
+            )
+            .map_err(|e| e.to_string())?;
+        if n == 0 {
+            return Err("Only unsent lines can change kitchen".into());
+        }
+        self.audit(
+            actor,
+            "line.station",
+            &format!("{line_id}:{}", if sid.is_empty() { "none" } else { sid }),
+        )?;
+        Ok(())
+    }
+
     pub fn set_line_seat(&self, line_id: &str, seat_no: i64, actor: &StaffMember) -> Result<(), String> {
         self.assert_server_writer("Assign seat")?;
         self.conn

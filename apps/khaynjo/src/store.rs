@@ -728,6 +728,8 @@ impl Store {
             "ALTER TABLE kitchen_stations ADD COLUMN target_prep_mins INTEGER NOT NULL DEFAULT 15",
             // Size / topping choices frozen on the sale line (reports).
             "ALTER TABLE sale_lines ADD COLUMN modifiers_json TEXT NOT NULL DEFAULT '[]'",
+            // Order Kitchen dropdown pick on pending lines ("" = no station).
+            "ALTER TABLE running_lines ADD COLUMN station_id TEXT NOT NULL DEFAULT ''",
         ] {
             let _ = self.conn.execute(stmt, []);
         }
@@ -812,7 +814,8 @@ impl Store {
                     seq INTEGER NOT NULL DEFAULT 0,
                     seat_no INTEGER NOT NULL DEFAULT 0,
                     held INTEGER NOT NULL DEFAULT 0,
-                    course_no INTEGER NOT NULL DEFAULT 0
+                    course_no INTEGER NOT NULL DEFAULT 0,
+                    station_id TEXT NOT NULL DEFAULT ''
                 );
                 CREATE INDEX IF NOT EXISTS idx_running_lines_order
                     ON running_lines(order_id);
@@ -3879,6 +3882,12 @@ impl Store {
     /// by the server the moment a KOT is sent — from the counter or from a
     /// waiter's paired device — when auto-print is on.
     pub fn print_kot(&self, kot_id: &str) -> Result<std::path::PathBuf, String> {
+        // "Kitchen (no station)" never spools — even if Settings still has
+        // printers on the blank `kot:` route. Named kitchens still print on
+        // whatever device the owner mapped.
+        if !self.kot_gets_paper(kot_id) {
+            return Err("Kitchen (no station) does not print".into());
+        }
         let station_id = self.station_id_for_kot(kot_id).unwrap_or_default();
         let slip = self.kot_slip_format()?;
         // Kitchen ticket width is independent of the bill (default 80 mm).
@@ -8260,26 +8269,17 @@ impl Store {
         let branch_id = self.active_branch_id()?;
         let stations = self.list_stations()?;
         // Person rights: refuse kitchens outside this user's allowed stations
-        // before anything is written. Resolve empty line.station_id from the
-        // menu product — same rule as send_kot (chosen kitchen else menu).
+        // before anything is written. Empty station_id is "Kitchen (no
+        // station)" — no rights check, no menu fallback (that reprinted).
         let feats = actor.effective_features();
         for line in draft.lines.iter().filter(|l| !l.kot_sent) {
-            let sid = {
-                let own = line.station_id.trim();
-                if !own.is_empty() {
-                    own.to_string()
-                } else {
-                    self.get_product(&line.product_id)?
-                        .map(|p| p.station_id)
-                        .unwrap_or_default()
-                }
-            };
-            if !sid.is_empty() && !feats.allows_kot_station(&sid) {
+            let sid = line.station_id.trim();
+            if !sid.is_empty() && !feats.allows_kot_station(sid) {
                 let name = stations
                     .iter()
                     .find(|s| s.id == sid)
                     .map(|s| s.name.as_str())
-                    .unwrap_or(sid.as_str());
+                    .unwrap_or(sid);
                 return Err(format!("Not allowed to use kitchen: {name}"));
             }
         }
@@ -8293,24 +8293,17 @@ impl Store {
         let mut stock_hits: Vec<(String, i64)> = Vec::new();
         for line in &draft.lines {
             let product = self.get_product(&line.product_id)?;
-            let (tax_bps, menu_station, tracked) = product
+            let (tax_bps, tracked) = product
                 .as_ref()
-                .map(|p| (p.tax_bps, p.station_id.clone(), p.tracks_stock()))
-                .unwrap_or((0, String::new(), false));
+                .map(|p| (p.tax_bps, p.tracks_stock()))
+                .unwrap_or((0, false));
             tax_paise = tax_paise
                 .saturating_add(fiscal::tax_on_amount(line.line_total_paise, tax_bps, pricing));
             // Lines the kitchen already has (sent on the table's running
             // order, or a counter KOT before payment) are not fired again.
-            // Kitchen: chosen on the line, else the menu item's station.
+            // Cart/draft station only — empty stays "Kitchen (no station)".
             if !line.kot_sent {
-                let station_id = {
-                    let own = line.station_id.trim();
-                    if !own.is_empty() {
-                        own.to_string()
-                    } else {
-                        menu_station
-                    }
-                };
+                let station_id = line.station_id.trim().to_string();
                 let label = kot_line_label(line);
                 match by_station.iter_mut().find(|(sid, _)| *sid == station_id) {
                     Some((_, items)) => items.push(label),

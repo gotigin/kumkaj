@@ -69,17 +69,19 @@ fn row_to_line(row: &rusqlite::Row<'_>) -> rusqlite::Result<RunningLine> {
         seat_no: row.get::<_, i64>(18).unwrap_or(0),
         held: row.get::<_, i64>(19).unwrap_or(0) != 0,
         course_no: row.get::<_, i64>(20).unwrap_or(0),
+        station_id: row.get::<_, String>(21).unwrap_or_default(),
     })
 }
 
 const LINE_COLUMNS: &str = "id, order_id, kot_id, product_id, name, unit_price_paise,
     line_total_paise, qty_milli, unit_label, note, cancelled, complimentary, reason, prepared,
     changed_by, approved_by, created_at, created_by,
-    COALESCE(seat_no, 0), COALESCE(held, 0), COALESCE(course_no, 0)";
+    COALESCE(seat_no, 0), COALESCE(held, 0), COALESCE(course_no, 0),
+    COALESCE(station_id, '')";
 
 const LINE_INSERT_COLUMNS: &str = "id, order_id, kot_id, product_id, name, unit_price_paise,
     line_total_paise, qty_milli, unit_label, note, cancelled, complimentary, reason, prepared,
-    changed_by, approved_by, created_at, created_by, seat_no, held, course_no";
+    changed_by, approved_by, created_at, created_by, seat_no, held, course_no, station_id";
 
 impl Store {
     /// May `actor` do `right`? `Allowed` passes; `WithApproval` needs an
@@ -226,7 +228,7 @@ impl Store {
             .execute(
                 &format!(
                     "INSERT INTO running_lines({LINE_INSERT_COLUMNS}, seq)
-                     VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14, ?15, ?16, ?17, ?18, ?19, ?20, ?21, ?22)"
+                     VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14, ?15, ?16, ?17, ?18, ?19, ?20, ?21, ?22, ?23)"
                 ),
                 params![
                     l.id,
@@ -250,6 +252,7 @@ impl Store {
                     l.seat_no,
                     l.held as i64,
                     l.course_no,
+                    l.station_id,
                     seq
                 ],
             )
@@ -343,6 +346,7 @@ impl Store {
                     unit_label: product.unit_label.clone(),
                     created_at: Local::now().to_rfc3339(),
                     created_by: actor.name.clone(),
+                    station_id: product.station_id.clone(),
                     ..Default::default()
                 },
                 seq,
@@ -433,6 +437,9 @@ impl Store {
                         created_at: Local::now().to_rfc3339(),
                         created_by: actor.name.clone(),
                         held: line.hold_send,
+                        // Menu / dropdown kitchen on the order — empty means
+                        // "Kitchen (no station)", not "look up the menu later".
+                        station_id: line.station_id.clone(),
                         ..Default::default()
                     },
                     seq,
@@ -508,6 +515,25 @@ impl Store {
     }
 
     /// Kitchen station this KOT was sent to (empty = unassigned / default).
+    ///
+    /// **Paper rule:** `"Kitchen (no station)"` (empty station id) never gets
+    /// a slip while the shop has kitchens. That is the Order desk meaning of
+    /// no station — not a printer Settings override. Named kitchens still
+    /// print on whatever device the owner mapped in Settings → Printers
+    /// (bill printer for Grill, KOT device for the counter bill, etc.).
+    /// A shop with no stations at all keeps paper on the unassigned/`kot:`
+    /// route (else the bill printer), or it would get no KOT paper at all.
+    pub fn station_gets_kot_paper(&self, station_id: &str) -> bool {
+        !station_id.trim().is_empty()
+            || self.list_stations().map(|s| s.is_empty()).unwrap_or(true)
+    }
+
+    /// [`Self::station_gets_kot_paper`] for a stored kitchen ticket.
+    pub fn kot_gets_paper(&self, kot_id: &str) -> bool {
+        let sid = self.station_id_for_kot(kot_id).unwrap_or_default();
+        self.station_gets_kot_paper(&sid)
+    }
+
     pub fn station_id_for_kot(&self, kot_id: &str) -> Result<String, String> {
         self.conn
             .query_row(
@@ -713,26 +739,16 @@ impl Store {
     ) -> Result<Vec<String>, String> {
         let table_id = table_id.filter(|t| !t.is_empty());
         // Person rights: refuse kitchens outside this user's allowed stations.
-        // Resolve empty line.station_id from the menu product — that is the
-        // kitchen the ticket will actually use.
+        // Empty station_id is "Kitchen (no station)" — no rights check, no paper.
         let feats = actor.effective_features();
         for line in draft.lines.iter().filter(|l| !l.kot_sent) {
-            let sid = {
-                let own = line.station_id.trim();
-                if !own.is_empty() {
-                    own.to_string()
-                } else {
-                    self.get_product(&line.product_id)?
-                        .map(|p| p.station_id)
-                        .unwrap_or_default()
-                }
-            };
-            if !sid.is_empty() && !feats.allows_kot_station(&sid) {
+            let sid = line.station_id.trim();
+            if !sid.is_empty() && !feats.allows_kot_station(sid) {
                 let name = self
                     .list_stations()
                     .ok()
                     .and_then(|ss| ss.into_iter().find(|s| s.id == sid).map(|s| s.name))
-                    .unwrap_or_else(|| sid.clone());
+                    .unwrap_or_else(|| sid.to_string());
                 return Err(format!("Not allowed to use kitchen: {name}"));
             }
         }
@@ -741,19 +757,20 @@ impl Store {
                 self.seat_draft_unsent(tid, draft, actor)?;
                 // Key by product+note+comp — not product alone (two same dishes
                 // to different kitchens must not collapse to the last pick).
+                // Always record the cart's station — including "" when the
+                // waiter put the dish on "Kitchen (no station)". Omitting
+                // empty used to let send_kot_filtered fall back to the menu
+                // station and print paper behind the Order button's back.
                 let mut station_by_line = std::collections::HashMap::<String, String>::new();
                 for line in draft.lines.iter().filter(|l| !l.kot_sent) {
-                    let sid = line.station_id.trim();
-                    if !sid.is_empty() {
-                        station_by_line.insert(
-                            kot_station_override_key(
-                                &line.product_id,
-                                &line.note,
-                                line.line_total_paise == 0 && line.unit_price_paise > 0,
-                            ),
-                            sid.to_string(),
-                        );
-                    }
+                    station_by_line.insert(
+                        kot_station_override_key(
+                            &line.product_id,
+                            &line.note,
+                            line.line_total_paise == 0 && line.unit_price_paise > 0,
+                        ),
+                        line.station_id.trim().to_string(),
+                    );
                 }
                 self.send_kot_filtered(tid, actor, None, true, &station_by_line)
             } else {
@@ -831,16 +848,9 @@ impl Store {
         let feats = actor.effective_features();
         let mut by_station: Vec<(String, Vec<&crate::domain::SaleLine>)> = Vec::new();
         for line in &lines {
-            let station_id = {
-                let own = line.station_id.trim();
-                if !own.is_empty() {
-                    own.to_string()
-                } else {
-                    self.get_product(&line.product_id)?
-                        .map(|p| p.station_id)
-                        .unwrap_or_default()
-                }
-            };
+            // Cart/draft station only — empty means "Kitchen (no station)",
+            // not "look up the menu again" (that reprinted after Don't use).
+            let station_id = line.station_id.trim().to_string();
             if !station_id.is_empty() && !feats.allows_kot_station(&station_id) {
                 let name = stations
                     .iter()
@@ -1026,16 +1036,17 @@ impl Store {
                 &line.note,
                 line.complimentary,
             );
-            let station_id = station_by_line
-                .get(&key)
-                .cloned()
-                .or_else(|| {
-                    self.get_product(&line.product_id)
-                        .ok()
-                        .flatten()
-                        .map(|p| p.station_id)
-                })
-                .unwrap_or_default();
+            // Key present (even with "") wins — that is the Order desk pick.
+            // Missing key → menu station (Fire course / paths without a draft).
+            let station_id = if let Some(sid) = station_by_line.get(&key) {
+                sid.clone()
+            } else {
+                self.get_product(&line.product_id)
+                    .ok()
+                    .flatten()
+                    .map(|p| p.station_id)
+                    .unwrap_or_default()
+            };
             if !station_id.is_empty()
                 && !actor.effective_features().allows_kot_station(&station_id)
             {

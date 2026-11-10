@@ -1827,13 +1827,7 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
         {
             let st = app_state().lock().unwrap();
             let unassigned = st.t("kot_unassigned");
-            let dests = pending_kot_destinations_ordered(
-                &st.products,
-                &st.stations,
-                &st.cart.lines,
-                &unassigned,
-                &st.kot_station_priority,
-            );
+            let dests = st.kot_send_destinations();
             let has_unsent = st
                 .cart
                 .lines
@@ -1890,7 +1884,8 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
                 (st.t("send_kot"), String::new(), false)
             };
             // KOT reprint: kot_stations (not bill Right::Reprint). Client vs
-            // Server only changes where printers run.
+            // Server only changes where printers run. No-station dishes have
+            // no slip; named kitchens print on the owner's mapped device.
             let may_kot_reprint = st.session.as_ref().map(|s| {
                 let feats = s.effective_features();
                 st.cart.lines.iter().any(|l| {
@@ -1899,7 +1894,8 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
                         && l.kot_id != QUEUED_KOT
                         && {
                             let sid = l.kitchen_station_id(&st.products);
-                            sid.is_empty() || feats.allows_kot_station(sid)
+                            st.station_gets_kot_paper(sid)
+                                && (sid.is_empty() || feats.allows_kot_station(sid))
                         }
                 })
             }).unwrap_or(false);
@@ -1907,7 +1903,12 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
                 .cart
                 .lines
                 .iter()
-                .filter(|l| l.is_sent() && !l.reprint_skip && l.kot_id != QUEUED_KOT)
+                .filter(|l| {
+                    l.is_sent()
+                        && !l.reprint_skip
+                        && l.kot_id != QUEUED_KOT
+                        && st.station_gets_kot_paper(l.kitchen_station_id(&st.products))
+                })
                 .count();
             let reprint_label = {
                 let base = st.t("reprint_kot");
@@ -1935,7 +1936,8 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
                                 && st.session.as_ref().map(|s| {
                                     let feats = s.effective_features();
                                     lines.iter().any(|(sid, _, _, _)| {
-                                        sid.is_empty() || feats.allows_kot_station(sid)
+                                        st.station_gets_kot_paper(sid)
+                                            && (sid.is_empty() || feats.allows_kot_station(sid))
                                     })
                                 }).unwrap_or(false);
                         }

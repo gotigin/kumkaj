@@ -3319,9 +3319,11 @@ impl MatchEvent for App {
             // the next sync erased — the kitchen never saw it).
             let result = (|| -> Result<(SnackKind, String), String> {
                 let mut st = app_state().lock().unwrap();
-                // Last Kitchen choice on dishes that still have none — so the
-                // waiter does not re-open the dropdown every Send.
-                st.apply_remembered_kot_to_unassigned();
+                // Send exactly what the button names. The remembered kitchen
+                // goes on a dish when it is added (and when the table loads),
+                // where the dropdown and this button show it — re-applying it
+                // here sent "Kitchen (no station)" dishes to that kitchen's
+                // printer behind the button's back (2026-11-10).
                 let actor = st.actor()?;
                 st.require_cart_modifiers()?;
                 // Person rights: refuse send if any pending line's kitchen
@@ -3362,19 +3364,10 @@ impl MatchEvent for App {
                 } else {
                     dest_line.clone()
                 };
-                // Stations this Send will hit — persist before lines flip to sent.
-                let used_stations: Vec<String> = {
-                    let products = st.products.clone();
-                    st.cart
-                        .lines
-                        .iter()
-                        .filter(|l| !l.is_sent() && !l.hold_send)
-                        .map(|l| l.kitchen_station_id(&products).to_string())
-                        .filter(|sid| !sid.is_empty())
-                        .collect::<std::collections::BTreeSet<_>>()
-                        .into_iter()
-                        .collect()
-                };
+                // The kitchen new dishes go to stays the one the waiter ticked.
+                // Send used to tick every station it hit and make the last of
+                // them (by id) the new default, so the next dish went to a
+                // kitchen nobody picked.
                 let msg = if st.device_role == DeviceRole::Client {
                     let table_name = table_id.as_ref().and_then(|tid| {
                         st.tables.iter().find(|t| &t.id == tid).map(|t| t.name.clone())
@@ -3408,9 +3401,6 @@ impl MatchEvent for App {
                         // true so Send moves on; reprint waits for a real id.
                         st.cart.mark_new_lines_sent(QUEUED_KOT);
                     }
-                    for sid in &used_stations {
-                        st.select_kot_station(sid);
-                    }
                     // Queued until the shop device answers — a pending state, so
                     // amber, as before (it used to be read off "shop device").
                     return Ok((SnackKind::Warn, queued_msg));
@@ -3421,15 +3411,15 @@ impl MatchEvent for App {
                     };
                     let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
                     let paper = net::print_sent_kots(store, &kot_ids);
+                    // Only "Kitchen (no station)" on this Send: Kitchen screen
+                    // only, no slip — say that, not "printing".
+                    let any_paper = kot_ids.iter().any(|id| store.kot_gets_paper(id));
                     let msg = kot_sent_status(
                         &|key: &str| st.t(key),
                         &kitchens,
-                        store.kot_auto_print(),
+                        store.kot_auto_print() && any_paper,
                         paper.as_deref(),
                     );
-                    for sid in &used_stations {
-                        st.select_kot_station(sid);
-                    }
                     match &table_id {
                         // The table's order now holds them: show them as sent.
                         Some(tid) => {

@@ -6,6 +6,14 @@ fn typed_aliases(text: &str) -> Vec<String> {
         .collect()
 }
 
+/// A cart line that is seated on a table's running order (its id is a real
+/// `running_lines` row) — not the counter desk and not a Client's queued KOT.
+fn is_table_running_line(running_line_id: &str) -> bool {
+    !running_line_id.is_empty()
+        && running_line_id != "counter"
+        && !running_line_id.starts_with(QUEUED_LINE)
+}
+
 /// What the counter says after Send KOT on the shop device: in the staff's
 /// language, with the snack kind decided here rather than guessed from
 /// English words — a Gujarati "not printed" must still show red, because

@@ -1387,11 +1387,7 @@ fn confirm_line_action(&mut self, cx: &mut Cx) {
             .map(|(i, _)| i)
             .collect();
         let n = idxs.len();
-        for i in idxs {
-            if let Some(line) = st.cart.lines.get_mut(i) {
-                line.hold_send = true;
-            }
-        }
+        st.hold_unsent_lines(&idxs)?;
         let msg = st
             .t("kot_unassigned_held")
             .replace("{n}", &n.to_string());
@@ -1466,6 +1462,9 @@ fn confirm_line_action(&mut self, cx: &mut Cx) {
             .map(|s| (s.id.clone(), s.name.clone()))
             .ok_or_else(|| "Station not found".to_string())?;
         // Cart-local clear — do not rewrite the menu from an extra till.
+        // Always "Kitchen (no station)", never Hold: Hold is only Don't use on
+        // the no-station row. Holding menu dishes made Send skip them, then
+        // unhold + reload put the menu kitchen back and printed paper.
         let idxs: Vec<usize> = st
             .cart
             .lines
@@ -1476,68 +1475,56 @@ fn confirm_line_action(&mut self, cx: &mut Cx) {
             .map(|(i, _)| i)
             .collect();
         let mut n = 0usize;
+        let mut cleared: Vec<String> = Vec::new();
         for i in idxs {
-            let pid = st.cart.lines[i].product_id.clone();
-            let menu_sid = st
-                .products
-                .iter()
-                .find(|p| p.id == pid)
-                .map(|p| p.station_id.clone())
-                .unwrap_or_default();
             let line = &mut st.cart.lines[i];
             line.station_id.clear();
-            // Menu still routes here → hold off this KOT instead of reappearing.
-            if menu_sid == station_id {
-                line.hold_send = true;
-            }
+            cleared.push(line.running_line_id.clone());
             n += 1;
         }
+        for rid in &cleared {
+            st.remember_line_station(rid, "");
+        }
         st.deselect_kot_station(&station_id);
-        let msg = st
-            .t("kot_station_cleared")
-            .replace("{n}", &n.to_string())
-            .replace("{station}", &station_name);
         drop(st);
+        for rid in &cleared {
+            if let Err(e) = self.persist_line_station(cx, rid, "") {
+                return Err(e);
+            }
+        }
+        let msg = {
+            let st = app_state().lock().unwrap();
+            st.t("kot_station_cleared")
+                .replace("{n}", &n.to_string())
+                .replace("{station}", &station_name)
+        };
         let _ = cx;
         Ok(msg)
     }
 
     /// Kitchen dropdown face: `Kitchen`, `Kitchen · Tandoor`, or
-    /// `Done · …` while the checklist is open. Uses unsent line stations
-    /// when present, else the remembered multi-check / default so the face
-    /// still names the kitchen after Send (empty unsent) and before the
-    /// next dish is added.
+    /// `Done · …` while the checklist is open. Names exactly what the Send
+    /// button names ([`AppState::kot_send_destinations`]) — including
+    /// "Kitchen (no station)" — and only when nothing is waiting to send,
+    /// the kitchen the next dish will go to. It used to fall back to the
+    /// remembered kitchens while unsent dishes had none, so the face said
+    /// Tandoor while Send said no station (2026-11-10).
     fn paint_kot_station_dd(&mut self, cx: &mut Cx) {
         let (face, _) = {
             let st = app_state().lock().unwrap();
-            let station_name = |sid: &str| -> Option<String> {
-                if sid.is_empty() {
-                    return None;
-                }
-                st.stations
+            let mut names: Vec<String> = st
+                .kot_send_destinations()
+                .into_iter()
+                .map(|(name, _)| name)
+                .collect();
+            if names.is_empty() {
+                let next = st.kot_station_default.trim();
+                if let Some(name) = st
+                    .stations
                     .iter()
-                    .find(|s| s.id == sid)
+                    .find(|s| !next.is_empty() && s.id == next)
                     .map(|s| s.name.clone())
-            };
-            let mut names: Vec<String> = Vec::new();
-            for line in st.cart.lines.iter().filter(|l| !l.is_sent() && !l.hold_send) {
-                if let Some(name) = station_name(line.kitchen_station_id(&st.products)) {
-                    if !names.iter().any(|n| n == &name) {
-                        names.push(name);
-                    }
-                }
-            }
-            if names.is_empty() {
-                for sid in &st.kot_stations_selected {
-                    if let Some(name) = station_name(sid) {
-                        if !names.iter().any(|n| n == &name) {
-                            names.push(name);
-                        }
-                    }
-                }
-            }
-            if names.is_empty() {
-                if let Some(name) = station_name(st.kot_station_default.trim()) {
+                {
                     names.push(name);
                 }
             }
@@ -1609,6 +1596,7 @@ fn confirm_line_action(&mut self, cx: &mut Cx) {
         // overwrite another station (that felt like exclusive radios).
         let products = st.products.clone();
         let mut n = 0usize;
+        let mut seated: Vec<String> = Vec::new();
         for line in st
             .cart
             .lines
@@ -1619,7 +1607,11 @@ fn confirm_line_action(&mut self, cx: &mut Cx) {
                 continue;
             }
             line.station_id = station_id.clone();
+            seated.push(line.running_line_id.clone());
             n += 1;
+        }
+        for rid in &seated {
+            st.remember_line_station(rid, &station_id);
         }
         st.select_kot_station(&station_id);
         let msg = st
@@ -1627,7 +1619,53 @@ fn confirm_line_action(&mut self, cx: &mut Cx) {
             .replace("{n}", &n.to_string())
             .replace("{station}", &station_name);
         drop(st);
+        for rid in &seated {
+            if let Err(e) = self.persist_line_station(cx, rid, &station_id) {
+                return Err(e);
+            }
+        }
         let _ = cx;
         Ok(msg)
+    }
+
+    /// Write a Kitchen dropdown pick onto the seated pending line so the next
+    /// table reload (and other tills) keep it. Desk / counter lines have no
+    /// running id — cart + `kot_line_station` are enough for them.
+    fn persist_line_station(
+        &mut self,
+        cx: &mut Cx,
+        running_line_id: &str,
+        station_id: &str,
+    ) -> Result<(), String> {
+        let _ = cx;
+        let rid = running_line_id.trim();
+        if !is_table_running_line(rid) {
+            return Ok(());
+        }
+        let mut st = app_state().lock().unwrap();
+        st.remember_line_station(rid, station_id);
+        match st.table_action(
+            net::RunningAction::SetLineStation {
+                line_id: rid.to_string(),
+                station_id: station_id.to_string(),
+            },
+            "",
+            "",
+            phone::Follow::Refresh,
+        )? {
+            Acted::Sent => {
+                // Client: Server has the pick; keep cart until refresh.
+                if let Some(line) = st
+                    .cart
+                    .lines
+                    .iter_mut()
+                    .find(|l| l.running_line_id == rid)
+                {
+                    line.station_id = station_id.to_string();
+                }
+            }
+            Acted::Here(_) => {}
+        }
+        Ok(())
     }
 }

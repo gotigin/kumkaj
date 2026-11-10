@@ -143,6 +143,7 @@ impl AppState {
             kot_station_priority: Vec::new(),
             kot_stations_selected: Vec::new(),
             kot_station_default: String::new(),
+            kot_line_station: std::collections::HashMap::new(),
             team_select_pending: false,
             team_copy_hire_pending: false,
             team_copy_edit_pending: false,
@@ -849,6 +850,21 @@ impl AppState {
                 }
             }
         }
+        // Session picks (Client before Server ack, or mid-action): overlay the
+        // order's stored station. Sent lines take theirs from the ticket above.
+        // Do NOT fill empty from the menu — empty on the order means the waiter
+        // cleared it to "Kitchen (no station)"; putting the menu back made
+        // Don't use print that kitchen after the next reload.
+        for line in &mut self.cart.lines {
+            if line.running_line_id.is_empty() {
+                continue;
+            }
+            if line.is_sent() {
+                self.kot_line_station.remove(&line.running_line_id);
+            } else if let Some(sid) = self.kot_line_station.get(&line.running_line_id) {
+                line.station_id = sid.clone();
+            }
+        }
         self.apply_remembered_kot_to_unassigned();
         Ok(())
     }
@@ -986,7 +1002,11 @@ impl AppState {
             )?;
             return Ok(Acted::Sent);
         }
-        let pricing_only = matches!(action, net::RunningAction::SetLinePricing { .. });
+        let skip_reload = matches!(
+            action,
+            net::RunningAction::SetLinePricing { .. }
+                | net::RunningAction::SetLineStation { .. }
+        );
         let store = self.store.as_ref().ok_or("No store")?;
         let pin = Some(approval_pin).filter(|p| !p.trim().is_empty());
         let done = net::apply_running_action(store, &actor, pin, &action)?;
@@ -999,10 +1019,10 @@ impl AppState {
         let text = done.text;
         // Other devices on `/wait` see the bump / seat / cancel at once.
         net::publish_books(store);
-        if pricing_only {
-            // Unit @ / Applied already live in the open cart — do not
-            // load_table_cart (that clears open_cart_line and used to feel
-            // like Print bill / any refresh "reverted" Applied).
+        if skip_reload {
+            // Unit @ / Applied / Kitchen station already live in the open
+            // cart — do not load_table_cart (that clears open_cart_line and
+            // used to feel like Print bill / any refresh "reverted" them).
             return Ok(Acted::Here(text));
         }
         self.reload_all()?;
@@ -1165,7 +1185,9 @@ impl AppState {
                 let mut counts: std::collections::HashMap<String, usize> =
                     std::collections::HashMap::new();
                 let mut unassigned_n = 0usize;
+                let mut unsent_n = 0usize;
                 for line in self.cart.lines.iter().filter(|l| !l.is_sent() && !l.hold_send) {
+                    unsent_n += 1;
                     let sid = line.kitchen_station_id(&self.products);
                     if sid.is_empty() {
                         unassigned_n += 1;
@@ -1184,9 +1206,16 @@ impl AppState {
                 }
                 rows.extend(stations.into_iter().map(|st| {
                     let n = counts.get(&st.id).copied().unwrap_or(0);
-                    // Checked = multi-select OR dishes already on this kitchen.
-                    let selected = n > 0
-                        || self.kot_stations_selected.iter().any(|s| s == &st.id);
+                    // Ticked = this Send goes there — the same lines the Send
+                    // button names. A remembered-but-unused kitchen used to
+                    // show ticked while Send went elsewhere (2026-11-10).
+                    // Nothing waiting to send: tick the kitchen the next dish
+                    // will go to.
+                    let selected = if unsent_n > 0 {
+                        n > 0
+                    } else {
+                        self.kot_station_default == st.id
+                    };
                     let sub = if n > 0 { format!("{n}") } else { String::new() };
                     if selected {
                         SuggestRow::new(st.name.clone(), sub).with_action(clear_l.clone())
@@ -1444,45 +1473,129 @@ impl AppState {
         self.persist_kot_station_prefs();
     }
 
-    /// Uncheck a station (leave others checked).
+    /// Uncheck a station (leave others checked). When it was the kitchen new
+    /// dishes go to, new dishes now go nowhere until another is ticked —
+    /// quietly promoting another station by print priority sent the next
+    /// dish somewhere the waiter never picked.
     fn deselect_kot_station(&mut self, station_id: &str) {
         let id = station_id.trim();
         self.kot_stations_selected.retain(|s| s != id);
         if self.kot_station_default == id {
-            self.kot_station_default = self
-                .kot_station_priority
-                .iter()
-                .find(|p| self.kot_stations_selected.iter().any(|s| s == *p))
-                .cloned()
-                .or_else(|| self.kot_stations_selected.first().cloned())
-                .unwrap_or_default();
+            self.kot_station_default.clear();
         }
         self.persist_kot_station_prefs();
     }
 
-    /// Put the remembered kitchen on unsent lines that still have none
-    /// (menu station and Hold left alone).
+    /// Put the remembered kitchen — the one the waiter last ticked — on
+    /// desk punches that still have none (menu station, Hold, and a pick
+    /// already made for that dish are left alone). Seated table lines keep
+    /// whatever is on the order (including "" for no station) — filling them
+    /// from the default after Don't use made the next Send print paper.
+    /// Runs when a dish is added; Send itself never re-routes a dish.
     fn apply_remembered_kot_to_unassigned(&mut self) {
-        let default = self
-            .kot_station_priority
-            .iter()
-            .find(|p| self.kot_stations_selected.iter().any(|s| s == *p))
-            .cloned()
-            .filter(|id| !id.is_empty())
-            .unwrap_or_else(|| self.kot_station_default.trim().to_string());
+        let default = self.kot_station_default.trim().to_string();
         if default.is_empty() || !self.stations.iter().any(|s| s.id == default) {
             return;
         }
+        if let Some(session) = self.session.as_ref() {
+            if !session.effective_features().allows_kot_station(&default) {
+                return;
+            }
+        }
         let products = self.products.clone();
+        let picked = &self.kot_line_station;
         for line in self
             .cart
             .lines
             .iter_mut()
             .filter(|l| !l.is_sent() && !l.hold_send)
         {
+            if is_table_running_line(&line.running_line_id) {
+                continue;
+            }
+            if picked.contains_key(&line.running_line_id) {
+                continue;
+            }
             if line.kitchen_station_id(&products).is_empty() {
                 line.station_id = default.clone();
             }
+        }
+    }
+
+    /// Where this Send goes: `(kitchen name, dish count)` for every unsent,
+    /// unheld line, in print priority, with "Kitchen (no station)" for lines
+    /// that have none. The Send button, the Kitchen dropdown face and its
+    /// ticks all read this, and Send sends exactly these lines — one source,
+    /// so the dropdown can no longer say one kitchen while Send uses another.
+    fn kot_send_destinations(&self) -> Vec<(String, usize)> {
+        let unassigned = self.t("kot_unassigned");
+        pending_kot_destinations_ordered(
+            &self.products,
+            &self.stations,
+            &self.cart.lines,
+            &unassigned,
+            &self.kot_station_priority,
+        )
+    }
+
+    /// Hold unsent lines from the Order dropdown the way the line's own Hold
+    /// does. The cart shows it at once; a dish seated on a table is also held
+    /// on the order (`HoldLine`), so the next refresh keeps it held — a
+    /// cart-only hold from the dropdown used to come back unheld and go out
+    /// with the next Send. Lines are addressed by id: on the Server each
+    /// table action reloads the cart, so indices do not survive the loop.
+    fn hold_unsent_lines(&mut self, line_idxs: &[usize]) -> Result<(), String> {
+        let mut seated: Vec<String> = Vec::new();
+        for &i in line_idxs {
+            if let Some(line) = self.cart.lines.get_mut(i) {
+                if line.is_sent() {
+                    continue;
+                }
+                line.hold_send = true;
+                if is_table_running_line(&line.running_line_id) {
+                    seated.push(line.running_line_id.clone());
+                }
+            }
+        }
+        for rid in seated {
+            if let Acted::Sent = self.table_action(
+                net::RunningAction::HoldLine {
+                    line_id: rid.clone(),
+                    held: true,
+                },
+                "",
+                "Line held",
+                phone::Follow::Refresh,
+            )? {
+                // Client: the Server holds it on the queued job; keep the
+                // cart showing Held until the refresh brings the order back.
+                if let Some(line) = self
+                    .cart
+                    .lines
+                    .iter_mut()
+                    .find(|l| l.running_line_id == rid)
+                {
+                    line.hold_send = true;
+                }
+            }
+        }
+        Ok(())
+    }
+
+    /// Same rule as `Store::station_gets_kot_paper`: no station → no slip
+    /// while the shop has kitchens. Named kitchens still print on whatever
+    /// device Settings → Printers maps for that route.
+    fn station_gets_kot_paper(&self, station_id: &str) -> bool {
+        !station_id.trim().is_empty() || self.stations.is_empty()
+    }
+
+    /// Remember a dropdown pick for a dish already seated on the table order
+    /// (see [`Self::kot_line_station`]). Desk / counter lines live only in
+    /// the cart, so they need no entry.
+    fn remember_line_station(&mut self, running_line_id: &str, station_id: &str) {
+        if is_table_running_line(running_line_id) {
+            self.kot_line_station
+                .insert(running_line_id.to_string(), station_id.to_string());
         }
     }
 

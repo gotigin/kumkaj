@@ -124,6 +124,7 @@ include!("smoke_script.rs");
 include!("app/main_impl.rs");
 include!("shell_tests/nav_order_tests.rs");
 include!("shell_tests/order_desk_tests.rs");
+include!("shell_tests/kitchen_dropdown_tests.rs");
 include!("shell_tests/ux_rules_tests.rs");
 include!("shell_tests/menu_window_tests.rs");
 include!("shell_tests/floor_tests.rs");

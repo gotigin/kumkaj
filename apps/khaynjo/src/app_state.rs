@@ -261,9 +261,15 @@ struct AppState {
     /// Kitchen stations currently checked (multi-select). Print order follows
     /// [`kot_station_priority`] among these. Persisted.
     kot_stations_selected: Vec<String>,
-    /// First selected / last applied kitchen for new unassigned dishes.
-    /// Persisted so the next ticket does not require reopening the dropdown.
+    /// The kitchen the waiter last ticked in the Order dropdown: new dishes
+    /// without a menu station go there. Persisted so the next ticket does not
+    /// require reopening the dropdown. Print priority never overrides it.
     kot_station_default: String,
+    /// Session overlay for Kitchen dropdown picks on seated unsent lines
+    /// (running line id → station id; "" = cleared). The order also stores
+    /// `running_lines.station_id`; this map covers Client-before-ack and
+    /// mid-action before the next reload.
+    kot_line_station: std::collections::HashMap<String, String>,
     /// A staff name was picked from the list: select them on this pass.
     team_select_pending: bool,
     /// Hire form: copy setup from the named person on this pass.

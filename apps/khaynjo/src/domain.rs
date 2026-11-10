@@ -2384,17 +2384,12 @@ impl CartLine {
         self.qty = milli_to_whole_qty(self.qty_milli);
     }
 
-    /// Station this line prints to: ticket override, else the menu item.
-    pub fn kitchen_station_id<'a>(&'a self, products: &'a [Product]) -> &'a str {
-        let own = self.station_id.trim();
-        if !own.is_empty() {
-            return own;
-        }
-        products
-            .iter()
-            .find(|p| p.id == self.product_id)
-            .map(|p| p.station_id.as_str())
-            .unwrap_or("")
+    /// Station this line prints to. The Order desk copies the menu kitchen
+    /// onto `station_id` when the dish is punched; clearing it means
+    /// "Kitchen (no station)" — we never fall back to the menu here, or Send
+    /// would print that kitchen after Don't use (2026-11-10).
+    pub fn kitchen_station_id<'a>(&'a self, _products: &'a [Product]) -> &'a str {
+        self.station_id.trim()
     }
 
     /// Step when +/- is tapped: 1.0 unit, or 0.1 for weight units.
@@ -2588,7 +2583,10 @@ impl Cart {
                 complimentary: false,
                 kot_id: String::new(),
                 hold_send: false,
-                station_id: String::new(),
+                // Menu kitchen on the line from the start so empty later means
+                // the waiter cleared it ("Kitchen (no station)"), not "inherit
+                // from the menu again" at Send/print time.
+                station_id: product.station_id.clone(),
                 reprint_skip: false,
                 cancel_pick: false,
             };
@@ -3210,8 +3208,8 @@ pub struct SaleLine {
     /// Chosen Size / toppings at sale time (JSON array of [`ModifierOption`]).
     #[serde(default = "empty_json_array")]
     pub modifiers_json: String,
-    /// Kitchen for this line on the KOT. Empty = use the menu item's station
-    /// on the shop device. Extra tills send this so routing survives LAN.
+    /// Kitchen for this line on the KOT. Empty = "Kitchen (no station)" —
+    /// never fall back to the menu (that reprinted after Don't use).
     #[serde(default)]
     pub station_id: String,
 }
@@ -4187,6 +4185,10 @@ pub struct RunningLine {
     /// Course number for fire-by-course (0 = none).
     #[serde(default)]
     pub course_no: i64,
+    /// Kitchen for this pending / sent line. Empty = "Kitchen (no station)".
+    /// Written at seat / dropdown Use·Don't use so a reload keeps the pick.
+    #[serde(default)]
+    pub station_id: String,
 }
 
 impl Default for RunningLine {
@@ -4213,6 +4215,7 @@ impl Default for RunningLine {
             seat_no: 0,
             held: false,
             course_no: 0,
+            station_id: String::new(),
         }
     }
 }
@@ -4318,7 +4321,7 @@ impl RunningOrder {
                     // Pending coursing hold — must survive reload or the ticket
                     // looks "normal" while Send KOT still skips the dish.
                     hold_send: l.held && l.kot_id.is_empty(),
-                    station_id: String::new(),
+                    station_id: l.station_id.clone(),
                     reprint_skip: false,
                 cancel_pick: false,
                 };

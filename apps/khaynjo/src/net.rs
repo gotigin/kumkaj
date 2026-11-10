@@ -215,6 +215,11 @@ pub enum RunningAction {
         unit_price_paise: i64,
         line_total_paise: i64,
     },
+    /// Kitchen dropdown pick on a pending table line ("" = no station).
+    SetLineStation {
+        line_id: String,
+        station_id: String,
+    },
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
@@ -1307,6 +1312,11 @@ pub fn reprint_selected_kots(
     let mut errors: Vec<String> = Vec::new();
     let mut kitchen_names: Vec<String> = Vec::new();
     for (station_id, station_name, kot_nos, item_lines) in &groups {
+        // No station = no slip (Order desk meaning). Named kitchens still use
+        // the owner's Settings → Printers device mapping.
+        if !store.station_gets_kot_paper(station_id) {
+            continue;
+        }
         let kot_nos_joined = if kot_nos.len() > 1 {
             Some(format!(
                 "Was KOT No: {}",
@@ -1436,6 +1446,9 @@ pub fn print_cancelled_kot_rows(
     let mut kitchen_names: Vec<String> = Vec::new();
     let dish_n = lines.len();
     for (station_id, station_name, item_lines) in &groups {
+        if !store.station_gets_kot_paper(station_id) {
+            continue;
+        }
         let item_refs: Vec<&str> = item_lines.iter().map(String::as_str).collect();
         let text = fmt.render(crate::print_share::KotSlipContent {
             kind: crate::print_share::KotSlipKind::Cancelled,
@@ -1510,6 +1523,11 @@ pub fn print_sent_kots(store: &Store, kot_ids: &[String]) -> Option<String> {
     let mut ok = 0usize;
     let mut errors: Vec<String> = Vec::new();
     for id in kot_ids {
+        // "Kitchen (no station)" never prints. Named-station paper still
+        // follows Settings → Printers (any device the owner mapped).
+        if !store.kot_gets_paper(id) {
+            continue;
+        }
         match store.print_kot(id) {
             Ok(_) => ok += 1,
             Err(e) => errors.push(e),
@@ -1699,6 +1717,13 @@ pub fn apply_running_action(
                 *line_total_paise,
                 actor,
             )?;
+            Ok(RunningDone::none())
+        }
+        RunningAction::SetLineStation {
+            line_id,
+            station_id,
+        } => {
+            store.set_pending_line_station(line_id, station_id, actor)?;
             Ok(RunningDone::none())
         }
     }
