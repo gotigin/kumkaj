@@ -82,7 +82,7 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
             // Printer add/find: never rebuild Settings lists mid-job (looks like a freeze).
             // Still refresh ‹ — nested Settings must not stay without Back.
             self.paint_header_back_chrome(cx);
-            self.lift_footer_above_system_bar(cx);
+            self.fit_inside_system_bars(cx);
             self.repair_focused_carets(cx);
             self.ui.redraw(cx);
             return;
@@ -1929,7 +1929,7 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
             .set_visible(cx, false);
 
         self.paint_submit_busy_chrome(cx);
-        self.lift_footer_above_system_bar(cx);
+        self.fit_inside_system_bars(cx);
         self.repair_focused_carets(cx);
         self.ui.redraw(cx);
     }

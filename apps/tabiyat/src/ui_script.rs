@@ -4378,10 +4378,10 @@ script_mod! {
             slip := Image{
                 width: Fill
                 height: Fit
-                fit: Stretch
+                fit: ImageFit.Stretch
             }
+            // Zero height keeps it off screen (PortalList has no `visible`).
             list := PortalList{
-                visible: false
                 width: Fill height: 0.
                 spacing: 0
                 drag_scrolling: false

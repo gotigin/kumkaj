@@ -1,24 +1,56 @@
 impl App {
-fn lift_footer_above_system_bar(&mut self, cx: &mut Cx) {
-        // Bottom pad = home-indicator inset only (0 on desktop). Extra DSL
-        // bottom pad sat *under* the ScrollX scrollbar and read as a dead
-        // strip below the bar — keep the scrollbar flush to the chrome edge.
-        let bottom = cx.display_context.safe_area_insets.bottom;
-        let nav = self.ui.view(cx, ids!(bottom_nav));
-        let changed = if let Some(mut inner) = nav.borrow_mut() {
-            if (inner.layout.padding.bottom - bottom).abs() > 0.5 {
-                inner.layout.padding.bottom = bottom;
-                true
-            } else {
-                false
-            }
-        } else {
-            false
+/// Keep every surface inside the status bar, display cutout and gesture bar.
+///
+/// Android 15+ lays apps out edge-to-edge (targetSdk 35+ cannot opt out),
+/// and older versions do too after some relaunches and rotations: the header
+/// slid under the status bar and the last rows under the gesture bar
+/// (2026-11-10). Makepad reports how much of each bar overlaps our surface —
+/// 0 when the OS already laid us out inside them, 0 on desktop — so padding
+/// by it never doubles up.
+fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
+        let insets = cx.display_context.safe_area_insets;
+        let bottom_nav = self.ui.view(cx, ids!(bottom_nav));
+        let tabs_shown = bottom_nav.visible();
+        // Bottom tabs carry the home-indicator pad themselves so their bar
+        // colour runs under it (the ScrollX scrollbar stays flush to the
+        // chrome edge — no extra DSL pad below it).
+        let tabs_bottom = if tabs_shown { insets.bottom } else { 0.0 };
+        pad_view_over_base(
+            cx,
+            &bottom_nav,
+            live_id!(bottom_nav),
+            Inset { bottom: tabs_bottom, ..Inset::default() },
+        );
+        // The shell: header below the status bar, sides clear of a cutout,
+        // rail / page bottom above the gesture bar when no tabs carry it.
+        pad_view_over_base(
+            cx,
+            &self.ui.view(cx, ids!(app_shell)),
+            live_id!(app_shell),
+            Inset {
+                left: insets.left,
+                right: insets.right,
+                top: insets.top,
+                bottom: insets.bottom - tabs_bottom,
+            },
+        );
+        // Sheets draw over the whole window (a Modal ignores the shell): pad
+        // their content so Done / the search field stay off the bars. A
+        // Modal's own layout is applied twice, so never pad the Modal itself.
+        // Anchored overlays (nav drag ghost, column dropdown) place themselves.
+        let all = Inset {
+            left: insets.left,
+            right: insets.right,
+            top: insets.top,
+            bottom: insets.bottom,
         };
-        if changed {
-            nav.redraw(cx);
+        for id in INSET_SHEETS {
+            let sheet = LiveId::from_str(id);
+            pad_view_over_base(cx, &self.ui.view(cx, &[sheet, live_id!(content)]), sheet, all);
         }
     }
+
+
 
     /// Makepad caret visibility is `(1 - blink) * focus` from TextInput animators.
     /// Key focus can survive hide/show / list rebind without a new `Hit::KeyFocus`,

@@ -278,3 +278,50 @@ fn load_default_brand_mark(cx: &mut Cx, image: &ImageRef) -> bool {
     }
     ok
 }
+
+/// Set `view`'s padding to its DSL padding plus `extra`. The DSL value is
+/// captured the first time per `key`, so calling this on every chrome sync
+/// never stacks the extra. Redraws only on a real change.
+fn pad_view_over_base(cx: &mut Cx, view: &ViewRef, key: LiveId, extra: Inset) {
+    static BASES: OnceLock<Mutex<Vec<(LiveId, Inset)>>> = OnceLock::new();
+    let changed = {
+        let Some(mut inner) = view.borrow_mut() else {
+            return;
+        };
+        let base = {
+            let mut bases = BASES.get_or_init(|| Mutex::new(Vec::new())).lock().unwrap();
+            match bases.iter().find(|(k, _)| *k == key) {
+                Some((_, base)) => *base,
+                None => {
+                    let base = inner.layout.padding;
+                    bases.push((key, base));
+                    base
+                }
+            }
+        };
+        let want = Inset {
+            left: base.left + extra.left,
+            right: base.right + extra.right,
+            top: base.top + extra.top,
+            bottom: base.bottom + extra.bottom,
+        };
+        let have = inner.layout.padding;
+        let differs = (have.left - want.left).abs() > 0.5
+            || (have.right - want.right).abs() > 0.5
+            || (have.top - want.top).abs() > 0.5
+            || (have.bottom - want.bottom).abs() > 0.5;
+        if differs {
+            inner.layout.padding = want;
+        }
+        differs
+    };
+    if changed {
+        view.redraw(cx);
+    }
+}
+
+/// Window-filling sheets (Modal) whose content [`App::fit_inside_system_bars`]
+/// keeps off the status / gesture bars. Anchored overlays (the nav drag
+/// ghost, column dropdowns) are left out: they place themselves.
+/// `nav_order_tests::every_modal_is_an_inset_sheet_or_anchored` checks this.
+const INSET_SHEETS: &[&str] = &[];

@@ -287,6 +287,15 @@ smoke_one() {
       echo "  FAIL: panic/segfault in $log" >&2
       return 1
     fi
+    # Makepad reports DSL mistakes (`fit: Stretch`, a property the widget
+    # lacks) only at runtime as `[E]` lines, and the UI silently drops that
+    # setting — Kirano/Tabiyat receipt slip, 2026-11-10. Errors only:
+    # `[W]` stays informational (stale shader cache, etc.).
+    if grep -E -q "^\[E\] " "$log" 2>/dev/null; then
+      echo "  FAIL: runtime errors in $log:" >&2
+      grep -E "^\[E\] " "$log" | sort -u | head -n 20 >&2
+      return 1
+    fi
     echo "  $label smoke PASS — $(ls "$shot_dir"/*.png 2>/dev/null | wc -l) shots"
     return 0
   fi

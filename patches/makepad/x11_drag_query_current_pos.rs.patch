@@ -1,0 +1,20 @@
+--- a/platform/src/os/linux/x11/xlib_app.rs
++++ b/platform/src/os/linux/x11/xlib_app.rs
+@@ -838,11 +838,15 @@
+                             continue;
+                         }
+ 
+-                        // query window for chrome
++                        // query window for chrome — at this motion's position. `last_mouse_pos`
++                        // is still the previous one here (send_mouse_move updates it below), so a
++                        // pointer that jumps (touch tap, fast flick stopping on a header button)
++                        // was classified by where it came from: a press on a button in a drag
++                        // header started a window move instead of a click.
+                         let response = Rc::new(Cell::new(WindowDragQueryResponse::NoAnswer));
+                         window.do_callback(XlibEvent::WindowDragQuery(WindowDragQueryEvent {
+                             window_id: window.window_id,
+-                            abs: window.last_mouse_pos,
++                            abs: pos,
+                             response: response.clone(),
+                         }));
+                         // otherwise lets check if we are hover the window edge to resize the window

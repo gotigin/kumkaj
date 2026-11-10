@@ -576,6 +576,9 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         const DESK_LEFT_MIN: f64 = 600.0;
         const DESK_RIGHT_MIN: f64 = 520.0;
         const DESK_GAP: f64 = 16.0;
+        // Phone: how much of the next pane shows at the screen's edge, so a
+        // sideways swipe to Counter (or back to Order) is plain to see.
+        const DESK_PEEK: f64 = 28.0;
         let window_w = {
             let w = self.window_inner_width(cx);
             if w >= 1.0 {
@@ -624,6 +627,8 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         self.ui.view(cx, ids!(nav_rail)).set_visible(cx, show_rail);
         self.ui.view(cx, ids!(rail_divider)).set_visible(cx, show_rail);
         self.ui.view(cx, ids!(bottom_nav)).set_visible(cx, show_bottom);
+        // Tabs vs rail decides who carries the gesture-bar pad.
+        self.fit_inside_system_bars(cx);
         self.ui.button(cx, ids!(rail_expand_btn)).set_visible(
             cx,
             unlocked && shell_wide && rail_collapsed && !rail_animating,
@@ -707,15 +712,18 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         let (left_w, right_w) = if !may_settle {
             (Size::fill(), Size::Fixed(0.0))
         } else {
-            let desk_avail = (content_w - 32.0).max(200.0);
-            let min_total = DESK_LEFT_MIN + DESK_RIGHT_MIN + DESK_GAP;
-            if desk_avail >= min_total {
-                let left = desk_avail * (DESK_LEFT_MIN / (DESK_LEFT_MIN + DESK_RIGHT_MIN));
-                (Size::Fixed(left), Size::Fixed(desk_avail - DESK_GAP - left))
-            } else {
-                // Side by side at design mins — ScrollX pans; never stack.
-                (Size::Fixed(DESK_LEFT_MIN), Size::Fixed(DESK_RIGHT_MIN))
-            }
+            // Side by side, never stacked; ScrollX pans when the mins do not
+            // fit. On a phone each pane is one screen less a peek of the other
+            // (DESIGN.md, Moklanjo's booking desk) — the fixed 600 px Order
+            // pane used to run off a 411 px phone with its buttons cut.
+            let (left, right) = order_desk_pane_widths(
+                content_w,
+                DESK_LEFT_MIN,
+                DESK_RIGHT_MIN,
+                DESK_GAP,
+                DESK_PEEK,
+            );
+            (Size::Fixed(left), Size::Fixed(right))
         };
         set_view_walk(
             cx,

@@ -530,7 +530,7 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
             }
             // Still refresh ‹ — nested Settings must not stay without Back.
             self.paint_header_back_chrome(cx);
-            self.lift_footer_above_system_bar(cx);
+            self.fit_inside_system_bars(cx);
             self.repair_focused_carets(cx);
             self.ui.redraw(cx);
             return;
@@ -572,7 +572,7 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
                 self.align_label(cx, ids!(settings_hub_help), rtl);
                 self.paint_extra_tills_chrome(cx);
                 self.paint_header_back_chrome(cx);
-                self.lift_footer_above_system_bar(cx);
+                self.fit_inside_system_bars(cx);
                 self.repair_focused_carets(cx);
                 self.ui.redraw(cx);
                 return;
@@ -589,7 +589,7 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
             ) {
                 self.show_screen(cx, screen);
                 self.paint_header_back_chrome(cx);
-                self.lift_footer_above_system_bar(cx);
+                self.fit_inside_system_bars(cx);
                 self.ui.redraw(cx);
                 return;
             }
@@ -3453,7 +3453,7 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
             .button(cx, ids!(server_pick_cancel))
             .set_visible(cx, false);
 
-        self.lift_footer_above_system_bar(cx);
+        self.fit_inside_system_bars(cx);
         self.repair_focused_carets(cx);
         // After idle locale labels — restore busy go+cancel chrome when a job runs.
         self.paint_submit_busy_chrome(cx);

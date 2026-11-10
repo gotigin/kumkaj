@@ -102,6 +102,7 @@ PATCHES=(
   wayland_configure_and_touch       # configure commit + touch dispatch on Wayland
   xlib_touch_and_ssd                # X11 Touch + ServerDecorations event variants
   x11_touch_dispatch                # dispatch TouchUpdate on X11
+  x11_drag_query_current_pos        # X11: caption hit-test at the motion position (jumped pointer clicked header buttons as window drag)
   win32_touch_event                 # Win32 Touch event variant
   win32_touch_mouse_filter          # drop mouse messages synthesized from touch/pen
   windows_touch_dispatch            # dispatch TouchUpdate on Windows

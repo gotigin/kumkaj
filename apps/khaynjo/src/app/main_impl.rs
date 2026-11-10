@@ -1,10 +1,37 @@
+/// Every control placed inside `header`. The rest of the header is a window
+/// drag on desktop (`WindowDragQuery` → `Caption`): the OS takes a press there
+/// for a window move before the button sees it. The collapsed sidebar's `>`
+/// (`rail_expand_btn`) never opened on Windows / Linux until it was listed
+/// (2026-11-10). Add every new header button here —
+/// `nav_order_tests::header_buttons_are_not_window_drag` checks this list
+/// against the DSL.
+const HEADER_CONTROLS: &[&str] = &["rail_expand_btn", "header_back", "amounts_eye"];
+
 impl AppMain for App {
     fn script_mod(vm: &mut ScriptVm) -> ScriptValue {
         crate::makepad_widgets::script_mod(vm);
         self::script_mod(vm)
     }
 
+    /// One bad event must not end the app. A panic in the shell used to unwind
+    /// out of the event loop: Android aborted (Play review "keeps crashing")
+    /// and the desktop window closed. The panic hook has already written it
+    /// to diagnostics (with a backtrace); the frame is dropped and the next
+    /// tap works.
     fn handle_event(&mut self, cx: &mut Cx, event: &Event) {
+        let outcome = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+            self.handle_event_unguarded(cx, event)
+        }));
+        if outcome.is_err() {
+            // A half-drawn frame or half-applied action: paint everything
+            // again from AppState.
+            cx.redraw_all();
+        }
+    }
+}
+
+impl App {
+    fn handle_event_unguarded(&mut self, cx: &mut Cx, event: &Event) {
         // Opening the till holds app_state for the whole shop load. Do not
         // wait on that lock — Cancel and the progress line must keep painting.
         if client_pair_busy().load(std::sync::atomic::Ordering::SeqCst)
@@ -494,7 +521,7 @@ impl AppMain for App {
         if self.sheet_press(cx, event) {
             return;
         }
-        // Empty header (not Back or the amount eye) is a window drag, the same
+        // Empty header (not a HEADER_CONTROLS button) is a window drag, the same
         // as the caption bar: press and move, and the desktop moves the window.
         // Not under an open sheet: there the header is dimmed area, and a
         // press on it closes the sheet instead of moving the window.
@@ -503,8 +530,8 @@ impl AppMain for App {
         {
             let header = self.ui.view(cx, ids!(header)).area().rect(cx);
             if header.size.x > 1.0 && header.contains(dq.abs) {
-                let on_control = [ids!(header_back), ids!(amounts_eye)].into_iter().any(|id| {
-                    let r = self.ui.button(cx, id).area().rect(cx);
+                let on_control = HEADER_CONTROLS.iter().any(|name| {
+                    let r = self.ui.button(cx, &[LiveId::from_str(name)]).area().rect(cx);
                     r.size.x > 1.0 && r.contains(dq.abs)
                 });
                 if !on_control {

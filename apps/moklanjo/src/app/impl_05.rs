@@ -677,6 +677,8 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         self.ui
             .view(cx, ids!(bottom_nav))
             .set_visible(cx, show_bottom);
+        // Tabs vs rail decides who carries the gesture-bar pad.
+        self.fit_inside_system_bars(cx);
         self.ui.button(cx, ids!(rail_expand_btn)).set_visible(
             cx,
             unlocked && shell_wide && rail_collapsed && !rail_animating,

@@ -387,6 +387,23 @@ pub fn init(data_dir: &Path, app_id: &str, app_version: &str) {
     );
 }
 
+/// True when `msg` repeats the last recorded panic less than 10 s ago.
+fn repeated_panic(msg: &str) -> bool {
+    static LAST: OnceLock<Mutex<Option<(String, Instant)>>> = OnceLock::new();
+    let Ok(mut last) = LAST.get_or_init(|| Mutex::new(None)).lock() else {
+        return false;
+    };
+    let now = Instant::now();
+    if let Some((m, at)) = last.as_ref()
+        && m == msg
+        && now.duration_since(*at) < Duration::from_secs(10)
+    {
+        return true;
+    }
+    *last = Some((msg.to_string(), now));
+    false
+}
+
 fn install_panic_hook() {
     static HOOKED: OnceLock<()> = OnceLock::new();
     HOOKED.get_or_init(|| {
@@ -404,6 +421,15 @@ fn install_panic_hook() {
                 "non-string panic".into()
             };
             let msg = redact_text(&format!("panic at {loc}: {payload}"));
+            // A UI panic caught by the App::handle_event guard can repeat every
+            // frame: record the same one at most once per 10 s (readable log,
+            // no disk flood, no message-box storm).
+            if repeated_panic(&msg) {
+                return;
+            }
+            // Where it came from — the 2026-11-09 RefCell panic had only a
+            // file:line, which no longer matched after a vendor refresh.
+            let backtrace = redact_text(&std::backtrace::Backtrace::force_capture().to_string());
             // Best-effort write even if mutex is poisoned.
             let mut panic_file: Option<PathBuf> = None;
             if let Ok(mut g) = global().lock() {
@@ -420,7 +446,7 @@ fn install_panic_hook() {
                     let panic_path = st.dir.join("last_panic.txt");
                     let _ = fs::write(
                         &panic_path,
-                        format!("{}\n{}\n", now_rfc3339_pretty(), msg),
+                        format!("{}\n{}\n\n{}\n", now_rfc3339_pretty(), msg, backtrace),
                     );
                     panic_file = Some(panic_path);
                 }

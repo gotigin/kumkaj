@@ -34,7 +34,38 @@ use locale::{CURRENCIES, LANGUAGES, LanguageSource, LocaleSettings};
 use makepad_widgets::makepad_platform::event::finger::TouchState;
 use makepad_widgets::*;
 use std::path::PathBuf;
-use std::sync::{Mutex, OnceLock};
+use std::sync::OnceLock;
+
+/// The shell's `Mutex`: std's, except a lock is never reported poisoned.
+///
+/// A panic on any thread while it held a lock used to poison it, and every
+/// later `.lock().unwrap()` on the UI thread then panicked as well — one
+/// background failure froze the till for good, and on Android each of those
+/// panics was a crash (Play review "keeps crashing", 2026-11-10). The values
+/// behind these locks stay usable after a panic (whole fields rewritten, no
+/// half-built invariants), so the guard is handed back instead. Every file
+/// `include!`d below shares this type; library modules keep std's.
+struct Mutex<T: ?Sized>(std::sync::Mutex<T>);
+
+impl<T> Mutex<T> {
+    const fn new(value: T) -> Self {
+        Self(std::sync::Mutex::new(value))
+    }
+}
+
+impl<T: ?Sized> Mutex<T> {
+    fn lock(&self) -> std::sync::LockResult<std::sync::MutexGuard<'_, T>> {
+        Ok(self.0.lock().unwrap_or_else(std::sync::PoisonError::into_inner))
+    }
+
+    fn try_lock(&self) -> std::sync::TryLockResult<std::sync::MutexGuard<'_, T>> {
+        match self.0.try_lock() {
+            Err(std::sync::TryLockError::Poisoned(poisoned)) => Ok(poisoned.into_inner()),
+            other => other,
+        }
+    }
+}
+
 use std::time::{Duration, Instant};
 use store::{Store, default_backup_path};
 

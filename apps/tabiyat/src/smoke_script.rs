@@ -374,10 +374,11 @@ impl App {
                     let store = st.store.as_ref().ok_or("no store")?;
                     let actor = st.session.clone().ok_or("no session")?;
                     let products = store.list_products(false)?;
+                    // Pharmacy seed (tests/visual_seed.rs): ORS sachet, no stock limit.
                     let p = products
                         .into_iter()
-                        .find(|p| p.name.contains("Chaas") || p.name.contains("Chai"))
-                        .ok_or("no drink product")?;
+                        .find(|p| p.name.contains("ORS"))
+                        .ok_or("no ORS product in the seed")?;
                     let mut cart = Cart::default();
                     cart.add_or_bump(&p);
                     let draft = cart.to_sale_draft()?;
