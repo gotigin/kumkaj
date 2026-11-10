@@ -1,0 +1,835 @@
+# Danish — Dansk (da). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	Kurerbureaus bøger + bookingdisk. Gratis offline.
+unlock	Lås op
+pin_hint	Ejer-PIN starter som 0000
+sell	Booking
+buy	Udbetaling
+books	Dagbog
+books_help	Dagens stilling. Booking = pakker ind. Udbetaling = transportørregninger og udgifter. Parter = afsendere og transportører.
+buy_help	Udgiftsbilag og transportørregninger (penge ud). På konto bliver på partens reskontro.
+sell_money_in	Book en pakke
+buy_money_out	Udgift / transportørregning
+record_purchase	Bogfør køb
+add_expense	Udgiftsbilag
+bank_book	Bankbog
+credit_help	Part-id er entydigt (navne må gentages). Roller: Afsender (AR), Transportør (AP), eller begge på det id. Reskontroerne holdes adskilt; rapporter viser netto.
+party_kind_ph	Egen rolle (valgfri) — eller tryk på en brik ovenfor
+parties_list_heading	Gemte parter
+reports_help	Dagbog, debitorer og kreditorer, bankbog, udgiftsbilag, resultat.
+reports_today	Dagbog (i dag)
+reports_month	Resultat (måned)
+reports_aging	Udestående / Debet-kredit
+reports_balance_sheet	Balance
+reports	Bankbog og resultat
+refresh	Opdater
+undo	Fortryd
+start_tracking	Start optælling
+stock_minus	− Lager
+stock_plus	+ Lager
+settle_cash	Afregn kontant
+settle_card	Afregn kort
+items	Takster og tjenester
+nav_items	Takster
+more	Mere
+your_items	Dine takster
+items_help	Hver række er en takst (f.eks. Surface Zone A). Enheden er som regel kg. Tryk for at rette.
+add_item	Tilføj takst
+new_item	Ny takst
+adding_item	Tilføjer en ny takst
+editing_item	Retter
+save	Gem
+remove	Fjern
+empty_catalog	Ingen takster endnu. Åbn Takster og tjenester, tilføj en (navn + pris, enhed kg), og gå så til Booking.
+counter_sale	Diskbooking
+total	I alt
+cash	Kontant
+upi	UPI
+card	Kort
+credit	Parter
+clear	Ryd
+ready_to_sell	Klar til at booke
+today_prefix	I dag
+today_mid	i dag
+owed	udestående
+round_word	afrund
+back	Tilbage
+sold_out	Ikke tilgængelig
+restock	Genopfyld
+not_tracked	Ikke talt
+in_stock	på lager
+marked_sold_out	Markeret som ikke tilgængelig
+add_upper	TILFØJ
+na	—
+qty	Vægt/Antal
+unit_at	Sats @
+actual	Faktisk
+applied	Anvendt
+note_ph	Note (valgfri)
+rounded	AFRUNDET
+split	Del
+counter	Disk
+parcel	Pakke
+order	Ordre
+sales	Bookinger
+sales_refunds	Bookinger og refunderinger
+day_close	Dagsafslutning
+reports_expenses	Bankbog og resultat
+nav_reports	Rapporter
+nav_settings	Indstillinger
+nav_lock	Lås
+sidebar_settings	Sidepanelindstillinger
+sidebar_settings_help	Samme ikoner som sideskinnen. Træk en række for at ændre rækkefølgen. Vend kontakten for at vise eller skjule. Indstillinger og Lås bliver altid på linjen.
+sidebar_always_on_short	Altid til
+sidebar_back_settings	Tilbage
+sidebar_shown	Vist
+sidebar_hidden	Skjult
+sidebar_always_on	Altid på linjen
+sidebar_shown_hint	Vist på sideskinnen / bundfanerne
+sidebar_hidden_hint	Skjult fra linjen
+sidebar_menu_items	Menu og varer
+sidebar_enable_all	Slå alle til
+sidebar_disable_all	Slå alle fra
+sidebar_order_saved	Sidepanelrækkefølge gemt
+sidebar_visibility_saved	Sidepanelsynlighed gemt
+amounts_hide	Skjul
+amounts_show	Vis
+no_sale_yet	Intet salg endnu
+favorites	Favoritter
+favorites_help	Varer du ofte sælger, gemt til dit login. Tilføj en til regningen, eller byg listen ud fra alle varer nedenfor.
+your_favorites	Dine favoritter
+all_items	Alle varer
+no_favorites	Ingen favoritter endnu — tilføj varer fra listen nedenfor.
+add_to_bill	Tilføj til regning
+added	Tilføjet
+owes_word	skylder
+selected_word	Valgt
+chip_clear_credit	ryd — Kredit eller tag forskud
+chip_missing_customer	Valgt kunde mangler — vælg igen
+chip_no_customer	Ingen kunde endnu — skriv et navn, og tryk Kredit
+credit_summary_fmt	{} kunder · åben kredit {} · forskud holdt {}
+recent_label	Seneste:
+inventory	Lager
+inventory_stock	Lager og beholdning
+branches	Filialer
+branches_org	Filialer og organisation
+credit_customers	Parter (debitorer og kreditorer)
+customer_name_ph	Partnavn
+new_customer_ph	Nyt partnavn
+item_name_ph	Takstnavn (f.eks. Surface Zone A)
+item_price_ph	Pr. kg / første trin
+start_template	Produkt
+next_booking	Næste booking
+destination_ph	Destinationsby / zone
+consignee_ph	Modtagernavn
+consignee_phone_ph	Modtagertelefon
+consignee_address_ph	Leveringsadresse
+origin_name_ph	Afsendernavn
+origin_phone_ph	Afsendertelefon
+origin_address_ph	Afhentning / afsenderadresse
+booking_consignor_heading	Afsender (kunde / sender)
+booking_consignee_heading	Modtager
+booking_consignor_hint	Vælg en part der skal udfyldes, eller lad stå tom for skrankekunde. Nødvendig ved hjemmeafhentning og RTO.
+booking_consignee_hint	Pakkens modtager. Lad stå tom ved indlevering over disk.
+weight_kg_ph	Faktisk kg
+length_cm_ph	L cm
+breadth_cm_ph	B cm
+height_cm_ph	H cm
+chargeable_kg	Afregningskg
+awb_label	AWB
+booking_help	Afsender + modtager (tom er OK) → destination → vej → vælg takst → Konto/Kontant → betal. AWB udskrives på kvitteringen. Næste booking rydder disken. Afrundet starter lig med Anvendt — ret kun for at afrunde regningen.
+cart_empty_hint	Disken er tom — afsender/modtager er valgfri, sæt destination og vægt, tryk TILFØJ på en takst, og betal så.
+team	Team
+team_pins	Team og PIN
+my_pin_settings	Min PIN
+settings_hub_help_my_pin	Skift oplåsnings-PIN for den person der er logget ind på denne enhed.
+team_self_help	Kun du kan ændre din oplåsnings-PIN (og en valgfri login-adgangskode). Spørg ejeren, hvis du skal bruge andre skærme eller rettigheder.
+backup_settings	Sikkerhedskopi og indstillinger
+lock_app	Lås app
+pick	Vælg
+select	Vælg
+advance	Forskud
+owner	Ejer
+staff	Personale
+photo	Foto
+auto	Auto
+prev	Forrige
+next	Næste
+ok	OK
+this_shop	Server
+extra_till	Klient
+off	Fra
+server	Server
+client	Klient
+language_currency	Sprog og valuta
+language	Sprog
+choose_language	Vælg dit sprog
+language_setup_hint	Følg denne enheds sprog, eller vælg selv et.
+lang_follow_platform	Enhedens sprog
+lang_pick_user	Vælg sprog
+lang_platform_now	Enhedens sprog nu
+selected_language	Valgt
+continue	Fortsæt
+this_device	DENNE ENHED
+device_use_q	Hvordan skal denne enhed bruges?
+last_server_mode	Var Server — tryk for at fortsætte
+last_client_mode	Var Klient — tryk for at fortsætte
+choose_server	Vælg en server
+choose_server_hint	Åbn en eksisterende server, eller opret en til en anden forretning.
+create_new_server	Opret ny server
+open_server	Åbn
+new_server_name_ph	Nyt servernavn (valgfrit)
+server_remove_pin_ph	Ejer-PIN for at fjerne en server
+only_owner_remove_server	Kun ejeren kan fjerne en server
+owner_pin_remove_server	Ejer-PIN kræves for at fjerne denne server
+device_setup_help	Serveren holder bøgerne her. Klienten parres med en Server.
+currency	Valuta
+backup	Sikkerhedskopi
+settings_sec_diag	Diagnostik
+settings_hub_help	Åbn ét område ad gangen — mindre rulning, tydeligere valg.
+settings_sec_devices	Andre enheder
+settings_sec_alerts	Beskeder
+alerts_help	Hvor længe statusbeskeder bliver på skærmen for dig (dette login).
+snack_secs_ph	Sekunder (3–60, standard 10)
+snack_secs_save	Gem beskedtid
+snack_secs_saved	Beskedtid gemt — {n} sekunder
+snack_secs_bad	Angiv sekunder som et tal (3–60)
+cancelled	Annulleret
+cancel	Annuller
+opening_client	Åbner klient…
+preparing_desk	Gør bordet klar…
+opening_server	Åbner server…
+creating_server	Opretter server…
+diag_privacy_help	Logfiler bliver på denne enhed. Hemmeligheder (PIN, adgangskoder) gemmes aldrig. At dele en pakke væk fra enheden kræver din udtrykkelige godkendelse hver gang — sælges eller gives aldrig til tredjeparter.
+diag_level	Detaljeniveau
+diag_level_error	Fejl
+diag_level_warn	Advarsler
+diag_level_info	Info
+diag_level_debug	Fejlsøgning
+diag_support_start	Start 30-min. supportsession
+diag_support_stop	Afslut supportsession
+diag_support_started	Supportsession til — fejlsøgningsdetaljer i 30 minutter
+diag_support_ended	Supportsession afsluttet
+diag_export_local	Eksportér lokal kopi
+diag_export_local_done	Lokal diagnostik klar på {path} — vælg hvor kopien skal gemmes
+diag_approve_send	Godkend deling væk fra denne enhed
+diag_send_heading	Del væk fra denne enhed
+diag_send_help	Godkendelse gælder én pakke og udløber så. Midlertidig — bruges kun til at rette eller forbedre produktet. Deles ikke med tredjeparter. Virker på Linux, Windows, macOS og Android.
+optional_login_heading	Valgfrit login
+rights_heading	Rettigheder
+booking_scope_heading	Indenrigs / international
+diag_send_approved	Deling godkendt for én pakke (udløber snart)
+diag_export_send	Opret delepakke (kræver godkendelse)
+diag_export_send_done	Delepakke klar på {path} — vælg hvor den skal gemmes, og send den kun til Kumkaj-support
+diag_save_bundle	Gem diagnostikkopi
+diag_bundle_saved	Diagnostikkopi gemt i {path}
+diag_bundle_failed	Diagnostikkopien kunne ikke gemmes — prøv igen
+diag_clear	Ryd diagnostiklogfiler
+diag_cleared	Diagnostiklogfiler ryddet
+use	Brug
+add_branch	Tilføj filial
+add_conversion	Tilføj omregning
+add_item_plain	Tilføj vare
+add_note	Tilføj note
+add_opening_balance	Tilføj primosaldo
+add_rider	Tilføj bud
+add_staff	Tilføj personale
+add_unit	Tilføj enhed
+add_use_name	Tilføj / brug dette navn
+allow_extra_tills	Tillad ekstra kasser
+amend	Ret
+apply_country_pack	Anvend landepakke
+datetime_appearance	Dato- og tidsudseende
+datetime_appearance_help	Bøgerne gemmer år-først RFC3339 internt. Dette ændrer kun, hvordan datoer og ure ser ud på kvitteringer, etiketter, rapporter og skærmen.
+datetime_example	Eksempel nu: {ex}
+date_order	Datorækkefølge
+date_order_dmy	D/M/Å
+date_order_mdy	M/D/Å
+date_order_ymd	Å-M-D
+time_format	Ur
+time_format_24h	24 timer
+time_format_12h	12 timer
+attach_bill_photo	Vedhæft regningsfoto
+attach_pdf	Vedhæft PDF
+attach_photo	Vedhæft foto
+bank	Bank
+bank_in	Bank ind
+bank_out	Bank ud
+bank_to_till	Bank → kasse
+till_to_bank	Kasse → bank
+mark_cleared	Markér afstemt
+unmark	Fjern markering
+role_both	Begge
+role_carrier	Transportør
+role_cashier	Kasserer
+role_consignor	Afsender
+role_manager	Leder
+role_supplier	Leverandør
+branch_name_sell_ph	Filialnavn der sælges fra
+bring_my_book	Hent min bog
+business_tax_id_ph	Virksomhedens skatte-id
+card_amount_ph	Kortbeløb
+cash_amount_ph	Kontantbeløb
+upi_amount_ph	UPI-beløb
+carrier_cost_ph	Transportøromkostning
+carrier_party_ph	Transportørpart
+choose_icon	Vælg ikon
+choose_logo	Vælg logo
+choose_receipt_stamp	Vælg kvitteringsstempel
+choose_payment_qr	Vælg betalings-QR
+clear_icon	Ryd ikon
+clear_logo	Ryd logo
+clear_photo	Ryd foto
+clear_stamp	Ryd stempel
+clear_payment_qr	Ryd betalings-QR
+print_faces	Udskriftsflader (kvittering / periodefaktura)
+print_faces_help	Valgfrit stempel og betalings-QR ved siden af dit logo på bookingkvitteringer og periodefakturaer.
+awb_pools_heading	Transportørens AWB-nummerpuljer
+add_awb_pool	Tilføj AWB-pulje
+awb_pool_carrier_ph	Transportørpartens navn
+awb_pool_start_ph	Startnr.
+awb_pool_end_ph	Slutnr.
+awb_pool_prefix_ph	Præfiks (valgfrit)
+awb_pool_label_ph	Etiket (valgfri)
+pieces_ph	Styk (tom = 1) — udvid for gods / flerstyk
+bulk_awbs_ph	Masse-AWB — indsæt mange (ny linje eller komma) til ét statusskridt
+tds_cut_ph	TDS-fradrag (valgfrit)
+discount_ph	Rabat (valgfri)
+cheque_no_ph	Checknummer (valgfrit)
+bill_reminder_chase	Rykkerliste for regninger
+month_mix_report	Månedsmix-rapport
+copy_month_gst_csv	Kopiér månedens GST-CSV
+domestic	Indenrigs
+international	International
+pick_logo	Vælg logo
+booking_scope_hint_domestic	Volumen ÷5000 (indenrigs) — tryk International for ÷6000 luft
+booking_scope_hint_intl	Volumen ÷6000 (international luft) — tryk Indenrigs for butikkens ÷5000
+cod_register	COD-register
+collect_cod	Opkræv COD (AWB)
+consignments_dispatch	Forsendelser og afsendelse
+consignor_party_ph	Afsender / partnavn
+copy_day_book_csv	Kopiér dagbog som CSV
+copy_day_close	Kopiér dagsafslutning
+copy_items_csv	Kopiér varer som CSV
+copy_outstanding_csv	Kopiér udestående som CSV
+copy_parties_csv	Kopiér parter som CSV
+copy_party_ledger_csv	Kopiér partbog som CSV
+copy_receipt	Kopiér kvittering
+copy_report	Kopiér rapport
+counted_cash_ph	Optalt kontant i skuffen
+counter_agency_ph	Disk- / agenturnavn (valgfrit)
+create_backup	Opret sikkerhedskopi
+day_close_summary	Opsummering af dagsafslutning
+delete_party	Slet valgt part
+dispatch_to_rider	Udsend booket → bud
+docket_charge_ph	Fragtbrevsgebyr
+declared_value_ph	Angivet værdi
+contents_ph	Indhold
+eway_ph	E-way bill-nr.
+insurance_label	Forsikring
+yes_label	Ja
+no_label	Nej
+print_route_label	Udskriv rute
+new_party_kind_label	Ny partstype
+done_open_books	Færdig — åbn bøger
+export_day	Eksportér dag
+extra_note_expense_ph	Ekstra note på seneste udgift
+extra_note_awb_ph	Ekstra note på denne AWB / dette salg
+failed_delivery	Mislykket levering
+find_scan_awb	Find / scan AWB
+forget_shop	Glem denne butik
+fuel_ph	Brændstof
+handover_carrier	Aflever booket → transportør
+import_day	Importér dag
+import_items_csv	Importér varer / takster CSV…
+import_parties_csv	Importér parter som CSV…
+import_pincodes_csv	Importér pincode-CSV…
+import_carrier_bill_csv	Importér transportørregning CSV…
+copy_carrier_bill_report	Kopiér seneste transportørregningsrapport
+use_carrier_cost	Brug transportøromkostning
+rate_carrier_ph	Transportør (tom = vores salgstakst)
+rate_party_ph	Part (tom = alle kunder)
+carrier_pick_ph	Transportør til kostpris (fra sammenligning)
+item_name	Varenavn
+load_bulk_row	Indlæs masserække → disk
+login_id_ph	Brugernavn
+mark_delivered	Markér leveret
+manifest_cod_total	COD i alt
+manifest_received_by	Modtaget af
+manifest_sign	Underskriv
+ndr_address_wrong	Forkert adresse
+ndr_customer_unavailable	Ikke tilgængelig
+ndr_door_locked	Dør låst
+ndr_other	Andet
+ndr_refused	Afvist
+out_for_delivery	Ude til levering
+print_drs	Udskriv DRS
+print_run_sheet	Udskriv kørselsliste
+reattempt	Nyt forsøg
+rider_cod_handed_ph	COD afleveret
+settle_rider_cod	Afregn buds COD
+mode_desk	Disk
+mode_rider	Bud
+waiting_office	venter på at nå kontoret
+capture_signature	Optag underskrift
+incoming_manifest	Indgående manifest
+pickup_request	Afhentningsanmodning
+pickup_run	Afhentningstur
+auto_assign_area	Tildel område automatisk
+reorder_stops	Omrokér stop
+settle_rider_pay	Afregn buds betaling
+vehicle_inspect	Køretøjstjek
+print_docket	Udskriv fragtbrev
+franchise_statement	Franchiseopgørelse
+tally_export	Tally-bilagseksport
+open_whatsapp	Åbn WhatsApp
+copy_sms	Kopiér SMS-tekst
+pick_barcode_image	Vælg billede at scanne
+share_receipt_whatsapp	Del kvittering på WhatsApp
+delivery_feedback	Leveringsfeedback
+lan_self_book	LAN-selvbooking
+new_party_clear	Ny part (ryd formular)
+new_party_kind_ph	Ny partstype (leverandør / transportør)
+next_country	Næste land
+prev_country	Forrige land
+note_gstin_ph	Note / GSTIN / aftalepåmindelse
+note_pod_ph	Note / POD (valgfri)
+on_account_ap	På konto (AP)
+org_optional_ph	Organisation (valgfri)
+paid_now	Betalt nu
+pairing_code_ph	Parringskode
+pair_now	Par nu
+party_name_selected_ph	Partnavn (eller brug valgt)
+password_ph	Adgangskode
+pay_ap_card	Betal AP med kort
+pay_ap_cash	Betal AP kontant
+pay_ap_upi	Betal AP med UPI
+period_bill	Periodefaktura
+period_bill_party	Periodefaktura (part)
+pick_pod_photo	Vælg POD-foto
+print_awb_label	Udskriv AWB-etiket
+print_open	Udskriv / åbn
+reason_amend_ph	Årsag til rettelse / annullering / refundering
+reason_note_ph	Årsag / note (spild, optælling, …)
+record_day_close	Bogfør dagsafslutning
+refresh_from_shop	Opdater fra butikken
+refund	Refundér
+remit_cod	Indbetal COD (part)
+remove_selected	Fjern valgte
+restore_backup	Gendan sikkerhedskopi
+rider_name_ph	Budnavn
+rider_phone_ph	Budtelefon
+riders	Bude
+riders_own_fleet	Bude (egen flåde)
+rollup	Opsummering
+save_booking_measures	Gem bookingmål
+save_brand	Gem brand
+save_business_id	Gem virksomheds-id
+save_business_name	Gem virksomhedsnavn
+save_features	Gem jobopsætning
+save_names	Gem navne
+server_ip_ph	Server-IP (f.eks. 192.168.1.10)
+set_credit_limit	Anvend grænse på part
+set_login_selected	Anvend login på valgt
+set_login_named	Anvend login på {name}
+shop	Butik
+start_fresh	Start forfra
+stop_extra_tills	Stop ekstra kasser
+backup_auto	Sikkerhedskopieret automatisk hver dag · senest {when} · de seneste 14 dage gemmes i {dir}.
+backup_auto_none	Sikkerhedskopieres automatisk hver dag — den første kører om et øjeblik.
+backup_copy_to	Kopier går også til {dir}.
+backup_copy_btn	Kopiér også sikkerhedskopier til en mappe…
+autostart_off	Start med denne computer
+autostart_on	Starter med denne computer ✓ — tryk for at stoppe
+autostart_done_on	Denne computer åbner nu appen når den starter — butikkens server er tilbage efter et strømsvigt.
+autostart_done_off	Denne computer åbner ikke længere appen når den starter.
+right_allowed	Tilladt
+right_with_approval	Med godkendelse
+right_denied	Ikke tilladt
+editing_staff	Rettigheder for
+team_pick_ph	Personale der skal rettes — navn, brugernavn eller vælg
+select_staff	Vælg dette personale
+rights_help	Rettigheder — tryk for at skifte: Tilladt → Med godkendelse (en leders PIN i øjeblikket) → Ikke tilladt.
+right_void_refund	Annuller eller refunder en booking
+right_amend_sale	Ret en bogført booking
+find_server	Find butikkens server
+finding_server	Leder efter butikkens server på dette Wi‑Fi…
+no_server_found	Ingen fundet. På Serveren: Indstillinger → Andre enheder → Tillad ekstra kasser (samme Wi‑Fi). Eller skriv den IP der vises der.
+servers_found_pick	Tryk på den butik du vil forbinde til.
+server_host_selected	Bruger {host} — indtast parringskoden, og tryk Par nu.
+device_forgotten	Butikken glemte denne enhed — par den igen med butikkens nuværende kode. Ordrer der venter på den, beholdes.
+forget_device	Glem
+last_seen	set
+new_pair_code	Ny parringskode
+lan_offline	Butikkens server kan ikke nås
+lan_offline_waiting	Butikkens server kan ikke nås · {n} venter
+lan_connecting	Forbinder til butikken…
+pair_finishing	Afslutter parring… anvender kontorets bøger
+pair_opening	Åbner kontoret…
+lan_live	Direkte
+lan_sending	{n} sender
+lan_sign_in_to_send	Log ind igen for at sende {n}
+lan_pair_again	Par denne enhed igen
+lan_update_app	Opdatér appen — denne enhed og kontorets server har forskellige versioner
+allow_firewall	Tillad andre enheder at oprette forbindelse
+firewall_blocked	Denne computers firewall blokerer andre enheder — tryk Tillad andre enheder at oprette forbindelse.
+firewall_waiting	Venter på administratorprompten…
+lan_join_help	På den anden enhed: Klienttilstand → Find butikkens server (eller skriv {addr}) → parringskode {code}.
+lan_pair_status	Wi‑Fi {addr}
+lan_join_help_no_addr	Forbind denne enhed til Wi‑Fi for at få en adresse.
+lan_no_address	Ingen Wi‑Fi-adresse endnu — forbind til butikkens Wi‑Fi.
+lan_not_listening	Tager ikke imod enheder (port {port} er optaget). Genstart appen.
+lan_tills_off	Ekstra kasser er slået fra. Tillad dem for at lade en anden enhed deltage.
+paired_with	Parret · {url}
+not_paired	Ikke parret
+choose_device_use	Vælg Server eller Klient.
+paired_note	Parret. Lås op for at sælge, eller Opdater for det seneste.
+last_update_at	Seneste opdatering: {time}.
+pair_intro	Find serveren, eller skriv dens adresse og parringskode.
+queue_waiting	Venter på at nå butikken ({n}):
+queue_tries	Forsøgt {n} gange · seneste svar: {e}
+save_backup_copy	Gem en kopi af sikkerhedskopien…
+backup_copy_saved	Kopi af sikkerhedskopi gemt — behold den væk fra denne enhed (et USB-stik eller en anden enhed)
+backup_copy_overdue	Ingen kopi af sikkerhedskopien har forladt denne enhed i {n} dage — Indstillinger → Sikkerhedskopi
+backup_copy_failed	Kopien af sikkerhedskopien kunne ikke gemmes der — vælg et andet sted
+clock_off	Denne enheds ur er {min} min. fra butikkens server — sæt det rigtige tidspunkt på denne enhed
+printers_heading	Printere på denne enhed
+printers_help	Find rigtige printere, og vælg derefter Kvittering eller AWB-etiket. Hvert job har sin egen bredde, stående eller liggende, og hvordan bytes sendes. En etiket udskriver stregkoden. Tomt sted = udskriv ikke.
+job_width	Indholdsbredde (mm)
+job_width_ph	Eller skriv en bredde, 40–210 mm
+job_layout	Layout
+job_delivery	Hvordan jobbet sendes
+job_size	Skriftstørrelse
+job_size_ph	f.eks. 18, 20, 26…
+save_receipt_format	Gem kvitteringsformat
+save_label_format	Gem etiketformat
+test_receipt_format	Test kvittering
+test_label_format	Test etiket
+test_receipt_sent	Prøvekvittering sendt
+test_label_sent	Prøveetiket sendt
+test_print_no_printer	Ingen printer til det job — tilføj en under dette sted
+printers_host_only	Printere sættes på butiksenheden (Server). Denne kasse sender job derhen — Find / tilføj / tildel bliver på serveren. Testsiden går til serveren.
+printers_pool_heading	Printere
+printers_routes_heading	Hvor der udskrives
+printer_label_ph	Navn (f.eks. Disk)
+printer_target_ph	host:9100 · bt:MAC · usb:VID:PID · systemnavn
+printer_mode_heading	Profil til nye udskrifter
+printer_mode_standard	Standard stående
+printer_mode_landscape	Standard liggende
+printer_mode_thermal	Termo
+printer_mode_standard_short	Stående
+printer_mode_landscape_short	Liggende
+printer_mode_thermal_short	Termo
+printer_format_custom	Ny brugerdefineret profil
+printer_format_custom_label	Brugerdefineret
+printer_format_custom_added	Brugerdefineret profil tilføjet for dette sted
+add_printer	Tilføj printer
+remove_printer	Fjern sidste
+route_pick_ph	kvittering eller etiket
+route_add_printer_ph	Tilføj printer til dette sted
+route_receipt	Kvittering
+route_label	AWB-etiket
+route_dont_print	Ingen printer tildelt
+route_add	Føj til sted
+route_up	Op
+route_down	Ned
+route_remove	Fjern sidste
+route_clear	Ryd printere for dette sted
+save_printers	Gem printere
+print_test_page	Udskriv en testside
+printers_saved	Printere gemt for denne enhed
+test_page_sent	Testside sendt — tjek printeren
+printers_found	Fundet på denne enhed: {list}
+find_printers	Find printere
+printers_looking	Leder efter printere på denne enhed og Wi‑Fi…
+printers_tap_find	Tryk Find printere for køer der tager imod job, og netværkskvitteringsprintere på dette Wi‑Fi (ikke fjernede eller offline).
+printers_none_found	Ingen printere fundet — skriv et systemprinternavn eller en netværksadresse (f.eks. 192.168.1.50).
+receipt_printer_ph	Printer til kvitteringer
+queue_refused	Ikke accepteret af butikken ({n}) — tjek hver enkelt ved disken:
+clear_not_accepted	Tjekket — ryd denne liste
+device_name_ph	Denne enheds navn
+lan_last_update	seneste opdatering {time}
+lan_not_accepted	{n} ikke accepteret
+connected_now	forbundet nu
+backup_failed	Den seneste automatiske sikkerhedskopi mislykkedes: {e}
+backup_overdue	Ingen sikkerhedskopi i {n} dage — hold appen åben på denne enhed så den kan sikkerhedskopiere.
+disk_low	Kun {mb} MB ledigt på denne enhed — sikkerhedskopier fejler snart. Frigør noget plads.
+last_seen_devices	Sidst set: {time}
+sync_interval	Synk hvert {secs}. sek.
+connection_to_shop	Forbindelse til butikken
+supplier_name_ph	Leverandørnavn (eller part)
+supplier_ph	Leverandør
+switch_device	Skift denne enhed
+take_payment	Tag betaling
+tax_added_till	{tax} ekskl.
+tax_inside_price	{tax} inkl.
+today_books	Dagens bøger
+unlock_after_pairing	Indtast PIN
+unlock_with_login	Lås op med login
+update_my_password	Opdatér min adgangskode
+update_my_pin	Opdatér min PIN
+duress_heading	Nødoplåsnings-PIN (kun Ejer)
+duress_help	Valgfri. Hvis denne PIN tastes ved oplåsning i stedet for din, slettes alle bogposteringer (bookinger, reskontro, historik), og disken åbner som ejer og ser normal ud — takster, parter, zoner, personale og indstillinger bliver. Skema og konfiguration slettes ikke. Brug den kun, hvis du tvinges til at låse op. Lad stå tom og gem for at slå fra. Aldrig den samme som nogens PIN.
+duress_pin_ph	Nød-PIN (4–12 cifre)
+duress_confirm_ph	Skriv igen for at bekræfte
+save_duress_pin	Gem nød-PIN
+clear_duress_pin	Slå nød-PIN fra
+duress_on	Nødoplåsnings-PIN er til
+duress_off	Nødoplåsnings-PIN er fra
+duress_saved	Nødoplåsnings-PIN gemt
+duress_cleared	Nødoplåsnings-PIN slået fra
+vehicle_ph	Køretøj
+void	Annuller
+write_off_ap	Afskriv AP
+write_off_nil	Afskriv / nul saldo
+zone_ph	Zone (navn fra Takster)
+caption_today	I DAG
+caption_bookings	BOOKINGER
+caption_payments_today	BETALINGER I DAG
+caption_outstanding	UDESTÅENDE
+caption_bank	BANK
+paid_by	Betalt af
+second_way	Anden måde
+weight_in	Vægt i
+size_in	Mål i
+goods_received	Varer modtaget
+expense_heading	Udgift
+notes_attach_sale	Noter og vedhæftninger (valgt salg)
+notes_attach_party	Noter og vedhæftninger (valgt part)
+attachments_last_expense	Vedhæftninger (seneste udgift)
+credit_limit_heading	Kreditgrænse (valgt / navngiven part)
+pay_selected_heading	Betal valgt (afregn gæld / tag forskud)
+write_off_heading	Afskriv (udlign uden betaling)
+pay_ap_heading	Betal det vi skylder dem (AP)
+country_tax	Land og skat
+extra_tills_heading	Ekstra kasser
+other_devices_help_heading	Sæt andre enheder op
+other_devices_help	På denne enhed (Server): Andre enheder → Tillad ekstra kasser. Notér parringskoden og Wi‑Fi-adressen. Tryk Tillad andre enheder at oprette forbindelse, hvis det vises. På en computer trykker du Start med denne computer. På hver anden enhed: installér appen, vælg Klienttilstand, Find butikkens server (eller skriv adressen), indtast parringskoden, Par nu. Ordrer venter på enheden, hvis Wi‑Fi falder ud, og sendes, når serveren svarer igen.
+your_brand	Dit brand (i appen)
+units_heading	Enheder
+booking_measures	Bookingmål
+drawer_count	Skuffeoptælling (valgfri)
+spreadsheet_csv	Regneark (CSV)
+bank_reconciliation	Bankafstemning (afkryds mod dit kontoudtog)
+book_add_product	Bog — tilføj vare / takst
+book_opening_credit	Bog — primo-kredit
+account_kind	Kontotype (tryk på én)
+active_ledger	Aktiv reskontro
+actual_total_cap	FAKTISK TOTAL
+amend_help	Vælg et salg der skal rettes, annulleres eller refunderes. Rettelser beholder hele historikken. Afrundet total starter lig med Anvendt — ret kun for at afrunde. Annullering og refundering kan kræve en Ejer- eller Leder-PIN (skrevet ovenfor; gemmes med dit navn).
+applied_total_cap	ANVENDT TOTAL
+bank_balance	Banksaldo
+bank_net_today	Bank netto i dag
+branch_export_help	Eksport skriver et dagsøjebliksbillede i mappen med sikkerhedskopier og kopierer det til udklipsholderen. For at importere en anden afdelings dag skal du gemme filen som import_branch_snapshot.json i den mappe og trykke Importér.
+brand_shown_help	Vises på skærme inde i appen. Det installerede appnavn og ikon på denne enhed bliver som i platformens liste.
+app_icon	Appikon
+logo_help	Valgfrit butiksmærke på skærme i appen.
+onboard_layout	Det du får
+item_photo_help	Valgfrit. Uden foto viser vi initialer fra varenavnet.
+cash_in_hand	Kontant i kassen
+change_my_pin_heading	Skift min PIN (kun din)
+connect_to_server	Forbind til Serveren
+counter_locked	Disk 01 · Låst
+country_pack_help	En landepakke sætter skatnavn og beregning, sporet for øjeblikkelig betaling og det virksomheds-id der trykkes på regninger. Kumkaj indberetter ikke skat og udsteder ikke offentlige e-fakturaer nogen steder.
+currency_use_help	Rul og tryk Brug for enhver understøttet valuta.
+day_close_help	Når du bogfører en dagsafslutning, gemmes denne opsummering (og skuffeforskel hvis den er talt) i revisionsloggen. Det stopper ikke salget.
+expenses_word	Udgifter
+feature_access_help	Funktionsadgang for valgt personale (tryk efter tilføjelse)
+footer_local	Lokal SQLite · Gratis for evigt · Ingen sky
+fresh_book_moklanjo	Ny = tomt katalog (tilføj varer senere). Bog = angiv primolager og hvem der skylder dig nedenfor.
+fresh_selected	Forfra valgt — kataloget forbliver tomt. Tryk Færdig når du er klar.
+gross_word	Brutto
+how_start	Hvordan vil du starte?
+later_country_pack	Senere: Indstillinger → anvend din landepakke til skatte- og betalingsetiketter.
+local_badge	LOKAL
+measures_help_moklanjo	Sådan måles pakker ved bookingdisken. Skriv mål og vægt i de enheder du bruger — standard (cm, m, in, ft · kg, g, lb, oz) eller din egen enhed knyttet til cm / kg ovenfor (direkte eller via andre enheder). Bøgerne registrerer altid kg. Lad et felt stå tomt for at beholde det.
+mix_type_hint_moklanjo	Angiv hvor meget i hver (kontant / UPI / kort / kredit). Skal summe til regningen. Kredit kræver en kunde ovenfor.
+money_in_sales	Penge ind (salg)
+more_help_moklanjo	Katalog, salg, kredit, team, sikkerhedskopi — plus lager og ekstra kasser når det behøves.
+net_word	Netto
+offline_badge	UDEN NET
+optional_login_help	Valgfrit login (id + adgangskode). Ejeren sætter det én gang; kun brugeren kan senere skifte adgangskode.
+or_unlock_login	Eller lås op med login-id + adgangskode
+permission_preset	Job (sætter skærme og rettigheder)
+preset_help_moklanjo	Kasserer: sælg. Leder: sælg + varer + annuller/ret.
+product_locked_moklanjo	Moklanjo
+product_only_moklanjo	Denne app er kun Moklanjo — bøger + bookingdisk. Andre fagflader kommer senere som særskilte produkter.
+purchases_cogs	Indkøb (vareforbrug)
+qty_cap	ANTAL
+restore_help	Gendan: vælg en sikkerhedskopi. Bøgerne åbner som de var dengang; bøgerne som de er nu, gemmes først, så det kan fortrydes.
+wipe_data_heading	Slet lokale data
+wipe_data_help	Kun for ejeren — samme valg som Windows-afinstallation. Forretningsposter rydder handelshistorik men beholder takster og opsætning (som nød-oplåsnings-PIN). Butiksopsætning fjerner bøgernes database. Skærmindstillinger rydder vindue/sprog. Bekræft med ejer-PIN. Nød-oplåsnings-PIN under Team er separat (skjult sletning ved oplåsning).
+wipe_trading	Forretningsposter
+wipe_schema	Butiksopsætning
+wipe_ui	Skærmindstillinger
+wipe_owner_pin_ph	Ejer-PIN for at slette
+wipe_delete_selected	Slet valgte
+wipe_owner_only	Kun Ejeren kan slette lokale data.
+restore_owner_only	Kun Ejeren kan gendanne en sikkerhedskopi.
+wipe_owner_pin_needed	Indtast Ejer-PIN for at slette lokale data.
+wipe_nothing_selected	Vælg først hvad der skal slettes.
+wipe_done	Valgte lokale data slettet.
+wipe_schema_done	Butiksopsætning slettet — vælg Server eller Klient for at fortsætte.
+rounded_total	Afrundet total
+setup_app_moklanjo	Sæt Moklanjo op
+shop_logo_optional	Butikslogo (valgfrit)
+stock_type_help	Skriv varenavnet (en del er nok), et antal, og ret så. Varer der ikke tælles endnu, skal have Start optælling én gang.
+team_owner_help	Ansæt: vælg et job (kasserer / leder), navn + start-PIN, og tryk Tilføj. Kun hvis denne person afviger: åbn skærme og rettigheder nedenfor, og gem jobopsætning. Alle skifter deres egen PIN nederst — ejeren kan ikke ændre andres.
+they_owe_us	De skylder os
+unit_at_cap	Enhed @
+units_help	Koder til vareetiketter (kg, stk., pose). Hver enhed skal hænge sammen — direkte eller via andre enheder — med en standard (kg · cm · ml · stk.), f.eks. 1 kasse = 2 æsker og 1 æske = 20 cm. Omregning: 1 fra = faktor til. Valutaer er aldrig enheder.
+we_owe_them	Vi skylder dem
+who_unlocking	Hvem låser op?
+locked_word	Låst
+show_pin	Vis PIN
+hide_pin	Skjul PIN
+set_owner_pin	SÆT EJER-PIN
+enter_owner_passcode	INDTAST EJER-KODE
+enter_staff_passcode	INDTAST PERSONALE-KODE
+pin_count_zero	0 / 12 cifre · mindst 4, så OK
+pin_count_need	{} / 12 cifre · mangler {} mere
+pin_count_full	12 / 12 cifre · tryk OK
+pin_count_ready	{} / 12 cifre · tryk OK når du er klar
+pin_hint_choose	Vælg 4–12 cifre · Enter eller Lås op for at gemme
+pin_hint_new	Ny Ejer-PIN på 4–12 cifre · Enter eller Lås op
+pin_hint_shop_code	Butiksenhed · parringskode {}
+pin_hint_books	Denne enhed holder bøgerne
+pin_hint_paired	Ekstra kasse parret — lås op for at sælge
+pin_hint_pair_first	Ekstra kasse — par med butiksenheden først
+unlock_to_continue	Lås op for at fortsætte
+no_staff_yet	Intet personale endnu — lås op som Ejer, så Team
+status_server_set_pin	Servertilstand — sæt Ejer-PIN
+status_server_tills	Servertilstand — ekstra kasser kan deltage. Lås op
+status_server_unlock	Servertilstand — lås op som Ejer
+status_client_unlock	Klienttilstand — lås op for at sælge
+icon_new_selected	Ikon: ny fil valgt — tryk Gem brand
+icon_custom	Ikon: eget stedsmærke
+icon_default	Ikon: Kumkaj-mærke (standard) — vælg et eget
+logo_yours	Logo: jeres butikslogo — vises på skærme og kvitteringer
+logo_default	Logo: Kumkaj-mærke (standard) — vælg jeres eget hvis I har et
+tmpl_current	Nuværende: {} — {}
+tmpl_selected	Valgt: {} — {}
+setup_complete	Opsætning færdig
+onboard_fresh_tmpl	Forfra · {} — kataloget starter tomt; tilføj varer under Varer, og tryk Færdig.
+onboard_book_tmpl	Bog · {} — tilføj varer og primo-kredit, og tryk Færdig.
+onboard_template_tmpl	Navngiv stedet hvis du vil, og vælg så hvordan I starter.
+tmpl_blurb	Kurerbøger og bookingdisk: afsendere, transportører, dagbog, AWB.
+tmpl_how	Book pakker ved disken; dagbog for i dag; faner til takster, parter, rapporter.
+trk_booked	Booket
+trk_picked_up	Afhentet
+trk_in_transit	Undervejs
+trk_delivered	Leveret
+trk_rto	På vej retur til afsender
+lane_to_dispatch	Til afsendelse
+lane_with_carrier	Hos transportør
+lane_failed	Mislykkedes
+lane_done_today	Færdig i dag
+ops_board_help	Pakker efter hvor de er i dagens arbejde. Tryk på pakker (eller scan dem) for at vælge dem, og handl så på alle valgte på én gang — hvert spor tilbyder kun de flytninger, der passer.
+lane_empty	Intet her lige nu.
+picked_fmt	{n} valgt
+pick_all	Vælg alle
+bag_for_carrier	Aflever til transportør
+send_with_rider	Send med bud
+out_again	Ud igen
+return_to_sender	Retur til afsender
+runs_bags_heading	Seneste ture og sække
+print_word	Udskriv
+bag_word	Transportørsæk
+run_word	Budtur
+parcels_fmt	{n} pakker
+parcel_history	Historik
+attempt_fmt	Forsøg {n}
+pieces_short_fmt	{n} stk.
+note_reason_ph	Note eller årsag
+ops_pick_first	Vælg pakker først — tryk på dem eller scan dem
+cod_to_collect	Leveret — COD der skal opkræves
+cod_on_road	COD stadig undervejs
+cod_owed_consignors	Indsamlet — til udbetaling til afsendere
+cod_rto_fees	RTO-gebyrer der skal opkræves
+cod_to_hand_in	COD til aflevering
+parcel_one_fmt	{n} pakke
+facet_bank_title	Rapporter
+facet_bank_help	Dagbøger, partalder, bankposteringer og perioderesultat.
+facet_ops_title	Forsendelser og afsendelse
+facet_ops_help	Scan eller skriv AWB → Find, og gå så videre / udskriv etiket / COD. Udsend til bud eller transportør.
+facet_cod_title	COD-register
+facet_cod_help	Opkræv ved levering, og indbetal derefter til afsenderen.
+facet_riders_title	Bude (egen flåde)
+facet_riders_help	Tilføj bude, og send derefter bookede AWB'er fra Drift.
+against_bill_ph	Mod regning nr. ovenfor (valgfrit)
+aliases_ph	Aliaser — andre navne, adskilt med komma
+amount_blank_full_ph	Beløb (tom = hele saldoen)
+amount_owed_ph	Skyldigt beløb
+amount_ph	Beløb
+amount_received_ph	Modtaget beløb
+amount_we_pay_ph	Beløb vi betaler
+awb_scan_ph	AWB / scan stregkode
+bulk_csv_ph	Masse-CSV — destination,consignee,kg,cod_paise,note
+business_name_ph	Virksomhedsnavn
+category_new_ph	Kategori (valgfri, oprettes hvis ny)
+cod_amount_ph	COD-beløb
+code_bag_ph	Kode (pose)
+conv_factor_ph	Faktor (25 = 1 pose → 25 kg)
+country_code_ph	Landekode f.eks. IN, GB, US, AE, BR
+credit_khata_amount_ph	Kredit- / khata-beløb
+credit_limit_ph	Kreditgrænse (0 = ingen)
+dim_unit_code_ph	Måleenhedskode (cm)
+divisor_ph	Volumendivisor (5000)
+extra_per_kg_ph	Ekstra / kg
+first_amount_ph	Første beløb
+first_kg_ph	Første kg (trin)
+from_code_ph	Fra kode (pose)
+item_name_lang_ph	Varenavn — skriv det på dit sprog
+login_id_opt_ph	Brugernavn (påkrævet, entydigt)
+manager_pin_ph	Leder-PIN til godkendelse (kun hvis du ikke må annullere)
+new_branch_name_ph	Nyt filialnavn
+new_password_ph	Ny adgangskode (valgfri)
+new_pin_ph	Ny PIN (4–12 cifre)
+note_bank_ph	Note (indbetaling, hævning, …)
+note_buy_expense_ph	Note (brændstof, husleje, …)
+note_expense_ph	Note (brændstof, kontor, …)
+notify_phone_ph	Beskedtelefon (WhatsApp/SMS-tilknytning)
+options_moklanjo_ph	Tilvalg (valgfrit) — Stor=20, Gaveindpakning=10
+part_second_way_ph	Del med en anden måde (valgfrit)
+phone_ph	Telefon
+address_ph	Adresse
+party_custom_fields_heading	Brugerfelter (valgt part)
+party_custom_help	Tilføj en hvilken som helst etiket og værdi på denne part — WhatsApp, GSTIN, rutekode, …
+party_custom_key_ph	Feltnavn (f.eks. WhatsApp)
+party_custom_value_ph	Værdi
+party_custom_add	Tilføj felt
+party_custom_remove	Fjern felt
+party_custom_empty	Ingen brugerfelter endnu
+party_custom_pick_first	Vælg en part for at tilføje brugerfelter
+place_name_ph	Navn på dette sted
+price_ph	Pris
+qty_example_ph	Antal (f.eks. 1,5 for kg)
+quantity_ph	Mængde
+reason_required_ph	Årsag (påkrævet)
+role_title_ph	Rolle (f.eks. Barista)
+service_pct_ph	Service % valgfri 0/10/12
+short_code_ph	Kort kode (MG02)
+slab_kg_ph	Afregningstrin i kg (0.5)
+staff_name_ph	Personalenavn / id
+starting_password_ph	Startadgangskode (valgfri)
+starting_pin_ph	Start-PIN (4–12 cifre)
+tax_rate_ph	Skattesatsens navn eller % — Standard, Reduceret, 0, 5, 12, 18, 20
+to_code_ph	Til kode (kg)
+uncleared_no_ph	Ikke-afstemt nr. ovenfor
+unit_cost_ph	Enhedspris
+unit_kg_blank_ph	Enhed (kg eller tom)
+unit_name_bag_ph	Navn (Pose)
+weight_unit_code_ph	Vægtenhedskode (kg)
+zone_name_ph	Zonenavn
+pay_credit	Kredit
+book_kind_today	Dagens bøger
+book_kind_month	Denne måneds bøger
+book_kind_aging	Udestående / debet-kredit
+book_kind_balance	Balance
+ops_desk_help	Scan AWB med en USB-stregkodescanner (eller skriv den) → Find. Gå så videre, udskriv etiket, eller opkræv COD. Etiketter udskriver Code 128.
+role_help_consignor	Rolle: Afsender — AR (de skylder os). Samme firma kan også være transportør.
+role_help_carrier	Rolle: Transportør — AP (vi skylder dem). Samme firma kan også være afsender.
+role_help_both	Roller: Afsender + transportør — én part, AR- og AP-reskontro, netto i Rapporter.
+role_help_supplier	Rolle: Leverandør — AP for indkøb.
+lane_declared_label	Kontobooking
+lane_owner_label	Kontant booking
+money_lane_bill	Regning: {lane}

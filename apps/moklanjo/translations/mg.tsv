@@ -1,0 +1,835 @@
+# Malagasy — Malagasy (mg). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	Boky iraka + birao famandrihana. Maimaim-poana ivelan'ny aterineto.
+unlock	Manokatra
+pin_hint	Ny PIN an'ny tompony dia manomboka amin'ny 0000
+sell	Famandrihana
+buy	Mandoa vola
+books	Bokin'ny andro
+books_help	Ny toerana anio. Famandrihana = entana miditra. Mandoa = faktioran'ny mpitatitra sy fandaniana. Antoko = mpitatitra & mpitatitra.
+buy_help	Taratasy fandaniana sy faktioran'ny mpitatitra (vola mivoaka). Ao amin'ny kaonty dia mijanona ao amin'ny lisitry ny antoko.
+sell_money_in	Mamandrika parcel
+buy_money_out	Fandaniam-bola / faktioran'ny mpitatitra
+record_purchase	Rakikira fividianana
+add_expense	Tapakila fandaniana
+bank_book	Bokin'ny banky
+credit_help	Ny ID an'ny antoko dia tokana (mety miverimberina ny anarana). Andraikitra: Consignor (AR), Carrier (AP), na izy roa amin'io ID io. Misaraka ny ledger; tatitra mampiseho net.
+party_kind_ph	Anjara manokana (tsy voatery) — na kitiho ny puce etsy ambony
+parties_list_heading	Antoko voavonjy
+reports_help	Bokin'andro, mpampindrana sy mpampindram-bola, bokin'ny banky, taratasy fandaniana, tombony sy fatiantoka.
+reports_today	Boky andro (androany)
+reports_month	Tombony sy fatiantoka (volana)
+reports_aging	Tsy voaloa / Dr-Cr
+reports_balance_sheet	Taratasy fanamarinam-bola
+reports	Bokin'ny banky & Teti-bola sy Fatiantoka
+refresh	Havaozy
+undo	Manafoana
+start_tracking	Atombohy ny fanaraha-maso
+stock_minus	− Tahiry
+stock_plus	+ Tahiry
+settle_cash	Vahao amin'ny vola
+settle_card	Vahaolana karatra
+items	Sarany & serivisy
+nav_items	sarany
+more	Bebe kokoa
+your_items	Ny saranareo
+items_help	Ny andalana tsirairay dia salan'isa (oh: Surface Zone A). Ny unit dia matetika kg. Tsindrio raha hanova.
+add_item	Ampio ny tahan'ny
+new_item	Taham-baovao
+adding_item	Manampy taha vaovao
+editing_item	Fanitsiana
+save	Tehirizo
+remove	Esory
+empty_catalog	Tsy mbola misy sarany. Sokafy ny sarany & serivisy, ampio iray (anarana + vidiny, unit kg), avy eo Famandrihana.
+counter_sale	Counter famandrihana
+total	Fitambarany
+cash	Vola
+upi	UPI
+card	Karatra
+credit	Mpanjifa
+clear	Fafao
+ready_to_sell	Vonona ny hanao famandrihana
+today_prefix	Androany
+today_mid	androany
+owed	misongadina
+round_word	boribory
+back	Hiverina
+sold_out	Tsy misy
+restock	Mamerina tahiry
+not_tracked	Tsy voarakitra
+in_stock	eo amin'ny tahiry
+marked_sold_out	Voamarika tsy misy
+add_upper	AMPIDIRINA
+na	N/A
+qty	Lanja/Isan'ny
+unit_at	Taham-bola @
+actual	Marina
+applied	Nampiharina
+note_ph	Fanamarihana (tsy voatery)
+rounded	BORIBORY
+split	Zarao
+counter	Kauntera
+parcel	fonosana
+order	Baiko
+sales	Famandrihana
+sales_refunds	Famandrihana & famerenana
+day_close	Andro akaiky
+reports_expenses	Bokin'ny banky & Teti-bola sy Fatiantoka
+nav_reports	Tatitra
+nav_settings	Fikirana
+nav_lock	Famafana
+sidebar_settings	Fikirana sidebar
+sidebar_settings_help	Sary famantarana mitovy amin'ny sisin'ny bara. Afindrao ny andalana iray mba hanovana ny filaharan'ny zavatra. Ahodinao ny switch mba hanehoana na hanafenana. Mitohy eo amin'ny bara foana ny Fikirakirana sy ny Lock.
+sidebar_always_on_short	Foana mandeha
+sidebar_back_settings	Hiverina
+sidebar_shown	Naseho
+sidebar_hidden	Afina
+sidebar_always_on	Foana eo amin'ny bara
+sidebar_shown_hint	Aseho eo amin'ny valan-tsofiny / takelaka ambany
+sidebar_hidden_hint	Afina amin'ny bar
+sidebar_menu_items	Karazan-tsakafo & zavatra
+sidebar_enable_all	Alefaso ny Rehetra
+sidebar_disable_all	Vonoy Daholo
+sidebar_order_saved	Voatahiry ny filaharan'ny sidebar
+sidebar_visibility_saved	Voatahiry ny fahitana sisiny
+amounts_hide	Afeno
+amounts_show	Asehoy
+no_sale_yet	Tsy mbola misy fivarotana
+favorites	Tiana
+favorites_help	Entana amidinao matetika, voatahiry ho an'ny fidiranao. Ampio iray amin'ny faktiora, na manamboara ny lisitrao avy amin'ny entana rehetra eto ambany.
+your_favorites	Ny tianao indrindra
+all_items	Ny entana rehetra
+no_favorites	Tsy mbola misy tiana — ampio zavatra avy amin'ny lisitra etsy ambany.
+add_to_bill	Ampio amin'ny faktiora
+added	Nampiana
+owes_word	manan-kolazaina
+selected_word	Voafantina
+chip_clear_credit	mazava — Mandoa na maka fampindramam-bola mialoha
+chip_missing_customer	Mpividy voafantina tsy hita — mifidiana indray
+chip_no_customer	Tsy mbola misy mpanjifa — manorata anarana, avy eo tsindrio ny Credit
+credit_summary_fmt	{} mpanjifa · crédit misokatra {} · avanços notazonina {}
+recent_label	Vaovao farany:
+inventory	Tahiry
+inventory_stock	Tahiry & tahiry entana
+branches	Sampana
+branches_org	Sampana & fikambanana
+credit_customers	Antoko (mpitrosa sy mpampindram-bola)
+customer_name_ph	Anaran'ny antoko
+new_customer_ph	Anarana vaovao ho an'ny antoko
+item_name_ph	Anaran'ny sarany (oh: Zone Surface A)
+item_price_ph	Isaky ny kilao / slab voalohany
+start_template	Vokatra
+next_booking	Famandrihana manaraka
+destination_ph	Tanàna/faritra toerana
+consignee_ph	Anaran'ny mpandray
+consignee_phone_ph	telefaonina mpandray
+consignee_address_ph	Adiresy fanaterana
+origin_name_ph	Anaran'ny mpandefa
+origin_phone_ph	Telefaonina mpandefa
+origin_address_ph	Adiresy alaina / fiaviana
+booking_consignor_heading	Consignor (mpanjifa / mpandefa)
+booking_consignee_heading	Consignee (receiver)
+booking_consignor_hint	Mifidiana fety hofenoina, na avelao ho banga mba hidirana. Ilaina ny maka an-trano sy RTO.
+booking_consignee_hint	Mpandray ny entana. Avelao ho banga ho an'ny fidirana amin'ny kaontinanta.
+weight_kg_ph	Tena kg
+length_cm_ph	L cm
+breadth_cm_ph	B cm
+height_cm_ph	H cm
+chargeable_kg	Vidiny kg
+awb_label	AWB
+booking_help	Consignor + consignee (blank OK) → toerana → lanja → taham-pifantenana → kaonty/vola → mandoa. AWB fanontana amin'ny rosia. Manadio ny birao ny famandrihana manaraka. Ny boribory dia manomboka mitovy amin'ny Applied — manitsy mba hanodidina ny volavolan-dalàna ihany.
+cart_empty_hint	Latabatra tsy misy na inona na inona — consignor/consignee azo atao, apetraho ny tanjona & lanja, tap ADD amin'ny sarany, dia mandoa.
+team	Ekipa
+team_pins	Ekipa & PINs
+my_pin_settings	Ny PIN-ko
+settings_hub_help_my_pin	Ovay ny PIN fanokafana ho an'ny olona misoratra anarana amin'ity fitaovana ity.
+team_self_help	Ianao irery ihany no afaka manova ny PIN fanokafana (sy ny tenimiafina fidirana azo atao). Anontanio ny Tompo raha mila efijery na zo hafa ianao.
+backup_settings	Backup & fikirakirana
+lock_app	Hamarino ny app
+pick	Safidio
+select	Fidio
+advance	Mandroso
+owner	Tompony
+staff	Mpiasa
+photo	Sary
+auto	Auto
+prev	Teo aloha
+next	Manaraka
+ok	OK
+this_shop	Server
+extra_till	Client
+off	Maty
+server	Server
+client	Client
+language_currency	Fiteny & vola
+language	Fiteny
+choose_language	Fidio ny fiteninao
+language_setup_hint	Araho ny fitenin'ity fitaovana ity, na safidio ny anao.
+lang_follow_platform	Fitenin'ny fitaovana
+lang_pick_user	Fidio ny fiteny
+lang_platform_now	Fitenin'ny fitaovana amin'izao fotoana
+selected_language	Voafantina
+continue	Tohizo
+this_device	ITY FITAOVANA ITY
+device_use_q	Ahoana no hampiasana ity fitaovana ity?
+last_server_mode	Taloha Server — kitiho mba hanohy
+last_client_mode	Taloha Client — kitiho mba hanohy
+choose_server	Fidio ny mpizara
+choose_server_hint	Sokafy ny mpizara efa misy, na mamorona iray ho an'ny orinasa hafa.
+create_new_server	Mametraha mpizara vaovao
+open_server	Sokafy
+new_server_name_ph	Anaran'ny mpizara vaovao (tsy voatery)
+server_remove_pin_ph	Tompony PIN hanala mpizara
+only_owner_remove_server	Ny Tompony ihany no afaka manala mpizara
+owner_pin_remove_server	Tompony PIN ilaina hanalana ity mpizara ity
+device_setup_help	Server mitazona ny boky eto. Client mifandray amin'ny Server.
+currency	Vola
+backup	Kopia
+settings_sec_diag	Fanaraha-maso ara-pahasalamana
+settings_hub_help	Sokafy ny faritra iray isaky ny fotoana — kely kokoa ny mitete, mazava kokoa ny safidy.
+settings_sec_devices	Fitaovana hafa
+settings_sec_alerts	Fampandrenesana
+alerts_help	Mandra-pahoviana ny hafatra momba ny sata no mijanona eo amin'ny efijery ho anao (ity fidirana ity).
+snack_secs_ph	Segondra (3–60, default 10)
+snack_secs_save	Tehirizo ny fotoana fanairana
+snack_secs_saved	Fotoana fampandrenesana voavonjy — {n} segondra
+snack_secs_bad	Ampidiro segondra ho isa (3–60)
+cancelled	Natoana
+cancel	Ajanony
+opening_client	Manokatra mpanjifa…
+preparing_desk	Manomana birao…
+opening_server	Manokatra mpizara…
+creating_server	Mamorona mpizara…
+diag_privacy_help	Mijanona eo amin'ity fitaovana ity ny rakitsoratra. Tsy tehirizina mihitsy ny tsiambaratelo (PIN, tenimiafina). Ny fizarana fonosana avy amin'ny fitaovana dia mila fanomezan-dàlana mazava avy aminao isaky ny fotoana — tsy amidy na omena antoko fahatelo mihitsy.
+diag_level	Haavo antsipiriany
+diag_level_error	Lesoka
+diag_level_warn	Fampitandremana
+diag_level_info	Info
+diag_level_debug	Debug
+diag_support_start	Atombohy ny fivoriana fanohanana 30 minitra
+diag_support_stop	Atsahatra ny fivoriana fanohanana
+diag_support_started	Fivoriana fanohanana momba ny — antsipirihan'ny Debug mandritra ny 30 minitra
+diag_support_ended	Vita ny fivoriana fanohanana
+diag_export_local	Aondrana ny dika eo an-toerana
+diag_export_local_done	Vonona ny fanadihadiana eo an-toerana ao amin'ny {path} — mifidiana toerana hitahirizana kopia
+diag_approve_send	Manamafy ny fizarana amin'ity fitaovana ity
+diag_send_heading	Zarao avy amin'ity fitaovana ity
+diag_send_help	Ny fankatoavana dia fonosana iray, avy eo dia tapitra. Vonjimaika — ampiasaina fotsiny hanamboatra na hanatsara ny vokatra. Tsy zaraina amin'ny antoko fahatelo. Miasa amin'ny Linux, Windows, macOS, ary Android.
+optional_login_heading	Fidirana tsy voatery
+rights_heading	Zo
+booking_scope_heading	Ao an-toerana / Iraisam-pirenena
+diag_send_approved	Zara raha nekena ho an'ny fonosana iray (hifarana tsy ho ela)
+diag_export_send	Mametraha fonosana fizarana (mila fankatoavana)
+diag_export_send_done	Vonona ny fonosana hizara ao amin'ny {path} — safidio ny toerana hitahirizana, avy eo alefaso amin'ny fanohanana Kumkaj fotsiny
+diag_save_bundle	Tehirizo ny dika mitovy amin'ny diagnostika
+diag_bundle_saved	Natahiry ny dika mitovy amin'ny diagnostika tao amin'ny {path}
+diag_bundle_failed	Tsy afaka namonjy ny kopian'ny diagnostika — andramo indray
+diag_clear	Diovy ny rakitra fanadihadiana
+diag_cleared	Voafafa ny tatitra fanadihadiana
+use	Ampiasao
+add_branch	Ampio sampana
+add_conversion	Ampio fanovana
+add_item_plain	Ampio zavatra
+add_note	Ampio fanamarihana
+add_opening_balance	Ampio fetra fanombohana
+add_rider	Ampio mpitaingina
+add_staff	Ampio mpiasa
+add_unit	Ampio singa
+add_use_name	Ampio / ampiasao ity anarana ity
+allow_extra_tills	Avelao ny ho fanampiny
+amend	Manova
+apply_country_pack	Mampihatra fonosana firenena
+datetime_appearance	Fampisehoana daty sy ora
+datetime_appearance_help	Ny boky dia mitazona RFC3339 tao anatin'ny taona voalohany. Ireo ihany no manova ny fomba fijerin'ny daty sy ny famantaranandro amin'ny rosia, etikety, tatitra ary ny efijery.
+datetime_example	Ohatra ankehitriny: {ex}
+date_order	Filaharan'ny daty
+date_order_dmy	D/M/Y
+date_order_mdy	M/D/Y
+date_order_ymd	Y-M-D
+time_format	Famantaranandro
+time_format_24h	24 ora
+time_format_12h	12 ora
+attach_bill_photo	Ampidiro ny sary faktiora
+attach_pdf	Ampidiro PDF
+attach_photo	Ampidiro sary
+bank	Banka
+bank_in	Ao amin'ny banky
+bank_out	Banky nivoaka
+bank_to_till	Banky → vola
+till_to_bank	Vola → banky
+mark_cleared	Marika voadio
+unmark	Esory ny marika
+role_both	Samy
+role_carrier	mpitatitra
+role_cashier	Mpahangy vola
+role_consignor	Consignor
+role_manager	Mpitantana
+role_supplier	Mpamatsy
+branch_name_sell_ph	Anaran'ny sampana hivarotana
+bring_my_book	Ento ny bokiko
+business_tax_id_ph	ID hetra ara-barotra
+card_amount_ph	Volan'ny karatra
+cash_amount_ph	Volan'ny vola
+upi_amount_ph	Habetsaky UPI
+carrier_cost_ph	Vidin'ny mpitatitra
+carrier_party_ph	Antoko mpitatitra
+choose_icon	Fidio ny kisary
+choose_logo	Fidio ny sary famantarana
+choose_receipt_stamp	Safidio ny mari-pankasitrahana
+choose_payment_qr	Mifidiana fandoavam-bola QR
+clear_icon	Esory ny kisary
+clear_logo	mazava logo
+clear_photo	Esory ny sary
+clear_stamp	Manaisotra tombo-kase
+clear_payment_qr	Manaisotra fandoavam-bola QR
+print_faces	Tarehimarika vita pirinty (faktioran'ny rosia / fe-potoana)
+print_faces_help	tombo-kase sy fandoavana QR eo akaikin'ny famantaranao momba ny tapakila famandrihana sy ny faktioran'ny fe-potoana.
+awb_pools_heading	Ireo dobo laharana AWB mpitatitra
+add_awb_pool	Ampio dobo AWB
+awb_pool_carrier_ph	Anaran'ny antoko mpitatitra
+awb_pool_start_ph	Manomboka no.
+awb_pool_end_ph	Farany no.
+awb_pool_prefix_ph	Tovona (tsy voatery)
+awb_pool_label_ph	Label (tsy voatery)
+pieces_ph	Pieces (blank = 1) - manitatra ho an'ny entana / ampahany maro
+bulk_awbs_ph	AWB marobe - mametaka maro (tsipika vaovao na faingo) ho an'ny fandrosoan'ny sata iray
+tds_cut_ph	TDS tapaka (tsy voatery)
+discount_ph	fihenam-bidy (tsy voatery)
+cheque_no_ph	Laharana fanamarinana (tsy voatery)
+bill_reminder_chase	lisitry ny fampahatsiahivana volavolan-dalàna
+month_mix_report	Tatitra isam-bolana
+copy_month_gst_csv	Adikao volana GST CSV
+domestic	ao an-tokantrano
+international	iraisam-pirenena
+pick_logo	Mifidiana logo
+booking_scope_hint_domestic	Volumetric ÷ 5000 (an-trano) — tap International ho an'ny rivotra ÷ 6000
+booking_scope_hint_intl	Volumetric ÷ 6000 (rivotra iraisam-pirenena) - kitiho ny Domestic ho an'ny fivarotana ÷5000
+cod_register	Rejistra COD
+collect_cod	Manangona COD (AWB)
+consignments_dispatch	Fandefasana & fandefasana
+consignor_party_ph	Anaran'ny mpitatitra / antoko
+copy_day_book_csv	Adikao ny bokin'ny andro CSV
+copy_day_close	Adikao ny fanakatonana andro
+copy_items_csv	Adikao ireo zavatra CSV
+copy_outstanding_csv	Adikao ny mbola tsy vita CSV
+copy_parties_csv	Adika ny antoko CSV
+copy_party_ledger_csv	Adika ny boky fitantanam-bola CSV
+copy_receipt	Adika ny fandraisana
+copy_report	Dika mitovy amin'ny tatitra
+counted_cash_ph	Vola voisan'ny trosa ao anaty vatasary
+counter_agency_ph	Anaran'ny kaontera / masoivoho (tsy voatery)
+create_backup	Mametraha backup
+day_close_summary	Famintinana ny andro rehefa mifarana
+delete_party	Fafao ny partie voafidy
+dispatch_to_rider	Dispatch namandrika → mpitaingina
+docket_charge_ph	Fanomezana docket
+declared_value_ph	Nambara ny sanda
+contents_ph	Hevitra ato Anatiny
+eway_ph	E-way bill no.
+insurance_label	MPIANTOKA
+yes_label	ENY
+no_label	tsy misy
+print_route_label	Lalana fanontana
+new_party_kind_label	Karazana antoko vaovao
+done_open_books	Vita — sokafy ny boky
+export_day	Andro fanondranana
+extra_note_expense_ph	Fanamarihana fanampiny momba ny fandaniana farany
+extra_note_awb_ph	Fanamarihana fanampiny momba ity AWB / varotra ity
+failed_delivery	Tsy nahomby ny fandefasana
+find_scan_awb	Mitadiava / Scan AWB
+forget_shop	Adino ity fivarotana ity
+fuel_ph	Solika
+handover_carrier	Voafandrika tanana → mpitatitra
+import_day	Andro fanafarana
+import_items_csv	Manafatra entana / sarany CSV…
+import_parties_csv	Antoko fanafarana CSV…
+import_pincodes_csv	Manafatra kaody pin CSV…
+import_carrier_bill_csv	Manafatra volavolan-dalàna CSV…
+copy_carrier_bill_report	Adikao ny tatitra momba ny volavolan-dalàna farany
+use_carrier_cost	Ampiasao ny vidin'ny mpitatitra
+rate_carrier_ph	Mpitatitra (blank = taham-pivarotanay)
+rate_party_ph	Fety (blank = mpanjifa rehetra)
+carrier_pick_ph	Mpitatitra amin'ny vidiny (avy amin'ny fampitahana)
+item_name	Anaran'ny entana
+load_bulk_row	Ampidiro ny laharana betsaka → birao
+login_id_ph	Anaran'ny mpampiasa
+mark_delivered	Naterina i Mark
+manifest_cod_total	COD total
+manifest_received_by	Noraisin'ny
+manifest_sign	Sign
+ndr_address_wrong	Diso adiresy
+ndr_customer_unavailable	Tsy misy
+ndr_door_locked	Voahidy ny varavarana
+ndr_other	hafa
+ndr_refused	Tsy nety
+out_for_delivery	Mivoaka ho livraison
+print_drs	Print DRS
+print_run_sheet	Soraty ny taratasy fandefasana
+reattempt	Andrana indray
+rider_cod_handed_ph	COD natolotra
+settle_rider_cod	Alefaso COD ny mpitaingina
+mode_desk	Birao
+mode_rider	Mpitaingina
+waiting_office	miandry ny fahatongavan'ny birao
+capture_signature	Makà sonia
+incoming_manifest	Fampisehoana miditra
+pickup_request	Fangatahana fandraisana
+pickup_run	Hazakazaka pickup
+auto_assign_area	Manendry faritra mandeha ho azy
+reorder_stops	Miato ny famandrihana indray
+settle_rider_pay	Alefaso ny karaman'ny mpitaingina
+vehicle_inspect	Fijerena fiara
+print_docket	Manonta docket
+franchise_statement	Fanambarana momba ny franchise
+tally_export	Tally voucher fanondranana
+open_whatsapp	Sokafy ny WhatsApp
+copy_sms	Adikao ny lahatsoratra SMS
+pick_barcode_image	Mifidiana sary ho scan
+share_receipt_whatsapp	Mizarà tapakila amin'ny WhatsApp
+delivery_feedback	Fanaterana hevitra
+lan_self_book	LAN famandrihana manokana
+new_party_clear	Antoko vaovao (diovy ny endrika)
+new_party_kind_ph	Karazana antoko vaovao (mpamatsy / mpitatitra)
+next_country	Firenena manaraka
+prev_country	Firenena teo aloha
+note_gstin_ph	Fanamarihana / GSTIN / fampahatsiahivana fifanarahana
+note_pod_ph	Fanamarihana / POD (tsy voatery)
+on_account_ap	Amin'ny kaonty (AP)
+org_optional_ph	Fikambanana (tsy voatery)
+paid_now	Voadiovina izao
+pairing_code_ph	Kaody fampifandraisana
+pair_now	Mifandray izao
+party_name_selected_ph	Anaran'ny antoko (na mampiasa ny voafantina)
+password_ph	Tenimiafina
+pay_ap_card	Aloavy karatra AP
+pay_ap_cash	Aloavy vola AP
+pay_ap_upi	Aloavy AP UPI
+period_bill	Faktiora fe-potoana
+period_bill_party	Volavolan-potoana (antoko)
+pick_pod_photo	Mifidiana sary POD
+print_awb_label	Manonta etikety AWB
+print_open	Printy / sokafy
+reason_amend_ph	Antony hanitsiana / hanafoanana / hamerenana vola
+reason_note_ph	Antony / fanamarihana (fandaniam-potoana, fanisana, ...)
+record_day_close	Raketo ny fanakatonana andro
+refresh_from_shop	Manao fanavaozana avy amin'ny fivarotana
+refund	Famerenam-bola
+remit_cod	Alefaso ny COD (antoko)
+remove_selected	Esory voafantina
+restore_backup	Avereno ny backup
+rider_name_ph	Anaran'ny mpitaingina
+rider_phone_ph	Telefaonina mpitaingina
+riders	mpitaingina
+riders_own_fleet	Mpitaingina (fiara manokana)
+rollup	Ampirimo ho iray
+save_booking_measures	Tehirizo ny fepetra famandrihana
+save_brand	Tehirizo ny marika
+save_business_id	Tehirizo ny famantarana ny orinasa
+save_business_name	Tehirizo ny anaran'ny orinasa
+save_features	Tehirizo ny fananganana asa
+save_names	Tehirizo ny anarana
+server_ip_ph	Server IP (ohatra 192.168.1.10)
+set_credit_limit	Ampiharo fetra amin'ny antoko
+set_login_selected	Ampiharo fidirana amin'ny voafantina
+set_login_named	Ampiharo fidirana amin'ny {name}
+shop	Fivarotana
+start_fresh	Manomboka vaovao
+stop_extra_tills	Ajanony ny kaonty fanampiny
+backup_auto	Voatahiry ho azy isan'andro · farany {when} · ny 14 andro farany dia voatahiry ao amin'ny {dir}.
+backup_auto_none	Voatahiry ho azy isan'andro — ny voalohany dia hanomboka vetivety.
+backup_copy_to	Ny dika koa dia alefa any {dir}.
+backup_copy_btn	Kopia koa ny tahiry amin'ny lahatahiry…
+autostart_off	Atombohy amin'ity solosaina ity
+autostart_on	Manomboka amin'ity solosaina ity ✓ — kitiho raha hijanona
+autostart_done_on	Ity solosaina ity izao dia manokatra ny fampiharana rehefa manomboka — tafaverina ny mpizara fivarotana aorian'ny fahatapahan-jiro.
+autostart_done_off	Ity solosaina ity tsy manokatra ny fampiharana intsony rehefa manomboka.
+right_allowed	Avela
+right_with_approval	Amin'ny fankatoavana
+right_denied	Tsy avela
+editing_staff	Zo ho an'ny
+team_pick_ph	Mpiasa azo ovaina — anarana, username, na misafidiana
+select_staff	Safidio ity mpiasa ity
+rights_help	Zo — kitiho raha hanova: Avela → Nahazo fankatoavana (PIN-n'ny mpitantana amin'izay fotoana izay) → Tsy azo atao.
+right_void_refund	Manafoana na mamerina ny famandrihana
+right_amend_sale	Ahitsio ny famandrihana voarakitra
+find_server	Mitadiava ny serveur an'ny fivarotana
+finding_server	Mitady ny mpizara fivarotana amin'ity Wi‑Fi ity…
+no_server_found	Tsy misy hita. Ao amin'ny Server: Fikirakirana → Fitaovana hafa → Avela ny kaonty fanampiny (mitovy Wi‑Fi). Na ampidiro ny IP aseho eo.
+servers_found_pick	Tsindrio ny fivarotana tianao hifandray.
+server_host_selected	Mampiasa {host} — ampidiro ny kaody fanamboarana, avy eo tsindrio Pair now.
+device_forgotten	Nadinoin'ny fivarotana ity fitaovana ity — avereno mampifandray amin'ny kaody vaovao an'ny fivarotana. Ny baiko miandry azy dia voatahiry.
+forget_device	Adino
+last_seen	sehatr'asa
+new_pair_code	Kaody fampifandraisana vaovao
+lan_offline	Tsy azo idirana ny serveran'ny fivarotana
+lan_offline_waiting	Tsy azo idirana ny mpizara fivarotana · {n} miandry
+lan_connecting	Mifandray amin'ny fivarotana…
+pair_finishing	Miara-mifarana… mampihatra ny bokin'ny birao
+pair_opening	Manokatra ny birao…
+lan_live	Mivantana
+lan_sending	{n} mandefa
+lan_sign_in_to_send	Midira indray hanefa {n}
+lan_pair_again	Ampifandraiso indray ity fitaovana ity
+lan_update_app	Havaozy ny fampiharana — manana dikan-teny samihafa ity fitaovana ity sy ny mpizara birao
+allow_firewall	Avelao hifandray ny fitaovana hafa
+firewall_blocked	Manakana ny fitaovana hafa ny firewall an'ity solosaina ity — tsindrio Avelao hifandray ny fitaovana hafa.
+firewall_waiting	Miandry ny fampahafantarana avy amin'ny admin…
+lan_join_help	Amin'ny fitaovana hafa: Client Mode → Mitadiava ny serveuran'ny fivarotana (na soraty {addr}) → kaody fampiraisana {code}.
+lan_pair_status	Wi‑Fi {addr}
+lan_join_help_no_addr	Ampifandraiso amin'i Wi‑Fi ity fitaovana ity ho an'ny adiresy.
+lan_no_address	Tsy mbola misy adiresy Wi‑Fi — mampifandray amin'ny fivarotana Wi‑Fi.
+lan_not_listening	Tsy mandray fitaovana (port {port} feno). Avereno ny fampiharana.
+lan_tills_off	Tsy mandeha ny vola fanampiny. Avelao izy ireo hampiditra fitaovana iray hafa.
+paired_with	Nifandray · {url}
+not_paired	Tsy mifandray
+choose_device_use	Fidio Server na Client.
+paired_note	Nifandray. Sokafy mba hivarotra, na havaozy ho an'ny vaovao farany.
+last_update_at	Fanavaozam-baovao farany: {time}.
+pair_intro	Tadiavo ny mpizara, na soraty ny adiresy sy ny kaody fifandirana.
+queue_waiting	Miandry hahatratra ny fivarotana ({n}):
+queue_tries	Niezaka {n} fotoana · valiny farany: {e}
+save_backup_copy	Tehirizo ny dika mifandimby…
+backup_copy_saved	Voatahiry ny dika mifandimby — tsy atao amin’ity fitaovana ity (stick USB na fitaovana hafa)
+backup_copy_overdue	Tsy niala tamin’ity fitaovana ity ny dika mifandimby nandritra ny {n} andro — Fikirana → Dika mifandimby
+backup_copy_failed	Tsy voatahiry tany amin’io toerana io ny dika mifandimby — misafidiana toerana hafa
+clock_off	Miala {min} minitra amin’ny mpizara fivarotana ny famantaran’ity fitaovana ity — amboary ny ora marina amin’ity fitaovana ity
+printers_heading	Mpanonta printy amin'ity fitaovana ity
+printers_help	Mitadiava mpanonta tena izy, dia mifidiana Receipt na AWB label. Ny asa tsirairay dia manana ny sakany, ny sariny na ny tontolony, ary ny fomba fandefasana ny bytes. Misy etikety manonta ny barcode. Toerana banga = aza manonta.
+job_width	Sakan'ny votoaty (mm)
+job_width_ph	Na soraty ny sakany, 40–210 mm
+job_layout	Endrika
+job_delivery	Ahoana ny fandefasana ny asa
+job_size	Haben'ny soratra
+job_size_ph	oh: 18, 20, 26…
+save_receipt_format	Tehirizo ny endrika fandraisana
+save_label_format	Tehirizo ny endrika etikety
+test_receipt_format	Taratasy fanamarinana
+test_label_format	Label fitsapana
+test_receipt_sent	Santionany rosia nalefa
+test_label_sent	Etikety santionany nalefa
+test_print_no_printer	Tsy misy mpanonta ho an'io asa io - ampio iray eo ambanin'ity toerana ity
+printers_host_only	Ny mpanonta dia napetraka amin'ny fitaovana fivarotana (Server). Ity mandra-pandefasana asa any - Mitadiava / ampio / manendry mijanona ao amin'ny Server. Mandeha any amin'ny Server ny pejy andrana.
+printers_pool_heading	Mpanonta
+printers_routes_heading	Toerana hivoahan'ny pirinty
+printer_label_ph	Anarana (oh: Birao)
+printer_target_ph	mpampiantrano:9100 · bt:MAC · usb:VID:PID · anaran'ny rafitra
+printer_mode_heading	Profile ho an'ny vokatra vaovao
+printer_mode_standard	Portrait mahazatra
+printer_mode_landscape	Landscape manara-penitra
+printer_mode_thermal	mafana
+printer_mode_standard_short	Mifampitantana
+printer_mode_landscape_short	Mitsivalana
+printer_mode_thermal_short	mafana
+printer_format_custom	Mombamomba manokana vaovao
+printer_format_custom_label	Manokana
+printer_format_custom_added	Mombamomba manokana nampiana ho an'ity toerana ity
+add_printer	Manampy mpanonta
+remove_printer	Esory farany
+route_pick_ph	rosia na marika
+route_add_printer_ph	Ampio mpanonta amin'ity toerana ity
+route_receipt	rosia
+route_label	Etikety AWB
+route_dont_print	Tsy misy mpanonta voatendry
+route_add	Ampio amin'ny toerana
+route_up	Miakatra
+route_down	Midina
+route_remove	Esory farany
+route_clear	Fadio ny mpanonta ho an'ity toerana ity
+save_printers	Tehirizo ny mpanonta
+print_test_page	Manonta pejy fitsapana
+printers_saved	Mpanonta printy voatahiry ho an'ity fitaovana ity
+test_page_sent	Pejy fitsapana nalefa — jereo ny pirinty
+printers_found	Hita amin'ity fitaovana ity: {list}
+find_printers	Mitadiava milina fanontam-pirinty
+printers_looking	Mitady mpanonta amin'ity fitaovana ity sy Wi‑Fi…
+printers_tap_find	Tsindrio ny Mitadiava mpanonta ho an'ny filaharana manaiky asa sy mpanonta tapakila fidirana amin'ity Wi‑Fi ity (tsy nesorina na ivelan'ny aterineto).
+printers_none_found	Tsy misy mpanonta hita — soraty ny anaran'ny mpanonta rafitra, na adiresin'ny tambajotra (oh: 192.168.1.50).
+receipt_printer_ph	Mpanonta ho an'ny receipt
+queue_refused	Tsy eken'ny fivarotana ({n}) — zahao tsirairay eo amin'ny kaunter:
+clear_not_accepted	Voamarina — fafao ity lisitra ity
+device_name_ph	Anaran'ity fitaovana ity
+lan_last_update	fanavaozana farany {time}
+lan_not_accepted	{n} tsy ekena
+connected_now	mifandray izao
+backup_failed	Ny famerenana automatique farany dia tsy nahomby: {e}
+backup_overdue	Tsy misy backup ho an'ny {n} andro — tazomy misokatra ny app amin'ity fitaovana ity mba hahafahany manao backup.
+disk_low	MB {mb} sisa malalaka amin'ity fitaovana ity — tsy ho ela dia tsy hahomby ny backup. Fadio ny toerana.
+last_seen_devices	Farany hita: {time}
+sync_interval	Mifandray isaky ny {secs}s
+connection_to_shop	Fifandraisana amin'ny fivarotana
+supplier_name_ph	Anaran'ny mpamatsy (na antoko)
+supplier_ph	Mpamatsy
+switch_device	Omano ity fitaovana ity
+take_payment	Manaova fandoavam-bola
+tax_added_till	{tax} tsy azo zaraina
+tax_inside_price	{tax} tafiditra
+today_books	Bokin'ny androany
+unlock_after_pairing	Ampidiro PIN
+unlock_with_login	Esory ny hidy amin'ny fidirana
+update_my_password	Vaovao ny tenimiafiko
+update_my_pin	Havaozy ny PIN-ko
+duress_heading	Fanokafana vonjy maika PIN (Ho an'ny Tompony ihany)
+duress_help	Tsy voatery. Raha soratana amin'ny fisokafana ity PIN ity fa tsy ny anao, dia voafafa avokoa ny fidirana amin'ny boky (famandrihana, bokim-bola, tantara) ary misokatra ny birao raha toa ka mijanona ho ara-dalàna ny tompony — ny sarany, ny fety, ny faritra, ny mpiasa ary ny toe-javatra mijanona. Tsy voafafa ny schema sy ny config. Ampiasao ihany raha voatery manokatra. Avelao ho banga ary tehirizo mba hialana. Tsy mitovy amin'ny PIN an'iza na iza.
+duress_pin_ph	Vonjy maika PIN (isa 4–12)
+duress_confirm_ph	Soraty indray mba hanamafisana
+save_duress_pin	Tahirizo ny PIN vonjy maika
+clear_duress_pin	Akatona ny PIN vonjy maika
+duress_on	Misy ny fanokafana vonjy maika PIN
+duress_off	Tsy misy ny fanokafana vonjy maika PIN
+duress_saved	Famotsorana maika PIN voatahiry
+duress_cleared	Famotsorana maika PIN nofoanana
+vehicle_ph	Fiara
+void	Foano
+write_off_ap	Esory ny AP
+write_off_nil	Esory / fifandanjana aotra
+zone_ph	Zone (anarana avy amin'ny Rates)
+caption_today	ANIO
+caption_bookings	BOOKINGS
+caption_payments_today	FANDOAVAM-BOLA ANIO
+caption_outstanding	FANDOAVAM-BOLA TSY VOALOA
+caption_bank	BANKY
+paid_by	Vita ny fandoavana
+second_way	Fomba faharoa
+weight_in	Weight in
+size_in	Habe in
+goods_received	Entana voaray
+expense_heading	Fandaniana
+notes_attach_sale	Fanamarihana & rakitra mifamatotra (varotra voafantina)
+notes_attach_party	Fanamarihana & rakitra mifamatotra (antoko voafantina)
+attachments_last_expense	Fampidirana (fandaniana farany)
+credit_limit_heading	Fetra amin'ny kredita (partie voafidy / voatonona)
+pay_selected_heading	Vola hofidina (hanefana trosa / haka vola mialoha)
+write_off_heading	Esory (fafao tsy misy fandoavana)
+pay_ap_heading	Aloavy izay misy trosa amin'izy ireo (AP)
+country_tax	Firenena sy hetra
+extra_tills_heading	Fivarotana fanampiny
+other_devices_help_heading	Manomàna fitaovana hafa
+other_devices_help	Amin'ity fitaovana ity (Server): Fitaovana hafa → Avelao ny famafazana fanampiny. Mariho ny kaody fampiarahana sy ny adiresy Wi‑Fi. Tsindrio Avelao ny fitaovana hafa hifandray raha toa ka miseho izany. Eo amin'ny solosaina iray, tsindrio Atombohy amin'ity solosaina ity. Amin'ny fitaovana tsirairay: apetraho ny fampiharana, safidio ny Client Mode, Tadiavo ny lohamilina amin'ny fivarotana (na soraty ny adiresy), ampidiro ny kaody fampiarahana, Ampifanaraho izao. Miandry eo amin'ny fitaovana ny baiko raha latsaka ny Wi‑Fi ary mandeha rehefa mamaly indray ny Server.
+your_brand	Ny marikao (ao anaty app)
+units_heading	Singan-javatra
+booking_measures	Fepetra famandrihana
+drawer_count	Fandaharana ny boaty (tsy voatery)
+spreadsheet_csv	Tabilao (CSV)
+bank_reconciliation	Fifanarahana amin'ny banky (manamarina amin'ny fanambarana anao amin'ny banky)
+book_add_product	Boky — ampio ny vokatra / sarany
+book_opening_credit	Boky — trosa fanombohana
+account_kind	Karazana kaonty (tsindrio iray)
+active_ledger	Active ledger
+actual_total_cap	TOTALY TENA
+amend_help	Mifidiana varotra hanovana, hanafoana, na hahazoana famerenam-bola. Ny fanovana dia mitahiry ny tantara feno. Ny Totaly Nofotorana dia manomboka mitovy amin'ny Applied — ovay fotsiny raha tiana ho potipoti-javatra. Ny fanafoanana sy ny famerenam-bola dia mety mitaky Tompony na Mpitantana PIN (nosoratana etsy ambony; voarakitra miaraka amin'ny anaranao).
+applied_total_cap	TOTALY NATAO
+bank_balance	Balan'ny banky
+bank_net_today	Banky net anio
+branch_export_help	Export dia manoratra sary iray andro ao amin'ny lahatahiry backups ary mandika izany amin'ny takelaka. Raha hanafatra andro fivoahana hafa, tehirizo ny rakitra ho import_branch_snapshot.json ao amin'io lahatahiry io, ary tsindrio ny Import.
+brand_shown_help	Haseho amin'ny efijery ao anatin'ny app. Ny anaran'ny app napetraka sy ny kisary eo amin'ity fitaovana ity dia mijanona ho eo amin'ny lisitry ny sehatra.
+app_icon	Sary famantarana app
+logo_help	Famantarana fivarotana tsy voatery eo amin'ny efijery ao amin'ny app.
+onboard_layout	Izay azonao
+item_photo_help	Tsy voatery. Raha tsy misy sary dia asehontsika ny fanombohan'ny anaran'ny zavatra.
+cash_in_hand	Vola an-tanana (fivarotana)
+change_my_pin_heading	Ovay ny PIN-ko (ny anao irery)
+connect_to_server	Ampifandraiso amin'ny Server
+counter_locked	Kaonty 01 · Zakaina
+country_pack_help	Ny fonosana firenena dia mametraka ny anaran'ny hetra sy ny kajy, ny lalana fandoavam-bola avy hatrany, ary ny mari-pamantarana ara-barotra izay atao pirinty amin'ny faktiora. Tsy manao tatitra hetra na mamokatra faktiora elektronika avy amin'ny fanjakana amin'ny toerana rehetra ny Kumkaj.
+currency_use_help	Maka rivotra sy tsindrio Ampiasaina ho an'ny vola azo ekena rehetra.
+day_close_help	Ny fanoratana ny famaranana andro dia mitahiry ity famintinana ity (sy ny fiovana amin'ny vata raha voaisa) ao amin'ny rakitsoratra fanaraha-maso. Tsy manakana ny fivarotana izany.
+expenses_word	Fandaniana
+feature_access_help	Fidirana amin'ny endri-javatra ho an'ny mpiasa voafantina (tapo rehefa ampiana)
+footer_local	Eto an-toerana SQLite · Maimaim-poana Mandrakizay · Rahona aotra
+fresh_book_moklanjo	Fresh = katalaogy tsy misy na inona na inona (manampia entana any aoriana). Boky = karazana tahiry fanokafana ary iza no trosa aminao etsy ambany.
+fresh_selected	Vaovao voafidy — mijanona ho banga ny katalaogy. Tsindrio Vita rehefa vonona.
+gross_word	Tsy nety
+how_start	Ahoana no tianao hanombohana?
+later_country_pack	Aorian'izay: Fikirana → ampiharo ny pack firenenao ho an'ny hetra sy ny mari-pandoavana.
+local_badge	EO AN-TOERANA
+measures_help_moklanjo	Ahoana ny fandrefesana ny entana ao amin'ny birao famandrihana. Karazana refy sy lanja ao amin'ireo singa ampiasainao — manara-penitra (cm, m, in, ft · kg, g, lb, oz) na ny tarikao manokana mifandray amin'ny cm/kg etsy ambony (mivantana na amin'ny alalan'ny singa hafa). Boky mirakitra kg foana. Avelao foana ny saha iray mba hitazonana azy.
+mix_type_hint_moklanjo	Soraty hoe ohatrinona ny tsirairay (vola / UPI / karatra / crédit). Tsy maintsy ampidirina amin'ny volavolan-dalàna. Mila mpanjifa ambony ny crédit.
+money_in_sales	Vola miditra (varotra)
+more_help_moklanjo	Katalaogy, varotra, crédit, ekipa, backup - miampy tahiry sy karama fanampiny rehefa ilaina.
+net_word	Neto
+offline_badge	TSY MIFANDRAISANA AMIN'NY INTERNET
+optional_login_help	Fidirana tsy voatery (id + teny miafina). Ny tompony no mametraka indray mandeha; ny mpampiasa ihany no afaka manova ny teny miafina avy eo.
+or_unlock_login	Na sokafy amin'ny id fidirana + teny miafina
+permission_preset	Asa (mametraka efijery sy zo)
+preset_help_moklanjo	Mpivarotra: mivarotra. Tale: mivarotra + entana + manafoana/manitsy.
+product_locked_moklanjo	Moklanjo
+product_only_moklanjo	Moklanjo ihany ity fampiharana ity — boky + birao famandrihana. Ny varotra hafa dia miatrika sambo ho vokatra misaraka any aoriana.
+purchases_cogs	Fividianana (COGS)
+qty_cap	ISA
+restore_help	Avereno: misafidiana backup. Sokafy ny boky araka ny fotoana izay; voatahiry aloha ny boky amin'izao fotoana izao, ka azo averina izany.
+wipe_data_heading	Fafao ny angon-drakitra eo an-toerana
+wipe_data_help	Tompona ihany - safidy mitovy amin'ny fanesorana Windows. Ny firaketana momba ny raharaham-barotra dia manadio ny tantaran'ny varotra fa mitazona ny tahan'ny sy ny fanamboarana (toy ny PIN fanalana vonjy maika). Manala ny angon-drakitra boky ny fananganana fivarotana. Ny safidin'ny efijery dia mamafa ny varavarankely/fiteny. Hamafiso amin'ny PIN tompony. Misaraka ny PIN fanokafana vonjy maika ao amin'ny Ekipa (famafana miafina rehefa mamoha).
+wipe_trading	Rakitsoratra ara-barotra
+wipe_schema	Fametrahana fivarotana
+wipe_ui	Tombontsoa amin'ny efijery
+wipe_owner_pin_ph	Tompony PIN hamafa
+wipe_delete_selected	Fafao ny voafantina
+wipe_owner_only	Ny Tompony ihany no afaka mamafa angona eo an-toerana.
+restore_owner_only	Ny Tompony ihany no afaka mamerenana backup.
+wipe_owner_pin_needed	Ampidiro ny Tompony PIN hamafa angona eo an-toerana.
+wipe_nothing_selected	Safidio izay hofafana aloha.
+wipe_done	Voafafa ny angon-drakitra eo an-toerana voafantina.
+wipe_schema_done	Voafafa ny fananganana fivarotana — misafidy Server na Client hanohy.
+rounded_total	Tanjona manodidina
+setup_app_moklanjo	Amboary Moklanjo
+shop_logo_optional	Sary famantarana fivarotana (tsy voatery)
+stock_type_help	Soraty ny anaran'ny entana (ampahany aminy ihany dia ampy), ny habetsahana, avy eo amboary. Ny entana izay tsy mbola voaisa dia mila Manomboka manara-maso indray mandeha.
+team_owner_help	Hire: mifidiana asa (Cashier / Manager), anarana + fanombohana PIN, avy eo Add. Raha tsy mitovy ihany io olona io: sokafy ny efijery sy ny zo etsy ambany, avy eo Save setup asa. Manova ny PIN azy ny tsirairay any ambany — Tsy afaka manova ny an'olon-kafa ny tompony.
+they_owe_us	Mbola tsy naloanay izy ireo
+unit_at_cap	Sampana @
+units_help	Kaody ho an'ny marika entana (kg, singa, kitapo). Ny unit tsirairay dia tsy maintsy mifandray — mivantana na amin'ny alalan'ny units hafa — amin'ny fenitra (kg · cm · ml · pc), ohatra 1 crate = 2 boaty ary 1 boaty = 20 cm. Famadihana: 1 avy = antony mankany amin'ny. Ny vola dia tsy units mihitsy.
+we_owe_them	Mila mandoa azy ireo isika
+who_unlocking	Iza no manokatra?
+locked_word	Voafy
+show_pin	Asehoy PIN
+hide_pin	Afeno PIN
+set_owner_pin	APETRAHO NY TOMPO PIN
+enter_owner_passcode	AMPIDIRO NY KAODY TOMPO
+enter_staff_passcode	AMPIDIRO NY KAODY MPIASA
+pin_count_zero	0 / 12 isa · farafahakeliny 4, avy eo OK
+pin_count_need	{} / 12 isa · mila {} fanampiny
+pin_count_full	12 / 12 isa · tsindrio OK
+pin_count_ready	{} / 12 isa · tsindrio OK rehefa vonona
+pin_hint_choose	Fidio 4–12 isa · Ampidiro na Sokafy mba hitahiry
+pin_hint_new	Tompony vaovao 4–12 isa PIN · Ampidiro na Sokafy
+pin_hint_shop_code	Fivarotana fitaovana · kaody fanovàna {}
+pin_hint_books	Ity fitaovana ity mitahiry ny boky
+pin_hint_paired	Kaonty fanampiny nifandray — sokafy mba hivarotra
+pin_hint_pair_first	Kaonty fanampiny — mifandraisa amin'ny fitaovan'ny fivarotana aloha
+unlock_to_continue	Sokafy mba hanohy
+no_staff_yet	Tsy mbola misy mpiasa — sokafy ho Tompony, avy eo Ekipa
+status_server_set_pin	Server Fomba — apetraho ho Tompony PIN
+status_server_tills	Server Fomba — afaka miditra ny kaonty fanampiny. Sokafy
+status_server_unlock	Server Fomba — sokafy ho Tompony
+status_client_unlock	Client Fomba — sokafy mba hivarotra
+icon_new_selected	Sary famantarana: rakitra vaovao voafantina — kitiho ny Tehirizo ny marika
+icon_custom	Sary famantarana: famantarana toerana manokana
+icon_default	Sary famantarana: marika Kumkaj (mahazatra) — mifidiana manokana
+logo_yours	Logo: ny logo fivarotanao — aseho eo amin'ny efijery sy ny tapakila
+logo_default	Logo: marika Kumkaj (mahazatra) — mifidiana ny anao raha manana
+tmpl_current	Ankehitriny: {} — {}
+tmpl_selected	Voafantina: {} — {}
+setup_complete	Fametrahana vita
+onboard_fresh_tmpl	Vaovao · {} — tsy misy zavatra ao amin'ny katalaogy; ampio zavatra ao amin'ny Items, avy eo Vita.
+onboard_book_tmpl	Boky · {} — ampio zavatra sy fitomboan'ny loka, avy eo Vita.
+onboard_template_tmpl	Anarano ny toerana raha tianao, avy eo safidio ny fomba hanombohana.
+tmpl_blurb	Boky iraka sy birao famandrihana: consignor, mpitatitra, boky andro, AWB.
+tmpl_how	Fonosana boky amin'ny birao; Boky andro anio; tabilao ho an'ny sarany, fety, tatitra.
+trk_booked	namandrika
+trk_picked_up	Noraisina
+trk_in_transit	Eny an-dàlana
+trk_delivered	Nafahana
+trk_rto	Hiverina any amin'ny sender
+lane_to_dispatch	Mandefa
+lane_with_carrier	Miaraka amin'ny mpitatitra
+lane_failed	tsy nahomby
+lane_done_today	Vita androany
+ops_board_help	Parcels amin'ny toerana misy azy amin'ny asa ankehitriny. Tsindrio ny parcels (na asio scan azy) hifidianana azy ireo, dia asao izay rehetra nofantenana indray mandeha - ny lalana tsirairay dia tsy manome afa-tsy ny hetsika mifanaraka aminy.
+lane_empty	Tsy misy na inona na inona eto amin'izao fotoana izao.
+picked_fmt	{n} nofidina
+pick_all	Fidio daholo
+bag_for_carrier	Tanana ho mpitatitra
+send_with_rider	Alefaso miaraka amin'ny mpitaingina
+out_again	Hivoaka indray
+return_to_sender	Hiverina any amin'ny sender
+runs_bags_heading	Hazakazaka & kitapo vao haingana
+print_word	PIRINTY
+bag_word	Kitapo mitondra
+run_word	Mpitaingina mihazakazaka
+parcels_fmt	Ireo singa mifandraika amin'ny {n}
+parcel_history	FIAINANY TALOHA
+attempt_fmt	Andrana {n}
+pieces_short_fmt	{n} pcs
+note_reason_ph	Fanamarihana na antony
+ops_pick_first	Safidio aloha ny parcels - tsindrio azy ireo na diniho
+cod_to_collect	Naterina - COD mba hanangona
+cod_on_road	COD mbola eny an-dalana
+cod_owed_consignors	Collected — handoa ny consignors
+cod_rto_fees	Ny saram-pitantanana RTO
+cod_to_hand_in	COD mba atolotra
+parcel_one_fmt	Ampahany {n}
+facet_bank_title	Tatitra
+facet_bank_help	Bokin'ny andro, fahanteran'ny antoko, lahatsoratra banky, ary P&L vanim-potoana.
+facet_ops_title	Fandefasana & fandefasana
+facet_ops_help	Scan na soraty ny AWB → Mitadiava, avy eo mandroso / manonta marika / COD. Alefaso any amin'ny mpitaingina na mpitatitra.
+facet_cod_title	Rejistra COD
+facet_cod_help	Angony amin'ny fanaterana, dia alefa any amin'ny consignor.
+facet_riders_title	Mpitaingina (fiara manokana)
+facet_riders_help	Ampio mpitaingina, dia mandefasa AWB voafandrika avy amin'ny Ops.
+against_bill_ph	Manohitra ny faktiora # etsy ambony (tsy voatery)
+aliases_ph	Aliases — anarana hafa, misarahana amin'ny koma
+amount_blank_full_ph	Vola (banga = vola feno)
+amount_owed_ph	Vola tokony haloany
+amount_ph	Vola
+amount_received_ph	Vola azonay
+amount_we_pay_ph	Vola aloa
+awb_scan_ph	AWB / scan barcode
+bulk_csv_ph	CSV be dia be — toerana, consignee, kg, cod_paise, fanamarihana
+business_name_ph	Anaran'ny orinasa
+category_new_ph	Sokajy (tsy voatery, noforonina raha vaovao)
+cod_amount_ph	Ny isan'ny COD
+code_bag_ph	Kaody (kitapo)
+conv_factor_ph	Faktor (25 = 1 kitapo → 25 kg)
+country_code_ph	Kaody firenena ohatra IN, GB, US, AE, BR
+credit_khata_amount_ph	Tombontsoa / vola khata
+credit_limit_ph	Fetra amin'ny trosa (0 = tsy misy)
+dim_unit_code_ph	Kaody an'ny refy (cm)
+divisor_ph	Fizarana volumetric (5000)
+extra_per_kg_ph	Fanampiny / kg
+first_amount_ph	Vola voalohany
+first_kg_ph	Kg voalohany (slab)
+from_code_ph	Avy amin'ny kaody (kitapo)
+item_name_lang_ph	Anaran'ny entana — soraty amin'ny fiteninao
+login_id_opt_ph	Anaran'ny mpampiasa (ilaina, tokana)
+manager_pin_ph	Mpitantana PIN hanome fankatoavana (raha tsy afaka manala)
+new_branch_name_ph	Anaran'ny sampana vaovao
+new_password_ph	Teny miafina vaovao (tsy voatery)
+new_pin_ph	Vaovao PIN (isa 4–12)
+note_bank_ph	Fanamarihana (petra-bola, fivoahana, …)
+note_buy_expense_ph	Fanamarihana (solika, trano hofaina, …)
+note_expense_ph	Fanamarihana (solika, birao, …)
+notify_phone_ph	Ampahafantaro ny finday (WhatsApp/SMS hook)
+options_moklanjo_ph	Safidy (tsy voatery) — Large=20, Gift wrap=10
+part_second_way_ph	Zarao amin'ny fomba faharoa (tsy voatery)
+phone_ph	Finday
+address_ph	Adiresy
+party_custom_fields_heading	saha manokana (antoko voafantina)
+party_custom_help	Manampia marika sy sanda rehetra amin'ity antoko ity - WhatsApp, GSTIN, kaody lalana, ...
+party_custom_key_ph	Anaran'ny saha (oh: WhatsApp)
+party_custom_value_ph	sarobidy
+party_custom_add	Ampio saha
+party_custom_remove	Esory ny saha
+party_custom_empty	Tsy mbola misy saha mahazatra
+party_custom_pick_first	Mifidiana fety hanampiana saha manokana
+place_name_ph	Anaran'ity toerana ity
+price_ph	Vidiny
+qty_example_ph	Isa (ohatra 1.5 ho an'ny kg)
+quantity_ph	Haben'ny zavatra
+reason_required_ph	Antony (ilaiana)
+role_title_ph	Lohatenin'ny andraikitra (ohatra Barista)
+service_pct_ph	Fananana % fanompoana tsy voatery 0/10/12
+short_code_ph	Kaody fohy (MG02)
+slab_kg_ph	Tabilao azo aloa amin'ny kg (0.5)
+staff_name_ph	Anaran'ny mpiasa / id
+starting_password_ph	Teny miafina fanombohana (tsy voatery)
+starting_pin_ph	Fanombohana PIN (isa 4–12)
+tax_rate_ph	Anaran'ny tahan'ny hetra na % — Mahazatra, Nampihenina, 0, 5, 12, 18, 20
+to_code_ph	Ho any amin'ny kaody (kg)
+uncleared_no_ph	Tsy voavaha # etsy ambony
+unit_cost_ph	Vidin'ny singa
+unit_kg_blank_ph	Unit (kg na banga)
+unit_name_bag_ph	Anarana (Kitapo)
+weight_unit_code_ph	Kaody lanja (kg)
+zone_name_ph	Anaran'ny faritra
+pay_credit	Kredit
+book_kind_today	Bokin'ny androany
+book_kind_month	Bokin'ity volana ity
+book_kind_aging	Tsy voaloa / debit-kredit
+book_kind_balance	Taratasy fanamarinam-bola
+ops_desk_help	Scan AWB amin'ny USB scanner barcode (na soraty izany) → Tadiavo. Avy eo mandroso, manonta marika, na manangona COD. Kaody fanontana etikety 128.
+role_help_consignor	Andraikitra: Consignor - AR (trosa taminay izy ireo). Ny orinasa iray ihany koa dia mety ho Carrier.
+role_help_carrier	Anjara: mpitatitra - AP (azo antoka azy ireo). Ny orinasa iray ihany koa dia mety ho Consignor.
+role_help_both	Andraikitra: Consignor + Carrier - antoko iray, AR ary AP ledgers, net in Reports.
+role_help_supplier	Anjara: Mpamatsy - AP amin'ny fividianana.
+lane_declared_label	Famandrihana kaonty
+lane_owner_label	Famandrihana vola
+money_lane_bill	Paositra: {lane}

@@ -1,0 +1,1329 @@
+# Chhattisgarhi — छत्तीसगढ़ी (hne). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	किराना काउंटर: बेचना, स्टॉक, खाता अउ किताब. फ्री ऑफलाइन.
+unlock	अनलॉक
+pin_hint	मालिक के PIN 0000 ले सुरू होथे
+sell	बेचना
+buy	खरीदी
+books	दिन बही
+books_help	आज के स्थिति. बेचना = पैसा अंदर. खरीदना = खरीददारी अउ खर्च. पार्टी = कर्ज ग्राहक अउ सप्लायर.
+buy_help	खर्च वाउचर अउ सप्लायर बिल (पैसा बाहिर)। खाते म जे हे वो पार्टी के खाता म रहिथे।
+sell_money_in	सामान बेचना
+buy_money_out	खर्च / सप्लायर बिल
+record_purchase	खरीदी लिखव
+add_expense	खर्च वाउचर
+bank_book	बैंक बही
+credit_help	पार्टी आईडी अलग होथे (नाम दोहराय सकथे)। ग्राहक खाता चलाथे (हमर धरुवा); सप्लायर हमला माल बेचथे (हम ओकर धरुवा); दूनो ठीक हे। खाता अलग रहिथे; रिपोर्ट नेट देखाथे।
+party_kind_ph	भूमिका: ग्राहक, सप्लायर, दूनो…
+reports_help	दिन बही, धरुवा अउ पावनादार, बैंक बही, खर्च वाउचर, लाभ-हाति।
+reports_today	दिन बही (आज)
+reports_month	लाभ अउ हाति (महीना)
+reports_aging	बकाया / Dr-Cr
+reports_balance_sheet	बैलेंस शीट
+reports	बैंक बही अउ लाभ-हाति
+refresh	ताजा करव
+undo	पहिली जइसन
+start_tracking	गिनती सुरू करव
+stock_minus	− स्टॉक
+stock_plus	+ स्टॉक
+settle_cash	नकद चुकाव
+settle_card	कार्ड ले चुकाव
+items	आइटम
+nav_items	आइटम
+more	अउ
+your_items	आपके सामान
+items_help	कऊनो आइटम ला संपादन करे बर टप करव. नवा आइटम फॉर्म ला साफ कर देथे. नाव या शॉर्ट कोड से खोजव, दाम सेट करव (0 ठीक हे), फेर जोड़व. पहिली ले बेंचे गेय बिक्री मन ओ नाव रखथें जेन मं ओमन ले चार्ज करे गे रहिस.
+add_item	चीज जोड़व
+new_item	नवा चीज
+adding_item	नवा चीज जोड़त हन
+editing_item	सुधारत हन
+save	सहेजव
+remove	हटाव
+removed_items	हटाय चीज
+removed_help	पुनर्स्थापित करे बर आइटम ला ओकर पहिले जइसने आइटम मं वापस रखथें — दाम, फोटो अउ श्रेणी सहित.
+restore_item	वापस लाव
+empty_catalog	अब तक कोनो आइटम नइ हे. आइटम खोलेव, नाव अउ दाम जोड़व, फेर काउंटर ले बेचव.
+total	जम्मा
+cash	नकद
+upi	यूपीआई
+card	कार्ड
+credit	पार्टी
+clear	साफ
+ready_to_sell	बही लिखे बर तइयार
+today_prefix	आज
+today_mid	आज
+owed	बकाया
+round_word	राउंड
+back	पाछू
+sold_out	नइ मिलय
+restock	फेर रखव
+not_tracked	गिनती नइ हे
+in_stock	स्टॉक म
+marked_sold_out	नइ मिले के निशान
+add_upper	जोड़व
+na	नइ लागू
+qty	वजन/गिनती
+unit_at	दर @
+actual	असली
+applied	लगाय
+note_ph	नोट (मन चाहे)
+rounded	राउंड
+split	बांटव
+send_kot	पर्ची भेजव
+send_kot_to	भेजव → {kitchens}
+send_kot_again	अगली पर्ची बर आइटम जोड़व
+send_kot_held	रुके हुए चीज़ — भेजे बर अनहोल्ड करो
+reprint_kot	चुने ला फेर छापव
+reprint_kot_ok	{n} चीज़ फेर से छापे गय ह · {slips} पर्ची → {kitchens}
+reprint_kot_needed	पहिली पर्ची भेजव — फेर चीज़ मन ला सामिल कर अउ चुने हुए चीज़ मन ला फेर छापव
+reprint_kot_none_selected	हर भेजे चीज़ ला छोड़ दीस गे ह — फेर छापे बर ओमन म In print छूव
+reprint_kot_client	फेर छापव ({n}) {place} भेजे बर — दुकान के डिवाइस एला छापथे
+print_cancelled_kot	सब्बो रद्द छापव
+print_cancelled_kot_ok	{n} रद्द करे गए चीज़ मन छापे गे ह · {slips} पर्ची → {kitchens}
+print_cancelled_kot_needed	पहिली रद्द हुए चीज़ वाला टेबल खोला
+print_cancelled_kot_none	ए ऑर्डर म कोनो रद्द चीज़ नइ हे
+print_cancelled_kot_client	रद्द चीज़ छापव ({n}) {place} भेजे बर — दुकान के डिवाइस एला छापथे
+kot_banner	किसम के बैनर
+kot_banner_ph	बैनर (खाली = कोनो नइ)
+kot_item_prefix	चीज के आगे
+kot_item_prefix_ph	जइसन [रद्द]
+kot_strike	चीज़ के नाव म रेखा खींचव
+kot_strike_note	स्ट्राइक आइटम नोट
+kot_strike_on	चालू
+kot_strike_off	बंद
+bill_item_layout	चीज के बनावट
+bill_item_layout_columns	खंभा
+bill_item_layout_stacked	ढेर
+bill_item_header	खंभा के सिरनाम
+bill_item_hdr_item	चीज के सिरनाम
+bill_item_hdr_qty	गिनती के सिरनाम
+bill_item_hdr_price	दाम के सिरनाम
+bill_item_hdr_amount	रकम के सिरनाम
+bill_item_name	आइटम का नाम
+bill_item_qty	गिनती
+bill_item_price	दाम
+bill_item_amount	रकम
+bill_item_note	आइटम नोट
+bill_item_col_gap	खंभा के बीच
+bill_item_col_order	खंभा के क्रम
+bill_item_col_sep	खंभा के लकीर
+bill_item_gap_tight	सटके
+bill_item_gap_comfort	आरामदेह
+bill_item_gap_wide	चौड़ा
+bill_item_num_width	अंक के खंभा
+bill_item_num_compact	सटके
+bill_item_num_comfort	आरामदेह
+bill_item_num_wide	चौड़ा
+bill_item_num_align	अंक के कतार
+bill_item_gap_em	खाली जगह (em)
+bill_item_qty_min	गिनती कम से कम (em)
+bill_item_price_min	दाम कम से कम (em)
+bill_item_amount_min	रकम कम से कम (em)
+kot_item_qty_width	गिनती के खंभा
+kot_item_num_align	गिनती के कतार
+bill_total_qty_label	जम्मा गिनती के लेबल
+bill_total_subtotal_label	उपजम्मा के लेबल
+bill_total_grand_label	कुल जम्मा के लेबल
+bill_total_paid_label	भुगतान के लेबल
+bill_meta_pair	लाइन बांटव साथ
+bill_pair_alone	अकेल्ला
+bill_item_piece_on	चालू
+bill_item_piece_off	बंद
+bill_total_qty	जम्मा गिनती
+bill_total_subtotal	उपजम्मा
+bill_total_grand	कुल जम्मा
+reprint_incl	छाप म
+reprint_skip	छोड़व
+reprint_skip_meta	फेर छाप छोड़व
+kot_dest_hint	जे प्रिंटर तैं {kitchens} ला सेटिंग → प्रिंटर म जोड़े हस, ओमा छापिहे
+kot_sent_hint	आखरी भेजे गे {kitchens} ला। अगला बिल बर आइटम जोड़े खातिर टैप करव — या वही के बर फीर ले स्लिप प्रिंट करव।
+kot_sent_printing	स्लिप {kitchens} ला भेजे गे — प्रिंट होवत हे
+kot_sent_not_printed	स्लिप {kitchens} ला भेजे गे फेर प्रिंट नई होइस: {why}। दुकान ला बता, फेर प्रिंटर ला सुधारव अउ फीर से प्रिंट करव।
+kot_sent_screen	{kitchens} ला स्लिप भेजे गे
+kot_queued_shop	{place} बर स्लिप → {kitchens} सुरक्षित; दूकान के यंत्र ये ला छापथे
+kot_job_label	{place} बर स्लिप → {kitchens}
+kot_job_reached	{place} बर स्लिप {kitchens} पहुँच गे
+kot_unassigned	असाइन नइ करे गे
+kot_unassigned_held	जमाए गे {n} सामान बिना स्टेशन के — लाइन मं भेजे बर अनहोल्ड
+kot_station_ph	स्टेशन
+kot_station_dd	स्टेशन
+kot_station_dd_n	स्टेशन · {stations}
+kot_set_station	ए स्टेशन लगाव
+kot_station_applied	{n} सामान मं स्टेशन सेट करे गे: {station}
+kot_station_cleared	{n} सामान ले स्टेशन हटाए गे: {station}
+kot_station_needed	पहिली दूकान सेक्शन चुनव
+kot_station_not_allowed	सेक्शन के उपयोग करे अनुमति नई हे: {station}
+kot_station_none	अभी तक कोनो स्टेशन नई हे — काउंटर दुकान मं उपयोग नई करे गे (जरूरत होवय तें सेटिंग → एरिया जावव)
+pos_tab_items	जोड़े चीज
+pos_tab_payment	भुगतान
+hold_send	रोकव
+hold_send_on	रोके हे
+hold_send_meta	जमाए गे — ये पर्ची मं नई हे
+station_remove	स्टेशन हटाव
+station_remove_ph	हटाए बर सूची म स्टेशन दबाव
+station_removed	स्टेशन हटिस: {name}
+settings_hub_title	सेटिंग
+settings_hub_help	एक बेर म एक इलाका खोलव — कम सरकाव, साफ चुनाव।
+settings_back	पाछू
+settings_sec_language	भाखा अउ मुद्रा
+settings_sec_country	देश अउ कर
+settings_sec_tills	अउ मशीन
+settings_sec_brand	तोर ब्रांड
+settings_sec_units	इकाई अउ बदलना
+settings_sec_pickers	इलाका · स्टेशन · कर दर
+settings_sec_printers	प्रिंटर
+settings_sec_bill	बिल & पर्ची फॉर्मेट
+settings_sec_selling	योजना अउ बिक्री
+bill_kot_tab_bill	बिल
+bill_kot_tab_kot	पर्ची
+settings_sec_alerts	चेतावनी
+alerts_help	स्थिति के संदेश तोर स्क्रीन म कतेक देर रहिथे (ए लॉगिन)।
+snack_secs_ph	सेकंड (3–60, आम 10)
+snack_secs_save	चेतावनी के समय सहेजव
+snack_secs_saved	चेतावनी के समय सहेजे गे — {n} सेकंड
+settings_sec_backup	बैकअप व रीस्टोर
+settings_sec_diag	निदान
+diag_privacy_help	लॉग इसी डिवाइस पर रहते हें। गुप्त जानकारी (PIN, पासवर्ड) कभी सहेजी नइ जाती। डिवाइस से बाहर पैकेज भेजने बर हर बार तोर साफ़ मंज़ूरी चाही — कभी बेचा या किसी तीसरे पक्ष ला नइ दिया जाता।
+diag_level	विवरण स्तर
+diag_level_error	त्रुटियाँ
+diag_level_warn	चेतावनियाँ
+diag_level_info	जानकारी
+diag_level_debug	डीबग
+diag_support_start	30 मिनट का सहायता सत्र शुरू करव
+diag_support_stop	सहायता सत्र बंद करव
+diag_support_started	सहायता सत्र चालू — 30 मिनट तक डीबग विवरण
+diag_support_ended	सहायता सत्र बंद हुआ
+diag_export_local	स्थानीय कॉपी निर्यात करव
+diag_export_local_done	स्थानीय डायग्नोस्टिक्स {path} पर तैयार — कॉपी कहाँ सहेजव, चुनव
+diag_approve_send	डिवाइस से बाहर भेजने की मंज़ूरी दें
+diag_send_help	मंज़ूरी एक पैकेज बर हे, फेर ख़त्म हो जाती हे। अस्थायी — सिर्फ़ उत्पाद ठीक करने या सुधारने बर। किसी तीसरे पक्ष ला नइ दिया जाता। Linux, Windows, macOS अउ Android पर चलता हे।
+diag_send_approved	एक पैकेज भेजने की मंज़ूरी मिली (जल्द ख़त्म होही)
+diag_export_send	भेजने का पैकेज बनाएँ (मंज़ूरी चाही)
+diag_export_send_done	भेजने का पैकेज {path} पर तैयार — कहाँ सहेजव चुनव, फेर सिर्फ़ Kumkaj सहायता ला भेजव
+diag_save_bundle	डायग्नोस्टिक्स कॉपी सहेजव
+diag_bundle_saved	डायग्नोस्टिक्स कॉपी {path} म सहेजी
+diag_bundle_failed	डायग्नोस्टिक्स कॉपी सहेजी नइ जा सकी — फेर कोशिश करव
+diag_clear	डायग्नोस्टिक लॉग साफ़ करव
+diag_cleared	डायग्नोस्टिक लॉग साफ़ होए
+sidebar_settings	साइडबार
+sidebar_settings_help	साइड पट्टी जैसे ही आइकन। क्रम बदलने बर पंक्ति खींचें। दिखाने या छिपाने बर स्विच बदलव। सेटिंग अउ लॉक हमेशा पट्टी पर रहते हें।
+sidebar_always_on_short	हमेशा चालू
+sidebar_back_settings	पाछू
+sidebar_shown	दिख रहत
+sidebar_hidden	छिपा
+sidebar_always_on	हमेशा पट्टी पर
+sidebar_shown_hint	साइड पट्टी / नीचे के टैब पर दिखता हे
+sidebar_hidden_hint	पट्टी से छिपा
+sidebar_menu_items	आइटम
+sidebar_enable_all	सब चालू करव
+sidebar_disable_all	सब बंद करव
+sidebar_order_saved	साइडबार का क्रम सहेजा
+sidebar_visibility_saved	साइडबार की दृश्यता सहेजी
+amounts_hide	छिपाएँ
+amounts_show	देखाव
+printers_none_hint	पहिली ए डिवाइस म प्रिंटर ला बचाओ, फेर ओकरु बिल म या कऊनों सेक्शन म जोड़व
+counter	काउंटर
+dine_in	काउंटर
+takeaway	पैक
+order	ऑर्डर
+tables	काउंटर
+kitchen	सेक्शन
+sales	बिक्री
+sales_refunds	बिक्री अउ वापसी
+day_close	दिन बंद
+reports_expenses	बैंक बही अउ लाभ-हाति
+nav_reports	रिपोर्ट
+nav_settings	सेटिंग
+nav_lock	लॉक
+no_sale_yet	अभी कोनो बिक्री नइ
+favorites	पसंदीदा
+favorites_help	जो वस्तुएँ तैं अक्सर बेचते हें, तोर लॉगिन बर सहेजी गें। किसी ला बिल म जोड़व, या नीचे सब्बो वस्तुओं से अपनी सूची बनाएँ।
+your_favorites	तोर पसंदीदा
+all_items	सब्बो वस्तुएँ
+frequent	अक्सर
+added_items	जोड़े गे
+added_items_empty	अभी ए बिल म कऊनों चीज नई हे — ऑल आइटम या कऊनों कैटेगरी ले चीज जोड़व.
+frequent_config_help	पूरा होए बिल से सबले जियादा बिके चीज. कइ दिन देखना हे अउ कति चीज दिखाना हे ये सेट करव.
+frequent_days_ph	दिन (1)
+frequent_limit_ph	आइटम (24)
+frequent_apply	लागू करव
+frequent_saved	अक्सर: अंतिम {d} दिन, शीर्ष {n} — {c} आइटम
+frequent_empty	इस अवधि म अभी कोनो पूरी बिक्री नइ — बिल निपटाएँ (सेटिंग म ₹0 मान्य हो तो) अउ वे इहाँ दिखेंगे।
+zero_sales	शून्य मूल्य बिक्री
+zero_sales_help	₹0 के दाम वाले सामान अउ ₹0 में निपटाए गए बिल (मुफ्त / मालिक के इच्छा अनुसार) ला अनुमति दे। डिफ़ॉल्ट रूप से चालू रहे ताकि फ्री कवर अभी भी अक्सर और दिन के किताब में दिखें।
+zero_sales_on	शून्य बिक्री: चालू
+zero_sales_off	शून्य बिक्री: बंद
+zero_sales_saved_on	शून्य बिक्री की अनुमति सहेजी (चालू)
+zero_sales_saved_off	शून्य बिक्री की अनुमति सहेजी (बंद)
+floor_areas_help	इलाका मन मजरा के कमरा या जोन होथे (डाइन इन, पार्सल, एसी …). पहिली इलाका जोड़व, फेर ओमा काउंटर लगाव — हर इलाका फ्लोर ऊपर अलग गुट होथे.
+area_new_ph	नवा एरिया / कमरा (जैसे AC, Garden)
+add_area	एरिया जोड़व
+area_added	इलाका “{name}” तियार हे — इसमें काउंटर जोड़व
+no_favorites	अभी कोनो पसंदीदा नइ — नीचे की सूची से वस्तुएँ जोड़व।
+add_to_bill	बिल म जोड़व
+added	जोड़ा गे
+owes_word	के देनदार हें
+selected_word	चुना गे
+chip_clear_credit	साफ़ — उधार दें या अग्रिम लेव
+chip_missing_customer	चुना गे ग्राहक नइ मिला — फेर चुनव
+chip_no_customer	अभी कोनो ग्राहक नइ — नाम लिखव, फेर Credit दबाव
+credit_summary_fmt	{} ग्राहक · खुला उधार {} · अग्रिम रखा {}
+recent_label	हाल का:
+kot_new_waiting	नवा — प्रतीक्षा म
+kot_preparing	तैयार हो रहत हे
+kot_ready_serve	तैयार — परोसें
+kot_done_cap	हो गे
+kot_cancelled	रद्द
+kot_start_btn	शुरू करव
+kot_mark_ready	तैयार चिह्नित करव
+kot_done_btn	हो गे
+table_free	खाली — ऑर्डर शुरू करने बर टैप करव
+start_order	ऑर्डर शुरू करव
+open_bill	बिल खोलव
+collect_payment	भुगतान लेव
+table_running	चल रहत हे
+payment_pending	भुगतान बाकी
+collect_at_counter	काउंटर पर लेव
+inventory	स्टॉक
+inventory_stock	स्टॉक अउ गिनती
+branches	शाखाएँ
+branches_org	शाखा अउ संगठन
+credit_customers	उधार ग्राहक
+customer_name_ph	पार्टी का नाम
+new_customer_ph	नवा पार्टी का नाम
+item_name_ph	आइटम का नाम (जैसे Masala Dosa)
+item_price_ph	दाम
+start_template	उत्पाद
+team	टीम
+team_pins	टीम अउ पिन
+my_pin_settings	मेरा PIN
+settings_hub_help_my_pin	इस डिवाइस पर साइन-इन व्यक्ति का अनलॉक PIN बदलव।
+team_self_help	केवल तैं अपना अनलॉक PIN (अउ वैकल्पिक लॉगिन पासवर्ड) बदल सकते हें। अलग स्क्रीन या अधिकार चाही तो मालिक से कहें।
+backup_settings	बैकअप अउ सेटिंग
+lock_app	ऐप बंद करव
+pick	चुनव
+select	चुनव
+advance	आगे
+owner	मालिक
+staff	कर्मचारी
+photo	फ़ोटो
+auto	अपने तैं
+prev	पिछला
+next	अगला
+ok	ठीक
+this_shop	सर्वर मोड
+extra_till	क्लाइंट मोड
+off	बंद
+tables_kitchen	दुकान के लेआउट
+server	सर्वर मोड
+client	क्लाइंट मोड
+language_currency	भाखा अउ मुद्रा
+language	भाषा
+choose_language	अपनी भाषा चुनव
+language_setup_hint	इस डिवाइस की भाषा के साथ चलेव, या खुद एक चुनव।
+lang_follow_platform	डिवाइस की भाषा इस्तेमाल करव
+lang_pick_user	चुनी होए भाषा इस्तेमाल करव
+lang_platform_now	अभी डिवाइस की भाषा
+selected_language	चुना गे
+continue	आगे बढ़ें
+this_device	ए डिवाइस
+device_use_q	इस डिवाइस का उपयोग कइसन होही?
+last_server_mode	पहिले सर्वर था — जारी रखने बर टैप करव
+last_client_mode	पहिले क्लाइंट था — जारी रखने बर टैप करव
+choose_server	सर्वर चुनव
+choose_server_hint	इस डिवाइस पर पहिले से सर्वर हें। एक खोलव, या दूसरे व्यापार बर नवा सर्वर बनाएँ।
+create_new_server	नवा सर्वर बनाएँ
+open_server	खोलव
+new_server_name_ph	नवा सर्वर का नाम (वैकल्पिक)
+server_remove_pin_ph	सर्वर हटाने बर Owner PIN
+only_owner_remove_server	केवल Owner सर्वर हटा सकता हे
+owner_pin_remove_server	सर्वर हटाने बर Owner PIN चाही
+device_setup_help	सर्वर बही इहीं रखता हे। क्लाइंट किसी सर्वर से जुड़ता हे।
+app_template_heading	स्टार्टर कैटलॉग (वैकल्पिक)
+app_template_blurb	एक नमूना कैटलॉग लोड करे; मालिक जाहिर (जाहिर), एडमिन आसिफ (आसिफ, PIN 1111), कैशियर नवाज़ (नवाज़, PIN 0000); टैक्स/GST बंद; फ्रंट साइडबार; इतिहास 4 घंटे के बाद साफ हो जथे (अऊ 'Clear now in Backup'); आज के स्ट्रिप ऑफ; कॉम्पैक्ट बिल + संकरा ट्रे खातिर मानक मार्जिन. टैक्स अऊ साइडबार साथ वाले फेर सेटिंग्स में चालू करे जा सकत हे.
+app_template_apply	स्टार्टर कैटलॉग लागू करें
+app_template_skip	अभी छोड़ें
+app_template_status	सर्वर रेडी — स्टार्टर कैटलॉग लागू करे, या छोड़ दे
+app_template_importing	{title} लगा रहत हें…
+currency	मुद्रा
+backup	बैकअप
+use	इस्तेमाल करव
+dont_use	इस्तेमाल न करव
+add_branch	शाखा जोड़व
+add_conversion	रूपांतरण जोड़व
+add_dishes_items	आइटम जोड़व
+add_item_plain	चीज जोड़व
+add_note	नोट जोड़व
+add_opening_balance	शुरुआती शेष जोड़व
+add_staff	कर्मचारी जोड़व
+add_station	स्टेशन जोड़व
+add_table	मेज़ जोड़व
+add_unit	इकाई जोड़व
+add_use_name	ए नाम जोड़व / इस्तेमाल करव
+allow_extra_tills	अतिरिक्त टिल की अनुमति दें
+amend	संशोधन
+apply_country_pack	देश पैक लागू करव
+datetime_appearance	तारीख व समय का रूप
+datetime_appearance_help	किताब मन साल-पहिली RFC3339 भीतर रखथें। इमन सिरिफ बिल, रिपोर्ट, अउ स्क्रीन ऊपर दिनांक अउ घड़ी के दिखइया बदलथे।
+datetime_example	अभी का उदाहरण: {ex}
+date_order	तारीख का क्रम
+date_order_dmy	दि/मा/व
+date_order_mdy	मा/दि/व
+date_order_ymd	व-मा-दि
+time_format	घड़ी
+time_format_24h	24 घंटे
+time_format_12h	12 घंटे
+attach_bill_photo	बिल फ़ोटो लगाएँ
+attach_pdf	PDF लगाएँ
+attach_photo	फ़ोटो लगाएँ
+attachments_last_expense	अटैचमेंट (पिछला खर्च)
+bank	बैंक
+bank_in	बैंक म डालेव
+bank_out	बैंक से निकालेव
+bank_reconciliation	बैंक मिलान (अपने बैंक स्टेटमेंट से टिक करव)
+bank_to_till	बैंक → टिल
+book_add_dish	किताब — आइटम जोड़व / आइटम
+book_opening_credit	बुक — शुरुआती उधार
+branch_name_sell_ph	जिस शाखा से बेचना हे उसका नाम
+bring_my_book	मेरी बही लाएँ
+business_tax_id_ph	व्यापार कर आईडी
+caption_bank	बैंक
+caption_bills	बिल
+caption_outstanding	बकाया
+caption_payments_today	आज के भुगतान
+caption_today	आज
+card_amount_ph	कार्ड राशि
+cash_amount_ph	नकद राशि
+cash_memo	कैश मेमो
+choose_icon	आइकन चुनव
+choose_logo	लोगो चुनव
+clear_icon	आइकन हटाव
+clear_photo	फ़ोटो हटाव
+copy_day_book_csv	रोज़ बही CSV कॉपी करव
+copy_day_close	दिन बंद कॉपी करव
+copy_items_csv	आइटम CSV कॉपी करव
+copy_outstanding_csv	बकाया CSV कॉपी करव
+copy_parties_csv	पार्टी CSV कॉपी करव
+copy_party_ledger_csv	पार्टी खाता CSV कॉपी करव
+copy_receipt	रसीद कॉपी करव
+share_whatsapp	व्हाट्सऐप शेयर
+lan_pages_heading	ग्राहक पन्ना मन वाई‑फाई मं
+lan_pages_help	इस दुकान के Wi‑Fi मं, ग्राहक पन्ना डिस्प्ले बोर्ड अउ फीडबैक बर काम करत हे। मोबाइल डाटा मं लोगन ला बाद मं क्लाउड के जरूरत होथे। एक कार्ड टर्मिनल या पेमेंट लिंक विकल्प हवे अउ कभू घलो काउंटर ला ब्लॉक नइ करथे।
+diag_send_heading	इस डिवाइस से बाहर भेजव
+kot_dest_heading	स्टेशन
+optional_login_heading	वैकल्पिक लॉगिन
+rights_heading	अधिकार
+ops_panel	स्थानीय काम
+crm_heading	ग्राहक अउ संदेश
+crm_help	जन्मदिन, लॉयल्टी — SMS/WhatsApp कतार। {name} अउ {points}। मालिक भेजता हे।
+crm_queue_sms	SMS कतार
+crm_queue_wa	WhatsApp कतार
+crm_seg_bday_week	जन्मदिन सप्ताह
+crm_seg_bday_month	जन्मदिन महीना
+crm_seg_phone	फ़ोन वाले
+crm_seg_loyalty	लॉयल्टी
+crm_seg_inactive	निष्क्रिय
+crm_seg_top	शीर्ष खर्च
+birthday_ph	जन्मदिन (MM-DD या YYYY-MM-DD)
+crm_message_ph	जन्मदिन मुबारक {name}! तोर {points} अंक हें।
+till_apply_redeem	बिल पर लगाएँ
+till_clear_redeem	रिडीम हटाव
+till_wallet_topup	वॉलेट भरें
+till_issue_voucher	वाउचर जारी
+till_points_ph	रिडीम अंक
+till_wallet_ph	वॉलेट खर्च
+till_voucher_code_ph	वाउचर कोड
+till_voucher_amt_ph	वाउचर राशि (खाली = सब)
+till_wallet_topup_ph	वॉलेट टॉप-अप राशि
+till_voucher_issue_amt_ph	नवा वाउचर राशि
+till_voucher_issue_code_ph	नवा वाउचर कोड
+split_evenly	बराबर बाँटें
+waitlist	वेटलिस्ट
+fire_course	अगला कदम
+hold_item	रोकव
+waiter_call	कैशियर ला फोन कर
+waitlist_add	वेटलिस्ट म जोड़व
+floor_view_grid	ग्रिड
+floor_view_layout	लेआउट
+floor_layout_x	X
+floor_layout_y	Y
+floor_layout_w	W
+floor_layout_h	H
+floor_layout_save	लेआउट सहेजव
+floor_layout_open	टेबल खोलव
+floor_layout_edit	लेआउट संपादित
+floor_layout_pick	लेआउट बदलने बर टेबल टैप करव
+floor_layout_saved	लेआउट सुरक्षित होगे
+floor_layout_nudge_left	← 20
+floor_layout_nudge_right	→ 20
+floor_layout_nudge_up	↑ 20
+floor_layout_nudge_down	↓ 20
+sibling_pickers_help	यूनिट की तरह On/Off — क्षेत्रों, स्टेशनों, कर दरों ला दैनिक पिकर से छुपाएँ; पैक डिफ़ॉल्ट रहवगे।
+bulk_price_apply	थोक कीमत लागू करव
+card_terminal_optional	कार्ड टर्मिनल / पेमेंट लिंक (इंटरनेट होने पर वैकल्पिक)
+copy_report	रिपोर्ट कॉपी करव
+counted_cash_ph	दराज़ म गिनी नकदी
+country_tax	देश अउ कर
+create_backup	बैकअप बनाएँ
+credit_limit_heading	उधार सीमा (चुनी / नाम वाली पार्टी)
+day_close_summary	दिन बंद सारांश
+delete_party	चुनी पार्टी हटाव
+delivery	डिलीवरी
+done_open_books	हो गे — बही खोलव
+drawer_count	दराज़ गिनती (वैकल्पिक)
+expense_heading	खर्च
+export_day	दिन एक्सपोर्ट करव
+extra_note_bill_ph	इस बिल / बिक्री पर अतिरिक्त नोट
+extra_note_expense_ph	पिछले खर्च पर अतिरिक्त नोट
+extra_tills_heading	अतिरिक्त टिल
+other_devices_help_heading	दूसरे डिवाइस जोड़व
+other_devices_help	ए डिवाइस (सर्वर) मं: दूसर डिवाइस → अतिरिक्त टिल्स ला अनुमति देवव। पेयरिंग कोड अऊ वाई‑फाई पता ला नोट कर लेवव। अगर दिखाई देथे तो दूसर डिवाइस कनेक्ट करे ला अनुमति देवव मं टैप करव। कंप्यूटर मं, ए कंप्यूटर ले सुरू करव मं टैप करव। हर दूसर डिवाइस मं: एप्प इंस्टॉल करव, क्लाइंट मोड चुनव, दुकान के सर्वर ला खोजव (या पता टाइप करव), पेयरिंग कोड डारव, अब पेयर करव। अगर वाई‑फाई गिर जथे, तो ऑर्डर डिवाइस मं रुक जाथे अऊ जब सर्वर फेर जवाब देथे त जाथे। अतिरिक्त प्रिंटर सर्वर मं सेट होथे (सेटिंग → प्रिंटर) — अतिरिक्त टिल्स बिल उहां भेजथे।
+forget_shop	ए दुकान भूलेव
+goods_received	माल प्राप्त
+import_day	दिन इम्पोर्ट करव
+import_items_csv_plain	आइटम CSV इम्पोर्ट…
+import_parties_csv	पार्टी CSV इम्पोर्ट…
+item_name	आइटम का नाम
+kitchen_printing	प्रिंटर
+login_id_ph	लॉगिन आईडी
+mark_cleared	क्लियर चिह्नित करव
+new_party_clear	नवा पार्टी (फ़ॉर्म साफ़ करव)
+new_party_kind_supplier_ph	नवा पार्टी का प्रकार (सप्लायर)
+next_country	अगला देश
+next_order	अगला ऑर्डर (डेस्क साफ़)
+note_gstin_ph	नोट / GSTIN / समझौता रिमाइंडर
+notes_attach_party	नोट व अटैचमेंट (चुनी पार्टी)
+notes_attach_sale	नोट व अटैचमेंट (चुनी बिक्री)
+on_account_ap	खाते पर (AP)
+org_optional_ph	संगठन (वैकल्पिक)
+paid_by	भुगतान किससे
+paid_now	अभी भुगतान
+pair_now	अभी जोड़व
+pairing_code_ph	पेयरिंग कोड
+party_name_selected_ph	पार्टी का नाम (या चुनी होए इस्तेमाल करव)
+password_ph	पासवर्ड
+pay_ap_card	AP कार्ड से दें
+pay_ap_cash	AP नकद दें
+pay_ap_heading	जो उनका बकाया हे हम दें (AP)
+pay_ap_upi	AP UPI से दें
+pay_selected_heading	चुना हुआ चुकाएँ (कर्ज़ निपटाएँ / एडवांस लेव)
+pick_from_items	हमारे आइटम से चुनव
+prev_country	पिछला देश
+print_open	छापें / खोलव
+reason_amend_ph	संशोधन / रद्द / वापसी का कारण
+reason_note_ph	कारण / नोट (नुकसान, गिनती, …)
+record_day_close	दिन बंद दर्ज करव
+refresh_from_shop	दुकान से ताज़ा करव
+refund	वापसी
+remove_selected	चुना हुआ हटाव
+request_bill	बिल माँगें
+restaurant_name_ph	दुकान के नाम (ऐच्छिक)
+restore_backup	बैकअप वापस लाएँ
+role_both	दोनों
+role_admin	एडमिन
+role_cashier	कैशियर
+role_customer	ग्राहक
+role_manager	मैनेजर
+history_retention	कारोबार का इतिहास
+history_retention_help	पुराना बिक्री अऊ पुराना टिकट ला ऑटो-क्लियर करव। आइटम, स्टाफ, अऊ सेटिंग बने रहिथे। अब क्लियर करव सब ट्रेडिंग रो ला मिटाथे अऊ सेटअप रखथे।
+history_off	रखें
+history_day_close	दिन बंद पर
+history_after_hours	घंटों बाद
+history_hours_ph	घंटे (1–168, पहिले से 4)
+history_hours_save	घंटे सहेजव
+history_clear_now	इतिहास अभी साफ़ करव
+history_cleared	कारोबार का इतिहास साफ़ — सेटअप बना रहत
+history_retention_saved	इतिहास साफ़ करने की सेटिंग सहेजी
+history_hours_saved	इतिहास के घंटे सहेजे
+history_owner_only	सिर्फ़ मालिक या एडमिन इतिहास साफ़ कर सकते हें
+rollup	रोल-अप
+save_brand	ब्रांड सहेजव
+save_business_id	व्यापार आईडी व सेवा % सहेजव
+save_business_name	व्यापार का नाम सहेजव
+save_features	सहेजव
+save_features_named	{name} सहेजव
+save_features_ok	{name} का सेटअप सहेजा
+save_names	नाम सहेजव
+second_way	दूसरा तरीका
+server_ip_ph	सर्वर IP (जैसे 192.168.1.10)
+set_credit_limit	उधार सीमा तय करव
+set_login_selected	चुने होए पर लॉगिन लगाएँ
+set_login_named	{name} पर लॉगिन लगाएँ
+shop	दुकान
+show	देखाव
+spreadsheet_csv	स्प्रेडशीट (CSV)
+start_fresh	नवा सिरे से शुरू करव
+stop_extra_tills	अतिरिक्त टिल बंद करव
+floor_cols_ph	खंभा
+floor_cols_fit	स्क्रीन जितने
+floor_cols_fit_sub	इहाँ {n} आते हें
+floor_cols_fits	समाता हे
+floor_cols_scroll	बगल म स्क्रॉल
+floor_cols_min	कॉलम: कम से कम 1 — या स्क्रीन जितने रखने बर खाली छोड़ें
+floor_zoom_auto	अपने तैं
+floor_zoom_out	छोटा करव
+floor_zoom_in	बड़ा करव
+backup_auto	हर दिन अपने-आप बैकअप · पिछला {when} · पिछले 14 दिन {dir} म रखे जाते हें।
+backup_auto_none	हर दिन अपने-आप बैकअप — पहला अभी चलेगा।
+backup_copy_to	प्रतियाँ {dir} म भी जाती हें।
+backup_copy_btn	बैकअप एक फ़ोल्डर म भी कॉपी करव…
+autostart_off	इस कंप्यूटर के साथ शुरू करव
+autostart_on	इस कंप्यूटर के साथ शुरू होता हे ✓ — बंद करने बर दबाव
+autostart_done_on	अब ए कंप्यूटर शुरू होते ही ऐप खोलेगा — बिजली जाने के बाद भी दुकान का सर्वर वापस चालू होही।
+autostart_done_off	अब ए कंप्यूटर शुरू होने पर ऐप नइ खोलेगा।
+device_forgotten	दुकान ने ए डिवाइस हटा दिया — दुकान के मौजूदा कोड से फेर जोड़व। इस पर रुके ऑर्डर सुरक्षित हें।
+lan_offline	ऑफ़लाइन
+forget_device	भूल जाव
+last_seen	देखा
+copy_pair_code	पेयरिंग कोड कॉपी करव
+new_pair_code	नवा पेयरिंग कोड
+pair_finishing	पेयरिंग पूरा हो रहत हे… दुकान की किताबें लग रहत हें
+pair_opening	टिल खुल रहत हे…
+pair_copied	पेयरिंग कोड कॉपी हो गे
+kot_waiting	भेजने की प्रतीक्षा
+lan_offline_waiting	ऑफ़लाइन · {n} प्रतीक्षा म
+lan_connecting	दुकान से जुड़ रहत हें…
+lan_live	लाइव
+lan_sending	{n} भेजे जा रहत हें
+lan_sign_in_to_send	{n} भेजने बर फेर साइन इन करव
+lan_pair_again	इस डिवाइस ला फेर से जोड़व
+lan_update_app	ऐप अपडेट करव — इस डिवाइस अउ दुकान के सर्वर के संस्करण अलग हें
+allow_firewall	दूसरे डिवाइस ला जुड़ने दें
+firewall_blocked	इस कंप्यूटर का फ़ायरवॉल दूसरे डिवाइस ला रोक रहत हे — “दूसरे डिवाइस ला जुड़ने दें” दबाव।
+firewall_waiting	एडमिन अनुमति की प्रतीक्षा…
+lan_join_help	दूसरे डिवाइस इससे जुड़ सकते हें — जोड़ने का कोड {code}। दूसरे डिवाइस पर क्लाइंट मोड चुनव, फेर दुकान का सर्वर खोजें, या ए पता लिखव: {addr}
+lan_pair_status	वाई‑फ़ाई {addr}
+lan_join_help_no_addr	पता पाने बर इस डिवाइस ला Wi‑Fi से जोड़व।
+lan_no_address	इस डिवाइस का अभी कोनो वाई-फ़ाई पता नइ हे — इसे दुकान के वाई-फ़ाई से जोड़व।
+lan_not_listening	अभी डिवाइस नइ जुड़ पा रहत — शायद कोनो दूसरा प्रोग्राम पोर्ट {port} इस्तेमाल कर रहत हे। ऐप फेर से शुरू करव।
+lan_tills_off	अतिरिक्त टिल बंद हें। इस दुकान की किताबें इसी डिवाइस पर रहती हें। अगर कोनो दूसरा डिवाइस भी ऑर्डर ले या बिल बनाए, तो अतिरिक्त टिल की अनुमति दें।
+paired_with	दुकान से {url} पर जुड़ा हे
+not_paired	जुड़ा नइ हे — दुकान के सर्वर से जोड़व।
+choose_device_use	चुनव कि ए डिवाइस कइसन उपयोग होही।
+paired_note	जुड़ गे। बेचने बर खोलव, या दुकान से ताज़ा करव दबाकर नवीनतम लेव।
+last_update_at	दुकान से आख़िरी अपडेट: {time}।
+pair_intro	सर्वर खोजें, या उसका पता अउ पेयरिंग कोड लिखव।
+queue_waiting	दुकान तक पहुँचने की प्रतीक्षा म ({n}):
+queue_tries	{n} बार कोशिश · आख़िरी जवाब: {e}
+save_backup_copy	बैकअप की कॉपी सहेजव…
+backup_copy_saved	बैकअप कॉपी सहेजी गे — इसे इस डिवाइस से अलग रखें (USB स्टिक या दूसरा डिवाइस)
+backup_copy_overdue	{n} दिनों से कोनो बैकअप कॉपी इस डिवाइस से बाहर नइ गे — सेटिंग्स → बैकअप
+backup_copy_failed	बैकअप कॉपी उहाँ सहेजी नइ जा सकी — दूसरी जगह चुनव
+clock_off	इस डिवाइस की घड़ी दुकान के सर्वर से {min} मिनट अलग हे — इस डिवाइस पर सही समय लगाएँ
+printers_heading	प्रिंटर
+printers_help	प्रिंटर खोजव, एक ऊपर टैप करके चुनव, फेर ओमा खाली टेस्ट पेज प्रिंट करव. बिल प्रिंटर: बिल & स्लिप फॉर्मेट → बिल.
+printers_host_only	प्रिंटर मन दुकान के डिवाइस (सर्वर) म सेट रहिथें. ये टिल ओमा बिल अउ पुराना टिकिट भेजथे — खोज / जोड़ / असाइनिंग सब्बो सर्वर म होथे. टेस्ट पेज अउ बिल प्रिंट साइज सर्वर म जाथे.
+printers_find_heading	प्रिंटर खोजें
+printers_find_tip	खोज इस डिवाइस ला स्कैन करती हे अउ सूची अपडेट रखती हे। सिस्टम प्रिंटर पहिले; नेटवर्क स्कैन पृष्ठभूमि म चल सकता हे।
+printers_pool_heading	प्रिंटर
+printers_pool_tip	खोज इस डिवाइस ला स्कैन करती हे अउ सूची अपडेट रखती हे।
+printers_pool_empty	(अभी कोनो नइ — नीचे जोड़व)
+printers_routes_help	ओ प्रिंटर खोजव जेन ला ऑपरेटिंग सिस्टम पहिलीच जानथे. ला बिल अउ हर सेक्शन म बिल & स्लिप फॉर्मेट के तहत असाइन करव.
+printer_assign_dd	प्रिंटर चुनव — {place}
+printer_assign_pick	असली प्रिंटर चुनव
+printer_profile_heading	लेआउट
+printer_send_heading	डिलीवरी
+vp_delivery_heading	डिलीवरी
+vp_delivery_help	ये वर्चुअल प्रिंटर कैसे जॉब भेजथे — OS डाक्यूमेंट, रॉ बाइट्स, या ESC/POS. स्लिप के सामग्री (टाइप साइज, रैप, मार्जिन) बिल / स्लिप फॉर्मेट ले तय होथे, एहाँ नइ.
+vp_type_size_heading	अक्षर आकार
+vp_wrap_heading	रैप चौड़ाई
+vp_margin_heading	मार्जिन
+vp_delivery_spooler	OS दस्तावेज़ (सिस्टम स्पूलर)
+vp_delivery_raw	डिवाइस ला कच्चा बाइट
+vp_delivery_escpos	ESC/POS थर्मल कमांड
+virtual_printer_new	नवा वर्चुअल प्रिंटर
+virtual_printer_selected	“{name}” संपादित — सूची म दूसरी पर टैप कर बदलव
+virtual_printer_tap_list	सूची म वर्चुअल प्रिंटर पर टैप कर संपादित करव
+config_layout_portrait	पोर्ट्रेट
+config_layout_landscape	लैंडस्केप
+config_send_os	सिस्टम स्पूलर
+config_send_escpos	ESC/POS
+profiles_heading	लेआउट
+profiles_empty	(अभी कोनो लेआउट नइ)
+profile_builtin	बिल्ट-इन
+profile_custom	कस्टम
+profile_name_ph	लेआउट का नाम
+profile_new	नवा लेआउट
+profile_delete	लेआउट हटाव
+profile_created	लेआउट बन गे
+profile_deleted	लेआउट हटा दिया गे
+profile_builtin_keep	बिल्ट-इन लेआउट हटाए नइ जा सकते
+config_saved	अपडेट किया
+config_selected	“{name}” चुना
+printer_output_heading	वर्चुअल प्रिंटर
+virtual_printers_heading	वर्चुअल प्रिंटर
+virtual_printers_empty	अभी कोनो वर्चुअल प्रिंटर नइ — नीचे मान सेट करव, फेर सहेजव। कुछु होने के बाद सूची म टैप कर संपादित करव।
+virtual_printer_name_ph	वर्चुअल प्रिंटर का नाम (वैकल्पिक)
+virtual_printer_create	वर्चुअल प्रिंटर बनाएँ
+virtual_printer_save	वर्चुअल प्रिंटर सहेजव
+virtual_printer_delete	वर्चुअल प्रिंटर हटाव
+virtual_printer_created	वर्चुअल प्रिंटर “{name}” बनाया
+virtual_printer_deleted	वर्चुअल प्रिंटर “{name}” हटाया
+virtual_printer_updated	वर्चुअल प्रिंटर अपडेट हुआ
+virtual_printer_updated_named	वर्चुअल प्रिंटर “{name}” अपडेट हुआ
+virtual_draft_layout	अगले वर्चुअल प्रिंटर बर मान सेट
+virtual_draft_send	अगले वर्चुअल प्रिंटर बर मान सेट
+virtual_need_real	पहिले असली प्रिंटर चुनव
+virtual_need_select	हटाने बर वर्चुअल प्रिंटर चुनव
+real_printer_selected	असली प्रिंटर: {name}
+station_group_heading	वर्चुअल प्रिंटर
+station_group_apply	वर्चुअल प्रिंटर हटाव
+station_group_applied	हटाया
+station_group_empty	वर्चुअल प्रिंटर चुनव
+station_group_name_ph	वर्चुअल प्रिंटर का नाम (वैकल्पिक)
+station_group_save	वर्चुअल प्रिंटर बनाएँ
+station_group_saved	वर्चुअल प्रिंटर सहेजा
+station_manage_heading	दुकान के सेक्शन जोड़व या हटावव
+printers_routes_heading	2. कहाँ छपे
+route_pick_heading	स्थान
+route_editing	बदल रहत हें: {name}
+route_assigned	{printer} ला {place} म जोड़ा
+route_already_assigned	इस स्थान पर पहिले से: {printer}
+route_removed	{printer} ला {place} से हटाया
+route_cleared	{name} साफ़ किया
+route_assigned_empty	इस स्थान पर कोनो नइ
+route_tap_remove	हटाने बर दबाव
+route_tap_select	चुनने बर टैप
+route_tap_selected	चयनित
+route_pick_printer_first	पहिले एक प्रिंटर टैप करव
+route_assigned_heading	प्रिंटर
+route_add_heading	नियुक्त करव
+printer_label_ph	नाम (जइसे काउंटर प्रिंटर)
+printer_target_ph	पता या सिस्टम नाम
+printer_target_default	डिफ़ॉल्ट प्रिंटर
+printer_wire_heading	प्रारूप
+printer_wire_escpos	ESC/POS
+printer_wire_os	पोर्ट्रेट
+printer_wire_os_portrait	पोर्ट्रेट
+printer_wire_os_landscape	लैंडस्केप
+printer_wire_escpos_short	ESC/POS
+printer_wire_os_short	पोर्ट्रेट
+printer_wire_os_landscape_short	लैंडस्केप
+printer_format_custom	नवा अपना फ़ॉर्मैट
+printer_format_custom_label	अपना
+printer_format_custom_added	इस रूट बर अपना फ़ॉर्मैट जोड़ा गे
+add_printer	प्रिंटर जोड़व
+remove_printer	हटाव
+route_pick_ph	बिल या दुकान के सेक्शन
+route_bill	बिल
+route_default_kitchen	कोनो स्टेशन नइ हे (अनसाइन किए गए आइटम)
+route_kot_station	स्टेशन
+route_dont_print	प्रिंट न करव
+stations_heading	स्टेशन
+stations_help	दुकान के सेक्शन आइटम अउ ओकर हिस्सा के प्रिंटर ला ग्रुप करथे. प्रिंटर ला Settings → Printers से जोड़व, ट्राय क्रम सेट करव, फेर First that works या Print on all ला चुनव. बदलाव जइसने होत हे, सेव हो जथे.
+station_print_heading	इस स्टेशन के प्रिंटर
+station_print_help	एक स्टेशन चुनव, फेर एक या जियादा प्रिंटर जोड़व. ↑↓ ट्राय क्रम ला सेट करथे. First that works पहिले सफलता के बाद रुक जाथे; Print on all हर जुड़े प्रिंटर म भेजथे.
+station_print_pick_ph	स्टेशन जिसके प्रिंटर सेट करव
+station_print_pick_first	पहिली दूकान सेक्शन चुनव
+station_print_editing	“{name}” के प्रिंटर संपादित
+station_vps_dd	इस स्टेशन के प्रिंटर
+station_vps_dd_n	{n} प्रिंटर · बदलने बर टैप
+station_vps_empty	अभी प्रिंटर नइ — सेटिंग → प्रिंटर म खोजें
+bill_printers_dd	बिल के प्रिंटर
+bill_printers_dd_n	बिल बर {n} प्रिंटर · बदलने बर दबाव
+job_layout	लेआउट
+job_delivery	काम कइसन भेजा जाता हे
+job_delivery_help	OS दस्तावेज, raw bytes, या ESC/POS. बिल अउ टिकट ह अपन-अपन रखथे. कोनो भी जॉब कऊन प्रिंटर म जाए सकथे जेन Find ह save कर ले हे.
+station_vp_attached	प्रिंटर जोड़ा
+station_vp_detached	स्टेशन से प्रिंटर हटाया
+station_print_summary	{mode} · {n} प्रिंटर
+station_print_summary_none	इस स्टेशन पर अभी प्रिंटर नइ — प्रिंट नइ होही
+stations_none	अभी तक कोनो स्टेशन नई हे — नीचे एक जोड़व. काउंटर दुकान में स्टेशन के उपयोग नइ होथे — खाली छोड़ देव.
+route_up	ऊपर
+route_down	नीचे
+route_remove	हटाव
+route_clear	साफ
+save_printers	प्रिंटर सहेजव
+print_test_page	टेस्ट पेज छापें
+no_printer_assigned	प्रिंट न करव
+test_page_no_printer	{place} बर प्रिंटर नइ — ऊपर असाइन करव, फेर फेर कोशिश करव
+test_page_pick_first	पहिले टेस्ट के प्रिंटर चुनव — फेर टेस्ट पेज छापें
+test_printers_dd	टेस्ट पेज के प्रिंटर
+test_printers_dd_n	{n} प्रिंटर टेस्ट बर · बदलने बर टैप
+kot_test_printers_dd	टेस्ट प्रिंट बर प्रिंटर
+kot_test_printers_dd_n	{n} प्रिंटर(स) टेस्ट प्रिंट बर · बदलय बर टैप करव
+test_printer_picked	टेस्ट: {name}
+test_printer_cleared	टेस्ट नइ: {name}
+test_page_sent_n	टेस्ट पेज {n} प्रिंटर पर भेजा
+test_kot_pick_first	पहलें टेस्ट प्रिंट बर प्रिंटर चुनव — फेर टेस्ट प्रिंट
+test_kot_sent_n	टेस्ट प्रिंट {n} प्रिंटर म भेजे गे
+cancel_pick	चिह्नित
+cancel_pick_on	चिह्नित
+cancel_pick_meta	रद्द बर चिह्नित
+batch_cancel	चिह्नित रद्द करव
+batch_cancel_n	चिह्नित रद्द करव ({n})
+batch_cancel_none	एक या जियादा भेजे गे चीज़ चिन्हित करव — फेर चिन्हित मन ला रद्द करव
+batch_cancel_title	चिन्हित मन ला रद्द करव — एक कारण, हर सेक्शन बर एक रद्द स्लिप
+batch_cancel_ok	{n} चीज़ रद्द करे गे · {slips} रद्द स्लिप → {kitchens}
+batch_cancel_ok_noprint	{n} चीज़ रद्द करे गे — ऑटो-प्रिंट बंद हवय, त रद्द स्लिप नईये
+no_printer_kitchen_station	वइसने स्टेशन बर कोनो प्रिंटर नईये
+printers_saved	इस डिवाइस के प्रिंटर सहेजे गे
+test_page_sent	टेस्ट पेज भेजा — प्रिंटर देखव
+test_page_sent_one	टेस्ट पेज {name} पर भेजा — उसी प्रिंटर ला देखव
+printers_found	{n} मिले: {list}
+printers_find_synced	{n} मिले — {new} नवा
+printer_on_device	सहेजा
+printer_already_added	पहिले से जोड़ा
+printer_already_saved	पहिले से सहेजा: {name}
+find_printers	प्रिंटर खोजें
+printers_looking	इस डिवाइस अउ वाई‑फ़ाई पर प्रिंटर खोज रहत हें…
+saving_printer	प्रिंटर जोड़ रहत हें…
+cancelled	रद्द
+printers_tap_find	इस डिवाइस के प्रिंटर देखने बर खोजें दबाव।
+printers_none_found	कोनो प्रिंटर नइ मिला — सिस्टम प्रिंटर का नाम लिखव, या नेटवर्क पता (जैसे 192.168.1.50)।
+printer_from_find	{name} जोड़ा
+kot_printer_ph	स्लिप बर प्रिंटर
+bill_printer_ph	बिल का प्रिंटर
+kot_print_on	ऑटो-प्रिंट टिकट: चालू
+kot_print_off	ऑटो-प्रिंट टिकट: बंद
+queue_refused	दुकान ने स्वीकार नइ किया ({n}) — हर एक ला काउंटर पर जाँचें:
+clear_not_accepted	जाँच लिया — ए सूची हटाव
+device_name_ph	इस डिवाइस का नाम
+lan_last_update	आख़िरी अपडेट {time}
+lan_not_accepted	{n} स्वीकार नइ होए
+connected_now	अभी जुड़ा हे
+backup_failed	पिछला अपने-आप बैकअप नइ हो पाया: {e}
+backup_overdue	{n} दिन से बैकअप नइ हुआ — इस डिवाइस पर ऐप खुला रखें ताकि बैकअप हो सके।
+disk_low	इस डिवाइस पर सिर्फ़ {mb} MB जगह बची हे — जल्द ही बैकअप नइ हो पाएँगे। कुछु जगह ख़ाली करव।
+last_seen_devices	आख़िरी बार दिखा: {time}
+sync_interval	हर {secs} सेकंड म सिंक
+connection_to_shop	दुकान से कनेक्शन
+supplier_name_ph	सप्लायर का नाम (या पार्टी)
+supplier_ph	सप्लायर
+switch_device	ए डिवाइस बदलव
+take_payment	भुगतान लेव
+tax_added_till	{tax} अलग
+tax_inside_price	{tax} शामिल
+tax_invoice	कर चालान
+till_to_bank	टिल → बैंक
+units_heading	इकाइयाँ
+unlock_after_pairing	पिन दर्ज करव
+unlock_with_login	लॉगिन से अनलॉक
+unmark	चिह्न हटाव
+update_my_password	मेरा पासवर्ड बदलव
+update_my_pin	मेरा PIN बदलव
+duress_heading	आपातकालीन अनलॉक PIN (केवल Owner)
+duress_help	वैकल्पिक। अगर ये PIN आपके PIN के बजाय अनलॉक समय में टाइप किया जाए, तो सभी बुक एंट्री (सेल्स, लेजर, हिस्ट्री) मिट जाएंगे और टिल मालिक की तरह सामान्य दिखाई देगा — आइटम, कीमत, काउंटर, स्टाफ और सेटिंग्स वैसे के वैसे रहेंगे। स्कीमा और कॉन्फिग डिलीट नहीं होंगे। केवल तभी इस्तेमाल करें जब आपको मजबूर होकर अनलॉक करना पड़े। बंद करने के लिए खाली छोड़ें और सेव करें। किसी के भी PIN से कभी समान न हो।
+duress_pin_ph	आपातकालीन PIN (4–12 अंक)
+duress_confirm_ph	फेर से टाइप करव
+save_duress_pin	आपातकालीन PIN सहेजव
+clear_duress_pin	आपातकालीन PIN बंद करव
+duress_on	आपातकालीन अनलॉक PIN चालू हे
+duress_off	आपातकालीन अनलॉक PIN बंद हे
+duress_saved	आपातकालीन अनलॉक PIN सहेजा गे
+duress_cleared	आपातकालीन अनलॉक PIN बंद कर देहे
+upi_amount_ph	UPI राशि
+void	रद्द करव
+write_off_ap	AP माफ़ करव
+write_off_heading	माफ़ करव (बिना भुगतान के साफ़)
+write_off_nil	माफ़ करव / शेष शून्य
+your_brand	तोर ब्रांड (ऐप में)
+your_categories	तोर श्रेणियाँ
+account_kind	खाते का प्रकार (एक दबाव)
+actual_total_cap	असल कुल
+amend_help	संशोधन, रद्द या वापसी बर बिक्री चुनव। संशोधनों का पूरा इतिहास रहता हे।
+applied_total_cap	लागू कुल
+bank_balance	बैंक शेष
+bank_net_today	आज का बैंक नेट
+branch_export_help	Export backups फ़ोल्डर म branch_snapshot_CODE_DATE.json लिखता हे अउ क्लिपबोर्ड पर कॉपी करता हे। दूसरे आउटलेट का दिन इम्पोर्ट करने बर उसकी फ़ाइल उसी फ़ोल्डर म import_branch_snapshot.json नाम से रखें, फेर Import दबाव।
+brand_shown_help	ऐप के अंदर की स्क्रीन पर दिखता हे। इस डिवाइस पर इंस्टॉल ऐप का नाम व आइकन प्लेटफ़ॉर्म लिस्टिंग जैसे ही रहते हें।
+app_icon	ऐप आइकन
+logo_help	ऐप की स्क्रीन पर दुकान का वैकल्पिक निशान।
+onboard_layout	तोला का मिलता हे
+item_photo_help	वैकल्पिक। फ़ोटो न हो तो आइटम के नाम के पहिले अक्षर दिखते हें।
+stamp_heading	मुहर
+stamp_image_help	प्रिंटेड बिल और ग्राहक डिस्प्ले पर वैकल्पिक स्टाम्प इमेज।
+payment_qr_heading	भुगतान QR
+payment_qr_image_help	बिल और ग्राहक डिस्प्ले पर स्टेटिक QR; अन्यथा पेमेंट के लिए ऊपर दिए गए VPA से डायनामिक UPI QR इस्तेमाल होगा।
+cash_in_hand	हाथ म नकदी (टिल)
+change_my_pin_heading	मेरा PIN बदलव (केवल तोर)
+connect_to_server	सर्वर से जुड़ें
+counter_locked	काउंटर 01 · लॉक
+country_pack_help	देश पैक कर का नाम व गणित, त्वरित-भुगतान रेल, अउ बिलों पर छपने वाली व्यापार आईडी तय करता हे। Kumkaj कहीं भी कर दाखिल नइ करता या सरकारी ई-चालान जारी नइ करता।
+currency_use_help	स्क्रॉल करव अउ किसी भी समर्थित मुद्रा बर Use दबाव।
+day_close_help	दिन बंद दर्ज करने से ए सारांश (अउ गिनती हो तो दराज़ अंतर) ऑडिट लॉग म सहेजा जाता हे। ए बिक्री नइ रोकता।
+expenses_word	खर्चे
+feature_access_help	चुने कर्मचारी की सुविधा पहुँच (जोड़ने के बाद दबाव)
+footer_local	स्थानीय SQLite · हमेशा मुफ़्त · कोनो क्लाउड नइ
+fresh_book_kirano	फ्रेश = खाली कैटलॉग (बाद में आइटम जोड़ें)। बुक = नीचे शुरुआती स्टॉक और कौन आपको पैसा देता है टाइप करें।
+fresh_selected	Fresh चुना — कैटलॉग खाली रहतगा। तैयार होने पर Done दबाव।
+gross_word	सकल
+how_start	तैं कइसन शुरू करना चाहते हें?
+kot_print_help_kirano	किराना काउंटर पर इस्तेमाल नहीं होता।
+later_country_pack	बाद में: सेटिंग → कर अउ भुगतान के नामों बर अपना देश पैक लागू करव।
+local_badge	स्थानीय
+mix_type_hint_kirano	ज़रूरत हो तो नकद / UPI / कार्ड / उधार म बाँटें। उधार बर ऊपर ग्राहक चाही।
+money_in_sales	पैसा आया (बिक्री)
+net_word	नेट
+offline_badge	ऑफ़लाइन
+optional_login_help	वैकल्पिक लॉगिन (आईडी + पासवर्ड)। मालिक एक बार लगाता हे; बाद म केवल उपयोगकर्ता ही पासवर्ड बदल सकता हे।
+or_unlock_login	या लॉगिन आईडी + पासवर्ड से अनलॉक करव
+permission_preset	अनुमति प्रीसेट (किस तक पहुँच)
+preset_help_kirano	कैशियर: बेचें। मैनेजर: बेचें + आइटम + रद्द/संशोधन।
+product_locked_kirano	किरानो
+product_only_kirano	Kirano grocery / kirana operating system ae: counter sell, stock, credit, a books — tohar device ma offline.
+purchases_cogs	खरीद (COGS)
+qty_cap	मात्रा
+restore_help	Restore: एक बैकअप चुनव। बही उस समय जैसी खुलेगी; अभी की बही पहिले सहेजी जाती हे, ताकि इसे वापस किया जा सके।
+wipe_data_heading	स्थानीय डेटा हटाव
+wipe_data_help	Owner bar — Windows uninstall jaisa same choice. Business records trading history la clear karis lekin items a setup rakhe (jaise emergency unlock PIN). Shop setup books database la hata de. Screen preferences window/language la clear kar de. Owner PIN se confirm kar. Team ma emergency unlock PIN alag ae (unlock ma covert wipe).
+wipe_trading	व्यापार रिकॉर्ड
+wipe_schema	दुकान सेटअप
+wipe_ui	स्क्रीन प्राथमिकताएँ
+wipe_owner_pin_ph	हटाने बर Owner PIN
+wipe_delete_selected	चुना हुआ हटाव
+wipe_owner_only	केवल Owner स्थानीय डेटा हटा सकता हे।
+restore_owner_only	केवल Owner बैकअप वापस लगा सकता हे।
+wipe_owner_pin_needed	स्थानीय डेटा हटाने बर Owner PIN डालेव।
+wipe_nothing_selected	पहिले का हटाना हे चुनव।
+wipe_done	चुना हुआ स्थानीय डेटा हटा दिया।
+wipe_schema_done	दुकान सेटअप मिटा — जारी रखने बर Server या Client चुनव।
+rounded_total	राउंड कुल
+setup_app_kirano	Kirano setup kar
+shop_logo_optional	दुकान लोगो (वैकल्पिक)
+stock_type_help	आइटम का नाम लिखव (उसका हिस्सा ही काफ़ी हे), मात्रा लिखव, फेर समायोजित करव। जो आइटम अभी गिने नइ गे ओला एक बार Start tracking चाही।
+team_owner_help	मालिक हर व्यक्ति ला नाम, भूमिका शीर्षक, अनुमति प्रीसेट अउ शुरुआती PIN के साथ बनाता हे। मालिक बाद म किसी का PIN नइ बदल सकता — केवल ओही व्यक्ति अपना PIN बदल सकता हे।
+staff_name_ph	कर्मचारी नाम / आईडी
+staff_copy_hire_ph	सेटअप कहाँ से कॉपी करव (वैकल्पिक)
+staff_copy_hire	इस व्यक्ति का सेटअप इस्तेमाल करव
+staff_edit_name_ph	दिखने वाला नाम
+staff_rename	नाम सहेजव
+staff_copy_edit_ph	किसी दूसरे व्यक्ति से सेटअप कॉपी करव
+staff_copy_edit	उनका सेटअप चुने होए पर कॉपी करव
+staff_copy_edit_onto	उनका सेटअप {name} पर कॉपी करव
+staff_deactivate_named	{name} ला हटाव
+staff_renamed	नाम सहेजा
+staff_setup_copied_hire	{name} से सेटअप कॉपी हुआ — नवा नाम अउ PIN डालेव, फेर कर्मचारी जोड़व
+staff_setup_copied_edit	{from} का सेटअप {to} पर कॉपी हुआ
+staff_copy_need_selected	पहिले चुनव किसे बदलना हे
+staff_copy_need_source	चुनव किसका सेटअप कॉपी करना हे
+staff_copy_same	ए ओही व्यक्ति हे — कोनो दूसरा चुनव
+staff_rename_need_selected	पहिले चुनव किसका नाम बदलना हे
+team_pick_hint	Kaun la edit kare banwo — screens, money rights, a stations sirf oi vyakti bar dikhathae.
+team_stations_help	Stations jiske use kar sakthe
+team_stations_changed	Stations change ho gaye — Ei vyakti bar setup la save kar
+team_features_changed	स्क्रीन बदलीं — इस व्यक्ति का सेटअप सहेजव
+team_rights_changed	अधिकार बदले — इस व्यक्ति का सेटअप सहेजव
+they_owe_us	वे हमारे देनदार
+unit_at_cap	इकाई दर
+units_help	आइटम लेबल के कोड (kg, piece, bag)। हर इकाई ला — सीधे या अन्य इकाइयों के ज़रिए — एक मानक (kg · cm · ml · pc) से जुड़ना चाही, जैसे 1 crate = 2 box अउ 1 box = 20 cm। रूपांतरण: 1 from = factor to। मुद्राएँ कभी इकाई नइ होतीं।
+units_picker_help	खरीद अउ सामान चुनइया म एक यूनिट देखाए बर On/Off दबाव. Off यूनिट घलो बदल जाथे.
+unit_picker_on	चालू
+unit_picker_off	बंद
+we_owe_them	हम उनके देनदार
+who_unlocking	कौन अनलॉक कर रहत हे?
+locked_word	लॉक
+show_pin	PIN देखाव
+hide_pin	PIN छिपाएँ
+set_owner_pin	मालिक PIN लगाएँ
+enter_owner_passcode	मालिक पासकोड डालेव
+enter_staff_passcode	कर्मचारी पासकोड डालेव
+pin_count_zero	0 / 12 अंक · कम से कम 4, फेर OK
+pin_count_need	{} / 12 अंक · {} अउ चाही
+pin_count_full	12 / 12 अंक · OK दबाव
+pin_count_ready	{} / 12 अंक · तैयार होने पर OK दबाव
+pin_hint_choose	4–12 अंक चुनव (कीबोर्ड या पैड) · सहेजने बर Enter/OK
+pin_hint_new	नवा 4–12 अंकों का मालिक PIN (कीबोर्ड या पैड) · Enter/OK
+pin_hint_shop_code	दुकान डिवाइस · पेयरिंग कोड {}
+pin_hint_books	ए डिवाइस बही रखता हे
+pin_hint_paired	अतिरिक्त टिल जुड़ा — बेचने बर अनलॉक करव
+pin_hint_pair_first	अतिरिक्त टिल — पहिले दुकान डिवाइस से जोड़व
+unlock_to_continue	जारी रखने बर अनलॉक करव
+no_staff_yet	अभी कोनो कर्मचारी नइ — मालिक के रूप म अनलॉक करव, फेर Team
+status_server_set_pin	सर्वर मोड — मालिक PIN लगाएँ
+status_server_tills	सर्वर मोड — अतिरिक्त टिल जुड़ सकते हें। अनलॉक करव
+status_server_unlock	सर्वर मोड — मालिक के रूप म अनलॉक करव
+status_client_unlock	क्लाइंट मोड — बेचने बर अनलॉक करव
+icon_new_selected	आइकन: नवा फ़ाइल चुनी — ब्रांड सहेजव दबाव
+icon_custom	आइकन: अपनी दुकान का निशान
+icon_default	आइकन: Kumkaj निशान (डिफ़ॉल्ट) — अपना चुनव
+logo_yours	लोगो: तोर दुकान का लोगो — स्क्रीन अउ रसीदों पर दिखेगा
+logo_default	लोगो: Kumkaj निशान (डिफ़ॉल्ट) — अपना हो तो चुनव
+tmpl_current	मौजूदा: {} — {}
+tmpl_selected	चयनित: {} — {}
+setup_complete	सेटअप पूरा
+onboard_fresh_tmpl	नवा · {} — कैटलॉग खाली से शुरू; आइटम म सामान जोड़व, फेर Done दबाव।
+onboard_book_tmpl	बही · {} — आइटम अउ शुरुआती उधार जोड़व, फेर Done दबाव।
+onboard_template_tmpl	चाहें तो जगह का नाम दें, फेर शुरू करने का तरीका चुनव।
+tmpl_blurb	किराना काउंटर: बेचई, स्टॉक, खाता, आपूर्तिकर्ता खरीदी, किताब.
+tmpl_how	काउंटर म बेचव; स्टॉक बर खरीदी करव; दिन भर के किताब बर किताब.
+reports_facet_title	रिपोर्ट
+reports_facet_help	डे बुक, पार्टी एजिंग, बैंक पोस्ट अउ अवधि लाभ-हानि।
+against_bill_ph	ऊपर वाले बिल # के विरुद्ध (वैकल्पिक)
+aliases_ph	शॉर्ट कोड अउ उपनाम — कोमा ले छुट्टाय (जइसे MG02, आटा)
+amount_blank_full_ph	राशि (खाली = पूरा बकाया)
+amount_owed_ph	बकाया राशि
+amount_ph	रकम
+amount_received_ph	प्राप्त राशि
+amount_we_pay_ph	हम जो राशि देते हें
+business_name_ph	व्यापार का नाम
+category_new_ph	श्रेणी (वैकल्पिक, नवा हो तो बन जाएगी)
+code_bag_ph	कोड (bag)
+conv_factor_ph	गुणक (25 = 1 bag → 25 kg)
+country_code_ph	देश कोड जैसे IN, GB, US, AE, BR
+credit_khata_amount_ph	उधार / खाता राशि
+credit_limit_ph	उधार सीमा (0 = कोनो नइ)
+from_code_ph	से कोड (bag)
+item_name_lang_ph	आइटम का नाम — अपनी भाषा म लिखव
+login_id_opt_ph	लॉगिन आईडी (वैकल्पिक)
+manager_pin_ph	मैनेजर PIN (केवल तब यदि तैं निरस्त नइ कर सकते)
+new_branch_name_ph	नवा शाखा का नाम
+new_password_ph	नवा पासवर्ड (वैकल्पिक)
+new_pin_ph	नवा PIN (4–12 अंक)
+note_bank_ph	टिप्पणी (जमा, निकासी, …)
+note_buy_expense_ph	टिप्पणी (ईंधन, किराया, …)
+note_expense_ph	टिप्पणी (ईंधन, कार्यालय, …)
+options_kirano_ph	विकल्प (वैकल्पिक) — Extra cheese=40, Large=80
+part_second_way_ph	दूसरे तरीके से हिस्सा (वैकल्पिक)
+phone_ph	फ़ोन
+place_name_ph	इस जगह का नाम
+qty_example_ph	मात्रा (जैसे kg बर 1.5)
+quantity_ph	मात्रा
+reason_required_ph	कारण (ज़रूरी)
+role_title_ph	भूमिका (जैसे Barista)
+service_pct_ph	सेवा % वैकल्पिक 0/10/12
+short_code_ph	छोटा कोड (MG02)
+starting_password_ph	शुरुआती पासवर्ड (वैकल्पिक)
+starting_pin_ph	शुरुआती PIN (4–12 अंक)
+station_name_ph	स्टेशन के नांव (वैकल्पिक)
+station_new_ph	सेक्शन (वैकल्पिक)
+table_name_ph	काउंटर / बे के नांव
+tax_rate_ph	कर दर का नाम या % — Standard, Reduced, 0, 5, 12, 18, 20
+to_code_ph	ला कोड (kg)
+uncleared_no_ph	ऊपर वाला अनक्लियर्ड #
+unit_cost_ph	इकाई लागत
+unit_name_bag_ph	नाम (Bag)
+unit_plate_ph	इकाई (प्लेट / पीस — खाली = प्रत्येक)
+pay_credit	उधार
+book_kind_today	आज की बही
+book_kind_month	इस महीने की बही
+book_kind_aging	बकाया / डेबिट-क्रेडिट
+book_kind_balance	बैलेंस शीट
+order_help	खुला ऑर्डर चुनव, या टेबल चुनव अउ नवा शुरू करव। तैयार वस्तुओं पर टैप करव, KOT भेजव, एक या अधिक वस्तुओं का बिल बनाएँ, बिल बाँटें, अउ भुगतान निपटाएँ।
+floor_help	ये दुकान काउंटर म बेचथे. टेबल अउ डाइनिंग फ्लोर किरानो के हिस्सा नई ए.
+kitchen_help	काउंटर दुकान म उपयोग नई होथे.
+kitchen_empty	खुल्ला टिकट नई (काउंटर दुकान मन सामान्यत: ये स्क्रीन के उपयोग नई करंथ).
+add_a_table	मेज़ जोड़व
+add_station_heading	एक दुकान सेक्शन जोड़व
+categories_help	वर्ग उस मेनू भाग ला दिखाता हे जिसमें व्यंजन आता हे — जैसे स्नैक्स, मेन कोर्स या बिरयानी। वर्ग अपने अनुसार बनाएँ: हमारे बताए नाम चुनव, उनके नाम बदलव, या अपना जोड़व।
+dish_search_ph	सामान या शॉर्ट कोड खोजव…
+tile_free	खाली
+tile_occupied	व्यस्त
+tile_food_ready	खाना तैयार
+tile_bill_printed	बिल छपा
+tile_paid	भुगतान हुआ
+tile_bill_btn	बिल
+tile_occupy_btn	मेहमान बैठाएँ
+tile_free_btn	टेबल खाली करव
+tile_ready_btn	टेबल खाली करव
+tile_undo_bill	बिल वापस
+summary_busy	टेबल व्यस्त
+summary_to_collect	वसूलना हे
+summary_on_floor	फ़्लोर पर
+floor	दुकान
+sizes_as_items_ph	साइज़ अलग आइटम के रूप म (वैकल्पिक) — Half=120, Full=200
+dish_group_ph	पैक साइज ग्रुप (वैकल्पिक) — जइसे आटा 1kg / 5kg
+discount	छूट
+remove_discount	छूट हटाव
+apply_discount	छूट लगाएँ
+save_opening_cash	शुरुआती नकद सहेजव
+close_shift_print	शिफ्ट बंद करव अउ पर्ची छापें
+area_prices_ph	क्षेत्र कीमतें (वैकल्पिक) — AC=220, Parcel=210
+discount_ph	10% या 50
+discount_reason_ph	कारण (जैसे नियमित मेहमान, खाने म देर)
+opening_float_ph	आज सुबह दराज़ म रखा नकद
+shift_counted_ph	हेंडओवर पर गिना नकद
+opening_float	शुरुआती नकद (फ़्लोट)
+shift_handover	शिफ्ट हेंडओवर
+shift_since	ए शिफ्ट कब से
+expected_in_drawer	दराज़ म होना चाही
+right_discount	छूट देना
+floor_in_kitchen	प्रगति म
+floor_eating	भोजन कर रहत हें
+pick_category	श्रेणी चुनव
+close_category_list	श्रेणी सूची बंद करव
+new_category_row	नवा श्रेणी — आइटम सहेजने पर बनेगी
+your_category	तोर श्रेणी
+suggested_category	सुझाइस — हमर सामान ले
+category_search_ph	श्रेणी — अपनी खोजें या नवा लिखव
+line_sent_state	भेज दीस
+line_nc_state	मुफ़्त (NC) — शुल्क नइ
+cancel_item_short	रद्द
+nc_short	मुफ़्त
+charge_again_short	शुल्क लेव
+move_short	हटाव
+cancel_item_title	ए सामान ला रद्द कर — बैक ऑफिस म रद्द स्लिप जाथे
+nc_item_title	इस आइटम ला मुफ़्त (NC) करव
+charge_again_title	इस आइटम का फेर से शुल्क लेव
+move_item_title	इस आइटम ला दूसरी टेबल पर ले जाव
+already_cooked	पहिले ही बन चुका (बर्बादी)
+not_cooked_yet	अभी नइ बना
+return_to_customer	ग्राहक ला लौटाएँ
+short_by	कम हे
+tip_not_sale	टिप (स्टाफ़ की, बिक्री नइ)
+right_settle	भुगतान लेव
+right_cancel_sent	भेजा गे आइटम रद्द करना
+right_complimentary	मुफ़्त देना (NC)
+right_move_table	काउंटर ला घुमाव / मर्ज करव
+right_reprint	बिल फेर से छापना
+right_allowed	अनुमति हे
+right_with_approval	अनुमोदन के साथ
+right_denied	अनुमति नइ
+editing_staff	सुधारत हन
+finding_server	इस वाई-फ़ाई पर दुकान का सर्वर खोज रहत हें…
+no_server_found	कोनो सर्वर नइ मिला। देखव कि दुकान का डिवाइस उसी वाई-फ़ाई पर हे अउ अतिरिक्त टिल की अनुमति हे, या उसका IP लिखव।
+servers_found_pick	जिस दुकान से जुड़ना हे उसे टैप करव।
+server_host_selected	{host} इस्तेमाल — पेयरिंग कोड डालेव, फेर अभी पेयर करव।
+print_bill	बिल छापें
+table_actions	काउंटर के कामकाज
+move_merge_table	टेबल बदलव / जोड़व
+move_help	ए काउंटर के ऑर्डर ला खाली टेबल म भेजव, या चलत हावय ओमा मर्ज करव.
+move_target_ph	काउंटर नाव
+approval_pin_ph	मैनेजर PIN (केवल पूछे जाने पर)
+move_here	इहाँ ले जाव
+merge_into	इसमें जोड़व
+line_reason_ph	कारण (जइसे ग्राहक मन बदल दिस, स्टॉक म नइ हे)
+line_qty_ph	कितने रद्द करव (खाली = सब)
+line_target_ph	टेबल पर ले जाव (जैसे D5)
+confirm	पुष्टि करव
+menu_search_ph	आइटम या शॉर्ट कोड खोजें
+customer_paid_ph	ग्राहक ने दिया
+tip_ph	टिप
+table_area_ph	क्षेत्र (जैसे डाइन इन, पार्सल, AC)
+table_range_ph	एक साथ कई: D1-D20
+add_these_tables	ये काउंटर जोड़व
+remove_these_tables	ये काउंटर हटाव
+table_remove_ph	हटाव: T1-T24, या किसी एक मेज़ का नाम
+find_server	दुकान का सर्वर खोजें
+bill_format	बिल का प्रारूप
+bill_format_help	हर बिल म आप मन के दुकान के नाव के नीचे छापे जाथे। लाइन ला | से अलग करव (जइसे MG रोड, राजकोट | फ़ोन 98250 00000)
+bill_header_ph	पता | फ़ोन
+fssai_ph	FSSAI / दुकान लाईसेंस नंबर (वैकल्पिक)
+bill_footer_ph	फ़ुटर (जैसे धन्यवाद, फेर आइए)
+save_bill_format	बिल प्रारूप सहेजव
+kot_format	स्लिप फॉर्मेट
+kot_format_help	सूची म कोनो फिल्ड ला टैप करव। शो, फाँट साइज, अउ वजन झन स्लिप के ऊपर चयन करे गे किस्म म लागू होथे। हर किस्म अपन साइज अउ वजन रखथे।
+kot_format_fields	फ़ील्ड
+kot_field_next	अगला फ़ील्ड
+kot_field_show	देखाव
+kot_field_hide	छिपाएँ
+kot_field_on	देखाव
+kot_field_off	छिपाएँ
+kot_field_size	फ़ॉन्ट आकार
+kot_field_size_ph	जैसे 16, 20, 24, 28, 32…
+kot_weight_light	हल्का
+bill_kot_panel_help	बिल लेआउट अउ सामग्री के चौड़ाई। कैशियर उही आय जेन बिल जारी करे या निपटाय — पूरा बिक्री कहानी किताब म रहिथे।
+std_size_ph	जैसे 18, 20, 26…
+kot_show_shop	दुकान का नाम
+kot_hide_shop	दुकान छिपाएँ
+kot_show_time	समय
+kot_hide_time	समय छिपाएँ
+kot_show_waiter	कैशियर
+kot_hide_waiter	कैशियर ला छुपाव
+kot_show_station	स्टेशन
+kot_hide_station	स्टेशन छिपाएँ
+kot_show_table	काउंटर
+kot_hide_table	मेज़ छिपाएँ
+kot_show_kot_no	टीcket नंबर
+kot_hide_kot_no	टिकट नंबर छुपाव
+kot_width	प्रीव्यू रैप (स्लिप टैब मं सामग्री के चौड़ाई सेट करव)
+kot_width_58	58 mm
+kot_width_80	80 mm
+kot_kind_heading	टिकट प्रकार
+kot_kind_original	मूल
+kot_kind_duplicate	प्रतिलिपि
+kot_kind_modified	बदला गे
+kot_kind_cancelled	रद्द
+kot_style_heading	फ़ील्ड आकार अउ मोटाई
+kot_style_title	शीर्षक
+kot_style_item_qty	आइटम · संख्या
+kot_style_field_pick	फ़ील्ड चुनव
+kot_weight_regular	सामान्य
+kot_weight_bold	मोटा
+kot_align	संरेखण
+kot_align_start	शुरू करव
+kot_align_center	बीच म
+kot_align_end	अंत म
+content_width	सामग्री चौड़ाई (मिमी)
+content_width_bill	बिल की चौड़ाई (mm)
+content_width_kot	टिकट सामग्री के चौड़ाई (मिमी)
+content_width_ph	या सामग्री चौड़ाई लिखव, 40–210 मिमी
+content_width_help	ये स्लिप कतेक चौड़ाई ले प्रिंट करत हे. बिल अपन खुद के चौड़ाई रखथे.
+content_width_bill_help	ग्राहक के बिल कतेक चौड़ाई ले प्रिंट होथे. डिफ़ॉल्ट 210 मिमी (पेज). 58 मिमी संकरी स्लिप, 80 मिमी चौड़ी स्लिप, 112 मिमी 4-इंच, 210 मिमी A4 चौड़ी. 40 ले 210 तक कोई भी मान टाइप करो. टिकट मन स्लिप टैब मं अपन खुद के चौड़ाई होथे.
+content_width_kot_help	टिकट कतेक चौड़ाई ले प्रिंट होथे. डिफ़ॉल्ट 80 मिमी. 58 मिमी संकरी स्लिप, 80 मिमी चौड़ी स्लिप, 112 मिमी 4-इंच, 210 मिमी पेज. 40 ले 210 तक कोई भी मान टाइप करो. ग्राहक के बिल मन बिल टैब मं अपन खुद के चौड़ाई रखथे.
+vp_paper_width	सामग्री चौड़ाई (मिमी)
+vp_paper_width_ph	या सामग्री चौड़ाई लिखव, 40–210 मिमी
+vp_paper_width_help	सामग्री के चौड़ाई बिल और स्लिप फॉर्मेट के तहत सेट करे जाथे — बिल (डिफ़ॉल्ट 210 मिमी) अउ टिकट (डिफ़ॉल्ट 80 मिमी) खातिर अलग-अलग।
+kot_size	फ़ॉन्ट आकार
+kot_size_s	छोटा
+kot_size_m	सामान्य
+kot_size_l	बड़ा
+std_size	फ़ॉन्ट आकार
+kot_copies	प्रतियाँ
+kot_copies_1	1
+kot_copies_2	2
+kot_copies_3	3
+kot_title_ph	शीर्षक (खाली = टिकट)
+kot_footer_ph	बैक-ऑफिस नोट (वैकल्पिक)
+kot_preview	पूर्वावलोकन
+save_kot_format	स्लिप फॉर्मेट बचाव
+test_kot_format	टेस्ट प्रिंट
+test_kot_sent	टिकट पूर्वावलोकन भेजे गए
+test_bill_format	टेस्ट बिल
+test_bill_sent	बिल का नमूना भेजा
+test_print_no_printer	उस काम बर प्रिंटर नइ — इसी स्क्रीन पर एक चुनव
+kot_format_saved	स्लिप फॉर्मेट बचाय गए
+std_print	बिल प्रिंट आकार
+std_print_help	OS / दस्तावेज़ प्रिंटर पर स्टैंडर्ड पोर्ट्रेट अउ लैण्डस्केप बिल जॉब्स खातिर फ़ॉन्ट आकार (पॉइंट दर्ज करे — छोटा/सामान्य/बड़ा नहीं). दुनो ओरिएंटेशन में एके आकार.
+std_size_s	छोटा
+std_size_m	सामान्य
+std_size_l	बड़ा
+save_std_print	बिल प्रिंट आकार सहेजव
+std_print_saved	बिल प्रिंट आकार सहेजा
+print_brand_kit	प्रिंट ब्रांड किट
+print_brand_kit_help	बिल के चेहरा अउ LAN ग्राहक डिस्प्ले में वैकल्पिक स्टाम्प अउ भुगतान QR चित्र. ऊपर के VPA से डायनामिक UPI QR तब घलो काम करथे जब कोई भुगतान QR चित्र सेट नहीं हे.
+choose_stamp	स्टैम्प चुनव
+clear_stamp	स्टैम्प हटाव
+stamp_set	स्टाम्प: फ़ाइल म रखे — ग्राहक डिस्प्ले में दिखाय जाथे अउ मुद्रित बिल पर नामित।
+stamp_none	स्टैम्प: नइ
+choose_payment_qr	भुगतान QR चुनव
+clear_payment_qr	भुगतान QR हटाव
+payment_qr_set	पेमेन्ट QR: फाइल मं हवे — ग्राहक डिस्प्ले मं देखाय जाथे (अउ रकम UPI QR के जगह मं दिखथे)
+payment_qr_none	भुगतान QR: नइ — भुगतान पर UPI ID से राशि वाला QR
+aggregator_import	एग्रीगेटर ऑर्डर (फ़ाइल)
+aggregator_import_help	वैकल्पिक Local: backups म import_aggregator_orders.json रखें, फेर Import। काउंटर नइ रुकेगा; लाइव Zomato/Swiggy = Cloud।
+import_aggregator_file	एग्रीगेटर फ़ाइल आयात
+team_pick_ph	संपादन हेतु स्टाफ़ का नाम
+select_staff	ए स्टाफ़ चुनव
+rights_help	ए मनखे बर पैसा के काम — टैप करके बदलव: अनुमति हे → बॉस PIN के जरूरत हे → अनुमति नइ हे. बिल फेर से प्रिंट करे सिरिफ बिल्स; सेक्शन मन नीचे के चेकलिस्ट हवंय.
+dish_picker_help	हमर आइटम मन खोजव या ब्राउज़ करव अउ एक टैप करव ताकि ओकर नाव अउ फोटो भरे जाए — या अपन नाव रखव. अपन कीमत सेट करव (0 ठीके), फेर आइटम जोड़व.
+close_dish_list	आइटम लिस्ट बंद करव
+own_item_name	इसे अपने आइटम का नाम बनाएँ
+on_your_menu	कैटलॉग मं
+edit	बदलव
+schemes	स्कीम / ऑफ़र
+schemes_help	बाय-ववन-गेट-ववन, प्रतिशत छूट, अउ फिक्स्ड बंडल. उदाहरण: 2 चाउर खरीदी मं 1 तेल पावव.
+scheme_bogo_ph	2 चाउर खरीदी मं 1 तेल पावव
+add_scheme	BOGO जोड़व
+schedule_ph	समय — सोम-शुक्र 07:00-11:00 या साँझ 17:00-19:00=150
+upi_vpa_ph	UPI ID (VPA)
+upi_payee_ph	UPI प्राप्तकर्ता (वैकल्पिक)
+upi_qr	UPI QR
+show_upi_qr	UPI QR देखाव
+close_upi_qr	बंद
+upi_qr_help	ग्राहक स्कैन करथे अउ पेमेन्ट करथे. उंकर पेमेन्ट के बाद टैप करव Take payment. दूसर स्क्रीन: LAN मं Server URL /display खोलव.
+kot_recall	वापस लाएँ
+recently_done	अभी पूरे
+recall_kot_ph	टिकट # याद करा
+role_help_customer	भूमिका: ग्राहक — AR (वे हमारे देनदार)। ओही फर्म आपूर्तिकर्ता भी हो सकती हे।
+role_help_both	भूमिकाएँ: भेजने वाला + कैरियर — एक पार्टी, AR अउ AP बही, Reports म नेट।
+role_help_supplier	भूमिका: आपूर्तिकर्ता — खरीद बर AP।
+dine_in_pick_table	काउंटर दुकान म उपयोग नइ हे
+choose_table	काउंटर चुनव
+change_table	टेबल बदलव
+pick_table_banner	इस ऑर्डर बर टेबल चुनव
+items_word	आइटम
+items_section	आइटम
+back_to_order	ऑर्डर पर वापस
+new_items_head	अभी नइ भेजा
+price_ph	दाम
+price_ph_gst_inside	कीमत ({tax} शामिल)
+cancel_needs_table	काउंटर बिक्री टिकट म तब तक रहिथे जब तक आप भुगतान नइ करथव
+tax_rates_missing_hint	ए चीज मन म {tax} दर नइ हे — आइटम मन म टैक्स दर सेट करव (कीमत पहले ले {tax} के तहत {tax} सहित शामिल हे)
+taxable_value	करयोग्य मूल्य
+gst_inside_price_note	({tax} शामिल)
+start_with_template	हमर आइटम टेम्पलेट ले सुरु करव
+template_heading	स्टार्टर आइटम
+template_info	{c} वर्ग अउ {d} आइटम फोटो सहित, जोड़ई बर तैयार। कीमत ₹0 ले सुरु — बाद म अपन सेट करव।
+template_import	पूरा टेम्पलेट जोड़व
+template_confirm	{d} आइटम मन अपन वर्ग संग जोड़व? जेन आइटम आप already रखथव ओ मन जइसने हवंव, वइसने रहि जाही।
+template_yes	हाँ, जोड़व
+template_importing	आइटम आयात करत हे…
+template_import_progress	आयात… {d}/{t}
+template_done	हमर टेम्पलेट के हर एक सामान तोर सामान मं हवय।
+template_imported	{d} सामान अउ {c} कैटेगरी जोड़गे — इनके दाम ए स्क्रीन मं सेट करव
+client_template_heading	कैटलॉग आयात करव
+client_template_info	{title}: {c} कैटेगरी, {d} सामान संग दाम, फोटो, अउ नाम। सिर्फ गुम सामान — जे नाम तोर लगे पहले से हे वो बने रहिथे।
+client_template_import	ए सामान आयात करव
+client_template_confirm	{title} ले {d} सामान जोड़बो? जे सामान तोर लगे हे वो जइसने हे वैसने रहिथे।
+client_template_importing	{title} आयात हो रहत हे…
+client_template_done	{title} के हर सामान तोर सामान मं हवय।
+client_template_imported	{title} ले {d} सामान अउ {c} कैटेगरी जोड़गे
+resv_heading	आरक्षण
+resv_name_ph	ग्राहक के नाम
+resv_phone_ph	फ़ोन (वैकल्पिक)
+resv_guests_ph	मनखे
+resv_when_ph	कब — 20:30, tomorrow 13:00
+resv_table_ph	काउंटर (वैकल्पिक)
+resv_add	बुक करव
+resv_seat	बैठ गे
+resv_none	कोनो आने वाला आरक्षण नइ।
+guests_word	मेहमान
+delivery_by_ph	डिलीवरी कौन ले जाएगा (राइडर या स्टाफ़)
+kitchen_all_day	अभी पकाना हे: {items}
+split_bill	बिल बाँटें
+split_go	अलग बिल बनाएँ
+cancel	रद्द
+opening_client	क्लाइंट खुल रहत हे…
+preparing_desk	डेस्क तैयार हो रहत हे…
+opening_server	सर्वर खुल रहत हे…
+creating_server	सर्वर बन रहत हे…
+split_help	जे वस्तु एक ग्राहक भुगतान करथे ओकर टच करो · {n} चुने
+split_send_first	स्लिप पहिली भेजव — सिरिफ वो वस्तु जे बैक ऑफिस मं हवंय, अलग बिल मं जा सकत हे
+split_pick_some	अलग बिल खातिर वस्तु पहिली टच करो
+split_done	अलग बिल बन गेय — इ काउंटर के पास फर्श मं हे
+split_marked	अलग बिल
+order_empty_pick	ऑर्डर खाली हे — ऊपर के Add items मं टच करके वस्तु चुनो
+add_dishes	आइटम जोड़व
+order_so_far	इस ऑर्डर में: {n} · {total}
+no_dish_match	कोई वस्तु “{q}” से मैच नई होवय
+pick_dishes_help	वस्तु जोड़ें खातिर टच करो · सूची घटाने खातिर एक श्रेणी चुनो
+pick_done	हो गे
+pick_done_dd	हो गे · {label}
+printer_route_mode	अगर इस जगह कई प्रिंटर हों
+printer_mode_first	जो पहिले चले
+printer_mode_all	सब पर छापें
+kot_show_area	एरिया
+kot_hide_area	एरिया छिपाएँ
+kot_show_item_hdr	आइटम · संख्या
+kot_hide_item_hdr	कॉलम छिपाएँ
+kot_show_title	शीर्षक पंक्ति
+kot_hide_title	शीर्षक छिपाएँ
+kot_field_order	छपाई का क्रम
+kot_field_up	ऊपर करव
+kot_field_down	नीचे करव
+kot_field_cycle	अगला चुनव
+kot_field_select	अगला चुनव
+kot_field_time	समय
+kot_field_kot_no	टीcket नंबर
+kot_field_area	एरिया
+kot_field_table	काउंटर
+kot_field_shop	दुकान का नाम
+kot_field_waiter	कर्मचारी
+kot_field_station	स्टेशन
+app_template_blurb_extra	साथ मं: मालिक जाहिर, एडमिन आसिफ, कैशियर नवाज़; आगू साइडबार; 4 घंटे के बाद इतिहास; आज का स्ट्रिप हटा दो; कंम्पैक्ट बिल.
+dishes_n	{n} के वस्तु
+recipe_ph	रेसिपी (वैकल्पिक - काउंटर शॉप म अप्रयुक्त)
+reorder_ph	इतने पर अउ खरीदें
+set_reorder	पुनः ऑर्डर स्तर रखें
+low_stock_alert	कम हो रहत हे — जल्दी खरीदें: {items}
+unpriced_note	{n} आप मन के चीज मन के अभी तक कोनो कीमत नइ हे - जब तक आप मन एक सेट नइ करहू, तब तक ओ मन 0 म बिल करथे।
+show_unpriced	बिना कीमत के सिरिफ चीज देखाव
+show_all_dishes	सब्बो चीज देखाव
+role_waiter	कैशियर
+role_kitchen	स्टोर
+role_title_rest_ph	पद (जैसे कैप्टन, मुख्य रसोइया)
+preset_help_rest	कैशियर: बेचें। मैनेजर: बेचें + आइटम + रद्द/संशोधन।
+kind_raw	दुकान के उपयोग बर खरीदे गिस
+kind_resale	बेचे बर खरीदे गिस
+kind_dish	स्टॉक के गिनती नइ करव
+buy_unit_ph	इकाई (किलो, लीटर, नग)
+add_another_way	+ एक अउ तरीका
+parts_status	दर्ज {a} / {b} · {c} बाकी
+save_expense	खर्च सहेजव
+rest_ph	बाकी
+low_badge	कम
+stock_empty	अभी स्टॉक म कुछु नइ — खरीद म दर्ज किया सामान इहाँ दिखेगा।
+recent_changes	हाल के बदलाव
+lane_declared_label	कर चालान
+lane_owner_label	कैश मेमो
+money_lane_bill	बिल: {lane}

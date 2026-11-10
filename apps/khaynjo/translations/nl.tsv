@@ -1,0 +1,1351 @@
+# Dutch — Nederlands (nl). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	Restaurantbestellingen, keuken & boeken. Gratis offline.
+unlock	Ontgrendelen
+pin_hint	Eigenaar-PIN begint met 0000
+sell	Bestellingen
+buy	Inkoop
+books	Dagboek
+books_help	Stand van vandaag. Bestelling = bestellingen in. Inkoop = inkopen & kosten. Partijen = kredietklanten & leveranciers.
+buy_help	Onkostenbonnen en leveranciersfacturen (geld eruit). Op rekening blijft in het partijenboek.
+sell_money_in	Bestelling opnemen
+buy_money_out	Kosten / leveranciersfactuur
+record_purchase	Inkoop boeken
+add_expense	Onkostenbon
+bank_book	Bankboek
+credit_help	Partij-id is uniek (namen mogen herhalen). Een klant heeft een rekening (schuld aan ons); een leverancier verkoopt ons voorraad (wij schuldig aan hem); beide is prima. Boeken blijven apart; rapporten tonen netto.
+party_kind_ph	Rollen: klant, leverancier, beide…
+reports_help	Dagboek, debiteuren & crediteuren, bankboek, onkostenbonnen, winst & verlies.
+reports_today	Dagboek (vandaag)
+reports_month	Winst & verlies (maand)
+reports_aging	Openstaand / Dr-Cr
+reports_balance_sheet	Balans
+reports	Rapporten
+refresh	Vernieuwen
+undo	Ongedaan
+start_tracking	Telling starten
+stock_minus	− Voorraad
+stock_plus	+ Voorraad
+settle_cash	Contant afrekenen
+settle_card	Met kaart afrekenen
+items	Menu & artikelen
+nav_items	Menu
+more	Meer
+your_items	Jouw menu
+items_help	Elke rij is een gerecht of artikel (bijv. Masala Dosa). Voeg prijs en keukenstation toe. Tik om te bewerken.
+add_item	Artikel toevoegen
+new_item	Nieuw artikel
+adding_item	Nieuw artikel toevoegen
+editing_item	Bewerken
+save	Opslaan
+remove	Verwijderen
+removed_items	Verwijderde artikelen
+removed_help	Herstellen zet het artikel precies zoals het was terug op het menu — prijs, foto en categorie. Onze plank met gerechten wordt nooit verwijderd, dus een gerecht kun je altijd opnieuw toevoegen.
+restore_item	Herstellen
+empty_catalog	Nog geen artikelen. Open Menu & artikelen, voeg er een toe (naam + prijs), neem dan een bestelling.
+total	Totaal
+cash	Contant
+upi	UPI
+card	Kaart
+credit	Partijen
+clear	Wissen
+ready_to_sell	Klaar om te boeken
+today_prefix	Vandaag
+today_mid	vandaag
+owed	openstaand
+round_word	afronding
+back	Terug
+sold_out	Uitverkocht
+restock	Aanvullen
+not_tracked	Niet geteld
+in_stock	op voorraad
+marked_sold_out	Gemarkeerd uitverkocht
+add_upper	Toevoegen
+na	n.v.t.
+qty	Aantal
+unit_at	Prijs
+actual	Werkelijk
+applied	Toegepast
+note_ph	Notitie (optioneel)
+rounded	Afgerond
+split	Splitsen
+send_kot	Naar keuken
+send_kot_to	Verzenden → {kitchens}
+send_kot_again	Maaltijden toevoegen voor het volgende KOT
+send_kot_held	Gehouden maaltijden — losmaken om te verzenden
+reprint_kot	Selectie opnieuw printen
+reprint_kot_ok	{n} gerechten opnieuw · {slips} bonnen → {kitchens}
+reprint_kot_needed	Stuur eerst een KOT — voeg daarna gerechten toe en print de selectie
+reprint_kot_none_selected	Alle verzonden zijn overgeslagen — tik «In print» bij wat je wilt
+reprint_kot_client	Nieuw afdrukken ({n}) voor {place} verzonden — keuken drukt uit bij de Bediende
+print_cancelled_kot	Alle geannuleerde printen
+print_cancelled_kot_ok	{n} geannuleerd geprint · {slips} bon(nen) → {kitchens}
+print_cancelled_kot_needed	Open een tafel met geannuleerde gerechten
+print_cancelled_kot_none	Geen geannuleerde gerechten op deze bestelling
+print_cancelled_kot_client	Geannuleerd ({n}) voor {place} verzonden — print op de server
+kot_banner	Banner
+kot_banner_ph	Banner (leeg = geen)
+kot_item_prefix	Itemvoorvoegsel
+kot_item_prefix_ph	bijv. [CANCELLED]
+kot_strike	Naam doorhalen
+kot_strike_note	Notitie doorhalen
+kot_strike_on	Aan
+kot_strike_off	Uit
+bill_item_layout	Itemindeling
+bill_item_layout_columns	Kolommen
+bill_item_layout_stacked	Gestapeld
+bill_item_header	Kolomkoppen
+bill_item_hdr_item	Itemkop
+bill_item_hdr_qty	Aantalkop
+bill_item_hdr_price	Prijskop
+bill_item_hdr_amount	Bedragkop
+bill_item_name	Naam
+bill_item_qty	Aantal
+bill_item_price	Prijs
+bill_item_amount	Bedrag
+bill_item_note	Notitie
+bill_item_col_gap	Kolomafstand
+bill_item_col_order	Kolomvolgorde
+bill_item_col_sep	Kolomlijnen
+bill_item_gap_tight	Krap
+bill_item_gap_comfort	Comfortabel
+bill_item_gap_wide	Wijd
+bill_item_num_width	Getalkolommen
+bill_item_num_compact	Compact
+bill_item_num_comfort	Comfortabel
+bill_item_num_wide	Wijd
+bill_item_num_align	Getaluitlijning
+bill_item_gap_em	Afstand (em)
+bill_item_qty_min	Aantal min. (em)
+bill_item_price_min	Prijs min. (em)
+bill_item_amount_min	Bedrag min. (em)
+kot_item_qty_width	Aantalkolom
+kot_item_num_align	Aantaluitlijning
+bill_total_qty_label	Label totaal aantal
+bill_total_subtotal_label	Label subtotaal
+bill_total_grand_label	Label eindtotaal
+bill_total_paid_label	Label betaald
+bill_meta_pair	Deel regel met
+bill_pair_alone	Alleen
+bill_item_piece_on	Aan
+bill_item_piece_off	Uit
+bill_total_qty	Totaal aantal
+bill_total_subtotal	Subtotaal
+bill_total_grand	Eindtotaal
+reprint_incl	In afdruk
+reprint_skip	Overslaan
+reprint_skip_meta	Geen herprint
+kot_dest_hint	Afdrukt op de printers die u hebt toegewezen aan {kitchens} in Instellingen → Printers
+kot_sent_hint	Het laatste KOT ging naar {kitchens}. Tik om maaltijden toe te voegen voor het volgende ticket — of druk opnieuw af voor hetzelfde ticket.
+kot_sent_printing	KOT verstuurd naar {kitchens} — wordt geprint
+kot_sent_not_printed	KOT verstuurd naar {kitchens}, maar NIET geprint: {why}. Laat het de keuken weten, herstel de printer en print opnieuw.
+kot_sent_screen	KOT verstuurd naar {kitchens}
+kot_queued_shop	KOT voor {place} → {kitchens} opgeslagen; het apparaat van de zaak print het
+kot_job_label	KOT voor {place} → {kitchens}
+kot_job_reached	KOT voor {place} is aangekomen bij {kitchens}
+kot_unassigned	Keuken (geen station)
+kot_unassigned_held	{n} gerecht(en) vastgehouden zonder station — hef vastzetten op om te sturen
+kot_station_ph	Keuken
+kot_station_dd	Keuken
+kot_station_dd_n	Keuken · {stations}
+kot_set_station	Gebruik dit station
+kot_station_applied	Station ingesteld op {n} gerecht(en): {station}
+kot_station_cleared	Station verwijderd van {n} gerecht(en): {station}
+kot_station_needed	Kies eerst een keukenstation
+kot_station_not_allowed	Keukengebruik niet toegestaan: {station}
+kot_station_none	Nog geen keukenstations — voeg er één toe onder Keuken of Instellingen → Gebieden · stations
+pos_tab_items	Toegevoegd
+pos_tab_payment	Betaling
+hold_send	Vasthouden
+hold_send_on	Gehouden
+hold_send_meta	Gehouden — niet dit KOT
+station_remove	Station verwijderen
+station_remove_ph	Tik op een station in de lijst om het te verwijderen
+station_removed	Station verwijderd: {name}
+settings_hub_title	Instellingen
+settings_hub_help	Open één onderdeel tegelijk — minder scrollen, duidelijkere keuzes.
+settings_back	Terug
+settings_sec_language	Taal en valuta
+settings_sec_country	Land & belasting
+settings_sec_tills	Extra kassa's en filialen
+settings_sec_brand	Uw merk
+settings_sec_units	Eenheden & conversies
+settings_sec_pickers	Gebieden · stations · belastingtarieven
+settings_sec_printers	Printers
+settings_sec_bill	Rekening- en KOT-indeling
+settings_sec_selling	Regelingen & verkoop
+bill_kot_tab_bill	Rekening
+bill_kot_tab_kot	KOT
+settings_sec_alerts	Meldingen
+alerts_help	Hoe lang statusberichten voor jou op het scherm blijven (deze login).
+snack_secs_ph	Seconden (3–60, standaard 10)
+snack_secs_save	Meldingstijd opslaan
+snack_secs_saved	Meldingstijd opgeslagen — {n} seconden
+settings_sec_backup	Back-up en herstellen
+settings_sec_diag	Diagnose
+diag_privacy_help	Logs blijven op dit apparaat. Geheimen (PIN, wachtwoorden) worden nooit opgeslagen. Het delen van een pakket vanaf het apparaat vereist elke keer uw expliciete goedkeuring — nooit verkocht of gegeven aan derden.
+diag_level	Detailniveau
+diag_level_error	Fouten
+diag_level_warn	Waarschuwingen
+diag_level_info	Informatie
+diag_level_debug	Debug
+diag_support_start	Start 30-minuten support sessie
+diag_support_stop	Beëindig support sessie
+diag_support_started	Support sessie aan — Debug-detail gedurende 30 minuten
+diag_support_ended	Support sessie beëindigd
+diag_export_local	Lokale kopie exporteren
+diag_export_local_done	Lokale diagnoseklaar bij {path} — kies waar u een kopie opslaat
+diag_approve_send	Goedkeuring delen vanaf dit apparaat
+diag_send_help	Goedkeuring is één pakket, vervalt daarna. Tijdelijk — gebruikt alleen om het product te repareren of te verbeteren. Niet gedeeld met derden. Werkt op Linux, Windows, macOS en Android.
+diag_send_approved	Delen goedgekeurd voor één pakket (vervalt binnenkort)
+diag_export_send	Maak deelpakket (vereist goedkeuring)
+diag_export_send_done	Deelpakket klaar bij {path} — kies waar u het opslaat, stuur daarna alleen naar Kumkaj support
+diag_save_bundle	Sla diagnosekopie op
+diag_bundle_saved	Diagnosekopie opgeslagen in {path}
+diag_bundle_failed	Kon de diagnosekopie niet opslaan — probeer opnieuw
+diag_clear	Verwijder debug logs
+diag_cleared	Debug logs verwijderd
+sidebar_settings	Zijbalk
+sidebar_settings_help	Dezelfde iconen als de zijrail. Sleep een rij om te herschikken. Schakel de schakelaar in om te tonen of verbergen. Instellingen en Slot blijven altijd op de balk staan.
+sidebar_always_on_short	Altijd aan
+sidebar_back_settings	Terug
+sidebar_shown	Getoond
+sidebar_hidden	Verborgen
+sidebar_always_on	Altijd aan de bar
+sidebar_shown_hint	Getoond in de zijbalk / onderste tabs
+sidebar_hidden_hint	Verborgen van de bar
+sidebar_menu_items	Menu & Artikelen
+sidebar_enable_all	Allemaal inschakelen
+sidebar_disable_all	Allemaal uitschakelen
+sidebar_order_saved	Zijbalk bestelling opgeslagen
+sidebar_visibility_saved	Zichtbaarheid zijbalk opgeslagen
+amounts_hide	Verbergen
+amounts_show	Tonen
+printers_none_hint	Sla eerst een printer op dit apparaat op, voeg deze vervolgens toe aan Rekening of keuken
+counter	Balie
+dine_in	Ter plaatse
+takeaway	Afhalen
+order	Bestelling
+tables	Tafels
+kitchen	Keuken
+sales	Verkopen
+sales_refunds	Verkopen en terug
+day_close	Dagsafsluiting
+reports_expenses	Rapporten en kosten
+nav_reports	Rapporten
+nav_settings	Instellingen
+nav_lock	Vergrendelen
+no_sale_yet	Nog geen verkoop
+favorites	Favorieten
+favorites_help	Artikelen die je vaak verkoopt, opgeslagen voor jouw login. Voeg er een toe aan de rekening of maak je lijst uit alle artikelen hieronder.
+your_favorites	Jouw favorieten
+all_items	Alle artikelen
+frequent	Vaak
+added_items	Toegevoegd
+added_items_empty	Nog niets op deze bestelling — voeg een gerecht toe via All items of een categorie.
+frequent_config_help	Meest verkochte gerechten uit afgesloten rekeningen. Wijzig dagen en aantal hier.
+frequent_days_ph	Dagen (1)
+frequent_limit_ph	Items (24)
+frequent_apply	Toepassen
+frequent_saved	Vaak: laatste {d} dag(en), bovenste {n} — {c} gerecht(en)
+frequent_empty	Nog geen voltooide verkopen in deze periode — reken af (₹0 als Instellingen dat toelaat) en ze verschijnen hier.
+zero_sales	Verkopen met waarde nul
+zero_sales_help	Gerechten en betalingen van ₹0 toestaan. Uit = betaling vereist een bedrag.
+zero_sales_on	Nulverkopen: aan
+zero_sales_off	Nulverkopen: uit
+zero_sales_saved_on	Nulverkopen toegestaan opgeslagen (aan)
+zero_sales_saved_off	Nulverkopen toegestaan opgeslagen (uit)
+floor_areas_help	Zones zijn zalen/ruimtes (Dine In, Parcel, AC …). Voeg eerst een zone toe, daarna tafels erin — elke zone is een aparte groep.
+area_new_ph	Nieuwe zone / ruimte (bijv. AC, Garden)
+add_area	Zone toevoegen
+area_added	Zone “{name}” klaar — voeg tafels toe
+no_favorites	Nog geen favorieten — voeg artikelen toe uit de lijst hieronder.
+add_to_bill	Op rekening
+added	Toegevoegd
+owes_word	is schuldig
+selected_word	Geselecteerd
+chip_clear_credit	vereffend – geef krediet of neem een voorschot
+chip_missing_customer	Gekozen klant ontbreekt – kies opnieuw
+chip_no_customer	Nog geen klant – typ een naam en tik op Krediet
+credit_summary_fmt	{} klanten · open krediet {} · voorschotten {}
+recent_label	Recent:
+kot_new_waiting	NIEUW — wacht
+kot_preparing	WORDT BEREID
+kot_ready_serve	KLAAR — serveren
+kot_done_cap	KLAAR
+kot_cancelled	GEANNULEERD
+kot_start_btn	Starten
+kot_mark_ready	Markeer klaar
+kot_done_btn	Klaar
+table_free	Vrij – tik om een bestelling te starten
+start_order	Bestelling starten
+open_bill	Rekening openen
+collect_payment	Betaling innen
+table_running	Bezig
+payment_pending	Betaling in afwachting
+collect_at_counter	innen aan de kassa
+inventory	Voorraad
+inventory_stock	Voorraad en telling
+branches	Vestigingen
+branches_org	Vestigingen en organisatie
+credit_customers	Klanten op krediet
+customer_name_ph	Partijnaam
+new_customer_ph	Naam nieuwe partij
+item_name_ph	Artikelnaam (bijv. Masala Dosa)
+item_price_ph	Prijs
+start_template	Product
+team	Team
+team_pins	Team en PIN
+my_pin_settings	Mijn PIN
+settings_hub_help_my_pin	Wijzig de ontgrendel-PIN van de persoon die op dit apparaat is aangemeld.
+team_self_help	Alleen u kunt uw ontgrendel-PIN (en optioneel inlogwachtwoord) wijzigen. Andere schermen of rechten: vraag de eigenaar.
+backup_settings	Back-up en instellingen
+lock_app	Vergrendelen
+pick	Kies
+select	Selecteren
+advance	Verder
+owner	Eigenaar
+staff	Personeel
+photo	Foto
+auto	Auto
+prev	Vorige
+next	Volgende
+ok	OK
+this_shop	Servermodus
+extra_till	Clientmodus
+off	Uit
+tables_kitchen	Tafels & keuken
+server	Server
+client	Client
+language_currency	Taal en valuta
+language	Taal
+choose_language	Kies je taal
+language_setup_hint	Volg de taal van dit apparaat of kies er zelf een.
+lang_follow_platform	Apparaattaal gebruiken
+lang_pick_user	Gekozen taal gebruiken
+lang_platform_now	Huidige apparaattaal
+selected_language	Geselecteerd
+continue	Doorgaan
+this_device	DIT APPARAAT
+device_use_q	Hoe wordt dit apparaat gebruikt?
+last_server_mode	Was server — tik om verder te gaan
+last_client_mode	Was client — tik om verder te gaan
+choose_server	Kies een server
+choose_server_hint	Dit apparaat heeft al servers. Open er een of maak een nieuwe server voor een ander bedrijf.
+create_new_server	Nieuwe server maken
+open_server	Openen
+new_server_name_ph	Naam nieuwe server (optioneel)
+server_remove_pin_ph	Owner-PIN om te verwijderen
+only_owner_remove_server	Alleen de Owner mag een server verwijderen
+owner_pin_remove_server	Owner-PIN vereist om deze server te verwijderen
+device_setup_help	De server bewaart hier de boeken. Een client koppelt met een server.
+app_template_heading	Rajdhani App Sjabloon
+app_template_blurb	Laadt het Rajdhani-menu; Eigenaar Zahir (zahir), Admin Asif (asif, PIN 1111), Waiter Nawaz (nawaz, PIN 0000); FOH zijbalk; geschiedenis wordt na 4 uur leeggehaald (en nu wissen in Back-up); Vandaag strip af; compacte KOT + standaard marges voor smalle dienbladen. Zijbalk peers kunnen weer worden ingeschakeld in Instellingen.
+app_template_apply	Rajdhani App Sjabloon
+app_template_skip	Voorlopig overslaan
+app_template_status	Bediende klaar — pas Rajdhani App Sjabloon toe, of slaan over
+app_template_importing	Toepassen van {title}…
+currency	Valuta
+backup	Back-up
+use	Gebruiken
+dont_use	Niet gebruiken
+add_branch	Vestiging toevoegen
+add_conversion	Conversie toevoegen
+add_dishes_items	Gerechten & artikelen toevoegen
+add_item_plain	Artikel toevoegen
+add_note	Notitie toevoegen
+add_opening_balance	Beginsaldo toevoegen
+add_staff	Personeel toevoegen
+add_station	Station toevoegen
+add_table	Tafel toevoegen
+add_unit	Eenheid toevoegen
+add_use_name	Deze naam toevoegen / gebruiken
+allow_extra_tills	Extra kassa's toestaan
+amend	Wijzigen
+apply_country_pack	Landpakket toepassen
+datetime_appearance	Uiterlijk datum en tijd
+datetime_appearance_help	Boeken houden RFC3339 met jaar eerst binnenin. Deze veranderen alleen hoe datums en klokken er op rekeningen, KOT, rapporten en het scherm uitzien.
+datetime_example	Voorbeeld nu: {ex}
+date_order	Datumvolgorde
+date_order_dmy	D/M/J
+date_order_mdy	M/D/J
+date_order_ymd	J-M-D
+time_format	Klok
+time_format_24h	24-uurs
+time_format_12h	12-uurs
+attach_bill_photo	Factuurfoto bijvoegen
+attach_pdf	PDF bijvoegen
+attach_photo	Foto bijvoegen
+attachments_last_expense	Bijlagen (laatste kosten)
+bank	Bank
+bank_in	Bankstorting
+bank_out	Bankopname
+bank_reconciliation	Bankafstemming (afvinken tegen afschrift)
+bank_to_till	Bank → kassa
+book_add_dish	Bestelling — gerecht / artikel toevoegen
+book_opening_credit	Boeking — openingskrediet
+branch_name_sell_ph	Naam van vestiging om uit te verkopen
+bring_my_book	Breng mijn boek
+business_tax_id_ph	Belasting-id bedrijf
+caption_bank	BANK
+caption_bills	FACTUREN
+caption_outstanding	OPENSTAAND
+caption_payments_today	BETALINGEN VANDAAG
+caption_today	VANDAAG
+card_amount_ph	Kaartbedrag
+cash_amount_ph	Contant bedrag
+cash_memo	Kassabon
+choose_icon	Pictogram kiezen
+choose_logo	Logo kiezen
+clear_icon	Pictogram wissen
+clear_photo	Foto wissen
+copy_day_book_csv	Dagboek-CSV kopiëren
+copy_day_close	Dagsluiting kopiëren
+copy_items_csv	Artikelen-CSV kopiëren
+copy_outstanding_csv	Openstaande CSV kopiëren
+copy_parties_csv	Partijen-CSV kopiëren
+copy_party_ledger_csv	Partijboek-CSV kopiëren
+copy_receipt	Bon kopiëren
+share_whatsapp	Delen via WhatsApp
+lan_pages_heading	Gastpagina's op Wi‑Fi
+lan_pages_help	Op de wifi van de zaak werken de gastpagina's: scherm, bonnummers, uitgifte, kiosk, tafel-QR en feedback. Gasten op mobiele data hebben later Cloud nodig. Kaartterminal / betaallink is optioneel met internet — het houdt de balie nooit op.
+diag_send_heading	Delen buiten dit apparaat
+kot_dest_heading	Keukenstation
+optional_login_heading	Optioneel inloggen
+rights_heading	Rechten
+ops_panel	Lokale ops
+crm_heading	Gasten en berichten
+crm_help	Verjaardagen & loyaliteit — SMS/WhatsApp-wachtrij. {name}, {points}. Eigenaar stuurt.
+crm_queue_sms	SMS-wachtrij
+crm_queue_wa	WhatsApp-wachtrij
+crm_seg_bday_week	Verjaardagen week
+crm_seg_bday_month	Verjaardagen maand
+crm_seg_phone	Met telefoon
+crm_seg_loyalty	Loyaliteit
+crm_seg_inactive	Inactief
+crm_seg_top	Top-besteders
+birthday_ph	Verjaardag (MM-DD of JJJJ-MM-DD)
+crm_message_ph	Gefeliciteerd {name}! Je hebt {points} punten.
+till_apply_redeem	Toepassen op rekening
+till_clear_redeem	Inwisseling wissen
+till_wallet_topup	Portemonnee opwaarderen
+till_issue_voucher	Voucher uitgeven
+till_points_ph	In te wisselen punten
+till_wallet_ph	Portemonnee-uitgave
+till_voucher_code_ph	Vouchercode
+till_voucher_amt_ph	Voucherbedrag (leeg = alles)
+till_wallet_topup_ph	Opwaardeerbedrag
+till_voucher_issue_amt_ph	Nieuw voucherbedrag
+till_voucher_issue_code_ph	Nieuwe vouchercode
+split_evenly	Gelijk verdelen
+waitlist	Wachtlijst
+fire_course	Gang sturen
+hold_item	Vasthouden
+waiter_call	Roep ober
+waitlist_add	Op wachtlijst
+floor_view_grid	Raster
+floor_view_layout	Plattegrond
+floor_layout_x	X
+floor_layout_y	Y
+floor_layout_w	W
+floor_layout_h	H
+floor_layout_save	Plattegrond opslaan
+floor_layout_open	Tafel openen
+floor_layout_edit	Plattegrond bewerken
+floor_layout_pick	Tik op een tafel om de plattegrond te bewerken
+floor_layout_saved	Tafelplattegrond opgeslagen
+floor_layout_nudge_left	← 20
+floor_layout_nudge_right	→ 20
+floor_layout_nudge_up	↑ 20
+floor_layout_nudge_down	↓ 20
+sibling_pickers_help	Zoals eenheden On/Off — verberg zones, stations, belastingen in de dagelijkse kiezer; pack-defaults blijven.
+bulk_price_apply	Bulkprijs toepassen
+card_terminal_optional	Pinautomaat / betaallink (optioneel met internet)
+copy_report	Rapport kopiëren
+counted_cash_ph	Geteld contant geld in lade
+country_tax	Land & belasting
+tax_chrome	Belastinglabels op kassa
+tax_chrome_help	Wanneer uit, verbergt de bestellingstafel GST/belasting schatting lijnen en GST-in-prijs placeholders. Belastingtarieven en Land & belasting instellingen blijven — zet labels weer aan wanneer je wilt. Rajdhani App Sjabloon begint hiermee uit.
+tax_chrome_on	Tonen
+tax_chrome_off	Verbergen
+tax_chrome_saved_on	Belastinglabels op kassa
+tax_chrome_saved_off	Belastinglabels verborgen op kassa
+tax_invoice_till	Belastingfactuur op kassa
+tax_invoice_help	Wanneer uit, zijn rekeningen alleen contant memo en zijn de Belastingfactuur / Contant memo chips verborgen op de bestellingstafel. Rajdhani App Sjabloon begint hiermee uit — zet Toon weer aan wanneer je wilt om Belastingfactuur opnieuw te kiezen.
+tax_invoice_on	Tonen
+tax_invoice_off	Verbergen
+tax_invoice_saved_on	Belastingfactuur op kassa
+tax_invoice_saved_off	Belastingfactuur verborgen — alleen contant memo
+pay_methods	Betalingsmethoden
+pay_methods_help	Welke chips verschijnen bij Betaling aannemen. Contant blijft altijd staan. Rajdhani App Sjabloon begint met alleen Contant — zet UPI / Kaart / Credit / Split hier weer aan.
+create_backup	Back-up maken
+credit_limit_heading	Kredietlimiet (gekozen / genoemde partij)
+day_close_summary	Dagsluiting overzicht
+delete_party	Geselecteerde partij verwijderen
+delivery	Bezorging
+done_open_books	Klaar — boeken openen
+drawer_count	Ladetelling (optioneel)
+expense_heading	Kosten
+export_day	Dag exporteren
+extra_note_bill_ph	Extra notitie bij deze factuur / verkoop
+extra_note_expense_ph	Extra notitie bij laatste kosten
+extra_tills_heading	Extra kassa's
+other_devices_help_heading	Andere apparaten instellen
+other_devices_help	Op dit apparaat (Server): Extra kassa's → Extra kassa's toestaan. Noteer de koppelcode en het Wi‑Fi-adres. Tik op Andere apparaten laten verbinden als die knop verschijnt. Op een computer: Starten met deze computer. Op elk ander apparaat: installeer de app, kies Clientmodus, Server van de zaak zoeken (of typ het adres), voer de code in, Nu koppelen. Valt Wi‑Fi weg, dan wachten bestellingen op het apparaat en gaan ze door als de Server antwoordt.
+forget_shop	Deze winkel vergeten
+goods_received	Goederen ontvangen
+import_day	Dag importeren
+import_items_csv_plain	Artikelen-CSV importeren…
+import_parties_csv	Partijen-CSV importeren…
+item_name	Artikelnaam
+kitchen_printing	Keukenprinten
+login_id_ph	Login-id
+mark_cleared	Als verrekend markeren
+new_party_clear	Nieuwe partij (formulier wissen)
+new_party_kind_supplier_ph	Soort nieuwe partij (leverancier)
+next_country	Volgend land
+next_order	Volgende bestelling (balie legen)
+note_gstin_ph	Notitie / GSTIN / overeenkomstherinnering
+notes_attach_party	Notities & bijlagen (gekozen partij)
+notes_attach_sale	Notities & bijlagen (gekozen verkoop)
+on_account_ap	Op rekening (AP)
+org_optional_ph	Organisatie (optioneel)
+paid_by	Betaald per
+paid_now	Nu betaald
+pair_now	Nu koppelen
+pairing_code_ph	Koppelcode
+party_name_selected_ph	Partijnaam (of gebruik geselecteerde)
+password_ph	Wachtwoord
+pay_ap_card	AP met kaart betalen
+pay_ap_cash	AP contant betalen
+pay_ap_heading	Betalen wat wij hen schuldig zijn (AP)
+pay_ap_upi	AP met UPI betalen
+pay_selected_heading	Geselecteerde betalen (schuld aflossen / voorschot)
+pick_from_items	Kies uit onze artikelen
+prev_country	Vorig land
+print_open	Printen / openen
+reason_amend_ph	Reden voor wijzigen / annuleren / terugbetaling
+reason_note_ph	Reden / notitie (derving, telling, …)
+record_day_close	Dagsluiting boeken
+refresh_from_shop	Vernieuwen uit winkel
+refund	Terugbetaling
+remove_selected	Geselecteerde verwijderen
+request_bill	Rekening vragen
+restaurant_name_ph	Restaurantnaam (optioneel)
+restore_backup	Back-up herstellen
+role_both	Beide
+role_admin	Admin
+role_cashier	Kassier
+role_customer	Klant
+role_manager	Manager
+history_retention	Handelsgeschiedenis
+history_retention_help	Oude verkopen en KOTs automatisch leegmaken. Menu, personeel en instellingen blijven. Nu wissen veegt alle handelsrijen leeg en behoudt de opzet.
+history_off	Behouden
+history_day_close	Bij dagsluiting
+history_after_hours	Na werktijd
+history_hours_ph	Uren (1–168, standaard 4)
+history_hours_save	Uren opslaan
+history_clear_now	Geschiedenis nu wissen
+history_cleared	Handelsgeschiedenis gewist — opzet behouden
+history_retention_saved	Geschiedenis wissen opgeslagen
+history_hours_saved	Geschiedenis uren opgeslagen
+history_owner_only	Alleen Eigenaar of Admin kan geschiedenis wissen
+rollup	Samenvatting
+save_brand	Merk opslaan
+save_business_id	Belasting-id en service-% opslaan
+save_business_name	Bedrijfsnaam opslaan
+save_features	Functies van gekozen personeel opslaan
+save_features_named	Opslaan {name}
+save_features_ok	Opslag voor {name} opgeslagen
+save_names	Namen opslaan
+second_way	Tweede manier
+server_ip_ph	Server-IP (bijv. 192.168.1.10)
+set_credit_limit	Kredietlimiet instellen
+set_login_selected	Login instellen voor geselecteerde
+set_login_named	Login toepassen op {name}
+shop	Winkel
+show	Tonen
+spreadsheet_csv	Spreadsheet (CSV)
+start_fresh	Opnieuw beginnen
+stop_extra_tills	Extra kassa's stoppen
+floor_cols_ph	Kolommen
+floor_cols_fit	Passend op scherm
+floor_cols_fit_sub	{n} passen hier
+floor_cols_fits	past
+floor_cols_scroll	scrolt zijwaarts
+floor_cols_min	Kolommen: minstens 1 — of laat leeg om op het scherm te passen
+floor_zoom_auto	Auto
+floor_zoom_out	Zoomen uit
+floor_zoom_in	Zoomen in
+backup_auto	Elke dag automatisch een back-up · laatste {when} · de laatste 14 dagen staan in {dir}.
+backup_auto_none	Elke dag automatisch een back-up — de eerste volgt zo.
+backup_copy_to	Kopieën gaan ook naar {dir}.
+backup_copy_btn	Back-ups ook naar een map kopiëren…
+autostart_off	Starten met deze computer
+autostart_on	Start met deze computer ✓ — tik om te stoppen
+autostart_done_on	De app opent nu bij het opstarten van deze computer — de server is terug na een stroomstoring.
+autostart_done_off	De computer opent de app niet meer bij het opstarten.
+device_forgotten	De winkel is dit apparaat vergeten — koppel het opnieuw met de huidige code. Wachtende bestellingen blijven bewaard.
+lan_offline	Offline
+forget_device	Vergeten
+last_seen	gezien
+copy_pair_code	Koppelcode kopiëren
+new_pair_code	Nieuwe koppelcode
+pair_finishing	Koppeling afronden… boeken van de zaak toepassen
+pair_opening	De kassa wordt geopend…
+pair_copied	Koppelcode gekopieerd
+kot_waiting	Wacht op verzenden
+lan_offline_waiting	Offline · {n} wachtend
+lan_connecting	Verbinden met de zaak…
+lan_live	Live
+lan_sending	{n} wordt verzonden
+lan_sign_in_to_send	Meld opnieuw aan om {n} te verzenden
+lan_pair_again	Koppel dit apparaat opnieuw
+lan_update_app	Werk de app bij — dit apparaat en de server van de zaak hebben verschillende versies
+allow_firewall	Andere apparaten laten verbinden
+firewall_blocked	De firewall van deze computer blokkeert andere apparaten — tik op ‘Andere apparaten laten verbinden’.
+firewall_waiting	Wachten op de beheerdersvraag…
+lan_join_help	Andere apparaten kunnen met dit apparaat verbinden — koppelcode {code}. Kies op het andere apparaat Clientmodus en dan Server van de zaak zoeken, of typ dit adres: {addr}
+lan_pair_status	wifi {addr}
+lan_join_help_no_addr	Verbind dit apparaat met Wi‑Fi voor een adres.
+lan_no_address	Dit apparaat heeft nog geen wifi-adres — verbind het met de wifi van de zaak.
+lan_not_listening	Neemt nu geen apparaten aan — misschien gebruikt een ander programma poort {port}. Start de app opnieuw.
+lan_tills_off	Extra kassa's staan uit. De boeken van deze zaak blijven op dit apparaat. Sta extra kassa's toe als een ander apparaat ook bestellingen moet opnemen of afrekenen.
+paired_with	Gekoppeld aan de zaak op {url}
+not_paired	Niet gekoppeld — verbind met de server van de zaak.
+choose_device_use	Kies hoe dit apparaat wordt gebruikt.
+paired_note	Gekoppeld. Ontgrendel om te verkopen, of Vernieuwen voor het laatste van de zaak.
+last_update_at	Laatste update van de zaak: {time}.
+pair_intro	Zoek de server, of typ het adres en de koppelcode.
+queue_waiting	Wacht op verzending naar de zaak ({n}):
+queue_tries	{n} pogingen · laatste antwoord: {e}
+save_backup_copy	Back-upkopie opslaan…
+backup_copy_saved	Back-upkopie opgeslagen — bewaar die buiten dit apparaat (USB-stick of ander apparaat)
+backup_copy_overdue	Al {n} dagen heeft geen back-upkopie dit apparaat verlaten — Instellingen → Back-up
+backup_copy_failed	De back-upkopie kon daar niet worden opgeslagen — kies een andere plek
+clock_off	De klok van dit apparaat wijkt {min} min af van de server van de zaak — zet de juiste tijd op dit apparaat
+printers_heading	Printers van dit apparaat
+printers_help	Voeg elke printer één keer toe en kies waar rekeningen en elke keuken afdrukken — de eerste in de lijst wordt eerst geprobeerd; bij falen de volgende. Lege route = die functie niet afdrukken. Doel leeg (standaard), systeemnaam of netwerkadres (bijv. 192.168.1.50). Elk apparaat houdt zijn eigen printers.
+printers_host_only	Printers worden ingesteld op het apparaat van de zaak (Server). Deze kassa stuurt rekeningen en KOT's daarheen — Zoeken / toevoegen / toewijzen blijven op de Server. Testpagina en printgrootte gaan naar de Server.
+printers_find_heading	Printers zoeken
+printers_find_tip	Zoeken scant dit apparaat en houdt de lijst bij. Eerst systeemprinters; netwerkscan kan op de achtergrond doorgaan.
+printers_pool_heading	1. Uw printers
+printers_pool_tip	Zoeken scant dit apparaat en houdt de lijst bij.
+printers_pool_empty	(nog geen — voeg hieronder toe)
+printers_routes_help	Kies een plek, daarna Printer kiezen. Vink Naam (KOT), (Standard Portrait) of (Standard Landscape) aan. ↑↓ volgorde (eerste is hoogst). Uitvinken om te verwijderen. Daarna Done.
+printer_assign_dd	Kies printer voor {place}
+printer_assign_pick	Echte printer kiezen
+printer_profile_heading	Indeling
+printer_send_heading	Aflevering
+vp_delivery_heading	Aflevering
+vp_delivery_help	Hoe deze virtuele printer taken stuurt — OS-document, ruwe bytes of ESC/POS. Slipinhoud (lettergrootte, afbreken, marges) bepaalt het rekening-/KOT-formaat, niet hier.
+vp_type_size_heading	Lettergrootte
+vp_wrap_heading	Afbreukbreedte
+vp_margin_heading	Marges
+vp_delivery_spooler	OS-document (systeemspooler)
+vp_delivery_raw	Ruwe bytes naar apparaat
+vp_delivery_escpos	ESC/POS-thermische opdrachten
+virtual_printer_new	Nieuwe virtuele printer
+virtual_printer_selected	“{name}” bewerken — tik een andere in de lijst om te wisselen
+virtual_printer_tap_list	Tik op een virtuele printer in de lijst om te bewerken
+config_layout_portrait	Staand
+config_layout_landscape	Liggend
+config_send_os	Systeemspooler
+config_send_escpos	ESC/POS
+profiles_heading	Indelingen
+profiles_empty	(nog geen indelingen)
+profile_builtin	ingebouwd
+profile_custom	aangepast
+profile_name_ph	Naam indeling
+profile_new	Nieuwe indeling
+profile_delete	Indeling verwijderen
+profile_created	Indeling gemaakt
+profile_deleted	Indeling verwijderd
+profile_builtin_keep	Ingebouwde indelingen kunnen niet worden verwijderd
+config_saved	Bijgewerkt
+config_selected	Geselecteerd “{name}”
+printer_output_heading	Virtuele printers
+virtual_printers_heading	Virtuele printers
+virtual_printers_empty	Nog geen virtuele printers — stel hieronder waarden in en sla op. Tik daarna in de lijst om te bewerken.
+virtual_printer_name_ph	Naam virtuele printer (optioneel)
+virtual_printer_create	Virtuele printer maken
+virtual_printer_save	Virtuele printer opslaan
+virtual_printer_delete	Virtuele printer verwijderen
+virtual_printer_created	Virtuele printer “{name}” gemaakt
+virtual_printer_deleted	Virtuele printer “{name}” verwijderd
+virtual_printer_updated	Virtuele printer bijgewerkt
+virtual_printer_updated_named	Virtuele printer “{name}” bijgewerkt
+virtual_draft_layout	Waarden gezet voor de volgende virtuele printer
+virtual_draft_send	Waarde gezet voor de volgende virtuele printer
+virtual_need_real	Kies eerst een echte printer
+virtual_need_select	Selecteer een virtuele printer om te verwijderen
+real_printer_selected	Echte printer: {name}
+station_group_heading	Virtuele printers
+station_group_apply	Virtuele printer verwijderen
+station_group_applied	Verwijderd
+station_group_empty	Selecteer een virtuele printer
+station_group_name_ph	Naam virtuele printer (optioneel)
+station_group_save	Virtuele printer maken
+station_group_saved	Virtuele printer opgeslagen
+station_manage_heading	Keukenstation toevoegen of verwijderen
+printers_routes_heading	2. Waar afdrukken
+route_pick_heading	Plaats
+route_editing	Bewerken: {name}
+route_assigned	Toegevoegd {printer} aan {place}
+route_already_assigned	Al hier: {printer}
+route_removed	Verwijderd {printer} uit {place}
+route_cleared	Opgeschoond {name}
+route_assigned_empty	Geen op deze plek
+route_tap_remove	tik om te verwijderen
+route_tap_select	tik om te kiezen
+route_tap_selected	geselecteerd
+route_pick_printer_first	Tik eerst op een printer
+route_assigned_heading	Printers
+route_add_heading	Toewijzen
+printer_label_ph	Naam (bijv. Keuken)
+printer_target_ph	Adres of systeemnaam
+printer_target_default	standaardprinter
+printer_wire_heading	Indeling
+printer_wire_escpos	KOT
+printer_wire_os	Standaard staand
+printer_wire_os_portrait	Standaard staand
+printer_wire_os_landscape	Standaard liggend
+printer_wire_escpos_short	KOT
+printer_wire_os_short	Staand
+printer_wire_os_landscape_short	Liggend
+printer_format_custom	Nieuwe aangepaste opmaak
+printer_format_custom_label	Aangepast
+printer_format_custom_added	Aangepaste opmaak toegevoegd voor deze route
+add_printer	Printer toevoegen
+remove_printer	Laatste verwijderen
+route_pick_ph	Rekening of keuken
+route_bill	Rekening
+route_default_kitchen	Standaardkeuken
+route_kot_station	Keuken
+route_dont_print	Niet afdrukken
+stations_heading	Keukenstations
+stations_help	Voeg keukens voor gerechten en KOT toe. Bevestig op elk station de bijbehorende printers (te vinden onder Instellingen → Printers), stel prioriteit in en kies Eerst dat werkt of Afdrukken op alle. Wijzigingen worden automatisch opgeslagen — geen Opslaan-knop.
+station_print_heading	Printers voor dit station
+station_print_help	Kies een station en koppel een of meer printers. ↑↓ zet de probeervolgorde. De eerste die lukt stopt; Afdrukken op alle stuurt naar elke gekoppelde printer.
+station_print_pick_ph	Station om printers in te stellen
+station_print_pick_first	Kies eerst een keukenstation
+station_print_editing	Printers voor “{name}” bewerken
+station_vps_dd	Printers voor dit station
+station_vps_dd_n	{n} printer(s) · tik om te wijzigen
+station_vps_empty	Nog geen printers — zoek ze onder Instellingen → Printers
+bill_printers_dd	Printers voor de rekening
+bill_printers_dd_n	{n} printer(s) voor de rekening · tik om te wijzigen
+job_layout	Indeling
+job_delivery	Hoe de taak wordt verzonden
+job_delivery_help	OS-document, ruwe bytes of ESC/POS. De rekening en het keukenticket behouden elk hun eigen. Elke taak kan naar elke printer gaan die Find heeft opgeslagen.
+station_vp_attached	Printer gekoppeld
+station_vp_detached	Printer van station verwijderd
+station_print_summary	{mode} · {n} printer(s)
+station_print_summary_none	Nog geen printers op dit station — zal niet afdrukken
+stations_none	Nog geen stations — voeg er hieronder één toe. Menu-items kunnen een station gebruiken zodat hun KOT daar wordt afgedrukt.
+route_up	Omhoog
+route_down	Omlaag
+route_remove	Laatste verwijderen
+route_clear	Niet afdrukken
+save_printers	Printers opslaan
+print_test_page	Testpagina afdrukken
+no_printer_assigned	Geen printer
+test_page_no_printer	Geen printer voor {place} — wijs er hierboven een toe en probeer opnieuw
+test_page_pick_first	Kies eerst testprinter(s) — daarna een testpagina afdrukken
+test_printers_dd	Printers voor testpagina
+test_printers_dd_n	{n} testprinter(s) · tik om te wijzigen
+kot_test_printers_dd	Printers voor Test KOT
+kot_test_printers_dd_n	{n} Test KOT-printer(s) · tik om te wijzigen
+test_printer_picked	Testen op: {name}
+test_printer_cleared	Niet testen op: {name}
+test_page_sent_n	Testpagina verstuurd naar {n} printer(s)
+test_kot_pick_first	Kies eerst printer(s) voor Test KOT — daarna Test KOT
+test_kot_sent_n	Test KOT verstuurd naar {n} printer(s)
+cancel_pick	Markeren
+cancel_pick_on	Gemarkeerd
+cancel_pick_meta	Gemarkeerd om te annuleren
+batch_cancel	Gemarkeerde annuleren
+batch_cancel_n	Gemarkeerde annuleren ({n})
+batch_cancel_none	Markeer eerst verzonden gerechten — daarna Gemarkeerde annuleren
+batch_cancel_title	Gemarkeerde annuleren — één reden, één bon per keuken
+batch_cancel_ok	{n} gerecht(en) geannuleerd · {slips} bon(nen) → {kitchens}
+batch_cancel_ok_noprint	{n} gerecht(en) geannuleerd — KOT auto-print uit, geen bon
+no_printer_kitchen_station	Geen printer voor dat keukenstation — Keuken → Keukenstations → Printers voor dit station
+printers_saved	Printers voor dit apparaat opgeslagen
+test_page_sent	Testpagina verstuurd — kijk bij de printer
+test_page_sent_one	Testpagina verstuurd naar {name} — kijk bij die printer
+printers_found	Vond {n}: {list}
+printers_find_synced	{n} gevonden — {new} nieuw
+printer_on_device	opgeslagen
+printer_already_added	al toegevoegd
+printer_already_saved	Al opgeslagen: {name}
+find_printers	Printers zoeken
+printers_looking	Printers zoeken op dit apparaat en Wi‑Fi…
+saving_printer	Voeg printer toe…
+cancelled	Geannuleerd
+printers_tap_find	Tik op Zoeken om de printers te tonen die dit apparaat kan gebruiken.
+printers_none_found	Geen printers gevonden — typ een systeemnaam of netwerkadres (bijv. 192.168.1.50).
+printer_from_find	Toegevoegd {name}
+kot_printer_ph	Printer voor keukenbonnen (KOT)
+bill_printer_ph	Printer voor rekeningen
+kot_print_on	Keukenprinten: aan
+kot_print_off	Keukenprinten: uit
+queue_refused	Niet aangenomen door de zaak ({n}) — controleer elk aan de kassa:
+clear_not_accepted	Gecontroleerd — lijst wissen
+device_name_ph	Naam van dit apparaat
+lan_last_update	laatst bijgewerkt {time}
+lan_not_accepted	{n} niet aangenomen
+connected_now	nu verbonden
+backup_failed	De laatste automatische back-up is mislukt: {e}
+backup_overdue	Al {n} dagen geen back-up — laat de app op dit apparaat open zodat die een back-up kan maken.
+disk_low	Nog maar {mb} MB vrij op dit apparaat — back-ups mislukken binnenkort. Maak ruimte vrij.
+last_seen_devices	Laatst gezien: {time}
+sync_interval	Synchroniseer elke {secs} seconden
+connection_to_shop	Verbinding met de zaak
+supplier_name_ph	Leveranciersnaam (of partij)
+supplier_ph	Leverancier
+switch_device	Dit apparaat wisselen
+take_payment	Betaling aannemen
+tax_added_till	{tax} exclusief
+tax_inside_price	{tax} inclusief
+tax_invoice	Belastingfactuur
+till_to_bank	Kassa → bank
+units_heading	Eenheden
+unlock_after_pairing	Voer PIN in
+unlock_with_login	Ontgrendelen met login
+unmark	Markering verwijderen
+update_my_password	Mijn wachtwoord wijzigen
+update_my_pin	Mijn PIN wijzigen
+duress_heading	Nood-ontgrendelings-PIN (alleen eigenaar)
+duress_help	Optioneel. Als deze PIN bij ontgrendelen i.p.v. de jouwe wordt ingevoerd, wordt de verkoopgeschiedenis gewist — menu, prijzen, tafels en personeel blijven. Alleen bij dwang. Leeg opslaan om uit te zetten. Niet iemands PIN.
+duress_pin_ph	Nood-PIN (4–12 cijfers)
+duress_confirm_ph	Typ opnieuw ter bevestiging
+save_duress_pin	Nood-PIN opslaan
+clear_duress_pin	Nood-PIN uitzetten
+duress_on	Nood-ontgrendelings-PIN staat aan
+duress_off	Nood-ontgrendelings-PIN staat uit
+duress_saved	Nood-ontgrendelings-PIN opgeslagen
+duress_cleared	Nood-ontgrendelings-PIN uitgeschakeld
+upi_amount_ph	UPI-bedrag
+void	Annuleren
+write_off_ap	AP afschrijven
+write_off_heading	Afschrijven (vereffenen zonder betaling)
+write_off_nil	Afschrijven / saldo nul
+your_brand	Jouw merk (in de app)
+your_categories	Jouw categorieën
+account_kind	Rekeningsoort (tik er een)
+actual_total_cap	WERKELIJK TOTAAL
+amend_help	Selecteer een verkoop om te wijzigen, annuleren of terug te betalen. Wijzigingen bewaren de volledige geschiedenis.
+applied_total_cap	TOEGEPAST TOTAAL
+bank_balance	Banksaldo
+bank_net_today	Bank netto vandaag
+branch_export_help	Export schrijft branch_snapshot_CODE_DATE.json in de back-upmap en kopieert het naar het klembord. Om de dag van een andere vestiging te importeren, bewaar haar bestand als import_branch_snapshot.json in dezelfde map en tik op Import.
+brand_shown_help	Wordt getoond op schermen in de app. De naam en het pictogram van de geïnstalleerde app op dit apparaat blijven zoals in de store.
+app_icon	App-icoon
+logo_help	Optioneel winkellogo op schermen in de app.
+onboard_layout	Wat u krijgt
+item_photo_help	Optioneel. Zonder foto tonen we initialen van de itemnaam.
+stamp_heading	Stempel
+stamp_image_help	Optioneel stempelfoto op afgedrukte rekeningen en het gastenscherm.
+payment_qr_heading	Betalings QR
+payment_qr_image_help	Statische QR op rekeningen en gastenscherm; anders wordt er betaald met een dynamische UPI-QR van het VPA hierboven.
+cash_in_hand	Contant in kas (lade)
+change_my_pin_heading	Mijn PIN wijzigen (alleen de jouwe)
+connect_to_server	Verbinden met server
+counter_locked	Balie 01 · Vergrendeld
+country_pack_help	Een landpakket stelt de belastingnaam en -berekening, de instant-betaalrail en het belasting-id op facturen in. Kumkaj doet nergens belastingaangifte en geeft geen overheids-e-facturen uit.
+currency_use_help	Scroll en tik Gebruiken voor elke ondersteunde valuta.
+day_close_help	Een dagsluiting boeken bewaart dit overzicht (en ladeverschil indien geteld) in het auditlog. Het stopt de verkoop niet.
+expenses_word	Kosten
+feature_access_help	Functietoegang van gekozen personeel (tik na toevoegen)
+footer_local	Lokale SQLite · Voor altijd gratis · Geen cloud
+fresh_book_khaynjo	Fresh = leeg menu (gerechten later toevoegen in Menu). Book = typ hieronder openingsartikelen en wie u iets schuldig is.
+fresh_selected	Fresh gekozen – catalogus blijft leeg. Tik op Done als je klaar bent.
+gross_word	Bruto
+how_start	Hoe wilt u beginnen?
+kot_print_help_khaynjo	Wanneer een KOT wordt verstuurd – aan de balie of vanaf het apparaat van de ober – print het keukenpapier hier vanzelf.
+later_country_pack	Later: Instellingen → pas uw landpakket toe voor belasting- en betaallabels.
+local_badge	LOKAAL
+mix_type_hint_khaynjo	Verdeel over contant / UPI / kaart / krediet indien nodig. Voor krediet is hierboven een klant nodig.
+money_in_sales	Geld in (verkopen)
+net_word	Netto
+offline_badge	OFFLINE
+optional_login_help	Optionele login (id + wachtwoord). De eigenaar stelt het een keer in; daarna kan alleen de gebruiker het wachtwoord wijzigen.
+or_unlock_login	Of ontgrendelen met login-id + wachtwoord
+permission_preset	Machtigingsprofiel (waar toegang toe)
+preset_help_khaynjo	Kassier: verkopen. Manager: verkopen + artikelen + annuleren/wijzigen.
+product_locked_khaynjo	Khaynjo
+product_only_khaynjo	Deze app is alleen Khaynjo — het systeem voor restaurants. Andere vakken hebben eigen Kumkaj-producten.
+purchases_cogs	Inkopen (COGS)
+qty_cap	AANTAL
+restore_help	Herstellen: kies een back-up. De boeken openen zoals ze toen waren; de huidige worden eerst bewaard, dus het is terug te draaien.
+wipe_data_heading	Lokale gegevens wissen
+wipe_data_help	Alleen eigenaar —zelfde keuzes als Windows-deïnstallatie. Handelsgegevens wissen geschiedenis en houden menu/instellingen. Winkelinstellingen verwijderen de boeken. Schermvoorkeuren: venster/taal. Bevestig met eigenaar-PIN.
+wipe_trading	Handelsgegevens
+wipe_schema	Winkelinstellingen
+wipe_ui	Scherm­voorkeuren
+wipe_owner_pin_ph	Eigenaar-PIN om te wissen
+wipe_delete_selected	Selectie wissen
+wipe_owner_only	Alleen de eigenaar kan lokale gegevens wissen.
+restore_owner_only	Alleen de eigenaar kan een back-up herstellen.
+wipe_owner_pin_needed	Voer de eigenaar-PIN in om lokale gegevens te wissen.
+wipe_nothing_selected	Kies eerst wat u wilt wissen.
+wipe_done	Geselecteerde lokale gegevens gewist.
+wipe_schema_done	Winkelinstellingen gewist — kies Server of Client om verder te gaan.
+rounded_total	Afgerond totaal
+setup_app_khaynjo	Khaynjo instellen
+shop_logo_optional	Winkellogo (optioneel)
+stock_type_help	Typ de artikelnaam (een deel is genoeg), een aantal, en pas aan. Artikelen die nog niet geteld zijn, hebben een keer Telling starten nodig.
+team_owner_help	De eigenaar maakt elke persoon aan met naam, roltitel, machtigingsprofiel en start-PIN. De eigenaar kan later niemands PIN wijzigen – alleen die persoon kan zijn eigen PIN bijwerken.
+staff_name_ph	Personeelsnaam / id
+staff_copy_hire_ph	Kopieer instellingen van (optioneel)
+staff_copy_hire	Gebruik de instellingen van deze persoon
+staff_edit_name_ph	Weergavenaam
+staff_rename	Sla naam op
+staff_copy_edit_ph	Kopieer instellingen van een andere persoon
+staff_copy_edit	Kopieer hun instellingen naar geselecteerd
+staff_copy_edit_onto	Kopieer hun instellingen naar {name}
+staff_deactivate_named	Verwijder {name}
+staff_renamed	Naam opgeslagen
+staff_setup_copied_hire	Instellingen gekopieerd van {name} — stel een nieuwe naam en PIN in, voeg vervolgens Personeel toe
+staff_setup_copied_edit	Kopieer {from}'s instellingen naar {to}
+staff_copy_need_selected	Kies eerst wie u wilt bewerken
+staff_copy_need_source	Kies wiens instellingen u wilt kopiëren
+staff_copy_same	Dit is dezelfde persoon — kies iemand anders
+staff_rename_need_selected	Kies eerst wie u wilt hernoemen
+team_pick_hint	Kies wie u wilt bewerken — schermen, geldrechten en keukens worden alleen voor die persoon weergegeven.
+team_stations_help	Keukens die ze mogen gebruiken
+team_stations_changed	Keukens gewijzigd — Sla instellingen op voor deze persoon
+team_features_changed	Schermen gewijzigd — Opslag instellingen voor deze persoon
+team_rights_changed	Rechten gewijzigd — Opslag instellingen voor deze persoon
+they_owe_us	Zij zijn ons schuldig
+unit_at_cap	Stukprijs
+units_help	Codes voor artikelabi-labels (kg, piece, bag). Elke eenheid moet – direct of via andere eenheden – koppelen aan een standaard (kg · cm · ml · pc), bijv. 1 crate = 2 box en 1 box = 20 cm. Conversies: 1 from = factor to. Valuta's zijn nooit eenheden.
+units_picker_help	Tik Aan/Uit om een eenheid in Koop- en Menulijsten te tonen. Uit-eenheden rekenen nog om.
+unit_picker_on	Aan
+unit_picker_off	Uit
+we_owe_them	Wij zijn hen schuldig
+who_unlocking	Wie ontgrendelt?
+locked_word	Vergrendeld
+show_pin	PIN tonen
+hide_pin	PIN verbergen
+set_owner_pin	EIGENAAR-PIN INSTELLEN
+enter_owner_passcode	EIGENAARSCODE INVOEREN
+enter_staff_passcode	PERSONEELSCODE INVOEREN
+pin_count_zero	0 / 12 cijfers · minimaal 4, dan OK
+pin_count_need	{} / 12 cijfers · nog {} nodig
+pin_count_full	12 / 12 cijfers · tik OK
+pin_count_ready	{} / 12 cijfers · tik OK als je klaar bent
+pin_hint_choose	Kies 4–12 cijfers (toetsenbord of pad) · Enter/OK om op te slaan
+pin_hint_new	Nieuwe eigenaar-PIN van 4–12 cijfers (toetsenbord of pad) · Enter/OK
+pin_hint_shop_code	Winkelapparaat · koppelcode {}
+pin_hint_books	Dit apparaat bewaart de boeken
+pin_hint_paired	Extra kassa gekoppeld – ontgrendelen om te verkopen
+pin_hint_pair_first	Extra kassa – eerst koppelen met winkelapparaat
+unlock_to_continue	Ontgrendelen om door te gaan
+no_staff_yet	Nog geen personeel – ontgrendelen als Eigenaar, dan Team
+status_server_set_pin	Servermodus — eigenaar-PIN instellen
+status_server_tills	Servermodus — extra kassa's kunnen meedoen. Ontgrendelen
+status_server_unlock	Servermodus — ontgrendelen als Eigenaar
+status_client_unlock	Clientmodus – ontgrendelen om te verkopen
+icon_new_selected	Pictogram: nieuw bestand gekozen — tik op Merk opslaan
+icon_custom	Pictogram: eigen winkelmerk
+icon_default	Pictogram: Kumkaj-merk (standaard) — kies je eigen
+logo_yours	Logo: dat van je winkel — getoond op schermen en bonnen
+logo_default	Logo: Kumkaj-merk (standaard) — kies je eigen als je er een hebt
+tmpl_current	Huidig: {} — {}
+tmpl_selected	Geselecteerd: {} — {}
+setup_complete	Installatie voltooid
+onboard_fresh_tmpl	Nieuw · {} — catalogus begint leeg; voeg artikelen toe bij Artikelen en tik op Gereed.
+onboard_book_tmpl	Boek · {} — voeg artikelen en beginkrediet toe en tik op Gereed.
+onboard_template_tmpl	Geef de zaak een naam als u wilt en kies hoe u begint.
+tmpl_blurb	Tafels, bestellingen, keukenbonnen, afrekenen en boeken.
+tmpl_how	Verkoop aan de balie; Zaal voor tafels en bonnen; Boeken voor het dagboek.
+reports_facet_title	Rapporten
+reports_facet_help	Dagboeken, ouderdom van partijen, bankboekingen en W en V van de periode.
+against_bill_ph	Tegen factuur # hierboven (optioneel)
+aliases_ph	Aliassen — andere namen, gescheiden door komma's
+amount_blank_full_ph	Bedrag (leeg = volledig saldo)
+amount_owed_ph	Verschuldigd bedrag
+amount_ph	Bedrag
+amount_received_ph	Ontvangen bedrag
+amount_we_pay_ph	Bedrag dat wij betalen
+business_name_ph	Bedrijfsnaam
+category_new_ph	Categorie (optioneel, wordt aangemaakt indien nieuw)
+code_bag_ph	Code (bag)
+conv_factor_ph	Factor (25 = 1 bag → 25 kg)
+country_code_ph	Landcode bijv. IN, GB, US, AE, BR
+credit_khata_amount_ph	Krediet- / rekeningbedrag
+credit_limit_ph	Kredietlimiet (0 = geen)
+from_code_ph	Van code (bag)
+item_name_lang_ph	Artikelnaam — typ in je eigen taal
+login_id_opt_ph	Login-id (optioneel)
+manager_pin_ph	Manager-PIN (alleen als je niet kunt annuleren)
+new_branch_name_ph	Naam nieuwe vestiging
+new_password_ph	Nieuw wachtwoord (optioneel)
+new_pin_ph	Nieuwe PIN (4–12 cijfers)
+note_bank_ph	Notitie (storting, opname, …)
+note_buy_expense_ph	Notitie (brandstof, huur, …)
+note_expense_ph	Notitie (brandstof, kantoor, …)
+options_khaynjo_ph	Opties (optioneel) — Extra cheese=40, Large=80
+part_second_way_ph	Deel via een tweede manier (optioneel)
+phone_ph	Telefoon
+place_name_ph	Naam van deze plek
+qty_example_ph	Aantal (bijv. 1,5 voor kg)
+quantity_ph	Aantal
+reason_required_ph	Reden (verplicht)
+role_title_ph	Functietitel (bijv. Barista)
+service_pct_ph	Service % optioneel 0/10/12
+short_code_ph	Korte code (MG02)
+starting_password_ph	Startwachtwoord (optioneel)
+starting_pin_ph	Start-PIN (4–12 cijfers)
+station_name_ph	Stationnaam (bijv. Tandoor, Fryer, Cold)
+station_new_ph	Keukenstation (optioneel, bijv. Tandoor — wordt aangemaakt indien nieuw)
+table_name_ph	Tafelnaam (bijv. Patio 1, Counter 2)
+tax_rate_ph	Belastingtariefnaam of % — Standard, Reduced, 0, 5, 12, 18, 20
+to_code_ph	Naar code (kg)
+uncleared_no_ph	Niet-verrekend nr. hierboven
+unit_cost_ph	Kosten per eenheid
+unit_name_bag_ph	Naam (Bag)
+unit_plate_ph	Eenheid (bord / stuk — leeg = elk)
+pay_credit	Krediet
+book_kind_today	Boek van vandaag
+book_kind_month	Boek van deze maand
+book_kind_aging	Openstaand / debet-credit
+book_kind_balance	Balans
+order_help	Kies een open bestelling of een tafel om nieuw te starten. Tik op gereed items, stuur KOT, factureer één of meer items, splits de rekening en reken af.
+floor_help	Elke tafel toont of er gasten zitten, wat hun open rekening is en wie als volgende bediening nodig heeft.
+kitchen_help	Volg gereed per variant of per item — noteer in de KOT zoals je wilt.
+kitchen_empty	Nu niets open — nieuwe bestellingen verschijnen hier.
+add_a_table	Tafel toevoegen
+add_station_heading	Station toevoegen · bv. Tandoor, Zuid-Indiaas
+categories_help	Een categorie toont tot welk deel van het menu een gerecht behoort — bv. snacks, hoofdgerecht of biryani. Maak categorieën op jouw manier: kies onze namen, hernoem ze of voeg je eigen toe.
+dish_search_ph	Naam — zoek in onze gerechten of typ uw eigen
+tile_free	Vrij
+tile_occupied	Bezet
+tile_food_ready	Eten klaar
+tile_bill_printed	Rekening geprint
+tile_paid	Betaald
+tile_bill_btn	Rekening
+tile_occupy_btn	Gasten zetten
+tile_free_btn	Tafel vrij
+tile_ready_btn	Klaar
+tile_undo_bill	Rekening ongedaan
+summary_busy	tafels bezet
+summary_to_collect	af te rekenen
+summary_on_floor	in de zaal
+floor	Zaal
+sizes_as_items_ph	Maten als aparte artikelen (optioneel) — Half=120, Heel=200
+dish_group_ph	Gerechtgroep (optioneel) — bijv. Paneer Tikka
+discount	Korting
+remove_discount	Korting weghalen
+apply_discount	Korting toepassen
+save_opening_cash	Wisselgeld opslaan
+close_shift_print	Dienst afsluiten en bon printen
+area_prices_ph	Prijs per zone (optioneel) — Airco=220, Afhaal=210
+discount_ph	10% of 50
+discount_reason_ph	Reden (bijv. vaste gast, eten te laat)
+opening_float_ph	Contant vanmorgen in de la gelegd
+shift_counted_ph	Contant geteld bij overdracht
+opening_float	Wisselgeld (begin)
+shift_handover	Dienstoverdracht
+shift_since	Dienst sinds
+expected_in_drawer	Verwacht in de la
+right_discount	Korting geven
+floor_in_kitchen	In de keuken
+floor_eating	Aan het eten
+pick_category	Categorie kiezen
+close_category_list	Categorielijst sluiten
+new_category_row	Nieuwe categorie — aangemaakt bij opslaan
+your_category	Uw categorie
+suggested_category	Voorstel — uit onze gerechten
+category_search_ph	Categorie — zoek de uwe of typ een nieuwe
+line_sent_state	Naar de keuken gestuurd
+line_nc_state	Gratis (NC) — niet berekend
+cancel_item_short	Annuleren
+nc_short	Gratis
+charge_again_short	Berekenen
+move_short	Verplaatsen
+cancel_item_title	Dit artikel annuleren — de keuken krijgt een annuleringsbon
+nc_item_title	Dit artikel gratis geven (NC)
+charge_again_title	Dit artikel weer berekenen
+move_item_title	Dit artikel naar een andere tafel
+already_cooked	Al bereid (verspilling)
+not_cooked_yet	Nog niet bereid
+return_to_customer	Wisselgeld
+short_by	Tekort
+tip_not_sale	Fooi (voor personeel, geen omzet)
+right_settle	Afrekenen
+right_cancel_sent	Verzonden artikel annuleren
+right_complimentary	Gratis geven (NC)
+right_move_table	Tafels verplaatsen / samenvoegen
+right_reprint	Rekening opnieuw printen
+right_allowed	Toegestaan
+right_with_approval	Met goedkeuring
+right_denied	Niet toegestaan
+editing_staff	Rechten van
+finding_server	Server van de zaak zoeken op deze wifi…
+no_server_found	Geen server gevonden. Controleer of het apparaat van de zaak op dezelfde wifi zit met extra kassa's toegestaan, of typ het IP-adres.
+servers_found_pick	Tik op de zaak waarmee u wilt verbinden.
+server_host_selected	Gebruikt {host} — voer de koppelcode in en tik Nu koppelen.
+print_bill	Rekening printen
+table_actions	Tafelacties
+move_merge_table	Tafel verplaatsen / samenvoegen
+move_help	Verplaats de bestelling naar een vrije tafel, of voeg samen met een lopende tafel.
+move_target_ph	Tafelnaam (bijv. D5, P2)
+approval_pin_ph	Manager-pincode (alleen als gevraagd)
+move_here	Hierheen verplaatsen
+merge_into	Daarmee samenvoegen
+line_reason_ph	Reden (bijv. gast bedacht zich, uitverkocht)
+line_qty_ph	Hoeveel annuleren (leeg = alles)
+line_target_ph	Naar tafel (bijv. D5)
+confirm	Bevestigen
+menu_search_ph	Zoek artikel of korte code
+customer_paid_ph	Klant betaalde
+tip_ph	Fooi
+table_area_ph	Zone (bijv. Zaal, Afhaal, Airco)
+table_range_ph	Meerdere tegelijk: D1-D20
+add_these_tables	Deze tafels toevoegen
+remove_these_tables	Deze tafels verwijderen
+table_remove_ph	Verwijderen: T1-T24, of de naam van één tafel
+find_server	Server van de zaak zoeken
+bill_format	Rekeningopmaak
+bill_format_help	Staat onder de naam van het restaurant op elke rekening. Scheid regels met | (bijv. MG Road, Rajkot | Tel 98250 00000).
+bill_header_ph	Adres | telefoon
+fssai_ph	FSSAI-vergunningsnr. (India)
+bill_footer_ph	Voettekst (bijv. Bedankt, tot ziens)
+save_bill_format	Rekeningopmaak opslaan
+reset_bill_format	Standaard herstellen
+bill_format_reset	Rekeningopmaak hersteld
+reset_kot_format	Standaard herstellen
+kot_format_reset	KOT-indeling hersteld
+kot_format	KOT-indeling
+kot_format_help	Keukenbonnen blijven een standaard-KOT — zonder prijzen; gerechten printen altijd. Optionele regels, titel, kopieën, breedte en lettergrootte zijn begrensd zodat niets afkapt.
+kot_format_fields	Velden
+kot_field_next	Volgend veld
+kot_field_show	Tonen
+kot_field_hide	Verbergen
+kot_field_on	tonen
+kot_field_off	verberg
+kot_field_size	Lettergrootte
+kot_field_size_ph	bijv. 16, 20, 24, 28, 32…
+kot_weight_light	Licht
+bill_kot_panel_help	Rekeninginhoud en keukenbon-typografie. De inhoudsbreedte hierboven geldt voor de rekening en de keukenbon.
+std_size_ph	bijv. 18, 20, 26…
+kot_show_shop	Naam zaak
+kot_hide_shop	Zaak verbergen
+kot_show_time	Tijd
+kot_hide_time	Tijd verbergen
+kot_show_waiter	Ober
+kot_hide_waiter	Ober verbergen
+kot_show_station	Station
+kot_hide_station	Station verbergen
+kot_show_table	Tafel
+kot_hide_table	Tafel verbergen
+kot_show_kot_no	KOT-nr.
+kot_hide_kot_no	KOT-nr. verbergen
+kot_width	Papierbreedte
+kot_width_58	58 mm
+kot_width_80	80 mm
+kot_kind_heading	KOT-soort
+kot_kind_original	Origineel
+kot_kind_duplicate	Duplicaat
+kot_kind_modified	Gewijzigd
+kot_kind_cancelled	Geannuleerd
+kot_style_heading	Veldgrootte en -dikte
+kot_style_title	Titel
+kot_style_item_qty	Artikel · Aantal
+kot_style_field_pick	Veld kiezen
+kot_weight_regular	Normaal
+kot_weight_bold	Vet
+kot_align	Uitlijnen
+kot_align_start	Starten
+kot_align_center	Centreren
+kot_align_end	Eind
+content_width	Inhoudsbreedte (mm)
+content_width_bill	Breedte factuurinhoud (mm)
+content_width_kot	Breedte KOT-inhoud (mm)
+content_width_ph	Of typ een inhoudsbreedte, 40–210 mm
+content_width_help	Hoe breed dit bonnetje afdrukt. Factuur en KOT behouden elk hun eigen breedte.
+content_width_bill_help	Hoe breed de gastfactuur afdrukt. Standaard 210 mm (pagina). 58 mm smal bonnetje, 80 mm breed bonnetje, 112 mm 4-duim, 210 mm A4-wijd. Typ elke waarde van 40 tot 210. Keukentickets hebben hun eigen breedte op het KOT-tabblad.
+content_width_kot_help	Hoe breed het keukenticket afdrukt. Standaard 80 mm. 58 mm smal bonnetje, 80 mm breed bonnetje, 112 mm 4-duim, 210 mm pagina. Typ elke waarde van 40 tot 210. Gastfacturen hebben hun eigen breedte op het Factuur-tabblad.
+vp_paper_width	Inhoudsbreedte (mm)
+vp_paper_width_ph	Of typ een inhoudsbreedte, 40–210 mm
+vp_paper_width_help	Inhoudsbreedte stelt u in bij Rekening- en KOT-indeling. Geldt voor rekening en keukenbon.
+kot_size	Lettergrootte
+kot_size_s	Klein
+kot_size_m	Normaal
+kot_size_l	Groot
+std_size	Lettergrootte
+kot_copies	Kopieën
+kot_copies_1	1
+kot_copies_2	2
+kot_copies_3	3
+kot_title_ph	Titel (leeg = KOT - KITCHEN ORDER)
+kot_footer_ph	Keukennotitie (optioneel, zonder prijzen)
+kot_preview	Voorbeeld
+save_kot_format	KOT-indeling opslaan
+test_kot_format	Test KOT
+test_kot_sent	Keukenticketvoorschijning verzonden
+test_bill_format	Test factuur
+test_bill_sent	Factuurvoorschijning verzonden
+test_print_no_printer	Geen printer voor die taak — kies er een op dit scherm
+kot_format_saved	KOT-indeling opgeslagen
+std_print	Lettergrootte rekening
+std_print_help	Lettergrootte voor Standard staande en liggende rekeningen (thermisch KOT apart). Zelfde grootte in beide standen.
+std_size_s	Klein
+std_size_m	Normaal
+std_size_l	Groot
+save_std_print	Printgrootte opslaan
+std_print_saved	Printgrootte opgeslagen
+print_brand_kit	Printmerk-kit
+print_brand_kit_help	Optionele stempel en betaal-QR op rekeningen en LAN-scherm. Zonder betaal-QR geeft de UPI hierboven de bedrag-QR.
+choose_stamp	Stempel kiezen
+clear_stamp	Stempel wissen
+stamp_set	Stempel: opgeslagen — gastenscherm en naam op rekening
+stamp_none	Stempel: geen
+choose_payment_qr	Betaal-QR kiezen
+clear_payment_qr	Betaal-QR wissen
+payment_qr_set	Betaal-QR: opgeslagen — op gastenscherm (vervangt bedrag-UPI-QR)
+payment_qr_none	Betaal-QR: geen — bedrag-QR uit UPI bij betalen
+aggregator_import	Aggregator-bestellingen (bestand)
+aggregator_import_help	Optioneel Local: zet import_aggregator_orders.json in backups en Importeer. Balie blokkeert niet; live Zomato/Swiggy = Cloud.
+import_aggregator_file	Aggregatorbestand importeren
+team_pick_ph	Naam van medewerker
+select_staff	Deze medewerker kiezen
+rights_help	Rechten — tik om te wijzigen: Toegestaan → Met goedkeuring (manager-pincode op dat moment) → Niet toegestaan.
+dish_picker_help	Zoek of blader door onze gerechten en tik er een aan voor naam en foto, of houd uw eigen naam. Vul de prijs in (0 mag), dan Artikel toevoegen.
+close_dish_list	Gerechtenlijst sluiten
+own_item_name	Gebruik als eigen artikelnaam
+on_your_menu	Op uw menukaart
+edit	Bewerken
+schemes	Aanbiedingen
+schemes_help	Koop X krijg Y — bij afrekenen. Bijv. Buy 2 Thali get 1 Chaas
+scheme_bogo_ph	Koop 2 Thali, krijg 1 Chaas
+add_scheme	BOGO toevoegen
+schedule_ph	Tijden / happy hour — Mon-Fri 07:00-11:00 of HappyHour 17:00-19:00=150
+upi_vpa_ph	UPI ID (VPA)
+upi_payee_ph	UPI-ontvanger (optioneel)
+upi_qr	UPI QR
+show_upi_qr	Toon UPI-QR
+close_upi_qr	Sluiten
+upi_qr_help	Gast scant en betaalt. Daarna Take payment.
+kot_recall	Terughalen
+recently_done	Net klaar
+recall_kot_ph	KOT # om terug te halen
+role_help_customer	Rol: Klant — AR (zij zijn ons schuldig). Hetzelfde bedrijf kan ook leverancier zijn.
+role_help_both	Rollen: Afzender + Vervoerder — één partij, AR- en AP-boeken, netto in Rapporten.
+role_help_supplier	Rol: Leverancier — AP voor inkopen.
+dine_in_pick_table	Kies een tafel om hier te eten…
+choose_table	Kies een tafel
+change_table	Andere tafel
+pick_table_banner	Kies een tafel voor deze bestelling
+items_word	items
+items_section	Items
+back_to_order	Terug naar bestelling
+new_items_head	Nog niet verzonden
+price_ph	Prijs
+price_ph_gst_inside	Prijs ({tax} inbegrepen)
+cancel_needs_table	Open deze bestelling via de Zaal (een tafel) om na de keuken te annuleren — balie-KOT blijven tot betaling op het ticket
+tax_rates_missing_hint	Geen {tax}-tarief op deze gerechten — stel in Menu het tarief in (bij {tax} inclusive zit {tax} al in de prijs)
+taxable_value	Belastbare waarde
+gst_inside_price_note	({tax} inbegrepen)
+start_with_template	Begin met ons menusjabloon
+template_heading	Ons menusjabloon
+template_info	{c} categorieën en {d} gerechten met foto's, klaar om toe te voegen. Prijs ₹0 — stel later je eigen prijs in.
+template_import	Hele sjabloon importeren
+template_confirm	{d} gerechten met hun categorieën toevoegen? Wat je al hebt, blijft zoals het is.
+template_yes	Ja, importeren
+template_importing	Menu wordt geïmporteerd…
+template_import_progress	Importeren… {d}/{t}
+template_done	Alle gerechten uit het sjabloon staan op je menu.
+template_imported	{d} gerechten en {c} categorieën toegevoegd — stel de prijzen hier in
+client_template_heading	Klantmenu
+client_template_info	{title}: {c} categorieën, {d} gerechten met prijzen, foto's en aliassen. Alleen ontbrekende — namen die je al hebt blijven.
+client_template_import	Dit menu importeren
+client_template_confirm	{d} gerechten uit {title} toevoegen? Wat je al hebt, blijft zoals het is.
+client_template_importing	{title} wordt geïmporteerd…
+client_template_done	Alle gerechten van {title} staan op je menu.
+client_template_imported	{d} gerechten en {c} categorieën uit {title} toegevoegd
+resv_heading	Reserveringen
+resv_name_ph	Naam gast
+resv_phone_ph	Telefoon (optioneel)
+resv_guests_ph	Gasten
+resv_when_ph	Wanneer — 20:30, tomorrow 13:00
+resv_table_ph	Tafel (optioneel)
+resv_add	Reserveren
+resv_seat	Geplaatst
+resv_none	Geen komende reserveringen.
+guests_word	gasten
+delivery_by_ph	Bezorgd door (bezorger of medewerker)
+kitchen_all_day	Nu te bereiden: {items}
+kitchen_all_day_head	Nu koken
+kitchen_tab_live	Live
+kitchen_tab_recall	Terughalen
+kitchen_tab_stations	Stations
+split_bill	Rekening splitsen
+split_go	Aparte rekening maken
+cancel	Annuleren
+opening_client	Client openen…
+preparing_desk	Bureau voorbereiden…
+opening_server	Bediende openen…
+creating_server	Bediende aanmaken…
+split_help	Tik op de gerechten die één gast betaalt · {n} gekozen
+split_send_first	Eerst bon sturen — alleen gerechten in de keuken kunnen apart
+split_pick_some	Tik eerst op de gerechten voor de aparte rekening
+split_done	Aparte rekening gemaakt — staat op de plattegrond naast deze tafel
+split_marked	aparte rekening
+order_empty_pick	Bestelling leeg — tik hierboven op ‘Gerechten toevoegen’ om gerechten te kiezen.
+add_dishes	Gerechten toevoegen
+order_so_far	Op deze bestelling: {n} · {total}
+no_dish_match	Geen gerecht past bij ‘{q}’
+pick_dishes_help	Tik op een gerecht om toe te voegen · kies een categorie om te filteren
+pick_done	Klaar
+pick_done_dd	Klaar · {label}
+printer_route_mode	Als er meerdere printers zijn op deze locatie
+printer_mode_first	Eerste die werkt
+printer_mode_all	Afdrukken op alle
+kot_show_area	Gebied
+kot_hide_area	Gebied verbergen
+kot_show_item_hdr	Artikel · Aantal
+kot_hide_item_hdr	Kolommen verbergen
+kot_show_title	Titelregel
+kot_hide_title	Titel verbergen
+kot_field_order	Bestelling afdrukken
+kot_field_up	Omhoog verplaatsen
+kot_field_down	Omlaag verplaatsen
+kot_field_cycle	Volgende selecteren
+kot_field_select	Volgende selecteren
+kot_field_time	Tijd
+kot_field_kot_no	KOT-nr.
+kot_field_area	Gebied
+kot_field_table	Tafel
+kot_field_shop	Naam zaak
+kot_field_waiter	Personeel
+kot_field_station	Station
+app_template_blurb_extra	Ook: Eigenaar Zahir, Admin Asif, Waiter Nawaz; FOH zijbalk; geschiedenis na 4 uur; Vandaag strip af; compacte KOT.
+dishes_n	{n} gerechten
+recipe_ph	Recept (optioneel) — één portie gebruikt: Rice=0.2, Paneer=0.15
+reorder_ph	Bijkopen bij
+set_reorder	Bestelniveau instellen
+low_stock_alert	Raakt op — koop snel bij: {items}
+unpriced_note	{n} gerechten op je menu hebben nog geen prijs — ze worden op 0 gerekend tot je er een instelt.
+show_unpriced	Alleen gerechten zonder prijs tonen
+show_all_dishes	Alle gerechten tonen
+role_waiter	Ober
+role_kitchen	Keuken
+role_title_rest_ph	Functie (bijv. chef de rang, chef-kok)
+preset_help_rest	Ober: neemt bestellingen op en doet de tafels. Kassa: rekent ook af. Keuken: het keukenscherm. Manager: ook menu, annuleringen en kortingen.
+kind_raw	Grondstof
+kind_resale	Ingekocht & doorverkocht
+kind_dish	Eigen gerecht
+buy_unit_ph	Eenheid (kg, liter, stuks)
+add_another_way	+ Andere manier
+parts_status	Ingevuld {a} van {b} · nog {c}
+save_expense	Uitgave opslaan
+rest_ph	Rest
+low_badge	Laag
+stock_empty	Nog niets op voorraad — wat je bij Inkoop vastlegt, verschijnt hier.
+recent_changes	Recente wijzigingen
+lane_declared_label	Belastingfactuur
+lane_owner_label	Kassabon
+money_lane_bill	Factuur: {lane}

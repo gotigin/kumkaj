@@ -1,0 +1,835 @@
+# Quechua — Runa Simi (qu). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	Mensajero-agencia librokuna + reservakuna ruwana wasi. Mana internetpi mana qullqiyuq.
+unlock	Desbloquear
+pin_hint	Dueño PIN 0000 hina qallarikun
+sell	Reservacion
+buy	Pagay
+books	P’unchaw hatun qillqa
+books_help	Kunan p’unchaw posición. Reserva = paquetes in. Pagay = carrier facturas & gastos. Partidokuna = apachiqkuna & apaykachaqkuna.
+buy_help	Gasto valekuna hinaspa carrier facturakuna (qullqi lluqsisqa). Cuentapi qhepakun partido libro mayor nisqapi.
+sell_money_in	Huk paqueteta reservay
+buy_money_out	Gasto / apaykachana qullqi
+record_purchase	Rantisqaykita waqaychay
+add_expense	Gastokuna chaskiy
+bank_book	Bancopa hatun qillqa maytun
+credit_help	Partido id sapalla (sutikuna yapamanta kanman). Ruwaykuna: Consignador (AR), Transportador (AP), utaq iskayninku chay id. Libro mayor nisqakunaqa sapaqchasqam qipanku; willakuykunaqa llikatam qawachin.
+party_kind_ph	Ruway ruwasqa (munasqa) — utaq huk chip patapi ñit'iy
+parties_list_heading	Qespichisqa partidukuna
+reports_help	P’unchaw hatun qillqa, manukuq & manukuq, qullqi waqaychaq qillqa, gasto chaskiy, ganancia & chinkachiy.
+reports_today	P'unchaw hatun qillqa (kunan) .
+reports_month	Ganancia & perdida (killapi) .
+reports_aging	Pendiente / débito-crédito nisqa
+reports_balance_sheet	Balance nisqa
+reports	Banco mayor & P&L
+refresh	Refrescar
+undo	Deshacer
+start_tracking	Qatipay qallariy
+stock_minus	− Waqay
+stock_plus	+ Waqay
+settle_cash	Qullqita allichay
+settle_card	Tarjeta de arreglo
+items	Tarifas & servicios nisqakuna
+nav_items	Tarifakuna
+more	Astawan
+your_items	Tarifaykikuna
+items_help	Sapa filaqa huk tasa (e.g. Zona Superficial A). Unidadqa aswantaqa kg. Llamk'apuyta ñit'iy.
+add_item	Tarifa yapay
+new_item	Musuq tarifa
+adding_item	Musuq tarifa yapay
+editing_item	Llamk'apuy
+save	Waqaychay
+remove	Qulluy
+empty_catalog	Manaraqmi tarifakuna kanchu. Tarifas & servicios kichay, hukta yapay (suti + chanin, unidad kg), chaymanta Reserva.
+counter_sale	Contador nisqapi reservacion
+total	Llapan
+cash	Qullqi
+upi	UPI
+card	Tarjeta
+credit	Clientekuna hinaspa suministradorkuna
+clear	Chuya
+ready_to_sell	Libro mayorpaq listo
+today_prefix	Kunan punchaw
+today_mid	kunan punchaw
+owed	pendiente
+round_word	muyu
+back	Kutiy
+sold_out	Mana tarikuq
+restock	Restock nisqa
+not_tracked	Mana qatipasqachu
+in_stock	en stock
+marked_sold_out	Mana tarikuq nispa markasqa
+add_upper	YAPAY
+na	Mana
+qty	Llasa/Yupay
+unit_at	Tarifa @ .
+actual	Chiqap kaq
+applied	Aplicasqa
+note_ph	Qhaway (munasqa) .
+rounded	MUYUQA
+split	Rakisqa
+counter	Contador
+parcel	Parcela
+order	Restaurante kamachiy
+sales	Reservacionkuna
+sales_refunds	Reservas & reembolsos nisqa
+day_close	P’unchaw wichq’ay
+reports_expenses	Banco mayor & P&L
+nav_reports	Willakuykuna
+nav_settings	Ajustes nisqa
+nav_lock	Cerradura
+sidebar_settings	Lado barra nisqa churaykuna
+sidebar_settings_help	Kikin iconokuna lado riel hina. Huk filata aysay musuqmanta ordenanaykipaq. Interruptorta tikray qawachinaykipaq utaq pakanaykipaq. Ajustes chaymanta Bloqueo sapa kuti barrapi qhipakunku.
+sidebar_always_on_short	Siempre on
+sidebar_back_settings	Kutiy
+sidebar_shown	Qawachisqa
+sidebar_hidden	Pakasqa
+sidebar_always_on	Sapa kuti barpi
+sidebar_shown_hint	Lado riel / uray tablakunapi rikuchisqa
+sidebar_hidden_hint	Barramanta pakasqa
+sidebar_menu_items	Menú & Menú menú nisqapi kaqkuna
+sidebar_enable_all	Tukuy atichiy
+sidebar_disable_all	Tukuy mana llamk'achiy
+sidebar_order_saved	Lado barra orden waqaychasqa
+sidebar_visibility_saved	Lado barra rikuy waqaychasqa
+amounts_hide	Pakakuy
+amounts_show	Qhawachiy
+no_sale_yet	Manaraqmi rantikunchu
+favorites	Favoritos nisqakuna
+favorites_help	Menú menú kaqmanta imakuna sapa kuti ranqhasqayki, yaykuyniykipaq waqaychasqa. Hukta invitado qullqiman yapay, utaq listaykita ruway llapa menú kaqmanta uraypi.
+your_favorites	Munasqaykikuna
+all_items	Tukuy menú nisqapi kaqkuna
+no_favorites	Manaraqmi munasqakunachu — uraypi listamanta menú nisqakunata yapay.
+add_to_bill	Invitado qullqiman yapay
+added	Yapachisqa
+owes_word	manukuna
+selected_word	Akllasqa
+chip_clear_credit	chuya — Crédito utaq ñawpaqmanta hapiy
+chip_missing_customer	Akllasqa rantiq chinkasqa — yapamanta akllay
+chip_no_customer	Manaraq rantiq — sutita qillqay, chaymanta Crédito ñit'iy
+credit_summary_fmt	{} rantiqkuna · kichasqa qullqi quy {} · ñawpaq qullqikuna hap'isqa {} .
+recent_label	Kunan pacha:
+inventory	Inventario nisqa
+inventory_stock	Inventario & stock nisqa
+branches	Ramakuna
+branches_org	Sucursales & org
+credit_customers	Partidokuna (manukuqkuna & manukuqkuna) .
+customer_name_ph	Cliente utaq suministradorpa sutin
+new_customer_ph	Musuq rantiqpa utaq suministradorpa sutin
+item_name_ph	Tasa suti (e.g. Zona Superficial A) .
+item_price_ph	Sapa kg / ñawpaq losa
+start_template	Ruru
+next_booking	Qatiqnin reservacion
+destination_ph	Destino llaqta / zona
+consignee_ph	Chaskiqpa sutin
+consignee_phone_ph	Chaskiq telefono
+consignee_address_ph	Dirección de entrega
+origin_name_ph	Kachaqpa sutin
+origin_phone_ph	Kachaq telefono
+origin_address_ph	Pickup / origen nisqa direccion
+booking_consignor_heading	Kachaq (rantiq / kachaq) .
+booking_consignee_heading	Consignado (chaskiq) .
+booking_consignor_hint	Huk fiestata akllay hunt’anaykipaq, otaq ch’usaqta saqey purinaykipaq. Wasipi pickuppaq, RTOpaqpas necesitakun.
+booking_consignee_hint	Parcela chaskiq. Walk-in counter drop-offs nisqapaq ch’usaq saqiy.
+weight_kg_ph	Chiqap kg
+length_cm_ph	L cm
+breadth_cm_ph	B cm
+height_cm_ph	H cm
+chargeable_kg	Cargakuq kg
+awb_label	AWB
+booking_help	Consignador + consignador (ch’usaq Allinmi) → destino → pesa → tarifa pick → Cuenta/Efectivo → pagay. AWB nisqa recibo nisqapi imprimin. Qatiqnin reservacionqa escritoriota chuyanchan. Muyuchisqa Aplicado kaqwan kaqlla qallarikun — llamk'apuy qullqita muyuchinapaqlla.
+cart_empty_hint	Escritorio ch'usaq — consignador/consignador opcional, destino & llasaynin churay, ADD ñit'iy huk tarifa kaqpi, chaymanta qullqita quy.
+team	Equipo
+team_pins	Equipo & PINs
+my_pin_settings	Mi PIN .
+settings_hub_help_my_pin	Kay dispositivopi yaykusqa runapaq kichay PIN tikray.
+team_self_help	Qamlla PIN kichayta tikrayta atikunki (hinallataq munasqa yaykuy contraseña). Dueñota tapuy sichus hukniray pantallakunata otaq derechokunata necesitanki.
+backup_settings	Copia de seguridad & churaykuna
+lock_app	Bloqueo app nisqa
+pick	Pikllay
+select	Akllay
+advance	Ñawpaqman puriy
+owner	Dueño
+staff	Personal
+photo	Foto
+auto	Kikinmanta
+prev	Ñawpaq
+next	Qatiqninpi
+ok	OK
+this_shop	Servidorpa modo
+extra_till	Modo cliente kaqmanta
+off	Wichqasqa
+server	Servidorpa modo
+client	Modo cliente kaqmanta
+language_currency	Simi & qullqi
+language	Simi
+choose_language	Simiykita akllay
+language_setup_hint	Kay aparatopa rimayninta qatipay, utaq kikiyki hukninta akllay.
+lang_follow_platform	Dispositivo simi
+lang_pick_user	Simita akllay
+lang_platform_now	Dispositivo simi kunan
+selected_language	Akllasqa
+continue	Hinallayá ruway
+this_device	KAY DISPOSITIVO
+device_use_q	¿Imaynatataq kay aparatota apaykachakunqa?
+last_server_mode	Servidor karqan — ñit'iy hinalla ruwanaykipaq
+last_client_mode	Cliente karqan — ñit'iy hinalla ruwanaykipaq
+choose_server	Huk sirwiqta akllay
+choose_server_hint	Huk kachkaq servidorta kichay, utaq huk negociopaq hukta ruway.
+create_new_server	Musuq sirwiqta paqarichiy
+open_server	Kichay
+new_server_name_ph	Musuq sirwiq suti (munasqa) .
+server_remove_pin_ph	Dueño PIN huk servidorta hurqunapaq
+only_owner_remove_server	Dueñollam huk sirwiqta hurquyta atin
+owner_pin_remove_server	Dueño PIN kay sirwiqta hurqunapaq mañasqa
+device_setup_help	Servidor kaypi hatun qillqakunata waqaychan. Cliente pariskuna huk Servidorman.
+currency	Qullqi
+backup	Copia de seguridad
+settings_sec_diag	Diagnósticos nisqakuna
+settings_hub_help	Huk kitita huk kutipi kichay — pisi kuyuy, aswan sut'i akllanakuna.
+settings_sec_devices	Huk aparatokuna
+settings_sec_alerts	Alertakuna
+alerts_help	Hayka unaytaq estado willakuy pantallapi qampaq qhipakunku (kay yaykuy).
+snack_secs_ph	Segundakuna (3–60, ñawpaqmanta 10) .
+snack_secs_save	Alerta tiempota waqaychay
+snack_secs_saved	Alerta pacha waqaychasqa — {n} segundos
+snack_secs_bad	Segundakunata yupay hina qillqay (3–60) .
+cancelled	Cancelado
+cancel	Cancelar
+opening_client	Kichariy cliente...
+preparing_desk	Wakichiy mesa...
+opening_server	Servidor kichay...
+creating_server	Servidorta paqarichispa...
+diag_privacy_help	Logs kay dispositivopi qhipakunku. Pakasqakuna (PIN, contraseñakuna) mana hayk'aqpas waqaychasqachu. Dispositivomanta huk paqueteta rakiyqa sapa kuti sut'i aprobacionniyki necesitan — mana hayk'aqpas ranqhasqachu utaq kimsa kaqkunaman qusqachu.
+diag_level	Nivel de detalle
+diag_level_error	Pantasqakuna
+diag_level_warn	Advertenciakuna
+diag_level_info	Willay
+diag_level_debug	Pantasqa allichay
+diag_support_start	30 min yanapakuy sesión qallariy
+diag_support_stop	Yanapakuy huñunakuy tukuchiy
+diag_support_started	Yanapakuy tiyay on — Debug detalle 30 minutokuna allichay
+diag_support_ended	Yanapakuy sesión tukukurqa
+diag_export_local	Llaqtamanta copiata hawa llaqtakunaman apachiy
+diag_export_local_done	Llaqta diagnosticokuna listo {path} kaqpi — akllay maypi huk copiata waqaychayta
+diag_approve_send	Kay dispositivomanta rakinakuy aprobay
+diag_send_heading	Kay aparatomanta rakinakuy
+diag_send_help	Aprobacionqa huk paquetem, chaymanta tukukun. Huk pachapaq — ruru allichaypaq utaq allinchaypaqlla llamk'achisqa. Mana kimsa kaqkunawan rakisqa. Linux, Windows, macOS, Android nisqakunapi llamk'an.
+optional_login_heading	Munasqa yaykuy
+rights_heading	Derechos nisqa
+booking_scope_heading	Wasi / Mamallaktapura
+diag_send_approved	Huk paquetepaq rakinakuy aprobasqa (usqhaylla tukukun)
+diag_export_send	Ruway rakina paquete (aprobacionta necesitan) .
+diag_export_send_done	{path} kaqpi wakichisqa paquete rakiy — maypi waqaychayta akllay, chaymanta Kumkaj yanapakuymanlla apachiy
+diag_save_bundle	Diagnósticos copiata waqaychay
+diag_bundle_saved	Diagnósticos copia waqaychasqa {path} .
+diag_bundle_failed	Diagnosticokuna copiata mana waqaychayta atirqanchu — wakmanta kallpachakuy
+diag_clear	Diagnóstico registrokunata chuyanchay
+diag_cleared	Diagnóstico registrokuna chuyanchasqa
+use	Utilizar
+add_branch	Rama yapay
+add_conversion	Tikrayta yapay
+add_item_plain	Menú nisqapi kaq elementota yapay
+add_note	Nota yapay
+add_opening_balance	Kicharina balanzata yapay
+add_rider	Yanapay sillakuq
+add_staff	Llamk’aqkunata yapay
+add_unit	Unidadta yapay
+add_use_name	Kay sutita yapay / llamk'achiy
+allow_extra_tills	Permitir extra caja registradoras nisqakunata
+amend	Enmienda
+apply_country_pack	Paquete de país nisqawan churay
+datetime_appearance	P’unchaw & pacha rikhuriynin
+datetime_appearance_help	Librokuna wata-primero RFC3339 ukhupi waqaychan. Kaykunaqa imayna p'unchawkuna chaymanta relojkuna recibokunapi, etiquetakunapi, willakuykunapi chaymanta pantallapi rikch'akusqankutalla tikranku.
+datetime_example	Kunan ejemplo: {ex} .
+date_order	Punchaw kamachiy
+date_order_dmy	D/M/Y
+date_order_mdy	M/D/Y
+date_order_ymd	Y-M-D
+time_format	Reloj
+time_format_24h	24 pacha
+time_format_12h	12-hora
+attach_bill_photo	Invitado factura fotota k’askachiy
+attach_pdf	K'askachiy PDF .
+attach_photo	Fotota k’askachiy
+bank	Banco
+bank_in	Banco in
+bank_out	Bancomanta qullqi lluqsichiy
+bank_to_till	Banco → qullqi waqaychaq
+till_to_bank	Qullqi waqaychaq → banco
+mark_cleared	Marcosqa ch’uyancharqan
+unmark	Qhichuy
+role_both	Iskayninku
+role_carrier	Carrier
+role_cashier	Cajero
+role_consignor	Consignador nisqa
+role_manager	Gerente
+role_supplier	Proveedor
+branch_name_sell_ph	Sucursalpa sutinmanta rantikunapaq
+bring_my_book	Libro mayorniyta apamuy
+business_tax_id_ph	Impuesto empresarial nisqamanta id
+card_amount_ph	Tarjetapa chanin
+cash_amount_ph	Qullqipa chanin
+upi_amount_ph	UPI qullqi
+carrier_cost_ph	Carrierpa chanin
+carrier_party_ph	Carrier fiesta
+choose_icon	Icono nisqa akllay
+choose_logo	Logotipo nisqa akllay
+choose_receipt_stamp	Recibo sello nisqa akllay
+choose_payment_qr	Akllay paganapaq QR
+clear_icon	Ch’uyanchana icono
+clear_logo	Ch'uya logotipo
+clear_photo	Fotota chuyanchay
+clear_stamp	Sello chuya
+clear_payment_qr	Pago chuya QR
+print_faces	Uyakunata imprimiy (recibo / periodomanta qullqi) .
+print_faces_help	Sello opcional chaymanta pago QR logotipoykipa ladunpi reserva recibokunapi chaymanta periodo facturakunapi.
+awb_pools_heading	Carrier AWB yupay quchakuna
+add_awb_pool	AWB piscinata yapay
+awb_pool_carrier_ph	Carrier partido suti
+awb_pool_start_ph	Qallarina no.
+awb_pool_end_ph	Tukuchiy no.
+awb_pool_prefix_ph	Ñawpaq simi (munasqa) .
+awb_pool_label_ph	Etiqueta (munasqa) .
+pieces_ph	Pedazos (ch’usaq = 1) — mastariy cargapaq / achka pedazo
+bulk_awbs_ph	Bulk AWBs — achka (musuq chiru utaq coma) huk estado ñawpaqman k'askachiy
+tds_cut_ph	TDS kuchusqa (munasqa) .
+discount_ph	Descuento (munasqa) .
+cheque_no_ph	Yupay yupayta qhaway (munasqa) .
+bill_reminder_chase	Bill yuyarichiy qatiy lista
+month_mix_report	Killa chaqrusqa willakuy
+copy_month_gst_csv	Copia killa GST CSV
+domestic	Wasiyuq
+international	Hawa llaqta
+pick_logo	Logotipo akllay
+booking_scope_hint_domestic	Volumétrico ÷5000 (wasipi) — International ñit'iy ÷6000 wayrapaq
+booking_scope_hint_intl	Volumétrico ÷6000 (wayra internacional) — ñit'iy Domestic tiendapaq ÷5000
+cod_register	COD registro nisqa
+collect_cod	Huñuy COD (AWB) .
+consignments_dispatch	Envíos & despachos nisqa
+consignor_party_ph	Consignador / partido suti
+copy_day_book_csv	Copia p'unchaw hatun qillqa CSV .
+copy_day_close	Copia punchaw wichqay
+copy_items_csv	Menú nisqapi kaqkunata copiay CSV .
+copy_outstanding_csv	Copia pendiente CSV .
+copy_parties_csv	Copia rantiqkuna hinaspa suministradorkuna CSV .
+copy_party_ledger_csv	Copia libro mayor de clientes CSV .
+copy_receipt	Recibota copiay
+copy_report	Willakuyta copiay
+counted_cash_ph	Yupasqa qolqe cajonpi
+counter_agency_ph	Yupa / agencia suti (munasqa) .
+create_backup	Copia de seguridad nisqa ruway
+day_close_summary	P’unchaw wichq’ana resumen
+delete_party	Akllasqa rantiq utaq suministradorta qulluy
+dispatch_to_rider	Despacho reservado → jinete
+docket_charge_ph	Expediente nisqamanta cargo
+declared_value_ph	Willasqa chaninchasqa
+contents_ph	Contenido nisqa
+eway_ph	E-way factura no.
+insurance_label	Harkay
+yes_label	Arí
+no_label	Manam
+print_route_label	Imprimiy ñan
+new_party_kind_label	Musuq fiesta clase
+done_open_books	Rurasqa — kichasqa hatun qillqakuna
+export_day	Hawa llaqtakunaman apachiy p’unchaw
+extra_note_expense_ph	Qhipa gastomanta extra nota
+extra_note_awb_ph	Nota extra kay AWB / rantiymanta
+failed_delivery	Mana allintachu apachiy
+find_scan_awb	Tariy / Escanear AWB
+forget_shop	Kay tiendata qunqay
+fuel_ph	Gasolina
+handover_carrier	Makiwan reservasqa → apaykachana
+import_day	Punchawta yaykuchiy
+import_items_csv	Imakunatapas hawamanta apamuy / tarifakuna CSV...
+import_parties_csv	Rantiqkunata hinaspa qhatuqkunata CSV yaykuchiy…
+import_pincodes_csv	Pincodes nisqakunata apamuy CSV...
+import_carrier_bill_csv	Importación carrier factura CSV...
+copy_carrier_bill_report	Qhipa apaykachana qullqi willayta copiay
+use_carrier_cost	Carrier costo nisqawan yanapachikuy
+rate_carrier_ph	Carrier (ch'usaq = rantiyniyku tarifa) .
+rate_party_ph	Fiesta (ch'usaq = llapan rantiqkuna) .
+carrier_pick_ph	Carrierpaq qullqipaq (tupanachiymanta) .
+item_name	Menú menú nisqapi elemento suti
+load_bulk_row	Carga a granel fila → escritorio
+login_id_ph	Ruraqpa sutin
+mark_delivered	Marcosmi entregarqa
+manifest_cod_total	COD llapanpi
+manifest_received_by	Chaskisqa
+manifest_sign	Yupichay
+ndr_address_wrong	Mana allinta rimay
+ndr_customer_unavailable	Mana tarikuq
+ndr_door_locked	Punku wichqasqa
+ndr_other	Huk
+ndr_refused	Kutichipuy
+out_for_delivery	Lloqsiy apachinapaq
+print_drs	Imprimiy DRS
+print_run_sheet	Imprimiy run raphi
+reattempt	Wakmanta kallpachakuy
+rider_cod_handed_ph	COD entregasqa
+settle_rider_cod	Asentamiento jinete COD
+mode_desk	Escritorio
+mode_rider	Sillakuq
+waiting_office	oficinaman chayayta suyaspa
+capture_signature	Firmata hap’iy
+incoming_manifest	Yaykumuq manifiesto
+pickup_request	Pickup nisqa mañakuy
+pickup_run	Pickup kallpay
+auto_assign_area	Auto-asignación nisqa área
+reorder_stops	Reorder nisqa sayan
+settle_rider_pay	Arreglo sillakuqpa pagayninta
+vehicle_inspect	Antawakuna qhaway
+print_docket	Imprimiy expediente nisqa
+franchise_statement	Franquicia nisqamanta willakuy
+tally_export	Tally vale nisqa hawa llaqtakunaman apachiy
+open_whatsapp	WhatsApp nisqa kichay
+copy_sms	SMS qillqasqata copiay
+pick_barcode_image	Imahinata akllay escaneanaykipaq
+share_receipt_whatsapp	WhatsApp nisqapi recibota rakina
+delivery_feedback	Willakuykunata apachiy
+lan_self_book	LAN kikinmanta reservacion
+new_party_clear	Musuq rantiq utaq suministrador (ch'uya formulario) .
+new_party_kind_ph	Musuq fiesta laya (Proveedor / Portador) .
+next_country	Qatiqnin suyu
+prev_country	Ñawpaq suyu
+note_gstin_ph	Nota / GSTIN / rimanakuy yuyarichiy
+note_pod_ph	Qhaway / POD (munasqa) .
+on_account_ap	Cuenta (AP) nisqapi.
+org_optional_ph	Organización (munasqa) .
+paid_now	Kunan pagasqa
+pairing_code_ph	Codigo de pareja
+pair_now	Kunan pariskuy
+party_name_selected_ph	Cliente utaq suministradorpa sutin (utaq akllasqa llamk'achiyta) .
+password_ph	Yaykuna rimay
+pay_ap_card	Tarjeta AP nisqawan pagay
+pay_ap_cash	AP qullqita pagay
+pay_ap_upi	Pagay AP UPI .
+period_bill	Periodo nisqamanta qullqi
+period_bill_party	Periodomanta qullqi (partido) .
+pick_pod_photo	POD fotota akllay
+print_awb_label	AWB nisqa etiquetata imprimiy
+print_open	Imprimiy / kichay
+reason_amend_ph	Razón enmienda / anulado / devolución
+reason_note_ph	Razón / nota (desperdicio, yupay, ...) .
+record_day_close	P’unchay qayllapi waqaychay
+refresh_from_shop	Tiendamanta musuqyachiy
+refund	Kutichiy
+remit_cod	Remit COD (partido) nisqa.
+remove_selected	Akllasqata hurquy
+restore_backup	Waqaychasqa waqaychasqata kutichiy
+rider_name_ph	Sillakuqpa sutin
+rider_phone_ph	Rider telefono
+riders	Sillakuq runakuna
+riders_own_fleet	Sillakuq runakuna (kikin flota) .
+rollup	Resumen rollo nisqa
+save_booking_measures	Reserva ruwanapaq medidakunata waqaychay
+save_brand	Marka waqaychay
+save_business_id	Waqaychay negocio id
+save_business_name	Negocio sutita waqaychay
+save_features	Llamkanakuna churayta waqaychay
+save_names	Sutikunata waqaychay
+server_ip_ph	Servidor IP (e.g. 192.168.1.10) .
+set_credit_limit	Clienteman utaq proveedorman límiteta churay
+set_login_selected	Akllasqaman yaykuyta churay
+set_login_named	{name} nisqaman yaykuyta churay.
+shop	Tienda
+start_fresh	Musuqmanta qallariy
+stop_extra_tills	Yapa caja registradorakunata sayachiy
+backup_auto	Sapa p'unchaw kikillanmanta waqaychasqa · qhipa {when} · qhipa 14 p'unchawkuna {dir} kaqpi waqaychasqa.
+backup_auto_none	Sapa p'unchaw kikillanmanta waqaychasqa — ñawpaq kaq huk ratullapi purin.
+backup_copy_to	Copiakunapas {dir} nisqamanmi rin.
+backup_copy_btn	Hinallataq huk carpetaman copia de seguridadkunata copiay...
+autostart_off	Kay computadorawan qallariy
+autostart_on	Kay computadorawan qallarikun ✓ — ñit’iy sayachinaykipaq
+autostart_done_on	Kay computadora kunan kichan appta qallariptin — tiendapa servidornin kutimun huk kallpa kuchusqamanta.
+autostart_done_off	Kay computadoraqa manañam kichanchu appta qallariptin.
+right_allowed	Permitisqa
+right_with_approval	Aprobacionwan
+right_denied	Mana saqisqachu
+editing_staff	Derechos para
+team_pick_ph	Llamk'anapaq llamk'aqkuna — suti, llamk'achiqpa sutin, icha akllana
+select_staff	Kay llamkaqkunata akllay
+rights_help	Derechokuna — ñit'iy tikraypaq: Saqisqa → Aprobacionwan (huk kamachiqpa PIN chay pacha) → Mana saqisqachu.
+right_void_refund	Huk reservacionta anulachiy otaq kutichipuy
+right_amend_sale	Grabasqa reservacionta allichay
+find_server	Tiendapa servidorninta maskay
+finding_server	Kay Wi‑Fi... nisqapi tiendapa servidorninta maskaspa...
+no_server_found	Mana mayqinpas tarisqachu. Servidorpi: Ajustes → Huk dispositivokuna → Yapa caja registradorakunata saqiy (kikillan Wi‑Fi). Utaq chaypi rikuchisqa IP nisqa qillqay.
+servers_found_pick	Chay tiendaman ñit’iy mayqinmanchus tinkiyta munanki.
+server_host_selected	{host} llamk'achispa — tupachiy codigota qillqay, chaymanta kunan Pair.
+device_forgotten	Tienda kay dispositivota qunqasqa — hukmanta tupachiy tiendapa kunan codigonwan. Chaypi suyaq kamachikuykunaqa waqaychasqam kachkan.
+forget_device	Qunqay
+last_seen	rikusqa
+new_pair_code	Musuq tupachiy código
+lan_offline	Tienda servidor mana chayay atina
+lan_offline_waiting	Tienda servidor mana chayay atina · {n} suyachkan
+lan_connecting	Tiendaman tinkuchispa...
+pair_finishing	Paris tukuchiy... oficina librokunata churaspa
+pair_opening	Oficinata kichaspa...
+lan_live	Kawsay
+lan_sending	{n} kachaspa
+lan_sign_in_to_send	Yapamanta yaykuy {n} kachanaykipaq.
+lan_pair_again	Kay aparatota yapamanta tupachiy
+lan_update_app	Appta musuqyachiy — kay dispositivo chaymanta oficina servidor hukniray layakunayuq kanku
+allow_firewall	Huk dispositivokuna tinkinankupaq saqiy
+firewall_blocked	Kay computadorap nina cortafuegos wak dispositivokunata hark'achkan — ñit'iy Huk dispositivokuna tinkiyta saqiy.
+firewall_waiting	Suyachkani adminpa tapuyninta...
+lan_join_help	Huknin dispositivopi: Modo Cliente → Tiendapa servidorninta tariy (utaq {addr} qillqay) → codigo de pareja {code}.
+lan_pair_status	Wi‑Fi {addr}
+lan_join_help_no_addr	Kay aparatota Wi‑Fi nisqaman huk direccionpaq tinkuchiy.
+lan_no_address	Manaraqmi Wi‑Fi direccionniyuqchu — tiendaman Wi‑Fiman tinkiy.
+lan_not_listening	Dispositivokuna mana chaskispa (puerto {port} ocupado). Appta wakmanta qallariy.
+lan_tills_off	Extra caja registradoras nisqakunan manaña kashanchu. Saqiy huk aparatota hukllawanankupaq saqiy.
+paired_with	Parisqa · {url} .
+not_paired	Mana parischasqachu
+choose_device_use	Servidor utaq Cliente nisqapi akllay.
+paired_note	Iskay iskaymanta. Vendenapaq kichay, utaq Refresh qhipa kaqpaq.
+last_update_at	Qhipa kaq musuqyachiy: {time}.
+pair_intro	Servidorta maskay, utaq direccionninta chaymanta tupachiy códigonta qillqay.
+queue_waiting	Tiendaman chayanata suyaspa ({n}):
+queue_tries	{n} kuti kallpachakusqa · qhipa kutichiy: {e}
+save_backup_copy	Huk copia de seguridadta waqaychay...
+backup_copy_saved	Waqaychasqa copia waqaychasqa — kay dispositivomanta (huk USB stick utaq wak dispositivo) waqaychay
+backup_copy_overdue	Mana huk copia de seguridad kay dispositivomanta lluqsirqachu {n} p'unchawkuna — Ajustes → Copia de seguridad
+backup_copy_failed	Waqaychasqa copiaqa manam chaypi waqaychayta atirqanchu — huk sitiota akllay
+clock_off	Kay dispositivopa relojninqa {min} min tiendapa servidorninmanta — kay dispositivopi allin pachata churay
+printers_heading	Kay aparatopi impresorakuna
+printers_help	Chiqap impresorakunata maskay, chaymanta akllay Recibo utaq AWB etiqueta. Sapa llamk'ayqa anchoyuqmi, retratoyuqmi icha paisajeyuqmi, imayna bytekuna apachisqa kasqanmantapas. Huk etiquetam código de barras nisqataqa imprimin. Ch'usaq sitio = ama imprimiychu.
+job_width	Contenido anchun (mm) .
+job_width_ph	Utaq huk anchota qillqay, 40–210 mm
+job_layout	Diseño
+job_delivery	Imaynatataq chay llamkay apachisqa
+job_size	Fuente nisqapa sayaynin
+job_size_ph	p.h. 18, 20, 26...
+save_receipt_format	Recibo formato nisqa waqaychay
+save_label_format	Etiqueta formato nisqa waqaychay
+test_receipt_format	Prueba chaskiy
+test_label_format	Prueba etiqueta
+test_receipt_sent	Muestra recibo apachisqa
+test_label_sent	Etiqueta de muestra apachisqa
+test_print_no_printer	Mana chay llamk'anapaq impresora — kay kitip urapi hukta yapay
+printers_host_only	Impresorakuna tienda dispositivopi (Servidor) churasqa kanku. Kay till chaypi llamk'anakunata kachan — Tariy / yapay / Servidorpi qhipakuy churay. Prueba p'anqaqa Servidorman rin.
+printers_pool_heading	Impresorakuna
+printers_routes_heading	Maypichus imapas imprimin
+printer_label_ph	Suti (e.g. Escritorio) .
+printer_target_ph	host:9100 · bt:MAC · usb:VID:PID · llamkana suti
+printer_mode_heading	Musuq lluqsiykunapaq perfil
+printer_mode_standard	Retrato Estándar nisqa
+printer_mode_landscape	Paisaje Estándar nisqa
+printer_mode_thermal	Ruphay
+printer_mode_standard_short	Retrato
+printer_mode_landscape_short	Paisaje
+printer_mode_thermal_short	Ruphay
+printer_format_custom	Musuq sapanchasqa perfil
+printer_format_custom_label	Costumbre
+printer_format_custom_added	Kay kitipaq perfil personalizado yapasqa
+add_printer	Impresora yapay
+remove_printer	Qhipa kaq hurquy
+route_pick_ph	recibo utaq etiqueta
+route_add_printer_ph	Kay sitioman impresora yapay
+route_receipt	Chaskiy
+route_label	AWB nisqa etiqueta
+route_dont_print	Mana impresora asignasqa
+route_add	Maypi kasqanman yapay
+route_up	Wichayman
+route_down	Urayman
+route_remove	Qhipa kaq hurquy
+route_clear	Kay sitiopaq chuya impresorakuna
+save_printers	Impresorakunata waqaychay
+print_test_page	Prueba p’anqata imprimiy
+printers_saved	Kay aparatopaq waqaychasqa impresorakuna
+test_page_sent	Prueba p'anqa kachasqa — impresorata qhaway
+printers_found	Kay aparatopi tarisqa: {list}
+find_printers	Impresorakunata maskay
+printers_looking	Kay dispositivopi impresorakunata maskaspa chaymanta Wi‐Fi...
+printers_tap_find	Llamkanakuna chaymanta llika recibo impresorakuna kay Wi‐Fi kaqpi (mana hurqusqa utaq mana tinkisqa kaqkuna) chaskiq filakunapaq impresorakuna maskay ñit'iy.
+printers_none_found	Mana impresorakuna tarisqachu — huk llamkana impresora sutita qillqay, utaq huk llika tiyay (e.g. 192.168.1.50).
+receipt_printer_ph	Recibokunapaq impresora
+queue_refused	Tiendapa mana chaskisqan ({n}) — sapankanta qhaway mostradorpi:
+clear_not_accepted	Checked — kay listata ch'uyanchay
+device_name_ph	Kay aparatopa sutin
+lan_last_update	qhipa musuqchasqa {time}
+lan_not_accepted	{n} mana chaskisqachu
+connected_now	kunan t’inkisqa
+backup_failed	Qhipa kaq kikillanmanta waqaychasqa mana atirqanchu: {e} .
+backup_overdue	Mana {n} p'unchawkunapaq waqaychasqa — kay dispositivopi app kichasqata waqaychay chaymanta copia de seguridad ruwayta atin.
+disk_low	Kay dispositivopi {mb} MB gratislla — waqaychasqakuna pisimanta pisi mana allinchu kanqa. Wakin espaciota kachariy.
+last_seen_devices	Qhipa rikusqa: {time}
+sync_interval	Sapa {secs}s sincronización
+connection_to_shop	Tiendaman tinkuchiy
+supplier_name_ph	Suministradorpa sutin (utaq rantiq) .
+supplier_ph	Proveedor
+switch_device	Kay aparatota tikray
+take_payment	Pagota hapiy
+tax_added_till	{tax} exclusivo nisqa
+tax_inside_price	{tax} llapanpaq
+today_books	Kunan pacha hatun qillqakuna
+unlock_after_pairing	Yaykuy PIN .
+unlock_with_login	Yaykuywan kichay
+update_my_password	Contraseñayta musuqyachiy
+update_my_pin	PIN nisqayta musuqyachiy
+duress_heading	Desbloqueo de emergencia PIN (Dueñolla) .
+duress_help	Akllanapaq. Sichus kay PIN kichaypi qillqasqa kachkan qampa rantinpi, llapa librokuna yaykuykuna pichasqa kanku (reservakuna, libro mayorkuna, historia) chaymanta mesa kichakun Dueño normal qhaway hina — tarifakuna, fiestakuna, zonas, personal chaymanta configuración qhipakunku. Esquema chaymanta config mana qullusqachu. Kichayta obligasqa kaspalla llamk'achiy. Ch’usaqllata saqispa wañuchinaykipaq waqaychay. Mana hayk'aqpas piqpa PIN nisqawan kaqllachu.
+duress_pin_ph	Emergencia PIN (4–12 yupaykuna) .
+duress_confirm_ph	Hukmanta qillqay takyachinaykipaq
+save_duress_pin	Waqaychay emergencia PIN .
+clear_duress_pin	Emergenciata wañuchiy PIN .
+duress_on	Desbloqueo de emergencia PIN llamk'achkan
+duress_off	Desbloqueo de emergencia PIN apagasqa kachkan
+duress_saved	Emergencia kichariy PIN waqaychasqa
+duress_cleared	Desbloqueo de emergencia PIN apagasqa
+vehicle_ph	Carro
+void	Void rantiy
+write_off_ap	AP nisqamanta qillqay
+write_off_nil	Qillqay / nil balance
+zone_ph	Zona (suti Tarifakunamanta) .
+caption_today	KUNAN PUNCHAW
+caption_bookings	RESERVAS nisqa
+caption_payments_today	KUNAN PAGOS
+caption_outstanding	DESPENDADO
+caption_bank	BANCO
+paid_by	Pagado por
+second_way	Iskay kaq ñan
+weight_in	Llasaq in
+size_in	Tamaño en
+goods_received	Chaskisqa bienes
+expense_heading	Gasto
+notes_attach_sale	Notas & adjuntos (akllasqa rantiy) .
+notes_attach_party	Notas chaymanta adjuntos (akllasqa rantiq utaq suministrador) .
+attachments_last_expense	Adjuntos (qhipa gasto) .
+credit_limit_heading	Límite de crédito (akllasqa rantiq utaq suministrador) .
+pay_selected_heading	Akllasqa qullqita quy (manukuyta allichay / ñawpaqmanta hapiy) .
+write_off_heading	Qillqay (mana qullqita quspa chuya) .
+pay_ap_heading	Paykunaman manusqanchikta pagay (AP) .
+country_tax	Llaqta & impuesto
+extra_tills_heading	Yapa qullqi waqaychanakuna
+other_devices_help_heading	Huk aparatokunata churay
+other_devices_help	Kay dispositivopi (Servidor): Huk dispositivokuna → Yapa tills nisqakunata saqiy. Reparay codigo de pareja chaymanta Wi‐Fi direccionta. Huk dispositivokuna tinkinankupaq saqiy niqpi ñitiy. Computadorapi, kay computadorawan qallariy ñit’iy. Huknin dispositivopi: ruwana churay, Modo Cliente akllay, Tiendapa servidorninta maskay (utaq direccionta qillqay), tupachiy códigota qillqay, Kunan paris. Kamachiykuna dispositivopi suyanku sichus Wi‐Fi urmamun chaymanta rinku mayk'aq Servidor wakmanta kutichin.
+your_brand	Markayki (in-app) .
+units_heading	Unidades nisqakuna
+booking_measures	Reserva ruwanapaq medidakuna
+drawer_count	Cajón yupay (munasqa) .
+spreadsheet_csv	Raphi de cálculo (CSV) .
+bank_reconciliation	Bancopi allipunachiy (bancomanta willakuyniykipi marcay) .
+book_add_product	Libro — yapay ruru / tarifa
+book_opening_credit	Libro mayor — kichay qullqi
+account_kind	Cuenta clase (hukninta ñit’iy) .
+active_ledger	Libro mayor activo
+actual_total_cap	TOTAL ACTUAL nisqa
+amend_help	Huk rantiyta akllay allichanaykipaq, mana valechinaykipaq utaq kutichipunaykipaq. Enmiendas nisqakunaqa hunt’asqa historiatan waqaychan. Muyuchisqa Llapan qallarikun Aplicado nisqawan kaqlla — muyuchisqalla llamk'apuy. Void chaymanta qullqi kutichiy huk Dueño utaq Gerente PIN (hanaqpi qillqasqa; sutiykiwan qillqasqa).
+applied_total_cap	TOTAL APLICADO nisqa
+bank_balance	Bancopi saldo
+bank_net_today	Banco neto kunan punchaw
+branch_export_help	Hawaman apachiyqa huk p'unchaw instantánea nisqatam qillqan, waqaychasqakuna qillqana mayt'uman, chaymantataqmi qillqana mayt'uman qillqan. Huk lluqsiy p’unchawta hawaman apamunaykipaq, willañiqinta waqaychay import_branch_snapshot.json hina chay qillqana mayt’upi, chaymanta Yaykuchiy ñit’iy.
+brand_shown_help	App ukhupi pantallakunapi rikuchikun. Kay dispositivopi churasqa app suti chaymanta icono plataforma lista hina qhipakunku.
+app_icon	App nisqa icono
+logo_help	Opcional tienda marca pantallakunapi app kaqpi.
+onboard_layout	Imatachus jap’inki
+item_photo_help	Munasqa. Mana fotoyuq kaptinqa menú nisqapi kaqpa sutinmanta qallariy qillqakunatam qawachinchik.
+cash_in_hand	Makipi qullqi (qullqi waqaychaq) .
+change_my_pin_heading	PINniyta tikray (qampaqlla) .
+connect_to_server	Servidor nisqawan tinkiy
+counter_locked	Qhatu 01 · Wichqasqa
+country_pack_help	Huk suyu paquete impuesto sutita chaymanta matemáticas, instant-pay riel, chaymanta negocio id invitado facturakunapi imprimisqa churan. Kumkaj mana maypipas impuestokunata churanchu nitaq facturas electrónicas gubernamentales nisqakunatapas qonchu.
+currency_use_help	Ima yanapasqa qullqipaqpas llamk'achiyta ñit'iy.
+day_close_help	Huk p'unchaw wichq'ay qillqayqa kay resumen (hinallataq cajón variancia yupasqa kaqtin) auditoría registroman waqaychan. Manan vendeyta saqenchu.
+expenses_word	Gastokuna
+feature_access_help	Akllasqa llamkaqkunapaq ruway yaykuy (yapasqaykimanta qhipaman ñit'iy) .
+footer_local	Local SQLite · Gratis Wiñaypaq · Cero Puyu
+fresh_book_moklanjo	Musuq = ch'usaq catálogo (qhipaman imakunatapas yapay). Libro = tipo apertura stock y pichus debesunki uraypi.
+fresh_selected	Musuq akllasqa — catálogo ch'usaq qhipakuchkan. Listoña kashaspaqa Rurasqa niqpi ñit’iy.
+gross_word	Bruto nisqa
+how_start	¿Imaynatataq qallariyta munanki?
+later_country_pack	Qhipaman: Ajustes → suyu paqueteyki impuestopaq chaymanta qullqi quypaq etiquetakuna churay.
+local_badge	KAYPI
+measures_help_moklanjo	Imaynatataq paquetekunata tupunku reservakuna ruwana wasipi. Dimensiones chaymanta llasaynin unidadkuna llamk'achisqaykipi qillqay — estándar (cm, m, in, ft · kg, g, lb, oz) utaq kikiyki unidad cm / kg pataman tinkisqa (chiqamanta utaq wak unidadkuna kaqnintakama). Librokunaqa sapa kutim kg. Chakrata ch’usaqllata saqiy, chayta waqaychanaykipaq.
+mix_type_hint_moklanjo	Sapakamapi hayka kasqanmanta qillqay (qullqi / UPI / tarjeta / crédito). Facturaman yapakunan tiyan. Crédito necesitan huk cliente hawapi.
+money_in_sales	Qullqipi (rantiy) .
+more_help_moklanjo	Catálogo, rantiy, qullqi, equipo, copia de seguridad — yapasqa stock chaymanta yapasqa tills necesitakuqtin.
+net_word	Llika
+offline_badge	OFFLINE nisqa
+optional_login_help	Munasqa yaykuy (id + contraseña). Dueñoqa huk kutillatam churan; ruwaqllam qhipaman yaykuna rimata tikrayta atin.
+or_unlock_login	Utaq yaykuy id + contraseñawan kichay
+permission_preset	Llamkana (pantallakunata hinaspa derechokunata churan) .
+preset_help_moklanjo	Cajero: rantikuy. Kamachiq: rantiy + menú nisqapi kaqkuna + ch'usaq/allinchay.
+product_locked_moklanjo	Moklanjo
+product_only_moklanjo	Kay app Moklanjolla — librokuna + reservakuna ruwana wasi. Huk qhatuy uyakuna sapaq rurukuna hina qhipaman apachinku.
+purchases_cogs	Rantinakuykuna (COGS) .
+qty_cap	YUPAY
+restore_help	Kutichiy: huk waqaychasqata akllay. Libro mayorkunaqa chaypacha imayna kasqanman hinan kicharikun; kunan kasqanman hina hatun qillqakuna ñawpaqta waqaychasqa kanku, chaymi kayta kutichiyta atikunman.
+wipe_data_heading	Llaqtamanta willakuykunata qulluy
+wipe_data_help	Dueñolla — kikin akllanakuna Windows mana churay hina. Negocio registrokuna qhatuy historiata chuyanchan ichaqa tarifakuna chaymanta churayta waqaychan (imaynachus PIN kichay emergencia kaqpi). Tienda churayqa librokuna willakuypa waqaychananta hurqun. Pantalla munasqakuna ventana/simita chuyanchan. Dueño PIN nisqawan takyachiy. Equipo kaqpi PIN kichay emergencia kaqpi sapaq kachkan (kichaypi pakasqa pichay).
+wipe_trading	Negociokunamanta registrokuna
+wipe_schema	Tienda churay
+wipe_ui	Pantalla munasqakuna
+wipe_owner_pin_ph	Dueño PIN chinkachinapaq
+wipe_delete_selected	Akllasqa qulluy
+wipe_owner_only	Dueñollan llaqta willayta qulluyta atin.
+restore_owner_only	Dueñollan huk waqaychasqata kutichiyta atin.
+wipe_owner_pin_needed	Dueño PIN nisqaman qillqay, llaqta willakuykunata chinkachinaykipaq.
+wipe_nothing_selected	Ñawpaqta imatachus chinkachinaykipaq akllay.
+wipe_done	Akllasqa llaqta willay qullusqa.
+wipe_schema_done	Tienda churay pichasqa — Servidor utaq Cliente akllay hinalla ruwanaykipaq.
+rounded_total	Muyuchisqa Total
+setup_app_moklanjo	Moklanjota churay
+shop_logo_optional	Tiendapa logotipon (munasqa) .
+stock_type_help	Menú nisqapi kaqpa sutinta qillqay (huk partenmi suficiente), hayka kasqanmanta, chaymanta allichay. Menú menú kaqpi imakuna manaraq yupasqachu necesitanku Huk kuti qatiyta qallariy.
+team_owner_help	Contratar: huk llamk'ayta akllay (Cajero / Gerente), suti + qallariy PIN, chaymanta Yanapay. Kay runa hukniray kaqtinlla: pantallakunata kichay chaymanta derechokuna uraypi, chaymanta Waqaychay llamkana churayta. Llapa runa kikin PIN kaqninta uraypi tikran — Dueñoqa manam hukpa PIN kaqninta tikrayta atinchu.
+they_owe_us	Paykunaqa manuwanchismi
+unit_at_cap	Unidad @ .
+units_help	Menú elemento etiquetakunapaq códigokuna (kg, pedazo, bolsa). Sapa unidadqa t'inkina tiyan — chiqalla icha wak unidadkunawan — huk kamachiyman (kg · cm · ml · pc), p.h. 1 caja = 2 caja y 1 caja = 20 cm. Tikraykuna: 1manta = factormanta. Qullqikunaqa manam haykapipas unidadchu.
+we_owe_them	Paykunamanmi manukunchik
+who_unlocking	¿Pitaq kicharichkan?
+locked_word	Wichqasqa
+show_pin	Qawachiy PIN .
+hide_pin	Pakakuy PIN .
+set_owner_pin	Kamayuqpa PIN-ta churay
+enter_owner_passcode	ENTER DUEÑOPA CÓDIGO DE PASO
+enter_staff_passcode	ENTRADA DEL PERSONAL nisqa
+pin_count_zero	0 / 12 yupay · 4llapas, chaymanta Allinmi
+pin_count_need	{} / 12 yupay · {} astawan necesitan
+pin_count_full	12 / 12 yupay · Allinmi ñit’iy
+pin_count_ready	{} / 12 digitos · Allinmi ñit’iy listoña kashaspa
+pin_hint_choose	4–12 yupaykunata akllay · Waqaychanaykipaq yaykuchiy utaq kichay
+pin_hint_new	Musuq 4–12 yupayniyuq Dueño PIN · Yaykuy utaq Kichay
+pin_hint_shop_code	Tienda aparato · tupachiy código {} .
+pin_hint_books	Kay aparatoqa hatun qillqakunatam hapin
+pin_hint_paired	Yapa caja registradora parisqa — kichay ranqhanapaq
+pin_hint_pair_first	Yapa qullqi waqaychaq — ñawpaqta tienda dispositivoman parischay
+unlock_to_continue	Kichayta hinalla ruwanaykipaq
+no_staff_yet	Manaraq llamk'aq — Dueño hina kichay, chaymanta Equipo
+status_server_set_pin	Modo Servidor — churay Dueño PIN .
+status_server_tills	Modo Servidor — yapasqa qullqi waqaychanakuna hukllanakunkuman. Desbloquear
+status_server_unlock	Modo Servidor — Dueño hina kichay
+status_client_unlock	Modo Cliente — kichay ranqhanapaq
+icon_new_selected	Icono: musuq willañiqi akllasqa — Marka waqaychay ñit'iy
+icon_custom	Icono: marca de lugar personalizado
+icon_default	Icon: Kumkaj marka (ñawpaqmanta) — huk sapanchasqa akllay
+logo_yours	Logotipo: tiendaykipa logotipon — pantallakunapi chaymanta recibokunapi rikuchisqa
+logo_default	Logotipo: Kumkaj marka (ñawpaqmanta) — qampaq akllay sichus hukniyuq kanki
+tmpl_current	Kunan pacha: {} — {}
+tmpl_selected	Akllasqa: {} — {} .
+setup_complete	Configuración hunt’asqa
+onboard_fresh_tmpl	Musuq · {} — catálogo ch’usaq qallarikun; menú elementokunata yapay Menú menú elementokunapi, chaymanta Ruwasqa.
+onboard_book_tmpl	Libro mayor · {} — menú elementokunata yapay chaymanta kichay crédito, chaymanta Ruwasqa.
+onboard_template_tmpl	Munaspaqa chay sitiota sutichay, chaymanta akllay imaynata qallarinaykipaq.
+tmpl_blurb	Mensajero librokuna hinaspa reservakuna ruwana wasi: apachiqkuna, apaykachaqkuna, punchaw qillqa, AWB.
+tmpl_how	Escritoriopi paquetekunata reservay; Kunan punchawpaq punchaw qillqa; tarifakuna, fiestakuna, willakuykunapaq tablakuna.
+trk_booked	Reservado
+trk_picked_up	Hoqarisqa
+trk_in_transit	Tránsito nisqapi
+trk_delivered	Qusqa
+trk_rto	Kachaqman kutispa
+lane_to_dispatch	Kachanapaq
+lane_with_carrier	Carrierwan
+lane_failed	Pantasqa
+lane_done_today	Kunan punchaw ruwasqa
+ops_board_help	Parcelas maypi kasqankuman hina kunan punchaw llamkaypi. Paquetekunata ñit'iy (utaq escanear) chayta akllanapaq, chaymanta llapa akllasqa kaqpi huk kutillapi ruway — sapa carril chayman tupaq kuyuykunallata qun.
+lane_empty	Mana imapas kaypi kunanpacha.
+picked_fmt	{n} akllasqa
+pick_all	Llapanta akllay
+bag_for_carrier	Makimanta apaykachanaman
+send_with_rider	Sillakuqwan kachay
+out_again	Hukmanta lluqsiy
+return_to_sender	Kachaqman kutiy
+runs_bags_heading	Kunan pacha kallpaykuna & bolsas
+print_word	Imprimir
+bag_word	Bolsa de carga
+run_word	Sillakuq kallpay
+parcels_fmt	{n} paquetes nisqakuna
+parcel_history	Willarina
+attempt_fmt	{n} nisqamanta kallpachakuy
+pieces_short_fmt	{n} pcs
+note_reason_ph	Nota otaq razon
+ops_pick_first	Ñawpaqta paquetekunata akllay — ñit’iy utaq escanear
+cod_to_collect	Entregasqa — COD huñunapaq
+cod_on_road	COD ñanpiraq kachkan
+cod_owed_consignors	Huñusqa — apachiqkunaman qullqita qunapaq
+cod_rto_fees	RTO qullqikuna huñunapaq
+cod_to_hand_in	COD entregananpaq
+parcel_one_fmt	{n} paquete
+facet_bank_title	Willakuykuna
+facet_bank_help	P'unchaw hatun qillqakuna, rantiq utaq suministrador machuyay, bancopi qillqakuna, chaymanta pacha P&L.
+facet_ops_title	Envíos & despachos nisqa
+facet_ops_help	Escanear utaq qillqay AWB → Tariy, chaymanta ñawpaqman / imprimiy etiqueta / COD. Sillakuqman utaq apaykachaqman apachiy.
+facet_cod_title	COD registro nisqa
+facet_cod_help	Huñuy apachisqapi, chaymanta apachiqman apachiy.
+facet_riders_title	Sillakuq runakuna (kikin flota) .
+facet_riders_help	Yanapay sillakuqkunata, chaymanta kachay reservasqa AWBkunata Ops.
+against_bill_ph	Contra invitado factura # hawapi (munasqa) .
+aliases_ph	Alias — huk sutikuna, chikuwan t'aqasqa
+amount_blank_full_ph	Qullqi (ch'usaq = hunt'asqa saldo) .
+amount_owed_ph	Debesqa qolqe
+amount_ph	Cantidad nisqa
+amount_received_ph	Chaskisqa qolqe
+amount_we_pay_ph	Qolqe qosqanchis qolqe
+awb_scan_ph	AWB / código de barras escaneo
+bulk_csv_ph	Bulk CSV — mayman chayana, apachisqa,kg,cod_paise,nota
+business_name_ph	Negocio suti
+category_new_ph	Kategori (munasqa, musuq kaptinqa kamasqa)
+cod_amount_ph	COD nisqa qullqi
+code_bag_ph	Código (bolsa) .
+conv_factor_ph	Factor (25 = 1 bolsa → 25 kg) .
+country_code_ph	Llaqtap yupaynin p.h. IN, GB, EE.UU., AE, BR
+credit_khata_amount_ph	Crédito / crédito libro mayor qullqi
+credit_limit_ph	Límite de crédito (0 = mana imapas) .
+dim_unit_code_ph	Dimensión unidadpa códigon (cm) .
+divisor_ph	Volumétrico rakiq (5000) .
+extra_per_kg_ph	Yapamanta / kg
+first_amount_ph	Ñawpaq kaq qullqi
+first_kg_ph	Ñawpaq kaq kg (losa) .
+from_code_ph	Código (bolsa) nisqamanta.
+item_name_lang_ph	Menú menú elemento suti — simiykipi qillqay
+login_id_opt_ph	Ruraqpa sutin (mañasqa, sapalla) .
+manager_pin_ph	Gerente PIN aprobananpaq (mana anulayta atispalla) .
+new_branch_name_ph	Musuq sucursal suti
+new_password_ph	Musuq yaykuna rimay (munasqa) .
+new_pin_ph	Musuq PIN (4–12 yupaykuna)
+note_bank_ph	Nota (depósito, retiro, ...) .
+note_buy_expense_ph	Nota (combustible, alquiler, ...) .
+note_expense_ph	Nota (combustible, oficina, ...) .
+notify_phone_ph	Telefonoman willay (WhatsApp/SMS gancho) .
+options_moklanjo_ph	Akllanakuna (munasqa) — Hatun=20, Regalo p'istuy=10
+part_second_way_ph	Iskay kaq ñanwan raki (munasqa) .
+phone_ph	Teléfono nisqawan
+address_ph	Tarikuynin
+party_custom_fields_heading	Sapanchasqa pampakuna (akllasqa partidu) .
+party_custom_help	Kay fiestapi ima etiquetatapas valortapas yapay — WhatsApp, GSTIN, ruta código, ...
+party_custom_key_ph	Chakra suti (e.g. WhatsApp) .
+party_custom_value_ph	Chanin
+party_custom_add	Chakra yapay
+party_custom_remove	Chakrata hurquy
+party_custom_empty	Manaraqmi costumbre chakrakuna kanchu
+party_custom_pick_first	Huk fiestata akllay sapanchasqa chakrakunata yapanaykipaq
+place_name_ph	Kay kitipa sutin
+price_ph	Precio
+qty_example_ph	Yupay (ahinataq 1,5 kgpaq)
+quantity_ph	Cantidad nisqa
+reason_required_ph	Razón (necesario) .
+role_title_ph	Ruwaypa sutin (e.g. Barista) .
+service_pct_ph	Servicio % munasqa 0/10/12
+short_code_ph	Pisi qillqa (MG02) .
+slab_kg_ph	Losa cargable en kg (0,5) .
+staff_name_ph	Llamk'aqpa sutin / id
+starting_password_ph	Yaykuna rimay qallariy (munasqa) .
+starting_pin_ph	Qallariy PIN (4–12 yupaykuna)
+tax_rate_ph	Tasa tributaria suti utaq % — Estándar, Reducido, 0, 5, 12, 18, 20
+to_code_ph	Codificanapaq (kg) .
+uncleared_no_ph	Mana ch'uyanchasqa # hawapi
+unit_cost_ph	Unidadpa chanin
+unit_kg_blank_ph	Unidad (kg utaq ch'usaq) .
+unit_name_bag_ph	Suti (Bolsa) .
+weight_unit_code_ph	Llasaq unidadpa yupaynin (kg) .
+zone_name_ph	Zona suti
+pay_credit	Cuentamanta
+book_kind_today	Kunan pacha hatun qillqakuna
+book_kind_month	Kay killapi hatun qillqakuna
+book_kind_aging	Pendiente / débito-crédito nisqa
+book_kind_balance	Balance nisqa
+ops_desk_help	AWBta USB código de barras nisqa escáner nisqawan escanear (utaq qillqay) → Tariy. Chaymanta ñawpaqman puriy, etiqueta imprimiy utaq COD huñuy. Etiquetas imprimin Código 128.
+role_help_consignor	Papel: Consignador — AR (paykuna debewanchik). Kikin firmapas Carrier nisqapas kanmanmi.
+role_help_carrier	Papel: Carrier — AP (paykunaman debeyku). Kikin firmapas Consignador nisqapas kanmanmi.
+role_help_both	Ruwaykuna: Consignador + Carrier — huk partida, AR chaymanta AP libro mayorkuna, Willaykunapi llika.
+role_help_supplier	Ruway: Suministrador — AP rantiykunapaq.
+lane_declared_label	Cuentakuna reservay
+lane_owner_label	Qullqiwan reservakuy
+money_lane_bill	Invitado invitado qullqi: {lane}

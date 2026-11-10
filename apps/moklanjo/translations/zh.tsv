@@ -1,0 +1,835 @@
+# Chinese (Simplified) — 中文 (zh). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	快递账本 + 寄件柜台。免费离线。
+unlock	解锁
+pin_hint	店主PIN初始为0000
+sell	寄件
+buy	支出
+books	日记账
+books_help	今日状况。寄件 = 包裹入。支出 = 承运商账单和费用。往来方 = 寄件人和承运商。
+buy_help	费用凭证和承运商账单（支出）。记账的留在往来方账本。
+sell_money_in	寄一个包裹
+buy_money_out	费用 / 承运商账单
+record_purchase	记录采购
+add_expense	费用凭证
+bank_book	银行账本
+credit_help	往来方编号唯一（名称可重复）。角色：寄件人(AR)、承运商(AP)，或同一编号两者。账本分开；报表显示净额。
+party_kind_ph	自定义角色（可选）— 或点上方芯片
+parties_list_heading	已保存往来方
+reports_help	日记账、应收应付、银行账本、费用凭证、损益。
+reports_today	日记账（今天）
+reports_month	损益（月）
+reports_aging	未结 / Dr-Cr
+reports_balance_sheet	资产负债表
+reports	报表
+refresh	刷新
+undo	撤销
+start_tracking	开始盘点
+stock_minus	− 库存
+stock_plus	+ 库存
+settle_cash	现金结清
+settle_card	刷卡结清
+items	费率与服务
+nav_items	费率
+more	更多
+your_items	你的费率
+items_help	每行是一个费率（如 Surface Zone A）。单位通常是kg。点击编辑。
+add_item	添加费率
+new_item	新费率
+adding_item	正在添加新费率
+editing_item	编辑中
+save	保存
+remove	删除
+empty_catalog	尚无费率。打开费率与服务，添加一个（名称+价格，单位kg），然后寄件。
+counter_sale	柜台寄件
+total	总计
+cash	现金
+upi	UPI
+card	银行卡
+credit	往来方
+clear	清空
+ready_to_sell	可以寄件了
+today_prefix	今天
+today_mid	今天
+owed	未收
+round_word	舍入
+back	返回
+sold_out	售罄
+restock	补货
+not_tracked	未计数
+in_stock	有库存
+marked_sold_out	已标售罄
+add_upper	加入
+na	无
+qty	数量
+unit_at	单价
+actual	实际
+applied	应付
+note_ph	备注（可选）
+rounded	舍入后
+split	拆分
+counter	柜台
+parcel	包裹
+order	订单
+sales	寄件
+sales_refunds	寄件与退款
+day_close	日结
+reports_expenses	报表与支出
+nav_reports	报表
+nav_settings	设置
+nav_lock	锁定
+sidebar_settings	侧边栏设置
+sidebar_settings_help	与侧边栏使用相同图标。拖动行以重新排序。切换开关以显示或隐藏。设置和锁定始终保留在栏上
+sidebar_always_on_short	始终显示
+sidebar_back_settings	返回
+sidebar_shown	已显示
+sidebar_hidden	已隐藏
+sidebar_always_on	始终显示在吧台
+sidebar_shown_hint	显示在侧边栏/底部标签页
+sidebar_hidden_hint	隐藏吧台
+sidebar_menu_items	菜单与项目
+sidebar_enable_all	启用全部
+sidebar_disable_all	禁用全部
+sidebar_order_saved	侧边栏订单已保存
+sidebar_visibility_saved	侧边栏可见性已保存
+amounts_hide	隐藏
+amounts_show	显示
+no_sale_yet	尚无销售
+favorites	收藏
+favorites_help	您经常出售的商品，已为您的登录保存。将一个添加到账单，或从下面所有商品中建立您的列表。
+your_favorites	您的收藏
+all_items	所有商品
+no_favorites	尚无收藏 — 从下面的列表添加商品。
+add_to_bill	加入账单
+added	已添加
+owes_word	欠
+selected_word	已选择
+chip_clear_credit	已结清 — 赊账或预付
+chip_missing_customer	所选客户不存在 — 请重新选择
+chip_no_customer	尚无客户 — 输入姓名，然后点赊账
+credit_summary_fmt	{} 位客户 · 未结赊账 {} · 预付 {}
+recent_label	最近:
+inventory	库存
+inventory_stock	库存与盘点
+branches	分店
+branches_org	分店与组织
+credit_customers	往来方（债务人与债权人）
+customer_name_ph	往来方名称
+new_customer_ph	新往来方名称
+item_name_ph	费率名称（如 Surface Zone A）
+item_price_ph	每kg/首重
+start_template	产品
+next_booking	下一单
+destination_ph	目的地城市/区域
+consignee_ph	收件人
+consignee_phone_ph	收件人电话
+consignee_address_ph	收件地址
+origin_name_ph	寄件人姓名
+origin_phone_ph	寄件人电话
+origin_address_ph	取件 / 始发地址
+booking_consignor_heading	寄件人（客户）
+booking_consignee_heading	收件人
+booking_consignor_hint	选一个往来方自动填写，散客可留空。上门取件和退件（RTO）需要。
+booking_consignee_hint	包裹收件人。柜台直接交寄的包裹可留空。
+weight_kg_ph	实际 kg
+length_cm_ph	长 cm
+breadth_cm_ph	宽 cm
+height_cm_ph	高 cm
+chargeable_kg	计费重 kg
+awb_label	运单号
+booking_help	柜台寄件：目的地 → 称重 → 选费率 → 记账/现金 → 付款。运单号印在小票上。下一单清空柜台。
+cart_empty_hint	柜台为空 — 设置目的地和重量，在费率上点 ADD，然后付款。
+team	团队
+team_pins	团队与密码
+my_pin_settings	我的密码
+settings_hub_help_my_pin	更改此设备上已登录人员的解锁密码。
+team_self_help	只有你能更改自己的开锁 PIN（以及可选的登录密码）。如果需要不同的屏幕或权限，请问店主。
+backup_settings	备份与设置
+lock_app	锁定
+pick	选择
+select	选定
+advance	推进
+owner	店主
+staff	员工
+photo	照片
+auto	自动
+prev	上一页
+next	下一页
+ok	确定
+this_shop	服务器模式
+extra_till	客户端模式
+off	关
+server	服务器
+client	客户端
+language_currency	语言与货币
+language	语言
+choose_language	选择你的语言
+language_setup_hint	跟随此设备的语言，或自己选择一种。
+lang_follow_platform	使用设备语言
+lang_pick_user	使用所选语言
+lang_platform_now	当前设备语言
+selected_language	已选
+continue	继续
+this_device	此设备
+device_use_q	此设备将如何使用？
+last_server_mode	之前是服务器——点按继续
+last_client_mode	之前是客户端——点按继续
+choose_server	选择服务器
+choose_server_hint	此设备已有服务器。打开一个，或为另一家企业创建新服务器。
+create_new_server	创建新服务器
+open_server	打开
+new_server_name_ph	新服务器名称（可选）
+server_remove_pin_ph	删除服务器需 Owner PIN
+only_owner_remove_server	仅 Owner 可删除服务器
+owner_pin_remove_server	删除此服务器需要 Owner PIN
+device_setup_help	服务器在此保存账簿。客户端与服务器配对。
+currency	货币
+backup	备份
+settings_sec_diag	诊断
+settings_hub_help	一次打开一个区域——少滚动，选项更清楚。
+settings_sec_devices	额外柜台与分店
+settings_sec_alerts	提示
+alerts_help	状态消息为你在屏幕上停留多久（本次登录）。
+snack_secs_ph	秒数（3–60，默认 10）
+snack_secs_save	保存提示时长
+snack_secs_saved	提示时长已保存——{n} 秒
+snack_secs_bad	请输入秒数（3–60）
+cancelled	已取消
+cancel	取消
+opening_client	正在打开客户端…
+preparing_desk	正在准备桌面…
+opening_server	正在打开服务员…
+creating_server	正在创建服务员…
+diag_privacy_help	日志保留在此设备上。密钥（PIN、密码）从不存储。每次共享设备外的包都需要您明确批准 — 绝不出售或提供给第三方
+diag_level	详细级别
+diag_level_error	错误
+diag_level_warn	警告
+diag_level_info	信息
+diag_level_debug	调试
+diag_support_start	开始 30 分钟支持会话
+diag_support_stop	结束支持会话
+diag_support_started	支持会话开启 — 30 分钟调试详情
+diag_support_ended	支持会话已结束
+diag_export_local	导出本地副本
+diag_export_local_done	本地诊断就绪于 {path} — 选择保存位置
+diag_approve_send	批准从此设备共享
+diag_send_heading	从本设备分享出去
+diag_send_help	批准仅针对一个包，随后过期。临时使用 — 仅用于修复或改进产品。不与第三方共享。适用于 Linux、Windows、macOS 和 Android
+optional_login_heading	可选登录
+rights_heading	权限
+booking_scope_heading	国内 / 国际
+diag_send_approved	已批准共享一个包（即将过期）
+diag_export_send	创建共享包（需要批准）
+diag_export_send_done	共享包就绪于 {path} — 选择保存位置，然后仅发送给 Kumkaj 支持团队
+diag_save_bundle	保存诊断副本
+diag_bundle_saved	诊断副本已保存至 {path}
+diag_bundle_failed	无法保存诊断副本 — 请重试
+diag_clear	清除诊断日志
+diag_cleared	诊断日志已清除
+use	使用
+add_branch	添加分店
+add_conversion	添加换算
+add_item_plain	添加项目
+add_note	添加备注
+add_opening_balance	添加期初余额
+add_rider	添加骑手
+add_staff	添加员工
+add_unit	添加单位
+add_use_name	添加/使用此名称
+allow_extra_tills	允许额外柜台
+amend	修改
+apply_country_pack	应用国家包
+datetime_appearance	日期与时间显示方式
+datetime_appearance_help	账本内部保存年在前的 RFC3339。这里只改变收据、标签、报表和屏幕上日期与时钟的样子。
+datetime_example	当前示例：{ex}
+date_order	日期顺序
+date_order_dmy	D/M/Y
+date_order_mdy	M/D/Y
+date_order_ymd	Y-M-D
+time_format	时钟
+time_format_24h	24 小时制
+time_format_12h	12 小时制
+attach_bill_photo	附上账单照片
+attach_pdf	附上PDF
+attach_photo	附上照片
+bank	银行
+bank_in	存入银行
+bank_out	从银行取出
+bank_to_till	银行 → 柜台
+till_to_bank	柜台 → 银行
+mark_cleared	标记为已清算
+unmark	取消标记
+role_both	两者
+role_carrier	承运商
+role_cashier	收银员
+role_consignor	寄件人
+role_manager	经理
+role_supplier	供应商
+branch_name_sell_ph	要从哪个分店销售
+bring_my_book	带上我的账本
+business_tax_id_ph	企业税号
+card_amount_ph	银行卡金额
+cash_amount_ph	现金金额
+upi_amount_ph	UPI金额
+carrier_cost_ph	承运商成本
+carrier_party_ph	承运商方
+choose_icon	选择图标
+choose_logo	选择标志
+choose_receipt_stamp	选择收据印章
+choose_payment_qr	选择收款二维码
+clear_icon	清除图标
+clear_logo	清除标志
+clear_photo	清除照片
+clear_stamp	清除印章
+clear_payment_qr	清除收款码
+print_faces	打印样式（收据/期间账单）
+print_faces_help	可在寄件收据和期间账单的徽标旁加印章和付款二维码（可选）。
+awb_pools_heading	承运商运单号段
+add_awb_pool	添加运单号池
+awb_pool_carrier_ph	承运商名称
+awb_pool_start_ph	起始号
+awb_pool_end_ph	结束号
+awb_pool_prefix_ph	前缀（可选）
+awb_pool_label_ph	标签（可选）
+pieces_ph	件数（留空 = 1）——货运/多件请展开
+bulk_awbs_ph	批量运单号——粘贴多个（换行或逗号），一次推进状态
+tds_cut_ph	TDS 扣款（可选）
+discount_ph	折扣（可选）
+cheque_no_ph	支票号（可选）
+bill_reminder_chase	账单催收列表
+month_mix_report	本月结构报表
+copy_month_gst_csv	复制本月GST CSV
+domestic	国内
+international	国际
+pick_logo	选择标志
+booking_scope_hint_domestic	体积÷5000（国内）— 国际÷6000
+booking_scope_hint_intl	体积÷6000（国际）— 国内÷5000
+cod_register	COD登记表
+collect_cod	收取COD（运单）
+consignments_dispatch	托运与派送
+consignor_party_ph	寄件人/往来方名称
+copy_day_book_csv	复制日记账CSV
+copy_day_close	复制日结
+copy_items_csv	复制项目CSV
+copy_outstanding_csv	复制未结CSV
+copy_parties_csv	复制往来方CSV
+copy_party_ledger_csv	复制往来方账本CSV
+copy_receipt	复制小票
+copy_report	复制报表
+counted_cash_ph	抽屉里点清的现金
+counter_agency_ph	柜台/代理名称（可选）
+create_backup	创建备份
+day_close_summary	日结汇总
+delete_party	删除所选往来方
+dispatch_to_rider	已下单 → 给骑手
+docket_charge_ph	面单费
+declared_value_ph	申报价值
+contents_ph	内装
+eway_ph	电子运单号
+insurance_label	保险（是/否）
+yes_label	是
+no_label	否
+print_route_label	打印路线
+new_party_kind_label	新往来方类型
+done_open_books	完成 — 打开账本
+export_day	导出当天
+extra_note_expense_ph	上一笔费用的附加备注
+extra_note_awb_ph	此运单/销售的附加备注
+failed_delivery	投递失败
+find_scan_awb	查找/扫描运单
+forget_shop	忘记此店铺
+fuel_ph	燃油
+handover_carrier	已下单 → 给承运商
+import_day	导入当天
+import_items_csv	导入项目/费率CSV…
+import_parties_csv	导入往来方CSV…
+import_pincodes_csv	导入邮编CSV…
+import_carrier_bill_csv	导入承运商账单CSV…
+copy_carrier_bill_report	复制上次承运商账单报告
+use_carrier_cost	使用承运商成本
+rate_carrier_ph	承运商（空白=我们的售价）
+rate_party_ph	往来方（空白=所有客户）
+carrier_pick_ph	用于成本的承运商（来自比较）
+item_name	项目名称
+load_bulk_row	加载批量行 → 柜台
+login_id_ph	登录编号
+mark_delivered	标记为已送达
+manifest_cod_total	COD合计
+manifest_received_by	收件人
+manifest_sign	签名
+ndr_address_wrong	地址错误
+ndr_customer_unavailable	客户不在
+ndr_door_locked	门锁
+ndr_other	其他
+ndr_refused	拒收
+out_for_delivery	派送中
+print_drs	打印DRS
+print_run_sheet	打印派送单
+reattempt	再次派送
+rider_cod_handed_ph	骑手上交的COD
+settle_rider_cod	结算骑手COD
+mode_desk	柜台
+mode_rider	骑手
+waiting_office	等待同步到办公室
+capture_signature	采集签名
+incoming_manifest	入库清单
+pickup_request	取件请求
+pickup_run	取件趟次
+auto_assign_area	自动分配区域
+reorder_stops	重排停靠点
+settle_rider_pay	结算骑手工资
+vehicle_inspect	车辆检查
+print_docket	打印运单
+franchise_statement	加盟对账单
+tally_export	导出Tally凭证
+open_whatsapp	打开WhatsApp
+copy_sms	复制短信文本
+pick_barcode_image	选择图片扫描
+share_receipt_whatsapp	用WhatsApp分享小票
+delivery_feedback	投递反馈
+lan_self_book	局域网自助下单
+new_party_clear	新往来方（清空表单）
+new_party_kind_ph	新往来方类型（供应商/承运商）
+next_country	下一个国家
+prev_country	上一个国家
+note_gstin_ph	备注/GSTIN/协议提醒
+note_pod_ph	备注/POD（可选）
+on_account_ap	记账(AP)
+org_optional_ph	组织（可选）
+paid_now	已付款
+pairing_code_ph	配对码
+pair_now	立即配对
+party_name_selected_ph	往来方名称（或使用所选）
+password_ph	密码
+pay_ap_card	用卡付AP
+pay_ap_cash	用现金付AP
+pay_ap_upi	用UPI付AP
+period_bill	期间账单
+period_bill_party	期间账单（往来方）
+pick_pod_photo	选择POD照片
+print_awb_label	打印运单标签
+print_open	打印/打开
+reason_amend_ph	修改/作废/退款原因
+reason_note_ph	原因/备注（损耗、盘点…）
+record_day_close	记录日结
+refresh_from_shop	从店铺刷新
+refund	退款
+remit_cod	上缴COD（往来方）
+remove_selected	删除所选
+restore_backup	恢复备份
+rider_name_ph	骑手姓名
+rider_phone_ph	骑手电话
+riders	骑手
+riders_own_fleet	骑手（自有车队）
+rollup	汇总
+save_booking_measures	保存寄件尺寸
+save_brand	保存品牌
+save_business_id	保存企业税号和服务%
+save_business_name	保存企业名称
+save_features	保存岗位设置
+save_names	保存名称
+server_ip_ph	服务器IP（如192.168.1.10）
+set_credit_limit	设置信用额度
+set_login_selected	为所选设置登录
+set_login_named	为 {name} 应用登录
+shop	店铺
+start_fresh	从头开始
+stop_extra_tills	停止额外柜台
+backup_auto	每天自动备份 · 上次 {when} · 最近 14 天保存在 {dir}。
+backup_auto_none	每天自动备份 — 第一次马上开始。
+backup_copy_to	副本也会存到 {dir}。
+backup_copy_btn	同时把备份复制到文件夹…
+autostart_off	随电脑启动
+autostart_on	随电脑启动 ✓ — 点按停止
+autostart_done_on	现在电脑开机就会打开应用 — 停电后店铺服务器也会恢复。
+autostart_done_off	电脑开机不再打开应用。
+right_allowed	允许
+right_with_approval	需审批
+right_denied	不允许
+editing_staff	权限属于
+team_pick_ph	要编辑的员工姓名
+select_staff	选择该员工
+rights_help	权限 — 点按切换：允许 → 需批准（当时由经理输入 PIN）→ 不允许。
+right_void_refund	作废或退款订单
+right_amend_sale	修改已记录的订单
+find_server	查找店内服务器
+finding_server	正在此 Wi‑Fi 上查找店内服务器…
+no_server_found	未找到服务器。请确认店内设备在同一 Wi‑Fi 并已允许额外收银台，或输入其 IP。
+servers_found_pick	点按要连接的店铺。
+server_host_selected	正在使用 {host} — 输入配对码，然后点立即配对。
+device_forgotten	店铺已移除此设备 — 请用店铺当前的配对码重新配对。等待中的订单会保留。
+forget_device	忘记
+last_seen	上次
+new_pair_code	新的配对码
+lan_offline	离线
+lan_offline_waiting	离线 · {n} 条等待中
+lan_connecting	正在连接店铺…
+pair_finishing	正在完成配对… 应用营业处的账本
+pair_opening	正在打开营业处…
+lan_live	实时
+lan_sending	正在发送 {n} 条
+lan_sign_in_to_send	重新登录以发送 {n} 条
+lan_pair_again	请重新配对此设备
+lan_update_app	请更新应用——此设备与办公室服务器版本不同
+allow_firewall	允许其他设备连接
+firewall_blocked	本电脑的防火墙正在阻止其他设备——请点“允许其他设备连接”。
+firewall_waiting	正在等待管理员确认…
+lan_join_help	其他设备可以连接到本机 — 配对码 {code}。在另一台设备上选择客户端模式，然后点“查找店内服务器”，或输入此地址：{addr}
+lan_pair_status	无线网络 {addr}
+lan_join_help_no_addr	连接此设备到 Wi‑Fi 以获取地址。
+lan_no_address	本机还没有 Wi‑Fi 地址 — 请连接店内的 Wi‑Fi。
+lan_not_listening	目前无法接受设备连接 — 可能有其他程序占用了端口 {port}。请重新启动应用。
+lan_tills_off	额外柜台已关闭。本网点账本保存在本机。若另一台设备也要登记包裹或收款，请允许额外柜台。
+paired_with	已与 {url} 上的店铺配对
+not_paired	未配对 — 请连接店内服务器。
+choose_device_use	选择本设备的用途。
+paired_note	已配对。解锁即可收款，或点刷新获取店里的最新数据。
+last_update_at	最后一次从店里更新：{time}。
+pair_intro	查找服务器，或输入其地址和配对码。
+queue_waiting	等待发送到店里（{n}）：
+queue_tries	已尝试 {n} 次 · 最后回复：{e}
+save_backup_copy	保存备份副本…
+backup_copy_saved	备份副本已保存——请放在本设备之外（U 盘或另一台设备）
+backup_copy_overdue	已有 {n} 天没有备份副本离开本设备——设置 → 备份
+backup_copy_failed	无法在该处保存备份副本——请选择其他位置
+clock_off	本设备的时钟与店铺服务器相差 {min} 分钟——请在本设备上设置正确时间
+printers_heading	本设备上的打印机
+printers_help	添加每台打印机一次，然后选择收据和 AWB 标签的打印位置——列表中的第一台优先尝试；失败则下一台。路线为空=不打印该功能。目标空白（默认）、系统名称或网络地址（如 192.168.1.50）。每台设备保留自己的打印机。
+job_width	内容宽度（毫米）
+job_width_ph	或输入宽度，40–210 mm
+job_layout	版式
+job_delivery	任务发送方式
+job_size	字号
+job_size_ph	例如 18, 20, 26…
+save_receipt_format	保存收据格式
+save_label_format	保存标签格式
+test_receipt_format	测试收据
+test_label_format	测试标签
+test_receipt_sent	示例收据已送出
+test_label_sent	示例标签已送出
+test_print_no_printer	该作业没有打印机 — 请在此位置添加一台
+printers_host_only	打印机在店铺设备（Server）上设置。本收银机把任务发到那里——查找 / 添加 / 分配仍在 Server 上。测试页发到 Server。
+printers_pool_heading	打印机
+printers_routes_heading	打印位置
+printer_label_ph	名称（例如柜台）
+printer_target_ph	host:9100 · bt:MAC · usb:VID:PID · 系统名称
+printer_mode_heading	所选路线的格式
+printer_mode_standard	标准纵向
+printer_mode_landscape	标准横向
+printer_mode_thermal	热敏
+printer_mode_standard_short	纵向
+printer_mode_landscape_short	横向
+printer_mode_thermal_short	热敏
+printer_format_custom	新建自定义格式
+printer_format_custom_label	自定义
+printer_format_custom_added	已为此路线添加自定义格式
+add_printer	添加打印机
+remove_printer	去掉最后一项
+route_pick_ph	receipt 或 label
+route_add_printer_ph	添加到此打印路线
+route_receipt	收据
+route_label	AWB 标签
+route_dont_print	未指定打印机
+route_add	添加到路线
+route_up	上移
+route_down	下移
+route_remove	去掉最后一项
+route_clear	清除此位置的打印机
+save_printers	保存打印机
+print_test_page	打印测试页
+printers_saved	已保存本设备的打印机
+test_page_sent	测试页已发送——请查看打印机
+printers_found	在本设备上找到：{list}
+find_printers	查找打印机
+printers_looking	正在本设备和 Wi‑Fi 上查找打印机…
+printers_tap_find	点「查找打印机」，找出接受作业的队列，以及这台 Wi‑Fi 上的网络收据打印机（不含已移除或离线的）。
+printers_none_found	没有找到打印机 — 输入系统打印机名称，或网络地址（例如 192.168.1.50）。
+receipt_printer_ph	收据打印机
+queue_refused	店里未接受（{n}）— 请在柜台逐一核对：
+clear_not_accepted	已核对 — 清空此列表
+device_name_ph	本设备名称
+lan_last_update	最后更新 {time}
+lan_not_accepted	{n} 条未被接受
+connected_now	当前在线
+backup_failed	上次自动备份失败：{e}
+backup_overdue	已 {n} 天没有备份 — 请让本机上的应用保持打开，以便备份。
+disk_low	本机仅剩 {mb} MB 可用空间 — 备份很快会失败。请清理一些空间。
+last_seen_devices	最后看到：{time}
+sync_interval	每 {secs} 秒同步一次
+connection_to_shop	与店铺的连接
+supplier_name_ph	供应商名称（或往来方）
+supplier_ph	供应商
+switch_device	切换此设备
+take_payment	收款
+tax_added_till	{tax}未税
+tax_inside_price	{tax}含税
+today_books	今日账本
+unlock_after_pairing	输入密码
+unlock_with_login	用登录解锁
+update_my_password	修改我的密码
+update_my_pin	更新我的 PIN
+duress_heading	紧急解锁PIN（仅店主）
+duress_help	可选。如果开锁时输入的是这个 PIN 而不是你的，全部账本记录会被清除（寄件、分类账、历史），柜台会以店主身份打开，看起来正常 — 费率、往来方、区域、员工和设置都保留。结构和配置不会删除。只在被迫开锁时使用。留空并保存即可关闭。绝不能与任何人的 PIN 相同。
+duress_pin_ph	紧急PIN（4–12位）
+duress_confirm_ph	再输入一次确认
+save_duress_pin	保存紧急PIN
+clear_duress_pin	关闭紧急PIN
+duress_on	紧急解锁PIN已开启
+duress_off	紧急解锁PIN已关闭
+duress_saved	已保存紧急解锁PIN
+duress_cleared	已关闭紧急解锁PIN
+vehicle_ph	车辆
+void	作废
+write_off_ap	核销AP
+write_off_nil	核销/余额清零
+zone_ph	区域（名称来自费率）
+caption_today	今天
+caption_bookings	订单
+caption_payments_today	今日付款
+caption_outstanding	未结
+caption_bank	银行
+paid_by	付款方式
+second_way	第二种方式
+weight_in	重量单位
+size_in	尺寸单位
+goods_received	已收货
+expense_heading	费用
+notes_attach_sale	备注与附件（所选销售）
+notes_attach_party	备注与附件（所选往来方）
+attachments_last_expense	附件（上一笔费用）
+credit_limit_heading	信用额度（所选/指定往来方）
+pay_selected_heading	支付所选（结清欠款/预付）
+write_off_heading	核销（无付款结清）
+pay_ap_heading	支付我们欠他们的(AP)
+country_tax	国家与税务
+extra_tills_heading	额外柜台
+other_devices_help_heading	设置其他设备
+other_devices_help	在本设备（服务器模式）：额外柜台与分店 → 允许额外柜台。记下配对码和 Wi‑Fi 地址。若出现「允许其他设备连接」，点它。在电脑上点「随电脑启动」。在每台其他设备上：安装应用，选择客户端模式，查找店铺服务器（或输入地址），输入配对码，立即配对。Wi‑Fi 断开时订单留在设备上，服务器应答后再送出。
+your_brand	你的品牌（应用内）
+units_heading	单位
+booking_measures	寄件尺寸
+drawer_count	抽屉盘点（可选）
+spreadsheet_csv	电子表格(CSV)
+bank_reconciliation	银行对账（按银行对账单勾选）
+book_add_product	寄件 — 添加产品/费率
+book_opening_credit	寄件 — 期初赊账
+account_kind	账户类型（点选其一）
+active_ledger	当前账本
+actual_total_cap	实际总额
+amend_help	选择一笔销售进行修改、作废或退款。修改保留完整历史。
+applied_total_cap	应付总额
+bank_balance	银行余额
+bank_net_today	今日银行净额
+branch_export_help	导出会把当天快照写入备份文件夹，并复制到剪贴板。要导入另一网点的一天，把文件存为该文件夹里的 import_branch_snapshot.json，然后点导入。
+brand_shown_help	显示在应用内屏幕上。此设备上已安装应用的名称和图标保持平台列表的样子。
+app_icon	应用图标
+logo_help	可选的应用内屏幕商店标记。
+onboard_layout	您将获得
+item_photo_help	可选。若无照片，我们将显示来自项目名的首字母。
+cash_in_hand	手头现金（柜台）
+change_my_pin_heading	更改我的 PIN（只能改你自己的）
+connect_to_server	连接到服务器
+counter_locked	柜台01 · 已锁定
+country_pack_help	国家包设置税名和计算方式、即时付款通道以及打印在账单上的企业税号。Kumkaj 不在任何地方报税或开具政府电子发票。
+currency_use_help	滚动并为任何支持的货币点击使用。
+day_close_help	记录日结会将此汇总（及盘点差异）保存到审计日志。不会停止销售。
+expenses_word	费用
+feature_access_help	所选员工的功能权限（添加后再点）
+footer_local	本地SQLite · 永久免费 · 零云端
+fresh_book_moklanjo	打印机
+fresh_selected	已选Fresh — 目录保持为空。准备好后点击Done。
+gross_word	毛额
+how_start	您想如何开始？
+later_country_pack	打印机
+local_badge	本地
+measures_help_moklanjo	柜台如何测量包裹。用你使用的单位填写尺寸和重量 — 标准（cm、m、in、ft · kg、g、lb、oz）或与上方cm/kg关联的自有单位（直接或通过其他单位）。账本始终记录为kg。字段留空则保留。
+mix_type_hint_moklanjo	填写每种方式的金额（现金/UPI/银行卡/赊账）。必须与账单相等。赊账需要在上方选择顾客。
+money_in_sales	收入（销售）
+more_help_moklanjo	目录、销售、赊账、团队、备份 — 需要时还有库存和额外柜台。
+net_word	净额
+offline_badge	离线
+optional_login_help	可选登录（编号+密码）。店主设置一次；之后只有用户本人可改密码。
+or_unlock_login	或用登录编号+密码解锁
+permission_preset	岗位（设定屏幕和权限）
+preset_help_moklanjo	收银员：销售。经理：销售+项目+作废/修改。
+product_locked_moklanjo	Moklanjo
+product_only_moklanjo	此应用仅为 Moklanjo——账簿与寄件台。其他行业的产品以后会单独推出。
+purchases_cogs	采购(COGS)
+qty_cap	数量
+restore_help	恢复：选择一个备份。账本会回到当时的样子；当前账本会先保存，所以可以撤回。
+wipe_data_heading	删除本地数据
+wipe_data_help	仅店主 — 与 Windows 卸载相同选项。营业记录清除历史并保留费率/设置。店铺设置删除账本。屏幕偏好：窗口/语言。用店主 PIN 确认。
+wipe_trading	营业记录
+wipe_schema	店铺设置
+wipe_ui	屏幕偏好
+wipe_owner_pin_ph	删除用店主 PIN
+wipe_delete_selected	删除所选
+wipe_owner_only	只有店主可以删除本地数据。
+restore_owner_only	只有店主可以恢复备份。
+wipe_owner_pin_needed	输入店主 PIN 以删除本地数据。
+wipe_nothing_selected	请先选择要删除的内容。
+wipe_done	已删除所选本地数据。
+wipe_schema_done	店铺设置已清除 — 选择 Server 或 Client 继续。
+rounded_total	舍入总额
+setup_app_moklanjo	设置 Moklanjo
+shop_logo_optional	店铺标志（可选）
+stock_type_help	输入项目名称（部分即可）、数量，然后调整。尚未盘点的项目需要先开始计数一次。
+team_owner_help	雇用：选一个岗位（收银员 / 经理），姓名 + 起始 PIN，然后添加。只有这个人不同时：打开下面的屏幕和权限，再保存岗位设置。每个人在底部改自己的 PIN — 店主不能改别人的。
+they_owe_us	他们欠我们
+unit_at_cap	单价
+units_help	项目标签代码（kg、piece、bag）。每个单位必须直接或通过其他单位与标准（kg · cm · ml · pc）关联，如 1 crate = 2 box 且 1 box = 20 cm。换算：1 from = factor to。货币永远不是单位。
+we_owe_them	我们欠他们
+who_unlocking	谁在解锁？
+locked_word	已锁定
+show_pin	显示PIN
+hide_pin	隐藏PIN
+set_owner_pin	设置店主PIN
+enter_owner_passcode	输入店主密码
+enter_staff_passcode	输入员工密码
+pin_count_zero	0/12 位 · 至少 4 位，然后确定
+pin_count_need	{} / 12 位 · 还需要 {} 位
+pin_count_full	12/12 位 · 请按确定
+pin_count_ready	{} / 12 位 · 准备好后按确定
+pin_hint_choose	选择4–12位数字（键盘或面板）· 回车/确定保存
+pin_hint_new	新的4–12位店主PIN（键盘或面板）· 回车/确定
+pin_hint_shop_code	店铺设备 · 配对码 {}
+pin_hint_books	此设备保存账本
+pin_hint_paired	额外柜台已配对 — 解锁以销售
+pin_hint_pair_first	额外柜台 — 先与店铺设备配对
+unlock_to_continue	解锁以继续
+no_staff_yet	尚无员工 — 以店主解锁，然后团队
+status_server_set_pin	服务器模式 — 设置店主PIN
+status_server_tills	服务器模式 — 额外柜台可加入。解锁
+status_server_unlock	服务器模式 — 以店主解锁
+status_client_unlock	客户端模式 — 解锁以销售
+icon_new_selected	图标：已选新文件 — 点保存品牌
+icon_custom	图标：您店铺的标志
+icon_default	图标：Kumkaj 标志（默认）— 选择您自己的
+logo_yours	徽标：您店铺的徽标 — 显示在屏幕和收据上
+logo_default	徽标：Kumkaj 标志（默认）— 如有自己的请选择
+tmpl_current	当前：{} — {}
+tmpl_selected	已选：{} — {}
+setup_complete	设置完成
+onboard_fresh_tmpl	全新 · {} — 目录从空开始；在物品中添加，然后点完成。
+onboard_book_tmpl	账本 · {} — 添加物品和期初赊账，然后点完成。
+onboard_template_tmpl	可先为店铺命名，然后选择开始方式。
+tmpl_blurb	快递账簿与寄件台：寄件人、承运商、日记账、运单号。
+tmpl_how	在寄件台登记包裹；日记账看今天；标签页查看运价、往来方和报表。
+trk_booked	已登记
+trk_picked_up	已揽收
+trk_in_transit	运输中
+trk_delivered	已送达
+trk_rto	退回中
+lane_to_dispatch	待发出
+lane_with_carrier	在承运商处
+lane_failed	投递失败
+lane_done_today	今日完成
+ops_board_help	按包裹在今天工作中的位置分组。点按（或扫描）包裹即可选中，然后对所有选中的包裹一次操作——每一栏只提供适合它的操作。
+lane_empty	这里暂时没有。
+picked_fmt	已选 {n}
+pick_all	全选
+bag_for_carrier	交给承运商
+send_with_rider	交骑手派送
+out_again	再次派送
+return_to_sender	退回寄件人
+runs_bags_heading	最近的派送单和交接袋
+print_word	打印
+bag_word	承运商交接袋
+run_word	骑手派送单
+parcels_fmt	{n} 件包裹
+parcel_history	记录
+attempt_fmt	第 {n} 次
+pieces_short_fmt	{n} 件
+note_reason_ph	备注或原因
+ops_pick_first	请先选包裹——点按或扫描
+cod_to_collect	已送达——待收代收款
+cod_on_road	代收款仍在途中
+cod_owed_consignors	已收——待付给寄件人
+cod_rto_fees	待收的 RTO 费用
+cod_to_hand_in	应交代收款
+parcel_one_fmt	{n} 件包裹
+facet_bank_title	报表
+facet_bank_help	日记账、往来账龄、银行记录和期间损益。
+facet_ops_title	货件与派送
+facet_ops_help	扫描或输入 AWB → 查找，然后推进 / 打印标签 / COD。派送给骑手或承运人。
+facet_cod_title	COD 登记册
+facet_cod_help	送货时收款，然后汇给寄件人。
+facet_riders_title	骑手（自有队伍）
+facet_riders_help	添加骑手，然后从 Ops 派送已预订的 AWB。
+against_bill_ph	对应上方账单号（可选）
+aliases_ph	别名 — 其他名称，逗号分隔
+amount_blank_full_ph	金额（空 = 全部余额）
+amount_owed_ph	欠款金额
+amount_ph	金额
+amount_received_ph	收到金额
+amount_we_pay_ph	我们支付的金额
+awb_scan_ph	AWB / 扫描条码
+bulk_csv_ph	批量 CSV — destination,consignee,kg,cod_paise,note
+business_name_ph	企业名称
+category_new_ph	类别（可选，新类别将自动创建）
+cod_amount_ph	COD 金额
+code_bag_ph	代码（bag）
+conv_factor_ph	系数（25 = 1 bag → 25 kg）
+country_code_ph	国家代码，如 IN, GB, US, AE, BR
+credit_khata_amount_ph	赊账金额
+credit_limit_ph	信用额度（0 = 无）
+dim_unit_code_ph	尺寸单位代码（cm）
+divisor_ph	体积除数（5000）
+extra_per_kg_ph	额外 / kg
+first_amount_ph	首金额
+first_kg_ph	首 kg（阶梯）
+from_code_ph	从代码（bag）
+item_name_lang_ph	物品名称 — 用您的语言输入
+login_id_opt_ph	登录 ID（可选）
+manager_pin_ph	经理 PIN（仅当您无法作废时）
+new_branch_name_ph	新分支名称
+new_password_ph	新密码（可选）
+new_pin_ph	新 PIN（4–12 位）
+note_bank_ph	备注（存款、取款、…）
+note_buy_expense_ph	备注（燃料、租金、…）
+note_expense_ph	备注（燃料、办公、…）
+notify_phone_ph	通知电话（WhatsApp/SMS 钩子）
+options_moklanjo_ph	选项（可选）— Large=20, Gift wrap=10
+part_second_way_ph	第二种方式的部分（可选）
+phone_ph	电话
+address_ph	地址
+party_custom_fields_heading	自定义字段（已选往来方）
+party_custom_help	在此往来方上添加任意标签和值 — WhatsApp、GSTIN、线路代码等
+party_custom_key_ph	字段名（如 WhatsApp）
+party_custom_value_ph	值
+party_custom_add	添加/更新字段
+party_custom_remove	删除字段
+party_custom_empty	暂无自定义字段
+party_custom_pick_first	选择往来方以添加自定义字段
+place_name_ph	此地点名称
+price_ph	价格
+qty_example_ph	数量（例如 kg 用 1.5）
+quantity_ph	数量
+reason_required_ph	原因（必填）
+role_title_ph	职位名称（例如 Barista）
+service_pct_ph	服务 % 可选 0/10/12
+short_code_ph	短代码（MG02）
+slab_kg_ph	kg 计费阶梯（0.5）
+staff_name_ph	员工姓名 / 编号
+starting_password_ph	初始密码（可选）
+starting_pin_ph	初始 PIN（4–12 位）
+tax_rate_ph	税率名称或 % — Standard, Reduced, 0, 5, 12, 18, 20
+to_code_ph	到代码（kg）
+uncleared_no_ph	上方未清算编号
+unit_cost_ph	单位成本
+unit_kg_blank_ph	单位（kg 或空）
+unit_name_bag_ph	名称（Bag）
+weight_unit_code_ph	重量单位代码（kg）
+zone_name_ph	区域名称
+pay_credit	赊账
+book_kind_today	今日账本
+book_kind_month	本月账本
+book_kind_aging	未结 / 借贷
+book_kind_balance	资产负债表
+ops_desk_help	用 USB 条码扫描器扫描 AWB（或输入）→ 查找。然后推进、打印标签或收取 COD。标签以 Code 128 打印。
+role_help_consignor	角色：寄件人 — AR（他们欠我们）。同一家公司也可以是承运人。
+role_help_carrier	角色：承运人 — AP（我们欠他们）。同一家公司也可以是寄件人。
+role_help_both	角色：寄件人 + 承运商 — 同一个往来方，应收和应付账本，报表显示净额。
+role_help_supplier	角色：供应商 — 采购的应付账。
+lane_declared_label	记账寄件
+lane_owner_label	现金寄件
+money_lane_bill	账单：{lane}

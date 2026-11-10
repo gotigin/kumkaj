@@ -1,0 +1,835 @@
+# Swahili — Kiswahili (sw). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	Vitabu vya usafirishaji + dawati la kutuma. Bure nje ya mtandao.
+unlock	Fungua
+pin_hint	PIN ya mmiliki huanza 0000
+sell	Uhifadhi
+buy	Malipo
+books	Kitabu cha siku
+books_help	Hali ya leo. Uhifadhi = mizigo inayoingia. Malipo = bili za wasafirishaji na gharama. Wahusika = watumaji na wasafirishaji.
+buy_help	Vocha za gharama na bili za wasafirishaji (pesa inayotoka). Ya akaunti hubaki kwenye daftari la mhusika.
+sell_money_in	Hifadhi mzigo
+buy_money_out	Gharama / bili ya msafirishaji
+record_purchase	Rekodi ununuzi
+add_expense	Vocha ya gharama
+bank_book	Kitabu cha benki
+credit_help	Kitambulisho cha mhusika ni cha kipekee (majina yanaweza kujirudia). Majukumu: mtumaji (AR), msafirishaji (AP), au wote wawili kwenye kitambulisho hicho. Daftari hukaa tofauti; ripoti huonyesha jumla halisi.
+party_kind_ph	Jukumu maalum (hiari) — au gusa chip hapo juu
+parties_list_heading	Wahusika waliohifadhiwa
+reports_help	Kitabu cha siku, wadaiwa na wadai, kitabu cha benki, vocha za gharama, faida na hasara.
+reports_today	Kitabu cha siku (leo)
+reports_month	Faida na hasara (mwezi)
+reports_aging	Madeni / Dr-Cr
+reports_balance_sheet	Karatasi ya mizania
+reports	Ripoti
+refresh	Onyesha
+undo	Tendua
+start_tracking	Anza kuhesabu
+stock_minus	− Hisa
+stock_plus	+ Hisa
+settle_cash	Lipa taslimu
+settle_card	Lipa kwa kadi
+items	Viwango na huduma
+nav_items	Viwango
+more	Zaidi
+your_items	Viwango vyako
+items_help	Kila safu ni kiwango (mf. Surface Zone A). Kitengo kwa kawaida ni kg. Gusa kuhariri.
+add_item	Ongeza kiwango
+new_item	Kiwango kipya
+adding_item	Inaongeza kiwango kipya
+editing_item	Inahariri
+save	Hifadhi
+remove	Ondoa
+empty_catalog	Hakuna viwango bado. Fungua Viwango na huduma, ongeza kimoja (jina + bei, kitengo kg), kisha Uhifadhi.
+counter_sale	Uhifadhi wa kaunta
+total	Jumla
+cash	Taslimu
+upi	UPI
+card	Kadi
+credit	Wahusika
+clear	Futa
+ready_to_sell	Tayari kuhifadhi
+today_prefix	Leo
+today_mid	leo
+owed	deni
+round_word	kuzungusha
+back	Rudi
+sold_out	Imeisha
+restock	Rudisha
+not_tracked	Haihesabiwi
+in_stock	dukani
+marked_sold_out	Imewekwa imeisha
+add_upper	Ongeza
+na	Hakuna
+qty	Idadi
+unit_at	Bei
+actual	Halisi
+applied	Iliyotumika
+note_ph	Kumbuka (si lazima)
+rounded	Imezungushwa
+split	Gawanya
+counter	Kaunta
+parcel	Kifurushi
+order	Oda
+sales	Uhifadhi
+sales_refunds	Uhifadhi na kurejesha pesa
+day_close	Funga siku
+reports_expenses	Ripoti na gharama
+nav_reports	Ripoti
+nav_settings	Mipangilio
+nav_lock	Kufunga
+sidebar_settings	Mipangilio ya utepe wa pembeni
+sidebar_settings_help	Iko na alama sawia na upande wa chini. Piga safu ili kubadilisha mpangilio. Badilisha swichi kuonyesha au kuficha. Majaribio na Kula zaidi zipo daima juu ya mabano.
+sidebar_always_on_short	Daima iko
+sidebar_back_settings	Rudi
+sidebar_shown	Ikoonekana
+sidebar_hidden	Imefichwa
+sidebar_always_on	Daima kwenye bar
+sidebar_shown_hint	Iliyonyeshwa kwenye rail ya upande / vitabu vya chini
+sidebar_hidden_hint	Imeyashindwa kutoka bar
+sidebar_menu_items	Menyu na Vifaa
+sidebar_enable_all	Wezesha Zote
+sidebar_disable_all	Ondoa Uwezo wa Zote
+sidebar_order_saved	Utaratibu wa upande ulipatikana
+sidebar_visibility_saved	Uonekano wa upande ulipatikana
+amounts_hide	Ficha
+amounts_show	Onyesha
+no_sale_yet	Bado hakuna mauzo
+favorites	Vipendwa
+favorites_help	Bidhaa unazouza mara nyingi, zimehifadhiwa kwa ajili ya kuingia kwako. Ongeza moja kwenye bili, au unda orodha yako kutoka kwa bidhaa zote zilizo hapa chini.
+your_favorites	Vipendwa vyako
+all_items	Bidhaa zote
+no_favorites	Bado hakuna vipendwa — ongeza bidhaa kutoka kwenye orodha iliyo hapa chini.
+add_to_bill	Kwenye bili
+added	Imeongezwa
+owes_word	anadaiwa
+selected_word	Imechaguliwa
+chip_clear_credit	safi — toa mkopo au chukua avans
+chip_missing_customer	Mteja aliyechaguliwa hayupo — chagua tena
+chip_no_customer	Bado hakuna mteja — andika jina, kisha gusa Mkopo
+credit_summary_fmt	{} wateja · mkopo wazi {} · avans iliyowekwa {}
+recent_label	Hivi karibuni:
+inventory	Hisa
+inventory_stock	Hisa na kuhesabu
+branches	Matawi
+branches_org	Matawi na shirika
+credit_customers	Vyama (wadaiwa na wadai)
+customer_name_ph	Jina la mhusika
+new_customer_ph	Jina la mhusika mpya
+item_name_ph	Jina la kiwango (mf. Surface Zone A)
+item_price_ph	Kwa kg / kipande cha kwanza
+start_template	Bidhaa
+next_booking	Uhifadhi unaofuata
+destination_ph	Jiji / eneo la marudio
+consignee_ph	Mpokeaji
+consignee_phone_ph	Simu ya mpokeaji
+consignee_address_ph	Anwani ya usafirishaji
+origin_name_ph	Jina la mtumaji
+origin_phone_ph	Simu ya mtumaji
+origin_address_ph	Anwani ya mahali pa kuchukua/kutoka
+booking_consignor_heading	Mtumaji (mteja)
+booking_consignee_heading	Mpokeaji
+booking_consignor_hint	Chagua mhusika ili kujaza, au acha wazi kwa mteja wa papo hapo. Inahitajika kwa kuchukua nyumbani na RTO.
+booking_consignee_hint	Mpokeaji wa kifurushi. Acha wazi kwa vifurushi vinavyoletwa moja kwa moja kaunta.
+weight_kg_ph	Kg halisi
+length_cm_ph	Urefu cm
+breadth_cm_ph	Upana cm
+height_cm_ph	Urefu cm
+chargeable_kg	Kg ya kulipia
+awb_label	AWB
+booking_help	Mteja wa moja kwa moja: marudio → pima → chagua kiwango → akaunti/taslimu → lipa. AWB huchapishwa kwenye risiti. Uhifadhi unaofuata husafisha dawati.
+cart_empty_hint	Dawati liko wazi — weka marudio na uzito, gusa ADD kwenye kiwango, kisha lipa.
+team	Timu
+team_pins	Timu na PIN
+my_pin_settings	PIN yangu
+settings_hub_help_my_pin	Badilisha PIN ya kufungua ya mtu aliyeingia kwenye kifaa hiki.
+team_self_help	Ni wewe tu unayeweza kubadilisha PIN yako ya kufungua (na nenosiri la hiari la kuingia). Uliza Mmiliki ikiwa unahitaji skrini au haki tofauti.
+backup_settings	Hifadhi na mipangilio
+lock_app	Funga
+pick	Chagua
+select	Chagua
+advance	Endelea
+owner	Mmiliki
+staff	Wafanyakazi
+photo	Picha
+auto	Otomatiki
+prev	Iliyotangulia
+next	Ifuatayo
+ok	Sawa
+this_shop	Hali ya seva
+extra_till	Hali ya mteja
+off	Zima
+server	Seva
+client	Mteja
+language_currency	Lugha na sarafu
+language	Lugha
+choose_language	Chagua lugha yako
+language_setup_hint	Fuata lugha ya kifaa hiki, au chagua moja mwenyewe.
+lang_follow_platform	Tumia lugha ya kifaa
+lang_pick_user	Tumia lugha iliyochaguliwa
+lang_platform_now	Lugha ya kifaa sasa
+selected_language	Iliyochaguliwa
+continue	Endelea
+this_device	KIFAA HIKI
+device_use_q	Kifaa hiki kitatumikaje?
+last_server_mode	Ilikuwa seva — gusa kuendelea
+last_client_mode	Ilikuwa mteja — gusa kuendelea
+choose_server	Chagua seva
+choose_server_hint	Kifaa hiki tayari kina seva. Fungua moja, au tengeneza seva mpya kwa biashara nyingine.
+create_new_server	Tengeneza seva mpya
+open_server	Fungua
+new_server_name_ph	Jina la seva mpya (si lazima)
+server_remove_pin_ph	Owner PIN kuondoa seva
+only_owner_remove_server	Owner pekee anaweza kuondoa seva
+owner_pin_remove_server	Owner PIN inahitajika kuondoa seva hii
+device_setup_help	Seva huhifadhi vitabu hapa. Mteja huoanishwa na seva.
+currency	Sarafu
+backup	Hifadhi nakala
+settings_sec_diag	Uchunguzi
+settings_hub_help	Fungua sehemu moja kwa wakati — kusogeza kidogo, machaguo wazi zaidi.
+settings_sec_devices	Kaunta za ziada na matawi
+settings_sec_alerts	Arifa
+alerts_help	Ujumbe wa hali ukae skrini kwa muda gani kwako (kuingia huku).
+snack_secs_ph	Sekunde (3–60, chaguo-msingi 10)
+snack_secs_save	Hifadhi muda wa arifa
+snack_secs_saved	Muda wa arifa umehifadhiwa — sekunde {n}
+snack_secs_bad	Weka sekunde kama namba (3–60)
+cancelled	Imeghairiwa
+cancel	Ghairi
+opening_client	Kupanua mteja…
+preparing_desk	Kuanzisha meza…
+opening_server	Kupanua mtendaji…
+creating_server	Kuunda mtendaji…
+diag_privacy_help	Rekodi zilizopo zinabaki kwenye kifaa hiki. Rahisishi (PIN, nywila) hazitajwa kabisa. Kushirika paketi nje ya kifaa kinahitaji idhini yako wazi kila wakati — hakuna uuzaji au kupeleka kwa wadau wa tatu.
+diag_level	Kiwango cha maelezo
+diag_level_error	Makosa
+diag_level_warn	Wito
+diag_level_info	Habari
+diag_level_debug	Utafiti
+diag_support_start	Anza mkutano wa usaidizi wa dakika 30
+diag_support_stop	Oka mkutano wa usaidizi
+diag_support_started	Mkutano wa usaidizi umefungwa — Maelezo ya uchunguzi kwa dakika 30
+diag_support_ended	Mkutano wa usaidizi umekamilika
+diag_export_local	Leta nakala ya ndani
+diag_export_local_done	Nakala za uchambuzi tayari kwenye {path} — chagua mahali pa kuhifadhi nakala
+diag_approve_send	Idhini shiriki nje ya kifaa hiki
+diag_send_heading	Shiriki nje ya kifaa hiki
+diag_send_help	Idhini ni paketi moja, kisha inapotea. Muda mfupi — inatumika tu kutatua au kubuni bidhaa. Haishiriki na wadau wa tatu. Inafanya kazi kwenye Linux, Windows, macOS, na Android.
+optional_login_heading	Kuingia kwa hiari
+rights_heading	Haki
+booking_scope_heading	Ndani / Kimataifa
+diag_send_approved	Shiriki limeidhinishwa kwa paketi moja (linapotea hivi karibuni)
+diag_export_send	Unde paketi ya shiriki (inahitaji idhini)
+diag_export_send_done	Paketi ya shiriki tayari kwenye {path} — chagua mahali pa kuhifadhi, kisha utumie tu kwa usaidizi wa Kumkaj
+diag_save_bundle	Hifadhi nakala ya uchambuzi
+diag_bundle_saved	Nakala ya uchambuzi imehifadhiwa kwenye {path}
+diag_bundle_failed	Haikuweza kuhifadhi nakala ya uchambuzi — jaribu tena
+diag_clear	Futa rekodi za uchambuzi
+diag_cleared	Rekodi za uchambuzi zimefutwa
+use	Tumia
+add_branch	Ongeza tawi
+add_conversion	Ongeza ubadilishaji
+add_item_plain	Ongeza bidhaa
+add_note	Ongeza kumbuka
+add_opening_balance	Ongeza salio la kuanzia
+add_rider	Ongeza mpanda baiskeli
+add_staff	Ongeza mfanyakazi
+add_unit	Ongeza kitengo
+add_use_name	Ongeza / tumia jina hili
+allow_extra_tills	Ruhusu kaunta za ziada
+amend	Rekebisha
+apply_country_pack	Tumia pakiti ya nchi
+datetime_appearance	Uonekano wa tarehe na muda
+datetime_appearance_help	Vitabu huweka RFC3339 ya mwaka wa kwanza ndani. Haya hubadilisha tu jinsi tarehe na saa zinavyoonekana kwenye risiti, lebo, ripoti na skrini.
+datetime_example	Mfano sasa: {ex}
+date_order	Mpangilio wa tarehe
+date_order_dmy	D/M/Y
+date_order_mdy	M/D/Y
+date_order_ymd	Y-M-D
+time_format	Saa
+time_format_24h	Saa 24
+time_format_12h	Saa 12
+attach_bill_photo	Ambatisha picha ya bili
+attach_pdf	Ambatisha PDF
+attach_photo	Ambatisha picha
+bank	Benki
+bank_in	Kuweka benki
+bank_out	Kutoa benki
+bank_to_till	Benki → kaunta
+till_to_bank	Kaunta → benki
+mark_cleared	Weka alama imekwisha
+unmark	Ondoa alama
+role_both	Wote wawili
+role_carrier	Msafirishaji
+role_cashier	Keshia
+role_consignor	Mtumaji
+role_manager	Meneja
+role_supplier	Msambazaji
+branch_name_sell_ph	Jina la tawi la kuuza
+bring_my_book	Leta kitabu changu
+business_tax_id_ph	Kitambulisho cha kodi ya biashara
+card_amount_ph	Kiasi cha kadi
+cash_amount_ph	Kiasi cha taslimu
+upi_amount_ph	Kiasi cha UPI
+carrier_cost_ph	Gharama ya msafirishaji
+carrier_party_ph	Mhusika msafirishaji
+choose_icon	Chagua ikoni
+choose_logo	Chagua nembo
+choose_receipt_stamp	Chagua stempu ya risiti
+choose_payment_qr	Chagua QR ya malipo
+clear_icon	Ondoa ikoni
+clear_logo	Ondoa nembo
+clear_photo	Futa picha
+clear_stamp	Futa stempu
+clear_payment_qr	Futa QR ya malipo
+print_faces	Mwonekano wa kuchapisha (risiti / bili ya kipindi)
+print_faces_help	Muhuri na QR ya malipo (si lazima) kando ya nembo yako kwenye risiti za usafirishaji na bili za kipindi.
+awb_pools_heading	Mafungu ya namba za AWB za msafirishaji
+add_awb_pool	Ongeza pool ya AWB
+awb_pool_carrier_ph	Jina la msafirishaji
+awb_pool_start_ph	Namba ya kuanza
+awb_pool_end_ph	Namba ya mwisho
+awb_pool_prefix_ph	Kiambishi (si lazima)
+awb_pool_label_ph	Lebo (si lazima)
+pieces_ph	Vipande (wazi = 1) — panua kwa mizigo / vipande vingi
+bulk_awbs_ph	AWB nyingi — bandika nyingi (mstari mpya au koma) kusogeza hali kwa mara moja
+tds_cut_ph	Makato ya TDS (si lazima)
+discount_ph	Punguzo (si lazima)
+cheque_no_ph	Namba ya hundi (si lazima)
+bill_reminder_chase	Orodha ya ukumbusho wa bili
+month_mix_report	Ripoti ya mchanganyiko wa mwezi
+copy_month_gst_csv	Nakili CSV ya GST ya mwezi
+domestic	Ndani
+international	Kimataifa
+pick_logo	Chagua nembo
+booking_scope_hint_domestic	Kiasi ÷5000 (ndani) — kimataifa ÷6000
+booking_scope_hint_intl	Kiasi ÷6000 (kimataifa) — ndani ÷5000
+cod_register	Rejista ya COD
+collect_cod	Kusanya COD (AWB)
+consignments_dispatch	Mzigo na utumaji
+consignor_party_ph	Mtumaji / jina la mhusika
+copy_day_book_csv	Nakili CSV ya kitabu cha siku
+copy_day_close	Nakili kufunga siku
+copy_items_csv	Nakili CSV ya bidhaa
+copy_outstanding_csv	Nakili CSV ya madeni
+copy_parties_csv	Nakili CSV ya wahusika
+copy_party_ledger_csv	Nakili CSV ya daftari la mhusika
+copy_receipt	Nakili risiti
+copy_report	Nakili ripoti
+counted_cash_ph	Taslimu iliyohesabiwa kwenye droo
+counter_agency_ph	Jina la kaunta / wakala (si lazima)
+create_backup	Tengeneza hifadhi
+day_close_summary	Muhtasari wa kufunga siku
+delete_party	Futa mhusika aliyechaguliwa
+dispatch_to_rider	Aliyehifadhi → kwa mpanda
+docket_charge_ph	Ada ya dokezo
+declared_value_ph	Thamani iliyotangazwa
+contents_ph	Yaliyomo
+eway_ph	Nambari ya e-way bill
+insurance_label	Bima (ndiyo/hapana)
+yes_label	Ndiyo
+no_label	Hapana
+print_route_label	Njia ya kuchapisha
+new_party_kind_label	Aina ya mhusika mpya
+done_open_books	Imekamilika — fungua vitabu
+export_day	Hamisha siku
+extra_note_expense_ph	Kumbuka ya ziada kwenye gharama ya mwisho
+extra_note_awb_ph	Kumbuka ya ziada kwenye AWB / mauzo haya
+failed_delivery	Uwasilishaji umeshindwa
+find_scan_awb	Tafuta / skani AWB
+forget_shop	Sahau duka hili
+fuel_ph	Mafuta
+handover_carrier	Aliyehifadhi → kwa msafirishaji
+import_day	Ingiza siku
+import_items_csv	Ingiza CSV ya bidhaa / viwango…
+import_parties_csv	Ingiza CSV ya wahusika…
+import_pincodes_csv	Ingiza CSV ya pincode…
+import_carrier_bill_csv	Ingiza CSV ya bili ya msafirishaji…
+copy_carrier_bill_report	Nakili ripoti ya bili ya mwisho
+use_carrier_cost	Tumia gharama ya msafirishaji
+rate_carrier_ph	Msafirishaji (tupu = kiwango chetu cha mauzo)
+rate_party_ph	Mhusika (tupu = wateja wote)
+carrier_pick_ph	Msafirishaji kwa gharama (kutoka ulinganisho)
+item_name	Jina la bidhaa
+load_bulk_row	Pakia safu ya wingi → dawati
+login_id_ph	Kitambulisho cha kuingia
+mark_delivered	Weka alama imepokelewa
+manifest_cod_total	Jumla ya COD
+manifest_received_by	Imepokelewa na
+manifest_sign	Saini
+ndr_address_wrong	Anwani si sahihi
+ndr_customer_unavailable	Mteja hayupo
+ndr_door_locked	Mlango umefungwa
+ndr_other	Nyingine
+ndr_refused	Imekataliwa
+out_for_delivery	Iko nje kwa utoaji
+print_drs	Chapisha DRS
+print_run_sheet	Chapisha karatasi ya safari
+reattempt	Jaribu tena
+rider_cod_handed_ph	COD aliyokabidhi mpanda
+settle_rider_cod	Sulisha COD ya mpanda
+mode_desk	Dawati
+mode_rider	Mpanda
+waiting_office	inasubiri ofisi
+capture_signature	Chukua saini
+incoming_manifest	Manifesti inayoingia
+pickup_request	Ombi la kuchukua
+pickup_run	Safari ya kuchukua
+auto_assign_area	Weka eneo otomatiki
+reorder_stops	Panga upya vituo
+settle_rider_pay	Sulisha malipo ya mpanda
+vehicle_inspect	Ukaguzi wa gari
+print_docket	Chapisha docket
+franchise_statement	Taarifa ya franchise
+tally_export	Hamisha vocha za Tally
+open_whatsapp	Fungua WhatsApp
+copy_sms	Nakili maandishi ya SMS
+pick_barcode_image	Chagua picha ya kuchanganua
+share_receipt_whatsapp	Shiriki risiti kwenye WhatsApp
+delivery_feedback	Maoni ya uwasilishaji
+lan_self_book	Uhifadhi wa LAN mwenyewe
+new_party_clear	Mhusika mpya (safisha fomu)
+new_party_kind_ph	Aina ya mhusika mpya (msambazaji / msafirishaji)
+next_country	Nchi inayofuata
+prev_country	Nchi iliyotangulia
+note_gstin_ph	Kumbuka / GSTIN / ukumbusho wa makubaliano
+note_pod_ph	Kumbuka / POD (si lazima)
+on_account_ap	Kwenye akaunti (AP)
+org_optional_ph	Shirika (si lazima)
+paid_now	Imelipwa sasa
+pairing_code_ph	Msimbo wa kuoanisha
+pair_now	Oanisha sasa
+party_name_selected_ph	Jina la mhusika (au tumia aliyechaguliwa)
+password_ph	Nenosiri
+pay_ap_card	Lipa AP kwa kadi
+pay_ap_cash	Lipa AP taslimu
+pay_ap_upi	Lipa AP kwa UPI
+period_bill	Bili ya kipindi
+period_bill_party	Bili ya kipindi (mhusika)
+pick_pod_photo	Chagua picha ya POD
+print_awb_label	Chapisha lebo ya AWB
+print_open	Chapisha / fungua
+reason_amend_ph	Sababu ya kurekebisha / kufuta / kurejesha
+reason_note_ph	Sababu / kumbuka (uharibifu, kuhesabu, …)
+record_day_close	Rekodi kufunga siku
+refresh_from_shop	Onyesha upya kutoka dukani
+refund	Kurejesha
+remit_cod	Wasilisha COD (mhusika)
+remove_selected	Ondoa aliyechaguliwa
+restore_backup	Rejesha hifadhi
+rider_name_ph	Jina la mpanda
+rider_phone_ph	Simu ya mpanda
+riders	Waendeshaji
+riders_own_fleet	Waendeshaji (kikosi chetu)
+rollup	Muhtasari
+save_booking_measures	Hifadhi vipimo vya uhifadhi
+save_brand	Hifadhi chapa
+save_business_id	Hifadhi kitambulisho cha kodi na % ya huduma
+save_business_name	Hifadhi jina la biashara
+save_features	Hifadhi mpangilio wa kazi
+save_names	Hifadhi majina
+server_ip_ph	IP ya seva (mf. 192.168.1.10)
+set_credit_limit	Weka kikomo cha mkopo
+set_login_selected	Weka kuingia kwa aliyechaguliwa
+set_login_named	Tumia kuingia kwa {name}
+shop	Duka
+start_fresh	Anza upya
+stop_extra_tills	Simamisha kaunta za ziada
+backup_auto	Hifadhi ya akiba kila siku kiotomatiki · ya mwisho {when} · siku 14 za mwisho zinawekwa {dir}.
+backup_auto_none	Hifadhi ya akiba kila siku kiotomatiki — ya kwanza itafanyika punde.
+backup_copy_to	Nakala pia zinaenda {dir}.
+backup_copy_btn	Nakili hifadhi pia kwenye folda…
+autostart_off	Anza pamoja na kompyuta hii
+autostart_on	Huanza pamoja na kompyuta hii ✓ — gusa kusimamisha
+autostart_done_on	Programu sasa hufunguka kompyuta ikiwashwa — seva inarudi baada ya umeme kukatika.
+autostart_done_off	Kompyuta haitafungua programu tena ikiwashwa.
+right_allowed	Inaruhusiwa
+right_with_approval	Kwa idhini
+right_denied	Hairuhusiwi
+editing_staff	Haki za
+team_pick_ph	Jina la mfanyakazi wa kuhariri
+select_staff	Chagua mfanyakazi huyu
+rights_help	Haki — gusa ili kubadilisha: Inaruhusiwa → Kwa idhini (PIN ya msimamizi wakati huo) → Hairuhusiwi.
+right_void_refund	Batilisha au rudisha pesa ya usafirishaji
+right_amend_sale	Rekebisha usafirishaji uliorekodiwa
+find_server	Tafuta seva ya duka
+finding_server	Inatafuta seva ya duka kwenye Wi‑Fi hii…
+no_server_found	Hakuna seva iliyopatikana. Hakikisha kifaa cha duka kiko kwenye Wi‑Fi ileile na kasha za ziada zimeruhusiwa, au andika IP yake.
+servers_found_pick	Gusa duka unalotaka kuunganisha.
+server_host_selected	Inatumia {host} — weka msimbo wa kuoanisha, kisha Oanisha sasa.
+device_forgotten	Duka limesahau kifaa hiki — kiunganishe tena kwa msimbo wa sasa wa duka. Oda zinazosubiri zimehifadhiwa.
+forget_device	Sahau
+last_seen	mara ya mwisho
+new_pair_code	Msimbo mpya wa kuunganisha
+lan_offline	Nje ya mtandao
+lan_offline_waiting	Nje ya mtandao · {n} zinasubiri
+lan_connecting	Inaunganisha na duka…
+pair_finishing	Inamaliza jozi… kutumia vitabu vya ofisi
+pair_opening	Kufungua ofisi…
+lan_live	Moja kwa moja
+lan_sending	{n} zinatumwa
+lan_sign_in_to_send	Ingia tena kutuma {n}
+lan_pair_again	Unganisha kifaa hiki tena
+lan_update_app	Sasisha programu — kifaa hiki na seva ya ofisi vina matoleo tofauti
+allow_firewall	Ruhusu vifaa vingine kuunganisha
+firewall_blocked	Firewall ya kompyuta hii inazuia vifaa vingine — gusa “Ruhusu vifaa vingine kuunganisha”.
+firewall_waiting	Inasubiri ruhusa ya msimamizi…
+lan_join_help	Vifaa vingine vinaweza kujiunga na hiki — msimbo wa kuoanisha {code}. Kwenye kifaa kingine chagua Hali ya mteja, kisha Tafuta seva ya duka, au andika anwani hii: {addr}
+lan_pair_status	Wi‑Fi {addr}
+lan_join_help_no_addr	unganisha kifaa hiki na Wi‑Fi ili kupata anwani.
+lan_no_address	Kifaa hiki bado hakina anwani ya Wi‑Fi — kiunganishe na Wi‑Fi ya duka.
+lan_not_listening	Haipokei vifaa sasa — huenda programu nyingine inatumia mlango {port}. Anzisha programu upya.
+lan_tills_off	Kaunta za ziada zimezimwa. Hesabu za ofisi hii zinabaki kwenye kifaa hiki. Ruhusu kaunta za ziada ikiwa kifaa kingine pia kitasajili vifurushi au kupokea malipo.
+paired_with	Imeoanishwa na duka kwenye {url}
+not_paired	Haijaoanishwa — unganisha na seva ya duka.
+choose_device_use	Chagua jinsi kifaa hiki kinavyotumika.
+paired_note	Imeoanishwa. Fungua ili kuuza, au Onyesha upya kupata taarifa mpya kutoka dukani.
+last_update_at	Sasisho la mwisho kutoka dukani: {time}.
+pair_intro	Tafuta seva, au andika anwani yake na msimbo wa kuoanisha.
+queue_waiting	Zinasubiri kufika dukani ({n}):
+queue_tries	Majaribio {n} · jibu la mwisho: {e}
+save_backup_copy	Hifadhi nakala ya akiba…
+backup_copy_saved	Nakala ya akiba imehifadhiwa — iweke nje ya kifaa hiki (USB au kifaa kingine)
+backup_copy_overdue	Kwa siku {n} hakuna nakala ya akiba iliyotoka kwenye kifaa hiki — Mipangilio → Akiba
+backup_copy_failed	Nakala ya akiba haikuweza kuhifadhiwa hapo — chagua mahali pengine
+clock_off	Saa ya kifaa hiki inatofautiana kwa dakika {min} na seva ya duka — weka saa sahihi kwenye kifaa hiki
+printers_heading	Printa kwenye kifaa hiki
+printers_help	Ongeza kila printa mara moja, kisha chagua mahali risiti na lebo za AWB zinachapishwa — ya kwanza kwenye orodha inajaribiwa kwanza; ikishindwa, ifuatayo. Njia tupu = usichapishe kipengele hicho. Lengo tupu (chaguo-msingi), jina la mfumo, au anwani ya mtandao (k.m. 192.168.1.50). Kila kifaa huhifadhi printa zake.
+job_width	Upana wa maudhui (mm)
+job_width_ph	Au chapa upana, 40-210 mm
+job_layout	Mpangilio
+job_delivery	Jinsi kazi inavyoandikwa
+job_size	Ukubwa wa fonti
+job_size_ph	k.m. 18, 20, 26…
+save_receipt_format	Hifadhi umbizo la risiti
+save_label_format	Hifadhi muundo wa lebo
+test_receipt_format	Risiti ya majaribio
+test_label_format	Lebo ya majaribio
+test_receipt_sent	Sampuli ya risiti imetumwa
+test_label_sent	Sampuli ya lebo imetumwa
+test_print_no_printer	Hakuna kichapishaji cha kazi hiyo - ongeza moja chini ya mahali hapa
+printers_host_only	Printa huwekwa kwenye kifaa cha duka (Server). Kasha hii hutuma kazi huko — Tafuta / ongeza / gawa hubaki kwenye Server. Ukurasa wa majaribio huenda kwa Server.
+printers_pool_heading	Printa
+printers_routes_heading	Mahali pa kuchapa
+printer_label_ph	Jina (k.m. Dawati)
+printer_target_ph	mwenyeji:9100 · bt:MAC · usb:VID:PID · jina la mfumo
+printer_mode_heading	Muundo wa njia iliyochaguliwa
+printer_mode_standard	Kawaida wima
+printer_mode_landscape	Kawaida mlalo
+printer_mode_thermal	Joto
+printer_mode_standard_short	Wima
+printer_mode_landscape_short	Mlalo
+printer_mode_thermal_short	Joto
+printer_format_custom	Muundo maalum mpya
+printer_format_custom_label	Maalum
+printer_format_custom_added	Muundo maalum umeongezwa kwa njia hii
+add_printer	Ongeza printa
+remove_printer	Ondoa mwisho
+route_pick_ph	receipt au label
+route_add_printer_ph	Ongeza printa kwenye njia hii
+route_receipt	Risiti
+route_label	Lebo la AWB
+route_dont_print	Hakuna printa iliyotolewa
+route_add	Ongeza kwenye njia
+route_up	Juu
+route_down	Chini
+route_remove	Ondoa mwisho
+route_clear	Futa vichapishaji vya mahali hapa
+save_printers	Hifadhi printa
+print_test_page	Chapisha ukurasa wa majaribio
+printers_saved	Printa zimehifadhiwa kwa kifaa hiki
+test_page_sent	Ukurasa wa majaribio umetumwa — angalia printa
+printers_found	Imepatikana kwenye kifaa hiki: {list}
+find_printers	Tafuta printa
+printers_looking	Inatafuta vichapishaji kwenye kifaa hiki na Wi-Fi...
+printers_tap_find	Gusa Tafuta vichapishi kwa foleni zinazokubali kazi na vichapishi vya stakabadhi za mtandao kwenye Wi-Fi hii (zisizoondolewa au zisizo mtandaoni).
+printers_none_found	Hakuna vichapishaji vilivyopatikana - andika jina la kichapishi cha mfumo, au anwani ya mtandao (k.m. 192.168.1.50).
+receipt_printer_ph	Printa ya risiti
+queue_refused	Hazikukubaliwa na duka ({n}) — kagua kila moja kaunta:
+clear_not_accepted	Nimekagua — futa orodha hii
+device_name_ph	Jina la kifaa hiki
+lan_last_update	sasisho la mwisho {time}
+lan_not_accepted	{n} hazikukubaliwa
+connected_now	imeunganishwa sasa
+backup_failed	Hifadhi rudufu ya kiotomatiki ya mwisho imeshindwa: {e}
+backup_overdue	Hakuna hifadhi rudufu kwa siku {n} — acha programu wazi kwenye kifaa hiki ili iweze kuhifadhi.
+disk_low	Imebaki MB {mb} tu kwenye kifaa hiki — hifadhi rudufu zitashindwa hivi karibuni. Ondoa vitu ili kupata nafasi.
+last_seen_devices	Iliyoonekana mwisho: {time}
+sync_interval	Usawazishe kila {secs}s
+connection_to_shop	Muunganisho na duka
+supplier_name_ph	Jina la msambazaji (au mhusika)
+supplier_ph	Msambazaji
+switch_device	Badilisha kifaa hiki
+take_payment	Chukua malipo
+tax_added_till	{tax} bila
+tax_inside_price	{tax} jumuishi
+today_books	Vitabu vya leo
+unlock_after_pairing	Ingiza PIN
+unlock_with_login	Fungua kwa kuingia
+update_my_password	Badilisha nenosiri langu
+update_my_pin	Sasisha PIN yangu
+duress_heading	PIN ya dharura ya kufungua (mmiliki pekee)
+duress_help	Hiari. Ikiwa PIN hii itaandikwa wakati wa kufungua badala ya yako, maingizo yote ya vitabu yatafutwa (hifadhi, daftari, historia) na dawati hufunguka kama Mmiliki anayeonekana kawaida - ada, sherehe, maeneo, wafanyikazi na mipangilio kukaa. Schema na usanidi haujafutwa. Tumia tu ikiwa unalazimishwa kufungua. Acha wazi na uhifadhi ili kuzima. Haifanani kamwe na PIN ya mtu yeyote.
+duress_pin_ph	PIN ya dharura (tarakimu 4–12)
+duress_confirm_ph	Andika tena kuthibitisha
+save_duress_pin	Hifadhi PIN ya dharura
+clear_duress_pin	Zima PIN ya dharura
+duress_on	PIN ya dharura ya kufungua imewashwa
+duress_off	PIN ya dharura ya kufungua imezimwa
+duress_saved	PIN ya dharura ya kufungua imehifadhiwa
+duress_cleared	PIN ya dharura ya kufungua imezimwa
+vehicle_ph	Gari
+void	Futa
+write_off_ap	Futa AP
+write_off_nil	Futa / salio sifuri
+zone_ph	Eneo (jina kutoka Viwango)
+caption_today	LEO
+caption_bookings	UHIFADHI
+caption_payments_today	MALIPO YA LEO
+caption_outstanding	MADENI
+caption_bank	BENKI
+paid_by	Imelipwa kwa
+second_way	Njia ya pili
+weight_in	Uzito kwa
+size_in	Ukubwa kwa
+goods_received	Bidhaa zimepokelewa
+expense_heading	Gharama
+notes_attach_sale	Kumbuka na viambatisho (mauzo yaliyochaguliwa)
+notes_attach_party	Kumbuka na viambatisho (mhusika aliyechaguliwa)
+attachments_last_expense	Viambatisho (gharama ya mwisho)
+credit_limit_heading	Kikomo cha mkopo (mhusika aliyechaguliwa / aliyetajwa)
+pay_selected_heading	Lipa aliyechaguliwa (maliza deni / chukua mapema)
+write_off_heading	Futa (maliza bila malipo)
+pay_ap_heading	Lipa tunachodaiwa nao (AP)
+country_tax	Nchi na kodi
+extra_tills_heading	Kaunta za ziada
+other_devices_help_heading	Sanidi vifaa vingine
+other_devices_help	Kwenye kifaa hiki (Seva): Vifaa vingine → Ruhusu milisho ya ziada. Kumbuka msimbo wa kuoanisha na anwani ya Wi-Fi. Gusa Ruhusu vifaa vingine kuunganishwa ikiwa inaonekana. Kwenye kompyuta, gusa Anza na kompyuta hii. Kwenye kifaa kingine: sakinisha programu, chagua Hali ya Mteja, Tafuta seva ya duka (au charaza anwani), weka msimbo wa kuoanisha, Oanisha sasa. Maagizo husubiri kwenye kifaa ikiwa Wi-Fi itashuka na kwenda Seva itakapojibu tena.
+your_brand	Chapa yako (kwenye app)
+units_heading	Vitengo
+booking_measures	Vipimo vya uhifadhi
+drawer_count	Kuhesabu droo (si lazima)
+spreadsheet_csv	Karatasi ya hesabu (CSV)
+bank_reconciliation	Upatanisho wa benki (weka tiki kulingana na taarifa yako)
+book_add_product	Hifadhi — ongeza bidhaa / kiwango
+book_opening_credit	Hifadhi — mkopo wa kuanzia
+account_kind	Aina ya akaunti (gusa moja)
+active_ledger	Daftari inayotumika
+actual_total_cap	JUMLA HALISI
+amend_help	Chagua mauzo ya kurekebisha, kufuta au kurejesha. Marekebisho huhifadhi historia kamili.
+applied_total_cap	JUMLA ILIYOTUMIKA
+bank_balance	Salio la benki
+bank_net_today	Jumla ya benki leo
+branch_export_help	Hamisha huandika muhtasari wa siku kwenye folda ya chelezo na kuinakili kwenye ubao wa kunakili. Ili kuleta siku nyingine ya duka, hifadhi faili yake kama import_branch_snapshot.json kwenye folda hiyo, kisha uguse Leta.
+brand_shown_help	Huonyeshwa kwenye skrini ndani ya app. Jina na ikoni ya app iliyosanikishwa kwenye kifaa hiki hubaki kama kwenye orodha ya jukwaa.
+app_icon	Picha ya programu
+logo_help	Alama ya chombo iliyo na chaguo kwa skrini katika programu.
+onboard_layout	Unapata nini
+item_photo_help	Chaguo. Bila picha tunonyesha majina ya kwanza kutoka jina la vitu.
+cash_in_hand	Taslimu mkononi (kaunta)
+change_my_pin_heading	Badilisha PIN yangu (yako pekee)
+connect_to_server	Unganisha na seva
+counter_locked	Kaunta 01 · Imefungwa
+country_pack_help	Pakiti ya nchi huweka jina la kodi na hesabu zake, njia ya malipo ya papo hapo, na kitambulisho cha kodi kinachochapishwa kwenye bili. Kumkaj haiwasilishi kodi wala kutoa ankara za kielektroniki za serikali popote.
+currency_use_help	Sogeza na gusa Tumia kwa sarafu yoyote inayoungwa mkono.
+day_close_help	Kurekodi kufunga siku huhifadhi muhtasari huu (na tofauti ya droo ikiwa imehesabiwa) kwenye kumbukumbu ya ukaguzi. Haizimii mauzo.
+expenses_word	Gharama
+feature_access_help	Ufikiaji wa kipengele kwa wafanyikazi waliochaguliwa (gonga baada ya kuongeza)
+footer_local	SQLite ya ndani · Bure milele · Hakuna wingu
+fresh_book_moklanjo	Printa
+fresh_selected	Fresh imechaguliwa — katalogi itabaki tupu. Gusa Done ukiwa tayari.
+gross_word	Jumla kuu
+how_start	Ungependa kuanza vipi?
+later_country_pack	Printa
+local_badge	NDANI
+measures_help_moklanjo	Jinsi mizigo inapimwa kwenye dawati. Andika vipimo na uzito kwa vitengo unavyotumia — vya kawaida (cm, m, in, ft · kg, g, lb, oz) au kitengo chako mwenyewe kilichounganishwa na cm / kg hapo juu (moja kwa moja au kupitia vitengo vingine). Vitabu hunakili kg kila mara. Acha sehemu tupu ili ibaki.
+mix_type_hint_moklanjo	Andika ni kiasi gani katika kila moja (taslimu / UPI / kadi / mkopo). Lazima ilingane na bili. Mkopo unahitaji mteja hapo juu.
+money_in_sales	Pesa inayoingia (mauzo)
+more_help_moklanjo	Katalogi, mauzo, mkopo, timu, hifadhi — pamoja na hisa na kaunta za ziada inapohitajika.
+net_word	Halisi
+offline_badge	NJE YA MTANDAO
+optional_login_help	Kuingia kwa hiari (kitambulisho + nenosiri). Mmiliki huweka mara moja; baadaye mtumiaji pekee ndiye anayeweza kubadilisha nenosiri.
+or_unlock_login	Au fungua kwa kitambulisho cha kuingia + nenosiri
+permission_preset	Kazi (huweka skrini na haki)
+preset_help_moklanjo	Keshia: kuuza. Meneja: kuuza + bidhaa + kufuta/kurekebisha.
+product_locked_moklanjo	Moklanjo
+product_only_moklanjo	Programu hii ni Moklanjo pekee — vitabu + dawati la usafirishaji. Biashara nyingine zitapata bidhaa zao baadaye.
+purchases_cogs	Ununuzi (COGS)
+qty_cap	IDADI
+restore_help	Rejesha: chagua hifadhi. Vitabu vinafunguka kama vilivyokuwa wakati huo; vya sasa vinahifadhiwa kwanza, kwa hiyo unaweza kurudisha.
+wipe_data_heading	Futa data za ndani
+wipe_data_help	Mmiliki pekee — chaguo kama kutoa Windows. Rekodi za biashara hufuta historia na kuweka viwango/usanidi. Usanidi wa duka huondoa vitabu. Mapendeleo ya skrini: dirisha/lugha. Thibitisha kwa PIN ya mmiliki.
+wipe_trading	Rekodi za biashara
+wipe_schema	Usanidi wa duka
+wipe_ui	Mapendeleo ya skrini
+wipe_owner_pin_ph	PIN ya mmiliki ili kufuta
+wipe_delete_selected	Futa vilivyochaguliwa
+wipe_owner_only	Mmiliki pekee ndiye anayeweza kufuta data za ndani.
+restore_owner_only	Mmiliki pekee ndiye anayeweza kurejesha nakala rudufu.
+wipe_owner_pin_needed	Weka PIN ya mmiliki ili kufuta data za ndani.
+wipe_nothing_selected	Chagua kwanza nini cha kufuta.
+wipe_done	Data za ndani zilizochaguliwa zimefutwa.
+wipe_schema_done	Usanidi wa duka umefutwa — chagua Server au Client ili kuendelea.
+rounded_total	Jumla iliyozungushwa
+setup_app_moklanjo	Sanidi Moklanjo
+shop_logo_optional	Nembo ya duka (si lazima)
+stock_type_help	Andika jina la bidhaa (sehemu yake inatosha), idadi, kisha rekebisha. Bidhaa ambazo bado hazijahesabiwa zinahitaji Anza kuhesabu mara moja.
+team_owner_help	Ajiri: chagua kazi (Cashier / Manager), jina + PIN ya kuanzia, kisha Ongeza. Ikiwa tu mtu huyu atatofautiana: fungua skrini na haki hapa chini, kisha Hifadhi usanidi wa kazi. Kila mtu hubadilisha PIN yake mwenyewe chini - Mmiliki hawezi kubadilisha ya mtu mwingine yeyote.
+they_owe_us	Wanatdaiwa
+unit_at_cap	Bei ya kitengo
+units_help	Misimbo ya lebo za bidhaa (kg, piece, bag). Kila kitengo lazima kiunganishwe — moja kwa moja au kupitia vitengo vingine — na kiwango (kg · cm · ml · pc), mf. 1 crate = 2 box na 1 box = 20 cm. Ubadilishaji: 1 from = factor to. Sarafu kamwe si vitengo.
+we_owe_them	Tunawadaiwa
+who_unlocking	Nani anafungua?
+locked_word	Imefungwa
+show_pin	Onyesha PIN
+hide_pin	Ficha PIN
+set_owner_pin	WEKA PIN YA MMILIKI
+enter_owner_passcode	INGIZA MSIMBO WA MMILIKI
+enter_staff_passcode	INGIZA MSIMBO WA MFANYAKAZI
+pin_count_zero	0 / 12 tarakimu · angalau 4, kisha Sawa
+pin_count_need	{} / 12 tarakimu · zinahitajika {} zaidi
+pin_count_full	12 / 12 tarakimu · gusa Sawa
+pin_count_ready	{} / 12 tarakimu · gusa Sawa ukiwa tayari
+pin_hint_choose	Chagua tarakimu 4–12 (kibodi au pedi) · Enter/Sawa kuhifadhi
+pin_hint_new	PIN mpya ya mmiliki ya tarakimu 4–12 (kibodi au pedi) · Enter/Sawa
+pin_hint_shop_code	Kifaa cha duka · msimbo wa kuoanisha {}
+pin_hint_books	Kifaa hiki huhifadhi vitabu
+pin_hint_paired	Kaunta ya ziada imeoanishwa — fungua ili kuuza
+pin_hint_pair_first	Kaunta ya ziada — oanisha na kifaa cha duka kwanza
+unlock_to_continue	Fungua ili kuendelea
+no_staff_yet	Hakuna wafanyakazi bado — fungua kama Mmiliki, kisha Timu
+status_server_set_pin	Hali ya seva — weka PIN ya mmiliki
+status_server_tills	Hali ya seva — kaunta za ziada zinaweza kujiunga. Fungua
+status_server_unlock	Hali ya seva — fungua kama Mmiliki
+status_client_unlock	Hali ya mteja — fungua ili kuuza
+icon_new_selected	Ikoni: faili jipya limechaguliwa — gusa Hifadhi chapa
+icon_custom	Ikoni: alama ya duka lako mwenyewe
+icon_default	Ikoni: alama ya Kumkaj (chaguo-msingi) — chagua yako
+logo_yours	Nembo: nembo ya duka lako — inaonyeshwa kwenye skrini na risiti
+logo_default	Nembo: alama ya Kumkaj (chaguo-msingi) — chagua yako kama unayo
+tmpl_current	Ya sasa: {} — {}
+tmpl_selected	Iliyochaguliwa: {} — {}
+setup_complete	Usanidi umekamilika
+onboard_fresh_tmpl	Mpya · {} — katalogi huanza tupu; ongeza bidhaa kwenye Bidhaa, kisha gusa Imekamilika.
+onboard_book_tmpl	Kitabu · {} — ongeza bidhaa na mkopo wa mwanzo, kisha gusa Imekamilika.
+onboard_template_tmpl	Ipe mahali jina ukitaka, kisha chagua jinsi ya kuanza.
+tmpl_blurb	Vitabu vya usafirishaji na dawati la kupokea: watumaji, wasafirishaji, daftari la siku, AWB.
+tmpl_how	Andikisha vifurushi dawatini; daftari la siku kwa leo; vichupo vya viwango, wahusika, ripoti.
+trk_booked	Imesajiliwa
+trk_picked_up	Imechukuliwa
+trk_in_transit	Njiani
+trk_delivered	Imefikishwa
+trk_rto	Inarudi kwa mtumaji
+lane_to_dispatch	Za kutuma
+lane_with_carrier	Kwa msafirishaji
+lane_failed	Imeshindwa
+lane_done_today	Zimekamilika leo
+ops_board_help	Vifurushi kulingana na vilipo katika kazi ya leo. Gusa vifurushi (au uvichanganue) ili kuvichagua, kisha shughulikia vyote vilivyochaguliwa kwa pamoja — kila safu inaonyesha hatua zinazoifaa tu.
+lane_empty	Hakuna kitu hapa kwa sasa.
+picked_fmt	{n} vimechaguliwa
+pick_all	Chagua vyote
+bag_for_carrier	Kabidhi kwa msafirishaji
+send_with_rider	Tuma na mpanda
+out_again	Toa tena
+return_to_sender	Rudisha kwa mtumaji
+runs_bags_heading	Safari na mifuko ya karibuni
+print_word	Chapisha
+bag_word	Mfuko wa msafirishaji
+run_word	Safari ya mpanda
+parcels_fmt	Vifurushi {n}
+parcel_history	Historia
+attempt_fmt	Jaribio {n}
+pieces_short_fmt	Vipande {n}
+note_reason_ph	Maelezo au sababu
+ops_pick_first	Chagua vifurushi kwanza — vigusa au uvichanganue
+cod_to_collect	Imefikishwa — COD ya kukusanya
+cod_on_road	COD bado iko njiani
+cod_owed_consignors	Imekusanywa — kulipa watumaji
+cod_rto_fees	Ada za RTO za kukusanya
+cod_to_hand_in	COD ya kukabidhi
+parcel_one_fmt	Kifurushi {n}
+facet_bank_title	Ripoti
+facet_bank_help	Vitabu vya siku, umri wa madeni ya wahusika, machapisho ya benki na Faida Hasara ya kipindi.
+facet_ops_title	Mzigo na usafirishaji
+facet_ops_help	Changanua au andika AWB → Tafuta, kisha endeleza / chapisha lebo / COD. Tuma kwa mpanda farasi au mbebaji.
+facet_cod_title	Rejista ya COD
+facet_cod_help	Kusanya wakati wa kuwasilisha, kisha wasilisha kwa mtumaji.
+facet_riders_title	Waendeshaji (kikosi chako)
+facet_riders_help	Ongeza waendeshaji, kisha tuma AWB zilizohifadhiwa kutoka Ops.
+against_bill_ph	Dhidi ya bili # hapo juu (hiari)
+aliases_ph	Majina mbadala — majina mengine, tengwa kwa koma
+amount_blank_full_ph	Kiasi (tupu = salio kamili)
+amount_owed_ph	Kiasi kinachodaiwa
+amount_ph	Kiasi
+amount_received_ph	Kiasi kilichopokelewa
+amount_we_pay_ph	Kiasi tunacholipa
+awb_scan_ph	AWB / changanua msimbopau
+bulk_csv_ph	CSV ya wingi — destination,consignee,kg,cod_paise,note
+business_name_ph	Jina la biashara
+category_new_ph	Jamii (hiari, huundwa ikiwa mpya)
+cod_amount_ph	Kiasi cha COD
+code_bag_ph	Msimbo (bag)
+conv_factor_ph	Kizigeu (25 = 1 bag → 25 kg)
+country_code_ph	Msimbo wa nchi mf. IN, GB, US, AE, BR
+credit_khata_amount_ph	Kiasi cha mkopo / akaunti
+credit_limit_ph	Kikomo cha mkopo (0 = hakuna)
+dim_unit_code_ph	Msimbo wa kitengo cha vipimo (cm)
+divisor_ph	Kigawanyo cha ujazo (5000)
+extra_per_kg_ph	Ziada / kg
+first_amount_ph	Kiasi cha kwanza
+first_kg_ph	Kg ya kwanza (kipande)
+from_code_ph	Msimbo kutoka (bag)
+item_name_lang_ph	Jina la bidhaa — andika kwa lugha yako
+login_id_opt_ph	Kitambulisho cha kuingia (hiari)
+manager_pin_ph	PIN ya meneja (ikiwa tu huwezi kubatilisha)
+new_branch_name_ph	Jina la tawi jipya
+new_password_ph	Nenosiri jipya (hiari)
+new_pin_ph	PIN mpya (tarakimu 4–12)
+note_bank_ph	Kumbuka (kuweka, kutoa, …)
+note_buy_expense_ph	Kumbuka (mafuta, kodi, …)
+note_expense_ph	Kumbuka (mafuta, ofisi, …)
+notify_phone_ph	Simu ya arifa (ndoano ya WhatsApp/SMS)
+options_moklanjo_ph	Chaguo (hiari) — Large=20, Gift wrap=10
+part_second_way_ph	Sehemu kwa njia ya pili (hiari)
+phone_ph	Simu
+address_ph	Anwani
+party_custom_fields_heading	Sehemu maalum (mhusika teule)
+party_custom_help	Ongeza lebo na thamani yoyote kwa mhusika huyu — WhatsApp, GSTIN, msimbo wa njia…
+party_custom_key_ph	Jina la sehemu (k.m. WhatsApp)
+party_custom_value_ph	Thamani
+party_custom_add	Ongeza / sasisha sehemu
+party_custom_remove	Ondoa sehemu
+party_custom_empty	Bado hakuna sehemu maalum
+party_custom_pick_first	Chagua mhusika kwa sehemu maalum
+place_name_ph	Jina la mahali hapa
+price_ph	Bei
+qty_example_ph	Kiasi (mf. 1.5 kwa kg)
+quantity_ph	Kiasi
+reason_required_ph	Sababu (inahitajika)
+role_title_ph	Cheo cha kazi (mf. Barista)
+service_pct_ph	Huduma % hiari 0/10/12
+short_code_ph	Msimbo mfupi (MG02)
+slab_kg_ph	Kipande cha kutozwa kwa kg (0.5)
+staff_name_ph	Jina la mfanyakazi / kitambulisho
+starting_password_ph	Nenosiri la kuanzia (hiari)
+starting_pin_ph	PIN ya kuanzia (tarakimu 4–12)
+tax_rate_ph	Jina la kiwango cha kodi au % — Standard, Reduced, 0, 5, 12, 18, 20
+to_code_ph	Msimbo kwenda (kg)
+uncleared_no_ph	Namba ambayo haijafutwa hapo juu
+unit_cost_ph	Gharama ya kitengo
+unit_kg_blank_ph	Kitengo (kg au tupu)
+unit_name_bag_ph	Jina (Bag)
+weight_unit_code_ph	Msimbo wa kitengo cha uzito (kg)
+zone_name_ph	Jina la eneo
+pay_credit	Mkopo
+book_kind_today	Kitabu cha leo
+book_kind_month	Kitabu cha mwezi huu
+book_kind_aging	Inayodaiwa / debiti-krediti
+book_kind_balance	Karatasi ya mizania
+ops_desk_help	Changanua AWB kwa kichanganuzi cha USB (au andika) → Tafuta. Kisha endeleza, chapisha lebo au kusanya COD. Lebo huchapishwa kwa Code 128.
+role_help_consignor	Jukumu: Mtumaji — AR (wanatudaiwa). Kampuni hiyo hiyo inaweza kuwa mbebaji pia.
+role_help_carrier	Jukumu: Mbebaji — AP (tunawadaiwa). Kampuni hiyo hiyo inaweza kuwa mtumaji pia.
+role_help_both	Majukumu: Mpokeaji + Mtoa huduma - mhusika mmoja, vitabu vya AR na AP, wavu katika Ripoti.
+role_help_supplier	Jukumu: Mtoa huduma - AP kwa ununuzi.
+lane_declared_label	Kuhifadhi akaunti
+lane_owner_label	Uhifadhi wa pesa
+money_lane_bill	Bilio: {lane}

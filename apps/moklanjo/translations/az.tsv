@@ -1,0 +1,835 @@
+# Azerbaijani — Azərbaycan (az). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	Kuryer-agentlik kitabları + rezervasiya masası. Pulsuz offline.
+unlock	Kilidi aç
+pin_hint	Sahibin PIN-i 0000-dan başlayır
+sell	Sifariş vermə
+buy	Ödəniş
+books	Günün kitabı
+books_help	Bu günün vəziyyəti. Qəbul = daxil olan bağlamalar. Ödəniş = daşıyıcı fakturaları və xərclər. Tərəflər = göndərənlər və daşıyıcılar.
+buy_help	Xərc çekləri və daşıyıcı hesabları (pul çıxışı). Hesab üzrə qalır.
+sell_money_in	Paket sifariş et
+buy_money_out	Xərc / daşıyıcı hesabı
+record_purchase	Alışı qeyd et
+add_expense	Xərc vauçeri
+bank_book	Bank kitabı
+credit_help	Tərəf id-si unikaldır (adlar təkrarlana bilər). Rollar: Göndərən (AR), Daşıyıcı (AP) və ya hər ikisi həmin id-də. Dəftərlər ayrı qalır; hesabatlar xalisi göstərir.
+party_kind_ph	Xüsusi rol (istəyə görə) — yaxud yuxarıdakı chipə toxunun
+parties_list_heading	Saxlanmış tərəflər
+reports_help	Günün kitabı, debitorlar və kreditorlar, bank kitabı, xərc vauçerləri, mənfəət və zərər.
+reports_today	Günün kitabı (bu gün)
+reports_month	Mənfəət və zərər (ay)
+reports_aging	Ödənilməmiş / Dt-Kt
+reports_balance_sheet	Balans hesabatı
+reports	Bank kitabı və M/Z
+refresh	Yenilə
+undo	Geri al
+start_tracking	İzləməyə başla
+stock_minus	− Stok
+stock_plus	+ Stok
+settle_cash	Nağdı bağla
+settle_card	Kartı bağla
+items	Tariflər və xidmətlər
+nav_items	Tariflər
+more	Daha çox
+your_items	Sizin tariflər
+items_help	Hər sətir bir dərəcədir (məsələn, Səth Zonası A). Vahid adətən kq-dır. Redaktə etmək üçün toxunun.
+add_item	Qiymət əlavə et
+new_item	Yeni qiymət
+adding_item	Yeni tarif əlavə etmək
+editing_item	Redaktə
+save	Saxla
+remove	Sil
+empty_catalog	Hələ heç bir tarif yoxdur. Tarifləri və xidmətləri açın, birini əlavə edin (ad + qiymət, vahid kq), sonra Rezervasiya edin.
+counter_sale	Kassa rezervasiyası
+total	Cəmi
+cash	Nağd
+upi	UPI
+card	Kart
+credit	Tərəflər
+clear	Təmizlə
+ready_to_sell	Sifarişə hazır
+today_prefix	Bu gün
+today_mid	bu gün
+owed	ödənilməmiş
+round_word	yuvarlaqlaşdırma
+back	Geri
+sold_out	Mövcud deyil
+restock	Stoku doldur
+not_tracked	İzlənmir
+in_stock	stokda
+marked_sold_out	Mövcud deyil işarələndi
+add_upper	ƏLAVƏ ET
+na	Yoxdur
+qty	Çəki/Say
+unit_at	Tarif @
+actual	Faktiki
+applied	Tətbiq olunub
+note_ph	Qeyd (istəyə bağlı)
+rounded	YUVARLAQ
+split	Böl
+counter	Kassa
+parcel	Bağlama
+order	Sifariş
+sales	Sifarişlər
+sales_refunds	Sifarişlər və geri ödəmələr
+day_close	Günün bağlanışı
+reports_expenses	Bank kitabı və M/Z
+nav_reports	Hesabatlar
+nav_settings	Ayarlar
+nav_lock	Kilid
+sidebar_settings	Yan panel ayarları
+sidebar_settings_help	Yan relslə eyni nişanlar. Sıranı dəyişmək üçün sətri sürükləyin. Göstərmək və ya gizlətmək üçün açarı çevirin. Ayarlar və Kilid həmişə paneldə qalır.
+sidebar_always_on_short	Həmişə açıq
+sidebar_back_settings	Geri
+sidebar_shown	Göstərilir
+sidebar_hidden	Gizli
+sidebar_always_on	Həmişə paneldə
+sidebar_shown_hint	Yan relsdə / alt tablarda göstərilir
+sidebar_hidden_hint	Paneldən gizli
+sidebar_menu_items	Menyu və məhsullar
+sidebar_enable_all	Hamısını aç
+sidebar_disable_all	Hamısını bağla
+sidebar_order_saved	Yan panel sırası saxlandı
+sidebar_visibility_saved	Yan panel görünüşü saxlandı
+amounts_hide	Gizlət
+amounts_show	Göstər
+no_sale_yet	Hələ satış yoxdur
+favorites	Sevimlilər
+favorites_help	Tez-tez satdığınız məhsullar, sizin girişiniz üçün saxlanılıb. Birini hesaba əlavə edin və ya siyahınızı aşağıdakı bütün məhsullardan qurun.
+your_favorites	Sizin sevimlilər
+all_items	Bütün məhsullar
+no_favorites	Hələ sevimli yoxdur — aşağıdakı siyahıdan məhsul əlavə edin.
+add_to_bill	Hesaba əlavə et
+added	Əlavə olundu
+owes_word	borcludur
+selected_word	Seçilib
+chip_clear_credit	təmizlə — Kredit və ya avans al
+chip_missing_customer	Seçilmiş müştəri yoxdur — yenidən seçin
+chip_no_customer	Hələ müştəri yoxdur — ad yazın, sonra Kreditə toxunun
+credit_summary_fmt	{} müştəri · açıq kredit {} · saxlanılan avanslar {}
+recent_label	Son:
+inventory	Anbar
+inventory_stock	Anbar və stok
+branches	Filiallar
+branches_org	Filiallar və təşkilat
+credit_customers	Tərəflər (debitorlar və kreditorlar)
+customer_name_ph	Tərəfin adı
+new_customer_ph	Yeni tərəfin adı
+item_name_ph	Tarif adı (məs. Surface Zone A)
+item_price_ph	Hər kq / ilk pillə
+start_template	Məhsul
+next_booking	Növbəti rezervasiya
+destination_ph	Təyinat şəhəri / zonası
+consignee_ph	Alanın adı
+consignee_phone_ph	Alanın telefonu
+consignee_address_ph	Çatdırılma ünvanı
+origin_name_ph	Göndərənin adı
+origin_phone_ph	Göndərənin telefonu
+origin_address_ph	Götürmə / çıxış ünvanı
+booking_consignor_heading	Konsignor (müştəri / göndərən)
+booking_consignee_heading	Alıcı (qəbul edən)
+booking_consignor_hint	Doldurmaq üçün tərəf seçin və ya gəlib-gedən üçün boş buraxın. Evdən götürmə və RTO üçün lazımdır.
+booking_consignee_hint	Bağlamanın alanı. Kassaya birbaşa təhvil üçün boş buraxın.
+weight_kg_ph	Faktiki kq
+length_cm_ph	L sm
+breadth_cm_ph	B sm
+height_cm_ph	H sm
+chargeable_kg	Ödənişli kq
+awb_label	AWB
+booking_help	Konsiqtor + konsignor (boş, OK) → təyinat → → pick rate → Hesab/Nağd → ödəniş. AWB qəbzdə çap olunur. Növbəti sifariş masanı boşaldır. Yuvarlaqlaşdırılmış başlanğıc Tətbiqə bərabərdir — yalnız hesabı yuvarlaqlaşdırmaq üçün redaktə edin.
+cart_empty_hint	Masa boş — göndərən/alıcı isteğe bağlı, təyinat və çəkini təyin edin, sonra qiymət üzərinə ƏLAVƏ et və ödə.
+team	Heyət
+team_pins	Heyət və PIN-lər
+my_pin_settings	Mənim PIN-im
+settings_hub_help_my_pin	Bu cihazda daxil olmuş şəxsin kilid PIN-ini dəyişin.
+team_self_help	Kilid PIN-inizi (və istəyə bağlı giriş parolunu) yalnız siz dəyişə bilərsiniz. Başqa ekranlar və ya hüquqlar lazımdırsa, Sahibdən soruşun.
+backup_settings	Ehtiyat nüsxə və ayarlar
+lock_app	Tətbiqi kilidlə
+pick	Seç
+select	İşarələ
+advance	Avans
+owner	Sahib
+staff	Heyət
+photo	Şəkil
+auto	Avto
+prev	Əvvəl
+next	Növbəti
+ok	OK
+this_shop	Server
+extra_till	Klient
+off	Bağlı
+server	Server
+client	Klient
+language_currency	Dil və valyuta
+language	Dil
+choose_language	Dilinizi seçin
+language_setup_hint	Bu cihazın dilinə uyun və ya özünüz seçin.
+lang_follow_platform	Cihazın dili
+lang_pick_user	Dil seçin
+lang_platform_now	İndi cihazın dili
+selected_language	Seçilib
+continue	Davam et
+this_device	BU CİHAZ
+device_use_q	Bu cihaz necə istifadə olunacaq?
+last_server_mode	Server idi — davam etmək üçün toxunun
+last_client_mode	Klient idi — davam etmək üçün toxunun
+choose_server	Server seçin
+choose_server_hint	Mövcud serveri açın və ya başqa biznes üçün yenisini yaradın.
+create_new_server	Yeni server yarat
+open_server	Aç
+new_server_name_ph	Yeni server adı (istəyə bağlı)
+server_remove_pin_ph	Serveri silmək üçün Sahib PIN-i
+only_owner_remove_server	Serveri yalnız Sahib silə bilər
+owner_pin_remove_server	Bu serveri silmək üçün Sahib PIN-i lazımdır
+device_setup_help	Server kitabları burada saxlayır. Klient Serverə qoşulur.
+currency	Valyuta
+backup	Ehtiyat nüsxə
+settings_sec_diag	Diaqnostika
+settings_hub_help	Bir sahəni bir dəfəyə açın — daha az sürüşdürmə, daha aydın seçimlər.
+settings_sec_devices	Digər cihazlar
+settings_sec_alerts	Xəbərdarlıqlar
+alerts_help	Status mesajları ekranda sizin üçün (bu girişdə) nə qədər qalır.
+snack_secs_ph	Saniyə (3–60, susmaya görə 10)
+snack_secs_save	Xəbərdarlıq vaxtını saxla
+snack_secs_saved	Xəbərdarlıq vaxtı saxlandı — {n} saniyə
+snack_secs_bad	Saniyələri rəqəm olaraq daxil edin (3–60)
+cancelled	Ləğv olundu
+cancel	Ləğv
+opening_client	Klient açılır…
+preparing_desk	Masa hazırlanır…
+opening_server	Server açılır…
+creating_server	Server yaradılır…
+diag_privacy_help	Jurnallar bu cihazda qalır. Sirlər (PIN, parollar) heç vaxt saxlanılmır. Paketi cihazdan kənara paylaşmaq hər dəfə sizin açıq təsdiqinizi tələb edir — heç vaxt satılmır və üçüncü tərəflərə verilmir.
+diag_level	Ətraflılıq
+diag_level_error	Xətalar
+diag_level_warn	Xəbərdarlıqlar
+diag_level_info	Məlumat
+diag_level_debug	Sazlama
+diag_support_start	30 dəqiqəlik dəstək seansı başlat
+diag_support_stop	Dəstək seansını bitir
+diag_support_started	Dəstək seansı açıqdır — 30 dəqiqə Sazlama ətraflılığı
+diag_support_ended	Dəstək seansı bitdi
+diag_export_local	Yerli nüsxəni ixrac et
+diag_export_local_done	Yerli diaqnostika {path} yolunda hazırdır — nüsxəni saxlamaq üçün yer seçin
+diag_approve_send	Bu cihazdan kənara paylaşmanı təsdiqlə
+diag_send_heading	Bu cihazdan kənara paylaş
+diag_send_help	Təsdiq bir paket üçündür, sonra bitir. Müvəqqəti — yalnız məhsulu düzəltmək və ya yaxşılaşdırmaq üçün. Üçüncü tərəflərlə paylaşılmır. Linux, Windows, macOS və Android-də işləyir.
+optional_login_heading	İstəyə bağlı giriş
+rights_heading	Hüquqlar
+booking_scope_heading	Daxili / Beynəlxalq
+diag_send_approved	Bir paket üçün paylaşım təsdiqləndi (tezliklə bitir)
+diag_export_send	Paylaşım paketi yarat (təsdiq lazımdır)
+diag_export_send_done	Paylaşım paketi {path} yolunda hazırdır — saxlamaq üçün yer seçin, sonra yalnız Kumkaj dəstəyinə göndərin
+diag_save_bundle	Diaqnostika nüsxəsini saxla
+diag_bundle_saved	Diaqnostika nüsxəsi {path} yoluna saxlandı
+diag_bundle_failed	Diaqnostika nüsxəsi saxlanılmadı — yenidən cəhd edin
+diag_clear	Diaqnostika jurnallarını təmizlə
+diag_cleared	Diaqnostika jurnalları təmizləndi
+use	İstifadə et
+add_branch	Filial əlavə et
+add_conversion	Çevrilmə əlavə et
+add_item_plain	Məhsul əlavə et
+add_note	Qeyd əlavə et
+add_opening_balance	Açılış qalığı əlavə et
+add_rider	Rider əlavə et
+add_staff	Heyət əlavə et
+add_unit	Vahid əlavə et
+add_use_name	Bu adı əlavə et / istifadə et
+allow_extra_tills	Əlavə kassalara icazə ver
+amend	Düzəliş et
+apply_country_pack	Ölkə paketini tətbiq et
+datetime_appearance	Tarix və saat görünüşü
+datetime_appearance_help	Kitablar içəridə il-əvvəl RFC3339 saxlayır. Bunlar yalnız tarixlərin və saatların qəbzlərdə, etiketlərdə, hesabatlarda və ekranda necə göründüyünü dəyişir.
+datetime_example	İndi nümunə: {ex}
+date_order	Tarix sırası
+date_order_dmy	G/A/İ
+date_order_mdy	A/G/İ
+date_order_ymd	İ-A-G
+time_format	Saat
+time_format_24h	24 saat
+time_format_12h	12 saat
+attach_bill_photo	Hesab şəkli əlavə et
+attach_pdf	PDF əlavə et
+attach_photo	Şəkil əlavə et
+bank	Bank
+bank_in	Banka giriş
+bank_out	Bankdan çıxış
+bank_to_till	Bank → kassa
+till_to_bank	Kassa → bank
+mark_cleared	Üzləşdi işarələ
+unmark	İşarəni götür
+role_both	Hər ikisi
+role_carrier	Daşıyıcı
+role_cashier	Kassir
+role_consignor	Göndərən
+role_manager	Menecer
+role_supplier	Təchizatçı
+branch_name_sell_ph	Satış ediləcək filialın adı
+bring_my_book	Kitabımı gətir
+business_tax_id_ph	Biznes vergi id-si
+card_amount_ph	Kart məbləği
+cash_amount_ph	Nağd məbləğ
+upi_amount_ph	UPI məbləği
+carrier_cost_ph	Daşıyıcı xərci
+carrier_party_ph	Daşıyıcı tərəf
+choose_icon	Nişan seç
+choose_logo	Loqo seç
+choose_receipt_stamp	Qəbz möhürünü seçin
+choose_payment_qr	Ödəniş QR seç
+clear_icon	Nişanı sil
+clear_logo	Loqonu təmizləyin
+clear_photo	Şəkli sil
+clear_stamp	Möhürü sil
+clear_payment_qr	Ödəniş QR-i sil
+print_faces	Çap üzləri (qəbz / dövr hesabı)
+print_faces_help	Qəbul qəbzlərində və dövr hesablarında loqonuzun yanında istəyə bağlı möhür və ödəniş QR.
+awb_pools_heading	Daşıyıcı AWB nömrə hovuzları
+add_awb_pool	AWB hovuzuna əlavə et
+awb_pool_carrier_ph	Daşıyıcı tərəfin adı
+awb_pool_start_ph	Başlanğıc nömrəsi
+awb_pool_end_ph	Son nömrə
+awb_pool_prefix_ph	Prefiks (istəyə bağlı)
+awb_pool_label_ph	Etiket (isteğe bağlı)
+pieces_ph	Ədəd (boş = 1) — yük / çoxədli üçün açın
+bulk_awbs_ph	Kütləvi AWB-lər — bir vəziyyət irəliləməsi üçün bir çoxunu yapışdırın (yeni xətt və ya vergül)
+tds_cut_ph	TDS tutulması (istəyə bağlı)
+discount_ph	Endirim (istəyə bağlı)
+cheque_no_ph	Çek nömrəsi (seçimə bağlı)
+bill_reminder_chase	Faktura xatırlatma təqib siyahısı
+month_mix_report	Ay qarışığı hesabatı
+copy_month_gst_csv	Kopya ay, GST CSV
+domestic	Daxili
+international	Beynəlxalq
+pick_logo	Loqo seç
+booking_scope_hint_domestic	Həcm çəkisi ÷5000 (daxili) — hava ÷6000 üçün Beynəlxalqa toxunun
+booking_scope_hint_intl	Həcm çəkisi ÷6000 (beynəlxalq hava) — mağaza ÷5000 üçün Daxiliyə toxunun
+cod_register	Nağd ödəniş qeydiyyatı
+collect_cod	Nağd çatdırılma (AWB) yığ
+consignments_dispatch	Göndərişlər və göndəriş
+consignor_party_ph	Konsignor / partiya adı
+copy_day_book_csv	Günün kitabını CSV köçür
+copy_day_close	Günün bağlanışını köçür
+copy_items_csv	Məhsulları CSV köçür
+copy_outstanding_csv	Ödənilməmişləri CSV köçür
+copy_parties_csv	Tərəfləri CSV köçür
+copy_party_ledger_csv	Tərəf dəftərini CSV köçür
+copy_receipt	Qəbzi köçür
+copy_report	Hesabatı köçür
+counted_cash_ph	Siyirmədə sayılan nağd
+counter_agency_ph	Kassa / agentlik adı (istəyə bağlı)
+create_backup	Ehtiyat nüsxə yarat
+day_close_summary	Günün bağlanışı xülasəsi
+delete_party	Seçilmiş tərəfi sil
+dispatch_to_rider	Göndərmə sifarişi verilmiş → sürücü
+docket_charge_ph	Qaimə ödənişi
+declared_value_ph	Bəyannamə dəyəri
+contents_ph	Məzmun
+eway_ph	E-way bill nömrəsi
+insurance_label	Sığorta
+yes_label	Bəli
+no_label	Xeyr
+print_route_label	Marşrutu çap et
+new_party_kind_label	Yeni tərəf növü
+done_open_books	Bitdi — kitabları aç
+export_day	Günü ixrac et
+extra_note_expense_ph	Son xərc üçün əlavə qeyd
+extra_note_awb_ph	Bu AWB / satış üçün əlavə qeyd
+failed_delivery	Uğursuz çatdırılma
+find_scan_awb	AWB tap / skan et
+forget_shop	Bu mağazanı unut
+fuel_ph	Yanacaq
+handover_carrier	Əl ilə bron → daşıyıcıya
+import_day	Günü idxal et
+import_items_csv	Məhsul / tarif CSV idxal et…
+import_parties_csv	Tərəfləri CSV idxal et…
+import_pincodes_csv	Poçt indeksi CSV idxal et…
+import_carrier_bill_csv	Daşıyıcı fakturası CSV idxal et…
+copy_carrier_bill_report	Son daşıyıcı hesab hesabatını kopyalayın
+use_carrier_cost	Daşıyıcı xərcini istifadə et
+rate_carrier_ph	Daşıyıcı (boş = bizim satış qiymətimiz)
+rate_party_ph	Tərəf (boş = bütün müştərilər)
+carrier_pick_ph	Xərc üçün daşıyıcı (müqayisədən)
+item_name	Məhsul adı
+load_bulk_row	Kütləvi sətiri yüklə → masa
+login_id_ph	İstifadəçi adı
+mark_delivered	Çatdırıldı olaraq işarələyin
+manifest_cod_total	Nağd ödəniş cəmi
+manifest_received_by	Qəbul edən
+manifest_sign	İmza
+ndr_address_wrong	Ünvan səhvdir
+ndr_customer_unavailable	Mövcud deyil
+ndr_door_locked	Qapı bağlıdır
+ndr_other	Digər
+ndr_refused	İmtina
+out_for_delivery	Çatdırılmaya çıxıb
+print_drs	DRS çap et
+print_run_sheet	Reys vərəqini çap et
+reattempt	Yenidən cəhd
+rider_cod_handed_ph	Nağd ödəniş təqdim edildi
+settle_rider_cod	Kuryer COD-unu hesabla
+mode_desk	Masa
+mode_rider	Kuryer
+waiting_office	ofisə çatmağı gözləyir
+capture_signature	İmza götür
+incoming_manifest	Gələn manifest
+pickup_request	Götürmə sorğusu
+pickup_run	Götürmə reysi
+auto_assign_area	Avtomatik sahə təyini
+reorder_stops	Dayanacaqları yenidən sırala
+settle_rider_pay	Kuryer haqqını hesabla
+vehicle_inspect	Nəqliyyat yoxlaması
+print_docket	Doketi çap et
+franchise_statement	Françayz bəyanatı
+tally_export	Tally vauçer ixracı
+open_whatsapp	WhatsApp aç
+copy_sms	SMS mətnini kopyalayın
+pick_barcode_image	Skan üçün şəkil seç
+share_receipt_whatsapp	Qəbzi WhatsApp-da paylaş
+delivery_feedback	Çatdırılma rəyi
+lan_self_book	LAN öz-özünə rezervasiya
+new_party_clear	Yeni tərəf (formanı təmizlə)
+new_party_kind_ph	Yeni tərəf növü (Təchizatçı / Daşıyıcı)
+next_country	Növbəti ölkə
+prev_country	Əvvəlki ölkə
+note_gstin_ph	Qeyd / GSTIN / müqavilə xatırlatması
+note_pod_ph	Qeyd / POD (istəyə bağlı)
+on_account_ap	Hesaba (AP)
+org_optional_ph	Təşkilat (istəyə bağlı)
+paid_now	İndi ödənildi
+pairing_code_ph	Qoşulma kodu
+pair_now	İndi qoşul
+party_name_selected_ph	Tərəfin adı (və ya seçilmişi istifadə et)
+password_ph	Parol
+pay_ap_card	AP-ni kartla ödə
+pay_ap_cash	AP-ni nağd ödə
+pay_ap_upi	AP-ni UPI ilə ödə
+period_bill	Dövr hesabı
+period_bill_party	Dövr hesabı (tərəf)
+pick_pod_photo	POD şəkli seç
+print_awb_label	AWB etiketini çap et
+print_open	Çap et / aç
+reason_amend_ph	Düzəliş / ləğv / qaytarma səbəbi
+reason_note_ph	Səbəb / qeyd (itki, sayım, …)
+record_day_close	Günün bağlanışını yaz
+refresh_from_shop	Mağazadan yenilə
+refund	Qaytarma
+remit_cod	COD köçür (tərəf)
+remove_selected	Seçilmişi sil
+restore_backup	Ehtiyat nüsxəni bərpa et
+rider_name_ph	Kuryerin adı
+rider_phone_ph	Kuryerin telefonu
+riders	Kuryerlər
+riders_own_fleet	Kuryerlər (öz parkı)
+rollup	Cəmləmə
+save_booking_measures	Qəbul ölçü vahidlərini saxla
+save_brand	Brendi saxla
+save_business_id	Biznes id-ni saxla
+save_business_name	Biznes adını saxla
+save_features	Vəzifə quraşdırmasını saxla
+save_names	Adları saxla
+server_ip_ph	Server IP (məs. 192.168.1.10)
+set_credit_limit	Limiti tərəfə tətbiq et
+set_login_selected	Girişi seçilmişə tətbiq et
+set_login_named	Girişi {name} üçün tətbiq et
+shop	Mağaza
+start_fresh	Sıfırdan başla
+stop_extra_tills	Əlavə kassaları dayandır
+backup_auto	Hər gün avtomatik ehtiyat nüsxə · sonuncu {when} · son 14 gün {dir} qovluğunda saxlanır.
+backup_auto_none	Hər gün avtomatik ehtiyat nüsxə — birincisi bir azdan işləyəcək.
+backup_copy_to	Nüsxələr həm də {dir} qovluğuna gedir.
+backup_copy_btn	Ehtiyat nüsxələri qovluğa da köçür…
+autostart_off	Bu kompüterlə başla
+autostart_on	Bu kompüterlə başlayır ✓ — dayandırmaq üçün toxunun
+autostart_done_on	Bu kompüter indi işə düşəndə tətbiqi açır — elektrik kəsiləndən sonra mağazanın serveri geri qayıdır.
+autostart_done_off	Bu kompüter artıq işə düşəndə tətbiqi açmır.
+right_allowed	İcazə var
+right_with_approval	Təsdiqlə
+right_denied	İcazə yoxdur
+editing_staff	Hüquqlar:
+team_pick_ph	Redaktə ediləcək heyət — ad, istifadəçi adı və ya seçin
+select_staff	Bu heyət üzvünü seç
+rights_help	Hüquqlar — dəyişmək üçün toxunun: İcazəli → Təsdiqlə (həmin anda menecer PIN-i) → İcazəsiz.
+right_void_refund	Qəbulu ləğv et və ya qaytar
+right_amend_sale	Qeyd edilmiş rezervasiyanı dəyişdir
+find_server	Mağazanın serverini tap
+finding_server	Bu Wi‑Fi-də mağazanın serveri axtarılır…
+no_server_found	Heç nə tapılmadı. Serverdə: Ayarlar → Digər cihazlar → Əlavə kassalara icazə ver (eyni Wi‑Fi). Və ya orada göstərilən IP-ni yazın.
+servers_found_pick	Qoşulmaq istədiyiniz mağazaya toxunun.
+server_host_selected	{host} istifadə olunur — qoşulma kodunu daxil edin, sonra İndi qoşul.
+device_forgotten	Mağaza bu cihazı unutdu — onu mağazanın cari kodu ilə yenidən qoşun. Üzərində gözləyən sifarişlər saxlanır.
+forget_device	Unut
+last_seen	görülüb
+new_pair_code	Yeni qoşulma kodu
+lan_offline	Mağaza serverinə çatılmır
+lan_offline_waiting	Mağaza serverinə çatılmır · {n} gözləyir
+lan_connecting	Mağazaya qoşulur…
+pair_finishing	Bitirmə cütü... ofis kitablarını tətbiq etmək
+pair_opening	Ofis açılır…
+lan_live	Canlı
+lan_sending	{n} göndərilir
+lan_sign_in_to_send	{n} göndərmək üçün yenidən daxil olun
+lan_pair_again	Bu cihazı yenidən qoşun
+lan_update_app	Tətbiqi yeniləyin — bu cihaz və ofis serverinin versiyaları fərqlidir
+allow_firewall	Digər cihazların qoşulmasına icazə ver
+firewall_blocked	Bu kompüterin təhlükəsizlik divarı digər cihazları əngəlləyir — Digər cihazların qoşulmasına icazə ver düyməsinə toxunun.
+firewall_waiting	Admin sorğusu gözlənilir…
+lan_join_help	Digər cihazda: Klient rejimi → Mağazanın serverini tapın (və ya {addr} yazın) → qoşulma kodu {code}.
+lan_pair_status	Wi‑Fi {addr}
+lan_join_help_no_addr	Ünvan almaq üçün bu cihazı Wi‑Fi-yə qoşun.
+lan_no_address	Hələ Wi‑Fi ünvanı yoxdur — mağaza Wi‑Fi-sinə qoşulun.
+lan_not_listening	Cihazlar qəbul olunmur (port {port} məşğuldur). Tətbiqi yenidən başladın.
+lan_tills_off	Əlavə kassalar bağlıdır. Başqa cihazın qoşulması üçün onlara icazə verin.
+paired_with	Qoşulub · {url}
+not_paired	Qoşulmayıb
+choose_device_use	Server və ya Klient seçin.
+paired_note	Qoşulub. Satış üçün kilidi açın və ya ən sonu almaq üçün Yenilə.
+last_update_at	Son yeniləmə: {time}.
+pair_intro	Serveri tapın və ya onun ünvanını və qoşulma kodunu yazın.
+queue_waiting	Mağazaya çatmağı gözləyir ({n}):
+queue_tries	{n} dəfə cəhd olundu · son cavab: {e}
+save_backup_copy	Ehtiyat nüsxə saxla…
+backup_copy_saved	Ehtiyat nüsxə saxlandı — onu bu cihazdan kənarda saxlayın (USB yaddaş və ya başqa cihaz)
+backup_copy_overdue	{n} gündür bu cihazdan ehtiyat nüsxə çıxmayıb — Ayarlar → Ehtiyat nüsxə
+backup_copy_failed	Ehtiyat nüsxə ora saxlanılmadı — başqa yer seçin
+clock_off	Bu cihazın saatı mağaza serverindən {min} dəq kənardadır — bu cihazda düzgün vaxtı qoyun
+printers_heading	Bu cihazdakı printerlər
+printers_help	Əsl printerləri tapın, sonra Qəbz və ya AWB etiketini seçin. Hər işin öz eni, portret və ya mənzərə durumları, həmçinin baytların necə göndərildiyi var. Bir etiket barkodu çap edir. Boş yer = çap etməyin.
+job_width	Məzmun eni (mm)
+job_width_ph	Və ya en yazın, 40–210 mm
+job_layout	Düzüm
+job_delivery	İş necə göndərilir
+job_size	Şrift ölçüsü
+job_size_ph	məs. 18, 20, 26…
+save_receipt_format	Qəbz formatını saxla
+save_label_format	Etiket formatını saxla
+test_receipt_format	Sınaq qəbz
+test_label_format	Sınaq etiket
+test_receipt_sent	Nümunə qəbz göndərildi
+test_label_sent	Nümunə etiket göndərildi
+test_print_no_printer	Bu iş üçün printer yoxdur — birini bu yerin altına əlavə edin
+printers_host_only	Printerlər mağaza cihazında (Server) qurulur. Bu kassa işləri ora göndərir — Tap / əlavə et / təyin et Serverdə qalır. Sınaq səhifəsi Serverə gedir.
+printers_pool_heading	Printerlər
+printers_routes_heading	Nələr harada çap olunur
+printer_label_ph	Ad (məsələn, Masa)
+printer_target_ph	host:9100 · bt:MAC · usb:VID:PID · sistem adı
+printer_mode_heading	Yeni çıxışlar üçün profil
+printer_mode_standard	Standart portret
+printer_mode_landscape	Standart albom
+printer_mode_thermal	Termal
+printer_mode_standard_short	Şaquli
+printer_mode_landscape_short	Üfüqi
+printer_mode_thermal_short	Termal
+printer_format_custom	Yeni xüsusi profil
+printer_format_custom_label	Xüsusi
+printer_format_custom_added	Bu yer üçün xüsusi profil əlavə olundu
+add_printer	Printer əlavə et
+remove_printer	Sonuncunu sil
+route_pick_ph	qəbz və ya etiket
+route_add_printer_ph	Bu yerə printer əlavə et
+route_receipt	Qəbz
+route_label	AWB etiketi
+route_dont_print	Heç bir printer təyin edilməyib
+route_add	Yerə əlavə et
+route_up	Yuxarı
+route_down	Aşağı
+route_remove	Sonuncunu sil
+route_clear	Bu yer üçün printerləri təmizləyin
+save_printers	Printerləri saxla
+print_test_page	Sınaq səhifəsi çap et
+printers_saved	Bu cihaz üçün printerlər saxlandı
+test_page_sent	Sınaq səhifəsi göndərildi — printeri yoxlayın
+printers_found	Bu cihazda tapıldı: {list}
+find_printers	Printerləri tap
+printers_looking	Bu cihazda və Wi‐Fi-də printer axtarılır...
+printers_tap_find	İş qəbul edən növbələr və bu Wi‑Fi-dəki şəbəkə qəbz printerləri üçün Printerləri tap düyməsinə toxunun (silinmiş və ya oflayn olanlar yox).
+printers_none_found	Heç bir printer tapılmadı — sistem printer adını və ya şəbəkə ünvanını daxil edin (məsələn, 192.168.1.50).
+receipt_printer_ph	Qəbzlər üçün printer
+queue_refused	Mağaza qəbul etmədi ({n}) — hər birini kassada yoxlayın:
+clear_not_accepted	Yoxlandı — bu siyahını təmizlə
+device_name_ph	Bu cihazın adı
+lan_last_update	son yeniləmə {time}
+lan_not_accepted	{n} qəbul olunmadı
+connected_now	indi qoşulub
+backup_failed	Son avtomatik ehtiyat nüsxə alınmadı: {e}
+backup_overdue	{n} gündür ehtiyat nüsxə yoxdur — ehtiyat nüsxə ala bilsin deyə tətbiqi bu cihazda açıq saxlayın.
+disk_low	Bu cihazda yalnız {mb} MB boşdur — ehtiyat nüsxələr tezliklə alınmayacaq. Bir az yer boşaldın.
+last_seen_devices	Son görülmə: {time}
+sync_interval	Hər {secs} saniyədən bir sinxron
+connection_to_shop	Mağaza ilə əlaqə
+supplier_name_ph	Təchizatçı adı (və ya tərəf)
+supplier_ph	Təchizatçı
+switch_device	Bu cihazı dəyiş
+take_payment	Ödəniş al
+tax_added_till	{tax} xaric
+tax_inside_price	{tax} daxil
+today_books	Bu günün kitabları
+unlock_after_pairing	PIN daxil edin
+unlock_with_login	Girişlə kilidi aç
+update_my_password	Parolumu yenilə
+update_my_pin	PIN-imi yenilə
+duress_heading	Fövqəladə kilid PIN-i (yalnız Sahib)
+duress_help	İstəyə bağlı. Kilid açılarkən sizin əvəzinizə bu PIN yazılsa, bütün kitab yazıları silinir (qəbullar, dəftərlər, tarixçə) və masa normal görünən Sahib kimi açılır — tariflər, tərəflər, zonalar, heyət və ayarlar qalır. Sxem və konfiqurasiya silinmir. Yalnız məcburən açmağınız lazım olanda istifadə edin. Söndürmək üçün boş buraxıb saxlayın. Heç kimin PIN-i ilə eyni olmasın.
+duress_pin_ph	Fövqəladə PIN (4–12 rəqəm)
+duress_confirm_ph	Təsdiq üçün yenidən yazın
+save_duress_pin	Fövqəladə PIN-i saxla
+clear_duress_pin	Fövqəladə PIN-i söndür
+duress_on	Fövqəladə kilid PIN-i açıqdır
+duress_off	Fövqəladə kilid PIN-i bağlıdır
+duress_saved	Fövqəladə kilid PIN-i saxlandı
+duress_cleared	Fövqəladə kilid PIN-i söndürüldü
+vehicle_ph	Nəqliyyat
+void	Etibarsız et
+write_off_ap	AP-ni hesabdan sil
+write_off_nil	Hesabdan sil / sıfır qalıq
+zone_ph	Zona (Tariflərdən ad)
+caption_today	BU GÜN
+caption_bookings	SİFARİŞLƏR
+caption_payments_today	BU GÜNÜN ÖDƏNİŞLƏRİ
+caption_outstanding	ÖDƏNİLMƏMİŞ
+caption_bank	BANK
+paid_by	Ödəyən
+second_way	İkinci üsul
+weight_in	Çəki vahidi
+size_in	Ölçü vahidi
+goods_received	Mal qəbul olundu
+expense_heading	Xərc
+notes_attach_sale	Qeydlər və əlavələr (seçilmiş satış)
+notes_attach_party	Qeydlər və əlavələr (seçilmiş tərəf)
+attachments_last_expense	Əlavələr (son xərc)
+credit_limit_heading	Kredit limiti (seçilmiş / adlı tərəf)
+pay_selected_heading	Seçilmişi ödə (borcu bağla / avans al)
+write_off_heading	Hesabdan sil (ödənişsiz təmizlə)
+pay_ap_heading	Onlara borcumuzu ödə (AP)
+country_tax	Ölkə və vergi
+extra_tills_heading	Əlavə kassalar
+other_devices_help_heading	Digər cihazları quraşdır
+other_devices_help	Bu cihazda (Server): Digər cihazlar → Əlavə kassalara icazə. Qoşulma kodunu və Wi‑Fi ünvanını qeyd edin. Görünürsə, Digər cihazların qoşulmasına icazə ver düyməsinə toxunun. Kompüterdə Bu kompüterlə başla düyməsinə toxunun. Hər digər cihazda: tətbiqi quraşdırın, Klient rejimini seçin, Mağazanın serverini tapın (və ya ünvanı yazın), qoşulma kodunu daxil edin, İndi qoşul. Wi‑Fi kəsilərsə sifarişlər cihazda gözləyir və Server cavab verəndə gedir.
+your_brand	Sizin brend (tətbiqdə)
+units_heading	Vahidlər
+booking_measures	Sifariş ölçüləri
+drawer_count	Siyirmə sayımı (istəyə bağlı)
+spreadsheet_csv	Cədvəl (CSV)
+bank_reconciliation	Bank üzləşdirməsi (bank çıxarışınızla işarələyin)
+book_add_product	Sifariş et — məhsul / tarif əlavə et
+book_opening_credit	Kitab — açılış krediti
+account_kind	Hesab növü (birinə toxunun)
+active_ledger	Aktiv kitab
+actual_total_cap	FAKTİKİ CƏM
+amend_help	Düzəliş, etibarsız etmə və ya qaytarma üçün satış seçin. Düzəlişlər tam tarixçəni saxlayır. Yuvarlaq cəm Tətbiq olunana bərabər başlayır — yalnız yuvarlaqlaşdırmaq üçün dəyişin. Etibarsız etmə və qaytarma Sahib və ya Menecer PIN-i tələb edə bilər (yuxarıda yazılır; adınızla qeyd olunur).
+applied_total_cap	TƏTBİQ OLUNAN CƏM
+bank_balance	Bank qalığı
+bank_net_today	Bu gün bank xalisi
+branch_export_help	İxrac günün anlıq görüntüsünü backup qovluğuna yazır və panoya kopiyalayır. Başqa bir filialın gününü idxal etmək üçün faylını həmin qovluqda import_branch_snapshot.json kimi saxlayın, sonra İdxal-a toxunun.
+brand_shown_help	Tətbiqin içindəki ekranlarda göstərilir. Bu cihazda quraşdırılmış tətbiqin adı və nişanı platforma siyahısındakı kimi qalır.
+app_icon	Tətbiq nişanı
+logo_help	Tətbiqdəki ekranlarda istəyə bağlı mağaza işarəsi.
+onboard_layout	Nə alırsınız
+item_photo_help	İstəyə bağlı. Şəkil olmayanda məhsul adının baş hərflərini göstəririk.
+cash_in_hand	Əldə nağd (kassa)
+change_my_pin_heading	PIN kodumu dəyişdirin (yalnız sizin)
+connect_to_server	Serverə qoşul
+counter_locked	Kassa 01 · Kilidlidir
+country_pack_help	Ölkə paketi vergi adını və hesabını, ani ödəniş xəttini və hesablarda çap olunan biznes id-ni qoyur. Kumkaj heç yerdə vergi bəyannaməsi vermir və dövlət e-fakturası buraxmır.
+currency_use_help	Dəstəklənən istənilən valyuta üçün sürüşdürün və İstifadə et düyməsinə toxunun.
+day_close_help	Günün bağlanışını yazmaq bu xülasəni (və sayılsa siyirmə fərqini) audit jurnalına saxlayır. Satışı dayandırmır.
+expenses_word	Xərclər
+feature_access_help	Seçilmiş işçilər üçün xüsusiyyətə giriş (əlavə etdikdən sonra vurun)
+footer_local	Yerli SQLite · Həmişə pulsuz · Sıfır Cloud
+fresh_book_moklanjo	Təzə = boş kataloq (sonradan maddələr əlavə edin). Kitab = açılış stokunu və kimə borclu olduğunuzu aşağıda yazın.
+fresh_selected	Təzə seçildi — kataloq boş qalır. Hazır olanda Bitdi düyməsinə toxunun.
+gross_word	Brutto
+how_start	Necə başlamaq istəyirsiniz?
+later_country_pack	Sonra: Ayarlar → vergi və ödəniş etiketləri üçün ölkə paketinizi tətbiq edin.
+local_badge	YERLİ
+measures_help_moklanjo	Bağlamaların qəbul masasında necə ölçüldüyü. Ölçü və çəkini işlətdiyiniz vahidlərlə yazın — standart (sm, m, düym, fut · kq, q, funt, unsiya) və ya yuxarıda sm / kq ilə bağlı öz vahidiniz (birbaşa və ya digər vahidlər vasitəsilə). Kitablar həmişə kq yazır. Saxlamaq üçün sahəni boş buraxın.
+mix_type_hint_moklanjo	Hər birində nə qədər olduğunu yazın (nağd / UPI / kart / kredit). Hesaba bərabər olmalıdır. Kredit üçün yuxarıda müştəri lazımdır.
+money_in_sales	Pul girişi (satışlar)
+more_help_moklanjo	Kataloq, satış, kredit, komanda, ehtiyat — lazım olduqda əlavə anbar və kassalar.
+net_word	Xalis
+offline_badge	OFLAYN
+optional_login_help	İstəyə bağlı giriş (id + parol). Sahib bir dəfə qoyur; parolu sonra yalnız istifadəçi dəyişə bilər.
+or_unlock_login	Və ya giriş id-si + parol ilə kilidi açın
+permission_preset	Vəzifə (ekranları və hüquqları təyin edir)
+preset_help_moklanjo	Kassir: satış. Menecer: satış + məhsullar + etibarsız etmə/düzəliş.
+product_locked_moklanjo	Moklanjo
+product_only_moklanjo	Bu tətbiq yalnız Moklanjodur — kitablar + qəbul masası. Digər ticarət üzləri sonra ayrı məhsullar kimi çıxacaq.
+purchases_cogs	Alışlar (COGS)
+qty_cap	SAY
+restore_help	Bərpa: ehtiyat nüsxə seçin. Kitablar o vaxtkı kimi açılır; indiki kitablar əvvəlcə saxlanır, ona görə bunu geri almaq olar.
+wipe_data_heading	Yerli məlumatı sil
+wipe_data_help	Yalnız Sahib — Windows silmə ilə eyni seçimlər. Biznes qeydləri ticarət tarixçəsini təmizləyir, tarifləri və quraşdırmanı saxlayır (fövqəladə kilid PIN-i kimi). Mağaza quraşdırması kitablar bazasını silir. Ekran seçimləri pəncərə/dili təmizləyir. Sahib PIN-i ilə təsdiqləyin. Komandada fövqəladə kilid PIN-i ayrıdır (kilid açılışında gizli silmə).
+wipe_trading	Biznes qeydləri
+wipe_schema	Mağaza quraşdırması
+wipe_ui	Ekran seçimləri
+wipe_owner_pin_ph	Silmək üçün Sahib PIN-i
+wipe_delete_selected	Seçilmişi sil
+wipe_owner_only	Yerli məlumatı yalnız Sahib silə bilər.
+restore_owner_only	Ehtiyat nüsxəni yalnız Sahib bərpa edə bilər.
+wipe_owner_pin_needed	Yerli məlumatı silmək üçün Sahib PIN-ini daxil edin.
+wipe_nothing_selected	Əvvəlcə nəyin silinəcəyini seçin.
+wipe_done	Seçilmiş yerli məlumat silindi.
+wipe_schema_done	Mağaza quraşdırması silindi — davam etmək üçün Server və ya Klient seçin.
+rounded_total	Yuvarlaq cəm
+setup_app_moklanjo	Moklanjonu quraşdır
+shop_logo_optional	Mağaza loqosu (istəyə bağlı)
+stock_type_help	Məhsul adını yazın (bir hissəsi kifayətdir), say, sonra düzəldin. Hələ sayılmayan məhsullara bir dəfə İzləməyə başla lazımdır.
+team_owner_help	İcarə: bir iş seçin (Kassir / Menecer), ad + başlanğıc PIN, sonra Əlavə et. Bu şəxs fərqlidirsə: aşağıda ekranları və hüquqları açın, sonra İş quruluşunu yadda saxlayın. Hər kəs öz PIN kodunu aşağıdan dəyişir — Sahibi başqasının PIN kodunu dəyişə bilməz.
+they_owe_us	Onlar bizə borcludur
+unit_at_cap	Vahid @
+units_help	Məhsul etiketləri üçün kodlar (kg, ədəd, kisə). Hər vahid — birbaşa və ya başqa vahidlər vasitəsilə — standarta bağlanmalıdır (kg · cm · ml · pc), məs. 1 yeşik = 2 qutu və 1 qutu = 20 cm. Çevrilmələr: 1 haradan = əmsal hara. Valyutalar heç vaxt vahid deyil.
+we_owe_them	Biz onlara borcluyuq
+who_unlocking	Kim kilidi açır?
+locked_word	Kilidlidir
+show_pin	PIN-i göstər
+hide_pin	PIN-i gizlət
+set_owner_pin	SAHİB PIN-İNİ QOY
+enter_owner_passcode	SAHİB KODUNU DAXİL EDİN
+enter_staff_passcode	HEYƏT KODUNU DAXİL EDİN
+pin_count_zero	0 / 12 rəqəm · ən azı 4, sonra OK
+pin_count_need	{} / 12 rəqəm · daha {} lazımdır
+pin_count_full	12 / 12 rəqəm · OK basın
+pin_count_ready	{} / 12 rəqəm · hazır olanda OK basın
+pin_hint_choose	4–12 rəqəm seçin · saxlamaq üçün Enter və ya Kilidi aç
+pin_hint_new	Yeni 4–12 rəqəmli Sahib PIN-i · Enter və ya Kilidi aç
+pin_hint_shop_code	Mağaza cihazı · qoşulma kodu {}
+pin_hint_books	Bu cihaz kitabları saxlayır
+pin_hint_paired	Əlavə kassa qoşulub — satış üçün kilidi açın
+pin_hint_pair_first	Əlavə kassa — əvvəlcə mağaza cihazına qoşulun
+unlock_to_continue	Davam etmək üçün kilidi açın
+no_staff_yet	Hələ heyət yoxdur — Sahib kimi kilidi açın, sonra Heyət
+status_server_set_pin	Server rejimi — Sahib PIN-ini qoyun
+status_server_tills	Server rejimi — əlavə kassalar qoşula bilər. Kilidi açın
+status_server_unlock	Server rejimi — Sahib kimi kilidi açın
+status_client_unlock	Klient rejimi — satış üçün kilidi açın
+icon_new_selected	Nişan: yeni fayl seçildi — Brendi saxla düyməsinə toxunun
+icon_custom	Nişan: xüsusi məkan işarəsi
+icon_default	Nişan: Kumkaj işarəsi (susma) — xüsusi birini seçin
+logo_yours	Loqo: sizin mağaza loqonuz — ekranlarda və qəbzlərdə göstərilir
+logo_default	Loqo: Kumkaj işarəsi (susma) — varsa, özünüzünkünü seçin
+tmpl_current	Cari: {} — {}
+tmpl_selected	Seçilib: {} — {}
+setup_complete	Quraşdırma bitdi
+onboard_fresh_tmpl	Təzə · {} — kataloq boş başlayır; məhsulları Məhsullarda əlavə edin, sonra Bitdi.
+onboard_book_tmpl	Kitab · {} — məhsullar və açılış krediti əlavə edin, sonra Bitdi.
+onboard_template_tmpl	İstəsəniz yerin adını yazın, sonra necə başlayacağınızı seçin.
+tmpl_blurb	Kuryer kitabları və rezervasiya masası: göndərənlər, daşıyıcılar, günlük qeyd, AWB.
+tmpl_how	Masaüstündə paketlər sifariş et; Bu gün üçün gündəlik qeyd; tariflər, tərəflər, hesabatlar üçün nişanlar.
+trk_booked	Sifariş olunub
+trk_picked_up	Götürüldü
+trk_in_transit	Daşıma mərhələsində
+trk_delivered	Çatdırılıb
+trk_rto	Göndərənə qayıdır
+lane_to_dispatch	Yola salınacaq
+lane_with_carrier	Daşıyıcıdadır
+lane_failed	Uğursuz oldu
+lane_done_today	Bu gün tamamlandı
+ops_board_help	Bağlamalar bu günkü işdə harada olduqlarına görə. Seçmək üçün bağlamalara toxunun (və ya skan edin), sonra seçilənlərin hamısına birlikdə əməl edin — hər zolaq yalnız ona uyğun hərəkətləri təklif edir.
+lane_empty	Hazırda burada heç nə yoxdur.
+picked_fmt	{n} seçildi
+pick_all	Hamısını seç
+bag_for_carrier	Daşıyıcıya əl ilə
+send_with_rider	Kuryerlə göndər
+out_again	Yenidən çıxar
+return_to_sender	Göndərənə qaytar
+runs_bags_heading	Son reyslər və kisələr
+print_word	Çap et
+bag_word	Daşıyıcı çantası
+run_word	Kuryer reysi
+parcels_fmt	{n} bağlama
+parcel_history	Tarixçə
+attempt_fmt	{n} cəhd edin
+pieces_short_fmt	{n} ədəd
+note_reason_ph	Qeyd və ya səbəb
+ops_pick_first	Əvvəlcə bağlamaları seçin — toxunun və ya skan edin
+cod_to_collect	Çatdırılıb — nağd ödənişlə yığılmalı
+cod_on_road	Nağd ödəniş hələ yolda
+cod_owed_consignors	Toplanıb — göndərənə ödəmək
+cod_rto_fees	Yığılacaq RTO haqları
+cod_to_hand_in	Nağd ödəniş təqdim etmək
+parcel_one_fmt	{n} bağlama
+facet_bank_title	Hesabatlar
+facet_bank_help	Gün kitabları, tərəf yaşlanması, bank yazıları və dövr M/Z.
+facet_ops_title	Göndərişlər və göndəriş
+facet_ops_help	AWB skan edin və ya yazın → Tap, sonra irəlilədin / etiket çap edin / COD. Kuryerə və ya daşıyıcıya yola salın.
+facet_cod_title	Nağd ödəniş qeydiyyatı
+facet_cod_help	Çatdırılmada topla, sonra göndərənə göndər
+facet_riders_title	Kuryerlər (öz parkı)
+facet_riders_help	Riderləri əlavə et, sonra Ops-dan sifarişli AWB-ləri göndər.
+against_bill_ph	Yuxarıdakı hesab № qarşısında (istəyə bağlı)
+aliases_ph	Ləqəblər — digər adlar, vergüllə
+amount_blank_full_ph	Məbləğ (boş = tam qalıq)
+amount_owed_ph	Borc məbləği
+amount_ph	Məbləğ
+amount_received_ph	Alınan məbləğ
+amount_we_pay_ph	Ödədiyimiz məbləğ
+awb_scan_ph	AWB / barkodu skan et
+bulk_csv_ph	Kütləvi CSV — destinasiya, alıcı, kq, cod_paise, qeyd
+business_name_ph	Biznes adı
+category_new_ph	Kateqoriya (istəyə bağlı, yenidirsə yaradılır)
+cod_amount_ph	COD məbləği
+code_bag_ph	Kod (bag)
+conv_factor_ph	Əmsal (25 = 1 bag → 25 kg)
+country_code_ph	Ölkə kodu, məs. IN, GB, US, AE, BR
+credit_khata_amount_ph	Kredit / khata məbləği
+credit_limit_ph	Kredit limiti (0 = yoxdur)
+dim_unit_code_ph	Ölçü vahidi kodu (sm)
+divisor_ph	Həcm böləni (5000)
+extra_per_kg_ph	Əlavə / kq
+first_amount_ph	Birinci məbləğ
+first_kg_ph	Birinci kq (slab)
+from_code_ph	Haradan kodu (bag)
+item_name_lang_ph	Məhsul adı — öz dilinizdə yazın
+login_id_opt_ph	İstifadəçi adı (mütləq, unikal)
+manager_pin_ph	Təsdiq üçün Menecer PIN-i (yalnız etibarsız edə bilmirsinizsə)
+new_branch_name_ph	Yeni filial adı
+new_password_ph	Yeni parol (istəyə bağlı)
+new_pin_ph	Yeni PIN (4–12 rəqəm)
+note_bank_ph	Qeyd (mədaxil, məxaric, …)
+note_buy_expense_ph	Qeyd (yanacaq, icarə, …)
+note_expense_ph	Qeyd (yanacaq, ofis, …)
+notify_phone_ph	Bildiriş telefonu (WhatsApp/SMS qoşması)
+options_moklanjo_ph	Seçimlər (istəyə bağlı) — Böyük=20, Hədiyyə qablaşdırması=10
+part_second_way_ph	İkinci üsulla hissə (istəyə bağlı)
+phone_ph	Telefon
+address_ph	Ünvan
+party_custom_fields_heading	Xüsusi sahələr (seçilmiş tərəf)
+party_custom_help	Bu partiyada hər hansı bir etiket və dəyər əlavə et — WhatsApp, GSTIN, marşrut kodu, ...
+party_custom_key_ph	Sahə adı (məsələn, WhatsApp)
+party_custom_value_ph	Dəyər
+party_custom_add	Sahə əlavə et
+party_custom_remove	Sahəni sil
+party_custom_empty	Hələ fərdi sahələr yoxdur
+party_custom_pick_first	Xüsusi sahə əlavə etmək üçün tərəf seçin
+place_name_ph	Bu yerin adı
+price_ph	Qiymət
+qty_example_ph	Say (məs. kg üçün 1.5)
+quantity_ph	Say
+reason_required_ph	Səbəb (mütləq)
+role_title_ph	Vəzifə adı (məs. Barista)
+service_pct_ph	Xidmət % istəyə bağlı 0/10/12
+short_code_ph	Qısa kod (MG02)
+slab_kg_ph	Ödənişli təbəqə kg ilə (0.5)
+staff_name_ph	Heyət adı / id
+starting_password_ph	Başlanğıc parol (istəyə bağlı)
+starting_pin_ph	Başlanğıc PIN (4–12 rəqəm)
+tax_rate_ph	Vergi dərəcəsinin adı və ya % — Standart, Azaldılmış, 0, 5, 12, 18, 20
+to_code_ph	Hara kodu (kg)
+uncleared_no_ph	Yuxarıdakı üzləşməmiş №
+unit_cost_ph	Vahid mayası
+unit_kg_blank_ph	Vahid (kq və ya boş)
+unit_name_bag_ph	Ad (Bag)
+weight_unit_code_ph	Çəki vahidi kodu (kq)
+zone_name_ph	Zona adı
+pay_credit	Kredit
+book_kind_today	Bu günün kitabları
+book_kind_month	Bu ayın kitabları
+book_kind_aging	Ödənilməmiş / debet-kredit
+book_kind_balance	Balans hesabatı
+ops_desk_help	AWB-ni USB barkod skaneri ilə skan edin (və ya yazın) → Tap. Sonra irəlilədin, etiket çap edin və ya COD yığın. Etiketlər Code 128 çap edir.
+role_help_consignor	Rol: Göndərən — AR (bizə borcludurlar). Eyni firma Daşıyıcı da ola bilər.
+role_help_carrier	Rol: Daşıyıcı — AP (biz onlara borcluyuq). Eyni firma Göndərən də ola bilər.
+role_help_both	Rollar: Göndərən + Daşıyıcı — bir tərəf, AR və AP dəftərləri, Hesabatlarda xalis.
+role_help_supplier	Rol: Təchizatçı — alışlar üçün AP.
+lane_declared_label	Hesab bronlaşdırması
+lane_owner_label	Nəğd rezervasiya
+money_lane_bill	Hesab: {lane}

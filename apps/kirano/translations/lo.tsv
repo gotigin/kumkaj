@@ -1,0 +1,1329 @@
+# Lao — ລາວ (lo). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	Kirana counter: ຂາຍ, ຫຼັກຊັບ, khata & ປຶ້ມ. ອອຟລາຍຟຣີ.
+unlock	ປົດລັອກ
+pin_hint	ເຈົ້າຂອງPINເລີ່ມຕົ້ນ0000
+sell	ຂາຍ
+buy	ຊື້
+books	ປຶ້ມມື້
+books_help	ຕໍາ​ແຫນ່ງ​ຂອງ​ມື້​ນີ້​. ຂາຍ = ເງິນເຂົ້າ. ຊື້ = ຊື້ & ຄ່າໃຊ້ຈ່າຍ. ພາກສ່ວນ = ລູກຄ້າສິນເຊື່ອ & ຜູ້ສະຫນອງ.
+buy_help	ໃບເກັບເງິນຄ່າໃຊ້ຈ່າຍ ແລະໃບເກັບເງິນຜູ້ສະໜອງ (ເງິນອອກ). ໃນບັນຊີຍັງຄົງຢູ່ໃນບັນຊີບັນຊີລູກຄ້າຫຼືຜູ້ສະຫນອງ.
+sell_money_in	ຂາຍລາຍການ
+buy_money_out	ຄ່າໃຊ້ຈ່າຍ / ບັນຊີລາຍການຜູ້ສະຫນອງ
+record_purchase	ບັນທຶກການຊື້
+add_expense	ໃບເກັບເງິນຄ່າໃຊ້ຈ່າຍ
+bank_book	ປຶ້ມທະນາຄານ
+credit_help	ID ລູກຄ້າ ຫຼືຜູ້ສະໜອງແມ່ນເປັນເອກະລັກ (ຊື່ອາດຈະຊໍ້າຄືນ). ລູກຄ້າແລ່ນບັນຊີບັນຊີສິນເຊື່ອ (ເປັນໜີ້ພວກເຮົາ); ຜູ້ສະໜອງຂາຍຫຼັກຊັບໃຫ້ພວກເຮົາ (ພວກເຮົາຕິດໜີ້ພວກເຂົາ); ທັງສອງແມ່ນດີ. Ledgers ຢູ່ແຍກຕ່າງຫາກ; ບົດລາຍງານສະແດງໃຫ້ເຫັນສຸດທິ.
+party_kind_ph	ບົດບາດ: ລູກຄ້າ, ຜູ້ສະໜອງ, ທັງ…
+reports_help	ປຶ້ມປະຈຳວັນ, ເຈົ້າໜີ້ & ເຈົ້າໜີ້, ປື້ມບັນຊີທະນາຄານ, ໃບເກັບເງິນລາຍຈ່າຍ, ຜົນກຳໄລ ແລະ ການສູນເສຍ.
+reports_today	ປຶ້ມມື້ (ມື້ນີ້)
+reports_month	ກຳໄລ ແລະ ການສູນເສຍ (ເດືອນ)
+reports_aging	ດີເດັ່ນ / ເດບິດ - ສິນເຊື່ອ
+reports_balance_sheet	ໃບດຸ່ນດ່ຽງ
+reports	ປຶ້ມທະນາຄານ & P&L
+refresh	ໂຫຼດຂໍ້ມູນຄືນໃໝ່
+undo	ຍົກເລີກ
+start_tracking	ເລີ່ມຕິດຕາມ
+stock_minus	- ຫຸ້ນ
+stock_plus	+ ຫຸ້ນ
+settle_cash	ຊໍາລະເງິນສົດ
+settle_card	ບັດຕົກລົງ
+items	ລາຍການ
+nav_items	ລາຍການ
+more	ເພີ່ມເຕີມ
+your_items	ລາຍການຂອງເຈົ້າ
+items_help	ແຕະລາຍການເພື່ອແກ້ໄຂມັນ. ລາຍການໃໝ່ລຶບແບບຟອມ. ຄົ້ນຫາດ້ວຍຊື່ ຫຼືລະຫັດສັ້ນ, ຕັ້ງລາຄາ (0 ແມ່ນດີ), ຈາກນັ້ນຕື່ມ. ການຂາຍທີ່ບັນທຶກໄວ້ແລ້ວຮັກສາຊື່ທີ່ພວກເຂົາຖືກຄິດຄ່າທໍານຽມ.
+add_item	ເພີ່ມລາຍການ
+new_item	ລາຍການໃໝ່
+adding_item	ກຳລັງເພີ່ມລາຍການໃໝ່
+editing_item	ການແກ້ໄຂ
+save	ບັນທຶກ
+remove	ເອົາອອກ
+removed_items	ລຶບລາຍການອອກແລ້ວ
+removed_help	Restore ເຮັດໃຫ້ລາຍການກັບຄືນຢູ່ໃນລາຍການຕາມທີ່ເຄີຍເປັນ — ລາຄາ, ຮູບ ແລະໝວດໝູ່.
+restore_item	ຟື້ນຟູ
+empty_catalog	ບໍ່ມີລາຍການເທື່ອ. ເປີດລາຍການ, ເພີ່ມຊື່ ແລະລາຄາ, ຈາກນັ້ນຂາຍຈາກເຄົາເຕີ.
+total	ທັງໝົດ
+cash	ເງິນສົດ
+upi	UPI
+card	ບັດ
+credit	ລູກຄ້າແລະຜູ້ສະຫນອງ
+clear	ຈະແຈ້ງ
+ready_to_sell	ພ້ອມຈອງແລ້ວ
+today_prefix	ມື້ນີ້
+today_mid	ມື້ນີ້
+owed	ດີເດັ່ນ
+round_word	ຮອບ
+back	ກັບຄືນໄປບ່ອນ
+sold_out	ບໍ່ສາມາດໃຊ້ໄດ້
+restock	ຈອງຄືນ
+not_tracked	ບໍ່ໄດ້ຕິດຕາມ
+in_stock	ໃນຫຼັກຊັບ
+marked_sold_out	ໝາຍວ່າບໍ່ສາມາດໃຊ້ໄດ້
+add_upper	ເພີ່ມ
+na	ບໍ່ມີ
+qty	ນ້ຳໜັກ/ຈຳນວນ
+unit_at	ໃຫ້ຄະແນນ @
+actual	ຕົວຈິງ
+applied	ນຳໃຊ້ແລ້ວ
+note_ph	ໝາຍເຫດ (ທາງເລືອກ)
+rounded	ຮອບ
+split	ແຍກ
+send_kot	ສົ່ງໃບ
+send_kot_to	ສົ່ງ → {kitchens}
+send_kot_again	ເພີ່ມລາຍການສໍາລັບໃບຕໍ່ໄປ
+send_kot_held	ລາຍການທີ່ຖືໄວ້ — ເຊົາລໍຖ້າເພື່ອສົ່ງ
+reprint_kot	ເລືອກພິມອີກຄັ້ງ
+reprint_kot_ok	ພິມລາຍການ {n} ອີກຄັ້ງ · {slips} slip(s) → {kitchens}
+reprint_kot_needed	ສົ່ງໃບສະເໜີກ່ອນ — ຈາກນັ້ນປະກອບລາຍການ ແລະພິມລາຍການທີ່ເລືອກອີກຄັ້ງ
+reprint_kot_none_selected	ທຸກໆລາຍການທີ່ສົ່ງແມ່ນຂ້າມໄປ — ແຕະໃສ່ເຄື່ອງພິມເພື່ອພິມຄືນໃໝ່
+reprint_kot_client	ພິມອີກເທື່ອຫນຶ່ງ ({n}) ສໍາລັບ {place} ສົ່ງ — ອຸປະກອນຮ້ານຄ້າຈະພິມມັນ
+print_cancelled_kot	ຍົກເລີກການພິມທັງໝົດ
+print_cancelled_kot_ok	ພິມ {n} ລາຍການທີ່ຖືກຍົກເລີກ · {slips} slip(s) → {kitchens}
+print_cancelled_kot_needed	ເປີດຕາຕະລາງທີ່ມີລາຍການທີ່ຍົກເລີກກ່ອນ
+print_cancelled_kot_none	ບໍ່ມີລາຍການທີ່ຖືກຍົກເລີກໃນຄໍາສັ່ງນີ້
+print_cancelled_kot_client	ການພິມຖືກຍົກເລີກ ({n}) ສໍາລັບ {place} ທີ່ສົ່ງ — ອຸປະກອນຮ້ານຄ້າຈະພິມມັນ
+kot_banner	ປ້າຍໂຄສະນາ
+kot_banner_ph	ປ້າຍໂຄສະນາ (ເປົ່າ = ບໍ່ມີ)
+kot_item_prefix	ຄຳນຳໜ້າລາຍການ
+kot_item_prefix_ph	ຕົວຢ່າງ: [ຍົກເລີກ]
+kot_strike	ຊື່ລາຍການປະທ້ວງ
+kot_strike_note	ບັນທຶກລາຍການປະທ້ວງ
+kot_strike_on	ສຸດ
+kot_strike_off	ປິດ
+bill_item_layout	ຮູບແບບລາຍການ
+bill_item_layout_columns	ຖັນ
+bill_item_layout_stacked	ຊ້ອນກັນ
+bill_item_header	ສ່ວນຫົວຖັນ
+bill_item_hdr_item	ສ່ວນຫົວລາຍການ
+bill_item_hdr_qty	ສ່ວນຫົວ Qty
+bill_item_hdr_price	ສ່ວນຫົວລາຄາ
+bill_item_hdr_amount	ສ່ວນຫົວຈໍານວນ
+bill_item_name	ຊື່ລາຍການ
+bill_item_qty	ຈຳນວນ
+bill_item_price	ລາຄາ
+bill_item_amount	ຈໍານວນ
+bill_item_note	ບັນທຶກລາຍການ
+bill_item_col_gap	ຊ່ອງຫວ່າງຖັນ
+bill_item_col_order	ລຳດັບຖັນ
+bill_item_col_sep	ກົດລະບຽບຖັນ
+bill_item_gap_tight	ແຫນ້ນ
+bill_item_gap_comfort	ສະດວກສະບາຍ
+bill_item_gap_wide	ກວ້າງ
+bill_item_num_width	ຖັນຕົວເລກ
+bill_item_num_compact	ກະທັດຮັດ
+bill_item_num_comfort	ສະດວກສະບາຍ
+bill_item_num_wide	ກວ້າງ
+bill_item_num_align	ຕົວເລກສອດຄ່ອງ
+bill_item_gap_em	ຊ່ອງຫວ່າງ (em)
+bill_item_qty_min	ສິບນາທີ (em)
+bill_item_price_min	ລາຄາຕໍ່າສຸດ (em)
+bill_item_amount_min	ຈຳນວນຕໍ່າສຸດ (em)
+kot_item_qty_width	ຖັນຈຳນວນ
+kot_item_num_align	ການຈັດລຽງຈຳນວນ
+bill_total_qty_label	ປ້າຍຈຳນວນທັງໝົດ
+bill_total_subtotal_label	ປ້າຍທັງໝົດຍ່ອຍ
+bill_total_grand_label	ປ້າຍທັງໝົດໃຫຍ່
+bill_total_paid_label	ປ້າຍທັງໝົດທີ່ຈ່າຍແລ້ວ
+bill_meta_pair	ແບ່ງປັນສາຍກັບ
+bill_pair_alone	ຄົນດຽວ
+bill_item_piece_on	ສຸດ
+bill_item_piece_off	ປິດ
+bill_total_qty	ຈຳນວນທັງໝົດ
+bill_total_subtotal	ທັງໝົດຍ່ອຍ
+bill_total_grand	ຈໍານວນມະຫາສານ
+reprint_incl	ໃນການພິມ
+reprint_skip	ຂ້າມ
+reprint_skip_meta	ຂ້າມການກູ້ຂໍ້ມູນການພິມ
+kot_dest_hint	ພິມໃສ່ເຄື່ອງພິມທີ່ທ່ານມອບໝາຍໃຫ້ {kitchens} ໃນການຕັ້ງຄ່າ → ເຄື່ອງພິມ
+kot_sent_hint	ສົ່ງຄັ້ງສຸດທ້າຍໄປຫາ {kitchens}. ແຕະເພື່ອເພີ່ມລາຍການສຳລັບໃບບິນຕໍ່ໄປ — ຫຼືພິມໃບບິນອີກເທື່ອໜຶ່ງສຳລັບໃບບິນດຽວກັນ.
+kot_sent_printing	Slip ສົ່ງໄປ {kitchens} — ການພິມ
+kot_sent_not_printed	Slip ສົ່ງຫາ {kitchens} ແຕ່ບໍ່ໄດ້ພິມອອກ: {why}. ບອກຮ້ານ, ແລ້ວແກ້ໄຂເຄື່ອງພິມແລະພິມໃຫມ່.
+kot_sent_screen	Slip ສົ່ງໄປ {kitchens}
+kot_queued_shop	Slip ສໍາລັບ {place} → {kitchens} ບັນທຶກໄວ້; ອຸປະກອນຮ້ານຄ້າພິມມັນ
+kot_job_label	ເລື່ອນສໍາລັບ {place} → {kitchens}
+kot_job_reached	Slip ສໍາລັບ {place} ຮອດ {kitchens}
+kot_unassigned	ບໍ່ໄດ້ມອບໝາຍ
+kot_unassigned_held	ຖືລາຍການ {n} ໂດຍບໍ່ມີສະຖານີ — ເຊົາຄ້າງຢູ່ໃນສາຍທີ່ຈະສົ່ງ
+kot_station_ph	ສະຖານີ
+kot_station_dd	ສະຖານີ
+kot_station_dd_n	ສະຖານີ · {stations}
+kot_set_station	ໃຊ້ສະຖານີນີ້
+kot_station_applied	ສະຖານີຕັ້ງຢູ່ໃນລາຍການ {n}: {station}
+kot_station_cleared	ສະຖານີຖືກລຶບລ້າງອອກຈາກລາຍການ {n}: {station}
+kot_station_needed	ເລືອກພາກສ່ວນຮ້ານຄ້າກ່ອນ
+kot_station_not_allowed	ບໍ່ອະນຸຍາດໃຫ້ໃຊ້ພາກສ່ວນ: {station}
+kot_station_none	ຍັງ​ບໍ່​ມີ​ສະ​ຖາ​ນີ — ບໍ່​ໄດ້​ນໍາ​ໃຊ້​ຢູ່​ໃນ​ຮ້ານ​ເຄົາ​ເຕີ (ການ​ຕັ້ງ​ຄ່າ →​ພື້ນ​ທີ່​ຖ້າ​ຈໍາ​ເປັນ​)
+pos_tab_items	ເພີ່ມລາຍການ
+pos_tab_payment	ການຈ່າຍເງິນ
+hold_send	ຖືຈາກເຮືອນຄົວ
+hold_send_on	ຈັດຂຶ້ນ
+hold_send_meta	ຖື - ບໍ່ຢູ່ໃນໃບນີ້
+station_remove	ຖອນສະຖານີ
+station_remove_ph	ແຕະສະຖານີໃດໜຶ່ງໃນລາຍຊື່ເພື່ອລຶບມັນອອກ
+station_removed	ລຶບສະຖານີອອກແລ້ວ: {name}
+settings_hub_title	ການຕັ້ງຄ່າ
+settings_hub_help	ເປີດຫນຶ່ງພື້ນທີ່ໃນເວລາ - ເລື່ອນຫນ້ອຍລົງ, ທາງເລືອກທີ່ຊັດເຈນກວ່າ.
+settings_back	ກັບຄືນໄປບ່ອນ
+settings_sec_language	ພາສາ ແລະສະກຸນເງິນ
+settings_sec_country	ປະເທດ & ພາສີ
+settings_sec_tills	ອຸປະກອນອື່ນໆ
+settings_sec_brand	ຍີ່ຫໍ້ຂອງທ່ານ
+settings_sec_units	ຫົວໜ່ວຍ & ການແປງ
+settings_sec_pickers	ພື້ນທີ່ · ສະຖານີ · ອັດຕາພາສີ
+settings_sec_printers	ເຄື່ອງພິມ
+settings_sec_bill	ຮູບແບບໃບບິນ ແລະໃບເກັບເງິນ
+settings_sec_selling	ໂຄງ​ການ​ແລະ​ການ​ຂາຍ​
+bill_kot_tab_bill	ໃບບິນ
+bill_kot_tab_kot	ເລື່ອນ
+settings_sec_alerts	ແຈ້ງເຕືອນ
+alerts_help	ຂໍ້ຄວາມສະຖານະຢູ່ໃນໜ້າຈໍສຳລັບເຈົ້າດົນປານໃດ (ການເຂົ້າສູ່ລະບົບນີ້).
+snack_secs_ph	ວິນາທີ (3–60, ຄ່າເລີ່ມຕົ້ນ 10)
+snack_secs_save	ປະຢັດເວລາເຕືອນ
+snack_secs_saved	ບັນທຶກເວລາແຈ້ງເຕືອນ — {n} ວິນາທີ
+settings_sec_backup	ສຳຮອງຂໍ້ມູນ & ຟື້ນຟູ
+settings_sec_diag	ການວິນິດໄສ
+diag_privacy_help	ບັນທຶກຢູ່ໃນອຸປະກອນນີ້. ຄວາມລັບ (PIN, ລະຫັດຜ່ານ) ບໍ່ເຄີຍຖືກເກັບໄວ້. ການແບ່ງປັນແພັກເກດອອກຈາກອຸປະກອນຕ້ອງການການອະນຸມັດຢ່າງຈະແຈ້ງຂອງທ່ານໃນແຕ່ລະຄັ້ງ — ບໍ່ເຄີຍຂາຍ ຫຼືມອບໃຫ້ພາກສ່ວນທີສາມ
+diag_level	ລະດັບລາຍລະອຽດ
+diag_level_error	ຄວາມຜິດພາດ
+diag_level_warn	ຄຳເຕືອນ
+diag_level_info	ຂໍ້ມູນ
+diag_level_debug	ດີບັກ
+diag_support_start	ເລີ່ມເຊສຊັນການສະໜັບສະໜູນ 30 ນາທີ
+diag_support_stop	ສິ້ນສຸດກອງປະຊຸມສະຫນັບສະຫນູນ
+diag_support_started	ເປີດກອງປະຊຸມສະໜັບສະໜຸນ — ລາຍລະອຽດດີບັກເປັນເວລາ 30 ນາທີ
+diag_support_ended	ສິ້ນສຸດກອງປະຊຸມສະຫນັບສະຫນູນ
+diag_export_local	ສົ່ງອອກສໍາເນົາທ້ອງຖິ່ນ
+diag_export_local_done	ການວິນິໄສທ້ອງຖິ່ນພ້ອມແລ້ວທີ່ {path} — ເລືອກບ່ອນທີ່ຈະບັນທຶກສຳເນົາ
+diag_approve_send	ອະ​ນຸ​ມັດ​ການ​ແບ່ງ​ປັນ​ອຸ​ປະ​ກອນ​ນີ້​
+diag_send_help	ການອະນຸມັດແມ່ນຊຸດດຽວ, ຈາກນັ້ນໝົດອາຍຸ. ຊົ່ວຄາວ - ໃຊ້ເພື່ອແກ້ໄຂ ຫຼືປັບປຸງຜະລິດຕະພັນເທົ່ານັ້ນ. ບໍ່ໄດ້ແບ່ງປັນກັບພາກສ່ວນທີສາມ. ເຮັດວຽກຢູ່ໃນ Linux, Windows, macOS, ແລະ Android.
+diag_send_approved	ການ​ແບ່ງ​ປັນ​ອະ​ນຸ​ມັດ​ສໍາ​ລັບ​ຫນຶ່ງ​ຊຸດ (ຫມົດ​ອາ​ຍຸ​ໃນ​ໄວໆ​ນີ້​)
+diag_export_send	ສ້າງຊຸດການແບ່ງປັນ (ຕ້ອງການການອະນຸມັດ)
+diag_export_send_done	ແບ່ງປັນແພັກເກດພ້ອມທີ່ {path} — ເລືອກບ່ອນທີ່ຈະບັນທຶກ, ຈາກນັ້ນສົ່ງໄປທີ່ Kumkaj ເທົ່ານັ້ນ.
+diag_save_bundle	ບັນທຶກສຳເນົາການວິນິໄສ
+diag_bundle_saved	ບັນທຶກສຳເນົາການວິນິໄສໄວ້ໃນ {path}
+diag_bundle_failed	ບໍ່ສາມາດບັນທຶກສຳເນົາການວິນິໄສໄດ້ — ລອງອີກຄັ້ງ
+diag_clear	ລຶບບັນທຶກການວິນິດໄສ
+diag_cleared	ລຶບບັນທຶກການວິນິໄສແລ້ວ
+sidebar_settings	ແຖບດ້ານຂ້າງ
+sidebar_settings_help	ໄອຄອນດຽວກັນກັບທາງລົດໄຟຂ້າງ. ລາກແຖວເພື່ອຈັດຮຽງໃໝ່. ປີ້ນສະວິດເພື່ອສະແດງ ຫຼືເຊື່ອງ. ການຕັ້ງຄ່າ ແລະລັອກຢູ່ໃນແຖບສະເໝີ.
+sidebar_always_on_short	ເປີດສະເໝີ
+sidebar_back_settings	ກັບຄືນໄປບ່ອນ
+sidebar_shown	ສະແດງໃຫ້ເຫັນ
+sidebar_hidden	ເຊື່ອງໄວ້
+sidebar_always_on	ຢູ່ແຖບນັ້ນສະເໝີ
+sidebar_shown_hint	ສະແດງໃຫ້ເຫັນຢູ່ໃນແຖບຂ້າງທາງລົດໄຟ / ລຸ່ມ
+sidebar_hidden_hint	ເຊື່ອງໄວ້ຈາກແຖບ
+sidebar_menu_items	ລາຍການ
+sidebar_enable_all	ເປີດໃຊ້ທັງໝົດ
+sidebar_disable_all	ປິດໃຊ້ງານທັງໝົດ
+sidebar_order_saved	ບັນທຶກຄຳສັ່ງແຖບດ້ານຂ້າງແລ້ວ
+sidebar_visibility_saved	ບັນທຶກການເບິ່ງເຫັນແຖບດ້ານຂ້າງແລ້ວ
+amounts_hide	ເຊື່ອງ
+amounts_show	ສະແດງ
+printers_none_hint	ບັນທຶກເຄື່ອງພິມໃນອຸປະກອນນີ້ກ່ອນ, ຈາກນັ້ນເພີ່ມມັນໃສ່ໃບບິນ ຫຼື ພາກສ່ວນໃດໜຶ່ງ
+counter	ເຄົາເຕີ
+dine_in	ເຄົາເຕີ
+takeaway	ກັບບ້ານ
+order	ຄຳສັ່ງ
+tables	ເຄົາເຕີ
+kitchen	ພາກສ່ວນ
+sales	ການຂາຍ
+sales_refunds	ການຂາຍ & ການຄືນເງິນ
+day_close	ມື້ປິດ
+reports_expenses	ປຶ້ມທະນາຄານ & P&L
+nav_reports	ບົດລາຍງານ
+nav_settings	ການຕັ້ງຄ່າ
+nav_lock	ລັອກ
+no_sale_yet	ບໍ່ມີການຂາຍເທື່ອ
+favorites	ລາຍການທີ່ມັກ
+favorites_help	ລາຍການທີ່ທ່ານຂາຍເລື້ອຍໆ, ບັນທຶກສໍາລັບການເຂົ້າສູ່ລະບົບຂອງທ່ານ. ເພີ່ມອັນນຶ່ງໃສ່ບັນຊີລາຍການ, ຫຼືສ້າງລາຍຊື່ຂອງເຈົ້າຈາກລາຍການທັງໝົດດ້ານລຸ່ມ.
+your_favorites	ລາຍການທີ່ທ່ານມັກ
+all_items	ລາຍການທັງໝົດ
+frequent	ເລື້ອຍໆ
+added_items	ເພີ່ມລາຍການ
+added_items_empty	ບໍ່ມີຫຍັງຢູ່ໃນໃບບິນນີ້ເທື່ອ — ເພີ່ມລາຍການຈາກລາຍການທັງໝົດ ຫຼືໝວດໝູ່.
+frequent_config_help	ລາຍການທີ່ຂາຍຫຼາຍທີ່ສຸດຈາກໃບບິນທີ່ສໍາເລັດ. ກຳນົດເວລາເບິ່ງຈັກມື້ ແລະຈຳນວນລາຍການທີ່ຈະສະແດງ.
+frequent_days_ph	ມື້ (1)
+frequent_limit_ph	ລາຍການ (24)
+frequent_apply	ສະໝັກ
+frequent_saved	ເລື້ອຍໆ: {d} ມື້ສຸດທ້າຍ, ເທິງສຸດ {n} — ລາຍການ {c}
+frequent_empty	ບໍ່ມີການຂາຍທີ່ສໍາເລັດໃນໄລຍະນີ້ເທື່ອ — ຊໍາລະໃບບິນ (₹0 ອະນຸຍາດໃຫ້ເມື່ອການຕັ້ງຄ່າເວົ້າດັ່ງນັ້ນ) ແລະພວກມັນສະແດງຢູ່ທີ່ນີ້.
+zero_sales	ການຂາຍສູນມູນຄ່າ
+zero_sales_help	ອະນຸຍາດລາຍການລາຄາ ₹0 ແລະໃບບິນຖືກຊຳລະໃນລາຄາ ₹0 (ຂໍອະນຸຍາດເຈົ້າຂອງ/ຕ້ອງການ). ເປີດເປັນຄ່າເລີ່ມຕົ້ນສະນັ້ນໜ້າປົກຟຣີຍັງປາກົດຢູ່ໃນປຶ້ມເລື້ອຍໆ ແລະມື້.
+zero_sales_on	ອະນຸຍາດ ₹0
+zero_sales_off	ຕ້ອງການລາຄາ
+zero_sales_saved_on	ອະນຸຍາດໃຫ້ຂາຍມູນຄ່າສູນ
+zero_sales_saved_off	ການຂາຍຕ້ອງມີລາຄາສູງກວ່າ ₹0
+floor_areas_help	ພື້ນທີ່ແມ່ນຫ້ອງຫຼືເຂດຢູ່ໃນຊັ້ນ (Dine In, Parcel, AC ... ). ຕື່ມພື້ນທີ່ກ່ອນ, ຫຼັງຈາກນັ້ນໃສ່ເຄົາເຕີ - ແຕ່ລະພື້ນທີ່ແມ່ນກຸ່ມແຍກຕ່າງຫາກຢູ່ເທິງພື້ນ.
+area_new_ph	ພື້ນທີ່ / ຫ້ອງໃຫມ່ (ເຊັ່ນ: AC, ສວນ)
+add_area	ເພີ່ມພື້ນທີ່
+area_added	ພື້ນທີ່ “{name}” ພ້ອມແລ້ວ — ເພີ່ມເຄື່ອງນັບໃສ່ມັນ
+no_favorites	ບໍ່ມີລາຍການທີ່ມັກເທື່ອ — ເພີ່ມລາຍການຈາກລາຍການຂ້າງລຸ່ມນີ້.
+add_to_bill	ເພີ່ມໃສ່ໃບບິນ
+added	ເພີ່ມແລ້ວ
+owes_word	ເປັນໜີ້
+selected_word	ເລືອກແລ້ວ
+chip_clear_credit	ຈະແຈ້ງ — ສິນເຊື່ອ ຫຼືເອົາລ່ວງໜ້າ
+chip_missing_customer	ຂາດລູກຄ້າທີ່ເລືອກ — ເລືອກອີກຄັ້ງ
+chip_no_customer	ບໍ່ມີລູກຄ້າເທື່ອ — ພິມຊື່, ຈາກນັ້ນແຕະ ເຄຣດິດ
+credit_summary_fmt	{}ລູກຄ້າ · ເປີດເຄຣດິດ {} · ຈອງລ່ວງໜ້າ {}
+recent_label	ຫຼ້າສຸດ:
+kot_new_waiting	ໃໝ່ — ລໍຖ້າ
+kot_preparing	ກຳລັງກະກຽມ
+kot_ready_serve	ພ້ອມ — ຮັບ​ໃຊ້​ມັນ​
+kot_done_cap	ສຳເລັດແລ້ວ
+kot_cancelled	ຍົກເລີກແລ້ວ
+kot_start_btn	ເລີ່ມ
+kot_mark_ready	ໝາຍພ້ອມ
+kot_done_btn	ສຳເລັດແລ້ວ
+table_free	ຫວ່າງ - ແຕະເພື່ອເລີ່ມການສັ່ງຊື້
+start_order	ເລີ່ມຄໍາສັ່ງ
+open_bill	ເປີດບິນ
+collect_payment	ເກັບກໍາການຈ່າຍເງິນ
+table_running	ແລ່ນ
+payment_pending	ການຈ່າຍເງິນທີ່ຍັງຄ້າງຢູ່
+collect_at_counter	ເກັບຢູ່ເຄົາເຕີ
+inventory	ສິນຄ້າຄົງຄັງ
+inventory_stock	ສິນຄ້າຄົງຄັງ & ຫຼັກຊັບ
+branches	ສາຂາ
+branches_org	ສາຂາ & org
+credit_customers	ລູກຄ້າ ແລະຜູ້ສະໜອງ (ບັນຊີສິນເຊື່ອ)
+customer_name_ph	ຊື່ລູກຄ້າ ຫຼືຜູ້ສະໜອງ
+new_customer_ph	ຊື່ລູກຄ້າ ຫຼືຜູ້ສະໜອງໃໝ່
+item_name_ph	ຊື່ລາຍການ (ເຊັ່ນ: Masala Dosa)
+item_price_ph	ລາຄາ
+start_template	ຜະລິດຕະພັນ
+team	ທີມງານ
+team_pins	ທີມງານ & PINs
+my_pin_settings	ຂອງຂ້ອຍPIN
+settings_hub_help_my_pin	ປ່ຽນການປົດລັອກ PIN ສຳລັບບຸກຄົນທີ່ເຂົ້າສູ່ລະບົບໃນອຸປະກອນນີ້.
+team_self_help	ການເຂົ້າສູ່ລະບົບຄັ້ງດຽວ: PINໃໝ່, ລະຫັດຜ່ານໃໝ່, ຫຼືທັງສອງ. ປ່ອຍໃຫ້ກ່ອງຫວ່າງເປົ່າເພື່ອຮັກສາສິ່ງທີ່ທ່ານມີ. ຖາມເຈົ້າຂອງຖ້າຫາກວ່າທ່ານຕ້ອງການຫນ້າຈໍຫຼືສິດທິທີ່ແຕກຕ່າງກັນ.
+backup_settings	ການ​ສໍາ​ຮອງ​ຂໍ້​ມູນ​ແລະ​ການ​ຕັ້ງ​ຄ່າ​
+lock_app	ລັອກແອັບ
+pick	ເລືອກ
+select	ເລືອກ
+advance	ລ່ວງໜ້າ
+owner	ເຈົ້າຂອງ
+staff	ພະນັກງານ
+photo	ຮູບ
+auto	ອັດຕະໂນມັດ
+prev	ກ່ອນໜ້າ
+next	ຕໍ່ໄປ
+ok	ຕົກລົງ
+this_shop	ໂໝດເຊີບເວີ
+extra_till	ໂໝດລູກຄ້າ
+off	ປິດ
+tables_kitchen	ການຈັດວາງຮ້ານຄ້າ
+server	ໂໝດເຊີບເວີ
+client	ໂໝດລູກຄ້າ
+language_currency	ພາສາ ແລະສະກຸນເງິນ
+language	ພາສາ
+choose_language	ເລືອກພາສາຂອງທ່ານ
+language_setup_hint	ປະຕິບັດຕາມພາສາຂອງອຸປະກອນນີ້, ຫຼືເລືອກເອົາຫນຶ່ງຕົວທ່ານເອງ.
+lang_follow_platform	ພາສາອຸປະກອນ
+lang_pick_user	ເລືອກພາສາ
+lang_platform_now	ພາສາອຸປະກອນດຽວນີ້
+selected_language	ເລືອກແລ້ວ
+continue	ສືບຕໍ່
+this_device	ອຸປະກອນນີ້
+device_use_q	ອຸປະກອນນີ້ຈະຖືກໃຊ້ແນວໃດ?
+last_server_mode	ແມ່ນເຊີບເວີ — ແຕະເພື່ອສືບຕໍ່
+last_client_mode	ເປັນລູກຄ້າ — ແຕະເພື່ອສືບຕໍ່
+choose_server	ເລືອກເຊີບເວີ
+choose_server_hint	ເປີດເຄື່ອງແມ່ຂ່າຍທີ່ມີຢູ່ແລ້ວ, ຫຼືສ້າງຫນຶ່ງສໍາລັບທຸລະກິດອື່ນ.
+create_new_server	ສ້າງເຄື່ອງແມ່ຂ່າຍໃຫມ່
+open_server	ເປີດ
+new_server_name_ph	ຊື່ເຊີບເວີໃຫມ່ (ທາງເລືອກ)
+server_remove_pin_ph	ເຈົ້າຂອງ PIN ເພື່ອເອົາເຊີບເວີອອກ
+only_owner_remove_server	ພຽງແຕ່ເຈົ້າຂອງສາມາດເອົາເຄື່ອງແມ່ຂ່າຍອອກໄດ້
+owner_pin_remove_server	ເຈົ້າຂອງ PIN ຕ້ອງການເພື່ອເອົາເຊີບເວີນີ້ອອກ
+device_setup_help	ເຊີບເວີເກັບປື້ມໄວ້ທີ່ນີ້. ລູກຄ້າຈັບຄູ່ກັບເຊີບເວີ.
+app_template_heading	ລາຍການເລີ່ມຕົ້ນ (ທາງເລືອກ)
+app_template_blurb	ໂຫຼດລາຍການຕົວຢ່າງ; ເຈົ້າຂອງ Zahir (zahir), Admin Asif (asif, PIN 1111), Cashier Nawaz (nawaz, PIN 0000); ຫຼຸດພາສີ/GST; ແຖບດ້ານຫນ້າ; ປະຫວັດການລຶບລ້າງຫຼັງຈາກ 4 ຊົ່ວໂມງ (ແລະລຶບລ້າງຕອນນີ້ຢູ່ໃນການສຳຮອງຂໍ້ມູນ); ມື້ນີ້ຖອດອອກ; ໃບເກັບເງິນທີ່ຫນາແຫນ້ນ + ຂອບມາດຕະຖານສໍາລັບຖາດແຄບ. ພາສີ ແລະແຖບດ້ານຂ້າງສາມາດເປີດຄືນໄດ້ໃນການຕັ້ງຄ່າ.
+app_template_apply	ນຳໃຊ້ລາຍການເລີ່ມຕົ້ນ
+app_template_skip	ຂ້າມໄປດຽວນີ້
+app_template_status	ເຊີບເວີພ້ອມແລ້ວ — ນຳໃຊ້ລາຍການ Starter, ຫຼືຂ້າມໄປ
+app_template_importing	ກຳລັງນຳໃຊ້ {title}…
+currency	ສະກຸນເງິນ
+backup	ສຳຮອງ
+use	ໃຊ້
+dont_use	ຢ່າໃຊ້
+add_branch	ເພີ່ມສາຂາ
+add_conversion	ເພີ່ມການແປງ
+add_dishes_items	ເພີ່ມລາຍການ
+add_item_plain	ເພີ່ມລາຍການ
+add_note	ເພີ່ມບັນທຶກ
+add_opening_balance	ເພີ່ມຍອດເງິນເປີດ
+add_staff	ເພີ່ມພະນັກງານ
+add_station	ເພີ່ມສະຖານີ
+add_table	ເພີ່ມຕາຕະລາງກິນເຂົ້າ
+add_unit	ເພີ່ມຫົວໜ່ວຍ
+add_use_name	ເພີ່ມ / ໃຊ້ຊື່ນີ້
+allow_extra_tills	ອະນຸຍາດໃຫ້ tills ເພີ່ມເຕີມ
+amend	ແກ້ໄຂ
+apply_country_pack	ນຳໃຊ້ຊຸດປະເທດ
+datetime_appearance	ຮູບລັກສະນະວັນທີ & ເວລາ
+datetime_appearance_help	ປື້ມບັນທຶກ RFC3339 ປີທໍາອິດພາຍໃນ. ເຫຼົ່ານີ້ພຽງແຕ່ປ່ຽນວິທີທີ່ວັນທີແລະໂມງເບິ່ງຢູ່ໃນໃບບິນ, ບົດລາຍງານ, ແລະຫນ້າຈໍ.
+datetime_example	ຕົວຢ່າງຕອນນີ້: {ex}
+date_order	ຄໍາສັ່ງວັນທີ
+date_order_dmy	D/M/Y
+date_order_mdy	M/D/Y
+date_order_ymd	Y-M-D
+time_format	ໂມງ
+time_format_24h	24 ຊົ່ວໂມງ
+time_format_12h	12 ຊົ່ວໂມງ
+attach_bill_photo	ແນບຮູບໃບບິນ
+attach_pdf	ແນບ PDF
+attach_photo	ແນບຮູບ
+attachments_last_expense	ໄຟລ໌ແນບ (ຄ່າໃຊ້ຈ່າຍສຸດທ້າຍ)
+bank	ທະນາຄານ
+bank_in	ທະນາຄານໃນ
+bank_out	ທະນາຄານອອກ
+bank_reconciliation	ການຄືນເງິນຂອງທະນາຄານ (ໝາຍເອົາໃບແຈ້ງຍອດທະນາຄານຂອງເຈົ້າ)
+bank_to_till	ທະ​ນາ​ຄານ → till
+book_add_dish	Book — ເພີ່ມ​ລາຍ​ການ / ລາຍ​ການ​
+book_opening_credit	Book — ການ​ເປີດ​ສິນ​ເຊື່ອ​
+branch_name_sell_ph	ຊື່ສາຂາທີ່ຈະຂາຍຈາກ
+bring_my_book	ເອົາປື້ມຂອງຂ້ອຍມາ
+business_tax_id_ph	ID ພາສີທຸລະກິດ
+caption_bank	ທະນາຄານ
+caption_bills	ໃບບິນ
+caption_outstanding	ດີເດັ່ນ
+caption_payments_today	ການຈ່າຍເງິນມື້ນີ້
+caption_today	ມື້ນີ້
+card_amount_ph	ຈຳນວນບັດ
+cash_amount_ph	ຈຳນວນເງິນ
+cash_memo	ບັນທຶກເງິນສົດ
+choose_icon	ເລືອກໄອຄອນ
+choose_logo	ເລືອກໂລໂກ້
+clear_icon	ລຶບໄອຄອນ
+clear_photo	ລຶບລ້າງຮູບ
+copy_day_book_csv	ສຳເນົາປຶ້ມມື້ CSV
+copy_day_close	ປິດມື້
+copy_items_csv	ສຳເນົາລາຍການ CSV
+copy_outstanding_csv	ສຳເນົາຄ້າງໄວ້ CSV
+copy_parties_csv	ຄັດລອກລູກຄ້າແລະຜູ້ສະຫນອງ CSV
+copy_party_ledger_csv	ສຳເນົາບັນຊີລາຍການລູກຄ້າ CSV
+copy_receipt	ສຳເນົາໃບຮັບເງິນ
+share_whatsapp	ແບ່ງປັນ WhatsApp
+lan_pages_heading	ໜ້າລູກຄ້າຢູ່ Wi‑Fi
+lan_pages_help	ໃນ Wi-Fi ຂອງຮ້ານນີ້, ຫນ້າລູກຄ້າເຮັດວຽກສໍາລັບກະດານສະແດງຜົນແລະຄໍາຕິຊົມ. ຄົນໃນອິນເຕີເນັດມືຖືຕ້ອງການ Cloud ໃນພາຍຫຼັງ. ສະຖານີບັດ ຫຼືການເຊື່ອມຕໍ່ການຈ່າຍເງິນເປັນທາງເລືອກ ແລະບໍ່ເຄີຍປິດເຄົາເຕີ.
+diag_send_heading	ແບ່ງ​ປັນ​ອຸ​ປະ​ກອນ​ນີ້​
+kot_dest_heading	ສະຖານີ
+optional_login_heading	ເຂົ້າສູ່ລະບົບທາງເລືອກ
+rights_heading	ສິດທິ
+ops_panel	ops ທ້ອງຖິ່ນ
+crm_heading	ລູກຄ້າ & ຂໍ້ຄວາມ
+crm_help	ວັນເດືອນປີເກີດ, ຄວາມສັດຊື່, ບໍ່ເຄື່ອນໄຫວ ແລະແຂກສູງສຸດ — ຄິວ SMS ຫຼື WhatsApp ຄວາມຕັ້ງໃຈ. ໃຊ້ {name} ແລະ {points} ໃນຂໍ້ຄວາມ. ເຈົ້າຂອງ taps ສົ່ງ; ບໍ່ມີຫຍັງລະເບີດດ້ວຍຕົວມັນເອງ.
+crm_queue_sms	ຄິວ SMS
+crm_queue_wa	ຄິວ WhatsApp
+crm_seg_bday_week	ອາທິດວັນເກີດ
+crm_seg_bday_month	ເດືອນເກີດ
+crm_seg_phone	ກັບໂທລະສັບ
+crm_seg_loyalty	ຄວາມສັດຊື່
+crm_seg_inactive	ບໍ່ເຄື່ອນໄຫວ
+crm_seg_top	ຍອດນິຍົມ
+birthday_ph	ວັນເດືອນປີເກີດ (MM-DD ຫຼື YYYY-MM-DD)
+crm_message_ph	ສຸກສັນວັນເກີດ {name}! ທ່ານມີ {points} ຄະແນນ.
+till_apply_redeem	ສະໝັກໃນໃບບິນ
+till_clear_redeem	ລຶບລ້າງການແລກ
+till_wallet_topup	ຕື່ມເງິນໃສ່ກະເປົາເງິນ
+till_issue_voucher	ອອກໃບປະມູນ
+till_points_ph	ຈຸດເພື່ອແລກ
+till_wallet_ph	ຈໍານວນ Wallet ທີ່ຈະໃຊ້
+till_voucher_code_ph	ລະຫັດບັດເຕີມເງິນ
+till_voucher_amt_ph	ຈຳນວນບັດ (ເປົ່າ = ທັງໝົດ)
+till_wallet_topup_ph	ຍອດເງິນໃນກະເປົາເງິນ
+till_voucher_issue_amt_ph	ອອກຈໍານວນບັດປະຈໍາຕົວ
+till_voucher_issue_code_ph	ລະຫັດບັດເຕີມເງິນໃໝ່
+split_evenly	ແບ່ງອອກຢ່າງເທົ່າທຽມກັນ
+waitlist	ລາຍຊື່ລໍຖ້າ
+fire_course	ຂັ້ນຕອນຕໍ່ໄປ
+hold_item	ຖືຈາກເຮືອນຄົວ
+waiter_call	ໂທຫາ cashier
+waitlist_add	ເພີ່ມໃສ່ລາຍຊື່ລໍຖ້າ
+floor_view_grid	ຕາຂ່າຍໄຟຟ້າ
+floor_view_layout	ແຜນຜັງ
+floor_layout_x	X
+floor_layout_y	Y
+floor_layout_w	W
+floor_layout_h	H
+floor_layout_save	ບັນທຶກການຈັດວາງ
+floor_layout_open	ເປີດໂຕະກິນເຂົ້າ
+floor_layout_edit	ແກ້ໄຂໂຄງຮ່າງ
+floor_layout_pick	ແຕະຕາຕະລາງກິນເຂົ້າເພື່ອແກ້ໄຂການຈັດວາງຂອງມັນ
+floor_layout_saved	ບັນທຶກໂຄງຮ່າງແລ້ວ
+floor_layout_nudge_left	← 20
+floor_layout_nudge_right	→ 20
+floor_layout_nudge_up	↑ 20
+floor_layout_nudge_down	↓ 20
+sibling_pickers_help	ແຕະເປີດ/ປິດ ເຊັ່ນ: ຫົວໜ່ວຍ — ເຊື່ອງພື້ນທີ່, ສະຖານີ, ແລະອັດຕາພາສີຈາກຜູ້ເລືອກເອົາມື້ຕໍ່ວັນ; pack ເລີ່ມຕົ້ນຢູ່.
+bulk_price_apply	ນຳໃຊ້ລາຄາເປັນຈຳນວນຫຼາຍ
+card_terminal_optional	ສະຖານີບັດ / ການເຊື່ອມຕໍ່ການຈ່າຍເງິນ (ເລືອກໄດ້ເມື່ອມີອິນເຕີເນັດ)
+copy_report	ສຳເນົາບົດລາຍງານ
+counted_cash_ph	ນັບເງິນສົດໃນລິ້ນຊັກ
+country_tax	ປະເທດ & ພາສີ
+create_backup	ສ້າງສໍາຮອງຂໍ້ມູນ
+credit_limit_heading	ວົງເງິນສິນເຊື່ອ (ລູກຄ້າເລືອກ ຫຼືຜູ້ສະໜອງ)
+day_close_summary	ສະຫຼຸບມື້ປິດ
+delete_party	ລຶບລູກຄ້າ ຫຼືຜູ້ສະໜອງທີ່ເລືອກ
+delivery	ການຈັດສົ່ງ
+done_open_books	ສຳເລັດແລ້ວ - ເປີດປຶ້ມ
+drawer_count	ຈຳນວນລິ້ນຊັກ (ເລືອກໄດ້)
+expense_heading	ຄ່າໃຊ້ຈ່າຍ
+export_day	ມື້ສົ່ງອອກ
+extra_note_bill_ph	ຫມາຍເຫດພິເສດກ່ຽວກັບບັນຊີລາຍການນີ້ / ການຂາຍ
+extra_note_expense_ph	ຫມາຍເຫດພິເສດກ່ຽວກັບຄ່າໃຊ້ຈ່າຍສຸດທ້າຍ
+extra_tills_heading	tills ພິເສດ
+other_devices_help_heading	ຕັ້ງຄ່າອຸປະກອນອື່ນໆ
+other_devices_help	ໃນ​ອຸ​ປະ​ກອນ​ນີ້ (ເຊີບ​ເວີ): ອຸ​ປະ​ກອນ​ອື່ນໆ → ອະ​ນຸ​ຍາດ​ໃຫ້ tills ເພີ່ມ​ເຕີມ. ໃຫ້ສັງເກດລະຫັດການຈັບຄູ່ ແລະທີ່ຢູ່ Wi‑Fi. ແຕະອະນຸຍາດໃຫ້ອຸປະກອນອື່ນເຊື່ອມຕໍ່ຖ້າມັນປາກົດ. ໃນຄອມພິວເຕີ, ແຕະເລີ່ມຕົ້ນດ້ວຍຄອມພິວເຕີນີ້. ໃນອຸປະກອນອື່ນ: ຕິດຕັ້ງແອັບຯ, ເລືອກຮູບແບບລູກຄ້າ, ຊອກຫາເຄື່ອງແມ່ຂ່າຍຂອງຮ້ານ (ຫຼືພິມທີ່ຢູ່), ໃສ່ລະຫັດການຈັບຄູ່, ຈັບຄູ່ດຽວນີ້. ຄໍາສັ່ງລໍຖ້າຢູ່ໃນອຸປະກອນຖ້າ Wi-Fi ຫຼຸດລົງແລະໄປໃນເວລາທີ່ເຄື່ອງແມ່ຂ່າຍຕອບອີກເທື່ອຫນຶ່ງ. ເຄື່ອງພິມພິເສດແມ່ນໄດ້ຕັ້ງຢູ່ໃນເຊີບເວີ (ການຕັ້ງຄ່າ → ເຄື່ອງພິມ) — ມີການສົ່ງໃບບິນເພີ່ມເຕີມຢູ່ທີ່ນັ້ນ.
+forget_shop	ລືມຮ້ານນີ້
+goods_received	ສິນຄ້າໄດ້ຮັບ
+import_day	ມື້ນໍາເຂົ້າ
+import_items_csv_plain	ສິນຄ້ານຳເຂົ້າ CSV…
+import_parties_csv	ນຳເຂົ້າລູກຄ້າ ແລະ ຜູ້ຈຳໜ່າຍ CSV…
+item_name	ຊື່ລາຍການ
+kitchen_printing	ເຄື່ອງພິມ
+login_id_ph	ຊື່ຜູ້ໃຊ້
+mark_cleared	ລຶບລ້າງເຄື່ອງໝາຍ
+new_party_clear	ລູກຄ້າໃໝ່ ຫຼືຜູ້ສະໜອງ (ແບບຟອມຈະແຈ້ງ)
+new_party_kind_supplier_ph	ລູກຄ້າໃໝ່ ຫຼືຜູ້ສະໜອງປະເພດ (ຜູ້ສະໜອງ)
+next_country	ປະເທດຕໍ່ໄປ
+next_order	ຄໍາສັ່ງຕໍ່ໄປ (ໂຕະສະອາດ)
+note_gstin_ph	ໝາຍເຫດ / GSTIN / ການແຈ້ງເຕືອນຂໍ້ຕົກລົງ
+notes_attach_party	ບັນທຶກ ແລະໄຟລ໌ແນບ (ລູກຄ້າເລືອກ ຫຼືຜູ້ສະໜອງ)
+notes_attach_sale	ບັນທຶກ ແລະໄຟລ໌ແນບ (ຂາຍທີ່ເລືອກ)
+on_account_ap	ໃນບັນຊີ (AP)
+org_optional_ph	ອົງການຈັດຕັ້ງ (ທາງເລືອກ)
+paid_by	ຈ່າຍໂດຍ
+paid_now	ຈ່າຍແລ້ວ
+pair_now	ຈັບຄູ່ດຽວນີ້
+pairing_code_ph	ລະຫັດຈັບຄູ່
+party_name_selected_ph	ຊື່ລູກຄ້າ ຫຼືຜູ້ສະໜອງ (ຫຼືເລືອກໃຊ້)
+password_ph	ລະຫັດຜ່ານ
+pay_ap_card	ຈ່າຍບັດ AP
+pay_ap_cash	ຈ່າຍເງິນສົດ AP
+pay_ap_heading	ຈ່າຍສິ່ງທີ່ພວກເຮົາຕິດໜີ້ (AP)
+pay_ap_upi	ຈ່າຍ AP UPI
+pay_selected_heading	ຊໍາລະທີ່ເລືອກ (ຊໍາລະຫນີ້ສິນ / ເອົາລ່ວງຫນ້າ)
+pick_from_items	ເລືອກຈາກລາຍການຂອງພວກເຮົາ
+prev_country	ປະເທດທີ່ຜ່ານມາ
+print_open	ພິມ / ເປີດ
+reason_amend_ph	ເຫດຜົນສໍາລັບການດັດແກ້ / void / refund
+reason_note_ph	ເຫດຜົນ / ຫມາຍເຫດ (ເສຍ, ນັບ, ... )
+record_day_close	ບັນທຶກມື້ປິດ
+refresh_from_shop	ໂຫຼດຂໍ້ມູນໃໝ່ຈາກຮ້ານຄ້າ
+refund	ເງິນຄືນ
+remove_selected	ລຶບທີ່ເລືອກອອກ
+request_bill	ຂໍໃບບິນ
+restaurant_name_ph	ຊື່ຮ້ານ (ເລືອກໄດ້)
+restore_backup	ຟື້ນຟູການສໍາຮອງຂໍ້ມູນ
+role_both	ທັງສອງ
+role_admin	ບໍລິຫານ
+role_cashier	ພະນັກງານເກັບເງິນ
+role_customer	ລູກຄ້າ
+role_manager	ຜູ້ຈັດການ
+history_retention	ປະຫວັດການຄ້າ
+history_retention_help	ລຶບການຂາຍປີ້ເກົ່າ ແລະປີ້ເກົ່າໂດຍອັດຕະໂນມັດ. ລາຍການ, ພະນັກງານ, ແລະການຕັ້ງຄ່າຍັງຄົງຢູ່. ຕອນນີ້ລຶບລ້າງແຖວການຊື້ຂາຍທັງໝົດ ແລະສືບຕໍ່ຕັ້ງຄ່າ.
+history_off	ຮັກສາ
+history_day_close	ໃນມື້ປິດ
+history_after_hours	ຫຼັງຈາກຊົ່ວໂມງ
+history_hours_ph	ຊົ່ວໂມງ (1–168, ເລີ່ມຕົ້ນ 4)
+history_hours_save	ປະຢັດຊົ່ວໂມງ
+history_clear_now	ລຶບປະຫວັດດຽວນີ້
+history_cleared	ປະຫວັດການຊື້ຂາຍຖືກລຶບລ້າງ — ເກັບຮັກສາໄວ້ການຕັ້ງຄ່າ
+history_retention_saved	ບັນທຶກປະຫວັດການລຶບລ້າງແລ້ວ
+history_hours_saved	ບັນທຶກຊົ່ວໂມງປະຫວັດສາດ
+history_owner_only	ມີພຽງເຈົ້າຂອງ ຫຼືຜູ້ເບິ່ງແຍງລະບົບທີ່ສາມາດລຶບລ້າງປະຫວັດໄດ້
+rollup	ມ້ວນ
+save_brand	ປະຫຍັດແບ
+save_business_id	ບັນທຶກ ID ທຸລະກິດ
+save_business_name	ບັນທຶກຊື່ທຸລະກິດ
+save_features	ບັນທຶກ
+save_features_named	ປະຢັດ {name}
+save_features_ok	ບັນທຶກການຕັ້ງຄ່າສຳລັບ {name}
+save_names	ບັນທຶກຊື່
+second_way	ວິທີທີສອງ
+server_ip_ph	IP ຂອງເຊີບເວີ (ເຊັ່ນ: 192.168.1.10)
+set_credit_limit	ນຳໃຊ້ຂີດຈຳກັດໃຫ້ກັບລູກຄ້າ ຫຼືຜູ້ສະໜອງ
+set_login_selected	ນຳໃຊ້ການເຂົ້າສູ່ລະບົບເພື່ອເລືອກ
+set_login_named	ສະໝັກເຂົ້າສູ່ລະບົບ {name}
+shop	ຮ້ານຄ້າ
+show	ສະແດງ
+spreadsheet_csv	ສະເປຣດຊີດ (CSV)
+start_fresh	ເລີ່ມສົດ
+stop_extra_tills	ຢຸດ tills ພິເສດ
+floor_cols_ph	ຖັນ
+floor_cols_fit	ໜ້າຈໍພໍດີ
+floor_cols_fit_sub	{n} ເຫມາະກັບທີ່ນີ້
+floor_cols_fits	ເຫມາະ
+floor_cols_scroll	ເລື່ອນໄປທາງຂ້າງ
+floor_cols_min	ຖັນ: ຢ່າງໜ້ອຍ 1 — ຫຼືປ່ອຍໃຫ້ມັນຫວ່າງເປົ່າເພື່ອໃຫ້ພໍດີກັບໜ້າຈໍ
+floor_zoom_auto	ອັດຕະໂນມັດ
+floor_zoom_out	ຊູມອອກ
+floor_zoom_in	ຊູມເຂົ້າ
+backup_auto	ສຳຮອງຂໍ້ມູນອັດຕະໂນມັດທຸກໆມື້ · {when} ຫຼ້າສຸດ · 14 ມື້ສຸດທ້າຍຈະຖືກເກັບໄວ້ໃນ {dir}.
+backup_auto_none	ສຳຮອງຂໍ້ມູນອັດຕະໂນມັດທຸກໆມື້ — ອັນທຳອິດຈະເຮັດວຽກໃນເວລາດຽວ.
+backup_copy_to	ສຳເນົາຍັງໄປທີ່ {dir}.
+backup_copy_btn	ສຳເນົາການສຳຮອງຂໍ້ມູນໄປໃສ່ໂຟນເດີ...
+autostart_off	ເລີ່ມຕົ້ນດ້ວຍຄອມພິວເຕີນີ້
+autostart_on	ເລີ່ມຕົ້ນດ້ວຍຄອມພິວເຕີເຄື່ອງນີ້ ✓ — ແຕະເພື່ອຢຸດ
+autostart_done_on	ດຽວນີ້ຄອມພິວເຕີເຄື່ອງນີ້ເປີດແອັບເມື່ອມັນເລີ່ມຂຶ້ນ — ເຊີບເວີຂອງຮ້ານກັບມາຫຼັງຈາກຕັດໄຟ.
+autostart_done_off	ຄອມ​ພິວ​ເຕີ​ນີ້​ບໍ່​ໄດ້​ເປີດ app ໃນ​ເວ​ລາ​ທີ່​ມັນ​ເລີ່ມ​ຕົ້ນ​.
+device_forgotten	ຮ້ານຄ້າລືມອຸປະກອນນີ້ — ຈັບຄູ່ມັນອີກຄັ້ງກັບລະຫັດປັດຈຸບັນຂອງຮ້ານ. ຄໍາສັ່ງລໍຖ້າມັນໄດ້ຖືກເກັບຮັກສາໄວ້.
+lan_offline	ບໍ່ສາມາດຕິດຕໍ່ເຊີບເວີຮ້ານຄ້າໄດ້
+forget_device	ລືມ
+last_seen	ເຫັນ
+copy_pair_code	ສຳເນົາລະຫັດການຈັບຄູ່
+new_pair_code	ລະຫັດການຈັບຄູ່ໃໝ່
+pair_finishing	ກຳລັງຈົບຄູ່... ກຳລັງນຳໃຊ້ປຶ້ມຂອງຮ້ານ
+pair_opening	ເປີດ​ຈົນ​ຮອດ…
+pair_copied	ສຳເນົາລະຫັດການຈັບຄູ່ແລ້ວ
+kot_waiting	ກຳລັງລໍຖ້າສົ່ງ
+lan_offline_waiting	ບໍ່ສາມາດຕິດຕໍ່ເຊີບເວີຮ້ານຄ້າໄດ້ · {n} ກຳລັງລໍຖ້າ
+lan_connecting	ກຳລັງເຊື່ອມຕໍ່ຫາຮ້ານຄ້າ...
+lan_live	ດໍາລົງຊີວິດ
+lan_sending	{n} ກຳລັງສົ່ງ
+lan_sign_in_to_send	ເຂົ້າສູ່ລະບົບອີກຄັ້ງເພື່ອສົ່ງ {n}
+lan_pair_again	ຈັບຄູ່ອຸປະກອນນີ້ອີກຄັ້ງ
+lan_update_app	ອັບເດດແອັບ — ອຸປະກອນນີ້ ແລະເຊີບເວີຂອງຮ້ານຄ້າມີລຸ້ນທີ່ແຕກຕ່າງກັນ
+allow_firewall	ອະນຸຍາດໃຫ້ອຸປະກອນອື່ນເຊື່ອມຕໍ່
+firewall_blocked	ໄຟວໍຂອງຄອມພິວເຕີເຄື່ອງນີ້ປິດກັ້ນອຸປະກອນອື່ນ — ແຕະອະນຸຍາດໃຫ້ອຸປະກອນອື່ນເຊື່ອມຕໍ່.
+firewall_waiting	ກຳລັງລໍຖ້າການເຕືອນຂອງຜູ້ເບິ່ງແຍງ...
+lan_join_help	ໃນອຸປະກອນອື່ນ: ໂໝດລູກຄ້າ → ຊອກຫາເຊີບເວີຂອງຮ້ານ (ຫຼືພິມ {addr}) → ລະຫັດຈັບຄູ່ {code}.
+lan_pair_status	Wi‑Fi{addr}
+lan_join_help_no_addr	ເຊື່ອມຕໍ່ອຸປະກອນນີ້ກັບ Wi‑Fi ສໍາລັບທີ່ຢູ່.
+lan_no_address	ຍັງບໍ່ມີທີ່ຢູ່Wi‑Fi - ເຊື່ອມຕໍ່ຫາຮ້ານWi‑Fi.
+lan_not_listening	ບໍ່ຮັບອຸປະກອນ (ພອດ {port} ບໍ່ຫວ່າງ). ຣີສະຕາດແອັບ.
+lan_tills_off	ປິດ tills ພິເສດ. ອະນຸຍາດໃຫ້ພວກເຂົາອະນຸຍາດໃຫ້ອຸປະກອນອື່ນເຂົ້າຮ່ວມ.
+paired_with	ຄູ່ · {url}
+not_paired	ບໍ່ໄດ້ຈັບຄູ່
+choose_device_use	ເລືອກເຊີບເວີຫຼືລູກຄ້າ.
+paired_note	ຈັບຄູ່. ປົດລັອກເພື່ອຂາຍ, ຫຼືໂຫຼດຂໍ້ມູນໃໝ່ຫຼ້າສຸດ.
+last_update_at	ອັບເດດຫຼ້າສຸດ: {time}.
+pair_intro	ຊອກຫາເຊີບເວີ, ຫຼືພິມທີ່ຢູ່ຂອງມັນ ແລະລະຫັດການຈັບຄູ່.
+queue_waiting	ລໍຖ້າຮອດຮ້ານ ({n}):
+queue_tries	ລອງ {n} ເທື່ອ · ຄຳຕອບສຸດທ້າຍ: {e}
+save_backup_copy	ບັນທຶກສຳເນົາສຳຮອງ...
+backup_copy_saved	ການ​ສໍາ​ເນົາ​ສໍາ​ຮອງ​ໄດ້​ບັນ​ທຶກ​ໄວ້ — ຮັກ​ສາ​ມັນ​ນອກ​ອຸ​ປະ​ກອນ​ນີ້ (ໄມ້ USB ຫຼື​ອຸ​ປະ​ກອນ​ອື່ນ​)
+backup_copy_overdue	ບໍ່​ມີ​ການ​ສໍາ​ເນົາ​ສໍາ​ຮອງ​ຂໍ້​ມູນ​ໄດ້​ປະ​ໄວ້​ອຸ​ປະ​ກອນ​ນີ້​ສໍາ​ລັບ {n} ມື້ — ການ​ຕັ້ງ​ຄ່າ → Backup​
+backup_copy_failed	ບໍ່ສາມາດບັນທຶກສຳເນົາສຳຮອງໄວ້ບ່ອນນັ້ນ — ເລືອກບ່ອນອື່ນ
+clock_off	ໂມງຂອງອຸປະກອນນີ້ແມ່ນ {min} ນາທີຈາກເຊີບເວີຂອງຮ້ານ — ຕັ້ງເວລາທີ່ຖືກຕ້ອງໃນອຸປະກອນນີ້
+printers_heading	ເຄື່ອງພິມ
+printers_help	ຊອກຫາເຄື່ອງພິມ, ແຕະອັນໜຶ່ງເພື່ອເລືອກມັນ, ຈາກນັ້ນພິມໜ້າທົດສອບໃນອຸປະກອນນັ້ນເທົ່ານັ້ນ. ເຄື່ອງພິມໃບບິນ: Bill & Slip format → Bill.
+printers_host_only	ເຄື່ອງພິມຖືກຕັ້ງຢູ່ໃນອຸປະກອນຮ້ານຄ້າ (ເຊີຟເວີ). ນີ້ຈົນກ່ວາສົ່ງໃບບິນຄ່າແລະປີ້ເກົ່າຢູ່ທີ່ນັ້ນ - ຊອກຫາ / ເພີ່ມ / ມອບຫມາຍຢູ່ໃນເຄື່ອງແມ່ຂ່າຍ. ໜ້າທົດສອບ ແລະຂະໜາດພິມໃບບິນໄປເຊີບເວີ.
+printers_find_heading	ຊອກຫາເຄື່ອງພິມ
+printers_find_tip	ຊອກຫາການສະແກນອຸປະກອນນີ້ ແລະຮັກສາລາຍຊື່ໃຫ້ທັນສະໄຫມ.
+printers_pool_heading	ເຄື່ອງພິມ
+printers_pool_tip	ຊອກຫາເຄື່ອງສະແກນອຸປະກອນນີ້ ແລະຮັກສາລາຍຊື່ນີ້ໃໝ່ຫຼ້າສຸດ.
+printers_pool_empty	(ບໍ່ມີເທື່ອ — ແຕະ ຊອກຫາ)
+printers_routes_help	ຊອກຫາເຄື່ອງພິມທີ່ລະບົບປະຕິບັດການຮູ້ແລ້ວ. ມອບໃຫ້ພວກເຂົາຢູ່ໃນບັນຊີລາຍການແລະແຕ່ລະພາກສ່ວນພາຍໃຕ້ຮູບແບບ Bill & Slip.
+printer_assign_dd	ເຄື່ອງພິມຈິງ: {place}
+printer_assign_pick	ເລືອກເຄື່ອງພິມທີ່ແທ້ຈິງ
+printer_profile_heading	ແຜນຜັງ
+printer_send_heading	ການຈັດສົ່ງ
+vp_delivery_heading	ການຈັດສົ່ງ
+vp_delivery_help	ເຄື່ອງພິມສະເໝືອນນີ້ສົ່ງວຽກແນວໃດ — ເອກະສານ OS, ໄບຕ໌ດິບ, ຫຼື ESC/POS. ເນື້ອໃນ Slip (ຂະຫນາດປະເພດ, wrap, margins) ຖືກຕັດສິນໂດຍໃບບິນ / ຮູບແບບ Slip, ບໍ່ແມ່ນທີ່ນີ້.
+vp_type_size_heading	ພິມຂະຫນາດ
+vp_wrap_heading	ຄວາມກວ້າງຂອງຫໍ່
+vp_margin_heading	ຂອບ
+vp_delivery_spooler	ເອກະສານ OS (ຕົວຈັດວາງລະບົບ)
+vp_delivery_raw	ໄບຕ໌ດິບໄປຫາອຸປະກອນ
+vp_delivery_escpos	ESC/POS ຄໍາສັ່ງຄວາມຮ້ອນ
+virtual_printer_new	ເຄື່ອງພິມສະເໝືອນໃໝ່
+virtual_printer_selected	ການແກ້ໄຂ “{name}” — ແຕະອັນອື່ນໃນລາຍການເພື່ອສະຫຼັບ
+virtual_printer_tap_list	ແຕະເຄື່ອງພິມສະເໝືອນຢູ່ໃນລາຍການເພື່ອແກ້ໄຂມັນ
+config_layout_portrait	ຮູບຄົນ
+config_layout_landscape	ພູມສັນຖານ
+config_send_os	spooler ລະ​ບົບ​
+config_send_escpos	ESC/POS
+profiles_heading	ການຈັດວາງ
+profiles_empty	(ຍັງບໍ່ມີການຈັດວາງເທື່ອ)
+profile_builtin	ໃນຕົວ
+profile_custom	ກຳນົດເອງ
+profile_name_ph	ຊື່ໂຄງຮ່າງ
+profile_new	ໂຄງຮ່າງໃໝ່
+profile_delete	ລຶບໂຄງຮ່າງ
+profile_created	ສ້າງໂຄງຮ່າງແລ້ວ
+profile_deleted	ລຶບໂຄງຮ່າງແລ້ວ
+profile_builtin_keep	ການຈັດວາງໃນຕົວບໍ່ສາມາດລຶບໄດ້
+config_saved	ອັບເດດ
+config_selected	ເລືອກ “{name}”
+printer_output_heading	ເຄື່ອງພິມສະເໝືອນ
+virtual_printers_heading	ເຄື່ອງພິມສະເໝືອນ
+virtual_printers_empty	ບໍ່ມີເຄື່ອງພິມສະເໝືອນເທື່ອ — ຕັ້ງຄ່າລຸ່ມນີ້, ຈາກນັ້ນ Save. ຫຼັງ​ຈາກ​ທີ່​ທ່ານ​ມີ​ບາງ​ຢ່າງ​, ປາດ​ຫນຶ່ງ​ໃນ​ບັນ​ຊີ​ລາຍ​ການ​ເພື່ອ​ແກ້​ໄຂ​.
+virtual_printer_name_ph	ຊື່ເຄື່ອງພິມສະເໝືອນ (ເລືອກໄດ້)
+virtual_printer_create	ສ້າງເຄື່ອງພິມສະເໝືອນ
+virtual_printer_save	ບັນທຶກເຄື່ອງພິມສະເໝືອນ
+virtual_printer_delete	ລຶບເຄື່ອງພິມສະເໝືອນ
+virtual_printer_created	ສ້າງເຄື່ອງພິມສະເໝືອນ “{name}” ແລ້ວ
+virtual_printer_deleted	ລຶບເຄື່ອງພິມສະເໝືອນ “{name}”
+virtual_printer_updated	ອັບເດດເຄື່ອງພິມສະເໝືອນ
+virtual_printer_updated_named	ອັບເດດເຄື່ອງພິມສະເໝືອນ “{name}” ແລ້ວ
+virtual_draft_layout	ຄ່າທີ່ຕັ້ງໄວ້ສໍາລັບເຄື່ອງພິມ virtual ຕໍ່ໄປ
+virtual_draft_send	ຕັ້ງຄ່າສໍາລັບເຄື່ອງພິມ virtual ຕໍ່ໄປ
+virtual_need_real	ເລືອກເຄື່ອງພິມຕົວຈິງກ່ອນ
+virtual_need_select	ເລືອກເຄື່ອງພິມສະເໝືອນເພື່ອລຶບ
+real_printer_selected	ເລືອກແລ້ວ: {name}
+station_group_heading	ເຄື່ອງພິມສະເໝືອນ
+station_group_apply	ລຶບເຄື່ອງພິມສະເໝືອນ
+station_group_applied	ລຶບແລ້ວ
+station_group_empty	ເລືອກເຄື່ອງພິມສະເໝືອນ
+station_group_name_ph	ຊື່ເຄື່ອງພິມສະເໝືອນ (ເລືອກໄດ້)
+station_group_save	ສ້າງເຄື່ອງພິມສະເໝືອນ
+station_group_saved	ເຄື່ອງພິມສະເໝືອນຖືກບັນທຶກໄວ້
+station_manage_heading	ເພີ່ມ ຫຼືລຶບພາກສ່ວນຮ້ານຄ້າອອກ
+printers_routes_heading	ບ່ອນທີ່ສິ່ງພິມ
+route_pick_heading	ສະຖານທີ່
+route_editing	ການແກ້ໄຂ: {name}
+route_assigned	ເພີ່ມ {printer} ໃສ່ {place}
+route_already_assigned	ຢູ່ບ່ອນນີ້ແລ້ວ: {printer}
+route_removed	ລຶບອອກ {printer} ຈາກ {place}
+route_cleared	ລຶບລ້າງແລ້ວ {name}
+route_assigned_empty	ບໍ່ມີຢູ່ບ່ອນນີ້
+route_tap_remove	ແຕະເພື່ອເອົາອອກ
+route_tap_select	ແຕະເພື່ອເລືອກ
+route_tap_selected	ເລືອກ
+route_pick_printer_first	ແຕະເຄື່ອງພິມກ່ອນ
+route_assigned_heading	ເຄື່ອງພິມ
+route_add_heading	ມອບໝາຍ
+printer_label_ph	ຊື່ (ເຊັ່ນ: ເຄື່ອງພິມເຄົາເຕີ)
+printer_target_ph	ຊື່ເຄື່ອງພິມລະບົບ ຫຼືເຈົ້າພາບ: 9100
+printer_target_default	ເຄື່ອງພິມປົກກະຕິຂອງຄອມພິວເຕີເຄື່ອງນີ້ (ທີ່ຢູ່ຫວ່າງເປົ່າ)
+printer_wire_heading	ໂປຣໄຟລ໌
+printer_wire_escpos	ESC/POS
+printer_wire_os	ຮູບຄົນ
+printer_wire_os_portrait	ຮູບຄົນ
+printer_wire_os_landscape	ພູມສັນຖານ
+printer_wire_escpos_short	ESC/POS
+printer_wire_os_short	ຮູບຄົນ
+printer_wire_os_landscape_short	ພູມສັນຖານ
+printer_format_custom	ໂປຣໄຟລ໌ກຳນົດເອງໃໝ່
+printer_format_custom_label	ກຳນົດເອງ
+printer_format_custom_added	ເພີ່ມໂປຣໄຟລ໌ແບບກຳນົດເອງສຳລັບສະຖານທີ່ນີ້
+add_printer	ເພີ່ມເຄື່ອງພິມ
+remove_printer	ເອົາອອກ
+route_pick_ph	ໃບບິນຫຼືພາກສ່ວນຮ້ານຄ້າ
+route_bill	ໃບບິນ
+route_default_kitchen	ບໍ່ມີສະຖານີ (ລາຍການທີ່ບໍ່ໄດ້ມອບໝາຍ)
+route_kot_station	ສະຖານີ
+route_dont_print	ບໍ່ມີເຄື່ອງພິມ
+stations_heading	ສະຖານີ
+stations_help	ພາກສ່ວນຮ້ານຄ້າຈັດກຸ່ມລາຍການແລະເຄື່ອງພິມສໍາລັບສ່ວນຂອງຮ້ານ. ແນບເຄື່ອງພິມຈາກການຕັ້ງຄ່າ → ເຄື່ອງພິມ, ຕັ້ງລອງຄໍາສັ່ງ, ຈາກນັ້ນທໍາອິດທີ່ເຮັດວຽກຫຼືພິມທັງຫມົດ. ການປ່ຽນແປງຈະຊ່ວຍປະຢັດໃນຂະນະທີ່ທ່ານໄປ.
+station_print_heading	ເຄື່ອງພິມສໍາລັບສະຖານີນີ້
+station_print_help	ເລືອກສະຖານີ, ຈາກນັ້ນຕິດເຄື່ອງພິມໜຶ່ງ ຫຼືຫຼາຍເຄື່ອງ. ↑↓ ຊຸດລອງສັ່ງ. ທໍາອິດທີ່ເຮັດວຽກຢຸດເຊົາຫຼັງຈາກຄວາມສໍາເລັດຄັ້ງທໍາອິດ; ພິມໃສ່ທຸກເຄື່ອງພິມທີ່ຕິດຄັດມາ.
+station_print_pick_ph	ສະຖານີເພື່ອຕັ້ງເຄື່ອງພິມ
+station_print_pick_first	ເລືອກພາກສ່ວນຮ້ານຄ້າກ່ອນ
+station_print_editing	ການແກ້ໄຂເຄື່ອງພິມສໍາລັບ “{name}”
+station_vps_dd	ເຄື່ອງພິມສໍາລັບສະຖານີນີ້
+station_vps_dd_n	{n}ເຄື່ອງພິມ · ແຕະເພື່ອປ່ຽນ
+station_vps_empty	ບໍ່ມີເຄື່ອງພິມເທື່ອ — ຊອກຫາພວກມັນຢູ່ໃນການຕັ້ງຄ່າ → ເຄື່ອງພິມ
+bill_printers_dd	ເຄື່ອງພິມສໍາລັບໃບບິນຄ່າ
+bill_printers_dd_n	{n}ເຄື່ອງພິມສຳລັບໃບບິນ · ແຕະເພື່ອປ່ຽນ
+job_layout	ແຜນຜັງ
+job_delivery	ວິທີການສົ່ງວຽກ
+job_delivery_help	ເອກະສານ OS, ໄບຕ໌ດິບ, ຫຼື ESC/POS. ໃບເກັບເງິນແລະປີ້ແຕ່ລະຄົນເກັບຮັກສາຂອງຕົນເອງ. ທັງສອງວຽກສາມາດໄປຫາເຄື່ອງພິມໃດກໍໄດ້ທີ່ Find ໄດ້ບັນທຶກໄວ້.
+station_vp_attached	ຕິດເຄື່ອງພິມ
+station_vp_detached	ເອົາເຄື່ອງພິມອອກຈາກສະຖານີ
+station_print_summary	{mode}·{n}ເຄື່ອງພິມ
+station_print_summary_none	ບໍ່ມີເຄື່ອງພິມຢູ່ໃນສະຖານີນີ້ເທື່ອ — ມັນຈະບໍ່ພິມ
+stations_none	ບໍ່​ມີ​ສະ​ຖາ​ນີ​ເທື່ອ — ເພີ່ມ​ຫນຶ່ງ​ຂ້າງ​ລຸ່ມ​ນີ້​. ສະຖານີຕ່າງໆບໍ່ໄດ້ໃຊ້ໃນຮ້ານເຄົາເຕີ — ປ່ອຍໃຫ້ຫວ່າງເປົ່າ.
+route_up	ຂຶ້ນ
+route_down	ລົງ
+route_remove	ເອົາອອກ
+route_clear	ຈະແຈ້ງ
+save_printers	ບັນທຶກເຄື່ອງພິມ
+print_test_page	ພິມໜ້າທົດສອບ
+no_printer_assigned	ບໍ່ມີເຄື່ອງພິມ
+test_page_no_printer	ບໍ່ມີເຄື່ອງພິມສຳລັບ {place} — ແນບເຄື່ອງພິມໃສ່ມັນ, ຈາກນັ້ນລອງອີກຄັ້ງ
+test_page_pick_first	ເລືອກເຄື່ອງພິມສຳລັບໜ້າທົດສອບກ່ອນ — ຈາກນັ້ນພິມໜ້າທົດສອບ
+test_printers_dd	ເຄື່ອງພິມສໍາລັບຫນ້າທົດສອບ
+test_printers_dd_n	{n}ເຄື່ອງພິມສຳລັບໜ້າທົດສອບ · ແຕະເພື່ອປ່ຽນ
+kot_test_printers_dd	ເຄື່ອງພິມສໍາລັບການທົດສອບພິມ
+kot_test_printers_dd_n	ເຄື່ອງພິມ {n} ສຳລັບການພິມທົດສອບ · ແຕະເພື່ອປ່ຽນ
+test_printer_picked	ທົດສອບຢູ່: {name}
+test_printer_cleared	ບໍ່ໄດ້ທົດສອບໃນ: {name}
+test_page_sent_n	ໜ້າທົດສອບສົ່ງໄປຫາເຄື່ອງພິມ {n}
+test_kot_pick_first	ເລືອກເຄື່ອງພິມສຳລັບການພິມແບບທົດສອບກ່ອນ — ຈາກນັ້ນທົດສອບການພິມ
+test_kot_sent_n	ທົດສອບການພິມຖືກສົ່ງໄປຫາເຄື່ອງພິມ {n}
+cancel_pick	ມາກ
+cancel_pick_on	ໝາຍ
+cancel_pick_meta	ໝາຍວ່າຍົກເລີກ
+batch_cancel	ໝາຍຍົກເລີກ
+batch_cancel_n	ໝາຍຍົກເລີກ ({n})
+batch_cancel_none	ໝາຍໜຶ່ງ ຫຼືຫຼາຍກວ່າໜຶ່ງລາຍການທີ່ສົ່ງກ່ອນ — ຈາກນັ້ນໝາຍຍົກເລີກ
+batch_cancel_title	ຍົກ​ເລີກ​ລາຍ​ການ​ທີ່​ຫມາຍ — ຫນຶ່ງ​ໃນ​ເຫດ​ຜົນ​, ຫນຶ່ງ​ໃນ​ການ​ຍົກ​ເລີກ slip ຕໍ່​ພາກ​ສ່ວນ​
+batch_cancel_ok	ຍົກເລີກລາຍການ {n} · {slips} ຍົກເລີກ slip(s) → {kitchens}
+batch_cancel_ok_noprint	ລາຍການ {n} ຖືກຍົກເລີກ — ການພິມອັດຕະໂນມັດຖືກປິດໄວ້, ສະນັ້ນບໍ່ມີການຍົກເລີກໃບເລື່ອນ
+no_printer_kitchen_station	ບໍ່ມີເຄື່ອງພິມສໍາລັບສະຖານີນັ້ນ
+printers_saved	ບັນທຶກແລ້ວ
+test_page_sent	ສົ່ງໜ້າທົດສອບ — ກວດເບິ່ງເຄື່ອງພິມ
+test_page_sent_one	ໜ້າທົດສອບທີ່ສົ່ງຫາ {name} — ກວດເບິ່ງເຄື່ອງພິມນັ້ນ
+printers_found	ພົບ {n}: {list}
+printers_find_synced	ພົບ {n} — {new} ໃໝ່
+printer_on_device	ບັນທຶກແລ້ວ
+printer_already_added	ເພີ່ມແລ້ວ
+printer_already_saved	ບັນທຶກແລ້ວ: {name}
+find_printers	ຊອກຫາເຄື່ອງພິມ
+printers_looking	ກຳລັງຊອກຫາ...
+saving_printer	ກຳລັງເພີ່ມເຄື່ອງພິມ...
+cancelled	ຍົກເລີກ
+printers_tap_find	ແຕະຊອກຫາເພື່ອເຮັດລາຍການເຄື່ອງພິມທີ່ອຸປະກອນນີ້ສາມາດໃຊ້.
+printers_none_found	ບໍ່ພົບ - ພິມຊື່ເຄື່ອງພິມລະບົບ ຫຼື IP (ເຊັ່ນ: 192.168.1.50).
+printer_from_find	ເພີ່ມແລ້ວ {name}
+kot_printer_ph	ເຄື່ອງພິມສໍາລັບ slips
+bill_printer_ph	ເຄື່ອງພິມສໍາລັບໃບບິນຄ່າ
+kot_print_on	ພິມປີ້ອັດຕະໂນມັດ: ເປີດ
+kot_print_off	ພິມປີ້ອັດຕະໂນມັດ: ປິດ
+queue_refused	ຮ້ານເຮົາບໍ່ຮັບ ({n}) — ກວດເບິ່ງແຕ່ລະອັນຢູ່ເຄົາເຕີ:
+clear_not_accepted	ກວດແລ້ວ — ລຶບລາຍຊື່ນີ້
+device_name_ph	ຊື່​ອຸ​ປະ​ກອນ​ນີ້​
+lan_last_update	ອັບເດດຫຼ້າສຸດ {time}
+lan_not_accepted	{n} ບໍ່ຍອມຮັບ
+connected_now	ເຊື່ອມຕໍ່ດຽວນີ້
+backup_failed	ການສຳຮອງຂໍ້ມູນອັດຕະໂນມັດຄັ້ງສຸດທ້າຍລົ້ມເຫລວ: {e}
+backup_overdue	ບໍ່​ມີ​ການ​ສໍາ​ຮອງ​ຂໍ້​ມູນ​ສໍາ​ລັບ​ການ {n}​ມື້ — ໃຫ້​ເປີດ app ໃນ​ອຸ​ປະ​ກອນ​ນີ້​ເພື່ອ​ໃຫ້​ມັນ​ສາ​ມາດ​ສໍາ​ຮອງ​ຂໍ້​ມູນ​ໄດ້​.
+disk_low	ພຽງແຕ່ {mb} MB ຟຣີໃນອຸປະກອນນີ້ — ການສຳຮອງຂໍ້ມູນຈະລົ້ມເຫລວໃນໄວໆນີ້. ສ້າງພື້ນທີ່ຫວ່າງ.
+last_seen_devices	ເຫັນຄັ້ງສຸດທ້າຍ: {time}
+sync_interval	ຊິ້ງຂໍ້ມູນທຸກໆ {secs}s
+connection_to_shop	ການ​ເຊື່ອມ​ຕໍ່​ກັບ​ຮ້ານ​ຄ້າ​
+supplier_name_ph	ຊື່ຜູ້ສະຫນອງ (ຫຼືລູກຄ້າ)
+supplier_ph	ຜູ້ສະຫນອງ
+switch_device	ສະຫຼັບອຸປະກອນນີ້
+take_payment	ເອົາການຈ່າຍເງິນ
+tax_added_till	{tax} ພິເສດ
+tax_inside_price	{tax} ລວມ
+tax_invoice	ໃບເກັບພາສີ
+till_to_bank	ຮອດ → ທະນາຄານ
+units_heading	ໜ່ວຍ
+unlock_after_pairing	ໃສ່ PIN
+unlock_with_login	ປົດລັອກດ້ວຍການເຂົ້າສູ່ລະບົບ
+unmark	ຍົກເລີກເຄື່ອງໝາຍ
+update_my_password	ອັບເດດລະຫັດຜ່ານຂອງຂ້ອຍ
+update_my_pin	ອັບເດດການເຂົ້າສູ່ລະບົບຂອງຂ້ອຍ
+duress_heading	ປົດລັອກສຸກເສີນ PIN (ເຈົ້າຂອງເທົ່ານັ້ນ)
+duress_help	ທາງເລືອກ. ຖ້າລະຫັດ PIN ນີ້ຖືກພິມໃສ່ໃນການປົດລັອກແທນທີ່ຈະເປັນຂອງທ່ານ, ປື້ມບັນທຶກທັງໝົດຈະຖືກລຶບລ້າງ (ການຂາຍ, ບັນຊີລາຍການ, ປະຫວັດ) ແລະຈົນກວ່າຈະເປີດເມື່ອເຈົ້າຂອງເບິ່ງປົກກະຕິ — ລາຍການ, ລາຄາ, ເຄົາເຕີ, ພະນັກງານ ແລະການຕັ້ງຄ່າຈະຢູ່. Schema ແລະ config ບໍ່ໄດ້ຖືກລຶບ. ໃຊ້ພຽງແຕ່ຖ້າທ່ານຖືກບັງຄັບໃຫ້ປົດລັອກ. ປ່ອຍຫວ່າງໄວ້ ແລະບັນທຶກເພື່ອປິດ. ບໍ່ຄືກັບ PIN ຂອງໃຜ.
+duress_pin_ph	ສຸກເສີນ PIN (4-12 ຕົວເລກ)
+duress_confirm_ph	ພິມອີກຄັ້ງເພື່ອຢືນຢັນ
+save_duress_pin	ບັນທຶກສຸກເສີນ PIN
+clear_duress_pin	ປິດເຫດສຸກເສີນ PIN
+duress_on	ການປົດລັອກສຸກເສີນ PIN ເປີດຢູ່
+duress_off	ການປົດລັອກສຸກເສີນ PIN ປິດຢູ່
+duress_saved	ບັນທຶກການປົດລັອກສຸກເສີນ PIN
+duress_cleared	ການປົດລັອກສຸກເສີນ PIN ປິດ
+upi_amount_ph	UPI ຈຳນວນ
+void	ການຂາຍໂມ້
+write_off_ap	ຂຽນອອກ AP
+write_off_heading	ຂຽນອອກ (ຈະແຈ້ງໂດຍບໍ່ມີການຈ່າຍເງິນ)
+write_off_nil	ຂຽນ off / nil balance
+your_brand	ຍີ່ຫໍ້ຂອງທ່ານ (ໃນແອັບ)
+your_categories	ໝວດໝູ່ຂອງເຈົ້າ
+account_kind	ປະເພດບັນຊີ (ແຕະອັນນຶ່ງ)
+actual_total_cap	ທັງໝົດຕົວຈິງ
+amend_help	ເລືອກການຂາຍເພື່ອແກ້ໄຂ, ໂມໂຫ, ຫຼືຄືນເງິນ. ການແກ້ໄຂຮັກສາປະຫວັດເຕັມ. Rounded Total ເລີ່ມຕົ້ນເທົ່າກັບ Applied — ແກ້ໄຂພຽງແຕ່ເປັນຮອບ. ການເສຍເງິນແລະການຄືນເງິນອາດຈະຕ້ອງການເຈົ້າຂອງ ຫຼືຜູ້ຈັດການ PIN (ພິມຂ້າງເທິງ; ບັນທຶກດ້ວຍຊື່ຂອງເຈົ້າ).
+applied_total_cap	ນຳໃຊ້ທັງໝົດ
+bank_balance	ຍອດເງິນທະນາຄານ
+bank_net_today	ສຸດທິທະນາຄານໃນມື້ນີ້
+branch_export_help	ສົ່ງອອກຂຽນ branch_snapshot_CODE_DATE.json ເຂົ້າໄປໃນໂຟເດີສໍາຮອງຂໍ້ມູນແລະຄັດລອກມັນໃສ່ clipboard. ເພື່ອນໍາເຂົ້າມື້ຂອງຮ້ານອື່ນ, ບັນທຶກໄຟລ໌ຂອງຕົນເປັນ import_branch_snapshot.json ໃນໂຟນເດີດຽວກັນ, ຈາກນັ້ນແຕະທີ່ນໍາເຂົ້າ.
+brand_shown_help	ສະແດງໃຫ້ເຫັນໃນຫນ້າຈໍພາຍໃນ app ໄດ້. ຊື່ແອັບ ແລະໄອຄອນທີ່ຕິດຕັ້ງຢູ່ໃນອຸປະກອນນີ້ຈະຍັງຄົງເປັນລາຍການໃນເວທີ.
+app_icon	ໄອຄອນແອັບ
+logo_help	ເຄື່ອງໝາຍຮ້ານຄ້າທາງເລືອກໃນໜ້າຈໍໃນແອັບ.
+onboard_layout	ສິ່ງທີ່ທ່ານໄດ້ຮັບ
+item_photo_help	ທາງເລືອກ. ໂດຍບໍ່ມີຮູບ, ພວກເຮົາສະແດງໃຫ້ເຫັນເບື້ອງຕົ້ນຈາກຊື່ລາຍການ.
+stamp_heading	ສະແຕມ
+stamp_image_help	ຮູບສະແຕມທາງເລືອກໃນໃບບິນທີ່ພິມອອກແລະການສະແດງລູກຄ້າ.
+payment_qr_heading	ການຈ່າຍເງິນ QR
+payment_qr_image_help	static QR ໃນໃບບິນຄ່າແລະການສະແດງລູກຄ້າ; ຖ້າບໍ່ດັ່ງນັ້ນການຈ່າຍເງິນຈະໃຊ້ UPI QR ແບບເຄື່ອນໄຫວຈາກ VPA ຂ້າງເທິງ.
+cash_in_hand	ເງິນສົດໃນມື (ຈົນກ່ວາ)
+change_my_pin_heading	ເຂົ້າສູ່ລະບົບຂອງຂ້ອຍ
+connect_to_server	ເຊື່ອມຕໍ່ກັບເຊີບເວີ
+counter_locked	Counter 01 · ລັອກ
+country_pack_help	ຊຸດປະເທດກຳນົດຊື່ພາສີ ແລະເລກຄະນິດສາດ, ທາງລົດໄຟທີ່ຈ່າຍເງິນທັນທີ, ແລະ ID ທຸລະກິດທີ່ພິມໄວ້ໃນໃບບິນ. Kumkaj ບໍ່ໄດ້ຍື່ນພາສີ ຫຼືອອກໃບແຈ້ງໜີ້ຂອງລັດຖະບານທຸກບ່ອນ.
+currency_use_help	ເລື່ອນ ແລະແຕະ ໃຊ້ສໍາລັບສະກຸນເງິນທີ່ຮອງຮັບ.
+day_close_help	ການບັນທຶກໃນມື້ປິດຈະບັນທຶກບົດສະຫຼຸບນີ້ (ແລະຄວາມແຕກຕ່າງຂອງລິ້ນຊັກຖ້ານັບ) ໃສ່ບັນທຶກການກວດສອບ. ມັນບໍ່ໄດ້ຢຸດເຊົາການຂາຍ.
+expenses_word	ຄ່າໃຊ້ຈ່າຍ
+feature_access_help	ສິ່ງທີ່ເຂົາເຈົ້າສາມາດເປີດໄດ້ - ທາງເລືອກ; ວຽກຂ້າງເທິງນີ້ຕັ້ງຄ່າເລີ່ມຕົ້ນແລ້ວ
+footer_local	ທ້ອງຖິ່ນ SQLite · ຟຣີຕະຫຼອດໄປ · Zero Cloud
+fresh_book_kirano	ສົດ = ລາຍການຫວ່າງເປົ່າ (ເພີ່ມລາຍການໃນພາຍຫຼັງ). ປື້ມບັນ = ປະເພດການເປີດຫຼັກຊັບແລະຜູ້ທີ່ເປັນຫນີ້ທ່ານຂ້າງລຸ່ມນີ້.
+fresh_selected	ເລືອກໃໝ່ແລ້ວ — ລາຍການຍັງຫວ່າງເປົ່າ. ແຕະ ສຳ ເລັດເມື່ອພ້ອມ.
+gross_word	ລວມຍອດ
+how_start	ທ່ານຕ້ອງການເລີ່ມຕົ້ນແນວໃດ?
+kot_print_help_kirano	ບໍ່ໄດ້ໃຊ້ຢູ່ໃນເຄົາເຕີ kirana.
+later_country_pack	ຕໍ່ມາ: ການ​ຕັ້ງ​ຄ່າ → ໃຊ້​ຊອງ​ປະ​ເທດ​ຂອງ​ທ່ານ​ສໍາ​ລັບ​ການ​ພາ​ສີ​ແລະ​ການ​ຈ່າຍ​ເງິນ​ປ້າຍ.
+local_badge	ທ້ອງຖິ່ນ
+mix_type_hint_kirano	ແບ່ງເປັນເງິນສົດ / UPI / ບັດ / ເຄຣດິດຖ້າຈໍາເປັນ. ສິນເຊື່ອຕ້ອງການລູກຄ້າຂ້າງເທິງ.
+money_in_sales	ເງິນໃນການຂາຍ
+net_word	ສຸດທິ
+offline_badge	ອອບລາຍ
+optional_login_help	ທາງເລືອກໃນການເຂົ້າສູ່ລະບົບ (id + ລະຫັດຜ່ານ). ເຈົ້າຂອງຊຸດຫນຶ່ງຄັ້ງ; ພຽງແຕ່ຜູ້ໃຊ້ສາມາດປ່ຽນລະຫັດຜ່ານໃນພາຍຫຼັງ.
+or_unlock_login	ຫຼືປົດລັອກດ້ວຍ ID ເຂົ້າສູ່ລະບົບ + ລະຫັດຜ່ານ
+permission_preset	ວຽກ (ຕັ້ງຫນ້າຈໍແລະເງິນ)
+preset_help_kirano	Cashier: ຂາຍ. ຜູ້ຈັດການ: ຂາຍ + ລາຍການ + void / ດັດແກ້.
+product_locked_kirano	ຄິຣາໂນ
+product_only_kirano	Kirano ແມ່ນລະບົບປະຕິບັດການຂາຍເຄື່ອງແຫ້ງ / kirana: counter sell, stock, credit and books — offline on your device.
+purchases_cogs	ການຊື້ (COGS)
+qty_cap	ຈຳນວນ
+restore_help	ຟື້ນຟູ: ເລືອກການສໍາຮອງ. ປື້ມທີ່ເປີດຢູ່ໃນຕອນນັ້ນ; ປຶ້ມດັ່ງທີ່ພວກມັນຖືກບັນທຶກໄວ້ກ່ອນ, ດັ່ງນັ້ນອັນນີ້ຈຶ່ງສາມາດຍົກເລີກໄດ້.
+wipe_data_heading	ລຶບຂໍ້ມູນທ້ອງຖິ່ນ
+wipe_data_help	ເຈົ້າຂອງເທົ່ານັ້ນ - ທາງເລືອກດຽວກັນກັບ Windows ຖອນການຕິດຕັ້ງ. ບັນທຶກທຸລະກິດລຶບປະຫວັດການຊື້ຂາຍແຕ່ຮັກສາລາຍການ ແລະການຕັ້ງຄ່າ (ເຊັ່ນ: PIN ປົດລັອກສຸກເສີນ). ການຕັ້ງຄ່າຮ້ານຄ້າຈະລຶບຖານຂໍ້ມູນປຶ້ມອອກ. ການຕັ້ງຄ່າໜ້າຈໍຈະລຶບລ້າງໜ້າຕ່າງ/ພາສາ. ຢືນຢັນດ້ວຍ PIN ຂອງເຈົ້າຂອງ. PIN ປົດລັອກສຸກເສີນຢູ່ໃນທີມແມ່ນແຍກຕ່າງຫາກ (ປົກປິດເຊັດເວລາປົດລັອກ).
+wipe_trading	ບັນທຶກທຸລະກິດ
+wipe_schema	ຕັ້ງຄ່າຮ້ານຄ້າ
+wipe_ui	ການຕັ້ງຄ່າໜ້າຈໍ
+wipe_owner_pin_ph	ເຈົ້າຂອງPINເພື່ອລຶບ
+wipe_delete_selected	ລຶບທີ່ເລືອກ
+wipe_owner_only	ພຽງແຕ່ເຈົ້າຂອງສາມາດລຶບຂໍ້ມູນທ້ອງຖິ່ນໄດ້.
+restore_owner_only	ມີພຽງແຕ່ເຈົ້າຂອງເທົ່ານັ້ນທີ່ສາມາດຟື້ນຟູການສໍາຮອງຂໍ້ມູນໄດ້.
+wipe_owner_pin_needed	ໃສ່ເຈົ້າຂອງ PIN ເພື່ອລຶບຂໍ້ມູນທ້ອງຖິ່ນ.
+wipe_nothing_selected	ເລືອກສິ່ງທີ່ຈະລຶບກ່ອນ.
+wipe_done	ລຶບຂໍ້ມູນທ້ອງຖິ່ນທີ່ເລືອກແລ້ວ.
+wipe_schema_done	ເຊັດການຕິດຕັ້ງຮ້ານຄ້າແລ້ວ — ເລືອກເຊີບເວີ ຫຼືລູກຄ້າເພື່ອສືບຕໍ່.
+rounded_total	ລວມທັງໝົດ
+setup_app_kirano	ຕັ້ງຄ່າ Kirano
+shop_logo_optional	ໂລໂກ້ຮ້ານຄ້າ (ເລືອກໄດ້)
+stock_type_help	ພິມຊື່ລາຍການ (ສ່ວນຂອງມັນພຽງພໍ), ປະລິມານ, ຫຼັງຈາກນັ້ນປັບ. ລາຍ​ການ​ທີ່​ຍັງ​ບໍ່​ທັນ​ນັບ​ຈໍາ​ເປັນ​ຕ້ອງ​ໄດ້​ເລີ່ມ​ຕົ້ນ​ການ​ຕິດ​ຕາມ​ຄັ້ງ​ດຽວ​.
+team_owner_help	ປ່ອຍໃຫ້ຄົນຫວ່າງເປົ່າເພື່ອເພີ່ມບາງຄົນ: ຊື່, ວຽກ, ຊື່ຜູ້ໃຊ້, PIN, ແລະລະຫັດຜ່ານທາງເລືອກ, ຈາກນັ້ນຕື່ມ. ເລືອກ​ຄົນ​ທີ່​ຈະ​ແກ້​ໄຂ​ຮູບ​ແບບ​ດຽວ​ກັນ​ນັ້ນ — ຊື່​, ຊື່​ຜູ້​ໃຊ້​, ລະ​ຫັດ​ຜ່ານ​, ຫນ້າ​ຈໍ​, ແລະ​ສິດ — ຫຼັງ​ຈາກ​ນັ້ນ​ບັນ​ທຶກ​. PIN ແລະ ລະຫັດຜ່ານຂອງທ່ານເອງແມ່ນການເຂົ້າສູ່ລະບົບຢູ່ລຸ່ມສຸດ. ເຈົ້າຂອງບໍ່ປ່ຽນແປງ PIN ຂອງຜູ້ອື່ນ.
+staff_name_ph	ຊື່ພະນັກງານ
+staff_copy_hire_ph	ສຳເນົາການຕັ້ງຄ່າຈາກ (ທາງເລືອກ)
+staff_copy_hire	ໃຊ້ການຕັ້ງຄ່າຂອງບຸກຄົນນີ້
+staff_edit_name_ph	ສະແດງຊື່
+staff_rename	ບັນທຶກຊື່
+staff_copy_edit_ph	ສຳເນົາການຕັ້ງຄ່າຈາກບຸກຄົນອື່ນ
+staff_copy_edit	ສຳເນົາການຕັ້ງຄ່າຂອງເຂົາເຈົ້າໃສ່ທີ່ເລືອກ
+staff_copy_edit_onto	ສຳເນົາການຕັ້ງຄ່າຂອງເຂົາເຈົ້າໃສ່ {name}
+staff_deactivate_named	ເອົາອອກ {name}
+staff_renamed	ບັນທຶກຊື່ແລ້ວ
+staff_setup_copied_hire	ການຕິດຕັ້ງສຳເນົາມາຈາກ {name} — ຕັ້ງຊື່ໃໝ່ ແລະ PIN, ຈາກນັ້ນເພີ່ມພະນັກງານ
+staff_setup_copied_edit	ສຳເນົາການຕັ້ງຄ່າຂອງ {from} ໄປໃສ່ {to}
+staff_copy_need_selected	ເລືອກຜູ້ທີ່ຈະແກ້ໄຂກ່ອນ
+staff_copy_need_source	ເລືອກວ່າຈະສຳເນົາການຕັ້ງຄ່າໃຜ
+staff_copy_same	ນັ້ນແມ່ນຄົນດຽວກັນ - ເລືອກຄົນອື່ນ
+staff_rename_need_selected	ເລືອກຜູ້ທີ່ຈະປ່ຽນຊື່ກ່ອນ
+team_pick_hint	ເລືອກວ່າໃຜຈະແກ້ໄຂ — ໜ້າຈໍ, ສິດເງິນ, ແລະສະຖານີຈະປາກົດໃຫ້ບຸກຄົນນັ້ນເທົ່ານັ້ນ.
+team_stations_help	ສະຖານີທີ່ພວກເຂົາອາດຈະໃຊ້
+team_stations_changed	ປ່ຽນສະຖານີ — ບັນທຶກການຕັ້ງຄ່າສຳລັບບຸກຄົນນີ້
+team_features_changed	ປ່ຽນໜ້າຈໍ — ບັນທຶກການຕັ້ງຄ່າສຳລັບບຸກຄົນນີ້
+team_rights_changed	ສິດທິຖືກປ່ຽນແປງ — ບັນທຶກການຕັ້ງຄ່າສຳລັບບຸກຄົນນີ້
+they_owe_us	ພວກເຂົາເປັນໜີ້ພວກເຮົາ
+unit_at_cap	ໜ່ວຍ @
+units_help	ລະຫັດສໍາລັບປ້າຍລາຍການ (ກິໂລ, ສິ້ນ, ຖົງ). ທຸກໆຫນ່ວຍຕ້ອງເຊື່ອມຕໍ່ - ໂດຍກົງຫຼືຜ່ານຫນ່ວຍອື່ນໆ - ກັບມາດຕະຖານ (kg · cm · ml · pc), e.g. 1 ກ່ອງ = 2 ກ່ອງ ແລະ 1 ກ່ອງ = 20 ຊມ. ການແປງ: 1 ຈາກ = ປັດໄຈເປັນ. ສະກຸນເງິນບໍ່ເຄີຍເປັນຫົວໜ່ວຍ.
+units_picker_help	ແຕະເປີດ/ປິດເພື່ອສະແດງຫົວໜ່ວຍໃນຕົວເລືອກຊື້ ແລະລາຍການ. ຫນ່ວຍປິດຍັງແປງ.
+unit_picker_on	ສຸດ
+unit_picker_off	ປິດ
+we_owe_them	ພວກເຮົາເປັນໜີ້ເຂົາເຈົ້າ
+who_unlocking	ໃຜກຳລັງປົດລັອກ?
+locked_word	ລັອກ
+show_pin	ສະແດງ PIN
+hide_pin	ເຊື່ອງ PIN
+set_owner_pin	ຕັ້ງເຈົ້າຂອງ PIN
+enter_owner_passcode	ໃສ່ລະຫັດເຈົ້າຂອງ
+enter_staff_passcode	ໃສ່ລະຫັດພະນັກງານ
+pin_count_zero	0 / 12 ຕົວເລກ · ຢ່າງຫນ້ອຍ 4, ຫຼັງຈາກນັ້ນ OK
+pin_count_need	{} / 12 ຕົວເລກ · ຕ້ອງການ {} ເພີ່ມເຕີມ
+pin_count_full	12/12 ຕົວເລກ · ກົດ OK
+pin_count_ready	{} / 12 ຕົວເລກ · ກົດ OK ເມື່ອພ້ອມ
+pin_hint_choose	ເລືອກ 4–12 ຕົວເລກ · ປ້ອນ ຫຼື ປົດລັອກເພື່ອບັນທຶກ
+pin_hint_new	ເຈົ້າຂອງໃໝ່ 4-12 ຕົວເລກ PIN · ປ້ອນ ຫຼື ປົດລັອກ
+pin_hint_shop_code	ຊື້ອຸປະກອນ · ລະຫັດການຈັບຄູ່ {}
+pin_hint_books	ອຸປະກອນນີ້ຖືປື້ມ
+pin_hint_paired	ພິເສດຈົນກວ່າຈະຈັບຄູ່ — ປົດລັອກເພື່ອຂາຍ
+pin_hint_pair_first	ພິເສດຈົນຮອດ — ຈັບຄູ່ກັບອຸປະກອນຮ້ານຄ້າກ່ອນ
+unlock_to_continue	ປົດລັອກເພື່ອສືບຕໍ່
+no_staff_yet	ບໍ່ມີພະນັກງານເທື່ອ — ປົດລັອກເປັນເຈົ້າຂອງ, ຈາກນັ້ນທີມງານ
+status_server_set_pin	ໂໝດເຊີບເວີ - ຕັ້ງເຈົ້າຂອງ PIN
+status_server_tills	ໂຫມດເຊີບເວີ - tills ພິເສດສາມາດເຂົ້າຮ່ວມ. ປົດລັອກ
+status_server_unlock	ໂໝດເຊີບເວີ — ປົດລັອກເປັນເຈົ້າຂອງ
+status_client_unlock	ໂໝດລູກຄ້າ — ປົດລັອກເພື່ອຂາຍ
+icon_new_selected	ໄອຄອນ: ເລືອກໄຟລ໌ໃໝ່ — ແຕະ Save brand
+icon_custom	ໄອຄອນ: ເຄື່ອງໝາຍສະຖານທີ່ກຳນົດເອງ
+icon_default	ໄອຄອນ: Kumkaj ໝາຍ (ຄ່າເລີ່ມຕົ້ນ) — ເລືອກອັນທີ່ກຳນົດເອງ
+logo_yours	ໂລໂກ້: ໂລໂກ້ຮ້ານຂອງເຈົ້າ — ສະແດງຢູ່ໃນໜ້າຈໍ ແລະໃບຮັບເງິນ
+logo_default	ໂລໂກ້: Kumkajເຄື່ອງໝາຍ (ຄ່າເລີ່ມຕົ້ນ) — ເລືອກຂອງທ່ານເອງ ຖ້າເຈົ້າມີ
+tmpl_current	ປັດຈຸບັນ: {} — {}
+tmpl_selected	ເລືອກແລ້ວ: {} — {}
+setup_complete	ສຳເລັດການຕັ້ງຄ່າ
+onboard_fresh_tmpl	ສົດ · {} — ລາຍການເລີ່ມຫວ່າງເປົ່າ; ເພີ່ມລາຍການໃນລາຍການ, ຈາກນັ້ນສຳເລັດ.
+onboard_book_tmpl	ປຶ້ມ · {} — ເພີ່ມລາຍການ ແລະເປີດເຄຣດິດ, ຈາກນັ້ນສຳເລັດ.
+onboard_template_tmpl	ຊື່ສະຖານທີ່ຖ້າທ່ານຕ້ອງການ, ຫຼັງຈາກນັ້ນເລືອກວິທີການເລີ່ມຕົ້ນ.
+tmpl_blurb	Kirana counter: ຂາຍ, ຫຼັກຊັບ, khata, ຜູ້ສະຫນອງການຊື້, ປື້ມ.
+tmpl_how	ຂາຍຢູ່ເຄົາເຕີ; ຊື້ສໍາລັບຫຼັກຊັບ; ປື້ມສໍາລັບປື້ມມື້.
+reports_facet_title	ບົດລາຍງານ
+reports_facet_help	ປຶ້ມມື້, ອາຍຸລູກຄ້າ ຫຼືຜູ້ສະໜອງ, ໄປສະນີທະນາຄານ, ແລະໄລຍະເວລາ P&L.
+against_bill_ph	ຕໍ່ກັບໃບບິນ # ຂ້າງເທິງ (ທາງເລືອກ)
+aliases_ph	ລະຫັດສັ້ນ ແລະນາມແຝງ — ແຍກເຄື່ອງໝາຍຈຸດ (ເຊັ່ນ: MG02, atta)
+amount_blank_full_ph	ຈຳນວນ (ຫວ່າງເປົ່າ = ຍອດເງິນເຕັມ)
+amount_owed_ph	ຈຳນວນທີ່ຕິດຄ້າງ
+amount_ph	ຈໍານວນ
+amount_received_ph	ຈຳນວນທີ່ໄດ້ຮັບ
+amount_we_pay_ph	ຈຳນວນທີ່ພວກເຮົາຈ່າຍ
+business_name_ph	ຊື່ທຸລະກິດ
+category_new_ph	ໝວດໝູ່ (ເລືອກໄດ້, ສ້າງຖ້າໃໝ່)
+code_bag_ph	ລະຫັດ (ຖົງ)
+conv_factor_ph	ປັດໄຈ (25 = 1 ຖົງ → 25 ກິໂລ)
+country_code_ph	ລະຫັດປະເທດເຊັ່ນ: IN, GB, US, AE, BR
+credit_khata_amount_ph	ຈໍານວນສິນເຊື່ອ / ບັນຊີລາຍການສິນເຊື່ອ
+credit_limit_ph	ວົງເງິນສິນເຊື່ອ (0 = none)
+from_code_ph	ຈາກລະຫັດ (ຖົງ)
+item_name_lang_ph	ຊື່ລາຍການ — ພິມເປັນພາສາຂອງເຈົ້າ
+login_id_opt_ph	ຊື່ຜູ້ໃຊ້ (ຕ້ອງການ, ເປັນເອກະລັກ)
+manager_pin_ph	ຜູ້ຈັດການ PIN ອະນຸມັດ (ພຽງແຕ່ຖ້າທ່ານບໍ່ສາມາດໂມໂຫໄດ້)
+new_branch_name_ph	ຊື່ສາຂາໃໝ່
+new_password_ph	ລະຫັດຜ່ານໃໝ່ (ທາງເລືອກ)
+new_pin_ph	ໃໝ່ PIN (4–12 ຕົວເລກ)
+note_bank_ph	ໝາຍເຫດ (ຝາກ, ຖອນ,…)
+note_buy_expense_ph	ໝາຍເຫດ (ນໍ້າມັນ, ຄ່າເຊົ່າ,…)
+note_expense_ph	ຫມາຍເຫດ (ນໍ້າມັນ, ຫ້ອງການ, ... )
+options_kirano_ph	ຕົວເລືອກ — ຂະໜາດ*: ນ້ອຍ=199, ໃຫຍ່=399 | Toppings+3: Cheese=40, Olive=30 | ເນີຍແຂງ = 40
+part_second_way_ph	ສ່ວນໂດຍວິທີທີສອງ (ທາງເລືອກ)
+phone_ph	ໂທລະສັບ
+place_name_ph	ຊື່ຂອງສະຖານທີ່ນີ້
+qty_example_ph	ຈໍານວນ (ເຊັ່ນ: 1.5 ສໍາລັບກິໂລ)
+quantity_ph	ປະລິມານ
+reason_required_ph	ເຫດຜົນ (ຕ້ອງການ)
+role_title_ph	ຊື່ບົດບາດ (ເຊັ່ນ: Barista)
+service_pct_ph	ການບໍລິການ % ທາງເລືອກ 0/10/12
+short_code_ph	ລະຫັດສັ້ນ (MG02)
+starting_password_ph	ເລີ່ມລະຫັດຜ່ານ (ທາງເລືອກ)
+starting_pin_ph	ເລີ່ມຕົ້ນ PIN (4–12 ຕົວເລກ)
+station_name_ph	ຊື່ສະຖານີ (ທາງເລືອກ)
+station_new_ph	ພາກສ່ວນ (ທາງເລືອກ)
+table_name_ph	Counter / ຊື່ Bay
+tax_rate_ph	ຊື່ອັດຕາພາສີ ຫຼື % — ມາດຕະຖານ, ຫຼຸດ, 0, 5, 12, 18, 20
+to_code_ph	ລະຫັດ (kg)
+uncleared_no_ph	ບໍ່ຈະແຈ້ງ # ຂ້າງເທິງ
+unit_cost_ph	ຄ່າໃຊ້ຈ່າຍຕໍ່ຫນ່ວຍ
+unit_name_bag_ph	ຊື່ (ຖົງ)
+unit_plate_ph	ຫນ່ວຍງານ (ແຜ່ນ / pc — ເປົ່າ = ແຕ່ລະ)
+pay_credit	ໃນບັນຊີ
+book_kind_today	ປຶ້ມມື້ນີ້
+book_kind_month	ປຶ້ມເດືອນນີ້
+book_kind_aging	ດີເດັ່ນ / ເດບິດ - ສິນເຊື່ອ
+book_kind_balance	ໃບດຸ່ນດ່ຽງ
+order_help	ແຕະໃສ່ລາຍການເພື່ອເພີ່ມມັນ.
+floor_help	ຮ້ານນີ້ຂາຍຢູ່ເຄົາເຕີ. ໂຕະແລະຊັ້ນຮັບປະທານອາຫານບໍ່ແມ່ນສ່ວນຂອງ Kirano.
+kitchen_help	ບໍ່ໄດ້ໃຊ້ໃນຮ້ານເຄົາເຕີ.
+kitchen_empty	ບໍ່ມີປີ້ເປີດ (ປົກກະຕິແລ້ວຮ້ານເຄົາເຕີອອກຈາກຫນ້າຈໍນີ້ບໍ່ໄດ້ໃຊ້).
+add_a_table	ເພີ່ມໂຕະກິນເຂົ້າ
+add_station_heading	ເພີ່ມພາກສ່ວນຮ້ານຄ້າ
+categories_help	ແຕະໃຊ້ເພື່ອຍື່ນລາຍການຂ້າງເທິງພາຍໃຕ້ໝວດໝູ່ນັ້ນ. ຮູບພາບເຮັດໃຫ້ປະເພດຮູບພາບ; ໂດຍບໍ່ມີການຫນຶ່ງມັນສະແດງໃຫ້ເຫັນເບື້ອງຕົ້ນຂອງມັນ.
+dish_search_ph	ຊອກຫາລາຍການ ຫຼືລະຫັດສັ້ນ...
+tile_free	ຫວ່າງ
+tile_occupied	ຄອບຄອງ
+tile_food_ready	ອາຫານພ້ອມ
+tile_bill_printed	ພິມໃບບິນແລ້ວ
+tile_paid	ຈ່າຍແລ້ວ
+tile_bill_btn	ໃບບິນ
+tile_occupy_btn	ບ່ອນນັ່ງແຂກ
+tile_free_btn	ອອກຈາກໂຕະກິນເຂົ້າ
+tile_ready_btn	ອອກຈາກໂຕະກິນເຂົ້າ
+tile_undo_bill	ຍົກເລີກໃບບິນ
+summary_busy	ໂຕະກິນເຂົ້າບໍ່ຫວ່າງ
+summary_to_collect	ເກັບກໍາ
+summary_on_floor	ໃນຫ້ອງຮັບປະທານອາຫານ
+floor	ຮ້ານຄ້າ
+sizes_as_items_ph	ຂະໜາດເປັນລາຍການແຍກຕ່າງຫາກ (ທາງເລືອກ) — Half=120, Full=200
+dish_group_ph	ກຸ່ມຂະໜາດບັນຈຸ (ທາງເລືອກ) — ຕົວຢ່າງ: Atta 1kg / 5kg
+discount	ສ່ວນຫຼຸດ
+remove_discount	ເອົາສ່ວນຫຼຸດ
+apply_discount	ນຳໃຊ້ສ່ວນຫຼຸດ
+save_opening_cash	ປະຢັດເງິນເປີດ
+close_shift_print	ປິດ shift ແລະພິມ slip
+area_prices_ph	ລາຄາພື້ນທີ່ (ທາງເລືອກ) — AC=220, Parcel=210
+discount_ph	10% ຫຼື 50
+discount_reason_ph	ເຫດຜົນ (ເຊັ່ນ: ແຂກປະຈຳ, ອາຫານມາຊ້າ)
+opening_float_ph	ເອົາເງິນສົດໃສ່ໃນລິ້ນຊັກໃນຕອນເຊົ້ານີ້
+shift_counted_ph	ເງິນສົດນັບຢູ່ໃນການມອບ
+opening_float	ເປີດເງິນສົດ (ເລື່ອນ)
+shift_handover	ການໂອນຍ້າຍ
+shift_since	ການປ່ຽນແປງນີ້ນັບຕັ້ງແຕ່
+expected_in_drawer	ຄາດວ່າຈະຢູ່ໃນລິ້ນຊັກ
+right_discount	ໃຫ້ສ່ວນຫຼຸດ
+floor_in_kitchen	ກຳລັງດຳເນີນຢູ່
+floor_eating	ໃຫ້ບໍລິການ
+pick_category	ເລືອກປະເພດ
+close_category_list	ປິດລາຍຊື່ໝວດໝູ່
+new_category_row	ໝວດໝູ່ໃໝ່ — ສ້າງເມື່ອທ່ານບັນທຶກລາຍການ
+your_category	ໝວດໝູ່ຂອງເຈົ້າ
+suggested_category	ແນະນຳ - ຈາກລາຍການຂອງພວກເຮົາ
+category_search_ph	ໝວດໝູ່ — ຊອກຫາຂອງທ່ານ ຫຼືພິມອັນໃໝ່
+line_sent_state	ສົ່ງແລ້ວ
+line_nc_state	ບໍ່ເສຍຄ່າ (NC) — ບໍ່ຄິດຄ່າບໍລິການ
+cancel_item_short	ຍົກເລີກ
+nc_short	ບໍ່ມີຄ່າໃຊ້ຈ່າຍ
+charge_again_short	ຄ່າບໍລິການ
+move_short	ຍ້າຍ
+cancel_item_title	ຍົກ​ເລີກ​ລາຍ​ການ​ນີ້ — back office ຈະ​ໄດ້​ຮັບ​ໃບ​ຍົກ​ເລີກ​
+nc_item_title	ເຮັດໃຫ້ລາຍການນີ້ເປັນຟຣີ (NC)
+charge_again_title	ຮຽກເກັບລາຍການນີ້ອີກຄັ້ງ
+move_item_title	ຍ້າຍລາຍການນີ້ໄປຫາໂຕະອາຫານອື່ນ
+already_cooked	ປຸງ​ແຕ່ງ​ແລ້ວ (ເສຍ​ຫາຍ​)
+not_cooked_yet	ຍັງບໍ່ໄດ້ປຸງແຕ່ງເທື່ອ
+return_to_customer	ກັບຄືນຫາລູກຄ້າ
+short_by	ສັ້ນໂດຍ
+tip_not_sale	ຄໍາແນະນໍາ (ຂອງພະນັກງານ, ບໍ່ແມ່ນການຂາຍ)
+right_settle	ເອົາການຈ່າຍເງິນ
+right_cancel_sent	ຍົກເລີກລາຍການທີ່ສົ່ງ
+right_complimentary	ຟຣີ (NC)
+right_move_table	ຍ້າຍ / merge counters
+right_reprint	ພິມໃບບິນອີກເທື່ອຫນຶ່ງ
+right_allowed	ອະນຸຍາດ
+right_with_approval	ດ້ວຍການອະນຸມັດ
+right_denied	ບໍ່ອະນຸຍາດ
+editing_staff	ການແກ້ໄຂ
+finding_server	ກຳລັງຊອກຫາເຊີບເວີຂອງຮ້ານໃນນີ້ Wi‑Fi…
+no_server_found	ບໍ່ພົບ. ຢູ່ໃນເຊີບເວີ: ການຕັ້ງຄ່າ → ອຸປະກອນອື່ນ → ອະນຸຍາດໃຫ້ມີ tills ເພີ່ມເຕີມ (ດຽວກັນ Wi‑Fi). ຫຼືພິມ IP ທີ່ສະແດງຢູ່ທີ່ນັ້ນ.
+servers_found_pick	ແຕະຮ້ານທີ່ທ່ານຕ້ອງການເຊື່ອມຕໍ່.
+server_host_selected	ການໃຊ້ {host} — ໃສ່ລະຫັດການຈັບຄູ່, ຈາກນັ້ນຈັບຄູ່ດຽວນີ້.
+print_bill	ພິມໃບບິນ
+table_actions	ການ​ປະ​ຕິ​ບັດ​ຕ້ານ
+move_merge_table	ຍ້າຍ / merge ຕາຕະລາງ dining
+move_help	ຍ້າຍຄໍາສັ່ງຂອງເຄົາເຕີນີ້ໄປຫາຕາຕະລາງຟຣີ, ຫຼືລວມມັນເຂົ້າໄປໃນຫນຶ່ງແລ່ນ.
+move_target_ph	ຊື່ເຄົາເຕີ
+approval_pin_ph	ຜູ້ຈັດການ PIN (ພຽງແຕ່ຖ້າຖາມ)
+move_here	ຍ້າຍທີ່ນີ້
+merge_into	ຮວມເຂົ້າໄປໃນມັນ
+line_reason_ph	ເຫດຜົນ (ເຊັ່ນ: ລູກຄ້າປ່ຽນໃຈ, ບໍ່ມີສິນຄ້າ)
+line_qty_ph	ຈໍານວນເທົ່າໃດທີ່ຈະຍົກເລີກ (ເປົ່າ = ທັງຫມົດ)
+line_target_ph	ຍ້າຍໄປໂຕະກິນເຂົ້າ (ເຊັ່ນ: D5)
+confirm	ຢືນຢັນ
+menu_search_ph	ຊອກຫາລາຍການ ຫຼືລະຫັດສັ້ນ
+customer_paid_ph	ລູກຄ້າຈ່າຍແລ້ວ
+tip_ph	ເຄັດລັບ
+table_area_ph	ພື້ນທີ່ (ເຊັ່ນ: Dine In, Parcel, AC)
+table_range_ph	ຫຼາຍຄັ້ງ: D1-D20
+add_these_tables	ເພີ່ມຕົວນັບເຫຼົ່ານີ້
+remove_these_tables	ເອົາເຄື່ອງນັບເຫຼົ່ານີ້ອອກ
+table_remove_ph	ເອົາອອກ: T1-T24, ຫຼືຫນຶ່ງຊື່ຂອງຕາຕະລາງ dining
+find_server	ຊອກຫາເຄື່ອງແມ່ຂ່າຍຂອງຮ້ານ
+bill_format	ຮູບແບບໃບບິນ
+bill_format_help	ພິມພາຍໃຕ້ຊື່ຮ້ານຂອງທ່ານໃນທຸກໃບບິນ. ແຍກສາຍດ້ວຍ | (ເຊັ່ນ: MG Road, Rajkot | Ph 98250 00000).
+bill_header_ph	ທີ່ຢູ່ | ໂທລະສັບ
+fssai_ph	FSSAI / ໃບອະນຸຍາດຮ້ານຄ້າ No. (ທາງເລືອກ)
+bill_footer_ph	ສ່ວນທ້າຍ (ເຊັ່ນ: ຂອບໃຈ, ເຂົ້າເບິ່ງອີກຄັ້ງ)
+save_bill_format	ບັນທຶກຮູບແບບໃບບິນ
+kot_format	ຮູບແບບເລື່ອນ
+kot_format_help	ແຕະໃສ່ພາກສະຫນາມໃນບັນຊີລາຍຊື່. ການສະແດງ, ຂະໜາດຕົວອັກສອນ ແລະນ້ຳໜັກນຳໃຊ້ກັບຊ່ອງຂໍ້ມູນນັ້ນຢູ່ໃນປະເພດສະໄລ້ທີ່ເລືອກໄວ້ຂ້າງເທິງ. ແຕ່ລະປະເພດຮັກສາຂະຫນາດແລະນ້ໍາຫນັກຂອງຕົນເອງ.
+kot_format_fields	ທົ່ງນາ
+kot_field_next	ພາກສະຫນາມຕໍ່ໄປ
+kot_field_show	ສະແດງ
+kot_field_hide	ເຊື່ອງ
+kot_field_on	ສະແດງໃຫ້ເຫັນ
+kot_field_off	ເຊື່ອງ
+kot_field_size	ຂະຫນາດຕົວອັກສອນ
+kot_field_size_ph	ຕົວຢ່າງ: 16, 20, 24, 28, 32…
+kot_weight_light	ແສງສະຫວ່າງ
+bill_kot_panel_help	ຮູບແບບໃບບິນແລະຄວາມກວ້າງຂອງເນື້ອຫາ. Cashier ແມ່ນຜູ້ທີ່ອອກຫຼືຕົກລົງບັນຊີລາຍການ - ເລື່ອງການຂາຍເຕັມຢູ່ໃນປື້ມ.
+std_size_ph	ຕົວຢ່າງ: 18, 20, 26…
+kot_show_shop	ຊື່ຮ້ານ
+kot_hide_shop	ເຊື່ອງຮ້ານຄ້າ
+kot_show_time	ເວລາ
+kot_hide_time	ເຊື່ອງເວລາ
+kot_show_waiter	ພະນັກງານເກັບເງິນ
+kot_hide_waiter	ເຊື່ອງພະນັກງານເກັບເງິນ
+kot_show_station	ສະຖານີ
+kot_hide_station	ເຊື່ອງສະຖານີ
+kot_show_table	ເຄົາເຕີ
+kot_hide_table	ເຊື່ອງໂຕະກິນເຂົ້າ
+kot_show_kot_no	ປີ້ No
+kot_hide_kot_no	ເຊື່ອງປີ້ No
+kot_width	ຕົວຢ່າງ wrap (ຕັ້ງຄວາມກວ້າງຂອງເນື້ອຫາຢູ່ໃນແຖບເລື່ອນ)
+kot_width_58	58 mm
+kot_width_80	80 mm
+kot_kind_heading	ປະເພດປີ້
+kot_kind_original	ຕົ້ນສະບັບ
+kot_kind_duplicate	ຊໍ້າກັນ
+kot_kind_modified	ດັດແກ້
+kot_kind_cancelled	ຍົກເລີກ
+kot_style_heading	ຂະໜາດ ແລະນ້ຳໜັກປະເພດສະໜາມ
+kot_style_title	ຫົວຂໍ້
+kot_style_item_qty	ລາຍການ · ຈຳນວນ
+kot_style_field_pick	ເລືອກຊ່ອງຂໍ້ມູນ
+kot_weight_regular	ປົກກະຕິ
+kot_weight_bold	ກ້າຫານ
+kot_align	ຈັດຮຽງ
+kot_align_start	ເລີ່ມ
+kot_align_center	ສູນ
+kot_align_end	ຈົບ
+content_width	ຄວາມກວ້າງຂອງເນື້ອຫາ (ມມ)
+content_width_bill	ຄວາມກວ້າງຂອງເນື້ອໃນໃບບິນ (ມມ)
+content_width_kot	ຄວາມກວ້າງຂອງເນື້ອໃນປີ້ (ມມ)
+content_width_ph	ຫຼືພິມຄວາມກວ້າງຂອງເນື້ອຫາ, 40–210 ມມ
+content_width_help	ແຜ່ນນີ້ພິມກວ້າງເທົ່າໃດ. ໃບເກັບເງິນຮັກສາຄວາມກວ້າງຂອງຕົນເອງ.
+content_width_bill_help	ພິມໃບບິນລູກຄ້າກວ້າງເທົ່າໃດ. ຄ່າເລີ່ມຕົ້ນ 210 ມມ (ໜ້າ). ເລື່ອນແຄບ 58 ມມ, ກວ້າງ 80 ມມ, ກວ້າງ 112 ມມ 4 ນິ້ວ, ກວ້າງ 210 ມມ A4. ພິມຄ່າໃດໆກໍຕາມຈາກ 40 ຫາ 210. ປີ້ມີຄວາມກວ້າງຂອງຕົນເອງຢູ່ໃນແຖບເລື່ອນ.
+content_width_kot_help	ປີ້ພິມກວ້າງເທົ່າໃດ. ຄ່າເລີ່ມຕົ້ນ 80 ມມ. ເລື່ອນແຄບ 58 mm, slip ກວ້າງ 80 mm, 112 mm 4 ນິ້ວ, 210 mm. ພິມຄ່າໃດໆກໍຕາມຈາກ 40 ຫາ 210. ໃບບິນລູກຄ້າມີຄວາມກວ້າງຂອງຕົນເອງຢູ່ໃນແຖບໃບບິນ.
+vp_paper_width	ຄວາມກວ້າງຂອງເນື້ອຫາ (ມມ)
+vp_paper_width_ph	ຫຼືພິມຄວາມກວ້າງຂອງເນື້ອຫາ, 40–210 ມມ
+vp_paper_width_help	ຄວາມກວ້າງຂອງເນື້ອຫາຖືກຕັ້ງຢູ່ພາຍໃຕ້ຮູບແບບ Bill & Slip — ແຍກຕ່າງຫາກສໍາລັບໃບບິນ (ຄ່າເລີ່ມຕົ້ນ 210 ມມ) ແລະປີ້ (ຄ່າເລີ່ມຕົ້ນ 80 ມມ).
+kot_size	ຂະຫນາດຕົວອັກສອນ
+kot_size_s	ຂະຫນາດນ້ອຍ
+kot_size_m	ປົກກະຕິ
+kot_size_l	ຂະຫນາດໃຫຍ່
+std_size	ຂະຫນາດຕົວອັກສອນ
+kot_copies	ສຳເນົາ
+kot_copies_1	1
+kot_copies_2	2
+kot_copies_3	3
+kot_title_ph	ຫົວຂໍ້ (ເປົ່າ = ປີ້)
+kot_footer_ph	ບັນທຶກສໍານັກງານຫຼັງ (ທາງເລືອກ)
+kot_preview	ເບິ່ງຕົວຢ່າງ
+save_kot_format	ບັນທຶກຮູບແບບ Slip
+test_kot_format	ທົດສອບການພິມ
+test_kot_sent	ສົ່ງຕົວຢ່າງປີ້ແລ້ວ
+test_bill_format	ໃບບິນທົດສອບ
+test_bill_sent	ສົ່ງຕົວຢ່າງໃບບິນແລ້ວ
+test_print_no_printer	ບໍ່ມີເຄື່ອງພິມສຳລັບວຽກນັ້ນ — ເລືອກອັນໜຶ່ງໃນໜ້າຈໍນີ້
+kot_format_saved	ບັນທຶກຮູບແບບ Slip ແລ້ວ
+std_print	ຂະໜາດພິມໃບບິນ
+std_print_help	ຂະໜາດຕົວອັກສອນສຳລັບວຽກໃບເກັບເງິນມາດຕະຖານຮູບຄົນ ແລະພູມສັນຖານໃນເຄື່ອງພິມ OS / ເອກະສານ (ໃສ່ຈຸດ — ບໍ່ແມ່ນຂະໜາດນ້ອຍ/ທຳມະດາ/ໃຫຍ່). ຂະຫນາດດຽວກັນໃນທັງສອງທິດທາງ.
+std_size_s	ຂະຫນາດນ້ອຍ
+std_size_m	ປົກກະຕິ
+std_size_l	ຂະຫນາດໃຫຍ່
+save_std_print	ບັນທຶກຂະໜາດການພິມໃບບິນ
+std_print_saved	ບັນທຶກຂະໜາດພິມໃບບິນແລ້ວ
+print_brand_kit	ພິມຊຸດຍີ່ຫໍ້
+print_brand_kit_help	ສະແຕມທາງເລືອກແລະຮູບ QR ການຈ່າຍເງິນໃນໃບບິນໃບບິນແລະການສະແດງລູກຄ້າ LAN. Dynamic UPI QR ຈາກ VPA ຂ້າງເທິງຍັງໃຊ້ໄດ້ເມື່ອບໍ່ມີການຕັ້ງຮູບ QR ການຈ່າຍເງິນ.
+choose_stamp	ເລືອກສະແຕມ
+clear_stamp	ລ້າງສະແຕມ
+stamp_set	ສະແຕມ: ຢູ່ໃນເອກະສານ — ສະແດງຢູ່ໃນການສະແດງຂອງລູກຄ້າ ແລະຕັ້ງຊື່ຢູ່ໃນໃບບິນທີ່ພິມອອກ
+stamp_none	ສະແຕມ: ບໍ່ມີ
+choose_payment_qr	ເລືອກ QR ການຈ່າຍເງິນ
+clear_payment_qr	ລຶບລ້າງ QR ການຈ່າຍເງິນ
+payment_qr_set	ການ​ຊໍາ​ລະ QR​: ໃນ​ໄຟລ​໌ — ສະ​ແດງ​ໃຫ້​ເຫັນ​ຢູ່​ໃນ​ການ​ສະ​ແດງ​ຂອງ​ລູກ​ຄ້າ (ແທນ​ທີ່​ຈໍາ​ນວນ UPI QR ທີ່​ນັ້ນ​)
+payment_qr_none	ການຈ່າຍເງິນ QR: ບໍ່ມີ — ຈຳນວນ QR ຈາກ UPI ID ເມື່ອຈ່າຍເງິນ
+aggregator_import	ຄໍາສັ່ງລວມ (ໄຟລ໌)
+aggregator_import_help	ທາງເລືອກໃນການນໍາເຂົ້າໃນທ້ອງຖິ່ນ: ໃສ່ import_aggregator_orders.json ໃນໂຟເດີສຳຮອງ (ອາເຣ ຫຼື {"orders":[…]}), ຈາກນັ້ນແຕະທີ່ນໍາເຂົ້າ. ບໍ່ເຄີຍຂັດຂວາງເຄົາເຕີ; ສົດ Zomato/Swiggy ແມ່ນຄລາວ.
+import_aggregator_file	ນໍາເຂົ້າໄຟລ໌ລວບລວມ
+team_pick_ph	ພະນັກງານແກ້ໄຂ — ຊື່, ຊື່ຜູ້ໃຊ້, ຫຼືເລືອກ
+select_staff	ເລືອກພະນັກງານນີ້
+rights_help	ການດໍາເນີນການເງິນສໍາລັບບຸກຄົນນີ້ — ແຕະເພື່ອວົງຈອນ: ອະນຸຍາດ → ຕ້ອງການ PIN ຂອງນາຍຈ້າງ → ບໍ່ອະນຸຍາດ. ພິມໃບບິນອີກເທື່ອຫນຶ່ງແມ່ນໃບບິນຄ່າເທົ່ານັ້ນ; ພາກສ່ວນແມ່ນລາຍການກວດກາຂ້າງລຸ່ມນີ້.
+dish_picker_help	ຊອກຫາ ຫຼືຊອກຫາລາຍການຂອງພວກເຮົາ ແລະແຕະໃສ່ອັນໜຶ່ງເພື່ອຕື່ມໃສ່ຊື່ ແລະຮູບຂອງມັນ — ຫຼືຮັກສາຊື່ຂອງເຈົ້າເອງ. ຕັ້ງລາຄາຂອງທ່ານ (0 ແມ່ນດີ), ຫຼັງຈາກນັ້ນເພີ່ມລາຍການ.
+close_dish_list	ປິດລາຍຊື່ລາຍການ
+own_item_name	ໃຊ້ນີ້ເປັນຊື່ລາຍການຂອງທ່ານເອງ
+on_your_menu	ໃນລາຍການ
+edit	ແກ້ໄຂ
+schemes	ແຜນງານ / ຂໍ້ສະເໜີ
+schemes_help	ຊື້-ຮັບ-ຫນຶ່ງ, ສ່ວນຫຼຸດ, ແລະຊຸດຄົງທີ່. ຕົວຢ່າງ: ຊື້ເຂົ້າ 2 ແຖມ 1 ນ້ຳມັນ.
+scheme_bogo_ph	ຊື້ເຂົ້າ 2 ແຖມ 1 ນ້ຳມັນ
+add_scheme	ເພີ່ມ BOGO
+schedule_ph	ຊົ່ວໂມງ — ຈັນ-ສຸກ 07:00-11:00 ໂມງ ຫຼື ຕອນແລງ 17:00-19:00=150
+upi_vpa_ph	UPI ID (VPA)
+upi_payee_ph	UPI ຊື່ຜູ້ຮັບເງິນ (ເລືອກໄດ້)
+upi_qr	UPI QR
+show_upi_qr	ສະແດງ UPI QR
+close_upi_qr	ປິດ
+upi_qr_help	ລູກຄ້າສະແກນ ແລະຈ່າຍເງິນ. ແຕະເອົາການຈ່າຍເງິນຫຼັງຈາກທີ່ເຂົາເຈົ້າຈ່າຍ. ໜ້າຈໍທີສອງ: ເປີດ URL ເຊີບເວີ / ຈໍສະແດງຜົນເທິງ LAN.
+kot_recall	ຈື່
+recently_done	ເຮັດເມື່ອບໍ່ດົນມານີ້
+recall_kot_ph	ປີ້ # ເພື່ອຈື່
+role_help_customer	ພາລະບົດບາດ: ລູກຄ້າ - ບັນຊີບັນຊີສິນເຊື່ອ (ພວກເຂົາເປັນໜີ້ພວກເຮົາ). ລູກຄ້າດຽວກັນຫຼືຜູ້ສະຫນອງຍັງສາມາດສະຫນອງຫຼັກຊັບ.
+role_help_both	ພາລະບົດບາດ: ລູກຄ້າ + ຜູ້ສະຫນອງ - ລູກຄ້າຫນຶ່ງຫຼືຜູ້ສະຫນອງ, ບັນຊີລາຍການສິນເຊື່ອແລະບັນຊີລາຍການທີ່ຕ້ອງຈ່າຍ, ສຸດທິໃນບົດລາຍງານ.
+role_help_supplier	ບົດບາດ: ຜູ້ສະໜອງ - ພວກເຮົາຕິດໜີ້ເຂົາເຈົ້າສຳລັບການຊື້.
+dine_in_pick_table	ບໍ່ໄດ້ໃຊ້ໃນຮ້ານເຄົາເຕີ
+choose_table	ເລືອກ counter
+change_table	ປ່ຽນໂຕະກິນເຂົ້າ
+pick_table_banner	ເລືອກໂຕະອາຫານສຳລັບການສັ່ງນີ້
+items_word	ລາຍການ
+items_section	ລາຍການ
+back_to_order	ກັບໄປຫາຄໍາສັ່ງ
+new_items_head	ຍັງບໍ່ໄດ້ສົ່ງເທື່ອ
+price_ph	ລາຄາ
+price_ph_gst_inside	ລາຄາ ({tax} ລວມ)
+cancel_needs_table	ເຄົາເຕີຂາຍຈະຢູ່ໃນປີ້ຈົນກວ່າເຈົ້າຈະຈ່າຍເງິນ
+tax_rates_missing_hint	ບໍ່ມີອັດຕາ {tax} ໃນລາຍການເຫຼົ່ານີ້ — ໃນລາຍການທີ່ກໍານົດອັດຕາພາສີ (ລາຄາລວມ {tax} ພາຍໃຕ້ {tax} ແລ້ວ)
+taxable_value	ມູນຄ່າພາສີ
+gst_inside_price_note	({tax}ລວມ)
+start_with_template	ເລີ່ມຕົ້ນດ້ວຍແມ່ແບບລາຍການຂອງພວກເຮົາ
+template_heading	ລາຍການເລີ່ມຕົ້ນ
+template_info	ໝວດໝູ່ {c} ແລະລາຍການ {d} ທີ່ມີຮູບ, ພ້ອມທີ່ຈະເພີ່ມ. ລາຄາເລີ່ມຕົ້ນທີ່ ₹0 — ຕັ້ງຄ່າຕາມຫຼັງ.
+template_import	ນຳເຂົ້າແມ່ແບບທີ່ສົມບູນ
+template_confirm	ເພີ່ມລາຍການ {d} ດ້ວຍໝວດໝູ່ຂອງເຂົາເຈົ້າບໍ? ລາຍການທີ່ເຈົ້າມີຢູ່ແລ້ວຄືເກົ່າ.
+template_yes	ແມ່ນແລ້ວ, ນໍາເຂົ້າ
+template_importing	ກຳລັງນຳເຂົ້າລາຍການ...
+template_import_progress	ກຳລັງນຳເຂົ້າ… {d}/{t}
+template_done	ທຸກໆລາຍການຈາກແມ່ແບບຂອງພວກເຮົາແມ່ນຢູ່ໃນລາຍການຂອງທ່ານ.
+template_imported	ເພີ່ມລາຍການ {d} ແລະໝວດໝູ່ {c} — ຕັ້ງລາຄາຂອງພວກມັນຢູ່ໃນໜ້າຈໍນີ້
+client_template_heading	ນຳເຂົ້າລາຍການ
+client_template_info	{title}: ໝວດໝູ່ {c}, ລາຍການ {d} ທີ່ມີລາຄາ, ຮູບພາບ ແລະນາມແຝງ. ລາຍການທີ່ຂາດຫາຍໄປເທົ່ານັ້ນ — ຊື່ທີ່ທ່ານມີຢູ່ແລ້ວ.
+client_template_import	ນໍາເຂົ້າລາຍການເຫຼົ່ານີ້
+client_template_confirm	ເພີ່ມລາຍການ {d} ຈາກ {title} ບໍ? ລາຍການທີ່ເຈົ້າມີຢູ່ແລ້ວຄືເກົ່າ.
+client_template_importing	ກຳລັງນຳເຂົ້າ {title}…
+client_template_done	ທຸກໆລາຍການຈາກ {title} ແມ່ນຢູ່ໃນລາຍການຂອງທ່ານ.
+client_template_imported	ເພີ່ມລາຍການ {d} ແລະໝວດໝູ່ {c} ຈາກ {title}
+resv_heading	ການຈອງ
+resv_name_ph	ຊື່ລູກຄ້າ
+resv_phone_ph	ໂທລະສັບ (ທາງເລືອກ)
+resv_guests_ph	ຄົນ
+resv_when_ph	ເມື່ອ - 20:30, ມື້ອື່ນ 13:00
+resv_table_ph	ເຄົາເຕີ (ທາງເລືອກ)
+resv_add	ປື້ມບັນທຶກ
+resv_seat	ນັ່ງ
+resv_none	ບໍ່ມີການຈອງມາຮອດ.
+guests_word	ແຂກ
+delivery_by_ph	ການຈັດສົ່ງໂດຍ (ຜູ້ຂັບຂີ່ຫຼືຊື່ພະນັກງານ)
+kitchen_all_day	ແຕ່ງກິນດຽວນີ້: {items}
+split_bill	ແບ່ງໃບບິນ
+split_go	ສ້າງບັນຊີລາຍການແຍກຕ່າງຫາກ
+cancel	ຍົກເລີກ
+opening_client	ກຳລັງເປີດລູກຄ້າ...
+preparing_desk	ກຳລັງກະກຽມໂຕະ...
+opening_server	ກຳລັງເປີດເຊີບເວີ...
+creating_server	ກຳລັງສ້າງເຊີບເວີ...
+split_help	ແຕະລາຍການທີ່ລູກຄ້າຈ່າຍໃຫ້ · {n} ເລືອກ
+split_send_first	ສົ່ງໃບເກັບເງິນກ່ອນ - ສະເພາະລາຍການທີ່ຫ້ອງການມີເທົ່ານັ້ນທີ່ສາມາດໄປຫາໃບບິນແຍກຕ່າງຫາກໄດ້
+split_pick_some	ແຕະລາຍການສໍາລັບໃບບິນແຍກຕ່າງຫາກກ່ອນ
+split_done	ສ້າງໃບບິນແຍກຕ່າງຫາກ — ມັນຢູ່ເທິງພື້ນຖັດຈາກເຄົາເຕີນີ້
+split_marked	ໃບເກັບເງິນແຍກຕ່າງຫາກ
+order_empty_pick	ສັ່ງຫວ່າງເປົ່າ — ແຕະ ເພີ່ມລາຍການຂ້າງເທິງເພື່ອເລືອກລາຍການ.
+add_dishes	ເພີ່ມລາຍການ
+order_so_far	ໃນຄໍາສັ່ງນີ້: {n} · {total}
+no_dish_match	ບໍ່ມີລາຍການໃດກົງກັບ “{q}”
+pick_dishes_help	ແຕະໃສ່ລາຍການເພື່ອເພີ່ມມັນ · ເລືອກໝວດໝູ່ເພື່ອຈຳກັດລາຍຊື່
+pick_done	ສຳເລັດແລ້ວ
+pick_done_dd	ສຳເລັດແລ້ວ · {label}
+printer_route_mode	ຖ້າມີເຄື່ອງພິມຫຼາຍບ່ອນຢູ່ບ່ອນນີ້
+printer_mode_first	ທໍາອິດທີ່ເຮັດວຽກ
+printer_mode_all	ພິມທັງໝົດ
+kot_show_area	ພື້ນທີ່
+kot_hide_area	ເຊື່ອງພື້ນທີ່
+kot_show_item_hdr	ລາຍການ · ຈຳນວນ
+kot_hide_item_hdr	ເຊື່ອງຖັນ
+kot_show_title	ຫົວຂໍ້
+kot_hide_title	ເຊື່ອງຊື່
+kot_field_order	ພິມຄໍາສັ່ງ
+kot_field_up	ຍ້າຍຂຶ້ນ
+kot_field_down	ຍ້າຍລົງ
+kot_field_cycle	ເລືອກຕໍ່ໄປ
+kot_field_select	ເລືອກຕໍ່ໄປ
+kot_field_time	ເວລາ
+kot_field_kot_no	ປີ້ No
+kot_field_area	ພື້ນທີ່
+kot_field_table	ເຄົາເຕີ
+kot_field_shop	ຊື່ຮ້ານ
+kot_field_waiter	ພະນັກງານ
+kot_field_station	ສະຖານີ
+app_template_blurb_extra	ນອກຈາກນີ້: ເຈົ້າຂອງ Zahir, Admin Asif, Cashier Nawaz; ແຖບດ້ານຫນ້າ; ປະຫວັດສາດຫຼັງຈາກ 4 ຊົ່ວໂມງ; ມື້ນີ້ຖອດອອກ; ໃບເກັບເງິນກະທັດລັດ.
+dishes_n	ລາຍການ {n}
+recipe_ph	ສູດ (ເລືອກໄດ້ — ບໍ່ໄດ້ໃຊ້ໃນຮ້ານເຄົາເຕີ)
+reorder_ph	ຊື້ເພີ່ມເຕີມໄດ້ທີ່
+set_reorder	ຕັ້ງລະດັບການສັ່ງຄືນ
+low_stock_alert	ຫຼຸດລາຄາ - ຊື້ໄວໆນີ້: {items}
+unpriced_note	ລາຍການ {n} ໃນລາຍການຂອງທ່ານຍັງບໍ່ທັນມີລາຄາເທື່ອ — ພວກມັນເກັບເງິນຢູ່ທີ່ 0 ຈົນກວ່າທ່ານຈະຕັ້ງອັນໜຶ່ງ.
+show_unpriced	ສະແດງສະເພາະລາຍການທີ່ບໍ່ມີລາຄາ
+show_all_dishes	ສະແດງລາຍການທັງໝົດ
+role_waiter	ພະນັກງານເກັບເງິນ
+role_kitchen	ຮ້ານຄ້າ
+role_title_rest_ph	ຕຳແໜ່ງ (ເຊັ່ນ: ນາຍເຮືອ, ຫົວໜ້າຄົວ)
+preset_help_rest	Cashier: ຂາຍ. ຜູ້ຈັດການ: ຂາຍ + ລາຍການ + void / ດັດແກ້.
+kind_raw	ຊື້ເພື່ອໃຊ້ໃນຮ້ານ
+kind_resale	ຊື້ເພື່ອຂາຍ
+kind_dish	ບໍ່ນັບຫຼັກຊັບ
+buy_unit_ph	ຫນ່ວຍ (ກິໂລ, ລິດ, pcs)
+add_another_way	+ ເພີ່ມວິທີອື່ນ
+parts_status	ເຂົ້າໄປ {a} ຂອງ {b} · {c} ຊ້າຍ
+save_expense	ປະຫຍັດຄ່າໃຊ້ຈ່າຍ
+rest_ph	ພັກຜ່ອນ
+low_badge	ຕໍ່າ
+stock_empty	ບໍ່ມີຫຍັງຢູ່ໃນສະຕັອກ - ສິ່ງທີ່ທ່ານບັນທຶກໃນ Buy ປາກົດຢູ່ບ່ອນນີ້.
+recent_changes	ການປ່ຽນແປງທີ່ຜ່ານມາ
+lane_declared_label	ໃບເກັບພາສີ
+lane_owner_label	ບັນທຶກເງິນສົດ
+money_lane_bill	ໃບບິນ: {lane}

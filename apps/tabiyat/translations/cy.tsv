@@ -1,0 +1,1341 @@
+# Welsh — Cymraeg (cy). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	Cownter fferyllfa: meddyginiaethau, swp, khata a llyfrau. Am ddim all-lein.
+barcode_ph	Cod bar / EAN
+composition_ph	Halwyn / cyfansoddiad (chwiliadwy)
+schedule_h_off	Schedule H — i ffwrdd (baner perchennog)
+schedule_h_on	Schedule H — ymlaen (baner perchennog)
+rx_expected_off	Rx disgwyliedig — i ffwrdd (baner perchennog)
+rx_expected_on	Rx disgwyliedig — ymlaen (baner perchennog)
+rx_note_ph	Nodyn presgripsiwn (dewisol — eich geiriad)
+batch_ph	Rhif swp
+expiry_ph	Dod i ben (YYYY-MM-DD)
+expiry_alerts	Rhybuddion dod i ben (y 7 diwrnod nesaf)
+expiry_none	Dim sypiau'n dod i ben yn y 7 diwrnod nesaf.
+rx_nudge	Mae'r perchennog wedi nodi Rx / Schedule H — ychwanegwch nodyn os oes angen.
+unlock	Datgloi
+pin_hint	PIN y perchennog yn dechrau fel 0000
+sell	Gwerthu
+buy	Prynu
+books	Llyfr y dydd
+books_help	Sefyllfa heddiw. Gwerthu = arian i mewn. Prynu = pryniannau a threuliau. Partïon = cwsmeriaid credyd a chyflenwyr.
+buy_help	Talebau gwariant a biliau cyflenwyr (arian allan). Ar gyfrif aros ar lyfr y parti.
+sell_money_in	Gwerthu meddyginiaethau
+buy_money_out	Gwariant / bil cyflenwr
+record_purchase	Cofnodi pryniant
+add_expense	Taleb gwariant
+bank_book	Llyfr banc
+credit_help	Mae id y parti yn unigryw (gall enwau ailadrodd). Mae Cwsmer yn rhedeg cyfrif credyd (yn ein dyled); mae Cyflenwr yn gwerthu stoc i ni (rydyn ni'n ddyledus iddo); y ddau yn iawn. Mae cyfriflyfrau ar wahân; mae adroddiadau'n dangos y net.
+party_kind_ph	Rolau: Cwsmer, Cyflenwr, y ddau…
+reports_help	Llyfr y dydd, dyledwyr a chredydwyr, llyfr banc, talebau gwariant, elw a cholled.
+reports_today	Llyfr y dydd (heddiw)
+reports_month	Elw a cholled (mis)
+reports_aging	Heb ei dalu / Dr-Cr
+reports_balance_sheet	Mantolen
+reports	Llyfr banc ac elw/colled
+refresh	Adnewyddu
+undo	Dadwneud
+start_tracking	Dechrau tracio
+stock_minus	− Stoc
+stock_plus	+ Stoc
+settle_cash	Setlo arian parod
+settle_card	Setlo cerdyn
+items	Meddyginiaethau
+nav_items	Meddyginiaethau
+more	Mwy
+your_items	Eich meddyginiaethau
+items_help	Tapiwch eitem i'w golygu. Eitem newydd yn clirio'r ffurflen. Chwiliwch yn ôl enw neu god byr, gosodwch bris (mae 0 yn iawn), yna Ychwanegu. Mae gwerthiannau a gofnodwyd eisoes yn cadw'r enw y cawsant eu cyhuddo ohono.
+add_item	Ychwanegu eitem
+new_item	Eitem newydd
+adding_item	Yn ychwanegu eitem newydd
+editing_item	Golygu
+save	Cadw
+remove	Tynnu
+removed_items	Eitemau a dynnwyd
+removed_help	Mae Restore yn rhoi'r eitem yn ôl mewn Eitemau yn union fel yr oedd - pris, llun a chategori.
+restore_item	Adfer
+empty_catalog	Dim meddyginiaethau eto. Agorwch Feddyginiaethau, ychwanegwch enw, cod bar neu halwyn, yna gwerthwch.
+total	Cyfanswm
+cash	Arian parod
+upi	UPI
+card	Cerdyn
+credit	Partïon
+clear	Clirio
+ready_to_sell	Barod i'w gofnodi
+today_prefix	Heddiw
+today_mid	heddiw
+owed	heb ei dalu
+round_word	talgrynnu
+back	Nôl
+sold_out	Ddim ar gael
+restock	Ailstocio
+not_tracked	Heb ei dracio
+in_stock	mewn stoc
+marked_sold_out	Wedi'i nodi ddim ar gael
+add_upper	YCHWANEGU
+na	Amh.
+qty	Pwys/Nifer
+unit_at	Cyfradd @
+actual	Gwirioneddol
+applied	Wedi'i gymhwyso
+note_ph	Nodyn (dewisol)
+rounded	WEDI'I DALGRYNNU
+split	Rhannu
+send_kot	Anfon slip
+send_kot_to	Anfon → {kitchens}
+send_kot_again	Ychwanegu eitemau ar gyfer y slip nesaf
+send_kot_held	Eitemau a gedwir - heb eu dal i'w hanfon
+reprint_kot	Argraffu'r dewisedig eto
+reprint_kot_ok	Eitemau {n} wedi'u hargraffu eto · Slip(s) {slips} → {kitchens}
+reprint_kot_needed	Anfonwch slip yn gyntaf — yna cynhwyswch feddyginiaethau ac argraffwch y rhai a ddewiswyd eto
+reprint_kot_none_selected	Mae pob eitem a anfonir yn cael ei hepgor - tapiwch Mewn print ar y rhai i'w hailargraffu
+reprint_kot_client	Argraffwch eto ({n}) ar gyfer {place} a anfonwyd - mae dyfais y siop yn ei argraffu
+print_cancelled_kot	Argraffu'r holl ganslwyd
+print_cancelled_kot_ok	Eitemau wedi'u hargraffu {n} wedi'u canslo · Slip(s) {slips} → {kitchens}
+print_cancelled_kot_needed	Agorwch fwrdd gydag eitemau sydd wedi'u canslo yn gyntaf
+print_cancelled_kot_none	Dim eitemau wedi'u canslo ar yr archeb hon
+print_cancelled_kot_client	Argraffiad wedi'i ganslo ({n}) ar gyfer {place} a anfonwyd - mae dyfais y siop yn ei argraffu
+kot_banner	Baner math
+kot_banner_ph	Baner (gwag = dim)
+kot_item_prefix	Rhagddodiad eitem
+kot_item_prefix_ph	e.e. [WEDI CANSLIO]
+kot_strike	Streic enw'r eitem
+kot_strike_note	Nodyn eitem streic
+kot_strike_on	Ymlaen
+kot_strike_off	I ffwrdd
+bill_item_layout	Cynllun eitemau
+bill_item_layout_columns	Colofnau
+bill_item_layout_stacked	Wedi'u pentyrru
+bill_item_header	Penawdau colofnau
+bill_item_hdr_item	Pennawd eitem
+bill_item_hdr_qty	Pennawd nifer
+bill_item_hdr_price	Pennawd pris
+bill_item_hdr_amount	Pennawd swm
+bill_item_name	Enw'r feddyginiaeth
+bill_item_qty	Nifer
+bill_item_price	Pris
+bill_item_amount	Swm
+bill_item_note	Nodyn Rx / gwerthiant
+bill_item_col_gap	Bwlch colofn
+bill_item_col_order	Trefn colofnau
+bill_item_col_sep	Llinellau colofn
+bill_item_gap_tight	Tynn
+bill_item_gap_comfort	Cyfforddus
+bill_item_gap_wide	Llydan
+bill_item_num_width	Colofnau rhif
+bill_item_num_compact	Cryno
+bill_item_num_comfort	Cyfforddus
+bill_item_num_wide	Llydan
+bill_item_num_align	Aliniad rhifau
+bill_item_gap_em	Bwlch (em)
+bill_item_qty_min	Nifer min (em)
+bill_item_price_min	Pris min (em)
+bill_item_amount_min	Swm min (em)
+kot_item_qty_width	Colofn nifer
+kot_item_num_align	Aliniad nifer
+bill_total_qty_label	Label cyfanswm nifer
+bill_total_subtotal_label	Label is-gyfanswm
+bill_total_grand_label	Label cyfanswm mawr
+bill_total_paid_label	Label wedi talu
+bill_meta_pair	Rhannu llinell gyda
+bill_pair_alone	Ar ei ben
+bill_item_piece_on	Ymlaen
+bill_item_piece_off	I ffwrdd
+bill_total_qty	Cyfanswm nifer
+bill_total_subtotal	Is-gyfanswm
+bill_total_grand	Cyfanswm mawr
+reprint_incl	Mewn print
+reprint_skip	Hepgor
+reprint_skip_meta	Hepgor print adfer
+kot_dest_hint	Yn argraffu ar yr argraffwyr a neilltuwyd gennych i {kitchens} yn Gosodiadau → Argraffwyr
+kot_sent_hint	Aeth yr anfoniad diwethaf i {kitchens}. Tapiwch i ychwanegu eitemau ar gyfer y bil nesaf - neu Argraffu slip eto ar gyfer yr un un.
+kot_sent_printing	Slip wedi'i anfon i {kitchens} — argraffu
+kot_sent_not_printed	Slip wedi'i anfon i {kitchens} ond NID wedi'i argraffu: {why}. Dywedwch wrth y siop, yna trwsio'r argraffydd a'i argraffu eto.
+kot_sent_screen	Slip wedi'i anfon i {kitchens}
+kot_queued_shop	Slip ar gyfer {place} → {kitchens} arbed; mae dyfais y siop yn ei argraffu
+kot_job_label	Slip ar gyfer {place} → {kitchens}
+kot_job_reached	Cyrhaeddodd slip ar gyfer {place} {kitchens}
+kot_unassigned	Heb ei aseinio
+kot_unassigned_held	Dal eitemau {n} heb orsaf - dad-ddaliwch ar y llinell i'w hanfon
+kot_station_ph	Gorsaf
+kot_station_dd	Gorsaf
+kot_station_dd_n	Gorsaf · {stations}
+kot_set_station	Defnyddio'r orsaf hon
+kot_station_applied	Gorsaf wedi'i gosod ar eitemau {n}: {station}
+kot_station_cleared	Gorsaf wedi'i chlirio o eitemau {n}: {station}
+kot_station_needed	Dewiswch adran fferyllfa yn gyntaf
+kot_station_not_allowed	Ni chaniateir defnyddio adran: {station}
+kot_station_none	Dim gorsafoedd eto — heb eu defnyddio ar siop cownter (Gosodiadau → Ardaloedd os oes angen)
+pos_tab_items	Eitemau a ychwanegwyd
+pos_tab_payment	Taliad
+hold_send	Dal
+hold_send_on	Wedi'i ddal
+hold_send_meta	Wedi'i gynnal - nid ar y slip hwn
+station_remove	Tynnu gorsaf
+station_remove_ph	Tapiwch orsaf yn y rhestr i'w thynnu
+station_removed	Gorsaf wedi'i thynnu: {name}
+settings_hub_title	Gosodiadau
+settings_hub_help	Agorwch un ardal ar y tro — llai o sgrolio, dewisiadau cliriach.
+settings_back	Nôl
+settings_sec_language	Iaith ac arian cyfred
+settings_sec_country	Gwlad a threth
+settings_sec_tills	Dyfeisiau eraill
+settings_sec_brand	Eich brand
+settings_sec_units	Unedau a throsi
+settings_sec_pickers	Ardaloedd · gorsafoedd · cyfraddau treth
+settings_sec_printers	Argraffwyr
+settings_sec_bill	Fformat Bill & Slip
+settings_sec_selling	Cynlluniau a gwerthiannau
+bill_kot_tab_bill	Bil
+bill_kot_tab_kot	Slip
+settings_sec_alerts	Rhybuddion
+alerts_help	Pa mor y mae negeseuon statws yn aros ar y sgrin i chi (y mewngofnod hwn).
+snack_secs_ph	Eiliadau (3–60, rhagosodiad 10)
+snack_secs_save	Cadw amser rhybudd
+snack_secs_saved	Amser rhybudd wedi'i gadw — {n} eiliad
+settings_sec_backup	Copi wrth gefn ac adfer
+settings_sec_diag	Diagnosteg
+diag_privacy_help	Mae logiau'n aros ar y ddyfais hon. Nid yw cyfrinachau (PIN, cyfrineiriau) byth yn cael eu storio. Mae rhannu pecyn oddi ar y ddyfais angen eich cymeradwyaeth benodol bob tro — ni chaiff ei werthu na'i roi i drydydd partïon.
+diag_level	Lefel manylder
+diag_level_error	Gwallau
+diag_level_warn	Rhybuddion
+diag_level_info	Gwybodaeth
+diag_level_debug	Difa chwilota
+diag_support_start	Dechrau sesiwn cymorth 30 mun
+diag_support_stop	Gorffen sesiwn cymorth
+diag_support_started	Sesiwn cymorth ymlaen — manylder Difa chwilota am 30 munud
+diag_support_ended	Sesiwn cymorth wedi dod i ben
+diag_export_local	Allforio copi lleol
+diag_export_local_done	Diagnosteg lleol yn barod yn {path} — dewiswch ble i gadw copi
+diag_approve_send	Cymeradwyo rhannu oddi ar y ddyfais
+diag_send_help	Mae cymeradwyaeth ar gyfer un pecyn, yna mae'n dod i ben. Dros dro — i drwsio neu wella'r cynnyrch yn unig. Heb ei rannu â thrydydd partïon. Yn gweithio ar Linux, Windows, macOS ac Android.
+diag_send_approved	Rhannu wedi'i gymeradwyo ar gyfer un pecyn (yn dod i ben yn fuan)
+diag_export_send	Creu pecyn rhannu (angen cymeradwyaeth)
+diag_export_send_done	Pecyn rhannu yn barod yn {path} — dewiswch ble i'w gadw, yna anfonwch at gymorth Kumkaj yn unig
+diag_save_bundle	Cadw copi diagnosteg
+diag_bundle_saved	Copi diagnosteg wedi'i gadw yn {path}
+diag_bundle_failed	Methu cadw copi diagnosteg yno — ceisiwch eto
+diag_clear	Clirio logiau diagnostig
+diag_cleared	Logiau diagnostig wedi'u clirio
+sidebar_settings	Bar ochr
+sidebar_settings_help	Yr un eiconau â'r rheilffordd ochr. Llusgwch res i aildrefnu. Trowch y switsh i ddangos neu guddio. Mae Gosodiadau a Chloi bob amser ar y bar.
+sidebar_always_on_short	Bob amser ymlaen
+sidebar_back_settings	Nôl
+sidebar_shown	Wedi'i ddangos
+sidebar_hidden	Wedi'i guddio
+sidebar_always_on	Bob amser ar y bar
+sidebar_shown_hint	Wedi'i ddangos ar y rheilffordd ochr / tabiau gwaelod
+sidebar_hidden_hint	Wedi'i guddio o'r bar
+sidebar_menu_items	Eitemau
+sidebar_enable_all	Galluogi popeth
+sidebar_disable_all	Analluogi popeth
+sidebar_order_saved	Trefn y bar ochr wedi'i chadw
+sidebar_visibility_saved	Gwelededd y bar ochr wedi'i gadw
+amounts_hide	Cuddio
+amounts_show	Dangos
+printers_none_hint	Arbedwch argraffydd ar y ddyfais hon yn gyntaf, yna ychwanegwch ef at y bil neu adran
+counter	Cownter
+dine_in	Cownter
+takeaway	Cludfwyd
+order	Archeb
+tables	Cownteri
+kitchen	Adrannau
+sales	Gwerthiannau
+sales_refunds	Gwerthiannau ac ad-daliadau
+day_close	Cau diwrnod
+reports_expenses	Llyfr banc ac elw/colled
+nav_reports	Adroddiadau
+nav_settings	Gosodiadau
+nav_lock	Cloi
+no_sale_yet	Dim gwerthiant eto
+favorites	Ffefrynnau
+favorites_help	Eitemau rydych chi'n eu gwerthu'n aml, wedi'u cadw ar gyfer eich mewngofnod. Ychwanegwch un at y bil, neu adeiladwch eich rhestr o'r holl eitemau isod.
+your_favorites	Eich ffefrynnau
+all_items	Pob eitem
+frequent	Aml
+added_items	Eitem(au) a ychwanegwyd
+added_items_empty	Dim byd ar y bil hwn eto - ychwanegu eitem o Pob eitem neu gategori.
+frequent_config_help	Roedd y rhan fwyaf yn gwerthu eitemau o filiau wedi'u cwblhau. Gosodwch sawl diwrnod i edrych arno a faint o eitemau i'w dangos.
+frequent_days_ph	Dyddiau (1)
+frequent_limit_ph	Eitemau (24)
+frequent_apply	Cymhwyso
+frequent_saved	Aml: diwrnod(au) {d} diwethaf, {n} uchaf - eitemau {c}
+frequent_empty	Dim gwerthiannau wedi'u cwblhau yn y cyfnod hwn eto — setlwch fil (caniateir ₹0 pan mae Gosodiadau'n dweud hynny) a byddant yn ymddangos yma.
+zero_sales	Gwerthiannau gwerth sero
+zero_sales_help	Caniatáu eitemau â phris o ₹0 a biliau wedi'u setlo ar ₹0 (cyflenwol / dymuniad perchennog). Ymlaen yn ddiofyn felly mae cloriau am ddim yn dal i ymddangos mewn llyfrau Aml a llyfrau dydd.
+zero_sales_on	Caniatáu ₹0
+zero_sales_off	Gofyn am bris
+zero_sales_saved_on	Gwerthiannau gwerth sero wedi'u caniatáu
+zero_sales_saved_off	Rhaid i werthiannau gael pris uwch na ₹0
+floor_areas_help	Mae ardaloedd yn ystafelloedd neu barthau ar y llawr (Dine In, Parsel, AC …). Ychwanegwch ardal yn gyntaf, yna rhowch gownteri ynddo - mae pob ardal yn grŵp ar wahân ar y llawr.
+area_new_ph	Ardal / ystafell newydd (e.e. AC, Gardd)
+add_area	Ychwanegu ardal
+area_added	Ardal “{name}” yn barod — ychwanegu cownteri i mewn iddo
+no_favorites	Dim ffefrynnau eto — ychwanegwch eitemau o'r rhestr isod.
+add_to_bill	Ychwanegu at y bil
+added	Wedi'i ychwanegu
+owes_word	yn ddyledus
+selected_word	Wedi'i ddewis
+chip_clear_credit	clirio — Credyd neu gymryd rhagdaliad
+chip_missing_customer	Cwsmer a ddewiswyd ar goll — dewiswch eto
+chip_no_customer	Dim cwsmer eto — teipiwch enw, yna tapiwch Credyd
+credit_summary_fmt	{} cwsmer · credyd agored {} · rhagdaliadau a ddelir {}
+recent_label	Diweddar:
+kot_new_waiting	NEWYDD — yn aros
+kot_preparing	YN PARATOI
+kot_ready_serve	YN BAROD — gweini
+kot_done_cap	WEDI GORFFEN
+kot_cancelled	WEDI CANSLIO
+kot_start_btn	Dechrau
+kot_mark_ready	Nodi'n barod
+kot_done_btn	Wedi gorffen
+table_free	Rhydd — tapiwch i ddechrau archeb
+start_order	Dechrau archeb
+open_bill	Agor bil
+collect_payment	Casglu taliad
+table_running	Yn rhedeg
+payment_pending	Taliad yn aros
+collect_at_counter	casglu wrth y cownter
+inventory	Stocrestr
+inventory_stock	Stocrestr a stoc
+branches	Canghennau
+branches_org	Canghennau a sefydliad
+credit_customers	Partïon (credyd a chyflenwyr)
+customer_name_ph	Enw'r parti
+new_customer_ph	Enw parti newydd
+item_name_ph	Enw eitem (e.e. Masala Dosa)
+item_price_ph	Pris
+start_template	Cynnyrch
+team	Tîm
+team_pins	Tîm a PIN
+my_pin_settings	Fy PIN
+settings_hub_help_my_pin	Newidiwch PIN datgloi'r person sydd wedi mewngofnodi ar y ddyfais hon.
+team_self_help	Un mewngofnod: PIN newydd, cyfrinair newydd, neu'r ddau. Gadewch flwch yn wag i gadw'r hyn sydd gennych. Gofynnwch i'r Perchennog os oes angen sgriniau neu hawliau gwahanol arnoch.
+backup_settings	Copi wrth gefn a gosodiadau
+lock_app	Cloi'r ap
+pick	Dewis
+select	Dewis
+advance	Rhagdaliad
+owner	Perchennog
+staff	Gweithwyr
+photo	Llun
+auto	Awto
+prev	Blaenorol
+next	Nesaf
+ok	OK
+this_shop	Gweinydd
+extra_till	Cleient
+off	I ffwrdd
+tables_kitchen	Cynllun y siop
+server	Gweinydd
+client	Cleient
+language_currency	Iaith ac arian cyfred
+language	Iaith
+choose_language	Dewiswch eich iaith
+language_setup_hint	Dilynwch iaith y ddyfais hon, neu dewiswch un eich hun.
+lang_follow_platform	Iaith y ddyfais
+lang_pick_user	Dewis iaith
+lang_platform_now	Iaith y ddyfais nawr
+selected_language	Wedi'i ddewis
+continue	Parhau
+this_device	Y DYFAIS HON
+device_use_q	Sut y defnyddir y ddyfais hon?
+last_server_mode	Gweinydd oedd — tapiwch i barhau
+last_client_mode	Cleient oedd — tapiwch i barhau
+choose_server	Dewiswch weinydd
+choose_server_hint	Agorwch weinydd sy'n bodoli, neu crëwch un ar gyfer busnes arall.
+create_new_server	Creu gweinydd newydd
+open_server	Agor
+new_server_name_ph	Enw gweinydd newydd (dewisol)
+server_remove_pin_ph	PIN y perchennog i dynnu gweinydd
+only_owner_remove_server	Dim ond y Perchennog all dynnu gweinydd
+owner_pin_remove_server	Mae angen PIN y Perchennog i dynnu'r gweinydd hwn
+device_setup_help	Mae'r Gweinydd yn cadw'r llyfrau yma. Mae Cleient yn paru â Gweinydd.
+app_template_heading	Catalog cychwynnol (dewisol)
+app_template_blurb	Yn llwytho'r catalog sampl; Perchennog Zahir (zahir), Asif Gweinyddol (asif, PIN 1111), Ariannwr Nawaz (nawaz, PIN 0000); treth/GST i ffwrdd; bar ochr blaen; hanes yn clirio ar ôl 4 awr (a Clirio nawr yn y copi wrth gefn); Heddiw stripio i ffwrdd; bil cryno + ymylon safonol ar gyfer hambyrddau cul. Gellir troi cymheiriaid treth a bar ochr ymlaen eto yn y Gosodiadau.
+app_template_apply	Gwneud cais catalog cychwynnol
+app_template_skip	Hepgor am y tro
+app_template_status	Gweinydd yn barod - defnyddio'r catalog Starter, neu sgip
+app_template_importing	Yn cymhwyso {title}…
+currency	Arian cyfred
+backup	Copi wrth gefn
+use	Defnyddio
+dont_use	Peidiwch â defnyddio
+add_branch	Ychwanegu cangen
+add_conversion	Ychwanegu trosiad
+add_dishes_items	Ychwanegu eitemau
+add_item_plain	Ychwanegu eitem
+add_note	Ychwanegu nodyn
+add_opening_balance	Ychwanegu balans agoriadol
+add_staff	Ychwanegu staff
+add_station	Ychwanegu gorsaf
+add_table	Ychwanegu bwrdd
+add_unit	Ychwanegu uned
+add_use_name	Ychwanegu / defnyddio'r enw hwn
+allow_extra_tills	Caniatáu tiliau ychwanegol
+amend	Diwygio
+apply_country_pack	Cymhwyso pecyn gwlad
+datetime_appearance	Ymddangosiad dyddiad ac amser
+datetime_appearance_help	Mae llyfrau yn cadw RFC3339 blwyddyn gyntaf y tu mewn. Mae'r rhain ond yn newid sut mae dyddiadau a chlociau'n edrych ar filiau, adroddiadau, a'r sgrin.
+datetime_example	Enghraifft nawr: {ex}
+date_order	Trefn dyddiad
+date_order_dmy	D/M/Y
+date_order_mdy	M/D/Y
+date_order_ymd	Y-M-D
+time_format	Cloc
+time_format_24h	24 awr
+time_format_12h	12 awr
+attach_bill_photo	Atodi llun bil
+attach_pdf	Atodi PDF
+attach_photo	Atodi llun
+attachments_last_expense	Atodiadau (gwariant olaf)
+bank	Banc
+bank_in	Banc i mewn
+bank_out	Banc allan
+bank_reconciliation	Cymodi banc (ticiwch yn erbyn eich cyfriflen banc)
+bank_to_till	Banc → til
+book_add_dish	Llyfr — ychwanegu eitem / eitem
+book_opening_credit	Llyfr — credyd agoriadol
+branch_name_sell_ph	Enw'r gangen i werthu ohoni
+bring_my_book	Dod â'm llyfr
+business_tax_id_ph	Id treth busnes
+caption_bank	BANC
+caption_bills	BILIAU
+caption_outstanding	HEB EI DALU
+caption_payments_today	TALIADAU HEDDIW
+caption_today	HEDDIW
+card_amount_ph	Swm cerdyn
+cash_amount_ph	Swm arian parod
+cash_memo	Memo arian
+choose_icon	Dewis eicon
+choose_logo	Dewis logo
+clear_icon	Clirio eicon
+clear_photo	Clirio llun
+copy_day_book_csv	Copïo llyfr y dydd CSV
+copy_day_close	Copïo cau diwrnod
+copy_items_csv	Copïo eitemau CSV
+copy_outstanding_csv	Copïo heb ei dalu CSV
+copy_parties_csv	Copïo partïon CSV
+copy_party_ledger_csv	Copïo llyfr y parti CSV
+copy_receipt	Copïo derbynneb
+share_whatsapp	Rhannu WhatsApp
+lan_pages_heading	Tudalennau cwsmeriaid ar Wi-Fi
+lan_pages_help	Ar Wi-Fi y siop hon, mae tudalennau cwsmeriaid yn gweithio ar gyfer y bwrdd arddangos ac adborth. Mae angen Cloud ar bobl ar ddata symudol yn ddiweddarach. Mae terfynell cerdyn neu gyswllt talu yn ddewisol ac nid yw byth yn rhwystro'r cownter.
+diag_send_heading	Rhannu oddi ar y ddyfais
+kot_dest_heading	Gorsaf
+optional_login_heading	Mewngofnod dewisol
+rights_heading	Hawliau
+ops_panel	Gweithrediadau lleol
+crm_heading	Cwsmeriaid a negeseuon
+crm_help	Pen-blwydd, teyrngarwch, anweithgar a gwesteion uchaf — ciw bwriadau SMS neu WhatsApp. Defnyddiwch {name} a {points} yn y neges. Mae'r Perchennog yn tapio anfon; does dim yn saethu ar ei ben ei hun.
+crm_queue_sms	Ciw SMS
+crm_queue_wa	Ciw WhatsApp
+crm_seg_bday_week	Wythnos pen-blwydd
+crm_seg_bday_month	Mis pen-blwydd
+crm_seg_phone	Gyda ffôn
+crm_seg_loyalty	Teyrngarwch
+crm_seg_inactive	Anweithgar
+crm_seg_top	Gwariantwyr uchaf
+birthday_ph	Pen-blwydd (MM-DD neu YYYY-MM-DD)
+crm_message_ph	Pen-blwydd hapus {name}! Mae gennych {points} pwynt.
+till_apply_redeem	Cymhwyso ar y bil
+till_clear_redeem	Clirio adbrynu
+till_wallet_topup	Ychwanegu at waled
+till_issue_voucher	Cyhoeddi taleb
+till_points_ph	Pwyntiau i'w hadbrynu
+till_wallet_ph	Swm waled i'w wario
+till_voucher_code_ph	Cod taleb
+till_voucher_amt_ph	Swm taleb (gwag = y cyfan)
+till_wallet_topup_ph	Swm ychwanegu at waled
+till_voucher_issue_amt_ph	Swm taleb i'w chyhoeddi
+till_voucher_issue_code_ph	Cod taleb newydd
+split_evenly	Rhannu'n gyfartal
+waitlist	Rhestr aros
+fire_course	Cam nesaf
+hold_item	Dal
+waiter_call	Ffoniwch ariannwr
+waitlist_add	Ychwanegu at y rhestr aros
+floor_view_grid	Rhwyll
+floor_view_layout	Cynllun
+floor_layout_x	X
+floor_layout_y	Y
+floor_layout_w	W
+floor_layout_h	H
+floor_layout_save	Cadw cynllun
+floor_layout_open	Agor bwrdd
+floor_layout_edit	Golygu cynllun
+floor_layout_pick	Tapiwch fwrdd i olygu ei gynllun
+floor_layout_saved	Cynllun wedi'i gadw
+floor_layout_nudge_left	← 20
+floor_layout_nudge_right	→ 20
+floor_layout_nudge_up	↑ 20
+floor_layout_nudge_down	↓ 20
+sibling_pickers_help	Tapiwch Ymlaen/I ffwrdd fel unedau — cuddio ardaloedd, gorsafoedd a chyfraddau treth o ddewiswyr dyddiol; mae rhagosodiadau'r pecyn yn aros.
+bulk_price_apply	Cymhwyso pris swmp
+card_terminal_optional	Terfynell cerdyn / dolen dalu (dewisol pan mae rhyngrwyd ar gael)
+copy_report	Copïo adroddiad
+counted_cash_ph	Arian parod a gyfrifwyd yn y drôr
+country_tax	Gwlad a threth
+create_backup	Creu copi wrth gefn
+credit_limit_heading	Terfyn credyd (parti a ddewiswyd / a enwyd)
+day_close_summary	Crynodeb cau diwrnod
+delete_party	Dileu'r parti a ddewiswyd
+delivery	Dosbarthu
+done_open_books	Wedi gorffen — agor llyfrau
+drawer_count	Cyfrif drôr (dewisol)
+expense_heading	Gwariant
+export_day	Allforio diwrnod
+extra_note_bill_ph	Nodyn ychwanegol ar y bil / gwerthiant hwn
+extra_note_expense_ph	Nodyn ychwanegol ar y gwariant olaf
+extra_tills_heading	Tiliau ychwanegol
+other_devices_help_heading	Gosod dyfeisiau eraill
+other_devices_help	Ar y ddyfais hon (Gweinydd): Dyfeisiau eraill → Caniatáu tiliau ychwanegol. Sylwch ar y cod paru a'r cyfeiriad Wi-Fi. Tap Caniatáu i ddyfeisiau eraill gysylltu os yw'n ymddangos. Ar gyfrifiadur, tapiwch Cychwyn gyda'r cyfrifiadur hwn. Ar bob dyfais arall: gosodwch yr app, dewiswch Modd Cleient, Dod o hyd i weinydd y siop (neu deipiwch y cyfeiriad), nodwch y cod paru, Pâr nawr. Mae archebion yn aros ar y ddyfais os bydd Wi-Fi yn disgyn ac yn mynd pan fydd y Gweinydd yn ateb eto. Mae argraffwyr ychwanegol wedi'u gosod ar y Gweinydd (Gosodiadau → Argraffwyr) - mae tiliau ychwanegol yn anfon biliau yno.
+forget_shop	Anghofio'r siop hon
+goods_received	Nwyddau a dderbyniwyd
+import_day	Mewnforio diwrnod
+import_items_csv_plain	Mewnforio eitemau CSV…
+import_parties_csv	Mewnforio partïon CSV…
+item_name	Enw eitem
+kitchen_printing	Argraffwyr
+login_id_ph	Enw defnyddiwr
+mark_cleared	Nodi wedi'i glirio
+new_party_clear	Parti newydd (clirio ffurflen)
+new_party_kind_supplier_ph	Math parti newydd (Cyflenwr)
+next_country	Gwlad nesaf
+next_order	Archeb nesaf (clirio desg)
+note_gstin_ph	Nodyn / GSTIN / atgoffa cytundeb
+notes_attach_party	Nodiadau ac atodiadau (parti a ddewiswyd)
+notes_attach_sale	Nodiadau ac atodiadau (gwerthiant a ddewiswyd)
+on_account_ap	Ar gyfrif (AP)
+org_optional_ph	Sefydliad (dewisol)
+paid_by	Talwyd gan
+paid_now	Talwyd nawr
+pair_now	Paru nawr
+pairing_code_ph	Cod paru
+party_name_selected_ph	Enw parti (neu ddefnyddio'r un a ddewiswyd)
+password_ph	Cyfrinair
+pay_ap_card	Talu AP cerdyn
+pay_ap_cash	Talu AP arian parod
+pay_ap_heading	Talu'r hyn rydyn ni'n eu dyled (AP)
+pay_ap_upi	Talu AP UPI
+pay_selected_heading	Talu'r dewisedig (setlo dyled / cymryd rhagdaliad)
+pick_from_items	Dewis o'n heitemau
+prev_country	Gwlad flaenorol
+print_open	Argraffu / agor
+reason_amend_ph	Rheswm dros ddiwygio / gwagio / ad-daliad
+reason_note_ph	Rheswm / nodyn (gwastraff, cyfrif, …)
+record_day_close	Cofnodi cau diwrnod
+refresh_from_shop	Adnewyddu o'r siop
+refund	Ad-dalu
+remove_selected	Tynnu'r dewisedig
+request_bill	Gofyn am fil
+restaurant_name_ph	Enw siop (dewisol)
+restore_backup	Adfer copi wrth gefn
+role_both	Y ddau
+role_admin	Gweinyddwr
+role_cashier	Ariannwr
+role_customer	Cwsmer
+role_manager	Rheolwr
+history_retention	Hanes masnachu
+history_retention_help	Clirio'n awtomatig hen werthiannau a hen docynnau. Mae meddyginiaethau, gweithwyr, a gosodiadau'n aros. Mae Clirio nawr yn dileu pob rhes fasnachu ac yn cadw'r gosodiad.
+history_off	Cadw
+history_day_close	Wrth gau diwrnod
+history_after_hours	Ar ôl oriau
+history_hours_ph	Oriau (1–168, rhagosodiad 4)
+history_hours_save	Cadw oriau
+history_clear_now	Clirio hanes nawr
+history_cleared	Hanes masnachu wedi'i glirio — gosodiad wedi'i gadw
+history_retention_saved	Clirio hanes wedi'i gadw
+history_hours_saved	Oriau hanes wedi'u cadw
+history_owner_only	Dim ond y Perchennog neu Weinyddwr all glirio hanes
+rollup	Crynhoi
+save_brand	Cadw brand
+save_business_id	Cadw id busnes
+save_business_name	Cadw enw busnes
+save_features	Cadw
+save_features_named	Cadw {name}
+save_features_ok	Gosodiad wedi'i gadw ar gyfer {name}
+save_names	Cadw enwau
+second_way	Ail ffordd
+server_ip_ph	IP gweinydd (e.e. 192.168.1.10)
+set_credit_limit	Cymhwyso terfyn i'r parti
+set_login_selected	Cymhwyso mewngofnod i'r dewisedig
+set_login_named	Cymhwyso mewngofnod i {name}
+shop	Siop
+show	Dangos
+spreadsheet_csv	Taenlen (CSV)
+start_fresh	Dechrau o'r newydd
+stop_extra_tills	Stopio tiliau ychwanegol
+floor_cols_ph	Colofnau
+floor_cols_fit	Ffitio sgrin
+floor_cols_fit_sub	{n} yn ffitio yma
+floor_cols_fits	yn ffitio
+floor_cols_scroll	yn sgrolio i'r ochr
+floor_cols_min	Colofnau: o leiaf 1 — neu gadewch yn wag i ffitio'r sgrin
+floor_zoom_auto	Awto
+floor_zoom_out	Chwyddo allan
+floor_zoom_in	Chwyddo i mewn
+backup_auto	Copi wrth gefn yn awtomatig bob dydd · diwethaf {when} · cedwir y 14 diwrnod diwethaf yn {dir}.
+backup_auto_none	Copi wrth gefn yn awtomatig bob dydd — mae'r cyntaf yn rhedeg mewn munud.
+backup_copy_to	Mae copïau hefyd yn mynd i {dir}.
+backup_copy_btn	Hefyd copïo copïau wrth gefn i ffolder…
+autostart_off	Dechrau gyda'r cyfrifiadur hwn
+autostart_on	Yn dechrau gyda'r cyfrifiadur hwn ✓ — tapiwch i stopio
+autostart_done_on	Mae'r cyfrifiadur hwn nawr yn agor yr ap pan mae'n dechrau — mae gweinydd y siop yn ôl ar ôl toriad pŵer.
+autostart_done_off	Nid yw'r cyfrifiadur hwn bellach yn agor yr ap pan mae'n dechrau.
+device_forgotten	Anghofiodd y siop y ddyfais hon — parwch hi eto gyda chod cyfredol y siop. Cedwir archebion sy'n aros arni.
+lan_offline	Ni ellir cyrraedd gweinydd y siop
+forget_device	Anghofio
+last_seen	gwelwyd
+copy_pair_code	Copïo cod paru
+new_pair_code	Cod paru newydd
+pair_finishing	Yn gorffen paru… yn cymhwyso llyfrau'r siop
+pair_opening	Yn agor y til…
+pair_copied	Cod paru wedi'i gopïo
+kot_waiting	Yn aros i anfon
+lan_offline_waiting	Gweinydd y siop allan o gyrraedd · {n} yn aros
+lan_connecting	Yn cysylltu â'r siop…
+lan_live	Byw
+lan_sending	{n} yn anfon
+lan_sign_in_to_send	Mewngofnodwch eto i anfon {n}
+lan_pair_again	Parwch y ddyfais hon eto
+lan_update_app	Diweddarwch yr ap — mae gan y ddyfais hon a gweinydd y siop fersiynau gwahanol
+allow_firewall	Caniatáu i ddyfeisiau eraill gysylltu
+firewall_blocked	Mae mur cadarn y cyfrifiadur hwn yn rhwystro dyfeisiau eraill — tapiwch Caniatáu i ddyfeisiau eraill gysylltu.
+firewall_waiting	Yn aros am annog y gweinyddwr…
+lan_join_help	Ar y ddyfais arall: Modd Cleient → Dewch o hyd i weinydd y siop (neu teipiwch {addr}) → cod paru {code}.
+lan_pair_status	Wi‑Fi {addr}
+lan_join_help_no_addr	Cysylltwch y ddyfais hon â Wi‑Fi i gael cyfeiriad.
+lan_no_address	Dim cyfeiriad Wi‑Fi eto — cysylltwch â Wi‑Fi y siop.
+lan_not_listening	Ddim yn derbyn dyfeisiau (porth {port} yn brysur). Ailgychwynnwch yr ap.
+lan_tills_off	Mae tiliau ychwanegol i ffwrdd. Caniatewch nhw i adael i ddyfais arall ymuno.
+paired_with	Wedi'i baru · {url}
+not_paired	Heb ei baru
+choose_device_use	Dewiswch Weinydd neu Gleient.
+paired_note	Wedi'i baru. Datgloi i werthu, neu Adnewyddu ar gyfer y diweddaraf.
+last_update_at	Diweddariad olaf: {time}.
+pair_intro	Dewch o hyd i'r gweinydd, neu teipiwch ei gyfeiriad a'r cod paru.
+queue_waiting	Yn aros i gyrraedd y siop ({n}):
+queue_tries	Wedi ceisio {n} gwaith · ateb olaf: {e}
+save_backup_copy	Cadw copi wrth gefn…
+backup_copy_saved	Copi wrth gefn wedi'i gadw — cadwch ef oddi ar y ddyfais hon (ffon USB neu ddyfais arall)
+backup_copy_overdue	Nid oes copi wrth gefn wedi gadael y ddyfais hon ers {n} diwrnod — Gosodiadau → Copi wrth gefn
+backup_copy_failed	Methu cadw'r copi wrth gefn yno — dewiswch le arall
+clock_off	Mae cloc y ddyfais hon {min} mun oddi ar weinydd y siop — gosodwch yr amser cywir
+printers_heading	Argraffwyr
+printers_help	Dewch o hyd i argraffwyr, tapiwch un i'w ddewis, yna Argraffwch dudalen brawf ar y ddyfais honno yn unig. Argraffwyr biliau: Fformat Bill & Slip → Bill.
+printers_host_only	Mae argraffwyr wedi'u gosod ar ddyfais y siop (Gweinydd). Mae'r til hwn yn anfon biliau a hen docynnau yno - Dod o hyd i / ychwanegu / neilltuo arhosiad ar y Gweinydd. tudalen prawf a maint print bil yn mynd i'r Gweinyddwr.
+printers_find_heading	Dewch o hyd i argraffwyr
+printers_find_tip	Mae Chwilio yn sganio'r ddyfais hon ac yn cadw'r rhestr yn gyfredol.
+printers_pool_heading	Argraffwyr
+printers_pool_tip	Mae Chwilio yn sganio'r ddyfais hon ac yn cadw'r rhestr hon yn gyfredol.
+printers_pool_empty	(dim eto — tapiwch Chwilio)
+printers_routes_help	Dewch o hyd i argraffwyr y mae'r system weithredu eisoes yn eu gwybod. Neilltuwch nhw i'r bil ac i bob adran o dan fformat Bill & Slip.
+printer_assign_dd	Argraffydd go iawn: {place}
+printer_assign_pick	Dewis argraffydd go iawn
+printer_profile_heading	Cynllun
+printer_send_heading	Dosbarthu
+vp_delivery_heading	Dosbarthu
+vp_delivery_help	Sut mae'r argraffydd rhithwir hwn yn anfon swyddi - dogfen OS, bytes amrwd, neu ESC / POS. Mae cynnwys slip (maint math, lapio, ymylon) yn cael ei benderfynu gan y fformat bil / Slip, nid yma.
+vp_type_size_heading	Maint teip
+vp_wrap_heading	Lled lapio
+vp_margin_heading	Ymylon
+vp_delivery_spooler	Dogfen OS (sbwliwr system)
+vp_delivery_raw	Beitiau crai i'r ddyfais
+vp_delivery_escpos	Gorchmynion thermol ESC/POS
+virtual_printer_new	Argraffydd rhithwir newydd
+virtual_printer_selected	Yn golygu “{name}” — tapiwch un arall yn y rhestr i newid
+virtual_printer_tap_list	Tapiwch argraffydd rhithwir yn y rhestr i'w olygu
+config_layout_portrait	Portread
+config_layout_landscape	Tirlun
+config_send_os	Sbwliwr system
+config_send_escpos	ESC/POS
+profiles_heading	Cynlluniau
+profiles_empty	(dim cynlluniau eto)
+profile_builtin	mewnol
+profile_custom	personol
+profile_name_ph	Enw cynllun
+profile_new	Cynllun newydd
+profile_delete	Dileu cynllun
+profile_created	Cynllun wedi'i greu
+profile_deleted	Cynllun wedi'i ddileu
+profile_builtin_keep	Ni ellir dileu cynlluniau mewnol
+config_saved	Wedi'i ddiweddaru
+config_selected	Wedi dewis “{name}”
+printer_output_heading	Argraffwyr rhithwir
+virtual_printers_heading	Argraffwyr rhithwir
+virtual_printers_empty	Dim argraffwyr rhithwir eto — gosodwch werthoedd isod, yna Cadw. Ar ôl i chi gael rhai, tapiwch un yn y rhestr i'w olygu.
+virtual_printer_name_ph	Enw argraffydd rhithwir (dewisol)
+virtual_printer_create	Creu argraffydd rhithwir
+virtual_printer_save	Cadw argraffydd rhithwir
+virtual_printer_delete	Dileu argraffydd rhithwir
+virtual_printer_created	Argraffydd rhithwir “{name}” wedi'i greu
+virtual_printer_deleted	Wedi dileu argraffydd rhithwir “{name}”
+virtual_printer_updated	Argraffydd rhithwir wedi'i ddiweddaru
+virtual_printer_updated_named	Argraffydd rhithwir “{name}” wedi'i ddiweddaru
+virtual_draft_layout	Gwerthoedd wedi'u gosod ar gyfer yr argraffydd rhithwir nesaf
+virtual_draft_send	Gwerth wedi'i osod ar gyfer yr argraffydd rhithwir nesaf
+virtual_need_real	Dewiswch argraffydd go iawn yn gyntaf
+virtual_need_select	Dewiswch argraffydd rhithwir i'w ddileu
+real_printer_selected	Wedi dewis: {name}
+station_group_heading	Argraffwyr rhithwir
+station_group_apply	Dileu argraffydd rhithwir
+station_group_applied	Wedi'i ddileu
+station_group_empty	Dewiswch argraffydd rhithwir
+station_group_name_ph	Enw argraffydd rhithwir (dewisol)
+station_group_save	Creu argraffydd rhithwir
+station_group_saved	Argraffydd rhithwir wedi'i gadw
+station_manage_heading	Ychwanegu neu dynnu adran fferyllfa
+printers_routes_heading	Lle mae pethau'n argraffu
+route_pick_heading	Lle
+route_editing	Yn golygu: {name}
+route_assigned	Wedi ychwanegu {printer} at {place}
+route_already_assigned	Eisoes ar y lle hwn: {printer}
+route_removed	Wedi tynnu {printer} o {place}
+route_cleared	Wedi clirio {name}
+route_assigned_empty	Dim ar y lle hwn
+route_tap_remove	tapiwch i dynnu
+route_tap_select	tapiwch i ddewis
+route_tap_selected	wedi'i ddewis
+route_pick_printer_first	Tapiwch argraffydd yn gyntaf
+route_assigned_heading	Argraffwyr
+route_add_heading	Neilltuo
+printer_label_ph	Enw (e.e. argraffydd cownter)
+printer_target_ph	Enw argraffydd system neu host:9100
+printer_target_default	argraffydd arferol y cyfrifiadur hwn (cyfeiriad gwag)
+printer_wire_heading	Proffil
+printer_wire_escpos	ESC/POS
+printer_wire_os	Portread
+printer_wire_os_portrait	Portread
+printer_wire_os_landscape	Tirlun
+printer_wire_escpos_short	ESC/POS
+printer_wire_os_short	Portread
+printer_wire_os_landscape_short	Tirlun
+printer_format_custom	Proffil personol newydd
+printer_format_custom_label	Personol
+printer_format_custom_added	Proffil personol wedi'i ychwanegu ar gyfer y lle hwn
+add_printer	Ychwanegu argraffydd
+remove_printer	Tynnu
+route_pick_ph	Bil neu adran fferyllfa
+route_bill	Bil
+route_default_kitchen	Dim gorsaf (eitemau heb eu neilltuo)
+route_kot_station	Gorsaf
+route_dont_print	Dim argraffydd
+stations_heading	Gorsafoedd
+stations_help	Mae adrannau fferyllfa'n grwpio meddyginiaethau a'r argraffwyr ar gyfer y rhan honno o'r siop. Atodwch argraffwyr o Osodiadau → Argraffwyr, gosodwch drefn ceisio, yna Y cyntaf sy'n gweithio neu Argraffu ar bob un. Mae newidiadau'n cadw wrth i chi fynd.
+station_print_heading	Argraffwyr ar gyfer y orsaf hon
+station_print_help	Dewiswch orsaf, yna atodwch un neu fwy o argraffwyr. ↑ ↓ yn gosod ceisiwch archebu. Yn gyntaf sy'n gweithio yn dod i ben ar ôl y llwyddiant cyntaf; Argraffu ar bob anfon i bob argraffydd atodedig.
+station_print_pick_ph	Gorsaf i osod argraffwyr
+station_print_pick_first	Dewiswch adran fferyllfa yn gyntaf
+station_print_editing	Yn golygu argraffwyr ar gyfer “{name}”
+station_vps_dd	Argraffwyr ar gyfer y orsaf hon
+station_vps_dd_n	{n} argraffydd · tapiwch i newid
+station_vps_empty	Dim argraffwyr eto — dewch o hyd iddynt o dan Gosodiadau → Argraffwyr
+bill_printers_dd	Argraffwyr ar gyfer y bil
+bill_printers_dd_n	{n} argraffydd ar gyfer y bil · tapiwch i newid
+job_layout	Cynllun
+job_delivery	Sut mae'r swydd yn cael ei hanfon
+job_delivery_help	Dogfen OS, bytes amrwd, neu ESC/POS. Mae'r bil a'r tocyn bob un yn cadw eu rhai eu hunain. Gall y naill swydd neu'r llall fynd i unrhyw argraffydd y mae Darganfod wedi'i gadw.
+station_vp_attached	Argraffydd wedi'i atodi
+station_vp_detached	Argraffydd wedi'i dynnu o'r orsaf
+station_print_summary	{mode} · {n} argraffydd
+station_print_summary_none	Dim argraffwyr ar yr orsaf hon eto — ni fydd yn argraffu
+stations_none	Dim gorsafoedd eto - ychwanegwch un isod. Nid yw gorsafoedd yn cael eu defnyddio ar siop cownter - gadewch yn wag.
+route_up	I fyny
+route_down	I lawr
+route_remove	Tynnu
+route_clear	Clirio
+save_printers	Cadw argraffwyr
+print_test_page	Argraffu tudalen brawf
+no_printer_assigned	Dim argraffydd
+test_page_no_printer	Dim argraffydd ar gyfer {place} — atodwch argraffydd, yna ceisiwch eto
+test_page_pick_first	Dewiswch argraffydd(wyr) ar gyfer tudalen brawf yn gyntaf — yna Argraffu tudalen brawf
+test_printers_dd	Argraffwyr ar gyfer tudalen brawf
+test_printers_dd_n	{n} argraffydd ar gyfer tudalen brawf · tapiwch i newid
+kot_test_printers_dd	Argraffwyr ar gyfer Print Prawf
+kot_test_printers_dd_n	Argraffydd(wyr) {n} ar gyfer Print Prawf · tapiwch i newid
+test_printer_picked	Prawf ar: {name}
+test_printer_cleared	Ddim yn profi ar: {name}
+test_page_sent_n	Tudalen brawf wedi'i hanfon at {n} argraffydd
+test_kot_pick_first	Dewiswch argraffydd(ion) ar gyfer print prawf yn gyntaf — yna Prawf print
+test_kot_sent_n	Print prawf wedi'i anfon at argraffydd(wyr) {n}
+cancel_pick	Nodi
+cancel_pick_on	Wedi'i nodi
+cancel_pick_meta	Wedi'i nodi i ganslo
+batch_cancel	Canslo'r rhai a nodwyd
+batch_cancel_n	Canslo'r rhai a nodwyd ({n})
+batch_cancel_none	Marciwch un neu fwy o eitemau a anfonwyd yn gyntaf - yna Canslo wedi'i farcio
+batch_cancel_title	Canslo meddyginiaethau a nodwyd — un rheswm, un slip canslo fesul adran
+batch_cancel_ok	Eitemau {n} wedi'u canslo · slip(s) canslo {slips} → {kitchens}
+batch_cancel_ok_noprint	Eitemau {n} wedi'u canslo - mae autoprint wedi'i ddiffodd, felly dim slip canslo
+no_printer_kitchen_station	Dim argraffydd ar gyfer yr orsaf honno
+printers_saved	Wedi'i gadw
+test_page_sent	Tudalen brawf wedi'i hanfon — gwiriwch yr argraffydd
+test_page_sent_one	Tudalen brawf wedi'i hanfon at {name} — gwiriwch yr argraffydd hwnnw
+printers_found	Wedi canfod {n}: {list}
+printers_find_synced	Wedi canfod {n} — {new} newydd
+printer_on_device	wedi'i gadw
+printer_already_added	eisoes wedi'i ychwanegu
+printer_already_saved	Eisoes wedi'i gadw: {name}
+find_printers	Dewch o hyd i argraffwyr
+printers_looking	Yn chwilio…
+saving_printer	Yn ychwanegu argraffydd…
+cancelled	Wedi'i ganslo
+printers_tap_find	Tapiwch Chwilio i restru argraffwyr y gall y ddyfais hon eu defnyddio.
+printers_none_found	Dim wedi'u canfod — teipiwch enw argraffydd system neu IP (e.e. 192.168.1.50).
+printer_from_find	Wedi ychwanegu {name}
+kot_printer_ph	Argraffydd ar gyfer slipiau
+bill_printer_ph	Argraffydd ar gyfer biliau
+kot_print_on	Tocynnau argraffu'n awtomatig: Ymlaen
+kot_print_off	Tocynnau argraffu'n awtomatig: Wedi'u diffodd
+queue_refused	Heb ei dderbyn gan y siop ({n}) — gwiriwch bob un wrth y cownter:
+clear_not_accepted	Wedi'i wirio — clirio'r rhestr hon
+device_name_ph	Enw'r ddyfais hon
+lan_last_update	diweddariad olaf {time}
+lan_not_accepted	{n} heb eu derbyn
+connected_now	wedi cysylltu nawr
+backup_failed	Methodd y copi wrth gefn awtomatig olaf: {e}
+backup_overdue	Dim copi wrth gefn ers {n} diwrnod — cadwch yr ap ar agor ar y ddyfais hon fel y gall wneud copi.
+disk_low	Dim ond {mb} MB rhydd ar y ddyfais hon — bydd copïau wrth gefn yn methu cyn bo hir. Rhyddhewch ychydig o le.
+last_seen_devices	Gwelwyd ddiwethaf: {time}
+sync_interval	Cysoni bob {secs}s
+connection_to_shop	Cysylltiad â'r siop
+supplier_name_ph	Enw cyflenwr (neu barti)
+supplier_ph	Cyflenwr
+switch_device	Newid y ddyfais hon
+take_payment	Cymryd taliad
+tax_added_till	{tax} heb gynnwys
+tax_inside_price	{tax} wedi'i gynnwys
+tax_invoice	Anfoneb dreth
+till_to_bank	Til → banc
+units_heading	Unedau
+unlock_after_pairing	Rhowch PIN
+unlock_with_login	Datgloi gyda mewngofnodi
+unmark	Dad-nodi
+update_my_password	Diweddaru fy nghyfrinair
+update_my_pin	Diweddaru fy mewngofnodi
+duress_heading	PIN datgloi argyfwng (Perchennog yn unig)
+duress_help	Dewisol. Os teipir y PIN hwn wrth ddatgloi yn lle'ch un chi, mae holl gofnodion y llyfrau'n cael eu dileu (gwerthiannau, cyfriflyfrau, hanes) ac mae'r til yn agor fel Perchennog yn edrych yn normal — meddyginiaethau, prisiau, cownteri, gweithwyr a gosodiadau sy'n aros. Nid yw sgema a chyfluniad yn cael eu dileu. Defnyddiwch dim ond os ydych yn cael eich gorfodi i ddatgloi. Gadewch yn wag a chadwch i'w ddiffodd. Byth yr un fath â PIN neb.
+duress_pin_ph	PIN argyfwng (4–12 digid)
+duress_confirm_ph	Teipiwch eto i gadarnhau
+save_duress_pin	Cadw PIN argyfwng
+clear_duress_pin	Diffodd PIN argyfwng
+duress_on	Mae PIN datgloi argyfwng ymlaen
+duress_off	Mae PIN datgloi argyfwng i ffwrdd
+duress_saved	PIN datgloi argyfwng wedi'i gadw
+duress_cleared	PIN datgloi argyfwng wedi'i ddiffodd
+upi_amount_ph	Swm UPI
+void	Diddymu
+write_off_ap	Diddymu AP
+write_off_heading	Diddymu (clirio heb dalu)
+write_off_nil	Diddymu / balans sero
+your_brand	Eich brand (yn yr ap)
+your_categories	Eich categorïau
+account_kind	Math o gyfrif (tapiwch un)
+actual_total_cap	CYFANSWM GWIRIONEDDOL
+amend_help	Dewiswch werthiant i'w ddiwygio, ei ddiddymu neu ei ad-dalu. Mae diwygiadau'n cadw'r hanes llawn. Mae Cyfanswm Talgryn yn dechrau'n hafal i Wedi'i gymhwyso — golygwch dim ond i dalgrynnu. Efallai y bydd angen PIN Perchennog neu Reolwr ar ddiddymu ac ad-daliad (wedi'i deipio uchod; wedi'i gofnodi gyda'ch enw).
+applied_total_cap	CYFANSWM WEDI'I GYMHWYSO
+bank_balance	Balans banc
+bank_net_today	Banc net heddiw
+branch_export_help	Mae allforio'n ysgrifennu branch_snapshot_CODE_DATE.json i'r ffolder copïau wrth gefn ac yn ei gopïo i'r clipfwrdd. I fewnforio diwrnod allfa arall, cadwch ei ffeil fel import_branch_snapshot.json yn yr un ffolder, yna tapiwch Mewnforio.
+brand_shown_help	Yn cael ei ddangos ar sgriniau y tu mewn i'r ap. Mae enw a eicon yr ap sydd wedi'i osod ar y ddyfais hon yn aros fel rhestr y platfform.
+app_icon	Eicon ap
+logo_help	Marc siop dewisol ar sgriniau yn yr ap.
+onboard_layout	Beth rydych chi'n ei gael
+item_photo_help	Dewisol. Heb lun rydym yn dangos llythrennau cyntaf o enw'r eitem.
+stamp_heading	Sêl
+stamp_image_help	Delwedd stamp ddewisol ar filiau printiedig a'r arddangosfa cwsmer.
+payment_qr_heading	QR talu
+payment_qr_image_help	QR statig ar filiau ac arddangos cwsmeriaid; fel arall mae talu yn defnyddio UPI QR deinamig o'r VPA uchod.
+cash_in_hand	Arian parod wrth law (til)
+change_my_pin_heading	Fy mewngofnodi
+connect_to_server	Cysylltu â'r Gweinydd
+counter_locked	Cownter 01 · Wedi'i gloi
+country_pack_help	Mae pecyn gwlad yn gosod enw a mathemateg y dreth, y rheilffordd talu ar unwaith, a'r id busnes a argraffir ar filiau. Nid yw Kumkaj yn ffeilio trethi nac yn cyhoeddi e-anfonebau llywodraeth yn unman.
+currency_use_help	Sgroliwch a thapiwch Defnyddio ar gyfer unrhyw arian cyfred a gefnogir.
+day_close_help	Mae cofnodi cau diwrnod yn cadw'r crynodeb hwn (ac amrywiant y drôr os cafodd ei gyfrif) i'r log archwilio. Nid yw'n atal gwerthu.
+expenses_word	Treuliau
+feature_access_help	Beth allant ei agor — dewisol; mae'r swydd uchod eisoes yn gosod rhagosodiad
+footer_local	SQLite lleol · Am ddim am byth · Dim cwmwl
+fresh_book_tabiyat	Ffres = catalog gwag (ychwanegwch eitemau yn ddiweddarach). Llyfr = teipiwch y stoc agoriadol a phwy sydd arnoch chi isod.
+fresh_selected	Fresh wedi'i ddewis — mae'r catalog yn aros yn wag. Tapiwch Wedi gorffen pan fyddwch yn barod.
+gross_word	Gros
+how_start	Sut hoffech chi ddechrau?
+kot_print_help_tabiyat	Heb ei ddefnyddio ar siop cownter.
+later_country_pack	Yn ddiweddarach: Gosodiadau → cymhwyswch eich pecyn gwlad ar gyfer labeli treth a thalu.
+local_badge	LLEOL
+mix_type_hint_tabiyat	Rhannwch ar draws arian parod / UPI / cerdyn / credyd os oes angen. Mae angen cwsmer uchod ar gyfer credyd.
+money_in_sales	Arian i mewn (gwerthiannau)
+net_word	Net
+offline_badge	ALL-LEIN
+optional_login_help	Mewngofnodi dewisol (id + cyfrinair). Mae'r Perchennog yn gosod unwaith; dim ond y defnyddiwr all newid y cyfrinair yn ddiweddarach.
+or_unlock_login	Neu datgloi gydag id mewngofnodi + cyfrinair
+permission_preset	Swydd (yn gosod sgriniau a gweithredoedd arian)
+preset_help_tabiyat	Ariannwr: gwerthu. Rheolwr: gwerthu + eitemau + diddymu/diwygio.
+product_locked_tabiyat	Tabiyat
+product_only_tabiyat	Tabiyat yw system weithredu'r fferyllfa: gwerthu meddyginiaeth, llyfrau swp/dod i ben, credyd a llyfrau — all-lein ar eich dyfeisiau. Mae baneri Schedule H / Rx yn nodiadau perchennog, nid cydymffurfiaeth.
+purchases_cogs	Pryniannau (cost nwyddau)
+qty_cap	NIFER
+restore_help	Adfer: dewiswch gopi wrth gefn. Mae'r llyfrau'n agor fel yr oeddent bryd hynny; mae'r llyfrau fel y maent nawr yn cael eu cadw yn gyntaf, felly gellir dadwneud hyn.
+wipe_data_heading	Dileu data lleol
+wipe_data_help	Perchennog yn unig - yr un dewisiadau â dadosod Windows. Mae cofnodion busnes yn clirio hanes masnachu ond yn cadw eitemau a gosodiadau (fel y PIN datgloi brys). Mae gosodiad siop yn dileu'r gronfa ddata llyfrau. Mae dewisiadau sgrin yn clirio ffenestr/iaith. Cadarnhewch gyda PIN y Perchennog. Mae'r PIN datgloi mewn argyfwng ar y Tîm ar wahân (chwifio cudd wrth ddatgloi).
+wipe_trading	Cofnodion busnes
+wipe_schema	Gosodiad y siop
+wipe_ui	Dewisiadau sgrin
+wipe_owner_pin_ph	PIN y Perchennog i ddileu
+wipe_delete_selected	Dileu'r hyn a ddewiswyd
+wipe_owner_only	Dim ond y Perchennog all ddileu data lleol.
+restore_owner_only	Dim ond y Perchennog all adfer copi wrth gefn.
+wipe_owner_pin_needed	Rhowch PIN y Perchennog i ddileu data lleol.
+wipe_nothing_selected	Dewiswch beth i'w ddileu yn gyntaf.
+wipe_done	Data lleol a ddewiswyd wedi'i ddileu.
+wipe_schema_done	Gosodiad y siop wedi'i ddileu — dewiswch Weinydd neu Gleient i barhau.
+rounded_total	Cyfanswm talgryn
+setup_app_tabiyat	Gosod Tabiyat
+shop_logo_optional	Logo siop (dewisol)
+stock_type_help	Teipiwch enw'r eitem (mae rhan ohono'n ddigon), maint, yna addaswch. Mae angen Dechrau olrhain unwaith ar eitemau nad ydynt yn cael eu cyfrif eto.
+team_owner_help	Gadewch y person yn wag i ychwanegu rhywun: enw, swydd, enw defnyddiwr, PIN, a chyfrinair dewisol, yna Ychwanegu. Dewiswch berson i olygu'r un math o ffurflen — enw, enw defnyddiwr, cyfrinair, sgriniau, a hawliau — yna Cadw. Eich PIN a'ch cyfrinair chi yw un mewngofnodi ar y gwaelod. Nid yw'r Perchennog yn newid PIN unrhyw un arall.
+staff_name_ph	Enw staff
+staff_copy_hire_ph	Copïo gosodiad o (dewisol)
+staff_copy_hire	Defnyddio gosodiad y person hwn
+staff_edit_name_ph	Enw arddangos
+staff_rename	Cadw enw
+staff_copy_edit_ph	Copïo gosodiad gan berson arall
+staff_copy_edit	Copïo eu gosodiad ar yr un a ddewiswyd
+staff_copy_edit_onto	Copïo eu gosodiad ar {name}
+staff_deactivate_named	Tynnu {name}
+staff_renamed	Enw wedi'i gadw
+staff_setup_copied_hire	Gosodiad wedi'i gopïo o {name} — gosodwch enw a PIN newydd, yna Ychwanegu staff
+staff_setup_copied_edit	Wedi copïo gosodiad {from} ar {to}
+staff_copy_need_selected	Dewiswch pwy i'w olygu yn gyntaf
+staff_copy_need_source	Dewiswch gyfluniad pwy i'w gopïo
+staff_copy_same	Dyna'r un person — dewiswch rywun arall
+staff_rename_need_selected	Dewiswch pwy i'w ailenwi yn gyntaf
+team_pick_hint	Dewiswch pwy i'w olygu - mae sgriniau, hawliau arian, a gorsafoedd yn ymddangos ar gyfer y person hwnnw'n unig.
+team_stations_help	Gorsafoedd y gallant eu defnyddio
+team_stations_changed	Gorsafoedd wedi'u newid — Cadw gosodiadau ar gyfer y person hwn
+team_features_changed	Sgriniau wedi newid — Cadw gosodiad ar gyfer y person hwn
+team_rights_changed	Hawliau wedi newid — Cadw gosodiad ar gyfer y person hwn
+they_owe_us	Maen nhw'n ein dyled ni
+unit_at_cap	Uned @
+units_help	Codau ar gyfer labeli eitemau (kg, darn, bag). Rhaid i bob uned gysylltu — yn uniongyrchol neu drwy unedau eraill — â safon (kg · cm · ml · pc), e.e. 1 crât = 2 bocs ac 1 bocs = 20 cm. Trosi: 1 o = ffactor i. Nid yw arian cyfred byth yn unedau.
+units_picker_help	Tap On / Off i ddangos uned mewn codwyr Prynu ac Eitemau. Mae unedau i ffwrdd yn dal i drawsnewid.
+unit_picker_on	Ymlaen
+unit_picker_off	I ffwrdd
+we_owe_them	Rydym yn eu dyled nhw
+who_unlocking	Pwy sy'n datgloi?
+locked_word	Wedi'i gloi
+show_pin	Dangos PIN
+hide_pin	Cuddio PIN
+set_owner_pin	GOSOD PIN PERCHENNOG
+enter_owner_passcode	RHOWCH COD PERCHENNOG
+enter_staff_passcode	RHOWCH COD STAFF
+pin_count_zero	0 / 12 digid · o leiaf 4, yna OK
+pin_count_need	{} / 12 digid · angen {} arall
+pin_count_full	12 / 12 digid · pwyswch OK
+pin_count_ready	{} / 12 digid · pwyswch OK pan yn barod
+pin_hint_choose	Dewiswch 4–12 digid · Enter neu Ddatgloi i gadw
+pin_hint_new	PIN Perchennog newydd 4–12 digid · Enter neu Ddatgloi
+pin_hint_shop_code	Dyfais y siop · cod paru {}
+pin_hint_books	Mae'r ddyfais hon yn dal y llyfrau
+pin_hint_paired	Til ychwanegol wedi'i baru — datgloi i werthu
+pin_hint_pair_first	Til ychwanegol — parwch â dyfais y siop yn gyntaf
+unlock_to_continue	Datgloi i barhau
+no_staff_yet	Dim staff eto — datgloi fel Perchennog, yna Tîm
+status_server_set_pin	Modd Gweinydd — gosod PIN Perchennog
+status_server_tills	Modd Gweinydd — gall tiliau ychwanegol ymuno. Datgloi
+status_server_unlock	Modd Gweinydd — datgloi fel Perchennog
+status_client_unlock	Modd Cleient — datgloi i werthu
+icon_new_selected	Eicon: ffeil newydd wedi'i dewis — tapiwch Cadw brand
+icon_custom	Eicon: marc lleoliad personol
+icon_default	Eicon: marc Kumkaj (rhagosodiad) — dewiswch un personol
+logo_yours	Logo: logo eich siop — yn cael ei ddangos ar sgriniau a derbynebau
+logo_default	Logo: marc Kumkaj (rhagosodiad) — dewiswch eich un chi os oes gennych un
+tmpl_current	Cyfredol: {} — {}
+tmpl_selected	Wedi dewis: {} — {}
+setup_complete	Gosodiad wedi'i gwblhau
+onboard_fresh_tmpl	Fresh · {} — mae'r catalog yn dechrau'n wag; ychwanegwch eitemau yn Eitemau, yna Wedi gorffen.
+onboard_book_tmpl	Book · {} — ychwanegwch eitemau a chredyd agoriadol, yna Wedi gorffen.
+onboard_template_tmpl	Enwch y lle os dymunwch, yna dewiswch sut i ddechrau.
+tmpl_blurb	Cownter fferyllfa: meddyginiaethau, swp/dod i ben, khata, llyfrau.
+tmpl_how	Gwerthu wrth y cownter; Prynu ar gyfer stoc; Llyfrau ar gyfer y llyfr dydd.
+reports_facet_title	Adroddiadau
+reports_facet_help	Llyfrau'r dydd, heneiddio partïon, postiadau banc, ac elw a cholled y cyfnod.
+against_bill_ph	Yn erbyn bil # uchod (dewisol)
+aliases_ph	Llysenwau, enwau byr — wedi'u gwahanu gan goma
+amount_blank_full_ph	Swm (gwag = balans llawn)
+amount_owed_ph	Swm sy'n ddyledus
+amount_ph	Swm
+amount_received_ph	Swm a dderbyniwyd
+amount_we_pay_ph	Swm rydym yn ei dalu
+business_name_ph	Enw busnes
+category_new_ph	Categori (dewisol, wedi'i chreu os yn newydd)
+code_bag_ph	Cod (bag)
+conv_factor_ph	Ffactor (25 = 1 bag → 25 kg)
+country_code_ph	Cod gwlad e.e. IN, GB, US, AE, BR
+credit_khata_amount_ph	Credyd / swm cyfrif
+credit_limit_ph	Terfyn credyd (0 = dim)
+from_code_ph	O god (bag)
+item_name_lang_ph	Enw eitem — teipiwch ef yn eich iaith
+login_id_opt_ph	Enw defnyddiwr (gofynnol, unigryw)
+manager_pin_ph	PIN rheolwr i gymeradwyo (dim ond os na allwch ddiddymu)
+new_branch_name_ph	Enw cangen newydd
+new_password_ph	Cyfrinair newydd (dewisol)
+new_pin_ph	PIN newydd (4–12 digid)
+note_bank_ph	Nodyn (cyfran, tynnu'n ôl, …)
+note_buy_expense_ph	Nodyn (tanwydd, rhent, …)
+note_expense_ph	Nodyn (tanwydd, swyddfa, …)
+options_tabiyat_ph	Opsiynau — Maint*: Bach=199, Mawr=399 | Ychwanegion+3: Caws=40, Olewydd=30 | Caws ychwanegol=40
+part_second_way_ph	Rhan mewn ail ffordd (dewisol)
+phone_ph	Ffôn
+place_name_ph	Enw'r lle hwn
+qty_example_ph	Nifer (e.e. 1.5 ar gyfer kg)
+quantity_ph	Maint
+reason_required_ph	Rheswm (gofynnol)
+role_title_ph	Teitl rôl (e.e. Barista)
+service_pct_ph	Gwasanaeth % dewisol 0/10/12
+short_code_ph	Cod byr (MG02)
+starting_password_ph	Cyfrinair cychwynnol (dewisol)
+starting_pin_ph	PIN cychwynnol (4–12 digid)
+station_name_ph	Enw'r orsaf (dewisol)
+station_new_ph	Adran (dewisol)
+table_name_ph	Enw cownter / bae
+tax_rate_ph	Enw cyfradd dreth neu % — Safonol, Llai, 0, 5, 12, 18, 20
+to_code_ph	I god (kg)
+uncleared_no_ph	Rhif heb ei glirio # uchod
+unit_cost_ph	Cost uned
+unit_name_bag_ph	Enw (Bag)
+unit_plate_ph	Uned (plât / pc — gwag = yr un)
+pay_credit	Credyd
+book_kind_today	Llyfrau heddiw
+book_kind_month	Llyfrau'r mis hwn
+book_kind_aging	Heb ei setlo / debyd-credyd
+book_kind_balance	Mantolen
+order_help	Tapiwch eitem i'w ychwanegu.
+floor_help	Mae'r siop hon yn gwerthu wrth y cownter. Nid yw byrddau na llawr bwyta'n rhan o Tabiyat.
+kitchen_help	Heb ei ddefnyddio ar siop cownter.
+kitchen_empty	Dim tocynnau agored (mae siopau cownter fel arfer yn gadael y sgrin hon heb ei defnyddio).
+add_a_table	Ychwanegu bwrdd
+add_station_heading	Ychwanegu adran fferyllfa
+categories_help	Tapiwch Defnyddio i ffeilio'r eitem uchod o dan y categori honno. Mae llun yn rhoi llun i'r categori; heb un mae'n dangos ei lythrennau cyntaf.
+dish_search_ph	Chwilio enw, halwyn neu god bar…
+tile_free	Rhydd
+tile_occupied	Yn eistedd
+tile_food_ready	Bwyd yn barod
+tile_bill_printed	Bil wedi'i argraffu
+tile_paid	Wedi talu
+tile_bill_btn	Bil
+tile_occupy_btn	Eistedd gwesteion
+tile_free_btn	Rhyddhau bwrdd
+tile_ready_btn	Rhyddhau bwrdd
+tile_undo_bill	Dadwneud bil
+summary_busy	byrddau prysur
+summary_to_collect	i gasglu
+summary_on_floor	ar y llawr
+floor	Siop
+sizes_as_items_ph	Meintiau fel eitemau ar wahân (dewisol) — Hanner=120, Llawn=200
+dish_group_ph	Grŵp cryfder / pecyn (dewisol) — e.e. stribed 500mg
+discount	Disgownt
+remove_discount	Tynnu disgownt
+apply_discount	Cymhwyso disgownt
+save_opening_cash	Cadw arian agoriadol
+close_shift_print	Cau shifft ac argraffu slip
+area_prices_ph	Prisiau ardal (dewisol) — AC=220, Pecyn=210
+discount_ph	10% neu 50
+discount_reason_ph	Rheswm (e.e. gwestai rheolaidd, bwyd hwyr)
+opening_float_ph	Arian a roddwyd yn y drôr y bore yma
+shift_counted_ph	Arian wedi'i gyfrif wrth drosglwyddo
+opening_float	Arian agoriadol (arnof)
+shift_handover	Trosglwyddo shifft
+shift_since	Y shifft hon ers
+expected_in_drawer	Disgwyliedig yn y drôr
+right_discount	Rhoi disgownt
+floor_in_kitchen	Ar y gweill
+floor_eating	Wedi'i weini
+pick_category	Dewis categori
+close_category_list	Cau rhestr categorïau
+new_category_row	Categori newydd — wedi'i chreu pan fyddwch yn cadw'r eitem
+your_category	Eich categori
+suggested_category	Awgrymir - o'n heitemau
+category_search_ph	Categori — chwiliwch eich rhai chi neu teipiwch un newydd
+line_sent_state	Anfonwyd
+line_nc_state	Rhad ac am ddim (NC) — heb ei godi
+cancel_item_short	Canslo
+nc_short	NC
+charge_again_short	Codi
+move_short	Symud
+cancel_item_title	Canslo'r eitem hon - mae'r swyddfa gefn yn cael slip canslo
+nc_item_title	Gwneud yr eitem hon yn rhad (NC)
+charge_again_title	Codi'r eitem hon eto
+move_item_title	Symud yr eitem hon i fwrdd arall
+already_cooked	Eisoes wedi'i goginio (gwastraff)
+not_cooked_yet	Heb ei goginio eto
+return_to_customer	Dychwelyd at y cwsmer
+short_by	Yn brin o
+tip_not_sale	Cildwrn (staff, nid gwerthiant)
+right_settle	Cymryd taliad
+right_cancel_sent	Canslo eitem a anfonwyd
+right_complimentary	Rhad ac am ddim (NC)
+right_move_table	Symud / uno cownteri
+right_reprint	Argraffu bil eto
+right_allowed	Wedi'i ganiatáu
+right_with_approval	Gydag cymeradwyaeth
+right_denied	Heb ei ganiatáu
+editing_staff	Golygu
+finding_server	Yn chwilio am weinydd y siop ar y Wi‑Fi hwn…
+no_server_found	Dim wedi'u canfod. Ar y Gweinydd: Gosodiadau → Dyfeisiau eraill → Caniatáu tiliau ychwanegol (yr un Wi‑Fi). Neu teipiwch yr IP a ddangosir yno.
+servers_found_pick	Tapiwch y siop rydych am gysylltu â hi.
+server_host_selected	Yn defnyddio {host} — rhowch y cod paru, yna Parwch nawr.
+print_bill	Argraffu bil
+table_actions	Gweithredoedd cownter
+move_merge_table	Symud / uno bwrdd
+move_help	Symudwch archeb y rhifydd hwn i fwrdd rhydd, neu ei gyfuno ag un rhedeg.
+move_target_ph	Enw cownter
+approval_pin_ph	PIN rheolwr (dim ond os gofynnir)
+move_here	Symud yma
+merge_into	Uno i mewn iddo
+line_reason_ph	Rheswm (e.e. cwsmer wedi newid meddwl, allan o stoc)
+line_qty_ph	Faint i'w canslo (gwag = y cyfan)
+line_target_ph	Symud i fwrdd (e.e. D5)
+confirm	Cadarnhau
+menu_search_ph	Chwilio eitem neu god byr
+customer_paid_ph	Talodd y cwsmer
+tip_ph	Cildwrn
+table_area_ph	Ardal (e.e. Bwyta i mewn, Pecyn, AC)
+table_range_ph	Llawer ar unwaith: D1-D20
+add_these_tables	Ychwanegwch y cownteri hyn
+remove_these_tables	Tynnwch y cownteri hyn
+table_remove_ph	Tynnu: T1-T24, neu enw un bwrdd
+find_server	Dewch o hyd i weinydd y siop
+bill_format	Fformat bil
+bill_format_help	Argraffwyd o dan enw eich siop ar bob bil. Llinellau ar wahân gyda | (e.e. MG Road, Rajkot | Ph 98250 00000).
+bill_header_ph	Cyfeiriad | ffôn
+fssai_ph	Rhif trwydded cyffuriau (dewisol — eich geiriad)
+bill_footer_ph	Troedyn (e.e. Diolch, dewch eto)
+save_bill_format	Cadw fformat bil
+kot_format	Fformat slip
+kot_format_help	Tapiwch faes yn y rhestr. Mae'r sioe, maint y ffont, a'r pwysau yn berthnasol i'r maes hwnnw ar y math slip a ddewiswyd uchod. Mae pob math yn cadw ei faint a'i bwysau ei hun.
+kot_format_fields	Meysydd
+kot_field_next	Maes nesaf
+kot_field_show	Dangos
+kot_field_hide	Cuddio
+kot_field_on	dangos
+kot_field_off	cuddio
+kot_field_size	Maint ffont
+kot_field_size_ph	e.e. 16, 20, 24, 28, 32…
+kot_weight_light	Ysgafn
+bill_kot_panel_help	Cynllun y bil a lled y cynnwys. Ariannwr yw pwy gyhoeddodd neu setlo'r bil - mae'r stori werthu lawn yn aros yn y llyfrau.
+std_size_ph	e.e. 18, 20, 26…
+kot_show_shop	Enw siop
+kot_hide_shop	Cuddio siop
+kot_show_time	Amser
+kot_hide_time	Cuddio amser
+kot_show_waiter	Ariannwr
+kot_hide_waiter	Cuddio ariannwr
+kot_show_station	Gorsaf
+kot_hide_station	Cuddio gorsaf
+kot_show_table	Cownter
+kot_hide_table	Cuddio bwrdd
+kot_show_kot_no	Tocyn Rhif
+kot_hide_kot_no	Cuddio tocyn Rhif
+kot_width	Amlap rhagolwg (gosod lled cynnwys ar y tab slip)
+kot_width_58	58 mm
+kot_width_80	80 mm
+kot_kind_heading	Tocyn math
+kot_kind_original	Gwreiddiol
+kot_kind_duplicate	Dyblyg
+kot_kind_modified	Wedi'i addasu
+kot_kind_cancelled	Wedi'i ganslo
+kot_style_heading	Maint a phwysau math maes
+kot_style_title	Teitl
+kot_style_item_qty	Eitem · Nifer
+kot_style_field_pick	Dewis maes
+kot_weight_regular	Rheolaidd
+kot_weight_bold	Trwm
+kot_align	Alinio
+kot_align_start	Dechrau
+kot_align_center	Canol
+kot_align_end	Diwedd
+content_width	Lled cynnwys (mm)
+content_width_bill	Lled cynnwys bil (mm)
+content_width_kot	Lled cynnwys tocyn (mm)
+content_width_ph	Neu teipiwch led cynnwys, 40–210 mm
+content_width_help	Pa mor eang y mae'r slip hwn yn ei argraffu. Mae Bill yn cadw ei led ei hun.
+content_width_bill_help	Pa mor eang y mae'r bil cwsmer yn ei argraffu. Diofyn 210 mm (tudalen). Slip cul 58 mm, slip 80 mm o led, 112 mm 4-modfedd, 210 mm A4-led. Teipiwch unrhyw werth o 40 i 210. Mae gan docynnau eu lled eu hunain ar y tab slip.
+content_width_kot_help	Pa mor eang mae'r tocyn yn argraffu. Diofyn 80 mm. Slip cul 58 mm, slip 80 mm o led, 112 mm 4-modfedd, tudalen 210 mm. Teipiwch unrhyw werth o 40 i 210. Mae gan filiau cwsmeriaid eu lled eu hunain ar y tab Bil.
+vp_paper_width	Lled cynnwys (mm)
+vp_paper_width_ph	Neu teipiwch led cynnwys, 40–210 mm
+vp_paper_width_help	Mae lled y cynnwys wedi'i osod o dan fformat Bill & Slip - ar wahân ar gyfer y bil (diofyn 210 mm) a'r tocyn (diofyn 80 mm).
+kot_size	Maint ffont
+kot_size_s	Bach
+kot_size_m	Arferol
+kot_size_l	Mawr
+std_size	Maint ffont
+kot_copies	Copïau
+kot_copies_1	1
+kot_copies_2	2
+kot_copies_3	3
+kot_title_ph	Teitl (gwag = TOCYN)
+kot_footer_ph	Nodyn cefn swyddfa (dewisol)
+kot_preview	Rhagolwg
+save_kot_format	Cadw fformat Slip
+test_kot_format	Print prawf
+test_kot_sent	Rhagolwg tocyn wedi'i anfon
+test_bill_format	Bil prawf
+test_bill_sent	Rhagolwg bil wedi'i anfon
+test_print_no_printer	Dim argraffydd ar gyfer y swydd honno — dewiswch un ar y sgrin hon
+kot_format_saved	Fformat slip wedi'i gadw
+std_print	Maint argraffu bil
+std_print_help	Maint y ffont ar gyfer swyddi biliau Portread Safonol a Thirwedd ar argraffwyr OS / dogfen (nodwch y pwyntiau - nid Bach/Arferol/Mawr). Yr un maint ar y ddau gyfeiriad.
+std_size_s	Bach
+std_size_m	Arferol
+std_size_l	Mawr
+save_std_print	Cadw maint argraffu bil
+std_print_saved	Maint argraffu bil wedi'i gadw
+print_brand_kit	Cit brand argraffu
+print_brand_kit_help	Delweddau QR stamp a thalu dewisol ar wynebau biliau ac arddangosfa cwsmeriaid LAN. Mae UPI QR deinamig o'r VPA uchod yn dal i weithio pan nad oes delwedd QR talu wedi'i gosod.
+choose_stamp	Dewis sêl
+clear_stamp	Clirio sêl
+stamp_set	Stamp: ar ffeil — wedi'i ddangos ar ddangosydd cwsmeriaid ac wedi'i enwi ar filiau printiedig
+stamp_none	Sêl: dim
+choose_payment_qr	Dewis QR talu
+clear_payment_qr	Clirio QR talu
+payment_qr_set	Taliad QR: ar ffeil - wedi'i ddangos ar arddangosfa cwsmeriaid (yn disodli swm UPI QR yno)
+payment_qr_none	QR talu: dim — QR swm o ID UPI wrth dalu
+aggregator_import	Archebion agregydd (ffeil)
+aggregator_import_help	Mewnforio lleol dewisol: rhowch import_aggregator_orders.json yn y ffolder copïau wrth gefn (arae neu {"orders":[…]}), yna tapiwch Mewnforio. Nid yw byth yn rhwystro'r cownter; mae Zomato/Swiggy byw yn Cloud.
+import_aggregator_file	Mewnforio ffeil agregydd
+team_pick_ph	Staff i'w olygu — enw, enw defnyddiwr, neu ddewis
+select_staff	Dewis y staff hwn
+rights_help	Gweithredoedd arian ar gyfer y person hwn — tap i feicio: Wedi'i ganiatáu → Angen PIN pennaeth → Ni chaniateir. Argraffu bil eto yn filiau yn unig; adrannau yw'r rhestr wirio isod.
+dish_picker_help	Chwiliwch neu bori ein heitemau a thapio un i lenwi ei enw a llun - neu gadw eich enw eich hun. Gosodwch eich pris (0 yn iawn), yna Ychwanegu eitem.
+close_dish_list	Cau'r rhestr eitemau
+own_item_name	Defnyddio hwn fel eich enw eitem eich hun
+on_your_menu	Yn y rhestr feddyginiaethau
+edit	Golygu
+schemes	Cynlluniau / cynigion
+schemes_help	Prynu-un-cael-un, y cant i ffwrdd, a bwndeli sefydlog. Enghraifft: Prynwch 2 paracetamol cael 1 fitamin.
+scheme_bogo_ph	Prynwch 2 paracetamol cael 1 fitamin
+add_scheme	Ychwanegu BOGO
+schedule_ph	Oriau - Llun-Gwener 07:00-11:00 neu gyda'r nos 17:00-19:00=150
+upi_vpa_ph	ID UPI (VPA)
+upi_payee_ph	Enw talai UPI (dewisol)
+upi_qr	UPI QR
+show_upi_qr	Dangos UPI QR
+close_upi_qr	Cau
+upi_qr_help	Cwsmer yn sganio ac yn talu. Tap Cymryd taliad ar ôl iddynt dalu. Ail sgrin: agor URL Gweinydd / arddangos ar LAN.
+kot_recall	Galw'n ôl
+recently_done	Wedi gorffen yn ddiweddar
+recall_kot_ph	Tocyn # i gofio
+role_help_customer	Rôl: Cwsmer — cyfrif (maen nhw'n ein dyled ni). Gall yr un parti hefyd gyflenwi stoc.
+role_help_both	Rolau: Cwsmer + Cyflenwr — un parti, cyfrif a llyfrau taladwy, net yn Adroddiadau.
+role_help_supplier	Rôl: Cyflenwr — rydym yn eu dyled nhw am bryniannau.
+dine_in_pick_table	Heb ei ddefnyddio ar siop cownter
+choose_table	Dewiswch cownter
+change_table	Newid bwrdd
+pick_table_banner	Dewiswch fwrdd ar gyfer yr archeb hon
+items_word	eitemau
+items_section	Eitemau
+back_to_order	Yn ôl i'r archeb
+new_items_head	Heb ei anfon eto
+price_ph	Pris
+price_ph_gst_inside	Pris ({tax} wedi'i gynnwys)
+cancel_needs_table	Mae gwerthiannau cownter yn aros ar y tocyn nes i chi gymryd taliad
+tax_rates_missing_hint	Dim cyfradd {tax} ar yr eitemau hyn — ar Eitemau a osodwyd Cyfradd Treth (prisiau eisoes yn cynnwys {tax} o dan {tax} yn gynwysedig)
+taxable_value	Gwerth trethadwy
+gst_inside_price_note	({tax} wedi'i gynnwys)
+start_with_template	Dechreuwch gyda'n templed eitemau
+template_heading	Eitemau cychwynnol
+template_info	Categorïau {c} ac eitemau {d} gyda lluniau, yn barod i'w hychwanegu. Mae'r prisiau'n dechrau ar ₹0 — gosodwch eich un chi wedyn.
+template_import	Mewnforio templed cyflawn
+template_confirm	Ychwanegu eitemau {d} gyda'u categorïau? Mae eitemau sydd gennych eisoes yn aros fel y maent.
+template_yes	Ie, mewnforio
+template_importing	Wrthi'n mewngludo meddyginiaethau…
+template_import_progress	Yn mewnforio… {d}/{t}
+template_done	Mae pob eitem o'n templed ar eich eitemau.
+template_imported	Ychwanegwyd eitemau {d} a chategorïau {c} - gosodwch eu prisiau ar y sgrin hon
+client_template_heading	Mewnforio catalog
+client_template_info	{title}: Categorïau {c}, eitemau {d} gyda phrisiau, lluniau ac enwau eraill. Eitemau ar goll yn unig - enwau sydd gennych eisoes yn aros.
+client_template_import	Mewngludo'r meddyginiaethau hyn
+client_template_confirm	Ychwanegu eitemau {d} o {title}? Mae eitemau sydd gennych eisoes yn aros fel y maent.
+client_template_importing	Yn mewnforio {title}…
+client_template_done	Mae pob eitem o {title} ar eich eitemau.
+client_template_imported	Ychwanegwyd eitemau {d} a chategorïau {c} o {title}
+resv_heading	Archebion
+resv_name_ph	Enw cwsmer
+resv_phone_ph	Ffôn (dewisol)
+resv_guests_ph	Pobl
+resv_when_ph	Pryd — 20:30, yfory 13:00
+resv_table_ph	Cownter (dewisol)
+resv_add	Archebu
+resv_seat	Wedi eistedd
+resv_none	Dim archebion yn dod.
+guests_word	gwesteion
+delivery_by_ph	Danfon gan (enw neidiwr neu staff)
+kitchen_all_day	I'w coginio nawr: {items}
+split_bill	Rhannu bil
+split_go	Gwneud bil ar wahân
+cancel	Canslo
+opening_client	Yn agor cleient…
+preparing_desk	Yn paratoi'r desg…
+opening_server	Yn agor gweinydd…
+creating_server	Yn creu gweinydd…
+split_help	Tapiwch yr eitemau y mae un cwsmer yn talu amdanynt · {n} wedi'i ddewis
+split_send_first	Anfonwch slip yn gyntaf — dim ond eitemau sydd gan gefn swyddfa a all fynd i fil ar wahân
+split_pick_some	Tapiwch yr eitemau ar gyfer y bil ar wahân yn gyntaf
+split_done	Bil ar wahân wedi'i wneud - mae ar y llawr wrth ymyl y cownter hwn
+split_marked	bil ar wahân
+order_empty_pick	Archeb yn wag - tap Ychwanegu eitemau uchod i ddewis eitemau.
+add_dishes	Ychwanegu meddyginiaethau
+order_so_far	Ar yr archeb hon: {n} · {total}
+no_dish_match	Nid oes unrhyw eitem yn cyfateb i "{q}"
+pick_dishes_help	Tapiwch eitem i'w hychwanegu · dewiswch gategori i gyfyngu'r rhestr
+pick_done	Wedi gorffen
+pick_done_dd	Wedi gorffen · {label}
+printer_route_mode	Os oes sawl argraffydd ar y lle hwn
+printer_mode_first	Y cyntaf sy'n gweithio
+printer_mode_all	Argraffu ar bob un
+kot_show_area	Ardal
+kot_hide_area	Cuddio ardal
+kot_show_item_hdr	Eitem · Nifer
+kot_hide_item_hdr	Cuddio colofnau
+kot_show_title	Llinell deitl
+kot_hide_title	Cuddio teitl
+kot_field_order	Trefn argraffu
+kot_field_up	Symud i fyny
+kot_field_down	Symud i lawr
+kot_field_cycle	Dewis y nesaf
+kot_field_select	Dewis y nesaf
+kot_field_time	Amser
+kot_field_kot_no	Tocyn Rhif
+kot_field_area	Ardal
+kot_field_table	Cownter
+kot_field_shop	Enw siop
+kot_field_waiter	Gweithwyr
+kot_field_station	Gorsaf
+app_template_blurb_extra	Hefyd: Perchennog Zahir, Asif Gweinyddol, Ariannwr Nawaz; bar ochr blaen; hanes ar ôl 4 awr; Heddiw stripio i ffwrdd; bil cryno.
+dishes_n	Eitemau {n}
+recipe_ph	Rysáit (dewisol - heb ei ddefnyddio ar siop cownter)
+reorder_ph	Prynu mwy ar
+set_reorder	Gosod lefel ail-archebu
+low_stock_alert	Yn dod i ben — prynwch cyn bo hir: {items}
+unpriced_note	Nid oes pris ar eitemau {n} ar eich eitemau eto - maen nhw'n bilio ar 0 nes i chi osod un.
+show_unpriced	Dangos eitemau heb bris yn unig
+show_all_dishes	Dangoswch yr holl eitemau
+role_waiter	Ariannwr
+role_kitchen	Storfa
+role_title_rest_ph	Teitl rôl (e.e. Capten, Prif gogydd)
+preset_help_rest	Ariannwr: gwerthu. Rheolwr: gwerthu + eitemau + diddymu/diwygio.
+kind_raw	Stoc cyfansawdd
+kind_resale	Meddyginiaeth a brynwyd
+kind_dish	Peidiwch â chyfrif stoc
+buy_unit_ph	Uned (kg, litr, darn)
+add_another_way	+ Ychwanegu ffordd arall
+parts_status	Wedi cofnodi {a} o {b} · {c} ar ôl
+save_expense	Cadw traul
+rest_ph	Gweddill
+low_badge	Isel
+stock_empty	Dim byd mewn stoc eto — mae'r hyn a gofnodwch ar Brynu yn ymddangos yma.
+recent_changes	Newidiadau diweddar
+lane_declared_label	Anfoneb dreth
+lane_owner_label	Memo arian
+money_lane_bill	Bil: {lane}

@@ -1,0 +1,835 @@
+# Albanian — Shqip (sq). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	Libra korrier-agjensi + tavolinë rezervimi. Falas offline.
+unlock	Zhblloko
+pin_hint	PIN-i i pronarit fillon si 0000
+sell	Rezervimi
+buy	Paguaj
+books	Libri i ditës
+books_help	Qëndrimi i sotëm. Rezervimi = hyrja e parcelave. Pagesa = faturat dhe shpenzimet e operatorit. Palët = dërguesit dhe transportuesit.
+buy_help	Kuponat e shpenzimeve dhe faturat e operatorit (paratë jashtë). Në llogari qëndron në librin e partisë.
+sell_money_in	Rezervoni një parcelë
+buy_money_out	Shpenzimet / fatura e transportuesit
+record_purchase	Regjistro blerjen
+add_expense	Faturë shpenzimi
+bank_book	Libri i bankës
+credit_help	ID-ja e partisë është unike (emrat mund të përsëriten). Rolet: Dërguesi (AR), Transportuesi (AP) ose të dyja në atë ID. Librat qëndrojnë të ndarë; raportet tregojnë neto.
+party_kind_ph	Roli i personalizuar (opsionale) — ose trokitni lehtë mbi një çip
+parties_list_heading	Partitë e ruajtura
+reports_help	Libri i ditës, debitorë dhe kreditorë, libri i bankës, fatura shpenzimesh, fitim dhe humbje.
+reports_today	Libri i ditës (sot)
+reports_month	Fitim dhe humbje (muaj)
+reports_aging	Të papaguara / debit-kredit
+reports_balance_sheet	Bilanci
+reports	Libri i bankës dhe fitimi
+refresh	Rifresko
+undo	Zhbëj
+start_tracking	Fillo gjurmimin
+stock_minus	− Stoku
+stock_plus	+ Stoku
+settle_cash	Mbyll me para në dorë
+settle_card	Mbyll me kartë
+items	Tarifat dhe shërbimet
+nav_items	Tarifat
+more	Më shumë
+your_items	Tarifat tuaja
+items_help	Çdo rresht është një normë (p.sh. Zona e sipërfaqes A). Njësia është zakonisht kg. Trokit për të modifikuar.
+add_item	Shto normën
+new_item	Norma e re
+adding_item	Shtimi i një tarife të re
+editing_item	Po ndryshohet
+save	Ruaj
+remove	Hiq
+empty_catalog	Ende nuk ka tarifa. Hap Çmimet dhe shërbimet, shtoni një (emri + çmimi, njësia kg), më pas Rezervimi.
+counter_sale	Prenotim sportel
+total	Totali
+cash	Para në dorë
+upi	UPI
+card	Kartë
+credit	Palët
+clear	Pastro
+ready_to_sell	Gati për regjistrim
+today_prefix	Sot
+today_mid	sot
+owed	e papaguar
+round_word	rrumbullako
+back	Prapa
+sold_out	Nuk ka
+restock	Rimbush
+not_tracked	Pa gjurmim
+in_stock	në stok
+marked_sold_out	Shënuar si i padisponueshëm
+add_upper	SHTO
+na	Nuk ka
+qty	Pesha/sasia
+unit_at	Çmimi @
+actual	Faktike
+applied	E zbatuar
+note_ph	Shënim (opsional)
+rounded	E RRUMBULLAKUAR
+split	Ndaj
+counter	Banaku
+parcel	Parcela
+order	Porosi
+sales	Rezervimet
+sales_refunds	Rezervimet dhe rimbursimet
+day_close	Mbyllja e ditës
+reports_expenses	Libri i bankës dhe fitimi
+nav_reports	Raportet
+nav_settings	Cilësimet
+nav_lock	Kyç
+sidebar_settings	Cilësimet e shiritit anësor
+sidebar_settings_help	Të njëjtat ikona si shina anësore. Tërhiqni një rresht për ta rirenditur. Ktheni çelësin për ta shfaqur ose fshehur. Cilësimet dhe Kyçja qëndrojnë gjithmonë në shirit.
+sidebar_always_on_short	Gjithmonë ndezur
+sidebar_back_settings	Prapa
+sidebar_shown	E shfaqur
+sidebar_hidden	E fshehur
+sidebar_always_on	Gjithmonë në shirit
+sidebar_shown_hint	E shfaqur në shinën anësore / skedat e poshtme
+sidebar_hidden_hint	E fshehur nga shiriti
+sidebar_menu_items	Menuja dhe artikujt
+sidebar_enable_all	Aktivizo të gjitha
+sidebar_disable_all	Çaktivizo të gjitha
+sidebar_order_saved	Renditja e shiritit anësor u ruajt
+sidebar_visibility_saved	Dukshmëria e shiritit anësor u ruajt
+amounts_hide	Fshih
+amounts_show	Shfaq
+no_sale_yet	Ende pa shitje
+favorites	Të preferuarat
+favorites_help	Artikujt që shisni shpesh, të ruajtur për hyrjen tuaj. Shtoni një te fatura, ose ndërtoni listën nga të gjithë artikujt më poshtë.
+your_favorites	Të preferuarat tuaja
+all_items	Të gjithë artikujt
+no_favorites	Ende pa të preferuara — shtoni artikuj nga lista më poshtë.
+add_to_bill	Shto te fatura
+added	U shtua
+owes_word	ka borxh
+selected_word	E zgjedhur
+chip_clear_credit	pastro — Kredi ose merr paradhënie
+chip_missing_customer	Klienti i zgjedhur mungon — zgjidheni përsëri
+chip_no_customer	Ende pa klient — shkruani një emër, pastaj prekni Kredi
+credit_summary_fmt	{} klientë · kredi e hapur {} · paradhënie të mbajtura {}
+recent_label	Të fundit:
+inventory	Inventari
+inventory_stock	Inventari dhe stoku
+branches	Degët
+branches_org	Degët dhe organizata
+credit_customers	Palët (debitorët dhe kreditorët)
+customer_name_ph	Emri i palës
+new_customer_ph	Emri i palës së re
+item_name_ph	Emri i vlerës (p.sh. Zona e sipërfaqes A)
+item_price_ph	Për kg / pllakë e parë
+start_template	Produkti
+next_booking	Rezervimi i radhës
+destination_ph	Qyteti/zona e destinacionit
+consignee_ph	Emri i marrësit
+consignee_phone_ph	Telefon marrës
+consignee_address_ph	Adresa e dorëzimit
+origin_name_ph	Emri i dërguesit
+origin_phone_ph	Telefoni i dërguesit
+origin_address_ph	Adresa e marrjes / origjinës
+booking_consignor_heading	Dërguesi (klienti / dërguesi)
+booking_consignee_heading	Marrësi (marrësi)
+booking_consignor_hint	Zgjidh një festë për të mbushur, ose lëre bosh për të hyrë. Nevojitet për marrjen në shtëpi dhe RTO.
+booking_consignee_hint	Marrësi i parcelës. Lëreni bosh për lëshimet e banakut në këmbë.
+weight_kg_ph	kg reale
+length_cm_ph	L cm
+breadth_cm_ph	B cm
+height_cm_ph	H cm
+chargeable_kg	kg me pagesë
+awb_label	AWB
+booking_help	Dërguesi + marrësi (bosh OK) → destinacioni → peshoni → tarifa e zgjedhjes → Llogari/Para → paguaj. AWB printon në faturë. Rezervimi tjetër pastron tavolinën. Rrumbullakimi fillon i barabartë me Aplikuar - modifiko vetëm për të rrumbullakosur faturën.
+cart_empty_hint	Tavolina bosh - dërguesi/marrësi është opsional, caktoni destinacionin dhe peshën, prekni SHTO mbi një tarifë dhe më pas paguani.
+team	Ekipi
+team_pins	Ekipi dhe PIN-et
+my_pin_settings	PIN-i im
+settings_hub_help_my_pin	Ndryshoni PIN-in e zhbllokimit për personin e futur në këtë pajisje.
+team_self_help	Vetëm ju mund të ndryshoni PIN-in tuaj të shkyçjes (dhe fjalëkalimin opsional të hyrjes). Pyetni pronarin nëse keni nevojë për ekrane ose të drejta të ndryshme.
+backup_settings	Kopje rezervë dhe cilësime
+lock_app	Kyç aplikacionin
+pick	Zgjidh
+select	Përzgjidh
+advance	Paradhënie
+owner	Pronari
+staff	Stafi
+photo	Foto
+auto	Auto
+prev	Para
+next	Tjetra
+ok	OK
+this_shop	Serveri
+extra_till	Terminali
+off	Fikur
+server	Serveri
+client	Terminali
+language_currency	Gjuha dhe monedha
+language	Gjuha
+choose_language	Zgjidhni gjuhën tuaj
+language_setup_hint	Ndiqni gjuhën e kësaj pajisjeje, ose zgjidhni një vetë.
+lang_follow_platform	Gjuha e pajisjes
+lang_pick_user	Zgjidh gjuhën
+lang_platform_now	Gjuha e pajisjes tani
+selected_language	E zgjedhur
+continue	Vazhdo
+this_device	KJO PAJISJE
+device_use_q	Si do të përdoret kjo pajisje?
+last_server_mode	Ishte Server — prekni për të vazhduar
+last_client_mode	Ishte Terminal — prekni për të vazhduar
+choose_server	Zgjidhni një server
+choose_server_hint	Hapni një server ekzistues, ose krijoni një për një biznes tjetër.
+create_new_server	Krijo server të ri
+open_server	Hap
+new_server_name_ph	Emri i serverit të ri (opsional)
+server_remove_pin_ph	PIN-i i pronarit për të hequr një server
+only_owner_remove_server	Vetëm Pronari mund të heqë një server
+owner_pin_remove_server	PIN-i i pronarit kërkohet për të hequr këtë server
+device_setup_help	Serveri i mban librat këtu. Terminali çiftohet me një Server.
+currency	Monedha
+backup	Kopje rezervë
+settings_sec_diag	Diagnostika
+settings_hub_help	Hapni një zonë në herë — më pak rrëshqitje, zgjedhje më të qarta.
+settings_sec_devices	Pajisje të tjera
+settings_sec_alerts	Njoftimet
+alerts_help	Sa kohë qëndrojnë mesazhet e gjendjes në ekran për ju (kjo hyrje).
+snack_secs_ph	Sekonda (3–60, parazgjedhja 10)
+snack_secs_save	Ruaj kohën e njoftimit
+snack_secs_saved	Koha e njoftimit u ruajt — {n} sekonda
+snack_secs_bad	Fut sekondat si numër (3–60)
+cancelled	E anuluar
+cancel	Anulo
+opening_client	Po hapet terminali…
+preparing_desk	Po përgatitet tavolina…
+opening_server	Po hapet serveri…
+creating_server	Po krijohet serveri…
+diag_privacy_help	Regjistrat qëndrojnë në këtë pajisje. Sekretet (PIN, fjalëkalimet) nuk ruhen kurrë. Ndarja e një pakete jashtë pajisjes kërkon miratimin tuaj të qartë çdo herë — nuk shiten dhe nuk u jepen palëve të treta.
+diag_level	Niveli i detajeve
+diag_level_error	Gabime
+diag_level_warn	Paralajmërime
+diag_level_info	Info
+diag_level_debug	Debug
+diag_support_start	Fillo seancën 30-minutëshe të mbështetjes
+diag_support_stop	Mbyll seancën e mbështetjes
+diag_support_started	Seanca e mbështetjes ndezur — detaje Debug për 30 minuta
+diag_support_ended	Seanca e mbështetjes mbaroi
+diag_export_local	Eksporto kopjen lokale
+diag_export_local_done	Diagnostika lokale gati te {path} — zgjidhni ku të ruani një kopje
+diag_approve_send	Mirato ndarjen jashtë kësaj pajisjeje
+diag_send_heading	Ndaj jashtë kësaj pajisjeje
+diag_send_help	Miratimi është për një paketë, pastaj skadon. E përkohshme — përdoret vetëm për të rregulluar ose përmirësuar produktin. Nuk ndahet me palë të treta. Funksionon në Linux, Windows, macOS dhe Android.
+optional_login_heading	Hyrje opsionale
+rights_heading	Të drejtat
+booking_scope_heading	Vendas / Ndërkombëtar
+diag_send_approved	Ndarja u miratua për një paketë (skadon së shpejti)
+diag_export_send	Krijo paketën e ndarjes (duhet miratim)
+diag_export_send_done	Paketa e ndarjes gati te {path} — zgjidhni ku ta ruani, pastaj dërgojeni vetëm te mbështetja e Kumkaj
+diag_save_bundle	Ruaj kopjen e diagnostikës
+diag_bundle_saved	Kopja e diagnostikës u ruajt te {path}
+diag_bundle_failed	Kopja e diagnostikës nuk u ruajt — provoni përsëri
+diag_clear	Pastro regjistrat e diagnostikës
+diag_cleared	Regjistrat e diagnostikës u pastruan
+use	Përdor
+add_branch	Shto degë
+add_conversion	Shto shndërrim
+add_item_plain	Shto artikull
+add_note	Shto shënim
+add_opening_balance	Shto gjendjen fillestare
+add_rider	Shto kalorës
+add_staff	Shto staf
+add_unit	Shto njësi
+add_use_name	Shto / përdor këtë emër
+allow_extra_tills	Lejo kasa shtesë
+amend	Ndrysho
+apply_country_pack	Zbato paketën e vendit
+datetime_appearance	Pamja e datës dhe orës
+datetime_appearance_help	Librat mbajnë RFC3339 të vitit të parë brenda. Këto ndryshojnë vetëm mënyrën se si duken datat dhe orët në fatura, etiketa, raporte dhe ekran.
+datetime_example	Shembull tani: {ex}
+date_order	Renditja e datës
+date_order_dmy	D/M/V
+date_order_mdy	M/D/V
+date_order_ymd	V-M-D
+time_format	Ora
+time_format_24h	24-orëshe
+time_format_12h	12-orëshe
+attach_bill_photo	Bashkëngjit foton e faturës
+attach_pdf	Bashkëngjit PDF
+attach_photo	Bashkëngjit foto
+bank	Banka
+bank_in	Hyrje në bankë
+bank_out	Dalje nga banka
+bank_to_till	Banka → kasa
+till_to_bank	Kasa → banka
+mark_cleared	Shëno të barazuar
+unmark	Hiq shenjën
+role_both	Të dyja
+role_carrier	Transportuesi
+role_cashier	Arkëtar
+role_consignor	Dërguesi
+role_manager	Menaxher
+role_supplier	Furnitori
+branch_name_sell_ph	Emri i degës nga e cila shitet
+bring_my_book	Sill librin tim
+business_tax_id_ph	Id e tatimit të biznesit
+card_amount_ph	Shuma me kartë
+cash_amount_ph	Shuma në para
+upi_amount_ph	Shuma UPI
+carrier_cost_ph	Kostoja e transportuesit
+carrier_party_ph	Partia e transportuesit
+choose_icon	Zgjidh ikonën
+choose_logo	Zgjidh logon
+choose_receipt_stamp	Zgjidhni vulën e faturës
+choose_payment_qr	Zgjidh QR e pagesës
+clear_icon	Pastro ikonën
+clear_logo	Pastro logon
+clear_photo	Pastro foton
+clear_stamp	Pastro vulën
+clear_payment_qr	Pastro QR e pagesës
+print_faces	Printoni fytyrat (faturën / faturën e periudhës)
+print_faces_help	Vula opsionale dhe QR pagese pranë logos suaj në faturat e rezervimit dhe faturat e periudhës.
+awb_pools_heading	Pishinat e numrave të operatorit AWB
+add_awb_pool	Shto pishinën AWB
+awb_pool_carrier_ph	Emri i palës së operatorit
+awb_pool_start_ph	Fillimi nr.
+awb_pool_end_ph	Fundi nr.
+awb_pool_prefix_ph	Parashtesa (opsionale)
+awb_pool_label_ph	Etiketa (opsionale)
+pieces_ph	Copë (bosh = 1) - zgjerohet për ngarkesë / shumë pjesë
+bulk_awbs_ph	AWB me shumicë — ngjitni shumë (vijë e re ose presje) për një avancim të statusit
+tds_cut_ph	Prerje TDS (opsionale)
+discount_ph	Zbritje (opsionale)
+cheque_no_ph	Kontrollo numrin (opsionale)
+bill_reminder_chase	Lista e ndjekjes së kujtesës së faturave
+month_mix_report	Raporti i përzierjes mujore
+copy_month_gst_csv	Kopjo muajin GST CSV
+domestic	Vendase
+international	Ndërkombëtare
+pick_logo	Zgjidh logon
+booking_scope_hint_domestic	Volumetrik ÷5000 (vendas) — prekni International për ÷6000 ajër
+booking_scope_hint_intl	Volumetrike ÷6000 (ajër ndërkombëtar) — prekni Domestic për dyqanin ÷5000
+cod_register	Regjistri COD
+collect_cod	Mblidhni COD (AWB)
+consignments_dispatch	Dërgesat dhe dërgesat
+consignor_party_ph	Emri i dërguesit / partisë
+copy_day_book_csv	Kopjo CSV e librit të ditës
+copy_day_close	Kopjo mbylljen e ditës
+copy_items_csv	Kopjo CSV e artikujve
+copy_outstanding_csv	Kopjo CSV e të papaguarave
+copy_parties_csv	Kopjo CSV e palëve
+copy_party_ledger_csv	Kopjo CSV e librit të palës
+copy_receipt	Kopjo dëftesën
+copy_report	Kopjo raportin
+counted_cash_ph	Para të numëruara në sirtar
+counter_agency_ph	Sporteli / emri i agjencisë (opsionale)
+create_backup	Krijo kopje rezervë
+day_close_summary	Përmbledhja e mbylljes së ditës
+delete_party	Fshi palën e zgjedhur
+dispatch_to_rider	Dërgimi i rezervuar → kalorës
+docket_charge_ph	Ngarkesa doke
+declared_value_ph	Vlera e deklaruar
+contents_ph	Përmbajtja
+eway_ph	Fatura e rrugës elektronike nr.
+insurance_label	Sigurimi
+yes_label	po
+no_label	Nr
+print_route_label	Rruga e printimit
+new_party_kind_label	Lloj i ri i partisë
+done_open_books	U krye — hap librat
+export_day	Eksporto ditën
+extra_note_expense_ph	Shënim shtesë te shpenzimi i fundit
+extra_note_awb_ph	Shënim shtesë për këtë AWB / shitje
+failed_delivery	Dorëzimi dështoi
+find_scan_awb	Gjeni / skanoni AWB
+forget_shop	Harro këtë dyqan
+fuel_ph	Karburanti
+handover_carrier	Rezervuar me dorë → transportues
+import_day	Importo ditën
+import_items_csv	Importo artikuj / tarifa CSV…
+import_parties_csv	Importo CSV e palëve…
+import_pincodes_csv	Importo kodet PIN CSV…
+import_carrier_bill_csv	Importo faturën e operatorit celular CSV…
+copy_carrier_bill_report	Kopjo raportin e fundit të faturës së operatorit
+use_carrier_cost	Përdorni koston e operatorit
+rate_carrier_ph	Transportuesi (bosh = norma jonë e shitjes)
+rate_party_ph	Partia (bosh = të gjithë klientët)
+carrier_pick_ph	Transportuesi për koston (nga krahasimi)
+item_name	Emri i artikullit
+load_bulk_row	Ngarko rreshtin me shumicë → tavolinë
+login_id_ph	Emri i përdoruesit
+mark_delivered	Marku dorëzuar
+manifest_cod_total	COD total
+manifest_received_by	Marrë nga
+manifest_sign	Nënshkruani
+ndr_address_wrong	Adresa e gabuar
+ndr_customer_unavailable	Nuk ka
+ndr_door_locked	Dera e mbyllur
+ndr_other	Të tjera
+ndr_refused	Refuzoi
+out_for_delivery	Jashtë për dorëzim
+print_drs	Printo DRS
+print_run_sheet	Printoni fletën e ekzekutimit
+reattempt	Ripërpjekje
+rider_cod_handed_ph	COD dorëzuar
+settle_rider_cod	Vendosni COD-in e kalorës
+mode_desk	Tavolinë
+mode_rider	Kalorës
+waiting_office	në pritje për të arritur në zyrë
+capture_signature	Kapni nënshkrimin
+incoming_manifest	Manifesti në hyrje
+pickup_request	Kërkesa për marrje
+pickup_run	Vrapimi i marrjes
+auto_assign_area	Zona e caktimit automatik
+reorder_stops	Riporositja ndalon
+settle_rider_pay	Rregulloni pagesën e kalorësve
+vehicle_inspect	Kontrolli i automjetit
+print_docket	Dokumenti i printimit
+franchise_statement	Deklarata e ekskluzivitetit
+tally_export	Eksporti i kuponit të llogaritjes
+open_whatsapp	Hapni WhatsApp
+copy_sms	Kopjoni tekstin SMS
+pick_barcode_image	Zgjidh imazhin për të skanuar
+share_receipt_whatsapp	Ndani faturën në WhatsApp
+delivery_feedback	Komentet e dorëzimit
+lan_self_book	LAN vetë-rezervim
+new_party_clear	Palë e re (pastro formularin)
+new_party_kind_ph	Lloji i ri i partisë (Furnizuesi / Transportuesi)
+next_country	Vendi tjetër
+prev_country	Vendi i mëparshëm
+note_gstin_ph	Shënim / GSTIN / kujtesë marrëveshjeje
+note_pod_ph	Shënim / POD (opsionale)
+on_account_ap	Në llogari (AP)
+org_optional_ph	Organizata (opsionale)
+paid_now	Paguar tani
+pairing_code_ph	Kodi i çiftimit
+pair_now	Çifto tani
+party_name_selected_ph	Emri i palës (ose përdor të zgjedhurën)
+password_ph	Fjalëkalimi
+pay_ap_card	Paguaj AP me kartë
+pay_ap_cash	Paguaj AP me para
+pay_ap_upi	Paguaj AP me UPI
+period_bill	Fatura e periudhës
+period_bill_party	Fatura e periudhës (partia)
+pick_pod_photo	Zgjidh foton POD
+print_awb_label	Printoni etiketën AWB
+print_open	Shtyp / hap
+reason_amend_ph	Arsyeja e ndryshimit / anulimit / rimbursimit
+reason_note_ph	Arsye / shënim (humbje, numërim, …)
+record_day_close	Regjistro mbylljen e ditës
+refresh_from_shop	Rifresko nga dyqani
+refund	Rimbursim
+remit_cod	Dërgo COD (partia)
+remove_selected	Hiq të zgjedhurën
+restore_backup	Rikthe kopjen rezervë
+rider_name_ph	Emri kalorës
+rider_phone_ph	Telefon kalorës
+riders	Kalorës
+riders_own_fleet	Kalorës (flota e vet)
+rollup	Përmbledhje
+save_booking_measures	Ruaj masat e rezervimit
+save_brand	Ruaj markën
+save_business_id	Ruaj id e biznesit
+save_business_name	Ruaj emrin e biznesit
+save_features	Ruaj konfigurimin e punës
+save_names	Ruaj emrat
+server_ip_ph	IP e serverit (p.sh. 192.168.1.10)
+set_credit_limit	Zbato kufirin te pala
+set_login_selected	Zbato hyrjen te e zgjedhura
+set_login_named	Zbato hyrjen te {name}
+shop	Dyqani
+start_fresh	Fillo nga e para
+stop_extra_tills	Ndalo kasat shtesë
+backup_auto	Kopje rezervë automatike çdo ditë · e fundit {when} · 14 ditët e fundit mbahen në {dir}.
+backup_auto_none	Kopje rezervë automatike çdo ditë — e para nis pas pak.
+backup_copy_to	Kopjet shkojnë edhe te {dir}.
+backup_copy_btn	Kopjo kopjet rezervë edhe në një dosje…
+autostart_off	Fillo me këtë kompjuter
+autostart_on	Niset me këtë kompjuter ✓ — prekni për ta ndalur
+autostart_done_on	Ky kompjuter tani e hap aplikacionin kur niset — serveri i dyqanit kthehet pas një ndërprerjeje rryme.
+autostart_done_off	Ky kompjuter nuk e hap më aplikacionin kur niset.
+right_allowed	E lejuar
+right_with_approval	Me miratim
+right_denied	Nuk lejohet
+editing_staff	Të drejtat për
+team_pick_ph	Stafi për t’u ndryshuar — emër, emër përdoruesi, ose zgjidhje
+select_staff	Zgjidh këtë staf
+rights_help	Të drejtat — prekni për të ndryshuar: Lejohet → Me miratim (PIN-i i një menaxheri në atë moment) → Nuk lejohet.
+right_void_refund	Anuloni ose rimbursoni një rezervim
+right_amend_sale	Ndryshoni një rezervim të regjistruar
+find_server	Gjej serverin e dyqanit
+finding_server	Po kërkohet serveri i dyqanit në këtë Wi‑Fi…
+no_server_found	Nuk u gjet asnjë. Te Serveri: Cilësimet → Pajisje të tjera → Lejo kasa shtesë (i njëjti Wi‑Fi). Ose shkruani IP-në e shfaqur atje.
+servers_found_pick	Prekni dyqanin me të cilin doni të lidheni.
+server_host_selected	Po përdoret {host} — vendosni kodin e çiftimit, pastaj Çifto tani.
+device_forgotten	Dyqani e harroi këtë pajisje — çiftojeni përsëri me kodin aktual të dyqanit. Porositë që presin në të mbahen.
+forget_device	Harro
+last_seen	parë
+new_pair_code	Kod i ri çiftimi
+lan_offline	Serveri i dyqanit i paarritshëm
+lan_offline_waiting	Serveri i dyqanit i paarritshëm · {n} në pritje
+lan_connecting	Po lidhet me dyqanin…
+pair_finishing	Çifti përfundimtar… duke aplikuar librat e zyrës
+pair_opening	Hapja e zyrës…
+lan_live	Drejtpërdrejt
+lan_sending	{n} po dërgohen
+lan_sign_in_to_send	Hyni përsëri për të dërguar {n}
+lan_pair_again	Çifto përsëri këtë pajisje
+lan_update_app	Përditëso aplikacionin — kjo pajisje dhe serveri i zyrës kanë versione të ndryshme
+allow_firewall	Lejo pajisjet e tjera të lidhen
+firewall_blocked	Muri i zjarrit i këtij kompjuteri po bllokon pajisjet e tjera — prekni Lejo pajisjet e tjera të lidhen.
+firewall_waiting	Në pritje të kërkesës së administratorit…
+lan_join_help	Në pajisjen tjetër: Mënyra Terminal → Gjeni serverin e dyqanit (ose shkruani {addr}) → kodi i çiftimit {code}.
+lan_pair_status	Wi‑Fi {addr}
+lan_join_help_no_addr	Lidheni këtë pajisje me Wi‑Fi për një adresë.
+lan_no_address	Ende pa adresë Wi‑Fi — lidhuni me Wi‑Fi të dyqanit.
+lan_not_listening	Nuk po pranon pajisje (porta {port} e zënë). Rinisni aplikacionin.
+lan_tills_off	Kasat shtesë janë fikur. Lejojini që një pajisje tjetër të bashkohet.
+paired_with	I çiftuar · {url}
+not_paired	I paçiftuar
+choose_device_use	Zgjidhni Server ose Terminal.
+paired_note	I çiftuar. Zhbllokoni për të shitur, ose Rifresko për të fundit.
+last_update_at	Përditësimi i fundit: {time}.
+pair_intro	Gjeni serverin, ose shkruani adresën dhe kodin e çiftimit.
+queue_waiting	Në pritje për të arritur dyqanin ({n}):
+queue_tries	U provua {n} herë · përgjigjja e fundit: {e}
+save_backup_copy	Ruaj një kopje rezervë…
+backup_copy_saved	Kopja rezervë u ruajt — mbajeni jashtë kësaj pajisjeje (një USB ose një pajisje tjetër)
+backup_copy_overdue	Asnjë kopje rezervë nuk ka dalë nga kjo pajisje për {n} ditë — Cilësimet → Kopja rezervë
+backup_copy_failed	Kopja rezervë nuk u ruajt atje — zgjidhni një vend tjetër
+clock_off	Ora e kësaj pajisjeje është {min} min jashtë serverit të dyqanit — vendosni orën e saktë në këtë pajisje
+printers_heading	Printerë në këtë pajisje
+printers_help	Gjeni printera të vërtetë, më pas zgjidhni Faturën ose etiketën AWB. Çdo punë ka gjerësinë, portretin ose peizazhin e vet dhe mënyrën se si dërgohen bajtet. Një etiketë printon barkodin. Vendi bosh = mos printo.
+job_width	Gjerësia e përmbajtjes (mm)
+job_width_ph	Ose shkruani një gjerësi, 40–210 mm
+job_layout	Paraqitja
+job_delivery	Si dërgohet puna
+job_size	Madhësia e gërmës
+job_size_ph	p.sh. 18, 20, 26…
+save_receipt_format	Ruaj formatin e faturës
+save_label_format	Ruaj formatin e etiketës
+test_receipt_format	Fatura e testimit
+test_label_format	Etiketa e provës
+test_receipt_sent	Shembull i faturës u dërgua
+test_label_sent	Shembulli i etiketës u dërgua
+test_print_no_printer	Nuk ka printer për atë punë — shtoni një nën këtë vend
+printers_host_only	Printerët vendosen në pajisjen e dyqanit (Server). Kjo deri sa të dërgojë punë atje - Gjeni / shtoni / caktoni qëndrimin në server. Faqja e testimit shkon te serveri.
+printers_pool_heading	Printerët
+printers_routes_heading	Ku shtypen gjërat
+printer_label_ph	Emri (p.sh. Tavolinë)
+printer_target_ph	host:9100 · bt:MAC · usb:VID:PID · emri i sistemit
+printer_mode_heading	Profili për rezultatet e reja
+printer_mode_standard	Portret standard
+printer_mode_landscape	Peizazh standard
+printer_mode_thermal	Termike
+printer_mode_standard_short	Portret
+printer_mode_landscape_short	Peizazh
+printer_mode_thermal_short	Termike
+printer_format_custom	Profil i ri i personalizuar
+printer_format_custom_label	I personalizuar
+printer_format_custom_added	Profili i personalizuar u shtua për këtë vend
+add_printer	Shto printer
+remove_printer	Hiq të fundit
+route_pick_ph	faturë ose etiketë
+route_add_printer_ph	Shto printer në këtë vend
+route_receipt	Fatura
+route_label	Etiketa AWB
+route_dont_print	Asnjë printer i caktuar
+route_add	Shto në vend
+route_up	Lart
+route_down	Poshtë
+route_remove	Hiq të fundit
+route_clear	Pastro printerët për këtë vend
+save_printers	Ruaj printerët
+print_test_page	Shtyp një faqe prove
+printers_saved	Printerë të ruajtur për këtë pajisje
+test_page_sent	Faqja e provës u dërgua — kontrolloni printerin
+printers_found	Gjetur në këtë pajisje: {list}
+find_printers	Gjej printerët
+printers_looking	Po kërkon printerë në këtë pajisje dhe Wi‑Fi…
+printers_tap_find	Trokit "Gjej printerët" për radhët që pranojnë punë dhe printerët e faturave të rrjetit në këtë Wi‑Fi (jo të hequr ose jashtë linje).
+printers_none_found	Nuk u gjetën printera — shkruani një emër printeri sistemi ose një adresë rrjeti (p.sh. 192.168.1.50).
+receipt_printer_ph	Printer për faturat
+queue_refused	Nuk u pranua nga dyqani ({n}) — kontrolloni secilën te banaku:
+clear_not_accepted	E kontrolluar — pastro këtë listë
+device_name_ph	Emri i kësaj pajisjeje
+lan_last_update	përditësimi i fundit {time}
+lan_not_accepted	{n} të papranuara
+connected_now	e lidhur tani
+backup_failed	Kopja rezervë automatike e fundit dështoi: {e}
+backup_overdue	Pa kopje rezervë për {n} ditë — mbajeni aplikacionin hapur në këtë pajisje që të mund të bëjë kopje.
+disk_low	Vetëm {mb} MB të lira në këtë pajisje — kopjet rezervë së shpejti do të dështojnë. Lironi pak hapësirë.
+last_seen_devices	Parë së fundi: {time}
+sync_interval	Njëkohëso çdo {secs}s
+connection_to_shop	Lidhja me dyqanin
+supplier_name_ph	Emri i furnitorit (ose pala)
+supplier_ph	Furnitori
+switch_device	Ndërro këtë pajisje
+take_payment	Merr pagesën
+tax_added_till	{tax} i shtuar
+tax_inside_price	{tax} i përfshirë
+today_books	Librat e sotëm
+unlock_after_pairing	Vendosni PIN-in
+unlock_with_login	Zhblloko me hyrje
+update_my_password	Përditëso fjalëkalimin tim
+update_my_pin	Përditëso kodin tim PIN
+duress_heading	PIN-i i zhbllokimit të urgjencës (vetëm Pronari)
+duress_help	Fakultative. Nëse ky kod PIN është shtypur në shkyçje në vend të tuajit, të gjitha regjistrimet e librave fshihen (rezervimet, regjistrat, historiku) dhe tavolina hapet si "Owner" duket normale - tarifat, festat, zonat, stafi dhe cilësimet qëndrojnë. Skema dhe konfigurimi nuk fshihen. Përdoreni vetëm nëse jeni të detyruar ta zhbllokoni. Lëreni bosh dhe ruajeni për ta fikur. Asnjëherë i njëjtë me PIN-in e askujt.
+duress_pin_ph	PIN-i i urgjencës (4–12 shifra)
+duress_confirm_ph	Shkruajeni përsëri për ta konfirmuar
+save_duress_pin	Ruaj PIN-in e urgjencës
+clear_duress_pin	Fik PIN-in e urgjencës
+duress_on	PIN-i i zhbllokimit të urgjencës është ndezur
+duress_off	PIN-i i zhbllokimit të urgjencës është fikur
+duress_saved	PIN-i i zhbllokimit të urgjencës u ruajt
+duress_cleared	PIN-i i zhbllokimit të urgjencës u fik
+vehicle_ph	Automjeti
+void	Anulo
+write_off_ap	Fshi AP
+write_off_nil	Fshirje / gjendje zero
+zone_ph	Zona (emri nga tarifat)
+caption_today	SOT
+caption_bookings	REZERVIMET
+caption_payments_today	PAGESAT SOT
+caption_outstanding	TË PAPAGUARA
+caption_bank	BANKA
+paid_by	Paguar nga
+second_way	Mënyra e dytë
+weight_in	Pesha në
+size_in	Madhësia në
+goods_received	Mallrat e marra
+expense_heading	Shpenzim
+notes_attach_sale	Shënime dhe bashkëngjitje (shitja e zgjedhur)
+notes_attach_party	Shënime dhe bashkëngjitje (pala e zgjedhur)
+attachments_last_expense	Bashkëngjitjet (shpenzimi i fundit)
+credit_limit_heading	Kufiri i kredisë (pala e zgjedhur / e emërtuar)
+pay_selected_heading	Paguaj të zgjedhurën (mbyll borxhin / merr paradhënie)
+write_off_heading	Fshirje (pastro pa pagesë)
+pay_ap_heading	Paguaj atë që u kemi borxh (AP)
+country_tax	Vendi dhe tatimi
+extra_tills_heading	Kasa shtesë
+other_devices_help_heading	Vendos pajisje të tjera
+other_devices_help	Në këtë pajisje (Server): Pajisje të tjera → Lejo pagesa shtesë. Vini re kodin e çiftimit dhe adresën Wi‑Fi. Prekni Lejo pajisje të tjera të lidhen nëse shfaqet. Në një kompjuter, trokitni lehtë mbi Filloni me këtë kompjuter. Në njëra pajisje tjetër: instaloni aplikacionin, zgjidhni "Modaliteti i klientit", Gjeni serverin e dyqanit (ose shkruani adresën), futni kodin e çiftimit, Çiftoni tani. Porositë presin në pajisje nëse Wi‑Fi bie dhe shkojnë kur Serveri të përgjigjet përsëri.
+your_brand	Marka juaj (në aplikacion)
+units_heading	Njësitë
+booking_measures	Masat e rezervimit
+drawer_count	Numërimi i sirtarit (opsional)
+spreadsheet_csv	Fletëllogaritëse (CSV)
+bank_reconciliation	Barazimi i bankës (shënoni kundrejt pasqyrës suaj bankare)
+book_add_product	Rezervoni - shtoni produktin / tarifën
+book_opening_credit	Libri — kredi fillestare
+account_kind	Lloji i llogarisë (prekni një)
+active_ledger	Libri aktiv
+actual_total_cap	TOTALI FAKTIK
+amend_help	Zgjidhni një shitje për ta ndryshuar, anuluar ose rimbursuar. Ndryshimet mbajnë historinë e plotë. Totali i rrumbullakuar fillon i barabartë me të Zbatuarin — ndryshojeni vetëm për të rrumbullakuar. Anulimi dhe rimbursimi mund të kërkojnë PIN të Pronarit ose Menaxherit (shkruar sipër; regjistrohet me emrin tuaj).
+applied_total_cap	TOTALI I ZBATUAR
+bank_balance	Gjendja e bankës
+bank_net_today	Neto e bankës sot
+branch_export_help	Export shkruan një fotografi ditore në dosjen e kopjeve rezervë dhe e kopjon atë në kujtesën e fragmenteve. Për të importuar ditën e një prize tjetër, ruani skedarin e tij si import_branch_snapshot.json në atë dosje dhe më pas prekni Import.
+brand_shown_help	Shfaqet në ekranet brenda aplikacionit. Emri dhe ikona e aplikacionit të instaluar në këtë pajisje qëndrojnë si në listimin e platformës.
+app_icon	Ikona e aplikacionit
+logo_help	Shenja opsionale e dyqanit në ekranet e aplikacionit.
+onboard_layout	Çfarë merrni
+item_photo_help	Opsionale. Pa foto shfaqim inicialet nga emri i artikullit.
+cash_in_hand	Para në dorë (kasa)
+change_my_pin_heading	Ndrysho kodin tim PIN (vetëm i yti)
+connect_to_server	Lidhu me Serverin
+counter_locked	Banaku 01 · I kyçur
+country_pack_help	Një paketë vendi vendos emrin dhe matematikën e tatimit, kanalin e pagesës së menjëhershme dhe id e biznesit të shtypur në fatura. Kumkaj nuk dorëzon tatime dhe nuk lëshon fatura elektronike qeveritare askund.
+currency_use_help	Rrëshqitni dhe prekni Përdor për çdo monedhë të mbështetur.
+day_close_help	Regjistrimi i një mbylljeje dite e ruan këtë përmbledhje (dhe diferencën e sirtarit nëse është numëruar) në regjistrin e auditimit. Nuk e ndalon shitjen.
+expenses_word	Shpenzimet
+feature_access_help	Qasja e veçorive për stafin e zgjedhur (trokisni pas shtimit)
+footer_local	SQLite lokal · Falas përgjithmonë · Zero re
+fresh_book_moklanjo	Fresh = katalog bosh (shtoni artikuj më vonë). Libri = shkruani aksionet hapëse dhe kush ju ka borxh më poshtë.
+fresh_selected	E re e zgjedhur — katalogu qëndron bosh. Prekni U krye kur të jeni gati.
+gross_word	Bruto
+how_start	Si doni të filloni?
+later_country_pack	Më vonë: Cilësimet → zbato paketën e vendit tuaj për etiketat e tatimit dhe pagesës.
+local_badge	LOKALE
+measures_help_moklanjo	Si maten parcelat në tavolinën e rezervimit. Shkruani dimensionet dhe peshën në njësitë që përdorni — standarde (cm, m, in, ft · kg, g, lb, oz) ose njësinë tuaj të lidhur me cm/kg më sipër (drejtpërsëdrejti ose përmes njësive të tjera). Librat regjistrojnë gjithmonë kg. Lëreni një fushë bosh për ta mbajtur atë.
+mix_type_hint_moklanjo	Shkruani sa në secilin (para / UPI / kartë / kredit). Duhet të shtohet në faturë. Kredia ka nevojë për një klient më lart.
+money_in_sales	Para hyrëse (shitje)
+more_help_moklanjo	Katalog, shitje, kredi, ekip, rezervë — plus aksione dhe tarifa shtesë kur nevojitet.
+net_word	Neto
+offline_badge	JASHTË LINJE
+optional_login_help	Hyrje opsionale (id + fjalëkalim). Pronari e vendos një herë; vetëm përdoruesi mund ta ndryshojë fjalëkalimin më vonë.
+or_unlock_login	Ose zhblloko me id hyrjeje + fjalëkalim
+permission_preset	Puna (vendos ekranet dhe të drejtat)
+preset_help_moklanjo	Arkëtar: shet. Menaxher: shet + artikuj + anulim/ndryshim.
+product_locked_moklanjo	Moklanjo
+product_only_moklanjo	Ky aplikacion është vetëm Moklanjo - libra + tavolinë rezervimi. Tregti të tjera përballet me anije si produkte të veçanta më vonë.
+purchases_cogs	Blerjet (COGS)
+qty_cap	SASIA
+restore_help	Rikthim: zgjidhni një kopje rezervë. Librat hapen siç ishin atëherë; librat siç janë tani ruhen fillimisht, kështu që kjo mund të zhbëhet.
+wipe_data_heading	Fshi të dhënat lokale
+wipe_data_help	Vetëm pronari - të njëjtat zgjedhje si çinstalimi i Windows. Regjistrimet e biznesit pastrojnë historinë e tregtimit, por ruan tarifat dhe konfigurimin (si PIN-i i shkyçjes së urgjencës). Konfigurimi i dyqanit heq bazën e të dhënave të librave. Preferencat e ekranit pastrojnë dritaren/gjuhën. Konfirmo me PIN-in e pronarit. PIN-i i shkyçjes së urgjencës në ekip është i veçantë (fshij i fshehtë kur shkyç).
+wipe_trading	Regjistrat e biznesit
+wipe_schema	Konfigurimi i dyqanit
+wipe_ui	Preferencat e ekranit
+wipe_owner_pin_ph	PIN-i i pronarit për të fshirë
+wipe_delete_selected	Fshi të zgjedhurat
+wipe_owner_only	Vetëm Pronari mund të fshijë të dhënat lokale.
+restore_owner_only	Vetëm Pronari mund të rikthejë një kopje rezervë.
+wipe_owner_pin_needed	Vendosni PIN-in e Pronarit për të fshirë të dhënat lokale.
+wipe_nothing_selected	Zgjidhni fillimisht çfarë të fshihet.
+wipe_done	Të dhënat lokale të zgjedhura u fshinë.
+wipe_schema_done	Konfigurimi i dyqanit u fshi — zgjidhni Server ose Terminal për të vazhduar.
+rounded_total	Totali i rrumbullakuar
+setup_app_moklanjo	Vendos Moklanjo
+shop_logo_optional	Logoja e dyqanit (opsionale)
+stock_type_help	Shkruani emrin e artikullit (mjafton një pjesë), një sasi, pastaj rregulloni. Artikujt që nuk numërohen ende kanë nevojë për Fillo gjurmimin një herë.
+team_owner_help	Punësoni: zgjidhni një punë (Arkëtar / Menaxher), emrin + PIN-in fillestar, më pas Shto. Vetëm nëse ky person ndryshon: hapni ekranet dhe të drejtat më poshtë, më pas Ruaj konfigurimin e punës. Të gjithë ndryshojnë PIN-in e tyre në fund - Pronari nuk mund të ndryshojë kodin e askujt tjetër.
+they_owe_us	Ata na kanë borxh
+unit_at_cap	Njësia @
+units_help	Kode për etiketat e artikujve (kg, copë, thes). Çdo njësi duhet të lidhet — drejtpërdrejt ose përmes njësive të tjera — me një standard (kg · cm · ml · pc), p.sh. 1 crate = 2 box dhe 1 box = 20 cm. Shndërrimet: 1 from = factor to. Monedhat nuk janë kurrë njësi.
+we_owe_them	Ne u kemi borxh
+who_unlocking	Kush po zhbllokon?
+locked_word	I kyçur
+show_pin	Shfaq PIN-in
+hide_pin	Fshih PIN-in
+set_owner_pin	VENDOS PIN-IN E PRONARIT
+enter_owner_passcode	VENDOS KODIN E PRONARIT
+enter_staff_passcode	VENDOS KODIN E STAFIT
+pin_count_zero	0 / 12 shifra · të paktën 4, pastaj OK
+pin_count_need	{} / 12 shifra · duhen {} të tjera
+pin_count_full	12 / 12 shifra · shtypni OK
+pin_count_ready	{} / 12 shifra · shtypni OK kur të jeni gati
+pin_hint_choose	Zgjidhni 4–12 shifra · Enter ose Zhblloko për të ruajtur
+pin_hint_new	PIN i ri i Pronarit me 4–12 shifra · Enter ose Zhblloko
+pin_hint_shop_code	Pajisja e dyqanit · kodi i çiftimit {}
+pin_hint_books	Kjo pajisje mban librat
+pin_hint_paired	Kasa shtesë e çiftuar — zhbllokoni për të shitur
+pin_hint_pair_first	Kasa shtesë — çiftojeni fillimisht me pajisjen e dyqanit
+unlock_to_continue	Zhbllokoni për të vazhduar
+no_staff_yet	Ende pa staf — zhbllokoni si Pronar, pastaj Ekipi
+status_server_set_pin	Mënyra Server — vendosni PIN-in e Pronarit
+status_server_tills	Mënyra Server — kasat shtesë mund të bashkohen. Zhblloko
+status_server_unlock	Mënyra Server — zhbllokoni si Pronar
+status_client_unlock	Mënyra Terminal — zhbllokoni për të shitur
+icon_new_selected	Ikona: skedar i ri i zgjedhur — prekni Ruaj markën
+icon_custom	Ikona: shenja e personalizuar e lokalit
+icon_default	Ikona: shenja Kumkaj (parazgjedhje) — zgjidhni një të personalizuar
+logo_yours	Logoja: logoja e dyqanit tuaj — shfaqet në ekrane dhe dëftesa
+logo_default	Logoja: shenja Kumkaj (parazgjedhje) — zgjidhni tuajën nëse keni
+tmpl_current	Aktuale: {} — {}
+tmpl_selected	E zgjedhur: {} — {}
+setup_complete	Konfigurimi u krye
+onboard_fresh_tmpl	E re · {} — katalogu fillon bosh; shtoni artikuj te Artikujt, pastaj U krye.
+onboard_book_tmpl	Libër · {} — shtoni artikuj dhe kredinë fillestare, pastaj U krye.
+onboard_template_tmpl	Emërtoni vendin nëse doni, pastaj zgjidhni si të filloni.
+tmpl_blurb	Librat e korrierëve dhe tavolina e rezervimit: dërguesit, transportuesit, libri i ditës, AWB.
+tmpl_how	Rezervoni parcelat në tavolinë; Libri i ditës për sot; skedat për tarifat, partitë, raportet.
+trk_booked	Rezervuar
+trk_picked_up	E kapur
+trk_in_transit	Në tranzit
+trk_delivered	Dorëzuar
+trk_rto	Duke u kthyer te dërguesi
+lane_to_dispatch	Për të dërguar
+lane_with_carrier	Me transportues
+lane_failed	Dështoi
+lane_done_today	Bërë sot
+ops_board_help	Parcelat sipas vendit ku janë në punën e sotme. Prekni paketat (ose skanoni ato) për t'i zgjedhur, më pas veproni në të gjitha të zgjedhura menjëherë - çdo korsi ofron vetëm lëvizjet që i përshtaten.
+lane_empty	Asgjë këtu për momentin.
+picked_fmt	{n} u zgjodh
+pick_all	Zgjidh të gjitha
+bag_for_carrier	Dorë për transportues
+send_with_rider	Dërgo me kalorës
+out_again	Përsëri jashtë
+return_to_sender	Kthehu te dërguesi
+runs_bags_heading	Vrapimet dhe çantat e fundit
+print_word	Printo
+bag_word	Çanta transportuese
+run_word	Kalorës vrap
+parcels_fmt	Parcelat {n}
+parcel_history	Historia
+attempt_fmt	Përpjekje {n}
+pieces_short_fmt	{n} copë
+note_reason_ph	Shënim ose arsye
+ops_pick_first	Zgjidhni parcelat në fillim - prekni ato ose skanoni ato
+cod_to_collect	Dorëzuar - COD për t'u mbledhur
+cod_on_road	COD ende në rrugë
+cod_owed_consignors	Mbledhur - për të paguar dërguesit
+cod_rto_fees	Tarifat e RTO për të mbledhur
+cod_to_hand_in	COD për t'u dorëzuar
+parcel_one_fmt	Parcela {n}
+facet_bank_title	Raportet
+facet_bank_help	Librat e ditës, plakja e palëve, postimet e bankës dhe fitim-humbja e periudhës.
+facet_ops_title	Dërgesat dhe dërgesat
+facet_ops_help	Skanoni ose shkruani AWB → Gjeni, më pas avanconi / printoni etiketën / COD. Dërgo tek kalorësi ose transportuesi.
+facet_cod_title	Regjistri COD
+facet_cod_help	Mblidhni në dorëzim, më pas dërgojini dërguesit.
+facet_riders_title	Kalorës (flota e vet)
+facet_riders_help	Shto kalorës, më pas dërgo AWB-të e rezervuara nga Ops.
+against_bill_ph	Kundrejt faturës # sipër (opsionale)
+aliases_ph	Alias — emra të tjerë, të ndarë me presje
+amount_blank_full_ph	Shuma (bosh = gjendja e plotë)
+amount_owed_ph	Shuma e borxhit
+amount_ph	Shuma
+amount_received_ph	Shuma e marrë
+amount_we_pay_ph	Shuma që paguajmë
+awb_scan_ph	AWB / skanoni barkodin
+bulk_csv_ph	CSV me shumicë — destinacion, marrës, kg, cod_paise, shënim
+business_name_ph	Emri i biznesit
+category_new_ph	Kategoria (opsionale, krijohet nëse është e re)
+cod_amount_ph	Shuma COD
+code_bag_ph	Kodi (thes)
+conv_factor_ph	Faktori (25 = 1 thes → 25 kg)
+country_code_ph	Kodi i vendit p.sh. IN, GB, US, AE, BR
+credit_khata_amount_ph	Shuma e kredisë / khata
+credit_limit_ph	Kufiri i kredisë (0 = asnjë)
+dim_unit_code_ph	Kodi i njësisë së dimensionit (cm)
+divisor_ph	Pjesëtues vëllimor (5000)
+extra_per_kg_ph	Shtesë / kg
+first_amount_ph	Shuma e parë
+first_kg_ph	kg e parë (pllakë)
+from_code_ph	Nga kodi (thes)
+item_name_lang_ph	Emri i artikullit — shkruajeni në gjuhën tuaj
+login_id_opt_ph	Emri i përdoruesit (i detyrueshëm, unik)
+manager_pin_ph	PIN-i i menaxherit për miratim (vetëm nëse nuk mund të anuloni)
+new_branch_name_ph	Emri i degës së re
+new_password_ph	Fjalëkalim i ri (opsional)
+new_pin_ph	PIN i ri (4–12 shifra)
+note_bank_ph	Shënim (depozitë, tërheqje, …)
+note_buy_expense_ph	Shënim (karburant, qira, …)
+note_expense_ph	Shënim (karburant, zyrë, …)
+notify_phone_ph	Njoftoni telefonin (WhatsApp/SMS hook)
+options_moklanjo_ph	Opsione (opsionale) — I madh=20, mbështjellje dhuratash=10
+part_second_way_ph	Pjesë me një mënyrë të dytë (opsionale)
+phone_ph	Telefoni
+address_ph	Adresa
+party_custom_fields_heading	Fushat e personalizuara (pala e zgjedhur)
+party_custom_help	Shtoni çdo etiketë dhe vlerë në këtë parti - WhatsApp, GSTIN, kodin e rrugës,…
+party_custom_key_ph	Emri i fushës (p.sh. WhatsApp)
+party_custom_value_ph	Vlera
+party_custom_add	Shto fushë
+party_custom_remove	Hiq fushën
+party_custom_empty	Nuk ka ende fusha të personalizuara
+party_custom_pick_first	Zgjidh një palë për të shtuar fusha të personalizuara
+place_name_ph	Emri i këtij vendi
+price_ph	Çmimi
+qty_example_ph	Sasia (p.sh. 1.5 për kg)
+quantity_ph	Sasia
+reason_required_ph	Arsyeja (e detyrueshme)
+role_title_ph	Titulli i rolit (p.sh. Barista)
+service_pct_ph	Shërbimi % opsional 0/10/12
+short_code_ph	Kodi i shkurtër (MG02)
+slab_kg_ph	Pllakë e karikueshme në kg (0,5)
+staff_name_ph	Emri i stafit / ID
+starting_password_ph	Fjalëkalimi fillestar (opsional)
+starting_pin_ph	PIN-i fillestar (4–12 shifra)
+tax_rate_ph	Emri ose % e normës së tatimit — Standard, E ulët, 0, 5, 12, 18, 20
+to_code_ph	Te kodi (kg)
+uncleared_no_ph	E pabarazuar # sipër
+unit_cost_ph	Kostoja e njësisë
+unit_kg_blank_ph	Njësia (kg ose bosh)
+unit_name_bag_ph	Emri (Thes)
+weight_unit_code_ph	Kodi i njësisë së peshës (kg)
+zone_name_ph	Emri i zonës
+pay_credit	Kredi
+book_kind_today	Librat e sotëm
+book_kind_month	Librat e këtij muaji
+book_kind_aging	Të papaguara / debit-kredit
+book_kind_balance	Bilanci
+ops_desk_help	Skanoni AWB me një skaner të barkodit USB (ose shkruani atë) → Gjej. Pastaj avanconi, printoni etiketën ose mblidhni COD. Etiketat shtypin Kodin 128.
+role_help_consignor	Roli: Dërguesi — AR (na kanë borxh). E njëjta firmë mund të jetë edhe Carrier.
+role_help_carrier	Roli: Transportuesi - AP (u kemi borxh atyre). E njëjta firmë mund të jetë edhe dërgues.
+role_help_both	Rolet: Dërgues + Transportues - një palë, regjistrat AR dhe AP, neto në Raporte.
+role_help_supplier	Roli: Furnizuesi - AP për blerjet.
+lane_declared_label	Rezervimi i llogarisë
+lane_owner_label	Rezervimi me para në dorë
+money_lane_bill	Fatura: {lane}

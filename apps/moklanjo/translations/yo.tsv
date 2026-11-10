@@ -1,0 +1,835 @@
+# Yoruba — Yorùbá (yo). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	Oluranse-ibẹwẹ awọn iwe ohun + fowo si tabili. Ọfẹ offline.
+unlock	Ṣii silẹ
+pin_hint	Olohun PIN bẹrẹ bi 0000
+sell	Fowo si
+buy	Sanwo jade
+books	Iwe akọọlẹ ọjọ
+books_help	Ipo oni. Ifiweranṣẹ = awọn idii ni. San jade = awọn owo ti ngbe & awọn inawo. Parties = consignors & ngbe.
+buy_help	Awọn iwe-ẹri inawo ati awọn owo gbigbe (owo jade). Lori-iroyin duro lori party leta.
+sell_money_in	Kọ iwe kan
+buy_money_out	Owo sisan / ti ngbe
+record_purchase	Fipamọ rira naa
+add_expense	Gbigba owo
+bank_book	Iwe akọọlẹ banki
+credit_help	Party id jẹ oto (awọn orukọ le tun). Awọn ipa: Consignor (AR), Olumulo (AP), tabi mejeeji lori id yẹn. Ledgers duro lọtọ; awọn iroyin fihan net.
+party_kind_ph	Aṣa ipa (iyan) — tabi tẹ ni kia kia kan ni ërún loke
+parties_list_heading	Awọn ẹgbẹ ti o fipamọ
+reports_help	Iwe akọọlẹ ọjọ, awọn onigbese & awọn ayanilowo, iwe akọọlẹ banki, awọn owo inawo, èrè & pipadanu.
+reports_today	Iwe akọọlẹ ọjọ (loni)
+reports_month	Èrè & pipadanu (osù)
+reports_aging	Dayato si / debiti-kirẹditi
+reports_balance_sheet	Iwe iwontunwonsi
+reports	Iwe akọọlẹ banki & P&L
+refresh	Tuntun
+undo	Yipada
+start_tracking	Bẹrẹ ipasẹ
+stock_minus	- Iṣura
+stock_plus	+ Iṣura
+settle_cash	Ṣeto owo
+settle_card	Kaadi yanju
+items	Awọn oṣuwọn & awọn iṣẹ
+nav_items	Awọn oṣuwọn
+more	Die e sii
+your_items	Awọn oṣuwọn rẹ
+items_help	Lara kọọkan jẹ oṣuwọn (fun apẹẹrẹ Agbegbe Ilẹ A). Unit jẹ nigbagbogbo kg. Fọwọ ba lati ṣatunkọ.
+add_item	Fi oṣuwọn kun
+new_item	Oṣuwọn tuntun
+adding_item	Fifi titun oṣuwọn
+editing_item	Ṣatunkọ
+save	Fipamọ
+remove	Yọ kuro
+empty_catalog	Ko si awọn oṣuwọn sibẹsibẹ. Ṣii Awọn oṣuwọn & awọn iṣẹ, ṣafikun ọkan (orukọ + idiyele, ẹyọkan kg), lẹhinna Gbigbasilẹ.
+counter_sale	Fowo si counter
+total	Lapapọ
+cash	Owo owo
+upi	UPI
+card	Kaadi
+credit	Onibara ati awọn olupese
+clear	Ko o
+ready_to_sell	Ṣetan si iwe afọwọkọ
+today_prefix	Loni
+today_mid	loni
+owed	olutayo
+round_word	yika
+back	Pada
+sold_out	Ko si
+restock	Pada sipo
+not_tracked	Ko tọpinpin
+in_stock	ni iṣura
+marked_sold_out	Ti samisi ko si
+add_upper	FIKÚN
+na	N/A
+qty	Ìwọn/Iye
+unit_at	Oṣuwọn @
+actual	Gangan
+applied	Ti a lo
+note_ph	Akiyesi (aṣayan)
+rounded	YIKA
+split	Pin
+counter	Atako
+parcel	Ile
+order	Ile ounjẹ ibere
+sales	Awọn ifiṣura
+sales_refunds	Awọn ifiṣura & awọn agbapada
+day_close	Ojo sunmo
+reports_expenses	Iwe akọọlẹ banki & P&L
+nav_reports	Iroyin
+nav_settings	Eto
+nav_lock	Titiipa
+sidebar_settings	Awọn eto ẹgbẹ ẹgbẹ
+sidebar_settings_help	Awọn aami kanna bi iṣinipopada ẹgbẹ. Fa kana lati tunto. Yi iyipada pada lati fihan tabi tọju. Eto ati Titiipa nigbagbogbo duro lori igi.
+sidebar_always_on_short	Nigbagbogbo lori
+sidebar_back_settings	Pada
+sidebar_shown	Afihan
+sidebar_hidden	Farasin
+sidebar_always_on	Nigbagbogbo lori igi
+sidebar_shown_hint	Ti o han lori iṣinipopada ẹgbẹ / awọn taabu isalẹ
+sidebar_hidden_hint	Farasin lati awọn igi
+sidebar_menu_items	Akojọ aṣyn & Akojọ awọn ohun akojọ
+sidebar_enable_all	Jeki Gbogbo
+sidebar_disable_all	Mu Gbogbo
+sidebar_order_saved	Ibere legbe ti o ti fipamọ
+sidebar_visibility_saved	Ti fipamọ hihan legbe
+amounts_hide	Tọju
+amounts_show	Fihan
+no_sale_yet	Ko si tita sibẹsibẹ
+favorites	Awọn ayanfẹ
+favorites_help	Awọn ohun akojọ aṣayan akojọ ti o ta nigbagbogbo, ti o fipamọ fun wiwọle rẹ. Ṣafikun ọkan si owo naa, tabi kọ atokọ rẹ lati gbogbo awọn ohun akojọ aṣayan ni isalẹ.
+your_favorites	Awọn ayanfẹ rẹ
+all_items	Gbogbo akojọ awọn ohun
+no_favorites	Ko si awọn ayanfẹ sibẹsibẹ - ṣafikun awọn ohun akojọ aṣayan lati atokọ ni isalẹ.
+add_to_bill	Fi kun si owo
+added	Fi kun
+owes_word	gbese
+selected_word	Ti yan
+chip_clear_credit	ko o - Kirẹditi tabi gba ilosiwaju
+chip_missing_customer	Onibara ti o yan sonu — mu lẹẹkansi
+chip_no_customer	Ko si alabara sibẹsibẹ - tẹ orukọ kan, lẹhinna tẹ Kirẹditi ni kia kia
+credit_summary_fmt	{} onibara · ṣiṣi kirẹditi {} · awọn ilọsiwaju ti o waye {}
+recent_label	Laipẹ:
+inventory	Oja
+inventory_stock	Oja & iṣura
+branches	Awọn ẹka
+branches_org	Awọn ẹka & org
+credit_customers	Awọn ẹgbẹ (awọn onigbese & awọn onigbese)
+customer_name_ph	Onibara tabi orukọ olupese
+new_customer_ph	Onibara titun tabi orukọ olupese
+item_name_ph	Orukọ oṣuwọn (fun apẹẹrẹ Agbegbe Ilẹ A)
+item_price_ph	Fun kg / pẹlẹbẹ akọkọ
+start_template	Ọja
+next_booking	fowo si tókàn
+destination_ph	Ibugbe ilu / agbegbe
+consignee_ph	Orukọ olugba
+consignee_phone_ph	Foonu olugba
+consignee_address_ph	adirẹsi ifijiṣẹ
+origin_name_ph	Orukọ olufiranṣẹ
+origin_phone_ph	Foonu olufiranṣẹ
+origin_address_ph	Gbigba / Adirẹsi orisun
+booking_consignor_heading	Oluranlọwọ (onibara / olufiranṣẹ)
+booking_consignee_heading	Olugba (olugba)
+booking_consignor_hint	Yan ayẹyẹ kan lati kun, tabi fi silẹ ni ofifo fun rin-in. Nilo fun agbẹru ile ati RTO.
+booking_consignee_hint	Olugba ti apo. Fi silẹ ni ofifo fun wiwa-ni counter ju-pari.
+weight_kg_ph	kg gangan
+length_cm_ph	L cm
+breadth_cm_ph	B cm
+height_cm_ph	H cm
+chargeable_kg	Gbigba agbara kg
+awb_label	AWB
+booking_help	Oluranlọwọ + oluranlọwọ (O DARA ṣofo) → opin irin ajo → iwuwo → oṣuwọn yiyan → Account/Owo → isanwo. Awọn titẹ AWB lori iwe-ẹri naa. Ifiweranṣẹ atẹle n ṣalaye tabili naa. Yiyi bẹrẹ dogba si Applied — satunkọ nikan lati yika owo naa.
+cart_empty_hint	Iduro sofo - iyan olugba/aṣoju, ṣeto opin irin ajo & iwuwo, tẹ ADD ni oṣuwọn kan, lẹhinna sanwo.
+team	Egbe
+team_pins	Ẹgbẹ & PINs
+my_pin_settings	Mi PIN
+settings_hub_help_my_pin	Yi ṣiṣi silẹ PIN fun ẹni ti o wọle lori ẹrọ yii.
+team_self_help	Iwọ nikan ni o le yi PIN ṣiṣi silẹ (ati ọrọ igbaniwọle iwọle yiyan). Beere lọwọ eni ti o ba nilo awọn iboju oriṣiriṣi tabi awọn ẹtọ.
+backup_settings	Afẹyinti & eto
+lock_app	Ohun elo titiipa
+pick	Gbe
+select	Yan
+advance	Ilọsiwaju
+owner	Eni
+staff	Oṣiṣẹ
+photo	Fọto
+auto	Aifọwọyi
+prev	Iṣaaju
+next	Itele
+ok	O DARA
+this_shop	Ipo olupin
+extra_till	Ipo onibara
+off	Paa
+server	Ipo olupin
+client	Ipo onibara
+language_currency	Ede & owo
+language	Ede
+choose_language	Yan ede rẹ
+language_setup_hint	Tẹle ede ẹrọ yii, tabi mu ọkan funrararẹ.
+lang_follow_platform	Ede ẹrọ
+lang_pick_user	Yan ede
+lang_platform_now	Ede ẹrọ bayi
+selected_language	Ti yan
+continue	Tesiwaju
+this_device	ẸRỌ YI
+device_use_q	Bawo ni yoo ṣe lo ẹrọ yii?
+last_server_mode	Je Server — tẹ ni kia kia lati tẹsiwaju
+last_client_mode	Njẹ Onibara - tẹ ni kia kia lati tẹsiwaju
+choose_server	Yan olupin kan
+choose_server_hint	Ṣii olupin ti o wa tẹlẹ, tabi ṣẹda ọkan fun iṣowo miiran.
+create_new_server	Ṣẹda titun olupin
+open_server	Ṣii
+new_server_name_ph	Orukọ olupin titun (aṣayan)
+server_remove_pin_ph	Olohun PIN lati yọ olupin kuro
+only_owner_remove_server	Olohun nikan ni o le yọ olupin kuro
+owner_pin_remove_server	Olohun PIN nilo lati yọ olupin yii kuro
+device_setup_help	Olupin ntọju awọn akọọlẹ nibi. Awọn orisii alabara si olupin kan.
+currency	Owo owo
+backup	Afẹyinti
+settings_sec_diag	Awọn iwadii aisan
+settings_hub_help	Ṣii agbegbe kan ni akoko kan - yiyi kere si, awọn yiyan ti o mọ.
+settings_sec_devices	Awọn ẹrọ miiran
+settings_sec_alerts	Awọn itaniji
+alerts_help	Bawo ni awọn ifiranṣẹ ipo ṣe pẹ to loju iboju fun ọ (iwọle yii).
+snack_secs_ph	Awọn aaya (3–60, aiyipada 10)
+snack_secs_save	Fi akoko gbigbọn pamọ
+snack_secs_saved	Akoko itaniji ti fipamọ - {n} iṣẹju-aaya
+snack_secs_bad	Tẹ awọn iṣẹju-aaya sii bi nọmba (3–60)
+cancelled	fagilee
+cancel	Fagilee
+opening_client	Nsii alabara…
+preparing_desk	Ngbaradi tabili…
+opening_server	Nsii olupin…
+creating_server	Ṣiṣẹda olupin…
+diag_privacy_help	Awọn akọọlẹ duro lori ẹrọ yii. Awọn aṣiri (PIN, awọn ọrọ igbaniwọle) ko ni ipamọ rara. Pinpin package kan kuro ninu ẹrọ naa nilo ifọwọsi ti o han gbangba ni igba kọọkan - ko ta tabi fi fun awọn ẹgbẹ kẹta.
+diag_level	Ipele alaye
+diag_level_error	Awọn aṣiṣe
+diag_level_warn	Ikilo
+diag_level_info	Alaye
+diag_level_debug	Ṣatunkọ
+diag_support_start	Bẹrẹ igba atilẹyin iṣẹju 30
+diag_support_stop	Ipari igba atilẹyin
+diag_support_started	Igba atilẹyin lori - alaye yokokoro fun awọn iṣẹju 30
+diag_support_ended	Igba atilẹyin pari
+diag_export_local	Ṣe okeere ẹda agbegbe
+diag_export_local_done	Awọn iwadii agbegbe ti ṣetan ni {path} - yan ibiti o ti fipamọ ẹda kan
+diag_approve_send	Fọwọsi pin pa ẹrọ yii
+diag_send_heading	Pin pa yi ẹrọ
+diag_send_help	Ifọwọsi jẹ package kan, lẹhinna pari. Igba diẹ - lo nikan lati ṣatunṣe tabi ilọsiwaju ọja naa. Ko pin pẹlu awọn ẹgbẹ kẹta. Ṣiṣẹ lori Linux, Windows, macOS, ati Android.
+optional_login_heading	Iyan wiwọle
+rights_heading	Awọn ẹtọ
+booking_scope_heading	Abele / International
+diag_send_approved	Pinpin fọwọsi fun akojọpọ kan (pari laipẹ)
+diag_export_send	Ṣẹda akojọpọ ipin (nilo ifọwọsi)
+diag_export_send_done	Pin package ti o ṣetan ni {path} - yan ibiti o ti fipamọ, lẹhinna firanṣẹ nikan si atilẹyin Kumkaj
+diag_save_bundle	Ṣafipamọ ẹda ayẹwo
+diag_bundle_saved	Ẹda ayẹwo aisan ti a fipamọ si {path}
+diag_bundle_failed	Ko le fi ẹda ayẹwo pamọ - gbiyanju lẹẹkansi
+diag_clear	Ko awọn akọọlẹ iwadii kuro
+diag_cleared	Awọn akọọlẹ iwadii ti nso
+use	Lo
+add_branch	Fi eka sii
+add_conversion	Fi iyipada kun
+add_item_plain	Fi ohun akojọ aṣayan kun
+add_note	Fi akọsilẹ kun
+add_opening_balance	Ṣafikun iwọntunwọnsi ṣiṣi
+add_rider	Fi ẹlẹṣin kun
+add_staff	Fi oṣiṣẹ kun
+add_unit	Fi ẹyọkan kun
+add_use_name	Fikun-un / lo orukọ yii
+allow_extra_tills	Gba afikun tills
+amend	Ṣe atunṣe
+apply_country_pack	Waye idii orilẹ-ede
+datetime_appearance	Ọjọ & irisi akoko
+datetime_appearance_help	Awọn iwe pa odun-akọkọ RFC3339 inu. Iwọnyi nikan yipada bi awọn ọjọ ati awọn aago ṣe n wo lori awọn owo-owo, awọn akole, awọn ijabọ, ati iboju.
+datetime_example	Apẹẹrẹ ni bayi: {ex}
+date_order	Ibere ọjọ
+date_order_dmy	D/M/Y
+date_order_mdy	M/D/Y
+date_order_ymd	Y-M-D
+time_format	Aago
+time_format_24h	24-wakati
+time_format_12h	12-wakati
+attach_bill_photo	So foto owo
+attach_pdf	So PDF
+attach_photo	So Fọto
+bank	Banki
+bank_in	Bank sinu
+bank_out	Owo jade ti awọn ile ifowo pamo
+bank_to_till	Banki → titi di
+till_to_bank	Titi → banki
+mark_cleared	Samisi nso
+unmark	Yọ aami
+role_both	Mejeeji
+role_carrier	Olugbeja
+role_cashier	Owo owo
+role_consignor	Oluranlọwọ
+role_manager	Alakoso
+role_supplier	Olupese
+branch_name_sell_ph	Orukọ ẹka lati ta lati
+bring_my_book	Mu iwe akojo mi wa
+business_tax_id_ph	Owo-ori owo id
+card_amount_ph	Iwọn kaadi
+cash_amount_ph	Iye owo
+upi_amount_ph	Iye UPI
+carrier_cost_ph	Iye owo ti ngbe
+carrier_party_ph	Ti ngbe party
+choose_icon	Yan aami
+choose_logo	Yan logo
+choose_receipt_stamp	Yan ontẹ gbigba
+choose_payment_qr	Yan owo sisan QR
+clear_icon	Ko aami
+clear_logo	Ko logo
+clear_photo	Ko aworan kuro
+clear_stamp	Ko ontẹ kuro
+clear_payment_qr	Ko owo sisan QR kuro
+print_faces	Awọn oju titẹjade (iwe-ẹri / iwe-aṣẹ akoko)
+print_faces_help	Ontẹ iyan ati isanwo QR lẹgbẹẹ aami rẹ lori awọn gbigba gbigba ati awọn owo akoko.
+awb_pools_heading	Ti ngbe AWB nọmba adagun
+add_awb_pool	Fi AWB pool
+awb_pool_carrier_ph	Ti ngbe party orukọ
+awb_pool_start_ph	Bẹrẹ Bẹẹkọ.
+awb_pool_end_ph	Ipari No.
+awb_pool_prefix_ph	Ipilẹṣẹ (aṣayan)
+awb_pool_label_ph	Aami (aṣayan)
+pieces_ph	Awọn nkan (òfo = 1) - faagun fun ẹru / nkan pupọ
+bulk_awbs_ph	Olopobobo AWBs — lẹẹmọ ọpọlọpọ (newline tabi koma) fun ọkan ilosiwaju ipo
+tds_cut_ph	Ge TDS (aṣayan)
+discount_ph	Eni (iyan)
+cheque_no_ph	Ṣayẹwo nọmba (aṣayan)
+bill_reminder_chase	Bill olurannileti lepa akojọ
+month_mix_report	Osu mix Iroyin
+copy_month_gst_csv	Daakọ osu GST CSV
+domestic	Abele
+international	International
+pick_logo	Yan aami
+booking_scope_hint_domestic	Volumetric ÷5000 (abele) - tẹ International fun ÷6000 afẹfẹ
+booking_scope_hint_intl	Volumetric ÷ 6000 (afẹfẹ agbaye) - tẹ Abele fun itaja ÷5000
+cod_register	Iforukọsilẹ COD
+collect_cod	Gba COD (AWB)
+consignments_dispatch	Awọn ẹru & ifijiṣẹ
+consignor_party_ph	Consignor / party orukọ
+copy_day_book_csv	Daakọ iwe akọọlẹ ọjọ CSV
+copy_day_close	Daakọ ọjọ sunmọ
+copy_items_csv	Daakọ awọn ohun akojọ aṣayan CSV
+copy_outstanding_csv	Daakọ ti o tayọ CSV
+copy_parties_csv	Daakọ awọn onibara ati awọn olupese CSV
+copy_party_ledger_csv	Daakọ iwe akọọlẹ onibara CSV
+copy_receipt	Daakọ iwe-ẹri
+copy_report	Daakọ iroyin
+counted_cash_ph	Ti a kà owo ni duroa
+counter_agency_ph	Orukọ counter / aṣoju (aṣayan)
+create_backup	Ṣẹda afẹyinti
+day_close_summary	Day sunmọ Lakotan
+delete_party	Pa onibara tabi olupese ti o yan
+dispatch_to_rider	Ifiweranṣẹ silẹ → ẹlẹṣin
+docket_charge_ph	Docket idiyele
+declared_value_ph	Iye kede
+contents_ph	Awọn akoonu
+eway_ph	E-ọna owo No.
+insurance_label	Iṣeduro
+yes_label	Bẹẹni
+no_label	Rara
+print_route_label	Ọna titẹ sita
+new_party_kind_label	New party irú
+done_open_books	Ti ṣe - ṣiṣi awọn iwe-ipamọ
+export_day	Ọjọ okeere
+extra_note_expense_ph	Afikun akọsilẹ lori kẹhin inawo
+extra_note_awb_ph	Akọsilẹ afikun lori AWB / tita
+failed_delivery	Ifijiṣẹ kuna
+find_scan_awb	Wa / Ṣayẹwo AWB
+forget_shop	Gbagbe ile itaja yii
+fuel_ph	Epo epo
+handover_carrier	Ti ṣe iwe ọwọ → ti ngbe
+import_day	Ojo agbewọle
+import_items_csv	Ṣe agbewọle awọn nkan / awọn oṣuwọn CSV…
+import_parties_csv	Ṣe agbewọle awọn alabara ati awọn olupese CSV…
+import_pincodes_csv	Ṣe agbewọle awọn koodu CSV…
+import_carrier_bill_csv	Owo agbewọle agbewọle CSV…
+copy_carrier_bill_report	Daakọ iroyin owo ti ngbe kẹhin
+use_carrier_cost	Lo iye owo ti ngbe
+rate_carrier_ph	Ti ngbe (ofo = oṣuwọn tita wa)
+rate_party_ph	Party (òfo = gbogbo awọn onibara)
+carrier_pick_ph	Ti ngbe fun iye owo (lati afiwe)
+item_name	Akojọ ohun akojọ orukọ
+load_bulk_row	Fifuye ila olopobobo → tabili
+login_id_ph	Orukọ olumulo
+mark_delivered	Mark jišẹ
+manifest_cod_total	COD lapapọ
+manifest_received_by	Ti gba nipasẹ
+manifest_sign	Wole
+ndr_address_wrong	Adirẹsi aṣiṣe
+ndr_customer_unavailable	Ko si
+ndr_door_locked	Titiipa ilẹkun
+ndr_other	Omiiran
+ndr_refused	Kọ
+out_for_delivery	Jade fun ifijiṣẹ
+print_drs	Tẹjade DRS
+print_run_sheet	Print run dì
+reattempt	Tun igbiyanju
+rider_cod_handed_ph	COD ti a fi silẹ
+settle_rider_cod	Yanju ẹlẹṣin COD
+mode_desk	Iduro
+mode_rider	Ẹlẹṣin
+waiting_office	nduro lati de ọdọ ọfiisi
+capture_signature	Ibuwọlu gbigba
+incoming_manifest	Ifihan ti nwọle
+pickup_request	Ibeere gbigba
+pickup_run	Ṣiṣe gbigba
+auto_assign_area	Aifọwọyi-sọ agbegbe
+reorder_stops	Tunto awọn iduro
+settle_rider_pay	Yanju ẹlẹṣin sanwo
+vehicle_inspect	Ayẹwo ọkọ
+print_docket	Iwe titẹ sita
+franchise_statement	Franchise gbólóhùn
+tally_export	Tally iwe-ẹri okeere
+open_whatsapp	Ṣii WhatsApp
+copy_sms	Daakọ ọrọ SMS
+pick_barcode_image	Yan aworan lati ṣayẹwo
+share_receipt_whatsapp	Pin risiti lori WhatsApp
+delivery_feedback	esi Ifijiṣẹ
+lan_self_book	LAN ara-fowo si
+new_party_clear	Onibara tabi olupese titun (fọọmu ti o han gbangba)
+new_party_kind_ph	Irú ayẹyẹ tuntun (Olupese / Olupese)
+next_country	Next orilẹ-ede
+prev_country	Ti tẹlẹ orilẹ-ede
+note_gstin_ph	Akiyesi / GSTIN / olurannileti adehun
+note_pod_ph	Akiyesi / POD (aṣayan)
+on_account_ap	Lori akọọlẹ (AP)
+org_optional_ph	Eto (aṣayan)
+paid_now	Sanwo bayi
+pairing_code_ph	koodu so pọ
+pair_now	So pọ ni bayi
+party_name_selected_ph	Onibara tabi orukọ olupese (tabi lo ti a yan)
+password_ph	Ọrọigbaniwọle
+pay_ap_card	San kaadi AP
+pay_ap_cash	San owo AP
+pay_ap_upi	San AP UPI
+period_bill	Iwe-owo akoko
+period_bill_party	Iwe-owo akoko (ẹgbẹ)
+pick_pod_photo	Yan fọto POD
+print_awb_label	Sita AWB aami
+print_open	Tẹjade / ṣii
+reason_amend_ph	Idi fun atunṣe / ofo / agbapada
+reason_note_ph	Idi / akọsilẹ (egbin, kika,…)
+record_day_close	Fi ọjọ sunmọ
+refresh_from_shop	Sọ lati itaja
+refund	agbapada
+remit_cod	Firanṣẹ COD (ẹgbẹ)
+remove_selected	Yọ ti o yan kuro
+restore_backup	Mu afẹyinti pada
+rider_name_ph	Orukọ ẹlẹṣin
+rider_phone_ph	Foonu ẹlẹṣin
+riders	Awọn ẹlẹṣin
+riders_own_fleet	Awọn ẹlẹṣin (ọkọ oju-omi kekere tiwọn)
+rollup	Akojọpọ Akojọ
+save_booking_measures	Ṣafipamọ awọn iwọn ifiṣura
+save_brand	Fi ami iyasọtọ pamọ
+save_business_id	Fi owo id pamọ
+save_business_name	Fi orukọ iṣowo pamọ
+save_features	Fipamọ iṣeto iṣẹ
+save_names	Fi awọn orukọ pamọ
+server_ip_ph	IP olupin (fun apẹẹrẹ 192.168.1.10)
+set_credit_limit	Waye opin si onibara tabi olupese
+set_login_selected	Waye wiwọle si ti a ti yan
+set_login_named	Kan wọle si {name}
+shop	Itaja
+start_fresh	Bẹrẹ alabapade
+stop_extra_tills	Da afikun tills
+backup_auto	Ṣe afẹyinti laifọwọyi ni gbogbo ọjọ · kẹhin {when} · awọn ọjọ 14 to kẹhin ni a tọju ni {dir}.
+backup_auto_none	Ṣe afẹyinti laifọwọyi ni gbogbo ọjọ - akọkọ nṣiṣẹ ni iṣẹju kan.
+backup_copy_to	Awọn ẹda tun lọ si {dir}.
+backup_copy_btn	Bakannaa da awọn afẹyinti pada si folda kan…
+autostart_off	Bẹrẹ pẹlu kọmputa yii
+autostart_on	Bẹrẹ pẹlu kọmputa yii ✓ - tẹ ni kia kia lati da
+autostart_done_on	Kọmputa yii ṣii app naa nigbati o bẹrẹ — olupin ile itaja ti pada lẹhin gige agbara kan.
+autostart_done_off	Kọmputa yii ko ṣi ohun elo naa mọ nigbati o bẹrẹ.
+right_allowed	Ti gba laaye
+right_with_approval	Pẹlu ifọwọsi
+right_denied	Ko gba laaye
+editing_staff	Awọn ẹtọ fun
+team_pick_ph	Oṣiṣẹ lati ṣatunkọ - orukọ, orukọ olumulo, tabi mu
+select_staff	Yan oṣiṣẹ yii
+rights_help	Awọn ẹtọ - tẹ ni kia kia lati yipada: Ti gba laaye → Pẹlu ifọwọsi (PIN oluṣakoso ni akoko yẹn) → Ko gba laaye.
+right_void_refund	Ofo tabi agbapada fowo si
+right_amend_sale	Ṣe atunṣe igbasilẹ ti o gbasilẹ
+find_server	Wa olupin ile itaja naa
+finding_server	Wiwa olupin ile itaja lori eyi Wi‑Fi…
+no_server_found	Ko si ọkan ti a rii. Lori olupin naa: Eto → Awọn ẹrọ miiran → Gba afikun awọn tills (kanna Wi‑Fi). Tabi tẹ IP ti o han nibẹ.
+servers_found_pick	Fọwọ ba ile itaja ti o fẹ sopọ si.
+server_host_selected	Lilo {host} — tẹ koodu isọpọ sii, lẹhinna Sopọ ni bayi.
+device_forgotten	Ile-itaja naa gbagbe ẹrọ yii — so pọ mọ pẹlu koodu lọwọlọwọ itaja. Awọn ibere nduro lori rẹ ti wa ni ipamọ.
+forget_device	Gbagbe
+last_seen	ti ri
+new_pair_code	Koodu sisopọ tuntun
+lan_offline	Olupin itaja ko le de ọdọ
+lan_offline_waiting	A ko le de ọdọ olupin itaja · {n} nduro
+lan_connecting	Nsopọ si rira…
+pair_finishing	Ipari meji… lilo awọn iwe ọfiisi
+pair_opening	Ṣii ọfiisi…
+lan_live	Gbe
+lan_sending	{n} fifiranṣẹ
+lan_sign_in_to_send	Wọle lẹẹkansi lati firanṣẹ {n}
+lan_pair_again	So ẹrọ yi pọ lẹẹkansi
+lan_update_app	Ṣe imudojuiwọn app naa - ẹrọ yii ati olupin ọfiisi ni awọn ẹya oriṣiriṣi
+allow_firewall	Gba awọn ẹrọ miiran laaye lati sopọ
+firewall_blocked	Ogiriina kọmputa yii n dinamọ awọn ẹrọ miiran — tẹ ni kia kia Gba awọn ẹrọ miiran laaye lati sopọ.
+firewall_waiting	Nduro fun itọsi alabojuto…
+lan_join_help	Lori ẹrọ miiran: Ipo Onibara → Wa olupin ile itaja (tabi tẹ {addr}) → koodu sisopọ {code}.
+lan_pair_status	Wi‑Fi {addr}
+lan_join_help_no_addr	So ẹrọ yi pọ si Wi‑Fi fun adirẹsi kan.
+lan_no_address	Ko si adirẹsi Wi‑Fi sibẹsibẹ - sopọ si ile itaja Wi‑Fi.
+lan_not_listening	Ko gbigba awọn ẹrọ (ibudo {port} nšišẹ). Tun app bẹrẹ.
+lan_tills_off	Afikun tills wa ni pipa. Gba wọn laaye lati jẹ ki ẹrọ miiran darapọ.
+paired_with	So pọ · {url}
+not_paired	Ko so pọ
+choose_device_use	Yan Olupin tabi Onibara.
+paired_note	So pọ. Ṣii silẹ lati ta, tabi Tuntun fun tuntun.
+last_update_at	Imudojuiwọn to kẹhin: {time}.
+pair_intro	Wa olupin naa, tabi tẹ adirẹsi rẹ ati koodu sisọ pọ.
+queue_waiting	Nduro lati de ile itaja ({n}):
+queue_tries	Gbiyanju {n} igba · idahun to kẹhin: {e}
+save_backup_copy	Ṣafipamọ ẹda afẹyinti…
+backup_copy_saved	Ẹda afẹyinti ti o fipamọ - tọju rẹ kuro ni ẹrọ yii (ọpa USB tabi ẹrọ miiran)
+backup_copy_overdue	Ko si ẹda afẹyinti ti fi ẹrọ yii silẹ fun awọn ọjọ {n} - Eto → Afẹyinti
+backup_copy_failed	Ẹda afẹyinti ko le wa ni fipamọ nibẹ - mu aaye miiran
+clock_off	Aago ẹrọ yii jẹ iṣẹju {min} kuro ni olupin ile itaja - ṣeto akoko ti o tọ lori ẹrọ yii
+printers_heading	Awọn atẹwe lori ẹrọ yii
+printers_help	Wa awọn itẹwe gidi, lẹhinna yan Gbigba tabi aami AWB. Iṣẹ kọọkan ni iwọn tirẹ, aworan tabi ala-ilẹ, ati bii a ṣe fi awọn baiti ranṣẹ. Aami kan tẹjade kooduopo. Ibi ofo = ma ṣe tẹjade.
+job_width	Ìbú àkóónú (mm)
+job_width_ph	Tabi tẹ iwọn kan, 40-210 mm
+job_layout	Ìfilélẹ
+job_delivery	Bawo ni a ṣe firanṣẹ iṣẹ naa
+job_size	Iwọn fonti
+job_size_ph	f.eks. 18, 20, 26…
+save_receipt_format	Fi ọna kika gbigba pamọ
+save_label_format	Fi ọna kika aami pamọ
+test_receipt_format	Gbigba idanwo
+test_label_format	Aami idanwo
+test_receipt_sent	Apeere risiti rán
+test_label_sent	Apeere aami rán
+test_print_no_printer	Ko si itẹwe fun iṣẹ yẹn - ṣafikun ọkan labẹ aaye yii
+printers_host_only	Awọn atẹwe ti ṣeto lori ẹrọ itaja (Olupin). Eyi titi yoo fi ranṣẹ awọn iṣẹ sibẹ - Wa / ṣafikun / fi iduro duro lori olupin naa. Oju-iwe idanwo lọ si olupin naa.
+printers_pool_heading	Awọn ẹrọ atẹwe
+printers_routes_heading	Ibi ti awọn nkan tẹjade
+printer_label_ph	Orukọ (fun apẹẹrẹ. Iduro)
+printer_target_ph	ogun:9100 · bt: MAC · usb: VID: PID · eto orukọ
+printer_mode_heading	Profaili fun awọn abajade tuntun
+printer_mode_standard	Aworan Standard
+printer_mode_landscape	Standard Landscape
+printer_mode_thermal	Gbona
+printer_mode_standard_short	Aworan
+printer_mode_landscape_short	Ala-ilẹ
+printer_mode_thermal_short	Gbona
+printer_format_custom	Profaili aṣa tuntun
+printer_format_custom_label	Aṣa
+printer_format_custom_added	Profaili aṣa ti a ṣafikun fun aaye yii
+add_printer	Fi itẹwe kun
+remove_printer	Yọ kuro kẹhin
+route_pick_ph	risiti tabi aami
+route_add_printer_ph	Ṣafikun itẹwe si ibi yii
+route_receipt	gbigba
+route_label	AWB aami
+route_dont_print	Ko si itẹwe sọtọ
+route_add	Fi si ibi
+route_up	Soke
+route_down	Isalẹ
+route_remove	Yọ kuro kẹhin
+route_clear	Ko awọn atẹwe kuro fun aaye yii
+save_printers	Fi awọn atẹwe pamọ
+print_test_page	Tẹjade oju-iwe idanwo kan
+printers_saved	Awọn atẹwe ti a fipamọ fun ẹrọ yii
+test_page_sent	Oju-iwe idanwo ranṣẹ - ṣayẹwo itẹwe naa
+printers_found	Ri lori ẹrọ yi: {list}
+find_printers	Wa awọn atẹwe
+printers_looking	Wiwa awọn atẹwe lori ẹrọ yii ati Wi-Fi…
+printers_tap_find	Tẹ Wa awọn atẹwe ni kia kia fun awọn isinyi ti o gba awọn iṣẹ ati awọn atẹwe iwe nẹtiwọọki lori Wi-Fi yii (kii yọ kuro tabi awọn ti aisinipo).
+printers_none_found	Ko si awọn atẹwe ti a rii - tẹ orukọ itẹwe eto kan, tabi adirẹsi nẹtiwọki kan (fun apẹẹrẹ 192.168.1.50).
+receipt_printer_ph	Itẹwe fun awọn gbigba
+queue_refused	Ko gba nipasẹ ile itaja ({n}) - ṣayẹwo ọkọọkan ni tabili:
+clear_not_accepted	Ti ṣayẹwo - ko akojọ yii kuro
+device_name_ph	Orukọ ẹrọ yii
+lan_last_update	imudojuiwọn kẹhin {time}
+lan_not_accepted	{n} ko gba
+connected_now	ti sopọ ni bayi
+backup_failed	Afẹyinti aifọwọyi ti o kẹhin kuna: {e}
+backup_overdue	Ko si afẹyinti fun awọn ọjọ {n} - jẹ ki ohun elo naa ṣii lori ẹrọ yii ki o le ṣe afẹyinti.
+disk_low	Nikan {mb} MB ọfẹ lori ẹrọ yii - awọn afẹyinti yoo kuna laipẹ. Fi aaye diẹ silẹ.
+last_seen_devices	Ikẹhin ti a rii: {time}
+sync_interval	Muṣiṣẹpọ gbogbo {secs}s
+connection_to_shop	Asopọ si itaja
+supplier_name_ph	Orukọ olupese (tabi alabara)
+supplier_ph	Olupese
+switch_device	Yipada ẹrọ yii
+take_payment	Gba owo sisan
+tax_added_till	{tax} iyasoto
+tax_inside_price	{tax} ifisi
+today_books	Awọn akọọlẹ loni
+unlock_after_pairing	Wọle PIN
+unlock_with_login	Ṣii silẹ pẹlu wiwọle
+update_my_password	Ṣe imudojuiwọn ọrọ igbaniwọle mi
+update_my_pin	Ṣe imudojuiwọn PIN mi
+duress_heading	Ṣii silẹ pajawiri PIN (Onini nikan)
+duress_help	iyan. Ti PIN yii ba ti tẹ ni ṣiṣi silẹ dipo tirẹ, gbogbo awọn titẹ sii iwe ni a parẹ (awọn iwe-iwe, awọn iwe akọọlẹ, itan-akọọlẹ) ati tabili naa ṣii bi Oniwun ti n wo deede - awọn oṣuwọn, awọn ayẹyẹ, awọn agbegbe, oṣiṣẹ ati awọn eto duro. Eto ati atunto ko paarẹ. Lo nikan ti o ba fi agbara mu lati ṣii. Fi òfo silẹ ki o fipamọ lati paa. Maṣe jẹ kanna bi PIN ẹnikẹni.
+duress_pin_ph	Pajawiri PIN (4-12 awọn nọmba)
+duress_confirm_ph	Tẹ lẹẹkansi lati jẹrisi
+save_duress_pin	Fi pajawiri pamọ PIN
+clear_duress_pin	Pa pajawiri PIN
+duress_on	Ṣii silẹ pajawiri PIN wa ni titan
+duress_off	Ṣii silẹ pajawiri PIN wa ni pipa
+duress_saved	Ṣii silẹ pajawiri PIN ti fipamọ
+duress_cleared	Ṣii silẹ pajawiri PIN paa
+vehicle_ph	Ọkọ
+void	Ofo tita
+write_off_ap	Kọ AP
+write_off_nil	Kọ pa / nil iwontunwonsi
+zone_ph	Agbegbe (orukọ lati Awọn oṣuwọn)
+caption_today	LONI
+caption_bookings	Awọn iwe-owo
+caption_payments_today	ISANwo LONI
+caption_outstanding	PATAKI
+caption_bank	Ile-ifowopamọ
+paid_by	Sanwo nipasẹ
+second_way	Ọna keji
+weight_in	Iwọn ninu
+size_in	Iwọn inu
+goods_received	Awọn ọja ti a gba
+expense_heading	Inawo
+notes_attach_sale	Awọn akọsilẹ & awọn asomọ (titaja ti a yan)
+notes_attach_party	Awọn akọsilẹ ati awọn asomọ (alabara ti a yan tabi olupese)
+attachments_last_expense	Awọn asomọ (owo ti o kẹhin)
+credit_limit_heading	Iwọn kirẹditi (alabara ti a yan tabi olupese)
+pay_selected_heading	Sanwo ti a yan (yanju gbese / gba ilosiwaju)
+write_off_heading	Kọ silẹ (ko kuro laisi sisanwo)
+pay_ap_heading	San ohun ti a jẹ wọn (AP)
+country_tax	Orilẹ-ede & owo-ori
+extra_tills_heading	Afikun tills
+other_devices_help_heading	Ṣeto awọn ẹrọ miiran
+other_devices_help	Lori ẹrọ yii (Olupin): Awọn ẹrọ miiran → Gba afikun tills laaye. Ṣe akiyesi koodu sisopọ ati adirẹsi Wi-Fi. Fọwọ ba Gba awọn ẹrọ miiran laaye lati sopọ ti o ba han. Lori kọnputa, tẹ Bẹrẹ pẹlu kọnputa yii ni kia kia. Lori ẹrọ kọọkan miiran: fi ohun elo naa sori ẹrọ, yan Ipo Onibara, Wa olupin ile itaja (tabi tẹ adirẹsi naa), tẹ koodu sisopọ pọ, So pọ ni bayi. Awọn aṣẹ duro lori ẹrọ ti Wi-Fi ba lọ silẹ ki o lọ nigbati olupin naa ba dahun lẹẹkansi.
+your_brand	Aami rẹ (ninu-app)
+units_heading	Awọn ẹya
+booking_measures	fowo si igbese
+drawer_count	Iṣiro oluyaworan (aṣayan)
+spreadsheet_csv	Iwe kika (CSV)
+bank_reconciliation	Ilaja banki (fi ami si si alaye banki rẹ)
+book_add_product	Iwe - ṣafikun ọja / oṣuwọn
+book_opening_credit	Leja - ṣiṣi kirẹditi
+account_kind	Iru akọọlẹ (tẹ ọkan)
+active_ledger	Iwe akọọlẹ ti nṣiṣe lọwọ
+actual_total_cap	Àpapọ̀ Àpapọ̀
+amend_help	Yan tita lati tunse, ofo, tabi agbapada. Awọn atunṣe tọju itan kikun. Lapapọ Iyika bẹrẹ dogba si Ohun elo — ṣatunkọ nikan lati yika. Ofo ati agbapada le nilo Oniwun tabi Alakoso PIN (ti tẹ loke; ti o gbasilẹ pẹlu orukọ rẹ).
+applied_total_cap	AWURE LAPAPO
+bank_balance	Bank iwontunwonsi
+bank_net_today	Bank net loni
+branch_export_help	Si ilẹ okeere kọ aworan aworan ọjọ kan sinu folda awọn afẹyinti ati daakọ rẹ si agekuru agekuru. Lati gbe ọjọ ijade miiran wọle, fi faili rẹ pamọ bi import_branch_snapshot.json ninu folda yẹn, lẹhinna tẹ Gbe wọle ni kia kia.
+brand_shown_help	Ti han loju iboju inu ohun elo naa. Orukọ app ti a fi sori ẹrọ ati aami lori ẹrọ yii duro bi atokọ pẹpẹ.
+app_icon	App aami
+logo_help	Iyan itaja ami lori awọn iboju ninu awọn app.
+onboard_layout	Ohun ti o gba
+item_photo_help	iyan. Laisi fọto a fihan awọn ibẹrẹ lati orukọ ohun kan akojọ.
+cash_in_hand	Owo ni ọwọ (titi di)
+change_my_pin_heading	Yi PIN mi pada (tirẹ nikan)
+connect_to_server	Sopọ si olupin naa
+counter_locked	Counter 01 · Titiipa
+country_pack_help	Ididi orilẹ-ede kan ṣeto orukọ owo-ori ati iṣiro, oju-irin isanwo lẹsẹkẹsẹ, ati id iṣowo ti a tẹjade lori awọn owo-owo. Kumkaj kii ṣe owo-ori tabi fun awọn iwe-ipamọ e-invoice ti ijọba nibikibi.
+currency_use_help	Yi lọ ki o si tẹ Lo fun eyikeyi atilẹyin owo.
+day_close_help	Gbigbasilẹ isunmọ ọjọ kan ṣafipamọ akopọ yii (ati iyatọ duroa ti o ba ka) si akọọlẹ iṣayẹwo. Ko da tita duro.
+expenses_word	Awọn inawo
+feature_access_help	Wiwọle ẹya ara ẹrọ fun oṣiṣẹ ti o yan (tẹ ni kia kia lẹhin fifi kun)
+footer_local	SQLite Agbegbe · Ọfẹ Titilae · Awọsanma odo
+fresh_book_moklanjo	Alabapade = katalogi ofo (fi awọn ohun kan kun nigbamii). Iwe = Iru iṣura ṣiṣi ati tani o jẹ ọ ni isalẹ.
+fresh_selected	Ti yan tuntun - katalogi duro sofo. Tẹ Ti ṣee nigbati o ba ṣetan.
+gross_word	Lapapọ
+how_start	Bawo ni o ṣe fẹ bẹrẹ?
+later_country_pack	Nigbamii: Eto → lo idii orilẹ-ede rẹ fun owo-ori ati awọn aami isanwo.
+local_badge	IBILE
+measures_help_moklanjo	Bawo ni awọn idii ṣe wọn ni tabili ifiṣura. Iru awọn iwọn ati iwuwo ni awọn iwọn ti o lo — boṣewa (cm, m, in, ft · kg, g, lb, oz) tabi ẹyọ tirẹ ti o sopọ mọ cm / kg loke (taara tabi nipasẹ awọn ẹya miiran). Awọn iwe nigbagbogbo ṣe igbasilẹ kg. Fi aaye kan silẹ ni ofo lati tọju rẹ.
+mix_type_hint_moklanjo	Tẹ iye melo ni ọkọọkan (owo / UPI / kaadi / kirẹditi). Gbọdọ ṣafikun si owo naa. Kirẹditi nilo alabara kan loke.
+money_in_sales	Owo ni (tita)
+more_help_moklanjo	Katalogi, tita, kirẹditi, ẹgbẹ, afẹyinti - pẹlu ọja iṣura ati awọn tills afikun nigbati o nilo.
+net_word	Apapọ
+offline_badge	Aisinipo
+optional_login_help	Iyan iwọle (id + ọrọ igbaniwọle). Eni tosaaju lẹẹkan; olumulo nikan le yi ọrọ igbaniwọle pada nigbamii.
+or_unlock_login	Tabi ṣii pẹlu wiwọle id + ọrọigbaniwọle
+permission_preset	Iṣẹ (ṣeto awọn iboju ati awọn ẹtọ)
+preset_help_moklanjo	Owo owo: ta. Alakoso: ta + awọn ohun akojọ aṣayan + ofo / atunṣe.
+product_locked_moklanjo	Moklanjo
+product_only_moklanjo	Ohun elo yii jẹ Moklanjo nikan - awọn iwe + tabili gbigba silẹ. Iṣowo miiran dojukọ ọkọ bi awọn ọja lọtọ nigbamii.
+purchases_cogs	Awọn rira (COGS)
+qty_cap	IYE
+restore_help	Mu pada: mu afẹyinti. Awọn iwe akọọlẹ ṣii bi wọn ti wa lẹhinna; awọn akọọlẹ bi wọn ti wa ni bayi ti wa ni fipamọ ni akọkọ, nitorinaa eyi le jẹ tunṣe.
+wipe_data_heading	Pa data agbegbe rẹ
+wipe_data_help	Olohun nikan - awọn yiyan kanna bi aifi si Windows. Awọn igbasilẹ iṣowo n ṣalaye itan iṣowo ṣugbọn o tọju awọn oṣuwọn ati iṣeto (bii PIN ṣiṣi pajawiri). Iṣeto itaja yọ awọn iwe data kuro. Awọn ayanfẹ iboju kuro ni window/ede. Jẹrisi pẹlu PIN Olohun. PIN šiši pajawiri lori Egbe jẹ lọtọ (mu ese ni ṣiṣi silẹ).
+wipe_trading	Awọn igbasilẹ iṣowo
+wipe_schema	Eto itaja
+wipe_ui	Awọn ayanfẹ iboju
+wipe_owner_pin_ph	Olohun PIN lati parẹ
+wipe_delete_selected	Paarẹ ti o yan
+wipe_owner_only	Onini nikan le pa data agbegbe rẹ.
+restore_owner_only	Olohun nikan ni o le mu afẹyinti pada.
+wipe_owner_pin_needed	Tẹ Oniwun PIN lati pa data agbegbe rẹ.
+wipe_nothing_selected	Yan kini lati parẹ ni akọkọ.
+wipe_done	Ti a ti yan data agbegbe ti paarẹ.
+wipe_schema_done	Eto itaja nu — yan olupin tabi Onibara lati tẹsiwaju.
+rounded_total	Ti yika Lapapọ
+setup_app_moklanjo	Ṣeto Moklanjo
+shop_logo_optional	Aami itaja (aṣayan)
+stock_type_help	Tẹ orukọ nkan akojọ aṣayan (apakan rẹ ti to), opoiye, lẹhinna ṣatunṣe. Awọn ohun akojọ aṣayan akojọ aṣayan ti a ko ka sibẹsibẹ nilo Bẹrẹ titele lẹẹkan.
+team_owner_help	Bẹwẹ: mu iṣẹ kan (Cashier / Manager), orukọ + bẹrẹ PIN, lẹhinna Fikun-un. Nikan ti eniyan yii ba yatọ: ṣiṣi awọn iboju ati awọn ẹtọ ni isalẹ, lẹhinna Fipamọ iṣeto iṣẹ. Gbogbo eniyan yi PIN tiwọn pada ni isalẹ - Olohun ko le yi ti elomiran pada.
+they_owe_us	Won ni gbese wa
+unit_at_cap	Ẹyọ @
+units_help	Awọn koodu fun awọn akole ohun kan akojọ (kg, nkan, apo). Gbogbo ẹyọkan gbọdọ ṣopọ mọ taara tabi nipasẹ awọn ẹya miiran — si boṣewa (kg · cm · ml · pc), fun apẹẹrẹ. 1 crate = 2 apoti ati 1 apoti = 20 cm. Awọn iyipada: 1 lati = ifosiwewe si. Awọn owo nina kii ṣe sipo.
+we_owe_them	A je won
+who_unlocking	Ta ni ṣiṣi silẹ?
+locked_word	Titiipa
+show_pin	Ṣe afihan PIN
+hide_pin	Tọju PIN
+set_owner_pin	ṢETO OLUWA PIN
+enter_owner_passcode	Tẹ koodu iwọle OWNER
+enter_staff_passcode	Tẹ koodu iwọle Oṣiṣẹ
+pin_count_zero	0/12 awọn nọmba · o kere ju 4, lẹhinna O DARA
+pin_count_need	{} / 12 awọn nọmba · nilo {} diẹ sii
+pin_count_full	Awọn nọmba 12/12 · tẹ O DARA
+pin_count_ready	Awọn nọmba {} / 12 · tẹ O DARA nigbati o ba ṣetan
+pin_hint_choose	Yan awọn nọmba 4–12 · Tẹ sii tabi Ṣii silẹ lati fipamọ
+pin_hint_new	Tuntun 4–12 oni-nọmba oni-nọmba PIN · Wọle tabi Ṣii silẹ
+pin_hint_shop_code	Ohun elo itaja · koodu sisopọ {}
+pin_hint_books	Ẹrọ yii ni awọn iwe-ipamọ
+pin_hint_paired	Afikun till so pọ - šii lati ta
+pin_hint_pair_first	Afikun till - bata si ẹrọ itaja ni akọkọ
+unlock_to_continue	Ṣii silẹ lati tẹsiwaju
+no_staff_yet	Ko si oṣiṣẹ sibẹsibẹ - ṣii bi Olohun, lẹhinna Ẹgbẹ
+status_server_set_pin	Ipo olupin - ṣeto Olohun PIN
+status_server_tills	Ipo olupin — afikun tills le darapo. Ṣii silẹ
+status_server_unlock	Ipo olupin – sii bi Olohun
+status_client_unlock	Ipo Onibara — ṣii silẹ lati ta
+icon_new_selected	Aami: faili titun ti a ti yan - tẹ Fipamọ ami iyasọtọ ni kia kia
+icon_custom	Aami: ami ibi isere aṣa
+icon_default	Aami: Kumkaj ami (aiyipada) - yan ọkan aṣa
+logo_yours	Logo: aami itaja rẹ - ti o han loju iboju ati awọn gbigba
+logo_default	Logo: Kumkaj ami (aiyipada) - yan tirẹ ti o ba ni ọkan
+tmpl_current	Lọwọlọwọ: {} - {}
+tmpl_selected	Ti yan: {} — {}
+setup_complete	Eto ti pari
+onboard_fresh_tmpl	Titun · {} — katalogi bẹrẹ ofo; fi awọn ohun akojọ aṣayan kun ni Akojọ aṣyn awọn ohun kan, lẹhinna Ti ṣee.
+onboard_book_tmpl	Ledger · {} — ṣafikun awọn ohun akojọ aṣayan ati ṣiṣi kirẹditi, lẹhinna Ti ṣee.
+onboard_template_tmpl	Lorukọ aaye naa ti o ba fẹ, lẹhinna yan bi o ṣe le bẹrẹ.
+tmpl_blurb	Oluranse awọn iwe ohun ati fowo si Iduro: consignors, ẹjẹ, ọjọ iwe, AWB.
+tmpl_how	Awọn apo iwe ni tabili; Iwe ọjọ fun oni; awọn taabu fun awọn ošuwọn, ẹni, awọn iroyin.
+trk_booked	fowo si
+trk_picked_up	Ti gbe
+trk_in_transit	Wa loju ona
+trk_delivered	Ti fi jiṣẹ
+trk_rto	Pada si olufiranṣẹ
+lane_to_dispatch	Lati firanṣẹ
+lane_with_carrier	Pẹlu ti ngbe
+lane_failed	O kuna
+lane_done_today	Ti ṣe loni
+ops_board_help	Awọn idii nipasẹ ibiti wọn wa ninu iṣẹ oni. Tẹ awọn parcels (tabi ṣayẹwo wọn) lati mu wọn, lẹhinna ṣiṣẹ lori gbogbo awọn ti o yan ni ẹẹkan - ọna kọọkan nfunni ni awọn gbigbe ti o baamu.
+lane_empty	Ko si nkankan nibi ni bayi.
+picked_fmt	{n} ti gbe
+pick_all	Mu gbogbo rẹ
+bag_for_carrier	Ọwọ si ti ngbe
+send_with_rider	Firanṣẹ pẹlu ẹlẹṣin
+out_again	Jade lẹẹkansi
+return_to_sender	Pada si olufiranṣẹ
+runs_bags_heading	Recent nṣiṣẹ & baagi
+print_word	Titẹ sita
+bag_word	Apo ti ngbe
+run_word	Rider run
+parcels_fmt	{n} awọn idii
+parcel_history	Itan
+attempt_fmt	Igbiyanju {n}
+pieces_short_fmt	Awọn kọnputa {n}
+note_reason_ph	Akiyesi tabi idi
+ops_pick_first	Yan awọn idii ni akọkọ - tẹ wọn ni kia kia tabi ṣayẹwo wọn
+cod_to_collect	Jiṣẹ - COD lati gba
+cod_on_road	COD ṣi lori ọna
+cod_owed_consignors	Ti a gba - lati san awọn onigbọwọ
+cod_rto_fees	RTO owo lati gba
+cod_to_hand_in	COD lati fi ọwọ wọle
+parcel_one_fmt	{n} ohun kan
+facet_bank_title	Iroyin
+facet_bank_help	Awọn iwe akọọlẹ ọjọ, alabara tabi agbalagba olupese, awọn ifiweranṣẹ banki, ati akoko P&L.
+facet_ops_title	Awọn ẹru & ifijiṣẹ
+facet_ops_help	Ṣiṣayẹwo tabi tẹ AWB → Wa, lẹhinna ilosiwaju / tẹjade aami / COD. Firanṣẹ si ẹlẹṣin tabi ti ngbe.
+facet_cod_title	Iforukọsilẹ COD
+facet_cod_help	Gba lori ifijiṣẹ, lẹhinna fi ranṣẹ si olugba.
+facet_riders_title	Awọn ẹlẹṣin (ọkọ oju-omi kekere tiwọn)
+facet_riders_help	Ṣafikun awọn ẹlẹṣin, lẹhinna firanṣẹ awọn AWB ti o ni iwe lati Ops.
+against_bill_ph	Lodi si owo # loke (aṣayan)
+aliases_ph	Inagijẹ - awọn orukọ miiran, koma ya sọtọ
+amount_blank_full_ph	Iye (òfo = iwontunwonsi kikun)
+amount_owed_ph	Iye ti o jẹ gbese
+amount_ph	Iye
+amount_received_ph	Iye ti a gba
+amount_we_pay_ph	Iye ti a san
+awb_scan_ph	AWB / ọlọjẹ kooduopo
+bulk_csv_ph	Olopobobo CSV - opin irin ajo, asoju, kg, cod_paise, akọsilẹ
+business_name_ph	Orukọ iṣowo
+category_new_ph	Ẹka (aṣayan, ṣẹda ti o ba jẹ tuntun)
+cod_amount_ph	Iwọn COD
+code_bag_ph	Koodu (apo)
+conv_factor_ph	Okunfa (25 = 1 apo → 25 kg)
+country_code_ph	Koodu orilẹ-ede fun apẹẹrẹ. IN, GB, US, AE, BR
+credit_khata_amount_ph	Kirẹditi / gbese ledge iye
+credit_limit_ph	Iwọn kirẹditi (0 = ko si)
+dim_unit_code_ph	Kóòdù ẹyọ ìwọ̀n (cm)
+divisor_ph	Olupin iwọn didun (5000)
+extra_per_kg_ph	Afikun / kg
+first_amount_ph	Iye akọkọ
+first_kg_ph	Kilo akọkọ (pẹlẹbẹ)
+from_code_ph	Lati koodu (apo)
+item_name_lang_ph	Orukọ ohun akojọ aṣayan akojọ aṣayan - tẹ sii ni ede rẹ
+login_id_opt_ph	Orukọ olumulo (beere, oto)
+manager_pin_ph	Alakoso PIN lati fọwọsi (nikan ti o ko ba le di ofo)
+new_branch_name_ph	Orukọ ẹka tuntun
+new_password_ph	Ọrọigbaniwọle titun (aṣayan)
+new_pin_ph	Tuntun PIN (4-12 awọn nọmba)
+note_bank_ph	Akiyesi (idogo, yiyọ kuro,…)
+note_buy_expense_ph	Akiyesi (epo, iyalo,…)
+note_expense_ph	Akiyesi (epo, ọfiisi,…)
+notify_phone_ph	Fi foonu leti (WhatsApp/SMS kio)
+options_moklanjo_ph	Awọn aṣayan (iyan) - Tobi=20, Gift wrap=10
+part_second_way_ph	Apakan nipasẹ ọna keji (aṣayan)
+phone_ph	Foonu
+address_ph	Adirẹsi
+party_custom_fields_heading	Awọn aaye aṣa (ẹgbẹ ti a yan)
+party_custom_help	Ṣafikun aami eyikeyi ati iye lori ayẹyẹ yii - WhatsApp, GSTIN, koodu ipa-ọna,…
+party_custom_key_ph	Orukọ aaye (fun apẹẹrẹ WhatsApp)
+party_custom_value_ph	Iye
+party_custom_add	Fi aaye kun
+party_custom_remove	Yọ aaye kuro
+party_custom_empty	Ko si awọn aaye aṣa sibẹsibẹ
+party_custom_pick_first	Yan ẹgbẹ kan lati ṣafikun awọn aaye aṣa
+place_name_ph	Orukọ ibi yii
+price_ph	Iye owo
+qty_example_ph	Qty (fun apẹẹrẹ 1.5 fun kg)
+quantity_ph	Opoiye
+reason_required_ph	Idi (beere)
+role_title_ph	Akọle ipa (fun apẹẹrẹ Barista)
+service_pct_ph	Iṣẹ% iyan 0/10/12
+short_code_ph	Koodu kukuru (MG02)
+slab_kg_ph	Pẹpẹ gbigba agbara ni kg (0.5)
+staff_name_ph	Orukọ oṣiṣẹ / id
+starting_password_ph	Ọrọ igbaniwọle ibẹrẹ (aṣayan)
+starting_pin_ph	Bibẹrẹ PIN (awọn nọmba 4-12)
+tax_rate_ph	Orukọ oṣuwọn owo-ori tabi% - Iwọnwọn, Dinku, 0, 5, 12, 18, 20
+to_code_ph	Si koodu (kg)
+uncleared_no_ph	Aimọ # loke
+unit_cost_ph	Iye owo ẹyọkan
+unit_kg_blank_ph	Ẹyọ (kg tabi òfo)
+unit_name_bag_ph	Orukọ (Apo)
+weight_unit_code_ph	Koodu ẹyọ iwuwo (kg)
+zone_name_ph	Orukọ agbegbe
+pay_credit	Lori iroyin
+book_kind_today	Awọn akọọlẹ loni
+book_kind_month	Awọn akọọlẹ oṣu yii
+book_kind_aging	Dayato si / debiti-kirẹditi
+book_kind_balance	Iwe iwontunwonsi
+ops_desk_help	Ṣe ọlọjẹ AWB pẹlu ọlọjẹ koodu iwọle USB kan (tabi tẹ sii) → Wa. Lẹhinna siwaju, tẹ aami, tabi gba COD. Awọn aami titẹ koodu 128.
+role_help_consignor	Ipa: Consignor — AR (wọn jẹ wa). Ile-iṣẹ kanna le tun jẹ Olutọju.
+role_help_carrier	Ipa: Ti ngbe - AP (a jẹ wọn ni gbese). Ile-iṣẹ kanna le tun jẹ Oluṣowo.
+role_help_both	Awọn ipa: Consignor + Ti ngbe — ẹgbẹ kan, AR ati AP ledgers, net ni Awọn ijabọ.
+role_help_supplier	Ipa: Olupese - AP fun awọn rira.
+lane_declared_label	fowo si iroyin
+lane_owner_label	Ifiweranṣẹ owo
+money_lane_bill	Iwe owo: {lane}

@@ -47,6 +47,10 @@ rustybuzz = { version = "0.18.0", path = "../../vendor/makepad/libs/rustybuzz" }
 unicode-bidi = { version = "0.3", path = "../../vendor/makepad/libs/unicode/unicode-bidi" }
 ab_glyph_rasterizer = { version = "0.1.8", path = "../../vendor/makepad/libs/ab_glyph_rasterizer" }
 
+# build.rs deflates translations/<code>.tsv into the binary (bake_translations).
+[build-dependencies]
+flate2 = "1"
+
 # Free disk space for the owner's backup warning (statvfs).
 [target.'cfg(unix)'.dependencies]
 libc = "0.2"

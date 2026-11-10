@@ -1,0 +1,1351 @@
+# Serbian — Српски (sr). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	Наруџбине ресторана, кухиња и књиге. Бесплатно ван мреже.
+unlock	Откључај
+pin_hint	Власник PIN почиње са 0000
+sell	Ред у ресторану
+buy	Купи
+books	Дневник
+books_help	Данашњи резиме налога. Поруџбине = поруџбине које стижу. Куповина = куповине и трошкови. Купци и добављачи = кредитни купци и добављачи.
+buy_help	Рачуни о трошковима и рачуни добављача (новац оут). Рачун остаје у књизи купаца или добављача.
+sell_money_in	Узми наруџбу
+buy_money_out	Трошкови / рачун добављача
+record_purchase	Сачувајте куповину
+add_expense	Потврда о трошковима
+bank_book	Банкарска књига
+credit_help	ИД купца или добављача је јединствен (имена се могу понављати). Клијент води кредитну књигу (дугује нам); добављач нам продаје залихе (ми њима дугујемо); обоје је у реду. Књиге остају одвојене; извештаји показују нет.
+party_kind_ph	Улоге: купац, добављач, обоје…
+reports_help	Дневна књига, дужници и повериоци, банкарска књига, признанице о трошковима, добит и губитак.
+reports_today	Дневник (данас)
+reports_month	Добит и губитак (месец)
+reports_aging	Неизмирени/дебитно-кредитни
+reports_balance_sheet	Биланс стања
+reports	Банковна књига & П&Л
+refresh	Освежи
+undo	Поништи
+start_tracking	Почните да пратите
+stock_minus	− Залиха
+stock_plus	+ Стоцк
+settle_cash	Измирите готовину
+settle_card	Плати картицом
+items	Мени и ставке менија
+nav_items	Мени
+more	Више
+your_items	Ваш мени
+items_help	Додирните ставку менија да бисте је уредили. Нова ставка менија брише образац. Претражите наша јела или унесите своје име и фотографију, поставите цену (0 је у реду), а затим додајте. Већ евидентиране продаје задржавају име за које су оптужени.
+add_item	Додајте ставку менија
+new_item	Нова ставка менија
+adding_item	Додавање нове ставке менија
+editing_item	Уређивање
+save	Сачувај
+remove	Уклони
+removed_items	Уклоњене ставке менија
+removed_help	Ресторе враћа ставку менија у мени тачно онако како је била — цена, фотографија и категорија. Наша полица са посуђем се никада не уклања, тако да се јело увек може поново додати.
+restore_item	Врати
+empty_catalog	Још нема посуђа. Отворите Мени, додајте јело (име + цена), а затим наручите.
+total	Укупно
+cash	Цасх
+upi	UPI
+card	Цард
+credit	Купци и добављачи
+clear	Јасно
+ready_to_sell	Спреман за књигу
+today_prefix	данас
+today_mid	данас
+owed	изванредан
+round_word	округли
+back	Назад
+sold_out	Недоступно
+restock	Допуни
+not_tracked	Није праћено
+in_stock	на лагеру
+marked_sold_out	Означено као недоступно
+add_upper	АДД
+na	Н/А
+qty	Вт/Кти
+unit_at	Оцени @
+actual	Стварно
+applied	Примењено
+note_ph	Напомена (опционо)
+rounded	ЗАОКРУЖЕНО
+split	Сплит
+send_kot	Пошаљи KOT
+send_kot_to	Пошаљи → {kitchens}
+send_kot_again	Додајте јела за следеће KOT
+send_kot_held	Држано посуђе — не држи за слање
+reprint_kot	Поново изабрано штампање
+reprint_kot_ok	Поново штампано {n} посуђа · {slips} листићи → {kitchens}
+reprint_kot_needed	Прво пошаљите KOT — затим укључите јела и поново одштампајте изабрано
+reprint_kot_none_selected	Свако послато јело се прескаче — додирните У штампи на оном да бисте га поново одштампали
+reprint_kot_client	Штампајте поново ({n}) за {place} послато — кухињски отисци на серверу
+print_cancelled_kot	Штампај све је отказано
+print_cancelled_kot_ok	Одштампано {n} отказана јела · {slips} листићи → {kitchens}
+print_cancelled_kot_needed	Прво отворите трпезаријски сто са отказаним јелима
+print_cancelled_kot_none	Нема отказаних јела у овој поруџбини
+print_cancelled_kot_client	Штампање је отказано ({n}) за {place} послато — кухињски отисци на серверу
+kot_banner	Љубазан банер
+kot_banner_ph	Банер (празан = ниједан)
+kot_item_prefix	Префикс ставке менија
+kot_item_prefix_ph	нпр. [ОТКАЗАНО]
+kot_strike	Удари назив јела
+kot_strike_note	Удари белешку о јелу
+kot_strike_on	Он
+kot_strike_off	Офф
+bill_item_layout	Изглед ставке менија
+bill_item_layout_columns	Колумне
+bill_item_layout_stacked	Наслагано
+bill_item_header	Заглавља колона
+bill_item_hdr_item	Заглавље ставке менија
+bill_item_hdr_qty	Кти хеадер
+bill_item_hdr_price	Заглавље цене
+bill_item_hdr_amount	Заглавље износа
+bill_item_name	Назив јела
+bill_item_qty	Кти
+bill_item_price	Цена
+bill_item_amount	Износ
+bill_item_note	Белешка о јелу
+bill_item_col_gap	Размак у колони
+bill_item_col_order	Редослед колоне
+bill_item_col_sep	Правила колона
+bill_item_gap_tight	Чврсто
+bill_item_gap_comfort	Удобан
+bill_item_gap_wide	Широко
+bill_item_num_width	Број колоне
+bill_item_num_compact	Збијено
+bill_item_num_comfort	Удобан
+bill_item_num_wide	Широко
+bill_item_num_align	Бројеви се поравнавају
+bill_item_gap_em	јаз (ем)
+bill_item_qty_min	Количина мин (ем)
+bill_item_price_min	Цена мин (ем)
+bill_item_amount_min	Мин. износ (ем)
+kot_item_qty_width	Колона Колона
+kot_item_num_align	Кти алигн
+bill_total_qty_label	Ознака укупне количине
+bill_total_subtotal_label	Ознака суб тотал
+bill_total_grand_label	Укупна ознака
+bill_total_paid_label	Плаћена тотална ознака
+bill_meta_pair	Делите линију са
+bill_pair_alone	Сам
+bill_item_piece_on	Он
+bill_item_piece_off	Офф
+bill_total_qty	Тотал кти
+bill_total_subtotal	Међузбир
+bill_total_grand	Укупно укупно
+reprint_incl	У штампи
+reprint_skip	Скип
+reprint_skip_meta	Прескочи штампање за опоравак
+kot_dest_hint	Штампа на штампачима које сте доделили {kitchens} у Подешавања → Штампачи
+kot_sent_hint	Последњи KOT је отишао на {kitchens}. Додирните да бисте додали јела за следећу карту — или поново одштампајте KOT за исту карту.
+kot_sent_printing	KOT послато на {kitchens} — штампање
+kot_sent_not_printed	KOT послато на {kitchens} али НИЈЕ одштампано: {why}. Реците кухињи, а затим поправите штампач и одштампајте га поново.
+kot_sent_screen	KOT послато на {kitchens}
+kot_queued_shop	KOT за {place} → {kitchens} сачувано; уређај продавнице га штампа
+kot_job_label	KOT за {place} → {kitchens}
+kot_job_reached	KOT за {place} достигнуто {kitchens}
+kot_unassigned	Кухиња (без станице)
+kot_unassigned_held	Задржано {n} тањура без станице — поништите везу за слање
+kot_station_ph	Кухиња
+kot_station_dd	Кухиња
+kot_station_dd_n	Кухиња · {stations}
+kot_set_station	Користите ову станицу
+kot_station_applied	Станица постављена на {n} тањира: {station}
+kot_station_cleared	Станица очишћена од {n} посуда: {station}
+kot_station_needed	Прво изаберите кухињску станицу
+kot_station_not_allowed	Није дозвољено користити кухињу: {station}
+kot_station_none	Још нема кухињских станица — додајте једну под Кухиња или Подешавања → Подручја · станице
+pos_tab_items	Додате ставке менија
+pos_tab_payment	Плаћање
+hold_send	Држи из кухиње
+hold_send_on	Одржано
+hold_send_meta	Одржано — не ово KOT
+station_remove	Уклони станицу
+station_remove_ph	Додирните станицу на листи да бисте је уклонили
+station_removed	Уклоњена станица: {name}
+settings_hub_title	Подешавања
+settings_hub_help	Отварајте једну по једну област — мање померања, јаснији избори.
+settings_back	Назад
+settings_sec_language	Језик и валута
+settings_sec_country	Држава и порез
+settings_sec_tills	Остали уређаји
+settings_sec_brand	Ваш бренд
+settings_sec_units	Јединице и конверзије
+settings_sec_pickers	Области · станице · пореске стопе
+settings_sec_printers	Штампачи
+settings_sec_bill	Формат рачуна и KOT
+settings_sec_selling	Шеме и продаја
+bill_kot_tab_bill	Рачун за госте
+bill_kot_tab_kot	KOT
+settings_sec_alerts	Алертс
+alerts_help	Колико дуго статусне поруке остају на екрану за вас (ова пријава).
+snack_secs_ph	Секунди (3–60, подразумевано 10)
+snack_secs_save	Уштедите време упозорења
+snack_secs_saved	Сачувано време упозорења — {n} секунди
+settings_sec_backup	Прављење резервних копија и враћање
+settings_sec_diag	Дијагностика
+diag_privacy_help	Дневници остају на овом уређају. Тајне (PIN, лозинке) се никада не чувају. За дељење пакета са уређаја сваки пут је потребно ваше изричито одобрење — никада се не продаје или даје трећим лицима.
+diag_level	Ниво детаља
+diag_level_error	Грешке
+diag_level_warn	Упозорења
+diag_level_info	Инфо
+diag_level_debug	Отклањање грешака
+diag_support_start	Започните 30-минутну сесију подршке
+diag_support_stop	Заврши сесију подршке
+diag_support_started	Сесија подршке укључена — Детаљи отклањања грешака у трајању од 30 минута
+diag_support_ended	Сесија подршке је завршена
+diag_export_local	Извези локалну копију
+diag_export_local_done	Локална дијагностика спремна на {path} — изаберите где желите да сачувате копију
+diag_approve_send	Одобри дељење са овог уређаја
+diag_send_help	Одобрење је један пакет, а затим истиче. Привремено — користи се само за поправку или побољшање производа. Не дели се са трећим лицима. Ради на Linux, Windows, macOS и Android.
+diag_send_approved	Дељење је одобрено за један пакет (ускоро истиче)
+diag_export_send	Направите пакет за дељење (потребно је одобрење)
+diag_export_send_done	Поделите пакет спреман у {path} — изаберите где да сачувате, а затим пошаљите само на Kumkaj подршку
+diag_save_bundle	Сачувајте дијагностичку копију
+diag_bundle_saved	Копија дијагностике је сачувана у {path}
+diag_bundle_failed	Није могуће сачувати дијагностичку копију — покушајте поново
+diag_clear	Обришите дијагностичке евиденције
+diag_cleared	Дијагностички дневники су обрисани
+sidebar_settings	Бочна трака
+sidebar_settings_help	Исте иконе као бочна шина. Превуците ред да бисте променили редослед. Окрените прекидач да бисте приказали или сакрили. Подешавања и закључавање увек остају на траци.
+sidebar_always_on_short	Увек укључен
+sidebar_back_settings	Назад
+sidebar_shown	Показано
+sidebar_hidden	Скривено
+sidebar_always_on	Увек на шанку
+sidebar_shown_hint	Приказано на бочној шини / доњим језичцима
+sidebar_hidden_hint	Сакривен од бара
+sidebar_menu_items	Мени и ставке менија
+sidebar_enable_all	Омогући све
+sidebar_disable_all	Онемогући све
+sidebar_order_saved	Редослед бочне траке је сачуван
+sidebar_visibility_saved	Видљивост бочне траке је сачувана
+amounts_hide	Сакриј се
+amounts_show	Схов
+printers_none_hint	Прво сачувајте штампач на овом уређају, а затим га додајте у Билл или кухињу
+counter	Шанк
+dine_in	Дине-ин
+takeaway	Такеаваи
+order	Ред у ресторану
+tables	Трпезаријски столови
+kitchen	Кухиња
+sales	Продаја
+sales_refunds	Продаја и повраћај новца
+day_close	Дан близу
+reports_expenses	Банковна књига & П&Л
+nav_reports	Извештаји
+nav_settings	Подешавања
+nav_lock	Закључај
+no_sale_yet	Још нема продаје
+favorites	Омиљено
+favorites_help	Ставке менија које често продајете, сачуване за вашу пријаву. Додајте једну на рачун или направите своју листу од свих ставки менија испод.
+your_favorites	Ваши фаворити
+all_items	Све ставке менија
+frequent	Често
+added_items	Додате ставке менија
+added_items_empty	Још ништа у овој поруџбини — додајте јело из свих ставки менија или категорије.
+frequent_config_help	Највише продатих јела са завршених рачуна. Подесите колико дана ћете погледати и колико јела приказати.
+frequent_days_ph	дана (1)
+frequent_limit_ph	Ставке менија (24)
+frequent_apply	Пријавите се
+frequent_saved	Често: последњих {d} дана, топ {n} — {c} јела
+frequent_empty	Још увек нема завршених продаја у овом периоду — подмирите рачун (дозвољено је 0 ИНР када Подешавања тако кажу) и приказују се овде.
+zero_sales	Продаја нулте вредности
+zero_sales_help	Дозволите јела по цени од 0 ₹ и рачуне на 0 ₹ (бесплатно / жеља власника). Подразумевано укључено, тако да се бесплатни гости и даље појављују у књигама честих и дневних књига.
+zero_sales_on	Дозволи 0 ИНР
+zero_sales_off	Захтевај цену
+zero_sales_saved_on	Дозвољена продаја нулте вредности
+zero_sales_saved_off	Распродаја мора да има цену изнад 0 ИНР
+floor_areas_help	Простори су просторије или зоне у трпезарији (Дине Ин, Парцел, АЦ…). Прво додајте простор, а затим у њега ставите трпезаријске столове — свака област је посебна група у трпезарији.
+area_new_ph	Нова зона / соба (нпр. клима, башта)
+add_area	Додајте област
+area_added	Простор „{name}“ спреман — додајте трпезаријске столове у њега
+no_favorites	Још нема фаворита — додајте ставке менија са листе испод.
+add_to_bill	Додај на рачун
+added	Додато
+owes_word	дугује
+selected_word	Изабрано
+chip_clear_credit	цлеар — Кредити или узети унапред
+chip_missing_customer	Недостаје изабрани купац — изаберите поново
+chip_no_customer	Још увек нема клијента — унесите име, а затим додирните Кредит
+credit_summary_fmt	{} клијената · отворени кредит {} · задржани аванси {}
+recent_label	недавно:
+kot_new_waiting	НОВО — чека се
+kot_preparing	ПРИПРЕМА
+kot_ready_serve	СПРЕМНО — послужите
+kot_done_cap	ДОНЕ
+kot_cancelled	ОТКАЗАНО
+kot_start_btn	Почни
+kot_mark_ready	Означите спремно
+kot_done_btn	Готово
+table_free	Празно — додирните да започнете поруџбину
+start_order	Започните редослед
+open_bill	Отворени рачун
+collect_payment	Прикупите уплату
+table_running	Трчање
+payment_pending	Плаћање је на чекању
+collect_at_counter	прикупити на шалтеру
+inventory	Инвентар
+inventory_stock	Инвентар и залихе
+branches	Огранци
+branches_org	Огранци & орг
+credit_customers	Купци и добављачи (кредитни рачуни)
+customer_name_ph	Име купца или добављача
+new_customer_ph	Име новог купца или добављача
+item_name_ph	Назив ставке менија (нпр. Масала Доса)
+item_price_ph	Цена
+start_template	Производ
+team	Тим
+team_pins	Тим & PINс
+my_pin_settings	мој PIN
+settings_hub_help_my_pin	Промените откључавање PIN за особу која је пријављена на овом уређају.
+team_self_help	Једно пријављивање: нова PIN, нова лозинка или обоје. Оставите поље празно да задржите оно што имате. Питајте власника да ли су вам потребни различити екрани или права.
+backup_settings	Резервна копија и подешавања
+lock_app	Закључај апликацију
+pick	Пицк
+select	Изаберите
+advance	Напред
+owner	Власник
+staff	Особље
+photo	Пхото
+auto	Ауто
+prev	Прев
+next	Следеће
+ok	ОК
+this_shop	Режим сервера
+extra_till	Режим клијента
+off	Офф
+tables_kitchen	Трпезаријски столови и кухиња
+server	Сервер уређај
+client	Клијентски уређај
+language_currency	Језик и валута
+language	Језик
+choose_language	Изаберите свој језик
+language_setup_hint	Пратите језик овог уређаја или га сами изаберите.
+lang_follow_platform	Језик уређаја
+lang_pick_user	Изаберите језик
+lang_platform_now	Језик уређаја сада
+selected_language	Изабрано
+continue	Настави
+this_device	ОВАЈ УРЕЂАЈ
+device_use_q	Како ће се овај уређај користити?
+last_server_mode	Вас Сервер — додирните за наставак
+last_client_mode	Био је клијент — додирните да бисте наставили
+choose_server	Изаберите сервер
+choose_server_hint	Отворите постојећи сервер или га креирајте за неко друго предузеће.
+create_new_server	Креирајте нови сервер
+open_server	Отвори
+new_server_name_ph	Ново име сервера (опционо)
+server_remove_pin_ph	Власник PIN да уклони сервер
+only_owner_remove_server	Само власник може уклонити сервер
+owner_pin_remove_server	Власник PIN је обавезан да уклони овај сервер
+device_setup_help	Сервер чува књиге овде. Клијент се упарује са сервером.
+app_template_heading	Rajdhani Шаблон апликације
+app_template_blurb	Учитава мени Rajdhani; Owner Zahir (zahir), Admin Asif (asif, PIN 1111), Waiter Nawaz (nawaz, PIN 0000); FOH бочна трака; history clears after 4 hours (and Clear now in Backup); Данас скини се; compact KOT + Standard margins for narrow trays. Пеерс бочне траке се могу поново укључити у подешавањима.
+app_template_apply	Rajdhani Шаблон апликације
+app_template_skip	Прескочи за сада
+app_template_status	Сервер спреман — примените Rajdhani Шаблон апликације или прескочите
+app_template_importing	Примењује се {title}…
+currency	Валута
+backup	Бацкуп
+use	Користите
+dont_use	Немојте користити
+add_branch	Додај грану
+add_conversion	Додајте конверзију
+add_dishes_items	Додајте јела и ставке менија
+add_item_plain	Додајте ставку менија
+add_note	Додај напомену
+add_opening_balance	Додајте почетни биланс
+add_staff	Додајте особље
+add_station	Додај станицу
+add_table	Додајте трпезаријски сто
+add_unit	Додајте јединицу
+add_use_name	Додајте / користите ово име
+allow_extra_tills	Дозволите додатне касе
+amend	Изменити
+apply_country_pack	Примените пакет за земљу
+datetime_appearance	Појава датума и времена
+datetime_appearance_help	У књигама се налази први РФЦ3339 из прве године. These only change how dates and clocks look on bills, KOT, reports, and the screen.
+datetime_example	Пример сада: {ex}
+date_order	Редослед датума
+date_order_dmy	D/M/Y
+date_order_mdy	M/D/Y
+date_order_ymd	Y-M-D
+time_format	Сат
+time_format_24h	24 сата
+time_format_12h	12-часовни
+attach_bill_photo	Приложите фотографију рачуна
+attach_pdf	Приложи PDF
+attach_photo	Приложите фотографију
+attachments_last_expense	Прилози (последњи трошак)
+bank	Банка
+bank_in	Банка у
+bank_out	Новац из банке
+bank_reconciliation	Банковно помирење (означите на изводу из банке)
+bank_to_till	Банка → до
+book_add_dish	Књига — додајте јело / ставку менија
+book_opening_credit	Главна књига — почетни кредит
+branch_name_sell_ph	Назив филијале за продају
+bring_my_book	Донеси моју књигу
+business_tax_id_ph	Порезни број предузећа
+caption_bank	БАНКА
+caption_bills	БИЛЛС
+caption_outstanding	Изванредан
+caption_payments_today	ПЛАЋАЊА ДАНАС
+caption_today	ДАНАС
+card_amount_ph	Износ картице
+cash_amount_ph	Износ готовине
+cash_memo	Новац
+choose_icon	Изаберите икону
+choose_logo	Изаберите лого
+clear_icon	Обриши икона
+clear_photo	Обриши фотографију
+copy_day_book_csv	Copy day ledger CSV
+copy_day_close	Копирај дан близу
+copy_items_csv	Copy menu items CSV
+copy_outstanding_csv	Преузето копија CSV
+copy_parties_csv	Копирај купце и добављаче CSV
+copy_party_ledger_csv	Копирај књигу купаца CSV
+copy_receipt	Копија признанице
+share_whatsapp	Подели WhatsApp
+lan_pages_heading	Странице за госте на Wi‑Fi
+lan_pages_help	На овој продавници Wi‑Fi, странице за госте раде за дисплеј, жетоне, изложбу, киоск, трпезаријски сто КР и повратне информације. Guests on mobile data need Cloud later. Картични терминал/веза за плаћање је опциона када је интернет укључен — никада не блокира шалтер.
+diag_send_heading	Делите овај уређај
+kot_dest_heading	Кухиња станица
+optional_login_heading	Опционо пријављивање
+rights_heading	Права
+ops_panel	Локалне операције
+crm_heading	Гости и поруке
+crm_help	Рођендан, лојалност, неактивни и врхунски гости — ред SMS или WhatsApp намере. Use {name} and {points} in the message. Owner taps send; nothing blasts by itself.
+crm_queue_sms	Ред SMS
+crm_queue_wa	Ред WhatsApp
+crm_seg_bday_week	Недеља рођендана
+crm_seg_bday_month	Рођендан месец
+crm_seg_phone	Са телефоном
+crm_seg_loyalty	Лојалност
+crm_seg_inactive	Неактиван
+crm_seg_top	Најбољи потрошачи
+birthday_ph	Рођендан (ММ-ДД или ГГГГ-ММ-ДД)
+crm_message_ph	Срећан рођендан {name}! Имате {points} поена.
+till_apply_redeem	Пријавите се на рачун
+till_clear_redeem	Очистите откуп
+till_wallet_topup	Допуните новчаник
+till_issue_voucher	Издајте ваучер
+till_points_ph	Поени за откуп
+till_wallet_ph	Износ новчаника за потрошњу
+till_voucher_code_ph	Код ваучера
+till_voucher_amt_ph	Износ ваучера (празно = све)
+till_wallet_topup_ph	Износ новчаника допуне
+till_voucher_issue_amt_ph	Издајте износ ваучера
+till_voucher_issue_code_ph	Нови код ваучера
+split_evenly	Поделите равномерно
+waitlist	Листа чекања
+fire_course	Пошаљите курс у кухињу
+hold_item	Држи из кухиње
+waiter_call	Позови конобара
+waitlist_add	Додај на листу чекања
+floor_view_grid	Грид
+floor_view_layout	Лаиоут
+floor_layout_x	X
+floor_layout_y	Y
+floor_layout_w	W
+floor_layout_h	H
+floor_layout_save	Сачувај изглед
+floor_layout_open	Open dining table
+floor_layout_edit	Уредите изглед
+floor_layout_pick	Tap a dining table to edit its layout
+floor_layout_saved	Dining table layout saved
+floor_layout_nudge_left	← 20
+floor_layout_nudge_right	→ 20
+floor_layout_nudge_up	↑ 20
+floor_layout_nudge_down	↓ 20
+sibling_pickers_help	Додирните Он/Офф попут јединица — сакријте области, станице и пореске стопе од свакодневних бирача; pack defaults stay.
+bulk_price_apply	Примени скупну цену
+card_terminal_optional	Картични терминал/линк за плаћање (опционо када је интернет доступан)
+copy_report	Копирај извештај
+counted_cash_ph	Пребројана готовина у фиоци
+country_tax	Држава и порез
+tax_chrome	Пореске ознаке на благајни
+tax_chrome_help	Када је искључен, шалтер за наручивање сакрива GST/процену пореза и GST-у цени чувара места. Пореске стопе и подешавања земље и пореза остају — укључите ознаке у било ком тренутку. Rajdhani App Template starts with this off.
+tax_chrome_on	Схов
+tax_chrome_off	Сакриј се
+tax_chrome_saved_on	Пореске ознаке на благајни
+tax_chrome_saved_off	Пореске ознаке скривене на благајни
+tax_invoice_till	Пореска фактура на до
+tax_invoice_help	Када је искључено, рачуни су само благајнички, а пореска фактура / жетони готовинског меморандума су сакривени на шалтеру за наруџбе. Rajdhani Шаблон апликације почиње са овим искљученим — укључите Прикажи поново у било ком тренутку да бисте поново изабрали пореску фактуру.
+tax_invoice_on	Схов
+tax_invoice_off	Сакриј се
+tax_invoice_saved_on	Пореска фактура на до
+tax_invoice_saved_off	Пореска фактура сакривена — само благајнички меморандум
+pay_methods	Начини плаћања
+pay_methods_help	Which chips appear on Take payment. Cash always stays. Rajdhani Шаблон апликације почиње само са готовином — укључите UPI / Картица / Кредит / Подели поново овде.
+create_backup	Направите резервну копију
+credit_limit_heading	Credit limit (selected customer or supplier)
+day_close_summary	Закључак дана
+delete_party	Delete selected customer or supplier
+delivery	Испорука
+done_open_books	Done — open ledgers
+drawer_count	Број фиока (опционо)
+expense_heading	Трошкови
+export_day	Дан извоза
+extra_note_bill_ph	Додатна напомена о овом рачуну / продаји
+extra_note_expense_ph	Додатна напомена о последњем трошку
+extra_tills_heading	Ектра доллс
+other_devices_help_heading	Подесите друге уређаје
+other_devices_help	На овом уређају (серверу): Остали уређаји → Дозволи екстра касе. Забележите код за упаривање и Wi‑Fi адресу. Додирните Дозволи другим уређајима да се повежу ако се појави. На рачунару додирните Почни са овим рачунаром. На сваком другом уређају: инсталирајте апликацију, изаберите Режим клијента, пронађите сервер продавнице (или унесите адресу), унесите код за упаривање, упарите сада. Поруџбине чекају на уређају ако Wi‑Fi падне и иду када сервер поново одговори. Кухињски штампачи су постављени на серверу (Подешавања → Штампачи) — тамо се додатно шаље KOTс.
+forget_shop	Заборави ову радњу
+goods_received	Примљена роба
+import_day	Дан увоза
+import_items_csv_plain	Увези ставке менија CSV…
+import_parties_csv	Увезите купце и добављаче CSV…
+item_name	Назив ставке менија
+kitchen_printing	Штампачи
+login_id_ph	Корисничко име
+mark_cleared	Ознака је избрисана
+new_party_clear	Нови купац или добављач (јасан образац)
+new_party_kind_supplier_ph	Нови купац или врста добављача (Добављач)
+next_country	Следећа земља
+next_order	Следећа поруџбина (очистите сто)
+note_gstin_ph	Напомена / GSTИН / подсетник за споразум
+notes_attach_party	Напомене и прилози (изабрани купац или добављач)
+notes_attach_sale	Белешке и прилози (одабрана продаја)
+on_account_ap	На налог (АП)
+org_optional_ph	Организација (опционо)
+paid_by	Платио
+paid_now	Плаћено сада
+pair_now	Упарите сада
+pairing_code_ph	Код за упаривање
+party_name_selected_ph	Име купца или добављача (или користите изабрано)
+password_ph	Лозинка
+pay_ap_card	Платите АП картицу
+pay_ap_cash	Платите АП готовином
+pay_ap_heading	Плати оно што им дугујемо (АП)
+pay_ap_upi	Плати АП UPI
+pay_selected_heading	Плати изабрано (измири дуг / узми аванс)
+pick_from_items	Pick from our menu items
+prev_country	Претходна земља
+print_open	Штампај / отвори
+reason_amend_ph	Разлог за измену / поништење / повраћај
+reason_note_ph	Разлог / напомена (расипање, бројање, …)
+record_day_close	Сачувајте дан близу
+refresh_from_shop	Освежите из продавнице
+refund	Рефунд
+remove_selected	Уклони изабрано
+request_bill	Захтевај рачун
+restaurant_name_ph	Назив ресторана (опционо)
+restore_backup	Вратите резервну копију
+role_both	И једно и друго
+role_admin	Админ
+role_cashier	благајник
+role_customer	Муштерија
+role_manager	Менаџер
+history_retention	Историја трговине
+history_retention_help	Auto-clear old sales and KOTs. Мени, особље и подешавања остају. Брисање сада брише све редове за трговање и задржава подешавање.
+history_off	Задржи
+history_day_close	На дан близу
+history_after_hours	После сати
+history_hours_ph	Сати (1–168, подразумевано 4)
+history_hours_save	Уштедите сате
+history_clear_now	Очистите историју сада
+history_cleared	Историја трговања је очишћена — подешавање се чува
+history_retention_saved	Брисање историје је сачувано
+history_hours_saved	Сати историје су сачувани
+history_owner_only	Само власник или администратор може да обрише историју
+rollup	Summary rollup
+save_brand	Сачувај бренд
+save_business_id	Сачувајте пословни ИД
+save_business_name	Сачувајте назив предузећа
+save_features	Сачувај
+save_features_named	Сачувај {name}
+save_features_ok	Сачувано подешавање за {name}
+save_names	Сачувајте имена
+second_way	Други начин
+server_ip_ph	ИП сервера (нпр. 192.168.1.10)
+set_credit_limit	Примените ограничење на купца или добављача
+set_login_selected	Примени пријаву на изабране
+set_login_named	Примени пријаву на {name}
+shop	Схоп
+show	Схов
+spreadsheet_csv	Табела (CSV)
+start_fresh	Почни изнова
+stop_extra_tills	Зауставите додатне касе
+floor_cols_ph	Колумне
+floor_cols_fit	Уклопи екран
+floor_cols_fit_sub	{n} уклапа се овде
+floor_cols_fits	стаје
+floor_cols_scroll	скролује у страну
+floor_cols_min	Колоне: најмање 1 — или оставите празно да одговара екрану
+floor_zoom_auto	Ауто
+floor_zoom_out	Умањите
+floor_zoom_in	Увећајте
+backup_auto	Аутоматски се прави резервна копија сваког дана · последње {when} · последњих 14 дана се чувају у {dir}.
+backup_auto_none	Аутоматски се прави резервна копија сваког дана — прва се покреће за трен.
+backup_copy_to	Копије такође иду на {dir}.
+backup_copy_btn	Такође копирајте резервне копије у фасциклу…
+autostart_off	Почните са овим рачунаром
+autostart_on	Почиње са овим рачунаром ✓ — додирните за заустављање
+autostart_done_on	Овај рачунар сада отвара апликацију када се покрене — сервер продавнице се вратио након нестанка струје.
+autostart_done_off	Овај рачунар више не отвара апликацију када се покрене.
+device_forgotten	Продавница је заборавила овај уређај — поново га упарите са тренутном шифром продавнице. Налози који га чекају се чувају.
+lan_offline	Сервер за куповину недоступан
+forget_device	Заборави
+last_seen	виђено
+copy_pair_code	Копирајте код за упаривање
+new_pair_code	Нови код за упаривање
+pair_finishing	Завршни пар… применом пословних књига
+pair_opening	Отварање до…
+pair_copied	Код за упаривање је копиран
+kot_waiting	Чека се слање
+lan_offline_waiting	Сервер за куповину недоступан · {n} чека
+lan_connecting	Повезивање са продавницом…
+lan_live	Уживо
+lan_sending	{n} слање
+lan_sign_in_to_send	Пријавите се поново да бисте послали {n}
+lan_pair_again	Поново упарите овај уређај
+lan_update_app	Ажурирајте апликацију — овај уређај и сервер продавнице имају различите верзије
+allow_firewall	Дозволите другим уређајима да се повежу
+firewall_blocked	Заштитни зид овог рачунара блокира друге уређаје — додирните Дозволи другим уређајима да се повежу.
+firewall_waiting	Чека се упит администратора…
+lan_join_help	На другом уређају: Режим клијента → Пронађите сервер продавнице (или унесите {addr}) → код за упаривање {code}.
+lan_pair_status	Wi‑Fi {addr}
+lan_join_help_no_addr	Повежите овај уређај са Wi‑Fi за адресу.
+lan_no_address	Још нема адресе Wi‑Fi — повежите се са продавницом Wi‑Fi.
+lan_not_listening	Не прихвата уређаје (порт {port} заузет). Поново покрените апликацију.
+lan_tills_off	Екстра касе су искључене. Дозволите им да пусте други уређај да се придружи.
+paired_with	Упарено · {url}
+not_paired	Није упарено
+choose_device_use	Изаберите Сервер или Клијент.
+paired_note	Упарено. Откључајте да бисте продали или Освежите за најновије.
+last_update_at	Последње ажурирање: {time}.
+pair_intro	Пронађите сервер или унесите његову адресу и код за упаривање.
+queue_waiting	Чека се да стигне до продавнице ({n}):
+queue_tries	Пробано {n} пута · последњи одговор: {e}
+save_backup_copy	Сачувајте резервну копију…
+backup_copy_saved	Резервна копија је сачувана — држите је ван овог уређаја (УСБ стицк или други уређај)
+backup_copy_overdue	Ниједна резервна копија није напустила овај уређај {n} дана — Подешавања → Резервна копија
+backup_copy_failed	Резервна копија није могла да се сачува тамо — изаберите друго место
+clock_off	Сат овог уређаја је {min} мин ван сервера продавнице — подесите право време на овом уређају
+printers_heading	Штампачи
+printers_help	Пронађите штампаче, додирните један да бисте га изабрали, а затим одштампајте пробну страницу само на том уређају. Штампачи рачуна: Формат рачуна & KOT → Рачун. Кухињски штампачи: Кухиња → Кухињске станице (прво додајте станицу — Нађи не ствара станице).
+printers_host_only	Штампачи су подешени на уређају продавнице (Сервер). Ово до шаље рачуне и KOT је тамо — Пронађите / додајте / доделите боравак на серверу. Пробна страница и величина штампаног рачуна иду на сервер.
+printers_find_heading	Пронађите штампаче
+printers_find_tip	Финд скенира овај уређај и ажурира листу.
+printers_pool_heading	Штампачи
+printers_pool_tip	Финд скенира овај уређај и одржава ову листу ажурном.
+printers_pool_empty	(још нема — додирните Пронађи)
+printers_routes_help	Пронађите штампаче које оперативни систем већ познаје. Доделите их рачуну и свакој кухињи у формату Билл & KOT.
+printer_assign_dd	Прави штампач: {place}
+printer_assign_pick	Изаберите прави штампач
+printer_profile_heading	Лаиоут
+printer_send_heading	Испорука
+vp_delivery_heading	Испорука
+vp_delivery_help	Како овај виртуелни штампач шаље задатке — ОС документ, необрађене бајтове или ESC/POS. Садржај слип-а (величина типа, омот, маргине) одређује формат рачуна / KOT, а не овде.
+vp_type_size_heading	Величина типа
+vp_wrap_heading	Ширина омотача
+vp_margin_heading	Маргине
+vp_delivery_spooler	ОС документ (системски спулер)
+vp_delivery_raw	Необрађени бајтови на уређај
+vp_delivery_escpos	ESC/POS термичке команде
+virtual_printer_new	Нови виртуелни штампач
+virtual_printer_selected	Уређивање „{name}“ — додирните други на листи да бисте се пребацили
+virtual_printer_tap_list	Додирните виртуелни штампач на листи да бисте га уредили
+config_layout_portrait	Портрет
+config_layout_landscape	Пејзаж
+config_send_os	Систем споолер
+config_send_escpos	ESC/POS
+profiles_heading	Распореди
+profiles_empty	(још нема изгледа)
+profile_builtin	уграђени
+profile_custom	обичај
+profile_name_ph	Назив распореда
+profile_new	Нови изглед
+profile_delete	Избриши изглед
+profile_created	Изглед је направљен
+profile_deleted	Изглед је избрисан
+profile_builtin_keep	Уграђени распореди се не могу избрисати
+config_saved	Ажурирано
+config_selected	Изабрано „{name}“
+printer_output_heading	Виртуелни штампачи
+virtual_printers_heading	Виртуелни штампачи
+virtual_printers_empty	Још увек нема виртуелних штампача — подесите вредности испод, а затим Сачувај. Након што их имате, додирните један на листи да бисте изменили.
+virtual_printer_name_ph	Виртуелни назив штампача (опционо)
+virtual_printer_create	Креирајте виртуелни штампач
+virtual_printer_save	Сачувајте виртуелни штампач
+virtual_printer_delete	Избришите виртуелни штампач
+virtual_printer_created	Виртуелни штампач „{name}“ је креиран
+virtual_printer_deleted	Избрисан виртуелни штампач „{name}“
+virtual_printer_updated	Виртуелни штампач је ажуриран
+virtual_printer_updated_named	Виртуелни штампач „{name}“ је ажуриран
+virtual_draft_layout	Постављене вредности за следећи виртуелни штампач
+virtual_draft_send	Подешена вредност за следећи виртуелни штампач
+virtual_need_real	Прво изаберите прави штампач
+virtual_need_select	Изаберите виртуелни штампач за брисање
+real_printer_selected	Изабрано: {name}
+station_group_heading	Виртуелни штампачи
+station_group_apply	Избришите виртуелни штампач
+station_group_applied	Избрисано
+station_group_empty	Изаберите виртуелни штампач
+station_group_name_ph	Виртуелни назив штампача (опционо)
+station_group_save	Креирајте виртуелни штампач
+station_group_saved	Виртуелни штампач је сачуван
+station_manage_heading	Додајте или уклоните кухињску станицу
+printers_routes_heading	Где се ствари штампају
+route_pick_heading	Место
+route_editing	Уређивање: {name}
+route_assigned	Додато {printer} до {place}
+route_already_assigned	Већ на овом месту: {printer}
+route_removed	Уклоњено {printer} из {place}
+route_cleared	Очишћено {name}
+route_assigned_empty	Нема на овом месту
+route_tap_remove	додирните да бисте уклонили
+route_tap_select	додирните да бисте изабрали
+route_tap_selected	изабрани
+route_pick_printer_first	Прво додирните штампач
+route_assigned_heading	Штампачи
+route_add_heading	Додели
+printer_label_ph	Назив (нпр. Кухиња)
+printer_target_ph	Назив системског штампача или хост: 9100
+printer_target_default	уобичајени штампач овог рачунара (празна адреса)
+printer_wire_heading	Профил
+printer_wire_escpos	ESC/POS
+printer_wire_os	Портрет
+printer_wire_os_portrait	Портрет
+printer_wire_os_landscape	Пејзаж
+printer_wire_escpos_short	ESC/POS
+printer_wire_os_short	Портрет
+printer_wire_os_landscape_short	Пејзаж
+printer_format_custom	Нови прилагођени профил
+printer_format_custom_label	Цустом
+printer_format_custom_added	Прилагођени профил је додат за ово место
+add_printer	Додајте штампач
+remove_printer	Уклони
+route_pick_ph	Рачун или кухињска станица
+route_bill	Рачун за госте
+route_default_kitchen	Нема станице (недодијељене антене)
+route_kot_station	Кухиња
+route_dont_print	Нема штампача
+stations_heading	Кухињске станице
+stations_help	Додајте кухињске станице за посуђе и KOT. На сваку станицу прикључите њене штампаче (које се налазе у Подешавања → Штампачи), поставите приоритет и изаберите Први који ради или Штампај на свим. Промене чувајте док идете — нема дугмета Сачувај.
+station_print_heading	Штампачи за ову станицу
+station_print_help	Изаберите станицу, а затим прикључите један или више штампача. ↑↓ поставља редослед покушаја. Прво што функционише престаје након првог успеха; Штампајте на свим слањима на сваки прикључени штампач. Свака промена се одмах чува.
+station_print_pick_ph	Станица за подешавање штампача
+station_print_pick_first	Прво изаберите кухињску станицу
+station_print_editing	Уређивање штампача за „{name}“
+station_vps_dd	Штампачи за ову станицу
+station_vps_dd_n	{n} штампачи · додирните да бисте променили
+station_vps_empty	Још нема штампача — Пронађите их под Подешавања → Штампачи
+bill_printers_dd	Штампачи за рачун
+bill_printers_dd_n	{n} штампачи за рачун · додирните да бисте променили
+job_layout	Лаиоут
+job_delivery	Како се посао шаље
+job_delivery_help	ОС документ, необрађени бајтови или ESC/POS. Рачун и улазница за кухињу чувају своје. Сваки задатак може да иде на било који штампач који је Финд сачувао.
+station_vp_attached	Штампач у прилогу
+station_vp_detached	Штампач је уклоњен са станице
+station_print_summary	{mode} · {n} штампачи
+station_print_summary_none	Још нема штампача на овој станици — неће штампати
+stations_none	Још нема станица — додајте једну испод. Ставке менија могу да користе станицу тако да се њихов KOT штампа тамо.
+route_up	Горе
+route_down	Доле
+route_remove	Уклони
+route_clear	Јасно
+save_printers	Сачувајте штампаче
+print_test_page	Одштампајте пробну страницу
+no_printer_assigned	Нема штампача
+test_page_no_printer	Нема штампача за {place} — прикључите штампач на њега, а затим покушајте поново
+test_page_pick_first	Прво изаберите штампаче за пробну страницу — затим одштампајте пробну страницу
+test_printers_dd	Штампачи за пробну страницу
+test_printers_dd_n	{n} штампачи за пробну страницу · додирните да бисте променили
+kot_test_printers_dd	Штампачи за тест KOT
+kot_test_printers_dd_n	{n} штампачи за тест KOT · додирните да бисте променили
+test_printer_picked	Тест на: {name}
+test_printer_cleared	Не тестира се на: {name}
+test_page_sent_n	Пробна страница је послата на {n} штампаче
+test_kot_pick_first	Прво изаберите штампаче за Тест KOT — затим Тест KOT
+test_kot_sent_n	Тест KOT послат на {n} штампаче
+cancel_pick	Марк
+cancel_pick_on	Означено
+cancel_pick_meta	Означено за отказивање
+batch_cancel	Поништи означено
+batch_cancel_n	Откажи означено ({n})
+batch_cancel_none	Прво означите једно или више послатих јела — затим означите Откажи
+batch_cancel_title	Откажите означена јела — један разлог, један отказни листић по кухињи
+batch_cancel_ok	{n} јела отказана · {slips} откажите листиће → {kitchens}
+batch_cancel_ok_noprint	{n} јела је отказана — KOT аутоматско штампање је искључено, тако да нема отказивања
+no_printer_kitchen_station	Нема штампача за ту кухињску станицу — Кухиња → Кухињске станице → Штампачи за ову станицу
+printers_saved	Сачувано
+test_page_sent	Пробна страница је послата — проверите штампач
+test_page_sent_one	Пробна страница је послата на {name} — проверите тај штампач
+printers_found	Пронађено {n}: {list}
+printers_find_synced	Пронађено {n} — {new} ново
+printer_on_device	сачувана
+printer_already_added	већ додато
+printer_already_saved	Већ сачувано: {name}
+find_printers	Пронађите штампаче
+printers_looking	Тражи се…
+saving_printer	Додавање штампача…
+cancelled	Отказано
+printers_tap_find	Додирните Пронађи да бисте навели штампаче које овај уређај може да користи.
+printers_none_found	Није пронађено — унесите назив системског штампача или ИП (нпр. 192.168.1.50).
+printer_from_find	Додато {name}
+kot_printer_ph	Штампач за KOTс
+bill_printer_ph	Штампач за рачуне
+kot_print_on	Аутоматско штампање улазница за кухињу: укључено
+kot_print_off	Аутоматско штампање улазница за кухињу: Офф
+queue_refused	Продавница не прихвата ({n}) — проверите сваки на шалтеру:
+clear_not_accepted	Означено — обришите ову листу
+device_name_ph	Назив овог уређаја
+lan_last_update	последње ажурирање {time}
+lan_not_accepted	{n} није прихваћено
+connected_now	повезан сада
+backup_failed	Последња аутоматска резервна копија није успела: {e}
+backup_overdue	Нема прављења резервних копија {n} дана — држите апликацију отвореном на овом уређају да би могла да направи резервну копију.
+disk_low	Само {mb} МБ слободно на овом уређају — резервне копије ускоро неће успети. Ослободите мало простора.
+last_seen_devices	Последњи пут виђен: {time}
+sync_interval	Синхронизујте сваких {secs}с
+connection_to_shop	Веза са радњом
+supplier_name_ph	Име добављача (или купца)
+supplier_ph	Добављач
+switch_device	Пребаците овај уређај
+take_payment	Узми уплату
+tax_added_till	{tax} ексклузивно
+tax_inside_price	{tax} укључујући
+tax_invoice	Пореска фактура
+till_to_bank	Каса → банка
+units_heading	Јединице
+unlock_after_pairing	Унесите PIN
+unlock_with_login	Откључајте пријавом
+unmark	Уклони ознаку
+update_my_password	Ажурирајте моју лозинку
+update_my_pin	Ажурирајте моје пријављивање
+duress_heading	Откључавање у хитним случајевима PIN (само за власника)
+duress_help	Опционо. Ако се ово PIN откуца при откључавању уместо вашег, сви уноси у књигама се бришу (продаја, књиге, историја) и благајник се отвара као власник изгледа нормално — мени, цене, трпезаријски столови, особље и подешавања остају. Шема и конфигурација се не бришу. Користите само ако сте присиљени да откључате. Оставите празно и сачувајте да бисте искључили. Никада исто што и било чији PIN.
+duress_pin_ph	Хитно PIN (4–12 цифара)
+duress_confirm_ph	Унесите поново да потврдите
+save_duress_pin	Сачувај хитно PIN
+clear_duress_pin	Искључи хитне случајеве PIN
+duress_on	Откључавање у хитним случајевима PIN је укључено
+duress_off	Откључавање у хитним случајевима PIN је искључено
+duress_saved	Откључавање у хитним случајевима PIN је сачувано
+duress_cleared	Откључавање у хитним случајевима PIN искључено
+upi_amount_ph	UPI износ
+void	Поништена продаја
+write_off_ap	Отписати АП
+write_off_heading	Отписати (очистити без плаћања)
+write_off_nil	Отпис / нула стања
+your_brand	Ваш бренд (у апликацији)
+your_categories	Ваше категорије
+account_kind	Врста налога (додирните један)
+actual_total_cap	СТВАРНИ УКУПНО
+amend_help	Изаберите продају да бисте изменили, поништили или вратили новац. Амандмани чувају пуну историју. Заокружено Укупно почиње једнако Примењено — измените само заокружено. За поништавање и повраћај новца може бити потребан власник или менаџер PIN (укуцано изнад; забележено под вашим именом).
+applied_total_cap	ПРИМЕЊЕНО УКУПНО
+bank_balance	Банкарски биланс
+bank_net_today	Банкарска мрежа данас
+branch_export_help	Извоз уписује бранцх_снапсхот_ЦОДЕ_ДАТЕ.јсон у директоријум резервних копија и копира га у међуспремник. Да бисте увезли дан другог продајног места, сачувајте његову датотеку као импорт_бранцх_снапсхот.јсон у истој фасцикли, а затим додирните Увези.
+brand_shown_help	Приказује се на екранима унутар апликације. Назив и икона инсталиране апликације на овом уређају остају као листа платформе.
+app_icon	Икона апликације
+logo_help	Опциона ознака продавнице на екранима у апликацији.
+onboard_layout	Шта добијеш
+item_photo_help	Опционо. Без фотографије приказујемо иницијале из назива ставке менија.
+stamp_heading	Печат
+stamp_image_help	Опциона слика печата на штампаним новчаницама и дисплеју за госте.
+payment_qr_heading	Паимент КР
+payment_qr_image_help	Статички КР на рачунима и дисплеју за госте; у супротном плаћање користи динамички UPI КР из VPA изнад.
+cash_in_hand	Готовина у руци (до)
+change_my_pin_heading	Моја пријава
+connect_to_server	Повежите се са сервером
+counter_locked	Бројач 01 · Закључан
+country_pack_help	Пакет земље поставља назив пореза и математику, шину за тренутно плаћање и пословни ИД одштампан на рачунима. Kumkaj нигде не пријављује порезе нити издаје владине е-фактуре.
+currency_use_help	Померите се и додирните Користи за било коју подржану валуту.
+day_close_help	Евидентирање затварања дана чува овај резиме (и варијанту фиоке ако се рачуна) у евиденцију ревизије. Не престаје да се продаје.
+expenses_word	Трошкови
+feature_access_help	Шта могу да отворе — опционо; горенаведени посао већ поставља подразумевану вредност
+footer_local	Локални СКЛите · Заувек бесплатно · Зеро Цлоуд
+fresh_book_khaynjo	Свеже = празан мени (додајте јела касније у Мени). Књига = откуцајте ставке менија за отварање и ко вам дугује испод.
+fresh_selected	Свеже изабрано — каталог остаје празан. Додирните Готово када будете спремни.
+gross_word	Гросс
+how_start	Како желите да почнете?
+kot_print_help_khaynjo	Када је укључено, свака кухиња штампа свој папир KOT чим пошаљете.
+later_country_pack	Касније: Подешавања → примените пакет своје земље за ознаке пореза и плаћања.
+local_badge	ЛОЦАЛ
+mix_type_hint_khaynjo	Поделите на готовину / UPI / картицу / кредит ако је потребно. Кредиту је потребан купац изнад.
+money_in_sales	Новац у (продаја)
+net_word	Нет
+offline_badge	ВАН МРЕЖЕ
+optional_login_help	Опционо пријављивање (ид + лозинка). Власник поставља једном; само корисник може касније да промени лозинку.
+or_unlock_login	Или откључајте помоћу ИД-а за пријаву + лозинке
+permission_preset	Посао (подешава екране и новчане акције)
+preset_help_khaynjo	Благајник: продам. Менаџер: продати + ставке менија + поништити/изменити.
+product_locked_khaynjo	Khaynjo
+product_only_khaynjo	Ова апликација је само Khaynjo — оперативни систем ресторана. Остала трговинска лица се испоручују као засебни Kumkaj производи.
+purchases_cogs	Куповине (COGS)
+qty_cap	КОЛ
+restore_help	Враћање: изаберите резервну копију. Главне књиге се отварају као и тада; књиге какве су сада се прво чувају, тако да се ово може поништити.
+wipe_data_heading	Избришите локалне податке
+wipe_data_help	Само за власника — исти избори као Windows деинсталирање. Пословни записи бришу историју трговања, али задржавају мени и подешавања (као што је откључавање у хитним случајевима PIN). Подешавање продавнице уклања базу података књига. Подешавања екрана бришу прозор/језик. Потврдите са власником PIN. Откључавање у хитним случајевима PIN на Тиму је одвојено (тајно брисање при откључавању).
+wipe_trading	Пословна евиденција
+wipe_schema	Подешавање продавнице
+wipe_ui	Подешавања екрана
+wipe_owner_pin_ph	Власник PIN за брисање
+wipe_delete_selected	Избриши изабрано
+wipe_owner_only	Само Власник може избрисати локалне податке.
+restore_owner_only	Само власник може да врати резервну копију.
+wipe_owner_pin_needed	Унесите власника PIN да бисте избрисали локалне податке.
+wipe_nothing_selected	Изаберите шта прво желите да избришете.
+wipe_done	Изабрани локални подаци су избрисани.
+wipe_schema_done	Подешавање продавнице је обрисано — изаберите Сервер или Клијент да бисте наставили.
+rounded_total	Заокружено укупно
+setup_app_khaynjo	Подеси Khaynjo
+shop_logo_optional	Лого продавнице (опционо)
+stock_type_help	Укуцајте назив ставке менија (довољан је део), количину, а затим подесите. Ставке менија које се још увек не рачунају треба да започнете праћење једном.
+team_owner_help	Оставите особу празно да бисте додали некога: име, посао, корисничко име, PIN и опциону лозинку, а затим Додај. Изаберите особу која ће уређивати исту врсту обрасца — име, корисничко име, лозинку, екране и права — а затим Сачувај. Ваш сопствени PIN и лозинка су једно пријављивање на дну. Власник не мења ничије PIN.
+staff_name_ph	Име особља
+staff_copy_hire_ph	Копирај подешавање са (опционално)
+staff_copy_hire	Користите подешавања ове особе
+staff_edit_name_ph	Име за приказ
+staff_rename	Сачувај име
+staff_copy_edit_ph	Копирајте подешавања од друге особе
+staff_copy_edit	Копирајте њихово подешавање на изабрано
+staff_copy_edit_onto	Копирајте њихово подешавање на {name}
+staff_deactivate_named	Уклони {name}
+staff_renamed	Име је сачувано
+staff_setup_copied_hire	Подешавање копирано са {name} — поставите ново име и PIN, а затим Додајте особље
+staff_setup_copied_edit	Копирано подешавање {from} на {to}
+staff_copy_need_selected	Изаберите кога ћете прво уредити
+staff_copy_need_source	Изаберите чије подешавање желите да копирате
+staff_copy_same	То је иста особа - изаберите неког другог
+staff_rename_need_selected	Изаберите коме ћете прво преименовати
+team_pick_hint	Изаберите кога ћете уређивати — екрани, новчана права и кухињске станице се појављују само за ту особу.
+team_stations_help	Кухињске станице које могу користити
+team_stations_changed	Кухињске станице су промењене — Сачувајте подешавања за ову особу
+team_features_changed	Екрани промењени — Сачувајте подешавања за ову особу
+team_rights_changed	Права су промењена — Сачувајте подешавања за ову особу
+they_owe_us	Дужни су нам
+unit_at_cap	Јединица @
+units_help	Шифре за ознаке ставки менија (кг, комад, врећа). Свака јединица мора бити повезана — директно или преко других јединица — са стандардом (кг · цм · мл · пц), нпр. 1 сандук = 2 кутије и 1 кутија = 20 цм. Конверзије: 1 од = фактор у. Валуте никада нису јединице.
+units_picker_help	Додирните Укључено/Искључено да бисте приказали јединицу у бирачима за куповину и мени. Искључене јединице се и даље претварају.
+unit_picker_on	Он
+unit_picker_off	Офф
+we_owe_them	Дужни смо им
+who_unlocking	Ко откључава?
+locked_word	Закључано
+show_pin	Прикажи PIN
+hide_pin	Сакриј PIN
+set_owner_pin	ПОДЕШАВАЊЕ ВЛАСНИКА PIN
+enter_owner_passcode	УНЕСИТЕ КОД ВЛАСНИКА
+enter_staff_passcode	УНЕСИТЕ ШИФРУ ЗА ОСОБЉЕ
+pin_count_zero	0 / 12 цифара · најмање 4, затим ОК
+pin_count_need	{} / 12 цифара · потребно је још {}
+pin_count_full	12 / 12 цифара · притисните ОК
+pin_count_ready	{} / 12 цифара · притисните ОК када сте спремни
+pin_hint_choose	Изаберите 4–12 цифара · Унесите или Откључај да бисте сачували
+pin_hint_new	Нови власник од 4–12 цифара PIN · Унесите или откључајте
+pin_hint_shop_code	Купите уређај · код за упаривање {}
+pin_hint_books	Овај уређај држи књиге
+pin_hint_paired	Екстра до упаривања — откључајте за продају
+pin_hint_pair_first	Екстра до — прво упарите са уређајем продавнице
+unlock_to_continue	Откључајте да бисте наставили
+no_staff_yet	Још нема особља — откључајте као Власник, а затим Тим
+status_server_set_pin	Режим сервера — поставите власника PIN
+status_server_tills	Режим сервера — могу се придружити додатне касе. Откључај
+status_server_unlock	Режим сервера — откључајте као власник
+status_client_unlock	Режим клијента — откључајте за продају
+icon_new_selected	Икона: изабрана нова датотека — додирните Сачувај бренд
+icon_custom	Икона: прилагођена ознака места
+icon_default	Икона: Kumkaj ознака (подразумевано) — изаберите прилагођену
+logo_yours	Лого: логотип ваше продавнице — приказан на екранима и рачунима
+logo_default	Лого: Kumkaj ознака (подразумевано) — изаберите свој ако га имате
+tmpl_current	Тренутно: {} — {}
+tmpl_selected	Изабрано: {} — {}
+setup_complete	Подешавање је завршено
+onboard_fresh_tmpl	Свеже · {} — каталог почиње празан; додајте ставке менија у ставке менија, а затим Готово.
+onboard_book_tmpl	Књига · {} — додајте ставке менија и почетни кредит, а затим Готово.
+onboard_template_tmpl	Именујте место ако желите, а затим изаберите како да почнете.
+tmpl_blurb	Трпезаријски столови, наручивање, кухињске карте, фактурисање и књиге.
+tmpl_how	Продај на шалтеру; Трпезарија за трпезаријске столове & KOT; Главне књиге за дневну књигу.
+reports_facet_title	Извештаји
+reports_facet_help	Дневне књиге, старење купаца или добављача, банковни постови и П&Л периода.
+against_bill_ph	Против рачуна # изнад (опционо)
+aliases_ph	Алиаси — друга имена, одвојена зарезом
+amount_blank_full_ph	Износ (празно = пуно стање)
+amount_owed_ph	Износ дуговања
+amount_ph	Износ
+amount_received_ph	Примљени износ
+amount_we_pay_ph	Износ који плаћамо
+business_name_ph	Назив предузећа
+category_new_ph	Категорија (опционално, креирана ако је нова)
+code_bag_ph	код (торба)
+conv_factor_ph	Фактор (25 = 1 врећа → 25 кг)
+country_code_ph	Код државе нпр. У, ГБ, САД, АЕ, БР
+credit_khata_amount_ph	Износ кредитне/кредитне књиге
+credit_limit_ph	Кредитно ограничење (0 = нема)
+from_code_ph	Од кода (торбе)
+item_name_lang_ph	Назив ставке менија — откуцајте га на свом језику
+login_id_opt_ph	Корисничко име (обавезно, јединствено)
+manager_pin_ph	Менаџер PIN да одобри (само ако не можете поништити)
+new_branch_name_ph	Ново име филијале
+new_password_ph	Нова лозинка (опционо)
+new_pin_ph	Ново PIN (4–12 цифара)
+note_bank_ph	Напомена (депозит, повлачење,…)
+note_buy_expense_ph	Напомена (гориво, кирија,…)
+note_expense_ph	Напомена (гориво, канцеларија,…)
+options_khaynjo_ph	Опције — Величина*: Мала=199, Велика=399 | Преливи+3: сир=40, маслина=30 | Екстра сир=40
+part_second_way_ph	Део на други начин (опционо)
+phone_ph	Телефон
+place_name_ph	Име овог места
+qty_example_ph	Количина (нпр. 1,5 за кг)
+quantity_ph	Количина
+reason_required_ph	Разлог (обавезно)
+role_title_ph	Назив улоге (нпр. Бариста)
+service_pct_ph	Услуга % опционо 0/10/12
+short_code_ph	Кратак код (МГ02)
+starting_password_ph	Почетна лозинка (опционо)
+starting_pin_ph	Почевши од PIN (4–12 цифара)
+station_name_ph	Назив станице (нпр. Тандоор, Фриер, Цолд)
+station_new_ph	Кухињска станица (опционо, нпр. Тандоор — направљена ако је нова)
+table_name_ph	Назив трпезаријског стола (нпр. тераса 1, пулт 2)
+tax_rate_ph	Назив пореске стопе или % — Стандардна, Снижена, 0, 5, 12, 18, 20
+to_code_ph	За кодирање (кг)
+uncleared_no_ph	Необрађено # изнад
+unit_cost_ph	Јединични трошак
+unit_name_bag_ph	Име (торба)
+unit_plate_ph	Јединица (плоча / ком — празно = сваки)
+pay_credit	На рачун
+book_kind_today	Данашње књиге
+book_kind_month	Главне књиге овог месеца
+book_kind_aging	Неизмирени/дебитно-кредитни
+book_kind_balance	Биланс стања
+order_help	Додирните ставку менија да бисте је додали.
+floor_help	Додирните трпезаријски сто да бисте преузели или променили редослед. Боје показују бесплатно → седи → кухиња → спремно → јело → рачун → плаћено. Листа чекања, резервације и столови за ручавање налазе се у одељцима испод.
+kitchen_help	Кухињске карте (KOT), најновије последње. Старт → Спремно → Готово помера тикет. Улазнице никада не показују цене.
+kitchen_empty	Нема отворених карата. Овде се појављује KOT послато из Реда или Трпезарије.
+add_a_table	Додајте трпезаријски сто
+add_station_heading	Додајте кухињску станицу
+categories_help	Додирните Користи да бисте горњу ставку менија унели у ту категорију. Фотографија даје категорији слику; без једног показује своје иницијале.
+dish_search_ph	Назив ставке менија — претражите наша јела или унесите своје
+tile_free	Празан
+tile_occupied	Заузето
+tile_food_ready	Храна спремна
+tile_bill_printed	Рачун одштампан
+tile_paid	Плаћено
+tile_bill_btn	Рачун за госте
+tile_occupy_btn	Седите госте
+tile_free_btn	Ослободите трпезаријски сто
+tile_ready_btn	Ослободите трпезаријски сто
+tile_undo_bill	Поништи рачун
+summary_busy	трпезаријски столови заузети
+summary_to_collect	сакупљати
+summary_on_floor	у трпезарији
+floor	Трпезарија
+sizes_as_items_ph	Величине као засебне ставке менија (опционо) — Халф=120, Фулл=200
+dish_group_ph	Група посуђа (опционо) — нпр. Панеер Тикка
+discount	Попуст
+remove_discount	Уклони попуст
+apply_discount	Примени попуст
+save_opening_cash	Уштедите почетни новац
+close_shift_print	Затворите смену и одштампајте листић
+area_prices_ph	Површинске цене (опционо) — АЦ=220, парцела=210
+discount_ph	10% или 50
+discount_reason_ph	Разлог (нпр. редован гост, касна храна)
+opening_float_ph	Готовина стављена у фиоку јутрос
+shift_counted_ph	Готовина се рачуна при примопредаји
+opening_float	Отварање готовине (флоат)
+shift_handover	Примопредаја смене
+shift_since	Ова смена од
+expected_in_drawer	Очекује се у фиоци
+right_discount	Дајте попуст
+floor_in_kitchen	У кухињи
+floor_eating	Служио
+pick_category	Изаберите категорију
+close_category_list	Затворите листу категорија
+new_category_row	Нова категорија — креира се када сачувате ставку менија
+your_category	Ваша категорија
+suggested_category	Предложено — из наших јела
+category_search_ph	Категорија — потражите своју или унесите нову
+line_sent_state	Послано у кухињу
+line_nc_state	Бесплатан (НЦ) — не наплаћује се
+cancel_item_short	Откажи
+nc_short	Без накнаде
+charge_again_short	Цхарге
+move_short	Помери се
+cancel_item_title	Откажите ову ставку менија — кухиња добија листић за отказивање
+nc_item_title	Учините ову ставку менија бесплатном (НЦ)
+charge_again_title	Поново напуните ову ставку менија
+move_item_title	Преместите ову ставку менија на други трпезаријски сто
+already_cooked	Већ кувано (расипање)
+not_cooked_yet	Још није кувано
+return_to_customer	Вратите се купцу
+short_by	Схорт би
+tip_not_sale	Напојница (особље, не продаја)
+right_settle	Узми уплату
+right_cancel_sent	Откажите послату ставку менија
+right_complimentary	бесплатно (НЦ)
+right_move_table	Померите / спојите трпезаријске столове
+right_reprint	Поново одштампајте рачун
+right_allowed	Дозвољено
+right_with_approval	Уз одобрење
+right_denied	Није дозвољено
+editing_staff	Уређивање
+finding_server	Тражим сервер продавнице на овом Wi‑Fi…
+no_server_found	Није пронађен ниједан. На серверу: Подешавања → Остали уређаји → Дозволи екстра касе (исто Wi‑Fi). Или унесите ИП приказану тамо.
+servers_found_pick	Додирните продавницу са којом желите да се повежете.
+server_host_selected	Коришћењем {host} — унесите код за упаривање, а затим Упарите сада.
+print_bill	Штампај рачун
+table_actions	Акције трпезаријског стола
+move_merge_table	Померите / спојите трпезаријски сто
+move_help	Преместите поруџбину овог трпезаријског стола на бесплатни трпезаријски сто или га спојите у текући.
+move_target_ph	Назив трпезаријског стола (нпр. Д5, П2)
+approval_pin_ph	Менаџер PIN (само ако се пита)
+move_here	Помери се овамо
+merge_into	Стопите се у то
+line_reason_ph	Разлог (нпр. гост се предомислио, нема на залихама)
+line_qty_ph	Колико треба отказати (празно = све)
+line_target_ph	Пређите на трпезаријски сто (нпр. Д5)
+confirm	Потврди
+menu_search_ph	Ставка менија за претрагу или кратки код
+customer_paid_ph	Купац је платио
+tip_ph	Савет
+table_area_ph	Област (нпр. ресторан, парцела, клима)
+table_range_ph	Много одједном: Д1-Д20
+add_these_tables	Додајте ове трпезаријске столове
+remove_these_tables	Уклоните ове трпезаријске столове
+table_remove_ph	Уклоните: Т1-Т24, или назив једног трпезаријског стола
+find_server	Пронађите сервер продавнице
+bill_format	Формат рачуна
+bill_format_help	Одштампано под именом вашег ресторана на сваком рачуну. Одвојите редове са | (нпр. МГ Роад, Рајкот | Пх 98250 00000).
+bill_header_ph	Адреса | телефон
+fssai_ph	лиценца ФССАИ бр. (Индија)
+bill_footer_ph	Подножје (нпр. хвала, посетите поново)
+save_bill_format	Сачувајте формат рачуна
+reset_bill_format	Ресетујте на подразумеване вредности
+bill_format_reset	Формат рачуна је ресетован на подразумевани
+reset_kot_format	Ресетујте на подразумеване вредности
+kot_format_reset	KOT формат се враћа на подразумеване вредности
+kot_format	Формат KOT
+kot_format_help	Додирните поље на листи. Прикажи, величина фонта и тежина се примењују на то поље на горе изабраној врсти KOT. Свака врста задржава своје величине и тежине.
+kot_format_fields	Поља
+kot_field_next	Следеће поље
+kot_field_show	Схов
+kot_field_hide	Сакриј се
+kot_field_on	схов
+kot_field_off	сакрити
+kot_field_size	Величина фонта
+kot_field_size_ph	нпр. 16, 20, 24, 28, 32…
+kot_weight_light	Светлост
+bill_kot_panel_help	Распоред рачуна и кухињског листа, сваки са својом ширином садржаја. Благајник рачуна је онај који је издао или измирио рачун; KOT Конобар је послао карту за кухињу — цела прича о поруџбини остаје у књигама.
+std_size_ph	нпр. 18, 20, 26…
+kot_show_shop	Назив продавнице
+kot_hide_shop	Сакриј радњу
+kot_show_time	Време
+kot_hide_time	Сакриј време
+kot_show_waiter	Конобар
+kot_hide_waiter	Сакриј конобара
+kot_show_station	Станица
+kot_hide_station	Сакриј станицу
+kot_show_table	Трпезаријски сто
+kot_hide_table	Сакриј трпезаријски сто
+kot_show_kot_no	KOT бр
+kot_hide_kot_no	Сакриј KOT Не
+kot_width	Преглед прелома (подесите ширину садржаја на картици KOT)
+kot_width_58	58 mm
+kot_width_80	80 mm
+kot_kind_heading	KOT врста
+kot_kind_original	Оригинал
+kot_kind_duplicate	Дупликат
+kot_kind_modified	Модификовано
+kot_kind_cancelled	Отказано
+kot_style_heading	Величина и тежина типа поља
+kot_style_title	Наслов
+kot_style_item_qty	Ставка менија · Кол
+kot_style_field_pick	Изаберите поље
+kot_weight_regular	Редовно
+kot_weight_bold	Болд
+kot_align	Поравнајте
+kot_align_start	Почни
+kot_align_center	Центар
+kot_align_end	Крај
+content_width	Ширина садржаја (мм)
+content_width_bill	Ширина садржаја рачуна (мм)
+content_width_kot	KOT ширина садржаја (мм)
+content_width_ph	Или унесите ширину садржаја, 40–210 мм
+content_width_help	Колико је широк овај листић. Билл и KOT задржавају своју ширину.
+content_width_bill_help	Колико је широк рачун за госте. Подразумевано 210 мм (страница). 58 мм уски клип, 80 мм широк клизач, 112 мм 4 инча, 210 мм А4 широк. Унесите било коју вредност од 40 до 210. Кухињске карте имају своју ширину на картици KOT.
+content_width_kot_help	Колико широка штампа кухињска карта. Подразумевано 80 мм. 58 мм уски клип, 80 мм широк клизач, 112 мм 4 инча, 210 мм страница. Унесите било коју вредност од 40 до 210. Рачуни за госте имају своју ширину на картици Рачун.
+vp_paper_width	Ширина садржаја (мм)
+vp_paper_width_ph	Или унесите ширину садржаја, 40–210 мм
+vp_paper_width_help	Ширина садржаја је подешена у формату Билл & KOT — одвојено за рачун (подразумевано 210 мм) и улазницу за кухињу (подразумевано 80 мм).
+kot_size	Величина фонта
+kot_size_s	Мала
+kot_size_m	Нормално
+kot_size_l	Велики
+std_size	Величина фонта
+kot_copies	Копије
+kot_copies_1	1
+kot_copies_2	2
+kot_copies_3	3
+kot_title_ph	Наслов (празно = KOT - НАРУЏБИНА КУХИЊЕ)
+kot_footer_ph	Напомена о кухињи (опционо, без цене)
+kot_preview	Преглед
+save_kot_format	Сачувај формат KOT
+test_kot_format	Пробајте тест KOT
+test_kot_sent	Преглед улазнице за кухињу је послан
+test_bill_format	Тестни рачун
+test_bill_sent	Преглед рачуна је послат
+test_print_no_printer	Нема штампача за тај посао — изаберите један на овом екрану
+kot_format_saved	KOT формат је сачуван
+std_print	Величина штампања рачуна
+std_print_help	Величина фонта за стандардне послове рачуна за портрет и пејзаж на ОС / штампачима докумената (унесите тачке — не Смалл/Нормал/Ларге). Иста величина на обе оријентације. Величине кухињских плочица су на картици KOT.
+std_size_s	Мала
+std_size_m	Нормално
+std_size_l	Велики
+save_std_print	Сачувајте величину штампања рачуна
+std_print_saved	Величина штампања рачуна је сачувана
+print_brand_kit	Штампани бренд комплет
+print_brand_kit_help	Опционе КР слике печата и плаћања на лицима рачуна и ЛАН дисплеју за госте. Динамички UPI КР из VPA изнад и даље ради када није подешена КР слика плаћања.
+choose_stamp	Изаберите печат
+clear_stamp	Јасан печат
+stamp_set	Печат: у фајлу — приказан на екрану за госте и именован на одштампаним рачунима
+stamp_none	Печат: нема
+choose_payment_qr	Изаберите КР плаћање
+clear_payment_qr	Обриши КР плаћање
+payment_qr_set	КР плаћање: у евиденцији — приказано на екрану за госте (тамо замењује износ UPI КР)
+payment_qr_none	Плаћање КР: нема — износ КР од UPI ИД приликом плаћања
+aggregator_import	Агрегатор поруџбина (датотека)
+aggregator_import_help	Опциони локални увоз: ставите импорт_аггрегатор_ордерс.јсон у фасциклу резервних копија (низ или {"ордерс":[…]}), а затим додирните Увези. Никада не блокира бројач; уживо Зомато/Свигги је Цлоуд.
+import_aggregator_file	Увезите датотеку агрегатора
+team_pick_ph	Особље за уређивање — име, корисничко име или избор
+select_staff	Изаберите ово особље
+rights_help	Новац и радње у трпезарији за ову особу — додирните за циклус: Дозвољено → Потребан је шеф PIN → Није дозвољено. Штампај рачун поново је само рачун; кухињске станице су контролна листа испод.
+dish_picker_help	Претражите или прегледајте наша јела и додирните једно да попуните његово име и фотографију — или задржите своје име. Подесите своју цену (0 је у реду), а затим додајте ставку менија.
+close_dish_list	Затворите листу јела
+own_item_name	Користите ово као име своје ставке менија
+on_your_menu	На вашем менију
+edit	Уреди
+schemes	Шеме / понуде
+schemes_help	BOGO, проценат попуста и фиксне комбинације. Комбинације се проширују на кухињске линије на Пошаљи KOT; компоненте остају задржане док се комбинација не активира. Пример: Купите 2 Thali добијете 1 Chaas
+scheme_bogo_ph	Buy 2 Thali get 1 Chaas
+add_scheme	Додај BOGO
+schedule_ph	Радно време / срећни сат — пон-пет 07:00-11:00 или ХаппиХоур 17:00-19:00=150
+upi_vpa_ph	UPI ID (VPA)
+upi_payee_ph	UPI име примаоца уплате (опционо)
+upi_qr	UPI QR
+show_upi_qr	Прикажи UPI КР
+close_upi_qr	Затвори
+upi_qr_help	Гост скенира и плаћа. Додирните Узми уплату након што плате. Други екран: отворите УРЛ сервера /прикажите на ЛАН-у.
+kot_recall	Подсетимо се
+recently_done	Недавно урађено
+recall_kot_ph	KOT # за опозив
+role_help_customer	Улога: Клијент — кредитна књига (они нам дугују). Исти купац или добављач такође може испоручити залихе.
+role_help_both	Улоге: Купац + добављач — један купац или добављач, кредитна књига и књиге плаћања, нето у извештајима.
+role_help_supplier	Улога: Добављач — дугујемо им за куповину.
+dine_in_pick_table	Дине-ин — изаберите трпезаријски сто на екрану трпезарије
+choose_table	Изаберите трпезаријски сто
+change_table	Промените трпезаријски сто
+pick_table_banner	Изаберите трпезаријски сто за ову наруџбу
+items_word	ставке менија
+items_section	Ставке менија
+back_to_order	Назад на ред
+new_items_head	Још није послато
+price_ph	Цена
+price_ph_gst_inside	Цена ({tax} укључујући)
+cancel_needs_table	Отворите ову поруџбину са екрана трпезарије (трпезаријски сто) да бисте отказали након што је кухиња добије — шалтер KOT остаје на карти док не преузмете уплату
+tax_rates_missing_hint	Не {tax} стопа на ова јела — на менију постављена Пореска стопа (цене већ укључују {tax} испод {tax} укључујући)
+taxable_value	Опорезива вредност
+gst_inside_price_note	({tax} укључујући)
+start_with_template	Почните са нашим шаблоном менија
+template_heading	Наш шаблон менија
+template_info	{c} категорије и {d} јела са фотографијама, спремна за додавање. Цене почињу од 0 ИНР — одредите своје после.
+template_import	Увезите комплетан шаблон
+template_confirm	Додати {d} јела са њиховим категоријама? Јела која већ имате остају таква каква јесу.
+template_yes	Да, увоз
+template_importing	Увоз менија…
+template_import_progress	Увоз… {d}/{t}
+template_done	Свако јело из нашег шаблона је на вашем менију.
+template_imported	Додато {d} јела и {c} категорије — подесите њихове цене на овом екрану
+client_template_heading	Клијентски мени
+client_template_info	{title}: {c} категорије, {d} јела са ценама, фотографијама и алиасима. Недостају само јела — имена која већ имате остају.
+client_template_import	Увезите овај мени
+client_template_confirm	Додати {d} јела од {title}? Јела која већ имате остају таква каква јесу.
+client_template_importing	Увоз {title}…
+client_template_done	Свако јело од {title} је на вашем менију.
+client_template_imported	Додато {d} јела и {c} категорије од {title}
+resv_heading	Резервације
+resv_name_ph	Име госта
+resv_phone_ph	Телефон (опционо)
+resv_guests_ph	Гости
+resv_when_ph	Када — 20:30, сутра у 13:00
+resv_table_ph	Трпезаријски сто (опционо)
+resv_add	Резервишите трпезаријски сто
+resv_seat	Сеатед
+resv_none	Нема резервација.
+guests_word	гости
+delivery_by_ph	Достава до (име возача или особља)
+kitchen_all_day	Сада за кување: {items}
+kitchen_all_day_head	Да кувам сада
+kitchen_tab_live	Уживо
+kitchen_tab_recall	Подсетимо се
+kitchen_tab_stations	Станице
+split_bill	Подели рачун
+split_go	Направите посебан рачун
+cancel	Откажи
+opening_client	Отварање клијента…
+preparing_desk	Припрема стола…
+opening_server	Отварање сервера…
+creating_server	Прављење сервера…
+split_help	Додирните посуђе које један гост плаћа · {n} изабрано
+split_send_first	Прво пошаљите KOT — само посуђе које има кухиња може да иде на посебан рачун
+split_pick_some	Прво додирните посуђе за посебан рачун
+split_done	Направљен посебан рачун — налази се у трпезарији поред овог трпезаријског стола
+split_marked	посебан рачун
+order_empty_pick	Наручите празно — додирните Додај јела изнад да одаберете јела.
+add_dishes	Додајте јела
+order_so_far	Овим редоследом: {n} · {total}
+no_dish_match	Ниједно јело не одговара „{q}“
+pick_dishes_help	Додирните јело да бисте га додали · изаберите категорију да бисте сузили листу
+pick_done	Готово
+pick_done_dd	Готово · {label}
+printer_route_mode	Ако више штампача на овом месту
+printer_mode_first	Прво то ради
+printer_mode_all	Штампајте на свим
+kot_show_area	Подручје
+kot_hide_area	Сакриј област
+kot_show_item_hdr	Ставка менија · Кол
+kot_hide_item_hdr	Сакриј колоне
+kot_show_title	Насловна линија
+kot_hide_title	Сакриј наслов
+kot_field_order	Редослед штампања
+kot_field_up	Помери се горе
+kot_field_down	Помери се доле
+kot_field_cycle	Изаберите следеће
+kot_field_select	Изаберите следеће
+kot_field_time	Време
+kot_field_kot_no	KOT бр
+kot_field_area	Подручје
+kot_field_table	Трпезаријски сто
+kot_field_shop	Назив продавнице
+kot_field_waiter	Особље
+kot_field_station	Станица
+app_template_blurb_extra	Такође: Власник Zahir, Администратор Asif, Конобар Nawaz; FOH бочна трака; историја након 4 сата; Данас скини се; компактан KOT.
+dishes_n	{n} јела
+recipe_ph	Рецепт (опционо) — једна порција користи: пиринач=0,2, панеер=0,15
+reorder_ph	Купите више на
+set_reorder	Подесите ниво промене редоследа
+low_stock_alert	Понестаје — купите ускоро: {items}
+unpriced_note	{n} јела на вашем менију још увек немају цену — наплаћују се на 0 док је не поставите.
+show_unpriced	Прикажи само јела без цене
+show_all_dishes	Покажите сва јела
+role_waiter	Конобар
+role_kitchen	Кухиња
+role_title_rest_ph	Назив улоге (нпр. капетан, главни кувар)
+preset_help_rest	Конобар: прима поруџбине и води трпезаријске столове. Благајник: такође прима плаћање. Кухиња: кухињски параван. Менаџер: такође мени, откази и попусти.
+kind_raw	Сировина
+kind_resale	Купљено и препродано
+kind_dish	Јело које правимо
+buy_unit_ph	Јединица (кг, литар, ком)
+add_another_way	+ Додајте други начин
+parts_status	Унето {a} од {b} · {c} лево
+save_expense	Уштедите трошкове
+rest_ph	Одмори се
+low_badge	Ниско
+stock_empty	Још ништа на залихама — оно што снимите на Купи се појављује овде.
+recent_changes	Недавне промене
+lane_declared_label	Пореска фактура
+lane_owner_label	Новац
+money_lane_bill	Рачун: {lane}

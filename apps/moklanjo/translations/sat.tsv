@@ -1,0 +1,835 @@
+# Santali — ᱥᱟᱱᱛᱟᱲᱤ (sat). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	ᱠᱩᱨᱤᱭᱟᱨ-ᱮᱡᱮᱱᱥᱤ ᱯᱚᱛᱚᱵ ᱠᱚ + ᱵᱩᱠᱤᱝ ᱰᱮᱥᱠ᱾ ᱯᱷᱨᱤ ᱚᱯᱷᱞᱟᱭᱤᱱ᱾
+unlock	ᱠᱩᱞᱩᱯ ᱡᱷᱤᱡᱽ ᱢᱮ
+pin_hint	ᱢᱟᱞᱤᱠ ᱯᱤᱱ 0000 ᱠᱷᱚᱱ ᱮᱦᱚᱵᱚᱜᱼᱟ
+sell	ᱵᱩᱠᱤᱝ
+buy	ᱯᱩᱭᱥᱟᱹ ᱮᱢ
+books	ᱢᱟᱦᱟᱸ ᱯᱚᱛᱚᱵ
+books_help	ᱛᱮᱦᱮᱧᱟᱜ ᱯᱚᱡᱤᱥᱚᱱ᱾ ᱵᱩᱠᱤᱝ = ᱯᱟᱨᱥᱟᱞ ᱵᱷᱤᱛᱨᱤ ᱾ ᱯᱮᱭ ᱟᱣᱩᱴ = ᱠᱮᱨᱤᱭᱟᱨ ᱵᱤᱞ ᱟᱨ ᱠᱷᱚᱨᱪᱟ ᱾ ᱯᱟᱨᱴᱤ ᱠᱚ = ᱠᱚᱱᱥᱟᱭᱤᱱᱚᱨ ᱟᱨ ᱠᱮᱨᱤᱭᱟᱨ ᱠᱚ ᱾
+buy_help	ᱠᱷᱚᱨᱪᱟ ᱵᱷᱟᱩᱪᱟᱨ ᱟᱨ ᱠᱮᱨᱤᱭᱟᱨ ᱵᱤᱞ (ᱯᱩᱭᱥᱟᱹ ᱵᱟᱦᱨᱮ)᱾ ᱚᱱ-ᱮᱠᱟᱣᱩᱱᱴ ᱯᱟᱨᱴᱤ ᱞᱮᱡᱟᱨ ᱨᱮ ᱛᱟᱦᱮᱱᱟ ᱾
+sell_money_in	ᱢᱤᱫ ᱯᱟᱨᱥᱟᱞ ᱵᱩᱠ ᱢᱮ
+buy_money_out	ᱠᱷᱚᱨᱪᱟ/ ᱵᱟᱦᱚᱠ ᱵᱤᱞ
+record_purchase	ᱨᱮᱠᱚᱨᱰ ᱠᱤᱨᱤᱧ
+add_expense	ᱠᱷᱚᱨᱪᱟ ᱵᱷᱟᱩᱪᱟᱨ
+bank_book	ᱵᱮᱝᱠ ᱯᱚᱛᱚᱵ
+credit_help	ᱯᱟᱨᱴᱤ ᱟᱭᱤ ᱰᱤ ᱫᱚ ᱵᱷᱮᱜᱟᱨ ᱜᱮᱭᱟ (ᱧᱩᱛᱩᱢ ᱫᱚᱦᱲᱟ ᱫᱟᱲᱮᱭᱟᱜᱼᱟ)᱾ ᱵᱷᱩᱢᱤᱠᱟ: ᱠᱚᱱᱥᱤᱜᱱᱚᱨ (ᱟᱨ), ᱠᱮᱨᱤᱭᱟᱨ (ᱮᱯᱤ), ᱵᱟᱝᱠᱷᱟᱱ ᱵᱟᱱᱟᱨ ᱚᱱᱟ ᱟᱭᱤ ᱰᱤ ᱨᱮ ᱾ ᱞᱮᱡᱟᱨ ᱠᱚ ᱡᱩᱫᱟᱹ ᱡᱩᱫᱟᱹ ᱛᱟᱦᱮᱱᱟ; ᱨᱤᱯᱚᱨᱴ ᱠᱚ ᱱᱮᱴ ᱩᱫᱩᱜ ᱮᱫᱟᱭ ᱾
+party_kind_ph	ᱠᱟᱥᱴᱚᱢ ᱨᱚᱞ (ᱚᱯᱥᱚᱱᱟᱞ) — ᱟᱨᱵᱟᱝ ᱪᱮᱛᱟᱱ ᱨᱮ ᱢᱤᱫ ᱪᱤᱯ ᱴᱮᱯ
+parties_list_heading	ᱵᱟᱧᱪᱟᱣ ᱟᱠᱟᱱ ᱯᱟᱨᱴᱤ ᱠᱚ
+reports_help	ᱢᱟᱦᱟᱸ ᱯᱚᱛᱚᱵ, ᱨᱤᱱᱤᱡ ᱟᱨ ᱨᱤᱱᱤᱡ, ᱵᱮᱝᱠ ᱯᱚᱛᱚᱵ, ᱠᱷᱚᱨᱪᱟ ᱵᱷᱟᱣᱩᱪᱟᱨ, ᱞᱟᱵᱷ ᱟᱨ ᱦᱟᱹᱱ᱾
+reports_today	ᱢᱟᱦᱟᱸ ᱯᱚᱛᱚᱵ (ᱛᱮᱦᱮᱧ)
+reports_month	ᱞᱟᱵᱷ ᱟᱨ ᱦᱟᱹᱱ (ᱪᱟᱸᱫᱚ)
+reports_aging	ᱟᱩᱴᱥᱴᱮᱱᱰᱤᱝ / ᱰᱟᱠᱛᱚᱨ-ᱥᱤᱟᱨ
+reports_balance_sheet	ᱵᱮᱞᱮᱱᱥ ᱥᱤᱴ
+reports	ᱵᱮᱝᱠ ᱵᱩᱠ ᱟᱨ ᱯᱤ ᱟᱨ ᱮᱞ
+refresh	ᱛᱟᱹᱯᱤᱥ ᱢᱮ
+undo	ᱟᱱᱰᱩ
+start_tracking	ᱴᱨᱮᱠᱤᱝ ᱮᱦᱚᱵ ᱢᱮ
+stock_minus	- ᱥᱴᱚᱠ
+stock_plus	+ ᱥᱴᱚᱠ
+settle_cash	ᱴᱟᱠᱟ ᱥᱮᱴᱮᱞ
+settle_card	ᱥᱮᱴᱮᱞ ᱠᱟᱨᱰ
+items	ᱫᱚᱨ ᱠᱚ ᱟᱨ ᱥᱮᱵᱟ ᱠᱚ
+nav_items	ᱫᱚᱨ ᱠᱚ
+more	ᱟᱨᱦᱚᱸ
+your_items	ᱟᱢᱟᱜ ᱫᱚᱨ ᱠᱚ
+items_help	ᱥᱟᱱᱟᱢ ᱛᱷᱟᱨ ᱨᱮ ᱢᱤᱫ ᱫᱚᱨ ᱢᱮᱱᱟᱜᱼᱟ (ᱡᱮᱞᱠᱟ ᱥᱚᱨᱯᱷᱮᱥ ᱡᱚᱱ ᱮ)᱾ ᱭᱩᱱᱤᱴ ᱫᱚ ᱥᱟᱫᱷᱟᱨᱚᱱ ᱠᱮᱡᱤ ᱠᱟᱱᱟ ᱾ ᱥᱟᱥᱟᱯᱲᱟᱣ ᱞᱟᱹᱜᱤᱫ ᱴᱮᱯ ᱢᱮ᱾
+add_item	ᱫᱚᱨ ᱥᱮᱞᱮᱫ ᱢᱮ
+new_item	ᱱᱟᱶᱟ ᱫᱚᱨ
+adding_item	ᱢᱤᱫ ᱱᱟᱶᱟ ᱫᱚᱨ ᱥᱮᱞᱮᱫ
+editing_item	ᱥᱟᱥᱟᱯᱲᱟᱣ
+save	ᱥᱟᱸᱪᱟᱣ ᱢᱮ
+remove	ᱚᱪᱚᱜᱽ ᱢᱮ
+empty_catalog	ᱱᱤᱛ ᱦᱚᱸ ᱫᱚᱨ ᱵᱟᱹᱱᱩᱜᱼᱟ ᱾ ᱫᱚᱨ ᱟᱨ ᱥᱮᱵᱟ ᱠᱚ ᱡᱷᱤᱡᱽ ᱢᱮ, ᱢᱤᱫ ᱥᱮᱞᱮᱫ ᱢᱮ (ᱧᱩᱛᱩᱢ + ᱜᱚᱱᱚᱝ, ᱭᱩᱱᱤᱴ ᱠᱮᱡᱤ), ᱚᱱᱟ ᱛᱟᱭᱚᱢ ᱵᱩᱠᱤᱝ ᱢᱮ ᱾
+counter_sale	ᱠᱟᱣᱩᱱᱴᱟᱨ ᱵᱩᱠᱤᱝ
+total	ᱢᱩᱴ
+cash	ᱴᱟᱠᱟ
+upi	UPI
+card	ᱠᱟᱨᱰ
+credit	ᱯᱟᱨᱴᱤ ᱠᱚ
+clear	ᱯᱷᱟᱨᱪᱟ ᱢᱮ
+ready_to_sell	ᱵᱩᱠ ᱞᱟᱹᱜᱤᱫ ᱥᱟᱯᱲᱟᱣ ᱢᱮ
+today_prefix	ᱛᱮᱦᱮᱧ
+today_mid	ᱛᱮᱦᱮᱧ
+owed	ᱚᱥᱟᱢᱚᱱᱰᱤᱝ
+round_word	ᱜᱚᱞ
+back	ᱨᱩᱣᱟᱹᱲ ᱢᱮ
+sold_out	ᱵᱟᱝ ᱧᱟᱢᱚᱜ ᱠᱟᱱᱟ
+restock	ᱨᱤᱥᱴᱚᱠ
+not_tracked	ᱵᱟᱝ ᱴᱨᱮᱠ ᱟᱠᱟᱱᱟ
+in_stock	ᱥᱴᱚᱠ ᱨᱮ
+marked_sold_out	ᱵᱟᱝ ᱧᱟᱢᱚᱜ ᱞᱮᱠᱟ ᱪᱤᱱᱦᱟᱹ ᱟᱠᱟᱱᱟ
+add_upper	ᱥᱮᱞᱮᱫ
+na	N/A
+qty	Wt/Qty
+unit_at	ᱫᱚᱨ @
+actual	ᱥᱟᱹᱨᱤ
+applied	ᱞᱟᱹᱜᱩ ᱟᱠᱟᱱᱟ
+note_ph	ᱱᱚᱴ (ᱚᱯᱥᱚᱱᱟᱞ)
+rounded	ᱜᱚᱞ
+split	ᱦᱟᱹᱴᱤᱧ
+counter	ᱠᱟᱣᱩᱱᱴᱟᱨ
+parcel	ᱯᱟᱨᱥᱮᱞ
+order	ᱚᱰᱚᱨ ᱢᱮ
+sales	ᱵᱩᱠᱤᱝ
+sales_refunds	ᱵᱩᱠᱤᱝ ᱟᱨ ᱯᱩᱭᱥᱟᱹ ᱨᱩᱣᱟᱹᱲ
+day_close	ᱢᱟᱦᱟ ᱵᱚᱸᱫᱚ
+reports_expenses	ᱵᱮᱝᱠ ᱵᱩᱠ ᱟᱨ ᱯᱤ ᱟᱨ ᱮᱞ
+nav_reports	ᱨᱤᱯᱳᱨᱴ
+nav_settings	ᱥᱮᱴᱤᱝ
+nav_lock	ᱠᱩᱞᱩᱯ
+sidebar_settings	ᱥᱟᱭᱤᱰᱵᱟᱨ ᱥᱮᱴᱤᱝ
+sidebar_settings_help	ᱥᱟᱭᱤᱰ ᱨᱮᱞ ᱞᱮᱠᱟᱱ ᱥᱚᱢᱟᱱ ᱟᱭᱠᱚᱱ ᱠᱚ ᱾ ᱫᱚᱦᱲᱟ ᱚᱨᱰᱟᱨ ᱞᱟᱹᱜᱤᱫ ᱢᱤᱫ ᱛᱷᱟᱨ ᱚᱨ ᱢᱮ ᱾ ᱩᱫᱩᱜ ᱥᱮ ᱩᱠᱩ ᱞᱟᱹᱜᱤᱫ ᱥᱣᱤᱪ ᱯᱷᱞᱤᱯ ᱢᱮ ᱾ ᱥᱮᱴᱤᱝ ᱟᱨ ᱞᱚᱠ ᱥᱟᱨᱟ ᱜᱷᱟᱹᱲᱤᱡ ᱵᱟᱨ ᱨᱮ ᱛᱟᱦᱮᱱᱟ ᱾
+sidebar_always_on_short	ᱥᱟᱨᱟ ᱜᱷᱟᱹᱲᱤᱡ ᱪᱟᱹᱞᱩ
+sidebar_back_settings	ᱨᱩᱣᱟᱹᱲ ᱢᱮ
+sidebar_shown	ᱩᱫᱩᱜ ᱟᱠᱟᱱᱟ
+sidebar_hidden	ᱩᱠᱩ ᱟᱠᱟᱱᱟ
+sidebar_always_on	ᱥᱟᱨᱟ ᱜᱷᱟᱹᱲᱤᱡ ᱵᱟᱨ ᱨᱮ
+sidebar_shown_hint	ᱥᱟᱭᱤᱰ ᱨᱮᱞ/ᱞᱟᱛᱟᱨ ᱴᱮᱵᱽ ᱨᱮ ᱩᱫᱩᱜ ᱟᱠᱟᱱᱟ
+sidebar_hidden_hint	ᱵᱟᱨ ᱠᱷᱚᱱ ᱩᱠᱩ ᱟᱠᱟᱱᱟ
+sidebar_menu_items	ᱢᱮᱱᱭᱩ ᱟᱨ ᱡᱤᱱᱤᱥ ᱠᱚ
+sidebar_enable_all	ᱥᱟᱱᱟᱢ ᱪᱟᱹᱞᱩᱭ ᱢᱮ
+sidebar_disable_all	ᱥᱟᱱᱟᱢ ᱠᱚ ᱚᱠᱟᱹᱡᱽᱣᱟᱹ ᱢᱮ
+sidebar_order_saved	ᱥᱟᱭᱤᱰᱵᱟᱨ ᱚᱰᱟᱨ ᱥᱟᱧᱪᱟᱣ ᱮᱱᱟ
+sidebar_visibility_saved	ᱥᱟᱭᱤᱰᱵᱟᱨ ᱧᱮᱞᱚᱜ ᱥᱟᱧᱪᱟᱣ ᱮᱱᱟ
+amounts_hide	ᱩᱠᱩᱭ ᱢᱮ
+amounts_show	ᱩᱫᱩᱜ ᱢᱮ
+no_sale_yet	ᱱᱤᱛ ᱦᱚᱸ ᱵᱟᱝ ᱟᱹᱠᱷᱨᱤᱧ ᱟᱠᱟᱱᱟ
+favorites	ᱠᱩᱥᱤᱠᱚ
+favorites_help	ᱟᱢ ᱡᱟᱦᱟᱸ ᱡᱤᱱᱤᱥ ᱮᱢ ᱟᱠᱷᱨᱤᱧᱟ, ᱟᱢᱟᱜ ᱞᱚᱜᱤᱱ ᱞᱟᱹᱜᱤᱫ ᱥᱟᱧᱪᱟᱣ ᱢᱮᱱᱟᱜᱼᱟ ᱾ ᱵᱤᱞ ᱨᱮ ᱢᱤᱫᱴᱟᱝ ᱥᱮᱞᱮᱫ ᱢᱮ, ᱟᱨᱵᱟᱝ ᱞᱟᱛᱟᱨ ᱨᱮ ᱮᱢ ᱟᱠᱟᱱ ᱡᱚᱛᱚ ᱡᱤᱱᱤᱥ ᱠᱷᱚᱱ ᱟᱢᱟᱜ ᱛᱟᱞᱠᱟ ᱵᱮᱱᱟᱣ ᱢᱮ ᱾
+your_favorites	ᱟᱢᱟᱜ ᱠᱩᱥᱤ ᱠᱚ
+all_items	ᱥᱟᱱᱟᱢ ᱡᱤᱱᱤᱥ
+no_favorites	ᱱᱤᱛ ᱦᱚᱸ ᱵᱟᱝ ᱠᱩᱥᱤᱭᱟᱜ ᱠᱟᱱᱟ — ᱞᱟᱛᱟᱨ ᱨᱮ ᱮᱢ ᱟᱠᱟᱱ ᱛᱟᱞᱠᱟ ᱠᱷᱚᱱ ᱡᱤᱱᱤᱥ ᱠᱚ ᱥᱮᱞᱮᱫ ᱢᱮ ᱾
+add_to_bill	ᱵᱤᱞ ᱨᱮ ᱥᱮᱞᱮᱫ ᱢᱮ
+added	ᱥᱮᱞᱮᱫ ᱮᱱᱟ
+owes_word	ᱨᱤᱱᱤᱡ
+selected_word	ᱵᱟᱪᱷᱟᱣ ᱟᱠᱟᱱᱟ
+chip_clear_credit	ᱯᱷᱟᱨᱪᱟ — ᱠᱨᱮᱰᱤᱴ ᱵᱟᱝᱠᱷᱟᱱ ᱞᱟᱦᱟ ᱦᱟᱛᱟᱣ
+chip_missing_customer	ᱵᱟᱪᱷᱟᱣ ᱠᱟᱥᱴᱚᱢᱟᱨ ᱟᱫ ᱟᱠᱟᱱᱟ — ᱫᱚᱦᱲᱟ ᱵᱟᱪᱷᱟᱣ ᱢᱮ
+chip_no_customer	ᱱᱤᱛ ᱦᱚᱸ ᱜᱚᱨᱟᱦᱟᱠ ᱵᱟᱹᱱᱩᱜ ᱠᱚᱣᱟ — ᱢᱤᱫ ᱧᱩᱛᱩᱢ ᱴᱟᱭᱤᱯ ᱢᱮ, ᱚᱱᱟ ᱛᱟᱭᱚᱢ ᱠᱨᱮᱰᱤᱴ ᱴᱮᱯ ᱢᱮ
+credit_summary_fmt	{} ᱜᱚᱨᱦᱟᱠ · ᱡᱷᱤᱡ ᱩᱫᱷᱟᱨ {} · ᱫᱚᱦᱚ ᱮᱰᱵᱷᱟᱱᱥ {}
+recent_label	ᱱᱮᱛᱟᱨ:
+inventory	ᱤᱱᱣᱮᱱᱴᱚᱨᱤ
+inventory_stock	ᱤᱱᱣᱮᱱᱴᱚᱨᱤ ᱟᱨ ᱥᱴᱚᱠ
+branches	ᱰᱟᱹᱨᱠᱚ
+branches_org	ᱥᱟᱠᱟᱢ ᱠᱚ ᱟᱨ ᱚᱨᱜᱽ
+credit_customers	ᱯᱟᱨᱴᱤ ᱠᱚ (ᱨᱤᱱᱤᱭᱟᱹ ᱠᱚ ᱟᱨ ᱨᱤᱱᱤᱡ ᱠᱚ)
+customer_name_ph	ᱯᱟᱨᱴᱤ ᱧᱩᱛᱩᱢ
+new_customer_ph	ᱱᱟᱶᱟ ᱯᱟᱨᱴᱤ ᱧᱩᱛᱩᱢ
+item_name_ph	ᱫᱚᱨ ᱧᱩᱛᱩᱢ (ᱡᱮᱞᱠᱟ ᱥᱚᱨᱯᱷᱮᱥ ᱡᱚᱱ ᱮ)
+item_price_ph	ᱯᱨᱚᱛᱤ ᱠᱮᱡᱤ/ᱯᱩᱭᱞᱩ ᱥᱞᱟᱵᱽ
+start_template	ᱡᱤᱱᱤᱥ
+next_booking	ᱫᱚᱥᱟᱨ ᱵᱩᱠᱤᱝ
+destination_ph	ᱱᱤᱴ ᱴᱷᱟᱶ ᱥᱚᱦᱚᱨ/ᱡᱚᱱ
+consignee_ph	ᱧᱟᱢᱤᱡ ᱧᱩᱛᱩᱢ
+consignee_phone_ph	ᱨᱤᱥᱤᱵᱷᱟᱨ ᱯᱷᱚᱱ
+consignee_address_ph	ᱰᱮᱞᱤᱵᱷᱟᱨᱤ ᱴᱷᱤᱠᱟᱹᱱᱟ
+origin_name_ph	ᱵᱷᱮᱡᱟᱭᱤᱡ ᱧᱩᱛᱩᱢ
+origin_phone_ph	ᱵᱷᱮᱡᱟᱭᱤᱡ ᱯᱷᱚᱱ
+origin_address_ph	ᱯᱤᱠᱟᱯ/ ᱚᱨᱤᱡᱤᱱ ᱴᱷᱤᱠᱟᱹᱱᱟ
+booking_consignor_heading	ᱠᱚᱱᱥᱟᱭᱤᱱᱚᱨ (ᱜᱚᱨᱦᱟᱢ/ᱵᱷᱮᱡᱟᱭᱤᱡ)
+booking_consignee_heading	ᱥᱟᱢᱵᱷᱟᱨᱤᱭᱟᱹ (ᱧᱟᱢᱤᱡ)
+booking_consignor_hint	ᱯᱮᱨᱮᱡ ᱞᱟᱹᱜᱤᱫ ᱢᱤᱫ ᱯᱟᱨᱴᱤ ᱵᱟᱪᱷᱟᱣ ᱢᱮ, ᱟᱨᱵᱟᱝ ᱛᱟᱲᱟᱢ ᱞᱟᱹᱜᱤᱫ ᱠᱷᱟᱹᱞᱤ ᱫᱚᱦᱚᱭ ᱢᱮ ᱾ ᱚᱲᱟᱜ ᱯᱤᱠᱟᱯ ᱟᱨ ᱟᱨ ᱴᱤ ᱳ ᱞᱟᱹᱜᱤᱫ ᱞᱟᱹᱠᱛᱤᱜ ᱠᱟᱱᱟ ᱾
+booking_consignee_hint	ᱯᱟᱨᱥᱟᱞ ᱧᱟᱢᱤᱡ ᱾ ᱣᱟᱠ-ᱤᱱ ᱠᱟᱣᱩᱱᱴᱟᱨ ᱰᱨᱚᱯ-ᱚᱯᱷ ᱞᱟᱹᱜᱤᱫ ᱠᱷᱟᱹᱞᱤ ᱟᱲᱟᱜ ᱢᱮ ᱾
+weight_kg_ph	ᱥᱟᱹᱨᱤ ᱠᱮᱡᱤ
+length_cm_ph	ᱮᱞ ᱥᱤ ᱮᱢ
+breadth_cm_ph	ᱵᱤ ᱥᱤ ᱮᱢ
+height_cm_ph	ᱮᱪ ᱥᱤ ᱮᱢ
+chargeable_kg	ᱪᱟᱨᱡᱽ ᱞᱮᱠᱟᱱ ᱠᱮᱡᱤ
+awb_label	AWB
+booking_help	ᱵᱷᱮᱡᱟᱭᱤᱡ + ᱵᱷᱮᱡᱟᱭᱤᱡ (ᱠᱷᱟᱹᱞᱤ ᱴᱷᱤᱠ ᱜᱮᱭᱟ) → ᱴᱷᱟᱶ → ᱚᱡᱚᱱ → ᱵᱟᱪᱷᱟᱣ ᱫᱚᱨ → ᱮᱠᱟᱣᱩᱱᱴ/ᱴᱟᱠᱟ → ᱯᱩᱭᱥᱟᱹ ᱾ AWB ᱨᱟᱹᱥᱤᱫ ᱨᱮ ᱪᱷᱟᱯᱟ ᱮᱫᱟᱭ ᱾ ᱫᱚᱥᱟᱨ ᱵᱩᱠᱤᱝ ᱰᱮᱥᱠ ᱯᱷᱟᱨᱪᱟᱭᱟ ᱾ ᱜᱚᱞ ᱮᱛᱚᱦᱚᱵ ᱫᱚ ᱞᱟᱹᱜᱩᱜ ᱥᱟᱶ ᱵᱟᱨᱟᱵᱟᱨᱤ ᱜᱮᱭᱟ — ᱥᱩᱢᱩᱝ ᱵᱤᱞ ᱜᱚᱞ ᱞᱟᱹᱜᱤᱫ ᱥᱟᱥᱟᱯᱲᱟᱣ ᱢᱮ ᱾
+cart_empty_hint	ᱰᱮᱥᱠ ᱠᱷᱟᱹᱞᱤ ᱜᱮᱭᱟ — ᱠᱚᱱᱥᱟᱭᱤᱱᱚᱨ/ᱠᱚᱱᱥᱟᱭᱤᱱᱤ ᱚᱯᱥᱚᱱᱟᱞ, ᱥᱮᱴ ᱴᱷᱟᱶ ᱟᱨ ᱚᱡᱚᱱ, ᱢᱤᱫ ᱫᱚᱨ ᱨᱮ ᱮᱰᱤ ᱴᱮᱯ ᱢᱮ, ᱚᱱᱟ ᱛᱟᱭᱚᱢ ᱮᱢᱚᱜ ᱢᱮ ᱾
+team	ᱫᱚᱞ
+team_pins	ᱫᱚᱞ ᱟᱨ ᱯᱤᱱ ᱠᱚ
+my_pin_settings	ᱤᱧᱟᱜ ᱯᱤᱱ
+settings_hub_help_my_pin	ᱱᱚᱣᱟ ᱰᱤᱵᱷᱟᱭᱤᱥ ᱨᱮ ᱥᱟᱭᱤᱱ ᱟᱠᱟᱱ ᱦᱚᱲ ᱞᱟᱹᱜᱤᱫ ᱟᱱᱞᱚᱠ ᱯᱤᱱ ᱵᱚᱫᱚᱞ ᱢᱮ᱾
+team_self_help	ᱥᱩᱢᱩᱝ ᱟᱢ ᱟᱢᱟᱜ ᱟᱱᱞᱚᱠ ᱯᱤᱱ ᱵᱚᱫᱚᱞ ᱫᱟᱲᱮᱭᱟᱜᱼᱟᱢ (ᱟᱨ ᱚᱯᱥᱚᱱᱟᱞ ᱞᱚᱜᱤᱱ ᱯᱟᱥᱣᱟᱨᱰ)᱾ ᱢᱟᱞᱤᱠ ᱠᱩᱞᱤᱭᱮᱢ ᱡᱩᱫᱤ ᱟᱢ ᱮᱴᱟᱜ ᱮᱴᱟᱜ ᱥᱠᱨᱤᱱ ᱥᱮ ᱟᱹᱭᱫᱟᱹᱨ ᱠᱚ ᱞᱟᱹᱠᱛᱤᱭᱟᱢ ᱠᱟᱱᱟ ᱾
+backup_settings	ᱵᱮᱠᱟᱯ ᱟᱨ ᱥᱮᱴᱤᱝ
+lock_app	ᱞᱚᱠ ᱮᱯ
+pick	ᱵᱟᱪᱷᱟᱣ ᱢᱮ
+select	ᱵᱟᱪᱷᱟᱣ ᱢᱮ
+advance	ᱞᱟᱦᱟ
+owner	ᱢᱟᱞᱤᱠ
+staff	ᱠᱟᱹᱢᱤᱭᱟᱹ
+photo	ᱪᱤᱛᱟᱹᱨ
+auto	ᱚᱴᱚ
+prev	ᱞᱟᱦᱟ
+next	ᱛᱟᱭᱚᱢ
+ok	OK
+this_shop	ᱥᱮᱨᱵᱷᱟᱨ
+extra_till	ᱠᱞᱟᱭᱮᱱᱴ
+off	ᱵᱚᱱᱫᱚ
+server	ᱥᱮᱨᱵᱷᱟᱨ
+client	ᱠᱞᱟᱭᱮᱱᱴ
+language_currency	ᱯᱟᱹᱨᱥᱤ ᱟᱨ ᱯᱩᱭᱥᱟᱹ
+language	ᱯᱟᱹᱨᱥᱤ
+choose_language	ᱟᱢᱟᱜ ᱯᱟᱹᱨᱥᱤ ᱵᱟᱪᱷᱟᱣ ᱢᱮ
+language_setup_hint	ᱱᱚᱣᱟ ᱥᱟᱫᱷᱚᱱ ᱨᱮᱭᱟᱜ ᱯᱟᱹᱨᱥᱤ ᱯᱟᱱᱛᱮ ᱢᱮ, ᱟᱨᱵᱟᱝ ᱟᱢ ᱟᱢᱛᱮ ᱢᱤᱫᱴᱟᱹᱝ ᱵᱟᱪᱷᱟᱣ ᱢᱮ᱾
+lang_follow_platform	ᱰᱤᱵᱷᱟᱭᱤᱥ ᱯᱟᱹᱨᱥᱤ
+lang_pick_user	ᱯᱟᱹᱨᱥᱤ ᱵᱟᱪᱷᱟᱣ ᱢᱮ
+lang_platform_now	ᱰᱤᱵᱷᱟᱭᱤᱥ ᱯᱟᱹᱨᱥᱤ ᱱᱤᱛᱚᱜ
+selected_language	ᱵᱟᱪᱷᱟᱣ ᱟᱠᱟᱱᱟ
+continue	ᱞᱟᱦᱟᱜ ᱢᱮ
+this_device	ᱱᱚᱶᱟ ᱥᱟᱫᱷᱚᱱ
+device_use_q	ᱱᱚᱣᱟ ᱥᱟᱫᱷᱚᱱ ᱪᱮᱫ ᱞᱮᱠᱟ ᱵᱮᱵᱷᱟᱨᱚᱜᱼᱟ?
+last_server_mode	ᱥᱮᱨᱵᱷᱟᱨ ᱛᱟᱦᱮᱸ ᱠᱟᱱᱟ — ᱞᱟᱦᱟᱜ ᱞᱟᱹᱜᱤᱫ ᱴᱮᱯ ᱢᱮ
+last_client_mode	ᱪᱮᱫ ᱠᱞᱟᱭᱮᱱᱴ ᱛᱟᱦᱮᱸ ᱠᱟᱱᱟᱭ — ᱞᱟᱦᱟᱜ ᱞᱟᱹᱜᱤᱫ ᱴᱮᱯ ᱢᱮ
+choose_server	ᱢᱤᱫ ᱥᱮᱨᱵᱷᱟᱨ ᱵᱟᱪᱷᱟᱣ ᱢᱮ
+choose_server_hint	ᱢᱮᱱᱟᱜ ᱥᱮᱨᱵᱷᱟᱨ ᱡᱷᱤᱡᱽ ᱢᱮ, ᱟᱨᱵᱟᱝ ᱮᱴᱟᱜ ᱵᱮᱯᱟᱨ ᱞᱟᱹᱜᱤᱫ ᱢᱤᱫ ᱵᱮᱱᱟᱣ ᱢᱮ ᱾
+create_new_server	ᱱᱟᱶᱟ ᱥᱮᱨᱵᱷᱟᱨ ᱵᱮᱱᱟᱣ ᱢᱮ
+open_server	ᱡᱷᱤᱡᱽ ᱢᱮ
+new_server_name_ph	ᱱᱟᱶᱟ ᱥᱮᱨᱵᱷᱟᱨ ᱧᱩᱛᱩᱢ (ᱚᱯᱥᱚᱱᱟᱞ)
+server_remove_pin_ph	ᱥᱮᱨᱵᱷᱟᱨ ᱚᱪᱚᱜ ᱞᱟᱹᱜᱤᱫ ᱢᱟᱞᱤᱠ ᱯᱤᱱ
+only_owner_remove_server	ᱥᱩᱢᱩᱝ ᱢᱟᱞᱤᱠ ᱜᱮ ᱥᱮᱨᱵᱷᱟᱨ ᱚᱪᱚᱜ ᱫᱟᱲᱮᱭᱟᱜᱼᱟᱭ
+owner_pin_remove_server	ᱱᱚᱣᱟ ᱥᱮᱨᱵᱷᱟᱨ ᱚᱪᱚᱜ ᱞᱟᱹᱜᱤᱫ ᱢᱟᱞᱤᱠ ᱯᱤᱱ ᱞᱟᱹᱠᱛᱤᱜ ᱠᱟᱱᱟ
+device_setup_help	ᱥᱮᱨᱵᱷᱟᱨ ᱯᱚᱛᱚᱵ ᱠᱚ ᱱᱚᱸᱰᱮ ᱫᱚᱦᱚ ᱟᱠᱟᱫᱟᱭ ᱾ ᱠᱞᱟᱭᱮᱱᱴ ᱫᱚ ᱥᱮᱨᱵᱷᱟᱨ ᱥᱟᱶ ᱡᱚᱲ ᱮᱫᱟᱭ ᱾
+currency	ᱠᱟᱨᱟᱱᱥᱤ
+backup	ᱵᱮᱠᱚᱯ
+settings_sec_diag	ᱰᱟᱭᱜᱽᱱᱚᱥᱴᱤᱠᱥ
+settings_hub_help	ᱢᱤᱫ ᱚᱠᱛᱚ ᱨᱮ ᱢᱤᱫ ᱴᱚᱴᱷᱟ ᱡᱷᱤᱡᱽ ᱢᱮ — ᱠᱚᱢ ᱥᱠᱨᱚᱞᱤᱝ, ᱯᱩᱥᱴᱟᱹᱣ ᱵᱤᱠᱚᱞᱯᱚ ᱾
+settings_sec_devices	ᱮᱴᱟᱜ ᱥᱟᱫᱷᱚᱱ ᱠᱚ
+settings_sec_alerts	ᱮᱞᱟᱨᱴᱥ
+alerts_help	ᱟᱢ ᱞᱟᱹᱜᱤᱫ ᱥᱠᱨᱤᱱ ᱨᱮ ᱛᱤᱱᱟᱹᱜ ᱜᱷᱟᱹᱲᱤᱡ ᱥᱴᱮᱴᱟᱥ ᱥᱟᱱᱫᱮᱥ ᱛᱟᱦᱮᱱᱟ (ᱱᱚᱣᱟ ᱞᱚᱜᱤᱱ)᱾
+snack_secs_ph	ᱥᱮᱠᱮᱱᱰ (3–60, ᱰᱤᱯᱷᱚᱞᱴ 10)
+snack_secs_save	ᱮᱞᱟᱨᱴ ᱚᱠᱛᱚ ᱵᱟᱧᱪᱟᱣ ᱢᱮ
+snack_secs_saved	ᱮᱞᱟᱨᱴ ᱚᱠᱛᱚ ᱵᱟᱧᱪᱟᱣ ᱮᱱᱟ — {n} ᱥᱮᱠᱮᱱᱰ
+snack_secs_bad	ᱥᱮᱠᱮᱱᱰ ᱠᱚ ᱢᱤᱫ ᱮᱞ ᱞᱮᱠᱟᱛᱮ ᱮᱢ ᱢᱮ (᱓-᱖᱐)
+cancelled	ᱵᱟᱝ ᱦᱩᱭ ᱟᱠᱟᱱᱟ
+cancel	ᱵᱚᱱᱫᱚ
+opening_client	ᱠᱞᱟᱭᱮᱱᱴ ᱡᱷᱤᱡᱽ...
+preparing_desk	ᱰᱮᱥᱠ ᱥᱟᱯᱲᱟᱣ...
+opening_server	ᱥᱮᱨᱵᱷᱟᱨ ᱡᱷᱤᱡᱽ...
+creating_server	ᱥᱮᱨᱵᱷᱟᱨ ᱵᱮᱱᱟᱣ...
+diag_privacy_help	ᱞᱚᱜᱽ ᱠᱚ ᱱᱚᱣᱟ ᱰᱤᱵᱷᱟᱭᱤᱥ ᱨᱮ ᱛᱟᱦᱮᱱᱟ ᱾ ᱩᱠᱩ ᱠᱟᱛᱷᱟ (ᱯᱤᱱ, ᱯᱟᱥᱣᱟᱨᱰ) ᱛᱤᱥ ᱦᱚᱸ ᱵᱟᱝ ᱡᱟᱣᱨᱟ ᱛᱟᱦᱮᱱᱟ ᱾ ᱰᱤᱵᱷᱟᱭᱤᱥ ᱠᱷᱚᱱ ᱢᱤᱫ ᱯᱮᱠᱮᱡᱽ ᱦᱟᱹᱴᱤᱧ ᱞᱟᱹᱜᱤᱫ ᱥᱟᱱᱟᱢ ᱚᱠᱛᱚ ᱟᱢᱟᱜ ᱯᱩᱥᱴᱟᱹᱣ ᱥᱚᱫᱚᱨ ᱞᱟᱹᱠᱛᱤᱜ ᱠᱟᱱᱟ — ᱛᱤᱥ ᱦᱚᱸ ᱛᱮᱥᱟᱨ ᱯᱟᱨᱴᱤ ᱵᱟᱝ ᱟᱠᱨᱤᱧ ᱟᱨ ᱵᱟᱝ ᱮᱢ ᱦᱩᱭᱩᱜ-ᱟ᱾
+diag_level	ᱵᱤᱵᱨᱚᱬ ᱞᱮᱵᱮᱞ
+diag_level_error	ᱦᱤᱲᱤᱡ ᱠᱚ
+diag_level_warn	ᱪᱮᱦᱟᱣᱱᱟ
+diag_level_info	ᱵᱟᱰᱟᱭ
+diag_level_debug	ᱰᱤᱵᱟᱜᱽ
+diag_support_start	30 ᱴᱤᱯᱤᱡ ᱜᱚᱲᱚ ᱥᱮᱥᱚᱱ ᱮᱦᱚᱵᱽ ᱢᱮ
+diag_support_stop	ᱜᱚᱲᱚ ᱥᱮᱥᱚᱱ ᱢᱩᱪᱟᱹᱫ ᱢᱮ
+diag_support_started	ᱥᱮᱥᱚᱱ ᱨᱮ ᱜᱚᱲᱚ ᱮᱢᱚᱜ ᱢᱮ — 30 ᱴᱤᱯᱤᱡ ᱞᱟᱹᱜᱤᱫ ᱰᱤᱵᱟᱜᱽ ᱵᱤᱵᱨᱚᱬ
+diag_support_ended	ᱜᱚᱲᱚ ᱫᱷᱚᱱ ᱢᱩᱪᱟᱹᱫ ᱮᱱᱟ
+diag_export_local	ᱞᱚᱠᱟᱞ ᱠᱚᱯᱤ ᱮᱠᱥᱯᱚᱨᱴ ᱢᱮ
+diag_export_local_done	ᱞᱚᱠᱟᱞ ᱰᱟᱭᱜᱽᱱᱚᱥᱴᱤᱠ ᱥᱟᱯᱲᱟᱣ ᱜᱮᱭᱟ {path} ᱨᱮ — ᱵᱟᱪᱷᱟᱣ ᱢᱮ ᱚᱠᱟᱨᱮ ᱢᱤᱫ ᱱᱚᱠᱚᱞ ᱥᱟᱧᱪᱟᱣ ᱦᱩᱭᱩᱜᱼᱟ
+diag_approve_send	ᱱᱚᱣᱟ ᱰᱤᱵᱷᱟᱭᱤᱥ ᱚᱯᱷ ᱥᱮᱭᱟᱨ ᱞᱟᱹᱜᱤᱫ ᱟᱝᱜᱚᱪ ᱢᱮ
+diag_send_heading	ᱱᱚᱣᱟ ᱥᱟᱫᱷᱚᱱ ᱦᱟᱹᱴᱤᱧ ᱢᱮ
+diag_send_help	ᱥᱚᱡᱷᱮ ᱫᱚ ᱢᱤᱫ ᱯᱮᱠᱮᱡᱽ ᱠᱟᱱᱟ, ᱚᱱᱟ ᱛᱟᱭᱚᱢ ᱢᱩᱪᱟᱹᱫᱚᱜᱼᱟ ᱾ ᱚᱠᱛᱚ ᱞᱟᱹᱜᱤᱫ — ᱥᱩᱢᱩᱝ ᱯᱨᱚᱰᱟᱠᱴ ᱴᱷᱤᱠ ᱥᱮ ᱥᱩᱫᱷᱨᱟᱹᱣ ᱞᱟᱹᱜᱤᱫ ᱵᱮᱵᱷᱟᱨᱚᱜ ᱠᱟᱱᱟ ᱾ ᱛᱮᱥᱟᱨ ᱯᱟᱨᱴᱤ ᱠᱚ ᱥᱟᱶ ᱵᱟᱝ ᱦᱟᱹᱴᱤᱧ ᱟᱠᱟᱱᱟ ᱾ ᱞᱤᱱᱚᱠᱥ, ᱣᱤᱱᱰᱚᱡᱽ, ᱢᱮᱠᱚᱥ, ᱟᱨ ᱮᱱᱰᱨᱳᱭᱮᱰ ᱨᱮ ᱠᱟᱹᱢᱤ ᱮᱫᱟᱭ ᱾
+optional_login_heading	ᱚᱯᱥᱚᱱᱟᱞ ᱞᱚᱜᱤᱱ
+rights_heading	ᱟᱹᱭᱫᱟᱹᱨᱤ
+booking_scope_heading	ᱚᱲᱟᱜ ᱨᱮᱱᱟᱜ/ᱤᱱᱴᱟᱨᱱᱮᱥᱚᱱᱟᱞ
+diag_send_approved	ᱢᱤᱫ ᱯᱮᱠᱮᱡᱽ ᱞᱟᱹᱜᱤᱫ ᱦᱟᱹᱴᱤᱧ ᱥᱟᱠᱟᱢ ᱦᱩᱭᱮᱱᱟ (ᱞᱚᱜᱚᱱ ᱜᱮ ᱢᱩᱪᱟᱹᱫᱚᱜᱼᱟ)
+diag_export_send	ᱦᱟᱹᱴᱤᱧ ᱯᱮᱠᱮᱡᱽ ᱵᱮᱱᱟᱣ ᱢᱮ (ᱥᱚᱡᱷᱮ ᱞᱟᱹᱠᱛᱤᱜ ᱠᱟᱱᱟ)
+diag_export_send_done	ᱥᱮᱭᱟᱨ ᱯᱮᱠᱮᱡᱽ ᱥᱟᱯᱲᱟᱣ ᱢᱮᱱᱟᱜᱼᱟ {path} ᱨᱮ — ᱵᱟᱪᱷᱟᱣ ᱢᱮ ᱚᱠᱟᱨᱮ ᱵᱟᱧᱪᱟᱣ ᱦᱩᱭᱩᱜᱼᱟ, ᱚᱱᱟ ᱛᱟᱭᱚᱢ ᱥᱩᱢᱩᱝ ᱠᱩᱢᱠᱟᱡᱽ ᱥᱟᱯᱚᱨᱴ ᱴᱷᱮᱱ ᱵᱷᱮᱡᱟᱭ ᱢᱮ
+diag_save_bundle	ᱰᱟᱭᱜᱽᱱᱚᱥᱴᱤᱠ ᱱᱚᱠᱚᱞ ᱥᱟᱧᱪᱟᱣ ᱢᱮ
+diag_bundle_saved	ᱰᱟᱭᱜᱽᱱᱚᱥᱴᱤᱠ ᱱᱚᱠᱚᱞ {path} ᱨᱮ ᱥᱟᱧᱪᱟᱣ ᱟᱠᱟᱱᱟ
+diag_bundle_failed	ᱰᱟᱭᱜᱽᱱᱚᱥᱴᱤᱠ ᱱᱚᱠᱚᱞ ᱵᱟᱝ ᱥᱟᱧᱪᱟᱣ ᱫᱟᱲᱮᱭᱟᱜᱼᱟ — ᱫᱚᱦᱲᱟ ᱠᱩᱨᱩᱢᱩᱴᱩᱭ ᱢᱮ
+diag_clear	ᱰᱟᱭᱜᱽᱱᱚᱥᱴᱤᱠ ᱞᱚᱜᱽ ᱥᱟᱯᱷᱟᱭ ᱢᱮ
+diag_cleared	ᱰᱟᱭᱜᱽᱱᱚᱥᱴᱤᱠ ᱞᱚᱜᱽ ᱥᱟᱯᱷᱟ ᱮᱱᱟ
+use	ᱵᱮᱵᱷᱟᱨ ᱢᱮ
+add_branch	ᱰᱟᱹᱨᱠᱚ ᱥᱮᱞᱮᱫ ᱢᱮ
+add_conversion	ᱨᱚᱲ ᱵᱚᱫᱚᱞ ᱥᱮᱞᱮᱫ ᱢᱮ
+add_item_plain	ᱡᱤᱱᱤᱥ ᱥᱮᱞᱮᱫ ᱢᱮ
+add_note	ᱱᱚᱴ ᱥᱮᱞᱮᱫ ᱢᱮ
+add_opening_balance	ᱚᱯᱷᱚᱱᱤᱝ ᱵᱮᱞᱮᱱᱥ ᱥᱮᱞᱮᱫ ᱢᱮ
+add_rider	ᱨᱟᱭᱰᱟᱨ ᱥᱮᱞᱮᱫ ᱢᱮ
+add_staff	ᱠᱟᱹᱢᱤᱭᱟᱹ ᱥᱮᱞᱮᱫ ᱢᱮ
+add_unit	ᱭᱩᱱᱤᱴ ᱥᱮᱞᱮᱫ ᱢᱮ
+add_use_name	ᱱᱚᱣᱟ ᱧᱩᱛᱩᱢ ᱥᱮᱞᱮᱫ/ᱵᱮᱵᱷᱟᱨ ᱢᱮ
+allow_extra_tills	ᱵᱟᱹᱲᱛᱤ ᱴᱤᱞ ᱨᱮᱭᱟᱜ ᱪᱷᱟᱹᱲ ᱮᱢᱚᱜ ᱢᱮ
+amend	ᱥᱚᱫᱚᱨ ᱢᱮ
+apply_country_pack	ᱫᱤᱥᱚᱢ ᱯᱮᱠ ᱞᱟᱜᱟᱣ ᱢᱮ
+datetime_appearance	ᱢᱟᱦᱟᱸ ᱟᱨ ᱚᱠᱛᱚ ᱧᱮᱞᱚᱜ
+datetime_appearance_help	ᱯᱚᱛᱚᱵ ᱠᱚ ᱫᱚ ᱥᱮᱨᱢᱟ ᱯᱩᱭᱞᱩ RFC3339 ᱵᱷᱤᱛᱟ.ᱨ ᱨᱮ ᱫᱚᱦᱚᱭᱟ ᱾ ᱱᱚᱶᱟ ᱠᱚ ᱫᱚ ᱮᱠᱮᱱ ᱵᱚᱫᱚᱞᱚᱜ ᱠᱟᱱᱟ ᱪᱮᱫ ᱞᱮᱠᱟ ᱢᱟᱹᱦᱤᱛ ᱟᱨ ᱜᱷᱚᱰᱤ ᱨᱟᱹᱥᱤᱫ, ᱞᱮᱵᱮᱞ, ᱨᱤᱯᱳᱨᱴ ᱟᱨ ᱥᱠᱨᱤᱱ ᱨᱮ ᱧᱮᱞᱚᱜᱼᱟ᱾
+datetime_example	ᱫᱟᱹᱭᱠᱟᱹ ᱱᱤᱛᱚᱜ: {ex}
+date_order	ᱢᱟᱹᱦᱤᱛ ᱚᱰᱟᱨ
+date_order_dmy	D/M/Y
+date_order_mdy	M/D/Y
+date_order_ymd	Y-M-D
+time_format	ᱜᱷᱚᱰᱤ
+time_format_24h	24-ᱴᱟᱲᱟᱝ
+time_format_12h	12-ᱴᱟᱲᱟᱝ
+attach_bill_photo	ᱵᱤᱞ ᱪᱤᱛᱟᱹᱨ ᱞᱟᱴᱷᱟ ᱢᱮ
+attach_pdf	ᱯᱤ ᱰᱤ ᱮᱯ ᱞᱟᱴᱷᱟ ᱢᱮ
+attach_photo	ᱪᱤᱛᱟᱹᱨ ᱞᱟᱴᱷᱟ ᱢᱮ
+bank	ᱵᱮᱝᱠ
+bank_in	ᱵᱮᱝᱠ ᱨᱮ
+bank_out	ᱵᱮᱝᱠ ᱟᱩᱴ
+bank_to_till	ᱵᱮᱝᱠ → ᱦᱟᱹᱵᱤᱡ
+till_to_bank	ᱵᱮᱝᱠ ᱦᱟᱹᱵᱤᱡ
+mark_cleared	ᱪᱤᱱᱦᱟᱹ ᱯᱷᱟᱨᱪᱟ ᱮᱱᱟ
+unmark	ᱪᱤᱱᱦᱟᱹ ᱵᱟᱝ ᱢᱮ
+role_both	ᱵᱟᱱᱟᱦᱚᱲ
+role_carrier	ᱵᱟᱦᱚᱠ
+role_cashier	ᱠᱮᱥᱤᱭᱟᱨ
+role_consignor	ᱠᱚᱱᱥᱟᱭᱤᱱᱚᱨ
+role_manager	ᱢᱮᱱᱮᱡᱟᱨ
+role_supplier	ᱥᱟᱯᱞᱟᱭᱚᱨ
+branch_name_sell_ph	ᱟᱠᱨᱤᱧ ᱞᱟᱹᱜᱤᱫ ᱥᱟᱠᱟᱢ ᱧᱩᱛᱩᱢ
+bring_my_book	ᱤᱧᱟᱜ ᱯᱚᱛᱚᱵ ᱟᱹᱜᱩᱭ ᱢᱮ
+business_tax_id_ph	ᱵᱮᱯᱟᱨ ᱴᱮᱠᱥ ᱟᱭᱤ ᱰᱤ
+card_amount_ph	ᱠᱟᱨᱰ ᱨᱮᱭᱟᱜ ᱴᱟᱠᱟ
+cash_amount_ph	ᱴᱟᱠᱟ ᱴᱟᱠᱟ
+upi_amount_ph	ᱭᱩᱯᱤᱟᱭ ᱴᱟᱠᱟ
+carrier_cost_ph	ᱵᱟᱦᱚᱠ ᱜᱚᱱᱚᱝ
+carrier_party_ph	ᱠᱮᱨᱤᱭᱟᱨ ᱯᱟᱨᱴᱤ
+choose_icon	ᱟᱭᱠᱚᱱ ᱵᱟᱪᱷᱟᱣ ᱢᱮ
+choose_logo	ᱞᱚᱜᱚ ᱵᱟᱪᱷᱟᱣ ᱢᱮ
+choose_receipt_stamp	ᱨᱟᱹᱥᱤᱫ ᱥᱴᱟᱢᱯ ᱵᱟᱪᱷᱟᱣ ᱢᱮ
+choose_payment_qr	ᱯᱮᱢᱮᱱᱴ QR ᱵᱟᱪᱷᱟᱣ ᱢᱮ
+clear_icon	ᱥᱟᱯᱷᱟ ᱟᱭᱠᱚᱱ
+clear_logo	ᱥᱟᱯᱷᱟ ᱞᱚᱜᱚ
+clear_photo	ᱥᱟᱯᱷᱟ ᱪᱤᱛᱟᱹᱨ
+clear_stamp	ᱥᱟᱯᱷᱟ ᱥᱴᱟᱢᱯ
+clear_payment_qr	ᱯᱮᱢᱮᱱᱴ QR ᱯᱷᱟᱨᱪᱟ ᱢᱮ
+print_faces	ᱪᱷᱟᱯᱟ ᱢᱮ ᱪᱮᱦᱨᱟ (ᱨᱟᱹᱥᱤᱫ/ᱚᱠᱛᱚ ᱵᱤᱞ)
+print_faces_help	ᱨᱟᱹᱥᱤᱫ ᱵᱩᱠᱤᱝ ᱟᱨ ᱚᱠᱛᱚ ᱵᱤᱞ ᱨᱮ ᱟᱢᱟᱜ ᱞᱚᱜᱚ ᱥᱟᱶᱛᱮ ᱚᱯᱥᱚᱱᱟᱞ ᱥᱴᱟᱢᱯ ᱟᱨ ᱯᱮᱢᱮᱱᱴ ᱠᱭᱩᱟᱨ᱾
+awb_pools_heading	ᱠᱮᱨᱤᱭᱟᱨ AWB ᱱᱟᱢᱵᱟᱨ ᱯᱩᱞ
+add_awb_pool	AWB ᱯᱩᱞ ᱥᱮᱞᱮᱫ ᱢᱮ
+awb_pool_carrier_ph	ᱠᱮᱨᱤᱭᱟᱨ ᱯᱟᱨᱴᱤ ᱧᱩᱛᱩᱢ
+awb_pool_start_ph	ᱮᱛᱚᱦᱚᱵ ᱮᱞ᱾
+awb_pool_end_ph	ᱢᱩᱪᱟᱹᱫ ᱵᱟᱝ᱾
+awb_pool_prefix_ph	ᱯᱨᱤᱯᱷᱤᱠᱥ (ᱚᱯᱥᱚᱱᱟᱞ)
+awb_pool_label_ph	ᱞᱮᱵᱮᱞ (ᱚᱯᱥᱚᱱᱟᱞ)
+pieces_ph	ᱴᱩᱠᱨᱟᱹ (ᱠᱷᱟᱹᱞᱤ = ᱑) — ᱠᱟᱨᱜᱳ/ᱢᱟᱞᱴᱤ-ᱴᱩᱠᱨᱟᱹ ᱞᱟᱹᱜᱤᱫ ᱯᱟᱥᱱᱟᱣ ᱢᱮ
+bulk_awbs_ph	ᱵᱟᱹᱲᱛᱤ AWBs — ᱢᱤᱫ ᱥᱴᱮᱴᱟᱥ ᱮᱰᱵᱷᱟᱱᱥ ᱞᱟᱹᱜᱤᱫ ᱟᱭᱢᱟ (ᱱᱟᱶᱟ ᱞᱟᱭᱤᱱ ᱵᱟᱝᱠᱷᱟᱱ ᱠᱚᱢᱟ) ᱯᱮᱥᱴ ᱢᱮ
+tds_cut_ph	ᱴᱤᱰᱤᱮᱥ ᱠᱟᱴ (ᱚᱯᱥᱚᱱᱟᱞ)
+discount_ph	ᱪᱷᱩᱴ (ᱚᱯᱥᱚᱱᱟᱞ)
+cheque_no_ph	ᱮᱞ ᱧᱮᱞ ᱢᱮ (ᱚᱯᱥᱚᱱᱟᱞ)
+bill_reminder_chase	ᱵᱤᱞ ᱫᱤᱱᱟᱹᱥ ᱪᱮᱥ ᱛᱟᱞᱠᱟ
+month_mix_report	ᱪᱟᱸᱫᱚ ᱢᱮᱥᱟ ᱨᱤᱯᱳᱨᱴ
+copy_month_gst_csv	ᱪᱟᱸᱫᱚ ᱡᱤ ᱮᱥ ᱴᱤ ᱥᱤ ᱮᱥ ᱵᱤ ᱱᱚᱠᱚᱞ ᱢᱮ
+domestic	ᱚᱲᱟᱜ ᱨᱮᱱ
+international	ᱡᱮᱡᱟᱹᱛᱤᱭᱟᱹᱨᱤ
+pick_logo	ᱞᱚᱜᱚ ᱵᱟᱪᱷᱟᱣ ᱢᱮ
+booking_scope_hint_domestic	ᱵᱷᱚᱞᱭᱩᱢᱮᱴᱨᱤᱠ ᱕᱐᱐᱐ (ᱚᱲᱟᱜ ᱨᱮᱱᱟᱜ) — ᱖᱐᱐᱐ ᱦᱚᱭ ᱞᱟᱹᱜᱤᱫ ᱤᱱᱴᱟᱨᱱᱮᱥᱚᱱᱟᱞ ᱴᱮᱯ ᱢᱮ
+booking_scope_hint_intl	ᱵᱷᱚᱞᱭᱩᱢᱮᱴᱨᱤᱠ ÷᱖᱐᱐᱐ (ᱚᱱᱛᱚᱨᱟᱥᱴᱨᱚ ᱦᱟᱣᱟ) — ᱫᱚᱠᱟᱱ ᱞᱟᱹᱜᱤᱫ ᱚᱲᱟᱜ ᱨᱮᱱᱟᱜ ᱴᱮᱯ ÷᱕᱐᱐᱐
+cod_register	ᱥᱤ ᱚ ᱰᱤ ᱨᱟᱡᱤᱥᱴᱟᱨ
+collect_cod	COD (AWB) ᱢᱤᱫᱴᱟᱹᱝ ᱢᱮ
+consignments_dispatch	ᱠᱚᱱᱥᱟᱭᱤᱱᱢᱮᱱᱴ ᱟᱨ ᱰᱤᱥᱯᱮᱪ
+consignor_party_ph	ᱠᱚᱱᱥᱟᱭᱤᱱᱚᱨ/ᱯᱟᱨᱴᱤ ᱧᱩᱛᱩᱢ
+copy_day_book_csv	ᱫᱤᱱᱟᱹᱢ ᱯᱚᱛᱚᱵ CSV ᱨᱮᱭᱟᱜ ᱱᱚᱠᱚᱞ
+copy_day_close	ᱱᱚᱠᱚᱞ ᱫᱤᱱ ᱵᱚᱱᱫᱚ
+copy_items_csv	ᱡᱤᱱᱤᱥ ᱠᱚ CSV ᱱᱚᱠᱚᱞ ᱢᱮ
+copy_outstanding_csv	ᱵᱟᱹᱠᱤ CSV ᱨᱮᱭᱟᱜ ᱱᱚᱠᱚᱞ ᱢᱮ
+copy_parties_csv	ᱯᱟᱨᱴᱤ ᱠᱚ ᱥᱤ ᱮᱥ ᱵᱤ ᱨᱮᱭᱟᱜ ᱱᱚᱠᱚᱞ
+copy_party_ledger_csv	ᱯᱟᱨᱴᱤ ᱞᱮᱡᱟᱨ ᱥᱤ ᱮᱥ ᱵᱤ ᱨᱮᱭᱟᱜ ᱱᱚᱠᱚᱞ ᱢᱮ
+copy_receipt	ᱨᱟᱹᱥᱤᱫ ᱨᱮᱭᱟᱜ ᱱᱚᱠᱚᱞ
+copy_report	ᱨᱤᱯᱳᱨᱴ ᱱᱚᱠᱚᱞ ᱢᱮ
+counted_cash_ph	ᱰᱨᱚᱭᱟᱨ ᱨᱮ ᱴᱟᱠᱟ ᱞᱮᱠᱷᱟ
+counter_agency_ph	ᱠᱟᱣᱩᱱᱴᱟᱨ/ᱮᱡᱮᱱᱥᱤ ᱧᱩᱛᱩᱢ (ᱚᱯᱥᱚᱱᱟᱞ)
+create_backup	ᱵᱮᱠᱟᱯ ᱵᱮᱱᱟᱣ ᱢᱮ
+day_close_summary	ᱢᱟᱦᱟᱸ ᱢᱩᱪᱟᱹᱫ ᱥᱟᱨᱠᱟᱛᱷᱟ
+delete_party	ᱵᱟᱪᱷᱟᱣ ᱟᱠᱟᱱ ᱯᱟᱨᱴᱤ ᱰᱤᱞᱤᱴ ᱢᱮ
+dispatch_to_rider	ᱰᱤᱥᱯᱮᱪ ᱵᱩᱠ ᱦᱩᱭ ᱮᱱᱟ → ᱨᱟᱭᱰᱟᱨ
+docket_charge_ph	ᱰᱚᱠᱮᱴ ᱪᱟᱨᱡᱽ
+declared_value_ph	ᱜᱚᱴᱟ ᱟᱠᱟᱱ ᱜᱚᱱᱚᱝ
+contents_ph	ᱡᱤᱱᱤᱥ ᱠᱚ
+eway_ph	ᱤ-ᱣᱮ ᱵᱤᱞ ᱮᱞ᱾
+insurance_label	ᱤᱱᱥᱚᱨᱮᱱᱥ
+yes_label	ᱦᱤ ᱦᱮᱸ
+no_label	ᱵᱟᱝ
+print_route_label	ᱪᱷᱟᱯᱟ ᱦᱚᱨ
+new_party_kind_label	ᱱᱟᱶᱟ ᱯᱟᱨᱴᱤ ᱞᱮᱠᱟᱱ
+done_open_books	ᱥᱟᱹᱛ ᱮᱱᱟ — ᱯᱚᱛᱚᱵ ᱠᱚ ᱡᱷᱤᱡᱽ ᱢᱮ
+export_day	ᱮᱠᱥᱯᱚᱨᱴ ᱢᱟᱦᱟᱸ
+extra_note_expense_ph	ᱢᱩᱪᱟᱹᱫ ᱠᱷᱚᱨᱪᱟ ᱨᱮ ᱵᱟᱹᱲᱛᱤ ᱱᱚᱴ
+extra_note_awb_ph	ᱱᱚᱶᱟ AWB/ᱟᱹᱠᱷᱨᱤᱧ ᱨᱮ ᱵᱟᱹᱲᱛᱤ ᱱᱚᱴ
+failed_delivery	ᱵᱟᱝ ᱥᱟᱹᱜᱩᱱ ᱰᱮᱞᱤᱵᱷᱟᱨᱤ
+find_scan_awb	AWB ᱯᱟᱱᱛᱮ/ᱥᱠᱮᱱ ᱢᱮ
+forget_shop	ᱱᱚᱣᱟ ᱫᱚᱠᱟᱱ ᱦᱤᱲᱤᱧ ᱠᱟᱜ ᱢᱮ
+fuel_ph	ᱥᱮᱜᱮᱞᱹᱟᱹ
+handover_carrier	ᱛᱤ ᱛᱮ ᱵᱩᱠ ᱟᱠᱟᱱᱟ → ᱠᱮᱨᱤᱭᱟᱨ
+import_day	ᱟᱹᱜᱩ ᱢᱟᱦᱟᱸ
+import_items_csv	ᱡᱤᱱᱤᱥ ᱟᱹᱜᱩ/ᱫᱚᱨ CSV...
+import_parties_csv	ᱯᱟᱨᱴᱤ ᱠᱚ ᱥᱤ ᱮᱥ ᱵᱤ ᱟᱹᱜᱩ...
+import_pincodes_csv	ᱯᱤᱱᱠᱳᱰ ᱥᱤ ᱮᱥ ᱵᱤ ᱟᱹᱜᱩ...
+import_carrier_bill_csv	ᱤᱢᱯᱚᱨᱴ ᱠᱮᱨᱤᱭᱟᱨ ᱵᱤᱞ ᱥᱤ ᱮᱥ ᱵᱤ...
+copy_carrier_bill_report	ᱢᱩᱪᱟᱹᱫ ᱠᱮᱨᱤᱭᱟᱨ ᱵᱤᱞ ᱨᱤᱯᱚᱨᱴ ᱨᱮᱭᱟᱜ ᱱᱚᱠᱚᱞ ᱢᱮ
+use_carrier_cost	ᱵᱟᱦᱚᱠ ᱜᱚᱱᱚᱝ ᱵᱮᱵᱷᱟᱨ ᱢᱮ
+rate_carrier_ph	ᱵᱟᱦᱚᱠ (ᱠᱷᱟᱹᱞᱤ = ᱟᱞᱮᱭᱟᱜ ᱟᱠᱨᱤᱧ ᱫᱚᱨ)
+rate_party_ph	ᱯᱟᱨᱴᱤ (ᱠᱷᱟᱹᱞᱤ = ᱥᱟᱱᱟᱢ ᱜᱚᱨᱦᱟᱠ)
+carrier_pick_ph	ᱜᱚᱱᱚᱝ ᱞᱟᱹᱜᱤᱫ ᱵᱟᱦᱚᱠ (ᱛᱩᱞᱟᱹ ᱡᱚᱠᱷᱟ ᱠᱷᱚᱱ)
+item_name	ᱡᱤᱱᱤᱥ ᱧᱩᱛᱩᱢ
+load_bulk_row	ᱵᱟᱹᱲᱛᱤ ᱛᱷᱟᱨ ᱞᱳᱰ ᱢᱮ → ᱰᱮᱥᱠ
+login_id_ph	ᱵᱮᱵᱷᱟᱨᱤᱭᱟᱹ ᱧᱩᱛᱩᱢ
+mark_delivered	ᱪᱤᱱᱦᱟᱹ ᱰᱮᱞᱤᱵᱷᱟᱨ ᱦᱩᱭ ᱮᱱᱟ
+manifest_cod_total	COD ᱢᱩᱴ
+manifest_received_by	ᱦᱚᱛᱮᱛᱮ ᱧᱟᱢ ᱟᱠᱟᱱᱟ
+manifest_sign	ᱥᱩᱦᱤ
+ndr_address_wrong	ᱴᱷᱤᱠᱟᱹᱱᱟ ᱵᱷᱩᱞ
+ndr_customer_unavailable	ᱵᱟᱝ ᱧᱟᱢᱚᱜ ᱠᱟᱱᱟ
+ndr_door_locked	ᱫᱩᱣᱟᱹᱨ ᱠᱩᱞᱯᱷ ᱮᱱᱟ
+ndr_other	ᱮᱴᱟᱜ
+ndr_refused	ᱵᱟᱝᱟᱛᱟᱭ
+out_for_delivery	ᱰᱮᱞᱤᱵᱷᱟᱨᱤ ᱞᱟᱹᱜᱤᱫ ᱵᱟᱦᱨᱮ
+print_drs	ᱰᱤᱟᱨᱮᱥ ᱪᱷᱟᱯᱟ ᱢᱮ
+print_run_sheet	ᱯᱨᱤᱱᱴ ᱨᱟᱱ ᱥᱤᱴ
+reattempt	ᱫᱚᱦᱲᱟ ᱪᱮᱥᱴᱟ
+rider_cod_handed_ph	COD ᱮᱢ ᱦᱩᱭ ᱮᱱᱟ
+settle_rider_cod	ᱨᱟᱭᱰᱟᱨ ᱥᱤ ᱚ ᱰᱤ ᱥᱮᱴᱮᱞ
+mode_desk	ᱴᱮᱵᱤᱞ
+mode_rider	ᱨᱟᱭᱰᱟᱨ
+waiting_office	ᱚᱯᱷᱤᱥ ᱥᱮᱴᱮᱨᱚᱜ ᱞᱟᱹᱜᱤᱫ ᱛᱟᱺᱜᱤ ᱨᱮ ᱢᱮᱱᱟᱭᱟ
+capture_signature	ᱥᱩᱦᱤ ᱠᱮᱯᱪᱚᱨ
+incoming_manifest	ᱦᱤᱡᱩᱜ ᱠᱟᱱ ᱢᱮᱱᱤᱯᱷᱮᱥᱴ
+pickup_request	ᱦᱟᱛᱟᱣ ᱟᱨᱫᱟᱥ
+pickup_run	ᱯᱤᱠᱟᱯ ᱨᱟᱱ
+auto_assign_area	ᱟᱡ ᱛᱮ ᱮᱥᱟᱭᱤᱱ ᱴᱚᱴᱷᱟ
+reorder_stops	ᱫᱚᱦᱲᱟ ᱚᱨᱰᱟᱨ ᱛᱷᱤᱨ ᱮᱱᱟ
+settle_rider_pay	ᱥᱮᱴᱮᱞ ᱨᱟᱭᱰᱟᱨ ᱯᱮᱭ
+vehicle_inspect	ᱜᱟᱹᱰᱤ ᱧᱮᱞ ᱛᱚᱞᱟᱥ
+print_docket	ᱰᱚᱠᱮᱴ ᱪᱷᱟᱯᱟ ᱢᱮ
+franchise_statement	ᱯᱷᱨᱮᱱᱪᱟᱭᱤᱡᱽ ᱥᱴᱮᱴᱢᱮᱱᱴ
+tally_export	ᱴᱮᱞᱤ ᱵᱷᱟᱩᱪᱟᱨ ᱮᱠᱥᱯᱚᱨᱴ
+open_whatsapp	ᱦᱚᱴᱥᱟᱯ ᱡᱷᱤᱡᱽ ᱢᱮ
+copy_sms	ᱮᱥ ᱮᱢ ᱮᱥ ᱚᱞ ᱱᱚᱠᱚᱞ ᱢᱮ
+pick_barcode_image	ᱥᱠᱮᱱ ᱞᱟᱹᱜᱤᱫ ᱪᱤᱛᱟᱹᱨ ᱵᱟᱪᱷᱟᱣ ᱢᱮ
+share_receipt_whatsapp	ᱦᱚᱴᱥᱟᱯ ᱨᱮ ᱨᱟᱹᱥᱤᱫ ᱦᱟᱹᱴᱤᱧ ᱢᱮ
+delivery_feedback	ᱰᱮᱞᱤᱵᱷᱟᱨᱤ ᱢᱚᱱᱚᱛ
+lan_self_book	ᱞᱮᱱ ᱥᱮᱞᱯᱷ-ᱵᱩᱠᱤᱝ
+new_party_clear	ᱱᱟᱶᱟ ᱯᱟᱨᱴᱤ (ᱯᱩᱥᱴᱟᱹᱣ ᱯᱷᱚᱨᱢ)
+new_party_kind_ph	ᱱᱟᱶᱟ ᱯᱟᱨᱴᱤ ᱞᱮᱠᱟᱱ (ᱥᱟᱨᱵᱦᱟᱨᱤᱡ/ᱵᱟᱦᱚᱠ)
+next_country	ᱫᱚᱥᱟᱨ ᱫᱤᱥᱚᱢ
+prev_country	ᱞᱟᱦᱟ ᱫᱤᱥᱚᱢ
+note_gstin_ph	ᱱᱚᱴ/ᱡᱤᱮᱥᱴᱤᱟᱭᱤᱮᱱ/ᱥᱚᱦᱢᱚᱛ ᱫᱤᱱᱟᱹᱥ
+note_pod_ph	ᱱᱚᱴ/ᱯᱤ ᱚ ᱰᱤ (ᱚᱯᱥᱚᱱᱟᱞ)
+on_account_ap	ᱚᱱ ᱮᱠᱟᱣᱩᱱᱴ (ᱮᱯᱤ)
+org_optional_ph	ᱜᱟᱶᱛᱟ (ᱚᱯᱥᱚᱱᱟᱞ)
+paid_now	ᱱᱤᱛᱚᱜ ᱯᱩᱭᱥᱟᱹ ᱮᱢ ᱦᱩᱭ ᱟᱠᱟᱱᱟ
+pairing_code_ph	ᱡᱚᱲᱟᱣ ᱠᱚᱰ
+pair_now	ᱱᱤᱛᱚᱜ ᱡᱚᱲ ᱢᱮ
+party_name_selected_ph	ᱯᱟᱨᱴᱤ ᱧᱩᱛᱩᱢ (ᱵᱟᱝᱠᱷᱟᱱ ᱵᱟᱪᱷᱟᱣ ᱵᱮᱵᱷᱟᱨ)
+password_ph	ᱫᱟᱱᱟᱝ ᱥᱟᱵᱟᱫᱽ
+pay_ap_card	ᱮᱯᱤ ᱠᱟᱨᱰ ᱮᱢᱚᱜ ᱢᱮ
+pay_ap_cash	ᱮᱯᱤ ᱠᱮᱥ ᱮᱢᱚᱜ ᱢᱮ
+pay_ap_upi	ᱯᱩᱭᱥᱟᱹ ᱮᱯᱤ ᱭᱩᱯᱤᱟᱭᱤ
+period_bill	ᱚᱠᱛᱚ ᱵᱤᱞ
+period_bill_party	ᱚᱠᱛᱚ ᱵᱤᱞ (ᱯᱟᱨᱴᱤ)
+pick_pod_photo	ᱯᱤ ᱚ ᱰᱤ ᱪᱤᱛᱟᱹᱨ ᱵᱟᱪᱷᱟᱣ ᱢᱮ
+print_awb_label	AWB ᱞᱮᱵᱮᱞ ᱪᱷᱟᱯᱟ ᱢᱮ
+print_open	ᱪᱷᱟᱯᱟ/ ᱡᱷᱤᱡᱽ ᱢᱮ
+reason_amend_ph	ᱥᱚᱫᱚᱨ ᱨᱮᱭᱟᱜ ᱠᱟᱨᱚᱱ/ᱵᱟᱝ/ᱯᱩᱭᱥᱟᱹ ᱨᱩᱣᱟᱹᱲ
+reason_note_ph	ᱠᱟᱨᱚᱱ/ᱱᱚᱴ (ᱵᱟᱹᱲᱤᱡ, ᱞᱮᱠᱷᱟ,...)
+record_day_close	ᱢᱟᱦᱟ ᱵᱚᱸᱫᱚ ᱚᱞ ᱢᱮ
+refresh_from_shop	ᱫᱩᱠᱟᱹᱱ ᱠᱷᱚᱱ ᱛᱟᱹᱯᱤᱥ ᱢᱮ
+refund	ᱯᱩᱭᱥᱟᱹ ᱨᱩᱣᱟᱹᱲ
+remit_cod	ᱨᱤᱢᱤᱴ ᱥᱤ ᱚ ᱰᱤ (ᱯᱟᱨᱴᱤ)
+remove_selected	ᱵᱟᱪᱷᱟᱣ ᱟᱠᱟᱱ ᱚᱪᱚᱜᱽ ᱢᱮ
+restore_backup	ᱵᱮᱠᱟᱯ ᱫᱚᱦᱲᱟᱭ ᱢᱮ
+rider_name_ph	ᱨᱟᱭᱰᱟᱨ ᱧᱩᱛᱩᱢ
+rider_phone_ph	ᱨᱟᱭᱰᱟᱨ ᱯᱷᱚᱱ
+riders	ᱨᱟᱭᱰᱟᱨ ᱠᱚ
+riders_own_fleet	ᱨᱟᱭᱰᱟᱨᱥ (ᱱᱤᱡᱮᱨᱟᱜ ᱯᱷᱞᱤᱴ)
+rollup	ᱨᱚᱞ-ᱟᱯ
+save_booking_measures	ᱵᱩᱠᱤᱝ ᱡᱚᱠᱷᱟ ᱠᱚ ᱵᱟᱧᱪᱟᱣ ᱢᱮ
+save_brand	ᱵᱨᱟᱱᱰ ᱵᱟᱧᱪᱟᱣ ᱢᱮ
+save_business_id	ᱵᱮᱯᱟᱨ ᱟᱭᱤ ᱰᱤ ᱥᱟᱧᱪᱟᱣ ᱢᱮ
+save_business_name	ᱵᱮᱯᱟᱨ ᱧᱩᱛᱩᱢ ᱥᱟᱧᱪᱟᱣ ᱢᱮ
+save_features	ᱠᱟᱹᱢᱤ ᱥᱮᱴᱟᱯ ᱵᱟᱧᱪᱟᱣ ᱢᱮ
+save_names	ᱧᱩᱛᱩᱢ ᱠᱚ ᱥᱟᱧᱪᱟᱣ ᱢᱮ
+server_ip_ph	ᱥᱮᱨᱵᱷᱟᱨ ᱟᱭᱤ ᱯᱤ (ᱡᱮᱞᱠᱟ 192.168.1.10)
+set_credit_limit	ᱯᱟᱨᱴᱤ ᱨᱮ ᱥᱤᱢᱟᱹ ᱞᱟᱜᱟᱣ ᱢᱮ
+set_login_selected	ᱵᱟᱪᱷᱟᱣ ᱟᱠᱟᱱ ᱠᱚ ᱞᱟᱹᱜᱤᱫ ᱞᱚᱜᱤᱱ ᱞᱟᱹᱜᱩᱫ ᱢᱮ
+set_login_named	{name} ᱨᱮ ᱞᱚᱜᱤᱱ ᱞᱟᱹᱜᱩᱭ ᱢᱮ
+shop	ᱵᱟᱡᱟᱨᱚᱢ
+start_fresh	ᱛᱟᱜᱽᱲᱟ ᱛᱮ ᱮᱦᱚᱵᱽ ᱢᱮ
+stop_extra_tills	ᱵᱟᱹᱲᱛᱤ ᱴᱤᱞ ᱠᱚ ᱵᱚᱱᱫᱚ ᱢᱮ
+backup_auto	ᱫᱤᱱᱟᱹᱢ ᱜᱮ ᱟᱡ ᱛᱮ ᱵᱮᱠᱟᱯ · ᱢᱩᱪᱟᱹᱫ {when} · ᱢᱩᱪᱟᱹᱫ 14 ᱢᱟᱦᱟᱸ {dir} ᱨᱮ ᱫᱚᱦᱚ ᱠᱟᱱᱟ ᱾
+backup_auto_none	ᱫᱤᱱᱟᱹᱢ ᱜᱮ ᱟᱡ ᱛᱮ ᱵᱮᱠ ᱟᱯ ᱦᱩᱭᱩᱜ ᱠᱟᱱᱟ — ᱯᱩᱭᱞᱩ ᱫᱚ ᱢᱤᱫ ᱜᱷᱟᱹᱲᱤ ᱨᱮ ᱪᱟᱹᱞᱩᱜ ᱠᱟᱱᱟ ᱾
+backup_copy_to	ᱱᱚᱠᱚᱞ ᱠᱚ ᱦᱚᱸ {dir} ᱛᱮ ᱪᱟᱞᱟᱜᱼᱟ ᱾
+backup_copy_btn	ᱟᱨᱦᱚᱸ ᱢᱤᱫ ᱯᱷᱚᱞᱰᱟᱨ ᱨᱮ ᱵᱮᱠᱟᱯ ᱠᱚᱯᱤ ᱢᱮ...
+autostart_off	ᱱᱚᱶᱟ ᱠᱚᱢᱯᱭᱩᱴᱟᱨ ᱛᱮ ᱮᱦᱚᱵᱽ ᱢᱮ
+autostart_on	ᱱᱚᱶᱟ ᱠᱚᱢᱯᱭᱩᱴᱟᱨ ᱛᱮ ᱮᱦᱚᱵᱚᱜ ᱠᱟᱱᱟ ✓ — ᱛᱷᱤᱨ ᱞᱟᱹᱜᱤᱫ ᱴᱮᱯ ᱢᱮ
+autostart_done_on	ᱱᱚᱣᱟ ᱠᱚᱢᱯᱭᱩᱴᱟᱨ ᱫᱚ ᱮᱯ ᱮ ᱡᱷᱤᱡᱽ ᱟ ᱡᱚᱠᱷᱚᱱ ᱱᱚᱣᱟ ᱮᱛᱚᱦᱚᱵᱚᱜ-ᱟ ᱫᱚᱠᱟᱱ ᱨᱮᱭᱟᱜ ᱥᱮᱨᱵᱷᱟᱨ ᱫᱚ ᱯᱟᱣᱟᱨ ᱠᱟᱴ ᱛᱟᱭᱚᱢ ᱨᱩᱣᱟᱹᱲ ᱦᱮᱡ ᱟᱠᱟᱱᱟ ᱾
+autostart_done_off	ᱱᱚᱣᱟ ᱠᱚᱢᱯᱭᱩᱴᱟᱨ ᱫᱚ ᱮᱛᱚᱦᱚᱵ ᱞᱮᱱᱠᱷᱟᱱ ᱮᱯ ᱵᱟᱭ ᱡᱷᱤᱡᱽ ᱫᱟᱲᱮᱭᱟᱜᱼᱟ ᱾
+right_allowed	ᱫᱟᱣ ᱮᱢ ᱟᱠᱟᱱᱟ
+right_with_approval	ᱟᱝᱜᱚᱪ ᱥᱟᱶᱛᱮ
+right_denied	ᱵᱟᱝ ᱫᱟᱣ ᱧᱟᱢ ᱟᱠᱟᱱᱟ
+editing_staff	ᱞᱟᱹᱜᱤᱫ ᱟᱹᱭᱫᱟᱹᱨ
+team_pick_ph	ᱥᱟᱥᱟᱯᱲᱟᱣ ᱞᱟᱹᱜᱤᱫ ᱠᱟᱹᱢᱤᱭᱟᱹ ᱠᱚ — ᱧᱩᱛᱩᱢ, ᱵᱮᱵᱷᱟᱨᱤᱭᱟᱹ ᱧᱩᱛᱩᱢ, ᱵᱟᱝᱠᱷᱟᱱ ᱵᱟᱪᱷᱟᱣ
+select_staff	ᱱᱩᱭ ᱠᱟᱹᱢᱤᱭᱟᱹ ᱵᱟᱪᱷᱟᱣ ᱢᱮ
+rights_help	ᱦᱚᱠ ᱠᱚ — ᱵᱚᱫᱚᱞ ᱞᱟᱹᱜᱤᱫ ᱞᱤᱱ ᱢᱮ: ᱫᱟᱣ ᱢᱮᱱᱟᱜᱼᱟ → ᱥᱚᱡᱷᱮ ᱥᱟᱶᱛᱮ (ᱚᱱᱟ ᱚᱠᱛᱚ ᱨᱮ ᱢᱤᱫ ᱢᱮᱱᱮᱡᱟᱨᱟᱜ ᱯᱤᱱ) → ᱵᱟᱝ ᱫᱟᱣ ᱢᱮᱱᱟᱜᱼᱟ᱾
+right_void_refund	ᱵᱩᱠᱤᱝ ᱵᱟᱝ ᱛᱟᱦᱮᱱ ᱥᱮ ᱯᱩᱭᱥᱟᱹ ᱨᱩᱣᱟᱹᱲ ᱢᱮ
+right_amend_sale	ᱨᱮᱠᱚᱨᱰ ᱠᱟᱱ ᱵᱩᱠᱤᱝ ᱥᱚᱫᱚᱨ ᱢᱮ
+find_server	ᱫᱩᱠᱟᱹᱱ ᱨᱮᱱᱟᱜ ᱥᱮᱨᱵᱷᱟᱨ ᱯᱟᱱᱛᱮ ᱢᱮ
+finding_server	ᱱᱚᱣᱟ ᱣᱟᱭ-ᱯᱷᱟᱭ ᱨᱮ ᱫᱚᱠᱟᱱ ᱨᱮᱭᱟᱜ ᱥᱮᱨᱵᱷᱟᱨ ᱯᱟᱱᱛᱮ ᱠᱟᱱᱟᱹᱧ...
+no_server_found	ᱚᱠᱚᱭ ᱦᱚᱸ ᱵᱟᱠᱚ ᱧᱟᱢ ᱞᱮᱱᱟ ᱾ ᱥᱮᱨᱵᱷᱟᱨ ᱨᱮ: ᱥᱮᱴᱤᱝ → ᱮᱴᱟᱜ ᱰᱤᱵᱷᱟᱭᱤᱥ → ᱵᱟᱹᱲᱛᱤ ᱴᱤᱞ ᱨᱮᱭᱟᱜ ᱟᱱᱩᱢᱟᱛ (ᱢᱤᱫ ᱣᱟᱭ-ᱯᱷᱟᱭ)᱾ ᱟᱨ ᱵᱟᱝ ᱚᱱᱰᱮ ᱩᱫᱩᱜ ᱟᱠᱟᱱ ᱟᱭᱤ ᱯᱤ ᱴᱟᱭᱤᱯ ᱢᱮ ᱾
+servers_found_pick	ᱟᱢ ᱡᱟᱦᱟᱸ ᱫᱚᱠᱟᱱ ᱥᱟᱶ ᱡᱚᱯᱲᱟᱣ ᱥᱟᱱᱟᱭᱮᱫ ᱢᱮᱭᱟ ᱚᱱᱟ ᱨᱮ ᱞᱤᱱ ᱢᱮ᱾
+server_host_selected	ᱵᱮᱵᱷᱟᱨ ᱠᱟᱛᱮ {host} — ᱡᱚᱲᱟᱣ ᱠᱚᱰ ᱮᱢ ᱢᱮ, ᱚᱱᱟ ᱛᱟᱭᱚᱢ ᱱᱤᱛᱚᱜ ᱡᱚᱲᱟᱣ ᱢᱮ ᱾
+device_forgotten	ᱫᱚᱠᱟᱱ ᱫᱚ ᱱᱚᱣᱟ ᱥᱟᱫᱷᱚᱱ ᱦᱤᱲᱤᱧ ᱠᱮᱫᱟᱭ - ᱫᱚᱠᱟᱱ ᱨᱮᱭᱟᱜ ᱱᱤᱛᱚᱜ ᱠᱚᱰ ᱥᱟᱶ ᱫᱚᱦᱲᱟ ᱡᱚᱲᱟᱣ ᱢᱮ ᱾ ᱱᱚᱣᱟ ᱨᱮ ᱛᱟᱺᱜᱤ ᱟᱠᱟᱱ ᱟᱫᱮᱥ ᱠᱚ ᱫᱚᱦᱚ ᱟᱠᱟᱱᱟ ᱾
+forget_device	ᱦᱤᱲᱤᱧ ᱠᱟᱜ ᱢᱮ
+last_seen	ᱧᱮᱞ ᱟᱠᱟᱱᱟ
+new_pair_code	ᱱᱟᱶᱟ ᱡᱚᱲᱟᱣ ᱠᱚᱰ
+lan_offline	ᱫᱚᱠᱟᱱ ᱥᱮᱨᱵᱷᱟᱨ ᱵᱟᱝ ᱥᱮᱴᱮᱨᱚᱜ ᱠᱟᱱᱟ
+lan_offline_waiting	ᱫᱚᱠᱟᱱ ᱥᱮᱨᱵᱷᱟᱨ ᱵᱟᱝ ᱥᱮᱴᱮᱨᱚᱜ ᱠᱟᱱᱟ · {n} ᱛᱟᱺᱜᱤ ᱨᱮ ᱢᱮᱱᱟᱭᱟ
+lan_connecting	ᱫᱚᱠᱟᱱ ᱥᱟᱶ ᱡᱚᱯᱲᱟᱣ...
+pair_finishing	ᱯᱷᱤᱱᱤᱥᱤᱝ ᱡᱚᱲᱟ... ᱚᱯᱷᱤᱥ ᱯᱚᱛᱚᱵ ᱠᱚ ᱞᱟᱹᱜᱩᱜ ᱠᱟᱱᱟ
+pair_opening	ᱚᱯᱷᱤᱥ ᱡᱷᱤᱡᱽ...
+lan_live	ᱛᱟᱦᱮᱱ
+lan_sending	{n} ᱵᱷᱮᱡᱟᱭ ᱠᱟᱱᱟ
+lan_sign_in_to_send	{n} ᱵᱷᱮᱡᱟ ᱞᱟᱹᱜᱤᱫ ᱫᱚᱦᱲᱟ ᱥᱟᱭᱤᱱ ᱤᱱ ᱢᱮ
+lan_pair_again	ᱱᱚᱣᱟ ᱥᱟᱫᱷᱚᱱ ᱫᱚᱦᱲᱟ ᱡᱚᱲᱟᱣ ᱢᱮ
+lan_update_app	ᱮᱯ ᱟᱯᱰᱮᱴ ᱢᱮ — ᱱᱚᱣᱟ ᱰᱤᱵᱷᱟᱭᱤᱥ ᱟᱨ ᱚᱯᱷᱤᱥ ᱥᱮᱨᱵᱷᱟᱨ ᱨᱮ ᱵᱷᱮᱜᱟᱨ ᱵᱷᱮᱜᱟᱨ ᱵᱷᱟᱨᱥᱚᱱ ᱢᱮᱱᱟᱜᱼᱟ
+allow_firewall	ᱮᱴᱟᱜ ᱥᱟᱫᱷᱚᱱ ᱠᱚ ᱡᱚᱯᱲᱟᱣ ᱞᱟᱹᱜᱤᱫ ᱟᱱᱫᱷᱟᱣ ᱮᱢᱚᱜ ᱢᱮ
+firewall_blocked	ᱱᱚᱣᱟ ᱠᱚᱢᱯᱭᱩᱴᱟᱨ ᱨᱮᱭᱟᱜ ᱯᱷᱟᱭᱟᱨᱣᱟᱞ ᱮᱴᱟᱜ ᱥᱟᱫᱷᱚᱱ ᱠᱚ ᱵᱞᱚᱠ ᱮᱫᱟᱭ — ᱴᱮᱯ ᱮᱴᱟᱜ ᱥᱟᱫᱷᱚᱱ ᱠᱚ ᱡᱚᱯᱲᱟᱣ ᱞᱟᱹᱜᱤᱫ ᱟᱱᱩᱢᱟᱛ ᱮᱢᱚᱜ ᱢᱮ ᱾
+firewall_waiting	ᱮᱰᱢᱤᱱ ᱯᱨᱚᱢᱯᱴ ᱞᱟᱹᱜᱤᱫ ᱛᱟᱺᱜᱤ ᱨᱮ ᱢᱮᱱᱟᱭᱟ...
+lan_join_help	ᱮᱴᱟᱜ ᱥᱟᱫᱷᱚᱱ ᱨᱮ: ᱠᱞᱟᱭᱮᱱᱴ ᱢᱚᱰ → ᱫᱚᱠᱟᱱ ᱨᱮᱭᱟᱜ ᱥᱮᱨᱵᱷᱟᱨ ᱯᱟᱱᱛᱮ ᱢᱮ (ᱵᱟᱝᱠᱷᱟᱱ {addr} ᱴᱟᱭᱤᱯ ᱢᱮ) → ᱯᱮᱭᱟᱨᱤᱝ ᱠᱚᱰ {code}᱾
+lan_pair_status	ᱣᱟᱭ‐ᱯᱷᱟᱭ {addr}
+lan_join_help_no_addr	ᱢᱤᱫ ᱴᱷᱤᱠᱟᱹᱱᱟ ᱞᱟᱹᱜᱤᱫ ᱱᱚᱣᱟ ᱥᱟᱫᱷᱚᱱ ᱣᱟᱭ-ᱯᱷᱟᱭ ᱥᱟᱶ ᱡᱚᱯᱲᱟᱣ ᱢᱮ ᱾
+lan_no_address	ᱱᱤᱛ ᱦᱚᱸ ᱣᱟᱭ-ᱯᱷᱟᱭ ᱴᱷᱤᱠᱟᱹᱱᱟ ᱵᱟᱹᱱᱩᱜᱼᱟ — ᱫᱚᱠᱟᱱ ᱣᱟᱭ-ᱯᱷᱟᱭ ᱥᱟᱶ ᱡᱚᱯᱲᱟᱣ ᱢᱮ ᱾
+lan_not_listening	ᱰᱤᱵᱷᱟᱭᱤᱥ ᱵᱟᱝ ᱟᱝᱜᱚᱪᱚᱜ ᱠᱟᱱᱟ (ᱯᱚᱨᱴ {port} ᱵᱤᱡᱤ)᱾ ᱮᱯ ᱫᱚᱦᱲᱟ ᱪᱟᱹᱞᱩᱭ ᱢᱮ᱾
+lan_tills_off	ᱵᱟᱹᱲᱛᱤ ᱴᱤᱞ ᱠᱚ ᱵᱚᱱᱫᱚ ᱜᱮᱭᱟ ᱾ ᱩᱱᱠᱩ ᱮᱴᱟᱜ ᱰᱤᱵᱷᱟᱭᱤᱥ ᱡᱚᱲᱟᱣ ᱞᱟᱹᱜᱤᱫ ᱫᱟᱣ ᱮᱢᱟ ᱠᱚᱢ᱾
+paired_with	ᱡᱚᱲᱟᱣ · {url}
+not_paired	ᱵᱟᱝ ᱡᱚᱲᱟᱣ ᱟᱠᱟᱱᱟ
+choose_device_use	ᱥᱮᱨᱵᱷᱟᱨ ᱵᱟᱝᱠᱷᱟᱱ ᱠᱞᱟᱭᱮᱱᱴ ᱵᱟᱪᱷᱟᱣ ᱢᱮ᱾
+paired_note	ᱡᱚᱲᱟᱣ ᱟᱠᱟᱱ᱾ ᱟᱠᱨᱤᱧ ᱞᱟᱹᱜᱤᱫ ᱠᱩᱞᱩᱯ ᱡᱷᱤᱡᱽ ᱢᱮ, ᱟᱨᱵᱟᱝ ᱱᱟᱶᱟ ᱞᱟᱹᱜᱤᱫ ᱨᱤᱯᱷᱨᱮᱥ ᱢᱮ ᱾
+last_update_at	ᱢᱩᱪᱟᱹᱫ ᱟᱯᱰᱮᱴ: {time}᱾
+pair_intro	ᱥᱮᱨᱵᱷᱟᱨ ᱯᱟᱱᱛᱮ ᱢᱮ, ᱟᱨᱵᱟᱝ ᱱᱚᱣᱟ ᱨᱮᱭᱟᱜ ᱴᱷᱤᱠᱟᱹᱱᱟ ᱟᱨ ᱡᱚᱲᱟᱣ ᱠᱚᱰ ᱴᱟᱭᱤᱯ ᱢᱮ ᱾
+queue_waiting	ᱫᱚᱠᱟᱱ ᱥᱮᱴᱮᱨᱚᱜ ᱞᱟᱹᱜᱤᱫ ᱛᱟᱺᱜᱤ ᱨᱮ ᱢᱮᱱᱟᱭᱟ ({n}):
+queue_tries	{n} ᱫᱷᱟᱣ ᱠᱩᱨᱩᱢᱩᱴᱩ · ᱢᱩᱪᱟᱹᱫ ᱛᱮᱞᱟ: {e}
+save_backup_copy	ᱢᱤᱫ ᱵᱮᱠᱚᱯ ᱱᱚᱠᱚᱞ ᱥᱟᱧᱪᱟᱣ ᱢᱮ...
+backup_copy_saved	ᱵᱮᱠᱟᱯ ᱱᱚᱠᱚᱞ ᱥᱟᱧᱪᱟᱣ ᱟᱠᱟᱱᱟ — ᱱᱚᱣᱟ ᱥᱟᱫᱷᱚᱱ ᱵᱚᱱᱫᱚ ᱫᱚᱦᱚᱭ ᱢᱮ (ᱢᱤᱫ ᱭᱩᱮᱥᱵᱤ ᱥᱴᱤᱠ ᱵᱟᱝᱠᱷᱟᱱ ᱮᱴᱟᱜ ᱥᱟᱫᱷᱚᱱ)
+backup_copy_overdue	ᱱᱚᱣᱟ ᱰᱤᱵᱷᱟᱭᱤᱥ ᱨᱮ {n} ᱫᱤᱱ ᱞᱟᱹᱜᱤᱫ ᱪᱮᱫ ᱵᱮᱠᱚᱯ ᱠᱚᱯᱤ ᱦᱚᱸ ᱵᱟᱝ ᱵᱟᱜᱤ ᱟᱠᱟᱱᱟ — ᱥᱮᱴᱤᱝ ᱠᱚ → ᱵᱮᱠᱚᱯ
+backup_copy_failed	ᱵᱮᱠᱟᱯ ᱠᱚᱯᱤ ᱚᱱᱰᱮ ᱵᱟᱝ ᱥᱟᱧᱪᱟᱣ ᱫᱟᱲᱮᱭᱟᱜᱼᱟ — ᱮᱴᱟᱜ ᱡᱟᱭᱜᱟ ᱵᱟᱪᱷᱟᱣ ᱢᱮ
+clock_off	ᱱᱚᱣᱟ ᱥᱟᱫᱷᱚᱱ ᱨᱮᱭᱟᱜ ᱜᱷᱚᱰᱤ ᱫᱚᱠᱟᱱ ᱨᱮᱭᱟᱜ ᱥᱮᱨᱵᱷᱟᱨ ᱠᱷᱚᱱ {min} ᱴᱤᱯᱤᱡ ᱥᱟᱦᱟ ᱨᱮ ᱢᱮᱱᱟᱜᱼᱟ — ᱱᱚᱣᱟ ᱥᱟᱫᱷᱚᱱ ᱨᱮ ᱴᱷᱤᱠ ᱚᱠᱛᱚ ᱥᱮᱴ ᱢᱮ
+printers_heading	ᱱᱚᱶᱟ ᱥᱟᱫᱷᱚᱱ ᱨᱮ ᱯᱨᱤᱱᱴᱟᱨ
+printers_help	ᱥᱟᱹᱨᱤ ᱯᱨᱤᱱᱴᱟᱨ ᱯᱟᱱᱛᱮ ᱢᱮ, ᱚᱱᱟ ᱛᱟᱭᱚᱢ ᱨᱟᱹᱥᱤᱫ ᱵᱟᱝᱠᱷᱟᱱ AWB ᱞᱮᱵᱮᱞ ᱵᱟᱪᱷᱟᱣ ᱢᱮ ᱾ ᱥᱟᱱᱟᱢ ᱠᱟᱹᱢᱤ ᱨᱮᱭᱟᱜ ᱟᱯᱱᱟᱨ ᱚᱥᱟᱨ, ᱯᱚᱨᱴᱨᱮᱴ ᱵᱟᱝᱠᱷᱟᱱ ᱞᱮᱱᱰᱥᱠᱮᱯ ᱛᱟᱦᱮᱱᱟ, ᱟᱨ ᱪᱮᱫ ᱞᱮᱠᱟ ᱵᱟᱭᱤᱴ ᱠᱚ ᱠᱩᱞᱟ᱾ ᱢᱤᱫ ᱞᱮᱵᱮᱞ ᱵᱟᱨᱠᱚᱰ ᱪᱷᱟᱯᱟᱭᱟᱭ ᱾ ᱠᱷᱟᱹᱞᱤ ᱴᱷᱟᱶ = ᱟᱞᱚᱢ ᱪᱷᱟᱯᱟᱭᱟ ᱾
+job_width	ᱡᱤᱱᱤᱥ ᱚᱥᱟᱨ (mm)
+job_width_ph	ᱟᱨ ᱵᱟᱝ ᱢᱤᱫ ᱚᱥᱟᱨ ᱴᱟᱭᱤᱯ ᱢᱮ, ᱔᱐-᱒᱑᱐ ᱢᱤ.ᱢᱤ.
+job_layout	ᱞᱮᱭᱟᱣᱩᱴ
+job_delivery	ᱪᱮᱫ ᱞᱮᱠᱟ ᱪᱟᱹᱠᱨᱤ ᱠᱚ ᱠᱩᱞ ᱟᱠᱟᱱᱟ
+job_size	ᱯᱷᱚᱱᱴ ᱥᱟᱭᱤᱡᱽ
+job_size_ph	ᱡᱮᱞᱠᱟ 18, 20, 26...
+save_receipt_format	ᱨᱟᱹᱥᱤᱫ ᱨᱩᱯ ᱥᱟᱧᱪᱟᱣ ᱢᱮ
+save_label_format	ᱞᱮᱵᱮᱞ ᱨᱩᱯ ᱥᱟᱧᱪᱟᱣ ᱢᱮ
+test_receipt_format	ᱵᱤᱱᱤᱰ ᱨᱟᱹᱥᱤᱫ
+test_label_format	ᱵᱤᱱᱤᱰ ᱞᱮᱵᱮᱞ
+test_receipt_sent	ᱥᱮᱢᱯᱩᱞ ᱨᱟᱹᱥᱤᱫ ᱠᱩᱞ ᱦᱩᱭ ᱮᱱᱟ
+test_label_sent	ᱥᱮᱢᱯᱩᱞ ᱞᱮᱵᱮᱞ ᱠᱩᱞ ᱦᱩᱭ ᱮᱱᱟ
+test_print_no_printer	ᱚᱱᱟ ᱠᱟᱹᱢᱤ ᱞᱟᱹᱜᱤᱫ ᱯᱨᱤᱱᱴᱟᱨ ᱵᱟᱹᱱᱩᱜᱼᱟ ᱱᱚᱣᱟ ᱡᱟᱭᱜᱟ ᱞᱟᱛᱟᱨ ᱨᱮ ᱢᱤᱫᱴᱟᱹᱝ ᱥᱮᱞᱮᱫ ᱢᱮ
+printers_host_only	ᱯᱨᱤᱱᱴᱟᱨ ᱫᱚ ᱫᱚᱠᱟᱱ ᱨᱮᱭᱟᱜ ᱥᱟᱫᱷᱚᱱ (ᱥᱮᱨᱵᱷᱟᱨ) ᱨᱮ ᱥᱮᱴ ᱢᱮᱱᱟᱜᱼᱟ ᱾ ᱱᱚᱣᱟ ᱦᱟᱵᱤᱡ ᱚᱸᱰᱮ ᱠᱟᱹᱢᱤ ᱠᱚ ᱵᱷᱮᱡᱟᱭᱟ — ᱥᱮᱨᱵᱷᱟᱨ ᱨᱮ ᱛᱟᱦᱮᱱ ᱯᱟᱱᱛᱮ/ᱥᱮᱞᱮᱫ/ᱮᱥᱟᱭᱤᱱ ᱢᱮ ᱾ ᱵᱤᱱᱤᱰ ᱥᱟᱦᱴᱟ ᱥᱮᱨᱵᱷᱟᱨ ᱛᱮ ᱪᱟᱞᱟᱜᱼᱟ ᱾
+printers_pool_heading	ᱯᱨᱤᱱᱴᱟᱨ
+printers_routes_heading	ᱚᱠᱟᱨᱮ ᱡᱤᱱᱤᱥ ᱠᱚ ᱪᱷᱟᱯᱟᱜᱼᱟ
+printer_label_ph	ᱧᱩᱛᱩᱢ (ᱡᱮᱞᱠᱟ ᱰᱮᱥᱠ)
+printer_target_ph	ᱦᱚᱥᱴ:᱙᱑᱐᱐ · ᱵᱤᱴᱤ:ᱢᱮᱥᱤ · ᱭᱩᱮᱥᱵᱤ:ᱵᱷᱤᱰᱤ:ᱯᱤᱟᱭᱤᱰᱤ · ᱥᱤᱥᱴᱚᱢ ᱧᱩᱛᱩᱢ
+printer_mode_heading	ᱱᱟᱶᱟ ᱟᱩᱴᱯᱩᱴ ᱠᱚ ᱞᱟᱹᱜᱤᱫ ᱯᱨᱚᱯᱷᱟᱭᱤᱞ
+printer_mode_standard	ᱥᱚᱨᱠᱟᱨᱤ ᱯᱚᱨᱴᱨᱮᱭᱴ
+printer_mode_landscape	ᱥᱚᱨᱠᱟᱨᱤ ᱞᱮᱱᱰᱥᱠᱮᱯ
+printer_mode_thermal	ᱛᱷᱟᱨᱢᱟᱞ
+printer_mode_standard_short	ᱯᱚᱨᱴᱨᱮᱭᱴ
+printer_mode_landscape_short	ᱞᱮᱱᱰᱥᱠᱮᱯ
+printer_mode_thermal_short	ᱛᱷᱟᱨᱢᱟᱞ
+printer_format_custom	ᱱᱟᱶᱟ ᱠᱟᱥᱴᱚᱢ ᱯᱨᱚᱯᱷᱟᱭᱤᱞ
+printer_format_custom_label	ᱠᱟᱥᱴᱚᱢ
+printer_format_custom_added	ᱱᱚᱶᱟ ᱡᱟᱭᱜᱟ ᱞᱟᱹᱜᱤᱫ ᱠᱟᱥᱴᱚᱢ ᱯᱨᱚᱯᱷᱟᱭᱤᱞ ᱥᱮᱞᱮᱫ ᱟᱠᱟᱱᱟ
+add_printer	ᱯᱨᱤᱱᱴᱟᱨ ᱥᱮᱞᱮᱫ ᱢᱮ
+remove_printer	ᱢᱩᱪᱟᱹᱫ ᱚᱪᱚᱜᱽ ᱢᱮ
+route_pick_ph	ᱨᱟᱹᱥᱤᱫ ᱵᱟᱝᱠᱷᱟᱱ ᱞᱮᱵᱮᱞ
+route_add_printer_ph	ᱱᱚᱶᱟ ᱡᱟᱭᱜᱟ ᱨᱮ ᱯᱨᱤᱱᱴᱟᱨ ᱥᱮᱞᱮᱫ ᱢᱮ
+route_receipt	ᱨᱚᱥᱤᱫ
+route_label	AWB ᱞᱮᱵᱮᱞ
+route_dont_print	ᱪᱮᱫ ᱯᱨᱤᱱᱴᱟᱨ ᱦᱚᱸ ᱵᱟᱝ ᱮᱢ ᱟᱠᱟᱱᱟ
+route_add	ᱴᱷᱟᱶ ᱨᱮ ᱥᱮᱞᱮᱫ ᱢᱮ
+route_up	ᱪᱮᱛᱟᱱ
+route_down	ᱞᱟᱛᱟᱨ
+route_remove	ᱢᱩᱪᱟᱹᱫ ᱚᱪᱚᱜᱽ ᱢᱮ
+route_clear	ᱱᱚᱶᱟ ᱡᱟᱭᱜᱟ ᱞᱟᱹᱜᱤᱫ ᱯᱨᱤᱱᱴᱟᱨ ᱥᱟᱯᱷᱟᱭ ᱢᱮ
+save_printers	ᱯᱨᱤᱱᱴᱟᱨ ᱠᱚ ᱵᱟᱧᱪᱟᱣ ᱢᱮ
+print_test_page	ᱢᱤᱫ ᱵᱤᱱᱤᱰ ᱥᱟᱦᱴᱟ ᱯᱨᱤᱱᱴ ᱢᱮ
+printers_saved	ᱱᱚᱣᱟ ᱥᱟᱫᱷᱚᱱ ᱞᱟᱹᱜᱤᱫ ᱯᱨᱤᱱᱴᱟᱨ ᱠᱚ ᱥᱟᱧᱪᱟᱣ ᱟᱠᱟᱱᱟ
+test_page_sent	ᱵᱤᱱᱤᱰ ᱥᱟᱦᱴᱟ ᱵᱷᱮᱡᱟ ᱮᱱᱟ — ᱯᱨᱤᱱᱴᱟᱨ ᱧᱮᱞ ᱢᱮ
+printers_found	ᱱᱚᱶᱟ ᱰᱤᱵᱷᱟᱭᱤᱥ ᱨᱮ ᱧᱟᱢ ᱮᱱᱟ: {list}
+find_printers	ᱯᱨᱤᱱᱴᱟᱨ ᱯᱟᱱᱛᱮ ᱢᱮ
+printers_looking	ᱱᱚᱣᱟ ᱰᱤᱵᱷᱟᱭᱤᱥ ᱟᱨ ᱣᱟᱭ-ᱯᱷᱟᱭ ᱨᱮ ᱯᱨᱤᱱᱴᱟᱨ ᱠᱚ ᱯᱟᱱᱛᱮ ᱮᱫᱟ...
+printers_tap_find	ᱱᱚᱶᱟ ᱣᱟᱭ-ᱯᱷᱟᱭ ᱨᱮ ᱠᱟᱹᱢᱤ ᱟᱨ ᱱᱮᱴᱣᱟᱨᱠ ᱨᱟᱹᱥᱤᱫ ᱯᱨᱤᱱᱴᱟᱨ ᱠᱚ ᱟᱝᱜᱚᱪ ᱟᱠᱟᱱ ᱛᱷᱟᱨ ᱠᱚ ᱞᱟᱹᱜᱤᱫ ᱯᱨᱤᱱᱴᱟᱨ ᱯᱟᱱᱛᱮ ᱢᱮ (ᱵᱟᱝ ᱚᱪᱚᱜ ᱟᱨ ᱵᱟᱝ ᱚᱯᱷᱞᱟᱭᱤᱱ)᱾
+printers_none_found	ᱯᱨᱤᱱᱴᱟᱨ ᱵᱟᱝ ᱧᱟᱢ ᱞᱮᱱᱟ — ᱥᱤᱥᱴᱚᱢ ᱯᱨᱤᱱᱴᱟᱨ ᱧᱩᱛᱩᱢ ᱴᱟᱭᱤᱯ ᱢᱮ, ᱵᱟᱝᱠᱷᱟᱱ ᱱᱮᱴᱣᱟᱨᱠ ᱴᱷᱤᱠᱟᱹᱱᱟ (ᱡᱮᱞᱠᱟ ᱑᱙᱒.᱑᱖᱘.᱑.᱕᱐)᱾
+receipt_printer_ph	ᱨᱟᱹᱥᱤᱫ ᱠᱚ ᱞᱟᱹᱜᱤᱫ ᱯᱨᱤᱱᱴᱟᱨ
+queue_refused	ᱫᱚᱠᱟᱱ ᱦᱚᱛᱮᱛᱮ ᱵᱟᱝ ᱟᱝᱜᱚᱪ ᱟᱠᱟᱱᱟ ({n}) — ᱠᱟᱣᱩᱱᱴᱟᱨ ᱨᱮ ᱥᱟᱱᱟᱢ ᱠᱚ ᱧᱮᱞ ᱢᱮ:
+clear_not_accepted	ᱧᱮᱞ ᱦᱩᱭ ᱟᱠᱟᱱᱟ — ᱱᱚᱶᱟ ᱛᱟᱞᱠᱟ ᱥᱟᱯᱷᱟᱭ ᱢᱮ
+device_name_ph	ᱱᱚᱣᱟ ᱥᱟᱫᱷᱚᱱ ᱨᱮᱭᱟᱜ ᱧᱩᱛᱩᱢ
+lan_last_update	ᱢᱩᱪᱟᱹᱫ ᱟᱯᱰᱮᱴ {time}
+lan_not_accepted	{n} ᱵᱟᱝ ᱟᱝᱜᱚᱪ ᱟᱠᱟᱱᱟ
+connected_now	ᱱᱤᱛᱚᱜ ᱡᱚᱯᱲᱟᱣ ᱟᱠᱟᱱᱟ
+backup_failed	ᱢᱩᱪᱟᱹᱫ ᱟᱡ ᱛᱮ ᱵᱮᱠᱟᱯ ᱵᱟᱝ ᱥᱟᱹᱛ ᱞᱮᱱᱟ: {e}
+backup_overdue	{n} ᱫᱤᱱ ᱞᱟᱹᱜᱤᱫ ᱵᱮᱠᱟᱯ ᱵᱟᱹᱱᱩᱜᱼᱟ — ᱱᱚᱣᱟ ᱰᱤᱵᱷᱟᱭᱤᱥ ᱨᱮ ᱮᱯ ᱡᱷᱤᱡ ᱫᱚᱦᱚ ᱠᱟᱜ ᱢᱮ ᱡᱮᱢᱚᱱ ᱱᱚᱣᱟ ᱵᱮᱠ ᱟᱯ ᱦᱩᱭ ᱫᱟᱲᱮᱭᱟᱜᱼᱟ᱾
+disk_low	ᱱᱚᱣᱟ ᱰᱤᱵᱷᱟᱭᱤᱥ ᱨᱮ ᱥᱩᱢᱩᱝ {mb} MB ᱯᱷᱨᱤ ᱜᱮᱭᱟ — ᱵᱮᱠᱟᱯ ᱞᱚᱜᱚᱱ ᱜᱮ ᱯᱷᱮᱞᱚᱜᱼᱟ ᱾ ᱛᱤᱱᱟᱹᱜ ᱜᱟᱱ ᱴᱷᱟᱶ ᱯᱷᱨᱤ ᱢᱮ᱾
+last_seen_devices	ᱢᱩᱪᱟᱹᱫ ᱧᱮᱞ: {time}
+sync_interval	ᱥᱟᱱᱟᱢ {secs}s ᱨᱮ ᱥᱤᱱᱠ ᱢᱮ
+connection_to_shop	ᱫᱩᱠᱟᱹᱱ ᱥᱟᱶ ᱡᱚᱯᱲᱟᱣ
+supplier_name_ph	ᱥᱟᱨᱵᱦᱟᱨᱤᱡ ᱧᱩᱛᱩᱢ (ᱵᱟᱝᱠᱷᱟᱱ ᱯᱟᱨᱴᱤ)
+supplier_ph	ᱥᱟᱯᱞᱟᱭᱚᱨ
+switch_device	ᱱᱚᱣᱟ ᱥᱟᱫᱷᱚᱱ ᱵᱚᱫᱚᱞ ᱢᱮ
+take_payment	ᱯᱮᱢᱮᱱᱴ ᱦᱟᱛᱟᱣ ᱢᱮ
+tax_added_till	{tax} ᱮᱠᱥᱠᱞᱩᱥᱤᱵᱷ
+tax_inside_price	{tax} ᱥᱟᱶᱛᱮ
+today_books	ᱛᱮᱦᱮᱧ ᱯᱚᱛᱚᱵ
+unlock_after_pairing	ᱯᱤᱱ ᱮᱢ ᱢᱮ
+unlock_with_login	ᱞᱚᱜᱤᱱ ᱥᱟᱶ ᱠᱩᱞᱩᱯ ᱡᱷᱤᱡᱽ ᱢᱮ
+update_my_password	ᱤᱧᱟᱜ ᱯᱟᱥᱣᱟᱨᱰ ᱟᱯᱰᱮᱴ ᱢᱮ
+update_my_pin	ᱤᱧᱟᱜ ᱯᱤᱱ ᱟᱯᱰᱮᱴ ᱢᱮ
+duress_heading	ᱤᱢᱟᱨᱡᱮᱱᱥᱤ ᱯᱤᱱ ᱩᱱᱞᱚᱠ (ᱥᱩᱢᱩᱝ ᱢᱟᱞᱤᱠ)
+duress_help	ᱚᱯᱥᱚᱱ᱾ ᱡᱩᱫᱤ ᱱᱚᱶᱟ PIN ᱟᱢᱟᱜ ᱵᱚᱫᱚᱞ ᱛᱮ unlock ᱨᱮ ᱴᱟᱭᱤᱯ ᱠᱟᱱᱟ, ᱡᱚᱛᱚ ᱯᱚᱛᱚᱵ ᱵᱚᱞᱚᱱ ᱠᱚ ᱢᱩᱴᱷᱟᱹᱱ ᱠᱟᱱᱟ (booking, ledger, history) ᱟᱨ ᱰᱮᱥᱠ ᱫᱚ ᱢᱟᱞᱤᱠ ᱞᱮᱠᱟ ᱧᱮᱞ ᱠᱟᱛᱮ ᱡᱷᱤᱡ ᱠᱟᱱᱟ — ᱫᱚᱨ, ᱯᱟᱨᱴᱤ, ᱡᱚᱱᱚᱲ, ᱠᱟᱹᱢᱤᱭᱟᱹ ᱟᱨ ᱥᱮᱴᱤᱝ ᱠᱚ ᱛᱟᱦᱮᱱᱟ᱾ ᱥᱠᱤᱢᱟ ᱟᱨ ᱠᱚᱱᱯᱷᱤᱜᱽ ᱵᱟᱝ ᱢᱮᱴᱟᱣ ᱟᱠᱟᱱᱟ ᱾ ᱥᱩᱢᱩᱝ ᱵᱮᱵᱷᱟᱨ ᱢᱮ ᱡᱩᱫᱤ ᱟᱢ ᱠᱩᱞᱩᱯ ᱞᱟᱹᱜᱤᱫ ᱫᱟᱵᱚᱱ ᱦᱩᱭᱩᱜ ᱛᱟᱢᱟ᱾ ᱠᱷᱟᱹᱞᱤ ᱟᱲᱟᱜ ᱢᱮ ᱟᱨ ᱵᱚᱱᱫᱚ ᱞᱟᱹᱜᱤᱫ ᱥᱟᱧᱪᱟᱣ ᱢᱮ ᱾ ᱚᱠᱚᱭᱟᱜ ᱯᱤᱱ ᱞᱮᱠᱟ ᱛᱤᱥ ᱦᱚᱸ ᱵᱟᱝ ᱥᱚᱢᱟᱱᱟ᱾
+duress_pin_ph	ᱤᱢᱟᱨᱡᱮᱱᱥᱤ ᱯᱤᱱ (4-12 ᱮᱞ)
+duress_confirm_ph	ᱴᱷᱟᱹᱣᱠᱟᱹ ᱞᱟᱹᱜᱤᱫ ᱫᱚᱦᱲᱟ ᱴᱟᱭᱤᱯ ᱢᱮ
+save_duress_pin	ᱤᱢᱟᱨᱡᱮᱱᱥᱤ ᱯᱤᱱ ᱥᱟᱧᱪᱟᱣ ᱢᱮ
+clear_duress_pin	ᱤᱢᱟᱨᱡᱮᱱᱥᱤ ᱯᱤᱱ ᱵᱚᱱᱫᱚᱭ ᱢᱮ
+duress_on	ᱤᱢᱟᱨᱡᱮᱱᱥᱤ ᱩᱱᱞᱚᱠ ᱯᱤᱱ ᱪᱟᱹᱞᱩ ᱢᱮᱱᱟᱜᱼᱟ
+duress_off	ᱤᱢᱟᱨᱡᱮᱱᱥᱤ ᱩᱱᱞᱚᱠ ᱯᱤᱱ ᱵᱚᱱᱫᱚ ᱜᱮᱭᱟ
+duress_saved	ᱤᱢᱟᱨᱡᱮᱱᱥᱤ ᱩᱱᱞᱚᱠ ᱯᱤᱱ ᱥᱟᱧᱪᱟᱣ ᱟᱠᱟᱱᱟ
+duress_cleared	ᱤᱢᱟᱨᱡᱮᱱᱥᱤ ᱩᱱᱞᱚᱠ ᱯᱤᱱ ᱵᱚᱱᱫᱚ ᱮᱱᱟ
+vehicle_ph	ᱜᱟᱰᱤ
+void	ᱵᱟᱹᱛᱤᱞ
+write_off_ap	AP ᱚᱞ ᱵᱚᱱᱫᱚᱭ ᱢᱮ
+write_off_nil	ᱚᱞ ᱵᱚᱱᱫᱚ/ ᱥᱩᱢᱩᱝ ᱵᱟᱞᱮᱱᱥ
+zone_ph	ᱡᱚᱱ (ᱫᱚᱨ ᱠᱷᱚᱱ ᱧᱩᱛᱩᱢ)
+caption_today	ᱛᱮᱦᱮᱧ
+caption_bookings	ᱵᱩᱠᱤᱝ
+caption_payments_today	ᱛᱮᱦᱮᱧ ᱯᱮᱢᱮᱱᱴ
+caption_outstanding	ᱟᱹᱰᱤ ᱥᱚᱨᱮᱥ
+caption_bank	ᱵᱮᱝᱠ
+paid_by	ᱦᱚᱛᱮᱛᱮ ᱯᱩᱭᱥᱟᱹ ᱮᱢ ᱦᱩᱭ ᱟᱠᱟᱱᱟ
+second_way	ᱫᱚᱥᱟᱨ ᱦᱚᱨ
+weight_in	ᱚᱡᱚᱱ ᱨᱮ
+size_in	ᱥᱟᱭᱤᱡᱽ ᱨᱮ
+goods_received	ᱡᱤᱱᱤᱥ ᱧᱟᱢ ᱮᱱᱟ
+expense_heading	ᱠᱷᱚᱨᱪᱟ
+notes_attach_sale	ᱱᱚᱴᱥ ᱠᱚ ᱟᱨ ᱞᱟᱴᱷᱟ ᱠᱚ (ᱵᱟᱪᱷᱟᱣ ᱟᱹᱠᱷᱨᱤᱧ)
+notes_attach_party	ᱱᱚᱴᱥ ᱟᱨ ᱟᱴᱮᱪᱢᱮᱱᱴᱥ (ᱵᱟᱪᱷᱟᱣ ᱯᱟᱨᱴᱤ)
+attachments_last_expense	ᱞᱟᱴᱷᱟ (ᱢᱩᱪᱟᱹᱫ ᱠᱷᱚᱨᱪᱟ)
+credit_limit_heading	ᱠᱨᱮᱰᱤᱴ ᱥᱤᱢᱟᱹ (ᱵᱟᱪᱷᱟᱣ/ᱧᱩᱛᱩᱢ ᱯᱟᱨᱴᱤ)
+pay_selected_heading	ᱵᱟᱪᱷᱟᱣ ᱠᱟᱱ ᱯᱩᱭᱥᱟᱹ ᱮᱢᱚᱜ ᱢᱮ (ᱨᱤᱱ ᱥᱚᱞᱦᱟ/ ᱞᱟᱦᱟ ᱦᱟᱛᱟᱣ)
+write_off_heading	ᱚᱞ ᱚᱪᱚᱜ ᱢᱮ (ᱵᱤᱱᱟᱹ ᱯᱮᱢᱮᱱᱴ ᱛᱮ ᱥᱟᱯᱷᱟᱭ ᱢᱮ)
+pay_ap_heading	ᱟᱞᱮ ᱩᱱᱠᱩ ᱪᱮᱫ ᱞᱮ ᱮᱢᱟ ᱠᱚᱣᱟ ᱚᱱᱟ ᱮᱢᱚᱜ ᱢᱮ (ᱮᱯᱤ)
+country_tax	ᱫᱤᱥᱚᱢ ᱟᱨ ᱴᱮᱠᱥ
+extra_tills_heading	ᱵᱟᱹᱲᱛᱤ ᱴᱤᱞᱥ
+other_devices_help_heading	ᱮᱴᱟᱜ ᱥᱟᱫᱷᱚᱱ ᱠᱚ ᱥᱮᱴ ᱟᱯ ᱢᱮ
+other_devices_help	ᱱᱚᱣᱟ ᱥᱟᱫᱷᱚᱱ ᱨᱮ (ᱥᱮᱨᱵᱷᱟᱨ): ᱮᱴᱟᱜ ᱥᱟᱫᱷᱚᱱ ᱠᱚ → ᱵᱟᱹᱲᱛᱤ ᱴᱤᱞ ᱨᱮᱭᱟᱜ ᱪᱷᱟᱹᱲ ᱮᱢᱚᱜ ᱢᱮ᱾ ᱡᱚᱲᱟᱣ ᱠᱚᱰ ᱟᱨ ᱣᱟᱭ-ᱯᱷᱟᱭ ᱴᱷᱤᱠᱟᱹᱱᱟ ᱱᱚᱴ ᱢᱮ ᱾ ᱴᱮᱯ ᱮᱴᱟᱜ ᱰᱤᱵᱷᱟᱭᱤᱥ ᱠᱚ ᱡᱚᱯᱲᱟᱣ ᱞᱟᱹᱜᱤᱫ ᱟᱱᱩᱢᱟᱛ ᱢᱮ ᱡᱩᱫᱤ ᱱᱚᱣᱟ ᱧᱮᱞᱚᱜ ᱠᱷᱟᱱ ᱾ ᱠᱚᱢᱯᱭᱩᱴᱟᱨ ᱨᱮ, ᱱᱚᱶᱟ ᱠᱚᱢᱯᱭᱩᱴᱟᱨ ᱥᱟᱶ ᱮᱛᱚᱦᱚᱵ ᱨᱮ ᱞᱤᱱ ᱢᱮ ᱾ ᱢᱤᱫ ᱮᱴᱟᱜ ᱰᱤᱵᱷᱟᱭᱤᱥ ᱨᱮ: ᱮᱯ ᱤᱱᱥᱴᱚᱞ ᱢᱮ, ᱠᱞᱟᱭᱮᱱᱴ ᱢᱚᱰ ᱵᱟᱪᱷᱟᱣ ᱢᱮ, ᱫᱚᱠᱟᱱ ᱨᱮᱭᱟᱜ ᱥᱮᱨᱵᱷᱟᱨ ᱯᱟᱱᱛᱮ ᱢᱮ (ᱵᱟᱝᱠᱷᱟᱱ ᱴᱷᱤᱠᱟᱹᱱᱟ ᱴᱟᱭᱤᱯ ᱢᱮ), ᱡᱚᱲᱟᱣ ᱠᱚᱰ ᱮᱢ ᱢᱮ, ᱱᱤᱛᱚᱜ ᱡᱚᱲᱟᱣ ᱢᱮ᱾ ᱚᱰᱚᱨ ᱫᱚ ᱰᱤᱵᱷᱟᱭᱤᱥ ᱨᱮ ᱛᱟᱺᱜᱤ ᱢᱮ ᱡᱩᱫᱤ ᱣᱟᱭ-ᱯᱷᱟᱭ ᱧᱩᱨᱩᱜ ᱠᱷᱟᱱ ᱟᱨ ᱥᱮᱨᱵᱷᱟᱨ ᱛᱮᱞᱟ ᱮᱢ ᱠᱷᱟᱱ ᱪᱟᱞᱟᱜᱼᱟ ᱾
+your_brand	ᱟᱢᱟᱜ ᱵᱨᱟᱱᱰ (ᱤᱱ-ᱮᱯ)
+units_heading	ᱭᱩᱱᱤᱴ
+booking_measures	ᱵᱩᱠᱤᱝ ᱡᱚᱠᱷᱟ
+drawer_count	ᱰᱨᱚᱭᱟᱨ ᱞᱮᱠᱷᱟ (ᱚᱯᱥᱚᱱᱟᱞ)
+spreadsheet_csv	ᱥᱯᱨᱮᱰᱥᱤᱴ (ᱥᱤ ᱮᱥ ᱵᱤ)
+bank_reconciliation	ᱵᱮᱝᱠ ᱥᱩᱯᱩᱨ (ᱟᱢᱟᱜ ᱵᱮᱝᱠ ᱥᱴᱮᱴᱢᱮᱱᱴ ᱨᱮ ᱴᱤᱠ ᱚᱯᱷ)
+book_add_product	ᱯᱚᱛᱚᱵ — ᱯᱨᱚᱰᱟᱠᱴ / ᱫᱚᱨ ᱥᱮᱞᱮᱫ ᱢᱮ
+book_opening_credit	ᱯᱚᱛᱚᱵ — ᱠᱨᱮᱰᱤᱴ ᱡᱷᱤᱡᱽ
+account_kind	ᱮᱠᱟᱣᱩᱱᱴ ᱞᱮᱠᱟᱱ (ᱢᱤᱫ ᱴᱮᱯ)
+active_ledger	ᱮᱠᱴᱤᱵᱷ ᱞᱮᱡᱟᱨ
+actual_total_cap	ᱥᱟᱹᱨᱤ ᱢᱩᱴ
+amend_help	ᱥᱚᱫᱚᱨ, ᱵᱟᱝ ᱞᱟᱹᱠᱛᱤᱭᱟᱱ, ᱥᱮ ᱯᱩᱭᱥᱟᱹ ᱨᱩᱣᱟᱹᱲ ᱞᱟᱹᱜᱤᱫ ᱢᱤᱫ ᱟᱹᱠᱷᱨᱤᱧ ᱵᱟᱪᱷᱟᱣ ᱢᱮ᱾ ᱥᱚᱫᱚᱨ ᱫᱚ ᱯᱩᱨᱟᱹ ᱱᱟᱜᱟᱢ ᱫᱚᱦᱚᱭᱟᱭ ᱾ ᱜᱚᱞ ᱢᱩᱴ ᱮᱯᱞᱟᱭᱰ ᱥᱟᱶ ᱵᱟᱨᱟᱵᱟᱨᱤ ᱮᱦᱚᱵᱚᱜᱼᱟ — ᱥᱩᱢᱩᱝ ᱜᱚᱞ ᱞᱟᱹᱜᱤᱫ ᱥᱟᱥᱟᱯᱲᱟᱣ ᱢᱮ ᱾ ᱵᱟᱝ ᱞᱟᱹᱠᱛᱤᱭᱟᱱ ᱟᱨ ᱯᱩᱭᱥᱟᱹ ᱨᱩᱣᱟᱹᱲ ᱞᱟᱹᱜᱤᱫ ᱢᱟᱞᱤᱠ ᱵᱟᱝᱠᱷᱟᱱ ᱢᱮᱱᱮᱡᱟᱨ ᱯᱤᱱ ᱞᱟᱹᱠᱛᱤ ᱦᱩᱭ ᱫᱟᱲᱮᱭᱟᱜᱼᱟ (ᱪᱮᱛᱟᱱ ᱨᱮ ᱴᱟᱭᱤᱯ ᱟᱠᱟᱱ; ᱟᱢᱟᱜ ᱧᱩᱛᱩᱢ ᱥᱟᱶ ᱨᱮᱠᱚᱨᱰ ᱟᱠᱟᱱ)᱾
+applied_total_cap	ᱢᱩᱴ ᱞᱟᱹᱜᱩᱫ
+bank_balance	ᱵᱮᱝᱠ ᱵᱟᱞᱮᱱᱥ
+bank_net_today	ᱛᱮᱦᱮᱧ ᱵᱮᱝᱠ ᱱᱮᱴ
+branch_export_help	ᱮᱠᱥᱯᱚᱨᱴ ᱫᱚ ᱵᱮᱠᱟᱯ ᱯᱷᱚᱞᱰᱟᱨ ᱨᱮ ᱢᱤᱫ ᱫᱤᱱ ᱨᱮᱭᱟᱜ ᱥᱱᱮᱯᱥᱚᱴ ᱚᱞ ᱠᱟᱛᱮ ᱠᱞᱤᱯᱵᱚᱨᱰ ᱨᱮ ᱠᱚᱯᱤ ᱮᱫᱟᱭ ᱾ ᱮᱴᱟᱜ ᱟᱩᱴᱞᱮᱴ ᱫᱤᱱ ᱤᱢᱯᱚᱨᱴ ᱞᱟᱹᱜᱤᱫ, ᱚᱱᱟ ᱯᱷᱚᱞᱰᱟᱨ ᱨᱮ import_branch_snapshot.json ᱞᱮᱠᱟᱛᱮ ᱥᱟᱧᱪᱟᱣ ᱢᱮ, ᱚᱱᱟ ᱛᱟᱭᱚᱢ ᱤᱢᱯᱚᱨᱴ ᱴᱮᱯ ᱢᱮ᱾
+brand_shown_help	ᱮᱯ ᱵᱷᱤᱛᱨᱭ ᱨᱮ ᱥᱠᱨᱤᱱ ᱨᱮ ᱩᱫᱩᱜ ᱟᱠᱟᱱᱟ ᱾ ᱱᱚᱣᱟ ᱰᱤᱵᱷᱟᱭᱤᱥ ᱨᱮ ᱤᱱᱥᱴᱚᱞ ᱟᱠᱟᱱ ᱮᱯ ᱧᱩᱛᱩᱢ ᱟᱨ ᱪᱤᱱᱦᱟᱹ ᱯᱞᱟᱴᱯᱷᱚᱨᱢ ᱥᱩᱪᱤ ᱞᱮᱠᱟᱛᱮ ᱛᱟᱦᱮᱱᱟ ᱾
+app_icon	ᱮᱯ ᱟᱭᱠᱚᱱ
+logo_help	ᱮᱯ ᱨᱮ ᱥᱠᱨᱤᱱ ᱨᱮ ᱚᱯᱥᱚᱱᱟᱞ ᱫᱚᱠᱟᱱ ᱪᱤᱱᱦᱟᱹ ᱾
+onboard_layout	ᱟᱢ ᱪᱮᱫ ᱮᱢ ᱧᱟᱢ ᱮᱫᱟ
+item_photo_help	ᱚᱯᱥᱚᱱᱟᱞ᱾ ᱵᱤᱱᱟᱹ ᱪᱤᱛᱟᱹᱨ ᱛᱮ ᱟᱞᱮ ᱡᱤᱱᱤᱥ ᱧᱩᱛᱩᱢ ᱠᱷᱚᱱ ᱮᱛᱚᱦᱚᱵ ᱟᱹᱲᱟᱹ ᱞᱮ ᱩᱫᱩᱜ ᱟ᱾
+cash_in_hand	ᱛᱤ ᱨᱮ ᱴᱟᱠᱟ (ᱛᱤᱱᱟᱹᱜ)
+change_my_pin_heading	ᱤᱧᱟᱜ ᱯᱤᱱ ᱵᱚᱫᱚᱞ ᱢᱮ (ᱮᱠᱮᱱ ᱟᱢᱟᱜ)
+connect_to_server	ᱥᱮᱨᱵᱷᱟᱨ ᱥᱟᱶ ᱡᱚᱯᱲᱟᱣ ᱢᱮ
+counter_locked	ᱠᱟᱣᱩᱱᱴᱟᱨ 01 · ᱠᱩᱞᱩᱯ ᱮᱱᱟ
+country_pack_help	ᱢᱤᱫ ᱫᱤᱥᱚᱢ ᱯᱮᱠ ᱴᱮᱠᱥ ᱧᱩᱛᱩᱢ ᱟᱨ ᱮᱞᱠᱷᱟ, ᱨᱚᱠᱟ ᱯᱩᱭᱥᱟᱹ ᱨᱮᱞ ᱟᱨ ᱵᱤᱞ ᱨᱮ ᱪᱷᱟᱯᱟ ᱟᱠᱟᱱ ᱵᱮᱯᱟᱨ ᱟᱭᱤ ᱰᱤ ᱥᱮᱴ ᱮᱫᱟᱭ᱾ ᱠᱩᱢᱠᱟᱡᱽ ᱚᱠᱟᱨᱮᱦᱚᱸ ᱴᱮᱠᱥ ᱵᱟᱭ ᱯᱷᱟᱭᱤᱞᱟ ᱟᱨ ᱵᱟᱭ ᱥᱚᱨᱠᱟᱨᱤ ᱤ-ᱪᱟᱞᱟᱱ ᱵᱟᱭ ᱮᱢᱟ ᱾
+currency_use_help	ᱥᱠᱨᱚᱞ ᱢᱮ ᱟᱨ ᱴᱮᱯ ᱢᱮ ᱡᱟᱦᱟᱱ ᱥᱟᱯᱚᱨᱴ ᱠᱟᱱ ᱠᱟᱨᱟᱱᱥᱤ ᱞᱟᱹᱜᱤᱫ ᱵᱮᱵᱷᱟᱨ ᱢᱮ ᱾
+day_close_help	ᱢᱤᱫ ᱫᱤᱱ ᱵᱚᱱᱫᱚ ᱨᱮᱠᱚᱨᱰ ᱠᱟᱛᱮ ᱱᱚᱣᱟ ᱥᱟᱨᱠᱟᱛᱷᱟ (ᱟᱨ ᱞᱮᱠᱷᱟ ᱞᱮᱠᱷᱟᱱ ᱰᱨᱚᱭᱟᱨ ᱵᱷᱮᱨᱤᱭᱟᱱᱥ) ᱚᱰᱤᱴ ᱞᱚᱜᱽ ᱨᱮ ᱵᱟᱧᱪᱟᱣ ᱛᱟᱦᱮᱱᱟ᱾ ᱱᱚᱣᱟ ᱫᱚ ᱟᱠᱨᱤᱧ ᱵᱟᱭ ᱛᱤᱸᱜᱩᱱᱟ ᱾
+expenses_word	ᱠᱷᱚᱨᱪᱟ
+feature_access_help	ᱵᱟᱪᱷᱟᱣ ᱠᱟᱹᱢᱤᱭᱟᱹ ᱠᱚ ᱞᱟᱹᱜᱤᱫ ᱯᱷᱤᱪᱟᱨ ᱮᱠᱥᱮᱥ (ᱥᱮᱞᱮᱫ ᱛᱟᱭᱚᱢ ᱴᱮᱯ)
+footer_local	ᱞᱚᱠᱟᱞ ᱮᱥᱠᱭᱩᱞᱟᱭᱤᱴ · ᱯᱷᱨᱤ ᱡᱟᱭᱡᱩᱜᱽ ᱞᱟᱹᱜᱤᱫ · ᱥᱩᱱ ᱨᱟᱦᱞᱟ
+fresh_book_moklanjo	ᱛᱟᱜᱽᱲᱟ = ᱠᱷᱟᱹᱞᱤ ᱠᱮᱴᱟᱞᱚᱜᱽ (ᱛᱟᱭᱚᱢ ᱛᱮ ᱡᱤᱱᱤᱥ ᱥᱮᱞᱮᱫ ᱢᱮ)᱾ ᱯᱚᱛᱚᱵ = ᱮᱛᱚᱦᱚᱵ ᱥᱴᱚᱠ ᱞᱤᱱ ᱢᱮ ᱟᱨ ᱞᱟᱛᱟᱨ ᱨᱮ ᱟᱢ ᱚᱠᱚᱭ ᱮᱢ ᱢᱮᱛᱟᱢᱟᱭ ᱾
+fresh_selected	ᱛᱟᱜᱽᱲᱟ ᱵᱟᱪᱷᱟᱣ — ᱠᱮᱴᱟᱞᱚᱜᱽ ᱠᱷᱟᱹᱞᱤ ᱜᱮ ᱛᱟᱦᱮᱱᱟ ᱾ ᱥᱟᱯᱲᱟᱣ ᱞᱮᱱᱠᱷᱟᱱ ᱥᱟᱹᱛ ᱞᱤᱱ ᱢᱮ᱾
+gross_word	ᱜᱽᱨᱚᱥ
+how_start	ᱟᱢ ᱪᱤᱠᱟᱹᱛᱮ ᱮᱦᱚᱵ ᱥᱟᱱᱟᱭᱮᱫ ᱢᱮᱭᱟ?
+later_country_pack	ᱛᱟᱭᱚᱢ ᱛᱮᱺ ᱥᱮᱴᱤᱝ ᱠᱚ ᱴᱮᱠᱥ ᱟᱨ ᱯᱮ ᱞᱮᱵᱮᱞ ᱞᱟᱹᱜᱤᱫ ᱟᱢᱟᱜ ᱫᱤᱥᱚᱢ ᱨᱮᱭᱟᱜ ᱯᱮᱠ ᱞᱟᱹᱜᱩᱭ ᱢᱮ ᱾
+local_badge	ᱞᱚᱠᱟᱞ
+measures_help_moklanjo	ᱵᱩᱠᱤᱝ ᱰᱮᱥᱠ ᱨᱮ ᱯᱟᱨᱥᱟᱞ ᱪᱮᱫ ᱞᱮᱠᱟ ᱠᱚ ᱡᱚᱠᱷᱟᱭᱟ ᱾ ᱟᱢ ᱵᱮᱵᱚᱦᱟᱨᱚᱜ ᱠᱟᱱ ᱭᱩᱱᱤᱴ ᱨᱮ ᱰᱟᱭᱢᱮᱱᱥᱚᱱ ᱟᱨ ᱚᱡᱚᱱ ᱴᱟᱭᱤᱯ ᱢᱮ — ᱥᱮᱢᱟᱱ (cm, m, in, ft · kg, g, lb, oz) ᱥᱮ ᱟᱢᱟᱜ ᱭᱩᱱᱤᱴ ᱪᱮᱛᱟᱱ ᱨᱮ cm / kg ᱥᱟᱶ ᱡᱚᱲᱟᱣ ᱟᱠᱟᱱ ᱭᱩᱱᱤᱴ (ᱥᱚᱡᱷᱮ ᱥᱮ ᱮᱴᱟᱜ ᱭᱩᱱᱤᱴ ᱠᱚ ᱦᱚᱛᱮᱛᱮ)᱾ ᱯᱚᱛᱚᱵ ᱥᱟᱨᱟ ᱜᱷᱟᱹᱲᱤᱡ ᱠᱮᱡᱤ ᱨᱮᱠᱚᱨᱰ ᱮᱫᱟᱭ ᱾ ᱫᱚᱦᱚ ᱞᱟᱹᱜᱤᱫ ᱢᱤᱫ ᱯᱟᱦᱴᱟ ᱠᱷᱟᱹᱞᱤ ᱟᱲᱟᱜ ᱢᱮ᱾
+mix_type_hint_moklanjo	ᱴᱟᱭᱤᱯ ᱢᱮ ᱛᱤᱱᱟᱹᱜ ᱥᱟᱱᱟᱢ ᱨᱮ (ᱴᱟᱠᱟ/ᱭᱩᱯᱤᱟᱭᱤ/ᱠᱟᱨᱰ/ᱠᱨᱮᱰᱤᱴ)᱾ ᱵᱤᱞ ᱨᱮ ᱡᱚᱯᱲᱟᱣ ᱞᱟᱹᱠᱛᱤᱭᱟ᱾ ᱠᱨᱮᱰᱤᱴ ᱞᱟᱹᱜᱤᱫ ᱪᱮᱛᱟᱱ ᱨᱮ ᱢᱤᱫ ᱠᱟᱥᱴᱚᱢᱟᱨ ᱞᱟᱹᱠᱛᱤᱜ ᱠᱟᱱᱟ ᱾
+money_in_sales	ᱴᱟᱠᱟ (ᱟᱹᱠᱷᱨᱤᱧ) ᱨᱮ
+more_help_moklanjo	ᱠᱮᱴᱟᱞᱚᱜᱽ, ᱟᱹᱠᱷᱨᱤᱧ, ᱠᱨᱮᱰᱤᱴ, ᱴᱤᱢ, ᱵᱮᱠᱚᱯ — ᱥᱟᱶᱛᱮ ᱥᱴᱚᱠ ᱟᱨ ᱵᱟᱹᱲᱛᱤ ᱴᱤᱞ ᱞᱟᱹᱠᱛᱤ ᱡᱚᱠᱷᱚᱱ ᱾
+net_word	ᱱᱮᱴ
+offline_badge	ᱚᱯᱷᱞᱟᱭᱤᱱ
+optional_login_help	ᱚᱯᱥᱚᱱᱟᱞ ᱞᱚᱜᱤᱱ (ᱟᱭᱤ ᱰᱤ + ᱯᱟᱥᱣᱟᱨᱰ)᱾ ᱢᱟᱞᱤᱠ ᱢᱤᱫ ᱫᱷᱟᱣ ᱥᱮᱴ ᱮᱫᱟᱭ; ᱥᱩᱢᱩᱝ ᱵᱮᱵᱷᱟᱨᱤᱭᱟᱹ ᱜᱮ ᱛᱟᱭᱚᱢ ᱛᱮ ᱯᱟᱥᱣᱟᱨᱰ ᱵᱚᱫᱚᱞ ᱫᱟᱲᱮᱭᱟᱜᱼᱟᱭ᱾
+or_unlock_login	ᱟᱨ ᱵᱟᱝ ᱞᱚᱜᱤᱱ ᱟᱭᱤ ᱰᱤ + ᱯᱟᱥᱣᱟᱨᱰ ᱥᱟᱶ ᱚᱱᱞᱚᱠ
+permission_preset	ᱱᱩᱠᱨᱤ (ᱥᱠᱨᱤᱱ ᱟᱨ ᱦᱚᱠ ᱥᱮᱴ)
+preset_help_moklanjo	ᱠᱮᱥᱤᱭᱟᱨ: ᱟᱠᱨᱤᱧ ᱢᱮ᱾ ᱢᱮᱱᱮᱡᱟᱨ: ᱟᱠᱨᱤᱧ + ᱡᱤᱱᱤᱥ + ᱵᱟᱝ/ᱥᱚᱫᱚᱨ᱾
+product_locked_moklanjo	ᱢᱚᱠᱞᱟᱱᱡᱚ
+product_only_moklanjo	ᱱᱚᱣᱟ ᱮᱯ ᱫᱚ ᱥᱩᱢᱩᱝ ᱢᱚᱠᱞᱟᱱᱡᱚ ᱠᱟᱱᱟ — ᱯᱚᱛᱚᱵ + ᱵᱩᱠᱤᱝ ᱰᱮᱥᱠ ᱾ ᱮᱴᱟᱜ ᱵᱮᱯᱟᱨ ᱠᱚ ᱫᱚ ᱛᱟᱭᱚᱢ ᱛᱮ ᱡᱩᱫᱟᱹ ᱡᱩᱫᱟᱹ ᱡᱤᱱᱤᱥ ᱞᱮᱠᱟ ᱡᱟᱦᱟᱡᱽ ᱨᱮᱭᱟᱜ ᱥᱟᱢᱟᱝ ᱫᱟᱯᱨᱟᱢ ᱦᱩᱭᱩᱜ ᱛᱟᱠᱚᱣᱟ ᱾
+purchases_cogs	ᱠᱤᱨᱤᱧ ᱠᱚ (ᱥᱤ ᱚ ᱡᱤ ᱮᱥ)
+qty_cap	QTY
+restore_help	ᱨᱤᱥᱴᱚᱨᱺ ᱢᱤᱫ ᱵᱮᱠ ᱚᱯ ᱵᱟᱪᱷᱟᱣ ᱢᱮ ᱾ ᱯᱚᱛᱚᱵ ᱠᱚ ᱫᱚ ᱩᱱ ᱞᱮᱠᱟ ᱜᱮ ᱡᱷᱤᱡ ᱮᱱᱟ; ᱯᱚᱛᱚᱵ ᱠᱚ ᱡᱮᱞᱠᱟ ᱱᱤᱛᱚᱜ ᱢᱮᱱᱟᱜᱼᱟ ᱚᱱᱟ ᱫᱚ ᱞᱟᱦᱟᱨᱮ ᱵᱟᱧᱪᱟᱣ ᱟᱠᱟᱱᱟ, ᱚᱱᱟᱛᱮ ᱱᱚᱣᱟ ᱫᱚ ᱵᱟᱝ ᱦᱩᱭ ᱫᱟᱲᱮᱭᱟᱜᱼᱟ᱾
+wipe_data_heading	ᱞᱚᱠᱟᱞ ᱰᱟᱴᱟ ᱢᱮᱴᱟᱣ ᱢᱮ
+wipe_data_help	ᱢᱟᱞᱤᱠ ᱥᱩᱢᱩᱝ — ᱣᱤᱱᱰᱚᱡᱽ ᱟᱱᱤᱱᱥᱴᱚᱞ ᱞᱮᱠᱟ ᱥᱚᱢᱟᱱ ᱵᱤᱠᱚᱞᱯᱚ ᱾ ᱵᱮᱯᱟᱨ ᱨᱮᱠᱚᱨᱰ ᱫᱚ ᱵᱮᱯᱟᱨ ᱱᱟᱜᱟᱢ ᱥᱟᱯᱷᱟᱭᱟ ᱢᱮᱱᱠᱷᱟᱱ ᱫᱚᱨ ᱟᱨ ᱥᱮᱴᱟᱯ ᱫᱚᱦᱚᱭᱟ (ᱡᱮᱞᱠᱟ ᱤᱢᱟᱨᱡᱮᱱᱥᱤ ᱚᱱᱞᱚᱠ ᱯᱤᱱ)᱾ ᱫᱚᱠᱟᱱ ᱥᱮᱴᱟᱯ ᱯᱚᱛᱚᱵ ᱰᱟᱴᱟᱵᱮᱥ ᱚᱪᱚᱜ ᱟᱭ ᱾ ᱥᱠᱨᱤᱱ ᱠᱩᱥᱤᱠᱚ ᱡᱷᱚᱨᱠᱟ/ᱯᱟᱹᱨᱥᱤ ᱥᱟᱯᱷᱟᱭᱟᱭ ᱾ ᱢᱟᱞᱤᱠ ᱯᱤᱱ ᱥᱟᱶ ᱴᱷᱟᱹᱣᱠᱟᱹ ᱢᱮ ᱾ ᱫᱚᱞ ᱨᱮ ᱤᱢᱟᱨᱡᱮᱱᱥᱤ ᱚᱱᱞᱚᱠ ᱯᱤᱱ ᱫᱚ ᱟᱞᱟᱜ ᱜᱮᱭᱟ (ᱚᱱᱞᱚᱠ ᱚᱠᱛᱚ ᱨᱮ ᱩᱠᱩ ᱪᱚᱫ)᱾
+wipe_trading	ᱵᱮᱯᱟᱨ ᱨᱮᱠᱚᱨᱰ
+wipe_schema	ᱫᱚᱠᱟᱱ ᱥᱮᱴᱟᱯ
+wipe_ui	ᱥᱠᱨᱤᱱ ᱠᱩᱥᱤᱠᱚ
+wipe_owner_pin_ph	ᱰᱤᱞᱤᱴ ᱞᱟᱹᱜᱤᱫ ᱢᱟᱞᱤᱠ ᱯᱤᱱ
+wipe_delete_selected	ᱵᱟᱪᱷᱟᱣ ᱠᱟᱱ ᱰᱤᱞᱤᱴ
+wipe_owner_only	ᱥᱩᱢᱩᱝ ᱢᱟᱞᱤᱠ ᱜᱮ ᱞᱚᱠᱟᱞ ᱰᱟᱴᱟ ᱰᱤᱞᱤᱴ ᱫᱟᱲᱮᱭᱟᱜᱼᱟᱭ᱾
+restore_owner_only	ᱥᱩᱢᱩᱝ ᱢᱟᱞᱤᱠ ᱜᱮ ᱵᱮᱠᱟᱯ ᱫᱚᱦᱚ ᱫᱟᱲᱮᱭᱟᱜᱼᱟᱭ ᱾
+wipe_owner_pin_needed	ᱞᱚᱠᱟᱞ ᱰᱟᱴᱟ ᱰᱤᱞᱤᱴ ᱞᱟᱹᱜᱤᱫ ᱢᱟᱞᱤᱠ ᱯᱤᱱ ᱮᱢ ᱢᱮ ᱾
+wipe_nothing_selected	ᱵᱟᱪᱷᱟᱣ ᱢᱮ ᱪᱮᱫ ᱞᱟᱦᱟᱨᱮ ᱰᱤᱞᱤᱴ ᱦᱩᱭᱩᱜᱼᱟ ᱾
+wipe_done	ᱵᱟᱪᱷᱟᱣ ᱟᱠᱟᱱ ᱞᱚᱠᱟᱞ ᱰᱟᱴᱟ ᱢᱮᱴᱟᱣ ᱮᱱᱟ ᱾
+wipe_schema_done	ᱫᱚᱠᱟᱱ ᱥᱮᱴᱟᱯ ᱢᱩᱪᱟᱹᱫ ᱮᱱᱟ — ᱞᱟᱦᱟᱜ ᱞᱟᱹᱜᱤᱫ ᱥᱮᱨᱵᱷᱟᱨ ᱵᱟᱝᱠᱷᱟᱱ ᱠᱞᱟᱭᱮᱱᱴ ᱵᱟᱪᱷᱟᱣ ᱢᱮ ᱾
+rounded_total	ᱜᱚᱞ ᱢᱩᱴ
+setup_app_moklanjo	ᱢᱚᱠᱞᱟᱱᱡᱚ ᱥᱮᱴ ᱟᱯ ᱢᱮ
+shop_logo_optional	ᱵᱟᱡᱟᱨᱚᱢ ᱞᱚᱜᱚ (ᱚᱯᱥᱚᱱᱟᱞ)
+stock_type_help	ᱡᱤᱱᱤᱥ ᱨᱮᱭᱟᱜ ᱧᱩᱛᱩᱢ ᱴᱟᱭᱤᱯ ᱢᱮ (ᱱᱚᱣᱟ ᱨᱮᱭᱟᱜ ᱦᱟᱹᱴᱤᱧ ᱫᱚ ᱰᱷᱮᱨ ᱜᱮᱭᱟ), ᱢᱤᱫ ᱢᱩᱴᱷᱟᱹᱱ, ᱚᱱᱟ ᱛᱟᱭᱚᱢ ᱵᱮᱵᱷᱟᱨ ᱢᱮ ᱾ ᱡᱟᱦᱟᱸ ᱡᱤᱱᱤᱥ ᱫᱚ ᱱᱤᱛ ᱦᱚᱸ ᱵᱟᱝ ᱞᱮᱠᱷᱟ ᱟᱠᱟᱱᱟ ᱚᱱᱟ ᱫᱚ ᱢᱤᱫ ᱫᱷᱟᱣ ᱴᱨᱮᱠᱤᱝ ᱮᱦᱚᱵ ᱞᱟᱹᱠᱛᱤᱜ ᱠᱟᱱᱟ ᱾
+team_owner_help	ᱵᱷᱟᱲᱟ: ᱢᱤᱫ ᱪᱟᱹᱠᱨᱤ ᱵᱟᱪᱷᱟᱣ ᱢᱮ (ᱠᱮᱥᱤᱭᱟᱨ/ᱢᱮᱱᱮᱡᱟᱨ), ᱧᱩᱛᱩᱢ + ᱮᱛᱚᱦᱚᱵ ᱯᱤᱱ, ᱚᱱᱟ ᱛᱟᱭᱚᱢ ᱥᱮᱞᱮᱫ ᱢᱮ ᱾ ᱮᱠᱷᱮᱱ ᱡᱩᱫᱤ ᱱᱩᱭ ᱦᱚᱲ ᱵᱷᱮᱜᱟᱨ ᱜᱮᱭᱟᱭ: ᱞᱟᱛᱟᱨ ᱨᱮ ᱥᱠᱨᱤᱱ ᱠᱚ ᱡᱷᱤᱡᱽ ᱢᱮ ᱟᱨ ᱦᱚᱠ ᱠᱚ, ᱛᱚᱵᱮ ᱠᱟᱹᱢᱤ ᱥᱮᱴᱟᱯ ᱥᱟᱧᱪᱟᱣ ᱢᱮ ᱾ ᱡᱷᱚᱛᱚ ᱦᱚᱲ ᱞᱟᱛᱟᱨ ᱨᱮ ᱟᱠᱚᱣᱟᱜ ᱯᱤᱱ ᱠᱚ ᱵᱚᱫᱚᱞᱟ — ᱢᱟᱞᱤᱠ ᱫᱚ ᱚᱠᱚᱭᱟᱜ ᱦᱚᱸ ᱵᱟᱭ ᱵᱚᱫᱚᱞ ᱫᱟᱲᱮᱭᱟᱜᱼᱟ ᱾
+they_owe_us	ᱩᱱᱠᱩ ᱟᱵᱚ ᱠᱚ ᱫᱟᱱ ᱟᱠᱟᱫ ᱵᱚᱱᱟ
+unit_at_cap	ᱭᱩᱱᱤᱴ @
+units_help	ᱡᱤᱱᱤᱥ ᱞᱮᱵᱮᱞ ᱠᱚ ᱞᱟᱹᱜᱤᱫ ᱠᱚᱰ (ᱠᱮᱡᱤ, ᱯᱤᱥ, ᱵᱮᱜᱽ)᱾ ᱥᱟᱱᱟᱢ ᱭᱩᱱᱤᱴ ᱜᱮ ᱡᱩᱲᱟᱹᱣ ᱞᱟᱹᱠᱛᱤᱭᱟ — ᱥᱚᱡᱷᱮ ᱥᱮ ᱮᱴᱟᱜ ᱭᱩᱱᱤᱴ ᱠᱚ ᱦᱚᱛᱮᱛᱮ — ᱢᱤᱫ ᱢᱟᱱᱚᱛ (kg · cm · ml · pc), ᱡᱮᱞᱮᱠᱟ ᱾ 1 ᱠᱨᱮᱴ = 2 ᱵᱟᱠᱥᱟ ᱟᱨ 1 ᱵᱟᱠᱥᱟ = 20 ᱥᱤ ᱮᱢ᱾ ᱨᱚᱲ ᱵᱚᱫᱚᱞ: 1 ᱠᱷᱚᱱ = ᱯᱷᱮᱠᱴᱚᱨ ᱛᱮ᱾ ᱯᱩᱭᱥᱟᱹ ᱫᱚ ᱛᱤᱥ ᱦᱚᱸ ᱭᱩᱱᱤᱴ ᱵᱟᱝ ᱦᱩᱭᱩᱜᱼᱟ ᱾
+we_owe_them	ᱟᱞᱮ ᱩᱱᱠᱩ ᱞᱮ ᱮᱢᱟ ᱠᱚᱣᱟ
+who_unlocking	ᱚᱠᱚᱭ ᱠᱩᱞᱩᱯ ᱮ ᱡᱷᱤᱡᱽ ᱮᱫᱟ?
+locked_word	ᱠᱩᱞᱩᱯ ᱮᱱᱟ
+show_pin	ᱯᱤᱱ ᱩᱫᱩᱜ ᱢᱮ
+hide_pin	ᱯᱤᱱ ᱩᱠᱩᱭ ᱢᱮ
+set_owner_pin	ᱢᱟᱞᱤᱠ ᱯᱤᱱ ᱥᱮᱴ ᱢᱮ
+enter_owner_passcode	ᱢᱟᱞᱤᱠ ᱯᱟᱥᱠᱚᱰ ᱮᱢ ᱢᱮ
+enter_staff_passcode	ᱥᱴᱟᱯᱷ ᱯᱟᱥᱠᱚᱰ ᱮᱢ ᱢᱮ
+pin_count_zero	0/12 ᱮᱞ · ᱠᱚᱢ ᱥᱮ ᱠᱚᱢ 4, ᱮᱱᱠᱷᱟᱱ ᱴᱷᱤᱠ ᱜᱮᱭᱟ
+pin_count_need	{} / 12 ᱮᱞ · ᱟᱨ {} ᱞᱟᱹᱠᱛᱤ
+pin_count_full	12/12 ᱮᱞ · ᱚᱠᱮ ᱞᱤᱱ ᱢᱮ
+pin_count_ready	{} / 12 ᱰᱤᱡᱤᱴ · ᱥᱟᱯᱲᱟᱣ ᱞᱮᱱᱠᱷᱟᱱ ᱚᱠᱮ ᱞᱤᱱ ᱢᱮ
+pin_hint_choose	4-12 ᱮᱞ ᱵᱟᱪᱷᱟᱣ ᱢᱮ · ᱥᱟᱸᱪᱟᱣ ᱞᱟᱹᱜᱤᱫ ᱮᱱᱴᱟᱨ ᱵᱟᱝᱠᱷᱟᱱ ᱩᱱᱞᱚᱠ ᱢᱮ
+pin_hint_new	ᱱᱟᱶᱟ 4-12 ᱮᱞ ᱢᱟᱞᱤᱠ ᱯᱤᱱ · ᱮᱢ ᱢᱮ ᱵᱟᱝᱠᱷᱟᱱ ᱠᱩᱞᱩᱯ ᱡᱷᱤᱡᱽ ᱢᱮ
+pin_hint_shop_code	ᱥᱟᱫᱷᱚᱱ ᱠᱤᱨᱤᱧ ᱢᱮ · ᱡᱚᱲᱟᱣ ᱠᱚᱰ {}
+pin_hint_books	ᱱᱚᱣᱟ ᱥᱟᱫᱷᱚᱱ ᱨᱮ ᱯᱚᱛᱚᱵ ᱠᱚ ᱫᱚᱦᱚ ᱫᱟᱲᱮᱭᱟᱜᱼᱟ
+pin_hint_paired	ᱵᱟᱹᱲᱛᱤ ᱡᱚᱲᱟᱣ ᱦᱟᱹᱵᱤᱡ — ᱟᱠᱨᱤᱧ ᱞᱟᱹᱜᱤᱫ ᱞᱚᱠ ᱚᱱᱞᱚᱠ
+pin_hint_pair_first	ᱵᱟᱹᱲᱛᱤ ᱴᱤᱞ — ᱯᱩᱭᱞᱩ ᱫᱚᱠᱟᱱ ᱥᱟᱫᱷᱚᱱ ᱥᱟᱶ ᱡᱚᱲᱟᱣ ᱢᱮ
+unlock_to_continue	ᱞᱟᱦᱟᱜ ᱞᱟᱹᱜᱤᱫ ᱠᱩᱞᱩᱯ ᱡᱷᱤᱡᱽ ᱢᱮ
+no_staff_yet	ᱱᱤᱛ ᱦᱚᱸ ᱪᱮᱫ ᱠᱟᱹᱢᱤᱭᱟᱹ ᱵᱟᱹᱱᱩᱜ ᱠᱚᱣᱟ — ᱢᱟᱞᱤᱠ ᱞᱮᱠᱟᱛᱮ ᱚᱱᱞᱚᱠ ᱢᱮ, ᱛᱚᱵᱮ ᱫᱚᱞ
+status_server_set_pin	ᱥᱮᱨᱵᱷᱟᱨ ᱢᱳᱰ — ᱢᱟᱞᱤᱠ ᱯᱤᱱ ᱥᱮᱴ ᱢᱮ
+status_server_tills	ᱥᱮᱨᱵᱷᱟᱨ ᱢᱳᱰ — ᱵᱟᱹᱲᱛᱤ ᱴᱤᱞ ᱠᱚ ᱡᱚᱲᱟᱣ ᱫᱟᱲᱮᱭᱟᱜᱼᱟ ᱾ ᱠᱩᱞᱩᱯ ᱡᱷᱤᱡᱽ ᱢᱮ
+status_server_unlock	ᱥᱮᱨᱵᱷᱟᱨ ᱢᱳᱰ — ᱢᱟᱞᱤᱠ ᱞᱮᱠᱟᱛᱮ ᱡᱷᱤᱡᱽ ᱢᱮ
+status_client_unlock	ᱠᱞᱟᱭᱮᱱᱴ ᱢᱳᱰ — ᱟᱠᱨᱤᱧ ᱞᱟᱹᱜᱤᱫ ᱚᱱᱞᱚᱠ ᱩᱱᱩᱫᱩᱜ
+icon_new_selected	ᱪᱤᱱᱦᱟᱹ: ᱱᱟᱶᱟ ᱨᱮᱫ ᱵᱟᱪᱷᱟᱣ ᱮᱱᱟ — ᱵᱨᱟᱱᱰ ᱥᱟᱧᱪᱟᱣ ᱨᱮ ᱴᱮᱯ ᱢᱮ
+icon_custom	ᱪᱤᱱᱦᱟᱹ: ᱟᱢᱟᱜ ᱡᱟᱭᱜᱟ ᱪᱤᱱᱦᱟᱹ
+icon_default	ᱟᱭᱠᱚᱱ: ᱠᱩᱢᱠᱟᱡᱽ ᱪᱤᱱᱦᱟᱹ (ᱰᱤᱯᱷᱚᱞᱴ) — ᱢᱤᱫ ᱠᱟᱥᱴᱚᱢ ᱵᱟᱪᱷᱟᱣ ᱢᱮ
+logo_yours	ᱞᱚᱜᱚ: ᱟᱢᱟᱜ ᱫᱚᱠᱟᱱ ᱨᱮᱭᱟᱜ ᱞᱚᱜᱚ — ᱥᱠᱨᱤᱱ ᱟᱨ ᱨᱟᱹᱥᱤᱫ ᱨᱮ ᱩᱫᱩᱜ ᱟᱠᱟᱱᱟ
+logo_default	ᱞᱚᱜᱚ: ᱠᱩᱢᱠᱟᱡᱽ ᱪᱤᱱᱦᱟᱹ (ᱰᱤᱯᱷᱚᱞᱴ) — ᱡᱩᱫᱤ ᱟᱢ ᱴᱷᱮᱱ ᱢᱤᱫᱴᱟᱹᱝ ᱢᱮᱱᱟᱜ ᱠᱷᱟᱱ ᱟᱢᱟᱜ ᱵᱟᱪᱷᱟᱣ ᱢᱮ
+tmpl_current	ᱱᱤᱛᱚᱜ: {} — {}
+tmpl_selected	ᱵᱟᱪᱷᱟᱣ: {} — {}
+setup_complete	ᱥᱮᱴᱟᱯ ᱯᱩᱨᱟᱹᱣ ᱮᱱᱟ
+onboard_fresh_tmpl	ᱛᱟᱜᱽᱲᱟ · {} — ᱠᱮᱴᱟᱞᱚᱜᱽ ᱠᱷᱟᱹᱞᱤ ᱮᱦᱚᱵᱚᱜᱼᱟ; ᱡᱤᱱᱤᱥ ᱠᱚ ᱨᱮ ᱡᱤᱱᱤᱥ ᱠᱚ ᱥᱮᱞᱮᱫ ᱢᱮ, ᱚᱱᱟ ᱛᱟᱭᱚᱢ ᱥᱟᱹᱛ ᱮᱱᱟ ᱾
+onboard_book_tmpl	ᱯᱚᱛᱚᱵ · {} — ᱡᱤᱱᱤᱥ ᱠᱚ ᱥᱮᱞᱮᱫ ᱢᱮ ᱟᱨ ᱠᱨᱮᱰᱤᱴ ᱮᱛᱚᱦᱚᱵ ᱢᱮ, ᱚᱱᱟ ᱛᱟᱭᱚᱢ ᱥᱟᱹᱛ ᱮᱱᱟ ᱾
+onboard_template_tmpl	ᱡᱩᱫᱤ ᱟᱢ ᱢᱚᱱᱮ ᱠᱷᱟᱱ ᱚᱱᱟ ᱡᱟᱭᱜᱟ ᱨᱮᱭᱟᱜ ᱧᱩᱛᱩᱢ ᱢᱮ, ᱛᱚᱵᱮ ᱵᱟᱪᱷᱟᱣ ᱢᱮ ᱪᱮᱫ ᱞᱮᱠᱟ ᱛᱮ ᱮᱦᱚᱵᱚᱜᱼᱟ ᱾
+tmpl_blurb	ᱠᱩᱨᱤᱭᱟᱨ ᱯᱚᱛᱚᱵ ᱠᱚ ᱟᱨ ᱵᱩᱠᱤᱝ ᱰᱮᱥᱠᱺ ᱠᱚᱱᱥᱤᱱᱚᱨ, ᱠᱮᱨᱤᱭᱟᱨ, ᱫᱤᱱ ᱯᱚᱛᱚᱵ, ᱮ ᱰᱟᱵᱽ ᱵᱤ ᱾
+tmpl_how	ᱰᱮᱥᱠ ᱨᱮ ᱯᱟᱨᱥᱟᱞ ᱵᱩᱠ ᱢᱮ; ᱛᱮᱦᱮᱧ ᱞᱟᱹᱜᱤᱫ ᱢᱟᱦᱟᱸ ᱯᱚᱛᱚᱵ; ᱫᱚᱨ, ᱯᱟᱨᱴᱤ, ᱨᱤᱯᱳᱨᱴ ᱞᱟᱹᱜᱤᱫ ᱴᱮᱵᱽ ᱠᱚ ᱾
+trk_booked	ᱵᱩᱠ ᱦᱩᱭ ᱟᱠᱟᱱᱟ
+trk_picked_up	ᱦᱟᱛᱟᱣ ᱮᱱᱟ
+trk_in_transit	ᱴᱨᱟᱱᱡᱤᱴ ᱨᱮ
+trk_delivered	ᱦᱟᱛᱟᱣ ᱟᱠᱟᱱᱟ
+trk_rto	ᱵᱷᱮᱡᱟᱭᱤᱡ ᱴᱷᱮᱱ ᱨᱩᱣᱟᱹᱲᱚᱜ ᱠᱟᱱᱟ
+lane_to_dispatch	ᱵᱷᱮᱡᱟ ᱞᱟᱹᱜᱤᱫ
+lane_with_carrier	ᱠᱮᱨᱤᱭᱟᱨ ᱥᱟᱶᱛᱮ
+lane_failed	ᱵᱟᱝᱹᱫᱟᱲᱮ
+lane_done_today	ᱛᱮᱦᱮᱧ ᱥᱟᱹᱛ ᱮᱱᱟ
+ops_board_help	ᱯᱟᱨᱥᱟᱞ ᱚᱠᱟ ᱛᱮ ᱩᱱᱠᱩ ᱛᱮᱦᱮᱧᱟᱜ ᱠᱟᱹᱢᱤ ᱨᱮ ᱢᱮᱱᱟᱜ ᱠᱚᱣᱟ ᱾ ᱯᱟᱨᱥᱟᱞ ᱴᱮᱯ (ᱵᱟᱝᱠᱷᱟᱱ ᱥᱠᱮᱱ) ᱚᱱᱟ ᱵᱟᱪᱷᱟᱣ ᱞᱟᱹᱜᱤᱫ, ᱚᱱᱟ ᱛᱟᱭᱚᱢ ᱢᱤᱫ ᱫᱷᱟᱣ ᱛᱮ ᱵᱟᱪᱷᱟᱣ ᱟᱠᱟᱱ ᱡᱚᱛᱚ ᱨᱮ ᱠᱟᱹᱢᱤ ᱢᱮ — ᱥᱟᱱᱟᱢ ᱞᱮᱱ ᱫᱚ ᱮᱠᱮᱱ ᱚᱱᱟ ᱯᱷᱤᱴ ᱞᱟᱹᱜᱤᱫ ᱜᱮ ᱮᱢᱚᱜ ᱠᱟᱱᱟ᱾
+lane_empty	ᱱᱤᱛᱚᱜ ᱱᱚᱸᱰᱮ ᱪᱮᱫ ᱦᱚᱸ ᱵᱟᱹᱱᱩᱜᱼᱟ ᱾
+picked_fmt	{n} ᱵᱟᱪᱷᱟᱣ ᱮᱱᱟ
+pick_all	ᱥᱟᱱᱟᱢ ᱵᱟᱪᱷᱟᱣ ᱢᱮ
+bag_for_carrier	ᱛᱤ ᱫᱚ ᱠᱮᱨᱤᱭᱟᱨ ᱴᱷᱮᱱ
+send_with_rider	ᱨᱟᱭᱰᱟᱨ ᱥᱟᱶ ᱵᱷᱮᱡᱟᱭ ᱢᱮ
+out_again	ᱫᱚᱦᱲᱟ ᱵᱟᱦᱨᱮ
+return_to_sender	ᱵᱷᱮᱡᱟᱭᱤᱡ ᱴᱷᱮᱱ ᱨᱩᱣᱟᱹᱲ ᱢᱮ
+runs_bags_heading	ᱱᱮᱛᱟᱨ ᱫᱟᱹᱲ ᱟᱨ ᱵᱮᱜᱽ
+print_word	ᱪᱷᱟᱯᱟ
+bag_word	ᱠᱮᱨᱤᱭᱟᱨ ᱵᱮᱜᱽ
+run_word	ᱨᱟᱭᱰᱟᱨ ᱫᱟᱹᱲ
+parcels_fmt	{n} ᱯᱟᱨᱥᱟᱞ
+parcel_history	ᱱᱟᱜᱟᱢ
+attempt_fmt	ᱪᱮᱥᱴᱟ {n}
+pieces_short_fmt	{n} ᱯᱤᱥᱤᱮᱥ
+note_reason_ph	ᱱᱚᱴ ᱵᱟᱝᱠᱷᱟᱱ ᱠᱟᱨᱚᱱ
+ops_pick_first	ᱞᱟᱦᱟᱨᱮ ᱯᱟᱨᱥᱟᱞ ᱵᱟᱪᱷᱟᱣ ᱢᱮ — ᱚᱱᱟ ᱴᱮᱯ ᱢᱮ ᱵᱟᱝᱠᱷᱟᱱ ᱥᱠᱮᱱ ᱢᱮ
+cod_to_collect	ᱰᱮᱞᱤᱵᱷᱟᱨ ᱦᱩᱭᱮᱱᱟ — ᱢᱤᱫᱴᱟᱹᱝ ᱞᱟᱹᱜᱤᱫ ᱥᱤ ᱚ ᱰᱤ
+cod_on_road	ᱥᱤ ᱚ ᱰᱤ ᱱᱤᱛ ᱦᱚᱸ ᱦᱚᱨ ᱨᱮ ᱢᱮᱱᱟᱜᱼᱟ
+cod_owed_consignors	ᱥᱟᱢᱴᱟᱣ ᱟᱠᱟᱱᱟ — ᱠᱚᱱᱥᱟᱭᱤᱱᱚᱨ ᱠᱚ ᱯᱩᱭᱥᱟᱹ ᱮᱢ ᱞᱟᱹᱜᱤᱫ
+cod_rto_fees	ᱟᱨ ᱴᱤ ᱳ ᱯᱷᱤ ᱠᱚ ᱢᱤᱫᱴᱟᱹᱝ ᱞᱟᱹᱜᱤᱫ
+cod_to_hand_in	ᱥᱤ ᱚ ᱰᱤ ᱦᱟᱛᱟᱣ ᱞᱟᱹᱜᱤᱫ
+parcel_one_fmt	{n} ᱯᱟᱨᱥᱟᱞ
+facet_bank_title	ᱨᱤᱯᱳᱨᱴ
+facet_bank_help	ᱢᱟᱦᱟᱸ ᱯᱚᱛᱚᱵ, ᱯᱟᱨᱴᱤ ᱵᱩᱰᱷᱤ, ᱵᱮᱝᱠ ᱯᱚᱥᱴ, ᱟᱨ ᱚᱠᱛᱚ ᱯᱤ ᱮᱱᱰ ᱮᱞ ᱾
+facet_ops_title	ᱠᱚᱱᱥᱟᱭᱤᱱᱢᱮᱱᱴ ᱟᱨ ᱰᱤᱥᱯᱮᱪ
+facet_ops_help	ᱥᱠᱮᱱ ᱵᱟᱝᱠᱷᱟᱱ ᱴᱟᱭᱤᱯ ᱢᱮ AWB → ᱯᱟᱱᱛᱮ ᱢᱮ, ᱚᱱᱟ ᱛᱟᱭᱚᱢ ᱞᱟᱦᱟ/ᱯᱨᱤᱱᱴ ᱞᱮᱵᱮᱞ/COD᱾ ᱨᱟᱭᱰᱟᱨ ᱵᱟᱝᱠᱷᱟᱱ ᱠᱮᱨᱤᱭᱟᱨ ᱴᱷᱮᱱ ᱰᱤᱥᱯᱮᱪ ᱢᱮ ᱾
+facet_cod_title	ᱥᱤ ᱚ ᱰᱤ ᱨᱟᱡᱤᱥᱴᱟᱨ
+facet_cod_help	ᱰᱮᱞᱤᱵᱷᱟᱨᱤ ᱨᱮ ᱡᱟᱣᱨᱟ ᱢᱮ, ᱚᱱᱟ ᱛᱟᱭᱚᱢ ᱠᱚᱱᱥᱟᱭᱤᱱᱚᱨ ᱴᱷᱮᱱ ᱵᱷᱮᱡᱟᱭ ᱢᱮ ᱾
+facet_riders_title	ᱨᱟᱭᱰᱟᱨᱥ (ᱱᱤᱡᱮᱨᱟᱜ ᱯᱷᱞᱤᱴ)
+facet_riders_help	ᱨᱟᱭᱰᱟᱨ ᱠᱚ ᱥᱮᱞᱮᱫ ᱠᱚᱢ, ᱚᱱᱟ ᱛᱟᱭᱚᱢ ᱚᱯᱥ ᱠᱷᱚᱱ ᱵᱩᱠ ᱟᱠᱟᱱ AWB ᱠᱚ ᱠᱩᱞ ᱠᱚᱢ ᱾
+against_bill_ph	ᱵᱤᱞ ᱨᱮᱭᱟᱜ ᱵᱤᱨᱚᱫᱷ # ᱪᱮᱛᱟᱱ (ᱚᱯᱥᱚᱱᱟᱞ)
+aliases_ph	ᱮᱞᱤᱭᱟᱥ ᱠᱚ — ᱮᱴᱟᱜ ᱧᱩᱛᱩᱢ, ᱠᱚᱢᱟ ᱵᱷᱮᱜᱟᱨ ᱟᱠᱟᱱᱟ
+amount_blank_full_ph	ᱴᱟᱠᱟ (ᱠᱷᱟᱹᱞᱤ = ᱯᱩᱨᱟᱹ ᱵᱟᱞᱮᱱᱥ)
+amount_owed_ph	ᱮᱢ ᱠᱟᱱ ᱴᱟᱠᱟ
+amount_ph	ᱴᱟᱠᱟ
+amount_received_ph	ᱧᱟᱢ ᱟᱠᱟᱱ ᱴᱟᱠᱟ
+amount_we_pay_ph	ᱟᱞᱮ ᱴᱟᱠᱟ ᱞᱮ ᱮᱢᱟ
+awb_scan_ph	AWB/ ᱥᱠᱮᱱ ᱵᱟᱨᱠᱚᱰ
+bulk_csv_ph	ᱵᱟᱹᱲᱛᱤ ᱥᱤ ᱮᱥ ᱵᱤ — ᱱᱤᱴ ᱴᱷᱟᱶ, ᱠᱚᱱᱥᱟᱭᱤᱱᱤ, ᱠᱮ ᱡᱤ, ᱠᱚᱰ_ᱯᱟᱭᱤᱥ, ᱱᱚᱴ
+business_name_ph	ᱵᱮᱯᱟᱨ ᱧᱩᱛᱩᱢ
+category_new_ph	ᱛᱷᱚᱠ (ᱚᱯᱥᱚᱱᱟᱞ, ᱛᱮᱭᱟᱨ ᱡᱩᱫᱤ ᱱᱟᱶᱟ)
+cod_amount_ph	COD ᱴᱟᱠᱟ
+code_bag_ph	ᱠᱚᱰ (ᱵᱮᱜᱽ)
+conv_factor_ph	ᱯᱷᱮᱠᱴᱚᱨ (25 = 1 ᱵᱮᱜᱽ → 25 ᱠᱮ ᱡᱤ)
+country_code_ph	ᱫᱤᱥᱚᱢ ᱠᱚᱰ ᱮ.ᱥ. ᱤᱱ, ᱡᱤᱵᱤ, ᱭᱩᱮᱥ, ᱮᱭᱤ, ᱵᱤᱟᱨ
+credit_khata_amount_ph	ᱠᱨᱮᱰᱤᱴ/ᱠᱷᱟᱴᱟ ᱴᱟᱠᱟ
+credit_limit_ph	ᱠᱨᱮᱰᱤᱴ ᱥᱤᱢᱟᱹ (0 = ᱵᱟᱝ)
+dim_unit_code_ph	ᱰᱟᱭᱢᱮᱱᱥᱚᱱ ᱭᱩᱱᱤᱴ ᱠᱚᱰ (ᱥᱤ ᱮᱢ)
+divisor_ph	ᱵᱷᱚᱞᱭᱩᱢᱮᱴᱨᱤᱠ ᱰᱤᱣᱟᱭᱤᱡᱟᱨ (᱕᱐᱐᱐)
+extra_per_kg_ph	ᱵᱟᱹᱲᱛᱤ / ᱠᱮᱡᱤ
+first_amount_ph	ᱯᱩᱭᱞᱩ ᱴᱟᱠᱟ
+first_kg_ph	ᱯᱩᱭᱞᱩ ᱠᱮᱡᱤ (ᱥᱞᱟᱵᱽ)
+from_code_ph	ᱠᱚᱰ ᱠᱷᱚᱱ (ᱵᱮᱜᱽ)
+item_name_lang_ph	ᱡᱤᱱᱤᱥ ᱧᱩᱛᱩᱢ — ᱱᱚᱣᱟ ᱟᱢᱟᱜ ᱯᱟᱹᱨᱥᱤ ᱛᱮ ᱴᱟᱭᱤᱯ ᱢᱮ
+login_id_opt_ph	ᱵᱮᱵᱷᱟᱨᱤᱭᱟᱹ ᱧᱩᱛᱩᱢ (ᱞᱟᱹᱠᱛᱤᱭᱟᱱ, ᱵᱷᱮᱜᱟᱨ)
+manager_pin_ph	ᱢᱮᱱᱮᱡᱟᱨ ᱯᱤᱱ ᱟᱝᱜᱚᱪ ᱞᱟᱹᱜᱤᱫ (ᱮᱠᱷᱮᱱ ᱡᱩᱫᱤ ᱟᱢ ᱵᱟᱢ ᱵᱟᱹᱲᱤᱡ ᱫᱟᱲᱮᱭᱟᱜᱼᱟ)
+new_branch_name_ph	ᱱᱟᱶᱟ ᱥᱟᱠᱟᱢ ᱧᱩᱛᱩᱢ
+new_password_ph	ᱱᱟᱶᱟ ᱯᱟᱥᱣᱟᱨᱰ (ᱚᱯᱥᱚᱱᱟᱞ)
+new_pin_ph	ᱱᱟᱶᱟ ᱯᱤᱱ (4-12 ᱮᱞ)
+note_bank_ph	ᱱᱚᱴ (ᱡᱚᱢᱟ, ᱚᱰᱚᱠ, ...)
+note_buy_expense_ph	ᱱᱚᱴ (ᱥᱩᱱᱩᱢ, ᱵᱷᱟᱲᱟ,...)
+note_expense_ph	ᱱᱚᱴ (ᱥᱩᱱᱩᱢ, ᱚᱯᱷᱤᱥ, ...)
+notify_phone_ph	ᱯᱷᱚᱱ ᱵᱟᱰᱟᱭ ᱚᱪᱚᱭ ᱢᱮ (ᱦᱣᱟᱴᱥᱟᱯ/ᱮᱥ ᱮᱢ ᱮᱥ ᱦᱩᱠ)
+options_moklanjo_ph	ᱚᱯᱥᱚᱱᱟᱞ (ᱚᱯᱥᱚᱱᱟᱞ) — ᱢᱟᱨᱟᱝ=᱒᱐, ᱥᱤᱨᱯᱟᱹ ᱵᱮᱫᱷᱟᱣ=᱑᱐
+part_second_way_ph	ᱫᱚᱥᱟᱨ ᱦᱚᱨ ᱛᱮ ᱦᱟᱹᱴᱤᱧ (ᱚᱯᱥᱚᱱᱟᱞ)
+phone_ph	ᱯᱷᱚᱱ
+address_ph	ᱴᱷᱤᱠᱟᱱᱟ
+party_custom_fields_heading	ᱠᱟᱥᱴᱚᱢ ᱯᱷᱤᱞᱰ (ᱵᱟᱪᱷᱟᱣ ᱯᱟᱨᱴᱤ)
+party_custom_help	ᱱᱚᱣᱟ ᱯᱟᱨᱴᱤ ᱨᱮ ᱡᱟᱦᱟᱱ ᱞᱮᱵᱮᱞ ᱟᱨ ᱜᱚᱱᱚᱝ ᱥᱮᱞᱮᱫ ᱢᱮ — ᱦᱚᱴᱥᱟᱯ, ᱡᱤ ᱮᱥ ᱴᱤ ᱟᱭᱤ ᱮᱱ, ᱨᱳᱴ ᱠᱳᱰ, ...
+party_custom_key_ph	ᱯᱷᱤᱞᱰ ᱧᱩᱛᱩᱢ (ᱡᱮᱞᱠᱟ ᱦᱚᱴᱥᱟᱯ)
+party_custom_value_ph	ᱜᱚᱱᱚᱝ
+party_custom_add	ᱯᱟᱦᱴᱟ ᱥᱮᱞᱮᱫ ᱢᱮ
+party_custom_remove	ᱯᱟᱦᱴᱟ ᱚᱪᱚᱜᱽ ᱢᱮ
+party_custom_empty	ᱱᱤᱛ ᱦᱚᱸ ᱠᱟᱥᱴᱚᱢ ᱯᱷᱤᱞᱰ ᱵᱟᱹᱱᱩᱜᱼᱟ
+party_custom_pick_first	ᱠᱟᱥᱴᱚᱢ ᱯᱷᱤᱞᱰ ᱥᱮᱞᱮᱫ ᱞᱟᱹᱜᱤᱫ ᱢᱤᱫ ᱯᱟᱨᱴᱤ ᱵᱟᱪᱷᱟᱣ ᱢᱮ
+place_name_ph	ᱱᱚᱶᱟ ᱴᱷᱟᱶ ᱨᱮᱭᱟᱜ ᱧᱩᱛᱩᱢ
+price_ph	ᱜᱚᱱᱚᱝ
+qty_example_ph	ᱢᱩᱴᱷᱟᱹᱱ (ᱡᱮᱞᱠᱟ 1.5 ᱠᱮᱡᱤ ᱞᱟᱹᱜᱤᱫ)
+quantity_ph	ᱯᱚᱨᱤᱢᱟᱱ
+reason_required_ph	ᱠᱟᱨᱚᱱ (ᱞᱟᱹᱠᱛᱤ)
+role_title_ph	ᱵᱷᱩᱢᱤᱠᱟ ᱧᱩᱛᱩᱢ (ᱡᱮᱞᱠᱟ ᱵᱟᱨᱤᱥᱴᱟ)
+service_pct_ph	ᱥᱮᱵᱟ % ᱚᱯᱥᱚᱱᱟᱞ 0/10/12
+short_code_ph	ᱠᱷᱟᱴᱚ ᱠᱚᱰ (MG02)
+slab_kg_ph	ᱠᱮᱡᱤ ᱨᱮ ᱪᱟᱨᱡᱽ ᱞᱮᱠᱟᱱ ᱥᱞᱟᱵᱽ (᱐.᱕)
+staff_name_ph	ᱠᱟᱹᱢᱤᱭᱟᱹ ᱧᱩᱛᱩᱢ/ᱟᱭᱤ ᱰᱤ
+starting_password_ph	ᱫᱟᱱᱟᱝ ᱥᱟᱵᱟᱫᱽ ᱮᱦᱚᱵᱚᱜ ᱠᱟᱱᱟ (ᱚᱯᱥᱚᱱᱟᱞ)
+starting_pin_ph	ᱮᱛᱚᱦᱚᱵ ᱯᱤᱱ (4-12 ᱮᱞ)
+tax_rate_ph	ᱴᱮᱠᱥ ᱫᱚᱨ ᱧᱩᱛᱩᱢ ᱵᱟᱝᱠᱷᱟᱱ % — ᱥᱚᱨᱠᱟᱨᱤ, ᱠᱚᱢ ᱟᱠᱟᱱ, 0, 5, 12, 18, 20
+to_code_ph	ᱠᱚᱰ ᱞᱟᱹᱜᱤᱫ (ᱠᱮᱡᱤ)
+uncleared_no_ph	ᱵᱟᱝ ᱯᱷᱟᱨᱪᱟ # ᱪᱮᱛᱟᱱ
+unit_cost_ph	ᱭᱩᱱᱤᱴ ᱜᱚᱱᱚᱝ
+unit_kg_blank_ph	ᱭᱩᱱᱤᱴ (ᱠᱮᱡᱤ ᱵᱟᱝᱠᱷᱟᱱ ᱠᱷᱟᱹᱞᱤ)
+unit_name_bag_ph	ᱧᱩᱛᱩᱢ (ᱵᱮᱜᱽ)
+weight_unit_code_ph	ᱚᱡᱚᱱ ᱭᱩᱱᱤᱴ ᱠᱚᱰ (ᱠᱮᱡᱤ)
+zone_name_ph	ᱡᱚᱱ ᱧᱩᱛᱩᱢ
+pay_credit	ᱠᱨᱮᱰᱤᱴ
+book_kind_today	ᱛᱮᱦᱮᱧ ᱯᱚᱛᱚᱵ
+book_kind_month	ᱱᱚᱣᱟ ᱪᱟᱸᱫᱚ ᱨᱮᱱᱟᱜ ᱯᱚᱛᱚᱵ
+book_kind_aging	ᱵᱟᱹᱠᱛᱤ/ᱰᱮᱵᱤᱴ-ᱠᱨᱮᱰᱤᱴ
+book_kind_balance	ᱵᱮᱞᱮᱱᱥ ᱥᱤᱴ
+ops_desk_help	AWB ᱫᱚ USB ᱵᱟᱨᱠᱚᱰ ᱥᱠᱮᱱᱟᱨ ᱥᱟᱶ ᱥᱠᱮᱱ ᱢᱮ (ᱵᱟᱝᱠᱷᱟᱱ ᱴᱟᱭᱤᱯ ᱢᱮ) → ᱯᱟᱱᱛᱮ ᱢᱮ ᱾ ᱛᱟᱨᱯᱚᱨ ᱞᱟᱦᱟ ᱥᱮᱱᱚᱜ ᱢᱮ, ᱞᱮᱵᱮᱞ ᱪᱷᱟᱯᱟ ᱢᱮ, ᱟᱨᱵᱟᱝ ᱥᱤ ᱚ ᱰᱤ ᱢᱤᱫᱴᱟᱹᱝ ᱢᱮ ᱾ ᱞᱮᱵᱮᱞ ᱠᱚ ᱯᱨᱤᱱᱴ ᱠᱚᱰ ᱑᱒᱘ ᱾
+role_help_consignor	ᱵᱷᱩᱢᱤᱠᱟ: ᱠᱚᱱᱥᱤᱜᱱᱚᱨ — ᱟᱨ (ᱩᱱᱠᱩ ᱟᱵᱚ ᱠᱚ ᱮᱢᱟ ᱵᱚᱱᱟ)᱾ ᱚᱱᱟ ᱯᱷᱟᱨᱢ ᱜᱮ ᱠᱮᱨᱤᱭᱟᱨ ᱦᱚᱸ ᱦᱩᱭ ᱫᱟᱲᱮᱭᱟᱜᱼᱟ ᱾
+role_help_carrier	ᱵᱷᱩᱢᱤᱠᱟ: ᱵᱟᱦᱚᱠ — ᱮᱯᱤ (ᱟᱞᱮ ᱩᱱᱠᱩ ᱞᱮ ᱮᱢᱟ ᱠᱚᱣᱟ)᱾ ᱚᱱᱟ ᱯᱷᱟᱨᱢ ᱜᱮ ᱠᱚᱱᱥᱟᱭᱤᱱᱚᱨ ᱦᱚᱸ ᱦᱩᱭ ᱫᱟᱲᱮᱭᱟᱜᱼᱟ ᱾
+role_help_both	ᱵᱷᱩᱢᱤᱠᱟ: ᱠᱚᱱᱥᱤᱜᱱᱚᱨ + ᱠᱮᱨᱤᱭᱟᱨ — ᱢᱤᱫ ᱯᱟᱨᱴᱤ, ᱟᱨ ᱟᱨ ᱮᱯᱤ ᱞᱮᱡᱟᱨᱥ, ᱨᱤᱯᱳᱨᱴ ᱨᱮ ᱱᱮᱴ ᱾
+role_help_supplier	ᱵᱷᱩᱢᱤᱠᱟ: ᱥᱟᱨᱵᱦᱟᱨᱤᱡ — ᱠᱤᱨᱤᱧ ᱞᱟᱹᱜᱤᱫ ᱮᱯᱤ ᱾
+lane_declared_label	ᱮᱠᱟᱣᱩᱱᱴ ᱵᱩᱠᱤᱝ
+lane_owner_label	ᱴᱟᱠᱟ ᱵᱩᱠᱤᱝ
+money_lane_bill	ᱵᱤᱞ: {lane}

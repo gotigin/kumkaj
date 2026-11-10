@@ -1,0 +1,835 @@
+# Serbian — Српски (sr). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	Курирско-агенцијска књига + пулт за резервације. Бесплатно ван мреже.
+unlock	Откључај
+pin_hint	Власник PIN почиње са 0000
+sell	Резервација
+buy	Исплати се
+books	Дневник
+books_help	Данашња позиција. Резервација = пристигле пошиљке. Исплата = рачуни и трошкови превозника. Стране = пошиљаоци и превозници.
+buy_help	Ваучери за трошкове и рачуни превозника (новац оут). Рачун остаје на партијској књизи.
+sell_money_in	Резервишите пакет
+buy_money_out	Трошкови / рачун носиоца
+record_purchase	Сачувајте куповину
+add_expense	Потврда о трошковима
+bank_book	Банкарска књига
+credit_help	ИД странке је јединствен (имена се могу понављати). Улоге: пошиљалац (АР), превозник (АП) или обоје на том ИД-у. Књиге остају одвојене; извештаји показују нет.
+party_kind_ph	Прилагођена улога (опционо) — или додирните чип изнад
+parties_list_heading	Сачуване журке
+reports_help	Дневна књига, дужници и повериоци, банкарска књига, признанице о трошковима, добит и губитак.
+reports_today	Дневник (данас)
+reports_month	Добит и губитак (месец)
+reports_aging	Неизмирени/дебитно-кредитни
+reports_balance_sheet	Биланс стања
+reports	Банковна књига & П&Л
+refresh	Освежи
+undo	Поништи
+start_tracking	Почните да пратите
+stock_minus	− Залиха
+stock_plus	+ Стоцк
+settle_cash	Измирите готовину
+settle_card	Плати картицом
+items	Цене и услуге
+nav_items	Тарифе
+more	Више
+your_items	Ваше стопе
+items_help	Сваки ред је стопа (нпр. Површинска зона А). Јединица је обично кг. Додирните да бисте уредили.
+add_item	Додајте стопу
+new_item	Нова стопа
+adding_item	Додавање нове стопе
+editing_item	Уређивање
+save	Сачувај
+remove	Уклони
+empty_catalog	Још нема тарифа. Отворите Цене и услуге, додајте један (име + цена, јединица кг), а затим Резервација.
+counter_sale	Резервација на шалтеру
+total	Укупно
+cash	Цасх
+upi	UPI
+card	Цард
+credit	Купци и добављачи
+clear	Јасно
+ready_to_sell	Спреман за књигу
+today_prefix	данас
+today_mid	данас
+owed	изванредан
+round_word	округли
+back	Назад
+sold_out	Недоступно
+restock	Допуни
+not_tracked	Није праћено
+in_stock	на лагеру
+marked_sold_out	Означено као недоступно
+add_upper	АДД
+na	Н/А
+qty	Вт/Кти
+unit_at	Оцени @
+actual	Стварно
+applied	Примењено
+note_ph	Напомена (опционо)
+rounded	ЗАОКРУЖЕНО
+split	Сплит
+counter	Шанк
+parcel	Парцел
+order	Ред у ресторану
+sales	Резервације
+sales_refunds	Резервације и рефундације
+day_close	Дан близу
+reports_expenses	Банковна књига & П&Л
+nav_reports	Извештаји
+nav_settings	Подешавања
+nav_lock	Закључај
+sidebar_settings	Подешавања бочне траке
+sidebar_settings_help	Исте иконе као бочна шина. Превуците ред да бисте променили редослед. Окрените прекидач да бисте приказали или сакрили. Подешавања и закључавање увек остају на траци.
+sidebar_always_on_short	Увек укључен
+sidebar_back_settings	Назад
+sidebar_shown	Показано
+sidebar_hidden	Скривено
+sidebar_always_on	Увек на шанку
+sidebar_shown_hint	Приказано на бочној шини / доњим језичцима
+sidebar_hidden_hint	Сакривен од бара
+sidebar_menu_items	Мени и ставке менија
+sidebar_enable_all	Омогући све
+sidebar_disable_all	Онемогући све
+sidebar_order_saved	Редослед бочне траке је сачуван
+sidebar_visibility_saved	Видљивост бочне траке је сачувана
+amounts_hide	Сакриј се
+amounts_show	Схов
+no_sale_yet	Још нема продаје
+favorites	Омиљено
+favorites_help	Ставке менија које често продајете, сачуване за вашу пријаву. Додајте једну на рачун или направите своју листу од свих ставки менија испод.
+your_favorites	Ваши фаворити
+all_items	Све ставке менија
+no_favorites	Још нема фаворита — додајте ставке менија са листе испод.
+add_to_bill	Додај на рачун
+added	Додато
+owes_word	дугује
+selected_word	Изабрано
+chip_clear_credit	цлеар — Кредити или узети унапред
+chip_missing_customer	Недостаје изабрани купац — изаберите поново
+chip_no_customer	Још увек нема клијента — унесите име, а затим додирните Кредит
+credit_summary_fmt	{} клијената · отворени кредит {} · задржани аванси {}
+recent_label	недавно:
+inventory	Инвентар
+inventory_stock	Инвентар и залихе
+branches	Огранци
+branches_org	Огранци & орг
+credit_customers	Странке (дужници и повериоци)
+customer_name_ph	Име купца или добављача
+new_customer_ph	Име новог купца или добављача
+item_name_ph	Назив стопе (нпр. површинска зона А)
+item_price_ph	По кг / прва плоча
+start_template	Производ
+next_booking	Следећа резервација
+destination_ph	Одредишни град / зона
+consignee_ph	Име пријемника
+consignee_phone_ph	Телефон-пријемник
+consignee_address_ph	Адреса за доставу
+origin_name_ph	Име пошиљаоца
+origin_phone_ph	Телефон пошиљаоца
+origin_address_ph	Адреса за преузимање / порекло
+booking_consignor_heading	Пошиљалац (купац/пошиљалац)
+booking_consignee_heading	Прималац (прималац)
+booking_consignor_hint	Изаберите забаву коју желите да попуните или оставите празно за улазак. Потребно за преузимање код куће и РТО.
+booking_consignee_hint	Прималац пакета. Оставите празно за одлазак на шалтеру.
+weight_kg_ph	Стварни кг
+length_cm_ph	Л цм
+breadth_cm_ph	Б цм
+height_cm_ph	Х цм
+chargeable_kg	Наплативо кг
+awb_label	АВБ
+booking_help	Пошиљалац + прималац (празно У реду) → одредиште → вагање → стопа избора → Рачун/готовина → плати. АВБ штампа на рачуну. Следећа резервација ослобађа сто. Заокружено почиње једнако Примењено — измените само да бисте заокружили рачун.
+cart_empty_hint	Стол празан — пошиљалац/прималац је опционо, подесите одредиште и тежину, додирните ДОДАЈ на тарифу, а затим платите.
+team	Тим
+team_pins	Тим & PINс
+my_pin_settings	мој PIN
+settings_hub_help_my_pin	Промените откључавање PIN за особу која је пријављена на овом уређају.
+team_self_help	Само ви можете да промените свој ПИН за откључавање (и опциону лозинку за пријаву). Питајте власника да ли су вам потребни различити екрани или права.
+backup_settings	Резервна копија и подешавања
+lock_app	Закључај апликацију
+pick	Пицк
+select	Изаберите
+advance	Напред
+owner	Власник
+staff	Особље
+photo	Пхото
+auto	Ауто
+prev	Прев
+next	Следеће
+ok	ОК
+this_shop	Режим сервера
+extra_till	Режим клијента
+off	Офф
+server	Режим сервера
+client	Режим клијента
+language_currency	Језик и валута
+language	Језик
+choose_language	Изаберите свој језик
+language_setup_hint	Пратите језик овог уређаја или га сами изаберите.
+lang_follow_platform	Језик уређаја
+lang_pick_user	Изаберите језик
+lang_platform_now	Језик уређаја сада
+selected_language	Изабрано
+continue	Настави
+this_device	ОВАЈ УРЕЂАЈ
+device_use_q	Како ће се овај уређај користити?
+last_server_mode	Вас Сервер — додирните за наставак
+last_client_mode	Био је клијент — додирните да бисте наставили
+choose_server	Изаберите сервер
+choose_server_hint	Отворите постојећи сервер или га креирајте за неко друго предузеће.
+create_new_server	Креирајте нови сервер
+open_server	Отвори
+new_server_name_ph	Ново име сервера (опционо)
+server_remove_pin_ph	Власник PIN да уклони сервер
+only_owner_remove_server	Само власник може уклонити сервер
+owner_pin_remove_server	Власник PIN је обавезан да уклони овај сервер
+device_setup_help	Сервер чува књиге овде. Клијент се упарује са сервером.
+currency	Валута
+backup	Бацкуп
+settings_sec_diag	Дијагностика
+settings_hub_help	Отварајте једну по једну област — мање померања, јаснији избори.
+settings_sec_devices	Остали уређаји
+settings_sec_alerts	Алертс
+alerts_help	Колико дуго статусне поруке остају на екрану за вас (ова пријава).
+snack_secs_ph	Секунди (3–60, подразумевано 10)
+snack_secs_save	Уштедите време упозорења
+snack_secs_saved	Сачувано време упозорења — {n} секунди
+snack_secs_bad	Унесите секунде као број (3–60)
+cancelled	Отказано
+cancel	Откажи
+opening_client	Отварање клијента…
+preparing_desk	Припрема стола…
+opening_server	Отварање сервера…
+creating_server	Прављење сервера…
+diag_privacy_help	Дневници остају на овом уређају. Тајне (PIN, лозинке) се никада не чувају. За дељење пакета са уређаја сваки пут је потребно ваше изричито одобрење — никада се не продаје или даје трећим лицима.
+diag_level	Ниво детаља
+diag_level_error	Грешке
+diag_level_warn	Упозорења
+diag_level_info	Инфо
+diag_level_debug	Отклањање грешака
+diag_support_start	Започните 30-минутну сесију подршке
+diag_support_stop	Заврши сесију подршке
+diag_support_started	Сесија подршке укључена — Детаљи отклањања грешака у трајању од 30 минута
+diag_support_ended	Сесија подршке је завршена
+diag_export_local	Извези локалну копију
+diag_export_local_done	Локална дијагностика спремна на {path} — изаберите где желите да сачувате копију
+diag_approve_send	Одобри дељење са овог уређаја
+diag_send_heading	Делите овај уређај
+diag_send_help	Одобрење је један пакет, а затим истиче. Привремено — користи се само за поправку или побољшање производа. Не дели се са трећим лицима. Ради на Linux, Windows, macOS и Android.
+optional_login_heading	Опционо пријављивање
+rights_heading	Права
+booking_scope_heading	Домаћи / Међународни
+diag_send_approved	Дељење је одобрено за један пакет (ускоро истиче)
+diag_export_send	Направите пакет за дељење (потребно је одобрење)
+diag_export_send_done	Поделите пакет спреман у {path} — изаберите где да сачувате, а затим пошаљите само на Kumkaj подршку
+diag_save_bundle	Сачувајте дијагностичку копију
+diag_bundle_saved	Копија дијагностике је сачувана у {path}
+diag_bundle_failed	Није могуће сачувати дијагностичку копију — покушајте поново
+diag_clear	Обришите дијагностичке евиденције
+diag_cleared	Дијагностички дневники су обрисани
+use	Користите
+add_branch	Додај грану
+add_conversion	Додајте конверзију
+add_item_plain	Додајте ставку менија
+add_note	Додај напомену
+add_opening_balance	Додајте почетни биланс
+add_rider	Додај јахача
+add_staff	Додајте особље
+add_unit	Додајте јединицу
+add_use_name	Додајте / користите ово име
+allow_extra_tills	Дозволите додатне касе
+amend	Изменити
+apply_country_pack	Примените пакет за земљу
+datetime_appearance	Појава датума и времена
+datetime_appearance_help	У књигама се налази први РФЦ3339 из прве године. Ово само мења начин на који датуми и сатови изгледају на признаницама, етикетама, извештајима и екрану.
+datetime_example	Пример сада: {ex}
+date_order	Редослед датума
+date_order_dmy	D/M/Y
+date_order_mdy	M/D/Y
+date_order_ymd	Y-M-D
+time_format	Сат
+time_format_24h	24 сата
+time_format_12h	12-часовни
+attach_bill_photo	Приложите фотографију рачуна
+attach_pdf	Приложи PDF
+attach_photo	Приложите фотографију
+bank	Банка
+bank_in	Банка у
+bank_out	Новац из банке
+bank_to_till	Банка → до
+till_to_bank	Каса → банка
+mark_cleared	Ознака је избрисана
+unmark	Уклони ознаку
+role_both	И једно и друго
+role_carrier	Царриер
+role_cashier	благајник
+role_consignor	пошиљалац
+role_manager	Менаџер
+role_supplier	Добављач
+branch_name_sell_ph	Назив филијале за продају
+bring_my_book	Донеси моју књигу
+business_tax_id_ph	Порезни број предузећа
+card_amount_ph	Износ картице
+cash_amount_ph	Износ готовине
+upi_amount_ph	UPI износ
+carrier_cost_ph	Цена превозника
+carrier_party_ph	Царриер парти
+choose_icon	Изаберите икону
+choose_logo	Изаберите лого
+choose_receipt_stamp	Изаберите печат признанице
+choose_payment_qr	Изаберите КР плаћање
+clear_icon	Обриши икона
+clear_logo	Цлеар лого
+clear_photo	Обриши фотографију
+clear_stamp	Јасан печат
+clear_payment_qr	Обриши КР плаћање
+print_faces	Штампање лица (признаница / рачун за период)
+print_faces_help	Опциони печат и КР за плаћање поред вашег логотипа на потврдама о резервацијама и рачунима за период.
+awb_pools_heading	Пулови АВБ бројева оператера
+add_awb_pool	Додајте АВБ базен
+awb_pool_carrier_ph	Назив стране оператера
+awb_pool_start_ph	Почетак бр.
+awb_pool_end_ph	Крај бр.
+awb_pool_prefix_ph	Префикс (опционо)
+awb_pool_label_ph	Ознака (опционо)
+pieces_ph	Комади (празно = 1) — проширите за терет / више комада
+bulk_awbs_ph	Булк АВБс — налепите много (нови ред или зарез) за једно унапредјење статуса
+tds_cut_ph	ТДС рез (опционо)
+discount_ph	Попуст (опционо)
+cheque_no_ph	Број провере (опционо)
+bill_reminder_chase	Листа за потеру за рачуне
+month_mix_report	Месечни извештај о мешавини
+copy_month_gst_csv	Копирај месец ГСТ ЦСВ
+domestic	Домаћи
+international	Интернатионал
+pick_logo	Изаберите лого
+booking_scope_hint_domestic	Волуметријски ÷5000 (домаћи) — додирните Међународни за ÷6000 ваздуха
+booking_scope_hint_intl	Волуметријски ÷6000 (међународни ваздух) — славина Домаћи за продавницу ÷5000
+cod_register	ЦОД регистар
+collect_cod	Прикупите ЦОД (АВБ)
+consignments_dispatch	Пошиљке и отпрема
+consignor_party_ph	Пошиљалац/име странке
+copy_day_book_csv	Copy day ledger CSV
+copy_day_close	Копирај дан близу
+copy_items_csv	Copy menu items CSV
+copy_outstanding_csv	Преузето копија CSV
+copy_parties_csv	Копирај купце и добављаче CSV
+copy_party_ledger_csv	Копирај књигу купаца CSV
+copy_receipt	Копија признанице
+copy_report	Копирај извештај
+counted_cash_ph	Пребројана готовина у фиоци
+counter_agency_ph	Назив шалтера/агенције (опционо)
+create_backup	Направите резервну копију
+day_close_summary	Закључак дана
+delete_party	Delete selected customer or supplier
+dispatch_to_rider	Отпрема резервисано → јахач
+docket_charge_ph	Доцкет цхарге
+declared_value_ph	Декларисана вредност
+contents_ph	Садржај
+eway_ph	Е-путни рачун бр.
+insurance_label	Осигурање
+yes_label	Да
+no_label	бр
+print_route_label	Одштампај руту
+new_party_kind_label	Нова врста забаве
+done_open_books	Done — open ledgers
+export_day	Дан извоза
+extra_note_expense_ph	Додатна напомена о последњем трошку
+extra_note_awb_ph	Додатна напомена о овој АВБ / продаји
+failed_delivery	Неуспела испорука
+find_scan_awb	Пронађите / скенирајте АВБ
+forget_shop	Заборави ову радњу
+fuel_ph	Гориво
+handover_carrier	Ручно резервисано → превозник
+import_day	Дан увоза
+import_items_csv	Увезите ставке / ЦСВ цене…
+import_parties_csv	Увезите купце и добављаче CSV…
+import_pincodes_csv	Увези ПИН кодове у ЦСВ…
+import_carrier_bill_csv	Увези ЦСВ рачун оператера…
+copy_carrier_bill_report	Копирајте последњи извештај о рачуну оператера
+use_carrier_cost	Користите цену оператера
+rate_carrier_ph	Носилац (празно = наш продајни курс)
+rate_party_ph	Забава (празно = сви купци)
+carrier_pick_ph	Носилац за цену (из поређења)
+item_name	Назив ставке менија
+load_bulk_row	Утовар на велико ред → стол
+login_id_ph	Корисничко име
+mark_delivered	Марк испоручен
+manifest_cod_total	ЦОД тотал
+manifest_received_by	Рецеивед би
+manifest_sign	Сигн
+ndr_address_wrong	Адреса погрешна
+ndr_customer_unavailable	Недоступно
+ndr_door_locked	Врата закључана
+ndr_other	Остало
+ndr_refused	Одбио
+out_for_delivery	За испоруку
+print_drs	Штампај ДРС
+print_run_sheet	Штампање листа
+reattempt	Поновни покушај
+rider_cod_handed_ph	ЦОД предао
+settle_rider_cod	Подмири ридер ЦОД
+mode_desk	Деск
+mode_rider	Ридер
+waiting_office	чека да стигне у канцеларију
+capture_signature	Сними потпис
+incoming_manifest	Долазни манифест
+pickup_request	Захтев за преузимање
+pickup_run	Пицкуп рун
+auto_assign_area	Аутоматско додељивање области
+reorder_stops	Промена редоследа се зауставља
+settle_rider_pay	Измирите плату јахача
+vehicle_inspect	Преглед возила
+print_docket	Принт доцкет
+franchise_statement	Изјава о франшизи
+tally_export	Извоз ваучера Талли
+open_whatsapp	Отворите ВхатсАпп
+copy_sms	Копирајте СМС текст
+pick_barcode_image	Изаберите слику за скенирање
+share_receipt_whatsapp	Поделите признаницу на ВхатсАпп
+delivery_feedback	Повратне информације о испоруци
+lan_self_book	ЛАН саморезервација
+new_party_clear	Нови купац или добављач (јасан образац)
+new_party_kind_ph	Нова врста забаве (добављач/превозник)
+next_country	Следећа земља
+prev_country	Претходна земља
+note_gstin_ph	Напомена / GSTИН / подсетник за споразум
+note_pod_ph	Напомена / ПОД (опционо)
+on_account_ap	На налог (АП)
+org_optional_ph	Организација (опционо)
+paid_now	Плаћено сада
+pairing_code_ph	Код за упаривање
+pair_now	Упарите сада
+party_name_selected_ph	Име купца или добављача (или користите изабрано)
+password_ph	Лозинка
+pay_ap_card	Платите АП картицу
+pay_ap_cash	Платите АП готовином
+pay_ap_upi	Плати АП UPI
+period_bill	Рачун за период
+period_bill_party	Рачун за период (журка)
+pick_pod_photo	Изаберите ПОД фотографију
+print_awb_label	Штампајте АВБ етикету
+print_open	Штампај / отвори
+reason_amend_ph	Разлог за измену / поништење / повраћај
+reason_note_ph	Разлог / напомена (расипање, бројање, …)
+record_day_close	Сачувајте дан близу
+refresh_from_shop	Освежите из продавнице
+refund	Рефунд
+remit_cod	Пошаљите ЦОД (журка)
+remove_selected	Уклони изабрано
+restore_backup	Вратите резервну копију
+rider_name_ph	Име јахача
+rider_phone_ph	Јахачев телефон
+riders	Јахачи
+riders_own_fleet	Јахачи (сопствена флота)
+rollup	Summary rollup
+save_booking_measures	Сачувајте мере резервације
+save_brand	Сачувај бренд
+save_business_id	Сачувајте пословни ИД
+save_business_name	Сачувајте назив предузећа
+save_features	Сачувајте подешавање посла
+save_names	Сачувајте имена
+server_ip_ph	ИП сервера (нпр. 192.168.1.10)
+set_credit_limit	Примените ограничење на купца или добављача
+set_login_selected	Примени пријаву на изабране
+set_login_named	Примени пријаву на {name}
+shop	Схоп
+start_fresh	Почни изнова
+stop_extra_tills	Зауставите додатне касе
+backup_auto	Аутоматски се прави резервна копија сваког дана · последње {when} · последњих 14 дана се чувају у {dir}.
+backup_auto_none	Аутоматски се прави резервна копија сваког дана — прва се покреће за трен.
+backup_copy_to	Копије такође иду на {dir}.
+backup_copy_btn	Такође копирајте резервне копије у фасциклу…
+autostart_off	Почните са овим рачунаром
+autostart_on	Почиње са овим рачунаром ✓ — додирните за заустављање
+autostart_done_on	Овај рачунар сада отвара апликацију када се покрене — сервер продавнице се вратио након нестанка струје.
+autostart_done_off	Овај рачунар више не отвара апликацију када се покрене.
+right_allowed	Дозвољено
+right_with_approval	Уз одобрење
+right_denied	Није дозвољено
+editing_staff	Права за
+team_pick_ph	Особље за уређивање — име, корисничко име или избор
+select_staff	Изаберите ово особље
+rights_help	Права — тапните да промените: Дозвољено → Са одобрењем (ПИН менаџера у том тренутку) → Није дозвољено.
+right_void_refund	Поништите или рефундирајте резервацију
+right_amend_sale	Измените снимљену резервацију
+find_server	Пронађите сервер продавнице
+finding_server	Тражим сервер продавнице на овом Wi‑Fi…
+no_server_found	Није пронађен ниједан. На серверу: Подешавања → Остали уређаји → Дозволи екстра касе (исто Wi‑Fi). Или унесите ИП приказану тамо.
+servers_found_pick	Додирните продавницу са којом желите да се повежете.
+server_host_selected	Коришћењем {host} — унесите код за упаривање, а затим Упарите сада.
+device_forgotten	Продавница је заборавила овај уређај — поново га упарите са тренутном шифром продавнице. Налози који га чекају се чувају.
+forget_device	Заборави
+last_seen	виђено
+new_pair_code	Нови код за упаривање
+lan_offline	Сервер за куповину недоступан
+lan_offline_waiting	Сервер за куповину недоступан · {n} чека
+lan_connecting	Повезивање са продавницом…
+pair_finishing	Завршавање пара… примена канцеларијских књига
+pair_opening	Отварање канцеларије…
+lan_live	Уживо
+lan_sending	{n} слање
+lan_sign_in_to_send	Пријавите се поново да бисте послали {n}
+lan_pair_again	Поново упарите овај уређај
+lan_update_app	Ажурирајте апликацију — овај уређај и канцеларијски сервер имају различите верзије
+allow_firewall	Дозволите другим уређајима да се повежу
+firewall_blocked	Заштитни зид овог рачунара блокира друге уређаје — додирните Дозволи другим уређајима да се повежу.
+firewall_waiting	Чека се упит администратора…
+lan_join_help	На другом уређају: Режим клијента → Пронађите сервер продавнице (или унесите {addr}) → код за упаривање {code}.
+lan_pair_status	Wi‑Fi {addr}
+lan_join_help_no_addr	Повежите овај уређај са Wi‑Fi за адресу.
+lan_no_address	Још нема адресе Wi‑Fi — повежите се са продавницом Wi‑Fi.
+lan_not_listening	Не прихвата уређаје (порт {port} заузет). Поново покрените апликацију.
+lan_tills_off	Екстра касе су искључене. Дозволите им да пусте други уређај да се придружи.
+paired_with	Упарено · {url}
+not_paired	Није упарено
+choose_device_use	Изаберите Сервер или Клијент.
+paired_note	Упарено. Откључајте да бисте продали или Освежите за најновије.
+last_update_at	Последње ажурирање: {time}.
+pair_intro	Пронађите сервер или унесите његову адресу и код за упаривање.
+queue_waiting	Чека се да стигне до продавнице ({n}):
+queue_tries	Пробано {n} пута · последњи одговор: {e}
+save_backup_copy	Сачувајте резервну копију…
+backup_copy_saved	Резервна копија је сачувана — држите је ван овог уређаја (УСБ стицк или други уређај)
+backup_copy_overdue	Ниједна резервна копија није напустила овај уређај {n} дана — Подешавања → Резервна копија
+backup_copy_failed	Резервна копија није могла да се сачува тамо — изаберите друго место
+clock_off	Сат овог уређаја је {min} мин ван сервера продавнице — подесите право време на овом уређају
+printers_heading	Штампачи на овом уређају
+printers_help	Пронађите праве штампаче, а затим изаберите Рецеипт или АВБ лабел. Сваки посао има своју ширину, портрет или пејзаж и начин на који се бајтови шаљу. Налепница штампа бар код. Празно место = не штампај.
+job_width	Ширина садржаја (мм)
+job_width_ph	Или унесите ширину, 40–210 мм
+job_layout	Лаиоут
+job_delivery	Како се посао шаље
+job_size	Величина фонта
+job_size_ph	нпр. 18, 20, 26…
+save_receipt_format	Сачувајте формат признанице
+save_label_format	Сачувајте формат етикете
+test_receipt_format	Пробни пријем
+test_label_format	Тест лабел
+test_receipt_sent	Узорак признанице је послат
+test_label_sent	Узорак етикете је послат
+test_print_no_printer	Нема штампача за тај посао — додајте један испод овог места
+printers_host_only	Штампачи су подешени на уређају продавнице (Сервер). Ово до шаље послове тамо — Пронађите / додајте / доделите боравак на серверу. Тест страница иде на сервер.
+printers_pool_heading	Штампачи
+printers_routes_heading	Где се ствари штампају
+printer_label_ph	Име (нпр. Деск)
+printer_target_ph	хост:9100 · бт:МАЦ · усб:ВИД:ПИД · име система
+printer_mode_heading	Профил за нове излазе
+printer_mode_standard	Стандард Портраит
+printer_mode_landscape	Стандард Ландсцапе
+printer_mode_thermal	Тхермал
+printer_mode_standard_short	Портрет
+printer_mode_landscape_short	Пејзаж
+printer_mode_thermal_short	Тхермал
+printer_format_custom	Нови прилагођени профил
+printer_format_custom_label	Цустом
+printer_format_custom_added	Прилагођени профил је додат за ово место
+add_printer	Додајте штампач
+remove_printer	Уклоните последње
+route_pick_ph	признаницу или етикету
+route_add_printer_ph	Додајте штампач на ово место
+route_receipt	Признаница
+route_label	АВБ ознака
+route_dont_print	Није додељен штампач
+route_add	Додајте на место
+route_up	Горе
+route_down	Доле
+route_remove	Уклоните последње
+route_clear	Очистите штампаче за ово место
+save_printers	Сачувајте штампаче
+print_test_page	Одштампајте пробну страницу
+printers_saved	Штампачи су сачувани за овај уређај
+test_page_sent	Пробна страница је послата — проверите штампач
+printers_found	Пронађено на овом уређају: {list}
+find_printers	Пронађите штампаче
+printers_looking	Траже се штампачи на овом уређају и Ви‑Фи…
+printers_tap_find	Додирните Пронађи штампаче за редове који прихватају задатке и штампаче мрежних признаница на овом Ви‑Фи-ју (који нису уклоњени или офлајн).
+printers_none_found	Нема пронађених штампача — унесите назив системског штампача или мрежну адресу (нпр. 192.168.1.50).
+receipt_printer_ph	Штампач за рачуне
+queue_refused	Продавница не прихвата ({n}) — проверите сваки на шалтеру:
+clear_not_accepted	Означено — обришите ову листу
+device_name_ph	Назив овог уређаја
+lan_last_update	последње ажурирање {time}
+lan_not_accepted	{n} није прихваћено
+connected_now	повезан сада
+backup_failed	Последња аутоматска резервна копија није успела: {e}
+backup_overdue	Нема прављења резервних копија {n} дана — држите апликацију отвореном на овом уређају да би могла да направи резервну копију.
+disk_low	Само {mb} МБ слободно на овом уређају — резервне копије ускоро неће успети. Ослободите мало простора.
+last_seen_devices	Последњи пут виђен: {time}
+sync_interval	Синхронизујте сваких {secs}с
+connection_to_shop	Веза са радњом
+supplier_name_ph	Име добављача (или купца)
+supplier_ph	Добављач
+switch_device	Пребаците овај уређај
+take_payment	Узми уплату
+tax_added_till	{tax} ексклузивно
+tax_inside_price	{tax} укључујући
+today_books	Данашње књиге
+unlock_after_pairing	Унесите PIN
+unlock_with_login	Откључајте пријавом
+update_my_password	Ажурирајте моју лозинку
+update_my_pin	Ажурирајте мој ПИН
+duress_heading	Откључавање у хитним случајевима PIN (само за власника)
+duress_help	Опционо. Ако се овај ПИН откуца при откључавању уместо вашег, сви уноси у књиге се бришу (резервације, књиге, историја) и сто се отвара као власник изгледа нормално — цене, забаве, зоне, особље и подешавања остају. Шема и конфигурација се не бришу. Користите само ако сте присиљени да откључате. Оставите празно и сачувајте да бисте искључили. Никада исти као било чији ПИН.
+duress_pin_ph	Хитно PIN (4–12 цифара)
+duress_confirm_ph	Унесите поново да потврдите
+save_duress_pin	Сачувај хитно PIN
+clear_duress_pin	Искључи хитне случајеве PIN
+duress_on	Откључавање у хитним случајевима PIN је укључено
+duress_off	Откључавање у хитним случајевима PIN је искључено
+duress_saved	Откључавање у хитним случајевима PIN је сачувано
+duress_cleared	Откључавање у хитним случајевима PIN искључено
+vehicle_ph	Возило
+void	Поништена продаја
+write_off_ap	Отписати АП
+write_off_nil	Отпис / нула стања
+zone_ph	Зона (име из тарифа)
+caption_today	ДАНАС
+caption_bookings	РЕЗЕРВАЦИЈЕ
+caption_payments_today	ПЛАЋАЊА ДАНАС
+caption_outstanding	Изванредан
+caption_bank	БАНКА
+paid_by	Платио
+second_way	Други начин
+weight_in	Тежина у
+size_in	Величина ин
+goods_received	Примљена роба
+expense_heading	Трошкови
+notes_attach_sale	Белешке и прилози (одабрана продаја)
+notes_attach_party	Напомене и прилози (изабрани купац или добављач)
+attachments_last_expense	Прилози (последњи трошак)
+credit_limit_heading	Credit limit (selected customer or supplier)
+pay_selected_heading	Плати изабрано (измири дуг / узми аванс)
+write_off_heading	Отписати (очистити без плаћања)
+pay_ap_heading	Плати оно што им дугујемо (АП)
+country_tax	Држава и порез
+extra_tills_heading	Ектра доллс
+other_devices_help_heading	Подесите друге уређаје
+other_devices_help	На овом уређају (серверу): Остали уређаји → Дозволи екстра касе. Забележите код за упаривање и Ви‑Фи адресу. Додирните Дозволи другим уређајима да се повежу ако се појави. На рачунару додирните Почни са овим рачунаром. На сваком другом уређају: инсталирајте апликацију, изаберите Режим клијента, пронађите сервер продавнице (или унесите адресу), унесите код за упаривање, упарите сада. Поруџбине чекају на уређају ако Ви‑Фи престане и одлазе када сервер поново одговори.
+your_brand	Ваш бренд (у апликацији)
+units_heading	Јединице
+booking_measures	Мере резервације
+drawer_count	Број фиока (опционо)
+spreadsheet_csv	Табела (CSV)
+bank_reconciliation	Банковно помирење (означите на изводу из банке)
+book_add_product	Резервишите — додајте производ / цену
+book_opening_credit	Главна књига — почетни кредит
+account_kind	Врста налога (додирните један)
+active_ledger	Активна књига
+actual_total_cap	СТВАРНИ УКУПНО
+amend_help	Изаберите продају да бисте изменили, поништили или вратили новац. Амандмани чувају пуну историју. Заокружено Укупно почиње једнако Примењено — измените само заокружено. За поништавање и повраћај новца може бити потребан власник или менаџер PIN (укуцано изнад; забележено под вашим именом).
+applied_total_cap	ПРИМЕЊЕНО УКУПНО
+bank_balance	Банкарски биланс
+bank_net_today	Банкарска мрежа данас
+branch_export_help	Извоз уписује снимак дана у фасциклу резервних копија и копира је у међуспремник. Да бисте увезли дан другог продајног места, сачувајте његову датотеку као импорт_бранцх_снапсхот.јсон у тој фасцикли, а затим додирните Увези.
+brand_shown_help	Приказује се на екранима унутар апликације. Назив и икона инсталиране апликације на овом уређају остају као листа платформе.
+app_icon	Икона апликације
+logo_help	Опциона ознака продавнице на екранима у апликацији.
+onboard_layout	Шта добијеш
+item_photo_help	Опционо. Без фотографије приказујемо иницијале из назива ставке менија.
+cash_in_hand	Готовина у руци (до)
+change_my_pin_heading	Промени мој ПИН (само твој)
+connect_to_server	Повежите се са сервером
+counter_locked	Бројач 01 · Закључан
+country_pack_help	Пакет земље поставља назив пореза и математику, шину за тренутно плаћање и пословни ИД одштампан на рачунима. Kumkaj нигде не пријављује порезе нити издаје владине е-фактуре.
+currency_use_help	Померите се и додирните Користи за било коју подржану валуту.
+day_close_help	Евидентирање затварања дана чува овај резиме (и варијанту фиоке ако се рачуна) у евиденцију ревизије. Не престаје да се продаје.
+expenses_word	Трошкови
+feature_access_help	Приступ функцијама за изабрано особље (додирните након додавања)
+footer_local	Локални СКЛите · Заувек бесплатно · Зеро Цлоуд
+fresh_book_moklanjo	Свеже = празан каталог (додајте ставке касније). Књига = упишите почетне залихе и ко вам дугује испод.
+fresh_selected	Свеже изабрано — каталог остаје празан. Додирните Готово када будете спремни.
+gross_word	Гросс
+how_start	Како желите да почнете?
+later_country_pack	Касније: Подешавања → примените пакет своје земље за ознаке пореза и плаћања.
+local_badge	ЛОЦАЛ
+measures_help_moklanjo	Како се мере пакети на пулту за резервације. Унесите димензије и тежину у јединицама које користите — стандардне (цм, м, ин, фт · кг, г, лб, оз) или сопствену јединицу повезану са цм/кг изнад (директно или преко других јединица). Књиге увек бележе кг. Оставите поље празно да га задржите.
+mix_type_hint_moklanjo	Унесите колико у сваки (готовина / УПИ / картица / кредит). Мора се додати на рачун. Кредиту је потребан купац изнад.
+money_in_sales	Новац у (продаја)
+more_help_moklanjo	Каталог, продаја, кредит, тим, резервна копија — плус залихе и екстра касе када је потребно.
+net_word	Нет
+offline_badge	ВАН МРЕЖЕ
+optional_login_help	Опционо пријављивање (ид + лозинка). Власник поставља једном; само корисник може касније да промени лозинку.
+or_unlock_login	Или откључајте помоћу ИД-а за пријаву + лозинке
+permission_preset	Посао (подешава екране и права)
+preset_help_moklanjo	Благајник: продам. Менаџер: продати + ставке менија + поништити/изменити.
+product_locked_moklanjo	Моклањо
+product_only_moklanjo	Ова апликација је само Моклањо — књиге + пулт за резервације. Остала трговинска лица се касније испоручују као засебни производи.
+purchases_cogs	Куповине (COGS)
+qty_cap	КОЛ
+restore_help	Враћање: изаберите резервну копију. Главне књиге се отварају као и тада; књиге какве су сада се прво чувају, тако да се ово може поништити.
+wipe_data_heading	Избришите локалне податке
+wipe_data_help	Само за власника — исти избори као за деинсталирање оперативног система Виндовс. Пословни записи бришу историју трговања, али задржавају стопе и подешавања (као што је ПИН за откључавање у хитним случајевима). Подешавање продавнице уклања базу података књига. Подешавања екрана бришу прозор/језик. Потврдите ПИН-ом власника. ПИН за хитно откључавање на Тиму је одвојен (тајно брисање при откључавању).
+wipe_trading	Пословна евиденција
+wipe_schema	Подешавање продавнице
+wipe_ui	Подешавања екрана
+wipe_owner_pin_ph	Власник PIN за брисање
+wipe_delete_selected	Избриши изабрано
+wipe_owner_only	Само Власник може избрисати локалне податке.
+restore_owner_only	Само власник може да врати резервну копију.
+wipe_owner_pin_needed	Унесите власника PIN да бисте избрисали локалне податке.
+wipe_nothing_selected	Изаберите шта прво желите да избришете.
+wipe_done	Изабрани локални подаци су избрисани.
+wipe_schema_done	Подешавање продавнице је обрисано — изаберите Сервер или Клијент да бисте наставили.
+rounded_total	Заокружено укупно
+setup_app_moklanjo	Постави Моклањо
+shop_logo_optional	Лого продавнице (опционо)
+stock_type_help	Укуцајте назив ставке менија (довољан је део), количину, а затим подесите. Ставке менија које се још увек не рачунају треба да започнете праћење једном.
+team_owner_help	Запослити: изаберите посао (Благајник / Менаџер), име + почетни ПИН, а затим Додајте. Само ако се ова особа разликује: отворите екране и права испод, а затим Сачувај подешавање посла. Свако мења свој ПИН на дну — Власник не може променити било чији други.
+they_owe_us	Дужни су нам
+unit_at_cap	Јединица @
+units_help	Шифре за ознаке ставки менија (кг, комад, врећа). Свака јединица мора бити повезана — директно или преко других јединица — са стандардом (кг · цм · мл · пц), нпр. 1 сандук = 2 кутије и 1 кутија = 20 цм. Конверзије: 1 од = фактор у. Валуте никада нису јединице.
+we_owe_them	Дужни смо им
+who_unlocking	Ко откључава?
+locked_word	Закључано
+show_pin	Прикажи PIN
+hide_pin	Сакриј PIN
+set_owner_pin	ПОДЕШАВАЊЕ ВЛАСНИКА PIN
+enter_owner_passcode	УНЕСИТЕ КОД ВЛАСНИКА
+enter_staff_passcode	УНЕСИТЕ ШИФРУ ЗА ОСОБЉЕ
+pin_count_zero	0 / 12 цифара · најмање 4, затим ОК
+pin_count_need	{} / 12 цифара · потребно је још {}
+pin_count_full	12 / 12 цифара · притисните ОК
+pin_count_ready	{} / 12 цифара · притисните ОК када сте спремни
+pin_hint_choose	Изаберите 4–12 цифара · Унесите или Откључај да бисте сачували
+pin_hint_new	Нови власник од 4–12 цифара PIN · Унесите или откључајте
+pin_hint_shop_code	Купите уређај · код за упаривање {}
+pin_hint_books	Овај уређај држи књиге
+pin_hint_paired	Екстра до упаривања — откључајте за продају
+pin_hint_pair_first	Екстра до — прво упарите са уређајем продавнице
+unlock_to_continue	Откључајте да бисте наставили
+no_staff_yet	Још нема особља — откључајте као Власник, а затим Тим
+status_server_set_pin	Режим сервера — поставите власника PIN
+status_server_tills	Режим сервера — могу се придружити додатне касе. Откључај
+status_server_unlock	Режим сервера — откључајте као власник
+status_client_unlock	Режим клијента — откључајте за продају
+icon_new_selected	Икона: изабрана нова датотека — додирните Сачувај бренд
+icon_custom	Икона: прилагођена ознака места
+icon_default	Икона: Kumkaj ознака (подразумевано) — изаберите прилагођену
+logo_yours	Лого: логотип ваше продавнице — приказан на екранима и рачунима
+logo_default	Лого: Kumkaj ознака (подразумевано) — изаберите свој ако га имате
+tmpl_current	Тренутно: {} — {}
+tmpl_selected	Изабрано: {} — {}
+setup_complete	Подешавање је завршено
+onboard_fresh_tmpl	Свеже · {} — каталог почиње празан; додајте ставке менија у ставке менија, а затим Готово.
+onboard_book_tmpl	Књига · {} — додајте ставке менија и почетни кредит, а затим Готово.
+onboard_template_tmpl	Именујте место ако желите, а затим изаберите како да почнете.
+tmpl_blurb	Курирске књиге и пулт за резервације: пошиљаоци, превозници, дневни лист, АВБ.
+tmpl_how	Резервишите пакете на столу; Дневник за данас; картице за стопе, забаве, извештаје.
+trk_booked	Резервисано
+trk_picked_up	Покупио
+trk_in_transit	У транзиту
+trk_delivered	Испоручено
+trk_rto	Враћање пошиљаоцу
+lane_to_dispatch	За отпрему
+lane_with_carrier	Са носачем
+lane_failed	Није успело
+lane_done_today	Урађено данас
+ops_board_help	Парцеле по месту где се налазе у данашњем раду. Додирните парцеле (или их скенирајте) да бисте их изабрали, а затим поступите на све одабране одједном — свака трака нуди само покрете који јој одговарају.
+lane_empty	Ништа овде тренутно.
+picked_fmt	{n} изабрано
+pick_all	Изабери све
+bag_for_carrier	Рука носачу
+send_with_rider	Пошаљите са јахачем
+out_again	Опет напоље
+return_to_sender	Вратите се пошиљаоцу
+runs_bags_heading	Недавне вожње и торбе
+print_word	Принт
+bag_word	Торба за ношење
+run_word	Ридер рун
+parcels_fmt	{n} пакети
+parcel_history	Историја
+attempt_fmt	Покушај {n}
+pieces_short_fmt	{n} ком
+note_reason_ph	Напомена или разлог
+ops_pick_first	Прво изаберите пакете — додирните их или скенирајте
+cod_to_collect	Испоручено — ЦОД за преузимање
+cod_on_road	ЦОД још увек на путу
+cod_owed_consignors	Прикупљено — за плаћање пошиљаоцима
+cod_rto_fees	РТО накнаде за прикупљање
+cod_to_hand_in	ЦОД за предају
+parcel_one_fmt	{n} пакет
+facet_bank_title	Извештаји
+facet_bank_help	Дневне књиге, старење купаца или добављача, банковни постови и П&Л периода.
+facet_ops_title	Пошиљке и отпрема
+facet_ops_help	Скенирајте или откуцајте АВБ → Финд, а затим унапред / одштампајте етикету / ЦОД. Отпремање јахачу или превознику.
+facet_cod_title	ЦОД регистар
+facet_cod_help	Преузмите приликом испоруке, а затим пошаљите пошиљаоцу.
+facet_riders_title	Јахачи (сопствена флота)
+facet_riders_help	Додајте возаче, а затим пошаљите резервисане АВБ-ове из Опс.
+against_bill_ph	Против рачуна # изнад (опционо)
+aliases_ph	Алиаси — друга имена, одвојена зарезом
+amount_blank_full_ph	Износ (празно = пуно стање)
+amount_owed_ph	Износ дуговања
+amount_ph	Износ
+amount_received_ph	Примљени износ
+amount_we_pay_ph	Износ који плаћамо
+awb_scan_ph	АВБ / скенирање бар кода
+bulk_csv_ph	Булк ЦСВ — одредиште, прималац, кг, цод_паисе, напомена
+business_name_ph	Назив предузећа
+category_new_ph	Категорија (опционално, креирана ако је нова)
+cod_amount_ph	ЦОД износ
+code_bag_ph	код (торба)
+conv_factor_ph	Фактор (25 = 1 врећа → 25 кг)
+country_code_ph	Код државе нпр. У, ГБ, САД, АЕ, БР
+credit_khata_amount_ph	Износ кредитне/кредитне књиге
+credit_limit_ph	Кредитно ограничење (0 = нема)
+dim_unit_code_ph	Шифра јединице димензије (цм)
+divisor_ph	Волуметријски делилац (5000)
+extra_per_kg_ph	Екстра / кг
+first_amount_ph	Први износ
+first_kg_ph	Први кг (плоча)
+from_code_ph	Од кода (торбе)
+item_name_lang_ph	Назив ставке менија — откуцајте га на свом језику
+login_id_opt_ph	Корисничко име (обавезно, јединствено)
+manager_pin_ph	Менаџер PIN да одобри (само ако не можете поништити)
+new_branch_name_ph	Ново име филијале
+new_password_ph	Нова лозинка (опционо)
+new_pin_ph	Ново PIN (4–12 цифара)
+note_bank_ph	Напомена (депозит, повлачење,…)
+note_buy_expense_ph	Напомена (гориво, кирија,…)
+note_expense_ph	Напомена (гориво, канцеларија,…)
+notify_phone_ph	Обавести телефон (ВхатсАпп/СМС кука)
+options_moklanjo_ph	Опције (опционо) — Велики=20, омот за поклон=10
+part_second_way_ph	Део на други начин (опционо)
+phone_ph	Телефон
+address_ph	Адреса
+party_custom_fields_heading	Прилагођена поља (изабрана страна)
+party_custom_help	Додајте било коју ознаку и вредност на овој забави — ВхатсАпп, ГСТИН, код руте,…
+party_custom_key_ph	Назив поља (нпр. ВхатсАпп)
+party_custom_value_ph	Валуе
+party_custom_add	Додај поље
+party_custom_remove	Уклони поље
+party_custom_empty	Још нема прилагођених поља
+party_custom_pick_first	Изаберите групу да бисте додали прилагођена поља
+place_name_ph	Име овог места
+price_ph	Цена
+qty_example_ph	Количина (нпр. 1,5 за кг)
+quantity_ph	Количина
+reason_required_ph	Разлог (обавезно)
+role_title_ph	Назив улоге (нпр. Бариста)
+service_pct_ph	Услуга % опционо 0/10/12
+short_code_ph	Кратак код (МГ02)
+slab_kg_ph	Наплатива плоча у кг (0,5)
+staff_name_ph	Име особља / ид
+starting_password_ph	Почетна лозинка (опционо)
+starting_pin_ph	Почевши од PIN (4–12 цифара)
+tax_rate_ph	Назив пореске стопе или % — Стандардна, Снижена, 0, 5, 12, 18, 20
+to_code_ph	За кодирање (кг)
+uncleared_no_ph	Необрађено # изнад
+unit_cost_ph	Јединични трошак
+unit_kg_blank_ph	Јединица (кг или празно)
+unit_name_bag_ph	Име (торба)
+weight_unit_code_ph	Шифра јединице тежине (кг)
+zone_name_ph	Назив зоне
+pay_credit	На рачун
+book_kind_today	Данашње књиге
+book_kind_month	Главне књиге овог месеца
+book_kind_aging	Неизмирени/дебитно-кредитни
+book_kind_balance	Биланс стања
+ops_desk_help	Скенирајте АВБ помоћу УСБ скенера бар кодова (или га откуцајте) → Пронађи. Затим унапред, одштампајте етикету или сакупите ЦОД. Штампање етикета Код 128.
+role_help_consignor	Улога: Пошиљалац — АР (они нам дугују). Иста фирма може бити и превозник.
+role_help_carrier	Улога: Превозник — АП (дугујемо им). Иста фирма може бити и пошиљалац.
+role_help_both	Улоге: пошиљалац + превозник — једна страна, књиге АР и АП, нето у извештајима.
+role_help_supplier	Улога: Добављач — АП за куповину.
+lane_declared_label	Резервација рачуна
+lane_owner_label	Резервација готовине
+money_lane_bill	Рачун: {lane}

@@ -1,0 +1,835 @@
+# Sinhala — සිංහල (si). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	කුරියර් නියෝජිත පොත් + වෙන්කිරීමේ මේසය. නොබැඳිව නොමිලේ.
+unlock	අගුළු හරින්න
+pin_hint	හිමිකරු PIN 0000 ලෙස ආරම්භ වේ
+sell	වෙන්කරවා ගැනීම
+buy	ගෙවන්න
+books	දින ලෙජරය
+books_help	අද තත්ත්වය. වෙන්කරවා ගැනීම = පාර්සල්. ගෙවීම = වාහක බිල්පත් සහ වියදම්. පාර්ශ්වයන් = ප්‍රවාහනය කරන්නන් සහ වාහකයන්.
+buy_help	වියදම් වවුචර් සහ වාහක බිල්පත් (මුදල් ඉවතට). ගිණුමේ ගිණුම පක්ෂ ලෙජරයේ පවතී.
+sell_money_in	පාර්සලයක් වෙන්කරවා ගන්න
+buy_money_out	වියදම් / වාහක බිල්පත
+record_purchase	මිලදී ගැනීම සුරකින්න
+add_expense	වියදම් ලදුපත
+bank_book	බැංකු ලෙජරය
+credit_help	පක්ෂ හැඳුනුම්පත අද්විතීයයි (නම් පුනරාවර්තනය විය හැක). භූමිකාවන්: Consignor (AR), Carrier (AP), හෝ දෙකම එම id මත. ලෙජර්ස් වෙන්ව පවතී; වාර්තා net පෙන්වයි.
+party_kind_ph	අභිරුචි භූමිකාව (විකල්ප) — හෝ ඉහත චිපයක් තට්ටු කරන්න
+parties_list_heading	සුරැකි පාර්ශවයන්
+reports_help	දින ලෙජරය, ණය ගැතියන් සහ ණය දෙන්නන්, බැංකු ලෙජරය, වියදම් ලදුපත්, ලාභය සහ අලාභය.
+reports_today	දින ලෙජරය (අද)
+reports_month	ලාභය සහ අලාභය (මාසය)
+reports_aging	කැපී පෙනෙන / හර-ණය
+reports_balance_sheet	ශේෂ පත්රය
+reports	බැංකු ලෙජරය සහ P&L
+refresh	නැවුම් කරන්න
+undo	අහෝසි කරන්න
+start_tracking	ලුහුබැඳීම ආරම්භ කරන්න
+stock_minus	- කොටස්
+stock_plus	+ තොග
+settle_cash	මුදල් පියවන්න
+settle_card	කාඩ්පත විසඳන්න
+items	ගාස්තු සහ සේවා
+nav_items	ගාස්තු
+more	තවත්
+your_items	ඔබේ ගාස්තු
+items_help	සෑම පේළියක්ම අනුපාතයකි (උදා: මතුපිට කලාපය A). ඒකකය සාමාන්යයෙන් කි.ග්රෑ. සංස්කරණය කිරීමට තට්ටු කරන්න.
+add_item	අනුපාතය එකතු කරන්න
+new_item	නව අනුපාතය
+adding_item	නව ගාස්තුවක් එකතු කිරීම
+editing_item	සංස්කරණය කරනවා
+save	සුරකින්න
+remove	ඉවත් කරන්න
+empty_catalog	තවමත් ගාස්තු නැත. ගාස්තු සහ සේවා විවෘත කරන්න, එකක් එකතු කරන්න (නම + මිල, ඒකක kg), පසුව වෙන්කරවා ගැනීම.
+counter_sale	කවුන්ටර වෙන්කරවා ගැනීම
+total	මුළු
+cash	මුදල්
+upi	UPI
+card	කාඩ්පත
+credit	පාරිභෝගිකයින් සහ සැපයුම්කරුවන්
+clear	පැහැදිලියි
+ready_to_sell	ලෙජරයට සූදානම්
+today_prefix	අද
+today_mid	අද
+owed	කැපී පෙනෙන
+round_word	රවුම්
+back	ආපසු
+sold_out	ලබා ගත නොහැක
+restock	නැවත ගබඩා කරන්න
+not_tracked	ලුහුබැඳ නැත
+in_stock	තොගයේ
+marked_sold_out	නොමැති බව සලකුණු කර ඇත
+add_upper	එකතු කරන්න
+na	නැත
+qty	බර/ප්‍රමාණය
+unit_at	අගය @
+actual	සැබෑ
+applied	අයදුම් කළා
+note_ph	සටහන (විකල්ප)
+rounded	වටකුරු
+split	බෙදන්න
+counter	කවුන්ටරය
+parcel	පාර්සලය
+order	ආපනශාලා ඇණවුම
+sales	වෙන් කිරීම්
+sales_refunds	වෙන් කිරීම් සහ ආපසු ගෙවීම්
+day_close	දවස කිට්ටුයි
+reports_expenses	බැංකු ලෙජරය සහ P&L
+nav_reports	වාර්තා
+nav_settings	සැකසීම්
+nav_lock	අගුළු දමන්න
+sidebar_settings	පැති තීරු සැකසුම්
+sidebar_settings_help	පැති රේල් එකට සමාන අයිකන. නැවත ඇණවුම් කිරීමට පේළියක් අදින්න. පෙන්වීමට හෝ සැඟවීමට ස්විචය පෙරළන්න. සැකසීම් සහ අගුල සෑම විටම තීරුවේ පවතී.
+sidebar_always_on_short	සැමවිටම ක්‍රියාත්මකයි
+sidebar_back_settings	ආපසු
+sidebar_shown	පෙන්වා ඇත
+sidebar_hidden	සැඟවී ඇත
+sidebar_always_on	නිතරම බාර් එකේ
+sidebar_shown_hint	පැති රේල් / පහළ ටැබ් මත පෙන්වා ඇත
+sidebar_hidden_hint	තීරුවෙන් සැඟවී ඇත
+sidebar_menu_items	මෙනු සහ මෙනු මෙනු අයිතම
+sidebar_enable_all	සියල්ල සබල කරන්න
+sidebar_disable_all	සියල්ල අක්‍රිය කරන්න
+sidebar_order_saved	පැති තීරු ඇණවුම සුරකින ලදී
+sidebar_visibility_saved	පැති තීරු දෘශ්‍යතාව සුරකින ලදී
+amounts_hide	සඟවන්න
+amounts_show	පෙන්වන්න
+no_sale_yet	තවමත් විකිණීමක් නැත
+favorites	ප්රියතම
+favorites_help	ඔබ නිතර අලෙවි කරන මෙනු මෙනු අයිතම, ඔබගේ පිවිසුම සඳහා සුරකින ලදී. අමුත්තන්ගේ බිල්පතට එකක් එක් කරන්න, නැතහොත් පහත සියලුම මෙනු අයිතම වලින් ඔබේ ලැයිස්තුව සාදන්න.
+your_favorites	ඔබේ ප්රියතම
+all_items	සියලුම මෙනු අයිතම
+no_favorites	තවමත් ප්‍රියතමයන් නොමැත - පහත ලැයිස්තුවෙන් මෙනු අයිතම එක් කරන්න.
+add_to_bill	අමුත්තන්ගේ බිල්පතට එකතු කරන්න
+added	එකතු කරන ලදී
+owes_word	ණයයි
+selected_word	තෝරා ගන්නා ලදී
+chip_clear_credit	පැහැදිලි - ණය හෝ අත්තිකාරම් ගන්න
+chip_missing_customer	තෝරාගත් පාරිභෝගිකයා අතුරුදහන් - නැවත තෝරන්න
+chip_no_customer	තවම පාරිභෝගිකයෙක් නැත - නමක් ටයිප් කරන්න, ඉන්පසු ණය තට්ටු කරන්න
+credit_summary_fmt	{} පාරිභෝගිකයන් · විවෘත ණය {} · අත්තිකාරම් රඳවා ඇත {}
+recent_label	මෑත:
+inventory	ඉන්වෙන්ටරි
+inventory_stock	ඉන්වෙන්ටරි සහ කොටස්
+branches	ශාඛා
+branches_org	ශාඛා සහ ආයතන
+credit_customers	පාර්ශවයන් (ණය ගැතියන් සහ ණය හිමියන්)
+customer_name_ph	පාරිභෝගිකයාගේ හෝ සැපයුම්කරුගේ නම
+new_customer_ph	නව පාරිභෝගිකයාගේ හෝ සැපයුම්කරුගේ නම
+item_name_ph	අනුපාත නම (උදා. මතුපිට කලාපය A)
+item_price_ph	කි.ග්‍රෑ.කට / පළමු ස්ලැබ් එකට
+start_template	නිෂ්පාදනය
+next_booking	ඊළඟ වෙන්කරවා ගැනීම
+destination_ph	ගමනාන්ත නගරය / කලාපය
+consignee_ph	ලබන්නාගේ නම
+consignee_phone_ph	ග්රාහක දුරකථනය
+consignee_address_ph	භාරදීමේ ලිපිනය
+origin_name_ph	යවන්නාගේ නම
+origin_phone_ph	යවන්නාගේ දුරකථනය
+origin_address_ph	පිකප් / මුල් ලිපිනය
+booking_consignor_heading	යවන්නා (පාරිභෝගිකයා / යවන්නා)
+booking_consignee_heading	භාරකරු (ලබන්නා)
+booking_consignor_hint	පිරවීම සඳහා සාදයක් තෝරන්න, නැතහොත් ඇවිදීම සඳහා හිස්ව තබන්න. නිවසේ පිකප් සහ RTO සඳහා අවශ්‍ය වේ.
+booking_consignee_hint	පාර්සලය ලබන්නා. ඇවිදීමේ කවුන්ටරය අතහැර දැමීම් සඳහා හිස්ව තබන්න.
+weight_kg_ph	සැබෑ කි.ග්රෑ
+length_cm_ph	L සෙ.මී
+breadth_cm_ph	B සෙ.මී
+height_cm_ph	එච් සෙ.මී
+chargeable_kg	අය කළ හැකි කි.ග්රෑ
+awb_label	AWB
+booking_help	යවන්නා + භාරකරු (හිස් හරි) → ගමනාන්තය → බර → තේරීම් අනුපාතය → ගිණුම/මුදල් → ගෙවන්න. රිසිට්පතේ AWB මුද්‍රණ. ඊළඟ වෙන්කරවා ගැනීම මේසය හිස් කරයි. වටකුරු ආරම්භයන් ව්‍යවහාරික වලට සමාන වේ — බිල්පත වට කිරීමට පමණක් සංස්කරණය කරන්න.
+cart_empty_hint	මේසය හිස් - භාරකරු/ප්‍රවාහනය කරන්නා විකල්පමය, ගමනාන්තය සහ බර සකසන්න, ගාස්තුවක් මත ADD තට්ටු කරන්න, ඉන්පසු ගෙවන්න.
+team	කණ්ඩායම
+team_pins	කණ්ඩායම සහ PINs
+my_pin_settings	මගේ PIN
+settings_hub_help_my_pin	මෙම උපාංගයට පුරනය වී ඇති පුද්ගලයා සඳහා අගුලු හැරීම PIN වෙනස් කරන්න.
+team_self_help	ඔබට පමණක් ඔබගේ අගුළු හැරීමේ PIN (සහ විකල්ප පිවිසුම් මුරපදය) වෙනස් කළ හැක. ඔබට විවිධ තිර හෝ අයිතිවාසිකම් අවශ්‍ය දැයි හිමිකරුගෙන් විමසන්න.
+backup_settings	උපස්ථ සහ සැකසුම්
+lock_app	යෙදුම අගුළු දමන්න
+pick	තෝරාගන්න
+select	තෝරන්න
+advance	අත්තිකාරම්
+owner	හිමිකරු
+staff	කාර්ය මණ්ඩලය
+photo	ඡායාරූපය
+auto	ඔටෝ
+prev	පෙර
+next	ඊළඟට
+ok	OK
+this_shop	සේවාදායක මාදිලිය
+extra_till	සේවාලාභී මාදිලිය
+off	අක්රියයි
+server	සේවාදායක මාදිලිය
+client	සේවාලාභී මාදිලිය
+language_currency	භාෂාව සහ මුදල්
+language	භාෂාව
+choose_language	ඔබේ භාෂාව තෝරන්න
+language_setup_hint	මෙම උපාංගයේ භාෂාව අනුගමනය කරන්න, නැතහොත් ඔබම එකක් තෝරන්න.
+lang_follow_platform	උපාංග භාෂාව
+lang_pick_user	භාෂාව තෝරන්න
+lang_platform_now	උපාංග භාෂාව දැන්
+selected_language	තෝරා ගන්නා ලදී
+continue	දිගටම කරගෙන යන්න
+this_device	මෙම උපාංගය
+device_use_q	මෙම උපාංගය භාවිතා කරන්නේ කෙසේද?
+last_server_mode	සේවාදායකය විය — ඉදිරියට යාමට තට්ටු කරන්න
+last_client_mode	සේවාදායකයා විය - ඉදිරියට යාමට තට්ටු කරන්න
+choose_server	සේවාදායකයක් තෝරන්න
+choose_server_hint	පවතින සේවාදායකයක් විවෘත කරන්න, නැතහොත් වෙනත් ව්‍යාපාරයක් සඳහා එකක් සාදන්න.
+create_new_server	නව සේවාදායකයක් සාදන්න
+open_server	විවෘත කරන්න
+new_server_name_ph	නව සේවාදායක නම (විකල්ප)
+server_remove_pin_ph	සේවාදායකයක් ඉවත් කිරීමට හිමිකරු PIN
+only_owner_remove_server	සේවාදායකයක් ඉවත් කළ හැක්කේ හිමිකරුට පමණි
+owner_pin_remove_server	මෙම සේවාදායකය ඉවත් කිරීමට හිමිකරු PIN අවශ්‍යයි
+device_setup_help	සේවාදායකය මෙහි ලෙජර් තබා ගනී. සේවාදායක යුගල සේවාදායකයකට.
+currency	මුදල්
+backup	උපස්ථ
+settings_sec_diag	රෝග විනිශ්චය
+settings_hub_help	වරකට එක් ප්‍රදේශයක් විවෘත කරන්න - අඩු අනුචලන, පැහැදිලි තේරීම්.
+settings_sec_devices	වෙනත් උපාංග
+settings_sec_alerts	ඇඟවීම්
+alerts_help	ඔබ වෙනුවෙන් තත්ත්‍ව පණිවිඩ කොපමණ කාලයක් තිරයේ පවතීද (මෙම පිවිසුම).
+snack_secs_ph	තත්පර (3-60, පෙරනිමි 10)
+snack_secs_save	අනතුරු ඇඟවීමේ කාලය ඉතිරි කරන්න
+snack_secs_saved	අනතුරු ඇඟවීමේ කාලය ඉතිරි කර ඇත - තත්පර {n}
+snack_secs_bad	තත්පර සංඛ්‍යාවක් ලෙස ඇතුලත් කරන්න (3–60)
+cancelled	අවලංගු කළා
+cancel	අවලංගු කරන්න
+opening_client	සේවාලාභියා විවෘත කරමින්...
+preparing_desk	මේසය සූදානම් කරමින්...
+opening_server	සේවාදායකය විවෘත කරමින්...
+creating_server	සේවාදායකය නිර්මාණය කරමින්...
+diag_privacy_help	ලඝු-සටහන් මෙම උපාංගයේ පවතී. රහස් (PIN, මුරපද) කිසිදා ගබඩා නොවේ. උපාංගයෙන් පිටත පැකේජයක් බෙදා ගැනීමට සෑම අවස්ථාවකදීම ඔබේ පැහැදිලි අනුමැතිය අවශ්‍ය වේ - කිසිවිටෙක විකුණනු නොලැබේ හෝ තෙවන පාර්ශවයන්ට ලබා නොදේ.
+diag_level	විස්තර මට්ටම
+diag_level_error	දෝෂ
+diag_level_warn	අනතුරු ඇඟවීම්
+diag_level_info	තොරතුරු
+diag_level_debug	දෝෂහරණය කරන්න
+diag_support_start	මිනිත්තු 30ක සහය සැසිය ආරම්භ කරන්න
+diag_support_stop	සහාය සැසිය අවසන් කරන්න
+diag_support_started	ආධාරක සැසිය ක්‍රියාත්මකයි - මිනිත්තු 30ක් සඳහා දෝශ නිරාකරණ විස්තර
+diag_support_ended	උපකාරක සැසිය අවසන් විය
+diag_export_local	දේශීය පිටපත අපනයනය කරන්න
+diag_export_local_done	{path} හි දේශීය රෝග විනිශ්චය සූදානම් - පිටපතක් සුරැකිය යුතු ස්ථානය තෝරන්න
+diag_approve_send	මෙම උපාංගයෙන් බෙදා ගැනීම අනුමත කරන්න
+diag_send_heading	මෙම උපාංගයෙන් බෙදා ගන්න
+diag_send_help	අනුමැතිය එක් පැකේජයකි, පසුව කල් ඉකුත් වේ. තාවකාලික - නිෂ්පාදනය නිවැරදි කිරීමට හෝ වැඩිදියුණු කිරීමට පමණක් භාවිතා වේ. තෙවන පාර්ශ්ව සමඟ බෙදාගෙන නොමැත. Linux, Windows, macOS, සහ Android මත ක්‍රියා කරයි.
+optional_login_heading	විකල්ප පුරනය වීම
+rights_heading	අයිතිවාසිකම්
+booking_scope_heading	දේශීය / ජාත්‍යන්තර
+diag_send_approved	එක් පැකේජයක් සඳහා අනුමත කරන ලද බෙදාගැනීම (ඉක්මනින් කල් ඉකුත් වේ)
+diag_export_send	කොටස් පැකේජයක් සාදන්න (අනුමැතිය අවශ්‍යයි)
+diag_export_send_done	බෙදාගැනීමේ පැකේජය {path} ට සූදානම් - සුරැකිය යුතු ස්ථානය තෝරන්න, පසුව Kumkaj සහාය වෙත පමණක් යවන්න
+diag_save_bundle	රෝග විනිශ්චය පිටපත සුරකින්න
+diag_bundle_saved	රෝග විනිශ්චය පිටපත {path} වෙත සුරකින ලදී
+diag_bundle_failed	රෝග විනිශ්චය පිටපත සුරැකීමට නොහැකි විය - නැවත උත්සාහ කරන්න
+diag_clear	රෝග විනිශ්චය ලොග් ඉවත් කරන්න
+diag_cleared	රෝග විනිශ්චය ලොග හිස් කරන ලදී
+use	භාවිතා කරන්න
+add_branch	ශාඛාව එකතු කරන්න
+add_conversion	පරිවර්තනය එකතු කරන්න
+add_item_plain	මෙනු අයිතමය එක් කරන්න
+add_note	සටහන එකතු කරන්න
+add_opening_balance	ආරම්භක ශේෂය එක් කරන්න
+add_rider	ධාවකය එක් කරන්න
+add_staff	කාර්ය මණ්ඩලය එකතු කරන්න
+add_unit	ඒකකය එකතු කරන්න
+add_use_name	මෙම නම එක් කරන්න / භාවිතා කරන්න
+allow_extra_tills	අමතර මුදල් රෙජිස්ටර් වලට ඉඩ දෙන්න
+amend	සංශෝධනය කරන්න
+apply_country_pack	රට පැක් එක යොදන්න
+datetime_appearance	දිනය සහ වේලාව පෙනුම
+datetime_appearance_help	පොත් වසරේ පළමු RFC3339 ඇතුළත තබා ගනී. මේවා වෙනස් කරන්නේ දිනයන් සහ ඔරලෝසු කුවිතාන්සි, ලේබල්, වාර්තා සහ තිරය මත පෙනෙන ආකාරය පමණි.
+datetime_example	දැන් උදාහරණය: {ex}
+date_order	දින ඇණවුම
+date_order_dmy	D/M/Y
+date_order_mdy	M/D/Y
+date_order_ymd	Y-M-D
+time_format	ඔරලෝසුව
+time_format_24h	පැය 24
+time_format_12h	12-පැය
+attach_bill_photo	අමුත්තන්ගේ බිල්පත් ඡායාරූපය අමුණන්න
+attach_pdf	අමුණන්න PDF
+attach_photo	ඡායාරූපය අමුණන්න
+bank	බැංකුව
+bank_in	බැංකුව තුළ
+bank_out	බැංකුවෙන් මුදල්
+bank_to_till	බැංකු → මුදල් ලේඛනය
+till_to_bank	මුදල් ලේඛනය → බැංකුව
+mark_cleared	ලකුණ නිෂ්කාශනය විය
+unmark	සලකුණු ඉවත් කරන්න
+role_both	දෙකම
+role_carrier	වාහකය
+role_cashier	මුදල් අයකැමි
+role_consignor	යවන්නා
+role_manager	කළමනාකරු
+role_supplier	සැපයුම්කරු
+branch_name_sell_ph	විකිණීමට ඇති ශාඛාවේ නම
+bring_my_book	මගේ ලෙජරය ගෙනෙන්න
+business_tax_id_ph	ව්යාපාර බදු හැඳුනුම්පත
+card_amount_ph	කාඩ්පත් මුදල
+cash_amount_ph	මුදල් ප්රමාණය
+upi_amount_ph	UPI මුදල
+carrier_cost_ph	වාහක පිරිවැය
+carrier_party_ph	වාහක පක්ෂය
+choose_icon	නිරූපකය තෝරන්න
+choose_logo	ලාංඡනය තෝරන්න
+choose_receipt_stamp	රිසිට්පත් මුද්දරය තෝරන්න
+choose_payment_qr	ගෙවීම් QR තෝරන්න
+clear_icon	නිරූපකය හිස් කරන්න
+clear_logo	ලාංඡනය හිස් කරන්න
+clear_photo	ඡායාරූපය හිස් කරන්න
+clear_stamp	පැහැදිලි මුද්දරයක්
+clear_payment_qr	පැහැදිලි ගෙවීම QR
+print_faces	මුහුණු මුද්‍රණය කරන්න (රිසිට්පත / කාල බිල්පත)
+print_faces_help	කුවිතාන්සි සහ කාල බිල්පත් වෙන්කරවා ගැනීමේදී ඔබේ ලාංඡනය අසල විකල්ප මුද්දර සහ ගෙවීම් QR.
+awb_pools_heading	වාහක AWB අංක සංචිත
+add_awb_pool	AWB සංචිතය එක් කරන්න
+awb_pool_carrier_ph	වාහක පක්ෂයේ නම
+awb_pool_start_ph	ආරම්භක අංකය.
+awb_pool_end_ph	අවසාන අංකය.
+awb_pool_prefix_ph	උපසර්ගය (විකල්ප)
+awb_pool_label_ph	ලේබලය (විකල්ප)
+pieces_ph	කෑලි (හිස් = 1) - භාණ්ඩ / බහු-කෑල්ල සඳහා පුළුල් කරන්න
+bulk_awbs_ph	තොග AWBs - එක් තත්ත්‍වයේ අත්තිකාරම් සඳහා බොහෝ (නව රේඛාව හෝ කොමාව) අලවන්න
+tds_cut_ph	TDS කප්පාදුව (විකල්ප)
+discount_ph	වට්ටම් (විකල්ප)
+cheque_no_ph	අංකය පරීක්ෂා කරන්න (විකල්ප)
+bill_reminder_chase	බිල් මතක් කිරීමේ හඹා යාමේ ලැයිස්තුව
+month_mix_report	මාසික මිශ්‍ර වාර්තාව
+copy_month_gst_csv	පිටපත් මාසය GST CSV
+domestic	ගෘහස්ථ
+international	ජාත්යන්තර
+pick_logo	ලාංඡනය තෝරන්න
+booking_scope_hint_domestic	පරිමාමිතික ÷5000 (ගෘහස්ථ) — ÷6000 වාතය සඳහා ජාත්‍යන්තර තට්ටු කරන්න
+booking_scope_hint_intl	පරිමාමිතික ÷6000 (ජාත්‍යන්තර වාතය) — සාප්පු ÷5000 සඳහා ගෘහස්ථ තට්ටු කරන්න
+cod_register	COD ලේඛනය
+collect_cod	COD (AWB) එකතු කරන්න
+consignments_dispatch	තොග සහ යැවීම
+consignor_party_ph	භාරකරු / පක්ෂයේ නම
+copy_day_book_csv	දින ලෙජරය පිටපත් කරන්න CSV
+copy_day_close	පිටපත් කිරීමේ දිනය ආසන්නයි
+copy_items_csv	මෙනු අයිතම CSV පිටපත් කරන්න
+copy_outstanding_csv	කැපී පෙනෙන පිටපතක් CSV
+copy_parties_csv	පාරිභෝගිකයින් සහ සැපයුම්කරුවන් පිටපත් කරන්න CSV
+copy_party_ledger_csv	පාරිභෝගික ලෙජරය CSV පිටපත් කරන්න
+copy_receipt	පිටපත කුවිතාන්සිය
+copy_report	වාර්තාව පිටපත් කරන්න
+counted_cash_ph	ලාච්චුවේ මුදල් ගණන් කළා
+counter_agency_ph	කවුන්ටරය / නියෝජිතායතනයේ නම (විකල්ප)
+create_backup	උපස්ථ සාදන්න
+day_close_summary	දින සමීප සාරාංශය
+delete_party	තෝරාගත් පාරිභෝගිකයා හෝ සැපයුම්කරු මකන්න
+dispatch_to_rider	පිටත් කර යවා වෙන් කර ඇත → ධාවකය
+docket_charge_ph	ඩොකට් ආරෝපණය
+declared_value_ph	ප්‍රකාශිත අගය
+contents_ph	අන්තර්ගතය
+eway_ph	ඊ-වේ බිල් අංකය.
+insurance_label	රක්ෂණය
+yes_label	ඔව්
+no_label	නැත
+print_route_label	මුද්‍රණ මාර්ගය
+new_party_kind_label	අලුත් පක්ෂ වර්ගයක්
+done_open_books	නිමයි - ලෙජර් විවෘත කරන්න
+export_day	අපනයන දිනය
+extra_note_expense_ph	අවසාන වියදම් පිළිබඳ අමතර සටහනක්
+extra_note_awb_ph	මෙම AWB / විකිණීම පිළිබඳ අමතර සටහන
+failed_delivery	අසාර්ථක භාරදීම
+find_scan_awb	AWB සොයන්න / ස්කෑන් කරන්න
+forget_shop	මේ කඩේ අමතක කරන්න
+fuel_ph	ඉන්ධන
+handover_carrier	අතින් වෙන් කරවා ගත් → වාහකය
+import_day	ආනයනය කරන දිනය
+import_items_csv	අයිතම ආයාත කරන්න / ගාස්තු CSV...
+import_parties_csv	පාරිභෝගිකයින් සහ සැපයුම්කරුවන් ආනයනය කරන්න CSV...
+import_pincodes_csv	CSV පින්කෝඩ් ආයාත කරන්න...
+import_carrier_bill_csv	වාහක බිල්පත් CSV ආනයනය කරන්න...
+copy_carrier_bill_report	අවසාන වාහක බිල්පත් වාර්තාව පිටපත් කරන්න
+use_carrier_cost	වාහක පිරිවැය භාවිතා කරන්න
+rate_carrier_ph	වාහකය (හිස් = අපගේ විකුණුම් අනුපාතය)
+rate_party_ph	සාදය (හිස් = සියලුම පාරිභෝගිකයින්)
+carrier_pick_ph	පිරිවැය සඳහා වාහකය (සංසන්දනය කිරීමෙන්)
+item_name	මෙනු මෙනු අයිතමයේ නම
+load_bulk_row	තොග පේළිය → මේසය පූරණය කරන්න
+login_id_ph	පරිශීලක නාමය
+mark_delivered	මාර්ක් භාර දුන්නා
+manifest_cod_total	COD එකතුව
+manifest_received_by	විසින් ලැබී ඇත
+manifest_sign	අත්සන් කරන්න
+ndr_address_wrong	ලිපිනය වැරදියි
+ndr_customer_unavailable	ලබා ගත නොහැක
+ndr_door_locked	දොර අගුළු දමා ඇත
+ndr_other	වෙනත්
+ndr_refused	ප්‍රතික්ෂේප කළා
+out_for_delivery	බෙදාහැරීම සඳහා පිටත් වේ
+print_drs	DRS මුද්‍රණය කරන්න
+print_run_sheet	ධාවන පත්රය මුද්රණය කරන්න
+reattempt	නැවත උත්සාහ කිරීම
+rider_cod_handed_ph	COD භාර දුන්නා
+settle_rider_cod	රයිඩර් COD පදිංචි කරන්න
+mode_desk	මේසය
+mode_rider	අසරුවා
+waiting_office	කාර්යාලයට පැමිණීමට බලා සිටීම
+capture_signature	අත්සන අල්ලා ගන්න
+incoming_manifest	එන මැනිෆෙස්ට්
+pickup_request	පිකප් ඉල්ලීම
+pickup_run	පිකප් ධාවනය
+auto_assign_area	ප්‍රදේශය ස්වයංක්‍රීයව පැවරීම
+reorder_stops	නැවත ඇණවුම් කිරීම නතර කරයි
+settle_rider_pay	යතුරුපැදිකරුගේ වැටුප පියවන්න
+vehicle_inspect	වාහන පරීක්ෂාව
+print_docket	මුද්‍රණ ඩොකට්
+franchise_statement	ඡන්ද බලය ප්රකාශය
+tally_export	Tally වවුචර් අපනයනය
+open_whatsapp	WhatsApp විවෘත කරන්න
+copy_sms	SMS පෙළ පිටපත් කරන්න
+pick_barcode_image	ස්කෑන් කිරීමට රූපය තෝරන්න
+share_receipt_whatsapp	WhatsApp හි රිසිට්පත බෙදා ගන්න
+delivery_feedback	බෙදාහැරීමේ ප්‍රතිපෝෂණය
+lan_self_book	LAN ස්වයං වෙන්කරවා ගැනීම
+new_party_clear	නව පාරිභෝගිකයා හෝ සැපයුම්කරු (පැහැදිලි පෝරමය)
+new_party_kind_ph	නව සාද වර්ගය (සැපයුම්කරු / වාහකයා)
+next_country	ඊළඟ රට
+prev_country	පෙර රට
+note_gstin_ph	සටහන / GSTIN / ගිවිසුම් මතක් කිරීම
+note_pod_ph	සටහන / POD (විකල්ප)
+on_account_ap	ගිණුමේ (AP)
+org_optional_ph	සංවිධානය (විකල්ප)
+paid_now	දැන් ගෙවා ඇත
+pairing_code_ph	යුගල කිරීමේ කේතය
+pair_now	දැන් යුගල කරන්න
+party_name_selected_ph	පාරිභෝගිකයාගේ හෝ සැපයුම්කරුගේ නම (හෝ තෝරාගත් භාවිතා කරන්න)
+password_ph	මුරපදය
+pay_ap_card	AP කාඩ්පත ගෙවන්න
+pay_ap_cash	AP මුදල් ගෙවන්න
+pay_ap_upi	AP UPI ගෙවන්න
+period_bill	කාල බිල්පත
+period_bill_party	කාල බිල්පත් (පාර්ශවය)
+pick_pod_photo	POD ඡායාරූපය තෝරන්න
+print_awb_label	AWB ලේබලය මුද්‍රණය කරන්න
+print_open	මුද්‍රණය / විවෘත කරන්න
+reason_amend_ph	සංශෝධන / අවලංගු / ආපසු ගෙවීමට හේතුව
+reason_note_ph	හේතුව / සටහන (නාස්තිය, ගණන් කිරීම, ...)
+record_day_close	දවස කිට්ටුවෙන් ඉතිරි කරන්න
+refresh_from_shop	සාප්පුවෙන් නැවුම් කරන්න
+refund	ආපසු ගෙවීම
+remit_cod	Remit COD (පාර්ශවය)
+remove_selected	තෝරාගත් ඉවත් කරන්න
+restore_backup	උපස්ථය ප්‍රතිසාධනය කරන්න
+rider_name_ph	ධාවකයාගේ නම
+rider_phone_ph	ධාවකයාගේ දුරකථනය
+riders	පදින්නන්
+riders_own_fleet	ධාවකයන් (තමන්ගේම බලඇණිය)
+rollup	සාරාංශගත කිරීම
+save_booking_measures	වෙන්කිරීමේ පියවර සුරකින්න
+save_brand	වෙළඳ නාමය සුරකින්න
+save_business_id	ව්යාපාර හැඳුනුම්පත සුරකින්න
+save_business_name	ව්‍යාපාරයේ නම සුරකින්න
+save_features	රැකියා සැකසුම සුරකින්න
+save_names	නම් සුරකින්න
+server_ip_ph	සේවාදායක IP (උදා. 192.168.1.10)
+set_credit_limit	පාරිභෝගිකයාට හෝ සැපයුම්කරුට සීමාවක් යොදන්න
+set_login_selected	තෝරාගත් වෙත පිවිසුම යොදන්න
+set_login_named	{name} වෙත පිවිසුම අයදුම් කරන්න
+shop	සාප්පු යන්න
+start_fresh	අලුතින් පටන් ගන්න
+stop_extra_tills	අමතර මුදල් ලේඛන නවත්වන්න
+backup_auto	සෑම දිනකම ස්වයංක්‍රීයව උපස්ථ කරන ලදී · පසුගිය {when} · පසුගිය දින 14 {dir} තුළ තබා ඇත.
+backup_auto_none	සෑම දිනකම ස්වයංක්‍රීයව උපස්ථ වේ - පළමු එක මොහොතකින් ධාවනය වේ.
+backup_copy_to	පිටපත් ද {dir} වෙත යයි.
+backup_copy_btn	එසේම උපස්ථ ෆෝල්ඩරයකට පිටපත් කරන්න...
+autostart_off	මෙම පරිගණකය සමඟ ආරම්භ කරන්න
+autostart_on	මෙම පරිගණකය සමඟින් ආරම්භ වේ ✓ — නතර කිරීමට තට්ටු කරන්න
+autostart_done_on	මෙම පරිගණකය දැන් යෙදුම ආරම්භ කරන විට එය විවෘත කරයි - විදුලිය විසන්ධි වීමෙන් පසු වෙළඳසැලේ සේවාදායකය නැවත පැමිණ ඇත.
+autostart_done_off	යෙදුම ආරම්භ වන විට මෙම පරිගණකය තවදුරටත් එය විවෘත නොකරයි.
+right_allowed	අවසර දී ඇත
+right_with_approval	අනුමැතිය ඇතිව
+right_denied	අවසර නැත
+editing_staff	සඳහා හිමිකම්
+team_pick_ph	සංස්කරණය කිරීමට කාර්ය මණ්ඩලය - නම, පරිශීලක නාමය, හෝ තේරීම
+select_staff	මෙම කාර්ය මණ්ඩලය තෝරන්න
+rights_help	හිමිකම් - වෙනස් කිරීමට තට්ටු කරන්න: අවසර ඇත → අනුමැතිය සහිතව (ඒ මොහොතේ කළමනාකරුගේ PIN අංකය) → අවසර නැත.
+right_void_refund	වෙන් කිරීමක් අවලංගු කිරීම හෝ ආපසු ගෙවීම
+right_amend_sale	වාර්තාගත වෙන්කිරීමක් සංශෝධනය කරන්න
+find_server	වෙළඳසැලේ සේවාදායකය සොයා ගන්න
+finding_server	මෙම Wi‑Fi හි වෙළඳසැලේ සේවාදායකය සොයමින්…
+no_server_found	කිසිවක් හමු නොවීය. සේවාදායකයේ: සැකසීම් → වෙනත් උපාංග → අමතර මුදල් රෙජිස්ටර් වලට ඉඩ දෙන්න (එකම Wi‑Fi). නැතිනම් එහි පෙන්වා ඇති IP එක ටයිප් කරන්න.
+servers_found_pick	ඔබට සම්බන්ධ වීමට අවශ්‍ය වෙළඳසැල තට්ටු කරන්න.
+server_host_selected	{host} භාවිතා කරමින් - යුගල කිරීමේ කේතය ඇතුලත් කරන්න, පසුව දැන් යුගල කරන්න.
+device_forgotten	වෙළඳසැලට මෙම උපාංගය අමතක විය - එය නැවත වෙළඳසැලේ වත්මන් කේතය සමඟ යුගල කරන්න. එය බලා සිටින ඇණවුම් තබා ඇත.
+forget_device	අමතක කරන්න
+last_seen	දැක්කා
+new_pair_code	නව යුගල කේතය
+lan_offline	සාප්පු සේවාදායකයට ළඟා විය නොහැක
+lan_offline_waiting	සාප්පු සේවාදායකයට ළඟා විය නොහැක · {n} රැඳී සිටීම
+lan_connecting	සාප්පුව වෙත සම්බන්ධ වෙමින්...
+pair_finishing	යුගල අවසන් කරමින්... කාර්යාල පොත් යෙදීම
+pair_opening	කාර්යාලය විවෘත කරමින්...
+lan_live	සජීවීව
+lan_sending	{n} යැවීම
+lan_sign_in_to_send	{n} යැවීමට නැවත පුරන්න
+lan_pair_again	මෙම උපාංගය නැවත යුගල කරන්න
+lan_update_app	යෙදුම යාවත්කාලීන කරන්න - මෙම උපාංගයට සහ කාර්යාල සේවාදායකයට විවිධ අනුවාද ඇත
+allow_firewall	වෙනත් උපාංග සම්බන්ධ කිරීමට ඉඩ දෙන්න
+firewall_blocked	මෙම පරිගණකයේ ෆයර්වෝලය වෙනත් උපාංග අවහිර කරයි - වෙනත් උපාංග සම්බන්ධ වීමට ඉඩ දෙන්න තට්ටු කරන්න.
+firewall_waiting	පරිපාලක විමසුම සඳහා රැඳී සිටිමින්...
+lan_join_help	අනෙක් උපාංගයේ: සේවාලාභී ප්‍රකාරය → වෙළඳසැලේ සේවාදායකය සොයන්න (හෝ ටයිප් කරන්න {addr}) → යුගල කිරීමේ කේතය {code}.
+lan_pair_status	Wi‑Fi {addr}
+lan_join_help_no_addr	ලිපිනයක් සඳහා මෙම උපාංගය Wi‑Fi වෙත සම්බන්ධ කරන්න.
+lan_no_address	තවම Wi‑Fi ලිපිනයක් නැත — සාප්පුව වෙත සම්බන්ධ වන්න Wi‑Fi.
+lan_not_listening	උපාංග පිළිගන්නේ නැත (වරාය {port} කාර්ය බහුල). යෙදුම නැවත ආරම්භ කරන්න.
+lan_tills_off	අමතර මුදල් රෙජිස්ටර් අක්‍රියයි. වෙනත් උපාංගයකට සම්බන්ධ වීමට ඔවුන්ට ඉඩ දෙන්න.
+paired_with	යුගලය · {url}
+not_paired	යුගල කර නැත
+choose_device_use	සේවාදායකය හෝ සේවාලාභියා තෝරන්න.
+paired_note	යුගල කර ඇත. විකිණීමට අගුලු හරින්න, නැතහොත් නවතම දේ සඳහා නැවුම් කරන්න.
+last_update_at	අවසාන යාවත්කාලීනය: {time}.
+pair_intro	සේවාදායකය සොයන්න, නැතහොත් එහි ලිපිනය සහ යුගල කිරීමේ කේතය ටයිප් කරන්න.
+queue_waiting	සාප්පුව වෙත ළඟා වීමට රැඳී සිටීම ({n}):
+queue_tries	{n} වරක් උත්සාහ කළා · අවසාන පිළිතුර: {e}
+save_backup_copy	උපස්ථ පිටපතක් සුරකින්න...
+backup_copy_saved	උපස්ථ පිටපත සුරකින ලදි - එය මෙම උපාංගයෙන් බැහැරව තබන්න (USB ස්ටික් හෝ වෙනත් උපාංගයක්)
+backup_copy_overdue	{n} දින සඳහා කිසිදු උපස්ථ පිටපතක් මෙම උපාංගයෙන් පිටවී නැත - සැකසීම් → උපස්ථය
+backup_copy_failed	උපස්ථ පිටපත එහි සුරැකිය නොහැක - වෙනත් ස්ථානයක් තෝරන්න
+clock_off	මෙම උපාංගයේ ඔරලෝසුව සාප්පුවේ සේවාදායකයෙන් {min} මිනිත්තුවකි — මෙම උපාංගයේ නියම වේලාව සකසන්න
+printers_heading	මෙම උපාංගයේ මුද්‍රණ යන්ත්‍ර
+printers_help	සැබෑ මුද්‍රණ යන්ත්‍ර සොයන්න, ඉන්පසු රිසිට්පත හෝ AWB ලේබලය තෝරන්න. සෑම කාර්යයකටම තමන්ගේම පළල, ආලේඛ්‍ය චිත්‍රයක් හෝ භූ දර්ශනයක් සහ බයිට් යවන ආකාරය ඇත. ලේබලයක් තීරු කේතය මුද්‍රණය කරයි. හිස් තැන = මුද්‍රණය නොකරන්න.
+job_width	අන්තර්ගත පළල (මි.මී.)
+job_width_ph	හෝ පළල ටයිප් කරන්න, 40-210 මි.මී
+job_layout	පිරිසැලසුම
+job_delivery	රැකියාව යවන ආකාරය
+job_size	අකුරු ප්රමාණය
+job_size_ph	උදා. 18, 20, 26…
+save_receipt_format	රිසිට්පත් ආකෘතිය සුරකින්න
+save_label_format	ලේබල් ආකෘතිය සුරකින්න
+test_receipt_format	පරීක්ෂණ ලදුපත
+test_label_format	පරීක්ෂණ ලේබලය
+test_receipt_sent	සාම්පල ලදුපත යවා ඇත
+test_label_sent	නියැදි ලේබලය යවා ඇත
+test_print_no_printer	එම කාර්යය සඳහා මුද්‍රණ යන්ත්‍රයක් නොමැත - මෙම ස්ථානය යටතේ එකක් එක් කරන්න
+printers_host_only	මුද්‍රණ යන්ත්‍ර ගබඩා උපාංගයේ (සේවාදායකය) සකසා ඇත. මෙය එහි රැකියා යවන තුරු - සේවාදායකයේ රැඳී සිටීම සොයන්න / එකතු කරන්න / පවරන්න. පරීක්ෂණ පිටුව සේවාදායකය වෙත යයි.
+printers_pool_heading	මුද්‍රණ යන්ත්‍ර
+printers_routes_heading	දේවල් මුද්‍රණය කරන තැන
+printer_label_ph	නම (උදා. මේසය)
+printer_target_ph	සත්කාරක:9100 · bt:MAC · usb:VID:PID · පද්ධතියේ නම
+printer_mode_heading	නව නිමැවුම් සඳහා පැතිකඩ
+printer_mode_standard	සම්මත පෝට්රේට්
+printer_mode_landscape	සම්මත භූ දර්ශනය
+printer_mode_thermal	තාප
+printer_mode_standard_short	පෝට්රේට්
+printer_mode_landscape_short	භූ දර්ශනය
+printer_mode_thermal_short	තාප
+printer_format_custom	නව අභිරුචි පැතිකඩ
+printer_format_custom_label	අභිරුචි
+printer_format_custom_added	මෙම ස්ථානය සඳහා අභිරුචි පැතිකඩ එක් කරන ලදී
+add_printer	මුද්රකය එක් කරන්න
+remove_printer	අන්තිමට ඉවත් කරන්න
+route_pick_ph	රිසිට්පත හෝ ලේබලය
+route_add_printer_ph	මෙම ස්ථානයට මුද්‍රණ යන්ත්‍රය එක් කරන්න
+route_receipt	රිසිට්පත
+route_label	AWB ලේබලය
+route_dont_print	මුද්‍රණ යන්ත්‍රයක් පවරා නැත
+route_add	ස්ථානයට එකතු කරන්න
+route_up	ඉහළට
+route_down	පහළට
+route_remove	අන්තිමට ඉවත් කරන්න
+route_clear	මෙම ස්ථානය සඳහා මුද්‍රණ යන්ත්‍ර හිස් කරන්න
+save_printers	මුද්‍රණ යන්ත්‍ර සුරකින්න
+print_test_page	පරීක්ෂණ පිටුවක් මුද්‍රණය කරන්න
+printers_saved	මෙම උපාංගය සඳහා මුද්‍රණ යන්ත්‍ර සුරකින ලදී
+test_page_sent	පරීක්ෂණ පිටුව යවා ඇත - මුද්‍රණ යන්ත්‍රය පරීක්ෂා කරන්න
+printers_found	මෙම උපාංගයේ හමු විය: {list}
+find_printers	මුද්‍රණ යන්ත්‍ර සොයන්න
+printers_looking	මෙම උපාංගයේ සහ Wi-Fi මත මුද්‍රණ යන්ත්‍ර සොයමින්...
+printers_tap_find	මෙම Wi‑Fi මත රැකියා සහ ජාල රිසිට්පත් මුද්‍රණ යන්ත්‍ර පිළිගන්නා පෝලිම් සඳහා මුද්‍රණ යන්ත්‍ර සොයන්න තට්ටු කරන්න (ඉවත් නොකළ හෝ නොබැඳි ඒවා).
+printers_none_found	මුද්‍රණ යන්ත්‍ර හමු නොවීය - පද්ධති මුද්‍රණ යන්ත්‍ර නාමයක් හෝ ජාල ලිපිනයක් ටයිප් කරන්න (උදා. 192.168.1.50).
+receipt_printer_ph	රිසිට්පත් සඳහා මුද්‍රණ යන්ත්‍රය
+queue_refused	සාප්පුව විසින් පිළිගනු නොලැබේ ({n}) - කවුන්ටරයේ එක් එක් පරීක්ෂා කරන්න:
+clear_not_accepted	පරීක්ෂා කර ඇත - මෙම ලැයිස්තුව ඉවත් කරන්න
+device_name_ph	මෙම උපාංගයේ නම
+lan_last_update	අවසාන යාවත්කාලීනය {time}
+lan_not_accepted	{n} පිළිගන්නේ නැත
+connected_now	දැන් සම්බන්ධයි
+backup_failed	අවසාන ස්වයංක්‍රීය උපස්ථය අසාර්ථක විය: {e}
+backup_overdue	දින {n} සඳහා උපස්ථයක් නැත - උපස්ථ කිරීමට හැකි වන පරිදි මෙම උපාංගයේ යෙදුම විවෘතව තබා ගන්න.
+disk_low	මෙම උපාංගයේ {mb} MB පමණක් නොමිලේ - උපස්ථ ඉක්මනින් අසාර්ථක වනු ඇත. යම් ඉඩක් නිදහස් කරන්න.
+last_seen_devices	අවසන් වරට දුටුවේ: {time}
+sync_interval	සෑම {secs}s සමමුහුර්ත කරන්න
+connection_to_shop	සාප්පුව වෙත සම්බන්ධතාවය
+supplier_name_ph	සැපයුම්කරුගේ නම (හෝ පාරිභෝගිකයා)
+supplier_ph	සැපයුම්කරු
+switch_device	මෙම උපාංගය මාරු කරන්න
+take_payment	ගෙවීමක් ගන්න
+tax_added_till	{tax} සුවිශේෂී
+tax_inside_price	{tax} ඇතුළුව
+today_books	අද ලෙජර්
+unlock_after_pairing	PIN ඇතුලත් කරන්න
+unlock_with_login	පුරනය වීමත් සමඟ අගුළු හරින්න
+update_my_password	මගේ මුරපදය යාවත්කාලීන කරන්න
+update_my_pin	මගේ PIN අංකය යාවත්කාලීන කරන්න
+duress_heading	හදිසි අගුලු හැරීම PIN (හිමිකරු පමණි)
+duress_help	විකල්ප. මෙම PIN එක ඔබගේ එක වෙනුවට අගුළු හැරීමේදී ටයිප් කර ඇත්නම්, සියලුම පොත් ඇතුළත් කිරීම් අතුගා දමනු ලැබේ (වෙන් කිරීම්, ලෙජර, ඉතිහාසය) සහ මේසය සාමාන්‍ය පෙනුමක් ඇති හිමිකරු ලෙස විවෘත වේ - ගාස්තු, සාද, කලාප, කාර්ය මණ්ඩලය සහ සැකසීම් රැඳී පවතී. Schema සහ config මකා නැත. ඔබට අගුළු ඇරීමට බල කළහොත් පමණක් භාවිතා කරන්න. හිස්ව තබා අක්‍රිය කිරීමට සුරකින්න. කිසිවිටෙක කිසිවෙකුගේ PIN අංකයට සමාන නොවේ.
+duress_pin_ph	හදිසි PIN (ඉලක්කම් 4–12)
+duress_confirm_ph	තහවුරු කිරීමට නැවත ටයිප් කරන්න
+save_duress_pin	හදිසි අවස්ථාව සුරකින්න PIN
+clear_duress_pin	හදිසි අවස්ථා PIN ක්‍රියාවිරහිත කරන්න
+duress_on	හදිසි අගුලු හැරීම PIN ක්‍රියාත්මකයි
+duress_off	හදිසි අගුලු හැරීම PIN ක්‍රියාවිරහිතයි
+duress_saved	හදිසි අගුලු හැරීම PIN සුරකින ලදී
+duress_cleared	හදිසි අගුලු හැරීම PIN ක්‍රියාවිරහිතයි
+vehicle_ph	වාහනය
+void	අවලංගු විකිණීම
+write_off_ap	AP ඉවත් කරන්න
+write_off_nil	ශේෂය කපා හැරීම / ශුන්‍ය කරන්න
+zone_ph	කලාපය (නම මිල ගණන් වලින්)
+caption_today	අද
+caption_bookings	වෙන් කිරීම්
+caption_payments_today	අද ගෙවීම්
+caption_outstanding	කැපී පෙනෙන
+caption_bank	බැංකුව
+paid_by	විසින් ගෙවා ඇත
+second_way	දෙවන මාර්ගය
+weight_in	බර ඇතුලට
+size_in	ප්‍රමාණය
+goods_received	භාණ්ඩ ලැබුනා
+expense_heading	වියදම්
+notes_attach_sale	සටහන් සහ ඇමුණුම් (තෝරාගත් විකිණීම)
+notes_attach_party	සටහන් සහ ඇමුණුම් (තෝරාගත් පාරිභෝගිකයා හෝ සැපයුම්කරු)
+attachments_last_expense	ඇමුණුම් (අවසන් වියදම්)
+credit_limit_heading	ණය සීමාව (තෝරාගත් පාරිභෝගිකයා හෝ සැපයුම්කරු)
+pay_selected_heading	තෝරාගත් ගෙවීම (ණය පියවීම / අත්තිකාරම් ගන්න)
+write_off_heading	කපා හැරීම (ගෙවීමකින් තොරව පැහැදිලි)
+pay_ap_heading	අපි ඔවුන්ට ගෙවිය යුතු දේ ගෙවන්න (AP)
+country_tax	රට සහ බදු
+extra_tills_heading	අමතර මුදල් රෙජිස්ටර්
+other_devices_help_heading	වෙනත් උපාංග සකසන්න
+other_devices_help	මෙම උපාංගයේ (සේවාදායකය): වෙනත් උපාංග → අමතර ටිල්ස් වලට ඉඩ දෙන්න. යුගල කිරීමේ කේතය සහ Wi‑Fi ලිපිනය සටහන් කරන්න. එය දිස්වන්නේ නම් වෙනත් උපාංගවලට සම්බන්ධ වීමට ඉඩ දෙන්න තට්ටු කරන්න. පරිගණකයක, මෙම පරිගණකය සමඟ ආරම්භ කරන්න තට්ටු කරන්න. එකිනෙකාගේ උපාංගය මත: යෙදුම ස්ථාපනය කරන්න, සේවාලාභී මාදිලිය තෝරන්න, සාප්පුවේ සේවාදායකය සොයන්න (හෝ ලිපිනය ටයිප් කරන්න), යුගල කිරීමේ කේතය ඇතුළත් කරන්න, දැන් යුගල කරන්න. Wi‑Fi පහත වැටේ නම් ඇණවුම් උපාංගය මත රැඳී සිට සේවාදායකය නැවත පිළිතුරු දෙන විට යන්න.
+your_brand	ඔබේ වෙළඳ නාමය (යෙදුම තුළ)
+units_heading	ඒකක
+booking_measures	වෙන්කරවා ගැනීමේ පියවර
+drawer_count	ලාච්චු ගණන (විකල්ප)
+spreadsheet_csv	පැතුරුම්පත (CSV)
+bank_reconciliation	බැංකු ප්‍රතිසන්ධානය (ඔබේ බැංකු ප්‍රකාශයට එරෙහිව ලකුණු කරන්න)
+book_add_product	පොත - නිෂ්පාදන / අනුපාතය එකතු කරන්න
+book_opening_credit	ලෙජරය - විවෘත ණය
+account_kind	ගිණුම් වර්ගය (එකක් තට්ටු කරන්න)
+active_ledger	ක්රියාකාරී ලෙජරය
+actual_total_cap	සැබෑ එකතුව
+amend_help	සංශෝධනය කිරීමට, අවලංගු කිරීමට හෝ ආපසු ගෙවීමට විකිණීමක් තෝරන්න. සංශෝධන සම්පූර්ණ ඉතිහාසය තබා ගනී. වටකුරු එකතුව ව්‍යවහාරික වලට සමාන වේ - වටයට පමණක් සංස්කරණය කරන්න. අවලංගු සහ ආපසු ගෙවීම සඳහා හිමිකරුවෙකු හෝ කළමනාකරුවෙකු අවශ්‍ය විය හැකිය PIN (ඉහත ටයිප් කර ඇත; ඔබේ නම සමඟ සටහන් කර ඇත).
+applied_total_cap	අයදුම් කළ මුළු
+bank_balance	බැංකු ශේෂය
+bank_net_today	අද බැංකු දැල
+branch_export_help	අපනයනය උපස්ථ ෆෝල්ඩරයට දින ඡායාරූපයක් ලියා එය පසුරු පුවරුවට පිටපත් කරයි. වෙනත් අලෙවිසැලක දිනයක් ආයාත කිරීමට, එහි ගොනුව import_branch_snapshot.json ලෙස එම ෆෝල්ඩරයේ සුරකින්න, ඉන්පසු ආයාත කරන්න තට්ටු කරන්න.
+brand_shown_help	යෙදුම ඇතුළත තිරවල පෙන්වයි. මෙම උපාංගයේ ස්ථාපිත යෙදුම් නම සහ නිරූපකය වේදිකා ලැයිස්තුගත කිරීම ලෙස පවතී.
+app_icon	යෙදුම් නිරූපකය
+logo_help	යෙදුමේ තිර මත විකල්ප සාප්පු ලකුණ.
+onboard_layout	ඔබට ලැබෙන දේ
+item_photo_help	විකල්ප. ඡායාරූපයක් නොමැතිව අපි මෙනු අයිතමයේ නමෙන් මුලකුරු පෙන්වමු.
+cash_in_hand	අතේ ඇති මුදල් (මුදල් ලේඛනය)
+change_my_pin_heading	මගේ PIN අංකය වෙනස් කරන්න (ඔබේ පමණක්)
+connect_to_server	සේවාදායකයට සම්බන්ධ කරන්න
+counter_locked	කවුන්ටරය 01 · අගුලු දමා ඇත
+country_pack_help	රටක පැකේජයක් බදු නම සහ ගණිතය, ක්ෂණික-ගෙවීම් දුම්රිය සහ අමුත්තන්ගේ බිල්පත් මත මුද්‍රණය කර ඇති ව්‍යාපාරික හැඳුනුම්පත සකසයි. Kumkaj කොතැනකවත් බදු ගොනු කිරීම හෝ රජයේ විද්‍යුත් ඉන්වොයිසි නිකුත් නොකරයි.
+currency_use_help	අනුචලනය කර ඕනෑම සහාය දක්වන මුදල් වර්ගයක් සඳහා භාවිතා කරන්න තට්ටු කරන්න.
+day_close_help	දිනක් ආසන්නයේ පටිගත කිරීම මෙම සාරාංශය (සහ ගණන් කළහොත් ලාච්චු විචලනය) විගණන ලොගයට සුරකියි. එය විකිණීම නතර නොවේ.
+expenses_word	වියදම්
+feature_access_help	තෝරාගත් කාර්ය මණ්ඩලය සඳහා විශේෂාංග ප්‍රවේශය (එකතු කිරීමෙන් පසු තට්ටු කරන්න)
+footer_local	දේශීය SQLite · නොමිලේ සදහටම · Zero Cloud
+fresh_book_moklanjo	නැවුම් = හිස් නාමාවලිය (අයිතම පසුව එකතු කරන්න). පොත = ආරම්භක කොටස් වර්ගය සහ ඔබට පහතින් ණයගැති අය.
+fresh_selected	නැවුම් තෝරාගත් - නාමාවලිය හිස්ව පවතී. සූදානම් වූ විට නිමයි තට්ටු කරන්න.
+gross_word	දළ
+how_start	ඔබට ආරම්භ කිරීමට අවශ්‍ය වන්නේ කෙසේද?
+later_country_pack	පසුව: සැකසීම් → බදු සහ ගෙවීම් ලේබල සඳහා ඔබේ රට ඇසුරුම යොදන්න.
+local_badge	දේශීය
+measures_help_moklanjo	වෙන් කිරීමේ මේසයේ පාර්සල් මනිනු ලබන ආකාරය. ඔබ භාවිත කරන ඒකකවල මානයන් සහ බර ටයිප් කරන්න — සම්මත (cm, m, in, ft · kg, g, lb, oz) හෝ ඔබේම ඒකකය ඉහත cm / kg වෙත සම්බන්ධ කර ඇත (සෘජුව හෝ වෙනත් ඒකක හරහා). පොත් සෑම විටම කි.ග්රෑ. එය තබා ගැනීමට ඉඩමක් හිස්ව තබන්න.
+mix_type_hint_moklanjo	එක් එක් (මුදල් / UPI / කාඩ්පත / ණය) කොපමණ ටයිප් කරන්න. බිල්පතට එකතු කළ යුතුය. ණයට ඉහත පාරිභෝගිකයෙකු අවශ්‍යයි.
+money_in_sales	මුදල් (විකුණුම්)
+more_help_moklanjo	නාමාවලිය, විකුණුම්, ණය, කණ්ඩායම, උපස්ථ - අමතර කොටස් සහ අවශ්‍ය විට අමතර ටිල්ස්.
+net_word	ශුද්ධ
+offline_badge	නොබැඳි
+optional_login_help	විකල්ප පුරනය වීම (id + මුරපදය). හිමිකරු එක් වරක් සකසයි; පසුව මුරපදය වෙනස් කළ හැක්කේ පරිශීලකයාට පමණි.
+or_unlock_login	නැතහොත් පිවිසුම් හැඳුනුම්පත + මුරපදය සමඟ අගුළු ඇරීම
+permission_preset	රැකියාව (තිර සහ අයිතිවාසිකම් සකසයි)
+preset_help_moklanjo	අයකැමි: විකුණන්න. කළමනාකරු: විකිණීම + මෙනු අයිතම + අවලංගු/සංශෝධනය.
+product_locked_moklanjo	මොක්ලන්ජෝ
+product_only_moklanjo	මෙම යෙදුම Moklanjo පමණි - පොත් + වෙන්කිරීමේ මේසය. වෙනත් වෙළඳ මුහුණු පසුව වෙනම නිෂ්පාදන ලෙස නැව්ගත කරනු ලැබේ.
+purchases_cogs	මිලදී ගැනීම් (COGS)
+qty_cap	ප්‍රමාණය
+restore_help	ප්‍රතිසාධනය කරන්න: උපස්ථයක් තෝරන්න. ලෙජර එදා මෙන් විවෘත වේ; දැන් තිබෙන ලෙජර පළමුව සුරැකේ, එබැවින් මෙය පසුගමනය කළ හැක.
+wipe_data_heading	දේශීය දත්ත මකන්න
+wipe_data_help	හිමිකරුට පමණි - වින්ඩෝස් අස්ථාපනය කිරීමට සමාන තේරීම්. ව්‍යාපාර වාර්තා වෙළඳ ඉතිහාසය හිස් කරන නමුත් ගාස්තු සහ සැකසුම (හදිසි අගුළු ඇරීමේ PIN වැනි) තබා ගනී. සාප්පු පිහිටුවීම පොත් දත්ත ගබඩාව ඉවත් කරයි. තිර මනාප කවුළුව/භාෂාව හිස් කරයි. හිමිකරුගේ PIN අංකය සමඟ තහවුරු කරන්න. කණ්ඩායමේ හදිසි අගුළු ඇරීමේ PIN එක වෙනම ඇත (අගුළු හැරීමේදී රහසිගතව පිස දමන්න).
+wipe_trading	ව්යාපාර වාර්තා
+wipe_schema	සාප්පු පිහිටුවීම
+wipe_ui	තිර මනාප
+wipe_owner_pin_ph	හිමිකරු PIN මැකීමට
+wipe_delete_selected	තෝරාගත් මකන්න
+wipe_owner_only	දේශීය දත්ත මකා දැමිය හැක්කේ හිමිකරුට පමණි.
+restore_owner_only	උපස්ථයක් ප්‍රතිසාධනය කළ හැක්කේ හිමිකරුට පමණි.
+wipe_owner_pin_needed	දේශීය දත්ත මැකීමට හිමිකරු PIN ඇතුළු කරන්න.
+wipe_nothing_selected	පළමුව මකා දැමිය යුතු දේ තෝරන්න.
+wipe_done	තෝරාගත් දේශීය දත්ත මකා ඇත.
+wipe_schema_done	සාප්පු පිහිටුවීම පිසදමා ඇත - ඉදිරියට යාමට සේවාදායකය හෝ සේවාලාභියා තෝරන්න.
+rounded_total	වටකුරු එකතුව
+setup_app_moklanjo	Moklanjo පිහිටුවන්න
+shop_logo_optional	සාප්පු ලාංඡනය (විකල්ප)
+stock_type_help	මෙනු අයිතමයේ නම (එහි කොටසක් ප්රමාණවත්ය), ප්රමාණය ටයිප් කරන්න, පසුව සකස් කරන්න. තවමත් ගණන් නොගත් මෙනු මෙනු අයිතම එක් වරක් ලුහුබැඳීම ආරම්භ කිරීමට අවශ්‍ය වේ.
+team_owner_help	කුලියට ගන්න: රැකියාවක් තෝරන්න (මුදල් අයකැමි / කළමනාකරු), නම + ආරම්භක PIN, පසුව එකතු කරන්න. මෙම පුද්ගලයා වෙනස් නම් පමණක්: පහත තිර සහ අයිතිවාසිකම් විවෘත කරන්න, ඉන්පසු රැකියා පිහිටුවීම සුරකින්න. සෑම කෙනෙකුම පහළින් තමන්ගේම PIN වෙනස් කරයි - හිමිකරුට වෙනත් කෙනෙකුගේ අංකය වෙනස් කළ නොහැක.
+they_owe_us	ඔවුන් අපට ණයයි
+unit_at_cap	ඒකකය @
+units_help	මෙනු අයිතම ලේබල් සඳහා කේත (kg, කෑල්ලක්, බෑගය). සෑම ඒකකයක්ම - සෘජුව හෝ වෙනත් ඒකක හරහා - ප්‍රමිතියකට (kg · cm · ml · pc) සම්බන්ධ කළ යුතුය, උදා. 1 කූඩය = 2 පෙට්ටිය සහ 1 පෙට්ටිය = 20 සෙ.මී. පරිවර්තන: 1 සිට = සාධකය දක්වා. මුදල් කිසිවිටෙක ඒකක නොවේ.
+we_owe_them	අපි ඔවුන්ට ණයයි
+who_unlocking	අගුළු හරින්නේ කවුද?
+locked_word	අගුලු දමා ඇත
+show_pin	පෙන්වන්න PIN
+hide_pin	සඟවන්න PIN
+set_owner_pin	හිමිකරු සකසන්න PIN
+enter_owner_passcode	හිමිකරුගේ මුර කේතය ඇතුළත් කරන්න
+enter_staff_passcode	කාර්ය මණ්ඩල මුර කේතය ඇතුළත් කරන්න
+pin_count_zero	ඉලක්කම් 0 / 12 · අවම වශයෙන් 4, පසුව හරි
+pin_count_need	{} / 12 ඉලක්කම් · තව {} අවශ්‍යයි
+pin_count_full	ඉලක්කම් 12/12 · හරි ඔබන්න
+pin_count_ready	{} / ඉලක්කම් 12 · සූදානම් වූ විට OK ඔබන්න
+pin_hint_choose	4-12 ඉලක්කම් තෝරන්න · සුරැකීමට ඇතුල් කරන්න හෝ අගුළු හරින්න
+pin_hint_new	නව ඉලක්කම් 4-12 හිමිකරු PIN · ඇතුල් කරන්න හෝ අගුළු හරින්න
+pin_hint_shop_code	සාප්පු උපාංගය · යුගල කිරීමේ කේතය {}
+pin_hint_books	මෙම උපාංගය ලෙජර් රඳවා තබා ගනී
+pin_hint_paired	අමතර මුදල් ලේඛනය යුගල කර ඇත - විකිණීමට අගුළු හරින්න
+pin_hint_pair_first	අමතර මුදල් ලේඛනය - පළමුව සාප්පු උපාංගයට යුගල කරන්න
+unlock_to_continue	දිගටම කරගෙන යාමට අගුලු හරින්න
+no_staff_yet	තවම කාර්ය මණ්ඩලයක් නැත - හිමිකරු ලෙස අගුළු හරින්න, පසුව කණ්ඩායම
+status_server_set_pin	සේවාදායක මාදිලිය - හිමිකරු සකසන්න PIN
+status_server_tills	සේවාදායක මාදිලිය - අමතර මුදල් රෙජිස්ටර් වලට සම්බන්ධ විය හැක. අගුළු හරින්න
+status_server_unlock	සේවාදායක මාදිලිය - හිමිකරු ලෙස අගුළු ඇරීම
+status_client_unlock	සේවාලාභී ප්‍රකාරය - විකිණීමට අගුළු හරින්න
+icon_new_selected	නිරූපකය: නව ගොනුවක් තෝරා ඇත - වෙළඳ නාමය සුරකින්න තට්ටු කරන්න
+icon_custom	නිරූපකය: අභිරුචි ස්ථාන සලකුණ
+icon_default	නිරූපකය: Kumkaj ලකුණ (පෙරනිමිය) — අභිරුචි එකක් තෝරන්න
+logo_yours	ලාංඡනය: ඔබේ සාප්පු ලාංඡනය - තිර සහ රිසිට්පත් මත පෙන්වා ඇත
+logo_default	ලාංඡනය: Kumkaj ලකුණ (පෙරනිමිය) — ඔබට එකක් තිබේ නම් ඔබේම එකක් තෝරන්න
+tmpl_current	වත්මන්: {} — {}
+tmpl_selected	තෝරාගත්: {} — {}
+setup_complete	පිහිටුවීම සම්පූර්ණයි
+onboard_fresh_tmpl	නැවුම් · {} — නාමාවලිය හිස්ව ආරම්භ වේ; මෙනු මෙනු අයිතමවල මෙනු අයිතම එක් කරන්න, පසුව නිමයි.
+onboard_book_tmpl	ලෙජරය · {} — මෙනු අයිතම සහ විවෘත ණය එක් කරන්න, පසුව නිමයි.
+onboard_template_tmpl	ඔබට අවශ්‍ය නම් ස්ථානය නම් කරන්න, ඉන්පසු ආරම්භ කරන ආකාරය තෝරන්න.
+tmpl_blurb	කුරියර් පොත් සහ වෙන්කිරීමේ මේසය: ප්‍රවාහනය කරන්නන්, වාහකයන්, දින පොත, AWB.
+tmpl_how	මේසයේ පොත් පාර්සල්; අද දින පොත; ගාස්තු, පක්ෂ, වාර්තා සඳහා ටැබ්.
+trk_booked	වෙන්කර ඇත
+trk_picked_up	අවුලා ගත්
+trk_in_transit	ප්රවාහනයේ
+trk_delivered	භාර දුන්නා
+trk_rto	යවන්නා වෙත ආපසු යාම
+lane_to_dispatch	යැවීමට
+lane_with_carrier	වාහකය සමඟ
+lane_failed	අසාර්ථකයි
+lane_done_today	අද කළා
+ops_board_help	අද වැඩ කරන තැනින් පාර්සල්. ඒවා තෝරා ගැනීමට පාර්සල් තට්ටු කරන්න (හෝ ඒවා ස්කෑන් කරන්න), ඉන්පසු තෝරා ගත් සියල්ල එකවර ක්‍රියා කරන්න - එක් එක් මංතීරුව පිරිනමන්නේ එයට ගැලපෙන චලනයන් පමණි.
+lane_empty	දැන් මෙතන මොකුත් නෑ.
+picked_fmt	{n} තෝරා ගන්නා ලදී
+pick_all	සියල්ල තෝරන්න
+bag_for_carrier	වාහකයාට අතට
+send_with_rider	ධාවකය සමඟ යවන්න
+out_again	ආයෙත් එලියට
+return_to_sender	යවන්නා වෙත ආපසු යන්න
+runs_bags_heading	මෑත ධාවන සහ බෑග්
+print_word	මුද්‍රණය කරන්න
+bag_word	වාහක බෑගය
+run_word	ධාවකයා ධාවනය
+parcels_fmt	{n} පාර්සල්
+parcel_history	ඉතිහාසය
+attempt_fmt	{n} උත්සාහ කරන්න
+pieces_short_fmt	{n} pcs
+note_reason_ph	සටහන හෝ හේතුව
+ops_pick_first	පළමුව පාර්සල් තෝරන්න - ඒවා තට්ටු කරන්න හෝ ස්කෑන් කරන්න
+cod_to_collect	භාර දෙන ලදී - එකතු කිරීමට COD
+cod_on_road	COD තාම පාරේ
+cod_owed_consignors	එකතු කරන ලද - යැවීමට ගෙවීමට
+cod_rto_fees	එකතු කිරීමට RTO ගාස්තු
+cod_to_hand_in	භාර දීමට COD
+parcel_one_fmt	{n} පාර්සලය
+facet_bank_title	වාර්තා
+facet_bank_help	දින ලෙජර, පාරිභෝගික හෝ සැපයුම්කරු වයස්ගත වීම, බැංකු තනතුරු, සහ කාල සීමාව P&L.
+facet_ops_title	තොග සහ යැවීම
+facet_ops_help	ස්කෑන් කරන්න හෝ ටයිප් කරන්න AWB → සොයන්න, පසුව අත්තිකාරම් / මුද්‍රණ ලේබලය / COD. අසරුවා හෝ වාහකයා වෙත යැවීම.
+facet_cod_title	COD ලේඛනය
+facet_cod_help	භාරදීමේදී එකතු කරන්න, පසුව යවන්නා වෙත ප්‍රේෂණය කරන්න.
+facet_riders_title	ධාවකයන් (තමන්ගේම බලඇණිය)
+facet_riders_help	ධාවකයන් එක් කරන්න, පසුව Ops වෙතින් වෙන් කර ඇති AWB යවන්න.
+against_bill_ph	ඉහත # ආගන්තුක බිල්පතට එරෙහිව (විකල්ප)
+aliases_ph	අන්වර්ථ - වෙනත් නම්, කොමාවෙන් වෙන් කර ඇත
+amount_blank_full_ph	මුදල (හිස් = සම්පූර්ණ ශේෂය)
+amount_owed_ph	ගෙවිය යුතු මුදල
+amount_ph	මුදල
+amount_received_ph	ලැබුණු මුදල
+amount_we_pay_ph	අපි ගෙවන මුදල
+awb_scan_ph	AWB / ස්කෑන් තීරු කේතය
+bulk_csv_ph	තොග CSV - ගමනාන්තය, තොගය, කිලෝ ග්රෑම්, cod_paise, සටහන
+business_name_ph	ව්යාපාර නාමය
+category_new_ph	ප්‍රවර්ගය (විකල්ප, අලුත් නම් සාදන ලදී)
+cod_amount_ph	COD මුදල
+code_bag_ph	කේතය (බෑගය)
+conv_factor_ph	සාධකය (25 = 1 බෑගය → 25 kg)
+country_code_ph	රටේ කේතය උදා. IN, GB, US, AE, BR
+credit_khata_amount_ph	ණය / ණය ලෙජර් මුදල
+credit_limit_ph	ණය සීමාව (0 = කිසිවක් නැත)
+dim_unit_code_ph	මාන ඒකක කේතය (සෙ.මී.)
+divisor_ph	පරිමාමිතික බෙදුම්කරු (5000)
+extra_per_kg_ph	අමතර / kg
+first_amount_ph	පළමු මුදල
+first_kg_ph	පළමු kg (ස්ලැබ්)
+from_code_ph	කේතයෙන් (බෑගය)
+item_name_lang_ph	මෙනු මෙනු අයිතමයේ නම - එය ඔබේ භාෂාවෙන් ටයිප් කරන්න
+login_id_opt_ph	පරිශීලක නාමය (අවශ්ය, අද්විතීය)
+manager_pin_ph	කළමනාකරු PIN අනුමත කිරීමට (ඔබට අවලංගු කළ නොහැකි නම් පමණි)
+new_branch_name_ph	නව ශාඛාවේ නම
+new_password_ph	නව මුරපදය (විකල්ප)
+new_pin_ph	නව PIN (ඉලක්කම් 4–12)
+note_bank_ph	සටහන (තැන්පතු, ආපසු ගැනීම, ...)
+note_buy_expense_ph	සටහන (ඉන්ධන, කුලිය, ...)
+note_expense_ph	සටහන (ඉන්ධන, කාර්යාලය, ...)
+notify_phone_ph	දුරකථනයට දැනුම් දෙන්න (WhatsApp/SMS කොක්කය)
+options_moklanjo_ph	විකල්ප (විකල්ප) — විශාල=20, තෑගි එතුම=10
+part_second_way_ph	දෙවන මාර්ගයෙන් කොටස (විකල්ප)
+phone_ph	දුරකථනය
+address_ph	ලිපිනය
+party_custom_fields_heading	අභිරුචි ක්ෂේත්‍ර (තෝරාගත් පාර්ශවය)
+party_custom_help	මෙම සාදයේ ඕනෑම ලේබලයක් සහ අගයක් එක් කරන්න - WhatsApp, GSTIN, මාර්ග කේතය, ...
+party_custom_key_ph	ක්ෂේත්‍ර නාමය (උදා. WhatsApp)
+party_custom_value_ph	වටිනාකම
+party_custom_add	ක්ෂේත්රය එකතු කරන්න
+party_custom_remove	ක්ෂේත්රය ඉවත් කරන්න
+party_custom_empty	තවමත් අභිරුචි ක්ෂේත්‍ර නැත
+party_custom_pick_first	අභිරුචි ක්ෂේත්‍ර එක් කිරීමට පක්ෂයක් තෝරන්න
+place_name_ph	මෙම ස්ථානයේ නම
+price_ph	මිල
+qty_example_ph	ප්‍රමාණය (උදා: 1.5 kg සඳහා)
+quantity_ph	ප්රමාණය
+reason_required_ph	හේතුව (අවශ්‍යයි)
+role_title_ph	භූමිකාවේ මාතෘකාව (උදා. බැරිස්ටා)
+service_pct_ph	සේවා% විකල්ප 0/10/12
+short_code_ph	කෙටි කේතය (MG02)
+slab_kg_ph	ආරෝපණය කළ හැකි ස්ලැබ් (0.5) kg වලින්
+staff_name_ph	කාර්ය මණ්ඩලයේ නම / හැඳුනුම්පත
+starting_password_ph	ආරම්භක මුරපදය (විකල්ප)
+starting_pin_ph	ආරම්භය PIN (ඉලක්කම් 4–12)
+tax_rate_ph	බදු අනුපාත නම හෝ % — සම්මත, අඩු කරන ලද, 0, 5, 12, 18, 20
+to_code_ph	කේත කිරීමට (කිලෝ)
+uncleared_no_ph	ඉහත # නොපැහැදිලි
+unit_cost_ph	ඒකක පිරිවැය
+unit_kg_blank_ph	ඒකකය (kg හෝ හිස්)
+unit_name_bag_ph	නම (බෑගය)
+weight_unit_code_ph	බර ඒකක කේතය (kg)
+zone_name_ph	කලාපයේ නම
+pay_credit	ගිණුමේ
+book_kind_today	අද ලෙජර්
+book_kind_month	මේ මාසයේ ලෙජර්
+book_kind_aging	කැපී පෙනෙන / හර-ණය
+book_kind_balance	ශේෂ පත්රය
+ops_desk_help	USB තීරු කේත ස්කෑනරයක් සමඟ AWB පරිලෝකනය කරන්න (හෝ එය ටයිප් කරන්න) → සොයන්න. ඉන්පසු ඉදිරියට යන්න, ලේබලය මුද්‍රණය කරන්න, නැතහොත් COD එකතු කරන්න. ලේබල් 128 කේතය මුද්‍රණය කරයි.
+role_help_consignor	භූමිකාව: යවන්නා - AR (ඔවුන් අපට ණයයි). එකම සමාගම වාහකයෙකු විය හැකිය.
+role_help_carrier	භූමිකාව: වාහකය - AP (අපි ඔවුන්ට ණයගැතියි). එම සමාගමම යවන්නා ද විය හැකිය.
+role_help_both	භූමිකාවන්: Consignor + Carrier — එක් පාර්ශ්වයක්, AR සහ AP ලෙජර, වාර්තා වල ශුද්ධ.
+role_help_supplier	භූමිකාව: සැපයුම්කරු - මිලදී ගැනීම් සඳහා AP.
+lane_declared_label	ගිණුම් වෙන්කරවා ගැනීම
+lane_owner_label	මුදල් වෙන්කරවා ගැනීම
+money_lane_bill	ආරාධිත අමුත්තන්ගේ බිල්පත: {lane}

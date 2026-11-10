@@ -1,0 +1,835 @@
+# Czech — Čeština (cs). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	Kurýrní knihy + rezervační pult. Zdarma offline.
+unlock	Odemknout
+pin_hint	Vlastník PIN začíná na 0000
+sell	Rezervace
+buy	Vyplatit
+books	Denní kniha
+books_help	Dnešní pozice. Rezervace = zásilky. Vyplatit = účty a výdaje přepravce. Strany = odesílatelé & dopravci.
+buy_help	Výdajové poukázky a účty dopravce (výdaje). Na účet zůstává v účetní knize.
+sell_money_in	Zarezervujte si balíček
+buy_money_out	Výdaj / účet dopravce
+record_purchase	Rekordní nákup
+add_expense	Výdajový poukaz
+bank_book	Bankovní knížka
+credit_help	ID strany je jedinečné (jména se mohou opakovat). Role: Odesílatel (AR), Přepravce (AP) nebo obě na tomto ID. Hlavní knihy zůstávají oddělené; zprávy ukazují net.
+party_kind_ph	Vlastní role (volitelné) — nebo klepněte na čip výše
+parties_list_heading	Uložené strany
+reports_help	Denní kniha, dlužníci a věřitelé, bankovní kniha, výdajové poukázky, zisk a ztráta.
+reports_today	Denní kniha (dnes)
+reports_month	Zisk a ztráta (měsíc)
+reports_aging	Nesplacený / debetní kredit
+reports_balance_sheet	Rozvaha
+reports	Bankovní knížka a výsledovky
+refresh	Obnovit
+undo	Vrátit zpět
+start_tracking	Začněte sledovat
+stock_minus	− Zásoba
+stock_plus	+ Sklad
+settle_cash	Vyrovnat hotovost
+settle_card	Vyrovnat kartu
+items	Ceny a služby
+nav_items	Sazby
+more	více
+your_items	Vaše sazby
+items_help	Každý řádek představuje sazbu (např. povrchová zóna A). Jednotkou je obvykle kg. Klepnutím upravte.
+add_item	Přidat sazbu
+new_item	Nová sazba
+adding_item	Přidání nové sazby
+editing_item	Editace
+save	Uložit
+remove	Odebrat
+empty_catalog	Zatím žádné sazby. Otevřete Ceny a služby, přidejte jednu (název + cena, jednotka kg) a poté Rezervace.
+counter_sale	Rezervace na přepážce
+total	Celkem
+cash	Hotovost
+upi	UPI
+card	Karta
+credit	Zákazníci a dodavatelé
+clear	Jasný
+ready_to_sell	Připraveno k rezervaci
+today_prefix	dnes
+today_mid	dnes
+owed	vynikající
+round_word	kolo
+back	Zpět
+sold_out	Není k dispozici
+restock	Doplnění zásob
+not_tracked	Nesledováno
+in_stock	na skladě
+marked_sold_out	Označeno jako nedostupné
+add_upper	PŘIDAT
+na	N/A
+qty	Hmot./mno
+unit_at	Hodnotit @
+actual	Skutečné
+applied	Aplikováno
+note_ph	Poznámka (volitelné)
+rounded	ZAOKROUHLÉ
+split	Rozdělit
+counter	Počítadlo
+parcel	Balíček
+order	Objednávka
+sales	Rezervace
+sales_refunds	Rezervace a vrácení peněz
+day_close	Den blízko
+reports_expenses	Bankovní knížka a výsledovky
+nav_reports	Zprávy
+nav_settings	Nastavení
+nav_lock	Zámek
+sidebar_settings	Nastavení postranního panelu
+sidebar_settings_help	Stejné ikony jako postranní zábradlí. Přetažením řádku změníte pořadí. Přepnutím přepínače zobrazíte nebo skryjete. Nastavení a zámek vždy zůstanou na liště.
+sidebar_always_on_short	Vždy zapnuto
+sidebar_back_settings	Zpět
+sidebar_shown	Zobrazeno
+sidebar_hidden	Skrytá
+sidebar_always_on	Vždy na baru
+sidebar_shown_hint	Zobrazeno na boční liště / spodních záložkách
+sidebar_hidden_hint	Skrytá před barem
+sidebar_menu_items	Nabídka a položky
+sidebar_enable_all	Povolit vše
+sidebar_disable_all	Zakázat vše
+sidebar_order_saved	Pořadí postranního panelu bylo uloženo
+sidebar_visibility_saved	Viditelnost postranního panelu uložena
+amounts_hide	Skrýt
+amounts_show	Zobrazit
+no_sale_yet	Zatím bez prodeje
+favorites	Oblíbené
+favorites_help	Položky, které často prodáváte, uložené pro vaše přihlášení. Přidejte jednu na účet nebo si sestavte seznam ze všech položek níže.
+your_favorites	Vaše oblíbené
+all_items	Všechny položky
+no_favorites	Zatím žádné oblíbené — přidejte položky ze seznamu níže.
+add_to_bill	Přidat na účet
+added	Přidáno
+owes_word	dluží
+selected_word	Vybráno
+chip_clear_credit	clear — Úvěr nebo záloha
+chip_missing_customer	Chybí vybraný zákazník – vyberte jej znovu
+chip_no_customer	Zatím žádný zákazník – zadejte jméno a klepněte na Kredit
+credit_summary_fmt	{} zákazníků · otevřený úvěr {} · držené zálohy {}
+recent_label	Nedávné:
+inventory	Inventář
+inventory_stock	Zásoby a zásoby
+branches	Větve
+branches_org	Pobočky a org
+credit_customers	Strany (dlužníci a věřitelé)
+customer_name_ph	Jméno zákazníka nebo dodavatele
+new_customer_ph	Jméno nového zákazníka nebo dodavatele
+item_name_ph	Název sazby (např. povrchová zóna A)
+item_price_ph	Na kg / první desku
+start_template	Produkt
+next_booking	Další rezervace
+destination_ph	Cílové město / zóna
+consignee_ph	Jméno přijímače
+consignee_phone_ph	Přijímač telefonu
+consignee_address_ph	Doručovací adresa
+origin_name_ph	Jméno odesílatele
+origin_phone_ph	Telefon odesílatele
+origin_address_ph	Adresa vyzvednutí / původu
+booking_consignor_heading	Odesílatel (objednatel / odesílatel)
+booking_consignee_heading	Příjemce (příjemce)
+booking_consignor_hint	Vyberte si večírek, který chcete vyplnit, nebo ponechte prázdné, abyste mohli přijít. Potřebné pro domácí vyzvednutí a RTO.
+booking_consignee_hint	Příjemce balíku. Ponechte prázdné, pokud jde o odběry na přepážce.
+weight_kg_ph	Skutečné kg
+length_cm_ph	L cm
+breadth_cm_ph	B cm
+height_cm_ph	H cm
+chargeable_kg	Dobíjecí kg
+awb_label	AWB
+booking_help	Odesílatel + příjemce (prázdné OK) → místo určení → vážení → sazba pro odběr → Účet/Hotovost → platba. AWB se vytiskne na účtenku. Další rezervace vyčistí stůl. Zaokrouhlený začíná rovný Použito — upravte pouze pro zaokrouhlení účtu.
+cart_empty_hint	Stůl prázdný – odesílatel/příjemce volitelný, nastavte místo určení a hmotnost, klepněte na PŘIDAT u sazby a poté zaplaťte.
+team	Tým
+team_pins	Tým & PINs
+my_pin_settings	Moje PIN
+settings_hub_help_my_pin	Změňte odemknutí PIN pro osobu přihlášenou na tomto zařízení.
+team_self_help	PIN pro odemknutí (a volitelné přihlašovací heslo) můžete změnit pouze vy. Zeptejte se vlastníka, zda potřebujete jiné obrazovky nebo práva.
+backup_settings	Zálohování a nastavení
+lock_app	Zamknout aplikaci
+pick	Vybrat
+select	Vyberte
+advance	předem
+owner	vlastník
+staff	Zaměstnanci
+photo	Foto
+auto	Auto
+prev	Předchozí
+next	Další
+ok	OK
+this_shop	Režim serveru
+extra_till	Klientský režim
+off	Vypnuto
+server	Režim serveru
+client	Klientský režim
+language_currency	Jazyk a měna
+language	Jazyk
+choose_language	Vyberte si jazyk
+language_setup_hint	Postupujte podle jazyka tohoto zařízení nebo si jej vyberte sami.
+lang_follow_platform	Jazyk zařízení
+lang_pick_user	Vyberte jazyk
+lang_platform_now	Jazyk zařízení nyní
+selected_language	Vybráno
+continue	Pokračovat
+this_device	TOTO ZAŘÍZENÍ
+device_use_q	Jak bude toto zařízení používáno?
+last_server_mode	Byl server – pokračujte klepnutím
+last_client_mode	Byl klient – pokračujte klepnutím
+choose_server	Vyberte server
+choose_server_hint	Otevřete existující server nebo jej vytvořte pro jinou firmu.
+create_new_server	Vytvořit nový server
+open_server	Otevřít
+new_server_name_ph	Nový název serveru (volitelné)
+server_remove_pin_ph	Vlastník PIN pro odebrání serveru
+only_owner_remove_server	Odebrat server může pouze vlastník
+owner_pin_remove_server	K odstranění tohoto serveru je vyžadován vlastník PIN
+device_setup_help	Server uchovává knihy zde. Klient se spáruje se serverem.
+currency	Měna
+backup	Zálohování
+settings_sec_diag	Diagnostika
+settings_hub_help	Otevřete jednu oblast po druhé – méně posouvání, jasnější volby.
+settings_sec_devices	Jiná zařízení
+settings_sec_alerts	Upozornění
+alerts_help	Jak dlouho zůstávají stavové zprávy na obrazovce (toto přihlášení).
+snack_secs_ph	Sekundy (3–60, výchozí 10)
+snack_secs_save	Ušetřete čas upozornění
+snack_secs_saved	Uložený čas upozornění — {n} sekund
+snack_secs_bad	Zadejte sekundy jako číslo (3–60)
+cancelled	Zrušeno
+cancel	Zrušit
+opening_client	Otevírání klienta…
+preparing_desk	Příprava stolu…
+opening_server	Otevírání serveru…
+creating_server	Vytváření serveru…
+diag_privacy_help	Protokoly zůstávají na tomto zařízení. Tajemství (PIN, hesla) se nikdy neukládají. Sdílení balíčku mimo zařízení vyžaduje pokaždé váš výslovný souhlas – nikdy se neprodává ani nedává třetím stranám.
+diag_level	Úroveň detailů
+diag_level_error	Chyby
+diag_level_warn	Varování
+diag_level_info	Info
+diag_level_debug	Ladit
+diag_support_start	Zahajte 30minutovou relaci podpory
+diag_support_stop	Ukončete relaci podpory
+diag_support_started	Relace podpory zapnuta — Podrobnosti ladění po dobu 30 minut
+diag_support_ended	Relace podpory skončila
+diag_export_local	Exportovat místní kopii
+diag_export_local_done	Místní diagnostika připravena v {path} – vyberte, kam chcete uložit kopii
+diag_approve_send	Schválit sdílení mimo toto zařízení
+diag_send_heading	Sdílejte mimo toto zařízení
+diag_send_help	Schválení je jedno balení, poté vyprší. Dočasné – používá se pouze k opravě nebo vylepšení produktu. Nesdíleno s třetími stranami. Funguje na Linux, Windows, macOS a Android.
+optional_login_heading	Volitelné přihlášení
+rights_heading	Práva
+booking_scope_heading	Domácí / Mezinárodní
+diag_send_approved	Sdílení schváleno pro jeden balíček (platnost brzy vyprší)
+diag_export_send	Vytvořit sdílený balíček (vyžaduje schválení)
+diag_export_send_done	Sdílejte balíček připravený v {path} – vyberte, kam uložit, a poté odešlete pouze na podporu Kumkaj
+diag_save_bundle	Uložit kopii diagnostiky
+diag_bundle_saved	Diagnostická kopie byla uložena do {path}
+diag_bundle_failed	Diagnostickou kopii nelze uložit – zkuste to znovu
+diag_clear	Vymazat diagnostické protokoly
+diag_cleared	Diagnostické protokoly byly vymazány
+use	Použijte
+add_branch	Přidat větev
+add_conversion	Přidat konverzi
+add_item_plain	Přidat položku
+add_note	Přidat poznámku
+add_opening_balance	Přidejte počáteční zůstatek
+add_rider	Přidat jezdce
+add_staff	Přidejte zaměstnance
+add_unit	Přidat jednotku
+add_use_name	Přidejte / použijte tento název
+allow_extra_tills	Povolit další pokladny
+amend	Změnit
+apply_country_pack	Použít country pack
+datetime_appearance	Vzhled data a času
+datetime_appearance_help	Knihy uvnitř uchovávají první rok RFC3339. Ty mění pouze vzhled dat a hodin na účtenkách, štítcích, sestavách a na obrazovce.
+datetime_example	Příklad nyní: {ex}
+date_order	Datum pořadí
+date_order_dmy	D/M/Y
+date_order_mdy	M/D/Y
+date_order_ymd	Y-M-D
+time_format	Hodiny
+time_format_24h	24 hodin
+time_format_12h	12 hodin
+attach_bill_photo	Přiložte fotografii účtu
+attach_pdf	Připojit PDF
+attach_photo	Přiložit fotografii
+bank	Banka
+bank_in	Do banky
+bank_out	Z banky
+bank_to_till	Banka → do
+till_to_bank	Do → banka
+mark_cleared	Mark vymazán
+unmark	Zrušit označení
+role_both	Obojí
+role_carrier	Dopravce
+role_cashier	Pokladník
+role_consignor	Odesílatel
+role_manager	manažer
+role_supplier	Dodavatel
+branch_name_sell_ph	Název pobočky k prodeji
+bring_my_book	Přines mou knihu
+business_tax_id_ph	Obchodní daňové identifikační číslo
+card_amount_ph	Částka karty
+cash_amount_ph	Částka v hotovosti
+upi_amount_ph	částka UPI
+carrier_cost_ph	Náklady na dopravce
+carrier_party_ph	Přepravní párty
+choose_icon	Vyberte ikonu
+choose_logo	Vyberte logo
+choose_receipt_stamp	Vyberte razítko účtenky
+choose_payment_qr	Vyberte platební QR
+clear_icon	Vymazat ikonu
+clear_logo	Jasné logo
+clear_photo	Jasná fotka
+clear_stamp	Jasné razítko
+clear_payment_qr	Jasné platební QR
+print_faces	Tisk obličeje (účtenka / účtenka)
+print_faces_help	Volitelné razítko a platební QR vedle vašeho loga na potvrzení rezervace a dobovém vyúčtování.
+awb_pools_heading	Nosné skupiny čísel AWB
+add_awb_pool	Přidejte bazén AWB
+awb_pool_carrier_ph	Název strany dopravce
+awb_pool_start_ph	Start č.
+awb_pool_end_ph	Konec č.
+awb_pool_prefix_ph	Předpona (volitelné)
+awb_pool_label_ph	Štítek (volitelné)
+pieces_ph	Kusy (přířez = 1) — rozšíření pro náklad / více kusů
+bulk_awbs_ph	Hromadné AWB — vložte více (nový řádek nebo čárku) pro jeden posun stavu
+tds_cut_ph	TDS řez ​​(volitelné)
+discount_ph	Sleva (volitelné)
+cheque_no_ph	Kontrolní číslo (volitelné)
+bill_reminder_chase	Seznam pronásledování připomenutí účtu
+month_mix_report	Zpráva o měsíčním mixu
+copy_month_gst_csv	Zkopírujte CSV pro měsíc GST
+domestic	Domácí
+international	Mezinárodní
+pick_logo	Vyberte logo
+booking_scope_hint_domestic	Objemové ÷5000 (domácí) – klepněte na Mezinárodní pro vzduch ÷6000
+booking_scope_hint_intl	Objemové ÷6000 (mezinárodní vzduch) — klepněte na Domácí pro obchod ÷5000
+cod_register	Registr na dobírku
+collect_cod	Sbírejte COD (AWB)
+consignments_dispatch	Zásilky a expedice
+consignor_party_ph	Jméno odesílatele / strany
+copy_day_book_csv	Kopírovat denní knihu CSV
+copy_day_close	Kopírovat den zavřít
+copy_items_csv	Kopírovat položky CSV
+copy_outstanding_csv	Zbývající kopie CSV
+copy_parties_csv	Kopírovat zákazníky a dodavatele CSV
+copy_party_ledger_csv	Kopírovat knihu zákazníků CSV
+copy_receipt	Zkopírujte účtenku
+copy_report	Zkopírujte zprávu
+counted_cash_ph	Spočítaná hotovost v zásuvce
+counter_agency_ph	Název přepážky / agentury (volitelné)
+create_backup	Vytvořte zálohu
+day_close_summary	Závěr dne
+delete_party	Smazat vybraného zákazníka nebo dodavatele
+dispatch_to_rider	Odeslání rezervováno → jezdec
+docket_charge_ph	Docket poplatek
+declared_value_ph	Deklarovaná hodnota
+contents_ph	Obsah
+eway_ph	Elektronický nákladní list č.
+insurance_label	Pojištění
+yes_label	Ano
+no_label	Žádný
+print_route_label	Tisk trasy
+new_party_kind_label	Nový druh večírku
+done_open_books	Hotovo — otevřené knihy
+export_day	Exportní den
+extra_note_expense_ph	Dodatečná poznámka k poslednímu výdaji
+extra_note_awb_ph	Další poznámka k tomuto AWB / prodeji
+failed_delivery	Doručení se nezdařilo
+find_scan_awb	Najít/skenovat AWB
+forget_shop	Zapomeňte na tento obchod
+fuel_ph	Palivo
+handover_carrier	Ručně rezervováno → dopravce
+import_day	Den importu
+import_items_csv	Importovat položky / sazby CSV…
+import_parties_csv	Importujte zákazníky a dodavatele CSV…
+import_pincodes_csv	Importovat kódy PIN CSV…
+import_carrier_bill_csv	Importovat CSV faktury operátora…
+copy_carrier_bill_report	Zkopírujte poslední přehled vyúčtování operátora
+use_carrier_cost	Použijte cenu dopravce
+rate_carrier_ph	Přepravce (prázdné = naše prodejní cena)
+rate_party_ph	Party (prázdné = všichni zákazníci)
+carrier_pick_ph	Přepravce za cenu (z porovnání)
+item_name	Název položky
+load_bulk_row	Načíst hromadný řádek → stůl
+login_id_ph	Uživatelské jméno
+mark_delivered	Mark doručen
+manifest_cod_total	DOBÍRKA celkem
+manifest_received_by	Přijato uživatelem
+manifest_sign	Znamení
+ndr_address_wrong	Adresa je špatná
+ndr_customer_unavailable	Není k dispozici
+ndr_door_locked	Dveře zamčené
+ndr_other	Ostatní
+ndr_refused	Odmítnuto
+out_for_delivery	Ven k doručení
+print_drs	Tisk DRS
+print_run_sheet	Tisk listu běhu
+reattempt	Opakujte pokus
+rider_cod_handed_ph	DOBÍRKA odevzdaná
+settle_rider_cod	Usadit jezdce COD
+mode_desk	Stůl
+mode_rider	Jezdec
+waiting_office	čekání na úřad
+capture_signature	Zachyťte podpis
+incoming_manifest	Příchozí manifest
+pickup_request	Žádost o vyzvednutí
+pickup_run	Vyzvednutí
+auto_assign_area	Automaticky přiřadit oblast
+reorder_stops	Změna pořadí se zastaví
+settle_rider_pay	Vyrovnat plat jezdce
+vehicle_inspect	Kontrola vozidla
+print_docket	Tisková příloha
+franchise_statement	Prohlášení o franšíze
+tally_export	Export voucheru Tally
+open_whatsapp	Otevřete WhatsApp
+copy_sms	Zkopírujte text SMS
+pick_barcode_image	Vyberte obrázek ke skenování
+share_receipt_whatsapp	Sdílejte účtenku na WhatsApp
+delivery_feedback	Zpětná vazba na doručení
+lan_self_book	Vlastní rezervace LAN
+new_party_clear	Nový zákazník nebo dodavatel (jasný formulář)
+new_party_kind_ph	Nový druh party (dodavatel / dopravce)
+next_country	Další země
+prev_country	Předchozí země
+note_gstin_ph	Poznámka / GSTIN / připomenutí dohody
+note_pod_ph	Poznámka / POD (volitelné)
+on_account_ap	Na účet (AP)
+org_optional_ph	Organizace (volitelné)
+paid_now	Nyní zaplaceno
+pairing_code_ph	Párovací kód
+pair_now	Spárujte nyní
+party_name_selected_ph	Jméno zákazníka nebo dodavatele (nebo vybrané použití)
+password_ph	Heslo
+pay_ap_card	Platit kartou AP
+pay_ap_cash	Zaplaťte AP v hotovosti
+pay_ap_upi	Zaplaťte AP UPI
+period_bill	Vyúčtování období
+period_bill_party	Periodický účet (večírek)
+pick_pod_photo	Vyberte fotku POD
+print_awb_label	Tisk štítku AWB
+print_open	Vytisknout / otevřít
+reason_amend_ph	Důvod změny / neplatné / vrácení peněz
+reason_note_ph	Důvod / poznámka (plýtvání, počet, …)
+record_day_close	Uzavření rekordního dne
+refresh_from_shop	Obnovit z obchodu
+refund	Vrácení peněz
+remit_cod	Posílat dobírku (večírek)
+remove_selected	Odebrat vybrané
+restore_backup	Obnovit zálohu
+rider_name_ph	Jméno jezdce
+rider_phone_ph	Telefon jezdce
+riders	Jezdci
+riders_own_fleet	Jezdci (vlastní flotila)
+rollup	Souhrn
+save_booking_measures	Uložte opatření rezervace
+save_brand	Uložit značku
+save_business_id	Uložit ID firmy
+save_business_name	Uložit název firmy
+save_features	Uložit nastavení úlohy
+save_names	Uložte jména
+server_ip_ph	IP serveru (např. 192.168.1.10)
+set_credit_limit	Aplikujte limit na zákazníka nebo dodavatele
+set_login_selected	Použít přihlášení na vybrané
+set_login_named	Použít přihlášení na {name}
+shop	Obchod
+start_fresh	Začněte znovu
+stop_extra_tills	Zastavte další pokladny
+backup_auto	Automaticky zálohováno každý den · posledních {when} · posledních 14 dní je uloženo v {dir}.
+backup_auto_none	Automaticky zálohováno každý den – první se spustí během okamžiku.
+backup_copy_to	Kopie také jdou do {dir}.
+backup_copy_btn	Také zkopírovat zálohy do složky…
+autostart_off	Začněte s tímto počítačem
+autostart_on	Spustí se s tímto počítačem ✓ – klepnutím zastavíte
+autostart_done_on	Tento počítač nyní otevře aplikaci při svém spuštění – server obchodu je po výpadku proudu zpět.
+autostart_done_off	Tento počítač již při spuštění aplikaci neotevře.
+right_allowed	Povoleno
+right_with_approval	Se souhlasem
+right_denied	Není povoleno
+editing_staff	Práva pro
+team_pick_ph	Personál, který chcete upravit – jméno, uživatelské jméno nebo výběr
+select_staff	Vyberte tento personál
+rights_help	Práva – klepnutím změníte: Povoleno → Se schválením (v daném okamžiku PIN manažera) → Nepovoleno.
+right_void_refund	Zrušení rezervace nebo vrácení peněz
+right_amend_sale	Upravte zaznamenanou rezervaci
+find_server	Najděte server obchodu
+finding_server	Hledáte server obchodu na tomto Wi‑Fi…
+no_server_found	Nebyl nalezen žádný. Na serveru: Nastavení → Ostatní zařízení → Povolit extra pokladny (stejné Wi‑Fi). Nebo zadejte IP uvedenou tam.
+servers_found_pick	Klepněte na obchod, ke kterému se chcete připojit.
+server_host_selected	Pomocí {host} — zadejte párovací kód a poté Spárovat nyní.
+device_forgotten	Obchod toto zařízení zapomněl — spárujte jej znovu s aktuálním kódem obchodu. Objednávky, které na něj čekají, jsou zachovány.
+forget_device	Zapomeňte
+last_seen	viděl
+new_pair_code	Nový párovací kód
+lan_offline	Server obchodu je nedostupný
+lan_offline_waiting	Server obchodu nedostupný · {n} čeká
+lan_connecting	Připojování k obchodu…
+pair_finishing	Dokončení páru... použití kancelářských knih
+pair_opening	Otevírání kanceláře…
+lan_live	Živě
+lan_sending	{n} odeslání
+lan_sign_in_to_send	Chcete-li odeslat {n}, přihlaste se znovu
+lan_pair_again	Znovu toto zařízení spárujte
+lan_update_app	Aktualizujte aplikaci – toto zařízení a kancelářský server mají různé verze
+allow_firewall	Povolit připojení dalších zařízení
+firewall_blocked	Brána firewall tohoto počítače blokuje ostatní zařízení – klepněte na Povolit připojení dalších zařízení.
+firewall_waiting	Čekání na výzvu správce…
+lan_join_help	Na druhém zařízení: Režim klienta → Najděte server obchodu (nebo zadejte {addr}) → párovací kód {code}.
+lan_pair_status	Wi‑Fi {addr}
+lan_join_help_no_addr	Připojte toto zařízení k Wi‑Fi pro adresu.
+lan_no_address	Zatím žádná adresa Wi‑Fi — připojte se k obchodu Wi‑Fi.
+lan_not_listening	Nepřijímá zařízení (port {port} obsazený). Restartujte aplikaci.
+lan_tills_off	Extra pokladny jsou vypnuté. Umožněte jim, aby se připojilo jiné zařízení.
+paired_with	Spárováno · {url}
+not_paired	Nespárováno
+choose_device_use	Vyberte Server nebo Klient.
+paired_note	Spárováno. Chcete-li prodat, odemkněte nebo aktualizujte nejnovější.
+last_update_at	Poslední aktualizace: {time}.
+pair_intro	Najděte server nebo zadejte jeho adresu a párovací kód.
+queue_waiting	Čekání na příchod do obchodu ({n}):
+queue_tries	Vyzkoušeno {n} krát · poslední odpověď: {e}
+save_backup_copy	Uložit záložní kopii…
+backup_copy_saved	Záložní kopie uložena – ponechat ji mimo toto zařízení (zařízení USB nebo jiné zařízení)
+backup_copy_overdue	Po dobu {n} dní neopustila toto zařízení žádná záložní kopie — Nastavení → Záloha
+backup_copy_failed	Záložní kopii tam nelze uložit – vyberte jiné místo
+clock_off	Hodiny tohoto zařízení jsou {min} min mimo server obchodu — nastavte na tomto zařízení správný čas
+printers_heading	Tiskárny na tomto zařízení
+printers_help	Najděte skutečné tiskárny a poté vyberte Potvrzení nebo štítek AWB. Každá úloha má svou vlastní šířku, výšku nebo šířku a způsob odesílání bajtů. Štítek vytiskne čárový kód. Prázdné místo = netisknout.
+job_width	Šířka obsahu (mm)
+job_width_ph	Nebo zadejte šířku 40–210 mm
+job_layout	Rozložení
+job_delivery	Jak je úloha odeslána
+job_size	Velikost písma
+job_size_ph	např. 18, 20, 26…
+save_receipt_format	Uložit formát účtenky
+save_label_format	Uložit formát štítku
+test_receipt_format	Testovací účtenka
+test_label_format	Testovací štítek
+test_receipt_sent	Vzor potvrzení odeslán
+test_label_sent	Vzor štítku odeslán
+test_print_no_printer	Pro tuto úlohu není žádná tiskárna – přidejte ji pod toto místo
+printers_host_only	Tiskárny jsou nastaveny na zařízení prodejny (Server). Toto do tam pošle úlohy — Najít / přidat / přiřadit pobyt na serveru. Testovací stránka přejde na server.
+printers_pool_heading	Tiskárny
+printers_routes_heading	Kde se věci tisknou
+printer_label_ph	Název (např. Stůl)
+printer_target_ph	hostitel:9100 · bt:MAC · usb:VID:PID · název systému
+printer_mode_heading	Profil pro nové výstupy
+printer_mode_standard	Standardní portrét
+printer_mode_landscape	Standardní krajina
+printer_mode_thermal	Tepelný
+printer_mode_standard_short	Portrét
+printer_mode_landscape_short	Krajina
+printer_mode_thermal_short	Tepelný
+printer_format_custom	Nový vlastní profil
+printer_format_custom_label	Vlastní
+printer_format_custom_added	Pro toto místo byl přidán vlastní profil
+add_printer	Přidat tiskárnu
+remove_printer	Odebrat poslední
+route_pick_ph	účtenka nebo štítek
+route_add_printer_ph	Přidat tiskárnu na toto místo
+route_receipt	Příjem
+route_label	štítek AWB
+route_dont_print	Není přiřazena žádná tiskárna
+route_add	Přidat na místo
+route_up	Nahoru
+route_down	Dolů
+route_remove	Odebrat poslední
+route_clear	Vymazat tiskárny pro toto místo
+save_printers	Uložit tiskárny
+print_test_page	Vytiskněte zkušební stránku
+printers_saved	Tiskárny uložené pro toto zařízení
+test_page_sent	Zkušební stránka odeslána – zkontrolujte tiskárnu
+printers_found	Nalezeno na tomto zařízení: {list}
+find_printers	Najděte tiskárny
+printers_looking	Hledání tiskáren na tomto zařízení a Wi-Fi…
+printers_tap_find	Klepněte na Najít tiskárny pro fronty, které přijímají úlohy a síťové tiskárny účtenek v této Wi-Fi (neodebrané nebo offline).
+printers_none_found	Nebyly nalezeny žádné tiskárny – zadejte název systémové tiskárny nebo síťovou adresu (např. 192.168.1.50).
+receipt_printer_ph	Tiskárna na účtenky
+queue_refused	Neakceptováno obchodem ({n}) – zkontrolujte každý u přepážky:
+clear_not_accepted	Zaškrtnuto – vymažte tento seznam
+device_name_ph	Název tohoto zařízení
+lan_last_update	poslední aktualizace {time}
+lan_not_accepted	{n} nepřijato
+connected_now	nyní připojeno
+backup_failed	Poslední automatické zálohování se nezdařilo: {e}
+backup_overdue	Žádná záloha po dobu {n} dní – nechte aplikaci otevřenou na tomto zařízení, aby mohla zálohovat.
+disk_low	Pouze {mb} MB volného místa na tomto zařízení — zálohování brzy selže. Uvolněte místo.
+last_seen_devices	Naposledy viděn: {time}
+sync_interval	Synchronizovat každých {secs}s
+connection_to_shop	Spojení s obchodem
+supplier_name_ph	Jméno dodavatele (nebo zákazníka)
+supplier_ph	Dodavatel
+switch_device	Přepněte toto zařízení
+take_payment	Přijměte platbu
+tax_added_till	{tax} exkluzivní
+tax_inside_price	{tax} včetně
+today_books	Dnes knihy
+unlock_after_pairing	Zadejte PIN
+unlock_with_login	Odemkněte přihlášením
+update_my_password	Aktualizujte mé heslo
+update_my_pin	Aktualizujte můj PIN
+duress_heading	Nouzové odemknutí PIN (pouze vlastník)
+duress_help	Volitelný. Pokud tento PIN zadáte při odemykání místo vašeho, všechny položky knih budou vymazány (rezervace, účetní knihy, historie) a stůl se otevře jako vlastník vypadá normálně – sazby, večírky, zóny, personál a nastavení zůstanou. Schéma a konfigurace nebudou odstraněny. Používejte pouze v případě, že jste nuceni odemknout. Ponechte prázdné a uložte pro vypnutí. Nikdy není stejný jako něčí PIN.
+duress_pin_ph	Nouzové PIN (4–12 číslic)
+duress_confirm_ph	Zadejte znovu pro potvrzení
+save_duress_pin	Uložit nouzové PIN
+clear_duress_pin	Vypnout nouzové PIN
+duress_on	Nouzové odemknutí PIN je zapnuto
+duress_off	Nouzové odemykání PIN je vypnuté
+duress_saved	Nouzové odemknutí PIN uloženo
+duress_cleared	Nouzové odemykání PIN je vypnuto
+vehicle_ph	Vozidlo
+void	Neplatný prodej
+write_off_ap	Odepsat AP
+write_off_nil	Odepsat / nulový zůstatek
+zone_ph	Zóna (název z sazeb)
+caption_today	DNES
+caption_bookings	REZERVACE
+caption_payments_today	PLATBY DNES
+caption_outstanding	VYNIKAJÍCÍ
+caption_bank	BANKA
+paid_by	Zaplaceno
+second_way	Druhý způsob
+weight_in	Hmotnost v
+size_in	Velikost v
+goods_received	Zboží přijaté
+expense_heading	Výdaj
+notes_attach_sale	Poznámky a přílohy (vybraný prodej)
+notes_attach_party	Poznámky a přílohy (vybraný zákazník nebo dodavatel)
+attachments_last_expense	Přílohy (poslední výdaj)
+credit_limit_heading	Kreditní limit (vybraný zákazník nebo dodavatel)
+pay_selected_heading	Vybraná platba (vyrovnat dluh / vzít zálohu)
+write_off_heading	Odepsat (vymazat bez platby)
+pay_ap_heading	Zaplaťte, co jim dlužíme (AP)
+country_tax	Země a daně
+extra_tills_heading	Extra pokladny
+other_devices_help_heading	Nastavte další zařízení
+other_devices_help	Na tomto zařízení (serveru): Ostatní zařízení → Povolit extra pokladny. Poznamenejte si párovací kód a adresu Wi-Fi. Klepněte na možnost Povolit připojení dalších zařízení, pokud se zobrazí. Na počítači klepněte na Začít s tímto počítačem. Na každém druhém zařízení: nainstalujte aplikaci, vyberte režim klienta, najděte server obchodu (nebo zadejte adresu), zadejte párovací kód, spárujte nyní. Objednávky čekají na zařízení, pokud Wi-Fi klesne, a odejdou, když server znovu odpoví.
+your_brand	Vaše značka (v aplikaci)
+units_heading	Jednotky
+booking_measures	Rezervační opatření
+drawer_count	Počet zásuvek (volitelné)
+spreadsheet_csv	Tabulka (CSV)
+bank_reconciliation	Bankovní odsouhlasení (zaškrtněte u výpisu z účtu)
+book_add_product	Rezervovat — přidat produkt / ohodnotit
+book_opening_credit	Kniha — otevírací zápočet
+account_kind	Druh účtu (klepněte na jeden)
+active_ledger	Aktivní účetní kniha
+actual_total_cap	SKUTEČNÝ CELKEM
+amend_help	Vyberte prodej, který chcete upravit, zrušit nebo vrátit peníze. Změny uchovávají úplnou historii. Zaokrouhlený součet začíná stejnou jako Použito — upravte pouze na zaokrouhlení. Zrušení a vrácení peněz může vyžadovat vlastníka nebo manažera PIN (zapsáno výše; zaznamenáno s vaším jménem).
+applied_total_cap	UPLATNĚNO CELKEM
+bank_balance	Bankovní zůstatek
+bank_net_today	Bankovní síť dnes
+branch_export_help	Export zapíše snímek dne do složky záloh a zkopíruje jej do schránky. Chcete-li importovat den jiné prodejny, uložte její soubor jako import_branch_snapshot.json do této složky a klepněte na Importovat.
+brand_shown_help	Zobrazuje se na obrazovkách uvnitř aplikace. Název a ikona nainstalované aplikace na tomto zařízení zůstanou jako výpis platformy.
+app_icon	Ikona aplikace
+logo_help	Volitelná značka obchodu na obrazovkách v aplikaci.
+onboard_layout	Co získáte
+item_photo_help	Volitelné. Bez fotografie zobrazujeme iniciály z názvu položky.
+cash_in_hand	Peníze na ruku (do)
+change_my_pin_heading	Změnit můj PIN (pouze váš)
+connect_to_server	Připojte se k serveru
+counter_locked	Počítadlo 01 · Uzamčeno
+country_pack_help	Balíček země nastavuje název daně a matematiku, okamžitou platbu a identifikační číslo firmy vytištěné na účtech. Kumkaj nikde nepodává daně ani nevystavuje vládní elektronické faktury.
+currency_use_help	Přejděte a klepněte na Použít pro jakoukoli podporovanou měnu.
+day_close_help	Záznam uzavření dne uloží tento souhrn (a odchylku v zásuvce, pokud se počítá) do protokolu auditu. Nepřestává se prodávat.
+expenses_word	Výdaje
+feature_access_help	Přístup k funkcím pro vybrané zaměstnance (po přidání klepněte na)
+footer_local	Místní SQLite · Navždy zdarma · Zero Cloud
+fresh_book_moklanjo	Čerstvé = prázdný katalog (položky přidejte později). Kniha = níže zadejte otevírací sklad a kdo vám dluží.
+fresh_selected	Čerstvě vybráno — katalog zůstane prázdný. Až budete připraveni, klepněte na Hotovo.
+gross_word	Hrubý
+how_start	Jak chcete začít?
+later_country_pack	Později: Nastavení → použijte svůj balíček země pro daňové a platební štítky.
+local_badge	MÍSTNÍ
+measures_help_moklanjo	Jak se zásilky měří u rezervačního pultu. Zadejte rozměry a hmotnost v jednotkách, které používáte — standardní (cm, m, in, ft · kg, g, lb, oz) nebo vlastní jednotku spojenou s cm / kg výše (přímo nebo prostřednictvím jiných jednotek). Knihy vždy zaznamenávají kg. Chcete-li jej zachovat, ponechte pole prázdné.
+mix_type_hint_moklanjo	Zadejte kolik v každém (hotovost / UPI / karta / kredit). Musí se přidat k účtu. Kredit potřebuje zákazníka výše.
+money_in_sales	Peníze v (prodej)
+more_help_moklanjo	Katalog, prodej, kredit, tým, záloha — plus zásoby a další pokladny, když je potřeba.
+net_word	Síť
+offline_badge	OFFLINE
+optional_login_help	Volitelné přihlášení (id + heslo). Vlastník nastaví jednou; heslo může později změnit pouze uživatel.
+or_unlock_login	Nebo odemkněte pomocí přihlašovacího jména + hesla
+permission_preset	Úloha (nastavuje obrazovky a práva)
+preset_help_moklanjo	Pokladník: prodám. Manažer: prodat + položky + neplatné/upravit.
+product_locked_moklanjo	Moklanjo
+product_only_moklanjo	Tato aplikace je pouze Moklanjo – knihy + rezervační pult. Ostatní obchodní plochy se dodávají jako samostatné produkty později.
+purchases_cogs	Nákupy (COGS)
+qty_cap	MNOŽSTVÍ
+restore_help	Obnovit: vyberte zálohu. Knihy se otevírají tak, jak byly tehdy; knihy tak, jak jsou nyní, jsou uloženy jako první, takže to lze vrátit zpět.
+wipe_data_heading	Smazat místní data
+wipe_data_help	Pouze vlastník – stejné možnosti jako odinstalace systému Windows. Obchodní záznamy vymažou historii obchodování, ale zachovají sazby a nastavení (jako je PIN pro nouzové odblokování). Nastavení obchodu odstraní databázi knih. Předvolby obrazovky vymaže okno/jazyk. Potvrďte pomocí PIN vlastníka. Kód PIN pro nouzové odemknutí na Teamu je samostatný (skryté vymazání při odemknutí).
+wipe_trading	Obchodní záznamy
+wipe_schema	Nastavení obchodu
+wipe_ui	Předvolby obrazovky
+wipe_owner_pin_ph	Vlastník PIN ke smazání
+wipe_delete_selected	Smazat vybrané
+wipe_owner_only	Místní data může odstranit pouze vlastník.
+restore_owner_only	Zálohu může obnovit pouze vlastník.
+wipe_owner_pin_needed	Chcete-li odstranit místní data, zadejte vlastníka PIN.
+wipe_nothing_selected	Vyberte, co chcete smazat jako první.
+wipe_done	Vybraná místní data byla smazána.
+wipe_schema_done	Nastavení obchodu bylo vymazáno – pokračujte výběrem Server nebo Klient.
+rounded_total	Zaokrouhlený součet
+setup_app_moklanjo	Nastavte Moklanjo
+shop_logo_optional	Logo obchodu (volitelné)
+stock_type_help	Zadejte název položky (stačí část), množství a poté upravte. Položky, které ještě nejsou započítány, je třeba Spustit jednou sledování.
+team_owner_help	Nájem: vyberte práci (pokladník / manažer), jméno + počáteční PIN a poté Přidat. Pouze v případě, že se tato osoba liší: otevřete níže uvedené obrazovky a práva a poté Uložit nastavení úlohy. Každý si změní svůj vlastní PIN v dolní části — Vlastník nemůže změnit cizí.
+they_owe_us	Dluží nám
+unit_at_cap	jednotka @
+units_help	Kódy pro štítky položek (kg, kus, pytel). Každá jednotka musí být napojena — přímo nebo prostřednictvím jiných jednotek — na normu (kg · cm · ml · ks), např. 1 přepravka = 2 krabice a 1 krabice = 20 cm. Převody: 1 od = faktor do. Měny nejsou nikdy jednotky.
+we_owe_them	Dlužíme jim
+who_unlocking	Kdo odemyká?
+locked_word	Zamčeno
+show_pin	Zobrazit PIN
+hide_pin	Skrýt PIN
+set_owner_pin	NASTAVIT VLASTNÍKA PIN
+enter_owner_passcode	ZADEJTE HESLO VLASTNÍKA
+enter_staff_passcode	ZADEJTE PERSONÁLNÍ HESLO
+pin_count_zero	0 / 12 číslic · alespoň 4, poté OK
+pin_count_need	{} / 12 číslic · potřebujete {} více
+pin_count_full	12 / 12 číslic · stiskněte OK
+pin_count_ready	{} / 12 číslic · stiskněte OK, až budete připraveni
+pin_hint_choose	Vyberte 4–12 číslic · Enter nebo Unlock pro uložení
+pin_hint_new	Nový 4–12místný vlastník PIN · Enter nebo Unlock
+pin_hint_shop_code	Zařízení obchodu · párovací kód {}
+pin_hint_books	Toto zařízení drží knihy
+pin_hint_paired	Extra do spárování – odemknutí před prodejem
+pin_hint_pair_first	Extra till — nejprve spárujte se zařízením obchodu
+unlock_to_continue	Chcete-li pokračovat, odemkněte
+no_staff_yet	Zatím žádní zaměstnanci – odemkněte jako vlastník, poté tým
+status_server_set_pin	Režim serveru — nastavte vlastníka PIN
+status_server_tills	Režim serveru – mohou se připojit další pokladny. Odemknout
+status_server_unlock	Režim serveru – odemkněte jako vlastník
+status_client_unlock	Klientský režim – odemkněte za účelem prodeje
+icon_new_selected	Ikona: vybrán nový soubor – klepněte na Uložit značku
+icon_custom	Ikona: vlastní značka místa konání
+icon_default	Ikona: Značka Kumkaj (výchozí) — vyberte si vlastní
+logo_yours	Logo: logo vašeho obchodu – zobrazené na obrazovkách a účtenkách
+logo_default	Logo: značka Kumkaj (výchozí) — vyberte si vlastní, pokud nějaké máte
+tmpl_current	Aktuální: {} — {}
+tmpl_selected	Vybráno: {} — {}
+setup_complete	Nastavení dokončeno
+onboard_fresh_tmpl	Fresh · {} — katalog začíná prázdný; přidat položky do položky Položky a poté Hotovo.
+onboard_book_tmpl	Rezervovat · {} — přidejte položky a úvodní kredit a poté Hotovo.
+onboard_template_tmpl	Pokud chcete, pojmenujte místo a poté vyberte, jak začít.
+tmpl_blurb	Kurýrní knihy a rezervační pult: odesílatelé, dopravci, denní kniha, AWB.
+tmpl_how	Zarezervujte si balíky u stolu; Denní kniha pro dnešek; karty pro sazby, večírky, zprávy.
+trk_booked	Zarezervováno
+trk_picked_up	Sebráno
+trk_in_transit	V tranzitu
+trk_delivered	Doručeno
+trk_rto	Návrat k odesílateli
+lane_to_dispatch	K odeslání
+lane_with_carrier	S nosičem
+lane_failed	Nepodařilo se
+lane_done_today	Dnes hotovo
+ops_board_help	Balíčky podle toho, kde jsou v dnešní práci. Klepněte na balíčky (nebo je naskenujte), abyste je vybrali, a poté postupujte podle všech vybraných najednou – každá dráha nabízí pouze pohyby, které jí vyhovují.
+lane_empty	Tady teď nic.
+picked_fmt	Vybráno {n}
+pick_all	Vyberte všechny
+bag_for_carrier	Ruka k nosiči
+send_with_rider	Pošlete s jezdcem
+out_again	Zase ven
+return_to_sender	Návrat k odesílateli
+runs_bags_heading	Nedávné běhy a tašky
+print_word	Vytisknout
+bag_word	Přepravní taška
+run_word	Jezdecký běh
+parcels_fmt	Balíčky {n}
+parcel_history	Dějiny
+attempt_fmt	Pokus o {n}
+pieces_short_fmt	{n} ks
+note_reason_ph	Poznámka nebo důvod
+ops_pick_first	Nejprve vyberte balíky – klepněte na ně nebo je naskenujte
+cod_to_collect	Doručeno - na dobírku k vyzvednutí
+cod_on_road	COD stále na cestě
+cod_owed_consignors	Sebrané — platit odesílatelům
+cod_rto_fees	Poplatky RTO vybírat
+cod_to_hand_in	DOBÍRKA k odevzdání
+parcel_one_fmt	Balíček {n}
+facet_bank_title	Zprávy
+facet_bank_help	Denní knihy, stárnutí zákazníků nebo dodavatelů, bankovní pošty a dobové zisky a ztráty.
+facet_ops_title	Zásilky a expedice
+facet_ops_help	Naskenujte nebo zadejte AWB → Najít a poté posouvat / tisknout štítek / na dobírku. Odeslání jezdci nebo přepravci.
+facet_cod_title	Registr na dobírku
+facet_cod_help	Vyzvedněte na dobírku a poté zašlete odesílateli.
+facet_riders_title	Jezdci (vlastní flotila)
+facet_riders_help	Přidejte jezdce a poté odešlete rezervované AWB z Ops.
+against_bill_ph	Proti účtu č. výše (volitelné)
+aliases_ph	Aliasy — jiná jména oddělená čárkou
+amount_blank_full_ph	Částka (prázdné = úplný zůstatek)
+amount_owed_ph	Dlužná částka
+amount_ph	Částka
+amount_received_ph	Přijatá částka
+amount_we_pay_ph	Částka, kterou platíme
+awb_scan_ph	AWB / skenování čárového kódu
+bulk_csv_ph	Hromadné CSV — určení, příjemce, kg, cod_paise, poznámka
+business_name_ph	Obchodní název
+category_new_ph	Kategorie (volitelné, vytvořeno, pokud je nové)
+cod_amount_ph	částka na dobírku
+code_bag_ph	Kód (pytel)
+conv_factor_ph	Faktor (25 = 1 pytel → 25 kg)
+country_code_ph	Kód země např. IN, GB, US, AE, BR
+credit_khata_amount_ph	Částka kreditu / kreditní knihy
+credit_limit_ph	Kreditní limit (0 = žádný)
+dim_unit_code_ph	Kód jednotky rozměru (cm)
+divisor_ph	Objemový dělitel (5000)
+extra_per_kg_ph	Extra / kg
+first_amount_ph	První částka
+first_kg_ph	První kg (deska)
+from_code_ph	Z kódu (sáčku)
+item_name_lang_ph	Název položky – zadejte jej ve svém jazyce
+login_id_opt_ph	Uživatelské jméno (povinné, jedinečné)
+manager_pin_ph	Manažer PIN ke schválení (pouze pokud nemůžete zrušit)
+new_branch_name_ph	Nový název pobočky
+new_password_ph	Nové heslo (volitelné)
+new_pin_ph	Nové PIN (4–12 číslic)
+note_bank_ph	Poznámka (vklad, výběr, …)
+note_buy_expense_ph	Poznámka (palivo, nájem, …)
+note_expense_ph	Poznámka (palivo, kancelář, …)
+notify_phone_ph	Informujte telefon (WhatsApp/SMS háček)
+options_moklanjo_ph	Možnosti (volitelné) — Velké=20, Dárkové balení=10
+part_second_way_ph	Část druhým způsobem (volitelné)
+phone_ph	Telefon
+address_ph	Adresa
+party_custom_fields_heading	Vlastní pole (vybraná strana)
+party_custom_help	Přidejte na tuto párty jakýkoli štítek a hodnotu — WhatsApp, GSTIN, směrový kód,…
+party_custom_key_ph	Název pole (např. WhatsApp)
+party_custom_value_ph	Hodnota
+party_custom_add	Přidat pole
+party_custom_remove	Odebrat pole
+party_custom_empty	Zatím žádná vlastní pole
+party_custom_pick_first	Vyberte stranu a přidejte vlastní pole
+place_name_ph	Název tohoto místa
+price_ph	Cena
+qty_example_ph	Množství (např. 1,5 za kg)
+quantity_ph	množství
+reason_required_ph	Důvod (vyžadováno)
+role_title_ph	Název role (např. Barista)
+service_pct_ph	Služba % volitelné 0/10/12
+short_code_ph	Krátký kód (MG02)
+slab_kg_ph	Nabíjecí deska v kg (0,5)
+staff_name_ph	Jméno/ID zaměstnance
+starting_password_ph	Počáteční heslo (volitelné)
+starting_pin_ph	Počínaje PIN (4–12 číslic)
+tax_rate_ph	Název daňové sazby nebo % — Standardní, Snížená, 0, 5, 12, 18, 20
+to_code_ph	Do kódu (kg)
+uncleared_no_ph	Nevymazáno # výše
+unit_cost_ph	Jednotková cena
+unit_kg_blank_ph	Jednotka (kg nebo prázdné)
+unit_name_bag_ph	Jméno (Taška)
+weight_unit_code_ph	Kód jednotky hmotnosti (kg)
+zone_name_ph	Název zóny
+pay_credit	Na účet
+book_kind_today	Dnes knihy
+book_kind_month	Knihy tohoto měsíce
+book_kind_aging	Nesplacený / debetní kredit
+book_kind_balance	Rozvaha
+ops_desk_help	Naskenujte AWB pomocí USB čtečky čárových kódů (nebo jej napište) → Najít. Poté postupujte, vytiskněte štítek nebo vyzvedněte na dobírku. Štítky tisknout kód 128.
+role_help_consignor	Role: Odesílatel — AR (dluží nám). Stejná firma může být také Carrier.
+role_help_carrier	Role: Carrier — AP (dlužíme jim). Stejná firma může být i Odesílatelem.
+role_help_both	Role: Odesílatel + Přepravce — jedna strana, účetní knihy AR a AP, čisté ve zprávách.
+role_help_supplier	Role: Dodavatel — AP pro nákupy.
+lane_declared_label	Rezervace účtu
+lane_owner_label	Hotovostní rezervace
+money_lane_bill	Účet: {lane}

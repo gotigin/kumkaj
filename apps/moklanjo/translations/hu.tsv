@@ -1,0 +1,835 @@
+# Hungarian — Magyar (hu). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	Futár-ügynökség könyvek + foglalási pult. Ingyenes offline.
+unlock	Oldja fel
+pin_hint	A PIN tulajdonos 0000-től kezdődik
+sell	Foglalás
+buy	Fizessen ki
+books	Napi könyv
+books_help	Mai álláspont. Foglalás = csomagok beérkezése. Kifizetés = szállítói számlák és költségek. Felek = feladók és fuvarozók.
+buy_help	Költségutalványok és fuvarozói számlák (pénzkiadás). A számla a pártkönyvben marad.
+sell_money_in	Foglaljon csomagot
+buy_money_out	Költség/fuvarozószámla
+record_purchase	Rekordvásárlás
+add_expense	Költség utalvány
+bank_book	Bankkönyv
+credit_help	A fél azonosítója egyedi (a nevek ismétlődnek). Szerepek: Feladó (AR), Fuvarozó (AP), vagy mindkettő ezen az azonosítón. A főkönyvek külön maradnak; a jelentések netet mutatnak.
+party_kind_ph	Egyéni szerepkör (opcionális) – vagy koppintson a fenti chipre
+parties_list_heading	Mentett bulik
+reports_help	Napi könyv, adósok és hitelezők, bankkönyv, költségutalványok, nyereség és veszteség.
+reports_today	Napi könyv (ma)
+reports_month	Nyereség és veszteség (hónap)
+reports_aging	Tartozás / betéti jóváírás
+reports_balance_sheet	Mérleg
+reports	Bankkönyv és P&L
+refresh	Frissítés
+undo	Visszavonás
+start_tracking	Kezdje el a követést
+stock_minus	− Készlet
+stock_plus	+ Készlet
+settle_cash	Rendeljen készpénzt
+settle_card	Kiegyenlít kártya
+items	Árak és szolgáltatások
+nav_items	Árak
+more	Többet
+your_items	Az árak
+items_help	Minden sor egy arány (pl. A felületi zóna). Mértékegysége általában kg. Érintse meg a szerkesztéshez.
+add_item	Adjon hozzá arányt
+new_item	Új árfolyam
+adding_item	Új árfolyam hozzáadása
+editing_item	Szerkesztés
+save	Mentés
+remove	Távolítsa el
+empty_catalog	Még nincsenek díjak. Nyissa meg az Árak és szolgáltatások lehetőséget, adjon hozzá egyet (név + ár, egység kg), majd a Foglalás.
+counter_sale	Pult foglalás
+total	Összesen
+cash	Készpénz
+upi	UPI
+card	kártya
+credit	Vevők és beszállítók
+clear	Világos
+ready_to_sell	Foglalásra készen
+today_prefix	Ma
+today_mid	ma
+owed	kiemelkedő
+round_word	kerek
+back	Vissza
+sold_out	Nem elérhető
+restock	Feltöltés
+not_tracked	Nincs nyomon követve
+in_stock	raktáron
+marked_sold_out	Elérhetetlennek jelölve
+add_upper	HOZZÁAD
+na	N/A
+qty	Tömeg/menny
+unit_at	Értékelés @
+actual	Aktuális
+applied	Alkalmazva
+note_ph	Megjegyzés (nem kötelező)
+rounded	KEREKÍTETT
+split	Hasított
+counter	Számláló
+parcel	Parcella
+order	Rendelés
+sales	Foglalások
+sales_refunds	Foglalás és visszatérítés
+day_close	Nap vége
+reports_expenses	Bankkönyv és P&L
+nav_reports	Jelentések
+nav_settings	Beállítások
+nav_lock	Zár
+sidebar_settings	Az oldalsáv beállításai
+sidebar_settings_help	Ugyanazok az ikonok, mint az oldalsó korláton. Az átrendezéshez húzzon egy sort. A megjelenítéshez vagy elrejtéshez fordítsa el a kapcsolót. A beállítások és a zár mindig a sávon marad.
+sidebar_always_on_short	Mindig bekapcsolva
+sidebar_back_settings	Vissza
+sidebar_shown	Megjelenítve
+sidebar_hidden	Rejtett
+sidebar_always_on	Mindig a bárban
+sidebar_shown_hint	Az oldalsó korláton / alsó füleken látható
+sidebar_hidden_hint	A bár elől elrejtve
+sidebar_menu_items	Menü és tételek
+sidebar_enable_all	Összes engedélyezése
+sidebar_disable_all	Összes letiltása
+sidebar_order_saved	Az oldalsáv sorrendje mentve
+sidebar_visibility_saved	Az oldalsáv láthatósága mentve
+amounts_hide	Elrejtés
+amounts_show	Megjelenítés
+no_sale_yet	Még nincs eladó
+favorites	Kedvencek
+favorites_help	Gyakran eladott cikkek, amelyeket a bejelentkezéshez mentett. Adjon hozzá egyet a számlához, vagy állítsa össze a listát az alábbi tételekből.
+your_favorites	A kedvenceid
+all_items	Minden elem
+no_favorites	Még nincsenek kedvencek – vegyen fel elemeket az alábbi listából.
+add_to_bill	Hozzáadás a számlához
+added	Hozzáadva
+owes_word	tartozik
+selected_word	Kiválasztva
+chip_clear_credit	egyértelmű — Jóváírás vagy előleg felvétele
+chip_missing_customer	Hiányzik a kiválasztott ügyfél – válasszon újra
+chip_no_customer	Még nincs ügyfél – írjon be egy nevet, majd koppintson a Credit elemre
+credit_summary_fmt	{} ügyfelek · nyitott hitel {} · visszatartott előlegek {}
+recent_label	Legutóbbi:
+inventory	Leltár
+inventory_stock	Készlet és készlet
+branches	Ágak
+branches_org	Fiókok és org
+credit_customers	Felek (adósok és hitelezők)
+customer_name_ph	Vevő vagy szállító neve
+new_customer_ph	Új ügyfél vagy szállító neve
+item_name_ph	Árnév (pl. A felszíni zóna)
+item_price_ph	kg / első födém
+start_template	Termék
+next_booking	Következő foglalás
+destination_ph	Cél város/zóna
+consignee_ph	A vevő neve
+consignee_phone_ph	Vevő telefon
+consignee_address_ph	Szállítási cím
+origin_name_ph	Feladó neve
+origin_phone_ph	Feladó telefon
+origin_address_ph	Átvételi / származási cím
+booking_consignor_heading	Feladó (megrendelő / feladó)
+booking_consignee_heading	Címzett (átvevő)
+booking_consignor_hint	Válasszon egy partit, vagy hagyja üresen a belépéshez. Otthoni átvételhez és RTO-hoz szükséges.
+booking_consignee_hint	A csomag átvevője. Hagyja üresen a bejárati pult leadásához.
+weight_kg_ph	Tényleges kg
+length_cm_ph	L cm
+breadth_cm_ph	B cm
+height_cm_ph	H cm
+chargeable_kg	Térhető kg
+awb_label	AWB
+booking_help	Feladó + címzett (üres OK) → rendeltetési hely → mérleg → komissiózási díj → Számla/Készpénz → fizetés. Az AWB a nyugtára nyomtat. A következő foglalás kiüríti az asztalt. A kerekített kezdetek megegyeznek az Alkalmazott értékkel – csak a számla kerekítéséhez szerkessze.
+cart_empty_hint	Üres az íróasztal – a feladó/címzett választható, állítsa be a rendeltetési helyet és a súlyt, koppintson a HOZZÁADÁS gombra az árfolyamon, majd fizessen.
+team	Csapat
+team_pins	Csapat és PINs
+my_pin_settings	Saját PIN
+settings_hub_help_my_pin	Módosítsa a feloldó PIN-t az eszközön bejelentkezett személy számára.
+team_self_help	Csak Ön módosíthatja a feloldó PIN-kódot (és az opcionális bejelentkezési jelszót). Kérdezze meg a Tulajdonost, ha más képernyőkre vagy jogokra van szüksége.
+backup_settings	Biztonsági mentés és beállítások
+lock_app	Alkalmazás zárolása
+pick	Csákány
+select	Válassza ki
+advance	Előre
+owner	Tulajdonos
+staff	Személyzet
+photo	Fotó
+auto	Auto
+prev	Előző
+next	Következő
+ok	OK
+this_shop	Szerver mód
+extra_till	Kliens mód
+off	Ki
+server	Szerver mód
+client	Kliens mód
+language_currency	Nyelv és pénznem
+language	Nyelv
+choose_language	Válassza ki a nyelvet
+language_setup_hint	Kövesse az eszköz nyelvét, vagy válasszon egyet saját maga.
+lang_follow_platform	Az eszköz nyelve
+lang_pick_user	Válasszon nyelvet
+lang_platform_now	Az eszköz nyelve most
+selected_language	Kiválasztva
+continue	Folytatás
+this_device	EZ A KÉSZÜLÉK
+device_use_q	Hogyan fogják használni ezt a készüléket?
+last_server_mode	Volt szerver – érintse meg a folytatáshoz
+last_client_mode	Ügyfél volt – érintse meg a folytatáshoz
+choose_server	Válasszon egy szervert
+choose_server_hint	Nyisson meg egy meglévő szervert, vagy hozzon létre egyet egy másik vállalkozás számára.
+create_new_server	Új szerver létrehozása
+open_server	Nyissa meg
+new_server_name_ph	Új szervernév (nem kötelező)
+server_remove_pin_ph	Tulajdonos PIN a szerver eltávolításához
+only_owner_remove_server	Csak a Tulajdonos távolíthat el egy szervert
+owner_pin_remove_server	A kiszolgáló eltávolításához PIN tulajdonos szükséges
+device_setup_help	A szerver itt tartja a könyveket. A kliens egy szerverhez párosul.
+currency	Pénznem
+backup	Biztonsági mentés
+settings_sec_diag	Diagnosztika
+settings_hub_help	Egyszerre csak egy területet nyisson meg – kevesebb görgetés, egyértelműbb választási lehetőségek.
+settings_sec_devices	Egyéb eszközök
+settings_sec_alerts	Figyelmeztetések
+alerts_help	Mennyi ideig maradnak az állapotüzenetek a képernyőn az Ön számára (ez a bejelentkezés).
+snack_secs_ph	Másodpercek (3–60, alapértelmezett 10)
+snack_secs_save	Takarítson meg riasztási időt
+snack_secs_saved	Mentett riasztási idő — {n} másodperc
+snack_secs_bad	Írja be a másodperceket számként (3–60)
+cancelled	Törölve
+cancel	Mégsem
+opening_client	Ügyfél megnyitása…
+preparing_desk	Asztal előkészítése…
+opening_server	Szerver megnyitása…
+creating_server	Szerver létrehozása…
+diag_privacy_help	A naplók ezen az eszközön maradnak. A titkok (PIN, jelszavak) soha nem tárolódnak. Egy csomagnak az eszközön kívüli megosztásához minden alkalommal az Ön kifejezett jóváhagyása szükséges – soha nem adják el vagy adják harmadik félnek.
+diag_level	Részletes szint
+diag_level_error	Hibák
+diag_level_warn	Figyelmeztetések
+diag_level_info	Info
+diag_level_debug	Hibakeresés
+diag_support_start	Indítsa el a 30 perces támogatási munkamenetet
+diag_support_stop	A támogatási munkamenet befejezése
+diag_support_started	Támogatási munkamenet bekapcsolva — Hibakeresési részletek 30 percig
+diag_support_ended	A támogatási munkamenet véget ért
+diag_export_local	Helyi másolat exportálása
+diag_export_local_done	A helyi diagnosztika készen áll a {path} címen – válassza ki, hová mentse a másolatot
+diag_approve_send	Megosztás jóváhagyása ezen az eszközön
+diag_send_heading	Oszd meg ezt az eszközt
+diag_send_help	A jóváhagyás egy csomag, majd lejár. Ideiglenes – csak a termék javítására vagy javítására szolgál. Nem osztják meg harmadik felekkel. Működik a következőkkel: Linux, Windows, macOS és Android.
+optional_login_heading	Opcionális bejelentkezés
+rights_heading	jogok
+booking_scope_heading	Belföldi / Nemzetközi
+diag_send_approved	Megosztás jóváhagyva egy csomagra (hamarosan lejár)
+diag_export_send	Megosztási csomag létrehozása (jóváhagyás szükséges)
+diag_export_send_done	A csomag megosztása készen áll a {path} címen – válassza ki a mentés helyét, majd küldje el csak az Kumkaj ügyfélszolgálatnak
+diag_save_bundle	Diagnosztikai másolat mentése
+diag_bundle_saved	Diagnosztikai másolat mentve ide: {path}
+diag_bundle_failed	Nem sikerült menteni a diagnosztikai másolatot – próbálja újra
+diag_clear	Diagnosztikai naplók törlése
+diag_cleared	A diagnosztikai naplók törölve
+use	Használja
+add_branch	Elágazás hozzáadása
+add_conversion	Konverzió hozzáadása
+add_item_plain	Elem hozzáadása
+add_note	Megjegyzés hozzáadása
+add_opening_balance	Nyitóegyenleg hozzáadása
+add_rider	Lovas hozzáadása
+add_staff	Adjon hozzá személyzetet
+add_unit	Adjon hozzá egységet
+add_use_name	Adja hozzá / használja ezt a nevet
+allow_extra_tills	Hagyjon extra kasszát
+amend	Módosít
+apply_country_pack	Országcsomag alkalmazása
+datetime_appearance	Dátum és idő megjelenése
+datetime_appearance_help	A könyvek az év elején RFC3339-et tartják bent. Ezek csak a dátumok és órák megjelenését változtatják meg a nyugtákon, címkéken, jelentéseken és a képernyőn.
+datetime_example	Példa most: {ex}
+date_order	Dátumrendelés
+date_order_dmy	D/M/Y
+date_order_mdy	M/D/Y
+date_order_ymd	Y-M-D
+time_format	Óra
+time_format_24h	24 órás
+time_format_12h	12 órás
+attach_bill_photo	Csatolja a számla fényképét
+attach_pdf	PDF csatolása
+attach_photo	Fénykép csatolása
+bank	Bank
+bank_in	Bank be
+bank_out	Bank ki
+bank_to_till	Bank → pénztár
+till_to_bank	Míg → bank
+mark_cleared	Mark kitisztult
+unmark	Törölje a jelölést
+role_both	Mindkettőt
+role_carrier	Hordozó
+role_cashier	Pénztáros
+role_consignor	Feladó
+role_manager	Menedzser
+role_supplier	Szállító
+branch_name_sell_ph	Eladó fiók neve
+bring_my_book	Hozd a könyvemet
+business_tax_id_ph	Iparűzési adó azonosító
+card_amount_ph	Kártya összege
+cash_amount_ph	Készpénz összege
+upi_amount_ph	UPI összeg
+carrier_cost_ph	Fuvarozói költség
+carrier_party_ph	Carrier party
+choose_icon	Válassza ki az ikont
+choose_logo	Válasszon logót
+choose_receipt_stamp	Válassza ki a nyugta bélyegzőjét
+choose_payment_qr	Válassza a fizetési QR-kódot
+clear_icon	Ikon törlése
+clear_logo	Tiszta logó
+clear_photo	Tiszta fénykép
+clear_stamp	Tiszta bélyegző
+clear_payment_qr	Fizetési QR törlése
+print_faces	Nyomtatott arcok (nyugta / időszaki számla)
+print_faces_help	Opcionális bélyegző és fizetési QR a logója mellett a foglalási bizonylatokon és az időszaki számlákon.
+awb_pools_heading	Carrier AWB számkészletek
+add_awb_pool	AWB-készlet hozzáadása
+awb_pool_carrier_ph	A szolgáltató fél neve
+awb_pool_start_ph	Start sz.
+awb_pool_end_ph	Vége sz.
+awb_pool_prefix_ph	Előtag (opcionális)
+awb_pool_label_ph	Címke (nem kötelező)
+pieces_ph	Darabok (üres = 1) – bővíthető rakományhoz / több darabból
+bulk_awbs_ph	Tömeges AWB-k – illesszen be sokat (újsort vagy vesszőt) az állapot előrelépéséhez
+tds_cut_ph	TDS-vágás (opcionális)
+discount_ph	Kedvezmény (opcionális)
+cheque_no_ph	Csekkszám (opcionális)
+bill_reminder_chase	Számlaemlékeztető üldözési lista
+month_mix_report	Havi mix jelentés
+copy_month_gst_csv	Másolás hónap GST CSV
+domestic	Háztartási
+international	Nemzetközi
+pick_logo	Válassz logót
+booking_scope_hint_domestic	Volumetrikus ÷5000 (belföldi) – érintse meg a Nemzetközi ÷6000 levegőt
+booking_scope_hint_intl	Volumetrikus ÷6000 (nemzetközi légi) – csap Belföldi bolthoz ÷5000
+cod_register	COD regiszter
+collect_cod	COD gyűjtése (AWB)
+consignments_dispatch	Szállítmányok és kiszállítás
+consignor_party_ph	Feladó/fél neve
+copy_day_book_csv	Napikönyv másolása CSV
+copy_day_close	Másolás nap zárása
+copy_items_csv	Elemek másolása CSV
+copy_outstanding_csv	CSV másolása
+copy_parties_csv	Ügyfelek és beszállítók másolása CSV
+copy_party_ledger_csv	Ügyfélkönyv másolása CSV
+copy_receipt	Nyugta másolása
+copy_report	Jelentés másolása
+counted_cash_ph	Számolt készpénz a fiókban
+counter_agency_ph	Pult/ügynökség neve (nem kötelező)
+create_backup	Készítsen biztonsági másolatot
+day_close_summary	A nap záró összefoglalója
+delete_party	A kiválasztott vevő vagy szállító törlése
+dispatch_to_rider	Kiszállítás lefoglalva → lovas
+docket_charge_ph	Docket töltés
+declared_value_ph	Bevallott érték
+contents_ph	Tartalom
+eway_ph	számú e-fuvarlevél
+insurance_label	Biztosítás
+yes_label	Igen
+no_label	Nem
+print_route_label	Útvonal nyomtatása
+new_party_kind_label	Új partifajta
+done_open_books	Kész – nyitott könyvek
+export_day	Export nap
+extra_note_expense_ph	Extra megjegyzés az utolsó kiadáshoz
+extra_note_awb_ph	Extra megjegyzés ehhez az AWB-hez / eladáshoz
+failed_delivery	Sikertelen kézbesítés
+find_scan_awb	AWB keresése/keresése
+forget_shop	Felejtsd el ezt a boltot
+fuel_ph	Üzemanyag
+handover_carrier	Kézzel foglalva → fuvarozó
+import_day	Import nap
+import_items_csv	Tételek importálása/árak CSV-fájlja…
+import_parties_csv	Import ügyfelek és beszállítók CSV…
+import_pincodes_csv	PIN kódok importálása CSV…
+import_carrier_bill_csv	Fuvarozószámla CSV importálása…
+copy_carrier_bill_report	Az utolsó szállítói számlajelentés másolása
+use_carrier_cost	Használja a szolgáltatói költséget
+rate_carrier_ph	Szolgáltató (üres = eladási árfolyamunk)
+rate_party_ph	Party (üres = minden ügyfél)
+carrier_pick_ph	Fuvarozó a költségekért (összehasonlításból)
+item_name	Elem neve
+load_bulk_row	Tömeges sor betöltése → asztal
+login_id_ph	Felhasználónév
+mark_delivered	Mark kézbesítve
+manifest_cod_total	KOI összesen
+manifest_received_by	által fogadott
+manifest_sign	Jel
+ndr_address_wrong	Rossz a cím
+ndr_customer_unavailable	Nem elérhető
+ndr_door_locked	Ajtó zárva
+ndr_other	Más
+ndr_refused	Elutasította
+out_for_delivery	Kiszállításra
+print_drs	Nyomtassa ki a DRS-t
+print_run_sheet	Nyomtatási lap
+reattempt	Újrakísérlet
+rider_cod_handed_ph	COD leadva
+settle_rider_cod	Rendezze lovas COD-ot
+mode_desk	Íróasztal
+mode_rider	Lovas
+waiting_office	várja, hogy elérje az irodát
+capture_signature	Az aláírás rögzítése
+incoming_manifest	Bejövő jegyzék
+pickup_request	Átvételi kérés
+pickup_run	Felszedési futás
+auto_assign_area	Terület automatikus hozzárendelése
+reorder_stops	Az újrarendelés leáll
+settle_rider_pay	Rendezze a lovas fizetését
+vehicle_inspect	Gépjármű átvizsgálás
+print_docket	Dokumentum nyomtatása
+franchise_statement	Franchise nyilatkozat
+tally_export	Tally utalvány export
+open_whatsapp	Nyissa meg a WhatsApp-ot
+copy_sms	SMS szöveg másolása
+pick_barcode_image	Válassza ki a beolvasni kívánt képet
+share_receipt_whatsapp	Nyugta megosztása a WhatsApp-on
+delivery_feedback	Szállítási visszajelzés
+lan_self_book	LAN önfoglalás
+new_party_clear	Új ügyfél vagy szállító (átlátható űrlap)
+new_party_kind_ph	Új partifajta (szállító/szállító)
+next_country	Következő ország
+prev_country	Előző ország
+note_gstin_ph	Megjegyzés / GSTIN / megállapodás emlékeztető
+note_pod_ph	Megjegyzés / POD (opcionális)
+on_account_ap	Számlára (AP)
+org_optional_ph	Szervezet (opcionális)
+paid_now	Most fizetve
+pairing_code_ph	Párosítási kód
+pair_now	Párosítsa most
+party_name_selected_ph	Vevő vagy szállító neve (vagy kiválasztott használat)
+password_ph	Jelszó
+pay_ap_card	Fizetés AP kártyával
+pay_ap_cash	Fizessen AP készpénzben
+pay_ap_upi	UPI tartozás fizetése
+period_bill	Időszaki számla
+period_bill_party	Időszaki számla (párt)
+pick_pod_photo	Válassza ki a POD fotót
+print_awb_label	Nyomtasson AWB címkét
+print_open	Nyomtatás / megnyitás
+reason_amend_ph	A módosítás / érvénytelenség / visszatérítés oka
+reason_note_ph	Ok / megjegyzés (pazarlás, szám, …)
+record_day_close	Lezárult a rekordnap
+refresh_from_shop	Frissítés a boltból
+refund	Visszatérítés
+remit_cod	Utánvét átutalása (fél)
+remove_selected	A kiválasztott eltávolítása
+restore_backup	Biztonsági másolat visszaállítása
+rider_name_ph	Lovas neve
+rider_phone_ph	Rider telefon
+riders	Lovasok
+riders_own_fleet	Lovasok (saját flotta)
+rollup	Összesítés
+save_booking_measures	Mentse el a foglalási intézkedéseket
+save_brand	Mentse a márkát
+save_business_id	Vállalkozási azonosító mentése
+save_business_name	Mentse el a vállalkozás nevét
+save_features	Mentse a munkabeállítást
+save_names	Mentse el a neveket
+server_ip_ph	Szerver IP-címe (pl. 192.168.1.10)
+set_credit_limit	Korlátozás alkalmazása az ügyfélre vagy a szállítóra
+set_login_selected	Bejelentkezés alkalmazása a kiválasztottra
+set_login_named	Bejelentkezés alkalmazása a {name} címre
+shop	Bolt
+start_fresh	Kezdje frissen
+stop_extra_tills	Állítsa le az extra kasszát
+backup_auto	Automatikus biztonsági mentés minden nap · utolsó {when} · az utolsó 14 nap a {dir} mappában tárolódik.
+backup_auto_none	Automatikus biztonsági mentés minden nap – az első pillanatok alatt lefut.
+backup_copy_to	A másolatok a {dir} címre is mennek.
+backup_copy_btn	Másoljon biztonsági másolatot egy mappába is…
+autostart_off	Kezdje ezzel a számítógéppel
+autostart_on	Ezzel a számítógéppel kezdődik ✓ – érintse meg a leállításhoz
+autostart_done_on	Ez a számítógép most megnyitja az alkalmazást, amikor elindul – az üzlet szervere áramszünet után újra működik.
+autostart_done_off	Ez a számítógép már nem nyitja meg az alkalmazást, amikor elindul.
+right_allowed	Engedélyezett
+right_with_approval	Jóváhagyással
+right_denied	Nem engedélyezett
+editing_staff	Jogok ehhez
+team_pick_ph	Szerkeszthető személyzet – név, felhasználónév vagy választás
+select_staff	Válassza ki ezt a személyzetet
+rights_help	Jogok — érintse meg a módosításhoz: Engedélyezett → Jóváhagyással (az adott pillanatban vezetői PIN-kód) → Nem engedélyezett.
+right_void_refund	Foglalás érvénytelenítése vagy visszatérítése
+right_amend_sale	A rögzített foglalás módosítása
+find_server	Keresse meg az üzlet szerverét
+finding_server	Az üzlet szerverét keresem ezen a Wi‑Fi…
+no_server_found	Egyik sem található. A szerveren: Beállítások → Egyéb eszközök → Kiegészítő pénztárak engedélyezése (ugyanaz Wi‑Fi). Vagy írja be az ott látható IP-címet.
+servers_found_pick	Koppintson arra az üzletre, amelyhez csatlakozni szeretne.
+server_host_selected	A {host} használatával — írja be a párosítási kódot, majd a Párosítás most.
+device_forgotten	Az üzlet elfelejtette ezt az eszközt – párosítsa újra az üzlet aktuális kódjával. A rá váró rendeléseket megtartják.
+forget_device	Felejtsd el
+last_seen	látott
+new_pair_code	Új párosítási kód
+lan_offline	A bolt szervere nem elérhető
+lan_offline_waiting	A boltszerver nem érhető el · {n} vár
+lan_connecting	Kapcsolódás az üzlethez…
+pair_finishing	A párosítás befejezése… az irodai könyvek alkalmazása
+pair_opening	Az iroda megnyitása…
+lan_live	Élőben
+lan_sending	{n} küldés
+lan_sign_in_to_send	Jelentkezzen be újra a {n} elküldéséhez
+lan_pair_again	Párosítsa újra ezt az eszközt
+lan_update_app	Frissítse az alkalmazást – ennek az eszköznek és az irodai szervernek különböző verziói vannak
+allow_firewall	Engedélyezze a többi eszköz csatlakozását
+firewall_blocked	A számítógép tűzfala blokkol más eszközöket – érintse meg a Más eszközök csatlakozásának engedélyezése lehetőséget.
+firewall_waiting	Várakozás a rendszergazdai felszólításra…
+lan_join_help	A másik eszközön: Ügyfélmód → Keresse meg az üzlet szerverét (vagy írja be a {addr}-t) → párosítási kód {code}.
+lan_pair_status	Wi‑Fi {addr}
+lan_join_help_no_addr	Csatlakoztassa ezt az eszközt a Wi‑Fi-hoz cím megadásához.
+lan_no_address	Még nincs Wi‑Fi cím – csatlakozzon az Wi‑Fi üzlethez.
+lan_not_listening	Nem fogad eszközöket (a {port} port foglalt). Indítsa újra az alkalmazást.
+lan_tills_off	Az extra kassza ki van kapcsolva. Engedélyezze, hogy egy másik eszköz csatlakozzon.
+paired_with	Párosítva · {url}
+not_paired	Nincs párosítva
+choose_device_use	Válassza a Szerver vagy a Kliens lehetőséget.
+paired_note	Párosítva. Oldja fel az eladáshoz, vagy frissítse a legújabbat.
+last_update_at	Utolsó frissítés: {time}.
+pair_intro	Keresse meg a szervert, vagy írja be a címét és a párosítási kódot.
+queue_waiting	Várakozás az üzletbe ({n}):
+queue_tries	{n} alkalommal próbálva · utolsó válasz: {e}
+save_backup_copy	Biztonsági másolat mentése…
+backup_copy_saved	Biztonsági másolat mentve – tartsa távol erről az eszközről (USB-meghajtóról vagy más eszközről)
+backup_copy_overdue	{n} napig nem készült biztonsági másolat az eszközről — Beállítások → Biztonsági mentés
+backup_copy_failed	A biztonsági másolatot nem lehetett oda menteni – válasszon másik helyet
+clock_off	Ennek az eszköznek az órája {min} percre van az üzlet szerverétől – állítsa be a megfelelő időt ezen az eszközön
+printers_heading	Nyomtatók ezen az eszközön
+printers_help	Keressen valódi nyomtatókat, majd válassza a Nyugta vagy az AWB címke lehetőséget. Minden munkának megvan a saját szélessége, álló vagy fekvő, valamint a bájtok küldésének módja. Egy címke nyomtatja ki a vonalkódot. Üres hely = ne nyomtasd.
+job_width	Tartalom szélessége (mm)
+job_width_ph	Vagy írjon be egy szélességet, 40–210 mm
+job_layout	Elrendezés
+job_delivery	Hogyan küldik el a munkát
+job_size	Betűméret
+job_size_ph	például 18, 20, 26…
+save_receipt_format	Mentse a nyugta formátumát
+save_label_format	Címkeformátum mentése
+test_receipt_format	Teszt nyugta
+test_label_format	Tesztcímke
+test_receipt_sent	Nyugtaminta elküldve
+test_label_sent	Mintacímke elküldve
+test_print_no_printer	Ehhez a munkához nincs nyomtató – adjon hozzá egyet ehhez a helyhez
+printers_host_only	A nyomtatók a bolt eszközén (szerveren) vannak beállítva. Ez a kassza küldi a munkákat oda — Keresse/adja hozzá/hozzárendelése maradjon a szerveren. A tesztoldal a szerverre kerül.
+printers_pool_heading	Nyomtatók
+printers_routes_heading	Ahol a dolgokat nyomtatják
+printer_label_ph	Név (pl. asztal)
+printer_target_ph	gazdagép:9100 · bt:MAC · usb:VID:PID · rendszernév
+printer_mode_heading	Profil az új kimenetekhez
+printer_mode_standard	Normál portré
+printer_mode_landscape	Szabványos tájkép
+printer_mode_thermal	Termikus
+printer_mode_standard_short	Portré
+printer_mode_landscape_short	Táj
+printer_mode_thermal_short	Termikus
+printer_format_custom	Új egyéni profil
+printer_format_custom_label	Egyedi
+printer_format_custom_added	Egyéni profil hozzáadva ehhez a helyhez
+add_printer	Nyomtató hozzáadása
+remove_printer	Utolsó eltávolítása
+route_pick_ph	nyugta vagy címke
+route_add_printer_ph	Nyomtató hozzáadása ehhez a helyhez
+route_receipt	Nyugta
+route_label	AWB címke
+route_dont_print	Nincs nyomtató hozzárendelve
+route_add	Hozzáadás a helyhez
+route_up	Fel
+route_down	Le
+route_remove	Utolsó eltávolítása
+route_clear	Tiszta nyomtatók ehhez a helyhez
+save_printers	Mentse el a nyomtatókat
+print_test_page	Nyomtasson ki egy tesztoldalt
+printers_saved	Az eszközhöz mentett nyomtatók
+test_page_sent	Tesztoldal elküldve – ellenőrizze a nyomtatót
+printers_found	Ezen az eszközön található: {list}
+find_printers	Keressen nyomtatókat
+printers_looking	Nyomtatók keresése ezen az eszközön és Wi-Fi-n…
+printers_tap_find	Koppintson a Nyomtatók keresése a feladatokat fogadó sorokhoz és a hálózati nyugtanyomtatók ezen a Wi-Fi-n (nem eltávolított vagy offline) elemre.
+printers_none_found	Nem található nyomtató – írja be a rendszernyomtató nevét vagy egy hálózati címet (pl. 192.168.1.50).
+receipt_printer_ph	Nyomtató nyugtákhoz
+queue_refused	Az üzlet nem fogadja el ({n}) – ellenőrizze mindegyiket a pultnál:
+clear_not_accepted	Bejelölve – törölje a listát
+device_name_ph	Ennek az eszköznek a neve
+lan_last_update	utolsó frissítés {time}
+lan_not_accepted	{n} nem elfogadott
+connected_now	most csatlakoztatva
+backup_failed	Az utolsó automatikus biztonsági mentés nem sikerült: {e}
+backup_overdue	Nincs biztonsági mentés {n} napig – tartsa nyitva az alkalmazást ezen az eszközön, hogy biztonsági másolatot készíthessen.
+disk_low	Csak {mb} MB szabad ezen az eszközön – a biztonsági mentés hamarosan meghiúsul. Szabadíts fel egy kis helyet.
+last_seen_devices	Utoljára megtekintve: {time}
+sync_interval	Szinkronizálás minden {secs}s
+connection_to_shop	Kapcsolat az üzlettel
+supplier_name_ph	Szállító (vagy ügyfél) neve
+supplier_ph	Szállító
+switch_device	Váltsa ezt az eszközt
+take_payment	Fogadja el a fizetést
+tax_added_till	{tax} exkluzív
+tax_inside_price	{tax} beleértve
+today_books	Ma könyvek
+unlock_after_pairing	Írja be: PIN
+unlock_with_login	Feloldás bejelentkezéssel
+update_my_password	Frissítse a jelszavamat
+update_my_pin	Frissítse a PIN-kódomat
+duress_heading	Vészfeloldás PIN (csak a tulajdonos)
+duress_help	Választható. Ha ezt a PIN-kódot írják be a feloldáskor az Öné helyett, akkor az összes könyvbejegyzés törlődik (foglalások, főkönyvek, előzmények), és az asztal normál kinézetű Tulajdonosként nyílik meg – az árak, a pártok, a zónák, a személyzet és a beállítások megmaradnak. A séma és a konfiguráció nem törlődik. Csak akkor használja, ha kénytelen feloldani. Hagyja üresen, és mentse a kikapcsoláshoz. Soha nem ugyanaz, mint bárkinek a PIN-kódja.
+duress_pin_ph	Vészhelyzet PIN (4–12 számjegy)
+duress_confirm_ph	A megerősítéshez írja be újra
+save_duress_pin	Vészhelyzet mentése PIN
+clear_duress_pin	Vészhelyzet kikapcsolása PIN
+duress_on	Vészfeloldás PIN be van kapcsolva
+duress_off	Vészfeloldás PIN ki van kapcsolva
+duress_saved	Vészfeloldás PIN mentve
+duress_cleared	Vészfeloldás PIN ki van kapcsolva
+vehicle_ph	Jármű
+void	Érvénytelen eladás
+write_off_ap	Írd le az AP-t
+write_off_nil	Leírás / nulla egyenleg
+zone_ph	Zóna (név az árakból)
+caption_today	MA
+caption_bookings	FOGLALÁSOK
+caption_payments_today	FIZETÉSEK MA
+caption_outstanding	KIVÁLÓ
+caption_bank	BANK
+paid_by	által fizetett
+second_way	Második út
+weight_in	Súly be
+size_in	Méret be
+goods_received	Átvett áru
+expense_heading	Költség
+notes_attach_sale	Jegyzetek és mellékletek (kiválasztott akciók)
+notes_attach_party	Megjegyzések és mellékletek (kiválasztott ügyfél vagy szállító)
+attachments_last_expense	Mellékletek (utolsó költség)
+credit_limit_heading	Hitelkeret (kiválasztott ügyfél vagy szállító)
+pay_selected_heading	Fizetés kiválasztott (tartozás rendezése / előleg felvétele)
+write_off_heading	Leírás (fizetés nélkül törölhető)
+pay_ap_heading	Fizessük ki, amivel tartozunk (AP)
+country_tax	Ország és adó
+extra_tills_heading	Extra kassza
+other_devices_help_heading	Más eszközök beállítása
+other_devices_help	Ezen az eszközön (szerver): Egyéb eszközök → Extra kassza engedélyezése. Jegyezze fel a párosítási kódot és a Wi-Fi-címet. Érintse meg a Más eszközök csatlakozásának engedélyezése lehetőséget, ha megjelenik. Számítógépen érintse meg az Indítás ezzel a számítógéppel elemet. Egymás eszközén: telepítse az alkalmazást, válassza az Ügyfél mód lehetőséget, Keresse meg az üzlet szerverét (vagy írja be a címet), írja be a párosítási kódot, Párosítsa most. A rendelések az eszközön várakoznak, ha a Wi-Fi leáll, és mennek, amikor a szerver ismét válaszol.
+your_brand	Az Ön márkája (alkalmazáson belüli)
+units_heading	Egységek
+booking_measures	Foglalási intézkedések
+drawer_count	Fiókok száma (opcionális)
+spreadsheet_csv	Táblázat (CSV)
+bank_reconciliation	Banki egyeztetés (pipálja ki a bankszámlakivonaton)
+book_add_product	Foglaljon – termék hozzáadása/értéke
+book_opening_credit	Könyv — nyitó kredit
+account_kind	Számla típusa (koppintson egyet)
+active_ledger	Aktív főkönyv
+actual_total_cap	TÉNYLEGES ÖSSZESEN
+amend_help	Válasszon egy eladást a módosításhoz, érvénytelenítéshez vagy visszatérítéshez. A módosítások megőrzik a teljes történelmet. A kerekített összérték megegyezik az Alkalmazott értékkel – szerkesztés csak kerekítésre. Az érvénytelenséghez és a visszatérítéshez szükség lehet egy tulajdonosra vagy menedzserre PIN (feljebb beírva; az Ön nevével rögzítve).
+applied_total_cap	ALKALMAZOTT ÖSSZESEN
+bank_balance	Banki egyenleg
+bank_net_today	Bank net ma
+branch_export_help	Az Export egy napi pillanatképet ír a biztonsági mentések mappájába, és a vágólapra másolja. Egy másik üzlet napjának importálásához mentse a fájlt import_branch_snapshot.json néven abba a mappába, majd koppintson az Importálás lehetőségre.
+brand_shown_help	Megjelenik az alkalmazáson belüli képernyőkön. A telepített alkalmazás neve és ikonja ezen az eszközön marad a platform listájaként.
+app_icon	App ikonra
+logo_help	Opcionális boltjelzés az alkalmazás képernyőin.
+onboard_layout	Amit kapsz
+item_photo_help	Választható. Fénykép nélkül a cikk nevének kezdőbetűit mutatjuk.
+cash_in_hand	Készpénzben (ig)
+change_my_pin_heading	PIN-kód megváltoztatása (csak a tiéd)
+connect_to_server	Csatlakozzon a szerverhez
+counter_locked	Számláló 01 · Lezárva
+country_pack_help	Az országcsomag beállítja az adónevet és a matematikai adatokat, az azonnali fizetést és a számlákra nyomtatott üzleti azonosítót. A Kumkaj sehol nem ad be adókat és nem állít ki állami e-számlákat.
+currency_use_help	Görgessen, és koppintson a Használat bármely támogatott pénznemhez.
+day_close_help	A napi zárás rögzítése elmenti ezt az összegzést (és a fiók eltérését, ha számítják) a megfigyelési naplóba. Nem hagyja abba az értékesítést.
+expenses_word	Költségek
+feature_access_help	Funkcióhoz való hozzáférés a kiválasztott személyzet számára (a hozzáadása után koppintson)
+footer_local	Helyi SQLite · Ingyenes örökké · Zero Cloud
+fresh_book_moklanjo	Friss = üres katalógus (később adjon hozzá elemeket). Könyv = típus nyitó készlet és ki tartozik alább.
+fresh_selected	Frissen kiválasztott – a katalógus üres marad. Ha készen áll, koppintson a Kész gombra.
+gross_word	Bruttó
+how_start	Hogyan akarod kezdeni?
+later_country_pack	Később: Beállítások → alkalmazza az országcsomagot az adó- és fizetési címkékhez.
+local_badge	HELYI
+measures_help_moklanjo	Hogyan történik a csomagok mérése a foglalási pultnál. Írja be a méreteket és a súlyt az Ön által használt mértékegységekben – szabványos (cm, m, in, ft · kg, g, lb, oz) vagy a fenti cm/kg-hoz kapcsolódó saját mértékegységben (közvetlenül vagy más mértékegységeken keresztül). A könyvek mindig kg-ot rögzítenek. Hagyjon üresen egy mezőt, hogy megőrizze.
+mix_type_hint_moklanjo	Írja be, hogy mennyit (készpénz / UPI / kártya / hitel). Ki kell egészíteni a számlát. A hitelhez a fenti ügyfél kell.
+money_in_sales	Pénz (értékesítés)
+more_help_moklanjo	Katalógus, értékesítés, hitel, csapat, tartalék – plusz raktárkészlet és szükség esetén extra kassza.
+net_word	Nettó
+offline_badge	OFFLINE
+optional_login_help	Opcionális bejelentkezés (azonosító + jelszó). A tulajdonos egyszer állítja be; csak a felhasználó módosíthatja később a jelszavát.
+or_unlock_login	Vagy oldja fel a bejelentkezési azonosítóval + jelszóval
+permission_preset	Munka (beállítja a képernyőket és a jogokat)
+preset_help_moklanjo	Pénztáros: eladó. Menedzser: eladás + tételek + érvénytelenség/módosítás.
+product_locked_moklanjo	Moklanjo
+product_only_moklanjo	Ez az alkalmazás csak Moklanjo - könyvek + foglalási pult. Az egyéb kereskedelmi arculatokat később külön termékként szállítjuk.
+purchases_cogs	Vásárlások (COGS)
+qty_cap	MENNYISÉG
+restore_help	Visszaállítás: válasszon biztonsági másolatot. A könyvek úgy nyílnak, mint akkoriban; a mostani állapotú könyvek mentésre kerülnek először, így ez visszavonható.
+wipe_data_heading	Törölje a helyi adatokat
+wipe_data_help	Csak tulajdonos – ugyanazok a lehetőségek, mint a Windows eltávolítása. Az Üzleti nyilvántartás törli a kereskedési előzményeket, de megtartja az árfolyamokat és a beállításokat (például a vészhelyzeti feloldó PIN-kódot). A boltbeállítás eltávolítja a könyvek adatbázisát. A Képernyőbeállítások törli az ablakot/nyelvet. Erősítse meg a tulajdonos PIN-kódjával. A Team vészhelyzeti feloldó PIN-kódja különálló (fedett törlés feloldáskor).
+wipe_trading	Üzleti nyilvántartások
+wipe_schema	Bolt beállítása
+wipe_ui	Képernyőbeállítások
+wipe_owner_pin_ph	Tulajdonos PIN a törléshez
+wipe_delete_selected	Kijelölt törlése
+wipe_owner_only	Csak a Tulajdonos törölheti a helyi adatokat.
+restore_owner_only	Csak a Tulajdonos állíthatja vissza a biztonsági másolatot.
+wipe_owner_pin_needed	Írja be a Tulajdonos PIN karaktert a helyi adatok törléséhez.
+wipe_nothing_selected	Válassza ki, mit szeretne először törölni.
+wipe_done	A kiválasztott helyi adatok törölve.
+wipe_schema_done	A boltbeállítás törölve – a folytatáshoz válassza a Szerver vagy az Ügyfél lehetőséget.
+rounded_total	Kerekített összesen
+setup_app_moklanjo	Állítsa be a Moklanjo-t
+shop_logo_optional	Az üzlet logója (opcionális)
+stock_type_help	Írja be a cikk nevét (egy része is elég), egy mennyiséget, majd állítsa be. A még nem számolt tételeket egyszer el kell indítani a nyomon követésben.
+team_owner_help	Bérlés: válasszon állást (pénztáros / menedzser), név + kezdő PIN, majd Hozzáadás. Csak akkor, ha ez a személy különbözik: nyissa meg a képernyőket és a jogokat lent, majd a Feladatbeállítás mentése. Mindenki megváltoztatja a saját PIN-kódját az alján – a tulajdonos nem módosíthatja senki másét.
+they_owe_us	Tartoznak nekünk
+unit_at_cap	Egység @
+units_help	A cikkcímkék kódjai (kg, darab, zacskó). Minden egységnek kapcsolódnia kell – közvetlenül vagy más egységeken keresztül – egy szabványhoz (kg · cm · ml · pc), pl. 1 láda = 2 doboz és 1 doboz = 20 cm. Konverziók: 1-ből = tényező a-ba. A pénznemek soha nem egységek.
+we_owe_them	Tartozunk nekik
+who_unlocking	Ki oldja fel?
+locked_word	Lezárva
+show_pin	Mutasd PIN
+hide_pin	PIN elrejtése
+set_owner_pin	TULAJDONOS BEÁLLÍTÁSA PIN
+enter_owner_passcode	ADJA MEG A TULAJDONOS JELSZÓKÓDJÁT
+enter_staff_passcode	ADJA MEG A SZEMÉLYZET JELSZÓKÓDJÁT
+pin_count_zero	0 / 12 számjegy · legalább 4, majd OK
+pin_count_need	{} / 12 számjegy · több {} kell
+pin_count_full	12/12 számjegy · nyomja meg az OK gombot
+pin_count_ready	{} / 12 számjegy · Nyomja meg az OK gombot, ha készen áll
+pin_hint_choose	Válasszon 4–12 számjegyet. · Enter vagy Unlock a mentéshez
+pin_hint_new	Új 4–12 számjegyű tulajdonos PIN · Belépés vagy feloldás
+pin_hint_shop_code	Vásároljon eszközt · párosítási kód {}
+pin_hint_books	Ez a készülék a könyveket tárolja
+pin_hint_paired	Extra ig párosítva – oldja fel az eladáshoz
+pin_hint_pair_first	Extra till — először párosítsa a bolti eszközt
+unlock_to_continue	A folytatáshoz oldja fel a zárolást
+no_staff_yet	Még nincs személyzet – oldja fel tulajdonosként, majd csapatként
+status_server_set_pin	Szerver mód — a tulajdonos beállítása PIN
+status_server_tills	Szerver mód – extra kasszák csatlakozhatnak. Oldja fel
+status_server_unlock	Szerver mód – feloldása tulajdonosként
+status_client_unlock	Kliens mód – a zárolás feloldása az eladáshoz
+icon_new_selected	Ikon: új fájl kiválasztva – érintse meg a Márka mentése lehetőséget
+icon_custom	Ikon: egyedi helyszín jelölés
+icon_default	Ikon: Kumkaj jel (alapértelmezett) – válasszon egy egyénit
+logo_yours	Logó: az üzlet logója – a képernyőkön és a nyugtákon látható
+logo_default	Embléma: Kumkaj jel (alapértelmezett) — válassza ki a sajátját, ha van
+tmpl_current	Jelenlegi: {} — {}
+tmpl_selected	Kiválasztva: {} — {}
+setup_complete	A beállítás kész
+onboard_fresh_tmpl	Friss · {} — a katalógus üresen kezdődik; adjon hozzá elemeket az Elemek mappához, majd válassza a Kész lehetőséget.
+onboard_book_tmpl	Foglalás · {} — tételek és nyitó kredit hozzáadása, majd Kész.
+onboard_template_tmpl	Ha akarja, nevezze el a helyet, majd válassza ki, hogyan kezdje el.
+tmpl_blurb	Futárkönyvek és foglalási pult: feladók, fuvarozók, naptár, AWB.
+tmpl_how	Csomagok könyvelése az íróasztalnál; Napi könyv mára; lapok az árakhoz, partikhoz, jelentésekhöz.
+trk_booked	Lefoglalt
+trk_picked_up	Felvette
+trk_in_transit	Átszállításban
+trk_delivered	Szállítva
+trk_rto	Visszatérés a feladóhoz
+lane_to_dispatch	Elküldeni
+lane_with_carrier	Szállítóval
+lane_failed	Sikertelen
+lane_done_today	Ma kész
+ops_board_help	Csomagok aszerint, hogy hol vannak a mai munkában. Koppintson a csomagokra (vagy szkennelje be őket) a kiszedésükhöz, majd tegyen egyszerre az összes felvett csomagot – minden sáv csak a hozzá illő mozgásokat kínálja.
+lane_empty	Itt most semmi.
+picked_fmt	{n} kiválasztva
+pick_all	Válassza ki az összeset
+bag_for_carrier	Kéz a hordozóhoz
+send_with_rider	Küldje lovassal
+out_again	Megint kint
+return_to_sender	Vissza a feladóhoz
+runs_bags_heading	Legutóbbi futások és táskák
+print_word	Nyomtatás
+bag_word	Bevásárlószatyor
+run_word	Lovas futás
+parcels_fmt	{n} csomagok
+parcel_history	Történelem
+attempt_fmt	Kísérlet {n}
+pieces_short_fmt	{n} db
+note_reason_ph	Megjegyzés vagy indoklás
+ops_pick_first	Először válassza ki a csomagokat – koppintson rájuk vagy szkennelje be
+cod_to_collect	Szállítva – utánvét gyűjteni
+cod_on_road	COD még úton van
+cod_owed_consignors	Beszedve – a feladók fizetésére
+cod_rto_fees	beszedendő RTO díjak
+cod_to_hand_in	COD leadni
+parcel_one_fmt	{n} csomag
+facet_bank_title	Jelentések
+facet_bank_help	Napi könyvek, vásárlók vagy szállítók öregedése, banki bejegyzések és időszaki P&L.
+facet_ops_title	Szállítmányok és kiszállítás
+facet_ops_help	Szkennelje be vagy írja be az AWB → Keresés, majd előre / nyomtasson címkét / COD-t. Kiszállítás lovasnak vagy szállítónak.
+facet_cod_title	COD regiszter
+facet_cod_help	Szállításkor vegye át, majd utalja át a feladónak.
+facet_riders_title	Lovasok (saját flotta)
+facet_riders_help	Adjon hozzá versenyzőket, majd küldje el a lefoglalt AWB-ket az Opstól.
+against_bill_ph	A fenti számla ellenében (nem kötelező)
+aliases_ph	Álnevek – egyéb nevek, vesszővel elválasztva
+amount_blank_full_ph	Összeg (üres = teljes egyenleg)
+amount_owed_ph	Tartozás összege
+amount_ph	Összeg
+amount_received_ph	Kapott összeg
+amount_we_pay_ph	Az általunk fizetett összeg
+awb_scan_ph	AWB / vonalkód beolvasása
+bulk_csv_ph	Tömeges CSV – rendeltetési hely, címzett, kg, cod_paise, megjegyzés
+business_name_ph	Cégnév
+category_new_ph	Kategória (opcionális, létrehozva, ha új)
+cod_amount_ph	COD mennyiség
+code_bag_ph	Kód (táska)
+conv_factor_ph	Tényező (25 = 1 zsák → 25 kg)
+country_code_ph	Országkód pl. IN, GB, US, AE, BR
+credit_khata_amount_ph	Hitel / hitel főkönyvi összeg
+credit_limit_ph	Hitelkeret (0 = nincs)
+dim_unit_code_ph	Méretegység kódja (cm)
+divisor_ph	Térfogatosztó (5000)
+extra_per_kg_ph	Extra / kg
+first_amount_ph	Első összeg
+first_kg_ph	Első kg (lap)
+from_code_ph	Kódból (táska)
+item_name_lang_ph	Elem neve – írja be a saját nyelvén
+login_id_opt_ph	Felhasználónév (kötelező, egyedi)
+manager_pin_ph	Menedzser PIN a jóváhagyáshoz (csak ha nem tudja érvényteleníteni)
+new_branch_name_ph	Új fióknév
+new_password_ph	Új jelszó (nem kötelező)
+new_pin_ph	Új PIN (4–12 számjegy)
+note_bank_ph	Megjegyzés (befizetés, felvétel,…)
+note_buy_expense_ph	Megjegyzés (üzemanyag, bérleti díj,…)
+note_expense_ph	Megjegyzés (üzemanyag, iroda,…)
+notify_phone_ph	Telefon értesítése (WhatsApp/SMS hook)
+options_moklanjo_ph	Opciók (opcionális) — Nagy=20, Ajándékcsomagolás=10
+part_second_way_ph	Második módon történő elválasztás (opcionális)
+phone_ph	Telefon
+address_ph	Cím
+party_custom_fields_heading	Egyéni mezők (kiválasztott fél)
+party_custom_help	Adjon hozzá bármilyen címkét és értéket ehhez a párthoz – WhatsApp, GSTIN, útvonalkód,…
+party_custom_key_ph	Mezőnév (pl. WhatsApp)
+party_custom_value_ph	Érték
+party_custom_add	Mező hozzáadása
+party_custom_remove	Távolítsa el a mezőt
+party_custom_empty	Még nincsenek egyéni mezők
+party_custom_pick_first	Válasszon egy párt egyéni mezők hozzáadásához
+place_name_ph	A hely neve
+price_ph	Ár
+qty_example_ph	Mennyiség (pl. 1,5 kg-nál)
+quantity_ph	Mennyiség
+reason_required_ph	Ok (kötelező)
+role_title_ph	Szerep megnevezése (pl. Barista)
+service_pct_ph	Szolgáltatás % opcionális 0/10/12
+short_code_ph	Rövid kód (MG02)
+slab_kg_ph	Tölthető födém kg-ban (0,5)
+staff_name_ph	A személyzet neve / azonosítója
+starting_password_ph	Kezdő jelszó (opcionális)
+starting_pin_ph	Kezdő PIN (4–12 számjegy)
+tax_rate_ph	Adókulcs neve vagy % – normál, csökkentett, 0, 5, 12, 18, 20
+to_code_ph	Kódolni (kg)
+uncleared_no_ph	Tisztázatlan # fent
+unit_cost_ph	Egységköltség
+unit_kg_blank_ph	Mértékegység (kg vagy üres)
+unit_name_bag_ph	Név (táska)
+weight_unit_code_ph	Súlyegység kódja (kg)
+zone_name_ph	Zóna neve
+pay_credit	Számlára
+book_kind_today	Ma könyvek
+book_kind_month	E havi könyvek
+book_kind_aging	Tartozás / betéti jóváírás
+book_kind_balance	Mérleg
+ops_desk_help	AWB beolvasása USB vonalkód-leolvasóval (vagy gépelje be) → Keresés. Ezután haladjon tovább, nyomtasson címkét, vagy gyűjtse be az utánvét. A címkék 128-as kódot nyomtatnak.
+role_help_consignor	Szerep: Feladó – AR (tartoznak nekünk). Ugyanez a cég lehet Carrier is.
+role_help_carrier	Szerep: Carrier — AP (tartozunk nekik). Ugyanez a cég lehet Consignor is.
+role_help_both	Szerepek: Feladó + Fuvarozó – egy fél, AR és AP főkönyvek, nettó a jelentésekben.
+role_help_supplier	Szerep: Szállító – AP a vásárlásokhoz.
+lane_declared_label	Számlafoglalás
+lane_owner_label	Készpénzes foglalás
+money_lane_bill	Számla: {lane}

@@ -84,4 +84,44 @@ fn main() {
     for (key, value) in vars {
         println!("cargo:rustc-env={key}={value}");
     }
+
+    bake_translations(&manifest_dir);
+}
+
+/// UI translations: `translations/<code>.tsv` (one `key<TAB>text` line per
+/// English key in `locale.rs` `en`) → one deflated blob per language in
+/// OUT_DIR plus `translations.rs`, the `PACKS` table `locale.rs` includes.
+/// A language's table is inflated the first time it is shown, so the
+/// binary carries ~110 languages without ~8 MB of raw text.
+fn bake_translations(manifest_dir: &PathBuf) {
+    use std::io::Write;
+    let dir = manifest_dir.join("translations");
+    println!("cargo:rerun-if-changed={}", dir.display());
+    let out_dir = PathBuf::from(env::var("OUT_DIR").unwrap());
+    let mut codes: Vec<String> = Vec::new();
+    if let Ok(entries) = fs::read_dir(&dir) {
+        for entry in entries.flatten() {
+            let path = entry.path();
+            if path.extension().and_then(|e| e.to_str()) != Some("tsv") {
+                continue;
+            }
+            let code = path.file_stem().unwrap().to_string_lossy().to_string();
+            let text = fs::read(&path).expect("read translation table");
+            let mut enc =
+                flate2::write::DeflateEncoder::new(Vec::new(), flate2::Compression::best());
+            enc.write_all(&text).unwrap();
+            fs::write(out_dir.join(format!("tr_{code}.deflate")), enc.finish().unwrap())
+                .expect("write deflated translation table");
+            codes.push(code);
+        }
+    }
+    codes.sort();
+    let mut src = String::from("pub const PACKS: &[(&str, &[u8])] = &[\n");
+    for code in &codes {
+        src.push_str(&format!(
+            "    ({code:?}, include_bytes!(concat!(env!(\"OUT_DIR\"), \"/tr_{code}.deflate\"))),\n"
+        ));
+    }
+    src.push_str("];\n");
+    fs::write(out_dir.join("translations.rs"), src).expect("write translations.rs");
 }

@@ -1,0 +1,835 @@
+# Latvian — Latviešu (lv). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	Kurjeru aģentūras grāmatas + rezervācijas galds. Bezmaksas bezsaistē.
+unlock	Atbloķēt
+pin_hint	Īpašnieka PIN sākumā ir 0000
+sell	Rezervēšana
+buy	Izmaksāt
+books	Dienas grāmata
+books_help	Šodienas pozīcija. Rezervēšana = pakas. Izmaksa = pārvadātāja rēķini un izdevumi. Puses = nosūtītāji un pārvadātāji.
+buy_help	Izdevumu kuponi un pārvadātāja rēķini (nauda iziet). Kontā paliek partijas virsgrāmatā.
+sell_money_in	Rezervējiet paku
+buy_money_out	Izdevumi/pārvadātāja rēķins
+record_purchase	Ierakstīt pirkumu
+add_expense	Izdevumu kvīts
+bank_book	Bankas grāmata
+credit_help	Puses ID ir unikāls (vārdi var atkārtoties). Lomas: nosūtītājs (AR), pārvadātājs (AP) vai abas šajā ID. Virsgrāmatas paliek atsevišķi; atskaites rāda neto.
+party_kind_ph	Pielāgota loma (neobligāti) — vai pieskarieties mikroshēmai augstāk
+parties_list_heading	Saglabātās ballītes
+reports_help	Dienas grāmata, parādnieki un kreditori, bankas grāmata, izdevumu kvītis, peļņa un zaudējumi.
+reports_today	Dienas grāmata (šodien)
+reports_month	Peļņa un zaudējumi (mēnesis)
+reports_aging	Neapmaksāts / debets-kredīts
+reports_balance_sheet	Bilance
+reports	Bankas grāmata un peļņa
+refresh	Atsvaidzināt
+undo	Atsaukt
+start_tracking	Sākt uzskaiti
+stock_minus	− Krājums
+stock_plus	+ Krājums
+settle_cash	Norēķināties skaidrā
+settle_card	Norēķināties ar karti
+items	Tarifi un pakalpojumi
+nav_items	Likmes
+more	Vairāk
+your_items	Jūsu likmes
+items_help	Katra rinda ir likme (piem., Virsmas zona A). Mērvienība parasti ir kg. Pieskarieties, lai rediģētu.
+add_item	Pievienot likmi
+new_item	Jauna likme
+adding_item	Jaunas likmes pievienošana
+editing_item	Labošana
+save	Saglabāt
+remove	Noņemt
+empty_catalog	Pagaidām nav tarifu. Atveriet Tarifi un pakalpojumi, pievienojiet vienu (nosaukums + cena, vienība kg), pēc tam Rezervēšana.
+counter_sale	Preču rezervācija
+total	Kopā
+cash	Skaidra nauda
+upi	UPI
+card	Karte
+credit	Puses
+clear	Notīrīt
+ready_to_sell	Gatavs ierakstīt
+today_prefix	Šodien
+today_mid	šodien
+owed	neapmaksāts
+round_word	noapaļot
+back	Atpakaļ
+sold_out	Nav pieejams
+restock	Papildināt
+not_tracked	Netiek uzskaitīts
+in_stock	krājumā
+marked_sold_out	Atzīmēts kā nepieejams
+add_upper	PIEVIENOT
+na	Nav
+qty	Svars/daudzums
+unit_at	Likme @
+actual	Faktiskais
+applied	Piemērotais
+note_ph	Piezīme (nav obligāta)
+rounded	NOAPAĻOTS
+split	Dalīt
+counter	Lete
+parcel	Paciņa
+order	Pasūtījums
+sales	Rezervācijas
+sales_refunds	Rezervācijas un atmaksas
+day_close	Dienas slēgšana
+reports_expenses	Bankas grāmata un peļņa
+nav_reports	Pārskati
+nav_settings	Iestatījumi
+nav_lock	Bloķēšana
+sidebar_settings	Sānjoslas iestatījumi
+sidebar_settings_help	Tās pašas ikonas kā sānu sliedē. Velciet rindu, lai pārkārtotu. Pārslēdziet, lai rādītu vai slēptu. Iestatījumi un Bloķēšana vienmēr paliek joslā.
+sidebar_always_on_short	Vienmēr ieslēgts
+sidebar_back_settings	Atpakaļ
+sidebar_shown	Redzams
+sidebar_hidden	Paslēpts
+sidebar_always_on	Vienmēr joslā
+sidebar_shown_hint	Redzams sānu sliedē / apakšējās cilnēs
+sidebar_hidden_hint	Paslēpts no joslas
+sidebar_menu_items	Ēdienkarte un pozīcijas
+sidebar_enable_all	Ieslēgt visu
+sidebar_disable_all	Izslēgt visu
+sidebar_order_saved	Sānu joslas secība saglabāta
+sidebar_visibility_saved	Sānu joslas redzamība saglabāta
+amounts_hide	Slēpt
+amounts_show	Rādīt
+no_sale_yet	Vēl nav pārdošanas
+favorites	Izlase
+favorites_help	Pozīcijas, ko pārdodat bieži, saglabātas šai pieteikšanās reizei. Pievienojiet vienu rēķinam vai veidojiet sarakstu no visām pozīcijām zemāk.
+your_favorites	Jūsu izlase
+all_items	Visas pozīcijas
+no_favorites	Vēl nav izlases — pievienojiet pozīcijas no saraksta zemāk.
+add_to_bill	Pievienot rēķinam
+added	Pievienots
+owes_word	parādā
+selected_word	Atlasīts
+chip_clear_credit	notīrīt — kredīts vai ņemt avansu
+chip_missing_customer	Atlasītais klients pazudis — izvēlieties vēlreiz
+chip_no_customer	Vēl nav klienta — ierakstiet vārdu un pieskarieties Kredīts
+credit_summary_fmt	{} klienti · atvērts kredīts {} · turētie avansi {}
+recent_label	Nesenie:
+inventory	Krājums
+inventory_stock	Krājums un atlikumi
+branches	Filiāles
+branches_org	Filiāles un organizācija
+credit_customers	Puses (debitori un kreditori)
+customer_name_ph	Puses nosaukums
+new_customer_ph	Jaunas puses nosaukums
+item_name_ph	Likmes nosaukums (piem., Virsmas zona A)
+item_price_ph	Uz kg / pirmā plāksne
+start_template	Produkts
+next_booking	Nākamā rezervācija
+destination_ph	Galamērķa pilsēta/zona
+consignee_ph	Uztvērēja nosaukums
+consignee_phone_ph	Uztvērēja tālrunis
+consignee_address_ph	Piegādes adrese
+origin_name_ph	Sūtītāja vārds
+origin_phone_ph	Sūtītāja tālrunis
+origin_address_ph	Saņemšanas / izcelsmes adrese
+booking_consignor_heading	Nosūtītājs (pasūtītājs/sūtītājs)
+booking_consignee_heading	Saņēmējs (saņēmējs)
+booking_consignor_hint	Izvēlieties ballīti, ko aizpildīt, vai atstājiet tukšu, lai ieietu. Nepieciešams paņemšanai mājās un RTO.
+booking_consignee_hint	Sūtījuma saņēmējs. Atstājiet tukšu, lai dotos pie letes.
+weight_kg_ph	Faktiskais kg
+length_cm_ph	L cm
+breadth_cm_ph	B cm
+height_cm_ph	H cm
+chargeable_kg	Maksas kg
+awb_label	AWB
+booking_help	Sūtītājs + saņēmējs (tukšs OK) → galamērķis → svērt → atlases likme → Konts/skaidra nauda → samaksa. AWB drukā uz čeka. Nākamā rezervācija notīra galdu. Noapaļots sākas vienāds ar Applied — rediģējiet tikai, lai noapaļotu rēķinu.
+cart_empty_hint	Galds ir tukšs — nosūtītājs/saņēmējs nav obligāti, iestatiet galamērķi un svaru, pie likmes pieskarieties PIEVIENOT, pēc tam maksājiet.
+team	Komanda
+team_pins	Komanda un PIN
+my_pin_settings	Mans PIN
+settings_hub_help_my_pin	Mainiet atbloķēšanas PIN personai, kas pieteikusies šajā ierīcē.
+team_self_help	Tikai jūs varat mainīt savu atbloķēšanas PIN (un papildu pieteikšanās paroli). Jautājiet īpašniekam, vai jums ir nepieciešami dažādi ekrāni vai tiesības.
+backup_settings	Dublējums un iestatījumi
+lock_app	Bloķēt lietotni
+pick	Izvēlēties
+select	Atlasīt
+advance	Avanss
+owner	Īpašnieks
+staff	Personāls
+photo	Foto
+auto	Automātiski
+prev	Iepriekšējais
+next	Nākamais
+ok	Labi
+this_shop	Serveris
+extra_till	Terminālis
+off	Izslēgts
+server	Serveris
+client	Terminālis
+language_currency	Valoda un valūta
+language	Valoda
+choose_language	Izvēlieties valodu
+language_setup_hint	Sekojiet šīs ierīces valodai vai izvēlieties paši.
+lang_follow_platform	Ierīces valoda
+lang_pick_user	Izvēlēties valodu
+lang_platform_now	Ierīces valoda tagad
+selected_language	Atlasīts
+continue	Turpināt
+this_device	ŠĪ IERĪCE
+device_use_q	Kā šī ierīce tiks lietota?
+last_server_mode	Bija serveris — pieskarieties, lai turpinātu
+last_client_mode	Bija terminālis — pieskarieties, lai turpinātu
+choose_server	Izvēlieties serveri
+choose_server_hint	Atveriet esošu serveri vai izveidojiet jaunu citam uzņēmumam.
+create_new_server	Izveidot jaunu serveri
+open_server	Atvērt
+new_server_name_ph	Jaunā servera nosaukums (nav obligāts)
+server_remove_pin_ph	Īpašnieka PIN, lai noņemtu serveri
+only_owner_remove_server	Tikai īpašnieks var noņemt serveri
+owner_pin_remove_server	Lai noņemtu šo serveri, vajag īpašnieka PIN
+device_setup_help	Serveris glabā grāmatas šeit. Terminālis savienojas pārī ar serveri.
+currency	Valūta
+backup	Dublējums
+settings_sec_diag	Diagnostika
+settings_hub_help	Atveriet vienu zonu vienlaikus — mazāk ritināšanas, skaidrākas izvēles.
+settings_sec_devices	Citas ierīces
+settings_sec_alerts	Paziņojumi
+alerts_help	Cik ilgi statusa ziņas paliek ekrānā jums (šī pieteikšanās).
+snack_secs_ph	Sekundes (3–60, noklusējums 10)
+snack_secs_save	Saglabāt paziņojuma laiku
+snack_secs_saved	Paziņojuma laiks saglabāts — {n} sekundes
+snack_secs_bad	Ievadiet sekundes kā skaitli (3–60)
+cancelled	Atcelts
+cancel	Atcelt
+opening_client	Atver termināli…
+preparing_desk	Sagatavo galdu…
+opening_server	Atver serveri…
+creating_server	Izveido serveri…
+diag_privacy_help	Žurnāli paliek šajā ierīcē. Noslēpumi (PIN, paroles) nekad netiek glabāti. Pakas kopīgošanai ārpus ierīces katru reizi vajag jūsu skaidru piekrišanu — nekad netiek pārdots vai dots trešajām personām.
+diag_level	Detalizācijas līmenis
+diag_level_error	Kļūdas
+diag_level_warn	Brīdinājumi
+diag_level_info	Informācija
+diag_level_debug	Atkļūdošana
+diag_support_start	Sākt 30 min atbalsta sesiju
+diag_support_stop	Beigt atbalsta sesiju
+diag_support_started	Atbalsta sesija ieslēgta — atkļūdošanas detaļas 30 minūtes
+diag_support_ended	Atbalsta sesija beigusies
+diag_export_local	Eksportēt vietējo kopiju
+diag_export_local_done	Vietējā diagnostika gatava šeit: {path} — izvēlieties, kur saglabāt kopiju
+diag_approve_send	Apstiprināt kopīgošanu ārpus šīs ierīces
+diag_send_heading	Dalīties ārpus šīs ierīces
+diag_send_help	Piekrišana ir vienai pakai un tad beidzas. Pagaidu — tikai lai labotu vai uzlabotu produktu. Netiek kopīgots ar trešajām personām. Darbojas Linux, Windows, macOS un Android.
+optional_login_heading	Pieteikšanās pēc izvēles
+rights_heading	Tiesības
+booking_scope_heading	Vietējais / starptautiskais
+diag_send_approved	Kopīgošana apstiprināta vienai pakai (drīz beidzas)
+diag_export_send	Izveidot kopīgošanas paku (vajag piekrišanu)
+diag_export_send_done	Kopīgošanas paka gatava šeit: {path} — izvēlieties, kur saglabāt, un sūtiet tikai Kumkaj atbalstam
+diag_save_bundle	Saglabāt diagnostikas kopiju
+diag_bundle_saved	Diagnostikas kopija saglabāta šeit: {path}
+diag_bundle_failed	Neizdevās saglabāt diagnostikas kopiju — mēģiniet vēlreiz
+diag_clear	Notīrīt diagnostikas žurnālus
+diag_cleared	Diagnostikas žurnāli notīrīti
+use	Lietot
+add_branch	Pievienot filiāli
+add_conversion	Pievienot pārrēķinu
+add_item_plain	Pievienot pozīciju
+add_note	Pievienot piezīmi
+add_opening_balance	Pievienot sākuma atlikumu
+add_rider	Pievienot braucēju
+add_staff	Pievienot darbinieku
+add_unit	Pievienot vienību
+add_use_name	Pievienot / lietot šo nosaukumu
+allow_extra_tills	Atļaut papildu kases
+amend	Labot
+apply_country_pack	Lietot valsts paku
+datetime_appearance	Datuma un laika izskats
+datetime_appearance_help	Grāmatās glabājas pirmais gads RFC3339. Tie maina tikai to, kā datumi un pulksteņi izskatās kvītīs, etiķetēs, pārskatos un ekrānā.
+datetime_example	Piemērs tagad: {ex}
+date_order	Datuma secība
+date_order_dmy	D/M/G
+date_order_mdy	M/D/G
+date_order_ymd	G-M-D
+time_format	Pulkstenis
+time_format_24h	24 stundas
+time_format_12h	12 stundas
+attach_bill_photo	Pievienot rēķina foto
+attach_pdf	Pievienot PDF
+attach_photo	Pievienot foto
+bank	Banka
+bank_in	Uz banku
+bank_out	No bankas
+bank_to_till	Banka → kase
+till_to_bank	Kase → banka
+mark_cleared	Atzīmēt saskaņotu
+unmark	Noņemt atzīmi
+role_both	Abi
+role_carrier	Pārvadātājs
+role_cashier	Kasieris
+role_consignor	Nosūtītājs
+role_manager	Vadītājs
+role_supplier	Piegādātājs
+branch_name_sell_ph	Filiāles nosaukums, no kuras pārdot
+bring_my_book	Atnest manu grāmatu
+business_tax_id_ph	Uzņēmuma nodokļu id
+card_amount_ph	Kartes summa
+cash_amount_ph	Skaidrās naudas summa
+upi_amount_ph	UPI summa
+carrier_cost_ph	Pārvadātāja izmaksas
+carrier_party_ph	Pārvadātāju ballīte
+choose_icon	Izvēlēties ikonu
+choose_logo	Izvēlēties logotipu
+choose_receipt_stamp	Izvēlieties kvīts zīmogu
+choose_payment_qr	Izvēlēties maksājuma QR
+clear_icon	Notīrīt ikonu
+clear_logo	Skaidrs logotips
+clear_photo	Notīrīt foto
+clear_stamp	Notīrīt zīmogu
+clear_payment_qr	Notīrīt maksājuma QR
+print_faces	Drukāt sejas (kvīts / perioda rēķins)
+print_faces_help	Pēc izvēles zīmogs un maksājuma QR blakus jūsu logotipam rezervācijas čekos un perioda rēķinos.
+awb_pools_heading	Pārvadātāju AWB numuru kopas
+add_awb_pool	Pievienojiet AWB baseinu
+awb_pool_carrier_ph	Pārvadātāja partijas nosaukums
+awb_pool_start_ph	Sākuma nr.
+awb_pool_end_ph	Beigas Nr.
+awb_pool_prefix_ph	Prefikss (pēc izvēles)
+awb_pool_label_ph	Etiķete (neobligāti)
+pieces_ph	Gabali (tukšs = 1) — izvērst kravas/vairāku gabalu
+bulk_awbs_ph	Lielapjoma AWB — ielīmējiet daudzus (jaunu rindiņu vai komatu), lai pārvietotu vienu statusu
+tds_cut_ph	TDS griezums (pēc izvēles)
+discount_ph	Atlaide (pēc izvēles)
+cheque_no_ph	Čeka numurs (pēc izvēles)
+bill_reminder_chase	Rēķinu atgādinājumu vajāšanas saraksts
+month_mix_report	Mēneša kombinācijas pārskats
+copy_month_gst_csv	Kopēt mēneša GST CSV
+domestic	Iekšzemes
+international	Starptautisks
+pick_logo	Izvēlieties logotipu
+booking_scope_hint_domestic	Tilpuma ÷5000 (iekšzemes) — pieskarieties International, lai iegūtu ÷6000 gaisa
+booking_scope_hint_intl	Tilpuma ÷6000 (starptautiskais gaiss) — pieskarieties iekšzemes veikalam ÷5000
+cod_register	COD reģistrs
+collect_cod	Savākt COD (AWB)
+consignments_dispatch	Sūtījumi un nosūtīšana
+consignor_party_ph	Sūtītāja/partijas nosaukums
+copy_day_book_csv	Kopēt dienas grāmatas CSV
+copy_day_close	Kopēt dienas slēgšanu
+copy_items_csv	Kopēt pozīciju CSV
+copy_outstanding_csv	Kopēt neapmaksāto CSV
+copy_parties_csv	Kopēt pušu CSV
+copy_party_ledger_csv	Kopēt puses virsgrāmatas CSV
+copy_receipt	Kopēt kvīti
+copy_report	Kopēt pārskatu
+counted_cash_ph	Saskaitītā skaidrā nauda atvilktnē
+counter_agency_ph	Klienta/aģentūras nosaukums (neobligāti)
+create_backup	Izveidot dublējumu
+day_close_summary	Dienas slēgšanas kopsavilkums
+delete_party	Dzēst atlasīto pusi
+dispatch_to_rider	Izsūtīšana rezervēta → braucējs
+docket_charge_ph	Docket maksa
+declared_value_ph	Deklarētā vērtība
+contents_ph	Saturs
+eway_ph	E-pavadzīme Nr.
+insurance_label	Apdrošināšana
+yes_label	Jā
+no_label	Nē
+print_route_label	Drukāt maršrutu
+new_party_kind_label	Jauns ballītes veids
+done_open_books	Gatavs — atvērt grāmatas
+export_day	Eksportēt dienu
+extra_note_expense_ph	Papildu piezīme pēdējam izdevumam
+extra_note_awb_ph	Papildu piezīme par šo AWB / izpārdošanu
+failed_delivery	Neizdevās piegāde
+find_scan_awb	Atrast / skenēt AWB
+forget_shop	Aizmirst šo veikalu
+fuel_ph	Degviela
+handover_carrier	Rezervēts ar roku → pārvadātājs
+import_day	Importēt dienu
+import_items_csv	Importēt preces/cenas CSV…
+import_parties_csv	Importēt pušu CSV…
+import_pincodes_csv	Importēt PIN kodus CSV…
+import_carrier_bill_csv	Importēt mobilo sakaru operatora rēķinu CSV failā…
+copy_carrier_bill_report	Kopējiet pēdējo mobilo sakaru operatora rēķina pārskatu
+use_carrier_cost	Izmantojiet operatora maksu
+rate_carrier_ph	Pārvadātājs (tukšs = mūsu pārdošanas kurss)
+rate_party_ph	Ballīte (tukšs = visi klienti)
+carrier_pick_ph	Pārvadātājs par izmaksām (salīdzinājumam)
+item_name	Pozīcijas nosaukums
+load_bulk_row	Ielādēt lielapjoma rindu → galds
+login_id_ph	Lietotājvārds
+mark_delivered	Atzīme piegādāta
+manifest_cod_total	COD kopā
+manifest_received_by	Saņēma
+manifest_sign	Pierakstīties
+ndr_address_wrong	Nepareiza adrese
+ndr_customer_unavailable	Nav pieejams
+ndr_door_locked	Durvis aizslēgtas
+ndr_other	Cits
+ndr_refused	Atteicās
+out_for_delivery	Iziet piegādei
+print_drs	Drukāt DRS
+print_run_sheet	Drukāšanas lapa
+reattempt	Atkārtots mēģinājums
+rider_cod_handed_ph	COD nodots
+settle_rider_cod	Nokārtot braucēju COD
+mode_desk	Rakstāmgalds
+mode_rider	Jātnieks
+waiting_office	gaida, kad nonāks birojā
+capture_signature	Uzņemt parakstu
+incoming_manifest	Ienākošais manifests
+pickup_request	Paņemšanas pieprasījums
+pickup_run	Savākšanas skrējiens
+auto_assign_area	Automātiski piešķirt apgabalu
+reorder_stops	Pārkārtot apstājas
+settle_rider_pay	Nokārtot braucēju atalgojumu
+vehicle_inspect	Transportlīdzekļa apskate
+print_docket	Drukāt dokketu
+franchise_statement	Franšīzes paziņojums
+tally_export	Tally kuponu eksports
+open_whatsapp	Atveriet WhatsApp
+copy_sms	Kopēt SMS tekstu
+pick_barcode_image	Izvēlieties skenējamo attēlu
+share_receipt_whatsapp	Kopīgojiet kvīti vietnē WhatsApp
+delivery_feedback	Atsauksmes par piegādi
+lan_self_book	LAN pašrezervācija
+new_party_clear	Jauna puse (notīrīt veidlapu)
+new_party_kind_ph	Jauns ballītes veids (piegādātājs/pārvadātājs)
+next_country	Nākamā valsts
+prev_country	Iepriekšējā valsts
+note_gstin_ph	Piezīme / GSTIN / līguma atgādinājums
+note_pod_ph	Piezīme/POD (pēc izvēles)
+on_account_ap	Uz konta (AP)
+org_optional_ph	Organizācija (nav obligāta)
+paid_now	Samaksāts tagad
+pairing_code_ph	Pāra kods
+pair_now	Savienot pārī tagad
+party_name_selected_ph	Puses nosaukums (vai lietot atlasīto)
+password_ph	Parole
+pay_ap_card	Maksāt AP ar karti
+pay_ap_cash	Maksāt AP skaidrā
+pay_ap_upi	Maksāt AP ar UPI
+period_bill	Perioda rēķins
+period_bill_party	Perioda rēķins (partija)
+pick_pod_photo	Izvēlieties POD fotoattēlu
+print_awb_label	Drukājiet AWB etiķeti
+print_open	Drukāt / atvērt
+reason_amend_ph	Iemesls labojumam / anulēšanai / atmaksai
+reason_note_ph	Iemesls / piezīme (zudumi, skaits, …)
+record_day_close	Ierakstīt dienas slēgšanu
+refresh_from_shop	Atsvaidzināt no veikala
+refund	Atmaksa
+remit_cod	Pārsūtīt COD (puse)
+remove_selected	Noņemt atlasīto
+restore_backup	Atjaunot dublējumu
+rider_name_ph	Braucēja vārds
+rider_phone_ph	Braucēja tālrunis
+riders	Jātnieki
+riders_own_fleet	Braucēji (paša flote)
+rollup	Kopsavilkums
+save_booking_measures	Saglabājiet rezervācijas pasākumus
+save_brand	Saglabāt zīmolu
+save_business_id	Saglabāt uzņēmuma id
+save_business_name	Saglabāt uzņēmuma nosaukumu
+save_features	Saglabājiet darba iestatījumus
+save_names	Saglabāt nosaukumus
+server_ip_ph	Servera IP (piem. 192.168.1.10)
+set_credit_limit	Piemērot limitu pusei
+set_login_selected	Piemērot pieteikšanos atlasītajam
+set_login_named	Piemērot pieteikšanos: {name}
+shop	Veikals
+start_fresh	Sākt no jauna
+stop_extra_tills	Apturēt papildu kases
+backup_auto	Dublējas automātiski katru dienu · pēdējais {when} · pēdējās 14 dienas tiek glabātas mapē {dir}.
+backup_auto_none	Dublējas automātiski katru dienu — pirmais notiks pēc brīža.
+backup_copy_to	Kopijas arī nonāk mapē {dir}.
+backup_copy_btn	Kopēt dublējumus arī mapē…
+autostart_off	Sākt kopā ar šo datoru
+autostart_on	Sākas kopā ar šo datoru ✓ — pieskarieties, lai apturētu
+autostart_done_on	Šis dators tagad atver lietotni, kad ieslēdzas — veikala serveris atgriežas pēc strāvas pārrāvuma.
+autostart_done_off	Šis dators vairs neatver lietotni, kad ieslēdzas.
+right_allowed	Atļauts
+right_with_approval	Ar apstiprinājumu
+right_denied	Nav atļauts
+editing_staff	Tiesības uz
+team_pick_ph	Darbinieks, ko labot — vārds, lietotājvārds vai izvēle
+select_staff	Atlasīt šo darbinieku
+rights_help	Tiesības — pieskarieties, lai mainītu: Atļauts → Ar apstiprinājumu (tajā brīdī pārvaldnieka PIN) → Nav atļauts.
+right_void_refund	Anulējiet rezervāciju vai atmaksājiet to
+right_amend_sale	Labot reģistrēto rezervāciju
+find_server	Atrast veikala serveri
+finding_server	Meklē veikala serveri šajā Wi‑Fi…
+no_server_found	Nekas nav atrasts. Serverī: Iestatījumi → Citas ierīces → Atļaut papildu kases (tas pats Wi‑Fi). Vai ierakstiet tur redzamo IP.
+servers_found_pick	Pieskarieties veikalam, ar kuru vēlaties savienoties.
+server_host_selected	Lieto {host} — ievadiet pāra kodu, tad Savienot pārī tagad.
+device_forgotten	Veikals aizmirsa šo ierīci — savienojiet to pārī vēlreiz ar veikala pašreizējo kodu. Tajā gaidošie pasūtījumi tiek paturēti.
+forget_device	Aizmirst
+last_seen	redzēts
+new_pair_code	Jauns pāra kods
+lan_offline	Veikala serveris nav sasniedzams
+lan_offline_waiting	Veikala serveris nav sasniedzams · {n} gaida
+lan_connecting	Savienojas ar veikalu…
+pair_finishing	Notiek savienošanas pabeigšana… biroja grāmatu lietošana
+pair_opening	Tiek atvērts birojs…
+lan_live	Tiešraide
+lan_sending	{n} sūta
+lan_sign_in_to_send	Piesakieties vēlreiz, lai nosūtītu {n}
+lan_pair_again	Savienot šo ierīci pārī vēlreiz
+lan_update_app	Atjauniniet lietotni — šai ierīcei un biroja serverim ir dažādas versijas
+allow_firewall	Atļaut citām ierīcēm pieslēgties
+firewall_blocked	Šī datora ugunsmūris bloķē citas ierīces — pieskarieties Atļaut citām ierīcēm pieslēgties.
+firewall_waiting	Gaida administratora uzvedni…
+lan_join_help	Otrā ierīcē: Termināļa režīms → Atrodiet veikala serveri (vai ierakstiet {addr}) → pāra kods {code}.
+lan_pair_status	Wi‑Fi {addr}
+lan_join_help_no_addr	Pievienojiet šo ierīci Wi‑Fi, lai iegūtu adresi.
+lan_no_address	Vēl nav Wi‑Fi adreses — pievienojieties veikala Wi‑Fi.
+lan_not_listening	Neņem pretī ierīces (ports {port} aizņemts). Restartējiet lietotni.
+lan_tills_off	Papildu kases ir izslēgtas. Atļaujiet tās, lai cita ierīce var pievienoties.
+paired_with	Savienots pārī · {url}
+not_paired	Nav savienots pārī
+choose_device_use	Izvēlieties serveri vai termināli.
+paired_note	Savienots pārī. Atbloķējiet, lai pārdotu, vai atsvaidziniet jaunāko.
+last_update_at	Pēdējais atjauninājums: {time}.
+pair_intro	Atrodiet serveri vai ierakstiet tā adresi un pāra kodu.
+queue_waiting	Gaida, lai sasniegtu veikalu ({n}):
+queue_tries	Mēģināts {n} reizes · pēdējā atbilde: {e}
+save_backup_copy	Saglabāt dublējuma kopiju…
+backup_copy_saved	Dublējuma kopija saglabāta — glabājiet to ārpus šīs ierīces (USB vai cita ierīce)
+backup_copy_overdue	Dublējuma kopija nav atstājusi šo ierīci {n} dienas — Iestatījumi → Dublējums
+backup_copy_failed	Dublējuma kopiju tur neizdevās saglabāt — izvēlieties citu vietu
+clock_off	Šīs ierīces pulkstenis atšķiras par {min} min no veikala servera — iestatiet pareizo laiku šajā ierīcē
+printers_heading	Printeri šajā ierīcē
+printers_help	Atrodiet īstus printerus, pēc tam izvēlieties Kvīts vai AWB etiķete. Katram darbam ir savs platums, portrets vai ainava, kā arī baitu nosūtīšanas veids. Uzlīme izdrukā svītrkodu. Tukša vieta = nedrukāt.
+job_width	Satura platums (mm)
+job_width_ph	Vai ierakstiet platumu 40–210 mm
+job_layout	Izkārtojums
+job_delivery	Kā darbs tiek sūtīts
+job_size	Burtu izmērs
+job_size_ph	piem. 18, 20, 26…
+save_receipt_format	Saglabājiet kvīts formātu
+save_label_format	Saglabājiet etiķetes formātu
+test_receipt_format	Pārbaudes kvīts
+test_label_format	Testa etiķete
+test_receipt_sent	Kvīts paraugs nosūtīts
+test_label_sent	Etiķetes paraugs nosūtīts
+test_print_no_printer	Šim darbam nav printera — pievienojiet vienu zem šīs vietas
+printers_host_only	Printeri ir iestatīti veikala ierīcē (Serverī). Šī kase nosūta uz turieni darbus — Atrast/pievienot/piešķirt palikt serverī. Testa lapa nonāk serverī.
+printers_pool_heading	Printeri
+printers_routes_heading	Kur kas tiek drukāts
+printer_label_ph	Nosaukums (piemēram, rakstāmgalds)
+printer_target_ph	resursdators:9100 · bt:MAC · usb:VID:PID · sistēmas nosaukums
+printer_mode_heading	Profils jauniem izvadiem
+printer_mode_standard	Standarta portrets
+printer_mode_landscape	Standarta ainava
+printer_mode_thermal	Termiskā
+printer_mode_standard_short	Portrets
+printer_mode_landscape_short	Ainava
+printer_mode_thermal_short	Termiskā
+printer_format_custom	Jauns pielāgots profils
+printer_format_custom_label	Pielāgots
+printer_format_custom_added	Pielāgots profils pievienots šai vietai
+add_printer	Pievienot printeri
+remove_printer	Noņemt pēdējo
+route_pick_ph	kvīts vai etiķete
+route_add_printer_ph	Pievienojiet šai vietai printeri
+route_receipt	Kvīts
+route_label	AWB etiķete
+route_dont_print	Printeris nav piešķirts
+route_add	Pievienot vietai
+route_up	Augšup
+route_down	Lejup
+route_remove	Noņemt pēdējo
+route_clear	Notīrīt printerus šai vietai
+save_printers	Saglabāt printerus
+print_test_page	Drukāt testa lapu
+printers_saved	Šai ierīcei saglabāti printeri
+test_page_sent	Testa lapa nosūtīta — pārbaudiet printeri
+printers_found	Atrasts šajā ierīcē: {list}
+find_printers	Atrast printerus
+printers_looking	Notiek printeru meklēšana šajā ierīcē un Wi-Fi tīklā…
+printers_tap_find	Pieskarieties vienumam Atrast printerus rindām, kas pieņem darbus, un tīkla kvīšu printerus šajā Wi-Fi tīklā (nav noņemti vai bezsaistes printeri).
+printers_none_found	Nav atrasts neviens printeris — ierakstiet sistēmas printera nosaukumu vai tīkla adresi (piemēram, 192.168.1.50).
+receipt_printer_ph	Printeris čekiem
+queue_refused	Veikals nepieņēma ({n}) — pārbaudiet katru pie letes:
+clear_not_accepted	Pārbaudīts — notīrīt šo sarakstu
+device_name_ph	Šīs ierīces nosaukums
+lan_last_update	pēdējais atjauninājums {time}
+lan_not_accepted	{n} nav pieņemts
+connected_now	savienots tagad
+backup_failed	Pēdējais automātiskais dublējums neizdevās: {e}
+backup_overdue	Nav dublējuma {n} dienas — turiet lietotni atvērtu šajā ierīcē, lai tā var dublēt.
+disk_low	Šajā ierīcē brīvi tikai {mb} MB — dublējumi drīz neizdosies. Atbrīvojiet vietu.
+last_seen_devices	Pēdējo reizi redzēts: {time}
+sync_interval	Sinhronizēt ik pēc {secs} s
+connection_to_shop	Savienojums ar veikalu
+supplier_name_ph	Piegādātāja nosaukums (vai puse)
+supplier_ph	Piegādātājs
+switch_device	Pārslēgt šo ierīci
+take_payment	Ņemt maksājumu
+tax_added_till	{tax} klāt
+tax_inside_price	{tax} iekļauts
+today_books	Šodienas grāmatas
+unlock_after_pairing	Ievadiet PIN
+unlock_with_login	Atbloķēt ar pieteikšanos
+update_my_password	Atjaunināt manu paroli
+update_my_pin	Atjauniniet manu PIN
+duress_heading	Ārkārtas atbloķēšanas PIN (tikai īpašnieks)
+duress_help	Pēc izvēles. Ja atbloķēšanas laikā tiek ievadīts šis PIN, nevis jūsu, visi grāmatu ieraksti tiek dzēsti (rezervācijas, virsgrāmatas, vēsture) un galds tiek atvērts kā īpašnieks, kas izskatās kā parasti — likmes, ballītes, zonas, darbinieki un iestatījumi paliek. Shēma un konfigurācija netiek dzēsta. Izmantojiet tikai tad, ja esat spiests atbloķēt. Atstājiet tukšu un saglabājiet, lai izslēgtu. Nekad nav tas pats, kas nevienam.
+duress_pin_ph	Ārkārtas PIN (4–12 cipari)
+duress_confirm_ph	Ierakstiet vēlreiz, lai apstiprinātu
+save_duress_pin	Saglabāt ārkārtas PIN
+clear_duress_pin	Izslēgt ārkārtas PIN
+duress_on	Ārkārtas atbloķēšanas PIN ir ieslēgts
+duress_off	Ārkārtas atbloķēšanas PIN ir izslēgts
+duress_saved	Ārkārtas atbloķēšanas PIN saglabāts
+duress_cleared	Ārkārtas atbloķēšanas PIN izslēgts
+vehicle_ph	Transportlīdzeklis
+void	Anulēt
+write_off_ap	Norakstīt AP
+write_off_nil	Norakstīt / nulles atlikums
+zone_ph	Zona (nosaukums no tarifiem)
+caption_today	ŠODIEN
+caption_bookings	REZERVES
+caption_payments_today	ŠODIENAS MAKSĀJUMI
+caption_outstanding	NEAPMAKSĀTS
+caption_bank	BANKA
+paid_by	Samaksāja
+second_way	Otrais veids
+weight_in	Svars iekšā
+size_in	Izmērs iekšā
+goods_received	Preces saņemtas
+expense_heading	Izdevums
+notes_attach_sale	Piezīmes un pielikumi (atlasītā pārdošana)
+notes_attach_party	Piezīmes un pielikumi (atlasītā puse)
+attachments_last_expense	Pielikumi (pēdējais izdevums)
+credit_limit_heading	Kredīta limits (atlasītā / nosauktā puse)
+pay_selected_heading	Maksāt atlasīto (noslēgt parādu / ņemt avansu)
+write_off_heading	Norakstīt (notīrīt bez maksājuma)
+pay_ap_heading	Maksāt to, ko esam viņiem parādā (AP)
+country_tax	Valsts un nodoklis
+extra_tills_heading	Papildu kases
+other_devices_help_heading	Iestatīt citas ierīces
+other_devices_help	Šajā ierīcē (serveris): Citas ierīces → Atļaut papildu kases. Ņemiet vērā savienojuma pārī kodu un Wi-Fi adresi. Pieskarieties Atļaut citām ierīcēm izveidot savienojumu, ja tas tiek parādīts. Datorā pieskarieties Sākt ar šo datoru. Katrā citā ierīcē: instalējiet lietotni, izvēlieties Klienta režīms, Atrodiet veikala serveri (vai ierakstiet adresi), ievadiet savienojuma kodu, Savienot pārī tūlīt. Pasūtījumi gaida ierīcē, ja Wi-Fi pazūd, un paiet, kad serveris atkal atbild.
+your_brand	Jūsu zīmols (lietotnē)
+units_heading	Vienības
+booking_measures	Rezervācijas pasākumi
+drawer_count	Atvilktnes skaits (nav obligāts)
+spreadsheet_csv	Izklājlapa (CSV)
+bank_reconciliation	Bankas salīdzināšana (atzīmējiet pret bankas izrakstu)
+book_add_product	Rezervēt — pievienot produktu/novērtēt
+book_opening_credit	Grāmata — sākuma kredīts
+account_kind	Konta veids (pieskarieties vienam)
+active_ledger	Aktīvā virsgrāmata
+actual_total_cap	FAKTISKĀ SUMMA
+amend_help	Atlasiet pārdošanu, ko labot, anulēt vai atmaksāt. Labojumi patur pilnu vēsturi. Noapaļotā summa sākas vienāda ar piemēroto — labojiet tikai, lai noapaļotu. Anulēšanai un atmaksai var vajadzēt īpašnieka vai vadītāja PIN (ierakstīts augšā; saglabāts ar jūsu vārdu).
+applied_total_cap	PIEMĒROTĀ SUMMA
+bank_balance	Bankas atlikums
+bank_net_today	Bankas neto šodien
+branch_export_help	Eksports ieraksta dienas momentuzņēmumu dublējumu mapē un kopē to starpliktuvē. Lai importētu citu tirdzniecības vietu, saglabājiet tās failu šajā mapē kā import_branch_snapshot.json un pēc tam pieskarieties vienumam Importēt.
+brand_shown_help	Redzams lietotnes ekrānos. Instalētās lietotnes nosaukums un ikona šajā ierīcē paliek kā platformas sarakstā.
+app_icon	Lietotnes ikona
+logo_help	Veikala zīme pēc izvēles lietotnes ekrānos.
+onboard_layout	Ko jūs saņemat
+item_photo_help	Pēc izvēles. Bez foto rādām iniciāļus no pozīcijas nosaukuma.
+cash_in_hand	Skaidrā nauda kasē
+change_my_pin_heading	Mainīt manu PIN (tikai jūsu)
+connect_to_server	Savienoties ar serveri
+counter_locked	Lete 01 · Bloķēta
+country_pack_help	Valsts paka iestata nodokļa nosaukumu un aprēķinu, tūlītējā maksājuma kanālu un uz rēķiniem drukājamo uzņēmuma id. Kumkaj nekur neiesniedz nodokļus un neizsniedz valsts e-rēķinus.
+currency_use_help	Ritiniet un pieskarieties Lietot jebkurai atbalstītai valūtai.
+day_close_help	Dienas slēgšanas ieraksts saglabā šo kopsavilkumu (un atvilktnes starpību, ja saskaitīta) audita žurnālā. Tas neaptur pārdošanu.
+expenses_word	Izdevumi
+feature_access_help	Piekļuve funkcijām atlasītajam personālam (pieskarieties pēc pievienošanas)
+footer_local	Vietējā SQLite · Bez maksas uz visiem laikiem · Bez mākoņa
+fresh_book_moklanjo	Svaigs = tukšs katalogs (pievienojiet preces vēlāk). Grāmata = ierakstiet sākuma akciju un kas jums ir parādā zemāk.
+fresh_selected	Tukšs atlasīts — katalogs paliek tukšs. Pieskarieties Gatavs, kad esat gatavs.
+gross_word	Bruto
+how_start	Kā vēlaties sākt?
+later_country_pack	Vēlāk: Iestatījumi → lietojiet savu valsts paku nodokļa un maksājumu etiķetēm.
+local_badge	VIETĒJS
+measures_help_moklanjo	Kā pakas tiek mērītas pie rezervēšanas galda. Ievadiet izmērus un svaru izmantotajās vienībās — standarta (cm, m, collas, pēdas · kg, g, mārciņas, unces) vai savu mērvienību, kas saistīta ar augstāk norādīto cm/kg (tieši vai ar citām vienībām). Grāmatas vienmēr ieraksta kg. Lai to saglabātu, atstājiet lauku tukšu.
+mix_type_hint_moklanjo	Ierakstiet, cik daudz katrā (skaidra nauda / UPI / karte / kredīts). Jāpieskaita rēķinam. Kredītam nepieciešams klients augstāk.
+money_in_sales	Nauda iekšā (pārdošana)
+more_help_moklanjo	Katalogs, pārdošana, kredīts, komanda, rezerves — kā arī krājumi un papildu kases, ja nepieciešams.
+net_word	Neto
+offline_badge	BEZSAISTĒ
+optional_login_help	Pieteikšanās pēc izvēles (id + parole). Īpašnieks iestata vienreiz; paroli vēlāk var mainīt tikai lietotājs.
+or_unlock_login	Vai atbloķējiet ar pieteikšanās id un paroli
+permission_preset	Darbs (iestata ekrānus un tiesības)
+preset_help_moklanjo	Kasieris: pārdod. Vadītājs: pārdod + pozīcijas + anulē/labo.
+product_locked_moklanjo	Moklanjo
+product_only_moklanjo	Šī lietotne ir paredzēta tikai Moklanjo — grāmatas + rezervācijas galds. Citas tirdzniecības sejas tiks nosūtītas kā atsevišķi produkti vēlāk.
+purchases_cogs	Pirkumi (COGS)
+qty_cap	DAUDZUMS
+restore_help	Atjaunošana: izvēlieties dublējumu. Grāmatas atveras tādas, kādas tās bija tad; pašreizējās grāmatas vispirms tiek saglabātas, tāpēc to var atsaukt.
+wipe_data_heading	Dzēst vietējos datus
+wipe_data_help	Tikai īpašnieks — tādas pašas izvēles kā Windows atinstalēšana. Biznesa ieraksti notīra tirdzniecības vēsturi, bet saglabā likmes un iestatījumus (piemēram, avārijas atbloķēšanas PIN). Veikala iestatīšana noņem grāmatu datubāzi. Ekrāna preferences notīra logu/valodu. Apstipriniet ar īpašnieka PIN. Komandas avārijas atbloķēšanas PIN kods ir atsevišķs (atbloķēšanas laikā noslaukiet to).
+wipe_trading	Uzņēmuma ieraksti
+wipe_schema	Veikala iestatīšana
+wipe_ui	Ekrāna preferences
+wipe_owner_pin_ph	Īpašnieka PIN dzēšanai
+wipe_delete_selected	Dzēst atlasīto
+wipe_owner_only	Tikai īpašnieks var dzēst vietējos datus.
+restore_owner_only	Tikai īpašnieks var atjaunot dublējumu.
+wipe_owner_pin_needed	Ievadiet īpašnieka PIN, lai dzēstu vietējos datus.
+wipe_nothing_selected	Vispirms izvēlieties, ko dzēst.
+wipe_done	Atlasītie vietējie dati dzēsti.
+wipe_schema_done	Veikala iestatīšana dzēsta — izvēlieties serveri vai termināli, lai turpinātu.
+rounded_total	Noapaļotā summa
+setup_app_moklanjo	Iestatiet Moklanjo
+shop_logo_optional	Veikala logotips (nav obligāts)
+stock_type_help	Ierakstiet pozīcijas nosaukumu (daļa pietiek), daudzumu un tad koriģējiet. Pozīcijām, kas vēl netiek skaitītas, vienreiz vajag Sākt uzskaiti.
+team_owner_help	Noma: izvēlieties darbu (kasieris/vadītājs), vārdu + sākuma PIN, pēc tam pievienojiet. Tikai tad, ja šī persona atšķiras: tālāk atveriet ekrānus un tiesības, pēc tam Saglabājiet darba iestatījumus. Ikviens apakšā maina savu PIN — īpašnieks nevar mainīt neviena cita PIN.
+they_owe_us	Viņi ir mums parādā
+unit_at_cap	Vienība @
+units_help	Kodi pozīciju etiķetēm (kg, gabals, mais). Katrai vienībai jāsaistās — tieši vai caur citām vienībām — ar standartu (kg · cm · ml · gab), piem. 1 crate = 2 box un 1 box = 20 cm. Pārrēķini: 1 from = factor to. Valūtas nekad nav vienības.
+we_owe_them	Mēs esam viņiem parādā
+who_unlocking	Kas atbloķē?
+locked_word	Bloķēts
+show_pin	Rādīt PIN
+hide_pin	Slēpt PIN
+set_owner_pin	IESTATĪT ĪPAŠNIEKA PIN
+enter_owner_passcode	IEVADIET ĪPAŠNIEKA KODU
+enter_staff_passcode	IEVADIET PERSONĀLA KODU
+pin_count_zero	0 / 12 cipari · vismaz 4, tad Labi
+pin_count_need	{} / 12 cipari · vajag vēl {}
+pin_count_full	12 / 12 cipari · spiediet Labi
+pin_count_ready	{} / 12 cipari · spiediet Labi, kad gatavs
+pin_hint_choose	Izvēlieties 4–12 ciparus · Enter vai Atbloķēt, lai saglabātu
+pin_hint_new	Jauns 4–12 ciparu īpašnieka PIN · Enter vai Atbloķēt
+pin_hint_shop_code	Veikala ierīce · pāra kods {}
+pin_hint_books	Šī ierīce glabā grāmatas
+pin_hint_paired	Papildu kase savienota pārī — atbloķējiet, lai pārdotu
+pin_hint_pair_first	Papildu kase — vispirms savienojiet pārī ar veikala ierīci
+unlock_to_continue	Atbloķējiet, lai turpinātu
+no_staff_yet	Vēl nav personāla — atbloķējiet kā īpašnieks, tad Komanda
+status_server_set_pin	Servera režīms — iestatiet īpašnieka PIN
+status_server_tills	Servera režīms — papildu kases var pievienoties. Atbloķēt
+status_server_unlock	Servera režīms — atbloķējiet kā īpašnieks
+status_client_unlock	Termināļa režīms — atbloķējiet, lai pārdotu
+icon_new_selected	Ikona: atlasīts jauns fails — pieskarieties Saglabāt zīmolu
+icon_custom	Ikona: pielāgota vietas zīme
+icon_default	Ikona: Kumkaj zīme (noklusējums) — izvēlieties savu
+logo_yours	Logotips: jūsu veikala logotips — redzams ekrānos un kvītīs
+logo_default	Logotips: Kumkaj zīme (noklusējums) — izvēlieties savu, ja tāds ir
+tmpl_current	Pašreizējais: {} — {}
+tmpl_selected	Atlasīts: {} — {}
+setup_complete	Iestatīšana pabeigta
+onboard_fresh_tmpl	Tukšs · {} — katalogs sākas tukšs; pievienojiet pozīcijas sadaļā Pozīcijas, tad Gatavs.
+onboard_book_tmpl	Grāmata · {} — pievienojiet pozīcijas un sākuma kredītu, tad Gatavs.
+onboard_template_tmpl	Nosauciet vietu, ja vēlaties, tad izvēlieties, kā sākt.
+tmpl_blurb	Kurjeru grāmatas un rezervēšanas galds: nosūtītāji, pārvadātāji, dienasgrāmata, AWB.
+tmpl_how	Paciņu rezervēšana pie rakstāmgalda; Dienas grāmata šodienai; cilnes likmēm, ballītēm, atskaitēm.
+trk_booked	Rezervēts
+trk_picked_up	Pacēla
+trk_in_transit	Tranzītā
+trk_delivered	Piegādāts
+trk_rto	Notiek atgriešanās pie sūtītāja
+lane_to_dispatch	Lai nosūtītu
+lane_with_carrier	Ar nesēju
+lane_failed	Neizdevās
+lane_done_today	Padarīts šodien
+ops_board_help	Pakas pēc to atrašanās vietas šodienas darbā. Pieskarieties sūtījumiem (vai skenējiet tos), lai tos atlasītu, un pēc tam rīkojieties ar visām paņemtajām vienībām uzreiz — katrā joslā tiek piedāvātas tikai tās kustības, kas tai atbilst.
+lane_empty	Šobrīd šeit nav nekā.
+picked_fmt	Izvēlēts {n}
+pick_all	Izvēlieties visus
+bag_for_carrier	Roka uz nesēju
+send_with_rider	Sūtu ar braucēju
+out_again	Atkal ārā
+return_to_sender	Atgriezties pie sūtītāja
+runs_bags_heading	Nesenie skrējieni un somas
+print_word	Drukāt
+bag_word	Pārnēsāšanas soma
+run_word	Jātnieku skrējiens
+parcels_fmt	{n} pakas
+parcel_history	Vēsture
+attempt_fmt	Mēģiniet {n}
+pieces_short_fmt	{n} gab
+note_reason_ph	Piezīme vai iemesls
+ops_pick_first	Vispirms izvēlieties pakas — pieskarieties tām vai skenējiet tās
+cod_to_collect	Piegādāts — COD, lai savāktu
+cod_on_road	COD joprojām ir ceļā
+cod_owed_consignors	Iekasēts — sūtītājiem samaksāt
+cod_rto_fees	RTO iekasējamās maksas
+cod_to_hand_in	COD nodot
+parcel_one_fmt	{n} paka
+facet_bank_title	Pārskati
+facet_bank_help	Dienas grāmatas, pušu novecošana, bankas ieraksti un perioda peļņa.
+facet_ops_title	Sūtījumi un nosūtīšana
+facet_ops_help	Skenējiet vai ierakstiet AWB → Atrast, pēc tam virzīt uz priekšu / drukāt etiķeti / COD. Nosūtīšana braucējam vai pārvadātājam.
+facet_cod_title	COD reģistrs
+facet_cod_help	Saņemiet piegādes brīdī, pēc tam nosūtiet nosūtītājam.
+facet_riders_title	Braucēji (paša flote)
+facet_riders_help	Pievienojiet braucējus, pēc tam nosūtiet rezervētos AWB no Ops.
+against_bill_ph	Pret rēķina nr. augšā (nav obligāti)
+aliases_ph	Aliasi — citi nosaukumi, atdalīti ar komatu
+amount_blank_full_ph	Summa (tukšs = pilns atlikums)
+amount_owed_ph	Parāda summa
+amount_ph	Summa
+amount_received_ph	Saņemtā summa
+amount_we_pay_ph	Summa, ko maksājam
+awb_scan_ph	AWB / skenēt svītrkodu
+bulk_csv_ph	Lielapjoma CSV — galamērķis, saņēmējs, kg, cod_paise, piezīme
+business_name_ph	Uzņēmuma nosaukums
+category_new_ph	Kategorija (nav obligāta, izveido, ja jauna)
+cod_amount_ph	COD daudzums
+code_bag_ph	Kods (maiss)
+conv_factor_ph	Koeficients (25 = 1 maiss → 25 kg)
+country_code_ph	Valsts kods, piem. IN, GB, US, AE, BR
+credit_khata_amount_ph	Kredīta / khata summa
+credit_limit_ph	Kredīta limits (0 = nav)
+dim_unit_code_ph	Izmēru vienības kods (cm)
+divisor_ph	Tilpuma dalītājs (5000)
+extra_per_kg_ph	Papildus / kg
+first_amount_ph	Pirmā summa
+first_kg_ph	Pirmais kg (plāksne)
+from_code_ph	No koda (maiss)
+item_name_lang_ph	Pozīcijas nosaukums — ierakstiet savā valodā
+login_id_opt_ph	Lietotājvārds (obligāts, unikāls)
+manager_pin_ph	Vadītāja PIN apstiprinājumam (tikai ja nevarat anulēt)
+new_branch_name_ph	Jaunās filiāles nosaukums
+new_password_ph	Jauna parole (nav obligāta)
+new_pin_ph	Jauns PIN (4–12 cipari)
+note_bank_ph	Piezīme (iemaksa, izmaksa, …)
+note_buy_expense_ph	Piezīme (degviela, noma, …)
+note_expense_ph	Piezīme (degviela, birojs, …)
+notify_phone_ph	Paziņot tālrunim (WhatsApp/SMS āķis)
+options_moklanjo_ph	Iespējas (pēc izvēles) — Liels = 20, Dāvanu iesaiņojums = 10
+part_second_way_ph	Daļa otrā veidā (nav obligāti)
+phone_ph	Tālrunis
+address_ph	Adrese
+party_custom_fields_heading	Pielāgoti lauki (atlasītā puse)
+party_custom_help	Pievienojiet šai ballītei jebkuru etiķeti un vērtību — WhatsApp, GSTIN, maršruta kodu,…
+party_custom_key_ph	Lauka nosaukums (piem., WhatsApp)
+party_custom_value_ph	Vērtība
+party_custom_add	Pievienot lauku
+party_custom_remove	Noņemt lauku
+party_custom_empty	Vēl nav pielāgotu lauku
+party_custom_pick_first	Izvēlieties ballīti, lai pievienotu pielāgotus laukus
+place_name_ph	Šīs vietas nosaukums
+price_ph	Cena
+qty_example_ph	Daudzums (piem. 1,5 kg)
+quantity_ph	Daudzums
+reason_required_ph	Iemesls (obligāts)
+role_title_ph	Lomas nosaukums (piem. baristas)
+service_pct_ph	Apkalpošanas % pēc izvēles 0/10/12
+short_code_ph	Īsais kods (MG02)
+slab_kg_ph	Uzlādējama plāksne kg (0,5)
+staff_name_ph	Darbinieka vārds/id
+starting_password_ph	Sākuma parole (nav obligāta)
+starting_pin_ph	Sākuma PIN (4–12 cipari)
+tax_rate_ph	Nodokļa likmes nosaukums vai % — Standarta, Samazinātā, 0, 5, 12, 18, 20
+to_code_ph	Uz kodu (kg)
+uncleared_no_ph	Nesaskaņotais nr. augšā
+unit_cost_ph	Vienības izmaksas
+unit_kg_blank_ph	Mērvienība (kg vai tukša)
+unit_name_bag_ph	Nosaukums (maiss)
+weight_unit_code_ph	Svara vienības kods (kg)
+zone_name_ph	Zonas nosaukums
+pay_credit	Kredīts
+book_kind_today	Šodienas grāmatas
+book_kind_month	Šī mēneša grāmatas
+book_kind_aging	Neapmaksāts / debets-kredīts
+book_kind_balance	Bilance
+ops_desk_help	Skenējiet AWB ar USB svītrkoda skeneri (vai ierakstiet to) → Atrast. Pēc tam virziet uz priekšu, izdrukājiet etiķeti vai savāciet COD. Etiķetes druka Kods 128.
+role_help_consignor	Loma: nosūtītājs — AR (viņi mums ir parādā). Tas pats uzņēmums var būt arī Carrier.
+role_help_carrier	Loma: Pārvadātājs — AP (mēs esam viņiem parādā). Tas pats uzņēmums var būt arī nosūtītājs.
+role_help_both	Lomas: nosūtītājs + pārvadātājs — viena puse, AR un AP virsgrāmatas, neto pārskatos.
+role_help_supplier	Loma: piegādātājs — AP pirkumiem.
+lane_declared_label	Konta rezervēšana
+lane_owner_label	Skaidras naudas rezervēšana
+money_lane_bill	Rēķins: {lane}

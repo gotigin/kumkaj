@@ -1,0 +1,835 @@
+# Uzbek — Oʻzbekcha (uz). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	Kuryer-agentlik kitoblari + bron qilish stoli. Bepul oflayn.
+unlock	Qulfni ochish
+pin_hint	Eganing PIN kodi 0000 dan boshlanadi
+sell	Rezervasyon
+buy	To'lash
+books	Kunlik daftar
+books_help	Bugungi pozitsiya. Rezervasyon = posilkalar. To'lov = tashuvchining to'lovlari va xarajatlari. Tomonlar = yuk jo'natuvchilar va tashuvchilar.
+buy_help	Xarajat vaucherlari va tashuvchi to'lovlari (pul chiqarish). Hisob-kitoblar partiya daftarida qoladi.
+sell_money_in	Posilkani bron qilish
+buy_money_out	Xarajat / tashuvchi hisobi
+record_purchase	Xaridni yozish
+add_expense	Xarajat orderi
+bank_book	Bank daftari
+credit_help	Partiya identifikatori noyob (nomlar takrorlanishi mumkin). Rollar: yuk jo'natuvchi (AR), tashuvchi (AP) yoki ikkalasi ham shu identifikatorda. Buxgalteriya daftarlari alohida turadi; hisobotlar net ko'rsatadi.
+party_kind_ph	Maxsus rol (ixtiyoriy) — yoki yuqoridagi chipni bosing
+parties_list_heading	Saqlangan partiyalar
+reports_help	Kunlik daftar, qarzdorlar va haqdorlar, bank daftari, xarajat orderlari, foyda va zarar.
+reports_today	Kunlik daftar (bugun)
+reports_month	Foyda va zarar (oy)
+reports_aging	Toʻlanmagan / Dt-Kt
+reports_balance_sheet	Balans
+reports	Bank daftari va F&Z
+refresh	Yangilash
+undo	Bekor qilish
+start_tracking	Kuzatishni boshlash
+stock_minus	− Zaxira
+stock_plus	+ Zaxira
+settle_cash	Naqd yopish
+settle_card	Karta bilan yopish
+items	Narxlar va xizmatlar
+nav_items	Tariflar
+more	Yana
+your_items	Sizning tariflaringiz
+items_help	Har bir qator stavkadir (masalan, A sirt zonasi). Birlik odatda kg ni tashkil qiladi. Tahrirlash uchun bosing.
+add_item	Narx qo'shish
+new_item	Yangi tarif
+adding_item	Yangi tarif qo'shilmoqda
+editing_item	Tahrirlash
+save	Saqlash
+remove	Olib tashlash
+empty_catalog	No rates yet. Narxlar va xizmatlarni oching, bittasini qo‘shing (nom + narx, kg birlik), so‘ng “Bronlash”.
+counter_sale	Hisoblagich bron qilish
+total	Jami
+cash	Naqd
+upi	UPI
+card	Karta
+credit	Kontragentlar
+clear	Tozalash
+ready_to_sell	Daftarga yozishga tayyor
+today_prefix	Bugun
+today_mid	bugun
+owed	toʻlanmagan
+round_word	yaxlitlash
+back	Orqaga
+sold_out	Mavjud emas
+restock	Qayta toʻldirish
+not_tracked	Kuzatilmaydi
+in_stock	zaxirada
+marked_sold_out	Mavjud emas deb belgilangan
+add_upper	QOʻSHISH
+na	yoʻq
+qty	Vazn/Miq.
+unit_at	Narx @
+actual	Haqiqiy
+applied	Qoʻllangan
+note_ph	Izoh (ixtiyoriy)
+rounded	YAXLITLANGAN
+split	Boʻlish
+counter	Kassa
+parcel	Posilka
+order	Buyurtma
+sales	Bandlovlar
+sales_refunds	Rezervasyonlar va to'lovlarni qaytarish
+day_close	Kunni yopish
+reports_expenses	Bank daftari va F&Z
+nav_reports	Hisobotlar
+nav_settings	Sozlamalar
+nav_lock	Qulflash
+sidebar_settings	Yon panel sozlamalari
+sidebar_settings_help	Yon relsdagi kabi belgilar. Tartibni oʻzgartirish uchun qatorni sudrang. Koʻrsatish yoki yashirish uchun tugmani aylantiring. Sozlamalar va Qulf har doim panelda qoladi.
+sidebar_always_on_short	Har doim yoniq
+sidebar_back_settings	Orqaga
+sidebar_shown	Koʻrsatilgan
+sidebar_hidden	Yashirilgan
+sidebar_always_on	Har doim panelda
+sidebar_shown_hint	Yon rels / pastki yorliqlarda koʻrsatilgan
+sidebar_hidden_hint	Paneldan yashirilgan
+sidebar_menu_items	Menyu va mahsulotlar
+sidebar_enable_all	Hammasini yoqish
+sidebar_disable_all	Hammasini oʻchirish
+sidebar_order_saved	Yon panel tartibi saqlandi
+sidebar_visibility_saved	Yon panel koʻrinishi saqlandi
+amounts_hide	Yashirish
+amounts_show	Koʻrsatish
+no_sale_yet	Hali savdo yoʻq
+favorites	Sevimlilar
+favorites_help	Tez-tez sotadigan mahsulotlar, sizning kirishingiz uchun saqlangan. Hisobga qoʻshing yoki pastdagi barcha mahsulotdan roʻyxat tuzing.
+your_favorites	Sizning sevimlilaringiz
+all_items	Barcha mahsulot
+no_favorites	Hali sevimli yoʻq — pastdagi roʻyxatdan mahsulot qoʻshing.
+add_to_bill	Hisobga qoʻshish
+added	Qoʻshildi
+owes_word	qarzdor
+selected_word	Tanlangan
+chip_clear_credit	tozalash — Nasiya yoki avans olish
+chip_missing_customer	Tanlangan mijoz yoʻq — qayta tanlang
+chip_no_customer	Hali mijoz yoʻq — ism yozing, soʻng Nasiyani bosing
+credit_summary_fmt	{} mijoz · ochiq nasiya {} · ushlab turilgan avans {}
+recent_label	Yaqinda:
+inventory	Ombor
+inventory_stock	Ombor va zaxira
+branches	Filiallar
+branches_org	Filiallar va tashkilot
+credit_customers	Tomonlar (qarzdorlar va kreditorlar)
+customer_name_ph	Kontragent nomi
+new_customer_ph	Yangi kontragent nomi
+item_name_ph	Tarif nomi (masalan, A sirt zonasi)
+item_price_ph	kg / birinchi plita uchun
+start_template	Mahsulot
+next_booking	Keyingi bandlov
+destination_ph	Belgilangan shahar / zona
+consignee_ph	Qabul qiluvchining nomi
+consignee_phone_ph	Qabul qiluvchi telefon
+consignee_address_ph	Yetkazib berish manzili
+origin_name_ph	Yuboruvchining ismi
+origin_phone_ph	Yuboruvchi telefon
+origin_address_ph	Olib ketish / kelib chiqish manzili
+booking_consignor_heading	Yuboruvchi (mijoz / jo'natuvchi)
+booking_consignee_heading	Qabul qiluvchi (qabul qiluvchi)
+booking_consignor_hint	To'ldirish uchun partiyani tanlang yoki kirish uchun bo'sh qoldiring. Uydan olib ketish va RTO uchun kerak.
+booking_consignee_hint	Posilkani qabul qiluvchi. Piyodalar hisoblagichini tushirish uchun bo'sh qoldiring.
+weight_kg_ph	Haqiqiy kg
+length_cm_ph	L sm
+breadth_cm_ph	B sm
+height_cm_ph	H sm
+chargeable_kg	To'lanadigan kg
+awb_label	AWB
+booking_help	Yuk jo'natuvchi + qabul qiluvchi (bo'sh OK) → belgilangan manzil → tortish → tanlash stavkasi → Hisob/Naqd pul → to'lash. AWB kvitansiyada chop etadi. Keyingi bronlash stolni tozalaydi. Yaxlitlangan boshlar Qo'llaniladigan ga teng — faqat hisobni yaxlitlash uchun tahrirlang.
+cart_empty_hint	Ish stoli boʻsh — joʻnatuvchi/oluvchi ixtiyoriy, boradigan joy va vaznni belgilang, tarif boʻyicha QOʻSHISH tugmasini bosing, soʻng toʻlang.
+team	Jamoa
+team_pins	Jamoa va PIN
+my_pin_settings	Mening PIN kodim
+settings_hub_help_my_pin	Shu qurilmada kirgan odamning qulf ochish PIN kodini oʻzgartiring.
+team_self_help	Faqat siz qulfni ochish PIN-kodingizni (va ixtiyoriy kirish parolini) o'zgartirishingiz mumkin. Egasidan sizga turli ekranlar yoki huquqlar kerakligini so'rang.
+backup_settings	Zaxira nusxa va sozlamalar
+lock_app	Ilovani qulflash
+pick	Tanlash
+select	Tanlash
+advance	Avans
+owner	Egasi
+staff	Xodimlar
+photo	Rasm
+auto	Avto
+prev	Oldingi
+next	Keyingi
+ok	OK
+this_shop	Server
+extra_till	Mijoz
+off	Oʻchiq
+server	Server
+client	Mijoz
+language_currency	Til va valyuta
+language	Til
+choose_language	Tilingizni tanlang
+language_setup_hint	Shu qurilma tiliga ergashing yoki oʻzingiz tanlang.
+lang_follow_platform	Qurilma tili
+lang_pick_user	Til tanlash
+lang_platform_now	Hozir qurilma tili
+selected_language	Tanlangan
+continue	Davom etish
+this_device	SHU QURILMA
+device_use_q	Bu qurilma qanday ishlatiladi?
+last_server_mode	Server edi — davom etish uchun bosing
+last_client_mode	Mijoz edi — davom etish uchun bosing
+choose_server	Server tanlang
+choose_server_hint	Mavjud serverni oching yoki boshqa biznes uchun yangisini yarating.
+create_new_server	Yangi server yaratish
+open_server	Ochish
+new_server_name_ph	Yangi server nomi (ixtiyoriy)
+server_remove_pin_ph	Serverni olib tashlash uchun eganing PIN kodi
+only_owner_remove_server	Serverni faqat Egasi olib tashlay oladi
+owner_pin_remove_server	Bu serverni olib tashlash uchun eganing PIN kodi kerak
+device_setup_help	Server daftarlarini shu yerda saqlaydi. Mijoz Serverga juftlashadi.
+currency	Valyuta
+backup	Zaxira nusxa
+settings_sec_diag	Diagnostika
+settings_hub_help	Bir vaqtda bitta boʻlimni oching — kamroq aylantirish, aniqroq tanlov.
+settings_sec_devices	Boshqa qurilmalar
+settings_sec_alerts	Ogohlantirishlar
+alerts_help	Holat xabarlari siz uchun ekranda qancha turadi (shu kirish).
+snack_secs_ph	Soniya (3–60, odatiy 10)
+snack_secs_save	Ogohlantirish vaqtini saqlash
+snack_secs_saved	Ogohlantirish vaqti saqlandi — {n} soniya
+snack_secs_bad	Soniyalarni raqam sifatida kiriting (3–60)
+cancelled	Bekor qilindi
+cancel	Bekor qilish
+opening_client	Mijoz ochilmoqda…
+preparing_desk	Kassa tayyorlanmoqda…
+opening_server	Server ochilmoqda…
+creating_server	Server yaratilmoqda…
+diag_privacy_help	Jurnallar shu qurilmada qoladi. Sirlar (PIN, parollar) hech qachon saqlanmaydi. Qurilmadan tashqariga paket ulashish har safar sizning aniq ruxsatingizni talab qiladi — hech qachon sotilmaydi va uchinchi tomonga berilmaydi.
+diag_level	Batafsillik darajasi
+diag_level_error	Xatolar
+diag_level_warn	Ogohlantirishlar
+diag_level_info	Maʼlumot
+diag_level_debug	Nosozlik
+diag_support_start	30 daqiqalik yordam seansini boshlash
+diag_support_stop	Yordam seansini tugatish
+diag_support_started	Yordam seansi yoniq — 30 daqiqa Nosozlik batafsili
+diag_support_ended	Yordam seansi tugadi
+diag_export_local	Mahalliy nusxani eksport qilish
+diag_export_local_done	Mahalliy diagnostika tayyor: {path} — nusxani qayerga saqlashni tanlang
+diag_approve_send	Qurilmadan tashqariga ulashishni tasdiqlash
+diag_send_heading	Qurilmadan tashqariga ulashish
+diag_send_help	Tasdiq bitta paket uchun, keyin muddati tugaydi. Vaqtinchalik — faqat mahsulotni tuzatish yoki yaxshilash uchun. Uchinchi tomonga berilmaydi. Linux, Windows, macOS va Androidda ishlaydi.
+optional_login_heading	Ixtiyoriy kirish
+rights_heading	Huquqlar
+booking_scope_heading	Mahalliy / Xalqaro
+diag_send_approved	Ulashish bitta paket uchun tasdiqlandi (tez orada tugaydi)
+diag_export_send	Ulashish paketini yaratish (tasdiq kerak)
+diag_export_send_done	Ulashish paketi tayyor: {path} — qayerga saqlashni tanlang, soʻng faqat Kumkaj yordamiga yuboring
+diag_save_bundle	Diagnostika nusxasini saqlash
+diag_bundle_saved	Diagnostika nusxasi saqlandi: {path}
+diag_bundle_failed	Diagnostika nusxasi u yerda saqlanmadi — qayta urinib koʻring
+diag_clear	Diagnostika jurnallarini tozalash
+diag_cleared	Diagnostika jurnallari tozalandi
+use	Foydalanish
+add_branch	Filial qoʻshish
+add_conversion	Aylantirish qoʻshish
+add_item_plain	Mahsulot qoʻshish
+add_note	Izoh qoʻshish
+add_opening_balance	Boshlangʻich qoldiq qoʻshish
+add_rider	Chavandoz qo'shing
+add_staff	Xodim qoʻshish
+add_unit	Birlik qoʻshish
+add_use_name	Bu nomni qoʻshish / ishlatish
+allow_extra_tills	Qoʻshimcha kassalarga ruxsat
+amend	Tuzatish
+apply_country_pack	Mamlakat toʻplamini qoʻllash
+datetime_appearance	Sana va vaqt koʻrinishi
+datetime_appearance_help	Kitoblar yil birinchi RFC3339 ni ichida saqlaydi. Bular faqat sana va soatlar kvitansiyalar, teglar, hisobotlar va ekrandagi ko‘rinishini o‘zgartiradi.
+datetime_example	Hozirgi misol: {ex}
+date_order	Sana tartibi
+date_order_dmy	D/M/Y
+date_order_mdy	M/D/Y
+date_order_ymd	Y-M-D
+time_format	Soat
+time_format_24h	24 soat
+time_format_12h	12 soat
+attach_bill_photo	Hisob rasmini biriktirish
+attach_pdf	PDF biriktirish
+attach_photo	Rasm biriktirish
+bank	Bank
+bank_in	Bankka kirim
+bank_out	Bankdan chiqim
+bank_to_till	Bank → kassa
+till_to_bank	Kassa → bank
+mark_cleared	Tozalangan deb belgilash
+unmark	Belgini olish
+role_both	Ikkalasi
+role_carrier	Tashuvchi
+role_cashier	Kassir
+role_consignor	Yuk jo'natuvchi
+role_manager	Menejer
+role_supplier	Yetkazib beruvchi
+branch_name_sell_ph	Sotiladigan filial nomi
+bring_my_book	Daftarimni olib kelish
+business_tax_id_ph	Biznes soliq raqami
+card_amount_ph	Karta summasi
+cash_amount_ph	Naqd summa
+upi_amount_ph	UPI summasi
+carrier_cost_ph	Tashuvchi narxi
+carrier_party_ph	Tashuvchi partiyasi
+choose_icon	Belgi tanlash
+choose_logo	Logotip tanlash
+choose_receipt_stamp	Kvitansiya shtampini tanlang
+choose_payment_qr	Toʻlov QR tanlash
+clear_icon	Belgini tozalash
+clear_logo	Logotipni tozalash
+clear_photo	Rasmni tozalash
+clear_stamp	Muhrni tozalash
+clear_payment_qr	Toʻlov QR ni tozalash
+print_faces	Yuzlarni chop etish (kvitansiya / davr hisobi)
+print_faces_help	Ixtiyoriy shtamp va toʻlov QR belgisi bilan bandlov kvitansiyalari va davr hisoblaridagi logotipingiz yonidagi.
+awb_pools_heading	Tashuvchining AWB raqamlari hovuzlari
+add_awb_pool	AWB pulini qo'shing
+awb_pool_carrier_ph	Tashuvchi partiya nomi
+awb_pool_start_ph	Boshlash raqami.
+awb_pool_end_ph	Tugash raqami.
+awb_pool_prefix_ph	Prefiks (ixtiyoriy)
+awb_pool_label_ph	Yorliq (ixtiyoriy)
+pieces_ph	Parchalar (bo'sh = 1) - yuk / ko'p qismli uchun kengaytiring
+bulk_awbs_ph	Ommaviy AWB - bir holatni ilgari surish uchun ko'p (yangi qator yoki vergul) qo'ying
+tds_cut_ph	TDS kesish (ixtiyoriy)
+discount_ph	Chegirma (ixtiyoriy)
+cheque_no_ph	Tekshirish raqami (ixtiyoriy)
+bill_reminder_chase	Bill eslatma ta'qib ro'yxati
+month_mix_report	Oy aralashmasi hisoboti
+copy_month_gst_csv	GST CSV oyini nusxalash
+domestic	Mahalliy
+international	Xalqaro
+pick_logo	Logotipni tanlang
+booking_scope_hint_domestic	Volumetrik ÷5000 (maishiy) — ÷6000 havo uchun Xalqaro ga teging
+booking_scope_hint_intl	Volumetrik ÷6000 (xalqaro havo) — Do'kon uchun mahalliy ga teging ÷5000
+cod_register	COD registri
+collect_cod	COD (AWB) yig'ish
+consignments_dispatch	Yuk tashish va jo'natish
+consignor_party_ph	Yuboruvchi/tomon nomi
+copy_day_book_csv	Kunlik daftarni CSV nusxalash
+copy_day_close	Kun yopishni nusxalash
+copy_items_csv	Mahsulotlarni CSV nusxalash
+copy_outstanding_csv	Toʻlanmaganni CSV nusxalash
+copy_parties_csv	Kontragentlarni CSV nusxalash
+copy_party_ledger_csv	Kontragent daftarini CSV nusxalash
+copy_receipt	Kvitansiyani nusxalash
+copy_report	Hisobotni nusxalash
+counted_cash_ph	Tortmadagi sanalgan naqd
+counter_agency_ph	Hisoblagich / agentlik nomi (ixtiyoriy)
+create_backup	Zaxira nusxa yaratish
+day_close_summary	Kun yopish xulosasi
+delete_party	Tanlangan kontragentni oʻchirish
+dispatch_to_rider	Yuborilgan → chavandoz
+docket_charge_ph	Doket zaryadi
+declared_value_ph	E'lon qilingan qiymat
+contents_ph	Tarkib
+eway_ph	Elektron hisob raqami.
+insurance_label	Sug'urta
+yes_label	Ha
+no_label	Yo'q
+print_route_label	Marshrutni chop etish
+new_party_kind_label	Yangi partiya turi
+done_open_books	Tayyor — daftarlarni ochish
+export_day	Kunni eksport qilish
+extra_note_expense_ph	Oxirgi xarajatga qoʻshimcha izoh
+extra_note_awb_ph	Ushbu AWB/sotish bo'yicha qo'shimcha eslatma
+failed_delivery	Yetkazib berish amalga oshmadi
+find_scan_awb	AWB ni toping / skanerlang
+forget_shop	Bu doʻkonni unutish
+fuel_ph	Yoqilg'i
+handover_carrier	Qo'lda bron qilingan → operator
+import_day	Kunni import qilish
+import_items_csv	Elementlar / tariflarni import qilish CSV…
+import_parties_csv	Kontragentlarni CSV import qilish…
+import_pincodes_csv	CSV pin kodlarini import qilish…
+import_carrier_bill_csv	CSV operator hisobini import qilish…
+copy_carrier_bill_report	Oxirgi operator hisobi hisobotidan nusxa oling
+use_carrier_cost	Operator narxidan foydalaning
+rate_carrier_ph	Tashuvchi (bo'sh = bizning sotish kursimiz)
+rate_party_ph	Partiya (bo'sh = barcha mijozlar)
+carrier_pick_ph	Narx uchun tashuvchi (taqqoslashdan)
+item_name	Mahsulot nomi
+load_bulk_row	Ommaviy qatorni yuklang → ish stoli
+login_id_ph	Foydalanuvchi nomi
+mark_delivered	Belgilandi
+manifest_cod_total	Umumiy COD
+manifest_received_by	tomonidan qabul qilingan
+manifest_sign	Imzo
+ndr_address_wrong	Manzil noto'g'ri
+ndr_customer_unavailable	Mavjud emas
+ndr_door_locked	Eshik qulflangan
+ndr_other	Boshqa
+ndr_refused	Rad etilgan
+out_for_delivery	Yetkazib berish uchun chiqdi
+print_drs	DRS ni chop eting
+print_run_sheet	Ishlash varag'ini chop etish
+reattempt	Qayta urinish
+rider_cod_handed_ph	COD topshirildi
+settle_rider_cod	Chavandoz CODni hal qiling
+mode_desk	Stol
+mode_rider	Chavandoz
+waiting_office	ofisga borishni kutish
+capture_signature	Imzoni suratga olish
+incoming_manifest	Kiruvchi manifest
+pickup_request	Olib ketish talabi
+pickup_run	Yugurish
+auto_assign_area	Hududni avtomatik belgilash
+reorder_stops	Qayta tartiblash to'xtaydi
+settle_rider_pay	Chavandozning ish haqini to'lash
+vehicle_inspect	Avtomobilni tekshirish
+print_docket	Chop etish hujjati
+franchise_statement	Franchayzing bayonoti
+tally_export	Tall vaucher eksporti
+open_whatsapp	WhatsApp-ni oching
+copy_sms	SMS matnini nusxalash
+pick_barcode_image	Skanerlash uchun rasmni tanlang
+share_receipt_whatsapp	Kvitansiyani WhatsApp orqali ulashing
+delivery_feedback	Yetkazib berish haqida fikr-mulohaza
+lan_self_book	LAN o'zini bron qilish
+new_party_clear	Yangi kontragent (shaklni tozalash)
+new_party_kind_ph	Yangi partiya turi (Yetkazib beruvchi / Tashuvchi)
+next_country	Keyingi mamlakat
+prev_country	Oldingi mamlakat
+note_gstin_ph	Izoh / GSTIN / shartnoma eslatmasi
+note_pod_ph	Eslatma / POD (ixtiyoriy)
+on_account_ap	Hisobga (AP)
+org_optional_ph	Tashkilot (ixtiyoriy)
+paid_now	Hozir toʻlandi
+pairing_code_ph	Juftlash kodi
+pair_now	Hozir juftlash
+party_name_selected_ph	Kontragent nomi (yoki tanlanganni ishlatish)
+password_ph	Parol
+pay_ap_card	AP ni karta bilan toʻlash
+pay_ap_cash	AP ni naqd toʻlash
+pay_ap_upi	AP ni UPI bilan toʻlash
+period_bill	Davr hisobi
+period_bill_party	Davr hisobi (partiya)
+pick_pod_photo	POD rasmini tanlang
+print_awb_label	AWB yorlig'ini chop eting
+print_open	Chop etish / ochish
+reason_amend_ph	Tuzatish / bekor / qaytarish sababi
+reason_note_ph	Sabab / izoh (isrof, sanoq, …)
+record_day_close	Kun yopishni yozish
+refresh_from_shop	Doʻkondan yangilash
+refund	Qaytarish
+remit_cod	COD yuborish (partiya)
+remove_selected	Tanlanganni olib tashlash
+restore_backup	Zaxira nusxadan tiklash
+rider_name_ph	Chavandoz ismi
+rider_phone_ph	Chavandoz telefon
+riders	Chavandozlar
+riders_own_fleet	Chavandozlar (o'z floti)
+rollup	Jamlama
+save_booking_measures	Rezervasyon choralarini saqlang
+save_brand	Brendni saqlash
+save_business_id	Biznes raqamini saqlash
+save_business_name	Biznes nomini saqlash
+save_features	Ish sozlamalarini saqlang
+save_names	Nomlarni saqlash
+server_ip_ph	Server IP (mas. 192.168.1.10)
+set_credit_limit	Kontragentga limit qoʻllash
+set_login_selected	Kirishni tanlanganga qoʻllash
+set_login_named	Kirishni {name} ga qoʻllash
+shop	Doʻkon
+start_fresh	Yangidan boshlash
+stop_extra_tills	Qoʻshimcha kassalarni toʻxtatish
+backup_auto	Har kuni avtomatik zaxira nusxa · oxirgisi {when} · oxirgi 14 kun {dir} da saqlanadi.
+backup_auto_none	Har kuni avtomatik zaxira nusxa — birinchisi birozdan ishga tushadi.
+backup_copy_to	Nusxa {dir} ga ham boradi.
+backup_copy_btn	Zaxira nusxalarni jildga ham nusxalash…
+autostart_off	Shu kompyuter bilan boshlash
+autostart_on	Shu kompyuter bilan ishga tushadi ✓ — toʻxtatish uchun bosing
+autostart_done_on	Bu kompyuter ishga tushganda ilovani ochadi — tok oʻchganidan keyin doʻkon serveri qaytadi.
+autostart_done_off	Bu kompyuter ishga tushganda ilovani endi ochmaydi.
+right_allowed	Ruxsat etilgan
+right_with_approval	Tasdiq bilan
+right_denied	Ruxsat etilmagan
+editing_staff	uchun huquqlar
+team_pick_ph	Tahrirlash xodimi — ism, foydalanuvchi nomi yoki tanlov
+select_staff	Shu xodimni tanlash
+rights_help	Huquqlar — o‘zgartirish uchun teging: Ruxsat berilgan → Tasdiq bilan (o‘sha paytda menejerning PIN-kodi) → Ruxsat berilmagan.
+right_void_refund	Rezervasyonni bekor qilish yoki pulni qaytarish
+right_amend_sale	Yozilgan bandlovni o'zgartirish
+find_server	Doʻkon serverini topish
+finding_server	Shu Wi‑Fi da doʻkon serverini qidirish…
+no_server_found	Hech narsa topilmadi. Serverda: Sozlamalar → Boshqa qurilmalar → Qoʻshimcha kassaga ruxsat (xuddi shu Wi‑Fi). Yoki u yerda koʻrsatilgan IP ni yozing.
+servers_found_pick	Ulanmoqchi boʻlgan doʻkonni bosing.
+server_host_selected	{host} ishlatilmoqda — juftlash kodini kiriting, soʻng Hozir juftlash.
+device_forgotten	Doʻkon bu qurilmani unutdi — doʻkonning joriy kodi bilan qayta juftlang. Unda kutayotgan buyurtmalar saqlanadi.
+forget_device	Unutish
+last_seen	koʻrilgan
+new_pair_code	Yangi juftlash kodi
+lan_offline	Doʻkon serveriga ulanib boʻlmaydi
+lan_offline_waiting	Serverga ulanib boʻlmaydi · {n} kutmoqda
+lan_connecting	Doʻkonga ulanmoqda…
+pair_finishing	Tugatish juftligi… ofis kitoblarini qo'llash
+pair_opening	Ofis ochilishi…
+lan_live	Jonli
+lan_sending	{n} yuborilmoqda
+lan_sign_in_to_send	{n} yuborish uchun qayta kiring
+lan_pair_again	Bu qurilmani qayta juftlang
+lan_update_app	Ilovani yangilang — bu qurilma va ofis serveri turli versiyalarga ega
+allow_firewall	Boshqa qurilmalarga ulanishga ruxsat berish
+firewall_blocked	Bu kompyuterning fayrvoll boshqa qurilmalarni toʻsmoqda — Boshqa qurilmalarga ulanishga ruxsat berishni bosing.
+firewall_waiting	Administrator soʻrovini kutmoqda…
+lan_join_help	Boshqa qurilmada: Mijoz rejimi → Doʻkon serverini topish (yoki {addr} yozish) → juftlash kodi {code}.
+lan_pair_status	Wi‑Fi {addr}
+lan_join_help_no_addr	Manzil olish uchun bu qurilmani Wi‑Fi ga ulang.
+lan_no_address	Hali Wi‑Fi manzili yoʻq — doʻkon Wi‑Fi siga ulaning.
+lan_not_listening	Qurilmalarni qabul qilmaydi ({port} port band). Ilovani qayta ishga tushiring.
+lan_tills_off	Qoʻshimcha kassalar oʻchiq. Boshqa qurilma qoʻshilishi uchun ruxsat bering.
+paired_with	Juftlangan · {url}
+not_paired	Juftlanmagan
+choose_device_use	Server yoki Mijozni tanlang.
+paired_note	Juftlangan. Sotish uchun qulfni oching yoki oxirgisi uchun Yangilang.
+last_update_at	Oxirgi yangilanish: {time}.
+pair_intro	Serverni toping yoki manzil va juftlash kodini yozing.
+queue_waiting	Doʻkonga yetishni kutmoqda ({n}):
+queue_tries	{n} marta urinib koʻrildi · oxirgi javob: {e}
+save_backup_copy	Zaxira nusxa saqlash…
+backup_copy_saved	Zaxira nusxa saqlandi — uni shu qurilmadan tashqarida saqlang (USB yoki boshqa qurilma)
+backup_copy_overdue	{n} kundan beri zaxira nusxa bu qurilmadan chiqmadi — Sozlamalar → Zaxira nusxa
+backup_copy_failed	Zaxira nusxa u yerda saqlanmadi — boshqa joy tanlang
+clock_off	Bu qurilma soati doʻkon serveridan {min} daqiqa farq qiladi — toʻgʻri vaqtni qoʻying
+printers_heading	Ushbu qurilmadagi printerlar
+printers_help	Haqiqiy printerlarni toping, so'ngra Kvitansiya yoki AWB yorlig'ini tanlang. Har bir ishning o'z kengligi, portreti yoki landshafti va baytlar qanday yuborilganligi mavjud. Yorliq shtrix kodni chop etadi. Bo'sh joy = chop qilmang.
+job_width	Mazmun kengligi (mm)
+job_width_ph	Yoki 40–210 mm kengligida yozing
+job_layout	Joylashuv
+job_delivery	Ish qanday yuboriladi
+job_size	Shrift oʻlchami
+job_size_ph	mas. 18, 20, 26…
+save_receipt_format	Kvitansiya formatini saqlang
+save_label_format	Yorliq formatini saqlang
+test_receipt_format	Sinov kvitansiyasi
+test_label_format	Sinov belgisi
+test_receipt_sent	Kvitansiya namunasi yuborildi
+test_label_sent	Yorliq namunasi yuborildi
+test_print_no_printer	Bu ish uchun printer yo‘q — bu joyning ostiga bittasini qo‘shing
+printers_host_only	Printerlar do'kon qurilmasiga (Server) o'rnatiladi. Bu ish o'rinlarini u erga yubormaguncha - Serverda qolishni toping / qo'shing / tayinlang. Sinov sahifasi Serverga o'tadi.
+printers_pool_heading	Printerlar
+printers_routes_heading	Qayerda chop etiladi
+printer_label_ph	Ism (masalan, ish stoli)
+printer_target_ph	xost:9100 · bt:MAC · usb:VID:PID · tizim nomi
+printer_mode_heading	Yangi chiqishlar uchun profil
+printer_mode_standard	Standart portret
+printer_mode_landscape	Standart landshaft
+printer_mode_thermal	Termal
+printer_mode_standard_short	Tik
+printer_mode_landscape_short	Yotiq
+printer_mode_thermal_short	Termal
+printer_format_custom	Yangi maxsus profil
+printer_format_custom_label	Maxsus
+printer_format_custom_added	Bu joy uchun maxsus profil qoʻshildi
+add_printer	Printer qoʻshish
+remove_printer	Oxirgisini olib tashlang
+route_pick_ph	kvitansiya yoki yorliq
+route_add_printer_ph	Bu joyga printer qo‘shing
+route_receipt	Kvitansiya
+route_label	AWB yorlig'i
+route_dont_print	Hech qanday printer tayinlanmagan
+route_add	Joyga qo'shish
+route_up	Yuqoriga
+route_down	Pastga
+route_remove	Oxirgisini olib tashlang
+route_clear	Bu joy uchun printerlarni tozalang
+save_printers	Printerlarni saqlash
+print_test_page	Sinov sahifasini chop etish
+printers_saved	Printerlar ushbu qurilma uchun saqlangan
+test_page_sent	Sinov sahifasi yuborildi — printerni tekshiring
+printers_found	Bu qurilmada topilgan: {list}
+find_printers	Printerlarni topish
+printers_looking	Ushbu qurilma va Wi-Fi orqali printerlar qidirilmoqda…
+printers_tap_find	Ishlarni qabul qiladigan navbatlar uchun printerlarni va ushbu Wi‑Fi tarmog‘ida (o‘chirilgan yoki oflayn) tarmoq kvitansiyasi printerlarini topish ga teging.
+printers_none_found	Printerlar topilmadi — tizim printeri nomini yoki tarmoq manzilini kiriting (masalan, 192.168.1.50).
+receipt_printer_ph	Kvitansiya uchun printer
+queue_refused	Doʻkon qabul qilmadi ({n}) — har birini kassada tekshiring:
+clear_not_accepted	Tekshirildi — bu roʻyxatni tozalang
+device_name_ph	Bu qurilmaning nomi
+lan_last_update	oxirgi yangilanish {time}
+lan_not_accepted	{n} qabul qilinmadi
+connected_now	hozir ulangan
+backup_failed	Oxirgi avtomatik zaxira nusxa amalga oshmadi: {e}
+backup_overdue	{n} kundan beri zaxira yoʻq — nusxa olishi uchun ilovani shu qurilmada ochiq tuting.
+disk_low	Bu qurilmada faqat {mb} MB boʻsh — zaxira nusxalar tez orada amalga oshmaydi. Joy boʻshating.
+last_seen_devices	Oxirgi koʻrilgan: {time}
+sync_interval	Har {secs} s da sinxron
+connection_to_shop	Doʻkonga ulanish
+supplier_name_ph	Yetkazib beruvchi nomi (yoki kontragent)
+supplier_ph	Yetkazib beruvchi
+switch_device	Bu qurilmani almashtirish
+take_payment	Toʻlov qabul qilish
+tax_added_till	{tax} tashqari
+tax_inside_price	{tax} ichida
+today_books	Bugungi kitoblar
+unlock_after_pairing	PIN kiriting
+unlock_with_login	Kirish bilan qulfni ochish
+update_my_password	Parolimni yangilash
+update_my_pin	PIN kodimni yangilang
+duress_heading	Favqulodda qulf ochish PIN (faqat Egasi)
+duress_help	Ixtiyoriy. Agar bu PIN kod sizniki o‘rniga qulfni ochishda kiritilsa, barcha kitoblar yozuvlari o‘chiriladi (bandlar, daftarlar, tarix) va stol Egasi ko‘rinishida ochiladi — tariflar, partiyalar, zonalar, xodimlar va sozlamalar qoladi. Sxema va konfiguratsiya o'chirilmaydi. Agar siz qulfni ochishga majbur bo'lsangizgina foydalaning. Bo'sh qoldiring va o'chirish uchun saqlang. Hech kimning PIN-kodi bilan bir xil emas.
+duress_pin_ph	Favqulodda PIN (4–12 raqam)
+duress_confirm_ph	Tasdiqlash uchun qayta yozing
+save_duress_pin	Favqulodda PIN ni saqlash
+clear_duress_pin	Favqulodda PIN ni oʻchirish
+duress_on	Favqulodda qulf ochish PIN yoniq
+duress_off	Favqulodda qulf ochish PIN oʻchiq
+duress_saved	Favqulodda qulf ochish PIN saqlandi
+duress_cleared	Favqulodda qulf ochish PIN oʻchirildi
+vehicle_ph	Avtomobil
+void	Bekor qilish
+write_off_ap	AP ni hisobdan chiqarish
+write_off_nil	Hisobdan chiqarish / nol qoldiq
+zone_ph	Hudud (tariflardan nomi)
+caption_today	BUGUN
+caption_bookings	BAZIRLASHLAR
+caption_payments_today	TOʻLOVLAR BUGUN
+caption_outstanding	TOʻLANMAGAN
+caption_bank	BANK
+paid_by	Toʻlagan
+second_way	Ikkinchi yoʻl
+weight_in	Og'irligi
+size_in	Hajmi ichida
+goods_received	Qabul qilingan tovar
+expense_heading	Xarajat
+notes_attach_sale	Izohlar va ilovalar (tanlangan savdo)
+notes_attach_party	Izohlar va ilovalar (tanlangan kontragent)
+attachments_last_expense	Ilovalar (oxirgi xarajat)
+credit_limit_heading	Nasiya limiti (tanlangan / nomlangan kontragent)
+pay_selected_heading	Tanlanganni toʻlash (qarzni yopish / avans olish)
+write_off_heading	Hisobdan chiqarish (toʻlovsiz tozalash)
+pay_ap_heading	Ularga qarzdorligimizni toʻlash (AP)
+country_tax	Mamlakat va soliq
+extra_tills_heading	Qoʻshimcha kassalar
+other_devices_help_heading	Boshqa qurilmalarni sozlash
+other_devices_help	Bu qurilmada (Server): Boshqa qurilmalar → Qo‘shimcha tilllarga ruxsat berish. Ulanish kodi va Wi‑Fi manziliga e'tibor bering. Agar paydo bo'lsa, Boshqa qurilmalarga ulanishga ruxsat berish ga teging. Kompyuterda “Ushbu kompyuterdan boshlash” tugmasini bosing. Boshqa qurilmalarda: ilovani o'rnating, Mijoz rejimini tanlang, do'kon serverini toping (yoki manzilni kiriting), juftlash kodini kiriting, Hozir juftlash. Agar Wi-Fi uzilib qolsa, buyurtmalar qurilmada kutiladi va Server yana javob berganida ketadi.
+your_brand	Brendingiz (ilova ichida)
+units_heading	Oʻlchov birliklari
+booking_measures	Rezervasyon choralari
+drawer_count	Tortma sanovi (ixtiyoriy)
+spreadsheet_csv	Jadval (CSV)
+bank_reconciliation	Bank solishtiruvi (bank koʻchirmasiga qarshi belgilang)
+book_add_product	Kitob - mahsulot / tarif qo'shing
+book_opening_credit	Daftar — boshlangʻich nasiya
+account_kind	Hisob turi (bittasini bosing)
+active_ledger	Faol daftar
+actual_total_cap	HAQIQIY JAMI
+amend_help	Tuzatish, bekor qilish yoki qaytarish uchun savdoni tanlang. Tuzatishlar toʻliq tarixni saqlaydi. Yaxlitlangan Jami Qoʻllanilganga teng boshlanadi — faqat yaxlitlash uchun tahrirlang. Bekor qilish va qaytarish Egasi yoki Menejer PIN ini soʻrashi mumkin (yuqorida kiritiladi; ismingiz bilan yoziladi).
+applied_total_cap	QOʻLLANILGAN JAMI
+bank_balance	Bank qoldigʻi
+bank_net_today	Bugungi bank sof
+branch_export_help	Eksport bir kunlik suratni zahiralar papkasiga yozadi va uni vaqtinchalik xotiraga nusxalaydi. Boshqa rozetka kunini import qilish uchun uning faylini import_branch_snapshot.json sifatida shu jildga saqlang, so‘ng Import tugmasini bosing.
+brand_shown_help	Ilova ichidagi ekranlarda koʻrinadi. Bu qurilmadagi oʻrnatilgan ilova nomi va belgisi platforma roʻyxatidagidek qoladi.
+app_icon	Ilova belgisi
+logo_help	Ilova ekranlaridagi doʻkon belgisi (ixtiyoriy).
+onboard_layout	Nima olasiz
+item_photo_help	Ixtiyoriy. Surat boʻlmasa mahsulot nomining bosh harflarini koʻrsatamiz.
+cash_in_hand	Kassadagi naqd
+change_my_pin_heading	Mening PIN-kodimni o'zgartiring (faqat sizniki)
+connect_to_server	Serverga ulanish
+counter_locked	Kassa 01 · Qulflangan
+country_pack_help	Mamlakat toʻplami soliq nomi va hisobini, tezkor toʻlov kanalini va hisobda chop etiladigan biznes identifikatorini qoʻyadi. Kumkaj hech qayerda soliq topshirmaydi va davlat elektron hisob-fakturasini bermaydi.
+currency_use_help	Qoʻllab-quvvatlanadigan har qanday valyuta uchun aylantirib Ishlatishni bosing.
+day_close_help	Kunni yopishni yozish ushbu xulosani (va sanalsa, tortma farqini) audit jurnaliga saqlaydi. Sotishni toʻxtatmaydi.
+expenses_word	Xarajatlar
+feature_access_help	Tanlangan xodimlar uchun funksiyadan foydalanish (qo‘shgandan keyin bosing)
+footer_local	Mahalliy SQLite · Abadiy bepul · Bulutsiz
+fresh_book_moklanjo	Yangi = bo'sh katalog (keyinroq elementlarni qo'shing). Kitob = ochilish aktsiyasini yozing va quyida sizga kim qarzdor.
+fresh_selected	Fresh tanlandi — katalog boʻsh qoladi. Tayyor boʻlganingizda Tayyor ni bosing.
+gross_word	Yalpi
+how_start	Qanday boshlamoqchisiz?
+later_country_pack	Keyin: Sozlamalar → soliq va toʻlov yorliqlari uchun mamlakat toʻplamini qoʻllang.
+local_badge	MAHALLIY
+measures_help_moklanjo	Buyurtma stolida posilkalar qanday o'lchanadi. Siz foydalanadigan birliklarda o'lchamlarni va vaznni yozing - standart (sm, m, dyuym, ft · kg, g, lb, oz) yoki yuqoridagi sm / kg ga bog'langan o'z birligingiz (to'g'ridan-to'g'ri yoki boshqa birliklar orqali). Kitoblar har doim kg qayd etadi. Uni saqlash uchun maydonni bo'sh qoldiring.
+mix_type_hint_moklanjo	Har birida qancha miqdorni yozing (naqd pul / UPI / karta / kredit). Hisobga qo'shilishi kerak. Kreditga yuqoridagi mijoz kerak.
+money_in_sales	Kirim pul (savdo)
+more_help_moklanjo	Katalog, savdo, kredit, jamoa, zaxira - zarur bo'lganda zaxira va qo'shimcha to'lovlar.
+net_word	Sof
+offline_badge	OFLAYN
+optional_login_help	Ixtiyoriy kirish (id + parol). Egasi bir marta qoʻyadi; parolni keyin faqat foydalanuvchi oʻzgartira oladi.
+or_unlock_login	Yoki kirish id + parol bilan qulfni oching
+permission_preset	Vazifa (ekranlar va huquqlarni o'rnatadi)
+preset_help_moklanjo	Kassir: sotadi. Menejer: savdo + mahsulot + bekor/tuzatish.
+product_locked_moklanjo	Moklanjo
+product_only_moklanjo	Bu ilova faqat Moklanjo — kitoblar + bron qilish stoli. Boshqa savdo yuzlari keyinroq alohida mahsulotlar sifatida jo'natiladi.
+purchases_cogs	Xaridlar (tannarx)
+qty_cap	SON
+restore_help	Tiklash: zaxira nusxa tanlang. Kitoblar oʻshanda qanday boʻlsa shunday ochiladi; hozirgi kitoblar avval saqlanadi, shuning uchun buni bekor qilish mumkin.
+wipe_data_heading	Mahalliy maʼlumotlarni oʻchirish
+wipe_data_help	Faqat egasi - Windows o'chirish bilan bir xil tanlovlar. Biznes yozuvlari savdo tarixini tozalaydi, lekin tariflar va sozlamalarni saqlaydi (masalan, favqulodda qulfni ochish PIN-kodi). Do'konni sozlash kitoblar ma'lumotlar bazasini olib tashlaydi. Ekran sozlamalari oynani/tilni tozalaydi. Egasining PIN-kodi bilan tasdiqlang. Jamoada favqulodda qulfni ochish PIN-kodi alohida (qulfni ochishda yashirin oʻchirish).
+wipe_trading	Biznes yozuvlari
+wipe_schema	Doʻkon sozlamasi
+wipe_ui	Ekran sozlamalari
+wipe_owner_pin_ph	Oʻchirish uchun Egasi PIN
+wipe_delete_selected	Tanlanganni oʻchirish
+wipe_owner_only	Mahalliy maʼlumotlarni faqat Egasi oʻchira oladi.
+restore_owner_only	Zaxira nusxani faqat Egasi tiklay oladi.
+wipe_owner_pin_needed	Mahalliy maʼlumotni oʻchirish uchun Egasi PIN ini kiriting.
+wipe_nothing_selected	Avval nimani oʻchirishni tanlang.
+wipe_done	Tanlangan mahalliy maʼlumotlar oʻchirildi.
+wipe_schema_done	Doʻkon sozlamasi oʻchirildi — davom etish uchun Server yoki Mijozni tanlang.
+rounded_total	Yaxlitlangan jami
+setup_app_moklanjo	Moklanjo-ni o'rnating
+shop_logo_optional	Doʻkon logotipi (ixtiyoriy)
+stock_type_help	Mahsulot nomini yozing (bir qismi yetadi), miqdor, soʻng tuzating. Hali sanalmaydigan mahsulotlarga bir marta Kuzatuvni boshlash kerak.
+team_owner_help	Ishga olish: ishni tanlang (kassir / menejer), ism + boshlang'ich PIN-kod, keyin qo'shing. Agar bu shaxs boshqacha bo'lsa: quyida ekran va huquqlarni oching, so'ngra Vazifa sozlamalarini saqlang. Har kim o'zining PIN kodini pastki qismida o'zgartiradi - Egasi boshqa hech kimnikini o'zgartira olmaydi.
+they_owe_us	Ular bizga qarzdor
+unit_at_cap	Birlik @
+units_help	Mahsulot yorliqlari kodlari (kg, dona, qop). Har bir birlik standartga bogʻlanishi kerak — toʻgʻridan-toʻgʻri yoki boshqa birliklar orqali — (kg · cm · ml · pc), mas. 1 yashik = 2 quti va 1 quti = 20 cm. Aylantirish: 1 dan = koeffitsient ga. Valyutalar hech qachon birlik emas.
+we_owe_them	Biz ularga qarzdormiz
+who_unlocking	Kim qulf ochyapti?
+locked_word	Qulflangan
+show_pin	PIN ni koʻrsatish
+hide_pin	PIN ni yashirish
+set_owner_pin	EGASI PIN INI QOʻYISH
+enter_owner_passcode	EGASI KODINI KIRITING
+enter_staff_passcode	XODIM KODINI KIRITING
+pin_count_zero	0 / 12 raqam · kamida 4, soʻng OK
+pin_count_need	{} / 12 raqam · yana {} kerak
+pin_count_full	12 / 12 raqam · OK bosing
+pin_count_ready	{} / 12 raqam · tayyor boʻlganda OK bosing
+pin_hint_choose	4–12 raqam tanlang · saqlash uchun Enter yoki Qulfni ochish
+pin_hint_new	Yangi 4–12 raqamli Egasi PIN · Enter yoki Qulfni ochish
+pin_hint_shop_code	Doʻkon qurilmasi · juftlash kodi {}
+pin_hint_books	Bu qurilma kitoblarni saqlaydi
+pin_hint_paired	Qoʻshimcha kassa juftlangan — sotish uchun qulfni oching
+pin_hint_pair_first	Qoʻshimcha kassa — avval doʻkon qurilmasi bilan juftlang
+unlock_to_continue	Davom etish uchun qulfni oching
+no_staff_yet	Hali xodim yoʻq — Egasi sifatida qulfni oching, soʻng Jamoa
+status_server_set_pin	Server rejimi — Egasi PIN ini qoʻying
+status_server_tills	Server rejimi — qoʻshimcha kassalar qoʻshila oladi. Qulfni oching
+status_server_unlock	Server rejimi — Egasi sifatida qulfni oching
+status_client_unlock	Mijoz rejimi — sotish uchun qulfni oching
+icon_new_selected	Belgi: yangi fayl tanlandi — Brendni saqlashni bosing
+icon_custom	Belgi: oʻz joy belgisi
+icon_default	Belgi: Kumkaj belgisi (andoza) — oʻzingiznikini tanlang
+logo_yours	Logo: doʻkon logotipingiz — ekran va kvitansiyada koʻrinadi
+logo_default	Logo: Kumkaj belgisi (andoza) — boʻlsa oʻzingiznikini tanlang
+tmpl_current	Joriy: {} — {}
+tmpl_selected	Tanlandi: {} — {}
+setup_complete	Sozlama tugadi
+onboard_fresh_tmpl	Fresh · {} — katalog boʻsh boshlanadi; mahsulotni Mahsulotlarga qoʻshing, soʻng Tayyor.
+onboard_book_tmpl	Book · {} — mahsulot va boshlangʻich kredit qoʻshing, soʻng Tayyor.
+onboard_template_tmpl	Xohlasangiz joyga nom bering, soʻng qanday boshlashni tanlang.
+tmpl_blurb	Kuryer kitoblari va bron qilish stoli: yuk jo'natuvchilar, tashuvchilar, kunlik kitob, AWB.
+tmpl_how	Stolda posilkalarni bron qilish; Bugungi kun uchun kitob; tariflar, partiyalar, hisobotlar uchun yorliqlar.
+trk_booked	Band qilingan
+trk_picked_up	Ko'tarib oldi; moshinada olib ketdi
+trk_in_transit	Yo'lda
+trk_delivered	Yetkazib berildi
+trk_rto	Yuboruvchiga qaytish
+lane_to_dispatch	Yuborish uchun
+lane_with_carrier	Tashuvchi bilan
+lane_failed	Muvaffaqiyatsiz
+lane_done_today	Bugun bajarildi
+ops_board_help	Posilkalar bugungi ish joyida. Ularni tanlash uchun posilkalarni bosing (yoki skanerlang), so'ngra bir vaqtning o'zida barcha tanlanganlar bo'yicha harakat qiling - har bir chiziq faqat unga mos keladigan harakatlarni taklif qiladi.
+lane_empty	Bu yerda hozir hech narsa.
+picked_fmt	{n} tanlandi
+pick_all	Hammasini tanlang
+bag_for_carrier	Tashuvchiga qo'l
+send_with_rider	Chavandoz bilan yuboring
+out_again	Yana tashqariga
+return_to_sender	Yuboruvchiga qaytish
+runs_bags_heading	Oxirgi yugurishlar va sumkalar
+print_word	Chop etish
+bag_word	Tashish sumkasi
+run_word	Chavandoz yugurish
+parcels_fmt	{n} posilkalari
+parcel_history	Tarix
+attempt_fmt	Urinish {n}
+pieces_short_fmt	{n} dona
+note_reason_ph	Eslatma yoki sabab
+ops_pick_first	Avval posilkalarni tanlang — ularga teging yoki skanerlang
+cod_to_collect	Yetkazib berildi - yig'ish uchun COD
+cod_on_road	COD hali ham yo'lda
+cod_owed_consignors	Yig'ilgan - jo'natuvchilarga to'lash uchun
+cod_rto_fees	yig'ish uchun RTO to'lovlari
+cod_to_hand_in	topshirish uchun COD
+parcel_one_fmt	{n} posilkasi
+facet_bank_title	Hisobotlar
+facet_bank_help	Kunlik daftarlar, kontragent eskirishi, bank yozuvlari va davr foyda-zarari.
+facet_ops_title	Yuk tashish va jo'natish
+facet_ops_help	Skanerlang yoki AWB → Top ni kiriting, so‘ng oldinga siljiting / yorliqni / COD ni chop eting. Chavandoz yoki tashuvchiga jo'natish.
+facet_cod_title	COD registri
+facet_cod_help	Yetkazib berishda yig'ing, so'ngra jo'natuvchiga yuboring.
+facet_riders_title	Chavandozlar (o'z floti)
+facet_riders_help	Chavandozlarni qo'shing, so'ngra Opsdan bron qilingan AWBlarni yuboring.
+against_bill_ph	Yuqoridagi hisob № ga (ixtiyoriy)
+aliases_ph	Taxalluslar — boshqa nomlar, vergul bilan
+amount_blank_full_ph	Summa (boʻsh = toʻliq qoldiq)
+amount_owed_ph	Qarzdor summa
+amount_ph	Summa
+amount_received_ph	Olingan summa
+amount_we_pay_ph	Biz toʻlaydigan summa
+awb_scan_ph	AWB / shtrix-kodni skanerlash
+bulk_csv_ph	Ommaviy CSV — maqsad, qabul qiluvchi, kg, cod_paise, eslatma
+business_name_ph	Biznes nomi
+category_new_ph	Toifa (ixtiyoriy, yangi boʻlsa yaratiladi)
+cod_amount_ph	COD miqdori
+code_bag_ph	Kod (qop)
+conv_factor_ph	Koeffitsient (25 = 1 qop → 25 kg)
+country_code_ph	Mamlakat kodi mas. IN, GB, US, AE, BR
+credit_khata_amount_ph	Kredit / hisob summasi
+credit_limit_ph	Kredit limiti (0 = yoʻq)
+dim_unit_code_ph	O'lchov birligi kodi (sm)
+divisor_ph	Volumetrik bo'luvchi (5000)
+extra_per_kg_ph	Qo'shimcha / kg
+first_amount_ph	Birinchi miqdor
+first_kg_ph	Birinchi kg (plitalar)
+from_code_ph	Qaysi koddan (qop)
+item_name_lang_ph	Mahsulot nomi — oʻz tilingizda yozing
+login_id_opt_ph	Foydalanuvchi nomi (majburiy, noyob)
+manager_pin_ph	Tasdiqlash uchun menejer PIN (faqat bekor qila olmasangiz)
+new_branch_name_ph	Yangi filial nomi
+new_password_ph	Yangi parol (ixtiyoriy)
+new_pin_ph	Yangi PIN (4–12 raqam)
+note_bank_ph	Eslatma (kiritish, yechish, …)
+note_buy_expense_ph	Eslatma (yoqilgʻi, ijara, …)
+note_expense_ph	Eslatma (yoqilgʻi, ofis, …)
+notify_phone_ph	Telefonni xabardor qilish (WhatsApp/SMS aloqasi)
+options_moklanjo_ph	Variantlar (ixtiyoriy) — Katta=20, Sovg‘a o‘rami=10
+part_second_way_ph	Ikkinchi yoʻl bilan qism (ixtiyoriy)
+phone_ph	Telefon
+address_ph	Manzil
+party_custom_fields_heading	Maxsus maydonlar (tanlangan tomon)
+party_custom_help	Ushbu partiyaga har qanday yorliq va qiymatni qo'shing - WhatsApp, GSTIN, marshrut kodi, ...
+party_custom_key_ph	Maydon nomi (masalan, WhatsApp)
+party_custom_value_ph	Qiymat
+party_custom_add	Maydon qo'shish
+party_custom_remove	Maydonni olib tashlash
+party_custom_empty	Hozircha maxsus maydonlar yoʻq
+party_custom_pick_first	Maxsus maydonlarni qo'shish uchun partiyani tanlang
+place_name_ph	Bu joyning nomi
+price_ph	Narx
+qty_example_ph	Miqdor (mas. kg uchun 1.5)
+quantity_ph	Miqdor
+reason_required_ph	Sabab (majburiy)
+role_title_ph	Lavozim (mas. Barista)
+service_pct_ph	Xizmat % ixtiyoriy 0/10/12
+short_code_ph	Qisqa kod (MG02)
+slab_kg_ph	To'lanadigan plita kg (0,5)
+staff_name_ph	Xodimning ismi / identifikatori
+starting_password_ph	Boshlangʻich parol (ixtiyoriy)
+starting_pin_ph	Boshlangʻich PIN (4–12 raqam)
+tax_rate_ph	Soliq stavkasi nomi yoki % — Standart, Pasaytirilgan, 0, 5, 12, 18, 20
+to_code_ph	Qaysi kodga (kg)
+uncleared_no_ph	Yuqoridagi tozalanmagan №
+unit_cost_ph	Birlik tannarxi
+unit_kg_blank_ph	Birlik (kg yoki bo'sh)
+unit_name_bag_ph	Nom (Qop)
+weight_unit_code_ph	Og'irlik birligi kodi (kg)
+zone_name_ph	Zona nomi
+pay_credit	Kredit
+book_kind_today	Bugungi kitoblar
+book_kind_month	Shu oyning kitoblari
+book_kind_aging	Toʻlanmagan / debet-kredit
+book_kind_balance	Balans
+ops_desk_help	AWB ni USB shtrix-kod skaneri bilan skanerlang (yoki uni kiriting) → Top. Keyin oldinga siljiting, yorliqni chop eting yoki COD yig'ing. Yorliqlar 128 kodini chop etadi.
+role_help_consignor	Rol: Yuboruvchi — AR (ular bizga qarzdor). Xuddi shu firma ham tashuvchi bo'lishi mumkin.
+role_help_carrier	Rol: Tashuvchi - AP (biz ularga qarzdormiz). Xuddi shu firma ham konsignator bo'lishi mumkin.
+role_help_both	Rollar: Yuboruvchi + Tashuvchi - bitta tomon, AR va AP daftarlari, Hisobotlarda aniq.
+role_help_supplier	Rol: Yetkazib beruvchi — xaridlar uchun AP.
+lane_declared_label	Hisobni bron qilish
+lane_owner_label	Naqd pul bron qilish
+money_lane_bill	Hisob: {lane}

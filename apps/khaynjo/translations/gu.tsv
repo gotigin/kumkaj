@@ -1,0 +1,1351 @@
+# Gujarati — ગુજરાતી (gu). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	રેસ્ટોરન્ટ ઑર્ડર, રસોડું અને ચોપડા. મફત ઑફલાઇન.
+unlock	અનલૉક
+pin_hint	માલિક PIN 0000 થી શરૂ થાય છે
+sell	ઑર્ડર
+buy	ખરીદી
+books	રોજમેળ
+books_help	આજની સ્થિતિ. ઑર્ડર = ઑર્ડર આવ્યા. ખરીદી = ખરીદી અને ખર્ચ. પાર્ટી = ઉધાર ગ્રાહક અને સપ્લાયર.
+buy_help	ખર્ચ વાઉચર અને સપ્લાયર બિલ (પૈસા બહાર). ખાતા પરનું પાર્ટી ખાતામાં રહે છે.
+sell_money_in	ઑર્ડર લો
+buy_money_out	ખર્ચ / સપ્લાયર બિલ
+record_purchase	ખરીદ નોંધો
+add_expense	ખર્ચ વાઉચર
+bank_book	બેંક ચોપડો
+credit_help	પાર્ટી આઈડી અનન્ય છે (નામ પુનરાવર્તિત થઈ શકે છે). ગ્રાહક ખાતું ચલાવે છે (અમારો દેવાદાર); સપ્લાયર અમને માલ વેચે છે (અમે તેના દેવાદાર); બંને ચાલે. ખાતા અલગ રહે છે; રિપોર્ટ નેટ બતાવે છે.
+party_kind_ph	ભૂમિકાઓ: ગ્રાહક, સપ્લાયર, બંને…
+reports_help	રોજમેળ, દેવાદાર અને લેણદાર, બેંક ચોપડો, ખર્ચ વાઉચર, નફો અને નુકસાન.
+reports_today	રોજમેળ (આજે)
+reports_month	નફો અને નુકસાન (મહિનો)
+reports_aging	બાકી / Dr-Cr
+reports_balance_sheet	સરવૈયું
+reports	અહેવાલ
+refresh	તાજું
+undo	પૂર્વવત
+start_tracking	ગણતરી શરૂ
+stock_minus	− સ્ટોક
+stock_plus	+ સ્ટોક
+settle_cash	રોકડ ચૂકવો
+settle_card	કાર્ડથી ચૂકવો
+items	મેનૂ અને આઇટમ
+nav_items	મેનૂ
+more	વધુ
+your_items	તમારું મેનૂ
+items_help	દરેક હરોળ એક વાનગી અથવા આઇટમ છે (દા.ત. Masala Dosa). તેની કિંમત અને રસોડું સ્ટેશન ઉમેરો. ફેરફાર માટે દબાવો.
+add_item	આઇટમ ઉમેરો
+new_item	નવી આઇટમ
+adding_item	નવી આઇટમ ઉમેરી રહ્યા છે
+editing_item	ફેરફાર
+save	સાચવો
+remove	દૂર કરો
+removed_items	દૂર કરેલી આઇટમ
+removed_help	પાછું લાવવાથી આઇટમ પહેલાં જેવી જ મેનૂમાં આવે છે — કિંમત, ફોટો અને શ્રેણી. અમારો વાનગીઓનો શેલ્ફ કદી દૂર થતો નથી, તેથી કોઈ પણ વાનગી ફરી ઉમેરી શકાય.
+restore_item	પાછો લાવો
+empty_catalog	હજી કોઈ આઇટમ નથી. મેનૂ અને આઇટમ ખોલો, એક ઉમેરો (નામ + કિંમત), પછી ઑર્ડર લો.
+total	કુલ
+cash	રોકડ
+upi	यूपीआई
+card	કાર્ડ
+credit	પાર્ટી
+clear	સાફ
+ready_to_sell	બુકિંગ માટે તૈયાર
+today_prefix	આજે
+today_mid	આજે
+owed	બાકી
+round_word	રાઉન્ડ
+back	પાછળ
+sold_out	વેચાઈ ગયું
+restock	ફરી મૂકો
+not_tracked	ગણતરી નથી
+in_stock	સ્ટોકમાં
+marked_sold_out	વેચાઈ ગયાની નિશાની
+add_upper	ઉમેરો
+na	નથી
+qty	સંખ્યા
+unit_at	ભાવ
+actual	ખરું
+applied	લાગુ
+note_ph	નોંધ (વૈકલ્પિક)
+rounded	રાઉન્ડ
+split	વહેંચો
+send_kot	રસોડે મોકલો
+send_kot_to	મોકલો → {kitchens}
+send_kot_again	આગલા KOT માટે વાનગી ઉમેરો
+send_kot_held	હોલ્ડ વાનગીઓ — મોકલવા હોલ્ડ હટાવો
+reprint_kot	પસંદ કરેલ ફરી છાપો
+reprint_kot_ok	{n} વાનગી ફરી · {slips} સ્લિપ → {kitchens}
+reprint_kot_needed	પહેલા KOT મોકલો — પછી વાનગી સામેલ કરીને પસંદ છાપો
+reprint_kot_none_selected	બધા મોકલેલ છોડ્યા — છાપવા «છાપમાં» દબાવો
+reprint_kot_client	{place} માટે ફરી છાપો ({n}) મોકલ્યું — રસોડું સર્વર પર છાપશે
+print_cancelled_kot	બધા રદ છાપો
+print_cancelled_kot_ok	{n} रद्द छापे · {slips} पर्ची → {kitchens}
+print_cancelled_kot_needed	રદ વાનગીઓવાળું ટેબલ ખોલો
+print_cancelled_kot_none	આ ઓર્ડર પર રદ નથી
+print_cancelled_kot_client	રદ ({n}) {place} મોકલ્યું — સર્વર પર છપાશે
+kot_banner	બેનર
+kot_banner_ph	બેનર (ખાલી = નહીં)
+kot_item_prefix	આઇટમ ઉપસર્ગ
+kot_item_prefix_ph	દા.ત. [CANCELLED] 
+kot_strike	વાનગી નામ કાપો
+kot_strike_note	નોંધ કાપો
+kot_strike_on	ચાલુ
+kot_strike_off	બંધ
+bill_item_layout	આઇટમ લેઆઉટ
+bill_item_layout_columns	સ્તંભ
+bill_item_layout_stacked	પંક્તિઓ
+bill_item_header	સ્તંભ શીર્ષક
+bill_item_hdr_item	આઇટમ શીર્ષક
+bill_item_hdr_qty	સંખ્યા શીર્ષક
+bill_item_hdr_price	ભાવ શીર્ષક
+bill_item_hdr_amount	રકમ શીર્ષક
+bill_item_name	વાનગીનું નામ
+bill_item_qty	જથ્થો
+bill_item_price	ભાવ
+bill_item_amount	રકમ
+bill_item_note	નોંધ
+bill_item_col_gap	સ્તંભ અંતર
+bill_item_col_order	સ્તંભ ક્રમ
+bill_item_col_sep	સ્તંભ રેખા
+bill_item_gap_tight	ચુસ્ત
+bill_item_gap_comfort	આરામદાયક
+bill_item_gap_wide	પહોળું
+bill_item_num_width	અંક સ્તંભ
+bill_item_num_compact	નાનું
+bill_item_num_comfort	આરામદાયક
+bill_item_num_wide	પહોળું
+bill_item_num_align	અંક ગોઠવણ
+bill_item_gap_em	અંતર (em)
+bill_item_qty_min	સંખ્યા લઘુતમ (em)
+bill_item_price_min	ભાવ લઘુતમ (em)
+bill_item_amount_min	રકમ લઘુતમ (em)
+kot_item_qty_width	સંખ્યા સ્તંભ
+kot_item_num_align	સંખ્યા ગોઠવણ
+bill_total_qty_label	કુલ સંખ્યા લેબલ
+bill_total_subtotal_label	પેટા સરવાળો લેબલ
+bill_total_grand_label	કુલ લેબલ
+bill_total_paid_label	ચૂકવેલ લેબલ
+bill_meta_pair	એક પંક્તિમાં સાથે
+bill_pair_alone	એકલું
+bill_item_piece_on	ચાલુ
+bill_item_piece_off	બંધ
+bill_total_qty	કુલ જથ્થો
+bill_total_subtotal	પેટા કુલ
+bill_total_grand	કુલ
+reprint_incl	છાપમાં
+reprint_skip	છોડો
+reprint_skip_meta	રિકવરી પ્રિન્ટ છોડો
+kot_dest_hint	સેટિંગ્સ → પ્રિન્ટરમાં {kitchens} ને સોંપેલા પ્રિન્ટર પર છપાય છે
+kot_sent_hint	છેલ્લો KOT {kitchens} પર ગયો. આગલી ટિકિટ માટે વાનગી ઉમેરવા દબાવો — અથવા એ જ ટિકિટ માટે KOT ફરી છાપો.
+kot_sent_printing	KOT {kitchens} ને મોકલ્યો — છપાઈ રહ્યો છે
+kot_sent_not_printed	KOT {kitchens} ને મોકલ્યો, પણ છપાયો નહીં: {why}. રસોડાને કહો, પછી પ્રિન્ટર ઠીક કરીને ફરી છાપો.
+kot_sent_screen	KOT {kitchens} ને મોકલ્યો
+kot_queued_shop	{place} નો KOT → {kitchens} સાચવ્યો; દુકાનનું ડિવાઇસ તેને છાપશે
+kot_job_label	{place} નો KOT → {kitchens}
+kot_job_reached	{place} નો KOT {kitchens} સુધી પહોંચ્યો
+kot_unassigned	રસોડું (કોઈ સ્ટેશન નહીં)
+kot_unassigned_held	સ્ટેશન વગર {n} વાનગીઓ હોલ્ડ — મોકલવા હોલ્ડ કાઢો
+kot_station_ph	રસોડું
+kot_station_dd	રસોડું
+kot_station_dd_n	રસોડું · {stations}
+kot_set_station	આ સ્ટેશન વાપરો
+kot_station_applied	{n} વાનગી પર સ્ટેશન મૂક્યું: {station}
+kot_station_cleared	{n} વાનગી પરથી સ્ટેશન હટાવ્યું: {station}
+kot_station_needed	પહેલાં રસોડું સ્ટેશન પસંદ કરો
+kot_station_not_allowed	આ રસોડું વાપરવાની મંજૂરી નથી: {station}
+kot_station_none	હજી કોઈ રસોડા સ્ટેશન નથી — રસોડું અથવા સેટિંગ્સ → વિસ્તાર · સ્ટેશનમાં એક ઉમેરો
+pos_tab_items	ઉમેરાયેલા
+pos_tab_payment	ચુકવણી
+hold_send	રોકો
+hold_send_on	હોલ્ડ
+hold_send_meta	હોલ્ડ — આ KOT માં નહીં
+station_remove	સ્ટેશન દૂર કરો
+station_remove_ph	દૂર કરવા યાદીમાં સ્ટેશન દબાવો
+station_removed	સ્ટેશન દૂર કર્યું: {name}
+settings_hub_title	સેટિંગ્સ
+settings_hub_help	એક સમયે એક ભાગ ખોલો — ઓછું સ્ક્રોલ, સ્પષ્ટ પસંદગી.
+settings_back	પાછળ
+settings_sec_language	ભાષા અને ચલણ
+settings_sec_country	દેશ અને કર
+settings_sec_tills	વધારાના ટિલ અને શાખાઓ
+settings_sec_brand	તમારી બ્રાન્ડ
+settings_sec_units	એકમો અને રૂપાંતર
+settings_sec_pickers	વિસ્તાર · સ્ટેશન · કર દર
+settings_sec_printers	પ્રિન્ટર
+settings_sec_bill	બિલ અને KOT ફોર્મેટ
+settings_sec_selling	યોજનાઓ અને વેચાણ
+bill_kot_tab_bill	બિલ
+bill_kot_tab_kot	KOT
+settings_sec_alerts	સૂચનાઓ
+alerts_help	સ્થિતિ સંદેશા તમારા માટે સ્ક્રીન પર કેટલો સમય રહે (આ લૉગિન માટે).
+snack_secs_ph	સેકન્ડ (3–60, મૂળ 10)
+snack_secs_save	સૂચના સમય સાચવો
+snack_secs_saved	સૂચના સમય સાચવ્યો — {n} સેકન્ડ
+settings_sec_backup	બેકઅપ અને પુનઃસ્થાપન
+settings_sec_diag	નિદાન
+diag_privacy_help	લોગ આ જ ઉપકરણ પર રહે છે. ગુપ્ત માહિતી (PIN, પાસવર્ડ) ક્યારેય સાચવાતી નથી. ઉપકરણની બહાર પેકેજ મોકલવા દર વખતે તમારી સ્પષ્ટ મંજૂરી જોઈએ — ક્યારેય વેચાતું નથી કે ત્રીજા પક્ષને અપાતું નથી.
+diag_level	વિગતનું સ્તર
+diag_level_error	ભૂલો
+diag_level_warn	ચેતવણીઓ
+diag_level_info	માહિતી
+diag_level_debug	ડીબગ
+diag_support_start	30 મિનિટનું સહાય સત્ર શરૂ કરો
+diag_support_stop	સહાય સત્ર બંધ કરો
+diag_support_started	સહાય સત્ર ચાલુ — 30 મિનિટ ડીબગ વિગત
+diag_support_ended	સહાય સત્ર પૂરું થયું
+diag_export_local	સ્થાનિક નકલ નિકાસ કરો
+diag_export_local_done	સ્થાનિક ડાયગ્નોસ્ટિક્સ {path} પર તૈયાર — નકલ ક્યાં સાચવવી તે પસંદ કરો
+diag_approve_send	ઉપકરણની બહાર મોકલવાની મંજૂરી આપો
+diag_send_help	મંજૂરી એક પેકેજ માટે છે, પછી પૂરી થાય છે. કામચલાઉ — ફક્ત ઉત્પાદન સુધારવા કે બહેતર બનાવવા. ત્રીજા પક્ષને અપાતું નથી. Linux, Windows, macOS અને Android પર ચાલે છે.
+diag_send_approved	એક પેકેજ મોકલવાની મંજૂરી મળી (જલ્દી પૂરી થશે)
+diag_export_send	મોકલવાનું પેકેજ બનાવો (મંજૂરી જોઈએ)
+diag_export_send_done	મોકલવાનું પેકેજ {path} પર તૈયાર — ક્યાં સાચવવું તે પસંદ કરો, પછી ફક્ત Kumkaj સહાયને મોકલો
+diag_save_bundle	ડાયગ્નોસ્ટિક્સ નકલ સાચવો
+diag_bundle_saved	ડાયગ્નોસ્ટિક્સ નકલ {path} માં સાચવી
+diag_bundle_failed	ડાયગ્નોસ્ટિક્સ નકલ સાચવી શકાઈ નહીં — ફરી પ્રયાસ કરો
+diag_clear	ડાયગ્નોસ્ટિક લોગ સાફ કરો
+diag_cleared	ડાયગ્નોસ્ટિક લોગ સાફ થયા
+sidebar_settings	સાઇડબાર
+sidebar_settings_help	બાજુની પટ્ટી જેવા જ આઇકન. ક્રમ બદલવા પંક્તિ ખેંચો. બતાવવા કે છુપાવવા સ્વિચ બદલો. સેટિંગ્સ અને લૉક હંમેશા પટ્ટી પર રહે છે.
+sidebar_always_on_short	હંમેશા ચાલુ
+sidebar_back_settings	પાછળ
+sidebar_shown	દેખાય છે
+sidebar_hidden	છુપાયેલું
+sidebar_always_on	હંમેશા પટ્ટી પર
+sidebar_shown_hint	બાજુની પટ્ટી / નીચેના ટૅબ પર દેખાય છે
+sidebar_hidden_hint	પટ્ટીથી છુપાયેલું
+sidebar_menu_items	મેનૂ અને આઇટમ
+sidebar_enable_all	બધું ચાલુ કરો
+sidebar_disable_all	બધું બંધ કરો
+sidebar_order_saved	સાઇડબારનો ક્રમ સાચવ્યો
+sidebar_visibility_saved	સાઇડબારની દૃશ્યતા સાચવી
+amounts_hide	છુપાવો
+amounts_show	બતાવો
+printers_none_hint	પહેલાં આ ઉપકરણ પર પ્રિન્ટર સાચવો, પછી તેને બિલ અથવા કોઈ રસોડામાં ઉમેરો
+counter	કાઉન્ટર
+dine_in	બેસીને
+takeaway	પાર્સલ
+order	ઑર્ડર
+tables	ટેબલ
+kitchen	રસોડું
+sales	વેચાણ
+sales_refunds	વેચાણ અને પરત
+day_close	દિવસ બંધ
+reports_expenses	અહેવાલ અને ખર્ચ
+nav_reports	અહેવાલો
+nav_settings	સેટિંગ્સ
+nav_lock	લોક
+no_sale_yet	હજુ કોઈ વેચાણ નથી
+favorites	મનપસંદ
+favorites_help	તમે વારંવાર વેચતા હોવ તેવી વસ્તુઓ, તમારા લોગિન માટે સાચવેલી. એકને બિલમાં ઉમેરો, અથવા નીચેની બધી વસ્તુઓમાંથી તમારી યાદી બનાવો.
+your_favorites	તમારી મનપસંદ
+all_items	બધી વસ્તુઓ
+frequent	વારંવાર
+added_items	ઉમેરેલાં
+added_items_empty	આ ઑર્ડર પર હજી કંઈ નથી — All items અથવા શ્રેણીમાંથી ઉમેરો.
+frequent_config_help	પૂર્ણ બિલથી સૌથી વધુ વેચાયેલાં. કેટલા દિવસ જોવા અને કેટલા બતાવવા અહીં બદલો.
+frequent_days_ph	દિવસ (1)
+frequent_limit_ph	આઇટમ (24)
+frequent_apply	લાગુ કરો
+frequent_saved	વારંવાર: છેલ્લા {d} દિવસ, ટોચની {n} — {c} વાનગી
+frequent_empty	આ સમયગાળામાં પૂર્ણ વેચાણ નથી — બિલ પૂરું કરો (સેટિંગમાં ₹0 માન્ય હોય તો) અહીં દેખાશે.
+zero_sales	શૂન્ય કિંમત વેચાણ
+zero_sales_help	₹0 વાનગી અને ₹0 ચુકવણી મંજૂર કરો. બંધ હોય તો ચુકવણીમાં રકમ જોઈએ.
+zero_sales_on	શૂન્ય વેચાણ: ચાલુ
+zero_sales_off	શૂન્ય વેચાણ: બંધ
+zero_sales_saved_on	શૂન્ય વેચાણ પરવાનગી સચવાઈ (ચાલુ)
+zero_sales_saved_off	શૂન્ય વેચાણ પરવાનગી સચવાઈ (બંધ)
+floor_areas_help	વિસ્તાર ફ્લોર પર રૂમ/ઝોન (Dine In, Parcel, AC …). પહેલા વિસ્તાર ઉમેરો, પછી ટેબલ — દરેક વિસ્તાર અલગ જૂથ.
+area_new_ph	નવો વિસ્તાર / રૂમ (દા.ત. AC, Garden)
+add_area	વિસ્તાર ઉમેરો
+area_added	વિસ્તાર “{name}” તૈયાર — તેમાં ટેબલ ઉમેરો
+no_favorites	હજુ મનપસંદ નથી — નીચેની યાદીમાંથી વસ્તુઓ ઉમેરો.
+add_to_bill	બિલમાં ઉમેરો
+added	ઉમેર્યું
+owes_word	દેણદાર છે
+selected_word	પસંદ કરેલ
+chip_clear_credit	ચોખ્ખું — ઉધાર આપો અથવા એડવાન્સ લો
+chip_missing_customer	પસંદ કરેલ ગ્રાહક મળતો નથી — ફરી પસંદ કરો
+chip_no_customer	હજુ કોઈ ગ્રાહક નથી — નામ લખો, પછી Credit દબાવો
+credit_summary_fmt	{} ગ્રાહકો · ખુલ્લું ઉધાર {} · એડવાન્સ રાખેલ {}
+recent_label	તાજેતરના:
+kot_new_waiting	નવું — રાહ જોઈ રહ્યું છે
+kot_preparing	તૈયાર થઈ રહ્યું છે
+kot_ready_serve	તૈયાર — પીરસો
+kot_done_cap	પૂર્ણ
+kot_cancelled	રદ
+kot_start_btn	શરૂ કરો
+kot_mark_ready	તૈયાર તરીકે ચિહ્નિત કરો
+kot_done_btn	થઈ ગયું
+table_free	ખાલી — ઓર્ડર શરૂ કરવા ટેપ કરો
+start_order	ઓર્ડર શરૂ કરો
+open_bill	બિલ ખોલો
+collect_payment	ચુકવણી લો
+table_running	ચાલુ છે
+payment_pending	ચુકવણી બાકી
+collect_at_counter	કાઉન્ટર પર લો
+inventory	સ્ટોક
+inventory_stock	સ્ટોક અને ગણતરી
+branches	શાખા
+branches_org	શાખા અને સંસ્થા
+credit_customers	ઉધાર ગ્રાહક
+customer_name_ph	પાર્ટીનું નામ
+new_customer_ph	નવી પાર્ટીનું નામ
+item_name_ph	આઇટમનું નામ (દા.ત. Masala Dosa)
+item_price_ph	કિંમત
+start_template	ઉત્પાદન
+team	ટીમ
+team_pins	ટીમ અને પિન
+my_pin_settings	મારો PIN
+settings_hub_help_my_pin	આ ડિવાઇસ પર સાઇન-ઇન વ્યક્તિનો અનલૉક PIN બદલો.
+team_self_help	ફક્ત તમે તમારો અનલૉક PIN (અને વૈકલ્પિક લૉગિન પાસવર્ડ) બદલી શકો. અલગ સ્ક્રીન અથવા અધિકાર જોઈએ તો માલિકને કહો.
+backup_settings	બૅકઅપ અને સેટિંગ
+lock_app	એપ બંધ
+pick	પસંદ
+select	પસંદ કરો
+advance	આગળ
+owner	માલિક
+staff	કર્મચારી
+photo	ફોટો
+auto	આપમેળે
+prev	પહેલાં
+next	આગળ
+ok	બરાબર
+this_shop	સર્વર મોડ
+extra_till	ક્લાયન્ટ મોડ
+off	બંધ
+tables_kitchen	ટેબલ અને રસોડું
+server	સર્વર
+client	ક્લાયન્ટ
+language_currency	ભાષા અને ચલણ
+language	ભાષા
+choose_language	તમારી ભાષા પસંદ કરો
+language_setup_hint	આ ડિવાઇસની ભાષા પ્રમાણે ચાલો, અથવા જાતે એક પસંદ કરો.
+lang_follow_platform	ડિવાઇસની ભાષા વાપરો
+lang_pick_user	પસંદ કરેલી ભાષા વાપરો
+lang_platform_now	હાલ ડિવાઇસની ભાષા
+selected_language	પસંદ કરેલ
+continue	આગળ વધો
+this_device	આ ડિવાઇસ
+device_use_q	આ ડિવાઇસનો ઉપયોગ કેવી રીતે થશે?
+last_server_mode	પહેલાં સર્વર હતું — ચાલુ રાખવા ટૅપ કરો
+last_client_mode	પહેલાં ક્લાયન્ટ હતું — ચાલુ રાખવા ટૅપ કરો
+choose_server	સર્વર પસંદ કરો
+choose_server_hint	આ ડિવાઇસ પર પહેલેથી સર્વર છે. એક ખોલો, અથવા બીજા ધંધા માટે નવું સર્વર બનાવો.
+create_new_server	નવું સર્વર બનાવો
+open_server	ખોલો
+new_server_name_ph	નવા સર્વરનું નામ (વૈકલ્પિક)
+server_remove_pin_ph	સર્વર દૂર કરવા Owner PIN
+only_owner_remove_server	ફક્ત Owner સર્વર દૂર કરી શકે
+owner_pin_remove_server	સર્વર દૂર કરવા Owner PIN જોઈએ
+device_setup_help	સર્વર ચોપડા અહીં જ રાખે છે. ક્લાયન્ટ કોઈ સર્વર સાથે જોડાય છે.
+app_template_heading	રાજધાની એપ ટેમ્પ્લેટ
+app_template_blurb	રાજધાની મેનૂ લોડ કરે છે; માલિક ઝહીર (zahir), એડમિન આસિફ (asif, PIN 1111), વેઈટર નવાઝ (nawaz, PIN 0000); FOH સાઇડબાર; ઇતિહાસ 4 કલાક પછી સાફ થાય છે (અને બેકઅપમાં હમણાં સાફ કરો); આજની પટ્ટી બંધ; સાંકડી ટ્રે માટે નાનો KOT + સામાન્ય માર્જિન. સાઇડબારના બાકીના સેટિંગ્સમાં ફરી ચાલુ કરી શકાય.
+app_template_apply	રાજધાની એપ ટેમ્પ્લેટ
+app_template_skip	હમણાં છોડો
+app_template_status	સર્વર તૈયાર — રાજધાની એપ ટેમ્પ્લેટ લાગુ કરો, અથવા છોડો
+app_template_importing	{title} લાગુ કરી રહ્યાં છીએ…
+currency	ચલણ
+backup	બૅકઅપ
+use	વાપરો
+dont_use	વાપરશો નહીં
+add_branch	શાખા ઉમેરો
+add_conversion	રૂપાંતર ઉમેરો
+add_dishes_items	વાનગી અને આઇટમ ઉમેરો
+add_item_plain	આઇટમ ઉમેરો
+add_note	નોંધ ઉમેરો
+add_opening_balance	શરૂઆતની બાકી ઉમેરો
+add_staff	કર્મચારી ઉમેરો
+add_station	સ્ટેશન ઉમેરો
+add_table	ટેબલ ઉમેરો
+add_unit	એકમ ઉમેરો
+add_use_name	આ નામ ઉમેરો / વાપરો
+allow_extra_tills	વધારાના ટિલની મંજૂરી આપો
+amend	સુધારો
+apply_country_pack	દેશ પેક લાગુ કરો
+datetime_appearance	તારીખ અને સમયનો દેખાવ
+datetime_appearance_help	રોજમેળ અંદર વર્ષ-પહેલાં RFC3339 રાખે છે. આ ફક્ત બિલ, KOT, રિપોર્ટ અને સ્ક્રીન પર તારીખ અને ઘડિયાળ કેવાં દેખાય તે બદલે છે.
+datetime_example	હમણાંનું ઉદાહરણ: {ex}
+date_order	તારીખનો ક્રમ
+date_order_dmy	દિ/મ/વ
+date_order_mdy	મ/દિ/વ
+date_order_ymd	વ-મ-દિ
+time_format	ઘડિયાળ
+time_format_24h	24 કલાક
+time_format_12h	12 કલાક
+attach_bill_photo	બિલ ફોટો જોડો
+attach_pdf	PDF જોડો
+attach_photo	ફોટો જોડો
+attachments_last_expense	જોડાણ (છેલ્લો ખર્ચ)
+bank	બેંક
+bank_in	બેંકમાં નાખો
+bank_out	બેંકમાંથી કાઢો
+bank_reconciliation	બેંક મેળવણી (તમારા બેંક સ્ટેટમેન્ટ સાથે ટિક કરો)
+bank_to_till	બેંક → ટિલ
+book_add_dish	બુક — વાનગી / આઇટમ ઉમેરો
+book_opening_credit	બુક — શરૂઆતનું ઉધાર
+branch_name_sell_ph	જે શાખામાંથી વેચવું છે તેનું નામ
+bring_my_book	મારો ચોપડો લાવો
+business_tax_id_ph	ધંધાનો કર આઈડી
+caption_bank	બેંક
+caption_bills	બિલ
+caption_outstanding	બાકી
+caption_payments_today	આજની ચુકવણી
+caption_today	આજે
+card_amount_ph	કાર્ડ રકમ
+cash_amount_ph	રોકડ રકમ
+cash_memo	કેશ મેમો
+choose_icon	આઇકન પસંદ કરો
+choose_logo	લોગો પસંદ કરો
+clear_icon	આઇકન દૂર કરો
+clear_photo	ફોટો દૂર કરો
+copy_day_book_csv	રોજમેળ CSV કૉપી
+copy_day_close	દિવસ બંધ કૉપી કરો
+copy_items_csv	આઇટમ CSV કૉપી
+copy_outstanding_csv	બાકી CSV કૉપી
+copy_parties_csv	પાર્ટી CSV કૉપી
+copy_party_ledger_csv	પાર્ટી ખાતું CSV કૉપી
+copy_receipt	રસીદ કૉપી કરો
+share_whatsapp	વોટ્સએપ શેર
+lan_pages_heading	Wi‑Fi પર મહેમાન પૃષ્ઠ
+lan_pages_help	દુકાનના વાઇ‑ફાઇ પર મહેમાનોનાં પેજ ચાલે છે: ડિસ્પ્લે બોર્ડ, ટોકન, એક્સપો, કિયોસ્ક, ટેબલ QR અને પ્રતિભાવ. મોબાઇલ ડેટા પરના મહેમાનો માટે પછી Cloud જોઈશે. ઇન્ટરનેટ હોય ત્યારે કાર્ડ ટર્મિનલ / પેમેન્ટ લિંક વૈકલ્પિક — તે કાઉન્ટરને ક્યારેય અટકાવતું નથી.
+diag_send_heading	આ ડિવાઇસથી બહાર શેર કરો
+kot_dest_heading	રસોડું સ્ટેશન
+optional_login_heading	વૈકલ્પિક લૉગિન
+rights_heading	અધિકારો
+ops_panel	સ્થાનિક કામ
+crm_heading	મહેમાન અને સંદેશ
+crm_help	જન્મદિવસ, લોયલ્ટી — SMS/WhatsApp કતાર. {name}, {points}. માલિક મોકલે.
+crm_queue_sms	SMS કતાર
+crm_queue_wa	WhatsApp કતાર
+crm_seg_bday_week	જન્મદિવસ અઠવાડિયું
+crm_seg_bday_month	જન્મદિવસ મહિનો
+crm_seg_phone	ફોન વાળા
+crm_seg_loyalty	લોયલ્ટી
+crm_seg_inactive	નિષ્ક્રિય
+crm_seg_top	ટોચ ખર્ચ
+birthday_ph	જન્મદિવસ (MM-DD અથવા YYYY-MM-DD)
+crm_message_ph	જન્મદિવસની શુભકામના {name}! તમારી પાસે {points} પોઈન્ટ.
+till_apply_redeem	બિલ પર લાગુ
+till_clear_redeem	રિડીમ દૂર
+till_wallet_topup	વૉલેટ ટોપ-અપ
+till_issue_voucher	વાઉચર ઈશ્યૂ
+till_points_ph	રિડીમ પોઈન્ટ
+till_wallet_ph	વૉલેટ ખર્ચ
+till_voucher_code_ph	વાઉચર કોડ
+till_voucher_amt_ph	વાઉચર રકમ (ખાલી = બધું)
+till_wallet_topup_ph	વૉલેટ ટોપ-અપ રકમ
+till_voucher_issue_amt_ph	નવું વાઉચર રકમ
+till_voucher_issue_code_ph	નવું વાઉચર કોડ
+split_evenly	સરખું વહેંચો
+waitlist	વેટલિસ્ટ
+fire_course	કોર્સ મોકલો
+hold_item	રોકો
+waiter_call	વેટર બોલાવો
+waitlist_add	વેટલિસ્ટમાં ઉમેરો
+floor_view_grid	ગ્રિડ
+floor_view_layout	લેઆઉટ
+floor_layout_x	X
+floor_layout_y	Y
+floor_layout_w	W
+floor_layout_h	H
+floor_layout_save	લેઆઉટ સાચવો
+floor_layout_open	ટેબલ ખોલો
+floor_layout_edit	લેઆઉટ સંપાદન
+floor_layout_pick	લેઆઉટ બદલવા ટેબલ ટૅપ કરો
+floor_layout_saved	ટેબલ લેઆઉટ સચવાયું
+floor_layout_nudge_left	← 20
+floor_layout_nudge_right	→ 20
+floor_layout_nudge_up	↑ 20
+floor_layout_nudge_down	↓ 20
+sibling_pickers_help	યુનિટની જેમ On/Off — વિસ્તાર, સ્ટેશન, કર દર દૈનિક પિકરમાંથી છુપાવો; પેક ડિફૉલ્ટ રહે.
+bulk_price_apply	બલ્ક કિંમત લાગુ
+card_terminal_optional	કાર્ડ ટર્મિનલ / પેમેન્ટ લિંક (ઇન્ટરનેટ હોય તો વૈકલ્પિક)
+copy_report	અહેવાલ કૉપી કરો
+counted_cash_ph	ડ્રોઅરમાં ગણેલી રોકડ
+country_tax	દેશ અને કર
+tax_chrome	ટિલ પર કર લેબલ
+tax_chrome_help	બંધ હોય ત્યારે ઓર્ડર ડેસ્ક GST/કર અંદાજની પંક્તિઓ અને કિંમતમાં-GST સંકેત છુપાવે છે. કર દર અને દેશ અને કર સેટિંગ્સ રહે છે — લેબલ ક્યારેય પણ ફરી ચાલુ કરો. રાજધાની એપ ટેમ્પ્લેટ આને બંધ રાખીને શરૂ થાય છે.
+tax_chrome_on	બતાવો
+tax_chrome_off	છુપાવો
+tax_chrome_saved_on	ટિલ પર કર લેબલ
+tax_chrome_saved_off	ટિલ પર કર લેબલ છુપાયા
+tax_invoice_till	ટિલ પર કર ઇન્વૉઇસ
+tax_invoice_help	બંધ હોય ત્યારે બિલ ફક્ત કેશ મેમો હોય છે અને ઓર્ડર ડેસ્ક પર કર ઇન્વૉઇસ / કેશ મેમો ચિપ છુપાય છે. રાજધાની એપ ટેમ્પ્લેટ આને બંધ રાખીને શરૂ થાય છે — કર ઇન્વૉઇસ ફરી પસંદ કરવા ક્યારેય પણ બતાવો ચાલુ કરો.
+tax_invoice_on	બતાવો
+tax_invoice_off	છુપાવો
+tax_invoice_saved_on	ટિલ પર કર ઇન્વૉઇસ
+tax_invoice_saved_off	કર ઇન્વૉઇસ છુપાયું — ફક્ત કેશ મેમો
+pay_methods	ચુકવણીની રીતો
+pay_methods_help	ચુકવણી લો પર કઈ ચિપ દેખાય. રોકડ હંમેશા રહે છે. રાજધાની એપ ટેમ્પ્લેટ ફક્ત રોકડથી શરૂ થાય છે — UPI / કાર્ડ / ઉધાર / વહેંચણી અહીં ફરી ચાલુ કરો.
+create_backup	બૅકઅપ બનાવો
+credit_limit_heading	ઉધાર મર્યાદા (પસંદ કરેલ / નામવાળી પાર્ટી)
+day_close_summary	દિવસ બંધ સારાંશ
+delete_party	પસંદ કરેલ પાર્ટી કાઢો
+delivery	ડિલિવરી
+done_open_books	થઈ ગયું — ચોપડા ખોલો
+drawer_count	ડ્રોઅર ગણતરી (વૈકલ્પિક)
+expense_heading	ખર્ચ
+export_day	દિવસ એક્સપોર્ટ કરો
+extra_note_bill_ph	આ બિલ / વેચાણ પર વધારાની નોંધ
+extra_note_expense_ph	છેલ્લા ખર્ચ પર વધારાની નોંધ
+extra_tills_heading	વધારાના ટિલ
+other_devices_help_heading	બીજા ડિવાઇસ સેટ કરો
+other_devices_help	આ ડિવાઇસ પર (સર્વર): વધારાના ટિલ → વધારાના ટિલની મંજૂરી આપો. જોડાણ કોડ અને વાઇ‑ફાઇ સરનામું નોંધો. દેખાય તો અન્ય ડિવાઇસને કનેક્ટ થવા દો દબાવો. કમ્પ્યુટર પર આ કમ્પ્યુટર સાથે શરૂ કરો દબાવો. દરેક બીજા ડિવાઇસ પર: ઍપ ઇન્સ્ટોલ કરો, ક્લાયન્ટ મોડ પસંદ કરો, દુકાનનું સર્વર શોધો (અથવા સરનામું લખો), જોડાણ કોડ નાખો, હમણાં જોડો. વાઇ‑ફાઇ તૂટે તો ઓર્ડર ડિવાઇસ પર રોકાય અને સર્વર જવાબ આપે ત્યારે જાય.
+forget_shop	આ દુકાન ભૂલી જાઓ
+goods_received	માલ મળ્યો
+import_day	દિવસ ઇમ્પોર્ટ કરો
+import_items_csv_plain	આઇટમ CSV ઇમ્પોર્ટ…
+import_parties_csv	પાર્ટી CSV ઇમ્પોર્ટ…
+item_name	આઇટમનું નામ
+kitchen_printing	રસોડું પ્રિન્ટિંગ
+login_id_ph	લૉગિન આઈડી
+mark_cleared	ક્લિયર તરીકે ચિહ્નિત કરો
+new_party_clear	નવી પાર્ટી (ફોર્મ સાફ કરો)
+new_party_kind_supplier_ph	નવી પાર્ટીનો પ્રકાર (સપ્લાયર)
+next_country	આગલો દેશ
+next_order	આગલો ઑર્ડર (ડેસ્ક સાફ)
+note_gstin_ph	નોંધ / GSTIN / કરાર રિમાઇન્ડર
+notes_attach_party	નોંધ અને જોડાણ (પસંદ કરેલ પાર્ટી)
+notes_attach_sale	નોંધ અને જોડાણ (પસંદ કરેલ વેચાણ)
+on_account_ap	ખાતા પર (AP)
+org_optional_ph	સંસ્થા (વૈકલ્પિક)
+paid_by	ચૂકવનાર
+paid_now	હમણાં ચૂકવ્યું
+pair_now	હમણાં જોડો
+pairing_code_ph	પેરિંગ કોડ
+party_name_selected_ph	પાર્ટીનું નામ (અથવા પસંદ કરેલ વાપરો)
+password_ph	પાસવર્ડ
+pay_ap_card	AP કાર્ડથી ચૂકવો
+pay_ap_cash	AP રોકડ ચૂકવો
+pay_ap_heading	આપણે તેમને આપવાનું (AP)
+pay_ap_upi	AP UPI થી ચૂકવો
+pay_selected_heading	પસંદ કરેલ ચૂકવો (દેવું ચૂકવો / એડવાન્સ)
+pick_from_items	અમારી આઇટમમાંથી પસંદ કરો
+prev_country	પહેલાનો દેશ
+print_open	છાપો / ખોલો
+reason_amend_ph	સુધારો / રદ / પરતનું કારણ
+reason_note_ph	કારણ / નોંધ (બગાડ, ગણતરી, …)
+record_day_close	દિવસ બંધ નોંધો
+refresh_from_shop	દુકાનમાંથી તાજું કરો
+refund	પરત
+remove_selected	પસંદ કરેલ દૂર કરો
+request_bill	બિલ માગો
+restaurant_name_ph	રેસ્ટોરન્ટનું નામ (વૈકલ્પિક)
+restore_backup	બૅકઅપ પાછો લાવો
+role_both	બંને
+role_admin	એડમિન
+role_cashier	કેશિયર
+role_customer	ગ્રાહક
+role_manager	મેનેજર
+history_retention	વેપારનો ઇતિહાસ
+history_retention_help	જૂનું વેચાણ અને KOT આપમેળે સાફ કરો. મેનૂ, કર્મચારી અને સેટિંગ્સ રહે છે. હમણાં સાફ કરો બધી વેપારી પંક્તિઓ ભૂંસે છે અને સેટઅપ રાખે છે.
+history_off	રાખો
+history_day_close	દિવસ બંધ પર
+history_after_hours	કલાકો પછી
+history_hours_ph	કલાક (1–168, મૂળ 4)
+history_hours_save	કલાક સાચવો
+history_clear_now	ઇતિહાસ હમણાં સાફ કરો
+history_cleared	વેપારનો ઇતિહાસ સાફ — સેટઅપ રાખ્યું
+history_retention_saved	ઇતિહાસ સાફ કરવાનું સેટિંગ સાચવ્યું
+history_hours_saved	ઇતિહાસના કલાક સાચવ્યા
+history_owner_only	ફક્ત માલિક અથવા એડમિન ઇતિહાસ સાફ કરી શકે
+rollup	રોલ-અપ
+save_brand	બ્રાન્ડ સાચવો
+save_business_id	ધંધો આઈડી અને સેવા % સાચવો
+save_business_name	ધંધાનું નામ સાચવો
+save_features	પસંદ કરેલ કર્મચારીની સુવિધાઓ સાચવો
+save_features_named	{name} સાચવો
+save_features_ok	{name} નું સેટઅપ સાચવ્યું
+save_names	નામ સાચવો
+second_way	બીજી રીત
+server_ip_ph	સર્વર IP (દા.ત. 192.168.1.10)
+set_credit_limit	ઉધાર મર્યાદા નક્કી કરો
+set_login_selected	પસંદ કરેલ પર લૉગિન નાખો
+set_login_named	{name} પર લૉગિન નાખો
+shop	દુકાન
+show	બતાવો
+spreadsheet_csv	સ્પ્રેડશીટ (CSV)
+start_fresh	નવેસરથી શરૂ કરો
+stop_extra_tills	વધારાના ટિલ બંધ કરો
+floor_cols_ph	કૉલમ
+floor_cols_fit	સ્ક્રીન મુજબ
+floor_cols_fit_sub	અહીં {n} સમાય
+floor_cols_fits	સમાય છે
+floor_cols_scroll	બાજુમાં સ્ક્રોલ
+floor_cols_min	કૉલમ: ઓછામાં ઓછા 1 — અથવા સ્ક્રીન મુજબ રાખવા ખાલી છોડો
+floor_zoom_auto	આપમેળે
+floor_zoom_out	નાનું કરો
+floor_zoom_in	મોટું કરો
+backup_auto	દરરોજ આપમેળે બેકઅપ · છેલ્લો {when} · છેલ્લા 14 દિવસ {dir} માં રાખવામાં આવે છે.
+backup_auto_none	દરરોજ આપમેળે બેકઅપ — પહેલો થોડી વારમાં થશે.
+backup_copy_to	નકલો {dir} માં પણ જાય છે.
+backup_copy_btn	બેકઅપ એક ફોલ્ડરમાં પણ કૉપિ કરો…
+autostart_off	આ કમ્પ્યુટર સાથે શરૂ કરો
+autostart_on	આ કમ્પ્યુટર સાથે શરૂ થાય છે ✓ — બંધ કરવા દબાવો
+autostart_done_on	હવે કમ્પ્યુટર શરૂ થતાં જ એપ ખુલશે — વીજળી જાય પછી પણ દુકાનનું સર્વર ફરી ચાલુ થશે.
+autostart_done_off	હવે કમ્પ્યુટર શરૂ થતાં એપ નહીં ખુલે.
+device_forgotten	દુકાને આ ડિવાઇસ દૂર કર્યું — દુકાનના હાલના કોડથી ફરી જોડો. રાહ જોતા ઓર્ડર સાચવેલા છે.
+lan_offline	ઑફલાઇન
+forget_device	ભૂલી જાઓ
+last_seen	છેલ્લે
+copy_pair_code	પેરિંગ કોડ કૉપી કરો
+new_pair_code	નવો પેરિંગ કોડ
+pair_finishing	પેરિંગ પૂરું થઈ રહ્યું છે… દુકાનના ચોપડા લાગુ થઈ રહ્યા છે
+pair_opening	ટિલ ખુલી રહ્યું છે…
+pair_copied	પેરિંગ કોડ કૉપી થયો
+kot_waiting	મોકલવાની રાહ
+lan_offline_waiting	ઑફલાઇન · {n} રાહમાં
+lan_connecting	દુકાન સાથે જોડાઈ રહ્યું છે…
+lan_live	લાઇવ
+lan_sending	{n} મોકલાઈ રહ્યા છે
+lan_sign_in_to_send	{n} મોકલવા ફરી સાઇન ઇન કરો
+lan_pair_again	આ ડિવાઇસ ફરી જોડો
+lan_update_app	ઍપ અપડેટ કરો — આ ડિવાઇસ અને દુકાનના સર્વરના વર્ઝન અલગ છે
+allow_firewall	બીજા ડિવાઇસને જોડાવા દો
+firewall_blocked	આ કમ્પ્યુટરનું ફાયરવૉલ બીજા ડિવાઇસને રોકે છે — “બીજા ડિવાઇસને જોડાવા દો” દબાવો.
+firewall_waiting	એડમિન મંજૂરીની રાહ…
+lan_join_help	બીજા ડિવાઇસ આની સાથે જોડાઈ શકે છે — જોડાણ કોડ {code}. બીજા ડિવાઇસ પર ક્લાયન્ટ મોડ પસંદ કરો, પછી દુકાનનું સર્વર શોધો, અથવા આ સરનામું લખો: {addr}
+lan_pair_status	વાઇ‑ફાઇ {addr}
+lan_join_help_no_addr	સરનામું મેળવવા આ ઉપકરણને Wi‑Fi સાથે જોડો.
+lan_no_address	આ ડિવાઇસનું હજી Wi‑Fi સરનામું નથી — તેને દુકાનના Wi‑Fi સાથે જોડો.
+lan_not_listening	હાલ ડિવાઇસ જોડાઈ શકતા નથી — કદાચ બીજો પ્રોગ્રામ પોર્ટ {port} વાપરે છે. ઍપ ફરી શરૂ કરો.
+lan_tills_off	વધારાના ટિલ બંધ છે. આ દુકાનના ચોપડા આ જ ડિવાઇસ પર રહે છે. બીજું ડિવાઇસ પણ ઓર્ડર લે કે બિલ બનાવે તેમ હોય તો વધારાના ટિલની મંજૂરી આપો.
+paired_with	{url} પરની દુકાન સાથે જોડાયેલું
+not_paired	જોડાયેલું નથી — દુકાનના સર્વર સાથે જોડો.
+choose_device_use	આ ડિવાઇસનો ઉપયોગ કેવી રીતે થશે તે પસંદ કરો.
+paired_note	જોડાઈ ગયું. વેચવા માટે ખોલો, અથવા દુકાનમાંથી તાજી માહિતી લેવા તાજું કરો.
+last_update_at	દુકાનમાંથી છેલ્લું અપડેટ: {time}.
+pair_intro	સર્વર શોધો, અથવા તેનું સરનામું અને પેરિંગ કોડ લખો.
+queue_waiting	દુકાન સુધી પહોંચવાની રાહમાં ({n}):
+queue_tries	{n} વાર પ્રયાસ · છેલ્લો જવાબ: {e}
+save_backup_copy	બેકઅપની નકલ સાચવો…
+backup_copy_saved	બેકઅપ નકલ સચવાઈ — તેને આ ડિવાઇસથી બહાર રાખો (USB સ્ટિક કે બીજું ડિવાઇસ)
+backup_copy_overdue	{n} દિવસથી કોઈ બેકઅપ નકલ આ ડિવાઇસની બહાર ગઈ નથી — સેટિંગ્સ → બેકઅપ
+backup_copy_failed	બેકઅપ નકલ ત્યાં સાચવી ન શકાઈ — બીજી જગ્યા પસંદ કરો
+clock_off	આ ડિવાઇસની ઘડિયાળ દુકાનના સર્વરથી {min} મિનિટ જુદી છે — આ ડિવાઇસ પર સાચો સમય મૂકો
+printers_heading	આ ડિવાઇસના પ્રિન્ટર
+printers_help	દરેક પ્રિન્ટર એકવાર ઉમેરો, પછી બિલ અને દરેક રસોડું ક્યાં છપાય તે પસંદ કરો — યાદીમાં પહેલું પહેલા અજમાય છે; નિષ્ફળ થાય તો આગળનું. રૂટ ખાલી = તે સુવિધા છપાતી નથી. લક્ષ્ય ખાલી (ડિફૉલ્ટ), સિસ્ટમ નામ, અથવા નેટવર્ક સરનામું (દા.ત. 192.168.1.50). દરેક ડિવાઇસ પોતાના પ્રિન્ટર રાખે છે.
+printers_host_only	પ્રિન્ટર દુકાનના ડિવાઇસ (Server) પર સેટ થાય છે. આ ટિલ ત્યાં બિલ અને KOT મોકલે છે — શોધો / ઉમેરો / અસાઇન Server પર જ રહે છે. ટેસ્ટ પેજ અને બિલ પ્રિન્ટ કદ Server પર જાય છે.
+printers_find_heading	પ્રિન્ટર શોધો
+printers_find_tip	શોધ આ ડિવાઇસ સ્કેન કરી યાદી અપડેટ રાખે છે. સિસ્ટમ પ્રિન્ટર પહેલા; નેટવર્ક સ્કેન પૃષ્ઠભૂમિમાં ચાલુ રહી શકે.
+printers_pool_heading	1. તમારા પ્રિન્ટર
+printers_pool_tip	શોધ આ ડિવાઇસ સ્કેન કરી યાદી અપડેટ રાખે છે.
+printers_pool_empty	(હજુ નથી — નીચે ઉમેરો)
+printers_routes_help	સ્થાન પસંદ કરો, પછી પ્રિન્ટર. નામ (KOT), (Standard Portrait) અથવા (Standard Landscape) ચેક. ↑↓ ક્રમ (પહેલું ઉચ્ચ). કાઢવા અનચેક. છેલ્લે Done.
+printer_assign_dd	{place} માટે પ્રિન્ટર પસંદ કરો
+printer_assign_pick	ખરું પ્રિન્ટર પસંદ કરો
+printer_profile_heading	લેઆઉટ
+printer_send_heading	ડિલિવરી
+vp_delivery_heading	ડિલિવરી
+vp_delivery_help	આ વર્ચ્યુઅલ પ્રિન્ટર જોબ કેવી રીતે મોકલે છે — OS દસ્તાવેજ, કાચા બાઇટ અથવા ESC/POS. સ્લિપ સામગ્રી (અક્ષર કદ, રૅપ, માર્જિન) બિલ / KOT ફોર્મેટ નક્કી કરે છે, અહીં નહીં.
+vp_type_size_heading	અક્ષર કદ
+vp_wrap_heading	રૅપ પહોળાઈ
+vp_margin_heading	માર્જિન
+vp_delivery_spooler	OS દસ્તાવેજ (સિસ્ટમ સ્પૂલર)
+vp_delivery_raw	ડિવાઇસને કાચા બાઇટ
+vp_delivery_escpos	ESC/POS થર્મલ કમાન્ડ
+virtual_printer_new	નવું વર્ચ્યુઅલ પ્રિન્ટર
+virtual_printer_selected	“{name}” સંપાદન — યાદીમાં બીજા પર ટૅપ કરી બદલો
+virtual_printer_tap_list	યાદીમાં વર્ચ્યુઅલ પ્રિન્ટર પર ટૅપ કરી સંપાદિત કરો
+config_layout_portrait	પોર્ટ્રેટ
+config_layout_landscape	લેન્ડસ્કેપ
+config_send_os	સિસ્ટમ સ્પૂલર
+config_send_escpos	ESC/POS
+profiles_heading	લેઆઉટ
+profiles_empty	(હજુ કોઈ લેઆઉટ નથી)
+profile_builtin	બિલ્ટ-ઇન
+profile_custom	કસ્ટમ
+profile_name_ph	લેઆઉટનું નામ
+profile_new	નવું લેઆઉટ
+profile_delete	લેઆઉટ કાઢો
+profile_created	લેઆઉટ બન્યું
+profile_deleted	લેઆઉટ કાઢી નાખ્યું
+profile_builtin_keep	બિલ્ટ-ઇન લેઆઉટ કાઢી શકાતા નથી
+config_saved	અપડેટ થયું
+config_selected	“{name}” પસંદ
+printer_output_heading	વર્ચ્યુઅલ પ્રિન્ટર
+virtual_printers_heading	વર્ચ્યુઅલ પ્રિન્ટર
+virtual_printers_empty	હજુ વર્ચ્યુઅલ પ્રિન્ટર નથી — નીચે મૂલ્યો સેટ કરી સાચવો. કેટલાંક થયા પછી યાદીમાં ટૅપ કરી સંપાદિત કરો.
+virtual_printer_name_ph	વર્ચ્યુઅલ પ્રિન્ટરનું નામ (વૈકલ્પિક)
+virtual_printer_create	વર્ચ્યુઅલ પ્રિન્ટર બનાવો
+virtual_printer_save	વર્ચ્યુઅલ પ્રિન્ટર સાચવો
+virtual_printer_delete	વર્ચ્યુઅલ પ્રિન્ટર કાઢો
+virtual_printer_created	વર્ચ્યુઅલ પ્રિન્ટર “{name}” બન્યું
+virtual_printer_deleted	વર્ચ્યુઅલ પ્રિન્ટર “{name}” કાઢ્યું
+virtual_printer_updated	વર્ચ્યુઅલ પ્રિન્ટર અપડેટ થયું
+virtual_printer_updated_named	વર્ચ્યુઅલ પ્રિન્ટર “{name}” અપડેટ થયું
+virtual_draft_layout	આગળના વર્ચ્યુઅલ પ્રિન્ટર માટે મૂલ્યો સેટ
+virtual_draft_send	આગળના વર્ચ્યુઅલ પ્રિન્ટર માટે મૂલ્ય સેટ
+virtual_need_real	પહેલાં ખરું પ્રિન્ટર પસંદ કરો
+virtual_need_select	કાઢવા વર્ચ્યુઅલ પ્રિન્ટર પસંદ કરો
+real_printer_selected	ખરું પ્રિન્ટર: {name}
+station_group_heading	વર્ચ્યુઅલ પ્રિન્ટર
+station_group_apply	વર્ચ્યુઅલ પ્રિન્ટર કાઢો
+station_group_applied	કાઢ્યું
+station_group_empty	વર્ચ્યુઅલ પ્રિન્ટર પસંદ કરો
+station_group_name_ph	વર્ચ્યુઅલ પ્રિન્ટરનું નામ (વૈકલ્પિક)
+station_group_save	વર્ચ્યુઅલ પ્રિન્ટર બનાવો
+station_group_saved	વર્ચ્યુઅલ પ્રિન્ટર સાચવ્યું
+station_manage_heading	રસોડું સ્ટેશન ઉમેરો / કાઢો
+printers_routes_heading	2. ક્યાં છપાય
+route_pick_heading	સ્થાન
+route_editing	બદલી રહ્યાં છીએ: {name}
+route_assigned	{printer} ને {place} માં ઉમેર્યું
+route_already_assigned	આ સ્થાને પહેલેથી: {printer}
+route_removed	{printer} ને {place} માંથી દૂર કર્યું
+route_cleared	{name} સાફ કર્યું
+route_assigned_empty	આ સ્થાને કંઈ નથી
+route_tap_remove	દૂર કરવા દબાવો
+route_tap_select	પસંદ કરવા ટેપ
+route_tap_selected	પસંદ થયેલ
+route_pick_printer_first	પહેલા એક પ્રિન્ટર ટેપ કરો
+route_assigned_heading	પ્રિન્ટર
+route_add_heading	સોંપો
+printer_label_ph	નામ (દા.ત. રસોડું)
+printer_target_ph	સરનામું અથવા સિસ્ટમ નામ
+printer_target_default	ડિફૉલ્ટ પ્રિન્ટર
+printer_wire_heading	ફોર્મેટ
+printer_wire_escpos	KOT
+printer_wire_os	માનક પોર્ટ્રેટ
+printer_wire_os_portrait	માનક પોર્ટ્રેટ
+printer_wire_os_landscape	માનક લેન્ડસ્કેપ
+printer_wire_escpos_short	KOT
+printer_wire_os_short	પોર્ટ્રેટ
+printer_wire_os_landscape_short	લેન્ડસ્કેપ
+printer_format_custom	નવું પોતાનું ફોર્મેટ
+printer_format_custom_label	પોતાનું
+printer_format_custom_added	આ રૂટ માટે પોતાનું ફોર્મેટ ઉમેર્યું
+add_printer	પ્રિન્ટર ઉમેરો
+remove_printer	છેલ્લું કાઢો
+route_pick_ph	બિલ અથવા રસોડું
+route_bill	બિલ
+route_default_kitchen	ડિફૉલ્ટ રસોડું
+route_kot_station	રસોડું
+route_dont_print	છાપો નહીં
+stations_heading	રસોડા સ્ટેશન
+stations_help	વાનગી અને KOT માટે રસોડા સ્ટેશન ઉમેરો. દરેક સ્ટેશન પર તેના પ્રિન્ટર જોડો (સેટિંગ્સ → પ્રિન્ટરમાં મળશે), પ્રાથમિકતા નક્કી કરો, અને જે પહેલાં ચાલે અથવા બધા પર છાપો પસંદ કરો. ફેરફાર સાથે-સાથે સચવાય છે — સાચવો બટન નથી.
+station_print_heading	આ સ્ટેશનના પ્રિન્ટર
+station_print_help	સ્ટેશન પસંદ કરો, પછી એક કે વધુ પ્રિન્ટર જોડો. ↑↓ પ્રયાસ ક્રમ. પહેલું સફળ થાય ત્યાં અટકે; બધા પર પ્રિન્ટ દરેક જોડાયેલ પ્રિન્ટરને મોકલે છે.
+station_print_pick_ph	પ્રિન્ટર સેટ કરવાનું સ્ટેશન
+station_print_pick_first	પહેલાં રસોડું સ્ટેશન પસંદ કરો
+station_print_editing	“{name}” ના પ્રિન્ટર સંપાદન
+station_vps_dd	આ સ્ટેશનના પ્રિન્ટર
+station_vps_dd_n	{n} પ્રિન્ટર · બદલવા ટૅપ
+station_vps_empty	હજુ પ્રિન્ટર નથી — સેટિંગ્સ → પ્રિન્ટરમાં શોધો
+bill_printers_dd	બિલ માટે પ્રિન્ટર
+bill_printers_dd_n	બિલ માટે {n} પ્રિન્ટર · બદલવા દબાવો
+job_layout	લેઆઉટ
+job_delivery	કામ કેવી રીતે મોકલાય છે
+job_delivery_help	OS દસ્તાવેજ, કાચા બાઇટ અથવા ESC/POS. બિલ અને રસોડાની ટિકિટ બંને પોતપોતાનું રાખે છે. કોઈ પણ કામ શોધો એ સાચવેલા કોઈ પણ પ્રિન્ટર પર જઈ શકે.
+station_vp_attached	પ્રિન્ટર જોડાયું
+station_vp_detached	સ્ટેશનમાંથી પ્રિન્ટર કાઢ્યું
+station_print_summary	{mode} · {n} પ્રિન્ટર
+station_print_summary_none	આ સ્ટેશન પર હજુ પ્રિન્ટર નથી — છાપશે નહીં
+stations_none	હજી કોઈ સ્ટેશન નથી — નીચે એક ઉમેરો. મેનૂ આઇટમ કોઈ સ્ટેશન વાપરી શકે જેથી તેમનો KOT ત્યાં છપાય.
+route_up	ઉપર
+route_down	નીચે
+route_remove	છેલ્લું કાઢો
+route_clear	છાપો નહીં
+save_printers	પ્રિન્ટર સાચવો
+print_test_page	ટેસ્ટ પેજ છાપો
+no_printer_assigned	પ્રિન્ટર નથી
+test_page_no_printer	{place} માટે પ્રિન્ટર નથી — ઉપર સોંપો, ફરી પ્રયાસ કરો
+test_page_pick_first	પહેલા ટેસ્ટ પ્રિન્ટર પસંદ કરો — પછી ટેસ્ટ પેજ છાપો
+test_printers_dd	ટેસ્ટ પેજના પ્રિન્ટર
+test_printers_dd_n	{n} ટેસ્ટ પ્રિન્ટર · બદલવા ટૅપ
+kot_test_printers_dd	Test KOT ના પ્રિન્ટર
+kot_test_printers_dd_n	{n} Test KOT પ્રિન્ટર · બદલવા ટૅપ
+test_printer_picked	ટેસ્ટ: {name}
+test_printer_cleared	ટેસ્ટ નહીં: {name}
+test_page_sent_n	ટેસ્ટ પેજ {n} પ્રિન્ટર પર મોકલ્યું
+test_kot_pick_first	પહેલા Test KOT ના પ્રિન્ટર પસંદ કરો — પછી Test KOT
+test_kot_sent_n	Test KOT {n} પ્રિન્ટર પર મોકલ્યું
+cancel_pick	નિશાની
+cancel_pick_on	નિશાની લાગી
+cancel_pick_meta	રદ માટે નિશાની
+batch_cancel	નિશાનીવાળા રદ
+batch_cancel_n	નિશાનીવાળા રદ ({n})
+batch_cancel_none	પહેલા મોકલેલી વાનગીઓ નિશાની કરો — પછી નિશાનીવાળા રદ
+batch_cancel_title	નિશાનીવાળી વાનગીઓ રદ — એક કારણ, રસોડે એક સ્લિપ
+batch_cancel_ok	{n} વાનગીઓ રદ · {slips} સ્લિપ → {kitchens}
+batch_cancel_ok_noprint	{n} વાનગીઓ રદ — KOT ઓટો-પ્રિન્ટ બંધ, સ્લિપ નથી
+no_printer_kitchen_station	એ રસોડા સ્ટેશન માટે પ્રિન્ટર નથી — રસોડું → રસોડા સ્ટેશન → આ સ્ટેશનના પ્રિન્ટર
+printers_saved	આ ડિવાઇસના પ્રિન્ટર સચવાયા
+test_page_sent	ટેસ્ટ પેજ મોકલ્યું — પ્રિન્ટર જુઓ
+test_page_sent_one	ટેસ્ટ પેજ {name} પર મોકલ્યું — તે જ પ્રિન્ટર જુઓ
+printers_found	{n} મળ્યા: {list}
+printers_find_synced	{n} મળ્યા — {new} નવા
+printer_on_device	સાચવ્યું
+printer_already_added	પહેલેથી ઉમેરેલું
+printer_already_saved	પહેલેથી સાચવેલું: {name}
+find_printers	પ્રિન્ટર શોધો
+printers_looking	આ ડિવાઇસ અને Wi‑Fi પર પ્રિન્ટર શોધી રહ્યા છે…
+saving_printer	પ્રિન્ટર ઉમેરી રહ્યાં છીએ…
+cancelled	રદ
+printers_tap_find	આ ડિવાઇસ વાપરી શકે તેવા પ્રિન્ટરની યાદી માટે શોધો દબાવો.
+printers_none_found	કોઈ પ્રિન્ટર મળ્યું નહીં — સિસ્ટમ પ્રિન્ટરનું નામ અથવા નેટવર્ક સરનામું લખો (દા.ત. 192.168.1.50).
+printer_from_find	{name} ઉમેર્યું
+kot_printer_ph	KOT માટે પ્રિન્ટર
+bill_printer_ph	બિલ માટે પ્રિન્ટર
+kot_print_on	રસોડું પ્રિન્ટિંગ: ચાલુ
+kot_print_off	રસોડું પ્રિન્ટિંગ: બંધ
+queue_refused	દુકાને સ્વીકાર્યું નથી ({n}) — દરેક કાઉન્ટર પર તપાસો:
+clear_not_accepted	તપાસ્યું — આ યાદી સાફ કરો
+device_name_ph	આ ડિવાઇસનું નામ
+lan_last_update	છેલ્લું અપડેટ {time}
+lan_not_accepted	{n} સ્વીકારાયા નથી
+connected_now	હમણાં જોડાયેલું
+backup_failed	છેલ્લો આપમેળે બેકઅપ નિષ્ફળ ગયો: {e}
+backup_overdue	{n} દિવસથી બેકઅપ નથી — બેકઅપ થઈ શકે તે માટે આ ડિવાઇસ પર ઍપ ખુલ્લી રાખો.
+disk_low	આ ડિવાઇસ પર માત્ર {mb} MB જગ્યા બાકી છે — જલદી બેકઅપ નિષ્ફળ જશે. થોડી જગ્યા ખાલી કરો.
+last_seen_devices	છેલ્લે દેખાયું: {time}
+sync_interval	દર {secs} સેકન્ડે સિંક
+connection_to_shop	દુકાન સાથે જોડાણ
+supplier_name_ph	સપ્લાયરનું નામ (અથવા પાર્ટી)
+supplier_ph	સપ્લાયર
+switch_device	આ ડિવાઇસ બદલો
+take_payment	ચુકવણી લો
+tax_added_till	{tax} અલગ
+tax_inside_price	{tax} સમાવિષ્ટ
+tax_invoice	કર ઇન્વૉઇસ
+till_to_bank	ટિલ → બેંક
+units_heading	એકમો
+unlock_after_pairing	પિન દાખલ કરો
+unlock_with_login	લૉગિનથી અનલૉક
+unmark	ચિહ્ન દૂર કરો
+update_my_password	મારો પાસવર્ડ બદલો
+update_my_pin	મારો PIN બદલો
+duress_heading	કટોકટી અનલૉક PIN (ફક્ત Owner)
+duress_help	વૈકલ્પિક. અનલૉક પર તમારા PIN ને બદલે આ આપો તો વેચાણ ઇતિહાસ સાફ — મેનુ, ભાવ, ટેબલ, સ્ટાફ રહે. જબરજસ્તી પર જ. ખાલી સેવથી બંધ. કોઈના PIN જેવું નહીં.
+duress_pin_ph	કટોકટી PIN (4–12 અંક)
+duress_confirm_ph	ફરી ટાઇપ કરો
+save_duress_pin	કટોકટી PIN સેવ
+clear_duress_pin	કટોકટી PIN બંધ
+duress_on	કટોકટી અનલૉક PIN ચાલુ છે
+duress_off	કટોકટી અનલૉક PIN બંધ છે
+duress_saved	કટોકટી અનલૉક PIN સેવ થયું
+duress_cleared	કટોકટી અનલૉક PIN બંધ કર્યું
+upi_amount_ph	UPI રકમ
+void	રદ કરો
+write_off_ap	AP માફ કરો
+write_off_heading	માફ કરો (ચુકવણી વગર પતાવો)
+write_off_nil	માફ કરો / બાકી શૂન્ય
+your_brand	તમારી બ્રાન્ડ (એપમાં)
+your_categories	તમારી શ્રેણીઓ
+account_kind	ખાતાનો પ્રકાર (એક દબાવો)
+actual_total_cap	ખરું કુલ
+amend_help	સુધારો, રદ અથવા પરત માટે વેચાણ પસંદ કરો. સુધારાનો પૂરો ઇતિહાસ રહે છે.
+applied_total_cap	લાગુ કુલ
+bank_balance	બેંક બાકી
+bank_net_today	આજનું બેંક નેટ
+branch_export_help	Export backups ફોલ્ડરમાં branch_snapshot_CODE_DATE.json લખે છે અને ક્લિપબોર્ડ પર કૉપી કરે છે. બીજા આઉટલેટનો દિવસ ઇમ્પોર્ટ કરવા, તેની ફાઇલ એ જ ફોલ્ડરમાં import_branch_snapshot.json નામે રાખો, પછી Import દબાવો.
+brand_shown_help	એપની અંદરની સ્ક્રીન પર બતાવવામાં આવે છે. આ ડિવાઇસ પર ઇન્સ્ટોલ કરેલ એપનું નામ અને આઇકન પ્લેટફોર્મ લિસ્ટિંગ પ્રમાણે જ રહે છે.
+app_icon	એપ આઇકન
+logo_help	એપની સ્ક્રીન પર દુકાનનું વૈકલ્પિક ચિહ્ન.
+onboard_layout	તમને શું મળે છે
+item_photo_help	વૈકલ્પિક. ફોટો ન હોય તો આઇટમના નામના પહેલા અક્ષર બતાવીએ છીએ.
+stamp_heading	સ્ટેમ્પ
+stamp_image_help	છાપેલા બિલ અને મહેમાન ડિસ્પ્લે પર વૈકલ્પિક સ્ટેમ્પની છબી.
+payment_qr_heading	ચુકવણી QR
+payment_qr_image_help	બિલ અને મહેમાન ડિસ્પ્લે પર સ્થિર QR; નહીં તો ચુકવણી ઉપરના VPA પરથી ડાયનેમિક UPI QR વાપરે છે.
+cash_in_hand	હાથમાં રોકડ (ટિલ)
+change_my_pin_heading	મારો PIN બદલો (ફક્ત તમારો)
+connect_to_server	સર્વર સાથે જોડાઓ
+counter_locked	કાઉન્ટર 01 · લોક
+country_pack_help	દેશ પેક કરનું નામ અને ગણિત, ત્વરિત-ચુકવણી રેલ, અને બિલ પર છપાતી ધંધા આઈડી નક્કી કરે છે. Kumkaj ક્યાંય કર ભરતું નથી કે સરકારી ઈ-ઈન્વૉઇસ આપતું નથી.
+currency_use_help	સ્ક્રોલ કરો અને કોઈપણ સમર્થિત ચલણ માટે Use દબાવો.
+day_close_help	દિવસ બંધ નોંધવાથી આ સારાંશ (ગણતરી હોય તો ડ્રોઅર તફાવત સાથે) ઓડિટ લોગમાં સચવાય છે. આનાથી વેચાણ અટકતું નથી.
+expenses_word	ખર્ચા
+feature_access_help	પસંદ કરેલ કર્મચારીની સુવિધા પહોંચ (ઉમેર્યા પછી દબાવો)
+footer_local	સ્થાનિક SQLite · હંમેશા મફત · કોઈ ક્લાઉડ નહીં
+fresh_book_khaynjo	Fresh = ખાલી મેનૂ (વાનગીઓ પછી મેનૂમાં ઉમેરો). Book = નીચે શરૂઆતની વસ્તુઓ અને કોણ તમારું દેવું છે તે લખો.
+fresh_selected	Fresh પસંદ — કેટલોગ ખાલી રહેશે. તૈયાર થાય ત્યારે Done દબાવો.
+gross_word	કાચું કુલ
+how_start	તમે કેવી રીતે શરૂ કરવા માગો છો?
+kot_print_help_khaynjo	જ્યારે KOT મોકલવામાં આવે છે — કાઉન્ટરથી અથવા વેઇટરના ડિવાઇસથી — રસોડાનું કાગળ અહીં જાતે જ છપાય છે.
+later_country_pack	પછી: સેટિંગ્સ → કર અને ચુકવણીના લેબલ માટે તમારું દેશ પેક લાગુ કરો.
+local_badge	સ્થાનિક
+mix_type_hint_khaynjo	જરૂર હોય તો રોકડ / UPI / કાર્ડ / ઉધારમાં વહેંચો. ઉધાર માટે ઉપર ગ્રાહક જોઈએ.
+money_in_sales	પૈસા આવ્યા (વેચાણ)
+net_word	નેટ
+offline_badge	ઑફલાઇન
+optional_login_help	વૈકલ્પિક લૉગિન (આઈડી + પાસવર્ડ). માલિક એકવાર નાખે છે; પછી ફક્ત વપરાશકર્તા જ પાસવર્ડ બદલી શકે છે.
+or_unlock_login	અથવા લૉગિન આઈડી + પાસવર્ડથી અનલૉક કરો
+permission_preset	પરવાનગી પ્રીસેટ (શેની પહોંચ)
+preset_help_khaynjo	કેશિયર: વેચો. મેનેજર: વેચો + આઇટમ + રદ/સુધારો.
+product_locked_khaynjo	Khaynjo
+product_only_khaynjo	આ ઍપ ફક્ત Khaynjo છે — રેસ્ટોરન્ટ ઑપરેટિંગ સિસ્ટમ. બીજા ધંધા માટે અલગ Kumkaj પ્રોડક્ટ આવે છે.
+purchases_cogs	ખરીદી (COGS)
+qty_cap	જથ્થો
+restore_help	Restore: એક બેકઅપ પસંદ કરો. ચોપડા ત્યારે હતા તેમ ખુલશે; હાલના ચોપડા પહેલાં સાચવાય છે, તેથી આ પાછું કરી શકાય.
+wipe_data_heading	સ્થાનિક ડેટા કાઢો
+wipe_data_help	ફક્ત Owner — Windows અનઇન્સ્ટોલ જેવું. વેપાર રેકોર્ડ ઇતિહાસ ભૂંસે, મેનૂ/સેટઅપ રાખે. દુકાન સેટઅપ ચોપડી કાઢે. સ્ક્રીન પસંદગી વિન્ડો/ભાષા. Owner PIN થી પુષ્ટિ.
+wipe_trading	વેપાર રેકોર્ડ
+wipe_schema	દુકાન સેટઅપ
+wipe_ui	સ્ક્રીન પસંદગીઓ
+wipe_owner_pin_ph	કાઢવા Owner PIN
+wipe_delete_selected	પસંદ કરેલું કાઢો
+wipe_owner_only	ફક્ત Owner સ્થાનિક ડેટા કાઢી શકે.
+restore_owner_only	ફક્ત Owner બૅકઅપ પાછું મૂકી શકે.
+wipe_owner_pin_needed	સ્થાનિક ડેટા કાઢવા Owner PIN નાખો.
+wipe_nothing_selected	પહેલા શું કાઢવું તે પસંદ કરો.
+wipe_done	પસંદ કરેલ સ્થાનિક ડેટા કાઢ્યો.
+wipe_schema_done	દુકાન સેટઅપ ભૂંસાયું — ચાલુ રાખવા Server અથવા Client પસંદ કરો.
+rounded_total	રાઉન્ડ કુલ
+setup_app_khaynjo	Khaynjo સેટ કરો
+shop_logo_optional	દુકાન લોગો (વૈકલ્પિક)
+stock_type_help	આઇટમનું નામ લખો (તેનો ભાગ જ પૂરતો છે), જથ્થો લખો, પછી ગોઠવો. જે આઇટમ હજી ગણાઈ નથી તેને એકવાર Start tracking જોઈએ.
+team_owner_help	માલિક દરેક વ્યક્તિને નામ, ભૂમિકા શીર્ષક, પરવાનગી પ્રીસેટ અને શરૂઆતના PIN સાથે બનાવે છે. માલિક પછીથી કોઈનો PIN બદલી શકતો નથી — ફક્ત તે વ્યક્તિ જ પોતાનો PIN બદલી શકે છે.
+staff_name_ph	સ્ટાફ નામ / આઈડી
+staff_copy_hire_ph	સેટઅપ કોની પાસેથી નકલ કરવું (વૈકલ્પિક)
+staff_copy_hire	આ વ્યક્તિનું સેટઅપ વાપરો
+staff_edit_name_ph	દેખાતું નામ
+staff_rename	નામ સાચવો
+staff_copy_edit_ph	બીજી વ્યક્તિ પાસેથી સેટઅપ નકલ કરો
+staff_copy_edit	તેમનું સેટઅપ પસંદ કરેલા પર નકલ કરો
+staff_copy_edit_onto	તેમનું સેટઅપ {name} પર નકલ કરો
+staff_deactivate_named	{name} ને દૂર કરો
+staff_renamed	નામ સાચવ્યું
+staff_setup_copied_hire	{name} પાસેથી સેટઅપ નકલ થયું — નવું નામ અને PIN આપો, પછી કર્મચારી ઉમેરો
+staff_setup_copied_edit	{from} નું સેટઅપ {to} પર નકલ થયું
+staff_copy_need_selected	પહેલાં પસંદ કરો કોને બદલવા છે
+staff_copy_need_source	પસંદ કરો કોનું સેટઅપ નકલ કરવું
+staff_copy_same	એ એ જ વ્યક્તિ છે — બીજું કોઈ પસંદ કરો
+staff_rename_need_selected	પહેલાં પસંદ કરો કોનું નામ બદલવું
+team_pick_hint	પસંદ કરો કોને બદલવા છે — સ્ક્રીન, પૈસાના અધિકાર અને રસોડા સ્ટેશન ફક્ત એ વ્યક્તિ માટે દેખાય છે.
+team_stations_help	તેઓ વાપરી શકે તે રસોડા સ્ટેશન
+team_stations_changed	રસોડા સ્ટેશન બદલાયા — આ વ્યક્તિનું સેટઅપ સાચવો
+team_features_changed	સ્ક્રીન બદલાઈ — આ વ્યક્તિનું સેટઅપ સાચવો
+team_rights_changed	અધિકાર બદલાયા — આ વ્યક્તિનું સેટઅપ સાચવો
+they_owe_us	તેઓ અમારા દેવાદાર
+unit_at_cap	એકમ ભાવ
+units_help	આઇટમ લેબલ માટેના કોડ (kg, piece, bag). દરેક એકમ — સીધું અથવા અન્ય એકમો મારફતે — એક માનક (kg · cm · ml · pc) સાથે જોડાવું જોઈએ, દા.ત. 1 crate = 2 box અને 1 box = 20 cm. રૂપાંતર: 1 from = factor to. ચલણ ક્યારેય એકમ નથી.
+units_picker_help	ખરીદ અને મેનૂ યાદીમાં એકમ બતાવવા ચાલુ/બંધ ટૅપ કરો. બંધ એકમો હજુ પણ રૂપાંતર થાય છે.
+unit_picker_on	ચાલુ
+unit_picker_off	બંધ
+we_owe_them	અમે તેમના દેવાદાર
+who_unlocking	કોણ અનલૉક કરે છે?
+locked_word	લોક
+show_pin	PIN બતાવો
+hide_pin	PIN છુપાવો
+set_owner_pin	માલિક PIN નાખો
+enter_owner_passcode	માલિક પાસકોડ નાખો
+enter_staff_passcode	કર્મચારી પાસકોડ નાખો
+pin_count_zero	0 / 12 અંક · ઓછામાં ઓછા 4, પછી OK
+pin_count_need	{} / 12 અંક · હજી {} જોઈએ
+pin_count_full	12 / 12 અંક · OK દબાવો
+pin_count_ready	{} / 12 અંક · તૈયાર થાય ત્યારે OK દબાવો
+pin_hint_choose	4–12 અંક પસંદ કરો (કીબોર્ડ અથવા પેડ) · સાચવવા Enter/OK
+pin_hint_new	નવો 4–12 અંકનો માલિક PIN (કીબોર્ડ અથવા પેડ) · Enter/OK
+pin_hint_shop_code	દુકાન ડિવાઇસ · પેરિંગ કોડ {}
+pin_hint_books	આ ડિવાઇસ ચોપડા રાખે છે
+pin_hint_paired	વધારાનું ટિલ જોડાયું — વેચવા અનલૉક કરો
+pin_hint_pair_first	વધારાનું ટિલ — પહેલા દુકાન ડિવાઇસ સાથે જોડો
+unlock_to_continue	ચાલુ રાખવા અનલૉક કરો
+no_staff_yet	હજી કોઈ કર્મચારી નથી — માલિક તરીકે અનલૉક કરો, પછી Team
+status_server_set_pin	સર્વર મોડ — માલિક PIN નાખો
+status_server_tills	સર્વર મોડ — વધારાના ટિલ જોડાઈ શકે છે. અનલૉક કરો
+status_server_unlock	સર્વર મોડ — માલિક તરીકે અનલૉક કરો
+status_client_unlock	ક્લાયન્ટ મોડ — વેચવા અનલૉક કરો
+icon_new_selected	આઇકન: નવી ફાઇલ પસંદ કરી — બ્રાન્ડ સાચવો દબાવો
+icon_custom	આઇકન: તમારી દુકાનનું નિશાન
+icon_default	આઇકન: Kumkaj નિશાન (ડિફોલ્ટ) — તમારું પસંદ કરો
+logo_yours	લોગો: તમારી દુકાનનો લોગો — સ્ક્રીન અને રસીદો પર દેખાશે
+logo_default	લોગો: Kumkaj નિશાન (ડિફોલ્ટ) — તમારો હોય તો પસંદ કરો
+tmpl_current	હાલનું: {} — {}
+tmpl_selected	પસંદ કરેલ: {} — {}
+setup_complete	સેટઅપ પૂર્ણ
+onboard_fresh_tmpl	નવું · {} — કેટલોગ ખાલીથી શરૂ; વસ્તુઓમાં ઉમેરો, પછી Done દબાવો.
+onboard_book_tmpl	ચોપડો · {} — વસ્તુઓ અને શરૂઆતનું ઉધાર ઉમેરો, પછી Done દબાવો.
+onboard_template_tmpl	ઇચ્છો તો જગ્યાનું નામ આપો, પછી શરૂઆત કેવી રીતે કરવી તે પસંદ કરો.
+tmpl_blurb	ટેબલ, ઑર્ડર, રસોડાની ટિકિટ, બિલિંગ અને ચોપડા.
+tmpl_how	કાઉન્ટર પર વેચો; ટેબલ અને KOT માટે ફ્લોર; રોજમેળ માટે ચોપડા.
+reports_facet_title	અહેવાલો
+reports_facet_help	દિવસના ચોપડા, પક્ષ એજિંગ, બેંક પોસ્ટ અને ગાળાનો નફો-નુકસાન.
+against_bill_ph	ઉપરના બિલ # સામે (વૈકલ્પિક)
+aliases_ph	ઉપનામ — અન્ય નામ, અલ્પવિરામથી અલગ
+amount_blank_full_ph	રકમ (ખાલી = સંપૂર્ણ બાકી)
+amount_owed_ph	બાકી રકમ
+amount_ph	રકમ
+amount_received_ph	મળેલી રકમ
+amount_we_pay_ph	અમે ચૂકવીએ તે રકમ
+business_name_ph	વ્યવસાયનું નામ
+category_new_ph	શ્રેણી (વૈકલ્પિક, નવી હોય તો બનશે)
+code_bag_ph	કોડ (bag)
+conv_factor_ph	ગુણક (25 = 1 bag → 25 kg)
+country_code_ph	દેશ કોડ દા.ત. IN, GB, US, AE, BR
+credit_khata_amount_ph	ઉધાર / ખાતા રકમ
+credit_limit_ph	ઉધાર મર્યાદા (0 = કોઈ નહીં)
+from_code_ph	થી કોડ (bag)
+item_name_lang_ph	વસ્તુનું નામ — તમારી ભાષામાં લખો
+login_id_opt_ph	લોગિન આઈડી (વૈકલ્પિક)
+manager_pin_ph	મેનેજર PIN (ફક્ત જો તમે રદ કરી શકતા ન હો)
+new_branch_name_ph	નવી શાખાનું નામ
+new_password_ph	નવો પાસવર્ડ (વૈકલ્પિક)
+new_pin_ph	નવો PIN (4–12 અંક)
+note_bank_ph	નોંધ (જમા, ઉપાડ, …)
+note_buy_expense_ph	નોંધ (ઇંધણ, ભાડું, …)
+note_expense_ph	નોંધ (ઇંધણ, ઓફિસ, …)
+options_khaynjo_ph	વિકલ્પો (વૈકલ્પિક) — Extra cheese=40, Large=80
+part_second_way_ph	બીજી રીતે ભાગ (વૈકલ્પિક)
+phone_ph	ફોન
+place_name_ph	આ જગ્યાનું નામ
+qty_example_ph	જથ્થો (દા.ત. kg માટે 1.5)
+quantity_ph	જથ્થો
+reason_required_ph	કારણ (જરૂરી)
+role_title_ph	ભૂમિકા શીર્ષક (દા.ત. Barista)
+service_pct_ph	સેવા % વૈકલ્પિક 0/10/12
+short_code_ph	ટૂંકો કોડ (MG02)
+starting_password_ph	શરૂઆતનો પાસવર્ડ (વૈકલ્પિક)
+starting_pin_ph	શરૂઆતનો PIN (4–12 અંક)
+station_name_ph	સ્ટેશનનું નામ (દા.ત. Tandoor, Fryer, Cold)
+station_new_ph	રસોડા સ્ટેશન (વૈકલ્પિક, દા.ત. Tandoor — નવું હોય તો બનશે)
+table_name_ph	ટેબલનું નામ (દા.ત. Patio 1, Counter 2)
+tax_rate_ph	કર દરનું નામ અથવા % — Standard, Reduced, 0, 5, 12, 18, 20
+to_code_ph	ને કોડ (kg)
+uncleared_no_ph	ઉપરનો અનક્લિયર્ડ #
+unit_cost_ph	એકમ ખર્ચ
+unit_name_bag_ph	નામ (Bag)
+unit_plate_ph	એકમ (પ્લેટ / પીસ — ખાલી = દરેક)
+pay_credit	ઉધાર
+book_kind_today	આજનો ચોપડો
+book_kind_month	આ મહિનાનો ચોપડો
+book_kind_aging	બાકી / ડેબિટ-ક્રેડિટ
+book_kind_balance	સરવૈયું
+order_help	ખુલ્લો ઓર્ડર પસંદ કરો, અથવા ટેબલ પસંદ કરી નવો શરૂ કરો. તૈયાર વસ્તુઓ પર ટેપ કરો, KOT મોકલો, એક કે વધુ વસ્તુઓનું બિલ બનાવો, બિલ વહેંચો અને ચુકવણી પતાવો.
+floor_help	દરેક ટેબલ બતાવે છે કે મહેમાનો બેઠા છે કે નહીં, તેમનું ખુલ્લું બિલ શું છે અને આગળ કોને સેવા જોઈએ છે.
+kitchen_help	દરેક વેરિએન્ટ અથવા દરેક વસ્તુ દીઠ તૈયાર જથ્થો ટ્રેક કરો — KOT માં ઇચ્છો તેમ નોંધો.
+kitchen_empty	હાલમાં કંઈ ખુલ્લું નથી — નવા ઓર્ડર અહીં દેખાશે.
+add_a_table	ટેબલ ઉમેરો
+add_station_heading	સ્ટેશન ઉમેરો · દા.ત. તંદૂર, સાઉથ ઇન્ડિયન
+categories_help	શ્રેણી બતાવે છે કે વાનગી કયા મેનુ ભાગમાં આવે છે — દા.ત. નાસ્તો, મુખ્ય કોર્સ કે બિરયાની. શ્રેણીઓ તમારી રીતે બનાવો: અમે સૂચવેલા નામ પસંદ કરો, તેમના નામ બદલો અથવા તમારું પોતાનું ઉમેરો.
+dish_search_ph	આઇટમનું નામ — અમારી વાનગીઓ શોધો અથવા તમારું લખો
+tile_free	ખાલી
+tile_occupied	વ્યસ્ત
+tile_food_ready	જમવાનું તૈયાર
+tile_bill_printed	બિલ છપાયું
+tile_paid	ચૂકવાયું
+tile_bill_btn	બિલ
+tile_occupy_btn	મહેમાન બેસાડો
+tile_free_btn	ટેબલ ખાલી કરો
+tile_ready_btn	તૈયાર
+tile_undo_bill	બિલ પાછું
+summary_busy	ટેબલ વ્યસ્ત
+summary_to_collect	વસૂલ કરવાના
+summary_on_floor	ફ્લોર પર
+floor	ફ્લોર
+sizes_as_items_ph	સાઇઝ અલગ આઇટમ તરીકે (વૈકલ્પિક) — Half=120, Full=200
+dish_group_ph	વાનગી સમૂહ (વૈકલ્પિક) — દા.ત. Paneer Tikka
+discount	ડિસ્કાઉન્ટ
+remove_discount	ડિસ્કાઉન્ટ દૂર કરો
+apply_discount	ડિસ્કાઉન્ટ લાગુ કરો
+save_opening_cash	શરૂઆતની રોકડ સાચવો
+close_shift_print	શિફ્ટ બંધ કરો અને સ્લિપ છાપો
+area_prices_ph	વિભાગ કિંમતો (વૈકલ્પિક) — AC=220, Parcel=210
+discount_ph	10% અથવા 50
+discount_reason_ph	કારણ (દા.ત. નિયમિત મહેમાન, જમવામાં મોડું)
+opening_float_ph	આજે સવારે ડ્રોઅરમાં મૂકેલી રોકડ
+shift_counted_ph	સોંપણી વખતે ગણેલી રોકડ
+opening_float	શરૂઆતની રોકડ
+shift_handover	શિફ્ટ સોંપણી
+shift_since	આ શિફ્ટ શરૂ
+expected_in_drawer	ડ્રોઅરમાં હોવી જોઈએ
+right_discount	ડિસ્કાઉન્ટ આપવું
+floor_in_kitchen	રસોડામાં
+floor_eating	જમી રહ્યા છે
+pick_category	શ્રેણી પસંદ કરો
+close_category_list	શ્રેણીની યાદી બંધ કરો
+new_category_row	નવી શ્રેણી — આઇટમ સાચવતાં બનશે
+your_category	તમારી શ્રેણી
+suggested_category	સૂચન — અમારી વાનગીઓમાંથી
+category_search_ph	શ્રેણી — તમારી શોધો અથવા નવી લખો
+line_sent_state	રસોડામાં મોકલ્યું
+line_nc_state	મફત (NC) — ચાર્જ નહીં
+cancel_item_short	રદ
+nc_short	મફત
+charge_again_short	ચાર્જ કરો
+move_short	ખસેડો
+cancel_item_title	આ આઇટમ રદ કરો — રસોડાને રદ ચિઠ્ઠી મળશે
+nc_item_title	આ આઇટમ મફત કરો (NC)
+charge_again_title	આ આઇટમનો ફરી ચાર્જ કરો
+move_item_title	આ આઇટમ બીજા ટેબલ પર ખસેડો
+already_cooked	પહેલેથી બની ગયું (બગાડ)
+not_cooked_yet	હજુ બન્યું નથી
+return_to_customer	ગ્રાહકને પાછા આપો
+short_by	ઓછા છે
+tip_not_sale	ટીપ (સ્ટાફની, વેચાણ નહીં)
+right_settle	ચુકવણી લેવી
+right_cancel_sent	મોકલેલી આઇટમ રદ કરવી
+right_complimentary	મફત આપવું (NC)
+right_move_table	ટેબલ ખસેડવું / જોડવું
+right_reprint	બિલ ફરી છાપવું
+right_allowed	મંજૂર
+right_with_approval	મંજૂરી સાથે
+right_denied	મંજૂર નથી
+editing_staff	આમના અધિકાર
+finding_server	આ Wi‑Fi પર દુકાનનું સર્વર શોધી રહ્યા છીએ…
+no_server_found	કોઈ સર્વર મળ્યું નહીં. દુકાનનું ડિવાઇસ એ જ Wi‑Fi પર વધારાના ટિલની મંજૂરી સાથે છે કે નહીં તે જુઓ, અથવા તેનો IP લખો.
+servers_found_pick	જે દુકાન સાથે જોડાવું હોય તેને ટેપ કરો.
+server_host_selected	{host} વાપરી રહ્યા છીએ — પેયરિંગ કોડ લખો, પછી હમણાં પેયર કરો.
+print_bill	બિલ છાપો
+table_actions	ટેબલ ક્રિયાઓ
+move_merge_table	ટેબલ ખસેડો / જોડો
+move_help	આ ટેબલનો ઓર્ડર ખાલી ટેબલ પર ખસેડો, અથવા ચાલુ ટેબલમાં જોડો.
+move_target_ph	ટેબલનું નામ (દા.ત. D5, P2)
+approval_pin_ph	મેનેજર PIN (પૂછે તો જ)
+move_here	અહીં ખસેડો
+merge_into	આમાં જોડો
+line_reason_ph	કારણ (દા.ત. મહેમાને મન બદલ્યું, સ્ટોક ખતમ)
+line_qty_ph	કેટલા રદ કરવા (ખાલી = બધા)
+line_target_ph	ટેબલ પર ખસેડો (દા.ત. D5)
+confirm	પુષ્ટિ કરો
+menu_search_ph	આઇટમ અથવા શોર્ટ કોડ શોધો
+customer_paid_ph	ગ્રાહકે આપ્યા
+tip_ph	ટીપ
+table_area_ph	વિભાગ (દા.ત. ડાઇન ઇન, પાર્સલ, AC)
+table_range_ph	એકસાથે ઘણા: D1-D20
+add_these_tables	આ ટેબલ ઉમેરો
+remove_these_tables	આ ટેબલ કાઢો
+table_remove_ph	કાઢો: T1-T24, અથવા એક ટેબલનું નામ
+find_server	દુકાનનું સર્વર શોધો
+bill_format	બિલ ફોર્મેટ
+bill_format_help	દરેક બિલ પર તમારા રેસ્ટોરન્ટના નામ નીચે છપાય છે. લીટીઓ | થી અલગ કરો (દા.ત. MG Road, Rajkot | Ph 98250 00000).
+bill_header_ph	સરનામું | ફોન
+fssai_ph	FSSAI લાઇસન્સ નં. (ભારત)
+bill_footer_ph	ફૂટર (દા.ત. આભાર, ફરી પધારજો)
+save_bill_format	બિલ ફોર્મેટ સાચવો
+reset_bill_format	ડિફોલ્ટ પર પાછા
+bill_format_reset	બિલ ફોર્મેટ ડિફોલ્ટ પર
+reset_kot_format	ડિફોલ્ટ પર પાછા
+kot_format_reset	KOT ફોર્મેટ ડિફોલ્ટ પર
+kot_format	KOT ફોર્મેટ
+kot_format_help	રસોડાની સ્લિપ માનક KOT — કિંમત નહીં; વાનગીઓ હંમેશા છપાય. વૈકલ્પિક લીટી, શીર્ષક, કૉપિ, કાગળ પહોળાઈ અને અક્ષર કદ કપાતા નથી.
+kot_format_fields	ફીલ્ડ
+kot_field_next	આગળનું ફીલ્ડ
+kot_field_show	બતાવો
+kot_field_hide	છુપાવો
+kot_field_on	બતાવો
+kot_field_off	છુપાવો
+kot_field_size	ફોન્ટ કદ
+kot_field_size_ph	દા.ત. 16, 20, 24, 28, 32…
+kot_weight_light	હળવું
+bill_kot_panel_help	બિલ સામગ્રી અને રસોડાની સ્લિપ ટાઇપોગ્રાફી. ઉપરની સામગ્રી પહોળાઈ જ બિલ અને રસોડાની સ્લિપ બંનેની પહોળાઈ છે.
+std_size_ph	દા.ત. 18, 20, 26…
+kot_show_shop	દુકાનનું નામ
+kot_hide_shop	દુકાન છુપાવો
+kot_show_time	સમય
+kot_hide_time	સમય છુપાવો
+kot_show_waiter	વેટર
+kot_hide_waiter	વેટર છુપાવો
+kot_show_station	સ્ટેશન
+kot_hide_station	સ્ટેશન છુપાવો
+kot_show_table	ટેબલ
+kot_hide_table	ટેબલ છુપાવો
+kot_show_kot_no	KOT નં.
+kot_hide_kot_no	KOT નં. છુપાવો
+kot_width	કાગળ પહોળાઈ
+kot_width_58	58 mm
+kot_width_80	80 mm
+kot_kind_heading	KOT પ્રકાર
+kot_kind_original	મૂળ
+kot_kind_duplicate	નકલ
+kot_kind_modified	બદલાયેલ
+kot_kind_cancelled	રદ
+kot_style_heading	ફીલ્ડ કદ અને વજન
+kot_style_title	શીર્ષક
+kot_style_item_qty	આઇટમ · સંખ્યા
+kot_style_field_pick	ફીલ્ડ પસંદ કરો
+kot_weight_regular	સામાન્ય
+kot_weight_bold	જાડું
+kot_align	ગોઠવણી
+kot_align_start	શરૂ કરો
+kot_align_center	વચ્ચે
+kot_align_end	છેડે
+content_width	સામગ્રી પહોળાઈ (મિમી)
+content_width_bill	બિલની પહોળાઈ (mm)
+content_width_kot	KOT ની પહોળાઈ (mm)
+content_width_ph	અથવા સામગ્રી પહોળાઈ લખો, 40–210 મિમી
+content_width_help	આ સ્લિપ કેટલી પહોળી છપાય. બિલ અને KOT બંને પોતપોતાની પહોળાઈ રાખે છે.
+content_width_bill_help	મહેમાનનું બિલ કેટલું પહોળું છપાય. મૂળ 210 mm (પાનું). 58 mm સાંકડી સ્લિપ, 80 mm પહોળી સ્લિપ, 112 mm 4-ઇંચ, 210 mm A4-પહોળું. 40 થી 210 વચ્ચે કોઈ પણ મૂલ્ય લખો. રસોડાની ટિકિટની પોતાની પહોળાઈ KOT ટૅબ પર છે.
+content_width_kot_help	રસોડાની ટિકિટ કેટલી પહોળી છપાય. મૂળ 80 mm. 58 mm સાંકડી સ્લિપ, 80 mm પહોળી સ્લિપ, 112 mm 4-ઇંચ, 210 mm પાનું. 40 થી 210 વચ્ચે કોઈ પણ મૂલ્ય લખો. મહેમાન બિલની પોતાની પહોળાઈ બિલ ટૅબ પર છે.
+vp_paper_width	સામગ્રી પહોળાઈ (મિમી)
+vp_paper_width_ph	અથવા સામગ્રી પહોળાઈ લખો, 40–210 મિમી
+vp_paper_width_help	સામગ્રી પહોળાઈ બિલ અને KOT ફોર્મેટમાં સેટ થાય છે. તે બિલ અને રસોડાની ટિકિટ બંને પર લાગુ પડે છે.
+kot_size	અક્ષર કદ
+kot_size_s	નાનું
+kot_size_m	સામાન્ય
+kot_size_l	મોટું
+std_size	અક્ષર કદ
+kot_copies	કૉપિ
+kot_copies_1	1
+kot_copies_2	2
+kot_copies_3	3
+kot_title_ph	શીર્ષક (ખાલી = KOT - KITCHEN ORDER)
+kot_footer_ph	રસોડું નોંધ (વૈકલ્પિક, કિંમત નહીં)
+kot_preview	પૂર્વાવલોકન
+save_kot_format	KOT ફોર્મેટ સાચવો
+test_kot_format	ટેસ્ટ KOT
+test_kot_sent	રસોડાની ટિકિટનો નમૂનો મોકલ્યો
+test_bill_format	ટેસ્ટ બિલ
+test_bill_sent	બિલનો નમૂનો મોકલ્યો
+test_print_no_printer	એ કામ માટે પ્રિન્ટર નથી — આ જ સ્ક્રીન પર એક પસંદ કરો
+kot_format_saved	KOT ફોર્મેટ સાચવ્યું
+std_print	બિલ પ્રિન્ટ કદ
+std_print_help	સ્ટાન્ડર્ડ પોર્ટ્રેટ અને લેન્ડસ્કેપ બિલ જોબ માટે અક્ષર કદ (થર્મલ KOT અલગ). બંને દિશામાં એક જ કદ.
+std_size_s	નાનું
+std_size_m	સામાન્ય
+std_size_l	મોટું
+save_std_print	બિલ પ્રિન્ટ કદ સાચવો
+std_print_saved	બિલ પ્રિન્ટ કદ સાચવ્યું
+print_brand_kit	પ્રિન્ટ બ્રાન્ડ કિટ
+print_brand_kit_help	વૈકલ્પિક સ્ટેમ્પ અને પેમેન્ટ QR બિલ અને LAN ડિસ્પ્લે પર. પેમેન્ટ QR ન હોય તો ઉપરના UPIથી રકમ QR.
+choose_stamp	સ્ટેમ્પ પસંદ
+clear_stamp	સ્ટેમ્પ દૂર
+stamp_set	સ્ટેમ્પ: ફાઇલ પર — ગેસ્ટ ડિસ્પ્લે અને બિલ પર નામ
+stamp_none	સ્ટેમ્પ: નથી
+choose_payment_qr	પેમેન્ટ QR પસંદ
+clear_payment_qr	પેમેન્ટ QR દૂર
+payment_qr_set	પેમેન્ટ QR: ફાઇલ પર — ગેસ્ટ ડિસ્પ્લે પર (રકમ UPI QR ની જગ્યાએ)
+payment_qr_none	પેમેન્ટ QR: નથી — ચુકવણી વખતે UPI IDથી રકમ QR
+aggregator_import	એગ્રિગેટર ઑર્ડર (ફાઇલ)
+aggregator_import_help	વૈકલ્પિક Local: backupsમાં import_aggregator_orders.json મૂકી Import. કાઉન્ટર અટકશે નહીં; લાઇવ Zomato/Swiggy = Cloud.
+import_aggregator_file	એગ્રિગેટર ફાઇલ આયાત
+team_pick_ph	ફેરફાર માટે સ્ટાફનું નામ
+select_staff	આ સ્ટાફ પસંદ કરો
+rights_help	અધિકાર — બદલવા ટેપ કરો: મંજૂર → મંજૂરી સાથે (તે સમયે મેનેજરનો PIN) → મંજૂર નથી.
+dish_picker_help	અમારી વાનગીઓ શોધો કે જુઓ અને એક પર ટેપ કરો — તેનું નામ અને ફોટો ભરાઈ જશે, અથવા તમારું નામ રાખો. કિંમત લખો (0 પણ ચાલે), પછી આઇટમ ઉમેરો.
+close_dish_list	વાનગીઓની યાદી બંધ કરો
+own_item_name	આને તમારી પોતાની આઇટમના નામ તરીકે વાપરો
+on_your_menu	તમારા મેનૂમાં
+edit	બદલો
+schemes	સ્કીમ / ઓફર
+schemes_help	X ખરીદો Y મેળવો — સેટલ પર આપમેળે. દા.ત. Buy 2 Thali get 1 Chaas
+scheme_bogo_ph	Buy 2 Thali get 1 Chaas
+add_scheme	BOGO ઉમેરો
+schedule_ph	સમય / હૅપી અવર — Mon-Fri 07:00-11:00 અથવા HappyHour 17:00-19:00=150
+upi_vpa_ph	UPI ID (VPA)
+upi_payee_ph	UPI પ્રાપ્તકર્તા (વૈકલ્પિક)
+upi_qr	UPI QR
+show_upi_qr	UPI QR બતાવો
+close_upi_qr	બંધ
+upi_qr_help	મહેમાન સ્કેન કરી ચૂકવે. પછી Take payment દબાવો.
+kot_recall	પાછું લાવો
+recently_done	હમણાં પૂર્ણ
+recall_kot_ph	પાછું લાવવા KOT #
+role_help_customer	ભૂમિકા: ગ્રાહક — AR (તેઓ આપણા દેણદાર). એ જ ફર્મ સપ્લાયર પણ હોઈ શકે.
+role_help_both	ભૂમિકા: મોકલનાર + કેરિયર — એક પક્ષ, AR અને AP ચોપડા, અહેવાલોમાં ચોખ્ખું.
+role_help_supplier	ભૂમિકા: સપ્લાયર — ખરીદી માટે AP.
+dine_in_pick_table	જમવા માટે ટેબલ પસંદ કરો…
+choose_table	ટેબલ પસંદ કરો
+change_table	ટેબલ બદલો
+pick_table_banner	આ ઓર્ડર માટે ટેબલ પસંદ કરો
+items_word	વસ્તુઓ
+items_section	વસ્તુઓ
+back_to_order	ઓર્ડર પર પાછા
+new_items_head	હજુ મોકલ્યું નથી
+price_ph	કિંમત
+price_ph_gst_inside	કિંમત ({tax} સહિત)
+cancel_needs_table	રસોડા પછી રદ કરવા આ ઓર્ડર ફ્લોર (ટેબલ) થી ખોલો — કાઉન્ટર KOT ચુકવણી સુધી ટિકિટ પર રહે છે
+tax_rates_missing_hint	આ વાનગીઓ પર {tax} દર નથી — મેનૂમાં કર દર સેટ કરો ({tax} inclusiveમાં કિંમતમાં પહેલેથી {tax} છે)
+taxable_value	કરપાત્ર મૂલ્ય
+gst_inside_price_note	({tax} સહિત)
+start_with_template	અમારા મેનુ ટેમ્પલેટથી શરૂ કરો
+template_heading	અમારું મેનુ ટેમ્પલેટ
+template_info	{c} શ્રેણીઓ અને {d} વાનગીઓ ફોટો સાથે તૈયાર. કિંમત ₹0 — પછી તમારી કિંમત રાખો.
+template_import	આખું ટેમ્પલેટ ઉમેરો
+template_confirm	{d} વાનગીઓ તેમની શ્રેણીઓ સાથે ઉમેરવી? તમારી હાલની વાનગીઓ એમ જ રહેશે.
+template_yes	હા, ઉમેરો
+template_importing	મેનૂ આયાત…
+template_import_progress	આયાત… {d}/{t}
+template_done	અમારા ટેમ્પલેટની દરેક વાનગી તમારા મેનુમાં છે.
+template_imported	{d} વાનગીઓ અને {c} શ્રેણીઓ ઉમેરાઈ — આ જ સ્ક્રીન પર કિંમત રાખો
+client_template_heading	ક્લાયન્ટ મેનુ
+client_template_info	{title}: {c} શ્રેણીઓ, {d} વાનગીઓ કિંમત, ફોટો અને ઉપનામ સાથે. ફક્ત ખૂટતી — તમારા નામ એમ જ રહેશે.
+client_template_import	આ મેનુ ઉમેરો
+client_template_confirm	{title}માંથી {d} વાનગીઓ ઉમેરવી? તમારી હાલની એમ જ રહેશે.
+client_template_importing	{title} આયાત…
+client_template_done	{title}ની દરેક વાનગી તમારા મેનુમાં છે.
+client_template_imported	{title}માંથી {d} વાનગીઓ અને {c} શ્રેણીઓ ઉમેરાઈ
+resv_heading	આરક્ષણ
+resv_name_ph	મહેમાનનું નામ
+resv_phone_ph	ફોન (વૈકલ્પિક)
+resv_guests_ph	મહેમાનો
+resv_when_ph	ક્યારે — 20:30, tomorrow 13:00
+resv_table_ph	ટેબલ (વૈકલ્પિક)
+resv_add	બુક કરો
+resv_seat	બેઠા
+resv_none	આવનારું કોઈ બુકિંગ નથી.
+guests_word	મહેમાન
+delivery_by_ph	ડિલિવરી કોણ લઈ જશે (રાઇડર કે સ્ટાફ)
+kitchen_all_day	હમણાં રાંધવાનું: {items}
+kitchen_all_day_head	હમણાં રાંધવાનું
+kitchen_tab_live	લાઇવ
+kitchen_tab_recall	પાછું લાવો
+kitchen_tab_stations	સ્ટેશન
+split_bill	બિલ વહેંચો
+split_go	અલગ બિલ બનાવો
+cancel	રદ કરો
+opening_client	ક્લાયન્ટ ખુલી રહ્યું છે…
+preparing_desk	ડેસ્ક તૈયાર થઈ રહ્યું છે…
+opening_server	સર્વર ખુલી રહ્યું છે…
+creating_server	સર્વર બની રહ્યું છે…
+split_help	એક મહેમાન જેનું ચૂકવશે તે વાનગીઓ દબાવો · {n} પસંદ
+split_send_first	પહેલાં KOT મોકલો — ફક્ત રસોડામાં ગયેલી વાનગીઓ અલગ બિલમાં જાય
+split_pick_some	પહેલાં અલગ બિલની વાનગીઓ દબાવો
+split_done	અલગ બિલ બન્યું — ફ્લોર પર આ ટેબલ પાસે છે
+split_marked	અલગ બિલ
+order_empty_pick	ઓર્ડર ખાલી છે — વાનગીઓ પસંદ કરવા ઉપર “વાનગીઓ ઉમેરો” દબાવો.
+add_dishes	વાનગીઓ ઉમેરો
+order_so_far	આ ઓર્ડરમાં: {n} · {total}
+no_dish_match	“{q}” સાથે મેળ ખાતી કોઈ વાનગી નથી
+pick_dishes_help	વાનગી ઉમેરવા દબાવો · યાદી ટૂંકી કરવા શ્રેણી પસંદ કરો
+pick_done	થઈ ગયું
+pick_done_dd	થઈ ગયું · {label}
+printer_route_mode	આ જગ્યાએ ઘણા પ્રિન્ટર હોય તો
+printer_mode_first	જે પહેલાં ચાલે
+printer_mode_all	બધા પર છાપો
+kot_show_area	વિસ્તાર
+kot_hide_area	વિસ્તાર છુપાવો
+kot_show_item_hdr	આઇટમ · સંખ્યા
+kot_hide_item_hdr	કૉલમ છુપાવો
+kot_show_title	શીર્ષક પંક્તિ
+kot_hide_title	શીર્ષક છુપાવો
+kot_field_order	છાપવાનો ક્રમ
+kot_field_up	ઉપર ખસેડો
+kot_field_down	નીચે ખસેડો
+kot_field_cycle	આગળનું પસંદ કરો
+kot_field_select	આગળનું પસંદ કરો
+kot_field_time	સમય
+kot_field_kot_no	KOT નં.
+kot_field_area	વિસ્તાર
+kot_field_table	ટેબલ
+kot_field_shop	દુકાનનું નામ
+kot_field_waiter	કર્મચારી
+kot_field_station	સ્ટેશન
+app_template_blurb_extra	સાથે: માલિક ઝહીર, એડમિન આસિફ, વેઈટર નવાઝ; FOH સાઇડબાર; 4 કલાક પછી ઇતિહાસ; આજની પટ્ટી બંધ; નાનો KOT.
+dishes_n	{n} વાનગીઓ
+recipe_ph	રેસીપી (વૈકલ્પિક) — એક પ્લેટમાં વપરાય: Rice=0.2, Paneer=0.15
+reorder_ph	આટલે પહોંચે ત્યારે વધુ ખરીદો
+set_reorder	ફરી ઓર્ડર સ્તર મૂકો
+low_stock_alert	ઓછું થઈ રહ્યું છે — જલ્દી ખરીદો: {items}
+unpriced_note	તમારા મેનુની {n} વાનગીઓની હજી કિંમત નથી — કિંમત મૂકો ત્યાં સુધી તે 0 પર બિલ થશે.
+show_unpriced	ફક્ત કિંમત વગરની વાનગીઓ બતાવો
+show_all_dishes	બધી વાનગીઓ બતાવો
+role_waiter	વેઈટર
+role_kitchen	રસોડું
+role_title_rest_ph	પદ (દા.ત. કેપ્ટન, હેડ કૂક)
+preset_help_rest	વેઈટર: ઓર્ડર લે છે અને ટેબલ સંભાળે છે. કેશિયર: ચુકવણી પણ લે છે. રસોડું: રસોડાની સ્ક્રીન. મેનેજર: મેનુ, રદ અને છૂટ પણ.
+kind_raw	કાચો માલ
+kind_resale	ખરીદી વેચાણ
+kind_dish	અમારી વાનગી
+buy_unit_ph	એકમ (કિલો, લિટર, નંગ)
+add_another_way	+ બીજી રીત
+parts_status	નોંધ્યું {a} / {b} · {c} બાકી
+save_expense	ખર્ચ સાચવો
+rest_ph	બાકી
+low_badge	ઓછું
+stock_empty	હજુ સ્ટોકમાં કંઈ નથી — ખરીદીમાં નોંધેલું અહીં દેખાશે.
+recent_changes	તાજેતરના ફેરફારો
+lane_declared_label	કર ઇન્વૉઇસ
+lane_owner_label	કેશ મેમો
+money_lane_bill	બિલ: {lane}

@@ -1,0 +1,1329 @@
+# Belarusian — Беларуская (be). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	Разлік Кірана: продаж, запас, хатовая кніга. Бясплатна без інтэрнэту.
+unlock	Разблакіраваць
+pin_hint	PIN уладальніка спачатку 0000
+sell	Прадаць
+buy	Закупка
+books	Дзённая кніга
+books_help	Сённяшняя пазіцыя. Прадаць = грошы. Купіць = пакупкі і выдаткі. Бакі = крэдытныя кліенты і пастаўшчыкі.
+buy_help	Выдатковыя ордэры і рахункі пастаўшчыкоў (грошы вон). У рахунак застаецца ў кнізе бакоў.
+sell_money_in	Прадаваць рэчы
+buy_money_out	Выдатак / рахунак пастаўшчыка
+record_purchase	Запісаць закупку
+add_expense	Выдатковы ордэр
+bank_book	Банкаўская кніга
+credit_help	Ідэнтыфікатар боку ўнікальны (імёны могуць паўтарацца). Кліент вядзе кхату (вінны нам); пастаўшчык прадае нам запас (мы вінныя яму); абодва — нармальна. Кнігі вядуцца асобна; справаздачы паказваюць чыстае.
+party_kind_ph	Ролі: кліент, пастаўшчык, абодва…
+reports_help	Дзённая кніга, дэбіторы і крэдыторы, банкаўская кніга, выдатковыя ордэры, прыбытак і страты.
+reports_today	Дзённая кніга (сёння)
+reports_month	Прыбытак і страты (месяц)
+reports_aging	Непагашанае / Дт-Кт
+reports_balance_sheet	Баланс
+reports	Банкаўская кніга і П і С
+refresh	Абнавіць
+undo	Адрабіць
+start_tracking	Пачаць улік
+stock_minus	− Запас
+stock_plus	+ Запас
+settle_cash	Разлічыць наяўнымі
+settle_card	Разлічыць карткай
+items	Прадметы
+nav_items	Прадметы
+more	Яшчэ
+your_items	Вашы рэчы
+items_help	Націсніце элемент, каб адрэдагаваць яго. Новы элемент ачышчае форму. Шукайце па назве або кароткім кодзе, усталюйце цану (0 - добра), затым Дадайце. Ужо зарэгістраваныя продажы захоўваюць імя, якое ім было прад'яўлена.
+add_item	Дадаць пазіцыю
+new_item	Новая пазіцыя
+adding_item	Дадаванне новай пазіцыі
+editing_item	Рэдагаванне
+save	Захаваць
+remove	Выдаліць
+removed_items	Выдаленыя пазіцыі
+removed_help	Restore вяртае тавар у Items такім жа, якім ён быў: цана, фота і катэгорыя.
+restore_item	Аднавіць
+empty_catalog	Пакуль няма тавараў. Адкрыйце Тавары, дадайце назву і цану, потым прадайце з прылавка.
+total	Разам
+cash	Наяўныя
+upi	UPI
+card	Картка
+credit	Бакі
+clear	Ачысціць
+ready_to_sell	Гатова запісаць
+today_prefix	Сёння
+today_mid	сёння
+owed	непагашана
+round_word	акругліць
+back	Назад
+sold_out	Недаступна
+restock	Папоўніць
+not_tracked	Без уліку
+in_stock	у запасе
+marked_sold_out	Пазначана недаступным
+add_upper	ДАДАЦЬ
+na	Н/Д
+qty	Вага/Кольк.
+unit_at	Кошт @
+actual	Факт
+applied	Ужыта
+note_ph	Нататка (неабавязкова)
+rounded	АКРУГЛЕНА
+split	Падзел
+send_kot	Даслаць ліст
+send_kot_to	Адправіць → {kitchens}
+send_kot_again	Дадаць тавары для наступнага чэка
+send_kot_held	Затрыманыя прадметы — вызваліць для адпраўкі
+reprint_kot	Надрукаваць выбранае зноў
+reprint_kot_ok	Зноў надрукаваныя элементы {n} · лісток(-і) {slips} → {kitchens}
+reprint_kot_needed	Спачатку адпраўце лісток — затым уключыце элементы і зноў раздрукуйце выбраныя
+reprint_kot_none_selected	Кожны адпраўлены тавар прапускаецца — націсніце «Друкаваць» на тых, што трэба перадрукаваць
+reprint_kot_client	Раздрукуйце яшчэ раз ({n}) для адпраўленага {place} — крамная прылада друкуе яго
+print_cancelled_kot	Надрукаваць усе скасаваныя
+print_cancelled_kot_ok	Надрукаваныя скасаваныя элементы {n} · лісток(-і) {slips} → {kitchens}
+print_cancelled_kot_needed	Спачатку адкрыйце табліцу з адмененымі прадметамі
+print_cancelled_kot_none	Няма адмененых тавараў у гэтым заказе
+print_cancelled_kot_client	Друк адменены ({n}) для адпраўленага {place} — крамная прылада друкуе яго
+kot_banner	Банер віду
+kot_banner_ph	Банер (пусто = няма)
+kot_item_prefix	Прэфікс пазіцыі
+kot_item_prefix_ph	напр. [СКАСАВАНА]
+kot_strike	Назва пункта страйку
+kot_strike_note	Заўвага аб пунктах
+kot_strike_on	Укл
+kot_strike_off	Выкл
+bill_item_layout	Макет пазіцый
+bill_item_layout_columns	Слупкі
+bill_item_layout_stacked	Стосам
+bill_item_header	Загалоўкі слупкоў
+bill_item_hdr_item	Загаловак пазіцыі
+bill_item_hdr_qty	Загаловак колькасці
+bill_item_hdr_price	Загаловак цаны
+bill_item_hdr_amount	Загаловак сумы
+bill_item_name	Назва прадмета
+bill_item_qty	Кольк.
+bill_item_price	Цана
+bill_item_amount	Сума
+bill_item_note	Заўвага да прадмета
+bill_item_col_gap	Прамежак слупкоў
+bill_item_col_order	Парадак слупкоў
+bill_item_col_sep	Лінейкі слупкоў
+bill_item_gap_tight	Шчыльна
+bill_item_gap_comfort	Камфортна
+bill_item_gap_wide	Шырока
+bill_item_num_width	Лікавыя слупкі
+bill_item_num_compact	Кампактна
+bill_item_num_comfort	Камфортна
+bill_item_num_wide	Шырока
+bill_item_num_align	Выраўноўванне лікаў
+bill_item_gap_em	Прамежак (em)
+bill_item_qty_min	Мін. кольк. (em)
+bill_item_price_min	Мін. цана (em)
+bill_item_amount_min	Мін. сума (em)
+kot_item_qty_width	Слупок колькасці
+kot_item_num_align	Выраўноўванне колькасці
+bill_total_qty_label	Подпіс агульнай колькасці
+bill_total_subtotal_label	Подпіс прамежкавага выніку
+bill_total_grand_label	Подпіс агулам
+bill_total_paid_label	Подпіс аплачанага
+bill_meta_pair	Дзяліць радок з
+bill_pair_alone	Асобна
+bill_item_piece_on	Укл
+bill_item_piece_off	Выкл
+bill_total_qty	Агульная колькасць
+bill_total_subtotal	Прамежкавы вынік
+bill_total_grand	Агулам
+reprint_incl	У друк
+reprint_skip	Прапусціць
+reprint_skip_meta	Прапусціць паўторны друк
+kot_dest_hint	Друкуецца на прынтарах, якія вы прызначылі для {kitchens} у Налады → Прынтары
+kot_sent_hint	Апошняя адпраўка была адпраўлена {kitchens}. Націсніце, каб дадаць тавары для наступнага рахунку — або раздрукуйце квітанцыю зноў для таго ж рахунку.
+kot_sent_printing	Сліп адпраўлены на {kitchens} — друк
+kot_sent_not_printed	Сліп адпраўлены на {kitchens}, але НЕ раздрукаваны: {why}. Скажыце ў краме, потым папраўце прынтар і раздрукуйце яго зноў.
+kot_sent_screen	Сліп адпраўлены на {kitchens}
+kot_queued_shop	Сліп для {place} → {kitchens} захаваны; крамная прылада друкуе гэта
+kot_job_label	Сліп для {place} → {kitchens}
+kot_job_reached	Праслізгванне для {place} дасягнула {kitchens}
+kot_unassigned	Непрызначаны
+kot_unassigned_held	Затрыманыя {n} прадметы без станцыі — вызваліць на лініі для адпраўкі
+kot_station_ph	Станцыя
+kot_station_dd	Станцыя
+kot_station_dd_n	Станцыя · {stations}
+kot_set_station	Ужыць гэту станцыю
+kot_station_applied	Набор станцый на прадметах {n}: {station}
+kot_station_cleared	Станцыя ачышчана ад элементаў {n}: {station}
+kot_station_needed	Спачатку абярыце раздзел крамы
+kot_station_not_allowed	Немагчыма выкарыстоўваць раздзел: {station}
+kot_station_none	Станцыі пакуль няма — не выкарыстоўваюцца на прылаўку (Налады → Зоны, калі трэба)
+pos_tab_items	Дададзеныя пазіцыі
+pos_tab_payment	Аплата
+hold_send	Утрымаць
+hold_send_on	Утрымана
+hold_send_meta	Затрыманыя — не ў гэтым лісце
+station_remove	Выдаліць станцыю
+station_remove_ph	Націсніце станцыю ў спісе, каб выдаліць яе
+station_removed	Станцыя выдалена: {name}
+settings_hub_title	Налады
+settings_hub_help	Адкрывайце адну вобласць за раз — менш пракруткі, яснішы выбар.
+settings_back	Назад
+settings_sec_language	Мова і валюта
+settings_sec_country	Краіна і падатак
+settings_sec_tills	Іншыя прылады
+settings_sec_brand	Ваш брэнд
+settings_sec_units	Адзінкі і пералікі
+settings_sec_pickers	Зоны · станцыі · стаўкі падатку
+settings_sec_printers	Прынтары
+settings_sec_bill	Bill & Slip format
+settings_sec_selling	Схемы і продажы
+bill_kot_tab_bill	Рахунак
+bill_kot_tab_kot	Слізгаценне
+settings_sec_alerts	Апавяшчэнні
+alerts_help	Колькі статусныя паведамленні трымаюцца на экране для вас (гэты ўваход).
+snack_secs_ph	Секунды (3–60, прадвызначэнне 10)
+snack_secs_save	Захаваць час апавяшчэння
+snack_secs_saved	Час апавяшчэння захаваны — {n} секунд
+settings_sec_backup	Рэзервовая копія і аднаўленне
+settings_sec_diag	Дыягностыка
+diag_privacy_help	Журналы застаюцца на гэтай прыладзе. Сакрэты (PIN, паролі) ніколі не захоўваюцца. Абагульванне пакета з прылады кожны раз патрабуе вашага відавочнага адабрэння — ніколі не прадаецца і не перадаецца трэцім асобам.
+diag_level	Узровень дэталізацыі
+diag_level_error	Памылкі
+diag_level_warn	Папярэджанні
+diag_level_info	Інфармацыя
+diag_level_debug	Адладжваць
+diag_support_start	Пачніце 30-хвілінны сеанс падтрымкі
+diag_support_stop	Завяршыць сеанс падтрымкі
+diag_support_started	Сеанс падтрымкі ўключаны — дэталь адладкі на працягу 30 хвілін
+diag_support_ended	Сеанс падтрымкі завершаны
+diag_export_local	Экспарт лакальнай копіі
+diag_export_local_done	Лакальная дыягностыка гатовая ў {path} — выберыце, дзе захаваць копію
+diag_approve_send	Ухваліць абагульванне з гэтай прылады
+diag_send_help	Зацвярджэнне - гэта адзін пакет, тэрмін дзеяння якога заканчваецца. Часовы — выкарыстоўваецца толькі для выпраўлення або паляпшэння прадукту. Не перадаецца трэцім асобам. Працуе на Linux, Windows, macOS і Android.
+diag_send_approved	Доля зацверджана для аднаго пакета (тэрмін дзеяння хутка скончыцца)
+diag_export_send	Стварыць пакет агульных рэсурсаў (патрабуецца зацвярджэнне)
+diag_export_send_done	Абагуліць пакет, гатовы ў {path} — выберыце, дзе захаваць, а потым адпраўце толькі ў службу падтрымкі Kumkaj
+diag_save_bundle	Захаваць копію дыягностыкі
+diag_bundle_saved	Копія дыягностыкі захавана ў {path}
+diag_bundle_failed	Не ўдалося захаваць копію дыягностыкі — паўтарыце спробу
+diag_clear	Ачысціць журналы дыягностыкі
+diag_cleared	Журналы дыягностыкі ачышчаны
+sidebar_settings	Бакавая панэль
+sidebar_settings_help	Тыя ж значкі, што і на бакавой рэйцы. Перацягніце радок, каб змяніць парадак. Пераключыце пераключальнік, каб паказаць або схаваць. Налады і блакіроўка заўсёды застаюцца на панэлі.
+sidebar_always_on_short	Заўсёды ўключана
+sidebar_back_settings	Назад
+sidebar_shown	Паказана
+sidebar_hidden	Схаваны
+sidebar_always_on	Заўсёды на бары
+sidebar_shown_hint	Паказана на бакавой планцы / ніжніх выступах
+sidebar_hidden_hint	Схаваны ад бара
+sidebar_menu_items	Прадметы
+sidebar_enable_all	Уключыць усе
+sidebar_disable_all	Адключыць усе
+sidebar_order_saved	Парадак бакавой панэлі захаваны
+sidebar_visibility_saved	Бачнасць бакавой панэлі захавана
+amounts_hide	Схаваць
+amounts_show	Паказаць
+printers_none_hint	Спачатку захавайце прынтар на гэтай прыладзе, а потым дадайце яго ў рахунак або раздзел
+counter	Лічыльнік
+dine_in	Лічыльнік
+takeaway	На вынас
+order	Заказ
+tables	Сталы
+kitchen	Раздзелы
+sales	Продажы
+sales_refunds	Продажы і вяртанне сродкаў
+day_close	Блізкі дзень
+reports_expenses	Банкаўская кніга і П і С
+nav_reports	Даклады
+nav_settings	Налады
+nav_lock	Замак
+no_sale_yet	Продажу пакуль няма
+favorites	Выбранае
+favorites_help	Прадметы, якія вы часта прадаеце, захаваныя для вашага ўваходу. Дадайце адзін у рахунак або складзіце свой спіс з усіх пунктаў ніжэй.
+your_favorites	Вашы любімыя
+all_items	Усе прадметы
+frequent	Частыя
+added_items	Дададзеныя элементы
+added_items_empty	На гэтым рахунку пакуль нічога няма — дадайце тавар з Усе тавары або катэгорыю.
+frequent_config_help	Больш за ўсё прададзена з завершаных рахункаў. Вызначце, колькі дзён глядзець і колькі элементаў паказваць.
+frequent_days_ph	Дні (1)
+frequent_limit_ph	Прадметы (24)
+frequent_apply	Ужыць
+frequent_saved	Часта: апошнія {d} дзень(дні), топ {n} — {c} прадметаў
+frequent_empty	За гэты перыяд яшчэ няма завершаных распродажаў — аплаціце рахунак (дазволена 0 рупій, калі так указана ў наладах), і яны паказваюцца тут.
+zero_sales	Продажы з нулявым коштам
+zero_sales_help	Дазволіць прадметы з коштам ₹0 і рахункі, аплачаныя на ₹0 (падарункава / па жаданні ўласніка). Па змаўчанні ўключана, таму бясплатныя пакрыцці ўсё роўна з’яўляюцца ў частых і дзённых кнігах.
+zero_sales_on	Дазвольце 0 ₹
+zero_sales_off	Патрабаваць цану
+zero_sales_saved_on	Продажы з нулявой коштам дазволены
+zero_sales_saved_off	Цана продажу павінна быць вышэй за 0 рупій
+floor_areas_help	Плошчы — гэта пакоі або зоны на паверсе (Dine In, Parcel, AC ...). Спачатку дадайце плошчу, пасля чаго ўстаўце ў яе счётчыкі — кожная плошча асобная група на паверсе.
+area_new_ph	Новая зона / пакой (напрыклад, кандыцыянер, сад)
+add_area	Дадаць вобласць
+area_added	Плошча “{name}” гатова — дадаць счётчыкі ў яе
+no_favorites	Пакуль няма абраных — дадайце элементы са спісу ніжэй.
+add_to_bill	Дадаць да рахунку
+added	Дададзена
+owes_word	абавязаны
+selected_word	Выбранае
+chip_clear_credit	ачысціць — Крэдыт або ўзяць аванс
+chip_missing_customer	Выбраны кліент адсутнічае — абярыце яшчэ раз
+chip_no_customer	Пакуль няма кліента — увядзіце імя і націсніце Крэдыт
+credit_summary_fmt	{} кліентаў · адкрыты крэдыт {} · авансы ўтрыманы {}
+recent_label	Апошнія:
+kot_new_waiting	НОВЫ — чакаем
+kot_preparing	ПАДРЫХТОЎКА
+kot_ready_serve	ГАТОВА — падавайце
+kot_done_cap	ГАТОВА
+kot_cancelled	АДМЕНЕНА
+kot_start_btn	Пачаць
+kot_mark_ready	Пазначыць гатовым
+kot_done_btn	Гатова
+table_free	Вакантны — націсніце, каб пачаць заказ
+start_order	Пачаць парадак
+open_bill	Адкрыты рахунак
+collect_payment	Збіраць аплату
+table_running	Бег
+payment_pending	Аплата чакаецца
+collect_at_counter	збіраць на касе
+inventory	Інвентар
+inventory_stock	Інвентар і запасы
+branches	Галіны
+branches_org	Філіялы і арг
+credit_customers	Кліенты і пастаўшчыкі (крэдытныя рахункі)
+customer_name_ph	Імя кліента або пастаўшчыка
+new_customer_ph	Імя новага кліента або пастаўшчыка
+item_name_ph	Назва прадмета (напрыклад, Masala Dosa)
+item_price_ph	Цана
+start_template	Прадукт
+team	Каманда
+team_pins	Каманда і PINs
+my_pin_settings	Мой PIN
+settings_hub_help_my_pin	Зменіце разблакіроўку PIN для чалавека, які ўвайшоў у сістэму на гэтай прыладзе.
+team_self_help	Адзін уваход: новы PIN, новы пароль або абодва. Пакіньце поле пустым, каб захаваць тое, што ў вас ёсць. Спытайце ва ўладальніка, ці патрэбныя вам іншыя экраны або правы.
+backup_settings	Рэзервовае капіраванне і налады
+lock_app	Прыкладанне блакіроўкі
+pick	Выбраць
+select	Выберыце
+advance	Аванс
+owner	Уладальнік
+staff	Персанал
+photo	Фота
+auto	Аўто
+prev	Папярэд
+next	Далей
+ok	добра
+this_shop	Рэжым сервера
+extra_till	Кліенцкі рэжым
+off	Выкл
+tables_kitchen	Макет крамы
+server	Рэжым сервера
+client	Кліенцкі рэжым
+language_currency	Мова і валюта
+language	мова
+choose_language	Выберыце сваю мову
+language_setup_hint	Сачыце за мовай гэтай прылады або выберыце мову самастойна.
+lang_follow_platform	Мова прылады
+lang_pick_user	Выберыце мову
+lang_platform_now	Зараз мова прылады
+selected_language	Выбранае
+continue	Працягнуць
+this_device	ГЭТАЯ ПРЫЛАДА
+device_use_q	Як будзе выкарыстоўвацца гэта прылада?
+last_server_mode	Быў сервер — націсніце, каб працягнуць
+last_client_mode	Быў кліентам — націсніце, каб працягнуць
+choose_server	Выберыце сервер
+choose_server_hint	Адкрыйце існуючы сервер або стварыце яго для іншай кампаніі.
+create_new_server	Стварыць новы сервер
+open_server	Адкрыты
+new_server_name_ph	Новае імя сервера (неабавязкова)
+server_remove_pin_ph	Уладальнік PIN, каб выдаліць сервер
+only_owner_remove_server	Толькі ўладальнік можа выдаліць сервер
+owner_pin_remove_server	Уладальнік PIN павінен выдаліць гэты сервер
+device_setup_help	Сервер захоўвае кнігі тут. Кліент падключаецца да сервера.
+app_template_heading	Стартавы каталог (неабавязкова)
+app_template_blurb	Загружае ўзор каталога; Уладальнік Захір (zahir), Адміністратар Асіф (asif, PIN 1111), Касір Наваз (nawaz, PIN 0000); падатак/GST адключаны; бакавая панэль спераду; гісторыя ачышчаецца праз 4 гадзіны (і Ачысціць цяпер у Рэзервовай копіі); сенняшняя строчка выключана; кампактны рахунак + стандартныя паля для вузкіх лоткаў. Падатак і бакавыя панэлі могуць быць уключаны ў наладах.
+app_template_apply	Ужыць каталог стартэраў
+app_template_skip	Прапусціць пакуль
+app_template_status	Сервер гатовы — прымяніце стартавы каталог або прапусціце
+app_template_importing	Прымяняецца {title}…
+currency	Валюта
+backup	Рэзервовае капіраванне
+use	Выкарыстоўвайце
+dont_use	Не выкарыстоўвайце
+add_branch	Дадаць галінку
+add_conversion	Дадаць канверсію
+add_dishes_items	Дадаць тавары
+add_item_plain	Дадаць пазіцыю
+add_note	Дадаць нататку
+add_opening_balance	Дадайце пачатковы баланс
+add_staff	Дадаць персанал
+add_station	Дадаць станцыю
+add_table	Дадайце абедзенны стол
+add_unit	Дадаць адзінку
+add_use_name	Дадайце/выкарыстоўвайце гэтае імя
+allow_extra_tills	Дазволіць дадатковыя касы
+amend	Паправіць
+apply_country_pack	Прымяніць дачны пакет
+datetime_appearance	Выгляд даты і часу
+datetime_appearance_help	Кнігі захоўваюць унутры год-перш RFC3339. Гэта змяняе толькі тое, як выглядаюць даты і гадзіны ў рахунках, справаздачах і на экране.
+datetime_example	Прыклад: {ex}
+date_order	Парадак даты
+date_order_dmy	D/M/Y
+date_order_mdy	M/D/Y
+date_order_ymd	Y-M-D
+time_format	Гадзіннік
+time_format_24h	24-гадзінны
+time_format_12h	12-гадзінны
+attach_bill_photo	Прымацаваць фота рахунку
+attach_pdf	Далучыць PDF
+attach_photo	Далучыць фота
+attachments_last_expense	Укладанні (апошнія выдаткі)
+bank	Банк
+bank_in	Банк в
+bank_out	Банк з
+bank_reconciliation	Банкаўская зверка (пастаўце галачку насупраць выпіскі з банкаўскага рахунку)
+bank_to_till	Банк → каса
+book_add_dish	Бранюванне — дадаць прадмет / элемент
+book_opening_credit	Кніга — адкрыццё крэдыту
+branch_name_sell_ph	Назва філіяла для продажу
+bring_my_book	Прынясі маю кнігу
+business_tax_id_ph	Падатковы ідэнтыфікацыйны нумар прадпрыемства
+caption_bank	БАНК
+caption_bills	рахункі
+caption_outstanding	ВЫБІТНЫ
+caption_payments_today	АПЛАТЫ СЁННЯ
+caption_today	СЁННЯ
+card_amount_ph	Сума карты
+cash_amount_ph	Грашовая сума
+cash_memo	Касавая нататка
+choose_icon	Выберыце значок
+choose_logo	Выберыце лагатып
+clear_icon	Ачысціць значок
+clear_photo	Выразнае фота
+copy_day_book_csv	Копія дзённіка CSV
+copy_day_close	Капіяваць дзень закрыцця
+copy_items_csv	Капіяваць элементы CSV
+copy_outstanding_csv	Выдатная копія CSV
+copy_parties_csv	Копія кліентаў і пастаўшчыкоў CSV
+copy_party_ledger_csv	Капіяваць кнігу кліентаў CSV
+copy_receipt	Копія квітанцыі
+share_whatsapp	Падзяліцца WhatsApp
+lan_pages_heading	Старонкі кліента ў Wi‐Fi
+lan_pages_help	У Wi‑Fi гэтай крамы старонкі кліентаў працуюць для дысплея і зваротнай сувязі. Людзям, якія карыстаюцца мабільнай перадачай даных, воблака спатрэбіцца пазней. Тэрмінал карткі або спасылка для аплаты не абавязковыя і ніколі не блакуюць лічыльнік.
+diag_send_heading	Абагуліць гэтую прыладу
+kot_dest_heading	Станцыя
+optional_login_heading	Неабавязковы ўваход
+rights_heading	правы
+ops_panel	Мясцовыя ап
+crm_heading	Кліенты і паведамленні
+crm_help	Дзень нараджэння, лаяльнасць, неактыўныя і лепшыя госці — чарга SMS або WhatsApp намераў. Выкарыстоўвайце {name} і {points} у паведамленні. Уладальнік націскае на адпраўку; нішто не выбухае само па сабе.
+crm_queue_sms	Чарга SMS
+crm_queue_wa	Чарга WhatsApp
+crm_seg_bday_week	Дзень нараджэння тыдня
+crm_seg_bday_month	Дзень нараджэння месяца
+crm_seg_phone	З тэлефонам
+crm_seg_loyalty	Вернасць
+crm_seg_inactive	Неактыўны
+crm_seg_top	Самыя тратныя грошы
+birthday_ph	Дзень нараджэння (ММ-ДД або ГГГГ-ММ-ДД)
+crm_message_ph	З днём нараджэння {name}! У вас {points} балы.
+till_apply_redeem	Падаць заяўку на рахунак
+till_clear_redeem	Ясна выкупіць
+till_wallet_topup	Папоўніць кашалёк
+till_issue_voucher	Выдаць ваўчар
+till_points_ph	Ачкі для пагашэння
+till_wallet_ph	Сума кашалька, якую можна выдаткаваць
+till_voucher_code_ph	Код ваўчара
+till_voucher_amt_ph	Сума ваўчара (пусты = усе)
+till_wallet_topup_ph	Сума папаўнення кашалька
+till_voucher_issue_amt_ph	Сума ваўчара выдачы
+till_voucher_issue_code_ph	Новы код ваўчара
+split_evenly	Раўнамерна падзяліць
+waitlist	Спіс чакання
+fire_course	Наступны крок
+hold_item	Утрымаць
+waiter_call	Патэлефанаваць касіру
+waitlist_add	Дадаць у спіс чакання
+floor_view_grid	Сетка
+floor_view_layout	Макет
+floor_layout_x	X
+floor_layout_y	Y
+floor_layout_w	W
+floor_layout_h	H
+floor_layout_save	Захаваць макет
+floor_layout_open	Адкрыты абедзенны стол
+floor_layout_edit	Рэдагаваць макет
+floor_layout_pick	Націсніце абедзенны стол, каб змяніць яго планіроўку
+floor_layout_saved	Макет захаваны
+floor_layout_nudge_left	← 20
+floor_layout_nudge_right	→ 20
+floor_layout_nudge_up	↑ 20
+floor_layout_nudge_down	↓ 20
+sibling_pickers_help	Націсніце On/Off як адзінкі — схавайце раёны, станцыі і стаўкі падаткаў ад штодзённых выбаршчыкаў; пакет па змаўчанні заставацца.
+bulk_price_apply	Прымяніць оптавую цану
+card_terminal_optional	Тэрмінал карткі / спасылка для аплаты (неабавязкова, калі ёсць Інтэрнэт)
+copy_report	Капіяваць справаздачу
+counted_cash_ph	Пералічыў грошы ў шуфлядзе
+country_tax	Краіна і падатак
+create_backup	Стварыць рэзервовую копію
+credit_limit_heading	Крэдытны ліміт (выбраны кліент або пастаўшчык)
+day_close_summary	Падвядзенне вынікаў дня
+delete_party	Выдаліць выбранага кліента або пастаўшчыка
+delivery	Дастаўка
+done_open_books	Гатова — адкрыйце кнігі
+drawer_count	Колькасць скрынь (неабавязкова)
+expense_heading	Расход
+export_day	Экспартны дзень
+extra_note_bill_ph	Дадатковая заўвага на гэтым рахунку / продажы
+extra_note_expense_ph	Дадатковая заўвага аб апошніх выдатках
+extra_tills_heading	Дадатковыя касы
+other_devices_help_heading	Наладзьце іншыя прылады
+other_devices_help	На гэтай прыладзе (сервер): Іншыя прылады → Дазволіць дадатковыя касы. Запомніце код спалучэння і адрас Wi‑Fi. Націсніце Дазволіць іншым прыладам падключацца, калі ён з'явіцца. На камп'ютары націсніце Пачаць з гэтага камп'ютара. На кожнай іншай прыладзе: усталюйце праграму, абярыце рэжым кліента, знайдзіце сервер крамы (або ўвядзіце адрас), увядзіце код спалучэння, спалучыце зараз. Заказы чакаюць на прыладзе ў выпадку падзення Wi‑Fi і адпраўляюцца, калі сервер зноў адкажа. Дадатковыя прынтэры ўсталёўваюцца на серверы (Настройкі → Прынтэры) — дадатковыя касы адпраўляюць туды рахункі.
+forget_shop	Забудзьцеся аб гэтай краме
+goods_received	Тавар атрыманы
+import_day	Імпартны дзень
+import_items_csv_plain	Імпарт элементаў CSV…
+import_parties_csv	Імпарт кліентаў і пастаўшчыкоў CSV…
+item_name	Назва прадмета
+kitchen_printing	Прынтары
+login_id_ph	Імя карыстальніка
+mark_cleared	Марк ачышчаны
+new_party_clear	Новы кліент або пастаўшчык (чыстая форма)
+new_party_kind_supplier_ph	Тып новага кліента або пастаўшчыка (Пастаўшчык)
+next_country	Наступная краіна
+next_order	Наступны заказ (чысты стол)
+note_gstin_ph	Заўвага / GSTIN / напамін аб пагадненні
+notes_attach_party	Заўвагі і дадаткі (абраны кліент або пастаўшчык)
+notes_attach_sale	Нататкі і дадаткі (выбраная продаж)
+on_account_ap	На рахунку (AP)
+org_optional_ph	Арганізацыя (неабавязкова)
+paid_by	Аплачана
+paid_now	Аплачана зараз
+pair_now	Пара зараз
+pairing_code_ph	Код спалучэння
+party_name_selected_ph	Імя кліента або пастаўшчыка (або выкарыстоўвайце выбранае)
+password_ph	Пароль
+pay_ap_card	Плацежная карта AP
+pay_ap_cash	Плаціце AP наяўнымі
+pay_ap_heading	Плацім тое, што мы павінны ім (AP)
+pay_ap_upi	Аплата AP UPI
+pay_selected_heading	Аплата выбрана (разлічыцца з запазычанасцю / атрымаць аванс)
+pick_from_items	Выбірайце з нашых тавараў
+prev_country	Папярэдняя краіна
+print_open	Раздрукаваць / адкрыць
+reason_amend_ph	Прычына змены / анулявання / вяртання грошай
+reason_note_ph	Прычына / заўвага (трата, колькасць, ...)
+record_day_close	Закрыццё дня запісу
+refresh_from_shop	Абнавіць з крамы
+refund	Вяртанне грошай
+remove_selected	Выдаліць выбранае
+request_bill	Запытаць рахунак
+restaurant_name_ph	Назва крамы (неабавязкова)
+restore_backup	Аднавіць рэзервовую копію
+role_both	Абодва
+role_admin	Адмін
+role_cashier	Касір
+role_customer	Кліент
+role_manager	Менеджэр
+history_retention	Гандлёвая гісторыя
+history_retention_help	Auto-clear old sales and old tickets. Items, staff, and settings stay. Clear now wipes all trading rows and keeps setup.
+history_off	Трымайце
+history_day_close	На дзень блізка
+history_after_hours	У непрацоўны час
+history_hours_ph	Гадзіны (1–168, па змаўчанні 4)
+history_hours_save	Эканомце гадзіны
+history_clear_now	Ачысціць гісторыю
+history_cleared	Гісторыя таргоў ачышчана — налады захаваны
+history_retention_saved	Ачыстка гісторыі захавана
+history_hours_saved	Гадзіны гісторыі захаваны
+history_owner_only	Толькі ўладальнік або адміністратар можа ачысціць гісторыю
+rollup	Згортванне
+save_brand	Захаваць брэнд
+save_business_id	Захаваць бізнес-ідэнтыфікатар
+save_business_name	Захаваць назву кампаніі
+save_features	Захаваць
+save_features_named	Захаваць {name}
+save_features_ok	Захаваныя налады для {name}
+save_names	Захаваць імёны
+second_way	Другі спосаб
+server_ip_ph	IP-адрас сервера (напрыклад, 192.168.1.10)
+set_credit_limit	Прымяніць ліміт да кліента або пастаўшчыка
+set_login_selected	Прымяніць лагін да выбранага
+set_login_named	Прымяніць уваход у {name}
+shop	Крама
+show	Паказаць
+spreadsheet_csv	Табліца (CSV)
+start_fresh	Пачніце спачатку
+stop_extra_tills	Спыніць дадатковыя касы
+floor_cols_ph	Слупкі
+floor_cols_fit	Падагнаць экран
+floor_cols_fit_sub	{n} падыходзіць тут
+floor_cols_fits	падыходзіць
+floor_cols_scroll	пракручваецца ўбок
+floor_cols_min	Слупкі: не менш за 1 — або пакіньце пустым, каб ён змясціўся на экран
+floor_zoom_auto	Аўто
+floor_zoom_out	Паменшыць маштаб
+floor_zoom_in	Павялічыць
+backup_auto	Рэзервовае капіраванне ствараецца аўтаматычна кожны дзень · апошнія {when} · апошнія 14 дзён захоўваюцца ў {dir}.
+backup_auto_none	Рэзервовыя копіі ствараюцца аўтаматычна кожны дзень — першая запускаецца праз імгненне.
+backup_copy_to	Копіі таксама ідуць па адрасе {dir}.
+backup_copy_btn	Таксама скапіруйце рэзервовыя копіі ў тэчку…
+autostart_off	Пачніце з гэтага кампутара
+autostart_on	Пачынаецца з гэтага камп'ютара ✓ — націсніце, каб спыніць
+autostart_done_on	Цяпер гэты камп'ютар адкрывае праграму пры запуску — сервер крамы аднавіўся пасля адключэння электрычнасці.
+autostart_done_off	Гэты камп'ютар больш не адкрывае праграму пры запуску.
+device_forgotten	Крама забыла гэту прыладу — спалучыце яе яшчэ раз з бягучым кодам крамы. Заказы, якія чакаюць на ім, захоўваюцца.
+lan_offline	Сервер крамы недаступны
+forget_device	Забыць
+last_seen	бачыў
+copy_pair_code	Скапіруйце код спалучэння
+new_pair_code	Новы код спалучэння
+pair_finishing	Завяршальная пара… прымяненне кніг крамы
+pair_opening	Адкрыццё касы…
+pair_copied	Код спалучэння скапіраваны
+kot_waiting	Чаканне адпраўкі
+lan_offline_waiting	Сервер крамы недаступны · {n} чаканне
+lan_connecting	Падключэнне да крамы…
+lan_live	жыць
+lan_sending	{n} адпраўка
+lan_sign_in_to_send	Увайдзіце яшчэ раз, каб адправіць {n}
+lan_pair_again	Спалучыце гэту прыладу яшчэ раз
+lan_update_app	Абнавіце праграму — гэта прылада і сервер крамы маюць розныя версіі
+allow_firewall	Дазволіць іншым прыладам падключацца
+firewall_blocked	Брандмаўэр гэтага камп'ютара блакуе іншыя прылады — націсніце Дазволіць іншым прыладам падключацца.
+firewall_waiting	Чаканне падказкі адміністратара…
+lan_join_help	На іншай прыладзе: рэжым кліента → Знайдзіце сервер крамы (або ўвядзіце {addr}) → код спалучэння {code}.
+lan_pair_status	Wi‑Fi {addr}
+lan_join_help_no_addr	Каб атрымаць адрас, падключыце гэту прыладу да Wi‑Fi.
+lan_no_address	Адрасу Wi‑Fi пакуль няма — падключыцеся да крамы Wi‑Fi.
+lan_not_listening	Прылады не прымаюць (порт {port} заняты). Перазапусціце праграму.
+lan_tills_off	Дадатковыя касы адключаны. Дазвольце ім дазволіць іншай прыладзе далучыцца.
+paired_with	У пары · {url}
+not_paired	Не спараныя
+choose_device_use	Выберыце сервер або кліент.
+paired_note	Парныя. Разблакіруйце, каб прадаць, або абнавіце, каб атрымаць апошняе.
+last_update_at	Апошняе абнаўленне: {time}.
+pair_intro	Знайдзіце сервер або ўвядзіце яго адрас і код спалучэння.
+queue_waiting	У чаканні, каб дабрацца да крамы ({n}):
+queue_tries	Спрабаваў {n} разоў · апошні адказ: {e}
+save_backup_copy	Захаваць рэзервовую копію…
+backup_copy_saved	Рэзервовая копія захавана — трымайце яе далей ад гэтай прылады (USB-назапашвальніка або іншай прылады)
+backup_copy_overdue	На гэтай прыладзе не было рэзервовай копіі на працягу {n} дзён — Налады → Рэзервовае капіраванне
+backup_copy_failed	Не ўдалося захаваць рэзервовую копію — выберыце іншае месца
+clock_off	Гадзіннік гэтай прылады знаходзіцца на {min} мін ад сервера крамы — усталюйце правільны час на гэтай прыладзе
+printers_heading	Прынтары
+printers_help	Знайсці прынтэры, націснуць на адзін для выбару, затым раздрукаваць тэставую старонку толькі на гэтым прыладзе. Прынтэры рахункаў: фармат Рахунак і Квіток → Рахунак.
+printers_host_only	Прынтэры наладжваюцца на прыладзе крамы (Сервер). Гэта каса адпраўляе туды рахункі і старыя білеты — Знайсці / дадаць / прызначыць знаходжанне на серверы. Тэставая старонка і памер друку рахунка адпраўляюцца на сервер.
+printers_find_heading	Знайдзіце прынтэры
+printers_find_tip	Find скануе гэту прыладу і падтрымлівае спіс у актуальным стане.
+printers_pool_heading	Прынтары
+printers_pool_tip	Find скануе гэту прыладу і падтрымлівае гэты спіс у актуальным стане.
+printers_pool_empty	(пакуль няма — націсніце Знайсці)
+printers_routes_help	Знайсці прынтэры, якія ўжо ведае аперацыйная сістэма. Прызначыць іх для рахунку і для кожнага раздзела ў фармаце Рахунак і Квіток.
+printer_assign_dd	Рэальны прынтэр: {place}
+printer_assign_pick	Выберыце сапраўдны прынтэр
+printer_profile_heading	Макет
+printer_send_heading	Дастаўка
+vp_delivery_heading	Дастаўка
+vp_delivery_help	Як гэты віртуальны прынтэр адпраўляе заданні — дакумент АС, неапрацаваныя байты або ESC/POS. Змест бланка (памер тыпу, абгортка, палі) вызначаецца фарматам рахунка/бланка, а не тут.
+vp_type_size_heading	Памер тыпу
+vp_wrap_heading	Шырыня абкручвання
+vp_margin_heading	Палі
+vp_delivery_spooler	Дакумент АС (сістэмны спулер)
+vp_delivery_raw	Неапрацаваныя байты на прыладу
+vp_delivery_escpos	ESC/POS цеплавыя каманды
+virtual_printer_new	Новы віртуальны прынтэр
+virtual_printer_selected	Рэдагаванне «{name}» — націсніце іншы ў спісе, каб пераключыцца
+virtual_printer_tap_list	Націсніце на віртуальны прынтар у спісе, каб адрэдагаваць яго
+config_layout_portrait	Партрэт
+config_layout_landscape	Пейзаж
+config_send_os	Сістэмны спулер
+config_send_escpos	ESC/POS
+profiles_heading	Макеты
+profiles_empty	(пакуль няма макетаў)
+profile_builtin	убудаваны
+profile_custom	звычай
+profile_name_ph	Назва макета
+profile_new	Новы макет
+profile_delete	Выдаліць макет
+profile_created	Макет створаны
+profile_deleted	Макет выдалены
+profile_builtin_keep	Убудаваныя макеты нельга выдаліць
+config_saved	Абноўлены
+config_selected	Выбраны «{name}»
+printer_output_heading	Віртуальныя прынтэры
+virtual_printers_heading	Віртуальныя прынтэры
+virtual_printers_empty	Віртуальных друкарак пакуль няма — усталюйце значэнні ніжэй, затым захавайце. Калі ў вас ёсць некалькі, націсніце адзін у спісе для рэдагавання.
+virtual_printer_name_ph	Назва віртуальнага прынтара (неабавязкова)
+virtual_printer_create	Стварыць віртуальны прынтэр
+virtual_printer_save	Захаваць віртуальны прынтэр
+virtual_printer_delete	Выдаліць віртуальны прынтэр
+virtual_printer_created	Створаны віртуальны прынтэр “{name}”.
+virtual_printer_deleted	Выдалены віртуальны прынтэр «{name}»
+virtual_printer_updated	Віртуальны прынтэр абноўлены
+virtual_printer_updated_named	Віртуальны прынтэр «{name}» абноўлены
+virtual_draft_layout	Зададзены значэнні для наступнага віртуальнага прынтара
+virtual_draft_send	Зададзена значэнне для наступнага віртуальнага прынтара
+virtual_need_real	Спачатку абярыце сапраўдны прынтэр
+virtual_need_select	Выберыце віртуальны прынтэр для выдалення
+real_printer_selected	Абрана: {name}
+station_group_heading	Віртуальныя прынтэры
+station_group_apply	Выдаліць віртуальны прынтэр
+station_group_applied	Выдалены
+station_group_empty	Выберыце віртуальны прынтэр
+station_group_name_ph	Назва віртуальнага прынтара (неабавязкова)
+station_group_save	Стварыць віртуальны прынтэр
+station_group_saved	Віртуальны прынтэр захаваны
+station_manage_heading	Дадаць або выдаліць раздзел крамы
+printers_routes_heading	Дзе друкуюцца рэчы
+route_pick_heading	Месца
+route_editing	Мантаж: {name}
+route_assigned	Дададзена {printer} да {place}
+route_already_assigned	Ужо на гэтым месцы: {printer}
+route_removed	Выдалена {printer} з {place}
+route_cleared	Ачышчана {name}
+route_assigned_empty	Ніводнага на гэтым месцы
+route_tap_remove	націсніце, каб выдаліць
+route_tap_select	націсніце, каб выбраць
+route_tap_selected	выбраны
+route_pick_printer_first	Спачатку націсніце прынтар
+route_assigned_heading	Прынтары
+route_add_heading	Прысвоіць
+printer_label_ph	Назва (напрыклад, друкар лічыльніка)
+printer_target_ph	Імя сістэмнага прынтара або хоста: 9100
+printer_target_default	звычайны прынтэр гэтага кампутара (пусты адрас)
+printer_wire_heading	Профіль
+printer_wire_escpos	ESC/POS
+printer_wire_os	Партрэт
+printer_wire_os_portrait	Партрэт
+printer_wire_os_landscape	Пейзаж
+printer_wire_escpos_short	ESC/POS
+printer_wire_os_short	Партрэт
+printer_wire_os_landscape_short	Пейзаж
+printer_format_custom	Новы карыстальніцкі профіль
+printer_format_custom_label	Прыстасаваныя
+printer_format_custom_added	Карыстальніцкі профіль дададзены для гэтага месца
+add_printer	Дадаць прынтэр
+remove_printer	Выдаліць
+route_pick_ph	Біл або аддзяленне крамы
+route_bill	Рахунак
+route_default_kitchen	Станцыі няма (непрызначаныя аб'екты)
+route_kot_station	Станцыя
+route_dont_print	Няма друкаркі
+stations_heading	Станцыі
+stations_help	Раздзелы крамы групуюць тавары і прынтэры для гэтай часткі крамы. Далучыце прынтэры з меню Налады → Прынтэры, усталюйце парадак спробаў, а затым спачатку тое, што працуе або Друк на ўсіх. Змены захоўваюцца па ходзе.
+station_print_heading	Прынтэры для гэтай станцыі
+station_print_help	Выберыце станцыю, затым далучыце адзін або некалькі прынтараў. ↑↓ задае парадак спроб. Першы, што праца спыняецца пасля першага поспеху; Друк на ўсіх адпраўках на кожны падключаны прынтэр.
+station_print_pick_ph	Станцыя для ўстаноўкі друкарак
+station_print_pick_first	Спачатку абярыце раздзел крамы
+station_print_editing	Рэдагаванне друкарак для «{name}»
+station_vps_dd	Прынтэры для гэтай станцыі
+station_vps_dd_n	{n} прынтэры · націсніце, каб змяніць
+station_vps_empty	Пакуль няма прынтараў — знайдзіце іх у меню Налады → Прынтэры
+bill_printers_dd	Прынтэры для рахункаў
+bill_printers_dd_n	{n} прынтэры для рахунку · націсніце, каб змяніць
+job_layout	Макет
+job_delivery	Як адпраўляецца заданне
+job_delivery_help	Дакумент АС, неапрацаваныя байты або ESC/POS. Рахунак і білет кожны свой. Любое заданне можа быць адпраўлена на любы прынтэр, захаваны Find.
+station_vp_attached	Прынтэр падлучаны
+station_vp_detached	Прынтэр выдалены са станцыі
+station_print_summary	{mode} · {n} прынтэры
+station_print_summary_none	На гэтай станцыі пакуль няма прынтэраў — яна не будзе друкаваць
+stations_none	Станцыі пакуль няма — дадаць ніжэй. Станцыі не выкарыстоўваюцца на прылаўку — пакінуць пустым.
+route_up	Уверх
+route_down	Уніз
+route_remove	Выдаліць
+route_clear	Ачысціць
+save_printers	Захаваць прынтэры
+print_test_page	Раздрукаваць пробную старонку
+no_printer_assigned	Няма друкаркі
+test_page_no_printer	Няма прынтара для {place} — далучыце да яго прынтар і паўтарыце спробу
+test_page_pick_first	Спачатку абярыце прынтэры для тэставай старонкі, а потым раздрукуйце пробную старонку
+test_printers_dd	Прынтэры для тэставай старонкі
+test_printers_dd_n	{n} прынтэры для тэставай старонкі · націсніце, каб змяніць
+kot_test_printers_dd	Прынтэры для тэставай друку
+kot_test_printers_dd_n	Прынтэр(ы) {n} для тэставага друку · націсніце, каб змяніць
+test_printer_picked	Тэст на: {name}
+test_printer_cleared	Не тэстуецца на: {name}
+test_page_sent_n	Тэставая старонка адпраўлена на {n} прынтэраў
+test_kot_pick_first	Спачатку абярыце прынтар(-ы) для тэставага друку, а потым тэставы
+test_kot_sent_n	Тэставы друк адпраўлены на прынтэр(ы) {n}
+cancel_pick	Марк
+cancel_pick_on	Пазначаны
+cancel_pick_meta	Пазначана для адмены
+batch_cancel	Адмена адзначана
+batch_cancel_n	Адмена пазначана ({n})
+batch_cancel_none	Спачатку адзначце адзін або некалькі адпраўленых элементаў — затым Скасаваць адзначанае
+batch_cancel_title	Скасаваць пазначаныя тавары — адна прычына, адзін бланк скасавання на раздзел
+batch_cancel_ok	Элементы {n} ануляваны · Бланк адмены {slips} → {kitchens}
+batch_cancel_ok_noprint	Элементы {n} скасаваны — аўтаматычны друк выключаны, таму ліста аб адмене няма
+no_printer_kitchen_station	Прынтара для гэтай станцыі няма
+printers_saved	Захавана
+test_page_sent	Тэставая старонка адпраўлена — праверце прынтэр
+test_page_sent_one	Тэставая старонка адпраўлена на {name} — праверце гэты прынтар
+printers_found	Знойдзена {n}: {list}
+printers_find_synced	Знойдзена {n} — {new} новых
+printer_on_device	захаваны
+printer_already_added	ужо дададзена
+printer_already_saved	Ужо захавана: {name}
+find_printers	Знайдзіце прынтэры
+printers_looking	Шукаю...
+saving_printer	Даданне прынтара…
+cancelled	Адменена
+printers_tap_find	Націсніце «Знайсці», каб пералічыць прынтары, якія можа выкарыстоўваць гэта прылада.
+printers_none_found	Нічога не знойдзена — увядзіце імя сістэмнага прынтара або IP (напрыклад, 192.168.1.50).
+printer_from_find	Дададзена {name}
+kot_printer_ph	Прынтэр для лісткоў
+bill_printer_ph	Прынтэр для рахункаў
+kot_print_on	Auto-print tickets: On
+kot_print_off	Auto-print tickets: Off
+queue_refused	Крама не прымае ({n}) — правярайце кожны на прылаўку:
+clear_not_accepted	Пазначана — ачысціць гэты спіс
+device_name_ph	Назва гэтай прылады
+lan_last_update	апошняе абнаўленне {time}
+lan_not_accepted	{n} не прымаецца
+connected_now	зараз падключаны
+backup_failed	Збой апошняй аўтаматычнай рэзервовай копіі: {e}
+backup_overdue	Няма рэзервовага капіравання на працягу {n} дзён — трымайце праграму адкрытай на гэтай прыладзе, каб яна магла ствараць рэзервовыя копіі.
+disk_low	На гэтай прыладзе вольна толькі {mb} МБ — рэзервовае капіраванне хутка не атрымаецца. Вызваліце ​​месца.
+last_seen_devices	Апошні раз бачылі: {time}
+sync_interval	Сінхранізацыя кожныя {secs}с
+connection_to_shop	Падключэнне да крамы
+supplier_name_ph	Назва пастаўшчыка (або кліента)
+supplier_ph	Пастаўшчык
+switch_device	Пераключыце гэту прыладу
+take_payment	Прыняць аплату
+tax_added_till	{tax} эксклюзіў
+tax_inside_price	{tax} уключна
+tax_invoice	Падатковая накладная
+till_to_bank	Каса → банк
+units_heading	Адзінкі
+unlock_after_pairing	Увядзіце PIN
+unlock_with_login	Разблакіроўка з уваходам
+unmark	Зняць адзнаку
+update_my_password	Абнавіць мой пароль
+update_my_pin	Абнавіць мой уваход
+duress_heading	Экстраная разблакіроўка PIN (толькі ўладальнік)
+duress_help	Дадаткова. Калі гэты PIN-код уводзіцца пры разблакіроўцы замест вашага, усе запісы ў кнігах (продажы, кнігі, гісторыя) будуць выдалены, а каса адкрыецца як Уладальнік і будзе выглядаць нармальна — тавары, цэны, лічыльнікі, персанал і налады застануцца. Схема і канфігурацыя не выдаляюцца. Выкарыстоўвайце, толькі калі вас прымусова разблакіраваць. Пакіньце пустым і захавайце, каб выключыць. Ніколі не супадае з чыім-небудзь PIN-кодам.
+duress_pin_ph	Экстраная PIN (4–12 лічбаў)
+duress_confirm_ph	Увядзіце яшчэ раз для пацверджання
+save_duress_pin	Аварыйнае выратаванне PIN
+clear_duress_pin	Выключыць аварыйны рэжым PIN
+duress_on	Уключана экстранная разблакіроўка PIN
+duress_off	Экстраная разблакіроўка PIN выключана
+duress_saved	Экстраная разблакіроўка PIN захавана
+duress_cleared	Экстраная разблакіроўка PIN выключана
+upi_amount_ph	UPI сума
+void	Несапраўдны продаж
+write_off_ap	Спісаць АП
+write_off_heading	Спісаць (ачысціць без аплаты)
+write_off_nil	Спісаць / абнуліць баланс
+your_brand	Ваш брэнд (у дадатку)
+your_categories	Вашы катэгорыі
+account_kind	Тып уліковага запісу (націсніце адзін)
+actual_total_cap	ФАКТЫЧНЫ РАЗАМ
+amend_help	Выберыце продаж, які трэба змяніць, ануляваць або вярнуць. Папраўкі захоўваюць поўную гісторыю. Акругленая агульная сума пачынаецца роўная Прыменена — рэдагуйце толькі для акруглення. Для анулявання і вяртання можа спатрэбіцца ўладальнік або менеджэр PIN (уведзена вышэй; запісваецца з вашым імем).
+applied_total_cap	УЖЫВАНЫ РАЗАМ
+bank_balance	Банкаўскі баланс
+bank_net_today	Банкаўская сетка сёння
+branch_export_help	Export запісвае branch_snapshot_CODE_DATE.json у тэчку рэзервовых копій і капіюе яго ў буфер абмену. Каб імпартаваць дзень іншай гандлёвай кропкі, захавайце яе файл пад назвай import_branch_snapshot.json у той жа тэчцы, затым націсніце «Імпартаваць».
+brand_shown_help	Паказваецца на экранах у праграме. Назва і значок усталяванай праграмы на гэтай прыладзе застаюцца ў спісе платформы.
+app_icon	Значок праграмы
+logo_help	Дадатковы знак крамы на экранах у дадатку.
+onboard_layout	Што вы атрымаеце
+item_photo_help	Дадаткова. Без фатаграфіі паказваем ініцыялы ад назвы прадмета.
+stamp_heading	Марка
+stamp_image_help	Дадатковая выява штампа на раздрукаваных рахунках і дысплеі кліента.
+payment_qr_heading	Аплата QR
+payment_qr_image_help	Статычны QR на рахунках і дысплеі кліентаў; у адваротным выпадку для аплаты выкарыстоўваецца дынамічны QR UPI з VPA вышэй.
+cash_in_hand	Грашовыя сродкі ў касе (каса)
+change_my_pin_heading	Мой ўваход
+connect_to_server	Падключыцеся да сервера
+counter_locked	Лічыльнік 01 · Заблакіравана
+country_pack_help	Пакет краін указвае назву падатку і матэматычныя вылічэнні, чыгунку імгненнай аплаты і ідэнтыфікатар кампаніі, надрукаваны на рахунках. Kumkaj нідзе не дэкларуе падаткі і не выстаўляе дзяржаўныя электронныя рахункі-фактуры.
+currency_use_help	Пракруціце і націсніце Выкарыстоўваць для любой валюты, якая падтрымліваецца.
+day_close_help	Запіс закрыцця дня захоўвае гэтую зводку (і дысперсію скрыні, калі падлічваецца) у журнал аўдыту. Ён не спыняе продаж.
+expenses_word	Выдаткі
+feature_access_help	Тое, што яны могуць адкрыць — неабавязкова; заданне вышэй ужо ўсталёўвае па змаўчанні
+footer_local	Мясцовы SQLite · Бясплатна назаўжды · Zero Cloud
+fresh_book_kirano	Свежыя = пусты каталог (дадаць прадметы пазней). Кніга = увядзіце пачатковыя запасы і хто вам павінен ніжэй.
+fresh_selected	Свежы адбор — каталог застаецца пустым. Націсніце "Гатова", калі будзеце гатовыя.
+gross_word	Валавы
+how_start	Як вы хочаце пачаць?
+kot_print_help_kirano	Не выкарыстоўваецца на кірана прылаўку.
+later_country_pack	Пазней: Налады → прымяніць свой пакет краіны для пазнакі падаткаў і аплаты.
+local_badge	МЯСЦОВЫЯ
+mix_type_hint_kirano	Пры неабходнасці падзяліце на наяўныя / UPI / карту / крэдыт. Крэдыт патрэбен кліент вышэй.
+money_in_sales	Грошы ў (продаж)
+net_word	Сетка
+offline_badge	ПА-ЗА СЯБОЙ
+optional_login_help	Дадатковы лагін (id + пароль). Уладальнік усталёўвае адзін раз; толькі карыстальнік можа змяніць пароль пазней.
+or_unlock_login	Або разблакіраваць з дапамогай лагіна + пароля
+permission_preset	Праца (усталёўвае экраны і грашовыя дзеянні)
+preset_help_kirano	Касір: Прадаем. Менеджэр: прадаць + тавары + ануляваць/змяніць.
+product_locked_kirano	Kirano
+product_only_kirano	Кірана — гэта сістэма кіравання крамай/кірaней: продаж на разліку, запас, крэдыт і кнігі — без інтэрнэту на вашых прыладах.
+purchases_cogs	Пакупкі (COGS)
+qty_cap	КОЛ-ЦЬ
+restore_help	Аднавіць: выбраць рэзервовую копію. Кнігі адкрываюцца, як і тады; кнігі ў тым выглядзе, у якім яны ёсць, захоўваюцца ў першую чаргу, так што гэта можна адмяніць.
+wipe_data_heading	Выдаліць лакальныя даныя
+wipe_data_help	Толькі для ўладальніка — тыя ж варыянты, што і пры выдаленні Windows. У бізнес-запісах ачышчаецца гісторыя таргоў, але захоўваюцца элементы і налады (напрыклад, PIN-код экстранай разблакіроўкі). Налада крамы выдаляе базу даных кніг. Параметры экрана ачышчаюць акно/мову. Пацвердзіце PIN-кодам уладальніка. PIN-код для экстранай разблакіроўкі ў Team асобны (схаванае сціранне пры разблакіроўцы).
+wipe_trading	Дзелавая дакументацыя
+wipe_schema	Ўстаноўка крамы
+wipe_ui	Параметры экрана
+wipe_owner_pin_ph	Уладальнік PIN для выдалення
+wipe_delete_selected	Выдаліць выбранае
+wipe_owner_only	Толькі ўладальнік можа выдаліць лакальныя даныя.
+restore_owner_only	Толькі ўладальнік можа аднавіць рэзервовую копію.
+wipe_owner_pin_needed	Каб выдаліць лакальныя даныя, увядзіце ўладальніка PIN.
+wipe_nothing_selected	Выберыце, што спачатку выдаліць.
+wipe_done	Выбраныя лакальныя даныя выдалены.
+wipe_schema_done	Налады крамы сцёрты — каб працягнуць, выберыце «Сервер» або «Кліент».
+rounded_total	Акругленая сума
+setup_app_kirano	Наладзьце Kirano
+shop_logo_optional	Лагатып крамы (неабавязкова)
+stock_type_help	Увядзіце назву тавару (дастаткова толькі часткі), колькасць, а потым адрэгулюйце. Элементы, якія яшчэ не ўлічаны, трэба пачаць адсочваць адзін раз.
+team_owner_help	Пакіньце поле чалавека пустым, каб дадаць кагосьці: імя, праца, імя карыстальніка, PIN і дадатковы пароль, затым Дадаць. Выберыце чалавека для рэдагавання такой жа формы — імя, імя карыстальніка, пароль, экраны і правы — затым захавайце. Ваш уласны PIN і пароль - гэта адзін ўваход унізе. Уладальнік не мяняе чужое PIN.
+staff_name_ph	Імя персаналу
+staff_copy_hire_ph	Скапіраваць налады з (неабавязкова)
+staff_copy_hire	Выкарыстоўвайце налады гэтага чалавека
+staff_edit_name_ph	Адлюстраванае імя
+staff_rename	Захаваць імя
+staff_copy_edit_ph	Скапіруйце налады ад іншага чалавека
+staff_copy_edit	Скапіруйце іх налады на выбранае
+staff_copy_edit_onto	Скапіруйце іх налады на {name}
+staff_deactivate_named	Выдаліць {name}
+staff_renamed	Імя захавана
+staff_setup_copied_hire	Налады скапіраваны з {name} — усталюйце новую назву і PIN, потым Дадайце персанал
+staff_setup_copied_edit	Налады {from} скапіраваны на {to}
+staff_copy_need_selected	Выберыце, каго рэдагаваць першым
+staff_copy_need_source	Выберыце, чые налады скапіяваць
+staff_copy_same	Гэта той самы чалавек — выбірайце іншага
+staff_rename_need_selected	Выберыце, каго перайменаваць першым
+team_pick_hint	Выберыце, каго рэдагаваць — экраны, грашовыя правы і станцыі з'яўляюцца толькі для гэтага чалавека.
+team_stations_help	Станцыі, якія яны могуць выкарыстоўваць
+team_stations_changed	Станцыі зменены — захавайце налады для гэтага чалавека
+team_features_changed	Экраны зменены — захавайце налады для гэтага чалавека
+team_rights_changed	Правы зменены — захавайце налады для гэтага чалавека
+they_owe_us	Яны павінны нам
+unit_at_cap	Адзінка @
+units_help	Коды таварных этыкетак (кг, штука, мяшок). Кожная адзінка павінна быць звязана — непасрэдна або праз іншыя адзінкі — са стандартам (кг · см · мл · шт), напрыклад. 1 скрыня = 2 скрынкі і 1 скрынка = 20 см. Пераўтварэнні: 1 з = множнік на. Валюты ніколі не бываюць адзінкамі.
+units_picker_help	Націсніце «Уключыць/Выключыць», каб паказаць адзінку ў меню «Купіць» і «Выбар прадметаў». Выключаныя адзінкі ўсё яшчэ канвертуюць.
+unit_picker_on	Укл
+unit_picker_off	Выкл
+we_owe_them	Мы павінны ім
+who_unlocking	Хто адмыкае?
+locked_word	Зачынены
+show_pin	Паказаць PIN
+hide_pin	Схаваць PIN
+set_owner_pin	УСТАНАВІЦЬ УЛАДНІКА PIN
+enter_owner_passcode	УВЕДЫЦЕ ПАРОЛЬ УЛАДАЛЬНІКА
+enter_staff_passcode	УВЕДЗІЦЕ ПАРОЛЬ ПЕРСАНАЛА
+pin_count_zero	0 / 12 лічбаў · не менш за 4, затым OK
+pin_count_need	{} / 12 лічбаў · трэба яшчэ {}
+pin_count_full	12 / 12 лічбаў · націсніце OK
+pin_count_ready	{} / 12 лічбаў · націсніце OK, калі будзеце гатовыя
+pin_hint_choose	Выберыце 4–12 лічбаў · Каб захаваць, увядзіце або разблакіруйце
+pin_hint_new	Новы 4–12-значны ўладальнік PIN · Увядзіце або разблакіруйце
+pin_hint_shop_code	Крама прылады · код спалучэння {}
+pin_hint_books	Гэта прылада змяшчае кнігі
+pin_hint_paired	Дадаткова да спалучэння — разблакіроўка для продажу
+pin_hint_pair_first	Extra till — спалучэнне з прыладай у краме спачатку
+unlock_to_continue	Разблакіруйце, каб працягнуць
+no_staff_yet	Пакуль няма супрацоўнікаў — разблакіруйце як уладальнік, а затым каманда
+status_server_set_pin	Рэжым сервера — усталяваць уладальніка PIN
+status_server_tills	Рэжым сервера - дадатковыя касы могуць далучыцца. Разблакіраваць
+status_server_unlock	Рэжым сервера — разблакіраваць як уладальнік
+status_client_unlock	Рэжым кліента — разблакіроўка для продажу
+icon_new_selected	Значок: выбраны новы файл — націсніце Захаваць брэнд
+icon_custom	Значок: нестандартная адзнака месца правядзення
+icon_default	Значок: знак Kumkaj (па змаўчанні) — выберыце карыстацкі
+logo_yours	Лагатып: лагатып вашай крамы — паказаны на экранах і чэках
+logo_default	Лагатып: знак Kumkaj (па змаўчанні) — выберыце свой, калі ён у вас ёсць
+tmpl_current	Бягучае: {} — {}
+tmpl_selected	Абрана: {} — {}
+setup_complete	Усталяванне завершана
+onboard_fresh_tmpl	Свежы · {} — каталог пачынаецца пустым; дадайце элементы ў раздзел «Элементы», затым «Гатова».
+onboard_book_tmpl	Забраніраваць · {} — дадайце прадметы і пачатковы крэдыт, затым «Гатова».
+onboard_template_tmpl	Назавіце месца, калі хочаце, а затым выберыце, з чаго пачаць.
+tmpl_blurb	Разлік Кірана: продаж, запас, хатовая кніга, пакупкі ў пастаўшчыка, кнігі.
+tmpl_how	Прадаваць на прылаўку; Купіць пра запас; Кнігі на дзень.
+reports_facet_title	Даклады
+reports_facet_help	Дзённікі, старэнне кліентаў або пастаўшчыкоў, банкаўскія паведамленні і перыядычныя прыбыткі і страты.
+against_bill_ph	Супраць законапраекта № вышэй (неабавязкова)
+aliases_ph	Кароткія коды і псеўданімы — праз коскі (напрыклад, MG02, atta)
+amount_blank_full_ph	Сума (пусты = поўны баланс)
+amount_owed_ph	Сума запазычанасці
+amount_ph	Сума
+amount_received_ph	Атрыманая сума
+amount_we_pay_ph	Сума, якую мы плацім
+business_name_ph	Назва кампаніі
+category_new_ph	Катэгорыя (неабавязкова, ствараецца, калі новая)
+code_bag_ph	Код (сумка)
+conv_factor_ph	Каэфіцыент (25 = 1 мяшок → 25 кг)
+country_code_ph	Код краіны, напр. IN, GB, US, AE, BR
+credit_khata_amount_ph	Сума крэдыту / крэдытнай кнігі
+credit_limit_ph	Крэдытны ліміт (0 = няма)
+from_code_ph	З кода (сумка)
+item_name_lang_ph	Назва элемента — увядзіце яго на сваёй мове
+login_id_opt_ph	Імя карыстальніка (абавязкова, унікальнае)
+manager_pin_ph	Менеджэр PIN для зацвярджэння (толькі калі вы не можаце ануляваць)
+new_branch_name_ph	Новая назва філіяла
+new_password_ph	Новы пароль (неабавязкова)
+new_pin_ph	Новы PIN (4–12 лічбаў)
+note_bank_ph	Заўвага (дэпазіт, зняцце, ...)
+note_buy_expense_ph	Заўвага (паліва, арэнда, ...)
+note_expense_ph	Заўвага (паліва, офіс, ...)
+options_kirano_ph	Параметры — Памер*: Малы=199, Вялікі=399 | Начынне+3: Сыр=40, Аліўкавы=30 | Экстра сыр = 40
+part_second_way_ph	Частка другім шляхам (неабавязкова)
+phone_ph	Тэлефон
+place_name_ph	Назва гэтага месца
+qty_example_ph	Колькасць (напрыклад, 1,5 кг)
+quantity_ph	Колькасць
+reason_required_ph	Прычына (абавязкова)
+role_title_ph	Назва ролі (напрыклад, барыста)
+service_pct_ph	Абслугоўванне % неабавязкова 0/10/12
+short_code_ph	Кароткі код (MG02)
+starting_password_ph	Стартавы пароль (неабавязкова)
+starting_pin_ph	Пачынаючы з PIN (4–12 лічбаў)
+station_name_ph	Назва станцыі (неабавязкова)
+station_new_ph	Раздзел (неабавязкова)
+table_name_ph	Назва кантэру / стойкі
+tax_rate_ph	Назва стаўкі падатку або % — стандартная, зніжаная, 0, 5, 12, 18, 20
+to_code_ph	Кадзіраваць (кг)
+uncleared_no_ph	Неачышчана # вышэй
+unit_cost_ph	Кошт адзінкі
+unit_name_bag_ph	Імя (сумка)
+unit_plate_ph	Адзінка (пласціна / шт — пустая = кожная)
+pay_credit	На рахунку
+book_kind_today	Сённяшнія кнігі
+book_kind_month	Кнігі гэтага месяца
+book_kind_aging	Неаплачаны / дэбет-крэдыт
+book_kind_balance	Баланс
+order_help	Дакраніцеся да элемента, каб дадаць яго.
+floor_help	Гэтая крама гандлюе на прылаўку. Сталы і абедзенная падлога не з'яўляюцца часткай Kirano.
+kitchen_help	Не выкарыстоўваецца на прылаўку.
+kitchen_empty	Няма адкрытых білетаў (звычайна гандлёвыя кропкі не выкарыстоўваюць гэты экран).
+add_a_table	Дадайце абедзенны стол
+add_station_heading	Дадаць раздзел крамы
+categories_help	Націсніце "Выкарыстоўваць", каб падаць элемент вышэй у гэтую катэгорыю. Фота дае катэгорыю выяву; без аднаго ён паказвае свае ініцыялы.
+dish_search_ph	Шукаць элементы або кароткі код...
+tile_free	Вакантны
+tile_occupied	Акупаваны
+tile_food_ready	Ежа гатовая
+tile_bill_printed	Біл надрукаваны
+tile_paid	Платна
+tile_bill_btn	Рахунак
+tile_occupy_btn	Пасадзіць гасцей
+tile_free_btn	Вызваліць абедзенны стол
+tile_ready_btn	Вызваліць абедзенны стол
+tile_undo_bill	Адмяніць рахунак
+summary_busy	абедзенныя сталы занятыя
+summary_to_collect	збіраць
+summary_on_floor	у сталовай
+floor	Крама
+sizes_as_items_ph	Памеры як асобныя элементы (неабавязковыя) — Палова=120, Поўны=200
+dish_group_ph	Група памеру ўпакоўкі (неабавязкова) — напр. Атта 1 кг / 5 кг
+discount	Зніжка
+remove_discount	Зняць зніжку
+apply_discount	Прымяніць зніжку
+save_opening_cash	Эканомце адкрыццё наяўных
+close_shift_print	Закрыць змену і раздрукаваць лісток
+area_prices_ph	Плошча (неабавязкова) — AC=220, Parcel=210
+discount_ph	10% або 50
+discount_reason_ph	Прычына (напрыклад, пастаянны госць, позняя ежа)
+opening_float_ph	Сёння раніцай грошы паклалі ў скрыню
+shift_counted_ph	Грашовыя сродкі пералічваюцца пры здачы
+opening_float	Адкрыццё грашовых сродкаў (флоат)
+shift_handover	Здача змены
+shift_since	Гэты зрух з тых часоў
+expected_in_drawer	Чакаецца ў шуфлядзе
+right_discount	Дайце зніжку
+floor_in_kitchen	У працэсе
+floor_eating	Падаецца
+pick_category	Выберыце катэгорыю
+close_category_list	Закрыць спіс катэгорый
+new_category_row	Новая катэгорыя — ствараецца пры захаванні элемента
+your_category	Ваша катэгорыя
+suggested_category	Прапанавана — з нашых тавараў
+category_search_ph	Катэгорыя — знайдзіце сваю або ўвядзіце новую
+line_sent_state	Адпраўлена
+line_nc_state	Бясплатна (NC) — не спаганяецца
+cancel_item_short	Адмяніць
+nc_short	Без аплаты
+charge_again_short	Зарадзіць
+move_short	Рухайцеся
+cancel_item_title	Скасаваць гэты тавар — у заднім офісе атрымліваюць бланк скасавання
+nc_item_title	Зрабіце гэты тавар бясплатным (NC)
+charge_again_title	Зарадзіце гэты прадмет яшчэ раз
+move_item_title	Перанясіце гэты прадмет на іншы абедзенны стол
+already_cooked	Ужо прыгатавана (адходы)
+not_cooked_yet	Яшчэ не прыгатавана
+return_to_customer	Вярнуць кліенту
+short_by	Каротка
+tip_not_sale	Чаявыя (персанал, не продаж)
+right_settle	Прыняць аплату
+right_cancel_sent	Адмяніць адпраўлены элемент
+right_complimentary	Бясплатна (NC)
+right_move_table	Перамясціць / аб'яднаць лічыльнікі
+right_reprint	Раздрукаваць рахунак яшчэ раз
+right_allowed	Дазволена
+right_with_approval	З адабрэннем
+right_denied	Не дазволена
+editing_staff	Рэдагаванне
+finding_server	Шукаю сервер крамы на гэтым Wi‑Fi…
+no_server_found	Нічога не знойдзена. На серверы: Налады → Іншыя прылады → Дазволіць дадатковыя касы (тое самае Wi‑Fi). Або ўвядзіце паказаны там IP.
+servers_found_pick	Дакраніцеся да крамы, да якой хочаце падключыцца.
+server_host_selected	Выкарыстоўваючы {host} — увядзіце код спалучэння, затым Спалучыце зараз.
+print_bill	Раздрукаваць рахунак
+table_actions	Дзеянні кантэру
+move_merge_table	Перамясціць / аб'яднаць абедзенны стол
+move_help	Перанесці заказ гэтага лічыльніка на вольны стол ці аб'яднаць яго з ужо існуючым.
+move_target_ph	Назва накладной
+approval_pin_ph	Менеджэр PIN (толькі калі запытваецца)
+move_here	Пераязджай сюды
+merge_into	Уліцца ў яго
+line_reason_ph	Прычына (напрыклад, кліент перадумаў, няма ў наяўнасці)
+line_qty_ph	Колькі скасаваць (пусты = усе)
+line_target_ph	Перайсці да абедзеннага стала (напрыклад, D5)
+confirm	Пацвердзіць
+menu_search_ph	Пошук прадмета або кароткага кода
+customer_paid_ph	Кліент аплаціў
+tip_ph	Савет
+table_area_ph	Плошча (напрыклад, Dine In, Parcel, AC)
+table_range_ph	Шмат адразу: D1-D20
+add_these_tables	Дадаць гэтыя паказчыкі
+remove_these_tables	Выдаліце ​​гэтыя лічыльнікі
+table_remove_ph	Выдаліць: T1-T24 або назву аднаго абедзеннага стала
+find_server	Знайдзіце сервер крамы
+bill_format	Фармат рахунку
+bill_format_help	Друкуецца пад назвай вашай крамы на кожным рахунку. Аддзяляйце радкі знакам | (напрыклад, MG Road, Раджкот | тэл. 98250 00000).
+bill_header_ph	Адрас | тэлефон
+fssai_ph	Нумар FSSAI / ліцэнзія крамы (па жаданні)
+bill_footer_ph	Ніжні калонтытул (напрыклад, Дзякуй, наведайце яшчэ)
+save_bill_format	Захаваць фармат рахунку
+kot_format	Фармат сліп
+kot_format_help	Дакраніцеся да поля ў спісе. Паказ, памер шрыфта і вага прымяняюцца да гэтага поля на тыпе лістка, выбраным вышэй. Кожны выгляд мае свае памеры і вагу.
+kot_format_fields	Палі
+kot_field_next	Наступнае поле
+kot_field_show	Паказаць
+kot_field_hide	Схаваць
+kot_field_on	паказаць
+kot_field_off	схаваць
+kot_field_size	Памер шрыфта
+kot_field_size_ph	напр. 16, 20, 24, 28, 32…
+kot_weight_light	Святло
+bill_kot_panel_help	Bill layout and content width. Cashier is who issued or settled the bill — the full sale story stays in the books.
+std_size_ph	напр. 18, 20, 26…
+kot_show_shop	Назва крамы
+kot_hide_shop	Схаваць краму
+kot_show_time	Час
+kot_hide_time	Схаваць час
+kot_show_waiter	Касір
+kot_hide_waiter	Схаваць касіра
+kot_show_station	Станцыя
+kot_hide_station	Схаваць станцыю
+kot_show_table	Лічыльнік
+kot_hide_table	Схаваць абедзенны стол
+kot_show_kot_no	нумар білета
+kot_hide_kot_no	Схаваць нумар квітка
+kot_width	Абгортка папярэдняга прагляду (задаць шырыню змесціва на ўкладцы слізгацення)
+kot_width_58	58 mm
+kot_width_80	80 mm
+kot_kind_heading	Выгляд білета
+kot_kind_original	Арыгінал
+kot_kind_duplicate	Дублікат
+kot_kind_modified	Зменены
+kot_kind_cancelled	Адменена
+kot_style_heading	Памер і вага тыпу поля
+kot_style_title	Назва
+kot_style_item_qty	Пункт · Коль-ць
+kot_style_field_pick	Выберыце поле
+kot_weight_regular	Рэгулярны
+kot_weight_bold	Тлусты
+kot_align	Выраўнаваць
+kot_align_start	Пачаць
+kot_align_center	Цэнтр
+kot_align_end	Канец
+content_width	Шырыня змесціва (мм)
+content_width_bill	Шырыня купюры (мм)
+content_width_kot	Шырыня зместу білета (мм)
+content_width_ph	Або ўвядзіце шырыню кантэнту 40–210 мм
+content_width_help	Наколькі шырокі гэты лісток. Купюра захоўвае ўласную шырыню.
+content_width_bill_help	Наколькі шырока друкуецца купюра кліента. Па змаўчанні 210 мм (старонка). Вузкі ліст 58 мм, шырыня ліста 80 мм, фармат А4 112 мм, 4 цалі, 210 мм. Увядзіце любое значэнне ад 40 да 210. Квіткі маюць сваю шырыню на ўкладцы лістка.
+content_width_kot_help	Наколькі шырынёй друкуецца білет. Па змаўчанні 80 мм. Вузкі ліст 58 мм, шырыня ліста 80 мм, 4-цалевы ліст 112 мм, старонка 210 мм. Увядзіце любое значэнне ад 40 да 210. Рахункі кліентаў маюць сваю шырыню на ўкладцы "Рахунак".
+vp_paper_width	Шырыня змесціва (мм)
+vp_paper_width_ph	Або ўвядзіце шырыню кантэнту 40–210 мм
+vp_paper_width_help	Шырыня зместу ўстаноўлена ў раздзеле «Рахунак і білет» — асобна для рахунку (па змаўчанні 210 мм) і білета (па змаўчанні 80 мм).
+kot_size	Памер шрыфта
+kot_size_s	Маленькі
+kot_size_m	Нармальны
+kot_size_l	Вялікі
+std_size	Памер шрыфта
+kot_copies	Копіі
+kot_copies_1	1
+kot_copies_2	2
+kot_copies_3	3
+kot_title_ph	Назва (пусты = БІЛЕТ)
+kot_footer_ph	Back-office note (optional)
+kot_preview	Папярэдні прагляд
+save_kot_format	Захаваць у фармаце Slip
+test_kot_format	Тэставы друк
+test_kot_sent	Папярэдні прагляд білета адпраўлены
+test_bill_format	Тэставы рахунак
+test_bill_sent	Папярэдні прагляд рахунку адпраўлены
+test_print_no_printer	Няма прынтара для гэтага задання — выберыце яго на гэтым экране
+kot_format_saved	Фармат лістка захаваны
+std_print	Памер друку купюры
+std_print_help	Памер шрыфта для стандартнага альбомнага і ландшафтнага рахунку на прынтэрах OS/документаў (уводзіць пункты — не Маленькі/Звычайны/Вялікі). Адзін памер для абедзвюх арыентацый.
+std_size_s	Маленькі
+std_size_m	Нармальны
+std_size_l	Вялікі
+save_std_print	Захаваць памер друку купюры
+std_print_saved	Памер раздрукоўкі купюры захаваны
+print_brand_kit	Друк фірмовага камплекта
+print_brand_kit_help	Дадатковыя QR-малюнкі штампаў і плацяжоў на рахунках і на дысплеі кліента лакальнай сеткі. Дынамічны QR UPI з VPA вышэй па-ранейшаму працуе, калі QR-малюнак плацяжу не ўстаноўлены.
+choose_stamp	Выберыце штамп
+clear_stamp	Чысты штамп
+stamp_set	Штамп: у файле — паказваецца на дысплеі кліента і пазначаецца на раздрукаваных рахунках
+stamp_none	Штамп: няма
+choose_payment_qr	Выберыце аплату QR
+clear_payment_qr	Ачысціць аплату QR
+payment_qr_set	QR плацяжу: у файле — паказваецца на дысплеі кліента (замяняе там QR UPI сумы)
+payment_qr_none	Аплата QR: няма — сума QR ад UPI ID пры аплаце
+aggregator_import	Агрэгатар заказаў (файл)
+aggregator_import_help	Неабавязковы лакальны імпарт: змясціце import_aggregator_orders.json у тэчку рэзервовых копій (масіў або {"orders":[…]}), затым націсніце Імпарт. Ніколі не блакуе лічыльнік; у прамым эфіры Zomato/Swiggy - Воблака.
+import_aggregator_file	Імпарт файла агрэгатара
+team_pick_ph	Персанал для рэдагавання - імя, імя карыстальніка або выбар
+select_staff	Выберыце гэты персанал
+rights_help	Фінансавыя дзеянні для гэтай асобы — націсніце, каб пераключыць: Дазволена → Патрэбны PIN-кіраўніка → Недапушчальна. Друкаваць рахунак зноў можна толькі для рахункаў; секцыі пазначаны ў кантрольным спісе ніжэй.
+dish_picker_help	Шукайце або праглядайце нашы прадметы і дакраніцеся да аднаго, каб запоўніць яго імя і фота — або захавайце сваё імя. Усталюйце цану (0 - гэта добра), затым Дадайце тавар.
+close_dish_list	Закрыць спіс тавараў
+own_item_name	Выкарыстоўвайце гэта як сваё ўласнае імя прадмета
+on_your_menu	У каталогу
+edit	Рэдагаваць
+schemes	Схемы / прапановы
+schemes_help	Купіце адзін — атрымаеце адзін, працэнтная зніжка і фіксаваныя наборы. Прыклад: Купіце 2 мяшкі рысу і атрымаеце 1 алей.
+scheme_bogo_ph	Купіце 2 мяшкі рысу і атрымаеце 1 алей
+add_scheme	Дадаць BOGO
+schedule_ph	Час працы — пн-пт 07:00-11:00 або вечар 17:00-19:00=150
+upi_vpa_ph	UPI ID (VPA)
+upi_payee_ph	UPI імя атрымальніка (неабавязкова)
+upi_qr	UPI QR
+show_upi_qr	Паказаць UPI QR
+close_upi_qr	Блізка
+upi_qr_help	Кліент скануе і аплачвае. Націсніце Узяць аплату пасля аплаты. Другі экран: адкрыйце URL сервера /display у LAN.
+kot_recall	Адклікаць
+recently_done	Нядаўна зроблена
+recall_kot_ph	Білет № для адклікання
+role_help_customer	Роля: Кліент — крэдытная кніга (яны павінны нам). Той жа кліент або пастаўшчык таксама можа пастаўляць запас.
+role_help_both	Ролі: Кліент + Пастаўшчык — адзін кліент або пастаўшчык, крэдытная кніга і кнігі аплаты, чыстыя ў справаздачах.
+role_help_supplier	Роля: Пастаўшчык — мы павінны ім за пакупкі.
+dine_in_pick_table	Не выкарыстоўваецца на прылаўку
+choose_table	Выбраць контэр
+change_table	Змяніць абедзенны стол
+pick_table_banner	Падбярыце абедзенны стол для гэтай замовы
+items_word	элементы
+items_section	Прадметы
+back_to_order	Вярнуцца да парадку
+new_items_head	Яшчэ не адпраўлена
+price_ph	Цана
+price_ph_gst_inside	Кошт ({tax} уключна)
+cancel_needs_table	Продажы на стале застаюцца ў білетах, пакуль вы не атрымаеце аплату
+tax_rates_missing_hint	На гэтых аб'ектах няма стаўкі {tax} — у Аб'ектах усталяваць падатковую стаўку (цыны ўжо ўключаюць {tax} пад {tax} разам)
+taxable_value	Падаткаабкладаемы кошт
+gst_inside_price_note	({tax} уключна)
+start_with_template	Пачніце з нашага шаблону прадметаў
+template_heading	Пачатковыя прадметы
+template_info	Катэгорыі {c} і элементы {d} з фотаздымкамі, гатовыя да дадання. Цэны пачынаюцца ад ₹0 - выбірайце пасля.
+template_import	Імпартаваць поўны шаблон
+template_confirm	Дадаць {d} тавары з іх катэгорыямі? Таўары, якія ўжо ёсць, застануцца як ёсць.
+template_yes	Так, імпарт
+template_importing	Імпарт прадметаў...
+template_import_progress	Імпарт… {d}/{t}
+template_done	Кожны элемент з нашага шаблону ёсць у вашых элементах
+template_imported	Дададзены прадметы {d} і катэгорыі {c} — усталюйце іх кошты на гэтым экране
+client_template_heading	Імпартны каталог
+client_template_info	{title}: катэгорыі {c}, элементы {d} з цэнамі, фотаздымкамі і псеўданімамі. Адсутныя толькі элементы — імёны, якія ў вас ужо ёсць, застаюцца.
+client_template_import	Імпартуйце гэтыя элементы
+client_template_confirm	Дадаць {d} тавары з {title}? Таўары, якія ўжо ёсць, застануцца як ёсць.
+client_template_importing	Імпарт {title}…
+client_template_done	Кожны тавар з {title} знаходзіцца ў вашых таварах.
+client_template_imported	Дададзены {d} тавары і {c} катэгорыі з {title}
+resv_heading	Браніраванне
+resv_name_ph	Імя кліента
+resv_phone_ph	Тэлефон (неабавязкова)
+resv_guests_ph	Людзі
+resv_when_ph	Калі — 20:30, заўтра 13:00
+resv_table_ph	Кантэр (неабавязкова)
+resv_add	Кніга
+resv_seat	Сядзяць
+resv_none	Браніраванняў няма.
+guests_word	госці
+delivery_by_ph	Дастаўка (імя пасажыра або супрацоўніка)
+kitchen_all_day	Каб прыгатаваць зараз: {items}
+split_bill	Падзяліць рахунак
+split_go	Аформіце асобны рахунак
+cancel	Адмяніць
+opening_client	Адкрыццё кліента…
+preparing_desk	Падрыхтоўка стала…
+opening_server	Адкрыццё сервера…
+creating_server	Стварэнне сервера…
+split_help	Дакраніцеся да прадметаў, за якія плаціць адзін кліент · выбраны {n}
+split_send_first	Спачатку адпраўце бланк - у асобны рахунак могуць ісці толькі тавары, якія ёсць у бэк-офісе
+split_pick_some	Спачатку націсніце элементы для асобнага рахунку
+split_done	Асобны рахунак зроблены — ён ляжыць на падлозе каля гэтай стойкі
+split_marked	асобны рахунак
+order_empty_pick	Заказ пусты — націсніце «Дадаць тавары» вышэй, каб выбраць тавары.
+add_dishes	Дадаць тавары
+order_so_far	У гэтым парадку: {n} · {total}
+no_dish_match	Няма тавараў, якія адпавядаюць “{q}”
+pick_dishes_help	Дакраніцеся да элемента, каб дадаць яго · выберыце катэгорыю, каб звузіць спіс
+pick_done	Гатова
+pick_done_dd	Гатова · {label}
+printer_route_mode	Калі на гэтым месцы некалькі друкарак
+printer_mode_first	Першае, што працуе
+printer_mode_all	Друк на ўсіх
+kot_show_area	Плошча
+kot_hide_area	Схаваць вобласць
+kot_show_item_hdr	Пункт · Коль-ць
+kot_hide_item_hdr	Схаваць слупкі
+kot_show_title	Радок загалоўка
+kot_hide_title	Схаваць назву
+kot_field_order	Заказ друку
+kot_field_up	Рухайцеся ўверх
+kot_field_down	Рухайцеся ўніз
+kot_field_cycle	Выберыце далей
+kot_field_select	Выберыце далей
+kot_field_time	Час
+kot_field_kot_no	нумар білета
+kot_field_area	Плошча
+kot_field_table	Лічыльнік
+kot_field_shop	Назва крамы
+kot_field_waiter	Персанал
+kot_field_station	Станцыя
+app_template_blurb_extra	Таксама: Уласнік Захір, Адмін Асіф, Касір Наваз; бакавая панэль; гісторыя пасля 4 гадзін; сцяна сёння; кампактны рахунак.
+dishes_n	прадметы {n}
+recipe_ph	Рэцэпт (неабавязковы - не выкарыстоўваецца ў прылаўку)
+reorder_ph	Купляйце больш на
+set_reorder	Задаць узровень змены парадку
+low_stock_alert	Заканчваецца — хутка купіце: {items}
+unpriced_note	Прадметы {n} у вашых таварах пакуль не маюць цаны — яны выстаўляюць рахунак 0, пакуль вы не ўсталюеце яго.
+show_unpriced	Паказаць толькі тавары без цаны
+show_all_dishes	Паказаць усе прадметы
+role_waiter	Касір
+role_kitchen	Крама
+role_title_rest_ph	Назва ролі (напрыклад, капітан, галоўны повар)
+preset_help_rest	Касір: Прадаем. Менеджэр: прадаць + тавары + ануляваць/змяніць.
+kind_raw	Набылі для выкарыстання ў краме
+kind_resale	Набылі для продажу
+kind_dish	Не ўлічваць запас
+buy_unit_ph	Адзінка (кг, літр, шт.)
+add_another_way	+ Дадаць іншы спосаб
+parts_status	Зайшоў {a} з {b} · {c}
+save_expense	Эканомія выдаткаў
+rest_ph	Адпачынак
+low_badge	Нізкі
+stock_empty	Пакуль нічога ў наяўнасці — тое, што вы запісваеце на Buy, паказваецца тут.
+recent_changes	Апошнія змены
+lane_declared_label	Падатковая накладная
+lane_owner_label	Касавая нататка
+money_lane_bill	Рахунак: {lane}

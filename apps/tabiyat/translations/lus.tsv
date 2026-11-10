@@ -1,0 +1,1341 @@
+# Mizo — Mizo ṭawng (lus). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	Pharmacy counter: damdawi, batch, khata & lehkhabu. Offline ah a thlawna hman theih a ni.
+barcode_ph	Barcode / EAN hmanga siam a ni
+composition_ph	Salt / composition ( zawn theih) 1.1.
+schedule_h_off	Schedule H — off (a neitu flag) 1.1.
+schedule_h_on	Schedule H — on (neitu flag) 1.1.
+rx_expected_off	Rx beisei — off (neitu flag) .
+rx_expected_on	Rx beisei — on (neitu flag) .
+rx_note_ph	Prescription note (a duh chuan — i thumal hman dan) .
+batch_ph	Batch no.
+expiry_ph	Expiry (YYYY-MM-DD) a ni tawh ang.
+expiry_alerts	Expiry alerts (ni 7 lo awm tur)
+expiry_none	Ni 7 chhungin batch expiring a awm lo.
+rx_nudge	Owner flagged Rx / Schedule H — a tul chuan note dah belh rawh.
+unlock	Hawng
+pin_hint	Neitu PIN chu 0000 atangin a tan
+sell	Hralh
+buy	Lei
+books	Ni lehkha
+books_help	Vawiin dinhmun hi. Sell ​​= pawisa in. Buy = thil lei & hmanral. Party hrang hrang = credit customer & supplier te.
+buy_help	Sum sen lehkha leh pek tu bill (sum chhuak). Inkhaihbuak chu mi lekhapui-ah a awm reng.
+sell_money_in	Damdawi zawrh
+buy_money_out	Sum sen / pek tu bill
+record_purchase	Lei ziak
+add_expense	Sum sen lehkha
+bank_book	Bank lehkha
+credit_help	Mi hmingchhiar chu pakhat chauh a ni (hming a inang thei). Customer hian khata a nei (an ba); pek tu hian thil min pe (kan ba); a pahnih pawh a dik. Lekhapui chu a then; report-ah chhiar zawng a lang.
+party_kind_ph	Hna: Customer, Pek tu, a pahnih…
+reports_help	Ni lehkha, ba nei te leh kan ba te, bank lehkha, sum sen lehkha, hmuh leh hloh.
+reports_today	Ni lehkha (vawiin)
+reports_month	Hmuh leh hloh (thla)
+reports_aging	La awm / ba-ba
+reports_balance_sheet	Balance sheet
+reports	Bank lehkha leh H&H
+refresh	Thar leh
+undo	Ti lo leh
+start_tracking	Chhiar tan
+stock_minus	− Stock
+stock_plus	+ Stock
+settle_cash	Sum in pe
+settle_card	Card in pe
+items	Damdawi chi hrang hrang
+nav_items	Damdawi chi hrang hrang
+more	A dang
+your_items	I damdawi te
+items_help	Item pakhat chu tap la, edit rawh. Item thar chuan form a clear. Hming emaw short code emaw hmangin zawng la, man set (0 a tha), Add. Sales record tawh chuan an charge hming chu an vawng reng thin.
+add_item	Thil telh
+new_item	Thil thar
+adding_item	Thil thar telh mek
+editing_item	Siam ṭha mek
+save	Dah tha
+remove	Paih
+removed_items	Thil paih tawh
+removed_help	Restore hian item chu a awm dan ang chiah khan Items-ah a dah leh a — man, thlalak leh category.
+restore_item	Kir leh
+empty_catalog	Damdawi a la awm lo. Damdawi hawng la, hming, barcode emaw chi emaw dah la, chutah chuan hralh rawh.
+total	A zawng
+cash	Sum
+upi	UPI
+card	Card
+credit	Mi
+clear	Thianghlim
+ready_to_sell	Ziak turin a inpe
+today_prefix	Vawiin
+today_mid	vawiin
+owed	la awm
+round_word	kil
+back	Kir
+sold_out	A tawp
+restock	Khat leh
+not_tracked	Chhiar loh
+in_stock	stock-ah
+marked_sold_out	A tawp tih chhinchhiah
+add_upper	TELH
+na	—
+qty	Zat
+unit_at	Man @
+actual	Dik tak
+applied	Hman tawh
+note_ph	Lehkha (duh chuan)
+rounded	KIL
+split	Then
+send_kot	Slip thawn rawh
+send_kot_to	Thawn → {kitchens}
+send_kot_again	Slip lo awm tur atan thil dah belh rawh
+send_kot_held	Thil neihte — thawn chhuah tur unhold
+reprint_kot	Thlan sa print leh
+reprint_kot_ok	{n} thil print leh · {slips} slip(s) → {kitchens}
+reprint_kot_needed	Slip thawn hmasa phawt ang che — chutah chuan damdawi te pawh telh la, a thlan tawhte chu print leh rawh
+reprint_kot_none_selected	Item thawn apiang chu skip vek a ni — reprint tur zingah In print tap rawh
+reprint_kot_client	{place} thawn tan chuan print leh rawh ({n}) — dawr device chuan a print ta a ni
+print_cancelled_kot	Tihbo zawng zawng print
+print_cancelled_kot_ok	Printed {n} thil cancel tawh · {slips} slip(s) → {kitchens}
+print_cancelled_kot_needed	Cancel tawh thil awmna table hawng hmasa phawt ang che
+print_cancelled_kot_none	He order-ah hian thil cancel a awm lo
+print_cancelled_kot_client	{place} thawn tan print cancel ({n}) — dawr device chuan a print
+kot_banner	Khop hming
+kot_banner_ph	Hming (ruak = awm lo)
+kot_item_prefix	Thil hming hma
+kot_item_prefix_ph	entir [TIHBO]
+kot_strike	Item hming chu strike rawh
+kot_strike_note	Strike item note a ni
+kot_strike_on	Hawng
+kot_strike_off	Tih
+bill_item_layout	Thil rem dan
+bill_item_layout_columns	Column
+bill_item_layout_stacked	In chhung
+bill_item_header	Column hming
+bill_item_hdr_item	Thil hming
+bill_item_hdr_qty	Zat hming
+bill_item_hdr_price	Man hming
+bill_item_hdr_amount	Sum zat hming
+bill_item_name	Damdawi hming
+bill_item_qty	Zat
+bill_item_price	Man
+bill_item_amount	Sum zat
+bill_item_note	Rx / hralhna tur note
+bill_item_col_gap	Column kar
+bill_item_col_order	Column indawr dan
+bill_item_col_sep	Column ri
+bill_item_gap_tight	Tep
+bill_item_gap_comfort	Nuam
+bill_item_gap_wide	Vang
+bill_item_num_width	Nambar column
+bill_item_num_compact	Tep
+bill_item_num_comfort	Nuam
+bill_item_num_wide	Vang
+bill_item_num_align	Nambar intlun
+bill_item_gap_em	Kar (em)
+bill_item_qty_min	Zat tlem ber (em)
+bill_item_price_min	Man tlem ber (em)
+bill_item_amount_min	Sum zat tlem ber (em)
+kot_item_qty_width	Zat column
+kot_item_num_align	Zat intlun
+bill_total_qty_label	Zat zawng hming
+bill_total_subtotal_label	Zawng te hming
+bill_total_grand_label	Zawng lian hming
+bill_total_paid_label	Pe tawh zawng hming
+bill_meta_pair	Ri then
+bill_pair_alone	Mahni
+bill_item_piece_on	Hawng
+bill_item_piece_off	Tih
+bill_total_qty	Zat zawng
+bill_total_subtotal	Zawng te
+bill_total_grand	Zawng lian
+reprint_incl	Print-ah telh
+reprint_skip	Kaltlang
+reprint_skip_meta	Print leh kaltlang
+kot_dest_hint	Remkhawh → Print na-ah {kitchens} thlun i zawm print na-ah a print
+kot_sent_hint	Last send chu {kitchens} ah a kal a. Bill lo awm tur atana thil dah belh tur chuan tap rawh — a nih loh leh chutiang bawk tan chuan Print slip leh rawh.
+kot_sent_printing	Slip chu {kitchens}-ah thawn a ni — printing
+kot_sent_not_printed	Slip {kitchens} ah thawn mahse print LO: {why}. Dawr hnenah hrilh la, chutah chuan printer chu siam that leh la, print leh rawh.
+kot_sent_screen	Slip chu {kitchens} ah thawn a ni
+kot_queued_shop	{place} tan Slip → {kitchens} save a ni; dawr hmanrua chuan a print ta a ni
+kot_job_label	{place} → {kitchens} tan slide rawh
+kot_job_reached	{place} tan Slip chu {kitchens} a thleng ta
+kot_unassigned	Unassigned a ni lo
+kot_unassigned_held	Station nei lovin {n} thilte chu a vawng tlat — thawn tur line-ah unhold
+kot_station_ph	Hmun
+kot_station_dd	Hmun
+kot_station_dd_n	Station · {stations} a ni
+kot_set_station	He hmun hi hmang
+kot_station_applied	{n} thila station set: {station}
+kot_station_cleared	{n} thil atanga station clear: {station}
+kot_station_needed	Dispensary section pakhat thlang hmasa phawt ang che
+kot_station_not_allowed	Section hman phal loh: {station}
+kot_station_none	Station a la awm lo — counter dawrah hman loh (Settings → Areas if needed)
+pos_tab_items	Thil telh tawh
+pos_tab_payment	Pek dan
+hold_send	Vawng
+hold_send_on	Vawng mek
+hold_send_meta	Held — he slip-ah hian ni lo
+station_remove	Hmun paih
+station_remove_ph	List-a hmun khawih la, paih turin
+station_removed	Hmun paih a ni: {name}
+settings_hub_title	Remkhawh
+settings_hub_help	Hmun pakhat chauh hawng ve ve — kal tlem, thlang chiang.
+settings_back	Kir
+settings_sec_language	Ṭawng leh sum hming
+settings_sec_country	Ram leh chhiah
+settings_sec_tills	Device dang
+settings_sec_brand	I hmingchhiar
+settings_sec_units	Unit leh thlak dan
+settings_sec_pickers	Hmun · hmun te · chhiah zat
+settings_sec_printers	Print na
+settings_sec_bill	Bill & Slip format hmanga siam a ni
+settings_sec_selling	Ruahman leh zuar
+bill_kot_tab_bill	Bill
+bill_kot_tab_kot	Tawlh
+settings_sec_alerts	Hriattirna
+alerts_help	Dinhmun thu i screen-ah rei engzat (second)
+snack_secs_ph	Second (3–60, dan 10)
+snack_secs_save	Hriattir hun dah tha
+snack_secs_saved	Hriattir hun dah tha a ni — second {n}
+settings_sec_backup	Backup leh kir leh
+settings_sec_diag	Harsatna en
+diag_privacy_help	Lehkha te hi he device-ah a awm. Thup (PIN, password) chu ziak ngai lo. Bundle device atanga chhuah hi i phal chiang a ngai ve ve — zuar ngai lo, mi dang pek ngai lo.
+diag_level	Chi chiang zat
+diag_level_error	Dik lo
+diag_level_warn	Fimkhur
+diag_level_info	Thu
+diag_level_debug	En chiang
+diag_support_start	Tanpuina hun minute 30 tan
+diag_support_stop	Tanpuina hun tawp
+diag_support_started	Tanpuina hun hawng a ni — en chiang minute 30
+diag_support_ended	Tanpuina hun a tawp
+diag_export_local	Chhung copy chhuah
+diag_export_local_done	Chhung en a inpe {path} — copy dahna hmun thlang
+diag_approve_send	He device atanga chhuah phal
+diag_send_help	Phalna chu bundle pakhat chauh, chuan a tla. Rei tlem — siam ṭha emaw thil ti ṭhat nan chauh. Mi dang hnena sem lo. Linux, Windows, macOS leh Android-ah a thawk.
+diag_send_approved	Bundle pakhat phal a ni (a tla thuai ang)
+diag_export_send	Sem bundle siam (phalna a ngai)
+diag_export_send_done	Sem bundle a inpe {path} — dahna hmun thlang la, Kumkaj tanpuina chauh thawn
+diag_save_bundle	En copy dah tha
+diag_bundle_saved	En copy {path} ah dah tha a ni
+diag_bundle_failed	En copy dah tha theih lo — ti leh
+diag_clear	En lehkha thianghlim
+diag_cleared	En lehkha thianghlim a ni
+sidebar_settings	Screen sir
+sidebar_settings_help	Sir bar ang chhinchhiah. Ri dir la, indawr dan thlak turin. Switch her la, lantir emaw thup turin. Remkhawh leh Khar chu bar-ah a awm reng.
+sidebar_always_on_short	Hawng reng
+sidebar_back_settings	Kir
+sidebar_shown	Lantir
+sidebar_hidden	Thup
+sidebar_always_on	Bar-ah awm reng
+sidebar_shown_hint	Sir bar / hnuai tab-ah lantir
+sidebar_hidden_hint	Bar atanga thup
+sidebar_menu_items	Thil
+sidebar_enable_all	Zawng zawng hawng
+sidebar_disable_all	Zawng zawng tih
+sidebar_order_saved	Sir indawr dan dah tha a ni
+sidebar_visibility_saved	Sir lantir dan dah tha a ni
+amounts_hide	Thup
+amounts_show	Lantir
+printers_none_hint	He device-ah hian printer save hmasa la, chutah chuan bill emaw section emaw-ah add rawh
+counter	Zuar dawhkan
+dine_in	Zuar dawhkan
+takeaway	La chhuak
+order	Order
+tables	Counters te pawh a awm
+kitchen	Section hrang hrang
+sales	Zuar
+sales_refunds	Zuar leh sum kir
+day_close	Ni khar
+reports_expenses	Bank lehkha leh H&H
+nav_reports	Report
+nav_settings	Remkhawh
+nav_lock	Khar
+no_sale_yet	Zuar a la awm lo
+favorites	Duhtawk
+favorites_help	I zuar tam ber thil, i luhna atan dah tha. Pakhat bill-ah telh, emaw a hnuai thil zawng zawng atanga list siam.
+your_favorites	I duh te
+all_items	Thil zawng zawng
+frequent	Zuar tam
+added_items	Thil telh tawh
+added_items_empty	He bill-ah hian engmah a la awm lo — All items emaw category emaw atanga item pakhat add.
+frequent_config_help	Bill tihfel tawh atanga thil hralh tam ber. Ni engzat nge en tur leh thil engzat nge entir tur tih set rawh.
+frequent_days_ph	Ni (1)
+frequent_limit_ph	Thil (24)
+frequent_apply	Hmang
+frequent_saved	A awm fo: {d} ni(s) hnuhnung ber, top {n} — {c} items
+frequent_empty	He hun chhungin bill zo a la awm lo — bill pe (₹0 Remkhawh a phal chuan) chuan hetah an lang ang.
+zero_sales	Man zero zuar
+zero_sales_help	Item man ₹0 leh bill ₹0-a settled (complimentary / owner wish) phalsak rawh. On by default so free covers chu Frequent leh day book-ah a la lang reng a ni.
+zero_sales_on	₹0 phal
+zero_sales_off	Man a ngai
+zero_sales_saved_on	Man zero zuar phal a ni
+zero_sales_saved_off	Zuar hian man ₹0 aia sang a nei tur a ni
+floor_areas_help	Area te chu room emaw zone emaw floor-a awm (Dine In, Parcel, AC ...) a ni. Area pakhat dah hmasa la, chutah chuan counter dah rawh — area tin hi floor-ah group hran an ni.
+area_new_ph	Hmun / pindan thar (entir AC, Huan)
+add_area	Hmun telh
+area_added	Area “{name}” ready — a chhungah counter dah belh rawh
+no_favorites	Duhtawk a la awm lo — a hnuai list atanga thil telh.
+add_to_bill	Bill-ah telh
+added	Telh a ni
+owes_word	a ba
+selected_word	Thlan
+chip_clear_credit	thianghlim — Ba emaw hma sum la
+chip_missing_customer	Customer thlan a bo — thlang leh
+chip_no_customer	Customer a la awm lo — hming ziak la, Ba khawih
+credit_summary_fmt	customer {} · ba hawng {} · hma sum vawng {}
+recent_label	Tun hnai:
+kot_new_waiting	THAR — nghak mek
+kot_preparing	BUATSAI MEK
+kot_ready_serve	INPE — keng
+kot_done_cap	A ZO
+kot_cancelled	TIHBO
+kot_start_btn	Tan
+kot_mark_ready	Inpe tih chhinchhiah
+kot_done_btn	A zo
+table_free	Ruak — khawih la, order tan turin
+start_order	Order tan
+open_bill	Bill hawng
+collect_payment	Pek la
+table_running	Kal mek
+payment_pending	Pek nghak mek
+collect_at_counter	zuar dawhkan atanga la
+inventory	Stock
+inventory_stock	Stock leh thil
+branches	Branch
+branches_org	Branch leh pawl
+credit_customers	Mi (khata leh pek tu)
+customer_name_ph	Mi hming
+new_customer_ph	Mi thar hming
+item_name_ph	Thil hming (entir Masala Dosa)
+item_price_ph	Man
+start_template	Thil
+team	Pawl
+team_pins	Pawl leh PIN
+my_pin_settings	Ka PIN
+settings_hub_help_my_pin	He device-ah lut tawh mi hawngna PIN thlak.
+team_self_help	Lut pakhat: PIN thar, password thar, emaw a pahnih. Bawm ruak chhuah la, i neih sa vawng turin. Screen emaw dikna dang i mamawh chuan Neitu zawt.
+backup_settings	Backup leh remkhawh
+lock_app	App khar
+pick	La
+select	Thlang
+advance	Hma sum
+owner	Neitu
+staff	Hnathawk
+photo	Thlalak
+auto	Mahni
+prev	Hmaa
+next	Dawt
+ok	OK
+this_shop	Server
+extra_till	Dawr dang
+off	Tih
+tables_kitchen	Dawr awm dan tur
+server	Server
+client	Dawr dang
+language_currency	Ṭawng leh sum hming
+language	Ṭawng
+choose_language	I ṭawng thlang
+language_setup_hint	He device ṭawng zui, emaw mahniin thlang.
+lang_follow_platform	Device ṭawng
+lang_pick_user	Ṭawng thlang
+lang_platform_now	Device ṭawng tunah
+selected_language	Thlan
+continue	Chhunzawm
+this_device	HE DEVICE
+device_use_q	He device hi engtin nge hman tur?
+last_server_mode	Server a ni tawh — khawih la, chhunzawm turin
+last_client_mode	Dawr dang a ni tawh — khawih la, chhunzawm turin
+choose_server	Server thlang
+choose_server_hint	Server awm sa hawng, emaw sumdawn dang atan siam.
+create_new_server	Server thar siam
+open_server	Hawng
+new_server_name_ph	Server thar hming (duh chuan)
+server_remove_pin_ph	Neitu PIN, server paih nan
+only_owner_remove_server	Neitu chauhvin server a paih thei
+owner_pin_remove_server	He server paih nan Neitu PIN a ngai
+device_setup_help	Server hian lehkha hetah a vawng. Dawr dang chu Server nen a inmil.
+app_template_heading	Starter catalog (a duh chuan) 1.1.
+app_template_blurb	A sample catalogue chu a load a; A neitu Zahir (zahir), Admin Asif (asif, PIN 1111), Cashier Nawaz (nawaz, PIN 0000) te an ni a; chhiah/GST off; hmalam sidebar; darkar 4 hnuah history a clear (leh Backup-ah Clear now); Vawiin hian strip off rawh; compact bill + Tray te tak te tan standard margins. Tax leh sidebar peer te hi Settings ah on back theih a ni.
+app_template_apply	Starter catalog hmang rawh
+app_template_skip	Tunah kaltlang
+app_template_status	Server ready — Starter catalogue apply la, a nih loh leh skip rawh
+app_template_importing	{title} hman mek…
+currency	Sum hming
+backup	Backup
+use	Hmang
+dont_use	Hmang suh
+add_branch	Branch telh
+add_conversion	Thlak dan telh
+add_dishes_items	Thil dah belh tur a ni
+add_item_plain	Thil telh
+add_note	Lehkha telh
+add_opening_balance	Tan lai la awm telh
+add_staff	Hnathawk telh
+add_station	Hmun telh
+add_table	Dawhkan telh
+add_unit	Unit telh
+add_use_name	Telh / he hming hmang
+allow_extra_tills	Dawhkan dang phal
+amend	Siam
+apply_country_pack	Ram bung hmang
+datetime_appearance	Ni leh hun lantir dan
+datetime_appearance_help	Lehkhabu chuan kum khatna RFC3339 chu a chhungah a dah a. Hengte hian bill, report leh screen-a date leh clock awm dan chauh a thlak danglam a ni.
+datetime_example	Tun entir: {ex}
+date_order	Ni indawr dan
+date_order_dmy	N/T/K
+date_order_mdy	T/N/K
+date_order_ymd	K-T-N
+time_format	Dar
+time_format_24h	Dar 24
+time_format_12h	Dar 12
+attach_bill_photo	Bill thlalak thlun
+attach_pdf	PDF thlun
+attach_photo	Thlalak thlun
+attachments_last_expense	Thlun (sum sen tawp ber)
+bank	Bank
+bank_in	Bank lut
+bank_out	Bank chhuak
+bank_reconciliation	Bank inmil (i bank report nen en)
+bank_to_till	Bank → dawhkan
+book_add_dish	Lehkhabu — thil / thil dah belh
+book_opening_credit	Lehkha — tan lai ba
+branch_name_sell_ph	Zuarna branch hming
+bring_my_book	Ka lehkha rawn la
+business_tax_id_ph	Sumdawn chhiah hmingchhiar
+caption_bank	BANK
+caption_bills	BILL
+caption_outstanding	LA AWM
+caption_payments_today	VAWIIN PEK
+caption_today	VAWIIN
+card_amount_ph	Card sum zat
+cash_amount_ph	Sum zat
+cash_memo	Sum lehkha
+choose_icon	Chhinchhiah thlang
+choose_logo	Logo thlang
+clear_icon	Chhinchhiah thianghlim
+clear_photo	Thlalak thianghlim
+copy_day_book_csv	Ni lehkha CSV copy
+copy_day_close	Ni khar copy
+copy_items_csv	Thil CSV copy
+copy_outstanding_csv	La awm CSV copy
+copy_parties_csv	Mi CSV copy
+copy_party_ledger_csv	Mi lekhapui CSV copy
+copy_receipt	Receipt copy
+share_whatsapp	WhatsApp ah sem
+lan_pages_heading	Wi‐Fi-a customer page awmte
+lan_pages_help	He dawr Wi‐Fi-ah hian customer page-te chuan display board leh feedback atan hna an thawk a ni. Mobile data-a mite chuan Cloud an mamawh hnuah. Card terminal emaw payment link emaw hi optional a ni a, counter a block ngai lo.
+diag_send_heading	He device atanga chhuah
+kot_dest_heading	Hmun
+optional_login_heading	Lut duh chuan
+rights_heading	Dikna
+ops_panel	Chhung hna
+crm_heading	Customer & message te pawh a awm bawk
+crm_help	Pian ni, rinna, thawk lo leh khual chung — SMS emaw WhatsApp queue. Thu-ah {name} leh {points} hmang. Neitu chuan thawn a khawih; mahniin a chhuak lo.
+crm_queue_sms	SMS queue
+crm_queue_wa	WhatsApp queue
+crm_seg_bday_week	Kar pian ni
+crm_seg_bday_month	Thla pian ni
+crm_seg_phone	Phone nei
+crm_seg_loyalty	Rinna
+crm_seg_inactive	Thawk lo
+crm_seg_top	Sum sen tam ber
+birthday_ph	Pian ni (MM-DD emaw YYYY-MM-DD)
+crm_message_ph	Pian ni lawm {name}! Point {points} i nei.
+till_apply_redeem	Bill-ah hmang
+till_clear_redeem	Hman dan thianghlim
+till_wallet_topup	Wallet khat
+till_issue_voucher	Voucher pe
+till_points_ph	Point hman tur
+till_wallet_ph	Wallet sum sen tur
+till_voucher_code_ph	Voucher code
+till_voucher_amt_ph	Voucher sum zat (ruak = zawng zawng)
+till_wallet_topup_ph	Wallet telh sum zat
+till_voucher_issue_amt_ph	Voucher pe tur sum zat
+till_voucher_issue_code_ph	Voucher code thar
+split_evenly	Inang in then
+waitlist	Nghak list
+fire_course	A dawt leh tur chu
+hold_item	Vawng
+waiter_call	Cashier hnenah call rawh
+waitlist_add	Nghak list-ah telh
+floor_view_grid	Grid
+floor_view_layout	Rem dan
+floor_layout_x	X
+floor_layout_y	Y
+floor_layout_w	W
+floor_layout_h	H
+floor_layout_save	Rem dan dah tha
+floor_layout_open	Dawhkan hawng
+floor_layout_edit	Rem dan siam
+floor_layout_pick	Dawhkan khawih la, a rem dan siam turin
+floor_layout_saved	Layout a save tawh
+floor_layout_nudge_left	← 20
+floor_layout_nudge_right	→ 20
+floor_layout_nudge_up	↑ 20
+floor_layout_nudge_down	↓ 20
+sibling_pickers_help	Unit ang khan Hawng/Tih khawih — hmun, hmun te leh chhiah zat chu ni tin thlangna atanga thup; bung dan a awm reng.
+bulk_price_apply	Man tam hmang
+card_terminal_optional	Card device / pek link (internet awm chuan duh chuan)
+copy_report	Report copy
+counted_cash_ph	Bawm chhung sum chhiar tawh
+country_tax	Ram leh chhiah
+create_backup	Backup siam
+credit_limit_heading	Ba tiam (mi thlan / hming dah)
+day_close_summary	Ni khar tlangpui
+delete_party	Mi thlan paih bo
+delivery	Thlen
+done_open_books	Zo — lehkha hawng
+drawer_count	Bawm chhiar (duh chuan)
+expense_heading	Sum sen
+export_day	Ni chhuah
+extra_note_bill_ph	He bill / zuar-ah lehkha dang
+extra_note_expense_ph	Sum sen tawp ber-ah lehkha dang
+extra_tills_heading	Dawhkan dang
+other_devices_help_heading	Device dang rem
+other_devices_help	He device (Server) ah hian: Device dang → Extra tills phalsak. Pairing code leh Wi‐Fi address te kha chhinchhiah rawh. A lo lang a nih chuan device dangte connect turin phalsak rawh tih kha tap rawh. Computer-ah chuan he computer hmang hian tan rawh tih kha tap rawh. Device pakhatah: app install la, Client Mode thlang la, Dawr server zawng rawh (or address type la), pairing code ziak la, Pair now. Order te chu Wi‐Fi a tlak chuan device-ah a nghak a, Server-in a chhan leh hunah a kal leh thin. Server-ah extra printer set a ni (Settings → Printers) — extra tills hian chutah chuan bill a thawn thin.
+forget_shop	He dawr hreh
+goods_received	Thil dawng
+import_day	Ni lut
+import_items_csv_plain	Thil CSV lut…
+import_parties_csv	Mi CSV lut…
+item_name	Thil hming
+kitchen_printing	Print na
+login_id_ph	Hmangtu hming
+mark_cleared	Thianghlim tih chhinchhiah
+new_party_clear	Mi thar (form thianghlim)
+new_party_kind_supplier_ph	Mi thar khop (Pek tu)
+next_country	Ram dawt
+next_order	Order dawt (dawhkan thianghlim)
+note_gstin_ph	Lehkha / GSTIN / thuthlung hriat reng
+notes_attach_party	Lehkha leh thlun (mi thlan)
+notes_attach_sale	Lehkha leh thlun (zuar thlan)
+on_account_ap	Account-ah (AP)
+org_optional_ph	Pawl (duh chuan)
+paid_by	Pe tu
+paid_now	Tunah pe
+pair_now	Tunah pair
+pairing_code_ph	Pair code
+party_name_selected_ph	Mi hming (emaw thlan sa hmang)
+password_ph	Password
+pay_ap_card	AP card in pe
+pay_ap_cash	AP sum in pe
+pay_ap_heading	Kan ba an hnena pe (AP)
+pay_ap_upi	AP UPI in pe
+pay_selected_heading	Thlan sa pe (ba khar / hma sum la)
+pick_from_items	Kan thil atanga la
+prev_country	Ram hmaa
+print_open	Print / hawng
+reason_amend_ph	Siam / tihbo / sum kir chhan
+reason_note_ph	Chhan / lehkha (hloh, chhiar, …)
+record_day_close	Ni khar ziak
+refresh_from_shop	Dawr atanga thar leh
+refund	Sum kir
+remove_selected	Thlan sa paih
+request_bill	Bill dil
+restaurant_name_ph	Dawr hming (a duh chuan) .
+restore_backup	Backup kir leh
+role_both	A pahnih
+role_admin	Admin
+role_cashier	Sum khawmtu
+role_customer	Customer
+role_manager	Hotu
+history_retention	Sumdawn history
+history_retention_help	Sales hlui leh ticket hlui te chu auto-clear rawh. Damdawi, staff leh setting te chu a awm reng a ni. Tunah chuan Clear hian trading row zawng zawng a wipe vek a, setup a vawng reng bawk.
+history_off	Vawng
+history_day_close	Ni khar hunah
+history_after_hours	Darkar hnuah
+history_hours_ph	Darkar (1–168, dan 4)
+history_hours_save	Darkar dah tha
+history_clear_now	History tunah thianghlim
+history_cleared	Sumdawn history thianghlim a ni — rem vawng
+history_retention_saved	History thianghlim dah tha a ni
+history_hours_saved	History darkar dah tha a ni
+history_owner_only	Neitu emaw Admin chauhvin history a thianghlim thei
+rollup	Khawm
+save_brand	Hmingchhiar dah tha
+save_business_id	Sumdawn hmingchhiar dah tha
+save_business_name	Sumdawn hming dah tha
+save_features	Dah tha
+save_features_named	{name} dah tha
+save_features_ok	{name} rem dah tha a ni
+save_names	Hming dah tha
+second_way	Dan pahnihna
+server_ip_ph	Server IP (entir 192.168.1.10)
+set_credit_limit	Tiam mi ah hmang
+set_login_selected	Lutna thlan sa ah hmang
+set_login_named	Lutna {name} ah hmang
+shop	Dawr
+show	Lantir
+spreadsheet_csv	Spreadsheet (CSV)
+start_fresh	Thar tan
+stop_extra_tills	Dawhkan dang tih
+floor_cols_ph	Column
+floor_cols_fit	Screen inmil
+floor_cols_fit_sub	{n} hetah a inmil
+floor_cols_fits	a inmil
+floor_cols_scroll	sir lam a scroll
+floor_cols_min	Column: a tlem ber 1 — emaw ruak chhuah la, screen inmil turin
+floor_zoom_auto	Mahni
+floor_zoom_out	Tep
+floor_zoom_in	Lian
+backup_auto	Ni tin mahniin backup · tawp ber {when} · ni 14 kal ta {dir}-ah vawng.
+backup_auto_none	Ni tin mahniin backup — a hmasa chu rei lo teah a kal ang.
+backup_copy_to	Copy te chu {dir} ah pawh a kal.
+backup_copy_btn	Backup te folder ah copy pawh…
+autostart_off	He computer nen tan
+autostart_on	He computer nen a tan ✓ — khawih la, tih turin
+autostart_done_on	He computer hian a tan hunah app a hawng tawh — electric tih hnuah dawr server a kir leh.
+autostart_done_off	He computer hian a tan hunah app a hawng tawh lo.
+device_forgotten	Dawr hian he device a theihnghilh — dawr code tun nen pair leh. A chunga order nghak a awm reng.
+lan_offline	Dawr server thlen theih loh
+forget_device	Theihnghilh
+last_seen	hmuh tawh
+copy_pair_code	Pair code copy
+new_pair_code	Pair code thar
+pair_finishing	Pair zo mek… dawr lehkha hman mek
+pair_opening	Dawhkan hawng mek…
+pair_copied	Pair code copy a ni
+kot_waiting	Thawn nghak
+lan_offline_waiting	Dawr server thlen theih loh · {n} nghak
+lan_connecting	Dawr zawm mek…
+lan_live	Tun tak
+lan_sending	{n} thawn mek
+lan_sign_in_to_send	Lut leh la, {n} thawn turin
+lan_pair_again	He device pair leh
+lan_update_app	App thar leh — he device leh dawr server version a inang lo
+allow_firewall	Device dang zawm phal
+firewall_blocked	He computer firewall hian device dang a khar — Device dang zawm phal khawih.
+firewall_waiting	Admin zawhna nghak mek…
+lan_join_help	Device dang-ah: Dawr dang mode → Dawr server zawng (emaw {addr} ziak) → pair code {code}.
+lan_pair_status	Wi‑Fi {addr}
+lan_join_help_no_addr	He device Wi‑Fi zawm la, address neih nan.
+lan_no_address	Wi‑Fi address a la awm lo — dawr Wi‑Fi zawm.
+lan_not_listening	Device pawm lo (port {port} a hmang). App tan leh.
+lan_tills_off	Dawhkan dang a tih. Phal la, device dang tel ve thei turin.
+paired_with	Pair a ni · {url}
+not_paired	Pair lo
+choose_device_use	Server emaw Dawr dang thlang.
+paired_note	Pair a ni. Hawng la, zuar turin, emaw Thar leh, tawp ber atan.
+last_update_at	Thar leh tawp: {time}.
+pair_intro	Server zawng, emaw a address leh pair code ziak.
+queue_waiting	Dawr thlen nghak ({n}):
+queue_tries	Vawi {n} tih tawh · chhanna tawp: {e}
+save_backup_copy	Backup copy dah tha…
+backup_copy_saved	Backup copy dah tha a ni — he device pawnah vawng (USB emaw device dang)
+backup_copy_overdue	Ni {n} chhung he device atanga backup copy a chhuak lo — Remkhawh → Backup
+backup_copy_failed	Backup copy hetah dah tha theih lo — hmun dang thlang
+clock_off	He device dar chu dawr server atanga minute {min} a inthlau — he device-ah hun dik dah
+printers_heading	Print na
+printers_help	Printer zawng la, pakhat tap la, chu chu thlang la, chu device-ah chauh test page Print rawh. Bill printer te: Bill & Slip format → Bill.
+printers_host_only	Printer te chu dawr device (Server) ah set a ni. He till hian chutah chuan bill leh ticket hlui a thawn thin — Find / add / assign stay on the Server. Test page leh bill print size chu Server ah a kal ang.
+printers_find_heading	Print na zawng
+printers_find_tip	Zawng hian he device a en, list a thar reng.
+printers_pool_heading	Print na
+printers_pool_tip	Zawng hian he device a en, he list a thar reng.
+printers_pool_empty	(a la awm lo — Zawng khawih)
+printers_routes_help	Operating system-in a hriat tawh printer zawng rawh. Bill & Slip format hnuaiah bill-ah leh section tinah dah rawh.
+printer_assign_dd	Print na tak: {place}
+printer_assign_pick	Print na tak thlang
+printer_profile_heading	Rem dan
+printer_send_heading	Thlen
+vp_delivery_heading	Thlen
+vp_delivery_help	He virtual printer hian hna a thawn dan — OS document, raw byte, emaw ESC/POS emaw. Slip content (type size, wrap, margins) hi bill / Slip format hmanga tihfel a ni a, hetah hian a innghat lo.
+vp_type_size_heading	Type len
+vp_wrap_heading	Wrap vang
+vp_margin_heading	Margin
+vp_delivery_spooler	System lehkha (system spooler)
+vp_delivery_raw	Byte raw device ah
+vp_delivery_escpos	ESC/POS lum thupe
+virtual_printer_new	Print na ru thar
+virtual_printer_selected	“{name}” siam mek — dang list-ah khawih la, thlak turin
+virtual_printer_tap_list	List-a print na ru khawih la, siam turin
+config_layout_portrait	Ding
+config_layout_landscape	Phai
+config_send_os	System spooler
+config_send_escpos	ESC/POS
+profiles_heading	Rem dan
+profiles_empty	(rem dan a la awm lo)
+profile_builtin	chhung siam
+profile_custom	mahni
+profile_name_ph	Rem dan hming
+profile_new	Rem dan thar
+profile_delete	Rem dan paih
+profile_created	Rem dan siam a ni
+profile_deleted	Rem dan paih a ni
+profile_builtin_keep	Rem dan chhung siam paih theih loh
+config_saved	Thar a ni
+config_selected	“{name}” thlan a ni
+printer_output_heading	Print na ru
+virtual_printers_heading	Print na ru
+virtual_printers_empty	Print na ru a la awm lo — a hnuai zat dah la, Dah tha. I neih hnuah list-ah pakhat khawih la, siam turin.
+virtual_printer_name_ph	Print na ru hming (duh chuan)
+virtual_printer_create	Print na ru siam
+virtual_printer_save	Print na ru dah tha
+virtual_printer_delete	Print na ru paih
+virtual_printer_created	Print na ru “{name}” siam a ni
+virtual_printer_deleted	Print na ru “{name}” paih a ni
+virtual_printer_updated	Print na ru thar a ni
+virtual_printer_updated_named	Print na ru “{name}” thar a ni
+virtual_draft_layout	Print na ru dawt atan zat dah
+virtual_draft_send	Print na ru dawt atan zat dah
+virtual_need_real	Print na tak thlang hmasa
+virtual_need_select	Paih tur print na ru thlang
+real_printer_selected	Thlan: {name}
+station_group_heading	Print na ru
+station_group_apply	Print na ru paih
+station_group_applied	Paih a ni
+station_group_empty	Print na ru thlang
+station_group_name_ph	Print na ru hming (duh chuan)
+station_group_save	Print na ru siam
+station_group_saved	Print na ru dah tha a ni
+station_manage_heading	Dispensary section pakhat dah emaw, paih emaw
+printers_routes_heading	Printna hmun
+route_pick_heading	Hmun
+route_editing	Siam mek: {name}
+route_assigned	{printer} {place} ah telh a ni
+route_already_assigned	He hmunah a awm tawh: {printer}
+route_removed	{printer} {place} atanga paih a ni
+route_cleared	{name} thianghlim a ni
+route_assigned_empty	He hmunah awm lo
+route_tap_remove	khawih la, paih turin
+route_tap_select	khawih la, thlang turin
+route_tap_selected	thlan
+route_pick_printer_first	Print na khawih hmasa
+route_assigned_heading	Print na
+route_add_heading	Zawm
+printer_label_ph	Hming (e.g. Counter printer) tih a ni.
+printer_target_ph	System print na hming emaw host:9100
+printer_target_default	he computer print na dan (address ruak)
+printer_wire_heading	Khop
+printer_wire_escpos	ESC/POS
+printer_wire_os	Ding
+printer_wire_os_portrait	Ding
+printer_wire_os_landscape	Phai
+printer_wire_escpos_short	ESC/POS
+printer_wire_os_short	Ding
+printer_wire_os_landscape_short	Phai
+printer_format_custom	Khop mahni thar
+printer_format_custom_label	Mahni
+printer_format_custom_added	He hmun atan khop mahni telh a ni
+add_printer	Print na telh
+remove_printer	Paih
+route_pick_ph	Bill emaw dispensary section emaw a ni thei
+route_bill	Bill
+route_default_kitchen	Station awm lo (unassigned items) .
+route_kot_station	Hmun
+route_dont_print	Print na awm lo
+stations_heading	Hmun
+stations_help	Dispensary section hrang hrangte chuan damdawi leh chu dawr hmun hrang hranga printer te chu group hrang hrangah an dah a. Settings → Printers atang hian printer te attach la, try order set la, chutah chuan First that works emaw Print on all ah emaw set rawh. Changes save as i kal zel ang.
+station_print_heading	He hmun print na
+station_print_help	Station pakhat thlang la, chutah chuan printer pakhat emaw a aia tam emaw attach rawh. ↑↓ hian try order a set a. First that works chu hlawhtlinna hmasa ber hnuah a tawp a; Printer attached zawng zawngah thawn zawng zawngah print vek rawh.
+station_print_pick_ph	Print na dah tur hmun
+station_print_pick_first	Dispensary section pakhat thlang hmasa phawt ang che
+station_print_editing	“{name}” print na siam mek
+station_vps_dd	He hmun print na
+station_vps_dd_n	print na {n} · khawih la, thlak turin
+station_vps_empty	Print na a la awm lo — Remkhawh → Print na hnuaih zawng
+bill_printers_dd	Bill print na
+bill_printers_dd_n	bill print na {n} · khawih la, thlak turin
+job_layout	Rem dan
+job_delivery	Hna thawn dan
+job_delivery_help	OS document emaw, raw byte emaw, ESC/POS emaw a ni thei. Bill leh ticket te chu anmahni ta an vawng vek a. Job pahnih hi Find-in a save tawh printer eng pawhah a kal thei.
+station_vp_attached	Print na zawm a ni
+station_vp_detached	Print na hmun atanga paih a ni
+station_print_summary	{mode} · print na {n}
+station_print_summary_none	He hmunah print na a la awm lo — a print lo vang
+stations_none	Station a la awm lo — a hnuaiah hian pakhat dah belh rawh. Counter dawrah station hman loh a ni — khar vek rawh.
+route_up	Chung
+route_down	Hnuai
+route_remove	Paih
+route_clear	Thianghlim
+save_printers	Print na dah tha
+print_test_page	Test page print
+no_printer_assigned	Print na awm lo
+test_page_no_printer	{place} atan print na awm lo — print na zawm la, ti leh
+test_page_pick_first	Test page atan print na thlang hmasa — chuan Test page print
+test_printers_dd	Test page print na
+test_printers_dd_n	test page print na {n} · khawih la, thlak turin
+kot_test_printers_dd	Test print atan Printer te
+kot_test_printers_dd_n	Test print atan {n} printer(s) · thlak tur chuan tap rawh
+test_printer_picked	Test: {name}
+test_printer_cleared	Test lo: {name}
+test_page_sent_n	Test page print na {n} thawn a ni
+test_kot_pick_first	Test print atan printer(s) thlang hmasa rawh — chutah chuan Test print rawh
+test_kot_sent_n	{n} printer(s) ah test print thawn chhuah a ni.
+cancel_pick	Chhinchhiah
+cancel_pick_on	Chhinchhiah
+cancel_pick_meta	Tihbo atan chhinchhiah
+batch_cancel	Chhinchhiah tihbo
+batch_cancel_n	Chhinchhiah tihbo ({n})
+batch_cancel_none	Thil thawn pakhat emaw a aia tam emaw chu mark hmasa phawt ang che — chutah chuan Cancel mark rawh
+batch_cancel_title	Damdawi chhinchhiahna cancel — a chhan pakhat, section khatah cancel slip pakhat
+batch_cancel_ok	{n} thil cancel · {slips} cancel slip(s) → {kitchens}
+batch_cancel_ok_noprint	{n} thil cancel — auto-print off a nih avangin cancel slip a awm lo
+no_printer_kitchen_station	Chu station tan chuan printer a awm lo
+printers_saved	Dah tha a ni
+test_page_sent	Test page thawn a ni — print na en
+test_page_sent_one	Test page {name} thawn a ni — print na kha en
+printers_found	{n} hmuh: {list}
+printers_find_synced	{n} hmuh — {new} thar
+printer_on_device	dah tha
+printer_already_added	telh tawh
+printer_already_saved	Dah tha tawh: {name}
+find_printers	Print na zawng
+printers_looking	Zawng mek…
+saving_printer	Print na telh mek…
+cancelled	Tihbo
+printers_tap_find	Zawng khawih la, he device hman theih print na list turin.
+printers_none_found	Hmuh lo — system print na hming emaw IP ziak (entir 192.168.1.50).
+printer_from_find	{name} telh a ni
+kot_printer_ph	Slip dahna tur printer a ni
+bill_printer_ph	Bill print na
+kot_print_on	Auto-print ticket lei theih a ni: On
+kot_print_off	Auto-print ticket: Off a ni
+queue_refused	Dawr pawm lo ({n}) — tin zuar dawhkanah en:
+clear_not_accepted	En tawh — he list thianghlim
+device_name_ph	He device hming
+lan_last_update	thar leh tawp {time}
+lan_not_accepted	{n} pawm loh
+connected_now	tunah zawm
+backup_failed	Backup mahni tawp ber a tlawlh: {e}
+backup_overdue	Ni {n} chhung backup awm lo — he device-ah app hawng reng la, backup thei turin.
+disk_low	He device-ah MB {mb} chauh a la awm — backup a tlawlh thuai ang. Hmun ruak siam.
+last_seen_devices	Hmuh tawp: {time}
+sync_interval	Second {secs} tin inmil
+connection_to_shop	Dawr zawmna
+supplier_name_ph	Pek tu hming (emaw mi)
+supplier_ph	Pek tu
+switch_device	He device thlak
+take_payment	Pek la
+tax_added_till	{tax} pawn
+tax_inside_price	{tax} chhung
+tax_invoice	Chhiah bill
+till_to_bank	Dawhkan → bank
+units_heading	Unit
+unlock_after_pairing	PIN ziak
+unlock_with_login	Lutna in hawng
+unmark	Chhinchhiah paih
+update_my_password	Ka password thar leh
+update_my_pin	Ka lutna thar leh
+duress_heading	Hawngna PIN hlauhawm (Neitu chauh)
+duress_help	Duh zawk thlang. He PIN hi i PIN ai chuan unlock-ah type a nih chuan lehkhabu entry zawng zawng (sales, ledgers, history) a wipe vek a, till chu Owner looking normal angin a inhawng a — damdawi, man, counter, staff leh settings te chu a awm reng a ni. Schema leh config a delete lo. Unlock tura nawr i nih chuan chauh hmang ang che. Blank ah dah la, off turin save rawh. Tu PIN nen a inang ngai lo.
+duress_pin_ph	PIN hlauhawm (digit 4–12)
+duress_confirm_ph	Ziak leh la, nemnghet turin
+save_duress_pin	PIN hlauhawm dah tha
+clear_duress_pin	PIN hlauhawm tih
+duress_on	Hawngna PIN hlauhawm hawng
+duress_off	Hawngna PIN hlauhawm tih
+duress_saved	Hawngna PIN hlauhawm dah tha a ni
+duress_cleared	Hawngna PIN hlauhawm tih a ni
+upi_amount_ph	UPI sum zat
+void	Tihbo
+write_off_ap	AP paih
+write_off_heading	Paih (pe lo vin thianghlim)
+write_off_nil	Paih / la awm zero
+your_brand	I hmingchhiar (app chhung)
+your_categories	I pawl te
+account_kind	Account khop (pakhat khawih)
+actual_total_cap	ZAWNG DIK TAK
+amend_help	Zuar thlang la, siam, tihbo, emaw sum kir turin. Siam chuan history kim a vawng. Zawng kil chu Hman tawh nen inang a tan — kil nan chauh siam. Tihbo leh sum kir hian Neitu emaw Hotu PIN a ngai thei (a chunga ziak; i hming nen ziak).
+applied_total_cap	ZAWNG HMAN TAWH
+bank_balance	Bank la awm
+bank_net_today	Bank chhiar zawng vawiin
+branch_export_help	Chhuah chuan branch_snapshot_CODE_DATE.json backup folder-ah a ziak, clipboard ah a copy. Outlet dang ni lut nan a file chu folder kha ah import_branch_snapshot.json ah dah tha la, Lut khawih.
+brand_shown_help	App chhung screen-ah lantir. Device-a app hming leh chhinchhiah install chu platform list ang a awm reng.
+app_icon	App chhinchhiah
+logo_help	App screen-a dawr hmingchhiar duh chuan.
+onboard_layout	I dawng tur
+item_photo_help	Duh chuan. Thlalak awm loh chuan thil hming atanga hawrawp kan lantir.
+stamp_heading	Seal
+stamp_image_help	Printed bill-a stamp image leh customer display-a optional stamp image.
+payment_qr_heading	Pek QR
+payment_qr_image_help	Bill leh customer display-a static QR; chutiang a nih loh chuan paying hian a chunga VPA atanga dynamic UPI QR a hmang thin.
+cash_in_hand	Kut sum (dawhkan)
+change_my_pin_heading	Ka lutna
+connect_to_server	Server zawm
+counter_locked	Dawhkan 01 · Khar
+country_pack_help	Ram bung hian chhiah hming leh chhiar dan, pek thuai kawng, leh bill-a print sumdawn hmingchhiar a dah. Kumkaj hian khawiah mah chhiah a thehlut lo, sorkar e-invoice a pe lo.
+currency_use_help	Scroll la, sum hming thlawp tin atan Hmang khawih.
+day_close_help	Ni khar ziak chuan he tlangpui (leh bawm inthlau, chhiar chuan) audit log-ah a dah tha. Zuar a tih lo.
+expenses_word	Sum sen
+feature_access_help	An hawng theih — duh chuan; a chunga hna hian dan a dah tawh
+footer_local	SQLite chhung · Free reng · Cloud awm lo
+fresh_book_tabiyat	Fresh = catalog hrui hring (a hnuah thil dah belh leh ang). Book = type opening stock leh a hnuaia mi nge i bat.
+fresh_selected	Thar thlan — list a ruak reng. I inpeh hunah Zo khawih.
+gross_word	Kim lo
+how_start	Engtin nge i tan duh?
+kot_print_help_tabiyat	Counter dawrah hman a ni lo.
+later_country_pack	Nakinah: Remkhawh → chhiah leh pek hming atan i ram bung hmang.
+local_badge	CHHUNG
+mix_type_hint_tabiyat	A ngai chuan sum / UPI / card / ba then. Ba hian a chunga customer a ngai.
+money_in_sales	Sum lut (zuar)
+net_word	Chhiar zawng
+offline_badge	NET TEL LO
+optional_login_help	Lut duh chuan (hmingchhiar + password). Neitu vawi khat a dah; hmangtu chauhvin password a thlak thei nakinah.
+or_unlock_login	Emaw lut hmingchhiar + password in hawng
+permission_preset	Hna (screen leh sum tih dan a dah)
+preset_help_tabiyat	Sum khawmtu: zuar. Hotu: zuar + thil + tihbo/siam.
+product_locked_tabiyat	Tabiyat chuan a ti a
+product_only_tabiyat	Tabiyat hi damdawi dawr operating system a ni a: damdawi hralh, batch/expiry bookkeeping, credit leh lehkhabu — i device-a offline-a dah. Schedule H / Rx flag te hi owner note a ni a, compliance a ni lo.
+purchases_cogs	Lei (COGS)
+qty_cap	ZAT
+restore_help	Kir leh: backup thlang. Lekhapui chu hun kha ang khan a hawng; tun lekhapui chu hmasa a dah tha, chuvangin ti lo leh theih a ni.
+wipe_data_heading	Chhung data paih
+wipe_data_help	Owner chauh — Windows uninstall ang chiah duhthlanna. Business record hian trading history a clear a, mahse item leh setup (emergency unlock PIN ang chi) a vawng reng thung. Shop setup hian lehkhabu database chu a paih chhuak ta a ni. Screen duhzawng hian window/language a tifai vek. Owner PIN hmangin confirm rawh. Team-a emergency unlock PIN chu a hranin (covert wipe at unlock).
+wipe_trading	Sumdawn lehkha
+wipe_schema	Dawr rem
+wipe_ui	Screen duh dan
+wipe_owner_pin_ph	Neitu PIN, paih nan
+wipe_delete_selected	Thlan sa paih
+wipe_owner_only	Neitu chauhvin chhung data a paih thei.
+restore_owner_only	Neitu chauhvin backup a kir leh thei.
+wipe_owner_pin_needed	Neitu PIN ziak la, chhung data paih turin.
+wipe_nothing_selected	Paih tur thlang hmasa.
+wipe_done	Chhung data thlan paih a ni.
+wipe_schema_done	Dawr rem paih a ni — Server emaw Dawr dang thlang la, chhunzawm turin.
+rounded_total	Zawng kil
+setup_app_tabiyat	Tabiyat chu din rawh
+shop_logo_optional	Dawr logo (duh chuan)
+stock_type_help	Thil hming ziak (a then a tawk), zat, chuan siam. Chhiar la loh thil hian Chhiar tan vawi khat a ngai.
+team_owner_help	Mi ruak chhuah la, mi telh turin: hming, hna, hmangtu hming, PIN, leh password duh chuan, chuan Telh. Mi thlang la, form khop kha siam turin — hming, hmangtu hming, password, screen, leh dikna — chuan Dah tha. I PIN leh password chu a hnuaih lut pakhat a ni. Neitu hian mi dang PIN a thlak lo.
+staff_name_ph	Hnathawk hming
+staff_copy_hire_ph	Rem atanga copy (duh chuan)
+staff_copy_hire	He mi rem hmang
+staff_edit_name_ph	Lantir hming
+staff_rename	Hming dah tha
+staff_copy_edit_ph	Mi dang rem atanga copy
+staff_copy_edit	An rem thlan sa ah copy
+staff_copy_edit_onto	An rem {name} ah copy
+staff_deactivate_named	{name} paih
+staff_renamed	Hming dah tha a ni
+staff_setup_copied_hire	Rem {name} atanga copy a ni — hming leh PIN thar dah la, Hnathawk telh
+staff_setup_copied_edit	{from} rem {to} ah copy a ni
+staff_copy_need_selected	Siam tur tu thlang hmasa
+staff_copy_need_source	Rem copy tur tu thlang
+staff_copy_same	Mi kha a ni — mi dang thlang
+staff_rename_need_selected	Hming thlak tur tu thlang hmasa
+team_pick_hint	Tu nge edit tur tih thlang rawh — screen, sum dikna leh station te chu chu mi tan chauh a lang.
+team_stations_help	Station an hman theih tur
+team_stations_changed	Stations thlak danglam — He mi tan hian setup save rawh
+team_features_changed	Screen a thlak — he mi atan rem dah tha
+team_rights_changed	Dikna a thlak — he mi atan rem dah tha
+they_owe_us	Min ba
+unit_at_cap	Unit @
+units_help	Thil hming code (kg, piece, bag). Unit tin chu — ngaihtuah emaw unit dang kaltlangin — dan (kg · cm · ml · pc) a zawm tur, entir 1 crate = 2 box leh 1 box = 20 cm. Thlak: 1 atanga = factor hma. Sum hming chu unit a ni ngai lo.
+units_picker_help	On/Off tap la, Buy leh Items pickers ah unit pakhat a rawn lang ang. Off unit te chu a la convert reng a ni.
+unit_picker_on	Hawng
+unit_picker_off	Tih
+we_owe_them	Kan ba an hnenah
+who_unlocking	Tu nge hawng?
+locked_word	Khar
+show_pin	PIN lantir
+hide_pin	PIN thup
+set_owner_pin	NEITU PIN DAH
+enter_owner_passcode	NEITU PASSCODE ZIAK
+enter_staff_passcode	HNATHAWK PASSCODE ZIAK
+pin_count_zero	0 / 12 digit · a tlem ber 4, chuan OK
+pin_count_need	{} / 12 digit · {} dang a ngai
+pin_count_full	12 / 12 digit · OK khawih
+pin_count_ready	{} / 12 digit · i inpeh hunah OK khawih
+pin_hint_choose	Digit 4–12 thlang · Enter emaw Hawng, dah tha nan
+pin_hint_new	Neitu PIN thar digit 4–12 · Enter emaw Hawng
+pin_hint_shop_code	Dawr device · pair code {}
+pin_hint_books	He device hian lehkha a vawng
+pin_hint_paired	Dawhkan dang pair a ni — hawng la, zuar turin
+pin_hint_pair_first	Dawhkan dang — dawr device pair hmasa
+unlock_to_continue	Hawng la, chhunzawm turin
+no_staff_yet	Hnathawk a la awm lo — Neitu angin hawng, chuan Pawl
+status_server_set_pin	Server mode — Neitu PIN dah
+status_server_tills	Server mode — dawhkan dang tel thei. Hawng
+status_server_unlock	Server mode — Neitu angin hawng
+status_client_unlock	Dawr dang mode — hawng la, zuar turin
+icon_new_selected	Chhinchhiah: file thar thlan — Hmingchhiar dah tha khawih
+icon_custom	Chhinchhiah: hmun hmingchhiar mahni
+icon_default	Chhinchhiah: Kumkaj hmingchhiar (dan) — mahni thlang
+logo_yours	Logo: i dawr logo — screen leh receipt-ah lantir
+logo_default	Logo: Kumkaj hmingchhiar (dan) — i neih chuan i ta thlang
+tmpl_current	Tun: {} — {}
+tmpl_selected	Thlan: {} — {}
+setup_complete	Rem a zo
+onboard_fresh_tmpl	Thar · {} — list a ruak a tan; Thil-ah thil telh, chuan Zo.
+onboard_book_tmpl	Lehkha · {} — thil leh tan lai ba telh, chuan Zo.
+onboard_template_tmpl	I duh chuan hmun hming dah, chuan tan dan thlang.
+tmpl_blurb	Pharmacy counter: damdawi, batch/expiry, khata, lehkhabu te.
+tmpl_how	Counter-ah hralh rawh; Stock atan lei rawh; Ni lehkhabu atan lehkhabu.
+reports_facet_title	Report
+reports_facet_help	Ni lehkha, mi kum, bank ziak, leh hun H&H.
+against_bill_ph	A chunga bill # nen (duh chuan)
+aliases_ph	Aliases, hming tawi — comma hmanga inthen
+amount_blank_full_ph	Sum zat (ruak = la awm kim)
+amount_owed_ph	Ba sum zat
+amount_ph	Sum zat
+amount_received_ph	Sum dawng zat
+amount_we_pay_ph	Kan pe sum zat
+business_name_ph	Sumdawn hming
+category_new_ph	Pawl (duh chuan, thar chuan siam)
+code_bag_ph	Code (bag)
+conv_factor_ph	Factor (25 = 1 bag → 25 kg)
+country_code_ph	Ram code entir IN, GB, US, AE, BR
+credit_khata_amount_ph	Ba / khata sum zat
+credit_limit_ph	Ba tiam (0 = awm lo)
+from_code_ph	Code atanga (bag)
+item_name_lang_ph	Thil hming — i ṭawngin ziak
+login_id_opt_ph	Hmangtu hming (a ngai, then)
+manager_pin_ph	Hotu PIN, phal nan (tihbo theih loh chauh)
+new_branch_name_ph	Branch thar hming
+new_password_ph	Password thar (duh chuan)
+new_pin_ph	PIN thar (digit 4–12)
+note_bank_ph	Lehkha (dah, la chhuak, …)
+note_buy_expense_ph	Lehkha (petrol, luah man, …)
+note_expense_ph	Lehkha (petrol, office, …)
+options_tabiyat_ph	Thlang — Len*: Te=199, Lian=399 | Telh+3: Cheese=40, Olive=30 | Cheese dang=40
+part_second_way_ph	Dan pahnihna then (duh chuan)
+phone_ph	Phone
+place_name_ph	He hmun hming
+qty_example_ph	Zat (entir kg atan 1.5)
+quantity_ph	Zat
+reason_required_ph	Chhan (a ngai)
+role_title_ph	Hna hming (entir Barista)
+service_pct_ph	Rawih % duh chuan 0/10/12
+short_code_ph	Code tawi (MG02)
+starting_password_ph	Tan password (duh chuan)
+starting_pin_ph	Tan PIN (digit 4–12)
+station_name_ph	Station hming (a duh chuan) .
+station_new_ph	Section (a duh chuan) 1.1.
+table_name_ph	Counter / bay hming a ni
+tax_rate_ph	Chhiah zat hming emaw % — Dan, Tlem, 0, 5, 12, 18, 20
+to_code_ph	Code hma (kg)
+uncleared_no_ph	Thianghlim loh # chung
+unit_cost_ph	Unit man
+unit_name_bag_ph	Hming (Bag)
+unit_plate_ph	Unit (plate / pc — ruak = tin)
+pay_credit	Ba
+book_kind_today	Vawiin lehkha
+book_kind_month	He thla lehkha
+book_kind_aging	La awm / ba-ba
+book_kind_balance	Balance sheet
+order_help	Thil khawih la, telh turin.
+floor_help	He dawr hi counter-ah hralh a ni. Table leh dining floor te hi Tabiyat-ah hian a tel lo.
+kitchen_help	Counter dawrah hman a ni lo.
+kitchen_empty	Ticket hawn loh (counter dawrah hian he screen hi hman lohvin an dah tlangpui).
+add_a_table	Dawhkan telh
+add_station_heading	Dispensary section pakhat a awm bawk
+categories_help	Hmang khawih la, a chunga thil pawl kha hnuaih dah turin. Thlalak chuan pawl thlalak a pe; awm loh chuan hawrawp a lantir.
+dish_search_ph	Hming, chi emaw barcode emaw zawng rawh...
+tile_free	Ruak
+tile_occupied	Luah
+tile_food_ready	Chaw inpe
+tile_bill_printed	Bill print
+tile_paid	Pe tawh
+tile_bill_btn	Bill
+tile_occupy_btn	Khual thu
+tile_free_btn	Dawhkan ruak
+tile_ready_btn	Dawhkan ruak
+tile_undo_bill	Bill ti lo leh
+summary_busy	dawhkan hmang
+summary_to_collect	la tur
+summary_on_floor	dawr chhungah
+floor	Dawr
+sizes_as_items_ph	Len thil then angin (duh chuan) — A chan=120, Kim=200
+dish_group_ph	Chakna / pack group (a duh duh) — e.g. 500mg strip a ni
+discount	Tlem
+remove_discount	Tlem paih
+apply_discount	Tlem hmang
+save_opening_cash	Tan sum dah tha
+close_shift_print	Duty khar la lehkha print
+area_prices_ph	Hmun man (duh chuan) — AC=220, Parcel=210
+discount_ph	10% emaw 50
+discount_reason_ph	Chhan (entir khual reng, chaw tlai)
+opening_float_ph	Tuk zing bawm-ah sum dah
+shift_counted_ph	Sem hun sum chhiar
+opening_float	Tan sum (float)
+shift_handover	Duty sem
+shift_since	He duty atanga
+expected_in_drawer	Bawm-ah beisei
+right_discount	Tlem pe
+floor_in_kitchen	Hmasawnna kalpui mek a ni
+floor_eating	Rawih tawh
+pick_category	Pawl thlang
+close_category_list	Pawl list khar
+new_category_row	Pawl thar — thil i dah tha hunah siam
+your_category	I pawl
+suggested_category	Suggested — kan thil siam atang hian
+category_search_ph	Pawl — i ta zawng emaw thar ziak
+line_sent_state	Thawn
+line_nc_state	Sawm (NC) — man la lo
+cancel_item_short	Tihbo
+nc_short	NC
+charge_again_short	Man
+move_short	Thawn
+cancel_item_title	He item hi cancel rawh — back office chuan cancel slip a dawng
+nc_item_title	He thil sawm (NC) siam
+charge_again_title	He thil man la leh
+move_item_title	He thil dawhkan dang ah thawn
+already_cooked	Chhum tawh (hloh)
+not_cooked_yet	Chhum la lo
+return_to_customer	Customer hnenah kir
+short_by	A tlem
+tip_not_sale	Lawmman (hnathawk ta, zuar ni lo)
+right_settle	Pek la
+right_cancel_sent	Thil thawn tawh tihbo
+right_complimentary	Sawm (NC)
+right_move_table	Counter te chu move / merge rawh
+right_reprint	Bill print leh
+right_allowed	Phal
+right_with_approval	Phalna nen
+right_denied	Phal lo
+editing_staff	Siam ṭha mek
+finding_server	He Wi‑Fi-ah dawr server zawng mek…
+no_server_found	Hmuh lo. Server-ah: Remkhawh → Device dang → Dawhkan dang phal (Wi‑Fi inang). Emaw hetah lantir IP ziak.
+servers_found_pick	I zawm duh dawr khawih.
+server_host_selected	{host} hman mek — pair code ziak la, Tunah pair.
+print_bill	Bill print
+table_actions	Counter thiltih te
+move_merge_table	Dawhkan thawn / khawm
+move_help	He counter order hi free table-ah sawn la, a nih loh leh running-ah merge rawh.
+move_target_ph	Counter hming
+approval_pin_ph	Hotu PIN (zawh chauh)
+move_here	Hetah thawn
+merge_into	A chhungah khawm
+line_reason_ph	A chhan (e.g. customer ngaihdan a thlak, stock a awm tawh lo)
+line_qty_ph	Tihbo zat (ruak = zawng zawng)
+line_target_ph	Dawhkan ah thawn (entir D5)
+confirm	Nemnghet
+menu_search_ph	Thil emaw code tawi zawng
+customer_paid_ph	Customer pe
+tip_ph	Lawmman
+table_area_ph	Hmun (entir Hetah ei, Parcel, AC)
+table_range_ph	Tam khat: D1-D20
+add_these_tables	Heng counter te hi add rawh
+remove_these_tables	Heng counter te hi paih chhuak rawh
+table_remove_ph	Paih: T1-T24, emaw dawhkan pakhat hming
+find_server	Dawr server zawng
+bill_format	Bill rem dan
+bill_format_help	Bill tinah i dawr hming hnuaiah print vek a ni. Line hrang hrang | (e.g. MG Road, Rajkot | Ph 98250 00000 ah zawhfiah theih a ni).
+bill_header_ph	Address | phone
+fssai_ph	Ruihhlo licence no. (optional — i thumal hman dan)
+bill_footer_ph	Hnuai (entir Lawm e, lo kal leh)
+save_bill_format	Bill rem dan dah tha
+kot_format	Slip format a ni
+kot_format_help	List a field pakhat chu tap rawh. A chunga slip chi thlan tawhah chuan chu field-ah chuan show, font size leh weight te chu a hman theih a ni. A chi tin hian a size leh a rih zawng an vawng vek a.
+kot_format_fields	Field
+kot_field_next	Field dawt
+kot_field_show	Lantir
+kot_field_hide	Thup
+kot_field_on	lantir
+kot_field_off	thup
+kot_field_size	Type len
+kot_field_size_ph	entir 16, 20, 24, 28, 32…
+kot_weight_light	Zang
+bill_kot_panel_help	Bill layout leh content zau zawng. Cashier hi bill tichhuaktu emaw, settle tu emaw a ni — a hralhna chanchin kimchang chu lehkhabuah a awm reng a ni.
+std_size_ph	entir 18, 20, 26…
+kot_show_shop	Dawr hming
+kot_hide_shop	Dawr thup
+kot_show_time	Hun
+kot_hide_time	Hun thup
+kot_show_waiter	Sum khawmtu
+kot_hide_waiter	Cashier thup rawh
+kot_show_station	Hmun
+kot_hide_station	Hmun thup
+kot_show_table	Zuar dawhkan
+kot_hide_table	Dawhkan thup
+kot_show_kot_no	Ticket No
+kot_hide_kot_no	Ticket No. thup rawh
+kot_width	Preview wrap (slip tab-ah content width set) a ni.
+kot_width_58	58 mm
+kot_width_80	80 mm
+kot_kind_heading	Ticket chi hrang hrang
+kot_kind_original	Bul
+kot_kind_duplicate	Copy
+kot_kind_modified	Siam tawh
+kot_kind_cancelled	Tihbo
+kot_style_heading	Field type len leh rih zat
+kot_style_title	Hming
+kot_style_item_qty	Thil · Zat
+kot_style_field_pick	Field thlang
+kot_weight_regular	Dan
+kot_weight_bold	Rih
+kot_align	Intlun
+kot_align_start	Tan
+kot_align_center	Lai
+kot_align_end	Tawp
+content_width	Chhung vang (mm)
+content_width_bill	Bill chhung vang (mm)
+content_width_kot	Ticket chhunga thil awm zawng zawng (mm) .
+content_width_ph	Emaw chhung vang ziak, 40–210 mm
+content_width_help	He slip hian engtiang chiahin nge a print. Bill hian a zau zawng a vawng reng a ni.
+content_width_bill_help	Customer bill print zau zia. A hmasa berin 210 mm (phek) a ni. 58 mm narrow slip, 80 mm a zau, 112 mm 4-inch, 210 mm A4-a zau. 40 atanga 210 thlenga value eng pawh type la, slip tab-ah hian ticket hi a zau zawng a nei a.
+content_width_kot_help	Engtiang chiahin nge ticket print a zau. A hmasa berin 80 mm a ni. 58 mm a tawi a, 80 mm a zau, 112 mm 4-inch, 210 mm phek a ni. 40 atanga 210 thlenga value eng pawh type la, Customer bill te hian Bill tab ah hian a zau zawng a nei vek a.
+vp_paper_width	Chhung vang (mm)
+vp_paper_width_ph	Emaw chhung vang ziak, 40–210 mm
+vp_paper_width_help	Content width hi Bill & Slip format hnuaiah dah a ni — bill (default 210 mm) leh ticket (default 80 mm) tan a hranin.
+kot_size	Type len
+kot_size_s	Te
+kot_size_m	Dan
+kot_size_l	Lian
+std_size	Type len
+kot_copies	Copy
+kot_copies_1	1
+kot_copies_2	2
+kot_copies_3	3
+kot_title_ph	Title (blank = TICKET) tih a ni.
+kot_footer_ph	Back-office note (a duh chuan) 1.1.
+kot_preview	En hma
+save_kot_format	Slip format ah save rawh
+test_kot_format	Test print rawh
+test_kot_sent	Ticket preview a thawn a ni
+test_bill_format	Test bill
+test_bill_sent	Bill en hma thawn a ni
+test_print_no_printer	Hna kha atan print na awm lo — he screen-ah pakhat thlang
+kot_format_saved	Slip format a save tawh
+std_print	Bill print len
+std_print_help	OS / document printer-a Standard Portrait leh Landscape bill hnathawhna tur font size (point ziah luh — Small/Normal/Large ni lovin). Orientation pahnih ah hian size inang vek.
+std_size_s	Te
+std_size_m	Dan
+std_size_l	Lian
+save_std_print	Bill print len dah tha
+std_print_saved	Bill print len dah tha a ni
+print_brand_kit	Print hmingchhiar bung
+print_brand_kit_help	Bill hmai leh LAN customer display-ah optional stamp leh payment QR images a awm bawk. A chunga VPA atanga dynamic UPI QR hi payment QR image set loh lai pawhin a la thawk reng a ni.
+choose_stamp	Seal thlang
+clear_stamp	Seal thianghlim
+stamp_set	Stamp: file-ah — customer display-ah tarlan a ni a, printed bill-ah hming vuah a ni
+stamp_none	Seal: awm lo
+choose_payment_qr	Pek QR thlang
+clear_payment_qr	Pek QR thianghlim
+payment_qr_set	Payment QR: file-ah — customer display-ah a lang (chutah chuan amount UPI QR a thlak)
+payment_qr_none	Pek QR: awm lo — pek hunah UPI hmingchhiar atanga sum QR
+aggregator_import	Aggregator order (file)
+aggregator_import_help	Chhung lut duh chuan: import_aggregator_orders.json backup folder-ah dah (array emaw {"orders":[…]}), chuan Lut khawih. Zuar dawhkan a ti rei ngai lo; Zomato/Swiggy tun tak chu Cloud a ni.
+import_aggregator_file	Aggregator file lut
+team_pick_ph	Siam tur hnathawk — hming, hmangtu hming, emaw thlang
+select_staff	He hnathawk thlang
+rights_help	He mi tan hian pawisa thiltih — cycle turin tap rawh: Allowed → Needs boss PIN → Not allowed. Print bill leh tur chu bill chauh a ni a; section hrang hrangte chu a hnuaia checklist hi a ni.
+dish_picker_help	Kan thilte chu zawng emaw, browse emaw la, pakhat chu tap la, a hming leh thlalak chu luah khat rawh — a nih loh leh nangmah ngeiin i hming vawng reng rawh. I man kha set la (0 a tha), chutah chuan Add item rawh.
+close_dish_list	Item list kha khar rawh
+own_item_name	He hi i thil hming atan hmang
+on_your_menu	Damdawi list ah chuan
+edit	Siam
+schemes	Ruahman / offer
+schemes_help	Buy-one-get-one, percent off, leh bundle fixed te pawh a awm bawk. Entirnan: Paracetamol 2 lei la vitamin 1 hmu rawh.
+scheme_bogo_ph	Paracetamol 2 lei la, vitamin 1 hmu rawh
+add_scheme	BOGO telh
+schedule_ph	Darkar — Thawhlehni-Zirtawpni 07:00-11:00 emaw Zan dar 17:00-19:00=150 emaw
+upi_vpa_ph	UPI hmingchhiar (VPA)
+upi_payee_ph	UPI dawngtu hming (duh chuan)
+upi_qr	UPI QR
+show_upi_qr	UPI QR lantir
+close_upi_qr	Khar
+upi_qr_help	Customer chuan a scan a, a pe bawk. An pek hnuah Take payment tih kha tap rawh. Screen pahnihna: Server URL /display chu LAN ah hawng rawh.
+kot_recall	Ko leh
+recently_done	Zo hnai
+recall_kot_ph	Ticket # hriat nawn lehna tur
+role_help_customer	Hna: Customer — khata (min ba). Mi kha hian stock a pe thei pawh.
+role_help_both	Hna: Customer + Pek tu — mi pakhat, khata leh pe tur lekhapui, Report-ah chhiar zawng.
+role_help_supplier	Hna: Pek tu — lei avangin kan ba an hnenah.
+dine_in_pick_table	Counter dawrah hman a ni lo
+choose_table	Counter thlang rawh
+change_table	Dawhkan thlak
+pick_table_banner	He order atan dawhkan thlang
+items_word	thil
+items_section	Thil
+back_to_order	Order ah kir
+new_items_head	Thawn la lo
+price_ph	Man
+price_ph_gst_inside	Man ({tax} chhung)
+cancel_needs_table	Counter sales chu ticket-ah a awm reng a, pawisa i lak hma loh chuan
+tax_rates_missing_hint	No {tax} rate on these items — on Items set Tax rate (prices already include {tax} under {tax} inclusive)
+taxable_value	Chhiah man
+gst_inside_price_note	({tax} chhung)
+start_with_template	Kan items template atang hian tan la rawh
+template_heading	Starter thil te
+template_info	{c} category leh {d} items thlalak nen, add theih turin inpeih reng a ni. A man hi ₹0 atanga tan a ni — set yours after.
+template_import	Template kim lut
+template_confirm	{d} items te chu an category te nen add em? I neih tawh thilte chu a awm ang angin a awm reng.
+template_yes	Aw, lut
+template_importing	Damdawi lakluhna...
+template_import_progress	Lut mek… {d}/{t}
+template_done	Kan template atanga item zawng zawng hi i items ah a awm vek.
+template_imported	{d} item leh {c} category te dah belh — he screen-ah hian an man set rawh
+client_template_heading	Catalogue import a ni
+client_template_info	{title}: {c} category hrang hrang, {d} thil man, thlalak, leh alias te nen. Thil awm lo chauh — hming i neih tawhte chu stay.
+client_template_import	Heng damdawi te hi ram pawn atanga lakluh a ni
+client_template_confirm	{title} atanga {d} items te add em? I neih tawh thilte chu a awm ang angin a awm reng.
+client_template_importing	{title} lut mek…
+client_template_done	{title} atanga item zawng zawng hi i items ah a awm vek.
+client_template_imported	{title} atanga {d} item leh {c} category te dah belh a ni
+resv_heading	Book
+resv_name_ph	Customer hming a ni
+resv_phone_ph	Phone (duh chuan)
+resv_guests_ph	Mi
+resv_when_ph	Engtik — 20:30, naktuk 13:00
+resv_table_ph	Counter (a duh chuan) .
+resv_add	Book
+resv_seat	Thu tawh
+resv_none	Book lo kal a awm lo.
+guests_word	khual
+delivery_by_ph	Thlen tu (sakawr tu emaw hnathawk hming)
+kitchen_all_day	Tun chhum tur: {items}
+split_bill	Bill then
+split_go	Bill then siam
+cancel	Tihbo
+opening_client	Dawr dang hawng mek…
+preparing_desk	Dawhkan buatsai mek…
+opening_server	Server hawng mek…
+creating_server	Server siam mek…
+split_help	Customer pakhatin a pek tur thilte chu tap la · {n} picked
+split_send_first	Slip thawn hmasa phawt ang che — back office-a thil neihte chauh chu bill hranah a kal thei
+split_pick_some	Bill hran atana thil awmte chu tap hmasa phawt ang che
+split_done	Separate bill siam — he counter bulah hian floor-ah a awm
+split_marked	bill then
+order_empty_pick	Order empty — a chunga Add items kha tap la, items i thlang ang.
+add_dishes	Damdawi dah tel bawk ang che
+order_so_far	He order-ah: {n} · {total}
+no_dish_match	Item pakhat mah “{q}” nen a inmil lo.
+pick_dishes_help	Item pakhat chu tap la, add rawh · list chu narrow turin category pakhat thlang rawh
+pick_done	A zo
+pick_done_dd	Zo · {label}
+printer_route_mode	He hmunah print na tam a awm chuan
+printer_mode_first	Hmasa thawk
+printer_mode_all	Zawng zawng print
+kot_show_area	Hmun
+kot_hide_area	Hmun thup
+kot_show_item_hdr	Thil · Zat
+kot_hide_item_hdr	Column thup
+kot_show_title	Hming ri
+kot_hide_title	Hming thup
+kot_field_order	Print indawr dan
+kot_field_up	Chung thawn
+kot_field_down	Hnuai thawn
+kot_field_cycle	Dawt thlang
+kot_field_select	Dawt thlang
+kot_field_time	Hun
+kot_field_kot_no	Ticket No
+kot_field_area	Hmun
+kot_field_table	Zuar dawhkan
+kot_field_shop	Dawr hming
+kot_field_waiter	Hnathawk
+kot_field_station	Hmun
+app_template_blurb_extra	Tin,: A neitu Zahir, Admin Asif, Cashier Nawaz te; hmalam sidebar; darkar 4 hnuah history; Vawiin hian strip off rawh; compact bill a ni.
+dishes_n	{n} thil chi hrang hrang
+recipe_ph	Recipe (a duh chuan — counter dawrah hman loh) .
+reorder_ph	Lei leh hun
+set_reorder	Lei leh zat dah
+low_stock_alert	A tlem mek — lei thuai: {items}
+unpriced_note	I thila {n} items te hian man an la nei lo — pakhat i set hma loh chuan 0 ah an bill thin.
+show_unpriced	Item man tel lo chauh entir rawh
+show_all_dishes	Item zawng zawng entir rawh
+role_waiter	Sum khawmtu
+role_kitchen	Dahtha
+role_title_rest_ph	Hna hming (entir Captain, Chhum hotu)
+preset_help_rest	Sum khawmtu: zuar. Hotu: zuar + thil + tihbo/siam.
+kind_raw	Compounding stock a ni
+kind_resale	Damdawi lei a ni
+kind_dish	Stock chhiar suh
+buy_unit_ph	Unit (kg, litre, pcs)
+add_another_way	+ Dan dang telh
+parts_status	{b} zinga {a} ziak · {c} la awm
+save_expense	Sum sen dah tha
+rest_ph	La awm
+low_badge	Tlem
+stock_empty	Stock-ah a la awm lo — Lei-ah i ziak hetah a lang.
+recent_changes	Thlak hnai
+lane_declared_label	Chhiah bill
+lane_owner_label	Sum lehkha
+money_lane_bill	Bill: {lane}

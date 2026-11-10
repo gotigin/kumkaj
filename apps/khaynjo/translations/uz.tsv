@@ -1,0 +1,1351 @@
+# Uzbek — Oʻzbekcha (uz). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	Restoran buyurtmalari, oshxona va daftarlar. Bepul, oflayn.
+unlock	Qulfni ochish
+pin_hint	Eganing PIN kodi 0000 dan boshlanadi
+sell	Buyurtma
+buy	Xarid
+books	Kunlik daftar
+books_help	Bugungi holat. Buyurtma = kirgan buyurtmalar. Xarid = xaridlar va xarajatlar. Kontragentlar = nasiya mijozlar va yetkazib beruvchilar.
+buy_help	Xarajat orderlari va yetkazib beruvchi hisoblari (pul chiqishi). Hisobda qolgani kontragent daftarida qoladi.
+sell_money_in	Buyurtma olish
+buy_money_out	Xarajat / yetkazib beruvchi hisobi
+record_purchase	Xaridni yozish
+add_expense	Xarajat orderi
+bank_book	Bank daftari
+credit_help	Kontragent identifikatori yagona (ismlar takrorlanishi mumkin). Mijoz nasiya hisobini yuritadi (bizga qarzdor); yetkazib beruvchi bizga tovar sotadi (biz qarzdormiz); ikkalasi ham boʻladi. Daftarlar alohida qoladi; hisobotlar sofni koʻrsatadi.
+party_kind_ph	Rollar: Mijoz, Yetkazib beruvchi, ikkalasi…
+reports_help	Kunlik daftar, qarzdorlar va haqdorlar, bank daftari, xarajat orderlari, foyda va zarar.
+reports_today	Kunlik daftar (bugun)
+reports_month	Foyda va zarar (oy)
+reports_aging	Toʻlanmagan / Dt-Kt
+reports_balance_sheet	Balans
+reports	Bank daftari va F&Z
+refresh	Yangilash
+undo	Bekor qilish
+start_tracking	Kuzatishni boshlash
+stock_minus	− Zaxira
+stock_plus	+ Zaxira
+settle_cash	Naqd yopish
+settle_card	Karta bilan yopish
+items	Menyu va mahsulotlar
+nav_items	Menyu
+more	Yana
+your_items	Sizning menyuingiz
+items_help	Tahrirlash uchun mahsulotni bosing. Yangi mahsulot shaklni tozalaydi. Bizning taomlarni qidiring yoki oʻz nomingiz va rasmingizni yozing, narx qoʻying (0 boʻladi), soʻng Qoʻshish. Allaqachon yozilgan savdolar hisoblangan nomini saqlaydi.
+add_item	Mahsulot qoʻshish
+new_item	Yangi mahsulot
+adding_item	Yangi mahsulot qoʻshilmoqda
+editing_item	Tahrirlash
+save	Saqlash
+remove	Olib tashlash
+removed_items	Olib tashlangan mahsulotlar
+removed_help	Tiklash mahsulotni menyuga aynan avvalgidek qaytaradi — narx, rasm va toifa. Bizning taomlar javonimiz hech qachon olib tashlanmaydi, shuning uchun taomni har doim qayta qoʻshish mumkin.
+restore_item	Tiklash
+empty_catalog	Hali taom yoʻq. Menyuni oching, taom qoʻshing (nom + narx), soʻng buyurtma oling.
+total	Jami
+cash	Naqd
+upi	UPI
+card	Karta
+credit	Kontragentlar
+clear	Tozalash
+ready_to_sell	Daftarga yozishga tayyor
+today_prefix	Bugun
+today_mid	bugun
+owed	toʻlanmagan
+round_word	yaxlitlash
+back	Orqaga
+sold_out	Mavjud emas
+restock	Qayta toʻldirish
+not_tracked	Kuzatilmaydi
+in_stock	zaxirada
+marked_sold_out	Mavjud emas deb belgilangan
+add_upper	QOʻSHISH
+na	yoʻq
+qty	Vazn/Miq.
+unit_at	Narx @
+actual	Haqiqiy
+applied	Qoʻllangan
+note_ph	Izoh (ixtiyoriy)
+rounded	YAXLITLANGAN
+split	Boʻlish
+send_kot	KOT yuborish
+send_kot_to	Yuborish → {kitchens}
+send_kot_again	Keyingi KOT uchun taom qoʻshish
+send_kot_held	Ushlab turilgan taomlar — yuborish uchun ushlashni oling
+reprint_kot	Tanlanganni qayta chop etish
+reprint_kot_ok	Qayta chop etildi {n} taom · {slips} varaq → {kitchens}
+reprint_kot_needed	Avval KOT yuboring — soʻng taomlarni qoʻshib, tanlanganni qayta chop eting
+reprint_kot_none_selected	Yuborilgan har bir taom oʻtkazib yuborilgan — qayta chop etish uchun Chop etishda ni bosing
+reprint_kot_client	Qayta chop ({n}) {place} uchun yuborildi — oshxona Serverda chop etadi
+print_cancelled_kot	Barcha bekor qilinganlarni chop etish
+print_cancelled_kot_ok	Chop etildi {n} bekor taom · {slips} varaq → {kitchens}
+print_cancelled_kot_needed	Avval bekor qilingan taomli stolni oching
+print_cancelled_kot_none	Bu buyurtmada bekor qilingan taom yoʻq
+print_cancelled_kot_client	Bekorlarni chop etish ({n}) {place} uchun yuborildi — oshxona Serverda chop etadi
+kot_banner	Tur banneri
+kot_banner_ph	Banner (boʻsh = yoʻq)
+kot_item_prefix	Mahsulot prefiksi
+kot_item_prefix_ph	mas. [BEKOR]
+kot_strike	Taom nomini chizib tashlash
+kot_strike_note	Taom izohini chizib tashlash
+kot_strike_on	Yoniq
+kot_strike_off	Oʻchiq
+bill_item_layout	Mahsulot joylashuvi
+bill_item_layout_columns	Ustunlar
+bill_item_layout_stacked	Qatorlab
+bill_item_header	Ustun sarlavhalari
+bill_item_hdr_item	Mahsulot sarlavhasi
+bill_item_hdr_qty	Miqdor sarlavhasi
+bill_item_hdr_price	Narx sarlavhasi
+bill_item_hdr_amount	Summa sarlavhasi
+bill_item_name	Taom nomi
+bill_item_qty	Miqdor
+bill_item_price	Narx
+bill_item_amount	Summa
+bill_item_note	Taom izohi
+bill_item_col_gap	Ustun oraligʻi
+bill_item_col_order	Ustun tartibi
+bill_item_col_sep	Ustun chiziqlari
+bill_item_gap_tight	Zich
+bill_item_gap_comfort	Qulay
+bill_item_gap_wide	Keng
+bill_item_num_width	Son ustunlari
+bill_item_num_compact	Ixcham
+bill_item_num_comfort	Qulay
+bill_item_num_wide	Keng
+bill_item_num_align	Sonlarni tekislash
+bill_item_gap_em	Oraligʻ (em)
+bill_item_qty_min	Min. miqdor (em)
+bill_item_price_min	Min. narx (em)
+bill_item_amount_min	Min. summa (em)
+kot_item_qty_width	Miqdor ustuni
+kot_item_num_align	Miqdorni tekislash
+bill_total_qty_label	Jami miqdor yorligʻi
+bill_total_subtotal_label	Oraliq summa yorligʻi
+bill_total_grand_label	Yakuniy summa yorligʻi
+bill_total_paid_label	Toʻlangan yorligʻi
+bill_meta_pair	Qatorni birga
+bill_pair_alone	Yolgʻiz
+bill_item_piece_on	Yoniq
+bill_item_piece_off	Oʻchiq
+bill_total_qty	Jami miqdor
+bill_total_subtotal	Oraliq summa
+bill_total_grand	Yakuniy summa
+reprint_incl	Chop etishda
+reprint_skip	Oʻtkazib yuborish
+reprint_skip_meta	Tiklash chop etishni oʻtkazish
+kot_dest_hint	{kitchens} ga biriktirgan printerlarda chop etiladi: Sozlamalar → Printerlar
+kot_sent_hint	Oxirgi KOT {kitchens} ga ketdi. Keyingi varaq uchun taom qoʻshishga bosing — yoki oʻsha KOT ni qayta chop eting.
+kot_sent_printing	KOT {kitchens} ga yuborildi — chop etilmoqda
+kot_sent_not_printed	KOT {kitchens} ga yuborildi, lekin chop ETILMADI: {why}. Oshxonaga ayting, printerni tuzating va qayta chop eting.
+kot_sent_screen	KOT {kitchens} ga yuborildi
+kot_queued_shop	{place} → {kitchens} KOT saqlandi; doʻkon qurilmasi chop etadi
+kot_job_label	{place} → {kitchens} KOT
+kot_job_reached	{place} KOT {kitchens} ga yetdi
+kot_unassigned	Oshxona (stansiyasiz)
+kot_unassigned_held	Stansiyasiz {n} taom ushlab turildi — yuborish uchun qatordagi ushlashni oling
+kot_station_ph	Oshxona
+kot_station_dd	Oshxona
+kot_station_dd_n	Oshxona · {stations}
+kot_set_station	Shu stansiyadan foydalanish
+kot_station_applied	{n} taomga stansiya qoʻyildi: {station}
+kot_station_cleared	{n} taomdan stansiya olindi: {station}
+kot_station_needed	Avval oshxona stansiyasini tanlang
+kot_station_not_allowed	Oshxonadan foydalanish mumkin emas: {station}
+kot_station_none	Hali oshxona stansiyasi yoʻq — Oshxona yoki Sozlamalar → Hududlar · stansiyalar ostida qoʻshing
+pos_tab_items	Qoʻshilgan mahsulotlar
+pos_tab_payment	Toʻlov
+hold_send	Ushlab tur
+hold_send_on	Ushlab turilgan
+hold_send_meta	Ushlab turilgan — bu KOT da emas
+station_remove	Stansiyani olib tashlash
+station_remove_ph	Olib tashlash uchun roʻyxatdagi stansiyani bosing
+station_removed	Stansiya olib tashlandi: {name}
+settings_hub_title	Sozlamalar
+settings_hub_help	Bir vaqtda bitta boʻlimni oching — kamroq aylantirish, aniqroq tanlov.
+settings_back	Orqaga
+settings_sec_language	Til va valyuta
+settings_sec_country	Mamlakat va soliq
+settings_sec_tills	Boshqa qurilmalar
+settings_sec_brand	Sizning brendingiz
+settings_sec_units	Birliklar va aylantirish
+settings_sec_pickers	Hududlar · stansiyalar · soliq stavkalari
+settings_sec_printers	Printerlar
+settings_sec_bill	Hisob va KOT formati
+settings_sec_selling	Sxemalar va savdo
+bill_kot_tab_bill	Hisob
+bill_kot_tab_kot	KOT
+settings_sec_alerts	Ogohlantirishlar
+alerts_help	Holat xabarlari siz uchun ekranda qancha turadi (shu kirish).
+snack_secs_ph	Soniya (3–60, odatiy 10)
+snack_secs_save	Ogohlantirish vaqtini saqlash
+snack_secs_saved	Ogohlantirish vaqti saqlandi — {n} soniya
+settings_sec_backup	Zaxira nusxa va tiklash
+settings_sec_diag	Diagnostika
+diag_privacy_help	Jurnallar shu qurilmada qoladi. Sirlar (PIN, parollar) hech qachon saqlanmaydi. Qurilmadan tashqariga paket ulashish har safar sizning aniq ruxsatingizni talab qiladi — hech qachon sotilmaydi va uchinchi tomonga berilmaydi.
+diag_level	Batafsillik darajasi
+diag_level_error	Xatolar
+diag_level_warn	Ogohlantirishlar
+diag_level_info	Maʼlumot
+diag_level_debug	Nosozlik
+diag_support_start	30 daqiqalik yordam seansini boshlash
+diag_support_stop	Yordam seansini tugatish
+diag_support_started	Yordam seansi yoniq — 30 daqiqa Nosozlik batafsili
+diag_support_ended	Yordam seansi tugadi
+diag_export_local	Mahalliy nusxani eksport qilish
+diag_export_local_done	Mahalliy diagnostika tayyor: {path} — nusxani qayerga saqlashni tanlang
+diag_approve_send	Qurilmadan tashqariga ulashishni tasdiqlash
+diag_send_help	Tasdiq bitta paket uchun, keyin muddati tugaydi. Vaqtinchalik — faqat mahsulotni tuzatish yoki yaxshilash uchun. Uchinchi tomonga berilmaydi. Linux, Windows, macOS va Androidda ishlaydi.
+diag_send_approved	Ulashish bitta paket uchun tasdiqlandi (tez orada tugaydi)
+diag_export_send	Ulashish paketini yaratish (tasdiq kerak)
+diag_export_send_done	Ulashish paketi tayyor: {path} — qayerga saqlashni tanlang, soʻng faqat Kumkaj yordamiga yuboring
+diag_save_bundle	Diagnostika nusxasini saqlash
+diag_bundle_saved	Diagnostika nusxasi saqlandi: {path}
+diag_bundle_failed	Diagnostika nusxasi u yerda saqlanmadi — qayta urinib koʻring
+diag_clear	Diagnostika jurnallarini tozalash
+diag_cleared	Diagnostika jurnallari tozalandi
+sidebar_settings	Yon panel
+sidebar_settings_help	Yon relsdagi kabi belgilar. Tartibni oʻzgartirish uchun qatorni sudrang. Koʻrsatish yoki yashirish uchun tugmani aylantiring. Sozlamalar va Qulf har doim panelda qoladi.
+sidebar_always_on_short	Har doim yoniq
+sidebar_back_settings	Orqaga
+sidebar_shown	Koʻrsatilgan
+sidebar_hidden	Yashirilgan
+sidebar_always_on	Har doim panelda
+sidebar_shown_hint	Yon rels / pastki yorliqlarda koʻrsatilgan
+sidebar_hidden_hint	Paneldan yashirilgan
+sidebar_menu_items	Menyu va mahsulotlar
+sidebar_enable_all	Hammasini yoqish
+sidebar_disable_all	Hammasini oʻchirish
+sidebar_order_saved	Yon panel tartibi saqlandi
+sidebar_visibility_saved	Yon panel koʻrinishi saqlandi
+amounts_hide	Yashirish
+amounts_show	Koʻrsatish
+printers_none_hint	Avval shu qurilmada printerni saqlang, soʻng uni Hisobga yoki oshxonaga qoʻshing
+counter	Kassa
+dine_in	Joyida
+takeaway	Olib ketish
+order	Buyurtma
+tables	Stollar
+kitchen	Oshxona
+sales	Savdo
+sales_refunds	Savdo va qaytarish
+day_close	Kunni yopish
+reports_expenses	Bank daftari va F&Z
+nav_reports	Hisobotlar
+nav_settings	Sozlamalar
+nav_lock	Qulflash
+no_sale_yet	Hali savdo yoʻq
+favorites	Sevimlilar
+favorites_help	Tez-tez sotadigan mahsulotlar, sizning kirishingiz uchun saqlangan. Hisobga qoʻshing yoki pastdagi barcha mahsulotdan roʻyxat tuzing.
+your_favorites	Sizning sevimlilaringiz
+all_items	Barcha mahsulot
+frequent	Tez-tez
+added_items	Qoʻshilgan mahsulot(lar)
+added_items_empty	Bu buyurtmada hali hech narsa yoʻq — Barcha mahsulot yoki toifadan taom qoʻshing.
+frequent_config_help	Yopilgan hisoblardagi eng koʻp sotilgan taomlar. Necha kun qarash va nechta taom koʻrsatishni qoʻying.
+frequent_days_ph	Kunlar (1)
+frequent_limit_ph	Mahsulotlar (24)
+frequent_apply	Qoʻllash
+frequent_saved	Tez-tez: oxirgi {d} kun, top {n} — {c} taom
+frequent_empty	Bu davrda hali yopilgan savdo yoʻq — hisobni yoping (Sozlamalar ruxsat bersa ₹0 boʻladi) va shu yerda chiqadi.
+zero_sales	Nol qiymatli savdo
+zero_sales_help	₹0 narxli taomlar va ₹0 da yopilgan hisoblarga ruxsat (ehson / eganing xohishi). Odatiy yoniq, bepul dasturxonlar Tez-tez va kunlik daftarda koʻrinishi uchun.
+zero_sales_on	₹0 ga ruxsat
+zero_sales_off	Narx talab qilish
+zero_sales_saved_on	Nol qiymatli savdoga ruxsat
+zero_sales_saved_off	Savdo narxi ₹0 dan yuqori boʻlishi kerak
+floor_areas_help	Hududlar — zalning xonalari yoki qismlari (Joyida, Olib ketish, Konditsioner …). Avval hudud qoʻshing, soʻng stollarni qoʻying — har bir hudud zaldagi alohida guruh.
+area_new_ph	Yangi hudud / xona (mas. Konditsioner, Bogʻ)
+add_area	Hudud qoʻshish
+area_added	„{name}“ hududi tayyor — ichiga stollar qoʻshing
+no_favorites	Hali sevimli yoʻq — pastdagi roʻyxatdan mahsulot qoʻshing.
+add_to_bill	Hisobga qoʻshish
+added	Qoʻshildi
+owes_word	qarzdor
+selected_word	Tanlangan
+chip_clear_credit	tozalash — Nasiya yoki avans olish
+chip_missing_customer	Tanlangan mijoz yoʻq — qayta tanlang
+chip_no_customer	Hali mijoz yoʻq — ism yozing, soʻng Nasiyani bosing
+credit_summary_fmt	{} mijoz · ochiq nasiya {} · ushlab turilgan avans {}
+recent_label	Yaqinda:
+kot_new_waiting	YANGI — kutilmoqda
+kot_preparing	TAYYORLANMOQDA
+kot_ready_serve	TAYYOR — bering
+kot_done_cap	TAYYOR
+kot_cancelled	BEKOR
+kot_start_btn	Boshlash
+kot_mark_ready	Tayyor deb belgilash
+kot_done_btn	Tayyor
+table_free	Boʻsh — buyurtma boshlash uchun bosing
+start_order	Buyurtma boshlash
+open_bill	Hisobni ochish
+collect_payment	Toʻlovni olish
+table_running	Ketmoqda
+payment_pending	Toʻlov kutilmoqda
+collect_at_counter	kassada ol
+inventory	Ombor
+inventory_stock	Ombor va zaxira
+branches	Filiallar
+branches_org	Filiallar va tashkilot
+credit_customers	Kontragentlar (nasiya va yetkazib beruvchilar)
+customer_name_ph	Kontragent nomi
+new_customer_ph	Yangi kontragent nomi
+item_name_ph	Mahsulot nomi (mas. Masala Dosa)
+item_price_ph	Narx
+start_template	Mahsulot
+team	Jamoa
+team_pins	Jamoa va PIN
+my_pin_settings	Mening PIN kodim
+settings_hub_help_my_pin	Shu qurilmada kirgan odamning qulf ochish PIN kodini oʻzgartiring.
+team_self_help	Bitta kirish: yangi PIN, yangi parol yoki ikkalasi. Borini saqlash uchun katakni boʻsh qoldiring. Boshqa ekran yoki huquq kerak boʻlsa, Egadan soʻrang.
+backup_settings	Zaxira nusxa va sozlamalar
+lock_app	Ilovani qulflash
+pick	Tanlash
+select	Tanlash
+advance	Avans
+owner	Egasi
+staff	Xodimlar
+photo	Rasm
+auto	Avto
+prev	Oldingi
+next	Keyingi
+ok	OK
+this_shop	Server
+extra_till	Mijoz
+off	Oʻchiq
+tables_kitchen	Stollar va oshxona
+server	Server
+client	Mijoz
+language_currency	Til va valyuta
+language	Til
+choose_language	Tilingizni tanlang
+language_setup_hint	Shu qurilma tiliga ergashing yoki oʻzingiz tanlang.
+lang_follow_platform	Qurilma tili
+lang_pick_user	Til tanlash
+lang_platform_now	Hozir qurilma tili
+selected_language	Tanlangan
+continue	Davom etish
+this_device	SHU QURILMA
+device_use_q	Bu qurilma qanday ishlatiladi?
+last_server_mode	Server edi — davom etish uchun bosing
+last_client_mode	Mijoz edi — davom etish uchun bosing
+choose_server	Server tanlang
+choose_server_hint	Mavjud serverni oching yoki boshqa biznes uchun yangisini yarating.
+create_new_server	Yangi server yaratish
+open_server	Ochish
+new_server_name_ph	Yangi server nomi (ixtiyoriy)
+server_remove_pin_ph	Serverni olib tashlash uchun eganing PIN kodi
+only_owner_remove_server	Serverni faqat Egasi olib tashlay oladi
+owner_pin_remove_server	Bu serverni olib tashlash uchun eganing PIN kodi kerak
+device_setup_help	Server daftarlarini shu yerda saqlaydi. Mijoz Serverga juftlashadi.
+app_template_heading	Rajdhani ilova andozasi
+app_template_blurb	Rajdhani menyusini yuklaydi; Egasi Zahir (zahir), Admin Asif (asif, PIN 1111), Ofitsiant Nawaz (nawaz, PIN 0000); FOH yon paneli; tarix 4 soatdan keyin tozalanadi (va Zaxira nusxada Hozir tozalash); Bugun tasmasi oʻchiq; ixcham KOT + tor patnis uchun standart chetlar. Yon panel tengdoshlarini Sozlamalarda qayta yoqish mumkin.
+app_template_apply	Rajdhani ilova andozasi
+app_template_skip	Hozircha oʻtkazib yuborish
+app_template_status	Server tayyor — Rajdhani andozasini qoʻllang yoki oʻtkazib yuboring
+app_template_importing	{title} qoʻllanilmoqda…
+currency	Valyuta
+backup	Zaxira nusxa
+use	Foydalanish
+dont_use	Foydalanmang
+add_branch	Filial qoʻshish
+add_conversion	Aylantirish qoʻshish
+add_dishes_items	Taom va mahsulot qoʻshish
+add_item_plain	Mahsulot qoʻshish
+add_note	Izoh qoʻshish
+add_opening_balance	Boshlangʻich qoldiq qoʻshish
+add_staff	Xodim qoʻshish
+add_station	Stansiya qoʻshish
+add_table	Stol qoʻshish
+add_unit	Birlik qoʻshish
+add_use_name	Bu nomni qoʻshish / ishlatish
+allow_extra_tills	Qoʻshimcha kassalarga ruxsat
+amend	Tuzatish
+apply_country_pack	Mamlakat toʻplamini qoʻllash
+datetime_appearance	Sana va vaqt koʻrinishi
+datetime_appearance_help	Daftarlar ichida yilni birinchi RFC3339 saqlaydi. Bular faqat hisob, KOT, hisobot va ekranda sana va soat qanday koʻrinishini oʻzgartiradi.
+datetime_example	Hozirgi misol: {ex}
+date_order	Sana tartibi
+date_order_dmy	D/M/Y
+date_order_mdy	M/D/Y
+date_order_ymd	Y-M-D
+time_format	Soat
+time_format_24h	24 soat
+time_format_12h	12 soat
+attach_bill_photo	Hisob rasmini biriktirish
+attach_pdf	PDF biriktirish
+attach_photo	Rasm biriktirish
+attachments_last_expense	Ilovalar (oxirgi xarajat)
+bank	Bank
+bank_in	Bankka kirim
+bank_out	Bankdan chiqim
+bank_reconciliation	Bank solishtiruvi (bank koʻchirmasiga qarshi belgilang)
+bank_to_till	Bank → kassa
+book_add_dish	Daftar — taom / mahsulot qoʻshish
+book_opening_credit	Daftar — boshlangʻich nasiya
+branch_name_sell_ph	Sotiladigan filial nomi
+bring_my_book	Daftarimni olib kelish
+business_tax_id_ph	Biznes soliq raqami
+caption_bank	BANK
+caption_bills	HISOBLAR
+caption_outstanding	TOʻLANMAGAN
+caption_payments_today	TOʻLOVLAR BUGUN
+caption_today	BUGUN
+card_amount_ph	Karta summasi
+cash_amount_ph	Naqd summa
+cash_memo	Naqd yozuv
+choose_icon	Belgi tanlash
+choose_logo	Logotip tanlash
+clear_icon	Belgini tozalash
+clear_photo	Rasmni tozalash
+copy_day_book_csv	Kunlik daftarni CSV nusxalash
+copy_day_close	Kun yopishni nusxalash
+copy_items_csv	Mahsulotlarni CSV nusxalash
+copy_outstanding_csv	Toʻlanmaganni CSV nusxalash
+copy_parties_csv	Kontragentlarni CSV nusxalash
+copy_party_ledger_csv	Kontragent daftarini CSV nusxalash
+copy_receipt	Kvitansiyani nusxalash
+share_whatsapp	WhatsApp ulashish
+lan_pages_heading	Mehmon sahifalari Wi‑Fi da
+lan_pages_help	Shu doʻkon Wi‑Fi sida mehmon sahifalari tablo, raqam, ekspo, kiosk, stol QR va fikr uchun ishlaydi. Mobil internetdagi mehmonlarga keyin Cloud kerak. Karta terminali / toʻlov havolasi internet boʻlganda ixtiyoriy — kassani hech qachon toʻxtatmaydi.
+diag_send_heading	Qurilmadan tashqariga ulashish
+kot_dest_heading	Oshxona stansiyasi
+optional_login_heading	Ixtiyoriy kirish
+rights_heading	Huquqlar
+ops_panel	Mahalliy amallar
+crm_heading	Mehmonlar va xabarlar
+crm_help	Tugʻilgan kun, sodiqlik, faol emas va eng yaxshi mehmonlar — SMS yoki WhatsApp navbati. Xabarda {name} va {points} ishlating. Egasi yuborishni bosadi; hech narsa oʻzi ketmaydi.
+crm_queue_sms	SMS navbatiga qoʻyish
+crm_queue_wa	WhatsApp navbatiga qoʻyish
+crm_seg_bday_week	Tugʻilgan kun haftasi
+crm_seg_bday_month	Tugʻilgan kun oyi
+crm_seg_phone	Telefonli
+crm_seg_loyalty	Sodiqlik
+crm_seg_inactive	Faol emas
+crm_seg_top	Eng koʻp sarflaganlar
+birthday_ph	Tugʻilgan kun (MM-DD yoki YYYY-MM-DD)
+crm_message_ph	Tugʻilgan kuningiz bilan, {name}! Sizda {points} ball bor.
+till_apply_redeem	Hisobga qoʻllash
+till_clear_redeem	Ishlatishni tozalash
+till_wallet_topup	Hamyonni toʻldirish
+till_issue_voucher	Vaucher berish
+till_points_ph	Ishlatiladigan ballar
+till_wallet_ph	Sarflash uchun hamyon summasi
+till_voucher_code_ph	Vaucher kodi
+till_voucher_amt_ph	Vaucher summasi (boʻsh = hammasi)
+till_wallet_topup_ph	Hamyon toʻldirish summasi
+till_voucher_issue_amt_ph	Beriladigan vaucher summasi
+till_voucher_issue_code_ph	Yangi vaucher kodi
+split_evenly	Teng boʻlish
+waitlist	Kutish roʻyxati
+fire_course	Taomni yuborish
+hold_item	Ushlab tur
+waiter_call	Ofitsiantni chaqirish
+waitlist_add	Kutish roʻyxatiga qoʻshish
+floor_view_grid	Toʻr
+floor_view_layout	Joylashuv
+floor_layout_x	X
+floor_layout_y	Y
+floor_layout_w	W
+floor_layout_h	H
+floor_layout_save	Joylashuvni saqlash
+floor_layout_open	Stolni ochish
+floor_layout_edit	Joylashuvni tahrirlash
+floor_layout_pick	Joylashuvini tahrirlash uchun stolni bosing
+floor_layout_saved	Stollar joylashuvi saqlandi
+floor_layout_nudge_left	← 20
+floor_layout_nudge_right	→ 20
+floor_layout_nudge_up	↑ 20
+floor_layout_nudge_down	↓ 20
+sibling_pickers_help	Birliklardagidek Yoniq/Oʻchiq bosing — hudud, stansiya va soliq stavkasini kundalik roʻyxatdan yashiring; toʻplam odatiylari qoladi.
+bulk_price_apply	Ommaviy narxni qoʻllash
+card_terminal_optional	Karta terminali / toʻlov havolasi (internet boʻlganda ixtiyoriy)
+copy_report	Hisobotni nusxalash
+counted_cash_ph	Tortmadagi sanalgan naqd
+country_tax	Mamlakat va soliq
+tax_chrome	Kassadagi soliq yorliqlari
+tax_chrome_help	Oʻchiq boʻlganda buyurtma kassasi GST/soliq baho qatorlari va narxdagi soliq joylarini yashiradi. Soliq stavkalari va Mamlakat va soliq sozlamalari qoladi — yorliqlarni istalgan vaqtda qayta yoqish mumkin. Rajdhani andozasi buni oʻchiq boshlaydi.
+tax_chrome_on	Koʻrsatish
+tax_chrome_off	Yashirish
+tax_chrome_saved_on	Soliq yorliqlari kassada
+tax_chrome_saved_off	Soliq yorliqlari kassada yashirilgan
+tax_invoice_till	Kassadagi soliq hisob-fakturasi
+tax_invoice_help	Oʻchiq boʻlganda hisoblar faqat Naqd yozuv, Soliq hisob-fakturasi / Naqd yozuv chiplari buyurtma kassasida yashirin. Rajdhani andozasi buni oʻchiq boshlaydi — Soliq hisob-fakturasini qayta tanlash uchun Koʻrsatishni istalgan vaqtda yoqing.
+tax_invoice_on	Koʻrsatish
+tax_invoice_off	Yashirish
+tax_invoice_saved_on	Soliq hisob-fakturasi kassada
+tax_invoice_saved_off	Soliq hisob-fakturasi yashirilgan — faqat Naqd yozuv
+pay_methods	Toʻlov usullari
+pay_methods_help	Toʻlov olishda qaysi chiplar chiqadi. Naqd har doim qoladi. Rajdhani andozasi faqat Naqd bilan boshlanadi — bu yerda UPI / Karta / Nasiya / Boʻlishni qayta yoqing.
+create_backup	Zaxira nusxa yaratish
+credit_limit_heading	Nasiya limiti (tanlangan / nomlangan kontragent)
+day_close_summary	Kun yopish xulosasi
+delete_party	Tanlangan kontragentni oʻchirish
+delivery	Yetkazib berish
+done_open_books	Tayyor — daftarlarni ochish
+drawer_count	Tortma sanovi (ixtiyoriy)
+expense_heading	Xarajat
+export_day	Kunni eksport qilish
+extra_note_bill_ph	Bu hisob / savdoga qoʻshimcha izoh
+extra_note_expense_ph	Oxirgi xarajatga qoʻshimcha izoh
+extra_tills_heading	Qoʻshimcha kassalar
+other_devices_help_heading	Boshqa qurilmalarni sozlash
+other_devices_help	Shu qurilmada (Server): Boshqa qurilmalar → Qoʻshimcha kassalarga ruxsat. Juftlash kodi va Wi‑Fi manzilini yozib oling. Chiqsa, Boshqa qurilmalarga ulanishga ruxsat berishni bosing. Kompyuterda Shu kompyuter bilan boshlashni bosing. Har boshqa qurilmada: ilovani oʻrnating, Mijoz rejimini tanlang, Doʻkon serverini toping (yoki manzilni yozing), juftlash kodini kiriting, Hozir juftlash. Wi‑Fi uzilsa, buyurtmalar qurilmada kutadi va Server qayta javob berganda ketadi. Oshxona printerlari Serverda sozlanadi (Sozlamalar → Printerlar) — qoʻshimcha kassalar KOT ni u yerga yuboradi.
+forget_shop	Bu doʻkonni unutish
+goods_received	Qabul qilingan tovar
+import_day	Kunni import qilish
+import_items_csv_plain	Mahsulotlarni CSV import qilish…
+import_parties_csv	Kontragentlarni CSV import qilish…
+item_name	Mahsulot nomi
+kitchen_printing	Printerlar
+login_id_ph	Foydalanuvchi nomi
+mark_cleared	Tozalangan deb belgilash
+new_party_clear	Yangi kontragent (shaklni tozalash)
+new_party_kind_supplier_ph	Yangi kontragent turi (Yetkazib beruvchi)
+next_country	Keyingi mamlakat
+next_order	Keyingi buyurtma (kassani tozalash)
+note_gstin_ph	Izoh / GSTIN / shartnoma eslatmasi
+notes_attach_party	Izohlar va ilovalar (tanlangan kontragent)
+notes_attach_sale	Izohlar va ilovalar (tanlangan savdo)
+on_account_ap	Hisobga (AP)
+org_optional_ph	Tashkilot (ixtiyoriy)
+paid_by	Toʻlagan
+paid_now	Hozir toʻlandi
+pair_now	Hozir juftlash
+pairing_code_ph	Juftlash kodi
+party_name_selected_ph	Kontragent nomi (yoki tanlanganni ishlatish)
+password_ph	Parol
+pay_ap_card	AP ni karta bilan toʻlash
+pay_ap_cash	AP ni naqd toʻlash
+pay_ap_heading	Ularga qarzdorligimizni toʻlash (AP)
+pay_ap_upi	AP ni UPI bilan toʻlash
+pay_selected_heading	Tanlanganni toʻlash (qarzni yopish / avans olish)
+pick_from_items	Bizning mahsulotdan tanlash
+prev_country	Oldingi mamlakat
+print_open	Chop etish / ochish
+reason_amend_ph	Tuzatish / bekor / qaytarish sababi
+reason_note_ph	Sabab / izoh (isrof, sanoq, …)
+record_day_close	Kun yopishni yozish
+refresh_from_shop	Doʻkondan yangilash
+refund	Qaytarish
+remove_selected	Tanlanganni olib tashlash
+request_bill	Hisob soʻrash
+restaurant_name_ph	Restoran nomi (ixtiyoriy)
+restore_backup	Zaxira nusxadan tiklash
+role_both	Ikkalasi
+role_admin	Maʼmur
+role_cashier	Kassir
+role_customer	Mijoz
+role_manager	Menejer
+history_retention	Savdo tarixi
+history_retention_help	Eski savdo va KOT avtomatik tozalanadi. Menyu, xodimlar va sozlamalar qoladi. Hozir tozalash barcha savdo qatorlarini oʻchiradi va sozlamani saqlaydi.
+history_off	Saqlash
+history_day_close	Kun yopilganda
+history_after_hours	Soatlardan keyin
+history_hours_ph	Soat (1–168, odatiy 4)
+history_hours_save	Soatlarni saqlash
+history_clear_now	Tarixni hozir tozalash
+history_cleared	Savdo tarixi tozalandi — sozlama saqlandi
+history_retention_saved	Tarix tozalash saqlandi
+history_hours_saved	Tarix soatlari saqlandi
+history_owner_only	Tarixni faqat Egasi yoki Maʼmur tozalay oladi
+rollup	Jamlama
+save_brand	Brendni saqlash
+save_business_id	Biznes raqamini saqlash
+save_business_name	Biznes nomini saqlash
+save_features	Saqlash
+save_features_named	{name} saqlash
+save_features_ok	{name} sozlamasi saqlandi
+save_names	Nomlarni saqlash
+second_way	Ikkinchi yoʻl
+server_ip_ph	Server IP (mas. 192.168.1.10)
+set_credit_limit	Kontragentga limit qoʻllash
+set_login_selected	Kirishni tanlanganga qoʻllash
+set_login_named	Kirishni {name} ga qoʻllash
+shop	Doʻkon
+show	Koʻrsatish
+spreadsheet_csv	Jadval (CSV)
+start_fresh	Yangidan boshlash
+stop_extra_tills	Qoʻshimcha kassalarni toʻxtatish
+floor_cols_ph	Ustunlar
+floor_cols_fit	Ekranga sigʻdirish
+floor_cols_fit_sub	{n} shu yerga sigʻadi
+floor_cols_fits	sigʻadi
+floor_cols_scroll	yon tomonga aylanadi
+floor_cols_min	Ustunlar: kamida 1 — yoki ekranga sigʻishi uchun boʻsh qoldiring
+floor_zoom_auto	Avto
+floor_zoom_out	Kichraytirish
+floor_zoom_in	Kattalashtirish
+backup_auto	Har kuni avtomatik zaxira nusxa · oxirgisi {when} · oxirgi 14 kun {dir} da saqlanadi.
+backup_auto_none	Har kuni avtomatik zaxira nusxa — birinchisi birozdan ishga tushadi.
+backup_copy_to	Nusxa {dir} ga ham boradi.
+backup_copy_btn	Zaxira nusxalarni jildga ham nusxalash…
+autostart_off	Shu kompyuter bilan boshlash
+autostart_on	Shu kompyuter bilan ishga tushadi ✓ — toʻxtatish uchun bosing
+autostart_done_on	Bu kompyuter ishga tushganda ilovani ochadi — tok oʻchganidan keyin doʻkon serveri qaytadi.
+autostart_done_off	Bu kompyuter ishga tushganda ilovani endi ochmaydi.
+device_forgotten	Doʻkon bu qurilmani unutdi — doʻkonning joriy kodi bilan qayta juftlang. Unda kutayotgan buyurtmalar saqlanadi.
+lan_offline	Doʻkon serveriga ulanib boʻlmaydi
+forget_device	Unutish
+last_seen	koʻrilgan
+copy_pair_code	Juftlash kodini nusxalash
+new_pair_code	Yangi juftlash kodi
+pair_finishing	Juftlash yakunlanmoqda… doʻkon daftarlari qoʻllanilmoqda
+pair_opening	Kassa ochilmoqda…
+pair_copied	Juftlash kodi nusxalandi
+kot_waiting	Yuborishni kutmoqda
+lan_offline_waiting	Serverga ulanib boʻlmaydi · {n} kutmoqda
+lan_connecting	Doʻkonga ulanmoqda…
+lan_live	Jonli
+lan_sending	{n} yuborilmoqda
+lan_sign_in_to_send	{n} yuborish uchun qayta kiring
+lan_pair_again	Bu qurilmani qayta juftlang
+lan_update_app	Ilovani yangilang — bu qurilma va doʻkon serverining versiyalari turlicha
+allow_firewall	Boshqa qurilmalarga ulanishga ruxsat berish
+firewall_blocked	Bu kompyuterning fayrvoll boshqa qurilmalarni toʻsmoqda — Boshqa qurilmalarga ulanishga ruxsat berishni bosing.
+firewall_waiting	Administrator soʻrovini kutmoqda…
+lan_join_help	Boshqa qurilmada: Mijoz rejimi → Doʻkon serverini topish (yoki {addr} yozish) → juftlash kodi {code}.
+lan_pair_status	Wi‑Fi {addr}
+lan_join_help_no_addr	Manzil olish uchun bu qurilmani Wi‑Fi ga ulang.
+lan_no_address	Hali Wi‑Fi manzili yoʻq — doʻkon Wi‑Fi siga ulaning.
+lan_not_listening	Qurilmalarni qabul qilmaydi ({port} port band). Ilovani qayta ishga tushiring.
+lan_tills_off	Qoʻshimcha kassalar oʻchiq. Boshqa qurilma qoʻshilishi uchun ruxsat bering.
+paired_with	Juftlangan · {url}
+not_paired	Juftlanmagan
+choose_device_use	Server yoki Mijozni tanlang.
+paired_note	Juftlangan. Sotish uchun qulfni oching yoki oxirgisi uchun Yangilang.
+last_update_at	Oxirgi yangilanish: {time}.
+pair_intro	Serverni toping yoki manzil va juftlash kodini yozing.
+queue_waiting	Doʻkonga yetishni kutmoqda ({n}):
+queue_tries	{n} marta urinib koʻrildi · oxirgi javob: {e}
+save_backup_copy	Zaxira nusxa saqlash…
+backup_copy_saved	Zaxira nusxa saqlandi — uni shu qurilmadan tashqarida saqlang (USB yoki boshqa qurilma)
+backup_copy_overdue	{n} kundan beri zaxira nusxa bu qurilmadan chiqmadi — Sozlamalar → Zaxira nusxa
+backup_copy_failed	Zaxira nusxa u yerda saqlanmadi — boshqa joy tanlang
+clock_off	Bu qurilma soati doʻkon serveridan {min} daqiqa farq qiladi — toʻgʻri vaqtni qoʻying
+printers_heading	Printerlar
+printers_help	Printerlarni toping, tanlash uchun birini bosing, soʻng Sinov sahifasini faqat shu qurilmada chop eting. Hisob printerlari: Hisob va KOT formati → Hisob. Oshxona printerlari: Oshxona → Oshxona stansiyalari (avval stansiya qoʻshing — Qidiruv stansiya yaratmaydi).
+printers_host_only	Printerlar doʻkon qurilmasida (Server) sozlanadi. Bu kassa hisob va KOT ni u yerga yuboradi — Qidiruv / qoʻshish / biriktirish Serverda qoladi. Sinov sahifasi va chop etish oʻlchami Serverga boradi.
+printers_find_heading	Printerlarni topish
+printers_find_tip	Qidiruv shu qurilmani skanerlab, roʻyxatni yangilab turadi.
+printers_pool_heading	Printerlar
+printers_pool_tip	Qidiruv shu qurilmani skanerlab, shu roʻyxatni yangilab turadi.
+printers_pool_empty	(hali yoʻq — Qidiruvni bosing)
+printers_routes_help	Operatsion tizim allaqachon biladigan printerlarni toping. Ularni hisobga va har bir oshxonaga Hisob va KOT formatida biriktiring.
+printer_assign_dd	Haqiqiy printer: {place}
+printer_assign_pick	Haqiqiy printerni tanlash
+printer_profile_heading	Joylashuv
+printer_send_heading	Yetkazish
+vp_delivery_heading	Yetkazish
+vp_delivery_help	Bu virtual printer ishlarni qanday yuboradi — OT hujjati, xom bayt yoki ESC/POS. Varaq mazmunini (harf oʻlchami, oʻrash, chet) hisob / KOT formati hal qiladi, bu yerda emas.
+vp_type_size_heading	Harf oʻlchami
+vp_wrap_heading	Oʻrash kengligi
+vp_margin_heading	Chetlar
+vp_delivery_spooler	OT hujjati (tizim navbati)
+vp_delivery_raw	Qurilmaga xom bayt
+vp_delivery_escpos	ESC/POS termal buyruqlari
+virtual_printer_new	Yangi virtual printer
+virtual_printer_selected	„{name}“ tahrirlanmoqda — almashtirish uchun roʻyxatdagi boshqasini bosing
+virtual_printer_tap_list	Tahrirlash uchun roʻyxatdagi virtual printerni bosing
+config_layout_portrait	Tik
+config_layout_landscape	Yotiq
+config_send_os	Tizim navbati
+config_send_escpos	ESC/POS
+profiles_heading	Joylashuvlar
+profiles_empty	(hali joylashuv yoʻq)
+profile_builtin	oʻrnatilgan
+profile_custom	maxsus
+profile_name_ph	Joylashuv nomi
+profile_new	Yangi joylashuv
+profile_delete	Joylashuvni oʻchirish
+profile_created	Joylashuv yaratildi
+profile_deleted	Joylashuv oʻchirildi
+profile_builtin_keep	Oʻrnatilgan joylashuvlarni oʻchirib boʻlmaydi
+config_saved	Yangilandi
+config_selected	„{name}“ tanlandi
+printer_output_heading	Virtual printerlar
+virtual_printers_heading	Virtual printerlar
+virtual_printers_empty	Hali virtual printer yoʻq — pastda qiymatlarni qoʻying, soʻng Saqlash. Boʻlgach, tahrirlash uchun roʻyxatdagi birini bosing.
+virtual_printer_name_ph	Virtual printer nomi (ixtiyoriy)
+virtual_printer_create	Virtual printer yaratish
+virtual_printer_save	Virtual printerni saqlash
+virtual_printer_delete	Virtual printerni oʻchirish
+virtual_printer_created	„{name}“ virtual printeri yaratildi
+virtual_printer_deleted	„{name}“ virtual printeri oʻchirildi
+virtual_printer_updated	Virtual printer yangilandi
+virtual_printer_updated_named	„{name}“ virtual printeri yangilandi
+virtual_draft_layout	Keyingi virtual printer uchun qiymatlar qoʻyildi
+virtual_draft_send	Keyingi virtual printer uchun qiymat qoʻyildi
+virtual_need_real	Avval haqiqiy printerni tanlang
+virtual_need_select	Oʻchirish uchun virtual printerni tanlang
+real_printer_selected	Tanlandi: {name}
+station_group_heading	Virtual printerlar
+station_group_apply	Virtual printerni oʻchirish
+station_group_applied	Oʻchirildi
+station_group_empty	Virtual printerni tanlang
+station_group_name_ph	Virtual printer nomi (ixtiyoriy)
+station_group_save	Virtual printer yaratish
+station_group_saved	Virtual printer saqlandi
+station_manage_heading	Oshxona stansiyasini qoʻshish yoki olib tashlash
+printers_routes_heading	Qayerda chop etiladi
+route_pick_heading	Joy
+route_editing	Tahrirlanmoqda: {name}
+route_assigned	{printer} {place} ga qoʻshildi
+route_already_assigned	Bu joyda allaqachon: {printer}
+route_removed	{printer} {place} dan olib tashlandi
+route_cleared	{name} tozalandi
+route_assigned_empty	Bu joyda hech narsa yoʻq
+route_tap_remove	olib tashlash uchun bosing
+route_tap_select	tanlash uchun bosing
+route_tap_selected	tanlandi
+route_pick_printer_first	Avval printerni bosing
+route_assigned_heading	Printerlar
+route_add_heading	Biriktirish
+printer_label_ph	Nom (mas. Oshxona)
+printer_target_ph	Tizim printeri nomi yoki host:9100
+printer_target_default	shu kompyuterning odatdagi printeri (boʻsh manzil)
+printer_wire_heading	Profil
+printer_wire_escpos	ESC/POS
+printer_wire_os	Tik
+printer_wire_os_portrait	Tik
+printer_wire_os_landscape	Yotiq
+printer_wire_escpos_short	ESC/POS
+printer_wire_os_short	Tik
+printer_wire_os_landscape_short	Yotiq
+printer_format_custom	Yangi maxsus profil
+printer_format_custom_label	Maxsus
+printer_format_custom_added	Bu joy uchun maxsus profil qoʻshildi
+add_printer	Printer qoʻshish
+remove_printer	Olib tashlash
+route_pick_ph	Hisob yoki oshxona stansiyasi
+route_bill	Hisob
+route_default_kitchen	Stansiyasiz (biriktirilmagan taomlar)
+route_kot_station	Oshxona
+route_dont_print	Printer yoʻq
+stations_heading	Oshxona stansiyalari
+stations_help	Taom va KOT uchun oshxona stansiyalarini qoʻshing. Har bir stansiyaga printerlarini ulang (Sozlamalar → Printerlar), ustuvorlikni qoʻying va Birinchi ishlagani yoki Hammasiga chop etishni tanlang. Oʻzgarish darhol saqlanadi — Saqlash tugmasi yoʻq.
+station_print_heading	Shu stansiya printerlari
+station_print_help	Stansiya tanlang, soʻng bir yoki bir nechta printer ulang. ↑↓ urinish tartibini qoʻyadi. Birinchi ishlagani birinchi muvaffaqiyatdan keyin toʻxtaydi; Hammasiga chop etish ulangan har bir printerga yuboradi. Har bir oʻzgarish darhol saqlanadi.
+station_print_pick_ph	Printer sozlash stansiyasi
+station_print_pick_first	Avval oshxona stansiyasini tanlang
+station_print_editing	„{name}“ printerlari tahrirlanmoqda
+station_vps_dd	Shu stansiya printerlari
+station_vps_dd_n	{n} printer · oʻzgartirish uchun bosing
+station_vps_empty	Hali printer yoʻq — Sozlamalar → Printerlar ichidan toping
+bill_printers_dd	Hisob printerlari
+bill_printers_dd_n	hisob uchun {n} printer · oʻzgartirish uchun bosing
+job_layout	Joylashuv
+job_delivery	Ish qanday yuboriladi
+job_delivery_help	OT hujjati, xom bayt yoki ESC/POS. Hisob va oshxona varaqi har biri oʻzinikini saqlaydi. Har qanday ish Qidiruv saqlagan istalgan printerga borishi mumkin.
+station_vp_attached	Printer ulandi
+station_vp_detached	Printer stansiyadan olib tashlandi
+station_print_summary	{mode} · {n} printer
+station_print_summary_none	Bu stansiyada hali printer yoʻq — chop etmaydi
+stations_none	Hali stansiya yoʻq — pastda birini qoʻshing. Menyu mahsulotlari KOT shu yerda chop etilishi uchun stansiya ishlata oladi.
+route_up	Yuqoriga
+route_down	Pastga
+route_remove	Olib tashlash
+route_clear	Tozalash
+save_printers	Printerlarni saqlash
+print_test_page	Sinov sahifasini chop etish
+no_printer_assigned	Printer yoʻq
+test_page_no_printer	{place} uchun printer yoʻq — printer ulang, soʻng qayta urinib koʻring
+test_page_pick_first	Avval sinov sahifasi uchun printer(lar)ni tanlang — soʻng Sinov sahifasini chop etish
+test_printers_dd	Sinov sahifasi printerlari
+test_printers_dd_n	sinov sahifasi uchun {n} printer · oʻzgartirish uchun bosing
+kot_test_printers_dd	Sinov KOT printerlari
+kot_test_printers_dd_n	sinov KOT uchun {n} printer · oʻzgartirish uchun bosing
+test_printer_picked	Sinov: {name}
+test_printer_cleared	Sinov yoʻq: {name}
+test_page_sent_n	Sinov sahifasi {n} printerga yuborildi
+test_kot_pick_first	Avval sinov KOT uchun printer(lar)ni tanlang — soʻng Sinov KOT
+test_kot_sent_n	Sinov KOT {n} printerga yuborildi
+cancel_pick	Belgilash
+cancel_pick_on	Belgilangan
+cancel_pick_meta	Bekor qilish uchun belgilangan
+batch_cancel	Belgilanganlarni bekor qilish
+batch_cancel_n	Belgilanganlarni bekor qilish ({n})
+batch_cancel_none	Avval yuborilgan bir yoki bir nechta taomni belgilang — soʻng Belgilanganlarni bekor qilish
+batch_cancel_title	Belgilangan taomlarni bekor qilish — bitta sabab, har oshxonaga bitta bekor varaq
+batch_cancel_ok	{n} taom bekor qilindi · {slips} bekor varaq → {kitchens}
+batch_cancel_ok_noprint	{n} taom bekor qilindi — KOT avto chop etish oʻchiq, shuning uchun bekor varaq yoʻq
+no_printer_kitchen_station	Oʻsha oshxona stansiyasiga printer yoʻq — Oshxona → Oshxona stansiyalari → Shu stansiya printerlari
+printers_saved	Saqlandi
+test_page_sent	Sinov sahifasi yuborildi — printerni tekshiring
+test_page_sent_one	Sinov sahifasi {name} ga yuborildi — oʻsha printerni tekshiring
+printers_found	Topildi {n}: {list}
+printers_find_synced	Topildi {n} — {new} yangi
+printer_on_device	saqlangan
+printer_already_added	allaqachon qoʻshilgan
+printer_already_saved	Allaqachon saqlangan: {name}
+find_printers	Printerlarni topish
+printers_looking	Qidirilmoqda…
+saving_printer	Printer qoʻshilmoqda…
+cancelled	Bekor qilindi
+printers_tap_find	Bu qurilma ishlata oladigan printerlar roʻyxati uchun Qidiruvni bosing.
+printers_none_found	Hech narsa topilmadi — tizim printeri nomi yoki IP yozing (mas. 192.168.1.50).
+printer_from_find	{name} qoʻshildi
+kot_printer_ph	KOT printeri
+bill_printer_ph	Hisob printeri
+kot_print_on	Oshxona varaqlarini avto chop etish: Yoniq
+kot_print_off	Oshxona varaqlarini avto chop etish: Oʻchiq
+queue_refused	Doʻkon qabul qilmadi ({n}) — har birini kassada tekshiring:
+clear_not_accepted	Tekshirildi — bu roʻyxatni tozalang
+device_name_ph	Bu qurilmaning nomi
+lan_last_update	oxirgi yangilanish {time}
+lan_not_accepted	{n} qabul qilinmadi
+connected_now	hozir ulangan
+backup_failed	Oxirgi avtomatik zaxira nusxa amalga oshmadi: {e}
+backup_overdue	{n} kundan beri zaxira yoʻq — nusxa olishi uchun ilovani shu qurilmada ochiq tuting.
+disk_low	Bu qurilmada faqat {mb} MB boʻsh — zaxira nusxalar tez orada amalga oshmaydi. Joy boʻshating.
+last_seen_devices	Oxirgi koʻrilgan: {time}
+sync_interval	Har {secs} s da sinxron
+connection_to_shop	Doʻkonga ulanish
+supplier_name_ph	Yetkazib beruvchi nomi (yoki kontragent)
+supplier_ph	Yetkazib beruvchi
+switch_device	Bu qurilmani almashtirish
+take_payment	Toʻlov qabul qilish
+tax_added_till	{tax} tashqari
+tax_inside_price	{tax} ichida
+tax_invoice	Soliq hisob-fakturasi
+till_to_bank	Kassa → bank
+units_heading	Oʻlchov birliklari
+unlock_after_pairing	PIN kiriting
+unlock_with_login	Kirish bilan qulfni ochish
+unmark	Belgini olish
+update_my_password	Parolimni yangilash
+update_my_pin	Kirishimni yangilash
+duress_heading	Favqulodda qulf ochish PIN (faqat Egasi)
+duress_help	Ixtiyoriy. Qulfni ochishda sizning PIN oʻrniga shu PIN kiritilsa, kitoblardagi barcha yozuvlar oʻchadi (savdo, daftarlar, tarix) va kassa Egasi sifatida oddiy koʻrinishda ochiladi — menyu, narx, stol, xodim va sozlamalar qoladi. Sxema va konfiguratsiya oʻchirilmaydi. Faqat qulfni ochishga majbur boʻlsangiz ishlating. Oʻchirish uchun boʻsh qoldirib saqlang. Hech qachon birovning PIN i bilan bir xil boʻlmasin.
+duress_pin_ph	Favqulodda PIN (4–12 raqam)
+duress_confirm_ph	Tasdiqlash uchun qayta yozing
+save_duress_pin	Favqulodda PIN ni saqlash
+clear_duress_pin	Favqulodda PIN ni oʻchirish
+duress_on	Favqulodda qulf ochish PIN yoniq
+duress_off	Favqulodda qulf ochish PIN oʻchiq
+duress_saved	Favqulodda qulf ochish PIN saqlandi
+duress_cleared	Favqulodda qulf ochish PIN oʻchirildi
+upi_amount_ph	UPI summasi
+void	Bekor qilish
+write_off_ap	AP ni hisobdan chiqarish
+write_off_heading	Hisobdan chiqarish (toʻlovsiz tozalash)
+write_off_nil	Hisobdan chiqarish / nol qoldiq
+your_brand	Brendingiz (ilova ichida)
+your_categories	Toifalaringiz
+account_kind	Hisob turi (bittasini bosing)
+actual_total_cap	HAQIQIY JAMI
+amend_help	Tuzatish, bekor qilish yoki qaytarish uchun savdoni tanlang. Tuzatishlar toʻliq tarixni saqlaydi. Yaxlitlangan Jami Qoʻllanilganga teng boshlanadi — faqat yaxlitlash uchun tahrirlang. Bekor qilish va qaytarish Egasi yoki Menejer PIN ini soʻrashi mumkin (yuqorida kiritiladi; ismingiz bilan yoziladi).
+applied_total_cap	QOʻLLANILGAN JAMI
+bank_balance	Bank qoldigʻi
+bank_net_today	Bugungi bank sof
+branch_export_help	Eksport branch_snapshot_CODE_DATE.json faylini zaxira papkasiga yozib, almashish buferiga nusxalaydi. Boshqa nuqtaning kunini import qilish uchun faylini shu papkaga import_branch_snapshot.json deb saqlang, soʻng Importni bosing.
+brand_shown_help	Ilova ichidagi ekranlarda koʻrinadi. Bu qurilmadagi oʻrnatilgan ilova nomi va belgisi platforma roʻyxatidagidek qoladi.
+app_icon	Ilova belgisi
+logo_help	Ilova ekranlaridagi doʻkon belgisi (ixtiyoriy).
+onboard_layout	Nima olasiz
+item_photo_help	Ixtiyoriy. Surat boʻlmasa mahsulot nomining bosh harflarini koʻrsatamiz.
+stamp_heading	Muhr
+stamp_image_help	Chop etilgan hisob va mehmon displeyidagi muhr rasmi (ixtiyoriy).
+payment_qr_heading	Toʻlov QR
+payment_qr_image_help	Hisob va mehmon displeyidagi statik QR; aks holda toʻlov yuqoridagi VPA dan dinamik UPI QR ishlatadi.
+cash_in_hand	Kassadagi naqd
+change_my_pin_heading	Mening kirishim
+connect_to_server	Serverga ulanish
+counter_locked	Kassa 01 · Qulflangan
+country_pack_help	Mamlakat toʻplami soliq nomi va hisobini, tezkor toʻlov kanalini va hisobda chop etiladigan biznes identifikatorini qoʻyadi. Kumkaj hech qayerda soliq topshirmaydi va davlat elektron hisob-fakturasini bermaydi.
+currency_use_help	Qoʻllab-quvvatlanadigan har qanday valyuta uchun aylantirib Ishlatishni bosing.
+day_close_help	Kunni yopishni yozish ushbu xulosani (va sanalsa, tortma farqini) audit jurnaliga saqlaydi. Sotishni toʻxtatmaydi.
+expenses_word	Xarajatlar
+feature_access_help	Nimani ocha olishi — ixtiyoriy; yuqoridagi ish allaqachon andozani qoʻyadi
+footer_local	Mahalliy SQLite · Abadiy bepul · Bulutsiz
+fresh_book_khaynjo	Fresh = boʻsh menyu (taomlarni keyin Menyuga qoʻshing). Book = pastda boshlangʻich mahsulot va kim qarzdorligini yozing.
+fresh_selected	Fresh tanlandi — katalog boʻsh qoladi. Tayyor boʻlganingizda Tayyor ni bosing.
+gross_word	Yalpi
+how_start	Qanday boshlamoqchisiz?
+kot_print_help_khaynjo	Yoniq boʻlsa, har oshxona Yuborishni bosgan zahoti oʻz KOT qogʻozini chop etadi.
+later_country_pack	Keyin: Sozlamalar → soliq va toʻlov yorliqlari uchun mamlakat toʻplamini qoʻllang.
+local_badge	MAHALLIY
+mix_type_hint_khaynjo	Kerak boʻlsa naqd / UPI / karta / kreditga boʻling. Kredit uchun yuqorida mijoz kerak.
+money_in_sales	Kirim pul (savdo)
+net_word	Sof
+offline_badge	OFLAYN
+optional_login_help	Ixtiyoriy kirish (id + parol). Egasi bir marta qoʻyadi; parolni keyin faqat foydalanuvchi oʻzgartira oladi.
+or_unlock_login	Yoki kirish id + parol bilan qulfni oching
+permission_preset	Ish (ekran va pul amallarini qoʻyadi)
+preset_help_khaynjo	Kassir: sotadi. Menejer: savdo + mahsulot + bekor/tuzatish.
+product_locked_khaynjo	Khaynjo
+product_only_khaynjo	Bu ilova faqat Khaynjo — restoran operatsion tizimi. Boshqa savdo yuzlari alohida Kumkaj mahsulotlari sifatida chiqadi.
+purchases_cogs	Xaridlar (tannarx)
+qty_cap	SON
+restore_help	Tiklash: zaxira nusxa tanlang. Kitoblar oʻshanda qanday boʻlsa shunday ochiladi; hozirgi kitoblar avval saqlanadi, shuning uchun buni bekor qilish mumkin.
+wipe_data_heading	Mahalliy maʼlumotlarni oʻchirish
+wipe_data_help	Faqat Egasi — Windows oʻchirishdagi kabi tanlovlar. Biznes yozuvlari savdo tarixini tozalaydi, lekin menyu va sozlamani saqlaydi (favqulodda PIN kabi). Doʻkon sozlamasi kitoblar bazasini olib tashlaydi. Ekran sozlamalari oyna/tilni tozalaydi. Egasi PIN i bilan tasdiqlang. Jamoadagi favqulodda PIN alohida (qulf ochilganda yashirin oʻchirish).
+wipe_trading	Biznes yozuvlari
+wipe_schema	Doʻkon sozlamasi
+wipe_ui	Ekran sozlamalari
+wipe_owner_pin_ph	Oʻchirish uchun Egasi PIN
+wipe_delete_selected	Tanlanganni oʻchirish
+wipe_owner_only	Mahalliy maʼlumotlarni faqat Egasi oʻchira oladi.
+restore_owner_only	Zaxira nusxani faqat Egasi tiklay oladi.
+wipe_owner_pin_needed	Mahalliy maʼlumotni oʻchirish uchun Egasi PIN ini kiriting.
+wipe_nothing_selected	Avval nimani oʻchirishni tanlang.
+wipe_done	Tanlangan mahalliy maʼlumotlar oʻchirildi.
+wipe_schema_done	Doʻkon sozlamasi oʻchirildi — davom etish uchun Server yoki Mijozni tanlang.
+rounded_total	Yaxlitlangan jami
+setup_app_khaynjo	Khaynjo ni sozlash
+shop_logo_optional	Doʻkon logotipi (ixtiyoriy)
+stock_type_help	Mahsulot nomini yozing (bir qismi yetadi), miqdor, soʻng tuzating. Hali sanalmaydigan mahsulotlarga bir marta Kuzatuvni boshlash kerak.
+team_owner_help	Kimnidir qoʻshish uchun odamni boʻsh qoldiring: ism, ish, foydalanuvchi nomi, PIN va ixtiyoriy parol, soʻng Qoʻshish. Odamni tanlab xuddi shu turdagi shaklni tahrirlang — ism, foydalanuvchi nomi, parol, ekran va huquq — soʻng Saqlash. Oʻz PIN va parolingiz pastda bitta kirish. Egasi boshqaning PIN ini oʻzgartirmaydi.
+staff_name_ph	Xodim ismi
+staff_copy_hire_ph	Sozlamani nusxalash (ixtiyoriy)
+staff_copy_hire	Shu odamning sozlamasini ishlatish
+staff_edit_name_ph	Koʻrsatiladigan nom
+staff_rename	Ismni saqlash
+staff_copy_edit_ph	Boshqa odamdan sozlamani nusxalash
+staff_copy_edit	Ularning sozlamasini tanlangan ustiga nusxalash
+staff_copy_edit_onto	Ularning sozlamasini {name} ustiga nusxalash
+staff_deactivate_named	{name} ni olib tashlash
+staff_renamed	Ism saqlandi
+staff_setup_copied_hire	Sozlama {name} dan nusxalandi — yangi ism va PIN qoʻying, soʻng Xodim qoʻshish
+staff_setup_copied_edit	{from} sozlamasi {to} ustiga nusxalandi
+staff_copy_need_selected	Avval kimni tahrirlashni tanlang
+staff_copy_need_source	Kimning sozlamasini nusxalashni tanlang
+staff_copy_same	Bu oʻsha odam — boshqasini tanlang
+staff_rename_need_selected	Avval kimning ismini oʻzgartirishni tanlang
+team_pick_hint	Kimni tahrirlashni tanlang — ekran, pul huquqi va oshxona stansiyasi faqat shu odam uchun chiqadi.
+team_stations_help	Ishlatishi mumkin boʻlgan oshxona stansiyalari
+team_stations_changed	Oshxona stansiyalari oʻzgardi — shu odamning sozlamasini Saqlash
+team_features_changed	Ekranlar oʻzgardi — shu odamning sozlamasini Saqlash
+team_rights_changed	Huquqlar oʻzgardi — shu odamning sozlamasini Saqlash
+they_owe_us	Ular bizga qarzdor
+unit_at_cap	Birlik @
+units_help	Mahsulot yorliqlari kodlari (kg, dona, qop). Har bir birlik standartga bogʻlanishi kerak — toʻgʻridan-toʻgʻri yoki boshqa birliklar orqali — (kg · cm · ml · pc), mas. 1 yashik = 2 quti va 1 quti = 20 cm. Aylantirish: 1 dan = koeffitsient ga. Valyutalar hech qachon birlik emas.
+units_picker_help	Sotib olish va Menyu tanlovida birlik koʻrinishi uchun Yoniq/Oʻchiq ni bosing. Oʻchiq birliklar baribir aylanadi.
+unit_picker_on	Yoniq
+unit_picker_off	Oʻchiq
+we_owe_them	Biz ularga qarzdormiz
+who_unlocking	Kim qulf ochyapti?
+locked_word	Qulflangan
+show_pin	PIN ni koʻrsatish
+hide_pin	PIN ni yashirish
+set_owner_pin	EGASI PIN INI QOʻYISH
+enter_owner_passcode	EGASI KODINI KIRITING
+enter_staff_passcode	XODIM KODINI KIRITING
+pin_count_zero	0 / 12 raqam · kamida 4, soʻng OK
+pin_count_need	{} / 12 raqam · yana {} kerak
+pin_count_full	12 / 12 raqam · OK bosing
+pin_count_ready	{} / 12 raqam · tayyor boʻlganda OK bosing
+pin_hint_choose	4–12 raqam tanlang · saqlash uchun Enter yoki Qulfni ochish
+pin_hint_new	Yangi 4–12 raqamli Egasi PIN · Enter yoki Qulfni ochish
+pin_hint_shop_code	Doʻkon qurilmasi · juftlash kodi {}
+pin_hint_books	Bu qurilma kitoblarni saqlaydi
+pin_hint_paired	Qoʻshimcha kassa juftlangan — sotish uchun qulfni oching
+pin_hint_pair_first	Qoʻshimcha kassa — avval doʻkon qurilmasi bilan juftlang
+unlock_to_continue	Davom etish uchun qulfni oching
+no_staff_yet	Hali xodim yoʻq — Egasi sifatida qulfni oching, soʻng Jamoa
+status_server_set_pin	Server rejimi — Egasi PIN ini qoʻying
+status_server_tills	Server rejimi — qoʻshimcha kassalar qoʻshila oladi. Qulfni oching
+status_server_unlock	Server rejimi — Egasi sifatida qulfni oching
+status_client_unlock	Mijoz rejimi — sotish uchun qulfni oching
+icon_new_selected	Belgi: yangi fayl tanlandi — Brendni saqlashni bosing
+icon_custom	Belgi: oʻz joy belgisi
+icon_default	Belgi: Kumkaj belgisi (andoza) — oʻzingiznikini tanlang
+logo_yours	Logo: doʻkon logotipingiz — ekran va kvitansiyada koʻrinadi
+logo_default	Logo: Kumkaj belgisi (andoza) — boʻlsa oʻzingiznikini tanlang
+tmpl_current	Joriy: {} — {}
+tmpl_selected	Tanlandi: {} — {}
+setup_complete	Sozlama tugadi
+onboard_fresh_tmpl	Fresh · {} — katalog boʻsh boshlanadi; mahsulotni Mahsulotlarga qoʻshing, soʻng Tayyor.
+onboard_book_tmpl	Book · {} — mahsulot va boshlangʻich kredit qoʻshing, soʻng Tayyor.
+onboard_template_tmpl	Xohlasangiz joyga nom bering, soʻng qanday boshlashni tanlang.
+tmpl_blurb	Stol, buyurtma, oshxona varaq, hisob va kitob.
+tmpl_how	Kassada soting; Zal stol va KOT uchun; Kitoblar kunlik daftar uchun.
+reports_facet_title	Hisobotlar
+reports_facet_help	Kunlik daftarlar, kontragent eskirishi, bank yozuvlari va davr foyda-zarari.
+against_bill_ph	Yuqoridagi hisob № ga (ixtiyoriy)
+aliases_ph	Taxalluslar — boshqa nomlar, vergul bilan
+amount_blank_full_ph	Summa (boʻsh = toʻliq qoldiq)
+amount_owed_ph	Qarzdor summa
+amount_ph	Summa
+amount_received_ph	Olingan summa
+amount_we_pay_ph	Biz toʻlaydigan summa
+business_name_ph	Biznes nomi
+category_new_ph	Toifa (ixtiyoriy, yangi boʻlsa yaratiladi)
+code_bag_ph	Kod (qop)
+conv_factor_ph	Koeffitsient (25 = 1 qop → 25 kg)
+country_code_ph	Mamlakat kodi mas. IN, GB, US, AE, BR
+credit_khata_amount_ph	Kredit / hisob summasi
+credit_limit_ph	Kredit limiti (0 = yoʻq)
+from_code_ph	Qaysi koddan (qop)
+item_name_lang_ph	Mahsulot nomi — oʻz tilingizda yozing
+login_id_opt_ph	Foydalanuvchi nomi (majburiy, noyob)
+manager_pin_ph	Tasdiqlash uchun menejer PIN (faqat bekor qila olmasangiz)
+new_branch_name_ph	Yangi filial nomi
+new_password_ph	Yangi parol (ixtiyoriy)
+new_pin_ph	Yangi PIN (4–12 raqam)
+note_bank_ph	Eslatma (kiritish, yechish, …)
+note_buy_expense_ph	Eslatma (yoqilgʻi, ijara, …)
+note_expense_ph	Eslatma (yoqilgʻi, ofis, …)
+options_khaynjo_ph	Variantlar — Oʻlcham*: Kichik=199, Katta=399 | Qoʻshimcha+3: Pishloq=40, Zaytun=30 | Qoʻshimcha pishloq=40
+part_second_way_ph	Ikkinchi yoʻl bilan qism (ixtiyoriy)
+phone_ph	Telefon
+place_name_ph	Bu joyning nomi
+qty_example_ph	Miqdor (mas. kg uchun 1.5)
+quantity_ph	Miqdor
+reason_required_ph	Sabab (majburiy)
+role_title_ph	Lavozim (mas. Barista)
+service_pct_ph	Xizmat % ixtiyoriy 0/10/12
+short_code_ph	Qisqa kod (MG02)
+starting_password_ph	Boshlangʻich parol (ixtiyoriy)
+starting_pin_ph	Boshlangʻich PIN (4–12 raqam)
+station_name_ph	Stansiya nomi (mas. Tandir, Qovurish, Sovuq)
+station_new_ph	Oshxona stansiyasi (ixtiyoriy, mas. Tandir — yangi boʻlsa yaratiladi)
+table_name_ph	Stol nomi (mas. Hovli 1, Kassa 2)
+tax_rate_ph	Soliq stavkasi nomi yoki % — Standart, Pasaytirilgan, 0, 5, 12, 18, 20
+to_code_ph	Qaysi kodga (kg)
+uncleared_no_ph	Yuqoridagi tozalanmagan №
+unit_cost_ph	Birlik tannarxi
+unit_name_bag_ph	Nom (Qop)
+unit_plate_ph	Birlik (likopcha / pc — boʻsh = dona)
+pay_credit	Kredit
+book_kind_today	Bugungi kitoblar
+book_kind_month	Shu oyning kitoblari
+book_kind_aging	Toʻlanmagan / debet-kredit
+book_kind_balance	Balans
+order_help	Qoʻshish uchun mahsulotni bosing.
+floor_help	Buyurtma olish yoki oʻzgartirish uchun stolni bosing. Ranglar boʻsh → oʻtirgan → oshxona → tayyor → yeyapti → hisob → toʻlanganni koʻrsatadi. Kutish roʻyxati, bandlov va stol qoʻshish pastdagi boʻlimlarda.
+kitchen_help	Oshxona varaqlari (KOT), eng yangisi oxirida. Boshlash → Tayyor → Tugadi varaqni oldinga suradi. Varaqlar hech qachon narx koʻrsatmaydi.
+kitchen_empty	Ochiq varaq yoʻq. Buyurtma yoki Zaldan yuborilgan KOT shu yerda chiqadi.
+add_a_table	Stol qoʻshish
+add_station_heading	Oshxona stansiyasi qoʻshish
+categories_help	Yuqoridagi mahsulotni shu toifaga qoʻyish uchun Ishlatishni bosing. Surat toifaga rasm beradi; boʻlmasa bosh harflari chiqadi.
+dish_search_ph	Mahsulot nomi — taomlarimizni qidiring yoki oʻzingiznikini yozing
+tile_free	Boʻsh
+tile_occupied	Band
+tile_food_ready	Ovqat tayyor
+tile_bill_printed	Hisob chop etilgan
+tile_paid	Toʻlangan
+tile_bill_btn	Hisob
+tile_occupy_btn	Mehmonlarni oʻtqazish
+tile_free_btn	Stolni boʻshatish
+tile_ready_btn	Stolni boʻshatish
+tile_undo_bill	Hisobni bekor qilish
+summary_busy	band stollar
+summary_to_collect	undirishga
+summary_on_floor	zalda
+floor	Zal
+sizes_as_items_ph	Oʻlchamlar alohida mahsulot (ixtiyoriy) — Yarim=120, Toʻliq=200
+dish_group_ph	Taom guruhi (ixtiyoriy) — mas. Paneer Tikka
+discount	Chegirma
+remove_discount	Chegirmani olib tashlash
+apply_discount	Chegirma qoʻllash
+save_opening_cash	Boshlangʻich naqdni saqlash
+close_shift_print	Smenani yopib varaq chop etish
+area_prices_ph	Hudud narxlari (ixtiyoriy) — Konditsioner=220, Olib ketish=210
+discount_ph	10% yoki 50
+discount_reason_ph	Sabab (mas. doimiy mehmon, kech ovqat)
+opening_float_ph	Bugun ertalab tortmaga solingan pul
+shift_counted_ph	Topshirishda sanalgan pul
+opening_float	Boshlangʻich naqd (avans)
+shift_handover	Smena topshirish
+shift_since	Bu smena beri
+expected_in_drawer	Tortmada kutilayotgani
+right_discount	Chegirma berish
+floor_in_kitchen	Oshxonada
+floor_eating	Berilgan
+pick_category	Toifa tanlash
+close_category_list	Toifa roʻyxatini yopish
+new_category_row	Yangi toifa — mahsulotni saqlaganda yaratiladi
+your_category	Sizning toifangiz
+suggested_category	Taklif — taomlarimizdan
+category_search_ph	Toifa — oʻzingiznikini qidiring yoki yangisini yozing
+line_sent_state	Oshxonaga yuborilgan
+line_nc_state	Sovgʻa (NC) — haq olinmaydi
+cancel_item_short	Bekor qilish
+nc_short	NC
+charge_again_short	Haq olish
+move_short	Koʻchirish
+cancel_item_title	Bu mahsulotni bekor qilish — oshxona bekor varaq oladi
+nc_item_title	Bu mahsulotni sovgʻa qilish (NC)
+charge_again_title	Bu mahsulotdan qayta haq olish
+move_item_title	Bu mahsulotni boshqa stolga koʻchirish
+already_cooked	Allaqachon pishirilgan (chiqindi)
+not_cooked_yet	Hali pishirilmagan
+return_to_customer	Mijozga qaytarish
+short_by	Yetishmaydi
+tip_not_sale	Choychaqa (xodimniki, savdo emas)
+right_settle	Toʻlov qabul qilish
+right_cancel_sent	Yuborilgan mahsulotni bekor qilish
+right_complimentary	Sovgʻa (NC)
+right_move_table	Stolni koʻchirish / birlashtirish
+right_reprint	Hisobni qayta chop etish
+right_allowed	Ruxsat etilgan
+right_with_approval	Tasdiq bilan
+right_denied	Ruxsat etilmagan
+editing_staff	Tahrirlanmoqda
+finding_server	Shu Wi‑Fi da doʻkon serverini qidirish…
+no_server_found	Hech narsa topilmadi. Serverda: Sozlamalar → Boshqa qurilmalar → Qoʻshimcha kassaga ruxsat (xuddi shu Wi‑Fi). Yoki u yerda koʻrsatilgan IP ni yozing.
+servers_found_pick	Ulanmoqchi boʻlgan doʻkonni bosing.
+server_host_selected	{host} ishlatilmoqda — juftlash kodini kiriting, soʻng Hozir juftlash.
+print_bill	Hisob chop etish
+table_actions	Stol amallari
+move_merge_table	Stolni koʻchirish / birlashtirish
+move_help	Bu stol buyurtmasini boʻsh stolga koʻchiring yoki ishlayotganiga birlashtiring.
+move_target_ph	Stol nomi (mas. D5, P2)
+approval_pin_ph	Menejer PIN (soʻralsa)
+move_here	Bu yerga koʻchirish
+merge_into	Unga birlashtirish
+line_reason_ph	Sabab (mas. mehmon fikrini oʻzgartirdi, zaxira yoʻq)
+line_qty_ph	Nechtasini bekor qilish (boʻsh = hammasi)
+line_target_ph	Stolga koʻchirish (mas. D5)
+confirm	Tasdiqlash
+menu_search_ph	Mahsulot yoki qisqa kod qidirish
+customer_paid_ph	Mijoz toʻladi
+tip_ph	Choychaqa
+table_area_ph	Hudud (mas. Joyida, Olib ketish, Konditsioner)
+table_range_ph	Bir vaqtda koʻp: D1-D20
+add_these_tables	Bu stollarni qoʻshish
+remove_these_tables	Bu stollarni olib tashlash
+table_remove_ph	Olib tashlash: T1-T24 yoki bitta stol nomi
+find_server	Doʻkon serverini topish
+bill_format	Hisob formati
+bill_format_help	Har hisobda restoran nomi ostida chop etiladi. Qatorlarni | bilan ajrating (mas. MG Road, Rajkot | Tel 98250 00000).
+bill_header_ph	Manzil | telefon
+fssai_ph	FSSAI litsenziya № (Hindiston)
+bill_footer_ph	Pastki yozuv (mas. Rahmat, yana keling)
+save_bill_format	Hisob formatini saqlash
+reset_bill_format	Andozaga qaytarish
+bill_format_reset	Hisob formati andozaga qaytarildi
+reset_kot_format	Andozaga qaytarish
+kot_format_reset	KOT formati andozaga qaytarildi
+kot_format	KOT formati
+kot_format_help	Roʻyxatdagi maydonni bosing. Koʻrsatish, shrift oʻlchami va qalinlik yuqorida tanlangan KOT turidagi shu maydonga qoʻllaniladi. Har tur oʻz oʻlchami va qalinligini saqlaydi.
+kot_format_fields	Maydonlar
+kot_field_next	Keyingi maydon
+kot_field_show	Koʻrsatish
+kot_field_hide	Yashirish
+kot_field_on	koʻrsatish
+kot_field_off	yashirish
+kot_field_size	Shrift oʻlchami
+kot_field_size_ph	mas. 16, 20, 24, 28, 32…
+kot_weight_light	Ingichka
+bill_kot_panel_help	Hisob va oshxona varaqining joylashuvi, har biri oʻz mazmun kengligi bilan. Hisob kassiri hisobni chiqargan yoki yopgan odam; KOT ofitsiant esa oʻsha oshxona varaqini yuborgan odam — buyurtmaning toʻliq tarixi kitoblarda qoladi.
+std_size_ph	mas. 18, 20, 26…
+kot_show_shop	Doʻkon nomi
+kot_hide_shop	Doʻkonni yashirish
+kot_show_time	Vaqt
+kot_hide_time	Vaqtni yashirish
+kot_show_waiter	Ofitsiant
+kot_hide_waiter	Ofitsiantni yashirish
+kot_show_station	Stansiya
+kot_hide_station	Stansiyani yashirish
+kot_show_table	Stol
+kot_hide_table	Stolni yashirish
+kot_show_kot_no	KOT №
+kot_hide_kot_no	KOT № ni yashirish
+kot_width	Koʻrib chiqish oʻrash (mazmun kengligini KOT yorligʻida qoʻying)
+kot_width_58	58 mm
+kot_width_80	80 mm
+kot_kind_heading	KOT turi
+kot_kind_original	Asl nusxa
+kot_kind_duplicate	Nusxa
+kot_kind_modified	Oʻzgartirilgan
+kot_kind_cancelled	Bekor qilingan
+kot_style_heading	Maydon oʻlchami va qalinligi
+kot_style_title	Sarlavha
+kot_style_item_qty	Mahsulot · Miqdor
+kot_style_field_pick	Maydon tanlash
+kot_weight_regular	Oddiy
+kot_weight_bold	Qalin
+kot_align	Tekislash
+kot_align_start	Boshlanish
+kot_align_center	Markaz
+kot_align_end	Oxiri
+content_width	Mazmun kengligi (mm)
+content_width_bill	Hisob mazmuni kengligi (mm)
+content_width_kot	KOT mazmuni kengligi (mm)
+content_width_ph	Yoki mazmun kengligini yozing, 40–210 mm
+content_width_help	Bu varaq qanchalik keng chop etiladi. Hisob va KOT har biri oʻz kengligini saqlaydi.
+content_width_bill_help	Mehmon hisobi qanchalik keng chop etiladi. Andoza 210 mm (sahifa). 58 mm tor varaq, 80 mm keng varaq, 112 mm 4 dyuym, 210 mm A4 kenglik. 40 dan 210 gacha istalgan qiymatni yozing. Oshxona varaqlari oʻz kengligiga ega, KOT yorligʻida.
+content_width_kot_help	Oshxona varaqi qanchalik keng chop etiladi. Andoza 80 mm. 58 mm tor, 80 mm keng, 112 mm 4 dyuym, 210 mm sahifa. 40 dan 210 gacha yozing. Mehmon hisoblari oʻz kengligiga ega, Hisob yorligʻida.
+vp_paper_width	Mazmun kengligi (mm)
+vp_paper_width_ph	Yoki mazmun kengligini yozing, 40–210 mm
+vp_paper_width_help	Mazmun kengligi Hisob va KOT formatida qoʻyiladi — hisob uchun alohida (andoza 210 mm) va oshxona varaqi uchun (andoza 80 mm).
+kot_size	Shrift oʻlchami
+kot_size_s	Kichik
+kot_size_m	Oddiy
+kot_size_l	Katta
+std_size	Shrift oʻlchami
+kot_copies	Nusxalar
+kot_copies_1	1
+kot_copies_2	2
+kot_copies_3	3
+kot_title_ph	Sarlavha (boʻsh = KOT - KITCHEN ORDER)
+kot_footer_ph	Oshxona eslatmasi (ixtiyoriy, narxsiz)
+kot_preview	Koʻrib chiqish
+save_kot_format	KOT formatini saqlash
+test_kot_format	Sinov KOT
+test_kot_sent	Oshxona varaqining koʻrinishi yuborildi
+test_bill_format	Sinov hisobi
+test_bill_sent	Hisob koʻrinishi yuborildi
+test_print_no_printer	Oʻsha ish uchun printer yoʻq — shu ekranda birini tanlang
+kot_format_saved	KOT formati saqlandi
+std_print	Hisob chop etish oʻlchami
+std_print_help	OT / hujjat printerlaridagi standart tik va yotiq hisob ishlarining shrift oʻlchami (punkt kiriting — Kichik/Oddiy/Katta emas). Ikkala yoʻnalishda bir xil oʻlcham. Oshxona varaqi oʻlchamlari KOT yorligʻida.
+std_size_s	Kichik
+std_size_m	Oddiy
+std_size_l	Katta
+save_std_print	Hisob chop etish oʻlchamini saqlash
+std_print_saved	Hisob chop etish oʻlchami saqlandi
+print_brand_kit	Chop etish brend toʻplami
+print_brand_kit_help	Hisob yuzi va LAN mehmon displeyidagi ixtiyoriy muhr va toʻlov QR rasmlari. Yuqoridagi VPA dan dinamik UPI QR toʻlov QR rasmi qoʻyilmaganda ham ishlaydi.
+choose_stamp	Muhr tanlash
+clear_stamp	Muhrni tozalash
+stamp_set	Muhr: faylda — mehmon displeyida koʻrinadi va chop etilgan hisobda nomlanadi
+stamp_none	Muhr: yoʻq
+choose_payment_qr	Toʻlov QR tanlash
+clear_payment_qr	Toʻlov QR ni tozalash
+payment_qr_set	Toʻlov QR: faylda — mehmon displeyida koʻrinadi (u yerdagi summa UPI QR oʻrnini bosadi)
+payment_qr_none	Toʻlov QR: yoʻq — toʻlashda UPI ID dan summa QR
+aggregator_import	Agregator buyurtmalari (fayl)
+aggregator_import_help	Ixtiyoriy mahalliy import: import_aggregator_orders.json ni zaxira papkasiga qoʻying (massiv yoki {"orders":[…]}), soʻng Importni bosing. Kassani hech qachon toʻxtatmaydi; jonli Zomato/Swiggy Cloud.
+import_aggregator_file	Agregator faylini import qilish
+team_pick_ph	Tahrirlash xodimi — ism, foydalanuvchi nomi yoki tanlov
+select_staff	Shu xodimni tanlash
+rights_help	Bu odamning pul va zal amallari — almashtirish uchun bosing: Ruxsat etilgan → Boshliq PIN kerak → Ruxsat etilmagan. Hisobni qayta chop etish faqat hisoblar uchun; oshxona stansiyalari pastdagi roʻyxat.
+dish_picker_help	Taomlarimizni qidiring yoki koʻrib chiqing va nom hamda suratni toʻldirish uchun birini bosing — yoki oʻz nomingizni qoldiring. Narxingizni qoʻying (0 boʻladi), soʻng Mahsulot qoʻshish.
+close_dish_list	Taom roʻyxatini yopish
+own_item_name	Buni oʻz mahsulot nomingiz sifatida ishlating
+on_your_menu	Sizning menyuingizda
+edit	Tahrirlash
+schemes	Sxemalar / takliflar
+schemes_help	BOGO, foiz chegirma va qatʼiy kombo. Kombolar KOT yuborishda oshxona qatorlariga yoyiladi; tarkiblar kombo ishlaguncha ushlab turiladi. Misol: 2 Thali sotib oling, 1 Chaas oling
+scheme_bogo_ph	2 Thali sotib oling, 1 Chaas oling
+add_scheme	BOGO qoʻshish
+schedule_ph	Soatlar / baxtli soat — Du-Ju 07:00-11:00 yoki HappyHour 17:00-19:00=150
+upi_vpa_ph	UPI identifikator (VPA)
+upi_payee_ph	UPI oluvchi nomi (ixtiyoriy)
+upi_qr	UPI QR
+show_upi_qr	UPI QR koʻrsatish
+close_upi_qr	Yopish
+upi_qr_help	Mehmon skanerlab toʻlaydi. Toʻlagach Toʻlov qabul qilishni bosing. Ikkinchi ekran: LAN da Server URL /display ni oching.
+kot_recall	Qaytarish
+recently_done	Yaqinda tugagan
+recall_kot_ph	Qaytariladigan KOT #
+role_help_customer	Rol: Mijoz — hisob (ular bizga qarzdor). Oʻsha kontragent zaxira ham yetkazishi mumkin.
+role_help_both	Rollar: Mijoz + Yetkazib beruvchi — bitta kontragent, hisob va toʻlov daftarlari, sof Hisobotlarda.
+role_help_supplier	Rol: Yetkazib beruvchi — xaridlar uchun ularga qarzdormiz.
+dine_in_pick_table	Joyida — Zaldan stol tanlang
+choose_table	Stol tanlash
+change_table	Stolni almashtirish
+pick_table_banner	Bu buyurtma uchun stol tanlang
+items_word	mahsulot
+items_section	Mahsulotlar
+back_to_order	Buyurtmaga qaytish
+new_items_head	Hali yuborilmagan
+price_ph	Narx
+price_ph_gst_inside	Narx ({tax} ichida)
+cancel_needs_table	Oshxona olgach bekor qilish uchun bu buyurtmani Zaldan (stol) oching — kassa KOT lari toʻlov qabul qilgunicha varaqda qoladi
+tax_rates_missing_hint	Bu taomlarda {tax} stavkasi yoʻq — Menyuda Soliq stavkasini qoʻying (narxlar {tax} ichida boʻlimida {tax} ni allaqachon oʻz ichiga oladi)
+taxable_value	Soliqqa tortiladigan qiymat
+gst_inside_price_note	({tax} ichida)
+start_with_template	Bizning menyu andozamiz bilan boshlash
+template_heading	Bizning menyu andozamiz
+template_info	{c} toifa va {d} taom surat bilan, qoʻshishga tayyor. Narxlar ₹0 dan boshlanadi — keyin oʻzingiznikini qoʻying.
+template_import	Toʻliq andozani import qilish
+template_confirm	{d} taomni toifalari bilan qoʻshilsinmi? Bor taomlar oʻz holicha qoladi.
+template_yes	Ha, import qilish
+template_importing	Menyu import qilinmoqda…
+template_import_progress	Import… {d}/{t}
+template_done	Andozamizdagi har taom sizning menyuingizda.
+template_imported	{d} taom va {c} toifa qoʻshildi — narxini shu ekranda qoʻying
+client_template_heading	Mijoz menyusi
+client_template_info	{title}: {c} toifa, {d} taom narx, surat va taxallus bilan. Faqat yoʻq taomlar — bor nomlar qoladi.
+client_template_import	Shu menyuni import qilish
+client_template_confirm	{title} dan {d} taom qoʻshilsinmi? Bor taomlar oʻz holicha qoladi.
+client_template_importing	{title} import qilinmoqda…
+client_template_done	{title} dagi har taom sizning menyuingizda.
+client_template_imported	{title} dan {d} taom va {c} toifa qoʻshildi
+resv_heading	Bandlovlar
+resv_name_ph	Mehmon ismi
+resv_phone_ph	Telefon (ixtiyoriy)
+resv_guests_ph	Mehmonlar
+resv_when_ph	Qachon — 20:30, ertaga 13:00
+resv_table_ph	Stol (ixtiyoriy)
+resv_add	Band qilish
+resv_seat	Oʻtqazilgan
+resv_none	Yaqin bandlov yoʻq.
+guests_word	mehmon
+delivery_by_ph	Yetkazish (kuryer yoki xodim nomi)
+kitchen_all_day	Hozir pishirish: {items}
+kitchen_all_day_head	Hozir pishirish
+kitchen_tab_live	Jonli
+kitchen_tab_recall	Qaytarish
+kitchen_tab_stations	Stansiyalar
+split_bill	Hisobni boʻlish
+split_go	Alohida hisob qilish
+cancel	Bekor qilish
+opening_client	Mijoz ochilmoqda…
+preparing_desk	Kassa tayyorlanmoqda…
+opening_server	Server ochilmoqda…
+creating_server	Server yaratilmoqda…
+split_help	Bir mehmon toʻlaydigan taomlarni bosing · {n} tanlandi
+split_send_first	Avval KOT yuboring — alohida hisobga faqat oshxonada bor taomlar boradi
+split_pick_some	Avval alohida hisob taomlarini bosing
+split_done	Alohida hisob qilindi — zalda shu stol yonida
+split_marked	alohida hisob
+order_empty_pick	Buyurtma boʻsh — taom tanlash uchun yuqoridagi Taom qoʻshishni bosing.
+add_dishes	Taom qoʻshish
+order_so_far	Shu buyurtmada: {n} · {total}
+no_dish_match	„{q}“ ga mos taom yoʻq
+pick_dishes_help	Qoʻshish uchun taomni bosing · roʻyxatni toraytirish uchun toifa tanlang
+pick_done	Tayyor
+pick_done_dd	Tayyor · {label}
+printer_route_mode	Bu joyda bir nechta printer boʻlsa
+printer_mode_first	Birinchi ishlagani
+printer_mode_all	Hammasiga chop etish
+kot_show_area	Hudud
+kot_hide_area	Hududni yashirish
+kot_show_item_hdr	Mahsulot · Miqdor
+kot_hide_item_hdr	Ustunlarni yashirish
+kot_show_title	Sarlavha qatori
+kot_hide_title	Sarlavhani yashirish
+kot_field_order	Chop etish tartibi
+kot_field_up	Yuqoriga koʻchirish
+kot_field_down	Pastga koʻchirish
+kot_field_cycle	Keyingisini tanlash
+kot_field_select	Keyingisini tanlash
+kot_field_time	Vaqt
+kot_field_kot_no	KOT №
+kot_field_area	Hudud
+kot_field_table	Stol
+kot_field_shop	Doʻkon nomi
+kot_field_waiter	Xodim
+kot_field_station	Stansiya
+app_template_blurb_extra	Shuningdek: Egasi Zahir, Maʼmur Asif, Ofitsiant Nawaz; FOH yon paneli; 4 soatdan keyingi tarix; Bugun chizigʻi oʻchiq; ixcham KOT.
+dishes_n	{n} taom
+recipe_ph	Retsept (ixtiyoriy) — bir porsiya ishlatadi: Guruch=0.2, Paneer=0.15
+reorder_ph	Yana sotib olish
+set_reorder	Qayta buyurtma darajasini qoʻyish
+low_stock_alert	Tugab bormoqda — tez orada sotib oling: {items}
+unpriced_note	Menyuingizdagi {n} taomning hali narxi yoʻq — qoʻyguncha hisob 0.
+show_unpriced	Faqat narxsiz taomlarni koʻrsatish
+show_all_dishes	Barcha taomlarni koʻrsatish
+role_waiter	Ofitsiant
+role_kitchen	Oshxona
+role_title_rest_ph	Lavozim (mas. Kapitan, Bosh oshpaz)
+preset_help_rest	Ofitsiant: buyurtma oladi va stol yuritadi. Kassir: toʻlovni ham qabul qiladi. Oshxona: oshxona ekrani. Menejer: menyu, bekor qilish va chegirma ham.
+kind_raw	Xom ashyo
+kind_resale	Sotib olinib qayta sotilgan
+kind_dish	Biz tayyorlaydigan taom
+buy_unit_ph	Birlik (kg, litr, dona)
+add_another_way	+ Boshqa yoʻl qoʻshish
+parts_status	Kiritildi {a} / {b} · {c} qoldi
+save_expense	Xarajatni saqlash
+rest_ph	Qoldiq
+low_badge	Kam
+stock_empty	Hali zaxira yoʻq — Xaridda yozganingiz shu yerda chiqadi.
+recent_changes	Soʻnggi oʻzgarishlar
+lane_declared_label	Soliq hisob-fakturasi
+lane_owner_label	Naqd yozuv
+money_lane_bill	Hisob: {lane}

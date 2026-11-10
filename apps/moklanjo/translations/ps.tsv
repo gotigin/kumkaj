@@ -1,0 +1,835 @@
+# Pashto — پښتو (ps). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	د کورئیر ادارې کتابونه + د بکینګ میز. وړیا آف لائن.
+unlock	خلاصول
+pin_hint	د مالک PIN د 0000 په توګه پیل کیږي
+sell	بکنگ
+buy	تادیه کول
+books	د ورځې کتاب
+books_help	د نن ورځې دریځ. بکینګ = پارسلونه. تادیه کول = د کیریر بیلونه او لګښتونه. ګوندونه = لیږدونکي او لیږدونکي.
+buy_help	د لګښت واوچرونه او د کیریر بیلونه (پیسې بهر). په حساب کې د ګوند په لیجر کې پاتې کیږي.
+sell_money_in	یو پارسل کتاب کړئ
+buy_money_out	لګښت / کیریر بل
+record_purchase	د پیرود ریکارډ
+add_expense	د لګښت واؤچر
+bank_book	د بانک کتاب
+credit_help	د ګوند ID ځانګړی دی (نومونه ممکن تکرار شي). رولونه: لیږدونکی (AR)، کیریر (AP)، یا دواړه په دې ID کې. لیجرونه جلا پاتې کیږي؛ راپورونه خالص ښیي.
+party_kind_ph	دودیز رول (اختیاري) - یا پورته یو چپ ټایپ کړئ
+parties_list_heading	خوندي شوي ګوندونه
+reports_help	ې کتاب، پور ورکوونکي او پور ورکوونکي، د بانک کتاب، د لګښت واؤچر، ګټه او تاوان.
+reports_today	د ورځې کتاب (نن)
+reports_month	ګټه او تاوان (میاشت)
+reports_aging	بقایا / ډاکټر-Cr
+reports_balance_sheet	بیالنس پاڼه
+reports	د بانک کتاب او L&P
+refresh	تازه کړئ
+undo	بیرته راګرځول
+start_tracking	تعقیب پیل کړئ
+stock_minus	- ذخیره
+stock_plus	+ ذخیره
+settle_cash	نغدي تصفیه کړئ
+settle_card	تصفیه کارت
+items	نرخونه او خدمات
+nav_items	نرخونه
+more	نور
+your_items	ستاسو نرخونه
+items_help	هر قطار یو نرخ دی (د بیلګې په توګه د سطحې زون A). واحد معمولا کیلوګرام دی. د سمون لپاره ټایپ کړئ.
+add_item	نرخ اضافه کړئ
+new_item	نوی نرخ
+adding_item	د نوي نرخ اضافه کول
+editing_item	ترمیم کول
+save	خوندي کړئ
+remove	لرې کړئ
+empty_catalog	تر اوسه نرخونه نشته. نرخونه او خدمات خلاص کړئ ، یو اضافه کړئ (نوم + قیمت ، واحد کیلوګرام) ، بیا بک کول.
+counter_sale	کاونټر بکینګ
+total	ټول
+cash	نغدې
+upi	UPI
+card	کارت
+credit	ګوندونه
+clear	روښانه
+ready_to_sell	کتاب ته چمتو دی
+today_prefix	نن
+today_mid	نن
+owed	بقایا
+round_word	ګرد
+back	شاته
+sold_out	نه شته
+restock	بیا ذخیره کول
+not_tracked	نه تعقیب شوی
+in_stock	په ذخیره کې
+marked_sold_out	په نښه شوی چې شتون نلري
+add_upper	ADD
+na	N/A
+qty	Wt/Qty
+unit_at	نرخ @
+actual	حقیقي
+applied	تطبیق شوی
+note_ph	یادونه (اختیاري)
+rounded	ګرد شوی
+split	ویشل
+counter	کاونټر
+parcel	پارسل
+order	امر
+sales	کتابونه
+sales_refunds	بکنگ او بیرته ستنیدنه
+day_close	د ورځې بند
+reports_expenses	د بانک کتاب او L&P
+nav_reports	راپورونه
+nav_settings	ترتیبات
+nav_lock	تاالشي
+sidebar_settings	د غاړې تنظیمات
+sidebar_settings_help	ړئ. د ښودلو یا پټولو لپاره سویچ فلپ کړئ. ترتیبات او الک تل په بار کې پاتې کیږي.
+sidebar_always_on_short	تل روان وي
+sidebar_back_settings	شاته
+sidebar_shown	ښودل شوي
+sidebar_hidden	پټ
+sidebar_always_on	تل په بار کې
+sidebar_shown_hint	د غاړې ریل / لاندې ټبونو کې ښودل شوي
+sidebar_hidden_hint	د بار څخه پټ شوی
+sidebar_menu_items	مینو او توکي
+sidebar_enable_all	ټول فعال کړئ
+sidebar_disable_all	ټول غیر فعال کړئ
+sidebar_order_saved	د غاړې امر خوندي شو
+sidebar_visibility_saved	د غاړې د لید لید خوندي شو
+amounts_hide	پټول
+amounts_show	ښودل
+no_sale_yet	تراوسه هیڅ پلور نشته
+favorites	د خوښې وړ
+favorites_help	لپاره خوندي شوي. یو بل ته اضافه کړئ، یا د لاندې ټولو توکو څخه خپل لیست جوړ کړئ.
+your_favorites	ستاسو د خوښې
+all_items	ټول توکي
+no_favorites	تر اوسه هیڅ خوښ نه دي - د لاندې لیست څخه توکي اضافه کړئ.
+add_to_bill	په بل کې اضافه کړئ
+added	زیاته کړه
+owes_word	پورونه
+selected_word	ټاکل شوی
+chip_clear_credit	واضح - کریډیټ یا مخکې اخیستل
+chip_missing_customer	ټاکل شوی پیرودونکي ورک شوي - بیا غوره کړئ
+chip_no_customer	تراوسه هیڅ پیرودونکی نشته - نوم ولیکئ، بیا کریډیټ ټایپ کړئ
+credit_summary_fmt	{} پیرودونکي · خلاص کریډیټ {} · پرمختګونه ترسره شوي {}
+recent_label	وروستي:
+inventory	انوینٹری
+inventory_stock	زیرمه او ذخیره
+branches	څانګې
+branches_org	څانګې او ارګانونه
+credit_customers	ګوندونه (قرض ورکوونکي او پور ورکوونکي)
+customer_name_ph	د ګوند نوم
+new_customer_ph	د ګوند نوی نوم
+item_name_ph	د نرخ نوم (د بیلګې په توګه د سطحې زون A)
+item_price_ph	فی کیلو ګرامه / لومړی سلیب
+start_template	محصول
+next_booking	راتلونکی بکینګ
+destination_ph	د منزل ښار / زون
+consignee_ph	د ترلاسه کوونکي نوم
+consignee_phone_ph	د رسیدونکي تلیفون
+consignee_address_ph	د سپارلو پته
+origin_name_ph	د لیږونکي نوم
+origin_phone_ph	د لیږونکي تلیفون
+origin_address_ph	پورته کول / اصلي پته
+booking_consignor_heading	لیږونکی (پیرودونکی / لیږونکی)
+booking_consignee_heading	بار وړونکی (رسونکی)
+booking_consignor_hint	د ډکولو لپاره یو ګوند غوره کړئ، یا د تګ راتګ لپاره خالي پریږدئ. د کور اخیستلو او RTO لپاره اړتیا ده.
+booking_consignee_hint	د پارسل اخیستونکی. د واک ان کاونټر ډراپ آفونو لپاره خالي پریږدئ.
+weight_kg_ph	حقیقي کیلوګرامه
+length_cm_ph	L cm
+breadth_cm_ph	B cm
+height_cm_ph	H cm
+chargeable_kg	د چارج وړ کیلو ګرامه
+awb_label	AWB
+booking_help	لیږدونکی + لیږدونکی (خالی سم) → منزل → وزن → د اخیستلو نرخ → حساب / نغدي → تادیه. AWB په رسید کې چاپ کوي. راتلونکی بکینګ میز پاکوي. ګول شوی د تطبیق سره مساوي پیل کیږي - یوازې د بل ګردولو لپاره ترمیم کړئ.
+cart_empty_hint	میز خالي - لیږدونکی / لیږدونکی اختیاري ، منزل او وزن تنظیم کړئ ، په نرخ کې ADD ټایپ کړئ ، بیا تادیه وکړئ.
+team	ټیم
+team_pins	ټیم او PINs
+my_pin_settings	زما پن
+settings_hub_help_my_pin	د هغه چا لپاره چې په دې وسیله السلیک شوی وي د غیر الک PIN بدل کړئ.
+team_self_help	یوازې تاسو کولی شئ خپل انلاک PIN (او اختیاري د ننوتلو پاسورډ) بدل کړئ. د مالک څخه پوښتنه وکړئ که تاسو مختلف سکرینونو یا حقونو ته اړتیا لرئ.
+backup_settings	بیک اپ او تنظیمات
+lock_app	اپلیکیشن بند کړئ
+pick	غوره کړه
+select	وټاکئ
+advance	پرمختگ
+owner	خاوند
+staff	کارکوونکي
+photo	انځور
+auto	اتومات
+prev	مخکینی
+next	بل
+ok	OK
+this_shop	سرور
+extra_till	کلاینټ
+off	بند
+server	سرور
+client	کلاینټ
+language_currency	ژبه او اسعارو
+language	ژبه
+choose_language	خپله ژبه غوره کړئ
+language_setup_hint	د دې وسیلې ژبه تعقیب کړئ، یا پخپله یوه غوره کړئ.
+lang_follow_platform	د وسیلې ژبه
+lang_pick_user	ژبه غوره کړئ
+lang_platform_now	اوس د وسیلې ژبه
+selected_language	ټاکل شوی
+continue	ادامه ورکړئ
+this_device	دا وسیله
+device_use_q	دا وسیله به څنګه وکارول شي؟
+last_server_mode	سرور و - د دوام لپاره ټایپ کړئ
+last_client_mode	کلاینټ و — د دوام لپاره ټک ووهئ
+choose_server	یو سرور غوره کړئ
+choose_server_hint	یو موجود سرور خلاص کړئ، یا د بل سوداګرۍ لپاره یو جوړ کړئ.
+create_new_server	نوی سرور جوړ کړئ
+open_server	خلاص
+new_server_name_ph	د نوي سرور نوم (اختیاري)
+server_remove_pin_ph	د سرور لرې کولو لپاره د مالک PIN
+only_owner_remove_server	یوازې مالک کولی شي سرور لرې کړي
+owner_pin_remove_server	د دې سرور لرې کولو لپاره د مالک PIN اړین دی
+device_setup_help	سرور کتابونه دلته ساتي. کلاینټ له سرور سره جوړه کېږي.
+currency	اسعارو
+backup	بیک اپ
+settings_sec_diag	تشخیص
+settings_hub_help	په یو وخت کې یوه سیمه پرانیزئ - لږ سکرول کول، روښانه انتخابونه.
+settings_sec_devices	نور وسایل
+settings_sec_alerts	خبرتیاوې
+alerts_help	څومره وخت د وضعیت پیغامونه ستاسو لپاره په سکرین کې پاتې کیږي (دا ننوتنه).
+snack_secs_ph	ثانیې (3-60، ډیفالټ 10)
+snack_secs_save	د خبرتیا وخت خوندي کړئ
+snack_secs_saved	د خبرتیا وخت خوندي شوی — {n} ثانیې
+snack_secs_bad	ثانیې د شمیرې په توګه دننه کړئ (3-60)
+cancelled	لغوه شو
+cancel	لغوه کړئ
+opening_client	کلاینټ پرانیستل کېږي…
+preparing_desk	د میز چمتو کول...
+opening_server	د سرور پرانیستل...
+creating_server	سرور جوړول...
+diag_privacy_help	څرګند تصویب ته اړتیا لري - هیڅکله نه پلورل کیږي یا دریمې ډلې ته نه ورکول کیږي.
+diag_level	د تفصیل کچه
+diag_level_error	تېروتنې
+diag_level_warn	اخطارونه
+diag_level_info	معلومات
+diag_level_debug	Debug
+diag_support_start	د 30 دقیقو مالتړ سیشن پیل کړئ
+diag_support_stop	د مالتړ غونډه پای ته ورسوئ
+diag_support_started	د مالتړ سیشن آن - د 30 دقیقو لپاره توضیحات ډیبګ کړئ
+diag_support_ended	د مالتړ غونډه پای ته ورسیده
+diag_export_local	محلي کاپي صادر کړئ
+diag_export_local_done	ځایی تشخیص په {path} کې چمتو دی — غوره کړئ چیرې چې کاپي خوندي کړئ
+diag_approve_send	د دې وسیله بند شریکول تصویب کړئ
+diag_send_heading	دا وسیله شریک کړئ
+diag_send_help	ي. د دریمې ډلې سره شریک نه دی. په لینکس، وینډوز، macOS، او Android کې کار کوي.
+optional_login_heading	اختیاري ننوتل
+rights_heading	حقوق
+booking_scope_heading	کورني / نړیوال
+diag_send_approved	شریکول د یوې کڅوړې لپاره تصویب شوي (ډیر ژر پای ته رسیږي)
+diag_export_send	د شریکولو کڅوړه جوړه کړئ (تصویب ته اړتیا لري)
+diag_export_send_done	{path} کې چمتو ده — غوره کړئ چیرې چې خوندي کړئ ، بیا یوازې د کمکج مالتړ ته واستوئ
+diag_save_bundle	د تشخیص کاپي خوندي کړئ
+diag_bundle_saved	د تشخیص کاپي په {path} کې خوندي شوې
+diag_bundle_failed	د تشخیص کاپی خوندي نشو کولی - بیا هڅه وکړئ
+diag_clear	د تشخیصی الګونه پاک کړئ
+diag_cleared	تشخیصی الګ پاک شوی
+use	کارول
+add_branch	څانګه اضافه کړئ
+add_conversion	تبادله اضافه کړئ
+add_item_plain	توکي اضافه کړئ
+add_note	یادښت اضافه کړئ
+add_opening_balance	د پرانیستلو بیالنس اضافه کړئ
+add_rider	سوار اضافه کړئ
+add_staff	کارمندان اضافه کړئ
+add_unit	واحد اضافه کړئ
+add_use_name	دا نوم اضافه / وکاروئ
+allow_extra_tills	اضافي ونو ته اجازه ورکړئ
+amend	ترمیم
+apply_country_pack	د هیواد کڅوړه پلي کړئ
+datetime_appearance	د نیټې او وخت بڼه
+datetime_appearance_help	کتابونه د کال لومړی RFC3339 دننه ساتي. دا یوازې بدلون کوي ​​چې څنګه نیټې او ساعتونه په رسیدونو، لیبلونو، راپورونو، او سکرین کې ګوري.
+datetime_example	اوس بېلګه: {ex}
+date_order	د نیټې امر
+date_order_dmy	D/M/Y
+date_order_mdy	M/D/Y
+date_order_ymd	Y-M-D
+time_format	ساعت
+time_format_24h	24-ساعت
+time_format_12h	12-ساعت
+attach_bill_photo	د بل عکس ضمیمه کړئ
+attach_pdf	ضمیمه کړئ PDF
+attach_photo	عکس ضمیمه کړئ
+bank	بانک
+bank_in	په بانک کې
+bank_out	بانک بهر
+bank_to_till	بانک → ته
+till_to_bank	بانک ته →
+mark_cleared	مارک پاک شو
+unmark	بې نښه
+role_both	دواړه
+role_carrier	کیریر
+role_cashier	کیشیر
+role_consignor	لیږدونکی
+role_manager	مدیر
+role_supplier	عرضه کوونکی
+branch_name_sell_ph	د پلور لپاره د څانګې نوم
+bring_my_book	زما کتاب راوړه
+business_tax_id_ph	د سوداګرۍ مالیه ID
+card_amount_ph	د کارت اندازه
+cash_amount_ph	د نغدو پیسو اندازه
+upi_amount_ph	د UPI اندازه
+carrier_cost_ph	د وړونکي لګښت
+carrier_party_ph	کیریر ګوند
+choose_icon	آیکون غوره کړئ
+choose_logo	لوګو غوره کړئ
+choose_receipt_stamp	د رسید ټاپه غوره کړئ
+choose_payment_qr	د تادیې QR غوره کړئ
+clear_icon	روښانه نښه
+clear_logo	لوګو پاک کړئ
+clear_photo	پاک عکس
+clear_stamp	پاک ټاپ
+clear_payment_qr	پاک تادیه QR
+print_faces	مخونه چاپ کړئ (رسید / دوره بل)
+print_faces_help	د بکینګ رسیدونو او دورې بیلونو کې ستاسو د لوګو تر څنګ اختیاري ټاپه او تادیه QR.
+awb_pools_heading	د کیریر AWB شمیرې حوضونه
+add_awb_pool	د AWB حوض اضافه کړئ
+awb_pool_carrier_ph	د کیریر ګوند نوم
+awb_pool_start_ph	پیل نمبر
+awb_pool_end_ph	پای نمبر
+awb_pool_prefix_ph	مخفف (اختیاري)
+awb_pool_label_ph	لیبل (اختیاری)
+pieces_ph	ټوټې (خالي = 1) - د کارګو / څو ټوټې لپاره پراخه کړئ
+bulk_awbs_ph	بلک AWBs - د یو حالت پرمختګ لپاره ډیری (نوی لاین یا کوما) پیسټ کړئ
+tds_cut_ph	د TDS کمول (اختیاري)
+discount_ph	تخفیف (اختیاری)
+cheque_no_ph	د چک شمیره (اختیاري)
+bill_reminder_chase	د بل یادښت تعقیب لیست
+month_mix_report	د میاشتې مخلوط راپور
+copy_month_gst_csv	د میاشتې GST CSV کاپي کړئ
+domestic	کورني
+international	نړیوال
+pick_logo	لوګو غوره کړئ
+booking_scope_hint_domestic	حجمیتریک ÷5000 (کورنی) - د 6000 هوا لپاره نړیوال ټایپ کړئ
+booking_scope_hint_intl	حجمیتریک ÷6000 (نړیوال هوا) - د پلورنځي لپاره کورنی ټایپ ÷5000
+cod_register	د کوډ راجستر
+collect_cod	COD (AWB) راټول کړئ
+consignments_dispatch	بار وړل او لیږل
+consignor_party_ph	د لیږدونکي / ګوند نوم
+copy_day_book_csv	د ورځې کتاب CSV کاپي کړئ
+copy_day_close	د ورځې بند کاپي
+copy_items_csv	کاپي توکي CSV
+copy_outstanding_csv	د پام وړ CSV کاپي کړئ
+copy_parties_csv	د ګوندونو CSV کاپي کړئ
+copy_party_ledger_csv	د ګوند لیجر CSV کاپي کړئ
+copy_receipt	د رسید کاپي
+copy_report	راپور کاپي
+counted_cash_ph	په دراز کې نغدې شمیرل شوي
+counter_agency_ph	د کاونټر / ادارې نوم (اختیاري)
+create_backup	بیک اپ جوړ کړئ
+day_close_summary	د ورځې پای لنډیز
+delete_party	ټاکل شوی ګوند ړنګ کړئ
+dispatch_to_rider	لیږل شوی بک شوی → سوار
+docket_charge_ph	د ډاکټ چارج
+declared_value_ph	اعلان شوی ارزښت
+contents_ph	منځپانګې
+eway_ph	د بریښنایی بل نمبر
+insurance_label	بیمه
+yes_label	هو
+no_label	نه
+print_route_label	د چاپ لاره
+new_party_kind_label	د ګوند نوی ډول
+done_open_books	بشپړ شوی - کتابونه خلاص کړئ
+export_day	د صادراتو ورځ
+extra_note_expense_ph	په وروستي لګښت کې اضافي یادښت
+extra_note_awb_ph	په دې AWB / پلور کې اضافي یادونه
+failed_delivery	د سپارلو ناکامه
+find_scan_awb	موندل / سکین AWB
+forget_shop	دا هټۍ هېر کړئ
+fuel_ph	د تیلو
+handover_carrier	لاسي بک شوی → بار وړونکی
+import_day	د وارداتو ورځ
+import_items_csv	د توکو واردول / نرخونه CSV…
+import_parties_csv	د ګوندونو CSV وارد کړئ...
+import_pincodes_csv	د پنکوډ CSV وارد کړئ…
+import_carrier_bill_csv	د بار وړونکي بل CSV وارد کړئ…
+copy_carrier_bill_report	د وروستي کیریر بل راپور کاپي کړئ
+use_carrier_cost	د کیریر لګښت وکاروئ
+rate_carrier_ph	کیریر (خالی = زموږ د پلور نرخ)
+rate_party_ph	ګوند (خالي = ټول پیرودونکي)
+carrier_pick_ph	د لګښت لپاره کیریر (د پرتله کولو څخه)
+item_name	د توکي نوم
+load_bulk_row	لوی قطار → میز پورته کړئ
+login_id_ph	کارن نوم
+mark_delivered	مارک وسپارل شو
+manifest_cod_total	د کوډ ټولټال
+manifest_received_by	لخوا ترلاسه شوی
+manifest_sign	لاسلیک
+ndr_address_wrong	ادرس غلط دی
+ndr_customer_unavailable	نه شته
+ndr_door_locked	دروازه بنده شوه
+ndr_other	نور
+ndr_refused	انکار وکړ
+out_for_delivery	د تحویل لپاره بهر
+print_drs	DRS چاپ کړئ
+print_run_sheet	د چلولو پاڼه چاپ کړئ
+reattempt	بیا هڅه
+rider_cod_handed_ph	کوډ وسپارل شو
+settle_rider_cod	د سواری کوډ تصفیه کړئ
+mode_desk	میز
+mode_rider	سواره
+waiting_office	دفتر ته د رسیدو انتظار
+capture_signature	لاسلیک نیول
+incoming_manifest	راتلونکی ښکاره
+pickup_request	د پورته کولو غوښتنه
+pickup_run	پورته کول
+auto_assign_area	په اتوماتيک ډول ټاکل شوې ساحه
+reorder_stops	بیا تنظیم کول ودریږي
+settle_rider_pay	د سپرلۍ معاش تنظیم کړئ
+vehicle_inspect	د وسایطو تفتیش
+print_docket	د چاپ سند
+franchise_statement	د فرنچائز بیان
+tally_export	د ټلی واؤچر صادرول
+open_whatsapp	WhatsApp خلاص کړئ
+copy_sms	د SMS متن کاپي کړئ
+pick_barcode_image	د سکین کولو لپاره عکس غوره کړئ
+share_receipt_whatsapp	په WhatsApp کې رسید شریک کړئ
+delivery_feedback	د سپارلو فیډبیک
+lan_self_book	د LAN ځان بک کول
+new_party_clear	نوی ګوند (روښانه بڼه)
+new_party_kind_ph	د ګوند نوی ډول (سپارونکی / کیریر)
+next_country	راتلونکی هیواد
+prev_country	پخوانی هیواد
+note_gstin_ph	یادښت / GSTIN / د تړون یادونه
+note_pod_ph	یادونه / POD (اختیاری)
+on_account_ap	په حساب (AP)
+org_optional_ph	سازمان (اختیاری)
+paid_now	اوس تادیه شوی
+pairing_code_ph	د جوړه کوډ
+pair_now	اوس جوړه
+party_name_selected_ph	د ګوند نوم (یا غوره شوی وکاروئ)
+password_ph	رمز
+pay_ap_card	د AP کارت تادیه کړئ
+pay_ap_cash	د AP نغدي پیسې ورکړئ
+pay_ap_upi	تادیه کړئ UPI AP
+period_bill	د دورې بل
+period_bill_party	د دورې قانون (ګوند)
+pick_pod_photo	د POD عکس غوره کړئ
+print_awb_label	د AWB لیبل چاپ کړئ
+print_open	چاپ / خلاص کړئ
+reason_amend_ph	د تعدیل / باطل / بیرته ستنیدو دلیل
+reason_note_ph	دلیل / یادښت (ضایع، شمیرل، ...)
+record_day_close	د ورځې بند ثبت کړئ
+refresh_from_shop	له هټۍ څخه تازه کړئ
+refund	بیرته ورکول
+remit_cod	د COD سپارل (ګوند)
+remove_selected	غوره شوی لرې کړئ
+restore_backup	بیک اپ بحال کړئ
+rider_name_ph	د سپرلۍ نوم
+rider_phone_ph	د سوار تلیفون
+riders	سواره
+riders_own_fleet	سپاره (خپله بیړۍ)
+rollup	رول پورته کول
+save_booking_measures	د بکینګ تدابیر خوندي کړئ
+save_brand	نښه خوندي کړئ
+save_business_id	د سوداګرۍ ID خوندي کړئ
+save_business_name	د سوداګرۍ نوم خوندي کړئ
+save_features	د کار تنظیم خوندي کړئ
+save_names	نومونه خوندي کړئ
+server_ip_ph	د سرور IP (د مثال په توګه 10.1.168.192)
+set_credit_limit	ګوند ته محدودیت پلي کړئ
+set_login_selected	انتخاب شوي ته د ننوتلو غوښتنه وکړئ
+set_login_named	{name} ته د ننوتلو غوښتنه وکړئ
+shop	هټۍ
+start_fresh	تازه پیل کړئ
+stop_extra_tills	اضافي کښت بند کړئ
+backup_auto	په اتوماتيک ډول بیک اپ کیږي · وروستی {when} · وروستۍ 14 ورځې په {dir} کې ساتل کیږي.
+backup_auto_none	هره ورځ په اتوماتيک ډول بیک اپ کیږي - لومړی په یوه شیبه کې چلیږي.
+backup_copy_to	کاپي هم {dir} ته ځي.
+backup_copy_btn	یو فولډر ته بیک اپ هم کاپي کړئ ...
+autostart_off	د دې کمپیوټر سره پیل کړئ
+autostart_on	د دې کمپیوټر سره پیل کیږي ✓ — د ودرولو لپاره ټایپ کړئ
+autostart_done_on	کیشن خلاصوي کله چې پیل شي - د پلورنځي سرور د بریښنا قطع کیدو وروسته بیرته راځي.
+autostart_done_off	دا کمپیوټر نور اپلیکیشن نه خلاصوي کله چې پیل شي.
+right_allowed	اجازه ورکړل شوه
+right_with_approval	په تصویب سره
+right_denied	اجازه نه ورکول کیږي
+editing_staff	لپاره حقوق
+team_pick_ph	د ترمیم لپاره کارمندان - نوم، کارن نوم، یا غوره کول
+select_staff	دا کارمندان وټاکئ
+rights_help	حقونه — د بدلون لپاره ټایپ کړئ: اجازه ورکړل شوې ← د تصویب سره (په هغه وخت کې د مدیر PIN) → اجازه نشته.
+right_void_refund	بکینګ باطل یا بیرته ورکړئ
+right_amend_sale	ثبت شوی بکینګ اصلاح کړئ
+find_server	د هټۍ سرور ومومئ
+finding_server	په دې Fi‐Wi کې د پلورنځي سرور په لټه کې...
+no_server_found	← د اضافي ټیلونو ته اجازه ورکړئ (ورته وای فای). یا هلته ښودل شوی IP ټایپ کړئ.
+servers_found_pick	هغه هټۍ ټایپ کړئ چې تاسو غواړئ ورسره وصل شئ.
+server_host_selected	د {host} په کارولو سره - د جوړه کولو کوډ دننه کړئ، بیا اوس جوړه کړئ.
+device_forgotten	ړه - دا بیا د هټۍ اوسني کوډ سره یوځای کړئ. په دې انتظار کې سپارښتنې ساتل کیږي.
+forget_device	هېرول
+last_seen	لیدل
+new_pair_code	نوی جوړه کوډ
+lan_offline	د پلورنځي سرور د السرسي وړ نه دی
+lan_offline_waiting	د پلورنځي سرور د السرسي وړ نه دی · {n} انتظار
+lan_connecting	هټۍ سره نښلول...
+pair_finishing	جوړه جوړه ... د دفتر کتابونو پلي کول
+pair_opening	د دفتر پرانیستل…
+lan_live	ژوندی
+lan_sending	{n} لیږل
+lan_sign_in_to_send	د لیږلو لپاره بیا ننوتل {n}
+lan_pair_again	دا وسیله بیا جوړه کړئ
+lan_update_app	ایپ تازه کړئ - دا وسیله او د دفتر سرور مختلف نسخې لري
+allow_firewall	نورو وسایلو ته د نښلولو اجازه ورکړئ
+firewall_blocked	د دې کمپیوټر فایر وال نور وسایل بندوي — د نورو وسیلو سره د نښلولو اجازه ورکړئ.
+firewall_waiting	د اډمین پرامپټ ته انتظار...
+lan_join_help	په بله وسیله: د کلاینټ حالت → د پلورنځي سرور ومومئ (یا {addr} ولیکئ) → د جوړې کوډ {code}.
+lan_pair_status	وای فای {addr}
+lan_join_help_no_addr	دا وسیله د یو پته لپاره Fi‐Wi سره وصل کړئ.
+lan_no_address	تر اوسه د Fi‐Wi ادرس نشته — د پلورنځي Fi‐Wi سره وصل دی.
+lan_not_listening	د نه منلو وسیلې (پورټ {port} بوخت). اپلیکیشن بیا پیل کړئ.
+lan_tills_off	اضافي کښتونه بند دي. دوی ته اجازه ورکړئ چې بل وسیله یوځای شي.
+paired_with	جوړه · {url}
+not_paired	جوړه نه ده
+choose_device_use	سرور یا کلاینټ غوره کړئ.
+paired_note	جوړه شوې. د پلور لپاره خلاص کړئ، یا د وروستي لپاره تازه کړئ.
+last_update_at	وروستی تازه: {time}.
+pair_intro	سرور ومومئ، یا د هغې پته او جوړه کوډ ټایپ کړئ.
+queue_waiting	هټۍ ته د رسیدو انتظار ({n}):
+queue_tries	{n} ځله هڅه شوې · وروستی ځواب: {e}
+save_backup_copy	یو بیک اپ کاپي خوندي کړئ ...
+backup_copy_saved	د بیک اپ کاپي خوندي شوې - دا له دې وسیله لرې وساتئ (یو USB سټیک یا بل وسیله)
+backup_copy_overdue	هیڅ بیک اپ کاپي دا وسیله د {n} ورځو لپاره نه ده پریښې — ترتیبات → بیک اپ
+backup_copy_failed	بیک اپ کاپي هلته نشي خوندي کیدی - بل ځای غوره کړئ
+clock_off	د دې وسیلې ساعت د هټۍ له سرور څخه {min} دقیقې دی — په دې وسیله مناسب وخت وټاکئ
+printers_heading	په دې وسیله چاپګر
+printers_help	اصلي چاپګر ومومئ، بیا د رسید یا AWB لیبل غوره کړئ. هره دنده خپل عرض، انځور یا منظره لري، او دا چې څنګه بایټونه لیږل کیږي. یو لیبل د بارکوډ چاپ کوي. خالي ځای = چاپ مه کوئ.
+job_width	د منځپانګې عرض (mm)
+job_width_ph	یا د 40-210 mm پلنوالی ټایپ کړئ
+job_layout	ترتیب
+job_delivery	څنګه دنده لیږل کیږي
+job_size	د فونټ اندازه
+job_size_ph	د مثال په توګه ۸۱، ۰۲، ۶۲...
+save_receipt_format	د رسید بڼه خوندي کړئ
+save_label_format	د لیبل بڼه خوندي کړئ
+test_receipt_format	د ازموینې رسید
+test_label_format	د ازموینې لیبل
+test_receipt_sent	د نمونې رسید لیږل شوی
+test_label_sent	نمونه لیبل لیږل شوی
+test_print_no_printer	د دې کار لپاره چاپګر نشته - د دې ځای لاندې یو اضافه کړئ
+printers_host_only	چاپګر د هټۍ په وسیله (سرور) کې تنظیم شوي. دا تر هغه پورې چې هلته دندې واستول شي - په سرور کې پاتې کیدل ومومئ / اضافه کړئ / وټاکئ. د ازموینې پاڼه سرور ته ځي.
+printers_pool_heading	چاپګر
+printers_routes_heading	چیرته چې شیان چاپ شي
+printer_label_ph	نوم (د بیلګې په توګه میز)
+printer_target_ph	کوربه:9100 · bt:MAC · usb:VID:PID · د سیسټم نوم
+printer_mode_heading	د نوي محصولاتو لپاره پروفایل
+printer_mode_standard	معیاري انځور
+printer_mode_landscape	معیاري منظره
+printer_mode_thermal	حرارتي
+printer_mode_standard_short	پورټریټ
+printer_mode_landscape_short	منظره
+printer_mode_thermal_short	حرارتي
+printer_format_custom	نوی دودیز پروفایل
+printer_format_custom_label	ګمرک
+printer_format_custom_added	د دې ځای لپاره دودیز پروفایل اضافه شوی
+add_printer	پرنټر اضافه کړئ
+remove_printer	وروستی لرې کړئ
+route_pick_ph	رسید یا لیبل
+route_add_printer_ph	دې ځای ته پرنټر اضافه کړئ
+route_receipt	رسید
+route_label	د AWB لیبل
+route_dont_print	هیڅ پرنټر نه دی ټاکل شوی
+route_add	ځای ته اضافه کړئ
+route_up	پورته
+route_down	ښکته
+route_remove	وروستی لرې کړئ
+route_clear	د دې ځای لپاره پاک چاپګر
+save_printers	چاپګر خوندي کړئ
+print_test_page	د ازموینې پاڼه چاپ کړئ
+printers_saved	د دې وسیلې لپاره چاپګر خوندي شوي
+test_page_sent	د ازموینې پاڼې لیږل شوي - پرنټر وګورئ
+printers_found	په دې وسیله موندل شوی: {list}
+find_printers	چاپګر ومومئ
+printers_looking	په دې وسیله او Wi‑Fi کې د پرنټرونو په لټه کې...
+printers_tap_find	د هغو کتارونو لپاره پرنټرونه ومومئ چې په دې Wi‑Fi کې دندې او د شبکې رسید پرنټرونه مني (د لرې شوي یا آفلاین نه دي) باندې کلیک وکړئ.
+printers_none_found	هیڅ چاپګر ونه موندل شو — د سیسټم پرنټر نوم ولیکئ، یا د شبکې پته (د مثال په توګه 192.168.1.50).
+receipt_printer_ph	د رسیدو لپاره چاپګر
+queue_refused	د هټۍ لخوا نه منل کیږي ({n}) - هر یو په کاونټر کې وګورئ:
+clear_not_accepted	چک شوی - دا لیست پاک کړئ
+device_name_ph	د دې وسیله نوم
+lan_last_update	وروستی تازه {time}
+lan_not_accepted	{n} نه منل کیږي
+connected_now	اوس وصل شوی
+backup_failed	وروستی اتوماتیک بیک اپ ناکام شو: {e}
+backup_overdue	{n} ورځو لپاره بیک اپ نشته - اپلیکیشن په دې وسیله خلاص وساتئ ترڅو دا بیک اپ شي.
+disk_low	په دې وسیله یوازې {mb} MB وړیا - بیک اپ به ډیر ژر ناکام شي. یو څه ځای خالي کړئ.
+last_seen_devices	وروستی لیدل شوی: {time}
+sync_interval	هر {secs}s همغږي کړئ
+connection_to_shop	د هټۍ سره اړیکه
+supplier_name_ph	د عرضه کوونکي نوم (یا ګوند)
+supplier_ph	عرضه کوونکی
+switch_device	دا وسیله بدل کړئ
+take_payment	تادیه واخلئ
+tax_added_till	{tax} ځانګړی
+tax_inside_price	{tax} ټول شموله
+today_books	نن ورځ کتابونه
+unlock_after_pairing	داخل کړئ PIN
+unlock_with_login	د ننوتلو سره خلاص کړئ
+update_my_password	زما پټنوم تازه کړئ
+update_my_pin	زما PIN تازه کړئ
+duress_heading	اضطراري انالک PIN (یوازې مالک)
+duress_help	اختیاري. که دا PIN ستاسو په ځای په انلاک کې ټایپ شوی وي، د ټولو کتابونو ننوتل پاک شوي (بکینګ، لیجرونه، تاریخ) او میز د مالک په توګه پرانستل کیږي چې نورمال ښکاري - نرخونه، ګوندونه، زونونه، کارمندان او ترتیبات پاتې کیږي. سکیما او تشکیلات حذف شوي ندي. یوازې وکاروئ که تاسو مجبور یاست چې خلاص کړئ. خالي پریږدئ او د بندولو لپاره خوندي کړئ. هیڅکله د چا د PIN په څیر نه وي.
+duress_pin_ph	عاجل پن (4-12 عدد)
+duress_confirm_ph	د تایید لپاره بیا ټایپ کړئ
+save_duress_pin	بیړني PIN خوندي کړئ
+clear_duress_pin	بیړني PIN بند کړئ
+duress_on	د بیړني انالک PIN فعال دی
+duress_off	د بیړني انالک PIN بند دی
+duress_saved	عاجل خلاصول PIN خوندي شو
+duress_cleared	د بیړني انالک PIN بند شو
+vehicle_ph	موټر
+void	باطل
+write_off_ap	ولیکئ AP
+write_off_nil	ولیکئ بند / صفر توازن
+zone_ph	زون (د نرخونو نوم)
+caption_today	نن
+caption_bookings	بکینګونه
+caption_payments_today	نن ورځ تادیات
+caption_outstanding	وتلی
+caption_bank	بانک
+paid_by	لخوا ورکول کیږي
+second_way	دویمه الره
+weight_in	په وزن کې
+size_in	په اندازه
+goods_received	توکي ترالسه شول
+expense_heading	لګښت
+notes_attach_sale	یادښتونه او ضمیمې (ټاکل شوی پلور)
+notes_attach_party	یادښتونه او ضمیمې (ټاکل شوې ګوند)
+attachments_last_expense	ضمیمې (وروستی لګښت)
+credit_limit_heading	د کریډیټ حد (ټاکل شوی / نومول شوی ګوند)
+pay_selected_heading	ټاکل شوی تادیه (پور تصفیه کول / مخکې اخیستل)
+write_off_heading	ولیکئ (پرته له تادیې پاک کړئ)
+pay_ap_heading	هغه څه ورکړئ چې موږ یې پور ورکوو (AP)
+country_tax	هیواد او مالیه
+extra_tills_heading	تر هغه پورې اضافي
+other_devices_help_heading	نور وسایل تنظیم کړئ
+other_devices_help	په دې وسیله (سرور): نور وسایل ← اضافي ټیلو ته اجازه ورکړئ. د جوړه کولو کوډ او وای فای پته یاد کړئ. ټایپ کړئ نورو وسیلو ته اجازه ورکړئ چې وصل شي که چیرې څرګند شي. په کمپیوټر کې، د دې کمپیوټر سره پیل کړئ ټایپ کړئ. په یو بل وسیله: اپلیکیشن نصب کړئ، د پیرودونکي حالت غوره کړئ، د پلورنځي سرور ومومئ (یا پته ولیکئ)، د جوړه کولو کوډ دننه کړئ، اوس جوړه کړئ. امرونه په وسیله انتظار کوي که چیرې Wi‑Fi ښکته شي او لاړ شي کله چې سرور بیا ځواب ورکړي.
+your_brand	ستاسو برانډ (په اپلیکیشن کې)
+units_heading	واحدونه
+booking_measures	د بک کولو اقدامات
+drawer_count	د دستګاه شمیره (اختیاري)
+spreadsheet_csv	سپریډ شیټ (CSV)
+bank_reconciliation	د بانک پخالینه (ستاسو د بانک بیان په مقابل کې ټیک بند کړئ)
+book_add_product	کتاب - محصول / نرخ اضافه کړئ
+book_opening_credit	کتاب - د پرانیستلو کریډیټ
+account_kind	د حساب ډول (یو ټایپ)
+active_ledger	فعال لیجر
+actual_total_cap	اصلي مجموعه
+amend_help	کن د مالک یا مدیر PIN ته اړتیا ولري (پورته ټایپ شوی؛ ستاسو د نوم سره ثبت شوی).
+applied_total_cap	ټولټال پلي شوي
+bank_balance	د بانک بیالنس
+bank_net_today	نن ورځ د بانک جال
+branch_export_help	صادرات د بیک اپ فولډر کې د ورځې سنیپ شاټ لیکي او کلپ بورډ ته یې کاپي کوي. د بلې آوټ لیټ ورځې واردولو لپاره، د هغې فایل په هغه فولډر کې د import_branch_snapshot.json په توګه خوندي کړئ، بیا وارد کړئ.
+brand_shown_help	وسیله کې د نصب شوي ایپ نوم او آئیکون د پلیټ فارم لیست کولو په توګه پاتې کیږي.
+app_icon	د اپلیکیشن آئیکن
+logo_help	په ایپ کې په سکرینونو کې د اختیاري پلورنځي نښه.
+onboard_layout	هغه څه چې تاسو یې ترالسه کوئ
+item_photo_help	اختیاري. د عکس پرته موږ د توکي نوم څخه ابتدايي ښکاره کوو.
+cash_in_hand	په الس کې نغدې پیسې (تر هغه پورې)
+change_my_pin_heading	زما PIN بدل کړئ (یوازې ستاسو)
+connect_to_server	د سرور سره وصل کړئ
+counter_locked	کاونټر 01 · تړل شوی
+country_pack_help	ریز ID ټاکي. کومکج هرچیرې مالیه نه جمع کوي یا دولتي بریښنایی رسیدونه نه خپروي.
+currency_use_help	سکرول او ټایپ کړئ د هر مالتړ شوي اسعارو لپاره وکاروئ.
+day_close_help	او د دراز توپیر که شمیرل کیږي) د پلټنې الګ ته خوندي کوي. دا د پلور مخه نه نیسي.
+expenses_word	لګښتونه
+feature_access_help	د ټاکل شوي کارمندانو لپاره فیچر ته لاسرسی (د اضافه کولو وروسته ټایپ کړئ)
+footer_local	ځایی SQLite · د تل لپاره وړیا · صفر کالوډ
+fresh_book_moklanjo	تازه = خالي کتلاګ (وروسته توکي اضافه کړئ). کتاب = د پرانیستې ذخیره ډول او څوک چې تاسو ته پور ورکوی لاندې.
+fresh_selected	تازه انتخاب شوی - کتالګ خالي پاتې کیږي. کله چې چمتو وي ټیک کړئ.
+gross_word	ناخالص
+how_start	تاسو څنګه پیل کول غواړئ؟
+later_country_pack	وروسته: ترتیبات ← د مالیې او تادیې لیبلونو لپاره د خپل هیواد کڅوړه پلي کړئ.
+local_badge	ځايي
+measures_help_moklanjo	څنګه پارسلونه د بکینګ میز کې اندازه کیږي. په هغه واحدونو کې ابعاد او وزن ټایپ کړئ چې تاسو یې کاروئ - معیاري (cm, m, in, ft · kg, g, lb, oz) یا ستاسو خپل واحد چې پورته cm / kg پورې تړلی وي (مستقیم یا د نورو واحدونو له لارې). کتابونه تل کیلو ګرامه ثبتوي. د ساتلو لپاره یوه ساحه خالي پریږدئ.
+mix_type_hint_moklanjo	په هر یو کې څومره اندازه ولیکئ (نغدي / UPI / کارت / کریډیټ). باید په بیل کې اضافه شي. کریډیټ پورته پیرودونکي ته اړتیا لري.
+money_in_sales	پیسې په پلور کې
+more_help_moklanjo	کتلاګ، خرڅلاو، کریډیټ، ټیم، بیک اپ - جمع سټاک او اضافي ټیلونه کله چې اړتیا وي.
+net_word	جال
+offline_badge	آفالین
+optional_login_help	ل (id + پاسورډ). مالک یو ځل ټاکي؛ یوازې کارونکي کولی شي وروسته پاسورډ بدل کړي.
+or_unlock_login	یا د ننوتلو ID + پاسورډ سره خلاص کړئ
+permission_preset	دنده (د سکرینونو او حقونو تنظیم کول)
+preset_help_moklanjo	کیشیر: خرڅول. مدیر: پلورل + توکي + باطل / ترمیم.
+product_locked_moklanjo	موکلانجو
+product_only_moklanjo	دا ایپ یوازې موکلانجو دی - کتابونه + د بکینګ میز. نورې سوداګرۍ وروسته د جلا محصولاتو په توګه لیږدول کیږي.
+purchases_cogs	پیرودونه (COGS)
+qty_cap	QTY
+restore_help	ص شول؛ کتابونه لکه څنګه چې اوس دي لومړی خوندي شوي، نو دا بیرته اخیستل کیدی شي.
+wipe_data_heading	محلي معلومات ړنګ کړئ
+wipe_data_help	یوازې مالک - د وینډوز غیر نصبولو په څیر ورته انتخابونه. د سوداګرۍ ریکارډونه د سوداګرۍ تاریخ پاکوي مګر نرخونه او تنظیم ساتي (لکه د بیړني انلاک PIN). د پلورنځي ترتیب د کتابونو ډیټابیس لرې کوي. د سکرین غوره توبونه کړکۍ/ژبه پاکوي. د مالک PIN سره تایید کړئ. په ټیم کې د بیړني انلاک PIN جلا دی (په خلاصولو کې پټ پاکول).
+wipe_trading	د سوداګرۍ ریکارډونه
+wipe_schema	د پلورنځي ترتیب
+wipe_ui	د سکرین غوره توبونه
+wipe_owner_pin_ph	د ړنګولو لپاره د مالک PIN
+wipe_delete_selected	غوره شوی ړنګول
+wipe_owner_only	یوازې مالک کولی شي محلي معلومات حذف کړي.
+restore_owner_only	یوازې مالک کولی شي بیک اپ بحال کړي.
+wipe_owner_pin_needed	د ځایی معلوماتو حذف کولو لپاره د مالک PIN دننه کړئ.
+wipe_nothing_selected	غوره کړئ چې لومړی څه حذف کړئ.
+wipe_done	ټاکل شوي محلي معلومات حذف شوي.
+wipe_schema_done	د پلورنځي ترتیب پاک شو — د دوام لپاره سرور یا کلاینټ غوره کړئ.
+rounded_total	ګردي مجموعه
+setup_app_moklanjo	موکلانجو تنظیم کړئ
+shop_logo_optional	د پلورنځي لوگو (اختیاري)
+stock_type_help	ار، بیا تنظیم کړئ. هغه توکي چې شمیرل شوي ندي یوځل تعقیب پیل کولو ته اړتیا لري.
+team_owner_help	ګمارنه: دنده غوره کړئ (کیشیر / مدیر)، نوم + پیل پیل شوی PIN، بیا اضافه کړئ. یوازې که چیرې دا شخص توپیر ولري: لاندې سکرینونه او حقونه خلاص کړئ، بیا د دندې ترتیب خوندي کړئ. هرڅوک په لاندې کې خپل PIN بدلوي - مالک نشي کولی د بل چا بدل کړي.
+they_owe_us	دوی زموږ پوروړي دي
+unit_at_cap	واحد @
+units_help	1 بکس = 20 سانتي متره. تبادلې: له 1 څخه = عامل ته. اسعارو هیڅکله واحدونه ندي.
+we_owe_them	موږ د دوی پوروړي یو
+who_unlocking	څوک خلاصوي؟
+locked_word	تړل شوی
+show_pin	وښایاست PIN
+hide_pin	پټ کړئ PIN
+set_owner_pin	د مالک پن تنظیم کړئ
+enter_owner_passcode	د مالک پاسکوډ داخل کړئ
+enter_staff_passcode	د کارمندانو پاسکوډ دننه کړئ
+pin_count_zero	0 / 12 عددونه · لږترلږه 4، بیا سم
+pin_count_need	{} / 12 عدد · {} نورو ته اړتیا لري
+pin_count_full	12 / 12 عددونه · OK فشار ورکړئ
+pin_count_ready	{} / 12 عددونه · کله چې چمتو وي OK فشار ورکړئ
+pin_hint_choose	12-4 عددونه غوره کړئ · د خوندي کولو لپاره دننه کړئ یا خلاص کړئ
+pin_hint_new	نوی 4-12 عددي مالک PIN داخل کړئ یا خلاص کړئ
+pin_hint_shop_code	د پلورنځي وسیله · جوړه کوډ {}
+pin_hint_books	دا وسیله کتابونه لري
+pin_hint_paired	تر جوړه پورې اضافي - د پلور لپاره خلاص کړئ
+pin_hint_pair_first	اضافي پورې - لومړی د هټۍ وسیله سره جوړه کړئ
+unlock_to_continue	د دوام لپاره خلاص کړئ
+no_staff_yet	تراوسه هیڅ کارمند نشته - د مالک په توګه خلاص کړئ، بیا ټیم
+status_server_set_pin	د سرور حالت - د مالک PIN تنظیم کړئ
+status_server_tills	د سرور حالت - اضافي ټیلونه یوځای کیدی شي. خلاصول
+status_server_unlock	د سرور حالت - د مالک په توګه خلاص کړئ
+status_client_unlock	د کلاینټ حالت — د پلور لپاره خلاص کړئ
+icon_new_selected	آیکون: نوې فایل غوره شوی - د برانډ خوندي کولو کلیک وکړئ
+icon_custom	نښه: د دودیز ځای نښه
+icon_default	نښه: د کمکج نښه (ډیفالټ) - یو دودیز غوره کړئ
+logo_yours	لوګو: ستاسو د پلورنځي لوگو - په سکرینونو او رسیدونو کې ښودل شوي
+logo_default	لوګو: د کمکج نښه (ډیفالټ) - خپل ځان غوره کړئ که تاسو لرئ
+tmpl_current	اوسنی: {} - {}
+tmpl_selected	ټاکل شوی: {} — {}
+setup_complete	تنظیم بشپړ شو
+onboard_fresh_tmpl	تازه · {} — کتالګ خالي پیل کیږي په توکو کې توکي اضافه کړئ، بیا بشپړ شوی.
+onboard_book_tmpl	کتاب · {} — توکي اضافه کړئ او کریډیټ خلاص کړئ، بیا بشپړ شوی.
+onboard_template_tmpl	د هغه ځای نوم ولیکئ که تاسو غواړئ، بیا غوره کړئ چې څنګه پیل کړئ.
+tmpl_blurb	د کوریر کتابونه او د بکینګ میز: لیږدونکي، بار وړونکي، د ورځې کتاب، AWB.
+tmpl_how	په میز کې د کتاب پارسل؛ د نن ورځې کتاب؛ د نرخونو، ګوندونو، راپورونو لپاره ټبونه.
+trk_booked	بک شوی
+trk_picked_up	پورته کړل
+trk_in_transit	په لیږد کې
+trk_delivered	سپارل شوی
+trk_rto	لیږونکي ته بیرته راستنیدل
+lane_to_dispatch	د لیږلو لپاره
+lane_with_carrier	د وړونکي سره
+lane_failed	ناکام شو
+lane_done_today	نن ترسره شو
+ops_board_help	پارسلونه چیرې چې دوی د نن ورځې کار کې دي. پارسلونه ټایپ کړئ (یا یې سکین کړئ) د دوی غوره کولو لپاره ، بیا په یوځل غوره شوي ټولو باندې عمل وکړئ - هر لین یوازې هغه حرکتونه وړاندیز کوي چې ورته مناسب وي.
+lane_empty	دلته اوس هیڅ نشته.
+picked_fmt	{n} غوره شوی
+pick_all	ټول غوره کړئ
+bag_for_carrier	بار وړونکي ته لاس ورکړئ
+send_with_rider	د سپرلۍ سره ولېږئ
+out_again	بیا بهر
+return_to_sender	بیرته رالیږونکي ته
+runs_bags_heading	وروستي منډې او کڅوړې
+print_word	چاپ
+bag_word	بار وړونکې کڅوړه
+run_word	د سپرلۍ منډې
+parcels_fmt	{n} پارسلونه
+parcel_history	تاریخ
+attempt_fmt	د {n} هڅه وکړئ
+pieces_short_fmt	{n} پی سیز
+note_reason_ph	یادونه او دلیل
+ops_pick_first	لومړی پارسلونه غوره کړئ - دوی ټایپ کړئ یا یې سکین کړئ
+cod_to_collect	سپارل شوی - د راټولولو لپاره COD
+cod_on_road	COD لاهم په سړک کې دی
+cod_owed_consignors	راټول شوي - د لیږدونکو پیسو ورکولو لپاره
+cod_rto_fees	د راټولولو لپاره د RTO فیس
+cod_to_hand_in	د سپارلو لپاره کوډ
+parcel_one_fmt	{n} پارسل
+facet_bank_title	راپورونه
+facet_bank_help	د ورځې کتابونه، د ګوند عمر، د بانک پوسټونه، او دوره L&P.
+facet_ops_title	بار وړل او لیږل
+facet_ops_help	AWB سکین یا ټایپ کړئ → ومومئ، بیا پرمختگ / چاپ لیبل / COD. سپرلۍ یا بار وړونکي ته لیږل.
+facet_cod_title	د کوډ راجستر
+facet_cod_help	په تحویلي کې راټول کړئ ، بیا لیږدونکي ته واستوئ.
+facet_riders_title	سپاره (خپله بیړۍ)
+facet_riders_help	سواریان اضافه کړئ، بیا له Ops څخه بک شوي AWBs واستوئ.
+against_bill_ph	د بل پر خالف # پورته (اختیاري)
+aliases_ph	عرفونه - نور نومونه، کوما جال شوې
+amount_blank_full_ph	مقدار (خالی = بشپړ بیالنس)
+amount_owed_ph	پور شوی مقدار
+amount_ph	مقدار
+amount_received_ph	ترالسه شوي مقدار
+amount_we_pay_ph	هغه مقدار چې موږ یې تادیه کوو
+awb_scan_ph	AWB / سکین بارکوډ
+bulk_csv_ph	بلک CSV — منزل، بار وړونکی، کیلوګرام، کوډ_پیس، یادښت
+business_name_ph	د سوداګرۍ نوم
+category_new_ph	کټګورۍ (اختیاري، جوړ شوی که نوی)
+cod_amount_ph	د کوډ اندازه
+code_bag_ph	کوډ (کیګ)
+conv_factor_ph	فکتور (25 = 1 کڅوړه → 25 کیلوګرامه)
+country_code_ph	د هیواد کوډ د مثال په توګه BR ,AE ,US ,GB ,IN
+credit_khata_amount_ph	کریډیټ / د پیسو مقدار
+credit_limit_ph	د اعتبار حد (0 = هیڅ نه)
+dim_unit_code_ph	د ابعاد واحد کوډ (cm)
+divisor_ph	حجمی ویشونکی (5000)
+extra_per_kg_ph	اضافي / کیلوګرامه
+first_amount_ph	لومړی مقدار
+first_kg_ph	لومړی کیلو ګرامه (سلب)
+from_code_ph	د کوډ څخه (کیګ)
+item_name_lang_ph	د توکي نوم - دا په خپله ژبه کې ولیکئ
+login_id_opt_ph	کارن نوم (اړین، ځانګړی)
+manager_pin_ph	د تصویب لپاره مدیر PIN (یوازې که تاسو باطل نه شئ کولی)
+new_branch_name_ph	د نوې څانګې نوم
+new_password_ph	نوی پټنوم (اختیاری)
+new_pin_ph	نوی پن (4-12 عدد)
+note_bank_ph	یادونه (جمع کول، ایستل، ...)
+note_buy_expense_ph	یادونه (د تیلو، کرایه، ...)
+note_expense_ph	یادښت (تیل، دفتر، ...)
+notify_phone_ph	د تلیفون خبرتیا (WhatsApp/SMS هک)
+options_moklanjo_ph	اختیارونه (اختیاري) - لوی = 20، د ډالۍ لپاس = 10
+part_second_way_ph	د دویمې الرې برخه (اختیاري)
+phone_ph	تلیفون
+address_ph	پته
+party_custom_fields_heading	دودیز ساحې (ټاکل شوې ګوند)
+party_custom_help	په دې ګوند کې کوم لیبل او ارزښت اضافه کړئ - WhatsApp، GSTIN، د لارې کوډ، ...
+party_custom_key_ph	د ساحې نوم (د مثال په توګه WhatsApp)
+party_custom_value_ph	ارزښت
+party_custom_add	ساحه اضافه کړئ
+party_custom_remove	ساحه لرې کړئ
+party_custom_empty	تراوسه هیڅ دودیز ساحې نشته
+party_custom_pick_first	د دودیز ساحې اضافه کولو لپاره ګوند غوره کړئ
+place_name_ph	د دې ځای نوم
+price_ph	قیمت
+qty_example_ph	مقدار (د مثال په توګه 5.1 د کیلو لپاره)
+quantity_ph	مقدار
+reason_required_ph	دلیل (اړین)
+role_title_ph	د رول سرلیک (د بیلګې په توګه باریستا)
+service_pct_ph	خدمت٪ اختیاري 12/10/0
+short_code_ph	لنډ کوډ (MG02)
+slab_kg_ph	د چارج وړ سلیب په کلو کې (0.5)
+staff_name_ph	د کارمندانو نوم / id
+starting_password_ph	د پیل پټنوم (اختیاري)
+starting_pin_ph	پیلیدونکی PIN (12-4 عدد)
+tax_rate_ph	د مالیې نرخ نوم یا٪ - معیاري، کم شوی، 0, 5, 12, 18, 20
+to_code_ph	کوډ کول (کیلوګرام)
+uncleared_no_ph	ناڅرګنده # پورته
+unit_cost_ph	د واحد لګښت
+unit_kg_blank_ph	واحد (کیلو ګرامه یا خالي)
+unit_name_bag_ph	نوم (کیګ)
+weight_unit_code_ph	د وزن واحد کوډ (کیلو ګرامه)
+zone_name_ph	د زون نوم
+pay_credit	کریډیټ
+book_kind_today	نن ورځ کتابونه
+book_kind_month	پدې میاشت کې کتابونه
+book_kind_aging	بقایا / ډیبیټ کریډیټ
+book_kind_balance	بیالنس پاڼه
+ops_desk_help	AWB د USB بارکوډ سکینر سره سکین کړئ (یا یې ټایپ کړئ) ← ومومئ. بیا پرمختګ وکړئ، لیبل چاپ کړئ، یا COD راټول کړئ. لیبلونه چاپ کوډ 128.
+role_help_consignor	رول: لیږدونکی - AR (دوی زموږ پوروړي دي). ورته شرکت کیریر هم کیدی شي.
+role_help_carrier	رول: کیریر - AP (موږ د دوی پور ورکوو). ورته شرکت هم کولی شي Consignor وي.
+role_help_both	رولونه: لیږدونکی + کیریر - یو ګوند، AR او AP لیجرونه، په راپورونو کې خالص.
+role_help_supplier	رول: عرضه کوونکی - د پیرود لپاره AP.
+lane_declared_label	حساب کتاب کول
+lane_owner_label	د نغدو پیسو اخیستل
+money_lane_bill	بیل: {lane}

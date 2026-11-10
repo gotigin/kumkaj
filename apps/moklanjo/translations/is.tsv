@@ -1,0 +1,835 @@
+# Icelandic — Íslenska (is). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	Sendiboðabækur + bókunarskrifborð. Ókeypis án nettengingar.
+unlock	Opnaðu
+pin_hint	Eigandi PIN byrjar sem 0000
+sell	Bókun
+buy	Borga út
+books	Dagbók
+books_help	Staðan í dag. Bókun = pakkar inn. Borga út = flutningsreikningar og kostnaður. Aðilar = sendendur og flutningsaðilar.
+buy_help	Kostnaðarávísanir og flutningsreikningar (peningar út). On-account dvelur á flokksbók.
+sell_money_in	Bókaðu pakka
+buy_money_out	Kostnaður / flutningsreikningur
+record_purchase	Vistaðu kaupin
+add_expense	Kostnaðarkvittun
+bank_book	Bankabók
+credit_help	Auðkenni aðila er einstakt (nöfn geta endurtekið sig). Hlutverk: Sendandi (AR), Flytjandi (AP), eða bæði á því auðkenni. Fjárhagsbækur haldast aðskildar; skýrslur sýna nettó.
+party_kind_ph	Sérsniðið hlutverk (valfrjálst) - eða bankaðu á flís fyrir ofan
+parties_list_heading	Vistaðir aðilar
+reports_help	Dagbók, skuldara og kröfuhafa, bankabók, kostnaðarkvittanir, hagnaður og tap.
+reports_today	Dagbók (í dag)
+reports_month	Hagnaður og tap (mánuður)
+reports_aging	Útistandandi / debet-kredit
+reports_balance_sheet	Efnahagsreikningur
+reports	Bankabók & P&L
+refresh	Endurnýja
+undo	Afturkalla
+start_tracking	Byrjaðu að fylgjast með
+stock_minus	- Stock
+stock_plus	+ Lager
+settle_cash	Gera upp reiðufé
+settle_card	Uppgjör kort
+items	Verð og þjónusta
+nav_items	Verð
+more	Meira
+your_items	Verð þín
+items_help	Hver röð er hlutfall (t.d. Surface Zone A). Eining er venjulega kg. Pikkaðu til að breyta.
+add_item	Bæta við gengi
+new_item	Nýtt gengi
+adding_item	Bætir við nýju gengi
+editing_item	Klippingu
+save	Vista
+remove	Fjarlægja
+empty_catalog	Engir taxtar ennþá. Opnaðu Verð og þjónustu, bættu við einu (nafn + verð, eining kg), síðan Bókun.
+counter_sale	Afgreiðslubókun
+total	Samtals
+cash	Reiðufé
+upi	UPI
+card	Kort
+credit	Viðskiptavinir og birgjar
+clear	Hreinsa
+ready_to_sell	Tilbúið í höfuðbók
+today_prefix	Í dag
+today_mid	í dag
+owed	framúrskarandi
+round_word	umferð
+back	Til baka
+sold_out	Ekki tiltækt
+restock	Endurbirgðahald
+not_tracked	Ekki rakið
+in_stock	á lager
+marked_sold_out	Merkt ófáanleg
+add_upper	BÆTA
+na	N/A
+qty	Wt/Magn
+unit_at	Gefa @
+actual	Raunverulegt
+applied	Beitt
+note_ph	Athugið (valfrjálst)
+rounded	RÚTTUR
+split	Skipta
+counter	Teljari
+parcel	Pakki
+order	Veitingahúspöntun
+sales	Bókanir
+sales_refunds	Bókanir og endurgreiðslur
+day_close	Dagur nálægt
+reports_expenses	Bankabók & P&L
+nav_reports	Skýrslur
+nav_settings	Stillingar
+nav_lock	Læsa
+sidebar_settings	Stillingar hliðarstiku
+sidebar_settings_help	Sömu tákn og hliðargrind. Dragðu röð til að endurraða. Snúðu rofanum til að sýna eða fela. Stillingar og læsing eru alltaf á stikunni.
+sidebar_always_on_short	Alltaf á
+sidebar_back_settings	Til baka
+sidebar_shown	Sýnd
+sidebar_hidden	Falinn
+sidebar_always_on	Alltaf á barnum
+sidebar_shown_hint	Sýnt á hliðarteinum / neðri flipunum
+sidebar_hidden_hint	Falið frá barnum
+sidebar_menu_items	Valmynd & Valmynd valmyndaratriði
+sidebar_enable_all	Virkja allt
+sidebar_disable_all	Slökktu á öllum
+sidebar_order_saved	Pöntun hliðarstikunnar vistuð
+sidebar_visibility_saved	Sýnileiki hliðarstikunnar vistað
+amounts_hide	Fela
+amounts_show	Sýna
+no_sale_yet	Engin útsala ennþá
+favorites	Uppáhalds
+favorites_help	Valmyndaratriði sem þú selur oft, vistuð fyrir innskráningu þína. Bættu einum við reikninginn eða byggðu listann þinn úr öllum valmyndaratriðum hér að neðan.
+your_favorites	Uppáhaldið þitt
+all_items	Allir valmyndir
+no_favorites	Engin eftirlæti ennþá - bættu við valmyndaratriðum af listanum hér að neðan.
+add_to_bill	Bæta við reikning
+added	Bætt við
+owes_word	skuldar
+selected_word	Valið
+chip_clear_credit	hreinsa — Kredit eða taka fyrirfram
+chip_missing_customer	Valinn viðskiptavin vantar – veldu aftur
+chip_no_customer	Enginn viðskiptavinur ennþá — sláðu inn nafn og pikkaðu svo á Kredit
+credit_summary_fmt	{} viðskiptavinir · opið inneign {} · fyrirframgreiðslur haldið {}
+recent_label	Nýlegar:
+inventory	Birgðir
+inventory_stock	Birgðir & lager
+branches	Útibú
+branches_org	Útibú & org
+credit_customers	Aðilar (skuldarar og kröfuhafar)
+customer_name_ph	Nafn viðskiptavinar eða birgja
+new_customer_ph	Nýr viðskiptavinur eða birgir nafn
+item_name_ph	Verðheiti (t.d. yfirborðssvæði A)
+item_price_ph	Á kg / fyrstu hellu
+start_template	Vara
+next_booking	Næsta bókun
+destination_ph	Áfangastaðaborg / svæði
+consignee_ph	Nafn viðtakanda
+consignee_phone_ph	Móttökusími
+consignee_address_ph	Heimilisfang afhendingar
+origin_name_ph	Nafn sendanda
+origin_phone_ph	Sendandi sími
+origin_address_ph	Heimilisfang afhendingar / uppruna
+booking_consignor_heading	Sendandi (viðskiptavinur / sendandi)
+booking_consignee_heading	Viðtakandi (viðtakandi)
+booking_consignor_hint	Veldu veislu til að fylla eða skildu eftir autt til að ganga inn. Vantar fyrir heimaflutning og RTO.
+booking_consignee_hint	Viðtakandi pakkans. Skildu eftir autt fyrir brottför í gönguborði.
+weight_kg_ph	Raunveruleg kg
+length_cm_ph	L cm
+breadth_cm_ph	B cm
+height_cm_ph	H cm
+chargeable_kg	Gjaldskyld kg
+awb_label	AWB
+booking_help	Sendandi + viðtakandi (autt í lagi) → áfangastaður → vigtun → tínsluhlutfall → Reikningur/reiðufé → borga. AWB prentar á kvittunina. Næsta bókun hreinsar skrifborðið. Ávalar byrjunar jafngildir Beitt - breyttu aðeins til að hringlaga reikninginn.
+cart_empty_hint	Skrifborð tómt — sendandi/viðtakandi valfrjálst, stilltu áfangastað og þyngd, pikkaðu á BÆTA AÐ við gjaldskrá og borgaðu síðan.
+team	Lið
+team_pins	Lið & PINs
+my_pin_settings	PIN minn
+settings_hub_help_my_pin	Breyttu aflæsingu PIN fyrir þann sem er skráður inn á þetta tæki.
+team_self_help	Aðeins þú getur breytt PIN-númerinu þínu fyrir opnun (og valfrjálst innskráningarlykilorð). Spyrðu eigandann hvort þú þurfir aðra skjái eða réttindi.
+backup_settings	Afritun og stillingar
+lock_app	Læsa app
+pick	Veldu
+select	Veldu
+advance	Fyrirfram
+owner	Eigandi
+staff	Starfsfólk
+photo	Mynd
+auto	Sjálfvirk
+prev	Fyrri
+next	Næst
+ok	Allt í lagi
+this_shop	Server háttur
+extra_till	Viðskiptavinahamur
+off	Slökkt
+server	Server háttur
+client	Viðskiptavinahamur
+language_currency	Tungumál og gjaldmiðill
+language	Tungumál
+choose_language	Veldu tungumálið þitt
+language_setup_hint	Fylgdu tungumáli þessa tækis eða veldu eitt sjálfur.
+lang_follow_platform	Tungumál tækisins
+lang_pick_user	Veldu tungumál
+lang_platform_now	Tungumál tækisins núna
+selected_language	Valið
+continue	Halda áfram
+this_device	ÞETTA TÆKI
+device_use_q	Hvernig verður þetta tæki notað?
+last_server_mode	Var þjónn — pikkaðu á til að halda áfram
+last_client_mode	Var viðskiptavinur — bankaðu á til að halda áfram
+choose_server	Veldu netþjón
+choose_server_hint	Opnaðu núverandi netþjón eða búðu til einn fyrir annað fyrirtæki.
+create_new_server	Búðu til nýjan netþjón
+open_server	Opið
+new_server_name_ph	Nýtt nafn netþjóns (valfrjálst)
+server_remove_pin_ph	Eigandi PIN til að fjarlægja netþjón
+only_owner_remove_server	Aðeins eigandinn getur fjarlægt netþjón
+owner_pin_remove_server	Eigandi PIN þarf til að fjarlægja þennan netþjón
+device_setup_help	Þjónninn heldur bókhaldinu hér. Viðskiptavinur parar við netþjón.
+currency	Gjaldmiðill
+backup	Afritun
+settings_sec_diag	Greining
+settings_hub_help	Opnaðu eitt svæði í einu - minna fletta, skýrari valkostir.
+settings_sec_devices	Önnur tæki
+settings_sec_alerts	Viðvaranir
+alerts_help	Hversu lengi stöðuskilaboð eru á skjánum fyrir þig (þessi innskráning).
+snack_secs_ph	Sekúndur (3–60, sjálfgefið 10)
+snack_secs_save	Sparaðu viðvörunartíma
+snack_secs_saved	Viðvörunartími vistaður — {n} sekúndur
+snack_secs_bad	Sláðu inn sekúndur sem tölu (3–60)
+cancelled	Hætt við
+cancel	Hætta við
+opening_client	Opnar viðskiptavin...
+preparing_desk	Undirbýr skrifborð...
+opening_server	Opnar þjón...
+creating_server	Býr til netþjón...
+diag_privacy_help	Skrár verða áfram á þessu tæki. Leyndarmál (PIN, lykilorð) eru aldrei geymd. Til að deila pakka utan tækisins þarf skýrt samþykki þitt í hvert skipti - aldrei selt eða gefið þriðja aðila.
+diag_level	Smáatriði stig
+diag_level_error	Villur
+diag_level_warn	Viðvaranir
+diag_level_info	Upplýsingar
+diag_level_debug	Villuleit
+diag_support_start	Byrjaðu 30 mínútna stuðningstíma
+diag_support_stop	Ljúktu stuðningsfundi
+diag_support_started	Stuðningsfundur á - Kembi upplýsingar í 30 mínútur
+diag_support_ended	Stuðningsfundi lokið
+diag_export_local	Flytja út staðbundið eintak
+diag_export_local_done	Staðbundin greining tilbúin á {path} — veldu hvar á að vista afrit
+diag_approve_send	Samþykkja deilingu af þessu tæki
+diag_send_heading	Deildu þessu tæki
+diag_send_help	Samþykki er einn pakki, rennur síðan út. Tímabundið - aðeins notað til að laga eða bæta vöruna. Ekki deilt með þriðja aðila. Virkar á Linux, Windows, macOS og Android.
+optional_login_heading	Valfrjáls innskráning
+rights_heading	Réttindi
+booking_scope_heading	Innlent / alþjóðlegt
+diag_send_approved	Deild samþykkt fyrir einn pakka (rennur út fljótlega)
+diag_export_send	Búa til deilingarpakka (þarf samþykki)
+diag_export_send_done	Deildu pakka tilbúinn á {path} — veldu hvar á að vista, sendu síðan aðeins til Kumkaj stuðningsaðila
+diag_save_bundle	Vista greiningarafrit
+diag_bundle_saved	Greiningarafrit vistað í {path}
+diag_bundle_failed	Ekki tókst að vista greiningarafritið — reyndu aftur
+diag_clear	Hreinsaðu greiningarskrár
+diag_cleared	Greiningarskrár hreinsaðar
+use	Notaðu
+add_branch	Bæta við útibúi
+add_conversion	Bæta við umbreytingu
+add_item_plain	Bæta við valmyndaratriði
+add_note	Bæta við athugasemd
+add_opening_balance	Bættu við opnunarjöfnuði
+add_rider	Bæta við knapa
+add_staff	Bæta við starfsfólki
+add_unit	Bæta við einingu
+add_use_name	Bættu við / notaðu þetta nafn
+allow_extra_tills	Leyfa auka tills
+amend	Breyta
+apply_country_pack	Notaðu landspakka
+datetime_appearance	Útlit dagsetningar og tíma
+datetime_appearance_help	Bækur geyma fyrsta árið RFC3339 inni. Þetta breyta aðeins hvernig dagsetningar og klukkur líta út á kvittunum, merkimiðum, skýrslum og skjánum.
+datetime_example	Dæmi núna: {ex}
+date_order	Dagsetning röð
+date_order_dmy	D/M/Y
+date_order_mdy	M/D/Y
+date_order_ymd	Y-M-D
+time_format	Klukka
+time_format_24h	24 tíma
+time_format_12h	12 tíma
+attach_bill_photo	Læt reikningsmynd fylgja með
+attach_pdf	Hengja PDF
+attach_photo	Læt mynd fylgja með
+bank	Banki
+bank_in	Banka inn
+bank_out	Reiðufé út úr bankanum
+bank_to_till	Banki → till
+till_to_bank	Til → banki
+mark_cleared	Mark hreinsaði
+unmark	Afmerkja
+role_both	Bæði
+role_carrier	Flutningsaðili
+role_cashier	Gjaldkeri
+role_consignor	Sendandi
+role_manager	Framkvæmdastjóri
+role_supplier	Birgir
+branch_name_sell_ph	Nafn útibús til að selja frá
+bring_my_book	Komdu með höfuðbókina mína
+business_tax_id_ph	Skattkenni fyrirtækja
+card_amount_ph	Kortaupphæð
+cash_amount_ph	Reiðufé upphæð
+upi_amount_ph	UPI upphæð
+carrier_cost_ph	Flutningskostnaður
+carrier_party_ph	Flutningsaðili
+choose_icon	Veldu táknmynd
+choose_logo	Veldu lógó
+choose_receipt_stamp	Veldu kvittunarstimpil
+choose_payment_qr	Veldu greiðslu QR
+clear_icon	Hreinsa tákn
+clear_logo	Tært lógó
+clear_photo	Hreinsa mynd
+clear_stamp	Tær stimpill
+clear_payment_qr	Hreinsa greiðslu QR
+print_faces	Prentaðu andlit (kvittun / tímabilsreikningur)
+print_faces_help	Valfrjáls stimpill og greiðslu QR við hliðina á lógóinu þínu á bókunarkvittunum og tímabilsreikningum.
+awb_pools_heading	Flutningsnúmerasamstæður fyrir AWB
+add_awb_pool	Bættu við AWB laug
+awb_pool_carrier_ph	Nafn flutningsaðila
+awb_pool_start_ph	Byrja nr.
+awb_pool_end_ph	Enda nr.
+awb_pool_prefix_ph	Forskeyti (valfrjálst)
+awb_pool_label_ph	Merki (valfrjálst)
+pieces_ph	Hlutar (autt = 1) — stækkað fyrir farm / fjölstykki
+bulk_awbs_ph	Magn AWBs - límdu marga (nýlínu eða kommu) fyrir eina stöðuframför
+tds_cut_ph	TDS skera (valfrjálst)
+discount_ph	Afsláttur (valfrjálst)
+cheque_no_ph	Athugunarnúmer (valfrjálst)
+bill_reminder_chase	Bill áminning eltingarlisti
+month_mix_report	Skýrsla mánaðarblöndu
+copy_month_gst_csv	Afritaðu mánuð GST CSV
+domestic	Innlent
+international	Alþjóðlegt
+pick_logo	Veldu lógó
+booking_scope_hint_domestic	Rúmmál ÷5000 (innanlands) — bankaðu á International fyrir ÷6000 loft
+booking_scope_hint_intl	Rúmmál ÷6000 (alþjóðlegt flug) — bankaðu á Innlent fyrir verslun ÷5000
+cod_register	COD skrá
+collect_cod	Safna COD (AWB)
+consignments_dispatch	Sendingar & sendingar
+consignor_party_ph	Nafn sendanda / aðila
+copy_day_book_csv	Afrita dagbók CSV
+copy_day_close	Afrita daginn nálægt
+copy_items_csv	Afrita valmyndaratriði CSV
+copy_outstanding_csv	Afrita útistandandi CSV
+copy_parties_csv	Afritaðu viðskiptavini og birgja CSV
+copy_party_ledger_csv	Afritaðu viðskiptamannabók CSV
+copy_receipt	Afrita kvittun
+copy_report	Afrita skýrslu
+counted_cash_ph	Talið reiðufé í skúffu
+counter_agency_ph	Nafn teljara / stofnunar (valfrjálst)
+create_backup	Búðu til öryggisafrit
+day_close_summary	Dagsloka samantekt
+delete_party	Eyða völdum viðskiptavini eða birgi
+dispatch_to_rider	Sending bókuð → knapi
+docket_charge_ph	Hlaðagjald
+declared_value_ph	Uppgefið verðmæti
+contents_ph	Innihald
+eway_ph	E-vegareikningur nr.
+insurance_label	Tryggingar
+yes_label	Já
+no_label	Nei
+print_route_label	Prenta leið
+new_party_kind_label	Ný flokkstegund
+done_open_books	Lokið — opna bókhald
+export_day	Útflutningsdagur
+extra_note_expense_ph	Auka athugasemd um síðasta kostnað
+extra_note_awb_ph	Auka athugasemd um þessa AWB / útsölu
+failed_delivery	Misheppnuð afhending
+find_scan_awb	Finndu / Skannaðu AWB
+forget_shop	Gleymdu þessari búð
+fuel_ph	Eldsneyti
+handover_carrier	Handbókað → flytjandi
+import_day	Innflutningsdagur
+import_items_csv	Flytja inn vörur / verð CSV...
+import_parties_csv	Flytja inn viðskiptavini og birgja CSV…
+import_pincodes_csv	Flytja inn pinkóða CSV...
+import_carrier_bill_csv	Flytja inn CSV flutningsreikning...
+copy_carrier_bill_report	Afritaðu síðasta flutningsreikningsskýrslu
+use_carrier_cost	Notaðu flutningskostnað
+rate_carrier_ph	Flutningsaðili (autt = söluhlutfall okkar)
+rate_party_ph	Aðili (autt = allir viðskiptavinir)
+carrier_pick_ph	Flutningsaðili fyrir kostnað (frá samanburði)
+item_name	Heiti valmyndaratriðis
+load_bulk_row	Hlaða lausa röð → skrifborð
+login_id_ph	Notendanafn
+mark_delivered	Mark afhent
+manifest_cod_total	COD samtals
+manifest_received_by	Tekið á móti
+manifest_sign	Skráðu þig
+ndr_address_wrong	Heimilisfang rangt
+ndr_customer_unavailable	Ekki tiltækt
+ndr_door_locked	Hurð læst
+ndr_other	Annað
+ndr_refused	Neitaði
+out_for_delivery	Út til afhendingar
+print_drs	Prentaðu DRS
+print_run_sheet	Prentunarblað
+reattempt	Reyndu aftur
+rider_cod_handed_ph	COD skilað inn
+settle_rider_cod	Settu knapa COD
+mode_desk	Skrifborð
+mode_rider	Knapi
+waiting_office	bíða eftir að komast á skrifstofuna
+capture_signature	Handtaka undirskrift
+incoming_manifest	Innkomin upplýsingaskrá
+pickup_request	Afhendingarbeiðni
+pickup_run	Pickup keyrsla
+auto_assign_area	Sjálfvirkt úthluta svæði
+reorder_stops	Endurröðun hættir
+settle_rider_pay	Gera upp laun knapa
+vehicle_inspect	Bifreiðaskoðun
+print_docket	Prenta skjal
+franchise_statement	Sérleyfisyfirlýsing
+tally_export	Útflutningur Tally fylgiseðils
+open_whatsapp	Opnaðu WhatsApp
+copy_sms	Afritaðu SMS texta
+pick_barcode_image	Veldu mynd til að skanna
+share_receipt_whatsapp	Deildu kvittun á WhatsApp
+delivery_feedback	Viðbrögð við afhendingu
+lan_self_book	LAN sjálfbókun
+new_party_clear	Nýr viðskiptavinur eða birgir (skýrt form)
+new_party_kind_ph	Ný flokkstegund (birgir / flutningsaðili)
+next_country	Næsta land
+prev_country	Fyrra land
+note_gstin_ph	Athugið / GSTIN / áminning um samkomulag
+note_pod_ph	Athugið / POD (valfrjálst)
+on_account_ap	Á reikningi (AP)
+org_optional_ph	Skipulag (valfrjálst)
+paid_now	Greitt núna
+pairing_code_ph	Pörunarkóði
+pair_now	Para núna
+party_name_selected_ph	Nafn viðskiptavinar eða birgja (eða notað valið)
+password_ph	Lykilorð
+pay_ap_card	Borgaðu AP kort
+pay_ap_cash	Borgaðu AP reiðufé
+pay_ap_upi	Borgaðu AP UPI
+period_bill	Tímabilsreikningur
+period_bill_party	Tímabilsreikningur (flokkur)
+pick_pod_photo	Veldu POD mynd
+print_awb_label	Prentaðu AWB merki
+print_open	Prenta / opna
+reason_amend_ph	Ástæða fyrir breytingu / ógildingu / endurgreiðslu
+reason_note_ph	Ástæða / athugasemd (sóun, talning, ...)
+record_day_close	Bjargaðu deginum nálægt
+refresh_from_shop	Endurhlaða úr búð
+refund	Endurgreiðsla
+remit_cod	Skilaskil (flokkur)
+remove_selected	Fjarlægja valið
+restore_backup	Endurheimta öryggisafrit
+rider_name_ph	Nafn knapa
+rider_phone_ph	Rider sími
+riders	Reiðmenn
+riders_own_fleet	Reiðmenn (eigin floti)
+rollup	Samantekt
+save_booking_measures	Vistaðu bókunarráðstafanir
+save_brand	Vista vörumerki
+save_business_id	Vista viðskiptaauðkenni
+save_business_name	Vista nafn fyrirtækis
+save_features	Vista vinnuuppsetningu
+save_names	Vista nöfn
+server_ip_ph	IP miðlara (t.d. 192.168.1.10)
+set_credit_limit	Notaðu takmörk fyrir viðskiptavini eða birgja
+set_login_selected	Notaðu innskráningu á valið
+set_login_named	Notaðu innskráningu á {name}
+shop	Verslun
+start_fresh	Byrjaðu ferskt
+stop_extra_tills	Stöðva auka kassa
+backup_auto	Afritað sjálfkrafa á hverjum degi · síðustu {when} · síðustu 14 dagar eru geymdir í {dir}.
+backup_auto_none	Tekið afrit sjálfkrafa á hverjum degi - sá fyrsti keyrir eftir augnablik.
+backup_copy_to	Afrit fara einnig á {dir}.
+backup_copy_btn	Afritaðu líka afrit í möppu...
+autostart_off	Byrjaðu á þessari tölvu
+autostart_on	Byrjar með þessari tölvu ✓ — pikkaðu á til að hætta
+autostart_done_on	Þessi tölva opnar nú appið þegar það ræsir — netþjónn búðarinnar er kominn aftur eftir rafmagnsleysi.
+autostart_done_off	Þessi tölva opnar ekki lengur appið þegar það ræsist.
+right_allowed	Leyfilegt
+right_with_approval	Með samþykki
+right_denied	Ekki leyfilegt
+editing_staff	Réttindi fyrir
+team_pick_ph	Starfsfólk til að breyta - nafn, notandanafn eða velja
+select_staff	Veldu þetta starfsfólk
+rights_help	Réttindi — bankaðu til að breyta: Leyft → Með samþykki (PIN-númer stjórnanda á því augnabliki) → Ekki leyft.
+right_void_refund	Ógilda eða endurgreiða bókun
+right_amend_sale	Breyta skráðri bókun
+find_server	Finndu netþjón búðarinnar
+finding_server	Er að leita að netþjóni búðarinnar á þessum Wi‑Fi…
+no_server_found	Ekkert fannst. Á þjóninum: Stillingar → Önnur tæki → Leyfa auka kassa (sama Wi‑Fi). Eða sláðu inn IP sem sýnd er þar.
+servers_found_pick	Pikkaðu á búðina sem þú vilt tengjast.
+server_host_selected	Notaðu {host} — sláðu inn pörunarkóðann og síðan Pöraðu núna.
+device_forgotten	Verslunin gleymdi þessu tæki — paraðu það aftur við núverandi kóða verslunarinnar. Pantanir sem bíða eftir því eru geymdar.
+forget_device	Gleymdu
+last_seen	séð
+new_pair_code	Nýr pörunarkóði
+lan_offline	Ekki er hægt að ná í verslunarþjón
+lan_offline_waiting	Ekki er hægt að ná í verslunarþjón · {n} bíður
+lan_connecting	Tengist verslun...
+pair_finishing	Að klára parið... nota skrifstofubækurnar
+pair_opening	Skrifstofan er opnuð…
+lan_live	Lifandi
+lan_sending	{n} sendir
+lan_sign_in_to_send	Skráðu þig inn aftur til að senda {n}
+lan_pair_again	Pörðu þetta tæki aftur
+lan_update_app	Uppfærðu forritið - þetta tæki og skrifstofuþjónninn eru með mismunandi útgáfur
+allow_firewall	Leyfðu öðrum tækjum að tengjast
+firewall_blocked	Eldveggur þessarar tölvu er að loka fyrir önnur tæki — pikkaðu á Leyfa öðrum tækjum að tengjast.
+firewall_waiting	Bíður eftir stjórnandakvaðningu...
+lan_join_help	Í hinu tækinu: Viðskiptavinastilling → Finndu netþjón verslunarinnar (eða sláðu inn {addr}) → pörunarkóði {code}.
+lan_pair_status	Wi‑Fi {addr}
+lan_join_help_no_addr	Tengdu þetta tæki við Wi‑Fi fyrir heimilisfang.
+lan_no_address	Ekkert Wi‑Fi heimilisfang ennþá — tengdu við búðina Wi‑Fi.
+lan_not_listening	Tekur ekki við tækjum (gátt {port} upptekið). Endurræstu appið.
+lan_tills_off	Auka kassar eru lausir. Leyfðu þeim að leyfa öðru tæki að vera með.
+paired_with	Parað · {url}
+not_paired	Ekki parað
+choose_device_use	Veldu Server eða Client.
+paired_note	Pöruð. Opnaðu til að selja, eða endurnýjaðu til að fá það nýjasta.
+last_update_at	Síðasta uppfærsla: {time}.
+pair_intro	Finndu netþjóninn eða sláðu inn heimilisfang hans og pörunarkóða.
+queue_waiting	Bíður eftir að komast í búðina ({n}):
+queue_tries	Reyndi {n} sinnum · síðasta svar: {e}
+save_backup_copy	Vista öryggisafrit...
+backup_copy_saved	Öryggisafrit vistað — hafðu það frá þessu tæki (USB-lyki eða annað tæki)
+backup_copy_overdue	Ekkert afrit hefur farið úr þessu tæki í {n} daga — Stillingar → Öryggisafrit
+backup_copy_failed	Ekki var hægt að vista öryggisafritið þar - veldu annan stað
+clock_off	Klukka þessa tækis er {min} mín frá netþjóni búðarinnar — stilltu réttan tíma á þessu tæki
+printers_heading	Prentarar á þessu tæki
+printers_help	Finndu alvöru prentara, veldu síðan Kvittun eða AWB merki. Hvert verk hefur sína breidd, andlitsmynd eða landslag og hvernig bætin eru send. Merki prentar strikamerkið. Tómur staður = ekki prenta.
+job_width	Efnisbreidd (mm)
+job_width_ph	Eða sláðu inn breidd, 40–210 mm
+job_layout	Skipulag
+job_delivery	Hvernig starfið er sent
+job_size	Leturstærð
+job_size_ph	t.d. 18, 20, 26...
+save_receipt_format	Vista kvittunarsnið
+save_label_format	Vista merkimiðasnið
+test_receipt_format	Prófkvittun
+test_label_format	Prófunarmerki
+test_receipt_sent	Dæmi um kvittun send
+test_label_sent	Sýnishorn sendur
+test_print_no_printer	Enginn prentari fyrir það verk - bættu einum við undir þessum stað
+printers_host_only	Prentarar eru stilltir á verslunartækinu (þjónn). Þetta til sendir störf þangað - Finndu / bættu við / úthlutaðu dvöl á þjóninum. Prófsíða fer á netþjóninn.
+printers_pool_heading	Prentarar
+printers_routes_heading	Þar sem hlutir prentast
+printer_label_ph	Nafn (t.d. skrifborð)
+printer_target_ph	gestgjafi:9100 · bt:MAC · usb:VID:PID · kerfisheiti
+printer_mode_heading	Prófíll fyrir ný úttak
+printer_mode_standard	Staðlað andlitsmynd
+printer_mode_landscape	Standard landslag
+printer_mode_thermal	Hitauppstreymi
+printer_mode_standard_short	Andlitsmynd
+printer_mode_landscape_short	Landslag
+printer_mode_thermal_short	Hitauppstreymi
+printer_format_custom	Nýtt sérsniðið snið
+printer_format_custom_label	Sérsniðin
+printer_format_custom_added	Sérsniðnum prófíl bætt við fyrir þennan stað
+add_printer	Bæta við prentara
+remove_printer	Fjarlægðu síðast
+route_pick_ph	kvittun eða merkimiða
+route_add_printer_ph	Bættu prentara við þennan stað
+route_receipt	Kvittun
+route_label	AWB merki
+route_dont_print	Enginn prentari úthlutaður
+route_add	Bæta við stað
+route_up	Upp
+route_down	Niður
+route_remove	Fjarlægðu síðast
+route_clear	Hreinsaðu prentara fyrir þennan stað
+save_printers	Vistaðu prentara
+print_test_page	Prentaðu prófunarsíðu
+printers_saved	Prentarar vistaðir fyrir þetta tæki
+test_page_sent	Prófsíða send — athugaðu prentarann
+printers_found	Fannst á þessu tæki: {list}
+find_printers	Finndu prentara
+printers_looking	Er að leita að prenturum á þessu tæki og Wi-Fi...
+printers_tap_find	Pikkaðu á Finndu prentara fyrir biðraðir sem taka við verkum og netkvittunarprentara á þessu Wi-Fi-neti (ekki fjarlægðir eða ótengdir).
+printers_none_found	Engir prentarar fundust — sláðu inn heiti kerfisprentara eða netfang (t.d. 192.168.1.50).
+receipt_printer_ph	Prentari fyrir kvittanir
+queue_refused	Ekki samþykkt af versluninni ({n}) — athugaðu hvern og einn við afgreiðsluborðið:
+clear_not_accepted	Merkt - hreinsaðu þennan lista
+device_name_ph	Nafn þessa tækis
+lan_last_update	síðasta uppfærsla {time}
+lan_not_accepted	{n} ekki samþykkt
+connected_now	tengdur núna
+backup_failed	Síðasta sjálfvirka öryggisafritið mistókst: {e}
+backup_overdue	Engin öryggisafrit í {n} daga — haltu forritinu opnu á þessu tæki svo það geti tekið öryggisafrit.
+disk_low	Aðeins {mb} MB laus á þessu tæki — öryggisafrit mun brátt mistakast. Losaðu um pláss.
+last_seen_devices	Síðast sást: {time}
+sync_interval	Samstilltu á {secs}s fresti
+connection_to_shop	Tenging við búðina
+supplier_name_ph	Nafn birgja (eða viðskiptavinur)
+supplier_ph	Birgir
+switch_device	Skiptu um þetta tæki
+take_payment	Taktu við greiðslu
+tax_added_till	{tax} einkarétt
+tax_inside_price	{tax} innifalið
+today_books	Dagbækur í dag
+unlock_after_pairing	Sláðu inn PIN
+unlock_with_login	Opnaðu með innskráningu
+update_my_password	Uppfærðu lykilorðið mitt
+update_my_pin	Uppfærðu PIN-númerið mitt
+duress_heading	Neyðaropnun PIN (aðeins eigandi)
+duress_help	Valfrjálst. Ef þetta PIN-númer er slegið inn við aflæsingu í stað þín, þurrkast allar bókafærslur út (bókanir, bókhald, saga) og skrifborðið opnast eins og Eigandi lítur eðlilega út - verð, veislur, svæði, starfsfólk og stillingar haldast. Skema og stillingum er ekki eytt. Notaðu aðeins ef þú neyðist til að opna. Skildu eftir autt og vistaðu til að slökkva á. Aldrei það sama og PIN-númer neins.
+duress_pin_ph	Neyðarnúmer PIN (4–12 tölustafir)
+duress_confirm_ph	Sláðu inn aftur til að staðfesta
+save_duress_pin	Vista neyðartilvik PIN
+clear_duress_pin	Slökktu á neyðartilvikum PIN
+duress_on	Kveikt er á neyðaropnun PIN
+duress_off	Slökkt er á neyðaropnun PIN
+duress_saved	Neyðaropnun PIN vistað
+duress_cleared	Slökkt er á neyðaropnun PIN
+vehicle_ph	Ökutæki
+void	Ógild sala
+write_off_ap	Afskrifaðu AP
+write_off_nil	Afskrifa / engin staða
+zone_ph	Svæði (nafn frá Verð)
+caption_today	Í DAG
+caption_bookings	BÓKNINGAR
+caption_payments_today	GREIÐSLUR Í DAG
+caption_outstanding	Framúrskarandi
+caption_bank	BANKI
+paid_by	Greitt af
+second_way	Önnur leið
+weight_in	Þyngd inn
+size_in	Stærð í
+goods_received	Vörur móttekin
+expense_heading	Kostnaður
+notes_attach_sale	Skýringar og viðhengi (valin sala)
+notes_attach_party	Skýringar og viðhengi (valinn viðskiptavinur eða birgir)
+attachments_last_expense	Viðhengi (síðasti kostnaður)
+credit_limit_heading	Lánsfjármörk (valinn viðskiptavinur eða birgir)
+pay_selected_heading	Greiðsla valin (greiða skuld / taka fyrirfram)
+write_off_heading	Afskrifa (hreinsa án greiðslu)
+pay_ap_heading	Borgaðu það sem við skuldum þeim (AP)
+country_tax	Land & skattur
+extra_tills_heading	Aukatill
+other_devices_help_heading	Settu upp önnur tæki
+other_devices_help	Á þessu tæki (þjónn): Önnur tæki → Leyfa auka kassa. Athugaðu pörunarkóðann og Wi-Fi vistfangið. Pikkaðu á Leyfa öðrum tækjum að tengjast ef það birtist. Á tölvu pikkarðu á Byrja með þessari tölvu. Í hvert öðru tæki: settu upp forritið, veldu viðskiptavinastillingu, finndu netþjón verslunarinnar (eða sláðu inn heimilisfangið), sláðu inn pörunarkóðann, paraðu núna. Pantanir bíða í tækinu ef Wi-Fi lækkar og fara þegar þjónninn svarar aftur.
+your_brand	Vörumerkið þitt (í appi)
+units_heading	Einingar
+booking_measures	Bókunarráðstafanir
+drawer_count	Skúffufjöldi (valfrjálst)
+spreadsheet_csv	Töflureiknir (CSV)
+bank_reconciliation	Bankaafstemming (merktu við við bankayfirlitið þitt)
+book_add_product	Bóka — bæta við vöru / verð
+book_opening_credit	Fjárhagsbók — upphafsinneign
+account_kind	Reikningstegund (smelltu á einn)
+active_ledger	Virk bók
+actual_total_cap	RAUNU SAMTALS
+amend_help	Veldu sölu til að breyta, ógilda eða endurgreiða. Breytingar halda fullri sögu. Rounded Total byrjar jafnt og Applied — breyttu aðeins í umferð. Ógilt og endurgreiðsla gæti þurft eiganda eða stjórnanda PIN (slá inn hér að ofan; skráð með nafni þínu).
+applied_total_cap	SEITT SAMTALS
+bank_balance	Inneign banka
+bank_net_today	Nettó bankans í dag
+branch_export_help	Export skrifar skyndimynd dagsins í öryggisafritsmöppuna og afritar hana á klemmuspjaldið. Til að flytja inn dag annars verslunar, vistaðu skrána sem import_branch_snapshot.json í þeirri möppu og pikkaðu síðan á Flytja inn.
+brand_shown_help	Sýnt á skjám í appinu. Nafn og tákn uppsetts forrits á þessu tæki haldast sem vettvangsskráning.
+app_icon	App táknmynd
+logo_help	Valfrjálst verslunarmerki á skjáum í appinu.
+onboard_layout	Það sem þú færð
+item_photo_help	Valfrjálst. Án myndar sýnum við upphafsstafi úr nafni valmyndaratriðis.
+cash_in_hand	Handbært fé (til)
+change_my_pin_heading	Breyta PIN-númerinu mínu (aðeins þitt)
+connect_to_server	Tengstu við netþjóninn
+counter_locked	Teljari 01 · Læstur
+country_pack_help	Landspakki setur skattaheiti og stærðfræði, skyndigreiðslujárnbrautina og viðskiptaauðkenni prentað á reikninga. Kumkaj skráir hvorki skatta né gefur út rafræna reikninga hjá stjórnvöldum hvar sem er.
+currency_use_help	Skrunaðu og pikkaðu á Nota fyrir hvaða gjaldmiðil sem er studdur.
+day_close_help	Skráning dagslokunar vistar þessa samantekt (og skúffufrávik ef talið er) í endurskoðunarskránni. Það hættir ekki að selja.
+expenses_word	Útgjöld
+feature_access_help	Aðgangur að eiginleikum fyrir valið starfsfólk (smelltu á eftir að hafa verið bætt við)
+footer_local	Local SQLite · Ókeypis að eilífu · Zero Cloud
+fresh_book_moklanjo	Ferskur = tómur vörulisti (bættu við hlutum síðar). Bók = slá upphafsbirgðir og hver skuldar þér hér að neðan.
+fresh_selected	Nýtt valið — vörulisti helst tómur. Pikkaðu á Lokið þegar tilbúið.
+gross_word	Gróft
+how_start	Hvernig viltu byrja?
+later_country_pack	Seinna: Stillingar → notaðu landspakkann þinn fyrir skatta- og greiðslumiða.
+local_badge	STAÐBÆR
+measures_help_moklanjo	Hvernig pakkar eru mældir við bókunarborðið. Sláðu inn mál og þyngd í einingarnar sem þú notar — staðlaðar (cm, m, in, ft · kg, g, lb, oz) eða eigin eining tengd cm / kg að ofan (beint eða í gegnum aðrar einingar). Bækur skrá alltaf kg. Skildu eftir autt til að halda honum.
+mix_type_hint_moklanjo	Sláðu inn hversu mikið í hvert (reiðufé / UPI / kort / kredit). Verður að bæta við reikninginn. Kredit þarf viðskiptavin hér að ofan.
+money_in_sales	Peningar í (sala)
+more_help_moklanjo	Skrá, sala, inneign, teymi, öryggisafrit — ásamt lager og auka kassa þegar þörf krefur.
+net_word	Nettó
+offline_badge	ÓTENGT
+optional_login_help	Valfrjáls innskráning (auðkenni + lykilorð). Eigandi setur einu sinni; aðeins notandinn getur breytt lykilorðinu síðar.
+or_unlock_login	Eða opnaðu með innskráningarauðkenni + lykilorði
+permission_preset	Starf (stillir skjái og réttindi)
+preset_help_moklanjo	Gjaldkeri: selja. Framkvæmdastjóri: selja + matseðill + ógilda / breyta.
+product_locked_moklanjo	Moklanjo
+product_only_moklanjo	Þetta app er eingöngu Moklanjo - bækur + bókunarskrifborð. Önnur viðskipti eru send sem aðskildar vörur síðar.
+purchases_cogs	Kaup (COGS)
+qty_cap	Magn
+restore_help	Endurheimta: veldu öryggisafrit. Bækurnar opnast eins og þær voru þá; fjárhagsbókunum eins og þær eru núna eru vistaðar fyrst, þannig að hægt er að afturkalla þetta.
+wipe_data_heading	Eyða staðbundnum gögnum
+wipe_data_help	Aðeins eigandi - sömu valkostir og Windows fjarlægir. Viðskiptaskrár hreinsar viðskiptasögu en geymir verð og uppsetningu (eins og PIN-númer neyðaropnunar). Verslunaruppsetning fjarlægir bókagagnagrunninn. Skjástillingar hreinsa glugga/tungumál. Staðfestu með PIN-númeri eiganda. PIN-númer neyðaropnunar á Team er aðskilið (leyniþurrka við opnun).
+wipe_trading	Viðskiptaskrár
+wipe_schema	Uppsetning verslunar
+wipe_ui	Skjástillingar
+wipe_owner_pin_ph	Eigandi PIN til að eyða
+wipe_delete_selected	Eyða völdum
+wipe_owner_only	Aðeins eigandinn getur eytt staðbundnum gögnum.
+restore_owner_only	Aðeins eigandinn getur endurheimt öryggisafrit.
+wipe_owner_pin_needed	Sláðu inn eiganda PIN til að eyða staðbundnum gögnum.
+wipe_nothing_selected	Veldu hverju á að eyða fyrst.
+wipe_done	Völdum staðbundnum gögnum eytt.
+wipe_schema_done	Verslunaruppsetning þurrkuð — veldu Server eða Client til að halda áfram.
+rounded_total	Ávalið samtals
+setup_app_moklanjo	Settu upp Moklanjo
+shop_logo_optional	Lógó verslunar (valfrjálst)
+stock_type_help	Sláðu inn heiti valmyndaratriðisins (hluti af því er nóg), magn og stilltu síðan. Valmyndaratriði sem eru ekki talin enn þurfa Byrjaðu að rekja einu sinni.
+team_owner_help	Ráða: veldu starf (gjaldkeri / framkvæmdastjóri), nafn + upphafs-PIN-númer, síðan Bæta við. Aðeins ef þessi manneskja er frábrugðin: opnaðu skjái og réttindi fyrir neðan, síðan Vista vinnuuppsetningu. Allir breyta eigin PIN-númeri neðst - Eigandi getur ekki breytt neinum öðrum.
+they_owe_us	Þeir skulda okkur
+unit_at_cap	Eining @
+units_help	Kóðar fyrir merki matseðils (kg, stykki, poki). Sérhver eining verður að tengjast — beint eða í gegnum aðrar einingar — við staðal (kg · cm · ml · stk), t.d. 1 rimlakassi = 2 kassi og 1 kassi = 20 cm. Umreikningar: 1 frá = stuðull til. Gjaldmiðlar eru aldrei einingar.
+we_owe_them	Við skuldum þeim
+who_unlocking	Hver er að opna?
+locked_word	Læst
+show_pin	Sýna PIN
+hide_pin	Fela PIN
+set_owner_pin	EIGANDI SETJA PIN
+enter_owner_passcode	Sláðu inn LYKILORÐ EIGANDA
+enter_staff_passcode	Sláðu inn LYKILÓÐ STARFSINS
+pin_count_zero	0 / 12 tölustafir · að minnsta kosti 4, síðan í lagi
+pin_count_need	{} / 12 tölustafir · þarf {} í viðbót
+pin_count_full	12/12 tölustafir · ýttu á OK
+pin_count_ready	{} / 12 tölustafir · ýttu á OK þegar þú ert tilbúinn
+pin_hint_choose	Veldu 4–12 tölustafi · Sláðu inn eða Aflæsa til að vista
+pin_hint_new	Nýr 4–12 stafa eigandi PIN · Sláðu inn eða opnaðu
+pin_hint_shop_code	Verslaðu tæki · pörunarkóði {}
+pin_hint_books	Þetta tæki heldur bókhaldinu
+pin_hint_paired	Auka þar til parað - opnaðu til að selja
+pin_hint_pair_first	Auka til — para fyrst við búðartækið
+unlock_to_continue	Opnaðu til að halda áfram
+no_staff_yet	Ekkert starfsfólk ennþá - opnaðu sem eigandi, síðan teymi
+status_server_set_pin	Server Mode - stilltu eiganda PIN
+status_server_tills	Server Mode - auka kassar geta tekið þátt. Opnaðu
+status_server_unlock	Server Mode - opnaðu sem eigandi
+status_client_unlock	Viðskiptavinastilling - opnaðu til að selja
+icon_new_selected	Tákn: ný skrá valin — pikkaðu á Vista vörumerki
+icon_custom	Tákn: sérsniðið vettvangsmerki
+icon_default	Tákn: Kumkaj merki (sjálfgefið) — veldu sérsniðið
+logo_yours	Merki: verslunarmerki þitt — sýnt á skjám og kvittunum
+logo_default	Merki: Kumkaj merki (sjálfgefið) — veldu þitt eigið ef þú ert með slíkt
+tmpl_current	Núverandi: {} — {}
+tmpl_selected	Valið: {} — {}
+setup_complete	Uppsetningu lokið
+onboard_fresh_tmpl	Ferskur · {} — vörulisti byrjar tómur; bæta við valmyndaratriðum í valmyndaratriðum og síðan Lokið.
+onboard_book_tmpl	Fjárhagsbók · {} — bættu við valmyndaratriðum og upphafsinneign og síðan Lokið.
+onboard_template_tmpl	Nefndu staðinn ef þú vilt og veldu síðan hvernig á að byrja.
+tmpl_blurb	Sendibækur og bókunarskrifborð: sendendur, farmflytjendur, dagbók, AWB.
+tmpl_how	Bókaðu böggla við skrifborðið; Dagbók í dag; flipa fyrir taxta, veislur, skýrslur.
+trk_booked	Bókað
+trk_picked_up	Tekið upp
+trk_in_transit	Í flutningi
+trk_delivered	Afhent
+trk_rto	Aftur til sendanda
+lane_to_dispatch	Til að senda
+lane_with_carrier	Með burðarefni
+lane_failed	Mistókst
+lane_done_today	Gert í dag
+ops_board_help	Bögglar eftir því hvar þeir eru í vinnunni í dag. Pikkaðu á pakka (eða skannaðu þá) til að velja þá, bregðast síðan við öllum valnum í einu - hver akrein býður aðeins upp á hreyfingar sem passa við hana.
+lane_empty	Ekkert hérna núna.
+picked_fmt	{n} valinn
+pick_all	Veldu allt
+bag_for_carrier	Hand til burðarmanns
+send_with_rider	Senda með knapa
+out_again	Út aftur
+return_to_sender	Fara aftur til sendanda
+runs_bags_heading	Nýleg keyrsla og töskur
+print_word	Prenta
+bag_word	Burðarpoka
+run_word	Knapahlaup
+parcels_fmt	{n} bögglar
+parcel_history	Saga
+attempt_fmt	Tilraun {n}
+pieces_short_fmt	{n} stk
+note_reason_ph	Athugið eða ástæða
+ops_pick_first	Veldu pakka fyrst - bankaðu á þá eða skannaðu þá
+cod_to_collect	Afhent — COD til að sækja
+cod_on_road	COD enn á ferðinni
+cod_owed_consignors	Innheimt — til að greiða sendendum
+cod_rto_fees	RTO gjöld til að innheimta
+cod_to_hand_in	COD til að skila inn
+parcel_one_fmt	{n} pakki
+facet_bank_title	Skýrslur
+facet_bank_help	Dagbækur, öldrun viðskiptavina eða birgja, bankafærslur og tímabilsreikningur.
+facet_ops_title	Sendingar & sendingar
+facet_ops_help	Skannaðu eða sláðu inn AWB → Finndu, farðu síðan fram / prentaðu merkimiða / COD. Sending til knapa eða flytjanda.
+facet_cod_title	COD skrá
+facet_cod_help	Sæktu við afhendingu, sendu síðan til sendanda.
+facet_riders_title	Reiðmenn (eigin floti)
+facet_riders_help	Bættu við reiðmönnum og sendu síðan bókaða AWB frá Ops.
+against_bill_ph	Gegn reikningi # hér að ofan (valfrjálst)
+aliases_ph	Samheiti — önnur nöfn, aðskilin með kommu
+amount_blank_full_ph	Upphæð (autt = heildarstaða)
+amount_owed_ph	Upphæð sem skuldað er
+amount_ph	Upphæð
+amount_received_ph	Upphæð móttekin
+amount_we_pay_ph	Upphæð sem við borgum
+awb_scan_ph	AWB / skanna strikamerki
+bulk_csv_ph	Magn CSV — áfangastaður, viðtakandi, kg, cod_paise, athugasemd
+business_name_ph	Nafn fyrirtækis
+category_new_ph	Flokkur (valfrjálst, búinn til ef nýr)
+cod_amount_ph	COD magn
+code_bag_ph	Kóði (taska)
+conv_factor_ph	Stuðull (25 = 1 poki → 25 kg)
+country_code_ph	Landskóði t.d. IN, GB, US, AE, BR
+credit_khata_amount_ph	Upphæð inneign / kreditbókar
+credit_limit_ph	Lánsfjármörk (0 = ekkert)
+dim_unit_code_ph	Málareiningakóði (cm)
+divisor_ph	Rúmmálsdeilir (5000)
+extra_per_kg_ph	Auka / kg
+first_amount_ph	Fyrsta upphæð
+first_kg_ph	Fyrsta kg (hella)
+from_code_ph	Frá kóða (poka)
+item_name_lang_ph	Heiti valmyndaratriðis — sláðu það inn á þínu tungumáli
+login_id_opt_ph	Notandanafn (áskilið, einstakt)
+manager_pin_ph	Stjórnandi PIN til að samþykkja (aðeins ef þú getur ekki ógilt)
+new_branch_name_ph	Nýtt nafn útibús
+new_password_ph	Nýtt lykilorð (valfrjálst)
+new_pin_ph	Nýtt PIN (4–12 tölustafir)
+note_bank_ph	Athugið (innborgun, úttekt, …)
+note_buy_expense_ph	Athugið (eldsneyti, leiga, …)
+note_expense_ph	Athugið (eldsneyti, skrifstofa, …)
+notify_phone_ph	Tilkynna síma (WhatsApp/SMS krókur)
+options_moklanjo_ph	Valkostir (valfrjálst) — Stórt=20, gjafapappír=10
+part_second_way_ph	Skildu með öðrum hætti (valfrjálst)
+phone_ph	Sími
+address_ph	Heimilisfang
+party_custom_fields_heading	Sérsniðnir reitir (valinn aðili)
+party_custom_help	Bættu hvaða merki og gildi sem er á þessa veislu - WhatsApp, GSTIN, leiðarkóða, ...
+party_custom_key_ph	Heiti reits (t.d. WhatsApp)
+party_custom_value_ph	Gildi
+party_custom_add	Bæta við reit
+party_custom_remove	Fjarlægja reit
+party_custom_empty	Engir sérsniðnir reitir ennþá
+party_custom_pick_first	Veldu aðila til að bæta við sérsniðnum reitum
+place_name_ph	Nafn þessa staðar
+price_ph	Verð
+qty_example_ph	Magn (t.d. 1,5 fyrir kg)
+quantity_ph	Magn
+reason_required_ph	Ástæða (krafist)
+role_title_ph	Hlutverksheiti (t.d. Barista)
+service_pct_ph	Þjónustuhlutfall valfrjálst 0/10/12
+short_code_ph	Stutt kóða (MG02)
+slab_kg_ph	Gjaldhæf hella í kg (0,5)
+staff_name_ph	Nafn starfsfólks/auðkenni
+starting_password_ph	Byrjunarlykilorð (valfrjálst)
+starting_pin_ph	Byrjar PIN (4–12 tölustafir)
+tax_rate_ph	Nafn skatthlutfalls eða % — Standard, Reduced, 0, 5, 12, 18, 20
+to_code_ph	Að kóða (kg)
+uncleared_no_ph	Óhreinsað # að ofan
+unit_cost_ph	Einingakostnaður
+unit_kg_blank_ph	Eining (kg eða auð)
+unit_name_bag_ph	Nafn (poki)
+weight_unit_code_ph	Þyngdareiningakóði (kg)
+zone_name_ph	Nafn svæðis
+pay_credit	Á reikning
+book_kind_today	Dagbækur í dag
+book_kind_month	Dagbók í þessum mánuði
+book_kind_aging	Útistandandi / debet-kredit
+book_kind_balance	Efnahagsreikningur
+ops_desk_help	Skannaðu AWB með USB strikamerkjaskanni (eða sláðu inn) → Finna. Farðu síðan fram, prentaðu merkimiðann eða safnaðu COD. Merki prentuð Kóði 128.
+role_help_consignor	Hlutverk: Sendandi - AR (þeir skulda okkur). Sama fyrirtæki getur líka verið Carrier.
+role_help_carrier	Hlutverk: Flytjandi - AP (við skuldum þeim). Sama fyrirtæki getur líka verið sendandi.
+role_help_both	Hlutverk: Sendandi + flutningsaðili - einn aðili, AR og AP höfuðbók, nettó í skýrslum.
+role_help_supplier	Hlutverk: Birgir - AP fyrir innkaup.
+lane_declared_label	Bókun reiknings
+lane_owner_label	Bókun í reiðufé
+money_lane_bill	Reikningur: {lane}

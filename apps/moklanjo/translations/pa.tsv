@@ -1,0 +1,835 @@
+# Punjabi — ਪੰਜਾਬੀ (pa). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	ਕੂਰੀਅਰ ਬਹੀ + ਬੁਕਿੰਗ ਡੈਸਕ। ਮੁਫ਼ਤ ਆਫ਼ਲਾਈਨ।
+unlock	ਅਨਲਾਕ
+pin_hint	ਮਾਲਕ PIN 0000 ਤੋਂ ਸ਼ੁਰੂ ਹੁੰਦਾ ਹੈ
+sell	ਬੁਕਿੰਗ
+buy	ਭੁਗਤਾਨ ਕਰੋ
+books	ਰੋਜ਼ ਬਹੀ
+books_help	ਅੱਜ ਦੀ ਸਥਿਤੀ। ਬੁਕਿੰਗ = ਪਾਰਸਲ ਆਏ। ਪੇ ਆਊਟ = ਕੈਰੀਅਰ ਬਿੱਲ ਤੇ ਖਰਚੇ। ਪਾਰਟੀ = ਭੇਜਣ ਵਾਲੇ ਤੇ ਕੈਰੀਅਰ।
+buy_help	ਖਰਚ ਵਾਊਚਰ ਅਤੇ ਕੈਰੀਅਰ ਬਿੱਲ (ਪੈਸਾ ਬਾਹਰ)। ਖਾਤੇ 'ਤੇ ਵਾਲਾ ਪਾਰਟੀ ਖਾਤੇ ਵਿੱਚ ਰਹਿੰਦਾ ਹੈ।
+sell_money_in	ਪਾਰਸਲ ਬੁੱਕ ਕਰੋ
+buy_money_out	ਖਰਚ / ਕੈਰੀਅਰ ਬਿੱਲ
+record_purchase	ਖਰੀਦ ਦਰਜ
+add_expense	ਖਰਚ ਵਾਊਚਰ
+bank_book	ਬੈਂਕ ਬਹੀ
+credit_help	ਪਾਰਟੀ ਆਈਡੀ ਵਿਲੱਖਣ ਹੈ (ਨਾਂ ਦੁਹਰਾਏ ਜਾ ਸਕਦੇ ਹਨ)। ਭੂਮਿਕਾਵਾਂ: ਭੇਜਣ ਵਾਲਾ (AR), ਕੈਰੀਅਰ (AP), ਜਾਂ ਉਸੇ ਆਈਡੀ 'ਤੇ ਦੋਵੇਂ। ਖਾਤੇ ਵੱਖ ਰਹਿੰਦੇ ਹਨ; ਰਿਪੋਰਟ ਨੈੱਟ ਦਿਖਾਉਂਦੀ ਹੈ।
+party_kind_ph	ਕਸਟਮ ਭੂਮਿਕਾ (ਵਿਕਲਪਿਕ) — ਜਾਂ ਉੱਪਰਲੀ ਚਿੱਪ
+parties_list_heading	ਸੰਭਾਲੀਆਂ ਪਾਰਟੀਆਂ
+reports_help	ਰੋਜ਼ ਬਹੀ, ਦੇਣਦਾਰ ਤੇ ਲੈਣਦਾਰ, ਬੈਂਕ ਬਹੀ, ਖਰਚ ਵਾਊਚਰ, ਲਾਭ ਤੇ ਨੁਕਸਾਨ।
+reports_today	ਰੋਜ਼ ਬਹੀ (ਅੱਜ)
+reports_month	ਲਾਭ ਤੇ ਨੁਕਸਾਨ (ਮਹੀਨਾ)
+reports_aging	ਬਕਾਇਆ / Dr-Cr
+reports_balance_sheet	ਬੈਲੈਂਸ ਸ਼ੀਟ
+reports	ਰਿਪੋਰਟ
+refresh	ਤਾਜ਼ਾ
+undo	ਵਾਪਸ
+start_tracking	ਗਿਣਤੀ ਸ਼ੁਰੂ
+stock_minus	− ਸਟਾਕ
+stock_plus	+ ਸਟਾਕ
+settle_cash	ਨਕਦ ਚੁਕਾਓ
+settle_card	ਕਾਰਡ ਨਾਲ ਚੁਕਾਓ
+items	ਦਰਾਂ ਤੇ ਸੇਵਾਵਾਂ
+nav_items	ਦਰਾਂ
+more	ਹੋਰ
+your_items	ਤੁਹਾਡੀਆਂ ਦਰਾਂ
+items_help	ਹਰ ਕਤਾਰ ਇੱਕ ਦਰ ਹੈ (ਜਿਵੇਂ Surface Zone A)। ਇਕਾਈ ਆਮ ਤੌਰ 'ਤੇ kg ਹੁੰਦੀ ਹੈ। ਸੋਧ ਲਈ ਦਬਾਓ।
+add_item	ਦਰ ਜੋੜੋ
+new_item	ਨਵੀਂ ਦਰ
+adding_item	ਨਵੀਂ ਦਰ ਜੋੜ ਰਿਹਾ ਹੈ
+editing_item	ਸੋਧ
+save	ਸੇਵ ਕਰੋ
+remove	ਹਟਾਓ
+empty_catalog	ਅਜੇ ਕੋਈ ਦਰ ਨਹੀਂ। ਦਰਾਂ ਤੇ ਸੇਵਾਵਾਂ ਖੋਲ੍ਹੋ, ਇੱਕ ਜੋੜੋ (ਨਾਂ + ਕੀਮਤ, ਇਕਾਈ kg), ਫਿਰ ਬੁਕਿੰਗ।
+counter_sale	ਕਾਊਂਟਰ ਬੁਕਿੰਗ
+total	ਕੁੱਲ
+cash	ਨਕਦ
+upi	यूपीआई
+card	ਕਾਰਡ
+credit	ਪਾਰਟੀਆਂ
+clear	ਸਾਫ਼
+ready_to_sell	ਬੁਕਿੰਗ ਲਈ ਤਿਆਰ
+today_prefix	ਅੱਜ
+today_mid	ਅੱਜ
+owed	ਬਾਕੀ
+round_word	ਰਾਊਂਡ
+back	ਪਿੱਛੇ
+sold_out	ਵਿਕ ਗਿਆ
+restock	ਮੁੜ ਰੱਖੋ
+not_tracked	ਗਿਣਤੀ ਨਹੀਂ
+in_stock	ਸਟਾਕ ਵਿੱਚ
+marked_sold_out	ਵਿਕ ਗਿਆ ਚਿੰਨ੍ਹ
+add_upper	ਜੋੜੋ
+na	ਨਹੀਂ
+qty	ਗਿਣਤੀ
+unit_at	ਦਰ
+actual	ਅਸਲ
+applied	ਲਾਗੂ
+note_ph	ਨੋਟ (ਵਿਕਲਪਿਕ)
+rounded	ਰਾਊਂਡ
+split	ਵੰਡੋ
+counter	ਕਾਊਂਟਰ
+parcel	ਪਾਰਸਲ
+order	ਆਰਡਰ
+sales	ਬੁਕਿੰਗਾਂ
+sales_refunds	ਬੁਕਿੰਗਾਂ ਤੇ ਰਿਫ਼ੰਡ
+day_close	ਦਿਨ ਬੰਦ
+reports_expenses	ਰਿਪੋਰਟ ਅਤੇ ਖਰਚ
+nav_reports	ਰਿਪੋਰਟਾਂ
+nav_settings	ਸੈਟਿੰਗਾਂ
+nav_lock	ਲਾਕ
+sidebar_settings	ਸਾਈਡਬਾਰ ਸੈਟਿੰਗਾਂ
+sidebar_settings_help	ਪਾਸੇ ਦੀ ਪੱਟੀ ਵਾਲੇ ਹੀ ਆਈਕਨ। ਕ੍ਰਮ ਬਦਲਣ ਲਈ ਕਤਾਰ ਖਿੱਚੋ। ਦਿਖਾਉਣ ਜਾਂ ਲੁਕਾਉਣ ਲਈ ਸਵਿੱਚ ਬਦਲੋ। ਸੈਟਿੰਗਾਂ ਤੇ ਲੌਕ ਹਮੇਸ਼ਾ ਪੱਟੀ 'ਤੇ ਰਹਿੰਦੇ ਹਨ।
+sidebar_always_on_short	ਹਮੇਸ਼ਾ ਚਾਲੂ
+sidebar_back_settings	ਪਿੱਛੇ
+sidebar_shown	ਦਿਖ ਰਿਹਾ
+sidebar_hidden	ਲੁਕਿਆ
+sidebar_always_on	ਹਮੇਸ਼ਾ ਪੱਟੀ 'ਤੇ
+sidebar_shown_hint	ਪਾਸੇ ਦੀ ਪੱਟੀ / ਹੇਠਲੇ ਟੈਬਾਂ 'ਤੇ ਦਿਖਦਾ ਹੈ
+sidebar_hidden_hint	ਪੱਟੀ ਤੋਂ ਲੁਕਿਆ
+sidebar_menu_items	ਮੀਨੂ ਤੇ ਆਈਟਮਾਂ
+sidebar_enable_all	ਸਭ ਚਾਲੂ ਕਰੋ
+sidebar_disable_all	ਸਭ ਬੰਦ ਕਰੋ
+sidebar_order_saved	ਸਾਈਡਬਾਰ ਦਾ ਕ੍ਰਮ ਸਾਂਭਿਆ
+sidebar_visibility_saved	ਸਾਈਡਬਾਰ ਦੀ ਦਿੱਖ ਸਾਂਭੀ
+amounts_hide	ਲੁਕਾਓ
+amounts_show	ਵਿਖਾਓ
+no_sale_yet	ਅਜੇ ਕੋਈ ਵਿਕਰੀ ਨਹੀਂ
+favorites	ਪਸੰਦੀਦਾ
+favorites_help	ਉਹ ਚੀਜ਼ਾਂ ਜੋ ਤੁਸੀਂ ਅਕਸਰ ਵੇਚਦੇ ਹੋ, ਤੁਹਾਡੇ ਲੌਗਇਨ ਲਈ ਸੰਭਾਲੀਆਂ। ਇੱਕ ਨੂੰ ਬਿਲ ਵਿੱਚ ਜੋੜੋ, ਜਾਂ ਹੇਠਾਂ ਸਾਰੀਆਂ ਚੀਜ਼ਾਂ ਤੋਂ ਆਪਣੀ ਸੂਚੀ ਬਣਾਓ।
+your_favorites	ਤੁਹਾਡੀਆਂ ਪਸੰਦੀਦਾ
+all_items	ਸਾਰੀਆਂ ਚੀਜ਼ਾਂ
+no_favorites	ਅਜੇ ਕੋਈ ਪਸੰਦੀਦਾ ਨਹੀਂ — ਹੇਠਾਂ ਸੂਚੀ ਤੋਂ ਚੀਜ਼ਾਂ ਸ਼ਾਮਲ ਕਰੋ।
+add_to_bill	ਬਿਲ ਵਿੱਚ ਜੋੜੋ
+added	ਸ਼ਾਮਲ ਕੀਤਾ
+owes_word	ਕਰਜ਼ਦਾਰ ਹੈ
+selected_word	ਚੁਣਿਆ ਗਿਆ
+chip_clear_credit	ਸਾਫ਼ — ਉਧਾਰ ਦਿਓ ਜਾਂ ਐਡਵਾਂਸ ਲਓ
+chip_missing_customer	ਚੁਣਿਆ ਗਾਹਕ ਨਹੀਂ ਮਿਲਿਆ — ਫਿਰ ਚੁਣੋ
+chip_no_customer	ਅਜੇ ਕੋਈ ਗਾਹਕ ਨਹੀਂ — ਨਾਮ ਲਿਖੋ, ਫਿਰ Credit ਦਬਾਓ
+credit_summary_fmt	{} ਗਾਹਕ · ਖੁੱਲ੍ਹਾ ਉਧਾਰ {} · ਐਡਵਾਂਸ ਰੱਖਿਆ {}
+recent_label	ਹਾਲੀਆ:
+inventory	ਸਟਾਕ
+inventory_stock	ਸਟਾਕ ਅਤੇ ਗਿਣਤੀ
+branches	ਸ਼ਾਖਾਵਾਂ
+branches_org	ਸ਼ਾਖਾ ਅਤੇ ਸੰਸਥਾ
+credit_customers	ਧਿਰਾਂ (ਦੇਣਦਾਰ ਤੇ ਲੈਣਦਾਰ)
+customer_name_ph	ਪਾਰਟੀ ਦਾ ਨਾਂ
+new_customer_ph	ਨਵੀਂ ਪਾਰਟੀ ਦਾ ਨਾਂ
+item_name_ph	ਦਰ ਦਾ ਨਾਂ (ਜਿਵੇਂ Surface Zone A)
+item_price_ph	ਪ੍ਰਤੀ kg / ਪਹਿਲਾ ਸਲੈਬ
+start_template	ਉਤਪਾਦ
+next_booking	ਅਗਲੀ ਬੁਕਿੰਗ
+destination_ph	ਮੰਜ਼ਿਲ ਸ਼ਹਿਰ / ਜ਼ੋਨ
+consignee_ph	ਪ੍ਰਾਪਤਕਰਤਾ
+consignee_phone_ph	ਪ੍ਰਾਪਤਕਰਤਾ ਦਾ ਫ਼ੋਨ
+consignee_address_ph	ਡਿਲੀਵਰੀ ਦਾ ਪਤਾ
+origin_name_ph	ਭੇਜਣ ਵਾਲੇ ਦਾ ਨਾਮ
+origin_phone_ph	ਭੇਜਣ ਵਾਲੇ ਦਾ ਫ਼ੋਨ
+origin_address_ph	ਪਿਕਅੱਪ / ਭੇਜਣ ਦਾ ਪਤਾ
+booking_consignor_heading	ਭੇਜਣ ਵਾਲਾ (ਗਾਹਕ / ਪ੍ਰੇਸ਼ਕ)
+booking_consignee_heading	ਪ੍ਰਾਪਤਕਰਤਾ (ਰਿਸੀਵਰ)
+booking_consignor_hint	ਭਰਨ ਲਈ ਇੱਕ ਪਾਰਟੀ ਚੁਣੋ, ਜਾਂ ਸਿੱਧੇ ਆਏ ਗਾਹਕ ਲਈ ਖਾਲੀ ਛੱਡੋ। ਘਰੋਂ ਪਿਕਅੱਪ ਅਤੇ RTO ਲਈ ਲੋੜੀਂਦਾ।
+booking_consignee_hint	ਪਾਰਸਲ ਪ੍ਰਾਪਤ ਕਰਨ ਵਾਲਾ। ਕਾਊਂਟਰ 'ਤੇ ਸਿੱਧੇ ਦਿੱਤੇ ਪਾਰਸਲ ਲਈ ਖਾਲੀ ਛੱਡੋ।
+weight_kg_ph	ਅਸਲ kg
+length_cm_ph	ਲੰਬਾਈ cm
+breadth_cm_ph	ਚੌੜਾਈ cm
+height_cm_ph	ਉਚਾਈ cm
+chargeable_kg	ਚਾਰਜਯੋਗ kg
+awb_label	AWB
+booking_help	ਵਾਕ-ਇਨ: ਮੰਜ਼ਿਲ → ਵਜ਼ਨ → ਦਰ ਚੁਣੋ → ਖਾਤਾ/ਨਕਦ ਬੁਕਿੰਗ → ਭੁਗਤਾਨ। ਰਸੀਦ 'ਤੇ AWB ਛਪਦਾ ਹੈ। ਅਗਲੀ ਬੁਕਿੰਗ ਡੈਸਕ ਖਾਲੀ ਕਰਦੀ ਹੈ।
+cart_empty_hint	ਡੈਸਕ ਖਾਲੀ — ਮੰਜ਼ਿਲ ਤੇ ਵਜ਼ਨ ਭਰੋ, ਦਰ 'ਤੇ ADD ਦਬਾਓ, ਫਿਰ ਭੁਗਤਾਨ ਕਰੋ।
+team	ਟੀਮ
+team_pins	ਟੀਮ ਅਤੇ ਪਿੰਨ
+my_pin_settings	ਮੇਰਾ PIN
+settings_hub_help_my_pin	ਇਸ ਡਿਵਾਈਸ ਉੱਤੇ ਸਾਈਨ-ਇਨ ਵਿਅਕਤੀ ਦਾ ਅਨਲਾਕ PIN ਬਦਲੋ।
+team_self_help	ਆਪਣਾ ਅਨਲੌਕ PIN (ਤੇ ਵਿਕਲਪਿਕ ਲੌਗਇਨ ਪਾਸਵਰਡ) ਸਿਰਫ਼ ਤੁਸੀਂ ਬਦਲ ਸਕਦੇ ਹੋ। ਵੱਖਰੀਆਂ ਸਕ੍ਰੀਨਾਂ ਜਾਂ ਹੱਕ ਚਾਹੀਦੇ ਹਨ ਤਾਂ ਮਾਲਕ ਨੂੰ ਕਹੋ।
+backup_settings	ਬੈਕਅਪ ਅਤੇ ਸੈਟਿੰਗ
+lock_app	ਲਾਕ
+pick	ਚੁਣੋ
+select	ਚੁਣੋ
+advance	ਅੱਗੇ
+owner	ਮਾਲਕ
+staff	ਸਟਾਫ਼
+photo	ਫੋਟੋ
+auto	ਆਪਣੇ ਆਪ
+prev	ਪਿਛਲਾ
+next	ਅਗਲਾ
+ok	ਠੀਕ
+this_shop	ਸਰਵਰ ਮੋਡ
+extra_till	ਕਲਾਇੰਟ ਮੋਡ
+off	ਬੰਦ
+server	ਸਰਵਰ
+client	ਕਲਾਇੰਟ
+language_currency	ਭਾਸ਼ਾ ਅਤੇ ਮੁਦਰਾ
+language	ਭਾਸ਼ਾ
+choose_language	ਆਪਣੀ ਭਾਸ਼ਾ ਚੁਣੋ
+language_setup_hint	ਇਸ ਡਿਵਾਈਸ ਦੀ ਭਾਸ਼ਾ ਅਨੁਸਾਰ ਚੱਲੋ, ਜਾਂ ਆਪ ਇੱਕ ਚੁਣੋ।
+lang_follow_platform	ਡਿਵਾਈਸ ਦੀ ਭਾਸ਼ਾ ਵਰਤੋ
+lang_pick_user	ਚੁਣੀ ਹੋਈ ਭਾਸ਼ਾ ਵਰਤੋ
+lang_platform_now	ਹੁਣ ਡਿਵਾਈਸ ਦੀ ਭਾਸ਼ਾ
+selected_language	ਚੁਣੀ ਹੋਈ
+continue	ਅੱਗੇ ਵਧੋ
+this_device	ਇਹ ਡਿਵਾਈਸ
+device_use_q	ਇਹ ਡਿਵਾਈਸ ਕਿਵੇਂ ਵਰਤੀ ਜਾਵੇਗੀ?
+last_server_mode	ਪਹਿਲਾਂ ਸਰਵਰ ਸੀ — ਜਾਰੀ ਰੱਖਣ ਲਈ ਟੈਪ ਕਰੋ
+last_client_mode	ਪਹਿਲਾਂ ਕਲਾਇੰਟ ਸੀ — ਜਾਰੀ ਰੱਖਣ ਲਈ ਟੈਪ ਕਰੋ
+choose_server	ਸਰਵਰ ਚੁਣੋ
+choose_server_hint	ਇਸ ਡਿਵਾਈਸ 'ਤੇ ਪਹਿਲਾਂ ਹੀ ਸਰਵਰ ਹਨ। ਇੱਕ ਖੋਲ੍ਹੋ, ਜਾਂ ਦੂਜੇ ਕਾਰੋਬਾਰ ਲਈ ਨਵਾਂ ਸਰਵਰ ਬਣਾਓ।
+create_new_server	ਨਵਾਂ ਸਰਵਰ ਬਣਾਓ
+open_server	ਖੋਲ੍ਹੋ
+new_server_name_ph	ਨਵੇਂ ਸਰਵਰ ਦਾ ਨਾਂ (ਵਿਕਲਪਿਕ)
+server_remove_pin_ph	ਸਰਵਰ ਹਟਾਉਣ ਲਈ Owner PIN
+only_owner_remove_server	ਸਿਰਫ਼ Owner ਸਰਵਰ ਹਟਾ ਸਕਦਾ ਹੈ
+owner_pin_remove_server	ਸਰਵਰ ਹਟਾਉਣ ਲਈ Owner PIN ਚਾਹੀਦਾ ਹੈ
+device_setup_help	ਸਰਵਰ ਵਹੀ ਇੱਥੇ ਰੱਖਦਾ ਹੈ। ਕਲਾਇੰਟ ਕਿਸੇ ਸਰਵਰ ਨਾਲ ਜੁੜਦਾ ਹੈ।
+currency	ਮੁਦਰਾ
+backup	ਬੈਕਅਪ
+settings_sec_diag	ਡਾਇਗਨੌਸਟਿਕਸ
+settings_hub_help	ਇੱਕ ਵਾਰ ਵਿੱਚ ਇੱਕ ਹਿੱਸਾ ਖੋਲ੍ਹੋ — ਘੱਟ ਸਕ੍ਰੋਲ, ਸਾਫ਼ ਚੋਣਾਂ।
+settings_sec_devices	ਵਾਧੂ ਟਿੱਲ ਅਤੇ ਸ਼ਾਖਾਵਾਂ
+settings_sec_alerts	ਸੂਚਨਾਵਾਂ
+alerts_help	ਸਥਿਤੀ ਸੁਨੇਹੇ ਤੁਹਾਡੇ ਲਈ ਸਕ੍ਰੀਨ 'ਤੇ ਕਿੰਨੀ ਦੇਰ ਰਹਿਣ (ਇਸ ਲੌਗਇਨ ਲਈ)।
+snack_secs_ph	ਸਕਿੰਟ (3–60, ਮੂਲ 10)
+snack_secs_save	ਸੂਚਨਾ ਸਮਾਂ ਸੰਭਾਲੋ
+snack_secs_saved	ਸੂਚਨਾ ਸਮਾਂ ਸੰਭਾਲਿਆ — {n} ਸਕਿੰਟ
+snack_secs_bad	ਸਕਿੰਟ ਅੰਕਾਂ ਵਿੱਚ ਲਿਖੋ (3–60)
+cancelled	ਰੱਦ ਕੀਤਾ
+cancel	ਰੱਦ
+opening_client	ਕਲਾਇੰਟ ਖੁੱਲ੍ਹ ਰਿਹਾ ਹੈ…
+preparing_desk	ਡੈਸਕ ਤਿਆਰ ਹੋ ਰਿਹਾ ਹੈ…
+opening_server	ਸਰਵਰ ਖੁੱਲ੍ਹ ਰਿਹਾ ਹੈ…
+creating_server	ਸਰਵਰ ਬਣ ਰਿਹਾ ਹੈ…
+diag_privacy_help	ਲੌਗ ਇਸੇ ਡਿਵਾਈਸ 'ਤੇ ਰਹਿੰਦੇ ਹਨ। ਭੇਤ (PIN, ਪਾਸਵਰਡ) ਕਦੇ ਸਾਂਭੇ ਨਹੀਂ ਜਾਂਦੇ। ਡਿਵਾਈਸ ਤੋਂ ਬਾਹਰ ਪੈਕੇਜ ਭੇਜਣ ਲਈ ਹਰ ਵਾਰ ਤੁਹਾਡੀ ਸਾਫ਼ ਮਨਜ਼ੂਰੀ ਚਾਹੀਦੀ ਹੈ — ਕਦੇ ਵੇਚਿਆ ਜਾਂ ਕਿਸੇ ਤੀਜੀ ਧਿਰ ਨੂੰ ਨਹੀਂ ਦਿੱਤਾ ਜਾਂਦਾ।
+diag_level	ਵੇਰਵੇ ਦਾ ਪੱਧਰ
+diag_level_error	ਗਲਤੀਆਂ
+diag_level_warn	ਚੇਤਾਵਨੀਆਂ
+diag_level_info	ਜਾਣਕਾਰੀ
+diag_level_debug	ਡੀਬੱਗ
+diag_support_start	30 ਮਿੰਟ ਦਾ ਸਹਾਇਤਾ ਸੈਸ਼ਨ ਸ਼ੁਰੂ ਕਰੋ
+diag_support_stop	ਸਹਾਇਤਾ ਸੈਸ਼ਨ ਖ਼ਤਮ ਕਰੋ
+diag_support_started	ਸਹਾਇਤਾ ਸੈਸ਼ਨ ਚਾਲੂ — 30 ਮਿੰਟ ਡੀਬੱਗ ਵੇਰਵਾ
+diag_support_ended	ਸਹਾਇਤਾ ਸੈਸ਼ਨ ਖ਼ਤਮ ਹੋਇਆ
+diag_export_local	ਸਥਾਨਕ ਕਾਪੀ ਨਿਰਯਾਤ ਕਰੋ
+diag_export_local_done	ਸਥਾਨਕ ਡਾਇਗਨੌਸਟਿਕਸ {path} 'ਤੇ ਤਿਆਰ — ਕਾਪੀ ਕਿੱਥੇ ਸਾਂਭਣੀ ਹੈ ਚੁਣੋ
+diag_approve_send	ਡਿਵਾਈਸ ਤੋਂ ਬਾਹਰ ਭੇਜਣ ਦੀ ਮਨਜ਼ੂਰੀ ਦਿਓ
+diag_send_heading	ਇਸ ਡਿਵਾਈਸ ਤੋਂ ਬਾਹਰ ਸਾਂਝਾ ਕਰੋ
+diag_send_help	ਮਨਜ਼ੂਰੀ ਇੱਕ ਪੈਕੇਜ ਲਈ ਹੈ, ਫਿਰ ਖ਼ਤਮ ਹੋ ਜਾਂਦੀ ਹੈ। ਆਰਜ਼ੀ — ਸਿਰਫ਼ ਉਤਪਾਦ ਠੀਕ ਕਰਨ ਜਾਂ ਸੁਧਾਰਨ ਲਈ। ਕਿਸੇ ਤੀਜੀ ਧਿਰ ਨਾਲ ਸਾਂਝਾ ਨਹੀਂ ਹੁੰਦਾ। Linux, Windows, macOS ਤੇ Android 'ਤੇ ਚੱਲਦਾ ਹੈ।
+optional_login_heading	ਵਿਕਲਪਿਕ ਲੌਗਇਨ
+rights_heading	ਅਧਿਕਾਰ
+booking_scope_heading	ਦੇਸੀ / ਅੰਤਰਰਾਸ਼ਟਰੀ
+diag_send_approved	ਇੱਕ ਪੈਕੇਜ ਭੇਜਣ ਦੀ ਮਨਜ਼ੂਰੀ ਮਿਲੀ (ਜਲਦੀ ਖ਼ਤਮ ਹੋਵੇਗੀ)
+diag_export_send	ਭੇਜਣ ਵਾਲਾ ਪੈਕੇਜ ਬਣਾਓ (ਮਨਜ਼ੂਰੀ ਚਾਹੀਦੀ)
+diag_export_send_done	ਭੇਜਣ ਵਾਲਾ ਪੈਕੇਜ {path} 'ਤੇ ਤਿਆਰ — ਕਿੱਥੇ ਸਾਂਭਣਾ ਹੈ ਚੁਣੋ, ਫਿਰ ਸਿਰਫ਼ Kumkaj ਸਹਾਇਤਾ ਨੂੰ ਭੇਜੋ
+diag_save_bundle	ਡਾਇਗਨੌਸਟਿਕਸ ਕਾਪੀ ਸਾਂਭੋ
+diag_bundle_saved	ਡਾਇਗਨੌਸਟਿਕਸ ਕਾਪੀ {path} ਵਿੱਚ ਸਾਂਭੀ
+diag_bundle_failed	ਡਾਇਗਨੌਸਟਿਕਸ ਕਾਪੀ ਸਾਂਭੀ ਨਹੀਂ ਜਾ ਸਕੀ — ਮੁੜ ਕੋਸ਼ਿਸ਼ ਕਰੋ
+diag_clear	ਡਾਇਗਨੌਸਟਿਕ ਲੌਗ ਸਾਫ਼ ਕਰੋ
+diag_cleared	ਡਾਇਗਨੌਸਟਿਕ ਲੌਗ ਸਾਫ਼ ਹੋਏ
+use	ਵਰਤੋ
+add_branch	ਸ਼ਾਖਾ ਜੋੜੋ
+add_conversion	ਤਬਦੀਲੀ ਜੋੜੋ
+add_item_plain	ਆਈਟਮ ਜੋੜੋ
+add_note	ਨੋਟ ਜੋੜੋ
+add_opening_balance	ਸ਼ੁਰੂਆਤੀ ਬਕਾਇਆ ਜੋੜੋ
+add_rider	ਰਾਈਡਰ ਜੋੜੋ
+add_staff	ਸਟਾਫ਼ ਜੋੜੋ
+add_unit	ਇਕਾਈ ਜੋੜੋ
+add_use_name	ਇਹ ਨਾਂ ਜੋੜੋ / ਵਰਤੋ
+allow_extra_tills	ਵਾਧੂ ਟਿੱਲਾਂ ਦੀ ਇਜਾਜ਼ਤ ਦਿਓ
+amend	ਸੋਧ
+apply_country_pack	ਦੇਸ਼ ਪੈਕ ਲਾਗੂ ਕਰੋ
+datetime_appearance	ਤਾਰੀਖ਼ ਤੇ ਸਮੇਂ ਦੀ ਦਿੱਖ
+datetime_appearance_help	ਬਹੀ ਅੰਦਰ ਸਾਲ-ਪਹਿਲਾਂ RFC3339 ਰੱਖਦੀ ਹੈ। ਇਹ ਸਿਰਫ਼ ਰਸੀਦਾਂ, ਲੇਬਲਾਂ, ਰਿਪੋਰਟਾਂ ਤੇ ਸਕ੍ਰੀਨ 'ਤੇ ਤਾਰੀਖ਼ ਤੇ ਘੜੀ ਦੀ ਦਿੱਖ ਬਦਲਦੇ ਹਨ।
+datetime_example	ਹੁਣ ਦੀ ਮਿਸਾਲ: {ex}
+date_order	ਤਾਰੀਖ਼ ਦਾ ਕ੍ਰਮ
+date_order_dmy	ਦਿ/ਮ/ਸ
+date_order_mdy	ਮ/ਦਿ/ਸ
+date_order_ymd	ਸ-ਮ-ਦਿ
+time_format	ਘੜੀ
+time_format_24h	24 ਘੰਟੇ
+time_format_12h	12 ਘੰਟੇ
+attach_bill_photo	ਬਿੱਲ ਫੋਟੋ ਲਗਾਓ
+attach_pdf	PDF ਲਗਾਓ
+attach_photo	ਫੋਟੋ ਲਗਾਓ
+bank	ਬੈਂਕ
+bank_in	ਬੈਂਕ ਵਿੱਚ ਪਾਓ
+bank_out	ਬੈਂਕ ਤੋਂ ਕੱਢੋ
+bank_to_till	ਬੈਂਕ → ਟਿੱਲ
+till_to_bank	ਟਿੱਲ → ਬੈਂਕ
+mark_cleared	ਕਲੀਅਰ ਨਿਸ਼ਾਨ ਲਗਾਓ
+unmark	ਨਿਸ਼ਾਨ ਹਟਾਓ
+role_both	ਦੋਵੇਂ
+role_carrier	ਕੈਰੀਅਰ
+role_cashier	ਕੈਸ਼ੀਅਰ
+role_consignor	ਭੇਜਣ ਵਾਲਾ
+role_manager	ਮੈਨੇਜਰ
+role_supplier	ਸਪਲਾਇਰ
+branch_name_sell_ph	ਜਿਸ ਸ਼ਾਖਾ ਤੋਂ ਵੇਚਣਾ ਹੈ ਉਸਦਾ ਨਾਂ
+bring_my_book	ਮੇਰੀ ਬਹੀ ਲਿਆਓ
+business_tax_id_ph	ਕਾਰੋਬਾਰ ਟੈਕਸ ਆਈਡੀ
+card_amount_ph	ਕਾਰਡ ਰਕਮ
+cash_amount_ph	ਨਕਦ ਰਕਮ
+upi_amount_ph	UPI ਰਕਮ
+carrier_cost_ph	ਕੈਰੀਅਰ ਲਾਗਤ
+carrier_party_ph	ਕੈਰੀਅਰ ਪਾਰਟੀ
+choose_icon	ਆਈਕਨ ਚੁਣੋ
+choose_logo	ਲੋਗੋ ਚੁਣੋ
+choose_receipt_stamp	ਰਸੀਦ ਸਟੈਂਪ ਚੁਣੋ
+choose_payment_qr	ਪੇਮੈਂਟ QR ਚੁਣੋ
+clear_icon	ਆਈਕਨ ਹਟਾਓ
+clear_logo	ਲੋਗੋ ਹਟਾਓ
+clear_photo	ਫੋਟੋ ਹਟਾਓ
+clear_stamp	ਸਟੈਂਪ ਸਾਫ਼
+clear_payment_qr	ਪੇਮੈਂਟ QR ਸਾਫ਼
+print_faces	ਪ੍ਰਿੰਟ ਰੂਪ (ਰਸੀਦ / ਮਿਆਦ ਬਿੱਲ)
+print_faces_help	ਬੁਕਿੰਗ ਰਸੀਦਾਂ ਅਤੇ ਮਿਆਦ ਬਿੱਲਾਂ 'ਤੇ ਤੁਹਾਡੇ ਲੋਗੋ ਕੋਲ ਵਿਕਲਪਿਕ ਮੋਹਰ ਅਤੇ ਭੁਗਤਾਨ QR।
+awb_pools_heading	ਕੈਰੀਅਰ AWB ਨੰਬਰ ਪੂਲ
+add_awb_pool	AWB ਪੂਲ ਜੋੜੋ
+awb_pool_carrier_ph	ਕੈਰੀਅਰ ਪਾਰਟੀ ਦਾ ਨਾਂ
+awb_pool_start_ph	ਸ਼ੁਰੂਆਤੀ ਨੰ.
+awb_pool_end_ph	ਆਖਰੀ ਨੰ.
+awb_pool_prefix_ph	ਅਗੇਤਰ (ਵਿਕਲਪਿਕ)
+awb_pool_label_ph	ਲੇਬਲ (ਵਿਕਲਪਿਕ)
+pieces_ph	ਨਗ (ਖਾਲੀ = 1) — ਕਾਰਗੋ / ਕਈ ਨਗਾਂ ਲਈ ਖੋਲ੍ਹੋ
+bulk_awbs_ph	ਕਈ AWB — ਇੱਕੋ ਵਾਰ ਸਥਿਤੀ ਅੱਗੇ ਵਧਾਉਣ ਲਈ ਕਈ ਚਿਪਕਾਓ (ਨਵੀਂ ਲਾਈਨ ਜਾਂ ਕੌਮਾ)
+tds_cut_ph	TDS ਕਟੌਤੀ (ਵਿਕਲਪਿਕ)
+discount_ph	ਛੋਟ (ਵਿਕਲਪਿਕ)
+cheque_no_ph	ਚੈੱਕ ਨੰਬਰ (ਵਿਕਲਪਿਕ)
+bill_reminder_chase	ਬਿੱਲ ਯਾਦ ਲਿਸਟ
+month_mix_report	ਮਹੀਨਾ ਮਿਕਸ ਰਿਪੋਰਟ
+copy_month_gst_csv	ਮਹੀਨਾ GST CSV ਕਾਪੀ
+domestic	ਘਰੇਲੂ
+international	ਅੰਤਰਰਾਸ਼ਟਰੀ
+pick_logo	ਲੋਗੋ ਚੁਣੋ
+booking_scope_hint_domestic	ਵਾਲੀਅਮ ÷5000 (ਘਰੇਲੂ) — ਅੰਤਰਰਾਸ਼ਟਰੀ ÷6000
+booking_scope_hint_intl	ਵਾਲੀਅਮ ÷6000 (ਅੰਤਰਰਾਸ਼ਟਰੀ) — ਘਰੇਲੂ ÷5000
+cod_register	COD ਰਜਿਸਟਰ
+collect_cod	COD ਇਕੱਠਾ ਕਰੋ (AWB)
+consignments_dispatch	ਖੇਪ ਤੇ ਡਿਸਪੈਚ
+consignor_party_ph	ਭੇਜਣ ਵਾਲਾ / ਪਾਰਟੀ ਦਾ ਨਾਂ
+copy_day_book_csv	ਰੋਜ਼ ਬਹੀ CSV ਕਾਪੀ
+copy_day_close	ਦਿਨ ਬੰਦ ਕਾਪੀ ਕਰੋ
+copy_items_csv	ਆਈਟਮ CSV ਕਾਪੀ
+copy_outstanding_csv	ਬਕਾਇਆ CSV ਕਾਪੀ
+copy_parties_csv	ਪਾਰਟੀ CSV ਕਾਪੀ
+copy_party_ledger_csv	ਪਾਰਟੀ ਖਾਤਾ CSV ਕਾਪੀ
+copy_receipt	ਰਸੀਦ ਕਾਪੀ ਕਰੋ
+copy_report	ਰਿਪੋਰਟ ਕਾਪੀ ਕਰੋ
+counted_cash_ph	ਦਰਾਜ਼ ਵਿੱਚ ਗਿਣੀ ਨਕਦੀ
+counter_agency_ph	ਕਾਊਂਟਰ / ਏਜੰਸੀ ਦਾ ਨਾਂ (ਵਿਕਲਪਿਕ)
+create_backup	ਬੈਕਅਪ ਬਣਾਓ
+day_close_summary	ਦਿਨ ਬੰਦ ਸਾਰ
+delete_party	ਚੁਣੀ ਪਾਰਟੀ ਮਿਟਾਓ
+dispatch_to_rider	ਬੁੱਕ ਕੀਤਾ → ਰਾਈਡਰ ਨੂੰ
+docket_charge_ph	ਡਾਕੇਟ ਚਾਰਜ
+declared_value_ph	ਘੋਸ਼ਿਤ ਮੁੱਲ
+contents_ph	ਸਮੱਗਰੀ
+eway_ph	ਈ-ਵੇ ਬਿੱਲ ਨੰ.
+insurance_label	ਬੀਮਾ (ਹਾਂ/ਨਹੀਂ)
+yes_label	ਹਾਂ
+no_label	ਨਹੀਂ
+print_route_label	ਪ੍ਰਿੰਟ ਰੂਟ
+new_party_kind_label	ਨਵੀਂ ਪਾਰਟੀ ਦੀ ਕਿਸਮ
+done_open_books	ਹੋ ਗਿਆ — ਬਹੀਆਂ ਖੋਲ੍ਹੋ
+export_day	ਦਿਨ ਐਕਸਪੋਰਟ ਕਰੋ
+extra_note_expense_ph	ਆਖਰੀ ਖਰਚ 'ਤੇ ਵਾਧੂ ਨੋਟ
+extra_note_awb_ph	ਇਸ AWB / ਵਿਕਰੀ 'ਤੇ ਵਾਧੂ ਨੋਟ
+failed_delivery	ਡਿਲਿਵਰੀ ਅਸਫਲ
+find_scan_awb	AWB ਲੱਭੋ / ਸਕੈਨ ਕਰੋ
+forget_shop	ਇਹ ਦੁਕਾਨ ਭੁੱਲੋ
+fuel_ph	ਈਂਧਨ
+handover_carrier	ਬੁੱਕ ਕੀਤਾ → ਕੈਰੀਅਰ ਨੂੰ
+import_day	ਦਿਨ ਇੰਪੋਰਟ ਕਰੋ
+import_items_csv	ਆਈਟਮ / ਦਰ CSV ਇੰਪੋਰਟ…
+import_parties_csv	ਪਾਰਟੀ CSV ਇੰਪੋਰਟ…
+import_pincodes_csv	ਪਿੰਨਕੋਡ CSV ਇੰਪੋਰਟ…
+import_carrier_bill_csv	ਕੈਰੀਅਰ ਬਿੱਲ CSV ਇੰਪੋਰਟ…
+copy_carrier_bill_report	ਆਖਰੀ ਕੈਰੀਅਰ ਬਿੱਲ ਰਿਪੋਰਟ ਕਾਪੀ
+use_carrier_cost	ਕੈਰੀਅਰ ਲਾਗਤ ਵਰਤੋ
+rate_carrier_ph	ਕੈਰੀਅਰ (ਖਾਲੀ = ਸਾਡੀ ਵਿਕਰੀ ਦਰ)
+rate_party_ph	ਪਾਰਟੀ (ਖਾਲੀ = ਸਾਰੇ ਗਾਹਕ)
+carrier_pick_ph	ਲਾਗਤ ਲਈ ਕੈਰੀਅਰ (ਤੁਲਨਾ ਤੋਂ)
+item_name	ਆਈਟਮ ਦਾ ਨਾਂ
+load_bulk_row	ਥੋਕ ਕਤਾਰ ਲੋਡ → ਡੈਸਕ
+login_id_ph	ਲਾਗਇਨ ਆਈਡੀ
+mark_delivered	ਡਿਲਿਵਰ ਨਿਸ਼ਾਨ ਲਗਾਓ
+manifest_cod_total	COD ਕੁੱਲ
+manifest_received_by	ਪ੍ਰਾਪਤਕਰਤਾ
+manifest_sign	ਦਸਤਖ਼ਤ
+ndr_address_wrong	ਪਤਾ ਗਲਤ
+ndr_customer_unavailable	ਗਾਹਕ ਉਪਲਬਧ ਨਹੀਂ
+ndr_door_locked	ਦਰਵਾਜ਼ਾ ਬੰਦ
+ndr_other	ਹੋਰ
+ndr_refused	ਇਨਕਾਰ
+out_for_delivery	ਡਿਲਿਵਰੀ ਲਈ ਬਾਹਰ
+print_drs	DRS ਛਾਪੋ
+print_run_sheet	ਰਨ ਸ਼ੀਟ ਛਾਪੋ
+reattempt	ਮੁੜ ਕੋਸ਼ਿਸ਼
+rider_cod_handed_ph	ਰਾਈਡਰ ਨੇ ਦਿੱਤਾ COD
+settle_rider_cod	ਰਾਈਡਰ COD ਸੈਟਲ
+mode_desk	ਡੈਸਕ
+mode_rider	ਰਾਈਡਰ
+waiting_office	ਦਫ਼ਤਰ ਪਹੁੰਚਣ ਦੀ ਉਡੀਕ
+capture_signature	ਦਸਤਖ਼ਤ ਲਓ
+incoming_manifest	ਇਨਕਮਿੰਗ ਮੈਨੀਫੈਸਟ
+pickup_request	ਪਿਕਅੱਪ ਬੇਨਤੀ
+pickup_run	ਪਿਕਅੱਪ ਰਨ
+auto_assign_area	ਖੇਤਰ ਆਪਣੇ ਆਪ ਅਸਾਈਨ
+reorder_stops	ਸਟਾਪ ਕ੍ਰਮ ਬਦਲੋ
+settle_rider_pay	ਰਾਈਡਰ ਤਨਖਾਹ ਸੈਟਲ
+vehicle_inspect	ਵਾਹਨ ਜਾਂਚ
+print_docket	ਸੀ-ਨੋਟ ਛਾਪੋ
+franchise_statement	ਫਰੈਂਚਾਈਜ਼ ਬਿਆਨ
+tally_export	ਟੈਲੀ ਵਾਊਚਰ ਨਿਰਯਾਤ
+open_whatsapp	ਵਟਸਐਪ ਖੋਲ੍ਹੋ
+copy_sms	SMS ਲਿਖਤ ਕਾਪੀ
+pick_barcode_image	ਸਕੈਨ ਲਈ ਫੋਟੋ ਚੁਣੋ
+share_receipt_whatsapp	ਰਸੀਦ ਵਟਸਐਪ 'ਤੇ ਸਾਂਝੀ
+delivery_feedback	ਡਿਲਿਵਰੀ ਫੀਡਬੈਕ
+lan_self_book	LAN ਖੁਦ ਬੁਕਿੰਗ
+new_party_clear	ਨਵੀਂ ਪਾਰਟੀ (ਫਾਰਮ ਸਾਫ਼ ਕਰੋ)
+new_party_kind_ph	ਨਵੀਂ ਪਾਰਟੀ ਦੀ ਕਿਸਮ (ਸਪਲਾਇਰ / ਕੈਰੀਅਰ)
+next_country	ਅਗਲਾ ਦੇਸ਼
+prev_country	ਪਿਛਲਾ ਦੇਸ਼
+note_gstin_ph	ਨੋਟ / GSTIN / ਸਮਝੌਤਾ ਰਿਮਾਈਂਡਰ
+note_pod_ph	ਨੋਟ / POD (ਵਿਕਲਪਿਕ)
+on_account_ap	ਖਾਤੇ 'ਤੇ (AP)
+org_optional_ph	ਸੰਸਥਾ (ਵਿਕਲਪਿਕ)
+paid_now	ਹੁਣ ਭੁਗਤਾਨ
+pairing_code_ph	ਜੋੜੀ ਕੋਡ
+pair_now	ਹੁਣ ਜੋੜੋ
+party_name_selected_ph	ਪਾਰਟੀ ਦਾ ਨਾਂ (ਜਾਂ ਚੁਣਿਆ ਵਰਤੋ)
+password_ph	ਪਾਸਵਰਡ
+pay_ap_card	AP ਕਾਰਡ ਨਾਲ ਦਿਓ
+pay_ap_cash	AP ਨਕਦ ਦਿਓ
+pay_ap_upi	AP UPI ਦਿਓ
+period_bill	ਮਿਆਦ ਬਿੱਲ
+period_bill_party	ਮਿਆਦ ਬਿੱਲ (ਪਾਰਟੀ)
+pick_pod_photo	POD ਫੋਟੋ ਚੁਣੋ
+print_awb_label	AWB ਲੇਬਲ ਛਾਪੋ
+print_open	ਛਾਪੋ / ਖੋਲ੍ਹੋ
+reason_amend_ph	ਸੋਧ / ਰੱਦ / ਵਾਪਸੀ ਦਾ ਕਾਰਨ
+reason_note_ph	ਕਾਰਨ / ਨੋਟ (ਖਰਾਬੀ, ਗਿਣਤੀ, …)
+record_day_close	ਦਿਨ ਬੰਦ ਦਰਜ ਕਰੋ
+refresh_from_shop	ਦੁਕਾਨ ਤੋਂ ਤਾਜ਼ਾ ਕਰੋ
+refund	ਵਾਪਸੀ
+remit_cod	COD ਜਮ੍ਹਾ ਕਰੋ (ਪਾਰਟੀ)
+remove_selected	ਚੁਣਿਆ ਹਟਾਓ
+restore_backup	ਬੈਕਅਪ ਵਾਪਸ ਲਿਆਓ
+rider_name_ph	ਰਾਈਡਰ ਦਾ ਨਾਂ
+rider_phone_ph	ਰਾਈਡਰ ਦਾ ਫੋਨ
+riders	ਰਾਈਡਰ
+riders_own_fleet	ਰਾਈਡਰ (ਆਪਣਾ ਫਲੀਟ)
+rollup	ਰੋਲ-ਅੱਪ
+save_booking_measures	ਬੁਕਿੰਗ ਮਾਪ ਸੇਵ ਕਰੋ
+save_brand	ਬ੍ਰਾਂਡ ਸੇਵ ਕਰੋ
+save_business_id	ਕਾਰੋਬਾਰ ਆਈਡੀ ਤੇ ਸੇਵਾ % ਸੇਵ ਕਰੋ
+save_business_name	ਕਾਰੋਬਾਰ ਦਾ ਨਾਂ ਸੇਵ ਕਰੋ
+save_features	ਕੰਮ ਦਾ ਸੈਟਅੱਪ ਸਾਂਭੋ
+save_names	ਨਾਂ ਸੇਵ ਕਰੋ
+server_ip_ph	ਸਰਵਰ IP (ਜਿਵੇਂ 192.168.1.10)
+set_credit_limit	ਉਧਾਰ ਸੀਮਾ ਤੈਅ ਕਰੋ
+set_login_selected	ਚੁਣੇ 'ਤੇ ਲਾਗਇਨ ਲਗਾਓ
+set_login_named	{name} 'ਤੇ ਲਾਗਇਨ ਲਗਾਓ
+shop	ਦੁਕਾਨ
+start_fresh	ਨਵੇਂ ਸਿਰੇ ਤੋਂ ਸ਼ੁਰੂ ਕਰੋ
+stop_extra_tills	ਵਾਧੂ ਟਿੱਲ ਬੰਦ ਕਰੋ
+backup_auto	ਹਰ ਰੋਜ਼ ਆਪਣੇ-ਆਪ ਬੈਕਅੱਪ · ਆਖ਼ਰੀ {when} · ਆਖ਼ਰੀ 14 ਦਿਨ {dir} ਵਿੱਚ ਰੱਖੇ ਜਾਂਦੇ ਹਨ।
+backup_auto_none	ਹਰ ਰੋਜ਼ ਆਪਣੇ-ਆਪ ਬੈਕਅੱਪ — ਪਹਿਲਾ ਥੋੜ੍ਹੀ ਦੇਰ ਵਿੱਚ ਚੱਲੇਗਾ।
+backup_copy_to	ਕਾਪੀਆਂ {dir} ਵਿੱਚ ਵੀ ਜਾਂਦੀਆਂ ਹਨ।
+backup_copy_btn	ਬੈਕਅੱਪ ਇੱਕ ਫੋਲਡਰ ਵਿੱਚ ਵੀ ਕਾਪੀ ਕਰੋ…
+autostart_off	ਇਸ ਕੰਪਿਊਟਰ ਨਾਲ ਸ਼ੁਰੂ ਕਰੋ
+autostart_on	ਇਸ ਕੰਪਿਊਟਰ ਨਾਲ ਸ਼ੁਰੂ ਹੁੰਦਾ ਹੈ ✓ — ਬੰਦ ਕਰਨ ਲਈ ਦਬਾਓ
+autostart_done_on	ਹੁਣ ਕੰਪਿਊਟਰ ਸ਼ੁਰੂ ਹੁੰਦੇ ਹੀ ਐਪ ਖੁੱਲ੍ਹੇਗੀ — ਬਿਜਲੀ ਜਾਣ ਤੋਂ ਬਾਅਦ ਵੀ ਦੁਕਾਨ ਦਾ ਸਰਵਰ ਮੁੜ ਚੱਲੇਗਾ।
+autostart_done_off	ਹੁਣ ਕੰਪਿਊਟਰ ਸ਼ੁਰੂ ਹੋਣ 'ਤੇ ਐਪ ਨਹੀਂ ਖੁੱਲ੍ਹੇਗੀ।
+right_allowed	ਇਜਾਜ਼ਤ ਹੈ
+right_with_approval	ਮਨਜ਼ੂਰੀ ਨਾਲ
+right_denied	ਇਜਾਜ਼ਤ ਨਹੀਂ
+editing_staff	ਇਹਨਾਂ ਦੇ ਹੱਕ
+team_pick_ph	ਬਦਲਣ ਲਈ ਸਟਾਫ਼ ਦਾ ਨਾਮ
+select_staff	ਇਹ ਸਟਾਫ਼ ਚੁਣੋ
+rights_help	ਹੱਕ — ਬਦਲਣ ਲਈ ਦਬਾਓ: ਇਜਾਜ਼ਤ → ਮਨਜ਼ੂਰੀ ਨਾਲ (ਉਸੇ ਵੇਲੇ ਮੈਨੇਜਰ ਦਾ PIN) → ਇਜਾਜ਼ਤ ਨਹੀਂ।
+right_void_refund	ਬੁਕਿੰਗ ਰੱਦ ਜਾਂ ਰਿਫੰਡ
+right_amend_sale	ਦਰਜ ਬੁਕਿੰਗ ਵਿੱਚ ਸੋਧ
+find_server	ਦੁਕਾਨ ਦਾ ਸਰਵਰ ਲੱਭੋ
+finding_server	ਇਸ Wi‑Fi 'ਤੇ ਦੁਕਾਨ ਦਾ ਸਰਵਰ ਲੱਭ ਰਹੇ ਹਾਂ…
+no_server_found	ਕੋਈ ਸਰਵਰ ਨਹੀਂ ਮਿਲਿਆ। ਵੇਖੋ ਕਿ ਦੁਕਾਨ ਦਾ ਡਿਵਾਈਸ ਉਸੇ Wi‑Fi 'ਤੇ ਵਾਧੂ ਟਿੱਲ ਦੀ ਇਜਾਜ਼ਤ ਨਾਲ ਹੈ, ਜਾਂ ਉਸਦਾ IP ਲਿਖੋ।
+servers_found_pick	ਜਿਸ ਦੁਕਾਨ ਨਾਲ ਜੁੜਨਾ ਹੈ ਉਸ ਨੂੰ ਟੈਪ ਕਰੋ।
+server_host_selected	{host} ਵਰਤ ਰਹੇ ਹਾਂ — ਪੇਅਰਿੰਗ ਕੋਡ ਭਰੋ, ਫਿਰ ਹੁਣ ਪੇਅਰ ਕਰੋ।
+device_forgotten	ਦੁਕਾਨ ਨੇ ਇਹ ਡਿਵਾਈਸ ਹਟਾ ਦਿੱਤੀ — ਦੁਕਾਨ ਦੇ ਮੌਜੂਦਾ ਕੋਡ ਨਾਲ ਮੁੜ ਜੋੜੋ। ਉਡੀਕਦੇ ਆਰਡਰ ਸਾਂਭੇ ਹੋਏ ਹਨ।
+forget_device	ਭੁੱਲ ਜਾਓ
+last_seen	ਆਖ਼ਰੀ ਵਾਰ
+new_pair_code	ਨਵਾਂ ਜੋੜਨ ਕੋਡ
+lan_offline	ਆਫ਼ਲਾਈਨ
+lan_offline_waiting	ਆਫ਼ਲਾਈਨ · {n} ਉਡੀਕ ਵਿੱਚ
+lan_connecting	ਦੁਕਾਨ ਨਾਲ ਜੁੜ ਰਿਹਾ ਹੈ…
+pair_finishing	ਜੋੜਨਾ ਪੂਰਾ ਹੋ ਰਿਹਾ ਹੈ… ਦਫ਼ਤਰ ਦੀ ਬਹੀ ਲਾ ਰਹੇ ਹਾਂ
+pair_opening	ਦਫ਼ਤਰ ਖੁੱਲ੍ਹ ਰਿਹਾ ਹੈ…
+lan_live	ਲਾਈਵ
+lan_sending	{n} ਭੇਜੇ ਜਾ ਰਹੇ ਹਨ
+lan_sign_in_to_send	{n} ਭੇਜਣ ਲਈ ਮੁੜ ਸਾਈਨ ਇਨ ਕਰੋ
+lan_pair_again	ਇਸ ਡਿਵਾਈਸ ਨੂੰ ਮੁੜ ਜੋੜੋ
+lan_update_app	ਐਪ ਅੱਪਡੇਟ ਕਰੋ — ਇਸ ਡਿਵਾਈਸ ਅਤੇ ਦਫ਼ਤਰ ਦੇ ਸਰਵਰ ਦੇ ਵਰਜਨ ਵੱਖਰੇ ਹਨ
+allow_firewall	ਹੋਰ ਡਿਵਾਈਸਾਂ ਨੂੰ ਜੁੜਨ ਦਿਓ
+firewall_blocked	ਇਸ ਕੰਪਿਊਟਰ ਦਾ ਫ਼ਾਇਰਵਾਲ ਹੋਰ ਡਿਵਾਈਸਾਂ ਨੂੰ ਰੋਕ ਰਿਹਾ ਹੈ — “ਹੋਰ ਡਿਵਾਈਸਾਂ ਨੂੰ ਜੁੜਨ ਦਿਓ” ਦਬਾਓ।
+firewall_waiting	ਐਡਮਿਨ ਇਜਾਜ਼ਤ ਦੀ ਉਡੀਕ…
+lan_join_help	ਹੋਰ ਡਿਵਾਈਸਾਂ ਇਸ ਨਾਲ ਜੁੜ ਸਕਦੀਆਂ ਹਨ — ਜੋੜਨ ਦਾ ਕੋਡ {code}। ਦੂਜੀ ਡਿਵਾਈਸ 'ਤੇ ਕਲਾਇੰਟ ਮੋਡ ਚੁਣੋ, ਫਿਰ ਦੁਕਾਨ ਦਾ ਸਰਵਰ ਲੱਭੋ, ਜਾਂ ਇਹ ਪਤਾ ਲਿਖੋ: {addr}
+lan_pair_status	ਵਾਈ‑ਫਾਈ {addr}
+lan_join_help_no_addr	ਪਤਾ ਲੈਣ ਲਈ ਇਸ ਡਿਵਾਈਸ ਨੂੰ Wi‑Fi ਨਾਲ ਜੋੜੋ।
+lan_no_address	ਇਸ ਡਿਵਾਈਸ ਦਾ ਅਜੇ ਕੋਈ Wi‑Fi ਪਤਾ ਨਹੀਂ — ਇਸਨੂੰ ਦੁਕਾਨ ਦੇ Wi‑Fi ਨਾਲ ਜੋੜੋ।
+lan_not_listening	ਹੁਣ ਡਿਵਾਈਸਾਂ ਨਹੀਂ ਜੁੜ ਰਹੀਆਂ — ਸ਼ਾਇਦ ਕੋਈ ਹੋਰ ਪ੍ਰੋਗਰਾਮ ਪੋਰਟ {port} ਵਰਤ ਰਿਹਾ ਹੈ। ਐਪ ਮੁੜ ਸ਼ੁਰੂ ਕਰੋ।
+lan_tills_off	ਵਾਧੂ ਟਿੱਲ ਬੰਦ ਹਨ। ਇਸ ਦਫ਼ਤਰ ਦੇ ਖਾਤੇ ਇਸੇ ਡਿਵਾਈਸ 'ਤੇ ਰਹਿੰਦੇ ਹਨ। ਜੇ ਕੋਈ ਹੋਰ ਡਿਵਾਈਸ ਵੀ ਪਾਰਸਲ ਬੁੱਕ ਕਰੇ ਜਾਂ ਭੁਗਤਾਨ ਲਵੇ, ਤਾਂ ਵਾਧੂ ਟਿੱਲਾਂ ਦੀ ਇਜਾਜ਼ਤ ਦਿਓ।
+paired_with	{url} 'ਤੇ ਦੁਕਾਨ ਨਾਲ ਜੁੜਿਆ
+not_paired	ਜੁੜਿਆ ਨਹੀਂ — ਦੁਕਾਨ ਦੇ ਸਰਵਰ ਨਾਲ ਜੋੜੋ।
+choose_device_use	ਚੁਣੋ ਕਿ ਇਹ ਡਿਵਾਈਸ ਕਿਵੇਂ ਵਰਤੀ ਜਾਵੇਗੀ।
+paired_note	ਜੁੜ ਗਿਆ। ਵੇਚਣ ਲਈ ਖੋਲ੍ਹੋ, ਜਾਂ ਦੁਕਾਨ ਤੋਂ ਤਾਜ਼ਾ ਜਾਣਕਾਰੀ ਲਈ ਤਾਜ਼ਾ ਕਰੋ।
+last_update_at	ਦੁਕਾਨ ਤੋਂ ਆਖ਼ਰੀ ਅੱਪਡੇਟ: {time}।
+pair_intro	ਸਰਵਰ ਲੱਭੋ, ਜਾਂ ਉਸ ਦਾ ਪਤਾ ਅਤੇ ਜੋੜੀ ਕੋਡ ਲਿਖੋ।
+queue_waiting	ਦੁਕਾਨ ਤੱਕ ਪਹੁੰਚਣ ਦੀ ਉਡੀਕ ਵਿੱਚ ({n}):
+queue_tries	{n} ਵਾਰ ਕੋਸ਼ਿਸ਼ · ਆਖਰੀ ਜਵਾਬ: {e}
+save_backup_copy	ਬੈਕਅੱਪ ਦੀ ਕਾਪੀ ਸੰਭਾਲੋ…
+backup_copy_saved	ਬੈਕਅੱਪ ਕਾਪੀ ਸੰਭਾਲੀ ਗਈ — ਇਸਨੂੰ ਇਸ ਡਿਵਾਈਸ ਤੋਂ ਬਾਹਰ ਰੱਖੋ (USB ਸਟਿੱਕ ਜਾਂ ਹੋਰ ਡਿਵਾਈਸ)
+backup_copy_overdue	{n} ਦਿਨਾਂ ਤੋਂ ਕੋਈ ਬੈਕਅੱਪ ਕਾਪੀ ਇਸ ਡਿਵਾਈਸ ਤੋਂ ਬਾਹਰ ਨਹੀਂ ਗਈ — ਸੈਟਿੰਗਾਂ → ਬੈਕਅੱਪ
+backup_copy_failed	ਬੈਕਅੱਪ ਕਾਪੀ ਉੱਥੇ ਸੰਭਾਲੀ ਨਹੀਂ ਜਾ ਸਕੀ — ਹੋਰ ਥਾਂ ਚੁਣੋ
+clock_off	ਇਸ ਡਿਵਾਈਸ ਦੀ ਘੜੀ ਦੁਕਾਨ ਦੇ ਸਰਵਰ ਤੋਂ {min} ਮਿੰਟ ਵੱਖਰੀ ਹੈ — ਇਸ ਡਿਵਾਈਸ 'ਤੇ ਸਹੀ ਸਮਾਂ ਲਗਾਓ
+printers_heading	ਇਸ ਡਿਵਾਈਸ ਦੇ ਪ੍ਰਿੰਟਰ
+printers_help	ਹਰ ਪ੍ਰਿੰਟਰ ਇੱਕ ਵਾਰ ਜੋੜੋ, ਫਿਰ ਚੁਣੋ ਰਸੀਦ ਅਤੇ AWB ਲੇਬਲ ਕਿੱਥੇ ਛਪੇ — ਸੂਚੀ ਵਿੱਚ ਪਹਿਲਾ ਪਹਿਲਾਂ ਕੋਸ਼ਿਸ਼; ਫੇਲ੍ਹ ਹੋਵੇ ਤਾਂ ਅਗਲਾ। ਰੂਟ ਖਾਲੀ = ਉਹ ਫੀਚਰ ਨਹੀਂ ਛਪਦਾ। ਟੀਚਾ ਖਾਲੀ (ਡਿਫੌਲਟ), ਸਿਸਟਮ ਨਾਂ, ਜਾਂ ਨੈੱਟਵਰਕ ਪਤਾ (ਜਿਵੇਂ 192.168.1.50)। ਹਰ ਡਿਵਾਈਸ ਆਪਣੇ ਪ੍ਰਿੰਟਰ ਰੱਖਦਾ ਹੈ।
+job_width	ਸਮੱਗਰੀ ਚੌੜਾਈ (ਮਿਮੀ)
+job_width_ph	ਜਾਂ ਚੌੜਾਈ ਲਿਖੋ, 40–210 mm
+job_layout	ਲੇਆਉਟ
+job_delivery	ਕੰਮ ਕਿਵੇਂ ਭੇਜਿਆ ਜਾਂਦਾ ਹੈ
+job_size	ਫੌਂਟ ਆਕਾਰ
+job_size_ph	ਜਿਵੇਂ 18, 20, 26…
+save_receipt_format	ਰਸੀਦ ਫ਼ਾਰਮੈਟ ਸਾਂਭੋ
+save_label_format	ਲੇਬਲ ਫ਼ਾਰਮੈਟ ਸਾਂਭੋ
+test_receipt_format	ਟੈਸਟ ਰਸੀਦ
+test_label_format	ਟੈਸਟ ਲੇਬਲ
+test_receipt_sent	ਨਮੂਨਾ ਰਸੀਦ ਭੇਜੀ
+test_label_sent	ਨਮੂਨਾ ਲੇਬਲ ਭੇਜਿਆ
+test_print_no_printer	ਉਸ ਕੰਮ ਲਈ ਪ੍ਰਿੰਟਰ ਨਹੀਂ — ਇਸੇ ਥਾਂ ਹੇਠ ਇੱਕ ਜੋੜੋ
+printers_host_only	ਪ੍ਰਿੰਟਰ ਦੁਕਾਨ ਵਾਲੇ ਡਿਵਾਈਸ (Server) 'ਤੇ ਸੈੱਟ ਹੁੰਦੇ ਹਨ। ਇਹ ਟਿਲ ਉੱਥੇ ਜੌਬ ਭੇਜਦਾ ਹੈ — ਖੋਜੋ / ਜੋੜੋ / ਅਸਾਈਨ Server 'ਤੇ ਹੀ ਰਹਿੰਦੇ ਹਨ। ਟੈਸਟ ਪੰਨਾ Server ਨੂੰ ਜਾਂਦਾ ਹੈ।
+printers_pool_heading	ਪ੍ਰਿੰਟਰ
+printers_routes_heading	ਕਿੱਥੇ ਛਾਪੋ
+printer_label_ph	ਨਾਮ (ਜਿਵੇਂ ਡੈਸਕ)
+printer_target_ph	host:9100 · bt:MAC · usb:VID:PID · ਸਿਸਟਮ ਦਾ ਨਾਮ
+printer_mode_heading	ਚੁਣੇ ਰੂਟ ਲਈ ਫਾਰਮੈਟ
+printer_mode_standard	ਮਿਆਰੀ ਪੋਰਟਰੇਟ
+printer_mode_landscape	ਮਿਆਰੀ ਲੈਂਡਸਕੇਪ
+printer_mode_thermal	ਥਰਮਲ
+printer_mode_standard_short	ਪੋਰਟਰੇਟ
+printer_mode_landscape_short	ਲੈਂਡਸਕੇਪ
+printer_mode_thermal_short	ਥਰਮਲ
+printer_format_custom	ਨਵਾਂ ਆਪਣਾ ਫਾਰਮੈਟ
+printer_format_custom_label	ਆਪਣਾ
+printer_format_custom_added	ਇਸ ਰੂਟ ਲਈ ਆਪਣਾ ਫਾਰਮੈਟ ਜੋੜਿਆ
+add_printer	ਪ੍ਰਿੰਟਰ ਜੋੜੋ
+remove_printer	ਆਖ਼ਰੀ ਹਟਾਓ
+route_pick_ph	receipt ਜਾਂ label
+route_add_printer_ph	ਇਸ ਰੂਟ ਵਿੱਚ ਪ੍ਰਿੰਟਰ ਜੋੜੋ
+route_receipt	ਰਸੀਦ
+route_label	AWB ਲੇਬਲ
+route_dont_print	ਕੋਈ ਪ੍ਰਿੰਟਰ ਨਹੀਂ ਸੌਂਪਿਆ
+route_add	ਰੂਟ ਵਿੱਚ ਜੋੜੋ
+route_up	ਉੱਪਰ
+route_down	ਹੇਠਾਂ
+route_remove	ਆਖ਼ਰੀ ਹਟਾਓ
+route_clear	ਇਸ ਥਾਂ ਦੇ ਪ੍ਰਿੰਟਰ ਸਾਫ਼ ਕਰੋ
+save_printers	ਪ੍ਰਿੰਟਰ ਸੰਭਾਲੋ
+print_test_page	ਟੈਸਟ ਪੰਨਾ ਛਾਪੋ
+printers_saved	ਇਸ ਡਿਵਾਈਸ ਦੇ ਪ੍ਰਿੰਟਰ ਸਾਂਭੇ
+test_page_sent	ਟੈਸਟ ਪੰਨਾ ਭੇਜਿਆ — ਪ੍ਰਿੰਟਰ ਵੇਖੋ
+printers_found	ਇਸ ਡਿਵਾਈਸ 'ਤੇ ਮਿਲੇ: {list}
+find_printers	ਪ੍ਰਿੰਟਰ ਲੱਭੋ
+printers_looking	ਇਸ ਡਿਵਾਈਸ ਤੇ Wi‑Fi 'ਤੇ ਪ੍ਰਿੰਟਰ ਲੱਭ ਰਹੇ ਹਾਂ…
+printers_tap_find	ਕੰਮ ਲੈਣ ਵਾਲੀਆਂ ਕਤਾਰਾਂ ਤੇ ਇਸ Wi‑Fi 'ਤੇ ਨੈੱਟਵਰਕ ਰਸੀਦ ਪ੍ਰਿੰਟਰਾਂ ਲਈ ਪ੍ਰਿੰਟਰ ਲੱਭੋ ਦਬਾਓ (ਹਟਾਏ ਜਾਂ ਔਫ਼ਲਾਈਨ ਨਹੀਂ)।
+printers_none_found	ਕੋਈ ਪ੍ਰਿੰਟਰ ਨਹੀਂ ਮਿਲਿਆ — ਸਿਸਟਮ ਪ੍ਰਿੰਟਰ ਦਾ ਨਾਮ, ਜਾਂ ਨੈੱਟਵਰਕ ਪਤਾ ਲਿਖੋ (ਜਿਵੇਂ 192.168.1.50)।
+receipt_printer_ph	ਰਸੀਦ ਲਈ ਪ੍ਰਿੰਟਰ
+queue_refused	ਦੁਕਾਨ ਨੇ ਸਵੀਕਾਰ ਨਹੀਂ ਕੀਤਾ ({n}) — ਹਰੇਕ ਨੂੰ ਕਾਊਂਟਰ 'ਤੇ ਜਾਂਚੋ:
+clear_not_accepted	ਜਾਂਚ ਲਿਆ — ਇਹ ਸੂਚੀ ਸਾਫ਼ ਕਰੋ
+device_name_ph	ਇਸ ਡਿਵਾਈਸ ਦਾ ਨਾਮ
+lan_last_update	ਆਖ਼ਰੀ ਅੱਪਡੇਟ {time}
+lan_not_accepted	{n} ਸਵੀਕਾਰ ਨਹੀਂ ਹੋਏ
+connected_now	ਹੁਣ ਜੁੜਿਆ ਹੈ
+backup_failed	ਪਿਛਲਾ ਆਪਣੇ-ਆਪ ਬੈਕਅੱਪ ਨਹੀਂ ਹੋ ਸਕਿਆ: {e}
+backup_overdue	{n} ਦਿਨਾਂ ਤੋਂ ਬੈਕਅੱਪ ਨਹੀਂ — ਬੈਕਅੱਪ ਲਈ ਇਸ ਡਿਵਾਈਸ 'ਤੇ ਐਪ ਖੁੱਲ੍ਹੀ ਰੱਖੋ।
+disk_low	ਇਸ ਡਿਵਾਈਸ 'ਤੇ ਸਿਰਫ਼ {mb} MB ਥਾਂ ਬਚੀ ਹੈ — ਜਲਦੀ ਬੈਕਅੱਪ ਨਹੀਂ ਹੋ ਸਕਣਗੇ। ਕੁਝ ਥਾਂ ਖ਼ਾਲੀ ਕਰੋ।
+last_seen_devices	ਆਖ਼ਰੀ ਵਾਰ ਦਿਖਿਆ: {time}
+sync_interval	ਹਰ {secs} ਸਕਿੰਟ ਵਿੱਚ ਸਿੰਕ
+connection_to_shop	ਦੁਕਾਨ ਨਾਲ ਕਨੈਕਸ਼ਨ
+supplier_name_ph	ਸਪਲਾਇਰ ਦਾ ਨਾਂ (ਜਾਂ ਪਾਰਟੀ)
+supplier_ph	ਸਪਲਾਇਰ
+switch_device	ਇਹ ਡਿਵਾਈਸ ਬਦਲੋ
+take_payment	ਭੁਗਤਾਨ ਲਓ
+tax_added_till	{tax} ਵੱਖਰਾ
+tax_inside_price	{tax} ਸਮੇਤ
+today_books	ਅੱਜ ਦੀਆਂ ਬਹੀਆਂ
+unlock_after_pairing	ਪਿੰਨ ਦਰਜ ਕਰੋ
+unlock_with_login	ਲਾਗਇਨ ਨਾਲ ਅਨਲਾਕ
+update_my_password	ਮੇਰਾ ਪਾਸਵਰਡ ਬਦਲੋ
+update_my_pin	ਮੇਰਾ PIN ਬਦਲੋ
+duress_heading	ਐਮਰਜੈਂਸੀ ਅਨਲਾਕ PIN (ਸਿਰਫ਼ Owner)
+duress_help	ਵਿਕਲਪਿਕ। ਜੇ ਅਨਲੌਕ 'ਤੇ ਤੁਹਾਡੀ ਥਾਂ ਇਹ PIN ਲਿਖਿਆ ਜਾਵੇ ਤਾਂ ਬਹੀ ਦੀਆਂ ਸਾਰੀਆਂ ਐਂਟਰੀਆਂ ਮਿਟ ਜਾਂਦੀਆਂ ਹਨ (ਬੁਕਿੰਗਾਂ, ਖਾਤੇ, ਇਤਿਹਾਸ) ਤੇ ਡੈਸਕ ਆਮ ਵਾਂਗ ਦਿਖਦਾ ਮਾਲਕ ਵਜੋਂ ਖੁੱਲ੍ਹਦਾ ਹੈ — ਦਰਾਂ, ਧਿਰਾਂ, ਜ਼ੋਨ, ਸਟਾਫ਼ ਤੇ ਸੈਟਿੰਗਾਂ ਰਹਿੰਦੀਆਂ ਹਨ। ਢਾਂਚਾ ਤੇ ਕੌਨਫ਼ਿਗ ਨਹੀਂ ਮਿਟਦੇ। ਸਿਰਫ਼ ਤਾਂ ਵਰਤੋ ਜਦੋਂ ਤੁਹਾਨੂੰ ਜ਼ਬਰਦਸਤੀ ਅਨਲੌਕ ਕਰਵਾਇਆ ਜਾਵੇ। ਬੰਦ ਕਰਨ ਲਈ ਖਾਲੀ ਛੱਡ ਕੇ ਸਾਂਭੋ। ਕਦੇ ਕਿਸੇ ਦੇ PIN ਵਰਗਾ ਨਹੀਂ।
+duress_pin_ph	ਐਮਰਜੈਂਸੀ PIN (4–12 ਅੰਕ)
+duress_confirm_ph	ਫੇਰ ਟਾਈਪ ਕਰੋ
+save_duress_pin	ਐਮਰਜੈਂਸੀ PIN ਸੇਵ
+clear_duress_pin	ਐਮਰਜੈਂਸੀ PIN ਬੰਦ
+duress_on	ਐਮਰਜੈਂਸੀ ਅਨਲਾਕ PIN ਚਾਲੂ ਹੈ
+duress_off	ਐਮਰਜੈਂਸੀ ਅਨਲਾਕ PIN ਬੰਦ ਹੈ
+duress_saved	ਐਮਰਜੈਂਸੀ ਅਨਲਾਕ PIN ਸੇਵ ਹੋਇਆ
+duress_cleared	ਐਮਰਜੈਂਸੀ ਅਨਲਾਕ PIN ਬੰਦ ਕੀਤਾ
+vehicle_ph	ਵਾਹਨ
+void	ਰੱਦ ਕਰੋ
+write_off_ap	AP ਮਾਫ਼ ਕਰੋ
+write_off_nil	ਮਾਫ਼ ਕਰੋ / ਬਕਾਇਆ ਸਿਫ਼ਰ
+zone_ph	ਜ਼ੋਨ (ਦਰਾਂ ਤੋਂ ਨਾਂ)
+caption_today	ਅੱਜ
+caption_bookings	ਬੁਕਿੰਗਾਂ
+caption_payments_today	ਅੱਜ ਦੇ ਭੁਗਤਾਨ
+caption_outstanding	ਬਕਾਇਆ
+caption_bank	ਬੈਂਕ
+paid_by	ਭੁਗਤਾਨ ਕਿਸ ਤੋਂ
+second_way	ਦੂਜਾ ਤਰੀਕਾ
+weight_in	ਵਜ਼ਨ ਇਕਾਈ
+size_in	ਆਕਾਰ ਇਕਾਈ
+goods_received	ਸਾਮਾਨ ਪ੍ਰਾਪਤ
+expense_heading	ਖਰਚ
+notes_attach_sale	ਨੋਟ ਤੇ ਅਟੈਚਮੈਂਟ (ਚੁਣੀ ਵਿਕਰੀ)
+notes_attach_party	ਨੋਟ ਤੇ ਅਟੈਚਮੈਂਟ (ਚੁਣੀ ਪਾਰਟੀ)
+attachments_last_expense	ਅਟੈਚਮੈਂਟ (ਆਖਰੀ ਖਰਚ)
+credit_limit_heading	ਉਧਾਰ ਸੀਮਾ (ਚੁਣੀ / ਨਾਮ ਵਾਲੀ ਪਾਰਟੀ)
+pay_selected_heading	ਚੁਣਿਆ ਚੁਕਾਓ (ਕਰਜ਼ਾ ਨਿਪਟਾਓ / ਐਡਵਾਂਸ)
+write_off_heading	ਮਾਫ਼ ਕਰੋ (ਭੁਗਤਾਨ ਤੋਂ ਬਿਨਾਂ ਨਿਪਟਾਓ)
+pay_ap_heading	ਸਾਨੂੰ ਉਨ੍ਹਾਂ ਨੂੰ ਦੇਣਾ (AP)
+country_tax	ਦੇਸ਼ ਤੇ ਟੈਕਸ
+extra_tills_heading	ਵਾਧੂ ਟਿੱਲ
+other_devices_help_heading	ਹੋਰ ਡਿਵਾਈਸਾਂ ਸੈੱਟ ਕਰੋ
+other_devices_help	ਇਸ ਡਿਵਾਈਸ (ਸਰਵਰ) 'ਤੇ: ਹੋਰ ਡਿਵਾਈਸ → ਵਾਧੂ ਟਿੱਲਾਂ ਦੀ ਇਜਾਜ਼ਤ ਦਿਓ। ਪੇਅਰਿੰਗ ਕੋਡ ਤੇ Wi‑Fi ਪਤਾ ਨੋਟ ਕਰੋ। ਜੇ ਦਿਖੇ ਤਾਂ ਹੋਰ ਡਿਵਾਈਸਾਂ ਨੂੰ ਜੁੜਨ ਦਿਓ ਦਬਾਓ। ਕੰਪਿਊਟਰ 'ਤੇ, ਇਸ ਕੰਪਿਊਟਰ ਨਾਲ ਸ਼ੁਰੂ ਕਰੋ ਦਬਾਓ। ਹਰ ਦੂਜੇ ਡਿਵਾਈਸ 'ਤੇ: ਐਪ ਇੰਸਟਾਲ ਕਰੋ, ਕਲਾਇੰਟ ਮੋਡ ਚੁਣੋ, ਦੁਕਾਨ ਦਾ ਸਰਵਰ ਲੱਭੋ (ਜਾਂ ਪਤਾ ਲਿਖੋ), ਪੇਅਰਿੰਗ ਕੋਡ ਦਿਓ, ਹੁਣੇ ਜੋੜੋ। Wi‑Fi ਕੱਟੇ ਤਾਂ ਆਰਡਰ ਡਿਵਾਈਸ 'ਤੇ ਉਡੀਕਦੇ ਹਨ ਤੇ ਸਰਵਰ ਮੁੜ ਜਵਾਬ ਦੇਵੇ ਤਾਂ ਚਲੇ ਜਾਂਦੇ ਹਨ।
+your_brand	ਤੁਹਾਡਾ ਬ੍ਰਾਂਡ (ਐਪ ਵਿੱਚ)
+units_heading	ਇਕਾਈਆਂ
+booking_measures	ਬੁਕਿੰਗ ਮਾਪ
+drawer_count	ਦਰਾਜ਼ ਗਿਣਤੀ (ਵਿਕਲਪਿਕ)
+spreadsheet_csv	ਸਪ੍ਰੈਡਸ਼ੀਟ (CSV)
+bank_reconciliation	ਬੈਂਕ ਮਿਲਾਨ (ਆਪਣੇ ਬੈਂਕ ਸਟੇਟਮੈਂਟ ਨਾਲ ਟਿੱਕ ਕਰੋ)
+book_add_product	ਬੁੱਕ — ਉਤਪਾਦ / ਦਰ ਜੋੜੋ
+book_opening_credit	ਬੁੱਕ — ਸ਼ੁਰੂਆਤੀ ਉਧਾਰ
+account_kind	ਖਾਤੇ ਦੀ ਕਿਸਮ (ਇੱਕ ਦਬਾਓ)
+active_ledger	ਸਰਗਰਮ ਖਾਤਾ
+actual_total_cap	ਅਸਲ ਕੁੱਲ
+amend_help	ਸੋਧ, ਰੱਦ ਜਾਂ ਵਾਪਸੀ ਲਈ ਵਿਕਰੀ ਚੁਣੋ। ਸੋਧਾਂ ਦਾ ਪੂਰਾ ਇਤਿਹਾਸ ਰਹਿੰਦਾ ਹੈ।
+applied_total_cap	ਲਾਗੂ ਕੁੱਲ
+bank_balance	ਬੈਂਕ ਬਕਾਇਆ
+bank_net_today	ਅੱਜ ਦਾ ਬੈਂਕ ਨੈੱਟ
+branch_export_help	ਨਿਰਯਾਤ ਇੱਕ ਦਿਨ ਦਾ ਸਨੈਪਸ਼ਾਟ ਬੈਕਅੱਪ ਫ਼ੋਲਡਰ ਵਿੱਚ ਲਿਖਦਾ ਹੈ ਤੇ ਕਲਿੱਪਬੋਰਡ 'ਤੇ ਕਾਪੀ ਕਰਦਾ ਹੈ। ਦੂਜੀ ਸ਼ਾਖਾ ਦਾ ਦਿਨ ਦਰਾਮਦ ਕਰਨ ਲਈ ਉਸ ਦੀ ਫ਼ਾਈਲ ਉਸੇ ਫ਼ੋਲਡਰ ਵਿੱਚ import_branch_snapshot.json ਨਾਮ ਨਾਲ ਸਾਂਭੋ, ਫਿਰ ਦਰਾਮਦ ਦਬਾਓ।
+brand_shown_help	ਐਪ ਦੇ ਅੰਦਰ ਸਕ੍ਰੀਨਾਂ 'ਤੇ ਦਿਖਾਇਆ ਜਾਂਦਾ ਹੈ। ਇਸ ਡਿਵਾਈਸ 'ਤੇ ਇੰਸਟਾਲ ਐਪ ਦਾ ਨਾਂ ਤੇ ਆਈਕਨ ਪਲੇਟਫਾਰਮ ਲਿਸਟਿੰਗ ਵਾਂਗ ਹੀ ਰਹਿੰਦੇ ਹਨ।
+app_icon	ਐਪ ਆਈਕਨ
+logo_help	ਐਪ ਦੀਆਂ ਸਕ੍ਰੀਨਾਂ 'ਤੇ ਦੁਕਾਨ ਦਾ ਵਿਕਲਪਿਕ ਨਿਸ਼ਾਨ।
+onboard_layout	ਤੁਹਾਨੂੰ ਕੀ ਮਿਲਦਾ ਹੈ
+item_photo_help	ਵਿਕਲਪਿਕ। ਫ਼ੋਟੋ ਨਾ ਹੋਵੇ ਤਾਂ ਆਈਟਮ ਦੇ ਨਾਮ ਦੇ ਪਹਿਲੇ ਅੱਖਰ ਦਿਖਾਉਂਦੇ ਹਾਂ।
+cash_in_hand	ਹੱਥ ਵਿੱਚ ਨਕਦੀ (ਟਿੱਲ)
+change_my_pin_heading	ਮੇਰਾ PIN ਬਦਲੋ (ਸਿਰਫ਼ ਤੁਹਾਡਾ)
+connect_to_server	ਸਰਵਰ ਨਾਲ ਜੁੜੋ
+counter_locked	ਕਾਊਂਟਰ 01 · ਲਾਕ
+country_pack_help	ਦੇਸ਼ ਪੈਕ ਟੈਕਸ ਦਾ ਨਾਂ ਤੇ ਗਣਿਤ, ਤੁਰੰਤ-ਭੁਗਤਾਨ ਰੇਲ, ਤੇ ਬਿੱਲਾਂ 'ਤੇ ਛਪਣ ਵਾਲੀ ਕਾਰੋਬਾਰ ਆਈਡੀ ਤੈਅ ਕਰਦਾ ਹੈ। Kumkaj ਕਿਤੇ ਵੀ ਟੈਕਸ ਦਾਖਲ ਨਹੀਂ ਕਰਦਾ ਜਾਂ ਸਰਕਾਰੀ ਈ-ਇਨਵੌਇਸ ਜਾਰੀ ਨਹੀਂ ਕਰਦਾ।
+currency_use_help	ਸਕ੍ਰੋਲ ਕਰੋ ਅਤੇ ਕਿਸੇ ਵੀ ਸਮਰਥਿਤ ਮੁਦਰਾ ਲਈ Use ਦਬਾਓ।
+day_close_help	ਦਿਨ ਬੰਦ ਦਰਜ ਕਰਨ ਨਾਲ ਇਹ ਸਾਰ (ਗਿਣਤੀ ਹੋਵੇ ਤਾਂ ਦਰਾਜ਼ ਫਰਕ ਸਮੇਤ) ਆਡਿਟ ਲੌਗ ਵਿੱਚ ਸੇਵ ਹੁੰਦਾ ਹੈ। ਇਹ ਵਿਕਰੀ ਨਹੀਂ ਰੋਕਦਾ।
+expenses_word	ਖਰਚੇ
+feature_access_help	ਚੁਣੇ ਸਟਾਫ਼ ਲਈ ਸਹੂਲਤ ਪਹੁੰਚ (ਜੋੜਨ ਤੋਂ ਬਾਅਦ ਦਬਾਓ)
+footer_local	ਸਥਾਨਕ SQLite · ਹਮੇਸ਼ਾ ਮੁਫ਼ਤ · ਕੋਈ ਕਲਾਊਡ ਨਹੀਂ
+fresh_book_moklanjo	ਪ੍ਰਿੰਟਰ
+fresh_selected	Fresh ਚੁਣਿਆ — ਕੈਟਾਲਾਗ ਖਾਲੀ ਰਹੇਗਾ। ਤਿਆਰ ਹੋਣ 'ਤੇ Done ਦਬਾਓ।
+gross_word	ਕੁੱਲ (ਗ੍ਰੌਸ)
+how_start	ਤੁਸੀਂ ਕਿਵੇਂ ਸ਼ੁਰੂ ਕਰਨਾ ਚਾਹੁੰਦੇ ਹੋ?
+later_country_pack	ਪ੍ਰਿੰਟਰ
+local_badge	ਸਥਾਨਕ
+measures_help_moklanjo	ਬੁਕਿੰਗ ਡੈਸਕ 'ਤੇ ਪਾਰਸਲ ਕਿਵੇਂ ਮਾਪੇ ਜਾਂਦੇ ਹਨ। ਆਪਣੀਆਂ ਵਰਤੀਆਂ ਇਕਾਈਆਂ ਵਿੱਚ ਮਾਪ ਤੇ ਵਜ਼ਨ ਲਿਖੋ — ਮਿਆਰੀ (cm, m, in, ft · kg, g, lb, oz) ਜਾਂ ਉੱਪਰ cm / kg ਨਾਲ ਜੁੜੀ ਆਪਣੀ ਇਕਾਈ (ਸਿੱਧਾ ਜਾਂ ਹੋਰ ਇਕਾਈਆਂ ਰਾਹੀਂ)। ਬਹੀਆਂ ਹਮੇਸ਼ਾ kg ਦਰਜ ਕਰਦੀਆਂ ਹਨ। ਕੋਈ ਫੀਲਡ ਖਾਲੀ ਛੱਡਣ ਨਾਲ ਉਹ ਬਣਿਆ ਰਹਿੰਦਾ ਹੈ।
+mix_type_hint_moklanjo	ਹਰ ਇੱਕ ਵਿੱਚ ਕਿੰਨਾ ਲਿਖੋ (ਨਕਦ / UPI / ਕਾਰਡ / ਉਧਾਰ)। ਬਿੱਲ ਦੇ ਬਰਾਬਰ ਹੋਣਾ ਚਾਹੀਦਾ ਹੈ। ਉਧਾਰ ਲਈ ਉੱਪਰ ਗਾਹਕ ਚਾਹੀਦਾ ਹੈ।
+money_in_sales	ਪੈਸਾ ਆਇਆ (ਵਿਕਰੀ)
+more_help_moklanjo	ਕੈਟਾਲਾਗ, ਵਿਕਰੀ, ਉਧਾਰ, ਟੀਮ, ਬੈਕਅਪ — ਤੇ ਲੋੜ ਪੈਣ 'ਤੇ ਸਟਾਕ ਤੇ ਵਾਧੂ ਟਿੱਲ।
+net_word	ਨੈੱਟ
+offline_badge	ਆਫ਼ਲਾਈਨ
+optional_login_help	ਵਿਕਲਪਿਕ ਲਾਗਇਨ (ਆਈਡੀ + ਪਾਸਵਰਡ)। ਮਾਲਕ ਇੱਕ ਵਾਰ ਲਗਾਉਂਦਾ ਹੈ; ਬਾਅਦ ਵਿੱਚ ਸਿਰਫ਼ ਵਰਤੋਂਕਾਰ ਹੀ ਪਾਸਵਰਡ ਬਦਲ ਸਕਦਾ ਹੈ।
+or_unlock_login	ਜਾਂ ਲਾਗਇਨ ਆਈਡੀ + ਪਾਸਵਰਡ ਨਾਲ ਅਨਲਾਕ ਕਰੋ
+permission_preset	ਕੰਮ (ਸਕ੍ਰੀਨਾਂ ਤੇ ਹੱਕ ਤੈਅ ਕਰਦਾ ਹੈ)
+preset_help_moklanjo	ਕੈਸ਼ੀਅਰ: ਵੇਚੋ। ਮੈਨੇਜਰ: ਵੇਚੋ + ਆਈਟਮਾਂ + ਰੱਦ/ਸੋਧ।
+product_locked_moklanjo	Moklanjo
+product_only_moklanjo	ਇਹ ਐਪ ਸਿਰਫ਼ Moklanjo ਹੈ — ਵਹੀ + ਬੁਕਿੰਗ ਡੈਸਕ। ਹੋਰ ਕਾਰੋਬਾਰਾਂ ਦੇ ਉਤਪਾਦ ਬਾਅਦ ਵਿੱਚ ਵੱਖਰੇ ਆਉਣਗੇ।
+purchases_cogs	ਖਰੀਦਾਂ (COGS)
+qty_cap	ਮਾਤਰਾ
+restore_help	Restore: ਇੱਕ ਬੈਕਅੱਪ ਚੁਣੋ। ਖਾਤੇ ਉਸ ਵੇਲੇ ਵਾਂਗ ਖੁੱਲ੍ਹਣਗੇ; ਹੁਣ ਦੇ ਖਾਤੇ ਪਹਿਲਾਂ ਸਾਂਭੇ ਜਾਂਦੇ ਹਨ, ਤਾਂ ਜੋ ਇਹ ਵਾਪਸ ਹੋ ਸਕੇ।
+wipe_data_heading	ਸਥਾਨਕ ਡਾਟਾ ਮਿਟਾਓ
+wipe_data_help	ਸਿਰਫ਼ Owner — Windows ਅਣਇੰਸਟਾਲ ਵਰਗਾ। ਕਾਰੋਬਾਰੀ ਰਿਕਾਰਡ ਇਤਿਹਾਸ ਮਿਟਾਉਂਦੇ, ਦਰਾਂ/ਸੈਟਅੱਪ ਰੱਖਦੇ। ਦੁਕਾਨ ਸੈਟਅੱਪ ਕਿਤਾਬਾਂ ਹਟਾਉਂਦਾ। ਸਕਰੀਨ ਤਰਜੀਹਾਂ ਵਿੰਡੋ/ਭਾਸ਼ਾ। Owner PIN ਨਾਲ ਪੁਸ਼ਟੀ।
+wipe_trading	ਕਾਰੋਬਾਰੀ ਰਿਕਾਰਡ
+wipe_schema	ਦੁਕਾਨ ਸੈਟਅੱਪ
+wipe_ui	ਸਕਰੀਨ ਤਰਜੀਹਾਂ
+wipe_owner_pin_ph	ਮਿਟਾਉਣ ਲਈ Owner PIN
+wipe_delete_selected	ਚੁਣਿਆ ਮਿਟਾਓ
+wipe_owner_only	ਸਿਰਫ਼ Owner ਸਥਾਨਕ ਡਾਟਾ ਮਿਟਾ ਸਕਦਾ ਹੈ।
+restore_owner_only	ਸਿਰਫ਼ Owner ਬੈਕਅੱਪ ਵਾਪਸ ਲਾ ਸਕਦਾ ਹੈ।
+wipe_owner_pin_needed	ਸਥਾਨਕ ਡਾਟਾ ਮਿਟਾਉਣ ਲਈ Owner PIN ਭਰੋ।
+wipe_nothing_selected	ਪਹਿਲਾਂ ਕੀ ਮਿਟਾਉਣਾ ਹੈ ਚੁਣੋ।
+wipe_done	ਚੁਣਿਆ ਸਥਾਨਕ ਡਾਟਾ ਮਿਟਾਇਆ।
+wipe_schema_done	ਦੁਕਾਨ ਸੈਟਅੱਪ ਮਿਟਾਇਆ — ਜਾਰੀ ਰੱਖਣ ਲਈ Server ਜਾਂ Client ਚੁਣੋ।
+rounded_total	ਰਾਊਂਡ ਕੁੱਲ
+setup_app_moklanjo	Moklanjo ਸੈੱਟ ਕਰੋ
+shop_logo_optional	ਦੁਕਾਨ ਲੋਗੋ (ਵਿਕਲਪਿਕ)
+stock_type_help	ਆਈਟਮ ਦਾ ਨਾਂ ਲਿਖੋ (ਉਸਦਾ ਹਿੱਸਾ ਹੀ ਕਾਫ਼ੀ ਹੈ), ਮਾਤਰਾ ਲਿਖੋ, ਫਿਰ ਠੀਕ ਕਰੋ। ਜੋ ਆਈਟਮਾਂ ਅਜੇ ਗਿਣੀਆਂ ਨਹੀਂ ਉਨ੍ਹਾਂ ਨੂੰ ਇੱਕ ਵਾਰ Start tracking ਚਾਹੀਦਾ ਹੈ।
+team_owner_help	ਭਰਤੀ: ਇੱਕ ਕੰਮ ਚੁਣੋ (ਕੈਸ਼ੀਅਰ / ਮੈਨੇਜਰ), ਨਾਮ + ਸ਼ੁਰੂਆਤੀ PIN, ਫਿਰ ਜੋੜੋ। ਸਿਰਫ਼ ਜੇ ਇਹ ਵਿਅਕਤੀ ਵੱਖਰਾ ਹੋਵੇ: ਹੇਠਾਂ ਸਕ੍ਰੀਨਾਂ ਤੇ ਹੱਕ ਖੋਲ੍ਹੋ, ਫਿਰ ਕੰਮ ਦਾ ਸੈਟਅੱਪ ਸਾਂਭੋ। ਹਰ ਕੋਈ ਹੇਠਾਂ ਆਪਣਾ PIN ਆਪ ਬਦਲਦਾ ਹੈ — ਮਾਲਕ ਕਿਸੇ ਹੋਰ ਦਾ ਨਹੀਂ ਬਦਲ ਸਕਦਾ।
+they_owe_us	ਉਹ ਸਾਡੇ ਕਰਜ਼ਦਾਰ
+unit_at_cap	ਇਕਾਈ ਦਰ
+units_help	ਆਈਟਮ ਲੇਬਲਾਂ ਲਈ ਕੋਡ (kg, piece, bag)। ਹਰ ਇਕਾਈ ਨੂੰ — ਸਿੱਧਾ ਜਾਂ ਹੋਰ ਇਕਾਈਆਂ ਰਾਹੀਂ — ਇੱਕ ਮਿਆਰ (kg · cm · ml · pc) ਨਾਲ ਜੁੜਨਾ ਚਾਹੀਦਾ ਹੈ, ਜਿਵੇਂ 1 crate = 2 box ਤੇ 1 box = 20 cm। ਤਬਦੀਲੀਆਂ: 1 from = factor to। ਮੁਦਰਾਵਾਂ ਕਦੇ ਇਕਾਈਆਂ ਨਹੀਂ ਹੁੰਦੀਆਂ।
+we_owe_them	ਅਸੀਂ ਉਨ੍ਹਾਂ ਦੇ ਕਰਜ਼ਦਾਰ
+who_unlocking	ਕੌਣ ਅਨਲਾਕ ਕਰ ਰਿਹਾ ਹੈ?
+locked_word	ਲਾਕ
+show_pin	PIN ਦਿਖਾਓ
+hide_pin	PIN ਲੁਕਾਓ
+set_owner_pin	ਮਾਲਕ PIN ਲਗਾਓ
+enter_owner_passcode	ਮਾਲਕ ਪਾਸਕੋਡ ਪਾਓ
+enter_staff_passcode	ਸਟਾਫ਼ ਪਾਸਕੋਡ ਪਾਓ
+pin_count_zero	0 / 12 ਅੰਕ · ਘੱਟੋ-ਘੱਟ 4, ਫਿਰ OK
+pin_count_need	{} / 12 ਅੰਕ · {} ਹੋਰ ਚਾਹੀਦੇ
+pin_count_full	12 / 12 ਅੰਕ · OK ਦਬਾਓ
+pin_count_ready	{} / 12 ਅੰਕ · ਤਿਆਰ ਹੋਣ 'ਤੇ OK ਦਬਾਓ
+pin_hint_choose	4–12 ਅੰਕ ਚੁਣੋ (ਕੀਬੋਰਡ ਜਾਂ ਪੈਡ) · ਸੇਵ ਲਈ Enter/OK
+pin_hint_new	ਨਵਾਂ 4–12 ਅੰਕਾਂ ਦਾ ਮਾਲਕ PIN (ਕੀਬੋਰਡ ਜਾਂ ਪੈਡ) · Enter/OK
+pin_hint_shop_code	ਦੁਕਾਨ ਡਿਵਾਈਸ · ਜੋੜੀ ਕੋਡ {}
+pin_hint_books	ਇਹ ਡਿਵਾਈਸ ਬਹੀਆਂ ਰੱਖਦਾ ਹੈ
+pin_hint_paired	ਵਾਧੂ ਟਿੱਲ ਜੁੜਿਆ — ਵੇਚਣ ਲਈ ਅਨਲਾਕ ਕਰੋ
+pin_hint_pair_first	ਵਾਧੂ ਟਿੱਲ — ਪਹਿਲਾਂ ਦੁਕਾਨ ਡਿਵਾਈਸ ਨਾਲ ਜੋੜੋ
+unlock_to_continue	ਜਾਰੀ ਰੱਖਣ ਲਈ ਅਨਲਾਕ ਕਰੋ
+no_staff_yet	ਅਜੇ ਕੋਈ ਸਟਾਫ਼ ਨਹੀਂ — ਮਾਲਕ ਵਜੋਂ ਅਨਲਾਕ ਕਰੋ, ਫਿਰ Team
+status_server_set_pin	ਸਰਵਰ ਮੋਡ — ਮਾਲਕ PIN ਲਗਾਓ
+status_server_tills	ਸਰਵਰ ਮੋਡ — ਵਾਧੂ ਟਿੱਲ ਜੁੜ ਸਕਦੇ ਹਨ। ਅਨਲਾਕ ਕਰੋ
+status_server_unlock	ਸਰਵਰ ਮੋਡ — ਮਾਲਕ ਵਜੋਂ ਅਨਲਾਕ ਕਰੋ
+status_client_unlock	ਕਲਾਇੰਟ ਮੋਡ — ਵੇਚਣ ਲਈ ਅਨਲਾਕ ਕਰੋ
+icon_new_selected	ਆਈਕਨ: ਨਵੀਂ ਫਾਈਲ ਚੁਣੀ — ਬ੍ਰਾਂਡ ਸੰਭਾਲੋ ਦਬਾਓ
+icon_custom	ਆਈਕਨ: ਤੁਹਾਡੀ ਦੁਕਾਨ ਦਾ ਨਿਸ਼ਾਨ
+icon_default	ਆਈਕਨ: Kumkaj ਨਿਸ਼ਾਨ (ਡਿਫਾਲਟ) — ਆਪਣਾ ਚੁਣੋ
+logo_yours	ਲੋਗੋ: ਤੁਹਾਡੀ ਦੁਕਾਨ ਦਾ ਲੋਗੋ — ਸਕ੍ਰੀਨਾਂ ਅਤੇ ਰਸੀਦਾਂ ’ਤੇ ਦਿਖਾਇਆ ਜਾਵੇਗਾ
+logo_default	ਲੋਗੋ: Kumkaj ਨਿਸ਼ਾਨ (ਡਿਫਾਲਟ) — ਆਪਣਾ ਹੋਵੇ ਤਾਂ ਚੁਣੋ
+tmpl_current	ਮੌਜੂਦਾ: {} — {}
+tmpl_selected	ਚੁਣਿਆ: {} — {}
+setup_complete	ਸੈੱਟਅੱਪ ਪੂਰਾ
+onboard_fresh_tmpl	ਨਵਾਂ · {} — ਕੈਟਾਲਾਗ ਖਾਲੀ ਤੋਂ ਸ਼ੁਰੂ; ਚੀਜ਼ਾਂ ਵਿੱਚ ਜੋੜੋ, ਫਿਰ Done ਦਬਾਓ।
+onboard_book_tmpl	ਬਹੀ · {} — ਚੀਜ਼ਾਂ ਅਤੇ ਸ਼ੁਰੂਆਤੀ ਉਧਾਰ ਜੋੜੋ, ਫਿਰ Done ਦਬਾਓ।
+onboard_template_tmpl	ਚਾਹੋ ਤਾਂ ਥਾਂ ਦਾ ਨਾਂ ਦਿਓ, ਫਿਰ ਸ਼ੁਰੂ ਕਰਨ ਦਾ ਤਰੀਕਾ ਚੁਣੋ।
+tmpl_blurb	ਕੋਰੀਅਰ ਵਹੀ ਅਤੇ ਬੁਕਿੰਗ ਡੈਸਕ: ਭੇਜਣ ਵਾਲੇ, ਕੈਰੀਅਰ, ਰੋਜ਼ਨਾਮਚਾ, AWB।
+tmpl_how	ਡੈਸਕ 'ਤੇ ਪਾਰਸਲ ਬੁੱਕ ਕਰੋ; ਅੱਜ ਲਈ ਰੋਜ਼ਨਾਮਚਾ; ਰੇਟਾਂ, ਪਾਰਟੀਆਂ, ਰਿਪੋਰਟਾਂ ਲਈ ਟੈਬ।
+trk_booked	ਬੁੱਕ ਹੋਇਆ
+trk_picked_up	ਪਿਕਅੱਪ ਹੋਇਆ
+trk_in_transit	ਰਸਤੇ ਵਿੱਚ
+trk_delivered	ਪਹੁੰਚਾ ਦਿੱਤਾ
+trk_rto	ਭੇਜਣ ਵਾਲੇ ਨੂੰ ਵਾਪਸ ਜਾ ਰਿਹਾ
+lane_to_dispatch	ਭੇਜਣਾ ਬਾਕੀ
+lane_with_carrier	ਕੈਰੀਅਰ ਕੋਲ
+lane_failed	ਅਸਫਲ
+lane_done_today	ਅੱਜ ਪੂਰਾ
+ops_board_help	ਅੱਜ ਦੇ ਕੰਮ ਵਿੱਚ ਪਾਰਸਲ ਕਿੱਥੇ ਹਨ ਉਸ ਮੁਤਾਬਕ। ਪਾਰਸਲਾਂ 'ਤੇ ਟੈਪ ਕਰੋ (ਜਾਂ ਸਕੈਨ ਕਰੋ) ਤਾਂ ਜੋ ਉਹ ਚੁਣੇ ਜਾਣ, ਫਿਰ ਸਾਰੇ ਚੁਣਿਆਂ 'ਤੇ ਇਕੱਠੇ ਕੰਮ ਕਰੋ — ਹਰ ਹਿੱਸੇ ਵਿੱਚ ਸਿਰਫ਼ ਉਸ ਨਾਲ ਮੇਲ ਖਾਂਦੇ ਕਦਮ ਦਿਸਦੇ ਹਨ।
+lane_empty	ਹੁਣ ਇੱਥੇ ਕੁਝ ਨਹੀਂ।
+picked_fmt	{n} ਚੁਣੇ
+pick_all	ਸਭ ਚੁਣੋ
+bag_for_carrier	ਕੈਰੀਅਰ ਨੂੰ ਸੌਂਪੋ
+send_with_rider	ਰਾਈਡਰ ਨਾਲ ਭੇਜੋ
+out_again	ਫਿਰ ਭੇਜੋ
+return_to_sender	ਭੇਜਣ ਵਾਲੇ ਨੂੰ ਵਾਪਸ ਕਰੋ
+runs_bags_heading	ਹਾਲੀਆ ਗੇੜੇ ਅਤੇ ਬੈਗ
+print_word	ਛਾਪੋ
+bag_word	ਕੈਰੀਅਰ ਬੈਗ
+run_word	ਰਾਈਡਰ ਗੇੜਾ
+parcels_fmt	{n} ਪਾਰਸਲ
+parcel_history	ਇਤਿਹਾਸ
+attempt_fmt	ਕੋਸ਼ਿਸ਼ {n}
+pieces_short_fmt	{n} ਨਗ
+note_reason_ph	ਨੋਟ ਜਾਂ ਕਾਰਨ
+ops_pick_first	ਪਹਿਲਾਂ ਪਾਰਸਲ ਚੁਣੋ — ਟੈਪ ਕਰੋ ਜਾਂ ਸਕੈਨ ਕਰੋ
+cod_to_collect	ਡਿਲਿਵਰ ਹੋਇਆ — COD ਵਸੂਲਣਾ ਬਾਕੀ
+cod_on_road	COD ਅਜੇ ਰਸਤੇ ਵਿੱਚ
+cod_owed_consignors	ਵਸੂਲ ਹੋਇਆ — ਭੇਜਣ ਵਾਲਿਆਂ ਨੂੰ ਦੇਣਾ
+cod_rto_fees	ਵਸੂਲਣ ਵਾਲੀ RTO ਫ਼ੀਸ
+cod_to_hand_in	ਜਮ੍ਹਾਂ ਕਰਨ ਵਾਲਾ COD
+parcel_one_fmt	{n} ਪਾਰਸਲ
+facet_bank_title	ਰਿਪੋਰਟਾਂ
+facet_bank_help	ਦਿਨ ਦੀਆਂ ਬਹੀਆਂ, ਪਾਰਟੀ ਏਜਿੰਗ, ਬੈਂਕ ਪੋਸਟਾਂ ਅਤੇ ਮਿਆਦ ਦਾ ਲਾਭ-ਘਾਟਾ।
+facet_ops_title	ਖੇਪਾਂ ਅਤੇ ਡਿਸਪੈਚ
+facet_ops_help	AWB ਸਕੈਨ ਕਰੋ ਜਾਂ ਲਿਖੋ → ਲੱਭੋ, ਫਿਰ ਅੱਗੇ ਵਧਾਓ / ਲੇਬਲ ਛਾਪੋ / COD। ਰਾਈਡਰ ਜਾਂ ਕੈਰੀਅਰ ਨੂੰ ਡਿਸਪੈਚ ਕਰੋ।
+facet_cod_title	COD ਰਜਿਸਟਰ
+facet_cod_help	ਡਿਲਿਵਰੀ ’ਤੇ ਪੈਸੇ ਲਓ, ਫਿਰ ਭੇਜਣ ਵਾਲੇ ਨੂੰ ਵਾਪਸ ਕਰੋ।
+facet_riders_title	ਰਾਈਡਰ (ਆਪਣੀ ਟੀਮ)
+facet_riders_help	ਰਾਈਡਰ ਜੋੜੋ, ਫਿਰ Ops ਤੋਂ ਬੁੱਕ ਕੀਤੇ AWB ਡਿਸਪੈਚ ਕਰੋ।
+against_bill_ph	ਉੱਪਰ ਵਾਲੇ ਬਿੱਲ # ਦੇ ਵਿਰੁੱਧ (ਵਿਕਲਪਿਕ)
+aliases_ph	ਉਪਨਾਮ — ਹੋਰ ਨਾਂ, ਕਾਮੇ ਨਾਲ ਵੱਖ
+amount_blank_full_ph	ਰਕਮ (ਖਾਲੀ = ਪੂਰਾ ਬਕਾਇਆ)
+amount_owed_ph	ਬਕਾਇਆ ਰਕਮ
+amount_ph	ਰਕਮ
+amount_received_ph	ਪ੍ਰਾਪਤ ਰਕਮ
+amount_we_pay_ph	ਅਸੀਂ ਦਿੰਦੇ ਹਾਂ ਉਹ ਰਕਮ
+awb_scan_ph	AWB / ਬਾਰਕੋਡ ਸਕੈਨ
+bulk_csv_ph	ਬਲਕ CSV — destination,consignee,kg,cod_paise,note
+business_name_ph	ਕਾਰੋਬਾਰ ਦਾ ਨਾਂ
+category_new_ph	ਸ਼੍ਰੇਣੀ (ਵਿਕਲਪਿਕ, ਨਵੀਂ ਹੋਵੇ ਤਾਂ ਬਣ ਜਾਵੇਗੀ)
+cod_amount_ph	COD ਰਕਮ
+code_bag_ph	ਕੋਡ (bag)
+conv_factor_ph	ਗੁਣਕ (25 = 1 bag → 25 kg)
+country_code_ph	ਦੇਸ਼ ਕੋਡ ਉਦਾ. IN, GB, US, AE, BR
+credit_khata_amount_ph	ਉਧਾਰ / ਖਾਤਾ ਰਕਮ
+credit_limit_ph	ਉਧਾਰ ਸੀਮਾ (0 = ਕੋਈ ਨਹੀਂ)
+dim_unit_code_ph	ਮਾਪ ਇਕਾਈ ਕੋਡ (cm)
+divisor_ph	ਆਇਤਨ ਭਾਜਕ (5000)
+extra_per_kg_ph	ਵਾਧੂ / kg
+first_amount_ph	ਪਹਿਲੀ ਰਕਮ
+first_kg_ph	ਪਹਿਲਾ kg (ਸਲੈਬ)
+from_code_ph	ਤੋਂ ਕੋਡ (bag)
+item_name_lang_ph	ਚੀਜ਼ ਦਾ ਨਾਂ — ਆਪਣੀ ਭਾਸ਼ਾ ਵਿੱਚ ਲਿਖੋ
+login_id_opt_ph	ਲੌਗਿਨ ਆਈਡੀ (ਵਿਕਲਪਿਕ)
+manager_pin_ph	ਮੈਨੇਜਰ PIN (ਸਿਰਫ਼ ਜੇ ਤੁਸੀਂ ਰੱਦ ਨਹੀਂ ਕਰ ਸਕਦੇ)
+new_branch_name_ph	ਨਵੀਂ ਸ਼ਾਖਾ ਦਾ ਨਾਂ
+new_password_ph	ਨਵਾਂ ਪਾਸਵਰਡ (ਵਿਕਲਪਿਕ)
+new_pin_ph	ਨਵਾਂ PIN (4–12 ਅੰਕ)
+note_bank_ph	ਨੋਟ (ਜਮ੍ਹਾਂ, ਕਢਵਾਉਣਾ, …)
+note_buy_expense_ph	ਨੋਟ (ਬਾਲਣ, ਕਿਰਾਇਆ, …)
+note_expense_ph	ਨੋਟ (ਬਾਲਣ, ਦਫ਼ਤਰ, …)
+notify_phone_ph	ਸੂਚਨਾ ਫ਼ੋਨ (WhatsApp/SMS ਹੁੱਕ)
+options_moklanjo_ph	ਵਿਕਲਪ (ਵਿਕਲਪਿਕ) — Large=20, Gift wrap=10
+part_second_way_ph	ਦੂਜੇ ਤਰੀਕੇ ਨਾਲ ਹਿੱਸਾ (ਵਿਕਲਪਿਕ)
+phone_ph	ਫ਼ੋਨ
+address_ph	ਪਤਾ
+party_custom_fields_heading	ਕਸਟਮ ਖੇਤਰ (ਚੁਣੀ ਪਾਰਟੀ)
+party_custom_help	ਇਸ ਪਾਰਟੀ ਉੱਤੇ ਕੋਈ ਵੀ ਲੇਬਲ ਅਤੇ ਮੁੱਲ ਜੋੜੋ — WhatsApp, GSTIN, ਰੂਟ ਕੋਡ, …
+party_custom_key_ph	ਖੇਤਰ ਦਾ ਨਾਂ (ਜਿਵੇਂ WhatsApp)
+party_custom_value_ph	ਮੁੱਲ
+party_custom_add	ਖੇਤਰ ਜੋੜੋ / ਅੱਪਡੇਟ
+party_custom_remove	ਖੇਤਰ ਹਟਾਓ
+party_custom_empty	ਹਾਲੇ ਕੋਈ ਕਸਟਮ ਖੇਤਰ ਨਹੀਂ
+party_custom_pick_first	ਕਸਟਮ ਖੇਤਰਾਂ ਲਈ ਇੱਕ ਪਾਰਟੀ ਚੁਣੋ
+place_name_ph	ਇਸ ਥਾਂ ਦਾ ਨਾਂ
+price_ph	ਕੀਮਤ
+qty_example_ph	ਮਾਤਰਾ (ਉਦਾ. kg ਲਈ 1.5)
+quantity_ph	ਮਾਤਰਾ
+reason_required_ph	ਕਾਰਨ (ਲਾਜ਼ਮੀ)
+role_title_ph	ਭੂਮਿਕਾ ਸਿਰਲੇਖ (ਉਦਾ. Barista)
+service_pct_ph	ਸੇਵਾ % ਵਿਕਲਪਿਕ 0/10/12
+short_code_ph	ਛੋਟਾ ਕੋਡ (MG02)
+slab_kg_ph	kg ਵਿੱਚ ਚਾਰਜੇਬਲ ਸਲੈਬ (0.5)
+staff_name_ph	ਸਟਾਫ਼ ਦਾ ਨਾਮ / id
+starting_password_ph	ਸ਼ੁਰੂਆਤੀ ਪਾਸਵਰਡ (ਵਿਕਲਪਿਕ)
+starting_pin_ph	ਸ਼ੁਰੂਆਤੀ PIN (4–12 ਅੰਕ)
+tax_rate_ph	ਟੈਕਸ ਦਰ ਦਾ ਨਾਂ ਜਾਂ % — Standard, Reduced, 0, 5, 12, 18, 20
+to_code_ph	ਨੂੰ ਕੋਡ (kg)
+uncleared_no_ph	ਉੱਪਰ ਵਾਲਾ ਅਣ-ਕਲੀਅਰ #
+unit_cost_ph	ਇਕਾਈ ਲਾਗਤ
+unit_kg_blank_ph	ਇਕਾਈ (kg ਜਾਂ ਖਾਲੀ)
+unit_name_bag_ph	ਨਾਂ (Bag)
+weight_unit_code_ph	ਵਜ਼ਨ ਇਕਾਈ ਕੋਡ (kg)
+zone_name_ph	ਜ਼ੋਨ ਦਾ ਨਾਂ
+pay_credit	ਉਧਾਰ
+book_kind_today	ਅੱਜ ਦੀ ਬਹੀ
+book_kind_month	ਇਸ ਮਹੀਨੇ ਦੀ ਬਹੀ
+book_kind_aging	ਬਕਾਇਆ / ਡੈਬਿਟ-ਕ੍ਰੈਡਿਟ
+book_kind_balance	ਬੈਲੈਂਸ ਸ਼ੀਟ
+ops_desk_help	USB ਬਾਰਕੋਡ ਸਕੈਨਰ ਨਾਲ AWB ਸਕੈਨ ਕਰੋ (ਜਾਂ ਲਿਖੋ) → ਲੱਭੋ। ਫਿਰ ਅੱਗੇ ਵਧਾਓ, ਲੇਬਲ ਛਾਪੋ ਜਾਂ COD ਲਓ। ਲੇਬਲ Code 128 ਵਿੱਚ ਛਪਦੇ ਹਨ।
+role_help_consignor	ਭੂਮਿਕਾ: ਭੇਜਣ ਵਾਲਾ — AR (ਉਹ ਸਾਡੇ ਕਰਜ਼ਦਾਰ)। ਉਹੀ ਫਰਮ ਕੈਰੀਅਰ ਵੀ ਹੋ ਸਕਦੀ ਹੈ।
+role_help_carrier	ਭੂਮਿਕਾ: ਕੈਰੀਅਰ — AP (ਅਸੀਂ ਉਨ੍ਹਾਂ ਦੇ ਕਰਜ਼ਦਾਰ)। ਉਹੀ ਫਰਮ ਭੇਜਣ ਵਾਲੀ ਵੀ ਹੋ ਸਕਦੀ ਹੈ।
+role_help_both	ਭੂਮਿਕਾਵਾਂ: ਭੇਜਣ ਵਾਲਾ + ਕੈਰੀਅਰ — ਇੱਕ ਧਿਰ, AR ਤੇ AP ਖਾਤੇ, ਰਿਪੋਰਟਾਂ ਵਿੱਚ ਸ਼ੁੱਧ।
+role_help_supplier	ਭੂਮਿਕਾ: ਸਪਲਾਇਰ — ਖਰੀਦ ਲਈ AP।
+lane_declared_label	ਖਾਤਾ ਬੁਕਿੰਗ
+lane_owner_label	ਨਕਦ ਬੁਕਿੰਗ
+money_lane_bill	ਬਿੱਲ: {lane}

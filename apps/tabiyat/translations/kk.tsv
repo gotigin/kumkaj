@@ -1,0 +1,1341 @@
+# Kazakh — Қазақша (kk). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	Дәріхана есептегіші: дәрі-дәрмек, топтама, хат және кітаптар. Тегін офлайн.
+barcode_ph	Штрих-код / ​​EAN
+composition_ph	Тұз / құрамы (іздеуге болады)
+schedule_h_off	H кестесі — өшірулі (иенің жалаушасы)
+schedule_h_on	H кестесі — қосулы (иенің жалаушасы)
+rx_expected_off	Rx күтілетін — өшірулі (иенің жалаушасы)
+rx_expected_on	Rx күтілуде — қосулы (иенің жалаушасы)
+rx_note_ph	Рецепт ескертпесі (міндетті емес — сіздің тұжырымыңыз)
+batch_ph	Топтама №.
+expiry_ph	Мерзімі (ЖЖЖЖ-АА-КК)
+expiry_alerts	Жарамдылық мерзімі туралы ескертулер (келесі 7 күн)
+expiry_none	Келесі 7 күнде жарамдылық мерзімі бітпейді.
+rx_nudge	Ие Rx / Schedule H деп белгіленеді — қажет болса ескертпе қосыңыз.
+unlock	Құлыпты ашу
+pin_hint	Иенің PIN-і 0000-ден басталады
+sell	Сату
+buy	Сатып алу
+books	Күнделік кітап
+books_help	Бүгінгі ұстаным. Сату = ақша. Сатып алу = сатып алу және шығындар. Тараптар = несиелік тұтынушылар мен жеткізушілер.
+buy_help	Шығын ордерлері мен жеткізуші шоттары (ақша шығуы). Есепке алынғаны контрагенттің кітабында қалады.
+sell_money_in	Дәрілерді сату
+buy_money_out	Шығын / жеткізуші шоты
+record_purchase	Сатып алуды жазу
+add_expense	Шығын ордері
+bank_book	Банк кітабы
+credit_help	Контрагент идентификаторы бірегей (аттар қайталануы мүмкін). Клиент кредит шотын жүргізеді (бізге қарыз); Жеткізуші бізге тауар сатады (біз қарызбыз); екеуі де болады. Кітаптар бөлек қалады; есептер тазаны көрсетеді.
+party_kind_ph	Рөлдер: Клиент, Жеткізуші, екеуі де…
+reports_help	Күнделік кітап, дебиторлар мен кредиторлар, банк кітабы, шығын ордерлері, пайда мен залал.
+reports_today	Күнделік кітап (бүгін)
+reports_month	Пайда мен залал (ай)
+reports_aging	Төленбеген / Дт-Кт
+reports_balance_sheet	Баланс
+reports	Банк кітабы және П&З
+refresh	Жаңарту
+undo	Болдырмау
+start_tracking	Бақылауды бастау
+stock_minus	− Қор
+stock_plus	+ Қор
+settle_cash	Қолма-қолды жабу
+settle_card	Картамен жабу
+items	Дәрілер
+nav_items	Дәрілер
+more	Тағы
+your_items	Сіздің дәрі-дәрмектеріңіз
+items_help	Өңдеу үшін элементті түртіңіз. Жаңа элемент пішінді тазартады. Аты немесе қысқа код бойынша іздеңіз, бағаны орнатыңыз (0 жақсы), содан кейін Қосу. Қазірдің өзінде жазылған сатулар өздеріне жүктелген атауды сақтайды.
+add_item	Тауар қосу
+new_item	Жаңа тауар
+adding_item	Жаңа тауар қосылуда
+editing_item	Өңдеу
+save	Сақтау
+remove	Алып тастау
+removed_items	Алынған тауарлар
+removed_help	Қалпына келтіру элементті бұрынғы қалпында Элементтерге қайтарады — бағасы, фотосуреті және санат.
+restore_item	Қалпына келтіру
+empty_catalog	Әлі дәрілер жоқ. Дәрі-дәрмектерді ашыңыз, атауды, штрих-кодты немесе тұзды қосыңыз, содан кейін сатыңыз.
+total	Барлығы
+cash	Қолма-қол
+upi	UPI
+card	Карта
+credit	Контрагенттер
+clear	Тазалау
+ready_to_sell	Кітапқа жазуға дайын
+today_prefix	Бүгін
+today_mid	бүгін
+owed	төленбеген
+round_word	дөңгелектеу
+back	Артқа
+sold_out	Жоқ
+restock	Қайта толтыру
+not_tracked	Бақыланбайды
+in_stock	қоймада
+marked_sold_out	Жоқ деп белгіленді
+add_upper	ҚОСУ
+na	жоқ
+qty	Салмақ/Сан
+unit_at	Баға @
+actual	Нақты
+applied	Қолданылды
+note_ph	Ескертпе (міндетті емес)
+rounded	ДӨҢГЕЛЕКТЕЛГЕН
+split	Бөлу
+send_kot	Слип жіберу
+send_kot_to	Жіберу → {kitchens}
+send_kot_again	Келесі слипке элементтерді қосыңыз
+send_kot_held	Ұсталған элементтер — жіберу үшін ұстап тұрыңыз
+reprint_kot	Таңдалғанды қайта басып шығару
+reprint_kot_ok	{n} элементтері қайта басылды · {slips} слип(лер) → {kitchens}
+reprint_kot_needed	Алдымен слипті жіберіңіз — содан кейін дәрі-дәрмектерді қосып, таңдалғандарды қайтадан басып шығарыңыз
+reprint_kot_none_selected	Әрбір жіберілген элемент өткізіліп жіберіледі — қайта басып шығару үшін «Басып шығаруда» түймесін түртіңіз
+reprint_kot_client	Жіберілген {place} үшін қайта басып шығару ({n}) — дүкен құрылғысы оны басып шығарады
+print_cancelled_kot	Барлық бас тартылғанды басу
+print_cancelled_kot_ok	Басылған {n} бас тартылған элементтер · {slips} слип(лер) → {kitchens}
+print_cancelled_kot_needed	Алдымен жойылған элементтері бар кестені ашыңыз
+print_cancelled_kot_none	Бұл тапсырыста күші жойылған тауарлар жоқ
+print_cancelled_kot_client	Жіберілген {place} үшін басып шығару тоқтатылды ({n}) — дүкен құрылғысы оны басып шығарады
+kot_banner	Түр баннері
+kot_banner_ph	Баннер (бос = жоқ)
+kot_item_prefix	Тауар префиксі
+kot_item_prefix_ph	мыс. [БАС ТАРТЫЛДЫ]
+kot_strike	Ескерту элементінің атауы
+kot_strike_note	Ескерту элементі ескертпесі
+kot_strike_on	Қосулы
+kot_strike_off	Өшірулі
+bill_item_layout	Тауар орналасуы
+bill_item_layout_columns	Бағандар
+bill_item_layout_stacked	Жолдармен
+bill_item_header	Баған тақырыптары
+bill_item_hdr_item	Тауар тақырыбы
+bill_item_hdr_qty	Сан тақырыбы
+bill_item_hdr_price	Баға тақырыбы
+bill_item_hdr_amount	Сома тақырыбы
+bill_item_name	Медицина атауы
+bill_item_qty	Сан
+bill_item_price	Баға
+bill_item_amount	Сома
+bill_item_note	Rx / сату туралы ескерту
+bill_item_col_gap	Баған аралығы
+bill_item_col_order	Баған реті
+bill_item_col_sep	Баған сызықтары
+bill_item_gap_tight	Тығыз
+bill_item_gap_comfort	Ыңғайлы
+bill_item_gap_wide	Кең
+bill_item_num_width	Сан бағандары
+bill_item_num_compact	Ықшам
+bill_item_num_comfort	Ыңғайлы
+bill_item_num_wide	Кең
+bill_item_num_align	Сандарды туралау
+bill_item_gap_em	Аралық (em)
+bill_item_qty_min	Мин. сан (em)
+bill_item_price_min	Мин. баға (em)
+bill_item_amount_min	Мин. сома (em)
+kot_item_qty_width	Сан бағаны
+kot_item_num_align	Санды туралау
+bill_total_qty_label	Жалпы сан белгісі
+bill_total_subtotal_label	Аралық сома белгісі
+bill_total_grand_label	Жалпы сома белгісі
+bill_total_paid_label	Төленген белгісі
+bill_meta_pair	Жолды бөлісу
+bill_pair_alone	Жеке
+bill_item_piece_on	Қосулы
+bill_item_piece_off	Өшірулі
+bill_total_qty	Жалпы сан
+bill_total_subtotal	Аралық сома
+bill_total_grand	Жалпы сома
+reprint_incl	Басылымда
+reprint_skip	Өткізу
+reprint_skip_meta	Қалпына басуды өткізу
+kot_dest_hint	{kitchens} үшін тағайындаған принтерлерде басылады: Параметрлер → Принтерлер
+kot_sent_hint	Last send went to {kitchens}. Tap to add items for the next bill — or Print slip again for the same one.
+kot_sent_printing	Слип {kitchens}-ке жіберілді — басып шығару
+kot_sent_not_printed	Слип {kitchens} құрылғысына жіберілді, бірақ БАСЫЛМАЙДЫ: {why}. Дүкенге айтып, принтерді жөндеп, қайта басып шығарыңыз.
+kot_sent_screen	Слип {kitchens} құрылғысына жіберілді
+kot_queued_shop	{place} үшін слип → {kitchens} сақталды; дүкен құрылғысы оны басып шығарады
+kot_job_label	{place} → {kitchens} үшін сырғытпа
+kot_job_reached	{place} үшін слип {kitchens}-ке жетті
+kot_unassigned	Тағайындалмаған
+kot_unassigned_held	Станциясыз ұсталған {n} элементтері — жіберу үшін желіде ұстап тұрыңыз
+kot_station_ph	Станция
+kot_station_dd	Станция
+kot_station_dd_n	Station · {stations}
+kot_set_station	Осы станцияны қолдану
+kot_station_applied	{n} элементтеріне орнатылған станция: {station}
+kot_station_cleared	Станция {n} элементтерінен тазартылды: {station}
+kot_station_needed	Алдымен диспансерлік бөлімді таңдаңыз
+kot_station_not_allowed	Бөлімді пайдалануға рұқсат етілмейді: {station}
+kot_station_none	Станциялар әлі жоқ — дүкенде пайдаланылмаған (қажет болса, Параметрлер → аймақтар)
+pos_tab_items	Қосылған тауарлар
+pos_tab_payment	Төлем
+hold_send	Ұстау
+hold_send_on	Ұсталған
+hold_send_meta	Өткізілді — бұл слипте емес
+station_remove	Станцияны алып тастау
+station_remove_ph	Алып тастау үшін тізімдегі станцияны түртіңіз
+station_removed	Станция алынды: {name}
+settings_hub_title	Параметрлер
+settings_hub_help	Бір уақытта бір аймақты ашыңыз — аз айналдыру, анық таңдау.
+settings_back	Артқа
+settings_sec_language	Тіл және валюта
+settings_sec_country	Ел және салық
+settings_sec_tills	Басқа құрылғылар
+settings_sec_brand	Сіздің брендіңіз
+settings_sec_units	Өлшем бірліктері мен түрлендіру
+settings_sec_pickers	Аймақтар · станциялар · салық мөлшерлемелері
+settings_sec_printers	Принтерлер
+settings_sec_bill	Шот және слип пішімі
+settings_sec_selling	Схемалар мен сатылым
+bill_kot_tab_bill	Шот
+bill_kot_tab_kot	Слип
+settings_sec_alerts	Ескертулер
+alerts_help	Күй хабарлары сіз үшін экранда қанша тұрады (осы кіру).
+snack_secs_ph	Секунд (3–60, әдепкі 10)
+snack_secs_save	Ескерту уақытын сақтау
+snack_secs_saved	Ескерту уақыты сақталды — {n} секунд
+settings_sec_backup	Сақтық көшірме және қалпына келтіру
+settings_sec_diag	Диагностика
+diag_privacy_help	Журналдар осы құрылғыда қалады. Құпиялар (PIN, құпиясөздер) ешқашан сақталмайды. Құрылғыдан тыс пакет бөлісу әр жолы сіздің анық рұқсатыңызды керек етеді — ешқашан сатылмайды және үшінші жаққа берілмейді.
+diag_level	Егжей-тегжей деңгейі
+diag_level_error	Қателер
+diag_level_warn	Ескертулер
+diag_level_info	Ақпарат
+diag_level_debug	Жөндеу
+diag_support_start	30 мин қолдау сеансын бастау
+diag_support_stop	Қолдау сеансын аяқтау
+diag_support_started	Қолдау сеансы қосулы — 30 минут Жөндеу егжейі
+diag_support_ended	Қолдау сеансы аяқталды
+diag_export_local	Жергілікті көшірмені экспорттау
+diag_export_local_done	Жергілікті диагностика дайын: {path} — көшірмені қайда сақтауды таңдаңыз
+diag_approve_send	Құрылғыдан тыс бөлісуді мақұлдау
+diag_send_help	Мақұлдау бір пакетке, содан мерзімі бітеді. Уақытша — тек өнімді жөндеу немесе жақсарту үшін. Үшінші жаққа берілмейді. Linux, Windows, macOS және Android-та жұмыс істейді.
+diag_send_approved	Бөлісу бір пакетке мақұлданды (жақында бітеді)
+diag_export_send	Бөлісу пакетін жасау (мақұлдау керек)
+diag_export_send_done	Бөлісу пакеті дайын: {path} — қайда сақтауды таңдаңыз, содан тек Kumkaj қолдауына жіберіңіз
+diag_save_bundle	Диагностика көшірмесін сақтау
+diag_bundle_saved	Диагностика көшірмесі сақталды: {path}
+diag_bundle_failed	Диагностика көшірмесі ол жерде сақталмады — қайта көріңіз
+diag_clear	Диагностика журналдарын тазалау
+diag_cleared	Диагностика журналдары тазаланды
+sidebar_settings	Бүйір тақта
+sidebar_settings_help	Бүйір рельстегідей белгішелер. Ретін өзгерту үшін жолды сүйреңіз. Көрсету не жасыру үшін қосқышты ауыстырыңыз. Параметрлер мен Құлып әрқашан тақтада қалады.
+sidebar_always_on_short	Әрқашан қосулы
+sidebar_back_settings	Артқа
+sidebar_shown	Көрсетілген
+sidebar_hidden	Жасырылған
+sidebar_always_on	Әрқашан тақтада
+sidebar_shown_hint	Бүйір рельсте / төменгі қойындыларда көрсетілген
+sidebar_hidden_hint	Тақтадан жасырылған
+sidebar_menu_items	Тауарлар
+sidebar_enable_all	Барлығын қосу
+sidebar_disable_all	Барлығын өшіру
+sidebar_order_saved	Бүйір тақта реті сақталды
+sidebar_visibility_saved	Бүйір тақта көрінісі сақталды
+amounts_hide	Жасыру
+amounts_show	Көрсету
+printers_none_hint	Алдымен принтерді осы құрылғыға сақтаңыз, содан кейін оны есепшотқа немесе бөлімге қосыңыз
+counter	Касса
+dine_in	Касса
+takeaway	Алып кету
+order	Тапсырыс
+tables	Есептегіштер
+kitchen	Бөлімдер
+sales	Сатылым
+sales_refunds	Сатылым және қайтару
+day_close	Күнді жабу
+reports_expenses	Банк кітабы және П&З
+nav_reports	Есептер
+nav_settings	Параметрлер
+nav_lock	Құлыптау
+no_sale_yet	Әлі сатылым жоқ
+favorites	Таңдаулылар
+favorites_help	Жиі сататын тауарлар, сіздің кіруіңізге сақталған. Шотқа біреуін қосыңыз немесе төмендегі барлық тауардан тізім құрыңыз.
+your_favorites	Сіздің таңдаулыларыңыз
+all_items	Барлық тауар
+frequent	Жиі
+added_items	Қосылған тауар(лар)
+added_items_empty	Бұл шот бойынша әлі ештеңе жоқ — Барлық элементтерден немесе санаттан элемент қосыңыз.
+frequent_config_help	Аяқталған шоттардан ең көп сатылған заттар. Қанша күн қарау керектігін және қанша элементті көрсету керектігін белгілеңіз.
+frequent_days_ph	Күндер (1)
+frequent_limit_ph	Тауарлар (24)
+frequent_apply	Қолдану
+frequent_saved	Жиі: соңғы {d} күн(дер), жоғарғы {n} — {c} элементтері
+frequent_empty	Бұл кезеңде әлі аяқталған сатылым жоқ — шотты жабыңыз (Параметрлер рұқсат етсе ₹0 болады) және осында шығады.
+zero_sales	Нөлдік сатылым
+zero_sales_help	Бағасы ₹0 болатын заттарға және ₹0 есептелген шоттарға рұқсат етіңіз (тегін / иесінің қалауы). Әдепкі бойынша қосулы, сондықтан жиі және күнделікті кітаптарда тегін мұқабалар әлі де пайда болады.
+zero_sales_on	₹0 рұқсат
+zero_sales_off	Баға талап ету
+zero_sales_saved_on	Нөлдік сатылымға рұқсат
+zero_sales_saved_off	Сатылым бағасы ₹0-ден жоғары болуы керек
+floor_areas_help	Аудандар - едендегі бөлмелер немесе аймақтар (Dine In, Parcel, AC ...). Алдымен аумақты қосыңыз, содан кейін оған есептегіштерді қойыңыз - әр аймақ еденде жеке топ болып табылады.
+area_new_ph	Жаңа аймақ / бөлме (мыс. Кондиционер, Бақ)
+add_area	Аймақ қосу
+area_added	«{name}» аймағы дайын — оған есептегіштерді қосыңыз
+no_favorites	Әлі таңдаулы жоқ — төмендегі тізімнен тауар қосыңыз.
+add_to_bill	Шотқа қосу
+added	Қосылды
+owes_word	қарыз
+selected_word	Таңдалған
+chip_clear_credit	тазалау — Несие немесе аванс алу
+chip_missing_customer	Таңдалған клиент жоқ — қайта таңдаңыз
+chip_no_customer	Әлі клиент жоқ — ат жазып, Несиені түртіңіз
+credit_summary_fmt	{} клиент · ашық несие {} · ұсталған аванс {}
+recent_label	Жақындағы:
+kot_new_waiting	ЖАҢА — күтуде
+kot_preparing	ДАЙЫНДАЛУДА
+kot_ready_serve	ДАЙЫН — беріңіз
+kot_done_cap	ДАЙЫН
+kot_cancelled	БАС ТАРТЫЛДЫ
+kot_start_btn	Бастау
+kot_mark_ready	Дайын деп белгілеу
+kot_done_btn	Дайын
+table_free	Бос — тапсырыс бастау үшін түртіңіз
+start_order	Тапсырыс бастау
+open_bill	Шотты ашу
+collect_payment	Төлем алу
+table_running	Жүріп жатыр
+payment_pending	Төлем күтілуде
+collect_at_counter	кассада ал
+inventory	Қойма
+inventory_stock	Қойма және қор
+branches	Филиалдар
+branches_org	Филиалдар мен ұйым
+credit_customers	Контрагенттер (несие және жеткізушілер)
+customer_name_ph	Контрагент аты
+new_customer_ph	Жаңа контрагент аты
+item_name_ph	Тауар аты (мыс. Masala Dosa)
+item_price_ph	Баға
+start_template	Өнім
+team	Топ
+team_pins	Топ және PIN
+my_pin_settings	Менің PIN-ім
+settings_hub_help_my_pin	Осы құрылғыда кірген адамның құлып ашу PIN-ін өзгертіңіз.
+team_self_help	Бір кіру: жаңа PIN, жаңа құпиясөз немесе екеуі де. Барды сақтау үшін ұяшықты бос қалдырыңыз. Басқа экран не құқық керек болса, Иесінен сұраңыз.
+backup_settings	Сақтық көшірме және параметрлер
+lock_app	Қолданбаны құлыптау
+pick	Таңдау
+select	Таңдау
+advance	Аванс
+owner	Иесі
+staff	Қызметкерлер
+photo	Фото
+auto	Авто
+prev	Алдыңғы
+next	Келесі
+ok	OK
+this_shop	Сервер
+extra_till	Клиент
+off	Өшірулі
+tables_kitchen	Дүкеннің орналасуы
+server	Сервер
+client	Клиент
+language_currency	Тіл және валюта
+language	Тіл
+choose_language	Тіліңізді таңдаңыз
+language_setup_hint	Осы құрылғының тілін ұстаныңыз немесе өзіңіз таңдаңыз.
+lang_follow_platform	Құрылғы тілі
+lang_pick_user	Тіл таңдау
+lang_platform_now	Қазір құрылғы тілі
+selected_language	Таңдалған
+continue	Жалғастыру
+this_device	ОСЫ ҚҰРЫЛҒЫ
+device_use_q	Бұл құрылғы қалай қолданылады?
+last_server_mode	Сервер еді — жалғастыру үшін түртіңіз
+last_client_mode	Клиент еді — жалғастыру үшін түртіңіз
+choose_server	Сервер таңдаңыз
+choose_server_hint	Бар серверді ашыңыз немесе басқа бизнеске жаңасын жасаңыз.
+create_new_server	Жаңа сервер жасау
+open_server	Ашу
+new_server_name_ph	Жаңа сервер аты (міндетті емес)
+server_remove_pin_ph	Серверді алып тастауға иенің PIN-і
+only_owner_remove_server	Серверді тек Иесі алып тастай алады
+owner_pin_remove_server	Бұл серверді алып тастауға иенің PIN-і керек
+device_setup_help	Сервер кітаптарды осында ұстайды. Клиент Серверге жұптасады.
+app_template_heading	Стартер каталогы (міндетті емес)
+app_template_blurb	Үлгі каталогын жүктейді; Иесі Захир (захир), әкімші Асиф (асыф, PIN 1111), кассир Наваз (наваз, PIN 0000); салық/GST шегерімі; алдыңғы бүйірлік тақта; тарих 4 сағаттан кейін тазаланады (және Сақтық көшірмеде қазір өшіру); Бүгін шешіңіз; ықшам есепшот + тар науалар үшін стандартты шеттер. Салық және бүйірлік тақта теңдестерін "Параметрлер" бөлімінен қайта қосуға болады.
+app_template_apply	Стартер каталогын қолданыңыз
+app_template_skip	Әзірге өткізу
+app_template_status	Сервер дайын — Стартер каталогын қолданыңыз немесе өткізіп жіберіңіз
+app_template_importing	{title} қолданылуда…
+currency	Валюта
+backup	Сақтық көшірме
+use	Қолдану
+dont_use	Қолданбау
+add_branch	Филиал қосу
+add_conversion	Түрлендіру қосу
+add_dishes_items	Элементтерді қосыңыз
+add_item_plain	Тауар қосу
+add_note	Ескертпе қосу
+add_opening_balance	Бастапқы қалдық қосу
+add_staff	Қызметкер қосу
+add_station	Станция қосу
+add_table	Үстел қосу
+add_unit	Өлшем бірлік қосу
+add_use_name	Осы атты қосу / қолдану
+allow_extra_tills	Қосымша кассаларға рұқсат
+amend	Түзету
+apply_country_pack	Ел бумасын қолдану
+datetime_appearance	Күн мен уақыт көрінісі
+datetime_appearance_help	Кітаптар жылы RFC3339-ны ішінде сақтайды. Бұл күндер мен сағаттардың шоттардағы, есептердегі және экрандағы көрінісін ғана өзгертеді.
+datetime_example	Қазір мысал: {ex}
+date_order	Күн реті
+date_order_dmy	D/M/Y
+date_order_mdy	M/D/Y
+date_order_ymd	Y-M-D
+time_format	Сағат
+time_format_24h	24 сағат
+time_format_12h	12 сағат
+attach_bill_photo	Шот фотосын тіркеу
+attach_pdf	PDF тіркеу
+attach_photo	Фото тіркеу
+attachments_last_expense	Тіркемелер (соңғы шығын)
+bank	Банк
+bank_in	Банкке кіріс
+bank_out	Банктен шығыс
+bank_reconciliation	Банк салыстыруы (банк үзіндісіне қарсы белгілеңіз)
+bank_to_till	Банк → касса
+book_add_dish	Кітап — элементті / элементті қосу
+book_opening_credit	Кітап — бастапқы несие
+branch_name_sell_ph	Сату филиалының аты
+bring_my_book	Кітабымды әкелу
+business_tax_id_ph	Бизнестің салық нөмірі
+caption_bank	БАНК
+caption_bills	ШОТТАР
+caption_outstanding	ТӨЛЕНБЕГЕН
+caption_payments_today	ТӨЛЕМДЕР БҮГІН
+caption_today	БҮГІН
+card_amount_ph	Карта сомасы
+cash_amount_ph	Қолма-қол сома
+cash_memo	Кассалық жазба
+choose_icon	Белгіше таңдау
+choose_logo	Логотип таңдау
+clear_icon	Белгішені тазалау
+clear_photo	Фотоны тазалау
+copy_day_book_csv	Күнделік кітапты CSV көшіру
+copy_day_close	Күнді жабуды көшіру
+copy_items_csv	Тауарларды CSV көшіру
+copy_outstanding_csv	Төленбегенді CSV көшіру
+copy_parties_csv	Контрагенттерді CSV көшіру
+copy_party_ledger_csv	Контрагент кітабын CSV көшіру
+copy_receipt	Түбіртекті көшіру
+share_whatsapp	WhatsApp бөлісу
+lan_pages_heading	Wi‑Fi желісіндегі тұтынушы беттері
+lan_pages_help	Бұл дүкеннің Wi‑Fi желісінде тұтынушы беттері дисплей тақтасы мен кері байланыс үшін жұмыс істейді. Мобильді деректердегі адамдарға бұлт кейінірек қажет. Карта терминалы немесе төлем сілтемесі міндетті емес және есептегішті ешқашан блоктамайды.
+diag_send_heading	Құрылғыдан тыс бөлісу
+kot_dest_heading	Станция
+optional_login_heading	Міндетті емес кіру
+rights_heading	Құқықтар
+ops_panel	Жергілікті операциялар
+crm_heading	Тұтынушылар және хабарламалар
+crm_help	Туған күн, адалдық, белсенді емес және үздік қонақтар — SMS немесе WhatsApp кезегі. Хабарда {name} және {points} қолданыңыз. Иесі жіберуді басады; ештеңе өзі жіберілмейді.
+crm_queue_sms	SMS кезегіне қою
+crm_queue_wa	WhatsApp кезегіне қою
+crm_seg_bday_week	Туған күн аптасы
+crm_seg_bday_month	Туған күн айы
+crm_seg_phone	Телефоны бар
+crm_seg_loyalty	Адалдық
+crm_seg_inactive	Белсенді емес
+crm_seg_top	Ең көп жұмсаушылар
+birthday_ph	Туған күн (MM-DD немесе YYYY-MM-DD)
+crm_message_ph	Туған күніңіз құтты болсын, {name}! Сізде {points} ұпай бар.
+till_apply_redeem	Шотқа қолдану
+till_clear_redeem	Өтеуді тазалау
+till_wallet_topup	Әмиянды толтыру
+till_issue_voucher	Ваучер беру
+till_points_ph	Өтеу ұпайлары
+till_wallet_ph	Жұмсауға әмиян сомасы
+till_voucher_code_ph	Ваучер коды
+till_voucher_amt_ph	Ваучер сомасы (бос = бәрі)
+till_wallet_topup_ph	Әмиян толтыру сомасы
+till_voucher_issue_amt_ph	Берілетін ваучер сомасы
+till_voucher_issue_code_ph	Жаңа ваучер коды
+split_evenly	Тең бөлу
+waitlist	Күту тізімі
+fire_course	Келесі қадам
+hold_item	Ұстау
+waiter_call	Кассирге қоңырау шалыңыз
+waitlist_add	Күту тізіміне қосу
+floor_view_grid	Тор
+floor_view_layout	Орналасу
+floor_layout_x	X
+floor_layout_y	Y
+floor_layout_w	W
+floor_layout_h	H
+floor_layout_save	Орналасуды сақтау
+floor_layout_open	Үстелді ашу
+floor_layout_edit	Орналасуды өңдеу
+floor_layout_pick	Орналасуын өңдеу үшін үстелді түртіңіз
+floor_layout_saved	Орналасу сақталды
+floor_layout_nudge_left	← 20
+floor_layout_nudge_right	→ 20
+floor_layout_nudge_up	↑ 20
+floor_layout_nudge_down	↓ 20
+sibling_pickers_help	Өлшем бірліктегідей Қосулы/Өшірулі түртіңіз — аймақ, станция және салық мөлшерлемесін күнделікті тізімнен жасырыңыз; бума әдепкісі қалады.
+bulk_price_apply	Жаппай баға қолдану
+card_terminal_optional	Карта терминалы / төлем сілтемесі (интернет болғанда міндетті емес)
+copy_report	Есепті көшіру
+counted_cash_ph	Жәшіктегі санаған қолма-қол
+country_tax	Ел және салық
+create_backup	Сақтық көшірме жасау
+credit_limit_heading	Несие шегі (таңдалған / аталған контрагент)
+day_close_summary	Күнді жабу қорытындысы
+delete_party	Таңдалған контрагентті жою
+delivery	Жеткізу
+done_open_books	Дайын — кітаптарды ашу
+drawer_count	Жәшік санауы (міндетті емес)
+expense_heading	Шығын
+export_day	Күнді экспорттау
+extra_note_bill_ph	Осы шотқа / сатылымға қосымша ескертпе
+extra_note_expense_ph	Соңғы шығынға қосымша ескертпе
+extra_tills_heading	Қосымша кассалар
+other_devices_help_heading	Басқа құрылғыларды баптау
+other_devices_help	Осы құрылғыда (Сервер): Басқа құрылғылар → Қосымша ақы төлеуге рұқсат беру. Жұптау кодын және Wi‑Fi мекенжайын ескеріңіз. Пайда болса, Басқа құрылғылардың қосылуына рұқсат ету түймесін түртіңіз. Компьютерде Осы компьютерден бастау түймесін түртіңіз. Басқа құрылғыларда: қолданбаны орнатыңыз, Клиент режимін таңдаңыз, Дүкен серверін табыңыз (немесе мекенжайды теріңіз), жұптастыру кодын енгізіңіз, Қазір жұптаңыз. Wi‑Fi өшірілсе, тапсырыстар құрылғыда күтеді және Сервер қайта жауап бергенде кетеді. Серверде қосымша принтерлер орнатылған (Параметрлер → Принтерлер) — қосымша шоттарды сол жерге жібергенше.
+forget_shop	Осы дүкенді ұмыту
+goods_received	Алынған тауар
+import_day	Күнді импорттау
+import_items_csv_plain	Тауарларды CSV импорттау…
+import_parties_csv	Контрагенттерді CSV импорттау…
+item_name	Тауар аты
+kitchen_printing	Принтерлер
+login_id_ph	Пайдаланушы аты
+mark_cleared	Тазаланды деп белгілеу
+new_party_clear	Жаңа контрагент (пішінді тазалау)
+new_party_kind_supplier_ph	Жаңа контрагент түрі (Жеткізуші)
+next_country	Келесі ел
+next_order	Келесі тапсырыс (үстелді тазалау)
+note_gstin_ph	Ескертпе / GSTIN / келісім еске салуы
+notes_attach_party	Ескертпелер мен тіркемелер (таңдалған контрагент)
+notes_attach_sale	Ескертпелер мен тіркемелер (таңдалған сатылым)
+on_account_ap	Есепке (AP)
+org_optional_ph	Ұйым (міндетті емес)
+paid_by	Төлеген
+paid_now	Қазір төленді
+pair_now	Қазір жұптау
+pairing_code_ph	Жұптау коды
+party_name_selected_ph	Контрагент аты (немесе таңдалғанды қолдану)
+password_ph	Құпиясөз
+pay_ap_card	AP картамен төлеу
+pay_ap_cash	AP қолма-қол төлеу
+pay_ap_heading	Оларға қарызымызды төлеу (AP)
+pay_ap_upi	AP UPI-мен төлеу
+pay_selected_heading	Таңдалғанды төлеу (қарызды жабу / аванс алу)
+pick_from_items	Біздің тауардан таңдау
+prev_country	Алдыңғы ел
+print_open	Басу / ашу
+reason_amend_ph	Түзету / жою / қайтару себебі
+reason_note_ph	Себеп / ескертпе (ысырап, санау, …)
+record_day_close	Күнді жабуды жазу
+refresh_from_shop	Дүкеннен жаңарту
+refund	Қайтару
+remove_selected	Таңдалғанды алып тастау
+request_bill	Шот сұрау
+restaurant_name_ph	Дүкен атауы (міндетті емес)
+restore_backup	Сақтық көшірмеден қалпына келтіру
+role_both	Екеуі де
+role_admin	Әкімші
+role_cashier	Кассир
+role_customer	Клиент
+role_manager	Менеджер
+history_retention	Сауда тарихы
+history_retention_help	Ескі сатылымдар мен ескі билеттерді автоматты түрде өшіріңіз. Дәрі-дәрмектер, қызметкерлер және қондырғылар қалады. Clear енді барлық сауда жолдарын өшіреді және орнатуды сақтайды.
+history_off	Сақтау
+history_day_close	Күнді жабуда
+history_after_hours	Сағаттан кейін
+history_hours_ph	Сағат (1–168, әдепкі 4)
+history_hours_save	Сағатты сақтау
+history_clear_now	Тарихты қазір тазалау
+history_cleared	Сауда тарихы тазаланды — баптау сақталды
+history_retention_saved	Тарих тазалау сақталды
+history_hours_saved	Тарих сағаттары сақталды
+history_owner_only	Тарихты тек Иесі немесе Әкімші тазалай алады
+rollup	Жиынтық
+save_brand	Брендті сақтау
+save_business_id	Бизнес нөмірін сақтау
+save_business_name	Бизнес атын сақтау
+save_features	Сақтау
+save_features_named	{name} сақтау
+save_features_ok	{name} баптауы сақталды
+save_names	Аттарды сақтау
+second_way	Екінші тәсіл
+server_ip_ph	Сервер IP (мыс. 192.168.1.10)
+set_credit_limit	Контрагентке шек қолдану
+set_login_selected	Кіруді таңдалғанға қолдану
+set_login_named	Кіруді {name} қолдану
+shop	Дүкен
+show	Көрсету
+spreadsheet_csv	Кесте (CSV)
+start_fresh	Таза бастау
+stop_extra_tills	Қосымша кассаларды тоқтату
+floor_cols_ph	Бағандар
+floor_cols_fit	Экранға сыйдыру
+floor_cols_fit_sub	{n} осында сияды
+floor_cols_fits	сияды
+floor_cols_scroll	бүйірге айналдырады
+floor_cols_min	Бағандар: кемінде 1 — немесе экранға сыйдыру үшін бос қалдырыңыз
+floor_zoom_auto	Авто
+floor_zoom_out	Кішірейту
+floor_zoom_in	Үлкейту
+backup_auto	Күн сайын автоматты сақтық көшірме · соңғысы {when} · соңғы 14 күн {dir} ішінде сақталады.
+backup_auto_none	Күн сайын автоматты сақтық көшірме — біріншісі сәлден соң іске қосылады.
+backup_copy_to	Көшірме {dir} ішіне де барады.
+backup_copy_btn	Сақтық көшірмелерді қалтаға да көшіру…
+autostart_off	Осы компьютермен бастау
+autostart_on	Осы компьютермен басталады ✓ — тоқтату үшін түртіңіз
+autostart_done_on	Бұл компьютер енді іске қосылғанда қолданбаны ашады — ток өшкеннен кейін дүкен сервері оралады.
+autostart_done_off	Бұл компьютер енді іске қосылғанда қолданбаны ашпайды.
+device_forgotten	Дүкен бұл құрылғыны ұмытты — дүкеннің ағымдағы кодымен қайта жұптаңыз. Онда күткен тапсырыстар сақталады.
+lan_offline	Дүкен сервері қолжетімсіз
+forget_device	Ұмыту
+last_seen	көрілді
+copy_pair_code	Жұптау кодын көшіру
+new_pair_code	Жаңа жұптау коды
+pair_finishing	Жұптау аяқталуда… дүкен кітаптары қолданылуда
+pair_opening	Касса ашылуда…
+pair_copied	Жұптау коды көшірілді
+kot_waiting	Жіберуді күтуде
+lan_offline_waiting	Сервер қолжетімсіз · {n} күтуде
+lan_connecting	Дүкенге қосылуда…
+lan_live	Тікелей
+lan_sending	{n} жіберілуде
+lan_sign_in_to_send	{n} жіберу үшін қайта кіріңіз
+lan_pair_again	Бұл құрылғыны қайта жұптаңыз
+lan_update_app	Қолданбаны жаңартыңыз — бұл құрылғы мен дүкен серверінің нұсқалары әртүрлі
+allow_firewall	Басқа құрылғыларға қосылуға рұқсат беру
+firewall_blocked	Бұл компьютердің желілік қалқаны басқа құрылғыларды бөгейді — Басқа құрылғыларға қосылуға рұқсат беруді түртіңіз.
+firewall_waiting	Әкімші сұрауын күтуде…
+lan_join_help	Басқа құрылғыда: Клиент режимі → Дүкен серверін табу (немесе {addr} жазу) → жұптау коды {code}.
+lan_pair_status	Wi‑Fi {addr}
+lan_join_help_no_addr	Мекенжай алу үшін осы құрылғыны Wi‑Fi-ға қосыңыз.
+lan_no_address	Әлі Wi‑Fi мекенжайы жоқ — дүкен Wi‑Fi-ына қосылыңыз.
+lan_not_listening	Құрылғы қабылдамайды ({port} порт бос емес). Қолданбаны қайта іске қосыңыз.
+lan_tills_off	Қосымша кассалар өшірулі. Басқа құрылғы қосылуы үшін рұқсат беріңіз.
+paired_with	Жұпталған · {url}
+not_paired	Жұпталмаған
+choose_device_use	Сервер немесе Клиент таңдаңыз.
+paired_note	Жұпталған. Сату үшін құлыпты ашыңыз немесе соңғысын Жаңартыңыз.
+last_update_at	Соңғы жаңарту: {time}.
+pair_intro	Серверді табыңыз немесе мекенжай мен жұптау кодын жазыңыз.
+queue_waiting	Дүкенге жетуді күтуде ({n}):
+queue_tries	{n} рет қайталанды · соңғы жауап: {e}
+save_backup_copy	Сақтық көшірме сақтау…
+backup_copy_saved	Сақтық көшірме сақталды — оны осы құрылғыдан тыс ұстаңыз (USB немесе басқа құрылғы)
+backup_copy_overdue	{n} күн бойы сақтық көшірме бұл құрылғыдан шықпады — Параметрлер → Сақтық көшірме
+backup_copy_failed	Сақтық көшірме ол жерде сақталмады — басқа орын таңдаңыз
+clock_off	Бұл құрылғының сағаты дүкен серверінен {min} мин ауытқиды — дұрыс уақытты қойыңыз
+printers_heading	Принтерлер
+printers_help	Принтерлерді тауып, таңдау үшін біреуін түртіңіз, содан кейін сынақ бетін тек сол құрылғыда басып шығарыңыз. Шот принтерлері: Билл және Слип пішімі → Шот.
+printers_host_only	Принтерлер дүкен құрылғысында (Сервер) орнатылған. Бұл шоттарды және ескі билеттерді сол жерге жібермейінше — Серверде болуды табу / қосу / тағайындау. Сынақ беті мен шоттың басып шығару өлшемі Серверге өтеді.
+printers_find_heading	Принтерлерді табу
+printers_find_tip	Іздеу осы құрылғыны сканерлеп, тізімді жаңартып отырады.
+printers_pool_heading	Принтерлер
+printers_pool_tip	Іздеу осы құрылғыны сканерлеп, осы тізімді жаңартып отырады.
+printers_pool_empty	(әлі жоқ — Іздеуді түртіңіз)
+printers_routes_help	Операциялық жүйе бұрыннан білетін принтерлерді табыңыз. Оларды есепшотқа және Билл және Слип пішімі астындағы әрбір бөлімге тағайындаңыз.
+printer_assign_dd	Нақты принтер: {place}
+printer_assign_pick	Нақты принтер таңдау
+printer_profile_heading	Орналасу
+printer_send_heading	Жеткізу
+vp_delivery_heading	Жеткізу
+vp_delivery_help	Бұл виртуалды принтер тапсырмаларды қалай жібереді — ОЖ құжаты, өңделмеген байттар немесе ESC/POS. Слип мазмұны (түр өлшемі, орау, шеттер) мұнда емес, шот/Слип пішімі бойынша анықталады.
+vp_type_size_heading	Қаріп өлшемі
+vp_wrap_heading	Тасымал ені
+vp_margin_heading	Жиектер
+vp_delivery_spooler	ОЖ құжаты (жүйелік спулер)
+vp_delivery_raw	Құрылғыға шикі байт
+vp_delivery_escpos	ESC/POS термокомандалары
+virtual_printer_new	Жаңа виртуалды принтер
+virtual_printer_selected	«{name}» өңделуде — ауыстыру үшін тізімдегі басқасын түртіңіз
+virtual_printer_tap_list	Өңдеу үшін тізімдегі виртуалды принтерді түртіңіз
+config_layout_portrait	Тік
+config_layout_landscape	Көлденең
+config_send_os	Жүйелік спулер
+config_send_escpos	ESC/POS
+profiles_heading	Орналасулар
+profiles_empty	(әлі орналасу жоқ)
+profile_builtin	кіріктірілген
+profile_custom	арнайы
+profile_name_ph	Орналасу аты
+profile_new	Жаңа орналасу
+profile_delete	Орналасуды жою
+profile_created	Орналасу жасалды
+profile_deleted	Орналасу жойылды
+profile_builtin_keep	Кіріктірілген орналасуды жоюға болмайды
+config_saved	Жаңартылды
+config_selected	«{name}» таңдалды
+printer_output_heading	Виртуалды принтерлер
+virtual_printers_heading	Виртуалды принтерлер
+virtual_printers_empty	Әлі виртуалды принтер жоқ — төменде мәндерді қойып, Сақтау. Болған соң тізімдегі біреуін түртіп өңдеңіз.
+virtual_printer_name_ph	Виртуалды принтер аты (міндетті емес)
+virtual_printer_create	Виртуалды принтер жасау
+virtual_printer_save	Виртуалды принтерді сақтау
+virtual_printer_delete	Виртуалды принтерді жою
+virtual_printer_created	«{name}» виртуалды принтері жасалды
+virtual_printer_deleted	«{name}» виртуалды принтері жойылды
+virtual_printer_updated	Виртуалды принтер жаңартылды
+virtual_printer_updated_named	«{name}» виртуалды принтері жаңартылды
+virtual_draft_layout	Келесі виртуалды принтерге мәндер қойылды
+virtual_draft_send	Келесі виртуалды принтерге мән қойылды
+virtual_need_real	Алдымен нақты принтер таңдаңыз
+virtual_need_select	Жою үшін виртуалды принтер таңдаңыз
+real_printer_selected	Таңдалды: {name}
+station_group_heading	Виртуалды принтерлер
+station_group_apply	Виртуалды принтерді жою
+station_group_applied	Жойылды
+station_group_empty	Виртуалды принтер таңдаңыз
+station_group_name_ph	Виртуалды принтер аты (міндетті емес)
+station_group_save	Виртуалды принтер жасау
+station_group_saved	Виртуалды принтер сақталды
+station_manage_heading	Диспансерлік бөлімді қосыңыз немесе алып тастаңыз
+printers_routes_heading	Қайда басылады
+route_pick_heading	Орын
+route_editing	Өңдеу: {name}
+route_assigned	{printer} {place} орнына қосылды
+route_already_assigned	Бұл орында бар: {printer}
+route_removed	{printer} {place} орнынан алынды
+route_cleared	{name} тазаланды
+route_assigned_empty	Бұл орында ештеңе жоқ
+route_tap_remove	алып тастау үшін түртіңіз
+route_tap_select	таңдау үшін түртіңіз
+route_tap_selected	таңдалды
+route_pick_printer_first	Алдымен принтерді түртіңіз
+route_assigned_heading	Принтерлер
+route_add_heading	Тағайындау
+printer_label_ph	Атауы (мысалы, есептегіш принтер)
+printer_target_ph	Жүйелік принтер аты немесе host:9100
+printer_target_default	осы компьютердің әдеттегі принтері (бос мекенжай)
+printer_wire_heading	Профиль
+printer_wire_escpos	ESC/POS
+printer_wire_os	Тік
+printer_wire_os_portrait	Тік
+printer_wire_os_landscape	Көлденең
+printer_wire_escpos_short	ESC/POS
+printer_wire_os_short	Тік
+printer_wire_os_landscape_short	Көлденең
+printer_format_custom	Жаңа арнайы профиль
+printer_format_custom_label	Арнайы
+printer_format_custom_added	Бұл орынға арнайы профиль қосылды
+add_printer	Принтер қосу
+remove_printer	Алып тастау
+route_pick_ph	Есепшот немесе диспансерлік бөлім
+route_bill	Шот
+route_default_kitchen	Станция жоқ (тағайындалмаған элементтер)
+route_kot_station	Станция
+route_dont_print	Принтер жоқ
+stations_heading	Станциялар
+stations_help	Диспансерлік бөлімдер дәрі-дәрмек пен дүкеннің сол бөлігіндегі принтерлерді топтайды. Принтерлерді "Параметрлер → Принтерлер" бөлімінен тіркеп, әрекет ету ретін орнатыңыз, содан кейін жұмыс істейтін бірінші немесе Барлығында басып шығару опциясын таңдаңыз. Өзгерістер сіз жүріп жатқанда сақталады.
+station_print_heading	Осы станцияның принтерлері
+station_print_help	Станцияны таңдаңыз, содан кейін бір немесе бірнеше принтерді қосыңыз. ↑↓ сынау ретін жинайды. Бірінші жұмыс бірінші табыстан кейін тоқтайды; Әрбір тіркелген принтерге жіберілгендердің барлығында басып шығару.
+station_print_pick_ph	Принтер қоятын станция
+station_print_pick_first	Алдымен диспансерлік бөлімді таңдаңыз
+station_print_editing	«{name}» принтерлерін өңдеу
+station_vps_dd	Осы станцияның принтерлері
+station_vps_dd_n	{n} принтер · өзгерту үшін түртіңіз
+station_vps_empty	Әлі принтер жоқ — Параметрлер → Принтерлер ішінен табыңыз
+bill_printers_dd	Шот принтерлері
+bill_printers_dd_n	шотқа {n} принтер · өзгерту үшін түртіңіз
+job_layout	Орналасу
+job_delivery	Тапсырма қалай жіберіледі
+job_delivery_help	ОЖ құжаты, өңделмеген байттар немесе ESC/POS. Есепшот пен билеттің әрқайсысы өз бетінше сақталады. Кез келген тапсырма Find сақталған кез келген принтерге өтуі мүмкін.
+station_vp_attached	Принтер тіркелді
+station_vp_detached	Принтер станциядан алынды
+station_print_summary	{mode} · {n} принтер
+station_print_summary_none	Бұл станцияда әлі принтер жоқ — баспайды
+stations_none	Әлі станциялар жоқ — төменде біреуін қосыңыз. Станциялар дүкенде пайдаланылмайды — бос қалдырыңыз.
+route_up	Жоғары
+route_down	Төмен
+route_remove	Алып тастау
+route_clear	Тазалау
+save_printers	Принтерлерді сақтау
+print_test_page	Сынақ бетін басу
+no_printer_assigned	Принтер жоқ
+test_page_no_printer	{place} үшін принтер жоқ — принтер тіркеп, қайта көріңіз
+test_page_pick_first	Алдымен сынақ бетіне принтер(лер) таңдаңыз — содан Сынақ бетін басу
+test_printers_dd	Сынақ бетінің принтерлері
+test_printers_dd_n	сынақ бетіне {n} принтер · өзгерту үшін түртіңіз
+kot_test_printers_dd	Сынақ басып шығаруға арналған принтерлер
+kot_test_printers_dd_n	Сынақ басып шығаруға арналған {n} принтерлері · өзгерту үшін түртіңіз
+test_printer_picked	Сынақ: {name}
+test_printer_cleared	Сынақ жоқ: {name}
+test_page_sent_n	Сынақ беті {n} принтерге жіберілді
+test_kot_pick_first	Алдымен сынақ басып шығару үшін принтер(лер)ді таңдаңыз, содан кейін сынақ басып шығару
+test_kot_sent_n	{n} принтерлеріне жіберілген сынақ басып шығару
+cancel_pick	Белгілеу
+cancel_pick_on	Белгіленді
+cancel_pick_meta	Бас тартуға белгіленді
+batch_cancel	Белгіленгендерден бас тарту
+batch_cancel_n	Белгіленгендерден бас тарту ({n})
+batch_cancel_none	Алдымен бір немесе бірнеше жіберілген элементтерді белгілеңіз, содан кейін Белгіленген Болдырмау
+batch_cancel_title	Белгіленген дәрі-дәрмектерден бас тарту - бір себеп, бір секция үшін слипті жою
+batch_cancel_ok	{n} элементтері тоқтатылды · {slips} слип(лер)інен бас тарту → {kitchens}
+batch_cancel_ok_noprint	{n} элементтері тоқтатылды — автоматты басып шығару өшірулі, сондықтан бас тарту слипі болмайды
+no_printer_kitchen_station	Бұл станция үшін принтер жоқ
+printers_saved	Сақталды
+test_page_sent	Сынақ беті жіберілді — принтерді тексеріңіз
+test_page_sent_one	Сынақ беті {name} принтеріне жіберілді — сол принтерді тексеріңіз
+printers_found	Табылды {n}: {list}
+printers_find_synced	Табылды {n} — {new} жаңа
+printer_on_device	сақталды
+printer_already_added	қосылған
+printer_already_saved	Сақталған: {name}
+find_printers	Принтерлерді табу
+printers_looking	Іздеуде…
+saving_printer	Принтер қосылуда…
+cancelled	Бас тартылды
+printers_tap_find	Осы құрылғы қолдана алатын принтерлер тізімі үшін Іздеуді түртіңіз.
+printers_none_found	Ештеңе табылмады — жүйелік принтер атын немесе IP жазыңыз (мыс. 192.168.1.50).
+printer_from_find	{name} қосылды
+kot_printer_ph	Слиптерге арналған принтер
+bill_printer_ph	Шот принтері
+kot_print_on	Билеттерді автоматты басып шығару: қосулы
+kot_print_off	Билеттерді автоматты басып шығару: Өшірулі
+queue_refused	Дүкен қабылдамады ({n}) — әрқайсысын кассада тексеріңіз:
+clear_not_accepted	Тексерілді — осы тізімді тазалаңыз
+device_name_ph	Осы құрылғының аты
+lan_last_update	соңғы жаңарту {time}
+lan_not_accepted	{n} қабылданбады
+connected_now	қазір қосылған
+backup_failed	Соңғы автоматты сақтық көшірме сәтсіз: {e}
+backup_overdue	{n} күн сақтық көшірме жоқ — көшіру үшін қолданбаны осы құрылғыда ашық ұстаңыз.
+disk_low	Бұл құрылғыда тек {mb} MB бос — сақтық көшірме жақында сәтсіз болады. Орын босатыңыз.
+last_seen_devices	Соңғы рет көрінген: {time}
+sync_interval	Әр {secs} с сайын синхрон
+connection_to_shop	Дүкенге қосылым
+supplier_name_ph	Жеткізуші аты (немесе контрагент)
+supplier_ph	Жеткізуші
+switch_device	Осы құрылғыны ауыстыру
+take_payment	Төлем қабылдау
+tax_added_till	{tax} сыртында
+tax_inside_price	{tax} ішінде
+tax_invoice	Салық шот-фактурасы
+till_to_bank	Касса → банк
+units_heading	Өлшем бірліктері
+unlock_after_pairing	PIN енгізіңіз
+unlock_with_login	Кірумен құлыпты ашу
+unmark	Белгіні алу
+update_my_password	Құпиясөзімді жаңарту
+update_my_pin	Кіруімді жаңарту
+duress_heading	Төтенше құлып ашу PIN (тек Иесі)
+duress_help	Қосымша. Егер бұл PIN код сіздікі емес, құлыпты ашу кезінде терілсе, кітаптардағы барлық жазбалар өшіріледі (сатылымдар, кітапшалар, тарих) және касса Иесі қалыпты болып ашылады — дәрі-дәрмектер, бағалар, есептегіштер, қызметкерлер мен параметрлер қалады. Схема мен конфигурация жойылмайды. Құлыпты ашуға мәжбүр болған жағдайда ғана пайдаланыңыз. Өшіру үшін бос қалдырыңыз және сақтаңыз. Ешқашан біреудің PIN коды сияқты емес.
+duress_pin_ph	Төтенше PIN (4–12 сан)
+duress_confirm_ph	Растау үшін қайта жазыңыз
+save_duress_pin	Төтенше PIN сақтау
+clear_duress_pin	Төтенше PIN өшіру
+duress_on	Төтенше құлып ашу PIN қосулы
+duress_off	Төтенше құлып ашу PIN өшірулі
+duress_saved	Төтенше құлып ашу PIN сақталды
+duress_cleared	Төтенше құлып ашу PIN өшірілді
+upi_amount_ph	UPI сомасы
+void	Күшін жою
+write_off_ap	AP есептен шығару
+write_off_heading	Есептен шығару (төлемсіз тазалау)
+write_off_nil	Есептен шығару / нөлдік қалдық
+your_brand	Сіздің бренд (қолданбада)
+your_categories	Сіздің санаттар
+account_kind	Шот түрі (біреуін түртіңіз)
+actual_total_cap	НАҚТЫ ЖИЫН
+amend_help	Түзету, күшін жою немесе қайтару үшін сатуды таңдаңыз. Түзетулер толық тарихты сақтайды. Дөңгелектелген Жиын Қолданылғанға тең басталады — тек дөңгелектеу үшін өңдеңіз. Күшін жою мен қайтару Иесі немесе Басқарушы PIN сұрауы мүмкін (жоғарыда енгізіледі; атыңызбен жазылады).
+applied_total_cap	ҚОЛДАНЫЛҒАН ЖИЫН
+bank_balance	Банк қалдығы
+bank_net_today	Бүгінгі банк таза
+branch_export_help	Экспорт branch_snapshot_CODE_DATE.json файлын сақтық көшірме қалтасына жазып, алмасу буферіне көшіреді. Басқа нүктенің күнін импорттау үшін файлын сол қалтаға import_branch_snapshot.json деп сақтап, Импортты түртіңіз.
+brand_shown_help	Қолданба ішіндегі экрандарда көрсетіледі. Осы құрылғыдағы орнатылған қолданба аты мен белгішесі платформа тізіміндегідей қалады.
+app_icon	Қолданба белгішесі
+logo_help	Қолданба экрандарындағы дүкен белгісі (міндетті емес).
+onboard_layout	Не аласыз
+item_photo_help	Міндетті емес. Фотосыз тауар атының бас әріптерін көрсетеміз.
+stamp_heading	Мөр
+stamp_image_help	Басып шығарылған шоттардағы және тұтынушы дисплейіндегі қосымша мөр суреті.
+payment_qr_heading	Төлем QR
+payment_qr_image_help	Шоттар мен тұтынушы дисплейіндегі статикалық QR; әйтпесе төлем жоғарыдағы VPA-дан динамикалық UPI QR пайдаланады.
+cash_in_hand	Кассадағы қолма-қол
+change_my_pin_heading	Менің кіруім
+connect_to_server	Серверге қосылу
+counter_locked	Касса 01 · Құлыптаулы
+country_pack_help	Ел бумасы салық атауы мен есебін, лездік төлем арнасын және шотта басылатын бизнес идентификаторын қояды. Kumkaj еш жерде салық тапсырмайды және мемлекеттік электрондық шот бермейді.
+currency_use_help	Қолдау көрсетілетін кез келген валюта үшін айналдырып Қолдануды түртіңіз.
+day_close_help	Күнді жабуды жазу осы қорытындыны (және санасаңыз жәшік айырмасын) аудит журналына сақтайды. Ол сатуды тоқтатпайды.
+expenses_word	Шығындар
+feature_access_help	Нені аша алатыны — міндетті емес; жоғарыдағы жұмыс әдепкіні қояды
+footer_local	Жергілікті SQLite · Мәңгі тегін · Бұлтсыз
+fresh_book_tabiyat	Fresh = бос каталог (элементтерді кейінірек қосыңыз). Кітап = ашылатын қорды және төменде сізге кім қарыз екенін теріңіз.
+fresh_selected	Fresh таңдалды — каталог бос қалады. Дайын болғанда Дайынды түртіңіз.
+gross_word	Жалпы
+how_start	Қалай бастағыңыз келеді?
+kot_print_help_tabiyat	Дүкенде пайдаланылмайды.
+later_country_pack	Кейін: Параметрлер → салық пен төлем белгілері үшін ел бумасын қолданыңыз.
+local_badge	ЖЕРГІЛІКТІ
+mix_type_hint_tabiyat	Қажет болса қолма-қол / UPI / карта / несиеге бөліңіз. Несиеге жоғарыда клиент керек.
+money_in_sales	Ақша кірісі (сату)
+net_word	Таза
+offline_badge	ОФЛАЙН
+optional_login_help	Міндетті емес кіру (id + құпиясөз). Иесі бір рет қояды; құпиясөзді кейін тек пайдаланушы өзгерте алады.
+or_unlock_login	Немесе кіру id + құпиясөзбен құлыпты ашыңыз
+permission_preset	Жұмыс (экран мен ақша әрекетін қояды)
+preset_help_tabiyat	Кассир: сатады. Басқарушы: сату + тауар + күшін жою/түзету.
+product_locked_tabiyat	Табият
+product_only_tabiyat	Табият - бұл дәріхана операциялық жүйесі: дәрі-дәрмекті сату, топтаманы/жарамдылық мерзімін есепке алу, несие және кітаптар — құрылғыларыңызда офлайн. H / Rx кестесінің жалаушалары сәйкестік емес, иесі ескертпесі болып табылады.
+purchases_cogs	Сатып алу (өзіндік құн)
+qty_cap	САН
+restore_help	Қалпына келтіру: сақтық көшірмені таңдаңыз. Кітаптар сол кездегідей ашылады; қазіргі кітаптар алдымен сақталады, сондықтан мұны болдырмауға болады.
+wipe_data_heading	Жергілікті деректерді жою
+wipe_data_help	Тек иесі — Windows жүйесін жою сияқты таңдаулар. Іскерлік жазбалар сауда тарихын тазартады, бірақ элементтер мен параметрлерді сақтайды (мысалы, төтенше жағдайда құлыпты ашу PIN коды). Дүкенді орнату кітаптар дерекқорын жояды. Экран теңшелімдері терезені/тілді тазартады. Иенің PIN коды арқылы растаңыз. Топтағы төтенше жағдайда құлыпты ашудың PIN коды бөлек (құлыпты ашу кезінде жасырын сүрту).
+wipe_trading	Бизнес жазбалары
+wipe_schema	Дүкен баптауы
+wipe_ui	Экран баптары
+wipe_owner_pin_ph	Жою үшін Иесінің PIN
+wipe_delete_selected	Таңдалғанды жою
+wipe_owner_only	Жергілікті деректерді тек Иесі жоя алады.
+restore_owner_only	Сақтық көшірмені тек Иесі қалпына келтіре алады.
+wipe_owner_pin_needed	Жергілікті деректерді жою үшін Иесінің PIN енгізіңіз.
+wipe_nothing_selected	Алдымен нені жою керектігін таңдаңыз.
+wipe_done	Таңдалған жергілікті деректер жойылды.
+wipe_schema_done	Дүкен баптауы өшірілді — жалғастыру үшін Сервер немесе Клиент таңдаңыз.
+rounded_total	Дөңгелектелген жиын
+setup_app_tabiyat	Табиятты орнатыңыз
+shop_logo_optional	Дүкен логотипі (міндетті емес)
+stock_type_help	Тауар атын жазыңыз (бір бөлігі жеткілікті), мөлшер, содан түзетіңіз. Әлі саналмайтын тауарларға бір рет Бақылауды бастау керек.
+team_owner_help	Біреуді қосу үшін адамды бос қалдырыңыз: аты, жұмыс, пайдаланушы аты, PIN және міндетті емес құпиясөз, содан Қосу. Адамды таңдап сол түрдегі пішінді өңдеңіз — аты, пайдаланушы аты, құпиясөз, экран және құқық — содан Сақтау. Өз PIN мен құпиясөзіңіз төменде бір кіру. Иесі басқа біреудің PIN өзгертпейді.
+staff_name_ph	Қызметкер аты
+staff_copy_hire_ph	Баптауды көшіру (міндетті емес)
+staff_copy_hire	Осы адамның баптауын қолдану
+staff_edit_name_ph	Көрсетілетін аты
+staff_rename	Атын сақтау
+staff_copy_edit_ph	Басқа адамнан баптауды көшіру
+staff_copy_edit	Олардың баптауын таңдалғанға көшіру
+staff_copy_edit_onto	Олардың баптауын {name} үстіне көшіру
+staff_deactivate_named	{name} алып тастау
+staff_renamed	Аты сақталды
+staff_setup_copied_hire	Баптау {name} ден көшірілді — жаңа аты мен PIN қойып, Қызметкер қосу
+staff_setup_copied_edit	{from} баптауы {to} үстіне көшірілді
+staff_copy_need_selected	Алдымен кімді өңдеу керектігін таңдаңыз
+staff_copy_need_source	Кімнің баптауын көшіру керектігін таңдаңыз
+staff_copy_same	Бұл сол адам — басқасын таңдаңыз
+staff_rename_need_selected	Алдымен кімнің атын өзгерту керектігін таңдаңыз
+team_pick_hint	Кімді өңдеу керектігін таңдаңыз — экрандар, ақша құқықтары және станциялар тек сол адамға ғана көрсетіледі.
+team_stations_help	Олар пайдалана алатын станциялар
+team_stations_changed	Станциялар өзгертілді — Осы адам үшін орнатуды сақтаңыз
+team_features_changed	Экрандар өзгерді — осы адамның баптауын Сақтау
+team_rights_changed	Құқықтар өзгерді — осы адамның баптауын Сақтау
+they_owe_us	Олар бізге қарыз
+unit_at_cap	Бірлік @
+units_help	Тауар белгілерінің кодтары (kg, дана, қап). Әр бірлік стандартқа байланысуы керек — тікелей немесе басқа бірліктер арқылы — (kg · cm · ml · pc), мыс. 1 жәшік = 2 қорап және 1 қорап = 20 cm. Түрлендіру: 1 дан = коэффициент ға. Валюта ешқашан бірлік емес.
+units_picker_help	Сатып алу және Элементтер таңдаушыларында бірлікті көрсету үшін Қосу/Өшіру түймесін түртіңіз. Өшірулі бірліктер әлі де түрлендіреді.
+unit_picker_on	Қосулы
+unit_picker_off	Өшірулі
+we_owe_them	Біз оларға қарызбыз
+who_unlocking	Кім құлыпты ашып жатыр?
+locked_word	Құлыптаулы
+show_pin	PIN көрсету
+hide_pin	PIN жасыру
+set_owner_pin	ИЕСІНІҢ PIN ҚОЮ
+enter_owner_passcode	ИЕСІНІҢ КОДЫН ЕНГІЗІҢІЗ
+enter_staff_passcode	ҚЫЗМЕТКЕР КОДЫН ЕНГІЗІҢІЗ
+pin_count_zero	0 / 12 сан · кемінде 4, содан OK
+pin_count_need	{} / 12 сан · тағы {} керек
+pin_count_full	12 / 12 сан · OK басыңыз
+pin_count_ready	{} / 12 сан · дайын болғанда OK басыңыз
+pin_hint_choose	4–12 сан таңдаңыз · сақтау үшін Enter немесе Құлыпты ашу
+pin_hint_new	Жаңа 4–12 сандық Иесінің PIN · Enter немесе Құлыпты ашу
+pin_hint_shop_code	Дүкен құрылғысы · жұптау коды {}
+pin_hint_books	Бұл құрылғы кітаптарды ұстайды
+pin_hint_paired	Қосымша касса жұпталған — сату үшін құлыпты ашыңыз
+pin_hint_pair_first	Қосымша касса — алдымен дүкен құрылғысымен жұптаңыз
+unlock_to_continue	Жалғастыру үшін құлыпты ашыңыз
+no_staff_yet	Әлі қызметкер жоқ — Иесі болып құлыпты ашып, содан Топ
+status_server_set_pin	Сервер режимі — Иесінің PIN қойыңыз
+status_server_tills	Сервер режимі — қосымша кассалар қосыла алады. Құлыпты ашыңыз
+status_server_unlock	Сервер режимі — Иесі болып құлыпты ашыңыз
+status_client_unlock	Клиент режимі — сату үшін құлыпты ашыңыз
+icon_new_selected	Белгіше: жаңа файл таңдалды — Брендті сақтауды түртіңіз
+icon_custom	Белгіше: өз орнының белгісі
+icon_default	Белгіше: Kumkaj белгісі (әдепкі) — өзін таңдаңыз
+logo_yours	Лого: сіздің дүкен логотипі — экран мен түбіртекте көрсетіледі
+logo_default	Лого: Kumkaj белгісі (әдепкі) — болса өзіңіздікін таңдаңыз
+tmpl_current	Ағымдағы: {} — {}
+tmpl_selected	Таңдалды: {} — {}
+setup_complete	Баптау аяқталды
+onboard_fresh_tmpl	Fresh · {} — каталог бос басталады; тауарды Тауарларға қосып, Дайын.
+onboard_book_tmpl	Book · {} — тауар мен бастапқы несие қосып, Дайын.
+onboard_template_tmpl	Қаласаңыз орынды атап, содан қалай бастау керектігін таңдаңыз.
+tmpl_blurb	Дәріхана есептегіші: дәрі-дәрмек, топтама/жарамдылық мерзімі, хат, кітаптар.
+tmpl_how	кассада сату; Акцияға сатып алу; Күндізгі кітапқа арналған кітаптар.
+reports_facet_title	Есептер
+reports_facet_help	Күнделік кітаптар, контрагент ескіруі, банк жазбалары және кезең пайда-залалы.
+against_bill_ph	Жоғарыдағы шот № бойынша (міндетті емес)
+aliases_ph	Бүркеншік аттар, қысқа атаулар — үтірмен бөлінген
+amount_blank_full_ph	Сома (бос = толық қалдық)
+amount_owed_ph	Қарыз сомасы
+amount_ph	Сома
+amount_received_ph	Алынған сома
+amount_we_pay_ph	Біз төлейтін сома
+business_name_ph	Бизнес атауы
+category_new_ph	Санат (міндетті емес, жаңа болса жасалады)
+code_bag_ph	Код (қап)
+conv_factor_ph	Коэффициент (25 = 1 қап → 25 kg)
+country_code_ph	Ел коды мыс. IN, GB, US, AE, BR
+credit_khata_amount_ph	Несие / есеп сомасы
+credit_limit_ph	Несие лимиті (0 = жоқ)
+from_code_ph	Қай кодтан (қап)
+item_name_lang_ph	Тауар аты — өз тіліңізде жазыңыз
+login_id_opt_ph	Пайдаланушы аты (міндетті, бірегей)
+manager_pin_ph	Мақұлдау үшін басқарушы PIN (тек күшін жоя алмасаңыз)
+new_branch_name_ph	Жаңа филиал аты
+new_password_ph	Жаңа құпиясөз (міндетті емес)
+new_pin_ph	Жаңа PIN (4–12 сан)
+note_bank_ph	Ескертпе (салым, алу, …)
+note_buy_expense_ph	Ескертпе (жанармай, жалдау, …)
+note_expense_ph	Ескертпе (жанармай, кеңсе, …)
+options_tabiyat_ph	Опциялар — Өлшем*: Кіші=199, Үлкен=399 | Қоспа+3: Ірімшік=40, Зәйтүн=30 | Қосымша ірімшік=40
+part_second_way_ph	Екінші тәсілмен бөлік (міндетті емес)
+phone_ph	Телефон
+place_name_ph	Осы орынның аты
+qty_example_ph	Саны (мыс. kg үшін 1.5)
+quantity_ph	Мөлшер
+reason_required_ph	Себеп (міндетті)
+role_title_ph	Лауазым (мыс. Бариста)
+service_pct_ph	Қызмет % міндетті емес 0/10/12
+short_code_ph	Қысқа код (MG02)
+starting_password_ph	Бастапқы құпиясөз (міндетті емес)
+starting_pin_ph	Бастапқы PIN (4–12 сан)
+station_name_ph	Станция атауы (міндетті емес)
+station_new_ph	Бөлім (міндетті емес)
+table_name_ph	Есептегіш / шығанақ атауы
+tax_rate_ph	Салық мөлшерлемесінің аты немесе % — Стандарт, Төмендетілген, 0, 5, 12, 18, 20
+to_code_ph	Қай кодқа (kg)
+uncleared_no_ph	Жоғарыдағы тазаланбаған №
+unit_cost_ph	Бірлік құны
+unit_name_bag_ph	Аты (Қап)
+unit_plate_ph	Бірлік (тәрелке / pc — бос = дана)
+pay_credit	Несие
+book_kind_today	Бүгінгі кітаптар
+book_kind_month	Осы айдың кітаптары
+book_kind_aging	Төленбеген / дебет-кредит
+book_kind_balance	Баланс
+order_help	Қосу үшін тауарды түртіңіз.
+floor_help	Бұл дүкен кассада сатады. Үстелдер мен асхана «Табиаттың» құрамына кірмейді.
+kitchen_help	Дүкенде пайдаланылмайды.
+kitchen_empty	Ашық билеттер жоқ (контурлар әдетте бұл экранды пайдаланбай қалдырады).
+add_a_table	Үстел қосу
+add_station_heading	Диспансерлік бөлімді қосыңыз
+categories_help	Жоғарыдағы тауарды сол санатқа салу үшін Қолдануды түртіңіз. Фото санатқа сурет береді; жоқ болса бас әріптері шығады.
+dish_search_ph	Атын, тұзды немесе штрих-кодты іздеу…
+tile_free	Бос
+tile_occupied	Бос емес
+tile_food_ready	Тамақ дайын
+tile_bill_printed	Шот басылды
+tile_paid	Төленген
+tile_bill_btn	Шот
+tile_occupy_btn	Қонақтарды отырғызу
+tile_free_btn	Үстелді босату
+tile_ready_btn	Үстелді босату
+tile_undo_bill	Шотты болдырмау
+summary_busy	бос емес үстел
+summary_to_collect	жинауға
+summary_on_floor	залда
+floor	Дүкен
+sizes_as_items_ph	Өлшемдер жеке тауар ретінде (міндетті емес) — Жарты=120, Толық=200
+dish_group_ph	Күш / пакеттік топ (міндетті емес) — мысалы. 500 мг жолақ
+discount	Жеңілдік
+remove_discount	Жеңілдікті алу
+apply_discount	Жеңілдік қолдану
+save_opening_cash	Бастапқы кассаны сақтау
+close_shift_print	Ауысымды жауып, фиш басу
+area_prices_ph	Аймақ бағасы (міндетті емес) — Кондиционер=220, Алып кету=210
+discount_ph	10% немесе 50
+discount_reason_ph	Себеп (мыс. тұрақты қонақ, кеш тамақ)
+opening_float_ph	Бүгін таңертең жәшікке салынған ақша
+shift_counted_ph	Тапсыру кезінде саналған ақша
+opening_float	Бастапқы касса (аванс)
+shift_handover	Ауысым тапсыру
+shift_since	Бұл ауысым бері
+expected_in_drawer	Жәшікте күтілетіні
+right_discount	Жеңілдік беру
+floor_in_kitchen	Орындалуда
+floor_eating	Берілген
+pick_category	Санат таңдау
+close_category_list	Санат тізімін жабу
+new_category_row	Жаңа санат — тауарды сақтағанда жасалады
+your_category	Сіздің санатыңыз
+suggested_category	Ұсынылған — біздің элементтерден
+category_search_ph	Санат — өзіңіздікін іздеңіз немесе жаңасын жазыңыз
+line_sent_state	Жіберілді
+line_nc_state	Сыйлық (NC) — ақы алынбайды
+cancel_item_short	Бас тарту
+nc_short	NC
+charge_again_short	Ақы алу
+move_short	Жылжыту
+cancel_item_title	Бұл элементтен бас тарту — бэк-офис бас тарту слипін алады
+nc_item_title	Осы тауарды сыйлық ету (NC)
+charge_again_title	Осы тауардан қайта ақы алу
+move_item_title	Осы тауарды басқа үстелге жылжыту
+already_cooked	Пісірілген (ысырап)
+not_cooked_yet	Әлі піспеген
+return_to_customer	Клиентке қайтару
+short_by	Жетіспеу
+tip_not_sale	Шайоқ (қызметкердікі, сату емес)
+right_settle	Төлем қабылдау
+right_cancel_sent	Жіберілген тауардан бас тарту
+right_complimentary	Сыйлық (NC)
+right_move_table	Есептегіштерді жылжыту/біріктіру
+right_reprint	Шотты қайта басу
+right_allowed	Рұқсат етілген
+right_with_approval	Мақұлдаумен
+right_denied	Рұқсат етілмеген
+editing_staff	Өңдеу
+finding_server	Осы Wi‑Fi-да дүкен серверін іздеу…
+no_server_found	Ештеңе табылмады. Серверде: Параметрлер → Басқа құрылғылар → Қосымша кассаға рұқсат (сол Wi‑Fi). Немесе онда көрсетілген IP жазыңыз.
+servers_found_pick	Қосылғыңыз келетін дүкенді түртіңіз.
+server_host_selected	{host} қолданылуда — жұптау кодын енгізіп, Қазір жұптау.
+print_bill	Шот басу
+table_actions	Қарсы әрекеттер
+move_merge_table	Үстелді жылжыту / біріктіру
+move_help	Осы есептегіштің тәртібін бос кестеге жылжытыңыз немесе оны жұмыс істейтін кестеге біріктіріңіз.
+move_target_ph	Есептегіш атауы
+approval_pin_ph	Басқарушы PIN (сұралса ғана)
+move_here	Осында жылжыту
+merge_into	Соған біріктіру
+line_reason_ph	Себебі (мысалы, тұтынушы ойын өзгертті, қоймада жоқ)
+line_qty_ph	Қаншасынан бас тарту (бос = барлығы)
+line_target_ph	Үстелге жылжыту (мыс. D5)
+confirm	Растау
+menu_search_ph	Тауар немесе қысқа код іздеу
+customer_paid_ph	Клиент төледі
+tip_ph	Шайоқ
+table_area_ph	Аймақ (мыс. Орында, Алып кету, Кондиционер)
+table_range_ph	Бірден көп: D1-D20
+add_these_tables	Осы есептегіштерді қосыңыз
+remove_these_tables	Бұл есептегіштерді алып тастаңыз
+table_remove_ph	Алып тастау: T1-T24 немесе бір үстелдің аты
+find_server	Дүкен серверін табу
+bill_format	Шот пішімі
+bill_format_help	Әрбір шотта дүкеннің атымен басып шығарылады. Жолдарды | арқылы бөліңіз (мысалы, MG Road, Rajkot | Ph 98250 00000).
+bill_header_ph	Мекенжай | телефон
+fssai_ph	Дәрілік затқа лицензия №. (міндетті емес - сіздің тұжырымыңыз)
+bill_footer_ph	Төменгі жазу (мыс. Рақмет, қайта келіңіз)
+save_bill_format	Шот пішімін сақтау
+kot_format	Слип пішімі
+kot_format_help	Тізімдегі өрісті түртіңіз. Көрсету, қаріп өлшемі және салмағы жоғарыда таңдалған слип түріндегі сол өріске қолданылады. Әр түрдің өз өлшемдері мен салмағы сақталады.
+kot_format_fields	Өрістер
+kot_field_next	Келесі өріс
+kot_field_show	Көрсету
+kot_field_hide	Жасыру
+kot_field_on	көрсету
+kot_field_off	жасыру
+kot_field_size	Қаріп өлшемі
+kot_field_size_ph	мыс. 16, 20, 24, 28, 32…
+kot_weight_light	Жіңішке
+bill_kot_panel_help	Шоттың орналасуы және мазмұн ені. Кассир – есепшотты шығарған немесе есептеген адам — сатудың толық тарихы кітаптарда қалады.
+std_size_ph	мыс. 18, 20, 26…
+kot_show_shop	Дүкен аты
+kot_hide_shop	Дүкенді жасыру
+kot_show_time	Уақыт
+kot_hide_time	Уақытты жасыру
+kot_show_waiter	Кассир
+kot_hide_waiter	Кассирді жасыру
+kot_show_station	Станция
+kot_hide_station	Станцияны жасыру
+kot_show_table	Касса
+kot_hide_table	Үстелді жасыру
+kot_show_kot_no	Билет нөмірі
+kot_hide_kot_no	Билет нөмірін жасыру
+kot_width	Алдын ала қарау орамы (слип қойындысында мазмұн енін орнату)
+kot_width_58	58 mm
+kot_width_80	80 mm
+kot_kind_heading	Билет түрі
+kot_kind_original	Түпнұсқа
+kot_kind_duplicate	Көшірме
+kot_kind_modified	Өзгертілген
+kot_kind_cancelled	Бас тартылды
+kot_style_heading	Өріс өлшемі мен қалыңдығы
+kot_style_title	Тақырып
+kot_style_item_qty	Тауар · Саны
+kot_style_field_pick	Өріс таңдау
+kot_weight_regular	Қалыпты
+kot_weight_bold	Қалың
+kot_align	Туралау
+kot_align_start	Бастау
+kot_align_center	Ортасы
+kot_align_end	Соңы
+content_width	Мазмұн ені (mm)
+content_width_bill	Шот мазмұнының ені (mm)
+content_width_kot	Билет мазмұнының ені (мм)
+content_width_ph	Немесе мазмұн енін жазыңыз, 40–210 mm
+content_width_help	Бұл слип қаншалықты кең басып шығарады. Билл өзінің енін сақтайды.
+content_width_bill_help	Тұтынушы шотының көлемі қаншалықты кең. Әдепкі 210 мм (бет). 58 мм тар сырғанау, ені 80 мм сырғанау, 112 мм 4 дюймдік, 210 мм A4 форматында. 40 пен 210 аралығындағы кез келген мәнді теріңіз. Билеттердің слип қойындысында өз ені бар.
+content_width_kot_help	Билет қаншалықты кең басып шығарылады. Әдепкі 80 мм. 58 мм тар сырғанақ, ені 80 мм сырғанақ, 112 мм 4 дюймдік, 210 мм бет. 40 пен 210 аралығындағы кез келген мәнді теріңіз. Есепшот қойындысында тұтынушы шоттарының өз ені бар.
+vp_paper_width	Мазмұн ені (mm)
+vp_paper_width_ph	Немесе мазмұн енін жазыңыз, 40–210 mm
+vp_paper_width_help	Мазмұн ені Билл және Слип пішімінде — шот (әдепкі 210 мм) және билет (әдепкі 80 мм) үшін бөлек орнатылады.
+kot_size	Қаріп өлшемі
+kot_size_s	Кіші
+kot_size_m	Қалыпты
+kot_size_l	Үлкен
+std_size	Қаріп өлшемі
+kot_copies	Көшірмелер
+kot_copies_1	1
+kot_copies_2	2
+kot_copies_3	3
+kot_title_ph	Тақырып (бос = БИЛЕТ)
+kot_footer_ph	Бэк-офис жазбасы (міндетті емес)
+kot_preview	Алдын ала көру
+save_kot_format	Слип пішімін сақтау
+test_kot_format	Сынақ басып шығару
+test_kot_sent	Билетті алдын ала қарау жіберілді
+test_bill_format	Сынақ шоты
+test_bill_sent	Шоттың алдын ала көрінісі жіберілді
+test_print_no_printer	Ол тапсырмаға принтер жоқ — осы экранда біреуін таңдаңыз
+kot_format_saved	Слип пішімі сақталды
+std_print	Шот басу өлшемі
+std_print_help	ОЖ/құжат принтерлеріндегі стандартты портрет және ландшафт шот тапсырмалары үшін қаріп өлшемі (нүктелерді енгізіңіз — Кіші/Қалыпты/Үлкен емес). Екі бағытта бірдей өлшем.
+std_size_s	Кіші
+std_size_m	Қалыпты
+std_size_l	Үлкен
+save_std_print	Шот басу өлшемін сақтау
+std_print_saved	Шот басу өлшемі сақталды
+print_brand_kit	Баспа бренд жинағы
+print_brand_kit_help	Шот беттеріндегі және LAN тұтынушы дисплейіндегі қосымша мөр және төлем QR кескіндері. Төлем QR кескіні орнатылмаған кезде жоғарыдағы VPA динамикалық UPI QR әлі де жұмыс істейді.
+choose_stamp	Мөр таңдау
+clear_stamp	Мөрді тазалау
+stamp_set	Мөр: файлда — тұтынушы дисплейінде көрсетіледі және басып шығарылған шоттарда аталған
+stamp_none	Мөр: жоқ
+choose_payment_qr	Төлем QR таңдау
+clear_payment_qr	Төлем QR тазалау
+payment_qr_set	Төлем QR: файлда — тұтынушы дисплейінде көрсетіледі (сондағы UPI QR сомасын ауыстырады)
+payment_qr_none	Төлем QR: жоқ — төлегенде UPI ID бойынша сома QR
+aggregator_import	Агрегатор тапсырыстары (файл)
+aggregator_import_help	Міндетті емес жергілікті импорт: import_aggregator_orders.json файлын сақтық көшірме қалтасына қойыңыз (массив немесе {"orders":[…]}), содан Импортты түртіңіз. Кассаны ешқашан бөгемейді; тірі Zomato/Swiggy — Cloud.
+import_aggregator_file	Агрегатор файлын импорттау
+team_pick_ph	Өңдейтін қызметкер — аты, пайдаланушы аты немесе таңдау
+select_staff	Осы қызметкерді таңдау
+rights_help	Осы адамға арналған ақша әрекеттері — айналдыру үшін түртіңіз: Рұқсат етілген → Басшының PIN коды қажет → Рұқсат етілмейді. Есепшотты қайтадан басып шығару тек шоттар болып табылады; бөлімдер төмендегі бақылау тізімі болып табылады.
+dish_picker_help	Элементтерімізді іздеңіз немесе шолыңыз және оның атын және фотосуретін толтыру үшін біреуін түртіңіз немесе өз атыңызды қалдырыңыз. Бағаңызды орнатыңыз (0 жақсы), содан кейін Элементті қосыңыз.
+close_dish_list	Элемент тізімін жабу
+own_item_name	Осыны өз тауар атыңыз ретінде қолдану
+on_your_menu	Дәрілер тізімінде
+edit	Өңдеу
+schemes	Схемалар / ұсыныстар
+schemes_help	Бірден сатып алу, пайыздық жеңілдіктер және тіркелген топтамалар. Мысалы: 2 парацетамол сатып алыңыз, 1 витамин алыңыз.
+scheme_bogo_ph	2 парацетамол сатып алыңыз, 1 витамин алыңыз
+add_scheme	BOGO қосу
+schedule_ph	Жұмыс уақыты — дүйсенбі-жұма 07:00-11:00 немесе кешкі 17:00-19:00=150
+upi_vpa_ph	UPI идентификаторы (VPA)
+upi_payee_ph	UPI алушы аты (міндетті емес)
+upi_qr	UPI QR
+show_upi_qr	UPI QR көрсету
+close_upi_qr	Жабу
+upi_qr_help	Тұтынушы сканерлейді және төлейді. Төлегеннен кейін төлем қабылдау түймесін түртіңіз. Екінші экран: сервердің URL мекенжайын ашыңыз / LAN желісінде көрсету.
+kot_recall	Қайтару
+recently_done	Жақында біткен
+recall_kot_ph	Еске алу үшін билет №
+role_help_customer	Рөл: Клиент — есеп (олар бізге қарыз). Сол контрагент қор да жеткізе алады.
+role_help_both	Рөлдер: Клиент + Жеткізуші — бір контрагент, есеп пен төлем кітаптары, тазасы Есептерде.
+role_help_supplier	Рөл: Жеткізуші — сатып алу үшін оларға қарызбыз.
+dine_in_pick_table	Дүкенде пайдаланылмайды
+choose_table	Есептегішті таңдаңыз
+change_table	Үстелді ауыстыру
+pick_table_banner	Осы тапсырысқа үстел таңдаңыз
+items_word	тауар
+items_section	Тауарлар
+back_to_order	Тапсырысқа оралу
+new_items_head	Әлі жіберілмеген
+price_ph	Баға
+price_ph_gst_inside	Баға ({tax} ішінде)
+cancel_needs_table	Қарсы сатылымдар сіз төлем қабылдағанша билетте қалады
+tax_rates_missing_hint	Бұл элементтерде {tax} мөлшерлемесі жоқ — Элементтер бойынша белгіленген Салық ставкасы (бағаға {tax} қоса алғанда {tax} кіреді)
+taxable_value	Салық салынатын құн
+gst_inside_price_note	({tax} ішінде)
+start_with_template	Біздің элементтер үлгісінен бастаңыз
+template_heading	Бастапқы элементтер
+template_info	{c} санаттары және фотосуреттері бар {d} элементтері қосуға дайын. Бағалар ₹0-дан басталады — өзіңізді кейінірек орнатыңыз.
+template_import	Толық үлгіні импорттау
+template_confirm	{d} элементтерін санаттарымен қосасыз ба? Сізде бұрыннан бар заттар сол күйінде қалады.
+template_yes	Иә, импорттау
+template_importing	Дәрілерді импорттау…
+template_import_progress	Импорттау… {d}/{t}
+template_done	Біздің үлгідегі әрбір элемент сіздің заттарыңызда.
+template_imported	{d} элементтері мен {c} санаттары қосылды — олардың бағаларын осы экранда орнатыңыз
+client_template_heading	Импорттық каталог
+client_template_info	{title}: {c} санаттары, бағасы, фотосуреттері және бүркеншік аттары бар {d} элементтері. Тек жетіспейтін элементтер — бұрыннан бар атаулар қалады.
+client_template_import	Бұл дәрілерді импорттаңыз
+client_template_confirm	{title} ішінен {d} элементтерін қосу керек пе? Сізде бұрыннан бар заттар сол күйінде қалады.
+client_template_importing	{title} импортталуда…
+client_template_done	{title} әрбір элементі сіздің элементтеріңізде.
+client_template_imported	{title} ішінен {d} элементтері мен {c} санаттары қосылды
+resv_heading	Броньдар
+resv_name_ph	Тұтынушының аты
+resv_phone_ph	Телефон (міндетті емес)
+resv_guests_ph	Адамдар
+resv_when_ph	Қашан — 20:30, ертең 13:00
+resv_table_ph	Есептегіш (міндетті емес)
+resv_add	Брондау
+resv_seat	Отырғызылды
+resv_none	Алдағы бронь жоқ.
+guests_word	қонақ
+delivery_by_ph	Жеткізуші (курьер немесе қызметкер аты)
+kitchen_all_day	Қазір пісіру: {items}
+split_bill	Шотты бөлу
+split_go	Жеке шот жасау
+cancel	Бас тарту
+opening_client	Клиент ашылуда…
+preparing_desk	Касса дайындалуда…
+opening_server	Сервер ашылуда…
+creating_server	Сервер жасалуда…
+split_help	Бір тұтынушы төлейтін элементтерді түртіңіз · {n} таңдаған
+split_send_first	Алдымен слипті жіберіңіз — тек бэк-офистегі заттар бөлек шотқа өтуі мүмкін
+split_pick_some	Алдымен бөлек шоттың элементтерін түртіңіз
+split_done	Бөлек есепшот жасалды — ол осы есептегіштің жанында орналасқан
+split_marked	жеке шот
+order_empty_pick	Тапсырыс бос — элементтерді таңдау үшін жоғарыдағы Элементтерді қосу түймесін түртіңіз.
+add_dishes	Дәрілерді қосыңыз
+order_so_far	Осы тапсырыста: {n} · {total}
+no_dish_match	Ешбір элемент "{q}" сәйкес келмейді
+pick_dishes_help	Қосу үшін элементті түртіңіз · тізімді тарылту үшін санатты таңдаңыз
+pick_done	Дайын
+pick_done_dd	Дайын · {label}
+printer_route_mode	Бұл орында бірнеше принтер болса
+printer_mode_first	Бірінші істегені
+printer_mode_all	Барлығына басу
+kot_show_area	Аймақ
+kot_hide_area	Аймақты жасыру
+kot_show_item_hdr	Тауар · Саны
+kot_hide_item_hdr	Бағандарды жасыру
+kot_show_title	Тақырып жолы
+kot_hide_title	Тақырыпты жасыру
+kot_field_order	Басу реті
+kot_field_up	Жоғары жылжыту
+kot_field_down	Төмен жылжыту
+kot_field_cycle	Келесіні таңдау
+kot_field_select	Келесіні таңдау
+kot_field_time	Уақыт
+kot_field_kot_no	Билет нөмірі
+kot_field_area	Аймақ
+kot_field_table	Касса
+kot_field_shop	Дүкен аты
+kot_field_waiter	Қызметкерлер
+kot_field_station	Станция
+app_template_blurb_extra	Сондай-ақ: Иесі Захир, Әкімші Асиф, Кассир Наваз; алдыңғы бүйірлік тақта; 4 сағаттан кейінгі тарих; Бүгін шешіңіз; ықшам есепшот.
+dishes_n	{n} items
+recipe_ph	Рецепт (міндетті емес — дүкенде пайдаланылмаған)
+reorder_ph	Тағы сатып алу
+set_reorder	Қайта тапсырыс деңгейін қою
+low_stock_alert	Таусылып барады — жақында сатып алыңыз: {items}
+unpriced_note	Элементтеріңіздегі {n} элементтерінің әлі бағасы жоқ — сіз оны орнатқанша олар 0-ден шот жасайды.
+show_unpriced	Тек бағасы жоқ элементтерді көрсету
+show_all_dishes	Барлық элементтерді көрсету
+role_waiter	Кассир
+role_kitchen	Дүкен
+role_title_rest_ph	Лауазым (мыс. Капитан, Бас аспаз)
+preset_help_rest	Кассир: сатады. Басқарушы: сату + тауар + күшін жою/түзету.
+kind_raw	Құрама қор
+kind_resale	Дәрі сатып алды
+kind_dish	Акцияны есептемеңіз
+buy_unit_ph	Бірлік (kg, литр, дана)
+add_another_way	+ Басқа тәсіл қосу
+parts_status	Енгізілді {a} / {b} · {c} қалды
+save_expense	Шығынды сақтау
+rest_ph	Қалдық
+low_badge	Төмен
+stock_empty	Әлі қор жоқ — Сатып алуда жазғаныңыз осында шығады.
+recent_changes	Соңғы өзгерістер
+lane_declared_label	Салық шот-фактурасы
+lane_owner_label	Кассалық жазба
+money_lane_bill	Шот: {lane}

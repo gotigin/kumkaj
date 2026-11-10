@@ -1,0 +1,1329 @@
+# Kyrgyz — Кыргызча (ky). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	Кирана эсептегич: сатуу, запас, кат жана китептер. Акысыз оффлайн.
+unlock	Кулпуну ачуу
+pin_hint	Ээси PIN 0000ден башталат
+sell	Сат
+buy	Сатып алуу
+books	Күн китеби
+books_help	Бүгүнкү позиция. Сатуу = акча. Сатып алуу = сатып алуулар жана чыгашалар. Тараптар = кредиттик кардарлар жана жеткирүүчүлөр.
+buy_help	Чыгым квитанциялары жана жеткирүүчүлөрдүн конокторунун эсептери (акча чыгаруу). Эсеп боюнча кардар же жеткирүүчүнүн китебинде калат.
+sell_money_in	буюмдарды сатуу
+buy_money_out	Чыгымдар / жеткирүүчү конок эсеби
+record_purchase	Сатып алууну сактаңыз
+add_expense	Чыгым квитанциясы
+bank_book	Банк китепчеси
+credit_help	Кардар же жеткирүүчүнүн идентификатору уникалдуу болуп саналат (аттар кайталанышы мүмкүн). Кардар кредиттик китепти иштетет (бизге карыз); Жабдуучу бизге акцияларды сатат (биз аларга карызбыз); экөө тең жакшы. Бухгалтерлер өзүнчө калат; отчеттор таза көрсөтөт.
+party_kind_ph	Ролдор: Кардар, Жабдуучу, экөө тең…
+reports_help	Күндүзгү китеп, дебиторлор жана кредиторлор, банк китеби, чыгаша квитанциялары, пайда жана чыгым.
+reports_today	Күндөлүк китепче (бүгүн)
+reports_month	Пайда жана чыгым (ай)
+reports_aging	Төлөнбөгөн/дебет-кредит
+reports_balance_sheet	Баланс
+reports	Банк китеби жана P&L
+refresh	Жаңылоо
+undo	Жок кылуу
+start_tracking	Көз салууну баштоо
+stock_minus	− запас
+stock_plus	+ Сток
+settle_cash	Накталай акча менен эсептешиңиз
+settle_card	Эсептөө картасы
+items	Меню меню пункттары
+nav_items	Меню меню пункттары
+more	Дагы
+your_items	Сиздин буюмдар
+items_help	Аны түзөтүү үчүн бир нерсени таптап коюңуз. Жаңы нерсе форманы тазалайт. Аты же кыска код боюнча издеңиз, бааны коюңуз (0 жакшы), андан кийин Кошуңуз. Буга чейин жазылган сатуулар, алар айыпталган аты сакталат.
+add_item	Меню пунктун кошуу
+new_item	Менюнун жаңы пункту
+adding_item	Менюнун жаңы пунктун кошуу
+editing_item	Түзөтүү
+save	Сактоо
+remove	Алып салуу
+removed_items	Меню элементтери алынып салынды
+removed_help	Калыбына келтирүү объектти мурункудай эле, баасын, сүрөтүн жана категориясын "Объекттерге" кайра коет.
+restore_item	Калыбына келтирүү
+empty_catalog	Азырынча эч нерсе жок. Буюмдарды ачып, атын жана баасын кошуп, андан кийин эсептегичтен сатыңыз.
+total	Бардыгы
+cash	Накталай акча
+upi	UPI
+card	Карта
+credit	Кардарлар жана камсыздоочулар
+clear	Таза
+ready_to_sell	Каттоого даяр
+today_prefix	Бүгүн
+today_mid	бүгүн
+owed	көрүнүктүү
+round_word	тегерек
+back	Артка
+sold_out	Жеткиликсиз
+restock	Кайра камдоо
+not_tracked	Көз салынган эмес
+in_stock	кампада
+marked_sold_out	Жеткиликсиз деп белгиленген
+add_upper	КОШУУ
+na	Жок
+qty	Салмак/Сан
+unit_at	Баалоо @
+actual	Чыныгы
+applied	Колдонулган
+note_ph	Эскертүү (милдеттүү эмес)
+rounded	ТЕҢГЕКТЕНГЕН
+split	Бөлүнүү
+send_kot	Слип жөнөтүү
+send_kot_to	Жиберүү → {kitchens}
+send_kot_again	Кийинки слипке нерселерди кошуңуз
+send_kot_held	Кармалган нерселер — жөнөтүү үчүн кармап туруңуз
+reprint_kot	Кайра тандалган басып чыгаруу
+reprint_kot_ok	{n} элементтери кайра басылды · {slips} слип(лери) → {kitchens}
+reprint_kot_needed	Адегенде слип жөнөтүңүз — андан кийин элементтерди кошуп, тандалгандарды кайра басып чыгарыңыз
+reprint_kot_none_selected	Ар бир жөнөтүлгөн нерсе өткөрүлүп жиберилет — кайра басып чыгаруу үчүн басып чыгарууда дегенди таптаңыз
+reprint_kot_client	Жөнөтүлгөн {place} үчүн кайра басып чыгаруу ({n}) — дүкөн түзмөгү аны басып чыгарат
+print_cancelled_kot	Баары жокко чыгарылды басып чыгаруу
+print_cancelled_kot_ok	Басылып чыгарылган {n} жокко чыгарылган нерселер · {slips} слип(лери) → {kitchens}
+print_cancelled_kot_needed	Адегенде жокко чыгарылган нерселер менен үстөлдү ачыңыз
+print_cancelled_kot_none	Бул буйрутмада жокко чыгарылган нерселер жок
+print_cancelled_kot_client	Басып чыгаруу жокко чыгарылды ({n}) {place} үчүн жөнөтүлдү — дүкөн түзмөгү аны басып чыгарат
+kot_banner	Боорукер баннер
+kot_banner_ph	Баннер (бош = жок)
+kot_item_prefix	Менюнун префикси
+kot_item_prefix_ph	мис. [Жокко чыгарылды]
+kot_strike	Белгиленген нерсенин аталышы
+kot_strike_note	Белгиленген нерсенин эскертүүсү
+kot_strike_on	Күйүк
+kot_strike_off	Өчүк
+bill_item_layout	Меню меню пунктунун жайгашуусу
+bill_item_layout_columns	Мамычалар
+bill_item_layout_stacked	Үйүлгөн
+bill_item_header	Мамычалардын аталыштары
+bill_item_hdr_item	Меню меню пунктунун аталышы
+bill_item_hdr_qty	Саны баш
+bill_item_hdr_price	Баа аталышы
+bill_item_hdr_amount	Сумма баш аты
+bill_item_name	Меню пунктунун аталышы
+bill_item_qty	Саны
+bill_item_price	Баасы
+bill_item_amount	Суммасы
+bill_item_note	Элемент эскертүүсү
+bill_item_col_gap	Мамыча боштугу
+bill_item_col_order	Мамыча тартиби
+bill_item_col_sep	Мамыча эрежелери
+bill_item_gap_tight	Тар
+bill_item_gap_comfort	Ыңгайлуу
+bill_item_gap_wide	Кең
+bill_item_num_width	Сандык тилкелер
+bill_item_num_compact	Компакт
+bill_item_num_comfort	Ыңгайлуу
+bill_item_num_wide	Кең
+bill_item_num_align	Сандар тегиздөө
+bill_item_gap_em	Гап (эм)
+bill_item_qty_min	Саны мин (эм)
+bill_item_price_min	Минималдуу баасы (эм)
+bill_item_amount_min	Минималдуу сумма (эм)
+kot_item_qty_width	Саны тилкеси
+kot_item_num_align	Саны тууралоо
+bill_total_qty_label	Жалпы сан энбелгиси
+bill_total_subtotal_label	Кошумча жалпы энбелги
+bill_total_grand_label	Жалпы энбелги
+bill_total_paid_label	Төлөнгөн жалпы белги
+bill_meta_pair	менен бөлүшүү
+bill_pair_alone	Жалгыз
+bill_item_piece_on	Күйүк
+bill_item_piece_off	Өчүк
+bill_total_qty	Жалпы саны
+bill_total_subtotal	Кошумча жалпы
+bill_total_grand	Жалпы сумма
+reprint_incl	Басмада
+reprint_skip	Өткөрүп жибер
+reprint_skip_meta	Калыбына келтирүүчү басып чыгарууну өткөрүп жиберүү
+kot_dest_hint	Орнотуулар → Принтерлерде {kitchens} үчүн сиз дайындаган принтерлерде басып чыгарат
+kot_sent_hint	Акыркы жөнөтүү {kitchens} дарегине жөнөтүлдү. Кийинки эсепке элементтерди кошуу үчүн таптап коюңуз — же ошол эле эсеп үчүн слипти кайра басып чыгаруу.
+kot_sent_printing	Слип {kitchens}ге жөнөтүлдү — басып чыгаруу
+kot_sent_not_printed	Слип {kitchens}ке жөнөтүлдү, бирок БАСЫЛБАЙТ: {why}. Дүкөнгө айтып, анан принтерди оңдоп, кайра басып чыгарыңыз.
+kot_sent_screen	Слип {kitchens}ге жөнөтүлдү
+kot_queued_shop	{place} үчүн слип → {kitchens} сакталды; дүкөн аппараты аны басып чыгарат
+kot_job_label	{place} → {kitchens} үчүн слип
+kot_job_reached	{place} үчүн слип {kitchens} жетти
+kot_unassigned	Дайындалган жок
+kot_unassigned_held	Станциясыз кармалган {n} буюмдары — жөнөтүү үчүн линияда кармап туруңуз
+kot_station_ph	Станция
+kot_station_dd	Станция
+kot_station_dd_n	Станция · {stations}
+kot_set_station	Бул станцияны колдонуңуз
+kot_station_applied	{n} элементтерине коюлган станция: {station}
+kot_station_cleared	Станция {n} элементтеринен тазаланды: {station}
+kot_station_needed	Биринчи дүкөн бөлүмүн тандаңыз
+kot_station_not_allowed	Бөлүмдү колдонууга уруксат жок: {station}
+kot_station_none	Азырынча станциялар жок — дүкөндө колдонулбайт (Керек болсо Орнотуулар → Аймактар)
+pos_tab_items	Меню элементтери кошулду
+pos_tab_payment	Төлөм
+hold_send	Ашканадан карма
+hold_send_on	өткөрүлдү
+hold_send_meta	Каралды - бул слипте эмес
+station_remove	Станцияны алып салуу
+station_remove_ph	Аны алып салуу үчүн тизмедеги станцияны таптаңыз
+station_removed	Станция алынып салынды: {name}
+settings_hub_title	Орнотуулар
+settings_hub_help	Бир убакта бир аймакты ачыңыз — азыраак сыдыруу, айкыныраак тандоо.
+settings_back	Артка
+settings_sec_language	Тил жана валюта
+settings_sec_country	Өлкө жана салык
+settings_sec_tills	Башка аппараттар
+settings_sec_brand	Сиздин бренд
+settings_sec_units	Бирдиктер жана конверсиялар
+settings_sec_pickers	Райондор · станциялар · салык ставкалары
+settings_sec_printers	Принтерлер
+settings_sec_bill	Эсеп жана слип форматы
+settings_sec_selling	Схемалар жана сатуулар
+bill_kot_tab_bill	Коноктун эсеби
+bill_kot_tab_kot	Слип
+settings_sec_alerts	Эскертүүлөр
+alerts_help	Статус билдирүүлөрү сиз үчүн канча убакытка чейин экранда калат (бул кирүү).
+snack_secs_ph	Секунд (3–60, демейки 10)
+snack_secs_save	Эскертүү убактысын үнөмдөңүз
+snack_secs_saved	Эскертүү убактысы сакталды — {n} секунд
+settings_sec_backup	Камдык көчүрмөнү сактоо жана калыбына келтирүү
+settings_sec_diag	Диагностика
+diag_privacy_help	Журналдар бул түзмөктө калат. Сырлар (PIN, сырсөздөр) эч качан сакталбайт. Түзмөктөн пакетти бөлүшүү үчүн ар бир жолу сиздин ачык уруксатыңыз керек — эч качан сатылбайт же үчүнчү жактарга берилбейт.
+diag_level	Деталь деңгээли
+diag_level_error	Каталар
+diag_level_warn	Эскертүүлөр
+diag_level_info	Маалымат
+diag_level_debug	Мүчүлүштүктөрдү оңдоо
+diag_support_start	30 мүнөттүк колдоо сеансын баштаңыз
+diag_support_stop	Колдоо сессиясын бүтүрүү
+diag_support_started	Колдоо сессиясы күйүк — Мүчүлүштүктөрдү оңдоо 30 мүнөткө
+diag_support_ended	Колдоо сессиясы аяктады
+diag_export_local	Жергиликтүү көчүрмөнү экспорттоо
+diag_export_local_done	Жергиликтүү диагностика {path} даяр — көчүрмөнү кайда сактоону тандаңыз
+diag_approve_send	Бул түзмөктөн бөлүшүүгө уруксат бериңиз
+diag_send_help	Бекиттүү бир пакет, андан кийин мөөнөтү бүтөт. Убактылуу — буюмду оңдоо же жакшыртуу үчүн гана колдонулат. Үчүнчү тараптар менен бөлүшүлгөн эмес. Linux, Windows, macOS жана Android боюнча иштейт.
+diag_send_approved	Бөлүшүү бир топтомго жактырылган (мөөнөтү жакында бүтөт)
+diag_export_send	Бөлүшүү пакетин түзүү (уруктоо керек)
+diag_export_send_done	Топтомду бөлүшүү {path} даяр — кайда сактоону тандап, андан кийин Kumkaj колдоо бөлүмүнө гана жөнөтүңүз
+diag_save_bundle	Диагностикалык көчүрмөнү сактаңыз
+diag_bundle_saved	Диагностиканын көчүрмөсү {path} ичинде сакталды
+diag_bundle_failed	Диагностиканын көчүрмөсү сакталган жок — кайталап көрүңүз
+diag_clear	Диагностикалык журналдарды тазалоо
+diag_cleared	Диагностикалык журналдар тазаланды
+sidebar_settings	Каптал тилкеси
+sidebar_settings_help	Капталдагы рельс сыяктуу эле иконалар. Кайра иреттөө үчүн сапты сүйрөңүз. Көрсөтүү же жашыруу үчүн которгучту которуңуз. Орнотуулар жана Кулпу ар дайым тилкеде турат.
+sidebar_always_on_short	Ар дайым күйүк
+sidebar_back_settings	Артка
+sidebar_shown	Көрсөтүлдү
+sidebar_hidden	Жашырылган
+sidebar_always_on	Ар дайым барда
+sidebar_shown_hint	Капталда / астыңкы өтмөктө көрсөтүлгөн
+sidebar_hidden_hint	Бардан жашырылган
+sidebar_menu_items	Меню меню пункттары
+sidebar_enable_all	Баарын иштетүү
+sidebar_disable_all	Баарын өчүрүү
+sidebar_order_saved	Капталдагы буйрутма сакталды
+sidebar_visibility_saved	Каптал тилкесинин көрүнүшү сакталды
+amounts_hide	Жашыруу
+amounts_show	Көрсөтүү
+printers_none_hint	Адегенде бул түзмөккө принтерди сактап, андан кийин аны эсепке же бөлүмгө кошуңуз
+counter	Прилавок
+dine_in	Прилавок
+takeaway	Алып кетүү
+order	Ресторан заказы
+tables	Эсептегичтер
+kitchen	Бөлүмдөр
+sales	Сатуу
+sales_refunds	Сатуу жана кайтаруу
+day_close	Күн жакын
+reports_expenses	Банк китеби жана P&L
+nav_reports	Отчеттор
+nav_settings	Орнотуулар
+nav_lock	Кулпу
+no_sale_yet	Азырынча сатуу жок
+favorites	Сүйүктүүлөр
+favorites_help	Сиз көп саткан меню меню пункттары, кирүү үчүн сакталган. Коноктордун эсебине бирөөнү кошуңуз же төмөнкү бардык меню пункттарынан тизмеңизди түзүңүз.
+your_favorites	Сүйүктүүлөрүң
+all_items	Бардык меню пункттары
+frequent	Тез-тез
+added_items	Меню меню пункттары кошулду
+added_items_empty	Бул эсеп боюнча азырынча эч нерсе жок — Бардык элементтерден же категориядан бир нерсе кошуңуз.
+frequent_config_help	Толтурулган эсептердеги эң көп сатылган буюмдар. Канча күн көрүүнү жана канча нерсени көрсөтүүнү белгилеңиз.
+frequent_days_ph	Күндөр (1)
+frequent_limit_ph	Меню меню пункттары (24)
+frequent_apply	Колдонуу
+frequent_saved	Тез-тез: акыркы {d} күн(дери), эң мыкты {n} — {c} нерселер
+frequent_empty	Бул мезгилде аягына чыккан сатуулар жок — конок эсебин чечиңиз (Жөндөөлөр ушундай деп айтса, ₹0 уруксат берилет) жана алар бул жерде көрсөтүлөт.
+zero_sales	Нөлдүк сатуу
+zero_sales_help	Баасы ₹0 болгон товарларга жана ₹0 менен эсептелген эсептерге уруксат бериңиз (акысыз / ээсинин каалоосу). Демейки боюнча күйгүзүлгөндүктөн, бекер мукабалар дагы эле көп жана күнүмдүк китептерде пайда болот.
+zero_sales_on	₹0 уруксат берүү
+zero_sales_off	Бааны талап кылат
+zero_sales_saved_on	Нөлдүк баада сатууга жол берилет
+zero_sales_saved_off	Сатуулардын баасы ₹0 жогору болушу керек
+floor_areas_help	Аймактар ​​- кабаттагы бөлмөлөр же зоналар (Dine In, Parcel, AC ...). Адегенде аймакты кошуңуз, анан ага эсептегичтерди салыңыз — ар бир аймак кабатта өзүнчө топ болуп саналат.
+area_new_ph	Жаңы аймак / бөлмө (мисалы, AC, бакча)
+add_area	Аймак кошуу
+area_added	"{name}" аймагы даяр — ага эсептегичтерди кошуңуз
+no_favorites	Сүйүктүүлөр азырынча жок — төмөнкү тизмеден меню пункттарын кошуңуз.
+add_to_bill	Конок эсебине кошуу
+added	Кошулган
+owes_word	карыздар
+selected_word	Тандалган
+chip_clear_credit	ачык-айкын — Кредит же аванс алуу
+chip_missing_customer	Тандалган кардар жок — кайра тандаңыз
+chip_no_customer	Азырынча кардар жок — атын терип, андан соң "Кредит" баскычын таптаңыз
+credit_summary_fmt	{} кардарлар · ачык кредит {} · алынган аванстар {}
+recent_label	Акыркы:
+kot_new_waiting	ЖАҢЫ — күтүүдө
+kot_preparing	ДАЯРДАНУУДА
+kot_ready_serve	ДАЯР — кызмат кыл
+kot_done_cap	АТКАРЫЛДЫ
+kot_cancelled	ЖОК КАЛДЫ
+kot_start_btn	Баштоо
+kot_mark_ready	Даяр деп белгилөө
+kot_done_btn	Бүттү
+table_free	Бош — заказ баштоо үчүн таптаңыз
+start_order	Заказ баштоо
+open_bill	Конок эсебин ачуу
+collect_payment	Төлөмдү чогултуу
+table_running	чуркоо
+payment_pending	Төлөм күтүлүүдө
+collect_at_counter	кассага чогултуу
+inventory	Инвентаризация
+inventory_stock	Инвентаризация жана запас
+branches	Филиалдар
+branches_org	Филиалдар & org
+credit_customers	Кардарлар жана жеткирүүчүлөр (кредиттик эсептер)
+customer_name_ph	Кардардын же камсыздоочунун аты
+new_customer_ph	Жаңы кардар же жеткирүүчү аты
+item_name_ph	Меню пунктунун аталышы (мисалы, Masala Dosa)
+item_price_ph	Баасы
+start_template	Продукт
+team	Команда
+team_pins	Команда жана PINs
+my_pin_settings	Менин PIN
+settings_hub_help_my_pin	Бул түзмөккө кирген адам үчүн кулпуну ачууну PIN өзгөртүңүз.
+team_self_help	Бир кирүү: жаңы PIN, жаңы сырсөз же экөө тең. Колуңузда болгон нерсени сактоо үчүн кутучаны бош калтырыңыз. Башка экрандар же укуктар керекпи же жокпу, Ээсинен сураңыз.
+backup_settings	Камдык көчүрмө жана жөндөөлөр
+lock_app	Колдонмону кулпулоо
+pick	Тандоо
+select	Тандоо
+advance	Алдын ала
+owner	Ээси
+staff	Кызматкерлер
+photo	Сүрөт
+auto	Авто
+prev	Мурунку
+next	Кийинки
+ok	OK
+this_shop	Сервер режими
+extra_till	Кардар режими
+off	Өчүк
+tables_kitchen	Дүкөндүн макети
+server	Сервер режими
+client	Кардар режими
+language_currency	Тил жана валюта
+language	Тил
+choose_language	Тилиңизди тандаңыз
+language_setup_hint	Бул түзмөктүн тилин колдонуңуз же өзүңүз тандаңыз.
+lang_follow_platform	Түзмөктүн тили
+lang_pick_user	Тилди тандаңыз
+lang_platform_now	Түзмөктүн тили азыр
+selected_language	Тандалган
+continue	Улантуу
+this_device	БУЛ АПБАТ
+device_use_q	Бул аппарат кантип колдонулат?
+last_server_mode	Сервер болгон — улантуу үчүн таптаңыз
+last_client_mode	Кардар болгон — улантуу үчүн таптаңыз
+choose_server	Серверди тандаңыз
+choose_server_hint	Учурдагы серверди ачыңыз же башка бизнес үчүн серверди түзүңүз.
+create_new_server	Жаңы сервер түзүңүз
+open_server	Ачуу
+new_server_name_ph	Жаңы сервердин аталышы (милдеттүү эмес)
+server_remove_pin_ph	Серверди алып салуу үчүн ээси PIN
+only_owner_remove_server	Серверди Ээси гана өчүрө алат
+owner_pin_remove_server	Бул серверди алып салуу үчүн ээси PIN талап кылынат
+device_setup_help	Сервер бул жерде бухгалтердик китепти сактайт. Кардар серверге жупташат.
+app_template_heading	Стартер каталогу (милдеттүү эмес)
+app_template_blurb	Үлгү каталогун жүктөйт; Ээси Захир (захир), админ Асиф (асиф, PIN 1111), кассир Наваз (наваз, PIN 0000); салык / GST өчүрүү; алдыңкы каптал тилкеси; тарых 4 сааттан кийин тазаланат (жана Камдык көчүрмөдө азыр тазалоо); Бүгүн чечип алуу; компакт эсеп + тар лотоктор үчүн стандарттык чектер. Салык жана каптал тилкесин жөндөөлөрдөн кайра күйгүзсө болот.
+app_template_apply	Стартер каталогун колдонуңуз
+app_template_skip	Азырынча өткөрүп жибериңиз
+app_template_status	Сервер даяр — Стартер каталогун колдонуңуз же өткөрүп жибериңиз
+app_template_importing	{title} колдонулууда…
+currency	Валюта
+backup	Камдык көчүрмө
+use	Колдонуу
+dont_use	Колдонбо
+add_branch	филиал кошуу
+add_conversion	Конверсия кошуу
+add_dishes_items	Элементтерди кошуу
+add_item_plain	Меню пунктун кошуу
+add_note	Эскертүү кошуу
+add_opening_balance	Ачылыш балансын кошуу
+add_staff	Кызматкерлерди кошуу
+add_station	Станция кошуу
+add_table	Тамактануучу үстөл кошуу
+add_unit	Бирдик кошуу
+add_use_name	Бул атты кошуңуз/колдонуңуз
+allow_extra_tills	Кошумча кассалык машиналарга уруксат берүү
+amend	Түзөтүү
+apply_country_pack	Өлкө пакетин колдонуңуз
+datetime_appearance	Дата жана убакыт көрүнүшү
+datetime_appearance_help	Китептер жыл ичинде биринчи RFC3339 сакталат. Булар даталардын жана сааттардын эсептердеги, отчеттордогу жана экрандагы көрүнүшүн гана өзгөртөт.
+datetime_example	Азыр мисал: {ex}
+date_order	Дата тартиби
+date_order_dmy	D/M/Y
+date_order_mdy	M/D/Y
+date_order_ymd	Y-M-D
+time_format	Саат
+time_format_24h	24 саат
+time_format_12h	12 саат
+attach_bill_photo	Коноктун эсебинин сүрөтүн тиркөө
+attach_pdf	PDF тиркөө
+attach_photo	Сүрөт тиркөө
+attachments_last_expense	Тиркемелер (акыркы чыгаша)
+bank	Банк
+bank_in	Банкта
+bank_out	Банктан накталай акча
+bank_reconciliation	Банктык салыштыруу (банктык көчүрмөңүзгө каршы белги коюңуз)
+bank_to_till	Банк → касса
+book_add_dish	Китеп — нерсе / нерсе кошуу
+book_opening_credit	Бухгалтердик китеп – кредитти ачуу
+branch_name_sell_ph	Сатыла турган филиалдын аталышы
+bring_my_book	Менин китебимди алып кел
+business_tax_id_ph	Бизнес салык id
+caption_bank	БАНК
+caption_bills	ЭЦКАЛДАР
+caption_outstanding	МЫКТЫ
+caption_payments_today	ТӨЛӨМДӨР БҮГҮН
+caption_today	БҮГҮН
+card_amount_ph	Картанын суммасы
+cash_amount_ph	Накталай акча суммасы
+cash_memo	Накталай эсеп
+choose_icon	Белги тандаңыз
+choose_logo	Логотип тандаңыз
+clear_icon	Таза сүрөтчө
+clear_photo	Сүрөттү тазалоо
+copy_day_book_csv	Күндөлүк журналды көчүрүү CSV
+copy_day_close	Көчүрүү күнү жабуу
+copy_items_csv	Меню пункттарын көчүрүү CSV
+copy_outstanding_csv	Мыкты CSV көчүрүү
+copy_parties_csv	Кардарларды жана камсыздоочуларды көчүрүү CSV
+copy_party_ledger_csv	Кардар китебин көчүрүү CSV
+copy_receipt	Квитанцияны көчүрүү
+share_whatsapp	Бөлүшүү WhatsApp
+lan_pages_heading	Wi‑Fi'дагы кардар барактары
+lan_pages_help	Бул дүкөндүн Wi‑Fi тармагында кардарлардын баракчалары дисплей тактасы жана пикир үчүн иштейт. Мобилдик дайындардагы адамдарга кийинчерээк Cloud керек. Карта терминалы же төлөм шилтемеси милдеттүү эмес жана эсептегичти эч качан бөгөттөбөйт.
+diag_send_heading	Бул түзмөктөн бөлүшүңүз
+kot_dest_heading	Станция
+optional_login_heading	Кошумча кирүү
+rights_heading	Укуктар
+ops_panel	Жергиликтүү операциялар
+crm_heading	Кардарлар жана билдирүүлөр
+crm_help	Туулган күн, берилгендик, жигердүү эмес жана мыкты коноктор — кезек SMS же WhatsApp ниеттери. Кабарда {name} жана {points} колдонуңуз. Ээси таптап жиберет; эч нерсе өзүнөн өзү жарылбайт.
+crm_queue_sms	Кезек SMS
+crm_queue_wa	Кезек WhatsApp
+crm_seg_bday_week	Туулган күн жумасы
+crm_seg_bday_month	Туулган күн айы
+crm_seg_phone	Телефон менен
+crm_seg_loyalty	Берилгендик
+crm_seg_inactive	Жигерсиз
+crm_seg_top	Эң көп сарптагандар
+birthday_ph	Туулган күн (АА-Кк же ЖЖЖЖ-АА-КК)
+crm_message_ph	Туулган күнүң менен {name}! Сизде {points} упай бар.
+till_apply_redeem	Коноктун эсебине кайрылыңыз
+till_clear_redeem	Төлөмдү тазалоо
+till_wallet_topup	Капчыкты толуктоо
+till_issue_voucher	Ваучерди чыгаруу
+till_points_ph	Колдонуу үчүн упайлар
+till_wallet_ph	Капчыктын суммасы
+till_voucher_code_ph	Ваучер коду
+till_voucher_amt_ph	Ваучердин суммасы (бош = бардыгы)
+till_wallet_topup_ph	Капчыкты толуктоо
+till_voucher_issue_amt_ph	Ваучердин суммасын чыгаруу
+till_voucher_issue_code_ph	Жаңы ваучер коду
+split_evenly	Бир калыпта бөлүңүз
+waitlist	Күтүү тизмеси
+fire_course	Кийинки кадам
+hold_item	Ашканадан карма
+waiter_call	Кассирге чал
+waitlist_add	Күтүү тизмесине кошуу
+floor_view_grid	Тор
+floor_view_layout	Макет
+floor_layout_x	X
+floor_layout_y	Y
+floor_layout_w	W
+floor_layout_h	H
+floor_layout_save	Макетти сактоо
+floor_layout_open	Столду ачуу
+floor_layout_edit	Макетти түзөтүү
+floor_layout_pick	Тамактануучу үстөлдү таптап, анын схемасын түзөтүңүз
+floor_layout_saved	Макет сакталды
+floor_layout_nudge_left	← 20
+floor_layout_nudge_right	→ 20
+floor_layout_nudge_up	↑ 20
+floor_layout_nudge_down	↓ 20
+sibling_pickers_help	Күйгүзүү/Өчүрүү сыяктуу бирдиктерди таптаңыз — аймактарды, станцияларды жана салык ставкаларын күнүмдүк тандоочулардан жашырыңыз; пакеттин демейки параметрлери калат.
+bulk_price_apply	Оптом бааны колдонуу
+card_terminal_optional	Карта терминалы / төлөм шилтемеси (интернет болгондо милдеттүү)
+copy_report	Отчетту көчүрүү
+counted_cash_ph	Суурмадагы эсептелген акча
+country_tax	Өлкө жана салык
+create_backup	Камдык көчүрмөнү түзүү
+credit_limit_heading	Кредиттик чек (тандалган кардар же жеткирүүчү)
+day_close_summary	Күндүн жыйынтыгы
+delete_party	Тандалган кардарды же жеткирүүчүнү жок кылуу
+delivery	Жеткирүү
+done_open_books	Бүттү — ачык китепчелер
+drawer_count	тартма саны (милдеттүү эмес)
+expense_heading	Чыгым
+export_day	Экспорт күнү
+extra_note_bill_ph	Бул конок эсеби / сатуу боюнча кошумча эскертүү
+extra_note_expense_ph	Акыркы чыгым боюнча кошумча эскертүү
+extra_tills_heading	Кошумча кассалар
+other_devices_help_heading	Башка түзмөктөрдү орнотуңуз
+other_devices_help	Бул түзмөктө (Сервер): Башка түзмөктөр → Кошумча тилкелерге уруксат берүү. Жупташтыруу кодун жана Wi‑Fi дарегин эске алыңыз. Эгер ал пайда болсо, башка түзмөктөрдүн туташуусуна уруксат берүү баскычын таптаңыз. Компьютерде Бул компьютерден баштоону таптаңыз. Ар бир түзмөктө: колдонмону орнотуп, Кардар режимин тандаңыз, Дүкөндүн серверин табыңыз (же дарегин териңиз), жупташтыруу кодун киргизиңиз, Азыр жуптаңыз. Wi‑Fi иштебей калса, буйрутмалар түзмөктө күтүп, Сервер кайра жооп бергенде кетет. Кошумча принтерлер Серверде орнотулган (Орнотуулар → Принтерлер) — кошумча эсептер ошол жерге жөнөтүлмөйүнчө.
+forget_shop	Бул дүкөндү унут
+goods_received	Товарлар алынган
+import_day	Импорттоо күнү
+import_items_csv_plain	Меню пункттарын импорттоо CSV…
+import_parties_csv	Кардарларды жана жеткирүүчүлөрдү CSV импорттоо…
+item_name	Меню пунктунун аталышы
+kitchen_printing	Принтерлер
+login_id_ph	Колдонуучунун аты
+mark_cleared	Тазаланды деп белгилөө
+new_party_clear	Жаңы кардар же жеткирүүчү (форманы тазалоо)
+new_party_kind_supplier_ph	Жаңы түрү (Жеткирүүчү)
+next_country	Кийинки өлкө
+next_order	Кийинки буйрутма (үстөлдү бошотуу)
+note_gstin_ph	Эскертүү / GSTIN / келишим эскертмеси
+notes_attach_party	Эскертүүлөр жана тиркемелер (тандалган кардар же жеткирүүчү)
+notes_attach_sale	Эскертүүлөр жана тиркемелер (тандалган сатуу)
+on_account_ap	Эсепке (AP)
+org_optional_ph	Уюм (милдеттүү эмес)
+paid_by	Төлөгөн
+paid_now	Азыр төлөндү
+pair_now	Азыр жуптоо
+pairing_code_ph	Жуптоо коду
+party_name_selected_ph	Кардардын же жеткирүүчүнүн аты (же тандалганды колдонуңуз)
+password_ph	Сырсөз
+pay_ap_card	AP карта менен төлөө
+pay_ap_cash	AP накта төлөө
+pay_ap_heading	Аларга карызды төлөө (AP)
+pay_ap_upi	AP UPI менен төлөө
+pay_selected_heading	Тандалган төлөө (карызды төлөө / аванс алуу)
+pick_from_items	Биздин менюбуздан тандаңыз
+prev_country	Мурунку өлкө
+print_open	Басып чыгаруу / ачуу
+reason_amend_ph	Түзөтүүнүн / жокко чыгаруунун / кайтарып берүүнүн себеби
+reason_note_ph	Себеп / эскертүү (ысырап, эсептөө, ...)
+record_day_close	Жакын күндү сактаңыз
+refresh_from_shop	Дүкөндөн жаңыртуу
+refund	Төлөмдү кайтаруу
+remove_selected	Тандалган алып салуу
+request_bill	Коноктун эсебин сураңыз
+restaurant_name_ph	Дүкөндүн аталышы (милдеттүү эмес)
+restore_backup	Камдык көчүрмөнү калыбына келтирүү
+role_both	экөө тең
+role_admin	Admin
+role_cashier	Кассир
+role_customer	Кардар
+role_manager	менеджер
+history_retention	Соода тарыхы
+history_retention_help	Эски сатууларды жана эски билеттерди автоматтык түрдө тазалоо. Буюмдар, кызматкерлер жана жөндөөлөр кала берет. Тазалоо азыр бардык соода катарларын тазалап, орнотууну улантат.
+history_off	Сактоо
+history_day_close	Жабык күнү
+history_after_hours	Сааттан кийин
+history_hours_ph	Саат (1–168, демейки 4)
+history_hours_save	Сааттарды үнөмдөңүз
+history_clear_now	Таржымалды азыр тазалаңыз
+history_cleared	Соода таржымалы тазаланды — орнотуу сакталды
+history_retention_saved	Таржымал тазалоо сакталды
+history_hours_saved	Таржымал сааттары сакталды
+history_owner_only	Таржымалдын ээси же администратор гана тазалай алат
+rollup	Жыйынтык жыйнагы
+save_brand	Брендди сакта
+save_business_id	Бизнес идентификаторун сактаңыз
+save_business_name	Компаниянын атын сактаңыз
+save_features	Сактоо
+save_features_named	Сактоо {name}
+save_features_ok	{name} үчүн сакталган жөндөө
+save_names	Аттарды сактоо
+second_way	Экинчи жол
+server_ip_ph	Server IP (мисалы, 192.168.1.10)
+set_credit_limit	Кардарга же жеткирүүчүгө чекти колдонуңуз
+set_login_selected	Тандалганга логинди колдонуңуз
+set_login_named	{name} кирүү үчүн колдонуу
+shop	Дүкөн
+show	Көрсөтүү
+spreadsheet_csv	Электрондук жадыбал (CSV)
+start_fresh	Жаңыдан баштаңыз
+stop_extra_tills	Кошумча кассалык машиналарды токтотуу
+floor_cols_ph	Мамычалар
+floor_cols_fit	Экранды туура
+floor_cols_fit_sub	{n} бул жерге туура келет
+floor_cols_fits	туура келет
+floor_cols_scroll	тарапка жылдырат
+floor_cols_min	Мамычалар: жок дегенде 1 — же экранга туура келүү үчүн аны бош калтырыңыз
+floor_zoom_auto	Авто
+floor_zoom_out	Кичирейтүү
+floor_zoom_in	Чоңойтуу
+backup_auto	Камдык көчүрмөсү күн сайын автоматтык түрдө жасалат · акыркы {when} · акыркы 14 күн {dir} ичинде сакталат.
+backup_auto_none	Камдык көчүрмөсү күн сайын автоматтык түрдө сакталат — биринчиси бир заматта иштейт.
+backup_copy_to	Көчүрмөлөр {dir} дарегине да барат.
+backup_copy_btn	Ошондой эле камдык көчүрмөлөрдү папкага көчүрүү…
+autostart_off	Ушул компьютерден баштаңыз
+autostart_on	Бул компьютерден башталат ✓ — токтотуу үчүн таптаңыз
+autostart_done_on	Бул компьютер азыр колдонмону иштеткенде ачат — дүкөндүн сервери электр энергиясы өчүрүлгөндөн кийин кайра келет.
+autostart_done_off	Бул компьютер колдонмону баштаганда аны ачпайт.
+device_forgotten	Дүкөн бул аппаратты унутуп койду — аны дүкөндүн учурдагы коду менен кайра жуптаңыз. Аны күтүп жаткан буйруктар сакталат.
+lan_offline	Дүкөн серверине жетүү мүмкүн эмес
+forget_device	Унутуу
+last_seen	көргөн
+copy_pair_code	Жупташтыруу кодун көчүрүү
+new_pair_code	Жаңы жупташтыруу коду
+pair_finishing	Аяктоочу жуп… дүкөндүн китепчелерин колдонуу
+pair_opening	Касса ачылууда…
+pair_copied	Жупташтыруу коду көчүрүлдү
+kot_waiting	Жөнөтүүнү күтүүдө
+lan_offline_waiting	Дүкөн серверине жеткиликсиз · {n} күтүүдө
+lan_connecting	Дүкөнгө туташууда…
+lan_live	Жандуу
+lan_sending	{n} жөнөтүү
+lan_sign_in_to_send	{n} жөнөтүү үчүн аккаунтка кайра кириңиз
+lan_pair_again	Бул түзмөктү кайра жупташтырыңыз
+lan_update_app	Колдонмону жаңыртыңыз — бул түзмөк менен дүкөндүн серверинин ар кандай версиялары бар
+allow_firewall	Башка түзмөктөрдүн туташуусуна уруксат бериңиз
+firewall_blocked	Бул компьютердин брандмауэри башка түзмөктөрдү бөгөттөп жатат — Башка түзмөктөрдүн туташуусуна уруксат берүү дегенди таптаңыз.
+firewall_waiting	Администратордун кеңеши күтүлүүдө…
+lan_join_help	Башка түзмөктө: Кардар режими → Дүкөндүн серверин табыңыз (же {addr} териңиз) → жупташтыруу кодун {code}.
+lan_pair_status	Wi‑Fi {addr}
+lan_join_help_no_addr	Дарек үчүн бул түзмөктү Wi‑Fi менен туташтырыңыз.
+lan_no_address	Азырынча Wi‑Fi дареги жок — Wi‑Fi дүкөнүнө туташыңыз.
+lan_not_listening	Түзмөктөр кабыл алынбай жатат (порт {port} бош эмес). Колдонмону өчүрүп күйгүзүңүз.
+lan_tills_off	Кошумча кассалар өчүрүлгөн. Аларга башка түзмөктүн кошулуусуна уруксат бериңиз.
+paired_with	Жупташтырылган · {url}
+not_paired	Жупташкан эмес
+choose_device_use	Сервер же Кардар тандаңыз.
+paired_note	Жупташкан. Сатуу үчүн кулпусун ачыңыз же эң акыркысы үчүн жаңыртыңыз.
+last_update_at	Акыркы жаңыртуу: {time}.
+pair_intro	Серверди табыңыз же анын дарегин жана жупташтыруу кодун териңиз.
+queue_waiting	Дүкөнгө жетүүнү күтүүдө ({n}):
+queue_tries	{n} жолу аракет кылынды · акыркы жооп: {e}
+save_backup_copy	Камдык көчүрмөнү сактоо…
+backup_copy_saved	Камдык көчүрмө сакталды — аны бул түзмөктөн (USB диск же башка түзмөк) алыс кармаңыз
+backup_copy_overdue	{n} күн бою бул түзмөктөн эч кандай камдык көчүрмө калган жок — Орнотуулар → Камдык көчүрмө
+backup_copy_failed	Камдык көчүрмөнү ал жерде сактоо мүмкүн эмес — башка жерди тандаңыз
+clock_off	Бул түзмөктүн сааты дүкөндүн серверинен {min} мүнөт алыс — бул түзмөккө туура убакытты коюңуз
+printers_heading	Принтерлер
+printers_help	Принтерлерди таап, аны тандоо үчүн бирди таптап, андан кийин сыноо барагын ошол түзмөктө гана басып чыгарыңыз. Эсептик принтерлер: Билл жана Слип форматы → Билл.
+printers_host_only	Принтерлер дүкөндүн түзмөгүндө (Серверде) орнотулган. Бул эсептерди жана эски билеттерди ал жакка жөнөткүчө — Серверде калууну табуу / кошуу / дайындоо. Сыноо барагы жана эсептин басып чыгаруу көлөмү Serverго барат.
+printers_find_heading	Принтерлерди табыңыз
+printers_find_tip	Find бул түзмөктү сканерлеп, тизмени жаңыртып турат.
+printers_pool_heading	Принтерлер
+printers_pool_tip	Find бул түзмөктү сканерлейт жана бул тизмени жаңыртып турат.
+printers_pool_empty	(азырынча эч ким жок — Табууну таптаңыз)
+printers_routes_help	Иштетүү системасы мурунтан эле билген принтерлерди табыңыз. Аларды мыйзам долбооруна жана Билл & Слип форматындагы ар бир бөлүмгө дайындаңыз.
+printer_assign_dd	Чыныгы принтер: {place}
+printer_assign_pick	Чыныгы принтерди тандаңыз
+printer_profile_heading	Макет
+printer_send_heading	Жеткирүү
+vp_delivery_heading	Жеткирүү
+vp_delivery_help	Бул виртуалдык принтер тапшырмаларды кантип жөнөтөт — OS документи, чийки байттар же ESC/POS. Слиптин мазмуну (түрдүн өлчөмү, таңуу, четтери) бул жерде эмес, эсеп/слип форматы менен чечилет.
+vp_type_size_heading	Түр өлчөмү
+vp_wrap_heading	Ороо туурасы
+vp_margin_heading	Маржалар
+vp_delivery_spooler	OS документи (системанын спулери)
+vp_delivery_raw	Түзмөккө чийки байттар
+vp_delivery_escpos	ESC/POS жылуулук буйруктары
+virtual_printer_new	Жаңы виртуалдык принтер
+virtual_printer_selected	“{name}” түзөтүү — которуу үчүн тизмеден башкасын таптаңыз
+virtual_printer_tap_list	Аны түзөтүү үчүн тизмедеги виртуалдык принтерди таптаңыз
+config_layout_portrait	Портрет
+config_layout_landscape	Пейзаж
+config_send_os	Системанын спулери
+config_send_escpos	ESC/POS
+profiles_heading	Макеттер
+profiles_empty	(азырынча макеттер жок)
+profile_builtin	орнотулган
+profile_custom	салт
+profile_name_ph	Макеттин аты
+profile_new	Жаңы макет
+profile_delete	Макетти жок кылуу
+profile_created	Макет түзүлдү
+profile_deleted	Калыбы жок кылынды
+profile_builtin_keep	Камтылган макеттер жок кылынбайт
+config_saved	Жаңыртылган
+config_selected	Тандалган "{name}"
+printer_output_heading	Виртуалдык принтерлер
+virtual_printers_heading	Виртуалдык принтерлер
+virtual_printers_empty	Азырынча виртуалдык принтерлер жок — төмөнкү маанилерди коюп, андан кийин Сактоо. Бир аз болгондон кийин, түзөтүү үчүн тизмеден бирин таптаңыз.
+virtual_printer_name_ph	Виртуалдык принтердин аты (милдеттүү эмес)
+virtual_printer_create	Виртуалдык принтерди түзүү
+virtual_printer_save	Виртуалдык принтерди сактаңыз
+virtual_printer_delete	Виртуалдык принтерди жок кылуу
+virtual_printer_created	“{name}” виртуалдык принтери түзүлдү
+virtual_printer_deleted	Жок кылынган виртуалдык принтер "{name}"
+virtual_printer_updated	Виртуалдык принтер жаңыртылды
+virtual_printer_updated_named	Виртуалдык принтер "{name}" жаңыртылды
+virtual_draft_layout	Кийинки виртуалдык принтер үчүн коюлган маанилер
+virtual_draft_send	Кийинки виртуалдык принтер үчүн коюлган маани
+virtual_need_real	Алгач чыныгы принтерди тандаңыз
+virtual_need_select	Жок кылуу үчүн виртуалдык принтерди тандаңыз
+real_printer_selected	Тандалган: {name}
+station_group_heading	Виртуалдык принтерлер
+station_group_apply	Виртуалдык принтерди жок кылуу
+station_group_applied	Жок кылынды
+station_group_empty	Виртуалдык принтерди тандаңыз
+station_group_name_ph	Виртуалдык принтердин аты (милдеттүү эмес)
+station_group_save	Виртуалдык принтерди түзүү
+station_group_saved	Виртуалдык принтер сакталды
+station_manage_heading	Дүкөн бөлүмүн кошуу же алып салуу
+printers_routes_heading	Нерселер басылган жерде
+route_pick_heading	Орун
+route_editing	Түзөтүү: {name}
+route_assigned	{printer} кошулду {place}
+route_already_assigned	Бул жерде мурунтан эле: {printer}
+route_removed	{place} ичинен {printer} алынып салынды
+route_cleared	Тазаланды {name}
+route_assigned_empty	Бул жерде эч ким жок
+route_tap_remove	алып салуу үчүн таптаңыз
+route_tap_select	тандоо үчүн таптаңыз
+route_tap_selected	тандалды
+route_pick_printer_first	Адегенде принтерди таптаңыз
+route_assigned_heading	Принтерлер
+route_add_heading	Дайындоо
+printer_label_ph	Аты (мисалы, эсептегич принтер)
+printer_target_ph	Системалык принтердин аты же хост: 9100
+printer_target_default	бул компьютердин кадимки принтери (бош дареги)
+printer_wire_heading	Профиль
+printer_wire_escpos	ESC/POS
+printer_wire_os	Портрет
+printer_wire_os_portrait	Портрет
+printer_wire_os_landscape	Пейзаж
+printer_wire_escpos_short	ESC/POS
+printer_wire_os_short	Портрет
+printer_wire_os_landscape_short	Пейзаж
+printer_format_custom	Жаңы ыңгайлаштырылган профиль
+printer_format_custom_label	Ыңгайлаштырылган
+printer_format_custom_added	Бул жерге ыңгайлаштырылган профиль кошулду
+add_printer	Принтерди кошуу
+remove_printer	Алып салуу
+route_pick_ph	Эсеп же дүкөн бөлүмү
+route_bill	Коноктун эсеби
+route_default_kitchen	Станция жок (дайындалбаган нерселер)
+route_kot_station	Станция
+route_dont_print	Принтер жок
+stations_heading	Станциялар
+stations_help	Дүкөн бөлүмдөрү дүкөндүн ошол бөлүгү үчүн буюмдарды жана принтерлерди топтойт. Принтерлерди Орнотуулар → Принтерлерден тиркеңиз, аракет иретин орнотуңуз, андан кийин биринчи иштейт же Баарына басып чыгарыңыз. Өзгөрүүлөр сиз барган сайын сакталат.
+station_print_heading	Бул станция үчүн принтерлер
+station_print_help	Станцияны тандап, андан кийин бир же бир нече принтерди тиркиңиз. ↑↓ топтомдору аракет тартиби. Биринчи ийгиликке жеткенден кийин иш токтойт; Ар бир тиркелген принтерге бардык жөнөтүүлөрдө басып чыгаруу.
+station_print_pick_ph	Принтерди орнотуу үчүн станция
+station_print_pick_first	Биринчи дүкөн бөлүмүн тандаңыз
+station_print_editing	“{name}” үчүн принтерлерди түзөтүү
+station_vps_dd	Бул станция үчүн принтерлер
+station_vps_dd_n	{n} принтерлер · өзгөртүү үчүн таптаңыз
+station_vps_empty	Азырынча принтерлер жок — Аларды Орнотуулар → Принтерлерден табыңыз
+bill_printers_dd	Конок эсеби үчүн принтерлер
+bill_printers_dd_n	{n} конок эсеби үчүн принтерлер · өзгөртүү үчүн таптаңыз
+job_layout	Макет
+job_delivery	Жумуш кантип жөнөтүлөт
+job_delivery_help	OS документи, чийки байттар же ESC/POS. Эсеп жана билет ар бири өзүнчө сакталат. Кайсы жумуш болбосун Find сакталган принтерге өтө алат.
+station_vp_attached	Принтер тиркелген
+station_vp_detached	Принтер станциядан өчүрүлдү
+station_print_summary	{mode} · {n} принтерлер
+station_print_summary_none	Бул станцияда азырынча принтерлер жок — ал басып чыгарбайт
+stations_none	Азырынча станциялар жок — ылдыйга бирөөнү кошуңуз. Станциялар дүкөндө колдонулбайт — бош калтырыңыз.
+route_up	Өйдө
+route_down	Төмөн
+route_remove	Алып салуу
+route_clear	Таза
+save_printers	Принтерди сактаңыз
+print_test_page	Сыноо барагын басып чыгарыңыз
+no_printer_assigned	Принтер жок
+test_page_no_printer	{place} үчүн принтер жок — ага принтерди кошуп, кайра аракет кылыңыз
+test_page_pick_first	Адегенде сыноо барагы үчүн принтерлерди тандаңыз — андан кийин сыноо барагын басып чыгарыңыз
+test_printers_dd	Сыноо барагы үчүн принтерлер
+test_printers_dd_n	Сыноо барагы үчүн {n} принтерлер · өзгөртүү үчүн таптаңыз
+kot_test_printers_dd	Сыноо үчүн принтерлер
+kot_test_printers_dd_n	Сыноо үчүн {n} принтер(лери) · өзгөртүү үчүн таптаңыз
+test_printer_picked	Сыноо: {name}
+test_printer_cleared	Төмөнкүдө сыноо жок: {name}
+test_page_sent_n	Сыноо барагы {n} принтерлерине жөнөтүлдү
+test_kot_pick_first	Адегенде Сыноо басып чыгаруу үчүн принтерди(лерди) тандаңыз, андан кийин Сыноочу басып чыгаруу
+test_kot_sent_n	Сыноочу басып чыгаруу {n} принтерлерине жөнөтүлдү
+cancel_pick	Марк
+cancel_pick_on	Белгиленген
+cancel_pick_meta	Жокко чыгаруу үчүн белгиленген
+batch_cancel	Жокко чыгаруу белгиленген
+batch_cancel_n	Жокко чыгаруу белгиленген ({n})
+batch_cancel_none	Адегенде бир же бир нече жөнөтүлгөн нерсени белгилеңиз — андан кийин Жокко чыгаруу белгиленген
+batch_cancel_title	Белгиленген нерселерди жокко чыгаруу - бир себеп, ар бир бөлүмгө бир жокко чыгаруу
+batch_cancel_ok	{n} нерселер жокко чыгарылды · {slips} слип(лер) → {kitchens} жокко чыгарылды
+batch_cancel_ok_noprint	{n} элементтери жокко чыгарылды — авто басып чыгаруу өчүк, андыктан жокко чыгаруу слипи жок
+no_printer_kitchen_station	Ал станция үчүн принтер жок
+printers_saved	Сакталган
+test_page_sent	Сыноо баракчасы жөнөтүлдү — принтерди текшериңиз
+test_page_sent_one	Сыноо баракчасы {name} дарегине жөнөтүлдү — принтерди текшериңиз
+printers_found	Табылды {n}: {list}
+printers_find_synced	Табылды {n} — {new} жаңы
+printer_on_device	сакталган
+printer_already_added	мурунтан эле кошулган
+printer_already_saved	Сакталган: {name}
+find_printers	Принтерлерди табыңыз
+printers_looking	Каралууда…
+saving_printer	Принтер кошулууда…
+cancelled	Жокко чыгарылды
+printers_tap_find	Бул түзмөк колдоно ала турган принтерлерди тизмелөө үчүн Табууну таптаңыз.
+printers_none_found	Эч ким табылган жок — системанын принтеринин атын же IP дарегин териңиз (мисалы, 192.168.1.50).
+printer_from_find	{name} кошулду
+kot_printer_ph	Слиптер үчүн принтер
+bill_printer_ph	Коноктордун эсептери үчүн принтер
+kot_print_on	Билеттерди автоматтык түрдө басып чыгаруу: Күйүк
+kot_print_off	Билеттерди автоматтык түрдө басып чыгаруу: Өчүк
+queue_refused	Дүкөн кабыл албайт ({n}) — ар бирин кассадан текшериңиз:
+clear_not_accepted	Текшерилди — бул тизмени тазалоо
+device_name_ph	Бул аппараттын аты
+lan_last_update	акыркы жаңыртуу {time}
+lan_not_accepted	{n} кабыл алынбайт
+connected_now	азыр туташты
+backup_failed	Акыркы автоматтык камдык көчүрмө аткарылбай калды: {e}
+backup_overdue	Камдык көчүрмө {n} күн сакталбайт — камдык көчүрмөнү сактоо үчүн колдонмону ушул түзмөктө ачык кармаңыз.
+disk_low	Бул түзмөктө {mb} МБ гана бош — камдык көчүрмөлөр жакында ишке ашпай калат. Бир аз орун бошотуңуз.
+last_seen_devices	Акыркы жолу көрүлгөн: {time}
+sync_interval	Ар бир {secs}с шайкештирүү
+connection_to_shop	Дүкөнгө туташуу
+supplier_name_ph	Жабдуучунун аты (же кардар)
+supplier_ph	Жабдуучу
+switch_device	Бул түзмөктү которуштуруу
+take_payment	Төлөм алуу
+tax_added_till	{tax} эксклюзив
+tax_inside_price	{tax} камтыган
+tax_invoice	Салык эсеп-фактурасы
+till_to_bank	Касса → банк
+units_heading	Бирдиктер
+unlock_after_pairing	PIN киргизиңиз
+unlock_with_login	Логин менен кулпусун ачыңыз
+unmark	Белгисин алып салуу
+update_my_password	Сырсөзүмдү жаңыртыңыз
+update_my_pin	Каттоо эсебимди жаңыртыңыз
+duress_heading	Шашылыш кулпуну ачуу PIN (ээлерге гана)
+duress_help	Кошумча. Эгер бул PIN сиздикинин ордуна кулпуну ачууда терилсе, бардык китептердеги жазуулар өчүрүлөт (сатуулар, китепчелер, таржымал) жана касса Ээсинин кадимки көрүнүшү катары ачылат — буюмдар, баалар, эсептегичтер, кызматкерлер жана жөндөөлөр кала берет. Схема жана конфигурация жок кылынбайт. Кулпуну ачууга мажбур болгондо гана колдонуңуз. Бош калтырып, өчүрүү үчүн сактаңыз. Эч качан кимдир бирөөнүн PIN кодуна окшош эмес.
+duress_pin_ph	Шашылыш PIN (4–12 сан)
+duress_confirm_ph	Ырастоо үчүн кайра териңиз
+save_duress_pin	Өзгөчө кырдаалды сактоо PIN
+clear_duress_pin	Өзгөчө кырдаалды өчүрүү PIN
+duress_on	Шашылыш кулпуну ачуу PIN күйүк
+duress_off	Шашылыш кулпуну ачуу PIN өчүк
+duress_saved	Шашылыш кулпуну ачуу PIN сакталды
+duress_cleared	Шашылыш кулпуну ачуу PIN өчүрүлдү
+upi_amount_ph	UPI сумма
+void	Жарамсыз сатуу
+write_off_ap	AP өчүрүү
+write_off_heading	Четтетүү (төлөмсүз тазалоо)
+write_off_nil	Жоюу/нөл баланс
+your_brand	Брендиңиз (колдонмодогу)
+your_categories	Сиздин категориялар
+account_kind	Каттоо эсебинин түрү (бирин таптаңыз)
+actual_total_cap	АКТУАЛДЫК ЖАЛПЫ
+amend_help	Түзөтүү, жокко чыгаруу же кайтаруу үчүн сатууну тандаңыз. Түзөтүүлөр толук тарыхты сактайт. Тегеректелген Бардыгы Колдонулганга барабар башталат — тегерек үчүн гана түзөтүңүз. Жокко чыгаруу жана кайтаруу үчүн Ээси же Башкаруучу PIN керек болушу мүмкүн (жогоруда терилген; атыңыз менен жазылган).
+applied_total_cap	КОЛДОНУЛГАН БАРДЫГЫ
+bank_balance	Банк балансы
+bank_net_today	Бүгүн банк таза
+branch_export_help	Экспорттоо камдык көчүрмөлөр папкасына branch_snapshot_CODE_DATE.json жазып, алмашуу буферине көчүрөт. Башка соода түйүнүнүн күнүн импорттоо үчүн анын файлын ошол эле папкага import_branch_snapshot.json катары сактап, андан соң Импортту таптаңыз.
+brand_shown_help	Колдонмонун ичиндеги экрандарда көрсөтүлөт. Бул түзмөктө орнотулган колдонмонун аты жана сөлөкөтү платформа тизмеси катары кала берет.
+app_icon	Колдонмо сүрөтчөсү
+logo_help	Колдонмодогу экрандарда кошумча дүкөн белгиси.
+onboard_layout	Эмне аласың
+item_photo_help	Кошумча. Сүрөтсүз биз менюнун аталышынын баш тамгаларын көрсөтөбүз.
+stamp_heading	Мөөр
+stamp_image_help	Басылган векселдерде жана кардар дисплейинде кошумча штамптын сүрөтү.
+payment_qr_heading	Төлөм QR
+payment_qr_image_help	Эсептерде жана кардарлардын дисплейинде статикалык QR; антпесе төлөм жогорудагы VPAдан динамикалык UPI QR колдонот.
+cash_in_hand	Кассадагы накталай акча (кассалык аппарат)
+change_my_pin_heading	Менин кирүүм
+connect_to_server	Серверге туташуу
+counter_locked	Прилавок 01 · Кулпуланган
+country_pack_help	Өлкө пакети салыктын атын жана математикасын, заматта төлөнүүчү темир жолду жана конок эсептерине басылган бизнес идентификаторун көрсөтөт. Kumkaj эч жерде салык төлөбөйт же мамлекеттик электрондук эсеп-фактураларды бербейт.
+currency_use_help	Колдоого алынган каалаган валюта үчүн колдонууну сыдырып, таптаңыз.
+day_close_help	Жабуу күнүн жаздыруу бул корутундуну (жана эсептелген болсо, тартма дисперсиясын) аудит журналына сактайт. Сатууну токтотпойт.
+expenses_word	Чыгымдар
+feature_access_help	Алар ача турган нерсе - кошумча; жогорудагы жумуш мурунтан эле демейкиге орнотулган
+footer_local	Жергиликтүү SQLite · Түбөлүк акысыз · Нөл Булут
+fresh_book_kirano	Fresh = бош каталог (кийинирээк нерселерди кошуу). Китеп = түрү ачылыш запасы жана төмөндө сизге ким карыз.
+fresh_selected	Жаңы тандалган — каталог бош калат. Даяр болгондо "Бүттү" баскычын таптаңыз.
+gross_word	Гросс
+how_start	Кантип баштагыңыз келет?
+kot_print_help_kirano	Кирана эсептегичинде колдонулбайт.
+later_country_pack	Кийинчерээк: Орнотуулар → өлкөңүздүн пакетин салык жана төлөм энбелгилери үчүн колдонуңуз.
+local_badge	ЖЕРГИЛИКТҮҮ
+mix_type_hint_kirano	Керек болсо накталай акчага / UPI / картага / кредитке бөлүңүз. Кредитке жогорудагы кардар керек.
+money_in_sales	Акча (сатуу)
+net_word	Таза
+offline_badge	ОФЛАЙН
+optional_login_help	Кошумча логин (id + сырсөз). Ээси бир жолу белгилейт; кийин гана колдонуучу сырсөздү өзгөртө алат.
+or_unlock_login	Же логин id + сырсөз менен кулпусун ачыңыз
+permission_preset	Жумуш (экрандарды жана акча аракеттерин орнотот)
+preset_help_kirano	Кассир: сатам. Менеджер: сатуу + меню пункттары + жокко чыгаруу / өзгөртүү.
+product_locked_kirano	Кирано
+product_only_kirano	Kirano - бул азык-түлүк / kirana операциялык тутуму: эсептегич сатуу, акция, кредит жана китептер - түзмөктөрүңүздө оффлайн.
+purchases_cogs	Сатып алуулар (COGS)
+qty_cap	САНЫ
+restore_help	Калыбына келтирүү: камдык көчүрмөнү тандоо. Китептер ошол кездегидей ачылат; бухгалтердик китепчелер биринчи сакталат, андыктан муну артка кайтарууга болот.
+wipe_data_heading	Жергиликтүү дайындарды жок кылуу
+wipe_data_help	Ээси үчүн гана — Windows орнотуудан чыгаруу сыяктуу тандоолор. Бизнес жазуулары соода таржымалын тазалайт, бирок нерселерди жана жөндөөлөрдү сактайт (мисалы, өзгөчө кырдаалда кулпуну ачуу PIN коддору). Дүкөндү орнотуу китептердин базасын жок кылат. Экран артыкчылыктары терезени/тилди тазалайт. Ээстин PIN коду менен ырастаңыз. Команданын өзгөчө кырдаалда кулпусун ачуу PIN коду өзүнчө (кулпуну ачууда жашыруун сүртүңүз).
+wipe_trading	Бизнес жазуулар
+wipe_schema	Дүкөндү орнотуу
+wipe_ui	Экран артыкчылыктары
+wipe_owner_pin_ph	Жок кылуу үчүн ээси PIN
+wipe_delete_selected	Тандалган жок кылуу
+wipe_owner_only	Жергиликтүү дайындарды Ээси гана жок кыла алат.
+restore_owner_only	Камдык көчүрмөнү Ээси гана калыбына келтире алат.
+wipe_owner_pin_needed	Жергиликтүү дайындарды жок кылуу үчүн Ээсин PIN киргизиңиз.
+wipe_nothing_selected	Алгач эмнени жок кылууну тандаңыз.
+wipe_done	Тандалган жергиликтүү дайындар жок кылынды.
+wipe_schema_done	Дүкөндүн жөндөөлөрү өчүрүлдү — улантуу үчүн Сервер же Кардар тандаңыз.
+rounded_total	Тегеректелген жалпы
+setup_app_kirano	Kirano орнотуу
+shop_logo_optional	Дүкөн логотиби (милдеттүү эмес)
+stock_type_help	Меню пунктунун атын (анын бир бөлүгү жетиштүү), санын териңиз, анан тууралаңыз. Менюнун эсептелбеген пункттарына көз салууну бир жолу баштаңыз.
+team_owner_help	Кимдир-бирөөнү кошуу үчүн аны бош калтырыңыз: аты-жөнү, жумушу, колдонуучу аты, PIN жана кошумча сырсөз, андан кийин Кошуу. Ошол эле форманы түзөтө турган адамды тандаңыз — аты, колдонуучу аты, сырсөз, экрандар жана укуктар — андан кийин Сактоо. Сиздин PIN жана сырсөзүңүз ылдыйда бир кирүү. Ээси эч кимдин PINсун өзгөртпөйт.
+staff_name_ph	Кызматкердин аты
+staff_copy_hire_ph	Орнотууну көчүрүү (милдеттүү эмес)
+staff_copy_hire	Бул адамдын жөндөөсүн колдонуңуз
+staff_edit_name_ph	Көрсөтүлгөн ысым
+staff_rename	Атын сактоо
+staff_copy_edit_ph	Башка адамдан орнотууну көчүрүү
+staff_copy_edit	Алардын жөндөөлөрүн тандалганга көчүрүңүз
+staff_copy_edit_onto	Алардын жөндөөлөрүн {name}ге көчүрүңүз
+staff_deactivate_named	{name} алып салуу
+staff_renamed	Аты сакталды
+staff_setup_copied_hire	Орнотуу {name}ден көчүрүлдү — жаңы ат коюп, PIN, андан кийин Кызматкерлерди кошуңуз
+staff_setup_copied_edit	{from} жөндөөлөрү {to}ге көчүрүлдү
+staff_copy_need_selected	Алгач кимди түзөтүүнү тандаңыз
+staff_copy_need_source	Көчүрүү үчүн кимдин жөндөөсүн тандаңыз
+staff_copy_same	Ошол эле адам - башка бирөөнү танда
+staff_rename_need_selected	Биринчи кимдин атын өзгөртүүнү тандаңыз
+team_pick_hint	Кимди түзөтүүнү тандаңыз — экрандар, акча укуктары жана станциялар ошол адамга гана көрүнөт.
+team_stations_help	Алар колдоно турган станциялар
+team_stations_changed	Станциялар өзгөртүлдү — Бул адам үчүн орнотууларды сактаңыз
+team_features_changed	Экрандар өзгөртүлдү — Бул адам үчүн орнотууларды сактаңыз
+team_rights_changed	Укуктар өзгөртүлдү — Бул адам үчүн орнотууларды сактаңыз
+they_owe_us	Алар бизге карыз
+unit_at_cap	Бирдик @
+units_help	Менюнун этикеткаларынын коддору (кг, даана, баштык). Ар бир бирдик түз же башка бирдиктер аркылуу стандартка (kg · cm · ml · pc) байланышышы керек, мис. 1 куту = 2 куту жана 1 куту = 20 см. Конверсиялар: 1ден = факторго. Валюта эч качан бирдик эмес.
+units_picker_help	Сатып алуу жана буюмдарды тандоочуларда бирдикти көрсөтүү үчүн Күйгүзүү/Өчүрүү таптаңыз. Өчүрүлгөн бирдиктер дагы эле конвертацияланат.
+unit_picker_on	Күйүк
+unit_picker_off	Өчүк
+we_owe_them	Биз аларга карызбыз
+who_unlocking	Ким ачып жатат?
+locked_word	Кулпуланган
+show_pin	PIN көрсөтүү
+hide_pin	Жашыруу PIN
+set_owner_pin	Ээсинин PIN кодун коюу
+enter_owner_passcode	ЭЭСИНИН ПРОСТО КОДУН КИРГИЗ
+enter_staff_passcode	КЫЗМАТКЕРЛЕРДИН ПРОСТО КОДУН КИРГИЗ
+pin_count_zero	0 / 12 сан · жок дегенде 4, андан кийин OK
+pin_count_need	{} / 12 сан · дагы {} керек
+pin_count_full	12 / 12 сан · OK басыңыз
+pin_count_ready	{} / 12 сан · даяр болгондо OK басыңыз
+pin_hint_choose	4–12 санды тандаңыз · Сактоо үчүн Киргизүү же Кулпуну ачуу
+pin_hint_new	Жаңы 4–12 сандуу Ээси PIN · Киргизиңиз же Кулпуну ачыңыз
+pin_hint_shop_code	Түзмөктү сатып алуу · жупташтыруу коду {}
+pin_hint_books	Бул аппарат китепчелерди кармап турат
+pin_hint_paired	Кошумча касса жупташтырылган — сатуу үчүн кулпусун ачыңыз
+pin_hint_pair_first	Кошумча кассалык аппарат — биринчи дүкөндүн аппаратына жуптаңыз
+unlock_to_continue	Улантуу үчүн кулпусун ачыңыз
+no_staff_yet	Азырынча кызматкер жок — Ээси, андан кийин Команда катары кулпусун ачыңыз
+status_server_set_pin	Сервер режими — Ээси PIN коюу
+status_server_tills	Сервер режими — кошумча кассалар кошула алат. Кулпуну ачуу
+status_server_unlock	Server Mode — Ээси катары кулпусун ачуу
+status_client_unlock	Кардар режими — сатуу үчүн кулпусун ачуу
+icon_new_selected	Белги: жаңы файл тандалды — брендди сактоо таптаңыз
+icon_custom	Icon: ыңгайлаштырылган жер белгиси
+icon_default	Белги: Kumkaj белги (демейки) — ыңгайлаштырылганды тандаңыз
+logo_yours	Логотип: дүкөнүңүздүн логотиби — экрандарда жана квитанцияларда көрсөтүлгөн
+logo_default	Логотип: Kumkaj белги (демейки) — эгер сизде бар болсо, өзүңүздүкүн тандаңыз
+tmpl_current	Учурдагы: {} — {}
+tmpl_selected	Тандалган: {} — {}
+setup_complete	Орнотуу аяктады
+onboard_fresh_tmpl	Жаңы · {} — каталог бош башталат; меню пункттарын Менюдан кошуңуз, андан кийин Бүттү.
+onboard_book_tmpl	Бухгалтердик китеп · {} — меню пункттарын жана кредитти ачууну кошуп, андан кийин Бүттү.
+onboard_template_tmpl	Кааласаңыз, жерди атаңыз, анан кантип баштоону тандаңыз.
+tmpl_blurb	Кирана эсептегич: сатуу, запас, кат, жеткирүүчү сатып алат, китептер.
+tmpl_how	кассада сатуу; запас үчүн сатып алуу; Күнүмдүк китеп үчүн китептер.
+reports_facet_title	Отчеттор
+reports_facet_help	Күндөлүк китепчелер, кардар же жеткирүүчүнүн карылыгы, банктык билдирүүлөр жана мезгил P&L.
+against_bill_ph	Жогорудагы # конок эсебине каршы (милдеттүү эмес)
+aliases_ph	Кыска коддор жана лакап аттар — үтүр менен ажыратылган (мис. MG02, atta)
+amount_blank_full_ph	Сумма (бош = толук баланс)
+amount_owed_ph	Карыз суммасы
+amount_ph	Суммасы
+amount_received_ph	Алынган сумма
+amount_we_pay_ph	Биз төлөгөн сумма
+business_name_ph	Бизнес аты
+category_new_ph	Категория (милдеттүү эмес, жаңы болсо түзүлөт)
+code_bag_ph	Код (баштык)
+conv_factor_ph	Фактор (25 = 1 баштык → 25 кг)
+country_code_ph	Өлкө коду мис. IN, GB, US, AE, BR
+credit_khata_amount_ph	Кредиттик/кредиттик китептин суммасы
+credit_limit_ph	Насыя чеги (0 = жок)
+from_code_ph	Коддон (баштык)
+item_name_lang_ph	Меню меню пунктунун аталышы — аны өз тилиңизде териңиз
+login_id_opt_ph	Колдонуучунун аты (милдеттүү, уникалдуу)
+manager_pin_ph	Менеджер PIN бекитүү үчүн (эгер жокко чыгара албасаңыз)
+new_branch_name_ph	Жаңы филиалдын аталышы
+new_password_ph	Жаңы сырсөз (милдеттүү эмес)
+new_pin_ph	Жаңы PIN (4–12 сан)
+note_bank_ph	Эскертүү (депозит, алуу,…)
+note_buy_expense_ph	Эскертүү (күйүүчү май, ижара, ...)
+note_expense_ph	Эскертүү (күйүүчү май, кеңсе,…)
+options_kirano_ph	Параметрлер — Size*: Small=199, Large=399 | Toppings+3: Cheese=40, Olive=30 | Extra cheese=40
+part_second_way_ph	Экинчи жол менен бөлүү (милдеттүү эмес)
+phone_ph	Телефон
+place_name_ph	Бул жердин аты
+qty_example_ph	Саны (мисалы, кг үчүн 1,5)
+quantity_ph	Саны
+reason_required_ph	Себеп (талап кылынат)
+role_title_ph	Ролдун аталышы (мисалы, Бариста)
+service_pct_ph	Кызмат % кошумча 0/10/12
+short_code_ph	Кыска код (MG02)
+starting_password_ph	Баштапкы сырсөз (милдеттүү эмес)
+starting_pin_ph	PIN баштап (4–12 сан)
+station_name_ph	Станциянын аталышы (милдеттүү эмес)
+station_new_ph	Бөлүм (милдеттүү эмес)
+table_name_ph	Эсептөөчүнүн / булуңдун аты
+tax_rate_ph	Салык ставкасынын аталышы же % — Стандарттык, Азайтылган, 0, 5, 12, 18, 20
+to_code_ph	Код үчүн (кг)
+uncleared_no_ph	Жогоруда # тазаланган жок
+unit_cost_ph	Бирдиктин баасы
+unit_name_bag_ph	Аты (баштык)
+unit_plate_ph	Бирдик (пластинка / PC - бош = ар бири)
+pay_credit	Эсепте
+book_kind_today	Бүгүнкү күндө китепчелер
+book_kind_month	Бул айдын эсеби
+book_kind_aging	Төлөнбөгөн/дебет-кредит
+book_kind_balance	Баланс
+order_help	Аны кошуу үчүн менюдагы нерсени таптап коюңуз.
+floor_help	Бул дүкөн кассада сатылат. Столдор жана ашкана полу Киранонун бир бөлүгү эмес.
+kitchen_help	Дүкөндө колдонулбайт.
+kitchen_empty	Ачык билеттер жок (эсептөөчү дүкөндөр бул экранды колдонбой коюшат).
+add_a_table	Тамактануучу үстөл кошуу
+add_station_heading	Дүкөн бөлүмүн кошуу
+categories_help	Ошол категорияга жогорудагы меню пунктун берүү үчүн Колдонууну таптаңыз. Сүрөт категорияга сүрөттү берет; бирисиз анын баш тамгаларын көрсөтөт.
+dish_search_ph	Нерселерди же кыска кодду издөө…
+tile_free	Бош
+tile_occupied	ээлеген
+tile_food_ready	Тамак даяр
+tile_bill_printed	Коноктун эсеби басылып чыкты
+tile_paid	Төлөндү
+tile_bill_btn	Коноктун эсеби
+tile_occupy_btn	Конокторду отургузгула
+tile_free_btn	Тамактануучу столду бошот
+tile_ready_btn	Тамактануучу столду бошот
+tile_undo_bill	Конок эсебин жокко чыгаруу
+summary_busy	ашкана үстөлдөрү бош эмес
+summary_to_collect	чогултуу
+summary_on_floor	ашканада
+floor	Дүкөн
+sizes_as_items_ph	Өлчөмдөрү өзүнчө меню пункттары катары (милдеттүү эмес) — Half=120, Full=200
+dish_group_ph	Пакет өлчөмү тобу (милдеттүү эмес) — мис. Салмагы 1 кг / 5 кг
+discount	Арзандатуу
+remove_discount	Арзандатты алып салуу
+apply_discount	Арзандатуу колдонуу
+save_opening_cash	Ачылган акчаны үнөмдөңүз
+close_shift_print	Сменаны жаап, слипти басып чыгарыңыз
+area_prices_ph	Аймактык баалар (милдеттүү эмес) — AC=220, Parcel=210
+discount_ph	10% же 50
+discount_reason_ph	Себеби (мисалы, туруктуу конок, кеч тамак)
+opening_float_ph	Накталай акча бүгүн эртең менен тартмага салынды
+shift_counted_ph	Накталай акча тапшырууда эсептелген
+opening_float	Накталай акчаны ачуу (флоат)
+shift_handover	Сменалык тапшыруу
+shift_since	Бул жылыштан бери
+expected_in_drawer	Суурмада күтүлөт
+right_discount	Арзандатуу бериңиз
+floor_in_kitchen	Прогрессте
+floor_eating	Кызмат кылган
+pick_category	Категория тандаңыз
+close_category_list	Категориялар тизмесин жабуу
+new_category_row	Жаңы категория — меню пунктун сактаганда түзүлөт
+your_category	Сиздин категория
+suggested_category	Сунушталган — биздин буюмдардан
+category_search_ph	Категория — сиздикинен издеңиз же жаңысын териңиз
+line_sent_state	Жөнөтүлдү
+line_nc_state	Кошумча (NC) — төлөнбөйт
+cancel_item_short	Жокко чыгаруу
+nc_short	NC
+charge_again_short	Заряддоо
+move_short	Жылдыруу
+cancel_item_title	Бул нерсени жокко чыгаруу — бэк-офис жокко чыгаруу слипин алат
+nc_item_title	Менюнун бул пунктун акысыз кылуу (NC)
+charge_again_title	Бул меню пунктун кайра заряддаңыз
+move_item_title	Бул меню пунктун башка ашкана үстөлүнө жылдырыңыз
+already_cooked	Бышырылган (ысырап)
+not_cooked_yet	Бышыра элек
+return_to_customer	Кардарга кайтуу
+short_by	Кыскасы
+tip_not_sale	Кеңеш (кызматкерлер, сатуу эмес)
+right_settle	Төлөм алуу
+right_cancel_sent	Менюнун жөнөтүлгөн пунктун жокко чыгаруу
+right_complimentary	Акысыз (NC)
+right_move_table	Эсептегичтерди жылдыруу / бириктирүү
+right_reprint	Конок эсебин кайра басып чыгарыңыз
+right_allowed	Уруксат берилген
+right_with_approval	жактыруу менен
+right_denied	уруксат эмес
+editing_staff	Түзөтүү
+finding_server	Бул Wi‑Fiде дүкөндүн серверин издеп жатабыз…
+no_server_found	Эч ким табылган жок. Серверде: Орнотуулар → Башка түзмөктөр → Кошумча кассалык машиналарга уруксат берүү (ошол эле Wi‑Fi). Же ошол жерде көрсөтүлгөн IPди териңиз.
+servers_found_pick	Сиз туташкыңыз келген дүкөндү таптаңыз.
+server_host_selected	{host} колдонуу — жупташтыруу кодун киргизип, андан кийин азыр жупташтыруу.
+print_bill	Конок эсебин басып чыгаруу
+table_actions	Каршы аракеттер
+move_merge_table	Тамактануучу үстөлдү жылдыруу / бириктирүү
+move_help	Бул эсептегичтин тартибин бош столго жылдырыңыз же аны иштеп жаткан таблицага бириктириңиз.
+move_target_ph	Каршы аты
+approval_pin_ph	Менеджер PIN (суралса гана)
+move_here	Бул жакка көчүңүз
+merge_into	Ага кошулуңуз
+line_reason_ph	Себеби (мисалы, кардар оюн өзгөрттү, кампада жок)
+line_qty_ph	Канча жокко чыгаруу керек (бош = баары)
+line_target_ph	Тамактануучу столго өтүү (мис. D5)
+confirm	Ырастоо
+menu_search_ph	Меню пунктун же кыска кодду издөө
+customer_paid_ph	Кардар төлөдү
+tip_ph	Кеңеш
+table_area_ph	Аймак (мис., Dine In, Parcel, AC)
+table_range_ph	Көптөгөн дароо: D1-D20
+add_these_tables	Бул эсептегичтерди кошуңуз
+remove_these_tables	Бул эсептегичтерди алып салыңыз
+table_remove_ph	Алып салуу: T1-T24, же бир ашкананын аталышы
+find_server	Дүкөндүн серверин табыңыз
+bill_format	Коноктун эсеп форматы
+bill_format_help	Ар бир эсепке дүкөнүңүздүн аты менен басылган. | менен өзүнчө саптар (мисалы, MG Road, Rajkot | Ph 98250 00000).
+bill_header_ph	Дарек | телефон
+fssai_ph	FSSAI / дүкөн лицензиясы №. (милдеттүү эмес)
+bill_footer_ph	Колонтитул (мис. Рахмат, дагы бир жолу кириңиз)
+save_bill_format	Конок эсебинин форматын сактаңыз
+kot_format	Слип форматы
+kot_format_help	Тизмедеги талааны таптаңыз. Көрсөтүү, шрифт өлчөмү жана салмагы жогоруда тандалган слип түрүндөгү ошол талаага колдонулат. Ар бир түрү өзүнүн өлчөмүн жана салмагын сактайт.
+kot_format_fields	Талаалар
+kot_field_next	Кийинки талаа
+kot_field_show	Көрсөтүү
+kot_field_hide	Жашыруу
+kot_field_on	көрсөтүү
+kot_field_off	жашыруу
+kot_field_size	Арип өлчөмү
+kot_field_size_ph	мис. 16, 20, 24, 28, 32…
+kot_weight_light	Жарык
+bill_kot_panel_help	Эсептин макети жана мазмундун туурасы. Кассир - бул эсепти чыгарган же эсептеген адам - ​​толук сатуу окуясы китептерде калат.
+std_size_ph	мис. 18, 20, 26…
+kot_show_shop	Дүкөндүн аты
+kot_hide_shop	Дүкөндү жашыруу
+kot_show_time	Убакыт
+kot_hide_time	Убакытты жашыруу
+kot_show_waiter	Кассир
+kot_hide_waiter	Кассирди жашыруу
+kot_show_station	Станция
+kot_hide_station	Станцияны жашыруу
+kot_show_table	Прилавок
+kot_hide_table	Тамактануучу үстөлдү жашыруу
+kot_show_kot_no	Билет №
+kot_hide_kot_no	Билеттин номерин жашыруу
+kot_width	Алдын ала көрүү (слип өтмөгүндө мазмундун туурасын коюу)
+kot_width_58	58 mm
+kot_width_80	80 mm
+kot_kind_heading	Билет түрү
+kot_kind_original	Түпнуска
+kot_kind_duplicate	Дубликат
+kot_kind_modified	Өзгөртүлгөн
+kot_kind_cancelled	Жокко чыгарылды
+kot_style_heading	Талаа түрү өлчөмү жана салмагы
+kot_style_title	Аталыш
+kot_style_item_qty	Меню меню пункту · Саны
+kot_style_field_pick	Талаа тандоо
+kot_weight_regular	Регулярдуу
+kot_weight_bold	Калың
+kot_align	Тегиздөө
+kot_align_start	Баштоо
+kot_align_center	борбор
+kot_align_end	Аягы
+content_width	Мазмундун туурасы (мм)
+content_width_bill	Коноктун эсебинин мазмунунун туурасы (мм)
+content_width_kot	Билет мазмунунун туурасы (мм)
+content_width_ph	Же мазмундун туурасын териңиз, 40–210 mm
+content_width_help	Бул слип канчалык кенен басып чыгарат. Билл өзүнүн кеңдигин сактайт.
+content_width_bill_help	Кардардын эсеби канчалык кенен. Демейки 210 мм (бет). 58 мм тар тайгалак, 80 мм туурасы, 112 мм 4 дюймдук, 210 мм A4 кеңдиги. 40тан 210го чейин каалаган маанини териңиз. Билеттер слип өтмөгүндө өзүнүн туурасы бар.
+content_width_kot_help	Билет канчалык кең. Демейки 80 мм. 58 мм тар тайгалак, 80 мм туурасы тайгалак, 112 мм 4 дюймдук, 210 мм бет. 40тан 210го чейин каалаган маанини териңиз. Кардарлардын эсептеринин эсеп өтмөгүндө өзүнүн туурасы бар.
+vp_paper_width	Мазмундун туурасы (мм)
+vp_paper_width_ph	Же мазмундун туурасын териңиз, 40–210 mm
+vp_paper_width_help	Мазмундун туурасы Билл жана Слип форматында — эсеп үчүн (демейки 210 мм) жана билет үчүн (демейки 80 мм) өзүнчө орнотулган.
+kot_size	Арип өлчөмү
+kot_size_s	Кичине
+kot_size_m	Кадимки
+kot_size_l	Чоң
+std_size	Арип өлчөмү
+kot_copies	Көчүрмөлөр
+kot_copies_1	1
+kot_copies_2	2
+kot_copies_3	3
+kot_title_ph	Аталышы (бош = БИЛЕТ)
+kot_footer_ph	Бэк-офис эскертүүсү (милдеттүү эмес)
+kot_preview	Алдын ала көрүү
+save_kot_format	Слип форматын сактоо
+test_kot_format	Сыноо басып чыгаруу
+test_kot_sent	Билетти алдын ала көрүү жөнөтүлдү
+test_bill_format	Конок эсебин текшерүү
+test_bill_sent	Коноктун эсебин алдын ала көрүү жөнөтүлдү
+test_print_no_printer	Ал жумуш үчүн принтер жок — бул экрандан бирин тандаңыз
+kot_format_saved	Слип форматы сакталды
+std_print	Конок конокторунун эсебин басып чыгаруу өлчөмү
+std_print_help	OS/документ принтерлериндеги Стандарттык Портрет жана Пейзаждык эсеп тапшырмалары үчүн шрифт өлчөмү (чекиттерди киргизиңиз — Чакан/Нормал/Чоң эмес). Эки багыт боюнча бирдей өлчөмдө.
+std_size_s	Кичине
+std_size_m	Кадимки
+std_size_l	Чоң
+save_std_print	Конок эсебинин басып чыгаруу өлчөмүн сактаңыз
+std_print_saved	Коноктун эсебинин басып чыгаруу өлчөмү сакталды
+print_brand_kit	Принтер комплекти
+print_brand_kit_help	Кошумча мөөр жана төлөм QR сүрөттөрү эсеп беттеринде жана LAN кардар дисплейинде. VPA динамикалык UPI QR эч кандай төлөм QR сүрөтү коюлбаса дагы иштейт.
+choose_stamp	Мөөрдү тандаңыз
+clear_stamp	Таза штамп
+stamp_set	Мөөр: файлда — кардар дисплейинде көрсөтүлөт жана басылган векселдерде аталат
+stamp_none	Мөөр: жок
+choose_payment_qr	Төлөм QR тандаңыз
+clear_payment_qr	Төлөмдү тазалоо QR
+payment_qr_set	Төлөм QR: файлда — кардар дисплейинде көрсөтүлөт (ал жерде UPI QR суммасын алмаштырат)
+payment_qr_none	Төлөм QR: жок — төлөп жатканда UPI IDден QR суммасы
+aggregator_import	Агрегатор буйруктары (файл)
+aggregator_import_help	Кошумча Жергиликтүү импорт: камдык көчүрмөлөр папкасына import_aggregator_orders.json коюңуз (массив же {"заказдар":[…]}), андан кийин Импортту таптаңыз. Эч качан эсептегичти тоспойт; түз Zomato/Swiggy булут.
+import_aggregator_file	Агрегатор файлын импорттоо
+team_pick_ph	Түзөтө турган кызматкерлер — аты, колдонуучу аты же тандоо
+select_staff	Бул персоналды тандаңыз
+rights_help	Бул адам үчүн акча аракеттери — айлануу үчүн таптаңыз: Уруксат берилген → Жетекчинин PIN коду керек → Уруксат берилбейт. Эсепти кайра басып чыгаруу - бул гана; бөлүмдөрү төмөнкү текшерүү тизмеси болуп саналат.
+dish_picker_help	Биздин нерселерди издеңиз же карап чыгыңыз жана анын атын жана сүрөтүн толтуруу үчүн бирөөсүн таптаңыз — же өз атыңызды сактаңыз. Бааңызды коюңуз (0 жакшы), андан кийин нерсени кошуңуз.
+close_dish_list	Элементтердин тизмесин жабуу
+own_item_name	Муну менюңуздун аталышы катары колдонуңуз
+on_your_menu	Каталогто
+edit	Түзөтүү
+schemes	Схемалар / сунуштар
+schemes_help	Бирди сатып алуу, пайыздык арзандатуу жана белгиленген таңгактар. Мисал: 2 күрүч сатып алсаңыз, 1 май алыңыз.
+scheme_bogo_ph	2 күрүч сатып 1 май алыңыз
+add_scheme	BOGO кошуу
+schedule_ph	Иш убактысы — дүйшөмбү-жума 07:00-11:00 же кечинде 17:00-19:00=150
+upi_vpa_ph	UPI ID (VPA)
+upi_payee_ph	UPI алуучунун аты (милдеттүү эмес)
+upi_qr	UPI QR
+show_upi_qr	UPI QR көрсөтүү
+close_upi_qr	Жабуу
+upi_qr_help	Кардар сканерлеп, төлөйт. Алар төлөгөндөн кийин төлөмдү алуу баскычын таптаңыз. Экинчи экран: сервердин URL дарегин ачуу / LANдагы дисплей.
+kot_recall	Эскертүү
+recently_done	Жакында жасалды
+recall_kot_ph	Эскертүү үчүн билет #
+role_help_customer	Ролу: Кардар — кредиттик китепче (алар бизге карыз). Ошол эле кардар же жеткирүүчү да запастарды бере алат.
+role_help_both	Ролдор: Кардар + Жабдуучу - бир кардар же жеткирүүчү, кредиттик китеп жана кредитордук эсептер, Отчеттордо таза.
+role_help_supplier	Рол: Жабдуучу — биз аларды сатып алуу үчүн карызбыз.
+dine_in_pick_table	Дүкөндө колдонулбайт
+choose_table	Эсептегичти тандаңыз
+change_table	Тамактануучу үстөлдү алмаштырыңыз
+pick_table_banner	Бул буйрутма үчүн ашкана үстөлүн тандаңыз
+items_word	меню пункттары
+items_section	Меню меню пункттары
+back_to_order	Заказга кайтуу
+new_items_head	Азырынча жөнөтүлө элек
+price_ph	Баасы
+price_ph_gst_inside	Баасы ({tax} кошкондо)
+cancel_needs_table	Каршы сатуулар сиз төлөмдү алганга чейин билетте кала берет
+tax_rates_missing_hint	Бул нерселерде {tax} тарифи жок — белгиленген нерселер боюнча Салык ставкасы (бааларга {tax} камтылган {tax} камтылган)
+taxable_value	Салык салынуучу маани
+gst_inside_price_note	({tax} кошкондо)
+start_with_template	Биздин буюмдардын үлгүсү менен баштаңыз
+template_heading	Башталгыч заттар
+template_info	{c} категориялары жана сүрөттөрү бар {d} элементтери кошууга даяр. Баалар ₹0 башталат — сиздики кийинчерээк орнотуңуз.
+template_import	Толук шаблонду импорттоо
+template_confirm	{d} элементтерин категориялары менен кошосузбу? Сизде бар нерселер ошол бойдон калат.
+template_yes	Ооба, импорт
+template_importing	Нерселерди импорттоо…
+template_import_progress	Импорттоо… {d}/{t}
+template_done	Биздин шаблондогу ар бир нерсе сиздин буюмдарыңызда.
+template_imported	{d} элементтери жана {c} категориялары кошулду — бул экранда алардын баасын коюңуз
+client_template_heading	Импорттук каталог
+client_template_info	{title}: {c} категориялары, баасы, сүрөттөрү жана лакап аттары бар {d} буюмдары. Жетишпеген нерселер гана — сизде мурунтан эле бар ысымдар калат.
+client_template_import	Бул нерселерди импорттоо
+client_template_confirm	{title}тен {d} элементтери кошулсунбу? Сизде бар нерселер ошол бойдон калат.
+client_template_importing	{title} импорттолууда…
+client_template_done	{title}'тен ар бир нерсе сиздин нерселериңизде.
+client_template_imported	{title}тен {d} элементтери жана {c} категориялары кошулду
+resv_heading	Резервдер
+resv_name_ph	Кардардын аты
+resv_phone_ph	Телефон (милдеттүү эмес)
+resv_guests_ph	Адамдар
+resv_when_ph	Качан — 20:30, эртең 13:00
+resv_table_ph	Эсептегич (милдеттүү эмес)
+resv_add	Тамактануучу үстөлдү ээлеп алыңыз
+resv_seat	Отурган
+resv_none	Эч кандай ээлөөлөр келе элек.
+guests_word	коноктор
+delivery_by_ph	Жеткирүү (чабуучу же кызматкерлердин аты)
+kitchen_all_day	Азыр тамак жасоо үчүн: {items}
+split_bill	Конок эсебин бөлүү
+split_go	Коноктун өзүнчө эсебин түзүңүз
+cancel	Жокко чыгаруу
+opening_client	кардар ачылууда…
+preparing_desk	Үстөл даярдалууда…
+opening_server	Сервер ачылууда…
+creating_server	Сервер түзүлүүдө…
+split_help	Кардар төлөй турган нерселерди таптаңыз · {n} тандалган
+split_send_first	Адегенде слип жөнөтүңүз — арткы кеңседе болгон нерселер гана өзүнчө эсепке өтүшү мүмкүн
+split_pick_some	Алгач өзүнчө эсеп үчүн нерселерди таптаңыз
+split_done	Өзүнчө эсеп түзүлдү — ал ушул эсептегичтин жанында жайгашкан
+split_marked	өзүнчө конок эсеби
+order_empty_pick	Бош буйрутма — нерселерди тандоо үчүн жогорудагы нерселерди кошуу баскычын таптаңыз.
+add_dishes	Элементтерди кошуу
+order_so_far	Бул буйрутма боюнча: {n} · {total}
+no_dish_match	"{q}" эч нерсе дал келбейт
+pick_dishes_help	Кошуу үчүн бир нерсени таптаңыз · тизмени тарытуу үчүн категорияны тандаңыз
+pick_done	Бүттү
+pick_done_dd	Бүттү · {label}
+printer_route_mode	Бул жерде бир нече принтер болсо
+printer_mode_first	Биринчи бул иштейт
+printer_mode_all	Баарына басып чыгаруу
+kot_show_area	Район
+kot_hide_area	Аймакты жашыруу
+kot_show_item_hdr	Меню меню пункту · Саны
+kot_hide_item_hdr	Мамычаларды жашыруу
+kot_show_title	Титул сызыгы
+kot_hide_title	Аталышын жашыруу
+kot_field_order	Басып чыгаруу тартиби
+kot_field_up	Өйдө жылдыруу
+kot_field_down	Төмөн жылдыруу
+kot_field_cycle	Кийинкиди тандаңыз
+kot_field_select	Кийинкиди тандаңыз
+kot_field_time	Убакыт
+kot_field_kot_no	Билет №
+kot_field_area	Район
+kot_field_table	Прилавок
+kot_field_shop	Дүкөндүн аты
+kot_field_waiter	Кызматкерлер
+kot_field_station	Станция
+app_template_blurb_extra	Ошондой эле: Ээси Захир, Админ Асиф, Кассир Наваз; алдыңкы каптал тилкеси; 4 сааттан кийин тарых; Бүгүн чечип алуу; компакттуу эсеп.
+dishes_n	{n} нерсе
+recipe_ph	Рецепт (милдеттүү эмес - дүкөндө колдонулбайт)
+reorder_ph	Көбүрөөк сатып алыңыз
+set_reorder	Кайра иреттөө деңгээлин коюу
+low_stock_alert	Азайып баратат — жакында сатып алыңыз: {items}
+unpriced_note	Буюмдарыңыздагы {n} нерселердин азырынча баасы жок — сиз бирөөнү койгонго чейин алар 0 менен эсептешет.
+show_unpriced	Баасы жок нерселерди гана көрсөтүү
+show_all_dishes	Бардык элементтерди көрсөтүү
+role_waiter	Кассир
+role_kitchen	Дүкөн
+role_title_rest_ph	Ролдун аталышы (мисалы, капитан, башкы ашпозчу)
+preset_help_rest	Кассир: сатам. Менеджер: сатуу + меню пункттары + жокко чыгаруу / өзгөртүү.
+kind_raw	Дүкөндө колдонуу үчүн сатып алынган
+kind_resale	Сатуу үчүн сатып алган
+kind_dish	Запастарды эсептебеңиз
+buy_unit_ph	Бирдик (кг, литр, даана)
+add_another_way	+ Башка жолду кошуңуз
+parts_status	{b} ичинен {a} кирди · {c} сол
+save_expense	Чыгымды үнөмдөө
+rest_ph	Эс алуу
+low_badge	Төмөн
+stock_empty	Азырынча кампада эч нерсе жок — Сатып алууда жаздырган нерселериңиз бул жерде көрүнөт.
+recent_changes	Акыркы өзгөрүүлөр
+lane_declared_label	Салык эсеп-фактурасы
+lane_owner_label	Накталай эсеп
+money_lane_bill	Коноктун эсеби: {lane}

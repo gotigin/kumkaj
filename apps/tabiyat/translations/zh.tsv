@@ -1,0 +1,1341 @@
+# Chinese (Simplified) — 中文 (zh). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	药店柜台：药品、批次、赊账与账本。免费，可离线。
+barcode_ph	条码 / EAN
+composition_ph	成分 / 组成（可搜索）
+schedule_h_off	Schedule H — 关（店主标记）
+schedule_h_on	Schedule H — 开（店主标记）
+rx_expected_off	需要处方 — 关（店主标记）
+rx_expected_on	需要处方 — 开（店主标记）
+rx_note_ph	处方备注（可选 — 用你的写法）
+batch_ph	批号
+expiry_ph	有效期（YYYY-MM-DD）
+expiry_alerts	效期提醒（未来 7 天）
+expiry_none	未来 7 天没有到期的批次。
+rx_nudge	店主已标记 Rx / Schedule H — 需要的话加一条备注。
+unlock	解锁
+pin_hint	店主PIN初始为0000
+sell	销售
+buy	采购
+books	日记账
+books_help	今天的状况。销售 = 进账。采购 = 进货与费用。往来方 = 赊账顾客和供应商。
+buy_help	费用凭证和供应商账单（支出）。记账的留在往来方账本。
+sell_money_in	销售药品
+buy_money_out	费用/供应商账单
+record_purchase	记录采购
+add_expense	费用凭证
+bank_book	银行账本
+credit_help	往来方编号唯一（名称可重复）。顾客记账（欠我们）；供应商卖货给我们（我们欠他）；两者都可。账本分开；报表显示净额。
+party_kind_ph	角色：顾客、供应商、两者…
+reports_help	日记账、应收应付、银行账本、费用凭证、损益。
+reports_today	日记账（今天）
+reports_month	损益（月）
+reports_aging	未结 / Dr-Cr
+reports_balance_sheet	资产负债表
+reports	报表
+refresh	刷新
+undo	撤销
+start_tracking	开始盘点
+stock_minus	− 库存
+stock_plus	+ 库存
+settle_cash	现金结清
+settle_card	刷卡结清
+items	药品
+nav_items	药品
+more	更多
+your_items	您的药品
+items_help	点一个商品来编辑。新商品会清空表单。按名称或短码搜索，设置价格（0 也可以），然后添加。已经记下的销售仍用当时计费的名称。
+add_item	添加项目
+new_item	新项目
+adding_item	正在添加新项目
+editing_item	编辑中
+save	保存
+remove	删除
+removed_items	已移除的项目
+removed_help	恢复会把商品原样放回商品 — 价格、照片和分类。
+restore_item	恢复
+empty_catalog	还没有药品。打开药品，填写名称、条码或成分，再销售。
+total	总计
+cash	现金
+upi	UPI
+card	银行卡
+credit	往来方
+clear	清空
+ready_to_sell	可以寄件了
+today_prefix	今天
+today_mid	今天
+owed	未收
+round_word	舍入
+back	返回
+sold_out	售罄
+restock	补货
+not_tracked	未计数
+in_stock	有库存
+marked_sold_out	已标售罄
+add_upper	加入
+na	无
+qty	数量
+unit_at	单价
+actual	实际
+applied	应付
+note_ph	备注（可选）
+rounded	舍入后
+split	拆分
+send_kot	发送小票
+send_kot_to	发送 → {kitchens}
+send_kot_again	为下一张小票添加商品
+send_kot_held	暂扣的商品 — 取消暂扣即可送出
+reprint_kot	重打所选
+reprint_kot_ok	已再次打印 {n} 个商品 · {slips} 张小票 → {kitchens}
+reprint_kot_needed	先送出一张小票 — 再放入药品并重新打印选中的
+reprint_kot_none_selected	已送出的商品都会跳过 — 在要重打的上面点列入打印
+reprint_kot_client	为 {place} 再次打印（{n}）已送出 — 由店铺设备打印
+print_cancelled_kot	打印全部取消
+print_cancelled_kot_ok	已打印 {n} 个取消商品 · {slips} 张小票 → {kitchens}
+print_cancelled_kot_needed	先打开一张有已取消商品的桌子
+print_cancelled_kot_none	这张单上没有已取消的商品
+print_cancelled_kot_client	为 {place} 打印已取消项（{n}）已送出 — 由店铺设备打印
+kot_banner	横幅
+kot_banner_ph	横幅（空=无）
+kot_item_prefix	菜名前缀
+kot_item_prefix_ph	例如 [CANCELLED] 
+kot_strike	划掉商品名称
+kot_strike_note	划掉商品备注
+kot_strike_on	开
+kot_strike_off	关
+bill_item_layout	菜品版式
+bill_item_layout_columns	列
+bill_item_layout_stacked	堆叠
+bill_item_header	列标题
+bill_item_hdr_item	品名表头
+bill_item_hdr_qty	数量表头
+bill_item_hdr_price	单价表头
+bill_item_hdr_amount	金额表头
+bill_item_name	药品名称
+bill_item_qty	数量
+bill_item_price	单价
+bill_item_amount	金额
+bill_item_note	Rx / 销售备注
+bill_item_col_gap	列间距
+bill_item_col_order	列顺序
+bill_item_col_sep	列线
+bill_item_gap_tight	紧
+bill_item_gap_comfort	舒适
+bill_item_gap_wide	宽
+bill_item_num_width	数字列
+bill_item_num_compact	紧凑
+bill_item_num_comfort	舒适
+bill_item_num_wide	宽
+bill_item_num_align	数字对齐
+bill_item_gap_em	间距 (em)
+bill_item_qty_min	数量最小 (em)
+bill_item_price_min	单价最小 (em)
+bill_item_amount_min	金额最小 (em)
+kot_item_qty_width	数量列
+kot_item_num_align	数量对齐
+bill_total_qty_label	总数量标签
+bill_total_subtotal_label	小计标签
+bill_total_grand_label	总计标签
+bill_total_paid_label	已付标签
+bill_meta_pair	与…同行
+bill_pair_alone	单独
+bill_item_piece_on	开
+bill_item_piece_off	关
+bill_total_qty	总数量
+bill_total_subtotal	小计
+bill_total_grand	总计
+reprint_incl	列入打印
+reprint_skip	跳过
+reprint_skip_meta	不重打
+kot_dest_hint	在您设置的“设置 → 打印机”中分配给 {kitchens} 的打印机上打印
+kot_sent_hint	上次送到了 {kitchens}。点此为下一张账单添加商品 — 或为同一张再打小票。
+kot_sent_printing	小票已发到 {kitchens} — 正在打印
+kot_sent_not_printed	小票已送到 {kitchens}，但没有打印：{why}。告诉店铺，修好打印机后再打一次。
+kot_sent_screen	小票已送到 {kitchens}
+kot_queued_shop	{place} 的小票 → {kitchens} 已保存；由店铺设备打印
+kot_job_label	{place} 的小票 → {kitchens}
+kot_job_reached	{place} 的小票已到达 {kitchens}
+kot_unassigned	未分配
+kot_unassigned_held	暂扣了 {n} 个没有站点的商品 — 在该行取消暂扣即可送出
+kot_station_ph	工位
+kot_station_dd	工位
+kot_station_dd_n	站点 · {stations}
+kot_set_station	使用此工作站
+kot_station_applied	已为 {n} 个商品设置站点：{station}
+kot_station_cleared	已从 {n} 个商品去掉站点：{station}
+kot_station_needed	请先选择一个药房分区
+kot_station_not_allowed	不能使用该分区：{station}
+kot_station_none	还没有站点 — 柜台店不用（需要时去设置 → 区域）
+pos_tab_items	已添加
+pos_tab_payment	付款
+hold_send	暂缓
+hold_send_on	已暂存
+hold_send_meta	暂扣 — 不在这张小票上
+station_remove	移除工作站
+station_remove_ph	点击列表中的工作站以移除它
+station_removed	工作站已移除：{name}
+settings_hub_title	设置
+settings_hub_help	一次打开一个区域——少滚动，选项更清楚。
+settings_back	返回
+settings_sec_language	语言与货币
+settings_sec_country	国家与税务
+settings_sec_tills	额外柜台与分店
+settings_sec_brand	您的品牌
+settings_sec_units	单位与换算
+settings_sec_pickers	区域 · 工作站 · 税率
+settings_sec_printers	打印机
+settings_sec_bill	账单与小票格式
+settings_sec_selling	方案与销售
+bill_kot_tab_bill	账单
+bill_kot_tab_kot	小票
+settings_sec_alerts	提示
+alerts_help	状态消息为你在屏幕上停留多久（本次登录）。
+snack_secs_ph	秒数（3–60，默认 10）
+snack_secs_save	保存提示时长
+snack_secs_saved	提示时长已保存——{n} 秒
+settings_sec_backup	备份与恢复
+settings_sec_diag	诊断
+diag_privacy_help	日志保留在此设备上。密钥（PIN、密码）从不存储。每次共享设备外的包都需要您明确批准 — 绝不出售或提供给第三方
+diag_level	详细级别
+diag_level_error	错误
+diag_level_warn	警告
+diag_level_info	信息
+diag_level_debug	调试
+diag_support_start	开始 30 分钟支持会话
+diag_support_stop	结束支持会话
+diag_support_started	支持会话开启 — 30 分钟调试详情
+diag_support_ended	支持会话已结束
+diag_export_local	导出本地副本
+diag_export_local_done	本地诊断就绪于 {path} — 选择保存位置
+diag_approve_send	批准从此设备共享
+diag_send_help	批准仅针对一个包，随后过期。临时使用 — 仅用于修复或改进产品。不与第三方共享。适用于 Linux、Windows、macOS 和 Android
+diag_send_approved	已批准共享一个包（即将过期）
+diag_export_send	创建共享包（需要批准）
+diag_export_send_done	共享包就绪于 {path} — 选择保存位置，然后仅发送给 Kumkaj 支持团队
+diag_save_bundle	保存诊断副本
+diag_bundle_saved	诊断副本已保存至 {path}
+diag_bundle_failed	无法保存诊断副本 — 请重试
+diag_clear	清除诊断日志
+diag_cleared	诊断日志已清除
+sidebar_settings	侧边栏
+sidebar_settings_help	与侧边栏使用相同图标。拖动行以重新排序。切换开关以显示或隐藏。设置和锁定始终保留在栏上
+sidebar_always_on_short	始终显示
+sidebar_back_settings	返回
+sidebar_shown	已显示
+sidebar_hidden	已隐藏
+sidebar_always_on	始终显示在吧台
+sidebar_shown_hint	显示在侧边栏/底部标签页
+sidebar_hidden_hint	隐藏吧台
+sidebar_menu_items	项目
+sidebar_enable_all	启用全部
+sidebar_disable_all	禁用全部
+sidebar_order_saved	侧边栏订单已保存
+sidebar_visibility_saved	侧边栏可见性已保存
+amounts_hide	隐藏
+amounts_show	显示
+printers_none_hint	先在本设备保存一台打印机，再把它加到账单或一个分区
+counter	柜台
+dine_in	柜台
+takeaway	外带
+order	订单
+tables	柜台
+kitchen	分区
+sales	销售
+sales_refunds	销售与退款
+day_close	日结
+reports_expenses	报表与支出
+nav_reports	报表
+nav_settings	设置
+nav_lock	锁定
+no_sale_yet	尚无销售
+favorites	收藏
+favorites_help	您经常出售的商品，已为您的登录保存。将一个添加到账单，或从下面所有商品中建立您的列表。
+your_favorites	您的收藏
+all_items	所有商品
+frequent	常点
+added_items	已点
+added_items_empty	这张账单上还没有东西 — 从所有商品或一个分类里添加。
+frequent_config_help	已完成账单里卖得最多的商品。设置要看多少天、显示多少个商品。
+frequent_days_ph	天数 (1)
+frequent_limit_ph	数量 (24)
+frequent_apply	应用
+frequent_saved	常点：最近 {d} 天，前 {n} 名 — {c} 个商品
+frequent_empty	本时段尚无已完成销售 — 结算一笔账单（设置允许时可 ₹0）后会出现在此。
+zero_sales	零元销售
+zero_sales_help	允许标价 ₹0 的商品，以及按 ₹0 结清的账单（赠送 / 店主意愿）。默认开启，这样赠送仍出现在常点和日记账里。
+zero_sales_on	零元销售：开
+zero_sales_off	零元销售：关
+zero_sales_saved_on	已保存零元销售许可（开）
+zero_sales_saved_off	已保存零元销售许可（关）
+floor_areas_help	区域是店里的房间或地带（堂食、外带、空调 …）。先加区域，再放柜台 — 每个区域在店里单独成组。
+area_new_ph	新区域/房间（如 AC、Garden）
+add_area	添加区域
+area_added	区域「{name}」已就绪 — 往里加柜台
+no_favorites	尚无收藏 — 从下面的列表添加商品。
+add_to_bill	加入账单
+added	已添加
+owes_word	欠
+selected_word	已选择
+chip_clear_credit	已结清 — 赊账或预付
+chip_missing_customer	所选客户不存在 — 请重新选择
+chip_no_customer	尚无客户 — 输入姓名，然后点赊账
+credit_summary_fmt	{} 位客户 · 未结赊账 {} · 预付 {}
+recent_label	最近:
+kot_new_waiting	新单 — 等待中
+kot_preparing	准备中
+kot_ready_serve	已备好 — 请上菜
+kot_done_cap	完成
+kot_cancelled	已取消
+kot_start_btn	开始
+kot_mark_ready	标记为已备好
+kot_done_btn	完成
+table_free	空闲 — 点按开始点单
+start_order	开始点单
+open_bill	打开账单
+collect_payment	收款
+table_running	进行中
+payment_pending	待付款
+collect_at_counter	在柜台收款
+inventory	库存
+inventory_stock	库存与盘点
+branches	分店
+branches_org	分店与组织
+credit_customers	赊账客户
+customer_name_ph	往来方名称
+new_customer_ph	新往来方名称
+item_name_ph	项目名称（如 Masala Dosa）
+item_price_ph	价格
+start_template	产品
+team	团队
+team_pins	团队与密码
+my_pin_settings	我的密码
+settings_hub_help_my_pin	更改此设备上已登录人员的解锁密码。
+team_self_help	只有你可以更改自己的解锁密码（及可选登录口令）。需要其他界面或权限请找店主。
+backup_settings	备份与设置
+lock_app	锁定
+pick	选择
+select	选定
+advance	推进
+owner	店主
+staff	员工
+photo	照片
+auto	自动
+prev	上一页
+next	下一页
+ok	确定
+this_shop	服务器模式
+extra_till	客户端模式
+off	关
+tables_kitchen	店铺布局
+server	服务器
+client	客户端
+language_currency	语言与货币
+language	语言
+choose_language	选择你的语言
+language_setup_hint	跟随此设备的语言，或自己选择一种。
+lang_follow_platform	使用设备语言
+lang_pick_user	使用所选语言
+lang_platform_now	当前设备语言
+selected_language	已选
+continue	继续
+this_device	此设备
+device_use_q	此设备将如何使用？
+last_server_mode	之前是服务器——点按继续
+last_client_mode	之前是客户端——点按继续
+choose_server	选择服务器
+choose_server_hint	此设备已有服务器。打开一个，或为另一家企业创建新服务器。
+create_new_server	创建新服务器
+open_server	打开
+new_server_name_ph	新服务器名称（可选）
+server_remove_pin_ph	删除服务器需 Owner PIN
+only_owner_remove_server	仅 Owner 可删除服务器
+owner_pin_remove_server	删除此服务器需要 Owner PIN
+device_setup_help	服务器在此保存账簿。客户端与服务器配对。
+app_template_heading	起步目录（可选）
+app_template_blurb	载入一份示例目录；店主 Zahir（zahir）、管理员 Asif（asif，PIN 1111）、收银员 Nawaz（nawaz，PIN 0000）；税/GST 关闭；正面侧栏；历史在 4 小时后清除（备份里也可立即清除）；今天条关闭；紧凑账单 + 窄纸盘用标准边距。税和侧栏项可在设置里重新打开。
+app_template_apply	应用起步目录
+app_template_skip	暂时跳过
+app_template_status	服务器已就绪 — 应用起步目录，或跳过
+app_template_importing	正在应用 {title}…
+currency	货币
+backup	备份
+use	使用
+dont_use	不使用
+add_branch	添加分店
+add_conversion	添加换算
+add_dishes_items	添加商品
+add_item_plain	添加项目
+add_note	添加备注
+add_opening_balance	添加期初余额
+add_staff	添加员工
+add_station	添加工位
+add_table	添加桌台
+add_unit	添加单位
+add_use_name	添加/使用此名称
+allow_extra_tills	允许额外柜台
+amend	修改
+apply_country_pack	应用国家包
+datetime_appearance	日期与时间显示方式
+datetime_appearance_help	账本内部保存年在前的 RFC3339。这里只改变账单、报表和屏幕上日期与时钟的样子。
+datetime_example	当前示例：{ex}
+date_order	日期顺序
+date_order_dmy	D/M/Y
+date_order_mdy	M/D/Y
+date_order_ymd	Y-M-D
+time_format	时钟
+time_format_24h	24 小时制
+time_format_12h	12 小时制
+attach_bill_photo	附上账单照片
+attach_pdf	附上PDF
+attach_photo	附上照片
+attachments_last_expense	附件（上一笔费用）
+bank	银行
+bank_in	存入银行
+bank_out	从银行取出
+bank_reconciliation	银行对账（按银行对账单勾选）
+bank_to_till	银行 → 柜台
+book_add_dish	开账 — 添加商品
+book_opening_credit	寄件 — 期初赊账
+branch_name_sell_ph	要从哪个分店销售
+bring_my_book	带上我的账本
+business_tax_id_ph	企业税号
+caption_bank	银行
+caption_bills	账单
+caption_outstanding	未结
+caption_payments_today	今日付款
+caption_today	今天
+card_amount_ph	银行卡金额
+cash_amount_ph	现金金额
+cash_memo	现金小票
+choose_icon	选择图标
+choose_logo	选择标志
+clear_icon	清除图标
+clear_photo	清除照片
+copy_day_book_csv	复制日记账CSV
+copy_day_close	复制日结
+copy_items_csv	复制项目CSV
+copy_outstanding_csv	复制未结CSV
+copy_parties_csv	复制往来方CSV
+copy_party_ledger_csv	复制往来方账本CSV
+copy_receipt	复制小票
+share_whatsapp	分享到 WhatsApp
+lan_pages_heading	Wi‑Fi 上的顾客页面
+lan_pages_help	在本店 Wi‑Fi 上，顾客页面用于显示板和反馈。使用移动数据的人以后需要云。刷卡机或付款链接是可选的，从不会挡住柜台。
+diag_send_heading	从本设备分享出去
+kot_dest_heading	工位
+optional_login_heading	可选登录
+rights_heading	权限
+ops_panel	本地运营
+crm_heading	顾客与消息
+crm_help	生日与积分：短信/WhatsApp队列。{name}、{points}。店主发送。
+crm_queue_sms	排队短信
+crm_queue_wa	排队 WhatsApp
+crm_seg_bday_week	本周生日
+crm_seg_bday_month	本月生日
+crm_seg_phone	有电话
+crm_seg_loyalty	积分
+crm_seg_inactive	不活跃
+crm_seg_top	消费最高
+birthday_ph	生日（MM-DD 或 YYYY-MM-DD）
+crm_message_ph	生日快乐 {name}！您有 {points} 积分。
+till_apply_redeem	应用到账单
+till_clear_redeem	清除兑换
+till_wallet_topup	充值钱包
+till_issue_voucher	发放代金券
+till_points_ph	兑换积分
+till_wallet_ph	钱包支出
+till_voucher_code_ph	代金券代码
+till_voucher_amt_ph	代金券金额（空=全部）
+till_wallet_topup_ph	钱包充值金额
+till_voucher_issue_amt_ph	新代金券金额
+till_voucher_issue_code_ph	新代金券代码
+split_evenly	平均拆分
+waitlist	候位名单
+fire_course	下一步
+hold_item	暂缓
+waiter_call	呼叫收银员
+waitlist_add	加入候位
+floor_view_grid	网格
+floor_view_layout	平面图
+floor_layout_x	X
+floor_layout_y	Y
+floor_layout_w	W
+floor_layout_h	H
+floor_layout_save	保存平面图
+floor_layout_open	打开桌台
+floor_layout_edit	编辑平面图
+floor_layout_pick	点按桌台以编辑平面位置
+floor_layout_saved	版式已保存
+floor_layout_nudge_left	← 20
+floor_layout_nudge_right	→ 20
+floor_layout_nudge_up	↑ 20
+floor_layout_nudge_down	↓ 20
+sibling_pickers_help	与单位相同 On/Off：从日常选择器隐藏区域、档口、税率；包装默认保留。
+bulk_price_apply	应用批量改价
+card_terminal_optional	刷卡机/支付链接（有网时可选）
+copy_report	复制报表
+counted_cash_ph	抽屉里点清的现金
+country_tax	国家与税务
+create_backup	创建备份
+credit_limit_heading	信用额度（所选/指定往来方）
+day_close_summary	日结汇总
+delete_party	删除所选往来方
+delivery	外送
+done_open_books	完成 — 打开账本
+drawer_count	抽屉盘点（可选）
+expense_heading	费用
+export_day	导出当天
+extra_note_bill_ph	此账单/销售的附加备注
+extra_note_expense_ph	上一笔费用的附加备注
+extra_tills_heading	额外柜台
+other_devices_help_heading	设置其他设备
+other_devices_help	在本设备（服务器模式）：额外柜台与分店 → 允许额外柜台。记下配对码和 Wi‑Fi 地址。若出现「允许其他设备连接」，点它。在电脑上点「随电脑启动」。在每台其他设备上：安装应用，选择客户端模式，查找店铺服务器（或输入地址），输入配对码，立即配对。Wi‑Fi 断开时订单留在设备上，服务器应答后再送出。额外打印机在服务器上设置（设置 → 打印机）— 额外柜台把账单送到那里。
+forget_shop	忘记此店铺
+goods_received	已收货
+import_day	导入当天
+import_items_csv_plain	导入项目CSV…
+import_parties_csv	导入往来方CSV…
+item_name	项目名称
+kitchen_printing	厨房打印
+login_id_ph	登录编号
+mark_cleared	标记为已清算
+new_party_clear	新往来方（清空表单）
+new_party_kind_supplier_ph	新往来方类型（供应商）
+next_country	下一个国家
+next_order	下一单（清空柜台）
+note_gstin_ph	备注/GSTIN/协议提醒
+notes_attach_party	备注与附件（所选往来方）
+notes_attach_sale	备注与附件（所选销售）
+on_account_ap	记账(AP)
+org_optional_ph	组织（可选）
+paid_by	付款方式
+paid_now	已付款
+pair_now	立即配对
+pairing_code_ph	配对码
+party_name_selected_ph	往来方名称（或使用所选）
+password_ph	密码
+pay_ap_card	用卡付AP
+pay_ap_cash	用现金付AP
+pay_ap_heading	支付我们欠他们的(AP)
+pay_ap_upi	用UPI付AP
+pay_selected_heading	支付所选（结清欠款/预付）
+pick_from_items	从我们的项目中选择
+prev_country	上一个国家
+print_open	打印/打开
+reason_amend_ph	修改/作废/退款原因
+reason_note_ph	原因/备注（损耗、盘点…）
+record_day_close	记录日结
+refresh_from_shop	从店铺刷新
+refund	退款
+remove_selected	删除所选
+request_bill	请求账单
+restaurant_name_ph	店铺名称（可选）
+restore_backup	恢复备份
+role_both	两者
+role_admin	管理员
+role_cashier	收银员
+role_customer	顾客
+role_manager	经理
+history_retention	交易历史
+history_retention_help	自动清除旧销售和旧票。药品、员工和设置保留。立即清除会抹掉全部营业行，并保留配置。
+history_off	保留
+history_day_close	日结时
+history_after_hours	营业结束后
+history_hours_ph	时长（1–168，默认 4）
+history_hours_save	保存时长
+history_clear_now	立即清除历史
+history_cleared	交易历史已清除——配置保留
+history_retention_saved	历史清除设置已保存
+history_hours_saved	历史时长已保存
+history_owner_only	仅所有者或管理员可清除历史
+rollup	汇总
+save_brand	保存品牌
+save_business_id	保存企业税号和服务%
+save_business_name	保存企业名称
+save_features	保存所选员工的功能
+save_features_named	保存 {name}
+save_features_ok	已保存 {name} 的设置
+save_names	保存名称
+second_way	第二种方式
+server_ip_ph	服务器IP（如192.168.1.10）
+set_credit_limit	设置信用额度
+set_login_selected	为所选设置登录
+set_login_named	为 {name} 应用登录
+shop	店铺
+show	显示
+spreadsheet_csv	电子表格(CSV)
+start_fresh	从头开始
+stop_extra_tills	停止额外柜台
+floor_cols_ph	列数
+floor_cols_fit	适应屏幕
+floor_cols_fit_sub	可放 {n} 个
+floor_cols_fits	放得下
+floor_cols_scroll	左右滚动
+floor_cols_min	列数：至少 1 — 或留空以适应屏幕
+floor_zoom_auto	自动
+floor_zoom_out	缩小
+floor_zoom_in	放大
+backup_auto	每天自动备份 · 上次 {when} · 最近 14 天保存在 {dir}。
+backup_auto_none	每天自动备份 — 第一次马上开始。
+backup_copy_to	副本也会存到 {dir}。
+backup_copy_btn	同时把备份复制到文件夹…
+autostart_off	随电脑启动
+autostart_on	随电脑启动 ✓ — 点按停止
+autostart_done_on	现在电脑开机就会打开应用 — 停电后店铺服务器也会恢复。
+autostart_done_off	电脑开机不再打开应用。
+device_forgotten	店铺已移除此设备 — 请用店铺当前的配对码重新配对。等待中的订单会保留。
+lan_offline	离线
+forget_device	忘记
+last_seen	上次
+copy_pair_code	复制配对码
+new_pair_code	新的配对码
+pair_finishing	正在完成配对… 正在套用店铺账簿
+pair_opening	正在打开收银机…
+pair_copied	配对码已复制
+kot_waiting	等待发送
+lan_offline_waiting	离线 · {n} 条等待中
+lan_connecting	正在连接店铺…
+lan_live	实时
+lan_sending	正在发送 {n} 条
+lan_sign_in_to_send	重新登录以发送 {n} 条
+lan_pair_again	请重新配对此设备
+lan_update_app	请更新应用——此设备与店铺服务器版本不同
+allow_firewall	允许其他设备连接
+firewall_blocked	本电脑的防火墙正在阻止其他设备——请点“允许其他设备连接”。
+firewall_waiting	正在等待管理员确认…
+lan_join_help	其他设备可以连接到本机 — 配对码 {code}。在另一台设备上选择客户端模式，然后点“查找店内服务器”，或输入此地址：{addr}
+lan_pair_status	无线网络 {addr}
+lan_join_help_no_addr	连接此设备到 Wi‑Fi 以获取地址。
+lan_no_address	本机还没有 Wi‑Fi 地址 — 请连接店内的 Wi‑Fi。
+lan_not_listening	目前无法接受设备连接 — 可能有其他程序占用了端口 {port}。请重新启动应用。
+lan_tills_off	额外柜台已关闭。本店账本保存在本机。若另一台设备也要点单或结账，请允许额外柜台。
+paired_with	已与 {url} 上的店铺配对
+not_paired	未配对 — 请连接店内服务器。
+choose_device_use	选择本设备的用途。
+paired_note	已配对。解锁即可收款，或点刷新获取店里的最新数据。
+last_update_at	最后一次从店里更新：{time}。
+pair_intro	查找服务器，或输入其地址和配对码。
+queue_waiting	等待发送到店里（{n}）：
+queue_tries	已尝试 {n} 次 · 最后回复：{e}
+save_backup_copy	保存备份副本…
+backup_copy_saved	备份副本已保存——请放在本设备之外（U 盘或另一台设备）
+backup_copy_overdue	已有 {n} 天没有备份副本离开本设备——设置 → 备份
+backup_copy_failed	无法在该处保存备份副本——请选择其他位置
+clock_off	本设备的时钟与店铺服务器相差 {min} 分钟——请在本设备上设置正确时间
+printers_heading	本设备的打印机
+printers_help	查找打印机，点一个以选中，然后只在该设备上打测试页。账单打印机：「账单与小票格式」→ 账单。
+printers_host_only	打印机在店铺设备（服务器模式）上设置。这个收银台把账单和旧票送到那里 — 查找 / 添加 / 分配留在服务器上。测试页和账单打印尺寸发往服务器。
+printers_find_heading	打印机
+printers_find_tip	“查找”会扫描本机并更新列表。系统打印机优先；网络扫描可在后台继续。
+printers_pool_heading	1. 您的打印机
+printers_pool_tip	“查找”会扫描本机并更新列表。
+printers_pool_empty	(暂无 — 请在下方添加)
+printers_routes_help	查找操作系统已经认识的打印机。在「账单与小票格式」里把它们分给账单和每个分区。
+printer_assign_dd	为 {place} 选择打印机
+printer_assign_pick	选择真实打印机
+printer_profile_heading	版式
+printer_send_heading	发送方式
+vp_delivery_heading	发送方式
+vp_delivery_help	这台虚拟打印机如何送出作业 — 系统文档、原始字节或 ESC/POS。小票内容（字号、换行、边距）由账单 / 小票格式决定，不在这里。
+vp_type_size_heading	字号
+vp_wrap_heading	换行宽度
+vp_margin_heading	边距
+vp_delivery_spooler	系统文档（系统后台打印）
+vp_delivery_raw	原始字节到设备
+vp_delivery_escpos	ESC/POS 热敏命令
+virtual_printer_new	新建虚拟打印机
+virtual_printer_selected	正在编辑“{name}”——点列表中另一项以切换
+virtual_printer_tap_list	点按列表中的虚拟打印机以编辑
+config_layout_portrait	纵向
+config_layout_landscape	横向
+config_send_os	系统后台打印
+config_send_escpos	ESC/POS
+profiles_heading	打印机
+profiles_empty	打印机
+profile_builtin	内置
+profile_custom	自定义
+profile_name_ph	打印机
+profile_new	打印机
+profile_delete	打印机
+profile_created	打印机
+profile_deleted	打印机
+profile_builtin_keep	打印机
+config_saved	已更新
+config_selected	已选择“{name}”
+printer_output_heading	虚拟打印机
+virtual_printers_heading	虚拟打印机
+virtual_printers_empty	尚无虚拟打印机 — 先在下方设置数值并保存。有若干台后，点列表中的一项以编辑。
+virtual_printer_name_ph	虚拟打印机名称（可选）
+virtual_printer_create	创建虚拟打印机
+virtual_printer_save	保存虚拟打印机
+virtual_printer_delete	删除虚拟打印机
+virtual_printer_created	已创建虚拟打印机“{name}”
+virtual_printer_deleted	已删除虚拟打印机“{name}”
+virtual_printer_updated	虚拟打印机已更新
+virtual_printer_updated_named	已更新虚拟打印机“{name}”
+virtual_draft_layout	已为下一台虚拟打印机设置数值
+virtual_draft_send	已为下一台虚拟打印机设置数值
+virtual_need_real	请先选择真实打印机
+virtual_need_select	请选择要删除的虚拟打印机
+real_printer_selected	真实打印机：{name}
+station_group_heading	虚拟打印机
+station_group_apply	删除虚拟打印机
+station_group_applied	已删除
+station_group_empty	请选择虚拟打印机
+station_group_name_ph	虚拟打印机名称（可选）
+station_group_save	创建虚拟打印机
+station_group_saved	虚拟打印机已保存
+station_manage_heading	添加或去掉一个药房分区
+printers_routes_heading	2. 打印位置
+route_pick_heading	位置
+route_editing	编辑中：{name}
+route_assigned	已将 {printer} 添加到 {place}
+route_already_assigned	已在此位置：{printer}
+route_removed	已从 {place} 移除 {printer}
+route_cleared	已清空 {name}
+route_assigned_empty	此位置无
+route_tap_remove	点击以移除
+route_tap_select	点按选择
+route_tap_selected	已选
+route_pick_printer_first	请先点按一台打印机
+route_assigned_heading	打印机
+route_add_heading	分配
+printer_label_ph	名称（例如柜台打印机）
+printer_target_ph	地址或系统名称
+printer_target_default	默认打印机
+printer_wire_heading	格式
+printer_wire_escpos	KOT
+printer_wire_os	标准纵向
+printer_wire_os_portrait	标准纵向
+printer_wire_os_landscape	标准横向
+printer_wire_escpos_short	KOT
+printer_wire_os_short	纵向
+printer_wire_os_landscape_short	横向
+printer_format_custom	新建自定义格式
+printer_format_custom_label	自定义
+printer_format_custom_added	已为此路线添加自定义格式
+add_printer	添加打印机
+remove_printer	移除最后一个
+route_pick_ph	账单或一个药房分区
+route_bill	账单
+route_default_kitchen	无站点（未分配的商品）
+route_kot_station	工位
+route_dont_print	不打印
+stations_heading	工作站
+stations_help	药房分区把药品和该区域的打印机归在一起。从设置 → 打印机挂上打印机，设置尝试顺序，然后选第一个可用的或全部打印。更改会随时保存。
+station_print_heading	此工位的打印机
+station_print_help	先选一个站点，再挂上一台或多台打印机。↑↓ 设置尝试顺序。第一个可用的在第一次成功后停止；全部打印会发到每一台已挂的打印机。
+station_print_pick_ph	要设置打印机的工位
+station_print_pick_first	请先选择一个药房分区
+station_print_editing	正在编辑“{name}”的打印机
+station_vps_dd	此工位的打印机
+station_vps_dd_n	{n} 台打印机 · 点按更改
+station_vps_empty	尚无打印机 — 请在「设置 → 打印机」中查找
+bill_printers_dd	账单打印机
+bill_printers_dd_n	{n} 台账单打印机 · 点击以更改
+job_layout	版式
+job_delivery	任务发送方式
+job_delivery_help	系统文档、原始字节或 ESC/POS。账单和票各自保留自己的设置。任一作业都可以发到「查找」已保存的任何打印机。
+station_vp_attached	已挂接打印机
+station_vp_detached	已从工位移除打印机
+station_print_summary	{mode} · {n} 台打印机
+station_print_summary_none	此工位尚无打印机 — 不会打印
+stations_none	还没有站点 — 在下面加一个。柜台店不用站点 — 留空即可。
+route_up	上移
+route_down	下移
+route_remove	移除最后一个
+route_clear	不打印
+save_printers	保存打印机
+print_test_page	打印测试页
+no_printer_assigned	无打印机
+test_page_no_printer	{place} 没有打印机——请在上方分配后再试
+test_page_pick_first	请先选择测试打印机——再打印测试页
+test_printers_dd	测试页打印机
+test_printers_dd_n	{n} 台测试打印机 · 点按更改
+kot_test_printers_dd	测试打印用的打印机
+kot_test_printers_dd_n	测试打印用 {n} 台打印机 · 点此更改
+test_printer_picked	测试于：{name}
+test_printer_cleared	不测试：{name}
+test_page_sent_n	测试页已发送到 {n} 台打印机
+test_kot_pick_first	先为测试打印选择打印机 — 然后再测试打印
+test_kot_sent_n	测试打印已送到 {n} 台打印机
+cancel_pick	标记
+cancel_pick_on	已标记
+cancel_pick_meta	已标记取消
+batch_cancel	取消已标记
+batch_cancel_n	取消已标记 ({n})
+batch_cancel_none	先标出一个或多个已送出的商品 — 再点取消已标记
+batch_cancel_title	取消已标药品 — 一个原因，每个分区一张小票
+batch_cancel_ok	已取消 {n} 个商品 · {slips} 张取消小票 → {kitchens}
+batch_cancel_ok_noprint	已取消 {n} 个商品 — 自动打印是关的，所以没有取消小票
+no_printer_kitchen_station	该站点没有打印机
+printers_saved	已保存本设备的打印机
+test_page_sent	测试页已发送——请查看打印机
+test_page_sent_one	测试页已发送到 {name}——请查看该打印机
+printers_found	找到 {n}：{list}
+printers_find_synced	找到 {n} — {new} 个新
+printer_on_device	已保存
+printer_already_added	已添加
+printer_already_saved	已保存：{name}
+find_printers	查找打印机
+printers_looking	正在本设备和 Wi‑Fi 上查找打印机…
+saving_printer	正在添加打印机…
+cancelled	已取消
+printers_tap_find	点按查找打印机——将列出系统打印机和本 Wi‑Fi 上的网络收据打印机。
+printers_none_found	未找到打印机——请输入系统打印机名称或网络地址（如 192.168.1.50）。
+printer_from_find	已添加 {name}
+kot_printer_ph	小票打印机
+bill_printer_ph	账单打印机
+kot_print_on	自动打印票：开
+kot_print_off	自动打印票：关
+queue_refused	店里未接受（{n}）— 请在柜台逐一核对：
+clear_not_accepted	已核对 — 清空此列表
+device_name_ph	本设备名称
+lan_last_update	最后更新 {time}
+lan_not_accepted	{n} 条未被接受
+connected_now	当前在线
+backup_failed	上次自动备份失败：{e}
+backup_overdue	已 {n} 天没有备份 — 请让本机上的应用保持打开，以便备份。
+disk_low	本机仅剩 {mb} MB 可用空间 — 备份很快会失败。请清理一些空间。
+last_seen_devices	最后看到：{time}
+sync_interval	每 {secs} 秒同步一次
+connection_to_shop	与店铺的连接
+supplier_name_ph	供应商名称（或往来方）
+supplier_ph	供应商
+switch_device	切换此设备
+take_payment	收款
+tax_added_till	{tax}未税
+tax_inside_price	{tax}含税
+tax_invoice	税务发票
+till_to_bank	柜台 → 银行
+units_heading	单位
+unlock_after_pairing	输入密码
+unlock_with_login	用登录解锁
+unmark	取消标记
+update_my_password	修改我的密码
+update_my_pin	修改我的PIN
+duress_heading	紧急解锁PIN（仅店主）
+duress_help	可选。如果开锁时输入的是这个 PIN 而不是你的，全部账本记录会被清除（销售、分类账、历史），收银台会以店主身份打开，看起来正常 — 药品、价格、柜台、员工和设置都保留。结构和配置不会删除。只在被迫开锁时使用。留空并保存即可关闭。绝不能与任何人的 PIN 相同。
+duress_pin_ph	紧急PIN（4–12位）
+duress_confirm_ph	再输入一次确认
+save_duress_pin	保存紧急PIN
+clear_duress_pin	关闭紧急PIN
+duress_on	紧急解锁PIN已开启
+duress_off	紧急解锁PIN已关闭
+duress_saved	已保存紧急解锁PIN
+duress_cleared	已关闭紧急解锁PIN
+upi_amount_ph	UPI金额
+void	作废
+write_off_ap	核销AP
+write_off_heading	核销（无付款结清）
+write_off_nil	核销/余额清零
+your_brand	你的品牌（应用内）
+your_categories	你的分类
+account_kind	账户类型（点选其一）
+actual_total_cap	实际总额
+amend_help	选择一笔销售进行修改、作废或退款。修改保留完整历史。
+applied_total_cap	应付总额
+bank_balance	银行余额
+bank_net_today	今日银行净额
+branch_export_help	导出会将 branch_snapshot_CODE_DATE.json 写入备份文件夹并复制到剪贴板。要导入另一网点的日结，将其文件存为 import_branch_snapshot.json 放入同一文件夹，然后点击导入。
+brand_shown_help	显示在应用内屏幕上。此设备上已安装应用的名称和图标保持平台列表的样子。
+app_icon	应用图标
+logo_help	可选的应用内屏幕商店标记。
+onboard_layout	您将获得
+item_photo_help	可选。若无照片，我们将显示来自项目名的首字母。
+stamp_heading	印章
+stamp_image_help	可选的印章图片，用在打印的账单和顾客屏上。
+payment_qr_heading	支付二维码
+payment_qr_image_help	账单和顾客屏上用静态二维码；否则付款使用上面 VPA 的动态 UPI 二维码。
+cash_in_hand	手头现金（柜台）
+change_my_pin_heading	修改我的PIN（仅你的）
+connect_to_server	连接到服务器
+counter_locked	柜台01 · 已锁定
+country_pack_help	国家包设置税名和计算方式、即时付款通道以及打印在账单上的企业税号。Kumkaj 不在任何地方报税或开具政府电子发票。
+currency_use_help	滚动并为任何支持的货币点击使用。
+day_close_help	记录日结会将此汇总（及盘点差异）保存到审计日志。不会停止销售。
+expenses_word	费用
+feature_access_help	所选员工的功能权限（添加后点击）
+footer_local	本地SQLite · 永久免费 · 零云端
+fresh_book_tabiyat	打印机
+fresh_selected	已选Fresh — 目录保持为空。准备好后点击Done。
+gross_word	毛额
+how_start	您想如何开始？
+kot_print_help_tabiyat	当发送KOT时 — 在柜台或服务员设备上 — 厨房小票会在这里自动打印。
+later_country_pack	打印机
+local_badge	本地
+mix_type_hint_tabiyat	需要时可拆分到现金/UPI/银行卡/赊账。赊账需要在上方选择顾客。
+money_in_sales	收入（销售）
+net_word	净额
+offline_badge	离线
+optional_login_help	可选登录（编号+密码）。店主设置一次；之后只有用户本人可改密码。
+or_unlock_login	或用登录编号+密码解锁
+permission_preset	权限预设（可访问什么）
+preset_help_tabiyat	收银员：销售。经理：销售+项目+作废/修改。
+product_locked_tabiyat	Tabiyat
+product_only_tabiyat	此应用仅为 Tabiyat——餐厅经营系统。其他行业另有独立的 Kumkaj 产品。
+purchases_cogs	采购(COGS)
+qty_cap	数量
+restore_help	恢复：选择一个备份。账本会回到当时的样子；当前账本会先保存，所以可以撤回。
+wipe_data_heading	删除本地数据
+wipe_data_help	仅店主 — 与 Windows 卸载时相同的选择。营业记录清除营业历史，但保留商品和配置（如同紧急开锁 PIN）。店铺设置会删除账本数据库。屏幕偏好清除窗口和语言。用店主 PIN 确认。团队里的紧急开锁 PIN 是另一项（开锁时隐蔽清除）。
+wipe_trading	营业记录
+wipe_schema	店铺设置
+wipe_ui	屏幕偏好
+wipe_owner_pin_ph	删除用店主 PIN
+wipe_delete_selected	删除所选
+wipe_owner_only	只有店主可以删除本地数据。
+restore_owner_only	只有店主可以恢复备份。
+wipe_owner_pin_needed	输入店主 PIN 以删除本地数据。
+wipe_nothing_selected	请先选择要删除的内容。
+wipe_done	已删除所选本地数据。
+wipe_schema_done	店铺设置已清除 — 选择 Server 或 Client 继续。
+rounded_total	舍入总额
+setup_app_tabiyat	设置 Tabiyat
+shop_logo_optional	店铺标志（可选）
+stock_type_help	输入项目名称（部分即可）、数量，然后调整。尚未盘点的项目需要先开始计数一次。
+team_owner_help	店主为每位员工创建姓名、角色头衔、权限预设和初始PIN。店主之后不能更改任何人的PIN — 只有本人可以更新自己的PIN。
+staff_name_ph	员工姓名/编号
+staff_copy_hire_ph	从（可选）复制设置
+staff_copy_hire	使用此人的设置
+staff_edit_name_ph	显示名称
+staff_rename	保存名称
+staff_copy_edit_ph	从另一个人复制设置
+staff_copy_edit	将其设置复制到所选人员
+staff_copy_edit_onto	将其设置复制到 {name}
+staff_deactivate_named	移除 {name}
+staff_renamed	名称已保存
+staff_setup_copied_hire	已从 {name} 复制设置——请设置新名称和 PIN，然后添加员工
+staff_setup_copied_edit	已将 {from} 的设置复制到 {to}
+staff_copy_need_selected	选择首先编辑谁
+staff_copy_need_source	选择要复制其设置的谁
+staff_copy_same	这是同一人——请选择其他人
+staff_rename_need_selected	选择首先重命名谁
+team_pick_hint	选择要编辑的人 — 屏幕、款项权限和站点只对这个人显示。
+team_stations_help	此人可以使用的站点
+team_stations_changed	站点已更改 — 请保存此人的配置
+team_features_changed	屏幕已更改 — 保存此人员的设置
+team_rights_changed	权限已更改 — 保存此人员的设置
+they_owe_us	他们欠我们
+unit_at_cap	单价
+units_help	项目标签代码（kg、piece、bag）。每个单位必须直接或通过其他单位与标准（kg · cm · ml · pc）关联，如 1 crate = 2 box 且 1 box = 20 cm。换算：1 from = factor to。货币永远不是单位。
+units_picker_help	点开/关，决定采购和商品选择器里是否显示该单位。关闭的单位仍会换算。
+unit_picker_on	开
+unit_picker_off	关
+we_owe_them	我们欠他们
+who_unlocking	谁在解锁？
+locked_word	已锁定
+show_pin	显示PIN
+hide_pin	隐藏PIN
+set_owner_pin	设置店主PIN
+enter_owner_passcode	输入店主密码
+enter_staff_passcode	输入员工密码
+pin_count_zero	0/12 位 · 至少 4 位，然后确定
+pin_count_need	{} / 12 位 · 还需要 {} 位
+pin_count_full	12/12 位 · 请按确定
+pin_count_ready	{} / 12 位 · 准备好后按确定
+pin_hint_choose	选择4–12位数字（键盘或面板）· 回车/确定保存
+pin_hint_new	新的4–12位店主PIN（键盘或面板）· 回车/确定
+pin_hint_shop_code	店铺设备 · 配对码 {}
+pin_hint_books	此设备保存账本
+pin_hint_paired	额外柜台已配对 — 解锁以销售
+pin_hint_pair_first	额外柜台 — 先与店铺设备配对
+unlock_to_continue	解锁以继续
+no_staff_yet	尚无员工 — 以店主解锁，然后团队
+status_server_set_pin	服务器模式 — 设置店主PIN
+status_server_tills	服务器模式 — 额外柜台可加入。解锁
+status_server_unlock	服务器模式 — 以店主解锁
+status_client_unlock	客户端模式 — 解锁以销售
+icon_new_selected	图标：已选新文件 — 点保存品牌
+icon_custom	图标：您店铺的标志
+icon_default	图标：Kumkaj 标志（默认）— 选择您自己的
+logo_yours	徽标：您店铺的徽标 — 显示在屏幕和收据上
+logo_default	徽标：Kumkaj 标志（默认）— 如有自己的请选择
+tmpl_current	当前：{} — {}
+tmpl_selected	已选：{} — {}
+setup_complete	设置完成
+onboard_fresh_tmpl	全新 · {} — 目录从空开始；在物品中添加，然后点完成。
+onboard_book_tmpl	账本 · {} — 添加物品和期初赊账，然后点完成。
+onboard_template_tmpl	可先为店铺命名，然后选择开始方式。
+tmpl_blurb	药店柜台：药品、批次/效期、赊账、账本。
+tmpl_how	在柜台销售；采购用来进货；账本用来记日记账。
+reports_facet_title	报表
+reports_facet_help	日记账、往来账龄、银行记录和期间损益。
+against_bill_ph	对应上方账单号（可选）
+aliases_ph	别名、简称 — 用逗号分隔
+amount_blank_full_ph	金额（空 = 全部余额）
+amount_owed_ph	欠款金额
+amount_ph	金额
+amount_received_ph	收到金额
+amount_we_pay_ph	我们支付的金额
+business_name_ph	企业名称
+category_new_ph	类别（可选，新类别将自动创建）
+code_bag_ph	代码（bag）
+conv_factor_ph	系数（25 = 1 bag → 25 kg）
+country_code_ph	国家代码，如 IN, GB, US, AE, BR
+credit_khata_amount_ph	赊账金额
+credit_limit_ph	信用额度（0 = 无）
+from_code_ph	从代码（bag）
+item_name_lang_ph	物品名称 — 用您的语言输入
+login_id_opt_ph	登录 ID（可选）
+manager_pin_ph	经理 PIN（仅当您无法作废时）
+new_branch_name_ph	新分支名称
+new_password_ph	新密码（可选）
+new_pin_ph	新 PIN（4–12 位）
+note_bank_ph	备注（存款、取款、…）
+note_buy_expense_ph	备注（燃料、租金、…）
+note_expense_ph	备注（燃料、办公、…）
+options_tabiyat_ph	选项（可选）— Extra cheese=40, Large=80
+part_second_way_ph	第二种方式的部分（可选）
+phone_ph	电话
+place_name_ph	此地点名称
+qty_example_ph	数量（例如 kg 用 1.5）
+quantity_ph	数量
+reason_required_ph	原因（必填）
+role_title_ph	职位名称（例如 Barista）
+service_pct_ph	服务 % 可选 0/10/12
+short_code_ph	短代码（MG02）
+starting_password_ph	初始密码（可选）
+starting_pin_ph	初始 PIN（4–12 位）
+station_name_ph	站点名称（可选）
+station_new_ph	分区（可选）
+table_name_ph	柜台 / 档口名称
+tax_rate_ph	税率名称或 % — Standard, Reduced, 0, 5, 12, 18, 20
+to_code_ph	到代码（kg）
+uncleared_no_ph	上方未清算编号
+unit_cost_ph	单位成本
+unit_name_bag_ph	名称（Bag）
+unit_plate_ph	单位（盘/件 — 空 = 每件）
+pay_credit	赊账
+book_kind_today	今日账本
+book_kind_month	本月账本
+book_kind_aging	未结 / 借贷
+book_kind_balance	资产负债表
+order_help	选择一个未结订单，或选择桌台开始新订单。点选就绪菜品，发送 KOT，为一个或多个菜品结账，拆分账单并完成付款。
+floor_help	这家店在柜台销售。餐桌和用餐区不属于 Tabiyat。
+kitchen_help	当发送KOT时 — 在柜台或服务员设备上 — 厨房小票会在这里自动打印。
+kitchen_empty	没有未结的票（柜台店通常不用这个屏幕）。
+add_a_table	添加桌子
+add_station_heading	添加分区 · 如非处方、冷藏、柜台
+categories_help	分类显示一道菜属于菜单的哪一部分 — 如小吃、主菜或印度香饭。按您的方式创建分类：选择我们建议的名称、重命名或添加您自己的。
+dish_search_ph	搜索名称、成分或条码…
+tile_free	空闲
+tile_occupied	有客
+tile_food_ready	菜已好
+tile_bill_printed	已打单
+tile_paid	已付款
+tile_bill_btn	结账
+tile_occupy_btn	安排入座
+tile_free_btn	清台
+tile_ready_btn	可入座
+tile_undo_bill	撤销账单
+summary_busy	桌在用
+summary_to_collect	待收款
+summary_on_floor	在场
+floor	店铺
+sizes_as_items_ph	规格作为独立菜品（可选）— 半份=120, 整份=200
+dish_group_ph	规格 / 包装组（可选）— 例如 500 mg 板
+discount	折扣
+remove_discount	取消折扣
+apply_discount	应用折扣
+save_opening_cash	保存备用金
+close_shift_print	交班并打印交班单
+area_prices_ph	区域价（可选）— 空调区=220, 打包=210
+discount_ph	10% 或 50
+discount_reason_ph	原因（如常客、上菜慢）
+opening_float_ph	今早放入钱箱的现金
+shift_counted_ph	交班时点算的现金
+opening_float	备用金
+shift_handover	交班
+shift_since	本班次开始于
+expected_in_drawer	钱箱应有
+right_discount	给予折扣
+floor_in_kitchen	进行中
+floor_eating	用餐中
+pick_category	选择分类
+close_category_list	关闭分类列表
+new_category_row	新分类 — 保存菜品时创建
+your_category	您的分类
+suggested_category	建议 — 来自我们的商品
+category_search_ph	分类 — 搜索已有或输入新分类
+line_sent_state	已发送
+line_nc_state	赠送 (NC) — 不收费
+cancel_item_short	取消
+nc_short	赠送
+charge_again_short	收费
+move_short	移动
+cancel_item_title	取消此商品 — 后台会收到一张取消小票
+nc_item_title	将此菜品设为赠送 (NC)
+charge_again_title	重新对此菜品收费
+move_item_title	将此菜品移到另一桌
+already_cooked	已做好（损耗）
+not_cooked_yet	还没做
+return_to_customer	找零
+short_by	还差
+tip_not_sale	小费（归员工，非营业额）
+right_settle	收款
+right_cancel_sent	取消已下单菜品
+right_complimentary	赠送 (NC)
+right_move_table	移动 / 合并柜台
+right_reprint	重打账单
+right_allowed	允许
+right_with_approval	需审批
+right_denied	不允许
+editing_staff	权限：
+finding_server	正在此 Wi‑Fi 上查找店内服务器…
+no_server_found	未找到服务器。请确认店内设备在同一 Wi‑Fi 并已允许额外收银台，或输入其 IP。
+servers_found_pick	点按要连接的店铺。
+server_host_selected	正在使用 {host} — 输入配对码，然后点立即配对。
+print_bill	打印账单
+table_actions	柜台操作
+move_merge_table	换桌 / 并桌
+move_help	把这个柜台的单子挪到空桌，或并入一张进行中的。
+move_target_ph	柜台名称
+approval_pin_ph	经理 PIN（需要时才填）
+move_here	移到这桌
+merge_into	并入该桌
+line_reason_ph	原因（例如顾客改了主意、缺货）
+line_qty_ph	取消数量（空 = 全部）
+line_target_ph	移到桌（如 D5）
+confirm	确认
+menu_search_ph	搜索菜品或简码
+customer_paid_ph	客人付款
+tip_ph	小费
+table_area_ph	区域（如堂食、打包、空调区）
+table_range_ph	一次多个：D1-D20
+add_these_tables	添加这些柜台
+remove_these_tables	去掉这些柜台
+table_remove_ph	删除：T1-T24，或某张桌台的名称
+find_server	查找店内服务器
+bill_format	账单格式
+bill_format_help	印在每张账单的店名下方。用 | 分行（例如 MG Road, Rajkot | 电话 98250 00000）。
+bill_header_ph	地址 | 电话
+fssai_ph	药品经营许可证号（可选 — 用你的写法）
+bill_footer_ph	页脚（如：谢谢，欢迎再来）
+save_bill_format	保存账单格式
+kot_format	小票格式
+kot_format_help	点列表中的一个字段。显示、字号和粗细作用于上面所选小票种类的该字段。每种各自保留字号和粗细。
+kot_format_fields	字段
+kot_field_next	下一字段
+kot_field_show	显示
+kot_field_hide	隐藏
+kot_field_on	显示
+kot_field_off	隐藏
+kot_field_size	字号
+kot_field_size_ph	例如 16, 20, 24, 28, 32…
+kot_weight_light	细
+bill_kot_panel_help	账单版式和内容宽度。收银员是开单或结账的人 — 整笔销售的经过留在账本里。
+std_size_ph	例如 18, 20, 26…
+kot_show_shop	店名
+kot_hide_shop	隐藏店名
+kot_show_time	时间
+kot_hide_time	隐藏时间
+kot_show_waiter	收银员
+kot_hide_waiter	隐藏收银员
+kot_show_station	工位
+kot_hide_station	隐藏工位
+kot_show_table	柜台
+kot_hide_table	隐藏桌台
+kot_show_kot_no	小票号
+kot_hide_kot_no	隐藏票号
+kot_width	换行预览（在小票页设置内容宽度）
+kot_width_58	58 mm
+kot_width_80	80 mm
+kot_kind_heading	票的种类
+kot_kind_original	原件
+kot_kind_duplicate	副本
+kot_kind_modified	已修改
+kot_kind_cancelled	已取消
+kot_style_heading	字段字号与字重
+kot_style_title	标题
+kot_style_item_qty	品项 · 数量
+kot_style_field_pick	选择字段
+kot_weight_regular	常规
+kot_weight_bold	粗体
+kot_align	对齐
+kot_align_start	开始
+kot_align_center	居中
+kot_align_end	结束
+content_width	内容宽度（毫米）
+content_width_bill	账单内容宽度 (mm)
+content_width_kot	票的内容宽度（mm）
+content_width_ph	或输入内容宽度，40–210 毫米
+content_width_help	这张小票多宽。账单保持自己的宽度。
+content_width_bill_help	顾客账单的打印宽度。默认 210 mm（整页）。窄小票 58 mm，宽小票 80 mm，112 mm（4 英寸），210 mm（A4 宽）。可填 40 到 210 的任意值。票的宽度在小票页单独设置。
+content_width_kot_help	票的打印宽度。默认 80 mm。窄小票 58 mm，宽小票 80 mm，112 mm（4 英寸），210 mm 整页。可填 40 到 210 的任意值。顾客账单的宽度在账单页单独设置。
+vp_paper_width	内容宽度（毫米）
+vp_paper_width_ph	或输入内容宽度，40–210 毫米
+vp_paper_width_help	内容宽度在「账单与小票格式」里设置 — 账单（默认 210 mm）和票（默认 80 mm）分开。
+kot_size	字号
+kot_size_s	小
+kot_size_m	标准
+kot_size_l	大
+std_size	字号
+kot_copies	份数
+kot_copies_1	1
+kot_copies_2	2
+kot_copies_3	3
+kot_title_ph	标题（留空 = TICKET）
+kot_footer_ph	后台备注（可选）
+kot_preview	预览
+save_kot_format	保存小票格式
+test_kot_format	测试打印
+test_kot_sent	票的预览已送出
+test_bill_format	测试账单
+test_bill_sent	账单预览已发送
+test_print_no_printer	该任务没有打印机 — 在此屏幕选择一个
+kot_format_saved	小票格式已保存
+std_print	账单字号
+std_print_help	标准纵向和横向账单在系统 / 文档打印机上的字号（填写磅值 — 不是小/标准/大）。两个方向用同一字号。
+std_size_s	小
+std_size_m	标准
+std_size_l	大
+save_std_print	保存账单字号
+std_print_saved	已保存账单字号
+print_brand_kit	打印品牌套件
+print_brand_kit_help	可选的印章和付款二维码图片，用在账单版面和局域网顾客屏上。未设置付款二维码图片时，上面 VPA 的动态 UPI 二维码仍然可用。
+choose_stamp	选择印章
+clear_stamp	清除印章
+stamp_set	印章：已存档 — 显示在顾客屏上，并印在账单上
+stamp_none	印章：无
+choose_payment_qr	选择付款二维码
+clear_payment_qr	清除付款二维码
+payment_qr_set	付款二维码：已存档 — 显示在顾客屏上（在那里替换金额的 UPI 二维码）
+payment_qr_none	付款二维码：无 — 付款时用 UPI 生成金额码
+aggregator_import	聚合商订单（文件）
+aggregator_import_help	可选本地：将 import_aggregator_orders.json 放入 backups 后导入。不挡柜台；在线 Zomato/Swiggy = 云。
+import_aggregator_file	导入聚合商文件
+team_pick_ph	要编辑的员工姓名
+select_staff	选择该员工
+rights_help	此人的款项操作 — 点按循环：允许 → 需要主管 PIN → 不允许。再次打印账单只针对账单；分区是下面的清单。
+dish_picker_help	搜索或浏览我们的商品，点一个以填入名称和照片 — 或保留你自己的名称。设置你的价格（填 0 也可以），然后添加项目。
+close_dish_list	关闭商品列表
+own_item_name	用作您自己的菜品名称
+on_your_menu	在药品列表中
+edit	编辑
+schemes	优惠方案
+schemes_help	买一送一、折扣和组合。例如：2 盒对乙酰氨基酚送 1 瓶维生素。
+scheme_bogo_ph	2 对乙酰氨基酚 1 维生素
+add_scheme	添加买赠
+schedule_ph	Hours — Mon-Fri 07:00-11:00 or Evening 17:00-19:00=150
+upi_vpa_ph	UPI ID (VPA)
+upi_payee_ph	UPI收款人（可选）
+upi_qr	UPI QR
+show_upi_qr	显示 UPI 二维码
+close_upi_qr	关闭
+upi_qr_help	顾客扫码付款。对方付完后点收款。第二屏：在局域网上打开服务器网址 /display。
+kot_recall	召回
+recently_done	刚完成
+recall_kot_ph	要调出的票号
+role_help_customer	角色：客户 — AR（他们欠我们）。同一家公司也可以是供应商。
+role_help_both	角色：寄件人 + 承运人 — 一个往来方，AR 和 AP 账本，报表中净额。
+role_help_supplier	角色：供应商 — 采购的 AP。
+dine_in_pick_table	柜台店不使用
+choose_table	选择柜台
+change_table	更换桌台
+pick_table_banner	为此订单选择桌台
+items_word	项
+items_section	项目
+back_to_order	返回订单
+new_items_head	尚未发送
+price_ph	价格
+price_ph_gst_inside	价格（含{tax}）
+cancel_needs_table	柜台销售留在票上，直到你收款
+tax_rates_missing_hint	这些商品没有 {tax} 税率 — 请在商品里设置税率（价格已含 {tax}，见「{tax} 含税」）
+taxable_value	应税金额
+gst_inside_price_note	（含{tax}）
+start_with_template	从我们的商品模板开始
+template_heading	起步商品
+template_info	{c} 个分类和 {d} 个带照片的商品，可以添加。价格从 ₹0 起 — 之后再设你的价格。
+template_import	导入完整模板
+template_confirm	连同分类一起添加 {d} 个商品？你已有的商品保持不变。
+template_yes	是，导入
+template_importing	正在导入药品…
+template_import_progress	正在导入… {d}/{t}
+template_done	模板里的每个商品都已在你的商品中。
+template_imported	已添加 {d} 个商品和 {c} 个分类 — 请在此屏幕设置价格
+client_template_heading	导入目录
+client_template_info	{title}：{c} 个分类，{d} 个带价格、照片和别名的商品。只补缺少的 — 你已有的名称保持不变。
+client_template_import	导入这些药品
+client_template_confirm	从 {title} 添加 {d} 个商品？你已有的商品保持不变。
+client_template_importing	正在导入{title}…
+client_template_done	{title} 里的每个商品都已在你的商品中。
+client_template_imported	已从 {title} 添加 {d} 个商品和 {c} 个分类
+resv_heading	预订
+resv_name_ph	顾客姓名
+resv_phone_ph	电话（可选）
+resv_guests_ph	人员
+resv_when_ph	时间 — 20:30，tomorrow 13:00
+resv_table_ph	柜台（可选）
+resv_add	预订
+resv_seat	已入座
+resv_none	暂无即将到来的预订。
+guests_word	位
+delivery_by_ph	配送人（骑手或员工）
+kitchen_all_day	待做：{items}
+split_bill	分单
+split_go	生成单独账单
+cancel	取消
+opening_client	正在打开客户端…
+preparing_desk	正在准备桌面…
+opening_server	正在打开服务员…
+creating_server	正在创建服务员…
+split_help	点选一位顾客要付的商品 · 已选 {n}
+split_send_first	先送出小票 — 只有后台已经有的商品才能开到另一张账单
+split_pick_some	先点选要开到另一张账单的商品
+split_done	已开出另一张账单 — 它在这个柜台旁边的场地上
+split_marked	单独账单
+order_empty_pick	单子是空的 — 点上面的「添加商品」来挑选。
+add_dishes	添加药品
+order_so_far	本单：{n} · {total}
+no_dish_match	没有商品符合「{q}」
+pick_dishes_help	点一个商品即可添加 · 选一个分类来缩小列表
+pick_done	完成
+pick_done_dd	完成 · {label}
+printer_route_mode	如果此地点有多个打印机
+printer_mode_first	第一个可用的
+printer_mode_all	全部打印
+kot_show_area	区域
+kot_hide_area	隐藏区域
+kot_show_item_hdr	品项 · 数量
+kot_hide_item_hdr	隐藏列
+kot_show_title	标题行
+kot_hide_title	隐藏标题
+kot_field_order	打印订单
+kot_field_up	上移
+kot_field_down	下移
+kot_field_cycle	选择下一个
+kot_field_select	选择下一个
+kot_field_time	时间
+kot_field_kot_no	小票号
+kot_field_area	区域
+kot_field_table	柜台
+kot_field_shop	店名
+kot_field_waiter	员工
+kot_field_station	工位
+app_template_blurb_extra	另外：店主 Zahir、管理员 Asif、收银员 Nawaz；正面侧栏；4 小时后的历史；今天条关闭；紧凑账单。
+dishes_n	{n} 个商品
+recipe_ph	配方（可选 — 柜台店不用）
+reorder_ph	低于此数补货
+set_reorder	设置补货线
+low_stock_alert	库存不足——尽快补货：{items}
+unpriced_note	你的商品里有 {n} 个还没有价格 — 在你设价之前按 0 计费。
+show_unpriced	只显示没有价格的商品
+show_all_dishes	显示全部商品
+role_waiter	收银员
+role_kitchen	仓管
+role_title_rest_ph	职位（如领班、主厨）
+preset_help_rest	收银员：销售。经理：销售+项目+作废/修改。
+kind_raw	配制库存
+kind_resale	购入的药品
+kind_dish	未计数
+buy_unit_ph	单位（公斤、升、个）
+add_another_way	+ 另一种方式
+parts_status	已填 {a} / {b} · 剩 {c}
+save_expense	保存支出
+rest_ph	余额
+low_badge	偏低
+stock_empty	暂无库存——在“采购”中记录的物品会显示在这里。
+recent_changes	最近变动
+lane_declared_label	税务发票
+lane_owner_label	现金小票
+money_lane_bill	账单：{lane}

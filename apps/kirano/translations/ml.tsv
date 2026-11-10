@@ -1,0 +1,1329 @@
+# Malayalam — മലയാളം (ml). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	പലചരക്ക് കൗണ്ടർ: വിൽപ്പന, സ്റ്റോക്ക്, കണക്ക് & ബുക്കുകൾ. ഓഫ്‌ലൈനിൽ സൗജന്യം.
+unlock	അൺലോക്ക്
+pin_hint	ഉടമ PIN 0000 ആയി തുടങ്ങും
+sell	വിൽപ്പന
+buy	വാങ്ങൽ
+books	ദിന ബുക്ക്
+books_help	ഇന്നത്തെ നില. വിൽപ്പന = വന്ന പണം. വാങ്ങൽ = വാങ്ങലുകളും ചെലവുകളും. കക്ഷികൾ = കടം ഉപഭോക്താക്കളും വിതരണക്കാരും.
+buy_help	ചെലവ് വൗച്ചറുകളും വിതരണക്കാരുടെ ബില്ലുകളും (പണം പുറത്തേക്ക്). അക്കൗണ്ടിലുള്ളത് പാർട്ടി ലെഡ്ജറിൽ തുടരും.
+sell_money_in	ഇനങ്ങൾ വിൽക്കുക
+buy_money_out	ചെലവ് / വിതരണക്കാരന്റെ ബിൽ
+record_purchase	വാങ്ങൽ രേഖ
+add_expense	ചെലവ് വൗച്ചർ
+bank_book	ബാങ്ക് ബുക്ക്
+credit_help	പാർട്ടി ഐഡി അദ്വിതീയമാണ് (പേരുകൾ ആവർത്തിക്കാം). ഉപഭോക്താവ് ഖാത്ത അക്കൗണ്ട് നടത്തുന്നു (ഞങ്ങൾക്ക് കടക്കാരൻ); വിതരണക്കാരൻ ഞങ്ങൾക്ക് സാധനം വിൽക്കുന്നു (ഞങ്ങൾ അയാൾക്ക് കടക്കാരൻ); രണ്ടും ശരിയാണ്. ലെഡ്ജറുകൾ വേറെ; റിപ്പോർട്ട് നെറ്റ് കാണിക്കും.
+party_kind_ph	റോളുകൾ: ഉപഭോക്താവ്, വിതരണക്കാരൻ, രണ്ടും…
+reports_help	ദിന ബുക്ക്, കടക്കാരും കടം കൊടുത്തവരും, ബാങ്ക് ബുക്ക്, ചെലവ് വൗച്ചറുകൾ, ലാഭനഷ്ടം.
+reports_today	ദിന ബുക്ക് (ഇന്ന്)
+reports_month	ലാഭനഷ്ടം (മാസം)
+reports_aging	കുടിശ്ശിക / Dr-Cr
+reports_balance_sheet	ബാലൻസ് ഷീറ്റ്
+reports	റിപ്പോർട്ട്
+refresh	പുതുക്കുക
+undo	പഴയപടി
+start_tracking	എണ്ണൽ തുടങ്ങുക
+stock_minus	− സ്റ്റോക്ക്
+stock_plus	+ സ്റ്റോക്ക്
+settle_cash	പണം തീർക്കുക
+settle_card	കാർഡ് കൊണ്ട് തീർക്കുക
+items	സാധനങ്ങൾ
+nav_items	സാധനങ്ങൾ
+more	കൂടുതൽ
+your_items	നിങ്ങളുടെ സാധനങ്ങൾ
+items_help	എഡിറ്റ് ചെയ്യാൻ ഒരു ഇനം ടാപ്പ് ചെയ്യുക. പുതിയ ഇനം ഫോം മായ്ക്കും. പേരോ ചെറുകോഡോ ഉപയോഗിച്ച് തിരയുക, വില നൽകുക (0 കുഴപ്പമില്ല), പിന്നെ ചേർക്കുക. ഇതിനകം രേഖപ്പെടുത്തിയ വിൽപ്പനകൾ ബിൽ ചെയ്ത പേര് തന്നെ നിലനിർത്തും.
+add_item	ഇനം ചേർക്കുക
+new_item	പുതിയ ഇനം
+adding_item	പുതിയ ഇനം ചേർക്കുന്നു
+editing_item	എഡിറ്റ് ചെയ്യുന്നു
+save	സേവ് ചെയ്യുക
+remove	നീക്കം ചെയ്യുക
+removed_items	നീക്കിയ ഇനങ്ങൾ
+removed_help	പുനഃസ്ഥാപിക്കുക ഇനത്തെ ഇനങ്ങളിലേക്ക് പഴയതുപോലെ തന്നെ തിരികെ കൊണ്ടുവരും — വില, ഫോട്ടോ, വിഭാഗം.
+restore_item	പുനഃസ്ഥാപിക്കുക
+empty_catalog	ഇതുവരെ സാധനങ്ങളില്ല. സാധനങ്ങൾ തുറന്ന് പേരും വിലയും ചേർത്ത് കൗണ്ടറിൽ വിൽക്കുക.
+total	ആകെ
+cash	പണം
+upi	यूपीआई
+card	കാർഡ്
+credit	പാർട്ടികൾ
+clear	മായ്ക്കുക
+ready_to_sell	ബുക്കിംഗിന് തയ്യാർ
+today_prefix	ഇന്ന്
+today_mid	ഇന്ന്
+owed	കുടിശ്ശിക
+round_word	റൗണ്ട്
+back	പിന്നോട്ട്
+sold_out	വിറ്റു തീർന്നു
+restock	തിരികെ വയ്ക്കുക
+not_tracked	എണ്ണുന്നില്ല
+in_stock	സ്റ്റോക്കിൽ
+marked_sold_out	വിറ്റു തീർന്നു എന്ന് അടയാളം
+add_upper	ചേർക്കുക
+na	ഇല്ല
+qty	എണ്ണം
+unit_at	വില
+actual	യഥാർത്ഥം
+applied	പ്രയോഗിച്ചത്
+note_ph	കുറിപ്പ് (ഓപ്ഷണൽ)
+rounded	റൗണ്ട്
+split	വിഭജിക്കുക
+send_kot	സ്ലിപ്പ് അയയ്ക്കുക
+send_kot_to	അയയ്ക്കുക → {kitchens}
+send_kot_again	അടുത്ത സ്ലിപ്പിനായി ഇനങ്ങൾ ചേർക്കുക
+send_kot_held	തടഞ്ഞുവച്ച ഇനങ്ങൾ — അയയ്ക്കാൻ തടയൽ നീക്കുക
+reprint_kot	തിരഞ്ഞെടുത്തത് വീണ്ടും അച്ചടിക്കുക
+reprint_kot_ok	{n} ഇനങ്ങൾ വീണ്ടും അച്ചടിച്ചു · {slips} സ്ലിപ്പുകൾ → {kitchens}
+reprint_kot_needed	ആദ്യം സ്ലിപ്പ് അയയ്ക്കുക — പിന്നെ ഇനങ്ങൾ ഉൾപ്പെടുത്തി തിരഞ്ഞെടുത്തവ വീണ്ടും അച്ചടിക്കുക
+reprint_kot_none_selected	അയച്ച ഓരോ ഇനവും ഒഴിവാക്കി — വീണ്ടും അച്ചടിക്കേണ്ടവയിൽ «അച്ചടിയിൽ» ടാപ്പ് ചെയ്യുക
+reprint_kot_client	{place}-ന് വീണ്ടും അച്ചടിക്കുക ({n}) അയച്ചു — കടയിലെ ഉപകരണം അച്ചടിക്കും
+print_cancelled_kot	റദ്ദ് എല്ലാം അച്ചടിക്കുക
+print_cancelled_kot_ok	{n} റദ്ദാക്കിയ ഇനങ്ങൾ അച്ചടിച്ചു · {slips} സ്ലിപ്പുകൾ → {kitchens}
+print_cancelled_kot_needed	ആദ്യം റദ്ദാക്കിയ ഇനങ്ങളുള്ള ഒരു മേശ തുറക്കുക
+print_cancelled_kot_none	ഈ ഓർഡറിൽ റദ്ദാക്കിയ ഇനങ്ങളില്ല
+print_cancelled_kot_client	{place}-ന് റദ്ദാക്കൽ അച്ചടിക്കുക ({n}) അയച്ചു — കടയിലെ ഉപകരണം അച്ചടിക്കും
+kot_banner	ബാനർ
+kot_banner_ph	ബാനർ (ശൂന്യം = ഇ
+kot_item_prefix	ഇനം പ്രിഫിക്സ്
+kot_item_prefix_ph	ഉദാ. [CANCELLED] 
+kot_strike	ഇനത്തിന്റെ പേര് വെട്ടുക
+kot_strike_note	ഇനത്തിന്റെ കുറിപ്പ് വെട്ടുക
+kot_strike_on	ഓൺ
+kot_strike_off	ഓഫ്
+bill_item_layout	ഇനം ലേഔട്ട്
+bill_item_layout_columns	നിരകൾ
+bill_item_layout_stacked	വരികൾ
+bill_item_header	നിര തലക്കെട്ട്
+bill_item_hdr_item	ഇനം തലക്കെട്ട്
+bill_item_hdr_qty	എണ്ണം തലക്കെട്ട്
+bill_item_hdr_price	വില തലക്കെട്ട്
+bill_item_hdr_amount	തുക തലക്കെട്ട്
+bill_item_name	ഇനത്തിന്റെ പേര്
+bill_item_qty	എണ്ണം
+bill_item_price	വില
+bill_item_amount	തുക
+bill_item_note	ഇന കുറിപ്പ്
+bill_item_col_gap	നിര വിടവ്
+bill_item_col_order	നിര ക്രമം
+bill_item_col_sep	നിര വര
+bill_item_gap_tight	ഇറുക്കം
+bill_item_gap_comfort	സുഖകരം
+bill_item_gap_wide	വീതി
+bill_item_num_width	സംഖ്യ നിര
+bill_item_num_compact	ചെറുത്
+bill_item_num_comfort	സുഖകരം
+bill_item_num_wide	വീതി
+bill_item_num_align	സംഖ്യ വിന്യാസം
+bill_item_gap_em	വിടവ് (em)
+bill_item_qty_min	എണ്ണം കുറഞ്ഞത് (em)
+bill_item_price_min	വില കുറഞ്ഞത് (em)
+bill_item_amount_min	തുക കുറഞ്ഞത് (em)
+kot_item_qty_width	എണ്ണം നിര
+kot_item_num_align	എണ്ണം വിന്യാസം
+bill_total_qty_label	ആകെ എണ്ണം ലേബൽ
+bill_total_subtotal_label	ഉപമൊത്തം ലേബൽ
+bill_total_grand_label	ആകെ ലേബൽ
+bill_total_paid_label	അടച്ചത് ലേബൽ
+bill_meta_pair	ഒരു വരിയിൽ കൂടെ
+bill_pair_alone	തനിച്ച്
+bill_item_piece_on	ഓൺ
+bill_item_piece_off	ഓഫ്
+bill_total_qty	ആകെ എണ്ണം
+bill_total_subtotal	ഉപ ആകെ
+bill_total_grand	ആകെ
+reprint_incl	അച്ചടിയിൽ
+reprint_skip	ഒഴിവാക്കുക
+reprint_skip_meta	റിക്കവറി പ്രിന്റ് ഒഴിവാക്കുക
+kot_dest_hint	ക്രമീകരണങ്ങൾ → പ്രിന്ററുകളിൽ {kitchens}-ന് നൽകിയ പ്രിന്ററുകളിൽ അച്ചടിക്കും
+kot_sent_hint	അവസാനം {kitchens}-ലേക്ക് പോയി. അടുത്ത ബില്ലിന് ഇനങ്ങൾ ചേർക്കാൻ ടാപ്പ് ചെയ്യുക — അല്ലെങ്കിൽ അതിനുതന്നെ സ്ലിപ്പ് വീണ്ടും അച്ചടിക്കുക.
+kot_sent_printing	സ്ലിപ്പ് {kitchens}ിലേക്ക് അയച്ചു — അച്ചടി
+kot_sent_not_printed	സ്ലിപ്പ് {kitchens}-ലേക്ക് അയച്ചു പക്ഷേ അച്ചടിച്ചില്ല: {why}. കടയെ അറിയിച്ച്, പ്രിന്റർ ശരിയാക്കി വീണ്ടും അച്ചടിക്കുക.
+kot_sent_screen	സ്ലിപ്പ് {kitchens}-ലേക്ക് അയച്ചു
+kot_queued_shop	{place}-ന്റെ സ്ലിപ്പ് → {kitchens} സേവ് ചെയ്തു; കടയിലെ ഉപകരണം അച്ചടിക്കും
+kot_job_label	{place}-ന്റെ സ്ലിപ്പ് → {kitchens}
+kot_job_reached	{place}-ന്റെ സ്ലിപ്പ് {kitchens}-ൽ എത്തി
+kot_unassigned	നൽകാത്തവ
+kot_unassigned_held	സ്റ്റേഷനില്ലാത്ത {n} ഇനങ്ങൾ തടഞ്ഞു — അയയ്ക്കാൻ വരിയിൽ തടയൽ നീക്കുക
+kot_station_ph	സ്റ്റേഷൻ
+kot_station_dd	സ്റ്റേഷൻ
+kot_station_dd_n	സ്റ്റേഷൻ · {stations}
+kot_set_station	ഈ സ്റ്റേഷൻ ഉപയോഗിക്കുക
+kot_station_applied	{n} ഇനങ്ങൾക്ക് സ്റ്റേഷൻ നൽകി: {station}
+kot_station_cleared	{n} ഇനങ്ങളിൽ നിന്ന് സ്റ്റേഷൻ നീക്കി: {station}
+kot_station_needed	ആദ്യം കടയുടെ ഒരു വിഭാഗം തിരഞ്ഞെടുക്കുക
+kot_station_not_allowed	ഈ വിഭാഗം ഉപയോഗിക്കാൻ അനുമതിയില്ല: {station}
+kot_station_none	ഇതുവരെ സ്റ്റേഷനുകളില്ല — കൗണ്ടർ കടയിൽ ആവശ്യമില്ല (ആവശ്യമെങ്കിൽ ക്രമീകരണങ്ങൾ → ഏരിയകൾ)
+pos_tab_items	ചേർത്തവ
+pos_tab_payment	പേയ്മെന്റ്
+hold_send	നിർത്തിവയ്ക്കുക
+hold_send_on	തടഞ്ഞു
+hold_send_meta	തടഞ്ഞു — ഈ സ്ലിപ്പിൽ ഇല്ല
+station_remove	സ്റ്റേഷൻ നീക്കുക
+station_remove_ph	നീക്കാൻ പട്ടികയിൽ ഒരു സ്റ്റേഷൻ ടാപ്പ് ചെയ്യുക
+station_removed	സ്റ്റേഷൻ നീക്കി: {name}
+settings_hub_title	ക്രമീകരണങ്ങൾ
+settings_hub_help	ഒരു സമയം ഒരു ഭാഗം തുറക്കുക — കുറവ് സ്ക്രോൾ, വ്യക്തമായ തിരഞ്ഞെടുപ്പുകൾ.
+settings_back	പിന്നോട്ട്
+settings_sec_language	ഭാഷയും കറൻസിയും
+settings_sec_country	രാജ്യവും നികുതിയും
+settings_sec_tills	അധിക ടില്ലുകളും ശാഖകളും
+settings_sec_brand	നിങ്ങളുടെ ബ്രാൻഡ്
+settings_sec_units	യൂണിറ്റുകളും പരിവർത്തനങ്ങളും
+settings_sec_pickers	ഏരിയകൾ · സ്റ്റേഷനുകൾ · നികുതി നിരക്കുകൾ
+settings_sec_printers	പ്രിന്ററുകൾ
+settings_sec_bill	ബില്ലും സ്ലിപ്പ് ഫോർമാറ്റും
+settings_sec_selling	സ്കീമുകളും വിൽപ്പനയും
+bill_kot_tab_bill	ബിൽ
+bill_kot_tab_kot	സ്ലിപ്പ്
+settings_sec_alerts	അറിയിപ്പുകൾ
+alerts_help	സ്റ്റാറ്റസ് സന്ദേശങ്ങൾ നിങ്ങൾക്ക് സ്ക്രീനിൽ എത്ര നേരം നിൽക്കണം (ഈ ലോഗിനിൽ).
+snack_secs_ph	സെക്കൻഡ് (3–60, ഡിഫോൾട്ട് 10)
+snack_secs_save	അറിയിപ്പ് സമയം സേവ് ചെയ്യുക
+snack_secs_saved	അറിയിപ്പ് സമയം സേവ് ചെയ്തു — {n} സെക്കൻഡ്
+settings_sec_backup	ബാക്കപ്പും പുനഃസ്ഥാപനവും
+settings_sec_diag	ഡയഗ്നോസ്റ്റിക്സ്
+diag_privacy_help	ലോഗുകൾ ഈ ഉപകരണത്തിൽ തന്നെ നിൽക്കും. രഹസ്യങ്ങൾ (PIN, പാസ്‌വേഡുകൾ) ഒരിക്കലും സൂക്ഷിക്കില്ല. ഉപകരണത്തിന് പുറത്തേക്ക് പാക്കേജ് അയയ്ക്കാൻ ഓരോ തവണയും നിങ്ങളുടെ വ്യക്തമായ അനുമതി വേണം — ഒരിക്കലും വിൽക്കുകയോ മൂന്നാം കക്ഷിക്ക് നൽകുകയോ ഇല്ല.
+diag_level	വിശദാംശ നില
+diag_level_error	പിശകുകൾ
+diag_level_warn	മുന്നറിയിപ്പുകൾ
+diag_level_info	വിവരം
+diag_level_debug	ഡീബഗ്
+diag_support_start	30 മിനിറ്റ് സഹായ സെഷൻ ആരംഭിക്കുക
+diag_support_stop	സഹായ സെഷൻ അവസാനിപ്പിക്കുക
+diag_support_started	സഹായ സെഷൻ ഓൺ — 30 മിനിറ്റ് ഡീബഗ് വിശദാംശം
+diag_support_ended	സഹായ സെഷൻ അവസാനിച്ചു
+diag_export_local	പ്രാദേശിക പകർപ്പ് കയറ്റുമതി ചെയ്യുക
+diag_export_local_done	പ്രാദേശിക ഡയഗ്നോസ്റ്റിക്സ് {path}-ൽ തയ്യാർ — പകർപ്പ് എവിടെ സേവ് ചെയ്യണമെന്ന് തിരഞ്ഞെടുക്കുക
+diag_approve_send	ഉപകരണത്തിന് പുറത്ത് പങ്കിടാൻ അനുമതി നൽകുക
+diag_send_help	അനുമതി ഒരു പാക്കേജിന് മാത്രം, പിന്നെ കാലഹരണപ്പെടും. താൽക്കാലികം — ഉൽപ്പന്നം ശരിയാക്കാനോ മെച്ചപ്പെടുത്താനോ മാത്രം. മൂന്നാം കക്ഷികളുമായി പങ്കിടില്ല. Linux, Windows, macOS, Android എന്നിവയിൽ പ്രവർത്തിക്കും.
+diag_send_approved	ഒരു പാക്കേജ് പങ്കിടാൻ അനുമതി ലഭിച്ചു (ഉടൻ കാലഹരണപ്പെടും)
+diag_export_send	പങ്കിടൽ പാക്കേജ് സൃഷ്ടിക്കുക (അനുമതി വേണം)
+diag_export_send_done	പങ്കിടൽ പാക്കേജ് {path}-ൽ തയ്യാർ — എവിടെ സേവ് ചെയ്യണമെന്ന് തിരഞ്ഞെടുത്ത്, Kumkaj സഹായത്തിന് മാത്രം അയയ്ക്കുക
+diag_save_bundle	ഡയഗ്നോസ്റ്റിക്സ് പകർപ്പ് സേവ് ചെയ്യുക
+diag_bundle_saved	ഡയഗ്നോസ്റ്റിക്സ് പകർപ്പ് {path}-ൽ സേവ് ചെയ്തു
+diag_bundle_failed	ഡയഗ്നോസ്റ്റിക്സ് പകർപ്പ് സേവ് ചെയ്യാനായില്ല — വീണ്ടും ശ്രമിക്കുക
+diag_clear	ഡയഗ്നോസ്റ്റിക് ലോഗുകൾ മായ്ക്കുക
+diag_cleared	ഡയഗ്നോസ്റ്റിക് ലോഗുകൾ മായ്ച്ചു
+sidebar_settings	സൈഡ്‌ബാർ
+sidebar_settings_help	വശത്തെ ബാറിലെ അതേ ഐക്കണുകൾ. ക്രമം മാറ്റാൻ ഒരു വരി വലിച്ചിടുക. കാണിക്കാനോ മറയ്ക്കാനോ സ്വിച്ച് മാറ്റുക. ക്രമീകരണങ്ങളും ലോക്കും എപ്പോഴും ബാറിൽ നിൽക്കും.
+sidebar_always_on_short	എപ്പോഴും ഓൺ
+sidebar_back_settings	പിന്നോട്ട്
+sidebar_shown	കാണിക്കുന്നു
+sidebar_hidden	മറച്ചു
+sidebar_always_on	എപ്പോഴും ബാറിൽ
+sidebar_shown_hint	വശത്തെ ബാർ / താഴത്തെ ടാബുകളിൽ കാണിക്കും
+sidebar_hidden_hint	ബാറിൽ നിന്ന് മറച്ചു
+sidebar_menu_items	ഇനങ്ങൾ
+sidebar_enable_all	എല്ലാം ഓൺ ചെയ്യുക
+sidebar_disable_all	എല്ലാം ഓഫ് ചെയ്യുക
+sidebar_order_saved	സൈഡ്‌ബാർ ക്രമം സേവ് ചെയ്തു
+sidebar_visibility_saved	സൈഡ്‌ബാർ ദൃശ്യത സേവ് ചെയ്തു
+amounts_hide	മറയ്ക്കുക
+amounts_show	കാണിക്കുക
+printers_none_hint	ആദ്യം ഈ ഉപകരണത്തിൽ ഒരു പ്രിന്റർ സേവ് ചെയ്യുക, പിന്നെ അത് ബില്ലിലോ ഒരു വിഭാഗത്തിലോ ചേർക്കുക
+counter	കൗണ്ടർ
+dine_in	കൗണ്ടർ
+takeaway	പാർസൽ
+order	ഓർഡർ
+tables	കൗണ്ടറുകൾ
+kitchen	വിഭാഗം
+sales	വിൽപ്പന
+sales_refunds	വിൽപ്പനയും തിരിച്ചും
+day_close	ദിവസം അടയ്ക്കൽ
+reports_expenses	റിപ്പോർട്ടും ചെലവും
+nav_reports	റിപ്പോർട്ടുകൾ
+nav_settings	ക്രമീകരണങ്ങൾ
+nav_lock	ലോക്ക്
+no_sale_yet	ഇതുവരെ വിൽപ്പനയില്ല
+favorites	പ്രിയപ്പെട്ടവ
+favorites_help	നിങ്ങൾ ഇടയ്ക്കിടെ വിൽക്കുന്ന ഇനങ്ങൾ, നിങ്ങളുടെ ലോഗിനായി സേവ് ചെയ്തിരിക്കുന്നു. ഒന്നിനെ ബില്ലിൽ ചേർക്കുക, അല്ലെങ്കിൽ താഴെയുള്ള എല്ലാ ഇനങ്ങളിൽ നിന്നും നിങ്ങളുടെ ലിസ്റ്റ് ഉണ്ടാക്കുക.
+your_favorites	നിങ്ങളുടെ പ്രിയപ്പെട്ടവ
+all_items	എല്ലാ ഇനങ്ങളും
+frequent	പതിവ്
+added_items	ചേർത്തവ
+added_items_empty	ഈ ബില്ലിൽ ഇതുവരെ ഒന്നുമില്ല — എല്ലാ ഇനങ്ങളിൽ നിന്നോ ഒരു വിഭാഗത്തിൽ നിന്നോ ഒരു ഇനം ചേർക്കുക.
+frequent_config_help	പൂർത്തിയായ ബില്ലുകളിൽ നിന്ന് ഏറ്റവും കൂടുതൽ വിറ്റ ഇനങ്ങൾ. എത്ര ദിവസം നോക്കണം, എത്ര ഇനങ്ങൾ കാണിക്കണം എന്ന് നിശ്ചയിക്കുക.
+frequent_days_ph	ദിവസം (1)
+frequent_limit_ph	ഇനങ്ങൾ (24)
+frequent_apply	പ്രയോഗിക്കുക
+frequent_saved	പതിവ്: കഴിഞ്ഞ {d} ദിവസം, മുന്നിലെ {n} — {c} ഇനങ്ങൾ
+frequent_empty	ഈ കാലയളവിൽ പൂർത്തിയായ വിൽപ്പനയില്ല — ബിൽ തീർക്കുക (ക്രമീകരണത്തിൽ ₹0 അനുവദിച്ചാൽ) ഇവിടെ കാണാം.
+zero_sales	പൂജ്യം മൂല്യ വിൽപ്പന
+zero_sales_help	₹0 വിലയുള്ള ഇനങ്ങളും ₹0-ൽ തീർത്ത ബില്ലുകളും അനുവദിക്കുക (സൗജന്യം / ഉടമയുടെ ഇഷ്ടം). സ്ഥിരമായി ഓൺ, സൗജന്യ വിൽപ്പനയും പതിവിലും ദിന ബുക്കുകളിലും കാണാൻ.
+zero_sales_on	പൂജ്യം വിൽപ്പന: ഓൺ
+zero_sales_off	പൂജ്യം വിൽപ്പന: ഓഫ്
+zero_sales_saved_on	പൂജ്യം വിൽപ്പന അനുമതി സംരക്ഷിച്ചു (ഓൺ)
+zero_sales_saved_off	പൂജ്യം വിൽപ്പന അനുമതി സംരക്ഷിച്ചു (ഓഫ്)
+floor_areas_help	ഏരിയകൾ തറയിലെ മുറികളോ മേഖലകളോ ആണ് (Dine In, Parcel, AC …). ആദ്യം ഒരു ഏരിയ ചേർത്ത്, പിന്നെ അതിൽ കൗണ്ടറുകൾ വയ്ക്കുക — ഓരോ ഏരിയയും തറയിൽ പ്രത്യേക ഗ്രൂപ്പാണ്.
+area_new_ph	പുതിയ ഏരിയ / മുറി (ഉദാ. AC, Garden)
+add_area	ഏരിയ ചേർക്കുക
+area_added	ഏരിയ “{name}” തയ്യാർ — അതിൽ കൗണ്ടറുകൾ ചേർക്കുക
+no_favorites	ഇതുവരെ പ്രിയപ്പെട്ടവയില്ല — താഴെയുള്ള ലിസ്റ്റിൽ നിന്ന് ഇനങ്ങൾ ചേർക്കുക.
+add_to_bill	ബില്ലിൽ ചേർക്കുക
+added	ചേർത്തു
+owes_word	കടമുണ്ട്
+selected_word	തിരഞ്ഞെടുത്തു
+chip_clear_credit	ക്ലിയർ — കടം കൊടുക്കുക അല്ലെങ്കിൽ അഡ്വാൻസ് എടുക്കുക
+chip_missing_customer	തിരഞ്ഞെടുത്ത ഉപഭോക്താവിനെ കാണുന്നില്ല — വീണ്ടും തിരഞ്ഞെടുക്കുക
+chip_no_customer	ഇതുവരെ ഉപഭോക്താവില്ല — പേര് എഴുതുക, പിന്നെ Credit അമർത്തുക
+credit_summary_fmt	{} ഉപഭോക്താക്കൾ · തുറന്ന കടം {} · അഡ്വാൻസ് വെച്ചത് {}
+recent_label	സമീപകാല:
+kot_new_waiting	പുതിയത് — കാത്തിരിക്കുന്നു
+kot_preparing	തയ്യാറാക്കുന്നു
+kot_ready_serve	തയ്യാർ — വിളമ്പുക
+kot_done_cap	കഴിഞ്ഞു
+kot_cancelled	റദ്ദാക്കി
+kot_start_btn	തുടങ്ങുക
+kot_mark_ready	തയ്യാറായി അടയാളപ്പെടുത്തുക
+kot_done_btn	കഴിഞ്ഞു
+table_free	ഒഴിവ് — ഓർഡർ തുടങ്ങാൻ ടാപ്പ് ചെയ്യുക
+start_order	ഓർഡർ തുടങ്ങുക
+open_bill	ബിൽ തുറക്കുക
+collect_payment	പേയ്‌മെന്റ് വാങ്ങുക
+table_running	നടന്നുകൊണ്ടിരിക്കുന്നു
+payment_pending	പേയ്‌മെന്റ് ബാക്കി
+collect_at_counter	കൗണ്ടറിൽ വാങ്ങുക
+inventory	സ്റ്റോക്ക്
+inventory_stock	സ്റ്റോക്കും എണ്ണവും
+branches	ശാഖകൾ
+branches_org	ശാഖയും സ്ഥാപനവും
+credit_customers	കടക്കാർ
+customer_name_ph	പാർട്ടിയുടെ പേര്
+new_customer_ph	പുതിയ പാർട്ടിയുടെ പേര്
+item_name_ph	ഇനത്തിന്റെ പേര് (ഉദാ. Masala Dosa)
+item_price_ph	വില
+start_template	ഉൽപ്പന്നം
+team	ടീം
+team_pins	ടീമും പിൻ
+my_pin_settings	എന്റെ PIN
+settings_hub_help_my_pin	ഈ ഉപകരണത്തിൽ സൈൻ ഇൻ ചെയ്തയാളുടെ അൺലോക്ക് PIN മാറ്റുക.
+team_self_help	അൺലോക്ക് PIN (ഒപ്പം ഓപ്ഷണൽ ലോഗിൻ പാസ്‌വേഡും) നിങ്ങളുടേത് മാത്രം മാറ്റാം. മറ്റ് സ്ക്രീനുകളോ അവകാശങ്ങളോ വേണമെങ്കിൽ ഉടമയോട് പറയുക.
+backup_settings	ബാക്കപ്പും ക്രമീകരണവും
+lock_app	ലോക്ക്
+pick	തിരഞ്ഞെടുക്കുക
+select	തിരഞ്ഞെടുക്കുക
+advance	മുന്നോട്ട്
+owner	ഉടമ
+staff	ജീവനക്കാർ
+photo	ഫോട്ടോ
+auto	സ്വയമേവ
+prev	മുമ്പത്തെ
+next	അടുത്തത്
+ok	ശരി
+this_shop	സെർവർ മോഡ്
+extra_till	ക്ലയന്റ് മോഡ്
+off	ഓഫ്
+tables_kitchen	കടയുടെ ലേഔട്ട്
+server	സെർവർ
+client	ക്ലയന്റ്
+language_currency	ഭാഷയും കറൻസിയും
+language	ഭാഷ
+choose_language	നിങ്ങളുടെ ഭാഷ തിരഞ്ഞെടുക്കുക
+language_setup_hint	ഈ ഉപകരണത്തിന്റെ ഭാഷ പിന്തുടരുക, അല്ലെങ്കിൽ സ്വയം ഒന്ന് തിരഞ്ഞെടുക്കുക.
+lang_follow_platform	ഉപകരണ ഭാഷ ഉപയോഗിക്കുക
+lang_pick_user	തിരഞ്ഞെടുത്ത ഭാഷ ഉപയോഗിക്കുക
+lang_platform_now	ഇപ്പോൾ ഉപകരണ ഭാഷ
+selected_language	തിരഞ്ഞെടുത്തത്
+continue	തുടരുക
+this_device	ഈ ഉപകരണം
+device_use_q	ഈ ഉപകരണം എങ്ങനെ ഉപയോഗിക്കും?
+last_server_mode	മുമ്പ് സെർവർ — തുടരാൻ ടാപ്പ് ചെയ്യുക
+last_client_mode	മുമ്പ് ക്ലയന്റ് — തുടരാൻ ടാപ്പ് ചെയ്യുക
+choose_server	സെർവർ തിരഞ്ഞെടുക്കുക
+choose_server_hint	ഈ ഉപകരണത്തിൽ ഇതിനകം സെർവറുകളുണ്ട്. ഒന്ന് തുറക്കുക, അല്ലെങ്കിൽ മറ്റൊരു ബിസിനസിന് പുതിയ സെർവർ ഉണ്ടാക്കുക.
+create_new_server	പുതിയ സെർവർ ഉണ്ടാക്കുക
+open_server	തുറക്കുക
+new_server_name_ph	പുതിയ സെർവറിന്റെ പേര് (ഓപ്ഷണൽ)
+server_remove_pin_ph	സെർവർ നീക്കം ചെയ്യാൻ Owner PIN
+only_owner_remove_server	Owner മാത്രമേ സെർവർ നീക്കം ചെയ്യാവൂ
+owner_pin_remove_server	സെർവർ നീക്കം ചെയ്യാൻ Owner PIN വേണം
+device_setup_help	സെർവർ കണക്കുകൾ ഇവിടെ സൂക്ഷിക്കുന്നു. ക്ലയന്റ് ഒരു സെർവറുമായി ജോടിയാകുന്നു.
+app_template_heading	തുടക്ക കാറ്റലോഗ് (ഐച്ഛികം)
+app_template_blurb	ഒരു സാമ്പിൾ കാറ്റലോഗ് ലോഡ് ചെയ്യുന്നു; ഉടമ സഹീർ (zahir), അഡ്മിൻ ആസിഫ് (asif, PIN 1111), കാഷ്യർ നവാസ് (nawaz, PIN 0000); നികുതി/GST ഓഫ്; മുൻ സൈഡ്‌ബാർ; ചരിത്രം 4 മണിക്കൂറിന് ശേഷം മായും (ബാക്കപ്പിൽ ഇപ്പോൾ മായ്ക്കുക കൂടി); ഇന്നത്തെ സ്ട്രിപ്പ് ഓഫ്; ഇടുങ്ങിയ ട്രേകൾക്ക് ചെറിയ ബിൽ + സാധാരണ മാർജിനുകൾ. നികുതിയും സൈഡ്‌ബാറിലെ മറ്റുള്ളവയും ക്രമീകരണങ്ങളിൽ വീണ്ടും ഓൺ ചെയ്യാം.
+app_template_apply	തുടക്ക കാറ്റലോഗ് പ്രയോഗിക്കുക
+app_template_skip	ഇപ്പോൾ ഒഴിവാക്കുക
+app_template_status	സെർവർ തയ്യാർ — തുടക്ക കാറ്റലോഗ് പ്രയോഗിക്കുക, അല്ലെങ്കിൽ ഒഴിവാക്കുക
+app_template_importing	{title} പ്രയോഗിക്കുന്നു…
+currency	കറൻസി
+backup	ബാക്കപ്പ്
+use	ഉപയോഗിക്കുക
+dont_use	ഉപയോഗിക്കരുത്
+add_branch	ശാഖ ചേർക്കുക
+add_conversion	പരിവർത്തനം ചേർക്കുക
+add_dishes_items	ഇനങ്ങൾ ചേർക്കുക
+add_item_plain	ഇനം ചേർക്കുക
+add_note	കുറിപ്പ് ചേർക്കുക
+add_opening_balance	ആരംഭ ബാലൻസ് ചേർക്കുക
+add_staff	ജീവനക്കാരെ ചേർക്കുക
+add_station	സ്റ്റേഷൻ ചേർക്കുക
+add_table	മേശ ചേർക്കുക
+add_unit	യൂണിറ്റ് ചേർക്കുക
+add_use_name	ഈ പേര് ചേർക്കുക / ഉപയോഗിക്കുക
+allow_extra_tills	അധിക ടില്ലുകൾ അനുവദിക്കുക
+amend	ഭേദഗതി
+apply_country_pack	രാജ്യ പാക്ക് പ്രയോഗിക്കുക
+datetime_appearance	തീയതിയും സമയവും കാണുന്ന രീതി
+datetime_appearance_help	ബുക്കുകൾ ഉള്ളിൽ വർഷം-ആദ്യം RFC3339 സൂക്ഷിക്കുന്നു. ഇവ ബില്ലുകൾ, റിപ്പോർട്ടുകൾ, സ്ക്രീൻ എന്നിവയിൽ തീയതിയും ക്ലോക്കും കാണുന്ന രീതി മാത്രം മാറ്റും.
+datetime_example	ഇപ്പോഴത്തെ ഉദാഹരണം: {ex}
+date_order	തീയതി ക്രമം
+date_order_dmy	ദി/മാ/വ
+date_order_mdy	മാ/ദി/വ
+date_order_ymd	വ-മാ-ദി
+time_format	ക്ലോക്ക്
+time_format_24h	24 മണിക്കൂർ
+time_format_12h	12 മണിക്കൂർ
+attach_bill_photo	ബിൽ ഫോട്ടോ ചേർക്കുക
+attach_pdf	PDF ചേർക്കുക
+attach_photo	ഫോട്ടോ ചേർക്കുക
+attachments_last_expense	അറ്റാച്ച്‌മെന്റുകൾ (അവസാന ചെലവ്)
+bank	ബാങ്ക്
+bank_in	ബാങ്കിൽ ഇടുക
+bank_out	ബാങ്കിൽ നിന്ന് എടുക്കുക
+bank_reconciliation	ബാങ്ക് അനുരഞ്ജനം (നിങ്ങളുടെ ബാങ്ക് സ്റ്റേറ്റ്‌മെന്റുമായി ടിക്ക് ചെയ്യുക)
+bank_to_till	ബാങ്ക് → ടിൽ
+book_add_dish	ബുക്ക് — ഇനം ചേർക്കുക
+book_opening_credit	ബുക്ക് — ആരംഭ കടം
+branch_name_sell_ph	വിൽക്കേണ്ട ശാഖയുടെ പേര്
+bring_my_book	എന്റെ ബുക്ക് കൊണ്ടുവരിക
+business_tax_id_ph	ബിസിനസ് നികുതി ഐഡി
+caption_bank	ബാങ്ക്
+caption_bills	ബില്ലുകൾ
+caption_outstanding	കുടിശ്ശിക
+caption_payments_today	ഇന്നത്തെ പേയ്‌മെന്റുകൾ
+caption_today	ഇന്ന്
+card_amount_ph	കാർഡ് തുക
+cash_amount_ph	പണ തുക
+cash_memo	ക്യാഷ് മെമ്മോ
+choose_icon	ഐക്കൺ തിരഞ്ഞെടുക്കുക
+choose_logo	ലോഗോ തിരഞ്ഞെടുക്കുക
+clear_icon	ഐക്കൺ മാറ്റുക
+clear_photo	ഫോട്ടോ മാറ്റുക
+copy_day_book_csv	ദിന ബുക്ക് CSV പകർത്തുക
+copy_day_close	ദിവസം അടയ്ക്കൽ പകർത്തുക
+copy_items_csv	ഇനങ്ങൾ CSV പകർത്തുക
+copy_outstanding_csv	കുടിശ്ശിക CSV പകർത്തുക
+copy_parties_csv	പാർട്ടികൾ CSV പകർത്തുക
+copy_party_ledger_csv	പാർട്ടി ലെഡ്ജർ CSV പകർത്തുക
+copy_receipt	രസീത് പകർത്തുക
+share_whatsapp	വാട്ട്‌സ്ആപ്പ് പങ്കിടുക
+lan_pages_heading	Wi‑Fi-യിൽ ഉപഭോക്തൃ പേജുകൾ
+lan_pages_help	ഈ കടയുടെ Wi‑Fi-യിൽ ഉപഭോക്തൃ പേജുകൾ ഡിസ്‌പ്ലേ ബോർഡിനും അഭിപ്രായത്തിനും പ്രവർത്തിക്കും. മൊബൈൽ ഡാറ്റയിലുള്ളവർക്ക് പിന്നീട് Cloud വേണം. കാർഡ് ടെർമിനലോ പേയ്‌മെന്റ് ലിങ്കോ ഐച്ഛികം, കൗണ്ടറിനെ ഒരിക്കലും തടയില്ല.
+diag_send_heading	ഈ ഉപകരണത്തിൽ നിന്ന് പങ്കിടുക
+kot_dest_heading	സ്റ്റേഷൻ
+optional_login_heading	ഐച്ഛിക ലോഗിൻ
+rights_heading	അവകാശങ്ങൾ
+ops_panel	പ്രാദേശിക ജോലി
+crm_heading	ഉപഭോക്താക്കളും സന്ദേശങ്ങളും
+crm_help	ജന്മദിനം, ലോയൽറ്റി — SMS/WhatsApp ക്യൂ. {name}, {points}. ഉടമ അയയ്ക്കും.
+crm_queue_sms	SMS ക്യൂ
+crm_queue_wa	WhatsApp ക്യൂ
+crm_seg_bday_week	ജന്മദിന ആഴ്ച
+crm_seg_bday_month	ജന്മദിന മാസം
+crm_seg_phone	ഫോൺ ഉള്ളവർ
+crm_seg_loyalty	ലോയൽറ്റി
+crm_seg_inactive	നിഷ്‌ക്രിയ
+crm_seg_top	ടോപ്പ് ചെലവ്
+birthday_ph	ജന്മദിനം (MM-DD അല്ലെങ്കിൽ YYYY-MM-DD)
+crm_message_ph	ജന്മദിനാശംസകൾ {name}! നിങ്ങൾക്ക് {points} പോയിന്റ്.
+till_apply_redeem	ബില്ലിൽ പ്രയോഗിക്കുക
+till_clear_redeem	റിഡീം മായ്ക്കുക
+till_wallet_topup	വാലറ്റ് ടോപ്പ്-അപ്പ്
+till_issue_voucher	വൗച്ചർ ഇഷ്യൂ
+till_points_ph	റിഡീം പോയിന്റ്
+till_wallet_ph	വാലറ്റ് ചെലവ്
+till_voucher_code_ph	വൗച്ചർ കോഡ്
+till_voucher_amt_ph	വൗച്ചർ തുക (ശൂന്യം = എല്ലാം)
+till_wallet_topup_ph	വാലറ്റ് ടോപ്പ്-അപ്പ് തുക
+till_voucher_issue_amt_ph	പുതിയ വൗച്ചർ തുക
+till_voucher_issue_code_ph	പുതിയ വൗച്ചർ കോഡ്
+split_evenly	തുല്യമായി വിഭജിക്കുക
+waitlist	വെയ്റ്റ്‌ലിസ്റ്റ്
+fire_course	അടുത്ത ഘട്ടം
+hold_item	നിർത്തിവയ്ക്കുക
+waiter_call	കാഷ്യറെ വിളിക്കുക
+waitlist_add	വെയ്റ്റ്‌ലിസ്റ്റിൽ ചേർക്കുക
+floor_view_grid	ഗ്രിഡ്
+floor_view_layout	ലേഔട്ട്
+floor_layout_x	X
+floor_layout_y	Y
+floor_layout_w	W
+floor_layout_h	H
+floor_layout_save	ലേഔട്ട് സംരക്ഷിക്കുക
+floor_layout_open	ടേബിൾ തുറക്കുക
+floor_layout_edit	ലേഔട്ട് എഡിറ്റ്
+floor_layout_pick	ലേഔട്ട് മാറ്റാൻ ടേബിൾ ടാപ്പ് ചെയ്യുക
+floor_layout_saved	ലേഔട്ട് സേവ് ചെയ്തു
+floor_layout_nudge_left	← 20
+floor_layout_nudge_right	→ 20
+floor_layout_nudge_up	↑ 20
+floor_layout_nudge_down	↓ 20
+sibling_pickers_help	യൂണിറ്റ് പോലെ On/Off — ഏരിയകൾ, സ്റ്റേഷനുകൾ, നികുതി നിരക്കുകൾ ദൈനംദിന പിക്കറിൽ നിന്ന് മറയ്ക്കുക; പായ്ക്ക് ഡിഫോൾട്ടുകൾ നിലനിൽക്കും.
+bulk_price_apply	ബൾക്ക് വില പ്രയോഗിക്കുക
+card_terminal_optional	കാർഡ് ടെർമിനൽ / പേയ്‌മെന്റ് ലിങ്ക് (ഇന്റർനെറ്റ് ഉണ്ടെങ്കിൽ ഓപ്ഷണൽ)
+copy_report	റിപ്പോർട്ട് പകർത്തുക
+counted_cash_ph	ഡ്രോയറിൽ എണ്ണിയ പണം
+country_tax	രാജ്യവും നികുതിയും
+create_backup	ബാക്കപ്പ് ഉണ്ടാക്കുക
+credit_limit_heading	ക്രെഡിറ്റ് പരിധി (തിരഞ്ഞെടുത്ത / പേരുള്ള പാർട്ടി)
+day_close_summary	ദിവസം അടയ്ക്കൽ സംഗ്രഹം
+delete_party	തിരഞ്ഞെടുത്ത പാർട്ടി ഇല്ലാതാക്കുക
+delivery	ഡെലിവറി
+done_open_books	കഴിഞ്ഞു — ബുക്കുകൾ തുറക്കുക
+drawer_count	ഡ്രോയർ എണ്ണൽ (ഓപ്ഷണൽ)
+expense_heading	ചെലവ്
+export_day	ദിവസം എക്‌സ്‌പോർട്ട് ചെയ്യുക
+extra_note_bill_ph	ഈ ബിൽ / വിൽപ്പനയിൽ അധിക കുറിപ്പ്
+extra_note_expense_ph	അവസാന ചെലവിൽ അധിക കുറിപ്പ്
+extra_tills_heading	അധിക ടില്ലുകൾ
+other_devices_help_heading	മറ്റ് ഉപകരണങ്ങൾ സജ്ജമാക്കുക
+other_devices_help	ഈ ഉപകരണത്തിൽ (സെർവർ): മറ്റ് ഉപകരണങ്ങൾ → അധിക ടില്ലുകൾ അനുവദിക്കുക. പെയറിംഗ് കോഡും Wi‑Fi വിലാസവും കുറിച്ചെടുക്കുക. കാണുന്നെങ്കിൽ മറ്റ് ഉപകരണങ്ങളെ കണക്റ്റ് ചെയ്യാൻ അനുവദിക്കുക ടാപ്പ് ചെയ്യുക. കമ്പ്യൂട്ടറിൽ, ഈ കമ്പ്യൂട്ടറിൽ തുടങ്ങുക ടാപ്പ് ചെയ്യുക. ഓരോ മറ്റ് ഉപകരണത്തിലും: ആപ്പ് ഇൻസ്റ്റാൾ ചെയ്ത്, ക്ലയന്റ് മോഡ് തിരഞ്ഞെടുത്ത്, കടയുടെ സെർവർ കണ്ടെത്തി (അല്ലെങ്കിൽ വിലാസം ടൈപ്പ് ചെയ്ത്), പെയറിംഗ് കോഡ് നൽകി, ഇപ്പോൾ ജോടിയാക്കുക. Wi‑Fi പോയാൽ ഓർഡറുകൾ ഉപകരണത്തിൽ കാത്തിരുന്ന് സെർവർ വീണ്ടും മറുപടി നൽകുമ്പോൾ പോകും. അധിക പ്രിന്ററുകൾ സെർവറിൽ സജ്ജമാക്കുന്നു (ക്രമീകരണങ്ങൾ → പ്രിന്ററുകൾ) — അധിക ടില്ലുകൾ ബില്ലുകൾ അവിടേക്ക് അയയ്ക്കും.
+forget_shop	ഈ കട മറക്കുക
+goods_received	സാധനങ്ങൾ ലഭിച്ചു
+import_day	ദിവസം ഇറക്കുമതി ചെയ്യുക
+import_items_csv_plain	ഇനങ്ങൾ CSV ഇറക്കുമതി…
+import_parties_csv	പാർട്ടികൾ CSV ഇറക്കുമതി…
+item_name	ഇനത്തിന്റെ പേര്
+kitchen_printing	അടുക്കള പ്രിന്റിംഗ്
+login_id_ph	ലോഗിൻ ഐഡി
+mark_cleared	ക്ലിയർ എന്ന് അടയാളപ്പെടുത്തുക
+new_party_clear	പുതിയ പാർട്ടി (ഫോം മായ്ക്കുക)
+new_party_kind_supplier_ph	പുതിയ പാർട്ടി തരം (വിതരണക്കാരൻ)
+next_country	അടുത്ത രാജ്യം
+next_order	അടുത്ത ഓർഡർ (ഡെസ്ക് മായ്ക്കുക)
+note_gstin_ph	കുറിപ്പ് / GSTIN / കരാർ ഓർമ്മപ്പെടുത്തൽ
+notes_attach_party	കുറിപ്പുകളും അറ്റാച്ച്‌മെന്റുകളും (തിരഞ്ഞെടുത്ത പാർട്ടി)
+notes_attach_sale	കുറിപ്പുകളും അറ്റാച്ച്‌മെന്റുകളും (തിരഞ്ഞെടുത്ത വിൽപ്പന)
+on_account_ap	അക്കൗണ്ടിൽ (AP)
+org_optional_ph	സ്ഥാപനം (ഓപ്ഷണൽ)
+paid_by	അടച്ചത്
+paid_now	ഇപ്പോൾ അടച്ചു
+pair_now	ഇപ്പോൾ ജോടിയാക്കുക
+pairing_code_ph	പെയറിംഗ് കോഡ്
+party_name_selected_ph	പാർട്ടിയുടെ പേര് (അല്ലെങ്കിൽ തിരഞ്ഞെടുത്തത് ഉപയോഗിക്കുക)
+password_ph	പാസ്‌വേഡ്
+pay_ap_card	AP കാർഡ് കൊണ്ട് അടയ്ക്കുക
+pay_ap_cash	AP പണം അടയ്ക്കുക
+pay_ap_heading	നമ്മൾ അവർക്ക് കൊടുക്കേണ്ടത് (AP)
+pay_ap_upi	AP UPI അടയ്ക്കുക
+pay_selected_heading	തിരഞ്ഞെടുത്തത് അടയ്ക്കുക (കടം തീർക്കുക / അഡ്വാൻസ്)
+pick_from_items	ഞങ്ങളുടെ ഇനങ്ങളിൽ നിന്ന് തിരഞ്ഞെടുക്കുക
+prev_country	മുമ്പത്തെ രാജ്യം
+print_open	അച്ചടിക്കുക / തുറക്കുക
+reason_amend_ph	ഭേദഗതി / റദ്ദാക്കൽ / റീഫണ്ട് കാരണം
+reason_note_ph	കാരണം / കുറിപ്പ് (പാഴ്, എണ്ണം, …)
+record_day_close	ദിവസം അടയ്ക്കൽ രേഖപ്പെടുത്തുക
+refresh_from_shop	കടയിൽ നിന്ന് പുതുക്കുക
+refund	റീഫണ്ട്
+remove_selected	തിരഞ്ഞെടുത്തത് മാറ്റുക
+request_bill	ബിൽ ചോദിക്കുക
+restaurant_name_ph	കടയുടെ പേര് (ഐച്ഛികം)
+restore_backup	ബാക്കപ്പ് പുനഃസ്ഥാപിക്കുക
+role_both	രണ്ടും
+role_admin	അഡ്മിൻ
+role_cashier	കാഷ്യർ
+role_customer	ഉപഭോക്താവ്
+role_manager	മാനേജർ
+history_retention	വ്യാപാര ചരിത്രം
+history_retention_help	പഴയ വിൽപ്പനകളും പഴയ ടിക്കറ്റുകളും സ്വയം മായ്ക്കുക. ഇനങ്ങൾ, ജീവനക്കാർ, ക്രമീകരണങ്ങൾ നിലനിൽക്കും. ഇപ്പോൾ മായ്ക്കുക എല്ലാ വ്യാപാര വരികളും മായ്ച്ച് സജ്ജീകരണം നിലനിർത്തും.
+history_off	സൂക്ഷിക്കുക
+history_day_close	ദിവസം അടയ്ക്കുമ്പോൾ
+history_after_hours	മണിക്കൂറുകൾക്ക് ശേഷം
+history_hours_ph	മണിക്കൂറുകൾ (1–168, സ്ഥിരം 4)
+history_hours_save	മണിക്കൂറുകൾ സേവ് ചെയ്യുക
+history_clear_now	ചരിത്രം ഇപ്പോൾ മായ്ക്കുക
+history_cleared	വ്യാപാര ചരിത്രം മായ്ച്ചു — സജ്ജീകരണം നിലനിർത്തി
+history_retention_saved	ചരിത്രം മായ്ക്കൽ സേവ് ചെയ്തു
+history_hours_saved	ചരിത്ര മണിക്കൂറുകൾ സേവ് ചെയ്തു
+history_owner_only	ഉടമയ്ക്കോ അഡ്മിനോ മാത്രമേ ചരിത്രം മായ്ക്കാനാകൂ
+rollup	റോൾ-അപ്പ്
+save_brand	ബ്രാൻഡ് സേവ് ചെയ്യുക
+save_business_id	ബിസിനസ് ഐഡിയും സേവന % ഉം സേവ് ചെയ്യുക
+save_business_name	ബിസിനസിന്റെ പേര് സേവ് ചെയ്യുക
+save_features	തിരഞ്ഞെടുത്ത ജീവനക്കാരന്റെ ഫീച്ചറുകൾ സേവ് ചെയ്യുക
+save_features_named	{name} സേവ് ചെയ്യുക
+save_features_ok	{name}-ന്റെ സജ്ജീകരണം സേവ് ചെയ്തു
+save_names	പേരുകൾ സേവ് ചെയ്യുക
+second_way	രണ്ടാമത്തെ വഴി
+server_ip_ph	സെർവർ IP (ഉദാ. 192.168.1.10)
+set_credit_limit	ക്രെഡിറ്റ് പരിധി നിശ്ചയിക്കുക
+set_login_selected	തിരഞ്ഞെടുത്തതിൽ ലോഗിൻ നിശ്ചയിക്കുക
+set_login_named	{name}-ൽ ലോഗിൻ നിശ്ചയിക്കുക
+shop	കട
+show	കാണിക്കുക
+spreadsheet_csv	സ്പ്രെഡ്‌ഷീറ്റ് (CSV)
+start_fresh	പുതുതായി തുടങ്ങുക
+stop_extra_tills	അധിക ടില്ലുകൾ നിർത്തുക
+floor_cols_ph	നിരകൾ
+floor_cols_fit	സ്ക്രീനിന് ഒത്ത്
+floor_cols_fit_sub	ഇവിടെ {n} ഒതുങ്ങും
+floor_cols_fits	ഒതുങ്ങും
+floor_cols_scroll	വശത്തേക്ക് സ്ക്രോൾ
+floor_cols_min	നിരകൾ: കുറഞ്ഞത് 1 — അല്ലെങ്കിൽ സ്ക്രീനിന് ഒത്ത് വരാൻ ശൂന്യമായി വിടുക
+floor_zoom_auto	സ്വയമേവ
+floor_zoom_out	ചെറുതാക്കുക
+floor_zoom_in	വലുതാക്കുക
+backup_auto	ദിവസവും സ്വയം ബാക്കപ്പ് · അവസാനം {when} · അവസാന 14 ദിവസം {dir} ൽ സൂക്ഷിക്കുന്നു.
+backup_auto_none	ദിവസവും സ്വയം ബാക്കപ്പ് — ആദ്യത്തേത് ഉടൻ നടക്കും.
+backup_copy_to	പകർപ്പുകൾ {dir} ലേക്കും പോകുന്നു.
+backup_copy_btn	ബാക്കപ്പുകൾ ഒരു ഫോൾഡറിലേക്കും പകർത്തുക…
+autostart_off	ഈ കമ്പ്യൂട്ടറിനൊപ്പം തുടങ്ങുക
+autostart_on	ഈ കമ്പ്യൂട്ടറിനൊപ്പം തുടങ്ങും ✓ — നിർത്താൻ അമർത്തുക
+autostart_done_on	ഇനി കമ്പ്യൂട്ടർ തുടങ്ങുമ്പോൾ ആപ്പ് തുറക്കും — കറന്റ് പോയാലും കടയുടെ സെർവർ വീണ്ടും പ്രവർത്തിക്കും.
+autostart_done_off	ഇനി കമ്പ്യൂട്ടർ തുടങ്ങുമ്പോൾ ആപ്പ് തുറക്കില്ല.
+device_forgotten	കട ഈ ഉപകരണം നീക്കി — കടയുടെ ഇപ്പോഴത്തെ കോഡ് ഉപയോഗിച്ച് വീണ്ടും ജോടിയാക്കുക. കാത്തിരിക്കുന്ന ഓർഡറുകൾ സൂക്ഷിച്ചിട്ടുണ്ട്.
+lan_offline	ഓഫ്‌ലൈൻ
+forget_device	മറക്കുക
+last_seen	അവസാനം
+copy_pair_code	ജോടിയാക്കൽ കോഡ് പകർത്തുക
+new_pair_code	പുതിയ ജോടിയാക്കൽ കോഡ്
+pair_finishing	ജോടിയാക്കൽ പൂർത്തിയാകുന്നു… കടയുടെ കണക്കുകൾ ബാധകമാക്കുന്നു
+pair_opening	ടിൽ തുറക്കുന്നു…
+pair_copied	ജോടിയാക്കൽ കോഡ് പകർത്തി
+kot_waiting	അയയ്ക്കാൻ കാത്തിരിക്കുന്നു
+lan_offline_waiting	ഓഫ്‌ലൈൻ · {n} കാത്തിരിക്കുന്നു
+lan_connecting	കടയുമായി ബന്ധിപ്പിക്കുന്നു…
+lan_live	ലൈവ്
+lan_sending	{n} അയയ്ക്കുന്നു
+lan_sign_in_to_send	{n} അയയ്ക്കാൻ വീണ്ടും സൈൻ ഇൻ ചെയ്യുക
+lan_pair_again	ഈ ഉപകരണം വീണ്ടും ജോടിയാക്കുക
+lan_update_app	ആപ്പ് അപ്‌ഡേറ്റ് ചെയ്യുക — ഈ ഉപകരണവും കടയുടെ സെർവറും വ്യത്യസ്ത പതിപ്പുകളാണ്
+allow_firewall	മറ്റ് ഉപകരണങ്ങളെ ബന്ധിപ്പിക്കാൻ അനുവദിക്കുക
+firewall_blocked	ഈ കമ്പ്യൂട്ടറിന്റെ ഫയർവാൾ മറ്റ് ഉപകരണങ്ങളെ തടയുന്നു — “മറ്റ് ഉപകരണങ്ങളെ ബന്ധിപ്പിക്കാൻ അനുവദിക്കുക” തൊടുക.
+firewall_waiting	അഡ്മിൻ അനുമതിക്കായി കാത്തിരിക്കുന്നു…
+lan_join_help	മറ്റ് ഉപകരണങ്ങൾക്ക് ഇതുമായി ചേരാം — ജോടിയാക്കൽ കോഡ് {code}. മറ്റേ ഉപകരണത്തിൽ ക്ലയന്റ് മോഡ് തിരഞ്ഞെടുത്ത്, കടയുടെ സെർവർ കണ്ടെത്തുക അമർത്തുക, അല്ലെങ്കിൽ ഈ വിലാസം നൽകുക: {addr}
+lan_pair_status	വൈ‑ഫൈ {addr}
+lan_join_help_no_addr	വിലാസം ലഭിക്കാൻ ഈ ഉപകരണം Wi‑Fi-യിലേക്ക് കണക്റ്റ് ചെയ്യുക.
+lan_no_address	ഈ ഉപകരണത്തിന് ഇതുവരെ Wi‑Fi വിലാസമില്ല — ഇത് കടയുടെ Wi‑Fi-ലേക്ക് കണക്റ്റ് ചെയ്യുക.
+lan_not_listening	ഇപ്പോൾ ഉപകരണങ്ങൾ സ്വീകരിക്കുന്നില്ല — മറ്റൊരു പ്രോഗ്രാം പോർട്ട് {port} ഉപയോഗിക്കുന്നുണ്ടാകാം. ആപ്പ് വീണ്ടും തുടങ്ങുക.
+lan_tills_off	അധിക ടില്ലുകൾ ഓഫാണ്. ഈ കടയുടെ കണക്കുകൾ ഈ ഉപകരണത്തിൽ തന്നെയാണ്. മറ്റൊരു ഉപകരണവും ഓർഡർ എടുക്കാനോ ബിൽ ചെയ്യാനോ വേണമെങ്കിൽ അധിക ടില്ലുകൾ അനുവദിക്കുക.
+paired_with	{url} ലെ കടയുമായി ജോടിയാക്കി
+not_paired	ജോടിയാക്കിയിട്ടില്ല — കടയുടെ സെർവറുമായി കണക്റ്റ് ചെയ്യുക.
+choose_device_use	ഈ ഉപകരണം എങ്ങനെ ഉപയോഗിക്കണമെന്ന് തിരഞ്ഞെടുക്കുക.
+paired_note	ജോടിയാക്കി. വിൽക്കാൻ അൺലോക്ക് ചെയ്യുക, അല്ലെങ്കിൽ കടയിൽ നിന്ന് പുതിയത് എടുക്കാൻ പുതുക്കുക.
+last_update_at	കടയിൽ നിന്നുള്ള അവസാന അപ്‌ഡേറ്റ്: {time}.
+pair_intro	സെർവർ കണ്ടെത്തുക, അല്ലെങ്കിൽ അതിന്റെ വിലാസവും പെയറിംഗ് കോഡും ടൈപ്പ് ചെയ്യുക.
+queue_waiting	കടയിലെത്താൻ കാത്തിരിക്കുന്നു ({n}):
+queue_tries	{n} തവണ ശ്രമിച്ചു · അവസാന മറുപടി: {e}
+save_backup_copy	ബാക്കപ്പ് പകർപ്പ് സംരക്ഷിക്കുക…
+backup_copy_saved	ബാക്കപ്പ് പകർപ്പ് സംരക്ഷിച്ചു — ഇത് ഈ ഉപകരണത്തിന് പുറത്ത് സൂക്ഷിക്കുക (USB സ്റ്റിക്ക് അല്ലെങ്കിൽ മറ്റൊരു ഉപകരണം)
+backup_copy_overdue	{n} ദിവസമായി ഒരു ബാക്കപ്പ് പകർപ്പും ഈ ഉപകരണത്തിന് പുറത്ത് പോയിട്ടില്ല — ക്രമീകരണങ്ങൾ → ബാക്കപ്പ്
+backup_copy_failed	ബാക്കപ്പ് പകർപ്പ് അവിടെ സംരക്ഷിക്കാനായില്ല — മറ്റൊരു സ്ഥലം തിരഞ്ഞെടുക്കുക
+clock_off	ഈ ഉപകരണത്തിന്റെ ക്ലോക്ക് കടയിലെ സർവറിൽ നിന്ന് {min} മിനിറ്റ് വ്യത്യാസമുണ്ട് — ഈ ഉപകരണത്തിൽ ശരിയായ സമയം വയ്ക്കുക
+printers_heading	ഈ ഉപകരണത്തിലെ പ്രിന്ററുകൾ
+printers_help	പ്രിന്ററുകൾ കണ്ടെത്തുക, തിരഞ്ഞെടുക്കാൻ ഒന്ന് ടാപ്പ് ചെയ്ത്, ആ ഉപകരണത്തിൽ മാത്രം ടെസ്റ്റ് പേജ് അച്ചടിക്കുക. ബിൽ പ്രിന്ററുകൾ: ബിൽ & സ്ലിപ്പ് ഫോർമാറ്റ് → ബിൽ.
+printers_host_only	പ്രിന്ററുകൾ കടയിലെ ഉപകരണത്തിൽ (സെർവർ) സജ്ജമാക്കുന്നു. ഈ ടിൽ ബില്ലുകളും പഴയ ടിക്കറ്റുകളും അവിടേക്ക് അയയ്ക്കും — കണ്ടെത്തുക / ചേർക്കുക / നൽകുക സെർവറിൽ തന്നെ. ടെസ്റ്റ് പേജും ബിൽ അച്ചടി വലുപ്പവും സെർവറിലേക്ക് പോകും.
+printers_find_heading	പ്രിന്ററുകൾ
+printers_find_tip	കണ്ടെത്തൽ ഈ ഉപകരണം സ്കാൻ ചെയ്ത് ലിസ്റ്റ് അപ്‌ഡേറ്റ് ആക്കുന്നു. സിസ്റ്റം പ്രിന്ററുകൾ ആദ്യം; നെറ്റ്‌വർക്ക് സ്കാൻ പശ്ചാത്തലത്തിൽ തുടരാം.
+printers_pool_heading	1. നിങ്ങളുടെ പ്രിന്ററുകൾ
+printers_pool_tip	കണ്ടെത്തൽ ഈ ഉപകരണം സ്കാൻ ചെയ്ത് ലിസ്റ്റ് അപ്‌ഡേറ്റ് ആക്കുന്നു.
+printers_pool_empty	(ഇതുവരെ ഇല്ല — താഴെ ചേർക്കുക)
+printers_routes_help	ഓപ്പറേറ്റിംഗ് സിസ്റ്റത്തിന് ഇതിനകം അറിയാവുന്ന പ്രിന്ററുകൾ കണ്ടെത്തുക. ബിൽ & സ്ലിപ്പ് ഫോർമാറ്റിൽ അവയെ ബില്ലിനും ഓരോ വിഭാഗത്തിനും നൽകുക.
+printer_assign_dd	{place} പ്രിന്റർ തിരഞ്ഞെടുക്കുക
+printer_assign_pick	യഥാർത്ഥ പ്രിന്റർ തിരഞ്ഞെടുക്കുക
+printer_profile_heading	ലേഔട്ട്
+printer_send_heading	ഡെലിവറി
+vp_delivery_heading	ഡെലിവറി
+vp_delivery_help	ഈ വെർച്വൽ പ്രിന്റർ ജോലികൾ എങ്ങനെ അയയ്ക്കുന്നു — OS ഡോക്യുമെന്റ്, റോ ബൈറ്റുകൾ, അല്ലെങ്കിൽ ESC/POS. സ്ലിപ്പ് ഉള്ളടക്കം (അക്ഷര വലുപ്പം, പൊതിയൽ, മാർജിനുകൾ) ബിൽ / സ്ലിപ്പ് ഫോർമാറ്റ് തീരുമാനിക്കും, ഇവിടെ അല്ല.
+vp_type_size_heading	അക്ഷര വലുപ്പം
+vp_wrap_heading	റാപ്പ് വീതി
+vp_margin_heading	മാർജിനുകൾ
+vp_delivery_spooler	OS രേഖ (സിസ്റ്റം സ്പൂളർ)
+vp_delivery_raw	ഉപകരണത്തിലേക്ക് അസംസ്കൃത ബൈറ്റ്
+vp_delivery_escpos	ESC/POS തെർമൽ കമാൻഡുകൾ
+virtual_printer_new	പുതിയ വെർച്വൽ പ്രിന്റർ
+virtual_printer_selected	“{name}” എഡിറ്റ് — ലിസ്റ്റിൽ മറ്റൊന്ന് ടാപ്പ് ചെയ്ത് മാറ്റുക
+virtual_printer_tap_list	ലിസ്റ്റിൽ വെർച്വൽ പ്രിന്റർ ടാപ്പ് ചെയ്ത് എഡിറ്റ് ചെയ്യുക
+config_layout_portrait	പോർട്രെയ്റ്റ്
+config_layout_landscape	ലാൻഡ്‌സ്കേപ്പ്
+config_send_os	സിസ്റ്റം സ്പൂളർ
+config_send_escpos	ESC/POS
+profiles_heading	പ്രിന്ററുകൾ
+profiles_empty	പ്രിന്ററുകൾ
+profile_builtin	ബിൽറ്റ്-ഇൻ
+profile_custom	കസ്റ്റം
+profile_name_ph	പ്രിന്ററുകൾ
+profile_new	പ്രിന്ററുകൾ
+profile_delete	പ്രിന്ററുകൾ
+profile_created	പ്രിന്ററുകൾ
+profile_deleted	പ്രിന്ററുകൾ
+profile_builtin_keep	പ്രിന്ററുകൾ
+config_saved	അപ്‌ഡേറ്റ് ചെയ്തു
+config_selected	“{name}” തിരഞ്ഞെടുത്തു
+printer_output_heading	വെർച്വൽ പ്രിന്ററുകൾ
+virtual_printers_heading	വെർച്വൽ പ്രിന്ററുകൾ
+virtual_printers_empty	ഇതുവരെ വെർച്വൽ പ്രിന്ററുകളില്ല — താഴെ മൂല്യങ്ങൾ സജ്ജമാക്കി സംരക്ഷിക്കുക. ചിലതുണ്ടായാൽ ലിസ്റ്റിൽ ടാപ്പ് ചെയ്ത് എഡിറ്റ് ചെയ്യുക.
+virtual_printer_name_ph	വെർച്വൽ പ്രിന്റർ പേര് (ഓപ്ഷണൽ)
+virtual_printer_create	വെർച്വൽ പ്രിന്റർ സൃഷ്ടിക്കുക
+virtual_printer_save	വെർച്വൽ പ്രിന്റർ സംരക്ഷിക്കുക
+virtual_printer_delete	വെർച്വൽ പ്രിന്റർ നീക്കം ചെയ്യുക
+virtual_printer_created	വെർച്വൽ പ്രിന്റർ “{name}” സൃഷ്ടിച്ചു
+virtual_printer_deleted	വെർച്വൽ പ്രിന്റർ “{name}” നീക്കം ചെയ്തു
+virtual_printer_updated	വെർച്വൽ പ്രിന്റർ അപ്‌ഡേറ്റ് ചെയ്തു
+virtual_printer_updated_named	വെർച്വൽ പ്രിന്റർ “{name}” അപ്‌ഡേറ്റ് ചെയ്തു
+virtual_draft_layout	അടുത്ത വെർച്വൽ പ്രിന്ററിനുള്ള മൂല്യങ്ങൾ സജ്ജമാക്കി
+virtual_draft_send	അടുത്ത വെർച്വൽ പ്രിന്ററിനുള്ള മൂല്യം സജ്ജമാക്കി
+virtual_need_real	ആദ്യം യഥാർത്ഥ പ്രിന്റർ തിരഞ്ഞെടുക്കുക
+virtual_need_select	നീക്കം ചെയ്യാൻ വെർച്വൽ പ്രിന്റർ തിരഞ്ഞെടുക്കുക
+real_printer_selected	യഥാർത്ഥ പ്രിന്റർ: {name}
+station_group_heading	വെർച്വൽ പ്രിന്ററുകൾ
+station_group_apply	വെർച്വൽ പ്രിന്റർ നീക്കം ചെയ്യുക
+station_group_applied	നീക്കം ചെയ്തു
+station_group_empty	വെർച്വൽ പ്രിന്റർ തിരഞ്ഞെടുക്കുക
+station_group_name_ph	വെർച്വൽ പ്രിന്റർ പേര് (ഓപ്ഷണൽ)
+station_group_save	വെർച്വൽ പ്രിന്റർ സൃഷ്ടിക്കുക
+station_group_saved	വെർച്വൽ പ്രിന്റർ സംരക്ഷിച്ചു
+station_manage_heading	കടയുടെ ഒരു വിഭാഗം ചേർക്കുക അല്ലെങ്കിൽ നീക്കുക
+printers_routes_heading	2. എവിടെ പ്രിന്റ്
+route_pick_heading	സ്ഥലം
+route_editing	എഡിറ്റ് ചെയ്യുന്നു: {name}
+route_assigned	{printer} {place}-ലേക്ക് ചേർത്തു
+route_already_assigned	ഈ സ്ഥലത്ത് ഇതിനകം: {printer}
+route_removed	{printer} {place}-ൽ നിന്ന് നീക്കി
+route_cleared	{name} മായ്ച്ചു
+route_assigned_empty	ഈ സ്ഥലത്ത് ഒന്നുമില്ല
+route_tap_remove	നീക്കാൻ ടാപ്പ് ചെയ്യുക
+route_tap_select	തിരഞ്ഞെടുക്കാൻ ടാപ്പ്
+route_tap_selected	തിരഞ്ഞെടുത്തത്
+route_pick_printer_first	ആദ്യം ഒരു പ്രിന്റർ ടാപ്പ് ചെയ്യുക
+route_assigned_heading	പ്രിന്ററുകൾ
+route_add_heading	നിയോഗിക്കുക
+printer_label_ph	പേര് (ഉദാ. കൗണ്ടർ പ്രിന്റർ)
+printer_target_ph	വിലാസം അല്ലെങ്കിൽ സിസ്റ്റം പേര്
+printer_target_default	ഡിഫോൾട്ട് പ്രിന്റർ
+printer_wire_heading	ഫോർമാറ്റ്
+printer_wire_escpos	KOT
+printer_wire_os	സാധാരണ പോർട്രെയ്റ്റ്
+printer_wire_os_portrait	സാധാരണ പോർട്രെയ്റ്റ്
+printer_wire_os_landscape	സാധാരണ ലാൻഡ്‌സ്കേപ്പ്
+printer_wire_escpos_short	KOT
+printer_wire_os_short	പോർട്രെയ്റ്റ്
+printer_wire_os_landscape_short	ലാൻഡ്‌സ്കേപ്പ്
+printer_format_custom	പുതിയ സ്വന്തം ഫോർമാറ്റ്
+printer_format_custom_label	സ്വന്തം
+printer_format_custom_added	ഈ റൂട്ടിന് സ്വന്തം ഫോർമാറ്റ് ചേർത്തു
+add_printer	പ്രിന്റർ ചേർക്കുക
+remove_printer	അവസാനത്തേത് നീക്കം
+route_pick_ph	ബിൽ അല്ലെങ്കിൽ കടയുടെ ഒരു വിഭാഗം
+route_bill	ബിൽ
+route_default_kitchen	സ്റ്റേഷൻ ഇല്ല (നൽകാത്ത ഇനങ്ങൾ)
+route_kot_station	സ്റ്റേഷൻ
+route_dont_print	പ്രിന്റ് വേണ്ട
+stations_heading	സ്റ്റേഷനുകൾ
+stations_help	കടയുടെ വിഭാഗങ്ങൾ ഇനങ്ങളെയും കടയുടെ ആ ഭാഗത്തെ പ്രിന്ററുകളെയും ഒന്നിച്ച് വയ്ക്കുന്നു. ക്രമീകരണങ്ങൾ → പ്രിന്ററുകളിൽ നിന്ന് പ്രിന്ററുകൾ ഘടിപ്പിച്ച്, ശ്രമ ക്രമം നിശ്ചയിച്ച്, പിന്നെ ആദ്യം പ്രവർത്തിക്കുന്നത് അല്ലെങ്കിൽ എല്ലാറ്റിലും അച്ചടിക്കുക. മാറ്റങ്ങൾ ഉടനടി സേവ് ആകും.
+station_print_heading	ഈ സ്റ്റേഷന്റെ പ്രിന്ററുകൾ
+station_print_help	ഒരു സ്റ്റേഷൻ തിരഞ്ഞെടുത്ത്, ഒന്നോ അതിലധികമോ പ്രിന്ററുകൾ ഘടിപ്പിക്കുക. ↑↓ ശ്രമ ക്രമം നിശ്ചയിക്കും. ആദ്യം പ്രവർത്തിക്കുന്നത് ആദ്യ വിജയത്തിൽ നിൽക്കും; എല്ലാറ്റിലും അച്ചടിക്കുക ഘടിപ്പിച്ച ഓരോ പ്രിന്ററിലേക്കും അയയ്ക്കും.
+station_print_pick_ph	പ്രിന്ററുകൾ സജ്ജമാക്കാനുള്ള സ്റ്റേഷൻ
+station_print_pick_first	ആദ്യം കടയുടെ ഒരു വിഭാഗം തിരഞ്ഞെടുക്കുക
+station_print_editing	“{name}” പ്രിന്ററുകൾ എഡിറ്റ് ചെയ്യുന്നു
+station_vps_dd	ഈ സ്റ്റേഷന്റെ പ്രിന്ററുകൾ
+station_vps_dd_n	{n} പ്രിന്ററുകൾ · മാറ്റാൻ ടാപ്പ്
+station_vps_empty	ഇതുവരെ പ്രിന്ററുകളില്ല — ക്രമീകരണങ്ങൾ → പ്രിന്ററുകളിൽ കണ്ടെത്തുക
+bill_printers_dd	ബില്ലിനുള്ള പ്രിന്ററുകൾ
+bill_printers_dd_n	ബില്ലിന് {n} പ്രിന്ററുകൾ · മാറ്റാൻ ടാപ്പ് ചെയ്യുക
+job_layout	ലേഔട്ട്
+job_delivery	ജോലി എങ്ങനെ അയയ്ക്കുന്നു
+job_delivery_help	OS ഡോക്യുമെന്റ്, റോ ബൈറ്റുകൾ, അല്ലെങ്കിൽ ESC/POS. ബില്ലും ടിക്കറ്റും സ്വന്തം വീതം സൂക്ഷിക്കും. ഏത് ജോലിയും കണ്ടെത്തുക സേവ് ചെയ്ത ഏത് പ്രിന്ററിലേക്കും പോകാം.
+station_vp_attached	പ്രിന്റർ അറ്റാച്ച് ചെയ്തു
+station_vp_detached	സ്റ്റേഷനിൽ നിന്ന് പ്രിന്റർ നീക്കം ചെയ്തു
+station_print_summary	{mode} · {n} പ്രിന്ററുകൾ
+station_print_summary_none	ഈ സ്റ്റേഷനിൽ ഇതുവരെ പ്രിന്ററുകളില്ല — പ്രിന്റ് ചെയ്യില്ല
+stations_none	ഇതുവരെ സ്റ്റേഷനുകളില്ല — താഴെ ഒന്ന് ചേർക്കുക. കൗണ്ടർ കടയിൽ സ്റ്റേഷനുകൾ ആവശ്യമില്ല — ശൂന്യമാക്കി വിടുക.
+route_up	മുകളിലേക്ക്
+route_down	താഴേക്ക്
+route_remove	അവസാനത്തേത് നീക്കം
+route_clear	പ്രിന്റ് വേണ്ട
+save_printers	പ്രിന്ററുകൾ സംരക്ഷിക്കുക
+print_test_page	ടെസ്റ്റ് പേജ് അച്ചടിക്കുക
+no_printer_assigned	പ്രിന്ററില്ല
+test_page_no_printer	{place}ക്ക് പ്രിന്ററില്ല — മുകളിൽ നിയോഗിച്ച് വീണ്ടും ശ്രമിക്കുക
+test_page_pick_first	ആദ്യം ടെസ്റ്റ് പ്രിന്ററുകൾ തിരഞ്ഞെടുക്കുക — പിന്നെ ടെസ്റ്റ് പേജ് അച്ചടിക്കുക
+test_printers_dd	ടെസ്റ്റ് പേജ് പ്രിന്ററുകൾ
+test_printers_dd_n	{n} ടെസ്റ്റ് പ്രിന്ററുകൾ · മാറ്റാൻ ടാപ്പ്
+kot_test_printers_dd	ടെസ്റ്റ് അച്ചടിക്കുള്ള പ്രിന്ററുകൾ
+kot_test_printers_dd_n	ടെസ്റ്റ് അച്ചടിക്ക് {n} പ്രിന്ററുകൾ · മാറ്റാൻ ടാപ്പ് ചെയ്യുക
+test_printer_picked	ടെസ്റ്റ്: {name}
+test_printer_cleared	ടെസ്റ്റ് അല്ല: {name}
+test_page_sent_n	ടെസ്റ്റ് പേജ് {n} പ്രിന്ററുകളിലേക്ക് അയച്ചു
+test_kot_pick_first	ആദ്യം ടെസ്റ്റ് അച്ചടിക്കുള്ള പ്രിന്ററുകൾ തിരഞ്ഞെടുക്കുക — പിന്നെ ടെസ്റ്റ് അച്ചടി
+test_kot_sent_n	ടെസ്റ്റ് അച്ചടി {n} പ്രിന്ററുകളിലേക്ക് അയച്ചു
+cancel_pick	അടയാളം
+cancel_pick_on	അടയാളപ്പെടുത്തി
+cancel_pick_meta	റദ്ദിന് അടയാളം
+batch_cancel	അടയാളപ്പെടുത്തിയത് റദ്ദ്
+batch_cancel_n	അടയാളപ്പെടുത്തിയത് റദ്ദ് ({n})
+batch_cancel_none	ആദ്യം അയച്ച ഒന്നോ അതിലധികമോ ഇനങ്ങൾ അടയാളപ്പെടുത്തുക — പിന്നെ അടയാളപ്പെടുത്തിയവ റദ്ദാക്കുക
+batch_cancel_title	അടയാളപ്പെടുത്തിയ സാധനം റദ്ദ് — ഒരു കാരണം, ഓരോ വിഭാഗത്തിനും ഒരു സ്ലിപ്പ്
+batch_cancel_ok	{n} ഇനങ്ങൾ റദ്ദാക്കി · {slips} റദ്ദാക്കൽ സ്ലിപ്പുകൾ → {kitchens}
+batch_cancel_ok_noprint	{n} ഇനങ്ങൾ റദ്ദാക്കി — സ്വയം അച്ചടി ഓഫാണ്, അതിനാൽ റദ്ദാക്കൽ സ്ലിപ്പ് ഇല്ല
+no_printer_kitchen_station	ആ സ്റ്റേഷന് പ്രിന്ററില്ല
+printers_saved	ഈ ഉപകരണത്തിലെ പ്രിന്ററുകൾ സംരക്ഷിച്ചു
+test_page_sent	ടെസ്റ്റ് പേജ് അയച്ചു — പ്രിന്റർ നോക്കൂ
+test_page_sent_one	ടെസ്റ്റ് പേജ് {name}-ലേക്ക് അയച്ചു — ആ പ്രിന്റർ നോക്കൂ
+printers_found	{n} കണ്ടെത്തി: {list}
+printers_find_synced	{n} കണ്ടെത്തി — {new} പുതിയവ
+printer_on_device	സംരക്ഷിച്ചു
+printer_already_added	ഇതിനകം ചേർത്തു
+printer_already_saved	ഇതിനകം സേവ് ചെയ്തു: {name}
+find_printers	പ്രിന്ററുകൾ കണ്ടെത്തുക
+printers_looking	ഈ ഉപകരണത്തിലും Wi‑Fiയിലും പ്രിന്ററുകൾ തിരയുന്നു…
+saving_printer	പ്രിന്റർ ചേർക്കുന്നു…
+cancelled	റദ്ദാക്കിയത്
+printers_tap_find	പ്രിന്ററുകൾ കണ്ടെത്തുക അമർത്തുക — സിസ്റ്റം പ്രിന്ററുകളും ഈ Wi‑Fiയിലെ നെറ്റ്‌വർക്ക് രസീത് പ്രിന്ററുകളും ലിസ്റ്റ് ചെയ്യും.
+printers_none_found	പ്രിന്ററുകളൊന്നും കണ്ടെത്തിയില്ല — സിസ്റ്റം പ്രിന്റർ പേര് അല്ലെങ്കിൽ നെറ്റ്‌വർക്ക് വിലാസം ടൈപ്പ് ചെയ്യുക (ഉദാ. 192.168.1.50).
+printer_from_find	{name} ചേർത്തു
+kot_printer_ph	സ്ലിപ്പ് പ്രിന്റർ
+bill_printer_ph	ബിൽ പ്രിന്റർ
+kot_print_on	ടിക്കറ്റുകൾ സ്വയം അച്ചടി: ഓൺ
+kot_print_off	ടിക്കറ്റുകൾ സ്വയം അച്ചടി: ഓഫ്
+queue_refused	കട സ്വീകരിച്ചില്ല ({n}) — ഓരോന്നും കൗണ്ടറിൽ പരിശോധിക്കുക:
+clear_not_accepted	പരിശോധിച്ചു — ഈ പട്ടിക മായ്ക്കുക
+device_name_ph	ഈ ഉപകരണത്തിന്റെ പേര്
+lan_last_update	അവസാന അപ്‌ഡേറ്റ് {time}
+lan_not_accepted	{n} സ്വീകരിച്ചില്ല
+connected_now	ഇപ്പോൾ കണക്റ്റഡ്
+backup_failed	അവസാന ഓട്ടോമാറ്റിക് ബാക്കപ്പ് പരാജയപ്പെട്ടു: {e}
+backup_overdue	{n} ദിവസമായി ബാക്കപ്പില്ല — ബാക്കപ്പ് എടുക്കാൻ ഈ ഉപകരണത്തിൽ ആപ്പ് തുറന്നുവയ്ക്കുക.
+disk_low	ഈ ഉപകരണത്തിൽ {mb} MB മാത്രമേ ബാക്കിയുള്ളൂ — താമസിയാതെ ബാക്കപ്പുകൾ പരാജയപ്പെടും. കുറച്ച് സ്ഥലം ഒഴിവാക്കുക.
+last_seen_devices	അവസാനം കണ്ടത്: {time}
+sync_interval	ഓരോ {secs} സെക്കൻഡിലും സിങ്ക്
+connection_to_shop	കടയുമായുള്ള കണക്ഷൻ
+supplier_name_ph	വിതരണക്കാരന്റെ പേര് (അല്ലെങ്കിൽ പാർട്ടി)
+supplier_ph	വിതരണക്കാരൻ
+switch_device	ഈ ഉപകരണം മാറ്റുക
+take_payment	പേയ്‌മെന്റ് വാങ്ങുക
+tax_added_till	{tax} ഒഴികെ
+tax_inside_price	{tax} ഉൾപ്പെടെ
+tax_invoice	നികുതി ഇൻവോയ്‌സ്
+till_to_bank	ടിൽ → ബാങ്ക്
+units_heading	യൂണിറ്റുകൾ
+unlock_after_pairing	PIN നൽകുക
+unlock_with_login	ലോഗിൻ ഉപയോഗിച്ച് അൺലോക്ക്
+unmark	അടയാളം മാറ്റുക
+update_my_password	എന്റെ പാസ്‌വേഡ് മാറ്റുക
+update_my_pin	എന്റെ PIN മാറ്റുക
+duress_heading	അടിയന്തര അൺലോക്ക് PIN (ഉടമ മാത്രം)
+duress_help	ഐച്ഛികം. അൺലോക്കിൽ നിങ്ങളുടേതിന് പകരം ഈ PIN ടൈപ്പ് ചെയ്താൽ, ബുക്കുകളിലെ എല്ലാ എൻട്രികളും മായും (വിൽപ്പന, ലെഡ്ജറുകൾ, ചരിത്രം), ടിൽ സാധാരണ പോലെ കാണിച്ച് ഉടമയായി തുറക്കും — ഇനങ്ങൾ, വിലകൾ, കൗണ്ടറുകൾ, ജീവനക്കാർ, ക്രമീകരണങ്ങൾ നിലനിൽക്കും. സ്കീമയും കോൺഫിഗും മായ്ക്കില്ല. നിർബന്ധിതമായി അൺലോക്ക് ചെയ്യിക്കുമ്പോൾ മാത്രം ഉപയോഗിക്കുക. ഓഫാക്കാൻ ശൂന്യമാക്കി സേവ് ചെയ്യുക. ആരുടെയും PIN പോലെ ആകരുത്.
+duress_pin_ph	അടിയന്തര PIN (4–12 അക്കം)
+duress_confirm_ph	വീണ്ടും ടൈപ്പ് ചെയ്യുക
+save_duress_pin	അടിയന്തര PIN സേവ്
+clear_duress_pin	അടിയന്തര PIN ഓഫ്
+duress_on	അടിയന്തര അൺലോക്ക് PIN ഓണാണ്
+duress_off	അടിയന്തര അൺലോക്ക് PIN ഓഫാണ്
+duress_saved	അടിയന്തര അൺലോക്ക് PIN സേവ് ചെയ്തു
+duress_cleared	അടിയന്തര അൺലോക്ക് PIN ഓഫാക്കി
+upi_amount_ph	UPI തുക
+void	റദ്ദാക്കുക
+write_off_ap	AP എഴുതിത്തള്ളുക
+write_off_heading	എഴുതിത്തള്ളുക (പേയ്‌മെന്റ് ഇല്ലാതെ തീർക്കുക)
+write_off_nil	എഴുതിത്തള്ളുക / ബാലൻസ് പൂജ്യം
+your_brand	നിങ്ങളുടെ ബ്രാൻഡ് (ആപ്പിൽ)
+your_categories	നിങ്ങളുടെ വിഭാഗങ്ങൾ
+account_kind	അക്കൗണ്ട് തരം (ഒന്ന് അമർത്തുക)
+actual_total_cap	യഥാർത്ഥ ആകെ
+amend_help	ഭേദഗതി, റദ്ദാക്കൽ അല്ലെങ്കിൽ റീഫണ്ടിനായി ഒരു വിൽപ്പന തിരഞ്ഞെടുക്കുക. ഭേദഗതികൾ മുഴുവൻ ചരിത്രവും സൂക്ഷിക്കും.
+applied_total_cap	പ്രയോഗിച്ച ആകെ
+bank_balance	ബാങ്ക് ബാലൻസ്
+bank_net_today	ഇന്നത്തെ ബാങ്ക് നെറ്റ്
+branch_export_help	Export ബാക്കപ്പ് ഫോൾഡറിൽ branch_snapshot_CODE_DATE.json എഴുതുകയും ക്ലിപ്പ്ബോർഡിലേക്ക് പകർത്തുകയും ചെയ്യും. മറ്റൊരു ഔട്ട്‌ലെറ്റിന്റെ ദിവസം ഇറക്കുമതി ചെയ്യാൻ, അതിന്റെ ഫയൽ അതേ ഫോൾഡറിൽ import_branch_snapshot.json എന്ന് സേവ് ചെയ്ത് Import അമർത്തുക.
+brand_shown_help	ആപ്പിനുള്ളിലെ സ്ക്രീനുകളിൽ കാണിക്കുന്നു. ഈ ഉപകരണത്തിൽ ഇൻസ്റ്റാൾ ചെയ്ത ആപ്പിന്റെ പേരും ഐക്കണും പ്ലാറ്റ്ഫോം ലിസ്റ്റിംഗ് പോലെ തന്നെ തുടരും.
+app_icon	ആപ്പ് ഐക്കൺ
+logo_help	ആപ്പ് സ്ക്രീനുകളിൽ കടയുടെ ഐച്ഛിക അടയാളം.
+onboard_layout	നിങ്ങൾക്ക് എന്ത് ലഭിക്കും
+item_photo_help	ഐച്ഛികം. ഫോട്ടോ ഇല്ലെങ്കിൽ ഇനത്തിന്റെ പേരിലെ ആദ്യാക്ഷരങ്ങൾ കാണിക്കും.
+stamp_heading	മുദ്ര
+stamp_image_help	അച്ചടിച്ച ബില്ലുകളിലും ഉപഭോക്തൃ ഡിസ്‌പ്ലേയിലും ഐച്ഛിക മുദ്ര ചിത്രം.
+payment_qr_heading	പേയ്‌മെന്റ് QR
+payment_qr_image_help	ബില്ലുകളിലും ഉപഭോക്തൃ ഡിസ്‌പ്ലേയിലും സ്ഥിരം QR; അല്ലെങ്കിൽ പേയ്‌മെന്റ് മുകളിലെ VPA-യിൽ നിന്നുള്ള ഡൈനാമിക് UPI QR ഉപയോഗിക്കും.
+cash_in_hand	കൈയിൽ പണം (ടിൽ)
+change_my_pin_heading	എന്റെ PIN മാറ്റുക (നിങ്ങളുടേത് മാത്രം)
+connect_to_server	സെർവറിലേക്ക് കണക്റ്റ് ചെയ്യുക
+counter_locked	കൗണ്ടർ 01 · ലോക്ക്
+country_pack_help	രാജ്യ പാക്ക് നികുതിയുടെ പേരും കണക്കും, തൽക്ഷണ-പേയ്‌മെന്റ് റെയിലും, ബില്ലുകളിൽ അച്ചടിക്കുന്ന ബിസിനസ് ഐഡിയും നിശ്ചയിക്കുന്നു. Kumkaj എവിടെയും നികുതി ഫയൽ ചെയ്യുകയോ സർക്കാർ ഇ-ഇൻവോയ്‌സ് നൽകുകയോ ചെയ്യുന്നില്ല.
+currency_use_help	സ്ക്രോൾ ചെയ്ത് പിന്തുണയ്ക്കുന്ന ഏത് കറൻസിക്കും Use അമർത്തുക.
+day_close_help	ദിവസം അടയ്ക്കൽ രേഖപ്പെടുത്തുന്നത് ഈ സംഗ്രഹം (എണ്ണിയിട്ടുണ്ടെങ്കിൽ ഡ്രോയർ വ്യത്യാസത്തോടെ) ഓഡിറ്റ് ലോഗിൽ സേവ് ചെയ്യും. ഇത് വിൽപ്പന നിർത്തുന്നില്ല.
+expenses_word	ചെലവുകൾ
+feature_access_help	തിരഞ്ഞെടുത്ത ജീവനക്കാരന്റെ ഫീച്ചർ ആക്‌സസ് (ചേർത്ത ശേഷം അമർത്തുക)
+footer_local	ലോക്കൽ SQLite · എന്നും സൗജന്യം · ക്ലൗഡ് ഇല്ല
+fresh_book_kirano	പ്രിന്ററുകൾ
+fresh_selected	Fresh തിരഞ്ഞെടുത്തു — കാറ്റലോഗ് ശൂന്യമായിരിക്കും. തയ്യാറാകുമ്പോൾ Done അമർത്തുക.
+gross_word	ഗ്രോസ്
+how_start	എങ്ങനെ തുടങ്ങാനാണ് നിങ്ങൾ ആഗ്രഹിക്കുന്നത്?
+kot_print_help_kirano	KOT അയയ്ക്കുമ്പോൾ — കൗണ്ടറിൽ നിന്നോ വെയിറ്ററുടെ ഉപകരണത്തിൽ നിന്നോ — അടുക്കള പേപ്പർ ഇവിടെ തന്നെത്താൻ അച്ചടിക്കും.
+later_country_pack	പ്രിന്ററുകൾ
+local_badge	ലോക്കൽ
+mix_type_hint_kirano	ആവശ്യമെങ്കിൽ പണം / UPI / കാർഡ് / കടം ആയി വിഭജിക്കുക. കടത്തിന് മുകളിൽ ഉപഭോക്താവ് വേണം.
+money_in_sales	പണം വന്നു (വിൽപ്പന)
+net_word	നെറ്റ്
+offline_badge	ഓഫ്‌ലൈൻ
+optional_login_help	ഓപ്ഷണൽ ലോഗിൻ (ഐഡി + പാസ്‌വേഡ്). ഉടമ ഒരിക്കൽ നിശ്ചയിക്കും; പിന്നീട് ഉപയോക്താവിന് മാത്രമേ പാസ്‌വേഡ് മാറ്റാൻ കഴിയൂ.
+or_unlock_login	അല്ലെങ്കിൽ ലോഗിൻ ഐഡി + പാസ്‌വേഡ് ഉപയോഗിച്ച് അൺലോക്ക് ചെയ്യുക
+permission_preset	അനുമതി പ്രീസെറ്റ് (എന്തിലേക്ക് ആക്‌സസ്)
+preset_help_kirano	കാഷ്യർ: വിൽക്കുക. മാനേജർ: വിൽക്കുക + ഇനങ്ങൾ + റദ്ദാക്കൽ/ഭേദഗതി.
+product_locked_kirano	Kirano
+product_only_kirano	ഈ ആപ്പ് Kirano മാത്രം — റെസ്റ്റോറന്റ് ഓപ്പറേറ്റിംഗ് സിസ്റ്റം. മറ്റു വ്യാപാരങ്ങൾക്ക് പ്രത്യേക Kumkaj ഉൽപ്പന്നങ്ങൾ.
+purchases_cogs	വാങ്ങലുകൾ (COGS)
+qty_cap	അളവ്
+restore_help	Restore: ഒരു ബാക്കപ്പ് തിരഞ്ഞെടുക്കുക. കണക്കുകൾ അന്നത്തെപ്പോലെ തുറക്കും; ഇപ്പോഴത്തേത് ആദ്യം സൂക്ഷിക്കും, അതിനാൽ ഇത് തിരിച്ചാക്കാം.
+wipe_data_heading	പ്രാദേശിക ഡാറ്റ ഇല്ലാതാക്കുക
+wipe_data_help	ഉടമയ്ക്ക് മാത്രം — Windows അൺഇൻസ്റ്റാളിലെ അതേ ഓപ്ഷനുകൾ. വ്യാപാര രേഖകൾ വ്യാപാര ചരിത്രം മായ്ക്കും പക്ഷേ ഇനങ്ങളും സജ്ജീകരണവും നിലനിർത്തും (അടിയന്തര അൺലോക്ക് PIN പോലെ). കടയുടെ സജ്ജീകരണം ബുക്ക് ഡാറ്റാബേസ് നീക്കും. സ്ക്രീൻ മുൻഗണനകൾ വിൻഡോ/ഭാഷ മായ്ക്കും. ഉടമ PIN കൊണ്ട് സ്ഥിരീകരിക്കുക. ടീമിലെ അടിയന്തര അൺലോക്ക് PIN വേറെയാണ് (അൺലോക്കിൽ രഹസ്യമായി മായ്ക്കൽ).
+wipe_trading	ബിസിനസ് റെക്കോർഡുകൾ
+wipe_schema	കട സെറ്റപ്പ്
+wipe_ui	സ്ക്രീൻ മുൻഗണനകൾ
+wipe_owner_pin_ph	ഇല്ലാതാക്കാൻ Owner PIN
+wipe_delete_selected	തിരഞ്ഞെടുത്തത് ഇല്ലാതാക്കുക
+wipe_owner_only	Owner മാത്രമേ പ്രാദേശിക ഡാറ്റ ഇല്ലാതാക്കൂ.
+restore_owner_only	Owner മാത്രമേ ബാക്കപ്പ് പുനഃസ്ഥാപിക്കൂ.
+wipe_owner_pin_needed	പ്രാദേശിക ഡാറ്റ ഇല്ലാതാക്കാൻ Owner PIN നൽകുക.
+wipe_nothing_selected	ആദ്യം എന്ത് ഇല്ലാതാക്കണമെന്ന് തിരഞ്ഞെടുക്കുക.
+wipe_done	തിരഞ്ഞെടുത്ത പ്രാദേശിക ഡാറ്റ ഇല്ലാതാക്കി.
+wipe_schema_done	കട സെറ്റപ്പ് മായ്ച്ചു — തുടരാൻ Server അല്ലെങ്കിൽ Client തിരഞ്ഞെടുക്കുക.
+rounded_total	റൗണ്ട് ആകെ
+setup_app_kirano	Kirano സെറ്റപ്പ് ചെയ്യുക
+shop_logo_optional	കടയുടെ ലോഗോ (ഓപ്ഷണൽ)
+stock_type_help	ഇനത്തിന്റെ പേര് എഴുതുക (അതിന്റെ ഭാഗം മതി), അളവ് എഴുതി, പിന്നെ ക്രമീകരിക്കുക. ഇതുവരെ എണ്ണാത്ത ഇനങ്ങൾക്ക് ഒരിക്കൽ Start tracking വേണം.
+team_owner_help	ഉടമ ഓരോരുത്തരെയും പേര്, റോൾ തലക്കെട്ട്, അനുമതി പ്രീസെറ്റ്, ആരംഭ PIN എന്നിവയോടെ ഉണ്ടാക്കുന്നു. ഉടമയ്ക്ക് പിന്നീട് ആരുടെയും PIN മാറ്റാൻ കഴിയില്ല — ആ വ്യക്തിക്ക് മാത്രമേ സ്വന്തം PIN മാറ്റാൻ കഴിയൂ.
+staff_name_ph	ജീവനക്കാരന്റെ പേര് / ഐഡി
+staff_copy_hire_ph	സജ്ജീകരണം ആരിൽ നിന്ന് പകർത്തണം (ഐച്ഛികം)
+staff_copy_hire	ഈ വ്യക്തിയുടെ സജ്ജീകരണം ഉപയോഗിക്കുക
+staff_edit_name_ph	കാണിക്കുന്ന പേര്
+staff_rename	പേര് സേവ് ചെയ്യുക
+staff_copy_edit_ph	മറ്റൊരാളിൽ നിന്ന് സജ്ജീകരണം പകർത്തുക
+staff_copy_edit	അവരുടെ സജ്ജീകരണം തിരഞ്ഞെടുത്തയാളിലേക്ക് പകർത്തുക
+staff_copy_edit_onto	അവരുടെ സജ്ജീകരണം {name}-ലേക്ക് പകർത്തുക
+staff_deactivate_named	{name}-നെ നീക്കുക
+staff_renamed	പേര് സേവ് ചെയ്തു
+staff_setup_copied_hire	{name}-ൽ നിന്ന് സജ്ജീകരണം പകർത്തി — പുതിയ പേരും PIN-ഉം നൽകി, പിന്നെ ജീവനക്കാരെ ചേർക്കുക
+staff_setup_copied_edit	{from}-ന്റെ സജ്ജീകരണം {to}-ലേക്ക് പകർത്തി
+staff_copy_need_selected	ആദ്യം ആരെ എഡിറ്റ് ചെയ്യണമെന്ന് തിരഞ്ഞെടുക്കുക
+staff_copy_need_source	ആരുടെ സജ്ജീകരണം പകർത്തണമെന്ന് തിരഞ്ഞെടുക്കുക
+staff_copy_same	അത് അതേ വ്യക്തിയാണ് — മറ്റൊരാളെ തിരഞ്ഞെടുക്കുക
+staff_rename_need_selected	ആദ്യം ആരുടെ പേര് മാറ്റണമെന്ന് തിരഞ്ഞെടുക്കുക
+team_pick_hint	ആരെ എഡിറ്റ് ചെയ്യണമെന്ന് തിരഞ്ഞെടുക്കുക — സ്ക്രീനുകൾ, പണാവകാശങ്ങൾ, സ്റ്റേഷനുകൾ ആ വ്യക്തിക്ക് മാത്രം കാണിക്കും.
+team_stations_help	അവർക്ക് ഉപയോഗിക്കാവുന്ന സ്റ്റേഷനുകൾ
+team_stations_changed	സ്റ്റേഷനുകൾ മാറി — ഈ വ്യക്തിയുടെ സജ്ജീകരണം സേവ് ചെയ്യുക
+team_features_changed	സ്ക്രീനുകൾ മാറി — ഈ വ്യക്തിയുടെ സജ്ജീകരണം സേവ് ചെയ്യുക
+team_rights_changed	അവകാശങ്ങൾ മാറി — ഈ വ്യക്തിയുടെ സജ്ജീകരണം സേവ് ചെയ്യുക
+they_owe_us	അവർ ഞങ്ങൾക്ക് തരാനുള്ളത്
+unit_at_cap	യൂണിറ്റ് വില
+units_help	ഇനം ലേബലുകൾക്കുള്ള കോഡുകൾ (kg, piece, bag). ഓരോ യൂണിറ്റും — നേരിട്ടോ മറ്റ് യൂണിറ്റുകൾ വഴിയോ — ഒരു സ്റ്റാൻഡേർഡുമായി (kg · cm · ml · pc) ബന്ധിപ്പിക്കണം, ഉദാ. 1 crate = 2 box, 1 box = 20 cm. പരിവർത്തനങ്ങൾ: 1 from = factor to. കറൻസികൾ ഒരിക്കലും യൂണിറ്റുകളല്ല.
+units_picker_help	വാങ്ങലിലും ഇന തിരഞ്ഞെടുപ്പിലും യൂണിറ്റ് കാണിക്കാൻ ഓൺ/ഓഫ് ടാപ്പ് ചെയ്യുക. ഓഫ് യൂണിറ്റുകളും പരിവർത്തനം ചെയ്യും.
+unit_picker_on	ഓൺ
+unit_picker_off	ഓഫ്
+we_owe_them	ഞങ്ങൾ അവർക്ക് കൊടുക്കേണ്ടത്
+who_unlocking	ആരാണ് അൺലോക്ക് ചെയ്യുന്നത്?
+locked_word	ലോക്ക് ചെയ്തു
+show_pin	PIN കാണിക്കുക
+hide_pin	PIN മറയ്ക്കുക
+set_owner_pin	ഉടമ PIN നിശ്ചയിക്കുക
+enter_owner_passcode	ഉടമ പാസ്‌കോഡ് നൽകുക
+enter_staff_passcode	ജീവനക്കാരന്റെ പാസ്‌കോഡ് നൽകുക
+pin_count_zero	0 / 12 അക്കങ്ങൾ · കുറഞ്ഞത് 4, പിന്നെ OK
+pin_count_need	{} / 12 അക്കങ്ങൾ · ഇനിയും {} വേണം
+pin_count_full	12 / 12 അക്കങ്ങൾ · OK അമർത്തുക
+pin_count_ready	{} / 12 അക്കങ്ങൾ · തയ്യാറാകുമ്പോൾ OK അമർത്തുക
+pin_hint_choose	4–12 അക്കങ്ങൾ തിരഞ്ഞെടുക്കുക (കീബോർഡ് അല്ലെങ്കിൽ പാഡ്) · സേവ് ചെയ്യാൻ Enter/OK
+pin_hint_new	പുതിയ 4–12 അക്ക ഉടമ PIN (കീബോർഡ് അല്ലെങ്കിൽ പാഡ്) · Enter/OK
+pin_hint_shop_code	കട ഉപകരണം · പെയറിംഗ് കോഡ് {}
+pin_hint_books	ഈ ഉപകരണം ബുക്കുകൾ സൂക്ഷിക്കുന്നു
+pin_hint_paired	അധിക ടിൽ ജോടിയാക്കി — വിൽക്കാൻ അൺലോക്ക് ചെയ്യുക
+pin_hint_pair_first	അധിക ടിൽ — ആദ്യം കട ഉപകരണവുമായി ജോടിയാക്കുക
+unlock_to_continue	തുടരാൻ അൺലോക്ക് ചെയ്യുക
+no_staff_yet	ഇതുവരെ ജീവനക്കാരില്ല — ഉടമയായി അൺലോക്ക് ചെയ്യുക, പിന്നെ Team
+status_server_set_pin	സെർവർ മോഡ് — ഉടമ PIN നിശ്ചയിക്കുക
+status_server_tills	സെർവർ മോഡ് — അധിക ടില്ലുകൾ ചേരാം. അൺലോക്ക് ചെയ്യുക
+status_server_unlock	സെർവർ മോഡ് — ഉടമയായി അൺലോക്ക് ചെയ്യുക
+status_client_unlock	ക്ലയന്റ് മോഡ് — വിൽക്കാൻ അൺലോക്ക് ചെയ്യുക
+icon_new_selected	ഐക്കൺ: പുതിയ ഫയൽ തിരഞ്ഞെടുത്തു — ബ്രാൻഡ് സേവ് ചെയ്യുക അമർത്തുക
+icon_custom	ഐക്കൺ: നിങ്ങളുടെ കടയുടെ അടയാളം
+icon_default	ഐക്കൺ: Kumkaj അടയാളം (ഡിഫോൾട്ട്) — നിങ്ങളുടേത് തിരഞ്ഞെടുക്കുക
+logo_yours	ലോഗോ: നിങ്ങളുടെ കടയുടെ ലോഗോ — സ്ക്രീനുകളിലും രസീതുകളിലും കാണിക്കും
+logo_default	ലോഗോ: Kumkaj അടയാളം (ഡിഫോൾട്ട്) — നിങ്ങളുടേത് ഉണ്ടെങ്കിൽ തിരഞ്ഞെടുക്കുക
+tmpl_current	നിലവിലെ: {} — {}
+tmpl_selected	തിരഞ്ഞെടുത്തത്: {} — {}
+setup_complete	സെറ്റപ്പ് പൂർത്തിയായി
+onboard_fresh_tmpl	പുതിയത് · {} — കാറ്റലോഗ് ശൂന്യമായി തുടങ്ങും; ഇനങ്ങളിൽ ചേർത്ത് Done അമർത്തുക.
+onboard_book_tmpl	ബുക്ക് · {} — ഇനങ്ങളും തുടക്ക കടവും ചേർത്ത് Done അമർത്തുക.
+onboard_template_tmpl	വേണമെങ്കിൽ സ്ഥലത്തിന് പേര് നൽകുക, പിന്നെ എങ്ങനെ തുടങ്ങണമെന്ന് തിരഞ്ഞെടുക്കുക.
+tmpl_blurb	പലചരക്ക് കൗണ്ടർ: വിൽപ്പന, സ്റ്റോക്ക്, കണക്ക്, വിതരണക്കാരിൽ നിന്നുള്ള വാങ്ങൽ, ബുക്കുകൾ.
+tmpl_how	കൗണ്ടറിൽ വിൽക്കുക; സ്റ്റോക്കിനായി വാങ്ങുക; ദിന ബുക്കിനായി ബുക്കുകൾ.
+reports_facet_title	റിപ്പോർട്ടുകൾ
+reports_facet_help	ഡേ ബുക്കുകൾ, പാർട്ടി ഏജിംഗ്, ബാങ്ക് പോസ്റ്റുകൾ, കാലയളവ് ലാഭനഷ്ടം.
+against_bill_ph	മുകളിലെ ബിൽ # ന് എതിരെ (ഓപ്ഷണൽ)
+aliases_ph	ചെറുകോഡുകളും അപരനാമങ്ങളും — കോമ കൊണ്ട് വേർതിരിക്കുക (ഉദാ. MG02, atta)
+amount_blank_full_ph	തുക (ശൂന്യം = മുഴുവൻ ബാക്കി)
+amount_owed_ph	കൊടുക്കാനുള്ള തുക
+amount_ph	തുക
+amount_received_ph	ലഭിച്ച തുക
+amount_we_pay_ph	ഞങ്ങൾ നൽകുന്ന തുക
+business_name_ph	ബിസിനസ്സിന്റെ പേര്
+category_new_ph	വിഭാഗം (ഓപ്ഷണൽ, പുതിയതാണെങ്കിൽ സൃഷ്ടിക്കും)
+code_bag_ph	കോഡ് (bag)
+conv_factor_ph	ഘടകം (25 = 1 bag → 25 kg)
+country_code_ph	രാജ്യ കോഡ് ഉദാ. IN, GB, US, AE, BR
+credit_khata_amount_ph	കടം / ഖാത്ത തുക
+credit_limit_ph	കട പരിധി (0 = ഇല്ല)
+from_code_ph	നിന്നുള്ള കോഡ് (bag)
+item_name_lang_ph	ഇനത്തിന്റെ പേര് — നിങ്ങളുടെ ഭാഷയിൽ ടൈപ്പ് ചെയ്യുക
+login_id_opt_ph	ലോഗിൻ ഐഡി (ഓപ്ഷണൽ)
+manager_pin_ph	മാനേജർ PIN (നിങ്ങൾക്ക് റദ്ദാക്കാൻ കഴിയില്ലെങ്കിൽ മാത്രം)
+new_branch_name_ph	പുതിയ ശാഖയുടെ പേര്
+new_password_ph	പുതിയ പാസ്‌വേഡ് (ഓപ്ഷണൽ)
+new_pin_ph	പുതിയ PIN (4–12 അക്കങ്ങൾ)
+note_bank_ph	കുറിപ്പ് (നിക്ഷേപം, പിൻവലിക്കൽ, …)
+note_buy_expense_ph	കുറിപ്പ് (ഇന്ധനം, വാടക, …)
+note_expense_ph	കുറിപ്പ് (ഇന്ധനം, ഓഫീസ്, …)
+options_kirano_ph	ഓപ്ഷനുകൾ (ഓപ്ഷണൽ) — Extra cheese=40, Large=80
+part_second_way_ph	രണ്ടാം രീതിയിൽ ഭാഗം (ഓപ്ഷണൽ)
+phone_ph	ഫോൺ
+place_name_ph	ഈ സ്ഥലത്തിന്റെ പേര്
+qty_example_ph	അളവ് (ഉദാ. kg ക്ക് 1.5)
+quantity_ph	അളവ്
+reason_required_ph	കാരണം (ആവശ്യം)
+role_title_ph	റോൾ തലക്കെട്ട് (ഉദാ. Barista)
+service_pct_ph	സേവനം % ഓപ്ഷണൽ 0/10/12
+short_code_ph	ചെറിയ കോഡ് (MG02)
+starting_password_ph	ആരംഭ പാസ്‌വേഡ് (ഓപ്ഷണൽ)
+starting_pin_ph	ആരംഭ PIN (4–12 അക്കങ്ങൾ)
+station_name_ph	സ്റ്റേഷന്റെ പേര് (ഐച്ഛികം)
+station_new_ph	വിഭാഗം (ഐച്ഛികം)
+table_name_ph	കൗണ്ടർ / അറയുടെ പേര്
+tax_rate_ph	നികുതി നിരക്കിന്റെ പേര് അല്ലെങ്കിൽ % — Standard, Reduced, 0, 5, 12, 18, 20
+to_code_ph	ലേക്കുള്ള കോഡ് (kg)
+uncleared_no_ph	മുകളിലെ അൺക്ലിയേർഡ് #
+unit_cost_ph	യൂണിറ്റ് വില
+unit_name_bag_ph	പേര് (Bag)
+unit_plate_ph	യൂണിറ്റ് (പ്ലേറ്റ് / പീസ് — ശൂന്യം = ഓരോന്നും)
+pay_credit	കടം
+book_kind_today	ഇന്നത്തെ ബുക്ക്
+book_kind_month	ഈ മാസത്തെ ബുക്ക്
+book_kind_aging	കുടിശ്ശിക / ഡെബിറ്റ്-ക്രെഡിറ്റ്
+book_kind_balance	ബാലൻസ് ഷീറ്റ്
+order_help	ഒരു തുറന്ന ഓർഡർ തിരഞ്ഞെടുക്കുക, അല്ലെങ്കിൽ ഒരു ടേബിൾ തിരഞ്ഞെടുത്ത് പുതിയത് തുടങ്ങുക. തയ്യാറായ ഇനങ്ങൾ ടാപ്പ് ചെയ്യുക, KOT അയയ്ക്കുക, ഒന്നോ അതിലധികമോ ഇനങ്ങൾക്ക് ബിൽ ചെയ്യുക, ബിൽ പങ്കിടുക, പേയ്‌മെന്റ് തീർക്കുക.
+floor_help	ഈ കട കൗണ്ടറിൽ വിൽക്കുന്നു. മേശകളും ഭക്ഷണ തറയും Kirano-യുടെ ഭാഗമല്ല.
+kitchen_help	KOT അയയ്ക്കുമ്പോൾ — കൗണ്ടറിൽ നിന്നോ വെയിറ്ററുടെ ഉപകരണത്തിൽ നിന്നോ — അടുക്കള പേപ്പർ ഇവിടെ തന്നെത്താൻ അച്ചടിക്കും.
+kitchen_empty	തുറന്ന ടിക്കറ്റുകളില്ല (കൗണ്ടർ കടകൾ സാധാരണ ഈ സ്ക്രീൻ ഉപയോഗിക്കാറില്ല).
+add_a_table	ടേബിൾ ചേർക്കുക
+add_station_heading	വിഭാഗം ചേർക്കുക · ഉദാ. പച്ചക്കറി, കോൾഡ്, ബിൽ
+categories_help	വിഭാഗം ഒരു വിഭവം ഏത് മെനു ഭാഗത്താണ് എന്ന് കാണിക്കുന്നു — ഉദാ. സ്നാക്ക്സ്, മെയിൻ കോഴ്സ് അല്ലെങ്കിൽ ബിരിയാണി. വിഭാഗങ്ങൾ നിങ്ങളുടെ രീതിയിൽ ഉണ്ടാക്കുക: ഞങ്ങൾ നിർദ്ദേശിക്കുന്ന പേരുകൾ തിരഞ്ഞെടുക്കുക, പുനർനാമകരണം ചെയ്യുക, അല്ലെങ്കിൽ സ്വന്തമായി ചേർക്കുക.
+dish_search_ph	ഇനങ്ങളോ ചെറുകോഡോ തിരയുക…
+tile_free	ഒഴിവ്
+tile_occupied	തിരക്ക്
+tile_food_ready	ഭക്ഷണം തയ്യാർ
+tile_bill_printed	ബിൽ പ്രിന്റ് ചെയ്തു
+tile_paid	പണം നൽകി
+tile_bill_btn	ബിൽ
+tile_occupy_btn	അതിഥികളെ ഇരുത്തുക
+tile_free_btn	ടേബിൾ ഒഴിവാക്കുക
+tile_ready_btn	തയ്യാർ
+tile_undo_bill	ബിൽ പഴയപടി
+summary_busy	ടേബിളുകൾ തിരക്കിൽ
+summary_to_collect	പിരിക്കാനുണ്ട്
+summary_on_floor	ഫ്ലോറിൽ
+floor	കട
+sizes_as_items_ph	വലിപ്പങ്ങൾ വെവ്വേറെ ഐറ്റങ്ങളായി (ഐച്ഛികം) — Half=120, Full=200
+dish_group_ph	പാക്ക് വലുപ്പ ഗ്രൂപ്പ് (ഐച്ഛികം) — ഉദാ. ആട്ട 1kg / 5kg
+discount	ഡിസ്കൗണ്ട്
+remove_discount	ഡിസ്കൗണ്ട് നീക്കുക
+apply_discount	ഡിസ്കൗണ്ട് നൽകുക
+save_opening_cash	തുടക്ക പണം സേവ് ചെയ്യുക
+close_shift_print	ഷിഫ്റ്റ് അവസാനിപ്പിച്ച് സ്ലിപ്പ് പ്രിന്റ് ചെയ്യുക
+area_prices_ph	ഭാഗ വിലകൾ (ഐച്ഛികം) — AC=220, Parcel=210
+discount_ph	10% അല്ലെങ്കിൽ 50
+discount_reason_ph	കാരണം (ഉദാ. സ്ഥിരം അതിഥി, ഭക്ഷണം വൈകി)
+opening_float_ph	ഇന്ന് രാവിലെ ഡ്രോയറിൽ വച്ച പണം
+shift_counted_ph	കൈമാറുമ്പോൾ എണ്ണിയ പണം
+opening_float	തുടക്ക പണം
+shift_handover	ഷിഫ്റ്റ് കൈമാറ്റം
+shift_since	ഈ ഷിഫ്റ്റ് തുടങ്ങിയത്
+expected_in_drawer	ഡ്രോയറിൽ ഉണ്ടാകേണ്ടത്
+right_discount	ഡിസ്കൗണ്ട് നൽകൽ
+floor_in_kitchen	നടക്കുന്നു
+floor_eating	കഴിക്കുന്നു
+pick_category	വിഭാഗം തിരഞ്ഞെടുക്കുക
+close_category_list	വിഭാഗ പട്ടിക അടയ്ക്കുക
+new_category_row	പുതിയ വിഭാഗം — ഐറ്റം സേവ് ചെയ്യുമ്പോൾ ഉണ്ടാകും
+your_category	നിങ്ങളുടെ വിഭാഗം
+suggested_category	നിർദ്ദേശം — ഞങ്ങളുടെ ഇനങ്ങളിൽ നിന്ന്
+category_search_ph	വിഭാഗം — നിങ്ങളുടേത് തിരയുക അല്ലെങ്കിൽ പുതിയത് എഴുതുക
+line_sent_state	അയച്ചു
+line_nc_state	സൗജന്യം (NC) — ചാർജ് ഇല്ല
+cancel_item_short	റദ്ദാക്കുക
+nc_short	സൗജന്യം
+charge_again_short	ചാർജ്
+move_short	മാറ്റുക
+cancel_item_title	ഈ ഇനം റദ്ദാക്കുക — ബാക്ക് ഓഫീസിന് റദ്ദാക്കൽ സ്ലിപ്പ് ലഭിക്കും
+nc_item_title	ഈ ഐറ്റം സൗജന്യമാക്കുക (NC)
+charge_again_title	ഈ ഐറ്റത്തിന് വീണ്ടും ചാർജ് ചെയ്യുക
+move_item_title	ഈ ഐറ്റം മറ്റൊരു ടേബിളിലേക്ക് മാറ്റുക
+already_cooked	ഇതിനകം പാകം ചെയ്തു (നഷ്ടം)
+not_cooked_yet	ഇതുവരെ പാകം ചെയ്തിട്ടില്ല
+return_to_customer	ഉപഭോക്താവിന് തിരികെ നൽകുക
+short_by	കുറവ്
+tip_not_sale	ടിപ്പ് (ജീവനക്കാർക്ക്, വിൽപ്പനയല്ല)
+right_settle	പണം സ്വീകരിക്കൽ
+right_cancel_sent	അയച്ച ഐറ്റം റദ്ദാക്കൽ
+right_complimentary	സൗജന്യമായി നൽകൽ (NC)
+right_move_table	കൗണ്ടറുകൾ നീക്കുക / ലയിപ്പിക്കുക
+right_reprint	ബിൽ വീണ്ടും പ്രിന്റ് ചെയ്യൽ
+right_allowed	അനുവദനീയം
+right_with_approval	അംഗീകാരത്തോടെ
+right_denied	അനുവദനീയമല്ല
+editing_staff	ഇവരുടെ അവകാശങ്ങൾ
+finding_server	ഈ Wi‑Fi-യിൽ കടയുടെ സെർവർ തിരയുന്നു…
+no_server_found	സെർവർ കണ്ടെത്തിയില്ല. കടയിലെ ഉപകരണം അതേ Wi‑Fi-യിൽ അധിക ടില്ലുകൾ അനുവദിച്ച് ഉണ്ടോ എന്ന് നോക്കുക, അല്ലെങ്കിൽ അതിന്റെ IP ടൈപ്പ് ചെയ്യുക.
+servers_found_pick	നിങ്ങൾ ബന്ധിപ്പിക്കേണ്ട കടയിൽ ടാപ്പ് ചെയ്യുക.
+server_host_selected	{host} ഉപയോഗിക്കുന്നു — പെയറിംഗ് കോഡ് നൽകി, ഇനി പെയർ ചെയ്യുക.
+print_bill	ബിൽ പ്രിന്റ്
+table_actions	കൗണ്ടർ പ്രവർത്തനങ്ങൾ
+move_merge_table	ടേബിൾ മാറ്റുക / ലയിപ്പിക്കുക
+move_help	ഈ കൗണ്ടറിന്റെ ഓർഡർ ഒഴിഞ്ഞ മേശയിലേക്ക് നീക്കുക, അല്ലെങ്കിൽ നടക്കുന്ന ഒന്നിൽ ലയിപ്പിക്കുക.
+move_target_ph	കൗണ്ടറിന്റെ പേര്
+approval_pin_ph	മാനേജർ PIN (ചോദിച്ചാൽ മാത്രം)
+move_here	ഇവിടേക്ക് മാറ്റുക
+merge_into	ഇതിലേക്ക് ലയിപ്പിക്കുക
+line_reason_ph	കാരണം (ഉദാ. ഉപഭോക്താവ് മനസ്സ് മാറ്റി, സ്റ്റോക്കില്ല)
+line_qty_ph	എത്രയെണ്ണം റദ്ദാക്കണം (ശൂന്യം = എല്ലാം)
+line_target_ph	ടേബിളിലേക്ക് മാറ്റുക (ഉദാ. D5)
+confirm	സ്ഥിരീകരിക്കുക
+menu_search_ph	ഐറ്റം അല്ലെങ്കിൽ ഷോർട്ട് കോഡ് തിരയുക
+customer_paid_ph	ഉപഭോക്താവ് നൽകിയത്
+tip_ph	ടിപ്പ്
+table_area_ph	ഭാഗം (ഉദാ. ഡൈൻ ഇൻ, പാഴ്സൽ, AC)
+table_range_ph	ഒരുമിച്ച് പലത്: D1-D20
+add_these_tables	ഈ കൗണ്ടറുകൾ ചേർക്കുക
+remove_these_tables	ഈ കൗണ്ടറുകൾ നീക്കുക
+table_remove_ph	നീക്കുക: T1-T24, അല്ലെങ്കിൽ ഒരു മേശയുടെ പേര്
+find_server	കടയുടെ സെർവർ കണ്ടെത്തുക
+bill_format	ബിൽ ഫോർമാറ്റ്
+bill_format_help	ഓരോ ബില്ലിലും നിങ്ങളുടെ കടയുടെ പേരിന് താഴെ അച്ചടിക്കും. വരികൾ | കൊണ്ട് വേർതിരിക്കുക (ഉദാ. MG Road, Rajkot | Ph 98250 00000).
+bill_header_ph	വിലാസം | ഫോൺ
+fssai_ph	FSSAI / കട ലൈസൻസ് നം. (ഐച്ഛികം)
+bill_footer_ph	ഫൂട്ടർ (ഉദാ. നന്ദി, വീണ്ടും വരിക)
+save_bill_format	ബിൽ ഫോർമാറ്റ് സേവ് ചെയ്യുക
+kot_format	സ്ലിപ്പ് ഫോർമാറ്റ്
+kot_format_help	പട്ടികയിൽ ഒരു ഫീൽഡ് ടാപ്പ് ചെയ്യുക. കാണിക്കുക, അക്ഷര വലുപ്പം, കനം എന്നിവ മുകളിൽ തിരഞ്ഞെടുത്ത സ്ലിപ്പ് തരത്തിൽ ആ ഫീൽഡിന് ബാധകം. ഓരോ തരവും സ്വന്തം വലുപ്പങ്ങളും കനങ്ങളും സൂക്ഷിക്കും.
+kot_format_fields	ഫീൽഡുകൾ
+kot_field_next	അടുത്ത ഫീൽഡ്
+kot_field_show	കാണിക്കുക
+kot_field_hide	മറയ്ക്കുക
+kot_field_on	കാണിക്കുക
+kot_field_off	മറയ്ക്കുക
+kot_field_size	ഫോണ്ട് വലുപ്പം
+kot_field_size_ph	ഉദാ. 16, 20, 24, 28, 32…
+kot_weight_light	ലഘു
+bill_kot_panel_help	ബിൽ ലേഔട്ടും ഉള്ളടക്ക വീതിയും. കാഷ്യർ ബിൽ നൽകിയയാളോ തീർത്തയാളോ ആണ് — മുഴുവൻ വിൽപ്പന കഥയും ബുക്കുകളിൽ നിലനിൽക്കും.
+std_size_ph	ഉദാ. 18, 20, 26…
+kot_show_shop	കടയുടെ പേര്
+kot_hide_shop	കട മറയ്ക്കുക
+kot_show_time	സമയം
+kot_hide_time	സമയം മറയ്ക്കുക
+kot_show_waiter	കാഷ്യർ
+kot_hide_waiter	കാഷ്യറെ മറയ്ക്കുക
+kot_show_station	സ്റ്റേഷൻ
+kot_hide_station	സ്റ്റേഷൻ മറയ്ക്കുക
+kot_show_table	കൗണ്ടർ
+kot_hide_table	മേശ മറയ്ക്കുക
+kot_show_kot_no	സ്ലിപ്പ് നം.
+kot_hide_kot_no	ടിക്കറ്റ് നം. മറയ്ക്കുക
+kot_width	പ്രിവ്യൂ പൊതിയൽ (ഉള്ളടക്ക വീതി സ്ലിപ്പ് ടാബിൽ സജ്ജമാക്കുക)
+kot_width_58	58 mm
+kot_width_80	80 mm
+kot_kind_heading	ടിക്കറ്റ് തരം
+kot_kind_original	യഥാർത്ഥം
+kot_kind_duplicate	പകർപ്പ്
+kot_kind_modified	മാറ്റിയത്
+kot_kind_cancelled	റദ്ദാക്കിയത്
+kot_style_heading	ഫീൽഡ് വലുപ്പവും ഭാരവും
+kot_style_title	തലക്കെട്ട്
+kot_style_item_qty	ഇനം · എണ്ണം
+kot_style_field_pick	ഫീൽഡ് തിരഞ്ഞെടുക്കുക
+kot_weight_regular	സാധാരണ
+kot_weight_bold	കട്ടിയുള്ള
+kot_align	വിന്യാസം
+kot_align_start	തുടങ്ങുക
+kot_align_center	മധ്യം
+kot_align_end	അവസാനം
+content_width	ഉള്ളടക്ക വീതി (മിമി)
+content_width_bill	ബിൽ ഉള്ളടക്ക വീതി (mm)
+content_width_kot	ടിക്കറ്റ് ഉള്ളടക്ക വീതി (mm)
+content_width_ph	അല്ലെങ്കിൽ ഉള്ളടക്ക വീതി ടൈപ്പ് ചെയ്യുക, 40–210 മിമി
+content_width_help	ഈ സ്ലിപ്പ് എത്ര വീതിയിൽ അച്ചടിക്കണം. ബിൽ സ്വന്തം വീതി സൂക്ഷിക്കും.
+content_width_bill_help	ഉപഭോക്തൃ ബിൽ എത്ര വീതിയിൽ അച്ചടിക്കണം. സ്ഥിരം 210 mm (പേജ്). 58 mm ഇടുങ്ങിയ സ്ലിപ്പ്, 80 mm വീതിയുള്ള സ്ലിപ്പ്, 112 mm 4-ഇഞ്ച്, 210 mm A4-വീതി. 40 മുതൽ 210 വരെ ഏത് മൂല്യവും ടൈപ്പ് ചെയ്യുക. ടിക്കറ്റുകൾക്ക് സ്വന്തം വീതി സ്ലിപ്പ് ടാബിലുണ്ട്.
+content_width_kot_help	ടിക്കറ്റ് എത്ര വീതിയിൽ അച്ചടിക്കണം. സ്ഥിരം 80 mm. 58 mm ഇടുങ്ങിയ സ്ലിപ്പ്, 80 mm വീതിയുള്ള സ്ലിപ്പ്, 112 mm 4-ഇഞ്ച്, 210 mm പേജ്. 40 മുതൽ 210 വരെ ഏത് മൂല്യവും ടൈപ്പ് ചെയ്യുക. ഉപഭോക്തൃ ബില്ലുകൾക്ക് സ്വന്തം വീതി ബിൽ ടാബിലുണ്ട്.
+vp_paper_width	ഉള്ളടക്ക വീതി (മിമി)
+vp_paper_width_ph	അല്ലെങ്കിൽ ഉള്ളടക്ക വീതി ടൈപ്പ് ചെയ്യുക, 40–210 മിമി
+vp_paper_width_help	ഉള്ളടക്ക വീതി ബിൽ & സ്ലിപ്പ് ഫോർമാറ്റിൽ സജ്ജമാക്കുന്നു — ബില്ലിന് (സ്ഥിരം 210 mm) ടിക്കറ്റിന് (സ്ഥിരം 80 mm) വെവ്വേറെ.
+kot_size	അക്ഷര വലുപ്പം
+kot_size_s	ചെറുത്
+kot_size_m	സാധാരണ
+kot_size_l	വലിയ
+std_size	അക്ഷര വലുപ്പം
+kot_copies	പകർപ്പുകൾ
+kot_copies_1	1
+kot_copies_2	2
+kot_copies_3	3
+kot_title_ph	തലക്കെട്ട് (ശൂന്യം = TICKET)
+kot_footer_ph	ബാക്ക് ഓഫീസ് കുറിപ്പ് (ഐച്ഛികം)
+kot_preview	പ്രിവ്യൂ
+save_kot_format	സ്ലിപ്പ് ഫോർമാറ്റ് സേവ് ചെയ്യുക
+test_kot_format	ടെസ്റ്റ് അച്ചടി
+test_kot_sent	ടിക്കറ്റ് സാമ്പിൾ അയച്ചു
+test_bill_format	ടെസ്റ്റ് ബിൽ
+test_bill_sent	ബിൽ സാമ്പിൾ അയച്ചു
+test_print_no_printer	ആ ജോലിക്ക് പ്രിന്ററില്ല — ഈ സ്ക്രീനിൽ തന്നെ ഒന്ന് തിരഞ്ഞെടുക്കുക
+kot_format_saved	സ്ലിപ്പ് ഫോർമാറ്റ് സേവ് ചെയ്തു
+std_print	ബിൽ പ്രിന്റ് വലുപ്പം
+std_print_help	OS / ഡോക്യുമെന്റ് പ്രിന്ററുകളിൽ സാധാരണ നീളത്തിലും വീതിയിലുമുള്ള ബിൽ ജോലികൾക്കുള്ള അക്ഷര വലുപ്പം (പോയിന്റുകൾ നൽകുക — ചെറുത്/സാധാരണ/വലുത് അല്ല). രണ്ട് ദിശയിലും ഒരേ വലുപ്പം.
+std_size_s	ചെറുത്
+std_size_m	സാധാരണ
+std_size_l	വലിയ
+save_std_print	ബിൽ പ്രിന്റ് വലുപ്പം സംരക്ഷിക്കുക
+std_print_saved	ബിൽ പ്രിന്റ് വലുപ്പം സംരക്ഷിച്ചു
+print_brand_kit	പ്രിന്റ് ബ്രാൻഡ് കിറ്റ്
+print_brand_kit_help	ബില്ലുകളിലും LAN ഉപഭോക്തൃ ഡിസ്‌പ്ലേയിലും ഐച്ഛിക മുദ്രയും പേയ്‌മെന്റ് QR ചിത്രങ്ങളും. പേയ്‌മെന്റ് QR ചിത്രം ഇല്ലെങ്കിലും മുകളിലെ VPA-യിൽ നിന്നുള്ള ഡൈനാമിക് UPI QR പ്രവർത്തിക്കും.
+choose_stamp	സ്റ്റാമ്പ് തിരഞ്ഞെടുക്കുക
+clear_stamp	സ്റ്റാമ്പ് മാറ്റുക
+stamp_set	മുദ്ര: ഫയലിലുണ്ട് — ഉപഭോക്തൃ ഡിസ്‌പ്ലേയിൽ കാണിക്കും, അച്ചടിച്ച ബില്ലുകളിൽ പേര് വരും
+stamp_none	സ്റ്റാമ്പ്: ഇല്ല
+choose_payment_qr	പേയ്മെന്റ് QR തിരഞ്ഞെടുക്കുക
+clear_payment_qr	പേയ്മെന്റ് QR മാറ്റുക
+payment_qr_set	പേയ്‌മെന്റ് QR: ഫയലിലുണ്ട് — ഉപഭോക്തൃ ഡിസ്‌പ്ലേയിൽ കാണിക്കും (അവിടെ തുക UPI QR-ന് പകരം)
+payment_qr_none	പേയ്മെന്റ് QR: ഇല്ല — അടയ്ക്കുമ്പോൾ UPI ID തുക QR
+aggregator_import	അഗ്രിഗേറ്റർ ഓർഡർ (ഫയൽ)
+aggregator_import_help	ഓപ്ഷണൽ Local: backups-ൽ import_aggregator_orders.json വെച്ച് Import. കൗണ്ടർ നില്ക്കില്ല; ലൈവ് Zomato/Swiggy = Cloud.
+import_aggregator_file	അഗ്രിഗേറ്റർ ഫയൽ ഇറക്കുമതി
+team_pick_ph	തിരുത്തേണ്ട ജീവനക്കാരന്റെ പേര്
+select_staff	ഈ ജീവനക്കാരനെ തിരഞ്ഞെടുക്കുക
+rights_help	ഈ വ്യക്തിയുടെ പണ പ്രവർത്തനങ്ങൾ — മാറ്റാൻ ടാപ്പ് ചെയ്യുക: അനുവദനീയം → ബോസിന്റെ PIN വേണം → അനുവദനീയമല്ല. ബിൽ വീണ്ടും അച്ചടിക്കുക ബില്ലുകൾക്ക് മാത്രം; വിഭാഗങ്ങൾ താഴെയുള്ള പട്ടികയിലാണ്.
+dish_picker_help	ഞങ്ങളുടെ ഇനങ്ങൾ തിരയുകയോ കാണുകയോ ചെയ്ത് പേരും ഫോട്ടോയും നിറയ്ക്കാൻ ഒന്ന് ടാപ്പ് ചെയ്യുക — അല്ലെങ്കിൽ നിങ്ങളുടെ പേര് തന്നെ വയ്ക്കുക. നിങ്ങളുടെ വില നൽകുക (0 കുഴപ്പമില്ല), പിന്നെ ഇനം ചേർക്കുക.
+close_dish_list	ഇന പട്ടിക അടയ്ക്കുക
+own_item_name	ഇത് നിങ്ങളുടെ സ്വന്തം ഐറ്റം പേരായി ഉപയോഗിക്കുക
+on_your_menu	പട്ടികയിൽ
+edit	തിരുത്തുക
+schemes	സ്കീം / ഓഫർ
+schemes_help	ഒന്ന് വാങ്ങിയാൽ ഒന്ന്, ശതമാനം കിഴിവ്, ബണ്ടിൽ. ഉദാ: 2 അരിക്ക് 1 എണ്ണ.
+scheme_bogo_ph	2 അരിക്ക് 1 എണ്ണ
+add_scheme	BOGO ചേർക്കുക
+schedule_ph	Hours — Mon-Fri 07:00-11:00 or Evening 17:00-19:00=150
+upi_vpa_ph	UPI ID (VPA)
+upi_payee_ph	UPI സ്വീകർത്താവ് (ഓപ്ഷണൽ)
+upi_qr	UPI QR
+show_upi_qr	UPI QR കാണിക്കുക
+close_upi_qr	അടയ്ക്കുക
+upi_qr_help	ഉപഭോക്താവ് സ്കാൻ ചെയ്ത് പണമടയ്ക്കും. പണമടച്ച ശേഷം പേയ്‌മെന്റ് സ്വീകരിക്കുക ടാപ്പ് ചെയ്യുക. രണ്ടാം സ്ക്രീൻ: LAN-ൽ സെർവർ URL /display തുറക്കുക.
+kot_recall	തിരികെ കൊണ്ടുവരുക
+recently_done	അടുത്തിടെ പൂർത്തിയായത്
+recall_kot_ph	തിരികെ എടുക്കാൻ ടിക്കറ്റ് #
+role_help_customer	റോൾ: ഉപഭോക്താവ് — AR (അവർ നമുക്ക് കടക്കാരാണ്). അതേ സ്ഥാപനം വിതരണക്കാരനും ആകാം.
+role_help_both	റോളുകൾ: അയയ്ക്കുന്നയാൾ + കാരിയർ — ഒരു കക്ഷി, AR, AP ലെഡ്ജറുകൾ, റിപ്പോർട്ടുകളിൽ നെറ്റ്.
+role_help_supplier	റോൾ: വിതരണക്കാരൻ — വാങ്ങലുകൾക്ക് AP.
+dine_in_pick_table	കൗണ്ടർ കടയിൽ ഉപയോഗിക്കില്ല
+choose_table	കൗണ്ടർ തിരഞ്ഞെടുക്കുക
+change_table	ടേബിൾ മാറ്റുക
+pick_table_banner	ഈ ഓർഡറിനായി ടേബിൾ തിരഞ്ഞെടുക്കുക
+items_word	ഇനങ്ങൾ
+items_section	ഇനങ്ങൾ
+back_to_order	ഓർഡറിലേക്ക് മടങ്ങുക
+new_items_head	ഇതുവരെ അയച്ചിട്ടില്ല
+price_ph	വില
+price_ph_gst_inside	വില ({tax} ഉൾപ്പെടെ)
+cancel_needs_table	കൗണ്ടർ വിൽപ്പനകൾ പേയ്‌മെന്റ് സ്വീകരിക്കും വരെ ടിക്കറ്റിൽ നിൽക്കും
+tax_rates_missing_hint	ഈ ഇനങ്ങൾക്ക് {tax} നിരക്കില്ല — ഇനങ്ങളിൽ നികുതി നിരക്ക് നൽകുക (വിലകൾ ഇതിനകം {tax} ഉൾപ്പെടെ, {tax} ഉൾപ്പെടുത്തി എന്നതിൽ)
+taxable_value	നികുതി മൂല്യം
+gst_inside_price_note	({tax} ഉൾപ്പെടെ)
+start_with_template	ഞങ്ങളുടെ ഇന ടെംപ്ലേറ്റിൽ തുടങ്ങുക
+template_heading	തുടക്ക ഇനങ്ങൾ
+template_info	{c} വിഭാഗങ്ങളും ഫോട്ടോകളോടെ {d} ഇനങ്ങളും, ചേർക്കാൻ തയ്യാർ. വിലകൾ ₹0-ൽ തുടങ്ങും — പിന്നീട് നിങ്ങളുടേത് നൽകുക.
+template_import	മുഴുവൻ ടെംപ്ലേറ്റ് ഇറക്കുക
+template_confirm	{d} ഇനങ്ങൾ അവയുടെ വിഭാഗങ്ങളോടെ ചേർക്കണോ? നിങ്ങളുടെ പക്കൽ ഇതിനകമുള്ള ഇനങ്ങൾ അതുപോലെ നിൽക്കും.
+template_yes	അതെ, ഇറക്കുക
+template_importing	സാധനങ്ങൾ ഇറക്കുമതി…
+template_import_progress	ഇമ്പോർട്ട്… {d}/{t}
+template_done	ഞങ്ങളുടെ ടെംപ്ലേറ്റിലെ ഓരോ ഇനവും നിങ്ങളുടെ ഇനങ്ങളിലുണ്ട്.
+template_imported	{d} ഇനങ്ങളും {c} വിഭാഗങ്ങളും ചേർത്തു — ഈ സ്ക്രീനിൽ അവയുടെ വിലകൾ നൽകുക
+client_template_heading	കാറ്റലോഗ് ഇറക്കുമതി ചെയ്യുക
+client_template_info	{title}: {c} വിഭാഗങ്ങൾ, വില, ഫോട്ടോ, അപരനാമങ്ങളോടെ {d} ഇനങ്ങൾ. ഇല്ലാത്തവ മാത്രം — നിങ്ങളുടെ നിലവിലുള്ള പേരുകൾ അതുപോലെ നിൽക്കും.
+client_template_import	ഈ സാധനങ്ങൾ ചേർക്കുക
+client_template_confirm	{title}-ൽ നിന്ന് {d} ഇനങ്ങൾ ചേർക്കണോ? നിങ്ങളുടെ പക്കൽ ഇതിനകമുള്ള ഇനങ്ങൾ അതുപോലെ നിൽക്കും.
+client_template_importing	{title} ഇമ്പോർട്ട്…
+client_template_done	{title}-ലെ ഓരോ ഇനവും നിങ്ങളുടെ ഇനങ്ങളിലുണ്ട്.
+client_template_imported	{title}-ൽ നിന്ന് {d} ഇനങ്ങളും {c} വിഭാഗങ്ങളും ചേർത്തു
+resv_heading	റിസർവേഷനുകൾ
+resv_name_ph	ഉപഭോക്താവിന്റെ പേര്
+resv_phone_ph	ഫോൺ (ഐച്ഛികം)
+resv_guests_ph	ആളുകൾ
+resv_when_ph	എപ്പോൾ — 20:30, tomorrow 13:00
+resv_table_ph	കൗണ്ടർ (ഐച്ഛികം)
+resv_add	ബുക്ക് ചെയ്യുക
+resv_seat	ഇരുന്നു
+resv_none	വരാനിരിക്കുന്ന ബുക്കിംഗുകളില്ല.
+guests_word	അതിഥികൾ
+delivery_by_ph	ഡെലിവറി ചെയ്യുന്നയാൾ (റൈഡർ അല്ലെങ്കിൽ ജീവനക്കാരൻ)
+kitchen_all_day	ഇപ്പോൾ പാചകം ചെയ്യാൻ: {items}
+split_bill	ബിൽ വിഭജിക്കുക
+split_go	വേറെ ബിൽ ഉണ്ടാക്കുക
+cancel	റദ്ദാക്കുക
+opening_client	ക്ലയന്റ് തുറക്കുന്നു…
+preparing_desk	ഡെസ്ക് തയ്യാറാക്കുന്നു…
+opening_server	സെർവർ തുറക്കുന്നു…
+creating_server	സെർവർ സൃഷ്ടിക്കുന്നു…
+split_help	ഒരു ഉപഭോക്താവ് പണമടയ്ക്കുന്ന ഇനങ്ങൾ ടാപ്പ് ചെയ്യുക · {n} തിരഞ്ഞെടുത്തു
+split_send_first	ആദ്യം സ്ലിപ്പ് അയയ്ക്കുക — ബാക്ക് ഓഫീസിൽ എത്തിയ ഇനങ്ങൾ മാത്രമേ പ്രത്യേക ബില്ലിലേക്ക് പോകൂ
+split_pick_some	ആദ്യം പ്രത്യേക ബില്ലിനുള്ള ഇനങ്ങൾ ടാപ്പ് ചെയ്യുക
+split_done	പ്രത്യേക ബിൽ ഉണ്ടാക്കി — അത് തറയിൽ ഈ കൗണ്ടറിനടുത്താണ്
+split_marked	വേറെ ബിൽ
+order_empty_pick	ഓർഡർ ശൂന്യം — ഇനങ്ങൾ തിരഞ്ഞെടുക്കാൻ മുകളിൽ ഇനങ്ങൾ ചേർക്കുക ടാപ്പ് ചെയ്യുക.
+add_dishes	ഇനങ്ങൾ ചേർക്കുക
+order_so_far	ഈ ഓർഡറിൽ: {n} · {total}
+no_dish_match	“{q}”-മായി ഒരു ഇനവും പൊരുത്തപ്പെടുന്നില്ല
+pick_dishes_help	ചേർക്കാൻ ഒരു ഇനം ടാപ്പ് ചെയ്യുക · പട്ടിക ചുരുക്കാൻ ഒരു വിഭാഗം തിരഞ്ഞെടുക്കുക
+pick_done	കഴിഞ്ഞു
+pick_done_dd	കഴിഞ്ഞു · {label}
+printer_route_mode	ഈ സ്ഥലത്ത് പല പ്രിന്ററുകൾ ഉണ്ടെങ്കിൽ
+printer_mode_first	ആദ്യം പ്രവർത്തിക്കുന്നത്
+printer_mode_all	എല്ലാറ്റിലും അച്ചടിക്കുക
+kot_show_area	ഏരിയ
+kot_hide_area	ഏരിയ മറയ്ക്കുക
+kot_show_item_hdr	ഇനം · എണ്ണം
+kot_hide_item_hdr	കോളങ്ങൾ മറയ്ക്കുക
+kot_show_title	തലക്കെട്ട് വരി
+kot_hide_title	തലക്കെട്ട് മറയ്ക്കുക
+kot_field_order	അച്ചടി ക്രമം
+kot_field_up	മുകളിലേക്ക് നീക്കുക
+kot_field_down	താഴേക്ക് നീക്കുക
+kot_field_cycle	അടുത്തത് തിരഞ്ഞെടുക്കുക
+kot_field_select	അടുത്തത് തിരഞ്ഞെടുക്കുക
+kot_field_time	സമയം
+kot_field_kot_no	സ്ലിപ്പ് നം.
+kot_field_area	ഏരിയ
+kot_field_table	കൗണ്ടർ
+kot_field_shop	കടയുടെ പേര്
+kot_field_waiter	ജീവനക്കാർ
+kot_field_station	സ്റ്റേഷൻ
+app_template_blurb_extra	കൂടാതെ: ഉടമ സഹീർ, അഡ്മിൻ ആസിഫ്, കാഷ്യർ നവാസ്; മുൻ സൈഡ്‌ബാർ; 4 മണിക്കൂറിന് ശേഷം ചരിത്രം; ഇന്നത്തെ സ്ട്രിപ്പ് ഓഫ്; ചെറിയ ബിൽ.
+dishes_n	{n} ഇനങ്ങൾ
+recipe_ph	പാചകക്കുറിപ്പ് (ഐച്ഛികം — കൗണ്ടർ കടയിൽ ഉപയോഗിക്കില്ല)
+reorder_ph	ഇത്രയാകുമ്പോൾ കൂടുതൽ വാങ്ങുക
+set_reorder	റീഓർഡർ നില വെക്കുക
+low_stock_alert	കുറയുന്നു — ഉടൻ വാങ്ങുക: {items}
+unpriced_note	നിങ്ങളുടെ ഇനങ്ങളിൽ {n} എണ്ണത്തിന് ഇതുവരെ വിലയില്ല — വില നൽകുന്നത് വരെ അവ 0-ൽ ബിൽ ചെയ്യും.
+show_unpriced	വിലയില്ലാത്ത ഇനങ്ങൾ മാത്രം കാണിക്കുക
+show_all_dishes	എല്ലാ ഇനങ്ങളും കാണിക്കുക
+role_waiter	കാഷ്യർ
+role_kitchen	സ്റ്റോർ
+role_title_rest_ph	പദവി (ഉദാ. ക്യാപ്റ്റൻ, ഹെഡ് കുക്ക്)
+preset_help_rest	കാഷ്യർ: വിൽക്കുക. മാനേജർ: വിൽക്കുക + ഇനങ്ങൾ + റദ്ദാക്കൽ/ഭേദഗതി.
+kind_raw	കടയുടെ ഉപയോഗത്തിന് വാങ്ങിയത്
+kind_resale	വിൽക്കാൻ വാങ്ങിയത്
+kind_dish	എണ്ണുന്നില്ല
+buy_unit_ph	യൂണിറ്റ് (കിലോ, ലിറ്റർ, എണ്ണം)
+add_another_way	+ മറ്റൊരു വഴി
+parts_status	ചേർത്തത് {a} / {b} · {c} ബാക്കി
+save_expense	ചെലവ് സേവ് ചെയ്യുക
+rest_ph	ബാക്കി
+low_badge	കുറവ്
+stock_empty	ഇതുവരെ സ്റ്റോക്കിൽ ഒന്നുമില്ല — വാങ്ങലിൽ രേഖപ്പെടുത്തുന്നത് ഇവിടെ കാണാം.
+recent_changes	സമീപകാല മാറ്റങ്ങൾ
+lane_declared_label	നികുതി ഇൻവോയ്‌സ്
+lane_owner_label	ക്യാഷ് മെമ്മോ
+money_lane_bill	ബിൽ: {lane}

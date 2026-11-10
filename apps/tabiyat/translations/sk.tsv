@@ -1,0 +1,1341 @@
+# Slovak — Slovenčina (sk). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	Lekárenský pult: lieky, šarže, kata a knihy. Bezplatné offline.
+barcode_ph	Čiarový kód / EAN
+composition_ph	Soľ / zloženie (vyhľadateľné)
+schedule_h_off	Rozpis H – vypnutý (vlajka vlastníka)
+schedule_h_on	Plán H – zapnutý (vlajka vlastníka)
+rx_expected_off	Očakávaný príjem – vypnutý (príznak vlastníka)
+rx_expected_on	Očakáva sa Rx — zapnuté (príznak vlastníka)
+rx_note_ph	Poznámka o predpise (voliteľné – vaše znenie)
+batch_ph	šarža č.
+expiry_ph	Vyprší (RRRR-MM-DD)
+expiry_alerts	Upozornenia na vypršanie platnosti (ďalších 7 dní)
+expiry_none	Žiadne šarže nevypršia počas nasledujúcich 7 dní.
+rx_nudge	Vlastník označený Rx / Plán H – v prípade potreby pridajte poznámku.
+unlock	Odomknúť
+pin_hint	Vlastník PIN začína na 0000
+sell	Predať
+buy	Kúpiť
+books	Denná kniha
+books_help	Dnešná pozícia. Predaj = peniaze. Kúpiť = nákupy a výdavky. Strany = úveroví zákazníci a dodávatelia.
+buy_help	Výdavkové poukážky a dodávateľské účty (peniaze von). Na účte zostáva v knihe odberateľa alebo dodávateľa.
+sell_money_in	Predávať lieky
+buy_money_out	Výdavkový / dodávateľský účet
+record_purchase	Rekordný nákup
+add_expense	Výdavkový poukaz
+bank_book	Banková knižka
+credit_help	ID zákazníka alebo dodávateľa je jedinečné (mená sa môžu opakovať). Zákazník vedie úverovú knihu (dlží nám); dodávateľ nám predáva zásoby (my im dlhujeme); oboje je fajn. Účtovné knihy zostávajú oddelené; prehľady ukazujú net.
+party_kind_ph	Úlohy: zákazník, dodávateľ, obaja…
+reports_help	Denná kniha, dlžníci a veritelia, banková kniha, nákladové poukážky, zisk a strata.
+reports_today	Denná kniha (dnes)
+reports_month	Zisk a strata (mesiac)
+reports_aging	Nesplatený/debetný kredit
+reports_balance_sheet	Súvaha
+reports	Banková knižka a výkaz ziskov a strát
+refresh	Obnoviť
+undo	Vrátiť späť
+start_tracking	Začnite sledovať
+stock_minus	− Zásoba
+stock_plus	+ Sklad
+settle_cash	Vyrovnať hotovosť
+settle_card	Vyrovnať kartu
+items	Lieky
+nav_items	Lieky
+more	Viac
+your_items	Vaše lieky
+items_help	Klepnutím na položku ju upravíte. Nová položka vymaže formulár. Vyhľadajte podľa názvu alebo krátkeho kódu, nastavte cenu (0 je v poriadku) a potom Pridať. Už zaznamenané tržby si ponechajú meno, z ktorého boli účtované.
+add_item	Pridať položku
+new_item	Nová položka
+adding_item	Pridáva sa nová položka
+editing_item	Úprava
+save	Uložiť
+remove	Odstrániť
+removed_items	Odstránené položky
+removed_help	Obnoviť vráti položku späť do položky Položky presne tak, ako bola – cenu, fotografiu a kategóriu.
+restore_item	Obnoviť
+empty_catalog	Zatiaľ žiadne lieky. Otvorte lieky, pridajte názov, čiarový kód alebo soľ a potom predajte.
+total	Celkom
+cash	Hotovosť
+upi	UPI
+card	kard
+credit	Zákazníci a dodávatelia
+clear	Jasné
+ready_to_sell	Pripravené na rezerváciu
+today_prefix	Dnes
+today_mid	dnes
+owed	vynikajúce
+round_word	okrúhle
+back	Späť
+sold_out	nedostupné
+restock	Doplniť zásoby
+not_tracked	Nesledované
+in_stock	na sklade
+marked_sold_out	Označené ako nedostupné
+add_upper	PRIDAŤ
+na	N/A
+qty	Hmot./množstvo
+unit_at	Hodnotiť @
+actual	Skutočné
+applied	Aplikované
+note_ph	Poznámka (voliteľné)
+rounded	ZAokrúhlený
+split	Rozdeliť
+send_kot	Odoslať lístok
+send_kot_to	Odoslať → {kitchens}
+send_kot_again	Pridajte položky pre ďalší list
+send_kot_held	Podržané položky – podržaním ich odošlete
+reprint_kot	Tlač znova vybratá
+reprint_kot_ok	Znova vytlačené položky {n} · Lístok(y) {slips} → {kitchens}
+reprint_kot_needed	Najprv pošlite bloček — potom zahrňte lieky a znova vytlačte vybrané
+reprint_kot_none_selected	Každá odoslaná položka sa preskočí – klepnite na položku V tlači na tých, ktoré chcete znova vytlačiť
+reprint_kot_client	Vytlačte znova ({n}) pre odoslaný {place} – zariadenie obchodu ho vytlačí
+print_cancelled_kot	Tlač všetkých zrušená
+print_cancelled_kot_ok	Vytlačené {n} stornované položky · {slips} tiket(y) → {kitchens}
+print_cancelled_kot_needed	Najprv otvorte tabuľku so zrušenými položkami
+print_cancelled_kot_none	V tejto objednávke nie sú žiadne zrušené položky
+print_cancelled_kot_client	Tlač zrušená ({n}) pre odoslanú {place} – zariadenie obchodu ju vytlačí
+kot_banner	Milý banner
+kot_banner_ph	Banner (prázdny = žiadny)
+kot_item_prefix	Predpona položky
+kot_item_prefix_ph	napr. [ZRUŠENÉ]
+kot_strike	Názov položky sankcie
+kot_strike_note	Označte poznámku
+kot_strike_on	Zapnuté
+kot_strike_off	Vypnuté
+bill_item_layout	Rozloženie položky
+bill_item_layout_columns	Stĺpce
+bill_item_layout_stacked	Skladaný
+bill_item_header	Hlavičky stĺpcov
+bill_item_hdr_item	Hlavička položky
+bill_item_hdr_qty	Množstvo hlavičky
+bill_item_hdr_price	Hlavička ceny
+bill_item_hdr_amount	Hlavička sumy
+bill_item_name	Názov medicíny
+bill_item_qty	Množ
+bill_item_price	Cena
+bill_item_amount	Suma
+bill_item_note	Rx / poznámka k predaju
+bill_item_col_gap	Medzera v stĺpci
+bill_item_col_order	Poradie stĺpcov
+bill_item_col_sep	Pravidlá stĺpcov
+bill_item_gap_tight	Tesné
+bill_item_gap_comfort	Pohodlné
+bill_item_gap_wide	Široký
+bill_item_num_width	Počet stĺpcov
+bill_item_num_compact	Kompaktný
+bill_item_num_comfort	Pohodlné
+bill_item_num_wide	Široký
+bill_item_num_align	Čísla sa zarovnajú
+bill_item_gap_em	medzera (em)
+bill_item_qty_min	Množstvo min (em)
+bill_item_price_min	Cena min (em)
+bill_item_amount_min	Minimálna suma (em)
+kot_item_qty_width	Stĺpec Množstvo
+kot_item_num_align	Množstvo zarovnať
+bill_total_qty_label	Štítok s celkovým množstvom
+bill_total_subtotal_label	Menovka medzi súčtom
+bill_total_grand_label	Označenie celkovej sumy
+bill_total_paid_label	Platený celkový štítok
+bill_meta_pair	Zdieľať riadok s
+bill_pair_alone	Sám
+bill_item_piece_on	Zapnuté
+bill_item_piece_off	Vypnuté
+bill_total_qty	Celkové množstvo
+bill_total_subtotal	Medzisúčet
+bill_total_grand	Celkový súčet
+reprint_incl	V tlači
+reprint_skip	Preskočiť
+reprint_skip_meta	Preskočiť tlač na obnovenie
+kot_dest_hint	Tlačí sa na tlačiarňach, ktoré ste priradili {kitchens} v Nastavenia → Tlačiarne
+kot_sent_hint	Posledná odoslaná bola na {kitchens}. Klepnutím pridáte položky pre ďalšiu faktúru alebo znova vytlačte lístok pre tú istú faktúru.
+kot_sent_printing	Listina odoslaná do {kitchens} – tlač
+kot_sent_not_printed	Listina odoslaná do {kitchens}, ale NIE JE vytlačená: {why}. Povedzte to obchodu, opravte tlačiareň a vytlačte ju znova.
+kot_sent_screen	Listina odoslaná do {kitchens}
+kot_queued_shop	Slip pre {place} → {kitchens} uložený; zariadenie obchodu ho vytlačí
+kot_job_label	Slip pre {place} → {kitchens}
+kot_job_reached	Sklz pre {place} dosiahol {kitchens}
+kot_unassigned	Nepriradené
+kot_unassigned_held	Podržané položky {n} bez stanice – odošlite ich podržaním na linke
+kot_station_ph	Stanica
+kot_station_dd	Stanica
+kot_station_dd_n	Stanica · {stations}
+kot_set_station	Použite túto stanicu
+kot_station_applied	Stanica nastavená na položky {n}: {station}
+kot_station_cleared	Stanica vymazaná z položiek {n}: {station}
+kot_station_needed	Najprv si vyberte dávkovaciu časť
+kot_station_not_allowed	Nie je povolené používať sekciu: {station}
+kot_station_none	Zatiaľ žiadne stanice — nepoužívané na pultovom obchode (Nastavenia → Oblasti, ak je to potrebné)
+pos_tab_items	Pridané položky
+pos_tab_payment	Platba
+hold_send	Držte z kuchyne
+hold_send_on	Zadržané
+hold_send_meta	Držané — nie na tomto lístku
+station_remove	Odstráňte stanicu
+station_remove_ph	Klepnutím na stanicu v zozname ju odstránite
+station_removed	Stanica odstránená: {name}
+settings_hub_title	Nastavenia
+settings_hub_help	Otvorte jednu oblasť naraz – menej posúvania, jasnejšie možnosti.
+settings_back	Späť
+settings_sec_language	Jazyk a mena
+settings_sec_country	Krajina a daň
+settings_sec_tills	Iné zariadenia
+settings_sec_brand	Vaša značka
+settings_sec_units	Jednotky a prevody
+settings_sec_pickers	Oblasti · stanice · sadzby dane
+settings_sec_printers	Tlačiarne
+settings_sec_bill	Formát účtenky
+settings_sec_selling	Schémy a predaj
+bill_kot_tab_bill	Účet
+bill_kot_tab_kot	šmyk
+settings_sec_alerts	Upozornenia
+alerts_help	Ako dlho zostávajú stavové správy na obrazovke (toto prihlásenie).
+snack_secs_ph	Sekundy (3 – 60, predvolená hodnota 10)
+snack_secs_save	Ušetrite čas upozornenia
+snack_secs_saved	Uložený čas upozornenia — {n} sekúnd
+settings_sec_backup	Zálohovanie a obnovenie
+settings_sec_diag	Diagnostika
+diag_privacy_help	Denníky zostávajú v tomto zariadení. Tajomstvá (PIN, heslá) sa nikdy neukladajú. Zdieľanie balíka zo zariadenia vyžaduje vždy váš výslovný súhlas – nikdy ho nepredáva ani neposkytuje tretím stranám.
+diag_level	Úroveň detailov
+diag_level_error	Chyby
+diag_level_warn	Varovania
+diag_level_info	Info
+diag_level_debug	Debug
+diag_support_start	Začnite 30-minútovú reláciu podpory
+diag_support_stop	Ukončite reláciu podpory
+diag_support_started	Relácia podpory je zapnutá — 30 minút ladte podrobnosti
+diag_support_ended	Relácia podpory sa skončila
+diag_export_local	Exportovať lokálnu kópiu
+diag_export_local_done	Lokálna diagnostika pripravená o {path} — vyberte, kam chcete uložiť kópiu
+diag_approve_send	Schváliť zdieľanie mimo tohto zariadenia
+diag_send_help	Schválenie je jeden balík, potom vyprší. Dočasné – používa sa len na opravu alebo zlepšenie produktu. Nezdieľa sa s tretími stranami. Funguje na Linux, Windows, macOS a Android.
+diag_send_approved	Zdieľanie schválené pre jeden balík (platnosť čoskoro vyprší)
+diag_export_send	Vytvoriť zdieľaný balík (vyžaduje schválenie)
+diag_export_send_done	Zdieľajte balík pripravený o {path} – vyberte, kam uložiť, a potom pošlite iba na podporu Kumkaj
+diag_save_bundle	Uložiť kópiu diagnostiky
+diag_bundle_saved	Diagnostická kópia bola uložená do {path}
+diag_bundle_failed	Diagnostickú kópiu sa nepodarilo uložiť – skúste to znova
+diag_clear	Vymazať diagnostické protokoly
+diag_cleared	Diagnostické denníky boli vymazané
+sidebar_settings	Bočný panel
+sidebar_settings_help	Rovnaké ikony ako na bočnej lište. Presunutím riadku zmeníte poradie. Otočením prepínača zobrazíte alebo skryjete. Nastavenia a Zámok vždy zostanú na lište.
+sidebar_always_on_short	Vždy zapnuté
+sidebar_back_settings	Späť
+sidebar_shown	Zobrazené
+sidebar_hidden	Skryté
+sidebar_always_on	Vždy na bare
+sidebar_shown_hint	Zobrazené na bočnej koľajničke / spodných úchytoch
+sidebar_hidden_hint	Skryté pred barom
+sidebar_menu_items	Položky
+sidebar_enable_all	Povoliť všetko
+sidebar_disable_all	Zakázať všetko
+sidebar_order_saved	Poradie bočného panela bolo uložené
+sidebar_visibility_saved	Viditeľnosť bočného panela bola uložená
+amounts_hide	Skryť
+amounts_show	Zobraziť
+printers_none_hint	Najprv uložte tlačiareň na tomto zariadení a potom ju pridajte do účtu alebo sekcie
+counter	Počítadlo
+dine_in	Počítadlo
+takeaway	Take away
+order	Objednávka
+tables	Počítadlá
+kitchen	Sekcie
+sales	Predaj
+sales_refunds	Predaj a vrátenie peňazí
+day_close	Deň zatvorený
+reports_expenses	Banková knižka a výkaz ziskov a strát
+nav_reports	Správy
+nav_settings	Nastavenia
+nav_lock	Zamknúť
+no_sale_yet	Zatiaľ bez predaja
+favorites	Obľúbené
+favorites_help	Položky, ktoré často predávate, uložené pre vaše prihlásenie. Pridajte jednu do účtu alebo zostavte zoznam zo všetkých položiek nižšie.
+your_favorites	Vaše obľúbené
+all_items	Všetky položky
+frequent	Časté
+added_items	Pridané položky
+added_items_empty	Na tomto účte zatiaľ nie je nič – pridajte položku zo všetkých položiek alebo kategórie.
+frequent_config_help	Väčšina predaných položiek z dokončených faktúr. Nastavte, koľko dní sa má pozerať a koľko položiek sa má zobraziť.
+frequent_days_ph	Dni (1)
+frequent_limit_ph	Položky (24)
+frequent_apply	Použiť
+frequent_saved	Časté: posledných {d} dní, najlepšie {n} — {c} položky
+frequent_empty	V tomto období ešte nedošlo k žiadnemu dokončenému predaju – vyrovnajte účet (0 ₹ je povolené, keď to hovoria nastavenia) a zobrazia sa tu.
+zero_sales	Predaj s nulovou hodnotou
+zero_sales_help	Povoliť položky s cenou 0 INR a účty s hodnotou 0 INR (zdarma / želanie vlastníka). V predvolenom nastavení je zapnutá, takže bezplatné obálky sa stále zobrazujú v častých a denných knihách.
+zero_sales_on	Povoliť 0 INR
+zero_sales_off	Vyžadovať cenu
+zero_sales_saved_on	Povolený predaj s nulovou hodnotou
+zero_sales_saved_off	Predaj musí mať cenu vyššiu ako 0 INR
+floor_areas_help	Priestory sú miestnosti alebo zóny na poschodí (Dine In, Parcel, AC …). Najprv pridajte oblasť a potom do nej vložte počítadlá – každá oblasť je samostatná skupina na podlahe.
+area_new_ph	Nová oblasť / miestnosť (napr. klimatizácia, záhrada)
+add_area	Pridať oblasť
+area_added	Oblasť „{name}“ pripravená – pridajte do nej počítadlá
+no_favorites	Zatiaľ žiadne obľúbené položky – pridajte položky zo zoznamu nižšie.
+add_to_bill	Pridať na účet
+added	Pridané
+owes_word	dlhuje
+selected_word	Vybrané
+chip_clear_credit	clear — Úver alebo záloha
+chip_missing_customer	Chýba vybraný zákazník – vyberte ho znova
+chip_no_customer	Zatiaľ žiadny zákazník – zadajte meno a potom klepnite na Kredit
+credit_summary_fmt	{} zákazníkov · otvorený kredit {} · držané zálohy {}
+recent_label	Nedávne:
+kot_new_waiting	NOVINKA — čakanie
+kot_preparing	PRÍPRAVA
+kot_ready_serve	PRIPRAVENÝ — podávajte
+kot_done_cap	HOTOVO
+kot_cancelled	ZRUŠENÉ
+kot_start_btn	Štart
+kot_mark_ready	Označte pripravené
+kot_done_btn	Hotovo
+table_free	Neobsadené – klepnutím spustíte objednávku
+start_order	Začať objednávku
+open_bill	Otvorený účet
+collect_payment	Inkasovať platbu
+table_running	Beh
+payment_pending	Čaká sa na platbu
+collect_at_counter	zbierať pri pulte
+inventory	Inventár
+inventory_stock	Zásoby a zásoby
+branches	Pobočky
+branches_org	Pobočky a org
+credit_customers	Zákazníci a dodávatelia (úverové účty)
+customer_name_ph	Meno zákazníka alebo dodávateľa
+new_customer_ph	Meno nového zákazníka alebo dodávateľa
+item_name_ph	Názov položky (napr. Masala Dosa)
+item_price_ph	Cena
+start_template	Produkt
+team	Tím
+team_pins	Tím & PINs
+my_pin_settings	Moje PIN
+settings_hub_help_my_pin	Zmeňte odomknutie PIN pre osobu prihlásenú na tomto zariadení.
+team_self_help	Jedno prihlásenie: nové PIN, nové heslo alebo oboje. Ak chcete zachovať to, čo máte, nechajte políčko prázdne. Opýtajte sa vlastníka, či potrebujete iné obrazovky alebo práva.
+backup_settings	Zálohovanie a nastavenia
+lock_app	Zamknúť aplikáciu
+pick	Vyberať
+select	Vyberte
+advance	Záloha
+owner	Vlastník
+staff	personál
+photo	Fotografia
+auto	Auto
+prev	Predch
+next	Ďalej
+ok	OK
+this_shop	Režim servera
+extra_till	Klientsky režim
+off	Vypnuté
+tables_kitchen	Usporiadanie obchodu
+server	Režim servera
+client	Klientsky režim
+language_currency	Jazyk a mena
+language	Jazyk
+choose_language	Vyberte si jazyk
+language_setup_hint	Postupujte podľa jazyka tohto zariadenia alebo si ho vyberte sami.
+lang_follow_platform	Jazyk zariadenia
+lang_pick_user	Vyberte jazyk
+lang_platform_now	Jazyk zariadenia teraz
+selected_language	Vybrané
+continue	Pokračovať
+this_device	TOTO ZARIADENIE
+device_use_q	Ako sa bude toto zariadenie používať?
+last_server_mode	Bol server – klepnutím pokračujte
+last_client_mode	Bol klient – klepnutím pokračujte
+choose_server	Vyberte server
+choose_server_hint	Otvorte existujúci server alebo vytvorte jeden pre inú firmu.
+create_new_server	Vytvorte nový server
+open_server	Otvorte
+new_server_name_ph	Nový názov servera (voliteľné)
+server_remove_pin_ph	Vlastník PIN na odstránenie servera
+only_owner_remove_server	Server môže odstrániť iba vlastník
+owner_pin_remove_server	Na odstránenie tohto servera je potrebný vlastník PIN
+device_setup_help	Server tu uchováva knihy. Klient sa spáruje so serverom.
+app_template_heading	Štartovací katalóg (voliteľné)
+app_template_blurb	Načíta vzorový katalóg; Majiteľ Zahir (zahir), správca Asif (asif, PIN 1111), pokladník Nawaz (nawaz, PIN 0000); zľavnená daň/GST; predná bočná lišta; história sa vymaže po 4 hodinách (a Vymazať teraz v Zálohe); Dnes sa vyzliecť; kompaktný účet + štandardné okraje pre úzke zásobníky. Daňové a bočné panely možno znova zapnúť v Nastaveniach.
+app_template_apply	Použiť štartovací katalóg
+app_template_skip	Zatiaľ preskočiť
+app_template_status	Server pripravený — použite katalóg Starter alebo preskočte
+app_template_importing	Uplatňuje sa {title}…
+currency	mena
+backup	Zálohovanie
+use	Použite
+dont_use	Nepoužívať
+add_branch	Pridať vetvu
+add_conversion	Pridať konverziu
+add_dishes_items	Pridať položky
+add_item_plain	Pridať položku
+add_note	Pridať poznámku
+add_opening_balance	Pridajte počiatočný zostatok
+add_staff	Pridajte personál
+add_station	Pridať stanicu
+add_table	Pridajte jedálenský stôl
+add_unit	Pridať jednotku
+add_use_name	Pridajte / použite tento názov
+allow_extra_tills	Povoliť extra pokladne
+amend	Zmeniť
+apply_country_pack	Použiť balík krajín
+datetime_appearance	Vzhľad dátumu a času
+datetime_appearance_help	Knihy uchovávajú vo vnútri prvý rok RFC3339. Tieto menia iba vzhľad dátumov a hodín na účtoch, správach a na obrazovke.
+datetime_example	Príklad teraz: {ex}
+date_order	Dátum poradia
+date_order_dmy	D/M/Y
+date_order_mdy	M/D/Y
+date_order_ymd	Y-M-D
+time_format	Hodiny
+time_format_24h	24-hodinová
+time_format_12h	12-hodinový
+attach_bill_photo	Pripojte fotografiu účtu
+attach_pdf	Pripojte PDF
+attach_photo	Priložiť fotografiu
+attachments_last_expense	Prílohy (posledný výdavok)
+bank	Banka
+bank_in	Banka v
+bank_out	Z banky
+bank_reconciliation	Bankové odsúhlasenie (zaškrtnite pri výpise z účtu)
+bank_to_till	Banka → do
+book_add_dish	Kniha — pridať položku/položku
+book_opening_credit	Kniha — otvárací kredit
+branch_name_sell_ph	Názov pobočky na predaj
+bring_my_book	Prineste moju knihu
+business_tax_id_ph	Obchodné daňové identifikačné číslo
+caption_bank	BANKA
+caption_bills	ÚČTY
+caption_outstanding	VYNIKAJÚCI
+caption_payments_today	PLATBY DNES
+caption_today	DNES
+card_amount_ph	Suma karty
+cash_amount_ph	Suma v hotovosti
+cash_memo	Pokladničný doklad
+choose_icon	Vyberte ikonu
+choose_logo	Vyberte logo
+clear_icon	Vymazať ikonu
+clear_photo	Jasná fotka
+copy_day_book_csv	Kopírovať dennú knihu CSV
+copy_day_close	Kopírovať zatvorenie dňa
+copy_items_csv	Kopírovať položky CSV
+copy_outstanding_csv	Nevybavená kópia CSV
+copy_parties_csv	Kopírovať zákazníkov a dodávateľov CSV
+copy_party_ledger_csv	Kopírovať knihu zákazníkov CSV
+copy_receipt	Skopírujte potvrdenie
+share_whatsapp	Zdieľať WhatsApp
+lan_pages_heading	Zákaznícke stránky cez Wi-Fi
+lan_pages_help	Na Wi-Fi v tomto obchode fungujú zákaznícke stránky pre zobrazovaciu tabuľu a spätnú väzbu. Ľudia s mobilnými dátami potrebujú cloud neskôr. Kartový terminál alebo platobný odkaz sú voliteľné a nikdy neblokujú prepážku.
+diag_send_heading	Zdieľať toto zariadenie
+kot_dest_heading	Stanica
+optional_login_heading	Voliteľné prihlásenie
+rights_heading	práva
+ops_panel	Miestne ops
+crm_heading	Zákazníci a správy
+crm_help	Narodeniny, lojalita, neaktívni a top hostia — zámery v rade SMS alebo WhatsApp. V správe použite {name} a {points}. Vlastník kohútiky odoslať; nič nevybuchne samo od seba.
+crm_queue_sms	Poradie SMS
+crm_queue_wa	Poradie WhatsApp
+crm_seg_bday_week	Narodeninový týždeň
+crm_seg_bday_month	Mesiac narodenín
+crm_seg_phone	S telefónom
+crm_seg_loyalty	Vernosť
+crm_seg_inactive	Neaktívne
+crm_seg_top	Najlepšie míňajúce peniaze
+birthday_ph	narodeniny (MM-DD alebo RRRR-MM-DD)
+crm_message_ph	Všetko najlepšie k narodeninám {name}! Máte {points} bodov.
+till_apply_redeem	Použiť na účte
+till_clear_redeem	Vymazať uplatnenie
+till_wallet_topup	Doplňte peňaženku
+till_issue_voucher	Vydanie poukazu
+till_points_ph	Body na uplatnenie
+till_wallet_ph	Suma v peňaženke, ktorú treba minúť
+till_voucher_code_ph	Kód voucheru
+till_voucher_amt_ph	Suma kupónu (prázdne = všetky)
+till_wallet_topup_ph	Dobitie sumy v peňaženke
+till_voucher_issue_amt_ph	Vystaviť sumu kupónu
+till_voucher_issue_code_ph	Nový kód voucheru
+split_evenly	Rozdeľte rovnomerne
+waitlist	Zoznam čakateľov
+fire_course	Ďalší krok
+hold_item	Držte z kuchyne
+waiter_call	Zavolajte pokladníkovi
+waitlist_add	Pridať do poradovníka
+floor_view_grid	Mriežka
+floor_view_layout	Rozloženie
+floor_layout_x	X
+floor_layout_y	Y
+floor_layout_w	W
+floor_layout_h	H
+floor_layout_save	Uložiť rozloženie
+floor_layout_open	Otvorený jedálenský stôl
+floor_layout_edit	Upraviť rozloženie
+floor_layout_pick	Klepnutím na jedálenský stôl upravte jeho rozloženie
+floor_layout_saved	Rozloženie bolo uložené
+floor_layout_nudge_left	← 20
+floor_layout_nudge_right	→ 20
+floor_layout_nudge_up	↑ 20
+floor_layout_nudge_down	↓ 20
+sibling_pickers_help	Klepnite na Zapnúť/Vypnúť ako jednotky – skryte oblasti, stanice a daňové sadzby pred každodennými výbercami; Predvolené nastavenia balíka zostávajú.
+bulk_price_apply	Použiť hromadnú cenu
+card_terminal_optional	Kartový terminál / odkaz na platbu (voliteľné, ak je k dispozícii internet)
+copy_report	Kopírovať prehľad
+counted_cash_ph	Spočítaná hotovosť v zásuvke
+country_tax	Krajina a daň
+create_backup	Vytvorte zálohu
+credit_limit_heading	Kreditný limit (vybraný zákazník alebo dodávateľ)
+day_close_summary	Zhrnutie dňa
+delete_party	Vymazať vybraného odberateľa alebo dodávateľa
+delivery	Doručenie
+done_open_books	Hotovo — otvorené knihy
+drawer_count	Počet zásuviek (voliteľné)
+expense_heading	Výdavok
+export_day	Deň vývozu
+extra_note_bill_ph	Dodatočná poznámka k tejto faktúre / predaji
+extra_note_expense_ph	Dodatočná poznámka k posledným výdavkom
+extra_tills_heading	Extra pokladne
+other_devices_help_heading	Nastavte ďalšie zariadenia
+other_devices_help	Na tomto zariadení (Serveri): Iné zariadenia → Povoliť extra pokladne. Poznamenajte si párovací kód a adresu Wi-Fi. Klepnite na možnosť Povoliť pripojenie iných zariadení, ak sa zobrazí. V počítači klepnite na Začať s týmto počítačom. Na každom inom zariadení: nainštalujte aplikáciu, vyberte režim klienta, nájdite server obchodu (alebo zadajte adresu), zadajte párovací kód, spárujte teraz. Objednávky čakajú na zariadení, ak Wi-Fi klesne, a odchádzajú, keď server znova odpovie. Extra tlačiarne sa nastavujú na Serveri (Nastavenia → Tlačiarne) — extra pokladne tam posielajú účty.
+forget_shop	Zabudnite na tento obchod
+goods_received	Tovar prijatý
+import_day	Deň importu
+import_items_csv_plain	Importovať položky CSV…
+import_parties_csv	Importovať zákazníkov a dodávateľov CSV…
+item_name	Názov položky
+kitchen_printing	Tlačiarne
+login_id_ph	Používateľské meno
+mark_cleared	Mark vymazaný
+new_party_clear	Nový zákazník alebo dodávateľ (jasný formulár)
+new_party_kind_supplier_ph	Nový druh zákazníka alebo dodávateľa (dodávateľ)
+next_country	Ďalšia krajina
+next_order	Ďalšia objednávka (čistý stôl)
+note_gstin_ph	Poznámka / GSTIN / pripomienka dohody
+notes_attach_party	Poznámky a prílohy (vybraný zákazník alebo dodávateľ)
+notes_attach_sale	Poznámky a prílohy (vybraný predaj)
+on_account_ap	Na účet (AP)
+org_optional_ph	Organizácia (voliteľné)
+paid_by	Zaplatené od
+paid_now	Zaplatené teraz
+pair_now	Spárujte teraz
+pairing_code_ph	Párovací kód
+party_name_selected_ph	Meno zákazníka alebo dodávateľa (alebo zvolené použitie)
+password_ph	heslo
+pay_ap_card	Platba kartou AP
+pay_ap_cash	Zaplaťte AP v hotovosti
+pay_ap_heading	Zaplaťte, čo im dlhujeme (AP)
+pay_ap_upi	Zaplatiť AP UPI
+pay_selected_heading	Vybraná platba (vyrovnať dlh / prijať zálohu)
+pick_from_items	Vyberte si z našich vecí
+prev_country	Predchádzajúca krajina
+print_open	Vytlačiť / otvoriť
+reason_amend_ph	Dôvod zmeny/neplatnosti/vrátenia peňazí
+reason_note_ph	Dôvod / poznámka (plytvanie, počet, ...)
+record_day_close	Koniec rekordného dňa
+refresh_from_shop	Obnoviť z obchodu
+refund	Vrátenie peňazí
+remove_selected	Odstrániť vybraté
+request_bill	Požiadať o účet
+restaurant_name_ph	Názov obchodu (voliteľné)
+restore_backup	Obnoviť zálohu
+role_both	Obaja
+role_admin	Admin
+role_cashier	Pokladník
+role_customer	Zákazník
+role_manager	manažér
+history_retention	História obchodovania
+history_retention_help	Automaticky vymazať staré predaje a staré lístky. Lieky, personál a prostredie zostávajú. Clear teraz vymaže všetky obchodné riadky a ponechá nastavenie.
+history_off	Udržujte
+history_day_close	V deň zatvorenia
+history_after_hours	Po hodinách
+history_hours_ph	Hodiny (1 – 168, predvolená hodnota 4)
+history_hours_save	Ušetrite hodiny
+history_clear_now	Vymazať históriu
+history_cleared	História obchodov vymazaná – nastavenie zachované
+history_retention_saved	Vymazanie histórie bolo uložené
+history_hours_saved	Hodiny histórie boli uložené
+history_owner_only	Históriu môže vymazať iba vlastník alebo správca
+rollup	Súhrn
+save_brand	Uložiť značku
+save_business_id	Uložiť ID firmy
+save_business_name	Uložiť názov firmy
+save_features	Uložiť
+save_features_named	Ušetrite {name}
+save_features_ok	Uložené nastavenie pre {name}
+save_names	Uložiť mená
+second_way	Druhý spôsob
+server_ip_ph	Adresa IP servera (napr. 192.168.1.10)
+set_credit_limit	Použiť limit na zákazníka alebo dodávateľa
+set_login_selected	Použiť prihlásenie na vybrané
+set_login_named	Použiť prihlásenie na {name}
+shop	Obchod
+show	Zobraziť
+spreadsheet_csv	Tabuľkový hárok (CSV)
+start_fresh	Začnite odznova
+stop_extra_tills	Zastavte ďalšie pokladnice
+floor_cols_ph	Stĺpce
+floor_cols_fit	Prispôsobiť obrazovku
+floor_cols_fit_sub	{n} sa sem hodí
+floor_cols_fits	sedí
+floor_cols_scroll	roluje do strán
+floor_cols_min	Stĺpce: aspoň 1 — alebo nechajte pole prázdne, aby sa zmestili na obrazovku
+floor_zoom_auto	Auto
+floor_zoom_out	Oddialiť
+floor_zoom_in	Priblížiť
+backup_auto	Automaticky zálohované každý deň · posledných {when} · posledných 14 dní sa uchováva v {dir}.
+backup_auto_none	Automaticky zálohované každý deň – prvý sa spustí o chvíľu.
+backup_copy_to	Kópie tiež idú do {dir}.
+backup_copy_btn	Skopírujte aj zálohy do priečinka…
+autostart_off	Začnite s týmto počítačom
+autostart_on	Spustí sa s týmto počítačom ✓ – klepnutím zastavíte
+autostart_done_on	Tento počítač teraz pri spustení otvorí aplikáciu – server obchodu je po výpadku prúdu späť.
+autostart_done_off	Tento počítač už aplikáciu po spustení neotvorí.
+device_forgotten	Obchod zabudol toto zariadenie — spárujte ho znova s ​​aktuálnym kódom obchodu. Objednávky, ktoré naň čakajú, sú zachované.
+lan_offline	Obchodný server je nedostupný
+forget_device	Zabudni
+last_seen	videný
+copy_pair_code	Skopírujte párovací kód
+new_pair_code	Nový párovací kód
+pair_finishing	Dokončuje sa pár... aplikovanie kníh z obchodu
+pair_opening	Otváranie pokladne…
+pair_copied	Párovací kód bol skopírovaný
+kot_waiting	Čaká sa na odoslanie
+lan_offline_waiting	Obchodný server je nedostupný · {n} čaká
+lan_connecting	Pripája sa k obchodu…
+lan_live	Naživo
+lan_sending	{n} odoslanie
+lan_sign_in_to_send	Ak chcete poslať {n}, znova sa prihláste
+lan_pair_again	Znova spárujte toto zariadenie
+lan_update_app	Aktualizujte aplikáciu – toto zariadenie a server obchodu majú rôzne verzie
+allow_firewall	Umožnite ostatným zariadeniam pripojiť sa
+firewall_blocked	Firewall tohto počítača blokuje iné zariadenia — klepnite na Povoliť pripojenie iných zariadení.
+firewall_waiting	Čaká sa na výzvu správcu…
+lan_join_help	Na druhom zariadení: Režim klienta → Nájdite server obchodu (alebo zadajte {addr}) → párovací kód {code}.
+lan_pair_status	Wi‑Fi {addr}
+lan_join_help_no_addr	Pripojte toto zariadenie k Wi‑Fi pre adresu.
+lan_no_address	Zatiaľ bez adresy Wi‑Fi — pripojte sa k obchodu Wi‑Fi.
+lan_not_listening	Neprijíma zariadenia (port {port} je obsadený). Reštartujte aplikáciu.
+lan_tills_off	Extra pokladne sú vypnuté. Umožnite im pripojiť sa k inému zariadeniu.
+paired_with	Spárované · {url}
+not_paired	Nespárované
+choose_device_use	Vyberte Server alebo Klient.
+paired_note	Spárované. Ak chcete predať, odomknite alebo aktualizujte na najnovšie.
+last_update_at	Posledná aktualizácia: {time}.
+pair_intro	Nájdite server alebo zadajte jeho adresu a párovací kód.
+queue_waiting	Čaká na príchod do obchodu ({n}):
+queue_tries	Vyskúšané {n} krát · posledná odpoveď: {e}
+save_backup_copy	Uložiť záložnú kópiu…
+backup_copy_saved	Záložná kópia bola uložená – ponechajte ju mimo tohto zariadenia (kľúč USB alebo iné zariadenie)
+backup_copy_overdue	{n} dní neopustila toto zariadenie žiadna záložná kópia — Nastavenia → Záloha
+backup_copy_failed	Záložnú kópiu tam nebolo možné uložiť – vyberte iné miesto
+clock_off	Hodiny tohto zariadenia sú mimo servera obchodu o {min} min — nastavte na tomto zariadení správny čas
+printers_heading	Tlačiarne
+printers_help	Vyhľadajte tlačiarne, ťuknutím na jednu ju vyberte a potom vytlačte skúšobnú stranu iba na tomto zariadení. Tlačiarne účtov: Formát faktúry → Faktúra.
+printers_host_only	Tlačiarne sú nastavené na zariadení predajne (Server). Toto do tam posiela účty a staré lístky — Nájsť/pridať/priradiť pobyt na serveri. Skúšobná strana a veľkosť tlače účtu prejdú na server.
+printers_find_heading	Nájdite tlačiarne
+printers_find_tip	Nájsť prehľadá toto zariadenie a aktualizuje zoznam.
+printers_pool_heading	Tlačiarne
+printers_pool_tip	Nájsť skenuje toto zariadenie a aktualizuje tento zoznam.
+printers_pool_empty	(zatiaľ žiadne – klepnite na Nájsť)
+printers_routes_help	Nájdite tlačiarne, ktoré operačný systém už pozná. Priraďte ich k účtu a ku každej sekcii vo formáte Bill & Slip.
+printer_assign_dd	Skutočná tlačiareň: {place}
+printer_assign_pick	Vyberte skutočnú tlačiareň
+printer_profile_heading	Rozloženie
+printer_send_heading	Doručenie
+vp_delivery_heading	Doručenie
+vp_delivery_help	Ako táto virtuálna tlačiareň odosiela úlohy — dokument OS, nespracované bajty alebo ESC/POS. O obsahu tiketu (veľkosť písma, obálka, okraje) rozhoduje účet / formát tiketu, nie tu.
+vp_type_size_heading	Veľkosť typu
+vp_wrap_heading	Šírka obalu
+vp_margin_heading	Okraje
+vp_delivery_spooler	Dokument OS (systémový spooler)
+vp_delivery_raw	Nespracované bajty do zariadenia
+vp_delivery_escpos	ESC/POS tepelné príkazy
+virtual_printer_new	Nová virtuálna tlačiareň
+virtual_printer_selected	Úprava „{name}“ – klepnutím na inú položku v zozname prepnete
+virtual_printer_tap_list	Klepnutím na virtuálnu tlačiareň v zozname ju upravíte
+config_layout_portrait	Portrét
+config_layout_landscape	Krajina
+config_send_os	Zaraďovač systému
+config_send_escpos	ESC/POS
+profiles_heading	Rozloženie
+profiles_empty	(zatiaľ žiadne rozloženia)
+profile_builtin	vstavaný
+profile_custom	zvykom
+profile_name_ph	Názov rozloženia
+profile_new	Nové rozloženie
+profile_delete	Odstrániť rozloženie
+profile_created	Rozloženie vytvorené
+profile_deleted	Rozloženie bolo odstránené
+profile_builtin_keep	Vstavané rozloženia nemožno odstrániť
+config_saved	Aktualizované
+config_selected	Vybraté „{name}“
+printer_output_heading	Virtuálne tlačiarne
+virtual_printers_heading	Virtuálne tlačiarne
+virtual_printers_empty	Zatiaľ žiadne virtuálne tlačiarne – nižšie nastavte hodnoty a potom Uložiť. Keď nejaké budete mať, klepnite na niektorú v zozname a upravte ju.
+virtual_printer_name_ph	Názov virtuálnej tlačiarne (voliteľné)
+virtual_printer_create	Vytvorte virtuálnu tlačiareň
+virtual_printer_save	Uložiť virtuálnu tlačiareň
+virtual_printer_delete	Odstrániť virtuálnu tlačiareň
+virtual_printer_created	Virtuálna tlačiareň „{name}“ bola vytvorená
+virtual_printer_deleted	Odstránená virtuálna tlačiareň „{name}“
+virtual_printer_updated	Virtuálna tlačiareň bola aktualizovaná
+virtual_printer_updated_named	Virtuálna tlačiareň „{name}“ bola aktualizovaná
+virtual_draft_layout	Hodnoty nastavené pre ďalšiu virtuálnu tlačiareň
+virtual_draft_send	Hodnota nastavená pre ďalšiu virtuálnu tlačiareň
+virtual_need_real	Najprv vyberte skutočnú tlačiareň
+virtual_need_select	Vyberte virtuálnu tlačiareň, ktorú chcete odstrániť
+real_printer_selected	Vybrané: {name}
+station_group_heading	Virtuálne tlačiarne
+station_group_apply	Odstrániť virtuálnu tlačiareň
+station_group_applied	Odstránené
+station_group_empty	Vyberte virtuálnu tlačiareň
+station_group_name_ph	Názov virtuálnej tlačiarne (voliteľné)
+station_group_save	Vytvorte virtuálnu tlačiareň
+station_group_saved	Virtuálna tlačiareň bola uložená
+station_manage_heading	Pridajte alebo odstráňte dávkovaciu časť
+printers_routes_heading	Kde sa veci tlačia
+route_pick_heading	Miesto
+route_editing	Úprava: {name}
+route_assigned	Pridané {printer} k {place}
+route_already_assigned	Už na tomto mieste: {printer}
+route_removed	Odstránené {printer} z {place}
+route_cleared	Vymazané {name}
+route_assigned_empty	Žiadne na tomto mieste
+route_tap_remove	klepnutím odstránite
+route_tap_select	klepnutím vyberte
+route_tap_selected	vybrané
+route_pick_printer_first	Najprv klepnite na tlačiareň
+route_assigned_heading	Tlačiarne
+route_add_heading	Priradiť
+printer_label_ph	Názov (napr. pultová tlačiareň)
+printer_target_ph	Názov systémovej tlačiarne alebo hostiteľa: 9100
+printer_target_default	bežná tlačiareň tohto počítača (prázdna adresa)
+printer_wire_heading	Profil
+printer_wire_escpos	ESC/POS
+printer_wire_os	Portrét
+printer_wire_os_portrait	Portrét
+printer_wire_os_landscape	Krajina
+printer_wire_escpos_short	ESC/POS
+printer_wire_os_short	Portrét
+printer_wire_os_landscape_short	Krajina
+printer_format_custom	Nový vlastný profil
+printer_format_custom_label	Vlastné
+printer_format_custom_added	Pre toto miesto bol pridaný vlastný profil
+add_printer	Pridať tlačiareň
+remove_printer	Odstrániť
+route_pick_ph	Bill alebo výdajňa
+route_bill	Účet
+route_default_kitchen	Žiadna stanica (nepriradené položky)
+route_kot_station	Stanica
+route_dont_print	Žiadna tlačiareň
+stations_heading	Stanice
+stations_help	Výdajne združujú lieky a tlačiarne pre danú časť predajne. Pripojte tlačiarne z Nastavenia → Tlačiarne, nastavte poradie vyskúšania, potom Najprv funguje alebo Tlačte na všetkých. Zmeny sa ukladajú za pochodu.
+station_print_heading	Tlačiarne pre túto stanicu
+station_print_help	Vyberte stanicu a potom pripojte jednu alebo viac tlačiarní. ↑↓ súpravy skúste poradie. Po prvom úspechu sa práca zastaví; Tlač na všetky odoslania na každú pripojenú tlačiareň.
+station_print_pick_ph	Stanica na nastavenie tlačiarní
+station_print_pick_first	Najprv si vyberte dávkovaciu časť
+station_print_editing	Úprava tlačiarní pre „{name}“
+station_vps_dd	Tlačiarne pre túto stanicu
+station_vps_dd_n	{n} tlačiarní · klepnutím zmeníte
+station_vps_empty	Zatiaľ žiadne tlačiarne — Nájdite ich v časti Nastavenia → Tlačiarne
+bill_printers_dd	Tlačiarne na účet
+bill_printers_dd_n	{n} tlačiarní na účet · klepnutím zmeníte
+job_layout	Rozloženie
+job_delivery	Ako sa úloha odosiela
+job_delivery_help	Dokument OS, nespracované bajty alebo ESC/POS. Účet a lístok si ponechajú svoje. Každá úloha môže prejsť na ktorúkoľvek tlačiareň, ktorú funkcia Find uložila.
+station_vp_attached	Pripojená tlačiareň
+station_vp_detached	Tlačiareň bola odstránená zo stanice
+station_print_summary	{mode} · {n} tlačiarní
+station_print_summary_none	Na tejto stanici zatiaľ nie sú žiadne tlačiarne – nebude tlačiť
+stations_none	Zatiaľ žiadne stanice – pridajte jednu nižšie. Stanice sú nepoužívané na pultovom obchode – nechajte prázdne.
+route_up	Hore
+route_down	Dole
+route_remove	Odstrániť
+route_clear	Jasné
+save_printers	Uložiť tlačiarne
+print_test_page	Vytlačte skúšobnú stranu
+no_printer_assigned	Žiadna tlačiareň
+test_page_no_printer	Žiadna tlačiareň pre {place} — pripojte k nej tlačiareň a skúste to znova
+test_page_pick_first	Najprv vyberte tlačiarne pre testovaciu stranu a potom vytlačte testovaciu stranu
+test_printers_dd	Tlačiarne pre testovaciu stránku
+test_printers_dd_n	{n} tlačiarní pre testovaciu stránku · ťuknutím na zmenu
+kot_test_printers_dd	Tlačiarne pre testovaciu tlač
+kot_test_printers_dd_n	Tlačiarne {n} pre testovaciu tlač · klepnutím zmeníte
+test_printer_picked	Test na: {name}
+test_printer_cleared	Netestuje sa na: {name}
+test_page_sent_n	Testovacia stránka bola odoslaná do {n} tlačiarní
+test_kot_pick_first	Najprv vyberte tlačiareň(y) pre testovaciu tlač – potom testovaciu tlač
+test_kot_sent_n	Testovacia tlač bola odoslaná do tlačiarní {n}
+cancel_pick	Marka
+cancel_pick_on	Označené
+cancel_pick_meta	Označené na zrušenie
+batch_cancel	Zrušenie označené
+batch_cancel_n	Zrušenie označené ({n})
+batch_cancel_none	Najprv označte jednu alebo viac odoslaných položiek — potom označte Zrušiť
+batch_cancel_title	Zrušenie označených liekov — jeden dôvod, jeden stornovací lístok na sekciu
+batch_cancel_ok	Položky {n} zrušené · {slips} zrušiť tiket(y) → {kitchens}
+batch_cancel_ok_noprint	Položky {n} boli zrušené – automatická tlač je vypnutá, takže žiadny lístok na zrušenie
+no_printer_kitchen_station	Pre túto stanicu nie je žiadna tlačiareň
+printers_saved	Uložené
+test_page_sent	Testovacia stránka bola odoslaná – skontrolujte tlačiareň
+test_page_sent_one	Testovacia stránka bola odoslaná na {name} – skontrolujte túto tlačiareň
+printers_found	Nájdené {n}: {list}
+printers_find_synced	Nájdených {n} — {new} nových
+printer_on_device	uložené
+printer_already_added	už pridané
+printer_already_saved	Už uložené: {name}
+find_printers	Nájdite tlačiarne
+printers_looking	Hľadáte…
+saving_printer	Pridáva sa tlačiareň…
+cancelled	Zrušené
+printers_tap_find	Klepnutím na Nájsť zobrazíte zoznam tlačiarní, ktoré môže toto zariadenie používať.
+printers_none_found	Nenašlo sa žiadne – zadajte názov systémovej tlačiarne alebo IP (napr. 192.168.1.50).
+printer_from_find	Pridané {name}
+kot_printer_ph	Tlačiareň na lístky
+bill_printer_ph	Tlačiareň na účty
+kot_print_on	Automatická tlač lístkov: Zap
+kot_print_off	Automatická tlač lístkov: Vyp
+queue_refused	Obchod neakceptuje ({n}) – skontrolujte si každú pri pulte:
+clear_not_accepted	Začiarknuté – vymažte tento zoznam
+device_name_ph	Názov tohto zariadenia
+lan_last_update	posledná aktualizácia {time}
+lan_not_accepted	{n} neakceptované
+connected_now	teraz pripojený
+backup_failed	Posledná automatická záloha zlyhala: {e}
+backup_overdue	Žiadne zálohovanie {n} dní – ponechajte aplikáciu otvorenú na tomto zariadení, aby mohla zálohovať.
+disk_low	Na tomto zariadení je voľných iba {mb} MB – zálohy čoskoro zlyhajú. Uvoľnite miesto.
+last_seen_devices	Naposledy online: {time}
+sync_interval	Synchronizovať každých {secs}s
+connection_to_shop	Spojenie s predajňou
+supplier_name_ph	Meno dodávateľa (alebo zákazníka)
+supplier_ph	dodávateľa
+switch_device	Prepnite toto zariadenie
+take_payment	Prijmite platbu
+tax_added_till	{tax} exkluzívne
+tax_inside_price	{tax} vrátane
+tax_invoice	Daňový doklad
+till_to_bank	Do → banka
+units_heading	Jednotky
+unlock_after_pairing	Zadajte PIN
+unlock_with_login	Odomknite prihlásením
+unmark	Zrušiť označenie
+update_my_password	Aktualizujte moje heslo
+update_my_pin	Aktualizujte moje prihlásenie
+duress_heading	Núdzové odomknutie PIN (iba vlastník)
+duress_help	Voliteľné. Ak tento PIN zadáte pri odomykaní namiesto vášho, všetky položky v knihách sa vymažú (predaj, účtovné knihy, história) a pokladňa sa otvorí, pretože vlastník vyzerá normálne – lieky, ceny, pulty, personál a nastavenia zostanú. Schéma a konfigurácia sa neodstránia. Používajte iba vtedy, ak ste nútení odomknúť. Ak chcete vypnúť, nechajte prázdne a uložte. Nikdy nie je rovnaký ako PIN kohokoľvek.
+duress_pin_ph	Núdzové PIN (4–12 číslic)
+duress_confirm_ph	Potvrďte opätovným zadaním
+save_duress_pin	Uložiť núdzovú situáciu PIN
+clear_duress_pin	Vypnúť núdzový režim PIN
+duress_on	Núdzové odomknutie PIN je zapnuté
+duress_off	Núdzové odomknutie PIN je vypnuté
+duress_saved	Núdzové odomknutie PIN uložené
+duress_cleared	Núdzové odomykanie PIN je vypnuté
+upi_amount_ph	suma UPI
+void	Neplatný predaj
+write_off_ap	Odpíšte AP
+write_off_heading	Odpísať (vymazať bez platby)
+write_off_nil	Odpísať / nulový zostatok
+your_brand	Vaša značka (v aplikácii)
+your_categories	Vaše kategórie
+account_kind	Druh účtu (klepnite na jeden)
+actual_total_cap	SKUTOČNÝ SÚČET
+amend_help	Vyberte predaj, ktorý chcete upraviť, zrušiť alebo vrátiť. Zmeny uchovávajú celú históriu. Zaokrúhlený súčet sa začína rovnať Použitý – upravte iba na zaokrúhlenie. Neplatnosť a vrátenie peňazí môže vyžadovať vlastníka alebo manažéra PIN (zapísané vyššie; zaznamenané s vaším menom).
+applied_total_cap	APLIKOVANÝ SPOLU
+bank_balance	Bankový zostatok
+bank_net_today	Banková sieť dnes
+branch_export_help	Export zapíše branch_snapshot_CODE_DATE.json do priečinka záloh a skopíruje ho do schránky. Ak chcete importovať deň inej predajne, uložte jej súbor ako import_branch_snapshot.json do rovnakého priečinka a potom klepnite na Importovať.
+brand_shown_help	Zobrazuje sa na obrazovkách vnútri aplikácie. Názov a ikona nainštalovanej aplikácie na tomto zariadení zostanú ako zoznam platformy.
+app_icon	Ikona aplikácie
+logo_help	Voliteľná značka obchodu na obrazovkách v aplikácii.
+onboard_layout	Čo získate
+item_photo_help	Voliteľné. Bez fotografie zobrazujeme iniciály z názvu položky.
+stamp_heading	Pečiatka
+stamp_image_help	Voliteľný obrázok pečiatky na vytlačených účtoch a na zákazníckom displeji.
+payment_qr_heading	Platba QR
+payment_qr_image_help	Statické QR na účtoch a zákazníckom displeji; inak platí, že používa dynamický UPI QR z VPA vyššie.
+cash_in_hand	Hotovosť na ruku (do)
+change_my_pin_heading	Moje prihlásenie
+connect_to_server	Pripojte sa k serveru
+counter_locked	Počítadlo 01 · Zamknuté
+country_pack_help	V balíku krajín sa nastavuje názov dane a matematika, okamžitá platba a identifikačné číslo firmy vytlačené na účtoch. Kumkaj nikde nepodáva dane ani nevystavuje vládne elektronické faktúry.
+currency_use_help	Posuňte zobrazenie a klepnite na Použiť pre akúkoľvek podporovanú menu.
+day_close_help	Zaznamenávanie uzávierky dňa uloží tento súhrn (a odchýlku zásuvky, ak sa počíta) do protokolu auditu. Neprestáva sa predávať.
+expenses_word	Výdavky
+feature_access_help	Čo môžu otvoriť - voliteľné; úloha vyššie už nastavuje predvolenú hodnotu
+footer_local	Miestne SQLite · Navždy zadarmo · Zero Cloud
+fresh_book_tabiyat	Čerstvé = prázdny katalóg (položky pridajte neskôr). Kniha = nižšie napíšte otváracie zásoby a kto vám dlhuje.
+fresh_selected	Čerstvý výber – katalóg zostane prázdny. Keď budete pripravení, klepnite na Hotovo.
+gross_word	Hrubý
+how_start	Ako chcete začať?
+kot_print_help_tabiyat	Nepoužíva sa v pultovom obchode.
+later_country_pack	Neskôr: Nastavenia → použite svoj balík krajiny pre daňové a platobné štítky.
+local_badge	MIESTNE
+mix_type_hint_tabiyat	V prípade potreby rozdeliť na hotovosť / UPI / kartu / kredit. Kredit potrebuje zákazníka vyššie.
+money_in_sales	Peniaze v (predaj)
+net_word	Čistý
+offline_badge	OFFLINE
+optional_login_help	Voliteľné prihlásenie (id + heslo). Vlastník nastaví raz; heslo môže neskôr zmeniť iba používateľ.
+or_unlock_login	Alebo odomknite pomocou prihlasovacieho mena + hesla
+permission_preset	Práca (nastavuje obrazovky a peňažné akcie)
+preset_help_tabiyat	Pokladník: predám. Manažér: predaj + položky + neplatnosť/zmena.
+product_locked_tabiyat	Tabiyat
+product_only_tabiyat	Tabiyat je operačný systém lekární: predaj liekov, dávkové/exspiračné účtovníctvo, úvery a knihy – offline na vašich zariadeniach. Príznaky plánu H / Rx sú poznámky vlastníka, nie sú v súlade.
+purchases_cogs	Nákupy (COGS)
+qty_cap	MNOŽSTVO
+restore_help	Obnoviť: vyberte zálohu. Knihy sa otvárajú tak, ako boli vtedy; knihy tak, ako sú teraz, sa uložia ako prvé, takže to možno vrátiť späť.
+wipe_data_heading	Odstráňte miestne údaje
+wipe_data_help	Len vlastník – rovnaké možnosti ako pri odinštalovaní systému Windows. Obchodné záznamy vymazávajú obchodnú históriu, ale uchovávajú položky a nastavenia (napríklad núdzový odblokovací PIN). Nastavenie obchodu odstráni databázu kníh. Predvoľby obrazovky vymažú okno/jazyk. Potvrďte pomocou PIN vlastníka. Kód PIN núdzového odomknutia na Team je samostatný (skryté utieranie pri odomykaní).
+wipe_trading	Obchodné záznamy
+wipe_schema	Nastavenie obchodu
+wipe_ui	Predvoľby obrazovky
+wipe_owner_pin_ph	Vlastník PIN na vymazanie
+wipe_delete_selected	Odstrániť vybraté
+wipe_owner_only	Miestne údaje môže odstrániť iba vlastník.
+restore_owner_only	Zálohu môže obnoviť iba vlastník.
+wipe_owner_pin_needed	Ak chcete odstrániť miestne údaje, zadajte vlastníka PIN.
+wipe_nothing_selected	Vyberte, čo chcete odstrániť ako prvé.
+wipe_done	Vybrané miestne údaje boli odstránené.
+wipe_schema_done	Nastavenie obchodu bolo vymazané – pokračujte výberom Server alebo Klient.
+rounded_total	Zaokrúhlený súčet
+setup_app_tabiyat	Nastavte Tabiyat
+shop_logo_optional	Logo obchodu (voliteľné)
+stock_type_help	Zadajte názov položky (stačí časť), množstvo a potom upravte. Položky, ktoré ešte nie sú započítané, je potrebné raz spustiť sledovanie.
+team_owner_help	Ak chcete niekoho pridať, nechajte osobu prázdnu: meno, prácu, používateľské meno, PIN a voliteľné heslo, potom kliknite na Pridať. Vyberte osobu, ktorá bude upravovať rovnaký druh formulára – meno, používateľské meno, heslo, obrazovky a práva – a potom Uložiť. Vaše vlastné PIN a heslo sú jedným prihlasovacím znakom v spodnej časti. Vlastník nemení PIN nikoho iného.
+staff_name_ph	Meno personálu
+staff_copy_hire_ph	Kopírovať nastavenie z (voliteľné)
+staff_copy_hire	Použite nastavenie tejto osoby
+staff_edit_name_ph	Zobrazovaný názov
+staff_rename	Uložiť meno
+staff_copy_edit_ph	Skopírujte nastavenie od inej osoby
+staff_copy_edit	Skopírujte ich nastavenie na vybrané
+staff_copy_edit_onto	Skopírujte ich nastavenie do {name}
+staff_deactivate_named	Odstrániť {name}
+staff_renamed	Meno bolo uložené
+staff_setup_copied_hire	Nastavenie skopírované z {name} — nastavte nový názov a PIN, potom Pridať personál
+staff_setup_copied_edit	Skopírované nastavenie {from} do {to}
+staff_copy_need_selected	Vyberte, koho chcete upraviť ako prvého
+staff_copy_need_source	Vyberte, koho nastavenie chcete skopírovať
+staff_copy_same	Je to tá istá osoba – vyberte si niekoho iného
+staff_rename_need_selected	Vyberte, koho chcete premenovať ako prvého
+team_pick_hint	Vyberte, koho chcete upraviť – obrazovky, práva na peniaze a stanice sa zobrazia iba pre túto osobu.
+team_stations_help	Stanice, ktoré môžu používať
+team_stations_changed	Stanice zmenené — Uložte nastavenie pre túto osobu
+team_features_changed	Obrazovky zmenené — Uložte nastavenie pre túto osobu
+team_rights_changed	Práva zmenené — Uložte nastavenie pre túto osobu
+they_owe_us	Sú nám dlžní
+unit_at_cap	jednotka @
+units_help	Kódy pre štítky položiek (kg, kus, vrece). Každá jednotka musí byť napojená – priamo alebo prostredníctvom iných jednotiek – na normu (kg · cm · ml · ks), napr. 1 prepravka = 2 krabice a 1 krabica = 20 cm. Prevody: 1 z = faktor do. Meny nie sú nikdy jednotkami.
+units_picker_help	Klepnutím na Zapnuté/Vypnuté zobrazíte jednotku vo výbere Nákup a Položky. Vypnuté jednotky sa stále konvertujú.
+unit_picker_on	Zapnuté
+unit_picker_off	Vypnuté
+we_owe_them	Sme im dlžní
+who_unlocking	Kto odomyká?
+locked_word	Zamknuté
+show_pin	Zobraziť PIN
+hide_pin	Skryť PIN
+set_owner_pin	NASTAVIŤ VLASTNÍKA PIN
+enter_owner_passcode	ZADAJTE VSTUPNÝ KÓD VLASTNÍKA
+enter_staff_passcode	ZADAJTE KÓD ZAMESTNANCOV
+pin_count_zero	0 / 12 číslic · aspoň 4, potom OK
+pin_count_need	{} / 12 číslic · potrebujete o {} viac
+pin_count_full	12 / 12 číslic · stlačte OK
+pin_count_ready	{} / 12 číslic · stlačte OK, keď budete pripravení
+pin_hint_choose	Vyberte 4–12 číslic · Enter alebo Unlock na uloženie
+pin_hint_new	Nový 4–12-miestny vlastník PIN · Zadajte alebo odomknite
+pin_hint_shop_code	Zariadenie obchodu · párovací kód {}
+pin_hint_books	Toto zariadenie drží knihy
+pin_hint_paired	Extra do spárovania – odomknite na predaj
+pin_hint_pair_first	Extra till — najskôr spárujte so zariadením obchodu
+unlock_to_continue	Ak chcete pokračovať, odomknite
+no_staff_yet	Zatiaľ žiadny personál – odomknite ako vlastník, potom tím
+status_server_set_pin	Režim servera — nastavte vlastníka PIN
+status_server_tills	Režim servera – môžu sa pripojiť ďalšie pokladne. Odomknúť
+status_server_unlock	Režim servera – odomknite ako vlastník
+status_client_unlock	Klientsky režim – odomknite a predajte
+icon_new_selected	Ikona: vybratý nový súbor – klepnite na Uložiť značku
+icon_custom	Ikona: vlastné označenie miesta konania
+icon_default	Ikona: Značka Kumkaj (predvolené) — vyberte si vlastnú
+logo_yours	Logo: logo vášho obchodu – zobrazené na obrazovkách a účtenkách
+logo_default	Logo: značka Kumkaj (predvolené) — vyberte si svoje vlastné, ak nejaké máte
+tmpl_current	Aktuálne: {} — {}
+tmpl_selected	Vybrané: {} — {}
+setup_complete	Nastavenie je dokončené
+onboard_fresh_tmpl	Fresh · {} — katalóg začína prázdny; pridať položky do položky Položky a potom Hotovo.
+onboard_book_tmpl	Rezervovať · {} — pridajte položky a otvorenie kreditu a potom Hotovo.
+onboard_template_tmpl	Ak chcete, pomenujte miesto a potom vyberte, ako začať.
+tmpl_blurb	Lekárenský pult: lieky, šarža/exspirácia, kata, knihy.
+tmpl_how	Predávajte na pulte; Kúpiť do zásoby; Knihy na deň.
+reports_facet_title	Správy
+reports_facet_help	Denné knihy, starnutie zákazníkov alebo dodávateľov, bankové pošty a dobové zisky a straty.
+against_bill_ph	Proti účtu # vyššie (voliteľné)
+aliases_ph	Aliasy, krátke mená — oddelené čiarkou
+amount_blank_full_ph	Čiastka (prázdne = úplný zostatok)
+amount_owed_ph	Dlžná suma
+amount_ph	Suma
+amount_received_ph	Prijatá suma
+amount_we_pay_ph	Suma, ktorú platíme
+business_name_ph	Obchodné meno
+category_new_ph	Kategória (voliteľné, vytvorené, ak sú nové)
+code_bag_ph	Kód (taška)
+conv_factor_ph	Faktor (25 = 1 vrecko → 25 kg)
+country_code_ph	Kód krajiny napr. IN, GB, USA, AE, BR
+credit_khata_amount_ph	Suma kreditu / kreditnej knihy
+credit_limit_ph	Úverový limit (0 = žiadny)
+from_code_ph	Z kódu (taška)
+item_name_lang_ph	Názov položky – zadajte ho vo svojom jazyku
+login_id_opt_ph	Používateľské meno (povinné, jedinečné)
+manager_pin_ph	Manažér PIN na schválenie (iba ak nemôžete zrušiť)
+new_branch_name_ph	Nový názov pobočky
+new_password_ph	Nové heslo (voliteľné)
+new_pin_ph	Nové PIN (4–12 číslic)
+note_bank_ph	Poznámka (vklad, výber, ...)
+note_buy_expense_ph	Poznámka (palivo, nájomné,...)
+note_expense_ph	Poznámka (palivo, kancelária, ...)
+options_tabiyat_ph	Možnosti — Veľkosť*: Malá=199, Veľká=399 | Polevy+3: syr=40, olivy=30 | Syr navyše = 40
+part_second_way_ph	Časť druhým spôsobom (voliteľné)
+phone_ph	Telefón
+place_name_ph	Názov tohto miesta
+qty_example_ph	Množstvo (napr. 1,5 za kg)
+quantity_ph	Množstvo
+reason_required_ph	Dôvod (povinné)
+role_title_ph	Názov role (napr. Barista)
+service_pct_ph	% služby voliteľné 0/10/12
+short_code_ph	Skrátený kód (MG02)
+starting_password_ph	Počiatočné heslo (voliteľné)
+starting_pin_ph	Začína PIN (4–12 číslic)
+station_name_ph	Názov stanice (voliteľné)
+station_new_ph	Sekcia (voliteľné)
+table_name_ph	Názov počítadla / pozície
+tax_rate_ph	Názov alebo % sadzby dane – štandardná, znížená, 0, 5, 12, 18, 20
+to_code_ph	Do kódu (kg)
+uncleared_no_ph	Nevymazané # vyššie
+unit_cost_ph	Jednotkové náklady
+unit_name_bag_ph	Meno (taška)
+unit_plate_ph	Jednotka (doska / ks – prázdny = každý)
+pay_credit	Na účet
+book_kind_today	Dnes knihy
+book_kind_month	Knihy na tento mesiac
+book_kind_aging	Nesplatený/debetný kredit
+book_kind_balance	Súvaha
+order_help	Klepnutím na položku ju pridáte.
+floor_help	Tento obchod predáva pri pulte. Stoly a jedálenská podlaha nie sú súčasťou Tabiyat.
+kitchen_help	Nepoužíva sa v pultovom obchode.
+kitchen_empty	Žiadne otvorené lístky (prepážkové obchody zvyčajne nechávajú túto obrazovku nevyužitú).
+add_a_table	Pridajte jedálenský stôl
+add_station_heading	Pridajte výdajňu
+categories_help	Klepnutím na Použiť zaradíte vyššie uvedenú položku do tejto kategórie. Fotografia dáva kategórii obrázok; bez jedného ukazuje svoje iniciály.
+dish_search_ph	Vyhľadajte názov, soľ alebo čiarový kód…
+tile_free	Voľný
+tile_occupied	Obsadené
+tile_food_ready	Jedlo pripravené
+tile_bill_printed	Bill vytlačený
+tile_paid	Zaplatené
+tile_bill_btn	Účet
+tile_occupy_btn	Usaďte hostí
+tile_free_btn	Prázdny jedálenský stôl
+tile_ready_btn	Prázdny jedálenský stôl
+tile_undo_bill	Vrátiť späť faktúru
+summary_busy	jedálenské stoly zaneprázdnené
+summary_to_collect	zbierať
+summary_on_floor	v jedálni
+floor	Obchod
+sizes_as_items_ph	Veľkosti ako samostatné položky (voliteľné) — polovica=120, plná=200
+dish_group_ph	Sila / skupina balenia (voliteľné) — napr. 500 mg prúžok
+discount	Zľava
+remove_discount	Odstrániť zľavu
+apply_discount	Uplatniť zľavu
+save_opening_cash	Ušetrite otváraciu hotovosť
+close_shift_print	Zatvorte smenu a vytlačte lístok
+area_prices_ph	Plošné ceny (voliteľné) — AC=220, Balík=210
+discount_ph	10% alebo 50
+discount_reason_ph	Dôvod (napr. pravidelný hosť, neskoré jedlo)
+opening_float_ph	Peniaze vložené dnes ráno do zásuvky
+shift_counted_ph	Hotovosť počítaná pri odovzdaní
+opening_float	Otváracia hotovosť (float)
+shift_handover	Odovzdanie zmeny
+shift_since	Tento posun od r
+expected_in_drawer	Očakáva sa v zásuvke
+right_discount	Poskytnite zľavu
+floor_in_kitchen	Prebieha
+floor_eating	Podávané
+pick_category	Vyberte kategóriu
+close_category_list	Zavrieť zoznam kategórií
+new_category_row	Nová kategória – vytvorí sa pri ukladaní položky
+your_category	Vaša kategória
+suggested_category	Odporúčané – z našich položiek
+category_search_ph	Kategória — vyhľadajte svoju alebo zadajte novú
+line_sent_state	Odoslané
+line_nc_state	Bezplatné (NC) – neúčtuje sa
+cancel_item_short	Zrušiť
+nc_short	Bez poplatku
+charge_again_short	Nabite
+move_short	Pohybujte sa
+cancel_item_title	Zrušte túto položku – back office dostane storno lístok
+nc_item_title	Urobiť túto položku ako bezplatnú (NC)
+charge_again_title	Nabite túto položku znova
+move_item_title	Presuňte túto položku na iný jedálenský stôl
+already_cooked	Už uvarené (plytvanie)
+not_cooked_yet	Ešte neuvarené
+return_to_customer	Návrat k zákazníkovi
+short_by	Krátko na to
+tip_not_sale	Prepitné (pre personál, nie predaj)
+right_settle	Prijmite platbu
+right_cancel_sent	Zrušiť odoslanú položku
+right_complimentary	Bezplatné (NC)
+right_move_table	Presunúť / zlúčiť počítadlá
+right_reprint	Znova vytlačte účet
+right_allowed	Povolené
+right_with_approval	So súhlasom
+right_denied	Nie je povolené
+editing_staff	Úprava
+finding_server	Hľadáte server obchodu na tomto Wi‑Fi…
+no_server_found	Nenašli sa žiadne. Na serveri: Nastavenia → Iné zariadenia → Povoliť extra pokladne (rovnaké Wi‑Fi). Alebo zadajte IP zobrazenú tam.
+servers_found_pick	Klepnite na obchod, ku ktorému sa chcete pripojiť.
+server_host_selected	Pomocou {host} — zadajte párovací kód a potom Spárovať teraz.
+print_bill	Vytlačiť účet
+table_actions	Protiakcie
+move_merge_table	Presunúť / zlúčiť jedálenský stôl
+move_help	Presuňte objednávku tohto počítadla na voľný stôl alebo ju zlúčte do bežiaceho.
+move_target_ph	Názov pultu
+approval_pin_ph	Manažér PIN (iba ak o to požiadate)
+move_here	Presuňte sa sem
+merge_into	Spojte sa do toho
+line_reason_ph	Dôvod (napr. zákazník zmenil názor, nie je na sklade)
+line_qty_ph	Koľko zrušiť (prázdne = všetky)
+line_target_ph	Presuňte sa k jedálenskému stolu (napr. D5)
+confirm	Potvrďte
+menu_search_ph	Vyhľadajte položku alebo krátky kód
+customer_paid_ph	Zákazník zaplatil
+tip_ph	Prepitné
+table_area_ph	Oblasť (napr. Dine In, Parcel, AC)
+table_range_ph	Veľa naraz: D1-D20
+add_these_tables	Pridajte tieto počítadlá
+remove_these_tables	Odstráňte tieto počítadlá
+table_remove_ph	Odstráňte: T1-T24 alebo názov jedného jedálenského stola
+find_server	Nájdite server obchodu
+bill_format	Formát faktúry
+bill_format_help	Vytlačené pod názvom vášho obchodu na každom účte. Riadky oddeľte znakom | (napr. MG Road, Rajkot | Ph 98250 00000).
+bill_header_ph	Adresa | telefón
+fssai_ph	Licencia lieku č. (voliteľné – vaše znenie)
+bill_footer_ph	Päta (napr. Ďakujem, navštívte znova)
+save_bill_format	Uložiť formát faktúry
+kot_format	Slipový formát
+kot_format_help	Klepnite na pole v zozname. Zobrazenie, veľkosť písma a váha platia pre toto pole na druhu lístka vybratom vyššie. Každý druh si zachováva svoje vlastné veľkosti a hmotnosti.
+kot_format_fields	Polia
+kot_field_next	Ďalšie pole
+kot_field_show	Zobraziť
+kot_field_hide	Skryť
+kot_field_on	ukázať
+kot_field_off	skryť
+kot_field_size	Veľkosť písma
+kot_field_size_ph	napr. 16, 20, 24, 28, 32…
+kot_weight_light	Svetlo
+bill_kot_panel_help	Rozloženie faktúry a šírka obsahu. Pokladník je ten, kto vystavil alebo uhradil účet – celý príbeh o predaji zostáva v knihách.
+std_size_ph	napr. 18, 20, 26…
+kot_show_shop	Názov obchodu
+kot_hide_shop	Skryť obchod
+kot_show_time	Čas
+kot_hide_time	Skryť čas
+kot_show_waiter	Pokladník
+kot_hide_waiter	Skryť pokladníka
+kot_show_station	Stanica
+kot_hide_station	Skryť stanicu
+kot_show_table	Počítadlo
+kot_hide_table	Skryť jedálenský stôl
+kot_show_kot_no	Lístok č
+kot_hide_kot_no	Skryť lístok č
+kot_width	Ukážka zalomenia (nastavte šírku obsahu na karte presunutia)
+kot_width_58	58 mm
+kot_width_80	80 mm
+kot_kind_heading	Druh lístka
+kot_kind_original	Originál
+kot_kind_duplicate	Duplicitné
+kot_kind_modified	Upravené
+kot_kind_cancelled	Zrušené
+kot_style_heading	Veľkosť a hmotnosť typu poľa
+kot_style_title	Názov
+kot_style_item_qty	Položka · Množ
+kot_style_field_pick	Vyberte pole
+kot_weight_regular	Pravidelné
+kot_weight_bold	Tučné
+kot_align	Zarovnať
+kot_align_start	Štart
+kot_align_center	centrum
+kot_align_end	Koniec
+content_width	Šírka obsahu (mm)
+content_width_bill	Šírka obsahu faktúry (mm)
+content_width_kot	Šírka obsahu lístka (mm)
+content_width_ph	Alebo zadajte šírku obsahu 40–210 mm
+content_width_help	Ako široko sa tlačí tento lístok. Bill si zachováva svoju vlastnú šírku.
+content_width_bill_help	Ako široko sa tlačí zákaznícky účet. Štandardne 210 mm (strana). Šírka 58 mm, šírka 80 mm, 112 mm 4 palce, 210 mm šírka A4. Zadajte ľubovoľnú hodnotu od 40 do 210. Lístky majú svoju vlastnú šírku na karte lístka.
+content_width_kot_help	Ako široko sa tlačí lístok. Štandardne 80 mm. 58 mm úzky list, 80 mm široký list, 112 mm 4-palcový, 210 mm list. Zadajte ľubovoľnú hodnotu od 40 do 210. Zákaznícke účty majú svoju vlastnú šírku na karte Faktúra.
+vp_paper_width	Šírka obsahu (mm)
+vp_paper_width_ph	Alebo zadajte šírku obsahu 40–210 mm
+vp_paper_width_help	Šírka obsahu sa nastavuje vo formáte Bill & Slip — samostatne pre bankovku (predvolená 210 mm) a lístok (predvolená 80 mm).
+kot_size	Veľkosť písma
+kot_size_s	Malý
+kot_size_m	Normálne
+kot_size_l	Veľký
+std_size	Veľkosť písma
+kot_copies	Kópie
+kot_copies_1	1
+kot_copies_2	2
+kot_copies_3	3
+kot_title_ph	Názov (prázdne = TICKET)
+kot_footer_ph	Poznámka z back-office (voliteľné)
+kot_preview	Ukážka
+save_kot_format	Uložiť formát lístka
+test_kot_format	Skúšobná tlač
+test_kot_sent	Ukážka lístka bola odoslaná
+test_bill_format	Testovací účet
+test_bill_sent	Ukážka faktúry bola odoslaná
+test_print_no_printer	Žiadna tlačiareň pre túto úlohu – vyberte jednu na tejto obrazovke
+kot_format_saved	Formát lístka bol uložený
+std_print	Veľkosť tlače účtu
+std_print_help	Veľkosť písma pre štandardné účtovné úlohy na výšku a na šírku na tlačiarňach OS/dokumentov (zadajte body – nie Malé/Normálne/Veľké). Rovnaká veľkosť na oboch orientáciách.
+std_size_s	Malý
+std_size_m	Normálne
+std_size_l	Veľký
+save_std_print	Uložiť veľkosť tlače účtu
+std_print_saved	Veľkosť tlače účtu bola uložená
+print_brand_kit	Sada potlače značky
+print_brand_kit_help	Voliteľné obrázky pečiatky a platby QR na tvárach faktúr a zákazníckom displeji siete LAN. Dynamický UPI QR z VPA vyššie stále funguje, keď nie je nastavený žiadny platobný QR obrázok.
+choose_stamp	Vyberte pečiatku
+clear_stamp	Jasná pečiatka
+stamp_set	Pečiatka: v evidencii – zobrazená na zákazníckom displeji a pomenovaná na vytlačených účtoch
+stamp_none	Pečiatka: žiadna
+choose_payment_qr	Vyberte platobný QR
+clear_payment_qr	Vymazať platobný QR kód
+payment_qr_set	Platba QR: v evidencii – zobrazené na zákazníckom displeji (nahrádza tam sumu UPI QR)
+payment_qr_none	Platba QR: žiadna — suma QR z UPI ID pri platbe
+aggregator_import	Objednávky agregátora (súbor)
+aggregator_import_help	Voliteľný lokálny import: vložte súbor import_aggregator_orders.json do priečinka záloh (pole alebo {"orders":[…]}), potom klepnite na Importovať. Nikdy neblokujte pult; naživo Zomato/Swiggy je Cloud.
+import_aggregator_file	Importovať súbor agregátora
+team_pick_ph	Personál na úpravu – meno, používateľské meno alebo výber
+select_staff	Vyberte tento personál
+rights_help	Peňažné akcie pre túto osobu – ťuknutím prepnete: Povolené → Vyžaduje PIN šéfa → Nepovolené. Tlačiť účet je opäť len účet; sekcie sú kontrolným zoznamom nižšie.
+dish_picker_help	Hľadajte alebo prehliadajte naše položky a klepnutím na niektorú vyplňte jej názov a fotografiu – alebo si ponechajte svoje vlastné meno. Nastavte svoju cenu (0 je v poriadku) a potom Pridať položku.
+close_dish_list	Zatvorte zoznam položiek
+own_item_name	Použite to ako svoj vlastný názov položky
+on_your_menu	V zozname liekov
+edit	Upraviť
+schemes	Schémy / ponuky
+schemes_help	Kúpiť jeden-dostať jeden, percentá zľava a pevné balíky. Príklad: Kúpou 2 paracetamolu získate 1 vitamín.
+scheme_bogo_ph	Kúpte si 2 paracetamol a získate 1 vitamín
+add_scheme	Pridať BOGO
+schedule_ph	Otváracie hodiny — Po-Pia 07:00-11:00 alebo večer 17:00-19:00=150
+upi_vpa_ph	UPI ID (VPA)
+upi_payee_ph	UPI meno príjemcu platby (voliteľné)
+upi_qr	UPI QR
+show_upi_qr	Zobraziť UPI QR
+close_upi_qr	Zavrieť
+upi_qr_help	Zákazník naskenuje a zaplatí. Po zaplatení klepnite na Prijať platbu. Druhá obrazovka: otvorte URL servera/zobrazte v sieti LAN.
+kot_recall	Odvolanie
+recently_done	Nedávno vykonané
+recall_kot_ph	Lístok č. na stiahnutie
+role_help_customer	Úloha: Zákazník – úverová kniha (dlží nám). Rovnaký zákazník alebo dodávateľ môže dodávať aj zásoby.
+role_help_both	Úlohy: Zákazník + Dodávateľ — jeden zákazník alebo dodávateľ, účtovná kniha úverov a účtovné knihy záväzkov, čisté v správach.
+role_help_supplier	Úloha: Dodávateľ – dlhujeme im za nákupy.
+dine_in_pick_table	Nepoužíva sa v pultovom obchode
+choose_table	Vyberte počítadlo
+change_table	Vymeňte jedálenský stôl
+pick_table_banner	Vyberte si jedálenský stôl pre túto objednávku
+items_word	položky
+items_section	Položky
+back_to_order	Späť k objednávke
+new_items_head	Zatiaľ neodoslané
+price_ph	Cena
+price_ph_gst_inside	Cena ({tax} vrátane)
+cancel_needs_table	Pultový predaj zostáva na lístku, kým neprijmete platbu
+tax_rates_missing_hint	Pre tieto položky nie je stanovená žiadna sadzba {tax} — pre položky je nastavená sadzba dane (ceny už zahŕňajú {tax} pod {tax} vrátane)
+taxable_value	Zdaniteľná hodnota
+gst_inside_price_note	({tax} vrátane)
+start_with_template	Začnite s našou šablónou položiek
+template_heading	Štartovacie položky
+template_info	Kategórie {c} a položky {d} s fotografiami, pripravené na pridanie. Ceny začínajú na 0 INR – nastavte si to potom.
+template_import	Importujte kompletnú šablónu
+template_confirm	Pridať položky {d} s ich kategóriami? Položky, ktoré už máte, zostanú tak, ako sú.
+template_yes	Áno, import
+template_importing	Dovoz liekov…
+template_import_progress	Importuje sa… {d}/{t}
+template_done	Každá položka z našej šablóny je na vašich položkách.
+template_imported	Pridané položky {d} a kategórie {c} — na tejto obrazovke nastavte ich ceny
+client_template_heading	Importovať katalóg
+client_template_info	{title}: Kategórie {c}, položky {d} s cenami, fotografiami a aliasmi. Iba chýbajúce položky – mená, ktoré už máte, zostávajú.
+client_template_import	Importujte tieto lieky
+client_template_confirm	Pridať položky {d} z {title}? Položky, ktoré už máte, zostanú tak, ako sú.
+client_template_importing	Importuje sa {title}…
+client_template_done	Každá položka z {title} je na vašich položkách.
+client_template_imported	Pridané položky {d} a kategórie {c} z {title}
+resv_heading	Rezervácie
+resv_name_ph	Meno zákazníka
+resv_phone_ph	Telefón (voliteľné)
+resv_guests_ph	Ľudia
+resv_when_ph	Kedy — 20:30, zajtra 13:00
+resv_table_ph	Počítadlo (voliteľné)
+resv_add	Kniha
+resv_seat	Sediaci
+resv_none	Neprichádzajú žiadne rezervácie.
+guests_word	hostia
+delivery_by_ph	Doručenie (meno jazdca alebo personálu)
+kitchen_all_day	Na varenie teraz: {items}
+split_bill	Rozdeliť účet
+split_go	Urobte samostatný účet
+cancel	Zrušiť
+opening_client	Otvára sa klient…
+preparing_desk	Pripravuje sa stôl…
+opening_server	Otvára sa server…
+creating_server	Vytvára sa server…
+split_help	Klepnite na položky, za ktoré zákazník zaplatí · {n} vybral
+split_send_first	Najprv pošlite lístok – iba položky, ktoré má back office, môžu ísť na samostatnú faktúru
+split_pick_some	Najprv klepnite na položky pre samostatný účet
+split_done	Samostatný účet - je na podlahe vedľa tohto pultu
+split_marked	samostatný účet
+order_empty_pick	Objednávka je prázdna – klepnutím na Pridať položky vyššie vyberte položky.
+add_dishes	Pridajte lieky
+order_so_far	Na túto objednávku: {n} · {total}
+no_dish_match	Žiadna položka nezodpovedá „{q}“
+pick_dishes_help	Klepnutím na položku ju pridáte · výberom kategórie zúžite zoznam
+pick_done	Hotovo
+pick_done_dd	Hotovo · {label}
+printer_route_mode	Ak je na tomto mieste niekoľko tlačiarní
+printer_mode_first	Najprv to funguje
+printer_mode_all	Tlač na všetky
+kot_show_area	Oblasť
+kot_hide_area	Skryť oblasť
+kot_show_item_hdr	Položka · Množ
+kot_hide_item_hdr	Skryť stĺpce
+kot_show_title	Titulný riadok
+kot_hide_title	Skryť názov
+kot_field_order	Tlačová objednávka
+kot_field_up	Posunúť sa hore
+kot_field_down	Presuňte sa nadol
+kot_field_cycle	Vyberte ďalšie
+kot_field_select	Vyberte ďalšie
+kot_field_time	Čas
+kot_field_kot_no	Lístok č
+kot_field_area	Oblasť
+kot_field_table	Počítadlo
+kot_field_shop	Názov obchodu
+kot_field_waiter	personál
+kot_field_station	Stanica
+app_template_blurb_extra	Tiež: majiteľ Zahir, správca Asif, pokladník Nawaz; predná bočná lišta; anamnéza po 4 hodinách; Dnes sa vyzliecť; kompaktný účet.
+dishes_n	{n} položiek
+recipe_ph	Recept (voliteľný – nepoužívaný v pultovom obchode)
+reorder_ph	Kúpte viac na
+set_reorder	Nastaviť úroveň zmeny poradia
+low_stock_alert	Dochádza – kúpte čoskoro: {items}
+unpriced_note	Položky {n} na vašich položkách zatiaľ nemajú žiadnu cenu – účtujú sa za 0, kým ju nenastavíte.
+show_unpriced	Zobraziť iba položky bez ceny
+show_all_dishes	Zobraziť všetky položky
+role_waiter	Pokladník
+role_kitchen	Obchod
+role_title_rest_ph	Názov role (napr. kapitán, hlavný kuchár)
+preset_help_rest	Pokladník: predám. Manažér: predaj + položky + neplatnosť/zmena.
+kind_raw	Zloženie zásob
+kind_resale	Kúpil liek
+kind_dish	Nepočítajte zásoby
+buy_unit_ph	Jednotka (kg, liter, ks)
+add_another_way	+ Pridať ďalší spôsob
+parts_status	Zadané {a} z {b} · Zostáva {c}
+save_expense	Ušetrite náklady
+rest_ph	Oddych
+low_badge	Nízka
+stock_empty	Zatiaľ nie je nič na sklade – tu sa zobrazí to, čo nahráte na nákup.
+recent_changes	Najnovšie zmeny
+lane_declared_label	Daňový doklad
+lane_owner_label	Pokladničný doklad
+money_lane_bill	Účet: {lane}

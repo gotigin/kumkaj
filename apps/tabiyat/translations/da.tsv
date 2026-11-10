@@ -1,0 +1,1341 @@
+# Danish — Dansk (da). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	Apoteksdisk: medicin, batch, kreditbog og bøger. Gratis offline.
+barcode_ph	Stregkode / EAN
+composition_ph	Virkestof / sammensætning (søgbar)
+schedule_h_off	Schedule H — fra (ejerflag)
+schedule_h_on	Schedule H — til (ejerflag)
+rx_expected_off	Rx forventet — fra (ejerflag)
+rx_expected_on	Rx forventet — til (ejerflag)
+rx_note_ph	Receptnote (valgfri — din formulering)
+batch_ph	Batchnr.
+expiry_ph	Udløb (YYYY-MM-DD)
+expiry_alerts	Udløbsadvarsler (næste 7 dage)
+expiry_none	Ingen batches udløber de næste 7 dage.
+rx_nudge	Ejer har markeret Rx / Schedule H — tilføj en note om nødvendigt.
+unlock	Lås op
+pin_hint	Ejer-PIN starter som 0000
+sell	Sælg
+buy	Køb
+books	Dagbog
+books_help	Dagens stilling. Salg = penge ind. Køb = indkøb og udgifter. Parter = kreditkunder og leverandører.
+buy_help	Udgiftsbilag og leverandørfakturaer (penge ud). På konto bliver på partens bog.
+sell_money_in	Sælg medicin
+buy_money_out	Udgift / leverandørfaktura
+record_purchase	Bogfør køb
+add_expense	Udgiftsbilag
+bank_book	Bankbog
+credit_help	Part-id er entydigt (navne må gentages). En kunde fører en khata-konto (skylder os); en leverandør sælger os varer (vi skylder dem); begge er fint. Bøgerne holdes adskilt; rapporter viser netto.
+party_kind_ph	Roller: Kunde, Leverandør, begge…
+reports_help	Dagbog, debitorer og kreditorer, bankbog, udgiftsbilag, resultat.
+reports_today	Dagbog (i dag)
+reports_month	Resultat (måned)
+reports_aging	Udestående / Debet-kredit
+reports_balance_sheet	Balance
+reports	Bankbog og resultat
+refresh	Opdater
+undo	Fortryd
+start_tracking	Start optælling
+stock_minus	− Lager
+stock_plus	+ Lager
+settle_cash	Afregn kontant
+settle_card	Afregn kort
+items	Medicin
+nav_items	Medicin
+more	Mere
+your_items	Din medicin
+items_help	Tryk på en vare for at rette den. Ny vare rydder formularen. Søg på navn eller kortkode, sæt en pris (0 er fint), og tryk Tilføj. Salg der allerede er bogført, beholder det navn de blev opkrævet med.
+add_item	Tilføj vare
+new_item	Ny vare
+adding_item	Tilføjer en ny vare
+editing_item	Retter
+save	Gem
+remove	Fjern
+removed_items	Fjernede varer
+removed_help	Gendan lægger varen tilbage i Varer præcis som den var — pris, foto og kategori.
+restore_item	Gendan
+empty_catalog	Ingen medicin endnu. Åbn Medicin, tilføj navn, stregkode eller virkestof, og sælg så.
+total	I alt
+cash	Kontant
+upi	UPI
+card	Kort
+credit	Parter
+clear	Ryd
+ready_to_sell	Klar til at booke
+today_prefix	I dag
+today_mid	i dag
+owed	udestående
+round_word	afrund
+back	Tilbage
+sold_out	Ikke tilgængelig
+restock	Genopfyld
+not_tracked	Ikke talt
+in_stock	på lager
+marked_sold_out	Markeret som ikke tilgængelig
+add_upper	TILFØJ
+na	—
+qty	Vægt/Antal
+unit_at	Sats @
+actual	Faktisk
+applied	Anvendt
+note_ph	Note (valgfri)
+rounded	AFRUNDET
+split	Del
+send_kot	Send seddel
+send_kot_to	Send → {kitchens}
+send_kot_again	Tilføj varer til næste seddel
+send_kot_held	Tilbageholdte varer — frigiv for at sende
+reprint_kot	Udskriv valgte igen
+reprint_kot_ok	Udskrev {n} varer igen · {slips} seddel/sedler → {kitchens}
+reprint_kot_needed	Send en seddel først — tag derefter medicin med og udskriv de valgte igen
+reprint_kot_none_selected	Hver sendt vare springes over — tryk I udskrift på dem der skal udskrives igen
+reprint_kot_client	Udskriv igen ({n}) for {place} sendt — butiksenheden udskriver den
+print_cancelled_kot	Udskriv alle annullerede
+print_cancelled_kot_ok	Udskrev {n} annullerede varer · {slips} seddel/sedler → {kitchens}
+print_cancelled_kot_needed	Åbn først et bord med annullerede varer
+print_cancelled_kot_none	Ingen annullerede varer på denne ordre
+print_cancelled_kot_client	Udskriv annulleret ({n}) for {place} sendt — butiksenheden udskriver den
+kot_banner	Slagsbanner
+kot_banner_ph	Banner (tom = ingen)
+kot_item_prefix	Varepræfiks
+kot_item_prefix_ph	f.eks. [ANNULLERET]
+kot_strike	Gennemstreg varenavn
+kot_strike_note	Gennemstreg varenote
+kot_strike_on	Til
+kot_strike_off	Fra
+bill_item_layout	Varelayout
+bill_item_layout_columns	Kolonner
+bill_item_layout_stacked	Stablet
+bill_item_header	Kolonneoverskrifter
+bill_item_hdr_item	Vareoverskrift
+bill_item_hdr_qty	Antaloverskrift
+bill_item_hdr_price	Prisoverskrift
+bill_item_hdr_amount	Beløbsoverskrift
+bill_item_name	Medicinnavn
+bill_item_qty	Antal
+bill_item_price	Pris
+bill_item_amount	Beløb
+bill_item_note	Rx / salgsnote
+bill_item_col_gap	Kolonnemellemrum
+bill_item_col_order	Kolonnerækkefølge
+bill_item_col_sep	Kolonnelinjer
+bill_item_gap_tight	Tæt
+bill_item_gap_comfort	Behageligt
+bill_item_gap_wide	Bredt
+bill_item_num_width	Talkolonner
+bill_item_num_compact	Kompakt
+bill_item_num_comfort	Behageligt
+bill_item_num_wide	Bredt
+bill_item_num_align	Tal justeres
+bill_item_gap_em	Mellemrum (em)
+bill_item_qty_min	Antal min (em)
+bill_item_price_min	Pris min (em)
+bill_item_amount_min	Beløb min (em)
+kot_item_qty_width	Antalkolonne
+kot_item_num_align	Antal justeres
+bill_total_qty_label	Etiket for antal i alt
+bill_total_subtotal_label	Etiket for subtotal
+bill_total_grand_label	Etiket for samlet total
+bill_total_paid_label	Etiket for betalt i alt
+bill_meta_pair	Del linje med
+bill_pair_alone	Alene
+bill_item_piece_on	Til
+bill_item_piece_off	Fra
+bill_total_qty	Antal i alt
+bill_total_subtotal	Subtotal
+bill_total_grand	Samlet total
+reprint_incl	Med i udskrift
+reprint_skip	Spring over
+reprint_skip_meta	Spring genudskrift over
+kot_dest_hint	Udskrives på de printere du har tildelt {kitchens} under Indstillinger → Printere
+kot_sent_hint	Seneste afsendelse gik til {kitchens}. Tryk for at tilføje varer til næste regning — eller Udskriv seddel igen for den samme.
+kot_sent_printing	Seddel sendt til {kitchens} — udskriver
+kot_sent_not_printed	Seddel sendt til {kitchens}, men IKKE udskrevet: {why}. Sig det til butikken, ret printeren, og udskriv den igen.
+kot_sent_screen	Seddel sendt til {kitchens}
+kot_queued_shop	Seddel til {place} → {kitchens} gemt; butiksenheden udskriver den
+kot_job_label	Seddel til {place} → {kitchens}
+kot_job_reached	Seddel til {place} nåede {kitchens}
+kot_unassigned	Ikke tildelt
+kot_unassigned_held	Tilbageholdt {n} varer uden station — frigiv på linjen for at sende
+kot_station_ph	Station
+kot_station_dd	Station
+kot_station_dd_n	Station · {stations}
+kot_set_station	Brug denne station
+kot_station_applied	Station sat på {n} varer: {station}
+kot_station_cleared	Station fjernet fra {n} varer: {station}
+kot_station_needed	Vælg først en apoteksektion
+kot_station_not_allowed	Må ikke bruge sektion: {station}
+kot_station_none	Ingen stationer endnu — bruges ikke i en diskbutik (Indstillinger → Områder om nødvendigt)
+pos_tab_items	Tilføjede varer
+pos_tab_payment	Betaling
+hold_send	Hold
+hold_send_on	Holdt
+hold_send_meta	Tilbageholdt — ikke på denne seddel
+station_remove	Fjern station
+station_remove_ph	Tryk på en station i listen for at fjerne den
+station_removed	Station fjernet: {name}
+settings_hub_title	Indstillinger
+settings_hub_help	Åbn ét område ad gangen — mindre rulning, tydeligere valg.
+settings_back	Tilbage
+settings_sec_language	Sprog og valuta
+settings_sec_country	Land og skat
+settings_sec_tills	Andre enheder
+settings_sec_brand	Dit brand
+settings_sec_units	Enheder og omregning
+settings_sec_pickers	Områder · stationer · satser
+settings_sec_printers	Printere
+settings_sec_bill	Regnings- og seddelformat
+settings_sec_selling	Tilbud og salg
+bill_kot_tab_bill	Regning
+bill_kot_tab_kot	Seddel
+settings_sec_alerts	Beskeder
+alerts_help	Hvor længe statusbeskeder bliver på skærmen for dig (dette login).
+snack_secs_ph	Sekunder (3–60, standard 10)
+snack_secs_save	Gem beskedtid
+snack_secs_saved	Beskedtid gemt — {n} sekunder
+settings_sec_backup	Sikkerhedskopi og gendan
+settings_sec_diag	Diagnostik
+diag_privacy_help	Logfiler bliver på denne enhed. Hemmeligheder (PIN, adgangskoder) gemmes aldrig. At dele en pakke væk fra enheden kræver din udtrykkelige godkendelse hver gang — sælges eller gives aldrig til tredjeparter.
+diag_level	Detaljeniveau
+diag_level_error	Fejl
+diag_level_warn	Advarsler
+diag_level_info	Info
+diag_level_debug	Fejlsøgning
+diag_support_start	Start 30-min. supportsession
+diag_support_stop	Afslut supportsession
+diag_support_started	Supportsession til — fejlsøgningsdetaljer i 30 minutter
+diag_support_ended	Supportsession afsluttet
+diag_export_local	Eksportér lokal kopi
+diag_export_local_done	Lokal diagnostik klar på {path} — vælg hvor kopien skal gemmes
+diag_approve_send	Godkend deling væk fra denne enhed
+diag_send_help	Godkendelse gælder én pakke og udløber så. Midlertidig — bruges kun til at rette eller forbedre produktet. Deles ikke med tredjeparter. Virker på Linux, Windows, macOS og Android.
+diag_send_approved	Deling godkendt for én pakke (udløber snart)
+diag_export_send	Opret delepakke (kræver godkendelse)
+diag_export_send_done	Delepakke klar på {path} — vælg hvor den skal gemmes, og send den kun til Kumkaj-support
+diag_save_bundle	Gem diagnostikkopi
+diag_bundle_saved	Diagnostikkopi gemt i {path}
+diag_bundle_failed	Diagnostikkopien kunne ikke gemmes — prøv igen
+diag_clear	Ryd diagnostiklogfiler
+diag_cleared	Diagnostiklogfiler ryddet
+sidebar_settings	Sidepanel
+sidebar_settings_help	Samme ikoner som sideskinnen. Træk en række for at ændre rækkefølgen. Vend kontakten for at vise eller skjule. Indstillinger og Lås bliver altid på linjen.
+sidebar_always_on_short	Altid til
+sidebar_back_settings	Tilbage
+sidebar_shown	Vist
+sidebar_hidden	Skjult
+sidebar_always_on	Altid på linjen
+sidebar_shown_hint	Vist på sideskinnen / bundfanerne
+sidebar_hidden_hint	Skjult fra linjen
+sidebar_menu_items	Varer
+sidebar_enable_all	Slå alle til
+sidebar_disable_all	Slå alle fra
+sidebar_order_saved	Sidepanelrækkefølge gemt
+sidebar_visibility_saved	Sidepanelsynlighed gemt
+amounts_hide	Skjul
+amounts_show	Vis
+printers_none_hint	Gem først en printer på denne enhed, og føj den så til regningen eller en sektion
+counter	Disk
+dine_in	Disk
+takeaway	Til at tage med
+order	Ordre
+tables	Diske
+kitchen	Sektioner
+sales	Salg
+sales_refunds	Salg og refunderinger
+day_close	Dagsafslutning
+reports_expenses	Bankbog og resultat
+nav_reports	Rapporter
+nav_settings	Indstillinger
+nav_lock	Lås
+no_sale_yet	Intet salg endnu
+favorites	Favoritter
+favorites_help	Varer du ofte sælger, gemt til dit login. Tilføj en til regningen, eller byg listen ud fra alle varer nedenfor.
+your_favorites	Dine favoritter
+all_items	Alle varer
+frequent	Ofte solgt
+added_items	Tilføjede varer
+added_items_empty	Intet på denne regning endnu — tilføj en vare fra Alle varer eller en kategori.
+frequent_config_help	Mest solgte varer fra afsluttede regninger. Angiv hvor mange dage der skal ses på, og hvor mange varer der skal vises.
+frequent_days_ph	Dage (1)
+frequent_limit_ph	Varer (24)
+frequent_apply	Anvend
+frequent_saved	Hyppige: seneste {d} dag(e), top {n} — {c} varer
+frequent_empty	Ingen afsluttede salg i perioden endnu — afregn en regning (₹0 er tilladt når Indstillinger siger det), så vises de her.
+zero_sales	Nulsalg
+zero_sales_help	Tillad varer til ₹0 og regninger afregnet til ₹0 (gratis / ejerens ønske). Til som standard, så gratis kuverter stadig vises i Hyppige og dagbøger.
+zero_sales_on	Tillad ₹0
+zero_sales_off	Kræv pris
+zero_sales_saved_on	Nulsalg tilladt
+zero_sales_saved_off	Salg skal have en pris over ₹0
+floor_areas_help	Områder er rum eller zoner på gulvet (Spis her, Tag med, AC …). Tilføj først et område, og sæt derefter diske i det — hvert område er en særskilt gruppe på gulvet.
+area_new_ph	Nyt område / rum (f.eks. AC, Have)
+add_area	Tilføj område
+area_added	Område “{name}” er klar — tilføj diske i det
+no_favorites	Ingen favoritter endnu — tilføj varer fra listen nedenfor.
+add_to_bill	Tilføj til regning
+added	Tilføjet
+owes_word	skylder
+selected_word	Valgt
+chip_clear_credit	ryd — Kredit eller tag forskud
+chip_missing_customer	Valgt kunde mangler — vælg igen
+chip_no_customer	Ingen kunde endnu — skriv et navn, og tryk Kredit
+credit_summary_fmt	{} kunder · åben kredit {} · forskud holdt {}
+recent_label	Seneste:
+kot_new_waiting	NY — venter
+kot_preparing	TILBEREDES
+kot_ready_serve	KLAR — server den
+kot_done_cap	FÆRDIG
+kot_cancelled	ANNULLERET
+kot_start_btn	Start
+kot_mark_ready	Markér klar
+kot_done_btn	Færdig
+table_free	Ledig — tryk for at starte en ordre
+start_order	Start ordre
+open_bill	Åbn regning
+collect_payment	Tag betaling
+table_running	I gang
+payment_pending	Betaling afventer
+collect_at_counter	tag ved disken
+inventory	Lager
+inventory_stock	Lager og beholdning
+branches	Filialer
+branches_org	Filialer og organisation
+credit_customers	Parter (khata og leverandører)
+customer_name_ph	Partnavn
+new_customer_ph	Nyt partnavn
+item_name_ph	Varenavn (f.eks. Masala Dosa)
+item_price_ph	Pris
+start_template	Produkt
+team	Team
+team_pins	Team og PIN
+my_pin_settings	Min PIN
+settings_hub_help_my_pin	Skift oplåsnings-PIN for den person der er logget ind på denne enhed.
+team_self_help	Ét login: en ny PIN, en ny adgangskode eller begge. Lad et felt stå tomt for at beholde det du har. Spørg ejeren hvis du skal have andre skærme eller rettigheder.
+backup_settings	Sikkerhedskopi og indstillinger
+lock_app	Lås app
+pick	Vælg
+select	Vælg
+advance	Forskud
+owner	Ejer
+staff	Personale
+photo	Foto
+auto	Auto
+prev	Forrige
+next	Næste
+ok	OK
+this_shop	Server
+extra_till	Klient
+off	Fra
+tables_kitchen	Butikslayout
+server	Server
+client	Klient
+language_currency	Sprog og valuta
+language	Sprog
+choose_language	Vælg dit sprog
+language_setup_hint	Følg denne enheds sprog, eller vælg selv et.
+lang_follow_platform	Enhedens sprog
+lang_pick_user	Vælg sprog
+lang_platform_now	Enhedens sprog nu
+selected_language	Valgt
+continue	Fortsæt
+this_device	DENNE ENHED
+device_use_q	Hvordan skal denne enhed bruges?
+last_server_mode	Var Server — tryk for at fortsætte
+last_client_mode	Var Klient — tryk for at fortsætte
+choose_server	Vælg en server
+choose_server_hint	Åbn en eksisterende server, eller opret en til en anden forretning.
+create_new_server	Opret ny server
+open_server	Åbn
+new_server_name_ph	Nyt servernavn (valgfrit)
+server_remove_pin_ph	Ejer-PIN for at fjerne en server
+only_owner_remove_server	Kun ejeren kan fjerne en server
+owner_pin_remove_server	Ejer-PIN kræves for at fjerne denne server
+device_setup_help	Serveren holder bøgerne her. Klienten parres med en Server.
+app_template_heading	Startkatalog (valgfrit)
+app_template_blurb	Indlæser et prøvekatalog; ejer Zahir (zahir), admin Asif (asif, PIN 1111), kasserer Nawaz (nawaz, PIN 0000); moms/GST fra; forreste sidepanel; historik ryddes efter 4 timer (og Ryd nu under Sikkerhedskopi); I dag-bjælke fra; kompakt regning + standardmargener til smalle bakker. Afgift og sidepanelets punkter kan slås til igen under Indstillinger.
+app_template_apply	Anvend startkatalog
+app_template_skip	Spring over for nu
+app_template_status	Server klar — anvend startkatalog, eller spring over
+app_template_importing	Anvender {title}…
+currency	Valuta
+backup	Sikkerhedskopi
+use	Brug
+dont_use	Brug ikke
+add_branch	Tilføj filial
+add_conversion	Tilføj omregning
+add_dishes_items	Tilføj varer
+add_item_plain	Tilføj vare
+add_note	Tilføj note
+add_opening_balance	Tilføj primosaldo
+add_staff	Tilføj personale
+add_station	Tilføj station
+add_table	Tilføj bord
+add_unit	Tilføj enhed
+add_use_name	Tilføj / brug dette navn
+allow_extra_tills	Tillad ekstra kasser
+amend	Ret
+apply_country_pack	Anvend landepakke
+datetime_appearance	Dato- og tidsudseende
+datetime_appearance_help	Bøgerne gemmer år-først RFC3339 internt. Dette ændrer kun, hvordan datoer og ure ser ud på regninger, rapporter og skærmen.
+datetime_example	Eksempel nu: {ex}
+date_order	Datorækkefølge
+date_order_dmy	D/M/Å
+date_order_mdy	M/D/Å
+date_order_ymd	Å-M-D
+time_format	Ur
+time_format_24h	24 timer
+time_format_12h	12 timer
+attach_bill_photo	Vedhæft regningsfoto
+attach_pdf	Vedhæft PDF
+attach_photo	Vedhæft foto
+attachments_last_expense	Vedhæftninger (seneste udgift)
+bank	Bank
+bank_in	Bank ind
+bank_out	Bank ud
+bank_reconciliation	Bankafstemning (afkryds mod dit kontoudtog)
+bank_to_till	Bank → kasse
+book_add_dish	Bog — tilføj vare / vare
+book_opening_credit	Bog — primo-kredit
+branch_name_sell_ph	Filialnavn der sælges fra
+bring_my_book	Hent min bog
+business_tax_id_ph	Virksomhedens skatte-id
+caption_bank	BANK
+caption_bills	REGNINGER
+caption_outstanding	UDESTÅENDE
+caption_payments_today	BETALINGER I DAG
+caption_today	I DAG
+card_amount_ph	Kortbeløb
+cash_amount_ph	Kontantbeløb
+cash_memo	Kontantnota
+choose_icon	Vælg ikon
+choose_logo	Vælg logo
+clear_icon	Ryd ikon
+clear_photo	Ryd foto
+copy_day_book_csv	Kopiér dagbog som CSV
+copy_day_close	Kopiér dagsafslutning
+copy_items_csv	Kopiér varer som CSV
+copy_outstanding_csv	Kopiér udestående som CSV
+copy_parties_csv	Kopiér parter som CSV
+copy_party_ledger_csv	Kopiér partbog som CSV
+copy_receipt	Kopiér kvittering
+share_whatsapp	Del via WhatsApp
+lan_pages_heading	Kundesider på Wi‑Fi
+lan_pages_help	På denne butiks Wi‑Fi virker kundesider til opslagstavlen og feedback. Folk på mobildata får brug for Cloud senere. En kortterminal eller et betalingslink er valgfrit og blokerer aldrig disken.
+diag_send_heading	Del væk fra denne enhed
+kot_dest_heading	Station
+optional_login_heading	Valgfrit login
+rights_heading	Rettigheder
+ops_panel	Lokal drift
+crm_heading	Kunder og beskeder
+crm_help	Fødselsdag, loyalitet, inaktive og topgæster — sæt SMS eller WhatsApp i kø. Brug {name} og {points} i beskeden. Ejeren trykker send; intet sendes af sig selv.
+crm_queue_sms	Sæt SMS i kø
+crm_queue_wa	Sæt WhatsApp i kø
+crm_seg_bday_week	Fødselsdagsuge
+crm_seg_bday_month	Fødselsdagsmåned
+crm_seg_phone	Med telefon
+crm_seg_loyalty	Loyalitet
+crm_seg_inactive	Inaktive
+crm_seg_top	Største forbrug
+birthday_ph	Fødselsdag (MM-DD eller ÅÅÅÅ-MM-DD)
+crm_message_ph	Tillykke med fødselsdagen {name}! Du har {points} point.
+till_apply_redeem	Anvend på regning
+till_clear_redeem	Ryd indløsning
+till_wallet_topup	Tank pungen op
+till_issue_voucher	Udsted voucher
+till_points_ph	Point der indløses
+till_wallet_ph	Pungbeløb der bruges
+till_voucher_code_ph	Voucherkode
+till_voucher_amt_ph	Voucherbeløb (tom = det hele)
+till_wallet_topup_ph	Beløb til optankning af pung
+till_voucher_issue_amt_ph	Beløb på ny voucher
+till_voucher_issue_code_ph	Ny voucherkode
+split_evenly	Del lige
+waitlist	Venteliste
+fire_course	Næste trin
+hold_item	Hold
+waiter_call	Kald kasserer
+waitlist_add	Tilføj til venteliste
+floor_view_grid	Gitter
+floor_view_layout	Layout
+floor_layout_x	X
+floor_layout_y	Y
+floor_layout_w	B
+floor_layout_h	H
+floor_layout_save	Gem layout
+floor_layout_open	Åbn bord
+floor_layout_edit	Ret layout
+floor_layout_pick	Tryk på et bord for at rette dets layout
+floor_layout_saved	Layout gemt
+floor_layout_nudge_left	← 20
+floor_layout_nudge_right	→ 20
+floor_layout_nudge_up	↑ 20
+floor_layout_nudge_down	↓ 20
+sibling_pickers_help	Tryk Til/Fra som ved enheder — skjul områder, stationer og skattesatser fra de daglige valg; pakkens standard bliver.
+bulk_price_apply	Anvend samlet pris
+card_terminal_optional	Kortterminal / betalingslink (valgfrit når der er internet)
+copy_report	Kopiér rapport
+counted_cash_ph	Optalt kontant i skuffen
+country_tax	Land og skat
+create_backup	Opret sikkerhedskopi
+credit_limit_heading	Kreditgrænse (valgt / navngiven part)
+day_close_summary	Opsummering af dagsafslutning
+delete_party	Slet valgt part
+delivery	Udbringning
+done_open_books	Færdig — åbn bøger
+drawer_count	Skuffeoptælling (valgfri)
+expense_heading	Udgift
+export_day	Eksportér dag
+extra_note_bill_ph	Ekstra note på denne regning / dette salg
+extra_note_expense_ph	Ekstra note på seneste udgift
+extra_tills_heading	Ekstra kasser
+other_devices_help_heading	Sæt andre enheder op
+other_devices_help	På denne enhed (Server): Andre enheder → Tillad ekstra kasser. Notér parringskoden og Wi‑Fi-adressen. Tryk Tillad andre enheder at oprette forbindelse, hvis det vises. På en computer trykker du Start med denne computer. På hver anden enhed: installér appen, vælg Klienttilstand, Find butikkens server (eller skriv adressen), indtast parringskoden, Par nu. Ordrer venter på enheden, hvis Wi‑Fi falder ud, og sendes, når serveren svarer igen. Ekstra printere sættes på serveren (Indstillinger → Printere) — ekstra kasser sender regninger derhen.
+forget_shop	Glem denne butik
+goods_received	Varer modtaget
+import_day	Importér dag
+import_items_csv_plain	Importér varer som CSV…
+import_parties_csv	Importér parter som CSV…
+item_name	Varenavn
+kitchen_printing	Printere
+login_id_ph	Brugernavn
+mark_cleared	Markér afstemt
+new_party_clear	Ny part (ryd formular)
+new_party_kind_supplier_ph	Ny parttype (Leverandør)
+next_country	Næste land
+next_order	Næste ordre (ryd bordet)
+note_gstin_ph	Note / GSTIN / aftalepåmindelse
+notes_attach_party	Noter og vedhæftninger (valgt part)
+notes_attach_sale	Noter og vedhæftninger (valgt salg)
+on_account_ap	På konto (AP)
+org_optional_ph	Organisation (valgfri)
+paid_by	Betalt af
+paid_now	Betalt nu
+pair_now	Par nu
+pairing_code_ph	Parringskode
+party_name_selected_ph	Partnavn (eller brug valgt)
+password_ph	Adgangskode
+pay_ap_card	Betal AP med kort
+pay_ap_cash	Betal AP kontant
+pay_ap_heading	Betal det vi skylder dem (AP)
+pay_ap_upi	Betal AP med UPI
+pay_selected_heading	Betal valgt (afregn gæld / tag forskud)
+pick_from_items	Vælg fra vores varer
+prev_country	Forrige land
+print_open	Udskriv / åbn
+reason_amend_ph	Årsag til rettelse / annullering / refundering
+reason_note_ph	Årsag / note (spild, optælling, …)
+record_day_close	Bogfør dagsafslutning
+refresh_from_shop	Opdater fra butikken
+refund	Refundér
+remove_selected	Fjern valgte
+request_bill	Bed om regning
+restaurant_name_ph	Butiksnavn (valgfrit)
+restore_backup	Gendan sikkerhedskopi
+role_both	Begge
+role_admin	Admin
+role_cashier	Kasserer
+role_customer	Kunde
+role_manager	Leder
+history_retention	Handelshistorik
+history_retention_help	Ryd automatisk gamle salg og gamle boner. Medicin, personale og indstillinger bliver. Ryd nu sletter alle handelsrækker og beholder opsætningen.
+history_off	Behold
+history_day_close	Ved dagsafslutning
+history_after_hours	Efter timer
+history_hours_ph	Timer (1–168, standard 4)
+history_hours_save	Gem timer
+history_clear_now	Ryd historik nu
+history_cleared	Handelshistorik ryddet — opsætning beholdt
+history_retention_saved	Historikrydning gemt
+history_hours_saved	Historiktimer gemt
+history_owner_only	Kun Ejer eller Admin kan rydde historik
+rollup	Opsummering
+save_brand	Gem brand
+save_business_id	Gem virksomheds-id
+save_business_name	Gem virksomhedsnavn
+save_features	Gem
+save_features_named	Gem {name}
+save_features_ok	Opsætning gemt for {name}
+save_names	Gem navne
+second_way	Anden måde
+server_ip_ph	Server-IP (f.eks. 192.168.1.10)
+set_credit_limit	Anvend grænse på part
+set_login_selected	Anvend login på valgt
+set_login_named	Anvend login på {name}
+shop	Butik
+show	Vis
+spreadsheet_csv	Regneark (CSV)
+start_fresh	Start forfra
+stop_extra_tills	Stop ekstra kasser
+floor_cols_ph	Kolonner
+floor_cols_fit	Tilpas skærm
+floor_cols_fit_sub	{n} passer her
+floor_cols_fits	passer
+floor_cols_scroll	ruller sidelæns
+floor_cols_min	Kolonner: mindst 1 — eller lad feltet stå tomt for at tilpasse skærmen
+floor_zoom_auto	Auto
+floor_zoom_out	Zoom ud
+floor_zoom_in	Zoom ind
+backup_auto	Sikkerhedskopieret automatisk hver dag · senest {when} · de seneste 14 dage gemmes i {dir}.
+backup_auto_none	Sikkerhedskopieres automatisk hver dag — den første kører om et øjeblik.
+backup_copy_to	Kopier går også til {dir}.
+backup_copy_btn	Kopiér også sikkerhedskopier til en mappe…
+autostart_off	Start med denne computer
+autostart_on	Starter med denne computer ✓ — tryk for at stoppe
+autostart_done_on	Denne computer åbner nu appen når den starter — butikkens server er tilbage efter et strømsvigt.
+autostart_done_off	Denne computer åbner ikke længere appen når den starter.
+device_forgotten	Butikken glemte denne enhed — par den igen med butikkens nuværende kode. Ordrer der venter på den, beholdes.
+lan_offline	Butikkens server kan ikke nås
+forget_device	Glem
+last_seen	set
+copy_pair_code	Kopiér parringskode
+new_pair_code	Ny parringskode
+pair_finishing	Afslutter parring… anvender butikkens bøger
+pair_opening	Åbner kassen…
+pair_copied	Parringskode kopieret
+kot_waiting	Venter på at sende
+lan_offline_waiting	Butikkens server kan ikke nås · {n} venter
+lan_connecting	Forbinder til butikken…
+lan_live	Direkte
+lan_sending	{n} sender
+lan_sign_in_to_send	Log ind igen for at sende {n}
+lan_pair_again	Par denne enhed igen
+lan_update_app	Opdatér appen — denne enhed og butikkens server har forskellige versioner
+allow_firewall	Tillad andre enheder at oprette forbindelse
+firewall_blocked	Denne computers firewall blokerer andre enheder — tryk Tillad andre enheder at oprette forbindelse.
+firewall_waiting	Venter på administratorprompten…
+lan_join_help	På den anden enhed: Klienttilstand → Find butikkens server (eller skriv {addr}) → parringskode {code}.
+lan_pair_status	Wi‑Fi {addr}
+lan_join_help_no_addr	Forbind denne enhed til Wi‑Fi for at få en adresse.
+lan_no_address	Ingen Wi‑Fi-adresse endnu — forbind til butikkens Wi‑Fi.
+lan_not_listening	Tager ikke imod enheder (port {port} er optaget). Genstart appen.
+lan_tills_off	Ekstra kasser er slået fra. Tillad dem for at lade en anden enhed deltage.
+paired_with	Parret · {url}
+not_paired	Ikke parret
+choose_device_use	Vælg Server eller Klient.
+paired_note	Parret. Lås op for at sælge, eller Opdater for det seneste.
+last_update_at	Seneste opdatering: {time}.
+pair_intro	Find serveren, eller skriv dens adresse og parringskode.
+queue_waiting	Venter på at nå butikken ({n}):
+queue_tries	Forsøgt {n} gange · seneste svar: {e}
+save_backup_copy	Gem en kopi af sikkerhedskopien…
+backup_copy_saved	Kopi af sikkerhedskopi gemt — behold den væk fra denne enhed (et USB-stik eller en anden enhed)
+backup_copy_overdue	Ingen kopi af sikkerhedskopien har forladt denne enhed i {n} dage — Indstillinger → Sikkerhedskopi
+backup_copy_failed	Kopien af sikkerhedskopien kunne ikke gemmes der — vælg et andet sted
+clock_off	Denne enheds ur er {min} min. fra butikkens server — sæt det rigtige tidspunkt på denne enhed
+printers_heading	Printere
+printers_help	Find printere, tryk på en for at vælge den, og udskriv derefter en testside kun på den enhed. Regningsprintere: Regnings- og seddelformat → Regning.
+printers_host_only	Printere sættes på butiksenheden (Server). Denne kasse sender regninger og gamle boner derhen — Find / tilføj / tildel bliver på serveren. Testside og regningens udskriftsstørrelse går til serveren.
+printers_find_heading	Find printere
+printers_find_tip	Find scanner denne enhed og holder listen ajour.
+printers_pool_heading	Printere
+printers_pool_tip	Find scanner denne enhed og holder denne liste ajour.
+printers_pool_empty	(ingen endnu — tryk Find)
+printers_routes_help	Find printere, som operativsystemet allerede kender. Tildel dem til regningen og til hver sektion under Regnings- og seddelformat.
+printer_assign_dd	Rigtig printer: {place}
+printer_assign_pick	Vælg rigtig printer
+printer_profile_heading	Layout
+printer_send_heading	Udbringning
+vp_delivery_heading	Udbringning
+vp_delivery_help	Sådan sender denne virtuelle printer job — OS-dokument, rå bytes eller ESC/POS. Seddelindhold (skriftstørrelse, ombrydning, margener) bestemmes af regnings- / seddelformatet, ikke her.
+vp_type_size_heading	Skriftstørrelse
+vp_wrap_heading	Ombrydningsbredde
+vp_margin_heading	Margener
+vp_delivery_spooler	OS-dokument (systemkø)
+vp_delivery_raw	Rå bytes til enhed
+vp_delivery_escpos	ESC/POS-termiske kommandoer
+virtual_printer_new	Ny virtuel printer
+virtual_printer_selected	Retter “{name}” — tryk på en anden i listen for at skifte
+virtual_printer_tap_list	Tryk på en virtuel printer i listen for at rette den
+config_layout_portrait	Stående
+config_layout_landscape	Liggende
+config_send_os	Systemkø
+config_send_escpos	ESC/POS
+profiles_heading	Layouts
+profiles_empty	(ingen layouts endnu)
+profile_builtin	indbygget
+profile_custom	brugerdefineret
+profile_name_ph	Layoutnavn
+profile_new	Nyt layout
+profile_delete	Slet layout
+profile_created	Layout oprettet
+profile_deleted	Layout slettet
+profile_builtin_keep	Indbyggede layouts kan ikke slettes
+config_saved	Opdateret
+config_selected	Valgt “{name}”
+printer_output_heading	Virtuelle printere
+virtual_printers_heading	Virtuelle printere
+virtual_printers_empty	Ingen virtuelle printere endnu — sæt værdier nedenfor, og tryk Gem. Når du har nogle, tryk på en i listen for at rette den.
+virtual_printer_name_ph	Navn på virtuel printer (valgfrit)
+virtual_printer_create	Opret virtuel printer
+virtual_printer_save	Gem virtuel printer
+virtual_printer_delete	Slet virtuel printer
+virtual_printer_created	Virtuel printer “{name}” oprettet
+virtual_printer_deleted	Slettede virtuel printer “{name}”
+virtual_printer_updated	Virtuel printer opdateret
+virtual_printer_updated_named	Virtuel printer “{name}” opdateret
+virtual_draft_layout	Værdier sat til næste virtuelle printer
+virtual_draft_send	Værdi sat til næste virtuelle printer
+virtual_need_real	Vælg en rigtig printer først
+virtual_need_select	Vælg en virtuel printer der skal slettes
+real_printer_selected	Valgt: {name}
+station_group_heading	Virtuelle printere
+station_group_apply	Slet virtuel printer
+station_group_applied	Slettet
+station_group_empty	Vælg en virtuel printer
+station_group_name_ph	Navn på virtuel printer (valgfrit)
+station_group_save	Opret virtuel printer
+station_group_saved	Virtuel printer gemt
+station_manage_heading	Tilføj eller fjern en apoteksektion
+printers_routes_heading	Hvor der udskrives
+route_pick_heading	Sted
+route_editing	Retter: {name}
+route_assigned	Tilføjede {printer} til {place}
+route_already_assigned	Allerede på dette sted: {printer}
+route_removed	Fjernede {printer} fra {place}
+route_cleared	Ryddede {name}
+route_assigned_empty	Ingen på dette sted
+route_tap_remove	tryk for at fjerne
+route_tap_select	tryk for at vælge
+route_tap_selected	valgt
+route_pick_printer_first	Tryk på en printer først
+route_assigned_heading	Printere
+route_add_heading	Tildel
+printer_label_ph	Navn (f.eks. Diskprinter)
+printer_target_ph	Systemprinternavn eller vært:9100
+printer_target_default	denne computers sædvanlige printer (tom adresse)
+printer_wire_heading	Profil
+printer_wire_escpos	ESC/POS
+printer_wire_os	Stående
+printer_wire_os_portrait	Stående
+printer_wire_os_landscape	Liggende
+printer_wire_escpos_short	ESC/POS
+printer_wire_os_short	Stående
+printer_wire_os_landscape_short	Liggende
+printer_format_custom	Ny brugerdefineret profil
+printer_format_custom_label	Brugerdefineret
+printer_format_custom_added	Brugerdefineret profil tilføjet for dette sted
+add_printer	Tilføj printer
+remove_printer	Fjern
+route_pick_ph	Regning eller en apoteksektion
+route_bill	Regning
+route_default_kitchen	Ingen station (ikke-tildelte varer)
+route_kot_station	Station
+route_dont_print	Ingen printer
+stations_heading	Stationer
+stations_help	Apotekssektioner samler medicin og printerne til den del af butikken. Tilknyt printere fra Indstillinger → Printere, sæt prøverækkefølge, og vælg derefter Første der virker eller Udskriv på alle. Ændringer gemmes løbende.
+station_print_heading	Printere til denne station
+station_print_help	Vælg en station, og tilknyt derefter en eller flere printere. ↑↓ sætter prøverækkefølgen. Første der virker stopper efter første succes; Udskriv på alle sender til hver tilknyttet printer.
+station_print_pick_ph	Station der skal have printere
+station_print_pick_first	Vælg først en apoteksektion
+station_print_editing	Retter printere for “{name}”
+station_vps_dd	Printere til denne station
+station_vps_dd_n	{n} printer(e) · tryk for at ændre
+station_vps_empty	Ingen printere endnu — find dem under Indstillinger → Printere
+bill_printers_dd	Printere til regningen
+bill_printers_dd_n	{n} printer(e) til regningen · tryk for at ændre
+job_layout	Layout
+job_delivery	Hvordan jobbet sendes
+job_delivery_help	OS-dokument, rå bytes eller ESC/POS. Regningen og bonen har hver deres. Begge job kan gå til enhver printer, som Find har gemt.
+station_vp_attached	Printer tilknyttet
+station_vp_detached	Printer fjernet fra station
+station_print_summary	{mode} · {n} printer(e)
+station_print_summary_none	Ingen printere på denne station endnu — den udskriver ikke
+stations_none	Ingen stationer endnu — tilføj en nedenfor. Stationer bruges ikke i en diskbutik — lad stå tomt.
+route_up	Op
+route_down	Ned
+route_remove	Fjern
+route_clear	Ryd
+save_printers	Gem printere
+print_test_page	Udskriv en testside
+no_printer_assigned	Ingen printer
+test_page_no_printer	Ingen printer til {place} — sæt en printer på, og prøv igen
+test_page_pick_first	Vælg printer(e) til en testside først — tryk så Udskriv en testside
+test_printers_dd	Printere til en testside
+test_printers_dd_n	{n} printer(e) til en testside · tryk for at ændre
+kot_test_printers_dd	Printere til testudskrift
+kot_test_printers_dd_n	{n} printer(e) til testudskrift · tryk for at ændre
+test_printer_picked	Test på: {name}
+test_printer_cleared	Tester ikke på: {name}
+test_page_sent_n	Testside sendt til {n} printer(e)
+test_kot_pick_first	Vælg først printer(e) til testudskrift — og tryk derefter Testudskrift
+test_kot_sent_n	Testudskrift sendt til {n} printer(e)
+cancel_pick	Markér
+cancel_pick_on	Markeret
+cancel_pick_meta	Markeret til annullering
+batch_cancel	Annuller markerede
+batch_cancel_n	Annuller markerede ({n})
+batch_cancel_none	Markér først en eller flere sendte varer — og tryk derefter Annuller markerede
+batch_cancel_title	Annuller markeret medicin — én årsag, én annulleringsseddel pr. sektion
+batch_cancel_ok	{n} varer annulleret · {slips} annulleringsseddel/sedler → {kitchens}
+batch_cancel_ok_noprint	{n} varer annulleret — automatisk udskrift er fra, så ingen annulleringsseddel
+no_printer_kitchen_station	Ingen printer til den station
+printers_saved	Gemt
+test_page_sent	Testside sendt — tjek printeren
+test_page_sent_one	Testside sendt til {name} — tjek den printer
+printers_found	Fandt {n}: {list}
+printers_find_synced	Fandt {n} — {new} nye
+printer_on_device	gemt
+printer_already_added	allerede tilføjet
+printer_already_saved	Allerede gemt: {name}
+find_printers	Find printere
+printers_looking	Leder…
+saving_printer	Tilføjer printer…
+cancelled	Annulleret
+printers_tap_find	Tryk Find for at vise printere som denne enhed kan bruge.
+printers_none_found	Ingen fundet — skriv et systemprinternavn eller en IP (f.eks. 192.168.1.50).
+printer_from_find	Tilføjede {name}
+kot_printer_ph	Printer til sedler
+bill_printer_ph	Printer til regninger
+kot_print_on	Udskriv bon automatisk: Til
+kot_print_off	Udskriv bon automatisk: Fra
+queue_refused	Ikke accepteret af butikken ({n}) — tjek hver enkelt ved disken:
+clear_not_accepted	Tjekket — ryd denne liste
+device_name_ph	Denne enheds navn
+lan_last_update	seneste opdatering {time}
+lan_not_accepted	{n} ikke accepteret
+connected_now	forbundet nu
+backup_failed	Den seneste automatiske sikkerhedskopi mislykkedes: {e}
+backup_overdue	Ingen sikkerhedskopi i {n} dage — hold appen åben på denne enhed så den kan sikkerhedskopiere.
+disk_low	Kun {mb} MB ledigt på denne enhed — sikkerhedskopier fejler snart. Frigør noget plads.
+last_seen_devices	Sidst set: {time}
+sync_interval	Synk hvert {secs}. sek.
+connection_to_shop	Forbindelse til butikken
+supplier_name_ph	Leverandørnavn (eller part)
+supplier_ph	Leverandør
+switch_device	Skift denne enhed
+take_payment	Tag betaling
+tax_added_till	{tax} ekskl.
+tax_inside_price	{tax} inkl.
+tax_invoice	Skattefaktura
+till_to_bank	Kasse → bank
+units_heading	Enheder
+unlock_after_pairing	Indtast PIN
+unlock_with_login	Lås op med login
+unmark	Fjern markering
+update_my_password	Opdatér min adgangskode
+update_my_pin	Opdatér mit login
+duress_heading	Nødoplåsnings-PIN (kun Ejer)
+duress_help	Valgfri. Hvis denne PIN tastes ved oplåsning i stedet for din, slettes alle bogposteringer (salg, reskontro, historik), og kassen åbner som ejer og ser normal ud — medicin, priser, diske, personale og indstillinger bliver. Skema og konfiguration slettes ikke. Brug den kun, hvis du tvinges til at låse op. Lad stå tom og gem for at slå fra. Aldrig den samme som nogens PIN.
+duress_pin_ph	Nød-PIN (4–12 cifre)
+duress_confirm_ph	Skriv igen for at bekræfte
+save_duress_pin	Gem nød-PIN
+clear_duress_pin	Slå nød-PIN fra
+duress_on	Nødoplåsnings-PIN er til
+duress_off	Nødoplåsnings-PIN er fra
+duress_saved	Nødoplåsnings-PIN gemt
+duress_cleared	Nødoplåsnings-PIN slået fra
+upi_amount_ph	UPI-beløb
+void	Annuller
+write_off_ap	Afskriv AP
+write_off_heading	Afskriv (udlign uden betaling)
+write_off_nil	Afskriv / nul saldo
+your_brand	Dit brand (i appen)
+your_categories	Dine kategorier
+account_kind	Kontotype (tryk på én)
+actual_total_cap	FAKTISK TOTAL
+amend_help	Vælg et salg der skal rettes, annulleres eller refunderes. Rettelser beholder hele historikken. Afrundet total starter lig med Anvendt — ret kun for at afrunde. Annullering og refundering kan kræve en Ejer- eller Leder-PIN (skrevet ovenfor; gemmes med dit navn).
+applied_total_cap	ANVENDT TOTAL
+bank_balance	Banksaldo
+bank_net_today	Bank netto i dag
+branch_export_help	Eksport skriver branch_snapshot_CODE_DATE.json i mappen med sikkerhedskopier og kopierer den til udklipsholderen. For at importere en anden filials dag, gem dens fil som import_branch_snapshot.json i samme mappe, og tryk Importér.
+brand_shown_help	Vises på skærme inde i appen. Det installerede appnavn og ikon på denne enhed bliver som i platformens liste.
+app_icon	Appikon
+logo_help	Valgfrit butiksmærke på skærme i appen.
+onboard_layout	Det du får
+item_photo_help	Valgfrit. Uden foto viser vi initialer fra varenavnet.
+stamp_heading	Stempel
+stamp_image_help	Valgfrit stempelbillede på trykte regninger og kundedisplayet.
+payment_qr_heading	Betalings-QR
+payment_qr_image_help	Statisk QR på regninger og kundedisplay; ellers bruger betaling en dynamisk UPI-QR fra VPA'en ovenfor.
+cash_in_hand	Kontant i kassen
+change_my_pin_heading	Mit login
+connect_to_server	Forbind til Serveren
+counter_locked	Disk 01 · Låst
+country_pack_help	En landepakke sætter skatnavn og beregning, sporet for øjeblikkelig betaling og det virksomheds-id der trykkes på regninger. Kumkaj indberetter ikke skat og udsteder ikke offentlige e-fakturaer nogen steder.
+currency_use_help	Rul og tryk Brug for enhver understøttet valuta.
+day_close_help	Når du bogfører en dagsafslutning, gemmes denne opsummering (og skuffeforskel hvis den er talt) i revisionsloggen. Det stopper ikke salget.
+expenses_word	Udgifter
+feature_access_help	Hvad de kan åbne — valgfrit; jobbet ovenfor sætter allerede en standard
+footer_local	Lokal SQLite · Gratis for evigt · Ingen sky
+fresh_book_tabiyat	Ny = tomt katalog (tilføj varer senere). Bog = angiv primolager og hvem der skylder dig nedenfor.
+fresh_selected	Forfra valgt — kataloget forbliver tomt. Tryk Færdig når du er klar.
+gross_word	Brutto
+how_start	Hvordan vil du starte?
+kot_print_help_tabiyat	Bruges ikke i en diskbutik.
+later_country_pack	Senere: Indstillinger → anvend din landepakke til skatte- og betalingsetiketter.
+local_badge	LOKAL
+mix_type_hint_tabiyat	Del på kontant / UPI / kort / kredit hvis det skal til. Kredit kræver en kunde ovenfor.
+money_in_sales	Penge ind (salg)
+net_word	Netto
+offline_badge	UDEN NET
+optional_login_help	Valgfrit login (id + adgangskode). Ejeren sætter det én gang; kun brugeren kan senere skifte adgangskode.
+or_unlock_login	Eller lås op med login-id + adgangskode
+permission_preset	Job (sætter skærme og pengehandlinger)
+preset_help_tabiyat	Kasserer: sælg. Leder: sælg + varer + annuller/ret.
+product_locked_tabiyat	Tabiyat
+product_only_tabiyat	Tabiyat er styresystemet til apotek: medicinsalg, batch/udløbsbogføring, kredit og bøger — offline på dine enheder. Schedule H / Rx-flag er ejernoter, ikke compliance.
+purchases_cogs	Indkøb (vareforbrug)
+qty_cap	ANTAL
+restore_help	Gendan: vælg en sikkerhedskopi. Bøgerne åbner som de var dengang; bøgerne som de er nu, gemmes først, så det kan fortrydes.
+wipe_data_heading	Slet lokale data
+wipe_data_help	Kun for ejeren — samme valg som Windows-afinstallation. Forretningsposter rydder handelshistorik men beholder varer og opsætning (som nød-oplåsnings-PIN). Butiksopsætning fjerner bøgernes database. Skærmindstillinger rydder vindue/sprog. Bekræft med ejer-PIN. Nød-oplåsnings-PIN under Team er separat (skjult sletning ved oplåsning).
+wipe_trading	Forretningsposter
+wipe_schema	Butiksopsætning
+wipe_ui	Skærmindstillinger
+wipe_owner_pin_ph	Ejer-PIN for at slette
+wipe_delete_selected	Slet valgte
+wipe_owner_only	Kun Ejeren kan slette lokale data.
+restore_owner_only	Kun Ejeren kan gendanne en sikkerhedskopi.
+wipe_owner_pin_needed	Indtast Ejer-PIN for at slette lokale data.
+wipe_nothing_selected	Vælg først hvad der skal slettes.
+wipe_done	Valgte lokale data slettet.
+wipe_schema_done	Butiksopsætning slettet — vælg Server eller Klient for at fortsætte.
+rounded_total	Afrundet total
+setup_app_tabiyat	Sæt Tabiyat op
+shop_logo_optional	Butikslogo (valgfrit)
+stock_type_help	Skriv varenavnet (en del er nok), et antal, og ret så. Varer der ikke tælles endnu, skal have Start optælling én gang.
+team_owner_help	Lad personen stå tom for at tilføje nogen: navn, job, brugernavn, PIN og en valgfri adgangskode, og tryk Tilføj. Vælg en person for at rette den samme slags formular — navn, brugernavn, adgangskode, skærme og rettigheder — og tryk Gem. Din egen PIN og adgangskode er ét login nederst. Ejeren ændrer ikke andres PIN.
+staff_name_ph	Personalets navn
+staff_copy_hire_ph	Kopiér opsætning fra (valgfrit)
+staff_copy_hire	Brug denne persons opsætning
+staff_edit_name_ph	Vist navn
+staff_rename	Gem navn
+staff_copy_edit_ph	Kopiér opsætning fra en anden person
+staff_copy_edit	Kopiér deres opsætning over på valgt
+staff_copy_edit_onto	Kopiér deres opsætning over på {name}
+staff_deactivate_named	Fjern {name}
+staff_renamed	Navn gemt
+staff_setup_copied_hire	Opsætning kopieret fra {name} — sæt et nyt navn og PIN, og tryk Tilføj personale
+staff_setup_copied_edit	Kopierede {from}s opsætning over på {to}
+staff_copy_need_selected	Vælg først hvem der skal rettes
+staff_copy_need_source	Vælg hvis opsætning der skal kopieres
+staff_copy_same	Det er den samme person — vælg en anden
+staff_rename_need_selected	Vælg først hvem der skal omdøbes
+team_pick_hint	Vælg hvem der skal rettes — skærme, pengerettigheder og stationer vises kun for den person.
+team_stations_help	Stationer de må bruge
+team_stations_changed	Stationer ændret — gem opsætning for denne person
+team_features_changed	Skærme ændret — gem opsætning for denne person
+team_rights_changed	Rettigheder ændret — gem opsætning for denne person
+they_owe_us	De skylder os
+unit_at_cap	Enhed @
+units_help	Koder til vareetiketter (kg, stk., pose). Hver enhed skal hænge sammen — direkte eller via andre enheder — med en standard (kg · cm · ml · stk.), f.eks. 1 kasse = 2 æsker og 1 æske = 20 cm. Omregning: 1 fra = faktor til. Valutaer er aldrig enheder.
+units_picker_help	Tryk Til/Fra for at vise en enhed i Køb og Varevalg. Enheder der er fra, omregnes stadig.
+unit_picker_on	Til
+unit_picker_off	Fra
+we_owe_them	Vi skylder dem
+who_unlocking	Hvem låser op?
+locked_word	Låst
+show_pin	Vis PIN
+hide_pin	Skjul PIN
+set_owner_pin	SÆT EJER-PIN
+enter_owner_passcode	INDTAST EJER-KODE
+enter_staff_passcode	INDTAST PERSONALE-KODE
+pin_count_zero	0 / 12 cifre · mindst 4, så OK
+pin_count_need	{} / 12 cifre · mangler {} mere
+pin_count_full	12 / 12 cifre · tryk OK
+pin_count_ready	{} / 12 cifre · tryk OK når du er klar
+pin_hint_choose	Vælg 4–12 cifre · Enter eller Lås op for at gemme
+pin_hint_new	Ny Ejer-PIN på 4–12 cifre · Enter eller Lås op
+pin_hint_shop_code	Butiksenhed · parringskode {}
+pin_hint_books	Denne enhed holder bøgerne
+pin_hint_paired	Ekstra kasse parret — lås op for at sælge
+pin_hint_pair_first	Ekstra kasse — par med butiksenheden først
+unlock_to_continue	Lås op for at fortsætte
+no_staff_yet	Intet personale endnu — lås op som Ejer, så Team
+status_server_set_pin	Servertilstand — sæt Ejer-PIN
+status_server_tills	Servertilstand — ekstra kasser kan deltage. Lås op
+status_server_unlock	Servertilstand — lås op som Ejer
+status_client_unlock	Klienttilstand — lås op for at sælge
+icon_new_selected	Ikon: ny fil valgt — tryk Gem brand
+icon_custom	Ikon: eget stedsmærke
+icon_default	Ikon: Kumkaj-mærke (standard) — vælg et eget
+logo_yours	Logo: jeres butikslogo — vises på skærme og kvitteringer
+logo_default	Logo: Kumkaj-mærke (standard) — vælg jeres eget hvis I har et
+tmpl_current	Nuværende: {} — {}
+tmpl_selected	Valgt: {} — {}
+setup_complete	Opsætning færdig
+onboard_fresh_tmpl	Forfra · {} — kataloget starter tomt; tilføj varer under Varer, og tryk Færdig.
+onboard_book_tmpl	Bog · {} — tilføj varer og primo-kredit, og tryk Færdig.
+onboard_template_tmpl	Navngiv stedet hvis du vil, og vælg så hvordan I starter.
+tmpl_blurb	Apoteksdisk: medicin, batch/udløb, kreditbog, bøger.
+tmpl_how	Sælg ved disken; køb til lager; bøger til dagbogen.
+reports_facet_title	Rapporter
+reports_facet_help	Dagbøger, partalder, bankposteringer og perioderesultat.
+against_bill_ph	Mod regning nr. ovenfor (valgfrit)
+aliases_ph	Aliasser, korte navne — kommasepareret
+amount_blank_full_ph	Beløb (tom = hele saldoen)
+amount_owed_ph	Skyldigt beløb
+amount_ph	Beløb
+amount_received_ph	Modtaget beløb
+amount_we_pay_ph	Beløb vi betaler
+business_name_ph	Virksomhedsnavn
+category_new_ph	Kategori (valgfri, oprettes hvis ny)
+code_bag_ph	Kode (pose)
+conv_factor_ph	Faktor (25 = 1 pose → 25 kg)
+country_code_ph	Landekode f.eks. IN, GB, US, AE, BR
+credit_khata_amount_ph	Kredit- / khata-beløb
+credit_limit_ph	Kreditgrænse (0 = ingen)
+from_code_ph	Fra kode (pose)
+item_name_lang_ph	Varenavn — skriv det på dit sprog
+login_id_opt_ph	Brugernavn (påkrævet, entydigt)
+manager_pin_ph	Leder-PIN til godkendelse (kun hvis du ikke må annullere)
+new_branch_name_ph	Nyt filialnavn
+new_password_ph	Ny adgangskode (valgfri)
+new_pin_ph	Ny PIN (4–12 cifre)
+note_bank_ph	Note (indbetaling, hævning, …)
+note_buy_expense_ph	Note (brændstof, husleje, …)
+note_expense_ph	Note (brændstof, kontor, …)
+options_tabiyat_ph	Valg — Størrelse*: Lille=199, Stor=399 | Tilbehør+3: Ost=40, Oliven=30 | Ekstra ost=40
+part_second_way_ph	Del med en anden måde (valgfrit)
+phone_ph	Telefon
+place_name_ph	Navn på dette sted
+qty_example_ph	Antal (f.eks. 1,5 for kg)
+quantity_ph	Mængde
+reason_required_ph	Årsag (påkrævet)
+role_title_ph	Rolle (f.eks. Barista)
+service_pct_ph	Service % valgfri 0/10/12
+short_code_ph	Kort kode (MG02)
+starting_password_ph	Startadgangskode (valgfri)
+starting_pin_ph	Start-PIN (4–12 cifre)
+station_name_ph	Stationsnavn (valgfrit)
+station_new_ph	Sektion (valgfri)
+table_name_ph	Disk- / pladsnavn
+tax_rate_ph	Skattesatsens navn eller % — Standard, Reduceret, 0, 5, 12, 18, 20
+to_code_ph	Til kode (kg)
+uncleared_no_ph	Ikke-afstemt nr. ovenfor
+unit_cost_ph	Enhedspris
+unit_name_bag_ph	Navn (Pose)
+unit_plate_ph	Enhed (tallerken / stk. — tom = pr. stk.)
+pay_credit	Kredit
+book_kind_today	Dagens bøger
+book_kind_month	Denne måneds bøger
+book_kind_aging	Udestående / debet-kredit
+book_kind_balance	Balance
+order_help	Tryk på en vare for at tilføje den.
+floor_help	Denne butik sælger ved disken. Borde og en restaurantssal er ikke en del af Tabiyat.
+kitchen_help	Bruges ikke i en diskbutik.
+kitchen_empty	Ingen åbne boner (diskbutikker lader som regel denne skærm være ubrugt).
+add_a_table	Tilføj et bord
+add_station_heading	Tilføj en apoteksektion
+categories_help	Tryk Brug for at lægge varen ovenfor under den kategori. Foto giver kategorien et billede; uden et vises dens initialer.
+dish_search_ph	Søg navn, virkestof eller stregkode…
+tile_free	Ledig
+tile_occupied	Optaget
+tile_food_ready	Mad klar
+tile_bill_printed	Regning udskrevet
+tile_paid	Betalt
+tile_bill_btn	Regning
+tile_occupy_btn	Sæt gæster
+tile_free_btn	Frigør bord
+tile_ready_btn	Frigør bord
+tile_undo_bill	Fortryd regning
+summary_busy	borde optaget
+summary_to_collect	at indkræve
+summary_on_floor	i salen
+floor	Butik
+sizes_as_items_ph	Størrelser som egne varer (valgfrit) — Halv=120, Hel=200
+dish_group_ph	Styrke- / pakningsgruppe (valgfri) — f.eks. 500 mg strip
+discount	Rabat
+remove_discount	Fjern rabat
+apply_discount	Anvend rabat
+save_opening_cash	Gem startkontant
+close_shift_print	Luk vagt og udskriv seddel
+area_prices_ph	Områdepriser (valgfri) — AC=220, Takeaway=210
+discount_ph	10% eller 50
+discount_reason_ph	Årsag (f.eks. fast gæst, sen mad)
+opening_float_ph	Kontanter lagt i skuffen i morges
+shift_counted_ph	Kontanter talt ved vagtskifte
+opening_float	Startkontant (vekselpenge)
+shift_handover	Vagtskifte
+shift_since	Denne vagt siden
+expected_in_drawer	Forventet i skuffen
+right_discount	Giv en rabat
+floor_in_kitchen	I gang
+floor_eating	Serveret
+pick_category	Vælg en kategori
+close_category_list	Luk kategorilisten
+new_category_row	Ny kategori — oprettes når du gemmer varen
+your_category	Din kategori
+suggested_category	Forslag — fra vores varer
+category_search_ph	Kategori — søg i dine eller skriv en ny
+line_sent_state	Sendt
+line_nc_state	Værtskab (NC) — opkræves ikke
+cancel_item_short	Annuller
+nc_short	NC
+charge_again_short	Opkræv
+move_short	Flyt
+cancel_item_title	Annuller denne vare — bagkontoret får en annulleringsseddel
+nc_item_title	Gør denne vare til værtskab (NC)
+charge_again_title	Opkræv denne vare igen
+move_item_title	Flyt denne vare til et andet bord
+already_cooked	Allerede tilberedt (spild)
+not_cooked_yet	Ikke tilberedt endnu
+return_to_customer	Returnér til kunden
+short_by	Mangler
+tip_not_sale	Drikkepenge (personalets, ikke et salg)
+right_settle	Tag betaling
+right_cancel_sent	Annuller en sendt vare
+right_complimentary	Værtskab (NC)
+right_move_table	Flyt / flet diske
+right_reprint	Udskriv regning igen
+right_allowed	Tilladt
+right_with_approval	Med godkendelse
+right_denied	Ikke tilladt
+editing_staff	Retter
+finding_server	Leder efter butikkens server på dette Wi‑Fi…
+no_server_found	Ingen fundet. På Serveren: Indstillinger → Andre enheder → Tillad ekstra kasser (samme Wi‑Fi). Eller skriv den IP der vises der.
+servers_found_pick	Tryk på den butik du vil forbinde til.
+server_host_selected	Bruger {host} — indtast parringskoden, og tryk Par nu.
+print_bill	Udskriv regning
+table_actions	Diskhandlinger
+move_merge_table	Flyt / læg bord sammen
+move_help	Flyt denne disks ordre til et ledigt bord, eller flet den ind i en igangværende.
+move_target_ph	Disknavn
+approval_pin_ph	Leder-PIN (kun hvis der spørges)
+move_here	Flyt hertil
+merge_into	Læg sammen med det
+line_reason_ph	Årsag (f.eks. kunden ombestemte sig, udsolgt)
+line_qty_ph	Hvor mange der annulleres (tom = alle)
+line_target_ph	Flyt til bord (f.eks. D5)
+confirm	Bekræft
+menu_search_ph	Søg vare eller kort kode
+customer_paid_ph	Kunden betalte
+tip_ph	Drikkepenge
+table_area_ph	Område (f.eks. Spis her, Takeaway, AC)
+table_range_ph	Mange på én gang: D1-D20
+add_these_tables	Tilføj disse diske
+remove_these_tables	Fjern disse diske
+table_remove_ph	Fjern: T1-T24, eller ét bords navn
+find_server	Find butikkens server
+bill_format	Regningsformat
+bill_format_help	Trykkes under butikkens navn på hver regning. Adskil linjer med | (f.eks. MG Road, Rajkot | Tlf. 98250 00000).
+bill_header_ph	Adresse | telefon
+fssai_ph	Lægemiddeltilladelsesnr. (valgfrit — din formulering)
+bill_footer_ph	Sidefod (f.eks. Tak, kom igen)
+save_bill_format	Gem regningsformat
+kot_format	Seddelformat
+kot_format_help	Tryk på et felt i listen. Vis, skriftstørrelse og vægt gælder det felt på den seddeltype, der er valgt ovenfor. Hver type har sine egne størrelser og vægte.
+kot_format_fields	Felter
+kot_field_next	Næste felt
+kot_field_show	Vis
+kot_field_hide	Skjul
+kot_field_on	vis
+kot_field_off	skjul
+kot_field_size	Skriftstørrelse
+kot_field_size_ph	f.eks. 16, 20, 24, 28, 32…
+kot_weight_light	Let
+bill_kot_panel_help	Regningslayout og indholdsbredde. Kassereren er den, der udstedte eller afregnede regningen — hele salgshistorien bliver i bøgerne.
+std_size_ph	f.eks. 18, 20, 26…
+kot_show_shop	Butiksnavn
+kot_hide_shop	Skjul butik
+kot_show_time	Tid
+kot_hide_time	Skjul tid
+kot_show_waiter	Kasserer
+kot_hide_waiter	Skjul kasserer
+kot_show_station	Station
+kot_hide_station	Skjul station
+kot_show_table	Disk
+kot_hide_table	Skjul bord
+kot_show_kot_no	Bonnr.
+kot_hide_kot_no	Skjul bonnr.
+kot_width	Forhåndsvis ombrydning (sæt indholdsbredde på seddelfanen)
+kot_width_58	58 mm
+kot_width_80	80 mm
+kot_kind_heading	Bontype
+kot_kind_original	Original
+kot_kind_duplicate	Kopi
+kot_kind_modified	Ændret
+kot_kind_cancelled	Annulleret
+kot_style_heading	Feltets skriftstørrelse og vægt
+kot_style_title	Titel
+kot_style_item_qty	Vare · Antal
+kot_style_field_pick	Vælg felt
+kot_weight_regular	Almindelig
+kot_weight_bold	Fed
+kot_align	Justering
+kot_align_start	Start
+kot_align_center	Centreret
+kot_align_end	Slut
+content_width	Indholdsbredde (mm)
+content_width_bill	Regningens indholdsbredde (mm)
+content_width_kot	Bonindholdets bredde (mm)
+content_width_ph	Eller skriv en indholdsbredde, 40–210 mm
+content_width_help	Hvor bredt denne seddel udskrives. Regningen beholder sin egen bredde.
+content_width_bill_help	Hvor bredt kunderegningen udskrives. Standard 210 mm (side). 58 mm smal seddel, 80 mm bred seddel, 112 mm 4-tommer, 210 mm A4-bred. Skriv en værdi fra 40 til 210. Boner har deres egen bredde på seddelfanen.
+content_width_kot_help	Hvor bredt bonen udskrives. Standard 80 mm. 58 mm smal seddel, 80 mm bred seddel, 112 mm 4-tommer, 210 mm side. Skriv en værdi fra 40 til 210. Kunderegninger har deres egen bredde på fanen Regning.
+vp_paper_width	Indholdsbredde (mm)
+vp_paper_width_ph	Eller skriv en indholdsbredde, 40–210 mm
+vp_paper_width_help	Indholdsbredde sættes under Regnings- og seddelformat — særskilt for regningen (standard 210 mm) og bonen (standard 80 mm).
+kot_size	Skriftstørrelse
+kot_size_s	Lille
+kot_size_m	Normal
+kot_size_l	Stor
+std_size	Skriftstørrelse
+kot_copies	Kopier
+kot_copies_1	1
+kot_copies_2	2
+kot_copies_3	3
+kot_title_ph	Titel (tom = BON)
+kot_footer_ph	Backoffice-note (valgfri)
+kot_preview	Forhåndsvisning
+save_kot_format	Gem seddelformat
+test_kot_format	Testudskrift
+test_kot_sent	Bonforhåndsvisning sendt
+test_bill_format	Testregning
+test_bill_sent	Forhåndsvisning af regning sendt
+test_print_no_printer	Ingen printer til det job — vælg en på denne skærm
+kot_format_saved	Seddelformat gemt
+std_print	Regningens skriftstørrelse
+std_print_help	Skriftstørrelse til standard stående og liggende regningsjob på OS- / dokumentprintere (angiv punkter — ikke Lille/Normal/Stor). Samme størrelse i begge retninger.
+std_size_s	Lille
+std_size_m	Normal
+std_size_l	Stor
+save_std_print	Gem regningens skriftstørrelse
+std_print_saved	Regningens skriftstørrelse gemt
+print_brand_kit	Tryk brand-sæt
+print_brand_kit_help	Valgfrie stempel- og betalings-QR-billeder på regningsflader og LAN-kundedisplayet. Dynamisk UPI-QR fra VPA'en ovenfor virker stadig, når der ikke er sat et betalings-QR-billede.
+choose_stamp	Vælg stempel
+clear_stamp	Ryd stempel
+stamp_set	Stempel: på fil — vises på kundedisplayet og nævnes på trykte regninger
+stamp_none	Stempel: intet
+choose_payment_qr	Vælg betalings-QR
+clear_payment_qr	Ryd betalings-QR
+payment_qr_set	Betalings-QR: på fil — vises på kundedisplayet (erstatter beløbets UPI-QR dér)
+payment_qr_none	Betalings-QR: ingen — beløbs-QR fra UPI-id ved betaling
+aggregator_import	Aggregatorordrer (fil)
+aggregator_import_help	Valgfri lokal import: læg import_aggregator_orders.json i mappen med sikkerhedskopier (et array eller {"orders":[…]}), og tryk Importér. Stopper aldrig disken; live Zomato/Swiggy er Cloud.
+import_aggregator_file	Importér aggregatorfil
+team_pick_ph	Personale der skal rettes — navn, brugernavn eller vælg
+select_staff	Vælg dette personale
+rights_help	Pengehandlinger for denne person — tryk for at skifte: Tilladt → Kræver leder-PIN → Ikke tilladt. Udskriv regning igen gælder kun regninger; sektioner er tjeklisten nedenfor.
+dish_picker_help	Søg eller blad i vores varer, og tryk på en for at udfylde navn og foto — eller behold dit eget navn. Sæt din pris (0 er fint), og tryk Tilføj vare.
+close_dish_list	Luk varelisten
+own_item_name	Brug dette som dit eget varenavn
+on_your_menu	På medicinlisten
+edit	Ret
+schemes	Tilbud
+schemes_help	Køb-en-få-en, procent rabat og faste bundter. Eksempel: Køb 2 paracetamol, få 1 vitamin.
+scheme_bogo_ph	Køb 2 paracetamol, få 1 vitamin
+add_scheme	Tilføj BOGO
+schedule_ph	Timer — man-fre 07:00-11:00 eller aften 17:00-19:00=150
+upi_vpa_ph	UPI-id (VPA)
+upi_payee_ph	UPI-modtagernavn (valgfrit)
+upi_qr	UPI-QR
+show_upi_qr	Vis UPI-QR
+close_upi_qr	Luk
+upi_qr_help	Kunden scanner og betaler. Tryk Tag betaling, når de har betalt. Anden skærm: åbn server-URL /display på LAN.
+kot_recall	Hent frem
+recently_done	Nyligt færdige
+recall_kot_ph	Bonnr. der skal hentes frem
+role_help_customer	Rolle: Kunde — khata (de skylder os). Samme part kan også levere varer.
+role_help_both	Roller: Kunde + Leverandør — én part, khata og kreditorbog, netto i Rapporter.
+role_help_supplier	Rolle: Leverandør — vi skylder dem for indkøb.
+dine_in_pick_table	Bruges ikke i en diskbutik
+choose_table	Vælg disk
+change_table	Skift bord
+pick_table_banner	Vælg et bord til denne ordre
+items_word	varer
+items_section	Varer
+back_to_order	Tilbage til ordre
+new_items_head	Ikke sendt endnu
+price_ph	Pris
+price_ph_gst_inside	Pris ({tax} inkl.)
+cancel_needs_table	Disksalg bliver på bonen, indtil du tager betaling
+tax_rates_missing_hint	Ingen {tax}-sats på disse varer — sæt afgiftssats under Varer (priserne indeholder allerede {tax} under {tax} inklusive)
+taxable_value	Skattepligtigt beløb
+gst_inside_price_note	({tax} inkl.)
+start_with_template	Start med vores vareskabelon
+template_heading	Startvarer
+template_info	{c} kategorier og {d} varer med fotos, klar til at tilføje. Priser starter ved ₹0 — sæt dine bagefter.
+template_import	Importér hele skabelonen
+template_confirm	Tilføj {d} varer med deres kategorier? Varer du allerede har, bliver som de er.
+template_yes	Ja, importér
+template_importing	Importerer medicin…
+template_import_progress	Importerer… {d}/{t}
+template_done	Alle varer fra vores skabelon er på dine varer.
+template_imported	Tilføjede {d} varer og {c} kategorier — sæt deres priser på denne skærm
+client_template_heading	Importér katalog
+client_template_info	{title}: {c} kategorier, {d} varer med priser, fotos og aliasser. Kun manglende varer — navne du allerede har, bliver.
+client_template_import	Importér denne medicin
+client_template_confirm	Tilføj {d} varer fra {title}? Varer du allerede har, bliver som de er.
+client_template_importing	Importerer {title}…
+client_template_done	Alle varer fra {title} er på dine varer.
+client_template_imported	Tilføjede {d} varer og {c} kategorier fra {title}
+resv_heading	Reservationer
+resv_name_ph	Kundenavn
+resv_phone_ph	Telefon (valgfri)
+resv_guests_ph	Personer
+resv_when_ph	Hvornår — 20:30, i morgen 13:00
+resv_table_ph	Disk (valgfri)
+resv_add	Book
+resv_seat	Sat
+resv_none	Ingen bookinger på vej.
+guests_word	gæster
+delivery_by_ph	Udbringes af (bud eller personalets navn)
+kitchen_all_day	Skal tilberedes nu: {items}
+split_bill	Del regning
+split_go	Lav særskilt regning
+cancel	Annuller
+opening_client	Åbner klient…
+preparing_desk	Gør bordet klar…
+opening_server	Åbner server…
+creating_server	Opretter server…
+split_help	Tryk på de varer én kunde betaler for · {n} valgt
+split_send_first	Send seddel først — kun varer bagkontoret har, kan komme på en særskilt regning
+split_pick_some	Tryk først på varerne til den særskilte regning
+split_done	Særskilt regning lavet — den ligger på gulvet ved siden af denne disk
+split_marked	særskilt regning
+order_empty_pick	Ordren er tom — tryk Tilføj varer ovenfor for at vælge varer.
+add_dishes	Tilføj medicin
+order_so_far	På denne ordre: {n} · {total}
+no_dish_match	Ingen vare matcher “{q}”
+pick_dishes_help	Tryk på en vare for at tilføje den · vælg en kategori for at indsnævre listen
+pick_done	Færdig
+pick_done_dd	Færdig · {label}
+printer_route_mode	Hvis flere printere på dette sted
+printer_mode_first	Første der virker
+printer_mode_all	Udskriv på alle
+kot_show_area	Område
+kot_hide_area	Skjul område
+kot_show_item_hdr	Vare · Antal
+kot_hide_item_hdr	Skjul kolonner
+kot_show_title	Titellinje
+kot_hide_title	Skjul titel
+kot_field_order	Udskriftsrækkefølge
+kot_field_up	Flyt op
+kot_field_down	Flyt ned
+kot_field_cycle	Vælg næste
+kot_field_select	Vælg næste
+kot_field_time	Tid
+kot_field_kot_no	Bonnr.
+kot_field_area	Område
+kot_field_table	Disk
+kot_field_shop	Butiksnavn
+kot_field_waiter	Personale
+kot_field_station	Station
+app_template_blurb_extra	Desuden: ejer Zahir, admin Asif, kasserer Nawaz; forreste sidepanel; historik efter 4 timer; I dag-bjælke fra; kompakt regning.
+dishes_n	{n} varer
+recipe_ph	Opskrift (valgfri — bruges ikke i en diskbutik)
+reorder_ph	Køb mere ved
+set_reorder	Sæt genbestillingsniveau
+low_stock_alert	Løber tør — køb snart: {items}
+unpriced_note	{n} varer på dine varer har endnu ingen pris — de faktureres til 0, indtil du sætter en.
+show_unpriced	Vis kun varer uden pris
+show_all_dishes	Vis alle varer
+role_waiter	Kasserer
+role_kitchen	Butik
+role_title_rest_ph	Rolle (f.eks. Kaptajn, Køkkenchef)
+preset_help_rest	Kasserer: sælg. Leder: sælg + varer + annuller/ret.
+kind_raw	Magistrelt lager
+kind_resale	Købt medicin
+kind_dish	Tæl ikke lager
+buy_unit_ph	Enhed (kg, liter, stk.)
+add_another_way	+ Tilføj en anden måde
+parts_status	Indtastet {a} af {b} · {c} tilbage
+save_expense	Gem udgift
+rest_ph	Rest
+low_badge	Lav
+stock_empty	Intet på lager endnu — det du bogfører under Køb, vises her.
+recent_changes	Seneste ændringer
+lane_declared_label	Skattefaktura
+lane_owner_label	Kontantnota
+money_lane_bill	Regning: {lane}

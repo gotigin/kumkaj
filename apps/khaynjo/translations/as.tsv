@@ -1,0 +1,1351 @@
+# Assamese — অসমীয়া (as). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	ৰেষ্টুৰেণ্ট অৰ্ডাৰ, পাকঘৰ আৰু বহী। বিনামূলীয়া অফলাইন।
+unlock	আনলক
+pin_hint	মালিকৰ PIN 0000 ৰে আৰম্ভ
+sell	অৰ্ডাৰ
+buy	কিনা
+books	দিন বহী
+books_help	আজিৰ অৱস্থা। অৰ্ডাৰ = অৰ্ডাৰ আহিল। কিনা = ক্ৰয় আৰু খৰচ। পাৰ্টি = ধাৰৰ গ্ৰাহক আৰু যোগানকাৰী।
+buy_help	খৰচ ভাউচাৰ আৰু যোগানকাৰী বিল (ধন বাহিৰলৈ)। খাতাত থকাটো পাৰ্টি বহীত থাকে।
+sell_money_in	অৰ্ডাৰ লওক
+buy_money_out	খৰচ / যোগানকাৰী বিল
+record_purchase	ক্ৰয় লিখক
+add_expense	খৰচ ভাউচাৰ
+bank_book	বেংক বহী
+credit_help	পাৰ্টি আইডি অনন্য (নাম পুনৰাবৃত্তি হ’ব পাৰে)। গ্ৰাহকে খাতা চলায় (আমাৰ ধৰুৱা); যোগানকাৰীয়ে আমাক সামগ্ৰী বিক্ৰী কৰে (আমি তেওঁৰ ধৰুৱা); দুয়োটাই ঠিক। বহী পৃথক থাকে; প্ৰতিবেদনে নেট দেখুৱায়।
+party_kind_ph	ভূমিকা: গ্ৰাহক, যোগানকাৰী, দুয়োটা…
+reports_help	দিন বহী, ধৰুৱা আৰু পাওনাদাৰ, বেংক বহী, খৰচ ভাউচাৰ, লাভ আৰু লোকচান।
+reports_today	দিন বহী (আজি)
+reports_month	লাভ আৰু লোকচান (মাহ)
+reports_aging	বাকী / Dr-Cr
+reports_balance_sheet	ভাৰসাম্য পত্ৰ
+reports	প্ৰতিবেদন
+refresh	সতেজ
+undo	পূৰ্বৱত
+start_tracking	গণনা আৰম্ভ
+stock_minus	− ষ্টক
+stock_plus	+ ষ্টক
+settle_cash	নগদ শোধ
+settle_card	কাৰ্ডে শোধ
+items	মেনু আৰু বস্তু
+nav_items	মেনু
+more	অধিক
+your_items	আপোনাৰ মেনু
+items_help	প্ৰতিটো শাৰী এটা খাদ্য বা বস্তু (যেনে Masala Dosa)। তাৰ দাম আৰু পাকঘৰ ষ্টেচন যোগ কৰক। সম্পাদনাৰ বাবে টিপক।
+add_item	বস্তু যোগ কৰক
+new_item	নতুন বস্তু
+adding_item	নতুন বস্তু যোগ কৰিছে
+editing_item	সম্পাদনা
+save	সংৰক্ষণ কৰক
+remove	আঁতৰাওক
+removed_items	আঁতৰোৱা বস্তু
+removed_help	পুনৰুদ্ধাৰ কৰিলে বস্তু পূৰ্বৰ দৰেই মেনুত ঘূৰি আহে — দাম, ফটো আৰু শ্ৰেণী। আমাৰ খাদ্যৰ শেলফ কেতিয়াও আঁতৰোৱা নহয়, সেয়ে যিকোনো খাদ্য পুনৰ যোগ কৰিব পাৰি।
+restore_item	পুনৰুদ্ধাৰ কৰক
+empty_catalog	এতিয়াও কোনো বস্তু নাই। মেনু আৰু বস্তু খোলক, এটা যোগ কৰক (নাম + দাম), তাৰপিছত অৰ্ডাৰ লওক।
+total	মুঠ
+cash	নগদ
+upi	यूपीआई
+card	কাৰ্ড
+credit	পাৰ্টি
+clear	মচক
+ready_to_sell	বুকিঙৰ বাবে সাজু
+today_prefix	আজি
+today_mid	আজি
+owed	বাকী
+round_word	ৰাউণ্ড
+back	ঘূৰি
+sold_out	বিক্ৰী হ’ল
+restock	আকৌ ৰাখক
+not_tracked	গণনা নাই
+in_stock	ষ্টকত
+marked_sold_out	বিক্ৰী শেষ চিন
+add_upper	যোগ
+na	নাই
+qty	সংখ্যা
+unit_at	দাম
+actual	প্ৰকৃত
+applied	প্ৰয়োগ
+note_ph	টোকা (ঐচ্ছিক)
+rounded	ৰাউণ্ড
+split	ভাগ
+send_kot	ৰন্ধনশালালৈ পঠিয়াওক
+send_kot_to	পঠিয়াওক → {kitchens}
+send_kot_again	পিছৰ KOT ৰ বাবে খাদ্য যোগ কৰক
+send_kot_held	ৰখোৱা খাদ্য — পঠিয়াবলৈ ৰখোৱা আঁতৰাওক
+reprint_kot	বাছনি পুনৰ ছপা
+reprint_kot_ok	{n} খাদ্য পুনৰ · {slips} স্লিপ → {kitchens}
+reprint_kot_needed	প্ৰথমে KOT পঠিয়াওক — পাছত খাদ্য যোগ কৰি বাছনি ছপা
+reprint_kot_none_selected	সকলো পঠোৱা এৰা — ছপা কৰিবলৈ «ছপাত» টিপক
+reprint_kot_client	{place} ৰ বাবে পুনৰ ছপাওক ({n}) পঠিওৱা হ’ল — পাকঘৰে চাৰ্ভাৰত ছপাব
+print_cancelled_kot	সকলো বাতিল ছপা
+print_cancelled_kot_ok	{n} रद्द छापे · {slips} पर्ची → {kitchens}
+print_cancelled_kot_needed	বাতিল খাদ্য থকা মেজ খোলক
+print_cancelled_kot_none	এই অৰ্ডাৰত বাতিল নাই
+print_cancelled_kot_client	বাতিল ({n}) {place} পঠোৱা — চাৰ্ভাৰত ছপা
+kot_banner	বেনাৰ
+kot_banner_ph	বেনাৰ (খালী = নাই)
+kot_item_prefix	আইটেম উপসৰ্গ
+kot_item_prefix_ph	যেনে [CANCELLED] 
+kot_strike	খাদ্যৰ নাম কাট
+kot_strike_note	নোট কাট
+kot_strike_on	চলা
+kot_strike_off	বন্ধ
+bill_item_layout	আইটেম লেআউট
+bill_item_layout_columns	স্তম্ভ
+bill_item_layout_stacked	শাৰী
+bill_item_header	স্তম্ভ শিৰোনাম
+bill_item_hdr_item	আইটেম শিৰোনাম
+bill_item_hdr_qty	সংখ্যা শিৰোনাম
+bill_item_hdr_price	দাম শিৰোনাম
+bill_item_hdr_amount	ধন শিৰোনাম
+bill_item_name	খাদ্যৰ নাম
+bill_item_qty	পৰিমাণ
+bill_item_price	দাম
+bill_item_amount	পৰিমাণ
+bill_item_note	নোট
+bill_item_col_gap	স্তম্ভৰ ফাঁক
+bill_item_col_order	স্তম্ভৰ ক্ৰম
+bill_item_col_sep	স্তম্ভৰ ৰেখা
+bill_item_gap_tight	টান
+bill_item_gap_comfort	আৰামদায়ক
+bill_item_gap_wide	বহল
+bill_item_num_width	সংখ্যাৰ স্তম্ভ
+bill_item_num_compact	সৰু
+bill_item_num_comfort	আৰামদায়ক
+bill_item_num_wide	বহল
+bill_item_num_align	সংখ্যা শাৰী
+bill_item_gap_em	ফাঁক (em)
+bill_item_qty_min	সংখ্যা ন্যূনতম (em)
+bill_item_price_min	দাম ন্যূনতম (em)
+bill_item_amount_min	ধন ন্যূনতম (em)
+kot_item_qty_width	সংখ্যাৰ স্তম্ভ
+kot_item_num_align	সংখ্যা শাৰী
+bill_total_qty_label	মুঠ সংখ্যা লেবেল
+bill_total_subtotal_label	উপযোগ লেবেল
+bill_total_grand_label	মুঠ লেবেল
+bill_total_paid_label	পৰিশোধ লেবেল
+bill_meta_pair	একে শাৰীত লগত
+bill_pair_alone	অকলশৰীয়া
+bill_item_piece_on	চলা
+bill_item_piece_off	বন্ধ
+bill_total_qty	মুঠ পৰিমাণ
+bill_total_subtotal	উপমুঠ
+bill_total_grand	মুঠ
+reprint_incl	ছপাত
+reprint_skip	এৰক
+reprint_skip_meta	ৰিকভাৰি প্ৰিণ্ট এৰক
+kot_dest_hint	ছেটিংছ → প্ৰিণ্টাৰত {kitchens} ক দিয়া প্ৰিণ্টাৰত ছপা হয়
+kot_sent_hint	শেষৰ KOT {kitchens} লৈ গ’ল। পিছৰ টিকটৰ বাবে খাদ্য যোগ কৰিবলৈ টিপক — বা একেটা টিকটৰ বাবে KOT পুনৰ ছপাওক।
+kot_sent_printing	KOT {kitchens}লৈ পঠোৱা হ'ল — ছপা হৈ আছে
+kot_sent_not_printed	KOT {kitchens}লৈ পঠোৱা হ'ল, কিন্তু ছপা নহ'ল: {why}। পাকঘৰক জনাওক, তাৰ পিছত প্ৰিণ্টাৰ ঠিক কৰি পুনৰ ছপা কৰক।
+kot_sent_screen	KOT {kitchens}লৈ পঠোৱা হ'ল
+kot_queued_shop	{place}ৰ KOT → {kitchens} সংৰক্ষিত; দোকানৰ ডিভাইচে ইয়াক ছপা কৰিব
+kot_job_label	{place}ৰ KOT → {kitchens}
+kot_job_reached	{place}ৰ KOT {kitchens}ত পালে
+kot_unassigned	পাকঘৰ (ষ্টেচন নাই)
+kot_unassigned_held	ষ্টেচন নথাকাকৈ {n} ব্যঞ্জন হ’ল্ড — পঠিয়াবলৈ হ’ল্ড আঁতৰাওক
+kot_station_ph	ৰন্ধনশালা
+kot_station_dd	ৰন্ধনশালা
+kot_station_dd_n	পাকঘৰ · {stations}
+kot_set_station	এই ষ্টেচন ব্যৱহাৰ কৰক
+kot_station_applied	{n}টা খাদ্যত ষ্টেচন দিয়া হ’ল: {station}
+kot_station_cleared	{n}টা খাদ্যৰ পৰা ষ্টেচন আঁতৰোৱা হ’ল: {station}
+kot_station_needed	প্ৰথমে ৰন্ধনশালা ষ্টেচন বাছক
+kot_station_not_allowed	এই পাকঘৰ ব্যৱহাৰৰ অনুমতি নাই: {station}
+kot_station_none	এতিয়ালৈকে পাকঘৰ ষ্টেচন নাই — পাকঘৰ বা ছেটিংছ → এলেকা · ষ্টেচনত এটা যোগ কৰক
+pos_tab_items	যোগ কৰা
+pos_tab_payment	পেমেণ্ট
+hold_send	ৰখা
+hold_send_on	ৰখোৱা
+hold_send_meta	ৰখোৱা — এই KOT ত নহয়
+station_remove	ষ্টেচন আঁতৰাওক
+station_remove_ph	আঁতৰাবলৈ তালিকাত ষ্টেচন টিপক
+station_removed	ষ্টেচন আঁতৰোৱা হ’ল: {name}
+settings_hub_title	ছেটিংছ
+settings_hub_help	এবাৰত এটা অংশ খোলক — কম স্ক্ৰ'ল, স্পষ্ট বাছনি।
+settings_back	ঘূৰি
+settings_sec_language	ভাষা আৰু মুদ্ৰা
+settings_sec_country	দেশ আৰু কৰ
+settings_sec_tills	অতিৰিক্ত টিল আৰু শাখা
+settings_sec_brand	আপোনাৰ ব্ৰেণ্ড
+settings_sec_units	একক আৰু ৰূপান্তৰ
+settings_sec_pickers	এলেকা · ষ্টেচন · কৰৰ হাৰ
+settings_sec_printers	প্ৰিণ্টাৰ
+settings_sec_bill	বিল আৰু KOT বিন্যাস
+settings_sec_selling	আঁচনি আৰু বিক্ৰী
+bill_kot_tab_bill	বিল
+bill_kot_tab_kot	KOT
+settings_sec_alerts	সতৰ্কবাণী
+alerts_help	অৱস্থাৰ বাৰ্তা আপোনাৰ বাবে স্ক্ৰীনত কিমান সময় থাকিব (এই লগইনৰ বাবে)।
+snack_secs_ph	ছেকেণ্ড (3–60, ডিফল্ট 10)
+snack_secs_save	সতৰ্কবাণীৰ সময় সাঁচক
+snack_secs_saved	সতৰ্কবাণীৰ সময় সাঁচা হ'ল — {n} ছেকেণ্ড
+settings_sec_backup	বেকআপ আৰু পুনৰুদ্ধাৰ
+settings_sec_diag	ডায়গনষ্টিক্স
+diag_privacy_help	লগ এই ডিভাইচতে থাকে। গোপন তথ্য (PIN, পাছৱৰ্ড) কেতিয়াও সংৰক্ষণ কৰা নহয়। ডিভাইচৰ বাহিৰলৈ পেকেজ পঠিয়াবলৈ প্ৰতিবাৰ আপোনাৰ স্পষ্ট অনুমোদন লাগে — কেতিয়াও বিক্ৰী কৰা বা তৃতীয় পক্ষক দিয়া নহয়।
+diag_level	বিৱৰণৰ স্তৰ
+diag_level_error	ত্ৰুটি
+diag_level_warn	সতৰ্কবাণী
+diag_level_info	তথ্য
+diag_level_debug	ডিবাগ
+diag_support_start	30 মিনিটৰ সহায় অধিৱেশন আৰম্ভ কৰক
+diag_support_stop	সহায় অধিৱেশন শেষ কৰক
+diag_support_started	সহায় অধিৱেশন চলি আছে — 30 মিনিট ডিবাগ বিৱৰণ
+diag_support_ended	সহায় অধিৱেশন শেষ হ’ল
+diag_export_local	স্থানীয় কপি ৰপ্তানি কৰক
+diag_export_local_done	স্থানীয় ডায়েগন’ষ্টিকছ {path} ত সাজু — কপি ক’ত সাঁচিব বাছক
+diag_approve_send	ডিভাইচৰ বাহিৰলৈ পঠিয়াবলৈ অনুমোদন দিয়ক
+diag_send_help	অনুমোদন এটা পেকেজৰ বাবে, তাৰ পিছত শেষ হয়। অস্থায়ী — কেৱল সামগ্ৰী ঠিক বা উন্নত কৰিবলৈ। তৃতীয় পক্ষৰ সৈতে ভাগ কৰা নহয়। Linux, Windows, macOS আৰু Android ত চলে।
+diag_send_approved	এটা পেকেজ পঠিয়াবলৈ অনুমোদন পোৱা গ’ল (সোনকালে শেষ হ’ব)
+diag_export_send	পঠিওৱা পেকেজ সৃষ্টি কৰক (অনুমোদন লাগে)
+diag_export_send_done	পঠিওৱা পেকেজ {path} ত সাজু — ক’ত সাঁচিব বাছক, তাৰ পিছত কেৱল Kumkaj সহায়লৈ পঠিয়াওক
+diag_save_bundle	ডায়েগন’ষ্টিকছ কপি সাঁচক
+diag_bundle_saved	ডায়েগন’ষ্টিকছ কপি {path} ত সাঁচা হ’ল
+diag_bundle_failed	ডায়েগন’ষ্টিকছ কপি সাঁচিব পৰা নগ’ল — পুনৰ চেষ্টা কৰক
+diag_clear	ডায়েগন’ষ্টিক লগ মচক
+diag_cleared	ডায়েগন’ষ্টিক লগ মচা হ’ল
+sidebar_settings	ছাইডবাৰ
+sidebar_settings_help	কাষৰ পটিৰ দৰে একে আইকন। ক্ৰম সলনি কৰিবলৈ শাৰী টানক। দেখুৱাবলৈ বা লুকুৱাবলৈ ছুইচ সলনি কৰক। ছেটিংছ আৰু লক সদায় পটিত থাকে।
+sidebar_always_on_short	সদায় অন
+sidebar_back_settings	ঘূৰি
+sidebar_shown	দেখুওৱা
+sidebar_hidden	লুকুওৱা
+sidebar_always_on	সদায় পটিত
+sidebar_shown_hint	কাষৰ পটি / তলৰ টেবত দেখা যায়
+sidebar_hidden_hint	পটিৰ পৰা লুকুওৱা
+sidebar_menu_items	মেনু আৰু বস্তু
+sidebar_enable_all	সকলো অন কৰক
+sidebar_disable_all	সকলো অফ কৰক
+sidebar_order_saved	ছাইডবাৰৰ ক্ৰম সাঁচা হ’ল
+sidebar_visibility_saved	ছাইডবাৰৰ দৃশ্যমানতা সাঁচা হ’ল
+amounts_hide	লুকুৱাওক
+amounts_show	দেখুৱাওক
+printers_none_hint	প্ৰথমে এই ডিভাইচত প্ৰিণ্টাৰ সাঁচক, তাৰ পিছত ইয়াক বিল বা কোনো পাকঘৰত যোগ কৰক
+counter	কাউণ্টাৰ
+dine_in	বহি খোৱা
+takeaway	পাৰ্চেল
+order	অৰ্ডাৰ
+tables	মেজ
+kitchen	ৰন্ধনশালা
+sales	বিক্ৰী
+sales_refunds	বিক্ৰী আৰু ঘূৰাই
+day_close	দিন বন্ধ
+reports_expenses	প্ৰতিবেদন আৰু খৰচ
+nav_reports	প্ৰতিবেদন
+nav_settings	ছেটিংছ
+nav_lock	লক
+no_sale_yet	এতিয়ালৈ কোনো বিক্ৰী হোৱা নাই
+favorites	পছন্দৰ
+favorites_help	আপুনি সঘনাই বিক্ৰী কৰা বস্তু, আপোনাৰ লগইনৰ বাবে সাঁচি থোৱা। এটা বিলত যোগ কৰক, বা তলৰ সকলো বস্তুৰ পৰা আপোনাৰ তালিকা বনাওক।
+your_favorites	আপোনাৰ পছন্দৰ
+all_items	সকলো বস্তু
+frequent	সঘনে
+added_items	যোগ কৰা
+added_items_empty	এই অৰ্ডাৰত এতিয়াও একো নাই — All items বা শ্ৰেণীৰ পৰা যোগ কৰক।
+frequent_config_help	সম্পূৰ্ণ বিলৰ পৰা সৰ্বাধিক বিক্ৰী। কেইদিন চোৱা আৰু কিমান দেখুওৱা ইয়াত সলনি কৰক।
+frequent_days_ph	দিন (1)
+frequent_limit_ph	আইটেম (24)
+frequent_apply	প্ৰয়োগ
+frequent_saved	সঘনে: শেষ {d} দিন, শীৰ্ষ {n} — {c}টা খাদ্য
+frequent_empty	এই সময়ছোৱাত সম্পূৰ্ণ বিক্ৰী নাই — বিল মীমাংসা কৰক (ছেটিঙত ₹0 অনুমোদিত হ'লে) ইয়াত দেখা যাব।
+zero_sales	শূন্য মূল্য বিক্ৰী
+zero_sales_help	₹0 খাদ্য আৰু ₹0 পেমেণ্টৰ অনুমতি দিয়ক। বন্ধ থাকিলে পেমেণ্টত ধন লাগিব।
+zero_sales_on	শূন্য বিক্ৰী: চালু
+zero_sales_off	শূন্য বিক্ৰী: বন্ধ
+zero_sales_saved_on	শূন্য বিক্ৰীৰ অনুমতি সংৰক্ষিত (চালু)
+zero_sales_saved_off	শূন্য বিক্ৰীৰ অনুমতি সংৰক্ষিত (বন্ধ)
+floor_areas_help	এলেকা ফ্লোৰৰ কোঠা/জ’ন (Dine In, Parcel, AC …)। প্ৰথমে এলেকা যোগ কৰক, তাৰ পিছত মেজ — প্ৰত্যেক এলেকা পৃথক গোট।
+area_new_ph	নতুন এলেকা / কোঠা (যেনে AC, Garden)
+add_area	এলেকা যোগ
+area_added	এলেকা “{name}” প্ৰস্তুত — তাত মেজ যোগ কৰক
+no_favorites	এতিয়ালৈ একো পছন্দ নাই — তলৰ তালিকাৰ পৰা বস্তু যোগ কৰক।
+add_to_bill	বিলত যোগ কৰক
+added	যোগ কৰা হ’ল
+owes_word	ঋণী
+selected_word	বাছনি কৰা হ’ল
+chip_clear_credit	পৰিষ্কাৰ — বাকী দিয়ক বা আগধন লওক
+chip_missing_customer	বাছনি কৰা গ্ৰাহক পোৱা নাই — পুনৰ বাছক
+chip_no_customer	এতিয়ালৈ কোনো গ্ৰাহক নাই — নাম লিখক, তাৰ পিছত Credit টিপক
+credit_summary_fmt	{} গ্ৰাহক · মুকলি বাকী {} · আগধন ৰখা {}
+recent_label	শেহতীয়া:
+kot_new_waiting	নতুন — অপেক্ষাত
+kot_preparing	প্ৰস্তুত হৈ আছে
+kot_ready_serve	সাজু — পৰিৱেশন কৰক
+kot_done_cap	সম্পূৰ্ণ
+kot_cancelled	বাতিল
+kot_start_btn	আৰম্ভ কৰক
+kot_mark_ready	সাজু বুলি চিহ্নিত কৰক
+kot_done_btn	হৈ গ’ল
+table_free	খালী — অৰ্ডাৰ আৰম্ভ কৰিবলৈ টেপ কৰক
+start_order	অৰ্ডাৰ আৰম্ভ কৰক
+open_bill	বিল খোলক
+collect_payment	পৰিশোধ লওক
+table_running	চলি আছে
+payment_pending	পৰিশোধ বাকী
+collect_at_counter	কাউণ্টাৰত লওক
+inventory	ষ্টক
+inventory_stock	ষ্টক আৰু গণনা
+branches	শাখা
+branches_org	শাখা আৰু সংগঠন
+credit_customers	ধাৰৰ গ্ৰাহক
+customer_name_ph	পাৰ্টিৰ নাম
+new_customer_ph	নতুন পাৰ্টিৰ নাম
+item_name_ph	বস্তুৰ নাম (যেনে Masala Dosa)
+item_price_ph	দাম
+start_template	পণ্য
+team	দল
+team_pins	দল আৰু পিন
+my_pin_settings	মোৰ PIN
+settings_hub_help_my_pin	এই ডিভাইচত ছাইন-ইন থকা ব্যক্তিৰ আনলক PIN সলনি কৰক।
+team_self_help	কেৱল আপুনি আপোনাৰ আনলক PIN (আৰু ঐচ্ছিক লগইন পাছৱৰ্ড) সলনি কৰিব পাৰে। অন্য স্ক্ৰীন বা অধিকাৰ লাগিলে মালিকক কওক।
+backup_settings	বেকআপ আৰু ছেটিং
+lock_app	লক
+pick	বাছক
+select	নিৰ্বাচন
+advance	আগুৱাই
+owner	মালিক
+staff	কৰ্মচাৰী
+photo	ফটো
+auto	স্বয়ংক্ৰিয়
+prev	আগৰ
+next	পৰৱৰ্তী
+ok	ঠিক
+this_shop	চাৰ্ভাৰ মোড
+extra_till	ক্লায়েণ্ট মোড
+off	বন্ধ
+tables_kitchen	টেবুল আৰু পাকঘৰ
+server	চাৰ্ভাৰ
+client	ক্লায়েণ্ট
+language_currency	ভাষা আৰু মুদ্ৰা
+language	ভাষা
+choose_language	আপোনাৰ ভাষা বাছক
+language_setup_hint	এই ডিভাইচৰ ভাষা অনুসৰণ কৰক, বা নিজে এটা বাছক।
+lang_follow_platform	ডিভাইচৰ ভাষা ব্যৱহাৰ কৰক
+lang_pick_user	বাছনি কৰা ভাষা ব্যৱহাৰ কৰক
+lang_platform_now	এতিয়া ডিভাইচৰ ভাষা
+selected_language	বাছনি কৰা
+continue	আগবাঢ়ক
+this_device	এই ডিভাইচ
+device_use_q	এই ডিভাইচটো কেনেকৈ ব্যৱহাৰ হ’ব?
+last_server_mode	আগতে চাৰ্ভাৰ আছিল — আগবাঢ়িবলৈ টেপ কৰক
+last_client_mode	আগতে ক্লায়েণ্ট আছিল — আগবাঢ়িবলৈ টেপ কৰক
+choose_server	চাৰ্ভাৰ বাছক
+choose_server_hint	এই ডিভাইচত ইতিমধ্যে চাৰ্ভাৰ আছে। এটা খোলক, বা আন ব্যৱসায়ৰ বাবে নতুন চাৰ্ভাৰ বনাওক।
+create_new_server	নতুন চাৰ্ভাৰ বনাওক
+open_server	খোলক
+new_server_name_ph	নতুন চাৰ্ভাৰৰ নাম (ঐচ্ছিক)
+server_remove_pin_ph	চাৰ্ভাৰ আঁতৰাবলৈ Owner PIN
+only_owner_remove_server	কেৱল Owner চাৰ্ভাৰ আঁতৰাব পাৰে
+owner_pin_remove_server	চাৰ্ভাৰ আঁতৰাবলৈ Owner PIN লাগে
+device_setup_help	চাৰ্ভাৰে বহী ইয়াতে ৰাখে। ক্লায়েণ্ট এটা চাৰ্ভাৰৰ সৈতে যোৰ হয়।
+app_template_heading	ৰাজধানী এপ টেমপ্লেট
+app_template_blurb	ৰাজধানী মেনু লোড কৰে; মালিক জহিৰ (zahir), এডমিন আছিফ (asif, PIN 1111), ৱেটাৰ নৱাজ (nawaz, PIN 0000); FOH ছাইডবাৰ; ইতিহাস 4 ঘণ্টাৰ পিছত মচা যায় (আৰু বেকআপত এতিয়াই মচক); আজিৰ পটি অফ; ঠেক ট্ৰেৰ বাবে সৰু KOT + সাধাৰণ মাৰ্জিন। ছাইডবাৰৰ বাকীবোৰ ছেটিংছত পুনৰ অন কৰিব পাৰি।
+app_template_apply	ৰাজধানী এপ টেমপ্লেট
+app_template_skip	এতিয়া এৰক
+app_template_status	চাৰ্ভাৰ সাজু — ৰাজধানী এপ টেমপ্লেট প্ৰয়োগ কৰক, বা এৰক
+app_template_importing	{title} প্ৰয়োগ কৰা হৈছে…
+currency	মুদ্ৰা
+backup	বেকআপ
+use	ব্যৱহাৰ কৰক
+dont_use	ব্যৱহাৰ নকৰিব
+add_branch	শাখা যোগ কৰক
+add_conversion	ৰূপান্তৰ যোগ কৰক
+add_dishes_items	খাদ্য আৰু বস্তু যোগ কৰক
+add_item_plain	বস্তু যোগ কৰক
+add_note	টোকা যোগ কৰক
+add_opening_balance	আৰম্ভণি বেলেন্স যোগ কৰক
+add_staff	কৰ্মচাৰী যোগ কৰক
+add_station	ষ্টেচন যোগ কৰক
+add_table	টেবুল যোগ কৰক
+add_unit	একক যোগ কৰক
+add_use_name	এই নাম যোগ কৰক / ব্যৱহাৰ কৰক
+allow_extra_tills	অতিৰিক্ত টিল অনুমতি দিয়ক
+amend	সংশোধন
+apply_country_pack	দেশ পেক প্ৰয়োগ কৰক
+datetime_appearance	তাৰিখ আৰু সময়ৰ ৰূপ
+datetime_appearance_help	বহীয়ে ভিতৰত বছৰ-আগত RFC3339 ৰাখে। এইবোৰে কেৱল বিল, KOT, প্ৰতিবেদন আৰু স্ক্ৰীণত তাৰিখ আৰু ঘড়ী কেনেকৈ দেখা যায় সেয়া সলনি কৰে।
+datetime_example	এতিয়াৰ উদাহৰণ: {ex}
+date_order	তাৰিখৰ ক্ৰম
+date_order_dmy	দি/মা/ব
+date_order_mdy	মা/দি/ব
+date_order_ymd	ব-মা-দি
+time_format	ঘড়ী
+time_format_24h	24 ঘণ্টা
+time_format_12h	12 ঘণ্টা
+attach_bill_photo	বিল ফটো সংলগ্ন কৰক
+attach_pdf	PDF সংলগ্ন কৰক
+attach_photo	ফটো সংলগ্ন কৰক
+attachments_last_expense	সংলগ্ন (শেষ খৰচ)
+bank	বেংক
+bank_in	বেংকত জমা
+bank_out	বেংকৰ পৰা উলিয়াওক
+bank_reconciliation	বেংক মিলন (আপোনাৰ বেংক ষ্টেটমেণ্টৰ সৈতে টিক কৰক)
+bank_to_till	বেংক → টিল
+book_add_dish	বুক — খাদ্য / বস্তু যোগ কৰক
+book_opening_credit	বুক — আৰম্ভণি ধাৰ
+branch_name_sell_ph	যি শাখাৰ পৰা বিক্ৰী হ’ব তাৰ নাম
+bring_my_book	মোৰ বহী আনক
+business_tax_id_ph	ব্যৱসায় কৰ আইডি
+caption_bank	বেংক
+caption_bills	বিল
+caption_outstanding	বাকী
+caption_payments_today	আজিৰ পৰিশোধ
+caption_today	আজি
+card_amount_ph	কাৰ্ডৰ পৰিমাণ
+cash_amount_ph	নগদ পৰিমাণ
+cash_memo	কেশ মেমো
+choose_icon	আইকন বাছক
+choose_logo	ল’গ’ বাছক
+clear_icon	আইকন আঁতৰাওক
+clear_photo	ফটো আঁতৰাওক
+copy_day_book_csv	দিন বহী CSV কপি
+copy_day_close	দিন বন্ধ কপি কৰক
+copy_items_csv	বস্তু CSV কপি
+copy_outstanding_csv	বাকী CSV কপি
+copy_parties_csv	পাৰ্টি CSV কপি
+copy_party_ledger_csv	পাৰ্টি বহী CSV কপি
+copy_receipt	ৰচিদ কপি কৰক
+share_whatsapp	ৱাটছএপ শ্বেয়াৰ
+lan_pages_heading	Wi‑Fi ত অতিথি পৃষ্ঠা
+lan_pages_help	দোকানৰ Wi‑Fiত অতিথিৰ পৃষ্ঠা চলে: ডিছপ্লে ব'ৰ্ড, টোকেন, এক্সপো, কিয়স্ক, মেজৰ QR আৰু মতামত। মোবাইল ডাটাত থকা অতিথিৰ বাবে পিছত Cloud লাগিব। ইণ্টাৰনেট থাকিলে কাৰ্ড টাৰ্মিনেল / পৰিশোধ লিংক ঐচ্ছিক — ই কেতিয়াও কাউণ্টাৰ নাৰোধে।
+diag_send_heading	এই ডিভাইচৰ পৰা বাহিৰলৈ শ্বেয়াৰ
+kot_dest_heading	ৰন্ধনশালা ষ্টেচন
+optional_login_heading	ঐচ্ছিক লগইন
+rights_heading	অধিকাৰ
+ops_panel	স্থানীয় কাম
+crm_heading	অতিথি আৰু বাৰ্তা
+crm_help	জন্মদিন, লয়ালটি — SMS/WhatsApp সার। {name}, {points}। গৰাকী পঠায়।
+crm_queue_sms	SMS সার
+crm_queue_wa	WhatsApp সার
+crm_seg_bday_week	জন্মদিন সপ্তাহ
+crm_seg_bday_month	জন্মদিন মাহ
+crm_seg_phone	ফোন থকা
+crm_seg_loyalty	লয়ালটি
+crm_seg_inactive	নিষ্ক্ৰিয়
+crm_seg_top	শীৰ্ষ খৰচ
+birthday_ph	জন্মদিন (MM-DD বা YYYY-MM-DD)
+crm_message_ph	শুভ জন্মদিন {name}! আপোনাৰ {points} পইণ্ট আছে।
+till_apply_redeem	বিলত প্ৰয়োগ
+till_clear_redeem	ৰিডিম মচক
+till_wallet_topup	ৱালেট টপ-আপ
+till_issue_voucher	ভাউচাৰ ইছ্যু
+till_points_ph	ৰিডিম পইণ্ট
+till_wallet_ph	ৱালেট খৰচ
+till_voucher_code_ph	ভাউচাৰ ক'ড
+till_voucher_amt_ph	ভাউচাৰ পৰিমাণ (খালী = সকলো)
+till_wallet_topup_ph	ৱালেট টপ-আপ পৰিমাণ
+till_voucher_issue_amt_ph	নতুন ভাউচাৰ পৰিমাণ
+till_voucher_issue_code_ph	নতুন ভাউচাৰ ক'ড
+split_evenly	সমান ভাগ
+waitlist	ৱেইটলিষ্ট
+fire_course	ক'ৰ্ছ পঠিয়াওক
+hold_item	ৰখা
+waiter_call	ৱেইটাৰ মাতক
+waitlist_add	ৱেইটলিষ্টত যোগ
+floor_view_grid	গ্ৰিড
+floor_view_layout	লেআউট
+floor_layout_x	X
+floor_layout_y	Y
+floor_layout_w	W
+floor_layout_h	H
+floor_layout_save	লেআউট সংৰক্ষণ
+floor_layout_open	টেবুল খোলক
+floor_layout_edit	লেআউট সম্পাদনা
+floor_layout_pick	লেআউট সলনি কৰিবলৈ টেবুল টেপ কৰক
+floor_layout_saved	টেবুল লেআউট সংৰক্ষিত
+floor_layout_nudge_left	← 20
+floor_layout_nudge_right	→ 20
+floor_layout_nudge_up	↑ 20
+floor_layout_nudge_down	↓ 20
+sibling_pickers_help	ইউনিটৰ দৰে On/Off — এলেকা, ষ্টেচন, কৰ হাৰ দৈনন্দিন পিকাৰৰ পৰা লুকুৱাওক; পেক ডিফ'ল্ট থাকিব।
+bulk_price_apply	বাল্ক দাম প্ৰয়োগ
+card_terminal_optional	কাৰ্ড টাৰ্মিনেল / পেমেণ্ট লিংক (ইণ্টাৰনেট থাকিলে ঐচ্ছিক)
+copy_report	প্ৰতিবেদন কপি কৰক
+counted_cash_ph	ড্ৰয়াৰত গণা নগদ
+country_tax	দেশ আৰু কৰ
+tax_chrome	টিলত কৰৰ লেবেল
+tax_chrome_help	অফ থাকিলে অৰ্ডাৰ ডেস্কে GST/কৰ অনুমানৰ শাৰী আৰু দামত-GST ইংগিত লুকুৱায়। কৰৰ হাৰ আৰু দেশ আৰু কৰ ছেটিংছ থাকে — লেবেল যিকোনো সময়ত পুনৰ অন কৰক। ৰাজধানী এপ টেমপ্লেট ইয়াক অফ ৰাখি আৰম্ভ হয়।
+tax_chrome_on	দেখুৱাওক
+tax_chrome_off	লুকুৱাওক
+tax_chrome_saved_on	টিলত কৰৰ লেবেল
+tax_chrome_saved_off	টিলত কৰৰ লেবেল লুকুওৱা
+tax_invoice_till	টিলত কৰ চালান
+tax_invoice_help	অফ থাকিলে বিল কেৱল কেশ মেমো হয় আৰু অৰ্ডাৰ ডেস্কত কৰ চালান / কেশ মেমো চিপ লুকাই থাকে। ৰাজধানী এপ টেমপ্লেট ইয়াক অফ ৰাখি আৰম্ভ হয় — কৰ চালান পুনৰ বাছিবলৈ যিকোনো সময়ত দেখুৱাওক অন কৰক।
+tax_invoice_on	দেখুৱাওক
+tax_invoice_off	লুকুৱাওক
+tax_invoice_saved_on	টিলত কৰ চালান
+tax_invoice_saved_off	কৰ চালান লুকুওৱা — কেৱল কেশ মেমো
+pay_methods	পেমেণ্টৰ উপায়
+pay_methods_help	পেমেণ্ট লওক-ত কোনবোৰ চিপ দেখা যাব। নগদ সদায় থাকে। ৰাজধানী এপ টেমপ্লেট কেৱল নগদৰে আৰম্ভ হয় — UPI / কাৰ্ড / ধাৰ / ভাগ ইয়াত পুনৰ অন কৰক।
+create_backup	বেকআপ বনাওক
+credit_limit_heading	ঋণ সীমা (বাছনি কৰা / নাম থকা পাৰ্টি)
+day_close_summary	দিন বন্ধ সাৰাংশ
+delete_party	বাছনি কৰা পাৰ্টি মচক
+delivery	ডেলিভাৰী
+done_open_books	হ’ল — বহী খোলক
+drawer_count	ড্ৰয়াৰ গণনা (ঐচ্ছিক)
+expense_heading	খৰচ
+export_day	দিন ৰপ্তানি কৰক
+extra_note_bill_ph	এই বিল / বিক্ৰীত অতিৰিক্ত টোকা
+extra_note_expense_ph	শেষ খৰচত অতিৰিক্ত টোকা
+extra_tills_heading	অতিৰিক্ত টিল
+other_devices_help_heading	অন্য ডিভাইচ ছেট আপ কৰক
+other_devices_help	এই ডিভাইচত (চাৰ্ভাৰ): অতিৰিক্ত টিল → অতিৰিক্ত টিল অনুমতি দিয়ক। যোৰ কৰা ক'ড আৰু ৱাই‑ফাই ঠিকনা টোকা কৰক। দেখা গ'লে অন্য ডিভাইচ সংযোগ কৰিবলৈ দিয়ক টিপক। কম্পিউটাৰত এই কম্পিউটাৰেৰে আৰম্ভ কৰক টিপক। প্ৰতিটো অন্য ডিভাইচত: এপ ইনষ্টল কৰক, ক্লায়েণ্ট মোড বাছক, দোকানৰ চাৰ্ভাৰ বিচাৰক (বা ঠিকনা লিখক), যোৰ কৰা ক'ড দিয়ক, এতিয়াই যোৰ কৰক। ৱাই‑ফাই নামিলে অৰ্ডাৰ ডিভাইচত থাকি চাৰ্ভাৰে উত্তৰ দিলে যায়।
+forget_shop	এই দোকান পাহৰক
+goods_received	সামগ্ৰী পোৱা গ’ল
+import_day	দিন আমদানি কৰক
+import_items_csv_plain	বস্তু CSV আমদানি…
+import_parties_csv	পাৰ্টি CSV আমদানি…
+item_name	বস্তুৰ নাম
+kitchen_printing	পাকঘৰ ছাপা
+login_id_ph	লগইন আইডি
+mark_cleared	ক্লিয়াৰ চিহ্নিত কৰক
+new_party_clear	নতুন পাৰ্টি (ফৰ্ম মচক)
+new_party_kind_supplier_ph	নতুন পাৰ্টিৰ ধৰণ (যোগানকাৰী)
+next_country	পৰৱৰ্তী দেশ
+next_order	পৰৱৰ্তী অৰ্ডাৰ (ডেস্ক মচক)
+note_gstin_ph	টোকা / GSTIN / চুক্তি স্মাৰক
+notes_attach_party	টোকা আৰু সংলগ্ন (বাছনি কৰা পাৰ্টি)
+notes_attach_sale	টোকা আৰু সংলগ্ন (বাছনি কৰা বিক্ৰী)
+on_account_ap	খাতাত (AP)
+org_optional_ph	সংগঠন (ঐচ্ছিক)
+paid_by	পৰিশোধক
+paid_now	এতিয়া পৰিশোধ
+pair_now	এতিয়া যোৰ কৰক
+pairing_code_ph	যোৰ কোড
+party_name_selected_ph	পাৰ্টিৰ নাম (বা বাছনি কৰা ব্যৱহাৰ কৰক)
+password_ph	পাছৱৰ্ড
+pay_ap_card	AP কাৰ্ডে পৰিশোধ
+pay_ap_cash	AP নগদ পৰিশোধ
+pay_ap_heading	আমি তেওঁলোকক দিবলগীয়া (AP)
+pay_ap_upi	AP UPI পৰিশোধ
+pay_selected_heading	বাছনি কৰা পৰিশোধ (ঋণ মেটাওক / আগধন)
+pick_from_items	আমাৰ বস্তুৰ পৰা বাছক
+prev_country	আগৰ দেশ
+print_open	ছাপাওক / খোলক
+reason_amend_ph	সংশোধন / বাতিল / ঘূৰাইৰ কাৰণ
+reason_note_ph	কাৰণ / টোকা (নষ্ট, গণনা, …)
+record_day_close	দিন বন্ধ লিপিবদ্ধ কৰক
+refresh_from_shop	দোকানৰ পৰা সতেজ কৰক
+refund	ঘূৰাই
+remove_selected	বাছনি কৰা আঁতৰাওক
+request_bill	বিল খোজক
+restaurant_name_ph	ৰেষ্টুৰেণ্টৰ নাম (ঐচ্ছিক)
+restore_backup	বেকআপ পুনৰুদ্ধাৰ কৰক
+role_both	দুয়োটা
+role_admin	এডমিন
+role_cashier	কেশ্বিয়াৰ
+role_customer	গ্ৰাহক
+role_manager	মেনেজাৰ
+history_retention	ব্যৱসায়ৰ ইতিহাস
+history_retention_help	পুৰণি বিক্ৰী আৰু KOT নিজে নিজে মচক। মেনু, কৰ্মচাৰী আৰু ছেটিংছ থাকে। এতিয়াই মচক সকলো ব্যৱসায়িক শাৰী মচি ছেটআপ ৰাখে।
+history_off	ৰাখক
+history_day_close	দিন বন্ধত
+history_after_hours	ঘণ্টাৰ পিছত
+history_hours_ph	ঘণ্টা (1–168, পূৰ্বনিৰ্ধাৰিত 4)
+history_hours_save	ঘণ্টা সাঁচক
+history_clear_now	ইতিহাস এতিয়াই মচক
+history_cleared	ব্যৱসায়ৰ ইতিহাস মচা হ’ল — ছেটআপ ৰখা হ’ল
+history_retention_saved	ইতিহাস মচাৰ ছেটিং সাঁচা হ’ল
+history_hours_saved	ইতিহাসৰ ঘণ্টা সাঁচা হ’ল
+history_owner_only	কেৱল মালিক বা এডমিনে ইতিহাস মচিব পাৰে
+rollup	ৰোল-আপ
+save_brand	ব্ৰেণ্ড সংৰক্ষণ কৰক
+save_business_id	ব্যৱসায় আইডি আৰু সেৱা % সংৰক্ষণ কৰক
+save_business_name	ব্যৱসায়ৰ নাম সংৰক্ষণ কৰক
+save_features	বাছনি কৰা কৰ্মচাৰীৰ বৈশিষ্ট্য সংৰক্ষণ কৰক
+save_features_named	{name} সাঁচক
+save_features_ok	{name} ৰ ছেটআপ সাঁচা হ’ল
+save_names	নাম সংৰক্ষণ কৰক
+second_way	দ্বিতীয় উপায়
+server_ip_ph	চাৰ্ভাৰ IP (যেনে 192.168.1.10)
+set_credit_limit	ঋণ সীমা নিৰ্ধাৰণ কৰক
+set_login_selected	বাছনি কৰাত লগইন নিৰ্ধাৰণ কৰক
+set_login_named	{name}ত লগইন নিৰ্ধাৰণ কৰক
+shop	দোকান
+show	দেখুৱাওক
+spreadsheet_csv	স্প্ৰেডশ্বীট (CSV)
+start_fresh	নতুনকৈ আৰম্ভ কৰক
+stop_extra_tills	অতিৰিক্ত টিল বন্ধ কৰক
+floor_cols_ph	স্তম্ভ
+floor_cols_fit	স্ক্ৰীণ অনুসৰি
+floor_cols_fit_sub	ইয়াত {n}টা সোমায়
+floor_cols_fits	সোমায়
+floor_cols_scroll	কাষলৈ স্ক্ৰ'ল
+floor_cols_min	স্তম্ভ: অন্ততঃ 1 — বা স্ক্ৰীণ অনুসৰি ৰাখিবলৈ খালী এৰক
+floor_zoom_auto	স্বয়ংক্ৰিয়
+floor_zoom_out	সৰু কৰক
+floor_zoom_in	ডাঙৰ কৰক
+backup_auto	প্ৰতিদিনে স্বয়ংক্ৰিয় বেকআপ · শেষ {when} · শেষ 14 দিন {dir}ত ৰখা হয়।
+backup_auto_none	প্ৰতিদিনে স্বয়ংক্ৰিয় বেকআপ — প্ৰথমটো অলপ পিছতে হ'ব।
+backup_copy_to	প্ৰতিলিপি {dir}লৈও যায়।
+backup_copy_btn	বেকআপ এটা ফ'ল্ডাৰলৈও কপি কৰক…
+autostart_off	এই কম্পিউটাৰৰ সৈতে আৰম্ভ কৰক
+autostart_on	এই কম্পিউটাৰৰ সৈতে আৰম্ভ হয় ✓ — বন্ধ কৰিবলৈ টিপক
+autostart_done_on	এতিয়াৰ পৰা কম্পিউটাৰ আৰম্ভ হ'লেই এপ খোল খাব — বিদ্যুৎ গ'লেও দোকানৰ চাৰ্ভাৰ পুনৰ চলিব।
+autostart_done_off	এতিয়াৰ পৰা কম্পিউটাৰ আৰম্ভ হ'লে এপ খোল নাখাব।
+device_forgotten	দোকানে এই ডিভাইচটো আঁতৰাইছে — দোকানৰ বৰ্তমান ক'ডেৰে পুনৰ সংযোগ কৰক। অপেক্ষাত থকা অৰ্ডাৰ ৰখা হৈছে।
+lan_offline	অফলাইন
+forget_device	পাহৰি যাওক
+last_seen	শেষবাৰ
+copy_pair_code	সংযোগ ক'ড কপি কৰক
+new_pair_code	নতুন সংযোগ ক'ড
+pair_finishing	সংযোগ সম্পূৰ্ণ হৈ আছে… দোকানৰ বহী প্ৰয়োগ হৈ আছে
+pair_opening	টিল খোল খাইছে…
+pair_copied	সংযোগ ক'ড কপি হ’ল
+kot_waiting	পঠিয়াবলৈ অপেক্ষা
+lan_offline_waiting	অফলাইন · {n} অপেক্ষাত
+lan_connecting	দোকানৰ সৈতে সংযোগ হৈ আছে…
+lan_live	লাইভ
+lan_sending	{n} পঠিওৱা হৈছে
+lan_sign_in_to_send	{n} পঠিয়াবলৈ পুনৰ ছাইন ইন কৰক
+lan_pair_again	এই ডিভাইচটো পুনৰ সংযোগ কৰক
+lan_update_app	এপ আপডেট কৰক — এই ডিভাইচ আৰু দোকানৰ চাৰ্ভাৰৰ সংস্কৰণ বেলেগ
+allow_firewall	আন ডিভাইচক সংযোগ হ'বলৈ দিয়ক
+firewall_blocked	এই কম্পিউটাৰৰ ফায়াৰৱালে আন ডিভাইচ ৰখাইছে — “আন ডিভাইচক সংযোগ হ'বলৈ দিয়ক” টিপক।
+firewall_waiting	এডমিন অনুমতিৰ বাবে অপেক্ষা…
+lan_join_help	অন্য ডিভাইচ ইয়াৰ সৈতে সংযোগ হ'ব পাৰে — যোৰ কৰা ক'ড {code}। অন্য ডিভাইচত ক্লায়েণ্ট মোড বাছক, তাৰ পিছত দোকানৰ চাৰ্ভাৰ বিচাৰক, নাইবা এই ঠিকনা লিখক: {addr}
+lan_pair_status	ৱাই‑ফাই {addr}
+lan_join_help_no_addr	ঠিকনা পাবলৈ এই ডিভাইচক Wi‑Fi ৰ সৈতে সংযোগ কৰক।
+lan_no_address	এই ডিভাইচৰ এতিয়াও কোনো Wi‑Fi ঠিকনা নাই — ইয়াক দোকানৰ Wi‑Fi-ৰ সৈতে সংযোগ কৰক।
+lan_not_listening	এতিয়া ডিভাইচ সংযোগ হ'ব পৰা নাই — হয়তো আন এটা প্ৰ'গ্ৰামে প'ৰ্ট {port} ব্যৱহাৰ কৰিছে। এপটো পুনৰ আৰম্ভ কৰক।
+lan_tills_off	অতিৰিক্ত টিল বন্ধ আছে। এই দোকানৰ হিচাপ এই ডিভাইচতে থাকে। আন এটা ডিভাইচেও অৰ্ডাৰ ল'ব বা বিল কৰিব লাগিলে অতিৰিক্ত টিল অনুমতি দিয়ক।
+paired_with	{url}-ত থকা দোকানৰ সৈতে সংযুক্ত
+not_paired	সংযুক্ত নহয় — দোকানৰ চাৰ্ভাৰৰ সৈতে সংযোগ কৰক।
+choose_device_use	এই ডিভাইচ কেনেকৈ ব্যৱহাৰ হ'ব বাছনি কৰক।
+paired_note	সংযুক্ত হ'ল। বিক্ৰী কৰিবলৈ খোলক, নাইবা দোকানৰ পৰা শেহতীয়া আনিবলৈ সতেজ কৰক।
+last_update_at	দোকানৰ পৰা শেষ আপডেট: {time}।
+pair_intro	চাৰ্ভাৰ বিচাৰক, নহয় ইয়াৰ ঠিকনা আৰু যোৰ কোড লিখক।
+queue_waiting	দোকানত পাবলৈ অপেক্ষাত ({n}):
+queue_tries	{n} বাৰ চেষ্টা · শেষ উত্তৰ: {e}
+save_backup_copy	বেকআপৰ কপি সংৰক্ষণ কৰক…
+backup_copy_saved	বেকআপ কপি সংৰক্ষিত — ইয়াক এই ডিভাইচৰ বাহিৰত ৰাখক (USB ষ্টিক বা আন ডিভাইচ)
+backup_copy_overdue	{n} দিনৰ পৰা কোনো বেকআপ কপি এই ডিভাইচৰ বাহিৰলৈ যোৱা নাই — ছেটিংছ → বেকআপ
+backup_copy_failed	বেকআপ কপি তাত সংৰক্ষণ কৰিব পৰা নগ'ল — আন ঠাই বাছক
+clock_off	এই ডিভাইচৰ ঘড়ী দোকানৰ চাৰ্ভাৰতকৈ {min} মিনিট বেলেগ — এই ডিভাইচত শুদ্ধ সময় দিয়ক
+printers_heading	এই ডিভাইচৰ প্ৰিণ্টাৰ
+printers_help	প্ৰতিটো প্ৰিণ্টাৰ এবাৰ যোগ কৰক, তাৰ পিছত বিল আৰু প্ৰতিটো ৰন্ধনশালা ক’ত প্ৰিণ্ট হ’ব বাছক — তালিকাৰ প্ৰথমটো প্ৰথমে চেষ্টা; ব্যৰ্থ হ’লে পৰৱৰ্তী। ৰুট খালী = সেই সুবিধা প্ৰিণ্ট নহয়। লক্ষ্য খালী (ডিফ’ল্ট), ছিষ্টেম নাম, বা নেটৱৰ্ক ঠিকনা (যেনে 192.168.1.50)। প্ৰতিটো ডিভাইচে নিজৰ প্ৰিণ্টাৰ ৰাখে।
+printers_host_only	প্ৰিণ্টাৰ দোকানৰ ডিভাইচত (Server) ছেট হয়। এই ট্‌িলে তালৈ বিল আৰু KOT পঠায় — বিচাৰক / যোগ / এছাইন Server-তে থাকে। পৰীক্ষা পৃষ্ঠা আৰু বিল প্ৰিণ্ট আকাৰ Server-লৈ যায়।
+printers_find_heading	প্ৰিণ্টাৰ বিচাৰক
+printers_find_tip	সন্ধান এই ডিভাইচ স্কেন কৰি তালিকা আপডেট ৰাখে। চিষ্টেম প্ৰিণ্টাৰ আগতে; নেটৱৰ্ক স্কেন পটভূমিত চলি থাকিব পাৰে।
+printers_pool_heading	1. আপোনাৰ প্ৰিণ্টাৰ
+printers_pool_tip	সন্ধান এই ডিভাইচ স্কেন কৰি তালিকা আপডেট ৰাখে।
+printers_pool_empty	(এতিয়ালৈকে নাই — তলত যোগ কৰক)
+printers_routes_help	স্থান বাছক, তাৰ পিছত প্ৰিণ্টাৰ। নাম (KOT), (Standard Portrait) বা (Standard Landscape) টিক। ↑↓ ক্ৰম (প্ৰথম সৰ্বোচ্চ)। আঁতৰাবলৈ আনটিক। শেষত Done।
+printer_assign_dd	{place}ৰ বাবে প্ৰিণ্টাৰ বাছক
+printer_assign_pick	প্ৰকৃত প্ৰিণ্টাৰ বাছক
+printer_profile_heading	লেআউট
+printer_send_heading	ডেলিভাৰী
+vp_delivery_heading	ডেলিভাৰী
+vp_delivery_help	এই ভাৰ্চুৱেল প্ৰিণ্টাৰে জব কেনেকৈ পঠায় — OS নথি, কেঁচা বাইট বা ESC/POS। স্লিপ বিষয়বস্তু (আখৰৰ আকাৰ, ৰেপ, মাৰ্জিন) বিল / KOT বিন্যাসে নিৰ্ধাৰণ কৰে, ইয়াত নহয়।
+vp_type_size_heading	আখৰৰ আকাৰ
+vp_wrap_heading	ৰেপ বহল
+vp_margin_heading	মাৰ্জিন
+vp_delivery_spooler	OS নথি (ছিষ্টেম স্পুলাৰ)
+vp_delivery_raw	ডিভাইচলৈ কেঁচা বাইট
+vp_delivery_escpos	ESC/POS থাৰ্মেল কমাণ্ড
+virtual_printer_new	নতুন ভাৰ্চুৱেল প্ৰিণ্টাৰ
+virtual_printer_selected	“{name}” সম্পাদনা — তালিকাত আনত টেপ কৰি সলনি কৰক
+virtual_printer_tap_list	তালিকাত ভাৰ্চুৱেল প্ৰিণ্টাৰত টেপ কৰি সম্পাদনা কৰক
+config_layout_portrait	পোৰ্ট্ৰেইট
+config_layout_landscape	লেণ্ডস্কেপ
+config_send_os	ছিষ্টেম স্পুলাৰ
+config_send_escpos	ESC/POS
+profiles_heading	লেআউট
+profiles_empty	(এতিয়াও কোনো লেআউট নাই)
+profile_builtin	বিল্ট-ইন
+profile_custom	কাষ্টম
+profile_name_ph	লেআউটৰ নাম
+profile_new	নতুন লেআউট
+profile_delete	লেআউট মচক
+profile_created	লেআউট সৃষ্টি হ’ল
+profile_deleted	লেআউট মচা হ’ল
+profile_builtin_keep	বিল্ট-ইন লেআউট মচিব নোৱাৰি
+config_saved	আপডেট হ’ল
+config_selected	“{name}” বাছনি
+printer_output_heading	ভাৰ্চুৱেল প্ৰিণ্টাৰ
+virtual_printers_heading	ভাৰ্চুৱেল প্ৰিণ্টাৰ
+virtual_printers_empty	এতিয়ালৈকে ভাৰ্চুৱেল প্ৰিণ্টাৰ নাই — তলত মান ছেট কৰি সংৰক্ষণ কৰক। কিছুমান থাকিলে তালিকাত টেপ কৰি সম্পাদনা কৰক।
+virtual_printer_name_ph	ভাৰ্চুৱেল প্ৰিণ্টাৰৰ নাম (ঐচ্ছিক)
+virtual_printer_create	ভাৰ্চুৱেল প্ৰিণ্টাৰ সৃষ্টি কৰক
+virtual_printer_save	ভাৰ্চুৱেল প্ৰিণ্টাৰ সংৰক্ষণ কৰক
+virtual_printer_delete	ভাৰ্চুৱেল প্ৰিণ্টাৰ আঁতৰাওক
+virtual_printer_created	ভাৰ্চুৱেল প্ৰিণ্টাৰ “{name}” সৃষ্টি হ’ল
+virtual_printer_deleted	ভাৰ্চুৱেল প্ৰিণ্টাৰ “{name}” আঁতৰোৱা হ’ল
+virtual_printer_updated	ভাৰ্চুৱেল প্ৰিণ্টাৰ আপডেট হ’ল
+virtual_printer_updated_named	ভাৰ্চুৱেল প্ৰিণ্টাৰ “{name}” আপডেট হ’ল
+virtual_draft_layout	পৰৱৰ্তী ভাৰ্চুৱেল প্ৰিণ্টাৰৰ বাবে মান ছেট
+virtual_draft_send	পৰৱৰ্তী ভাৰ্চুৱেল প্ৰিণ্টাৰৰ বাবে মান ছেট
+virtual_need_real	প্ৰথমে প্ৰকৃত প্ৰিণ্টাৰ বাছক
+virtual_need_select	আঁতৰাবলৈ ভাৰ্চুৱেল প্ৰিণ্টাৰ বাছক
+real_printer_selected	প্ৰকৃত প্ৰিণ্টাৰ: {name}
+station_group_heading	ভাৰ্চুৱেল প্ৰিণ্টাৰ
+station_group_apply	ভাৰ্চুৱেল প্ৰিণ্টাৰ আঁতৰাওক
+station_group_applied	আঁতৰোৱা হ’ল
+station_group_empty	ভাৰ্চুৱেল প্ৰিণ্টাৰ বাছক
+station_group_name_ph	ভাৰ্চুৱেল প্ৰিণ্টাৰৰ নাম (ঐচ্ছিক)
+station_group_save	ভাৰ্চুৱেল প্ৰিণ্টাৰ সৃষ্টি কৰক
+station_group_saved	ভাৰ্চুৱেল প্ৰিণ্টাৰ সংৰক্ষিত
+station_manage_heading	ৰন্ধনশালা ষ্টেচন যোগ / আঁতৰাওক
+printers_routes_heading	2. ক’ত প্ৰিণ্ট
+route_pick_heading	ঠাই
+route_editing	সম্পাদনা: {name}
+route_assigned	{printer} {place} ত যোগ কৰা হ’ল
+route_already_assigned	এই ঠাইত আগতেই: {printer}
+route_removed	{printer} {place} ৰ পৰা আঁতৰোৱা হ’ল
+route_cleared	{name} মচা হ’ল
+route_assigned_empty	এই ঠাইত একো নাই
+route_tap_remove	আঁতৰাবলৈ টিপক
+route_tap_select	বাছিবলৈ টেপ
+route_tap_selected	বাছনি কৰা
+route_pick_printer_first	প্ৰথমে এটা প্ৰিণ্টাৰত টেপ কৰক
+route_assigned_heading	প্ৰিণ্টাৰ
+route_add_heading	নিযুক্ত
+printer_label_ph	নাম (যেনে ৰন্ধনশালা)
+printer_target_ph	ঠিকনা বা ছিষ্টেম নাম
+printer_target_default	ডিফ’ল্ট প্ৰিণ্টাৰ
+printer_wire_heading	বিন্যাস
+printer_wire_escpos	KOT
+printer_wire_os	মানক পোৰ্ট্ৰেইট
+printer_wire_os_portrait	মানক পোৰ্ট্ৰেইট
+printer_wire_os_landscape	মানক লেণ্ডস্কেপ
+printer_wire_escpos_short	KOT
+printer_wire_os_short	পোৰ্ট্ৰেইট
+printer_wire_os_landscape_short	লেণ্ডস্কেপ
+printer_format_custom	নতুন নিজা ফৰ্মেট
+printer_format_custom_label	নিজা
+printer_format_custom_added	এই ৰুটৰ বাবে নিজা ফৰ্মেট যোগ কৰা হ'ল
+add_printer	প্ৰিণ্টাৰ যোগ
+remove_printer	শেষটো আঁতৰাওক
+route_pick_ph	বিল বা ৰন্ধনশালা
+route_bill	বিল
+route_default_kitchen	ডিফ’ল্ট ৰন্ধনশালা
+route_kot_station	ৰন্ধনশালা
+route_dont_print	প্ৰিণ্ট নকৰিব
+stations_heading	পাকঘৰ ষ্টেচন
+stations_help	খাদ্য আৰু KOT ৰ বাবে পাকঘৰ ষ্টেচন যোগ কৰক। প্ৰতিটো ষ্টেচনত তাৰ প্ৰিণ্টাৰ লগাওক (ছেটিংছ → প্ৰিণ্টাৰত পাব), অগ্ৰাধিকাৰ ঠিক কৰক, আৰু যিটো প্ৰথমে চলে বা সকলোতে ছপাওক বাছক। সলনিবোৰ লগে লগে সাঁচা হয় — সাঁচক বুটাম নাই।
+station_print_heading	এই ষ্টেচনৰ প্ৰিণ্টাৰ
+station_print_help	ষ্টেচন বাছক, তাৰ পিছত এটা বা অধিক প্ৰিণ্টাৰ যোগ কৰক। ↑↓ চেষ্টাৰ ক্ৰম। প্ৰথম সফলতাত থামে; সকলোত প্ৰিণ্ট প্ৰতিটো সংযুক্ত প্ৰিণ্টাৰলৈ পঠায়।
+station_print_pick_ph	প্ৰিণ্টাৰ ছেট কৰিবলগীয়া ষ্টেচন
+station_print_pick_first	প্ৰথমে ৰন্ধনশালা ষ্টেচন বাছক
+station_print_editing	“{name}”ৰ প্ৰিণ্টাৰ সম্পাদনা
+station_vps_dd	এই ষ্টেচনৰ প্ৰিণ্টাৰ
+station_vps_dd_n	{n} প্ৰিণ্টাৰ · সলনি কৰিবলৈ টেপ
+station_vps_empty	এতিয়ালৈকে প্ৰিণ্টাৰ নাই — ছেটিংছ → প্ৰিণ্টাৰত বিচাৰক
+bill_printers_dd	বিলৰ প্ৰিণ্টাৰ
+bill_printers_dd_n	বিলৰ বাবে {n}টা প্ৰিণ্টাৰ · সলনি কৰিবলৈ টিপক
+job_layout	লেআউট
+job_delivery	কাম কেনেকৈ পঠিওৱা হয়
+job_delivery_help	OS নথি, কেঁচা বাইট বা ESC/POS। বিল আৰু পাকঘৰৰ টিকট দুয়োটাই নিজৰ নিজৰ ৰাখে। যিকোনো কাম বিচাৰক-এ সাঁচা যিকোনো প্ৰিণ্টাৰলৈ যাব পাৰে।
+station_vp_attached	প্ৰিণ্টাৰ যোগ হ’ল
+station_vp_detached	ষ্টেচনৰ পৰা প্ৰিণ্টাৰ আঁতৰোৱা হ’ল
+station_print_summary	{mode} · {n} প্ৰিণ্টাৰ
+station_print_summary_none	এই ষ্টেচনত এতিয়ালৈকে প্ৰিণ্টাৰ নাই — প্ৰিণ্ট নহ’ব
+stations_none	এতিয়ালৈকে ষ্টেচন নাই — তলত এটা যোগ কৰক। মেনুৰ বস্তুৱে এটা ষ্টেচন ব্যৱহাৰ কৰিব পাৰে যাতে সিহঁতৰ KOT তাতে ছপা হয়।
+route_up	ওপৰলৈ
+route_down	তললৈ
+route_remove	শেষটো আঁতৰাওক
+route_clear	প্ৰিণ্ট নকৰিব
+save_printers	প্ৰিণ্টাৰ সংৰক্ষণ কৰক
+print_test_page	পৰীক্ষা পৃষ্ঠা ছপা কৰক
+no_printer_assigned	প্ৰিণ্টাৰ নাই
+test_page_no_printer	{place}ৰ বাবে প্ৰিণ্টাৰ নাই — ওপৰত নিযুক্ত কৰি পুনৰ চেষ্টা কৰক
+test_page_pick_first	প্ৰথমে পৰীক্ষা প্ৰিণ্টাৰ বাছক — তাৰ পিছত পৰীক্ষা পৃষ্ঠা ছপা কৰক
+test_printers_dd	পৰীক্ষা পৃষ্ঠাৰ প্ৰিণ্টাৰ
+test_printers_dd_n	{n} পৰীক্ষা প্ৰিণ্টাৰ · সলনি কৰিবলৈ টিপক
+kot_test_printers_dd	Test KOT প্ৰিণ্টাৰ
+kot_test_printers_dd_n	{n} Test KOT প্ৰিণ্টাৰ · সলনি কৰিবলৈ টিপক
+test_printer_picked	পৰীক্ষা: {name}
+test_printer_cleared	পৰীক্ষা নহয়: {name}
+test_page_sent_n	পৰীক্ষা পৃষ্ঠা {n} প্ৰিণ্টাৰলৈ পঠোৱা হ'ল
+test_kot_pick_first	প্ৰথমে Test KOT প্ৰিণ্টাৰ বাছক — তাৰ পিছত Test KOT
+test_kot_sent_n	Test KOT {n} প্ৰিণ্টাৰলৈ পঠোৱা হ'ল
+cancel_pick	চিন
+cancel_pick_on	চিন দিয়া
+cancel_pick_meta	বাতিলৰ বাবে চিন
+batch_cancel	চিন দিয়া বাতিল
+batch_cancel_n	চিন দিয়া বাতিল ({n})
+batch_cancel_none	প্ৰথমে পঠোৱা খাদ্য চিন দিয়ক — তাৰ পিছত চিন দিয়া বাতিল
+batch_cancel_title	চিন দিয়া খাদ্য বাতিল — এটা কাৰণ, পাকঘৰলৈ এটা স্লিপ
+batch_cancel_ok	{n} খাদ্য বাতিল · {slips} স্লিপ → {kitchens}
+batch_cancel_ok_noprint	{n} খাদ্য বাতিল — KOT অটো-প্ৰিণ্ট অফ, স্লিপ নাই
+no_printer_kitchen_station	সেই পাকঘৰ ষ্টেচনৰ বাবে প্ৰিণ্টাৰ নাই — পাকঘৰ → পাকঘৰ ষ্টেচন → এই ষ্টেচনৰ প্ৰিণ্টাৰ
+printers_saved	এই ডিভাইচৰ প্ৰিণ্টাৰ সংৰক্ষিত হ'ল
+test_page_sent	পৰীক্ষা পৃষ্ঠা পঠোৱা হ'ল — প্ৰিণ্টাৰ চাওক
+test_page_sent_one	পৰীক্ষা পৃষ্ঠা {name}লৈ পঠোৱা হ'ল — সেই প্ৰিণ্টাৰ চাওক
+printers_found	{n}টা পোৱা গ’ল: {list}
+printers_find_synced	{n} পোৱা গ'ল — {new} নতুন
+printer_on_device	সংৰক্ষিত
+printer_already_added	আগতেই যোগ
+printer_already_saved	আগতেই সাঁচা: {name}
+find_printers	প্ৰিণ্টাৰ বিচাৰক
+printers_looking	এই ডিভাইচ আৰু Wi‑Fiত প্ৰিণ্টাৰ বিচাৰি আছে…
+saving_printer	প্ৰিণ্টাৰ যোগ কৰা হৈছে…
+cancelled	বাতিল
+printers_tap_find	এই ডিভাইচে ব্যৱহাৰ কৰিব পৰা প্ৰিণ্টাৰৰ তালিকাৰ বাবে প্ৰিণ্টাৰ বিচাৰক টিপক।
+printers_none_found	কোনো প্ৰিণ্টাৰ পোৱা নগ’ল — ছিষ্টেম প্ৰিণ্টাৰৰ নাম বা নেটৱৰ্ক ঠিকনা লিখক (যেনে 192.168.1.50)।
+printer_from_find	{name} যোগ কৰা হ’ল
+kot_printer_ph	KOTৰ প্ৰিণ্টাৰ
+bill_printer_ph	বিলৰ প্ৰিণ্টাৰ
+kot_print_on	পাকঘৰ প্ৰিণ্টিং: অন
+kot_print_off	পাকঘৰ প্ৰিণ্টিং: অফ
+queue_refused	দোকানে গ্ৰহণ কৰা নাই ({n}) — প্ৰতিটো কাউণ্টাৰত পৰীক্ষা কৰক:
+clear_not_accepted	পৰীক্ষা কৰিলোঁ — এই তালিকা মচক
+device_name_ph	এই ডিভাইচৰ নাম
+lan_last_update	শেষ আপডেট {time}
+lan_not_accepted	{n} গ্ৰহণ হোৱা নাই
+connected_now	এতিয়া সংযুক্ত
+backup_failed	শেষৰ স্বয়ংক্ৰিয় বেকআপ বিফল হ'ল: {e}
+backup_overdue	{n} দিন ধৰি বেকআপ নাই — বেকআপৰ বাবে এই ডিভাইচত এপটো খোলা ৰাখক।
+disk_low	এই ডিভাইচত মাত্ৰ {mb} MB খালী আছে — সোনকালে বেকআপ বিফল হ'ব। কিছু ঠাই খালী কৰক।
+last_seen_devices	শেষবাৰ দেখা: {time}
+sync_interval	প্ৰতি {secs} ছেকেণ্ডত চিংক
+connection_to_shop	দোকানৰ সৈতে সংযোগ
+supplier_name_ph	যোগানকাৰীৰ নাম (বা পাৰ্টি)
+supplier_ph	যোগানকাৰী
+switch_device	এই ডিভাইচ সলনি কৰক
+take_payment	পৰিশোধ লওক
+tax_added_till	{tax} বাদে
+tax_inside_price	{tax} সৈতে
+tax_invoice	কৰ চালান
+till_to_bank	টিল → বেংক
+units_heading	এককসমূহ
+unlock_after_pairing	পিন দিয়ক
+unlock_with_login	লগইনেৰে আনলক
+unmark	চিহ্ন আঁতৰাওক
+update_my_password	মোৰ পাছৱৰ্ড সলনি কৰক
+update_my_pin	মোৰ PIN সলনি কৰক
+duress_heading	জৰুৰী আনলক PIN (কেৱল Owner)
+duress_help	ঐচ্ছিক। আনলকত আপোনাৰ PINৰ সলনি এইটো দিলে বিক্ৰীৰ ইতিহাস মচি যায় — মেনু, দাম, মেজ, ষ্টাফ থাকে। জোৰ কৰিলেহে। খালী ৰাখি ছেভ কৰিলে বন্ধ। কাৰো PIN নহয়।
+duress_pin_ph	জৰুৰী PIN (4–12 সংখ্যা)
+duress_confirm_ph	আকৌ টাইপ কৰক
+save_duress_pin	জৰুৰী PIN ছেভ
+clear_duress_pin	জৰুৰী PIN বন্ধ
+duress_on	জৰুৰী আনলক PIN চলি আছে
+duress_off	জৰুৰী আনলক PIN বন্ধ আছে
+duress_saved	জৰুৰী আনলক PIN ছেভ হ’ল
+duress_cleared	জৰুৰী আনলক PIN বন্ধ কৰা হ’ল
+upi_amount_ph	UPI পৰিমাণ
+void	বাতিল কৰক
+write_off_ap	AP মাফ কৰক
+write_off_heading	মাফ কৰক (পৰিশোধ নোহোৱাকৈ মেটাওক)
+write_off_nil	মাফ কৰক / বেলেন্স শূন্য
+your_brand	আপোনাৰ બ્ৰেণ্ড (এপত)
+your_categories	আপোনাৰ শ্ৰেণীসমূহ
+account_kind	খাতাৰ ধৰণ (এটা টিপক)
+actual_total_cap	প্ৰকৃত মুঠ
+amend_help	সংশোধন, বাতিল বা ঘূৰাইৰ বাবে বিক্ৰী বাছক। সংশোধনে সম্পূৰ্ণ ইতিহাস ৰাখে।
+applied_total_cap	প্ৰয়োগ মুঠ
+bank_balance	বেংক বেলেন্স
+bank_net_today	আজিৰ বেংক নেট
+branch_export_help	Export এ backups ফোল্ডাৰত branch_snapshot_CODE_DATE.json লিখে আৰু ক্লিপবোৰ্ডলৈ কপি কৰে। আন আউটলেটৰ দিন আমদানি কৰিবলৈ, তাৰ ফাইলটো একে ফোল্ডাৰত import_branch_snapshot.json নামেৰে ৰাখক, তাৰপিছত Import টিপক।
+brand_shown_help	এপৰ ভিতৰৰ পৰ্দাত দেখুওৱা হয়। এই ডিভাইচত ইনষ্টল কৰা এপৰ নাম আৰু আইকন প্লেটফৰ্ম তালিকা অনুসৰিয়েই থাকে।
+app_icon	এপ আইকন
+logo_help	এপৰ স্ক্ৰীণত দোকানৰ ঐচ্ছিক চিন।
+onboard_layout	আপুনি কি পায়
+item_photo_help	ঐচ্ছিক। ফটো নাথাকিলে বস্তুৰ নামৰ প্ৰথম আখৰ দেখুৱাওঁ।
+stamp_heading	ষ্টেম্প
+stamp_image_help	ছপা বিল আৰু অতিথি ডিছপ্লেত ঐচ্ছিক ষ্টেম্পৰ ছবি।
+payment_qr_heading	পেমেণ্ট QR
+payment_qr_image_help	বিল আৰু অতিথি ডিছপ্লেত স্থিৰ QR; নহ’লে পেমেণ্টে ওপৰৰ VPA ৰ পৰা ডায়নামিক UPI QR ব্যৱহাৰ কৰে।
+cash_in_hand	হাতত নগদ (টিল)
+change_my_pin_heading	মোৰ PIN সলনি কৰক (কেৱল আপোনাৰ)
+connect_to_server	চাৰ্ভাৰৰ সৈতে সংযোগ কৰক
+counter_locked	কাউণ্টাৰ 01 · লক
+country_pack_help	দেশ পেকে কৰৰ নাম আৰু গণিত, তৎক্ষণাত-পৰিশোধ ৰেল, আৰু বিলত ছাপ হোৱা ব্যৱসায় আইডি নিৰ্ধাৰণ কৰে। Kumkaj ক’তো কৰ দাখিল নকৰে বা চৰকাৰী ই-চালান জাৰি নকৰে।
+currency_use_help	স্ক্ৰল কৰক আৰু যিকোনো সমৰ্থিত মুদ্ৰাৰ বাবে Use টিপক।
+day_close_help	দিন বন্ধ লিপিবদ্ধ কৰিলে এই সাৰাংশ (গণনা থাকিলে ড্ৰয়াৰ পাৰ্থক্যসহ) অডিট লগত সংৰক্ষণ হয়। ই বিক্ৰী বন্ধ নকৰে।
+expenses_word	খৰচসমূহ
+feature_access_help	বাছনি কৰা কৰ্মচাৰীৰ বৈশিষ্ট্য প্ৰৱেশ (যোগ কৰাৰ পিছত টিপক)
+footer_local	স্থানীয় SQLite · সদায় বিনামূলীয়া · কোনো ক্লাউড নাই
+fresh_book_khaynjo	নতুনকৈ = খালী মেনু (পাছত মেনুত ব্যঞ্জন যোগ কৰক)। বহী = তলত আৰম্ভণিৰ বস্তু আৰু কোনে আপোনাৰ ধৰুৱা লিখক।
+fresh_selected	Fresh বাছনি — কেটালগ খালী থাকিব। সাজু হ’লে Done টিপক।
+gross_word	মুঠ (গ্ৰছ)
+how_start	আপুনি কেনেকৈ আৰম্ভ কৰিব বিচাৰে?
+kot_print_help_khaynjo	যেতিয়া KOT পঠিওৱা হয় — কাউণ্টাৰৰ পৰা বা ৱেটাৰৰ ডিভাইচৰ পৰা — পাকঘৰৰ কাগজ ইয়াত নিজে নিজে ছাপ হয়।
+later_country_pack	পাছত: ছেটিংছ → কৰ আৰু পৰিশোধৰ লেবেলৰ বাবে আপোনাৰ দেশ পেক প্ৰয়োগ কৰক।
+local_badge	স্থানীয়
+mix_type_hint_khaynjo	প্ৰয়োজন হ’লে নগদ / UPI / কাৰ্ড / ধাৰত ভাগ কৰক। ধাৰৰ বাবে ওপৰত গ্ৰাহক লাগিব।
+money_in_sales	ধন আহিল (বিক্ৰী)
+net_word	নেট
+offline_badge	অফলাইন
+optional_login_help	ঐচ্ছিক লগইন (আইডি + পাছৱৰ্ড)। মালিকে এবাৰ নিৰ্ধাৰণ কৰে; পিছত কেৱল ব্যৱহাৰকাৰীয়েহে পাছৱৰ্ড সলনি কৰিব পাৰে।
+or_unlock_login	বা লগইন আইডি + পাছৱৰ্ডেৰে আনলক কৰক
+permission_preset	অনুমতি প্ৰিছেট (কিহলৈ প্ৰৱেশ)
+preset_help_khaynjo	কেশ্বিয়াৰ: বিক্ৰী। মেনেজাৰ: বিক্ৰী + বস্তু + বাতিল/সংশোধন।
+product_locked_khaynjo	Khaynjo
+product_only_khaynjo	এই এপ কেৱল Khaynjo — ৰেষ্টুৰেণ্ট অপাৰেটিং চিষ্টেম। আন ব্যৱসায়ৰ বাবে বেলেগ Kumkaj সামগ্ৰী আছে।
+purchases_cogs	ক্ৰয় (COGS)
+qty_cap	পৰিমাণ
+restore_help	Restore: এটা বেকআপ বাছক। হিচাব তেতিয়াৰ দৰে খোল খাব; এতিয়াৰ হিচাব প্ৰথমে সাঁচি ৰখা হয়, গতিকে ইয়াক ঘূৰাব পাৰি।
+wipe_data_heading	স্থানীয় তথ্য মচক
+wipe_data_help	কেৱল Owner — Windows আনইনষ্টলৰ দৰে। ব্যৱসায়িক ৰেকৰ্ড ইতিহাস মচে, মেনু/ছেটআপ ৰাখে। দোকান ছেটআপ কিতাপ আঁতৰায়। স্ক্ৰীন পছন্দ ৱিণ্ড'/ভাষা। Owner PIN এ নিশ্চিত।
+wipe_trading	ব্যৱসায়িক ৰেকৰ্ড
+wipe_schema	দোকান ছেটআপ
+wipe_ui	স্ক্ৰীন পছন্দ
+wipe_owner_pin_ph	মচিবলৈ Owner PIN
+wipe_delete_selected	বাছনি মচক
+wipe_owner_only	কেৱল Owner স্থানীয় তথ্য মচিব পাৰে।
+restore_owner_only	কেৱল Owner বেকআপ ঘূৰাই আনিব পাৰে।
+wipe_owner_pin_needed	স্থানীয় তথ্য মচিবলৈ Owner PIN দিয়ক।
+wipe_nothing_selected	প্ৰথমে কি মচিব বাছক।
+wipe_done	বাছনি স্থানীয় তথ্য মচা হ’ল।
+wipe_schema_done	দোকান ছেটআপ মচা — অব্যাহত ৰাখিবলৈ Server বা Client বাছক।
+rounded_total	ৰাউণ্ড মুঠ
+setup_app_khaynjo	Khaynjo ছেট আপ কৰক
+shop_logo_optional	দোকানৰ ল’গ’ (ঐচ্ছিক)
+stock_type_help	বস্তুৰ নাম লিখক (তাৰ অংশই যথেষ্ট), পৰিমাণ লিখক, তাৰপিছত মিলাওক। যিবোৰ বস্তু এতিয়াও গণনা হোৱা নাই সেইবোৰক এবাৰ Start tracking লাগিব।
+team_owner_help	মালিকে প্ৰতিজনক নাম, ভূমিকা শিৰোনাম, অনুমতি প্ৰিছেট আৰু আৰম্ভণি PIN ৰ সৈতে সৃষ্টি কৰে। মালিকে পিছত কাৰো PIN সলনি কৰিব নোৱাৰে — কেৱল সেই ব্যক্তিজনেহে নিজৰ PIN সলনি কৰিব পাৰে।
+staff_name_ph	কৰ্মচাৰীৰ নাম / আইডি
+staff_copy_hire_ph	ছেটআপ কাৰ পৰা কপি কৰিব (ঐচ্ছিক)
+staff_copy_hire	এই ব্যক্তিৰ ছেটআপ ব্যৱহাৰ কৰক
+staff_edit_name_ph	দেখুওৱা নাম
+staff_rename	নাম সাঁচক
+staff_copy_edit_ph	আন এজনৰ পৰা ছেটআপ কপি কৰক
+staff_copy_edit	তেওঁলোকৰ ছেটআপ বাছনি কৰা জনৰ ওপৰত কপি কৰক
+staff_copy_edit_onto	তেওঁলোকৰ ছেটআপ {name} ৰ ওপৰত কপি কৰক
+staff_deactivate_named	{name} ক আঁতৰাওক
+staff_renamed	নাম সাঁচা হ’ল
+staff_setup_copied_hire	{name} ৰ পৰা ছেটআপ কপি হ’ল — নতুন নাম আৰু PIN দিয়ক, তাৰ পিছত কৰ্মচাৰী যোগ কৰক
+staff_setup_copied_edit	{from} ৰ ছেটআপ {to} ৰ ওপৰত কপি হ’ল
+staff_copy_need_selected	প্ৰথমে বাছক কাক সম্পাদনা কৰিব
+staff_copy_need_source	বাছক কাৰ ছেটআপ কপি কৰিব
+staff_copy_same	তেওঁ একেজন ব্যক্তি — আন কোনোবাক বাছক
+staff_rename_need_selected	প্ৰথমে বাছক কাৰ নাম সলনি কৰিব
+team_pick_hint	বাছক কাক সম্পাদনা কৰিব — স্ক্ৰীণ, টকাৰ অধিকাৰ আৰু পাকঘৰ ষ্টেচন কেৱল সেই ব্যক্তিৰ বাবে দেখা যায়।
+team_stations_help	তেওঁলোকে ব্যৱহাৰ কৰিব পৰা পাকঘৰ ষ্টেচন
+team_stations_changed	পাকঘৰ ষ্টেচন সলনি হ’ল — এই ব্যক্তিৰ ছেটআপ সাঁচক
+team_features_changed	স্ক্ৰীণ সলনি হ’ল — এই ব্যক্তিৰ ছেটআপ সাঁচক
+team_rights_changed	অধিকাৰ সলনি হ’ল — এই ব্যক্তিৰ ছেটআপ সাঁচক
+they_owe_us	তেওঁলোক আমাৰ ধৰুৱা
+unit_at_cap	একক দাম
+units_help	বস্তু লেবেলৰ বাবে কোড (kg, piece, bag)। প্ৰতিটো একক — প্ৰত্যক্ষভাৱে বা অন্য এককৰ জৰিয়তে — এটা মানক (kg · cm · ml · pc) ৰ সৈতে সংযুক্ত হ’ব লাগিব, যেনে 1 crate = 2 box আৰু 1 box = 20 cm। ৰূপান্তৰ: 1 from = factor to। মুদ্ৰা কেতিয়াও একক নহয়।
+units_picker_help	কিনা আৰু মেনু তালিকাত একক দেখুৱাবলৈ চলাও/বন্ধ টিপক। বন্ধ একক এতিয়াও ৰূপান্তৰ হয়।
+unit_picker_on	চলাও
+unit_picker_off	বন্ধ
+we_owe_them	আমি তেওঁলোকৰ ধৰুৱা
+who_unlocking	কোনে আনলক কৰিছে?
+locked_word	লক
+show_pin	PIN দেখুৱাওক
+hide_pin	PIN লুকুৱাওক
+set_owner_pin	মালিকৰ PIN নিৰ্ধাৰণ কৰক
+enter_owner_passcode	মালিকৰ পাছকোড দিয়ক
+enter_staff_passcode	কৰ্মচাৰীৰ পাছকোড দিয়ক
+pin_count_zero	0 / 12 সংখ্যা · কমেও 4, তাৰপিছত OK
+pin_count_need	{} / 12 সংখ্যা · {} অধিক লাগিব
+pin_count_full	12 / 12 সংখ্যা · OK টিপক
+pin_count_ready	{} / 12 সংখ্যা · সাজু হ’লে OK টিপক
+pin_hint_choose	4–12 সংখ্যা বাছক (কীবোৰ্ড বা পেড) · সংৰক্ষণৰ বাবে Enter/OK
+pin_hint_new	নতুন 4–12 সংখ্যাৰ মালিক PIN (কীবোৰ্ড বা পেড) · Enter/OK
+pin_hint_shop_code	দোকান ডিভাইচ · যোৰ কোড {}
+pin_hint_books	এই ডিভাইচে বহী ৰাখে
+pin_hint_paired	অতিৰিক্ত টিল যোৰ হ’ল — বিক্ৰীৰ বাবে আনলক কৰক
+pin_hint_pair_first	অতিৰিক্ত টিল — প্ৰথমে দোকান ডিভাইচৰ সৈতে যোৰ কৰক
+unlock_to_continue	আগবঢ়াবলৈ আনলক কৰক
+no_staff_yet	এতিয়াও কোনো কৰ্মচাৰী নাই — মালিক হিচাপে আনলক কৰক, তাৰপিছত Team
+status_server_set_pin	চাৰ্ভাৰ মোড — মালিকৰ PIN নিৰ্ধাৰণ কৰক
+status_server_tills	চাৰ্ভাৰ মোড — অতিৰিক্ত টিল যোগ দিব পাৰে। আনলক কৰক
+status_server_unlock	চাৰ্ভাৰ মোড — মালিক হিচাপে আনলক কৰক
+status_client_unlock	ক্লায়েণ্ট মোড — বিক্ৰীৰ বাবে আনলক কৰক
+icon_new_selected	আইকন: নতুন ফাইল বাছনি কৰা হৈছে — ব্ৰেণ্ড সংৰক্ষণ কৰক টিপক
+icon_custom	আইকন: আপোনাৰ দোকানৰ চিহ্ন
+icon_default	আইকন: Kumkaj চিহ্ন (ডিফল্ট) — নিজৰটো বাছনি কৰক
+logo_yours	লোগো: আপোনাৰ দোকানৰ লোগো — পৰ্দা আৰু ৰচিদত দেখুওৱা হ’ব
+logo_default	লোগো: Kumkaj চিহ্ন (ডিফল্ট) — নিজৰ থাকিলে বাছনি কৰক
+tmpl_current	বৰ্তমান: {} — {}
+tmpl_selected	বাছনি কৰা: {} — {}
+setup_complete	ছেটআপ সম্পূৰ্ণ
+onboard_fresh_tmpl	নতুন · {} — কেটালগ খালীৰ পৰা আৰম্ভ; বস্তুত যোগ কৰক, তাৰ পিছত Done টিপক।
+onboard_book_tmpl	বহী · {} — বস্তু আৰু আৰম্ভণিৰ বাকী যোগ কৰক, তাৰ পিছত Done টিপক।
+onboard_template_tmpl	বিচাৰিলে ঠাইৰ নাম দিয়ক, তাৰ পিছত কেনেকৈ আৰম্ভ কৰিব বাছক।
+tmpl_blurb	মেজ, অৰ্ডাৰ, পাকঘৰৰ টিকট, বিলিং আৰু বহী।
+tmpl_how	কাউণ্টাৰত বিক্ৰী কৰক; মেজ আৰু KOTৰ বাবে মহলা; দিনৰ হিচাপৰ বাবে বহী।
+reports_facet_title	প্ৰতিবেদন
+reports_facet_help	দিনৰ বহী, পাৰ্টি এজিং, বেংক পোষ্ট আৰু সময়ৰ লাভ-ক্ষতি।
+against_bill_ph	ওপৰৰ বিল # ৰ বিপৰীতে (ঐচ্ছিক)
+aliases_ph	উপনাম — অন্য নাম, কমাৰে পৃথক
+amount_blank_full_ph	পৰিমাণ (খালী = সম্পূৰ্ণ বাকী)
+amount_owed_ph	দিবলগীয়া পৰিমাণ
+amount_ph	পৰিমাণ
+amount_received_ph	পোৱা পৰিমাণ
+amount_we_pay_ph	আমি দিয়া পৰিমাণ
+business_name_ph	ব্যৱসায়ৰ নাম
+category_new_ph	শ্ৰেণী (ঐচ্ছিক, নতুন হ’লে সৃষ্টি হ’ব)
+code_bag_ph	কোড (bag)
+conv_factor_ph	গুণক (25 = 1 bag → 25 kg)
+country_code_ph	দেশৰ কোড যেনে IN, GB, US, AE, BR
+credit_khata_amount_ph	বাকী / খাতা পৰিমাণ
+credit_limit_ph	বাকীৰ সীমা (0 = নাই)
+from_code_ph	পৰা কোড (bag)
+item_name_lang_ph	বস্তুৰ নাম — আপোনাৰ ভাষাত লিখক
+login_id_opt_ph	লগইন আইডি (ঐচ্ছিক)
+manager_pin_ph	মেনেজাৰ PIN (কেৱল যদি আপুনি বাতিল কৰিব নোৱাৰে)
+new_branch_name_ph	নতুন শাখাৰ নাম
+new_password_ph	নতুন পাছৱৰ্ড (ঐচ্ছিক)
+new_pin_ph	নতুন PIN (4–12 সংখ্যা)
+note_bank_ph	টোকা (জমা, উলিওৱা, …)
+note_buy_expense_ph	টোকা (ইন্ধন, ভাড়া, …)
+note_expense_ph	টোকা (ইন্ধন, কাৰ্যালয়, …)
+options_khaynjo_ph	বিকল্প (ঐচ্ছিক) — Extra cheese=40, Large=80
+part_second_way_ph	দ্বিতীয় উপায়ে অংশ (ঐচ্ছিক)
+phone_ph	ফোন
+place_name_ph	এই ঠাইৰ নাম
+qty_example_ph	পৰিমাণ (যেনে kg ৰ বাবে 1.5)
+quantity_ph	পৰিমাণ
+reason_required_ph	কাৰণ (আৱশ্যক)
+role_title_ph	ভূমিকাৰ শিৰোনাম (যেনে Barista)
+service_pct_ph	সেৱা % ঐচ্ছিক 0/10/12
+short_code_ph	চুটি কোড (MG02)
+starting_password_ph	আৰম্ভণি পাছৱৰ্ড (ঐচ্ছিক)
+starting_pin_ph	আৰম্ভণি PIN (4–12 সংখ্যা)
+station_name_ph	ষ্টেশ্যনৰ নাম (যেনে Tandoor, Fryer, Cold)
+station_new_ph	পাকঘৰ ষ্টেশ্যন (ঐচ্ছিক, যেনে Tandoor — নতুন হ’লে সৃষ্টি হ’ব)
+table_name_ph	টেবুলৰ নাম (যেনে Patio 1, Counter 2)
+tax_rate_ph	কৰ হাৰৰ নাম বা % — Standard, Reduced, 0, 5, 12, 18, 20
+to_code_ph	লৈ কোড (kg)
+uncleared_no_ph	ওপৰৰ আনক্লিয়াৰ্ড #
+unit_cost_ph	একক খৰচ
+unit_name_bag_ph	নাম (Bag)
+unit_plate_ph	একক (প্লেট / টুকুৰা — খালী = প্ৰতিটো)
+pay_credit	বাকী
+book_kind_today	আজিৰ বহী
+book_kind_month	এই মাহৰ বহী
+book_kind_aging	বাকী / ডেবিট-ক্ৰেডিট
+book_kind_balance	বেলেন্স শ্বীট
+order_help	খোলা অৰ্ডাৰ বাছক, বা টেবুল বাছি নতুন আৰম্ভ কৰক। সাজু বস্তুত টেপ কৰক, KOT পঠাওক, এটা বা অধিক বস্তুৰ বিল কৰক, বিল ভাগ কৰক আৰু পৰিশোধ নিষ্পত্তি কৰক।
+floor_help	প্ৰতিখন টেবুলে দেখুৱায় অতিথিসকল বহি আছে নে নাই, তেওঁলোকৰ খোলা বিল কি আৰু পৰৱৰ্তী সেৱা কাক লাগে।
+kitchen_help	প্ৰতি ভেৰিয়েণ্ট বা প্ৰতি বস্তু অনুসৰি সাজু পৰিমাণ ট্ৰেক কৰক — KOT ত যেনেকৈ বিচাৰে ৰেকৰ্ড কৰক।
+kitchen_empty	এতিয়া একো খোলা নাই — নতুন অৰ্ডাৰ ইয়াত দেখা যাব।
+add_a_table	টেবুল যোগ কৰক
+add_station_heading	ষ্টেচন যোগ কৰক · যেনে তন্দুৰ, চাউথ ইণ্ডিয়ান
+categories_help	শ্ৰেণীয়ে দেখুৱায় এটা খাদ্য কোন মেনু অংশত পৰে — যেনে স্নেকছ, মেইন কোৰ্ছ বা বিৰিয়ানী। শ্ৰেণী নিজৰ মতে বনাওক: আমাৰ পৰামৰ্শ দিয়া নাম বাছক, নাম সলাওক বা নিজৰ যোগ কৰক।
+dish_search_ph	আইটেমৰ নাম — আমাৰ ব্যঞ্জন বিচাৰক বা নিজৰটো লিখক
+tile_free	খালী
+tile_occupied	ব্যস্ত
+tile_food_ready	খাদ্য সাজু
+tile_bill_printed	বিল ছপা
+tile_paid	পইচা দিলে
+tile_bill_btn	বিল
+tile_occupy_btn	অতিথি বহুৱাওক
+tile_free_btn	টেবুল খালী কৰক
+tile_ready_btn	সাজু
+tile_undo_bill	বিল ঘূৰাই
+summary_busy	টেবুল ব্যস্ত
+summary_to_collect	আদায় বাকী
+summary_on_floor	ফ্লোৰত
+floor	মহলা
+sizes_as_items_ph	আকাৰ পৃথক আইটেম হিচাপে (বৈকল্পিক) — Half=120, Full=200
+dish_group_ph	ব্যঞ্জনৰ গোট (বৈকল্পিক) — যেনে Paneer Tikka
+discount	ৰেহাই
+remove_discount	ৰেহাই আঁতৰাওক
+apply_discount	ৰেহাই দিয়ক
+save_opening_cash	আৰম্ভণিৰ নগদ সাঁচক
+close_shift_print	শিফ্ট বন্ধ কৰি চিলিপ ছপা কৰক
+area_prices_ph	অংশৰ দাম (বৈকল্পিক) — AC=220, Parcel=210
+discount_ph	10% বা 50
+discount_reason_ph	কাৰণ (যেনে নিয়মীয়া অতিথি, খাদ্যত পলম)
+opening_float_ph	আজি পুৱা ড্ৰয়াৰত ৰখা নগদ
+shift_counted_ph	হস্তান্তৰত গণা নগদ
+opening_float	আৰম্ভণিৰ নগদ
+shift_handover	শিফ্ট হস্তান্তৰ
+shift_since	এই শিফ্ট আৰম্ভ
+expected_in_drawer	ড্ৰয়াৰত থাকিব লগা
+right_discount	ৰেহাই দিয়া
+floor_in_kitchen	পাকঘৰত
+floor_eating	খাই আছে
+pick_category	শ্ৰেণী বাছক
+close_category_list	শ্ৰেণীৰ তালিকা বন্ধ কৰক
+new_category_row	নতুন শ্ৰেণী — আইটেম সাঁচিলে সৃষ্টি হ’ব
+your_category	আপোনাৰ শ্ৰেণী
+suggested_category	পৰামৰ্শ — আমাৰ ব্যঞ্জনৰ পৰা
+category_search_ph	শ্ৰেণী — নিজৰটো বিচাৰক বা নতুন লিখক
+line_sent_state	পাকঘৰলৈ পঠোৱা হ’ল
+line_nc_state	বিনামূলীয়া (NC) — মাচুল নাই
+cancel_item_short	বাতিল
+nc_short	বিনামূলীয়া
+charge_again_short	মাচুল
+move_short	স্থানান্তৰ
+cancel_item_title	এই আইটেম বাতিল কৰক — পাকঘৰলৈ বাতিলৰ চিলিপ যাব
+nc_item_title	এই আইটেম বিনামূলীয়া কৰক (NC)
+charge_again_title	এই আইটেমৰ পুনৰ মাচুল লওক
+move_item_title	এই আইটেম আন টেবুললৈ স্থানান্তৰ কৰক
+already_cooked	আগতেই ৰন্ধা হ’ল (অপচয়)
+not_cooked_yet	এতিয়াও ৰন্ধা হোৱা নাই
+return_to_customer	গ্ৰাহকক ঘূৰাই দিয়ক
+short_by	কম আছে
+tip_not_sale	টিপ (কৰ্মীৰ, বিক্ৰী নহয়)
+right_settle	পইচা লোৱা
+right_cancel_sent	পঠোৱা আইটেম বাতিল কৰা
+right_complimentary	বিনামূলীয়াকৈ দিয়া (NC)
+right_move_table	টেবুল স্থানান্তৰ / একত্ৰ কৰা
+right_reprint	বিল পুনৰ ছপা কৰা
+right_allowed	অনুমতি আছে
+right_with_approval	অনুমোদন সহ
+right_denied	অনুমতি নাই
+editing_staff	এওঁৰ অধিকাৰ
+finding_server	এই Wi‑Fi-ত দোকানৰ চাৰ্ভাৰ বিচৰা হৈছে…
+no_server_found	কোনো চাৰ্ভাৰ পোৱা নগ’ল। দোকানৰ ডিভাইচ একে Wi‑Fi-ত অতিৰিক্ত টিলৰ অনুমতিৰে আছে নে চাওক, বা ইয়াৰ IP লিখক।
+servers_found_pick	যি দোকানত সংযোগ কৰিব বিচাৰে তাত টেপ কৰক।
+server_host_selected	{host} ব্যৱহাৰ — পেয়াৰিং ক'ড দিয়ক, তাৰ পিছত এতিয়া পেয়াৰ কৰক।
+print_bill	বিল ছপা কৰক
+table_actions	মেজ কাৰ্য
+move_merge_table	টেবুল স্থানান্তৰ / একত্ৰ কৰক
+move_help	এই টেবুলৰ অৰ্ডাৰ খালী টেবুললৈ নিয়ক, বা চলি থকা টেবুলত একত্ৰ কৰক।
+move_target_ph	টেবুলৰ নাম (যেনে D5, P2)
+approval_pin_ph	মেনেজাৰ PIN (সুধিলেহে)
+move_here	ইয়ালৈ নিয়ক
+merge_into	ইয়াত একত্ৰ কৰক
+line_reason_ph	কাৰণ (যেনে অতিথিয়ে মত সলালে, ষ্টক নাই)
+line_qty_ph	কিমান বাতিল (খালী = সকলো)
+line_target_ph	টেবুললৈ নিয়ক (যেনে D5)
+confirm	নিশ্চিত কৰক
+menu_search_ph	আইটেম বা চুটি কোড বিচাৰক
+customer_paid_ph	গ্ৰাহকে দিলে
+tip_ph	টিপ
+table_area_ph	অংশ (যেনে ডাইন ইন, পাৰ্চেল, AC)
+table_range_ph	একেলগে বহুত: D1-D20
+add_these_tables	এই টেবুলবোৰ যোগ কৰক
+remove_these_tables	এই মেজবোৰ আঁতৰাওক
+table_remove_ph	আঁতৰাওক: T1-T24, নহয় এখন মেজৰ নাম
+find_server	দোকানৰ চাৰ্ভাৰ বিচাৰক
+bill_format	বিলৰ ফৰ্মেট
+bill_format_help	প্ৰতিখন বিলত আপোনাৰ ৰেষ্টুৰেণ্টৰ নামৰ তলত ছপা হয়। শাৰীবোৰ | দি পৃথক কৰক (যেনে MG Road, Rajkot | Ph 98250 00000)।
+bill_header_ph	ঠিকনা | ফোন
+fssai_ph	FSSAI অনুজ্ঞাপত্ৰ নং (ভাৰত)
+bill_footer_ph	ফুটাৰ (যেনে ধন্যবাদ, আকৌ আহিব)
+save_bill_format	বিলৰ ফৰ্মেট সাঁচি ৰাখক
+reset_bill_format	ডিফল্টলৈ ঘূৰক
+bill_format_reset	বিলৰ ফৰ্মেট ডিফল্টলৈ
+reset_kot_format	ডিফল্টলৈ ঘূৰক
+kot_format_reset	KOT বিন্যাস ডিফল্টলৈ
+kot_format	KOT বিন্যাস
+kot_format_help	ৰন্ধনশালাৰ স্লিপ মানক KOT — দাম নাই; খাদ্য সদায় ছপা হয়। ঐচ্ছিক শাৰী, শিৰোনাম, কপি, কাগজৰ বহল আৰু আখৰৰ আকাৰ কাটি নাযায়।
+kot_format_fields	ক্ষেত্ৰ
+kot_field_next	পৰৱৰ্তী ক্ষেত্ৰ
+kot_field_show	দেখুৱাওক
+kot_field_hide	লুকুৱাওক
+kot_field_on	দেখুৱাওক
+kot_field_off	লুকুৱাওক
+kot_field_size	ফণ্ট আকাৰ
+kot_field_size_ph	যেনে 16, 20, 24, 28, 32…
+kot_weight_light	পাতল
+bill_kot_panel_help	বিল বিষয়বস্তু আৰু ৰন্ধনশালা স্লিপ টাইপ'গ্ৰাফী। ওপৰৰ বিষয়বস্তুৰ বহলেই বিল আৰু ৰন্ধনশালা স্লিপ দুয়োটাৰে বহল।
+std_size_ph	যেনে 18, 20, 26…
+kot_show_shop	দোকানৰ নাম
+kot_hide_shop	দোকান লুকুৱাওক
+kot_show_time	সময়
+kot_hide_time	সময় লুকুৱাওক
+kot_show_waiter	ৱেইটাৰ
+kot_hide_waiter	ৱেইটাৰ লুকুৱাওক
+kot_show_station	ষ্টেচন
+kot_hide_station	ষ্টেচন লুকুৱাওক
+kot_show_table	মেজ
+kot_hide_table	মেজ লুকুৱাওক
+kot_show_kot_no	KOT নং
+kot_hide_kot_no	KOT নং লুকুৱাওক
+kot_width	কাগজৰ বহল
+kot_width_58	58 mm
+kot_width_80	80 mm
+kot_kind_heading	KOT প্ৰকাৰ
+kot_kind_original	মূল
+kot_kind_duplicate	নকল
+kot_kind_modified	পৰিৱৰ্তিত
+kot_kind_cancelled	বাতিল
+kot_style_heading	ক্ষেত্ৰৰ আকাৰ আৰু ওজন
+kot_style_title	শিৰোনাম
+kot_style_item_qty	আইটেম · সংখ্যা
+kot_style_field_pick	ক্ষেত্ৰ বাছক
+kot_weight_regular	সাধাৰণ
+kot_weight_bold	ডাঠ
+kot_align	সংৰেখন
+kot_align_start	আৰম্ভ কৰক
+kot_align_center	মাজত
+kot_align_end	শেষত
+content_width	বিষয়বস্তুৰ বহল (মিমি)
+content_width_bill	বিলৰ বিষয়বস্তুৰ বহল (mm)
+content_width_kot	KOT ৰ বিষয়বস্তুৰ বহল (mm)
+content_width_ph	বা বিষয়বস্তুৰ বহল লিখক, 40–210 মিমি
+content_width_help	এই স্লিপ কিমান বহলকৈ ছপা হ’ব। বিল আৰু KOT দুয়োটাই নিজৰ নিজৰ বহল ৰাখে।
+content_width_bill_help	অতিথিৰ বিল কিমান বহলকৈ ছপা হ’ব। পূৰ্বনিৰ্ধাৰিত 210 mm (পৃষ্ঠা)। 58 mm ঠেক স্লিপ, 80 mm বহল স্লিপ, 112 mm 4-ইঞ্চি, 210 mm A4-বহল। 40 ৰ পৰা 210 লৈ যিকোনো মান লিখক। পাকঘৰৰ টিকটৰ নিজৰ বহল KOT টেবত আছে।
+content_width_kot_help	পাকঘৰৰ টিকট কিমান বহলকৈ ছপা হ’ব। পূৰ্বনিৰ্ধাৰিত 80 mm। 58 mm ঠেক স্লিপ, 80 mm বহল স্লিপ, 112 mm 4-ইঞ্চি, 210 mm পৃষ্ঠা। 40 ৰ পৰা 210 লৈ যিকোনো মান লিখক। অতিথিৰ বিলৰ নিজৰ বহল বিল টেবত আছে।
+vp_paper_width	বিষয়বস্তুৰ বহল (মিমি)
+vp_paper_width_ph	বা বিষয়বস্তুৰ বহল লিখক, 40–210 মিমি
+vp_paper_width_help	বিষয়বস্তুৰ বহল বিল আৰু KOT বিন্যাসত ছেট হয়। ই বিল আৰু ৰন্ধনশালাৰ টিকট দুয়োটাতে প্ৰযোজ্য।
+kot_size	আখৰৰ আকাৰ
+kot_size_s	সৰু
+kot_size_m	সাধাৰণ
+kot_size_l	ডাঙৰ
+std_size	আখৰৰ আকাৰ
+kot_copies	কপি
+kot_copies_1	1
+kot_copies_2	2
+kot_copies_3	3
+kot_title_ph	শিৰোনাম (খালী = KOT - KITCHEN ORDER)
+kot_footer_ph	ৰন্ধনশালা টোকা (ঐচ্ছিক, দাম নাই)
+kot_preview	পূৰ্বলোকন
+save_kot_format	KOT বিন্যাস সংৰক্ষণ কৰক
+test_kot_format	পৰীক্ষা KOT
+test_kot_sent	পাকঘৰৰ টিকটৰ নমুনা পঠিওৱা হ’ল
+test_bill_format	পৰীক্ষা বিল
+test_bill_sent	বিলৰ নমুনা পঠিওৱা হ’ল
+test_print_no_printer	সেই কামৰ বাবে প্ৰিণ্টাৰ নাই — এই স্ক্ৰীণতে এটা বাছক
+kot_format_saved	KOT বিন্যাস সংৰক্ষিত
+std_print	বিল প্ৰিণ্ট আকাৰ
+std_print_help	ষ্টেণ্ডাৰ্ড পোৰ্ট্ৰেইট আৰু লেণ্ডস্কেপ বিল কামৰ আখৰৰ আকাৰ (থাৰ্মেল KOT পৃথক)। দুয়ো দিশতে একে আকাৰ।
+std_size_s	সৰু
+std_size_m	সাধাৰণ
+std_size_l	ডাঙৰ
+save_std_print	বিল প্ৰিণ্ট আকাৰ সংৰক্ষণ কৰক
+std_print_saved	বিল প্ৰিণ্ট আকাৰ সংৰক্ষিত
+print_brand_kit	প্ৰিণ্ট ব্ৰেণ্ড কিট
+print_brand_kit_help	ঐচ্ছিক ষ্টাম্প আৰু পেমেণ্ট QR বিল আৰু LAN ডিছপ্লেত। পেমেণ্ট QR নথাকিলে ওপৰৰ UPIৰ পৰা ৰাশি QR।
+choose_stamp	ষ্টাম্প বাছক
+clear_stamp	ষ্টাম্প আঁতৰাওক
+stamp_set	ষ্টাম্প: ফাইলত — অতিথি ডিছপ্লে আৰু বিলত নাম
+stamp_none	ষ্টাম্প: নাই
+choose_payment_qr	পেমেণ্ট QR বাছক
+clear_payment_qr	পেমেণ্ট QR আঁতৰাওক
+payment_qr_set	পেমেণ্ট QR: ফাইলত — অতিথি ডিছপ্লেত (ৰাশি UPI QRৰ সলনি)
+payment_qr_none	পেমেণ্ট QR: নাই — পেমেণ্টত UPI IDৰ পৰা ৰাশি QR
+aggregator_import	এগ্ৰিগেটৰ অৰ্ডাৰ (ফাইল)
+aggregator_import_help	ঐচ্ছিক Local: backupsত import_aggregator_orders.json ৰাখি Import। কাউণ্টাৰ নৰোকিব; লাইভ Zomato/Swiggy = Cloud।
+import_aggregator_file	এগ্ৰিগেটৰ ফাইল আমদানি
+team_pick_ph	সম্পাদনাৰ বাবে কৰ্মীৰ নাম
+select_staff	এই কৰ্মী বাছক
+rights_help	অধিকাৰ — সলনি কৰিবলৈ টেপ কৰক: অনুমতি আছে → অনুমোদন সহ (তেতিয়াই মেনেজাৰৰ PIN) → অনুমতি নাই।
+dish_picker_help	আমাৰ ব্যঞ্জন বিচাৰক বা চাওক আৰু এটাত টেপ কৰক — তাৰ নাম আৰু ফটো ভৰি যাব, নহলে নিজৰ নাম ৰাখক। দাম দিয়ক (0-ও চলিব), তাৰপিছত আইটেম যোগ কৰক।
+close_dish_list	ব্যঞ্জনৰ তালিকা বন্ধ কৰক
+own_item_name	ইয়াক আপোনাৰ নিজৰ আইটেমৰ নাম হিচাপে ব্যৱহাৰ কৰক
+on_your_menu	আপোনাৰ মেনুত
+edit	সম্পাদনা
+schemes	স্কিম / অফাৰ
+schemes_help	X কিনিয়ক Y পাওক — চেটেলত অটো। উদা. Buy 2 Thali get 1 Chaas
+scheme_bogo_ph	২ Thali কিনিলে ১ Chaas পাব
+add_scheme	BOGO যোগ
+schedule_ph	সময় / হেপ্পী আৱাৰ — Mon-Fri 07:00-11:00 বা HappyHour 17:00-19:00=150
+upi_vpa_ph	UPI ID (VPA)
+upi_payee_ph	UPI গ্ৰহণকাৰী (ঐচ্ছিক)
+upi_qr	UPI QR
+show_upi_qr	UPI QR দেখুৱাওক
+close_upi_qr	বন্ধ
+upi_qr_help	অতিথি স্কেন কৰি পৰিশোধ কৰক। পাছত Take payment টিপক।
+kot_recall	ঘূৰাই আনক
+recently_done	এতিয়াই শেষ
+recall_kot_ph	ঘূৰাই আনিবলৈ KOT #
+role_help_customer	ভূমিকা: গ্ৰাহক — AR (তেওঁলোক আমাৰ ঋণী)। একেখন ফাৰ্ম যোগান ধৰোঁতাও হ’ব পাৰে।
+role_help_both	ভূমিকা: পঠোৱা লোক + কেৰিয়াৰ — এটা পাৰ্টি, AR আৰু AP বহী, প্ৰতিবেদনত নেট।
+role_help_supplier	ভূমিকা: যোগান ধৰোঁতা — ক্ৰয়ৰ বাবে AP।
+dine_in_pick_table	ডাইন-ইনৰ বাবে টেবুল বাছক…
+choose_table	টেবুল বাছক
+change_table	টেবুল সলনি কৰক
+pick_table_banner	এই অৰ্ডাৰৰ বাবে টেবুল বাছক
+items_word	বস্তু
+items_section	বস্তু
+back_to_order	অৰ্ডাৰলৈ উভতি যাওক
+new_items_head	এতিয়াও পঠোৱা হোৱা নাই
+price_ph	দাম
+price_ph_gst_inside	দাম ({tax} সৈতে)
+cancel_needs_table	ৰন্ধনশালাৰ পাছত বাতিল কৰিবলৈ এই অৰ্ডাৰ ফ্লোৰ (মেজ)ৰ পৰা খোলক — কাউণ্টাৰ KOT পৰিশোধলৈ টিকটত থাকে
+tax_rates_missing_hint	এই খাদ্যত {tax} হাৰ নাই — মেনুত কৰ হাৰ ছেট কৰক ({tax} inclusiveত দামত আগতেই {tax} আছে)
+taxable_value	কৰযোগ্য মূল্য
+gst_inside_price_note	({tax} সৈতে)
+start_with_template	আমাৰ মেনু টেমপ্লেটেৰে আৰম্ভ
+template_heading	আমাৰ মেনু টেমপ্লেট
+template_info	{c}টা শ্ৰেণী আৰু {d}টা ব্যঞ্জন ফটোসহ সাজু। দাম ₹0 — পিছত নিজৰ দাম দিয়ক।
+template_import	সম্পূৰ্ণ টেমপ্লেট আনক
+template_confirm	{d}টা ব্যঞ্জন শ্ৰেণীসহ যোগ কৰিব নেকি? আপোনাৰ আগৰবোৰ তেনেকৈয়ে থাকিব।
+template_yes	হয়, আনক
+template_importing	মেনু আমদানি…
+template_import_progress	আমদানি… {d}/{t}
+template_done	আমাৰ টেমপ্লেটৰ সকলো ব্যঞ্জন আপোনাৰ মেনুত আছে।
+template_imported	{d}টা ব্যঞ্জন আৰু {c}টা শ্ৰেণী যোগ হ'ল — এই স্ক্ৰীণতে দাম দিয়ক
+client_template_heading	ক্লায়েণ্ট মেনু
+client_template_info	{title}: {c}টা শ্ৰেণী, {d}টা ব্যঞ্জন দাম, ফটো আৰু উপনামসহ। কেৱল নথকা — আপোনাৰ নাম তেনেকৈয়ে থাকিব।
+client_template_import	এই মেনু আনক
+client_template_confirm	{title}ৰ পৰা {d}টা ব্যঞ্জন যোগ কৰিব নেকি? আপোনাৰ আগৰবোৰ তেনেকৈয়ে থাকিব।
+client_template_importing	{title} আমদানি…
+client_template_done	{title}ৰ সকলো ব্যঞ্জন আপোনাৰ মেনুত আছে।
+client_template_imported	{title}ৰ পৰা {d}টা ব্যঞ্জন আৰু {c}টা শ্ৰেণী যোগ হ'ল
+resv_heading	সংৰক্ষণ
+resv_name_ph	অতিথিৰ নাম
+resv_phone_ph	ফোন (ঐচ্ছিক)
+resv_guests_ph	অতিথি
+resv_when_ph	কেতিয়া — 20:30, tomorrow 13:00
+resv_table_ph	টেবুল (ঐচ্ছিক)
+resv_add	বুক কৰক
+resv_seat	বহিল
+resv_none	অহা কোনো বুকিং নাই।
+guests_word	অতিথি
+delivery_by_ph	ডেলিভাৰী কোনে নিব (ৰাইডাৰ বা কৰ্মী)
+kitchen_all_day	এতিয়া ৰান্ধিব লাগে: {items}
+kitchen_all_day_head	এতিয়া ৰান্ধিবলগীয়া
+kitchen_tab_live	লাইভ
+kitchen_tab_recall	ঘূৰাই আনক
+kitchen_tab_stations	ষ্টেচন
+split_bill	বিল ভগাওক
+split_go	পৃথক বিল কৰক
+cancel	বাতিল
+opening_client	ক্লায়েণ্ট খোল খাইছে…
+preparing_desk	ডেস্ক সাজু হৈছে…
+opening_server	চাৰ্ভাৰ খোল খাইছে…
+creating_server	চাৰ্ভাৰ সৃষ্টি হৈছে…
+split_help	এজন অতিথিয়ে দিব লগা ব্যঞ্জন টিপক · {n}টা বাছা
+split_send_first	প্ৰথমে KOT পঠিয়াওক — কেৱল পাকঘৰলৈ যোৱা ব্যঞ্জনহে পৃথক বিললৈ যায়
+split_pick_some	প্ৰথমে পৃথক বিলৰ ব্যঞ্জন টিপক
+split_done	পৃথক বিল হ'ল — ফ্ল'ৰত এই টেবুলৰ কাষত আছে
+split_marked	পৃথক বিল
+order_empty_pick	অৰ্ডাৰ খালী — ব্যঞ্জন বাছিবলৈ ওপৰত “ব্যঞ্জন যোগ কৰক” টিপক।
+add_dishes	ব্যঞ্জন যোগ কৰক
+order_so_far	এই অৰ্ডাৰত: {n} · {total}
+no_dish_match	“{q}”ৰ সৈতে মিলা কোনো ব্যঞ্জন নাই
+pick_dishes_help	ব্যঞ্জন যোগ কৰিবলৈ টিপক · তালিকা চুটি কৰিবলৈ শ্ৰেণী বাছক
+pick_done	হ'ল
+pick_done_dd	হ'ল · {label}
+printer_route_mode	এই ঠাইত কেইবাটাও প্ৰিণ্টাৰ থাকিলে
+printer_mode_first	যিটো প্ৰথমে চলে
+printer_mode_all	সকলোতে ছপাওক
+kot_show_area	এলেকা
+kot_hide_area	এলেকা লুকুৱাওক
+kot_show_item_hdr	আইটেম · সংখ্যা
+kot_hide_item_hdr	স্তম্ভ লুকুৱাওক
+kot_show_title	শিৰোনামৰ শাৰী
+kot_hide_title	শিৰোনাম লুকুৱাওক
+kot_field_order	ছপাৰ ক্ৰম
+kot_field_up	ওপৰলৈ নিয়ক
+kot_field_down	তললৈ নিয়ক
+kot_field_cycle	পিছৰটো বাছক
+kot_field_select	পিছৰটো বাছক
+kot_field_time	সময়
+kot_field_kot_no	KOT নং
+kot_field_area	এলেকা
+kot_field_table	মেজ
+kot_field_shop	দোকানৰ নাম
+kot_field_waiter	কৰ্মচাৰী
+kot_field_station	ষ্টেচন
+app_template_blurb_extra	লগতে: মালিক জহিৰ, এডমিন আছিফ, ৱেটাৰ নৱাজ; FOH ছাইডবাৰ; 4 ঘণ্টাৰ পিছত ইতিহাস; আজিৰ পটি অফ; সৰু KOT।
+dishes_n	{n}টা ব্যঞ্জন
+recipe_ph	ৰেচিপি (ঐচ্ছিক) — এখন প্লেটত লাগে: Rice=0.2, Paneer=0.15
+reorder_ph	ইমানত আৰু কিনক
+set_reorder	পুনৰ অৰ্ডাৰৰ স্তৰ ঠিক কৰক
+low_stock_alert	কমি আহিছে — সোনকালে কিনক: {items}
+unpriced_note	আপোনাৰ মেনুৰ {n}টা ব্যঞ্জনৰ এতিয়াও দাম নাই — দাম নিদিয়ালৈকে সেইবোৰ 0ত বিল হ'ব।
+show_unpriced	কেৱল দাম নথকা ব্যঞ্জন দেখুৱাওক
+show_all_dishes	সকলো ব্যঞ্জন দেখুৱাওক
+role_waiter	ৱেটাৰ
+role_kitchen	পাকঘৰ
+role_title_rest_ph	পদ (যেনে কেপ্টেইন, মুখ্য ৰান্ধনী)
+preset_help_rest	ৱেটাৰ: অৰ্ডাৰ লয় আৰু টেবুল চম্ভালে। কেচিয়াৰ: ধনো লয়। পাকঘৰ: পাকঘৰৰ স্ক্ৰীণ। মেনেজাৰ: মেনু, বাতিল আৰু ৰেহাইও।
+kind_raw	কেঁচা সামগ্ৰী
+kind_resale	কিনি বিক্ৰী
+kind_dish	আমি বনোৱা ব্যঞ্জন
+buy_unit_ph	একক (কিলো, লিটাৰ, পিচ)
+add_another_way	+ আন এটা উপায়
+parts_status	লিখা হ'ল {a} / {b} · {c} বাকী
+save_expense	খৰচ সাঁচক
+rest_ph	বাকী
+low_badge	কম
+stock_empty	এতিয়াও ষ্টকত একো নাই — কিনাত লিখা বস্তু ইয়াত দেখা যাব।
+recent_changes	শেহতীয়া সলনি
+lane_declared_label	কৰ চালান
+lane_owner_label	কেশ মেমো
+money_lane_bill	বিল: {lane}

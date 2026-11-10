@@ -1,0 +1,835 @@
+# Arabic — العربية (ar). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	دفاتر الشحن + مكتب الحجز. مجاني دون اتصال.
+unlock	فتح القفل
+pin_hint	رمز المالك يبدأ بـ 0000
+sell	الحجز
+buy	الصرف
+books	دفتر اليوم
+books_help	حالة اليوم. الحجز = طرود واردة. الصرف = فواتير الناقلين والمصروفات. الأطراف = المرسلون والناقلون.
+buy_help	سندات المصروفات وفواتير الناقلين (مال خارج). على الحساب يبقى في دفتر الطرف.
+sell_money_in	احجز طرداً
+buy_money_out	مصروف / فاتورة ناقل
+record_purchase	سجّل الشراء
+add_expense	سند مصروف
+bank_book	دفتر البنك
+credit_help	معرف الطرف فريد (قد تتكرر الأسماء). الأدوار: مرسل (AR)، ناقل (AP)، أو كلاهما على نفس المعرف. الدفاتر منفصلة؛ التقارير تُظهر الصافي.
+party_kind_ph	دور مخصص (اختياري) — أو المس شريحة أعلاه
+parties_list_heading	الأطراف المحفوظة
+reports_help	دفتر اليوم، المدينون والدائنون، دفتر البنك، سندات المصروفات، الربح والخسارة.
+reports_today	دفتر اليوم (اليوم)
+reports_month	الربح والخسارة (شهر)
+reports_aging	مستحقات / Dr-Cr
+reports_balance_sheet	الميزانية
+reports	تقارير
+refresh	تحديث
+undo	تراجع
+start_tracking	ابدأ العد
+stock_minus	− مخزون
+stock_plus	+ مخزون
+settle_cash	سدد نقداً
+settle_card	سدد بالبطاقة
+items	الأسعار والخدمات
+nav_items	الأسعار
+more	المزيد
+your_items	أسعارك
+items_help	كل صف هو سعر (مثال Surface Zone A). الوحدة عادة كغ. اضغط للتحرير.
+add_item	أضف سعراً
+new_item	سعر جديد
+adding_item	إضافة سعر جديد
+editing_item	التحرير
+save	حفظ
+remove	إزالة
+empty_catalog	لا أسعار بعد. افتح الأسعار والخدمات، أضف واحداً (الاسم + السعر، الوحدة كغ)، ثم الحجز.
+counter_sale	حجز الكاونتر
+total	المجموع
+cash	نقداً
+upi	UPI
+card	بطاقة
+credit	الأطراف
+clear	مسح
+ready_to_sell	جاهز للحجز
+today_prefix	اليوم
+today_mid	اليوم
+owed	مستحق
+round_word	تقريب
+back	رجوع
+sold_out	نفد
+restock	إعادة
+not_tracked	غير محسوب
+in_stock	في المخزون
+marked_sold_out	مُعلَّم نافد
+add_upper	أضف
+na	غير متاح
+qty	كمية
+unit_at	السعر
+actual	الفعلي
+applied	المطبّق
+note_ph	ملاحظة (اختياري)
+rounded	مقرّب
+split	تقسيم
+counter	كاونتر
+parcel	طرد
+order	طلب
+sales	الحجوزات
+sales_refunds	الحجوزات والمبالغ المستردة
+day_close	إقفال اليوم
+reports_expenses	تقارير ومصروفات
+nav_reports	التقارير
+nav_settings	الإعدادات
+nav_lock	القفل
+sidebar_settings	إعدادات الشريط الجانبي
+sidebar_settings_help	نفس الأيقونات الموجودة في الشريط الجانبي. اسحب الصف لإعادة ترتيبه. قلب المفتاح لإظهار أو إخفاءه. الإعدادات والقفل يظلان دائمًا على الشريط.
+sidebar_always_on_short	دائمًا مفعّل
+sidebar_back_settings	رجوع
+sidebar_shown	معروض
+sidebar_hidden	مخفي
+sidebar_always_on	دائماً على البار
+sidebar_shown_hint	معروض على الشريط الجانبي / التبويبات السفلية
+sidebar_hidden_hint	مخفي عن البار
+sidebar_menu_items	القائمة والعناصر
+sidebar_enable_all	تمكين الكل
+sidebar_disable_all	تعطيل الكل
+sidebar_order_saved	تم حفظ ترتيب الشريط الجانبي
+sidebar_visibility_saved	تم حفظ رؤية الشريط الجانبي
+amounts_hide	إخفاء
+amounts_show	إظهار
+no_sale_yet	لا مبيعات بعد
+favorites	المفضلة
+favorites_help	العناصر التي تبيعها كثيرًا، محفوظة لحسابك. أضف واحدًا إلى الفاتورة، أو أنشئ قائمتك من جميع العناصر أدناه.
+your_favorites	مفضلاتك
+all_items	كل العناصر
+no_favorites	لا مفضلة بعد — أضف عناصر من القائمة أدناه.
+add_to_bill	أضف إلى الفاتورة
+added	تمت الإضافة
+owes_word	يدين بـ
+selected_word	تم التحديد
+chip_clear_credit	صافٍ — امنح ائتمانًا أو خذ دفعة مقدمة
+chip_missing_customer	العميل المحدد مفقود — اختر مرة أخرى
+chip_no_customer	لا عميل بعد — اكتب اسمًا ثم انقر الائتمان
+credit_summary_fmt	{} عميل · ائتمان مفتوح {} · دفعات محفوظة {}
+recent_label	الأخيرة:
+inventory	المخزون
+inventory_stock	المخزون والعد
+branches	فروع
+branches_org	فروع ومؤسسة
+credit_customers	الأطراف (المدينون والدائنون)
+customer_name_ph	اسم الطرف
+new_customer_ph	اسم الطرف الجديد
+item_name_ph	اسم السعر (مثال Surface Zone A)
+item_price_ph	لكل كغ / الشريحة الأولى
+start_template	المنتج
+next_booking	الحجز التالي
+destination_ph	مدينة / منطقة الوجهة
+consignee_ph	المستلم
+consignee_phone_ph	هاتف المتلقي
+consignee_address_ph	عنوان التسليم
+origin_name_ph	اسم المرسل
+origin_phone_ph	هاتف المرسل
+origin_address_ph	عنوان الالتقاط / المنشأ
+booking_consignor_heading	المرسل (العميل)
+booking_consignee_heading	المستلم
+booking_consignor_hint	اختر طرفًا للتعبئة، أو اتركه فارغًا لعميل عابر. مطلوب للاستلام من المنزل وRTO.
+booking_consignee_hint	مستلم الطرد. اتركه فارغًا للطرود المسلَّمة مباشرة عند الكاونتر.
+weight_kg_ph	كغ فعلي
+length_cm_ph	الطول سم
+breadth_cm_ph	العرض سم
+height_cm_ph	الارتفاع سم
+chargeable_kg	كغ قابل للفوترة
+awb_label	AWB
+booking_help	حضوري: الوجهة ← الوزن ← اختيار السعر ← حجز حساب/نقد ← الدفع. يُطبع AWB على الإيصال. الحجز التالي يفرغ المكتب.
+cart_empty_hint	المكتب فارغ — حدّد الوجهة والوزن، اضغط ADD على سعر، ثم ادفع.
+team	الفريق
+team_pins	الفريق والرموز
+my_pin_settings	رمزي
+settings_hub_help_my_pin	غيّر رمز فتح من سجّل الدخول على هذا الجهاز.
+team_self_help	يمكنك أنت فقط تغيير رقم التعريف الشخصي (PIN) الخاص بإلغاء القفل (وكلمة مرور تسجيل الدخول الاختيارية). اسأل المالك إذا كنت بحاجة إلى شاشات أو حقوق مختلفة.
+backup_settings	نسخ واحتياطي وإعدادات
+lock_app	قفل
+pick	اختر
+select	تحديد
+advance	تقدّم
+owner	المالك
+staff	الموظفون
+photo	صورة
+auto	تلقائي
+prev	السابق
+next	التالي
+ok	حسناً
+this_shop	وضع الخادم
+extra_till	وضع العميل
+off	إيقاف
+server	خادم
+client	عميل
+language_currency	اللغة والعملة
+language	اللغة
+choose_language	اختر لغتك
+language_setup_hint	اتبع لغة هذا الجهاز، أو اختر واحدة بنفسك.
+lang_follow_platform	استخدم لغة الجهاز
+lang_pick_user	استخدم اللغة المختارة
+lang_platform_now	لغة الجهاز الآن
+selected_language	المختارة
+continue	متابعة
+this_device	هذا الجهاز
+device_use_q	كيف سيُستخدم هذا الجهاز؟
+last_server_mode	كان خادمًا — اضغط للمتابعة
+last_client_mode	كان عميلًا — اضغط للمتابعة
+choose_server	اختر خادماً
+choose_server_hint	هذا الجهاز لديه خوادم بالفعل. افتح واحداً أو أنشئ خادماً جديداً لنشاط آخر.
+create_new_server	إنشاء خادم جديد
+open_server	فتح
+new_server_name_ph	اسم الخادم الجديد (اختياري)
+server_remove_pin_ph	رمز المالك للإزالة
+only_owner_remove_server	المالك وحده يمكنه إزالة خادم
+owner_pin_remove_server	يلزم رمز المالك لإزالة هذا الخادم
+device_setup_help	الخادم يحفظ الدفاتر هنا. العميل يقترن بخادم.
+currency	العملة
+backup	نسخة احتياطية
+settings_sec_diag	التشخيص
+settings_hub_help	افتح قسمًا واحدًا في كل مرة — تمرير أقل وخيارات أوضح.
+settings_sec_devices	كاونترات إضافية وفروع
+settings_sec_alerts	التنبيهات
+alerts_help	كم تبقى رسائل الحالة على الشاشة لك (لهذا الدخول).
+snack_secs_ph	ثوانٍ (3–60، الافتراضي 10)
+snack_secs_save	حفظ مدة التنبيه
+snack_secs_saved	حُفظت مدة التنبيه — {n} ثانية
+snack_secs_bad	أدخل الثواني رقمًا (3–60)
+cancelled	أُلغي
+cancel	إلغاء
+opening_client	فتح العميل…
+preparing_desk	تجهيز الطاولة…
+opening_server	فتح الخادم…
+creating_server	إنشاء خادم…
+diag_privacy_help	تظل السجلات على هذا الجهاز. لا يتم تخزين الأسرار (كلمة المرور، كلمات المرور). يتطلب مشاركة حزمة خارج الجهاز موافقتك الصريحة في كل مرة — ولا تُباع أو تُعطى لأطراف ثالثة.
+diag_level	مستوى التفاصيل
+diag_level_error	أخطاء
+diag_level_warn	تحذيرات
+diag_level_info	معلومات
+diag_level_debug	تصحيح الأخطاء
+diag_support_start	بدء جلسة الدعم لمدة 30 دقيقة
+diag_support_stop	إنهاء جلسة الدعم
+diag_support_started	جلسة دعم على — تفاصيل تصحيح الأخطاء لمدة 30 دقيقة
+diag_support_ended	انتهت جلسة الدعم
+diag_export_local	تصدير نسخة محلية
+diag_export_local_done	جاهزة نسخ التشخيص في {path} — اختر مكان الحفظ
+diag_approve_send	الموافقة على المشاركة من هذا الجهاز
+diag_send_heading	المشاركة خارج هذا الجهاز
+diag_send_help	الموافقة على حزمة واحدة، ثم تنتهي صلاحيتها. مؤقتة — تُستخدم فقط لإصلاح أو تحسين المنتج. لا يتم مشاركتها مع أطراف ثالثة. تعمل على Linux و Windows و macOS و Android.
+optional_login_heading	تسجيل دخول اختياري
+rights_heading	الصلاحيات
+booking_scope_heading	محلي / دولي
+diag_send_approved	تم الموافقة على مشاركة حزمة واحدة (تنتهي صلاحيتها قريبًا)
+diag_export_send	إنشاء حزمة المشاركة (تحتاج إلى موافقة)
+diag_export_send_done	حزمة المشاركة جاهزة في {path} — اختر مكان الحفظ، ثم أرسلها فقط لدعم Kumkaj
+diag_save_bundle	حفظ نسخة التشخيص
+diag_bundle_saved	تم حفظ نسخة التشخيص في {path}
+diag_bundle_failed	لم يتم حفظ نسخة التشخيص — حاول مرة أخرى
+diag_clear	مسح سجلات التشخيص
+diag_cleared	تم مسح سجلات التشخيص
+use	استخدم
+add_branch	أضف فرعاً
+add_conversion	أضف تحويلاً
+add_item_plain	أضف صنفاً
+add_note	أضف ملاحظة
+add_opening_balance	أضف الرصيد الافتتاحي
+add_rider	أضف سائق توصيل
+add_staff	أضف موظفاً
+add_unit	أضف وحدة
+add_use_name	أضف / استخدم هذا الاسم
+allow_extra_tills	اسمح بالكاونترات الإضافية
+amend	تعديل
+apply_country_pack	طبّق حزمة البلد
+datetime_appearance	مظهر التاريخ والوقت
+datetime_appearance_help	تحتفظ الكتب بالسنة الأولى من RFC3339 بالداخل. تعمل هذه فقط على تغيير كيفية ظهور التواريخ والساعات على الإيصالات والتسميات والتقارير والشاشة.
+datetime_example	مثال الآن: {ex}
+date_order	ترتيب التاريخ
+date_order_dmy	يوم/شهر/سنة
+date_order_mdy	شهر/يوم/سنة
+date_order_ymd	سنة/شهر/يوم
+time_format	الساعة
+time_format_24h	24 ساعة
+time_format_12h	12 ساعة
+attach_bill_photo	أرفق صورة الفاتورة
+attach_pdf	أرفق PDF
+attach_photo	أرفق صورة
+bank	البنك
+bank_in	إيداع بنكي
+bank_out	سحب بنكي
+bank_to_till	البنك ← الكاونتر
+till_to_bank	الكاونتر ← البنك
+mark_cleared	علّم كمُسوّى
+unmark	إلغاء التعليم
+role_both	كلاهما
+role_carrier	الناقل
+role_cashier	أمين الصندوق
+role_consignor	المرسل
+role_manager	المدير
+role_supplier	المورّد
+branch_name_sell_ph	اسم الفرع الذي ستبيع منه
+bring_my_book	أحضر دفتري
+business_tax_id_ph	الرقم الضريبي للنشاط
+card_amount_ph	مبلغ البطاقة
+cash_amount_ph	المبلغ النقدي
+upi_amount_ph	مبلغ UPI
+carrier_cost_ph	تكلفة الناقل
+carrier_party_ph	طرف الناقل
+choose_icon	اختر أيقونة
+choose_logo	اختر شعاراً
+choose_receipt_stamp	اختر ختم الإيصال
+choose_payment_qr	اختر رمز دفع QR
+clear_icon	أزل الأيقونة
+clear_logo	أزل الشعار
+clear_photo	امسح الصورة
+clear_stamp	مسح الختم
+clear_payment_qr	مسح رمز الدفع
+print_faces	شكل الطباعة (الإيصال / فاتورة الفترة)
+print_faces_help	ختم ورمز QR للدفع اختياريان بجانب شعارك على إيصالات الحجز وفواتير الفترة.
+awb_pools_heading	مجموعات أرقام AWB للناقل
+add_awb_pool	أضف مجموعة AWB
+awb_pool_carrier_ph	اسم الناقل
+awb_pool_start_ph	رقم البداية
+awb_pool_end_ph	رقم النهاية
+awb_pool_prefix_ph	البادئة (اختياري)
+awb_pool_label_ph	التسمية (اختياري)
+pieces_ph	القطع (فارغ = 1) — وسّع للشحن / عدة قطع
+bulk_awbs_ph	AWB بالجملة — الصق عدة أرقام (سطر جديد أو فاصلة) لتقديم الحالة مرة واحدة
+tds_cut_ph	خصم TDS (اختياري)
+discount_ph	خصم (اختياري)
+cheque_no_ph	رقم الشيك (اختياري)
+bill_reminder_chase	قائمة تذكير الفواتير
+month_mix_report	تقرير مزيج الشهر
+copy_month_gst_csv	نسخ CSV ضريبة الشهر
+domestic	محلي
+international	دولي
+pick_logo	اختر شعاراً
+booking_scope_hint_domestic	حجمي ÷5000 (محلي) — دولي ÷6000
+booking_scope_hint_intl	حجمي ÷6000 (دولي) — محلي ÷5000
+cod_register	سجل الدفع عند الاستلام
+collect_cod	حصّل الدفع عند الاستلام (AWB)
+consignments_dispatch	الشحنات والإرسال
+consignor_party_ph	المرسل / اسم الطرف
+copy_day_book_csv	انسخ CSV دفتر اليوم
+copy_day_close	انسخ إقفال اليوم
+copy_items_csv	انسخ CSV الأصناف
+copy_outstanding_csv	انسخ CSV المستحقات
+copy_parties_csv	انسخ CSV الأطراف
+copy_party_ledger_csv	انسخ CSV دفتر الطرف
+copy_receipt	انسخ الإيصال
+copy_report	انسخ التقرير
+counted_cash_ph	النقد المعدود في الدرج
+counter_agency_ph	اسم الكاونتر / الوكالة (اختياري)
+create_backup	أنشئ نسخة احتياطية
+day_close_summary	ملخص إقفال اليوم
+delete_party	احذف الطرف المحدد
+dispatch_to_rider	المحجوز ← إلى السائق
+docket_charge_ph	رسوم البوليصة
+declared_value_ph	القيمة المصرح بها
+contents_ph	المحتويات
+eway_ph	رقم بوليصة النقل الإلكترونية
+insurance_label	تأمين (نعم/لا)
+yes_label	نعم
+no_label	لا
+print_route_label	مسار الطباعة
+new_party_kind_label	نوع الطرف الجديد
+done_open_books	تم — افتح الدفاتر
+export_day	صدّر اليوم
+extra_note_expense_ph	ملاحظة إضافية على آخر مصروف
+extra_note_awb_ph	ملاحظة إضافية على هذا AWB / البيع
+failed_delivery	فشل التوصيل
+find_scan_awb	ابحث / امسح AWB
+forget_shop	انسَ هذه المتجر
+fuel_ph	الوقود
+handover_carrier	المحجوز ← إلى الناقل
+import_day	استورد اليوم
+import_items_csv	استورد CSV الأصناف / الأسعار…
+import_parties_csv	استورد CSV الأطراف…
+import_pincodes_csv	استورد CSV الرموز البريدية…
+import_carrier_bill_csv	استورد CSV فاتورة الناقل…
+copy_carrier_bill_report	انسخ آخر تقرير فاتورة
+use_carrier_cost	استخدم تكلفة الناقل
+rate_carrier_ph	الناقل (فارغ = سعر بيعنا)
+rate_party_ph	الطرف (فارغ = كل العملاء)
+carrier_pick_ph	الناقل للتكلفة (من المقارنة)
+item_name	اسم الصنف
+load_bulk_row	حمّل صفاً جماعياً ← المكتب
+login_id_ph	معرف الدخول
+mark_delivered	علّم كمُسلّم
+manifest_cod_total	إجمالي COD
+manifest_received_by	استلم بواسطة
+manifest_sign	توقيع
+ndr_address_wrong	عنوان خاطئ
+ndr_customer_unavailable	العميل غير متاح
+ndr_door_locked	الباب مقفل
+ndr_other	أخرى
+ndr_refused	مرفوض
+out_for_delivery	خرج للتوصيل
+print_drs	اطبع DRS
+print_run_sheet	اطبع ورقة الجولة
+reattempt	إعادة المحاولة
+rider_cod_handed_ph	COD سلمه السائق
+settle_rider_cod	تسوية COD السائق
+mode_desk	المكتب
+mode_rider	السائق
+waiting_office	بانتظار الوصول للمكتب
+capture_signature	التقاط التوقيع
+incoming_manifest	بيان الوارد
+pickup_request	طلب الاستلام
+pickup_run	جولة الاستلام
+auto_assign_area	تعيين المنطقة تلقائياً
+reorder_stops	إعادة ترتيب المحطات
+settle_rider_pay	تسوية أجر السائق
+vehicle_inspect	فحص المركبة
+print_docket	اطبع الإيصال
+franchise_statement	كشف الامتياز
+tally_export	تصدير قسائم Tally
+open_whatsapp	فتح واتساب
+copy_sms	نسخ نص SMS
+pick_barcode_image	اختر صورة للمسح
+share_receipt_whatsapp	مشاركة الإيصال عبر واتساب
+delivery_feedback	تقييم التوصيل
+lan_self_book	حجز ذاتي على الشبكة المحلية
+new_party_clear	طرف جديد (امسح النموذج)
+new_party_kind_ph	نوع الطرف الجديد (مورّد / ناقل)
+next_country	البلد التالي
+prev_country	البلد السابق
+note_gstin_ph	ملاحظة / GSTIN / تذكير بالاتفاق
+note_pod_ph	ملاحظة / POD (اختياري)
+on_account_ap	على الحساب (AP)
+org_optional_ph	المؤسسة (اختياري)
+paid_now	مدفوع الآن
+pairing_code_ph	رمز الاقتران
+pair_now	اقترن الآن
+party_name_selected_ph	اسم الطرف (أو استخدم المحدد)
+password_ph	كلمة المرور
+pay_ap_card	ادفع AP بالبطاقة
+pay_ap_cash	ادفع AP نقداً
+pay_ap_upi	ادفع AP عبر UPI
+period_bill	فاتورة الفترة
+period_bill_party	فاتورة الفترة (الطرف)
+pick_pod_photo	اختر صورة إثبات التسليم
+print_awb_label	اطبع ملصق AWB
+print_open	اطبع / افتح
+reason_amend_ph	سبب التعديل / الإلغاء / الاسترداد
+reason_note_ph	السبب / ملاحظة (هدر، عد، …)
+record_day_close	سجّل إقفال اليوم
+refresh_from_shop	حدّث من المتجر
+refund	استرداد
+remit_cod	سلّم الدفع عند الاستلام (الطرف)
+remove_selected	أزل المحدد
+restore_backup	استعد النسخة الاحتياطية
+rider_name_ph	اسم سائق التوصيل
+rider_phone_ph	هاتف سائق التوصيل
+riders	سائقو التوصيل
+riders_own_fleet	السائقون (أسطولنا)
+rollup	تجميع
+save_booking_measures	احفظ مقاسات الحجز
+save_brand	احفظ العلامة
+save_business_id	احفظ الرقم الضريبي ونسبة الخدمة
+save_business_name	احفظ اسم النشاط
+save_features	حفظ إعداد المهمة
+save_names	احفظ الأسماء
+server_ip_ph	IP الخادم (مثال 192.168.1.10)
+set_credit_limit	عيّن حد الائتمان
+set_login_selected	عيّن الدخول للمحدد
+set_login_named	طبّق الدخول لـ {name}
+shop	المتجر
+start_fresh	ابدأ من جديد
+stop_extra_tills	أوقف الكاونترات الإضافية
+backup_auto	نسخ احتياطي تلقائي يوميًا · الأخير {when} · تُحفظ آخر 14 يومًا في {dir}.
+backup_auto_none	نسخ احتياطي تلقائي يوميًا — الأول بعد لحظات.
+backup_copy_to	تذهب نسخ أيضًا إلى {dir}.
+backup_copy_btn	انسخ النسخ الاحتياطية إلى مجلد أيضًا…
+autostart_off	ابدأ مع هذا الحاسوب
+autostart_on	يبدأ مع هذا الحاسوب ✓ — اضغط للإيقاف
+autostart_done_on	يفتح التطبيق الآن عند تشغيل هذا الحاسوب — يعود الخادم بعد انقطاع الكهرباء.
+autostart_done_off	لم يعد الحاسوب يفتح التطبيق عند التشغيل.
+right_allowed	مسموح
+right_with_approval	بموافقة
+right_denied	غير مسموح
+editing_staff	حقوق ل
+team_pick_ph	اسم الموظف للتعديل
+select_staff	اختر هذا الموظف
+rights_help	الحقوق — انقر للتغيير: مسموح → بموافقة (رقم التعريف الشخصي للمدير في تلك اللحظة) → غير مسموح به.
+right_void_refund	إلغاء حجز أو استرداده
+right_amend_sale	تعديل حجز مسجّل
+find_server	ابحث عن خادم المطعم
+finding_server	جارٍ البحث عن خادم المطعم على هذه الشبكة…
+no_server_found	لم يُعثر على خادم. تأكد أن جهاز المطعم على نفس الشبكة مع السماح بنقاط بيع إضافية، أو اكتب عنوان IP.
+servers_found_pick	انقر على المحل الذي تريد الاتصال به.
+server_host_selected	باستخدام {host} — أدخل رمز الاقتران ثم اضغط اقتران الآن.
+device_forgotten	نسي المتجر هذا الجهاز — أقرنه مجددًا بالرمز الحالي. الطلبات المنتظرة محفوظة.
+forget_device	انسَ
+last_seen	آخر ظهور
+new_pair_code	رمز اقتران جديد
+lan_offline	غير متصل
+lan_offline_waiting	غير متصل · {n} قيد الانتظار
+lan_connecting	جارٍ الاتصال بالمحل…
+pair_finishing	الانتهاء من الزوج ... تطبيق الكتب المكتبية
+pair_opening	افتتاح المكتب…
+lan_live	مباشر
+lan_sending	جارٍ إرسال {n}
+lan_sign_in_to_send	سجّل الدخول مجددًا لإرسال {n}
+lan_pair_again	أقرن هذا الجهاز من جديد
+lan_update_app	حدّث التطبيق — هذا الجهاز وخادم المكتب بإصدارين مختلفين
+allow_firewall	السماح للأجهزة الأخرى بالاتصال
+firewall_blocked	جدار حماية هذا الحاسوب يحجب الأجهزة الأخرى — اضغط «السماح للأجهزة الأخرى بالاتصال».
+firewall_waiting	بانتظار موافقة المسؤول…
+lan_join_help	يمكن للأجهزة الأخرى الانضمام إلى هذا الجهاز — رمز الاقتران {code}. على الجهاز الآخر اختر وضع العميل ثم ابحث عن خادم المطعم، أو اكتب هذا العنوان: {addr}
+lan_pair_status	واي فاي {addr}
+lan_join_help_no_addr	قم بتوصيل هذا الجهاز بشبكة Wi‑Fi للحصول على عنوان.
+lan_no_address	لا يملك هذا الجهاز عنوان Wi‑Fi بعد — صِله بشبكة Wi‑Fi الخاصة بالمكتب.
+lan_not_listening	لا يقبل أجهزة الآن — ربما يستخدم برنامج آخر المنفذ {port}. أعد تشغيل التطبيق.
+lan_tills_off	الكاونترات الإضافية متوقفة. تبقى دفاتر هذا المكتب على هذا الجهاز. اسمح بالكاونترات الإضافية إذا كان على جهاز آخر أن يسجّل الطرود أو يستلم المدفوعات أيضًا.
+paired_with	مقترن بالمكتب على {url}
+not_paired	غير مقترن — اتصل بخادم المكتب.
+choose_device_use	اختر طريقة استخدام هذا الجهاز.
+paired_note	تم الاقتران. افتح القفل للبيع، أو حدّث لجلب أحدث بيانات المكتب.
+last_update_at	آخر تحديث من المكتب: {time}.
+pair_intro	ابحث عن الخادم، أو اكتب عنوانه ورمز الاقتران.
+queue_waiting	بانتظار الوصول إلى المكتب ({n}):
+queue_tries	{n} محاولات · آخر رد: {e}
+save_backup_copy	حفظ نسخة احتياطية…
+backup_copy_saved	تم حفظ النسخة الاحتياطية — احفظها خارج هذا الجهاز (ذاكرة USB أو جهاز آخر)
+backup_copy_overdue	لم تغادر أي نسخة احتياطية هذا الجهاز منذ {n} أيام — الإعدادات ← النسخ الاحتياطي
+backup_copy_failed	تعذّر حفظ النسخة الاحتياطية هناك — اختر مكانًا آخر
+clock_off	ساعة هذا الجهاز تختلف {min} دقيقة عن خادم المحل — اضبط الوقت الصحيح على هذا الجهاز
+printers_heading	الطابعات على هذا الجهاز
+printers_help	أضف كل طابعة مرة واختر أين تُطبع الإيصالات وملصقات AWB — تُجرَّب الأولى في القائمة أولاً؛ عند الفشل التالية. مسار فارغ = لا تطبع تلك الميزة. الهدف فارغ (افتراضي)، اسم النظام، أو عنوان شبكة (مثل 192.168.1.50). كل جهاز يحتفظ بطابعاته.
+job_width	عرض المحتوى (مم)
+job_width_ph	أو اكتب عرضًا، 40-210 ملم
+job_layout	التخطيط
+job_delivery	طريقة إرسال المهمة
+job_size	حجم الخط
+job_size_ph	مثال 18, 20, 26…
+save_receipt_format	حفظ تنسيق الإيصال
+save_label_format	حفظ تنسيق التسمية
+test_receipt_format	إيصال الاختبار
+test_label_format	تسمية الاختبار
+test_receipt_sent	تم إرسال إيصال العينة
+test_label_sent	تم إرسال عينة التسمية
+test_print_no_printer	لا توجد طابعة لهذه المهمة — أضف واحدة تحت هذا المكان
+printers_host_only	تُضبط الطابعات على جهاز المحل (Server). ترسل هذه الكاشير المهام إلى هناك — البحث / الإضافة / التعيين تبقى على الـ Server. صفحة الاختبار تذهب إلى الـ Server.
+printers_pool_heading	الطابعات
+printers_routes_heading	أين يُطبع
+printer_label_ph	الاسم (على سبيل المثال، مكتب)
+printer_target_ph	المضيف: 9100 · بلوتوث: MAC · USB: VID: PID · اسم النظام
+printer_mode_heading	تنسيق المسار المحدد
+printer_mode_standard	قياسي عمودي
+printer_mode_landscape	قياسي أفقي
+printer_mode_thermal	حراري
+printer_mode_standard_short	عمودي
+printer_mode_landscape_short	أفقي
+printer_mode_thermal_short	حراري
+printer_format_custom	تنسيق مخصص جديد
+printer_format_custom_label	مخصص
+printer_format_custom_added	أُضيف تنسيق مخصص لهذا المسار
+add_printer	أضف طابعة
+remove_printer	إزالة الأخير
+route_pick_ph	receipt أو label
+route_add_printer_ph	أضف طابعة لهذا المسار
+route_receipt	إيصال
+route_label	ملصق AWB
+route_dont_print	لم يتم تعيين طابعة
+route_add	أضف للمسار
+route_up	أعلى
+route_down	أسفل
+route_remove	إزالة الأخير
+route_clear	مسح الطابعات لهذا المكان
+save_printers	حفظ الطابعات
+print_test_page	طباعة صفحة اختبار
+printers_saved	الطابعات المحفوظة لهذا الجهاز
+test_page_sent	أُرسلت صفحة الاختبار — تحقق من الطابعة
+printers_found	موجود على هذا الجهاز: {list}
+find_printers	ابحث عن الطابعات
+printers_looking	جارٍ البحث عن الطابعات الموجودة على هذا الجهاز وشبكة Wi‑Fi...
+printers_tap_find	انقر فوق البحث عن طابعات لقوائم الانتظار التي تقبل المهام وطابعات إيصالات الشبكة على شبكة Wi‑Fi هذه (غير تلك التي تمت إزالتها أو غير المتصلة بالإنترنت).
+printers_none_found	لم يتم العثور على طابعات - اكتب اسم طابعة النظام أو عنوان الشبكة (على سبيل المثال 192.168.1.50).
+receipt_printer_ph	طابعة الإيصالات
+queue_refused	لم يقبلها المكتب ({n}) — راجع كل واحد منها عند الكاونتر:
+clear_not_accepted	تمت المراجعة — امسح هذه القائمة
+device_name_ph	اسم هذا الجهاز
+lan_last_update	آخر تحديث {time}
+lan_not_accepted	{n} غير مقبولة
+connected_now	متصل الآن
+backup_failed	فشل آخر نسخ احتياطي تلقائي: {e}
+backup_overdue	لا نسخة احتياطية منذ {n} أيام — اترك التطبيق مفتوحًا على هذا الجهاز ليتمكن من النسخ.
+disk_low	تبقّى {mb} ميغابايت فقط على هذا الجهاز — سيفشل النسخ الاحتياطي قريبًا. أفرغ بعض المساحة.
+last_seen_devices	آخر ظهور: {time}
+sync_interval	مزامنة كل {secs} ثانية
+connection_to_shop	الاتصال بالمكتب
+supplier_name_ph	اسم المورّد (أو الطرف)
+supplier_ph	المورّد
+switch_device	بدّل هذا الجهاز
+take_payment	خذ الدفع
+tax_added_till	{tax} غير شامل
+tax_inside_price	{tax} شامل
+today_books	دفاتر اليوم
+unlock_after_pairing	أدخل الرمز
+unlock_with_login	افتح القفل بالدخول
+update_my_password	غيّر كلمة مروري
+update_my_pin	تحديث رقم التعريف الشخصي الخاص بي
+duress_heading	رمز فتح طارئ (المالك فقط)
+duress_help	خياري. إذا تمت كتابة رقم التعريف الشخصي هذا عند إلغاء القفل بدلاً من رقمك، فسيتم مسح جميع إدخالات الكتب (الحجوزات ودفاتر الأستاذ والسجل) وسيفتح المكتب كمالك يبدو طبيعيًا - تظل الأسعار والحفلات والمناطق والموظفين والإعدادات. لا يتم حذف المخطط والتكوين. استخدم فقط إذا كنت مجبرًا على إلغاء القفل. اتركه فارغًا واحفظه لإيقاف التشغيل. لا يشبه أبدًا رقم التعريف الشخصي لأي شخص.
+duress_pin_ph	رمز طارئ (4–12 رقمًا)
+duress_confirm_ph	أعد الكتابة للتأكيد
+save_duress_pin	احفظ رمز الطوارئ
+clear_duress_pin	أوقف رمز الطوارئ
+duress_on	رمز الطوارئ مفعّل
+duress_off	رمز الطوارئ متوقف
+duress_saved	تم حفظ رمز الطوارئ
+duress_cleared	تم إيقاف رمز الطوارئ
+vehicle_ph	المركبة
+void	إلغاء
+write_off_ap	اشطب AP
+write_off_nil	اشطب / الرصيد صفر
+zone_ph	المنطقة (الاسم من الأسعار)
+caption_today	اليوم
+caption_bookings	الحجوزات
+caption_payments_today	مدفوعات اليوم
+caption_outstanding	المستحقات
+caption_bank	البنك
+paid_by	مدفوع بواسطة
+second_way	الطريقة الثانية
+weight_in	الوزن بـ
+size_in	الحجم بـ
+goods_received	البضائع المستلمة
+expense_heading	المصروف
+notes_attach_sale	الملاحظات والمرفقات (البيع المحدد)
+notes_attach_party	الملاحظات والمرفقات (الطرف المحدد)
+attachments_last_expense	المرفقات (آخر مصروف)
+credit_limit_heading	حد الائتمان (الطرف المحدد / المسمى)
+pay_selected_heading	ادفع المحدد (سوِّ الدين / خذ دفعة)
+write_off_heading	اشطب (سوِّ بدون دفع)
+pay_ap_heading	ادفع ما علينا لهم (AP)
+country_tax	البلد والضريبة
+extra_tills_heading	الكاونترات الإضافية
+other_devices_help_heading	إعداد أجهزة أخرى
+other_devices_help	على هذا الجهاز (الخادم): الأجهزة الأخرى → السماح بفترات إضافية. لاحظ رمز الاقتران وعنوان Wi‑Fi. انقر فوق السماح للأجهزة الأخرى بالاتصال إذا ظهرت. على جهاز الكمبيوتر، انقر فوق البدء بهذا الكمبيوتر. على كل جهاز آخر: قم بتثبيت التطبيق، واختر وضع العميل، وابحث عن خادم المتجر (أو اكتب العنوان)، وأدخل رمز الاقتران، ثم قم بالإقران الآن. تنتظر الطلبات على الجهاز في حالة انقطاع شبكة Wi-Fi وتذهب عندما يرد الخادم مرة أخرى.
+your_brand	علامتك (في التطبيق)
+units_heading	الوحدات
+booking_measures	مقاسات الحجز
+drawer_count	عد الدرج (اختياري)
+spreadsheet_csv	جدول البيانات (CSV)
+bank_reconciliation	التسوية البنكية (علّم مقابل كشف حسابك)
+book_add_product	احجز — أضف منتجاً / سعراً
+book_opening_credit	احجز — رصيد افتتاحي
+account_kind	نوع الحساب (اضغط واحداً)
+active_ledger	الدفتر النشط
+actual_total_cap	المجموع الفعلي
+amend_help	اختر بيعاً للتعديل أو الإلغاء أو الاسترداد. التعديلات تحتفظ بالتاريخ الكامل.
+applied_total_cap	المجموع المطبق
+bank_balance	رصيد البنك
+bank_net_today	صافي البنك اليوم
+branch_export_help	يقوم التصدير بكتابة لقطة يومية في مجلد النسخ الاحتياطية ونسخها إلى الحافظة. لاستيراد يوم منفذ آخر، احفظ الملف الخاص به باسم import_branch_snapshot.json في هذا المجلد، ثم اضغط على "استيراد".
+brand_shown_help	يظهر على الشاشات داخل التطبيق. يبقى اسم التطبيق المثبت وأيقونته على هذا الجهاز كما في قائمة المنصة.
+app_icon	أيقونة التطبيق
+logo_help	علامة اختيار متاحة لوضع شعار المتجر على الشاشات في التطبيق.
+onboard_layout	ما ستحصل عليه
+item_photo_help	اختياري. بدون صورة، نعرض الأحرف الأولى من اسم العنصر.
+cash_in_hand	النقد باليد (الكاونتر)
+change_my_pin_heading	تغيير رقم التعريف الشخصي (PIN الخاص بك فقط)
+connect_to_server	اتصل بالخادم
+counter_locked	الكاونتر 01 · مقفل
+country_pack_help	تحدد حزمة البلد اسم الضريبة وحسابها ومسار الدفع الفوري ومعرف النشاط المطبوع على الفواتير. Kumkaj لا يقدم ضرائب ولا يصدر فواتير إلكترونية حكومية في أي مكان.
+currency_use_help	مرّر واضغط استخدم لأي عملة مدعومة.
+day_close_help	تسجيل إقفال اليوم يحفظ هذا الملخص (وفرق الدرج إن عُدّ) في سجل التدقيق. لا يوقف البيع.
+expenses_word	المصروفات
+feature_access_help	الوصول إلى الميزة للموظفين المحددين (انقر بعد الإضافة)
+footer_local	SQLite محلي · مجاني للأبد · بلا سحابة
+fresh_book_moklanjo	الطابعات
+fresh_selected	تم اختيار Fresh — يبقى الكتالوج فارغاً. اضغط Done عندما تكون جاهزاً.
+gross_word	الإجمالي
+how_start	كيف تريد أن تبدأ؟
+later_country_pack	الطابعات
+local_badge	محلي
+measures_help_moklanjo	كيف تُقاس الطرود عند المكتب. اكتب الأبعاد والوزن بالوحدات التي تستخدمها — القياسية (cm, m, in, ft · kg, g, lb, oz) أو وحدتك الخاصة المرتبطة بـ cm / kg أعلاه (مباشرة أو عبر وحدات أخرى). الدفاتر تسجل دائماً kg. اترك حقلاً فارغاً للإبقاء عليه.
+mix_type_hint_moklanjo	اكتب كم في كل (نقد / UPI / بطاقة / آجل). يجب أن يساوي الفاتورة. الآجل يحتاج عميلاً أعلاه.
+money_in_sales	المال الوارد (المبيعات)
+more_help_moklanjo	الكتالوج والمبيعات والآجل والفريق والنسخ الاحتياطي — بالإضافة إلى المخزون والكاونترات الإضافية عند الحاجة.
+net_word	الصافي
+offline_badge	دون اتصال
+optional_login_help	دخول اختياري (معرف + كلمة مرور). يضبطه المالك مرة واحدة؛ وبعدها يمكن للمستخدم فقط تغيير كلمة المرور.
+or_unlock_login	أو افتح القفل بمعرف الدخول + كلمة المرور
+permission_preset	الوظيفة (ضبط الشاشات والحقوق)
+preset_help_moklanjo	أمين الصندوق: البيع. المدير: البيع + الأصناف + الإلغاء/التعديل.
+product_locked_moklanjo	Moklanjo
+product_only_moklanjo	هذا التطبيق Moklanjo فقط — الدفاتر ومكتب الحجز. ستأتي منتجات منفصلة للمهن الأخرى لاحقًا.
+purchases_cogs	المشتريات (COGS)
+qty_cap	الكمية
+restore_help	الاستعادة: اختر نسخة احتياطية. تفتح الدفاتر كما كانت حينها؛ وتُحفظ الدفاتر الحالية أولًا، لذا يمكن التراجع.
+wipe_data_heading	حذف البيانات المحلية
+wipe_data_help	المالك فقط — خيارات مثل إلغاء تثبيت Windows. سجلات العمل تمسح التاريخ وتُبقي الأسعار/الإعداد. إعداد المحل يزيل الدفاتر. تفضيلات الشاشة: النافذة/اللغة. أكّد برمز المالك.
+wipe_trading	سجلات العمل
+wipe_schema	إعداد المحل
+wipe_ui	تفضيلات الشاشة
+wipe_owner_pin_ph	رمز المالك للحذف
+wipe_delete_selected	حذف المحدد
+wipe_owner_only	المالك وحده يستطيع حذف البيانات المحلية.
+restore_owner_only	المالك وحده يستطيع استعادة نسخة احتياطية.
+wipe_owner_pin_needed	أدخل رمز المالك لحذف البيانات المحلية.
+wipe_nothing_selected	اختر ما يحذف أولاً.
+wipe_done	تم حذف البيانات المحلية المحددة.
+wipe_schema_done	تم مسح إعداد المحل — اختر Server أو Client للمتابعة.
+rounded_total	المجموع المقرّب
+setup_app_moklanjo	إعداد Moklanjo
+shop_logo_optional	شعار المتجر (اختياري)
+stock_type_help	اكتب اسم الصنف (جزء منه يكفي)، كمية، ثم عدّل. الأصناف غير المعدودة بعد تحتاج بدء العد مرة واحدة.
+team_owner_help	التوظيف: اختر وظيفة (أمين صندوق / مدير)، الاسم + رقم التعريف الشخصي للبدء، ثم أضف. فقط إذا كان هذا الشخص مختلفًا: افتح الشاشات والحقوق أدناه، ثم احفظ إعداد المهمة. يقوم كل شخص بتغيير رقم التعريف الشخصي الخاص به في الأسفل - لا يمكن للمالك تغيير رقم التعريف الشخصي لأي شخص آخر.
+they_owe_us	يدينون لنا
+unit_at_cap	سعر الوحدة
+units_help	رموز لملصقات الأصناف (kg, piece, bag). يجب أن ترتبط كل وحدة — مباشرة أو عبر وحدات أخرى — بمعيار (kg · cm · ml · pc)، مثال 1 crate = 2 box و 1 box = 20 cm. التحويلات: 1 from = factor to. العملات ليست وحدات أبداً.
+we_owe_them	ندين لهم
+who_unlocking	من يفتح القفل؟
+locked_word	مقفل
+show_pin	اعرض الرمز
+hide_pin	أخفِ الرمز
+set_owner_pin	عيّن رمز المالك
+enter_owner_passcode	أدخل رمز المالك
+enter_staff_passcode	أدخل رمز الموظف
+pin_count_zero	0 / 12 أرقام · 4 على الأقل، ثم حسناً
+pin_count_need	{} / 12 أرقام · يلزم {} أكثر
+pin_count_full	12 / 12 أرقام · اضغط حسناً
+pin_count_ready	{} / 12 أرقام · اضغط حسناً عندما تكون جاهزاً
+pin_hint_choose	اختر 4–12 رقماً (لوحة مفاتيح أو لوحة لمس) · Enter/حسناً للحفظ
+pin_hint_new	رمز مالك جديد من 4–12 رقماً (لوحة مفاتيح أو لوحة لمس) · Enter/حسناً
+pin_hint_shop_code	جهاز المتجر · رمز الاقتران {}
+pin_hint_books	هذا الجهاز يحتفظ بالدفاتر
+pin_hint_paired	الكاونتر الإضافي مقترن — افتح القفل للبيع
+pin_hint_pair_first	الكاونتر الإضافي — اقترن بجهاز المتجر أولاً
+unlock_to_continue	افتح القفل للمتابعة
+no_staff_yet	لا موظفون بعد — افتح القفل كمالك، ثم الفريق
+status_server_set_pin	وضع الخادم — عيّن رمز المالك
+status_server_tills	وضع الخادم — يمكن للكاونترات الإضافية الانضمام. افتح القفل
+status_server_unlock	وضع الخادم — افتح القفل كمالك
+status_client_unlock	وضع العميل — افتح القفل للبيع
+icon_new_selected	الأيقونة: تم اختيار ملف جديد — اضغط حفظ العلامة
+icon_custom	الأيقونة: شعار متجرك الخاص
+icon_default	الأيقونة: شعار Kumkaj (الافتراضي) — اختر شعارك
+logo_yours	الشعار: شعار متجرك — يظهر على الشاشات والإيصالات
+logo_default	الشعار: شعار Kumkaj (الافتراضي) — اختر شعارك إن كان لديك واحد
+tmpl_current	الحالي: {} — {}
+tmpl_selected	المحدد: {} — {}
+setup_complete	اكتمل الإعداد
+onboard_fresh_tmpl	جديد · {} — يبدأ الكتالوج فارغًا؛ أضف الأصناف في الأصناف ثم اضغط تم.
+onboard_book_tmpl	دفتر · {} — أضف الأصناف والرصيد الافتتاحي ثم اضغط تم.
+onboard_template_tmpl	سمِّ المكان إن شئت، ثم اختر طريقة البدء.
+tmpl_blurb	دفاتر البريد السريع ومكتب الحجز: المرسلون والناقلون ودفتر اليوم وAWB.
+tmpl_how	احجز الطرود عند المكتب؛ دفتر اليوم لليوم؛ تبويبات للأسعار والأطراف والتقارير.
+trk_booked	مسجّل
+trk_picked_up	تم الاستلام
+trk_in_transit	في الطريق
+trk_delivered	تم التسليم
+trk_rto	عائد إلى المرسل
+lane_to_dispatch	للإرسال
+lane_with_carrier	لدى الناقل
+lane_failed	فشلت
+lane_done_today	أُنجز اليوم
+ops_board_help	الطرود حسب مكانها في عمل اليوم. اضغط على الطرود (أو امسحها) لاختيارها، ثم نفّذ الإجراء على كل المختار دفعة واحدة — كل مسار يعرض الخطوات المناسبة له فقط.
+lane_empty	لا شيء هنا الآن.
+picked_fmt	{n} مختار
+pick_all	اختر الكل
+bag_for_carrier	سلّم للناقل
+send_with_rider	أرسل مع السائق
+out_again	أرسل مجددًا
+return_to_sender	أعِد إلى المرسل
+runs_bags_heading	الجولات والأكياس الأخيرة
+print_word	اطبع
+bag_word	كيس الناقل
+run_word	جولة السائق
+parcels_fmt	{n} طرود
+parcel_history	السجل
+attempt_fmt	المحاولة {n}
+pieces_short_fmt	{n} قطع
+note_reason_ph	ملاحظة أو سبب
+ops_pick_first	اختر الطرود أولًا — اضغط عليها أو امسحها
+cod_to_collect	تم التسليم — الدفع عند الاستلام للتحصيل
+cod_on_road	الدفع عند الاستلام ما زال في الطريق
+cod_owed_consignors	تم التحصيل — مستحق للمرسلين
+cod_rto_fees	رسوم RTO للتحصيل
+cod_to_hand_in	الدفع عند الاستلام المطلوب تسليمه
+parcel_one_fmt	الطرد {n}
+facet_bank_title	التقارير
+facet_bank_help	دفاتر اليوم، أعمار أرصدة الأطراف، قيود البنك وأرباح وخسائر الفترة.
+facet_ops_title	الشحنات والإرسال
+facet_ops_help	امسح AWB أو اكتبه ← بحث، ثم تقديم / طباعة الملصق / COD. أرسل إلى السائق أو الناقل.
+facet_cod_title	سجل الدفع عند الاستلام
+facet_cod_help	اجمع عند التسليم ثم حوّل إلى المرسل.
+facet_riders_title	السائقون (الأسطول الخاص)
+facet_riders_help	أضف السائقين، ثم أرسل AWB المحجوزة من Ops.
+against_bill_ph	مقابل الفاتورة رقم أعلاه (اختياري)
+aliases_ph	أسماء بديلة — أسماء أخرى، مفصولة بفواصل
+amount_blank_full_ph	المبلغ (فارغ = الرصيد الكامل)
+amount_owed_ph	المبلغ المستحق
+amount_ph	المبلغ
+amount_received_ph	المبلغ المستلم
+amount_we_pay_ph	المبلغ الذي ندفعه
+awb_scan_ph	AWB / مسح الباركود
+bulk_csv_ph	CSV جماعي — destination,consignee,kg,cod_paise,note
+business_name_ph	اسم النشاط التجاري
+category_new_ph	الفئة (اختياري، تُنشأ إن كانت جديدة)
+cod_amount_ph	مبلغ الدفع عند الاستلام
+code_bag_ph	الرمز (bag)
+conv_factor_ph	العامل (25 = 1 bag → 25 kg)
+country_code_ph	رمز الدولة مثال IN, GB, US, AE, BR
+credit_khata_amount_ph	مبلغ الائتمان / الحساب
+credit_limit_ph	حد الائتمان (0 = لا شيء)
+dim_unit_code_ph	رمز وحدة البعد (cm)
+divisor_ph	المقسوم الحجمي (5000)
+extra_per_kg_ph	إضافي / كيلوغرام
+first_amount_ph	المبلغ الأول
+first_kg_ph	أول كيلوغرام (شريحة)
+from_code_ph	الرمز من (bag)
+item_name_lang_ph	اسم الصنف — اكتبه بلغتك
+login_id_opt_ph	معرف الدخول (اختياري)
+manager_pin_ph	رمز المدير (فقط إذا لم تتمكن من الإلغاء)
+new_branch_name_ph	اسم الفرع الجديد
+new_password_ph	كلمة مرور جديدة (اختياري)
+new_pin_ph	رمز جديد (4–12 رقمًا)
+note_bank_ph	ملاحظة (إيداع، سحب، …)
+note_buy_expense_ph	ملاحظة (وقود، إيجار، …)
+note_expense_ph	ملاحظة (وقود، مكتب، …)
+notify_phone_ph	هاتف الإشعار (ربط WhatsApp/SMS)
+options_moklanjo_ph	خيارات (اختياري) — Large=20, Gift wrap=10
+part_second_way_ph	جزء بطريقة ثانية (اختياري)
+phone_ph	الهاتف
+address_ph	العنوان
+party_custom_fields_heading	حقول مخصصة (الطرف المحدد)
+party_custom_help	أضف أي تسمية وقيمة لهذا الطرف — WhatsApp وGSTIN ورمز المسار، …
+party_custom_key_ph	اسم الحقل (مثل WhatsApp)
+party_custom_value_ph	القيمة
+party_custom_add	إضافة / تحديث الحقل
+party_custom_remove	إزالة الحقل
+party_custom_empty	لا حقول مخصصة بعد
+party_custom_pick_first	اختر طرفاً للحقول المخصصة
+place_name_ph	اسم هذا المكان
+price_ph	السعر
+qty_example_ph	الكمية (مثال 1.5 للكيلوغرام)
+quantity_ph	الكمية
+reason_required_ph	السبب (مطلوب)
+role_title_ph	المسمى الوظيفي (مثال Barista)
+service_pct_ph	الخدمة % اختياري 0/10/12
+short_code_ph	الرمز القصير (MG02)
+slab_kg_ph	الشريحة القابلة للفوترة بالكيلوغرام (0.5)
+staff_name_ph	اسم الموظف/المعرف
+starting_password_ph	كلمة مرور البدء (اختياري)
+starting_pin_ph	رمز البدء (4–12 رقمًا)
+tax_rate_ph	اسم معدل الضريبة أو % — Standard, Reduced, 0, 5, 12, 18, 20
+to_code_ph	الرمز إلى (kg)
+uncleared_no_ph	الرقم غير المُسوّى أعلاه
+unit_cost_ph	تكلفة الوحدة
+unit_kg_blank_ph	الوحدة (كيلوغرام أو فارغ)
+unit_name_bag_ph	الاسم (Bag)
+weight_unit_code_ph	رمز وحدة الوزن (kg)
+zone_name_ph	اسم المنطقة
+pay_credit	ائتمان
+book_kind_today	دفتر اليوم
+book_kind_month	دفتر هذا الشهر
+book_kind_aging	المستحقات / مدين-دائن
+book_kind_balance	الميزانية العمومية
+ops_desk_help	امسح AWB بماسح باركود USB (أو اكتبه) ← بحث. ثم قدّم، اطبع الملصق أو اجمع الدفع عند الاستلام. تُطبع الملصقات بـ Code 128.
+role_help_consignor	الدور: المرسل — AR (يدينون لنا). يمكن أن تكون الشركة نفسها ناقلًا أيضًا.
+role_help_carrier	الدور: الناقل — AP (ندين لهم). يمكن أن تكون الشركة نفسها مرسلًا أيضًا.
+role_help_both	الأدوار: المرسل + الناقل — طرف واحد، دفاتر حسابات AR وAP، صافية في التقارير.
+role_help_supplier	الدور: المورد - AP للمشتريات.
+lane_declared_label	حجز الحساب
+lane_owner_label	الحجز النقدي
+money_lane_bill	الفاتورة: {lane}

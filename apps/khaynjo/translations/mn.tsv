@@ -1,0 +1,1351 @@
+# Mongolian — Монгол (mn). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	Рестораны захиалга, гал тогоо, дэвтэр. Үнэгүй, офлайн.
+unlock	Түгжээ тайлах
+pin_hint	Эзэмшигчийн PIN 0000-оос эхэлнэ
+sell	Захиалга
+buy	Худалдан авалт
+books	Өдрийн дэвтэр
+books_help	Өнөөдрийн байдал. Захиалга = орсон захиалга. Худалдан авалт = худалдан авалт ба зардал. Харилцагчид = зээлийн үйлчлүүлэгч ба нийлүүлэгч.
+buy_help	Зарлагын баримт ба нийлүүлэгчийн нэхэмжлэл (мөнгө гарах). Дансанд үлдсэн нь харилцагчийн дэвтэрт үлдэнэ.
+sell_money_in	Захиалга авах
+buy_money_out	Зарлага / нийлүүлэгчийн нэхэмжлэл
+record_purchase	Худалдан авалт бүртгэх
+add_expense	Зарлагын баримт
+bank_book	Банкны дэвтэр
+credit_help	Харилцагчийн id давтагдашгүй (нэр давтагдаж болно). Үйлчлүүлэгч зээлийн данс хөтөлнө (бидэнд өртэй); нийлүүлэгч бидэнд бараа зардаг (бид өртэй); хоёулаа болно. Дэвтэр тусдаа үлдэнэ; тайлан цэвэр дүнг харуулна.
+party_kind_ph	Үүрэг: Үйлчлүүлэгч, Нийлүүлэгч, хоёулаа…
+reports_help	Өдрийн дэвтэр, авлага ба өглөг, банкны дэвтэр, зарлагын баримт, ашиг ба алдагдал.
+reports_today	Өдрийн дэвтэр (өнөөдөр)
+reports_month	Ашиг ба алдагдал (сар)
+reports_aging	Төлөгдөөгүй / Дт-Кт
+reports_balance_sheet	Баланс
+reports	Банкны дэвтэр ба ашиг/алдагдал
+refresh	Шинэчлэх
+undo	Буцаах
+start_tracking	Бүртгэж эхлэх
+stock_minus	− Нөөц
+stock_plus	+ Нөөц
+settle_cash	Бэлнээр хаах
+settle_card	Картаар хаах
+items	Цэс ба бараа
+nav_items	Цэс
+more	Нэмэлт
+your_items	Таны цэс
+items_help	Засахаар бараа дээр товшино. Шинэ бараа маягтыг цэвэрлэнэ. Манай хоолыг хайх эсвэл өөрийн нэр, зургийг бичээд үнэ тавина (0 болно), дараа нь Нэмэх. Бүртгэгдсэн борлуулалт тооцсон нэрээ хадгална.
+add_item	Бараа нэмэх
+new_item	Шинэ бараа
+adding_item	Шинэ бараа нэмж байна
+editing_item	Засварлаж байна
+save	Хадгалах
+remove	Хасах
+removed_items	Хасагдсан бараа
+removed_help	Сэргээх нь барааг цэс рүү яг хэвээр нь буцаана — үнэ, зураг, ангилал. Манай хоолны тавиур хэзээ ч хасагдахгүй, тиймээс хоолыг дахин нэмж болно.
+restore_item	Сэргээх
+empty_catalog	Одоогоор хоол алга. Цэс нээгээд хоол нэмнэ (нэр + үнэ), дараа нь захиалга авна.
+total	Нийт
+cash	Бэлэн
+upi	UPI
+card	Карт
+credit	Харилцагчид
+clear	Цэвэрлэх
+ready_to_sell	Дэвтэрт бичихэд бэлэн
+today_prefix	Өнөөдөр
+today_mid	өнөөдөр
+owed	төлөгдөөгүй
+round_word	бөөрөнхийлөлт
+back	Буцах
+sold_out	Байхгүй
+restock	Дахин нөөцлөх
+not_tracked	Бүртгэдэггүй
+in_stock	нөөцөд
+marked_sold_out	Байхгүй гэж тэмдэглэсэн
+add_upper	НЭМЭХ
+na	байхгүй
+qty	Жин/Тоо
+unit_at	Үнэ @
+actual	Бодит
+applied	Хэрэглэсэн
+note_ph	Тэмдэглэл (заавал биш)
+rounded	БӨӨРӨНХИЙЛСӨН
+split	Хуваах
+send_kot	KOT илгээх
+send_kot_to	Илгээх → {kitchens}
+send_kot_again	Дараагийн KOT-д хоол нэмэх
+send_kot_held	Баригдсан хоол — илгээхийн тулд барилтыг авна
+reprint_kot	Сонгосныг дахин хэвлэх
+reprint_kot_ok	Дахин хэвлэв {n} хоол · {slips} хуудас → {kitchens}
+reprint_kot_needed	Эхлээд KOT илгээнэ — дараа нь хоолоо оруулаад сонгосныг дахин хэвлэнэ
+reprint_kot_none_selected	Илгээсэн хоол бүр алгассан — дахин хэвлэхийн тулд Хэвлэлд дээр товшино
+reprint_kot_client	Дахин хэвлэх ({n}) {place}-д илгээгдлээ — гал тогоо Сервер дээр хэвлэнэ
+print_cancelled_kot	Цуцлагдсаныг бүгдийг хэвлэх
+print_cancelled_kot_ok	Хэвлэв {n} цуцлагдсан хоол · {slips} хуудас → {kitchens}
+print_cancelled_kot_needed	Эхлээд цуцлагдсан хоолтой ширээ нээнэ
+print_cancelled_kot_none	Энэ захиалгад цуцлагдсан хоол алга
+print_cancelled_kot_client	Цуцлагдсаныг хэвлэх ({n}) {place}-д илгээгдлээ — гал тогоо Сервер дээр хэвлэнэ
+kot_banner	Төрлийн тууз
+kot_banner_ph	Тууз (хоосон = байхгүй)
+kot_item_prefix	Барааны угтвар
+kot_item_prefix_ph	ж.нь [ЦУЦЛАГДСАН]
+kot_strike	Хоолны нэрийг зурах
+kot_strike_note	Хоолны тэмдэглэлийг зурах
+kot_strike_on	Асаалттай
+kot_strike_off	Унтраалттай
+bill_item_layout	Барааны байрлал
+bill_item_layout_columns	Багана
+bill_item_layout_stacked	Мөрөөр
+bill_item_header	Баганын гарчиг
+bill_item_hdr_item	Барааны гарчиг
+bill_item_hdr_qty	Тооны гарчиг
+bill_item_hdr_price	Үнийн гарчиг
+bill_item_hdr_amount	Дүнгийн гарчиг
+bill_item_name	Хоолны нэр
+bill_item_qty	Тоо
+bill_item_price	Үнэ
+bill_item_amount	Дүн
+bill_item_note	Хоолны тэмдэглэл
+bill_item_col_gap	Баганын зай
+bill_item_col_order	Баганын дараалал
+bill_item_col_sep	Баганын шугам
+bill_item_gap_tight	Нягт
+bill_item_gap_comfort	Тав тухтай
+bill_item_gap_wide	Өргөн
+bill_item_num_width	Тоон багана
+bill_item_num_compact	Нягт
+bill_item_num_comfort	Тав тухтай
+bill_item_num_wide	Өргөн
+bill_item_num_align	Тоог зэрэгцүүлэх
+bill_item_gap_em	Зай (em)
+bill_item_qty_min	Хамгийн бага тоо (em)
+bill_item_price_min	Хамгийн бага үнэ (em)
+bill_item_amount_min	Хамгийн бага дүн (em)
+kot_item_qty_width	Тооны багана
+kot_item_num_align	Тоог зэрэгцүүлэх
+bill_total_qty_label	Нийт тооны шошго
+bill_total_subtotal_label	Дэд дүнгийн шошго
+bill_total_grand_label	Эцсийн дүнгийн шошго
+bill_total_paid_label	Төлсөн дүнгийн шошго
+bill_meta_pair	Мөрийг хамт
+bill_pair_alone	Ганцаараа
+bill_item_piece_on	Асаалттай
+bill_item_piece_off	Унтраалттай
+bill_total_qty	Нийт тоо
+bill_total_subtotal	Дэд дүн
+bill_total_grand	Эцсийн дүн
+reprint_incl	Хэвлэлд
+reprint_skip	Алгасах
+reprint_skip_meta	Сэргээх хэвлэлийг алгасах
+kot_dest_hint	{kitchens}-д оноосон принтер дээр хэвлэнэ: Тохиргоо → Принтерүүд
+kot_sent_hint	Сүүлийн KOT {kitchens} руу явсан. Дараагийн хуудсанд хоол нэмэхийн тулд товшино — эсвэл тэр KOT-оо дахин хэвлэнэ.
+kot_sent_printing	KOT {kitchens} руу илгээгдлээ — хэвлэж байна
+kot_sent_not_printed	KOT {kitchens} руу илгээгдсэн ч ХЭВЛЭГДСЭНГҮЙ: {why}. Гал тогоонд хэлээд принтерийг засаад дахин хэвлэнэ.
+kot_sent_screen	KOT {kitchens} руу илгээгдлээ
+kot_queued_shop	{place} → {kitchens} KOT хадгалагдлаа; дэлгүүрийн төхөөрөмж хэвлэнэ
+kot_job_label	{place} → {kitchens} KOT
+kot_job_reached	{place}-н KOT {kitchens}-д хүрлээ
+kot_unassigned	Гал тогоо (станцгүй)
+kot_unassigned_held	Станцгүй {n} хоол баригдлаа — илгээхийн тулд мөрөн дээрх барилтыг авна
+kot_station_ph	Гал тогоо
+kot_station_dd	Гал тогоо
+kot_station_dd_n	Гал тогоо · {stations}
+kot_set_station	Энэ станцыг ашиглах
+kot_station_applied	{n} хоолонд станц тавигдлаа: {station}
+kot_station_cleared	{n} хоолноос станц арилгагдлаа: {station}
+kot_station_needed	Эхлээд гал тогооны станц сонгоно
+kot_station_not_allowed	Гал тогоо ашиглах эрхгүй: {station}
+kot_station_none	Гал тогооны станц одоогоор алга — Гал тогоо эсвэл Тохиргоо → Бүс · станц дор нэмнэ
+pos_tab_items	Нэмсэн бараа
+pos_tab_payment	Төлбөр
+hold_send	Барих
+hold_send_on	Баригдсан
+hold_send_meta	Баригдсан — энэ KOT-д биш
+station_remove	Станц хасах
+station_remove_ph	Хасахын тулд жагсаалт дахь станц дээр товшино
+station_removed	Станц хасагдлаа: {name}
+settings_hub_title	Тохиргоо
+settings_hub_help	Нэг хэсгийг нэг нэгээр нээнэ — бага гүйлгэлт, тодорхой сонголт.
+settings_back	Буцах
+settings_sec_language	Хэл ба валют
+settings_sec_country	Улс ба татвар
+settings_sec_tills	Бусад төхөөрөмж
+settings_sec_brand	Таны брэнд
+settings_sec_units	Нэгж ба хөрвүүлэлт
+settings_sec_pickers	Бүс · станц · татварын хувь
+settings_sec_printers	Принтерүүд
+settings_sec_bill	Тооцоо ба KOT хэлбэр
+settings_sec_selling	Схем ба борлуулалт
+bill_kot_tab_bill	Тооцоо
+bill_kot_tab_kot	KOT
+settings_sec_alerts	Мэдэгдэл
+alerts_help	Төлөвийн мэдээ танд дэлгэц дээр хэр удаан үлдэх вэ (энэ нэвтрэлт).
+snack_secs_ph	Секунд (3–60, анхдагч 10)
+snack_secs_save	Мэдэгдлийн хугацааг хадгалах
+snack_secs_saved	Мэдэгдлийн хугацаа хадгалагдлаа — {n} секунд
+settings_sec_backup	Нөөц хуулбар ба сэргээх
+settings_sec_diag	Оношлогоо
+diag_privacy_help	Бүртгэл энэ төхөөрөмж дээр үлдэнэ. Нууц (PIN, нууц үг) хэзээ ч хадгалагдахгүй. Төхөөрөмжөөс гадуур багц хуваалцах бүрд таны тодорхой зөвшөөрөл хэрэгтэй — хэзээ ч зарж, гуравдагч этгээдэд өгөхгүй.
+diag_level	Дэлгэрэнгүйн түвшин
+diag_level_error	Алдаа
+diag_level_warn	Анхааруулга
+diag_level_info	Мэдээлэл
+diag_level_debug	Дибаг
+diag_support_start	30 мин дэмжлэгийн сесс эхлүүлэх
+diag_support_stop	Дэмжлэгийн сессийг дуусгах
+diag_support_started	Дэмжлэгийн сесс ассан — 30 минут Дибаг дэлгэрэнгүй
+diag_support_ended	Дэмжлэгийн сесс дууссан
+diag_export_local	Дотоод хуулбар экспортлох
+diag_export_local_done	Дотоод оношлогоо бэлэн: {path} — хуулбарыг хаана хадгалахыг сонгоно
+diag_approve_send	Төхөөрөмжөөс гадуур хуваалцахыг зөвшөөрөх
+diag_send_help	Зөвшөөрөл нэг багцад, дараа нь дуусна. Түр — зөвхөн бүтээгдэхүүнийг засах, сайжруулахад. Гуравдагч этгээдэд өгөхгүй. Linux, Windows, macOS, Android дээр ажиллана.
+diag_send_approved	Хуваалцах нэг багцад зөвшөөрөгдлөө (удахгүй дуусна)
+diag_export_send	Хуваалцах багц үүсгэх (зөвшөөрөл хэрэгтэй)
+diag_export_send_done	Хуваалцах багц бэлэн: {path} — хаана хадгалахыг сонгоод зөвхөн Kumkaj дэмжлэгт илгээнэ
+diag_save_bundle	Оношлогооны хуулбар хадгалах
+diag_bundle_saved	Оношлогооны хуулбар хадгалагдлаа: {path}
+diag_bundle_failed	Оношлогооны хуулбар тэнд хадгалагдсангүй — дахин оролдоно
+diag_clear	Оношлогооны бүртгэлийг цэвэрлэх
+diag_cleared	Оношлогооны бүртгэл цэвэрлэгдлээ
+sidebar_settings	Хажуугийн самбар
+sidebar_settings_help	Хажуугийн төмөртэй ижил дүрс. Дарааллыг өөрчлөхийн тулд мөрийг чирнэ. Харуулах эсвэл нуухын тулд унтраалгыг эргүүлнэ. Тохиргоо ба Түгжээ үргэлж самбар дээр үлдэнэ.
+sidebar_always_on_short	Үргэлж асаалттай
+sidebar_back_settings	Буцах
+sidebar_shown	Харуулсан
+sidebar_hidden	Нуусан
+sidebar_always_on	Үргэлж самбар дээр
+sidebar_shown_hint	Хажуугийн төмөр / доод таб дээр харуулсан
+sidebar_hidden_hint	Самбараас нуусан
+sidebar_menu_items	Цэс ба бараа
+sidebar_enable_all	Бүгдийг идэвхжүүлэх
+sidebar_disable_all	Бүгдийг унтраах
+sidebar_order_saved	Хажуугийн самбарын дараалал хадгалагдлаа
+sidebar_visibility_saved	Хажуугийн самбарын харагдац хадгалагдлаа
+amounts_hide	Нуух
+amounts_show	Харуулах
+printers_none_hint	Эхлээд энэ төхөөрөмж дээр принтер хадгалаад Тооцоо эсвэл гал тогоонд нэмнэ
+counter	Касс
+dine_in	Газар дээр
+takeaway	Авч явах
+order	Захиалга
+tables	Ширээ
+kitchen	Гал тогоо
+sales	Борлуулалт
+sales_refunds	Борлуулалт ба буцаалт
+day_close	Өдөр хаах
+reports_expenses	Банкны дэвтэр ба ашиг/алдагдал
+nav_reports	Тайлан
+nav_settings	Тохиргоо
+nav_lock	Түгжих
+no_sale_yet	Одоогоор борлуулалт алга
+favorites	Дуртай
+favorites_help	Их зардаг бараа, таны нэвтрэлтэд хадгалагдсан. Тооцоонд нэмэх эсвэл доорх бүх бараанаас жагсаалт бүрдүүлнэ.
+your_favorites	Таны дуртай
+all_items	Бүх бараа
+frequent	Олон давтамжтай
+added_items	Нэмсэн бараа
+added_items_empty	Энэ захиалгад одоогоор юу ч алга — Бүх бараа эсвэл ангиллаас хоол нэмнэ.
+frequent_config_help	Дууссан тооцооны хамгийн их зарагдсан хоол. Хэдэн өдөр харах, хэдэн хоол харуулахыг тохируулна.
+frequent_days_ph	Өдөр (1)
+frequent_limit_ph	Бараа (24)
+frequent_apply	Хэрэглэх
+frequent_saved	Олон давтамжтай: сүүлийн {d} өдөр, топ {n} — {c} хоол
+frequent_empty	Энэ хугацаанд дууссан борлуулалт одоогоор алга — тооцоог хаана (Тохиргоо зөвшөөрвөл ₹0 болно), энд гарна.
+zero_sales	Тэг борлуулалт
+zero_sales_help	₹0 үнэтэй хоол ба ₹0-өөр хаасан тооцоог зөвшөөрнө (бэлэг / эзэмшигчийн хүсэл). Анхдагчаар асаалттай, үнэгүй ширээ Олон давтамжтай ба өдрийн дэвтэрт харагдана.
+zero_sales_on	₹0 зөвшөөрөх
+zero_sales_off	Үнэ шаардах
+zero_sales_saved_on	Тэг борлуулалт зөвшөөрөгдлөө
+zero_sales_saved_off	Борлуулалтын үнэ ₹0-өөс дээш байх ёстой
+floor_areas_help	Бүс нь танхимын өрөө эсвэл хэсэг (Газар дээр, Авч явах, Агааржуулагч …). Эхлээд бүс нэмээд ширээг нь тавина — бүс бүр танхимын тусдаа бүлэг.
+area_new_ph	Шинэ бүс / өрөө (ж.нь Агааржуулагч, Цэцэрлэг)
+add_area	Бүс нэмэх
+area_added	„{name}“ бүс бэлэн — дотор нь ширээ нэмнэ
+no_favorites	Дуртай одоогоор алга — доорх жагсаалтаас бараа нэмнэ.
+add_to_bill	Тооцоонд нэмэх
+added	Нэмэгдсэн
+owes_word	өртэй
+selected_word	Сонгосон
+chip_clear_credit	цэвэрлэх — Зээл эсвэл урьдчилгаа авах
+chip_missing_customer	Сонгосон үйлчлүүлэгч алга — дахин сонгоно
+chip_no_customer	Үйлчлүүлэгч одоогоор алга — нэр бичээд Зээл дээр товшино
+credit_summary_fmt	{} үйлчлүүлэгч · нээлттэй зээл {} · барьсан урьдчилгаа {}
+recent_label	Сүүлийн:
+kot_new_waiting	ШИНЭ — хүлээж байна
+kot_preparing	БЭЛТЭГДЭЖ БАЙНА
+kot_ready_serve	БЭЛЭН — өг
+kot_done_cap	ДУУССАН
+kot_cancelled	ЦУЦЛАГДСАН
+kot_start_btn	Эхлэх
+kot_mark_ready	Бэлэн гэж тэмдэглэх
+kot_done_btn	Дууссан
+table_free	Чөлөөтэй — захиалга эхлүүлэхийн тулд товшино
+start_order	Захиалга эхлүүлэх
+open_bill	Тооцоо нээх
+collect_payment	Төлбөр авах
+table_running	Явагдаж байна
+payment_pending	Төлбөр хүлээгдэж байна
+collect_at_counter	кассаас ав
+inventory	Нөөц
+inventory_stock	Нөөц ба үлдэгдэл
+branches	Салбарууд
+branches_org	Салбар ба байгууллага
+credit_customers	Харилцагчид (зээл ба нийлүүлэгч)
+customer_name_ph	Харилцагчийн нэр
+new_customer_ph	Шинэ харилцагчийн нэр
+item_name_ph	Барааны нэр (ж.нь Masala Dosa)
+item_price_ph	Үнэ
+start_template	Бүтээгдэхүүн
+team	Баг
+team_pins	Баг ба PIN
+my_pin_settings	Миний PIN
+settings_hub_help_my_pin	Энэ төхөөрөмж дээр нэвтэрсэн хүний түгжээ тайлах PIN-г солино.
+team_self_help	Нэг нэвтрэлт: шинэ PIN, шинэ нууц үг эсвэл хоёулаа. Одоо байгааг хадгалахын тулд нүдийг хоосон үлдээнэ. Өөр дэлгэц, эрх хэрэгтэй бол Эзэмшигчээс асууна.
+backup_settings	Нөөц хуулбар ба тохиргоо
+lock_app	Аппыг түгжих
+pick	Сонгох
+select	Сонгох
+advance	Урьдчилгаа
+owner	Эзэмшигч
+staff	Ажилтнууд
+photo	Зураг
+auto	Авто
+prev	Өмнөх
+next	Дараах
+ok	OK
+this_shop	Сервер
+extra_till	Клиент
+off	Унтраалттай
+tables_kitchen	Ширээ ба гал тогоо
+server	Сервер
+client	Клиент
+language_currency	Хэл ба валют
+language	Хэл
+choose_language	Хэлээ сонгоно
+language_setup_hint	Энэ төхөөрөмжийн хэлийг дагах эсвэл өөрөө сонгоно.
+lang_follow_platform	Төхөөрөмжийн хэл
+lang_pick_user	Хэл сонгох
+lang_platform_now	Одоо төхөөрөмжийн хэл
+selected_language	Сонгосон
+continue	Үргэлжлүүлэх
+this_device	ЭНЭ ТӨХӨӨРӨМЖ
+device_use_q	Энэ төхөөрөмжийг хэрхэн ашиглах вэ?
+last_server_mode	Сервер байсан — үргэлжлүүлэхийн тулд товшино
+last_client_mode	Клиент байсан — үргэлжлүүлэхийн тулд товшино
+choose_server	Сервер сонгоно
+choose_server_hint	Байгаа серверийг нээх эсвэл өөр бизнест шинийг үүсгэнэ.
+create_new_server	Шинэ сервер үүсгэх
+open_server	Нээх
+new_server_name_ph	Шинэ серверийн нэр (заавал биш)
+server_remove_pin_ph	Сервер хасахад эзэмшигчийн PIN
+only_owner_remove_server	Серверийг зөвхөн Эзэмшигч хасна
+owner_pin_remove_server	Энэ серверийг хасахад эзэмшигчийн PIN хэрэгтэй
+device_setup_help	Сервер дэвтрээ энд хадгална. Клиент Серверт хослоно.
+app_template_heading	Rajdhani аппын загвар
+app_template_blurb	Rajdhani цэсийг ачаална; Эзэмшигч Zahir (zahir), Админ Asif (asif, PIN 1111), Зөөгч Nawaz (nawaz, PIN 0000); FOH хажуугийн самбар; түүх 4 цагийн дараа цэвэрлэгдэнэ (ба Нөөц хуулбар дотор Одоо цэвэрлэх); Өнөөдөр зурвас унтраалттай; нягт KOT + нарийн тавиурт стандарт зах. Хажуугийн самбарын нөхдийг Тохиргоонд дахин асааж болно.
+app_template_apply	Rajdhani аппын загвар
+app_template_skip	Одоогоор алгасах
+app_template_status	Сервер бэлэн — Rajdhani загварыг хэрэглэх эсвэл алгасна
+app_template_importing	{title} хэрэглэж байна…
+currency	Валют
+backup	Нөөц хуулбар
+use	Ашиглах
+dont_use	Бүү ашигла
+add_branch	Салбар нэмэх
+add_conversion	Хөрвүүлэлт нэмэх
+add_dishes_items	Хоол ба бараа нэмэх
+add_item_plain	Бараа нэмэх
+add_note	Тэмдэглэл нэмэх
+add_opening_balance	Эхний үлдэгдэл нэмэх
+add_staff	Ажилтан нэмэх
+add_station	Станц нэмэх
+add_table	Ширээ нэмэх
+add_unit	Нэгж нэмэх
+add_use_name	Энэ нэрийг нэмэх / ашиглах
+allow_extra_tills	Нэмэлт касс зөвшөөрөх
+amend	Засах
+apply_country_pack	Улсын багцыг хэрэглэх
+datetime_appearance	Огноо ба цагийн харагдац
+datetime_appearance_help	Дэвтэр дотроо жилийг эхэнд RFC3339 хадгална. Эдгээр нь зөвхөн тооцоо, KOT, тайлан, дэлгэц дээрх огноо, цагийн харагдацыг өөрчилнө.
+datetime_example	Одоогийн жишээ: {ex}
+date_order	Огнооны дараалал
+date_order_dmy	D/M/Y
+date_order_mdy	M/D/Y
+date_order_ymd	Y-M-D
+time_format	Цаг
+time_format_24h	24 цаг
+time_format_12h	12 цаг
+attach_bill_photo	Тооцооны зураг хавсаргах
+attach_pdf	PDF хавсаргах
+attach_photo	Зураг хавсаргах
+attachments_last_expense	Хавсралт (сүүлийн зарлага)
+bank	Банк
+bank_in	Банк руу
+bank_out	Банкнаас
+bank_reconciliation	Банк тулгалт (банкны хуулгатай тулгаж тэмдэглэнэ)
+bank_to_till	Банк → касс
+book_add_dish	Дэвтэр — хоол / бараа нэмэх
+book_opening_credit	Дэвтэр — эхний зээл
+branch_name_sell_ph	Борлуулах салбарын нэр
+bring_my_book	Миний дэвтрийг авчрах
+business_tax_id_ph	Бизнесийн татварын дугаар
+caption_bank	БАНК
+caption_bills	ТООЦОО
+caption_outstanding	ТӨЛӨГДӨӨГҮЙ
+caption_payments_today	ТӨЛБӨР ӨНӨӨДӨР
+caption_today	ӨНӨӨДӨР
+card_amount_ph	Картын дүн
+cash_amount_ph	Бэлэн дүн
+cash_memo	Бэлэн тэмдэглэл
+choose_icon	Дүрс сонгох
+choose_logo	Лого сонгох
+clear_icon	Дүрсийг цэвэрлэх
+clear_photo	Зургийг цэвэрлэх
+copy_day_book_csv	Өдрийн дэвтрийг CSV хуулах
+copy_day_close	Өдөр хаалтыг хуулах
+copy_items_csv	Барааг CSV хуулах
+copy_outstanding_csv	Төлөгдөөгүйг CSV хуулах
+copy_parties_csv	Харилцагчдыг CSV хуулах
+copy_party_ledger_csv	Харилцагчийн дэвтрийг CSV хуулах
+copy_receipt	Баримтыг хуулах
+share_whatsapp	WhatsApp хуваалцах
+lan_pages_heading	Зочдын хуудас Wi‑Fi дээр
+lan_pages_help	Энэ дэлгүүрийн Wi‑Fi дээр зочдын хуудас самбар, дугаар, экспо, киоск, ширээний QR, саналд ажиллана. Гар утасны дататай зочдод дараа Cloud хэрэгтэй. Картын терминал / төлбөрийн холбоос интернет байхад заавал биш — кассыг хэзээ ч зогсоохгүй.
+diag_send_heading	Төхөөрөмжөөс гадуур хуваалцах
+kot_dest_heading	Гал тогооны станц
+optional_login_heading	Заавал биш нэвтрэлт
+rights_heading	Эрх
+ops_panel	Дотоод ажиллагаа
+crm_heading	Зочид ба зурвас
+crm_help	Төрсөн өдөр, үнэнч байдал, идэвхгүй ба шилдэг зочид — SMS эсвэл WhatsApp дараалал. Зурваст {name} ба {points} ашиглана. Эзэмшигч илгээхийг дарна; юу ч өөрөө явахгүй.
+crm_queue_sms	SMS дараалалд тавих
+crm_queue_wa	WhatsApp дараалалд тавих
+crm_seg_bday_week	Төрсөн өдрийн долоо хоног
+crm_seg_bday_month	Төрсөн өдрийн сар
+crm_seg_phone	Утастай
+crm_seg_loyalty	Үнэнч байдал
+crm_seg_inactive	Идэвхгүй
+crm_seg_top	Хамгийн их зарцуулагч
+birthday_ph	Төрсөн өдөр (MM-DD эсвэл YYYY-MM-DD)
+crm_message_ph	Төрсөн өдрийн мэнд, {name}! Танд {points} оноо байна.
+till_apply_redeem	Тооцоонд хэрэглэх
+till_clear_redeem	Зарцуулалтыг цэвэрлэх
+till_wallet_topup	Түрийвчийг цэнэглэх
+till_issue_voucher	Ваучер олгох
+till_points_ph	Зарцуулах оноо
+till_wallet_ph	Түрийвчнээс зарцуулах дүн
+till_voucher_code_ph	Ваучерын код
+till_voucher_amt_ph	Ваучерын дүн (хоосон = бүгд)
+till_wallet_topup_ph	Түрийвч цэнэглэх дүн
+till_voucher_issue_amt_ph	Олгох ваучерын дүн
+till_voucher_issue_code_ph	Шинэ ваучерын код
+split_evenly	Тэнцүү хуваах
+waitlist	Хүлээлгийн жагсаалт
+fire_course	Хоолыг гаргах
+hold_item	Барих
+waiter_call	Зөөгч дуудах
+waitlist_add	Хүлээлгийн жагсаалтад нэмэх
+floor_view_grid	Тор
+floor_view_layout	Байрлал
+floor_layout_x	X
+floor_layout_y	Y
+floor_layout_w	W
+floor_layout_h	H
+floor_layout_save	Байрлалыг хадгалах
+floor_layout_open	Ширээ нээх
+floor_layout_edit	Байрлалыг засах
+floor_layout_pick	Байрлалыг засахын тулд ширээ дээр товшино
+floor_layout_saved	Ширээний байрлал хадгалагдлаа
+floor_layout_nudge_left	← 20
+floor_layout_nudge_right	→ 20
+floor_layout_nudge_up	↑ 20
+floor_layout_nudge_down	↓ 20
+sibling_pickers_help	Нэгжтэй адил Асаалттай/Унтраалттай товш — бүс, станц, татварын хувийг өдөр тутмын жагсаалтаас нууна; багцын анхдагч үлдэнэ.
+bulk_price_apply	Бөөн үнэ хэрэглэх
+card_terminal_optional	Картын терминал / төлбөрийн холбоос (интернет байхад заавал биш)
+copy_report	Тайланг хуулах
+counted_cash_ph	Шүүгээнд тоолсон бэлэн
+country_tax	Улс ба татвар
+tax_chrome	Касс дээрх татварын шошго
+tax_chrome_help	Унтраалттай үед захиалгын ширээ GST/татварын тооцооны мөр ба үнэн дэх татварын байрыг нууна. Татварын хувь ба Улс ба татвар тохиргоо үлдэнэ — шошгыг хүссэн үедээ дахин асааж болно. Rajdhani загвар үүнийг унтраалттай эхэлнэ.
+tax_chrome_on	Харуулах
+tax_chrome_off	Нуух
+tax_chrome_saved_on	Татварын шошго касс дээр
+tax_chrome_saved_off	Татварын шошго касс дээр нуугдсан
+tax_invoice_till	Касс дээрх татварын нэхэмжлэл
+tax_invoice_help	Унтраалттай үед тооцоо зөвхөн Бэлэн тэмдэглэл, Татварын нэхэмжлэл / Бэлэн тэмдэглэл чипүүд захиалгын ширээн дээр нуугдана. Rajdhani загвар үүнийг унтраалттай эхэлнэ — Татварын нэхэмжлэлийг дахин сонгохын тулд Харуулахыг хүссэн үедээ асаана.
+tax_invoice_on	Харуулах
+tax_invoice_off	Нуух
+tax_invoice_saved_on	Татварын нэхэмжлэл касс дээр
+tax_invoice_saved_off	Татварын нэхэмжлэл нуугдсан — зөвхөн Бэлэн тэмдэглэл
+pay_methods	Төлбөрийн арга
+pay_methods_help	Төлбөр авахад аль чип харагдах вэ. Бэлэн үргэлж үлдэнэ. Rajdhani загвар зөвхөн Бэлнээр эхэлнэ — энд UPI / Карт / Зээл / Хуваахыг дахин асаана.
+create_backup	Нөөц хуулбар үүсгэх
+credit_limit_heading	Зээлийн хязгаар (сонгосон / нэрлэсэн харилцагч)
+day_close_summary	Өдөр хаалтын хураангуй
+delete_party	Сонгосон харилцагчийг устгах
+delivery	Хүргэлт
+done_open_books	Дууссан — дэвтэр нээх
+drawer_count	Шүүгээний тооллого (заавал биш)
+expense_heading	Зарлага
+export_day	Өдрийг экспортлох
+extra_note_bill_ph	Энэ тооцоо / борлуулалтын нэмэлт тэмдэглэл
+extra_note_expense_ph	Сүүлийн зарлагын нэмэлт тэмдэглэл
+extra_tills_heading	Нэмэлт касс
+other_devices_help_heading	Бусад төхөөрөмжийг тохируулах
+other_devices_help	Энэ төхөөрөмж дээр (Сервер): Бусад төхөөрөмж → Нэмэлт касс зөвшөөрөх. Хослуулах код ба Wi‑Fi хаягийг тэмдэглэнэ. Гарч ирвэл Бусад төхөөрөмж холбогдохыг зөвшөөр товшно. Компьютер дээр Энэ компьютертэй эхлүүлэхийг товшино. Өөр төхөөрөмж бүр дээр: аппыг суулгаж, Клиент горим сонгоод, Дэлгүүрийн серверийг олно (эсвэл хаягийг бичнэ), хослуулах кодыг оруулаад Одоо хослуул. Wi‑Fi тасарвал захиалга төхөөрөмж дээр хүлээж, Сервер дахин хариулахад явна. Гал тогооны принтер Сервер дээр тохируулагдана (Тохиргоо → Принтерүүд) — нэмэлт касс KOT-оо тийш илгээнэ.
+forget_shop	Энэ дэлгүүрийг мартах
+goods_received	Хүлээн авсан бараа
+import_day	Өдөр импортлох
+import_items_csv_plain	Барааг CSV импортлох…
+import_parties_csv	Харилцагчдыг CSV импортлох…
+item_name	Барааны нэр
+kitchen_printing	Принтерүүд
+login_id_ph	Хэрэглэгчийн нэр
+mark_cleared	Цэвэрлэгдсэн гэж тэмдэглэх
+new_party_clear	Шинэ харилцагч (маягтыг цэвэрлэх)
+new_party_kind_supplier_ph	Шинэ харилцагчийн төрөл (Нийлүүлэгч)
+next_country	Дараагийн улс
+next_order	Дараагийн захиалга (ширээг цэвэрлэх)
+note_gstin_ph	Тэмдэглэл / GSTIN / гэрээний сануулга
+notes_attach_party	Тэмдэглэл ба хавсралт (сонгосон харилцагч)
+notes_attach_sale	Тэмдэглэл ба хавсралт (сонгосон борлуулалт)
+on_account_ap	Дансанд (AP)
+org_optional_ph	Байгууллага (заавал биш)
+paid_by	Төлсөн
+paid_now	Одоо төлсөн
+pair_now	Одоо хослуул
+pairing_code_ph	Хослуулах код
+party_name_selected_ph	Харилцагчийн нэр (эсвэл сонгосныг ашиглах)
+password_ph	Нууц үг
+pay_ap_card	AP картаар төлех
+pay_ap_cash	AP бэлнээр төлех
+pay_ap_heading	Тэдэнд өртэйгээ төлех (AP)
+pay_ap_upi	AP UPI-аар төлех
+pay_selected_heading	Сонгосныг төлех (өр барагдуулах / урьдчилгаа авах)
+pick_from_items	Манай бараанаас сонгох
+prev_country	Өмнөх улс
+print_open	Хэвлэх / нээх
+reason_amend_ph	Засах / хүчингүй болгох / буцаах шалтгаан
+reason_note_ph	Шалтгаан / тэмдэглэл (хорогдол, тооллого, …)
+record_day_close	Өдөр хаалтыг бүртгэх
+refresh_from_shop	Дэлгүүрээс шинэчлэх
+refund	Буцаалт
+remove_selected	Сонгосныг хасах
+request_bill	Тооцоо хүсэх
+restaurant_name_ph	Рестораны нэр (заавал биш)
+restore_backup	Нөөц хуулбараас сэргээх
+role_both	Хоёулаа
+role_admin	Админ
+role_cashier	Кассчин
+role_customer	Үйлчлүүлэгч
+role_manager	Менежер
+history_retention	Худалдааны түүх
+history_retention_help	Хуучин борлуулалт ба KOT автоматаар цэвэрлэгдэнэ. Цэс, ажилтан, тохиргоо үлдэнэ. Одоо цэвэрлэх нь худалдааны бүх мөрийг арилгаж, тохиргоог үлдээнэ.
+history_off	Хадгалах
+history_day_close	Өдөр хаахад
+history_after_hours	Цагийн дараа
+history_hours_ph	Цаг (1–168, анхдагч 4)
+history_hours_save	Цагийг хадгалах
+history_clear_now	Түүхийг одоо цэвэрлэх
+history_cleared	Худалдааны түүх цэвэрлэгдлээ — тохиргоо үлдсэн
+history_retention_saved	Түүх цэвэрлэх хадгалагдлаа
+history_hours_saved	Түүхийн цаг хадгалагдлаа
+history_owner_only	Түүхийг зөвхөн Эзэмшигч эсвэл Админ цэвэрлэнэ
+rollup	Нэгтгэл
+save_brand	Брэндийг хадгалах
+save_business_id	Бизнес дугаарыг хадгалах
+save_business_name	Бизнес нэрийг хадгалах
+save_features	Хадгалах
+save_features_named	{name} хадгалах
+save_features_ok	{name} тохиргоо хадгалагдлаа
+save_names	Нэрсийг хадгалах
+second_way	Хоёр дахь арга
+server_ip_ph	Серверийн IP (ж.нь 192.168.1.10)
+set_credit_limit	Харилцагчид хязгаар хэрэглэх
+set_login_selected	Нэвтрэлтийг сонгосонд хэрэглэх
+set_login_named	Нэвтрэлтийг {name}-д хэрэглэх
+shop	Дэлгүүр
+show	Харуулах
+spreadsheet_csv	Хүснэгт (CSV)
+start_fresh	Шинээр эхлэх
+stop_extra_tills	Нэмэлт кассыг зогсоох
+floor_cols_ph	Багана
+floor_cols_fit	Дэлгэцэд багтаах
+floor_cols_fit_sub	{n} энд багтана
+floor_cols_fits	багтана
+floor_cols_scroll	хажуу тийш гүйлгэнэ
+floor_cols_min	Багана: дор хаяж 1 — эсвэл дэлгэцэд багтаахын тулд хоосон үлдээнэ
+floor_zoom_auto	Авто
+floor_zoom_out	Жижигрүүлэх
+floor_zoom_in	Томруулах
+backup_auto	Өдөр бүр автоматаар нөөц хуулбар · сүүлд {when} · сүүлийн 14 өдөр {dir} дотор хадгалагдана.
+backup_auto_none	Өдөр бүр автоматаар нөөц хуулбар — эхнийх нь удахгүй ажиллана.
+backup_copy_to	Хуулбар мөн {dir} руу явна.
+backup_copy_btn	Нөөц хуулбарыг хавтас руу бас хуулах…
+autostart_off	Энэ компьютертэй эхлүүлэх
+autostart_on	Энэ компьютертэй эхэлнэ ✓ — зогсоохын тулд товшино
+autostart_done_on	Энэ компьютер асахад аппыг нээнэ — цахилгаан тасарсан дараа дэлгүүрийн сервер буцаж ирнэ.
+autostart_done_off	Энэ компьютер асахад аппыг нээхээ больсон.
+device_forgotten	Дэлгүүр энэ төхөөрөмжийг мартсан — дэлгүүрийн одоогийн кодоор дахин хослуулна. Дээр нь хүлээж буй захиалга хадгалагдана.
+lan_offline	Дэлгүүрийн серверт хүрэхгүй
+forget_device	Мартах
+last_seen	харагдсан
+copy_pair_code	Хослуулах кодыг хуулах
+new_pair_code	Шинэ хослуулах код
+pair_finishing	Хослуулалт дуусаж байна… дэлгүүрийн дэвтэр хэрэглэж байна
+pair_opening	Касс нээгдэж байна…
+pair_copied	Хослуулах код хуулагдлаа
+kot_waiting	Илгээхийг хүлээж байна
+lan_offline_waiting	Серверт хүрэхгүй · {n} хүлээж байна
+lan_connecting	Дэлгүүрт холбогдож байна…
+lan_live	Шууд
+lan_sending	{n} илгээж байна
+lan_sign_in_to_send	{n} илгээхийн тулд дахин нэвтэрнэ
+lan_pair_again	Энэ төхөөрөмжийг дахин хослуул
+lan_update_app	Аппыг шинэчилнэ — энэ төхөөрөмж ба дэлгүүрийн серверийн хувилбар өөр
+allow_firewall	Бусад төхөөрөмж холбогдохыг зөвшөөр
+firewall_blocked	Энэ компьютерийн галт хана бусад төхөөрөмжийг хааж байна — Бусад төхөөрөмж холбогдохыг зөвшөөр дээр товшино.
+firewall_waiting	Админы асуултыг хүлээж байна…
+lan_join_help	Нөгөө төхөөрөмж дээр: Клиент горим → Дэлгүүрийн серверийг олох (эсвэл {addr} бичих) → хослуулах код {code}.
+lan_pair_status	Wi‑Fi {addr}
+lan_join_help_no_addr	Хаяг авахын тулд энэ төхөөрөмжийг Wi‑Fi-д холбоно.
+lan_no_address	Wi‑Fi хаяг одоогоор алга — дэлгүүрийн Wi‑Fi-д холбогдоно.
+lan_not_listening	Төхөөрөмж хүлээж авахгүй ({port} порт завгүй). Аппыг дахин эхлүүлнэ.
+lan_tills_off	Нэмэлт касс унтраалттай. Өөр төхөөрөмж нэгдэхийн тулд зөвшөөрнө.
+paired_with	Хослуулсан · {url}
+not_paired	Хослоогүй
+choose_device_use	Сервер эсвэл Клиент сонгоно.
+paired_note	Хослуулсан. Зарахын тулд түгжээ тайлах эсвэл сүүлийнхийг Шинэчлэх.
+last_update_at	Сүүлийн шинэчлэл: {time}.
+pair_intro	Серверийг олох эсвэл хаяг, хослуулах кодыг бичнэ.
+queue_waiting	Дэлгүүрт хүрэхийг хүлээж байна ({n}):
+queue_tries	{n} удаа оролдсон · сүүлийн хариу: {e}
+save_backup_copy	Нөөц хуулбар хадгалах…
+backup_copy_saved	Нөөц хуулбар хадгалагдлаа — үүнийг энэ төхөөрөмжөөс гадна хадгална (USB эсвэл өөр төхөөрөмж)
+backup_copy_overdue	{n} өдөр нөөц хуулбар энэ төхөөрөмжөөс гараагүй — Тохиргоо → Нөөц хуулбар
+backup_copy_failed	Нөөц хуулбар тэнд хадгалагдсангүй — өөр газар сонгоно
+clock_off	Энэ төхөөрөмжийн цаг дэлгүүрийн серверээс {min} мин зөрүүтэй — зөв цагийг тохируулна
+printers_heading	Принтерүүд
+printers_help	Принтер олоод нэгийг нь сонгохын тулд товшиж, дараа нь Туршилтын хуудсыг зөвхөн тэр төхөөрөмж дээр хэвлэнэ. Тооцооны принтер: Тооцоо ба KOT хэлбэр → Тооцоо. Гал тогооны принтер: Гал тогоо → Гал тогооны станц (эхлээд станц нэмнэ — Хайлт станц үүсгэхгүй).
+printers_host_only	Принтер дэлгүүрийн төхөөрөмж (Сервер) дээр тохируулагдана. Энэ касс тооцоо ба KOT-оо тийш илгээнэ — Хайлт / нэмэх / оноох Сервер дээр үлдэнэ. Туршилтын хуудас ба хэвлэх хэмжээ Сервер рүү явна.
+printers_find_heading	Принтер олох
+printers_find_tip	Хайлт энэ төхөөрөмжийг шалгаад жагсаалтыг шинэчлэнэ.
+printers_pool_heading	Принтерүүд
+printers_pool_tip	Хайлт энэ төхөөрөмжийг шалгаад энэ жагсаалтыг шинэчлэнэ.
+printers_pool_empty	(одоогоор алга — Хайлт дээр товшино)
+printers_routes_help	Үйлдлийн систем аль хэдийн мэддэг принтерүүдийг олно. Тэдгээрийг тооцоо ба гал тогоо бүрд Тооцоо ба KOT хэлбэр дор онооно.
+printer_assign_dd	Бодит принтер: {place}
+printer_assign_pick	Бодит принтер сонгох
+printer_profile_heading	Байрлал
+printer_send_heading	Хүргэлт
+vp_delivery_heading	Хүргэлт
+vp_delivery_help	Энэ виртуал принтер ажлыг хэрхэн илгээх вэ — ОС баримт, түүхий байт эсвэл ESC/POS. Хуудасны агуулгыг (үсгийн хэмжээ, мөр хугарах, зах) тооцоо / KOT хэлбэр шийднэ, энд биш.
+vp_type_size_heading	Үсгийн хэмжээ
+vp_wrap_heading	Мөр хугарах өргөн
+vp_margin_heading	Зах
+vp_delivery_spooler	ОС баримт (системийн түр хадгалагч)
+vp_delivery_raw	Төхөөрөмж рүү түүхий байт
+vp_delivery_escpos	ESC/POS дулааны команд
+virtual_printer_new	Шинэ виртуал принтер
+virtual_printer_selected	„{name}“ засварлаж байна — солихын тулд жагсаалтын нөгөөг товшино
+virtual_printer_tap_list	Засахын тулд жагсаалт дахь виртуал принтер дээр товшино
+config_layout_portrait	Босоо
+config_layout_landscape	Хэвтээ
+config_send_os	Системийн түр хадгалагч
+config_send_escpos	ESC/POS
+profiles_heading	Байрлалууд
+profiles_empty	(байрлал одоогоор алга)
+profile_builtin	суурилагдсан
+profile_custom	захиалгат
+profile_name_ph	Байрлалын нэр
+profile_new	Шинэ байрлал
+profile_delete	Байрлалыг устгах
+profile_created	Байрлал үүслээ
+profile_deleted	Байрлал устгагдлаа
+profile_builtin_keep	Суурилагдсан байрлалыг устгах боломжгүй
+config_saved	Шинэчлэгдсэн
+config_selected	„{name}“ сонгогдлоо
+printer_output_heading	Виртуал принтерүүд
+virtual_printers_heading	Виртуал принтерүүд
+virtual_printers_empty	Виртуал принтер одоогоор алга — доор утгыг тохируулаад Хадгалах. Болсон хойно жагсаалтын нэгийг товшиж засна.
+virtual_printer_name_ph	Виртуал принтерийн нэр (заавал биш)
+virtual_printer_create	Виртуал принтер үүсгэх
+virtual_printer_save	Виртуал принтерийг хадгалах
+virtual_printer_delete	Виртуал принтерийг устгах
+virtual_printer_created	„{name}“ виртуал принтер үүслээ
+virtual_printer_deleted	„{name}“ виртуал принтер устгагдлаа
+virtual_printer_updated	Виртуал принтер шинэчлэгдлээ
+virtual_printer_updated_named	„{name}“ виртуал принтер шинэчлэгдлээ
+virtual_draft_layout	Дараагийн виртуал принтерт утга тохируулав
+virtual_draft_send	Дараагийн виртуал принтерт утга тохируулав
+virtual_need_real	Эхлээд бодит принтер сонгоно
+virtual_need_select	Устгах виртуал принтерээ сонгоно
+real_printer_selected	Сонгосон: {name}
+station_group_heading	Виртуал принтерүүд
+station_group_apply	Виртуал принтерийг устгах
+station_group_applied	Устгагдсан
+station_group_empty	Виртуал принтер сонгоно
+station_group_name_ph	Виртуал принтерийн нэр (заавал биш)
+station_group_save	Виртуал принтер үүсгэх
+station_group_saved	Виртуал принтер хадгалагдлаа
+station_manage_heading	Гал тогооны станц нэмэх эсвэл хасах
+printers_routes_heading	Хаана хэвлэгдэх вэ
+route_pick_heading	Газар
+route_editing	Засварлаж байна: {name}
+route_assigned	{printer} {place} дээр нэмэгдлээ
+route_already_assigned	Энэ газар дээр аль хэдийн: {printer}
+route_removed	{printer} {place}-аас хасагдлаа
+route_cleared	{name} цэвэрлэгдлээ
+route_assigned_empty	Энэ газар дээр юу ч алга
+route_tap_remove	хасахын тулд товшино
+route_tap_select	сонгохын тулд товшино
+route_tap_selected	сонгосон
+route_pick_printer_first	Эхлээд принтер дээр товшино
+route_assigned_heading	Принтерүүд
+route_add_heading	Оноох
+printer_label_ph	Нэр (ж. Гал тогоо)
+printer_target_ph	Системийн принтерийн нэр эсвэл host:9100
+printer_target_default	энэ компьютерийн ердийн принтер (хоосон хаяг)
+printer_wire_heading	Профайл
+printer_wire_escpos	ESC/POS
+printer_wire_os	Босоо
+printer_wire_os_portrait	Босоо
+printer_wire_os_landscape	Хэвтээ
+printer_wire_escpos_short	ESC/POS
+printer_wire_os_short	Босоо
+printer_wire_os_landscape_short	Хэвтээ
+printer_format_custom	Шинэ захиалгат профайл
+printer_format_custom_label	Захиалгат
+printer_format_custom_added	Энэ газарт захиалгат профайл нэмэгдлээ
+add_printer	Принтер нэмэх
+remove_printer	Хасах
+route_pick_ph	Тооцоо эсвэл гал тогооны станц
+route_bill	Тооцоо
+route_default_kitchen	Станцгүй (оноогоогүй хоол)
+route_kot_station	Гал тогоо
+route_dont_print	Принтер алга
+stations_heading	Гал тогооны станцууд
+stations_help	Хоол ба KOT-д гал тогооны станц нэмнэ. Станц бүрд принтерээ холбоно (Тохиргоо → Принтерүүд), дараалал тохируулаад Эхний ажилладаг нь эсвэл Бүгдэд хэвлэх сонгоно. Өөрчлөлт даруй хадгалагдана — Хадгалах товч байхгүй.
+station_print_heading	Энэ станцын принтерүүд
+station_print_help	Станц сонгоод нэг буюу хэд хэдэн принтер холбоно. ↑↓ оролдох дарааллыг заана. Эхний ажилладаг нь анхны амжилтын дараа зогсоно; Бүгдэд хэвлэх холбосон принтер бүрд илгээнэ. Өөрчлөлт бүр даруй хадгалагдана.
+station_print_pick_ph	Принтер тохируулах станц
+station_print_pick_first	Эхлээд гал тогооны станц сонгоно
+station_print_editing	„{name}“ принтерүүдийг засварлаж байна
+station_vps_dd	Энэ станцын принтерүүд
+station_vps_dd_n	{n} принтер · өөрчлөхийн тулд товшино
+station_vps_empty	Принтер одоогоор алга — Тохиргоо → Принтерүүд дотроос олно
+bill_printers_dd	Тооцооны принтерүүд
+bill_printers_dd_n	тооцоонд {n} принтер · өөрчлөхийн тулд товшино
+job_layout	Байрлал
+job_delivery	Ажил хэрхэн илгээгдэх вэ
+job_delivery_help	ОС баримт, түүхий байт эсвэл ESC/POS. Тооцоо ба гал тогооны хуудас тус бүр өөрийнхийг хадгална. Ажил бүрийг Хайлт хадгалсан аль ч принтер рүү явуулж болно.
+station_vp_attached	Принтер холбогдлоо
+station_vp_detached	Принтер станцаас хасагдлаа
+station_print_summary	{mode} · {n} принтер
+station_print_summary_none	Энэ станцад принтер одоогоор алга — хэвлэхгүй
+stations_none	Станц одоогоор алга — доор нэгийг нэмнэ. Цэсийн бараа станц ашиглавал KOT тэнд хэвлэгдэнэ.
+route_up	Дээш
+route_down	Доош
+route_remove	Хасах
+route_clear	Цэвэрлэх
+save_printers	Принтерүүдийг хадгалах
+print_test_page	Туршилтын хуудас хэвлэх
+no_printer_assigned	Принтер алга
+test_page_no_printer	{place} дээр принтер алга — принтер холбоод дахин оролдоно
+test_page_pick_first	Эхлээд туршилтын хуудсанд принтер сонгоно — дараа нь Туршилтын хуудас хэвлэх
+test_printers_dd	Туршилтын хуудасны принтерүүд
+test_printers_dd_n	туршилтын хуудсанд {n} принтер · өөрчлөхийн тулд товшино
+kot_test_printers_dd	Туршилтын KOT принтерүүд
+kot_test_printers_dd_n	туршилтын KOT-д {n} принтер · өөрчлөхийн тулд товшино
+test_printer_picked	Туршилт: {name}
+test_printer_cleared	Туршихгүй: {name}
+test_page_sent_n	Туршилтын хуудас {n} принтер рүү илгээгдлээ
+test_kot_pick_first	Эхлээд туршилтын KOT принтер сонгоно — дараа нь Туршилтын KOT
+test_kot_sent_n	Туршилтын KOT {n} принтер рүү илгээгдлээ
+cancel_pick	Тэмдэглэх
+cancel_pick_on	Тэмдэглэгдсэн
+cancel_pick_meta	Цуцлахаар тэмдэглэсэн
+batch_cancel	Тэмдэглэснийг цуцлах
+batch_cancel_n	Тэмдэглэснийг цуцлах ({n})
+batch_cancel_none	Эхлээд илгээсэн нэг буюу хэд хэдэн хоолыг тэмдэглэнэ — дараа нь Тэмдэглэснийг цуцлах
+batch_cancel_title	Тэмдэглэсэн хоолыг цуцлах — нэг шалтгаан, гал тогоо бүрд нэг цуцлах хуудас
+batch_cancel_ok	{n} хоол цуцлагдлаа · {slips} цуцлах хуудас → {kitchens}
+batch_cancel_ok_noprint	{n} хоол цуцлагдлаа — KOT авто хэвлэлт унтраалттай тул цуцлах хуудас байхгүй
+no_printer_kitchen_station	Тэр гал тогооны станцад принтер алга — Гал тогоо → Гал тогооны станцууд → Энэ станцын принтерүүд
+printers_saved	Хадгалагдсан
+test_page_sent	Туршилтын хуудас илгээгдлээ — принтерийг шалгана
+test_page_sent_one	Туршилтын хуудас {name} руу илгээгдлээ — тэр принтерийг шалгана
+printers_found	Олдсон {n}: {list}
+printers_find_synced	Олдсон {n} — {new} шинэ
+printer_on_device	хадгалсан
+printer_already_added	аль хэдийн нэмсэн
+printer_already_saved	Хадгалсан: {name}
+find_printers	Принтер олох
+printers_looking	Хайж байна…
+saving_printer	Принтер нэмж байна…
+cancelled	Цуцлагдсан
+printers_tap_find	Энэ төхөөрөмж ашиглах принтерийн жагсаалтад Хайлт дээр товшино.
+printers_none_found	Юу ч олдсонгүй — системийн принтерийн нэр эсвэл IP бичнэ (ж. 192.168.1.50).
+printer_from_find	{name} нэмэгдлээ
+kot_printer_ph	KOT принтер
+bill_printer_ph	Тооцооны принтер
+kot_print_on	Гал тогооны хуудасны авто хэвлэлт: Асаалттай
+kot_print_off	Гал тогооны хуудасны авто хэвлэлт: Унтраалттай
+queue_refused	Дэлгүүр хүлээж аваагүй ({n}) — бүрийг кассан дээр шалгана:
+clear_not_accepted	Шалгасан — энэ жагсаалтыг цэвэрлэнэ
+device_name_ph	Энэ төхөөрөмжийн нэр
+lan_last_update	сүүлийн шинэчлэл {time}
+lan_not_accepted	{n} хүлээж аваагүй
+connected_now	одоо холбогдсон
+backup_failed	Сүүлийн автомат нөөц хуулбар амжилтгүй: {e}
+backup_overdue	{n} өдөр нөөц хуулбар алга — нөөцлөхийн тулд аппыг энэ төхөөрөмж дээр нээлттэй үлдээнэ.
+disk_low	Энэ төхөөрөмж дээр зөвхөн {mb} MB сул — нөөц хуулбар удахгүй амжилтгүй болно. Зай чөлөөлнө.
+last_seen_devices	Сүүлд харсан: {time}
+sync_interval	{secs} сек тутам синк
+connection_to_shop	Дэлгүүрт холболт
+supplier_name_ph	Нийлүүлэгчийн нэр (эсвэл харилцагч)
+supplier_ph	Нийлүүлэгч
+switch_device	Энэ төхөөрөмжийг солих
+take_payment	Төлбөр авах
+tax_added_till	{tax} дээр нэмэгдэх
+tax_inside_price	{tax} үнэд багтсан
+tax_invoice	Татварын нэхэмжлэл
+till_to_bank	Касс → банк
+units_heading	Нэгжүүд
+unlock_after_pairing	PIN оруулна
+unlock_with_login	Нэвтрэлтээр түгжээ тайлах
+unmark	Тэмдэглэгээг авах
+update_my_password	Нууц үгээ шинэчлэх
+update_my_pin	Нэвтрэлтээ шинэчлэх
+duress_heading	Яаралтай түгжээ тайлах PIN (зөвхөн Эзэмшигч)
+duress_help	Заавал биш. Түгжээ тайлахад таны PIN-ийн оронд энэ PIN орвол номын бүх бичилт арилна (борлуулалт, дэвтэр, түүх) бөгөөд касс Эзэмшигчээр хэвийн харагдаж нээгдэнэ — цэс, үнэ, ширээ, ажилтан, тохиргоо үлдэнэ. Схем ба тохиргооны файл устгагдахгүй. Зөвхөн түгжээ тайлахад албадвал хэрэглэнэ. Унтраахын тулд хоосон үлдээж хадгална. Хэзээ ч хэний ч PIN-тэй адил байж болохгүй.
+duress_pin_ph	Яаралтай PIN (4–12 орон)
+duress_confirm_ph	Баталгаажуулахын тулд дахин бичнэ
+save_duress_pin	Яаралтай PIN хадгалах
+clear_duress_pin	Яаралтай PIN унтраах
+duress_on	Яаралтай түгжээ тайлах PIN асаалттай
+duress_off	Яаралтай түгжээ тайлах PIN унтраалттай
+duress_saved	Яаралтай түгжээ тайлах PIN хадгалагдлаа
+duress_cleared	Яаралтай түгжээ тайлах PIN унтраагдлаа
+upi_amount_ph	UPI дүн
+void	Хүчингүй болгох
+write_off_ap	AP хасалт
+write_off_heading	Хасалт (төлбөргүй цэвэрлэх)
+write_off_nil	Хасалт / тэг үлдэгдэл
+your_brand	Таны брэнд (апп дотор)
+your_categories	Таны ангилал
+account_kind	Дансны төрөл (нэгийг товшино)
+actual_total_cap	БОДИТ НИЙТ
+amend_help	Засах, хүчингүй болгох эсвэл буцаан олгох борлуулалтаа сонгоно. Засвар бүтэн түүхийг хадгална. Бүхэлчилсэн Нийт Хэрэглэсэнтэй тэнцүү эхэлнэ — зөвхөн бүхэлчлэхийн тулд засна. Хүчингүй болгох ба буцаалт Эзэмшигч эсвэл Менежерийн PIN шаардаж болно (дээр бичнэ; таны нэрээр бүртгэгдэнэ).
+applied_total_cap	ХЭРЭГЛЭСЭН НИЙТ
+bank_balance	Банкны үлдэгдэл
+bank_net_today	Өнөөдрийн банк цэвэр
+branch_export_help	Экспорт branch_snapshot_CODE_DATE.json файлыг нөөц хавтсанд бичиж, санах ой руу хуулна. Өөр салбарын өдрийг импортлохын тулд файлыг мөн хавтсанд import_branch_snapshot.json гэж хадгалаад Импорт дээр товшино.
+brand_shown_help	Апп доторх дэлгэц дээр харагдана. Энэ төхөөрөмж дээр суулгасан аппын нэр ба дүрс платформын жагсаалт дахь хэвээр үлдэнэ.
+app_icon	Аппын дүрс
+logo_help	Апп дэлгэц дээрх дэлгүүрийн тэмдэг (заавал биш).
+onboard_layout	Та юу авах вэ
+item_photo_help	Заавал биш. Зураггүй бол барааны нэрийн эхний үсгийг харуулна.
+stamp_heading	Тамга
+stamp_image_help	Хэвлэсэн тооцоо ба зочны дэлгэц дээрх тамганы зураг (заавал биш).
+payment_qr_heading	Төлбөрийн QR
+payment_qr_image_help	Тооцоо ба зочны дэлгэц дээрх тогтмол QR; эс бөгөөс төлбөр дээрх VPA-аас динамик UPI QR ашиглана.
+cash_in_hand	Касс дахь бэлэн
+change_my_pin_heading	Миний нэвтрэлт
+connect_to_server	Серверт холбогдох
+counter_locked	Касс 01 · Түгжээтэй
+country_pack_help	Улсын багц татварын нэр ба тооцоо, шууд төлбөрийн суваг, тооцоонд хэвлэгдэх бизнес дугаарыг тохируулна. Kumkaj хаана ч татвар мэдүүлэхгүй, төрийн цахим нэхэмжлэл гаргахгүй.
+currency_use_help	Дэмжигдсэн аль ч валютад гүйлгээд Ашиглах дээр товшино.
+day_close_help	Өдөр хаахыг бүртгэх нь энэ хураангуйг (мөн тоолсон бол шургуулгын зөрүүг) аудитын тэмдэглэлд хадгална. Борлуулалтыг зогсоохгүй.
+expenses_word	Зардал
+feature_access_help	Юу нээж болох вэ — заавал биш; дээрх ажил аль хэдийн анхдагчийг тохируулна
+footer_local	Орон нутгийн SQLite · Үүрд үнэгүй · Үүлгүй
+fresh_book_khaynjo	Fresh = хоосон цэс (хоолыг дараа Цэсэд нэмнэ). Book = доор эхлэх бараа ба хэн танд өртэйг бичнэ.
+fresh_selected	Fresh сонгогдлоо — каталог хоосон үлдэнэ. Бэлэн болоод Дууссан дээр товшино.
+gross_word	Нийт
+how_start	Яаж эхлэмээр байна?
+kot_print_help_khaynjo	Асаалттай үед гал тогоо бүр Илгээх дармагц өөрийн KOT цаасаа хэвлэнэ.
+later_country_pack	Дараа: Тохиргоо → татвар ба төлбөрийн шошгонд улсын багцаа хэрэглэнэ.
+local_badge	ОРОН НУТГИЙН
+mix_type_hint_khaynjo	Шаардлагатай бол бэлэн / UPI / карт / зээлээр хуваана. Зээлд дээр харилцагч хэрэгтэй.
+money_in_sales	Мөнгө орлого (борлуулалт)
+net_word	Цэвэр
+offline_badge	ОФЛАЙН
+optional_login_help	Заавал биш нэвтрэлт (id + нууц үг). Эзэмшигч нэг удаа тохируулна; нууц үгийг дараа нь зөвхөн хэрэглэгч өөрчилнө.
+or_unlock_login	Эсвэл нэвтрэх id + нууц үгээр түгжээ тайлна
+permission_preset	Ажил (дэлгэц ба мөнгөний үйлдлийг тохируулна)
+preset_help_khaynjo	Кассчин: зарна. Менежер: борлуулалт + бараа + хүчингүй/засвар.
+product_locked_khaynjo	Khaynjo
+product_only_khaynjo	Энэ апп зөвхөн Khaynjo — рестораны үйлдлийн систем. Бусад худалдааны нүүр нь тусдаа Kumkaj бүтээгдэхүүнээр гарна.
+purchases_cogs	Худалдан авалт (өртөг)
+qty_cap	ТОО
+restore_help	Сэргээх: нөөц хуулбар сонгоно. Ном тухайн үеийнхээр нээгдэнэ; одоогийн ном эхлээд хадгалагдах тул үүнийг буцааж болно.
+wipe_data_heading	Орон нутгийн өгөгдлийг устгах
+wipe_data_help	Зөвхөн Эзэмшигч — Windows устгалтай ижил сонголт. Бизнесийн бүртгэл худалдааны түүхийг цэвэрлээд цэс ба тохиргоог үлдээнэ (яаралтай PIN шиг). Дэлгүүрийн тохиргоо номын санг хасна. Дэлгэцийн тохиргоо цонх/хэлийг цэвэрлэнэ. Эзэмшигчийн PIN-ээр батална. Багийн яаралтай PIN тусдаа (түгжээ тайлахад далд устгал).
+wipe_trading	Бизнесийн бүртгэл
+wipe_schema	Дэлгүүрийн тохиргоо
+wipe_ui	Дэлгэцийн тохиргоо
+wipe_owner_pin_ph	Устгах Эзэмшигчийн PIN
+wipe_delete_selected	Сонгосонг устгах
+wipe_owner_only	Орон нутгийн өгөгдлийг зөвхөн Эзэмшигч устгана.
+restore_owner_only	Нөөц хуулбарыг зөвхөн Эзэмшигч сэргээнэ.
+wipe_owner_pin_needed	Орон нутгийн өгөгдөл устгахын тулд Эзэмшигчийн PIN оруулна.
+wipe_nothing_selected	Эхлээд юу устгахаа сонгоно.
+wipe_done	Сонгосон орон нутгийн өгөгдөл устгагдлаа.
+wipe_schema_done	Дэлгүүрийн тохиргоо арилгагдлаа — үргэлжлүүлэхийн тулд Сервер эсвэл Клиент сонгоно.
+rounded_total	Бүхэлчилсэн нийт
+setup_app_khaynjo	Khaynjo тохируулах
+shop_logo_optional	Дэлгүүрийн лого (заавал биш)
+stock_type_help	Барааны нэрийг бичнэ (хэсэг нь хангалттай), тоо хэмжээ, дараа нь засна. Хараахан тоологдоогүй бараанд нэг удаа Хяналт эхлүүлэх хэрэгтэй.
+team_owner_help	Хүн нэмэхийн тулд хүнийг хоосон үлдээнэ: нэр, ажил, хэрэглэгчийн нэр, PIN ба заавал биш нууц үг, дараа нь Нэмэх. Хүн сонгоод мөн төрлийн маягтыг засна — нэр, хэрэглэгчийн нэр, нууц үг, дэлгэц, эрх — дараа нь Хадгалах. Таны PIN ба нууц үг доор нэг нэвтрэлт. Эзэмшигч өөр хүний PIN өөрчлөхгүй.
+staff_name_ph	Ажилтны нэр
+staff_copy_hire_ph	Тохиргоог хуулах (заавал биш)
+staff_copy_hire	Энэ хүний тохиргоог ашиглах
+staff_edit_name_ph	Харуулах нэр
+staff_rename	Нэрийг хадгалах
+staff_copy_edit_ph	Өөр хүнээс тохиргоо хуулах
+staff_copy_edit	Тэдний тохиргоог сонгосон дээр хуулах
+staff_copy_edit_onto	Тэдний тохиргоог {name} дээр хуулах
+staff_deactivate_named	{name} хасах
+staff_renamed	Нэр хадгалагдлаа
+staff_setup_copied_hire	Тохиргоо {name}-аас хуулагдлаа — шинэ нэр ба PIN тавиад Ажилтан нэмэх
+staff_setup_copied_edit	{from}-ийн тохиргоо {to} дээр хуулагдлаа
+staff_copy_need_selected	Эхлээд хэнийг засахаа сонгоно
+staff_copy_need_source	Хэний тохиргоог хуулахаа сонгоно
+staff_copy_same	Энэ мөн хүн — өөр хүн сонгоно
+staff_rename_need_selected	Эхлээд хэний нэрийг солихоо сонгоно
+team_pick_hint	Хэнийг засахаа сонгоно — дэлгэц, мөнгөний эрх, гал тогооны станц зөвхөн тэр хүнд гарна.
+team_stations_help	Ашиглаж болох гал тогооны станц
+team_stations_changed	Гал тогооны станц өөрчлөгдлөө — энэ хүний тохиргоог Хадгалах
+team_features_changed	Дэлгэц өөрчлөгдлөө — энэ хүний тохиргоог Хадгалах
+team_rights_changed	Эрх өөрчлөгдлөө — энэ хүний тохиргоог Хадгалах
+they_owe_us	Тэд бидэнд өртэй
+unit_at_cap	Нэгж @
+units_help	Барааны шошгын код (kg, ширхэг, уут). Нэгж бүр стандарттай холбогдох ёстой — шууд эсвэл өөр нэгжээр — (kg · cm · ml · pc), ж. 1 том хайрцаг = 2 жижиг хайрцаг ба 1 жижиг хайрцаг = 20 cm. Хөрвүүлэг: 1 ээс = итгэлцүүр рүү. Валют хэзээ ч нэгж биш.
+units_picker_help	Худалдан авалт ба Цэс сонголтод нэгж харагдахын тулд Асаалт/Унтраалт дээр товшино. Унтраалттай нэгж хэвээр хөрвөнө.
+unit_picker_on	Асаалттай
+unit_picker_off	Унтраалттай
+we_owe_them	Бид тэдэнд өртэй
+who_unlocking	Хэн түгжээ тайлаад байна?
+locked_word	Түгжээтэй
+show_pin	PIN харуулах
+hide_pin	PIN нуух
+set_owner_pin	ЭЗЭМШИГЧИЙН PIN ТОХИРУУЛАХ
+enter_owner_passcode	ЭЗЭМШИГЧИЙН КОД ОРУУЛНА
+enter_staff_passcode	АЖИЛТНЫ КОД ОРУУЛНА
+pin_count_zero	0 / 12 орон · дор хаяж 4, дараа нь OK
+pin_count_need	{} / 12 орон · дахин {} хэрэгтэй
+pin_count_full	12 / 12 орон · OK дарна
+pin_count_ready	{} / 12 орон · бэлэн болоод OK дарна
+pin_hint_choose	4–12 орон сонгоно · хадгалахын тулд Enter эсвэл Түгжээ тайлах
+pin_hint_new	Шинэ 4–12 оронтой Эзэмшигчийн PIN · Enter эсвэл Түгжээ тайлах
+pin_hint_shop_code	Дэлгүүрийн төхөөрөмж · хослуулах код {}
+pin_hint_books	Энэ төхөөрөмж номыг хадгална
+pin_hint_paired	Нэмэлт касс хослуулсан — зарахын тулд түгжээ тайлна
+pin_hint_pair_first	Нэмэлт касс — эхлээд дэлгүүрийн төхөөрөмжтэй хослуулна
+unlock_to_continue	Үргэлжлүүлэхийн тулд түгжээ тайлна
+no_staff_yet	Ажилтан одоогоор алга — Эзэмшигчээр түгжээ тайлаад Баг
+status_server_set_pin	Сервер горим — Эзэмшигчийн PIN тохируулна
+status_server_tills	Сервер горим — нэмэлт касс нэгдэж болно. Түгжээ тайлах
+status_server_unlock	Сервер горим — Эзэмшигчээр түгжээ тайлна
+status_client_unlock	Клиент горим — зарахын тулд түгжээ тайлна
+icon_new_selected	Дүрс: шинэ файл сонгогдлоо — Брэнд хадгалах дээр товшино
+icon_custom	Дүрс: өөрийн газрын тэмдэг
+icon_default	Дүрс: Kumkaj тэмдэг (анхдагч) — өөрийнхийг сонгоно
+logo_yours	Лого: таны дэлгүүрийн лого — дэлгэц ба баримт дээр харагдана
+logo_default	Лого: Kumkaj тэмдэг (анхдагч) — байвал өөрийнхийг сонгоно
+tmpl_current	Одоогийн: {} — {}
+tmpl_selected	Сонгосон: {} — {}
+setup_complete	Тохиргоо дууслаа
+onboard_fresh_tmpl	Fresh · {} — каталог хоосон эхэлнэ; барааг Бараанд нэмээд Дууссан.
+onboard_book_tmpl	Book · {} — бараа ба эхлэх зээл нэмээд Дууссан.
+onboard_template_tmpl	Хүсвэл газрыг нэрлээд яаж эхлэхээ сонгоно.
+tmpl_blurb	Ширээ, захиалга, гал тогооны хуудас, тооцоо ба ном.
+tmpl_how	Кассанд зарна; Танхим ширээ ба KOT-д; Ном өдрийн дэвтэрт.
+reports_facet_title	Тайлан
+reports_facet_help	Өдрийн дэвтэр, харилцагчийн насжилт, банкны бичилт ба хугацааны ашиг ба алдагдал.
+against_bill_ph	Дээрх тооцооны №-д (заавал биш)
+aliases_ph	Өөр нэр — таслалаар тусгаарлана
+amount_blank_full_ph	Дүн (хоосон = бүтэн үлдэгдэл)
+amount_owed_ph	Өртэй дүн
+amount_ph	Дүн
+amount_received_ph	Хүлээн авсан дүн
+amount_we_pay_ph	Бидний төлөх дүн
+business_name_ph	Бизнесийн нэр
+category_new_ph	Ангилал (заавал биш, шинэ бол үүснэ)
+code_bag_ph	Код (уут)
+conv_factor_ph	Итгэлцүүр (25 = 1 уут → 25 kg)
+country_code_ph	Улсын код ж. IN, GB, US, AE, BR
+credit_khata_amount_ph	Зээл / дансны дүн
+credit_limit_ph	Зээлийн хязгаар (0 = байхгүй)
+from_code_ph	Эх код (уут)
+item_name_lang_ph	Барааны нэр — өөрийн хэлээр бичнэ
+login_id_opt_ph	Хэрэглэгчийн нэр (заавал, давтагдашгүй)
+manager_pin_ph	Батлах менежерийн PIN (зөвхөн хүчингүй болгож чадахгүй бол)
+new_branch_name_ph	Шинэ салбарын нэр
+new_password_ph	Шинэ нууц үг (заавал биш)
+new_pin_ph	Шинэ PIN (4–12 орон)
+note_bank_ph	Тэмдэглэл (орлого, зарлага, …)
+note_buy_expense_ph	Тэмдэглэл (түлш, түрээс, …)
+note_expense_ph	Тэмдэглэл (түлш, оффис, …)
+options_khaynjo_ph	Сонголт — Хэмжээ*: Жижиг=199, Том=399 | Нэмэлт+3: Бяслаг=40, Чидун=30 | Нэмэлт бяслаг=40
+part_second_way_ph	Хэсгийг хоёр дахь аргаар (заавал биш)
+phone_ph	Утас
+place_name_ph	Энэ газрын нэр
+qty_example_ph	Тоо (ж. kg-д 1.5)
+quantity_ph	Тоо хэмжээ
+reason_required_ph	Шалтгаан (заавал)
+role_title_ph	Албан тушаал (ж. Бариста)
+service_pct_ph	Үйлчилгээ % заавал биш 0/10/12
+short_code_ph	Богино код (MG02)
+starting_password_ph	Эхлэх нууц үг (заавал биш)
+starting_pin_ph	Эхлэх PIN (4–12 орон)
+station_name_ph	Станцын нэр (ж. Тандуур, Шарсан, Хүйтэн)
+station_new_ph	Гал тогооны станц (заавал биш, ж. Тандуур — шинэ бол үүснэ)
+table_name_ph	Ширээний нэр (ж. Дэнж 1, Касс 2)
+tax_rate_ph	Татварын хувь нэр эсвэл % — Стандарт, Бууруулсан, 0, 5, 12, 18, 20
+to_code_ph	Хүрэх код (kg)
+uncleared_no_ph	Дээрх цэвэрлэгдээгүй №
+unit_cost_ph	Нэгж өртөг
+unit_name_bag_ph	Нэр (Уут)
+unit_plate_ph	Нэгж (таваг / pc — хоосон = ширхэг)
+pay_credit	Зээл
+book_kind_today	Өнөөдрийн ном
+book_kind_month	Энэ сарын ном
+book_kind_aging	Төлөгдөөгүй / дебет-кредит
+book_kind_balance	Баланс
+order_help	Нэмэхийн тулд бараан дээр товшино.
+floor_help	Захиалга авах эсвэл өөрчлөхийн тулд ширээн дээр товшино. Өнгө сул → суусан → гал тогоо → бэлэн → идэж байна → тооцоо → төлсөнг харуулна. Хүлээлгийн жагсаалт, захиалга, ширээ нэмэх нь доорх хэсэгт.
+kitchen_help	Гал тогооны хуудас (KOT), шинэ нь хамгийн ард. Эхлэх → Бэлэн → Дууссан хуудсыг урагшлуулна. Хуудас хэзээ ч үнэ харуулахгүй.
+kitchen_empty	Нээлттэй хуудас алга. Захиалга эсвэл Танхимаас илгээсэн KOT энд гарна.
+add_a_table	Ширээ нэмэх
+add_station_heading	Гал тогооны станц нэмэх
+categories_help	Дээрх барааг тэр ангилалд оруулахын тулд Ашиглах дээр товшино. Зураг ангилалд зураг өгнө; байхгүй бол эхний үсэг гарна.
+dish_search_ph	Барааны нэр — манай хоолыг хайх эсвэл өөрийнхийг бичнэ
+tile_free	Сул
+tile_occupied	Эзэлсэн
+tile_food_ready	Хоол бэлэн
+tile_bill_printed	Тооцоо хэвлэгдсэн
+tile_paid	Төлсөн
+tile_bill_btn	Тооцоо
+tile_occupy_btn	Зочды суулгах
+tile_free_btn	Ширээг суллах
+tile_ready_btn	Ширээг суллах
+tile_undo_bill	Тооцоог буцаах
+summary_busy	завгүй ширээ
+summary_to_collect	цуглуулах
+summary_on_floor	танхимд
+floor	Танхим
+sizes_as_items_ph	Хэмжээ тусдаа бараа (заавал биш) — Хагас=120, Бүтэн=200
+dish_group_ph	Хоолны бүлэг (заавал биш) — ж. Paneer Tikka
+discount	Хөнгөлөлт
+remove_discount	Хөнгөлөлтийг хасах
+apply_discount	Хөнгөлөлт хэрэглэх
+save_opening_cash	Эхлэх бэлэнг хадгалах
+close_shift_print	Ээлж хааж хуудас хэвлэх
+area_prices_ph	Бүсийн үнэ (заавал биш) — Агааржуулалт=220, Авч явах=210
+discount_ph	10% эсвэл 50
+discount_reason_ph	Шалтгаан (ж. байнгын зочин, хоцорсон хоол)
+opening_float_ph	Өнөө өглөө шургуулганд хийсэн мөнгө
+shift_counted_ph	Хүлээлгэн өгөхөд тоолсон мөнгө
+opening_float	Эхлэх бэлэн (урьдчилгаа)
+shift_handover	Ээлж хүлээлгэн өгөх
+shift_since	Энэ ээлж эхэлснээс
+expected_in_drawer	Шургуулганд хүлээгдэж буй
+right_discount	Хөнгөлөлт өгөх
+floor_in_kitchen	Гал тогоонд
+floor_eating	Өгсөн
+pick_category	Ангилал сонгох
+close_category_list	Ангиллын жагсаалтыг хаах
+new_category_row	Шинэ ангилал — барааг хадгалахад үүснэ
+your_category	Таны ангилал
+suggested_category	Санал болгосон — манай хоолоос
+category_search_ph	Ангилал — өөрийнхийг хайх эсвэл шинийг бичнэ
+line_sent_state	Гал тогоо руу илгээсэн
+line_nc_state	Бэлэг (NC) — төлбөргүй
+cancel_item_short	Цуцлах
+nc_short	NC
+charge_again_short	Төлбөр авах
+move_short	Зөөх
+cancel_item_title	Энэ барааг цуцлах — гал тогоо цуцлах хуудас авна
+nc_item_title	Энэ барааг бэлэг болгох (NC)
+charge_again_title	Энэ бараанаас дахин төлбөр авах
+move_item_title	Энэ барааг өөр ширээнд зөөх
+already_cooked	Аль хэдийн болсон (хорогдол)
+not_cooked_yet	Хараахан болсонгүй
+return_to_customer	Харилцагчид буцаах
+short_by	Дутуу
+tip_not_sale	Цайны мөнгө (ажилтны, борлуулалт биш)
+right_settle	Төлбөр авах
+right_cancel_sent	Илгээсэн барааг цуцлах
+right_complimentary	Бэлэг (NC)
+right_move_table	Ширээ зөөх / нэгтгэх
+right_reprint	Тооцоог дахин хэвлэх
+right_allowed	Зөвшөөрсөн
+right_with_approval	Баталгаатай
+right_denied	Зөвшөөрөгдөөгүй
+editing_staff	Засварлаж байна
+finding_server	Энэ Wi‑Fi дээр дэлгүүрийн серверийг хайж байна…
+no_server_found	Юу ч олдсонгүй. Сервер дээр: Тохиргоо → Бусад төхөөрөмж → Нэмэлт касс зөвшөөрөх (ижил Wi‑Fi). Эсвэл тэнд харагдах IP-г бичнэ.
+servers_found_pick	Холбогдохыг хүссэн дэлгүүрээ товшино.
+server_host_selected	{host} ашиглаж байна — хослуулах кодыг оруулаад Одоо хослуулах.
+print_bill	Тооцоо хэвлэх
+table_actions	Ширээний үйлдэл
+move_merge_table	Ширээ зөөх / нэгтгэх
+move_help	Энэ ширээний захиалгыг сул ширээнд зөөх эсвэл ажиллаж байгаатай нэгтгэнэ.
+move_target_ph	Ширээний нэр (ж. D5, P2)
+approval_pin_ph	Менежерийн PIN (асуувал л)
+move_here	Энд зөөх
+merge_into	Түүнд нэгтгэх
+line_reason_ph	Шалтгаан (ж. зочин бодлоо өөрчилсөн, нөөцгүй)
+line_qty_ph	Хэдэн ширхэг цуцлах (хоосон = бүгд)
+line_target_ph	Ширээнд зөөх (ж. D5)
+confirm	Баталгаажуулах
+menu_search_ph	Бараа эсвэл богино код хайх
+customer_paid_ph	Харилцагч төлсөн
+tip_ph	Цайны мөнгө
+table_area_ph	Бүс (ж. Сууж идэх, Авч явах, Агааржуулалт)
+table_range_ph	Олон зэрэг: D1-D20
+add_these_tables	Эдгээр ширээг нэмэх
+remove_these_tables	Эдгээр ширээг хасах
+table_remove_ph	Хасах: T1-T24 эсвэл нэг ширээний нэр
+find_server	Дэлгүүрийн серверийг олох
+bill_format	Тооцооны хэлбэр
+bill_format_help	Рестораны нэрийн доор тооцоо бүрд хэвлэгдэнэ. Мөрийг | тэмдгээр тусгаарлана (ж. MG Road, Rajkot | Утас 98250 00000).
+bill_header_ph	Хаяг | утас
+fssai_ph	FSSAI лицензийн № (Энэтхэг)
+bill_footer_ph	Доод хэсэг (ж. Баярлалаа, дахин ирээрэй)
+save_bill_format	Тооцооны хэлбэрийг хадгалах
+reset_bill_format	Анхдагч руу буцаах
+bill_format_reset	Тооцооны хэлбэр анхдагч руу буцаагдлаа
+reset_kot_format	Анхдагч руу буцаах
+kot_format_reset	KOT хэлбэр анхдагч руу буцаагдлаа
+kot_format	KOT хэлбэр
+kot_format_help	Жагсаалтын талбар дээр товшино. Харуулах, үсгийн хэмжээ, бүдүүн нь дээр сонгосон KOT төрлийн тэр талбарт үйлчилнэ. Төрөл бүр өөрийн хэмжээ, бүдүүнг хадгална.
+kot_format_fields	Талбарууд
+kot_field_next	Дараагийн талбар
+kot_field_show	Харуулах
+kot_field_hide	Нуух
+kot_field_on	харуулах
+kot_field_off	нуух
+kot_field_size	Үсгийн хэмжээ
+kot_field_size_ph	ж. 16, 20, 24, 28, 32…
+kot_weight_light	Нарийн
+bill_kot_panel_help	Тооцоо ба гал тогооны хуудасны байрлал, тус бүр өөрийн агуулгын өргөнтэй. Тооцооны кассчин нь тооцоог гаргасан эсвэл хаасан хүн; KOT зөөгч нь тэр гал тогооны хуудсыг илгээсэн хүн — захиалгын бүтэн түүх номд үлдэнэ.
+std_size_ph	ж. 18, 20, 26…
+kot_show_shop	Дэлгүүрийн нэр
+kot_hide_shop	Дэлгүүрийг нуух
+kot_show_time	Цаг
+kot_hide_time	Цагийг нуух
+kot_show_waiter	Зөөгч
+kot_hide_waiter	Зөөгчийг нуух
+kot_show_station	Станц
+kot_hide_station	Станцыг нуух
+kot_show_table	Ширээ
+kot_hide_table	Ширээг нуух
+kot_show_kot_no	KOT №
+kot_hide_kot_no	KOT № нуух
+kot_width	Урьдчилан харах мөр хугарал (агуулгын өргөнийг KOT таб дээр тохируулна)
+kot_width_58	58 mm
+kot_width_80	80 mm
+kot_kind_heading	KOT төрөл
+kot_kind_original	Эх хувь
+kot_kind_duplicate	Хуулбар
+kot_kind_modified	Өөрчлөгдсөн
+kot_kind_cancelled	Цуцлагдсан
+kot_style_heading	Талбарын хэмжээ ба бүдүүн
+kot_style_title	Гарчиг
+kot_style_item_qty	Бараа · Тоо
+kot_style_field_pick	Талбар сонгох
+kot_weight_regular	Энгийн
+kot_weight_bold	Бүдүүн
+kot_align	Зэрэгцүүлэх
+kot_align_start	Эхлэл
+kot_align_center	Төв
+kot_align_end	Төгсгөл
+content_width	Агуулгын өргөн (mm)
+content_width_bill	Тооцооны агуулгын өргөн (mm)
+content_width_kot	KOT агуулгын өргөн (mm)
+content_width_ph	Эсвэл агуулгын өргөн бичнэ, 40–210 mm
+content_width_help	Энэ хуудас хэр өргөн хэвлэгдэх вэ. Тооцоо ба KOT тус бүр өөрийн өргөнийг хадгална.
+content_width_bill_help	Зочны тооцоо хэр өргөн хэвлэгдэх вэ. Анхдагч 210 mm (хуудас). 58 mm нарийн хуудас, 80 mm өргөн хуудас, 112 mm 4 инч, 210 mm A4 өргөн. 40-оос 210 хүртэл дурын утга бичнэ. Гал тогооны хуудас өөрийн өргөнтэй, KOT таб дээр.
+content_width_kot_help	Гал тогооны хуудас хэр өргөн хэвлэгдэх вэ. Анхдагч 80 mm. 58 mm нарийн, 80 mm өргөн, 112 mm 4 инч, 210 mm хуудас. 40-оос 210 хүртэл бичнэ. Зочны тооцоо өөрийн өргөнтэй, Тооцоо таб дээр.
+vp_paper_width	Агуулгын өргөн (mm)
+vp_paper_width_ph	Эсвэл агуулгын өргөн бичнэ, 40–210 mm
+vp_paper_width_help	Агуулгын өргөн Тооцоо ба KOT хэлбэр дор тохируулагдана — тооцоонд тусад нь (анхдагч 210 mm), гал тогооны хуудсанд (анхдагч 80 mm).
+kot_size	Үсгийн хэмжээ
+kot_size_s	Жижиг
+kot_size_m	Хэвийн
+kot_size_l	Том
+std_size	Үсгийн хэмжээ
+kot_copies	Хуулбар
+kot_copies_1	1
+kot_copies_2	2
+kot_copies_3	3
+kot_title_ph	Гарчиг (хоосон = KOT - KITCHEN ORDER)
+kot_footer_ph	Гал тогооны тэмдэглэл (заавал биш, үнэгүй)
+kot_preview	Урьдчилан харах
+save_kot_format	KOT хэлбэрийг хадгалах
+test_kot_format	Туршилтын KOT
+test_kot_sent	Гал тогооны хуудасны урьдчилсан харагдац илгээгдлээ
+test_bill_format	Туршилтын тооцоо
+test_bill_sent	Тооцооны урьдчилсан харагдац илгээгдлээ
+test_print_no_printer	Тэр ажилд принтер алга — энэ дэлгэц дээр нэгийг сонгоно
+kot_format_saved	KOT хэлбэр хадгалагдлаа
+std_print	Тооцоо хэвлэх хэмжээ
+std_print_help	ОС / баримт принтер дээрх стандарт босоо ба хэвтээ тооцооны ажлын үсгийн хэмжээ (цэг оруулна — Жижиг/Хэвийн/Том биш). Хоёр чиглэлд ижил хэмжээ. Гал тогооны хуудасны хэмжээ KOT таб дээр.
+std_size_s	Жижиг
+std_size_m	Хэвийн
+std_size_l	Том
+save_std_print	Тооцоо хэвлэх хэмжээг хадгалах
+std_print_saved	Тооцоо хэвлэх хэмжээ хадгалагдлаа
+print_brand_kit	Хэвлэх брэндийн багц
+print_brand_kit_help	Тооцооны нүүр ба LAN зочны дэлгэц дээрх тамга ба төлбөрийн QR зураг (заавал биш). Дээрх VPA-аас динамик UPI QR төлбөрийн QR зураг байхгүй үед ч ажиллана.
+choose_stamp	Тамга сонгох
+clear_stamp	Тамгыг цэвэрлэх
+stamp_set	Тамга: файлд — зочны дэлгэц дээр харагдаж, хэвлэсэн тооцоонд нэрлэгдэнэ
+stamp_none	Тамга: алга
+choose_payment_qr	Төлбөрийн QR сонгох
+clear_payment_qr	Төлбөрийн QR цэвэрлэх
+payment_qr_set	Төлбөрийн QR: файлд — зочны дэлгэц дээр харагдана (тэндхийн дүнгийн UPI QR-г орлоно)
+payment_qr_none	Төлбөрийн QR: алга — төлөхөд UPI ID-аас дүнгийн QR
+aggregator_import	Агрегаторын захиалга (файл)
+aggregator_import_help	Заавал биш орон нутгийн импорт: import_aggregator_orders.json файлыг нөөц хавтсанд тавина (массив эсвэл {"orders":[…]}), дараа нь Импорт дээр товшино. Кассыг хэзээ ч хаахгүй; шууд Zomato/Swiggy нь Cloud.
+import_aggregator_file	Агрегаторын файл импортлох
+team_pick_ph	Засах ажилтан — нэр, хэрэглэгчийн нэр эсвэл сонголт
+select_staff	Энэ ажилтныг сонгох
+rights_help	Энэ хүний мөнгө ба танхимын үйлдэл — солихын тулд товшино: Зөвшөөрсөн → Дарга PIN хэрэгтэй → Зөвшөөрөгдөөгүй. Тооцоог дахин хэвлэх нь зөвхөн тооцоонд; гал тогооны станц доорх жагсаалт.
+dish_picker_help	Манай хоолыг хайх эсвэл үзээд нэр, зургийг бөглөхийн тулд нэгийг товшино — эсвэл өөрийн нэрээ үлдээнэ. Үнээ тохируулна (0 болно), дараа нь Бараа нэмэх.
+close_dish_list	Хоолны жагсаалтыг хаах
+own_item_name	Үүнийг өөрийн барааны нэр болгох
+on_your_menu	Таны цэсэд
+edit	Засах
+schemes	Схем / санал
+schemes_help	BOGO, хувийн хөнгөлөлт ба тогтмол комбо. Комбо KOT илгээхэд гал тогооны мөр болж дэлгэгдэнэ; бүрэлдэхүүн комбо ажиллах хүртэл баригдана. Жишээ: 2 Thali авч 1 Chaas ав
+scheme_bogo_ph	2 Thali авч 1 Chaas ав
+add_scheme	BOGO нэмэх
+schedule_ph	Цаг / азтай цаг — Да-Ба 07:00-11:00 эсвэл HappyHour 17:00-19:00=150
+upi_vpa_ph	UPI танигч (VPA)
+upi_payee_ph	UPI хүлээн авагчийн нэр (заавал биш)
+upi_qr	UPI QR
+show_upi_qr	UPI QR харуулах
+close_upi_qr	Хаах
+upi_qr_help	Зочин уншиж төлдөг. Төлсний дараа Төлбөр авах дээр товшино. Хоёр дахь дэлгэц: LAN дээр Серверийн URL /display нээнэ.
+kot_recall	Буцаах
+recently_done	Саяхан дууссан
+recall_kot_ph	Буцаах KOT #
+role_help_customer	Үүрэг: Харилцагч — данс (тэд бидэнд өртэй). Мөн тал нөөц нийлүүлж болно.
+role_help_both	Үүрэг: Харилцагч + Нийлүүлэгч — нэг тал, данс ба өглөгийн дэвтэр, цэвэр нь Тайланд.
+role_help_supplier	Үүрэг: Нийлүүлэгч — худалдан авалтын төлөө тэдэнд өртэй.
+dine_in_pick_table	Сууж идэх — Танхимаас ширээ сонгоно
+choose_table	Ширээ сонгох
+change_table	Ширээг солих
+pick_table_banner	Энэ захиалгад ширээ сонгоно
+items_word	бараа
+items_section	Бараа
+back_to_order	Захиалга руу буцах
+new_items_head	Хараахан илгээгээгүй
+price_ph	Үнэ
+price_ph_gst_inside	Үнэ ({tax} багтсан)
+cancel_needs_table	Гал тогоо авсны дараа цуцлахын тулд энэ захиалгыг Танхимаас (ширээ) нээнэ — кассын KOT төлбөр автлаа хуудсан дээр үлдэнэ
+tax_rates_missing_hint	Эдгээр хоолонд {tax} хувь алга — Цэсэд Татварын хувь тохируулна (үнэ {tax} багтсан хэсэгт {tax} аль хэдийн орсон)
+taxable_value	Татвар ногдох дүн
+gst_inside_price_note	({tax} багтсан)
+start_with_template	Манай цэсийн загвараар эхлэх
+template_heading	Манай цэсийн загвар
+template_info	{c} ангилал ба {d} хоол зурагтай, нэмэхэд бэлэн. Үнэ ₹0-оос эхэлнэ — дараа нь өөрийнхийг тохируулна.
+template_import	Бүтэн загвар импортлох
+template_confirm	{d} хоолыг ангилалтай нь нэмэх үү? Байгаа хоол хэвээр үлдэнэ.
+template_yes	Тийм, импортлох
+template_importing	Цэс импортлож байна…
+template_import_progress	Импортлож байна… {d}/{t}
+template_done	Манай загварын хоол бүр таны цэсэд байна.
+template_imported	{d} хоол ба {c} ангилал нэмэгдлээ — үнийг энэ дэлгэц дээр тохируулна
+client_template_heading	Харилцагчийн цэс
+client_template_info	{title}: {c} ангилал, {d} хоол үнэ, зураг, өөр нэртэй. Зөвхөн дутуу хоол — байгаа нэр үлдэнэ.
+client_template_import	Энэ цэсийг импортлох
+client_template_confirm	{title}-аас {d} хоол нэмэх үү? Байгаа хоол хэвээр үлдэнэ.
+client_template_importing	{title} импортлож байна…
+client_template_done	{title}-ийн хоол бүр таны цэсэд байна.
+client_template_imported	{title}-аас {d} хоол ба {c} ангилал нэмэгдлээ
+resv_heading	Захиалга
+resv_name_ph	Зочны нэр
+resv_phone_ph	Утас (заавал биш)
+resv_guests_ph	Зочид
+resv_when_ph	Хэзээ — 20:30, маргааш 13:00
+resv_table_ph	Ширээ (заавал биш)
+resv_add	Захиалах
+resv_seat	Суулгасан
+resv_none	Удахгүй захиалга алга.
+guests_word	зочин
+delivery_by_ph	Хүргэлт (жолооч эсвэл ажилтны нэр)
+kitchen_all_day	Одоо хооллох: {items}
+kitchen_all_day_head	Одоо хооллох
+kitchen_tab_live	Шууд
+kitchen_tab_recall	Буцаах
+kitchen_tab_stations	Станцууд
+split_bill	Тооцоог хуваах
+split_go	Тусдаа тооцоо гаргах
+cancel	Цуцлах
+opening_client	Клиент нээгдэж байна…
+preparing_desk	Ширээ бэлтгэж байна…
+opening_server	Сервер нээгдэж байна…
+creating_server	Сервер үүсгэж байна…
+split_help	Нэг зочин төлөх хоолыг товшино · {n} сонгосон
+split_send_first	Эхлээд KOT илгээнэ — тусдаа тооцоонд зөвхөн гал тогоонд байгаа хоол орно
+split_pick_some	Эхлээд тусдаа тооцооны хоолыг товшино
+split_done	Тусдаа тооцоо гарлаа — танхимд энэ ширээний хажууд
+split_marked	тусдаа тооцоо
+order_empty_pick	Захиалга хоосон — хоол сонгохын тулд дээрх Хоол нэмэх дээр товшино.
+add_dishes	Хоол нэмэх
+order_so_far	Энэ захиалгад: {n} · {total}
+no_dish_match	„{q}“-д тохирох хоол алга
+pick_dishes_help	Нэмэхийн тулд хоол товшино · жагсаалтыг нарийсгахын тулд ангилал сонгоно
+pick_done	Дууссан
+pick_done_dd	Дууссан · {label}
+printer_route_mode	Энэ газар дээр хэд хэдэн принтер байвал
+printer_mode_first	Эхний ажилладаг нь
+printer_mode_all	Бүгдэд хэвлэх
+kot_show_area	Бүс
+kot_hide_area	Бүсийг нуух
+kot_show_item_hdr	Бараа · Тоо
+kot_hide_item_hdr	Баганыг нуух
+kot_show_title	Гарчгийн мөр
+kot_hide_title	Гарчгийг нуух
+kot_field_order	Хэвлэх дараалал
+kot_field_up	Дээш зөөх
+kot_field_down	Доош зөөх
+kot_field_cycle	Дараагийг сонгох
+kot_field_select	Дараагийг сонгох
+kot_field_time	Цаг
+kot_field_kot_no	KOT №
+kot_field_area	Бүс
+kot_field_table	Ширээ
+kot_field_shop	Дэлгүүрийн нэр
+kot_field_waiter	Ажилтан
+kot_field_station	Станц
+app_template_blurb_extra	Мөн: Эзэмшигч Zahir, Админ Asif, Зөөгч Nawaz; FOH хажуу самбар; 4 цагийн дараах түүх; Өнөөдөр зурвас унтраалттай; нягт KOT.
+dishes_n	{n} хоол
+recipe_ph	Жор (заавал биш) — нэг порц хэрэглэнэ: Будаа=0.2, Панир=0.15
+reorder_ph	Дахин авах
+set_reorder	Дахин захиалах түвшин тохируулах
+low_stock_alert	Дуусаж байна — удахгүй аваарай: {items}
+unpriced_note	Цэс дэх {n} хоолд үнэ алга — тохируулах хүртэл тооцоо 0.
+show_unpriced	Зөвхөн үнэгүй хоолыг харуулах
+show_all_dishes	Бүх хоолыг харуулах
+role_waiter	Зөөгч
+role_kitchen	Гал тогоо
+role_title_rest_ph	Албан тушаал (ж. Ахлагч, Тэргүүн тогооч)
+preset_help_rest	Зөөгч: захиалга авч ширээ хөтөлнө. Кассчин: төлбөр ч авна. Гал тогоо: гал тогооны дэлгэц. Менежер: цэс, цуцлалт, хөнгөлөлт ч.
+kind_raw	Түүхий эд
+kind_resale	Худалдаж аваад дахин зарсан
+kind_dish	Бидний хийдэг хоол
+buy_unit_ph	Нэгж (kg, литр, ширхэг)
+add_another_way	+ Өөр арга нэмэх
+parts_status	Оруулсан {a} / {b} · {c} үлдсэн
+save_expense	Зардлыг хадгалах
+rest_ph	Үлдэгдэл
+low_badge	Бага
+stock_empty	Нөөц одоогоор алга — Худалдан авалтад бичсэн зүйл энд гарна.
+recent_changes	Сүүлийн өөрчлөлт
+lane_declared_label	Татварын нэхэмжлэл
+lane_owner_label	Бэлэн тэмдэглэл
+money_lane_bill	Тооцоо: {lane}

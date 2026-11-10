@@ -1,0 +1,1351 @@
+# Bulgarian — Български (bg). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	Поръчки в ресторант, кухня и книги. Безплатно офлайн.
+unlock	Отключи
+pin_hint	PIN на собственика започва с 0000
+sell	Поръчка
+buy	Покупка
+books	Дневник
+books_help	Позиция за днес. Поръчка = приети поръчки. Покупка = покупки и разходи. Контрагенти = клиенти на кредит и доставчици.
+buy_help	Разходни ордери и фактури от доставчици (пари навън). На сметка остава в книгата на контрагента.
+sell_money_in	Приеми поръчка
+buy_money_out	Разход / фактура от доставчик
+record_purchase	Запиши покупка
+add_expense	Разходен ордер
+bank_book	Банкова книга
+credit_help	Идентификаторът на контрагента е уникален (имената може да се повтарят). Клиент води кредитна сметка (дължи ни); Доставчик ни продава стока (ние дължим); и двете е наред. Книгите остават отделни; отчетите показват нето.
+party_kind_ph	Роли: Клиент, Доставчик, и двете…
+reports_help	Дневник, длъжници и кредитори, банкова книга, разходни ордери, печалба и загуба.
+reports_today	Дневник (днес)
+reports_month	Печалба и загуба (месец)
+reports_aging	Неплатено / Дт-Кт
+reports_balance_sheet	Баланс
+reports	Банкова книга и П&З
+refresh	Обнови
+undo	Отмени
+start_tracking	Започни следене
+stock_minus	− Наличност
+stock_plus	+ Наличност
+settle_cash	Приключи в брой
+settle_card	Приключи с карта
+items	Меню и артикули
+nav_items	Меню
+more	Още
+your_items	Вашето меню
+items_help	Докоснете артикул, за да го редактирате. Нов артикул изчиства формуляра. Потърсете нашите ястия или въведете свое име и снимка, задайте цена (0 е наред), после Добави. Вече записаните продажби пазят името, с което са таксувани.
+add_item	Добави артикул
+new_item	Нов артикул
+adding_item	Добавяне на нов артикул
+editing_item	Редактиране
+save	Запази
+remove	Премахни
+removed_items	Премахнати артикули
+removed_help	Възстановяването връща артикула в менюто точно както е бил — цена, снимка и категория. Нашата лавица с ястия никога не се премахва, затова ястие винаги може да се добави отново.
+restore_item	Възстанови
+empty_catalog	Още няма ястия. Отворете Меню, добавете ястие (име + цена), после приемете поръчка.
+total	Общо
+cash	В брой
+upi	UPI
+card	Карта
+credit	Контрагенти
+clear	Изчисти
+ready_to_sell	Готово за запис
+today_prefix	Днес
+today_mid	днес
+owed	неплатено
+round_word	закръгляне
+back	Назад
+sold_out	Няма налично
+restock	Зареди отново
+not_tracked	Не се следи
+in_stock	налично
+marked_sold_out	Отбелязано като няма налично
+add_upper	ДОБАВИ
+na	н/п
+qty	Тегло/Кол.
+unit_at	Цена @
+actual	Действително
+applied	Приложено
+note_ph	Бележка (по избор)
+rounded	ЗАКРЪГЛЕНО
+split	Раздели
+send_kot	Изпрати KOT
+send_kot_to	Изпрати → {kitchens}
+send_kot_again	Добави ястия за следващ KOT
+send_kot_held	Задържани ястия — махнете задържането, за да изпратите
+reprint_kot	Отпечатай избраните отново
+reprint_kot_ok	Отпечатани отново {n} ястия · {slips} фиша → {kitchens}
+reprint_kot_needed	Първо изпратете KOT — после включете ястия и отпечатайте избраните отново
+reprint_kot_none_selected	Всяко изпратено ястие е пропуснато — докоснете В печат за тези за повторен печат
+reprint_kot_client	Повторен печат ({n}) за {place} е изпратен — кухнята печата на Сървъра
+print_cancelled_kot	Печат на всички отказани
+print_cancelled_kot_ok	Отпечатани {n} отказани ястия · {slips} фиша → {kitchens}
+print_cancelled_kot_needed	Първо отворете маса с отказани ястия
+print_cancelled_kot_none	Няма отказани ястия в тази поръчка
+print_cancelled_kot_client	Печат на отказани ({n}) за {place} е изпратен — кухнята печата на Сървъра
+kot_banner	Лента за вид
+kot_banner_ph	Лента (празно = няма)
+kot_item_prefix	Префикс на артикул
+kot_item_prefix_ph	напр. [ОТКАЗАНО]
+kot_strike	Зачеркни името на ястието
+kot_strike_note	Зачеркни бележката към ястието
+kot_strike_on	Вкл.
+kot_strike_off	Изкл.
+bill_item_layout	Подредба на артикули
+bill_item_layout_columns	Колони
+bill_item_layout_stacked	На редове
+bill_item_header	Заглавия на колони
+bill_item_hdr_item	Заглавие Артикул
+bill_item_hdr_qty	Заглавие Кол.
+bill_item_hdr_price	Заглавие Цена
+bill_item_hdr_amount	Заглавие Сума
+bill_item_name	Име на ястие
+bill_item_qty	Кол.
+bill_item_price	Цена
+bill_item_amount	Сума
+bill_item_note	Бележка към ястие
+bill_item_col_gap	Разстояние между колони
+bill_item_col_order	Ред на колони
+bill_item_col_sep	Линии на колони
+bill_item_gap_tight	Плътно
+bill_item_gap_comfort	Удобно
+bill_item_gap_wide	Широко
+bill_item_num_width	Числови колони
+bill_item_num_compact	Компактно
+bill_item_num_comfort	Удобно
+bill_item_num_wide	Широко
+bill_item_num_align	Подравняване на числа
+bill_item_gap_em	Разстояние (em)
+bill_item_qty_min	Мин. кол. (em)
+bill_item_price_min	Мин. цена (em)
+bill_item_amount_min	Мин. сума (em)
+kot_item_qty_width	Колона Кол.
+kot_item_num_align	Подравняване на кол.
+bill_total_qty_label	Етикет Общо кол.
+bill_total_subtotal_label	Етикет Междинна сума
+bill_total_grand_label	Етикет Крайна сума
+bill_total_paid_label	Етикет Платено
+bill_meta_pair	Сподели ред с
+bill_pair_alone	Само
+bill_item_piece_on	Вкл.
+bill_item_piece_off	Изкл.
+bill_total_qty	Общо кол.
+bill_total_subtotal	Междинна сума
+bill_total_grand	Крайна сума
+reprint_incl	В печат
+reprint_skip	Пропусни
+reprint_skip_meta	Пропусни повторния печат
+kot_dest_hint	Печата се на принтерите, зададени за {kitchens} в Настройки → Принтери
+kot_sent_hint	Последният KOT отиде към {kitchens}. Докоснете, за да добавите ястия за следващия фиш — или отпечатайте същия KOT отново.
+kot_sent_printing	KOT е изпратен към {kitchens} — печата се
+kot_sent_not_printed	KOT е изпратен към {kitchens}, но НЕ е отпечатан: {why}. Кажете на кухнята, после оправете принтера и го отпечатайте отново.
+kot_sent_screen	KOT е изпратен към {kitchens}
+kot_queued_shop	KOT за {place} → {kitchens} е записан; устройството на заведението го печата
+kot_job_label	KOT за {place} → {kitchens}
+kot_job_reached	KOT за {place} стигна до {kitchens}
+kot_unassigned	Кухня (без станция)
+kot_unassigned_held	Задържани {n} ястия без станция — махнете задържането на реда, за да изпратите
+kot_station_ph	Кухня
+kot_station_dd	Кухня
+kot_station_dd_n	Кухня · {stations}
+kot_set_station	Ползвай тази станция
+kot_station_applied	Станция зададена на {n} ястия: {station}
+kot_station_cleared	Станцията е махната от {n} ястия: {station}
+kot_station_needed	Първо изберете кухненска станция
+kot_station_not_allowed	Няма право за кухня: {station}
+kot_station_none	Още няма кухненски станции — добавете под Кухня или Настройки → Зони · станции
+pos_tab_items	Добавени артикули
+pos_tab_payment	Плащане
+hold_send	Задръж
+hold_send_on	Задържано
+hold_send_meta	Задържано — не в този KOT
+station_remove	Премахни станция
+station_remove_ph	Докоснете станция в списъка, за да я премахнете
+station_removed	Станцията е премахната: {name}
+settings_hub_title	Настройки
+settings_hub_help	Отваряйте по една област — по-малко превъртане, по-ясни избори.
+settings_back	Назад
+settings_sec_language	Език и валута
+settings_sec_country	Държава и данък
+settings_sec_tills	Други устройства
+settings_sec_brand	Вашата марка
+settings_sec_units	Единици и преобразувания
+settings_sec_pickers	Зони · станции · данъчни ставки
+settings_sec_printers	Принтери
+settings_sec_bill	Формат на сметка и KOT
+settings_sec_selling	Схеми и продажби
+bill_kot_tab_bill	Сметка
+bill_kot_tab_kot	KOT
+settings_sec_alerts	Известия
+alerts_help	Колко дълго съобщенията за състояние остават на екрана за вас (това влизане).
+snack_secs_ph	Секунди (3–60, по подразбиране 10)
+snack_secs_save	Запази времето за известие
+snack_secs_saved	Времето за известие е запазено — {n} секунди
+settings_sec_backup	Резервно копие и възстановяване
+settings_sec_diag	Диагностика
+diag_privacy_help	Дневниците остават на това устройство. Тайни (PIN, пароли) никога не се записват. Споделянето на пакет извън устройството всеки път иска вашето изрично одобрение — никога не се продава и не се дава на трети страни.
+diag_level	Ниво на подробност
+diag_level_error	Грешки
+diag_level_warn	Предупреждения
+diag_level_info	Инфо
+diag_level_debug	Отладка
+diag_support_start	Започни 30-мин сесия за поддръжка
+diag_support_stop	Край на сесията за поддръжка
+diag_support_started	Сесията за поддръжка е включена — подробности Отладка за 30 минути
+diag_support_ended	Сесията за поддръжка приключи
+diag_export_local	Експорт на локално копие
+diag_export_local_done	Локалната диагностика е готова в {path} — изберете къде да запазите копие
+diag_approve_send	Одобри споделяне извън устройството
+diag_send_help	Одобрението е за един пакет, после изтича. Временно — само за поправка или подобрение на продукта. Не се споделя с трети страни. Работи на Linux, Windows, macOS и Android.
+diag_send_approved	Споделянето е одобрено за един пакет (изтича скоро)
+diag_export_send	Създай пакет за споделяне (трябва одобрение)
+diag_export_send_done	Пакетът за споделяне е готов в {path} — изберете къде да го запазите, после го пратете само на поддръжката на Kumkaj
+diag_save_bundle	Запази копие на диагностиката
+diag_bundle_saved	Копието на диагностиката е запазено в {path}
+diag_bundle_failed	Копието на диагностиката не можа да се запази там — опитайте отново
+diag_clear	Изчисти диагностичните дневници
+diag_cleared	Диагностичните дневници са изчистени
+sidebar_settings	Странична лента
+sidebar_settings_help	Същите икони като страничната релса. Плъзнете ред, за да пренаредите. Превключете, за да покажете или скриете. Настройки и Заключване винаги остават на лентата.
+sidebar_always_on_short	Винаги вкл.
+sidebar_back_settings	Назад
+sidebar_shown	Показано
+sidebar_hidden	Скрито
+sidebar_always_on	Винаги на лентата
+sidebar_shown_hint	Показано на страничната релса / долните раздели
+sidebar_hidden_hint	Скрито от лентата
+sidebar_menu_items	Меню и артикули
+sidebar_enable_all	Включи всички
+sidebar_disable_all	Изключи всички
+sidebar_order_saved	Редът на лентата е запазен
+sidebar_visibility_saved	Видимостта на лентата е запазена
+amounts_hide	Скрий
+amounts_show	Покажи
+printers_none_hint	Първо запазете принтер на това устройство, после го добавете към Сметка или кухня
+counter	Тезегях
+dine_in	На място
+takeaway	За вкъщи
+order	Поръчка
+tables	Маси
+kitchen	Кухня
+sales	Продажби
+sales_refunds	Продажби и възстановявания
+day_close	Приключване на деня
+reports_expenses	Банкова книга и П&З
+nav_reports	Отчети
+nav_settings	Настройки
+nav_lock	Заключи
+no_sale_yet	Още няма продажба
+favorites	Любими
+favorites_help	Артикули, които продавате често, запазени за вашето влизане. Добавете към сметката или съставете списъка от всички артикули по-долу.
+your_favorites	Вашите любими
+all_items	Всички артикули
+frequent	Чести
+added_items	Добавени артикули
+added_items_empty	Още няма нищо в тази поръчка — добавете ястие от Всички артикули или от категория.
+frequent_config_help	Най-продаваните ястия от приключени сметки. Задайте колко дни да се гледат и колко ястия да се показват.
+frequent_days_ph	Дни (1)
+frequent_limit_ph	Артикули (24)
+frequent_apply	Приложи
+frequent_saved	Чести: последните {d} дни, топ {n} — {c} ястия
+frequent_empty	Още няма приключени продажби за този период — приключете сметка (₹0 е позволено, ако Настройки го казват) и ще се появят тук.
+zero_sales	Продажби с нулева стойност
+zero_sales_help	Позволява ястия с цена ₹0 и сметки, приключени на ₹0 (комплимент / желание на собственика). Включено по подразбиране, за да безплатните покрития пак се виждат в Чести и дневниците.
+zero_sales_on	Позволи ₹0
+zero_sales_off	Изисквай цена
+zero_sales_saved_on	Продажбите с нулева стойност са позволени
+zero_sales_saved_off	Продажбите трябва да имат цена над ₹0
+floor_areas_help	Зоните са зали или части на залата (На място, За вкъщи, Климатик …). Първо добавете зона, после сложете маси в нея — всяка зона е отделна група на залата.
+area_new_ph	Нова зона / зала (напр. Климатик, Градина)
+add_area	Добави зона
+area_added	Зона „{name}“ е готова — добавете маси в нея
+no_favorites	Още няма любими — добавете артикули от списъка по-долу.
+add_to_bill	Добави към сметката
+added	Добавено
+owes_word	дължи
+selected_word	Избрано
+chip_clear_credit	изчисти — Кредит или вземи аванс
+chip_missing_customer	Избраният клиент липсва — изберете отново
+chip_no_customer	Още няма клиент — въведете име, после докоснете Кредит
+credit_summary_fmt	{} клиенти · открит кредит {} · задържани аванси {}
+recent_label	Скорошни:
+kot_new_waiting	НОВО — чака
+kot_preparing	ПРИГОТВЯ СЕ
+kot_ready_serve	ГОТОВО — сервирай
+kot_done_cap	ГОТОВО
+kot_cancelled	ОТКАЗАНО
+kot_start_btn	Започни
+kot_mark_ready	Отбележи готово
+kot_done_btn	Готово
+table_free	Свободна — докоснете, за да започнете поръчка
+start_order	Започни поръчка
+open_bill	Отвори сметка
+collect_payment	Събери плащане
+table_running	В ход
+payment_pending	Чака плащане
+collect_at_counter	събери на тезегяха
+inventory	Склад
+inventory_stock	Склад и наличности
+branches	Клонове
+branches_org	Клонове и организация
+credit_customers	Контрагенти (кредит и доставчици)
+customer_name_ph	Име на контрагент
+new_customer_ph	Ново име на контрагент
+item_name_ph	Име на артикул (напр. Masala Dosa)
+item_price_ph	Цена
+start_template	Продукт
+team	Екип
+team_pins	Екип и PIN
+my_pin_settings	Моят PIN
+settings_hub_help_my_pin	Сменете PIN за отключване на човека, влязъл на това устройство.
+team_self_help	Едно влизане: нов PIN, нова парола или и двете. Оставете поле празно, за да запазите сегашното. Попитайте Собственика, ако ви трябват други екрани или права.
+backup_settings	Резервно копие и настройки
+lock_app	Заключи приложението
+pick	Избери
+select	Избери
+advance	Аванс
+owner	Собственик
+staff	Персонал
+photo	Снимка
+auto	Авто
+prev	Назад
+next	Напред
+ok	OK
+this_shop	Сървър
+extra_till	Клиент
+off	Изкл.
+tables_kitchen	Маси и кухня
+server	Сървър
+client	Клиент
+language_currency	Език и валута
+language	Език
+choose_language	Изберете езика си
+language_setup_hint	Следвайте езика на устройството или изберете сами.
+lang_follow_platform	Език на устройството
+lang_pick_user	Избери език
+lang_platform_now	Езикът на устройството сега
+selected_language	Избрано
+continue	Продължи
+this_device	ТОВА УСТРОЙСТВО
+device_use_q	Как ще се ползва това устройство?
+last_server_mode	Беше Сървър — докоснете, за да продължите
+last_client_mode	Беше Клиент — докоснете, за да продължите
+choose_server	Изберете сървър
+choose_server_hint	Отворете съществуващ сървър или създайте нов за друг бизнес.
+create_new_server	Създай нов сървър
+open_server	Отвори
+new_server_name_ph	Име на новия сървър (по избор)
+server_remove_pin_ph	PIN на собственика за премахване на сървър
+only_owner_remove_server	Само Собственикът може да премахне сървър
+owner_pin_remove_server	Нужен е PIN на собственика, за да се премахне този сървър
+device_setup_help	Сървърът държи книгите тук. Клиентът се свързва със Сървър.
+app_template_heading	Шаблон на приложение Rajdhani
+app_template_blurb	Зарежда менюто Rajdhani; Собственик Zahir (zahir), Админ Asif (asif, PIN 1111), Сервитьор Nawaz (nawaz, PIN 0000); странична лента FOH; историята се изчиства след 4 часа (и Изчисти сега в Резервно копие); лентата Днес е изключена; компактен KOT + стандартни полета за тесни тави. Връстниците в лентата могат да се включат отново в Настройки.
+app_template_apply	Шаблон на приложение Rajdhani
+app_template_skip	Пропусни засега
+app_template_status	Сървърът е готов — приложете шаблона Rajdhani или пропуснете
+app_template_importing	Прилага се {title}…
+currency	Валута
+backup	Резервно копие
+use	Ползвай
+dont_use	Не ползвай
+add_branch	Добави клон
+add_conversion	Добави преобразуване
+add_dishes_items	Добави ястия и артикули
+add_item_plain	Добави артикул
+add_note	Добави бележка
+add_opening_balance	Добави начално салдо
+add_staff	Добави персонал
+add_station	Добави станция
+add_table	Добави маса
+add_unit	Добави единица
+add_use_name	Добави / ползвай това име
+allow_extra_tills	Позволи допълнителни каси
+amend	Поправи
+apply_country_pack	Приложи пакет за държава
+datetime_appearance	Изглед на дата и час
+datetime_appearance_help	Книгите пазят вътре годината първа във формат RFC3339. Това променя само как датите и часовниците изглеждат на сметки, KOT, отчети и екрана.
+datetime_example	Пример сега: {ex}
+date_order	Ред на датата
+date_order_dmy	D/M/Y
+date_order_mdy	M/D/Y
+date_order_ymd	Y-M-D
+time_format	Часовник
+time_format_24h	24 часа
+time_format_12h	12 часа
+attach_bill_photo	Прикачи снимка на сметка
+attach_pdf	Прикачи PDF
+attach_photo	Прикачи снимка
+attachments_last_expense	Прикачени файлове (последен разход)
+bank	Банка
+bank_in	Внос в банка
+bank_out	Теглене от банка
+bank_reconciliation	Съгласуване с банка (отметнете срещу банковото извлечение)
+bank_to_till	Банка → каса
+book_add_dish	Книга — добави ястие / артикул
+book_opening_credit	Книга — начален кредит
+branch_name_sell_ph	Име на клона, от който се продава
+bring_my_book	Донеси моята книга
+business_tax_id_ph	Данъчен номер на бизнеса
+caption_bank	БАНКА
+caption_bills	СМЕТКИ
+caption_outstanding	НЕПЛАТЕНО
+caption_payments_today	ПЛАЩАНИЯ ДНЕС
+caption_today	ДНЕС
+card_amount_ph	Сума с карта
+cash_amount_ph	Сума в брой
+cash_memo	Касов бон
+choose_icon	Избери икона
+choose_logo	Избери лого
+clear_icon	Изчисти иконата
+clear_photo	Изчисти снимката
+copy_day_book_csv	Копирай дневника CSV
+copy_day_close	Копирай приключването на деня
+copy_items_csv	Копирай артикулите CSV
+copy_outstanding_csv	Копирай неплатеното CSV
+copy_parties_csv	Копирай контрагентите CSV
+copy_party_ledger_csv	Копирай книгата на контрагента CSV
+copy_receipt	Копирай бележката
+share_whatsapp	Сподели WhatsApp
+lan_pages_heading	Страници за гости в Wi‑Fi
+lan_pages_help	В Wi‑Fi на заведението страниците за гости работят за табло, номера, експо, киоск, QR на маса и отзиви. Гостите на мобилни данни ще имат нужда от Cloud по-късно. Картов терминал / връзка за плащане е по избор, когато има интернет — никога не спира тезегяха.
+diag_send_heading	Сподели извън устройството
+kot_dest_heading	Кухненска станция
+optional_login_heading	Незадължително влизане
+rights_heading	Права
+ops_panel	Локални операции
+crm_heading	Гости и съобщения
+crm_help	Рожден ден, лоялност, неактивни и топ гости — опашка за SMS или WhatsApp. Ползвайте {name} и {points} в съобщението. Собственикът натиска изпращане; нищо не се праща само.
+crm_queue_sms	На опашка за SMS
+crm_queue_wa	На опашка за WhatsApp
+crm_seg_bday_week	Седмица на рождения ден
+crm_seg_bday_month	Месец на рождения ден
+crm_seg_phone	С телефон
+crm_seg_loyalty	Лоялност
+crm_seg_inactive	Неактивни
+crm_seg_top	Най-харчещи
+birthday_ph	Рожден ден (MM-DD или YYYY-MM-DD)
+crm_message_ph	Честит рожден ден, {name}! Имате {points} точки.
+till_apply_redeem	Приложи към сметката
+till_clear_redeem	Изчисти осребряването
+till_wallet_topup	Зареди портфейла
+till_issue_voucher	Издай ваучер
+till_points_ph	Точки за осребряване
+till_wallet_ph	Сума от портфейла за харчене
+till_voucher_code_ph	Код на ваучер
+till_voucher_amt_ph	Сума на ваучер (празно = цялата)
+till_wallet_topup_ph	Сума за зареждане на портфейла
+till_voucher_issue_amt_ph	Сума на издадения ваучер
+till_voucher_issue_code_ph	Нов код на ваучер
+split_evenly	Раздели поравно
+waitlist	Лист на чакащи
+fire_course	Пусни ястието
+hold_item	Задръж
+waiter_call	Извикай сервитьор
+waitlist_add	Добави в листа на чакащи
+floor_view_grid	Мрежа
+floor_view_layout	Подредба
+floor_layout_x	X
+floor_layout_y	Y
+floor_layout_w	W
+floor_layout_h	H
+floor_layout_save	Запази подредбата
+floor_layout_open	Отвори маса
+floor_layout_edit	Редактирай подредбата
+floor_layout_pick	Докоснете маса, за да редактирате подредбата ѝ
+floor_layout_saved	Подредбата на масите е запазена
+floor_layout_nudge_left	← 20
+floor_layout_nudge_right	→ 20
+floor_layout_nudge_up	↑ 20
+floor_layout_nudge_down	↓ 20
+sibling_pickers_help	Докоснете Вкл./Изкл. като при единиците — скрийте зони, станции и данъчни ставки от ежедневните списъци; подразбиранията на пакета остават.
+bulk_price_apply	Приложи обща цена
+card_terminal_optional	Картов терминал / връзка за плащане (по избор, когато има интернет)
+copy_report	Копирай отчета
+counted_cash_ph	Преброени пари в чекмеджето
+country_tax	Държава и данък
+tax_chrome	Данъчни етикети на касата
+tax_chrome_help	Когато е изключено, касата скрива редовете за оценка на GST/данък и местата за данък в цената. Данъчните ставки и настройките Държава и данък остават — етикетите могат да се включат отново по всяко време. Шаблонът Rajdhani започва с това изключено.
+tax_chrome_on	Покажи
+tax_chrome_off	Скрий
+tax_chrome_saved_on	Данъчните етикети са на касата
+tax_chrome_saved_off	Данъчните етикети са скрити на касата
+tax_invoice_till	Данъчна фактура на касата
+tax_invoice_help	Когато е изключено, сметките са само Касов бон и чиповете Данъчна фактура / Касов бон са скрити на касата. Шаблонът Rajdhani започва с това изключено — включете Покажи по всяко време, за да изберете отново Данъчна фактура.
+tax_invoice_on	Покажи
+tax_invoice_off	Скрий
+tax_invoice_saved_on	Данъчната фактура е на касата
+tax_invoice_saved_off	Данъчната фактура е скрита — само Касов бон
+pay_methods	Начини на плащане
+pay_methods_help	Кои чипове се виждат при Приеми плащане. В брой винаги остава. Шаблонът Rajdhani започва само с В брой — тук включете отново UPI / Карта / Кредит / Раздели.
+create_backup	Създай резервно копие
+credit_limit_heading	Кредитен лимит (избран / наименуван контрагент)
+day_close_summary	Обобщение на приключването
+delete_party	Изтрий избрания контрагент
+delivery	Доставка
+done_open_books	Готово — отвори книгите
+drawer_count	Броене на чекмеджето (по избор)
+expense_heading	Разход
+export_day	Експортирай деня
+extra_note_bill_ph	Допълнителна бележка към тази сметка / продажба
+extra_note_expense_ph	Допълнителна бележка към последния разход
+extra_tills_heading	Допълнителни каси
+other_devices_help_heading	Настрой други устройства
+other_devices_help	На това устройство (Сървър): Други устройства → Позволи допълнителни каси. Запишете кода за свързване и адреса в Wi‑Fi. Докоснете Позволи на други устройства да се свържат, ако се появи. На компютър докоснете Стартирай с този компютър. На всяко друго устройство: инсталирайте приложението, изберете Режим клиент, Намери сървъра на заведението (или въведете адреса), въведете кода за свързване, Свържи сега. Поръчките чакат на устройството, ако Wi‑Fi падне, и тръгват, когато Сървърът отговори отново. Кухненските принтери се задават на Сървъра (Настройки → Принтери) — допълнителните каси пращат KOT там.
+forget_shop	Забрави това заведение
+goods_received	Получена стока
+import_day	Импортирай ден
+import_items_csv_plain	Импортирай артикули CSV…
+import_parties_csv	Импортирай контрагенти CSV…
+item_name	Име на артикул
+kitchen_printing	Принтери
+login_id_ph	Потребителско име
+mark_cleared	Отбележи изчистено
+new_party_clear	Нов контрагент (изчисти формуляра)
+new_party_kind_supplier_ph	Вид на новия контрагент (Доставчик)
+next_country	Следваща държава
+next_order	Следваща поръчка (изчисти тезегяха)
+note_gstin_ph	Бележка / GSTIN / напомняне за договор
+notes_attach_party	Бележки и прикачени файлове (избран контрагент)
+notes_attach_sale	Бележки и прикачени файлове (избрана продажба)
+on_account_ap	На сметка (АП)
+org_optional_ph	Организация (по избор)
+paid_by	Платено от
+paid_now	Платено сега
+pair_now	Свържи сега
+pairing_code_ph	Код за свързване
+party_name_selected_ph	Име на контрагент (или ползвай избрания)
+password_ph	Парола
+pay_ap_card	Плати АП с карта
+pay_ap_cash	Плати АП в брой
+pay_ap_heading	Плати каквото им дължим (АП)
+pay_ap_upi	Плати АП с UPI
+pay_selected_heading	Плати избраното (погаси дълг / вземи аванс)
+pick_from_items	Избери от нашите артикули
+prev_country	Предишна държава
+print_open	Печат / отвори
+reason_amend_ph	Причина за поправка / анулиране / възстановяване
+reason_note_ph	Причина / бележка (фира, броене, …)
+record_day_close	Запиши приключването на деня
+refresh_from_shop	Обнови от заведението
+refund	Възстанови
+remove_selected	Премахни избраното
+request_bill	Поискай сметка
+restaurant_name_ph	Име на ресторанта (по избор)
+restore_backup	Възстанови от резервно копие
+role_both	И двете
+role_admin	Админ
+role_cashier	Касиер
+role_customer	Клиент
+role_manager	Управител
+history_retention	Търговска история
+history_retention_help	Автоматично изчиства стари продажби и KOT. Менюто, персоналът и настройките остават. Изчисти сега изтрива всички търговски редове и пази настройката.
+history_off	Пази
+history_day_close	При приключване на деня
+history_after_hours	След часове
+history_hours_ph	Часове (1–168, по подразбиране 4)
+history_hours_save	Запази часовете
+history_clear_now	Изчисти историята сега
+history_cleared	Търговската история е изчистена — настройката е запазена
+history_retention_saved	Изчистването на историята е запазено
+history_hours_saved	Часовете на историята са запазени
+history_owner_only	Само Собственик или Админ може да изчисти историята
+rollup	Обобщение
+save_brand	Запази марката
+save_business_id	Запази номера на бизнеса
+save_business_name	Запази името на бизнеса
+save_features	Запази
+save_features_named	Запази {name}
+save_features_ok	Настройката за {name} е запазена
+save_names	Запази имената
+second_way	Втори начин
+server_ip_ph	IP на сървъра (напр. 192.168.1.10)
+set_credit_limit	Приложи лимит към контрагента
+set_login_selected	Приложи влизането към избрания
+set_login_named	Приложи влизането към {name}
+shop	Заведение
+show	Покажи
+spreadsheet_csv	Таблица (CSV)
+start_fresh	Започни начисто
+stop_extra_tills	Спри допълнителните каси
+floor_cols_ph	Колони
+floor_cols_fit	Побери екрана
+floor_cols_fit_sub	{n} се побират тук
+floor_cols_fits	се побира
+floor_cols_scroll	превърта настрани
+floor_cols_min	Колони: поне 1 — или го оставете празно, за да побере екрана
+floor_zoom_auto	Авто
+floor_zoom_out	Отдалечи
+floor_zoom_in	Приближи
+backup_auto	Автоматично резервно копие всеки ден · последно {when} · последните 14 дни се пазят в {dir}.
+backup_auto_none	Автоматично резервно копие всеки ден — първото ще тръгне след малко.
+backup_copy_to	Копията отива и в {dir}.
+backup_copy_btn	Копирай резервните копия и в папка…
+autostart_off	Стартирай с този компютър
+autostart_on	Стартира с този компютър ✓ — докоснете, за да спрете
+autostart_done_on	Този компютър вече отваря приложението при стартиране — сървърът на заведението се връща след спиране на тока.
+autostart_done_off	Този компютър вече не отваря приложението при стартиране.
+device_forgotten	Заведението забрави това устройство — свържете го отново с текущия код. Чакащите поръчки на него се пазят.
+lan_offline	Сървърът на заведението е недостъпен
+forget_device	Забрави
+last_seen	видяно
+copy_pair_code	Копирай кода за свързване
+new_pair_code	Нов код за свързване
+pair_finishing	Свързването приключва… прилагат се книгите на заведението
+pair_opening	Отваря се касата…
+pair_copied	Кодът за свързване е копиран
+kot_waiting	Чака изпращане
+lan_offline_waiting	Сървърът е недостъпен · {n} чакат
+lan_connecting	Свързване със заведението…
+lan_live	На живо
+lan_sending	{n} се изпращат
+lan_sign_in_to_send	Влезте отново, за да изпратите {n}
+lan_pair_again	Свържете това устройство отново
+lan_update_app	Обновете приложението — това устройство и сървърът на заведението са с различни версии
+allow_firewall	Позволи на други устройства да се свържат
+firewall_blocked	Защитната стена на компютъра спира други устройства — докоснете Позволи на други устройства да се свържат.
+firewall_waiting	Чака се запитването към администратора…
+lan_join_help	На другото устройство: Режим клиент → Намери сървъра на заведението (или въведи {addr}) → код за свързване {code}.
+lan_pair_status	Wi‑Fi {addr}
+lan_join_help_no_addr	Свържете това устройство с Wi‑Fi, за да има адрес.
+lan_no_address	Още няма Wi‑Fi адрес — свържете се с Wi‑Fi на заведението.
+lan_not_listening	Не приема устройства (порт {port} е зает). Рестартирайте приложението.
+lan_tills_off	Допълнителните каси са изключени. Позволете ги, за да се присъедини друго устройство.
+paired_with	Свързано · {url}
+not_paired	Не е свързано
+choose_device_use	Изберете Сървър или Клиент.
+paired_note	Свързано. Отключете, за да продавате, или Обновете за последното.
+last_update_at	Последно обновяване: {time}.
+pair_intro	Намерете сървъра или въведете адреса и кода за свързване.
+queue_waiting	Чака да стигне до заведението ({n}):
+queue_tries	Опитано {n} пъти · последен отговор: {e}
+save_backup_copy	Запази резервно копие…
+backup_copy_saved	Резервното копие е запазено — дръжте го извън това устройство (USB или друго устройство)
+backup_copy_overdue	От {n} дни резервно копие не е напускало това устройство — Настройки → Резервно копие
+backup_copy_failed	Резервното копие не можа да се запази там — изберете друго място
+clock_off	Часовникът на устройството изостава/избързва с {min} мин спрямо сървъра — задайте точния час
+printers_heading	Принтери
+printers_help	Намерете принтери, докоснете един, за да го изберете, после Печат на пробна страница само на това устройство. Принтери за сметки: Формат на сметка и KOT → Сметка. Кухненски принтери: Кухня → Кухненски станции (първо добавете станция — Търсенето не създава станции).
+printers_host_only	Принтерите се задават на устройството на заведението (Сървър). Тази каса праща сметки и KOT там — Търсене / добавяне / назначаване остават на Сървъра. Пробната страница и размерът на печата отиват към Сървъра.
+printers_find_heading	Намери принтери
+printers_find_tip	Търсенето сканира това устройство и държи списъка актуален.
+printers_pool_heading	Принтери
+printers_pool_tip	Търсенето сканира това устройство и държи този списък актуален.
+printers_pool_empty	(още няма — докоснете Търсене)
+printers_routes_help	Намерете принтерите, които операционната система вече познава. Назначете ги към сметката и към всяка кухня в Формат на сметка и KOT.
+printer_assign_dd	Реален принтер: {place}
+printer_assign_pick	Избери реален принтер
+printer_profile_heading	Подредба
+printer_send_heading	Доставка
+vp_delivery_heading	Доставка
+vp_delivery_help	Как този виртуален принтер праща задачи — документ на ОС, сурови байтове или ESC/POS. Съдържанието на фиша (размер на шрифт, пренасяне, полета) се решава от формата на сметката / KOT, не тук.
+vp_type_size_heading	Размер на шрифта
+vp_wrap_heading	Ширина на пренасяне
+vp_margin_heading	Полета
+vp_delivery_spooler	Документ на ОС (системен спулер)
+vp_delivery_raw	Сурови байтове към устройството
+vp_delivery_escpos	Термични команди ESC/POS
+virtual_printer_new	Нов виртуален принтер
+virtual_printer_selected	Редактиране на „{name}“ — докоснете друг в списъка, за да смените
+virtual_printer_tap_list	Докоснете виртуален принтер в списъка, за да го редактирате
+config_layout_portrait	Портрет
+config_layout_landscape	Пейзаж
+config_send_os	Системен спулер
+config_send_escpos	ESC/POS
+profiles_heading	Подредби
+profiles_empty	(още няма подредби)
+profile_builtin	вградена
+profile_custom	по избор
+profile_name_ph	Име на подредба
+profile_new	Нова подредба
+profile_delete	Изтрий подредбата
+profile_created	Подредбата е създадена
+profile_deleted	Подредбата е изтрита
+profile_builtin_keep	Вградените подредби не могат да се изтрият
+config_saved	Обновено
+config_selected	Избрано „{name}“
+printer_output_heading	Виртуални принтери
+virtual_printers_heading	Виртуални принтери
+virtual_printers_empty	Още няма виртуални принтери — задайте стойностите по-долу, после Запази. Когато имате, докоснете един в списъка, за да го редактирате.
+virtual_printer_name_ph	Име на виртуален принтер (по избор)
+virtual_printer_create	Създай виртуален принтер
+virtual_printer_save	Запази виртуалния принтер
+virtual_printer_delete	Изтрий виртуалния принтер
+virtual_printer_created	Виртуалният принтер „{name}“ е създаден
+virtual_printer_deleted	Изтрит е виртуалният принтер „{name}“
+virtual_printer_updated	Виртуалният принтер е обновен
+virtual_printer_updated_named	Виртуалният принтер „{name}“ е обновен
+virtual_draft_layout	Стойности за следващия виртуален принтер
+virtual_draft_send	Стойност за следващия виртуален принтер
+virtual_need_real	Първо изберете реален принтер
+virtual_need_select	Изберете виртуален принтер за изтриване
+real_printer_selected	Избрано: {name}
+station_group_heading	Виртуални принтери
+station_group_apply	Изтрий виртуалния принтер
+station_group_applied	Изтрито
+station_group_empty	Изберете виртуален принтер
+station_group_name_ph	Име на виртуален принтер (по избор)
+station_group_save	Създай виртуален принтер
+station_group_saved	Виртуалният принтер е запазен
+station_manage_heading	Добави или премахни кухненска станция
+printers_routes_heading	Къде се печата
+route_pick_heading	Място
+route_editing	Редактиране: {name}
+route_assigned	Добавен {printer} към {place}
+route_already_assigned	Вече е на това място: {printer}
+route_removed	Премахнат {printer} от {place}
+route_cleared	Изчистено {name}
+route_assigned_empty	Няма на това място
+route_tap_remove	докоснете за премахване
+route_tap_select	докоснете за избор
+route_tap_selected	избрано
+route_pick_printer_first	Първо докоснете принтер
+route_assigned_heading	Принтери
+route_add_heading	Назначи
+printer_label_ph	Име (напр. Кухня)
+printer_target_ph	Име на системен принтер или host:9100
+printer_target_default	обичайният принтер на този компютър (празен адрес)
+printer_wire_heading	Профил
+printer_wire_escpos	ESC/POS
+printer_wire_os	Портрет
+printer_wire_os_portrait	Портрет
+printer_wire_os_landscape	Пейзаж
+printer_wire_escpos_short	ESC/POS
+printer_wire_os_short	Портрет
+printer_wire_os_landscape_short	Пейзаж
+printer_format_custom	Нов потребителски профил
+printer_format_custom_label	По избор
+printer_format_custom_added	Добавен е потребителски профил за това място
+add_printer	Добави принтер
+remove_printer	Премахни
+route_pick_ph	Сметка или кухненска станция
+route_bill	Сметка
+route_default_kitchen	Без станция (неназначени ястия)
+route_kot_station	Кухня
+route_dont_print	Няма принтер
+stations_heading	Кухненски станции
+stations_help	Добавете кухненски станции за ястия и KOT. На всяка станция закачете принтерите ѝ (намерени в Настройки → Принтери), задайте приоритет и изберете Първият, който работи или Печат на всички. Промените се запазват веднага — няма бутон Запази.
+station_print_heading	Принтери за тази станция
+station_print_help	Изберете станция, после закачете един или повече принтери. ↑↓ задава реда на опит. Първият, който работи спира след първия успех; Печат на всички праща към всеки закачен принтер. Всяка промяна се запазва веднага.
+station_print_pick_ph	Станция за задаване на принтери
+station_print_pick_first	Първо изберете кухненска станция
+station_print_editing	Редактиране на принтери за „{name}“
+station_vps_dd	Принтери за тази станция
+station_vps_dd_n	{n} принтер(а) · докоснете за промяна
+station_vps_empty	Още няма принтери — намерете ги в Настройки → Принтери
+bill_printers_dd	Принтери за сметката
+bill_printers_dd_n	{n} принтер(а) за сметката · докоснете за промяна
+job_layout	Подредба
+job_delivery	Как се изпраща задачата
+job_delivery_help	Документ на ОС, сурови байтове или ESC/POS. Сметката и кухненският фиш пазят всеки своето. Всяка задача може да отиде към всеки принтер, който Търсенето е запазило.
+station_vp_attached	Принтерът е закачен
+station_vp_detached	Принтерът е премахнат от станцията
+station_print_summary	{mode} · {n} принтер(а)
+station_print_summary_none	Още няма принтери на тази станция — няма да печата
+stations_none	Още няма станции — добавете една по-долу. Артикулите от менюто могат да ползват станция, за да се печата KOT там.
+route_up	Нагоре
+route_down	Надолу
+route_remove	Премахни
+route_clear	Изчисти
+save_printers	Запази принтерите
+print_test_page	Печат на пробна страница
+no_printer_assigned	Няма принтер
+test_page_no_printer	Няма принтер за {place} — закачете принтер, после опитайте отново
+test_page_pick_first	Първо изберете принтер(и) за пробна страница — после Печат на пробна страница
+test_printers_dd	Принтери за пробна страница
+test_printers_dd_n	{n} принтер(а) за пробна страница · докоснете за промяна
+kot_test_printers_dd	Принтери за пробен KOT
+kot_test_printers_dd_n	{n} принтер(а) за пробен KOT · докоснете за промяна
+test_printer_picked	Проба на: {name}
+test_printer_cleared	Без проба на: {name}
+test_page_sent_n	Пробна страница е пратена към {n} принтер(а)
+test_kot_pick_first	Първо изберете принтер(и) за пробен KOT — после Пробен KOT
+test_kot_sent_n	Пробен KOT е пратен към {n} принтер(а)
+cancel_pick	Маркирай
+cancel_pick_on	Маркирано
+cancel_pick_meta	Маркирано за отказ
+batch_cancel	Откажи маркираните
+batch_cancel_n	Откажи маркираните ({n})
+batch_cancel_none	Първо маркирайте едно или повече изпратени ястия — после Откажи маркираните
+batch_cancel_title	Отказ на маркирани ястия — една причина, по един фиш за отказ на кухня
+batch_cancel_ok	{n} ястие(я) отказани · {slips} фиш(а) за отказ → {kitchens}
+batch_cancel_ok_noprint	{n} ястие(я) отказани — автоматичният печат на KOT е изключен, затова няма фиш за отказ
+no_printer_kitchen_station	Няма принтер за тази кухненска станция — Кухня → Кухненски станции → Принтери за тази станция
+printers_saved	Запазено
+test_page_sent	Пробната страница е пратена — проверете принтера
+test_page_sent_one	Пробна страница е пратена към {name} — проверете този принтер
+printers_found	Намерени {n}: {list}
+printers_find_synced	Намерени {n} — {new} нови
+printer_on_device	запазен
+printer_already_added	вече е добавен
+printer_already_saved	Вече е запазен: {name}
+find_printers	Намери принтери
+printers_looking	Търсене…
+saving_printer	Добавяне на принтер…
+cancelled	Отказано
+printers_tap_find	Докоснете Търсене, за да видите принтерите, които това устройство може да ползва.
+printers_none_found	Нищо не е намерено — въведете име на системен принтер или IP (напр. 192.168.1.50).
+printer_from_find	Добавен {name}
+kot_printer_ph	Принтер за KOT
+bill_printer_ph	Принтер за сметки
+kot_print_on	Автопечат на кухненски фишове: Вкл.
+kot_print_off	Автопечат на кухненски фишове: Изкл.
+queue_refused	Не е прието от заведението ({n}) — проверете всяко на касата:
+clear_not_accepted	Проверено — изчисти този списък
+device_name_ph	Име на това устройство
+lan_last_update	последно обновяване {time}
+lan_not_accepted	{n} не са приети
+connected_now	свързано сега
+backup_failed	Последното автоматично резервно копие не успя: {e}
+backup_overdue	Няма резервно копие от {n} дни — дръжте приложението отворено на това устройство, за да може да архивира.
+disk_low	Само {mb} MB свободни на това устройство — резервните копия скоро ще се провалят. Освободете място.
+last_seen_devices	Последно видяно: {time}
+sync_interval	Синхрон на всеки {secs} с
+connection_to_shop	Връзка със заведението
+supplier_name_ph	Име на доставчик (или контрагент)
+supplier_ph	Доставчик
+switch_device	Смени това устройство
+take_payment	Приеми плащане
+tax_added_till	{tax} отгоре
+tax_inside_price	{tax} включен
+tax_invoice	Данъчна фактура
+till_to_bank	Каса → банка
+units_heading	Мерни единици
+unlock_after_pairing	Въведете PIN
+unlock_with_login	Отключи с вход
+unmark	Махни маркировката
+update_my_password	Обнови паролата ми
+update_my_pin	Обнови входа ми
+duress_heading	Авариен PIN за отключване (само Собственик)
+duress_help	По избор. Ако при отключване се въведе този PIN вместо вашия, всички записи в книгите се изтриват (продажби, дневници, история) и касата се отваря като Собственик, изглеждайки нормално — меню, цени, маси, персонал и настройки остават. Схемата и конфигурацията не се изтриват. Ползвайте само ако сте принудени да отключите. Оставете празно и запазете, за да изключите. Никога същият като нечий PIN.
+duress_pin_ph	Авариен PIN (4–12 цифри)
+duress_confirm_ph	Въведете отново за потвърждение
+save_duress_pin	Запази аварийния PIN
+clear_duress_pin	Изключи аварийния PIN
+duress_on	Аварийният PIN за отключване е включен
+duress_off	Аварийният PIN за отключване е изключен
+duress_saved	Аварийният PIN за отключване е запазен
+duress_cleared	Аварийният PIN за отключване е изключен
+upi_amount_ph	Сума UPI
+void	Анулирай
+write_off_ap	Отпиши AP
+write_off_heading	Отписване (изчистване без плащане)
+write_off_nil	Отписване / нулево салдо
+your_brand	Вашата марка (в приложението)
+your_categories	Вашите категории
+account_kind	Вид сметка (докоснете един)
+actual_total_cap	РЕАЛЕН ОБЩО
+amend_help	Изберете продажба за корекция, анулиране или възстановяване. Корекциите пазят пълната история. Закръгленият Общо започва равен на Приложен — редактирайте само за закръгляне. Анулирането и възстановяването може да искат PIN на Собственик или Управител (въведен по-горе; записва се с вашето име).
+applied_total_cap	ПРИЛОЖЕН ОБЩО
+bank_balance	Банково салдо
+bank_net_today	Банка нето днес
+branch_export_help	Експортът записва branch_snapshot_CODE_DATE.json в папката за резервни копия и го копира в клипборда. За да внесете деня на друг обект, запазете файла му като import_branch_snapshot.json в същата папка, после докоснете Внасяне.
+brand_shown_help	Показва се на екраните вътре в приложението. Името и иконата на инсталираното приложение на това устройство остават както в списъка на платформата.
+app_icon	Икона на приложението
+logo_help	По избор знак на заведението на екраните в приложението.
+onboard_layout	Какво получавате
+item_photo_help	По избор. Без снимка показваме инициали от името на артикула.
+stamp_heading	Печат
+stamp_image_help	По избор изображение на печат върху отпечатани сметки и дисплея за гости.
+payment_qr_heading	QR за плащане
+payment_qr_image_help	Статичен QR върху сметки и дисплея за гости; иначе плащането ползва динамичен UPI QR от VPA по-горе.
+cash_in_hand	Пари в касата
+change_my_pin_heading	Моят вход
+connect_to_server	Свържи се със Сървъра
+counter_locked	Каса 01 · Заключена
+country_pack_help	Пакетът за държава задава името и сметката на данъка, канала за моментално плащане и фирмения идентификатор върху сметките. Kumkaj не подава данъци и не издава държавни електронни фактури никъде.
+currency_use_help	Превъртете и докоснете Ползвай за всяка поддържана валута.
+day_close_help	Записването на приключване на деня запазва това резюме (и разликата в чекмеджето, ако е преброено) в одитния дневник. То не спира продажбите.
+expenses_word	Разходи
+feature_access_help	Какво могат да отварят — по избор; длъжността по-горе вече задава подразбиране
+footer_local	Локален SQLite · Безплатно завинаги · Без облак
+fresh_book_khaynjo	Fresh = празно меню (ястията се добавят после в Меню). Book = въведете по-долу началните артикули и кой ви дължи.
+fresh_selected	Избрано е Fresh — каталогът остава празен. Докоснете Готово, когато сте готови.
+gross_word	Бруто
+how_start	Как искате да започнете?
+kot_print_help_khaynjo	Когато е Вкл., всяка кухня печата своя KOT веднага щом натиснете Изпрати.
+later_country_pack	После: Настройки → приложете пакета за държавата за етикети на данък и плащане.
+local_badge	ЛОКАЛНО
+mix_type_hint_khaynjo	При нужда разделете между в брой / UPI / карта / кредит. За кредит е нужен клиент по-горе.
+money_in_sales	Пари навътре (продажби)
+net_word	Нето
+offline_badge	ОФЛАЙН
+optional_login_help	По избор вход (ид + парола). Собственикът задава веднъж; само потребителят може после да смени паролата.
+or_unlock_login	Или отключете с ид за вход + парола
+permission_preset	Длъжност (задава екрани и действия с пари)
+preset_help_khaynjo	Касиер: продава. Управител: продава + артикули + анулиране/корекция.
+product_locked_khaynjo	Khaynjo
+product_only_khaynjo	Това приложение е само Khaynjo — операционна система за ресторант. Другите търговски лица се доставят като отделни продукти на Kumkaj.
+purchases_cogs	Покупки (себестойност)
+qty_cap	К-ВО
+restore_help	Възстановяване: изберете резервно копие. Книгите се отварят както са били тогава; книгите както са сега се запазват първо, така че това може да се отмени.
+wipe_data_heading	Изтрий локалните данни
+wipe_data_help	Само Собственик — същите избори като деинсталацията в Windows. Бизнес записите изчистват търговската история, но пазят менюто и настройките (като аварийния PIN). Настройката на заведението премахва базата на книгите. Предпочитанията на екрана изчистват прозорец/език. Потвърдете с PIN на Собственика. Аварийният PIN в Екип е отделен (скрито изтриване при отключване).
+wipe_trading	Бизнес записи
+wipe_schema	Настройка на заведението
+wipe_ui	Предпочитания на екрана
+wipe_owner_pin_ph	PIN на Собственика за изтриване
+wipe_delete_selected	Изтрий избраното
+wipe_owner_only	Само Собственикът може да изтрие локални данни.
+restore_owner_only	Само Собственикът може да възстанови резервно копие.
+wipe_owner_pin_needed	Въведете PIN на Собственика, за да изтриете локални данни.
+wipe_nothing_selected	Първо изберете какво да се изтрие.
+wipe_done	Избраните локални данни са изтрити.
+wipe_schema_done	Настройката на заведението е изтрита — изберете Сървър или Клиент, за да продължите.
+rounded_total	Закръглен общо
+setup_app_khaynjo	Настройте Khaynjo
+shop_logo_optional	Лого на заведението (по избор)
+stock_type_help	Въведете името на артикула (част е достатъчна), количество, после коригирайте. Артикулите, които още не се броят, искат Започни проследяване веднъж.
+team_owner_help	Оставете човека празен, за да добавите някого: име, длъжност, потребителско име, PIN и по избор парола, после Добави. Изберете човек, за да редактирате същия вид формуляр — име, потребителско име, парола, екрани и права — после Запази. Вашият PIN и парола са един вход най-долу. Собственикът не сменя чужд PIN.
+staff_name_ph	Име на персонала
+staff_copy_hire_ph	Копирай настройка от (по избор)
+staff_copy_hire	Ползвай настройката на този човек
+staff_edit_name_ph	Показвано име
+staff_rename	Запази името
+staff_copy_edit_ph	Копирай настройка от друг човек
+staff_copy_edit	Копирай тяхната настройка върху избрания
+staff_copy_edit_onto	Копирай тяхната настройка върху {name}
+staff_deactivate_named	Премахни {name}
+staff_renamed	Името е запазено
+staff_setup_copied_hire	Настройката е копирана от {name} — задайте ново име и PIN, после Добави персонал
+staff_setup_copied_edit	Копирана е настройката на {from} върху {to}
+staff_copy_need_selected	Първо изберете кого да редактирате
+staff_copy_need_source	Изберете чия настройка да се копира
+staff_copy_same	Това е същият човек — изберете друг
+staff_rename_need_selected	Първо изберете кого да преименувате
+team_pick_hint	Изберете кого да редактирате — екрани, права за пари и кухненски станции се появяват само за този човек.
+team_stations_help	Кухненски станции, които могат да ползват
+team_stations_changed	Кухненските станции са променени — Запази настройката за този човек
+team_features_changed	Екраните са променени — Запази настройката за този човек
+team_rights_changed	Правата са променени — Запази настройката за този човек
+they_owe_us	Те ни дължат
+unit_at_cap	Единица @
+units_help	Кодове за етикети на артикули (kg, брой, торба). Всяка единица трябва да се свърже — пряко или през други единици — към стандарт (kg · cm · ml · pc), напр. 1 кашон = 2 кутии и 1 кутия = 20 cm. Превръщания: 1 от = коефициент към. Валутите никога не са единици.
+units_picker_help	Докоснете Вкл/Изкл, за да се показва единица в изборите Купуване и Меню. Изключените единици пак се превръщат.
+unit_picker_on	Вкл
+unit_picker_off	Изкл
+we_owe_them	Ние им дължим
+who_unlocking	Кой отключва?
+locked_word	Заключено
+show_pin	Покажи PIN
+hide_pin	Скрий PIN
+set_owner_pin	ЗАДАЙ PIN НА СОБСТВЕНИКА
+enter_owner_passcode	ВЪВЕДЕТЕ КОДА НА СОБСТВЕНИКА
+enter_staff_passcode	ВЪВЕДЕТЕ КОДА НА ПЕРСОНАЛА
+pin_count_zero	0 / 12 цифри · поне 4, после OK
+pin_count_need	{} / 12 цифри · трябват още {}
+pin_count_full	12 / 12 цифри · натиснете OK
+pin_count_ready	{} / 12 цифри · натиснете OK, когато сте готови
+pin_hint_choose	Изберете 4–12 цифри · Enter или Отключи за запазване
+pin_hint_new	Нов PIN на Собственика от 4–12 цифри · Enter или Отключи
+pin_hint_shop_code	Устройство на заведението · код за свързване {}
+pin_hint_books	Това устройство държи книгите
+pin_hint_paired	Допълнителна каса е свързана — отключете, за да продавате
+pin_hint_pair_first	Допълнителна каса — първо я свържете с устройството на заведението
+unlock_to_continue	Отключете, за да продължите
+no_staff_yet	Още няма персонал — отключете като Собственик, после Екип
+status_server_set_pin	Режим Сървър — задайте PIN на Собственика
+status_server_tills	Режим Сървър — допълнителни каси могат да се присъединят. Отключете
+status_server_unlock	Режим Сървър — отключете като Собственик
+status_client_unlock	Режим Клиент — отключете, за да продавате
+icon_new_selected	Икона: избран е нов файл — докоснете Запази марката
+icon_custom	Икона: собствен знак на заведението
+icon_default	Икона: знак Kumkaj (по подразбиране) — изберете собствен
+logo_yours	Лого: логото на вашето заведение — показва се на екрани и бележки
+logo_default	Лого: знак Kumkaj (по подразбиране) — изберете свое, ако имате
+tmpl_current	Текущо: {} — {}
+tmpl_selected	Избрано: {} — {}
+setup_complete	Настройката е готова
+onboard_fresh_tmpl	Fresh · {} — каталогът започва празен; добавете артикули в Артикули, после Готово.
+onboard_book_tmpl	Book · {} — добавете артикули и начален кредит, после Готово.
+onboard_template_tmpl	Назовете мястото, ако искате, после изберете как да започнете.
+tmpl_blurb	Маси, поръчки, кухненски фишове, сметки и книги.
+tmpl_how	Продавайте на касата; Зала за маси и KOT; Книги за дневника.
+reports_facet_title	Отчети
+reports_facet_help	Дневници, стареене на контрагенти, банкови осчетоводявания и печалба и загуба за период.
+against_bill_ph	Към сметка № по-горе (по избор)
+aliases_ph	Псевдоними — други имена, разделени със запетая
+amount_blank_full_ph	Сума (празно = цялото салдо)
+amount_owed_ph	Дължима сума
+amount_ph	Сума
+amount_received_ph	Получена сума
+amount_we_pay_ph	Сума, която плащаме
+business_name_ph	Име на бизнеса
+category_new_ph	Категория (по избор, създава се ако е нова)
+code_bag_ph	Код (торба)
+conv_factor_ph	Коефициент (25 = 1 торба → 25 kg)
+country_code_ph	Код на държава, напр. IN, GB, US, AE, BR
+credit_khata_amount_ph	Кредит / сума по тефтер
+credit_limit_ph	Кредитен лимит (0 = няма)
+from_code_ph	От код (торба)
+item_name_lang_ph	Име на артикул — напишете го на вашия език
+login_id_opt_ph	Потребителско име (задължително, уникално)
+manager_pin_ph	PIN на управител за одобрение (само ако не можете да анулирате)
+new_branch_name_ph	Име на новия обект
+new_password_ph	Нова парола (по избор)
+new_pin_ph	Нов PIN (4–12 цифри)
+note_bank_ph	Бележка (вноска, теглене, …)
+note_buy_expense_ph	Бележка (гориво, наем, …)
+note_expense_ph	Бележка (гориво, офис, …)
+options_khaynjo_ph	Опции — Размер*: Малък=199, Голям=399 | Добавки+3: Сирене=40, Маслина=30 | Допълнително сирене=40
+part_second_way_ph	Част по втори начин (по избор)
+phone_ph	Телефон
+place_name_ph	Име на това място
+qty_example_ph	Кол. (напр. 1.5 за kg)
+quantity_ph	Количество
+reason_required_ph	Причина (задължителна)
+role_title_ph	Длъжност (напр. Бариста)
+service_pct_ph	Сервиз % по избор 0/10/12
+short_code_ph	Кратък код (MG02)
+starting_password_ph	Начална парола (по избор)
+starting_pin_ph	Начален PIN (4–12 цифри)
+station_name_ph	Име на станция (напр. Тандур, Фритюрник, Студено)
+station_new_ph	Кухненска станция (по избор, напр. Тандур — създава се ако е нова)
+table_name_ph	Име на маса (напр. Тераса 1, Каса 2)
+tax_rate_ph	Име или % на данъчна ставка — Стандартна, Намалена, 0, 5, 12, 18, 20
+to_code_ph	Към код (kg)
+uncleared_no_ph	Неизчистен № по-горе
+unit_cost_ph	Единична цена
+unit_name_bag_ph	Име (Торба)
+unit_plate_ph	Единица (чиния / бр. — празно = брой)
+pay_credit	Кредит
+book_kind_today	Книги за днес
+book_kind_month	Книги за този месец
+book_kind_aging	Неизплатено / дебит-кредит
+book_kind_balance	Баланс
+order_help	Докоснете артикул, за да го добавите.
+floor_help	Докоснете маса, за да вземете или промените поръчката. Цветовете показват свободна → настанена → кухня → готова → яде → сметка → платена. Чакащи, резервации и добавяне на маси са в разделите по-долу.
+kitchen_help	Кухненски фишове (KOT), най-новите най-отдолу. Старт → Готово → Приключено придвижва фиша. Фишовете никога не показват цени.
+kitchen_empty	Няма отворени фишове. KOT, пратен от Поръчка или Зала, се появява тук.
+add_a_table	Добави маса
+add_station_heading	Добави кухненска станция
+categories_help	Докоснете Ползвай, за да сложите артикула по-горе в тази категория. Снимката дава картина на категорията; без нея се показват инициалите.
+dish_search_ph	Име на артикул — търсете нашите ястия или напишете свое
+tile_free	Свободна
+tile_occupied	Заета
+tile_food_ready	Храната е готова
+tile_bill_printed	Сметката е отпечатана
+tile_paid	Платена
+tile_bill_btn	Сметка
+tile_occupy_btn	Настани гости
+tile_free_btn	Освободи масата
+tile_ready_btn	Освободи масата
+tile_undo_bill	Отмени сметката
+summary_busy	заети маси
+summary_to_collect	за събиране
+summary_on_floor	в залата
+floor	Зала
+sizes_as_items_ph	Размери като отделни артикули (по избор) — Половин=120, Цял=200
+dish_group_ph	Група ястия (по избор) — напр. Paneer Tikka
+discount	Отстъпка
+remove_discount	Махни отстъпката
+apply_discount	Приложи отстъпка
+save_opening_cash	Запази началната каса
+close_shift_print	Приключи смяната и отпечатай фиш
+area_prices_ph	Цени по зона (по избор) — Климатик=220, За вкъщи=210
+discount_ph	10% или 50
+discount_reason_ph	Причина (напр. редовен гост, закъсняла храна)
+opening_float_ph	Пари, сложени в чекмеджето тази сутрин
+shift_counted_ph	Преброени пари при предаване
+opening_float	Начална каса (аванс)
+shift_handover	Предаване на смяна
+shift_since	Тази смяна от
+expected_in_drawer	Очаквано в чекмеджето
+right_discount	Дай отстъпка
+floor_in_kitchen	В кухнята
+floor_eating	Сервирано
+pick_category	Избери категория
+close_category_list	Затвори списъка с категории
+new_category_row	Нова категория — създава се когато запазите артикула
+your_category	Вашата категория
+suggested_category	Предложена — от нашите ястия
+category_search_ph	Категория — търсете вашите или напишете нова
+line_sent_state	Пратено в кухнята
+line_nc_state	Комплимент (NC) — не се таксува
+cancel_item_short	Откажи
+nc_short	NC
+charge_again_short	Таксувай
+move_short	Премести
+cancel_item_title	Откажи този артикул — кухнята получава фиш за отказ
+nc_item_title	Направи този артикул комплимент (NC)
+charge_again_title	Таксувай този артикул отново
+move_item_title	Премести този артикул на друга маса
+already_cooked	Вече е сготвено (брак)
+not_cooked_yet	Още не е сготвено
+return_to_customer	Върни на клиента
+short_by	Недостиг
+tip_not_sale	Бакшиш (на персонала, не е продажба)
+right_settle	Приеми плащане
+right_cancel_sent	Откажи пратен артикул
+right_complimentary	Комплимент (NC)
+right_move_table	Премести / слей маси
+right_reprint	Отпечатай сметката отново
+right_allowed	Позволено
+right_with_approval	С одобрение
+right_denied	Не е позволено
+editing_staff	Редактиране
+finding_server	Търсене на сървъра на заведението в тази Wi‑Fi…
+no_server_found	Нищо не е намерено. На Сървъра: Настройки → Други устройства → Позволи допълнителни каси (същата Wi‑Fi). Или въведете показания там IP.
+servers_found_pick	Докоснете заведението, към което искате да се свържете.
+server_host_selected	Ползва се {host} — въведете кода за свързване, после Свържи сега.
+print_bill	Отпечатай сметка
+table_actions	Действия с масата
+move_merge_table	Премести / слей маса
+move_help	Преместете поръчката на тази маса към свободна маса или я слейте в работеща.
+move_target_ph	Име на маса (напр. D5, P2)
+approval_pin_ph	PIN на управител (само ако се поиска)
+move_here	Премести тук
+merge_into	Слей в нея
+line_reason_ph	Причина (напр. гостът промени решението, няма наличност)
+line_qty_ph	Колко да се откажат (празно = всички)
+line_target_ph	Премести към маса (напр. D5)
+confirm	Потвърди
+menu_search_ph	Търси артикул или кратък код
+customer_paid_ph	Клиентът плати
+tip_ph	Бакшиш
+table_area_ph	Зона (напр. На място, За вкъщи, Климатик)
+table_range_ph	Много наведнъж: D1-D20
+add_these_tables	Добави тези маси
+remove_these_tables	Премахни тези маси
+table_remove_ph	Премахни: T1-T24 или името на една маса
+find_server	Намери сървъра на заведението
+bill_format	Формат на сметката
+bill_format_help	Печата се под името на ресторанта на всяка сметка. Отделни редове с | (напр. MG Road, Rajkot | Тел 98250 00000).
+bill_header_ph	Адрес | телефон
+fssai_ph	Лиценз FSSAI № (Индия)
+bill_footer_ph	Долен колонтитул (напр. Благодарим, заповядайте отново)
+save_bill_format	Запази формата на сметката
+reset_bill_format	Върни подразбирането
+bill_format_reset	Форматът на сметката е върнат към подразбиране
+reset_kot_format	Върни подразбирането
+kot_format_reset	Форматът на KOT е върнат към подразбиране
+kot_format	Формат на KOT
+kot_format_help	Докоснете поле в списъка. Показване, размер на шрифта и дебелина важат за това поле на избрания по-горе вид KOT. Всеки вид пази своите размери и дебелини.
+kot_format_fields	Полета
+kot_field_next	Следващо поле
+kot_field_show	Покажи
+kot_field_hide	Скрий
+kot_field_on	показва
+kot_field_off	скрива
+kot_field_size	Размер на шрифта
+kot_field_size_ph	напр. 16, 20, 24, 28, 32…
+kot_weight_light	Тънък
+bill_kot_panel_help	Подредба на сметката и кухненския фиш, всеки със своя ширина на съдържанието. Касиер на сметката е който е издал или приключил сметката; Сервитьор на KOT е който е пратил този кухненски фиш — пълната история на поръчката остава в книгите.
+std_size_ph	напр. 18, 20, 26…
+kot_show_shop	Име на заведението
+kot_hide_shop	Скрий заведението
+kot_show_time	Час
+kot_hide_time	Скрий часа
+kot_show_waiter	Сервитьор
+kot_hide_waiter	Скрий сервитьора
+kot_show_station	Станция
+kot_hide_station	Скрий станцията
+kot_show_table	Маса
+kot_hide_table	Скрий масата
+kot_show_kot_no	KOT №
+kot_hide_kot_no	Скрий KOT №
+kot_width	Пренасяне на прегледа (ширината на съдържанието е в раздела KOT)
+kot_width_58	58 mm
+kot_width_80	80 mm
+kot_kind_heading	Вид KOT
+kot_kind_original	Оригинал
+kot_kind_duplicate	Дубликат
+kot_kind_modified	Променен
+kot_kind_cancelled	Отказан
+kot_style_heading	Размер и дебелина на полето
+kot_style_title	Заглавие
+kot_style_item_qty	Артикул · Кол.
+kot_style_field_pick	Избери поле
+kot_weight_regular	Обикновен
+kot_weight_bold	Получер
+kot_align	Подравняване
+kot_align_start	Начало
+kot_align_center	Център
+kot_align_end	Край
+content_width	Ширина на съдържанието (mm)
+content_width_bill	Ширина на сметката (mm)
+content_width_kot	Ширина на KOT (mm)
+content_width_ph	Или въведете ширина на съдържанието, 40–210 mm
+content_width_help	Колко широк се печата този фиш. Сметката и KOT пазят всеки своята ширина.
+content_width_bill_help	Колко широка се печата сметката за госта. По подразбиране 210 mm (страница). 58 mm тесен фиш, 80 mm широк фиш, 112 mm 4 инча, 210 mm ширина A4. Въведете стойност от 40 до 210. Кухненските фишове имат своя ширина в раздела KOT.
+content_width_kot_help	Колко широк се печата кухненският фиш. По подразбиране 80 mm. 58 mm тесен фиш, 80 mm широк фиш, 112 mm 4 инча, 210 mm страница. Въведете стойност от 40 до 210. Сметките за гости имат своя ширина в раздела Сметка.
+vp_paper_width	Ширина на съдържанието (mm)
+vp_paper_width_ph	Или въведете ширина на съдържанието, 40–210 mm
+vp_paper_width_help	Ширината на съдържанието се задава във Формат на сметка и KOT — отделно за сметката (по подразбиране 210 mm) и кухненския фиш (по подразбиране 80 mm).
+kot_size	Размер на шрифта
+kot_size_s	Малък
+kot_size_m	Нормален
+kot_size_l	Голям
+std_size	Размер на шрифта
+kot_copies	Копия
+kot_copies_1	1
+kot_copies_2	2
+kot_copies_3	3
+kot_title_ph	Заглавие (празно = KOT - KITCHEN ORDER)
+kot_footer_ph	Бележка за кухнята (по избор, без цени)
+kot_preview	Преглед
+save_kot_format	Запази формата на KOT
+test_kot_format	Пробен KOT
+test_kot_sent	Прегледът на кухненския фиш е пратен
+test_bill_format	Пробна сметка
+test_bill_sent	Прегледът на сметката е пратен
+test_print_no_printer	Няма принтер за тази задача — изберете един на този екран
+kot_format_saved	Форматът на KOT е запазен
+std_print	Размер на печата на сметката
+std_print_help	Размер на шрифта за задачи Сметка в стандартен портрет и пейзаж на принтери ОС / документ (въведете пунктове — не Малък/Нормален/Голям). Един и същ размер и в двете ориентации. Размерите на кухненския фиш са в раздела KOT.
+std_size_s	Малък
+std_size_m	Нормален
+std_size_l	Голям
+save_std_print	Запази размера на печата на сметката
+std_print_saved	Размерът на печата на сметката е запазен
+print_brand_kit	Печатен комплект на марката
+print_brand_kit_help	По избор печат и QR за плащане върху лицето на сметката и LAN дисплея за гости. Динамичният UPI QR от VPA по-горе пак работи, ако няма изображение на QR за плащане.
+choose_stamp	Избери печат
+clear_stamp	Изчисти печата
+stamp_set	Печат: във файла — показва се на дисплея за гости и се именува на отпечатани сметки
+stamp_none	Печат: няма
+choose_payment_qr	Избери QR за плащане
+clear_payment_qr	Изчисти QR за плащане
+payment_qr_set	QR за плащане: във файла — показва се на дисплея за гости (замества UPI QR със сумата там)
+payment_qr_none	QR за плащане: няма — QR със сумата от UPI ID при плащане
+aggregator_import	Поръчки от агрегатор (файл)
+aggregator_import_help	По избор локално внасяне: сложете import_aggregator_orders.json в папката за резервни копия (масив или {"orders":[…]}), после докоснете Внасяне. Никога не спира касата; живото Zomato/Swiggy е Cloud.
+import_aggregator_file	Внеси файл от агрегатор
+team_pick_ph	Персонал за редакция — име, потребителско име или избор
+select_staff	Избери този служител
+rights_help	Действия с пари и зала за този човек — докоснете, за да смените: Позволено → Трябва PIN на шефа → Не е позволено. Отпечатай сметката отново е само за сметки; кухненските станции са списъкът по-долу.
+dish_picker_help	Търсете или разглеждайте нашите ястия и докоснете едно, за да попълните името и снимката — или запазете своето име. Задайте цената си (0 е наред), после Добави артикул.
+close_dish_list	Затвори списъка с ястия
+own_item_name	Ползвай това като свое име на артикул
+on_your_menu	Във вашето меню
+edit	Редактирай
+schemes	Схеми / оферти
+schemes_help	BOGO, процент отстъпка и фиксирани комбо. Комботата се разгъват в кухненски редове при Изпрати KOT; съставките остават задържани, докато комбото се задейства. Пример: Купи 2 Thali получи 1 Chaas
+scheme_bogo_ph	Купи 2 Thali получи 1 Chaas
+add_scheme	Добави BOGO
+schedule_ph	Часове / щастлив час — Пн-Пт 07:00-11:00 или HappyHour 17:00-19:00=150
+upi_vpa_ph	UPI идентификатор (VPA)
+upi_payee_ph	Име на получател UPI (по избор)
+upi_qr	UPI QR
+show_upi_qr	Покажи UPI QR
+close_upi_qr	Затвори
+upi_qr_help	Гостът сканира и плаща. След плащането докоснете Приеми плащане. Втори екран: отворете Server URL /display в LAN.
+kot_recall	Върни
+recently_done	Наскоро приключени
+recall_kot_ph	KOT № за връщане
+role_help_customer	Роля: Клиент — тефтер (те ни дължат). Същият контрагент може и да доставя стока.
+role_help_both	Роли: Клиент + Доставчик — един контрагент, тефтер и задължения, нето в Отчети.
+role_help_supplier	Роля: Доставчик — ние им дължим за покупки.
+dine_in_pick_table	На място — изберете маса в Зала
+choose_table	Избери маса
+change_table	Смени масата
+pick_table_banner	Изберете маса за тази поръчка
+items_word	артикула
+items_section	Артикули
+back_to_order	Обратно към поръчката
+new_items_head	Още не е пратено
+price_ph	Цена
+price_ph_gst_inside	Цена ({tax} включен)
+cancel_needs_table	Отворете тази поръчка от Зала (маса), за да откажете след като кухнята я има — KOT от касата остават на фиша, докато приемете плащане
+tax_rates_missing_hint	Няма ставка {tax} за тези ястия — в Меню задайте Данъчна ставка (цените вече включват {tax} при {tax} включен)
+taxable_value	Данъчна основа
+gst_inside_price_note	({tax} включен)
+start_with_template	Започни с нашия шаблон за меню
+template_heading	Нашият шаблон за меню
+template_info	{c} категории и {d} ястия със снимки, готови за добавяне. Цените започват от ₹0 — после задайте вашите.
+template_import	Внеси целия шаблон
+template_confirm	Да се добавят ли {d} ястия с техните категории? Ястията, които вече имате, остават както са.
+template_yes	Да, внеси
+template_importing	Внасяне на менюто…
+template_import_progress	Внасяне… {d}/{t}
+template_done	Всяко ястие от нашия шаблон е във вашето меню.
+template_imported	Добавени са {d} ястия и {c} категории — задайте цените на този екран
+client_template_heading	Меню на клиента
+client_template_info	{title}: {c} категории, {d} ястия с цени, снимки и псевдоними. Само липсващите ястия — имената, които вече имате, остават.
+client_template_import	Внеси това меню
+client_template_confirm	Да се добавят ли {d} ястия от {title}? Ястията, които вече имате, остават както са.
+client_template_importing	Внасяне на {title}…
+client_template_done	Всяко ястие от {title} е във вашето меню.
+client_template_imported	Добавени са {d} ястия и {c} категории от {title}
+resv_heading	Резервации
+resv_name_ph	Име на госта
+resv_phone_ph	Телефон (по избор)
+resv_guests_ph	Гости
+resv_when_ph	Кога — 20:30, утре 13:00
+resv_table_ph	Маса (по избор)
+resv_add	Резервирай
+resv_seat	Настанен
+resv_none	Няма предстоящи резервации.
+guests_word	гости
+delivery_by_ph	Доставка от (име на куриер или персонал)
+kitchen_all_day	За готвене сега: {items}
+kitchen_all_day_head	За готвене сега
+kitchen_tab_live	На живо
+kitchen_tab_recall	Върни
+kitchen_tab_stations	Станции
+split_bill	Раздели сметката
+split_go	Направи отделна сметка
+cancel	Отказ
+opening_client	Отваряне на клиент…
+preparing_desk	Подготовка на касата…
+opening_server	Отваряне на сървър…
+creating_server	Създаване на сървър…
+split_help	Докоснете ястията, които плаща един гост · избрани {n}
+split_send_first	Първо изпратете KOT — само ястията, които кухнята има, могат да отидат в отделна сметка
+split_pick_some	Първо докоснете ястията за отделната сметка
+split_done	Отделната сметка е направена — тя е в залата до тази маса
+split_marked	отделна сметка
+order_empty_pick	Поръчката е празна — докоснете Добави ястия по-горе, за да изберете.
+add_dishes	Добави ястия
+order_so_far	В тази поръчка: {n} · {total}
+no_dish_match	Няма ястие, което съвпада с „{q}“
+pick_dishes_help	Докоснете ястие, за да го добавите · изберете категория, за да стесните списъка
+pick_done	Готово
+pick_done_dd	Готово · {label}
+printer_route_mode	Ако на това място има няколко принтера
+printer_mode_first	Първият, който работи
+printer_mode_all	Печат на всички
+kot_show_area	Зона
+kot_hide_area	Скрий зоната
+kot_show_item_hdr	Артикул · Кол.
+kot_hide_item_hdr	Скрий колоните
+kot_show_title	Ред за заглавие
+kot_hide_title	Скрий заглавието
+kot_field_order	Ред на печат
+kot_field_up	Премести нагоре
+kot_field_down	Премести надолу
+kot_field_cycle	Избери следващото
+kot_field_select	Избери следващото
+kot_field_time	Час
+kot_field_kot_no	KOT №
+kot_field_area	Зона
+kot_field_table	Маса
+kot_field_shop	Име на заведението
+kot_field_waiter	Персонал
+kot_field_station	Станция
+app_template_blurb_extra	Също: Собственик Zahir, Админ Asif, Сервитьор Nawaz; странична лента FOH; история след 4 часа; лентата Днес изключена; компактен KOT.
+dishes_n	{n} ястия
+recipe_ph	Рецепта (по избор) — една порция ползва: Ориз=0.2, Панир=0.15
+reorder_ph	Купи още при
+set_reorder	Задай ниво за повторна поръчка
+low_stock_alert	Свършва — купете скоро: {items}
+unpriced_note	{n} ястия във вашето меню още нямат цена — сметката им е 0, докато не зададете.
+show_unpriced	Покажи само ястия без цена
+show_all_dishes	Покажи всички ястия
+role_waiter	Сервитьор
+role_kitchen	Кухня
+role_title_rest_ph	Длъжност (напр. Капитан, Главен готвач)
+preset_help_rest	Сервитьор: приема поръчки и обслужва маси. Касиер: приема и плащане. Кухня: екранът на кухнята. Управител: също менюто, откази и отстъпки.
+kind_raw	Суровина
+kind_resale	Купено и препродадено
+kind_dish	Ястие, което правим
+buy_unit_ph	Единица (kg, литър, бр.)
+add_another_way	+ Добави друг начин
+parts_status	Въведени {a} от {b} · остават {c}
+save_expense	Запази разхода
+rest_ph	Остатък
+low_badge	Ниско
+stock_empty	Още няма наличност — това, което запишете в Покупка, се появява тук.
+recent_changes	Последни промени
+lane_declared_label	Данъчна фактура
+lane_owner_label	Касов бон
+money_lane_bill	Сметка: {lane}

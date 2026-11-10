@@ -1,0 +1,1329 @@
+# Russian — Русский (ru). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	Стойка кираны: продажа, запас, кредитная книга и книги. Бесплатно офлайн.
+unlock	Разблокировать
+pin_hint	PIN владельца начинается с 0000
+sell	Продажа
+buy	Закупки
+books	Дневная книга
+books_help	Позиция за сегодня. Продажа = деньги внутрь. Закупки = покупки и расходы. Стороны = клиенты в кредит и поставщики.
+buy_help	Ваучеры расходов и счета поставщиков (деньги уходят). На счёт остаётся в книге стороны.
+sell_money_in	Продать товары
+buy_money_out	Расход / счёт поставщика
+record_purchase	Записать закупку
+add_expense	Ваучер расходов
+bank_book	Банковская книга
+credit_help	ID стороны уникален (имена могут повторяться). Клиент ведёт счёт (должен нам); поставщик продаёт нам товар (мы должны ему); оба варианта допустимы. Книги разделены; отчёты показывают нетто.
+party_kind_ph	Роли: клиент, поставщик, оба…
+reports_help	Дневная книга, дебиторы и кредиторы, банковская книга, ваучеры расходов, прибыль и убытки.
+reports_today	Дневная книга (сегодня)
+reports_month	Прибыль и убытки (месяц)
+reports_aging	Задолженность / Dr-Cr
+reports_balance_sheet	Баланс
+reports	Отчёты
+refresh	Обновить
+undo	Отменить
+start_tracking	Начать учёт
+stock_minus	− Запас
+stock_plus	+ Запас
+settle_cash	Оплатить наличными
+settle_card	Оплатить картой
+items	Товары
+nav_items	Товары
+more	Ещё
+your_items	Ваши товары
+items_help	Коснитесь товара, чтобы править. Новый товар очищает форму. Ищите по имени или короткому коду, задайте цену (0 можно), затем Добавить. Уже записанные продажи хранят имя, по которому их начислили.
+add_item	Добавить позицию
+new_item	Новая позиция
+adding_item	Добавление позиции
+editing_item	Редактирование
+save	Сохранить
+remove	Удалить
+removed_items	Удалённые позиции
+removed_help	Восстановление возвращает товар в Товары точно как был — цена, фото и категория.
+restore_item	Восстановить
+empty_catalog	Пока нет товаров. Откройте Товары, укажите имя и цену, затем продайте на стойке.
+total	Итого
+cash	Наличные
+upi	UPI
+card	Карта
+credit	Стороны
+clear	Очистить
+ready_to_sell	Готово к отправке
+today_prefix	Сегодня
+today_mid	сегодня
+owed	долг
+round_word	округление
+back	Назад
+sold_out	Нет в наличии
+restock	Вернуть
+not_tracked	Без учёта
+in_stock	в наличии
+marked_sold_out	Отмечено нет в наличии
+add_upper	Добавить
+na	нет
+qty	Кол-во
+unit_at	Цена
+actual	Факт
+applied	К оплате
+note_ph	Примечание (необязательно)
+rounded	Округлено
+split	Разделить
+send_kot	Отправить квитанцию
+send_kot_to	Отправить → {kitchens}
+send_kot_again	Товары для следующей квитанции
+send_kot_held	Удержанные товары — снимите удержание, чтобы отправить
+reprint_kot	Печать выбранного
+reprint_kot_ok	Снова напечатано {n} товаров · {slips} квитанц. → {kitchens}
+reprint_kot_needed	Сначала отправьте квитанцию — затем включите товары и напечатайте выбранные снова
+reprint_kot_none_selected	Каждый отправленный товар пропускается — коснитесь «В печати» у тех, что нужно напечатать снова
+reprint_kot_client	Повторная печать ({n}) для {place} отправлена — устройство магазина печатает её
+print_cancelled_kot	Печать всех отменённых
+print_cancelled_kot_ok	Напечатано {n} отменённых товаров · {slips} квитанц. → {kitchens}
+print_cancelled_kot_needed	Сначала откройте стол с отменёнными товарами
+print_cancelled_kot_none	В этом заказе нет отменённых товаров
+print_cancelled_kot_client	Печать отмены ({n}) для {place} отправлена — устройство магазина печатает её
+kot_banner	Баннер
+kot_banner_ph	Баннер (пусто = нет)
+kot_item_prefix	Префикс блюда
+kot_item_prefix_ph	напр. [CANCELLED] 
+kot_strike	Зачеркнуть название товара
+kot_strike_note	Зачеркнуть примечание к товару
+kot_strike_on	Вкл
+kot_strike_off	Выкл
+bill_item_layout	Макет позиций
+bill_item_layout_columns	Столбцы
+bill_item_layout_stacked	Столбиком
+bill_item_header	Заголовки
+bill_item_hdr_item	Заголовок позиции
+bill_item_hdr_qty	Заголовок кол-ва
+bill_item_hdr_price	Заголовок цены
+bill_item_hdr_amount	Заголовок суммы
+bill_item_name	Имя позиции
+bill_item_qty	Кол-во
+bill_item_price	Цена
+bill_item_amount	Сумма
+bill_item_note	Примечание к товару
+bill_item_col_gap	Зазор столбцов
+bill_item_col_order	Порядок столбцов
+bill_item_col_sep	Линии столбцов
+bill_item_gap_tight	Плотно
+bill_item_gap_comfort	Удобно
+bill_item_gap_wide	Широко
+bill_item_num_width	Числовые столбцы
+bill_item_num_compact	Компактно
+bill_item_num_comfort	Удобно
+bill_item_num_wide	Широко
+bill_item_num_align	Выравнивание чисел
+bill_item_gap_em	Зазор (em)
+bill_item_qty_min	Мин. кол-во (em)
+bill_item_price_min	Мин. цена (em)
+bill_item_amount_min	Мин. сумма (em)
+kot_item_qty_width	Столбец кол-ва
+kot_item_num_align	Выравнивание кол-ва
+bill_total_qty_label	Подпись итога кол-ва
+bill_total_subtotal_label	Подпись подытога
+bill_total_grand_label	Подпись итога
+bill_total_paid_label	Подпись оплаты
+bill_meta_pair	В одной строке с
+bill_pair_alone	Отдельно
+bill_item_piece_on	Вкл
+bill_item_piece_off	Выкл
+bill_total_qty	Всего шт.
+bill_total_subtotal	Промежуточный
+bill_total_grand	Итого
+reprint_incl	В печати
+reprint_skip	Пропустить
+reprint_skip_meta	Без повторной печати
+kot_dest_hint	Печатается на принтерах, назначенных {kitchens} в Настройки → Принтеры
+kot_sent_hint	Последняя отправка ушла в {kitchens}. Коснитесь, чтобы добавить товары для следующего счёта — или Напечатать квитанцию снова для той же.
+kot_sent_printing	Квитанция отправлена в {kitchens} — печать
+kot_sent_not_printed	Квитанция отправлена в {kitchens}, но НЕ напечатана: {why}. Скажите магазину, почините принтер и напечатайте снова.
+kot_sent_screen	Квитанция отправлена в {kitchens}
+kot_queued_shop	Квитанция для {place} → {kitchens} сохранена; устройство магазина печатает её
+kot_job_label	Квитанция для {place} → {kitchens}
+kot_job_reached	Квитанция для {place} дошла до {kitchens}
+kot_unassigned	Без назначения
+kot_unassigned_held	Удержано {n} товаров без станции — снимите удержание в строке, чтобы отправить
+kot_station_ph	Станция
+kot_station_dd	Станция
+kot_station_dd_n	Станция · {stations}
+kot_set_station	Используйте эту станцию
+kot_station_applied	Станция задана у {n} товаров: {station}
+kot_station_cleared	Станция снята с {n} товаров: {station}
+kot_station_needed	Сначала выберите секцию магазина
+kot_station_not_allowed	Нельзя использовать секцию: {station}
+kot_station_none	Станций ещё нет — в магазине со стойкой не используются (Настройки → Зоны, если нужно)
+pos_tab_items	Добавлено
+pos_tab_payment	Оплата
+hold_send	Удержать
+hold_send_on	В ожидании
+hold_send_meta	Удержано — нет на этой квитанции
+station_remove	Удалить станцию
+station_remove_ph	Нажмите на станцию в списке, чтобы удалить её
+station_removed	Станция удалена: {name}
+settings_hub_title	Настройки
+settings_hub_help	Открывайте по одному разделу — меньше прокрутки, понятнее выбор.
+settings_back	Назад
+settings_sec_language	Язык и валюта
+settings_sec_country	Страна и налоги
+settings_sec_tills	Дополнительные кассы и филиалы
+settings_sec_brand	Ваш бренд
+settings_sec_units	Единицы и конвертация
+settings_sec_pickers	Зоны · станции · ставки налога
+settings_sec_printers	Принтеры
+settings_sec_bill	Формат счёта и квитанции
+settings_sec_selling	Схемы и продажи
+bill_kot_tab_bill	Счёт
+bill_kot_tab_kot	Квитанция
+settings_sec_alerts	Уведомления
+alerts_help	Сколько сообщения о состоянии остаются на экране для вас (этот вход).
+snack_secs_ph	Секунды (3–60, по умолчанию 10)
+snack_secs_save	Сохранить время уведомлений
+snack_secs_saved	Время уведомлений сохранено — {n} с
+settings_sec_backup	Резервное копирование и восстановление
+settings_sec_diag	Диагностика
+diag_privacy_help	Логи остаются на этом устройстве. Секреты (PIN, пароли) никогда не хранятся. Передача пакета с устройства требует вашего явного подтверждения каждый раз — никогда не продается или не передается третьим лицам.
+diag_level	Уровень детализации
+diag_level_error	Ошибки
+diag_level_warn	Предупреждения
+diag_level_info	Информация
+diag_level_debug	Отладка
+diag_support_start	Запустить сеанс поддержки на 30 минут
+diag_support_stop	Завершить сеанс поддержки
+diag_support_started	Сеанс поддержки включен — детализация отладки на 30 минут
+diag_support_ended	Сеанс поддержки завершен
+diag_export_local	Экспорт локальной копии
+diag_export_local_done	Локальная диагностика готова в {path} — выберите место для сохранения копии
+diag_approve_send	Одобрить передачу с этого устройства
+diag_send_help	Одобрение действует на один пакет, затем истекает. Временное — используется только для исправления или улучшения продукта. Не передается третьим лицам. Работает на Linux, Windows, macOS и Android.
+diag_send_approved	Передача одобрена на один пакет (истекает скоро)
+diag_export_send	Создать пакет для передачи (требуется одобрение)
+diag_export_send_done	Пакет для передачи готов в {path} — выберите место для сохранения, затем отправьте только в поддержку Kumkaj
+diag_save_bundle	Сохранить копию диагностики
+diag_bundle_saved	Копия диагностики сохранена в {path}
+diag_bundle_failed	Не удалось сохранить копию диагностики — попробуйте снова
+diag_clear	Очистить логи диагностики
+diag_cleared	Логи диагностики очищены
+sidebar_settings	Боковая панель
+sidebar_settings_help	Те же иконки, что на боковой рейке. Перетащите строку для изменения порядка. Переключите тумблер для отображения или скрытия. Настройки и Блокировка всегда остаются на панели.
+sidebar_always_on_short	Всегда включено
+sidebar_back_settings	Назад
+sidebar_shown	Отображается
+sidebar_hidden	Скрыто
+sidebar_always_on	Всегда на барной стойке
+sidebar_shown_hint	Показано в боковой панели / нижних вкладках
+sidebar_hidden_hint	Скрыто от барной стойки
+sidebar_menu_items	Позиции
+sidebar_enable_all	Включить все
+sidebar_disable_all	Отключить все
+sidebar_order_saved	Заказ в боковой панели сохранён
+sidebar_visibility_saved	Видимость боковой панели сохранена
+amounts_hide	Скрыть
+amounts_show	Показать
+printers_none_hint	Сначала сохраните принтер на этом устройстве, затем добавьте его к счёту или секции
+counter	Стойка
+dine_in	Стойка
+takeaway	С собой
+order	Заказ
+tables	Стойки
+kitchen	Отдел
+sales	Продажи
+sales_refunds	Продажи и возвраты
+day_close	Закрытие дня
+reports_expenses	Отчёты и расходы
+nav_reports	Отчёты
+nav_settings	Настройки
+nav_lock	Блокировка
+no_sale_yet	Продаж пока нет
+favorites	Избранное
+favorites_help	Товары, которые вы часто продаёте, сохранены для вашего входа. Добавьте один в счёт или составьте список из всех товаров ниже.
+your_favorites	Ваше избранное
+all_items	Все товары
+frequent	Частые
+added_items	В заказе
+added_items_empty	На этом счёте ещё ничего — добавьте товар из «Все товары» или категории.
+frequent_config_help	Самые продаваемые товары из закрытых счетов. Задайте, за сколько дней смотреть и сколько товаров показать.
+frequent_days_ph	Дни (1)
+frequent_limit_ph	Позиций (24)
+frequent_apply	Применить
+frequent_saved	Частые: последние {d} дн., топ {n} — {c} товаров
+frequent_empty	Пока нет завершённых продаж за период — закройте счёт (₹0, если разрешено в настройках), и они появятся здесь.
+zero_sales	Продажи на ноль
+zero_sales_help	Разрешить товары с ценой ₹0 и счета, закрытые на ₹0 (бесплатно / желание владельца). Включено по умолчанию, чтобы бесплатное оставалось в «Частых» и дневной книге.
+zero_sales_on	Нулевые продажи: вкл.
+zero_sales_off	Нулевые продажи: выкл.
+zero_sales_saved_on	Разрешение нулевых продаж сохранено (вкл.)
+zero_sales_saved_off	Разрешение нулевых продаж сохранено (выкл.)
+floor_areas_help	Зоны — это залы или части этажа (В зале, Пратка, Кондиционер …). Сначала добавьте зону, затем поставьте в неё стойки — каждая зона отдельная группа на этаже.
+area_new_ph	Новая зона / комната (напр. AC, Garden)
+add_area	Добавить зону
+area_added	Зона «{name}» готова — добавьте в неё стойки
+no_favorites	Пока нет избранного — добавьте товары из списка ниже.
+add_to_bill	В счёт
+added	Добавлено
+owes_word	должен
+selected_word	Выбрано
+chip_clear_credit	в расчёте — дать в кредит или взять аванс
+chip_missing_customer	Выбранный клиент не найден — выберите снова
+chip_no_customer	Клиента пока нет — введите имя и нажмите «Кредит»
+credit_summary_fmt	{} клиентов · открытый кредит {} · авансы {}
+recent_label	Недавние:
+kot_new_waiting	НОВЫЙ — ожидает
+kot_preparing	ГОТОВИТСЯ
+kot_ready_serve	ГОТОВО — подавать
+kot_done_cap	ГОТОВО
+kot_cancelled	ОТМЕНЕНО
+kot_start_btn	Начать
+kot_mark_ready	Отметить готовым
+kot_done_btn	Готово
+table_free	Свободен — нажмите, чтобы начать заказ
+start_order	Начать заказ
+open_bill	Открыть счёт
+collect_payment	Принять оплату
+table_running	Идёт
+payment_pending	Ожидание оплаты
+collect_at_counter	оплата на кассе
+inventory	Запасы
+inventory_stock	Запасы и учёт
+branches	Филиалы
+branches_org	Филиалы и организация
+credit_customers	Клиенты в долг
+customer_name_ph	Имя стороны
+new_customer_ph	Имя новой стороны
+item_name_ph	Имя позиции (напр. Masala Dosa)
+item_price_ph	Цена
+start_template	Продукт
+team	Команда
+team_pins	Команда и PIN
+my_pin_settings	Мой PIN
+settings_hub_help_my_pin	Смените PIN разблокировки вошедшего на этом устройстве.
+team_self_help	Только вы можете сменить свой PIN разблокировки (и необязательный пароль входа). Другие экраны или права — спросите владельца.
+backup_settings	Резервная копия и настройки
+lock_app	Заблокировать
+pick	Выбрать
+select	Выбрать
+advance	Далее
+owner	Владелец
+staff	Персонал
+photo	Фото
+auto	Авто
+prev	Назад
+next	Далее
+ok	ОК
+this_shop	Режим сервера
+extra_till	Режим клиента
+off	Выкл
+tables_kitchen	Планировка магазина
+server	Сервер
+client	Клиент
+language_currency	Язык и валюта
+language	Язык
+choose_language	Выберите язык
+language_setup_hint	Следуйте языку этого устройства или выберите сами.
+lang_follow_platform	Использовать язык устройства
+lang_pick_user	Использовать выбранный язык
+lang_platform_now	Текущий язык устройства
+selected_language	Выбрано
+continue	Продолжить
+this_device	ЭТО УСТРОЙСТВО
+device_use_q	Как будет использоваться это устройство?
+last_server_mode	Был сервером — нажмите, чтобы продолжить
+last_client_mode	Был клиентом — нажмите, чтобы продолжить
+choose_server	Выбрать сервер
+choose_server_hint	На этом устройстве уже есть серверы. Откройте один или создайте новый для другого бизнеса.
+create_new_server	Создать новый сервер
+open_server	Открыть
+new_server_name_ph	Имя нового сервера (необязательно)
+server_remove_pin_ph	PIN владельца для удаления
+only_owner_remove_server	Удалить сервер может только владелец
+owner_pin_remove_server	Чтобы удалить этот сервер, нужен PIN владельца
+device_setup_help	Сервер хранит учёт здесь. Клиент подключается к серверу.
+app_template_heading	Стартовый каталог (необязательно)
+app_template_blurb	Загружает пример каталога; владелец Zahir (zahir), админ Asif (asif, PIN 1111), кассир Nawaz (nawaz, PIN 0000); налог/GST выкл.; боковая панель спереди; история очищается через 4 часа (и Очистить сейчас в Резервной копии); полоса Сегодня выкл.; компактный счёт + стандартные поля для узких лотков. Налог и соседние панели снова включаются в Настройках.
+app_template_apply	Применить стартовый каталог
+app_template_skip	Пропустить пока
+app_template_status	Сервер готов — примените стартовый каталог или пропустите
+app_template_importing	Применяется {title}…
+currency	Валюта
+backup	Резервная копия
+use	Использовать
+dont_use	Не использовать
+add_branch	Добавить филиал
+add_conversion	Добавить пересчёт
+add_dishes_items	Добавить товары
+add_item_plain	Добавить позицию
+add_note	Добавить примечание
+add_opening_balance	Добавить начальное сальдо
+add_staff	Добавить сотрудника
+add_station	Добавить станцию
+add_table	Добавить стол
+add_unit	Добавить единицу
+add_use_name	Добавить / использовать это имя
+allow_extra_tills	Разрешить дополнительные кассы
+amend	Исправить
+apply_country_pack	Применить пакет страны
+datetime_appearance	Появление даты и времени
+datetime_appearance_help	Книги хранят внутри дату годом вперёд в формате RFC3339. Здесь меняется только вид дат и часов на счетах, отчётах и экране.
+datetime_example	Пример сейчас: {ex}
+date_order	Порядок даты
+date_order_dmy	Д/М/Г
+date_order_mdy	М/Д/Г
+date_order_ymd	Г-М-Д
+time_format	Часы
+time_format_24h	24-часовой формат
+time_format_12h	12-часовой формат
+attach_bill_photo	Прикрепить фото счёта
+attach_pdf	Прикрепить PDF
+attach_photo	Прикрепить фото
+attachments_last_expense	Вложения (последний расход)
+bank	Банк
+bank_in	Внести в банк
+bank_out	Снять из банка
+bank_reconciliation	Банковская сверка (отмечать по выписке)
+bank_to_till	Банк → касса
+book_add_dish	Запись — добавить товар
+book_opening_credit	Отправка — начальный кредит
+branch_name_sell_ph	Имя филиала для продажи
+bring_my_book	Принести мою книгу
+business_tax_id_ph	Налоговый ID бизнеса
+caption_bank	БАНК
+caption_bills	СЧЕТА
+caption_outstanding	ЗАДОЛЖЕННОСТЬ
+caption_payments_today	ПЛАТЕЖИ СЕГОДНЯ
+caption_today	СЕГОДНЯ
+card_amount_ph	Сумма картой
+cash_amount_ph	Сумма наличными
+cash_memo	Кассовый чек
+choose_icon	Выбрать значок
+choose_logo	Выбрать логотип
+clear_icon	Убрать значок
+clear_photo	Удалить фото
+copy_day_book_csv	Копировать CSV дневной книги
+copy_day_close	Копировать закрытие дня
+copy_items_csv	Копировать CSV позиций
+copy_outstanding_csv	Копировать CSV задолженности
+copy_parties_csv	Копировать CSV сторон
+copy_party_ledger_csv	Копировать CSV книги стороны
+copy_receipt	Копировать чек
+share_whatsapp	Поделиться в WhatsApp
+lan_pages_heading	Страницы клиента по Wi‑Fi
+lan_pages_help	В Wi‑Fi этого магазина страницы клиента работают для табло и отзывов. Людям на мобильном интернете позже понадобится Облако. Терминал карт или ссылка оплаты необязательны и никогда не останавливают стойку.
+diag_send_heading	Передать с этого устройства
+kot_dest_heading	Станция
+optional_login_heading	Необязательный вход
+rights_heading	Права
+ops_panel	Локальные операции
+crm_heading	Клиенты и сообщения
+crm_help	Дни рождения и лояльность — очередь SMS/WhatsApp. {name}, {points}. Владелец шлёт.
+crm_queue_sms	Очередь SMS
+crm_queue_wa	Очередь WhatsApp
+crm_seg_bday_week	ДР на неделе
+crm_seg_bday_month	ДР в месяце
+crm_seg_phone	С телефоном
+crm_seg_loyalty	Лояльность
+crm_seg_inactive	Неактивные
+crm_seg_top	Топ трат
+birthday_ph	День рождения (MM-DD или YYYY-MM-DD)
+crm_message_ph	С днём рождения, {name}! У вас {points} баллов.
+till_apply_redeem	Применить к счёту
+till_clear_redeem	Сбросить обмен
+till_wallet_topup	Пополнить кошелёк
+till_issue_voucher	Выдать ваучер
+till_points_ph	Баллы к списанию
+till_wallet_ph	Списание с кошелька
+till_voucher_code_ph	Код ваучера
+till_voucher_amt_ph	Сумма ваучера (пусто = всё)
+till_wallet_topup_ph	Сумма пополнения
+till_voucher_issue_amt_ph	Сумма нового ваучера
+till_voucher_issue_code_ph	Код нового ваучера
+split_evenly	Разделить поровну
+waitlist	Лист ожидания
+fire_course	Следующий шаг
+hold_item	Удержать
+waiter_call	Вызвать кассира
+waitlist_add	В лист ожидания
+floor_view_grid	Сетка
+floor_view_layout	План
+floor_layout_x	X
+floor_layout_y	Y
+floor_layout_w	W
+floor_layout_h	H
+floor_layout_save	Сохранить план
+floor_layout_open	Открыть стол
+floor_layout_edit	Править план
+floor_layout_pick	Нажмите стол, чтобы править план
+floor_layout_saved	Планировка сохранена
+floor_layout_nudge_left	← 20
+floor_layout_nudge_right	→ 20
+floor_layout_nudge_up	↑ 20
+floor_layout_nudge_down	↓ 20
+sibling_pickers_help	Как единицы On/Off — скрыть зоны, станции и налоги из дневного списка; пакетные значения остаются.
+bulk_price_apply	Применить массовую цену
+card_terminal_optional	Терминал / ссылка на оплату (опционально при интернете)
+copy_report	Копировать отчёт
+counted_cash_ph	Пересчитанные наличные в кассе
+country_tax	Страна и налоги
+create_backup	Создать резервную копию
+credit_limit_heading	Лимит кредита (выбранная / указанная сторона)
+day_close_summary	Сводка закрытия дня
+delete_party	Удалить выбранную сторону
+delivery	Доставка
+done_open_books	Готово — открыть книги
+drawer_count	Пересчёт кассы (необязательно)
+expense_heading	Расход
+export_day	Экспорт дня
+extra_note_bill_ph	Дополнительная заметка к этому счёту / продаже
+extra_note_expense_ph	Дополнительная заметка к последнему расходу
+extra_tills_heading	Дополнительные кассы
+other_devices_help_heading	Настроить другие устройства
+other_devices_help	На этом устройстве (Сервер): Другие устройства → Разрешить дополнительные кассы. Запишите код сопряжения и адрес Wi‑Fi. Коснитесь «Разрешить другим устройствам подключаться», если появится. На компьютере коснитесь «Запустить с этого компьютера». На каждом другом устройстве: установите приложение, выберите Режим клиента, Найдите сервер магазина (или введите адрес), введите код сопряжения, Сопрячь сейчас. Заказы ждут на устройстве, если Wi‑Fi пропадёт, и уходят, когда Сервер снова ответит. Дополнительные принтеры задаются на Сервере (Настройки → Принтеры) — дополнительные кассы шлют счета туда.
+forget_shop	Забыть этот магазин
+goods_received	Товар получен
+import_day	Импорт дня
+import_items_csv_plain	Импорт CSV позиций…
+import_parties_csv	Импорт CSV сторон…
+item_name	Имя позиции
+kitchen_printing	Печать на кухню
+login_id_ph	ID входа
+mark_cleared	Отметить проведённым
+new_party_clear	Новая сторона (очистить форму)
+new_party_kind_supplier_ph	Тип новой стороны (поставщик)
+next_country	Следующая страна
+next_order	Следующий заказ (очистить стойку)
+note_gstin_ph	Заметка / GSTIN / напоминание о договоре
+notes_attach_party	Заметки и вложения (выбранная сторона)
+notes_attach_sale	Заметки и вложения (выбранная продажа)
+on_account_ap	На счёт (AP)
+org_optional_ph	Организация (необязательно)
+paid_by	Оплата
+paid_now	Оплачено сейчас
+pair_now	Подключить сейчас
+pairing_code_ph	Код подключения
+party_name_selected_ph	Имя стороны (или использовать выбранную)
+password_ph	Пароль
+pay_ap_card	Оплатить AP картой
+pay_ap_cash	Оплатить AP наличными
+pay_ap_heading	Оплатить, что мы им должны (AP)
+pay_ap_upi	Оплатить AP через UPI
+pay_selected_heading	Оплатить выбранное (погасить долг / аванс)
+pick_from_items	Выбрать из наших позиций
+prev_country	Предыдущая страна
+print_open	Печать / открыть
+reason_amend_ph	Причина исправления / аннуляции / возврата
+reason_note_ph	Причина / заметка (списание, учёт, …)
+record_day_close	Записать закрытие дня
+refresh_from_shop	Обновить из магазина
+refund	Возврат
+remove_selected	Удалить выбранное
+request_bill	Запросить счёт
+restaurant_name_ph	Название магазина (необязательно)
+restore_backup	Восстановить из копии
+role_both	Оба
+role_admin	Администратор
+role_cashier	Кассир
+role_customer	Клиент
+role_manager	Менеджер
+history_retention	История торговли
+history_retention_help	Автоочистка старых продаж и старых квитанций. Товары, персонал и настройки остаются. «Очистить сейчас» стирает все торговые строки и сохраняет настройку.
+history_off	Сохранить
+history_day_close	При закрытии дня
+history_after_hours	После рабочего времени
+history_hours_ph	Часы (1–168, по умолчанию 4)
+history_hours_save	Сохранить часы
+history_clear_now	Очистить историю сейчас
+history_cleared	История торговли очищена — настройка сохранена
+history_retention_saved	Очистка истории сохранена
+history_hours_saved	Часы для истории сохранены
+history_owner_only	Историю могут очистить только Владелец или Администратор
+rollup	Сводка
+save_brand	Сохранить бренд
+save_business_id	Сохранить налоговый ID и % сервиса
+save_business_name	Сохранить имя бизнеса
+save_features	Сохранить функции выбранного сотрудника
+save_features_named	Сохранить {name}
+save_features_ok	Сохранена настройка для {name}
+save_names	Сохранить имена
+second_way	Второй способ
+server_ip_ph	IP сервера (напр. 192.168.1.10)
+set_credit_limit	Установить лимит кредита
+set_login_selected	Установить вход выбранному
+set_login_named	Применить вход для {name}
+shop	Магазин
+show	Показать
+spreadsheet_csv	Таблица (CSV)
+start_fresh	Начать заново
+stop_extra_tills	Остановить дополнительные кассы
+floor_cols_ph	Столбцы
+floor_cols_fit	По ширине экрана
+floor_cols_fit_sub	влезает {n}
+floor_cols_fits	влезает
+floor_cols_scroll	прокрутка вбок
+floor_cols_min	Столбцы: не меньше 1 — или оставьте пустым, чтобы было по ширине экрана
+floor_zoom_auto	Авто
+floor_zoom_out	Уменьшить масштаб
+floor_zoom_in	Увеличить масштаб
+backup_auto	Ежедневная автокопия · последняя {when} · последние 14 дней хранятся в {dir}.
+backup_auto_none	Ежедневная автокопия — первая будет сделана через минуту.
+backup_copy_to	Копии также сохраняются в {dir}.
+backup_copy_btn	Копировать копии ещё и в папку…
+autostart_off	Запускать вместе с компьютером
+autostart_on	Запускается с компьютером ✓ — нажмите, чтобы отключить
+autostart_done_on	Теперь приложение открывается при включении компьютера — сервер вернётся после отключения света.
+autostart_done_off	Компьютер больше не открывает приложение при включении.
+device_forgotten	Магазин забыл это устройство — подключите его снова с текущим кодом. Ожидающие заказы сохранены.
+lan_offline	Нет связи
+forget_device	Забыть
+last_seen	был
+copy_pair_code	Копировать код подключения
+new_pair_code	Новый код подключения
+pair_finishing	Завершение подключения… применяются книги магазина
+pair_opening	Открытие кассы…
+pair_copied	Код подключения скопирован
+kot_waiting	Ожидает отправки
+lan_offline_waiting	Нет связи · {n} в ожидании
+lan_connecting	Подключение к магазину…
+lan_live	Онлайн
+lan_sending	Отправляется: {n}
+lan_sign_in_to_send	Войдите снова, чтобы отправить {n}
+lan_pair_again	Подключите это устройство заново
+lan_update_app	Обновите приложение — версии этого устройства и сервера заведения различаются
+allow_firewall	Разрешить подключение других устройств
+firewall_blocked	Брандмауэр этого компьютера блокирует другие устройства — нажмите «Разрешить подключение других устройств».
+firewall_waiting	Ожидание подтверждения администратора…
+lan_join_help	Другие устройства могут подключиться к этому — код сопряжения {code}. На другом устройстве выберите «Режим клиента», затем «Найти сервер заведения» или введите адрес: {addr}
+lan_pair_status	Wi‑Fi {addr}
+lan_join_help_no_addr	Подключите это устройство к Wi‑Fi для указания адреса.
+lan_no_address	У этого устройства ещё нет адреса Wi‑Fi — подключите его к Wi‑Fi заведения.
+lan_not_listening	Сейчас устройства не принимаются — возможно, порт {port} занят другой программой. Перезапустите приложение.
+lan_tills_off	Дополнительные кассы выключены. Книги этого заведения хранятся на этом устройстве. Разрешите дополнительные кассы, если другое устройство тоже должно принимать заказы или выставлять счета.
+paired_with	Подключено к заведению по адресу {url}
+not_paired	Не подключено — подключитесь к серверу заведения.
+choose_device_use	Выберите, как используется это устройство.
+paired_note	Подключено. Разблокируйте для продаж или нажмите «Обновить», чтобы получить свежие данные.
+last_update_at	Последнее обновление от заведения: {time}.
+pair_intro	Найдите сервер или введите его адрес и код подключения.
+queue_waiting	Ждут отправки в заведение ({n}):
+queue_tries	Попыток: {n} · последний ответ: {e}
+save_backup_copy	Сохранить резервную копию…
+backup_copy_saved	Резервная копия сохранена — храните её вне этого устройства (флешка или другое устройство)
+backup_copy_overdue	Уже {n} дн. ни одна резервная копия не покидала это устройство — Настройки → Резервная копия
+backup_copy_failed	Не удалось сохранить копию туда — выберите другое место
+clock_off	Часы этого устройства расходятся с сервером заведения на {min} мин — установите правильное время
+printers_heading	Принтеры этого устройства
+printers_help	Найдите принтеры, коснитесь одного, чтобы выбрать, затем напечатайте пробную страницу только на этом устройстве. Принтеры счетов: Формат счёта и квитанции → Счёт.
+printers_host_only	Принтеры задаются на устройстве магазина (Сервер). Эта касса шлёт туда счета и старые квитанции — Найти / добавить / назначить остаются на Сервере. Пробная страница и размер печати счёта идут на Сервер.
+printers_find_heading	Принтеры
+printers_find_tip	Поиск сканирует это устройство и обновляет список. Сначала системные принтеры; сетевой обход может продолжаться в фоне.
+printers_pool_heading	1. Ваши принтеры
+printers_pool_tip	Поиск сканирует это устройство и обновляет список.
+printers_pool_empty	(пока нет — добавьте ниже)
+printers_routes_help	Найдите принтеры, которые система уже знает. Назначьте их счёту и каждой секции в «Формат счёта и квитанции».
+printer_assign_dd	Выбрать принтер для {place}
+printer_assign_pick	Выбрать реальный принтер
+printer_profile_heading	Макет
+printer_send_heading	Доставка
+vp_delivery_heading	Доставка
+vp_delivery_help	Как этот виртуальный принтер отправляет задания — документ ОС, сырые байты или ESC/POS. Содержимое квитанции (размер шрифта, перенос, поля) задаёт формат счёта / квитанции, не здесь.
+vp_type_size_heading	Размер шрифта
+vp_wrap_heading	Ширина переноса
+vp_margin_heading	Поля
+vp_delivery_spooler	Документ ОС (системный спулер)
+vp_delivery_raw	Сырые байты на устройство
+vp_delivery_escpos	Термокоманды ESC/POS
+virtual_printer_new	Новый виртуальный принтер
+virtual_printer_selected	Правка «{name}» — нажмите другую в списке, чтобы переключить
+virtual_printer_tap_list	Нажмите виртуальный принтер в списке, чтобы править
+config_layout_portrait	Книжная
+config_layout_landscape	Альбомная
+config_send_os	Системный спулер
+config_send_escpos	ESC/POS
+profiles_heading	Принтеры
+profiles_empty	Принтеры
+profile_builtin	встроенный
+profile_custom	пользовательский
+profile_name_ph	Принтеры
+profile_new	Принтеры
+profile_delete	Принтеры
+profile_created	Принтеры
+profile_deleted	Принтеры
+profile_builtin_keep	Принтеры
+config_saved	Обновлено
+config_selected	Выбрано «{name}»
+printer_output_heading	Виртуальные принтеры
+virtual_printers_heading	Виртуальные принтеры
+virtual_printers_empty	Пока нет виртуальных принтеров — задайте значения ниже и сохраните. Затем нажмите в списке, чтобы править.
+virtual_printer_name_ph	Имя виртуального принтера (необязательно)
+virtual_printer_create	Создать виртуальный принтер
+virtual_printer_save	Сохранить виртуальный принтер
+virtual_printer_delete	Удалить виртуальный принтер
+virtual_printer_created	Виртуальный принтер «{name}» создан
+virtual_printer_deleted	Виртуальный принтер «{name}» удалён
+virtual_printer_updated	Виртуальный принтер обновлён
+virtual_printer_updated_named	Виртуальный принтер «{name}» обновлён
+virtual_draft_layout	Значения заданы для следующего виртуального принтера
+virtual_draft_send	Значение задано для следующего виртуального принтера
+virtual_need_real	Сначала выберите реальный принтер
+virtual_need_select	Выберите виртуальный принтер для удаления
+real_printer_selected	Реальный принтер: {name}
+station_group_heading	Виртуальные принтеры
+station_group_apply	Удалить виртуальный принтер
+station_group_applied	Удалено
+station_group_empty	Выберите виртуальный принтер
+station_group_name_ph	Имя виртуального принтера (необязательно)
+station_group_save	Создать виртуальный принтер
+station_group_saved	Виртуальный принтер сохранён
+station_manage_heading	Добавить или убрать секцию магазина
+printers_routes_heading	2. Куда печатать
+route_pick_heading	Место
+route_editing	Редактирование: {name}
+route_assigned	Добавлено {printer} в {place}
+route_already_assigned	Уже здесь: {printer}
+route_removed	Удалено {printer} из {place}
+route_cleared	Очистка {name}
+route_assigned_empty	Нет на этом месте
+route_tap_remove	коснитесь, чтобы удалить
+route_tap_select	нажмите, чтобы выбрать
+route_tap_selected	выбрано
+route_pick_printer_first	Сначала нажмите принтер
+route_assigned_heading	Принтеры
+route_add_heading	Назначить
+printer_label_ph	Имя (напр. принтер стойки)
+printer_target_ph	Адрес или имя в системе
+printer_target_default	принтер по умолчанию
+printer_wire_heading	Формат
+printer_wire_escpos	KOT
+printer_wire_os	Обычный книжный
+printer_wire_os_portrait	Обычный книжный
+printer_wire_os_landscape	Обычный альбомный
+printer_wire_escpos_short	KOT
+printer_wire_os_short	Книжная
+printer_wire_os_landscape_short	Альбомная
+printer_format_custom	Новый свой формат
+printer_format_custom_label	Свой
+printer_format_custom_added	Свой формат добавлен для этого маршрута
+add_printer	Добавить принтер
+remove_printer	Удалить последний
+route_pick_ph	Счёт или секция магазина
+route_bill	Счёт
+route_default_kitchen	Нет станции (неназначенные товары)
+route_kot_station	Станция
+route_dont_print	Не печатать
+stations_heading	Станции
+stations_help	Секции магазина группируют товары и принтеры этой части магазина. Прикрепите принтеры в Настройки → Принтеры, задайте порядок попыток, затем Первый удачный или Печать на всех. Изменения сохраняются сразу.
+station_print_heading	Принтеры этой станции
+station_print_help	Выберите станцию, затем прикрепите один или несколько принтеров. ↑↓ задаёт порядок попыток. Первый удачный останавливается после первого успеха; Печать на всех шлёт на каждый прикреплённый принтер.
+station_print_pick_ph	Станция для настройки принтеров
+station_print_pick_first	Сначала выберите секцию магазина
+station_print_editing	Правка принтеров «{name}»
+station_vps_dd	Принтеры этой станции
+station_vps_dd_n	{n} принтер(ов) · нажмите, чтобы изменить
+station_vps_empty	Пока нет принтеров — найдите их в Настройки → Принтеры
+bill_printers_dd	Принтеры для чека
+bill_printers_dd_n	{n} принтер(ов) для чека · коснитесь, чтобы изменить
+job_layout	Макет
+job_delivery	Как отправляется задание
+job_delivery_help	Документ ОС, сырые байты или ESC/POS. Счёт и квитанция хранят каждый своё. Любое задание может уйти на любой принтер, который сохранил поиск.
+station_vp_attached	Принтер прикреплён
+station_vp_detached	Принтер снят со станции
+station_print_summary	{mode} · {n} принтер(ов)
+station_print_summary_none	На этой станции пока нет принтеров — печатать не будет
+stations_none	Станций ещё нет — добавьте ниже. Станции в магазине со стойкой не используются — оставьте пустым.
+route_up	Вверх
+route_down	Вниз
+route_remove	Удалить последний
+route_clear	Не печатать
+save_printers	Сохранить принтеры
+print_test_page	Печать пробной страницы
+no_printer_assigned	Нет принтера
+test_page_no_printer	Нет принтера для {place} — назначьте выше и попробуйте снова
+test_page_pick_first	Сначала выберите тест. принтер(ы) — затем напечатайте пробную страницу
+test_printers_dd	Принтеры для пробной страницы
+test_printers_dd_n	{n} тест. принтер(ов) · нажмите, чтобы изменить
+kot_test_printers_dd	Принтеры для пробной печати
+kot_test_printers_dd_n	{n} принтер(ов) для пробной печати · коснитесь, чтобы изменить
+test_printer_picked	Тест на: {name}
+test_printer_cleared	Не тестировать: {name}
+test_page_sent_n	Пробная страница отправлена на {n} принтер(ов)
+test_kot_pick_first	Сначала выберите принтер(ы) для пробной печати — затем Пробная печать
+test_kot_sent_n	Пробная печать отправлена на {n} принтер(ов)
+cancel_pick	Отметить
+cancel_pick_on	Отмечено
+cancel_pick_meta	Отмечено к отмене
+batch_cancel	Отменить отмеченные
+batch_cancel_n	Отменить отмеченные ({n})
+batch_cancel_none	Сначала отметьте один или несколько отправленных товаров — затем Отменить отмеченные
+batch_cancel_title	Отменить отмеченное — одна причина, квитанция на отдел
+batch_cancel_ok	{n} товаров отменено · {slips} квитанц. отмены → {kitchens}
+batch_cancel_ok_noprint	{n} товаров отменено — автопечать выключена, квитанции отмены нет
+no_printer_kitchen_station	Нет принтера для этой станции
+printers_saved	Принтеры этого устройства сохранены
+test_page_sent	Пробная страница отправлена — проверьте принтер
+test_page_sent_one	Пробная страница отправлена на {name} — проверьте этот принтер
+printers_found	Найдено {n}: {list}
+printers_find_synced	Найдено {n} — новых {new}
+printer_on_device	сохранено
+printer_already_added	уже добавлен
+printer_already_saved	Уже сохранено: {name}
+find_printers	Найти принтеры
+printers_looking	Поиск принтеров на этом устройстве и в Wi‑Fi…
+saving_printer	Добавление принтера…
+cancelled	Отменён
+printers_tap_find	Нажмите «Найти принтеры» — появятся системные и сетевые принтеры чеков в этом Wi‑Fi.
+printers_none_found	Принтеры не найдены — введите имя в системе или сетевой адрес (напр. 192.168.1.50).
+printer_from_find	Добавлено {name}
+kot_printer_ph	Принтер квитанций
+bill_printer_ph	Принтер для счетов
+kot_print_on	Автопечать квитанций: вкл.
+kot_print_off	Автопечать квитанций: выкл.
+queue_refused	Не принято заведением ({n}) — проверьте каждое на кассе:
+clear_not_accepted	Проверено — очистить список
+device_name_ph	Имя этого устройства
+lan_last_update	обновлено в {time}
+lan_not_accepted	Не принято: {n}
+connected_now	сейчас на связи
+backup_failed	Последнее автоматическое резервное копирование не удалось: {e}
+backup_overdue	Резервных копий нет уже {n} дн. — держите приложение открытым на этом устройстве, чтобы оно могло их делать.
+disk_low	На устройстве свободно лишь {mb} МБ — скоро резервные копии перестанут создаваться. Освободите место.
+last_seen_devices	Последнее появление: {time}
+sync_interval	Синхронизация каждые {secs} секунд
+connection_to_shop	Связь с заведением
+supplier_name_ph	Имя поставщика (или стороны)
+supplier_ph	Поставщик
+switch_device	Переключить это устройство
+take_payment	Принять оплату
+tax_added_till	{tax} сверху
+tax_inside_price	{tax} включён
+tax_invoice	Налоговый счёт
+till_to_bank	Касса → банк
+units_heading	Единицы
+unlock_after_pairing	Введите PIN
+unlock_with_login	Разблокировать по входу
+unmark	Снять отметку
+update_my_password	Изменить мой пароль
+update_my_pin	Изменить мой PIN
+duress_heading	Аварийный PIN разблокировки (только владелец)
+duress_help	Необязательно. Если при разблокировке ввести этот PIN вместо вашего, все записи книг стираются (продажи, книги, история) и касса открывается как владелец, с виду обычно — товары, цены, стойки, персонал и настройки остаются. Схема и конфигурация не удаляются. Используйте только если вас вынуждают разблокировать. Оставьте пустым и сохраните, чтобы выключить. Никогда не совпадайте ни с чьим PIN.
+duress_pin_ph	Аварийный PIN (4–12 цифр)
+duress_confirm_ph	Введите ещё раз
+save_duress_pin	Сохранить аварийный PIN
+clear_duress_pin	Отключить аварийный PIN
+duress_on	Аварийный PIN включён
+duress_off	Аварийный PIN выключен
+duress_saved	Аварийный PIN сохранён
+duress_cleared	Аварийный PIN отключён
+upi_amount_ph	Сумма UPI
+void	Аннулировать
+write_off_ap	Списать AP
+write_off_heading	Списать (урегулировать без оплаты)
+write_off_nil	Списать / остаток ноль
+your_brand	Ваш бренд (в приложении)
+your_categories	Ваши категории
+account_kind	Тип счёта (нажмите один)
+actual_total_cap	ФАКТИЧЕСКИЙ ИТОГ
+amend_help	Выберите продажу для исправления, аннуляции или возврата. Исправления сохраняют всю историю.
+applied_total_cap	ИТОГ К ОПЛАТЕ
+bank_balance	Остаток в банке
+bank_net_today	Нетто банка за сегодня
+branch_export_help	Экспорт пишет branch_snapshot_CODE_DATE.json в папку резервных копий и копирует в буфер. Чтобы импортировать день другой точки, сохраните её файл как import_branch_snapshot.json в той же папке и нажмите Импорт.
+brand_shown_help	Показывается на экранах внутри приложения. Имя и значок установленного приложения на этом устройстве остаются как в магазине.
+app_icon	Иконка приложения
+logo_help	Опциональная метка магазина на экранах в приложении.
+onboard_layout	Что вы получаете
+item_photo_help	Опционально. Без фотографии мы покажем инициалы из названия позиции.
+stamp_heading	Штамп
+stamp_image_help	Необязательное изображение печати на напечатанных счетах и экране клиента.
+payment_qr_heading	QR-код оплаты
+payment_qr_image_help	Статичный QR на счетах и экране клиента; иначе оплата использует динамический UPI QR из VPA выше.
+cash_in_hand	Наличные в кассе
+change_my_pin_heading	Изменить мой PIN (только ваш)
+connect_to_server	Подключиться к серверу
+counter_locked	Стойка 01 · Заблокировано
+country_pack_help	Пакет страны задаёт название налога и расчёт, рельс мгновенной оплаты и налоговый ID на счетах. Kumkaj не подаёт налоги и не выпускает государственные э-счета.
+currency_use_help	Прокрутите и нажмите Использовать для любой поддерживаемой валюты.
+day_close_help	Запись закрытия дня сохраняет эту сводку (и разницу по кассе, если считали) в журнал аудита. Продажи не останавливаются.
+expenses_word	Расходы
+feature_access_help	Доступ к функциям выбранного сотрудника (нажмите после добавления)
+footer_local	Локальный SQLite · Бесплатно навсегда · Без облака
+fresh_book_kirano	Принтеры
+fresh_selected	Выбрано Fresh — каталог останется пустым. Нажмите Done, когда будете готовы.
+gross_word	Валовой
+how_start	Как вы хотите начать?
+kot_print_help_kirano	Когда KOT отправлен — со стойки или с устройства официанта — кухонная бумага печатается здесь сама.
+later_country_pack	Принтеры
+local_badge	ЛОКАЛЬНО
+mix_type_hint_kirano	При необходимости разделите на наличные / UPI / карта / кредит. Для кредита нужен клиент выше.
+money_in_sales	Деньги пришли (продажи)
+net_word	Нетто
+offline_badge	ОФЛАЙН
+optional_login_help	Необязательный вход (ID + пароль). Владелец задаёт один раз; позже только сам пользователь может менять пароль.
+or_unlock_login	Или разблокировать по ID входа + паролю
+permission_preset	Набор прав (к чему доступ)
+preset_help_kirano	Кассир: продажа. Менеджер: продажа + позиции + аннуляция/правка.
+product_locked_kirano	Kirano
+product_only_kirano	Это приложение — только Kirano, система для ресторанов. Для других отраслей есть отдельные продукты Kumkaj.
+purchases_cogs	Закупки (COGS)
+qty_cap	КОЛ-ВО
+restore_help	Восстановление: выберите копию. Книги откроются как тогда; текущие сначала сохраняются, так что это можно отменить.
+wipe_data_heading	Удалить локальные данные
+wipe_data_help	Только владелец — те же выборы, что при удалении в Windows. Торговые записи очищают историю торговли, но хранят товары и настройку (как аварийный PIN разблокировки). Настройка магазина удаляет базу книг. Настройки экрана очищают окно/язык. Подтвердите PIN владельца. Аварийный PIN разблокировки в Команде отдельный (скрытое стирание при разблокировке).
+wipe_trading	Торговые записи
+wipe_schema	Настройка магазина
+wipe_ui	Настройки экрана
+wipe_owner_pin_ph	PIN владельца для удаления
+wipe_delete_selected	Удалить выбранное
+wipe_owner_only	Только владелец может удалить локальные данные.
+restore_owner_only	Только владелец может восстановить резервную копию.
+wipe_owner_pin_needed	Введите PIN владельца, чтобы удалить локальные данные.
+wipe_nothing_selected	Сначала выберите, что удалить.
+wipe_done	Выбранные локальные данные удалены.
+wipe_schema_done	Настройка магазина стёрта — выберите Server или Client, чтобы продолжить.
+rounded_total	Округлённый итог
+setup_app_kirano	Настройка Kirano
+shop_logo_optional	Логотип магазина (необязательно)
+stock_type_help	Впишите имя позиции (части достаточно), количество, затем отрегулируйте. Несчитанным позициям нужен один раз Начать учёт.
+team_owner_help	Владелец создаёт каждого человека с именем, названием роли, набором прав и стартовым PIN. Владелец не может позже менять чужой PIN — только сам человек может обновить свой PIN.
+staff_name_ph	Имя / ID сотрудника
+staff_copy_hire_ph	Копировать настройки (опционально)
+staff_copy_hire	Использовать настройки этого человека
+staff_edit_name_ph	Отображаемое имя
+staff_rename	Сохранить имя
+staff_copy_edit_ph	Копировать настройки другого человека
+staff_copy_edit	Скопировать их настройки на выбранные
+staff_copy_edit_onto	Скопировать их настройки на {name}
+staff_deactivate_named	Удалить {name}
+staff_renamed	Имя сохранено
+staff_setup_copied_hire	Настройки скопированы из {name} — установите новое имя и PIN, затем добавьте сотрудника
+staff_setup_copied_edit	Настройки {from} скопированы на {to}
+staff_copy_need_selected	Выберите, чьи настройки редактировать первыми
+staff_copy_need_source	Выберите, чьи настройки скопировать
+staff_copy_same	Это тот же человек — выберите другого
+staff_rename_need_selected	Выберите, кого переименовать первыми
+team_pick_hint	Выберите, кого править — экраны, денежные права и станции только для этого человека.
+team_stations_help	Станции, которые им доступны
+team_stations_changed	Станции изменены — сохраните настройку для этого человека
+team_features_changed	Экраны изменены — сохранить настройки для этого пользователя
+team_rights_changed	Права изменены — сохранить настройки для этого пользователя
+they_owe_us	Они должны нам
+unit_at_cap	Цена за ед.
+units_help	Коды для этикеток позиций (kg, piece, bag). Каждая единица должна связываться — прямо или через другие единицы — со стандартом (kg · cm · ml · pc), напр. 1 crate = 2 box и 1 box = 20 cm. Пересчёты: 1 from = factor to. Валюты никогда не единицы.
+units_picker_help	Коснитесь Вкл./Выкл., чтобы показать единицу в выборе Закупки и Товары. Выключенные всё равно пересчитываются.
+unit_picker_on	Вкл
+unit_picker_off	Выкл
+we_owe_them	Мы должны им
+who_unlocking	Кто разблокирует?
+locked_word	Заблокировано
+show_pin	Показать PIN
+hide_pin	Скрыть PIN
+set_owner_pin	ЗАДАТЬ PIN ВЛАДЕЛЬЦА
+enter_owner_passcode	ВВЕДИТЕ КОД ВЛАДЕЛЬЦА
+enter_staff_passcode	ВВЕДИТЕ КОД СОТРУДНИКА
+pin_count_zero	0 / 12 цифр · минимум 4, затем ОК
+pin_count_need	{} / 12 цифр · нужно ещё {}
+pin_count_full	12 / 12 цифр · нажмите ОК
+pin_count_ready	{} / 12 цифр · нажмите ОК, когда будете готовы
+pin_hint_choose	Выберите 4–12 цифр (клавиатура или панель) · Enter/ОК для сохранения
+pin_hint_new	Новый PIN владельца из 4–12 цифр (клавиатура или панель) · Enter/ОК
+pin_hint_shop_code	Устройство магазина · код подключения {}
+pin_hint_books	Это устройство хранит книги
+pin_hint_paired	Дополнительная касса подключена — разблокировать для продажи
+pin_hint_pair_first	Дополнительная касса — сначала подключиться к устройству магазина
+unlock_to_continue	Разблокировать, чтобы продолжить
+no_staff_yet	Персонала пока нет — разблокировать как Владелец, затем Команда
+status_server_set_pin	Режим сервера — задать PIN владельца
+status_server_tills	Режим сервера — дополнительные кассы могут подключиться. Разблокировать
+status_server_unlock	Режим сервера — разблокировать как Владелец
+status_client_unlock	Режим клиента — разблокировать для продажи
+icon_new_selected	Значок: выбран новый файл — нажмите Сохранить бренд
+icon_custom	Значок: собственный знак магазина
+icon_default	Значок: знак Kumkaj (по умолчанию) — выберите свой
+logo_yours	Логотип: логотип вашего магазина — показывается на экранах и в чеках
+logo_default	Логотип: знак Kumkaj (по умолчанию) — выберите свой, если есть
+tmpl_current	Текущий: {} — {}
+tmpl_selected	Выбрано: {} — {}
+setup_complete	Настройка завершена
+onboard_fresh_tmpl	С нуля · {} — каталог начинается пустым; добавьте товары в Товарах, затем нажмите Готово.
+onboard_book_tmpl	Книга · {} — добавьте товары и начальный кредит, затем нажмите Готово.
+onboard_template_tmpl	Если хотите, назовите заведение, затем выберите, как начать.
+tmpl_blurb	Стойка кираны: продажа, запас, кредитная книга, закупки у поставщика, книги.
+tmpl_how	Продажа у стойки; Закупки для запаса; Дневная книга за день.
+reports_facet_title	Отчёты
+reports_facet_help	Дневные книги, старение дебиторки, банковские проводки и ПиУ за период.
+against_bill_ph	Против счёта № выше (необязательно)
+aliases_ph	Короткие коды и псевдонимы — через запятую (напр. MG02, atta)
+amount_blank_full_ph	Сумма (пусто = весь долг)
+amount_owed_ph	Сумма долга
+amount_ph	Сумма
+amount_received_ph	Полученная сумма
+amount_we_pay_ph	Сумма, которую мы платим
+business_name_ph	Название бизнеса
+category_new_ph	Категория (необязательно, создастся, если новая)
+code_bag_ph	Код (bag)
+conv_factor_ph	Коэффициент (25 = 1 bag → 25 кг)
+country_code_ph	Код страны, напр. IN, GB, US, AE, BR
+credit_khata_amount_ph	Сумма в кредит / на счёт
+credit_limit_ph	Лимит кредита (0 = нет)
+from_code_ph	Код из (bag)
+item_name_lang_ph	Название товара — введите на своём языке
+login_id_opt_ph	ID входа (необязательно)
+manager_pin_ph	PIN менеджера (только если вы не можете отменить)
+new_branch_name_ph	Название нового филиала
+new_password_ph	Новый пароль (необязательно)
+new_pin_ph	Новый PIN (4–12 цифр)
+note_bank_ph	Примечание (депозит, снятие, …)
+note_buy_expense_ph	Примечание (топливо, аренда, …)
+note_expense_ph	Примечание (топливо, офис, …)
+options_kirano_ph	Опции (необязательно) — Extra cheese=40, Large=80
+part_second_way_ph	Часть вторым способом (необязательно)
+phone_ph	Телефон
+place_name_ph	Название этого места
+qty_example_ph	Количество (напр. 1,5 для кг)
+quantity_ph	Количество
+reason_required_ph	Причина (обязательно)
+role_title_ph	Название роли (напр. Barista)
+service_pct_ph	Сервис % необязательно 0/10/12
+short_code_ph	Короткий код (MG02)
+starting_password_ph	Начальный пароль (необязательно)
+starting_pin_ph	Начальный PIN (4–12 цифр)
+station_name_ph	Название станции (необязательно)
+station_new_ph	Секция (необязательно)
+table_name_ph	Название стойки / окна
+tax_rate_ph	Название ставки или % — Standard, Reduced, 0, 5, 12, 18, 20
+to_code_ph	Код в (kg)
+uncleared_no_ph	Непроведённый № выше
+unit_cost_ph	Себестоимость единицы
+unit_name_bag_ph	Название (Bag)
+unit_plate_ph	Единица (тарелка / шт. — пусто = каждая)
+pay_credit	Кредит
+book_kind_today	Книга за сегодня
+book_kind_month	Книга за этот месяц
+book_kind_aging	Задолженность / дебет-кредит
+book_kind_balance	Баланс
+order_help	Выберите открытый заказ или стол, чтобы начать новый. Нажимайте готовые позиции, отправляйте KOT, выставляйте счёт на одну или несколько позиций, делите счёт и принимайте оплату.
+floor_help	Этот магазин продаёт у стойки. Столы и зал не входят в Kirano.
+kitchen_help	Когда KOT отправлен — со стойки или с устройства официанта — кухонная бумага печатается здесь сама.
+kitchen_empty	Нет открытых квитанций (магазины со стойкой обычно не используют этот экран).
+add_a_table	Добавить стол
+add_station_heading	Добавить отдел · напр. Овощи, Холод, Касса
+categories_help	Категория показывает, к какой части меню относится блюдо — например, закуски, основное блюдо или бирьяни. Создавайте категории по-своему: выбирайте предложенные имена, переименовывайте или добавляйте свои.
+dish_search_ph	Искать товары или короткий код…
+tile_free	Свободен
+tile_occupied	Занят
+tile_food_ready	Блюда готовы
+tile_bill_printed	Счёт напечатан
+tile_paid	Оплачено
+tile_bill_btn	Счёт
+tile_occupy_btn	Посадить
+tile_free_btn	Освободить
+tile_ready_btn	Готов
+tile_undo_bill	Отменить счёт
+summary_busy	столов занято
+summary_to_collect	к оплате
+summary_on_floor	в зале
+floor	Магазин
+sizes_as_items_ph	Размеры отдельными позициями (необязательно) — Половина=120, Полная=200
+dish_group_ph	Группа фасовок (необязательно) — напр. Atta 1kg / 5kg
+discount	Скидка
+remove_discount	Убрать скидку
+apply_discount	Применить скидку
+save_opening_cash	Сохранить размен
+close_shift_print	Закрыть смену и печатать
+area_prices_ph	Цены по зонам (необязательно) — AC=220, С собой=210
+discount_ph	10% или 50
+discount_reason_ph	Причина (напр. постоянный гость, задержка блюд)
+opening_float_ph	Наличные, положенные в кассу утром
+shift_counted_ph	Наличные при передаче смены
+opening_float	Размен на начало дня
+shift_handover	Передача смены
+shift_since	Смена с
+expected_in_drawer	Ожидается в кассе
+right_discount	Давать скидку
+floor_in_kitchen	В работе
+floor_eating	Едят
+pick_category	Выбрать категорию
+close_category_list	Закрыть список категорий
+new_category_row	Новая категория — создаётся при сохранении
+your_category	Ваша категория
+suggested_category	Предложено — из наших товаров
+category_search_ph	Категория — найдите свою или введите новую
+line_sent_state	Отправлено
+line_nc_state	Бесплатно (NC) — без оплаты
+cancel_item_short	Отменить
+nc_short	Бесплатно
+charge_again_short	Начислить
+move_short	Перенести
+cancel_item_title	Отменить этот товар — бэк-офис получит квитанцию отмены
+nc_item_title	Сделать позицию бесплатной (NC)
+charge_again_title	Снова начислить за позицию
+move_item_title	Перенести позицию на другой стол
+already_cooked	Уже приготовлено (списание)
+not_cooked_yet	Ещё не готовилось
+return_to_customer	Сдача
+short_by	Не хватает
+tip_not_sale	Чаевые (персоналу, не выручка)
+right_settle	Принимать оплату
+right_cancel_sent	Отменять отправленную позицию
+right_complimentary	Бесплатно (NC)
+right_move_table	Переместить / объединить стойки
+right_reprint	Повторная печать счёта
+right_allowed	Разрешено
+right_with_approval	С одобрением
+right_denied	Запрещено
+editing_staff	Права:
+finding_server	Ищем сервер заведения в этой сети Wi‑Fi…
+no_server_found	Сервер не найден. Проверьте, что устройство заведения в той же сети Wi‑Fi и доп. кассы разрешены, или введите его IP.
+servers_found_pick	Нажмите магазин, к которому хотите подключиться.
+server_host_selected	Используется {host} — введите код сопряжения, затем «Связать сейчас».
+print_bill	Печать счёта
+table_actions	Действия стойки
+move_merge_table	Перенести / объединить стол
+move_help	Переместите заказ этой стойки на свободный стол или объедините с уже открытым.
+move_target_ph	Название стойки
+approval_pin_ph	PIN менеджера (только по запросу)
+move_here	Перенести сюда
+merge_into	Объединить с ним
+line_reason_ph	Причина (напр. клиент передумал, нет в наличии)
+line_qty_ph	Сколько отменить (пусто = всё)
+line_target_ph	На стол (напр. D5)
+confirm	Подтвердить
+menu_search_ph	Поиск блюда или короткого кода
+customer_paid_ph	Клиент дал
+tip_ph	Чаевые
+table_area_ph	Зона (напр. Зал, С собой, AC)
+table_range_ph	Сразу несколько: D1-D20
+add_these_tables	Добавить эти стойки
+remove_these_tables	Удалить эти стойки
+table_remove_ph	Убрать: T1-T24 или название стола
+find_server	Найти сервер заведения
+bill_format	Формат счёта
+bill_format_help	Печатается под названием магазина на каждом счёте. Строки разделяйте | (напр. MG Road, Rajkot | Ph 98250 00000).
+bill_header_ph	Адрес | телефон
+fssai_ph	№ лицензии FSSAI / магазина (необязательно)
+bill_footer_ph	Нижняя строка (напр. Спасибо, ждём снова)
+save_bill_format	Сохранить формат счёта
+kot_format	Формат квитанции
+kot_format_help	Коснитесь поля в списке. Показ, размер шрифта и насыщенность относятся к этому полю у вида квитанции, выбранного выше. Каждый вид хранит свои размеры и насыщенность.
+kot_format_fields	Поля
+kot_field_next	Следующее поле
+kot_field_show	Показать
+kot_field_hide	Скрыть
+kot_field_on	показать
+kot_field_off	скрыть
+kot_field_size	Размер шрифта
+kot_field_size_ph	напр. 16, 20, 24, 28, 32…
+kot_weight_light	Тонкий
+bill_kot_panel_help	Макет счёта и ширина содержимого. Кассир — кто выписал или закрыл счёт; вся продажа остаётся в книгах.
+std_size_ph	напр. 18, 20, 26…
+kot_show_shop	Название магазина
+kot_hide_shop	Скрыть магазин
+kot_show_time	Время
+kot_hide_time	Скрыть время
+kot_show_waiter	Кассир
+kot_hide_waiter	Скрыть кассира
+kot_show_station	Станция
+kot_hide_station	Скрыть станцию
+kot_show_table	Стойка
+kot_hide_table	Скрыть стол
+kot_show_kot_no	Номер квитанции
+kot_hide_kot_no	Скрыть № квитанции
+kot_width	Просмотр переноса (ширину задают на вкладке квитанции)
+kot_width_58	58 mm
+kot_width_80	80 mm
+kot_kind_heading	Вид квитанции
+kot_kind_original	Оригинал
+kot_kind_duplicate	Дубликат
+kot_kind_modified	Изменён
+kot_kind_cancelled	Отменён
+kot_style_heading	Размер и насыщенность поля
+kot_style_title	Заголовок
+kot_style_item_qty	Позиция · Кол-во
+kot_style_field_pick	Выбрать поле
+kot_weight_regular	Обычный
+kot_weight_bold	Жирный
+kot_align	Выровнять
+kot_align_start	Начать
+kot_align_center	По центру
+kot_align_end	В конец
+content_width	Ширина содержимого (мм)
+content_width_bill	Ширина билла (мм)
+content_width_kot	Ширина содержимого квитанции (мм)
+content_width_ph	Или введите ширину содержимого, 40–210 мм
+content_width_help	Какой ширины печатается эта квитанция. Счёт хранит свою ширину.
+content_width_bill_help	Какой ширины печатается счёт клиента. По умолчанию 210 мм (страница). 58 мм узкая квитанция, 80 мм широкая, 112 мм 4 дюйма, 210 мм ширина A4. Введите значение от 40 до 210. У квитанций своя ширина на вкладке квитанции.
+content_width_kot_help	Какой ширины печатается квитанция. По умолчанию 80 мм. 58 мм узкая квитанция, 80 мм широкая, 112 мм 4 дюйма, 210 мм страница. Введите значение от 40 до 210. У счетов клиента своя ширина на вкладке Счёт.
+vp_paper_width	Ширина содержимого (мм)
+vp_paper_width_ph	Или введите ширину содержимого, 40–210 мм
+vp_paper_width_help	Ширина содержимого задаётся в «Формат счёта и квитанции» — отдельно для счёта (по умолчанию 210 мм) и квитанции (по умолчанию 80 мм).
+kot_size	Размер шрифта
+kot_size_s	Мелкий
+kot_size_m	Обычный
+kot_size_l	Крупный
+std_size	Размер шрифта
+kot_copies	Копии
+kot_copies_1	1
+kot_copies_2	2
+kot_copies_3	3
+kot_title_ph	Заголовок (пусто = TICKET)
+kot_footer_ph	Заметка бэк-офиса (необязательно)
+kot_preview	Просмотр
+save_kot_format	Сохранить формат квитанции
+test_kot_format	Пробная печать
+test_kot_sent	Предпросмотр квитанции отправлен
+test_bill_format	Тест билла
+test_bill_sent	Предпросмотр билла отправлен
+test_print_no_printer	Принтер для этого задания отсутствует — выберите один на этом экране
+kot_format_saved	Формат квитанции сохранён
+std_print	Размер печати счёта
+std_print_help	Размер шрифта для счетов «Стандартный портрет» и «Альбом» на принтерах документа ОС (введите пункты — не Мелкий/Обычный/Крупный). Один размер в обеих ориентациях.
+std_size_s	Мелкий
+std_size_m	Обычный
+std_size_l	Крупный
+save_std_print	Сохранить размер печати
+std_print_saved	Размер печати сохранён
+print_brand_kit	Печатный бренд-набор
+print_brand_kit_help	Необязательные изображения печати и QR оплаты на лице счёта и LAN-экране клиента. Динамический UPI QR из VPA выше работает и без изображения QR.
+choose_stamp	Выбрать штамп
+clear_stamp	Убрать штамп
+stamp_set	Печать: в файле — видна на экране клиента и названа на напечатанных счетах
+stamp_none	Штамп: нет
+choose_payment_qr	Выбрать QR оплаты
+clear_payment_qr	Убрать QR оплаты
+payment_qr_set	QR оплаты: в файле — на экране клиента (там заменяет UPI QR суммы)
+payment_qr_none	QR оплаты: нет — QR суммы из UPI при оплате
+aggregator_import	Заказы агрегатора (файл)
+aggregator_import_help	Опционально Local: положите import_aggregator_orders.json в backups и Импорт. Стойка не блокируется; live Zomato/Swiggy = Cloud.
+import_aggregator_file	Импорт файла агрегатора
+team_pick_ph	Имя сотрудника для правки
+select_staff	Выбрать сотрудника
+rights_help	Денежные действия этого человека — коснитесь для цикла: Разрешено → Нужен PIN начальника → Не разрешено. Повторная печать счёта только для счетов; секции — список ниже.
+dish_picker_help	Найдите или просмотрите наши товары и коснитесь одного, чтобы подставить имя и фото — или оставьте своё имя. Задайте цену (0 можно), затем Добавить товар.
+close_dish_list	Закрыть список товаров
+own_item_name	Использовать как своё название
+on_your_menu	В каталоге
+edit	Изменить
+schemes	Акции
+schemes_help	Один в подарок, скидка в процентах и наборы. Пример: 2 риса и 1 масло.
+scheme_bogo_ph	2 риса, 1 масло
+add_scheme	Добавить BOGO
+schedule_ph	Hours — Mon-Fri 07:00-11:00 or Evening 17:00-19:00=150
+upi_vpa_ph	UPI ID (VPA)
+upi_payee_ph	Получатель UPI (необяз.)
+upi_qr	UPI QR
+show_upi_qr	Показать QR UPI
+close_upi_qr	Закрыть
+upi_qr_help	Клиент сканирует и платит. Коснитесь «Принять оплату» после оплаты. Второй экран: откройте URL сервера /display в LAN.
+kot_recall	Вернуть
+recently_done	Недавно готово
+recall_kot_ph	№ квитанции для вызова
+role_help_customer	Роль: Клиент — AR (они должны нам). Та же фирма может быть и поставщиком.
+role_help_both	Роли: Отправитель + Перевозчик — одна сторона, книги AR и AP, нетто в Отчётах.
+role_help_supplier	Роль: Поставщик — AP для закупок.
+dine_in_pick_table	Не используется в магазине со стойкой
+choose_table	Выбрать стойку
+change_table	Сменить стол
+pick_table_banner	Выберите стол для этого заказа
+items_word	поз.
+items_section	Позиции
+back_to_order	Назад к заказу
+new_items_head	Ещё не отправлено
+price_ph	Цена
+price_ph_gst_inside	Цена ({tax} включён)
+cancel_needs_table	Продажи со стойки остаются на квитанции, пока вы не примете оплату
+tax_rates_missing_hint	Нет ставки {tax} у этих товаров — в Товарах задайте ставку налога (цены уже включают {tax} при {tax} включён)
+taxable_value	Налогооблагаемая база
+gst_inside_price_note	({tax} включён)
+start_with_template	Начать с нашего шаблона товаров
+template_heading	Стартовые товары
+template_info	{c} категорий и {d} товаров с фото, готовы к добавлению. Цены начинаются с ₹0 — затем задайте свои.
+template_import	Импортировать весь шаблон
+template_confirm	Добавить {d} товаров с их категориями? Товары, которые у вас уже есть, останутся как есть.
+template_yes	Да, импортировать
+template_importing	Импорт товаров…
+template_import_progress	Импорт… {d}/{t}
+template_done	Каждый товар из нашего шаблона уже в ваших товарах.
+template_imported	Добавлено {d} товаров и {c} категорий — задайте цены на этом экране
+client_template_heading	Импорт каталога
+client_template_info	{title}: {c} категорий, {d} товаров с ценами, фото и псевдонимами. Только недостающие — имена, которые уже есть, остаются.
+client_template_import	Импортировать эти товары
+client_template_confirm	Добавить {d} товаров из {title}? Товары, которые у вас уже есть, останутся как есть.
+client_template_importing	Импорт {title}…
+client_template_done	Каждый товар из {title} уже в ваших товарах.
+client_template_imported	Добавлено {d} товаров и {c} категорий из {title}
+resv_heading	Бронирования
+resv_name_ph	Имя клиента
+resv_phone_ph	Телефон (необязательно)
+resv_guests_ph	Люди
+resv_when_ph	Когда — 20:30, tomorrow 13:00
+resv_table_ph	Стойка (необязательно)
+resv_add	Забронировать
+resv_seat	Посажены
+resv_none	Предстоящих бронирований нет.
+guests_word	гостей
+delivery_by_ph	Доставляет (курьер или сотрудник)
+kitchen_all_day	Готовить сейчас: {items}
+split_bill	Разделить счёт
+split_go	Сделать отдельный счёт
+cancel	Отмена
+opening_client	Открытие клиента…
+preparing_desk	Подготовка стола…
+opening_server	Открытие сервера…
+creating_server	Создание сервера…
+split_help	Коснитесь товаров, которые оплачивает один клиент · выбрано {n}
+split_send_first	Сначала отправьте квитанцию — в отдельный счёт попадают только товары, которые уже есть у бэк-офиса
+split_pick_some	Сначала коснитесь товаров для отдельного счёта
+split_done	Отдельный счёт готов — он на зале рядом с этой стойкой
+split_marked	отдельный счёт
+order_empty_pick	Заказ пуст — коснитесь «Добавить товары» выше, чтобы выбрать.
+add_dishes	Добавить товары
+order_so_far	В этом заказе: {n} · {total}
+no_dish_match	Нет товара по запросу «{q}»
+pick_dishes_help	Коснитесь товара, чтобы добавить · выберите категорию, чтобы сузить список
+pick_done	Готово
+pick_done_dd	Готово · {label}
+printer_route_mode	Если несколько принтеров в этом месте
+printer_mode_first	Первый рабочий
+printer_mode_all	Печать на всех
+kot_show_area	Область
+kot_hide_area	Скрыть область
+kot_show_item_hdr	Позиция · Кол-во
+kot_hide_item_hdr	Скрыть столбцы
+kot_show_title	Строка заголовка
+kot_hide_title	Скрыть заголовок
+kot_field_order	Печать заказа
+kot_field_up	Переместить вверх
+kot_field_down	Переместить вниз
+kot_field_cycle	Выбрать следующий
+kot_field_select	Выбрать следующий
+kot_field_time	Время
+kot_field_kot_no	Номер квитанции
+kot_field_area	Область
+kot_field_table	Стойка
+kot_field_shop	Название магазина
+kot_field_waiter	Персонал
+kot_field_station	Станция
+app_template_blurb_extra	Также: владелец Zahir, админ Asif, кассир Nawaz; боковая панель спереди; история через 4 часа; полоса Сегодня выкл.; компактный счёт.
+dishes_n	{n} товаров
+recipe_ph	Рецепт (необязательно — не используется в магазине со стойкой)
+reorder_ph	Докупить при
+set_reorder	Задать уровень дозаказа
+low_stock_alert	Заканчивается — купите скоро: {items}
+unpriced_note	У {n} ваших товаров ещё нет цены — они считаются по 0, пока вы не зададите.
+show_unpriced	Показать только товары без цены
+show_all_dishes	Показать все товары
+role_waiter	Кассир
+role_kitchen	Склад
+role_title_rest_ph	Должность (напр. капитан, шеф-повар)
+preset_help_rest	Кассир: продажа. Менеджер: продажа + позиции + аннуляция/правка.
+kind_raw	Куплено для нужд магазина
+kind_resale	Куплено для продажи
+kind_dish	Без учёта
+buy_unit_ph	Ед. (кг, литр, шт)
+add_another_way	+ Ещё способ
+parts_status	Введено {a} из {b} · осталось {c}
+save_expense	Сохранить расход
+rest_ph	Остаток
+low_badge	Мало
+stock_empty	Пока ничего на складе — записанное в «Закупке» появится здесь.
+recent_changes	Последние изменения
+lane_declared_label	Налоговый счёт
+lane_owner_label	Кассовый чек
+money_lane_bill	Билл: {lane}

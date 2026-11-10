@@ -1,0 +1,1351 @@
+# Hebrew — עברית (he). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	הזמנות מסעדה, מטבח וספרים. חינם בלי אינטרנט.
+unlock	פתח
+pin_hint	קוד הבעלים מתחיל ב־0000
+sell	הזמנה
+buy	קנייה
+books	ספר היום
+books_help	המצב של היום. הזמנה = הזמנות נכנסות. קנייה = רכישות והוצאות. צדדים = לקוחות באשראי וספקים.
+buy_help	שוברים להוצאות וחשבוניות ספק (כסף יוצא). מה שנשאר בחשבון נשאר בספר הצד.
+sell_money_in	קח הזמנה
+buy_money_out	הוצאה / חשבונית ספק
+record_purchase	רשום רכישה
+add_expense	שובר הוצאה
+bank_book	ספר הבנק
+credit_help	מזהה הצד ייחודי (שמות יכולים לחזור). לקוח מנהל כרטיס khata (חייב לנו); ספק מוכר לנו מלאי (אנחנו חייבים לו); שניהם בסדר. הספרים נשארים נפרדים; הדוחות מראים נטו.
+party_kind_ph	תפקידים: לקוח, ספק, שניהם…
+reports_help	ספר היום, חייבים וזכאים, ספר הבנק, שוברים להוצאות, רווח והפסד.
+reports_today	ספר היום (היום)
+reports_month	רווח והפסד (חודש)
+reports_aging	פתוח / חובה-זכות
+reports_balance_sheet	מאזן
+reports	ספר הבנק ורווח והפסד
+refresh	רענן
+undo	בטל
+start_tracking	התחל מעקב
+stock_minus	− מלאי
+stock_plus	+ מלאי
+settle_cash	סגור במזומן
+settle_card	סגור בכרטיס
+items	תפריט ופריטים
+nav_items	תפריט
+more	עוד
+your_items	התפריט שלך
+items_help	הקישו על פריט כדי לערוך אותו. פריט חדש מנקה את הטופס. חפשו את המנות שלנו או הקלידו שם ותמונה משלכם, קבעו מחיר (0 בסדר), ואז הוסף. מכירות שכבר נרשמו שומרות את השם שבו חויבו.
+add_item	הוסף פריט
+new_item	פריט חדש
+adding_item	מוסיפים פריט חדש
+editing_item	בעריכה
+save	שמור
+remove	הסר
+removed_items	פריטים שהוסרו
+removed_help	שחזור מחזיר את הפריט לתפריט בדיוק כפי שהיה — מחיר, תמונה וקטגוריה. המדף של המנות שלנו לא מוסר אף פעם, כך שאפשר תמיד להוסיף מנה שוב.
+restore_item	שחזר
+empty_catalog	עדיין אין מנות. פתחו את התפריט, הוסיפו מנה (שם + מחיר), ואז קחו הזמנה.
+total	סה״כ
+cash	מזומן
+upi	UPI
+card	כרטיס
+credit	צדדים
+clear	נקה
+ready_to_sell	מוכן לרישום
+today_prefix	היום
+today_mid	היום
+owed	פתוח
+round_word	עיגול
+back	חזרה
+sold_out	לא זמין
+restock	מלא מחדש
+not_tracked	בלי מעקב
+in_stock	במלאי
+marked_sold_out	סומן כלא זמין
+add_upper	הוסף
+na	לא רלוונטי
+qty	משקל/כמות
+unit_at	מחיר @
+actual	בפועל
+applied	הוחל
+note_ph	הערה (לא חובה)
+rounded	מעוגל
+split	פצל
+send_kot	שלח KOT
+send_kot_to	שלח → {kitchens}
+send_kot_again	הוסף מנות ל־KOT הבא
+send_kot_held	מנות מוחזקות — שחררו כדי לשלוח
+reprint_kot	הדפס את הנבחרים שוב
+reprint_kot_ok	הודפסו שוב {n} מנות · {slips} פתקים → {kitchens}
+reprint_kot_needed	שלחו קודם KOT — אחר כך כללו מנות והדפיסו את הנבחרים שוב
+reprint_kot_none_selected	כל מנה שנשלחה מדולגת — הקישו בהדפסה על אלה להדפסה חוזרת
+reprint_kot_client	הדפסה חוזרת ({n}) עבור {place} נשלחה — המטבח מדפיס בשרת
+print_cancelled_kot	הדפס את כל המבוטלות
+print_cancelled_kot_ok	הודפסו {n} מנות מבוטלות · {slips} פתקים → {kitchens}
+print_cancelled_kot_needed	פתחו קודם שולחן עם מנות מבוטלות
+print_cancelled_kot_none	אין מנות מבוטלות בהזמנה הזו
+print_cancelled_kot_client	הדפסת מבוטלות ({n}) עבור {place} נשלחה — המטבח מדפיס בשרת
+kot_banner	סרט הסוג
+kot_banner_ph	סרט (ריק = אין)
+kot_item_prefix	קידומת פריט
+kot_item_prefix_ph	למשל [מבוטל]
+kot_strike	קו על שם המנה
+kot_strike_note	קו על הערת המנה
+kot_strike_on	פועל
+kot_strike_off	כבוי
+bill_item_layout	פריסת פריט
+bill_item_layout_columns	עמודות
+bill_item_layout_stacked	מוערם
+bill_item_header	כותרות עמודות
+bill_item_hdr_item	כותרת פריט
+bill_item_hdr_qty	כותרת כמות
+bill_item_hdr_price	כותרת מחיר
+bill_item_hdr_amount	כותרת סכום
+bill_item_name	שם המנה
+bill_item_qty	כמות
+bill_item_price	מחיר
+bill_item_amount	סכום
+bill_item_note	הערת מנה
+bill_item_col_gap	רווח עמודות
+bill_item_col_order	סדר עמודות
+bill_item_col_sep	קווי עמודות
+bill_item_gap_tight	צפוף
+bill_item_gap_comfort	נוח
+bill_item_gap_wide	רחב
+bill_item_num_width	עמודות מספרים
+bill_item_num_compact	קומפקטי
+bill_item_num_comfort	נוח
+bill_item_num_wide	רחב
+bill_item_num_align	יישור מספרים
+bill_item_gap_em	רווח (em)
+bill_item_qty_min	כמות מינ׳ (em)
+bill_item_price_min	מחיר מינ׳ (em)
+bill_item_amount_min	סכום מינ׳ (em)
+kot_item_qty_width	עמודת כמות
+kot_item_num_align	יישור כמות
+bill_total_qty_label	תווית כמות כוללת
+bill_total_subtotal_label	תווית ביניים
+bill_total_grand_label	תווית סה״כ
+bill_total_paid_label	תווית סה״כ ששולם
+bill_meta_pair	שתף שורה עם
+bill_pair_alone	לבד
+bill_item_piece_on	פועל
+bill_item_piece_off	כבוי
+bill_total_qty	כמות כוללת
+bill_total_subtotal	ביניים
+bill_total_grand	סה״כ
+reprint_incl	בהדפסה
+reprint_skip	דלג
+reprint_skip_meta	דלג על הדפסת שחזור
+kot_dest_hint	מודפס במדפסות ששייכתם אל {kitchens} בהגדרות → מדפסות
+kot_sent_hint	ה־KOT האחרון הלך אל {kitchens}. הקישו כדי להוסיף מנות לפתק הבא — או הדפיסו KOT שוב לאותו אחד.
+kot_sent_printing	KOT נשלח אל {kitchens} — מדפיס
+kot_sent_not_printed	KOT נשלח אל {kitchens} אבל לא הודפס: {why}. עדכנו את המטבח, ואז תקנו את המדפסת והדפיסו שוב.
+kot_sent_screen	KOT נשלח אל {kitchens}
+kot_queued_shop	KOT עבור {place} → {kitchens} נשמר; מכשיר החנות מדפיס אותו
+kot_job_label	KOT עבור {place} → {kitchens}
+kot_job_reached	KOT עבור {place} הגיע אל {kitchens}
+kot_unassigned	מטבח (בלי עמדה)
+kot_unassigned_held	הוחזקו {n} מנות בלי עמדה — שחררו בשורה כדי לשלוח
+kot_station_ph	מטבח
+kot_station_dd	מטבח
+kot_station_dd_n	מטבח · {stations}
+kot_set_station	השתמש בעמדה הזו
+kot_station_applied	העמדה נקבעה על {n} מנות: {station}
+kot_station_cleared	העמדה הוסרה מ־{n} מנות: {station}
+kot_station_needed	בחרו קודם עמדת מטבח
+kot_station_not_allowed	אין הרשאה להשתמש במטבח: {station}
+kot_station_none	עדיין אין עמדות מטבח — הוסיפו אחת תחת מטבח או הגדרות → אזורים · עמדות
+pos_tab_items	פריטים שנוספו
+pos_tab_payment	תשלום
+hold_send	החזק
+hold_send_on	מוחזק
+hold_send_meta	מוחזק — לא ה־KOT הזה
+station_remove	הסר עמדה
+station_remove_ph	הקישו על עמדה ברשימה כדי להסיר אותה
+station_removed	העמדה הוסרה: {name}
+settings_hub_title	הגדרות
+settings_hub_help	פתחו אזור אחד בכל פעם — פחות גלילה, בחירות ברורות יותר.
+settings_back	חזרה
+settings_sec_language	שפה ומטבע
+settings_sec_country	מדינה ומס
+settings_sec_tills	מכשירים אחרים
+settings_sec_brand	המותג שלכם
+settings_sec_units	יחידות והמרות
+settings_sec_pickers	אזורים · עמדות · שערי מס
+settings_sec_printers	מדפסות
+settings_sec_bill	פורמט חשבון ו־KOT
+settings_sec_selling	מבצעים ומכירות
+bill_kot_tab_bill	חשבון
+bill_kot_tab_kot	KOT
+settings_sec_alerts	התראות
+alerts_help	כמה זמן הודעות מצב נשארות על המסך עבורכם (הכניסה הזו).
+snack_secs_ph	שניות (3–60, ברירת מחדל 10)
+snack_secs_save	שמור זמן התראה
+snack_secs_saved	זמן ההתראה נשמר — {n} שניות
+settings_sec_backup	גיבוי ושחזור
+settings_sec_diag	אבחון
+diag_privacy_help	היומנים נשארים במכשיר הזה. סודות (PIN, סיסמאות) לא נשמרים אף פעם. שיתוף חבילה מחוץ למכשיר דורש את האישור המפורש שלכם בכל פעם — לא נמכר ולא ניתן לצדדים שלישיים.
+diag_level	רמת פירוט
+diag_level_error	שגיאות
+diag_level_warn	אזהרות
+diag_level_info	Info
+diag_level_debug	Debug
+diag_support_start	התחל מפגש תמיכה של 30 דקות
+diag_support_stop	סיים מפגש תמיכה
+diag_support_started	מפגש התמיכה פועל — פירוט Debug ל־30 דקות
+diag_support_ended	מפגש התמיכה הסתיים
+diag_export_local	ייצא עותק מקומי
+diag_export_local_done	אבחון מקומי מוכן ב־{path} — בחרו איפה לשמור עותק
+diag_approve_send	אשר שיתוף מחוץ למכשיר הזה
+diag_send_help	האישור הוא לחבילה אחת, ואז פג. זמני — משמש רק לתיקון או שיפור המוצר. לא משותף עם צדדים שלישיים. עובד ב־Linux, Windows, macOS ו־Android.
+diag_send_approved	השיתוף אושר לחבילה אחת (פג בקרוב)
+diag_export_send	צור חבילת שיתוף (דורש אישור)
+diag_export_send_done	חבילת השיתוף מוכנה ב־{path} — בחרו איפה לשמור, ואז שלחו רק לתמיכת Kumkaj
+diag_save_bundle	שמור עותק אבחון
+diag_bundle_saved	עותק האבחון נשמר אל {path}
+diag_bundle_failed	לא ניתן לשמור את עותק האבחון — נסו שוב
+diag_clear	נקה יומני אבחון
+diag_cleared	יומני האבחון נוקו
+sidebar_settings	סרגל צד
+sidebar_settings_help	אותם סמלים כמו במסילה הצדדית. גררו שורה כדי לשנות סדר. הפכו את המתג כדי להציג או להסתיר. הגדרות ונעילה נשארים תמיד בסרגל.
+sidebar_always_on_short	תמיד פועל
+sidebar_back_settings	חזרה
+sidebar_shown	מוצג
+sidebar_hidden	מוסתר
+sidebar_always_on	תמיד בסרגל
+sidebar_shown_hint	מוצג במסילה הצדדית / בלשוניות התחתונות
+sidebar_hidden_hint	מוסתר מהסרגל
+sidebar_menu_items	תפריט ופריטים
+sidebar_enable_all	הפעל הכול
+sidebar_disable_all	כבה הכול
+sidebar_order_saved	סדר סרגל הצד נשמר
+sidebar_visibility_saved	נראות סרגל הצד נשמרה
+amounts_hide	הסתר
+amounts_show	הצג
+printers_none_hint	שמרו קודם מדפסת במכשיר הזה, ואז הוסיפו אותה לחשבון או למטבח
+counter	דלפק
+dine_in	באולם
+takeaway	לקחת
+order	הזמנה
+tables	שולחנות
+kitchen	מטבח
+sales	מכירות
+sales_refunds	מכירות והחזרים
+day_close	סגירת יום
+reports_expenses	ספר הבנק ורווח והפסד
+nav_reports	דוחות
+nav_settings	הגדרות
+nav_lock	נעל
+no_sale_yet	עדיין אין מכירה
+favorites	מועדפים
+favorites_help	פריטים שאתם מוכרים לעיתים קרובות, שמורים לכניסה שלכם. הוסיפו אחד לחשבון, או בנו את הרשימה מכל הפריטים למטה.
+your_favorites	המועדפים שלכם
+all_items	כל הפריטים
+frequent	נפוצים
+added_items	פריט/ים שנוספו
+added_items_empty	עדיין אין כלום בהזמנה הזו — הוסיפו מנה מכל הפריטים או מקטגוריה.
+frequent_config_help	המנות הנמכרות ביותר מחשבונות שנסגרו. קבעו כמה ימים להסתכל וכמה מנות להציג.
+frequent_days_ph	ימים (1)
+frequent_limit_ph	פריטים (24)
+frequent_apply	החל
+frequent_saved	נפוצים: {d} הימים האחרונים, {n} המובילים — {c} מנות
+frequent_empty	עדיין אין מכירות שנסגרו בתקופה הזו — סגרו חשבון (₹0 מותר כשההגדרות אומרות כך) והן יופיעו כאן.
+zero_sales	מכירות בערך אפס
+zero_sales_help	אפשרו מנות במחיר ₹0 וחשבונות שנסגרים ב־₹0 (כיבוד / רצון הבעלים). פועל כברירת מחדל כדי שכיסויים חינם עדיין יופיעו בנפוצים ובספרי היום.
+zero_sales_on	אפשר ₹0
+zero_sales_off	דרוש מחיר
+zero_sales_saved_on	מכירות בערך אפס מותרות
+zero_sales_saved_off	למכירות חייב להיות מחיר מעל ₹0
+floor_areas_help	אזורים הם חדרים או חלקים באולם (באולם, משלוח, מיזוג …). הוסיפו קודם אזור, ואז שימו בו שולחנות — כל אזור הוא קבוצה נפרדת באולם.
+area_new_ph	אזור / חדר חדש (למשל מיזוג, גינה)
+add_area	הוסף אזור
+area_added	האזור “{name}” מוכן — הוסיפו אליו שולחנות
+no_favorites	עדיין אין מועדפים — הוסיפו פריטים מהרשימה למטה.
+add_to_bill	הוסף לחשבון
+added	נוסף
+owes_word	חייב
+selected_word	נבחר
+chip_clear_credit	נקה — אשראי או קח מקדמה
+chip_missing_customer	הלקוח שנבחר חסר — בחרו שוב
+chip_no_customer	עדיין אין לקוח — הקלידו שם, ואז הקישו אשראי
+credit_summary_fmt	{} לקוחות · אשראי פתוח {} · מקדמות שנשמרו {}
+recent_label	אחרונים:
+kot_new_waiting	חדש — ממתין
+kot_preparing	בהכנה
+kot_ready_serve	מוכן — הגישו
+kot_done_cap	בוצע
+kot_cancelled	בוטל
+kot_start_btn	התחל
+kot_mark_ready	סמן מוכן
+kot_done_btn	בוצע
+table_free	פנוי — הקישו כדי להתחיל הזמנה
+start_order	התחל הזמנה
+open_bill	פתח חשבון
+collect_payment	גבה תשלום
+table_running	פעיל
+payment_pending	תשלום ממתין
+collect_at_counter	גבו בדלפק
+inventory	מלאי
+inventory_stock	מלאי וסחורה
+branches	סניפים
+branches_org	סניפים וארגון
+credit_customers	צדדים (khata וספקים)
+customer_name_ph	שם הצד
+new_customer_ph	שם צד חדש
+item_name_ph	שם הפריט (למשל מסאלה דוסה)
+item_price_ph	מחיר
+start_template	מוצר
+team	צוות
+team_pins	צוות וקודי PIN
+my_pin_settings	ה־PIN שלי
+settings_hub_help_my_pin	שנו את קוד הפתיחה של האדם שמחובר במכשיר הזה.
+team_self_help	כניסה אחת: PIN חדש, סיסמה חדשה, או שניהם. השאירו תיבה ריקה כדי לשמור מה שיש. בקשו מהבעלים אם צריך מסכים או הרשאות אחרות.
+backup_settings	גיבוי והגדרות
+lock_app	נעל את היישום
+pick	בחר
+select	סמן
+advance	מקדמה
+owner	בעלים
+staff	צוות
+photo	תמונה
+auto	Auto
+prev	הקודם
+next	הבא
+ok	OK
+this_shop	שרת
+extra_till	מסוף
+off	כבוי
+tables_kitchen	שולחנות ומטבח
+server	שרת
+client	מסוף
+language_currency	שפה ומטבע
+language	שפה
+choose_language	בחרו את השפה
+language_setup_hint	עקבו אחרי שפת המכשיר, או בחרו אחת בעצמכם.
+lang_follow_platform	שפת המכשיר
+lang_pick_user	בחר שפה
+lang_platform_now	שפת המכשיר עכשיו
+selected_language	נבחר
+continue	המשך
+this_device	המכשיר הזה
+device_use_q	איך ישמש המכשיר הזה?
+last_server_mode	היה שרת — הקישו כדי להמשיך
+last_client_mode	היה מסוף — הקישו כדי להמשיך
+choose_server	בחרו שרת
+choose_server_hint	פתחו שרת קיים, או צרו אחד לעסק אחר.
+create_new_server	צור שרת חדש
+open_server	פתח
+new_server_name_ph	שם שרת חדש (לא חובה)
+server_remove_pin_ph	PIN הבעלים להסרת שרת
+only_owner_remove_server	רק הבעלים יכול להסיר שרת
+owner_pin_remove_server	נדרש PIN הבעלים כדי להסיר את השרת הזה
+device_setup_help	השרת שומר את הספרים כאן. המסוף מזווג לשרת.
+app_template_heading	תבנית היישום Rajdhani
+app_template_blurb	טוען את תפריט Rajdhani; בעלים Zahir (zahir), מנהל Asif (asif, PIN 1111), מלצר Nawaz (nawaz, PIN 0000); סרגל צד של האולם; ההיסטוריה מתנקה אחרי 4 שעות (וגם נקה עכשיו בגיבוי); פס היום כבוי; KOT קומפקטי + שוליים Standard למגשים צרים. עמיתי סרגל הצד אפשר להדליק שוב בהגדרות.
+app_template_apply	תבנית היישום Rajdhani
+app_template_skip	דלג לעכשיו
+app_template_status	השרת מוכן — החילו את תבנית היישום Rajdhani, או דלגו
+app_template_importing	מחילים את {title}…
+currency	מטבע
+backup	גיבוי
+use	השתמש
+dont_use	אל תשתמש
+add_branch	הוסף סניף
+add_conversion	הוסף המרה
+add_dishes_items	הוסף מנות ופריטים
+add_item_plain	הוסף פריט
+add_note	הוסף הערה
+add_opening_balance	הוסף יתרת פתיחה
+add_staff	הוסף איש צוות
+add_station	הוסף עמדה
+add_table	הוסף שולחן
+add_unit	הוסף יחידה
+add_use_name	הוסף / השתמש בשם הזה
+allow_extra_tills	אפשר קופות נוספות
+amend	תקן
+apply_country_pack	החל חבילת מדינה
+datetime_appearance	מראה תאריך ושעה
+datetime_appearance_help	הספרים שומרים בפנים RFC3339 עם השנה בהתחלה. אלה משנים רק איך תאריכים ושעונים נראים בחשבונות, ב־KOT, בדוחות ובמסך.
+datetime_example	דוגמה עכשיו: {ex}
+date_order	סדר התאריך
+date_order_dmy	י/ח/ש
+date_order_mdy	ח/י/ש
+date_order_ymd	ש-ח-י
+time_format	שעון
+time_format_24h	24 שעות
+time_format_12h	12 שעות
+attach_bill_photo	צרף תמונת חשבון
+attach_pdf	צרף PDF
+attach_photo	צרף תמונה
+attachments_last_expense	קבצים מצורפים (ההוצאה האחרונה)
+bank	בנק
+bank_in	כניסה לבנק
+bank_out	יציאה מהבנק
+bank_reconciliation	התאמת בנק (סמנו מול דף החשבון)
+bank_to_till	בנק → קופה
+book_add_dish	ספר — הוסף מנה / פריט
+book_opening_credit	ספר — אשראי פתיחה
+branch_name_sell_ph	שם הסניף שממנו מוכרים
+bring_my_book	הבא את הספר שלי
+business_tax_id_ph	מזהה מס של העסק
+caption_bank	בנק
+caption_bills	חשבונות
+caption_outstanding	פתוח
+caption_payments_today	תשלומים היום
+caption_today	היום
+card_amount_ph	סכום בכרטיס
+cash_amount_ph	סכום במזומן
+cash_memo	תזכיר מזומן
+choose_icon	בחר סמל
+choose_logo	בחר לוגו
+clear_icon	נקה סמל
+clear_photo	נקה תמונה
+copy_day_book_csv	העתק CSV של ספר היום
+copy_day_close	העתק סגירת יום
+copy_items_csv	העתק CSV של פריטים
+copy_outstanding_csv	העתק CSV של הפתוח
+copy_parties_csv	העתק CSV של צדדים
+copy_party_ledger_csv	העתק CSV של ספר הצד
+copy_receipt	העתק קבלה
+share_whatsapp	שתף ב־WhatsApp
+lan_pages_heading	דפי אורחים ב־Wi‑Fi
+lan_pages_help	ב־Wi‑Fi של החנות הזו, דפי אורחים עובדים ללוח תצוגה, מספרים, אקספו, קיוסק, QR שולחן ומשוב. אורחים בנתונים סלולריים צריכים ענן אחר כך. מסוף כרטיס / קישור תשלום הוא אופציונלי כשיש אינטרנט — הוא לא חוסם אף פעם את הדלפק.
+diag_send_heading	שתף מחוץ למכשיר הזה
+kot_dest_heading	עמדת מטבח
+optional_login_heading	כניסה אופציונלית
+rights_heading	הרשאות
+ops_panel	פעולות מקומיות
+crm_heading	אורחים והודעות
+crm_help	יום הולדת, נאמנות, אורחים לא פעילים ומובילים — תור SMS או כוונות WhatsApp. השתמשו ב־{name} וב־{points} בהודעה. הבעלים מקיש שלח; שום דבר לא נשלח לבד.
+crm_queue_sms	תור SMS
+crm_queue_wa	תור WhatsApp
+crm_seg_bday_week	שבוע יום ההולדת
+crm_seg_bday_month	חודש יום ההולדת
+crm_seg_phone	עם טלפון
+crm_seg_loyalty	נאמנות
+crm_seg_inactive	לא פעילים
+crm_seg_top	המוציאים המובילים
+birthday_ph	יום הולדת (MM-DD או YYYY-MM-DD)
+crm_message_ph	יום הולדת שמח {name}! יש לכם {points} נקודות.
+till_apply_redeem	החל על החשבון
+till_clear_redeem	נקה מימוש
+till_wallet_topup	טען ארנק
+till_issue_voucher	הנפק שובר
+till_points_ph	נקודות למימוש
+till_wallet_ph	סכום ארנק להוצאה
+till_voucher_code_ph	קוד שובר
+till_voucher_amt_ph	סכום השובר (ריק = הכול)
+till_wallet_topup_ph	סכום טעינת הארנק
+till_voucher_issue_amt_ph	סכום שובר להנפקה
+till_voucher_issue_code_ph	קוד שובר חדש
+split_evenly	פצל שווה בשווה
+waitlist	רשימת המתנה
+fire_course	שלח מנה
+hold_item	החזק
+waiter_call	קרא למלצר
+waitlist_add	הוסף לרשימת ההמתנה
+floor_view_grid	רשת
+floor_view_layout	פריסה
+floor_layout_x	X
+floor_layout_y	Y
+floor_layout_w	W
+floor_layout_h	H
+floor_layout_save	שמור פריסה
+floor_layout_open	פתח שולחן
+floor_layout_edit	ערוך פריסה
+floor_layout_pick	הקישו על שולחן כדי לערוך את הפריסה שלו
+floor_layout_saved	פריסת השולחן נשמרה
+floor_layout_nudge_left	← 20
+floor_layout_nudge_right	→ 20
+floor_layout_nudge_up	↑ 20
+floor_layout_nudge_down	↓ 20
+sibling_pickers_help	הקישו פועל/כבוי כמו ביחידות — הסתירו אזורים, עמדות ושערי מס מבוררי היום-יום; ברירות המחדל של החבילה נשארות.
+bulk_price_apply	החל מחיר מרוכז
+card_terminal_optional	מסוף כרטיס / קישור תשלום (אופציונלי כשיש אינטרנט)
+copy_report	העתק דוח
+counted_cash_ph	מזומן שנספר במגירה
+country_tax	מדינה ומס
+tax_chrome	תוויות מס בקופה
+tax_chrome_help	כשכבוי, שולחן ההזמנה מסתיר שורות אומדן GST/מס ומצייני GST במחיר. שערי המס וההגדרות מדינה ומס נשארים — הדליקו תוויות מחדש בכל עת. תבנית היישום Rajdhani מתחילה עם זה כבוי.
+tax_chrome_on	הצג
+tax_chrome_off	הסתר
+tax_chrome_saved_on	תוויות מס בקופה
+tax_chrome_saved_off	תוויות המס מוסתרות בקופה
+tax_invoice_till	חשבונית מס בקופה
+tax_invoice_help	כשכבוי, החשבונות הם רק תזכיר מזומן ושבבי חשבונית מס / תזכיר מזומן מוסתרים בשולחן ההזמנה. תבנית היישום Rajdhani מתחילה עם זה כבוי — הדליקו הצג מחדש בכל עת כדי לבחור שוב חשבונית מס.
+tax_invoice_on	הצג
+tax_invoice_off	הסתר
+tax_invoice_saved_on	חשבונית מס בקופה
+tax_invoice_saved_off	חשבונית המס מוסתרת — רק תזכיר מזומן
+pay_methods	אמצעי תשלום
+pay_methods_help	אילו שבבים מופיעים בגבה תשלום. מזומן נשאר תמיד. תבנית היישום Rajdhani מתחילה רק עם מזומן — הדליקו שוב UPI / כרטיס / אשראי / פצל כאן.
+create_backup	צור גיבוי
+credit_limit_heading	תקרת אשראי (הצד שנבחר / שנקרא בשם)
+day_close_summary	סיכום סגירת יום
+delete_party	מחק את הצד שנבחר
+delivery	משלוח
+done_open_books	בוצע — פתח ספרים
+drawer_count	ספירת מגירה (לא חובה)
+expense_heading	הוצאה
+export_day	ייצא יום
+extra_note_bill_ph	הערה נוספת בחשבון / במכירה הזו
+extra_note_expense_ph	הערה נוספת בהוצאה האחרונה
+extra_tills_heading	קופות נוספות
+other_devices_help_heading	הגדר מכשירים אחרים
+other_devices_help	במכשיר הזה (שרת): מכשירים אחרים → אפשר קופות נוספות. רשמו את קוד הזיווג ואת כתובת ה־Wi‑Fi. הקישו אפשר למכשירים אחרים להתחבר אם זה מופיע. במחשב, הקישו התחל עם המחשב הזה. בכל מכשיר אחר: התקינו את היישום, בחרו מצב מסוף, מצאו את שרת החנות (או הקלידו את הכתובת), הזינו את קוד הזיווג, זווג עכשיו. הזמנות ממתינות במכשיר אם ה־Wi‑Fi נופל והולכות כשהשרת עונה שוב. מדפסות המטבח נקבעות בשרת (הגדרות → מדפסות) — קופות נוספות שולחות KOT לשם.
+forget_shop	שכח את החנות הזו
+goods_received	סחורה שהתקבלה
+import_day	ייבא יום
+import_items_csv_plain	ייבא CSV של פריטים…
+import_parties_csv	ייבא CSV של צדדים…
+item_name	שם הפריט
+kitchen_printing	מדפסות
+login_id_ph	שם משתמש
+mark_cleared	סמן כמותאם
+new_party_clear	צד חדש (נקה טופס)
+new_party_kind_supplier_ph	סוג צד חדש (ספק)
+next_country	המדינה הבאה
+next_order	ההזמנה הבאה (נקה שולחן)
+note_gstin_ph	הערה / GSTIN / תזכורת הסכם
+notes_attach_party	הערות וקבצים (הצד שנבחר)
+notes_attach_sale	הערות וקבצים (המכירה שנבחרה)
+on_account_ap	בחשבון (AP)
+org_optional_ph	ארגון (לא חובה)
+paid_by	שולם על ידי
+paid_now	שולם עכשיו
+pair_now	זווג עכשיו
+pairing_code_ph	קוד זיווג
+party_name_selected_ph	שם הצד (או השתמש בנבחר)
+password_ph	סיסמה
+pay_ap_card	שלם AP בכרטיס
+pay_ap_cash	שלם AP במזומן
+pay_ap_heading	שלם מה שאנחנו חייבים להם (AP)
+pay_ap_upi	שלם AP ב־UPI
+pay_selected_heading	שלם את הנבחר (סגור חוב / קח מקדמה)
+pick_from_items	בחר מהפריטים שלנו
+prev_country	המדינה הקודמת
+print_open	הדפס / פתח
+reason_amend_ph	סיבה לתיקון / ביטול / החזר
+reason_note_ph	סיבה / הערה (פחת, ספירה, …)
+record_day_close	רשום סגירת יום
+refresh_from_shop	רענן מהחנות
+refund	החזר
+remove_selected	הסר את הנבחר
+request_bill	בקש חשבון
+restaurant_name_ph	שם המסעדה (לא חובה)
+restore_backup	שחזר גיבוי
+role_both	שניהם
+role_admin	מנהל
+role_cashier	קופאי
+role_customer	לקוח
+role_manager	מנהל משמרת
+history_retention	היסטוריית מסחר
+history_retention_help	מנקה אוטומטית מכירות ו־KOT ישנים. התפריט, הצוות וההגדרות נשארים. נקה עכשיו מוחק את כל שורות המסחר ושומר את ההגדרה.
+history_off	שמור
+history_day_close	בסגירת יום
+history_after_hours	אחרי שעות
+history_hours_ph	שעות (1–168, ברירת מחדל 4)
+history_hours_save	שמור שעות
+history_clear_now	נקה היסטוריה עכשיו
+history_cleared	היסטוריית המסחר נוקתה — ההגדרה נשמרה
+history_retention_saved	ניקוי ההיסטוריה נשמר
+history_hours_saved	שעות ההיסטוריה נשמרו
+history_owner_only	רק בעלים או מנהל יכולים לנקות היסטוריה
+rollup	סיכום
+save_brand	שמור מותג
+save_business_id	שמור מזהה עסק
+save_business_name	שמור שם עסק
+save_features	שמור
+save_features_named	שמור {name}
+save_features_ok	ההגדרה נשמרה עבור {name}
+save_names	שמור שמות
+second_way	דרך שנייה
+server_ip_ph	IP של השרת (למשל 192.168.1.10)
+set_credit_limit	החל תקרה על הצד
+set_login_selected	החל כניסה על הנבחר
+set_login_named	החל כניסה על {name}
+shop	חנות
+show	הצג
+spreadsheet_csv	גיליון (CSV)
+start_fresh	התחל מחדש
+stop_extra_tills	עצור קופות נוספות
+floor_cols_ph	עמודות
+floor_cols_fit	התאם למסך
+floor_cols_fit_sub	{n} מתאימים כאן
+floor_cols_fits	מתאים
+floor_cols_scroll	גולל לצדדים
+floor_cols_min	עמודות: לפחות 1 — או השאירו ריק כדי להתאים למסך
+floor_zoom_auto	Auto
+floor_zoom_out	הקטן
+floor_zoom_in	הגדל
+backup_auto	גיבוי אוטומטי כל יום · האחרון {when} · 14 הימים האחרונים נשמרים ב־{dir}.
+backup_auto_none	גיבוי אוטומטי כל יום — הראשון רץ בעוד רגע.
+backup_copy_to	עותקים הולכים גם אל {dir}.
+backup_copy_btn	העתק גיבויים גם לתיקייה…
+autostart_off	התחל עם המחשב הזה
+autostart_on	מתחיל עם המחשב הזה ✓ — הקישו כדי לעצור
+autostart_done_on	המחשב הזה פותח עכשיו את היישום כשהוא עולה — שרת החנות חוזר אחרי הפסקת חשמל.
+autostart_done_off	המחשב הזה כבר לא פותח את היישום כשהוא עולה.
+device_forgotten	החנות שכחה את המכשיר הזה — זווגו שוב עם הקוד הנוכחי של החנות. הזמנות שממתינות בו נשמרות.
+lan_offline	שרת החנות לא נגיש
+forget_device	שכח
+last_seen	נראה
+copy_pair_code	העתק קוד זיווג
+new_pair_code	קוד זיווג חדש
+pair_finishing	מסיים זיווג… מחיל את ספרי החנות
+pair_opening	פותח את הקופה…
+pair_copied	קוד הזיווג הועתק
+kot_waiting	ממתין לשליחה
+lan_offline_waiting	שרת החנות לא נגיש · {n} ממתינים
+lan_connecting	מתחבר לחנות…
+lan_live	חי
+lan_sending	{n} נשלחים
+lan_sign_in_to_send	היכנסו שוב כדי לשלוח {n}
+lan_pair_again	זווג שוב את המכשיר הזה
+lan_update_app	עדכן את היישום — למכשיר הזה ולשרת החנות יש גרסאות שונות
+allow_firewall	אפשר למכשירים אחרים להתחבר
+firewall_blocked	חומת האש של המחשב הזה חוסמת מכשירים אחרים — הקישו אפשר למכשירים אחרים להתחבר.
+firewall_waiting	ממתין להנחיית המנהל…
+lan_join_help	במכשיר האחר: מצב מסוף → מצאו את שרת החנות (או הקלידו {addr}) → קוד זיווג {code}.
+lan_pair_status	Wi‑Fi {addr}
+lan_join_help_no_addr	חברו את המכשיר הזה ל־Wi‑Fi כדי לקבל כתובת.
+lan_no_address	עדיין אין כתובת Wi‑Fi — התחברו ל־Wi‑Fi של החנות.
+lan_not_listening	לא מקבל מכשירים (יציאה {port} תפוסה). הפעילו מחדש את היישום.
+lan_tills_off	קופות נוספות כבויות. אפשרו אותן כדי שמכשיר אחר יצטרף.
+paired_with	מזווג · {url}
+not_paired	לא מזווג
+choose_device_use	בחרו שרת או מסוף.
+paired_note	מזווג. פתחו כדי למכור, או רעננו לעדכני.
+last_update_at	עדכון אחרון: {time}.
+pair_intro	מצאו את השרת, או הקלידו את הכתובת ואת קוד הזיווג.
+queue_waiting	ממתין להגיע לחנות ({n}):
+queue_tries	נוסה {n} פעמים · תשובה אחרונה: {e}
+save_backup_copy	שמור עותק גיבוי…
+backup_copy_saved	עותק הגיבוי נשמר — שמרו אותו מחוץ למכשיר הזה (דיסק און קי או מכשיר אחר)
+backup_copy_overdue	אף עותק גיבוי לא יצא מהמכשיר הזה כבר {n} ימים — הגדרות → גיבוי
+backup_copy_failed	לא ניתן לשמור את עותק הגיבוי שם — בחרו מקום אחר
+clock_off	השעון של המכשיר הזה סוטה ב־{min} דק׳ משרת החנות — קבעו את השעה הנכונה במכשיר הזה
+printers_heading	מדפסות
+printers_help	מצאו מדפסות, הקישו על אחת כדי לבחור אותה, ואז הדפיסו דף בדיקה רק במכשיר הזה. מדפסות חשבון: פורמט חשבון ו־KOT → חשבון. מדפסות מטבח: מטבח → עמדות מטבח (הוסיפו קודם עמדה — מצא לא יוצר עמדות).
+printers_host_only	המדפסות נקבעות במכשיר החנות (שרת). הקופה הזו שולחת חשבונות ו־KOT לשם — מצא / הוסף / שייך נשארים בשרת. דף הבדיקה וגודל הדפסת החשבון הולכים לשרת.
+printers_find_heading	מצא מדפסות
+printers_find_tip	מצא סורק את המכשיר הזה ושומר את הרשימה מעודכנת.
+printers_pool_heading	מדפסות
+printers_pool_tip	מצא סורק את המכשיר הזה ושומר את הרשימה הזו מעודכנת.
+printers_pool_empty	(עדיין אין — הקישו מצא)
+printers_routes_help	מצאו מדפסות שמערכת ההפעלה כבר מכירה. שייכו אותן לחשבון ולכל מטבח תחת פורמט חשבון ו־KOT.
+printer_assign_dd	מדפסת אמיתית: {place}
+printer_assign_pick	בחר מדפסת אמיתית
+printer_profile_heading	פריסה
+printer_send_heading	שליחה
+vp_delivery_heading	שליחה
+vp_delivery_help	איך המדפסת הווירטואלית שולחת עבודות — מסמך OS, בתים גולמיים, או ESC/POS. תוכן הפתק (גודל אות, גלישה, שוליים) נקבע בפורמט החשבון / KOT, לא כאן.
+vp_type_size_heading	גודל אות
+vp_wrap_heading	רוחב גלישה
+vp_margin_heading	שוליים
+vp_delivery_spooler	מסמך OS (תור המערכת)
+vp_delivery_raw	בתים גולמיים למכשיר
+vp_delivery_escpos	פקודות תרמיות ESC/POS
+virtual_printer_new	מדפסת וירטואלית חדשה
+virtual_printer_selected	עורכים את “{name}” — הקישו על אחרת ברשימה כדי לעבור
+virtual_printer_tap_list	הקישו על מדפסת וירטואלית ברשימה כדי לערוך אותה
+config_layout_portrait	לאורך
+config_layout_landscape	לרוחב
+config_send_os	תור המערכת
+config_send_escpos	ESC/POS
+profiles_heading	פריסות
+profiles_empty	(עדיין אין פריסות)
+profile_builtin	מובנית
+profile_custom	מותאמת
+profile_name_ph	שם הפריסה
+profile_new	פריסה חדשה
+profile_delete	מחק פריסה
+profile_created	הפריסה נוצרה
+profile_deleted	הפריסה נמחקה
+profile_builtin_keep	אי אפשר למחוק פריסות מובנות
+config_saved	עודכן
+config_selected	נבחר “{name}”
+printer_output_heading	מדפסות וירטואליות
+virtual_printers_heading	מדפסות וירטואליות
+virtual_printers_empty	עדיין אין מדפסות וירטואליות — קבעו ערכים למטה, ואז שמור. אחרי שיש כמה, הקישו על אחת ברשימה כדי לערוך.
+virtual_printer_name_ph	שם מדפסת וירטואלית (לא חובה)
+virtual_printer_create	צור מדפסת וירטואלית
+virtual_printer_save	שמור מדפסת וירטואלית
+virtual_printer_delete	מחק מדפסת וירטואלית
+virtual_printer_created	המדפסת הווירטואלית “{name}” נוצרה
+virtual_printer_deleted	נמחקה המדפסת הווירטואלית “{name}”
+virtual_printer_updated	המדפסת הווירטואלית עודכנה
+virtual_printer_updated_named	המדפסת הווירטואלית “{name}” עודכנה
+virtual_draft_layout	הערכים נקבעו למדפסת הווירטואלית הבאה
+virtual_draft_send	הערך נקבע למדפסת הווירטואלית הבאה
+virtual_need_real	בחרו קודם מדפסת אמיתית
+virtual_need_select	בחרו מדפסת וירטואלית למחיקה
+real_printer_selected	נבחר: {name}
+station_group_heading	מדפסות וירטואליות
+station_group_apply	מחק מדפסת וירטואלית
+station_group_applied	נמחק
+station_group_empty	בחרו מדפסת וירטואלית
+station_group_name_ph	שם מדפסת וירטואלית (לא חובה)
+station_group_save	צור מדפסת וירטואלית
+station_group_saved	המדפסת הווירטואלית נשמרה
+station_manage_heading	הוסף או הסר עמדת מטבח
+printers_routes_heading	איפה דברים מודפסים
+route_pick_heading	מקום
+route_editing	עורכים: {name}
+route_assigned	נוסף {printer} אל {place}
+route_already_assigned	כבר במקום הזה: {printer}
+route_removed	הוסר {printer} מ־{place}
+route_cleared	נוקה {name}
+route_assigned_empty	אין במקום הזה
+route_tap_remove	הקישו להסרה
+route_tap_select	הקישו לבחירה
+route_tap_selected	נבחר
+route_pick_printer_first	הקישו קודם על מדפסת
+route_assigned_heading	מדפסות
+route_add_heading	שייך
+printer_label_ph	שם (למשל מטבח)
+printer_target_ph	שם מדפסת המערכת או host:9100
+printer_target_default	המדפסת הרגילה של המחשב הזה (כתובת ריקה)
+printer_wire_heading	פרופיל
+printer_wire_escpos	ESC/POS
+printer_wire_os	לאורך
+printer_wire_os_portrait	לאורך
+printer_wire_os_landscape	לרוחב
+printer_wire_escpos_short	ESC/POS
+printer_wire_os_short	לאורך
+printer_wire_os_landscape_short	לרוחב
+printer_format_custom	פרופיל מותאם חדש
+printer_format_custom_label	מותאם
+printer_format_custom_added	פרופיל מותאם נוסף למקום הזה
+add_printer	הוסף מדפסת
+remove_printer	הסר
+route_pick_ph	חשבון או עמדת מטבח
+route_bill	חשבון
+route_default_kitchen	בלי עמדה (מנות לא משויכות)
+route_kot_station	מטבח
+route_dont_print	בלי מדפסת
+stations_heading	עמדות מטבח
+stations_help	הוסיפו עמדות מטבח למנות ול־KOT. בכל עמדה, צרפו את המדפסות שלה (נמצאות תחת הגדרות → מדפסות), קבעו עדיפות, ובחרו הראשונה שעובדת או הדפס בכולן. השינויים נשמרים תוך כדי — בלי כפתור שמור.
+station_print_heading	מדפסות לעמדה הזו
+station_print_help	בחרו עמדה, ואז צרפו מדפסת אחת או יותר. ↑↓ קובע סדר ניסיון. הראשונה שעובדת נעצרת אחרי ההצלחה הראשונה; הדפס בכולן שולח לכל מדפסת שצורפה. כל שינוי נשמר מיד.
+station_print_pick_ph	עמדה לקביעת מדפסות
+station_print_pick_first	בחרו קודם עמדת מטבח
+station_print_editing	עורכים מדפסות עבור “{name}”
+station_vps_dd	מדפסות לעמדה הזו
+station_vps_dd_n	{n} מדפסות · הקישו לשינוי
+station_vps_empty	עדיין אין מדפסות — מצאו אותן תחת הגדרות → מדפסות
+bill_printers_dd	מדפסות לחשבון
+bill_printers_dd_n	{n} מדפסות לחשבון · הקישו לשינוי
+job_layout	פריסה
+job_delivery	איך העבודה נשלחת
+job_delivery_help	מסמך OS, בתים גולמיים, או ESC/POS. החשבון ופתק המטבח שומרים כל אחד את שלו. כל עבודה יכולה ללכת לכל מדפסת שמצא שמר.
+station_vp_attached	המדפסת צורפה
+station_vp_detached	המדפסת הוסרה מהעמדה
+station_print_summary	{mode} · {n} מדפסות
+station_print_summary_none	עדיין אין מדפסות בעמדה הזו — היא לא תדפיס
+stations_none	עדיין אין עמדות — הוסיפו אחת למטה. פריטי תפריט יכולים להשתמש בעמדה כדי שה־KOT שלהם יודפס שם.
+route_up	למעלה
+route_down	למטה
+route_remove	הסר
+route_clear	נקה
+save_printers	שמור מדפסות
+print_test_page	הדפס דף בדיקה
+no_printer_assigned	בלי מדפסת
+test_page_no_printer	אין מדפסת עבור {place} — צרפו אליו מדפסת, ואז נסו שוב
+test_page_pick_first	בחרו קודם מדפסת/ות לדף בדיקה — ואז הדפס דף בדיקה
+test_printers_dd	מדפסות לדף בדיקה
+test_printers_dd_n	{n} מדפסות לדף בדיקה · הקישו לשינוי
+kot_test_printers_dd	מדפסות ל־KOT בדיקה
+kot_test_printers_dd_n	{n} מדפסות ל־KOT בדיקה · הקישו לשינוי
+test_printer_picked	בדיקה ב: {name}
+test_printer_cleared	לא בודקים ב: {name}
+test_page_sent_n	דף הבדיקה נשלח אל {n} מדפסות
+test_kot_pick_first	בחרו קודם מדפסת/ות ל־KOT בדיקה — ואז KOT בדיקה
+test_kot_sent_n	KOT הבדיקה נשלח אל {n} מדפסות
+cancel_pick	סמן
+cancel_pick_on	מסומן
+cancel_pick_meta	מסומן לביטול
+batch_cancel	בטל את המסומנים
+batch_cancel_n	בטל את המסומנים ({n})
+batch_cancel_none	סמנו קודם מנה אחת או יותר שנשלחו — ואז בטל את המסומנים
+batch_cancel_title	בטל מנות מסומנות — סיבה אחת, פתק ביטול אחד לכל מטבח
+batch_cancel_ok	{n} מנות בוטלו · {slips} פתקי ביטול → {kitchens}
+batch_cancel_ok_noprint	{n} מנות בוטלו — הדפסת KOT אוטומטית כבויה, אז אין פתק ביטול
+no_printer_kitchen_station	אין מדפסת לעמדת המטבח הזו — מטבח → עמדות מטבח → מדפסות לעמדה הזו
+printers_saved	נשמר
+test_page_sent	דף הבדיקה נשלח — בדקו את המדפסת
+test_page_sent_one	דף הבדיקה נשלח אל {name} — בדקו את המדפסת הזו
+printers_found	נמצאו {n}: {list}
+printers_find_synced	נמצאו {n} — {new} חדשות
+printer_on_device	נשמרה
+printer_already_added	כבר נוספה
+printer_already_saved	כבר נשמר: {name}
+find_printers	מצא מדפסות
+printers_looking	מחפש…
+saving_printer	מוסיף מדפסת…
+cancelled	בוטל
+printers_tap_find	הקישו מצא כדי לרשום מדפסות שהמכשיר הזה יכול להשתמש בהן.
+printers_none_found	לא נמצא כלום — הקלידו שם מדפסת מערכת או IP (למשל 192.168.1.50).
+printer_from_find	נוסף {name}
+kot_printer_ph	מדפסת ל־KOT
+bill_printer_ph	מדפסת לחשבונות
+kot_print_on	הדפסה אוטומטית של פתקי מטבח: פועל
+kot_print_off	הדפסה אוטומטית של פתקי מטבח: כבוי
+queue_refused	לא התקבל על ידי החנות ({n}) — בדקו כל אחד בדלפק:
+clear_not_accepted	נבדק — נקה את הרשימה הזו
+device_name_ph	שם המכשיר הזה
+lan_last_update	עדכון אחרון {time}
+lan_not_accepted	{n} לא התקבלו
+connected_now	מחובר עכשיו
+backup_failed	הגיבוי האוטומטי האחרון נכשל: {e}
+backup_overdue	אין גיבוי כבר {n} ימים — השאירו את היישום פתוח במכשיר הזה כדי שיוכל לגבות.
+disk_low	רק {mb} MB פנויים במכשיר הזה — הגיבויים ייכשלו בקרוב. פנו קצת מקום.
+last_seen_devices	נראה לאחרונה: {time}
+sync_interval	סנכרון כל {secs} שנ׳
+connection_to_shop	חיבור לחנות
+supplier_name_ph	שם הספק (או הצד)
+supplier_ph	ספק
+switch_device	החלף את המכשיר הזה
+take_payment	גבה תשלום
+tax_added_till	{tax} נוסף
+tax_inside_price	{tax} כלול
+tax_invoice	חשבונית מס
+till_to_bank	קופה → בנק
+units_heading	יחידות
+unlock_after_pairing	הזינו PIN
+unlock_with_login	פתח עם כניסה
+unmark	בטל סימון
+update_my_password	עדכן את הסיסמה שלי
+update_my_pin	עדכן את הכניסה שלי
+duress_heading	PIN פתיחת חירום (בעלים בלבד)
+duress_help	לא חובה. אם ה־PIN הזה מוקלד בפתיחה במקום שלכם, כל רשומות הספרים נמחקות (מכירות, ספרים, היסטוריה) והקופה נפתחת כבעלים ונראית רגילה — התפריט, המחירים, השולחנות, הצוות וההגדרות נשארים. הסכמה והתצורה לא נמחקות. השתמשו רק אם מכריחים אתכם לפתוח. השאירו ריק ושמרו כדי לכבות. אף פעם לא זהה ל־PIN של אף אחד.
+duress_pin_ph	PIN חירום (4–12 ספרות)
+duress_confirm_ph	הקלידו שוב לאישור
+save_duress_pin	שמור PIN חירום
+clear_duress_pin	כבה PIN חירום
+duress_on	PIN פתיחת החירום פועל
+duress_off	PIN פתיחת החירום כבוי
+duress_saved	PIN פתיחת החירום נשמר
+duress_cleared	PIN פתיחת החירום כובה
+upi_amount_ph	סכום UPI
+void	בטל
+write_off_ap	מחק AP
+write_off_heading	מחיקה (נקה בלי תשלום)
+write_off_nil	מחיקה / יתרה אפס
+your_brand	המותג שלכם (ביישום)
+your_categories	הקטגוריות שלכם
+account_kind	סוג חשבון (הקישו על אחד)
+actual_total_cap	סה״כ בפועל
+amend_help	בחרו מכירה לתיקון, ביטול או החזר. תיקונים שומרים היסטוריה מלאה. הסה״כ המעוגל מתחיל שווה למה שהוחל — ערכו רק כדי לעגל. ביטול והחזר עשויים לדרוש PIN של בעלים או מנהל משמרת (מוקלד למעלה; נרשם עם השם שלכם).
+applied_total_cap	סה״כ שהוחל
+bank_balance	יתרת בנק
+bank_net_today	נטו בנק היום
+branch_export_help	הייצוא כותב branch_snapshot_CODE_DATE.json לתיקיית הגיבויים ומעתיק אותו ללוח. כדי לייבא יום של נקודה אחרת, שמרו את הקובץ כ־import_branch_snapshot.json באותה תיקייה, ואז הקישו ייבא.
+brand_shown_help	מוצג במסכים בתוך היישום. שם היישום והסמל המותקנים במכשיר הזה נשארים כמו ברישום הפלטפורמה.
+app_icon	סמל היישום
+logo_help	סימן חנות אופציונלי במסכי היישום.
+onboard_layout	מה מקבלים
+item_photo_help	לא חובה. בלי תמונה אנחנו מציגים ראשי תיבות משם הפריט.
+stamp_heading	חותמת
+stamp_image_help	תמונת חותמת אופציונלית בחשבונות מודפסים ובתצוגת האורחים.
+payment_qr_heading	QR תשלום
+payment_qr_image_help	QR סטטי בחשבונות ובתצוגת האורחים; אחרת התשלום משתמש ב־QR דינמי של UPI מה־VPA למעלה.
+cash_in_hand	מזומן ביד (קופה)
+change_my_pin_heading	הכניסה שלי
+connect_to_server	התחבר לשרת
+counter_locked	דלפק 01 · נעול
+country_pack_help	חבילת מדינה קובעת את שם המס והחשבון, את מסילת התשלום המיידי, ואת מזהה העסק המודפס בחשבונות. Kumkaj לא מגיש מסים ולא מנפיק חשבוניות ממשלתיות בשום מקום.
+currency_use_help	גללו והקישו השתמש לכל מטבע נתמך.
+day_close_help	רישום סגירת יום שומר את הסיכום הזה (ואת הפרש המגירה אם נספר) ביומן הביקורת. זה לא עוצר מכירה.
+expenses_word	הוצאות
+feature_access_help	מה הם יכולים לפתוח — לא חובה; התפקיד למעלה כבר קובע ברירת מחדל
+footer_local	SQLite מקומי · חינם לתמיד · אפס ענן
+fresh_book_khaynjo	חדש = תפריט ריק (הוסיפו מנות אחר כך בתפריט). ספר = הקלידו פריטי פתיחה ומי חייב לכם למטה.
+fresh_selected	חדש נבחר — הקטלוג נשאר ריק. הקישו בוצע כשמוכנים.
+gross_word	ברוטו
+how_start	איך אתם רוצים להתחיל?
+kot_print_help_khaynjo	כשפועל, כל מטבח מדפיס את נייר ה־KOT שלו ברגע שלוחצים שלח.
+later_country_pack	אחר כך: הגדרות → החילו את חבילת המדינה שלכם לתוויות מס ותשלום.
+local_badge	מקומי
+mix_type_hint_khaynjo	פצלו בין מזומן / UPI / כרטיס / אשראי אם צריך. אשראי דורש לקוח למעלה.
+money_in_sales	כסף נכנס (מכירות)
+net_word	נטו
+offline_badge	לא מקוון
+optional_login_help	כניסה אופציונלית (מזהה + סיסמה). הבעלים קובע פעם אחת; רק המשתמש יכול לשנות סיסמה אחר כך.
+or_unlock_login	או פתחו עם מזהה כניסה + סיסמה
+permission_preset	תפקיד (קובע מסכים ופעולות כסף)
+preset_help_khaynjo	קופאי: מוכר. מנהל משמרת: מוכר + פריטים + ביטול/תיקון.
+product_locked_khaynjo	Khaynjo
+product_only_khaynjo	היישום הזה הוא Khaynjo בלבד — מערכת הפעלה למסעדה. פנים מסחר אחרים יוצאים כמוצרי Kumkaj נפרדים.
+purchases_cogs	רכישות (COGS)
+qty_cap	כמות
+restore_help	שחזור: בחרו גיבוי. הספרים נפתחים כפי שהיו אז; הספרים כפי שהם עכשיו נשמרים קודם, כך שאפשר לבטל את זה.
+wipe_data_heading	מחק נתונים מקומיים
+wipe_data_help	בעלים בלבד — אותן בחירות כמו הסרת ההתקנה ב־Windows. רשומות העסק מנקות היסטוריית מסחר אבל שומרות תפריט והגדרה (כמו PIN פתיחת החירום). הגדרת החנות מסירה את מסד הספרים. העדפות מסך מנקות חלון/שפה. אשרו עם PIN הבעלים. PIN פתיחת החירום בצוות נפרד (מחיקה סמויה בפתיחה).
+wipe_trading	רשומות העסק
+wipe_schema	הגדרת החנות
+wipe_ui	העדפות מסך
+wipe_owner_pin_ph	PIN בעלים למחיקה
+wipe_delete_selected	מחק את הנבחר
+wipe_owner_only	רק הבעלים יכול למחוק נתונים מקומיים.
+restore_owner_only	רק הבעלים יכול לשחזר גיבוי.
+wipe_owner_pin_needed	הזינו את PIN הבעלים כדי למחוק נתונים מקומיים.
+wipe_nothing_selected	בחרו קודם מה למחוק.
+wipe_done	הנתונים המקומיים שנבחרו נמחקו.
+wipe_schema_done	הגדרת החנות נמחקה — בחרו שרת או מסוף כדי להמשיך.
+rounded_total	סה״כ מעוגל
+setup_app_khaynjo	הגדר את Khaynjo
+shop_logo_optional	לוגו החנות (לא חובה)
+stock_type_help	הקלידו את שם הפריט (חלק ממנו מספיק), כמות, ואז התאימו. פריטים שעדיין לא נספרים צריכים התחל מעקב פעם אחת.
+team_owner_help	השאירו את האדם ריק כדי להוסיף מישהו: שם, תפקיד, שם משתמש, PIN וסיסמה אופציונלית, ואז הוסף. בחרו אדם כדי לערוך טופס מאותו סוג — שם, שם משתמש, סיסמה, מסכים והרשאות — ואז שמור. ה־PIN והסיסמה שלכם הם כניסה אחת למטה. הבעלים לא משנה את ה־PIN של אף אחד אחר.
+staff_name_ph	שם איש צוות
+staff_copy_hire_ph	העתק הגדרה מ־(לא חובה)
+staff_copy_hire	השתמש בהגדרה של האדם הזה
+staff_edit_name_ph	שם תצוגה
+staff_rename	שמור שם
+staff_copy_edit_ph	העתק הגדרה מאדם אחר
+staff_copy_edit	העתק את ההגדרה שלהם אל הנבחר
+staff_copy_edit_onto	העתק את ההגדרה שלהם אל {name}
+staff_deactivate_named	הסר {name}
+staff_renamed	השם נשמר
+staff_setup_copied_hire	ההגדרה הועתקה מ־{name} — קבעו שם ו־PIN חדשים, ואז הוסף איש צוות
+staff_setup_copied_edit	הועתקה ההגדרה של {from} אל {to}
+staff_copy_need_selected	בחרו קודם את מי לערוך
+staff_copy_need_source	בחרו של מי ההגדרה להעתקה
+staff_copy_same	זה אותו אדם — בחרו מישהו אחר
+staff_rename_need_selected	בחרו קודם את מי לשנות לו שם
+team_pick_hint	בחרו את מי לערוך — מסכים, הרשאות כסף ועמדות מטבח מופיעים רק לאדם הזה.
+team_stations_help	עמדות מטבח שהם רשאים להשתמש בהן
+team_stations_changed	עמדות המטבח השתנו — שמרו הגדרה לאדם הזה
+team_features_changed	המסכים השתנו — שמרו הגדרה לאדם הזה
+team_rights_changed	ההרשאות השתנו — שמרו הגדרה לאדם הזה
+they_owe_us	הם חייבים לנו
+unit_at_cap	יחידה @
+units_help	קודים לתוויות פריט (ק״ג, יחידה, שק). כל יחידה חייבת להתקשר — ישירות או דרך יחידות אחרות — לתקן (kg · cm · ml · pc), למשל 1 crate = 2 box ו־1 box = 20 cm. המרות: 1 from = factor to. מטבעות אף פעם לא יחידות.
+units_picker_help	הקישו פועל/כבוי כדי להציג יחידה בבוררי קנייה ותפריט. יחידות כבויות עדיין מומרות.
+unit_picker_on	פועל
+unit_picker_off	כבוי
+we_owe_them	אנחנו חייבים להם
+who_unlocking	מי פותח?
+locked_word	נעול
+show_pin	הצג PIN
+hide_pin	הסתר PIN
+set_owner_pin	קבעו PIN בעלים
+enter_owner_passcode	הזינו קוד בעלים
+enter_staff_passcode	הזינו קוד צוות
+pin_count_zero	0 / 12 ספרות · לפחות 4, ואז OK
+pin_count_need	{} / 12 ספרות · צריך עוד {}
+pin_count_full	12 / 12 ספרות · לחצו OK
+pin_count_ready	{} / 12 ספרות · לחצו OK כשמוכנים
+pin_hint_choose	בחרו 4–12 ספרות · Enter או פתח כדי לשמור
+pin_hint_new	PIN בעלים חדש בן 4–12 ספרות · Enter או פתח
+pin_hint_shop_code	מכשיר החנות · קוד זיווג {}
+pin_hint_books	המכשיר הזה מחזיק את הספרים
+pin_hint_paired	קופה נוספת מזווגת — פתחו כדי למכור
+pin_hint_pair_first	קופה נוספת — זווגו קודם למכשיר החנות
+unlock_to_continue	פתחו כדי להמשיך
+no_staff_yet	עדיין אין צוות — פתחו כבעלים, ואז צוות
+status_server_set_pin	מצב שרת — קבעו PIN בעלים
+status_server_tills	מצב שרת — קופות נוספות יכולות להצטרף. פתח
+status_server_unlock	מצב שרת — פתחו כבעלים
+status_client_unlock	מצב מסוף — פתחו כדי למכור
+icon_new_selected	סמל: נבחר קובץ חדש — הקישו שמור מותג
+icon_custom	סמל: סימן מקום מותאם
+icon_default	סמל: סימן Kumkaj (ברירת מחדל) — בחרו אחד מותאם
+logo_yours	לוגו: לוגו החנות שלכם — מוצג במסכים ובקבלות
+logo_default	לוגו: סימן Kumkaj (ברירת מחדל) — בחרו שלכם אם יש
+tmpl_current	נוכחי: {} — {}
+tmpl_selected	נבחר: {} — {}
+setup_complete	ההגדרה הושלמה
+onboard_fresh_tmpl	חדש · {} — הקטלוג מתחיל ריק; הוסיפו פריטים בפריטים, ואז בוצע.
+onboard_book_tmpl	ספר · {} — הוסיפו פריטים ואשראי פתיחה, ואז בוצע.
+onboard_template_tmpl	תנו שם למקום אם אתם רוצים, ואז בחרו איך להתחיל.
+tmpl_blurb	שולחנות, הזמנות, פתקי מטבח, חיוב וספרים.
+tmpl_how	מכרו בדלפק; אולם לשולחנות ו־KOT; ספרים לספר היום.
+reports_facet_title	דוחות
+reports_facet_help	ספרי יום, גיול צדדים, תנועות בנק, ורווח והפסד לתקופה.
+against_bill_ph	מול חשבון # למעלה (לא חובה)
+aliases_ph	כינויים — שמות אחרים, מופרדים בפסיק
+amount_blank_full_ph	סכום (ריק = כל היתרה)
+amount_owed_ph	סכום החוב
+amount_ph	סכום
+amount_received_ph	סכום שהתקבל
+amount_we_pay_ph	סכום שאנחנו משלמים
+business_name_ph	שם העסק
+category_new_ph	קטגוריה (לא חובה, נוצרת אם חדשה)
+code_bag_ph	קוד (שק)
+conv_factor_ph	מקדם (25 = 1 שק → 25 ק״ג)
+country_code_ph	קוד מדינה למשל IN, GB, US, AE, BR
+credit_khata_amount_ph	סכום אשראי / khata
+credit_limit_ph	תקרת אשראי (0 = אין)
+from_code_ph	מקוד (שק)
+item_name_lang_ph	שם הפריט — הקלידו בשפה שלכם
+login_id_opt_ph	שם משתמש (חובה, ייחודי)
+manager_pin_ph	PIN מנהל משמרת לאישור (רק אם אינכם יכולים לבטל)
+new_branch_name_ph	שם סניף חדש
+new_password_ph	סיסמה חדשה (לא חובה)
+new_pin_ph	PIN חדש (4–12 ספרות)
+note_bank_ph	הערה (הפקדה, משיכה, …)
+note_buy_expense_ph	הערה (דלק, שכירות, …)
+note_expense_ph	הערה (דלק, משרד, …)
+options_khaynjo_ph	אפשרויות — גודל*: קטן=199, גדול=399 | תוספות+3: גבינה=40, זית=30 | גבינה נוספת=40
+part_second_way_ph	חלק בדרך שנייה (לא חובה)
+phone_ph	טלפון
+place_name_ph	שם המקום הזה
+qty_example_ph	כמות (למשל 1.5 לק״ג)
+quantity_ph	כמות
+reason_required_ph	סיבה (חובה)
+role_title_ph	כותרת תפקיד (למשל בריסטה)
+service_pct_ph	שירות % לא חובה 0/10/12
+short_code_ph	קוד קצר (MG02)
+starting_password_ph	סיסמת התחלה (לא חובה)
+starting_pin_ph	PIN התחלה (4–12 ספרות)
+station_name_ph	שם עמדה (למשל טנדור, טיגון, קר)
+station_new_ph	עמדת מטבח (לא חובה, למשל טנדור — נוצרת אם חדשה)
+table_name_ph	שם שולחן (למשל מרפסת 1, דלפק 2)
+tax_rate_ph	שם שער מס או % — רגיל, מופחת, 0, 5, 12, 18, 20
+to_code_ph	לקוד (ק״ג)
+uncleared_no_ph	לא מותאם # למעלה
+unit_cost_ph	עלות ליחידה
+unit_name_bag_ph	שם (שק)
+unit_plate_ph	יחידה (צלחת / יח׳ — ריק = כל אחת)
+pay_credit	אשראי
+book_kind_today	ספרי היום
+book_kind_month	ספרי החודש
+book_kind_aging	פתוח / חובה-זכות
+book_kind_balance	מאזן
+order_help	הקישו על פריט כדי להוסיף אותו.
+floor_help	הקישו על שולחן כדי לקחת או לשנות את ההזמנה. הצבעים מראים פנוי → יושב → מטבח → מוכן → אוכל → חשבון → שולם. רשימת המתנה, הזמנות מראש והוספת שולחנות נמצאים בסעיפים למטה.
+kitchen_help	פתקי מטבח (KOT), החדש אחרון. התחל → מוכן → בוצע מקדם פתק. הפתקים אף פעם לא מציגים מחירים.
+kitchen_empty	אין פתקים פתוחים. KOT שנשלח מהזמנה או מהאולם מופיע כאן.
+add_a_table	הוסף שולחן
+add_station_heading	הוסף עמדת מטבח
+categories_help	הקישו השתמש כדי לשייך את הפריט למעלה לקטגוריה הזו. תמונה נותנת לקטגוריה תמונה; בלי תמונה מוצגות ראשי התיבות.
+dish_search_ph	שם הפריט — חפשו את המנות שלנו או הקלידו משלכם
+tile_free	פנוי
+tile_occupied	תפוס
+tile_food_ready	האוכל מוכן
+tile_bill_printed	החשבון הודפס
+tile_paid	שולם
+tile_bill_btn	חשבון
+tile_occupy_btn	הושיבו אורחים
+tile_free_btn	פנו שולחן
+tile_ready_btn	פנו שולחן
+tile_undo_bill	בטל חשבון
+summary_busy	שולחנות תפוסים
+summary_to_collect	לגבייה
+summary_on_floor	באולם
+floor	אולם
+sizes_as_items_ph	גדלים כפריטים נפרדים (לא חובה) — חצי=120, מלא=200
+dish_group_ph	קבוצת מנה (לא חובה) — למשל Paneer Tikka
+discount	הנחה
+remove_discount	הסר הנחה
+apply_discount	החל הנחה
+save_opening_cash	שמור מזומן פתיחה
+close_shift_print	סגור משמרת והדפס פתק
+area_prices_ph	מחירי אזור (לא חובה) — מיזוג=220, משלוח=210
+discount_ph	10% או 50
+discount_reason_ph	סיבה (למשל אורח קבוע, אוכל מאוחר)
+opening_float_ph	מזומן שהוכנס למגירה הבוקר
+shift_counted_ph	מזומן שנספר במסירה
+opening_float	מזומן פתיחה (קופה)
+shift_handover	מסירת משמרת
+shift_since	המשמרת הזו מאז
+expected_in_drawer	צפוי במגירה
+right_discount	תנו הנחה
+floor_in_kitchen	במטבח
+floor_eating	הוגש
+pick_category	בחרו קטגוריה
+close_category_list	סגור רשימת קטגוריות
+new_category_row	קטגוריה חדשה — נוצרת כששומרים את הפריט
+your_category	הקטגוריה שלכם
+suggested_category	מוצע — מהמנות שלנו
+category_search_ph	קטגוריה — חפשו את שלכם או הקלידו חדשה
+line_sent_state	נשלח למטבח
+line_nc_state	כיבוד (NC) — לא מחויב
+cancel_item_short	בטל
+nc_short	NC
+charge_again_short	חייב
+move_short	העבר
+cancel_item_title	בטל את הפריט הזה — המטבח מקבל פתק ביטול
+nc_item_title	הפכו את הפריט הזה לכיבוד (NC)
+charge_again_title	חייבו שוב את הפריט הזה
+move_item_title	העבירו את הפריט הזה לשולחן אחר
+already_cooked	כבר בושל (פחת)
+not_cooked_yet	עדיין לא בושל
+return_to_customer	החזירו ללקוח
+short_by	חסר
+tip_not_sale	טיפ (של הצוות, לא מכירה)
+right_settle	גבה תשלום
+right_cancel_sent	בטל פריט שנשלח
+right_complimentary	כיבוד (NC)
+right_move_table	העבר / מזג שולחנות
+right_reprint	הדפס חשבון שוב
+right_allowed	מותר
+right_with_approval	עם אישור
+right_denied	לא מותר
+editing_staff	בעריכה
+finding_server	מחפש את שרת החנות ב־Wi‑Fi הזה…
+no_server_found	לא נמצא. בשרת: הגדרות → מכשירים אחרים → אפשר קופות נוספות (אותו Wi‑Fi). או הקלידו את ה־IP שמוצג שם.
+servers_found_pick	הקישו על החנות שאליה אתם רוצים להתחבר.
+server_host_selected	משתמשים ב־{host} — הזינו את קוד הזיווג, ואז זווג עכשיו.
+print_bill	הדפס חשבון
+table_actions	פעולות שולחן
+move_merge_table	העבר / מזג שולחן
+move_help	העבירו את ההזמנה של השולחן הזה לשולחן פנוי, או מזגו אותה לשולחן פעיל.
+move_target_ph	שם שולחן (למשל D5, P2)
+approval_pin_ph	PIN מנהל משמרת (רק אם מבקשים)
+move_here	העבר לכאן
+merge_into	מזג לתוכו
+line_reason_ph	סיבה (למשל האורח שינה דעה, אזל)
+line_qty_ph	כמה לבטל (ריק = הכול)
+line_target_ph	העבר לשולחן (למשל D5)
+confirm	אשר
+menu_search_ph	חפש פריט או קוד קצר
+customer_paid_ph	הלקוח שילם
+tip_ph	טיפ
+table_area_ph	אזור (למשל באולם, משלוח, מיזוג)
+table_range_ph	הרבה בבת אחת: D1-D20
+add_these_tables	הוסף את השולחנות האלה
+remove_these_tables	הסר את השולחנות האלה
+table_remove_ph	הסר: T1-T24, או שם של שולחן אחד
+find_server	מצא את שרת החנות
+bill_format	פורמט חשבון
+bill_format_help	מודפס מתחת לשם המסעדה שלכם בכל חשבון. הפרידו שורות ב־| (למשל MG Road, Rajkot | טל׳ 98250 00000).
+bill_header_ph	כתובת | טלפון
+fssai_ph	מס׳ רישיון FSSAI (הודו)
+bill_footer_ph	כותרת תחתונה (למשל תודה, בואו שוב)
+save_bill_format	שמור פורמט חשבון
+reset_bill_format	אפס לברירת מחדל
+bill_format_reset	פורמט החשבון אופס לברירת מחדל
+reset_kot_format	אפס לברירת מחדל
+kot_format_reset	פורמט ה־KOT אופס לברירת מחדל
+kot_format	פורמט KOT
+kot_format_help	הקישו על שדה ברשימה. הצג, גודל גופן ומשקל חלים על השדה הזה בסוג ה־KOT שנבחר למעלה. כל סוג שומר את הגדלים והמשקלים שלו.
+kot_format_fields	שדות
+kot_field_next	השדה הבא
+kot_field_show	הצג
+kot_field_hide	הסתר
+kot_field_on	הצג
+kot_field_off	הסתר
+kot_field_size	גודל גופן
+kot_field_size_ph	למשל 16, 20, 24, 28, 32…
+kot_weight_light	דק
+bill_kot_panel_help	פריסת חשבון ופתק מטבח, לכל אחד רוחב תוכן משלו. קופאי החשבון הוא מי שהנפיק או סגר את החשבון; מלצר ה־KOT הוא מי ששלח את פתק המטבח הזה — סיפור ההזמנה המלא נשאר בספרים.
+std_size_ph	למשל 18, 20, 26…
+kot_show_shop	שם החנות
+kot_hide_shop	הסתר חנות
+kot_show_time	שעה
+kot_hide_time	הסתר שעה
+kot_show_waiter	מלצר
+kot_hide_waiter	הסתר מלצר
+kot_show_station	עמדה
+kot_hide_station	הסתר עמדה
+kot_show_table	שולחן
+kot_hide_table	הסתר שולחן
+kot_show_kot_no	מס׳ KOT
+kot_hide_kot_no	הסתר מס׳ KOT
+kot_width	גלישת תצוגה מקדימה (קבעו רוחב תוכן בלשונית KOT)
+kot_width_58	58 mm
+kot_width_80	80 mm
+kot_kind_heading	סוג KOT
+kot_kind_original	מקור
+kot_kind_duplicate	העתק
+kot_kind_modified	שונה
+kot_kind_cancelled	בוטל
+kot_style_heading	גודל ומשקל האות של השדה
+kot_style_title	כותרת
+kot_style_item_qty	פריט · כמות
+kot_style_field_pick	בחר שדה
+kot_weight_regular	רגיל
+kot_weight_bold	מודגש
+kot_align	יישור
+kot_align_start	התחלה
+kot_align_center	מרכז
+kot_align_end	סוף
+content_width	רוחב תוכן (מ״מ)
+content_width_bill	רוחב תוכן החשבון (מ״מ)
+content_width_kot	רוחב תוכן ה־KOT (מ״מ)
+content_width_ph	או הקלידו רוחב תוכן, 40–210 מ״מ
+content_width_help	כמה רחב הפתק הזה מודפס. לחשבון ול־KOT יש לכל אחד רוחב משלו.
+content_width_bill_help	כמה רחב מודפס חשבון האורח. ברירת מחדל 210 מ״מ (עמוד). 58 מ״מ פתק צר, 80 מ״מ פתק רחב, 112 מ״מ 4 אינץ׳, 210 מ״מ רוחב A4. הקלידו כל ערך מ־40 עד 210. לפתקי מטבח יש רוחב משלהם בלשונית KOT.
+content_width_kot_help	כמה רחב מודפס פתק המטבח. ברירת מחדל 80 מ״מ. 58 מ״מ פתק צר, 80 מ״מ פתק רחב, 112 מ״מ 4 אינץ׳, 210 מ״מ עמוד. הקלידו כל ערך מ־40 עד 210. לחשבונות אורח יש רוחב משלהם בלשונית חשבון.
+vp_paper_width	רוחב תוכן (מ״מ)
+vp_paper_width_ph	או הקלידו רוחב תוכן, 40–210 מ״מ
+vp_paper_width_help	רוחב התוכן נקבע תחת פורמט חשבון ו־KOT — בנפרד לחשבון (ברירת מחדל 210 מ״מ) ולפתק המטבח (ברירת מחדל 80 מ״מ).
+kot_size	גודל גופן
+kot_size_s	קטן
+kot_size_m	רגיל
+kot_size_l	גדול
+std_size	גודל גופן
+kot_copies	עותקים
+kot_copies_1	1
+kot_copies_2	2
+kot_copies_3	3
+kot_title_ph	כותרת (ריק = KOT - KITCHEN ORDER)
+kot_footer_ph	הערת מטבח (לא חובה, בלי מחירים)
+kot_preview	תצוגה מקדימה
+save_kot_format	שמור פורמט KOT
+test_kot_format	KOT בדיקה
+test_kot_sent	תצוגה מקדימה של פתק המטבח נשלחה
+test_bill_format	חשבון בדיקה
+test_bill_sent	תצוגה מקדימה של החשבון נשלחה
+test_print_no_printer	אין מדפסת לעבודה הזו — בחרו אחת במסך הזה
+kot_format_saved	פורמט ה־KOT נשמר
+std_print	גודל הדפסת חשבון
+std_print_help	גודל גופן לעבודות חשבון לאורך ולרוחב רגילות במדפסות OS / מסמך (הקלידו נקודות — לא קטן/רגיל/גדול). אותו גודל בשני הכיוונים. גדלי פתק המטבח נמצאים בלשונית KOT.
+std_size_s	קטן
+std_size_m	רגיל
+std_size_l	גדול
+save_std_print	שמור גודל הדפסת חשבון
+std_print_saved	גודל הדפסת החשבון נשמר
+print_brand_kit	ערכת מותג להדפסה
+print_brand_kit_help	תמונות חותמת ו־QR תשלום אופציונליות על פני החשבון ובתצוגת האורחים ב־LAN. QR דינמי של UPI מה־VPA למעלה עדיין עובד כשאין תמונת QR תשלום.
+choose_stamp	בחר חותמת
+clear_stamp	נקה חותמת
+stamp_set	חותמת: בקובץ — מוצגת בתצוגת האורחים ומצוינת בחשבונות מודפסים
+stamp_none	חותמת: אין
+choose_payment_qr	בחר QR תשלום
+clear_payment_qr	נקה QR תשלום
+payment_qr_set	QR תשלום: בקובץ — מוצג בתצוגת האורחים (מחליף שם את QR ה־UPI של הסכום)
+payment_qr_none	QR תשלום: אין — QR של הסכום ממזהה UPI בעת תשלום
+aggregator_import	הזמנות אגרגטור (קובץ)
+aggregator_import_help	ייבוא מקומי אופציונלי: שימו import_aggregator_orders.json בתיקיית הגיבויים (מערך או {"orders":[…]}), ואז הקישו ייבא. אף פעם לא חוסם את הדלפק; Zomato/Swiggy חי הוא ענן.
+import_aggregator_file	ייבא קובץ אגרגטור
+team_pick_ph	איש צוות לעריכה — שם, שם משתמש, או בחירה
+select_staff	בחר את איש הצוות הזה
+rights_help	פעולות כסף ואולם לאדם הזה — הקישו כדי לעבור: מותר → צריך PIN של המנהל → לא מותר. הדפסת חשבון שוב היא לחשבונות בלבד; עמדות מטבח הן הרשימה למטה.
+dish_picker_help	חפשו או דפדפו במנות שלנו והקישו על אחת כדי למלא שם ותמונה — או שמרו את השם שלכם. קבעו מחיר (0 בסדר), ואז הוסף פריט.
+close_dish_list	סגור רשימת מנות
+own_item_name	השתמשו בזה כשם הפריט שלכם
+on_your_menu	בתפריט שלכם
+edit	ערוך
+schemes	מבצעים / הצעות
+schemes_help	BOGO, אחוז הנחה ושילובים קבועים. שילובים נפרסים לשורות מטבח בשליחת KOT; הרכיבים נשארים מוחזקים עד שהשילוב מופעל. דוגמה: קנו 2 תאלי, קבלו 1 צ׳אס
+scheme_bogo_ph	קנו 2 תאלי, קבלו 1 צ׳אס
+add_scheme	הוסף BOGO
+schedule_ph	שעות / happy hour — ב׳–ו׳ 07:00-11:00 או HappyHour 17:00-19:00=150
+upi_vpa_ph	מזהה UPI (VPA)
+upi_payee_ph	שם מוטב UPI (לא חובה)
+upi_qr	UPI QR
+show_upi_qr	הצג UPI QR
+close_upi_qr	סגור
+upi_qr_help	האורח סורק ומשלם. הקישו גבה תשלום אחרי ששילמו. מסך שני: פתחו את כתובת השרת /display ב־LAN.
+kot_recall	החזר
+recently_done	הושלמו לאחרונה
+recall_kot_ph	מס׳ KOT להחזרה
+role_help_customer	תפקיד: לקוח — khata (הם חייבים לנו). אותו צד יכול גם לספק מלאי.
+role_help_both	תפקידים: לקוח + ספק — צד אחד, ספרי khata ותשלומים, נטו בדוחות.
+role_help_supplier	תפקיד: ספק — אנחנו חייבים להם על רכישות.
+dine_in_pick_table	באולם — בחרו שולחן באולם
+choose_table	בחרו שולחן
+change_table	החלף שולחן
+pick_table_banner	בחרו שולחן להזמנה הזו
+items_word	פריטים
+items_section	פריטים
+back_to_order	חזרה להזמנה
+new_items_head	עדיין לא נשלח
+price_ph	מחיר
+price_ph_gst_inside	מחיר ({tax} כלול)
+cancel_needs_table	פתחו את ההזמנה הזו מהאולם (שולחן) כדי לבטל אחרי שהמטבח קיבל אותה — KOT של הדלפק נשארים על הפתק עד שגובים תשלום
+tax_rates_missing_hint	אין שער {tax} על המנות האלה — בתפריט קבעו שער מס (המחירים כבר כוללים {tax} תחת {tax} כלול)
+taxable_value	ערך חייב במס
+gst_inside_price_note	({tax} כלול)
+start_with_template	התחילו עם תבנית התפריט שלנו
+template_heading	תבנית התפריט שלנו
+template_info	{c} קטגוריות ו־{d} מנות עם תמונות, מוכנות להוספה. המחירים מתחילים מ־₹0 — קבעו את שלכם אחר כך.
+template_import	ייבא תבנית מלאה
+template_confirm	להוסיף {d} מנות עם הקטגוריות שלהן? מנות שכבר יש לכם נשארות כפי שהן.
+template_yes	כן, ייבא
+template_importing	מייבא תפריט…
+template_import_progress	מייבא… {d}/{t}
+template_done	כל מנה מהתבנית שלנו נמצאת בתפריט שלכם.
+template_imported	נוספו {d} מנות ו־{c} קטגוריות — קבעו את המחירים שלהן במסך הזה
+client_template_heading	תפריט המסוף
+client_template_info	{title}: {c} קטגוריות, {d} מנות עם מחירים, תמונות וכינויים. רק מנות חסרות — שמות שכבר יש לכם נשארים.
+client_template_import	ייבא את התפריט הזה
+client_template_confirm	להוסיף {d} מנות מ־{title}? מנות שכבר יש לכם נשארות כפי שהן.
+client_template_importing	מייבא את {title}…
+client_template_done	כל מנה מ־{title} נמצאת בתפריט שלכם.
+client_template_imported	נוספו {d} מנות ו־{c} קטגוריות מ־{title}
+resv_heading	הזמנות מראש
+resv_name_ph	שם האורח
+resv_phone_ph	טלפון (לא חובה)
+resv_guests_ph	אורחים
+resv_when_ph	מתי — 20:30, מחר 13:00
+resv_table_ph	שולחן (לא חובה)
+resv_add	הזמן
+resv_seat	הושב
+resv_none	אין הזמנות מראש בקרוב.
+guests_word	אורחים
+delivery_by_ph	משלוח על ידי (שם שליח או איש צוות)
+kitchen_all_day	לבשל עכשיו: {items}
+kitchen_all_day_head	לבשל עכשיו
+kitchen_tab_live	חי
+kitchen_tab_recall	החזר
+kitchen_tab_stations	עמדות
+split_bill	פצל חשבון
+split_go	צור חשבון נפרד
+cancel	בטל
+opening_client	פותח מסוף…
+preparing_desk	מכין שולחן…
+opening_server	פותח שרת…
+creating_server	יוצר שרת…
+split_help	הקישו על המנות שאורח אחד משלם עליהן · {n} נבחרו
+split_send_first	שלחו קודם KOT — רק מנות שהמטבח כבר קיבל יכולות לעבור לחשבון נפרד
+split_pick_some	הקישו קודם על המנות לחשבון הנפרד
+split_done	חשבון נפרד נוצר — הוא באולם ליד השולחן הזה
+split_marked	חשבון נפרד
+order_empty_pick	ההזמנה ריקה — הקישו הוסף מנות למעלה כדי לבחור מנות.
+add_dishes	הוסף מנות
+order_so_far	בהזמנה הזו: {n} · {total}
+no_dish_match	אין מנה שמתאימה ל־“{q}”
+pick_dishes_help	הקישו על מנה כדי להוסיף אותה · בחרו קטגוריה כדי לצמצם את הרשימה
+pick_done	בוצע
+pick_done_dd	בוצע · {label}
+printer_route_mode	אם יש כמה מדפסות במקום הזה
+printer_mode_first	הראשונה שעובדת
+printer_mode_all	הדפס בכולן
+kot_show_area	אזור
+kot_hide_area	הסתר אזור
+kot_show_item_hdr	פריט · כמות
+kot_hide_item_hdr	הסתר עמודות
+kot_show_title	שורת כותרת
+kot_hide_title	הסתר כותרת
+kot_field_order	סדר הדפסה
+kot_field_up	הזז למעלה
+kot_field_down	הזז למטה
+kot_field_cycle	בחר את הבא
+kot_field_select	בחר את הבא
+kot_field_time	שעה
+kot_field_kot_no	מס׳ KOT
+kot_field_area	אזור
+kot_field_table	שולחן
+kot_field_shop	שם החנות
+kot_field_waiter	צוות
+kot_field_station	עמדה
+app_template_blurb_extra	גם: בעלים Zahir, מנהל Asif, מלצר Nawaz; סרגל צד של האולם; היסטוריה אחרי 4 שעות; פס היום כבוי; KOT קומפקטי.
+dishes_n	{n} מנות
+recipe_ph	מתכון (לא חובה) — מנה אחת משתמשת: אורז=0.2, Paneer=0.15
+reorder_ph	קנו עוד ב־
+set_reorder	קבע רמת הזמנה מחדש
+low_stock_alert	המלאי יורד — קנו בקרוב: {items}
+unpriced_note	ל־{n} מנות בתפריט שלכם עדיין אין מחיר — הן מחויבות ב־0 עד שתקבעו אחד.
+show_unpriced	הצג רק מנות בלי מחיר
+show_all_dishes	הצג את כל המנות
+role_waiter	מלצר
+role_kitchen	מטבח
+role_title_rest_ph	כותרת תפקיד (למשל קפטן, טבח ראשי)
+preset_help_rest	מלצר: לוקח הזמנות ומנהל שולחנות. קופאי: גם גובה תשלום. מטבח: מסך המטבח. מנהל משמרת: גם התפריט, ביטולים והנחות.
+kind_raw	חומר גלם
+kind_resale	נקנה ונמכר הלאה
+kind_dish	מנה שאנחנו מכינים
+buy_unit_ph	יחידה (ק״ג, ליטר, יח׳)
+add_another_way	+ הוסף דרך נוספת
+parts_status	הוזנו {a} מתוך {b} · נשארו {c}
+save_expense	שמור הוצאה
+rest_ph	יתרה
+low_badge	נמוך
+stock_empty	עדיין אין כלום במלאי — מה שרושמים בקנייה מופיע כאן.
+recent_changes	שינויים אחרונים
+lane_declared_label	חשבונית מס
+lane_owner_label	תזכיר מזומן
+money_lane_bill	חשבון: {lane}

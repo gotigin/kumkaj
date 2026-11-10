@@ -1,0 +1,835 @@
+# Malayalam — മലയാളം (ml). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	കൊറിയർ ബുക്ക് + ബുക്കിംഗ് ഡെസ്ക്. സൗജന്യ ഓഫ്‌ലൈൻ.
+unlock	അൺലോക്ക്
+pin_hint	ഉടമ PIN 0000 ആയി തുടങ്ങും
+sell	ബുക്കിംഗ്
+buy	പേ ഔട്ട്
+books	ദിന ബുക്ക്
+books_help	ഇന്നത്തെ നില. ബുക്കിംഗ് = പാഴ്സലുകൾ വന്നു. പേ ഔട്ട് = കാരിയർ ബില്ലും ചെലവും. പാർട്ടി = അയയ്ക്കുന്നവരും കാരിയറും.
+buy_help	ചെലവ് വൗച്ചറുകളും കാരിയർ ബില്ലുകളും (പണം പുറത്തേക്ക്). അക്കൗണ്ടിലുള്ളത് പാർട്ടി ലെഡ്ജറിൽ തുടരും.
+sell_money_in	പാഴ്സൽ ബുക്ക് ചെയ്യുക
+buy_money_out	ചെലവ് / കാരിയർ ബിൽ
+record_purchase	വാങ്ങൽ രേഖ
+add_expense	ചെലവ് വൗച്ചർ
+bank_book	ബാങ്ക് ബുക്ക്
+credit_help	പാർട്ടി ഐഡി അദ്വിതീയമാണ് (പേരുകൾ ആവർത്തിക്കാം). റോളുകൾ: അയയ്ക്കുന്നയാൾ (AR), കാരിയർ (AP), അല്ലെങ്കിൽ അതേ ഐഡിയിൽ രണ്ടും. ലെഡ്ജറുകൾ വേറെ; റിപ്പോർട്ട് നെറ്റ് കാണിക്കും.
+party_kind_ph	കസ്റ്റം റോൾ (ഓപ്ഷണൽ) — അല്ലെങ്കിൽ മുകളിലെ ചിപ്പ്
+parties_list_heading	സംരക്ഷിച്ച പാർട്ടികൾ
+reports_help	ദിന ബുക്ക്, കടക്കാരും കടം കൊടുത്തവരും, ബാങ്ക് ബുക്ക്, ചെലവ് വൗച്ചറുകൾ, ലാഭനഷ്ടം.
+reports_today	ദിന ബുക്ക് (ഇന്ന്)
+reports_month	ലാഭനഷ്ടം (മാസം)
+reports_aging	കുടിശ്ശിക / Dr-Cr
+reports_balance_sheet	ബാലൻസ് ഷീറ്റ്
+reports	റിപ്പോർട്ട്
+refresh	പുതുക്കുക
+undo	പഴയപടി
+start_tracking	എണ്ണൽ തുടങ്ങുക
+stock_minus	− സ്റ്റോക്ക്
+stock_plus	+ സ്റ്റോക്ക്
+settle_cash	പണം തീർക്കുക
+settle_card	കാർഡ് കൊണ്ട് തീർക്കുക
+items	നിരക്കുകളും സേവനങ്ങളും
+nav_items	നിരക്കുകൾ
+more	കൂടുതൽ
+your_items	നിങ്ങളുടെ നിരക്കുകൾ
+items_help	ഓരോ വരിയും ഒരു നിരക്കാണ് (ഉദാ. Surface Zone A). യൂണിറ്റ് സാധാരണയായി kg. എഡിറ്റ് ചെയ്യാൻ അമർത്തുക.
+add_item	നിരക്ക് ചേർക്കുക
+new_item	പുതിയ നിരക്ക്
+adding_item	പുതിയ നിരക്ക് ചേർക്കുന്നു
+editing_item	എഡിറ്റ് ചെയ്യുന്നു
+save	സേവ് ചെയ്യുക
+remove	നീക്കം ചെയ്യുക
+empty_catalog	ഇതുവരെ നിരക്കുകളില്ല. നിരക്കുകളും സേവനങ്ങളും തുറന്ന് ഒന്ന് ചേർക്കുക (പേര് + വില, യൂണിറ്റ് kg), പിന്നെ ബുക്കിംഗ്.
+counter_sale	കൗണ്ടർ ബുക്കിംഗ്
+total	ആകെ
+cash	പണം
+upi	यूपीआई
+card	കാർഡ്
+credit	പാർട്ടികൾ
+clear	മായ്ക്കുക
+ready_to_sell	ബുക്കിംഗിന് തയ്യാർ
+today_prefix	ഇന്ന്
+today_mid	ഇന്ന്
+owed	കുടിശ്ശിക
+round_word	റൗണ്ട്
+back	പിന്നോട്ട്
+sold_out	വിറ്റു തീർന്നു
+restock	തിരികെ വയ്ക്കുക
+not_tracked	എണ്ണുന്നില്ല
+in_stock	സ്റ്റോക്കിൽ
+marked_sold_out	വിറ്റു തീർന്നു എന്ന് അടയാളം
+add_upper	ചേർക്കുക
+na	ഇല്ല
+qty	എണ്ണം
+unit_at	വില
+actual	യഥാർത്ഥം
+applied	പ്രയോഗിച്ചത്
+note_ph	കുറിപ്പ് (ഓപ്ഷണൽ)
+rounded	റൗണ്ട്
+split	വിഭജിക്കുക
+counter	കൗണ്ടർ
+parcel	പാർസൽ
+order	ഓർഡർ
+sales	ബുക്കിംഗുകൾ
+sales_refunds	ബുക്കിംഗുകളും റീഫണ്ടുകളും
+day_close	ദിവസം അടയ്ക്കൽ
+reports_expenses	റിപ്പോർട്ടും ചെലവും
+nav_reports	റിപ്പോർട്ടുകൾ
+nav_settings	ക്രമീകരണങ്ങൾ
+nav_lock	ലോക്ക്
+sidebar_settings	സൈഡ്‌ബാർ ക്രമീകരണങ്ങൾ
+sidebar_settings_help	വശത്തെ ബാറിലെ അതേ ഐക്കണുകൾ. ക്രമം മാറ്റാൻ ഒരു വരി വലിച്ചിടുക. കാണിക്കാനോ മറയ്ക്കാനോ സ്വിച്ച് മാറ്റുക. ക്രമീകരണങ്ങളും ലോക്കും എപ്പോഴും ബാറിൽ നിൽക്കും.
+sidebar_always_on_short	എപ്പോഴും ഓൺ
+sidebar_back_settings	പിന്നോട്ട്
+sidebar_shown	കാണിക്കുന്നു
+sidebar_hidden	മറച്ചു
+sidebar_always_on	എപ്പോഴും ബാറിൽ
+sidebar_shown_hint	വശത്തെ ബാർ / താഴത്തെ ടാബുകളിൽ കാണിക്കും
+sidebar_hidden_hint	ബാറിൽ നിന്ന് മറച്ചു
+sidebar_menu_items	മെനുവും ഇനങ്ങളും
+sidebar_enable_all	എല്ലാം ഓൺ ചെയ്യുക
+sidebar_disable_all	എല്ലാം ഓഫ് ചെയ്യുക
+sidebar_order_saved	സൈഡ്‌ബാർ ക്രമം സേവ് ചെയ്തു
+sidebar_visibility_saved	സൈഡ്‌ബാർ ദൃശ്യത സേവ് ചെയ്തു
+amounts_hide	മറയ്ക്കുക
+amounts_show	കാണിക്കുക
+no_sale_yet	ഇതുവരെ വിൽപ്പനയില്ല
+favorites	പ്രിയപ്പെട്ടവ
+favorites_help	നിങ്ങൾ ഇടയ്ക്കിടെ വിൽക്കുന്ന ഇനങ്ങൾ, നിങ്ങളുടെ ലോഗിനായി സേവ് ചെയ്തിരിക്കുന്നു. ഒന്നിനെ ബില്ലിൽ ചേർക്കുക, അല്ലെങ്കിൽ താഴെയുള്ള എല്ലാ ഇനങ്ങളിൽ നിന്നും നിങ്ങളുടെ ലിസ്റ്റ് ഉണ്ടാക്കുക.
+your_favorites	നിങ്ങളുടെ പ്രിയപ്പെട്ടവ
+all_items	എല്ലാ ഇനങ്ങളും
+no_favorites	ഇതുവരെ പ്രിയപ്പെട്ടവയില്ല — താഴെയുള്ള ലിസ്റ്റിൽ നിന്ന് ഇനങ്ങൾ ചേർക്കുക.
+add_to_bill	ബില്ലിൽ ചേർക്കുക
+added	ചേർത്തു
+owes_word	കടമുണ്ട്
+selected_word	തിരഞ്ഞെടുത്തു
+chip_clear_credit	ക്ലിയർ — കടം കൊടുക്കുക അല്ലെങ്കിൽ അഡ്വാൻസ് എടുക്കുക
+chip_missing_customer	തിരഞ്ഞെടുത്ത ഉപഭോക്താവിനെ കാണുന്നില്ല — വീണ്ടും തിരഞ്ഞെടുക്കുക
+chip_no_customer	ഇതുവരെ ഉപഭോക്താവില്ല — പേര് എഴുതുക, പിന്നെ Credit അമർത്തുക
+credit_summary_fmt	{} ഉപഭോക്താക്കൾ · തുറന്ന കടം {} · അഡ്വാൻസ് വെച്ചത് {}
+recent_label	സമീപകാല:
+inventory	സ്റ്റോക്ക്
+inventory_stock	സ്റ്റോക്കും എണ്ണവും
+branches	ശാഖകൾ
+branches_org	ശാഖയും സ്ഥാപനവും
+credit_customers	കക്ഷികൾ (കടക്കാരും കടം നൽകിയവരും)
+customer_name_ph	പാർട്ടിയുടെ പേര്
+new_customer_ph	പുതിയ പാർട്ടിയുടെ പേര്
+item_name_ph	നിരക്കിന്റെ പേര് (ഉദാ. Surface Zone A)
+item_price_ph	kg യ്ക്ക് / ആദ്യ സ്ലാബ്
+start_template	ഉൽപ്പന്നം
+next_booking	അടുത്ത ബുക്കിംഗ്
+destination_ph	ലക്ഷ്യസ്ഥാന നഗരം / സോൺ
+consignee_ph	സ്വീകർത്താവ്
+consignee_phone_ph	സ്വീകർത്താവിന്റെ ഫോൺ
+consignee_address_ph	ഡെലിവറി വിലാസം
+origin_name_ph	അയയ്ക്കുന്നയാളുടെ പേര്
+origin_phone_ph	അയയ്ക്കുന്നയാളുടെ ഫോൺ
+origin_address_ph	പിക്കപ്പ് / ഉത്ഭവ വിലാസം
+booking_consignor_heading	അയയ്ക്കുന്നയാൾ (ഉപഭോക്താവ് / പ്രേഷകൻ)
+booking_consignee_heading	സ്വീകർത്താവ് (റിസീവർ)
+booking_consignor_hint	പൂരിപ്പിക്കാൻ ഒരു പാർട്ടി തിരഞ്ഞെടുക്കുക, അല്ലെങ്കിൽ നേരിട്ടു വന്നവർക്ക് ശൂന്യമായി വിടുക. വീട്ടിൽ നിന്നുള്ള പിക്കപ്പിനും RTO-യ്ക്കും ആവശ്യം.
+booking_consignee_hint	പാർസൽ സ്വീകരിക്കുന്നയാൾ. കൗണ്ടറിൽ നേരിട്ട് ഏൽപ്പിക്കുന്ന പാർസലിന് ശൂന്യമായി വിടുക.
+weight_kg_ph	യഥാർത്ഥ kg
+length_cm_ph	നീളം cm
+breadth_cm_ph	വീതി cm
+height_cm_ph	ഉയരം cm
+chargeable_kg	ചാർജ് ചെയ്യാവുന്ന kg
+awb_label	AWB
+booking_help	വാക്ക്-ഇൻ: ലക്ഷ്യസ്ഥാനം → തൂക്കം → നിരക്ക് തിരഞ്ഞെടുക്കുക → അക്കൗണ്ട്/ക്യാഷ് ബുക്കിംഗ് → പേയ്‌മെന്റ്. രസീതിൽ AWB അച്ചടിക്കും. അടുത്ത ബുക്കിംഗ് ഡെസ്ക് ಖালിയാക്കും.
+cart_empty_hint	ഡെസ്ക് ശൂന്യം — ലക്ഷ്യസ്ഥാനവും തൂക്കവും നൽകി, നിരക്കിൽ ADD അമർത്തി, പിന്നെ പണമടയ്ക്കുക.
+team	ടീം
+team_pins	ടീമും പിൻ
+my_pin_settings	എന്റെ PIN
+settings_hub_help_my_pin	ഈ ഉപകരണത്തിൽ സൈൻ ഇൻ ചെയ്തയാളുടെ അൺലോക്ക് PIN മാറ്റുക.
+team_self_help	നിങ്ങളുടെ അൺലോക്ക് PIN (ഐച്ഛിക ലോഗിൻ പാസ്‌വേഡും) നിങ്ങൾക്ക് മാത്രമേ മാറ്റാനാകൂ. വേറെ സ്ക്രീനുകളോ അവകാശങ്ങളോ വേണമെങ്കിൽ ഉടമയോട് ചോദിക്കുക.
+backup_settings	ബാക്കപ്പും ക്രമീകരണവും
+lock_app	ലോക്ക്
+pick	തിരഞ്ഞെടുക്കുക
+select	തിരഞ്ഞെടുക്കുക
+advance	മുന്നോട്ട്
+owner	ഉടമ
+staff	ജീവനക്കാർ
+photo	ഫോട്ടോ
+auto	സ്വയമേവ
+prev	മുമ്പത്തെ
+next	അടുത്തത്
+ok	ശരി
+this_shop	സെർവർ മോഡ്
+extra_till	ക്ലയന്റ് മോഡ്
+off	ഓഫ്
+server	സെർവർ
+client	ക്ലയന്റ്
+language_currency	ഭാഷയും കറൻസിയും
+language	ഭാഷ
+choose_language	നിങ്ങളുടെ ഭാഷ തിരഞ്ഞെടുക്കുക
+language_setup_hint	ഈ ഉപകരണത്തിന്റെ ഭാഷ പിന്തുടരുക, അല്ലെങ്കിൽ സ്വയം ഒന്ന് തിരഞ്ഞെടുക്കുക.
+lang_follow_platform	ഉപകരണ ഭാഷ ഉപയോഗിക്കുക
+lang_pick_user	തിരഞ്ഞെടുത്ത ഭാഷ ഉപയോഗിക്കുക
+lang_platform_now	ഇപ്പോൾ ഉപകരണ ഭാഷ
+selected_language	തിരഞ്ഞെടുത്തത്
+continue	തുടരുക
+this_device	ഈ ഉപകരണം
+device_use_q	ഈ ഉപകരണം എങ്ങനെ ഉപയോഗിക്കും?
+last_server_mode	മുമ്പ് സെർവർ — തുടരാൻ ടാപ്പ് ചെയ്യുക
+last_client_mode	മുമ്പ് ക്ലയന്റ് — തുടരാൻ ടാപ്പ് ചെയ്യുക
+choose_server	സെർവർ തിരഞ്ഞെടുക്കുക
+choose_server_hint	ഈ ഉപകരണത്തിൽ ഇതിനകം സെർവറുകളുണ്ട്. ഒന്ന് തുറക്കുക, അല്ലെങ്കിൽ മറ്റൊരു ബിസിനസിന് പുതിയ സെർവർ ഉണ്ടാക്കുക.
+create_new_server	പുതിയ സെർവർ ഉണ്ടാക്കുക
+open_server	തുറക്കുക
+new_server_name_ph	പുതിയ സെർവറിന്റെ പേര് (ഓപ്ഷണൽ)
+server_remove_pin_ph	സെർവർ നീക്കം ചെയ്യാൻ Owner PIN
+only_owner_remove_server	Owner മാത്രമേ സെർവർ നീക്കം ചെയ്യാവൂ
+owner_pin_remove_server	സെർവർ നീക്കം ചെയ്യാൻ Owner PIN വേണം
+device_setup_help	സെർവർ കണക്കുകൾ ഇവിടെ സൂക്ഷിക്കുന്നു. ക്ലയന്റ് ഒരു സെർവറുമായി ജോടിയാകുന്നു.
+currency	കറൻസി
+backup	ബാക്കപ്പ്
+settings_sec_diag	ഡയഗ്നോസ്റ്റിക്സ്
+settings_hub_help	ഒരു സമയം ഒരു ഭാഗം തുറക്കുക — കുറവ് സ്ക്രോൾ, വ്യക്തമായ തിരഞ്ഞെടുപ്പുകൾ.
+settings_sec_devices	അധിക ടില്ലുകളും ശാഖകളും
+settings_sec_alerts	അറിയിപ്പുകൾ
+alerts_help	സ്റ്റാറ്റസ് സന്ദേശങ്ങൾ നിങ്ങൾക്ക് സ്ക്രീനിൽ എത്ര നേരം നിൽക്കണം (ഈ ലോഗിനിൽ).
+snack_secs_ph	സെക്കൻഡ് (3–60, ഡിഫോൾട്ട് 10)
+snack_secs_save	അറിയിപ്പ് സമയം സേവ് ചെയ്യുക
+snack_secs_saved	അറിയിപ്പ് സമയം സേവ് ചെയ്തു — {n} സെക്കൻഡ്
+snack_secs_bad	സെക്കൻഡ് സംഖ്യയായി നൽകുക (3–60)
+cancelled	റദ്ദാക്കി
+cancel	റദ്ദാക്കുക
+opening_client	ക്ലയന്റ് തുറക്കുന്നു…
+preparing_desk	ഡെസ്ക് തയ്യാറാക്കുന്നു…
+opening_server	സെർവർ തുറക്കുന്നു…
+creating_server	സെർവർ സൃഷ്ടിക്കുന്നു…
+diag_privacy_help	ലോഗുകൾ ഈ ഉപകരണത്തിൽ തന്നെ നിൽക്കും. രഹസ്യങ്ങൾ (PIN, പാസ്‌വേഡുകൾ) ഒരിക്കലും സൂക്ഷിക്കില്ല. ഉപകരണത്തിന് പുറത്തേക്ക് പാക്കേജ് അയയ്ക്കാൻ ഓരോ തവണയും നിങ്ങളുടെ വ്യക്തമായ അനുമതി വേണം — ഒരിക്കലും വിൽക്കുകയോ മൂന്നാം കക്ഷിക്ക് നൽകുകയോ ഇല്ല.
+diag_level	വിശദാംശ നില
+diag_level_error	പിശകുകൾ
+diag_level_warn	മുന്നറിയിപ്പുകൾ
+diag_level_info	വിവരം
+diag_level_debug	ഡീബഗ്
+diag_support_start	30 മിനിറ്റ് സഹായ സെഷൻ ആരംഭിക്കുക
+diag_support_stop	സഹായ സെഷൻ അവസാനിപ്പിക്കുക
+diag_support_started	സഹായ സെഷൻ ഓൺ — 30 മിനിറ്റ് ഡീബഗ് വിശദാംശം
+diag_support_ended	സഹായ സെഷൻ അവസാനിച്ചു
+diag_export_local	പ്രാദേശിക പകർപ്പ് കയറ്റുമതി ചെയ്യുക
+diag_export_local_done	പ്രാദേശിക ഡയഗ്നോസ്റ്റിക്സ് {path}-ൽ തയ്യാർ — പകർപ്പ് എവിടെ സേവ് ചെയ്യണമെന്ന് തിരഞ്ഞെടുക്കുക
+diag_approve_send	ഉപകരണത്തിന് പുറത്ത് പങ്കിടാൻ അനുമതി നൽകുക
+diag_send_heading	ഈ ഉപകരണത്തിൽ നിന്ന് പങ്കിടുക
+diag_send_help	അനുമതി ഒരു പാക്കേജിന് മാത്രം, പിന്നെ കാലഹരണപ്പെടും. താൽക്കാലികം — ഉൽപ്പന്നം ശരിയാക്കാനോ മെച്ചപ്പെടുത്താനോ മാത്രം. മൂന്നാം കക്ഷികളുമായി പങ്കിടില്ല. Linux, Windows, macOS, Android എന്നിവയിൽ പ്രവർത്തിക്കും.
+optional_login_heading	ഐച്ഛിക ലോഗിൻ
+rights_heading	അവകാശങ്ങൾ
+booking_scope_heading	ആഭ്യന്തരം / അന്താരാഷ്ട്രം
+diag_send_approved	ഒരു പാക്കേജ് പങ്കിടാൻ അനുമതി ലഭിച്ചു (ഉടൻ കാലഹരണപ്പെടും)
+diag_export_send	പങ്കിടൽ പാക്കേജ് സൃഷ്ടിക്കുക (അനുമതി വേണം)
+diag_export_send_done	പങ്കിടൽ പാക്കേജ് {path}-ൽ തയ്യാർ — എവിടെ സേവ് ചെയ്യണമെന്ന് തിരഞ്ഞെടുത്ത്, Kumkaj സഹായത്തിന് മാത്രം അയയ്ക്കുക
+diag_save_bundle	ഡയഗ്നോസ്റ്റിക്സ് പകർപ്പ് സേവ് ചെയ്യുക
+diag_bundle_saved	ഡയഗ്നോസ്റ്റിക്സ് പകർപ്പ് {path}-ൽ സേവ് ചെയ്തു
+diag_bundle_failed	ഡയഗ്നോസ്റ്റിക്സ് പകർപ്പ് സേവ് ചെയ്യാനായില്ല — വീണ്ടും ശ്രമിക്കുക
+diag_clear	ഡയഗ്നോസ്റ്റിക് ലോഗുകൾ മായ്ക്കുക
+diag_cleared	ഡയഗ്നോസ്റ്റിക് ലോഗുകൾ മായ്ച്ചു
+use	ഉപയോഗിക്കുക
+add_branch	ശാഖ ചേർക്കുക
+add_conversion	പരിവർത്തനം ചേർക്കുക
+add_item_plain	ഇനം ചേർക്കുക
+add_note	കുറിപ്പ് ചേർക്കുക
+add_opening_balance	ആരംഭ ബാലൻസ് ചേർക്കുക
+add_rider	റൈഡർ ചേർക്കുക
+add_staff	ജീവനക്കാരെ ചേർക്കുക
+add_unit	യൂണിറ്റ് ചേർക്കുക
+add_use_name	ഈ പേര് ചേർക്കുക / ഉപയോഗിക്കുക
+allow_extra_tills	അധിക ടില്ലുകൾ അനുവദിക്കുക
+amend	ഭേദഗതി
+apply_country_pack	രാജ്യ പാക്ക് പ്രയോഗിക്കുക
+datetime_appearance	തീയതിയും സമയവും കാണുന്ന രീതി
+datetime_appearance_help	ബുക്കുകൾ ഉള്ളിൽ വർഷം-ആദ്യം RFC3339 സൂക്ഷിക്കുന്നു. ഇവ രസീതുകൾ, ലേബലുകൾ, റിപ്പോർട്ടുകൾ, സ്ക്രീൻ എന്നിവയിൽ തീയതിയും ക്ലോക്കും കാണുന്ന രീതി മാത്രം മാറ്റും.
+datetime_example	ഇപ്പോഴത്തെ ഉദാഹരണം: {ex}
+date_order	തീയതി ക്രമം
+date_order_dmy	ദി/മാ/വ
+date_order_mdy	മാ/ദി/വ
+date_order_ymd	വ-മാ-ദി
+time_format	ക്ലോക്ക്
+time_format_24h	24 മണിക്കൂർ
+time_format_12h	12 മണിക്കൂർ
+attach_bill_photo	ബിൽ ഫോട്ടോ ചേർക്കുക
+attach_pdf	PDF ചേർക്കുക
+attach_photo	ഫോട്ടോ ചേർക്കുക
+bank	ബാങ്ക്
+bank_in	ബാങ്കിൽ ഇടുക
+bank_out	ബാങ്കിൽ നിന്ന് എടുക്കുക
+bank_to_till	ബാങ്ക് → ടിൽ
+till_to_bank	ടിൽ → ബാങ്ക്
+mark_cleared	ക്ലിയർ എന്ന് അടയാളപ്പെടുത്തുക
+unmark	അടയാളം മാറ്റുക
+role_both	രണ്ടും
+role_carrier	കാരിയർ
+role_cashier	കാഷ്യർ
+role_consignor	അയയ്ക്കുന്നയാൾ
+role_manager	മാനേജർ
+role_supplier	വിതരണക്കാരൻ
+branch_name_sell_ph	വിൽക്കേണ്ട ശാഖയുടെ പേര്
+bring_my_book	എന്റെ ബുക്ക് കൊണ്ടുവരിക
+business_tax_id_ph	ബിസിനസ് നികുതി ഐഡി
+card_amount_ph	കാർഡ് തുക
+cash_amount_ph	പണ തുക
+upi_amount_ph	UPI തുക
+carrier_cost_ph	കാരിയർ ചെലവ്
+carrier_party_ph	കാരിയർ പാർട്ടി
+choose_icon	ഐക്കൺ തിരഞ്ഞെടുക്കുക
+choose_logo	ലോഗോ തിരഞ്ഞെടുക്കുക
+choose_receipt_stamp	രസീത് സ്റ്റാമ്പ് തിരഞ്ഞെടുക്കുക
+choose_payment_qr	പേയ്‌മെന്റ് QR തിരഞ്ഞെടുക്കുക
+clear_icon	ഐക്കൺ മാറ്റുക
+clear_logo	ലോഗോ മാറ്റുക
+clear_photo	ഫോട്ടോ മാറ്റുക
+clear_stamp	സ്റ്റാമ്പ് മായ്ക്കുക
+clear_payment_qr	പേയ്‌മെന്റ് QR മായ്ക്കുക
+print_faces	പ്രിന്റ് രൂപം (രസീത് / കാലയളവ് ബിൽ)
+print_faces_help	ബുക്കിംഗ് രസീതുകളിലും കാലയളവ് ബില്ലുകളിലും നിങ്ങളുടെ ലോഗോയ്ക്കടുത്ത് ഓപ്ഷണൽ മുദ്രയും പേയ്മെന്റ് QR-ഉം.
+awb_pools_heading	കാരിയർ AWB നമ്പർ പൂളുകൾ
+add_awb_pool	AWB പൂൾ ചേർക്കുക
+awb_pool_carrier_ph	കാരിയർ പാർട്ടിയുടെ പേര്
+awb_pool_start_ph	ആരംഭ നമ്പർ
+awb_pool_end_ph	അവസാന നമ്പർ
+awb_pool_prefix_ph	പ്രിഫിക്സ് (ഓപ്ഷണൽ)
+awb_pool_label_ph	ലേബൽ (ഓപ്ഷണൽ)
+pieces_ph	എണ്ണം (ശൂന്യം = 1) — കാർഗോ / പല പീസുകൾക്ക് വികസിപ്പിക്കുക
+bulk_awbs_ph	ബൾക്ക് AWB — ഒറ്റയടിക്ക് നില മുന്നോട്ടാക്കാൻ പലതും ഒട്ടിക്കുക (പുതിയ വരി അല്ലെങ്കിൽ കോമ)
+tds_cut_ph	TDS കിഴിവ് (ഓപ്ഷണൽ)
+discount_ph	ഡിസ്കൗണ്ട് (ഓപ്ഷണൽ)
+cheque_no_ph	ചെക്ക് നമ്പർ (ഓപ്ഷണൽ)
+bill_reminder_chase	ബിൽ ഓർമ്മപ്പെടുത്തൽ പട്ടിക
+month_mix_report	മാസ മിശ്ര റിപ്പോർട്ട്
+copy_month_gst_csv	മാസം GST CSV പകർത്തുക
+domestic	ആഭ്യന്തര
+international	അന്താരാഷ്ട്ര
+pick_logo	ലോഗോ തിരഞ്ഞെടുക്കുക
+booking_scope_hint_domestic	വോളിയം ÷5000 (ആഭ്യന്തര) — അന്താരാഷ്ട്ര ÷6000
+booking_scope_hint_intl	വോളിയം ÷6000 (അന്താരാഷ്ട്ര) — ആഭ്യന്തര ÷5000
+cod_register	COD രജിസ്റ്റർ
+collect_cod	COD ശേഖരിക്കുക (AWB)
+consignments_dispatch	കൺസൈൻമെന്റും ഡിസ്‌പാച്ചും
+consignor_party_ph	അയയ്ക്കുന്നയാൾ / പാർട്ടിയുടെ പേര്
+copy_day_book_csv	ദിന ബുക്ക് CSV പകർത്തുക
+copy_day_close	ദിവസം അടയ്ക്കൽ പകർത്തുക
+copy_items_csv	ഇനങ്ങൾ CSV പകർത്തുക
+copy_outstanding_csv	കുടിശ്ശിക CSV പകർത്തുക
+copy_parties_csv	പാർട്ടികൾ CSV പകർത്തുക
+copy_party_ledger_csv	പാർട്ടി ലെഡ്ജർ CSV പകർത്തുക
+copy_receipt	രസീത് പകർത്തുക
+copy_report	റിപ്പോർട്ട് പകർത്തുക
+counted_cash_ph	ഡ്രോയറിൽ എണ്ണിയ പണം
+counter_agency_ph	കൗണ്ടർ / ഏജൻസിയുടെ പേര് (ഓപ്ഷണൽ)
+create_backup	ബാക്കപ്പ് ഉണ്ടാക്കുക
+day_close_summary	ദിവസം അടയ്ക്കൽ സംഗ്രഹം
+delete_party	തിരഞ്ഞെടുത്ത പാർട്ടി ഇല്ലാതാക്കുക
+dispatch_to_rider	ബുക്ക് ചെയ്തത് → റൈഡർക്ക്
+docket_charge_ph	ഡോക്കറ്റ് ചാർജ്
+declared_value_ph	പ്രഖ്യാപിത മൂല്യം
+contents_ph	ഉള്ളടക്കം
+eway_ph	ഇ-വേ ബിൽ നമ്പർ
+insurance_label	ഇൻഷുറൻസ് (ഉവ്വ്/ഇല്ല)
+yes_label	അതെ
+no_label	ഇല്ല
+print_route_label	പ്രിന്റ് റൂട്ട്
+new_party_kind_label	പുതിയ പാർട്ടി തരം
+done_open_books	കഴിഞ്ഞു — ബുക്കുകൾ തുറക്കുക
+export_day	ദിവസം എക്‌സ്‌പോർട്ട് ചെയ്യുക
+extra_note_expense_ph	അവസാന ചെലവിൽ അധിക കുറിപ്പ്
+extra_note_awb_ph	ഈ AWB / വിൽപ്പനയിൽ അധിക കുറിപ്പ്
+failed_delivery	ഡെലിവറി പരാജയം
+find_scan_awb	AWB കണ്ടെത്തുക / സ്കാൻ ചെയ്യുക
+forget_shop	ഈ കട മറക്കുക
+fuel_ph	ഇന്ധനം
+handover_carrier	ബുക്ക് ചെയ്തത് → കാരിയർക്ക്
+import_day	ദിവസം ഇറക്കുമതി ചെയ്യുക
+import_items_csv	ഇനങ്ങൾ / നിരക്കുകൾ CSV ഇറക്കുമതി…
+import_parties_csv	പാർട്ടികൾ CSV ഇറക്കുമതി…
+import_pincodes_csv	പിൻകോഡ് CSV ഇറക്കുമതി…
+import_carrier_bill_csv	കാരിയർ ബിൽ CSV ഇറക്കുമതി…
+copy_carrier_bill_report	അവസാന കാരിയർ ബിൽ റിപ്പോർട്ട് പകർത്തുക
+use_carrier_cost	കാരിയർ ചെലവ് ഉപയോഗിക്കുക
+rate_carrier_ph	കാരിയർ (ശൂന്യം = ഞങ്ങളുടെ വിൽപ്പന നിരക്ക്)
+rate_party_ph	പാർട്ടി (ശൂന്യം = എല്ലാ ഉപഭോക്താക്കളും)
+carrier_pick_ph	ചെലവിനുള്ള കാരിയർ (താരതമ്യത്തിൽ നിന്ന്)
+item_name	ഇനത്തിന്റെ പേര്
+load_bulk_row	ബൾക്ക് വരി ലോഡ് → ഡെസ്ക്
+login_id_ph	ലോഗിൻ ഐഡി
+mark_delivered	ഡെലിവർ ചെയ്തു എന്ന് അടയാളപ്പെടുത്തുക
+manifest_cod_total	COD ആകെ
+manifest_received_by	സ്വീകരിച്ചയാൾ
+manifest_sign	ഒപ്പ്
+ndr_address_wrong	വിലാസം തെറ്റ്
+ndr_customer_unavailable	ഉപഭോക്താവ് ഇല്ല
+ndr_door_locked	വാതിൽ പൂട്ടി
+ndr_other	മറ്റുള്ളവ
+ndr_refused	നിരസിച്ചു
+out_for_delivery	ഡെലിവറിക്ക് പുറത്ത്
+print_drs	DRS അച്ചടിക്കുക
+print_run_sheet	റൺ ഷീറ്റ് അച്ചടിക്കുക
+reattempt	വീണ്ടും ശ്രമം
+rider_cod_handed_ph	റൈഡർ കൈമാറിയ COD
+settle_rider_cod	റൈഡർ COD സെറ്റിൽ
+mode_desk	ഡെസ്ക്
+mode_rider	റൈഡർ
+waiting_office	ഓഫീസിൽ എത്താൻ കാത്തിരിപ്പ്
+capture_signature	ഒപ്പ് എടുക്കുക
+incoming_manifest	ഇൻകമിംഗ് മാനിഫെസ്റ്റ്
+pickup_request	പിക്കപ്പ് അഭ്യർത്ഥന
+pickup_run	പിക്കപ്പ് റൺ
+auto_assign_area	മേഖല സ്വയം അസൈൻ
+reorder_stops	സ്റ്റോപ്പുകൾ ക്രമം മാറ്റുക
+settle_rider_pay	റൈഡർ ശമ്പള സെറ്റിൽ
+vehicle_inspect	വാഹന പരിശോധന
+print_docket	സി-നോട്ട് അച്ചടിക്കുക
+franchise_statement	ഫ്രാഞ്ചൈസ് സ്റ്റേറ്റ്മെന്റ്
+tally_export	ടാലി വൗച്ചർ കയറ്റുമതി
+open_whatsapp	വാട്ട്‌സ്ആപ്പ് തുറക്കുക
+copy_sms	SMS ടെക്സ്റ്റ് പകർത്തുക
+pick_barcode_image	സ്കാൻ ചെയ്യാൻ ചിത്രം തിരഞ്ഞെടുക്കുക
+share_receipt_whatsapp	രസീത് വാട്ട്‌സ്ആപ്പിൽ പങ്കിടുക
+delivery_feedback	ഡെലിവറി അഭിപ്രായം
+lan_self_book	LAN സ്വയം ബുക്കിംഗ്
+new_party_clear	പുതിയ പാർട്ടി (ഫോം മായ്ക്കുക)
+new_party_kind_ph	പുതിയ പാർട്ടി തരം (വിതരണക്കാരൻ / കാരിയർ)
+next_country	അടുത്ത രാജ്യം
+prev_country	മുമ്പത്തെ രാജ്യം
+note_gstin_ph	കുറിപ്പ് / GSTIN / കരാർ ഓർമ്മപ്പെടുത്തൽ
+note_pod_ph	കുറിപ്പ് / POD (ഓപ്ഷണൽ)
+on_account_ap	അക്കൗണ്ടിൽ (AP)
+org_optional_ph	സ്ഥാപനം (ഓപ്ഷണൽ)
+paid_now	ഇപ്പോൾ അടച്ചു
+pairing_code_ph	പെയറിംഗ് കോഡ്
+pair_now	ഇപ്പോൾ ജോടിയാക്കുക
+party_name_selected_ph	പാർട്ടിയുടെ പേര് (അല്ലെങ്കിൽ തിരഞ്ഞെടുത്തത് ഉപയോഗിക്കുക)
+password_ph	പാസ്‌വേഡ്
+pay_ap_card	AP കാർഡ് കൊണ്ട് അടയ്ക്കുക
+pay_ap_cash	AP പണം അടയ്ക്കുക
+pay_ap_upi	AP UPI അടയ്ക്കുക
+period_bill	കാലയളവ് ബിൽ
+period_bill_party	കാലയളവ് ബിൽ (പാർട്ടി)
+pick_pod_photo	POD ഫോട്ടോ തിരഞ്ഞെടുക്കുക
+print_awb_label	AWB ലേബൽ അച്ചടിക്കുക
+print_open	അച്ചടിക്കുക / തുറക്കുക
+reason_amend_ph	ഭേദഗതി / റദ്ദാക്കൽ / റീഫണ്ട് കാരണം
+reason_note_ph	കാരണം / കുറിപ്പ് (പാഴ്, എണ്ണം, …)
+record_day_close	ദിവസം അടയ്ക്കൽ രേഖപ്പെടുത്തുക
+refresh_from_shop	കടയിൽ നിന്ന് പുതുക്കുക
+refund	റീഫണ്ട്
+remit_cod	COD അടയ്ക്കുക (പാർട്ടി)
+remove_selected	തിരഞ്ഞെടുത്തത് മാറ്റുക
+restore_backup	ബാക്കപ്പ് പുനഃസ്ഥാപിക്കുക
+rider_name_ph	റൈഡറുടെ പേര്
+rider_phone_ph	റൈഡറുടെ ഫോൺ
+riders	റൈഡർമാർ
+riders_own_fleet	റൈഡർമാർ (സ്വന്തം ഫ്ലീറ്റ്)
+rollup	റോൾ-അപ്പ്
+save_booking_measures	ബുക്കിംഗ് അളവുകൾ സേവ് ചെയ്യുക
+save_brand	ബ്രാൻഡ് സേവ് ചെയ്യുക
+save_business_id	ബിസിനസ് ഐഡിയും സേവന % ഉം സേവ് ചെയ്യുക
+save_business_name	ബിസിനസിന്റെ പേര് സേവ് ചെയ്യുക
+save_features	ജോലി സജ്ജീകരണം സേവ് ചെയ്യുക
+save_names	പേരുകൾ സേവ് ചെയ്യുക
+server_ip_ph	സെർവർ IP (ഉദാ. 192.168.1.10)
+set_credit_limit	ക്രെഡിറ്റ് പരിധി നിശ്ചയിക്കുക
+set_login_selected	തിരഞ്ഞെടുത്തതിൽ ലോഗിൻ നിശ്ചയിക്കുക
+set_login_named	{name}-ൽ ലോഗിൻ നിശ്ചയിക്കുക
+shop	കട
+start_fresh	പുതുതായി തുടങ്ങുക
+stop_extra_tills	അധിക ടില്ലുകൾ നിർത്തുക
+backup_auto	ദിവസവും സ്വയം ബാക്കപ്പ് · അവസാനം {when} · അവസാന 14 ദിവസം {dir} ൽ സൂക്ഷിക്കുന്നു.
+backup_auto_none	ദിവസവും സ്വയം ബാക്കപ്പ് — ആദ്യത്തേത് ഉടൻ നടക്കും.
+backup_copy_to	പകർപ്പുകൾ {dir} ലേക്കും പോകുന്നു.
+backup_copy_btn	ബാക്കപ്പുകൾ ഒരു ഫോൾഡറിലേക്കും പകർത്തുക…
+autostart_off	ഈ കമ്പ്യൂട്ടറിനൊപ്പം തുടങ്ങുക
+autostart_on	ഈ കമ്പ്യൂട്ടറിനൊപ്പം തുടങ്ങും ✓ — നിർത്താൻ അമർത്തുക
+autostart_done_on	ഇനി കമ്പ്യൂട്ടർ തുടങ്ങുമ്പോൾ ആപ്പ് തുറക്കും — കറന്റ് പോയാലും കടയുടെ സെർവർ വീണ്ടും പ്രവർത്തിക്കും.
+autostart_done_off	ഇനി കമ്പ്യൂട്ടർ തുടങ്ങുമ്പോൾ ആപ്പ് തുറക്കില്ല.
+right_allowed	അനുവദനീയം
+right_with_approval	അംഗീകാരത്തോടെ
+right_denied	അനുവദനീയമല്ല
+editing_staff	ഇവരുടെ അവകാശങ്ങൾ
+team_pick_ph	തിരുത്തേണ്ട ജീവനക്കാരന്റെ പേര്
+select_staff	ഈ ജീവനക്കാരനെ തിരഞ്ഞെടുക്കുക
+rights_help	അവകാശങ്ങൾ — മാറ്റാൻ ടാപ്പ് ചെയ്യുക: അനുവദനീയം → അംഗീകാരത്തോടെ (ആ നിമിഷം മാനേജരുടെ PIN) → അനുവദനീയമല്ല.
+right_void_refund	ബുക്കിംഗ് റദ്ദാക്കൽ അല്ലെങ്കിൽ റീഫണ്ട്
+right_amend_sale	രേഖപ്പെടുത്തിയ ബുക്കിംഗ് തിരുത്തൽ
+find_server	കടയുടെ സെർവർ കണ്ടെത്തുക
+finding_server	ഈ Wi‑Fi-യിൽ കടയുടെ സെർവർ തിരയുന്നു…
+no_server_found	സെർവർ കണ്ടെത്തിയില്ല. കടയിലെ ഉപകരണം അതേ Wi‑Fi-യിൽ അധിക ടില്ലുകൾ അനുവദിച്ച് ഉണ്ടോ എന്ന് നോക്കുക, അല്ലെങ്കിൽ അതിന്റെ IP ടൈപ്പ് ചെയ്യുക.
+servers_found_pick	നിങ്ങൾ ബന്ധിപ്പിക്കേണ്ട കടയിൽ ടാപ്പ് ചെയ്യുക.
+server_host_selected	{host} ഉപയോഗിക്കുന്നു — പെയറിംഗ് കോഡ് നൽകി, ഇനി പെയർ ചെയ്യുക.
+device_forgotten	കട ഈ ഉപകരണം നീക്കി — കടയുടെ ഇപ്പോഴത്തെ കോഡ് ഉപയോഗിച്ച് വീണ്ടും ജോടിയാക്കുക. കാത്തിരിക്കുന്ന ഓർഡറുകൾ സൂക്ഷിച്ചിട്ടുണ്ട്.
+forget_device	മറക്കുക
+last_seen	അവസാനം
+new_pair_code	പുതിയ ജോടിയാക്കൽ കോഡ്
+lan_offline	ഓഫ്‌ലൈൻ
+lan_offline_waiting	ഓഫ്‌ലൈൻ · {n} കാത്തിരിക്കുന്നു
+lan_connecting	കടയുമായി ബന്ധിപ്പിക്കുന്നു…
+pair_finishing	ജോടിയാക്കൽ പൂർത്തിയാകുന്നു… ഓഫീസ് ബുക്കുകൾ പ്രയോഗിക്കുന്നു
+pair_opening	ഓഫീസ് തുറക്കുന്നു…
+lan_live	ലൈവ്
+lan_sending	{n} അയയ്ക്കുന്നു
+lan_sign_in_to_send	{n} അയയ്ക്കാൻ വീണ്ടും സൈൻ ഇൻ ചെയ്യുക
+lan_pair_again	ഈ ഉപകരണം വീണ്ടും ജോടിയാക്കുക
+lan_update_app	ആപ്പ് അപ്‌ഡേറ്റ് ചെയ്യുക — ഈ ഉപകരണവും ഓഫീസ് സെർവറും വ്യത്യസ്ത പതിപ്പുകളാണ്
+allow_firewall	മറ്റ് ഉപകരണങ്ങളെ ബന്ധിപ്പിക്കാൻ അനുവദിക്കുക
+firewall_blocked	ഈ കമ്പ്യൂട്ടറിന്റെ ഫയർവാൾ മറ്റ് ഉപകരണങ്ങളെ തടയുന്നു — “മറ്റ് ഉപകരണങ്ങളെ ബന്ധിപ്പിക്കാൻ അനുവദിക്കുക” തൊടുക.
+firewall_waiting	അഡ്മിൻ അനുമതിക്കായി കാത്തിരിക്കുന്നു…
+lan_join_help	മറ്റ് ഉപകരണങ്ങൾക്ക് ഇതുമായി ചേരാം — ജോടിയാക്കൽ കോഡ് {code}. മറ്റേ ഉപകരണത്തിൽ ക്ലയന്റ് മോഡ് തിരഞ്ഞെടുത്ത്, കടയുടെ സെർവർ കണ്ടെത്തുക അമർത്തുക, അല്ലെങ്കിൽ ഈ വിലാസം നൽകുക: {addr}
+lan_pair_status	വൈ‑ഫൈ {addr}
+lan_join_help_no_addr	വിലാസം ലഭിക്കാൻ ഈ ഉപകരണം Wi‑Fi-യിലേക്ക് കണക്റ്റ് ചെയ്യുക.
+lan_no_address	ഈ ഉപകരണത്തിന് ഇതുവരെ Wi‑Fi വിലാസമില്ല — ഇത് കടയുടെ Wi‑Fi-ലേക്ക് കണക്റ്റ് ചെയ്യുക.
+lan_not_listening	ഇപ്പോൾ ഉപകരണങ്ങൾ സ്വീകരിക്കുന്നില്ല — മറ്റൊരു പ്രോഗ്രാം പോർട്ട് {port} ഉപയോഗിക്കുന്നുണ്ടാകാം. ആപ്പ് വീണ്ടും തുടങ്ങുക.
+lan_tills_off	അധിക ടില്ലുകൾ ഓഫാണ്. ഈ ഓഫീസിന്റെ കണക്കുകൾ ഈ ഉപകരണത്തിൽ തന്നെയാണ്. മറ്റൊരു ഉപകരണവും പാഴ്സൽ ബുക്ക് ചെയ്യാനോ പണം വാങ്ങാനോ വേണമെങ്കിൽ അധിക ടില്ലുകൾ അനുവദിക്കുക.
+paired_with	{url} ലെ കടയുമായി ജോടിയാക്കി
+not_paired	ജോടിയാക്കിയിട്ടില്ല — കടയുടെ സെർവറുമായി കണക്റ്റ് ചെയ്യുക.
+choose_device_use	ഈ ഉപകരണം എങ്ങനെ ഉപയോഗിക്കണമെന്ന് തിരഞ്ഞെടുക്കുക.
+paired_note	ജോടിയാക്കി. വിൽക്കാൻ അൺലോക്ക് ചെയ്യുക, അല്ലെങ്കിൽ കടയിൽ നിന്ന് പുതിയത് എടുക്കാൻ പുതുക്കുക.
+last_update_at	കടയിൽ നിന്നുള്ള അവസാന അപ്‌ഡേറ്റ്: {time}.
+pair_intro	സെർവർ കണ്ടെത്തുക, അല്ലെങ്കിൽ അതിന്റെ വിലാസവും പെയറിംഗ് കോഡും ടൈപ്പ് ചെയ്യുക.
+queue_waiting	കടയിലെത്താൻ കാത്തിരിക്കുന്നു ({n}):
+queue_tries	{n} തവണ ശ്രമിച്ചു · അവസാന മറുപടി: {e}
+save_backup_copy	ബാക്കപ്പ് പകർപ്പ് സംരക്ഷിക്കുക…
+backup_copy_saved	ബാക്കപ്പ് പകർപ്പ് സംരക്ഷിച്ചു — ഇത് ഈ ഉപകരണത്തിന് പുറത്ത് സൂക്ഷിക്കുക (USB സ്റ്റിക്ക് അല്ലെങ്കിൽ മറ്റൊരു ഉപകരണം)
+backup_copy_overdue	{n} ദിവസമായി ഒരു ബാക്കപ്പ് പകർപ്പും ഈ ഉപകരണത്തിന് പുറത്ത് പോയിട്ടില്ല — ക്രമീകരണങ്ങൾ → ബാക്കപ്പ്
+backup_copy_failed	ബാക്കപ്പ് പകർപ്പ് അവിടെ സംരക്ഷിക്കാനായില്ല — മറ്റൊരു സ്ഥലം തിരഞ്ഞെടുക്കുക
+clock_off	ഈ ഉപകരണത്തിന്റെ ക്ലോക്ക് കടയിലെ സർവറിൽ നിന്ന് {min} മിനിറ്റ് വ്യത്യാസമുണ്ട് — ഈ ഉപകരണത്തിൽ ശരിയായ സമയം വയ്ക്കുക
+printers_heading	ഈ ഉപകരണത്തിലെ പ്രിന്ററുകൾ
+printers_help	ഓരോ പ്രിന്ററും ഒരിക്കൽ ചേർക്കുക, തുടർന്ന് രസീതും AWB ലേബലും എവിടെ പ്രിന്റ് ചെയ്യണമെന്ന് തിരഞ്ഞെടുക്കുക — ലിസ്റ്റിലെ ആദ്യത്തേത് ആദ്യം ശ്രമിക്കും; പരാജയപ്പെട്ടാൽ അടുത്തത്. റൂട്ട് ശൂന്യം = ആ ഫീച്ചർ പ്രിന്റ് ചെയ്യില്ല. ലക്ഷ്യം ശൂന്യം (ഡിഫോൾട്ട്), സിസ്റ്റം പേര്, അല്ലെങ്കിൽ നെറ്റ്‌വർക്ക് വിലാസം (ഉദാ. 192.168.1.50). ഓരോ ഉപകരണവും സ്വന്തം പ്രിന്ററുകൾ സൂക്ഷിക്കും.
+job_width	ഉള്ളടക്ക വീതി (മിമി)
+job_width_ph	അല്ലെങ്കിൽ വീതി ടൈപ്പ് ചെയ്യുക, 40–210 mm
+job_layout	ലേഔട്ട്
+job_delivery	ജോലി എങ്ങനെ അയയ്ക്കുന്നു
+job_size	ഫോണ്ട് വലുപ്പം
+job_size_ph	ഉദാ. 18, 20, 26…
+save_receipt_format	രസീത് ഫോർമാറ്റ് സേവ് ചെയ്യുക
+save_label_format	ലേബൽ ഫോർമാറ്റ് സേവ് ചെയ്യുക
+test_receipt_format	ടെസ്റ്റ് രസീത്
+test_label_format	ടെസ്റ്റ് ലേബൽ
+test_receipt_sent	സാമ്പിൾ രസീത് അയച്ചു
+test_label_sent	സാമ്പിൾ ലേബൽ അയച്ചു
+test_print_no_printer	ആ ജോലിക്ക് പ്രിന്ററില്ല — ഈ സ്ഥലത്തിന് കീഴിൽ ഒന്ന് ചേർക്കുക
+printers_host_only	പ്രിന്ററുകൾ കടയുടെ ഉപകരണത്തിൽ (Server) സജ്ജമാക്കുന്നു. ഈ ടിൽ അവിടേക്ക് ജോലികൾ അയയ്ക്കുന്നു — കണ്ടെത്തുക / ചേർക്കുക / അസൈൻ Server-ൽ തന്നെ നിൽക്കും. ടെസ്റ്റ് പേജ് Server-ലേക്ക് പോകും.
+printers_pool_heading	പ്രിന്ററുകൾ
+printers_routes_heading	എവിടെ പ്രിന്റ്
+printer_label_ph	പേര് (ഉദാ. ഡെസ്ക്)
+printer_target_ph	host:9100 · bt:MAC · usb:VID:PID · സിസ്റ്റം പേര്
+printer_mode_heading	തിരഞ്ഞെടുത്ത റൂട്ടിന്റെ ഫോർമാറ്റ്
+printer_mode_standard	സാധാരണ പോർട്രെയ്റ്റ്
+printer_mode_landscape	സാധാരണ ലാൻഡ്‌സ്കേപ്പ്
+printer_mode_thermal	തെർമൽ
+printer_mode_standard_short	പോർട്രെയ്റ്റ്
+printer_mode_landscape_short	ലാൻഡ്‌സ്കേപ്പ്
+printer_mode_thermal_short	തെർമൽ
+printer_format_custom	പുതിയ സ്വന്തം ഫോർമാറ്റ്
+printer_format_custom_label	സ്വന്തം
+printer_format_custom_added	ഈ റൂട്ടിന് സ്വന്തം ഫോർമാറ്റ് ചേർത്തു
+add_printer	പ്രിന്റർ ചേർക്കുക
+remove_printer	അവസാനത്തേത് നീക്കുക
+route_pick_ph	receipt അല്ലെങ്കിൽ label
+route_add_printer_ph	ഈ റൂട്ടിലേക്ക് പ്രിന്റർ ചേർക്കുക
+route_receipt	രസീത്
+route_label	AWB ലേബൽ
+route_dont_print	പ്രിന്റർ നൽകിയിട്ടില്ല
+route_add	റൂട്ടിലേക്ക് ചേർക്കുക
+route_up	മുകളിലേക്ക്
+route_down	താഴേക്ക്
+route_remove	അവസാനത്തേത് നീക്കുക
+route_clear	ഈ സ്ഥലത്തെ പ്രിന്ററുകൾ മായ്ക്കുക
+save_printers	പ്രിന്ററുകൾ സംരക്ഷിക്കുക
+print_test_page	ടെസ്റ്റ് പേജ് അച്ചടിക്കുക
+printers_saved	ഈ ഉപകരണത്തിലെ പ്രിന്ററുകൾ സേവ് ചെയ്തു
+test_page_sent	ടെസ്റ്റ് പേജ് അയച്ചു — പ്രിന്റർ നോക്കൂ
+printers_found	ഈ ഉപകരണത്തിൽ കണ്ടെത്തിയവ: {list}
+find_printers	പ്രിന്ററുകൾ കണ്ടെത്തുക
+printers_looking	ഈ ഉപകരണത്തിലും Wi‑Fi-യിലും പ്രിന്ററുകൾ തിരയുന്നു…
+printers_tap_find	ജോലികൾ സ്വീകരിക്കുന്ന ക്യൂകൾക്കും ഈ Wi‑Fi-യിലെ നെറ്റ്‌വർക്ക് രസീത് പ്രിന്ററുകൾക്കും പ്രിന്ററുകൾ കണ്ടെത്തുക ടാപ്പ് ചെയ്യുക (നീക്കിയവയോ ഓഫ്‌ലൈനിലുള്ളവയോ അല്ല).
+printers_none_found	പ്രിന്ററുകൾ കണ്ടെത്തിയില്ല — സിസ്റ്റം പ്രിന്ററിന്റെ പേര്, അല്ലെങ്കിൽ നെറ്റ്‌വർക്ക് വിലാസം ടൈപ്പ് ചെയ്യുക (ഉദാ. 192.168.1.50).
+receipt_printer_ph	രസീത് പ്രിന്റർ
+queue_refused	കട സ്വീകരിച്ചില്ല ({n}) — ഓരോന്നും കൗണ്ടറിൽ പരിശോധിക്കുക:
+clear_not_accepted	പരിശോധിച്ചു — ഈ പട്ടിക മായ്ക്കുക
+device_name_ph	ഈ ഉപകരണത്തിന്റെ പേര്
+lan_last_update	അവസാന അപ്‌ഡേറ്റ് {time}
+lan_not_accepted	{n} സ്വീകരിച്ചില്ല
+connected_now	ഇപ്പോൾ കണക്റ്റഡ്
+backup_failed	അവസാന ഓട്ടോമാറ്റിക് ബാക്കപ്പ് പരാജയപ്പെട്ടു: {e}
+backup_overdue	{n} ദിവസമായി ബാക്കപ്പില്ല — ബാക്കപ്പ് എടുക്കാൻ ഈ ഉപകരണത്തിൽ ആപ്പ് തുറന്നുവയ്ക്കുക.
+disk_low	ഈ ഉപകരണത്തിൽ {mb} MB മാത്രമേ ബാക്കിയുള്ളൂ — താമസിയാതെ ബാക്കപ്പുകൾ പരാജയപ്പെടും. കുറച്ച് സ്ഥലം ഒഴിവാക്കുക.
+last_seen_devices	അവസാനം കണ്ടത്: {time}
+sync_interval	ഓരോ {secs} സെക്കൻഡിലും സിങ്ക്
+connection_to_shop	കടയുമായുള്ള കണക്ഷൻ
+supplier_name_ph	വിതരണക്കാരന്റെ പേര് (അല്ലെങ്കിൽ പാർട്ടി)
+supplier_ph	വിതരണക്കാരൻ
+switch_device	ഈ ഉപകരണം മാറ്റുക
+take_payment	പേയ്‌മെന്റ് വാങ്ങുക
+tax_added_till	{tax} ഒഴികെ
+tax_inside_price	{tax} ഉൾപ്പെടെ
+today_books	ഇന്നത്തെ ബുക്കുകൾ
+unlock_after_pairing	PIN നൽകുക
+unlock_with_login	ലോഗിൻ ഉപയോഗിച്ച് അൺലോക്ക്
+update_my_password	എന്റെ പാസ്‌വേഡ് മാറ്റുക
+update_my_pin	എന്റെ PIN പുതുക്കുക
+duress_heading	അടിയന്തര അൺലോക്ക് PIN (ഉടമ മാത്രം)
+duress_help	ഐച്ഛികം. അൺലോക്കിൽ നിങ്ങളുടേതിന് പകരം ഈ PIN ടൈപ്പ് ചെയ്താൽ, ബുക്കുകളിലെ എല്ലാ എൻട്രികളും മായും (ബുക്കിംഗുകൾ, ലെഡ്ജറുകൾ, ചരിത്രം), ഡെസ്ക് സാധാരണ പോലെ കാണിച്ച് ഉടമയായി തുറക്കും — നിരക്കുകൾ, കക്ഷികൾ, മേഖലകൾ, ജീവനക്കാർ, ക്രമീകരണങ്ങൾ നിലനിൽക്കും. സ്കീമയും കോൺഫിഗും മായ്ക്കില്ല. നിർബന്ധിതമായി അൺലോക്ക് ചെയ്യിക്കുമ്പോൾ മാത്രം ഉപയോഗിക്കുക. ഓഫാക്കാൻ ശൂന്യമാക്കി സേവ് ചെയ്യുക. ആരുടെയും PIN പോലെ ആകരുത്.
+duress_pin_ph	അടിയന്തര PIN (4–12 അക്കം)
+duress_confirm_ph	വീണ്ടും ടൈപ്പ് ചെയ്യുക
+save_duress_pin	അടിയന്തര PIN സേവ്
+clear_duress_pin	അടിയന്തര PIN ഓഫ്
+duress_on	അടിയന്തര അൺലോക്ക് PIN ഓണാണ്
+duress_off	അടിയന്തര അൺലോക്ക് PIN ഓഫാണ്
+duress_saved	അടിയന്തര അൺലോക്ക് PIN സേവ് ചെയ്തു
+duress_cleared	അടിയന്തര അൺലോക്ക് PIN ഓഫാക്കി
+vehicle_ph	വാഹനം
+void	റദ്ദാക്കുക
+write_off_ap	AP എഴുതിത്തള്ളുക
+write_off_nil	എഴുതിത്തള്ളുക / ബാലൻസ് പൂജ്യം
+zone_ph	സോൺ (നിരക്കുകളിൽ നിന്നുള്ള പേര്)
+caption_today	ഇന്ന്
+caption_bookings	ബുക്കിംഗുകൾ
+caption_payments_today	ഇന്നത്തെ പേയ്‌മെന്റുകൾ
+caption_outstanding	കുടിശ്ശിക
+caption_bank	ബാങ്ക്
+paid_by	അടച്ചത്
+second_way	രണ്ടാമത്തെ വഴി
+weight_in	തൂക്ക യൂണിറ്റ്
+size_in	വലുപ്പ യൂണിറ്റ്
+goods_received	സാധനങ്ങൾ ലഭിച്ചു
+expense_heading	ചെലവ്
+notes_attach_sale	കുറിപ്പുകളും അറ്റാച്ച്‌മെന്റുകളും (തിരഞ്ഞെടുത്ത വിൽപ്പന)
+notes_attach_party	കുറിപ്പുകളും അറ്റാച്ച്‌മെന്റുകളും (തിരഞ്ഞെടുത്ത പാർട്ടി)
+attachments_last_expense	അറ്റാച്ച്‌മെന്റുകൾ (അവസാന ചെലവ്)
+credit_limit_heading	ക്രെഡിറ്റ് പരിധി (തിരഞ്ഞെടുത്ത / പേരുള്ള പാർട്ടി)
+pay_selected_heading	തിരഞ്ഞെടുത്തത് അടയ്ക്കുക (കടം തീർക്കുക / അഡ്വാൻസ്)
+write_off_heading	എഴുതിത്തള്ളുക (പേയ്‌മെന്റ് ഇല്ലാതെ തീർക്കുക)
+pay_ap_heading	നമ്മൾ അവർക്ക് കൊടുക്കേണ്ടത് (AP)
+country_tax	രാജ്യവും നികുതിയും
+extra_tills_heading	അധിക ടില്ലുകൾ
+other_devices_help_heading	മറ്റ് ഉപകരണങ്ങൾ സജ്ജമാക്കുക
+other_devices_help	ഈ ഉപകരണത്തിൽ (സെർവർ): മറ്റ് ഉപകരണങ്ങൾ → അധിക ടില്ലുകൾ അനുവദിക്കുക. പെയറിംഗ് കോഡും Wi‑Fi വിലാസവും കുറിച്ചെടുക്കുക. കാണുന്നെങ്കിൽ മറ്റ് ഉപകരണങ്ങളെ കണക്റ്റ് ചെയ്യാൻ അനുവദിക്കുക ടാപ്പ് ചെയ്യുക. കമ്പ്യൂട്ടറിൽ, ഈ കമ്പ്യൂട്ടറിൽ തുടങ്ങുക ടാപ്പ് ചെയ്യുക. ഓരോ മറ്റ് ഉപകരണത്തിലും: ആപ്പ് ഇൻസ്റ്റാൾ ചെയ്ത്, ക്ലയന്റ് മോഡ് തിരഞ്ഞെടുത്ത്, കടയുടെ സെർവർ കണ്ടെത്തി (അല്ലെങ്കിൽ വിലാസം ടൈപ്പ് ചെയ്ത്), പെയറിംഗ് കോഡ് നൽകി, ഇപ്പോൾ ജോടിയാക്കുക. Wi‑Fi പോയാൽ ഓർഡറുകൾ ഉപകരണത്തിൽ കാത്തിരുന്ന് സെർവർ വീണ്ടും മറുപടി നൽകുമ്പോൾ പോകും.
+your_brand	നിങ്ങളുടെ ബ്രാൻഡ് (ആപ്പിൽ)
+units_heading	യൂണിറ്റുകൾ
+booking_measures	ബുക്കിംഗ് അളവുകൾ
+drawer_count	ഡ്രോയർ എണ്ണൽ (ഓപ്ഷണൽ)
+spreadsheet_csv	സ്പ്രെഡ്‌ഷീറ്റ് (CSV)
+bank_reconciliation	ബാങ്ക് അനുരഞ്ജനം (നിങ്ങളുടെ ബാങ്ക് സ്റ്റേറ്റ്‌മെന്റുമായി ടിക്ക് ചെയ്യുക)
+book_add_product	ബുക്ക് — ഉൽപ്പന്നം / നിരക്ക് ചേർക്കുക
+book_opening_credit	ബുക്ക് — ആരംഭ കടം
+account_kind	അക്കൗണ്ട് തരം (ഒന്ന് അമർത്തുക)
+active_ledger	സജീവ ലെഡ്ജർ
+actual_total_cap	യഥാർത്ഥ ആകെ
+amend_help	ഭേദഗതി, റദ്ദാക്കൽ അല്ലെങ്കിൽ റീഫണ്ടിനായി ഒരു വിൽപ്പന തിരഞ്ഞെടുക്കുക. ഭേദഗതികൾ മുഴുവൻ ചരിത്രവും സൂക്ഷിക്കും.
+applied_total_cap	പ്രയോഗിച്ച ആകെ
+bank_balance	ബാങ്ക് ബാലൻസ്
+bank_net_today	ഇന്നത്തെ ബാങ്ക് നെറ്റ്
+branch_export_help	കയറ്റുമതി ഒരു ദിവസത്തെ സ്നാപ്ഷോട്ട് ബാക്കപ്പ് ഫോൾഡറിൽ എഴുതി ക്ലിപ്പ്ബോർഡിലേക്ക് പകർത്തും. മറ്റൊരു ശാഖയുടെ ദിവസം ഇറക്കുമതി ചെയ്യാൻ അതിന്റെ ഫയൽ ആ ഫോൾഡറിൽ import_branch_snapshot.json എന്ന പേരിൽ സേവ് ചെയ്ത്, ഇറക്കുമതി ടാപ്പ് ചെയ്യുക.
+brand_shown_help	ആപ്പിനുള്ളിലെ സ്ക്രീനുകളിൽ കാണിക്കുന്നു. ഈ ഉപകരണത്തിൽ ഇൻസ്റ്റാൾ ചെയ്ത ആപ്പിന്റെ പേരും ഐക്കണും പ്ലാറ്റ്ഫോം ലിസ്റ്റിംഗ് പോലെ തന്നെ തുടരും.
+app_icon	ആപ്പ് ഐക്കൺ
+logo_help	ആപ്പ് സ്ക്രീനുകളിൽ കടയുടെ ഐച്ഛിക അടയാളം.
+onboard_layout	നിങ്ങൾക്ക് എന്ത് ലഭിക്കും
+item_photo_help	ഐച്ഛികം. ഫോട്ടോ ഇല്ലെങ്കിൽ ഇനത്തിന്റെ പേരിലെ ആദ്യാക്ഷരങ്ങൾ കാണിക്കും.
+cash_in_hand	കൈയിൽ പണം (ടിൽ)
+change_my_pin_heading	എന്റെ PIN മാറ്റുക (നിങ്ങളുടേത് മാത്രം)
+connect_to_server	സെർവറിലേക്ക് കണക്റ്റ് ചെയ്യുക
+counter_locked	കൗണ്ടർ 01 · ലോക്ക്
+country_pack_help	രാജ്യ പാക്ക് നികുതിയുടെ പേരും കണക്കും, തൽക്ഷണ-പേയ്‌മെന്റ് റെയിലും, ബില്ലുകളിൽ അച്ചടിക്കുന്ന ബിസിനസ് ഐഡിയും നിശ്ചയിക്കുന്നു. Kumkaj എവിടെയും നികുതി ഫയൽ ചെയ്യുകയോ സർക്കാർ ഇ-ഇൻവോയ്‌സ് നൽകുകയോ ചെയ്യുന്നില്ല.
+currency_use_help	സ്ക്രോൾ ചെയ്ത് പിന്തുണയ്ക്കുന്ന ഏത് കറൻസിക്കും Use അമർത്തുക.
+day_close_help	ദിവസം അടയ്ക്കൽ രേഖപ്പെടുത്തുന്നത് ഈ സംഗ്രഹം (എണ്ണിയിട്ടുണ്ടെങ്കിൽ ഡ്രോയർ വ്യത്യാസത്തോടെ) ഓഡിറ്റ് ലോഗിൽ സേവ് ചെയ്യും. ഇത് വിൽപ്പന നിർത്തുന്നില്ല.
+expenses_word	ചെലവുകൾ
+feature_access_help	തിരഞ്ഞെടുത്ത ജീവനക്കാരന്റെ ഫീച്ചർ ആക്സസ് (ചേർത്ത ശേഷം ടാപ്പ് ചെയ്യുക)
+footer_local	ലോക്കൽ SQLite · എന്നും സൗജന്യം · ക്ലൗഡ് ഇല്ല
+fresh_book_moklanjo	പ്രിന്ററുകൾ
+fresh_selected	Fresh തിരഞ്ഞെടുത്തു — കാറ്റലോഗ് ശൂന്യമായിരിക്കും. തയ്യാറാകുമ്പോൾ Done അമർത്തുക.
+gross_word	ഗ്രോസ്
+how_start	എങ്ങനെ തുടങ്ങാനാണ് നിങ്ങൾ ആഗ്രഹിക്കുന്നത്?
+later_country_pack	പ്രിന്ററുകൾ
+local_badge	ലോക്കൽ
+measures_help_moklanjo	ബുക്കിംഗ് ഡെസ്കിൽ പാഴ്സലുകൾ എങ്ങനെ അളക്കുന്നു. നിങ്ങൾ ഉപയോഗിക്കുന്ന യൂണിറ്റുകളിൽ അളവുകളും തൂക്കവും എഴുതുക — സ്റ്റാൻഡേർഡ് (cm, m, in, ft · kg, g, lb, oz) അല്ലെങ്കിൽ മുകളിൽ cm / kg യുമായി ബന്ധിപ്പിച്ച നിങ്ങളുടെ സ്വന്തം യൂണിറ്റ് (നേരിട്ടോ മറ്റ് യൂണിറ്റുകൾ വഴിയോ). ബുക്കുകൾ എപ്പോഴും kg രേഖപ്പെടുത്തും. ഒരു ഫീൽഡ് ശൂന്യമായി വിട്ടാൽ അത് അങ്ങനെ തുടരും.
+mix_type_hint_moklanjo	ഓരോന്നിലും എത്രയെന്ന് എഴുതുക (പണം / UPI / കാർഡ് / കടം). ബില്ലിന് തുല്യമാകണം. കടത്തിന് മുകളിൽ ഉപഭോക്താവ് വേണം.
+money_in_sales	പണം വന്നു (വിൽപ്പന)
+more_help_moklanjo	കാറ്റലോഗ്, വിൽപ്പന, കടം, ടീം, ബാക്കപ്പ് — ആവശ്യമെങ്കിൽ സ്റ്റോക്കും അധിക ടില്ലുകളും.
+net_word	നെറ്റ്
+offline_badge	ഓഫ്‌ലൈൻ
+optional_login_help	ഓപ്ഷണൽ ലോഗിൻ (ഐഡി + പാസ്‌വേഡ്). ഉടമ ഒരിക്കൽ നിശ്ചയിക്കും; പിന്നീട് ഉപയോക്താവിന് മാത്രമേ പാസ്‌വേഡ് മാറ്റാൻ കഴിയൂ.
+or_unlock_login	അല്ലെങ്കിൽ ലോഗിൻ ഐഡി + പാസ്‌വേഡ് ഉപയോഗിച്ച് അൺലോക്ക് ചെയ്യുക
+permission_preset	ജോലി (സ്ക്രീനുകളും അവകാശങ്ങളും നിശ്ചയിക്കും)
+preset_help_moklanjo	കാഷ്യർ: വിൽക്കുക. മാനേജർ: വിൽക്കുക + ഇനങ്ങൾ + റദ്ദാക്കൽ/ഭേദഗതി.
+product_locked_moklanjo	Moklanjo
+product_only_moklanjo	ഈ ആപ്പ് Moklanjo മാത്രം — കണക്കുകൾ + ബുക്കിംഗ് ഡെസ്ക്. മറ്റു വ്യാപാരങ്ങൾക്കുള്ളവ പിന്നീട് പ്രത്യേകം വരും.
+purchases_cogs	വാങ്ങലുകൾ (COGS)
+qty_cap	അളവ്
+restore_help	Restore: ഒരു ബാക്കപ്പ് തിരഞ്ഞെടുക്കുക. കണക്കുകൾ അന്നത്തെപ്പോലെ തുറക്കും; ഇപ്പോഴത്തേത് ആദ്യം സൂക്ഷിക്കും, അതിനാൽ ഇത് തിരിച്ചാക്കാം.
+wipe_data_heading	പ്രാദേശിക ഡാറ്റ ഇല്ലാതാക്കുക
+wipe_data_help	Owner മാത്രം — Windows അൺഇൻസ്റ്റാൾ പോലെ. ബിസിനസ് റെക്കോർഡുകൾ ചരിത്രം മായ്ക്കും, നിരക്കുകൾ/സെറ്റപ്പ് നിലനിർത്തും. കട സെറ്റപ്പ് പുസ്തകങ്ങൾ നീക്കം. സ്ക്രീൻ മുൻഗണനകൾ വിൻഡോ/ഭാഷ. Owner PIN സ്ഥിരീകരണം.
+wipe_trading	ബിസിനസ് റെക്കോർഡുകൾ
+wipe_schema	കട സെറ്റപ്പ്
+wipe_ui	സ്ക്രീൻ മുൻഗണനകൾ
+wipe_owner_pin_ph	ഇല്ലാതാക്കാൻ Owner PIN
+wipe_delete_selected	തിരഞ്ഞെടുത്തത് ഇല്ലാതാക്കുക
+wipe_owner_only	Owner മാത്രമേ പ്രാദേശിക ഡാറ്റ ഇല്ലാതാക്കൂ.
+restore_owner_only	Owner മാത്രമേ ബാക്കപ്പ് പുനഃസ്ഥാപിക്കൂ.
+wipe_owner_pin_needed	പ്രാദേശിക ഡാറ്റ ഇല്ലാതാക്കാൻ Owner PIN നൽകുക.
+wipe_nothing_selected	ആദ്യം എന്ത് ഇല്ലാതാക്കണമെന്ന് തിരഞ്ഞെടുക്കുക.
+wipe_done	തിരഞ്ഞെടുത്ത പ്രാദേശിക ഡാറ്റ ഇല്ലാതാക്കി.
+wipe_schema_done	കട സെറ്റപ്പ് മായ്ച്ചു — തുടരാൻ Server അല്ലെങ്കിൽ Client തിരഞ്ഞെടുക്കുക.
+rounded_total	റൗണ്ട് ആകെ
+setup_app_moklanjo	Moklanjo സെറ്റപ്പ് ചെയ്യുക
+shop_logo_optional	കടയുടെ ലോഗോ (ഓപ്ഷണൽ)
+stock_type_help	ഇനത്തിന്റെ പേര് എഴുതുക (അതിന്റെ ഭാഗം മതി), അളവ് എഴുതി, പിന്നെ ക്രമീകരിക്കുക. ഇതുവരെ എണ്ണാത്ത ഇനങ്ങൾക്ക് ഒരിക്കൽ Start tracking വേണം.
+team_owner_help	നിയമനം: ഒരു ജോലി തിരഞ്ഞെടുക്കുക (കാഷ്യർ / മാനേജർ), പേര് + തുടക്ക PIN, പിന്നെ ചേർക്കുക. ഈ വ്യക്തി വ്യത്യസ്തനാണെങ്കിൽ മാത്രം: താഴെ സ്ക്രീനുകളും അവകാശങ്ങളും തുറന്ന്, ജോലി സജ്ജീകരണം സേവ് ചെയ്യുക. ഓരോരുത്തരും താഴെ സ്വന്തം PIN സ്വയം മാറ്റുന്നു — ഉടമയ്ക്ക് മറ്റാരുടെയും മാറ്റാനാകില്ല.
+they_owe_us	അവർ ഞങ്ങൾക്ക് തരാനുള്ളത്
+unit_at_cap	യൂണിറ്റ് വില
+units_help	ഇനം ലേബലുകൾക്കുള്ള കോഡുകൾ (kg, piece, bag). ഓരോ യൂണിറ്റും — നേരിട്ടോ മറ്റ് യൂണിറ്റുകൾ വഴിയോ — ഒരു സ്റ്റാൻഡേർഡുമായി (kg · cm · ml · pc) ബന്ധിപ്പിക്കണം, ഉദാ. 1 crate = 2 box, 1 box = 20 cm. പരിവർത്തനങ്ങൾ: 1 from = factor to. കറൻസികൾ ഒരിക്കലും യൂണിറ്റുകളല്ല.
+we_owe_them	ഞങ്ങൾ അവർക്ക് കൊടുക്കേണ്ടത്
+who_unlocking	ആരാണ് അൺലോക്ക് ചെയ്യുന്നത്?
+locked_word	ലോക്ക് ചെയ്തു
+show_pin	PIN കാണിക്കുക
+hide_pin	PIN മറയ്ക്കുക
+set_owner_pin	ഉടമ PIN നിശ്ചയിക്കുക
+enter_owner_passcode	ഉടമ പാസ്‌കോഡ് നൽകുക
+enter_staff_passcode	ജീവനക്കാരന്റെ പാസ്‌കോഡ് നൽകുക
+pin_count_zero	0 / 12 അക്കങ്ങൾ · കുറഞ്ഞത് 4, പിന്നെ OK
+pin_count_need	{} / 12 അക്കങ്ങൾ · ഇനിയും {} വേണം
+pin_count_full	12 / 12 അക്കങ്ങൾ · OK അമർത്തുക
+pin_count_ready	{} / 12 അക്കങ്ങൾ · തയ്യാറാകുമ്പോൾ OK അമർത്തുക
+pin_hint_choose	4–12 അക്കങ്ങൾ തിരഞ്ഞെടുക്കുക (കീബോർഡ് അല്ലെങ്കിൽ പാഡ്) · സേവ് ചെയ്യാൻ Enter/OK
+pin_hint_new	പുതിയ 4–12 അക്ക ഉടമ PIN (കീബോർഡ് അല്ലെങ്കിൽ പാഡ്) · Enter/OK
+pin_hint_shop_code	കട ഉപകരണം · പെയറിംഗ് കോഡ് {}
+pin_hint_books	ഈ ഉപകരണം ബുക്കുകൾ സൂക്ഷിക്കുന്നു
+pin_hint_paired	അധിക ടിൽ ജോടിയാക്കി — വിൽക്കാൻ അൺലോക്ക് ചെയ്യുക
+pin_hint_pair_first	അധിക ടിൽ — ആദ്യം കട ഉപകരണവുമായി ജോടിയാക്കുക
+unlock_to_continue	തുടരാൻ അൺലോക്ക് ചെയ്യുക
+no_staff_yet	ഇതുവരെ ജീവനക്കാരില്ല — ഉടമയായി അൺലോക്ക് ചെയ്യുക, പിന്നെ Team
+status_server_set_pin	സെർവർ മോഡ് — ഉടമ PIN നിശ്ചയിക്കുക
+status_server_tills	സെർവർ മോഡ് — അധിക ടില്ലുകൾ ചേരാം. അൺലോക്ക് ചെയ്യുക
+status_server_unlock	സെർവർ മോഡ് — ഉടമയായി അൺലോക്ക് ചെയ്യുക
+status_client_unlock	ക്ലയന്റ് മോഡ് — വിൽക്കാൻ അൺലോക്ക് ചെയ്യുക
+icon_new_selected	ഐക്കൺ: പുതിയ ഫയൽ തിരഞ്ഞെടുത്തു — ബ്രാൻഡ് സേവ് ചെയ്യുക അമർത്തുക
+icon_custom	ഐക്കൺ: നിങ്ങളുടെ കടയുടെ അടയാളം
+icon_default	ഐക്കൺ: Kumkaj അടയാളം (ഡിഫോൾട്ട്) — നിങ്ങളുടേത് തിരഞ്ഞെടുക്കുക
+logo_yours	ലോഗോ: നിങ്ങളുടെ കടയുടെ ലോഗോ — സ്ക്രീനുകളിലും രസീതുകളിലും കാണിക്കും
+logo_default	ലോഗോ: Kumkaj അടയാളം (ഡിഫോൾട്ട്) — നിങ്ങളുടേത് ഉണ്ടെങ്കിൽ തിരഞ്ഞെടുക്കുക
+tmpl_current	നിലവിലെ: {} — {}
+tmpl_selected	തിരഞ്ഞെടുത്തത്: {} — {}
+setup_complete	സെറ്റപ്പ് പൂർത്തിയായി
+onboard_fresh_tmpl	പുതിയത് · {} — കാറ്റലോഗ് ശൂന്യമായി തുടങ്ങും; ഇനങ്ങളിൽ ചേർത്ത് Done അമർത്തുക.
+onboard_book_tmpl	ബുക്ക് · {} — ഇനങ്ങളും തുടക്ക കടവും ചേർത്ത് Done അമർത്തുക.
+onboard_template_tmpl	വേണമെങ്കിൽ സ്ഥലത്തിന് പേര് നൽകുക, പിന്നെ എങ്ങനെ തുടങ്ങണമെന്ന് തിരഞ്ഞെടുക്കുക.
+tmpl_blurb	കൊറിയർ കണക്കുകളും ബുക്കിംഗ് ഡെസ്കും: അയയ്ക്കുന്നവർ, കാരിയർമാർ, ദിവസക്കണക്ക്, AWB.
+tmpl_how	ഡെസ്കിൽ പാർസൽ ബുക്ക് ചെയ്യുക; ഇന്നത്തേക്ക് ദിവസക്കണക്ക്; നിരക്കുകൾ, പാർട്ടികൾ, റിപ്പോർട്ടുകൾക്ക് ടാബുകൾ.
+trk_booked	ബുക്ക് ചെയ്തു
+trk_picked_up	പിക്കപ്പ് ചെയ്തു
+trk_in_transit	യാത്രയിൽ
+trk_delivered	എത്തിച്ചു
+trk_rto	അയച്ചയാൾക്ക് തിരികെ പോകുന്നു
+lane_to_dispatch	അയയ്ക്കാനുള്ളവ
+lane_with_carrier	കാരിയറുടെ പക്കൽ
+lane_failed	പരാജയം
+lane_done_today	ഇന്ന് പൂർത്തിയായവ
+ops_board_help	ഇന്നത്തെ ജോലിയിൽ പാഴ്സലുകൾ എവിടെയാണെന്ന് അനുസരിച്ച്. പാഴ്സലുകളിൽ ടാപ്പ് ചെയ്ത് (അല്ലെങ്കിൽ സ്കാൻ ചെയ്ത്) തിരഞ്ഞെടുക്കുക, തുടർന്ന് തിരഞ്ഞെടുത്തവയിലെല്ലാം ഒരുമിച്ച് നടപടി എടുക്കുക — ഓരോ ഘട്ടത്തിലും അതിന് ചേരുന്ന നടപടികൾ മാത്രമേ കാണിക്കൂ.
+lane_empty	ഇപ്പോൾ ഇവിടെ ഒന്നുമില്ല.
+picked_fmt	{n} തിരഞ്ഞെടുത്തു
+pick_all	എല്ലാം തിരഞ്ഞെടുക്കുക
+bag_for_carrier	കാരിയർക്ക് കൈമാറുക
+send_with_rider	റൈഡറുടെ കൂടെ അയയ്ക്കുക
+out_again	വീണ്ടും അയയ്ക്കുക
+return_to_sender	അയച്ചയാൾക്ക് തിരികെ അയയ്ക്കുക
+runs_bags_heading	അടുത്തിടെയുള്ള റൗണ്ടുകളും ബാഗുകളും
+print_word	അച്ചടിക്കുക
+bag_word	കാരിയർ ബാഗ്
+run_word	റൈഡർ റൗണ്ട്
+parcels_fmt	{n} പാഴ്സലുകൾ
+parcel_history	ചരിത്രം
+attempt_fmt	ശ്രമം {n}
+pieces_short_fmt	{n} എണ്ണം
+note_reason_ph	കുറിപ്പ് അല്ലെങ്കിൽ കാരണം
+ops_pick_first	ആദ്യം പാഴ്സലുകൾ തിരഞ്ഞെടുക്കുക — ടാപ്പ് ചെയ്യുക അല്ലെങ്കിൽ സ്കാൻ ചെയ്യുക
+cod_to_collect	ഡെലിവർ ചെയ്തു — COD ശേഖരിക്കാനുണ്ട്
+cod_on_road	COD ഇപ്പോഴും വഴിയിൽ
+cod_owed_consignors	ശേഖരിച്ചു — അയച്ചവർക്ക് നൽകാനുണ്ട്
+cod_rto_fees	ഈടാക്കേണ്ട RTO ഫീസുകൾ
+cod_to_hand_in	ഏൽപ്പിക്കേണ്ട COD
+parcel_one_fmt	{n} പാഴ്സൽ
+facet_bank_title	റിപ്പോർട്ടുകൾ
+facet_bank_help	ഡേ ബുക്കുകൾ, പാർട്ടി ഏജിംഗ്, ബാങ്ക് പോസ്റ്റുകൾ, കാലയളവ് ലാഭനഷ്ടം.
+facet_ops_title	ചരക്കുകളും അയയ്ക്കലും
+facet_ops_help	AWB സ്കാൻ ചെയ്യുക അല്ലെങ്കിൽ ടൈപ്പ് ചെയ്യുക → കണ്ടെത്തുക, പിന്നെ മുന്നോട്ട് / ലേബൽ അച്ചടിക്കുക / COD. റൈഡർക്കോ കാരിയർക്കോ അയയ്ക്കുക.
+facet_cod_title	COD രജിസ്റ്റർ
+facet_cod_help	ഡെലിവറിയിൽ പണം ശേഖരിച്ച്, പിന്നെ അയച്ചയാൾക്ക് കൈമാറുക.
+facet_riders_title	റൈഡർമാർ (സ്വന്തം ടീം)
+facet_riders_help	റൈഡർമാരെ ചേർത്ത്, പിന്നെ Ops ൽ നിന്ന് ബുക്ക് ചെയ്ത AWB അയയ്ക്കുക.
+against_bill_ph	മുകളിലെ ബിൽ # ന് എതിരെ (ഓപ്ഷണൽ)
+aliases_ph	അപരനാമങ്ങൾ — മറ്റ് പേരുകൾ, കോമയാൽ വേർതിരിക്കുക
+amount_blank_full_ph	തുക (ശൂന്യം = മുഴുവൻ ബാക്കി)
+amount_owed_ph	കൊടുക്കാനുള്ള തുക
+amount_ph	തുക
+amount_received_ph	ലഭിച്ച തുക
+amount_we_pay_ph	ഞങ്ങൾ നൽകുന്ന തുക
+awb_scan_ph	AWB / ബാർകോഡ് സ്കാൻ
+bulk_csv_ph	ബൾക്ക് CSV — destination,consignee,kg,cod_paise,note
+business_name_ph	ബിസിനസ്സിന്റെ പേര്
+category_new_ph	വിഭാഗം (ഓപ്ഷണൽ, പുതിയതാണെങ്കിൽ സൃഷ്ടിക്കും)
+cod_amount_ph	COD തുക
+code_bag_ph	കോഡ് (bag)
+conv_factor_ph	ഘടകം (25 = 1 bag → 25 kg)
+country_code_ph	രാജ്യ കോഡ് ഉദാ. IN, GB, US, AE, BR
+credit_khata_amount_ph	കടം / ഖാത്ത തുക
+credit_limit_ph	കട പരിധി (0 = ഇല്ല)
+dim_unit_code_ph	അളവ് യൂണിറ്റ് കോഡ് (cm)
+divisor_ph	വ്യാപ്ത ഹരണം (5000)
+extra_per_kg_ph	അധികം / kg
+first_amount_ph	ആദ്യ തുക
+first_kg_ph	ആദ്യ kg (സ്ലാബ്)
+from_code_ph	നിന്നുള്ള കോഡ് (bag)
+item_name_lang_ph	ഇനത്തിന്റെ പേര് — നിങ്ങളുടെ ഭാഷയിൽ ടൈപ്പ് ചെയ്യുക
+login_id_opt_ph	ലോഗിൻ ഐഡി (ഓപ്ഷണൽ)
+manager_pin_ph	മാനേജർ PIN (നിങ്ങൾക്ക് റദ്ദാക്കാൻ കഴിയില്ലെങ്കിൽ മാത്രം)
+new_branch_name_ph	പുതിയ ശാഖയുടെ പേര്
+new_password_ph	പുതിയ പാസ്‌വേഡ് (ഓപ്ഷണൽ)
+new_pin_ph	പുതിയ PIN (4–12 അക്കങ്ങൾ)
+note_bank_ph	കുറിപ്പ് (നിക്ഷേപം, പിൻവലിക്കൽ, …)
+note_buy_expense_ph	കുറിപ്പ് (ഇന്ധനം, വാടക, …)
+note_expense_ph	കുറിപ്പ് (ഇന്ധനം, ഓഫീസ്, …)
+notify_phone_ph	അറിയിപ്പ് ഫോൺ (WhatsApp/SMS ഹുക്ക്)
+options_moklanjo_ph	ഓപ്ഷനുകൾ (ഓപ്ഷണൽ) — Large=20, Gift wrap=10
+part_second_way_ph	രണ്ടാം രീതിയിൽ ഭാഗം (ഓപ്ഷണൽ)
+phone_ph	ഫോൺ
+address_ph	വിലാസം
+party_custom_fields_heading	കസ്റ്റം ഫീൽഡുകൾ (തിരഞ്ഞെടുത്ത പാർട്ടി)
+party_custom_help	ഈ പാർട്ടിയിൽ ഏത് ലേബലും മൂല്യവും ചേർക്കുക — WhatsApp, GSTIN, റൂട്ട് കോഡ്, …
+party_custom_key_ph	ഫീൽഡ് പേര് (ഉദാ. WhatsApp)
+party_custom_value_ph	മൂല്യം
+party_custom_add	ഫീൽഡ് ചേർക്കുക / അപ്‌ഡേറ്റ്
+party_custom_remove	ഫീൽഡ് നീക്കംചെയ്യുക
+party_custom_empty	ഇതുവരെ കസ്റ്റം ഫീൽഡുകളില്ല
+party_custom_pick_first	കസ്റ്റം ഫീൽഡുകൾക്ക് ഒരു പാർട്ടി തിരഞ്ഞെടുക്കുക
+place_name_ph	ഈ സ്ഥലത്തിന്റെ പേര്
+price_ph	വില
+qty_example_ph	അളവ് (ഉദാ. kg ക്ക് 1.5)
+quantity_ph	അളവ്
+reason_required_ph	കാരണം (ആവശ്യം)
+role_title_ph	റോൾ തലക്കെട്ട് (ഉദാ. Barista)
+service_pct_ph	സേവനം % ഓപ്ഷണൽ 0/10/12
+short_code_ph	ചെറിയ കോഡ് (MG02)
+slab_kg_ph	kg ൽ ചാർജ് ചെയ്യാവുന്ന സ്ലാബ് (0.5)
+staff_name_ph	ജീവനക്കാരന്റെ പേര് / id
+starting_password_ph	ആരംഭ പാസ്‌വേഡ് (ഓപ്ഷണൽ)
+starting_pin_ph	ആരംഭ PIN (4–12 അക്കങ്ങൾ)
+tax_rate_ph	നികുതി നിരക്കിന്റെ പേര് അല്ലെങ്കിൽ % — Standard, Reduced, 0, 5, 12, 18, 20
+to_code_ph	ലേക്കുള്ള കോഡ് (kg)
+uncleared_no_ph	മുകളിലെ അൺക്ലിയേർഡ് #
+unit_cost_ph	യൂണിറ്റ് വില
+unit_kg_blank_ph	യൂണിറ്റ് (kg അല്ലെങ്കിൽ ശൂന്യം)
+unit_name_bag_ph	പേര് (Bag)
+weight_unit_code_ph	ഭാര യൂണിറ്റ് കോഡ് (kg)
+zone_name_ph	സോണിന്റെ പേര്
+pay_credit	കടം
+book_kind_today	ഇന്നത്തെ ബുക്ക്
+book_kind_month	ഈ മാസത്തെ ബുക്ക്
+book_kind_aging	കുടിശ്ശിക / ഡെബിറ്റ്-ക്രെഡിറ്റ്
+book_kind_balance	ബാലൻസ് ഷീറ്റ്
+ops_desk_help	USB ബാർകോഡ് സ്കാനർ ഉപയോഗിച്ച് AWB സ്കാൻ ചെയ്യുക (അല്ലെങ്കിൽ ടൈപ്പ് ചെയ്യുക) → കണ്ടെത്തുക. പിന്നെ മുന്നോട്ട്, ലേബൽ അച്ചടിക്കുക അല്ലെങ്കിൽ COD ശേഖരിക്കുക. ലേബലുകൾ Code 128 ൽ അച്ചടിക്കുന്നു.
+role_help_consignor	റോൾ: അയയ്ക്കുന്നയാൾ — AR (അവർ നമുക്ക് കടക്കാരാണ്). അതേ സ്ഥാപനം കാരിയറും ആകാം.
+role_help_carrier	റോൾ: കാരിയർ — AP (നാം അവർക്ക് കടക്കാരാണ്). അതേ സ്ഥാപനം അയയ്ക്കുന്നയാളും ആകാം.
+role_help_both	റോളുകൾ: അയയ്ക്കുന്നയാൾ + വാഹകൻ — ഒരു കക്ഷി, AR, AP ലെഡ്ജറുകൾ, റിപ്പോർട്ടുകളിൽ അറ്റം.
+role_help_supplier	റോൾ: വിതരണക്കാരൻ — വാങ്ങലുകൾക്ക് AP.
+lane_declared_label	അക്കൗണ്ട് ബുക്കിംഗ്
+lane_owner_label	പണം ബുക്കിംഗ്
+money_lane_bill	ബിൽ: {lane}

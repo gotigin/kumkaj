@@ -1,0 +1,835 @@
+# Malay — Bahasa Melayu (ms). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	Buku agensi kurier + meja tempahan. Percuma di luar talian.
+unlock	Buka kunci
+pin_hint	Pemilik PIN bermula sebagai 0000
+sell	Tempahan
+buy	Bayar
+books	Lejar hari
+books_help	Kedudukan hari ini. Tempahan = bungkusan masuk. Bayar = bil & perbelanjaan pembawa. Pihak = pengirim & pembawa.
+buy_help	Baucar perbelanjaan dan bil pembawa (wang keluar). Dalam akaun kekal pada lejar parti.
+sell_money_in	Tempah bungkusan
+buy_money_out	Perbelanjaan / bil pembawa
+record_purchase	Simpan pembelian
+add_expense	Resit perbelanjaan
+bank_book	Lejar bank
+credit_help	Id parti adalah unik (nama mungkin berulang). Peranan: Consignor (AR), Pembawa (AP) atau kedua-duanya pada id tersebut. Lejar kekal berasingan; laporan menunjukkan bersih.
+party_kind_ph	Peranan tersuai (pilihan) — atau ketik cip di atas
+parties_list_heading	Pihak yang disimpan
+reports_help	Lejar hari, penghutang & pemiutang, lejar bank, resit perbelanjaan, untung & rugi.
+reports_today	Lejar hari (hari ini)
+reports_month	Untung & rugi (bulan)
+reports_aging	Tertunggak / debit-kredit
+reports_balance_sheet	Kunci kira-kira
+reports	Lejar bank & P&L
+refresh	Segarkan semula
+undo	Buat asal
+start_tracking	Mula menjejak
+stock_minus	− Stok
+stock_plus	+ Stok
+settle_cash	Selesaikan wang tunai
+settle_card	Settle kad
+items	Kadar & perkhidmatan
+nav_items	Kadar
+more	Lagi
+your_items	Kadar anda
+items_help	Setiap baris ialah kadar (cth. Zon Permukaan A). Unit biasanya kg. Ketik untuk mengedit.
+add_item	Tambah kadar
+new_item	Kadar baru
+adding_item	Menambah kadar baharu
+editing_item	Mengedit
+save	Jimat
+remove	Alih keluar
+empty_catalog	Tiada kadar lagi. Buka Kadar & perkhidmatan, tambah satu (nama + harga, unit kg), kemudian Tempahan.
+counter_sale	Tempahan kaunter
+total	Jumlah
+cash	Tunai
+upi	UPI
+card	Kad
+credit	Pelanggan dan pembekal
+clear	Jelas
+ready_to_sell	Sedia untuk lejar
+today_prefix	Hari ini
+today_mid	hari ini
+owed	cemerlang
+round_word	bulat
+back	belakang
+sold_out	Tidak tersedia
+restock	Stok semula
+not_tracked	Tidak dijejaki
+in_stock	dalam stok
+marked_sold_out	Ditanda tidak tersedia
+add_upper	TAMBAH
+na	T/A
+qty	Berat/Bil.
+unit_at	Kadar @
+actual	sebenarnya
+applied	Digunakan
+note_ph	Nota (pilihan)
+rounded	MEMBULAT
+split	Berpisah
+counter	Kaunter
+parcel	Bungkusan
+order	Pesanan restoran
+sales	Tempahan
+sales_refunds	Tempahan & bayaran balik
+day_close	Hari tutup
+reports_expenses	Lejar bank & P&L
+nav_reports	Laporan
+nav_settings	tetapan
+nav_lock	Kunci
+sidebar_settings	Tetapan bar sisi
+sidebar_settings_help	Ikon yang sama seperti rel sisi. Seret baris untuk menyusun semula. Balikkan suis untuk menunjukkan atau menyembunyikan. Tetapan dan Kunci sentiasa kekal pada bar.
+sidebar_always_on_short	Sentiasa hidup
+sidebar_back_settings	belakang
+sidebar_shown	Ditunjukkan
+sidebar_hidden	Tersembunyi
+sidebar_always_on	Sentiasa di bar
+sidebar_shown_hint	Ditunjukkan pada rel sisi / tab bawah
+sidebar_hidden_hint	Tersembunyi dari bar
+sidebar_menu_items	Menu & Menu item menu
+sidebar_enable_all	Dayakan Semua
+sidebar_disable_all	Lumpuhkan Semua
+sidebar_order_saved	Pesanan bar sisi disimpan
+sidebar_visibility_saved	Keterlihatan bar sisi disimpan
+amounts_hide	Sembunyi
+amounts_show	Tunjukkan
+no_sale_yet	Tiada jualan lagi
+favorites	Kegemaran
+favorites_help	Item menu menu yang anda sering jual, disimpan untuk log masuk anda. Tambahkan satu pada bil atau bina senarai anda daripada semua item menu di bawah.
+your_favorites	Kegemaran anda
+all_items	Semua item menu
+no_favorites	Tiada kegemaran lagi — tambah item menu daripada senarai di bawah.
+add_to_bill	Tambahkan pada bil
+added	Ditambah
+owes_word	berhutang
+selected_word	Dipilih
+chip_clear_credit	jelas — Kredit atau ambil pendahuluan
+chip_missing_customer	Pelanggan terpilih tiada — pilih lagi
+chip_no_customer	Belum ada pelanggan — taip nama, kemudian ketik Kredit
+credit_summary_fmt	{} pelanggan · kredit terbuka {} · pendahuluan dipegang {}
+recent_label	terbaru:
+inventory	Inventori
+inventory_stock	Inventori & stok
+branches	Cawangan
+branches_org	Cawangan & org
+credit_customers	Pihak (penghutang & pemiutang)
+customer_name_ph	Nama pelanggan atau pembekal
+new_customer_ph	Nama pelanggan atau pembekal baharu
+item_name_ph	Nama kadar (cth. Zon Permukaan A)
+item_price_ph	Setiap kg / papak pertama
+start_template	produk
+next_booking	Tempahan seterusnya
+destination_ph	Bandar / zon destinasi
+consignee_ph	Nama penerima
+consignee_phone_ph	Telefon penerima
+consignee_address_ph	Alamat penghantaran
+origin_name_ph	Nama penghantar
+origin_phone_ph	Telefon penghantar
+origin_address_ph	Alamat pengambilan / asal
+booking_consignor_heading	Konsainor (pelanggan / penghantar)
+booking_consignee_heading	Penerima (penerima)
+booking_consignor_hint	Pilih parti untuk diisi, atau biarkan kosong untuk berjalan masuk. Diperlukan untuk pengambilan rumah dan RTO.
+booking_consignee_hint	Penerima bungkusan. Biarkan kosong untuk menghantar kaunter masuk.
+weight_kg_ph	kg sebenar
+length_cm_ph	L cm
+breadth_cm_ph	B cm
+height_cm_ph	H cm
+chargeable_kg	Kg boleh dicaj
+awb_label	AWB
+booking_help	Konsainor + penerima (kosong OK) → destinasi → timbang → kadar pilih → Akaun/Tunai → bayar. AWB mencetak pada resit. Tempahan seterusnya mengosongkan meja. Dibundarkan bermula sama dengan Digunakan — edit hanya untuk membulatkan bil.
+cart_empty_hint	Meja kosong — konsainor/penerima pilihan, tetapkan destinasi & berat, ketik TAMBAH pada kadar, kemudian bayar.
+team	Pasukan
+team_pins	Pasukan & PINs
+my_pin_settings	PIN saya
+settings_hub_help_my_pin	Tukar buka kunci PIN untuk orang yang log masuk pada peranti ini.
+team_self_help	Hanya anda boleh menukar PIN buka kunci anda (dan kata laluan log masuk pilihan). Tanya Pemilik jika anda memerlukan skrin atau hak yang berbeza.
+backup_settings	Sandaran & tetapan
+lock_app	Kunci apl
+pick	Pilih
+select	Pilih
+advance	terlebih dahulu
+owner	Pemilik
+staff	Kakitangan
+photo	Foto
+auto	Automatik
+prev	Sebelum
+next	Seterusnya
+ok	OK
+this_shop	Mod pelayan
+extra_till	Mod pelanggan
+off	Mati
+server	Mod pelayan
+client	Mod pelanggan
+language_currency	Bahasa & mata wang
+language	Bahasa
+choose_language	Pilih bahasa anda
+language_setup_hint	Ikut bahasa peranti ini atau pilih sendiri.
+lang_follow_platform	Bahasa peranti
+lang_pick_user	Pilih bahasa
+lang_platform_now	Bahasa peranti sekarang
+selected_language	Dipilih
+continue	teruskan
+this_device	PERANTI INI
+device_use_q	Bagaimanakah peranti ini akan digunakan?
+last_server_mode	Was Server — ketik untuk meneruskan
+last_client_mode	Adakah Pelanggan — ketik untuk meneruskan
+choose_server	Pilih pelayan
+choose_server_hint	Buka pelayan sedia ada atau buat satu untuk perniagaan lain.
+create_new_server	Buat pelayan baharu
+open_server	Buka
+new_server_name_ph	Nama pelayan baharu (pilihan)
+server_remove_pin_ph	Pemilik PIN untuk mengalih keluar pelayan
+only_owner_remove_server	Hanya Pemilik boleh mengalih keluar pelayan
+owner_pin_remove_server	Pemilik PIN dikehendaki mengalih keluar pelayan ini
+device_setup_help	Pelayan menyimpan lejar di sini. Pasangan pelanggan ke Pelayan.
+currency	mata wang
+backup	Sandaran
+settings_sec_diag	Diagnostik
+settings_hub_help	Buka satu kawasan pada satu masa — kurang menatal, pilihan yang lebih jelas.
+settings_sec_devices	Peranti lain
+settings_sec_alerts	Makluman
+alerts_help	Berapa lama mesej status kekal pada skrin untuk anda (log masuk ini).
+snack_secs_ph	Saat (3–60, lalai 10)
+snack_secs_save	Jimat masa makluman
+snack_secs_saved	Masa makluman disimpan — {n} saat
+snack_secs_bad	Masukkan saat sebagai nombor (3–60)
+cancelled	Dibatalkan
+cancel	Batal
+opening_client	Membuka pelanggan…
+preparing_desk	Menyediakan meja…
+opening_server	Membuka pelayan…
+creating_server	Mencipta pelayan…
+diag_privacy_help	Log kekal pada peranti ini. Rahsia (PIN, kata laluan) tidak pernah disimpan. Berkongsi pakej dari peranti memerlukan kelulusan eksplisit anda setiap kali — tidak pernah dijual atau diberikan kepada pihak ketiga.
+diag_level	Tahap terperinci
+diag_level_error	Kesilapan
+diag_level_warn	Amaran
+diag_level_info	info
+diag_level_debug	Nyahpepijat
+diag_support_start	Mulakan sesi sokongan selama 30 minit
+diag_support_stop	Tamatkan sesi sokongan
+diag_support_started	Sesi sokongan dihidupkan — Perincian nyahpepijat selama 30 minit
+diag_support_ended	Sesi sokongan tamat
+diag_export_local	Eksport salinan tempatan
+diag_export_local_done	Diagnostik tempatan sedia pada {path} — pilih tempat untuk menyimpan salinan
+diag_approve_send	Luluskan perkongsian dari peranti ini
+diag_send_heading	Kongsi peranti ini
+diag_send_help	Kelulusan adalah satu pakej, kemudian tamat tempoh. Sementara — digunakan hanya untuk membaiki atau menambah baik produk. Tidak dikongsi dengan pihak ketiga. Berfungsi pada Linux, Windows, macOS dan Android.
+optional_login_heading	Log masuk pilihan
+rights_heading	Hak
+booking_scope_heading	Domestik / Antarabangsa
+diag_send_approved	Kongsi diluluskan untuk satu pakej (tamat tempoh tidak lama lagi)
+diag_export_send	Buat pakej kongsi (memerlukan kelulusan)
+diag_export_send_done	Kongsi pakej sedia pada {path} — pilih tempat untuk disimpan, kemudian hantar hanya kepada sokongan Kumkaj
+diag_save_bundle	Simpan salinan diagnostik
+diag_bundle_saved	Salinan diagnostik disimpan ke {path}
+diag_bundle_failed	Tidak dapat menyimpan salinan diagnostik — cuba lagi
+diag_clear	Kosongkan log diagnostik
+diag_cleared	Log diagnostik dikosongkan
+use	guna
+add_branch	Tambah cawangan
+add_conversion	Tambah penukaran
+add_item_plain	Tambah item menu
+add_note	Tambah nota
+add_opening_balance	Tambah baki pembukaan
+add_rider	Tambah penunggang
+add_staff	Tambah kakitangan
+add_unit	Tambah unit
+add_use_name	Tambah / gunakan nama ini
+allow_extra_tills	Benarkan tills tambahan
+amend	Pinda
+apply_country_pack	Gunakan pek negara
+datetime_appearance	Penampilan tarikh & masa
+datetime_appearance_help	Buku menyimpan RFC3339 tahun pertama di dalam. Ini hanya mengubah rupa tarikh dan jam pada resit, label, laporan dan skrin.
+datetime_example	Contoh sekarang: {ex}
+date_order	Pesanan tarikh
+date_order_dmy	D/M/Y
+date_order_mdy	M/D/Y
+date_order_ymd	Y-M-D
+time_format	jam
+time_format_24h	24 jam
+time_format_12h	12 jam
+attach_bill_photo	Lampirkan foto bil
+attach_pdf	Lampirkan PDF
+attach_photo	Lampirkan foto
+bank	Bank
+bank_in	Bank masuk
+bank_out	Tunai keluar dari bank
+bank_to_till	Bank → sehingga
+till_to_bank	Sehingga → bank
+mark_cleared	Mark dibersihkan
+unmark	Nyahtanda
+role_both	Kedua-duanya
+role_carrier	Pembawa
+role_cashier	Juruwang
+role_consignor	konsainor
+role_manager	Pengurus
+role_supplier	Pembekal
+branch_name_sell_ph	Nama cawangan untuk dijual
+bring_my_book	Bawa lejar saya
+business_tax_id_ph	id cukai perniagaan
+card_amount_ph	Jumlah kad
+cash_amount_ph	Jumlah tunai
+upi_amount_ph	UPI jumlah
+carrier_cost_ph	Kos pembawa
+carrier_party_ph	Pihak pembawa
+choose_icon	Pilih ikon
+choose_logo	Pilih logo
+choose_receipt_stamp	Pilih setem resit
+choose_payment_qr	Pilih QR pembayaran
+clear_icon	Kosongkan ikon
+clear_logo	Logo yang jelas
+clear_photo	Foto yang jelas
+clear_stamp	setem yang jelas
+clear_payment_qr	Kosongkan QR pembayaran
+print_faces	Cetak muka (resit / bil tempoh)
+print_faces_help	Cop pilihan dan QR pembayaran di sebelah logo anda pada resit tempahan dan bil tempoh.
+awb_pools_heading	Kumpulan nombor AWB pembawa
+add_awb_pool	Tambahkan kolam AWB
+awb_pool_carrier_ph	Nama pihak pembawa
+awb_pool_start_ph	Mula no.
+awb_pool_end_ph	Tamat no.
+awb_pool_prefix_ph	Awalan (pilihan)
+awb_pool_label_ph	Label (pilihan)
+pieces_ph	Kepingan (kosong = 1) — kembangkan untuk kargo / berbilang keping
+bulk_awbs_ph	AWB pukal — tampal banyak (baris baharu atau koma) untuk satu pendahuluan status
+tds_cut_ph	Potongan TDS (pilihan)
+discount_ph	Diskaun (pilihan)
+cheque_no_ph	Nombor cek (pilihan)
+bill_reminder_chase	Senarai pengejaran peringatan bil
+month_mix_report	Laporan campuran bulan
+copy_month_gst_csv	Salin bulan CSV CSV
+domestic	Dalam negeri
+international	antarabangsa
+pick_logo	Pilih logo
+booking_scope_hint_domestic	Volumetrik ÷5000 (domestik) — ketik Antarabangsa untuk ÷6000 udara
+booking_scope_hint_intl	Volumetrik ÷6000 (udara antarabangsa) — ketik Domestik untuk kedai ÷5000
+cod_register	Daftar COD
+collect_cod	Kumpul COD (AWB)
+consignments_dispatch	Konsainan & penghantaran
+consignor_party_ph	Nama konsainor / pihak
+copy_day_book_csv	Salin lejar hari CSV
+copy_day_close	Tutup hari salinan
+copy_items_csv	Salin item menu CSV
+copy_outstanding_csv	Salin tertunggak CSV
+copy_parties_csv	Salin pelanggan dan pembekal CSV
+copy_party_ledger_csv	Salin lejar pelanggan CSV
+copy_receipt	Salin resit
+copy_report	Salin laporan
+counted_cash_ph	Dikira wang tunai dalam laci
+counter_agency_ph	Nama kaunter / agensi (pilihan)
+create_backup	Buat sandaran
+day_close_summary	Ringkasan penutup hari
+delete_party	Padamkan pelanggan atau pembekal yang dipilih
+dispatch_to_rider	Penghantaran ditempah → penunggang
+docket_charge_ph	Caj doket
+declared_value_ph	Nilai yang diisytiharkan
+contents_ph	Kandungan
+eway_ph	Bil e-way no.
+insurance_label	Insurans
+yes_label	ya
+no_label	Tidak
+print_route_label	Cetak laluan
+new_party_kind_label	Macam parti baru
+done_open_books	Selesai — buka lejar
+export_day	Hari eksport
+extra_note_expense_ph	Nota tambahan pada perbelanjaan terakhir
+extra_note_awb_ph	Nota tambahan mengenai AWB / jualan ini
+failed_delivery	Penghantaran gagal
+find_scan_awb	Cari / Imbas AWB
+forget_shop	Lupakan kedai ini
+fuel_ph	Bahan api
+handover_carrier	Tempah tangan → pembawa
+import_day	Hari import
+import_items_csv	Import item / kadar CSV…
+import_parties_csv	Import pelanggan dan pembekal CSV…
+import_pincodes_csv	Import kod pin CSV…
+import_carrier_bill_csv	Import bil pembawa CSV…
+copy_carrier_bill_report	Salin laporan bil pembawa terakhir
+use_carrier_cost	Gunakan kos pembawa
+rate_carrier_ph	Pembawa (kosong = kadar jualan kami)
+rate_party_ph	Parti (kosong = semua pelanggan)
+carrier_pick_ph	Pembawa untuk kos (daripada perbandingan)
+item_name	Nama item menu menu
+load_bulk_row	Muatkan baris pukal → meja
+login_id_ph	Nama pengguna
+mark_delivered	Mark dihantar
+manifest_cod_total	Jumlah COD
+manifest_received_by	Diterima oleh
+manifest_sign	Tanda
+ndr_address_wrong	Alamat salah
+ndr_customer_unavailable	Tidak tersedia
+ndr_door_locked	Pintu dikunci
+ndr_other	Lain-lain
+ndr_refused	enggan
+out_for_delivery	Keluar untuk penghantaran
+print_drs	Cetak DRS
+print_run_sheet	Cetak helaian larian
+reattempt	Percubaan semula
+rider_cod_handed_ph	COD diserahkan
+settle_rider_cod	Settle rider COD
+mode_desk	Meja
+mode_rider	penunggang
+waiting_office	menunggu untuk sampai ke pejabat
+capture_signature	Tangkap tandatangan
+incoming_manifest	Manifes masuk
+pickup_request	Permintaan pengambilan
+pickup_run	Larian pikap
+auto_assign_area	Auto tetapkan kawasan
+reorder_stops	Susun semula berhenti
+settle_rider_pay	Selesaikan gaji rider
+vehicle_inspect	Pemeriksaan kenderaan
+print_docket	Cetak doket
+franchise_statement	Penyata francais
+tally_export	Tally baucar eksport
+open_whatsapp	Buka WhatsApp
+copy_sms	Salin teks SMS
+pick_barcode_image	Pilih imej untuk diimbas
+share_receipt_whatsapp	Kongsi resit di WhatsApp
+delivery_feedback	Maklum balas penghantaran
+lan_self_book	Tempahan sendiri LAN
+new_party_clear	Pelanggan atau pembekal baharu (borang jelas)
+new_party_kind_ph	Jenis parti baharu (Pembekal / Pembawa)
+next_country	Negara seterusnya
+prev_country	Negara sebelumnya
+note_gstin_ph	Nota / GSTIN / peringatan perjanjian
+note_pod_ph	Nota / POD (pilihan)
+on_account_ap	Pada akaun (AP)
+org_optional_ph	Organisasi (pilihan)
+paid_now	Dibayar sekarang
+pairing_code_ph	Kod berpasangan
+pair_now	Pasangkan sekarang
+party_name_selected_ph	Nama pelanggan atau pembekal (atau gunakan yang dipilih)
+password_ph	Kata laluan
+pay_ap_card	Bayar kad AP
+pay_ap_cash	Bayar tunai AP
+pay_ap_upi	Bayar AP UPI
+period_bill	Bil tempoh
+period_bill_party	Bil tempoh (pesta)
+pick_pod_photo	Pilih foto POD
+print_awb_label	Cetak label AWB
+print_open	Cetak / buka
+reason_amend_ph	Sebab pindaan / batal / bayaran balik
+reason_note_ph	Sebab / nota (pembaziran, kiraan,…)
+record_day_close	Simpan hari tutup
+refresh_from_shop	Muat semula dari kedai
+refund	Bayaran balik
+remit_cod	Hantarkan COD (pesta)
+remove_selected	Alih keluar yang dipilih
+restore_backup	Pulihkan sandaran
+rider_name_ph	Nama penunggang
+rider_phone_ph	Telefon penunggang
+riders	Penunggang
+riders_own_fleet	Penunggang (armada sendiri)
+rollup	Penggulungan ringkasan
+save_booking_measures	Simpan langkah tempahan
+save_brand	Jimat jenama
+save_business_id	Simpan id perniagaan
+save_business_name	Simpan nama perniagaan
+save_features	Simpan persediaan kerja
+save_names	Simpan nama
+server_ip_ph	IP pelayan (cth. 192.168.1.10)
+set_credit_limit	Gunakan had kepada pelanggan atau pembekal
+set_login_selected	Gunakan log masuk untuk dipilih
+set_login_named	Mohon log masuk ke {name}
+shop	Kedai
+start_fresh	Mulakan dengan segar
+stop_extra_tills	Berhenti tills tambahan
+backup_auto	Disandarkan secara automatik setiap hari · lepas {when} · 14 hari terakhir disimpan dalam {dir}.
+backup_auto_none	Disandarkan secara automatik setiap hari — yang pertama berjalan dalam seketika.
+backup_copy_to	Salinan juga pergi ke {dir}.
+backup_copy_btn	Salin juga sandaran ke folder…
+autostart_off	Mulakan dengan komputer ini
+autostart_on	Bermula dengan komputer ini ✓ — ketik untuk berhenti
+autostart_done_on	Komputer ini kini membuka apl apabila ia dimulakan — pelayan kedai kembali selepas bekalan elektrik terputus.
+autostart_done_off	Komputer ini tidak lagi membuka apl apabila ia dimulakan.
+right_allowed	dibenarkan
+right_with_approval	Dengan kelulusan
+right_denied	Tidak dibenarkan
+editing_staff	Hak untuk
+team_pick_ph	Kakitangan untuk mengedit — nama, nama pengguna atau pilih
+select_staff	Pilih kakitangan ini
+rights_help	Hak — ketik untuk menukar: Dibenarkan → Dengan kelulusan (PIN pengurus pada masa itu) → Tidak dibenarkan.
+right_void_refund	Batalkan atau bayar balik tempahan
+right_amend_sale	Pinda tempahan yang direkodkan
+find_server	Cari pelayan kedai
+finding_server	Mencari pelayan kedai pada Wi‑Fi ini…
+no_server_found	Tiada ditemui. Pada Pelayan: Tetapan → Peranti lain → Benarkan tills tambahan (sama Wi‑Fi). Atau taip IP yang ditunjukkan di sana.
+servers_found_pick	Ketik kedai yang ingin anda sambungkan.
+server_host_selected	Menggunakan {host} — masukkan kod pasangan, kemudian Pasangkan sekarang.
+device_forgotten	Kedai terlupa peranti ini — gandingkan sekali lagi dengan kod semasa kedai. Pesanan yang menunggu di atasnya disimpan.
+forget_device	lupa
+last_seen	dilihat
+new_pair_code	Kod gandingan baharu
+lan_offline	Pelayan kedai tidak dapat dihubungi
+lan_offline_waiting	Pelayan kedai tidak dapat dihubungi · {n} menunggu
+lan_connecting	Menyambung ke kedai…
+pair_finishing	Sepasang penamat… menggunakan buku pejabat
+pair_opening	Membuka pejabat…
+lan_live	Langsung
+lan_sending	{n} menghantar
+lan_sign_in_to_send	Log masuk semula untuk menghantar {n}
+lan_pair_again	Gandingkan peranti ini sekali lagi
+lan_update_app	Kemas kini apl — peranti ini dan pelayan pejabat mempunyai versi yang berbeza
+allow_firewall	Benarkan peranti lain bersambung
+firewall_blocked	Dinding api komputer ini menyekat peranti lain — ketik Benarkan peranti lain bersambung.
+firewall_waiting	Menunggu gesaan pentadbir…
+lan_join_help	Pada peranti lain: Mod Pelanggan → Cari pelayan kedai (atau taip {addr}) → kod berpasangan {code}.
+lan_pair_status	Wi‑Fi {addr}
+lan_join_help_no_addr	Sambungkan peranti ini ke Wi‑Fi untuk mendapatkan alamat.
+lan_no_address	Belum ada alamat Wi‑Fi — sambung ke kedai Wi‑Fi.
+lan_not_listening	Tidak menerima peranti (port {port} sibuk). Mulakan semula apl.
+lan_tills_off	Tills tambahan dimatikan. Benarkan mereka membenarkan peranti lain bergabung.
+paired_with	Berpasangan · {url}
+not_paired	Tidak berpasangan
+choose_device_use	Pilih Pelayan atau Pelanggan.
+paired_note	Berpasangan. Buka kunci untuk menjual, atau Muat semula untuk yang terkini.
+last_update_at	Kemas kini terakhir: {time}.
+pair_intro	Cari pelayan, atau taip alamat dan kod pasangannya.
+queue_waiting	Menunggu untuk sampai ke kedai ({n}):
+queue_tries	Mencuba {n} kali · jawapan terakhir: {e}
+save_backup_copy	Simpan salinan sandaran…
+backup_copy_saved	Salinan sandaran disimpan — jauhkannya dari peranti ini (stik USB atau peranti lain)
+backup_copy_overdue	Tiada salinan sandaran meninggalkan peranti ini selama {n} hari — Tetapan → Sandaran
+backup_copy_failed	Salinan sandaran tidak dapat disimpan di sana — pilih tempat lain
+clock_off	Jam peranti ini berada {min} min dari pelayan kedai — tetapkan masa yang sesuai pada peranti ini
+printers_heading	Pencetak pada peranti ini
+printers_help	Cari pencetak sebenar, kemudian pilih Resit atau label AWB. Setiap kerja mempunyai lebar, potret atau landskap sendiri dan cara bait dihantar. Label mencetak kod bar. Tempat kosong = jangan cetak.
+job_width	Lebar kandungan (mm)
+job_width_ph	Atau taip lebar, 40–210 mm
+job_layout	Susun atur
+job_delivery	Bagaimana kerja dihantar
+job_size	Saiz fon
+job_size_ph	cth. 18, 20, 26…
+save_receipt_format	Simpan format resit
+save_label_format	Simpan format label
+test_receipt_format	Resit ujian
+test_label_format	Label ujian
+test_receipt_sent	Contoh resit dihantar
+test_label_sent	Label sampel dihantar
+test_print_no_printer	Tiada pencetak untuk kerja itu — tambahkan pencetak di bawah tempat ini
+printers_host_only	Pencetak ditetapkan pada peranti kedai (Pelayan). Ini sehingga menghantar pekerjaan di sana — Cari / tambah / tetapkan penginapan pada Pelayan. Halaman ujian pergi ke Pelayan.
+printers_pool_heading	Pencetak
+printers_routes_heading	Di mana perkara dicetak
+printer_label_ph	Nama (cth. Meja)
+printer_target_ph	hos:9100 · bt:MAC · usb:VID:PID · nama sistem
+printer_mode_heading	Profil untuk keluaran baharu
+printer_mode_standard	Potret Standard
+printer_mode_landscape	Landskap Standard
+printer_mode_thermal	terma
+printer_mode_standard_short	Potret
+printer_mode_landscape_short	Landskap
+printer_mode_thermal_short	terma
+printer_format_custom	Profil tersuai baharu
+printer_format_custom_label	Adat
+printer_format_custom_added	Profil tersuai ditambahkan untuk tempat ini
+add_printer	Tambah pencetak
+remove_printer	Alih keluar terakhir
+route_pick_ph	resit atau label
+route_add_printer_ph	Tambahkan pencetak ke tempat ini
+route_receipt	resit
+route_label	Label AWB
+route_dont_print	Tiada pencetak diberikan
+route_add	Tambah ke tempat
+route_up	Naik
+route_down	Bawah
+route_remove	Alih keluar terakhir
+route_clear	Kosongkan pencetak untuk tempat ini
+save_printers	Simpan pencetak
+print_test_page	Cetak halaman ujian
+printers_saved	Pencetak disimpan untuk peranti ini
+test_page_sent	Halaman ujian dihantar — semak pencetak
+printers_found	Ditemui pada peranti ini: {list}
+find_printers	Cari pencetak
+printers_looking	Mencari pencetak pada peranti ini dan Wi‑Fi…
+printers_tap_find	Ketik Cari pencetak untuk baris gilir yang menerima kerja dan pencetak resit rangkaian pada Wi‑Fi ini (bukan dialih keluar atau luar talian).
+printers_none_found	Tiada pencetak ditemui — taip nama pencetak sistem atau alamat rangkaian (cth. 192.168.1.50).
+receipt_printer_ph	Pencetak untuk resit
+queue_refused	Tidak diterima oleh kedai ({n}) — semak setiap satu di kaunter:
+clear_not_accepted	Ditandai — kosongkan senarai ini
+device_name_ph	Nama peranti ini
+lan_last_update	kemas kini terakhir {time}
+lan_not_accepted	{n} tidak diterima
+connected_now	bersambung sekarang
+backup_failed	Sandaran automatik terakhir gagal: {e}
+backup_overdue	Tiada sandaran selama {n} hari — pastikan apl dibuka pada peranti ini supaya ia boleh membuat sandaran.
+disk_low	Hanya {mb} MB percuma pada peranti ini — sandaran akan gagal tidak lama lagi. Kosongkan sedikit ruang.
+last_seen_devices	Terakhir dilihat: {time}
+sync_interval	Segerakkan setiap {secs}s
+connection_to_shop	Sambungan ke kedai
+supplier_name_ph	Nama pembekal (atau pelanggan)
+supplier_ph	Pembekal
+switch_device	Tukar peranti ini
+take_payment	Ambil bayaran
+tax_added_till	{tax} eksklusif
+tax_inside_price	{tax} termasuk
+today_books	Hari ini lejar
+unlock_after_pairing	Masukkan PIN
+unlock_with_login	Buka kunci dengan log masuk
+update_my_password	Kemas kini kata laluan saya
+update_my_pin	Kemas kini PIN saya
+duress_heading	Buka kunci kecemasan PIN (Pemilik sahaja)
+duress_help	Pilihan. Jika PIN ini ditaip semasa buka kunci dan bukannya milik anda, semua entri buku dipadamkan (tempahan, lejar, sejarah) dan meja dibuka sebagai Pemilik kelihatan biasa — kadar, parti, zon, kakitangan dan tetapan kekal. Skema dan konfigurasi tidak dipadamkan. Gunakan hanya jika anda terpaksa membuka kunci. Biarkan kosong dan simpan untuk mematikan. Tidak pernah sama dengan PIN sesiapa sahaja.
+duress_pin_ph	Kecemasan PIN (4–12 digit)
+duress_confirm_ph	Taip sekali lagi untuk mengesahkan
+save_duress_pin	Simpan kecemasan PIN
+clear_duress_pin	Matikan kecemasan PIN
+duress_on	Buka kunci kecemasan PIN dihidupkan
+duress_off	Buka kunci kecemasan PIN dimatikan
+duress_saved	Buka kunci kecemasan PIN disimpan
+duress_cleared	Buka kunci kecemasan PIN dimatikan
+vehicle_ph	kenderaan
+void	Jualan batal
+write_off_ap	Hapus AP
+write_off_nil	Hapus kira / tiada baki
+zone_ph	Zon (nama daripada Kadar)
+caption_today	HARI INI
+caption_bookings	TEMPAHAN
+caption_payments_today	PEMBAYARAN HARI INI
+caption_outstanding	CEMERLANG
+caption_bank	BANK
+paid_by	Dibayar oleh
+second_way	Cara kedua
+weight_in	Berat masuk
+size_in	Saiz dalam
+goods_received	Barang diterima
+expense_heading	Perbelanjaan
+notes_attach_sale	Nota & lampiran (jualan terpilih)
+notes_attach_party	Nota dan lampiran (pelanggan atau pembekal terpilih)
+attachments_last_expense	Lampiran (perbelanjaan terakhir)
+credit_limit_heading	Had kredit (pelanggan atau pembekal terpilih)
+pay_selected_heading	Bayar dipilih (selesaikan hutang / ambil pendahuluan)
+write_off_heading	Hapus kira (jelas tanpa bayaran)
+pay_ap_heading	Bayar apa yang kita berhutang kepada mereka (AP)
+country_tax	Negara & cukai
+extra_tills_heading	Tills tambahan
+other_devices_help_heading	Sediakan peranti lain
+other_devices_help	Pada peranti ini (Pelayan): Peranti lain → Benarkan tills tambahan. Perhatikan kod pasangan dan alamat Wi‑Fi. Ketik Benarkan peranti lain bersambung jika ia muncul. Pada komputer, ketik Mulakan dengan komputer ini. Pada setiap peranti lain: pasang apl, pilih Mod Pelanggan, Cari pelayan kedai (atau taip alamat), masukkan kod pasangan, Pasangkan sekarang. Pesanan menunggu pada peranti jika Wi‑Fi terputus dan hilang apabila Pelayan menjawab semula.
+your_brand	Jenama anda (dalam apl)
+units_heading	Unit
+booking_measures	Langkah-langkah tempahan
+drawer_count	Kiraan laci (pilihan)
+spreadsheet_csv	Hamparan (CSV)
+bank_reconciliation	Penyesuaian bank (tandakan pada penyata bank anda)
+book_add_product	Tempah — tambah produk / kadar
+book_opening_credit	Lejar — kredit pembukaan
+account_kind	Jenis akaun (ketik satu)
+active_ledger	lejar aktif
+actual_total_cap	JUMLAH SEBENAR
+amend_help	Pilih jualan untuk meminda, membatalkan atau membayar balik. Pindaan menyimpan sejarah penuh. Jumlah Dibundarkan bermula sama dengan Digunakan — edit hanya kepada bulat. Batal dan bayaran balik mungkin memerlukan Pemilik atau Pengurus PIN (ditaip di atas; direkodkan dengan nama anda).
+applied_total_cap	JUMLAH YANG DIGUNAKAN
+bank_balance	Baki bank
+bank_net_today	Bank bersih hari ini
+branch_export_help	Eksport menulis syot kilat hari ke dalam folder sandaran dan menyalinnya ke papan keratan. Untuk mengimport hari kedai lain, simpan failnya sebagai import_branch_snapshot.json dalam folder itu, kemudian ketik Import.
+brand_shown_help	Ditunjukkan pada skrin dalam apl. Nama dan ikon apl yang dipasang pada peranti ini kekal sebagai penyenaraian platform.
+app_icon	Ikon apl
+logo_help	Tanda kedai pilihan pada skrin dalam apl.
+onboard_layout	Apa yang anda dapat
+item_photo_help	Pilihan. Tanpa foto kami menunjukkan huruf awal dari nama item menu.
+cash_in_hand	Wang tunai di tangan (sehingga)
+change_my_pin_heading	Tukar PIN saya (hanya milik anda)
+connect_to_server	Sambung ke Pelayan
+counter_locked	Kaunter 01 · Dikunci
+country_pack_help	Pek negara menetapkan nama cukai dan matematik, rel gaji segera dan id perniagaan yang dicetak pada bil. Kumkaj tidak memfailkan cukai atau mengeluarkan e-invois kerajaan di mana-mana sahaja.
+currency_use_help	Tatal dan ketik Gunakan untuk mana-mana mata wang yang disokong.
+day_close_help	Rakaman penutupan hari menyimpan ringkasan ini (dan varians laci jika dikira) ke log audit. Ia tidak berhenti menjual.
+expenses_word	Perbelanjaan
+feature_access_help	Akses ciri untuk kakitangan terpilih (ketik selepas menambah)
+footer_local	SQLite Tempatan · Percuma Selamanya · Awan Sifar
+fresh_book_moklanjo	Fresh = katalog kosong (tambah item kemudian). Buku = taip stok pembukaan dan siapa yang berhutang dengan anda di bawah.
+fresh_selected	Baru dipilih — katalog kekal kosong. Ketik Selesai apabila bersedia.
+gross_word	kasar
+how_start	Bagaimana anda mahu bermula?
+later_country_pack	Kemudian: Tetapan → gunakan pek negara anda untuk label cukai dan bayar.
+local_badge	TEMPATAN
+measures_help_moklanjo	Bagaimana bungkusan diukur di meja tempahan. Taipkan dimensi dan berat dalam unit yang anda gunakan — standard (cm, m, in, ft · kg, g, lb, oz) atau unit anda sendiri yang dipautkan ke cm / kg di atas (secara langsung atau melalui unit lain). Buku sentiasa merekod kg. Biarkan medan kosong untuk menyimpannya.
+mix_type_hint_moklanjo	Taip berapa banyak dalam setiap (tunai / UPI / kad / kredit). Mesti menambah bil. Kredit memerlukan pelanggan di atas.
+money_in_sales	Wang masuk (jualan)
+more_help_moklanjo	Katalog, jualan, kredit, pasukan, sandaran — serta stok dan tiang tambahan apabila diperlukan.
+net_word	bersih
+offline_badge	LUAR TALIAN
+optional_login_help	Log masuk pilihan (id + kata laluan). Set pemilik sekali; hanya pengguna boleh menukar kata laluan kemudian.
+or_unlock_login	Atau buka kunci dengan id log masuk + kata laluan
+permission_preset	Kerja (menetapkan skrin dan hak)
+preset_help_moklanjo	Juruwang: jual. Pengurus: jual + item menu + batal/pinda.
+product_locked_moklanjo	Moklanjo
+product_only_moklanjo	Apl ini adalah Moklanjo sahaja — buku + meja tempahan. Perdagangan lain akan dihantar sebagai produk berasingan kemudian.
+purchases_cogs	Pembelian (COGS)
+qty_cap	BIL.
+restore_help	Pulihkan: pilih sandaran. Lejar dibuka seperti dahulu; lejar seperti sekarang disimpan dahulu, jadi ini boleh dibuat asal.
+wipe_data_heading	Padamkan data setempat
+wipe_data_help	Pemilik sahaja — pilihan yang sama seperti nyahpasang Windows. Rekod perniagaan mengosongkan sejarah dagangan tetapi mengekalkan kadar dan persediaan (seperti PIN buka kunci kecemasan). Persediaan kedai mengalih keluar pangkalan data buku. Pilihan skrin mengosongkan tetingkap/bahasa. Sahkan dengan PIN Pemilik. PIN buka kunci kecemasan pada Pasukan adalah berasingan (lap terselindung semasa buka kunci).
+wipe_trading	Rekod perniagaan
+wipe_schema	Persediaan kedai
+wipe_ui	Pilihan skrin
+wipe_owner_pin_ph	Pemilik PIN untuk memadam
+wipe_delete_selected	Padam dipilih
+wipe_owner_only	Hanya Pemilik boleh memadamkan data setempat.
+restore_owner_only	Hanya Pemilik boleh memulihkan sandaran.
+wipe_owner_pin_needed	Masukkan Pemilik PIN untuk memadam data setempat.
+wipe_nothing_selected	Pilih perkara yang hendak dipadamkan dahulu.
+wipe_done	Data tempatan yang dipilih dipadamkan.
+wipe_schema_done	Persediaan kedai dipadam — pilih Pelayan atau Pelanggan untuk meneruskan.
+rounded_total	Jumlah Bulat
+setup_app_moklanjo	Sediakan Moklanjo
+shop_logo_optional	Logo kedai (pilihan)
+stock_type_help	Taip nama item menu (sebahagian daripadanya sudah mencukupi), kuantiti, kemudian laraskan. Item menu menu yang belum dikira lagi memerlukan Mulakan penjejakan sekali.
+team_owner_help	Sewa: pilih kerja (Juruwang / Pengurus), nama + PIN permulaan, kemudian Tambah. Hanya jika orang ini berbeza: buka skrin dan hak di bawah, kemudian Simpan persediaan kerja. Semua orang menukar PIN mereka sendiri di bahagian bawah — Pemilik tidak boleh menukar PIN orang lain.
+they_owe_us	Mereka berhutang dengan kita
+unit_at_cap	Unit @
+units_help	Kod untuk label item menu (kg, sekeping, beg). Setiap unit mesti memaut — terus atau melalui unit lain — kepada standard (kg · cm · ml · pc), cth. 1 peti = 2 kotak dan 1 kotak = 20 cm. Penukaran: 1 daripada = faktor kepada. Mata wang tidak pernah unit.
+we_owe_them	Kita berhutang dengan mereka
+who_unlocking	Siapa yang membuka kunci?
+locked_word	Terkunci
+show_pin	Tunjukkan PIN
+hide_pin	Sembunyikan PIN
+set_owner_pin	PEMILIK SET PIN
+enter_owner_passcode	MASUKKAN KOD LALUAN PEMILIK
+enter_staff_passcode	MASUKKAN KOD LALUAN STAF
+pin_count_zero	0 / 12 digit · sekurang-kurangnya 4, kemudian OK
+pin_count_need	{} / 12 digit · memerlukan {} lagi
+pin_count_full	12 / 12 digit · tekan OK
+pin_count_ready	{} / 12 digit · tekan OK apabila bersedia
+pin_hint_choose	Pilih 4–12 digit · Masukkan atau Buka Kunci untuk menyimpan
+pin_hint_new	Pemilik 4–12 digit baharu PIN · Masukkan atau Buka Kunci
+pin_hint_shop_code	Beli peranti · kod berpasangan {}
+pin_hint_books	Peranti ini memegang lejar
+pin_hint_paired	Tambahan sehingga berpasangan — buka kunci untuk menjual
+pin_hint_pair_first	Tambahan sehingga — pasangkan ke peranti kedai dahulu
+unlock_to_continue	Buka kunci untuk meneruskan
+no_staff_yet	Belum ada kakitangan — buka kunci sebagai Pemilik, kemudian Pasukan
+status_server_set_pin	Mod Pelayan — tetapkan Pemilik PIN
+status_server_tills	Mod Pelayan — bahagian tambahan boleh menyertai. Buka kunci
+status_server_unlock	Mod Pelayan — buka kunci sebagai Pemilik
+status_client_unlock	Mod Pelanggan — buka kunci untuk menjual
+icon_new_selected	Ikon: fail baharu dipilih — ketik Simpan jenama
+icon_custom	Ikon: tanda tempat tersuai
+icon_default	Ikon: Kumkaj tanda (lalai) — pilih yang tersuai
+logo_yours	Logo: logo kedai anda — ditunjukkan pada skrin dan resit
+logo_default	Logo: Kumkaj tanda (lalai) — pilih sendiri jika ada
+tmpl_current	Semasa: {} — {}
+tmpl_selected	Dipilih: {} — {}
+setup_complete	Persediaan selesai
+onboard_fresh_tmpl	Fresh · {} — katalog bermula kosong; tambah item menu dalam item menu Menu, kemudian Selesai.
+onboard_book_tmpl	Lejar · {} — tambah item menu dan kredit pembukaan, kemudian Selesai.
+onboard_template_tmpl	Namakan tempat itu jika anda mahu, kemudian pilih cara untuk bermula.
+tmpl_blurb	Buku kurier dan meja tempahan: konsainor, pembawa, buku harian, AWB.
+tmpl_how	Tempah bungkusan di meja; Buku hari untuk hari ini; tab untuk kadar, pesta, laporan.
+trk_booked	Tempah
+trk_picked_up	Dijemput
+trk_in_transit	Dalam transit
+trk_delivered	Dihantar
+trk_rto	Kembali kepada pengirim
+lane_to_dispatch	Untuk menghantar
+lane_with_carrier	Dengan pembawa
+lane_failed	gagal
+lane_done_today	Selesai hari ini
+ops_board_help	Bungkusan mengikut tempat mereka berada dalam kerja hari ini. Ketik bungkusan (atau imbasnya) untuk memilihnya, kemudian bertindak pada semua yang dipilih sekali gus — setiap lorong hanya menawarkan pergerakan yang sesuai dengannya.
+lane_empty	Tiada apa-apa di sini sekarang.
+picked_fmt	{n} dipilih
+pick_all	Pilih semua
+bag_for_carrier	Tangan kepada pembawa
+send_with_rider	Hantar dengan rider
+out_again	Keluar lagi
+return_to_sender	Kembali kepada pengirim
+runs_bags_heading	Larian & beg terkini
+print_word	Cetak
+bag_word	Beg pembawa
+run_word	Lari penunggang
+parcels_fmt	bungkusan {n}
+parcel_history	Sejarah
+attempt_fmt	Cuba {n}
+pieces_short_fmt	{n} pcs
+note_reason_ph	Nota atau alasan
+ops_pick_first	Pilih bungkusan dahulu — ketik atau imbasnya
+cod_to_collect	Dihantar — COD untuk dikutip
+cod_on_road	COD masih dalam perjalanan
+cod_owed_consignors	Dikumpul — untuk membayar pengirim
+cod_rto_fees	Yuran RTO untuk dikutip
+cod_to_hand_in	COD untuk diserahkan
+parcel_one_fmt	bungkusan {n}
+facet_bank_title	Laporan
+facet_bank_help	Lejar hari, penuaan pelanggan atau pembekal, jawatan bank dan tempoh P&L.
+facet_ops_title	Konsainan & penghantaran
+facet_ops_help	Imbas atau taip AWB → Cari, kemudian maju / cetak label / COD. Hantar kepada penunggang atau pembawa.
+facet_cod_title	Daftar COD
+facet_cod_help	Kumpul semasa penghantaran, kemudian hantar kepada pengirim.
+facet_riders_title	Penunggang (armada sendiri)
+facet_riders_help	Tambah penunggang, kemudian hantar AWB yang ditempah daripada Ops.
+against_bill_ph	Terhadap bil # di atas (pilihan)
+aliases_ph	Alias — nama lain, dipisahkan koma
+amount_blank_full_ph	Jumlah (kosong = baki penuh)
+amount_owed_ph	Jumlah terhutang
+amount_ph	Jumlah
+amount_received_ph	Jumlah yang diterima
+amount_we_pay_ph	Jumlah yang kita bayar
+awb_scan_ph	AWB / imbas kod bar
+bulk_csv_ph	CSV pukal — destinasi, penerima, kg, cod_paise, nota
+business_name_ph	Nama perniagaan
+category_new_ph	Kategori (pilihan, dibuat jika baharu)
+cod_amount_ph	Jumlah COD
+code_bag_ph	Kod (beg)
+conv_factor_ph	Faktor (25 = 1 beg → 25 kg)
+country_code_ph	Kod negara cth. IN, GB, AS, AE, BR
+credit_khata_amount_ph	Jumlah kredit / lejar kredit
+credit_limit_ph	Had kredit (0 = tiada)
+dim_unit_code_ph	Kod unit dimensi (cm)
+divisor_ph	Pembahagi isipadu (5000)
+extra_per_kg_ph	Tambahan / kg
+first_amount_ph	Jumlah pertama
+first_kg_ph	kg pertama (slab)
+from_code_ph	Dari kod (beg)
+item_name_lang_ph	Nama item menu menu — taipkannya dalam bahasa anda
+login_id_opt_ph	Nama pengguna (diperlukan, unik)
+manager_pin_ph	Pengurus PIN untuk meluluskan (hanya jika anda tidak boleh membatalkan)
+new_branch_name_ph	Nama cawangan baru
+new_password_ph	Kata laluan baharu (pilihan)
+new_pin_ph	Baharu PIN (4–12 digit)
+note_bank_ph	Nota (deposit, pengeluaran,…)
+note_buy_expense_ph	Nota (bahan api, sewa,…)
+note_expense_ph	Nota (bahan api, pejabat, …)
+notify_phone_ph	Maklumkan telefon (WhatsApp/SMS cangkuk)
+options_moklanjo_ph	Pilihan (pilihan) — Besar=20, Pembalut hadiah=10
+part_second_way_ph	Bahagian dengan cara kedua (pilihan)
+phone_ph	telefon
+address_ph	Alamat
+party_custom_fields_heading	Medan tersuai (pihak yang dipilih)
+party_custom_help	Tambahkan sebarang label dan nilai pada pihak ini — WhatsApp, GSTIN, kod laluan, …
+party_custom_key_ph	Nama medan (cth. WhatsApp)
+party_custom_value_ph	Nilai
+party_custom_add	Tambah medan
+party_custom_remove	Alih keluar medan
+party_custom_empty	Tiada medan tersuai lagi
+party_custom_pick_first	Pilih parti untuk menambah medan tersuai
+place_name_ph	Nama tempat ini
+price_ph	harga
+qty_example_ph	Kuantiti (cth. 1.5 untuk kg)
+quantity_ph	Kuantiti
+reason_required_ph	Sebab (diperlukan)
+role_title_ph	Tajuk peranan (cth. Barista)
+service_pct_ph	Perkhidmatan % pilihan 0/10/12
+short_code_ph	Kod pendek (MG02)
+slab_kg_ph	Papak boleh dicas dalam kg (0.5)
+staff_name_ph	Nama / id kakitangan
+starting_password_ph	Kata laluan permulaan (pilihan)
+starting_pin_ph	Bermula PIN (4–12 digit)
+tax_rate_ph	Nama kadar cukai atau % — Standard, Dikurangkan, 0, 5, 12, 18, 20
+to_code_ph	Kepada kod (kg)
+uncleared_no_ph	Tidak dikosongkan # di atas
+unit_cost_ph	Kos seunit
+unit_kg_blank_ph	Unit (kg atau kosong)
+unit_name_bag_ph	Nama (Beg)
+weight_unit_code_ph	Kod unit berat (kg)
+zone_name_ph	Nama zon
+pay_credit	Pada akaun
+book_kind_today	Hari ini lejar
+book_kind_month	Lejar bulan ini
+book_kind_aging	Tertunggak / debit-kredit
+book_kind_balance	Kunci kira-kira
+ops_desk_help	Imbas AWB dengan pengimbas kod bar USB (atau taipkannya) → Cari. Kemudian maju, cetak label, atau kumpulkan COD. Label mencetak Kod 128.
+role_help_consignor	Peranan: Konsainor — AR (mereka berhutang kepada kami). Firma yang sama juga boleh menjadi Pembawa.
+role_help_carrier	Peranan: Pembawa — AP (kami berhutang kepada mereka). Firma yang sama juga boleh menjadi Consignor.
+role_help_both	Peranan: Konsainor + Pembawa — satu pihak, lejar AR dan AP, bersih dalam Laporan.
+role_help_supplier	Peranan: Pembekal — AP untuk pembelian.
+lane_declared_label	Tempahan akaun
+lane_owner_label	Tempahan tunai
+money_lane_bill	Bil: {lane}

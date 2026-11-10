@@ -40,6 +40,10 @@ and one Makepad platform — **not** shared product code.
   package scripts, installers and uninstallers, `Setup.bat`,
   `desktop-ids.sh`, `License.rtf`, MSI upgrade codes (`msi.sh`), Play /
   web packaging — lives in `apps/<app>/scripts/`.
+- **No Python in scripts** (2026-10-14, restated 2026-11-10): workspace and
+  app tooling is **bash** (or a small Rust binary under `tools/`). Do not
+  add `scripts/*.py` / `apps/*/scripts/*.py` for gates, scaffolding, fills,
+  or packaging. Cursor rule: `.cursor/rules/no-python-scripts.mdc`.
 
 Canonical doctrine: [`KUMKAJ_PRODUCT_VISION_AND_REQUIREMENTS.md`](KUMKAJ_PRODUCT_VISION_AND_REQUIREMENTS.md) §1–2; concepts checklist: [`BUSINESS_BOOKS.md`](BUSINESS_BOOKS.md).
 
@@ -520,7 +524,7 @@ Manual regression check (no automated GUI test exists): narrow window (bottom ba
 | `paint_choice_pair` / `clear_button_animators` | Dual-choice visibility + animator clear |
 | `paint_choice_state` | All dual choices after chrome sync |
 | `locale::en` + `english_chrome_never_returns_raw_keys` | Human labels, never snake_case keys |
-| `locale::t` + `shipped_languages_translate_chrome` + `rtl_languages_detected` | Static UI fully translated in 29 languages (no English fallback); RTL detection drives `apply_text_alignment` |
+| `locale::t` + `every_catalogue_language_translates_every_key` + `rtl_languages_detected` | Static UI fully translated in every catalogue language (`translations/<code>.tsv`); RTL detection drives `apply_text_alignment` |
 
 ```text
 ❌ Idle TabBtn color_hover = selected navy
@@ -537,6 +541,28 @@ Manual regression check (no automated GUI test exists): narrow window (bottom ba
 ✅ FormFieldRow for fields; ActionStack for multi-word CTAs under them
 ✅ Fix that app's face definitions once (all platforms for that app)
 ```
+
+## Languages (catalogue + translation packs)
+
+Every app owns its own `src/locale.rs` and `translations/<code>.tsv` (no
+shared Kumkaj i18n crate). English source of truth is `en()` in that
+`locale.rs`. Every other catalogue language is a TSV baked by
+`build.rs` (`bake_translations`). Runtime `t()` falls back to English
+only if a pack is corrupt; tests and the packaging gate forbid gaps.
+
+**Adding a label / button / hint string**
+
+1. Add `"my_key" => "My label"` to `en()` in that app’s `locale.rs`.
+2. `./scripts/scaffold-ui-translations.sh --app <app> --standin-english`
+3. Replace English stand-ins in `apps/<app>/translations/*.tsv` with real
+   translations (agent / hand edit — **not** a Python fill script).
+4. `./scripts/check-ui-translations.sh --app <app>`
+   and/or `cargo test -p <crate> --lib every_catalogue_language_translates_every_key`
+
+`load_kumkaj_env` runs the bash check on every dev run and package. While a
+bulk fill is still running, `KUMKAJ_ALLOW_TRANSLATION_GAPS=1` skips the
+stop — never for a Store / AUR release. Aliases `pt-BR`→`pt`,
+`es-MX`→`es`, `yue`→`zh-Hant`, `gom`→`kok` need no TSV of their own.
 
 ## Development vs production env
 

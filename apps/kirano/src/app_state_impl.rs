@@ -2065,16 +2065,14 @@ impl AppState {
         self.split_pick.clear();
     }
 
+    /// Money-lane chip words in the UI language (`lane_*_label` keys). The
+    /// template's English copy stays for books / report text only.
     fn lane_declared_label(&self) -> String {
-        entity_template::resolve(&self.entity_template_id)
-            .lane_declared_label
-            .into()
+        self.t("lane_declared_label")
     }
 
     fn lane_owner_label(&self) -> String {
-        entity_template::resolve(&self.entity_template_id)
-            .lane_owner_label
-            .into()
+        self.t("lane_owner_label")
     }
 
     /// One-line “today” strip. Word prefixes and counts stay readable; only

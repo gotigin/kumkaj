@@ -1,0 +1,1351 @@
+# Romanian — Română (ro). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	Comenzi de restaurant, bucătărie și registre. Gratuit offline.
+unlock	Deblochează
+pin_hint	PIN-ul proprietarului începe cu 0000
+sell	Comandă
+buy	Cumpărare
+books	Jurnalul zilei
+books_help	Poziția de azi. Comandă = comenzi intrate. Cumpărare = achiziții și cheltuieli. Parteneri = clienți pe credit și furnizori.
+buy_help	Bonuri de cheltuieli și facturi de furnizor (bani ieșiți). Pe cont rămâne în registrul partenerului.
+sell_money_in	Preia o comandă
+buy_money_out	Cheltuială / factură furnizor
+record_purchase	Înregistrează achiziția
+add_expense	Bon de cheltuieli
+bank_book	Registru bancar
+credit_help	Id-ul partenerului este unic (numele se pot repeta). Un client ține un cont de credit (ne datorează); un furnizor ne vinde stoc (îi datorăm); ambele sunt în regulă. Registrele rămân separate; rapoartele arată netul.
+party_kind_ph	Roluri: Client, Furnizor, ambele…
+reports_help	Jurnalul zilei, debitori și creditori, registru bancar, bonuri de cheltuieli, profit și pierdere.
+reports_today	Jurnalul zilei (azi)
+reports_month	Profit și pierdere (lună)
+reports_aging	Restant / Debit-Credit
+reports_balance_sheet	Bilanț
+reports	Registru bancar și P&P
+refresh	Reîmprospătează
+undo	Anulează
+start_tracking	Începe urmărirea
+stock_minus	− Stoc
+stock_plus	+ Stoc
+settle_cash	Închide cu numerar
+settle_card	Închide cu cardul
+items	Meniu și articole
+nav_items	Meniu
+more	Mai mult
+your_items	Meniul tău
+items_help	Atinge un articol ca să-l editezi. Un articol nou golește formularul. Caută felurile noastre sau tastează propriul nume și poză, pune un preț (0 e în regulă), apoi Adaugă. Vânzările deja înregistrate păstrează numele cu care au fost taxate.
+add_item	Adaugă articol
+new_item	Articol nou
+adding_item	Se adaugă un articol nou
+editing_item	Editare
+save	Salvează
+remove	Elimină
+removed_items	Articole eliminate
+removed_help	Restaurarea pune articolul înapoi în meniu exact cum era — preț, poză și categorie. Raftul nostru de feluri nu se elimină niciodată, așa că un fel poate fi adăugat din nou oricând.
+restore_item	Restaurează
+empty_catalog	Încă nu sunt feluri. Deschide Meniul, adaugă un fel (nume + preț), apoi preia o comandă.
+total	Total
+cash	Numerar
+upi	UPI
+card	Card
+credit	Parteneri
+clear	Golește
+ready_to_sell	Gata de înregistrat
+today_prefix	Azi
+today_mid	azi
+owed	restant
+round_word	rotunjire
+back	Înapoi
+sold_out	Indisponibil
+restock	Reaprovizionează
+not_tracked	Neurmat
+in_stock	în stoc
+marked_sold_out	Marcat indisponibil
+add_upper	ADAUGĂ
+na	N/A
+qty	Greut./Cant.
+unit_at	Tarif @
+actual	Efectiv
+applied	Aplicat
+note_ph	Notă (opțional)
+rounded	ROTUNJIT
+split	Împarte
+send_kot	Trimite KOT
+send_kot_to	Trimite → {kitchens}
+send_kot_again	Adaugă feluri pentru următorul KOT
+send_kot_held	Feluri reținute — scoateți reținerea ca să trimiteți
+reprint_kot	Tipărește din nou cele selectate
+reprint_kot_ok	Tipărite din nou {n} feluri · {slips} bonuri → {kitchens}
+reprint_kot_needed	Trimite mai întâi un KOT — apoi include felurile și tipărește din nou selecția
+reprint_kot_none_selected	Fiecare fel trimis este sărit — atinge În tipar pe cele de retipărit
+reprint_kot_client	Retipărire ({n}) pentru {place} trimisă — bucătăria tipărește pe Server
+print_cancelled_kot	Tipărește toate anulatele
+print_cancelled_kot_ok	Tipărite {n} feluri anulate · {slips} bonuri → {kitchens}
+print_cancelled_kot_needed	Deschide mai întâi o masă cu feluri anulate
+print_cancelled_kot_none	Niciun fel anulat în această comandă
+print_cancelled_kot_client	Tipărire anulate ({n}) pentru {place} trimisă — bucătăria tipărește pe Server
+kot_banner	Banner de tip
+kot_banner_ph	Banner (gol = niciunul)
+kot_item_prefix	Prefix articol
+kot_item_prefix_ph	ex. [ANULAT]
+kot_strike	Taie numele felului
+kot_strike_note	Taie nota felului
+kot_strike_on	Pornit
+kot_strike_off	Oprit
+bill_item_layout	Așezare articole
+bill_item_layout_columns	Coloane
+bill_item_layout_stacked	Pe rânduri
+bill_item_header	Antete de coloane
+bill_item_hdr_item	Antet articol
+bill_item_hdr_qty	Antet cant.
+bill_item_hdr_price	Antet preț
+bill_item_hdr_amount	Antet sumă
+bill_item_name	Nume fel
+bill_item_qty	Cant.
+bill_item_price	Preț
+bill_item_amount	Sumă
+bill_item_note	Notă fel
+bill_item_col_gap	Spațiu coloane
+bill_item_col_order	Ordine coloane
+bill_item_col_sep	Linii coloane
+bill_item_gap_tight	Strâns
+bill_item_gap_comfort	Confortabil
+bill_item_gap_wide	Larg
+bill_item_num_width	Coloane numerice
+bill_item_num_compact	Compact
+bill_item_num_comfort	Confortabil
+bill_item_num_wide	Larg
+bill_item_num_align	Aliniere numere
+bill_item_gap_em	Spațiu (em)
+bill_item_qty_min	Cant. min (em)
+bill_item_price_min	Preț min (em)
+bill_item_amount_min	Sumă min (em)
+kot_item_qty_width	Coloană cant.
+kot_item_num_align	Aliniere cant.
+bill_total_qty_label	Etichetă cant. totală
+bill_total_subtotal_label	Etichetă subtotal
+bill_total_grand_label	Etichetă total general
+bill_total_paid_label	Etichetă total plătit
+bill_meta_pair	Împarte rândul cu
+bill_pair_alone	Singur
+bill_item_piece_on	Pornit
+bill_item_piece_off	Oprit
+bill_total_qty	Cant. totală
+bill_total_subtotal	Subtotal
+bill_total_grand	Total general
+reprint_incl	În tipar
+reprint_skip	Sari
+reprint_skip_meta	Sari tipărirea de recuperare
+kot_dest_hint	Se tipărește pe imprimantele atribuite pentru {kitchens} în Setări → Imprimante
+kot_sent_hint	Ultimul KOT a mers la {kitchens}. Atinge ca să adaugi feluri pentru următorul bon — sau tipărește din nou același KOT.
+kot_sent_printing	KOT trimis către {kitchens} — se tipărește
+kot_sent_not_printed	KOT trimis către {kitchens}, dar NU s-a tipărit: {why}. Spune bucătăriei, apoi repară imprimanta și tipărește din nou.
+kot_sent_screen	KOT trimis către {kitchens}
+kot_queued_shop	KOT pentru {place} → {kitchens} salvat; dispozitivul localului îl tipărește
+kot_job_label	KOT pentru {place} → {kitchens}
+kot_job_reached	KOT pentru {place} a ajuns la {kitchens}
+kot_unassigned	Bucătărie (fără stație)
+kot_unassigned_held	Reținute {n} feluri fără stație — scoateți reținerea pe rând ca să trimiteți
+kot_station_ph	Bucătărie
+kot_station_dd	Bucătărie
+kot_station_dd_n	Bucătărie · {stations}
+kot_set_station	Folosește această stație
+kot_station_applied	Stație setată pe {n} feluri: {station}
+kot_station_cleared	Stație scoasă de pe {n} feluri: {station}
+kot_station_needed	Alege mai întâi o stație de bucătărie
+kot_station_not_allowed	Nu ai voie să folosești bucătăria: {station}
+kot_station_none	Încă nu sunt stații de bucătărie — adaugă una la Bucătărie sau Setări → Zone · stații
+pos_tab_items	Articole adăugate
+pos_tab_payment	Plată
+hold_send	Reține
+hold_send_on	Reținut
+hold_send_meta	Reținut — nu în acest KOT
+station_remove	Elimină stația
+station_remove_ph	Atinge o stație din listă ca s-o elimini
+station_removed	Stație eliminată: {name}
+settings_hub_title	Setări
+settings_hub_help	Deschide câte o zonă — mai puțină derulare, alegeri mai clare.
+settings_back	Înapoi
+settings_sec_language	Limbă și monedă
+settings_sec_country	Țară și taxă
+settings_sec_tills	Alte dispozitive
+settings_sec_brand	Marca ta
+settings_sec_units	Unități și conversii
+settings_sec_pickers	Zone · stații · cote de taxă
+settings_sec_printers	Imprimante
+settings_sec_bill	Format notă și KOT
+settings_sec_selling	Scheme și vânzări
+bill_kot_tab_bill	Notă
+bill_kot_tab_kot	KOT
+settings_sec_alerts	Alerte
+alerts_help	Cât rămân mesajele de stare pe ecran pentru tine (această autentificare).
+snack_secs_ph	Secunde (3–60, implicit 10)
+snack_secs_save	Salvează timpul alertei
+snack_secs_saved	Timpul alertei salvat — {n} secunde
+settings_sec_backup	Copie de rezervă și restaurare
+settings_sec_diag	Diagnostic
+diag_privacy_help	Jurnalele rămân pe acest dispozitiv. Secretele (PIN, parole) nu sunt niciodată stocate. Partajarea unui pachet în afara dispozitivului cere de fiecare dată aprobarea ta explicită — nu se vinde și nu se dă terților.
+diag_level	Nivel de detaliu
+diag_level_error	Erori
+diag_level_warn	Avertismente
+diag_level_info	Informații
+diag_level_debug	Depanare
+diag_support_start	Începe o sesiune de asistență de 30 min
+diag_support_stop	Încheie sesiunea de asistență
+diag_support_started	Sesiune de asistență pornită — detaliu Depanare timp de 30 de minute
+diag_support_ended	Sesiunea de asistență s-a încheiat
+diag_export_local	Exportă copia locală
+diag_export_local_done	Diagnosticul local e gata la {path} — alege unde salvezi o copie
+diag_approve_send	Aprobă partajarea în afara dispozitivului
+diag_send_help	Aprobarea e pentru un pachet, apoi expiră. Temporar — doar ca să repari sau să îmbunătățești produsul. Nu se partajează cu terți. Merge pe Linux, Windows, macOS și Android.
+diag_send_approved	Partajare aprobată pentru un pachet (expiră curând)
+diag_export_send	Creează pachet de partajare (necesită aprobare)
+diag_export_send_done	Pachetul de partajare e gata la {path} — alege unde îl salvezi, apoi trimite-l doar la suportul Kumkaj
+diag_save_bundle	Salvează copia de diagnostic
+diag_bundle_saved	Copia de diagnostic salvată în {path}
+diag_bundle_failed	Copia de diagnostic nu s-a putut salva acolo — încearcă din nou
+diag_clear	Golește jurnalele de diagnostic
+diag_cleared	Jurnalele de diagnostic au fost golite
+sidebar_settings	Bară laterală
+sidebar_settings_help	Aceleași pictograme ca șina laterală. Trage un rând ca să reordonezi. Comută ca să arăți sau să ascunzi. Setări și Blocare rămân mereu pe bară.
+sidebar_always_on_short	Mereu pornit
+sidebar_back_settings	Înapoi
+sidebar_shown	Afișat
+sidebar_hidden	Ascuns
+sidebar_always_on	Mereu pe bară
+sidebar_shown_hint	Afișat pe șina laterală / filele de jos
+sidebar_hidden_hint	Ascuns de pe bară
+sidebar_menu_items	Meniu și articole
+sidebar_enable_all	Activează tot
+sidebar_disable_all	Dezactivează tot
+sidebar_order_saved	Ordinea barei laterale salvată
+sidebar_visibility_saved	Vizibilitatea barei laterale salvată
+amounts_hide	Ascunde
+amounts_show	Arată
+printers_none_hint	Salvează mai întâi o imprimantă pe acest dispozitiv, apoi adaug-o la Notă sau la o bucătărie
+counter	Tejghea
+dine_in	La masă
+takeaway	La pachet
+order	Comandă
+tables	Mese
+kitchen	Bucătărie
+sales	Vânzări
+sales_refunds	Vânzări și rambursări
+day_close	Închidere de zi
+reports_expenses	Registru bancar și P&P
+nav_reports	Rapoarte
+nav_settings	Setări
+nav_lock	Blochează
+no_sale_yet	Încă nicio vânzare
+favorites	Favorite
+favorites_help	Articole pe care le vinzi des, salvate pentru autentificarea ta. Adaugă unul la notă sau fă lista din toate articolele de mai jos.
+your_favorites	Favoritele tale
+all_items	Toate articolele
+frequent	Frecvente
+added_items	Articol(e) adăugat(e)
+added_items_empty	Încă nimic în această comandă — adaugă un fel din Toate articolele sau dintr-o categorie.
+frequent_config_help	Cele mai vândute feluri din notele închise. Setează câte zile să privești și câte feluri să arăți.
+frequent_days_ph	Zile (1)
+frequent_limit_ph	Articole (24)
+frequent_apply	Aplică
+frequent_saved	Frecvente: ultimele {d} zile, top {n} — {c} feluri
+frequent_empty	Încă nu sunt vânzări închise în această perioadă — închide o notă (₹0 e permis dacă Setările spun așa) și apar aici.
+zero_sales	Vânzări cu valoare zero
+zero_sales_help	Permite feluri cu preț ₹0 și note închise la ₹0 (din partea casei / dorința proprietarului). Pornit implicit ca acoperirile gratuite să apară totuși la Frecvente și în jurnalele zilei.
+zero_sales_on	Permite ₹0
+zero_sales_off	Cere preț
+zero_sales_saved_on	Vânzările cu valoare zero sunt permise
+zero_sales_saved_off	Vânzările trebuie să aibă un preț peste ₹0
+floor_areas_help	Zonele sunt săli sau părți ale sălii (La masă, La pachet, AC …). Adaugă mai întâi o zonă, apoi pune mese în ea — fiecare zonă e un grup separat pe sală.
+area_new_ph	Zonă / sală nouă (ex. AC, Grădină)
+add_area	Adaugă zonă
+area_added	Zona „{name}” e gata — adaugă mese în ea
+no_favorites	Încă nu sunt favorite — adaugă articole din lista de mai jos.
+add_to_bill	Adaugă la notă
+added	Adăugat
+owes_word	datorează
+selected_word	Selectat
+chip_clear_credit	golește — Credit sau ia un avans
+chip_missing_customer	Clientul selectat lipsește — alege din nou
+chip_no_customer	Încă niciun client — tastează un nume, apoi atinge Credit
+credit_summary_fmt	{} clienți · credit deschis {} · avansuri reținute {}
+recent_label	Recente:
+kot_new_waiting	NOU — așteaptă
+kot_preparing	SE PREGĂTEȘTE
+kot_ready_serve	GATA — servește
+kot_done_cap	GATA
+kot_cancelled	ANULAT
+kot_start_btn	Începe
+kot_mark_ready	Marchează gata
+kot_done_btn	Gata
+table_free	Liberă — atinge ca să începi o comandă
+start_order	Începe comanda
+open_bill	Deschide nota
+collect_payment	Încasează plata
+table_running	În curs
+payment_pending	Plată în așteptare
+collect_at_counter	încasează la tejghea
+inventory	Inventar
+inventory_stock	Inventar și stoc
+branches	Filiale
+branches_org	Filiale și organizație
+credit_customers	Parteneri (credit și furnizori)
+customer_name_ph	Nume partener
+new_customer_ph	Nume nou de partener
+item_name_ph	Nume articol (ex. Masala Dosa)
+item_price_ph	Preț
+start_template	Produs
+team	Echipă
+team_pins	Echipă și PIN
+my_pin_settings	PIN-ul meu
+settings_hub_help_my_pin	Schimbă PIN-ul de deblocare al persoanei conectate pe acest dispozitiv.
+team_self_help	O autentificare: un PIN nou, o parolă nouă sau ambele. Lasă o căsuță goală ca să păstrezi ce ai. Întreabă Proprietarul dacă ai nevoie de alte ecrane sau drepturi.
+backup_settings	Copie de rezervă și setări
+lock_app	Blochează aplicația
+pick	Alege
+select	Selectează
+advance	Avans
+owner	Proprietar
+staff	Personal
+photo	Poză
+auto	Automat
+prev	Înapoi
+next	Înainte
+ok	OK
+this_shop	Server
+extra_till	Client
+off	Oprit
+tables_kitchen	Mese și bucătărie
+server	Server
+client	Client
+language_currency	Limbă și monedă
+language	Limbă
+choose_language	Alege limba
+language_setup_hint	Urmează limba acestui dispozitiv sau alege tu una.
+lang_follow_platform	Limba dispozitivului
+lang_pick_user	Alege limba
+lang_platform_now	Limba dispozitivului acum
+selected_language	Selectat
+continue	Continuă
+this_device	ACEST DISPOZITIV
+device_use_q	Cum va fi folosit acest dispozitiv?
+last_server_mode	Era Server — atinge ca să continui
+last_client_mode	Era Client — atinge ca să continui
+choose_server	Alege un server
+choose_server_hint	Deschide un server existent sau creează unul pentru altă afacere.
+create_new_server	Creează server nou
+open_server	Deschide
+new_server_name_ph	Nume server nou (opțional)
+server_remove_pin_ph	PIN proprietar pentru a elimina un server
+only_owner_remove_server	Doar Proprietarul poate elimina un server
+owner_pin_remove_server	PIN-ul proprietarului e necesar ca să elimini acest server
+device_setup_help	Serverul ține registrele aici. Clientul se împerechează cu un Server.
+app_template_heading	Șablon aplicație Rajdhani
+app_template_blurb	Încarcă meniul Rajdhani; Proprietar Zahir (zahir), Admin Asif (asif, PIN 1111), Ospătar Nawaz (nawaz, PIN 0000); bară laterală FOH; istoricul se golește după 4 ore (și Golește acum în Copie de rezervă); banda Azi oprită; KOT compact + margini Standard pentru tăvi înguste. Vecinii barei laterale se pot reporni în Setări.
+app_template_apply	Șablon aplicație Rajdhani
+app_template_skip	Sari deocamdată
+app_template_status	Serverul e gata — aplică șablonul Rajdhani sau sari
+app_template_importing	Se aplică {title}…
+currency	Monedă
+backup	Copie de rezervă
+use	Folosește
+dont_use	Nu folosi
+add_branch	Adaugă filială
+add_conversion	Adaugă conversie
+add_dishes_items	Adaugă feluri și articole
+add_item_plain	Adaugă articol
+add_note	Adaugă notă
+add_opening_balance	Adaugă sold de deschidere
+add_staff	Adaugă personal
+add_station	Adaugă stație
+add_table	Adaugă masă
+add_unit	Adaugă unitate
+add_use_name	Adaugă / folosește acest nume
+allow_extra_tills	Permite case suplimentare
+amend	Modifică
+apply_country_pack	Aplică pachetul de țară
+datetime_appearance	Aspect dată și oră
+datetime_appearance_help	Registrele păstrează înăuntru anul primul, RFC3339. Astea schimbă doar cum arată datele și ceasurile pe note, KOT, rapoarte și ecran.
+datetime_example	Exemplu acum: {ex}
+date_order	Ordinea datei
+date_order_dmy	D/M/Y
+date_order_mdy	M/D/Y
+date_order_ymd	Y-M-D
+time_format	Ceas
+time_format_24h	24 de ore
+time_format_12h	12 ore
+attach_bill_photo	Atașează poza notei
+attach_pdf	Atașează PDF
+attach_photo	Atașează poză
+attachments_last_expense	Atașamente (ultima cheltuială)
+bank	Bancă
+bank_in	Intrare bancă
+bank_out	Ieșire bancă
+bank_reconciliation	Reconciliere bancară (bifați față de extrasul bancar)
+bank_to_till	Bancă → casă
+book_add_dish	Registru — adaugă fel / articol
+book_opening_credit	Registru — credit de deschidere
+branch_name_sell_ph	Numele filialei din care vinzi
+bring_my_book	Adu registrul meu
+business_tax_id_ph	Id fiscal al afacerii
+caption_bank	BANCĂ
+caption_bills	NOTE
+caption_outstanding	RESTANT
+caption_payments_today	PLĂȚI AZI
+caption_today	AZI
+card_amount_ph	Sumă card
+cash_amount_ph	Sumă numerar
+cash_memo	Notă de casă
+choose_icon	Alege pictograma
+choose_logo	Alege sigla
+clear_icon	Golește pictograma
+clear_photo	Golește poza
+copy_day_book_csv	Copiază jurnalul zilei CSV
+copy_day_close	Copiază închiderea de zi
+copy_items_csv	Copiază articolele CSV
+copy_outstanding_csv	Copiază restanțele CSV
+copy_parties_csv	Copiază partenerii CSV
+copy_party_ledger_csv	Copiază registrul partenerului CSV
+copy_receipt	Copiază chitanța
+share_whatsapp	Partajează WhatsApp
+lan_pages_heading	Pagini pentru oaspeți pe Wi‑Fi
+lan_pages_help	Pe Wi‑Fi-ul localului, paginile pentru oaspeți merg pentru panou, numere, expo, chioșc, QR de masă și feedback. Oaspeții pe date mobile au nevoie de Cloud mai târziu. Terminalul de card / linkul de plată e opțional când internetul merge — nu blochează niciodată tejgheaua.
+diag_send_heading	Partajează în afara dispozitivului
+kot_dest_heading	Stație de bucătărie
+optional_login_heading	Autentificare opțională
+rights_heading	Drepturi
+ops_panel	Operații locale
+crm_heading	Oaspeți și mesaje
+crm_help	Zi de naștere, loialitate, oaspeți inactivi și de top — coadă SMS sau WhatsApp. Folosește {name} și {points} în mesaj. Proprietarul apasă trimite; nimic nu pleacă singur.
+crm_queue_sms	Pune în coada SMS
+crm_queue_wa	Pune în coada WhatsApp
+crm_seg_bday_week	Săptămâna de naștere
+crm_seg_bday_month	Luna de naștere
+crm_seg_phone	Cu telefon
+crm_seg_loyalty	Loialitate
+crm_seg_inactive	Inactivi
+crm_seg_top	Cei mai cheltuitori
+birthday_ph	Zi de naștere (MM-DD sau YYYY-MM-DD)
+crm_message_ph	La mulți ani, {name}! Ai {points} puncte.
+till_apply_redeem	Aplică pe notă
+till_clear_redeem	Golește răscumpărarea
+till_wallet_topup	Încarcă portofelul
+till_issue_voucher	Emite voucher
+till_points_ph	Puncte de răscumpărat
+till_wallet_ph	Sumă din portofel de cheltuit
+till_voucher_code_ph	Cod voucher
+till_voucher_amt_ph	Sumă voucher (gol = tot)
+till_wallet_topup_ph	Sumă de încărcare a portofelului
+till_voucher_issue_amt_ph	Sumă voucher de emis
+till_voucher_issue_code_ph	Cod voucher nou
+split_evenly	Împarte egal
+waitlist	Listă de așteptare
+fire_course	Trimite felul
+hold_item	Reține
+waiter_call	Cheamă ospătarul
+waitlist_add	Adaugă în lista de așteptare
+floor_view_grid	Grilă
+floor_view_layout	Așezare
+floor_layout_x	X
+floor_layout_y	Y
+floor_layout_w	W
+floor_layout_h	H
+floor_layout_save	Salvează așezarea
+floor_layout_open	Deschide masa
+floor_layout_edit	Editează așezarea
+floor_layout_pick	Atinge o masă ca să-i editezi așezarea
+floor_layout_saved	Așezarea meselor salvată
+floor_layout_nudge_left	← 20
+floor_layout_nudge_right	→ 20
+floor_layout_nudge_up	↑ 20
+floor_layout_nudge_down	↓ 20
+sibling_pickers_help	Atinge Pornit/Oprit ca la unități — ascunde zone, stații și cote de taxă din listele zilnice; implicitele pachetului rămân.
+bulk_price_apply	Aplică prețul în masă
+card_terminal_optional	Terminal de card / link de plată (opțional când există internet)
+copy_report	Copiază raportul
+counted_cash_ph	Numerar numărat în sertar
+country_tax	Țară și taxă
+tax_chrome	Etichete de taxă la casă
+tax_chrome_help	Când e oprit, tejgheaua ascunde liniile de estimare GST/taxă și locurile taxei în preț. Cotele și setările Țară și taxă rămân — etichetele se pot reporni oricând. Șablonul Rajdhani începe cu asta oprit.
+tax_chrome_on	Arată
+tax_chrome_off	Ascunde
+tax_chrome_saved_on	Etichete de taxă la casă
+tax_chrome_saved_off	Etichetele de taxă sunt ascunse la casă
+tax_invoice_till	Factură fiscală la casă
+tax_invoice_help	Când e oprit, notele sunt doar Notă de casă, iar chipurile Factură fiscală / Notă de casă sunt ascunse la tejghea. Șablonul Rajdhani începe cu asta oprit — pornește Arată oricând ca să alegi din nou Factură fiscală.
+tax_invoice_on	Arată
+tax_invoice_off	Ascunde
+tax_invoice_saved_on	Factură fiscală la casă
+tax_invoice_saved_off	Factură fiscală ascunsă — doar Notă de casă
+pay_methods	Metode de plată
+pay_methods_help	Ce chipuri apar la Încasează plata. Numerarul rămâne mereu. Șablonul Rajdhani începe doar cu Numerar — repornește aici UPI / Card / Credit / Împarte.
+create_backup	Creează copie de rezervă
+credit_limit_heading	Limită de credit (partener selectat / numit)
+day_close_summary	Rezumatul închiderii de zi
+delete_party	Șterge partenerul selectat
+delivery	Livrare
+done_open_books	Gata — deschide registrele
+drawer_count	Numărătoare sertar (opțional)
+expense_heading	Cheltuială
+export_day	Exportă ziua
+extra_note_bill_ph	Notă suplimentară pe această notă / vânzare
+extra_note_expense_ph	Notă suplimentară pe ultima cheltuială
+extra_tills_heading	Case suplimentare
+other_devices_help_heading	Configurează alte dispozitive
+other_devices_help	Pe acest dispozitiv (Server): Alte dispozitive → Permite case suplimentare. Notează codul de împerechere și adresa Wi‑Fi. Atinge Permite altor dispozitive să se conecteze dacă apare. Pe un calculator, atinge Pornește cu acest calculator. Pe fiecare alt dispozitiv: instalează aplicația, alege Modul Client, Găsește serverul localului (sau tastează adresa), introdu codul de împerechere, Împerechează acum. Comenzile așteaptă pe dispozitiv dacă Wi‑Fi cade și pleacă când Serverul răspunde din nou. Imprimantele de bucătărie se setează pe Server (Setări → Imprimante) — casele suplimentare trimit KOT acolo.
+forget_shop	Uită acest local
+goods_received	Mărfuri primite
+import_day	Importă ziua
+import_items_csv_plain	Importă articole CSV…
+import_parties_csv	Importă parteneri CSV…
+item_name	Nume articol
+kitchen_printing	Imprimante
+login_id_ph	Nume de utilizator
+mark_cleared	Marchează decontat
+new_party_clear	Partener nou (golește formularul)
+new_party_kind_supplier_ph	Tip partener nou (Furnizor)
+next_country	Țara următoare
+next_order	Comanda următoare (golește tejgheaua)
+note_gstin_ph	Notă / GSTIN / memento de acord
+notes_attach_party	Note și atașamente (partener selectat)
+notes_attach_sale	Note și atașamente (vânzare selectată)
+on_account_ap	Pe cont (AP)
+org_optional_ph	Organizație (opțional)
+paid_by	Plătit de
+paid_now	Plătit acum
+pair_now	Împerechează acum
+pairing_code_ph	Cod de împerechere
+party_name_selected_ph	Nume partener (sau folosește cel selectat)
+password_ph	Parolă
+pay_ap_card	Plătește AP cu cardul
+pay_ap_cash	Plătește AP numerar
+pay_ap_heading	Plătește ce le datorăm (AP)
+pay_ap_upi	Plătește AP cu UPI
+pay_selected_heading	Plătește selecția (stinge datoria / ia avans)
+pick_from_items	Alege din articolele noastre
+prev_country	Țara anterioară
+print_open	Tipărește / deschide
+reason_amend_ph	Motiv pentru modificare / anulare / rambursare
+reason_note_ph	Motiv / notă (pierdere, numărare, …)
+record_day_close	Înregistrează închiderea de zi
+refresh_from_shop	Reîmprospătează din local
+refund	Rambursare
+remove_selected	Elimină selecția
+request_bill	Cere nota
+restaurant_name_ph	Nume restaurant (opțional)
+restore_backup	Restaurează copia de rezervă
+role_both	Ambele
+role_admin	Administrator
+role_cashier	Casier
+role_customer	Client
+role_manager	Manager
+history_retention	Istoric de tranzacții
+history_retention_help	Șterge automat vânzările și KOT-urile vechi. Meniul, personalul și setările rămân. Golește acum șterge toate rândurile de tranzacții și păstrează configurarea.
+history_off	Păstrează
+history_day_close	La închiderea zilei
+history_after_hours	După ore
+history_hours_ph	Ore (1–168, implicit 4)
+history_hours_save	Salvează orele
+history_clear_now	Golește istoricul acum
+history_cleared	Istoricul de tranzacții golit — configurarea păstrată
+history_retention_saved	Ștergerea istoricului salvată
+history_hours_saved	Orele istoricului salvate
+history_owner_only	Doar Proprietarul sau Administratorul poate goli istoricul
+rollup	Centralizare
+save_brand	Salvează marca
+save_business_id	Salvează id-ul afacerii
+save_business_name	Salvează numele afacerii
+save_features	Salvează
+save_features_named	Salvează {name}
+save_features_ok	Configurarea pentru {name} salvată
+save_names	Salvează numele
+second_way	A doua cale
+server_ip_ph	IP server (ex. 192.168.1.10)
+set_credit_limit	Aplică limita partenerului
+set_login_selected	Aplică autentificarea celui selectat
+set_login_named	Aplică autentificarea lui {name}
+shop	Local
+show	Arată
+spreadsheet_csv	Foaie de calcul (CSV)
+start_fresh	Începe de la zero
+stop_extra_tills	Oprește casele suplimentare
+floor_cols_ph	Coloane
+floor_cols_fit	Încadrează ecranul
+floor_cols_fit_sub	{n} încap aici
+floor_cols_fits	încape
+floor_cols_scroll	derulează în lateral
+floor_cols_min	Coloane: cel puțin 1 — sau lasă gol ca să încapă pe ecran
+floor_zoom_auto	Automat
+floor_zoom_out	Micșorează
+floor_zoom_in	Mărește
+backup_auto	Copie de rezervă automată în fiecare zi · ultima {when} · ultimele 14 zile se păstrează în {dir}.
+backup_auto_none	Copie de rezervă automată în fiecare zi — prima pornește într-o clipă.
+backup_copy_to	Copiile merg și în {dir}.
+backup_copy_btn	Copiază și copiile de rezervă într-un folder…
+autostart_off	Pornește cu acest calculator
+autostart_on	Pornește cu acest calculator ✓ — atinge ca să oprești
+autostart_done_on	Acest calculator deschide acum aplicația la pornire — serverul localului revine după o pană de curent.
+autostart_done_off	Acest calculator nu mai deschide aplicația la pornire.
+device_forgotten	Localul a uitat acest dispozitiv — împerechează-l din nou cu codul curent. Comenzile care așteaptă pe el se păstrează.
+lan_offline	Serverul localului e inaccesibil
+forget_device	Uită
+last_seen	văzut
+copy_pair_code	Copiază codul de împerechere
+new_pair_code	Cod nou de împerechere
+pair_finishing	Se termină împerecherea… se aplică registrele localului
+pair_opening	Se deschide casa…
+pair_copied	Cod de împerechere copiat
+kot_waiting	Așteaptă trimiterea
+lan_offline_waiting	Serverul e inaccesibil · {n} așteaptă
+lan_connecting	Se conectează la local…
+lan_live	În direct
+lan_sending	{n} se trimit
+lan_sign_in_to_send	Autentifică-te din nou ca să trimiți {n}
+lan_pair_again	Împerechează acest dispozitiv din nou
+lan_update_app	Actualizează aplicația — acest dispozitiv și serverul localului au versiuni diferite
+allow_firewall	Permite altor dispozitive să se conecteze
+firewall_blocked	Paravanul acestui calculator blochează alte dispozitive — atinge Permite altor dispozitive să se conecteze.
+firewall_waiting	Se așteaptă solicitarea administratorului…
+lan_join_help	Pe celălalt dispozitiv: Modul Client → Găsește serverul localului (sau tastează {addr}) → cod de împerechere {code}.
+lan_pair_status	Wi‑Fi {addr}
+lan_join_help_no_addr	Conectează acest dispozitiv la Wi‑Fi ca să aibă o adresă.
+lan_no_address	Încă nu e adresă Wi‑Fi — conectează-te la Wi‑Fi-ul localului.
+lan_not_listening	Nu acceptă dispozitive (portul {port} e ocupat). Repornește aplicația.
+lan_tills_off	Casele suplimentare sunt oprite. Permite-le ca să se alăture alt dispozitiv.
+paired_with	Împerecheat · {url}
+not_paired	Neîmperecheat
+choose_device_use	Alege Server sau Client.
+paired_note	Împerecheat. Deblochează ca să vinzi, sau Reîmprospătează pentru ultimele.
+last_update_at	Ultima actualizare: {time}.
+pair_intro	Găsește serverul sau tastează adresa și codul de împerechere.
+queue_waiting	Așteaptă să ajungă la local ({n}):
+queue_tries	Încercat de {n} ori · ultimul răspuns: {e}
+save_backup_copy	Salvează o copie de rezervă…
+backup_copy_saved	Copie de rezervă salvată — ține-o în afara acestui dispozitiv (un stick USB sau alt dispozitiv)
+backup_copy_overdue	De {n} zile nicio copie de rezervă n-a părăsit acest dispozitiv — Setări → Copie de rezervă
+backup_copy_failed	Copia de rezervă nu s-a putut salva acolo — alege alt loc
+clock_off	Ceasul acestui dispozitiv e decalat cu {min} min față de serverul localului — setează ora corectă
+printers_heading	Imprimante
+printers_help	Găsește imprimante, atinge una ca s-o selectezi, apoi Tipărește o pagină de test doar pe acel dispozitiv. Imprimante de note: Format notă și KOT → Notă. Imprimante de bucătărie: Bucătărie → Stații de bucătărie (adaugă mai întâi o stație — Căutarea nu creează stații).
+printers_host_only	Imprimantele se setează pe dispozitivul localului (Server). Această casă trimite note și KOT acolo — Căutare / adăugare / atribuire rămân pe Server. Pagina de test și mărimea tipăririi merg la Server.
+printers_find_heading	Găsește imprimante
+printers_find_tip	Căutarea scanează acest dispozitiv și ține lista la zi.
+printers_pool_heading	Imprimante
+printers_pool_tip	Căutarea scanează acest dispozitiv și ține această listă la zi.
+printers_pool_empty	(încă niciuna — atinge Căutare)
+printers_routes_help	Găsește imprimantele pe care sistemul de operare le cunoaște deja. Atribuie-le notei și fiecărei bucătării în Format notă și KOT.
+printer_assign_dd	Imprimantă reală: {place}
+printer_assign_pick	Alege imprimanta reală
+printer_profile_heading	Așezare
+printer_send_heading	Livrare
+vp_delivery_heading	Livrare
+vp_delivery_help	Cum trimite această imprimantă virtuală lucrările — document OS, octeți bruți sau ESC/POS. Conținutul bonului (mărime literă, înfășurare, margini) îl decide formatul notei / KOT, nu aici.
+vp_type_size_heading	Mărime literă
+vp_wrap_heading	Lățime de înfășurare
+vp_margin_heading	Margini
+vp_delivery_spooler	Document OS (spooler de sistem)
+vp_delivery_raw	Octeți bruți către dispozitiv
+vp_delivery_escpos	Comenzi termice ESC/POS
+virtual_printer_new	Imprimantă virtuală nouă
+virtual_printer_selected	Se editează „{name}” — atinge altul din listă ca să schimbi
+virtual_printer_tap_list	Atinge o imprimantă virtuală din listă ca s-o editezi
+config_layout_portrait	Portret
+config_layout_landscape	Peisaj
+config_send_os	Spooler de sistem
+config_send_escpos	ESC/POS
+profiles_heading	Așezări
+profiles_empty	(încă nicio așezare)
+profile_builtin	încorporată
+profile_custom	personalizată
+profile_name_ph	Nume așezare
+profile_new	Așezare nouă
+profile_delete	Șterge așezarea
+profile_created	Așezare creată
+profile_deleted	Așezare ștearsă
+profile_builtin_keep	Așezările încorporate nu se pot șterge
+config_saved	Actualizat
+config_selected	Selectat „{name}”
+printer_output_heading	Imprimante virtuale
+virtual_printers_heading	Imprimante virtuale
+virtual_printers_empty	Încă nu sunt imprimante virtuale — setează valorile mai jos, apoi Salvează. După ce ai, atinge una din listă ca s-o editezi.
+virtual_printer_name_ph	Nume imprimantă virtuală (opțional)
+virtual_printer_create	Creează imprimantă virtuală
+virtual_printer_save	Salvează imprimanta virtuală
+virtual_printer_delete	Șterge imprimanta virtuală
+virtual_printer_created	Imprimantă virtuală „{name}” creată
+virtual_printer_deleted	Șters imprimanta virtuală „{name}”
+virtual_printer_updated	Imprimantă virtuală actualizată
+virtual_printer_updated_named	Imprimantă virtuală „{name}” actualizată
+virtual_draft_layout	Valori setate pentru următoarea imprimantă virtuală
+virtual_draft_send	Valoare setată pentru următoarea imprimantă virtuală
+virtual_need_real	Alege mai întâi o imprimantă reală
+virtual_need_select	Alege o imprimantă virtuală de șters
+real_printer_selected	Selectat: {name}
+station_group_heading	Imprimante virtuale
+station_group_apply	Șterge imprimanta virtuală
+station_group_applied	Șters
+station_group_empty	Alege o imprimantă virtuală
+station_group_name_ph	Nume imprimantă virtuală (opțional)
+station_group_save	Creează imprimantă virtuală
+station_group_saved	Imprimantă virtuală salvată
+station_manage_heading	Adaugă sau elimină o stație de bucătărie
+printers_routes_heading	Unde se tipărește
+route_pick_heading	Loc
+route_editing	Se editează: {name}
+route_assigned	Adăugat {printer} la {place}
+route_already_assigned	Deja pe acest loc: {printer}
+route_removed	Eliminat {printer} din {place}
+route_cleared	Golit {name}
+route_assigned_empty	Nimic pe acest loc
+route_tap_remove	atinge pentru a elimina
+route_tap_select	atinge pentru a selecta
+route_tap_selected	selectat
+route_pick_printer_first	Atinge mai întâi o imprimantă
+route_assigned_heading	Imprimante
+route_add_heading	Atribuie
+printer_label_ph	Nume (ex. Bucătărie)
+printer_target_ph	Nume imprimantă de sistem sau host:9100
+printer_target_default	imprimanta obișnuită a acestui calculator (adresă goală)
+printer_wire_heading	Profil
+printer_wire_escpos	ESC/POS
+printer_wire_os	Portret
+printer_wire_os_portrait	Portret
+printer_wire_os_landscape	Peisaj
+printer_wire_escpos_short	ESC/POS
+printer_wire_os_short	Portret
+printer_wire_os_landscape_short	Peisaj
+printer_format_custom	Profil personalizat nou
+printer_format_custom_label	Personalizat
+printer_format_custom_added	Profil personalizat adăugat pentru acest loc
+add_printer	Adaugă imprimantă
+remove_printer	Elimină
+route_pick_ph	Notă sau o stație de bucătărie
+route_bill	Notă
+route_default_kitchen	Fără stație (feluri neatribuite)
+route_kot_station	Bucătărie
+route_dont_print	Nicio imprimantă
+stations_heading	Stații de bucătărie
+stations_help	Adaugă stații de bucătărie pentru feluri și KOT. Pe fiecare stație, atașează imprimantele (găsite la Setări → Imprimante), setează prioritatea și alege Prima care merge sau Tipărește pe toate. Schimbările se salvează pe loc — nu există buton Salvează.
+station_print_heading	Imprimante pentru această stație
+station_print_help	Alege o stație, apoi atașează una sau mai multe imprimante. ↑↓ setează ordinea de încercare. Prima care merge se oprește după primul succes; Tipărește pe toate trimite la fiecare imprimantă atașată. Fiecare schimbare se salvează imediat.
+station_print_pick_ph	Stație pentru setarea imprimantelor
+station_print_pick_first	Alege mai întâi o stație de bucătărie
+station_print_editing	Se editează imprimantele pentru „{name}”
+station_vps_dd	Imprimante pentru această stație
+station_vps_dd_n	{n} imprimantă(e) · atinge pentru a schimba
+station_vps_empty	Încă nu sunt imprimante — găsește-le la Setări → Imprimante
+bill_printers_dd	Imprimante pentru notă
+bill_printers_dd_n	{n} imprimantă(e) pentru notă · atinge pentru a schimba
+job_layout	Așezare
+job_delivery	Cum se trimite lucrarea
+job_delivery_help	Document OS, octeți bruți sau ESC/POS. Nota și bonul de bucătărie își păstrează fiecare pe al său. Orice lucrare poate merge la orice imprimantă salvată de Căutare.
+station_vp_attached	Imprimantă atașată
+station_vp_detached	Imprimantă eliminată de pe stație
+station_print_summary	{mode} · {n} imprimantă(e)
+station_print_summary_none	Încă nu sunt imprimante pe această stație — nu va tipări
+stations_none	Încă nu sunt stații — adaugă una mai jos. Articolele din meniu pot folosi o stație ca KOT să se tipărească acolo.
+route_up	Sus
+route_down	Jos
+route_remove	Elimină
+route_clear	Golește
+save_printers	Salvează imprimantele
+print_test_page	Tipărește o pagină de test
+no_printer_assigned	Nicio imprimantă
+test_page_no_printer	Nicio imprimantă pentru {place} — atașează o imprimantă, apoi încearcă din nou
+test_page_pick_first	Alege mai întâi imprimanta(ele) pentru o pagină de test — apoi Tipărește o pagină de test
+test_printers_dd	Imprimante pentru o pagină de test
+test_printers_dd_n	{n} imprimantă(e) pentru o pagină de test · atinge pentru a schimba
+kot_test_printers_dd	Imprimante pentru KOT de test
+kot_test_printers_dd_n	{n} imprimantă(e) pentru KOT de test · atinge pentru a schimba
+test_printer_picked	Test pe: {name}
+test_printer_cleared	Nu se testează pe: {name}
+test_page_sent_n	Pagină de test trimisă la {n} imprimantă(e)
+test_kot_pick_first	Alege mai întâi imprimanta(ele) pentru KOT de test — apoi KOT de test
+test_kot_sent_n	KOT de test trimis la {n} imprimantă(e)
+cancel_pick	Marchează
+cancel_pick_on	Marcat
+cancel_pick_meta	Marcat pentru anulare
+batch_cancel	Anulează marcatele
+batch_cancel_n	Anulează marcatele ({n})
+batch_cancel_none	Marchează mai întâi unul sau mai multe feluri trimise — apoi Anulează marcatele
+batch_cancel_title	Anulează felurile marcate — un motiv, un bon de anulare pe bucătărie
+batch_cancel_ok	{n} fel(uri) anulate · {slips} bon(uri) de anulare → {kitchens}
+batch_cancel_ok_noprint	{n} fel(uri) anulate — tipărirea automată KOT e oprită, deci niciun bon de anulare
+no_printer_kitchen_station	Nicio imprimantă pentru acea stație de bucătărie — Bucătărie → Stații de bucătărie → Imprimante pentru această stație
+printers_saved	Salvat
+test_page_sent	Pagină de test trimisă — verifică imprimanta
+test_page_sent_one	Pagină de test trimisă la {name} — verifică imprimanta aceea
+printers_found	Găsite {n}: {list}
+printers_find_synced	Găsite {n} — {new} noi
+printer_on_device	salvat
+printer_already_added	deja adăugat
+printer_already_saved	Deja salvat: {name}
+find_printers	Găsește imprimante
+printers_looking	Se caută…
+saving_printer	Se adaugă imprimanta…
+cancelled	Anulat
+printers_tap_find	Atinge Căutare ca să listezi imprimantele pe care le poate folosi acest dispozitiv.
+printers_none_found	Nimic găsit — tastează un nume de imprimantă de sistem sau un IP (ex. 192.168.1.50).
+printer_from_find	Adăugat {name}
+kot_printer_ph	Imprimantă pentru KOT
+bill_printer_ph	Imprimantă pentru note
+kot_print_on	Tipărire automată a bonurilor de bucătărie: Pornit
+kot_print_off	Tipărire automată a bonurilor de bucătărie: Oprit
+queue_refused	Neacceptat de local ({n}) — verifică fiecare la casă:
+clear_not_accepted	Verificat — golește lista asta
+device_name_ph	Numele acestui dispozitiv
+lan_last_update	ultima actualizare {time}
+lan_not_accepted	{n} neacceptate
+connected_now	conectat acum
+backup_failed	Ultima copie de rezervă automată a eșuat: {e}
+backup_overdue	Nicio copie de rezervă de {n} zile — ține aplicația deschisă pe acest dispozitiv ca să poată face backup.
+disk_low	Doar {mb} MB liberi pe acest dispozitiv — copiile de rezervă vor eșua curând. Eliberează spațiu.
+last_seen_devices	Văzut ultima dată: {time}
+sync_interval	Sincronizare la fiecare {secs} s
+connection_to_shop	Conexiune la local
+supplier_name_ph	Nume furnizor (sau partener)
+supplier_ph	Furnizor
+switch_device	Schimbă acest dispozitiv
+take_payment	Încasează plata
+tax_added_till	{tax} exclusiv
+tax_inside_price	{tax} inclus
+tax_invoice	Factură fiscală
+till_to_bank	Casă → bancă
+units_heading	Unități
+unlock_after_pairing	Introdu PIN
+unlock_with_login	Deblochează cu autentificare
+unmark	Demarchează
+update_my_password	Actualizează parola mea
+update_my_pin	Actualizează autentificarea mea
+duress_heading	PIN de deblocare de urgență (doar Proprietar)
+duress_help	Opțional. Dacă la deblocare se tastează acest PIN în locul tău, toate înregistrările din cărți se șterg (vânzări, registre, istoric) și casa se deschide ca Proprietar, arătând normal — meniul, prețurile, mesele, personalul și setările rămân. Schema și configurația nu se șterg. Folosește doar dacă ești forțat să deblochezi. Lasă gol și salvează ca să oprești. Niciodată același cu PIN-ul cuiva.
+duress_pin_ph	PIN de urgență (4–12 cifre)
+duress_confirm_ph	Tastează din nou pentru confirmare
+save_duress_pin	Salvează PIN-ul de urgență
+clear_duress_pin	Oprește PIN-ul de urgență
+duress_on	PIN-ul de deblocare de urgență e pornit
+duress_off	PIN-ul de deblocare de urgență e oprit
+duress_saved	PIN de deblocare de urgență salvat
+duress_cleared	PIN de deblocare de urgență oprit
+upi_amount_ph	Sumă UPI
+void	Anulează
+write_off_ap	Trece AP la pierdere
+write_off_heading	Trecere la pierdere (stingere fără plată)
+write_off_nil	Trecere la pierdere / sold zero
+your_brand	Marca ta (în aplicație)
+your_categories	Categoriile tale
+account_kind	Tip de cont (atinge unul)
+actual_total_cap	TOTAL REAL
+amend_help	Alege o vânzare de modificat, anulat sau rambursat. Modificările păstrează istoricul complet. Totalul rotunjit începe egal cu Aplicat — editează doar pentru rotunjire. Anularea și rambursarea pot cere PIN de Proprietar sau Manager (tastat mai sus; înregistrat cu numele tău).
+applied_total_cap	TOTAL APLICAT
+bank_balance	Sold bancar
+bank_net_today	Net bancar azi
+branch_export_help	Exportul scrie branch_snapshot_CODE_DATE.json în folderul de copii de rezervă și îl copiază în clipboard. Ca să imporți ziua altei unități, salvează fișierul ei ca import_branch_snapshot.json în același folder, apoi atinge Import.
+brand_shown_help	Se arată pe ecranele din aplicație. Numele și pictograma aplicației instalate pe acest dispozitiv rămân ca în lista platformei.
+app_icon	Pictogramă aplicație
+logo_help	Marcajul localului, opțional, pe ecranele din aplicație.
+onboard_layout	Ce primești
+item_photo_help	Opțional. Fără poză arătăm inițialele din numele articolului.
+stamp_heading	Ștampilă
+stamp_image_help	Imagine de ștampilă opțională pe notele tipărite și pe ecranul pentru oaspeți.
+payment_qr_heading	QR de plată
+payment_qr_image_help	QR static pe note și pe ecranul pentru oaspeți; altfel plata folosește un QR UPI dinamic din VPA de mai sus.
+cash_in_hand	Numerar în casă
+change_my_pin_heading	Autentificarea mea
+connect_to_server	Conectează-te la Server
+counter_locked	Casă 01 · Blocată
+country_pack_help	Un pachet de țară setează numele și calculul taxei, canalul de plată instant și identificatorul de firmă tipărit pe note. Kumkaj nu depune taxe și nu emite facturi electronice guvernamentale nicăieri.
+currency_use_help	Derulează și atinge Folosește pentru orice monedă acceptată.
+day_close_help	Înregistrarea închiderii zilei salvează acest rezumat (și diferența sertarului, dacă a fost numărată) în jurnalul de audit. Nu oprește vânzarea.
+expenses_word	Cheltuieli
+feature_access_help	Ce pot deschide — opțional; postul de mai sus setează deja o valoare implicită
+footer_local	SQLite local · Gratuit pentru totdeauna · Fără cloud
+fresh_book_khaynjo	Fresh = meniu gol (adaugi felurile mai târziu în Meniu). Book = scrie mai jos articolele de început și cine îți datorează.
+fresh_selected	Fresh selectat — catalogul rămâne gol. Atinge Gata când ești pregătit.
+gross_word	Brut
+how_start	Cum vrei să începi?
+kot_print_help_khaynjo	Când e Pornit, fiecare bucătărie tipărește propriul KOT imediat ce apeși Trimite.
+later_country_pack	Mai târziu: Setări → aplică pachetul de țară pentru etichetele de taxă și plată.
+local_badge	LOCAL
+mix_type_hint_khaynjo	Împarte la numerar / UPI / card / credit dacă e nevoie. Creditul cere un client deasupra.
+money_in_sales	Bani încasați (vânzări)
+net_word	Net
+offline_badge	DECONECTAT
+optional_login_help	Autentificare opțională (id + parolă). Proprietarul setează o dată; doar utilizatorul poate schimba parola mai târziu.
+or_unlock_login	Sau deblochează cu id de autentificare + parolă
+permission_preset	Post (setează ecrane și acțiuni cu bani)
+preset_help_khaynjo	Casier: vinde. Manager: vânzare + articole + anulare/modificare.
+product_locked_khaynjo	Khaynjo
+product_only_khaynjo	Această aplicație este doar Khaynjo — sistem de operare pentru restaurant. Celelalte meserii vin ca produse Kumkaj separate.
+purchases_cogs	Cumpărări (costul mărfurilor)
+qty_cap	CANT
+restore_help	Restaurare: alege o copie de rezervă. Cărțile se deschid cum erau atunci; cărțile de acum se salvează întâi, deci asta se poate anula.
+wipe_data_heading	Șterge datele locale
+wipe_data_help	Doar Proprietarul — aceleași alegeri ca la dezinstalarea Windows. Înregistrările de afaceri golesc istoricul de tranzacții, dar păstrează meniul și configurarea (ca PIN-ul de urgență). Configurarea localului elimină baza cărților. Preferințele de ecran golesc fereastra/limba. Confirmă cu PIN-ul Proprietarului. PIN-ul de urgență din Echipă e separat (ștergere discretă la deblocare).
+wipe_trading	Înregistrări de afaceri
+wipe_schema	Configurarea localului
+wipe_ui	Preferințe de ecran
+wipe_owner_pin_ph	PIN Proprietar pentru ștergere
+wipe_delete_selected	Șterge selecția
+wipe_owner_only	Doar Proprietarul poate șterge datele locale.
+restore_owner_only	Doar Proprietarul poate restaura o copie de rezervă.
+wipe_owner_pin_needed	Introdu PIN-ul Proprietarului ca să ștergi datele locale.
+wipe_nothing_selected	Alege mai întâi ce să ștergi.
+wipe_done	Datele locale selectate au fost șterse.
+wipe_schema_done	Configurarea localului a fost ștearsă — alege Server sau Client ca să continui.
+rounded_total	Total rotunjit
+setup_app_khaynjo	Configurează Khaynjo
+shop_logo_optional	Logo local (opțional)
+stock_type_help	Tastează numele articolului (o parte e de ajuns), o cantitate, apoi ajustează. Articolele care nu sunt numărate încă au nevoie o dată de Începe urmărirea.
+team_owner_help	Lasă persoana goală ca să adaugi pe cineva: nume, post, nume de utilizator, PIN și o parolă opțională, apoi Adaugă. Alege o persoană ca să editezi același fel de formular — nume, nume de utilizator, parolă, ecrane și drepturi — apoi Salvează. PIN-ul și parola ta sunt o singură autentificare jos. Proprietarul nu schimbă PIN-ul altcuiva.
+staff_name_ph	Nume angajat
+staff_copy_hire_ph	Copiază configurarea de la (opțional)
+staff_copy_hire	Folosește configurarea acestei persoane
+staff_edit_name_ph	Nume afișat
+staff_rename	Salvează numele
+staff_copy_edit_ph	Copiază configurarea de la altă persoană
+staff_copy_edit	Copiază configurarea lor peste cel selectat
+staff_copy_edit_onto	Copiază configurarea lor peste {name}
+staff_deactivate_named	Elimină {name}
+staff_renamed	Nume salvat
+staff_setup_copied_hire	Configurare copiată de la {name} — setează un nume și un PIN noi, apoi Adaugă angajat
+staff_setup_copied_edit	Configurarea lui {from} copiată peste {to}
+staff_copy_need_selected	Alege mai întâi pe cine editezi
+staff_copy_need_source	Alege a cui configurare se copiază
+staff_copy_same	E aceeași persoană — alege pe altcineva
+staff_rename_need_selected	Alege mai întâi pe cine redenumești
+team_pick_hint	Alege pe cine editezi — ecranele, drepturile la bani și stațiile de bucătărie apar doar pentru persoana aceea.
+team_stations_help	Stații de bucătărie pe care le pot folosi
+team_stations_changed	Stațiile de bucătărie s-au schimbat — Salvează configurarea pentru această persoană
+team_features_changed	Ecranele s-au schimbat — Salvează configurarea pentru această persoană
+team_rights_changed	Drepturile s-au schimbat — Salvează configurarea pentru această persoană
+they_owe_us	Ei ne datorează
+unit_at_cap	Unitate @
+units_help	Coduri pentru etichete de articol (kg, bucată, sac). Fiecare unitate trebuie să se lege — direct sau prin alte unități — de un standard (kg · cm · ml · pc), ex. 1 ladă = 2 cutii și 1 cutie = 20 cm. Conversii: 1 din = factor către. Monedele nu sunt niciodată unități.
+units_picker_help	Atinge Pornit/Oprit ca să arăți o unitate în alegătorile Cumpărare și Meniu. Unitățile oprite se convertesc în continuare.
+unit_picker_on	Pornit
+unit_picker_off	Oprit
+we_owe_them	Noi le datorăm
+who_unlocking	Cine deblochează?
+locked_word	Blocat
+show_pin	Arată PIN
+hide_pin	Ascunde PIN
+set_owner_pin	SETEAZĂ PIN PROPRIETAR
+enter_owner_passcode	INTRODU CODUL PROPRIETARULUI
+enter_staff_passcode	INTRODU CODUL PERSONALULUI
+pin_count_zero	0 / 12 cifre · cel puțin 4, apoi OK
+pin_count_need	{} / 12 cifre · mai trebuie {}
+pin_count_full	12 / 12 cifre · apasă OK
+pin_count_ready	{} / 12 cifre · apasă OK când ești gata
+pin_hint_choose	Alege 4–12 cifre · Enter sau Deblochează pentru salvare
+pin_hint_new	PIN Proprietar nou de 4–12 cifre · Enter sau Deblochează
+pin_hint_shop_code	Dispozitivul localului · cod de împerechere {}
+pin_hint_books	Acest dispozitiv ține cărțile
+pin_hint_paired	Casă suplimentară împerecheată — deblochează ca să vinzi
+pin_hint_pair_first	Casă suplimentară — împerecheaz-o întâi cu dispozitivul localului
+unlock_to_continue	Deblochează ca să continui
+no_staff_yet	Încă nu e personal — deblochează ca Proprietar, apoi Echipă
+status_server_set_pin	Mod Server — setează PIN-ul Proprietarului
+status_server_tills	Mod Server — casele suplimentare se pot alătura. Deblochează
+status_server_unlock	Mod Server — deblochează ca Proprietar
+status_client_unlock	Mod Client — deblochează ca să vinzi
+icon_new_selected	Pictogramă: fișier nou selectat — atinge Salvează marca
+icon_custom	Pictogramă: marcă proprie a localului
+icon_default	Pictogramă: marca Kumkaj (implicit) — alege una proprie
+logo_yours	Logo: logo-ul localului tău — se arată pe ecrane și chitanțe
+logo_default	Logo: marca Kumkaj (implicit) — alege-l pe al tău dacă ai
+tmpl_current	Curent: {} — {}
+tmpl_selected	Selectat: {} — {}
+setup_complete	Configurare completă
+onboard_fresh_tmpl	Fresh · {} — catalogul începe gol; adaugă articole în Articole, apoi Gata.
+onboard_book_tmpl	Book · {} — adaugă articole și credit de început, apoi Gata.
+onboard_template_tmpl	Pune numele locului dacă vrei, apoi alege cum să începi.
+tmpl_blurb	Mese, comenzi, bonuri de bucătărie, note și cărți.
+tmpl_how	Vinde la casă; Sală pentru mese și KOT; Cărți pentru jurnalul zilei.
+reports_facet_title	Rapoarte
+reports_facet_help	Jurnalele zilei, vechimea partenerilor, înregistrări bancare și profit și pierdere pe perioadă.
+against_bill_ph	La nota nr. de mai sus (opțional)
+aliases_ph	Aliasuri — alte nume, separate prin virgulă
+amount_blank_full_ph	Sumă (gol = soldul întreg)
+amount_owed_ph	Sumă datorată
+amount_ph	Sumă
+amount_received_ph	Sumă primită
+amount_we_pay_ph	Suma pe care o plătim
+business_name_ph	Numele firmei
+category_new_ph	Categorie (opțional, se creează dacă e nouă)
+code_bag_ph	Cod (sac)
+conv_factor_ph	Factor (25 = 1 sac → 25 kg)
+country_code_ph	Cod de țară ex. IN, GB, US, AE, BR
+credit_khata_amount_ph	Credit / sumă pe cont
+credit_limit_ph	Limită de credit (0 = niciuna)
+from_code_ph	Din cod (sac)
+item_name_lang_ph	Nume articol — scrie-l în limba ta
+login_id_opt_ph	Nume de utilizator (obligatoriu, unic)
+manager_pin_ph	PIN de manager pentru aprobare (doar dacă nu poți anula)
+new_branch_name_ph	Nume sucursală nouă
+new_password_ph	Parolă nouă (opțională)
+new_pin_ph	PIN nou (4–12 cifre)
+note_bank_ph	Notă (depunere, retragere, …)
+note_buy_expense_ph	Notă (combustibil, chirie, …)
+note_expense_ph	Notă (combustibil, birou, …)
+options_khaynjo_ph	Opțiuni — Mărime*: Mic=199, Mare=399 | Toppinguri+3: Brânză=40, Măslină=30 | Brânză extra=40
+part_second_way_ph	Parte pe o a doua cale (opțional)
+phone_ph	Telefon
+place_name_ph	Numele acestui loc
+qty_example_ph	Cant. (ex. 1.5 pentru kg)
+quantity_ph	Cantitate
+reason_required_ph	Motiv (obligatoriu)
+role_title_ph	Titlu rol (ex. Barista)
+service_pct_ph	Serviciu % opțional 0/10/12
+short_code_ph	Cod scurt (MG02)
+starting_password_ph	Parolă de început (opțională)
+starting_pin_ph	PIN de început (4–12 cifre)
+station_name_ph	Nume stație (ex. Tandoor, Friteuză, Rece)
+station_new_ph	Stație de bucătărie (opțional, ex. Tandoor — se creează dacă e nouă)
+table_name_ph	Nume masă (ex. Terasă 1, Tejghea 2)
+tax_rate_ph	Nume cotă sau % — Standard, Redus, 0, 5, 12, 18, 20
+to_code_ph	Către cod (kg)
+uncleared_no_ph	Necompensat nr. deasupra
+unit_cost_ph	Cost unitar
+unit_name_bag_ph	Nume (Sac)
+unit_plate_ph	Unitate (farfurie / pc — gol = bucată)
+pay_credit	Pe credit
+book_kind_today	Cărțile de azi
+book_kind_month	Cărțile lunii acesteia
+book_kind_aging	Neachitat / debit-credit
+book_kind_balance	Bilanț
+order_help	Atinge un articol ca să-l adaugi.
+floor_help	Atinge o masă ca să iei sau să schimbi comanda. Culorile arată liberă → așezată → bucătărie → gata → mănâncă → notă → plătită. Lista de așteptare, rezervările și adăugarea de mese sunt în secțiunile de mai jos.
+kitchen_help	Bonuri de bucătărie (KOT), cele mai noi la urmă. Start → Gata → Terminat mută bonul. Bonurile nu arată niciodată prețuri.
+kitchen_empty	Niciun bon deschis. Un KOT trimis din Comandă sau Sală apare aici.
+add_a_table	Adaugă o masă
+add_station_heading	Adaugă o stație de bucătărie
+categories_help	Atinge Folosește ca să pui articolul de mai sus în categoria aceea. Poza dă categoriei o imagine; fără ea se arată inițialele.
+dish_search_ph	Nume articol — caută felurile noastre sau scrie-l pe al tău
+tile_free	Liberă
+tile_occupied	Ocupată
+tile_food_ready	Mâncarea e gata
+tile_bill_printed	Nota tipărită
+tile_paid	Plătită
+tile_bill_btn	Notă
+tile_occupy_btn	Așază oaspeții
+tile_free_btn	Eliberează masa
+tile_ready_btn	Eliberează masa
+tile_undo_bill	Anulează nota
+summary_busy	mese ocupate
+summary_to_collect	de încasat
+summary_on_floor	în sală
+floor	Sală
+sizes_as_items_ph	Mărimi ca articole separate (opțional) — Jumătate=120, Întreg=200
+dish_group_ph	Grup de feluri (opțional) — ex. Paneer Tikka
+discount	Reducere
+remove_discount	Elimină reducerea
+apply_discount	Aplică reducerea
+save_opening_cash	Salvează numerarul de deschidere
+close_shift_print	Închide tura și tipărește bonul
+area_prices_ph	Prețuri pe zonă (opțional) — Climatizat=220, La pachet=210
+discount_ph	10% sau 50
+discount_reason_ph	Motiv (ex. oaspete obișnuit, mâncare întârziată)
+opening_float_ph	Bani puși în sertar azi-dimineață
+shift_counted_ph	Bani numărați la predare
+opening_float	Numerar de deschidere (fond)
+shift_handover	Predare de tură
+shift_since	Tura aceasta de la
+expected_in_drawer	Așteptat în sertar
+right_discount	Dă o reducere
+floor_in_kitchen	În bucătărie
+floor_eating	Servit
+pick_category	Alege o categorie
+close_category_list	Închide lista de categorii
+new_category_row	Categorie nouă — se creează când salvezi articolul
+your_category	Categoria ta
+suggested_category	Sugerată — din felurile noastre
+category_search_ph	Categorie — caută ale tale sau scrie una nouă
+line_sent_state	Trimis la bucătărie
+line_nc_state	Din partea casei (NC) — nefacturat
+cancel_item_short	Anulează
+nc_short	NC
+charge_again_short	Încasează
+move_short	Mută
+cancel_item_title	Anulează acest articol — bucătăria primește un bon de anulare
+nc_item_title	Fă acest articol din partea casei (NC)
+charge_again_title	Încasează acest articol din nou
+move_item_title	Mută acest articol la altă masă
+already_cooked	Deja gătit (risipă)
+not_cooked_yet	Încă negătit
+return_to_customer	Înapoiază clientului
+short_by	Lipsește
+tip_not_sale	Bacșiș (al personalului, nu e vânzare)
+right_settle	Încasează plata
+right_cancel_sent	Anulează un articol trimis
+right_complimentary	Din partea casei (NC)
+right_move_table	Mută / unește mese
+right_reprint	Tipărește nota din nou
+right_allowed	Permis
+right_with_approval	Cu aprobare
+right_denied	Nepermis
+editing_staff	Se editează
+finding_server	Se caută serverul localului pe acest Wi‑Fi…
+no_server_found	Nimic găsit. Pe Server: Setări → Alte dispozitive → Permite case suplimentare (același Wi‑Fi). Sau tastează IP-ul afișat acolo.
+servers_found_pick	Atinge localul la care vrei să te conectezi.
+server_host_selected	Se folosește {host} — introdu codul de împerechere, apoi Împerechează acum.
+print_bill	Tipărește nota
+table_actions	Acțiuni masă
+move_merge_table	Mută / unește masa
+move_help	Mută comanda acestei mese la o masă liberă sau unește-o cu una în curs.
+move_target_ph	Nume masă (ex. D5, P2)
+approval_pin_ph	PIN de manager (doar dacă se cere)
+move_here	Mută aici
+merge_into	Unește în ea
+line_reason_ph	Motiv (ex. oaspetele s-a răzgândit, lipsă stoc)
+line_qty_ph	Câte se anulează (gol = toate)
+line_target_ph	Mută la masa (ex. D5)
+confirm	Confirmă
+menu_search_ph	Caută articol sau cod scurt
+customer_paid_ph	Clientul a plătit
+tip_ph	Bacșiș
+table_area_ph	Zonă (ex. În local, La pachet, Climatizat)
+table_range_ph	Multe deodată: D1-D20
+add_these_tables	Adaugă aceste mese
+remove_these_tables	Elimină aceste mese
+table_remove_ph	Elimină: T1-T24 sau numele unei mese
+find_server	Găsește serverul localului
+bill_format	Format notă
+bill_format_help	Tipărit sub numele restaurantului pe fiecare notă. Separă rândurile cu | (ex. MG Road, Rajkot | Tel 98250 00000).
+bill_header_ph	Adresă | telefon
+fssai_ph	Nr. licență FSSAI (India)
+bill_footer_ph	Subsol (ex. Mulțumim, reveniți)
+save_bill_format	Salvează formatul notei
+reset_bill_format	Resetează la implicit
+bill_format_reset	Formatul notei a fost resetat la implicit
+reset_kot_format	Resetează la implicit
+kot_format_reset	Formatul KOT a fost resetat la implicit
+kot_format	Format KOT
+kot_format_help	Atinge un câmp din listă. Afișare, mărime font și grosime se aplică acelui câmp pe tipul de KOT selectat mai sus. Fiecare tip își păstrează mărimile și grosimile.
+kot_format_fields	Câmpuri
+kot_field_next	Câmpul următor
+kot_field_show	Afișează
+kot_field_hide	Ascunde
+kot_field_on	afișează
+kot_field_off	ascunde
+kot_field_size	Mărime font
+kot_field_size_ph	ex. 16, 20, 24, 28, 32…
+kot_weight_light	Subțire
+bill_kot_panel_help	Așezarea notei și a bonului de bucătărie, fiecare cu lățimea ei de conținut. Casierul notei e cine a emis sau a închis nota; Chelnerul KOT e cine a trimis bonul acela de bucătărie — povestea completă a comenzii rămâne în cărți.
+std_size_ph	ex. 18, 20, 26…
+kot_show_shop	Numele localului
+kot_hide_shop	Ascunde localul
+kot_show_time	Ora
+kot_hide_time	Ascunde ora
+kot_show_waiter	Chelner
+kot_hide_waiter	Ascunde chelnerul
+kot_show_station	Stație
+kot_hide_station	Ascunde stația
+kot_show_table	Masă
+kot_hide_table	Ascunde masa
+kot_show_kot_no	KOT nr.
+kot_hide_kot_no	Ascunde KOT nr.
+kot_width	Înfășurare previzualizare (setează lățimea conținutului în fila KOT)
+kot_width_58	58 mm
+kot_width_80	80 mm
+kot_kind_heading	Tip KOT
+kot_kind_original	Exemplar
+kot_kind_duplicate	Duplicat
+kot_kind_modified	Modificat
+kot_kind_cancelled	Anulat
+kot_style_heading	Mărime și grosime câmp
+kot_style_title	Titlu
+kot_style_item_qty	Articol · Cant.
+kot_style_field_pick	Alege câmpul
+kot_weight_regular	Obișnuit
+kot_weight_bold	Aldin
+kot_align	Aliniere
+kot_align_start	Început
+kot_align_center	Centru
+kot_align_end	Sfârșit
+content_width	Lățime conținut (mm)
+content_width_bill	Lățime conținut notă (mm)
+content_width_kot	Lățime conținut KOT (mm)
+content_width_ph	Sau tastează o lățime de conținut, 40–210 mm
+content_width_help	Cât de lat se tipărește acest bon. Nota și KOT își păstrează fiecare lățimea.
+content_width_bill_help	Cât de lată se tipărește nota oaspetelui. Implicit 210 mm (pagină). 58 mm bon îngust, 80 mm bon lat, 112 mm 4 inci, 210 mm lățime A4. Tastează orice valoare de la 40 la 210. Bonurile de bucătărie au lățimea lor în fila KOT.
+content_width_kot_help	Cât de lat se tipărește bonul de bucătărie. Implicit 80 mm. 58 mm îngust, 80 mm lat, 112 mm 4 inci, 210 mm pagină. Tastează de la 40 la 210. Notele oaspeților au lățimea lor în fila Notă.
+vp_paper_width	Lățime conținut (mm)
+vp_paper_width_ph	Sau tastează o lățime de conținut, 40–210 mm
+vp_paper_width_help	Lățimea conținutului se setează la Format notă și KOT — separat pentru notă (implicit 210 mm) și bonul de bucătărie (implicit 80 mm).
+kot_size	Mărime font
+kot_size_s	Mic
+kot_size_m	Obișnuit
+kot_size_l	Mare
+std_size	Mărime font
+kot_copies	Copii
+kot_copies_1	1
+kot_copies_2	2
+kot_copies_3	3
+kot_title_ph	Titlu (gol = KOT - KITCHEN ORDER)
+kot_footer_ph	Notă de bucătărie (opțional, fără prețuri)
+kot_preview	Previzualizare
+save_kot_format	Salvează formatul KOT
+test_kot_format	KOT de test
+test_kot_sent	Previzualizarea bonului de bucătărie a fost trimisă
+test_bill_format	Notă de test
+test_bill_sent	Previzualizarea notei a fost trimisă
+test_print_no_printer	Nicio imprimantă pentru lucrarea aceea — alege una pe acest ecran
+kot_format_saved	Format KOT salvat
+std_print	Mărime tipărire notă
+std_print_help	Mărime font pentru lucrări de notă Portret și Peisaj standard pe imprimante OS / document (introdu puncte — nu Mic/Obișnuit/Mare). Aceeași mărime în ambele orientări. Mărimile bonului de bucătărie sunt în fila KOT.
+std_size_s	Mic
+std_size_m	Obișnuit
+std_size_l	Mare
+save_std_print	Salvează mărimea de tipărire a notei
+std_print_saved	Mărimea de tipărire a notei a fost salvată
+print_brand_kit	Set de marcă pentru tipărire
+print_brand_kit_help	Ștampilă și QR de plată opționale pe fața notei și pe ecranul pentru oaspeți din LAN. QR-ul UPI dinamic din VPA de mai sus funcționează în continuare când nu e setată o imagine QR de plată.
+choose_stamp	Alege ștampila
+clear_stamp	Golește ștampila
+stamp_set	Ștampilă: în fișier — se arată pe ecranul pentru oaspeți și e numită pe notele tipărite
+stamp_none	Ștampilă: niciuna
+choose_payment_qr	Alege QR de plată
+clear_payment_qr	Golește QR de plată
+payment_qr_set	QR de plată: în fișier — se arată pe ecranul pentru oaspeți (înlocuiește acolo QR-ul UPI al sumei)
+payment_qr_none	QR de plată: niciunul — QR de sumă din ID UPI la plată
+aggregator_import	Comenzi agregator (fișier)
+aggregator_import_help	Import local opțional: pune import_aggregator_orders.json în folderul de copii de rezervă (tablou sau {"orders":[…]}), apoi atinge Import. Nu blochează niciodată casa; Zomato/Swiggy live este Cloud.
+import_aggregator_file	Importă fișier agregator
+team_pick_ph	Personal de editat — nume, nume de utilizator sau alege
+select_staff	Selectează acest angajat
+rights_help	Acțiuni cu bani și sală pentru această persoană — atinge ca să ciclezi: Permis → Trebuie PIN-ul șefului → Nepermis. Tipărește nota din nou e doar pentru note; stațiile de bucătărie sunt lista de mai jos.
+dish_picker_help	Caută sau răsfoiește felurile noastre și atinge unul ca să completezi numele și poza — sau păstrează numele tău. Setează prețul (0 e în regulă), apoi Adaugă articol.
+close_dish_list	Închide lista de feluri
+own_item_name	Folosește asta ca nume propriu de articol
+on_your_menu	În meniul tău
+edit	Editează
+schemes	Scheme / oferte
+schemes_help	BOGO, reducere procentuală și combo-uri fixe. Combo-urile se desfac în linii de bucătărie la Trimite KOT; componentele rămân reținute până pornește combo-ul. Exemplu: Cumpără 2 Thali primești 1 Chaas
+scheme_bogo_ph	Cumpără 2 Thali primești 1 Chaas
+add_scheme	Adaugă BOGO
+schedule_ph	Ore / oră fericită — Lu-Vi 07:00-11:00 sau HappyHour 17:00-19:00=150
+upi_vpa_ph	ID UPI (VPA)
+upi_payee_ph	Nume beneficiar UPI (opțional)
+upi_qr	UPI QR
+show_upi_qr	Arată UPI QR
+close_upi_qr	Închide
+upi_qr_help	Oaspetele scanează și plătește. După plată atinge Încasează plata. Al doilea ecran: deschide URL-ul Server /display în LAN.
+kot_recall	Reia
+recently_done	Gata de curând
+recall_kot_ph	KOT # de reluat
+role_help_customer	Rol: Client — cont (ei ne datorează). Același partener poate și furniza stoc.
+role_help_both	Roluri: Client + Furnizor — un partener, cont și registre de plată, net în Rapoarte.
+role_help_supplier	Rol: Furnizor — le datorăm pentru cumpărături.
+dine_in_pick_table	În local — alege o masă în Sală
+choose_table	Alege o masă
+change_table	Schimbă masa
+pick_table_banner	Alege o masă pentru comanda asta
+items_word	articole
+items_section	Articole
+back_to_order	Înapoi la comandă
+new_items_head	Încă netrimis
+price_ph	Preț
+price_ph_gst_inside	Preț ({tax} inclus)
+cancel_needs_table	Deschide comanda asta din Sală (o masă) ca să anulezi după ce o are bucătăria — KOT-urile de la casă rămân pe bon până încasezi
+tax_rates_missing_hint	Nicio cotă {tax} pe aceste feluri — în Meniu setează Cota de taxă (prețurile includ deja {tax} la {tax} inclus)
+taxable_value	Valoare impozabilă
+gst_inside_price_note	({tax} inclus)
+start_with_template	Începe cu șablonul nostru de meniu
+template_heading	Șablonul nostru de meniu
+template_info	{c} categorii și {d} feluri cu poze, gata de adăugat. Prețurile încep de la ₹0 — setează-le pe ale tale după.
+template_import	Importă șablonul complet
+template_confirm	Adaugi {d} feluri cu categoriile lor? Felurile pe care le ai rămân cum sunt.
+template_yes	Da, importă
+template_importing	Se importă meniul…
+template_import_progress	Se importă… {d}/{t}
+template_done	Fiecare fel din șablonul nostru e în meniul tău.
+template_imported	Adăugate {d} feluri și {c} categorii — setează prețurile pe acest ecran
+client_template_heading	Meniul clientului
+client_template_info	{title}: {c} categorii, {d} feluri cu prețuri, poze și aliasuri. Doar felurile lipsă — numele pe care le ai rămân.
+client_template_import	Importă meniul ăsta
+client_template_confirm	Adaugi {d} feluri din {title}? Felurile pe care le ai rămân cum sunt.
+client_template_importing	Se importă {title}…
+client_template_done	Fiecare fel din {title} e în meniul tău.
+client_template_imported	Adăugate {d} feluri și {c} categorii din {title}
+resv_heading	Rezervări
+resv_name_ph	Nume oaspete
+resv_phone_ph	Telefon (opțional)
+resv_guests_ph	Oaspeți
+resv_when_ph	Când — 20:30, mâine 13:00
+resv_table_ph	Masă (opțional)
+resv_add	Rezervă
+resv_seat	Așezat
+resv_none	Nicio rezervare în curând.
+guests_word	oaspeți
+delivery_by_ph	Livrare de (nume curier sau personal)
+kitchen_all_day	De gătit acum: {items}
+kitchen_all_day_head	De gătit acum
+kitchen_tab_live	În direct
+kitchen_tab_recall	Reia
+kitchen_tab_stations	Stații
+split_bill	Împarte nota
+split_go	Fă notă separată
+cancel	Anulează
+opening_client	Se deschide clientul…
+preparing_desk	Se pregătește tejgheaua…
+opening_server	Se deschide serverul…
+creating_server	Se creează serverul…
+split_help	Atinge felurile pe care le plătește un oaspete · {n} alese
+split_send_first	Trimite mai întâi KOT — doar felurile pe care le are bucătăria pot merge pe o notă separată
+split_pick_some	Atinge mai întâi felurile pentru nota separată
+split_done	Notă separată făcută — e în sală lângă masa asta
+split_marked	notă separată
+order_empty_pick	Comanda e goală — atinge Adaugă feluri mai sus ca să alegi.
+add_dishes	Adaugă feluri
+order_so_far	În comanda asta: {n} · {total}
+no_dish_match	Niciun fel nu se potrivește cu „{q}”
+pick_dishes_help	Atinge un fel ca să-l adaugi · alege o categorie ca să îngustezi lista
+pick_done	Gata
+pick_done_dd	Gata · {label}
+printer_route_mode	Dacă sunt mai multe imprimante pe acest loc
+printer_mode_first	Prima care merge
+printer_mode_all	Tipărește pe toate
+kot_show_area	Zonă
+kot_hide_area	Ascunde zona
+kot_show_item_hdr	Articol · Cant.
+kot_hide_item_hdr	Ascunde coloanele
+kot_show_title	Linie de titlu
+kot_hide_title	Ascunde titlul
+kot_field_order	Ordine de tipărire
+kot_field_up	Mută în sus
+kot_field_down	Mută în jos
+kot_field_cycle	Alege următorul
+kot_field_select	Alege următorul
+kot_field_time	Ora
+kot_field_kot_no	KOT nr.
+kot_field_area	Zonă
+kot_field_table	Masă
+kot_field_shop	Numele localului
+kot_field_waiter	Personal
+kot_field_station	Stație
+app_template_blurb_extra	De asemenea: Proprietar Zahir, Administrator Asif, Chelner Nawaz; bară laterală FOH; istoric după 4 ore; banda Azi oprită; KOT compact.
+dishes_n	{n} feluri
+recipe_ph	Rețetă (opțional) — o porție folosește: Orez=0.2, Paneer=0.15
+reorder_ph	Cumpără mai mult de la
+set_reorder	Setează nivelul de recomandă
+low_stock_alert	Se termină — cumpără curând: {items}
+unpriced_note	{n} feluri din meniul tău n-au încă preț — se facturează cu 0 până setezi unul.
+show_unpriced	Arată doar felurile fără preț
+show_all_dishes	Arată toate felurile
+role_waiter	Chelner
+role_kitchen	Bucătărie
+role_title_rest_ph	Titlu rol (ex. Căpitan, Bucătar-șef)
+preset_help_rest	Chelner: ia comenzi și ține mesele. Casier: ia și plata. Bucătărie: ecranul bucătăriei. Manager: și meniul, anulări și reduceri.
+kind_raw	Materie primă
+kind_resale	Cumpărat și revândut
+kind_dish	Fel pe care îl facem
+buy_unit_ph	Unitate (kg, litru, buc)
+add_another_way	+ Adaugă alt mod
+parts_status	Introdus {a} din {b} · au rămas {c}
+save_expense	Salvează cheltuiala
+rest_ph	Restul
+low_badge	Scăzut
+stock_empty	Încă nimic în stoc — ce înregistrezi la Cumpărare apare aici.
+recent_changes	Modificări recente
+lane_declared_label	Factură fiscală
+lane_owner_label	Notă de casă
+money_lane_bill	Notă: {lane}

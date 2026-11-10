@@ -1,0 +1,1341 @@
+# Georgian — ქართული (ka). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	სააფთიაქო დახლი: მედიკამენტები, პარტია, ხატა და წიგნები. უფასო ხაზგარეშე.
+barcode_ph	შტრიხკოდი / EAN
+composition_ph	მარილი / შემადგენლობა (საძიებელი)
+schedule_h_off	განრიგი H — გამორთულია (მფლობელის დროშა)
+schedule_h_on	განრიგი H — ჩართულია (მფლობელის დროშა)
+rx_expected_off	Rx მოსალოდნელია — გამორთულია (მფლობელის დროშა)
+rx_expected_on	Rx მოსალოდნელია — ჩართულია (მფლობელის დროშა)
+rx_note_ph	რეცეპტის შენიშვნა (არასავალდებულო - თქვენი ფორმულირება)
+batch_ph	პარტია No.
+expiry_ph	ვადა (წწწ-თთ-დდ)
+expiry_alerts	ვადის გასვლის გაფრთხილებები (შემდეგი 7 დღე)
+expiry_none	არცერთი პარტია არ იწურება მომდევნო 7 დღის განმავლობაში.
+rx_nudge	მფლობელმა მონიშნული Rx / განრიგი H — დაამატეთ შენიშვნა საჭიროების შემთხვევაში.
+unlock	განბლოკვა
+pin_hint	მფლობელის PIN თავიდან 0000-ია
+sell	გაყიდე
+buy	შესყიდვა
+books	დღის წიგნი
+books_help	დღევანდელი პოზიცია. გაყიდვა = ფული. ყიდვა = შესყიდვები და ხარჯები. მხარეები = საკრედიტო კლიენტები და მომწოდებლები.
+buy_help	ხარჯის ორდერები და მომწოდებლის ანგარიშები (გამავალი ფული). ანგარიშზე დარჩენილი რჩება მხარის წიგნში.
+sell_money_in	მედიკამენტების გაყიდვა
+buy_money_out	ხარჯი / მომწოდებლის ანგარიში
+record_purchase	შესყიდვის ჩაწერა
+add_expense	ხარჯის ორდერი
+bank_book	საბანკო წიგნი
+credit_help	მხარის იდ უნიკალურია (სახელები შეიძლება განმეორდეს). მომხმარებელს აქვს khata (გვმართებს); მომწოდებელი გვყიდის მარაგს (ჩვენ ვმართებთ); ორივე შეიძლება. წიგნები ცალკე რჩება; ანგარიშები აჩვენებს წმინდას.
+party_kind_ph	როლები: მომხმარებელი, მომწოდებელი, ორივე…
+reports_help	დღის წიგნი, დებიტორები და კრედიტორები, საბანკო წიგნი, ხარჯის ორდერები, მოგება და ზარალი.
+reports_today	დღის წიგნი (დღეს)
+reports_month	მოგება და ზარალი (თვე)
+reports_aging	გადაუხდელი / დებეტ-კრედიტ
+reports_balance_sheet	ბალანსი
+reports	საბანკო წიგნი და მ/ზ
+refresh	განახლება
+undo	გაუქმება
+start_tracking	აღრიცხვის დაწყება
+stock_minus	− მარაგი
+stock_plus	+ მარაგი
+settle_cash	ნაღდით დახურვა
+settle_card	ბარათით დახურვა
+items	Წამლები
+nav_items	Წამლები
+more	კიდევ
+your_items	თქვენი მედიკამენტები
+items_help	შეეხეთ ერთეულს მის რედაქტირებისთვის. ახალი ელემენტი ასუფთავებს ფორმას. მოძებნეთ სახელი ან მოკლე კოდი, დააყენეთ ფასი (0 კარგია), შემდეგ დაამატეთ. უკვე დაფიქსირებული გაყიდვები ინახავს სახელს, რომლითაც მათ ბრალი ედებოდათ.
+add_item	პოზიციის დამატება
+new_item	ახალი პოზიცია
+adding_item	ემატება ახალი პოზიცია
+editing_item	რედაქტირება
+save	შენახვა
+remove	ამოღება
+removed_items	ამოღებული პოზიციები
+removed_help	აღდგენა აბრუნებს ნივთს Items-ში ზუსტად ისე, როგორც იყო — ფასი, ფოტო და კატეგორია.
+restore_item	დაბრუნება
+empty_catalog	ჯერ არ არის წამლები. გახსენით მედიკამენტები, დაამატეთ სახელი, შტრიხკოდი ან მარილი, შემდეგ გაყიდეთ.
+total	ჯამი
+cash	ნაღდი
+upi	UPI
+card	ბარათი
+credit	მხარეები
+clear	გასუფთავება
+ready_to_sell	მზადაა ჩასაწერად
+today_prefix	დღეს
+today_mid	დღეს
+owed	გადაუხდელი
+round_word	დამრგვალება
+back	უკან
+sold_out	არ არის
+restock	მარაგის შევსება
+not_tracked	არ აღირიცხება
+in_stock	მარაგში
+marked_sold_out	მონიშნულია როგორც არ არის
+add_upper	დამატება
+na	არ არის
+qty	წონა/რაოდ.
+unit_at	ტარიფი @
+actual	ფაქტი
+applied	გამოყენებული
+note_ph	შენიშვნა (არასავალდებულო)
+rounded	დამრგვალებული
+split	გაყოფა
+send_kot	ფურცლის გაგზავნა
+send_kot_to	გაგზავნა → {kitchens}
+send_kot_again	დაამატეთ ნივთები შემდეგი სლიპისთვის
+send_kot_held	გამართული ნივთები — გაუმართავი გასაგზავნად
+reprint_kot	არჩეულის ხელახლა ბეჭდვა
+reprint_kot_ok	ხელახლა დაბეჭდილი {n} ნივთები · {slips} საბუთ(ებ)ი → {kitchens}
+reprint_kot_needed	ჯერ გააგზავნეთ ფურცელი — შემდეგ შეიტანეთ მედიკამენტები და ხელახლა დაბეჭდეთ არჩეული
+reprint_kot_none_selected	ყველა გაგზავნილი ელემენტი გამოტოვებულია - შეეხეთ ბეჭდვისას ხელახლა დაბეჭდვისთვის
+reprint_kot_client	ხელახლა დაბეჭდვა ({n}) {place} გაგზავნილისთვის — მაღაზიის მოწყობილობა ბეჭდავს მას
+print_cancelled_kot	ყველა გაუქმებულის ბეჭდვა
+print_cancelled_kot_ok	დაბეჭდილი {n} გაუქმებული ნივთები · {slips} სლიპ(ები) → {kitchens}
+print_cancelled_kot_needed	ჯერ გახსენით მაგიდა გაუქმებული ნივთებით
+print_cancelled_kot_none	ამ შეკვეთაზე გაუქმებული ელემენტი არ არის
+print_cancelled_kot_client	ბეჭდვა გაუქმდა ({n}) {place}-ისთვის გაგზავნილი — მაღაზიის მოწყობილობა ბეჭდავს მას
+kot_banner	ტიპის ზოლი
+kot_banner_ph	ზოლი (ცარიელი = არა)
+kot_item_prefix	პოზიციის პრეფიქსი
+kot_item_prefix_ph	მაგ. [გაუქმებული]
+kot_strike	Strike ელემენტის სახელი
+kot_strike_note	Strike ელემენტის შენიშვნა
+kot_strike_on	ჩართ.
+kot_strike_off	გამორთ.
+bill_item_layout	პოზიციის განლაგება
+bill_item_layout_columns	სვეტები
+bill_item_layout_stacked	დასტად
+bill_item_header	სვეტების სათაურები
+bill_item_hdr_item	პოზიციის სათაური
+bill_item_hdr_qty	რაოდენობის სათაური
+bill_item_hdr_price	ფასის სათაური
+bill_item_hdr_amount	თანხის სათაური
+bill_item_name	წამლის სახელწოდება
+bill_item_qty	რაოდ.
+bill_item_price	ფასი
+bill_item_amount	თანხა
+bill_item_note	Rx / გასაყიდი შენიშვნა
+bill_item_col_gap	სვეტების შუალედი
+bill_item_col_order	სვეტების რიგი
+bill_item_col_sep	სვეტების ხაზები
+bill_item_gap_tight	მჭიდრო
+bill_item_gap_comfort	კომფორტული
+bill_item_gap_wide	ფართო
+bill_item_num_width	რიცხვითი სვეტები
+bill_item_num_compact	კომპაქტური
+bill_item_num_comfort	კომფორტული
+bill_item_num_wide	ფართო
+bill_item_num_align	რიცხვების სწორება
+bill_item_gap_em	შუალედი (em)
+bill_item_qty_min	რაოდ. მინ (em)
+bill_item_price_min	ფასი მინ (em)
+bill_item_amount_min	თანხა მინ (em)
+kot_item_qty_width	რაოდენობის სვეტი
+kot_item_num_align	რაოდენობის სწორება
+bill_total_qty_label	სრული რაოდენობის წარწერა
+bill_total_subtotal_label	შუალედური ჯამის წარწერა
+bill_total_grand_label	საერთო ჯამის წარწერა
+bill_total_paid_label	გადახდილი ჯამის წარწერა
+bill_meta_pair	ხაზის გაზიარება
+bill_pair_alone	ცალკე
+bill_item_piece_on	ჩართ.
+bill_item_piece_off	გამორთ.
+bill_total_qty	სრული რაოდენობა
+bill_total_subtotal	შუალედური ჯამი
+bill_total_grand	საერთო ჯამი
+reprint_incl	ბეჭდვაში
+reprint_skip	გამოტოვება
+reprint_skip_meta	ხელახალი ბეჭდვის გამოტოვება
+kot_dest_hint	იბეჭდება პრინტერებზე, რომლებიც {kitchens}-ს მიანიჭეთ პარამეტრები → პრინტერები
+kot_sent_hint	ბოლო გაგზავნა გადავიდა {kitchens}-ზე. შეეხეთ შემდეგი ანგარიშისთვის ერთეულების დასამატებლად — ან ხელახლა ამობეჭდეთ ამონაწერი იმავე ანგარიშისთვის.
+kot_sent_printing	ფურცელი გაიგზავნა {kitchens}-ზე — ბეჭდვა
+kot_sent_not_printed	ამონაწერი გაიგზავნა {kitchens}-ზე, მაგრამ არ არის დაბეჭდილი: {why}. უთხარით მაღაზიას, შემდეგ გაასწორეთ პრინტერი და ისევ დაბეჭდეთ.
+kot_sent_screen	ამონაწერი გაიგზავნა {kitchens}-ზე
+kot_queued_shop	Slip for {place} → {kitchens} შენახული; მაღაზიის მოწყობილობა ბეჭდავს მას
+kot_job_label	სრიალი {place} → {kitchens}
+kot_job_reached	{place}-ის სრიალმა მიაღწია {kitchens}-ს
+kot_unassigned	მინიჭებული არ არის
+kot_unassigned_held	შეინახეთ {n} ელემენტები სადგურის გარეშე — გააჩერეთ გასაგზავნ ხაზზე
+kot_station_ph	სადგური
+kot_station_dd	სადგური
+kot_station_dd_n	სადგური · {stations}
+kot_set_station	ამ სადგურის გამოყენება
+kot_station_applied	სადგური დაყენებულია {n} ელემენტებზე: {station}
+kot_station_cleared	სადგური გასუფთავებულია {n} ელემენტებისგან: {station}
+kot_station_needed	ჯერ აირჩიეთ დისპანსერული განყოფილება
+kot_station_not_allowed	დაუშვებელია სექციის გამოყენება: {station}
+kot_station_none	ჯერ არ არის სადგურები — გამოუყენებელი მაღაზიებში (პარამეტრები → უბნები საჭიროების შემთხვევაში)
+pos_tab_items	დამატებული პოზიციები
+pos_tab_payment	გადახდა
+hold_send	შეკავება
+hold_send_on	შეკავებულია
+hold_send_meta	გამართული - არა ამ სრიალზე
+station_remove	სადგურის ამოღება
+station_remove_ph	შეეხეთ სადგურს სიაში მის ამოსაღებად
+station_removed	სადგური ამოღებულია: {name}
+settings_hub_title	პარამეტრები
+settings_hub_help	გახსენით ერთი ნაწილი ერთდროულად — ნაკლები გადახვევა, უფრო ნათელი არჩევანი.
+settings_back	უკან
+settings_sec_language	ენა და ვალუტა
+settings_sec_country	ქვეყანა და გადასახადი
+settings_sec_tills	სხვა მოწყობილობები
+settings_sec_brand	თქვენი ბრენდი
+settings_sec_units	ერთეულები და გადაყვანა
+settings_sec_pickers	ზონები · სადგურები · გადასახადის განაკვეთები
+settings_sec_printers	პრინტერები
+settings_sec_bill	Bill & Slip ფორმატი
+settings_sec_selling	აქციები და გაყიდვები
+bill_kot_tab_bill	ანგარიში
+bill_kot_tab_kot	სრიალი
+settings_sec_alerts	შეტყობინებები
+alerts_help	რამდენ ხანს რჩება სტატუსის შეტყობინებები ეკრანზე თქვენთვის (ეს შესვლა).
+snack_secs_ph	წამი (3–60, ნაგულისხმევი 10)
+snack_secs_save	შეტყობინების დროის შენახვა
+snack_secs_saved	შეტყობინების დრო შენახულია — {n} წამი
+settings_sec_backup	სარეზერვო ასლი და აღდგენა
+settings_sec_diag	დიაგნოსტიკა
+diag_privacy_help	ჟურნალები რჩება ამ მოწყობილობაზე. საიდუმლოებები (PIN, პაროლები) არასოდეს ინახება. პაკეტის გაზიარება მოწყობილობის გარეთ ყოველ ჯერზე თქვენს აშკარა ნებართვას მოითხოვს — არასოდეს იყიდება და არ გადაეცემა მესამე მხარეს.
+diag_level	დეტალების დონე
+diag_level_error	შეცდომები
+diag_level_warn	გაფრთხილებები
+diag_level_info	ინფო
+diag_level_debug	გამართვა
+diag_support_start	30-წუთიანი მხარდაჭერის სესიის დაწყება
+diag_support_stop	მხარდაჭერის სესიის დასრულება
+diag_support_started	მხარდაჭერის სესია ჩართულია — გამართვის დეტალები 30 წუთით
+diag_support_ended	მხარდაჭერის სესია დასრულდა
+diag_export_local	ლოკალური ასლის ექსპორტი
+diag_export_local_done	ლოკალური დიაგნოსტიკა მზადაა {path}-ში — აირჩიეთ სად შეინახოთ ასლი
+diag_approve_send	ამ მოწყობილობიდან გაზიარების დაშვება
+diag_send_help	ნებართვა ერთ პაკეტზეა, შემდეგ იწურება. დროებითი — მხოლოდ პროდუქტის გასასწორებლად ან გასაუმჯობესებლად. მესამე მხარეს არ გადაეცემა. მუშაობს Linux-ზე, Windows-ზე, macOS-სა და Android-ზე.
+diag_send_approved	გაზიარება დაშვებულია ერთი პაკეტისთვის (მალე იწურება)
+diag_export_send	გასაზიარებელი პაკეტის შექმნა (საჭიროა ნებართვა)
+diag_export_send_done	გასაზიარებელი პაკეტი მზადაა {path}-ში — აირჩიეთ სად შეინახოთ და გაუგზავნეთ მხოლოდ Kumkaj-ის მხარდაჭერას
+diag_save_bundle	დიაგნოსტიკის ასლის შენახვა
+diag_bundle_saved	დიაგნოსტიკის ასლი შენახულია {path}-ში
+diag_bundle_failed	დიაგნოსტიკის ასლი ვერ შეინახა — სცადეთ ხელახლა
+diag_clear	დიაგნოსტიკის ჟურნალების გასუფთავება
+diag_cleared	დიაგნოსტიკის ჟურნალები გასუფთავდა
+sidebar_settings	გვერდითი ზოლი
+sidebar_settings_help	იგივე ხატულები, რაც გვერდით რელსზე. გადაათრიეთ რიგი რიგის შესაცვლელად. გადართეთ ჩვენება ან დამალვა. პარამეტრები და საკეტი ყოველთვის რჩება ზოლზე.
+sidebar_always_on_short	ყოველთვის ჩართ.
+sidebar_back_settings	უკან
+sidebar_shown	ნაჩვენები
+sidebar_hidden	დამალული
+sidebar_always_on	ყოველთვის ზოლზე
+sidebar_shown_hint	ნაჩვენებია გვერდით რელსზე / ქვედა ჩანართებზე
+sidebar_hidden_hint	დამალულია ზოლიდან
+sidebar_menu_items	მენიუს ელემენტები
+sidebar_enable_all	ყველას ჩართვა
+sidebar_disable_all	ყველას გამორთვა
+sidebar_order_saved	გვერდითი ზოლის რიგი შენახულია
+sidebar_visibility_saved	გვერდითი ზოლის ხილვადობა შენახულია
+amounts_hide	დამალვა
+amounts_show	ჩვენება
+printers_none_hint	ჯერ შეინახეთ პრინტერი ამ მოწყობილობაზე, შემდეგ დაამატეთ ის კანონპროექტში ან განყოფილებაში
+counter	დახლი
+dine_in	დახლი
+takeaway	წასაღებად
+order	შეკვეთა
+tables	მრიცხველები
+kitchen	სექციები
+sales	გაყიდვები
+sales_refunds	გაყიდვები და დაბრუნება
+day_close	დღის დახურვა
+reports_expenses	საბანკო წიგნი და მ/ზ
+nav_reports	ანგარიშები
+nav_settings	პარამეტრები
+nav_lock	საკეტი
+no_sale_yet	გაყიდვა ჯერ არ არის
+favorites	რჩეულები
+favorites_help	პოზიციები, რომლებსაც ხშირად ყიდით, შენახულია თქვენი შესვლისთვის. დაამატეთ ერთი ანგარიშში ან შეადგინეთ სია ქვემოთ ყველა პოზიციიდან.
+your_favorites	თქვენი რჩეულები
+all_items	ყველა პოზიცია
+frequent	ხშირი
+added_items	დამატებული პოზიციები
+added_items_empty	ჯერ არაფერია ამ კანონპროექტზე — დაამატეთ ელემენტი ყველა ელემენტიდან ან კატეგორიიდან.
+frequent_config_help	ყველაზე გაყიდული ნივთები დასრულებული გადასახადებიდან. დააყენეთ რამდენ დღეში უნდა ნახოთ და რამდენი ელემენტის ჩვენება.
+frequent_days_ph	დღეები (1)
+frequent_limit_ph	პოზიციები (24)
+frequent_apply	გამოყენება
+frequent_saved	ხშირი: ბოლო {d} დღე(ები), საუკეთესო {n} — {c} ერთეულები
+frequent_empty	ამ პერიოდში დასრულებული გაყიდვები ჯერ არ არის — დახურეთ ანგარიში (₹0 დასაშვებია, თუ პარამეტრები ამბობს) და აქ გამოჩნდება.
+zero_sales	ნულოვანი გაყიდვები
+zero_sales_help	დაუშვით 0 ₹ ღირებულების ნივთები და 0 ₹ დან გადასახადები (უფასო / მფლობელის სურვილი). ნაგულისხმევად ჩართულია, ასე რომ უფასო გარეკანები კვლავ გამოჩნდება ხშირი და დღის წიგნებში.
+zero_sales_on	₹0 დაშვება
+zero_sales_off	ფასი სავალდებულოა
+zero_sales_saved_on	ნულოვანი გაყიდვები დაშვებულია
+zero_sales_saved_off	გაყიდვას უნდა ჰქონდეს ფასი ₹0-ზე მეტი
+floor_areas_help	ტერიტორიები არის ოთახები ან ზონები იატაკზე (დინე, ამანათი, AC…). ჯერ დაამატეთ ფართობი, შემდეგ ჩადეთ მასში მრიცხველები - თითოეული ტერიტორია ცალკე ჯგუფია იატაკზე.
+area_new_ph	ახალი ზონა / ოთახი (მაგ. AC, Garden)
+add_area	ზონის დამატება
+area_added	ზონა "{name}" მზად არის - დაამატეთ მასში მრიცხველები
+no_favorites	რჩეულები ჯერ არ არის — დაამატეთ პოზიციები ქვემოთ სიიდან.
+add_to_bill	ანგარიშში დამატება
+added	დამატებულია
+owes_word	მართებს
+selected_word	არჩეული
+chip_clear_credit	გასუფთავება — კრედიტი ან ავანსის აღება
+chip_missing_customer	არჩეული მომხმარებელი არ არის — აირჩიეთ ხელახლა
+chip_no_customer	მომხმარებელი ჯერ არ არის — ჩაწერეთ სახელი, შემდეგ შეეხეთ კრედიტს
+credit_summary_fmt	{} მომხმარებელი · ღია კრედიტი {} · დაკავებული ავანსები {}
+recent_label	ბოლო:
+kot_new_waiting	ახალი — ელოდება
+kot_preparing	მზადდება
+kot_ready_serve	მზადაა — მიართვით
+kot_done_cap	მზადაა
+kot_cancelled	გაუქმებულია
+kot_start_btn	დაწყება
+kot_mark_ready	მზადად მონიშვნა
+kot_done_btn	მზადაა
+table_free	თავისუფალი — შეეხეთ შეკვეთის დასაწყებად
+start_order	შეკვეთის დაწყება
+open_bill	ანგარიშის გახსნა
+collect_payment	გადახდის მიღება
+table_running	მიმდინარე
+payment_pending	გადახდა ელოდება
+collect_at_counter	მიღება დახლზე
+inventory	მარაგი
+inventory_stock	ინვენტარი და მარაგი
+branches	ფილიალები
+branches_org	ფილიალები და ორგანიზაცია
+credit_customers	მხარეები (khata და მომწოდებლები)
+customer_name_ph	მხარის სახელი
+new_customer_ph	ახალი მხარის სახელი
+item_name_ph	პოზიციის სახელი (მაგ. Masala Dosa)
+item_price_ph	ფასი
+start_template	პროდუქტი
+team	გუნდი
+team_pins	გუნდი და PIN-ები
+my_pin_settings	ჩემი PIN
+settings_hub_help_my_pin	შეცვალეთ განბლოკვის PIN ამ მოწყობილობაზე შესული პირისთვის.
+team_self_help	ერთი შესვლა: ახალი PIN, ახალი პაროლი, ან ორივე. დატოვეთ უჯრა ცარიელი, რომ დარჩეს რაც გაქვთ. სთხოვეთ მფლობელს, თუ სხვა ეკრანები ან უფლებები გჭირდებათ.
+backup_settings	სარეზერვო ასლი და პარამეტრები
+lock_app	დაბლოკვის აპლიკაცია
+pick	აირჩიე
+select	აირჩიეთ
+advance	წინასწარ
+owner	მფლობელი
+staff	პერსონალი
+photo	ფოტო
+auto	ავტო
+prev	წინა
+next	შემდეგი
+ok	OK
+this_shop	სერვერის რეჟიმი
+extra_till	კლიენტის რეჟიმი
+off	გამორთ.
+tables_kitchen	მაღაზიის განლაგება
+server	სერვერის რეჟიმი
+client	კლიენტის რეჟიმი
+language_currency	ენა და ვალუტა
+language	ენა
+choose_language	აირჩიეთ თქვენი ენა
+language_setup_hint	მიჰყევით ამ მოწყობილობის ენას, ან თავად აირჩიეთ.
+lang_follow_platform	მოწყობილობის ენა
+lang_pick_user	აირჩიეთ ენა
+lang_platform_now	მოწყობილობის ენა ახლა
+selected_language	არჩეული
+continue	განაგრძეთ
+this_device	ეს მოწყობილობა
+device_use_q	როგორ იქნება გამოყენებული ეს მოწყობილობა?
+last_server_mode	იყო სერვერი — შეეხეთ გასაგრძელებლად
+last_client_mode	იყო კლიენტი — შეეხეთ გასაგრძელებლად
+choose_server	აირჩიეთ სერვერი
+choose_server_hint	გახსენით არსებული სერვერი, ან შექმენით ის სხვა ბიზნესისთვის.
+create_new_server	შექმენით ახალი სერვერი
+open_server	გახსენით
+new_server_name_ph	ახალი სერვერის სახელი (არასავალდებულო)
+server_remove_pin_ph	მფლობელი PIN სერვერის წასაშლელად
+only_owner_remove_server	მხოლოდ მფლობელს შეუძლია სერვერის წაშლა
+owner_pin_remove_server	ამ სერვერის წასაშლელად საჭიროა მფლობელი PIN
+device_setup_help	სერვერი აქ ინახავს ჩანაწერებს. კლიენტი წყვილდება სერვერზე.
+app_template_heading	საწყისი კატალოგი (სურვილისამებრ)
+app_template_blurb	იტვირთება ნიმუშის კატალოგი; მფლობელი Zahir (zahir), Admin Asif (asif, PIN 1111), Cashier Nawaz (nawaz, PIN 0000); გადასახადი/GST off; წინა გვერდითი ზოლი; ისტორია იშლება 4 საათის შემდეგ (და გასუფთავება ახლა სარეზერვო ასლიდან); დღეს გაშიშვლება; კომპაქტური კუპიურა + სტანდარტული მინდვრები ვიწრო უჯრებისთვის. საგადასახადო და გვერდითი ზოლის თანატოლების ჩართვა შესაძლებელია პარამეტრებში.
+app_template_apply	გამოიყენეთ დამწყებ კატალოგი
+app_template_skip	ახლა გამოტოვეთ
+app_template_status	სერვერი მზად არის — გამოიყენეთ Starter კატალოგი ან გამოტოვეთ
+app_template_importing	მიმართვა {title}…
+currency	ვალუტა
+backup	სარეზერვო
+use	გამოყენება
+dont_use	არ გამოიყენოთ
+add_branch	ფილიალის დამატება
+add_conversion	დაამატეთ კონვერტაცია
+add_dishes_items	დაამატეთ ნივთები
+add_item_plain	პოზიციის დამატება
+add_note	შენიშვნის დამატება
+add_opening_balance	დაამატეთ გახსნის ბალანსი
+add_staff	დაამატეთ პერსონალი
+add_station	სადგურის დამატება
+add_table	დაამატეთ სასადილო მაგიდა
+add_unit	ერთეულის დამატება
+add_use_name	დაამატეთ / გამოიყენეთ ეს სახელი
+allow_extra_tills	დაუშვით დამატებითი სალარო აპარატები
+amend	შესწორება
+apply_country_pack	გამოიყენეთ ქვეყნის პაკეტი
+datetime_appearance	გამოჩენის თარიღი და დრო
+datetime_appearance_help	წიგნებში ინახება პირველი წლის RFC3339 შიგნით. ეს მხოლოდ ცვლის, თუ როგორ გამოიყურება თარიღები და საათები გადასახადებზე, ანგარიშებსა და ეკრანზე.
+datetime_example	მაგალითი ახლა: {ex}
+date_order	თარიღის შეკვეთა
+date_order_dmy	D/M/Y
+date_order_mdy	M/D/Y
+date_order_ymd	Y-M-D
+time_format	საათი
+time_format_24h	24-საათიანი
+time_format_12h	12 საათიანი
+attach_bill_photo	მიამაგრეთ სტუმრის ანგარიშის ფოტო
+attach_pdf	მიამაგრეთ PDF
+attach_photo	მიამაგრეთ ფოტო
+attachments_last_expense	დანართები (ბოლო ხარჯი)
+bank	ბანკი
+bank_in	ბანკში
+bank_out	ნაღდი ფული ბანკიდან
+bank_reconciliation	საბანკო შერიგება (მონიშნეთ თქვენი საბანკო ამონაწერის წინააღმდეგ)
+bank_to_till	ბანკი → სალარო
+book_add_dish	წიგნი - დაამატეთ ნივთი / ნივთი
+book_opening_credit	ლეჯერი - გახსნის კრედიტი
+branch_name_sell_ph	ფილიალის სახელი გასაყიდად
+bring_my_book	მოიტანე ჩემი წიგნი
+business_tax_id_ph	ბიზნესის გადასახადის ID
+caption_bank	ბანკი
+caption_bills	გადასახადები
+caption_outstanding	გამორჩეული
+caption_payments_today	გადახდები დღეს
+caption_today	დღეს
+card_amount_ph	ბარათის თანხა
+cash_amount_ph	ნაღდი ფული
+cash_memo	ფულადი მემორანდუმი
+choose_icon	აირჩიეთ ხატი
+choose_logo	აირჩიეთ ლოგო
+clear_icon	ხატის გასუფთავება
+clear_photo	გაასუფთავეთ ფოტო
+copy_day_book_csv	დააკოპირეთ დღის წიგნი CSV
+copy_day_close	დააკოპირეთ დღე დახურეთ
+copy_items_csv	დააკოპირეთ მენიუს ელემენტები CSV
+copy_outstanding_csv	დააკოპირეთ გამორჩეული CSV
+copy_parties_csv	დააკოპირეთ კლიენტები და მომწოდებლები CSV
+copy_party_ledger_csv	დააკოპირეთ კლიენტის წიგნი CSV
+copy_receipt	დააკოპირეთ ქვითარი
+share_whatsapp	გააზიარე WhatsApp
+lan_pages_heading	კლიენტების გვერდები Wi‑Fi-ზე
+lan_pages_help	ამ მაღაზიის Wi‑Fi-ზე კლიენტების გვერდები მუშაობს ჩვენების დაფისა და გამოხმაურებისთვის. მობილური ინტერნეტის მქონე ადამიანებს Cloud მოგვიანებით სჭირდებათ. ბარათის ტერმინალი ან გადახდის ბმული არჩევითია და არასოდეს ბლოკავს მრიცხველს.
+diag_send_heading	გააზიარეთ ეს მოწყობილობა
+kot_dest_heading	სადგური
+optional_login_heading	არჩევითი შესვლა
+rights_heading	უფლებები
+ops_panel	ადგილობრივი ოპერაციები
+crm_heading	მომხმარებლები და შეტყობინებები
+crm_help	დაბადების დღე, ერთგულება, არააქტიური და საუკეთესო სტუმრები — რიგი SMS ან WhatsApp განზრახვები. გამოიყენეთ {name} და {points} შეტყობინებაში. მფლობელის ონკანები გაგზავნა; არაფერი აფეთქებს თავისთავად.
+crm_queue_sms	რიგი SMS
+crm_queue_wa	რიგი WhatsApp
+crm_seg_bday_week	დაბადების დღე
+crm_seg_bday_month	დაბადების დღე
+crm_seg_phone	ტელეფონით
+crm_seg_loyalty	ერთგულება
+crm_seg_inactive	არააქტიური
+crm_seg_top	ყველაზე მხარჯავი
+birthday_ph	დაბადების დღე (MM-DD ან YYYY-MM-DD)
+crm_message_ph	გილოცავ დაბადების დღეს {name}! თქვენ გაქვთ {points} ქულა.
+till_apply_redeem	მიმართეთ სტუმრის ანგარიშზე
+till_clear_redeem	გამოსყიდვის გასუფთავება
+till_wallet_topup	შეავსეთ საფულე
+till_issue_voucher	ვაუჩერის გაცემა
+till_points_ph	გამოსასყიდი ქულები
+till_wallet_ph	საფულის დახარჯვის თანხა
+till_voucher_code_ph	ვაუჩერის კოდი
+till_voucher_amt_ph	ვაუჩერის თანხა (ცარიელი = ყველა)
+till_wallet_topup_ph	საფულის ოდენობის შევსება
+till_voucher_issue_amt_ph	ვაუჩერის ოდენობის გაცემა
+till_voucher_issue_code_ph	ვაუჩერის ახალი კოდი
+split_evenly	გაყავით თანაბრად
+waitlist	ლოდინის სია
+fire_course	შემდეგი ნაბიჯი
+hold_item	შეკავება
+waiter_call	დარეკეთ მოლარეს
+waitlist_add	ლოდინის სიაში დამატება
+floor_view_grid	ბადე
+floor_view_layout	განლაგება
+floor_layout_x	X
+floor_layout_y	Y
+floor_layout_w	W
+floor_layout_h	H
+floor_layout_save	განლაგების შენახვა
+floor_layout_open	გახსენით სასადილო მაგიდა
+floor_layout_edit	განლაგების რედაქტირება
+floor_layout_pick	შეეხეთ სასადილო მაგიდას მისი განლაგების შესაცვლელად
+floor_layout_saved	განლაგება შენახულია
+floor_layout_nudge_left	← 20
+floor_layout_nudge_right	→ 20
+floor_layout_nudge_up	↑ 20
+floor_layout_nudge_down	↓ 20
+sibling_pickers_help	შეეხეთ ჩართვა/გამორთვას, როგორც ერთეულებს — დამალეთ ტერიტორიები, სადგურები და გადასახადების განაკვეთები ყოველდღიური ამომრჩევლებისგან; პაკეტის ნაგულისხმევი დარჩენა.
+bulk_price_apply	გამოიყენეთ ნაყარი ფასი
+card_terminal_optional	ბარათის ტერმინალი / გადახდის ბმული (არასავალდებულოა, როდესაც ინტერნეტი ხელმისაწვდომია)
+copy_report	ანგარიშის კოპირება
+counted_cash_ph	დათვლილი ნაღდი ფული უჯრაში
+country_tax	ქვეყანა და გადასახადი
+create_backup	შექმენით სარეზერვო საშუალება
+credit_limit_heading	საკრედიტო ლიმიტი (არჩეული მომხმარებელი ან მომწოდებელი)
+day_close_summary	დღის დახურვის შეჯამება
+delete_party	წაშალეთ არჩეული მომხმარებელი ან მომწოდებელი
+delivery	მიწოდება
+done_open_books	შესრულებულია - ღია წიგნები
+drawer_count	უჯრის რაოდენობა (სურვილისამებრ)
+expense_heading	ხარჯი
+export_day	ექსპორტის დღე
+extra_note_bill_ph	დამატებითი შენიშვნა ამ სტუმრის კანონპროექტზე/გაყიდვაზე
+extra_note_expense_ph	დამატებითი შენიშვნა ბოლო ხარჯზე
+extra_tills_heading	დამატებითი სალარო აპარატები
+other_devices_help_heading	სხვა მოწყობილობების დაყენება
+other_devices_help	ამ მოწყობილობაზე (სერვერზე): სხვა მოწყობილობები → დაუშვით დამატებითი ტილოები. გაითვალისწინეთ დაწყვილების კოდი და Wi‑Fi მისამართი. თუ გამოჩნდება, შეეხეთ სხვა მოწყობილობების დაკავშირების ნებას. კომპიუტერზე შეეხეთ დაწყებას ამ კომპიუტერით. ერთერთ მოწყობილობაზე: დააინსტალირეთ აპლიკაცია, აირჩიეთ კლიენტის რეჟიმი, იპოვეთ მაღაზიის სერვერი (ან აკრიფეთ მისამართი), შეიყვანეთ დაწყვილების კოდი, დაწყვილება ახლა. შეკვეთები ელოდება მოწყობილობას, თუ Wi‑Fi გაქრება და მიდის, როდესაც სერვერი კვლავ უპასუხებს. დამატებითი პრინტერები დაყენებულია სერვერზე (პარამეტრები → პრინტერები) — დამატებით გადასახადებს იქ გაგზავნით.
+forget_shop	დაივიწყე ეს მაღაზია
+goods_received	მიღებული საქონელი
+import_day	იმპორტის დღე
+import_items_csv_plain	მენიუს ელემენტების იმპორტი CSV…
+import_parties_csv	იმპორტის მომხმარებლები და მომწოდებლები CSV…
+item_name	მენიუს პუნქტის სახელი
+kitchen_printing	პრინტერები
+login_id_ph	მომხმარებლის სახელი
+mark_cleared	მარკ გასუფთავდა
+new_party_clear	ახალი მომხმარებელი ან მომწოდებელი (მკაფიო ფორმა)
+new_party_kind_supplier_ph	ახალი კლიენტი ან მომწოდებელი (მიმწოდებელი)
+next_country	შემდეგი ქვეყანა
+next_order	შემდეგი შეკვეთა (გასუფთავება მაგიდა)
+note_gstin_ph	შენიშვნა / GSTIN / შეთანხმების შეხსენება
+notes_attach_party	შენიშვნები და დანართები (არჩეული მომხმარებელი ან მომწოდებელი)
+notes_attach_sale	შენიშვნები და დანართები (არჩეული გაყიდვა)
+on_account_ap	ანგარიშზე (AP)
+org_optional_ph	ორგანიზაცია (სურვილისამებრ)
+paid_by	გადახდილი
+paid_now	გადახდილია ახლა
+pair_now	დაწყვილება ახლა
+pairing_code_ph	დაწყვილების კოდი
+party_name_selected_ph	მომხმარებლის ან მომწოდებლის სახელი (ან არჩეული გამოყენება)
+password_ph	პაროლი
+pay_ap_card	გადაიხადეთ AP ბარათი
+pay_ap_cash	გადაიხადეთ AP ნაღდი ფული
+pay_ap_heading	გადაიხადეთ ის, რაც მათ ვალში გვაქვს (AP)
+pay_ap_upi	გადაიხადეთ AP UPI
+pay_selected_heading	არჩეული გადახდა (ვალის დაფარვა/ავანსის აღება)
+pick_from_items	აირჩიეთ ჩვენი მენიუდან
+prev_country	წინა ქვეყანა
+print_open	დაბეჭდვა / გახსნა
+reason_amend_ph	შესწორების / ბათილობის / თანხის დაბრუნების მიზეზი
+reason_note_ph	მიზეზი / შენიშვნა (გაფლანგვა, რაოდენობა, ...)
+record_day_close	შეინახეთ დღე დახურულ მდგომარეობაში
+refresh_from_shop	განაახლეთ მაღაზიიდან
+refund	თანხის დაბრუნება
+remove_selected	არჩეულის წაშლა
+request_bill	მოითხოვეთ სტუმრის ანგარიში
+restaurant_name_ph	მაღაზიის სახელი (სურვილისამებრ)
+restore_backup	სარეზერვო ასლის აღდგენა
+role_both	ორივე
+role_admin	Admin
+role_cashier	მოლარე
+role_customer	დამკვეთი
+role_manager	მენეჯერი
+history_retention	ვაჭრობის ისტორია
+history_retention_help	ავტომატური გასუფთავება ძველი გაყიდვების და ძველი ბილეთების. რჩება მედიკამენტები, პერსონალი და პარამეტრები. Clear now წაშლის ყველა სავაჭრო რიგს და აგრძელებს დაყენებას.
+history_off	შეინახეთ
+history_day_close	დახურულ დღეს
+history_after_hours	საათის შემდეგ
+history_hours_ph	საათი (1–168, ნაგულისხმევი 4)
+history_hours_save	საათების დაზოგვა
+history_clear_now	ისტორიის გასუფთავება ახლავე
+history_cleared	სავაჭრო ისტორია გასუფთავებულია - დაყენება შენარჩუნებულია
+history_retention_saved	ისტორიის გასუფთავება შენახულია
+history_hours_saved	ისტორიის საათები შენახულია
+history_owner_only	მხოლოდ მფლობელს ან ადმინისტრატორს შეუძლია ისტორიის გასუფთავება
+rollup	შემაჯამებელი შეკრება
+save_brand	შეინახეთ ბრენდი
+save_business_id	შეინახეთ ბიზნესის ID
+save_business_name	შეინახეთ ბიზნესის სახელი
+save_features	შენახვა
+save_features_named	დაზოგე {name}
+save_features_ok	შენახულია დაყენება {name}-ისთვის
+save_names	შეინახეთ სახელები
+second_way	მეორე გზა
+server_ip_ph	სერვერის IP (მაგ. 192.168.1.10)
+set_credit_limit	მიმართეთ ლიმიტს მომხმარებელს ან მომწოდებელს
+set_login_selected	შერჩეულზე შესვლის გამოყენება
+set_login_named	გამოიყენეთ შესვლა {name}-ზე
+shop	მაღაზია
+show	ჩვენება
+spreadsheet_csv	ელცხრილი (CSV)
+start_fresh	დაიწყეთ ახალი
+stop_extra_tills	შეაჩერე ზედმეტი სალარო აპარატები
+floor_cols_ph	სვეტები
+floor_cols_fit	მორგებული ეკრანი
+floor_cols_fit_sub	{n} მოერგება აქ
+floor_cols_fits	შეესაბამება
+floor_cols_scroll	გადახვევა გვერდულად
+floor_cols_min	სვეტები: მინიმუმ 1 - ან დატოვეთ ცარიელი, რომ მოერგოს ეკრანს
+floor_zoom_auto	ავტო
+floor_zoom_out	მასშტაბირება
+floor_zoom_in	მასშტაბირება
+backup_auto	სარეზერვო ასლები ავტომატურად იქმნება ყოველდღე · ბოლო {when} · ბოლო 14 დღე ინახება {dir}-ში.
+backup_auto_none	სარეზერვო ასლები ავტომატურად იქმნება ყოველდღე — პირველი გადის მომენტში.
+backup_copy_to	ასლები ასევე გადადის {dir}-ზე.
+backup_copy_btn	ასევე დააკოპირეთ სარეზერვო ასლები საქაღალდეში…
+autostart_off	დაიწყეთ ამ კომპიუტერით
+autostart_on	იწყება ამ კომპიუტერით ✓ — შეეხეთ გასაჩერებლად
+autostart_done_on	ეს კომპიუტერი ახლა ხსნის აპს გაშვებისას — მაღაზიის სერვერი დაბრუნდა დენის გათიშვის შემდეგ.
+autostart_done_off	ეს კომპიუტერი აღარ ხსნის აპს გაშვებისას.
+device_forgotten	მაღაზიამ დაავიწყდა ეს მოწყობილობა — ხელახლა დააწყვილეთ იგი მაღაზიის მიმდინარე კოდთან. მასზე მოლოდინში შეკვეთები ინახება.
+lan_offline	მაღაზიის სერვერი მიუწვდომელია
+forget_device	დაივიწყე
+last_seen	ნანახი
+copy_pair_code	დააკოპირეთ დაწყვილების კოდი
+new_pair_code	ახალი დაწყვილების კოდი
+pair_finishing	დასრულების წყვილი… მაღაზიის წიგნების გამოყენება
+pair_opening	სალარო აპარატის გახსნა…
+pair_copied	დაწყვილების კოდი კოპირებულია
+kot_waiting	ელოდება გაგზავნას
+lan_offline_waiting	მაღაზიის სერვერი მიუწვდომელია · {n} ელოდება
+lan_connecting	მიმდინარეობს მაღაზიასთან დაკავშირება…
+lan_live	ცოცხალი
+lan_sending	{n} გაგზავნა
+lan_sign_in_to_send	ხელახლა შედით {n} გასაგზავნად
+lan_pair_again	ხელახლა დააწყვილეთ ეს მოწყობილობა
+lan_update_app	განაახლეთ აპლიკაცია — ამ მოწყობილობას და მაღაზიის სერვერს განსხვავებული ვერსიები აქვთ
+allow_firewall	სხვა მოწყობილობების დაკავშირების ნება
+firewall_blocked	ამ კომპიუტერის firewall ბლოკავს სხვა მოწყობილობებს — შეეხეთ სხვა მოწყობილობების დაკავშირების ნებას.
+firewall_waiting	ველოდები ადმინისტრატორის მოთხოვნას…
+lan_join_help	სხვა მოწყობილობაზე: კლიენტის რეჟიმი → იპოვნეთ მაღაზიის სერვერი (ან აკრიფეთ {addr}) → დაწყვილების კოდი {code}.
+lan_pair_status	Wi‑Fi {addr}
+lan_join_help_no_addr	დაუკავშირეთ ეს მოწყობილობა Wi‑Fi-ს მისამართისთვის.
+lan_no_address	ჯერ არა Wi‑Fi მისამართი — დაუკავშირდით მაღაზიას Wi‑Fi.
+lan_not_listening	არ იღებს მოწყობილობებს (პორტი {port} დაკავებულია). გადატვირთეთ აპლიკაცია.
+lan_tills_off	დამატებითი სალარო აპარატები გამორთულია. მიეცით უფლება მათ სხვა მოწყობილობას შეუერთდეს.
+paired_with	დაწყვილებული · {url}
+not_paired	არ არის დაწყვილებული
+choose_device_use	აირჩიეთ სერვერი ან კლიენტი.
+paired_note	დაწყვილებული. განბლოკეთ გასაყიდად, ან განაახლეთ უახლესი.
+last_update_at	ბოლო განახლება: {time}.
+pair_intro	იპოვეთ სერვერი, ან ჩაწერეთ მისი მისამართი და დაწყვილების კოდი.
+queue_waiting	ელოდება მაღაზიამდე მისვლას ({n}):
+queue_tries	ვცადე {n} ჯერ · ბოლო პასუხი: {e}
+save_backup_copy	სარეზერვო ასლის შენახვა…
+backup_copy_saved	სარეზერვო ასლი შენახულია — შეინახეთ იგი ამ მოწყობილობაზე (USB ჯოხი ან სხვა მოწყობილობა)
+backup_copy_overdue	არცერთი სარეზერვო ასლი არ დარჩა ამ მოწყობილობაზე {n} დღის განმავლობაში — პარამეტრები → სარეზერვო ასლი
+backup_copy_failed	სარეზერვო ასლის შენახვა ვერ მოხერხდა — აირჩიეთ სხვა ადგილი
+clock_off	ამ მოწყობილობის საათი {min} წუთით ჩამოშორებულია მაღაზიის სერვერს — დააყენეთ სწორი დრო ამ მოწყობილობაზე
+printers_heading	პრინტერები
+printers_help	იპოვეთ პრინტერები, შეეხეთ ერთს მის ასარჩევად, შემდეგ დაბეჭდეთ სატესტო გვერდი მხოლოდ ამ მოწყობილობაზე. კანონპროექტის პრინტერები: Bill & Slip ფორმატი → Bill.
+printers_host_only	პრინტერები დაყენებულია მაღაზიის მოწყობილობაზე (სერვერზე). ეს იქამდე არ აგზავნის გადასახადებს და ძველ ბილეთებს - იპოვნეთ / დაამატეთ / დაავალეთ სერვერზე დარჩენა. სატესტო გვერდი და კანონპროექტის ბეჭდვის ზომა გადადის სერვერზე.
+printers_find_heading	იპოვნეთ პრინტერები
+printers_find_tip	Find სკანირებს ამ მოწყობილობას და განაახლებს სიას.
+printers_pool_heading	პრინტერები
+printers_pool_tip	Find სკანირებს ამ მოწყობილობას და განაახლებს ამ სიას.
+printers_pool_empty	(ჯერ არცერთი - შეეხეთ პოვნას)
+printers_routes_help	იპოვეთ პრინტერები, რომლებსაც ოპერაციული სისტემა უკვე იცნობს. მიანიჭეთ ისინი კანონპროექტს და თითოეულ განყოფილებას Bill & Slip ფორმატის ქვეშ.
+printer_assign_dd	ნამდვილი პრინტერი: {place}
+printer_assign_pick	აირჩიეთ ნამდვილი პრინტერი
+printer_profile_heading	განლაგება
+printer_send_heading	მიწოდება
+vp_delivery_heading	მიწოდება
+vp_delivery_help	როგორ აგზავნის ეს ვირტუალური პრინტერი სამუშაოებს - OS დოკუმენტს, ნედლეულ ბაიტს ან ESC/POS-ს. ფურცლის შინაარსი (ტიპის ზომა, შეფუთვა, მინდვრები) წყვეტს კანონპროექტის/სლიპის ფორმატს და არა აქ.
+vp_type_size_heading	ტიპის ზომა
+vp_wrap_heading	შეფუთვა სიგანე
+vp_margin_heading	მინდვრები
+vp_delivery_spooler	OS დოკუმენტი (სისტემის სპულერი)
+vp_delivery_raw	ნედლი ბაიტები მოწყობილობაზე
+vp_delivery_escpos	ESC/POS თერმული ბრძანებები
+virtual_printer_new	ახალი ვირტუალური პრინტერი
+virtual_printer_selected	„{name}“-ის რედაქტირება — გადასართავად შეეხეთ სხვას სიაში
+virtual_printer_tap_list	შეეხეთ ვირტუალურ პრინტერს სიაში მის რედაქტირებისთვის
+config_layout_portrait	პორტრეტი
+config_layout_landscape	პეიზაჟი
+config_send_os	სისტემის სპულერი
+config_send_escpos	ESC/POS
+profiles_heading	განლაგება
+profiles_empty	(ჯერ განლაგება არ არის)
+profile_builtin	ჩაშენებული
+profile_custom	საბაჟო
+profile_name_ph	განლაგების სახელი
+profile_new	ახალი განლაგება
+profile_delete	განლაგების წაშლა
+profile_created	განლაგება შეიქმნა
+profile_deleted	განლაგება წაიშალა
+profile_builtin_keep	ჩაშენებული განლაგების წაშლა შეუძლებელია
+config_saved	განახლებულია
+config_selected	არჩეულია „{name}“
+printer_output_heading	ვირტუალური პრინტერები
+virtual_printers_heading	ვირტუალური პრინტერები
+virtual_printers_empty	ჯერ არ არის ვირტუალური პრინტერები — დააყენეთ მნიშვნელობები ქვემოთ, შემდეგ შენახვა. მას შემდეგ რაც გაქვთ, შეეხეთ ერთს სიაში რედაქტირებისთვის.
+virtual_printer_name_ph	ვირტუალური პრინტერის სახელი (სურვილისამებრ)
+virtual_printer_create	შექმენით ვირტუალური პრინტერი
+virtual_printer_save	ვირტუალური პრინტერის შენახვა
+virtual_printer_delete	წაშალეთ ვირტუალური პრინტერი
+virtual_printer_created	შეიქმნა ვირტუალური პრინტერი „{name}“.
+virtual_printer_deleted	წაშლილია ვირტუალური პრინტერი „{name}“
+virtual_printer_updated	ვირტუალური პრინტერი განახლებულია
+virtual_printer_updated_named	ვირტუალური პრინტერი „{name}“ განახლებულია
+virtual_draft_layout	მნიშვნელობები დაყენებულია შემდეგი ვირტუალური პრინტერისთვის
+virtual_draft_send	მნიშვნელობა დაყენებულია შემდეგი ვირტუალური პრინტერისთვის
+virtual_need_real	ჯერ აირჩიეთ ნამდვილი პრინტერი
+virtual_need_select	აირჩიეთ ვირტუალური პრინტერი წასაშლელად
+real_printer_selected	არჩეული: {name}
+station_group_heading	ვირტუალური პრინტერები
+station_group_apply	წაშალეთ ვირტუალური პრინტერი
+station_group_applied	წაშლილია
+station_group_empty	აირჩიეთ ვირტუალური პრინტერი
+station_group_name_ph	ვირტუალური პრინტერის სახელი (სურვილისამებრ)
+station_group_save	შექმენით ვირტუალური პრინტერი
+station_group_saved	ვირტუალური პრინტერი შენახულია
+station_manage_heading	დაამატეთ ან ამოიღეთ დისპანსერული განყოფილება
+printers_routes_heading	სადაც რამ იბეჭდება
+route_pick_heading	ადგილი
+route_editing	რედაქტირება: {name}
+route_assigned	დამატებულია {printer} {place}-ს
+route_already_assigned	უკვე ამ ადგილას: {printer}
+route_removed	წაშლილია {printer} {place}-დან
+route_cleared	გასუფთავებულია {name}
+route_assigned_empty	არცერთი ამ ადგილას
+route_tap_remove	შეეხეთ ამოსაღებად
+route_tap_select	შეეხეთ ასარჩევად
+route_tap_selected	შერჩეული
+route_pick_printer_first	ჯერ შეეხეთ პრინტერს
+route_assigned_heading	პრინტერები
+route_add_heading	მიანიჭეთ
+printer_label_ph	სახელი (მაგ. მრიცხველის პრინტერი)
+printer_target_ph	სისტემის პრინტერის სახელი ან ჰოსტი: 9100
+printer_target_default	ამ კომპიუტერის ჩვეულებრივი პრინტერი (ცარიელი მისამართი)
+printer_wire_heading	პროფილი
+printer_wire_escpos	ESC/POS
+printer_wire_os	პორტრეტი
+printer_wire_os_portrait	პორტრეტი
+printer_wire_os_landscape	პეიზაჟი
+printer_wire_escpos_short	ESC/POS
+printer_wire_os_short	პორტრეტი
+printer_wire_os_landscape_short	პეიზაჟი
+printer_format_custom	ახალი მორგებული პროფილი
+printer_format_custom_label	საბაჟო
+printer_format_custom_added	მორგებული პროფილი დამატებულია ამ ადგილისთვის
+add_printer	პრინტერის დამატება
+remove_printer	ამოღება
+route_pick_ph	კანონპროექტი ან დისპანსერული განყოფილება
+route_bill	ანგარიში
+route_default_kitchen	სადგური არ არის (მიუწერელი ელემენტები)
+route_kot_station	სადგური
+route_dont_print	პრინტერი არ არის
+stations_heading	სადგურები
+stations_help	დისპანსერების განყოფილებები აჯგუფებენ მედიკამენტებს და პრინტერებს მაღაზიის ამ ნაწილისთვის. მიამაგრეთ პრინტერები პარამეტრებიდან → პრინტერები, დააყენეთ სცადეთ რიგი, შემდეგ ჯერ რომ მუშაობს ან დაბეჭდეთ ყველაზე. ცვლილებები შეინახება როგორც თქვენ წახვალთ.
+station_print_heading	პრინტერები ამ სადგურისთვის
+station_print_help	აირჩიეთ სადგური, შემდეგ მიამაგრეთ ერთი ან მეტი პრინტერი. ↑↓ ადგენს ცდის მიმდევრობას. პირველი, რომელიც მუშაობს პირველი წარმატების შემდეგ ჩერდება; დაბეჭდეთ ყველა გაგზავნაზე ყველა თანდართულ პრინტერზე.
+station_print_pick_ph	სადგური პრინტერების დასაყენებლად
+station_print_pick_first	ჯერ აირჩიეთ დისპანსერული განყოფილება
+station_print_editing	პრინტერების რედაქტირება „{name}“-ისთვის
+station_vps_dd	პრინტერები ამ სადგურისთვის
+station_vps_dd_n	{n} პრინტერები · შეეხეთ შესაცვლელად
+station_vps_empty	ჯერ არ არის პრინტერები — იპოვეთ ისინი პარამეტრებში → პრინტერები
+bill_printers_dd	პრინტერები სტუმრის ანგარიშისთვის
+bill_printers_dd_n	{n} პრინტერები სტუმრის ანგარიშისთვის · შეეხეთ შესაცვლელად
+job_layout	განლაგება
+job_delivery	როგორ იგზავნება სამუშაო
+job_delivery_help	OS დოკუმენტი, ნედლი ბაიტები ან ESC/POS. კანონპროექტი და ბილეთი თითოეული ინახავს საკუთარ თავს. ნებისმიერ სამუშაოს შეუძლია წავიდეს ნებისმიერ პრინტერზე, რომელიც Find შენახულია.
+station_vp_attached	მიმაგრებულია პრინტერი
+station_vp_detached	პრინტერი ამოღებულია სადგურიდან
+station_print_summary	{mode} · {n} პრინტერები
+station_print_summary_none	ამ სადგურზე ჯერ არ არის პრინტერები — ის არ დაიბეჭდება
+stations_none	ჯერ არ არის სადგური — დაამატეთ ერთი ქვემოთ. სადგურები გამოუყენებელია დახლზე - დატოვეთ ცარიელი.
+route_up	ზევით
+route_down	ქვემოთ
+route_remove	ამოღება
+route_clear	გასუფთავება
+save_printers	პრინტერების შენახვა
+print_test_page	დაბეჭდეთ სატესტო გვერდი
+no_printer_assigned	პრინტერი არ არის
+test_page_no_printer	{place}-ისთვის პრინტერი არ არის — მიამაგრეთ პრინტერი და სცადეთ ხელახლა
+test_page_pick_first	ჯერ აირჩიეთ პრინტერები სატესტო გვერდისთვის — შემდეგ დაბეჭდეთ სატესტო გვერდი
+test_printers_dd	პრინტერები სატესტო გვერდისთვის
+test_printers_dd_n	{n} პრინტერები სატესტო გვერდისთვის · შეეხეთ შესაცვლელად
+kot_test_printers_dd	პრინტერები სატესტო ბეჭდვისთვის
+kot_test_printers_dd_n	{n} პრინტერ(ებ)ი სატესტო ბეჭდვისთვის · შეეხეთ შესაცვლელად
+test_printer_picked	ტესტირება: {name}
+test_printer_cleared	არ მიმდინარეობს ტესტირება: {name}
+test_page_sent_n	სატესტო გვერდი გაიგზავნა {n} პრინტერზე
+test_kot_pick_first	ჯერ აირჩიეთ პრინტერ(ებ)ი სატესტო ბეჭდვისთვის — შემდეგ სატესტო ბეჭდვა
+test_kot_sent_n	სატესტო ბეჭდვა გაეგზავნა {n} პრინტერ(ებ)ს
+cancel_pick	მარკო
+cancel_pick_on	მონიშნულია
+cancel_pick_meta	მონიშნულია გაუქმებისთვის
+batch_cancel	მონიშნულია გაუქმება
+batch_cancel_n	გაუქმება მონიშნულია ({n})
+batch_cancel_none	ჯერ მონიშნეთ ერთი ან მეტი გაგზავნილი ელემენტი — შემდეგ მონიშნულია გაუქმება
+batch_cancel_title	მონიშნული მედიკამენტების გაუქმება - ერთი მიზეზი, თითო განყოფილების ერთი გაუქმება
+batch_cancel_ok	{n} ერთეულები გაუქმდა · {slips} გაუქმება ამონაწერ(ებ)ი → {kitchens}
+batch_cancel_ok_noprint	{n} ერთეულები გაუქმდა — ავტომატური ბეჭდვა გამორთულია, ასე რომ, გაუქმება არ არის
+no_printer_kitchen_station	ამ სადგურისთვის პრინტერი არ არის
+printers_saved	შენახულია
+test_page_sent	გაიგზავნა სატესტო გვერდი — შეამოწმეთ პრინტერი
+test_page_sent_one	სატესტო გვერდი გაიგზავნა {name}-ზე — შეამოწმეთ ეს პრინტერი
+printers_found	ნაპოვნია {n}: {list}
+printers_find_synced	ნაპოვნია {n} — {new} ახალი
+printer_on_device	გადაარჩინა
+printer_already_added	უკვე დამატებულია
+printer_already_saved	უკვე შენახულია: {name}
+find_printers	იპოვნეთ პრინტერები
+printers_looking	ეძებს…
+saving_printer	პრინტერის დამატება…
+cancelled	გაუქმდა
+printers_tap_find	შეეხეთ პოვნას პრინტერების სიაში, რომელთა გამოყენებაც ამ მოწყობილობამ შეიძლება.
+printers_none_found	ვერ მოიძებნა — ჩაწერეთ სისტემის პრინტერის სახელი ან IP (მაგ. 192.168.1.50).
+printer_from_find	დამატებულია {name}
+kot_printer_ph	პრინტერი სრიალებისთვის
+bill_printer_ph	პრინტერი სტუმრების გადასახადებისთვის
+kot_print_on	ბილეთების ავტომატური ბეჭდვა: ჩართულია
+kot_print_off	ბილეთების ავტომატური ბეჭდვა: გამორთულია
+queue_refused	არ არის მიღებული მაღაზიის მიერ ({n}) — შეამოწმეთ თითოეული დახლზე:
+clear_not_accepted	შემოწმებულია - გაასუფთავეთ ეს სია
+device_name_ph	ამ მოწყობილობის სახელი
+lan_last_update	ბოლო განახლება {time}
+lan_not_accepted	{n} არ არის მიღებული
+connected_now	დაკავშირებული ახლა
+backup_failed	ბოლო ავტომატური სარეზერვო ასლი ვერ მოხერხდა: {e}
+backup_overdue	სარეზერვო ასლი არ არის {n} დღის განმავლობაში — შეინახეთ აპი ღია ამ მოწყობილობაზე, რათა შეძლოს სარეზერვო ასლების შექმნა.
+disk_low	მხოლოდ {mb} მბაიტი უფასო ამ მოწყობილობაზე — სარეზერვო ასლების შექმნა მალე ვერ მოხერხდება. გაათავისუფლე ცოტა სივრცე.
+last_seen_devices	ბოლო ვიზიტი: {time}
+sync_interval	სინქრონიზაცია ყოველ {secs} წმ
+connection_to_shop	კავშირი მაღაზიასთან
+supplier_name_ph	მიმწოდებლის სახელი (ან მომხმარებელი)
+supplier_ph	მიმწოდებელი
+switch_device	გადართეთ ეს მოწყობილობა
+take_payment	მიიღეთ გადახდა
+tax_added_till	{tax} ექსკლუზიური
+tax_inside_price	{tax} ჩათვლით
+tax_invoice	საგადასახადო ინვოისი
+till_to_bank	სალარო აპარატი → ბანკი
+units_heading	ერთეულები
+unlock_after_pairing	შეიყვანეთ PIN
+unlock_with_login	განბლოკვა შესვლით
+unmark	მონიშვნის მოხსნა
+update_my_password	განაახლე ჩემი პაროლი
+update_my_pin	განაახლეთ ჩემი შესვლა
+duress_heading	გადაუდებელი განბლოკვა PIN (მხოლოდ მფლობელი)
+duress_help	სურვილისამებრ. თუ ეს PIN აკრეფილია განბლოკვისას თქვენის ნაცვლად, წიგნების ყველა ჩანაწერი წაიშლება (გაყიდვები, წიგნი, ისტორია) და იხსნება, როგორც მფლობელი ნორმალურად - რჩება მედიკამენტები, ფასები, დახლები, პერსონალი და პარამეტრები. სქემა და კონფიგურაცია არ წაიშლება. გამოიყენეთ მხოლოდ იმ შემთხვევაში, თუ იძულებული ხართ განბლოკოთ. დატოვეთ ცარიელი და შეინახეთ გამორთვაზე. არასოდეს იყოს იგივე, რაც ვინმეს PIN.
+duress_pin_ph	გადაუდებელი PIN (4–12 ციფრი)
+duress_confirm_ph	ხელახლა ჩაწერეთ დასადასტურებლად
+save_duress_pin	დაზოგე საგანგებო PIN
+clear_duress_pin	გამორთეთ საგანგებო PIN
+duress_on	გადაუდებელი განბლოკვა PIN ჩართულია
+duress_off	გადაუდებელი განბლოკვა PIN გამორთულია
+duress_saved	გადაუდებელი განბლოკვა PIN შენახულია
+duress_cleared	გადაუდებელი განბლოკვა PIN გამორთულია
+upi_amount_ph	UPI თანხა
+void	ბათილი გაყიდვა
+write_off_ap	ჩამოწერეთ AP
+write_off_heading	ჩამოწერა (გასუფთავება გადახდის გარეშე)
+write_off_nil	ჩამოწერე / ნულოვანი ნაშთი
+your_brand	თქვენი ბრენდი (აპლიკაციის შიგნით)
+your_categories	თქვენი კატეგორიები
+account_kind	ანგარიშის ტიპი (შეეხეთ ერთს)
+actual_total_cap	ფაქტობრივი სულ
+amend_help	აირჩიეთ გაყიდვა შესაცვლელად, გასაუქმებლად ან დასაბრუნებლად. ცვლილებები ინახავს სრულ ისტორიას. დამრგვალებული ჯამი იწყება გამოყენებულის ტოლი - რედაქტირება მხოლოდ რაუნდში. გაუქმებას და თანხის დაბრუნებას შეიძლება დასჭირდეს მფლობელი ან მენეჯერი PIN (აკრეფილი ზემოთ; ჩაწერილი თქვენი სახელით).
+applied_total_cap	გამოყენებული ჯამი
+bank_balance	ბანკის ბალანსი
+bank_net_today	ბანკის ქსელი დღეს
+branch_export_help	ექსპორტი წერს branch_snapshot_CODE_DATE.json სარეზერვო ასლების საქაღალდეში და აკოპირებს მას ბუფერში. სხვა განყოფილების დღის იმპორტისთვის, შეინახეთ მისი ფაილი import_branch_snapshot.json სახით იმავე საქაღალდეში, შემდეგ შეეხეთ იმპორტს.
+brand_shown_help	ნაჩვენებია აპის შიგნით ეკრანებზე. დაინსტალირებული აპის სახელი და ხატულა ამ მოწყობილობაზე რჩება პლატფორმის სიაში.
+app_icon	აპლიკაციის ხატულა
+logo_help	სურვილისამებრ მაღაზიის ნიშანი აპში ეკრანებზე.
+onboard_layout	რასაც მიიღებთ
+item_photo_help	სურვილისამებრ. ფოტოს გარეშე ჩვენ ვაჩვენებთ ინიციალებს მენიუს ელემენტის სახელიდან.
+stamp_heading	ბეჭედი
+stamp_image_help	სურვილისამებრ შტამპის გამოსახულება დაბეჭდილ გადასახადებზე და მომხმარებლის ჩვენებაზე.
+payment_qr_heading	გადახდის QR
+payment_qr_image_help	სტატიკური QR გადასახადებზე და მომხმარებლის ჩვენებაზე; წინააღმდეგ შემთხვევაში, გადახდა იყენებს დინამიურ UPI QR-ს VPA-დან ზემოთ.
+cash_in_hand	ნაღდი ფული ხელზე (სალარო აპარატი)
+change_my_pin_heading	ჩემი შესვლა
+connect_to_server	სერვერთან დაკავშირება
+counter_locked	მრიცხველი 01 · დაკეტილია
+country_pack_help	ქვეყნის პაკეტი ადგენს გადასახადის სახელს და მათემატიკას, მყისიერი გადახდის ლიანდაგს და ბიზნეს ID-ს, რომელიც დაბეჭდილია სტუმრების გადასახადებზე. Kumkaj არსად არ წარადგენს გადასახადებს და არ გასცემს სახელმწიფო ელექტრონულ ინვოისებს.
+currency_use_help	გადაახვიეთ და შეეხეთ გამოყენებას ნებისმიერი მხარდაჭერილი ვალუტისთვის.
+day_close_help	დღის დახურვის ჩაწერა ინახავს ამ შეჯამებას (და უჯრის სხვაობას, თუ დათვლის) აუდიტის ჟურნალში. არ წყვეტს გაყიდვას.
+expenses_word	ხარჯები
+feature_access_help	რისი გახსნა შეუძლიათ - სურვილისამებრ; სამუშაო ზემოთ უკვე ადგენს ნაგულისხმევს
+footer_local	ლოკალური SQLite · უფასო სამუდამოდ · ნულოვანი ღრუბელი
+fresh_book_tabiyat	ახალი = ცარიელი კატალოგი (დაამატეთ ნივთები მოგვიანებით). წიგნი = ჩაწერეთ გახსნის აქცია და ვინ გმართებთ ქვემოთ.
+fresh_selected	ახალი შერჩეული - კატალოგი ცარიელი რჩება. შეეხეთ შესრულებულია, როცა მზად იქნებით.
+gross_word	მთლიანი
+how_start	როგორ გსურთ დაიწყოთ?
+kot_print_help_tabiyat	არ გამოიყენება სალაროებში.
+later_country_pack	მოგვიანებით: პარამეტრები → გამოიყენეთ თქვენი ქვეყნის პაკეტი საგადასახადო და გადახდის ეტიკეტებისთვის.
+local_badge	ლოკალური
+mix_type_hint_tabiyat	საჭიროების შემთხვევაში გაყოფა ნაღდი ფულით / UPI / ბარათზე / კრედიტზე. კრედიტს სჭირდება კლიენტი ზემოთ.
+money_in_sales	ფული (გაყიდვები)
+net_word	წმინდა
+offline_badge	ოფლაინ
+optional_login_help	არასავალდებულო შესვლა (id + პაროლი). მფლობელი კომპლექტი ერთხელ; მხოლოდ მომხმარებელს შეუძლია შეცვალოს პაროლი მოგვიანებით.
+or_unlock_login	ან განბლოკეთ შესვლის ID + პაროლით
+permission_preset	სამუშაო (აყენებს ეკრანებს და ფულის მოქმედებებს)
+preset_help_tabiyat	მოლარე: გაყიდე. მენეჯერი: გაყიდვა + მენიუს ელემენტები + ბათილად/შესწორება.
+product_locked_tabiyat	ტაბიატი
+product_only_tabiyat	Tabiyat არის აფთიაქის ოპერაციული სისტემა: მედიკამენტების გაყიდვა, პარტიული/ვადის გასვლის აღრიცხვა, კრედიტი და წიგნები — ხაზგარეშე თქვენს მოწყობილობებზე. განრიგი H / Rx დროშები არის მფლობელის შენიშვნები და არა შესაბამისობა.
+purchases_cogs	შესყიდვები (COGS)
+qty_cap	რაოდენობა
+restore_help	აღდგენა: აირჩიეთ სარეზერვო. წიგნები იხსნება, როგორც მაშინ იყო; ჩანაწერები, როგორც ახლა არის, ჯერ შენახულია, ასე რომ ეს შეიძლება გაუქმდეს.
+wipe_data_heading	წაშალეთ ადგილობრივი მონაცემები
+wipe_data_help	მხოლოდ მფლობელი - იგივე არჩევანი, როგორც Windows-ის დეინსტალაცია. ბიზნეს ჩანაწერები ასუფთავებს ვაჭრობის ისტორიას, მაგრამ ინახავს ელემენტებს და კონფიგურაციას (როგორიცაა გადაუდებელი განბლოკვის PIN). მაღაზიის დაყენება შლის წიგნების მონაცემთა ბაზას. ეკრანის პარამეტრები ასუფთავებს ფანჯარას/ენას. დაადასტურეთ მფლობელის PIN-ით. გადაუდებელი განბლოკვის PIN გუნდში ცალკეა (ფარული წაშლა განბლოკვისას).
+wipe_trading	ბიზნეს ჩანაწერები
+wipe_schema	მაღაზიის დაყენება
+wipe_ui	ეკრანის პარამეტრები
+wipe_owner_pin_ph	მფლობელი PIN წასაშლელად
+wipe_delete_selected	არჩეული წაშლა
+wipe_owner_only	მხოლოდ მფლობელს შეუძლია წაშალოს ადგილობრივი მონაცემები.
+restore_owner_only	მხოლოდ მფლობელს შეუძლია სარეზერვო ასლის აღდგენა.
+wipe_owner_pin_needed	შეიყვანეთ მფლობელი PIN ადგილობრივი მონაცემების წასაშლელად.
+wipe_nothing_selected	აირჩიეთ რა წაშალოთ ჯერ.
+wipe_done	არჩეული ადგილობრივი მონაცემები წაიშალა.
+wipe_schema_done	მაღაზიის დაყენება წაშლილია — გასაგრძელებლად აირჩიეთ სერვერი ან კლიენტი.
+rounded_total	დამრგვალებული სულ
+setup_app_tabiyat	დააყენეთ Tabiyat
+shop_logo_optional	მაღაზიის ლოგო (სურვილისამებრ)
+stock_type_help	ჩაწერეთ მენიუს ელემენტის სახელი (მისი ნაწილი საკმარისია), რაოდენობა, შემდეგ დაარეგულირეთ. მენიუს ელემენტები, რომლებიც ჯერ არ არის დათვლილი, საჭიროა თვალის დევნების ერთხელ დაწყება.
+team_owner_help	დატოვეთ ადამიანი ცარიელი, რომ დაამატოთ ვინმე: სახელი, სამუშაო, მომხმარებლის სახელი, PIN და არასავალდებულო პაროლი, შემდეგ დაამატეთ. შეარჩიეთ ადამიანი, რომელიც შეასწორებს იგივე ფორმას - სახელი, მომხმარებლის სახელი, პაროლი, ეკრანები და უფლებები - შემდეგ შეინახეთ. თქვენი საკუთარი PIN და პაროლი არის ერთი შესვლა ბოლოში. მფლობელი არ ცვლის სხვის PIN-ს.
+staff_name_ph	პერსონალის სახელი
+staff_copy_hire_ph	დააკოპირეთ დაყენება (არასავალდებულო)
+staff_copy_hire	გამოიყენეთ ამ ადამიანის დაყენება
+staff_edit_name_ph	საჩვენებელი სახელი
+staff_rename	სახელის შენახვა
+staff_copy_edit_ph	დააკოპირეთ დაყენება სხვა პირისგან
+staff_copy_edit	დააკოპირეთ მათი დაყენება არჩეულზე
+staff_copy_edit_onto	დააკოპირეთ მათი დაყენება {name}-ზე
+staff_deactivate_named	{name} წაშლა
+staff_renamed	სახელი შენახულია
+staff_setup_copied_hire	დაყენება კოპირებულია {name}-დან — დააყენეთ ახალი სახელი და PIN, შემდეგ დაამატეთ პერსონალი
+staff_setup_copied_edit	დაკოპირდა {from}-ის დაყენება {to}-ზე
+staff_copy_need_selected	აირჩიეთ ვინ უნდა დაარედაქტიროთ პირველი
+staff_copy_need_source	აირჩიეთ ვისი დაყენება უნდა დააკოპიროთ
+staff_copy_same	ეს არის იგივე ადამიანი - აირჩიე სხვა
+staff_rename_need_selected	აირჩიეთ ვის გადარქმევა პირველი
+team_pick_hint	აირჩიეთ ვინ უნდა დაარედაქტიროთ — ეკრანები, ფულის უფლებები და სადგურები გამოჩნდება მხოლოდ ამ ადამიანისთვის.
+team_stations_help	სადგურები მათ შეუძლიათ გამოიყენონ
+team_stations_changed	სადგურები შეიცვალა — შეინახეთ დაყენება ამ ადამიანისთვის
+team_features_changed	ეკრანები შეიცვალა — შეინახეთ დაყენება ამ ადამიანისთვის
+team_rights_changed	უფლებები შეიცვალა - შეინახეთ დაყენება ამ პიროვნებისთვის
+they_owe_us	მათ ვალი აქვთ
+unit_at_cap	ერთეული @
+units_help	მენიუს ელემენტების ეტიკეტების კოდები (კგ, ცალი, ჩანთა). ყველა ერთეული უნდა დაუკავშირდეს - პირდაპირ ან სხვა ერთეულების მეშვეობით - სტანდარტს (kg · cm · ml · pc), მაგ. 1 ყუთი = 2 ყუთი და 1 ყუთი = 20 სმ. კონვერტაციები: 1-დან = ფაქტორიდან. ვალუტა არასოდეს არის ერთეული.
+units_picker_help	შეეხეთ ჩართვა/გამორთვას ყიდვისა და ნივთების ამომრჩევებში ერთეულის საჩვენებლად. გამორთული ერთეულები კვლავ გარდაიქმნება.
+unit_picker_on	ჩართ.
+unit_picker_off	გამორთ.
+we_owe_them	მათ ვალი გვაქვს
+who_unlocking	ვინ ხსნის?
+locked_word	ჩაკეტილი
+show_pin	ჩვენება PIN
+hide_pin	დამალვა PIN
+set_owner_pin	დააყენეთ მფლობელი PIN
+enter_owner_passcode	შეიყვანეთ მფლობელის პაროლი
+enter_staff_passcode	შეიყვანეთ პერსონალის პასკოდი
+pin_count_zero	0 / 12 ციფრი · მინიმუმ 4, შემდეგ OK
+pin_count_need	{} / 12 ციფრი · საჭიროა {} მეტი
+pin_count_full	12 / 12 ციფრი · დააჭირეთ OK
+pin_count_ready	{} / 12 ციფრი · დააჭირეთ OK, როცა მზად იქნება
+pin_hint_choose	აირჩიეთ 4–12 ციფრი · შეიყვანეთ ან განბლოკეთ შესანახად
+pin_hint_new	ახალი 4–12 ნიშნა მფლობელი PIN · შეიყვანეთ ან განბლოკეთ
+pin_hint_shop_code	შეიძინეთ მოწყობილობა · დაწყვილების კოდი {}
+pin_hint_books	ეს მოწყობილობა ინახავს წიგნებს
+pin_hint_paired	დამატებითი სალარო აპარატი დაწყვილებულია — განბლოკეთ გასაყიდად
+pin_hint_pair_first	დამატებითი სალარო აპარატი — ჯერ დააწყვილეთ მაღაზიის მოწყობილობასთან
+unlock_to_continue	განბლოკეთ გასაგრძელებლად
+no_staff_yet	ჯერ არ არის პერსონალი — განბლოკეთ როგორც მფლობელი, შემდეგ კი გუნდი
+status_server_set_pin	სერვერის რეჟიმი — დააყენეთ მფლობელი PIN
+status_server_tills	სერვერის რეჟიმი - დამატებით სალარო აპარატებს შეუძლიათ შეუერთდნენ. განბლოკვა
+status_server_unlock	სერვერის რეჟიმი - განბლოკვა როგორც მფლობელი
+status_client_unlock	კლიენტის რეჟიმი - განბლოკეთ გასაყიდად
+icon_new_selected	ხატულა: არჩეულია ახალი ფაილი — შეეხეთ ბრენდის შენახვას
+icon_custom	ხატულა: მორგებული ადგილის ნიშანი
+icon_default	ხატულა: Kumkaj ნიშანი (ნაგულისხმევი) — აირჩიეთ მორგებული
+logo_yours	ლოგო: თქვენი მაღაზიის ლოგო - ნაჩვენებია ეკრანებზე და ქვითრებზე
+logo_default	ლოგო: Kumkaj ნიშანი (ნაგულისხმევი) — აირჩიეთ საკუთარი, თუ გაქვთ
+tmpl_current	მიმდინარე: {} — {}
+tmpl_selected	არჩეული: {} — {}
+setup_complete	დაყენება დასრულებულია
+onboard_fresh_tmpl	ახალი · {} — კატალოგი იწყება ცარიელი; დაამატეთ მენიუს ელემენტები მენიუს მენიუში, შემდეგ შესრულებულია.
+onboard_book_tmpl	წიგნი · {} — მენიუს ელემენტების დამატება და კრედიტის გახსნა, შემდეგ შესრულებულია.
+onboard_template_tmpl	თუ გსურთ, დაასახელეთ ადგილი, შემდეგ აირჩიეთ როგორ დაიწყოთ.
+tmpl_blurb	სააფთიაქო დახლი: მედიკამენტები, პარტია/ვადაგადაცილებული, ხატა, წიგნები.
+tmpl_how	გაყიდვა დახლზე; იყიდეთ მარაგისთვის; წიგნები დღის წიგნი.
+reports_facet_title	ანგარიშები
+reports_facet_help	დღის წიგნი, მომხმარებელთა ან მიმწოდებლის დაბერება, საბანკო პოსტები და პერიოდის P&L.
+against_bill_ph	ზემოთ # სტუმრის ბილეთის წინააღმდეგ (არასავალდებულო)
+aliases_ph	მეტსახელები, მოკლე სახელები - მძიმით გამოყოფილი
+amount_blank_full_ph	თანხა (ცარიელი = სრული ბალანსი)
+amount_owed_ph	დავალიანების თანხა
+amount_ph	თანხა
+amount_received_ph	მიღებული თანხა
+amount_we_pay_ph	თანხა, რომელსაც ჩვენ ვიხდით
+business_name_ph	ბიზნესის სახელი
+category_new_ph	კატეგორია (არასავალდებულო, შექმნილია თუ ახალია)
+code_bag_ph	კოდი (ჩანთა)
+conv_factor_ph	ფაქტორი (25 = 1 ტომარა → 25 კგ)
+country_code_ph	ქვეყნის კოდი მაგ. IN, GB, აშშ, AE, BR
+credit_khata_amount_ph	საკრედიტო / საკრედიტო წიგნის თანხა
+credit_limit_ph	საკრედიტო ლიმიტი (0 = არცერთი)
+from_code_ph	კოდიდან (ჩანთიდან)
+item_name_lang_ph	მენიუს პუნქტის სახელი — ჩაწერეთ თქვენს ენაზე
+login_id_opt_ph	მომხმარებლის სახელი (საჭირო, უნიკალური)
+manager_pin_ph	მენეჯერი PIN დასამტკიცებლად (მხოლოდ იმ შემთხვევაში, თუ ვერ გააუქმებთ)
+new_branch_name_ph	ახალი ფილიალის სახელი
+new_password_ph	ახალი პაროლი (სურვილისამებრ)
+new_pin_ph	ახალი PIN (4–12 ციფრი)
+note_bank_ph	შენიშვნა (დეპოზიტი, გატანა,…)
+note_buy_expense_ph	შენიშვნა (საწვავი, ქირა, ...)
+note_expense_ph	შენიშვნა (საწვავი, ოფისი, ...)
+options_tabiyat_ph	ვარიანტები — Size*: Small=199, Large=399 | Toppings+3: Cheese=40, Olive=30 | Extra cheese=40
+part_second_way_ph	ნაწილი მეორე გზით (სურვილისამებრ)
+phone_ph	ტელეფონი
+place_name_ph	ამ ადგილის სახელი
+qty_example_ph	რაოდენობა (მაგ. 1,5 კგ-ზე)
+quantity_ph	რაოდენობა
+reason_required_ph	მიზეზი (აუცილებელია)
+role_title_ph	როლის სათაური (მაგ. ბარისტა)
+service_pct_ph	სერვისის % სურვილისამებრ 0/10/12
+short_code_ph	მოკლე კოდი (MG02)
+starting_password_ph	საწყისი პაროლი (არასავალდებულო)
+starting_pin_ph	საწყისი PIN (4–12 ციფრი)
+station_name_ph	სადგურის სახელი (არასავალდებულო)
+station_new_ph	განყოფილება (სურვილისამებრ)
+table_name_ph	მრიცხველის / დაფის სახელი
+tax_rate_ph	საგადასახადო განაკვეთის სახელი ან % — სტანდარტული, შემცირებული, 0, 5, 12, 18, 20
+to_code_ph	კოდირება (კგ)
+uncleared_no_ph	გაუგებარი # ზემოთ
+unit_cost_ph	ერთეულის ღირებულება
+unit_name_bag_ph	სახელი (ჩანთა)
+unit_plate_ph	ერთეული (ფირფიტა / ცალი - ცარიელი = თითოეული)
+pay_credit	ანგარიშზე
+book_kind_today	დღეს ჩანაწერები
+book_kind_month	ამ თვის ჩანაწერები
+book_kind_aging	გადაუხდელი / სადებეტო-კრედიტი
+book_kind_balance	ბალანსი
+order_help	შეეხეთ მენიუს ერთეულს მის დასამატებლად.
+floor_help	ეს მაღაზია დახლზე იყიდება. მაგიდები და სასადილო იატაკი ტაბიატის ნაწილი არ არის.
+kitchen_help	არ გამოიყენება სალაროებში.
+kitchen_empty	არ არის ღია ბილეთები (სალაროები ჩვეულებრივ ტოვებენ ამ ეკრანს გამოუყენებლად).
+add_a_table	დაამატეთ სასადილო მაგიდა
+add_station_heading	დაამატეთ დისპანსერის განყოფილება
+categories_help	შეეხეთ გამოყენებას მენიუს პუნქტის ზემოთ მოცემულ კატეგორიაში შესატანად. ფოტო აძლევს კატეგორიას სურათს; ერთის გარეშე აჩვენებს მის ინიციალებს.
+dish_search_ph	მოძებნეთ სახელი, მარილი ან შტრიხკოდი…
+tile_free	ვაკანტური
+tile_occupied	ოკუპირებული
+tile_food_ready	საჭმელი მზადაა
+tile_bill_printed	დაბეჭდილია სტუმრის ანგარიში
+tile_paid	გადახდილი
+tile_bill_btn	ანგარიში
+tile_occupy_btn	დაჯექით სტუმრები
+tile_free_btn	გაათავისუფლეთ სასადილო მაგიდა
+tile_ready_btn	გაათავისუფლეთ სასადილო მაგიდა
+tile_undo_bill	სტუმრის ანგარიშის გაუქმება
+summary_busy	სასადილო მაგიდები დაკავებულია
+summary_to_collect	შეგროვება
+summary_on_floor	სასადილოში
+floor	მაღაზია
+sizes_as_items_ph	ზომები მენიუს ცალკეული ელემენტების სახით (სურვილისამებრ) — Half=120, Full=200
+dish_group_ph	სიძლიერის / შეფუთვის ჯგუფი (სურვილისამებრ) — მაგ. 500 მგ ზოლები
+discount	ფასდაკლება
+remove_discount	ფასდაკლების მოხსნა
+apply_discount	გამოიყენეთ ფასდაკლება
+save_opening_cash	გახსნის ნაღდი ფულის დაზოგვა
+close_shift_print	დახურეთ ცვლა და ამობეჭდეთ სლაპი
+area_prices_ph	რეგიონის ფასები (სურვილისამებრ) — AC=220, Parcel=210
+discount_ph	10% თუ 50
+discount_reason_ph	მიზეზი (მაგ. რეგულარული სტუმარი, დაგვიანებული კვება)
+opening_float_ph	დღეს დილით უჯრაში ჩადებული ნაღდი ფული
+shift_counted_ph	ნაღდი ფული დათვლილია ჩაბარებისას
+opening_float	ნაღდი ფულის გახსნა (float)
+shift_handover	ცვლის გადაცემა
+shift_since	ეს ცვლილება მას შემდეგ
+expected_in_drawer	მოსალოდნელია უჯრაში
+right_discount	მიეცით ფასდაკლება
+floor_in_kitchen	მიმდინარეობს
+floor_eating	მსახურობდა
+pick_category	აირჩიეთ კატეგორია
+close_category_list	კატეგორიების სიის დახურვა
+new_category_row	ახალი კატეგორია — შექმნილია მენიუს ელემენტის შენახვისას
+your_category	შენი კატეგორია
+suggested_category	შემოთავაზებული - ჩვენი ნივთებიდან
+category_search_ph	კატეგორია — მოძებნეთ თქვენი ან აკრიფეთ ახალი
+line_sent_state	გაგზავნილი
+line_nc_state	უფასო (NC) - არ არის გადახდილი
+cancel_item_short	გაუქმება
+nc_short	NC
+charge_again_short	დატენვა
+move_short	გადაადგილება
+cancel_item_title	გააუქმეთ ეს საქონელი - ბექ ოფისი იღებს გაუქმების საბუთს
+nc_item_title	გააკეთეთ მენიუს ეს ელემენტი (NC)
+charge_again_title	კვლავ დატვირთეთ მენიუს ეს ელემენტი
+move_item_title	გადაიტანეთ მენიუს ეს ელემენტი სხვა სასადილო მაგიდაზე
+already_cooked	უკვე მოხარშული (გაფლანგვა)
+not_cooked_yet	ჯერ არ არის მოხარშული
+return_to_customer	დაუბრუნდით მომხმარებელს
+short_by	მოკლედ
+tip_not_sale	რჩევა (პერსონალის, არა გაყიდვის)
+right_settle	მიიღეთ გადახდა
+right_cancel_sent	გაგზავნილი მენიუს ელემენტის გაუქმება
+right_complimentary	უფასო (NC)
+right_move_table	მრიცხველების გადატანა / შერწყმა
+right_reprint	ხელახლა დაბეჭდეთ სტუმრის ანგარიში
+right_allowed	ნებადართულია
+right_with_approval	თანხმობით
+right_denied	დაუშვებელია
+editing_staff	რედაქტირება
+finding_server	ვეძებ მაღაზიის სერვერს ამ Wi‑Fi…
+no_server_found	არცერთი არ მოიძებნა. სერვერზე: პარამეტრები → სხვა მოწყობილობები → დამატებითი სალარო აპარატების დაშვება (იგივე Wi‑Fi). ან ჩაწერეთ იქ ნაჩვენები IP.
+servers_found_pick	შეეხეთ მაღაზიას, რომელთანაც გსურთ დაკავშირება.
+server_host_selected	{host}-ის გამოყენებით — შეიყვანეთ დაწყვილების კოდი, შემდეგ დააწყვილეთ ახლა.
+print_bill	დაბეჭდეთ სტუმრის კანონპროექტი
+table_actions	კონტრ მოქმედებები
+move_merge_table	სასადილო მაგიდის გადატანა / შერწყმა
+move_help	გადაიტანეთ ამ მრიცხველის ბრძანება თავისუფალ მაგიდაზე, ან შეუერთეთ გაშვებულ ცხრილში.
+move_target_ph	მრიცხველის სახელი
+approval_pin_ph	მენეჯერი PIN (მხოლოდ მოთხოვნის შემთხვევაში)
+move_here	გადადი აქ
+merge_into	შერწყმა მასში
+line_reason_ph	მიზეზი (მაგ. მომხმარებელმა გადაიფიქრა, არ იყო მარაგი)
+line_qty_ph	რამდენი უნდა გააუქმოს (ცარიელი = ყველა)
+line_target_ph	სასადილო მაგიდაზე გადასვლა (მაგ. D5)
+confirm	დაადასტურეთ
+menu_search_ph	მოძებნეთ მენიუს ელემენტი ან მოკლე კოდი
+customer_paid_ph	მომხმარებელმა გადაიხადა
+tip_ph	რჩევა
+table_area_ph	ფართობი (მაგ. Dine In, Parcel, AC)
+table_range_ph	ბევრი ერთდროულად: D1-D20
+add_these_tables	დაამატეთ ეს მრიცხველები
+remove_these_tables	ამოიღეთ ეს მრიცხველები
+table_remove_ph	ამოღება: T1-T24, ან ერთი სასადილო მაგიდის სახელი
+find_server	იპოვნეთ მაღაზიის სერვერი
+bill_format	სტუმარი სტუმრის კანონპროექტის ფორმატი
+bill_format_help	იბეჭდება თქვენი მაღაზიის სახელით ყველა ანგარიშზე. ცალკე ხაზები | (მაგ. MG Road, Rajkot | Ph 98250 00000).
+bill_header_ph	მისამართი | ტელეფონი
+fssai_ph	წამლის ლიცენზია No. (არასავალდებულო - თქვენი ფორმულირება)
+bill_footer_ph	ქვედა კოლონტიტული (მაგ. გმადლობთ, ხელახლა ეწვიეთ)
+save_bill_format	შეინახეთ სტუმრის ანგარიშის ფორმატი
+kot_format	Slip ფორმატი
+kot_format_help	შეეხეთ ველს სიაში. ჩვენება, შრიფტის ზომა და წონა ვრცელდება ამ ველზე ზემოთ არჩეულ სლიპებზე. თითოეული სახეობა ინარჩუნებს თავის ზომებს და წონას.
+kot_format_fields	ველები
+kot_field_next	შემდეგი ველი
+kot_field_show	ჩვენება
+kot_field_hide	დამალვა
+kot_field_on	შოუ
+kot_field_off	დამალვა
+kot_field_size	შრიფტის ზომა
+kot_field_size_ph	მაგ. 16, 20, 24, 28, 32…
+kot_weight_light	სინათლე
+bill_kot_panel_help	კანონპროექტის განლაგება და შინაარსის სიგანე. მოლარე არის ის, ვინც გასცა ან მოახდინა გადასახადი - გაყიდვის სრული ამბავი წიგნებში რჩება.
+std_size_ph	მაგ. 18, 20, 26…
+kot_show_shop	მაღაზიის სახელი
+kot_hide_shop	მაღაზიის დამალვა
+kot_show_time	დრო
+kot_hide_time	დროის დამალვა
+kot_show_waiter	მოლარე
+kot_hide_waiter	მოლარის დამალვა
+kot_show_station	სადგური
+kot_hide_station	სადგურის დამალვა
+kot_show_table	დახლი
+kot_hide_table	სასადილო მაგიდის დამალვა
+kot_show_kot_no	ბილეთის No
+kot_hide_kot_no	დამალე ბილეთი No
+kot_width	გადახედვისას (კონტენტის სიგანე დააყენეთ ჩანართზე)
+kot_width_58	58 mm
+kot_width_80	80 mm
+kot_kind_heading	ბილეთი სახის
+kot_kind_original	ორიგინალი
+kot_kind_duplicate	დუბლიკატი
+kot_kind_modified	შეცვლილია
+kot_kind_cancelled	გაუქმდა
+kot_style_heading	ველის ტიპი ზომა და წონა
+kot_style_title	სათაური
+kot_style_item_qty	მენიუს პუნქტი · რაოდენობა
+kot_style_field_pick	აირჩიეთ ველი
+kot_weight_regular	რეგულარული
+kot_weight_bold	თამამი
+kot_align	გასწორება
+kot_align_start	დაწყება
+kot_align_center	ცენტრი
+kot_align_end	დასასრული
+content_width	შინაარსის სიგანე (მმ)
+content_width_bill	სტუმარი სტუმრის ბილეთის კონტენტის სიგანე (მმ)
+content_width_kot	ბილეთის შინაარსის სიგანე (მმ)
+content_width_ph	ან ჩაწერეთ შინაარსის სიგანე, 40–210 mm
+content_width_help	რამდენად ფართოა ეს სლიპი. ბილი ინარჩუნებს საკუთარ სიგანეს.
+content_width_bill_help	რამდენად ფართოა მომხმარებლის კანონპროექტის ბეჭდვა. ნაგულისხმევი 210 მმ (გვერდი). 58 მმ ვიწრო სრიალი, 80 მმ სიგანის სრიალი, 112 მმ 4 ინჩი, 210 მმ A4 სიგანე. ჩაწერეთ ნებისმიერი მნიშვნელობა 40-დან 210-მდე. ბილეთებს აქვთ საკუთარი სიგანე სლიპის ჩანართზე.
+content_width_kot_help	რამდენად ფართოდ იბეჭდება ბილეთი. ნაგულისხმევი 80 მმ. 58 მმ ვიწრო სრიალი, 80 მმ სიგანე, 112 მმ 4 ინჩი, 210 მმ გვერდი. აკრიფეთ ნებისმიერი მნიშვნელობა 40-დან 210-მდე. მომხმარებელთა გადასახადებს აქვთ საკუთარი სიგანე Bill ჩანართზე.
+vp_paper_width	შინაარსის სიგანე (მმ)
+vp_paper_width_ph	ან ჩაწერეთ შინაარსის სიგანე, 40–210 mm
+vp_paper_width_help	შიგთავსის სიგანე დაყენებულია Bill & Slip ფორმატში - ცალკე ბილეთისთვის (ნაგულისხმევი 210 მმ) და ბილეთისთვის (ნაგულისხმევი 80 მმ).
+kot_size	შრიფტის ზომა
+kot_size_s	პატარა
+kot_size_m	ნორმალური
+kot_size_l	დიდი
+std_size	შრიფტის ზომა
+kot_copies	ასლები
+kot_copies_1	1
+kot_copies_2	2
+kot_copies_3	3
+kot_title_ph	სათაური (ცარიელი = TICKET)
+kot_footer_ph	უკანა ოფისის შენიშვნა (სურვილისამებრ)
+kot_preview	გადახედვა
+save_kot_format	Slip ფორმატის შენახვა
+test_kot_format	სატესტო ბეჭდვა
+test_kot_sent	ბილეთის გადახედვა გაიგზავნა
+test_bill_format	შეამოწმეთ სტუმრის ბილეთი
+test_bill_sent	სტუმარი სტუმრის ბილეთის გადახედვა გაიგზავნა
+test_print_no_printer	ამ სამუშაოსთვის პრინტერი არ არის — აირჩიეთ ერთი ამ ეკრანზე
+kot_format_saved	Slip ფორმატი შენახულია
+std_print	სტუმარი სტუმარი კანონპროექტის ბეჭდვის ზომა
+std_print_help	შრიფტის ზომა სტანდარტული პორტრეტისა და ლანდშაფტის ბილეთებისთვის OS/დოკუმენტის პრინტერებზე (შეიყვანეთ პუნქტები — არა მცირე/ნორმალური/დიდი). იგივე ზომა ორივე ორიენტაციაზე.
+std_size_s	პატარა
+std_size_m	ნორმალური
+std_size_l	დიდი
+save_std_print	შეინახეთ სტუმრის ბილეთის ბეჭდვის ზომა
+std_print_saved	სტუმრის ბილეთის ბეჭდვის ზომა შენახულია
+print_brand_kit	ბეჭდვის ბრენდის ნაკრები
+print_brand_kit_help	სურვილისამებრ ბეჭედი და გადახდის QR გამოსახულებები კანონპროექტის სახეებზე და LAN მომხმარებლის ჩვენებაზე. ზემოთ მოყვანილი VPA-დან დინამიური UPI QR კვლავ მუშაობს, როდესაც არ არის დაყენებული გადახდის QR სურათი.
+choose_stamp	აირჩიეთ ბეჭედი
+clear_stamp	წმინდა ბეჭედი
+stamp_set	ბეჭედი: ფაილზე - ნაჩვენებია კლიენტის ჩვენებაზე და დასახელებული დაბეჭდილ გადასახადებზე
+stamp_none	ბეჭედი: არცერთი
+choose_payment_qr	აირჩიეთ გადახდის QR
+clear_payment_qr	გადახდის QR-ის გასუფთავება
+payment_qr_set	გადახდის QR: ფაილში - ნაჩვენებია კლიენტის ეკრანზე (ანაცვლებს UPI QR თანხას იქ)
+payment_qr_none	გადახდის QR: არცერთი — თანხა QR UPI ID-დან გადახდისას
+aggregator_import	აგრეგატორის შეკვეთები (ფაილი)
+aggregator_import_help	არასავალდებულო ლოკალური იმპორტი: ჩადეთ import_aggregator_orders.json სარეზერვო საქაღალდეში (მასივი ან {"ბრძანებები":[…]}), შემდეგ შეეხეთ იმპორტს. არასოდეს ბლოკავს მრიცხველს; ცოცხალი Zomato/Swiggy არის ღრუბელი.
+import_aggregator_file	აგრეგატორის ფაილის იმპორტი
+team_pick_ph	პერსონალი რედაქტირებისთვის - სახელი, მომხმარებლის სახელი ან არჩევანი
+select_staff	აირჩიეთ ეს პერსონალი
+rights_help	ფულის ქმედებები ამ პირისთვის — შეეხეთ ციკლისთვის: ნებადართულია → სჭირდება უფროსის PIN → დაუშვებელია. ხელახლა ამობეჭდვა არის მხოლოდ გადასახადები; სექციები არის ჩამონათვალი ქვემოთ.
+dish_picker_help	მოძებნეთ ან დაათვალიერეთ ჩვენი ნივთები და შეეხეთ ერთს მისი სახელისა და ფოტოს შესავსებად — ან შეინახეთ საკუთარი სახელი. დააყენეთ თქვენი ფასი (0 კარგია), შემდეგ დაამატეთ ელემენტი.
+close_dish_list	ნივთების სიის დახურვა
+own_item_name	გამოიყენეთ ეს, როგორც თქვენი საკუთარი მენიუს ელემენტის სახელი
+on_your_menu	მედიკამენტების სიაში
+edit	რედაქტირება
+schemes	სქემები / შეთავაზებები
+schemes_help	იყიდე-ერთი-მიიღე-ერთი, პროცენტული ფასდაკლება და ფიქსირებული პაკეტები. მაგალითი: იყიდეთ 2 პარაცეტამოლი, მიიღეთ 1 ვიტამინი.
+scheme_bogo_ph	იყიდეთ 2 პარაცეტამოლი მიიღეთ 1 ვიტამინი
+add_scheme	დაამატეთ BOGO
+schedule_ph	საათები — ორშაბათი-პარ 07:00-11:00 ან საღამო 17:00-19:00=150
+upi_vpa_ph	UPI ID (VPA)
+upi_payee_ph	UPI გადახდის მიმღების სახელი (არასავალდებულო)
+upi_qr	UPI QR
+show_upi_qr	ჩვენება UPI QR
+close_upi_qr	დახურვა
+upi_qr_help	კლიენტი სკანირებს და იხდის. შეეხეთ გადახდას გადახდის შემდეგ. მეორე ეკრანი: გახსენით სერვერის URL /ჩვენება LAN-ზე.
+kot_recall	გავიხსენოთ
+recently_done	ცოტა ხნის წინ გაკეთდა
+recall_kot_ph	გასახსენებელი ბილეთი #
+role_help_customer	როლი: კლიენტი - საკრედიტო წიგნი (ისინი გვმართებენ). იმავე მომხმარებელს ან მიმწოდებელს შეუძლია მარაგის მიწოდებაც.
+role_help_both	როლები: კლიენტი + მიმწოდებელი - ერთი მომხმარებელი ან მიმწოდებელი, საკრედიტო წიგნი და გადასახდელი წიგნი, წმინდა ანგარიშებში.
+role_help_supplier	როლი: მიმწოდებელი - ჩვენ მათ გვმართებს შესყიდვები.
+dine_in_pick_table	არ გამოიყენება სალაროებში
+choose_table	აირჩიეთ მრიცხველი
+change_table	სასადილო მაგიდის შეცვლა
+pick_table_banner	შეარჩიეთ სასადილო მაგიდა ამ შეკვეთისთვის
+items_word	მენიუს ელემენტები
+items_section	მენიუს ელემენტები
+back_to_order	შეკვეთაზე დაბრუნება
+new_items_head	ჯერ არ არის გაგზავნილი
+price_ph	ფასი
+price_ph_gst_inside	ფასი ({tax} ჩათვლით)
+cancel_needs_table	საკონტრაქტო გაყიდვები რჩება ბილეთზე, სანამ არ მიიღებთ გადახდას
+tax_rates_missing_hint	არ არის {tax} ტარიფი ამ ერთეულებზე — დაყენებულ ერთეულებზე საგადასახადო განაკვეთი (ფასში უკვე შედის {tax} {tax}-ის ჩათვლით)
+taxable_value	დასაბეგრი ღირებულება
+gst_inside_price_note	({tax} ჩათვლით)
+start_with_template	დაიწყეთ ჩვენი ნივთების შაბლონით
+template_heading	საწყისი ნივთები
+template_info	{c} კატეგორიები და {d} ელემენტები ფოტოებით, მზად არის დასამატებლად. ფასები იწყება 0 ₹-დან — დააყენეთ თქვენი შემდეგ.
+template_import	სრული შაბლონის იმპორტი
+template_confirm	დაამატეთ {d} ერთეულები თავიანთი კატეგორიებით? ნივთები, რომლებიც უკვე გაქვთ, რჩება ისე, როგორც არის.
+template_yes	დიახ, იმპორტი
+template_importing	მედიკამენტების იმპორტი…
+template_import_progress	იმპორტი… {d}/{t}
+template_done	ჩვენი შაბლონის ყველა ელემენტი თქვენს ნივთებზეა.
+template_imported	დამატებულია {d} ელემენტები და {c} კატეგორიები — დააყენეთ მათი ფასები ამ ეკრანზე
+client_template_heading	იმპორტის კატალოგი
+client_template_info	{title}: {c} კატეგორიები, {d} ნივთები ფასებით, ფოტოებით და მეტსახელებით. აკლია მხოლოდ ნივთები — სახელები, რომლებიც უკვე გაქვთ დარჩენილი.
+client_template_import	შემოიტანეთ ეს წამლები
+client_template_confirm	დაამატოთ {d} ერთეულები {title}-დან? ნივთები, რომლებიც უკვე გაქვთ, რჩება ისე, როგორც არის.
+client_template_importing	მიმდინარეობს {title} იმპორტი…
+client_template_done	{title}-ის ყველა ელემენტი თქვენს ერთეულებზეა.
+client_template_imported	დამატებულია {d} ელემენტები და {c} კატეგორიები {title}-დან
+resv_heading	დაჯავშნა
+resv_name_ph	მომხმარებლის სახელი
+resv_phone_ph	ტელეფონი (სურვილისამებრ)
+resv_guests_ph	ხალხი
+resv_when_ph	როდის - 20:30, ხვალ 13:00
+resv_table_ph	მრიცხველი (სურვილისამებრ)
+resv_add	დაჯავშნე სასადილო მაგიდა
+resv_seat	მჯდომარე
+resv_none	ჯავშნები არ მოდის.
+guests_word	სტუმრები
+delivery_by_ph	მიწოდება (მხედრის ან პერსონალის სახელით)
+kitchen_all_day	მომზადება ახლა: {items}
+split_bill	გაყოფილი სტუმრის კანონპროექტი
+split_go	გააკეთეთ სტუმრის ცალკე ანგარიში
+cancel	გაუქმება
+opening_client	კლიენტის გახსნა…
+preparing_desk	მაგიდის მომზადება…
+opening_server	სერვერის გახსნა…
+creating_server	სერვერის შექმნა…
+split_help	შეეხეთ ნივთებს, რომლებშიც ერთი მომხმარებელი იხდის · შერჩეული {n}
+split_send_first	ჯერ გაგზავნეთ ფურცელი - მხოლოდ ის ნივთები, რომლებსაც უკანა ოფისში აქვს, შეიძლება ცალკე გადასახადზე გადავიდეს
+split_pick_some	ჯერ შეეხეთ ცალკეულ კანონპროექტს
+split_done	ცალკე გადასახადი გაკეთდა - ეს არის ამ დახლის გვერდით იატაკზე
+split_marked	ცალკე სტუმრის კანონპროექტი
+order_empty_pick	შეუკვეთეთ ცარიელი — შეეხეთ ნივთების დამატებას ზემოთ ნივთების ასარჩევად.
+add_dishes	დაამატეთ მედიკამენტები
+order_so_far	ამ შეკვეთით: {n} · {total}
+no_dish_match	არცერთი ელემენტი არ შეესაბამება „{q}“-ს
+pick_dishes_help	შეეხეთ ერთეულს მის დასამატებლად · აირჩიეთ კატეგორია სიის შესამცირებლად
+pick_done	მზადაა
+pick_done_dd	დასრულდა · {label}
+printer_route_mode	თუ ამ ადგილას რამდენიმე პრინტერია
+printer_mode_first	ჯერ ეს მუშაობს
+printer_mode_all	ბეჭდვა ყველაზე
+kot_show_area	ფართობი
+kot_hide_area	არეალის დამალვა
+kot_show_item_hdr	მენიუს პუნქტი · რაოდენობა
+kot_hide_item_hdr	სვეტების დამალვა
+kot_show_title	სათაურის ხაზი
+kot_hide_title	სათაურის დამალვა
+kot_field_order	დაბეჭდვის შეკვეთა
+kot_field_up	ზევით გადაადგილება
+kot_field_down	ქვევით გადაადგილება
+kot_field_cycle	აირჩიეთ შემდეგი
+kot_field_select	აირჩიეთ შემდეგი
+kot_field_time	დრო
+kot_field_kot_no	ბილეთის No
+kot_field_area	ფართობი
+kot_field_table	დახლი
+kot_field_shop	მაღაზიის სახელი
+kot_field_waiter	პერსონალი
+kot_field_station	სადგური
+app_template_blurb_extra	ასევე: მფლობელი ზაჰირი, ადმინ ასიფი, მოლარე ნავაზი; წინა გვერდითი ზოლი; ისტორია 4 საათის შემდეგ; დღეს გაშიშვლება; კომპაქტური კანონპროექტი.
+dishes_n	{n} ნივთები
+recipe_ph	რეცეპტი (სურვილისამებრ - გამოუყენებელი სალაროში)
+reorder_ph	შეიძინეთ მეტი აქ
+set_reorder	დააყენეთ ხელახალი შეკვეთის დონე
+low_stock_alert	იწურება — იყიდეთ მალე: {items}
+unpriced_note	თქვენს ერთეულებზე {n} ერთეულებს ჯერ არ აქვთ ფასი — ისინი 0-ზე ირიცხება, სანამ ერთს არ დააყენებთ.
+show_unpriced	აჩვენეთ მხოლოდ ნივთები ფასის გარეშე
+show_all_dishes	ყველა ელემენტის ჩვენება
+role_waiter	მოლარე
+role_kitchen	მაღაზია
+role_title_rest_ph	როლის დასახელება (მაგ. კაპიტანი, უფროსი მზარეული)
+preset_help_rest	მოლარე: გაყიდე. მენეჯერი: გაყიდვა + მენიუს ელემენტები + ბათილად/შესწორება.
+kind_raw	შემაერთებელი მარაგი
+kind_resale	წამალი იყიდა
+kind_dish	ნუ ითვლი მარაგს
+buy_unit_ph	ერთეული (კგ, ლიტრი, ცალი)
+add_another_way	+ დაამატეთ სხვა გზა
+parts_status	შეიყვანეთ {a} {b}-დან · დარჩა {c}
+save_expense	დაზოგე ხარჯი
+rest_ph	დაისვენე
+low_badge	დაბალი
+stock_empty	ჯერ არაფერია მარაგში — რასაც ჩაწერთ Buy-ზე აქ გამოჩნდება.
+recent_changes	ბოლო ცვლილებები
+lane_declared_label	საგადასახადო ინვოისი
+lane_owner_label	ფულადი მემორანდუმი
+money_lane_bill	სტუმრის ანგარიში: {lane}

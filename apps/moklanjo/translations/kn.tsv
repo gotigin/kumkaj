@@ -1,0 +1,835 @@
+# Kannada — ಕನ್ನಡ (kn). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	ಕೊರಿಯರ್ ಬುಕ್ಸ್ + ಬುಕಿಂಗ್ ಡೆಸ್ಕ್. ಉಚಿತ ಆಫ್‌ಲೈನ್.
+unlock	ಅನ್‌ಲಾಕ್
+pin_hint	ಮಾಲೀಕ PIN 0000 ನಿಂದ ಆರಂಭ
+sell	ಬುಕಿಂಗ್
+buy	ಪಾವತಿಸಿ
+books	ದಿನ ಪುಸ್ತಕ
+books_help	ಇಂದಿನ ಸ್ಥಿತಿ. ಬುಕಿಂಗ್ = ಪಾರ್ಸೆಲ್‌ಗಳು ಬಂದವು. ಪೇ ಔಟ್ = ಕ್ಯಾರಿಯರ್ ಬಿಲ್ ಮತ್ತು ಖರ್ಚು. ಪಾರ್ಟಿ = ಕಳುಹಿಸುವವರು ಮತ್ತು ಕ್ಯಾರಿಯರ್.
+buy_help	ಖರ್ಚು ವೋಚರ್‌ಗಳು ಮತ್ತು ಕ್ಯಾರಿಯರ್ ಬಿಲ್‌ಗಳು (ಹಣ ಹೊರಗೆ). ಖಾತೆಯ ಮೇಲಿನದು ಪಾರ್ಟಿ ಲೆಡ್ಜರ್‌ನಲ್ಲಿ ಉಳಿಯುತ್ತದೆ.
+sell_money_in	ಪಾರ್ಸೆಲ್ ಬುಕ್ ಮಾಡಿ
+buy_money_out	ಖರ್ಚು / ಕ್ಯಾರಿಯರ್ ಬಿಲ್
+record_purchase	ಖರೀದಿ ದಾಖಲೆ
+add_expense	ಖರ್ಚು ವೋಚರ್
+bank_book	ಬ್ಯಾಂಕ್ ಬುಕ್
+credit_help	ಪಾರ್ಟಿ ಐಡಿ ಅನನ್ಯ (ಹೆಸರುಗಳು ಪುನರಾವರ್ತನೆಯಾಗಬಹುದು). ಪಾತ್ರಗಳು: ಕಳುಹಿಸುವವರು (AR), ಕ್ಯಾರಿಯರ್ (AP), ಅಥವಾ ಅದೇ ಐಡಿಯಲ್ಲಿ ಇಬ್ಬರೂ. ಲೆಡ್ಜರ್‌ಗಳು ಪ್ರತ್ಯೇಕವಾಗಿರುತ್ತವೆ; ವರದಿಗಳು ನಿವ್ವಳ ತೋರಿಸುತ್ತವೆ.
+party_kind_ph	ಕಸ್ಟಮ್ ಪಾತ್ರ (ಐಚ್ಛಿಕ) — ಅಥವಾ ಮೇಲಿನ ಚಿಪ್
+parties_list_heading	ಉಳಿಸಿದ ಪಾರ್ಟಿಗಳು
+reports_help	ದಿನ ಪುಸ್ತಕ, ಸಾಲಗಾರರು ಮತ್ತು ಸಾಲದಾತರು, ಬ್ಯಾಂಕ್ ಬುಕ್, ಖರ್ಚು ವೋಚರ್‌ಗಳು, ಲಾಭ ಮತ್ತು ನಷ್ಟ.
+reports_today	ದಿನ ಪುಸ್ತಕ (ಇಂದು)
+reports_month	ಲಾಭ ಮತ್ತು ನಷ್ಟ (ತಿಂಗಳು)
+reports_aging	ಬಾಕಿ / Dr-Cr
+reports_balance_sheet	ಬ್ಯಾಲೆನ್ಸ್ ಶೀಟ್
+reports	ವರದಿ
+refresh	ರಿಫ್ರೆಶ್
+undo	ರದ್ದು
+start_tracking	ಎಣಿಕೆ ಆರಂಭ
+stock_minus	− ದಾಸ್ತಾನು
+stock_plus	+ ದಾಸ್ತಾನು
+settle_cash	ನಗದು ತೀರಿಸಿ
+settle_card	ಕಾರ್ಡಿನಿಂದ ತೀರಿಸಿ
+items	ದರಗಳು ಮತ್ತು ಸೇವೆಗಳು
+nav_items	ದರಗಳು
+more	ಇನ್ನಷ್ಟು
+your_items	ನಿಮ್ಮ ದರಗಳು
+items_help	ಪ್ರತಿಯೊಂದು ಸಾಲು ಒಂದು ದರ (ಉದಾ. Surface Zone A). ಘಟಕ ಸಾಮಾನ್ಯವಾಗಿ kg. ಸಂಪಾದಿಸಲು ಒತ್ತಿರಿ.
+add_item	ದರ ಸೇರಿಸಿ
+new_item	ಹೊಸ ದರ
+adding_item	ಹೊಸ ದರ ಸೇರಿಸಲಾಗುತ್ತಿದೆ
+editing_item	ಸಂಪಾದಿಸಲಾಗುತ್ತಿದೆ
+save	ಉಳಿಸಿ
+remove	ತೆಗೆದುಹಾಕಿ
+empty_catalog	ಇನ್ನೂ ದರಗಳಿಲ್ಲ. ದರಗಳು ಮತ್ತು ಸೇವೆಗಳನ್ನು ತೆರೆಯಿರಿ, ಒಂದನ್ನು ಸೇರಿಸಿ (ಹೆಸರು + ಬೆಲೆ, ಘಟಕ kg), ನಂತರ ಬುಕಿಂಗ್.
+counter_sale	ಕೌಂಟರ್ ಬುಕಿಂಗ್
+total	ಒಟ್ಟು
+cash	ನಗದು
+upi	यूपीआई
+card	ಕಾರ್ಡ್
+credit	ಪಾರ್ಟಿಗಳು
+clear	ಅಳಿಸಿ
+ready_to_sell	ಬುಕಿಂಗ್‌ಗೆ ಸಿದ್ಧ
+today_prefix	ಇಂದು
+today_mid	ಇಂದು
+owed	ಬಾಕಿ
+round_word	ರೌಂಡ್
+back	ಹಿಂದೆ
+sold_out	ಮಾರಾಟವಾಯಿತು
+restock	ಮತ್ತೆ ಇಡಿ
+not_tracked	ಎಣಿಕೆ ಇಲ್ಲ
+in_stock	ದಾಸ್ತಾನು
+marked_sold_out	ಮಾರಾಟವಾಯಿತು ಎಂದು ಗುರುತು
+add_upper	ಸೇರಿಸಿ
+na	ಇಲ್ಲ
+qty	ಸಂಖ್ಯೆ
+unit_at	ದರ
+actual	ನಿಜ
+applied	ಅನ್ವಯ
+note_ph	ಟಿಪ್ಪಣಿ (ಐಚ್ಛಿಕ)
+rounded	ರೌಂಡ್
+split	ಹಂಚಿ
+counter	ಕೌಂಟರ್
+parcel	ಪಾರ್ಸಲ್
+order	ಆರ್ಡರ್
+sales	ಬುಕಿಂಗ್‌ಗಳು
+sales_refunds	ಬುಕಿಂಗ್‌ಗಳು ಮತ್ತು ಮರುಪಾವತಿಗಳು
+day_close	ದಿನ ಮುಗಿಸು
+reports_expenses	ವರದಿ ಮತ್ತು ಖರ್ಚು
+nav_reports	ವರದಿಗಳು
+nav_settings	ಸೆಟ್ಟಿಂಗ್‌ಗಳು
+nav_lock	ಲಾಕ್
+sidebar_settings	ಸೈಡ್‌ಬಾರ್ ಸೆಟ್ಟಿಂಗ್‌ಗಳು
+sidebar_settings_help	ಪಕ್ಕದ ಪಟ್ಟಿಯಲ್ಲಿನ ಅದೇ ಐಕಾನ್‌ಗಳು. ಕ್ರಮ ಬದಲಿಸಲು ಸಾಲನ್ನು ಎಳೆಯಿರಿ. ತೋರಿಸಲು ಅಥವಾ ಮರೆಮಾಡಲು ಸ್ವಿಚ್ ಬದಲಿಸಿ. ಸೆಟ್ಟಿಂಗ್‌ಗಳು ಮತ್ತು ಲಾಕ್ ಯಾವಾಗಲೂ ಪಟ್ಟಿಯಲ್ಲಿರುತ್ತವೆ.
+sidebar_always_on_short	ಯಾವಾಗಲೂ ಆನ್
+sidebar_back_settings	ಹಿಂದೆ
+sidebar_shown	ತೋರಿಸಲಾಗಿದೆ
+sidebar_hidden	ಮರೆಮಾಡಲಾಗಿದೆ
+sidebar_always_on	ಯಾವಾಗಲೂ ಪಟ್ಟಿಯಲ್ಲಿ
+sidebar_shown_hint	ಪಕ್ಕದ ಪಟ್ಟಿ / ಕೆಳಗಿನ ಟ್ಯಾಬ್‌ಗಳಲ್ಲಿ ತೋರಿಸಲಾಗುತ್ತದೆ
+sidebar_hidden_hint	ಪಟ್ಟಿಯಿಂದ ಮರೆಮಾಡಲಾಗಿದೆ
+sidebar_menu_items	ಮೆನು ಮತ್ತು ಐಟಂಗಳು
+sidebar_enable_all	ಎಲ್ಲವನ್ನೂ ಆನ್ ಮಾಡಿ
+sidebar_disable_all	ಎಲ್ಲವನ್ನೂ ಆಫ್ ಮಾಡಿ
+sidebar_order_saved	ಸೈಡ್‌ಬಾರ್ ಕ್ರಮ ಉಳಿಸಲಾಗಿದೆ
+sidebar_visibility_saved	ಸೈಡ್‌ಬಾರ್ ಗೋಚರತೆ ಉಳಿಸಲಾಗಿದೆ
+amounts_hide	ಮರೆಮಾಡಿ
+amounts_show	ತೋರಿಸಿ
+no_sale_yet	ಇನ್ನೂ ಮಾರಾಟವಿಲ್ಲ
+favorites	ನೆಚ್ಚಿನವು
+favorites_help	ನೀವು ಆಗಾಗ್ಗೆ ಮಾರಾಟ ಮಾಡುವ ವಸ್ತುಗಳು, ನಿಮ್ಮ ಲಾಗಿನ್‌ಗಾಗಿ ಉಳಿಸಲಾಗಿದೆ. ಒಂದನ್ನು ಬಿಲ್‌ಗೆ ಸೇರಿಸಿ, ಅಥವಾ ಕೆಳಗಿನ ಎಲ್ಲಾ ವಸ್ತುಗಳಿಂದ ನಿಮ್ಮ ಪಟ್ಟಿಯನ್ನು ಮಾಡಿ.
+your_favorites	ನಿಮ್ಮ ನೆಚ್ಚಿನವು
+all_items	ಎಲ್ಲಾ ವಸ್ತುಗಳು
+no_favorites	ಇನ್ನೂ ನೆಚ್ಚಿನವುಗಳಿಲ್ಲ — ಕೆಳಗಿನ ಪಟ್ಟಿಯಿಂದ ವಸ್ತುಗಳನ್ನು ಸೇರಿಸಿ.
+add_to_bill	ಬಿಲ್‌ಗೆ ಸೇರಿಸಿ
+added	ಸೇರಿಸಲಾಗಿದೆ
+owes_word	ಸಾಲವಿದೆ
+selected_word	ಆಯ್ಕೆಮಾಡಲಾಗಿದೆ
+chip_clear_credit	ಸ್ಪಷ್ಟ — ಸಾಲ ಕೊಡಿ ಅಥವಾ ಮುಂಗಡ ತೆಗೆದುಕೊಳ್ಳಿ
+chip_missing_customer	ಆಯ್ಕೆಮಾಡಿದ ಗ್ರಾಹಕ ಕಾಣುತ್ತಿಲ್ಲ — ಮತ್ತೆ ಆಯ್ಕೆಮಾಡಿ
+chip_no_customer	ಇನ್ನೂ ಗ್ರಾಹಕರಿಲ್ಲ — ಹೆಸರು ಬರೆಯಿರಿ, ನಂತರ Credit ಒತ್ತಿರಿ
+credit_summary_fmt	{} ಗ್ರಾಹಕರು · ತೆರೆದ ಸಾಲ {} · ಮುಂಗಡ ಇಟ್ಟಿದೆ {}
+recent_label	ಇತ್ತೀಚಿನವು:
+inventory	ದಾಸ್ತಾನು
+inventory_stock	ದಾಸ್ತಾನು ಮತ್ತು ಎಣಿಕೆ
+branches	ಶಾಖೆಗಳು
+branches_org	ಶಾಖೆ ಮತ್ತು ಸಂಸ್ಥೆ
+credit_customers	ಪಕ್ಷಗಳು (ಸಾಲಗಾರರು ಮತ್ತು ಸಾಲದಾತರು)
+customer_name_ph	ಪಾರ್ಟಿ ಹೆಸರು
+new_customer_ph	ಹೊಸ ಪಾರ್ಟಿ ಹೆಸರು
+item_name_ph	ದರದ ಹೆಸರು (ಉದಾ. Surface Zone A)
+item_price_ph	ಪ್ರತಿ kg / ಮೊದಲ ಸ್ಲ್ಯಾಬ್
+start_template	ಉತ್ಪನ್ನ
+next_booking	ಮುಂದಿನ ಬುಕಿಂಗ್
+destination_ph	ಗಮ್ಯಸ್ಥಾನ ನಗರ / ವಲಯ
+consignee_ph	ಸ್ವೀಕರಿಸುವವರು
+consignee_phone_ph	ಸ್ವೀಕರಿಸುವವರ ಫೋನ್
+consignee_address_ph	ವಿತರಣಾ ವಿಳಾಸ
+origin_name_ph	ಕಳುಹಿಸುವವರ ಹೆಸರು
+origin_phone_ph	ಕಳುಹಿಸುವವರ ಫೋನ್
+origin_address_ph	ಪಿಕಪ್ / ಮೂಲ ವಿಳಾಸ
+booking_consignor_heading	ಕಳುಹಿಸುವವರು (ಗ್ರಾಹಕ / ಪ್ರೇಷಕ)
+booking_consignee_heading	ಸ್ವೀಕರಿಸುವವರು (ರಿಸೀವರ್)
+booking_consignor_hint	ತುಂಬಲು ಒಂದು ಪಾರ್ಟಿ ಆರಿಸಿ, ಅಥವಾ ನೇರವಾಗಿ ಬಂದ ಗ್ರಾಹಕರಿಗೆ ಖಾಲಿ ಬಿಡಿ. ಮನೆಯಿಂದ ಪಿಕಪ್ ಮತ್ತು RTOಗೆ ಅಗತ್ಯ.
+booking_consignee_hint	ಪಾರ್ಸೆಲ್ ಸ್ವೀಕರಿಸುವವರು. ಕೌಂಟರ್‌ನಲ್ಲಿ ನೇರವಾಗಿ ಕೊಡುವ ಪಾರ್ಸೆಲ್‌ಗೆ ಖಾಲಿ ಬಿಡಿ.
+weight_kg_ph	ನಿಜವಾದ kg
+length_cm_ph	ಉದ್ದ cm
+breadth_cm_ph	ಅಗಲ cm
+height_cm_ph	ಎತ್ತರ cm
+chargeable_kg	ಶುಲ್ಕ kg
+awb_label	AWB
+booking_help	ವಾಕ್-ಇನ್: ಗಮ್ಯಸ್ಥಾನ → ತೂಕ → ದರ ಆಯ್ಕೆ → ಖಾತೆ/ನಗದು ಬುಕಿಂಗ್ → ಪಾವತಿ. ರಸೀದಿಯಲ್ಲಿ AWB ಮುದ್ರಿಸುತ್ತದೆ. ಮುಂದಿನ ಬುಕಿಂಗ್ ಡೆಸ್ಕ್ ಖಾಲಿ ಮಾಡುತ್ತದೆ.
+cart_empty_hint	ಡೆಸ್ಕ್ ಖಾಲಿ — ಗಮ್ಯಸ್ಥಾನ ಮತ್ತು ತೂಕ ಹೊಂದಿಸಿ, ದರದ ಮೇಲೆ ADD ಒತ್ತಿ, ನಂತರ ಪಾವತಿಸಿ.
+team	ತಂಡ
+team_pins	ತಂಡ ಮತ್ತು ಪಿನ್
+my_pin_settings	ನನ್ನ PIN
+settings_hub_help_my_pin	ಈ ಸಾಧನದಲ್ಲಿ ಸೈನ್ ಇನ್ ಆದವರ ಅನ್‌ಲಾಕ್ PIN ಬದಲಾಯಿಸಿ.
+team_self_help	ನಿಮ್ಮ ಅನ್‌ಲಾಕ್ PIN (ಮತ್ತು ಐಚ್ಛಿಕ ಲಾಗಿನ್ ಪಾಸ್‌ವರ್ಡ್) ನೀವು ಮಾತ್ರ ಬದಲಿಸಬಹುದು. ಬೇರೆ ಪರದೆಗಳು ಅಥವಾ ಹಕ್ಕುಗಳು ಬೇಕಾದರೆ ಮಾಲೀಕರನ್ನು ಕೇಳಿ.
+backup_settings	ಬ್ಯಾಕಪ್ ಮತ್ತು ಸೆಟ್ಟಿಂಗ್
+lock_app	ಲಾಕ್
+pick	ಆಯ್ಕೆ
+select	ಆಯ್ಕೆಮಾಡಿ
+advance	ಮುಂದೆ
+owner	ಮಾಲೀಕ
+staff	ಸಿಬ್ಬಂದಿ
+photo	ಫೋಟೋ
+auto	ಸ್ವಯಂಚಾಲಿತ
+prev	ಹಿಂದಿನ
+next	ಮುಂದಿನ
+ok	ಸರಿ
+this_shop	ಸರ್ವರ್ ಮೋಡ್
+extra_till	ಕ್ಲೈಂಟ್ ಮೋಡ್
+off	ಆಫ್
+server	ಸರ್ವರ್
+client	ಕ್ಲೈಂಟ್
+language_currency	ಭಾಷೆ ಮತ್ತು ಕರೆನ್ಸಿ
+language	ಭಾಷೆ
+choose_language	ನಿಮ್ಮ ಭಾಷೆಯನ್ನು ಆಯ್ಕೆಮಾಡಿ
+language_setup_hint	ಈ ಸಾಧನದ ಭಾಷೆಯನ್ನು ಅನುಸರಿಸಿ, ಅಥವಾ ನೀವೇ ಒಂದನ್ನು ಆಯ್ಕೆಮಾಡಿ.
+lang_follow_platform	ಸಾಧನದ ಭಾಷೆಯನ್ನು ಬಳಸಿ
+lang_pick_user	ಆಯ್ಕೆಮಾಡಿದ ಭಾಷೆಯನ್ನು ಬಳಸಿ
+lang_platform_now	ಈಗ ಸಾಧನದ ಭಾಷೆ
+selected_language	ಆಯ್ಕೆಮಾಡಿದ
+continue	ಮುಂದುವರಿಸಿ
+this_device	ಈ ಸಾಧನ
+device_use_q	ಈ ಸಾಧನವನ್ನು ಹೇಗೆ ಬಳಸಲಾಗುತ್ತದೆ?
+last_server_mode	ಹಿಂದೆ ಸರ್ವರ್ — ಮುಂದುವರಿಸಲು ಟ್ಯಾಪ್ ಮಾಡಿ
+last_client_mode	ಹಿಂದೆ ಕ್ಲೈಂಟ್ — ಮುಂದುವರಿಸಲು ಟ್ಯಾಪ್ ಮಾಡಿ
+choose_server	ಸರ್ವರ್ ಆಯ್ಕೆಮಾಡಿ
+choose_server_hint	ಈ ಸಾಧನದಲ್ಲಿ ಈಗಾಗಲೇ ಸರ್ವರ್‌ಗಳಿವೆ. ಒಂದನ್ನು ತೆರೆಯಿರಿ, ಅಥವಾ ಮತ್ತೊಂದು ವ್ಯವಹಾರಕ್ಕಾಗಿ ಹೊಸ ಸರ್ವರ್ ರಚಿಸಿ.
+create_new_server	ಹೊಸ ಸರ್ವರ್ ರಚಿಸಿ
+open_server	ತೆರೆಯಿರಿ
+new_server_name_ph	ಹೊಸ ಸರ್ವರ್ ಹೆಸರು (ಐಚ್ಛಿಕ)
+server_remove_pin_ph	ಸರ್ವರ್ ತೆಗೆಯಲು Owner PIN
+only_owner_remove_server	Owner ಮಾತ್ರ ಸರ್ವರ್ ತೆಗೆಯಬಹುದು
+owner_pin_remove_server	ಸರ್ವರ್ ತೆಗೆಯಲು Owner PIN ಬೇಕು
+device_setup_help	ಸರ್ವರ್ ಲೆಕ್ಕಪುಸ್ತಕಗಳನ್ನು ಇಲ್ಲೇ ಇಡುತ್ತದೆ. ಕ್ಲೈಂಟ್ ಒಂದು ಸರ್ವರ್‌ಗೆ ಜೋಡಿಯಾಗುತ್ತದೆ.
+currency	ಕರೆನ್ಸಿ
+backup	ಬ್ಯಾಕಪ್
+settings_sec_diag	ಡಯಾಗ್ನಾಸ್ಟಿಕ್ಸ್
+settings_hub_help	ಒಮ್ಮೆಗೆ ಒಂದು ಭಾಗ ತೆರೆಯಿರಿ — ಕಡಿಮೆ ಸ್ಕ್ರೋಲ್, ಸ್ಪಷ್ಟ ಆಯ್ಕೆಗಳು.
+settings_sec_devices	ಹೆಚ್ಚುವರಿ ಟಿಲ್‌ಗಳು ಮತ್ತು ಶಾಖೆಗಳು
+settings_sec_alerts	ಎಚ್ಚರಿಕೆಗಳು
+alerts_help	ಸ್ಥಿತಿ ಸಂದೇಶಗಳು ನಿಮಗೆ ಪರದೆಯ ಮೇಲೆ ಎಷ್ಟು ಹೊತ್ತು ಇರಬೇಕು (ಈ ಲಾಗಿನ್‌ಗೆ).
+snack_secs_ph	ಸೆಕೆಂಡುಗಳು (3–60, ಡೀಫಾಲ್ಟ್ 10)
+snack_secs_save	ಎಚ್ಚರಿಕೆ ಸಮಯ ಉಳಿಸಿ
+snack_secs_saved	ಎಚ್ಚರಿಕೆ ಸಮಯ ಉಳಿಸಲಾಗಿದೆ — {n} ಸೆಕೆಂಡುಗಳು
+snack_secs_bad	ಸೆಕೆಂಡುಗಳನ್ನು ಸಂಖ್ಯೆಯಾಗಿ ನಮೂದಿಸಿ (3–60)
+cancelled	ರದ್ದುಗೊಂಡಿದೆ
+cancel	ರದ್ದು
+opening_client	ಕ್ಲೈಂಟ್ ತೆರೆಯಲಾಗುತ್ತಿದೆ…
+preparing_desk	ಡೆಸ್ಕ್ ಸಿದ್ಧಪಡಿಸಲಾಗುತ್ತಿದೆ…
+opening_server	ಸರ್ವರ್ ತೆರೆಯಲಾಗುತ್ತಿದೆ…
+creating_server	ಸರ್ವರ್ ರಚಿಸಲಾಗುತ್ತಿದೆ…
+diag_privacy_help	ಲಾಗ್‌ಗಳು ಈ ಸಾಧನದಲ್ಲೇ ಉಳಿಯುತ್ತವೆ. ರಹಸ್ಯಗಳನ್ನು (PIN, ಪಾಸ್‌ವರ್ಡ್) ಎಂದಿಗೂ ಸಂಗ್ರಹಿಸುವುದಿಲ್ಲ. ಸಾಧನದ ಹೊರಗೆ ಪ್ಯಾಕೇಜ್ ಕಳುಹಿಸಲು ಪ್ರತಿ ಬಾರಿ ನಿಮ್ಮ ಸ್ಪಷ್ಟ ಒಪ್ಪಿಗೆ ಬೇಕು — ಎಂದಿಗೂ ಮಾರಾಟ ಮಾಡುವುದಿಲ್ಲ ಅಥವಾ ಮೂರನೇ ವ್ಯಕ್ತಿಗಳಿಗೆ ನೀಡುವುದಿಲ್ಲ.
+diag_level	ವಿವರದ ಮಟ್ಟ
+diag_level_error	ದೋಷಗಳು
+diag_level_warn	ಎಚ್ಚರಿಕೆಗಳು
+diag_level_info	ಮಾಹಿತಿ
+diag_level_debug	ಡೀಬಗ್
+diag_support_start	30 ನಿಮಿಷದ ಸಹಾಯ ಅವಧಿ ಪ್ರಾರಂಭಿಸಿ
+diag_support_stop	ಸಹಾಯ ಅವಧಿ ಮುಗಿಸಿ
+diag_support_started	ಸಹಾಯ ಅವಧಿ ಆನ್ — 30 ನಿಮಿಷ ಡೀಬಗ್ ವಿವರ
+diag_support_ended	ಸಹಾಯ ಅವಧಿ ಮುಗಿದಿದೆ
+diag_export_local	ಸ್ಥಳೀಯ ಪ್ರತಿ ರಫ್ತು ಮಾಡಿ
+diag_export_local_done	ಸ್ಥಳೀಯ ರೋಗನಿರ್ಣಯ {path} ನಲ್ಲಿ ಸಿದ್ಧ — ಪ್ರತಿಯನ್ನು ಎಲ್ಲಿ ಉಳಿಸಬೇಕು ಆಯ್ಕೆಮಾಡಿ
+diag_approve_send	ಸಾಧನದ ಹೊರಗೆ ಹಂಚಲು ಒಪ್ಪಿಗೆ ನೀಡಿ
+diag_send_heading	ಈ ಸಾಧನದಿಂದ ಹಂಚಿಕೊಳ್ಳಿ
+diag_send_help	ಒಪ್ಪಿಗೆ ಒಂದು ಪ್ಯಾಕೇಜ್‌ಗೆ, ನಂತರ ಅವಧಿ ಮುಗಿಯುತ್ತದೆ. ತಾತ್ಕಾಲಿಕ — ಉತ್ಪನ್ನ ಸರಿಪಡಿಸಲು ಅಥವಾ ಸುಧಾರಿಸಲು ಮಾತ್ರ. ಮೂರನೇ ವ್ಯಕ್ತಿಗಳೊಂದಿಗೆ ಹಂಚುವುದಿಲ್ಲ. Linux, Windows, macOS ಮತ್ತು Android ನಲ್ಲಿ ಕೆಲಸ ಮಾಡುತ್ತದೆ.
+optional_login_heading	ಐಚ್ಛಿಕ ಲಾಗಿನ್
+rights_heading	ಹಕ್ಕುಗಳು
+booking_scope_heading	ದೇಶೀಯ / ಅಂತರರಾಷ್ಟ್ರೀಯ
+diag_send_approved	ಒಂದು ಪ್ಯಾಕೇಜ್ ಹಂಚಲು ಒಪ್ಪಿಗೆ ಸಿಕ್ಕಿದೆ (ಶೀಘ್ರದಲ್ಲೇ ಮುಗಿಯುತ್ತದೆ)
+diag_export_send	ಹಂಚುವ ಪ್ಯಾಕೇಜ್ ರಚಿಸಿ (ಒಪ್ಪಿಗೆ ಬೇಕು)
+diag_export_send_done	ಹಂಚುವ ಪ್ಯಾಕೇಜ್ {path} ನಲ್ಲಿ ಸಿದ್ಧ — ಎಲ್ಲಿ ಉಳಿಸಬೇಕು ಆಯ್ಕೆಮಾಡಿ, ನಂತರ Kumkaj ಸಹಾಯಕ್ಕೆ ಮಾತ್ರ ಕಳುಹಿಸಿ
+diag_save_bundle	ರೋಗನಿರ್ಣಯ ಪ್ರತಿ ಉಳಿಸಿ
+diag_bundle_saved	ರೋಗನಿರ್ಣಯ ಪ್ರತಿ {path} ನಲ್ಲಿ ಉಳಿಸಲಾಗಿದೆ
+diag_bundle_failed	ರೋಗನಿರ್ಣಯ ಪ್ರತಿ ಉಳಿಸಲಾಗಲಿಲ್ಲ — ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ
+diag_clear	ರೋಗನಿರ್ಣಯ ಲಾಗ್‌ಗಳನ್ನು ಅಳಿಸಿ
+diag_cleared	ರೋಗನಿರ್ಣಯ ಲಾಗ್‌ಗಳನ್ನು ಅಳಿಸಲಾಗಿದೆ
+use	ಬಳಸಿ
+add_branch	ಶಾಖೆ ಸೇರಿಸಿ
+add_conversion	ಪರಿವರ್ತನೆ ಸೇರಿಸಿ
+add_item_plain	ಐಟಂ ಸೇರಿಸಿ
+add_note	ಟಿಪ್ಪಣಿ ಸೇರಿಸಿ
+add_opening_balance	ಆರಂಭಿಕ ಬಾಕಿ ಸೇರಿಸಿ
+add_rider	ರೈಡರ್ ಸೇರಿಸಿ
+add_staff	ಸಿಬ್ಬಂದಿ ಸೇರಿಸಿ
+add_unit	ಘಟಕ ಸೇರಿಸಿ
+add_use_name	ಈ ಹೆಸರನ್ನು ಸೇರಿಸಿ / ಬಳಸಿ
+allow_extra_tills	ಹೆಚ್ಚುವರಿ ಟಿಲ್‌ಗಳನ್ನು ಅನುಮತಿಸಿ
+amend	ತಿದ್ದುಪಡಿ
+apply_country_pack	ದೇಶ ಪ್ಯಾಕ್ ಅನ್ವಯಿಸಿ
+datetime_appearance	ದಿನಾಂಕ ಮತ್ತು ಸಮಯದ ರೂಪ
+datetime_appearance_help	ಪುಸ್ತಕಗಳು ಒಳಗೆ ವರ್ಷ-ಮೊದಲು RFC3339 ಇಡುತ್ತವೆ. ಇವು ರಸೀದಿಗಳು, ಲೇಬಲ್‌ಗಳು, ವರದಿಗಳು ಮತ್ತು ಪರದೆಯ ಮೇಲೆ ದಿನಾಂಕ, ಗಡಿಯಾರ ಹೇಗೆ ಕಾಣುತ್ತವೆ ಎಂಬುದನ್ನು ಮಾತ್ರ ಬದಲಿಸುತ್ತವೆ.
+datetime_example	ಈಗಿನ ಉದಾಹರಣೆ: {ex}
+date_order	ದಿನಾಂಕದ ಕ್ರಮ
+date_order_dmy	ದಿ/ತಿ/ವ
+date_order_mdy	ತಿ/ದಿ/ವ
+date_order_ymd	ವ-ತಿ-ದಿ
+time_format	ಗಡಿಯಾರ
+time_format_24h	24 ಗಂಟೆ
+time_format_12h	12 ಗಂಟೆ
+attach_bill_photo	ಬಿಲ್ ಫೋಟೋ ಲಗತ್ತಿಸಿ
+attach_pdf	PDF ಲಗತ್ತಿಸಿ
+attach_photo	ಫೋಟೋ ಲಗತ್ತಿಸಿ
+bank	ಬ್ಯಾಂಕ್
+bank_in	ಬ್ಯಾಂಕ್‌ಗೆ ಹಾಕಿ
+bank_out	ಬ್ಯಾಂಕ್‌ನಿಂದ ತೆಗೆಯಿರಿ
+bank_to_till	ಬ್ಯಾಂಕ್ → ಟಿಲ್
+till_to_bank	ಟಿಲ್ → ಬ್ಯಾಂಕ್
+mark_cleared	ತೆರವುಗೊಳಿಸಲಾಗಿದೆ ಎಂದು ಗುರುತಿಸಿ
+unmark	ಗುರುತು ತೆಗೆಯಿರಿ
+role_both	ಇಬ್ಬರೂ
+role_carrier	ಕ್ಯಾರಿಯರ್
+role_cashier	ಕ್ಯಾಷಿಯರ್
+role_consignor	ಕಳುಹಿಸುವವರು
+role_manager	ಮ್ಯಾನೇಜರ್
+role_supplier	ಸರಬರಾಜುದಾರ
+branch_name_sell_ph	ಮಾರಾಟ ಮಾಡಬೇಕಾದ ಶಾಖೆಯ ಹೆಸರು
+bring_my_book	ನನ್ನ ಬುಕ್ ತನ್ನಿ
+business_tax_id_ph	ವ್ಯವಹಾರ ತೆರಿಗೆ ಐಡಿ
+card_amount_ph	ಕಾರ್ಡ್ ಮೊತ್ತ
+cash_amount_ph	ನಗದು ಮೊತ್ತ
+upi_amount_ph	UPI ಮೊತ್ತ
+carrier_cost_ph	ಕ್ಯಾರಿಯರ್ ವೆಚ್ಚ
+carrier_party_ph	ಕ್ಯಾರಿಯರ್ ಪಾರ್ಟಿ
+choose_icon	ಐಕಾನ್ ಆಯ್ಕೆಮಾಡಿ
+choose_logo	ಲೋಗೋ ಆಯ್ಕೆಮಾಡಿ
+choose_receipt_stamp	ರಸೀದಿ ಸ್ಟಾಂಪ್ ಆಯ್ಕೆ
+choose_payment_qr	ಪೇಮೆಂಟ್ QR ಆಯ್ಕೆ
+clear_icon	ಐಕಾನ್ ತೆಗೆಯಿರಿ
+clear_logo	ಲೋಗೋ ತೆಗೆಯಿರಿ
+clear_photo	ಫೋಟೋ ತೆಗೆಯಿರಿ
+clear_stamp	ಸ್ಟಾಂಪ್ ಅಳಿಸಿ
+clear_payment_qr	ಪೇಮೆಂಟ್ QR ಅಳಿಸಿ
+print_faces	ಮುದ್ರಣ ರೂಪ (ರಸೀದಿ / ಅವಧಿ ಬಿಲ್)
+print_faces_help	ಬುಕಿಂಗ್ ರಸೀದಿ ಮತ್ತು ಅವಧಿ ಬಿಲ್‌ಗಳಲ್ಲಿ ನಿಮ್ಮ ಲೋಗೋ ಬಳಿ ಐಚ್ಛಿಕ ಮುದ್ರೆ ಮತ್ತು ಪಾವತಿ QR.
+awb_pools_heading	ಕ್ಯಾರಿಯರ್ AWB ಸಂಖ್ಯೆ ಪೂಲ್‌ಗಳು
+add_awb_pool	AWB ಪೂಲ್ ಸೇರಿಸಿ
+awb_pool_carrier_ph	ಕ್ಯಾರಿಯರ್ ಪಾರ್ಟಿ ಹೆಸರು
+awb_pool_start_ph	ಆರಂಭ ಸಂಖ್ಯೆ
+awb_pool_end_ph	ಕೊನೆಯ ಸಂಖ್ಯೆ
+awb_pool_prefix_ph	ಪೂರ್ವಪ್ರತ್ಯಯ (ಐಚ್ಛಿಕ)
+awb_pool_label_ph	ಲೇಬಲ್ (ಐಚ್ಛಿಕ)
+pieces_ph	ತುಂಡುಗಳು (ಖಾಲಿ = 1) — ಕಾರ್ಗೋ / ಹಲವು ತುಂಡುಗಳಿಗೆ ವಿಸ್ತರಿಸಿ
+bulk_awbs_ph	ಹಲವು AWB — ಒಮ್ಮೆಲೇ ಸ್ಥಿತಿ ಮುಂದುವರಿಸಲು ಹಲವನ್ನು ಅಂಟಿಸಿ (ಹೊಸ ಸಾಲು ಅಥವಾ ಅಲ್ಪವಿರಾಮ)
+tds_cut_ph	TDS ಕಡಿತ (ಐಚ್ಛಿಕ)
+discount_ph	ರಿಯಾಯಿತಿ (ಐಚ್ಛಿಕ)
+cheque_no_ph	ಚೆಕ್ ಸಂಖ್ಯೆ (ಐಚ್ಛಿಕ)
+bill_reminder_chase	ಬಿಲ್ ಜ್ಞಾಪನೆ ಪಟ್ಟಿ
+month_mix_report	ತಿಂಗಳ ಮಿಶ್ರ ವರದಿ
+copy_month_gst_csv	ತಿಂಗಳ GST CSV ನಕಲು
+domestic	ದೇಶೀಯ
+international	ಅಂತರರಾಷ್ಟ್ರೀಯ
+pick_logo	ಲೋಗೋ ಆಯ್ಕೆಮಾಡಿ
+booking_scope_hint_domestic	ವಾಲ್ಯೂಮ್ ÷5000 (ದೇಶೀಯ) — ಅಂತರರಾಷ್ಟ್ರೀಯ ÷6000
+booking_scope_hint_intl	ವಾಲ್ಯೂಮ್ ÷6000 (ಅಂತರರಾಷ್ಟ್ರೀಯ) — ದೇಶೀಯ ÷5000
+cod_register	COD ರಿಜಿಸ್ಟರ್
+collect_cod	COD ಸಂಗ್ರಹಿಸಿ (AWB)
+consignments_dispatch	ಸಾಗಣೆ ಮತ್ತು ರವಾನೆ
+consignor_party_ph	ಕಳುಹಿಸುವವರು / ಪಾರ್ಟಿ ಹೆಸರು
+copy_day_book_csv	ದಿನ ಪುಸ್ತಕ CSV ನಕಲಿಸಿ
+copy_day_close	ದಿನ ಮುಗಿಸುವಿಕೆ ನಕಲಿಸಿ
+copy_items_csv	ಐಟಂ CSV ನಕಲಿಸಿ
+copy_outstanding_csv	ಬಾಕಿ CSV ನಕಲಿಸಿ
+copy_parties_csv	ಪಾರ್ಟಿ CSV ನಕಲಿಸಿ
+copy_party_ledger_csv	ಪಾರ್ಟಿ ಲೆಡ್ಜರ್ CSV ನಕಲಿಸಿ
+copy_receipt	ರಸೀದಿ ನಕಲಿಸಿ
+copy_report	ವರದಿ ನಕಲಿಸಿ
+counted_cash_ph	ಡ್ರಾಯರ್‌ನಲ್ಲಿ ಎಣಿಸಿದ ನಗದು
+counter_agency_ph	ಕೌಂಟರ್ / ಏಜೆನ್ಸಿ ಹೆಸರು (ಐಚ್ಛಿಕ)
+create_backup	ಬ್ಯಾಕಪ್ ರಚಿಸಿ
+day_close_summary	ದಿನ ಮುಗಿಸುವ ಸಾರಾಂಶ
+delete_party	ಆಯ್ಕೆಮಾಡಿದ ಪಾರ್ಟಿ ಅಳಿಸಿ
+dispatch_to_rider	ಬುಕ್ ಮಾಡಿದ → ರೈಡರ್‌ಗೆ
+docket_charge_ph	ಡಾಕೆಟ್ ಶುಲ್ಕ
+declared_value_ph	ಘೋಷಿತ ಮೌಲ್ಯ
+contents_ph	ವಿಷಯಗಳು
+eway_ph	ಈ-ವೇ ಬಿಲ್ ಸಂಖ್ಯೆ
+insurance_label	ವಿಮೆ (ಹೌದು/ಇಲ್ಲ)
+yes_label	ಹೌದು
+no_label	ಇಲ್ಲ
+print_route_label	ಮುದ್ರಣ ಮಾರ್ಗ
+new_party_kind_label	ಹೊಸ ಪಾರ್ಟಿಯ ಪ್ರಕಾರ
+done_open_books	ಆಯಿತು — ಬುಕ್‌ಗಳನ್ನು ತೆರೆಯಿರಿ
+export_day	ದಿನವನ್ನು ರಫ್ತು ಮಾಡಿ
+extra_note_expense_ph	ಕೊನೆಯ ಖರ್ಚಿನ ಮೇಲೆ ಹೆಚ್ಚುವರಿ ಟಿಪ್ಪಣಿ
+extra_note_awb_ph	ಈ AWB / ಮಾರಾಟದ ಮೇಲೆ ಹೆಚ್ಚುವರಿ ಟಿಪ್ಪಣಿ
+failed_delivery	ತಲುಪಿಸುವಿಕೆ ವಿಫಲ
+find_scan_awb	AWB ಹುಡುಕಿ / ಸ್ಕ್ಯಾನ್ ಮಾಡಿ
+forget_shop	ಈ ಅಂಗಡಿ ಮರೆಯಿರಿ
+fuel_ph	ಇಂಧನ
+handover_carrier	ಬುಕ್ ಮಾಡಿದ → ಕ್ಯಾರಿಯರ್‌ಗೆ
+import_day	ದಿನವನ್ನು ಆಮದು ಮಾಡಿ
+import_items_csv	ಐಟಂ / ದರ CSV ಆಮದು…
+import_parties_csv	ಪಾರ್ಟಿ CSV ಆಮದು…
+import_pincodes_csv	ಪಿನ್‌ಕೋಡ್ CSV ಆಮದು…
+import_carrier_bill_csv	ಕ್ಯಾರಿಯರ್ ಬಿಲ್ CSV ಆಮದು…
+copy_carrier_bill_report	ಕೊನೆಯ ಕ್ಯಾರಿಯರ್ ಬಿಲ್ ವರದಿ ನಕಲು
+use_carrier_cost	ಕ್ಯಾರಿಯರ್ ವೆಚ್ಚ ಬಳಸಿ
+rate_carrier_ph	ಕ್ಯಾರಿಯರ್ (ಖಾಲಿ = ನಮ್ಮ ಮಾರಾಟ ದರ)
+rate_party_ph	ಪಾರ್ಟಿ (ಖಾಲಿ = ಎಲ್ಲಾ ಗ್ರಾಹಕರು)
+carrier_pick_ph	ವೆಚ್ಚಕ್ಕಾಗಿ ಕ್ಯಾರಿಯರ್ (ಹೋಲಿಕೆಯಿಂದ)
+item_name	ಐಟಂ ಹೆಸರು
+load_bulk_row	ಬಲ್ಕ್ ಸಾಲು ಲೋಡ್ → ಡೆಸ್ಕ್
+login_id_ph	ಲಾಗಿನ್ ಐಡಿ
+mark_delivered	ತಲುಪಿಸಲಾಗಿದೆ ಎಂದು ಗುರುತಿಸಿ
+manifest_cod_total	COD ಒಟ್ಟು
+manifest_received_by	ಸ್ವೀಕರಿಸಿದವರು
+manifest_sign	ಸಹಿ
+ndr_address_wrong	ವಿಳಾಸ ತಪ್ಪು
+ndr_customer_unavailable	ಗ್ರಾಹಕರು ಇಲ್ಲ
+ndr_door_locked	ಬಾಗಿಲು ಬೀಗ
+ndr_other	ಇತರೆ
+ndr_refused	ನಿರಾಕರಿಸಲಾಗಿದೆ
+out_for_delivery	ತಲುಪಿಸಲು ಹೊರಗೆ
+print_drs	DRS ಮುದ್ರಿಸಿ
+print_run_sheet	ರನ್ ಶೀಟ್ ಮುದ್ರಿಸಿ
+reattempt	ಮತ್ತೆ ಪ್ರಯತ್ನ
+rider_cod_handed_ph	ರೈಡರ್ ಹಸ್ತಾಂತರಿಸಿದ COD
+settle_rider_cod	ರೈಡರ್ COD ಸೆಟಲ್
+mode_desk	ಡೆಸ್ಕ್
+mode_rider	ರೈಡರ್
+waiting_office	ಕಚೇರಿ ತಲುಪುವ ನಿರೀಕ್ಷೆ
+capture_signature	ಸಹಿ ತೆಗೆದುಕೊಳ್ಳಿ
+incoming_manifest	ಒಳಬರುವ ಮ್ಯಾನಿಫೆಸ್ಟ್
+pickup_request	ಪಿಕಪ್ ವಿನಂತಿ
+pickup_run	ಪಿಕಪ್ ರನ್
+auto_assign_area	ಪ್ರದೇಶ ಸ್ವಯಂ ನಿಯೋಜನೆ
+reorder_stops	ನಿಲುಗಡೆಗಳನ್ನು ಮರುಕ್ರಮ
+settle_rider_pay	ರೈಡರ್ ವೇತನ ಸೆಟಲ್
+vehicle_inspect	ವಾಹನ ಪರಿಶೀಲನೆ
+print_docket	ಸಿ-ನೋಟ್ ಮುದ್ರಿಸಿ
+franchise_statement	ಫ್ರಾಂಚೈಸ್ ಹೇಳಿಕೆ
+tally_export	ಟ್ಯಾಲಿ ವೋಚರ್ ರಫ್ತು
+open_whatsapp	ವಾಟ್ಸ್‌ಆಪ್ ತೆರೆ
+copy_sms	SMS ಪಠ್ಯ ನಕಲು
+pick_barcode_image	ಸ್ಕ್ಯಾನ್‌ಗೆ ಚಿತ್ರ ಆಯ್ಕೆ
+share_receipt_whatsapp	ರಸೀದಿಯನ್ನು ವಾಟ್ಸ್‌ಆಪ್‌ನಲ್ಲಿ ಹಂಚಿ
+delivery_feedback	ತಲುಪಿಸುವಿಕೆ ಪ್ರತಿಕ್ರಿಯೆ
+lan_self_book	LAN ಸ್ವಯಂ ಬುಕಿಂಗ್
+new_party_clear	ಹೊಸ ಪಾರ್ಟಿ (ಫಾರ್ಮ್ ಖಾಲಿ ಮಾಡಿ)
+new_party_kind_ph	ಹೊಸ ಪಾರ್ಟಿ ವಿಧ (ಸರಬರಾಜುದಾರ / ಕ್ಯಾರಿಯರ್)
+next_country	ಮುಂದಿನ ದೇಶ
+prev_country	ಹಿಂದಿನ ದೇಶ
+note_gstin_ph	ಟಿಪ್ಪಣಿ / GSTIN / ಒಪ್ಪಂದ ರಿಮೈಂಡರ್
+note_pod_ph	ಟಿಪ್ಪಣಿ / POD (ಐಚ್ಛಿಕ)
+on_account_ap	ಖಾತೆಯ ಮೇಲೆ (AP)
+org_optional_ph	ಸಂಸ್ಥೆ (ಐಚ್ಛಿಕ)
+paid_now	ಈಗ ಪಾವತಿಸಲಾಗಿದೆ
+pairing_code_ph	ಜೋಡಿ ಕೋಡ್
+pair_now	ಈಗ ಜೋಡಿಸಿ
+party_name_selected_ph	ಪಾರ್ಟಿ ಹೆಸರು (ಅಥವಾ ಆಯ್ಕೆಮಾಡಿದ ಬಳಸಿ)
+password_ph	ಪಾಸ್‌ವರ್ಡ್
+pay_ap_card	AP ಕಾರ್ಡ್‌ನಿಂದ ಪಾವತಿಸಿ
+pay_ap_cash	AP ನಗದು ಪಾವತಿಸಿ
+pay_ap_upi	AP UPI ಪಾವತಿಸಿ
+period_bill	ಅವಧಿ ಬಿಲ್
+period_bill_party	ಅವಧಿ ಬಿಲ್ (ಪಾರ್ಟಿ)
+pick_pod_photo	POD ಫೋಟೋ ಆಯ್ಕೆಮಾಡಿ
+print_awb_label	AWB ಲೇಬಲ್ ಮುದ್ರಿಸಿ
+print_open	ಮುದ್ರಿಸಿ / ತೆರೆಯಿರಿ
+reason_amend_ph	ತಿದ್ದುಪಡಿ / ರದ್ದು / ಹಿಂತಿರುಗಿಸುವ ಕಾರಣ
+reason_note_ph	ಕಾರಣ / ಟಿಪ್ಪಣಿ (ಹಾಳು, ಎಣಿಕೆ, …)
+record_day_close	ದಿನ ಮುಗಿಸುವಿಕೆ ದಾಖಲಿಸಿ
+refresh_from_shop	ಅಂಗಡಿಯಿಂದ ರಿಫ್ರೆಶ್ ಮಾಡಿ
+refund	ಹಿಂತಿರುಗಿಸುವಿಕೆ
+remit_cod	COD ಸಲ್ಲಿಸಿ (ಪಾರ್ಟಿ)
+remove_selected	ಆಯ್ಕೆಮಾಡಿದ ತೆಗೆಯಿರಿ
+restore_backup	ಬ್ಯಾಕಪ್ ಮರುಸ್ಥಾಪಿಸಿ
+rider_name_ph	ರೈಡರ್ ಹೆಸರು
+rider_phone_ph	ರೈಡರ್ ಫೋನ್
+riders	ರೈಡರ್‌ಗಳು
+riders_own_fleet	ರೈಡರ್‌ಗಳು (ಸ್ವಂತ ಫ್ಲೀಟ್)
+rollup	ರೋಲ್-ಅಪ್
+save_booking_measures	ಬುಕಿಂಗ್ ಅಳತೆಗಳನ್ನು ಉಳಿಸಿ
+save_brand	ಬ್ರ್ಯಾಂಡ್ ಉಳಿಸಿ
+save_business_id	ವ್ಯವಹಾರ ಐಡಿ ಮತ್ತು ಸೇವೆ % ಉಳಿಸಿ
+save_business_name	ವ್ಯವಹಾರದ ಹೆಸರು ಉಳಿಸಿ
+save_features	ಕೆಲಸದ ಸೆಟಪ್ ಉಳಿಸಿ
+save_names	ಹೆಸರುಗಳನ್ನು ಉಳಿಸಿ
+server_ip_ph	ಸರ್ವರ್ IP (ಉದಾ. 192.168.1.10)
+set_credit_limit	ಸಾಲ ಮಿತಿ ಹೊಂದಿಸಿ
+set_login_selected	ಆಯ್ಕೆಮಾಡಿದ ಮೇಲೆ ಲಾಗಿನ್ ಹೊಂದಿಸಿ
+set_login_named	{name} ಮೇಲೆ ಲಾಗಿನ್ ಹೊಂದಿಸಿ
+shop	ಅಂಗಡಿ
+start_fresh	ಹೊಸದಾಗಿ ಆರಂಭಿಸಿ
+stop_extra_tills	ಹೆಚ್ಚುವರಿ ಟಿಲ್‌ಗಳನ್ನು ನಿಲ್ಲಿಸಿ
+backup_auto	ಪ್ರತಿದಿನ ಸ್ವಯಂ ಬ್ಯಾಕಪ್ · ಕೊನೆಯದು {when} · ಕೊನೆಯ 14 ದಿನಗಳನ್ನು {dir} ನಲ್ಲಿ ಇಡಲಾಗುತ್ತದೆ.
+backup_auto_none	ಪ್ರತಿದಿನ ಸ್ವಯಂ ಬ್ಯಾಕಪ್ — ಮೊದಲನೆಯದು ಸ್ವಲ್ಪದರಲ್ಲೇ ಆಗುತ್ತದೆ.
+backup_copy_to	ಪ್ರತಿಗಳು {dir} ಗೂ ಹೋಗುತ್ತವೆ.
+backup_copy_btn	ಬ್ಯಾಕಪ್‌ಗಳನ್ನು ಒಂದು ಫೋಲ್ಡರ್‌ಗೂ ನಕಲಿಸಿ…
+autostart_off	ಈ ಕಂಪ್ಯೂಟರ್‌ನೊಂದಿಗೆ ಆರಂಭಿಸಿ
+autostart_on	ಈ ಕಂಪ್ಯೂಟರ್‌ನೊಂದಿಗೆ ಆರಂಭವಾಗುತ್ತದೆ ✓ — ನಿಲ್ಲಿಸಲು ಒತ್ತಿ
+autostart_done_on	ಇನ್ನು ಕಂಪ್ಯೂಟರ್ ಆರಂಭವಾದಾಗ ಆಪ್ ತೆರೆಯುತ್ತದೆ — ವಿದ್ಯುತ್ ಹೋದ ನಂತರವೂ ಅಂಗಡಿ ಸರ್ವರ್ ಮತ್ತೆ ಓಡುತ್ತದೆ.
+autostart_done_off	ಇನ್ನು ಕಂಪ್ಯೂಟರ್ ಆರಂಭವಾದಾಗ ಆಪ್ ತೆರೆಯುವುದಿಲ್ಲ.
+right_allowed	ಅನುಮತಿ ಇದೆ
+right_with_approval	ಅನುಮೋದನೆಯೊಂದಿಗೆ
+right_denied	ಅನುಮತಿ ಇಲ್ಲ
+editing_staff	ಇವರ ಹಕ್ಕುಗಳು
+team_pick_ph	ತಿದ್ದಬೇಕಾದ ಸಿಬ್ಬಂದಿ ಹೆಸರು
+select_staff	ಈ ಸಿಬ್ಬಂದಿ ಆಯ್ಕೆಮಾಡಿ
+rights_help	ಹಕ್ಕುಗಳು — ಬದಲಿಸಲು ಒತ್ತಿ: ಅನುಮತಿ → ಒಪ್ಪಿಗೆಯೊಂದಿಗೆ (ಆ ಕ್ಷಣ ವ್ಯವಸ್ಥಾಪಕರ PIN) → ಅನುಮತಿ ಇಲ್ಲ.
+right_void_refund	ಬುಕಿಂಗ್ ರದ್ದು ಅಥವಾ ಮರುಪಾವತಿ
+right_amend_sale	ದಾಖಲಾದ ಬುಕಿಂಗ್ ತಿದ್ದುಪಡಿ
+find_server	ಅಂಗಡಿಯ ಸರ್ವರ್ ಹುಡುಕಿ
+finding_server	ಈ Wi‑Fi ನಲ್ಲಿ ಅಂಗಡಿಯ ಸರ್ವರ್ ಹುಡುಕಲಾಗುತ್ತಿದೆ…
+no_server_found	ಸರ್ವರ್ ಸಿಗಲಿಲ್ಲ. ಅಂಗಡಿಯ ಸಾಧನ ಅದೇ Wi‑Fi ನಲ್ಲಿ ಹೆಚ್ಚುವರಿ ಟಿಲ್ ಅನುಮತಿಯೊಂದಿಗೆ ಇದೆಯೇ ನೋಡಿ, ಅಥವಾ ಅದರ IP ಬರೆಯಿರಿ.
+servers_found_pick	ನೀವು ಸಂಪರ್ಕಿಸಬೇಕಾದ ಅಂಗಡಿಯನ್ನು ಟ್ಯಾಪ್ ಮಾಡಿ.
+server_host_selected	{host} ಬಳಸಲಾಗುತ್ತಿದೆ — ಪೇರಿಂಗ್ ಕೋಡ್ ನಮೂದಿಸಿ, ನಂತರ ಈಗ ಪೇರ್ ಮಾಡಿ.
+device_forgotten	ಅಂಗಡಿ ಈ ಸಾಧನವನ್ನು ತೆಗೆದಿದೆ — ಅಂಗಡಿಯ ಈಗಿನ ಕೋಡ್‌ನಿಂದ ಮತ್ತೆ ಜೋಡಿಸಿ. ಕಾಯುತ್ತಿರುವ ಆರ್ಡರ್‌ಗಳು ಉಳಿದಿವೆ.
+forget_device	ಮರೆತುಬಿಡಿ
+last_seen	ಕೊನೆಯದಾಗಿ
+new_pair_code	ಹೊಸ ಜೋಡಣೆ ಕೋಡ್
+lan_offline	ಆಫ್‌ಲೈನ್
+lan_offline_waiting	ಆಫ್‌ಲೈನ್ · {n} ಕಾಯುತ್ತಿವೆ
+lan_connecting	ಅಂಗಡಿಗೆ ಸಂಪರ್ಕಿಸಲಾಗುತ್ತಿದೆ…
+pair_finishing	ಜೋಡಣೆ ಮುಗಿಯುತ್ತಿದೆ… ಕಚೇರಿ ಪುಸ್ತಕಗಳನ್ನು ಅನ್ವಯಿಸಲಾಗುತ್ತಿದೆ
+pair_opening	ಕಚೇರಿ ತೆರೆಯಲಾಗುತ್ತಿದೆ…
+lan_live	ಲೈವ್
+lan_sending	{n} ಕಳುಹಿಸಲಾಗುತ್ತಿದೆ
+lan_sign_in_to_send	{n} ಕಳುಹಿಸಲು ಮತ್ತೆ ಸೈನ್ ಇನ್ ಮಾಡಿ
+lan_pair_again	ಈ ಸಾಧನವನ್ನು ಮತ್ತೆ ಜೋಡಿಸಿ
+lan_update_app	ಆ್ಯಪ್ ಅಪ್‌ಡೇಟ್ ಮಾಡಿ — ಈ ಸಾಧನ ಮತ್ತು ಕಚೇರಿಯ ಸರ್ವರ್ ಬೇರೆ ಆವೃತ್ತಿಗಳಲ್ಲಿವೆ
+allow_firewall	ಇತರ ಸಾಧನಗಳಿಗೆ ಸಂಪರ್ಕಿಸಲು ಅನುಮತಿಸಿ
+firewall_blocked	ಈ ಕಂಪ್ಯೂಟರ್‌ನ ಫೈರ್‌ವಾಲ್ ಇತರ ಸಾಧನಗಳನ್ನು ತಡೆಯುತ್ತಿದೆ — “ಇತರ ಸಾಧನಗಳಿಗೆ ಸಂಪರ್ಕಿಸಲು ಅನುಮತಿಸಿ” ಒತ್ತಿ.
+firewall_waiting	ನಿರ್ವಾಹಕ ಅನುಮತಿಗಾಗಿ ಕಾಯುತ್ತಿದೆ…
+lan_join_help	ಇತರ ಸಾಧನಗಳು ಇದಕ್ಕೆ ಜೋಡಿಸಬಹುದು — ಜೋಡಣೆ ಕೋಡ್ {code}. ಇನ್ನೊಂದು ಸಾಧನದಲ್ಲಿ ಕ್ಲೈಂಟ್ ಮೋಡ್ ಆರಿಸಿ, ನಂತರ ಅಂಗಡಿಯ ಸರ್ವರ್ ಹುಡುಕಿ, ಅಥವಾ ಈ ವಿಳಾಸ ಟೈಪ್ ಮಾಡಿ: {addr}
+lan_pair_status	ವೈ‑ಫೈ {addr}
+lan_join_help_no_addr	ವಿಳಾಸ ಪಡೆಯಲು ಈ ಸಾಧನವನ್ನು Wi‑Fi ಗೆ ಸಂಪರ್ಕಿಸಿ.
+lan_no_address	ಈ ಸಾಧನಕ್ಕೆ ಇನ್ನೂ Wi‑Fi ವಿಳಾಸ ಇಲ್ಲ — ಇದನ್ನು ಅಂಗಡಿಯ Wi‑Fi ಗೆ ಸಂಪರ್ಕಿಸಿ.
+lan_not_listening	ಈಗ ಸಾಧನಗಳನ್ನು ಸ್ವೀಕರಿಸುತ್ತಿಲ್ಲ — ಬೇರೊಂದು ಪ್ರೋಗ್ರಾಂ ಪೋರ್ಟ್ {port} ಬಳಸುತ್ತಿರಬಹುದು. ಆ್ಯಪ್ ಮರುಪ್ರಾರಂಭಿಸಿ.
+lan_tills_off	ಹೆಚ್ಚುವರಿ ಟಿಲ್‌ಗಳು ಆಫ್ ಆಗಿವೆ. ಈ ಕಚೇರಿಯ ಲೆಕ್ಕಪುಸ್ತಕಗಳು ಇದೇ ಸಾಧನದಲ್ಲಿರುತ್ತವೆ. ಇನ್ನೊಂದು ಸಾಧನವೂ ಪಾರ್ಸೆಲ್ ಬುಕ್ ಮಾಡಬೇಕಾದರೆ ಅಥವಾ ಪಾವತಿ ಪಡೆಯಬೇಕಾದರೆ ಹೆಚ್ಚುವರಿ ಟಿಲ್‌ಗಳನ್ನು ಅನುಮತಿಸಿ.
+paired_with	{url} ನಲ್ಲಿರುವ ಅಂಗಡಿಗೆ ಜೋಡಿಸಲಾಗಿದೆ
+not_paired	ಜೋಡಿಸಿಲ್ಲ — ಅಂಗಡಿಯ ಸರ್ವರ್‌ಗೆ ಸಂಪರ್ಕಿಸಿ.
+choose_device_use	ಈ ಸಾಧನವನ್ನು ಹೇಗೆ ಬಳಸಬೇಕು ಎಂದು ಆರಿಸಿ.
+paired_note	ಜೋಡಿಸಲಾಗಿದೆ. ಮಾರಲು ಅನ್‌ಲಾಕ್ ಮಾಡಿ, ಅಥವಾ ಅಂಗಡಿಯಿಂದ ಇತ್ತೀಚಿನದನ್ನು ಪಡೆಯಲು ರಿಫ್ರೆಶ್ ಮಾಡಿ.
+last_update_at	ಅಂಗಡಿಯಿಂದ ಕೊನೆಯ ಅಪ್‌ಡೇಟ್: {time}.
+pair_intro	ಸರ್ವರ್ ಹುಡುಕಿ, ಅಥವಾ ಅದರ ವಿಳಾಸ ಮತ್ತು ಜೋಡಿ ಕೋಡ್ ಟೈಪ್ ಮಾಡಿ.
+queue_waiting	ಅಂಗಡಿಗೆ ತಲುಪಲು ಕಾಯುತ್ತಿವೆ ({n}):
+queue_tries	{n} ಬಾರಿ ಪ್ರಯತ್ನ · ಕೊನೆಯ ಉತ್ತರ: {e}
+save_backup_copy	ಬ್ಯಾಕಪ್ ಪ್ರತಿ ಉಳಿಸಿ…
+backup_copy_saved	ಬ್ಯಾಕಪ್ ಪ್ರತಿ ಉಳಿಸಲಾಗಿದೆ — ಇದನ್ನು ಈ ಸಾಧನದ ಹೊರಗೆ ಇಡಿ (USB ಸ್ಟಿಕ್ ಅಥವಾ ಬೇರೆ ಸಾಧನ)
+backup_copy_overdue	{n} ದಿನಗಳಿಂದ ಯಾವುದೇ ಬ್ಯಾಕಪ್ ಪ್ರತಿ ಈ ಸಾಧನದಿಂದ ಹೊರಗೆ ಹೋಗಿಲ್ಲ — ಸೆಟ್ಟಿಂಗ್ಸ್ → ಬ್ಯಾಕಪ್
+backup_copy_failed	ಬ್ಯಾಕಪ್ ಪ್ರತಿಯನ್ನು ಅಲ್ಲಿ ಉಳಿಸಲಾಗಲಿಲ್ಲ — ಬೇರೆ ಸ್ಥಳ ಆಯ್ಕೆಮಾಡಿ
+clock_off	ಈ ಸಾಧನದ ಗಡಿಯಾರ ಅಂಗಡಿಯ ಸರ್ವರ್‌ಗಿಂತ {min} ನಿಮಿಷ ಬೇರೆಯಾಗಿದೆ — ಈ ಸಾಧನದಲ್ಲಿ ಸರಿಯಾದ ಸಮಯ ಹೊಂದಿಸಿ
+printers_heading	ಈ ಸಾಧನದ ಮುದ್ರಕಗಳು
+printers_help	ಪ್ರತಿ ಮುದ್ರಕವನ್ನು ಒಮ್ಮೆ ಸೇರಿಸಿ, ನಂತರ ರಸೀದಿ ಮತ್ತು AWB ಲೇಬಲ್ ಎಲ್ಲಿ ಮುದ್ರಿಸುವುದು ಎಂದು ಆಯ್ಕೆಮಾಡಿ — ಪಟ್ಟಿಯಲ್ಲಿ ಮೊದಲನೆಯದು ಮೊದಲು ಪ್ರಯತ್ನ; ವಿಫಲವಾದರೆ ಮುಂದಿನದು. ಮಾರ್ಗ ಖಾಲಿ = ಆ ವೈಶಿಷ್ಟ್ಯ ಮುದ್ರಿಸುವುದಿಲ್ಲ. ಗುರಿ ಖಾಲಿ (ಡೀಫಾಲ್ಟ್), ಸಿಸ್ಟಂ ಹೆಸರು, ಅಥವಾ ನೆಟ್‌ವರ್ಕ್ ವಿಳಾಸ (ಉದಾ. 192.168.1.50). ಪ್ರತಿ ಸಾಧನ ತನ್ನ ಮುದ್ರಕಗಳನ್ನು ಇಟ್ಟುಕೊಳ್ಳುತ್ತದೆ.
+job_width	ವಿಷಯದ ಅಗಲ (ಮಿಮೀ)
+job_width_ph	ಅಥವಾ ಅಗಲ ಟೈಪ್ ಮಾಡಿ, 40–210 mm
+job_layout	ಲೇಔಟ್
+job_delivery	ಕೆಲಸ ಹೇಗೆ ಕಳುಹಿಸಲಾಗುತ್ತದೆ
+job_size	ಫಾಂಟ್ ಗಾತ್ರ
+job_size_ph	ಉದಾ. 18, 20, 26…
+save_receipt_format	ರಸೀದಿ ಸ್ವರೂಪ ಉಳಿಸಿ
+save_label_format	ಲೇಬಲ್ ಸ್ವರೂಪ ಉಳಿಸಿ
+test_receipt_format	ಪರೀಕ್ಷಾ ರಸೀದಿ
+test_label_format	ಪರೀಕ್ಷಾ ಲೇಬಲ್
+test_receipt_sent	ಮಾದರಿ ರಸೀದಿ ಕಳುಹಿಸಲಾಗಿದೆ
+test_label_sent	ಮಾದರಿ ಲೇಬಲ್ ಕಳುಹಿಸಲಾಗಿದೆ
+test_print_no_printer	ಆ ಕೆಲಸಕ್ಕೆ ಮುದ್ರಕವಿಲ್ಲ — ಈ ಸ್ಥಳದ ಅಡಿಯಲ್ಲಿ ಒಂದನ್ನು ಸೇರಿಸಿ
+printers_host_only	ಮುದ್ರಕಗಳು ಅಂಗಡಿ ಸಾಧನದಲ್ಲಿ (Server) ಹೊಂದಿಸಲಾಗುತ್ತದೆ. ಈ ಟಿಲ್ ಅಲ್ಲಿಗೆ ಜಾಬ್‌ಗಳನ್ನು ಕಳುಹಿಸುತ್ತದೆ — ಹುಡುಕು / ಸೇರಿಸು / ನಿಯೋಜಿಸು Serverನಲ್ಲೇ ಉಳಿಯುತ್ತವೆ. ಪರೀಕ್ಷಾ ಪುಟ Serverಗೆ ಹೋಗುತ್ತದೆ.
+printers_pool_heading	ಮುದ್ರಕಗಳು
+printers_routes_heading	ಎಲ್ಲಿ ಮುದ್ರಿಸುವುದು
+printer_label_ph	ಹೆಸರು (ಉದಾ. ಡೆಸ್ಕ್)
+printer_target_ph	host:9100 · bt:MAC · usb:VID:PID · ಸಿಸ್ಟಮ್ ಹೆಸರು
+printer_mode_heading	ಆಯ್ದ ಮಾರ್ಗದ ಫಾರ್ಮ್ಯಾಟ್
+printer_mode_standard	ಸಾಮಾನ್ಯ ಪೋರ್ಟ್ರೇಟ್
+printer_mode_landscape	ಸಾಮಾನ್ಯ ಲ್ಯಾಂಡ್‌ಸ್ಕೇಪ್
+printer_mode_thermal	ಥರ್ಮಲ್
+printer_mode_standard_short	ಪೋರ್ಟ್ರೇಟ್
+printer_mode_landscape_short	ಲ್ಯಾಂಡ್‌ಸ್ಕೇಪ್
+printer_mode_thermal_short	ಥರ್ಮಲ್
+printer_format_custom	ಹೊಸ ಸ್ವಂತ ಫಾರ್ಮ್ಯಾಟ್
+printer_format_custom_label	ಸ್ವಂತ
+printer_format_custom_added	ಈ ಮಾರ್ಗಕ್ಕೆ ಸ್ವಂತ ಫಾರ್ಮ್ಯಾಟ್ ಸೇರಿಸಲಾಗಿದೆ
+add_printer	ಮುದ್ರಕ ಸೇರಿಸಿ
+remove_printer	ಕೊನೆಯದನ್ನು ತೆಗೆಯಿರಿ
+route_pick_ph	receipt ಅಥವಾ label
+route_add_printer_ph	ಈ ಮಾರ್ಗಕ್ಕೆ ಮುದ್ರಕ ಸೇರಿಸಿ
+route_receipt	ರಸೀದಿ
+route_label	AWB ಲೇಬಲ್
+route_dont_print	ಮುದ್ರಕ ನಿಯೋಜಿಸಿಲ್ಲ
+route_add	ಮಾರ್ಗಕ್ಕೆ ಸೇರಿಸಿ
+route_up	ಮೇಲೆ
+route_down	ಕೆಳಗೆ
+route_remove	ಕೊನೆಯದನ್ನು ತೆಗೆಯಿರಿ
+route_clear	ಈ ಸ್ಥಳದ ಮುದ್ರಕಗಳನ್ನು ಅಳಿಸಿ
+save_printers	ಮುದ್ರಕಗಳನ್ನು ಉಳಿಸಿ
+print_test_page	ಪರೀಕ್ಷಾ ಪುಟ ಮುದ್ರಿಸಿ
+printers_saved	ಈ ಸಾಧನದ ಮುದ್ರಕಗಳನ್ನು ಉಳಿಸಲಾಗಿದೆ
+test_page_sent	ಪರೀಕ್ಷಾ ಪುಟ ಕಳುಹಿಸಲಾಗಿದೆ — ಮುದ್ರಕ ನೋಡಿ
+printers_found	ಈ ಸಾಧನದಲ್ಲಿ ಸಿಕ್ಕವು: {list}
+find_printers	ಮುದ್ರಕಗಳನ್ನು ಹುಡುಕಿ
+printers_looking	ಈ ಸಾಧನ ಮತ್ತು Wi‑Fi ನಲ್ಲಿ ಮುದ್ರಕಗಳನ್ನು ಹುಡುಕಲಾಗುತ್ತಿದೆ…
+printers_tap_find	ಕೆಲಸ ಸ್ವೀಕರಿಸುವ ಸರತಿಗಳು ಮತ್ತು ಈ Wi‑Fi ನಲ್ಲಿರುವ ನೆಟ್‌ವರ್ಕ್ ರಸೀದಿ ಮುದ್ರಕಗಳಿಗಾಗಿ ಮುದ್ರಕಗಳನ್ನು ಹುಡುಕಿ ಒತ್ತಿ (ತೆಗೆದವು ಅಥವಾ ಆಫ್‌ಲೈನ್‌ನವು ಅಲ್ಲ).
+printers_none_found	ಮುದ್ರಕಗಳು ಸಿಗಲಿಲ್ಲ — ಸಿಸ್ಟಮ್ ಮುದ್ರಕದ ಹೆಸರು, ಅಥವಾ ನೆಟ್‌ವರ್ಕ್ ವಿಳಾಸ ಟೈಪ್ ಮಾಡಿ (ಉದಾ. 192.168.1.50).
+receipt_printer_ph	ರಸೀದಿ ಮುದ್ರಕ
+queue_refused	ಅಂಗಡಿ ಒಪ್ಪಿಕೊಂಡಿಲ್ಲ ({n}) — ಪ್ರತಿಯೊಂದನ್ನೂ ಕೌಂಟರ್‌ನಲ್ಲಿ ಪರಿಶೀಲಿಸಿ:
+clear_not_accepted	ಪರಿಶೀಲಿಸಿದೆ — ಈ ಪಟ್ಟಿ ತೆರವುಗೊಳಿಸಿ
+device_name_ph	ಈ ಸಾಧನದ ಹೆಸರು
+lan_last_update	ಕೊನೆಯ ಅಪ್‌ಡೇಟ್ {time}
+lan_not_accepted	{n} ಒಪ್ಪಿಗೆಯಾಗಿಲ್ಲ
+connected_now	ಈಗ ಸಂಪರ್ಕದಲ್ಲಿದೆ
+backup_failed	ಕೊನೆಯ ಸ್ವಯಂ ಬ್ಯಾಕಪ್ ವಿಫಲವಾಯಿತು: {e}
+backup_overdue	{n} ದಿನಗಳಿಂದ ಬ್ಯಾಕಪ್ ಇಲ್ಲ — ಬ್ಯಾಕಪ್ ಆಗಲು ಈ ಸಾಧನದಲ್ಲಿ ಆ್ಯಪ್ ತೆರೆದಿಡಿ.
+disk_low	ಈ ಸಾಧನದಲ್ಲಿ ಕೇವಲ {mb} MB ಖಾಲಿ ಇದೆ — ಶೀಘ್ರದಲ್ಲೇ ಬ್ಯಾಕಪ್‌ಗಳು ವಿಫಲವಾಗುತ್ತವೆ. ಸ್ವಲ್ಪ ಜಾಗ ಖಾಲಿ ಮಾಡಿ.
+last_seen_devices	ಕೊನೆಯದಾಗಿ ಕಂಡದ್ದು: {time}
+sync_interval	ಪ್ರತಿ {secs} ಸೆಕೆಂಡಿಗೆ ಸಿಂಕ್
+connection_to_shop	ಅಂಗಡಿಯೊಂದಿಗೆ ಸಂಪರ್ಕ
+supplier_name_ph	ಸರಬರಾಜುದಾರ ಹೆಸರು (ಅಥವಾ ಪಾರ್ಟಿ)
+supplier_ph	ಸರಬರಾಜುದಾರ
+switch_device	ಈ ಸಾಧನವನ್ನು ಬದಲಾಯಿಸಿ
+take_payment	ಪಾವತಿ ತೆಗೆದುಕೊಳ್ಳಿ
+tax_added_till	{tax} ಹೊರತು
+tax_inside_price	{tax} ಒಳಗೊಂಡಿದೆ
+today_books	ಇಂದಿನ ಬುಕ್‌ಗಳು
+unlock_after_pairing	PIN ನಮೂದಿಸಿ
+unlock_with_login	ಲಾಗಿನ್‌ನೊಂದಿಗೆ ಅನ್‌ಲಾಕ್
+update_my_password	ನನ್ನ ಪಾಸ್‌ವರ್ಡ್ ಬದಲಾಯಿಸಿ
+update_my_pin	ನನ್ನ PIN ನವೀಕರಿಸಿ
+duress_heading	ತುರ್ತು ಅನ್‌ಲಾಕ್ PIN (ಮಾಲೀಕರು ಮಾತ್ರ)
+duress_help	ಐಚ್ಛಿಕ. ಅನ್‌ಲಾಕ್‌ನಲ್ಲಿ ನಿಮ್ಮ PIN ಬದಲು ಈ PIN ಟೈಪ್ ಮಾಡಿದರೆ, ಪುಸ್ತಕಗಳ ಎಲ್ಲ ನಮೂದುಗಳು ಅಳಿಸಲ್ಪಡುತ್ತವೆ (ಬುಕಿಂಗ್‌ಗಳು, ಲೆಡ್ಜರ್‌ಗಳು, ಇತಿಹಾಸ) ಮತ್ತು ಡೆಸ್ಕ್ ಸಾಮಾನ್ಯವಾಗಿ ಕಾಣುತ್ತಾ ಮಾಲೀಕರಾಗಿ ತೆರೆಯುತ್ತದೆ — ದರಗಳು, ಪಕ್ಷಗಳು, ವಲಯಗಳು, ಸಿಬ್ಬಂದಿ ಮತ್ತು ಸೆಟ್ಟಿಂಗ್‌ಗಳು ಉಳಿಯುತ್ತವೆ. ಸ್ಕೀಮಾ ಮತ್ತು ಕಾನ್ಫಿಗ್ ಅಳಿಸುವುದಿಲ್ಲ. ಬಲವಂತವಾಗಿ ಅನ್‌ಲಾಕ್ ಮಾಡಿಸಿದಾಗ ಮಾತ್ರ ಬಳಸಿ. ಆಫ್ ಮಾಡಲು ಖಾಲಿ ಬಿಟ್ಟು ಉಳಿಸಿ. ಯಾರ PIN ಗೂ ಸಮನಾಗಬಾರದು.
+duress_pin_ph	ತುರ್ತು PIN (4–12 ಅಂಕೆ)
+duress_confirm_ph	ಮತ್ತೆ ಟೈಪ್ ಮಾಡಿ
+save_duress_pin	ತುರ್ತು PIN ಉಳಿಸಿ
+clear_duress_pin	ತುರ್ತು PIN ಆಫ್
+duress_on	ತುರ್ತು ಅನ್‌ಲಾಕ್ PIN ಆನ್ ಆಗಿದೆ
+duress_off	ತುರ್ತು ಅನ್‌ಲಾಕ್ PIN ಆಫ್ ಆಗಿದೆ
+duress_saved	ತುರ್ತು ಅನ್‌ಲಾಕ್ PIN ಉಳಿಸಲಾಗಿದೆ
+duress_cleared	ತುರ್ತು ಅನ್‌ಲಾಕ್ PIN ಆಫ್ ಮಾಡಲಾಗಿದೆ
+vehicle_ph	ವಾಹನ
+void	ರದ್ದುಮಾಡಿ
+write_off_ap	AP ಮನ್ನಿಸಿ
+write_off_nil	ಮನ್ನಿಸಿ / ಬಾಕಿ ಶೂನ್ಯ
+zone_ph	ವಲಯ (ದರಗಳಿಂದ ಹೆಸರು)
+caption_today	ಇಂದು
+caption_bookings	ಬುಕಿಂಗ್‌ಗಳು
+caption_payments_today	ಇಂದಿನ ಪಾವತಿಗಳು
+caption_outstanding	ಬಾಕಿ
+caption_bank	ಬ್ಯಾಂಕ್
+paid_by	ಪಾವತಿಸಿದ್ದು
+second_way	ಎರಡನೇ ಮಾರ್ಗ
+weight_in	ತೂಕ ಘಟಕ
+size_in	ಗಾತ್ರ ಘಟಕ
+goods_received	ಸರಕು ಸ್ವೀಕರಿಸಲಾಗಿದೆ
+expense_heading	ಖರ್ಚು
+notes_attach_sale	ಟಿಪ್ಪಣಿಗಳು ಮತ್ತು ಲಗತ್ತುಗಳು (ಆಯ್ಕೆಮಾಡಿದ ಮಾರಾಟ)
+notes_attach_party	ટિપ್ಪણીઓ અને લગતો (આય્કેમાડિદ પાર્ટી)
+attachments_last_expense	ಲಗತ್ತುಗಳು (ಕೊನೆಯ ಖರ್ಚು)
+credit_limit_heading	ಸಾಲ ಮಿತಿ (ಆಯ್ಕೆಮಾಡಿದ / ಹೆಸರಿನ ಪಾರ್ಟಿ)
+pay_selected_heading	ಆಯ್ಕೆಮಾಡಿದ ಪಾವತಿಸಿ (ಸಾಲ ತೀರಿಸಿ / ಮುಂಗಡ)
+write_off_heading	ಮನ್ನಿಸಿ (ಪಾವತಿ ಇಲ್ಲದೆ ತೀರಿಸಿ)
+pay_ap_heading	ನಾವು ಅವರಿಗೆ ಕೊಡಬೇಕಾದ್ದು (AP)
+country_tax	ದೇಶ ಮತ್ತು ತೆರಿಗೆ
+extra_tills_heading	ಹೆಚ್ಚುವರಿ ಟಿಲ್‌ಗಳು
+other_devices_help_heading	ಇತರ ಸಾಧನಗಳನ್ನು ಹೊಂದಿಸಿ
+other_devices_help	ಈ ಸಾಧನದಲ್ಲಿ (ಸರ್ವರ್): ಇತರ ಸಾಧನಗಳು → ಹೆಚ್ಚುವರಿ ಟಿಲ್‌ಗಳನ್ನು ಅನುಮತಿಸಿ. ಜೋಡಣೆ ಕೋಡ್ ಮತ್ತು Wi‑Fi ವಿಳಾಸ ಬರೆದಿಟ್ಟುಕೊಳ್ಳಿ. ಕಾಣಿಸಿದರೆ ಇತರ ಸಾಧನಗಳು ಸಂಪರ್ಕಿಸಲು ಬಿಡಿ ಒತ್ತಿ. ಕಂಪ್ಯೂಟರ್‌ನಲ್ಲಿ, ಈ ಕಂಪ್ಯೂಟರ್‌ನೊಂದಿಗೆ ಪ್ರಾರಂಭಿಸಿ ಒತ್ತಿ. ಪ್ರತಿ ಇತರ ಸಾಧನದಲ್ಲಿ: ಆ್ಯಪ್ ಸ್ಥಾಪಿಸಿ, ಕ್ಲೈಂಟ್ ಮೋಡ್ ಆಯ್ಕೆಮಾಡಿ, ಅಂಗಡಿಯ ಸರ್ವರ್ ಹುಡುಕಿ (ಅಥವಾ ವಿಳಾಸ ಟೈಪ್ ಮಾಡಿ), ಜೋಡಣೆ ಕೋಡ್ ನಮೂದಿಸಿ, ಈಗ ಜೋಡಿಸಿ. Wi‑Fi ಕಡಿತವಾದರೆ ಆರ್ಡರ್‌ಗಳು ಸಾಧನದಲ್ಲಿ ಕಾಯುತ್ತವೆ ಮತ್ತು ಸರ್ವರ್ ಮತ್ತೆ ಉತ್ತರಿಸಿದಾಗ ಹೋಗುತ್ತವೆ.
+your_brand	ನಿಮ್ಮ ಬ್ರ್ಯಾಂಡ್ (ಆಪ್‌ನಲ್ಲಿ)
+units_heading	ಘಟಕಗಳು
+booking_measures	ಬುಕಿಂಗ್ ಅಳತೆಗಳು
+drawer_count	ಡ್ರಾಯರ್ ಎಣಿಕೆ (ಐಚ್ಛಿಕ)
+spreadsheet_csv	ಸ್ಪ್ರೆಡ್‌ಶೀಟ್ (CSV)
+bank_reconciliation	ಬ್ಯಾಂಕ್ ಹೊಂದಾಣಿಕೆ (ನಿಮ್ಮ ಬ್ಯಾಂಕ್ ಸ್ಟೇಟ್‌ಮೆಂಟ್‌ನೊಂದಿಗೆ ಟಿಕ್ ಮಾಡಿ)
+book_add_product	ಬುಕ್ — ಉತ್ಪನ್ನ / ದರ ಸೇರಿಸಿ
+book_opening_credit	ಬುಕ್ — ಆರಂಭಿಕ ಸಾಲ
+account_kind	ಖಾತೆಯ ವಿಧ (ಒಂದನ್ನು ಒತ್ತಿರಿ)
+active_ledger	ಸಕ್ರಿಯ ಲೆಡ್ಜರ್
+actual_total_cap	ನಿಜವಾದ ಒಟ್ಟು
+amend_help	ತಿದ್ದುಪಡಿ, ರದ್ದು ಅಥವಾ ಹಿಂತಿರುಗಿಸಲು ಮಾರಾಟವನ್ನು ಆಯ್ಕೆಮಾಡಿ. ತಿದ್ದುಪಡಿಗಳು ಪೂರ್ಣ ಇತಿಹಾಸವನ್ನು ಇಡುತ್ತವೆ.
+applied_total_cap	ಅನ್ವಯಿಸಿದ ಒಟ್ಟು
+bank_balance	ಬ್ಯಾಂಕ್ ಬಾಕಿ
+bank_net_today	ಇಂದಿನ ಬ್ಯಾಂಕ್ ನಿವ್ವಳ
+branch_export_help	ರಫ್ತು ಒಂದು ದಿನದ ಸ್ನ್ಯಾಪ್‌ಶಾಟ್ ಅನ್ನು ಬ್ಯಾಕಪ್ ಫೋಲ್ಡರ್‌ನಲ್ಲಿ ಬರೆದು ಕ್ಲಿಪ್‌ಬೋರ್ಡ್‌ಗೆ ನಕಲಿಸುತ್ತದೆ. ಇನ್ನೊಂದು ಶಾಖೆಯ ದಿನ ಆಮದು ಮಾಡಲು ಅದರ ಫೈಲ್ ಅನ್ನು ಆ ಫೋಲ್ಡರ್‌ನಲ್ಲಿ import_branch_snapshot.json ಎಂದು ಉಳಿಸಿ, ನಂತರ ಆಮದು ಒತ್ತಿ.
+brand_shown_help	ಆಪ್‌ನೊಳಗಿನ ಪರದೆಗಳಲ್ಲಿ ತೋರಿಸಲಾಗುತ್ತದೆ. ಈ ಸಾಧನದಲ್ಲಿ ಸ್ಥಾಪಿಸಿದ ಆಪ್ ಹೆಸರು ಮತ್ತು ಐಕಾನ್ ಪ್ಲಾಟ್‌ಫಾರ್ಮ್ ಪಟ್ಟಿಯಂತೆಯೇ ಇರುತ್ತದೆ.
+app_icon	ಆ್ಯಪ್ ಐಕಾನ್
+logo_help	ಆ್ಯಪ್ ಪರದೆಗಳಲ್ಲಿ ಅಂಗಡಿಯ ಐಚ್ಛಿಕ ಗುರುತು.
+onboard_layout	ನಿಮಗೆ ಏನು ಸಿಗುತ್ತದೆ
+item_photo_help	ಐಚ್ಛಿಕ. ಫೋಟೋ ಇಲ್ಲದಿದ್ದರೆ ಐಟಂ ಹೆಸರಿನ ಮೊದಲಕ್ಷರಗಳನ್ನು ತೋರಿಸುತ್ತೇವೆ.
+cash_in_hand	ಕೈಯಲ್ಲಿ ನಗದು (ಟಿಲ್)
+change_my_pin_heading	ನನ್ನ PIN ಬದಲಿಸಿ (ನಿಮ್ಮದು ಮಾತ್ರ)
+connect_to_server	ಸರ್ವರ್‌ಗೆ ಸಂಪರ್ಕಿಸಿ
+counter_locked	ಕೌಂಟರ್ 01 · ಲಾಕ್
+country_pack_help	ದೇಶ ಪ್ಯಾಕ್ ತೆರಿಗೆಯ ಹೆಸರು ಮತ್ತು ಗಣಿತ, ತ್ವರಿತ-ಪಾವತಿ ರೈಲು, ಮತ್ತು ಬಿಲ್‌ಗಳ ಮೇಲೆ ಮುದ್ರಿಸುವ ವ್ಯವಹಾರ ಐಡಿಯನ್ನು ಹೊಂದಿಸುತ್ತದೆ. Kumkaj ಎಲ್ಲಿಯೂ ತೆರಿಗೆ ಸಲ್ಲಿಸುವುದಿಲ್ಲ ಅಥವಾ ಸರ್ಕಾರಿ ಇ-ಇನ್‌ವಾಯ್ಸ್ ನೀಡುವುದಿಲ್ಲ.
+currency_use_help	ಸ್ಕ್ರಾಲ್ ಮಾಡಿ ಮತ್ತು ಬೆಂಬಲಿತ ಯಾವುದೇ ಕರೆನ್ಸಿಗೆ Use ಒತ್ತಿರಿ.
+day_close_help	ದಿನ ಮುಗಿಸುವಿಕೆ ದಾಖಲಿಸುವುದು ಈ ಸಾರಾಂಶವನ್ನು (ಎಣಿಸಿದ್ದರೆ ಡ್ರಾಯರ್ ವ್ಯತ್ಯಾಸದೊಂದಿಗೆ) ಆಡಿಟ್ ಲಾಗ್‌ನಲ್ಲಿ ಉಳಿಸುತ್ತದೆ. ಇದು ಮಾರಾಟವನ್ನು ನಿಲ್ಲಿಸುವುದಿಲ್ಲ.
+expenses_word	ಖರ್ಚುಗಳು
+feature_access_help	ಆಯ್ಕೆ ಮಾಡಿದ ಸಿಬ್ಬಂದಿಗೆ ವೈಶಿಷ್ಟ್ಯ ಪ್ರವೇಶ (ಸೇರಿಸಿದ ನಂತರ ಒತ್ತಿ)
+footer_local	ಸ್ಥಳೀಯ SQLite · ಎಂದೆಂದಿಗೂ ಉಚಿತ · ಕ್ಲೌಡ್ ಇಲ್ಲ
+fresh_book_moklanjo	ಪ್ರಿಂಟರ್‌ಗಳು
+fresh_selected	Fresh ಆಯ್ಕೆ — ಕ್ಯಾಟಲಾಗ್ ಖಾಲಿ ಉಳಿಯುತ್ತದೆ. ಸಿದ್ಧವಾದಾಗ Done ಒತ್ತಿರಿ.
+gross_word	ಒಟ್ಟು ಮೊತ್ತ
+how_start	ನೀವು ಹೇಗೆ ಆರಂಭಿಸಲು ಬಯಸುತ್ತೀರಿ?
+later_country_pack	ಪ್ರಿಂಟರ್‌ಗಳು
+local_badge	ಸ್ಥಳೀಯ
+measures_help_moklanjo	ಬುಕಿಂಗ್ ಡೆಸ್ಕ್‌ನಲ್ಲಿ ಪಾರ್ಸೆಲ್‌ಗಳನ್ನು ಹೇಗೆ ಅಳೆಯಲಾಗುತ್ತದೆ. ನೀವು ಬಳಸುವ ಘಟಕಗಳಲ್ಲಿ ಆಯಾಮಗಳು ಮತ್ತು ತೂಕವನ್ನು ಬರೆಯಿರಿ — ಪ್ರಮಾಣಿತ (cm, m, in, ft · kg, g, lb, oz) ಅಥವಾ ಮೇಲೆ cm / kg ಗೆ ಲಿಂಕ್ ಮಾಡಿದ ನಿಮ್ಮ ಸ್ವಂತ ಘಟಕ (ನೇರವಾಗಿ ಅಥವಾ ಇತರ ಘಟಕಗಳ ಮೂಲಕ). ಬುಕ್‌ಗಳು ಯಾವಾಗಲೂ kg ದಾಖಲಿಸುತ್ತವೆ. ಕ್ಷೇತ್ರವನ್ನು ಖಾಲಿ ಬಿಟ್ಟರೆ ಅದು ಉಳಿಯುತ್ತದೆ.
+mix_type_hint_moklanjo	ಪ್ರತಿಯೊಂದರಲ್ಲಿ ಎಷ್ಟು ಎಂದು ಬರೆಯಿರಿ (ನಗದು / UPI / ಕಾರ್ಡ್ / ಸಾಲ). ಬಿಲ್‌ಗೆ ಸಮವಾಗಿರಬೇಕು. ಸಾಲಕ್ಕೆ ಮೇಲೆ ಗ್ರಾಹಕ ಬೇಕು.
+money_in_sales	ಹಣ ಬಂದಿತು (ಮಾರಾಟ)
+more_help_moklanjo	ಕ್ಯಾಟಲಾಗ್, ಮಾರಾಟ, ಸಾಲ, ತಂಡ, ಬ್ಯಾಕಪ್ — ಮತ್ತು ಅಗತ್ಯವಿದ್ದಾಗ ಸ್ಟಾಕ್ ಮತ್ತು ಹೆಚ್ಚುವರಿ ಟಿಲ್‌ಗಳು.
+net_word	ನಿವ್ವಳ
+offline_badge	ಆಫ್‌ಲೈನ್
+optional_login_help	ಐಚ್ಛಿಕ ಲಾಗಿನ್ (ಐಡಿ + ಪಾಸ್‌ವರ್ಡ್). ಮಾಲೀಕರು ಒಮ್ಮೆ ಹೊಂದಿಸುತ್ತಾರೆ; ನಂತರ ಬಳಕೆದಾರರು ಮಾತ್ರ ಪಾಸ್‌ವರ್ಡ್ ಬದಲಾಯಿಸಬಹುದು.
+or_unlock_login	ಅಥವಾ ಲಾಗಿನ್ ಐಡಿ + ಪಾಸ್‌ವರ್ಡ್‌ನೊಂದಿಗೆ ಅನ್‌ಲಾಕ್ ಮಾಡಿ
+permission_preset	ಕೆಲಸ (ಪರದೆಗಳು ಮತ್ತು ಹಕ್ಕುಗಳನ್ನು ಹೊಂದಿಸುತ್ತದೆ)
+preset_help_moklanjo	ಕ್ಯಾಷಿಯರ್: ಮಾರಾಟ. ಮ್ಯಾನೇಜರ್: ಮಾರಾಟ + ಐಟಂ + ರದ್ದು/ತಿದ್ದುಪಡಿ.
+product_locked_moklanjo	Moklanjo
+product_only_moklanjo	ಈ ಆ್ಯಪ್ Moklanjo ಮಾತ್ರ — ಲೆಕ್ಕಪುಸ್ತಕ + ಬುಕಿಂಗ್ ಡೆಸ್ಕ್. ಇತರ ವ್ಯಾಪಾರಗಳ ಉತ್ಪನ್ನಗಳು ನಂತರ ಬೇರೆಯಾಗಿ ಬರುತ್ತವೆ.
+purchases_cogs	ಖರೀದಿಗಳು (COGS)
+qty_cap	ಪ್ರಮಾಣ
+restore_help	Restore: ಒಂದು ಬ್ಯಾಕಪ್ ಆರಿಸಿ. ಲೆಕ್ಕಪುಸ್ತಕಗಳು ಆಗ ಇದ್ದಂತೆ ತೆರೆಯುತ್ತವೆ; ಈಗಿನವುಗಳನ್ನು ಮೊದಲು ಉಳಿಸಲಾಗುತ್ತದೆ, ಆದ್ದರಿಂದ ಇದನ್ನು ಹಿಂತಿರುಗಿಸಬಹುದು.
+wipe_data_heading	ಸ್ಥಳೀಯ ಡೇಟಾ ಅಳಿಸಿ
+wipe_data_help	Owner ಮಾತ್ರ — Windows ಅನ್‌ಇನ್‌ಸ್ಟಾಲ್‌ನಂತೆ. ವ್ಯಾಪಾರ ದಾಖಲೆಗಳು ಇತಿಹಾಸ ಅಳಿಸಿ, ದರಗಳು/ಸೆಟಪ್ ಇಡುತ್ತವೆ. ಅಂಗಡಿ ಸೆಟಪ್ ಪುಸ್ತಕಗಳನ್ನು ಅಳಿಸುತ್ತದೆ. ಪರದೆ ಆದ್ಯತೆಗಳು ವಿಂಡೋ/ಭಾಷೆ. Owner PIN ದೃಢೀಕರಣ.
+wipe_trading	ವ್ಯಾಪಾರ ದಾಖಲೆಗಳು
+wipe_schema	ಅಂಗಡಿ ಸೆಟಪ್
+wipe_ui	ಪರದೆ ಆದ್ಯತೆಗಳು
+wipe_owner_pin_ph	ಅಳಿಸಲು Owner PIN
+wipe_delete_selected	ಆಯ್ಕೆ ಅಳಿಸಿ
+wipe_owner_only	Owner ಮಾತ್ರ ಸ್ಥಳೀಯ ಡೇಟಾ ಅಳಿಸಬಹುದು.
+restore_owner_only	Owner ಮಾತ್ರ ಬ್ಯಾಕಪ್ ಮರುಸ್ಥಾಪಿಸಬಹುದು.
+wipe_owner_pin_needed	ಸ್ಥಳೀಯ ಡೇಟಾ ಅಳಿಸಲು Owner PIN ನಮೂದಿಸಿ.
+wipe_nothing_selected	ಮೊದಲು ಏನು ಅಳಿಸಬೇಕು ಎಂದು ಆಯ್ಕೆಮಾಡಿ.
+wipe_done	ಆಯ್ಕೆಯಾದ ಸ್ಥಳೀಯ ಡೇಟಾ ಅಳಿಸಲಾಗಿದೆ.
+wipe_schema_done	ಅಂಗಡಿ ಸೆಟಪ್ ಅಳಿಸಲಾಗಿದೆ — ಮುಂದುವರಿಸಲು Server ಅಥವಾ Client ಆಯ್ಕೆಮಾಡಿ.
+rounded_total	ರೌಂಡ್ ಒಟ್ಟು
+setup_app_moklanjo	Moklanjo ಸೆಟಪ್ ಮಾಡಿ
+shop_logo_optional	ಅಂಗಡಿ ಲೋಗೋ (ಐಚ್ಛಿಕ)
+stock_type_help	ಐಟಂ ಹೆಸರು ಬರೆಯಿರಿ (ಅದರ ಭಾಗ ಸಾಕು), ಪ್ರಮಾಣ ಬರೆದು, ನಂತರ ಹೊಂದಿಸಿ. ಇನ್ನೂ ಎಣಿಸದ ಐಟಂಗಳಿಗೆ ಒಮ್ಮೆ Start tracking ಬೇಕು.
+team_owner_help	ನೇಮಕ: ಒಂದು ಕೆಲಸ ಆಯ್ಕೆಮಾಡಿ (ಕ್ಯಾಷಿಯರ್ / ವ್ಯವಸ್ಥಾಪಕ), ಹೆಸರು + ಆರಂಭಿಕ PIN, ನಂತರ ಸೇರಿಸಿ. ಈ ವ್ಯಕ್ತಿ ಭಿನ್ನವಾಗಿದ್ದರೆ ಮಾತ್ರ: ಕೆಳಗೆ ಪರದೆಗಳು ಮತ್ತು ಹಕ್ಕುಗಳನ್ನು ತೆರೆದು, ಕೆಲಸದ ಸೆಟಪ್ ಉಳಿಸಿ. ಪ್ರತಿಯೊಬ್ಬರೂ ಕೆಳಗೆ ತಮ್ಮ PIN ಅನ್ನು ತಾವೇ ಬದಲಿಸುತ್ತಾರೆ — ಮಾಲೀಕರು ಬೇರೆ ಯಾರದೂ ಬದಲಿಸಲಾಗುವುದಿಲ್ಲ.
+they_owe_us	ಅವರು ನಮಗೆ ಕೊಡಬೇಕಾದ್ದು
+unit_at_cap	ಘಟಕ ದರ
+units_help	ಐಟಂ ಲೇಬಲ್‌ಗಳಿಗೆ ಕೋಡ್‌ಗಳು (kg, piece, bag). ಪ್ರತಿಯೊಂದು ಘಟಕವು — ನೇರವಾಗಿ ಅಥವಾ ಇತರ ಘಟಕಗಳ ಮೂಲಕ — ಒಂದು ಪ್ರಮಾಣಿತಕ್ಕೆ (kg · cm · ml · pc) ಲಿಂಕ್ ಆಗಬೇಕು, ಉದಾ. 1 crate = 2 box ಮತ್ತು 1 box = 20 cm. ಪರಿವರ್ತನೆಗಳು: 1 from = factor to. ಕರೆನ್ಸಿಗಳು ಎಂದಿಗೂ ಘಟಕಗಳಲ್ಲ.
+we_owe_them	ನಾವು ಅವರಿಗೆ ಕೊಡಬೇಕಾದ್ದು
+who_unlocking	ಯಾರು ಅನ್‌ಲಾಕ್ ಮಾಡುತ್ತಿದ್ದಾರೆ?
+locked_word	ಲಾಕ್ ಆಗಿದೆ
+show_pin	PIN ತೋರಿಸಿ
+hide_pin	PIN ಮರೆಮಾಡಿ
+set_owner_pin	ಮಾಲೀಕ PIN ಹೊಂದಿಸಿ
+enter_owner_passcode	ಮಾಲೀಕ ಪಾಸ್‌ಕೋಡ್ ನಮೂದಿಸಿ
+enter_staff_passcode	ಸಿಬ್ಬಂದಿ ಪಾಸ್‌ಕೋಡ್ ನಮೂದಿಸಿ
+pin_count_zero	0 / 12 ಅಂಕೆಗಳು · ಕನಿಷ್ಠ 4, ನಂತರ OK
+pin_count_need	{} / 12 ಅಂಕೆಗಳು · ಇನ್ನೂ {} ಬೇಕು
+pin_count_full	12 / 12 ಅಂಕೆಗಳು · OK ಒತ್ತಿರಿ
+pin_count_ready	{} / 12 ಅಂಕೆಗಳು · ಸಿದ್ಧವಾದಾಗ OK ಒತ್ತಿರಿ
+pin_hint_choose	4–12 ಅಂಕೆಗಳನ್ನು ಆಯ್ಕೆಮಾಡಿ (ಕೀಬೋರ್ಡ್ ಅಥವಾ ಪ್ಯಾಡ್) · ಉಳಿಸಲು Enter/OK
+pin_hint_new	ಹೊಸ 4–12 ಅಂಕೆಯ ಮಾಲೀಕ PIN (ಕೀಬೋರ್ಡ್ ಅಥವಾ ಪ್ಯಾಡ್) · Enter/OK
+pin_hint_shop_code	ಅಂಗಡಿ ಸಾಧನ · ಜೋಡಿ ಕೋಡ್ {}
+pin_hint_books	ಈ ಸಾಧನ ಬುಕ್‌ಗಳನ್ನು ಇಡುತ್ತದೆ
+pin_hint_paired	ಹೆಚ್ಚುವರಿ ಟಿಲ್ ಜೋಡಿಸಲಾಗಿದೆ — ಮಾರಾಟಕ್ಕೆ ಅನ್‌ಲಾಕ್ ಮಾಡಿ
+pin_hint_pair_first	ಹೆಚ್ಚುವರಿ ಟಿಲ್ — ಮೊದಲು ಅಂಗಡಿ ಸಾಧನಕ್ಕೆ ಜೋಡಿಸಿ
+unlock_to_continue	ಮುಂದುವರಿಸಲು ಅನ್‌ಲಾಕ್ ಮಾಡಿ
+no_staff_yet	ಇನ್ನೂ ಸಿಬ್ಬಂದಿ ಇಲ್ಲ — ಮಾಲೀಕರಾಗಿ ಅನ್‌ಲಾಕ್ ಮಾಡಿ, ನಂತರ Team
+status_server_set_pin	ಸರ್ವರ್ ಮೋಡ್ — ಮಾಲೀಕ PIN ಹೊಂದಿಸಿ
+status_server_tills	ಸರ್ವರ್ ಮೋಡ್ — ಹೆಚ್ಚುವರಿ ಟಿಲ್‌ಗಳು ಸೇರಬಹುದು. ಅನ್‌ಲಾಕ್ ಮಾಡಿ
+status_server_unlock	ಸರ್ವರ್ ಮೋಡ್ — ಮಾಲೀಕರಾಗಿ ಅನ್‌ಲಾಕ್ ಮಾಡಿ
+status_client_unlock	ಕ್ಲೈಂಟ್ ಮೋಡ್ — ಮಾರಾಟಕ್ಕೆ ಅನ್‌ಲಾಕ್ ಮಾಡಿ
+icon_new_selected	ಐಕಾನ್: ಹೊಸ ಫೈಲ್ ಆಯ್ಕೆಯಾಗಿದೆ — ಬ್ರಾಂಡ್ ಉಳಿಸಿ ಒತ್ತಿರಿ
+icon_custom	ಐಕಾನ್: ನಿಮ್ಮ ಅಂಗಡಿಯ ಗುರುತು
+icon_default	ಐಕಾನ್: Kumkaj ಗುರುತು (ಡೀಫಾಲ್ಟ್) — ನಿಮ್ಮದನ್ನು ಆಯ್ಕೆಮಾಡಿ
+logo_yours	ಲೋಗೋ: ನಿಮ್ಮ ಅಂಗಡಿಯ ಲೋಗೋ — ಪರದೆಗಳು ಮತ್ತು ರಶೀದಿಗಳಲ್ಲಿ ತೋರಿಸಲಾಗುತ್ತದೆ
+logo_default	ಲೋಗೋ: Kumkaj ಗುರುತು (ಡೀಫಾಲ್ಟ್) — ನಿಮ್ಮದಿದ್ದರೆ ಆಯ್ಕೆಮಾಡಿ
+tmpl_current	ಪ್ರಸ್ತುತ: {} — {}
+tmpl_selected	ಆಯ್ಕೆಯಾದದ್ದು: {} — {}
+setup_complete	ಸೆಟಪ್ ಪೂರ್ಣಗೊಂಡಿದೆ
+onboard_fresh_tmpl	ಹೊಸದು · {} — ಕ್ಯಾಟಲಾಗ್ ಖಾಲಿಯಿಂದ ಪ್ರಾರಂಭ; ವಸ್ತುಗಳಲ್ಲಿ ಸೇರಿಸಿ, ನಂತರ Done ಒತ್ತಿರಿ.
+onboard_book_tmpl	ಪುಸ್ತಕ · {} — ವಸ್ತುಗಳು ಮತ್ತು ಆರಂಭಿಕ ಸಾಲ ಸೇರಿಸಿ, ನಂತರ Done ಒತ್ತಿರಿ.
+onboard_template_tmpl	ಬೇಕಾದರೆ ಸ್ಥಳಕ್ಕೆ ಹೆಸರು ಕೊಡಿ, ನಂತರ ಹೇಗೆ ಆರಂಭಿಸಬೇಕೆಂದು ಆರಿಸಿ.
+tmpl_blurb	ಕೊರಿಯರ್ ಲೆಕ್ಕಪುಸ್ತಕ ಮತ್ತು ಬುಕಿಂಗ್ ಡೆಸ್ಕ್: ಕಳುಹಿಸುವವರು, ಕ್ಯಾರಿಯರ್‌ಗಳು, ದಿನದ ಲೆಕ್ಕ, AWB.
+tmpl_how	ಡೆಸ್ಕ್‌ನಲ್ಲಿ ಪಾರ್ಸೆಲ್ ಬುಕ್ ಮಾಡಿ; ಇಂದಿನ ದಿನದ ಲೆಕ್ಕ; ದರಗಳು, ಪಾರ್ಟಿಗಳು, ವರದಿಗಳಿಗೆ ಟ್ಯಾಬ್‌ಗಳು.
+trk_booked	ಬುಕ್ ಆಗಿದೆ
+trk_picked_up	ಪಿಕಪ್ ಆಗಿದೆ
+trk_in_transit	ಮಾರ್ಗದಲ್ಲಿದೆ
+trk_delivered	ತಲುಪಿಸಲಾಗಿದೆ
+trk_rto	ಕಳುಹಿಸಿದವರಿಗೆ ಹಿಂತಿರುಗುತ್ತಿದೆ
+lane_to_dispatch	ಕಳುಹಿಸಬೇಕಾದವು
+lane_with_carrier	ಕ್ಯಾರಿಯರ್ ಬಳಿ
+lane_failed	ವಿಫಲ
+lane_done_today	ಇಂದು ಮುಗಿದವು
+ops_board_help	ಇಂದಿನ ಕೆಲಸದಲ್ಲಿ ಪಾರ್ಸೆಲ್‌ಗಳು ಎಲ್ಲಿವೆ ಎಂಬುದರ ಪ್ರಕಾರ. ಪಾರ್ಸೆಲ್‌ಗಳನ್ನು ಟ್ಯಾಪ್ ಮಾಡಿ (ಅಥವಾ ಸ್ಕ್ಯಾನ್ ಮಾಡಿ) ಆಯ್ಕೆ ಮಾಡಿ, ನಂತರ ಆಯ್ದ ಎಲ್ಲದರ ಮೇಲೆ ಒಮ್ಮೆಲೇ ಕ್ರಮ ಕೈಗೊಳ್ಳಿ — ಪ್ರತಿ ಹಂತವು ಅದಕ್ಕೆ ಹೊಂದುವ ಕ್ರಮಗಳನ್ನು ಮಾತ್ರ ತೋರಿಸುತ್ತದೆ.
+lane_empty	ಈಗ ಇಲ್ಲಿ ಏನೂ ಇಲ್ಲ.
+picked_fmt	{n} ಆಯ್ಕೆ
+pick_all	ಎಲ್ಲವನ್ನೂ ಆಯ್ಕೆ
+bag_for_carrier	ಕ್ಯಾರಿಯರ್‌ಗೆ ಒಪ್ಪಿಸಿ
+send_with_rider	ರೈಡರ್ ಜೊತೆ ಕಳುಹಿಸಿ
+out_again	ಮತ್ತೆ ಕಳುಹಿಸಿ
+return_to_sender	ಕಳುಹಿಸಿದವರಿಗೆ ಹಿಂತಿರುಗಿಸಿ
+runs_bags_heading	ಇತ್ತೀಚಿನ ಸುತ್ತುಗಳು ಮತ್ತು ಚೀಲಗಳು
+print_word	ಮುದ್ರಿಸಿ
+bag_word	ಕ್ಯಾರಿಯರ್ ಚೀಲ
+run_word	ರೈಡರ್ ಸುತ್ತು
+parcels_fmt	{n} ಪಾರ್ಸೆಲ್‌ಗಳು
+parcel_history	ಇತಿಹಾಸ
+attempt_fmt	ಪ್ರಯತ್ನ {n}
+pieces_short_fmt	{n} ತುಂಡುಗಳು
+note_reason_ph	ಟಿಪ್ಪಣಿ ಅಥವಾ ಕಾರಣ
+ops_pick_first	ಮೊದಲು ಪಾರ್ಸೆಲ್‌ಗಳನ್ನು ಆಯ್ಕೆಮಾಡಿ — ಟ್ಯಾಪ್ ಅಥವಾ ಸ್ಕ್ಯಾನ್ ಮಾಡಿ
+cod_to_collect	ತಲುಪಿಸಲಾಗಿದೆ — COD ಸಂಗ್ರಹಿಸಬೇಕು
+cod_on_road	COD ಇನ್ನೂ ಮಾರ್ಗದಲ್ಲಿ
+cod_owed_consignors	ಸಂಗ್ರಹವಾಗಿದೆ — ಕಳುಹಿಸಿದವರಿಗೆ ಪಾವತಿಸಬೇಕು
+cod_rto_fees	ವಸೂಲಿ ಮಾಡಬೇಕಾದ RTO ಶುಲ್ಕಗಳು
+cod_to_hand_in	ಒಪ್ಪಿಸಬೇಕಾದ COD
+parcel_one_fmt	{n} ಪಾರ್ಸೆಲ್
+facet_bank_title	ವರದಿಗಳು
+facet_bank_help	ದಿನದ ಪುಸ್ತಕಗಳು, ಪಕ್ಷ ಏಜಿಂಗ್, ಬ್ಯಾಂಕ್ ಪೋಸ್ಟ್‌ಗಳು ಮತ್ತು ಅವಧಿ ಲಾಭ-ನಷ್ಟ.
+facet_ops_title	ಸರಕು ಮತ್ತು ರವಾನೆ
+facet_ops_help	AWB ಸ್ಕ್ಯಾನ್ ಮಾಡಿ ಅಥವಾ ಬರೆಯಿರಿ → ಹುಡುಕಿ, ನಂತರ ಮುಂದುವರಿಸಿ / ಲೇಬಲ್ ಮುದ್ರಿಸಿ / COD. ರೈಡರ್ ಅಥವಾ ಕ್ಯಾರಿಯರ್‌ಗೆ ರವಾನಿಸಿ.
+facet_cod_title	COD ರಿಜಿಸ್ಟರ್
+facet_cod_help	ವಿತರಣೆಯ ಸಮಯದಲ್ಲಿ ಸಂಗ್ರಹಿಸಿ, ನಂತರ ಕಳುಹಿಸುವವರಿಗೆ ಹಿಂದಿರುಗಿಸಿ.
+facet_riders_title	ರೈಡರ್‌ಗಳು (ಸ್ವಂತ ತಂಡ)
+facet_riders_help	ರೈಡರ್‌ಗಳನ್ನು ಸೇರಿಸಿ, ನಂತರ Ops ನಿಂದ ಬುಕ್ ಮಾಡಿದ AWB ರವಾನಿಸಿ.
+against_bill_ph	ಮೇಲಿನ ಬಿಲ್ # ವಿರುದ್ಧ (ಐಚ್ಛಿಕ)
+aliases_ph	ಅಡ್ಡಹೆಸರುಗಳು — ಇತರ ಹೆಸರುಗಳು, ಅಲ್ಪವಿರಾಮದಿಂದ ಬೇರ್ಪಡಿಸಿ
+amount_blank_full_ph	ಮೊತ್ತ (ಖಾಲಿ = ಪೂರ್ಣ ಬಾಕಿ)
+amount_owed_ph	ಕೊಡಬೇಕಾದ ಮೊತ್ತ
+amount_ph	ಮೊತ್ತ
+amount_received_ph	ಸ್ವೀಕರಿಸಿದ ಮೊತ್ತ
+amount_we_pay_ph	ನಾವು ಪಾವತಿಸುವ ಮೊತ್ತ
+awb_scan_ph	AWB / ಬಾರ್‌ಕೋಡ್ ಸ್ಕ್ಯಾನ್
+bulk_csv_ph	ಬಲ್ಕ್ CSV — destination,consignee,kg,cod_paise,note
+business_name_ph	ವ್ಯಾಪಾರದ ಹೆಸರು
+category_new_ph	ವರ್ಗ (ಐಚ್ಛಿಕ, ಹೊಸದಾದರೆ ರಚಿಸಲಾಗುತ್ತದೆ)
+cod_amount_ph	COD ಮೊತ್ತ
+code_bag_ph	ಕೋಡ್ (bag)
+conv_factor_ph	ಗುಣಾಂಕ (25 = 1 bag → 25 kg)
+country_code_ph	ದೇಶದ ಕೋಡ್ ಉದಾ. IN, GB, US, AE, BR
+credit_khata_amount_ph	ಸಾಲ / ಖಾತಾ ಮೊತ್ತ
+credit_limit_ph	ಸಾಲದ ಮಿತಿ (0 = ಇಲ್ಲ)
+dim_unit_code_ph	ಆಯಾಮ ಘಟಕ ಕೋಡ್ (cm)
+divisor_ph	ಘನಫಲ ಭಾಜಕ (5000)
+extra_per_kg_ph	ಹೆಚ್ಚುವರಿ / kg
+first_amount_ph	ಮೊದಲ ಮೊತ್ತ
+first_kg_ph	ಮೊದಲ kg (ಸ್ಲ್ಯಾಬ್)
+from_code_ph	ಇಂದ ಕೋಡ್ (bag)
+item_name_lang_ph	ವಸ್ತುವಿನ ಹೆಸರು — ನಿಮ್ಮ ಭಾಷೆಯಲ್ಲಿ ಬರೆಯಿರಿ
+login_id_opt_ph	ಲಾಗಿನ್ ಐಡಿ (ಐಚ್ಛಿಕ)
+manager_pin_ph	ವ್ಯವಸ್ಥಾಪಕ PIN (ನೀವು ರದ್ದುಮಾಡಲು ಸಾಧ್ಯವಾಗದಿದ್ದರೆ ಮಾತ್ರ)
+new_branch_name_ph	ಹೊಸ ಶಾಖೆಯ ಹೆಸರು
+new_password_ph	ಹೊಸ ಪಾಸ್‌ವರ್ಡ್ (ಐಚ್ಛಿಕ)
+new_pin_ph	ಹೊಸ PIN (4–12 ಅಂಕೆಗಳು)
+note_bank_ph	ಟಿಪ್ಪಣಿ (ಠೇವಣಿ, ಹಿಂಪಡೆಯುವಿಕೆ, …)
+note_buy_expense_ph	ಟಿಪ್ಪಣಿ (ಇಂಧನ, ಬಾಡಿಗೆ, …)
+note_expense_ph	ಟಿಪ್ಪಣಿ (ಇಂಧನ, ಕಚೇರಿ, …)
+notify_phone_ph	ಅಧಿಸೂಚನೆ ಫೋನ್ (WhatsApp/SMS ಹುಕ್)
+options_moklanjo_ph	ಆಯ್ಕೆಗಳು (ಐಚ್ಛಿಕ) — Large=20, Gift wrap=10
+part_second_way_ph	ಎರಡನೇ ರೀತಿಯಲ್ಲಿ ಭಾಗ (ಐಚ್ಛಿಕ)
+phone_ph	ಫೋನ್
+address_ph	ವಿಳಾಸ
+party_custom_fields_heading	ಕಸ್ಟಮ್ ಕ್ಷೇತ್ರಗಳು (ಆಯ್ಕೆ ಪಾರ್ಟಿ)
+party_custom_help	ಈ ಪಾರ್ಟಿಯಲ್ಲಿ ಯಾವುದೇ ಲೇಬಲ್ ಮತ್ತು ಮೌಲ್ಯ ಸೇರಿಸಿ — WhatsApp, GSTIN, ಮಾರ್ಗ ಕೋಡ್, …
+party_custom_key_ph	ಕ್ಷೇತ್ರದ ಹೆಸರು (ಉದಾ. WhatsApp)
+party_custom_value_ph	ಮೌಲ್ಯ
+party_custom_add	ಕ್ಷೇತ್ರ ಸೇರಿಸಿ / ನವೀಕರಿಸಿ
+party_custom_remove	ಕ್ಷೇತ್ರ ತೆಗೆದುಹಾಕಿ
+party_custom_empty	ಇನ್ನೂ ಕಸ್ಟಮ್ ಕ್ಷೇತ್ರಗಳಿಲ್ಲ
+party_custom_pick_first	ಕಸ್ಟಮ್ ಕ್ಷೇತ್ರಗಳಿಗಾಗಿ ಪಾರ್ಟಿ ಆಯ್ಕೆಮಾಡಿ
+place_name_ph	ಈ ಸ್ಥಳದ ಹೆಸರು
+price_ph	ಬೆಲೆ
+qty_example_ph	ಪ್ರಮಾಣ (ಉದಾ. kg ಗೆ 1.5)
+quantity_ph	ಪ್ರಮಾಣ
+reason_required_ph	ಕಾರಣ (ಅಗತ್ಯ)
+role_title_ph	ಪಾತ್ರದ ಶೀರ್ಷಿಕೆ (ಉದಾ. Barista)
+service_pct_ph	ಸೇವೆ % ಐಚ್ಛಿಕ 0/10/12
+short_code_ph	ಚಿಕ್ಕ ಕೋಡ್ (MG02)
+slab_kg_ph	kg ನಲ್ಲಿ ಶುಲ್ಕದ ಸ್ಲ್ಯಾಬ್ (0.5)
+staff_name_ph	ಸಿಬ್ಬಂದಿ ಹೆಸರು / id
+starting_password_ph	ಆರಂಭಿಕ ಪಾಸ್‌ವರ್ಡ್ (ಐಚ್ಛಿಕ)
+starting_pin_ph	ಆರಂಭಿಕ PIN (4–12 ಅಂಕೆಗಳು)
+tax_rate_ph	ತೆರಿಗೆ ದರದ ಹೆಸರು ಅಥವಾ % — Standard, Reduced, 0, 5, 12, 18, 20
+to_code_ph	ಗೆ ಕೋಡ್ (kg)
+uncleared_no_ph	ಮೇಲಿನ ಅನ್‌ಕ್ಲಿಯರ್ಡ್ #
+unit_cost_ph	ಘಟಕ ವೆಚ್ಚ
+unit_kg_blank_ph	ಘಟಕ (kg ಅಥವಾ ಖಾಲಿ)
+unit_name_bag_ph	ಹೆಸರು (Bag)
+weight_unit_code_ph	ತೂಕ ಘಟಕ ಕೋಡ್ (kg)
+zone_name_ph	ವಲಯದ ಹೆಸರು
+pay_credit	ಸಾಲ
+book_kind_today	ಇಂದಿನ ಪುಸ್ತಕ
+book_kind_month	ಈ ತಿಂಗಳ ಪುಸ್ತಕ
+book_kind_aging	ಬಾಕಿ / ಡೆಬಿಟ್-ಕ್ರೆಡಿಟ್
+book_kind_balance	ಬ್ಯಾಲೆನ್ಸ್ ಶೀಟ್
+ops_desk_help	USB ಬಾರ್‌ಕೋಡ್ ಸ್ಕ್ಯಾನರ್‌ನಿಂದ AWB ಸ್ಕ್ಯಾನ್ ಮಾಡಿ (ಅಥವಾ ಬರೆಯಿರಿ) → ಹುಡುಕಿ. ನಂತರ ಮುಂದುವರಿಸಿ, ಲೇಬಲ್ ಮುದ್ರಿಸಿ ಅಥವಾ COD ಸಂಗ್ರಹಿಸಿ. ಲೇಬಲ್‌ಗಳು Code 128 ರಲ್ಲಿ ಮುದ್ರಿಸುತ್ತವೆ.
+role_help_consignor	ಪಾತ್ರ: ಕಳುಹಿಸುವವರು — AR (ಅವರು ನಮಗೆ ಸಾಲಗಾರರು). ಅದೇ ಸಂಸ್ಥೆ ಕ್ಯಾರಿಯರ್ ಕೂಡ ಆಗಬಹುದು.
+role_help_carrier	ಪಾತ್ರ: ಕ್ಯಾರಿಯರ್ — AP (ನಾವು ಅವರಿಗೆ ಸಾಲಗಾರರು). ಅದೇ ಸಂಸ್ಥೆ ಕಳುಹಿಸುವವರು ಕೂಡ ಆಗಬಹುದು.
+role_help_both	ಪಾತ್ರಗಳು: ಕಳುಹಿಸುವವರು + ವಾಹಕ — ಒಂದು ಪಕ್ಷ, AR ಮತ್ತು AP ಲೆಡ್ಜರ್‌ಗಳು, ವರದಿಗಳಲ್ಲಿ ನಿವ್ವಳ.
+role_help_supplier	ಪಾತ್ರ: ಪೂರೈಕೆದಾರ — ಖರೀದಿಗಳಿಗೆ AP.
+lane_declared_label	ಖಾತೆ ಬುಕಿಂಗ್
+lane_owner_label	ನಗದು ಬುಕಿಂಗ್
+money_lane_bill	ಬಿಲ್: {lane}

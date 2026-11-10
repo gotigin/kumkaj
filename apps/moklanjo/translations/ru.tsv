@@ -1,0 +1,835 @@
+# Russian — Русский (ru). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	Курьерские книги + стойка отправки. Бесплатно офлайн.
+unlock	Разблокировать
+pin_hint	PIN владельца начинается с 0000
+sell	Отправка
+buy	Выплаты
+books	Дневная книга
+books_help	Позиция сегодня. Отправка = посылки пришли. Выплаты = счета перевозчиков и расходы. Стороны = отправители и перевозчики.
+buy_help	Ваучеры расходов и счета перевозчиков (деньги уходят). На счёт остаётся в книге стороны.
+sell_money_in	Забронировать посылку
+buy_money_out	Расход / счёт перевозчика
+record_purchase	Записать закупку
+add_expense	Ваучер расходов
+bank_book	Банковская книга
+credit_help	ID стороны уникален (имена могут повторяться). Роли: отправитель (AR), перевозчик (AP), или оба на этом ID. Книги разделены; отчёты показывают нетто.
+party_kind_ph	Своя роль (необязательно) — или чип выше
+parties_list_heading	Сохранённые стороны
+reports_help	Дневная книга, дебиторы и кредиторы, банковская книга, ваучеры расходов, прибыль и убытки.
+reports_today	Дневная книга (сегодня)
+reports_month	Прибыль и убытки (месяц)
+reports_aging	Задолженность / Dr-Cr
+reports_balance_sheet	Баланс
+reports	Отчёты
+refresh	Обновить
+undo	Отменить
+start_tracking	Начать учёт
+stock_minus	− Запас
+stock_plus	+ Запас
+settle_cash	Оплатить наличными
+settle_card	Оплатить картой
+items	Тарифы и услуги
+nav_items	Тарифы
+more	Ещё
+your_items	Ваши тарифы
+items_help	Каждая строка — тариф (напр. Surface Zone A). Единица обычно кг. Нажмите для правки.
+add_item	Добавить тариф
+new_item	Новый тариф
+adding_item	Добавление тарифа
+editing_item	Редактирование
+save	Сохранить
+remove	Удалить
+empty_catalog	Тарифов пока нет. Откройте Тарифы и услуги, добавьте один (имя + цена, единица кг), затем Отправка.
+counter_sale	Отправка со стойки
+total	Итого
+cash	Наличные
+upi	UPI
+card	Карта
+credit	Стороны
+clear	Очистить
+ready_to_sell	Готово к отправке
+today_prefix	Сегодня
+today_mid	сегодня
+owed	долг
+round_word	округление
+back	Назад
+sold_out	Нет в наличии
+restock	Вернуть
+not_tracked	Без учёта
+in_stock	в наличии
+marked_sold_out	Отмечено нет в наличии
+add_upper	Добавить
+na	нет
+qty	Кол-во
+unit_at	Цена
+actual	Факт
+applied	К оплате
+note_ph	Примечание (необязательно)
+rounded	Округлено
+split	Разделить
+counter	Стойка
+parcel	Посылка
+order	Заказ
+sales	Отправки
+sales_refunds	Отправки и возвраты
+day_close	Закрытие дня
+reports_expenses	Отчёты и расходы
+nav_reports	Отчёты
+nav_settings	Настройки
+nav_lock	Блокировка
+sidebar_settings	Настройки боковой панели
+sidebar_settings_help	Те же иконки, что на боковой рейке. Перетащите строку для изменения порядка. Переключите тумблер для отображения или скрытия. Настройки и Блокировка всегда остаются на панели.
+sidebar_always_on_short	Всегда включено
+sidebar_back_settings	Назад
+sidebar_shown	Отображается
+sidebar_hidden	Скрыто
+sidebar_always_on	Всегда на барной стойке
+sidebar_shown_hint	Показано в боковой панели / нижних вкладках
+sidebar_hidden_hint	Скрыто от барной стойки
+sidebar_menu_items	Меню и позиции
+sidebar_enable_all	Включить все
+sidebar_disable_all	Отключить все
+sidebar_order_saved	Заказ в боковой панели сохранён
+sidebar_visibility_saved	Видимость боковой панели сохранена
+amounts_hide	Скрыть
+amounts_show	Показать
+no_sale_yet	Продаж пока нет
+favorites	Избранное
+favorites_help	Товары, которые вы часто продаёте, сохранены для вашего входа. Добавьте один в счёт или составьте список из всех товаров ниже.
+your_favorites	Ваше избранное
+all_items	Все товары
+no_favorites	Пока нет избранного — добавьте товары из списка ниже.
+add_to_bill	В счёт
+added	Добавлено
+owes_word	должен
+selected_word	Выбрано
+chip_clear_credit	в расчёте — дать в кредит или взять аванс
+chip_missing_customer	Выбранный клиент не найден — выберите снова
+chip_no_customer	Клиента пока нет — введите имя и нажмите «Кредит»
+credit_summary_fmt	{} клиентов · открытый кредит {} · авансы {}
+recent_label	Недавние:
+inventory	Запасы
+inventory_stock	Запасы и учёт
+branches	Филиалы
+branches_org	Филиалы и организация
+credit_customers	Стороны (дебиторы и кредиторы)
+customer_name_ph	Имя стороны
+new_customer_ph	Имя новой стороны
+item_name_ph	Имя тарифа (напр. Surface Zone A)
+item_price_ph	За кг / первый интервал
+start_template	Продукт
+next_booking	Следующая отправка
+destination_ph	Город / зона назначения
+consignee_ph	Получатель
+consignee_phone_ph	Телефон получателя
+consignee_address_ph	Адрес доставки
+origin_name_ph	Имя отправителя
+origin_phone_ph	Телефон отправителя
+origin_address_ph	Адрес забора / отправления
+booking_consignor_heading	Отправитель (клиент)
+booking_consignee_heading	Получатель
+booking_consignor_hint	Выберите сторону для заполнения или оставьте пустым для случайного клиента. Нужно для забора на дому и RTO.
+booking_consignee_hint	Кто получает посылку. Оставьте пустым, если посылку сдают прямо у стойки.
+weight_kg_ph	Факт. кг
+length_cm_ph	Длина см
+breadth_cm_ph	Ширина см
+height_cm_ph	Высота см
+chargeable_kg	Платный кг
+awb_label	AWB
+booking_help	С улицы: назначение → взвесить → выбрать тариф → счёт/наличные → оплатить. AWB печатается на чеке. Следующая отправка очищает стойку.
+cart_empty_hint	Стойка пуста — укажите назначение и вес, нажмите ADD у тарифа, затем оплатите.
+team	Команда
+team_pins	Команда и PIN
+my_pin_settings	Мой PIN
+settings_hub_help_my_pin	Смените PIN разблокировки вошедшего на этом устройстве.
+team_self_help	Только вы можете сменить свой PIN разблокировки (и необязательный пароль входа). Спросите владельца, если нужны другие экраны или права.
+backup_settings	Резервная копия и настройки
+lock_app	Заблокировать
+pick	Выбрать
+select	Выбрать
+advance	Далее
+owner	Владелец
+staff	Персонал
+photo	Фото
+auto	Авто
+prev	Назад
+next	Далее
+ok	ОК
+this_shop	Режим сервера
+extra_till	Режим клиента
+off	Выкл
+server	Сервер
+client	Клиент
+language_currency	Язык и валюта
+language	Язык
+choose_language	Выберите язык
+language_setup_hint	Следуйте языку этого устройства или выберите сами.
+lang_follow_platform	Использовать язык устройства
+lang_pick_user	Использовать выбранный язык
+lang_platform_now	Текущий язык устройства
+selected_language	Выбрано
+continue	Продолжить
+this_device	ЭТО УСТРОЙСТВО
+device_use_q	Как будет использоваться это устройство?
+last_server_mode	Был сервером — нажмите, чтобы продолжить
+last_client_mode	Был клиентом — нажмите, чтобы продолжить
+choose_server	Выбрать сервер
+choose_server_hint	На этом устройстве уже есть серверы. Откройте один или создайте новый для другого бизнеса.
+create_new_server	Создать новый сервер
+open_server	Открыть
+new_server_name_ph	Имя нового сервера (необязательно)
+server_remove_pin_ph	PIN владельца для удаления
+only_owner_remove_server	Удалить сервер может только владелец
+owner_pin_remove_server	Чтобы удалить этот сервер, нужен PIN владельца
+device_setup_help	Сервер хранит учёт здесь. Клиент подключается к серверу.
+currency	Валюта
+backup	Резервная копия
+settings_sec_diag	Диагностика
+settings_hub_help	Открывайте по одному разделу — меньше прокрутки, понятнее выбор.
+settings_sec_devices	Дополнительные кассы и филиалы
+settings_sec_alerts	Уведомления
+alerts_help	Сколько сообщения о состоянии остаются на экране для вас (этот вход).
+snack_secs_ph	Секунды (3–60, по умолчанию 10)
+snack_secs_save	Сохранить время уведомлений
+snack_secs_saved	Время уведомлений сохранено — {n} с
+snack_secs_bad	Введите секунды числом (3–60)
+cancelled	Отменено
+cancel	Отменить
+opening_client	Открытие клиента…
+preparing_desk	Подготовка стола…
+opening_server	Открытие сервера…
+creating_server	Создание сервера…
+diag_privacy_help	Логи остаются на этом устройстве. Секреты (PIN, пароли) никогда не хранятся. Передача пакета с устройства требует вашего явного подтверждения каждый раз — никогда не продается или не передается третьим лицам.
+diag_level	Уровень детализации
+diag_level_error	Ошибки
+diag_level_warn	Предупреждения
+diag_level_info	Информация
+diag_level_debug	Отладка
+diag_support_start	Запустить сеанс поддержки на 30 минут
+diag_support_stop	Завершить сеанс поддержки
+diag_support_started	Сеанс поддержки включен — детализация отладки на 30 минут
+diag_support_ended	Сеанс поддержки завершен
+diag_export_local	Экспорт локальной копии
+diag_export_local_done	Локальная диагностика готова в {path} — выберите место для сохранения копии
+diag_approve_send	Одобрить передачу с этого устройства
+diag_send_heading	Передать с этого устройства
+diag_send_help	Одобрение действует на один пакет, затем истекает. Временное — используется только для исправления или улучшения продукта. Не передается третьим лицам. Работает на Linux, Windows, macOS и Android.
+optional_login_heading	Необязательный вход
+rights_heading	Права
+booking_scope_heading	По стране / Международная
+diag_send_approved	Передача одобрена на один пакет (истекает скоро)
+diag_export_send	Создать пакет для передачи (требуется одобрение)
+diag_export_send_done	Пакет для передачи готов в {path} — выберите место для сохранения, затем отправьте только в поддержку Kumkaj
+diag_save_bundle	Сохранить копию диагностики
+diag_bundle_saved	Копия диагностики сохранена в {path}
+diag_bundle_failed	Не удалось сохранить копию диагностики — попробуйте снова
+diag_clear	Очистить логи диагностики
+diag_cleared	Логи диагностики очищены
+use	Использовать
+add_branch	Добавить филиал
+add_conversion	Добавить пересчёт
+add_item_plain	Добавить позицию
+add_note	Добавить примечание
+add_opening_balance	Добавить начальное сальдо
+add_rider	Добавить курьера
+add_staff	Добавить сотрудника
+add_unit	Добавить единицу
+add_use_name	Добавить / использовать это имя
+allow_extra_tills	Разрешить дополнительные кассы
+amend	Исправить
+apply_country_pack	Применить пакет страны
+datetime_appearance	Появление даты и времени
+datetime_appearance_help	Книги хранят внутри дату годом вперёд в формате RFC3339. Здесь меняется только вид дат и часов на чеках, этикетках, отчётах и экране.
+datetime_example	Пример сейчас: {ex}
+date_order	Порядок даты
+date_order_dmy	Д/М/Г
+date_order_mdy	М/Д/Г
+date_order_ymd	Г-М-Д
+time_format	Часы
+time_format_24h	24-часовой формат
+time_format_12h	12-часовой формат
+attach_bill_photo	Прикрепить фото счёта
+attach_pdf	Прикрепить PDF
+attach_photo	Прикрепить фото
+bank	Банк
+bank_in	Внести в банк
+bank_out	Снять из банка
+bank_to_till	Банк → касса
+till_to_bank	Касса → банк
+mark_cleared	Отметить проведённым
+unmark	Снять отметку
+role_both	Оба
+role_carrier	Перевозчик
+role_cashier	Кассир
+role_consignor	Отправитель
+role_manager	Менеджер
+role_supplier	Поставщик
+branch_name_sell_ph	Имя филиала для продажи
+bring_my_book	Принести мою книгу
+business_tax_id_ph	Налоговый ID бизнеса
+card_amount_ph	Сумма картой
+cash_amount_ph	Сумма наличными
+upi_amount_ph	Сумма UPI
+carrier_cost_ph	Расход перевозчика
+carrier_party_ph	Сторона-перевозчик
+choose_icon	Выбрать значок
+choose_logo	Выбрать логотип
+choose_receipt_stamp	Выбрать штамп чека
+choose_payment_qr	Выбрать QR оплаты
+clear_icon	Убрать значок
+clear_logo	Убрать логотип
+clear_photo	Удалить фото
+clear_stamp	Убрать штамп
+clear_payment_qr	Убрать QR оплаты
+print_faces	Вид печати (чек / счёт за период)
+print_faces_help	Необязательные печать и QR для оплаты рядом с логотипом на квитанциях и счетах за период.
+awb_pools_heading	Диапазоны номеров AWB перевозчиков
+add_awb_pool	Добавить пул AWB
+awb_pool_carrier_ph	Имя перевозчика
+awb_pool_start_ph	Начальный №
+awb_pool_end_ph	Конечный №
+awb_pool_prefix_ph	Префикс (необязательно)
+awb_pool_label_ph	Метка (необязательно)
+pieces_ph	Мест (пусто = 1) — раскройте для груза / нескольких мест
+bulk_awbs_ph	Пакет AWB — вставьте несколько (с новой строки или через запятую), чтобы продвинуть статус разом
+tds_cut_ph	Удержание TDS (необязательно)
+discount_ph	Скидка (необязательно)
+cheque_no_ph	Номер чека (необязательно)
+bill_reminder_chase	Список напоминаний по счетам
+month_mix_report	Отчёт микса за месяц
+copy_month_gst_csv	Копировать CSV GST за месяц
+domestic	Внутренний
+international	Международный
+pick_logo	Выбрать логотип
+booking_scope_hint_domestic	Объём ÷5000 (внутренний) — междунар. ÷6000
+booking_scope_hint_intl	Объём ÷6000 (междунар.) — внутренний ÷5000
+cod_register	Реестр наложенного платежа
+collect_cod	Получить наложенный платёж (AWB)
+consignments_dispatch	Отправки и отгрузка
+consignor_party_ph	Отправитель / имя стороны
+copy_day_book_csv	Копировать CSV дневной книги
+copy_day_close	Копировать закрытие дня
+copy_items_csv	Копировать CSV позиций
+copy_outstanding_csv	Копировать CSV задолженности
+copy_parties_csv	Копировать CSV сторон
+copy_party_ledger_csv	Копировать CSV книги стороны
+copy_receipt	Копировать чек
+copy_report	Копировать отчёт
+counted_cash_ph	Пересчитанные наличные в кассе
+counter_agency_ph	Имя стойки / агентства (необязательно)
+create_backup	Создать резервную копию
+day_close_summary	Сводка закрытия дня
+delete_party	Удалить выбранную сторону
+dispatch_to_rider	Забронировано → курьеру
+docket_charge_ph	Плата за накладную
+declared_value_ph	Объявленная стоимость
+contents_ph	Содержимое
+eway_ph	№ e-way bill
+insurance_label	Страховка (да/нет)
+yes_label	Да
+no_label	Нет
+print_route_label	Маршрут печати
+new_party_kind_label	Тип новой стороны
+done_open_books	Готово — открыть книги
+export_day	Экспорт дня
+extra_note_expense_ph	Дополнительная заметка к последнему расходу
+extra_note_awb_ph	Дополнительная заметка к этому AWB / продаже
+failed_delivery	Неудачная доставка
+find_scan_awb	Найти / сканировать AWB
+forget_shop	Забыть этот магазин
+fuel_ph	Топливо
+handover_carrier	Забронировано → перевозчику
+import_day	Импорт дня
+import_items_csv	Импорт CSV позиций / тарифов…
+import_parties_csv	Импорт CSV сторон…
+import_pincodes_csv	Импорт CSV индексов…
+import_carrier_bill_csv	Импорт CSV счёта перевозчика…
+copy_carrier_bill_report	Копировать последний отчёт по счёту
+use_carrier_cost	Взять расход перевозчика
+rate_carrier_ph	Перевозчик (пусто = наш тариф продажи)
+rate_party_ph	Сторона (пусто = все клиенты)
+carrier_pick_ph	Перевозчик для расхода (из сравнения)
+item_name	Имя позиции
+load_bulk_row	Загрузить массовую строку → стойка
+login_id_ph	ID входа
+mark_delivered	Отметить доставленным
+manifest_cod_total	Итого COD
+manifest_received_by	Получено
+manifest_sign	Подпись
+ndr_address_wrong	Неверный адрес
+ndr_customer_unavailable	Клиент недоступен
+ndr_door_locked	Дверь закрыта
+ndr_other	Другое
+ndr_refused	Отказ
+out_for_delivery	В доставке
+print_drs	Печать DRS
+print_run_sheet	Печать маршрутного листа
+reattempt	Повторная попытка
+rider_cod_handed_ph	COD от курьера
+settle_rider_cod	Сверка COD курьера
+mode_desk	Стойка
+mode_rider	Курьер
+waiting_office	ожидают офис
+capture_signature	Снять подпись
+incoming_manifest	Входящий манифест
+pickup_request	Заявка на забор
+pickup_run	Рейс забора
+auto_assign_area	Автоназначение зоны
+reorder_stops	Изменить порядок остановок
+settle_rider_pay	Расчёт оплаты курьера
+vehicle_inspect	Осмотр ТС
+print_docket	Печать накладной
+franchise_statement	Отчёт по франшизе
+tally_export	Экспорт ваучеров Tally
+open_whatsapp	Открыть WhatsApp
+copy_sms	Копировать текст SMS
+pick_barcode_image	Выбрать фото для скана
+share_receipt_whatsapp	Чек в WhatsApp
+delivery_feedback	Отзыв о доставке
+lan_self_book	Самозапись по LAN
+new_party_clear	Новая сторона (очистить форму)
+new_party_kind_ph	Тип новой стороны (поставщик / перевозчик)
+next_country	Следующая страна
+prev_country	Предыдущая страна
+note_gstin_ph	Заметка / GSTIN / напоминание о договоре
+note_pod_ph	Заметка / POD (необязательно)
+on_account_ap	На счёт (AP)
+org_optional_ph	Организация (необязательно)
+paid_now	Оплачено сейчас
+pairing_code_ph	Код подключения
+pair_now	Подключить сейчас
+party_name_selected_ph	Имя стороны (или использовать выбранную)
+password_ph	Пароль
+pay_ap_card	Оплатить AP картой
+pay_ap_cash	Оплатить AP наличными
+pay_ap_upi	Оплатить AP через UPI
+period_bill	Счёт за период
+period_bill_party	Счёт за период (сторона)
+pick_pod_photo	Выбрать фото POD
+print_awb_label	Печать этикетки AWB
+print_open	Печать / открыть
+reason_amend_ph	Причина исправления / аннуляции / возврата
+reason_note_ph	Причина / заметка (списание, учёт, …)
+record_day_close	Записать закрытие дня
+refresh_from_shop	Обновить из магазина
+refund	Возврат
+remit_cod	Передать наложенный платёж (сторона)
+remove_selected	Удалить выбранное
+restore_backup	Восстановить из копии
+rider_name_ph	Имя курьера
+rider_phone_ph	Телефон курьера
+riders	Курьеры
+riders_own_fleet	Курьеры (свой автопарк)
+rollup	Сводка
+save_booking_measures	Сохранить размеры отправки
+save_brand	Сохранить бренд
+save_business_id	Сохранить налоговый ID и % сервиса
+save_business_name	Сохранить имя бизнеса
+save_features	Сохранить настройку должности
+save_names	Сохранить имена
+server_ip_ph	IP сервера (напр. 192.168.1.10)
+set_credit_limit	Установить лимит кредита
+set_login_selected	Установить вход выбранному
+set_login_named	Применить вход для {name}
+shop	Магазин
+start_fresh	Начать заново
+stop_extra_tills	Остановить дополнительные кассы
+backup_auto	Ежедневная автокопия · последняя {when} · последние 14 дней хранятся в {dir}.
+backup_auto_none	Ежедневная автокопия — первая будет сделана через минуту.
+backup_copy_to	Копии также сохраняются в {dir}.
+backup_copy_btn	Копировать копии ещё и в папку…
+autostart_off	Запускать вместе с компьютером
+autostart_on	Запускается с компьютером ✓ — нажмите, чтобы отключить
+autostart_done_on	Теперь приложение открывается при включении компьютера — сервер вернётся после отключения света.
+autostart_done_off	Компьютер больше не открывает приложение при включении.
+right_allowed	Разрешено
+right_with_approval	С одобрением
+right_denied	Запрещено
+editing_staff	Права для
+team_pick_ph	Имя сотрудника для правки
+select_staff	Выбрать сотрудника
+rights_help	Права — коснитесь, чтобы сменить: Разрешено → С одобрением (PIN руководителя в этот момент) → Не разрешено.
+right_void_refund	Аннулировать или вернуть деньги за отправку
+right_amend_sale	Изменить записанную отправку
+find_server	Найти сервер заведения
+finding_server	Ищем сервер заведения в этой сети Wi‑Fi…
+no_server_found	Сервер не найден. Проверьте, что устройство заведения в той же сети Wi‑Fi и доп. кассы разрешены, или введите его IP.
+servers_found_pick	Нажмите магазин, к которому хотите подключиться.
+server_host_selected	Используется {host} — введите код сопряжения, затем «Связать сейчас».
+device_forgotten	Магазин забыл это устройство — подключите его снова с текущим кодом. Ожидающие заказы сохранены.
+forget_device	Забыть
+last_seen	был
+new_pair_code	Новый код подключения
+lan_offline	Нет связи
+lan_offline_waiting	Нет связи · {n} в ожидании
+lan_connecting	Подключение к магазину…
+pair_finishing	Завершаем пару… применяем книги офиса
+pair_opening	Открываем офис…
+lan_live	Онлайн
+lan_sending	Отправляется: {n}
+lan_sign_in_to_send	Войдите снова, чтобы отправить {n}
+lan_pair_again	Подключите это устройство заново
+lan_update_app	Обновите приложение — версии этого устройства и сервера офиса различаются
+allow_firewall	Разрешить подключение других устройств
+firewall_blocked	Брандмауэр этого компьютера блокирует другие устройства — нажмите «Разрешить подключение других устройств».
+firewall_waiting	Ожидание подтверждения администратора…
+lan_join_help	Другие устройства могут подключиться к этому — код сопряжения {code}. На другом устройстве выберите «Режим клиента», затем «Найти сервер заведения» или введите адрес: {addr}
+lan_pair_status	Wi‑Fi {addr}
+lan_join_help_no_addr	Подключите это устройство к Wi‑Fi для указания адреса.
+lan_no_address	У этого устройства ещё нет адреса Wi‑Fi — подключите его к Wi‑Fi заведения.
+lan_not_listening	Сейчас устройства не принимаются — возможно, порт {port} занят другой программой. Перезапустите приложение.
+lan_tills_off	Дополнительные кассы выключены. Книги этого офиса хранятся на этом устройстве. Разрешите дополнительные кассы, если другое устройство тоже должно оформлять отправления или принимать оплату.
+paired_with	Подключено к заведению по адресу {url}
+not_paired	Не подключено — подключитесь к серверу заведения.
+choose_device_use	Выберите, как используется это устройство.
+paired_note	Подключено. Разблокируйте для продаж или нажмите «Обновить», чтобы получить свежие данные.
+last_update_at	Последнее обновление от заведения: {time}.
+pair_intro	Найдите сервер или введите его адрес и код подключения.
+queue_waiting	Ждут отправки в заведение ({n}):
+queue_tries	Попыток: {n} · последний ответ: {e}
+save_backup_copy	Сохранить резервную копию…
+backup_copy_saved	Резервная копия сохранена — храните её вне этого устройства (флешка или другое устройство)
+backup_copy_overdue	Уже {n} дн. ни одна резервная копия не покидала это устройство — Настройки → Резервная копия
+backup_copy_failed	Не удалось сохранить копию туда — выберите другое место
+clock_off	Часы этого устройства расходятся с сервером заведения на {min} мин — установите правильное время
+printers_heading	Принтеры на этом устройстве
+printers_help	Добавьте каждый принтер один раз и выберите, куда печатать квитанции и этикетки AWB — сначала пробуется первый в списке; при сбое — следующий. Пустой маршрут = не печатать эту функцию. Цель пустая (по умолчанию), имя в системе или сетевой адрес (напр. 192.168.1.50). У каждого устройства свои принтеры.
+job_width	Ширина содержимого (мм)
+job_width_ph	Или введите ширину, 40–210 мм
+job_layout	Макет
+job_delivery	Как отправляется задание
+job_size	Размер шрифта
+job_size_ph	напр. 18, 20, 26…
+save_receipt_format	Сохранить формат чека
+save_label_format	Сохранить формат этикетки
+test_receipt_format	Пробный чек
+test_label_format	Пробная этикетка
+test_receipt_sent	Образец чека отправлен
+test_label_sent	Образец этикетки отправлен
+test_print_no_printer	Нет принтера для этой задачи — добавьте его под этим местом
+printers_host_only	Принтеры настраиваются на устройстве магазина (Server). Эта касса отправляет туда задания — Поиск / добавление / назначение остаются на Server. Тестовая страница уходит на Server.
+printers_pool_heading	Принтеры
+printers_routes_heading	Куда печатать
+printer_label_ph	Имя (напр. стойка)
+printer_target_ph	host:9100 · bt:MAC · usb:VID:PID · имя в системе
+printer_mode_heading	Формат для выбранного маршрута
+printer_mode_standard	Обычный книжный
+printer_mode_landscape	Обычный альбомный
+printer_mode_thermal	Термо
+printer_mode_standard_short	Книжная
+printer_mode_landscape_short	Альбомная
+printer_mode_thermal_short	Термо
+printer_format_custom	Новый свой формат
+printer_format_custom_label	Свой
+printer_format_custom_added	Свой формат добавлен для этого маршрута
+add_printer	Добавить принтер
+remove_printer	Удалить последний
+route_pick_ph	receipt или label
+route_add_printer_ph	Добавить принтер в маршрут
+route_receipt	Квитанция
+route_label	Этикетка AWB
+route_dont_print	Принтер не назначен
+route_add	В маршрут
+route_up	Вверх
+route_down	Вниз
+route_remove	Удалить последний
+route_clear	Очистить принтеры для этого места
+save_printers	Сохранить принтеры
+print_test_page	Печать пробной страницы
+printers_saved	Принтеры для этого устройства сохранены
+test_page_sent	Пробная страница отправлена — проверьте принтер
+printers_found	Найдено на этом устройстве: {list}
+find_printers	Найти принтеры
+printers_looking	Ищем принтеры на этом устройстве и по Wi‑Fi…
+printers_tap_find	Коснитесь «Найти принтеры» для очередей, которые принимают задания, и сетевых принтеров чеков в этой Wi‑Fi (не удалённых и не офлайн).
+printers_none_found	Принтеры не найдены — введите имя системного принтера или сетевой адрес (напр. 192.168.1.50).
+receipt_printer_ph	Принтер для чеков
+queue_refused	Не принято заведением ({n}) — проверьте каждое на кассе:
+clear_not_accepted	Проверено — очистить список
+device_name_ph	Имя этого устройства
+lan_last_update	обновлено в {time}
+lan_not_accepted	Не принято: {n}
+connected_now	сейчас на связи
+backup_failed	Последнее автоматическое резервное копирование не удалось: {e}
+backup_overdue	Резервных копий нет уже {n} дн. — держите приложение открытым на этом устройстве, чтобы оно могло их делать.
+disk_low	На устройстве свободно лишь {mb} МБ — скоро резервные копии перестанут создаваться. Освободите место.
+last_seen_devices	Последнее появление: {time}
+sync_interval	Синхронизация каждые {secs} секунд
+connection_to_shop	Связь с заведением
+supplier_name_ph	Имя поставщика (или стороны)
+supplier_ph	Поставщик
+switch_device	Переключить это устройство
+take_payment	Принять оплату
+tax_added_till	{tax} сверху
+tax_inside_price	{tax} включён
+today_books	Книги за сегодня
+unlock_after_pairing	Введите PIN
+unlock_with_login	Разблокировать по входу
+update_my_password	Изменить мой пароль
+update_my_pin	Обновить мой PIN
+duress_heading	Аварийный PIN разблокировки (только владелец)
+duress_help	Необязательно. Если при разблокировке ввести этот PIN вместо вашего, все записи книг стираются (отправки, книги, история) и стойка открывается как владелец, с виду обычно — тарифы, стороны, зоны, персонал и настройки остаются. Схема и конфигурация не удаляются. Используйте только если вас вынуждают разблокировать. Оставьте пустым и сохраните, чтобы выключить. Никогда не совпадайте ни с чьим PIN.
+duress_pin_ph	Аварийный PIN (4–12 цифр)
+duress_confirm_ph	Введите ещё раз
+save_duress_pin	Сохранить аварийный PIN
+clear_duress_pin	Отключить аварийный PIN
+duress_on	Аварийный PIN включён
+duress_off	Аварийный PIN выключен
+duress_saved	Аварийный PIN сохранён
+duress_cleared	Аварийный PIN отключён
+vehicle_ph	Транспорт
+void	Аннулировать
+write_off_ap	Списать AP
+write_off_nil	Списать / остаток ноль
+zone_ph	Зона (имя из Тарифов)
+caption_today	СЕГОДНЯ
+caption_bookings	ОТПРАВКИ
+caption_payments_today	ПЛАТЕЖИ СЕГОДНЯ
+caption_outstanding	ЗАДОЛЖЕННОСТЬ
+caption_bank	БАНК
+paid_by	Оплата
+second_way	Второй способ
+weight_in	Вес в
+size_in	Размер в
+goods_received	Товар получен
+expense_heading	Расход
+notes_attach_sale	Заметки и вложения (выбранная продажа)
+notes_attach_party	Заметки и вложения (выбранная сторона)
+attachments_last_expense	Вложения (последний расход)
+credit_limit_heading	Лимит кредита (выбранная / указанная сторона)
+pay_selected_heading	Оплатить выбранное (погасить долг / аванс)
+write_off_heading	Списать (урегулировать без оплаты)
+pay_ap_heading	Оплатить, что мы им должны (AP)
+country_tax	Страна и налоги
+extra_tills_heading	Дополнительные кассы
+other_devices_help_heading	Настроить другие устройства
+other_devices_help	На этом устройстве (Сервер): Другие устройства → Разрешить дополнительные кассы. Запишите код сопряжения и адрес Wi‑Fi. Коснитесь «Разрешить другим устройствам подключаться», если появится. На компьютере коснитесь «Запустить с этого компьютера». На каждом другом устройстве: установите приложение, выберите Режим клиента, Найдите сервер магазина (или введите адрес), введите код сопряжения, Сопрячь сейчас. Заказы ждут на устройстве, если Wi‑Fi пропадёт, и уходят, когда Сервер снова ответит.
+your_brand	Ваш бренд (в приложении)
+units_heading	Единицы
+booking_measures	Размеры отправки
+drawer_count	Пересчёт кассы (необязательно)
+spreadsheet_csv	Таблица (CSV)
+bank_reconciliation	Банковская сверка (отмечать по выписке)
+book_add_product	Отправка — добавить продукт / тариф
+book_opening_credit	Отправка — начальный кредит
+account_kind	Тип счёта (нажмите один)
+active_ledger	Активная книга
+actual_total_cap	ФАКТИЧЕСКИЙ ИТОГ
+amend_help	Выберите продажу для исправления, аннуляции или возврата. Исправления сохраняют всю историю.
+applied_total_cap	ИТОГ К ОПЛАТЕ
+bank_balance	Остаток в банке
+bank_net_today	Нетто банка за сегодня
+branch_export_help	Экспорт пишет снимок дня в папку резервных копий и копирует его в буфер. Чтобы ввезти день другой точки, сохраните файл как import_branch_snapshot.json в этой папке, затем коснитесь Импорт.
+brand_shown_help	Показывается на экранах внутри приложения. Имя и значок установленного приложения на этом устройстве остаются как в магазине.
+app_icon	Иконка приложения
+logo_help	Опциональная метка магазина на экранах в приложении.
+onboard_layout	Что вы получаете
+item_photo_help	Опционально. Без фотографии мы покажем инициалы из названия позиции.
+cash_in_hand	Наличные в кассе
+change_my_pin_heading	Сменить мой PIN (только свой)
+connect_to_server	Подключиться к серверу
+counter_locked	Стойка 01 · Заблокировано
+country_pack_help	Пакет страны задаёт название налога и расчёт, рельс мгновенной оплаты и налоговый ID на счетах. Kumkaj не подаёт налоги и не выпускает государственные э-счета.
+currency_use_help	Прокрутите и нажмите Использовать для любой поддерживаемой валюты.
+day_close_help	Запись закрытия дня сохраняет эту сводку (и разницу по кассе, если считали) в журнал аудита. Продажи не останавливаются.
+expenses_word	Расходы
+feature_access_help	Доступ к функциям для выбранного сотрудника (коснитесь после добавления)
+footer_local	Локальный SQLite · Бесплатно навсегда · Без облака
+fresh_book_moklanjo	Принтеры
+fresh_selected	Выбрано Fresh — каталог останется пустым. Нажмите Done, когда будете готовы.
+gross_word	Валовой
+how_start	Как вы хотите начать?
+later_country_pack	Принтеры
+local_badge	ЛОКАЛЬНО
+measures_help_moklanjo	Как измеряются посылки на стойке. Вписывайте размеры и вес в ваших единицах — стандартных (cm, m, in, ft · kg, g, lb, oz) или своей единице, связанной с cm / kg выше (прямо или через другие единицы). Книги всегда записывают кг. Оставьте поле пустым, чтобы сохранить.
+mix_type_hint_moklanjo	Впишите, сколько в каждом (наличные / UPI / карта / кредит). Должно сходиться со счётом. Для кредита нужен клиент выше.
+money_in_sales	Деньги пришли (продажи)
+more_help_moklanjo	Каталог, продажи, кредит, команда, резервная копия — плюс запасы и дополнительные кассы при необходимости.
+net_word	Нетто
+offline_badge	ОФЛАЙН
+optional_login_help	Необязательный вход (ID + пароль). Владелец задаёт один раз; позже только сам пользователь может менять пароль.
+or_unlock_login	Или разблокировать по ID входа + паролю
+permission_preset	Должность (задаёт экраны и права)
+preset_help_moklanjo	Кассир: продажа. Менеджер: продажа + позиции + аннуляция/правка.
+product_locked_moklanjo	Moklanjo
+product_only_moklanjo	Это приложение — только Moklanjo: учёт и стойка приёма. Для других отраслей позже будут отдельные продукты.
+purchases_cogs	Закупки (COGS)
+qty_cap	КОЛ-ВО
+restore_help	Восстановление: выберите копию. Книги откроются как тогда; текущие сначала сохраняются, так что это можно отменить.
+wipe_data_heading	Удалить локальные данные
+wipe_data_help	Только владелец — как при удалении Windows. Торговые записи чистят историю и оставляют тарифы/настройки. Настройка магазина удаляет книги. Настройки экрана: окно/язык. Подтвердите PIN владельца.
+wipe_trading	Торговые записи
+wipe_schema	Настройка магазина
+wipe_ui	Настройки экрана
+wipe_owner_pin_ph	PIN владельца для удаления
+wipe_delete_selected	Удалить выбранное
+wipe_owner_only	Только владелец может удалить локальные данные.
+restore_owner_only	Только владелец может восстановить резервную копию.
+wipe_owner_pin_needed	Введите PIN владельца, чтобы удалить локальные данные.
+wipe_nothing_selected	Сначала выберите, что удалить.
+wipe_done	Выбранные локальные данные удалены.
+wipe_schema_done	Настройка магазина стёрта — выберите Server или Client, чтобы продолжить.
+rounded_total	Округлённый итог
+setup_app_moklanjo	Настройка Moklanjo
+shop_logo_optional	Логотип магазина (необязательно)
+stock_type_help	Впишите имя позиции (части достаточно), количество, затем отрегулируйте. Несчитанным позициям нужен один раз Начать учёт.
+team_owner_help	Найм: выберите должность (Кассир / Управляющий), имя + начальный PIN, затем Добавить. Только если этот человек отличается: откройте экраны и права ниже, затем Сохранить настройку должности. Каждый меняет свой PIN внизу — владелец не может менять чужой.
+they_owe_us	Они должны нам
+unit_at_cap	Цена за ед.
+units_help	Коды для этикеток позиций (kg, piece, bag). Каждая единица должна связываться — прямо или через другие единицы — со стандартом (kg · cm · ml · pc), напр. 1 crate = 2 box и 1 box = 20 cm. Пересчёты: 1 from = factor to. Валюты никогда не единицы.
+we_owe_them	Мы должны им
+who_unlocking	Кто разблокирует?
+locked_word	Заблокировано
+show_pin	Показать PIN
+hide_pin	Скрыть PIN
+set_owner_pin	ЗАДАТЬ PIN ВЛАДЕЛЬЦА
+enter_owner_passcode	ВВЕДИТЕ КОД ВЛАДЕЛЬЦА
+enter_staff_passcode	ВВЕДИТЕ КОД СОТРУДНИКА
+pin_count_zero	0 / 12 цифр · минимум 4, затем ОК
+pin_count_need	{} / 12 цифр · нужно ещё {}
+pin_count_full	12 / 12 цифр · нажмите ОК
+pin_count_ready	{} / 12 цифр · нажмите ОК, когда будете готовы
+pin_hint_choose	Выберите 4–12 цифр (клавиатура или панель) · Enter/ОК для сохранения
+pin_hint_new	Новый PIN владельца из 4–12 цифр (клавиатура или панель) · Enter/ОК
+pin_hint_shop_code	Устройство магазина · код подключения {}
+pin_hint_books	Это устройство хранит книги
+pin_hint_paired	Дополнительная касса подключена — разблокировать для продажи
+pin_hint_pair_first	Дополнительная касса — сначала подключиться к устройству магазина
+unlock_to_continue	Разблокировать, чтобы продолжить
+no_staff_yet	Персонала пока нет — разблокировать как Владелец, затем Команда
+status_server_set_pin	Режим сервера — задать PIN владельца
+status_server_tills	Режим сервера — дополнительные кассы могут подключиться. Разблокировать
+status_server_unlock	Режим сервера — разблокировать как Владелец
+status_client_unlock	Режим клиента — разблокировать для продажи
+icon_new_selected	Значок: выбран новый файл — нажмите Сохранить бренд
+icon_custom	Значок: собственный знак магазина
+icon_default	Значок: знак Kumkaj (по умолчанию) — выберите свой
+logo_yours	Логотип: логотип вашего магазина — показывается на экранах и в чеках
+logo_default	Логотип: знак Kumkaj (по умолчанию) — выберите свой, если есть
+tmpl_current	Текущий: {} — {}
+tmpl_selected	Выбрано: {} — {}
+setup_complete	Настройка завершена
+onboard_fresh_tmpl	С нуля · {} — каталог начинается пустым; добавьте товары в Товарах, затем нажмите Готово.
+onboard_book_tmpl	Книга · {} — добавьте товары и начальный кредит, затем нажмите Готово.
+onboard_template_tmpl	Если хотите, назовите заведение, затем выберите, как начать.
+tmpl_blurb	Учёт курьерской службы и стойка приёма: отправители, перевозчики, дневная книга, AWB.
+tmpl_how	Приём посылок на стойке; дневная книга — за сегодня; вкладки для тарифов, сторон, отчётов.
+trk_booked	Принято
+trk_picked_up	Забрано
+trk_in_transit	В пути
+trk_delivered	Доставлено
+trk_rto	Возвращается отправителю
+lane_to_dispatch	К отправке
+lane_with_carrier	У перевозчика
+lane_failed	Не доставлено
+lane_done_today	Завершено сегодня
+ops_board_help	Отправления по тому, где они в сегодняшней работе. Коснитесь отправлений (или отсканируйте их), чтобы выбрать, затем действуйте сразу над всеми выбранными — в каждой колонке только подходящие ей шаги.
+lane_empty	Сейчас здесь пусто.
+picked_fmt	Выбрано: {n}
+pick_all	Выбрать все
+bag_for_carrier	Передать перевозчику
+send_with_rider	Отправить с курьером
+out_again	Снова в доставку
+return_to_sender	Вернуть отправителю
+runs_bags_heading	Последние рейсы и мешки
+print_word	Печать
+bag_word	Мешок перевозчику
+run_word	Рейс курьера
+parcels_fmt	Отправлений: {n}
+parcel_history	История
+attempt_fmt	Попытка {n}
+pieces_short_fmt	{n} мест
+note_reason_ph	Заметка или причина
+ops_pick_first	Сначала выберите отправления — коснитесь или отсканируйте
+cod_to_collect	Доставлено — наложенный платёж к получению
+cod_on_road	Наложенный платёж ещё в пути
+cod_owed_consignors	Получено — к выплате отправителям
+cod_rto_fees	Сборы RTO к получению
+cod_to_hand_in	Сдать наложенный платёж
+parcel_one_fmt	Отправлений: {n}
+facet_bank_title	Отчёты
+facet_bank_help	Дневные книги, старение дебиторки, банковские проводки и ПиУ за период.
+facet_ops_title	Отправки и доставка
+facet_ops_help	Сканируйте или введите AWB → Найти, затем продвинуть / напечатать этикетку / COD. Передать курьеру или перевозчику.
+facet_cod_title	Реестр COD
+facet_cod_help	Собирайте при доставке, затем переводите отправителю.
+facet_riders_title	Курьеры (свой парк)
+facet_riders_help	Добавьте курьеров, затем отправляйте забронированные AWB из Ops.
+against_bill_ph	Против счёта № выше (необязательно)
+aliases_ph	Псевдонимы — другие названия, через запятую
+amount_blank_full_ph	Сумма (пусто = весь долг)
+amount_owed_ph	Сумма долга
+amount_ph	Сумма
+amount_received_ph	Полученная сумма
+amount_we_pay_ph	Сумма, которую мы платим
+awb_scan_ph	AWB / сканировать штрихкод
+bulk_csv_ph	Массовый CSV — destination,consignee,kg,cod_paise,note
+business_name_ph	Название бизнеса
+category_new_ph	Категория (необязательно, создастся, если новая)
+cod_amount_ph	Сумма COD
+code_bag_ph	Код (bag)
+conv_factor_ph	Коэффициент (25 = 1 bag → 25 кг)
+country_code_ph	Код страны, напр. IN, GB, US, AE, BR
+credit_khata_amount_ph	Сумма в кредит / на счёт
+credit_limit_ph	Лимит кредита (0 = нет)
+dim_unit_code_ph	Код единицы измерения (см)
+divisor_ph	Делитель объёма (5000)
+extra_per_kg_ph	Дополнительно / кг
+first_amount_ph	Первая сумма
+first_kg_ph	Первый кг (тарифная ступень)
+from_code_ph	Код из (bag)
+item_name_lang_ph	Название товара — введите на своём языке
+login_id_opt_ph	ID входа (необязательно)
+manager_pin_ph	PIN менеджера (только если вы не можете отменить)
+new_branch_name_ph	Название нового филиала
+new_password_ph	Новый пароль (необязательно)
+new_pin_ph	Новый PIN (4–12 цифр)
+note_bank_ph	Примечание (депозит, снятие, …)
+note_buy_expense_ph	Примечание (топливо, аренда, …)
+note_expense_ph	Примечание (топливо, офис, …)
+notify_phone_ph	Телефон уведомлений (хук WhatsApp/SMS)
+options_moklanjo_ph	Опции (необязательно) — Large=20, Gift wrap=10
+part_second_way_ph	Часть вторым способом (необязательно)
+phone_ph	Телефон
+address_ph	Адрес
+party_custom_fields_heading	Свои поля (выбранная сторона)
+party_custom_help	Добавьте любую метку и значение для этой стороны — WhatsApp, GSTIN, код маршрута…
+party_custom_key_ph	Имя поля (напр. WhatsApp)
+party_custom_value_ph	Значение
+party_custom_add	Добавить / обновить поле
+party_custom_remove	Удалить поле
+party_custom_empty	Пока нет своих полей
+party_custom_pick_first	Выберите сторону для своих полей
+place_name_ph	Название этого места
+price_ph	Цена
+qty_example_ph	Количество (напр. 1,5 для кг)
+quantity_ph	Количество
+reason_required_ph	Причина (обязательно)
+role_title_ph	Название роли (напр. Barista)
+service_pct_ph	Сервис % необязательно 0/10/12
+short_code_ph	Короткий код (MG02)
+slab_kg_ph	Тарифная ступень в кг (0,5)
+staff_name_ph	Имя / № сотрудника
+starting_password_ph	Начальный пароль (необязательно)
+starting_pin_ph	Начальный PIN (4–12 цифр)
+tax_rate_ph	Название ставки или % — Standard, Reduced, 0, 5, 12, 18, 20
+to_code_ph	Код в (kg)
+uncleared_no_ph	Непроведённый № выше
+unit_cost_ph	Себестоимость единицы
+unit_kg_blank_ph	Единица (кг или пусто)
+unit_name_bag_ph	Название (Bag)
+weight_unit_code_ph	Код единицы веса (кг)
+zone_name_ph	Название зоны
+pay_credit	Кредит
+book_kind_today	Книга за сегодня
+book_kind_month	Книга за этот месяц
+book_kind_aging	Задолженность / дебет-кредит
+book_kind_balance	Баланс
+ops_desk_help	Сканируйте AWB USB-сканером штрихкодов (или введите) → Найти. Затем продвинуть, напечатать этикетку или собрать COD. Этикетки печатаются в Code 128.
+role_help_consignor	Роль: Отправитель — AR (они должны нам). Та же фирма может быть и перевозчиком.
+role_help_carrier	Роль: Перевозчик — AP (мы должны им). Та же фирма может быть и отправителем.
+role_help_both	Роли: Отправитель + Перевозчик — одна сторона, книги AR и AP, нетто в Отчётах.
+role_help_supplier	Роль: Поставщик — кредиторка по закупкам.
+lane_declared_label	Отправка в счёт
+lane_owner_label	Отправка за наличные
+money_lane_bill	Билл: {lane}

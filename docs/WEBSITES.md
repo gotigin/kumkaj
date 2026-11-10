@@ -307,7 +307,7 @@ switches today (§8).
 | 3 | Your books live in your shop | On your device · no account with us · backup copies you keep; the extra-counters line waits for `lan-pilot` | vision §6, §21 |
 | 4 | Try it offline | Toy: cut the internet, the counter's work stays "Working" | vision §6, §20 |
 | 5 | Free forever on your devices | ₹0 on your own devices; Kumkaj Cloud *planned*, usage-based | vision §21 |
-| 6 | Speaks your staff's language | 29 languages, RTL; Khaynjo's real "Food ready" in Hindi, Gujarati, Tamil, Bengali, Urdu | `locale_chrome.rs` `tile_food_ready` |
+| 6 | Speaks your staff's language | Catalogue languages (India + world), RTL; Khaynjo's real "Food ready" in Hindi, Gujarati, Tamil, Bengali, Urdu | `locale.rs` + `translations/*.tsv` |
 | 7 | Made by Gotigin | Brand map Gotigin → Kumkaj → Moklanjo / Khaynjo; the choice again | — |
 
 Code: `sites/kumkaj/src/ui.rs`, `sites/kumkaj/src/main.rs`.

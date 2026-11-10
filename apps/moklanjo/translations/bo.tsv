@@ -1,0 +1,835 @@
+# Tibetan — བོད་སྐད་ (bo). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	མྱུར་སྐྱེལ་ལས་ཚབ་ཀྱི་དཔེ་དེབ་+ མངག་ཉོ་སྟེགས་བུ།རིན་མེད་དྲ་ཐོག་ཡིན།
+unlock	ལྡེ་མིག་ཕྱེ་བ།
+pin_hint	བདག་པོ་PIN 0000 ནས་འགོ་འཛུགས།
+sell	སྔོན་མངག་བྱས་པ།
+buy	Pay out
+books	ཉིན་མོའི་རྩིས་ཁྲ།
+books_help	Today’s position. Booking = parcels in. Pay out = carrier bills & expenses. Parties = consignors & carriers.
+buy_help	འགྲོ་སོང་འཛིན་ཡིག་དང་སྐྱེལ་འདྲེན་བྱེད་འགན་འཁུར་མཁན་གྱི་འཛིན་ཤོག་(དངུལ་ཕྱིར་བསྐྲུན། )རྩིས་ཐོ་དེ་སྔར་བཞིན་ཏང་གི་རྩིས་ཐོའི་སྟེང་བཞག་ཡོད།
+sell_money_in	འབོག་སྒྲིལ་ཞིག་མངག་ཉོ་བྱས་པ།
+buy_money_out	འགྲོ་གྲོན/སྐྱེལ་འདྲེན་བྱེད་འགན་འཁུར་བའི་རྩིས་ཁྲ།
+record_purchase	ཉོ་སྒྲུབ་ཉར་ཚགས་བྱེད་པ།
+add_expense	འགྲོ་གྲོན་བྱུང་འཛིན།
+bank_book	དངུལ་ཁང་གི་རྩིས་ཁྲ།
+credit_help	Party id is unique (names may repeat). Roles: Consignor (AR), Carrier (AP), or both on that id. Ledgers stay separate; reports show net.
+party_kind_ph	Custom Role(གདམ་གསེས་བྱེད་པ)— ཡང་ན་གོང་གི་ཉིང་ལྷེབ་ཅིག་ལ་མནན་དགོས།
+parties_list_heading	Saved parties
+reports_help	ཉིན་མོའི་རྩིས་ཁྲ། བུ་ལོན་དང་བུ་ལོན་སྤྲོད་མཁན། དངུལ་ཁང་གི་རྩིས་ཁྲ། འགྲོ་གྲོན་ཡོང་འབབ། ཁེ་སང་དང་གྱོང་གུན།
+reports_today	ཉིན་མོའི་རྩིས་ཁྲ། (དེ་རིང་།)
+reports_month	ཁེ་བཟང་དང་གྱོང་གུན། (ཟླ་བ།)
+reports_aging	དངུལ་བུན་ལྷག་མ། བུ་ལོན།
+reports_balance_sheet	རྩིས་ཁྲ།
+reports	དངུལ་ཁང་གི་རྩིས་ཁྲ་དང་P&L
+refresh	གསར་བརྗེ།
+undo	ཕྱིར་འཐེན་བྱེད་པ།
+start_tracking	རྗེས་འདེད་འགོ་བཙུགས།
+stock_minus	− མཛོད་ཁང་།
+stock_plus	+ མཛོད་ཁང་།
+settle_cash	དངུལ་རྩིས་རྒྱག་པ།
+settle_card	གཏན་འཇགས་བྱང་བུ།
+items	Rates & services
+nav_items	Rates
+more	དེ་ལས་མང༌།
+your_items	Your rates
+items_help	སྟར་ཕྲེང་རེ་རེ་ནི་མྱུར་ཚད་(དཔེར་ན་ཕྱི་ངོས་ཀྱི་ས་ཁུལ A)ཡིན།རྩིས་གཞི་ནི་སྤྱིར་བཏང་དུ་སྤྱི་རྒྱ་ཡིན།མནན་ནས་རྩོམ་སྒྲིག་བྱེད་དགོས།
+add_item	གོང་ཚད་ཁ་སྣོན་བྱས་པ།
+new_item	སྐྱེད་ཀའི་ཚད་གསར་པ།
+adding_item	སྐྱེད་ཀའི་ཚད་གསར་པ་ཁ་སྣོན་བྱས་པ།
+editing_item	རྩོམ་སྒྲིག།
+save	ཉར་ཚགས་བྱེད་པ།
+remove	བཏོན་པ།
+empty_catalog	ད་དུང་གོང་ཚད་མེད།སྒོ་ཕྱེ་བའི་རིན་གོང་དང་ཞབས་ཞུ། གཅིག་བསྣན་ན་(མིང་+ རིན་གོང་། རྩིས་གཞི་སྤྱི་རྒྱ་)། དེ་ནས་སྔོན་མངག་བྱེད་དགོས།
+counter_sale	ཚོང་སྒྲོམ་སྔོན་མངག་བྱས་པ།
+total	བསྡོམས་པ།
+cash	དངུལ་དངུལ།
+upi	UPI
+card	ཤོག་བྱང་།
+credit	ཚོང་ཤག་དང་མཁོ་སྤྲོད་བྱེད་མཁན།
+clear	གསལ་བ།
+ready_to_sell	རྩིས་ཁྲ་ལ་གྲ་སྒྲིག།
+today_prefix	དེ་རིང་།
+today_mid	དེ་རིང་།
+owed	ཕུལ་བྱུང་།
+round_word	སྐོར།
+back	ཕྱིར་ལོག
+sold_out	ཐོབ་མི་ཐུབ།
+restock	གསོག་འཇོག་སླར་གསོ།
+not_tracked	རྗེས་འདེད་མ་བྱས།
+in_stock	མཛོད་ཁང་ནང་།
+marked_sold_out	ཐོབ་མི་ཐུབ་པའི་རྟགས་བཀོད།
+add_upper	ཁ་སྣོན
+na	མེད།
+qty	ལྗིད་ཚད། གྲངས་ཚད།
+unit_at	རིན་གོང་@
+actual	དོན་དངོས།
+applied	བཀོལ་སྤྱོད་བྱས།
+note_ph	མཆན (འདམ་ཀ)
+rounded	ཟླུམ་པོ།
+split	ཁ་ཕྲལ།
+counter	བགྲང་ཆས།
+parcel	Parcel
+order	ཟ་ཁང་གི་མངགས་ཉོ།
+sales	སྔོན་མངག་བྱས་པ།
+sales_refunds	སྔོན་མངག་དང་ཕྱིར་སློག་
+day_close	ཉིན་མོ་སྒོ་བརྒྱབ་པ།
+reports_expenses	དངུལ་ཁང་གི་རྩིས་ཁྲ་དང་P&L
+nav_reports	སྙན་ཞུ།
+nav_settings	སྒྲིག་སྟངས།
+nav_lock	ལྡེ་མིག་བརྒྱབ།
+sidebar_settings	Sidebar settings
+sidebar_settings_help	ཟུར་གྱི་ལྕགས་ལམ་དང་འདྲ་བའི་རི་མོ་རེད། གོ་རིམ་བསྐྱར་སྒྲིག་བྱེད་པར་གྲལ་ཐིག་གཅིག་འདྲུད། སྟོན་པའམ་སྦས་ཆེད་དུ་བསྒྱུར་ཆས་དེ་གཡོས། སྒྲིག་སྟངས་དང་ལྡེ་མིག་དེ་ག་དུས་ཡིན་ཡང་ཆང་ཁང་གི་སྟེང་དུ་བསྡད་ཡོད།
+sidebar_always_on_short	ག་དུས་ཡིན་ཡང་།
+sidebar_back_settings	ཕྱིར་ལོག
+sidebar_shown	བསྟན་ཡོད།
+sidebar_hidden	སྦ་བ།
+sidebar_always_on	རྟག་ཏུ་ཆང་ཁང་དུ།
+sidebar_shown_hint	ཟུར་གྱི་ལྕགས་ལམ་/འོག་གི་མཆོང་ལྡེ་སྟེང་དུ་སྟོན་ཡོད།
+sidebar_hidden_hint	ཆང་ཁང་ནས་སྦས།
+sidebar_menu_items	དཀར་ཆག་དང་དཀར་ཆག་དཀར་ཆག་རྣམ་གྲངས།
+sidebar_enable_all	ཚང་མ་ལྕོགས་ཅན་བཟོས།
+sidebar_disable_all	ཚང་མ་ལྕོགས་མེད་བཟོས།
+sidebar_order_saved	ཟུར་ཐོའི་གོ་རིམ་ཉར་ཚགས་བྱས།
+sidebar_visibility_saved	ཟུར་ཐིག་མཐོང་ཚད་ཉར་ཚགས་བྱས།
+amounts_hide	གསང་བ།
+amounts_show	སྟོན་པ།
+no_sale_yet	ད་དུང་བཙོང་མེད།
+favorites	དགའ་མོས་ཅན།
+favorites_help	ཁྱེད་རང་གིས་རྒྱུན་དུ་བཙོང་བའི་རེའུ་མིག་རེའུ་མིག་རྣམ་གྲངས་དེ་ཁྱེད་རང་གི་ནང་འཇུག་ཆེད་དུ་ཉར་ཚགས་བྱས་ཡོད། བྱུང་འཛིན་ལ་གཅིག་ཁ་སྣོན་བྱེད་པའམ་ཡང་ན་གཤམ་གྱི་རེའུ་མིག་རྣམ་གྲངས་ཚང་མ་ནས་ཁྱེད་རང་གི་ཐོ་གཞུང་བཟོས།
+your_favorites	ཁྱེད་རང་གི་དགའ་མོས་ཤོས།
+all_items	དཀར་ཆག་རྣམ་གྲངས་ཚང་མ།
+no_favorites	ད་དུང་དགའ་མོས་ཆེ་ཤོས་མེད། གཤམ་གྱི་ཐོ་གཞུང་ནས་རེའུ་མིག་རྣམ་གྲངས་ཁ་སྣོན་བྱེད།
+add_to_bill	བྱུང་འཛིན་ལ་ཁ་སྣོན།
+added	ཁ་སྣོན་བྱས།
+owes_word	བུ་ལོན་ཡོད།
+selected_word	བདམས་ཐོན་བྱུང་།
+chip_clear_credit	གསལ་པོ། — བུ་ལོན་ཡང་ན་སྔོན་ལ་ལེན་དགོས།
+chip_missing_customer	འདེམས་སྒྲུག་བྱས་པའི་ཚོང་ཤག་བརླག་སོང་། ཡང་བསྐྱར་འདེམས།
+chip_no_customer	ད་དུང་ཚོང་ཤག་མེད། མིང་ཞིག་བྲིས་ནས་བུ་ལོན་ལ་རྡེབ།
+credit_summary_fmt	{} ཚོང་ཤག་ · ཁ་ཕྱེ་བའི་བུ་ལོན {} · སྔོན་རྩིས་འཛིན་པ། {}
+recent_label	ཉེ་ཆར།
+inventory	ཐོ་འགོད།
+inventory_stock	ཐོ་གཞུང་དང་མཛོད་ཁང་།
+branches	ཡན་ལག་ཁང༌།
+branches_org	ཡན་ལག་དང་ཚོགས་པ།
+credit_customers	Parties (debtors & creditors)
+customer_name_ph	ཚོང་ཤག་གམ་མཁོ་སྤྲོད་བྱེད་མཁན་གྱི་མིང་།
+new_customer_ph	ཚོང་ཤག་གསར་པའམ་མཁོ་སྤྲོད་བྱེད་མཁན་གྱི་མིང་།
+item_name_ph	Rate name (e.g. Surface Zone A)
+item_price_ph	Per kg / first slab
+start_template	ཐོན་རྫས།
+next_booking	རྗེས་མའི་མངག་ཉོ་
+destination_ph	དམིགས་ཡུལ་གྲོང་ཁྱེར/ས་ཁུལ།
+consignee_ph	Receiver name
+consignee_phone_ph	Receiver phone
+consignee_address_ph	སྐྱེལ་ཡུལ་
+origin_name_ph	Sender name
+origin_phone_ph	Sender phone
+origin_address_ph	Pickup / origin address
+booking_consignor_heading	དངོས་ཟོག་སྐྱེལ་མཁན། (ཚོང་མཁན/གཏོང་མཁན)
+booking_consignee_heading	དངོས་ཟོག་ལེན་མཁན། (རྩིས་ལེན་བྱེད་མཁན)
+booking_consignor_hint	Pick a party to fill, or leave blank for walk-in. Needed for home pickup and RTO.
+booking_consignee_hint	Receiver of the parcel. Leave blank for walk-in counter drop-offs.
+weight_kg_ph	དངོས་ཡོད་ཀྱི་སྤྱི་རྒྱ་
+length_cm_ph	L cm
+breadth_cm_ph	Bcm
+height_cm_ph	Hcmcm།
+chargeable_kg	རིན་བསྡུའི་སྤྱི་རྒྱ་
+awb_label	AWB
+booking_help	དངོས་ཟོག་སྐྱེལ་མཁན+དངོས་ཟོག་ལེན་མཁན(སྟོང་པ་OK)→དམིགས་→རྩིས་ཁྲ/དངུལ་སྨར་→སྤྲོད་→→བསྡུར་ཚད་ལ་ལྗིད་ཚད་འཇལ་དགོས།AWB བྱུང་འཛིན་ཐོག་པར་རྒྱག་པ།རྗེས་མར་མངག་ཉོ་བྱེད་སྐབས་ཅོག་ཙེ་གཙང་སེལ་བྱས།སྒོར་དབྱིབས་ཀྱི་འགོ་འཛུགས་སྐབས་Applied དང་མཚུངས། — རྩོམ་སྒྲིག་བྱས་ནས་རྩིས་ཐོ་སྒོར་སྒོར་ཁོ་ནར་འཇོག་དགོས།
+cart_empty_hint	ཅོག་ཙེ་སྟོང་པ། — དངོས་ཟོག་སྐྱེལ་མཁན/དངོས་ཟོག་ལེན་མཁན་གདམ་གསེས་དང་། དམིགས་ཡུལ & ལྗིད་ཚད་གཏན་ཁེལ་བྱེད་པ། རིན་གོང་གི་སྟེང་ADD མནན་ནས་དངུལ་སྤྲོད་དགོས།
+team	རུ་ཁག།
+team_pins	རུ་ཁག PINs
+my_pin_settings	ངའི་PIN
+settings_hub_help_my_pin	ཐབས་འཕྲུལ་འདིའི་ནང་དུ་ཐོ་འགོད་བྱས་པའི་མི་དེའི་ལྡེ་མིག་ཕྱེ་ཚད་PINབསྒྱུར་དགོས།
+team_self_help	Only you can change your unlock PIN (and optional login password). Ask the Owner if you need different screens or rights.
+backup_settings	རྒྱབ་ལྗོངས་དང་སྒྲིག་སྟངས།
+lock_app	མཉེན་ཆས་ལྡེ་མིག
+pick	འདེམས།
+select	འདེམས།
+advance	སྔོན་འགྲོ།
+owner	བདག་པོ།
+staff	ལས་བྱེད་པ།
+photo	པར་རིས།
+auto	རང་འགུལ་ཅན།
+prev	སྔོན་མ།
+next	རྗེས་མ།
+ok	འགྲིག་གམ།
+this_shop	སར་བར་ཐབས་ལམ།
+extra_till	མཁོ་སྤྲོད་ཐབས་ལམ།
+off	ཁ་བསྡམས།
+server	སར་བར་ཐབས་ལམ།
+client	མཁོ་སྤྲོད་ཐབས་ལམ།
+language_currency	སྐད་ཡིག་དང་དངུལ་ལོར།
+language	སྐད་ཡིག།
+choose_language	སྐད་ཡིག་འདེམས།
+language_setup_hint	ཐབས་འཕྲུལ་འདིའི་སྐད་ཡིག་ལ་ལྟོས། ཡང་ན་རང་ཉིད་ཀྱིས་གཅིག་འདེམས།
+lang_follow_platform	ཡོ་བྱད་སྐད་ཡིག
+lang_pick_user	སྐད་ཡིག་འདེམས།
+lang_platform_now	ད་ལྟ་འཕྲུལ་ཆས་ཀྱི་སྐད་ཡིག
+selected_language	བདམས་ཐོན་བྱུང་།
+continue	མུ་མཐུད།
+this_device	ཡོ་ཆས་འདི།
+device_use_q	ཡོ་ཆས་འདི་ཇི་ལྟར་བེད་སྤྱོད་གཏོང་གི་རེད་དམ།
+last_server_mode	ཞབས་ཞུ་བ་ཡིན་ནམ། མུ་མཐུད་དུ་མནན་དགོས།
+last_client_mode	མཁོ་སྤྲོད་པ་རེད་དམ། མུ་མཐུད་དུ་མནན་དགོས།
+choose_server	སར་བར་འདེམས།
+choose_server_hint	ད་ཡོད་ཀྱི་སར་བར་ཁ་ཕྱེ་བའམ་ཡང་ན་ཚོང་ལས་གཞན་ཞིག་གི་ཆེད་དུ་གསར་འཛུགས་བྱེད།
+create_new_server	གསབ་ལེན་གསར་བ་བཟོས།
+open_server	ཁ་ཕྱེ་བ།
+new_server_name_ph	སར་བར་གྱི་མིང་གསར་པ། (འདམ་ཀ།)
+server_remove_pin_ph	བདག་པོ་PINསར་བར་ཞིག་མེད་པར་བཟོ་དགོས།
+only_owner_remove_server	བདག་པོ་ཁོ་ནས་སར་བར་ཞིག་མེད་པར་བཟོ་ཐུབ།
+owner_pin_remove_server	བདག་པོ་PIN སར་བར་འདི་མེད་པར་བཟོ་དགོས།
+device_setup_help	སར་བར་གྱིས་རྩིས་ཁྲ་འདིར་ཉར་གྱི་ཡོད། མཁོ་སྤྲོད་པ་ཞབས་ཞུ་འཕྲུལ་ཆས་ལ་ཆ་སྒྲིག་བྱེད།
+currency	དངུལ་ལོར།
+backup	རྒྱབ་སྣོན།
+settings_sec_diag	ནད་རྟགས་བརྟག་དཔྱད།
+settings_hub_help	དུས་གཅིག་ཏུ་ས་ཁུལ་གཅིག་ཁ་ཕྱེ། བཤུད་སྒྲིལ་ཉུང་བ་དང་། གདམ་ག་གསལ་པོ།
+settings_sec_devices	ཡོ་བྱད་གཞན།
+settings_sec_alerts	ཉེན་བརྡ།
+alerts_help	ཁྱེད་ཀྱི་ཆེད་དུ་གནས་ཚུལ་གྱི་བརྡ་འཕྲིན་དེ་གློག་བརྙན་སྟེང་དུ་དུས་ཡུན་ག་ཚོད་རིང་བསྡད་ཐུབ་བམ། (ནང་འཇུག་འདི)
+snack_secs_ph	སྐར་ཆ། (3–60, སྔོན་སྒྲིག་10)
+snack_secs_save	ཉེན་བརྡའི་དུས་ཚོད་སྲུང་བ།
+snack_secs_saved	ཉེན་བརྡའི་དུས་ཚོད་ཉར་ཚགས་བྱས། {n}སྐར་ཆ།
+snack_secs_bad	སྐར་ཆ་གྲངས་སུ་བཙུགས (3–60)
+cancelled	ཕྱིར་འཐེན་བྱས།
+cancel	ཆ་མེད་གཏོང་བ།
+opening_client	ཚོང་ཤག་ཁ་ཕྱེ་བ།
+preparing_desk	ཡིག་ཅོག་གྲ་སྒྲིག་བྱེད་བཞིན་ཡོད།
+opening_server	སར་བར་ཁ་ཕྱེ་བཞིན་ཡོད།
+creating_server	གསབ་ལེན་གསར་བཟོ་བྱེད་བཞིན་ཡོད།
+diag_privacy_help	དྲན་ཐོ་རྣམས་འཕྲུལ་ཆས་འདིའི་སྟེང་དུ་བསྡད་ཡོད། གསང་བ་(PIN, གསང་གྲངས་)ནམ་ཡང་གསོག་འཇོག་བྱེད་ཀྱི་མེད། ཐབས་འཕྲུལ་ནས་ཐུམ་སྒྲིལ་མཉམ་སྤྱོད་བྱེད་པར་དུས་རྒྱུན་ཁྱེད་ཀྱི་ཆོག་མཆན་གསལ་པོ་དགོས།
+diag_level	ཞིབ་ཕྲའི་རིམ་པ།
+diag_level_error	ནོར་འཁྲུལ།
+diag_level_warn	ཉེན་བརྡ།
+diag_level_info	ཆ་འཕྲིན།
+diag_level_debug	རྐྱེན་སེལ་བ།
+diag_support_start	སྐར་མ་ ༣༠ ཡི་རྒྱབ་སྐྱོར་ཚོགས་འདུ་འགོ་བཙུགས།
+diag_support_stop	རྒྱབ་སྐྱོར་ཚོགས་འདུ་མཇུག་སྒྲིལ།
+diag_support_started	རྒྱབ་སྐྱོར་ཚོགས་འདུ། སྐར་མ་30རིང་རྐྱེན་སེལ་ཞིབ་ཕྲ།
+diag_support_ended	རྒྱབ་སྐྱོར་ཚོགས་འདུ་མཇུག་སྒྲིལ།
+diag_export_local	ས་གནས་ཀྱི་འདྲ་བཤུས་ཕྱིར་འདྲེན་བྱེད་པ།
+diag_export_local_done	{path} ལ་ས་གནས་ཀྱི་ནད་རྟགས་གྲ་སྒྲིག་ཡོད། འདྲ་བཤུས་གང་དུ་ཉར་ཚགས་བྱེད་དགོས་མིན་འདེམས།
+diag_approve_send	ཡོ་ཆས་འདི་བརྗེ་རེས་བྱེད་པར་ཆོག་མཆན་སྤྲོད།
+diag_send_heading	ཡོ་ཆས་འདི་མཉམ་སྤྱོད།
+diag_send_help	ཆོག་མཆན་ནི་ཐུམ་སྒྲིལ་གཅིག་ཡིན་པས་དུས་ཚོད་རྫོགས་འགྲོ་གི་རེད། གནས་སྐབས་ — ཐོན་རྫས་བཟོ་བཅོས་བྱེད་པའམ་ཡང་ན་ཡར་རྒྱས་གཏོང་བར་བེད་སྤྱོད་བྱེད་ཀྱི་ཡོད། མི་གསུམ་པ་དང་མཉམ་དུ་བརྗེ་རེས་བྱས་མེད། Linux, Windows, macOS, དང་Android བཅས་ལ་ལས་ཀ་བྱེད།
+optional_login_heading	གདམ་གསེས་ནང་འཇུག་བྱེད་པ།
+rights_heading	ཐོབ་ཐང་།
+booking_scope_heading	རྒྱལ་ནང་/ རྒྱལ་སྤྱི་
+diag_send_approved	ཐུམ་བུ་གཅིག་ལ་བགོ་བཤའ་ཆོག་མཆན་ཐོབ་ཡོད། (དུས་ཚོད་མགྱོགས་པོ་རྫོགས་འགྲོ་གི་རེད།)
+diag_export_send	བགོ་བཤའ་ཐུམ་བུ་བཟོས། (ཆོག་མཆན་དགོས།)
+diag_export_send_done	བགོ་བཤའ་རྒྱག་པའི་ཐུམ་བུ་དེ་{path} ལ་གྲ་སྒྲིག་བྱས་ཟིན། གང་དུ་ཉར་ཚགས་བྱེད་དགོས་མིན་འདེམས། དེ་ནས་Kumkaj རྒྱབ་སྐྱོར་ལ་གཏོང་དགོས།
+diag_save_bundle	ནད་རྟགས་འདྲ་བཤུས་ཉར་ཚགས་བྱེད།
+diag_bundle_saved	ནད་རྟགས་འདྲ་བཤུས་དེ་{path} ལ་ཉར་ཚགས་བྱས།
+diag_bundle_failed	ནད་རྟགས་འདྲ་བཤུས་ཉར་ཚགས་བྱེད་མ་ཐུབ། ཡང་བསྐྱར་ཚོད་ལྟ་བྱོས།
+diag_clear	ནད་བརྟག་དྲན་ཐོ་གསལ་བ།
+diag_cleared	ནད་བརྟག་དྲན་ཐོ་གཙང་སེལ་བྱས།
+use	བེད་སྤྱོད།
+add_branch	ཡན་ལག་ཁ་སྣོན།
+add_conversion	བརྗེ་སྒྱུར་ཁ་སྣོན།
+add_item_plain	དཀར་ཆག་རྣམ་གྲངས་ཁ་སྣོན།
+add_note	མཆན་ཁ་སྣོན་པ།
+add_opening_balance	ཁ་འབྱེད་ལྷག་མ་སྣོན་པ།
+add_rider	ཞོན་མཁན་ཁ་སྣོན་བྱས་པ།
+add_staff	ལས་བྱེད་ཁ་སྣོན།
+add_unit	ཚད་གཞི་ཁ་སྣོན།
+add_use_name	མིང་འདི་ཁ་སྣོན།
+allow_extra_tills	ས་ཞིང་ཁ་སྣོན་བྱེད་དུ་འཇུག་པ།
+amend	བཟོ་བཅོས།
+apply_country_pack	རྒྱལ་ཁབ་ཀྱི་ཐུམ་སྒྲིལ་སྤྱོད་པ།
+datetime_appearance	ཚེས་གྲངས་དང་དུས་ཚོད།
+datetime_appearance_help	རྩིས་ཐོ་ཡིས་ལོ་གཅིག་གི་RFC3339 ནང་ཉར་ཚགས་བྱས་ཡོད།འདི་དག་གིས་ཚེས་གྲངས་དང་ཆུ་ཚོད་འཁོར་ལོ་དེ་བྱུང་འཛིན་དང་། ཤོག་བྱང་། སྙན་ཞུ། བརྙན་ཤེལ་སོགས་ལ་འགྱུར་ལྡོག་གཏོང་གི་རེད།
+datetime_example	དཔེར་ན། {ex}
+date_order	ཚེས་གྲངས་གོ་རིམ།
+date_order_dmy	D/M/Y
+date_order_mdy	M/D/Y
+date_order_ymd	Y-M-D
+time_format	ཆུ་ཚོད།
+time_format_24h	ཆུ་ཚོད་༢༤།
+time_format_12h	ཆུ་ཚོད་12རིང་།
+attach_bill_photo	འཛིན་བྱང་གི་པར་སྦྱར་རོགས།
+attach_pdf	མཉམ་སྦྲེལ་ PDF
+attach_photo	པར་སྦྱར་བ།
+bank	དངུལ་ཁང་།
+bank_in	དངུལ་ཁང་།
+bank_out	དངུལ་ཁང་ནས་དངུལ་བཏོན་པ།
+bank_to_till	དངུལ་ཁང་ → བར།
+till_to_bank	ཏིལ་ → དངུལ་ཁང་།
+mark_cleared	རྟགས་གཙང་བཟོ།
+unmark	རྟགས་མེད་པར་བཟོས།
+role_both	གཉིས་ཀ།
+role_carrier	སྐྱེལ་འདྲེན་བྱེད་མཁན
+role_cashier	དངུལ་འཛིན་པ།
+role_consignor	དངོས་ཟོག་སྐྱེལ་མཁན།
+role_manager	འགན་འཛིན།
+role_supplier	མཁོ་སྤྲོད་བྱེད་མཁན།
+branch_name_sell_ph	ཡན་ལག་མིང་ནས་བཙོང་རྒྱུ།
+bring_my_book	ངའི་རྩིས་ཁྲ་ཁྱེར་ཤོག།
+business_tax_id_ph	ཁེ་ལས་དཔྱ་ཁྲལ་ཨང་རྟགས།
+card_amount_ph	བྱང་བུའི་དངུལ་གྲངས།
+cash_amount_ph	དངུལ་འབོར།
+upi_amount_ph	UPI དངུལ་འབོར།
+carrier_cost_ph	སྐྱེལ་འདྲེན་གྱི་མ་གནས་
+carrier_party_ph	སྐྱེལ་འདྲེན་བྱེད་འགན་འཁུར་མཁན་ཕྱོགས་
+choose_icon	རིས་རྟགས་འདེམས།
+choose_logo	ལས་རྟགས་འདེམས།
+choose_receipt_stamp	བྱུང་འཛིན་གྱི་ཐམ་ག་འདེམས་པ།
+choose_payment_qr	དངུལ་སྤྲོད་ལེན་QRའདེམས།
+clear_icon	རི་མོ་གསལ་བ།
+clear_logo	མཚོན་རྟགས་ཁ་གསལ་བཟོ་བ།
+clear_photo	པར་གསལ་བ།
+clear_stamp	ཐམ་ཀ་གསལ་བ།
+clear_payment_qr	དངུལ་སྤྲོད་གསལ་པོ་QR
+print_faces	Print faces (receipt / period bill)
+print_faces_help	Optional stamp and payment QR next to your logo on booking receipts and period bills.
+awb_pools_heading	སྐྱེལ་འདྲེན་བྱེད་སའི་AWB ཨང་གྲངས་མཛོད་
+add_awb_pool	AWB རྫིང་བུ་ཁ་སྣོན་བྱས།
+awb_pool_carrier_ph	སྐྱེལ་འདྲེན་བྱེད་མཁན་གྱི་མིང་།
+awb_pool_start_ph	Start no.
+awb_pool_end_ph	མཇུག་འགྲིལ་རྒྱུ་མེད།
+awb_pool_prefix_ph	Prefix (optional)
+awb_pool_label_ph	ཤོག་བྱང་། (གདམ་གསེས་བྱས་པ)
+pieces_ph	Pieces (blank = 1) — expand for cargo / multi-piece
+bulk_awbs_ph	Bulk AWBs — མང་བོ་སྦྱར་ནས་(ཐིག་གསར་པའམ་ཚེག་ཤད་)གཅིག་གི་སྔོན་འགྲོའི་ཆེད་དུ་སྦྱར་དགོས།
+tds_cut_ph	TDS cut (optional)
+discount_ph	ཕབ་གཅོག་(གདམ་གསེས་བྱས་པ)
+cheque_no_ph	དངུལ་འགྲུལ་འཛིན་གྱི་ཨང་གྲངས། (གདམ་གསེས་བྱས་པ)
+bill_reminder_chase	ཁྲིམས་གཞི་དྲན་སྐུལ་གྱི་རྗེས་སྙེགས་མིང་ཐོ།
+month_mix_report	ཟླ་བའི་མཉམ་བསྲེས་སྙན་ཞུ།
+copy_month_gst_csv	GST CSV འདྲ་བཤུས་ཟླ་
+domestic	རྒྱལ་ནང་གི་
+international	རྒྱལ་སྤྱི།
+pick_logo	Pick logo
+booking_scope_hint_domestic	Volumetric ÷5000 (domestic) — tap International for ÷6000 air
+booking_scope_hint_intl	Volumetric ÷6000 (international air) — tap Domestic for shop ÷5000
+cod_register	COD ཐོ་དེབ་
+collect_cod	COD (AWB) བསྡུ་གསོག་
+consignments_dispatch	དངོས་ཟོག་དང་སྐྱེལ་འདྲེན།
+consignor_party_ph	མངགས་གཏོང་མཁན/ཏང་གི་མིང་།
+copy_day_book_csv	ཉིན་མོའི་རྩིས་ཁྲ་འདྲ་བཤུས། CSV
+copy_day_close	འདྲ་བཤུས་ཉིན་མོ་སྒོ་བརྒྱབ་པ།
+copy_items_csv	དཀར་ཆག་རྣམ་གྲངས་CSV འདྲ་བཤུས་བྱེད།
+copy_outstanding_csv	འདྲ་བཤུས་ཕུལ་བྱུང་CSV
+copy_parties_csv	ཚོང་ཤག་དང་མཁོ་སྤྲོད་བྱེད་མཁན་གྱི་འདྲ་བཤུས།CSV
+copy_party_ledger_csv	ཚོང་ཤག་གི་རྩིས་ཁྲ་CSV འདྲ་བཤུས།
+copy_receipt	བྱུང་འཛིན་ངོ་བཤུས།
+copy_report	སྙན་ཞུའི་འདྲ་བཤུས།
+counted_cash_ph	ཤུད་སྒམ་ནང་དུ་དངུལ་རྩིས་བརྒྱབ་ཡོད།
+counter_agency_ph	Counter / ལས་ཚབ་ཀྱི་མིང་། (གདམ་གསེས་)
+create_backup	རྒྱབ་ལྗོངས་གསར་བཟོ།
+day_close_summary	ཉིན་མཇུག་བསྡུས་པ།
+delete_party	བདམས་པའི་ཚོང་ཤག་ཡང་ན་མཁོ་སྤྲོད་བྱེད་མཁན་སུབ་པ།
+dispatch_to_rider	བཀོད་གཏོང་མངག་ཉོ་བྱས་པའི་ཞོན་པ་→
+docket_charge_ph	Docket རིན་བསྡུ།
+declared_value_ph	གསལ་བསྒྲགས་བྱས་པའི་རིན་ཐང་།
+contents_ph	ནང་དོན།
+eway_ph	གློག་རྡུལ་ལམ་གྱི་འཛིན་ཤོག་ཨང་།
+insurance_label	ཉེན་བཅོལ།
+yes_label	Yes
+no_label	མིན།
+print_route_label	Print route
+new_party_kind_label	གསོལ་སྟོན་གྱི་རིགས་གསར་པ།
+done_open_books	བྱས་ཟིན། རྩིས་ཁྲ་ཁ་ཕྱེ་བ།
+export_day	ཕྱིར་གཏོང་ཉིན་མོ།
+extra_note_expense_ph	མཐའ་མའི་འགྲོ་གྲོན་སྐོར་གྱི་དྲན་ཐོ།
+extra_note_awb_ph	AWB / ཕྱིར་འཚོང་འདིའི་སྐོར་ལ་མཆན་འགྲེལ།
+failed_delivery	རྩིས་སྤྲོད་མ་ཐུབ་པ།
+find_scan_awb	AWB འཚོལ་བ/བཤེར་ཞིབ།
+forget_shop	ཚོང་ཁང་འདི་བརྗེད།
+fuel_ph	འབར་རྫས་
+handover_carrier	ལག་པས་མངག་ཉོ་བྱས་པའི་→སྐྱེལ་འདྲེན་ཡོ་བྱད་
+import_day	ནང་འདྲེན་ཉིན་མོ།
+import_items_csv	Import items / rates CSV…
+import_parties_csv	ནང་འདྲེན་ཚོང་ཤག་དང་མཁོ་སྤྲོད་བྱེད་མཁན་CSV...
+import_pincodes_csv	Import pincodes CSV…
+import_carrier_bill_csv	Import carrier bill CSV…
+copy_carrier_bill_report	ཆེས་མཐའ་མཇུག་གི་སྐྱེལ་འདྲེན་བྱེད་འགན་འཁུར་མཁན་གྱི་འཛིན་ཤོག་གི་སྙན་ཞུ་བཤུ་དགོས།
+use_carrier_cost	Use carrier cost
+rate_carrier_ph	སྐྱེལ་འདྲེན་བྱེད་མཁན། (སྟོང་པ་= ང་ཚོའི་ཕྱིར་འཚོང་གི་ཚད་)
+rate_party_ph	Party (blank = all customers)
+carrier_pick_ph	མ་གནས་ཀྱི་སྐྱེལ་འདྲེན་བྱེད་མཁན། (བསྡུར་བ་ལས་བ)
+item_name	དཀར་ཆག་དཀར་ཆག་རྣམ་གྲངས་ཀྱི་མིང་།
+load_bulk_row	ཅོག་ཙེའི་→འབོར་ཆེན་བླུགས་པ།
+login_id_ph	སྤྱོད་མཁན་གྱི་མིང་།
+mark_delivered	མཱ་ཁེ་ཡིས་རྩིས་སྤྲོད་བྱས་པ།
+manifest_cod_total	COD བསྡོམས་གྲངས་
+manifest_received_by	Received by
+manifest_sign	Sign
+ndr_address_wrong	ཁ་བྱང་ནོར་སོང་།
+ndr_customer_unavailable	ཐོབ་མི་ཐུབ།
+ndr_door_locked	སྒོ་ལ་ཟྭ་བརྒྱབ་པ།
+ndr_other	Other
+ndr_refused	Refused
+out_for_delivery	Out for delivery
+print_drs	Print DRS
+print_run_sheet	Print run sheet
+reattempt	Reattempt
+rider_cod_handed_ph	COD རྩིས་སྤྲོད་བྱས་པ།
+settle_rider_cod	Settle rider COD
+mode_desk	ཅོག་ཙེ།
+mode_rider	Rider
+waiting_office	waiting to reach office
+capture_signature	མིང་རྟགས་འཛིན་བཟུང་
+incoming_manifest	འབྱོར་བའི་བསྒྲགས་སྒྲུག
+pickup_request	Pickup request
+pickup_run	Pickup run
+auto_assign_area	རང་འགུལ་གྱིས་བགོ་བཤའི་ས་ཁོངས་
+reorder_stops	Reorder stops
+settle_rider_pay	Settle rider pay
+vehicle_inspect	Vehicle inspection
+print_docket	Print docket
+franchise_statement	ཆེད་གཉེར་གསལ་བསྒྲགས།
+tally_export	Tally voucher export
+open_whatsapp	Open WhatsApp
+copy_sms	འཕྲིན་ཐུང་གི་ཡི་གེ་བཤུས་པ།
+pick_barcode_image	Pick image to scan
+share_receipt_whatsapp	Share receipt on WhatsApp
+delivery_feedback	སྐྱེལ་སྤྲོད་ཀྱི་ལྡོག་འདྲེན་
+lan_self_book	LAN རང་གིས་མངག་ཉོ་བྱས་པ།
+new_party_clear	ཚོང་ཤག་གསར་པའམ་མཁོ་སྤྲོད་བྱེད་མཁན་(རྣམ་པ་གསལ་པོ)
+new_party_kind_ph	གསོལ་སྟོན་གྱི་རིགས་གསར་པ། (མཁོ་འདོན་ཚོང་པ/སྐྱེལ་འདྲེན་བྱེད་མཁན)
+next_country	རྒྱལ་ཁབ་རྗེས་མ།
+prev_country	སྔོན་གྱི་རྒྱལ་ཁབ།
+note_gstin_ph	མཆན / GSTIN / ཆིངས་ཡིག་དྲན་སྐུལ།
+note_pod_ph	Note / POD (optional)
+on_account_ap	རྩིས་ཁྲའི་ཐོག་(AP)
+org_optional_ph	སྒྲིག་འཛུགས། (གདམ་ཀ།)
+paid_now	ད་ལྟ་སྤྲད་ཟིན།
+pairing_code_ph	ཆ་སྒྲིག་ཨང་རྟགས།
+pair_now	ད་ལྟ་ཆ་གཅིག་གཉིས།
+party_name_selected_ph	ཚོང་ཤག་ཡང་ན་མཁོ་སྤྲོད་བྱེད་མཁན་གྱི་མིང་(ཡང་ན་བེད་སྤྱོད་འདེམས་སྒྲུག་བྱས་པ)
+password_ph	གསང་གྲངས།
+pay_ap_card	APབྱང་བུ་སྤྲོད་དགོས།
+pay_ap_cash	APདངུལ་སྤྲོད་དགོས།
+pay_ap_upi	AP UPI སྤྲོད་དགོས།
+period_bill	Period bill
+period_bill_party	Period bill (party)
+pick_pod_photo	Pick POD photo
+print_awb_label	Print AWB label
+print_open	པར་སྐྲུན།/ཁ་ཕྱེ།
+reason_amend_ph	བཟོ་བཅོས་བྱེད་དགོས་པའི་རྒྱུ་མཚན།
+reason_note_ph	རྒྱུ་མཚན། དྲན་ཐོ། (འཕྲོ་བརླག་དང་། གྲངས་འབོར།...)
+record_day_close	ཉིན་མོ་སྲུང་སྐྱོབ།
+refresh_from_shop	ཚོང་ཁང་ནས་གསར་བརྗེ།
+refund	དངུལ་ཕྱིར་སློབ།
+remit_cod	Remit COD (party)
+remove_selected	བདམས་པ་མེད་པར་བཟོས།
+restore_backup	རྒྱབ་ལྗོངས་སླར་གསོ་བྱེད་པ།
+rider_name_ph	Rider name
+rider_phone_ph	Rider phone
+riders	Riders
+riders_own_fleet	Riders (own fleet)
+rollup	ཕྱོགས་བསྡུས་ཕྱོགས་བསྒྲིགས།
+save_booking_measures	Save booking measures
+save_brand	ཚོང་རྟགས་ཉར་ཚགས་བྱེད།
+save_business_id	ཚོང་ལས་ཨང་རྟགས་ཉར་ཚགས་བྱེད།
+save_business_name	ཁེ་ལས་ཀྱི་མིང་ཉར་ཚགས་བྱེད་པ།
+save_features	Save job setup
+save_names	མིང་ཉར་ཚགས་བྱེད་པ།
+server_ip_ph	སར་བར་གྱི་IP (དཔེར་ན། ༡༩༢.༡༦༨.༡.༡༠)
+set_credit_limit	ཚོང་ཤག་དང་མཁོ་སྤྲོད་བྱེད་མཁན་ལ་ཚད་གཞི་འཇུག་དགོས།
+set_login_selected	བདམས་པ་ལ་ནང་འཇུག་འཇུག་སྤྱོད་བྱེད།
+set_login_named	{name} ལ་ནང་འཇུག་བྱེད་པ།
+shop	ཚོང་ཁང་།
+start_fresh	གསར་དུ་འགོ་བཙུགས།
+stop_extra_tills	ས་ཞིང་ཁ་སྣོན་བྱེད་མཚམས་འཇོག་དགོས།
+backup_auto	ཉིན་ལྟར་རང་འགུལ་གྱིས་རྒྱབ་སྐྱོར་བྱེད་ཀྱི་ཡོད། · མཐའ་མའི་{when} · མཐའ་མའི་ཉིན་14དེ་{dir}ནང་བཞག་ཡོད།
+backup_auto_none	ཉིན་ལྟར་རང་འགུལ་གྱིས་རྒྱབ་སྐྱོར་བྱེད་ཀྱི་ཡོད།
+backup_copy_to	འདྲ་བཤུས་ཡང་{dir} ལ་འགྲོ་གི་ཡོད།
+backup_copy_btn	ད་དུང་རྒྱབ་ལྗོངས་དེ་སྣོད་ནང་དུ་འདྲ་བཤུས་བྱེད་རོགས།
+autostart_off	གློག་ཀླད་འདི་ནས་འགོ་བཙུགས།
+autostart_on	གློག་ཀླད་འདི་ནས་འགོ་འཛུགས། ✓ — མཚམས་འཇོག་བྱེད་པར་མནན་དགོས།
+autostart_done_on	གློག་ཀླད་འདིས་ད་ལྟ་མཉེན་ཆས་དེ་འགོ་འཛུགས་སྐབས་ཁ་ཕྱེ་ཡོད། གློག་ཆད་པའི་རྗེས་སུ་ཚོང་ཁང་གི་སར་བར་དེ་སླར་ཡང་ཡོང་ཡོད།
+autostart_done_off	གློག་ཀླད་འདིས་མཉེན་ཆས་འགོ་འཛུགས་སྐབས་ཁ་ཕྱེ་མི་ཐུབ།
+right_allowed	ཆོག་པ།
+right_with_approval	ཆོག་མཆན་ཐོབ།
+right_denied	མི་ཆོག་པ།
+editing_staff	Rights for
+team_pick_ph	རྩོམ་སྒྲིག་བྱེད་པའི་ལས་བྱེད་པ་ — མིང་དང་། སྤྱོད་མཁན་གྱི་མིང་། ཡང་ན་འདེམས།
+select_staff	ལས་བྱེད་འདི་འདེམས།
+rights_help	Rights — tap to change: Allowed → With approval (a manager's PIN at that moment) → Not allowed.
+right_void_refund	Void or refund a booking
+right_amend_sale	ཟིན་བྲིས་སུ་བཀོད་པའི་སྔོན་མངག་ལ་བཟོ་བཅོས་རྒྱག་རྒྱུ།
+find_server	ཚོང་ཁང་གི་སར་བར་འཚོལ་བ།
+finding_server	Wi‑Fi ཐོག་ཚོང་ཁང་གི་ཞབས་ཞུ་འཕྲུལ་ཆས་འཚོལ་བཞིན་ཡོད།
+no_server_found	གཅིག་ཀྱང་མ་རྙེད། གསབ་ལེན་སྟེང་། སྒྲིག་སྟངས། → ཐབས་འཕྲུལ་གཞན་པ། → འཕར་མ་སྤྲོད་ཆོག (གཅིག་པ་Wi‑Fi) ཡང་ན་དེར་སྟོན་པའི་IPདེ་ཡིག་འཇུག་བྱོས།
+servers_found_pick	ཁྱོད་ཀྱིས་མཐུད་འདོད་པའི་ཚོང་ཁང་ལ་རྡེབ་རོགས།
+server_host_selected	{host} བེད་སྤྱོད་བྱེད་ནས་ — ཆ་སྒྲིག་བྱེད་པའི་ཨང་རྟགས་བླུགས་རྗེས་ད་ལྟ་ཆ་སྒྲིག་བྱེད།
+device_forgotten	ཚོང་ཁང་དེས་འཕྲུལ་ཆས་འདི་བརྗེད་སོང་། ཚོང་ཁང་གི་ད་ལྟའི་ཨང་གྲངས་དང་མཉམ་དུ་བསྐྱར་དུ་སྒྲིག་དགོས། མངགས་ཉོ་སྒུག་ནས་བསྡད་ཡོད།
+forget_device	བརྗེད་པ།
+last_seen	མཐོང་།
+new_pair_code	ཆ་སྒྲིག་ཨང་རྟགས་གསར་བ།
+lan_offline	ཚོང་ཁང་སར་བར་སླེབས་མི་ཐུབ།
+lan_offline_waiting	ཚོང་ཁང་གི་སར་བར་འབྱོར་མི་ཐུབ། · {n} སྒུག་བཞིན་ཡོད།
+lan_connecting	ཚོང་ཁང་ལ་མཐུད་བཞིན་ཡོད།
+pair_finishing	མཇུག་འགྲིལ་ཆ་...གཞུང་ལས་རྩིས་ཐོ་བཀོལ་སྤྱོད་བྱེད་ཀྱིན་འདུག
+pair_opening	Opening the office…
+lan_live	ཐད་གཏོང་།
+lan_sending	{n} བཏང་བ།
+lan_sign_in_to_send	{n} གཏོང་ཆེད་ཡང་བསྐྱར་ཐོ་འགོད་བྱོས།
+lan_pair_again	ཡོ་ཆས་འདི་ཡང་བསྐྱར་ཆ་སྒྲིག་བྱོས།
+lan_update_app	Update the app — this device and the office server have different versions
+allow_firewall	སྒྲིག་ཆས་གཞན་དག་འབྲེལ་མཐུད་བྱེད་དུ་འཇུག་པ།
+firewall_blocked	གློག་ཀླད་འདིའི་མེ་གྱང་གིས་ཐབས་འཕྲུལ་གཞན་པ་བཀག་འགོག་བྱེད་ཀྱི་ཡོད། — ཐབས་འཕྲུལ་གཞན་པ་མཐུད་པར་ཆོག་མཆན་སྤྲོད་དགོས།
+firewall_waiting	འཛིན་སྐྱོང་པའི་བརྡ་ལན་སྒུག་བཞིན་ཡོད།
+lan_join_help	ཐབས་འཕྲུལ་གཞན་ཞིག་གི་སྟེང་ལ། ཚོང་ཤག་ཐབས་ལམ། → ཚོང་ཁང་གི་སར་བར་འཚོལ་བ། (ཡང་ན་ཡིག་གཟུགས་{addr}) → ཆ་སྒྲིག་བྱེད་པའི་ཨང་རྟགས་{code}
+lan_pair_status	Wi‑Fi {addr}
+lan_join_help_no_addr	ཁ་བྱང་ཞིག་གི་ཆེད་དུ་འཕྲུལ་ཆས་འདི་Wi‑Fi ལ་མཐུད་དགོས།
+lan_no_address	ད་དུང་ཁ་བྱང་Wi‑Fiམེད། ཚོང་ཁང་Wi‑Fiལ་མཐུད་དགོས།
+lan_not_listening	ཡོ་ཆས་དང་ལེན་བྱེད་ཀྱི་མེད། (འདྲེན་ལམ་{port}བྲེལ་ཚུབ།) མཉེན་ཆས་དེ་བསྐྱར་དུ་འགོ་འཛུགས།
+lan_tills_off	གླ་ཆ་ཁ་སྣོན་བྱས་མེད། ཁོང་ཚོར་ཡོ་ཆས་གཞན་ཞིག་མཉམ་ཞུགས་བྱེད་དུ་འཇུག་རོགས།
+paired_with	ཆ་སྒྲིག · {url}
+not_paired	ཟུང་མ་བྱས་པ།
+choose_device_use	སར་བར་ཡང་ན་ཚོང་ཤག་འདེམས།
+paired_note	ཆ་སྒྲིག བཙོངས་ཆེད་དུ་ལྡེ་མིག་ཕྱེ་བའམ་ཡང་ན་གསར་ཤོས་ལ་གསར་བརྗེ་བྱེད་དགོས།
+last_update_at	མཐའ་མའི་གསར་བརྗེ། {time}
+pair_intro	སར་བར་འཚོལ་བའམ་ཡང་ན་དེའི་ཁ་བྱང་དང་ཆ་སྒྲིག་ཨང་རྟགས་ཡིག་འཇུག་བྱོས།
+queue_waiting	ཚོང་ཁང་ལ་སླེབས་པར་སྒུག་བཞིན་ཡོད། ({n}):
+queue_tries	{n} ཚོད་ལྟ་བྱས་ཟིན། · ལན་མཐའ་མ། {e}
+save_backup_copy	རྒྱབ་ལྗོངས་འདྲ་བཤུས་ཉར་ཚགས་བྱས།
+backup_copy_saved	རྒྱབ་ལྗོངས་འདྲ་བཤུས་ཉར་ཚགས་བྱས་ཟིན། དེ་འཕྲུལ་ཆས་འདི་ནས་ཕྱིར་འཐེན་བྱེད་དགོས། (USB stick ཡང་ན་འཕྲུལ་ཆས་གཞན་ཞིག)
+backup_copy_overdue	ཉིན་གྲངས་ {n} རིང་རྒྱབ་ལྗོངས་འདྲ་བཤུས་གང་ཡང་མི་འདུག — སྒྲིག་སྟངས། རྒྱབ་ལྗོངས་
+backup_copy_failed	རྒྱབ་ལྗོངས་འདྲ་བཤུས་དེར་ཉར་ཚགས་བྱེད་མི་ཐུབ། ས་ཆ་གཞན་ཞིག་འདེམས།
+clock_off	ཡོ་ཆས་འདིའི་ཆུ་ཚོད་ཚོང་ཁང་གི་གསབ་ལེན་ལས་སྐར་མ་{min} ཐག་རིང་བ་རེད། ཡོ་ཆས་འདིའི་སྟེང་དུས་ཚོད་འོས་འཚམ་སྒྲིག་དགོས།
+printers_heading	Printers on this device
+printers_help	དངོས་ཡོད་དཔར་ཆས་འཚོལ་བ་དང་། དེ་ནས་བྱུང་འཛིན་དང་ཡང་ན་AWB ཤོག་བྱང་འདེམས་དགོས།ལས་འགན་རེ་རེར་རང་ཉིད་ཀྱི་ཞེང་ཚད་དང་། འདྲ་གཟུགས་སམ་ཡང་ན་མཛེས་ངོས་ཀྱི་ཕྱོགས་དང་། དེ་བཞིན་bytes སྐྱེལ་སྟངས་བཅས་ཡོད།ཤོག་བྱང་ཞིག་གིས་ཨང་རྟགས་དཔར་དགོས།སྟོང་ཆ་= པར་སྐྲུན་མི་བྱེད།
+job_width	ནང་དོན་གྱི་ཞེང་ཚད་(mm)
+job_width_ph	Or type a width, 40–210 mm
+job_layout	བཀོད་སྒྲིག།
+job_delivery	ལས་ཀ་ཇི་ལྟར་གཏོང་བ།
+job_size	ཡིག་གཟུགས་ཆེ་ཆུང་།
+job_size_ph	དཔེར་ན། ༡༨ ༢༠ ༢༦...
+save_receipt_format	Save receipt format
+save_label_format	Save label format
+test_receipt_format	Test receipt
+test_label_format	Test label
+test_receipt_sent	Sample receipt sent
+test_label_sent	Sample label sent
+test_print_no_printer	ལས་ཀ་དེ་ལ་དཔར་ཆས་མེད་པ། ས་གནས་འདིའི་འོག་ཏུ་གཅིག་ཁ་སྣོན་བྱས་ཡོད་
+printers_host_only	Printers are set on the shop device (Server). This till sends jobs there — Find / add / assign stay on the Server. Test page goes to the Server.
+printers_pool_heading	པར་ཁང་།
+printers_routes_heading	གང་དུ་དངོས་པོ་དཔར་བ།
+printer_label_ph	མིང་། (དཔེར་ན་ཅོག་ཙེ།)
+printer_target_ph	host:9100 · bt:MAC · usb:VID:PID · system name
+printer_mode_heading	Profile for new outputs
+printer_mode_standard	Standard Portrait
+printer_mode_landscape	Standard Landscape
+printer_mode_thermal	Thermal
+printer_mode_standard_short	འདྲ་པར་།
+printer_mode_landscape_short	ཡུལ་ལྗོངས།
+printer_mode_thermal_short	Thermal
+printer_format_custom	རང་མོས་ངོ་སྤྲོད་གསར་བ།
+printer_format_custom_label	ལུགས་སྲོལ།
+printer_format_custom_added	ས་ཆ་འདིའི་ཆེད་དུ་རང་མོས་ངོ་སྤྲོད་ཁ་སྣོན་བྱས།
+add_printer	དཔར་ཆས་ཁ་སྣོན།
+remove_printer	Remove last
+route_pick_ph	receipt or label
+route_add_printer_ph	ས་གནས་འདིར་དཔར་ཆས་ཁ་སྣོན་བྱས་པ།
+route_receipt	Receipt
+route_label	AWB ཤོག་བྱང་།
+route_dont_print	དཔར་ཆས་བཀོད་སྒྲིག་བྱས་མེད་པ།
+route_add	ས་གནས་སུ་ཁ་སྣོན་བྱས་པ།
+route_up	ཡར་ལོང༌།
+route_down	མར།
+route_remove	Remove last
+route_clear	ས་ཆ་འདིའི་པར་འདེབས་ཆས་གཙང་སེལ་བྱེད་རོགས།
+save_printers	པར་ཆས་ཉར་ཚགས་བྱེད་པ།
+print_test_page	ཚོད་ལྟའི་ཤོག་བུ་དཔར་བསྐྲུན།
+printers_saved	Printers saved for this device
+test_page_sent	ཚོད་ལྟའི་ཤོག་བུ་བཏང་ཟིན། པར་འཕྲུལ་ལ་ཞིབ་བཤེར་བྱས།
+printers_found	སྒྲིག་ཆས་འདིའི་སྟེང་ནས་རྙེད་པ: {list}
+find_printers	དཔར་འཕྲུལ་འཚོལ།
+printers_looking	སྒྲིག་ཆས་འདི་དང་Wi-Fi སྟེང་གི་དཔར་ཆས་འཚོལ་བཞིན་ཡོད།
+printers_tap_find	Tap Find printers for queues that accept jobs and network receipt printers on this Wi‑Fi (not removed or offline ones).
+printers_none_found	དཔར་ཆས་མ་རྙེད། མ་ལག་དཔར་ཆས་ཀྱི་མིང་གམ་ཡང་ན་དྲ་རྒྱའི་ས་གནས་(དཔེར་ན་192.168.1.50)
+receipt_printer_ph	Printer for receipts
+queue_refused	ཚོང་ཁང་གིས་ངོས་ལེན་མ་བྱས། ({n}) — སྒོ་འགྲམ་དུ་རེ་རེ་བཞིན་ཞིབ་བཤེར་བྱོས།
+clear_not_accepted	ཞིབ་བཤེར་བྱས་ཟིན། ཐོ་འདི་བསུབ་དགོས།
+device_name_ph	ཡོ་བྱད་འདིའི་མིང་།
+lan_last_update	མཐའ་མའི་གསར་བཅོས་ {time}
+lan_not_accepted	{n} དང་ལེན་བྱས་མེད།
+connected_now	ད་ལྟ་མཐུད་ཡོད།
+backup_failed	མཐའ་མའི་རང་འགུལ་རྒྱབ་ལྗོངས་འཐུས་ཤོར་ཕྱིན་འདུག {e}
+backup_overdue	ཉིན་གྲངས་{n} རིང་ལ་རྒྱབ་སྣོན་མེད། མཉེན་ཆས་དེ་འཕྲུལ་ཆས་འདིའི་སྟེང་ལ་ཁ་ཕྱེ་ནས་རྒྱབ་སྣོན་བྱེད་ཐུབ།
+disk_low	ཐབས་འཕྲུལ་འདིའི་སྟེང་ལ་{mb} MB རིན་མེད་ཡིན། རྒྱབ་སྣོན་མགྱོགས་པོ་འཐུས་ཤོར་འགྲོ་རྒྱུ་རེད། བར་སྟོང་ཁ་ཤས་གློད་པ།
+last_seen_devices	མཐའ་མར་མཐོང་།: {time}
+sync_interval	{secs}s རེ་རེར་དུས་མཉམ་བཟོས།
+connection_to_shop	ཚོང་ཁང་དང་འབྲེལ་མཐུད།
+supplier_name_ph	མཁོ་སྤྲོད་བྱེད་མཁན་གྱི་མིང་(ཡང་ན་ཚོང་ཤག་)
+supplier_ph	མཁོ་སྤྲོད་བྱེད་མཁན།
+switch_device	འཕྲུལ་ཆས་འདི་བརྗེ་དགོས།
+take_payment	དངུལ་སྤྲོད་ལེན།
+tax_added_till	{tax} དམིགས་བསལ།
+tax_inside_price	{tax} བཅས་ཚུད་ཡོད།
+today_books	དེ་རིང་རྩིས་ཁྲ།
+unlock_after_pairing	PIN བླུགས།
+unlock_with_login	ནང་འཇུག་གིས་སྒོ་ཕྱེ།
+update_my_password	ངའི་གསང་གྲངས་གསར་བསྒྱུར།
+update_my_pin	Update my PIN
+duress_heading	ཛ་དྲག་གི་ལྡེ་མིག་ཕྱེ་བ། PIN (བདག་པོ་ཁོ་ན)
+duress_help	Optional. If this PIN is typed at unlock instead of yours, all books entries are wiped (bookings, ledgers, history) and the desk opens as Owner looking normal — rates, parties, zones, staff and settings stay. Schema and config are not deleted. Use only if you are forced to unlock. Leave blank and save to turn off. Never the same as anyone's PIN.
+duress_pin_ph	ཛ་དྲག་PIN (ཨང་གྲངས་4–12)
+duress_confirm_ph	ཡང་བསྐྱར་ཡིག་འཇུག་བྱས་ནས་གཏན་འཁེལ་བྱེད་པ།
+save_duress_pin	ཛ་དྲག་ཉེན་སྐྱོབ་ PIN
+clear_duress_pin	ཛ་དྲག་ཁ་བསྡམས།PIN
+duress_on	ཛ་དྲག་ལྡེ་མིག་ཕྱེ་ PIN ཁ་ཕྱེ་ཡོད།
+duress_off	ཛ་དྲག་ལྡེ་མིག་ཕྱེ་ PIN ཁ་བརྒྱབ་ཡོད།
+duress_saved	ཛ་དྲག་ལྡེ་མིག་ཕྱེ་ PIN ཉར་ཚགས་བྱས།
+duress_cleared	ཛ་དྲག་གི་ལྡེ་མིག་PINཁ་བསྡམས།
+vehicle_ph	Vehicle
+void	ནུས་མེད་ཚོང་འགྲེམས།
+write_off_ap	AP བྲིས།
+write_off_nil	རྩིས་མེད་བཏང་བ། ལྷག་མ་མེད་པ།
+zone_ph	Zone (name from Rates)
+caption_today	དེ་རིང་།
+caption_bookings	མངག་ཉོ་བྱས་པ།
+caption_payments_today	དེ་རིང་དངུལ་སྤྲོད།
+caption_outstanding	ཕུལ་བྱུང་།
+caption_bank	དངུལ་ཁང་།
+paid_by	གླ་ཆ་སྤྲད་ཡོད།
+second_way	ལམ་གཉིས་པ།
+weight_in	Weight in
+size_in	Size in
+goods_received	དངོས་ཟོག་འབྱོར་བ།
+expense_heading	འགྲོ་གྲོན།
+notes_attach_sale	མཆན་འགྲེལ་དང་མཉམ་སྦྲེལ་ཡིག་ཆ། (འདེམས་སྒྲུག་བྱས་པའི་ཚོང་ཟོག)
+notes_attach_party	མཆན་འགྲེལ་དང་མཉམ་སྦྲེལ་ཡིག་ཆ།(བདམས་པའི་ཚོང་ཤག་ཡང་ན་མཁོ་སྤྲོད་བྱེད་མཁན།)
+attachments_last_expense	ཟུར་སྣོན་ (མཐའ་མའི་འགྲོ་གྲོན།)
+credit_limit_heading	བུ་ལོན་ཚད་གཞི། (འདེམས་སྒྲུག་བྱས་པའི་ཚོང་ཤག་ཡང་ན་མཁོ་སྤྲོད་བྱེད་མཁན།)
+pay_selected_heading	འདེམས་སྒྲུག་བྱས་པའི་གླ་ཆ་སྤྲོད་དགོས།
+write_off_heading	རྩིས་མེད་གཏོང་དགོས། (དངུལ་སྤྲོད་མི་དགོས་པར་གཙང་བཟོ།)
+pay_ap_heading	ང་ཚོས་ཁོ་ཚོར་བུ་ལོན་སྤྲོད་དགོས།
+country_tax	རྒྱལ་ཁབ་དང་དཔྱ་ཁྲལ།
+extra_tills_heading	ཞིང་ལས་ཁ་སྣོན།
+other_devices_help_heading	སྒྲིག་ཆས་གཞན་སྒྲིག་འཛུགས་བྱེད་པ།
+other_devices_help	On this device (Server): Other devices → Allow extra tills. Note the pairing code and Wi‑Fi address. Tap Allow other devices to connect if it appears. On a computer, tap Start with this computer. On each other device: install the app, choose Client Mode, Find the shop's server (or type the address), enter the pairing code, Pair now. Orders wait on the device if Wi‑Fi drops and go when the Server answers again.
+your_brand	ཁྱེད་རང་གི་ཚོང་རྟགས། (མཉེན་ཆས་ནང་)
+units_heading	ཚད་གཞི།
+booking_measures	སྔོན་མངག་བྱེད་ཐབས།
+drawer_count	ཤུད་སྒམ་གྱི་གྲངས་འབོར། (འདམ་ཀ)
+spreadsheet_csv	གློག་རྡུལ་རེའུ་མིག (CSV)
+bank_reconciliation	དངུལ་ཁང་མཉམ་སྒྲིག (ཁྱེད་ཀྱི་དངུལ་ཁང་གི་སྙན་ཞུའི་ཐོག་ལ་རྟགས་བརྒྱབ་དགོས།)
+book_add_product	དེབ་ — ཐོན་རྫས / གོང་ཚད་ཁ་སྣོན་བྱས་པ།
+book_opening_credit	རྩིས་ཁྲ། བུ་ལོན་ཁ་ཕྱེ་བ།
+account_kind	རྩིས་ཁྲའི་རིགས། (གཅིག་ལ་རྡེབ།)
+active_ledger	Active Accounter
+actual_total_cap	དངོས་ཡོད་བསྡོམས་འབོར།
+amend_help	བཅོས་སྒྱུར་དང་། ཆ་མེད་གཏོང་བ། ཡང་ན་དངུལ་ཕྱིར་སྤྲོད་བྱེད་པའི་ཚོང་རྫས་འདེམས། བཅོས་སྒྱུར་གྱིས་ལོ་རྒྱུས་ཆ་ཚང་ཉར་ཚགས་བྱེད། སྒོར་ཕྱེད་ཀྱི་བསྡོམས་འབོར་དེ་འཇུག་སྤྱོད་དང་འདྲ་མཉམ་འགོ་འཛུགས། སྒོར་ཕྱེད་ལ་རྐྱངམ་གཅིག་ཞུན་དག་བྱེད། སྟོང་ཆ་དང་དངུལ་ཕྱིར་སྤྲོད་བྱེད་པར་བདག་པོའམ་འགན་འཛིན་དགོས་སྲིད། PIN (གོང་དུ་བྲིས་ཡོད། ཁྱེད་ཀྱི་མིང་དང་བཅས་ཐོ་འགོད་བྱས།)
+applied_total_cap	བཀོལ་སྤྱོད་བསྡོམས་འབོར།
+bank_balance	དངུལ་ཁང་ལྷག་མ།
+bank_net_today	དེ་རིང་དངུལ་ཁང་གཙང་མ།
+branch_export_help	ཕྱིར་འདྲེན་གྱིས་ཉིན་གཅིག་གི་འདྲ་པར་ཞིག་རྗེས་གྲབས་ཡིག་སྣོད་ནང་བྲིས་ནས་འཛིན་པང་ནང་བཤུ་དགོས།དྲ་ཚིགས་གཞན་ཞིག་གི་ཉིན་མོ་ནང་འདྲེན་བྱེད་ན། དེའི་ཡིག་ཆ་དེ་ཡིག་སྣོད་དེའི་ནང་དུ་import_branch_snapshot.json དུ་ཉར་ཚགས་བྱས་རྗེས། དེ་ནས་'Import'ལ་མནན་དགོས།
+brand_shown_help	མཉེན་ཆས་ནང་ཁུལ་གྱི་བརྙན་ཤེལ་སྟེང་དུ་སྟོན་ཡོད། ཐབས་འཕྲུལ་འདིའི་སྟེང་དུ་སྒྲིག་འཇུག་བྱས་པའི་མཉེན་ཆས་ཀྱི་མིང་དང་འདྲ་སྐུ་དེ་སྟེགས་བུའི་ཐོ་གཞུང་ལྟར་གནས་ཡོད།
+app_icon	མཉེན་ཆས།
+logo_help	མཉེན་ཆས་ནང་གི་བརྙན་ཤེལ་སྟེང་དུ་འདམ་ཀའི་ཚོང་ཁང་གི་རྟགས་བཀོད།
+onboard_layout	གང་ཐོབ་པ།
+item_photo_help	འདམ་ཀ། པར་མེད་ན་ང་ཚོས་རེའུ་མིག་རྣམ་གྲངས་ཀྱི་མིང་ནས་ཡི་གེ་དང་པོ་སྟོན་གྱི་ཡོད།
+cash_in_hand	ལག་ཏུ་དངུལ་ཡོད།
+change_my_pin_heading	ངའི་PIN བསྒྱུར། (ཁྱོད་ཀྱི་ཁོ་ན།)
+connect_to_server	གསབ་ལེན་ལ་མཐུད་པ།
+counter_locked	གྱངས་ཁ་01 · ལྡེ་མིག་བརྒྱབ་ཡོད།
+country_pack_help	རྒྱལ་ཁབ་ཀྱི་ཐུམ་སྒྲིལ་གྱིས་ཁྲལ་གྱི་མིང་དང་ཨང་རྩིས། མྱུར་དུ་གླ་ཆ་སྤྲོད་པའི་མེ་འཁོར། དེ་བཞིན་དངུལ་འཛིན་སྟེང་ལ་པར་སྐྲུན་བྱས་པའི་ཚོང་ལས་ཨང་རྟགས་བཅས་སྒྲིག་ཡོད། Kumkaj གང་དུ་ཡང་ཁྲལ་འབབ་དང་གཞུང་འབྲེལ་གྱི་གློག་རྡུལ་བྱུང་འཛིན་སྤྲོད་ཀྱི་མེད།
+currency_use_help	བཤུད་ནས་རྒྱབ་སྐྱོར་བྱེད་པའི་དངུལ་ལོར་གང་རུང་ལ་བེད་སྤྱོད་གཏོང་དགོས།
+day_close_help	ཉིན་གཅིག་གི་མཇུག་སྒྲིལ་ཐོ་འགོད་བྱེད་པ་དེས་སྙིང་བསྡུས་འདི་(གལ་ཏེ་རྩིས་རྒྱག་ན་ཤུད་སྒམ་གྱི་ཁྱད་པར་)རྩིས་ཞིབ་དྲན་ཐོ་ལ་གསོག་འཇོག་བྱེད། དེས་ཚོང་མཚམས་འཇོག་གི་མེད།
+expenses_word	འགྲོ་གྲོན།
+feature_access_help	བདམས་ཐོན་བྱུང་བའི་ལས་མི་ལ་ཁྱད་ཆོས་ཀྱི་ཆོག་འཐུས་(ཁ་སྣོན་བྱས་རྗེས་མནན་)
+footer_local	ས་གནས་ཀྱི་SQLite · དུས་ནམ་ཡང་རང་དབང་། · ཀླད་ཀོར་སྤྲིན་པ།
+fresh_book_moklanjo	Fresh = དཀར་ཆག་སྟོང་པ། (རྗེས་ནས་རྣམ་གྲངས་ཁ་སྣོན་བྱེད་དགོས)དེབ་ = ཡིག་གཏག་ཁ་ཕྱེ་བའི་མཛོད་ཁང་དང་སུ་ཞིག་གིས་ཁྱོད་ལ་ཆད་ཡོད།
+fresh_selected	གསར་དུ་འདེམས་པ་ — ཐོ་གཞུང་སྟོང་པར་ལུས་ཡོད། གྲ་སྒྲིག་བྱས་ཚར་རྗེས་ལ་རྡེབ་རོགས།
+gross_word	བསྡོམས་འབོར།
+how_start	གང་འདྲ་བྱས་ནས་འགོ་འཛུགས་དགོས་སམ།
+later_country_pack	རྗེས་སུ་: སྒྲིག་སྟངས། → ཁྲལ་དང་དངུལ་སྤྲོད་པའི་མཚོན་རྟགས་ལ་ཁྱེད་ཀྱི་རྒྱལ་ཁབ་ཀྱི་ཐུམ་སྒྲིལ་སྤྱོད་དགོས།
+local_badge	ས་གནས།
+measures_help_moklanjo	How parcels are measured at the booking desk. Type dimensions and weight in the units you use — standard (cm, m, in, ft · kg, g, lb, oz) or your own unit linked to cm / kg above (directly or through other units). Books always record kg. Leave a field empty to keep it.
+mix_type_hint_moklanjo	Type how much in each (cash / UPI / card / credit). Must add up to the bill. Credit needs a customer above.
+money_in_sales	དངུལ་ནང་(བཙོང)།
+more_help_moklanjo	དཀར་ཆག་དང་། ཕྱིར་འཚོང་། ཡིད་རྟོན་ཁང་། རུ་ཁག རྗེས་གྲབས་སོགས་དགོས་མཁོར་གཞིགས་ནས་མཛོད་ཁང་དང་ལྷག་མ་རྣམས་བསྣན་ཡོད།
+net_word	དྲ་བ།
+offline_badge	དྲ་རྒྱའི་ཕྱི་རོལ་དུ།
+optional_login_help	འདམ་ཀའི་ནང་འཇུག་(ID +གསང་གྲངས།) བདག་པོས་ཐེངས་གཅིག་སྒྲིག་པ་དང་། སྤྱོད་མཁན་གྱིས་རྗེས་སུ་གསང་གྲངས་བརྗེ་ཐུབ།
+or_unlock_login	ཡང་ན་ནང་འཇུག་ཨང་རྟགས་+གསང་གྲངས་བཀོལ་ནས་ལྡེ་མིག་ཕྱེ།
+permission_preset	ལས་ཀ (བརྙན་ཤེལ་དང་དབང་ཆ་སྒྲིག་བ)
+preset_help_moklanjo	དངུལ་གཉེར་པ། བཙོང་། འགན་འཛིན། བཙོངས་ + དཀར་ཆག་རྣམ་གྲངས་ + སྟོང་ཆ་/བཅོས་སྒྲིག
+product_locked_moklanjo	Moklanjo
+product_only_moklanjo	This app is Moklanjo only — books + booking desk. Other trade faces ship as separate products later.
+purchases_cogs	ཉོ་སྒྲུབ།(COGS)
+qty_cap	གྲངས།
+restore_help	སླར་གསོ། རྒྱབ་ལྗོངས་འདེམས། རྩིས་ཁྲ་དེ་ཚོ་དེ་སྔོན་ལྟར་ཁ་ཕྱེ་ཡོད། ད་ལྟ་ཡོད་པའི་རྩིས་ཁྲ་དེ་ཚོ་སྔོན་ལ་གསོག་འཇོག་བྱས་པས་འདི་ཕྱིར་འཐེན་བྱེད་ཐུབ།
+wipe_data_heading	ས་གནས་ཀྱི་གཞི་གྲངས་སུབ་པ།
+wipe_data_help	Owner only — same choices as Windows uninstall. Business records clears trading history but keeps rates and setup (like the emergency unlock PIN). Shop setup removes the books database. Screen preferences clears window/language. Confirm with the Owner PIN. The emergency unlock PIN on Team is separate (covert wipe at unlock).
+wipe_trading	ཁེ་ལས་ཀྱི་ཟིན་ཐོ།
+wipe_schema	ཚོང་ཁང་གི་སྒྲིག་བཀོད།
+wipe_ui	འཆར་ཤེལ་གྱི་དགའ་མོས།
+wipe_owner_pin_ph	བདག་པོ PIN བསུབས་དགོས།
+wipe_delete_selected	བདམས་པ་སུབ་པ།
+wipe_owner_only	བདག་པོ་ཁོ་ནས་ས་གནས་ཀྱི་གྲངས་ཐོ་སུབ་ཐུབ།
+restore_owner_only	བདག་པོ་ཁོ་ནས་རྒྱབ་ལྗོངས་སླར་གསོ་བྱེད་ཐུབ།
+wipe_owner_pin_needed	ས་གནས་ཀྱི་གྲངས་ཐོ་བསུབས་ཆེད་དུ་བདག་པོ་PINབླུགས།
+wipe_nothing_selected	དང་པོ་གང་ཞིག་བསུབ་དགོས་མིན་འདེམས།
+wipe_done	འདེམས་སྒྲུག་བྱས་པའི་ས་གནས་ཀྱི་གྲངས་ཐོ་བསུབས་ཡོད།
+wipe_schema_done	ཚོང་ཁང་གི་སྒྲིག་བཀོད་བསུབས་ཟིན། མུ་མཐུད་དུ་འགྲོ་བར་སར་བར་ཡང་ན་ཚོང་ཤག་འདེམས།
+rounded_total	སྒོར་སྒོར ་བསྡོམས།
+setup_app_moklanjo	Set up Moklanjo
+shop_logo_optional	ཚོང་ཁང་གི་མཚོན་རྟགས། (འདམ་ཀ)
+stock_type_help	དཀར་ཆག་རྣམ་གྲངས་ཀྱི་མིང་ཡིག་འཇུག་བྱོས། (དེའི་ཆ་ཤས་ཤིག་འདང་ངེས་ཡིན།) གྲངས་ཚད་ཅིག དེ་ནས་བསྒྱུར་དགོས། ད་དུང་རྩིས་མ་བརྒྱབ་པའི་རེའུ་མིག་རེའུ་མིག་རྣམ་གྲངས་ལ་ཐེངས་གཅིག་རྗེས་འདེད་འགོ་འཛུགས་དགོས།
+team_owner_help	གླས་པ། ལས་ཀ་ཞིག་འདེམས་པ། (དངུལ་གཉེར་པ/སྤྱི་གཉེར་བ་)། མིང་+ འགོ་འཛུགས་ཀྱི་PIN དེ་ནས་ཁ་སྣོན་བྱེད་དགོས།མི་འདི་མི་འདྲ་བ་ཡོད་ན། གཤམ་གྱི་བརྙན་ཤེལ་དང་དབང་ཆ་ཁ་ཕྱེ་ན། དེ་ནས་ལས་གནས་སྒྲིག་སྟངས་ཉར་ཚགས་བྱེད་དགོས།མི་རེ་རེ་ཚང་མས་གཤམ་དུ་རང་ཉིད་ཀྱི་PIN བརྗེ་དགོས། — བདག་པོས་མི་གཞན་གྱི་PIN བསྒྱུར་མི་ཐུབ།
+they_owe_us	ཁོང་ཚོས་ང་ཚོར་བུ་ལོན་ཡོད།
+unit_at_cap	ཚད་གཞི @
+units_help	རེའུ་མིག་རྣམ་གྲངས་ཀྱི་མཚོན་རྟགས་(ཀེ་ཇི་དང་། ཆ་ཤས། ཁུག་མ།) གཞི་གྲངས་རེ་རེ་བཞིན་ཐད་ཀར་ཡང་ན་གཞི་གྲངས་གཞན་བརྒྱུད་ནས་ཚད་གཞི་(kg · cm · ml · pc)ལ་མཐུད་དགོས། དཔེར་ན། 1 སྒམ་ = 2 སྒམ་ 1 = 20 cm. བསྒྱུར་བཅོས། 1 ནས་ = ཆ་རྐྱེན་བར། དངུལ་ལོར་ནི་ནམ་ཡང་ཚད་གཞི་མིན།
+we_owe_them	ང་ཚོས་ཁོང་ཚོར་བུ་ལོན་ཡོད།
+who_unlocking	སུས་སྒོ་ཕྱེ་གི་ཡོད་དམ།
+locked_word	སྒོ་བརྒྱབ་པ།
+show_pin	PIN སྟོན།
+hide_pin	PIN སྦས།
+set_owner_pin	ཆ་སྒྲིག་བདག་པོ། PIN
+enter_owner_passcode	བདག་པོའི་གསང་གྲངས་བླུགས།
+enter_staff_passcode	ལས་བྱེད་པའི་གསང་གྲངས་བླུགས།
+pin_count_zero	0 / 12 ཨང་ཀི། · ཉུང་མཐར་ཡང་4, དེ་ནས་འགྲིག་གམ།
+pin_count_need	{} / 12 ཨང་ཀི · དགོས་པ་ {} མང་།
+pin_count_full	12 / 12 ཨང་གྲངས། · OK མནན་དགོས།
+pin_count_ready	{} / 12 digits · གྲ་སྒྲིག་བྱས་རྗེས་ OK མནན་དགོས།
+pin_hint_choose	གྲངས་ཀ་4–12འདེམས། · ནང་འཇུག་ཡང་ན་ལྡེ་མིག་ཕྱེ་ནས་ཉར་ཚགས་བྱེད།
+pin_hint_new	གསར་པ། 4–12 བདག་པོ། PIN · ནང་འཇུག་ཡང་ན་ལྡེ་མིག་ཕྱེ་བ།
+pin_hint_shop_code	ཚོང་ཁང་གི་ཡོ་ཆས། · ཆ་སྒྲིག་ཨང་རྟགས། {}
+pin_hint_books	ཡོ་ཆས་འདིས་རྩིས་ཁྲ་འཛིན་ཐུབ།
+pin_hint_paired	ཆ་སྒྲིག་མ་བྱས་བར་ཁ་སྣོན། བཙོངས་ཆེད་དུ་ལྡེ་མིག་ཕྱེ།
+pin_hint_pair_first	ཁ་སྣོན། ཚོང་ཁང་གི་སྒྲིག་ཆས་དང་པོ་ཆ་སྒྲིག་བྱེད་དགོས།
+unlock_to_continue	མུ་མཐུད་དུ་སྒོ་ཕྱེ།
+no_staff_yet	ད་དུང་ལས་བྱེད་པ་མེད། བདག་པོའི་སྒོ་ཕྱེ་ནས་དེ་ནས་རུ་ཁག
+status_server_set_pin	ཞབས་ཞུའི་ཐབས་ལམ། བདག་པོ་སྒྲིག་དགོས། PIN
+status_server_tills	ཞབས་ཞུའི་ཐབས་ལམ། - འཕར་མ་མཉམ་ཞུགས་བྱེད་ཐུབ། ལྡེ་མིག་ཕྱེ་བ།
+status_server_unlock	ཞབས་ཞུའི་ཐབས་ལམ། བདག་པོ་ལྟར་ལྡེ་མིག་ཕྱེ།
+status_client_unlock	མཁོ་སྤྲོད་བྱེད་སྟངས། བཙོངས་པའི་ལྡེ་མིག་ཕྱེ།
+icon_new_selected	འདྲ་པར་: ཡིག་ཆ་གསར་བ་འདེམས་པ་ — ཚོང་རྟགས་ཉར་ཚགས་བྱེད་པ།
+icon_custom	འདྲ་སྐུ་: རང་མོས་ས་གནས་ཀྱི་རྟགས།
+icon_default	འདྲ་པར་: Kumkaj རྟགས། (སྔོན་སྒྲིག) — སྲོལ་རྒྱུན་ཞིག་འདེམས།
+logo_yours	ལས་རྟགས། ཁྱེད་ཀྱི་ཚོང་ཁང་གི་ལས་རྟགས། བརྙན་ཤེལ་དང་ཡོང་འབབ་སྟེང་དུ་སྟོན་ཡོད།
+logo_default	ལས་རྟགས། Kumkaj རྟགས། (སྔོན་སྒྲིག) — གལ་ཏེ་ཁྱེད་ལ་ཡོད་ན་རང་ཉིད་འདེམས།
+tmpl_current	ད་ལྟའི་: {} — {}
+tmpl_selected	བདམས་པ་: {} — {}
+setup_complete	སྒྲིག་ཆས་གྲུབ་ཟིན།
+onboard_fresh_tmpl	གསར་པ་ · {} — ཐོ་གཞུང་སྟོང་པར་འགོ་འཛུགས། དཀར་ཆག་དཀར་ཆག་རྣམ་གྲངས་ནང་དཀར་ཆག་རྣམ་གྲངས་ཁ་སྣོན་བྱས་རྗེས་གྲུབ་ཡོད།
+onboard_book_tmpl	རྩིས་ཁྲ། · {} — རེའུ་མིག་རྣམ་གྲངས་དང་ཁ་ཕྱེ་བའི་བུ་ལོན་ཁ་སྣོན་བྱེད་དགོས།
+onboard_template_tmpl	གལ་ཏེ་ཁྱེད་ལ་དགོས་ན་ས་ཆ་དེ་ལ་མིང་བཏགས་ནས་འགོ་འཛུགས་སྟངས་འདེམས།
+tmpl_blurb	མྱུར་སྐྱེལ་རྩིས་ཐོ་དང་སྔོན་མངག་སྟེགས་བུ། དངོས་ཟོག་སྐྱེལ་མཁན། སྐྱེལ་འདྲེན་བྱེད་མཁན། ཉིན་དེབ། AWB.
+tmpl_how	ཅོག་ཙེའི་སྟེང་གི་དཔེ་དེབ་འབོག་སྒྲིལ།དེ་རིང་གི་ཉིན་མོའི་དེབ་དེབ།གོང་ཚད་དང་། འདུ་ཚོགས། སྙན་ཞུ་བཅས་ཀྱི་ཤོག་བྱང་།
+trk_booked	སྔོན་མངག་བྱས་པ།
+trk_picked_up	Picked up
+trk_in_transit	སྐྱེལ་འདྲེན་བྱེད་རིང་།
+trk_delivered	རྩིས་སྤྲོད་བྱས་པ།
+trk_rto	Returning to sender
+lane_to_dispatch	To dispatch
+lane_with_carrier	With carrier
+lane_failed	ཕམ་ཁ།
+lane_done_today	དེ་རིང་འགྲུབ་སོང་།
+ops_board_help	Parcels by where they are in today's work. Tap parcels (or scan them) to pick them, then act on all picked at once — each lane offers only the moves that fit it.
+lane_empty	Nothing here right now.
+picked_fmt	{n} picked
+pick_all	Pick all
+bag_for_carrier	ལག་པས་སྐྱེལ་འདྲེན་ཡོ་བྱད་ལ་སྤྲོད་དགོས།
+send_with_rider	Send with rider
+out_again	Out again
+return_to_sender	Return to sender
+runs_bags_heading	Recent runs & bags
+print_word	Print
+bag_word	སྐྱེལ་འདྲེན་ཁུག་མ་
+run_word	Rider run
+parcels_fmt	{n} parcels
+parcel_history	History
+attempt_fmt	ཚོད་ལྟ་{n}
+pieces_short_fmt	{n} pcs
+note_reason_ph	Note or reason
+ops_pick_first	Pick parcels first — tap them or scan them
+cod_to_collect	རྩིས་སྤྲོད་བྱས་པ། — COD བསྡུ་ལེན་བྱེད་རྒྱུ།
+cod_on_road	COD ད་དུང་ལམ་དུ་ཡོད།
+cod_owed_consignors	བསྡུ་ལེན་བྱས་པ། དངོས་ཟོག་སྐྱེལ་མཁན་ལ་གླ་ཆ་སྤྲོད་དགོས།
+cod_rto_fees	RTO fees to collect
+cod_to_hand_in	COD རྩིས་སྤྲོད་བྱེད་རྒྱུ།
+parcel_one_fmt	{n} parcel
+facet_bank_title	སྙན་ཞུ།
+facet_bank_help	ཉིན་མོའི་རྩིས་ཁྲ་དང་། ཚོང་ཤག་ཡང་ན་མཁོ་སྤྲོད་བྱེད་མཁན་གྱི་རྒས་ཚད། དངུལ་ཁང་གི་ཡིག་ཚགས། དུས་ཡུན་གྱི་P&Lབཅས་ཡིན།
+facet_ops_title	དངོས་ཟོག་དང་སྐྱེལ་འདྲེན།
+facet_ops_help	Scan or type AWB → Find, then advance / print label / COD. Dispatch to rider or carrier.
+facet_cod_title	COD ཐོ་དེབ་
+facet_cod_help	རྩིས་སྤྲོད་བྱེད་སྐབས་རྩིས་ལེན་བྱས་རྗེས་མངགས་གཏོང་བྱེད་མཁན་ལ་གཏོང་སྤྲོད་བྱ་དགོས།
+facet_riders_title	Riders (own fleet)
+facet_riders_help	ཞོན་མཁན་ཁ་སྣོན་བྱས་ན། དེ་ནས་Opsནས་མངག་ཉོ་བྱས་པའི་AWBམངག་གཏོང་བྱེད་དགོས།
+against_bill_ph	གོང་གསལ་གྱི་ཁྲིམས་འཆར་ལ་ངོ་རྒོལ། (འདམ་ཀ)
+aliases_ph	མིང་གཞན། — མིང་གཞན། ཚེག་དབྱེ་བ།
+amount_blank_full_ph	དངུལ་འབོར་ (སྟོང་ཆ་ = ལྷག་མ་ཆ་ཚང་)
+amount_owed_ph	བུ་ལོན་གྱི་དངུལ་འབོར།
+amount_ph	དངུལ་འབོར།
+amount_received_ph	དངུལ་འབོར།
+amount_we_pay_ph	ང་ཚོས་སྤྲོད་པའི་དངུལ་འབོར།
+awb_scan_ph	AWB / ཞིབ་ལྟ་བྱས་པའི་barcode
+bulk_csv_ph	CSVའབོར་ཆེན་—དམིགས་ཡུལ། དངོས་ཟོག་ལེན་མཁན། སྤྱི་རྒྱ་དང་cod_paise མཆན་འགྲེལ། མཆན་འགྲེལ།
+business_name_ph	ཁེ་ལས་ཀྱི་མིང་།
+category_new_ph	དབྱེ་ཁག (འདམ་ཀ། གསར་པ་ཡིན་ན་གསར་བཟོ་བྱས་ཡོད།)
+cod_amount_ph	COD གྲངས་འབོར།
+code_bag_ph	གསང་གྲངས་(ཁུག་མ།)
+conv_factor_ph	ཆ་རྐྱེན་(25=ཁུག་མ་1→ཀེ་ཇི་25)
+country_code_ph	རྒྱལ་ཁབ་ཀྱི་ཨང་རྟགས། དཔེར་ན། IN, GB, US, AE, BR
+credit_khata_amount_ph	བུ་ལོན་ / བུ་ལོན་རྩིས་ཁྲའི་དངུལ་འབོར།
+credit_limit_ph	བུ་ལོན་ཚད་གཞི། (༠ = མེད།)
+dim_unit_code_ph	རྒྱ་ཁྱོན་ཚན་པའི་ཨང་རྟགས། (cm)
+divisor_ph	Volumetric divisor (5000)
+extra_per_kg_ph	ལྷག་མ་/kg
+first_amount_ph	དངུལ་གྲངས་དང་པོ
+first_kg_ph	སྤྱི་རྒྱ་དང་པོ། (པང་ལེབ་)
+from_code_ph	གསང་གྲངས་(ཁུག་མ)ནས།
+item_name_lang_ph	དཀར་ཆག་དཀར་ཆག་རྣམ་གྲངས་ཀྱི་མིང་། ཁྱེད་རང་གི་སྐད་ཡིག་ནང་ཡིག་འཇུག་བྱོས།
+login_id_opt_ph	སྤྱོད་མཁན་གྱི་མིང་། (དགོས་མཁོ། ཐུན་མོང་མ་ཡིན་པ།)
+manager_pin_ph	དོ་དམ་པ་PIN ཆོག་མཆན་སྤྲོད་དགོས། (ཁྱོད་ཀྱིས་སྟོང་ཆ་བཟོ་མི་ཐུབ་ན་རྐྱངམ་གཅིག་)
+new_branch_name_ph	ཡན་ལག་མིང་གསར་པ།
+new_password_ph	གསང་གྲངས་གསར་བ། (འདམ་ཀ།)
+new_pin_ph	གསར་པ།PIN (ཨང་གྲངས་4–12)
+note_bank_ph	དྲན་ཐོ། (དངུལ་བཅོལ་དང་། ཕྱིར་འཐེན། ...)
+note_buy_expense_ph	དྲན་ཐོ། (སྣུམ་དང་། ཁང་གླ། ...)
+note_expense_ph	དྲན་ཐོ། (སྣུམ་དང་། ཡིག་ཚང་། ...)
+notify_phone_ph	Notify phone (WhatsApp/SMS hook)
+options_moklanjo_ph	Options (optional) — Large=20, Gift wrap=10
+part_second_way_ph	ཐབས་ལམ་གཉིས་པ་བརྒྱུད་ནས་ཆ་ཤས། (འདམ་ཀ)
+phone_ph	ཁ་པར།
+address_ph	ཁ་བྱང་
+party_custom_fields_heading	རང་གཤིས་ཀྱི་ས་ཁོངས། (བདམས་པའི་ཕྱོགས་)
+party_custom_help	འདུ་ཚོགས་འདིའི་སྟེང་ཤོག་བྱང་དང་རིན་ཐང་གང་རུང་ཁ་སྣོན་བྱས་ཡོད་དེ། WhatsApp, GSTIN, ལམ་ཐིག་ཨང་རྟགས། ...
+party_custom_key_ph	ཁྱབ་ཁོངས་ཀྱི་མིང་། (དཔེར་ན་WhatsApp)
+party_custom_value_ph	Value
+party_custom_add	ཁྱབ་ཁོངས་ཁ་སྣོན་བྱས་པ།
+party_custom_remove	Remove field
+party_custom_empty	ད་དུང་རང་ལུགས་ཀྱི་ཁྱབ་ཁོངས་མེད།
+party_custom_pick_first	Pick a party to add custom fields
+place_name_ph	གནས་འདིའི་མིང་།
+price_ph	རིན་གོང་།
+qty_example_ph	གྲངས་འབོར་(དཔེར་ན། ཀེ་ཇི་ལ་1.5)
+quantity_ph	གྲངས་ཚད།
+reason_required_ph	རྒྱུ་མཚན།
+role_title_ph	འགན་འཁུར་གྱི་མིང་། (དཔེར་ན། བཱ་རི་སི་ཊ།)
+service_pct_ph	ཞབས་ཞུ་%གདམ་ག 0/10/12
+short_code_ph	ཨང་རྟགས་ཐུང་ངུ། (MG02)
+slab_kg_ph	སྤྱི་རྒྱ་(0.5)
+staff_name_ph	Staff name / id
+starting_password_ph	འགོ་འཛུགས་གསང་གྲངས་ (འདམ་ཀ)
+starting_pin_ph	འགོ་འཛུགས་ PIN (ཨང་གྲངས་4–12)
+tax_rate_ph	ཁྲལ་འབབ་ཀྱི་མིང་ཡང་ན་% —ཚད་གཞི། ཉུང་དུ་བཏང་བ། 0, 5, 12, 18, 20
+to_code_ph	གསང་གྲངས་(kg)
+uncleared_no_ph	གསལ་མེད་ # གོང་།
+unit_cost_ph	ཚད་གཞིའི་རིན་གོང་།
+unit_kg_blank_ph	Unit (kg or blank)
+unit_name_bag_ph	མིང་།(ཁུག་མ།)
+weight_unit_code_ph	Weight unit code (kg)
+zone_name_ph	Zone name
+pay_credit	རྩིས་ཐོའི་ཐོག་ལ།
+book_kind_today	དེ་རིང་རྩིས་ཁྲ།
+book_kind_month	ཟླ་འདིའི་རྩིས་ཁྲ།
+book_kind_aging	དངུལ་བུན་ལྷག་མ། བུ་ལོན།
+book_kind_balance	རྩིས་ཁྲ།
+ops_desk_help	Scan AWB with a USB barcode scanner (or type it) → Find. Then advance, print label, or collect COD. Labels print Code 128.
+role_help_consignor	Role: Consignor — AR (they owe us). Same firm can also be Carrier.
+role_help_carrier	Role: Carrier — AP (we owe them). Same firm can also be Consignor.
+role_help_both	Roles: Consignor + Carrier — one party, AR and AP ledgers, net in Reports.
+role_help_supplier	Role: Supplier — AP for purchases.
+lane_declared_label	རྩིས་ཐོ་སྔོན་མངག་བྱས་པ།
+lane_owner_label	དངུལ་སྨར་སྔོན་མངག་བྱས་པ།
+money_lane_bill	བིལ་: {lane}

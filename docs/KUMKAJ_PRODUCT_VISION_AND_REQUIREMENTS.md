@@ -1100,38 +1100,38 @@ the seller remains responsible for their own filings.
 The same “first market, not only market” rule applies to **language**.
 Every Kumkaj app ships its static interface — labels, headings,
 buttons, placeholders, hints, help text, the setup and lock screens —
-fully translated in **29 languages**: English, हिन्दी (Hindi), বাংলা
-(Bengali), తెలుగు (Telugu), मराठी (Marathi), தமிழ் (Tamil), اردو
-(Urdu), ગુજરાતી (Gujarati), ಕನ್ನಡ (Kannada), മലയാളം (Malayalam),
-ଓଡ଼ିଆ (Odia), ਪੰਜਾਬੀ (Punjabi), অসমীয়া (Assamese), Español,
-Français, Português, Deutsch, العربية (Arabic), 中文 (Chinese),
-日本語 (Japanese), 한국어 (Korean), Русский (Russian), Bahasa
-Indonesia, Türkçe, Tiếng Việt, ไทย (Thai), Italiano, Nederlands and
-Kiswahili. On first launch an app follows the device language; after
-that the per-device choice made on the setup screen wins. What an
-owner types — item names, party names, the shop’s own name — is
-always shown exactly as typed, in every language. Text the store
-generates (receipt lines, day-book composition, action results) is
-data output, not interface chrome, and is localised separately if
-ever.
+fully translated for **every language in that app’s catalogue**
+(`LANGUAGES` in `src/locale.rs`): English, India’s scheduled and
+widely used languages (Hindi, Bengali, Telugu, Marathi, Tamil, Urdu,
+Gujarati, Kannada, Malayalam, Odia, Punjabi, Assamese, Maithili,
+Sanskrit, Kashmiri, Nepali, Sindhi, Konkani, Dogri, Manipuri,
+Santali, Bodo, plus Bhojpuri, Awadhi, Magahi, Chhattisgarhi,
+Rajasthani, Tulu, Kokborok, Mizo, Khasi, Goan Konkani, Tibetan),
+South Asian neighbours, and a worldwide set (Chinese, Japanese,
+Korean, Arabic, Hebrew, major European / African / American
+languages, and more — about **110 picker entries**). On first launch
+an app follows the device language; after that the per-device choice
+wins. What an owner types — item names, party names, the shop’s own
+name — is always shown exactly as typed. Generated books text
+(receipt lines, day-book composition) is data, not chrome.
 
-Each app owns its dictionary in its own `src/locale.rs` +
-`src/locale_chrome.rs` (copy-then-diverge, §1–2 — there is no shared
-Kumkaj core to translate once). A test in every app
-(`shipped_languages_translate_chrome`) fails if any static string
-would fall back to English in any of the 29 languages, so a new label
-must land with all of its translations. The language-picker catalogue
-is wider (~110 languages, also used to match device locales); entries
-beyond the 29 currently show the English interface and gain
-translations over time — the 29 above are the supported set.
+Each app owns its dictionary in its own `src/locale.rs` plus
+`translations/<code>.tsv` packs (copy-then-diverge, §1–2 — there is
+no shared Kumkaj core to translate once). `en()` is the English
+source; every other catalogue language has a full TSV. A test in
+every app (`every_catalogue_language_translates_every_key`) and the
+packaging gate (`scripts/check-ui-translations.sh` via
+`load_kumkaj_env`) fail if any static string is missing in any pack,
+so a **new label must land with all of its translations** (scaffold +
+fill — see `docs/DEV.md` § Languages). Aliases such as Portuguese
+(Brazil) and Cantonese read another pack’s table.
 
-Right-to-left languages (العربية, اردو today; فارسی, עברית and
-friends as their translations land) get real RTL rendering: Makepad
-shapes the script and runs the Unicode bidirectional algorithm, and
-each app right-aligns its static text and input fields while such a
-language is active, restoring the exact designed alignment when
-switching back to a left-to-right language. The window layout itself
-(navigation column, card order) is deliberately not mirrored.
+Right-to-left languages (Arabic, Urdu, Persian, Hebrew, Dhivehi,
+Pashto, Sindhi, Kashmiri, …) get real RTL rendering: Makepad shapes
+the script and runs the Unicode bidirectional algorithm, and each app
+right-aligns its static text and input fields while such a language
+is active, restoring the designed alignment when switching back to
+LTR. The window layout itself is deliberately not mirrored.
 
 ------------------------------------------------------------------------
 

@@ -1,0 +1,835 @@
+# Rajasthani — राजस्थानी (raj). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	कूरियर एजेंसी री किताब + बुकिंग डेस्क। मुफ्त ऑफलाइन।
+unlock	ताळो खोलो
+pin_hint	मालिक PIN 0000 सूं शुरू होवै है
+sell	बुकिंग
+buy	भुगतान
+books	दिन री किताब
+books_help	आज री स्थिति। बुकिंग = पार्सल अंदर। भुगतान = कैरियर बिल अर खर्च। पार्टी = भेजण वाळा अर कैरियर।
+buy_help	खर्च वाउचर अर कैरियर बिल (पैसा बारै)। खाते माथै रैवण वाळो पार्टी खाते में रैवै है।
+sell_money_in	पार्सल बुक करो
+buy_money_out	खर्च / कैरियर बिल
+record_purchase	रिकॉर्ड खरीद
+add_expense	व्यय वाउचर
+bank_book	बैंक बुक
+credit_help	पार्टी आईडी अनोखी है (नांव दुबारा आ सकै है)। भूमिका: भेजण वाळो (AR), कैरियर (AP), या ईडी आईडी माथै दोनूं। खाता अलग रैवै है; रिपोर्ट में निवल दिखै है।
+party_kind_ph	कस्टम भूमिका (वैकल्पिक) — या ऊपर री चिप दबाओ
+parties_list_heading	बचाई पार्टी
+reports_help	डे बुक, ऋणी अर लेनदार, बैंक बुक, व्यय वाउचर, लाभ अर हानि।
+reports_today	दिन री किताब (आज)
+reports_month	नफा अर हानि (महीनो)
+reports_aging	बकाया / डेबिट-क्रेडिट
+reports_balance_sheet	तुलन पत्र
+reports	बैंक बुक अर पी एंड एल
+refresh	ताजा करो
+undo	पूर्ववत करो
+start_tracking	ट्रैकिंग शुरू करो
+stock_minus	− स्टॉक
+stock_plus	+ स्टॉक
+settle_cash	नकद निपटान करो
+settle_card	कार्ड निपटान
+items	दर अर सेवा
+nav_items	दर
+more	और
+your_items	थारा दर
+items_help	हर पंक्ति एक दर है (जियां Surface Zone A)। इकाई आमतौर पर kg हुवै है। संपादन रै वास्तै दबाओ।
+add_item	दर जोड़ो
+new_item	नवो दर
+adding_item	नवो दर जोड़ रिया है
+editing_item	संपादन
+save	बचाओ
+remove	हटाओ
+empty_catalog	अजै तांई दर कोनी। दर अर सेवा खोलो, एक जोड़ो (नांव + मोल, इकाई kg), फेर बुकिंग।
+counter_sale	काउंटर बुकिंग
+total	कुल
+cash	नकद
+upi	UPI
+card	कार्ड
+credit	ग्राहक अर आपूर्तिकर्ता
+clear	साफ करो
+ready_to_sell	बुकिंग करण नै त्यार
+today_prefix	आज
+today_mid	आज
+owed	बकाया
+round_word	गोल
+back	पाछो
+sold_out	अनुपलब्ध छै
+restock	फेरूं स्टॉक करो
+not_tracked	ट्रैक कोनी करियो गयो
+in_stock	स्टॉक मांय
+marked_sold_out	चिन्हित अनुपलब्ध
+add_upper	जोड़ो
+na	N/A
+qty	वजन/मात्रा
+unit_at	रेट करो @
+actual	वास्तविक
+applied	लागू करियो
+note_ph	नोट (वैकल्पिक)
+rounded	गोल
+split	विभाजन
+counter	काउंटर
+parcel	पार्सल
+order	ऑर्डर
+sales	बुकिंग
+sales_refunds	बुकिंग अर वापसी
+day_close	दिन बंद
+reports_expenses	बैंक बुक अर पी एंड एल
+nav_reports	रिपोर्ट
+nav_settings	सेटिंग्स
+nav_lock	ताळो
+sidebar_settings	साइडबार सेटिंग
+sidebar_settings_help	साइड रेल रै समान ही आइकन। फेर सूं क्रमबद्ध करण रै वास्तै एक पंक्ति नै खींचो। दिखाबा या छुपाबा रै वास्तै स्विच नै पलट दो। सेटिंग्स अर लॉक हमेशा बार माथै रैवै है।
+sidebar_always_on_short	हमेशा चालू रैवेला
+sidebar_back_settings	पाछो
+sidebar_shown	दिखायो गयो
+sidebar_hidden	छुपायोड़ो
+sidebar_always_on	हमेशा बार माथै
+sidebar_shown_hint	साइड रेल / नीचै रै टैब माथै दिखायो गयो है
+sidebar_hidden_hint	बार सूं छुप्योड़ो
+sidebar_menu_items	मेनू अर आइटम
+sidebar_enable_all	सगळा नै सक्षम करो
+sidebar_disable_all	सगळा नै अक्षम करो
+sidebar_order_saved	साइडबार रो आदेश बचायो गयो
+sidebar_visibility_saved	साइडबार री दृश्यता बचाई गई
+amounts_hide	छुपाओ
+amounts_show	दिखाओ
+no_sale_yet	अबार तांई कोई बिक्री कोनी
+favorites	मनपसंद
+favorites_help	वां चीजां नै थै घणी बार बेचो हो, जिणनै थै आपरै लॉगिन रै वास्तै बचा राखी है। बिल मांय एक जोड़ो, या नीचै दीरीजी सगळी चीजां सूं आपरी सूची बणाओ।
+your_favorites	थारा पसंदीदा
+all_items	सगळी चीजां
+no_favorites	अबार तांई कोई पसंदीदा कोनी है — नीचै दीरीजी सूची मांय सूं चीजां जोड़ो।
+add_to_bill	बिल मांय जोड़ो
+added	जोड़ दियो गयो
+owes_word	ऋण
+selected_word	चुण्यो गयो
+chip_clear_credit	साफ करो — क्रेडिट लेवो या अग्रिम लेवो
+chip_missing_customer	चुणियोड़ो ग्राहक गायब है — फेरूं उठाओ
+chip_no_customer	अबार तांई कोई ग्राहक कोनी — एक नाम टाइप करो, फेर क्रेडिट माथै टैप करो
+credit_summary_fmt	{} ग्राहक · खुला क्रेडिट {} · अग्रिम राख्या {}
+recent_label	हाल ही रो:
+inventory	इन्वेंट्री
+inventory_stock	इन्वेंट्री अर स्टॉक
+branches	शाखावां
+branches_org	शाखावां अर संगठन
+credit_customers	पार्टी (देनदार अर लेनदार)
+customer_name_ph	ग्राहक या आपूर्तिकर्ता रो नाम
+new_customer_ph	नयो ग्राहक या आपूर्तिकर्ता रो नाम
+item_name_ph	दर रो नांव (जियां Surface Zone A)
+item_price_ph	प्रति kg / पेहलो स्लैब
+start_template	उत्पाद
+next_booking	आगलो बुकिंग
+destination_ph	मंजिल शहर / जोन
+consignee_ph	लेण वाळा रो नांव
+consignee_phone_ph	लेण वाळा रो फोन
+consignee_address_ph	डिलीवरी रो पतो
+origin_name_ph	भेजण वाळा रो नांव
+origin_phone_ph	भेजण वाळा रो फोन
+origin_address_ph	पिकअप / मूल पतो
+booking_consignor_heading	भेजण वाळो (ग्राहक / प्रेषक)
+booking_consignee_heading	लेण वाळो (रिसीवर)
+booking_consignor_hint	भरण रै वास्तै पार्टी चुनो, या वॉक-इन रै वास्तै खाली छोड़ो। घरां सूं पिकअप अर RTO रै वास्तै जरूरी है।
+booking_consignee_hint	पार्सल लेण वाळो। काउंटर माथै सीधे छोड़्या रै वास्तै खाली छोड़ो।
+weight_kg_ph	खरो kg
+length_cm_ph	लंबाई cm
+breadth_cm_ph	चौड़ाई cm
+height_cm_ph	ऊंचाई cm
+chargeable_kg	चार्जेबल kg
+awb_label	AWB
+booking_help	भेजण वाळो + लेण वाळो (खाली चालै है) → मंजिल → तौल → दर चुनो → खातो/नकद → भुगतान। AWB रसीद माथै छपै है। आगलो बुकिंग डेस्क साफ करै है। गोल लागू रै बराबर शुरू हुवै है — बिल गोल करण रै वास्तै ही संपादित करो।
+cart_empty_hint	डेस्क खाली — भेजण/लेण वाळो वैकल्पिक, मंजिल अर वजन भरो, दर माथै ADD दबाओ, फेर भुगतान करो।
+team	टीम
+team_pins	टीम अर PINs
+my_pin_settings	म्हारो PIN
+settings_hub_help_my_pin	इण डिवाइस माथै साइन इन करियोड़ा मिनख रै वास्तै अनलॉक PIN नै बदलो।
+team_self_help	अपन अनलॉक PIN (अर वैकल्पिक लॉगिन पासवर्ड) सिरफ थै बदल सको। अलग स्क्रीन या अधिकार चाही होवै तो मालिक नै कहो।
+backup_settings	बैकअप अर सेटिंग्स
+lock_app	ऐप नै लॉक करो
+pick	चुणो
+select	चुणो
+advance	अग्रिम
+owner	मालिक
+staff	कर्मचारी
+photo	फोटू
+auto	ऑटो
+prev	पैली
+next	आगलो
+ok	ठीक छै
+this_shop	सर्वर मोड
+extra_till	ग्राहक मोड
+off	बंद
+server	सर्वर मोड
+client	ग्राहक मोड
+language_currency	भाषा अर मुद्रा
+language	भाषा
+choose_language	आपणी भाषा चुणो
+language_setup_hint	इण उपकरण री भाषा रो पालन करो, या खुद कोई एक चुणो।
+lang_follow_platform	उपकरण री भाषा
+lang_pick_user	भाषा चुणो
+lang_platform_now	अबै डिवाइस री भाषा
+selected_language	चुण्यो गयो
+continue	जारी राखो
+this_device	यो उपकरण
+device_use_q	इण उपकरण रो उपयोग कियां कर्यो जावेला?
+last_server_mode	सर्वर हो — जारी राखण रै वास्तै टैप करो
+last_client_mode	ग्राहक हो — जारी राखण रै वास्तै टैप करो
+choose_server	एक सर्वर चुणो
+choose_server_hint	कोई मौजूदा सर्वर खोलो, या फेर दूजा कारोबार रै वास्तै बणाओ।
+create_new_server	नयो सर्वर बणाओ
+open_server	खोलो
+new_server_name_ph	नयो सर्वर नाम (वैकल्पिक)
+server_remove_pin_ph	मालिक PIN एक सर्वर नै हटाबा रै वास्तै
+only_owner_remove_server	सर्वर नै फगत मालिक ई हटा सकै है
+owner_pin_remove_server	इण सर्वर नै हटाबा रै वास्तै मालिक PIN री जरूरत है
+device_setup_help	सर्वर अठै किताबां राखै है। क्लाइंट एक सर्वर रै साथै जोड़ै है।
+currency	मुद्रा
+backup	बैकअप
+settings_sec_diag	निदान
+settings_hub_help	एक बार मांय एक क्षेत्र नै खोलो — कम स्क्रॉलिंग, साफ विकल्प।
+settings_sec_devices	दूजा उपकरण
+settings_sec_alerts	चेतावनी
+alerts_help	थारै वास्तै स्टेटस मैसेज स्क्रीन माथै कितरो टेम रैवैला (यो लॉगिन)।
+snack_secs_ph	सेकंड (3-60, डिफ़ॉल्ट 10)
+snack_secs_save	चेतावनी रो बगत बचाओ
+snack_secs_saved	चेतावनी रो बगत बचग्यो — {n} सेकंड
+snack_secs_bad	सेकंड अंक में लिखो (3–60)
+cancelled	रद्द कर दियो गयो
+cancel	रद्द करो
+opening_client	क्लाइंट खोल रियो है...
+preparing_desk	डेस्क तैयार कर री है...
+opening_server	सर्वर खोल रियो है...
+creating_server	सर्वर बणा रिया हां...
+diag_privacy_help	लॉग इण डिवाइस माथै रैवै है। राज (PIN, पासवर्ड) कदैई संग्रहीत कोनी हुवै। डिवाइस सूं पैकेज साझा करण रै वास्तै हर बार आपरी स्पष्ट मंजूरी री जरूरत हुया करै है - कदैई नीं बेची जावै अर नीं ई तीजे पक्ष नै दी जावै।
+diag_level	विस्तार रो स्तर
+diag_level_error	त्रुटियां
+diag_level_warn	चेतावनी
+diag_level_info	जाणकारी
+diag_level_debug	डीबग
+diag_support_start	मिनट रो समर्थन सत्र शुरू करो
+diag_support_stop	समर्थन सत्र समाप्त करो
+diag_support_started	सत्र रो समर्थन — 30 मिनट तांई डीबग विवरण
+diag_support_ended	समर्थन सत्र समाप्त होग्यो
+diag_export_local	स्थानीय प्रति निर्यात करो
+diag_export_local_done	स्थानीय निदान {path} माथै तैयार है — एक प्रति नै कठै सेव करणो है, इणनै चुणो
+diag_approve_send	इण डिवाइस नै साझा करण री मंजूरी देवो
+diag_send_heading	इण उपकरण नै साझा करो
+diag_send_help	मंजूरी एक पैकेज है, फेर समाप्त हो जावै है। अस्थाई — उत्पाद नै ठीक करण या सुधारबा रै वास्तै ही काम में लीजै है। तीजा पक्षां रै सागै साझा कोनी करियो गयो। Linux, Windows, macOS अर Android माथै काम करै है।
+optional_login_heading	वैकल्पिक लॉगिन
+rights_heading	अधिकार
+booking_scope_heading	घरेलू / अंतरराष्ट्रीय
+diag_send_approved	एक पैकेज रै वास्तै शेयर मंजूर (जल्द ही समाप्त हो जावैला)
+diag_export_send	शेयर पैकेज बणाओ (मंजूरी री जरूरत है)
+diag_export_send_done	शेयर पैकेज {path} माथै तैयार है — कठै सेव करणो है, इणनै चुणो, फेर फगत Kumkaj सपोर्ट माथै भेजो
+diag_save_bundle	निदान प्रतिलिपि बचाओ
+diag_bundle_saved	निदान प्रतिलिपि {path} माथै सहेजी गई
+diag_bundle_failed	डायग्नोस्टिक्स कॉपी नै सेव कोनी कर सक्यो — फेरूं कोशिश करो
+diag_clear	नैदानिक लॉग नै साफ़ करो
+diag_cleared	नैदानिक लॉग साफ़ कर दिया गया
+use	प्रयोग करो
+add_branch	शाखा जोड़ो
+add_conversion	रूपांतरण जोड़ो
+add_item_plain	वस्तु जोड़ो
+add_note	नोट जोड़ो
+add_opening_balance	ओपनिंग बैलेंस जोड़ो
+add_rider	राइडर जोड़ो
+add_staff	कर्मचारी जोड़ो
+add_unit	इकाई जोड़ो
+add_use_name	इण नाम नै जोड़ो/प्रयोग करो
+allow_extra_tills	अतिरिक्त टिल री अनुमति देवो
+amend	संशोधन करो
+apply_country_pack	देस पैक लगाओ
+datetime_appearance	तारीख अर बगत री उपस्थिति
+datetime_appearance_help	किताब अंदर साल-पेहलो RFC3339 राखै है। आ सिरफ रसीद, लेबल, रिपोर्ट अर स्क्रीन माथै तारीख अर घड़ी रो रूप बदलै है।
+datetime_example	अबार रो उदाहरण: {ex}
+date_order	तारीख रो क्रम
+date_order_dmy	D/M/Y
+date_order_mdy	M/D/Y
+date_order_ymd	Y-M-D
+time_format	घड़ी
+time_format_24h	24-घंटा
+time_format_12h	12-घंटा
+attach_bill_photo	बिल री फोटू संलग्न करो
+attach_pdf	संलग्न करो PDF
+attach_photo	फोटू संलग्न करो
+bank	बैंक
+bank_in	बैंक रै मांय
+bank_out	बैंक आउट
+bank_to_till	बैंक → तांई
+till_to_bank	→ बैंक तांई
+mark_cleared	निशान साफ़ होग्यो
+unmark	चिन्ह हटाओ
+role_both	दोनूं
+role_carrier	कैरियर
+role_cashier	कैशियर
+role_consignor	भेजण वाळो
+role_manager	प्रबंधक
+role_supplier	आपूर्तिकर्ता
+branch_name_sell_ph	बेचबा तांई शाखा रो नांव
+bring_my_book	म्हारी किताब ल्याओ
+business_tax_id_ph	व्यापार कर आईडी
+card_amount_ph	कार्ड री रकम
+cash_amount_ph	नकद राशि
+upi_amount_ph	UPI रकम
+carrier_cost_ph	कैरियर लागत
+carrier_party_ph	कैरियर पार्टी
+choose_icon	आइकन चुणो
+choose_logo	लोगो चुणो
+choose_receipt_stamp	रसीद स्टैम्प चुनो
+choose_payment_qr	भुगतान क्यूआर चुणो
+clear_icon	चिन्ह साफ़ करो
+clear_logo	लोगो हटाओ
+clear_photo	साफ फोटू
+clear_stamp	साफ मोहर
+clear_payment_qr	भुगतान क्यूआर साफ करो
+print_faces	छपाई रो रूप (रसीद / अवधि बिल)
+print_faces_help	बुकिंग रसीद अर अवधि बिल माथै थारे लोगो कनै वैकल्पिक मुहर अर भुगतान QR।
+awb_pools_heading	कैरियर AWB नंबर पूल
+add_awb_pool	AWB पूल जोड़ो
+awb_pool_carrier_ph	कैरियर पार्टी रो नांव
+awb_pool_start_ph	शुरू नंबर
+awb_pool_end_ph	आखरी नंबर
+awb_pool_prefix_ph	उपसर्ग (वैकल्पिक)
+awb_pool_label_ph	लेबल (वैकल्पिक)
+pieces_ph	नग (खाली = 1) — कार्गो / कई नग रै वास्तै खोलो
+bulk_awbs_ph	बल्क AWB — एक साथ स्थिति आगे बढ़ावण रै वास्तै कई चिपकाओ (नवी पंक्ति या कॉमा)
+tds_cut_ph	TDS कटौती (वैकल्पिक)
+discount_ph	छूट (वैकल्पिक)
+cheque_no_ph	चेक नंबर (वैकल्पिक)
+bill_reminder_chase	बिल याद सूची
+month_mix_report	महिनो मिक्स रिपोर्ट
+copy_month_gst_csv	महिना GST CSV कॉपी करो
+domestic	घरेलू
+international	अंतरराष्ट्रीय
+pick_logo	लोगो चुनो
+booking_scope_hint_domestic	आयतन ÷5000 (घरेलू) — हवा रै ÷6000 रै वास्तै अंतरराष्ट्रीय दबाओ
+booking_scope_hint_intl	आयतन ÷6000 (अंतरराष्ट्रीय हवा) — दुकान रै ÷5000 रै वास्तै घरेलू दबाओ
+cod_register	COD रजिस्टर
+collect_cod	COD वसूलो (AWB)
+consignments_dispatch	खेप अर डिस्पैच
+consignor_party_ph	भेजण वाळो / पार्टी रो नांव
+copy_day_book_csv	प्रतिलिपि दिवस री किताब CSV
+copy_day_close	प्रतिलिपि दिवस बंद
+copy_items_csv	वस्तुवां री प्रतिलिपि CSV
+copy_outstanding_csv	बकाया री प्रतिलिपि CSV
+copy_parties_csv	ग्राहक अर आपूर्तिकर्ताओं री नकल करो CSV
+copy_party_ledger_csv	ग्राहक खाता बही री प्रतिलिपि CSV
+copy_receipt	रसीद री प्रतिलिपि
+copy_report	रिपोर्ट री प्रतिलिपि
+counted_cash_ph	दराज रै मांय नकदी गिणी
+counter_agency_ph	काउंटर / एजेंसी रो नांव (वैकल्पिक)
+create_backup	बैकअप बणाओ
+day_close_summary	दिन रो समापन रो सारांश
+delete_party	चुणियोड़ा ग्राहक या आपूर्तिकर्ता नै हटाओ
+dispatch_to_rider	बुक कियो → राइडर
+docket_charge_ph	डॉकेट शुल्क
+declared_value_ph	घोषित मोल
+contents_ph	सामान
+eway_ph	ई-वे बिल नंबर
+insurance_label	बीमा
+yes_label	हाँ
+no_label	ना
+print_route_label	छपाई रो मार्ग
+new_party_kind_label	नवी पार्टी रो प्रकार
+done_open_books	होग्यो — किताबां खोलो
+export_day	निर्यात रो दिन
+extra_note_expense_ph	लारला खर्चा माथै अतिरिक्त नोट
+extra_note_awb_ph	आ AWB / बिक्री माथै अतिरिक्त नोट
+failed_delivery	डिलीवरी असफल
+find_scan_awb	AWB खोजो / स्कैन करो
+forget_shop	इण दुकान नै भूल जावो
+fuel_ph	ईंधन
+handover_carrier	बुक कियो देवो → कैरियर
+import_day	आयात रो दिन
+import_items_csv	आइटम / दर CSV इम्पोर्ट…
+import_parties_csv	आयात ग्राहक अर आपूर्तिकर्ता CSV...
+import_pincodes_csv	पिनकोड CSV इम्पोर्ट…
+import_carrier_bill_csv	कैरियर बिल CSV इम्पोर्ट…
+copy_carrier_bill_report	आखरी कैरियर बिल रिपोर्ट कॉपी करो
+use_carrier_cost	कैरियर लागत लगाओ
+rate_carrier_ph	कैरियर (खाली = म्हारो बिक्री दर)
+rate_party_ph	पार्टी (खाली = सगळा ग्राहक)
+carrier_pick_ph	लागत रै वास्तै कैरियर (तुलना सूं)
+item_name	वस्तु रो नांव
+load_bulk_row	बल्क पंक्ति लोड → डेस्क
+login_id_ph	उपयोगकर्ता नाम
+mark_delivered	डिलीवर चिह्नित करो
+manifest_cod_total	COD कुल
+manifest_received_by	लेण वाळो
+manifest_sign	दस्तखत
+ndr_address_wrong	पतो गलत
+ndr_customer_unavailable	अनुपलब्ध छै
+ndr_door_locked	दरवाजो बंद
+ndr_other	और
+ndr_refused	मना कियो
+out_for_delivery	डिलीवरी रै वास्तै बारै
+print_drs	DRS छापो
+print_run_sheet	रन शीट छापो
+reattempt	फेर कोशिश
+rider_cod_handed_ph	सौंपियो COD
+settle_rider_cod	राइडर COD निपटाओ
+mode_desk	डेस्क
+mode_rider	राइडर
+waiting_office	ऑफिस पहुँचण री बाट
+capture_signature	दस्तखत ल्यो
+incoming_manifest	आवण वाळो मनिफेस्ट
+pickup_request	पिकअप विनती
+pickup_run	पिकअप फेरी
+auto_assign_area	क्षेत्र आपो आप नियुक्त
+reorder_stops	ठहराव रो क्रम बदलो
+settle_rider_pay	राइडर वेतन निपटाओ
+vehicle_inspect	वाहन जाँच
+print_docket	डॉकेट छापो
+franchise_statement	फ्रैंचाइज़ विवरण
+tally_export	Tally वाउचर निर्यात
+open_whatsapp	WhatsApp खोलो
+copy_sms	SMS पाठ कॉपी करो
+pick_barcode_image	स्कैन रै वास्तै फोटो चुनो
+share_receipt_whatsapp	रसीद WhatsApp माथै भेजो
+delivery_feedback	डिलीवरी री राय
+lan_self_book	LAN आपरी बुकिंग
+new_party_clear	नयो ग्राहक या आपूर्तिकर्ता (साफ रूप)
+new_party_kind_ph	नवी पार्टी रो प्रकार (सप्लायर / कैरियर)
+next_country	आगलो देश
+prev_country	पिछला देश
+note_gstin_ph	नोट / GSTIN / समझौता री याद दिरावै है
+note_pod_ph	नोट / POD (वैकल्पिक)
+on_account_ap	खाता माथै (एपी)
+org_optional_ph	संगठन (वैकल्पिक)
+paid_now	अबार भुगतान कर दियो
+pairing_code_ph	जोड़ी कोड
+pair_now	अबार जोड़ो
+party_name_selected_ph	ग्राहक या आपूर्तिकर्ता रो नाम (या चुणियोड़ो उपयोग)
+password_ph	पासवर्ड
+pay_ap_card	एपी कार्ड रो भुगतान करो
+pay_ap_cash	एपी नै नकद भुगतान करो
+pay_ap_upi	एपी UPI चुकाओ
+period_bill	अवधि बिल
+period_bill_party	अवधि बिल (पार्टी)
+pick_pod_photo	POD फोटो चुनो
+print_awb_label	AWB लेबल छापो
+print_open	छापो/खोलो
+reason_amend_ph	संशोधन / शून्य / वापसी रो कारण
+reason_note_ph	कारण / नोट (बर्बादी, गिणती, ...)
+record_day_close	रिकॉर्ड दिन बंद
+refresh_from_shop	दुकान सूं ताजा करो
+refund	रिफंड
+remit_cod	COD जमा करो (पार्टी)
+remove_selected	चुणीज्योड़ा नै हटाओ
+restore_backup	बैकअप नै बहाल करो
+rider_name_ph	राइडर रो नांव
+rider_phone_ph	राइडर रो फोन
+riders	राइडर
+riders_own_fleet	राइडर (आपरी फ्लीट)
+rollup	रोल-अप
+save_booking_measures	बुकिंग माप बचाओ
+save_brand	ब्रांड बचाओ
+save_business_id	व्यापार री आईडी बचाओ
+save_business_name	व्यापार रो नांव बचाओ
+save_features	काम रो सेटअप बचाओ
+save_names	नाम बचाओ
+server_ip_ph	सर्वर आईपी (जियां 192.168.1.10)
+set_credit_limit	ग्राहक या आपूर्तिकर्ता नै सीमा लागू करो
+set_login_selected	चुणीज्योड़ा माथै लॉगिन लागू करो
+set_login_named	{name} माथै लॉगिन लागू करो
+shop	खरीदारी करो
+start_fresh	नूंवै सिरै सूं सरू करो
+stop_extra_tills	अतिरिक्त टिल बंद करो
+backup_auto	हर दिन स्वचालित रूप सूं बैकअप लेवै है · लारला {when} · लारला 14 दिन {dir} मांय राख्या जावै है।
+backup_auto_none	हर दिन स्वचालित रूप सूं बैकअप लेवै है - पैलो एक पल रै मांय चालै है।
+backup_copy_to	प्रतियां भी {dir} माथै जावै है।
+backup_copy_btn	बैकअप नै एक फोल्डर मांय भी कॉपी करो...
+autostart_off	इण कंप्यूटर सूं सरू करो
+autostart_on	इण कंप्यूटर सूं शुरू होवै है ✓ — रोकबा रै वास्तै टैप करो
+autostart_done_on	यो कंप्यूटर अबै ऐप नै खोल देवै है जद ओ चालू होवै है — बिजली कटवा रै बाद दुकान रो सर्वर पाछो आ जावै है।
+autostart_done_off	यो कंप्यूटर ऐप नै चालू होवण माथै अबै ऐप कोनी खोलै।
+right_allowed	अनुमति दी गई
+right_with_approval	मंजूरी रै साथै
+right_denied	इजाजत कोनी
+editing_staff	इण रा अधिकार
+team_pick_ph	संपादन करण सारू कर्मचारी — नाम, उपयोगकर्ता नाम, या चुणो
+select_staff	इण स्टाफ नै चुणो
+rights_help	अधिकार — बदलण रै वास्तै दबाओ: अनुमति → मंजूरी साथै (उण वक्त मैनेजर रो PIN) → अनुमति कोनी।
+right_void_refund	बुकिंग रद्द या वापसी
+right_amend_sale	दर्ज बुकिंग में बदलाव
+find_server	दुकान रो सर्वर ढूंढो
+finding_server	इण Wi‑Fi माथै दुकान रो सर्वर ढूंढ रिया हो...
+no_server_found	कोई कोनी मिल्यो। सर्वर माथै: सेटिंग्स → दूजा उपकरण → अतिरिक्त टिल्स री अनुमति देवो (सही Wi‑Fi)। या फेर बठै दिखायो गयो आईपी टाइप करो।
+servers_found_pick	जिण दुकान सूं थै जुड़णो चावो हो बां माथै टैप करो।
+server_host_selected	{host} रो उपयोग कर — जोड़ी कोड दर्ज करो, फेर अबै जोड़ो करो।
+device_forgotten	दुकान इण उपकरण नै भूलगी है - इणनै दुकान रै मौजूदा कोड रै साथै फेरूं जोड़ो। इण माथै उडीकबाळा आदेश राख्या जावै है।
+forget_device	भूल जावो
+last_seen	देख्यो
+new_pair_code	नयो जोड़ी कोड
+lan_offline	दुकान रो सर्वर पूग नीं सकै
+lan_offline_waiting	दुकान रो सर्वर अप्रचलित · {n} इंतजार कर रियो है
+lan_connecting	दुकान सूं जुड़ रिया हां...
+pair_finishing	जोड़ पूरा हो रियो है… ऑफिस री किताब लाग री है
+pair_opening	ऑफिस खुल रियो है…
+lan_live	लाइव
+lan_sending	{n} भेज रियो है
+lan_sign_in_to_send	{n} भेजबा रै वास्तै फेरूं साइन इन करो
+lan_pair_again	इण उपकरण नै फेरूं जोड़ो
+lan_update_app	ऐप अपडेट करो — आ डिवाइस अर ऑफिस सर्वर रा संस्करण अलग है
+allow_firewall	दूजा उपकरणां नै जोड़बा री अनुमति देवो
+firewall_blocked	इण कंप्यूटर रो फ़ायरवॉल दूजा उपकरणां नै ब्लॉक कर रैयो है — दूजा उपकरणां नै कनेक्ट करण री अनुमति देवो माथै टैप करो।
+firewall_waiting	व्यवस्थापक रै संकेत री उडीक है...
+lan_join_help	दूजा डिवाइस माथै: क्लाइंट मोड → दुकान रो सर्वर ढूंढो (या {addr} टाइप करो) → पेयरिंग कोड {code}।
+lan_pair_status	Wi‑Fi {addr}
+lan_join_help_no_addr	एक पते रै वास्तै इण उपकरण नै Wi‑Fi सूं जोड़ो।
+lan_no_address	अबार तांई कोई Wi‑Fi पतो कोनी — दुकान Wi‑Fi सूं जुड़ो।
+lan_not_listening	उपकरण स्वीकार कोनी कर रया है (पोर्ट {port} व्यस्त)। ऐप नै फेरूं चालू करो।
+lan_tills_off	अतिरिक्त टिल बंद है। बांनै दूजा उपकरण नै जोड़बा री इजाजत दो।
+paired_with	जोड़ी · {url}
+not_paired	जोड़ी कोनी
+choose_device_use	सर्वर या क्लाइंट चुणो।
+paired_note	जोड़ी बणाई। बेचबा रै वास्तै ताळो खोलो, या फेर ताजा जाणकारी रै वास्तै ताजा करो।
+last_update_at	लास्ट अपडेट: {time}।
+pair_intro	सर्वर नै ढूंढो, या उणरो पतो अर जोड़ी कोड टाइप करो।
+queue_waiting	दुकान पूगबा री उडीक ({n}):
+queue_tries	{n} बार कोशिश करी · लास्ट जवाब: {e}
+save_backup_copy	एक बैकअप प्रति बचाओ...
+backup_copy_saved	बैकअप कॉपी सहेजी है — इणनै इण डिवाइस (एक यूएसबी स्टिक या कोई दूजो डिवाइस) सूं दूर राखो
+backup_copy_overdue	कोई भी बैकअप प्रति इण डिवाइस नै {n} दिनां तांई नीं छोड़ी है — सेटिंग्स → बैकअप
+backup_copy_failed	बैकअप प्रतिलिपि वठै सेव कोनी करी जा सकी — दूजी जगां चुणो
+clock_off	इण उपकरण री घड़ी दुकान रै सर्वर सूं {min} मिनट दूर है — इण उपकरण माथै सही समय सेट करो
+printers_heading	आ डिवाइस रा प्रिंटर
+printers_help	खरा प्रिंटर खोजो, फेर रसीद या AWB लेबल चुनो। हर काम री आपरी चौड़ाई, पोर्ट्रेट या लैंडस्केप, अर बाइट कियां जावै है। लेबल बारकोड छापै है। खाली जगह = मत छापो।
+job_width	सामग्री री चौड़ाई (मिमी)
+job_width_ph	या चौड़ाई लिखो, 40–210 mm
+job_layout	लेआउट
+job_delivery	नौकरी कियां भेजी जावै है
+job_size	फॉन्ट रो आकार
+job_size_ph	जियां कै 18, 20, 26…
+save_receipt_format	रसीद फॉर्मेट बचाओ
+save_label_format	लेबल फॉर्मेट बचाओ
+test_receipt_format	रसीद जाँच
+test_label_format	लेबल जाँच
+test_receipt_sent	नमूनो रसीद भेजी
+test_label_sent	नमूनो लेबल भेजियो
+test_print_no_printer	उण काम रै वास्तै प्रिंटर कोनी — आ जगह रै नीचे एक जोड़ो
+printers_host_only	प्रिंटर दुकान डिवाइस (सर्वर) माथै सेट हुवै है। आ टिल उणै काम भेजै है — खोजो / जोड़ो / नियुक्त सर्वर माथै रैवै है। जाँच पन्नो सर्वर नै जावै है।
+printers_pool_heading	प्रिंटर
+printers_routes_heading	जठै चीजां छपै है
+printer_label_ph	नांव (जियां डेस्क)
+printer_target_ph	host:9100 · bt:MAC · usb:VID:PID · सिस्टम नांव
+printer_mode_heading	नवा आउटपुट रै वास्तै प्रोफाइल
+printer_mode_standard	मानक पोर्ट्रेट
+printer_mode_landscape	मानक लैंडस्केप
+printer_mode_thermal	थर्मल
+printer_mode_standard_short	चित्र
+printer_mode_landscape_short	परिदृश्य
+printer_mode_thermal_short	थर्मल
+printer_format_custom	नयो कस्टम प्रोफाइल
+printer_format_custom_label	कस्टम
+printer_format_custom_added	इण जगै रै वास्तै कस्टम प्रोफाइल जोड़ दियो गयो है
+add_printer	प्रिंटर जोड़ो
+remove_printer	आखरी हटाओ
+route_pick_ph	रसीद या लेबल
+route_add_printer_ph	आ जगह प्रिंटर जोड़ो
+route_receipt	रसीद
+route_label	AWB लेबल
+route_dont_print	प्रिंटर नियुक्त कोनी
+route_add	जगह में जोड़ो
+route_up	ऊपर
+route_down	नीचै
+route_remove	आखरी हटाओ
+route_clear	आ जगह रा प्रिंटर हटाओ
+save_printers	प्रिंटर बचाओ
+print_test_page	एक परीक्षण पन्ना छापो
+printers_saved	आ डिवाइस रै वास्तै प्रिंटर बचाया
+test_page_sent	परीक्षण पन्ना भेज दियो गयो है — प्रिंटर री जांच करो
+printers_found	आ डिवाइस माथै मिल्या: {list}
+find_printers	प्रिंटर ढूंढो
+printers_looking	आ डिवाइस अर Wi‑Fi माथै प्रिंटर खोज रिया है…
+printers_tap_find	काम लेण वाळी कतार अर आ Wi‑Fi माथै नेटवर्क रसीद प्रिंटर रै वास्तै प्रिंटर खोजो दबाओ (हटाया या ऑफलाइन कोनी)।
+printers_none_found	प्रिंटर कोनी मिल्या — सिस्टम प्रिंटर रो नांव, या नेटवर्क पतो लिखो (जियां 192.168.1.50)।
+receipt_printer_ph	रसीद रै वास्तै प्रिंटर
+queue_refused	दुकान रै द्वारा स्वीकार नीं करियो गयो है ({n}) — काउंटर माथै हरेक री जांच करो:
+clear_not_accepted	जांच करीजी — आ सूची साफ़ कर दी
+device_name_ph	इण उपकरण रो नांव
+lan_last_update	लास्ट अपडेट {time}
+lan_not_accepted	{n} स्वीकार कोनी करियो गयो
+connected_now	अबार जुड़योड़ो
+backup_failed	लास्ट ऑटोमैटिक बैकअप फेल होग्यो: {e}
+backup_overdue	{n} दिनां तांई कोई बैकअप कोनी — ऐप नै इण डिवाइस माथै खुलो राखो ताकि ओ बैकअप ले सकै।
+disk_low	इण डिवाइस माथै फगत {mb} एमबी मुफ्त है — बैकअप जल्द ही फेल हो जावैला। थोड़ी सी जगां खाली करो।
+last_seen_devices	लारली बार देख्यो गयो: {time}
+sync_interval	हर {secs}s नै सिंक करो
+connection_to_shop	दुकान सूं कनेक्शन
+supplier_name_ph	आपूर्तिकर्ता रो नांव (या ग्राहक)
+supplier_ph	आपूर्तिकर्ता
+switch_device	इण उपकरण नै बदलो
+take_payment	भुगतान लेवो
+tax_added_till	{tax} खास
+tax_inside_price	{tax} समावेशी
+today_books	आज री किताबां
+unlock_after_pairing	PIN दर्ज करो
+unlock_with_login	लॉगिन रै साथै अनलॉक करो
+update_my_password	म्हारो पासवर्ड अपडेट करो
+update_my_pin	म्हारो PIN अपडेट करो
+duress_heading	आपातकालीन अनलॉक PIN (केवल मालिक)
+duress_help	वैकल्पिक। जे अनलॉक माथै थारे बदले आ PIN टाइप हुवै, किताब री सगळी नोंद मिट जावै है (बुकिंग, खाता, इतिहास) अर डेस्क सामान्य दिखतो मालिक रूप में खुलै है — दर, पार्टी, जोन, कर्मचारी अर सेटिंग रैवै है। ढाँचा अर कॉन्फिग कोनी मिटै। सिरफ तदैं वापरो जद जबरदस्ती अनलॉक करणो पड़ै। बंद करण रै वास्तै खाली छोड़ के बचाओ। कदेई केई रै PIN जसो कोनी।
+duress_pin_ph	आपातकाल PIN (4-12 अंक)
+duress_confirm_ph	पुष्टि करण रै वास्तै फेरूं टाइप करो
+save_duress_pin	आपातकालीन PIN बचाओ
+clear_duress_pin	आपातकालीन PIN बंद कर दो
+duress_on	आपातकालीन अनलॉक PIN चालू है
+duress_off	आपातकालीन अनलॉक PIN बंद है
+duress_saved	आपातकालीन अनलॉक PIN बचायो गयो
+duress_cleared	आपातकालीन अनलॉक PIN बंद कर दियो गयो
+vehicle_ph	वाहन
+void	शून्य बिक्री
+write_off_ap	एपी नै बंद कर दो
+write_off_nil	लिखो / शून्य शेष राशि
+zone_ph	जोन (दर सूं नांव)
+caption_today	आज
+caption_bookings	बुकिंग
+caption_payments_today	आज ही भुगतान
+caption_outstanding	उत्कृष्ट
+caption_bank	बैंक
+paid_by	द्वारा भुगतान करियो गयो
+second_way	दूजो तरीको
+weight_in	वजन इकाई
+size_in	आकार इकाई
+goods_received	सामान मिलग्यो
+expense_heading	खर्चो
+notes_attach_sale	नोट्स अर संलग्नक (चयनित बिक्री)
+notes_attach_party	नोट्स अर संलग्नक (चयनित ग्राहक या आपूर्तिकर्ता)
+attachments_last_expense	संलग्नक (लास्ट एक्सपेंस)
+credit_limit_heading	क्रेडिट सीमा (चयनित ग्राहक या आपूर्तिकर्ता)
+pay_selected_heading	चुणीज्योड़ा वेतन (ऋण चुकाणो / अग्रिम लेणो)
+write_off_heading	लिखो (बिना भुगतान किये साफ करो)
+pay_ap_heading	आपां बांनै जो देणो है बो चुकाओ (एपी)
+country_tax	देश अर कर
+extra_tills_heading	अतिरिक्त टिल
+other_devices_help_heading	दूजा उपकरणां नै सेट करो
+other_devices_help	आ डिवाइस (सर्वर) माथै: और डिवाइस → अतिरिक्त टिल री अनुमति दो। पेयरिंग कोड अर Wi‑Fi पतो नोट करो। दिखै तो और डिवाइस नै जुड़ण दो दबाओ। कंप्यूटर माथै आ कंप्यूटर सूं शुरू करो दबाओ। हर और डिवाइस माथै: ऐप इंस्टॉल करो, क्लाइंट मोड चुनो, दुकान रो सर्वर खोजो (या पतो लिखो), पेयरिंग कोड भरो, अबै जोड़ो। Wi‑Fi टूटै तो ऑर्डर डिवाइस माथै रुकै है अर सर्वर फेर जवाब देवै तो चल जावै है।
+your_brand	थारो ब्रांड (ऐप रै मांय)
+units_heading	इकाइयां
+booking_measures	बुकिंग माप
+drawer_count	दराज री गिणती (वैकल्पिक)
+spreadsheet_csv	स्प्रेडशीट (CSV)
+bank_reconciliation	बैंक सुलह (आपरै बैंक विवरण रै खिलाफ टिक लगाओ)
+book_add_product	बुक — उत्पाद / दर जोड़ो
+book_opening_credit	किताब — ओपनिंग क्रेडिट
+account_kind	खाता री किस्म (एक माथै टैप करो)
+active_ledger	चालू खातो
+actual_total_cap	वास्तविक कुल
+amend_help	संशोधन, रद्द या वापसी करण सारू कोई बिक्री रो चयन करो। संशोधन पूरो इतिहास राखै है। गोल कुल लागू रै बराबर शुरू होवै है - केवल गोल करण रै वास्तै संपादित करो। शून्य अर वापसी रै वास्तै एक मालिक या प्रबंधक री जरूरत पड़ सकै है PIN (ऊपर टाइप करियोड़ो है; थारै नाम सूं दर्ज करियो गयो है)।
+applied_total_cap	लागू कुल
+bank_balance	बैंक बैलेंस
+bank_net_today	बैंक नेट आज
+branch_export_help	निर्यात दिन रो स्नैपशॉट बैकअप फोल्डर में लिखै है अर क्लिपबोर्ड माथै कॉपी करै है। और दुकान रो दिन आयात करण रै वास्तै उण री फाइल उणै फोल्डर में import_branch_snapshot.json नांव सूं बचाओ, फेर आयात दबाओ।
+brand_shown_help	ऐप रै मांय स्क्रीन माथै दिखायो गयो है। इण डिवाइस माथै स्थापित ऐप रो नांव अर आइकन प्लेटफॉर्म लिस्टिंग रै रूप मांय रैवैला।
+app_icon	ऐप आइकन
+logo_help	ऐप रै मांय स्क्रीन माथै वैकल्पिक दुकान रो निशान।
+onboard_layout	थनै कांई मिलैला
+item_photo_help	वैकल्पिक। बिना फोटू रै आपां वस्तु रै नाम सूं आद्याक्षर दिखावां हां।
+cash_in_hand	हाथ मांय नकदी (जद तांई)
+change_my_pin_heading	म्हारो PIN बदलो (सिरफ थारो)
+connect_to_server	सर्वर सूं जुड़ो
+counter_locked	काउंटर 01 · बंद कर दियो गयो है
+country_pack_help	एक देश पैक कर रो नाम अर गणित, तत्काल भुगतान री रेल अर बिल माथै छपी व्यावसायिक आईडी नै सेट करै है। Kumkaj कठैई भी कर दाखिल कोनी करै है अर ना ही सरकारी ई-चालान जारी करै है।
+currency_use_help	स्क्रॉल करो अर किणी भी समर्थित मुद्रा रै वास्तै उपयोग करो माथै टैप करो।
+day_close_help	एक दिन री समाप्ति री रिकॉर्डिंग करणो ओ सारांश (अर अगर गिणती करी जावै तो दराज री भिन्नता) नै लेखापरीक्षा लॉग मांय सहेज लेवै है। ओ बेचणो बंद कोनी करै।
+expenses_word	खर्चा
+feature_access_help	चुण्या कर्मचारी री सुविधा पहुँच (जोड़ण पैछै दबाओ)
+footer_local	स्थानीय SQLite · हमेशा रै वास्तै मुफ्त · शून्य बादळ
+fresh_book_moklanjo	ताजो = खाली सूची (चीज पैछै जोड़ो)। बुक = नीचे खुलतो स्टॉक अर कुण देनदार है, ऊ लिखो।
+fresh_selected	ताजा चुण्यो गयो है - कैटलॉग खाली रैवेला। जद तैयार हो जावो तो होग्यो माथै टैप करो।
+gross_word	सकल
+how_start	थै कियां सरू करणो चावो हो?
+later_country_pack	बाद रै मांय: सेटिंग्स → कर अर भुगतान लेबल रै वास्तै आपरो देश पैक लागू करो।
+local_badge	स्थानीय
+measures_help_moklanjo	बुकिंग डेस्क माथै पार्सल कियां नापै है। थै जकी इकाई वापरो उण में आकार अर वजन लिखो — मानक (cm, m, in, ft · kg, g, lb, oz) या ऊपर cm / kg सूं जुड़्यो अपनो इकाई (सीधो या और इकाई सूं)। किताब हमेशा kg दर्ज करै है। फील्ड खाली छोड़ण सूं ऊ बन्यो रैवै है।
+mix_type_hint_moklanjo	हर एक में कितो है लिखो (नकद / UPI / कार्ड / उधार)। बिल रै बराबर होणो चाही। उधार रै वास्तै ऊपर ग्राहक चाही।
+money_in_sales	(बिक्री) रै मांय धन
+more_help_moklanjo	सूची, बिक्री, उधार, टीम, बैकअप — अर जरूरत पड़ै तो स्टॉक अर अतिरिक्त टिल।
+net_word	शुद्ध
+offline_badge	ऑफलाइन
+optional_login_help	वैकल्पिक लॉगिन (आईडी + पासवर्ड)। मालिक एक बार सेट कर देवै है; फगत उपयोगकर्ता ही बाद मांय पासवर्ड बदल सकै है।
+or_unlock_login	या फेर लॉगिन आईडी + पासवर्ड सूं अनलॉक करो
+permission_preset	काम (स्क्रीन अर अधिकार तय करै है)
+preset_help_moklanjo	कैशियर: बेचो। प्रबंधक: बेचो + वस्तुवां + शून्य/संशोधित करो।
+product_locked_moklanjo	Moklanjo
+product_only_moklanjo	आ ऐप सिरफ Moklanjo है — किताब + बुकिंग डेस्क। और व्यापार रा उत्पाद पैछै अलग आवैला।
+purchases_cogs	खरीदी (COGS)
+qty_cap	मात्रा
+restore_help	पुनर्स्थापना: एक बैकअप उठाओ। किताबां उण बगत री तरै ई खुलै है; अबार जकी किताबां है बां नै पैली बचा ली जावै है, सो इणनै पूर्ववत करियो जा सकै है।
+wipe_data_heading	स्थानीय डेटा नै हटाओ
+wipe_data_help	सिरफ मालिक — Windows अनइंस्टॉल जसा विकल्प। व्यापार रिकॉर्ड इतिहास मिटावै है, दर अर सेटअप राखै है (आपातकालीन अनलॉक PIN जसो)। दुकान सेटअप किताब डेटाबेस हटावै है। स्क्रीन पसंद विंडो/भाषा मिटावै है। मालिक PIN सूं पुष्टि करो। टीम माथै आपातकालीन अनलॉक PIN अलग है (अनलॉक माथै छिप्यो मिटाव)।
+wipe_trading	व्यापार रा अभिलेख
+wipe_schema	दुकान री व्यवस्था
+wipe_ui	स्क्रीन री पसंद
+wipe_owner_pin_ph	मालिक PIN हटाबा तांई
+wipe_delete_selected	चुणीज्योड़ा नै हटाओ
+wipe_owner_only	फगत मालिक ही स्थानीय डेटा नै हटा सकै है।
+restore_owner_only	फगत मालिक ई बैकअप नै बहाल कर सकै है।
+wipe_owner_pin_needed	स्थानीय डेटा नै हटाबा रै वास्तै मालिक PIN दर्ज करो।
+wipe_nothing_selected	पैली कांई हटाणो है, ओ चुणो।
+wipe_done	चुणीज्योड़ा स्थानीय डेटा नै हटा दियो गयो।
+wipe_schema_done	दुकान रो सेटअप मिटा दियो गयो है — जारी राखण रै वास्तै सर्वर या क्लाइंट चुणो।
+rounded_total	गोल करियोड़ो कुल
+setup_app_moklanjo	Moklanjo सेट करो
+shop_logo_optional	दुकान रो लोगो (वैकल्पिक)
+stock_type_help	वस्तु रो नांव टाइप करो (इणरो एक हिस्सो काफी है), एक मात्रा, फेर समायोजित करो। जिण चीजां री गिणती अजै तांई नीं करीजी है बां नै एक बार ट्रैक करणो सरू करणो है।
+team_owner_help	भर्ती: एक काम चुनो (कैशियर / मैनेजर), नांव + शुरुआती PIN, फेर जोड़ो। सिरफ जे आ आदमी अलग होवै: नीचे स्क्रीन अर अधिकार खोलो, फेर काम रो सेटअप बचाओ। हर कोई नीचे अपनो PIN आपे बदलै है — मालिक केई रो और कोनी बदल सकै।
+they_owe_us	वे म्हारै माथै ऋणी है
+unit_at_cap	इकाई @
+units_help	वस्तु लेबल (किलो, टुकड़ो, बैग) रै वास्तै कोड। हरेक इकाई नै सीधा या दूजी इकाइयां रै माध्यम सूं एक मानक (किलो · सेमी · एमएल · पीसी) सूं जोड़णो चाइजै, जियां कै 1 टोकरा = 2 बक्सा अर 1 बक्सा = 20 सेमी। रूपांतरण: 1 सूं = कारक सूं। मुद्रावां कदैई इकाइयां कोनी हुवै।
+we_owe_them	म्हे बां रो ऋणी हां
+who_unlocking	कुण खोल रियो है?
+locked_word	बंद कर दियो गयो
+show_pin	PIN दिखाओ
+hide_pin	PIN छुपाओ
+set_owner_pin	मालिक नै सेट करो PIN
+enter_owner_passcode	मालिक रो पासकोड दर्ज करो
+enter_staff_passcode	स्टाफ पासकोड दर्ज करो
+pin_count_zero	0 / 12 अंक · कम सूं कम 4, फेर ठीक है
+pin_count_need	{} / 12 अंक · {} और री जरूरत है
+pin_count_full	12 / 12 अंक · ठीक दबाओ
+pin_count_ready	{} / 12 अंक · तैयार होबा माथै ठीक दबाओ
+pin_hint_choose	4-12 अंक चुणो · बचाबा रै वास्तै दर्ज करो या अनलॉक करो
+pin_hint_new	नयो 4-12 अंक रो मालिक PIN · दर्ज करो या अनलॉक करो
+pin_hint_shop_code	दुकान रो उपकरण · जोड़ी कोड {}
+pin_hint_books	यो उपकरण किताबां नै राखै है
+pin_hint_paired	जोड़ी बणाबा तांई अतिरिक्त — बेचबा रै वास्तै अनलॉक करो
+pin_hint_pair_first	अतिरिक्त टिल — पैली दुकान रै उपकरण सूं जोड़ो
+unlock_to_continue	जारी राखबा तांई ताळो खोलो
+no_staff_yet	अबार तांई कोई स्टाफ कोनी — मालिक रै रूप मांय अनलॉक करो, फेर टीम
+status_server_set_pin	सर्वर मोड — मालिक PIN सेट करो
+status_server_tills	सर्वर मोड — अतिरिक्त टिल जुड़ सकै है। ताळो खोलो
+status_server_unlock	सर्वर मोड — मालिक रै रूप मांय अनलॉक करो
+status_client_unlock	ग्राहक मोड — बेचबा रै वास्तै अनलॉक करो
+icon_new_selected	आइकन: नयी फाइल चुणी गई है — ब्रांड बचाओ माथै टैप करो
+icon_custom	आइकन: कस्टम वेन्यू रो निशान
+icon_default	आइकन: Kumkaj चिन्ह (डिफ़ॉल्ट) — एक कस्टम रो चयन करो
+logo_yours	लोगो: थारी दुकान रो लोगो — स्क्रीन अर रसीदां माथै दिखायो गयो है
+logo_default	लोगो: Kumkaj चिन्ह (डिफ़ॉल्ट) — जे थारै कनै है तो खुद रो चुणो
+tmpl_current	हाल: {} — {}
+tmpl_selected	चुण्यो गयो: {} — {}
+setup_complete	सेटअप पूरो होग्यो
+onboard_fresh_tmpl	ताजा · {} — कैटलॉग खाली शुरू होवै है; आइटम रै मांय आइटम जोड़ो, फेर होग्यो।
+onboard_book_tmpl	बुक · {} — आइटम अर ओपनिंग क्रेडिट जोड़ो, फेर होग्यो।
+onboard_template_tmpl	जे थै चावो तो जगै रो नांव बताओ, फेर ओ चुणो कै किण भांत सरू करणो है।
+tmpl_blurb	कूरियर किताब अर बुकिंग डेस्क: भेजण वाळा, कैरियर, दिन री किताब, AWB।
+tmpl_how	डेस्क माथै पार्सल बुक करो; आज रै वास्तै दिन री किताब; दर, पार्टी, रिपोर्ट रै वास्तै टैब।
+trk_booked	बुक हुयो
+trk_picked_up	पिकअप हुयो
+trk_in_transit	रस्ते में
+trk_delivered	पहुँचा दियो
+trk_rto	भेजण वाळा नै वापस जा रियो
+lane_to_dispatch	भेजणो बाकी
+lane_with_carrier	कैरियर कनै
+lane_failed	असफल
+lane_done_today	आज पूरो
+ops_board_help	आज रै काम में पार्सल कठै है, उण हिसाब सूं। पार्सल दबाओ (या स्कैन करो) ताकि चुन्या जावै, फेर सगळा चुन्या माथै एक साथ काम करो — हर लेन में सिरफ ऊ कदम दिखै है जका उण में सही है।
+lane_empty	अबै अठै कुछ कोनी।
+picked_fmt	{n} चुन्या
+pick_all	सगळा चुनो
+bag_for_carrier	कैरियर नै सौंपो
+send_with_rider	राइडर साथै भेजो
+out_again	फेर भेजो
+return_to_sender	भेजण वाळा नै लौटाओ
+runs_bags_heading	हाल री फेरी अर बैग
+print_word	छापो
+bag_word	कैरियर बैग
+run_word	राइडर फेरी
+parcels_fmt	{n} पार्सल
+parcel_history	इतिहास
+attempt_fmt	कोशिश {n}
+pieces_short_fmt	{n} नग
+note_reason_ph	नोट या कारण
+ops_pick_first	पेहलैं पार्सल चुनो — दबाओ या स्कैन करो
+cod_to_collect	डिलीवर हुयो — COD वसूलणो है
+cod_on_road	COD अजै रस्ते में
+cod_owed_consignors	वसूल हुयो — भेजण वाळा नै देणो है
+cod_rto_fees	वसूलणो RTO शुल्क
+cod_to_hand_in	जमा करणो COD
+parcel_one_fmt	{n} पार्सल
+facet_bank_title	रिपोर्ट
+facet_bank_help	दिन री किताबां, ग्राहक या आपूर्तिकर्ता री उम्र बढ़णो, बैंक पोस्ट अर अवधि पी एंड एल।
+facet_ops_title	खेप अर डिस्पैच
+facet_ops_help	AWB स्कैन करो या लिखो → खोजो, फेर आगे बढ़ाओ / लेबल छापो / COD। राइडर या कैरियर नै डिस्पैच करो।
+facet_cod_title	COD रजिस्टर
+facet_cod_help	डिलीवरी माथै पैसा ल्यो, फेर भेजण वाळा नै लौटाओ।
+facet_riders_title	राइडर (आपरी फ्लीट)
+facet_riders_help	राइडर जोड़ो, फेर Ops सूं बुक किया AWB डिस्पैच करो।
+against_bill_ph	ऊपर # बिल रै खिलाफ (वैकल्पिक)
+aliases_ph	उपनाम — दूजा नाम, अल्पविराम सूं अलग
+amount_blank_full_ph	रकम (खाली = पूरो शेष)
+amount_owed_ph	बकाया रकम
+amount_ph	रकम
+amount_received_ph	प्राप्त रकम
+amount_we_pay_ph	रकम जिणनै म्हे चुकावांला
+awb_scan_ph	AWB / बारकोड स्कैन
+bulk_csv_ph	बल्क CSV — destination,consignee,kg,cod_paise,note
+business_name_ph	व्यापार रो नांव
+category_new_ph	श्रेणी (वैकल्पिक, जे नयो बणायो गयो है)
+cod_amount_ph	COD रकम
+code_bag_ph	कोड (बैग)
+conv_factor_ph	कारक (25 = 1 बैग → 25 किलो)
+country_code_ph	देश रो कोड जियां कै आईएन, जीबी, यूएस, एई, बीआर
+credit_khata_amount_ph	क्रेडिट / क्रेडिट लेजर री रकम
+credit_limit_ph	क्रेडिट सीमा (0 = कोई कोनी)
+dim_unit_code_ph	आयाम इकाई कोड (cm)
+divisor_ph	आयतन भाजक (5000)
+extra_per_kg_ph	अतिरिक्त / kg
+first_amount_ph	पेहली रकम
+first_kg_ph	पेहलो kg (स्लैब)
+from_code_ph	कोड (बैग) सूं
+item_name_lang_ph	वस्तु रो नांव — आपरी भाषा मांय टाइप करो
+login_id_opt_ph	उपयोगकर्ता नाम (आवश्यक, अनूठो)
+manager_pin_ph	प्रबंधक PIN मंजूरी देबा तांई (केवल जद थै रद्द नीं कर सको)
+new_branch_name_ph	नूंवी शाखा रो नांव
+new_password_ph	नयो पासवर्ड (वैकल्पिक)
+new_pin_ph	नयो PIN (4-12 अंक)
+note_bank_ph	नोट (जमा, निकासी, …)
+note_buy_expense_ph	नोट (ईंधन, किरायो, …)
+note_expense_ph	नोट (ईंधन, दफ्तर, …)
+notify_phone_ph	सूचना फोन (WhatsApp/SMS हुक)
+options_moklanjo_ph	विकल्प (वैकल्पिक) — Large=20, Gift wrap=10
+part_second_way_ph	दूजा तरीका सूं भाग (वैकल्पिक)
+phone_ph	फोन
+address_ph	पतो
+party_custom_fields_heading	कस्टम फील्ड (चुणी पार्टी)
+party_custom_help	आ पार्टी माथै कोई लेबल अर मान जोड़ो — WhatsApp, GSTIN, रूट कोड, …
+party_custom_key_ph	फील्ड नांव (जियां WhatsApp)
+party_custom_value_ph	मान
+party_custom_add	फील्ड जोड़ो
+party_custom_remove	फील्ड हटाओ
+party_custom_empty	अजै कस्टम फील्ड कोनी
+party_custom_pick_first	कस्टम फील्ड रै वास्तै पार्टी चुनो
+place_name_ph	इण जगै रो नांव
+price_ph	कीमत
+qty_example_ph	मात्रा (जियां कै किलोग्राम रै वास्तै 1.5)
+quantity_ph	मात्रा
+reason_required_ph	कारण (आवश्यक)
+role_title_ph	भूमिका रो शीर्षक (जियां कै बरिस्ता)
+service_pct_ph	सेवा % वैकल्पिक 0/10/12
+short_code_ph	छोटो कोड (एमजी02)
+slab_kg_ph	kg में चार्जेबल स्लैब (0.5)
+staff_name_ph	कर्मचारी रो नांव / id
+starting_password_ph	शुरुआती पासवर्ड (वैकल्पिक)
+starting_pin_ph	PIN (4-12 अंक) सूं शुरू हो रियो है
+tax_rate_ph	कर दर रो नाम या % — मानक, कम, 0, 5, 12, 18, 20
+to_code_ph	कोड करणो (किलो)
+uncleared_no_ph	ऊपर # अणक्लियर
+unit_cost_ph	इकाई लागत
+unit_kg_blank_ph	इकाई (kg या खाली)
+unit_name_bag_ph	नाम (बैग)
+weight_unit_code_ph	वजन इकाई कोड (kg)
+zone_name_ph	जोन रो नांव
+pay_credit	खाता माथै
+book_kind_today	आज री किताबां
+book_kind_month	इण महीनै री किताबां
+book_kind_aging	बकाया / डेबिट-क्रेडिट
+book_kind_balance	तुलन पत्र
+ops_desk_help	USB बारकोड स्कैनर सूं AWB स्कैन करो (या लिखो) → खोजो। फेर आगे बढ़ाओ, लेबल छापो, या COD ल्यो। लेबल Code 128 में छपै है।
+role_help_consignor	भूमिका: भेजण वाळो — AR (वै म्हारा देनदार)। ईडी फर्म कैरियर भी हो सकै है।
+role_help_carrier	भूमिका: कैरियर — AP (म्हें उण रा देनदार)। ईडी फर्म भेजण वाळो भी हो सकै है।
+role_help_both	भूमिका: भेजण वाळो + कैरियर — एक पार्टी, AR अर AP खाता, रिपोर्ट में निवल।
+role_help_supplier	भूमिका: सप्लायर — खरीद रै वास्तै AP।
+lane_declared_label	खातो बुकिंग
+lane_owner_label	नकद बुकिंग
+money_lane_bill	बिल: {lane}

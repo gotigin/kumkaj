@@ -1,0 +1,1351 @@
+# Urdu — اردو (ur). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	ریستوراں آرڈرز، کچن اور بکس۔ مفت آف لائن۔
+unlock	ان لاک
+pin_hint	مالک PIN 0000 سے شروع ہوتا ہے
+sell	آرڈر
+buy	خرید
+books	روز بک
+books_help	آج کی صورتحال۔ آرڈر = آرڈرز آئے۔ خرید = خریداری اور خرچے۔ پارٹی = ادھار گاہک اور سپلائرز۔
+buy_help	خرچ واؤچر اور سپلائر بل (رقم باہر)۔ کھاتے پر والا پارٹی لیجر میں رہتا ہے۔
+sell_money_in	آرڈر لیں
+buy_money_out	خرچ / سپلائر بل
+record_purchase	خرید درج
+add_expense	خرچ واؤچر
+bank_book	بینک بک
+credit_help	پارٹی آئی ڈی منفرد ہے (نام دہرائے جا سکتے ہیں)۔ گاہک کھاتہ چلاتا ہے (ہمارا مقروض)؛ سپلائر ہمیں مال بیچتا ہے (ہم اس کے مقروض)؛ دونوں ٹھیک ہیں۔ لیجر الگ رہتے ہیں؛ رپورٹ نیٹ دکھاتی ہے۔
+party_kind_ph	کردار: گاہک، سپلائر، دونوں…
+reports_help	روز بک، مقروض اور قرض دہندگان، بینک بک، خرچ واؤچر، نفع و نقصان۔
+reports_today	روز بک (آج)
+reports_month	نفع و نقصان (مہینہ)
+reports_aging	بقایا / Dr-Cr
+reports_balance_sheet	بیلنس شیٹ
+reports	رپورٹ
+refresh	تازہ
+undo	واپس
+start_tracking	گنتی شروع
+stock_minus	− اسٹاک
+stock_plus	+ اسٹاک
+settle_cash	نقد ادا
+settle_card	کارڈ سے ادا
+items	مینو اور آئٹمز
+nav_items	مینو
+more	مزید
+your_items	آپ کا مینو
+items_help	ہر قطار ایک ڈش یا آئٹم ہے (مثلاً Masala Dosa)۔ اس کی قیمت اور کچن اسٹیشن شامل کریں۔ ترمیم کے لیے دبائیں۔
+add_item	آئٹم شامل کریں
+new_item	نیا آئٹم
+adding_item	نیا آئٹم شامل کر رہا ہے
+editing_item	ترمیم
+save	محفوظ کریں
+remove	ہٹائیں
+removed_items	ہٹائی گئی آئٹمز
+removed_help	بحال کرنے پر آئٹم پہلے جیسا ہی مینو میں آ جاتا ہے — قیمت، تصویر اور زمرہ۔ ہماری ڈشز کی شیلف کبھی ہٹائی نہیں جاتی، اس لیے کوئی بھی ڈش دوبارہ شامل کی جا سکتی ہے۔
+restore_item	بحال کریں
+empty_catalog	ابھی کوئی آئٹم نہیں۔ مینو اور آئٹمز کھولیں، ایک شامل کریں (نام + قیمت)، پھر آرڈر لیں۔
+total	کل
+cash	نقد
+upi	यूपीआई
+card	کارڈ
+credit	پارٹیاں
+clear	صاف
+ready_to_sell	بکنگ کے لیے تیار
+today_prefix	آج
+today_mid	آج
+owed	باقی
+round_word	راؤنڈ
+back	واپس
+sold_out	فروخت ہو گیا
+restock	دوبارہ رکھیں
+not_tracked	گنتی نہیں
+in_stock	اسٹاک میں
+marked_sold_out	فروخت شدہ نشان
+add_upper	شامل
+na	نہیں
+qty	تعداد
+unit_at	نرخ
+actual	اصل
+applied	لاگو
+note_ph	نوٹ (اختیاری)
+rounded	راؤنڈ
+split	تقسیم
+send_kot	باورچی خانے بھیجیں
+send_kot_to	بھیجیں → {kitchens}
+send_kot_again	اگلے KOT کے لیے ڈشز شامل کریں
+send_kot_held	روکی گئی ڈشز — بھیجنے کے لیے روک ہٹائیں
+reprint_kot	منتخب دوبارہ پرنٹ
+reprint_kot_ok	{n} پکوان دوبارہ · {slips} سلپ → {kitchens}
+reprint_kot_needed	پہلے KOT بھیجیں — پھر پکوان شامل کر کے منتخب پرنٹ
+reprint_kot_none_selected	سب بھیجے ہوئے چھوڑے — پرنٹ کے لیے «پرنٹ میں» دبائیں
+reprint_kot_client	{place} کے لیے دوبارہ چھاپیں ({n}) بھیجا — باورچی خانہ سرور پر چھاپے گا
+print_cancelled_kot	تمام منسوخ پرنٹ
+print_cancelled_kot_ok	{n} रद्द छापे · {slips} पर्ची → {kitchens}
+print_cancelled_kot_needed	منسوخ پکوان والی میز کھولیں
+print_cancelled_kot_none	اس آرڈر پر منسوخ نہیں
+print_cancelled_kot_client	منسوخ ({n}) {place} بھیجا — سرور پر چھپے گا
+kot_banner	بینر
+kot_banner_ph	بینر (خالی = نہیں)
+kot_item_prefix	آئٹم سابقہ
+kot_item_prefix_ph	جیسے [CANCELLED] 
+kot_strike	پکوان نام کاٹیں
+kot_strike_note	نوٹ کاٹیں
+kot_strike_on	آن
+kot_strike_off	آف
+bill_item_layout	آئٹم لے آؤٹ
+bill_item_layout_columns	کالم
+bill_item_layout_stacked	قطاریں
+bill_item_header	کالم سرخیاں
+bill_item_hdr_item	آئٹم سرخی
+bill_item_hdr_qty	تعداد سرخی
+bill_item_hdr_price	نرخ سرخی
+bill_item_hdr_amount	رقم سرخی
+bill_item_name	پکوان کا نام
+bill_item_qty	مقدار
+bill_item_price	نرخ
+bill_item_amount	رقم
+bill_item_note	نوٹ
+bill_item_col_gap	کالم فاصلہ
+bill_item_col_order	کالم ترتیب
+bill_item_col_sep	کالم لکیر
+bill_item_gap_tight	سخت
+bill_item_gap_comfort	آرام دہ
+bill_item_gap_wide	چوڑا
+bill_item_num_width	عدد کے کالم
+bill_item_num_compact	چھوٹا
+bill_item_num_comfort	آرام دہ
+bill_item_num_wide	چوڑا
+bill_item_num_align	اعداد کی سیدھ
+bill_item_gap_em	فاصلہ (em)
+bill_item_qty_min	تعداد کم از کم (em)
+bill_item_price_min	نرخ کم از کم (em)
+bill_item_amount_min	رقم کم از کم (em)
+kot_item_qty_width	تعداد کا کالم
+kot_item_num_align	تعداد کی سیدھ
+bill_total_qty_label	کل تعداد لیبل
+bill_total_subtotal_label	ذیلی کل لیبل
+bill_total_grand_label	کل لیبل
+bill_total_paid_label	ادا لیبل
+bill_meta_pair	ایک قطار میں ساتھ
+bill_pair_alone	اکیلا
+bill_item_piece_on	آن
+bill_item_piece_off	آف
+bill_total_qty	کل مقدار
+bill_total_subtotal	ذیلی کل
+bill_total_grand	کل
+reprint_incl	پرنٹ میں
+reprint_skip	چھوڑیں
+reprint_skip_meta	ریکوری پرنٹ چھوڑیں
+kot_dest_hint	سیٹنگز → پرنٹرز میں {kitchens} کو دیے گئے پرنٹرز پر چھپتا ہے
+kot_sent_hint	پچھلا KOT {kitchens} کو گیا۔ اگلے ٹکٹ کے لیے ڈشز شامل کرنے کو دبائیں — یا اسی کے لیے KOT دوبارہ چھاپیں۔
+kot_sent_printing	KOT {kitchens} کو بھیجا گیا — پرنٹ ہو رہا ہے
+kot_sent_not_printed	KOT {kitchens} کو بھیجا گیا، لیکن پرنٹ نہیں ہوا: {why}۔ باورچی خانے کو بتائیں، پھر پرنٹر ٹھیک کر کے دوبارہ پرنٹ کریں۔
+kot_sent_screen	KOT {kitchens} کو بھیجا گیا
+kot_queued_shop	{place} کا KOT → {kitchens} محفوظ؛ دکان کا آلہ اسے پرنٹ کرے گا
+kot_job_label	{place} کا KOT → {kitchens}
+kot_job_reached	{place} کا KOT {kitchens} تک پہنچ گیا
+kot_unassigned	باورچی خانہ (کوئی اسٹیشن نہیں)
+kot_unassigned_held	اسٹیشن کے بغیر {n} پکوان ہولڈ — بھیجنے کے لیے ہولڈ ہٹائیں
+kot_station_ph	باورچی خانہ
+kot_station_dd	باورچی خانہ
+kot_station_dd_n	باورچی خانہ · {stations}
+kot_set_station	یہ اسٹیشن استعمال کریں
+kot_station_applied	{n} ڈشز پر اسٹیشن لگایا: {station}
+kot_station_cleared	{n} ڈشز سے اسٹیشن ہٹایا: {station}
+kot_station_needed	پہلے باورچی خانہ اسٹیشن منتخب کریں
+kot_station_not_allowed	اس باورچی خانے کی اجازت نہیں: {station}
+kot_station_none	ابھی کوئی باورچی خانہ اسٹیشن نہیں — باورچی خانہ یا سیٹنگز → علاقے · اسٹیشن میں ایک شامل کریں
+pos_tab_items	شامل آئٹمز
+pos_tab_payment	ادائیگی
+hold_send	روکو
+hold_send_on	روکا ہوا
+hold_send_meta	روکا ہوا — اس KOT میں نہیں
+station_remove	اسٹیشن ہٹائیں
+station_remove_ph	ہٹانے کے لیے فہرست میں اسٹیشن دبائیں
+station_removed	اسٹیشن ہٹایا: {name}
+settings_hub_title	سیٹنگز
+settings_hub_help	ایک وقت میں ایک حصہ کھولیں — کم اسکرول، واضح انتخاب۔
+settings_back	واپس
+settings_sec_language	زبان اور کرنسی
+settings_sec_country	ملک اور ٹیکس
+settings_sec_tills	اضافی ٹل اور شاخیں
+settings_sec_brand	آپ کا برانڈ
+settings_sec_units	اکائیاں اور تبادلے
+settings_sec_pickers	علاقے · اسٹیشن · ٹیکس شرحیں
+settings_sec_printers	پرنٹرز
+settings_sec_bill	بل اور KOT فارمیٹ
+settings_sec_selling	اسکیمیں اور فروخت
+bill_kot_tab_bill	بل
+bill_kot_tab_kot	KOT
+settings_sec_alerts	اطلاعات
+alerts_help	حالت کے پیغامات آپ کے لیے اسکرین پر کتنی دیر رہیں (اس لاگ اِن کے لیے)۔
+snack_secs_ph	سیکنڈ (3–60، طے شدہ 10)
+snack_secs_save	اطلاع کا وقت محفوظ کریں
+snack_secs_saved	اطلاع کا وقت محفوظ ہو گیا — {n} سیکنڈ
+settings_sec_backup	بیک اپ اور بحالی
+settings_sec_diag	تشخیص
+diag_privacy_help	لاگ اسی ڈیوائس پر رہتے ہیں۔ راز (PIN، پاس ورڈ) کبھی محفوظ نہیں ہوتے۔ ڈیوائس سے باہر پیکج بھیجنے کے لیے ہر بار آپ کی واضح منظوری چاہیے — کبھی بیچا یا کسی تیسرے فریق کو نہیں دیا جاتا۔
+diag_level	تفصیل کی سطح
+diag_level_error	خرابیاں
+diag_level_warn	انتباہات
+diag_level_info	معلومات
+diag_level_debug	ڈیبگ
+diag_support_start	30 منٹ کا مدد سیشن شروع کریں
+diag_support_stop	مدد سیشن ختم کریں
+diag_support_started	مدد سیشن جاری — 30 منٹ ڈیبگ تفصیل
+diag_support_ended	مدد سیشن ختم ہوا
+diag_export_local	مقامی کاپی برآمد کریں
+diag_export_local_done	مقامی تشخیص {path} پر تیار — کاپی کہاں محفوظ کرنی ہے چنیں
+diag_approve_send	ڈیوائس سے باہر بھیجنے کی منظوری دیں
+diag_send_help	منظوری ایک پیکج کے لیے ہے، پھر ختم ہو جاتی ہے۔ عارضی — صرف پروڈکٹ ٹھیک یا بہتر کرنے کے لیے۔ کسی تیسرے فریق کو نہیں دیا جاتا۔ Linux، Windows، macOS اور Android پر چلتا ہے۔
+diag_send_approved	ایک پیکج بھیجنے کی منظوری ملی (جلد ختم ہوگی)
+diag_export_send	بھیجنے کا پیکج بنائیں (منظوری چاہیے)
+diag_export_send_done	بھیجنے کا پیکج {path} پر تیار — کہاں محفوظ کرنا ہے چنیں، پھر صرف Kumkaj مدد کو بھیجیں
+diag_save_bundle	تشخیصی کاپی محفوظ کریں
+diag_bundle_saved	تشخیصی کاپی {path} میں محفوظ ہوئی
+diag_bundle_failed	تشخیصی کاپی محفوظ نہیں ہو سکی — دوبارہ کوشش کریں
+diag_clear	تشخیصی لاگ صاف کریں
+diag_cleared	تشخیصی لاگ صاف ہو گئے
+sidebar_settings	سائیڈ بار
+sidebar_settings_help	سائیڈ پٹی جیسے ہی آئیکن۔ ترتیب بدلنے کے لیے قطار گھسیٹیں۔ دکھانے یا چھپانے کے لیے سوئچ بدلیں۔ سیٹنگز اور لاک ہمیشہ پٹی پر رہتے ہیں۔
+sidebar_always_on_short	ہمیشہ آن
+sidebar_back_settings	واپس
+sidebar_shown	دکھایا گیا
+sidebar_hidden	چھپایا گیا
+sidebar_always_on	ہمیشہ پٹی پر
+sidebar_shown_hint	سائیڈ پٹی / نیچے کے ٹیب پر دکھتا ہے
+sidebar_hidden_hint	پٹی سے چھپایا گیا
+sidebar_menu_items	مینو اور آئٹمز
+sidebar_enable_all	سب آن کریں
+sidebar_disable_all	سب بند کریں
+sidebar_order_saved	سائیڈ بار کی ترتیب محفوظ ہوئی
+sidebar_visibility_saved	سائیڈ بار کی نمائش محفوظ ہوئی
+amounts_hide	چھپائیں
+amounts_show	دکھائیں
+printers_none_hint	پہلے اس ڈیوائس پر پرنٹر محفوظ کریں، پھر اسے بل یا کسی باورچی خانے میں شامل کریں
+counter	کاؤنٹر
+dine_in	یہیں کھانا
+takeaway	پارسل
+order	آرڈر
+tables	میزیں
+kitchen	باورچی خانہ
+sales	فروخت
+sales_refunds	فروخت اور واپسی
+day_close	دن بند
+reports_expenses	رپورٹ اور خرچ
+nav_reports	رپورٹس
+nav_settings	سیٹنگز
+nav_lock	لاک
+no_sale_yet	ابھی کوئی فروخت نہیں
+favorites	پسندیدہ
+favorites_help	وہ اشیاء جو آپ اکثر بیچتے ہیں، آپ کے لاگ اِن کے لیے محفوظ ہیں۔ ایک کو بل میں شامل کریں، یا نیچے تمام اشیاء سے اپنی فہرست بنائیں۔
+your_favorites	آپ کی پسندیدہ
+all_items	تمام اشیاء
+frequent	اکثر
+added_items	شامل شدہ
+added_items_empty	اس آرڈر پر ابھی کچھ نہیں — All items یا زمرے سے شامل کریں۔
+frequent_config_help	مکمل بلوں سے سب سے زیادہ فروخت۔ کتنے دن دیکھیں اور کتنے دکھائیں یہاں بدلیں۔
+frequent_days_ph	دن (1)
+frequent_limit_ph	آئٹمز (24)
+frequent_apply	لاگو کریں
+frequent_saved	اکثر: پچھلے {d} دن، سرفہرست {n} — {c} ڈشز
+frequent_empty	اس مدت میں مکمل فروخت نہیں — بل نمٹائیں (سیٹنگز میں ₹0 جائز ہو تو) اور یہاں دکھیں گی۔
+zero_sales	صفر قیمت فروخت
+zero_sales_help	₹0 پکوان اور ₹0 ادائیگی کی اجازت دیں۔ بند ہو تو ادائیگی میں رقم چاہیے۔
+zero_sales_on	صفر فروخت: آن
+zero_sales_off	صفر فروخت: آف
+zero_sales_saved_on	صفر فروخت کی اجازت محفوظ (آن)
+zero_sales_saved_off	صفر فروخت کی اجازت محفوظ (آف)
+floor_areas_help	علاقے فلور پر کمرے/زون (Dine In, Parcel, AC …)۔ پہلے علاقہ شامل کریں، پھر میزیں — ہر علاقہ الگ گروپ ہے۔
+area_new_ph	نیا علاقہ / کمرہ (جیسے AC, Garden)
+add_area	علاقہ شامل کریں
+area_added	علاقہ “{name}” تیار — اس میں میزیں شامل کریں
+no_favorites	ابھی کوئی پسندیدہ نہیں — نیچے دی گئی فہرست سے اشیاء شامل کریں۔
+add_to_bill	بل میں شامل کریں
+added	شامل کر دیا
+owes_word	مقروض ہیں
+selected_word	منتخب
+chip_clear_credit	صاف — ادھار دیں یا ایڈوانس لیں
+chip_missing_customer	منتخب گاہک نہیں ملا — دوبارہ منتخب کریں
+chip_no_customer	ابھی کوئی گاہک نہیں — نام لکھیں، پھر Credit دبائیں
+credit_summary_fmt	{} گاہک · کھلا ادھار {} · ایڈوانس رکھا {}
+recent_label	حالیہ:
+kot_new_waiting	نیا — انتظار میں
+kot_preparing	تیار ہو رہا ہے
+kot_ready_serve	تیار — پیش کریں
+kot_done_cap	مکمل
+kot_cancelled	منسوخ
+kot_start_btn	شروع کریں
+kot_mark_ready	تیار نشان زد کریں
+kot_done_btn	ہو گیا
+table_free	خالی — آرڈر شروع کرنے کے لیے ٹیپ کریں
+start_order	آرڈر شروع کریں
+open_bill	بل کھولیں
+collect_payment	ادائیگی وصول کریں
+table_running	جاری ہے
+payment_pending	ادائیگی باقی
+collect_at_counter	کاؤنٹر پر وصول کریں
+inventory	اسٹاک
+inventory_stock	اسٹاک اور گنتی
+branches	شاخیں
+branches_org	شاخ اور تنظیم
+credit_customers	ادھار گاہک
+customer_name_ph	پارٹی کا نام
+new_customer_ph	نئی پارٹی کا نام
+item_name_ph	آئٹم کا نام (مثلاً Masala Dosa)
+item_price_ph	قیمت
+start_template	پروڈکٹ
+team	ٹیم
+team_pins	ٹیم اور پن
+my_pin_settings	میرا PIN
+settings_hub_help_my_pin	اس ڈیوائس پر سائن ان شخص کا ان لاک PIN بدلیں۔
+team_self_help	صرف آپ اپنا ان لاک PIN (اور اختیاری لاگ اِن پاس ورڈ) بدل سکتے ہیں۔ الگ اسکرینیں یا حقوق چاہیں تو مالک سے کہیں۔
+backup_settings	بیک اپ اور سیٹنگ
+lock_app	لاک
+pick	چنیں
+select	منتخب
+advance	آگے
+owner	مالک
+staff	عملہ
+photo	تصویر
+auto	خودکار
+prev	پچھلا
+next	اگلا
+ok	ٹھیک
+this_shop	سرور موڈ
+extra_till	کلائنٹ موڈ
+off	بند
+tables_kitchen	میزیں اور کچن
+server	سرور
+client	کلائنٹ
+language_currency	زبان اور کرنسی
+language	زبان
+choose_language	اپنی زبان چنیں
+language_setup_hint	اس ڈیوائس کی زبان کی پیروی کریں، یا خود ایک منتخب کریں۔
+lang_follow_platform	ڈیوائس کی زبان استعمال کریں
+lang_pick_user	منتخب زبان استعمال کریں
+lang_platform_now	ابھی ڈیوائس کی زبان
+selected_language	منتخب
+continue	جاری رکھیں
+this_device	یہ ڈیوائس
+device_use_q	یہ ڈیوائس کیسے استعمال ہوگی؟
+last_server_mode	پہلے سرور تھا — جاری رکھنے کے لیے ٹیپ کریں
+last_client_mode	پہلے کلائنٹ تھا — جاری رکھنے کے لیے ٹیپ کریں
+choose_server	سرور چنیں
+choose_server_hint	اس ڈیوائس پر پہلے سے سرور موجود ہیں۔ ایک کھولیں، یا دوسرے کاروبار کے لیے نیا سرور بنائیں۔
+create_new_server	نیا سرور بنائیں
+open_server	کھولیں
+new_server_name_ph	نئے سرور کا نام (اختیاری)
+server_remove_pin_ph	سرور ہٹانے کے لیے Owner PIN
+only_owner_remove_server	صرف Owner سرور ہٹا سکتا ہے
+owner_pin_remove_server	سرور ہٹانے کے لیے Owner PIN درکار ہے
+device_setup_help	سرور کھاتے یہیں رکھتا ہے۔ کلائنٹ کسی سرور سے جڑتا ہے۔
+app_template_heading	راجدھانی ایپ ٹیمپلیٹ
+app_template_blurb	راجدھانی مینو لوڈ کرتا ہے؛ مالک ظہیر (zahir)، ایڈمن آصف (asif، PIN 1111)، ویٹر نواز (nawaz، PIN 0000)؛ FOH سائیڈ بار؛ تاریخ 4 گھنٹے بعد صاف ہوتی ہے (اور بیک اپ میں ابھی صاف کریں)؛ آج کی پٹی بند؛ تنگ ٹرے کے لیے چھوٹا KOT + معیاری حاشیے۔ سائیڈ بار کے باقی حصے سیٹنگز میں دوبارہ آن کیے جا سکتے ہیں۔
+app_template_apply	راجدھانی ایپ ٹیمپلیٹ
+app_template_skip	ابھی چھوڑیں
+app_template_status	سرور تیار — راجدھانی ایپ ٹیمپلیٹ لگائیں، یا چھوڑیں
+app_template_importing	{title} لگا رہے ہیں…
+currency	کرنسی
+backup	بیک اپ
+use	استعمال کریں
+dont_use	استعمال نہ کریں
+add_branch	شاخ شامل کریں
+add_conversion	تبدیلی شامل کریں
+add_dishes_items	ڈشز اور آئٹمز شامل کریں
+add_item_plain	آئٹم شامل کریں
+add_note	نوٹ شامل کریں
+add_opening_balance	ابتدائی بیلنس شامل کریں
+add_staff	عملہ شامل کریں
+add_station	اسٹیشن شامل کریں
+add_table	میز شامل کریں
+add_unit	یونٹ شامل کریں
+add_use_name	یہ نام شامل کریں / استعمال کریں
+allow_extra_tills	اضافی ٹل کی اجازت دیں
+amend	ترمیم
+apply_country_pack	ملکی پیک لاگو کریں
+datetime_appearance	تاریخ اور وقت کی شکل
+datetime_appearance_help	بہی اندر سال-پہلے RFC3339 رکھتی ہے۔ یہ صرف بل، KOT، رپورٹس اور اسکرین پر تاریخ اور گھڑی کی شکل بدلتے ہیں۔
+datetime_example	ابھی کی مثال: {ex}
+date_order	تاریخ کی ترتیب
+date_order_dmy	د/م/س
+date_order_mdy	م/د/س
+date_order_ymd	س-م-د
+time_format	گھڑی
+time_format_24h	24 گھنٹے
+time_format_12h	12 گھنٹے
+attach_bill_photo	بل تصویر منسلک کریں
+attach_pdf	PDF منسلک کریں
+attach_photo	تصویر منسلک کریں
+attachments_last_expense	منسلکات (آخری خرچ)
+bank	بینک
+bank_in	بینک میں ڈالیں
+bank_out	بینک سے نکالیں
+bank_reconciliation	بینک مفاہمت (اپنے بینک اسٹیٹمنٹ سے ٹک کریں)
+bank_to_till	بینک → ٹل
+book_add_dish	بک — ڈش / آئٹم شامل کریں
+book_opening_credit	بک — ابتدائی ادھار
+branch_name_sell_ph	جس شاخ سے بیچنا ہے اس کا نام
+bring_my_book	میری بک لائیں
+business_tax_id_ph	کاروباری ٹیکس آئی ڈی
+caption_bank	بینک
+caption_bills	بل
+caption_outstanding	بقایا
+caption_payments_today	آج کی ادائیگیاں
+caption_today	آج
+card_amount_ph	کارڈ رقم
+cash_amount_ph	نقد رقم
+cash_memo	کیش میمو
+choose_icon	آئیکن چنیں
+choose_logo	لوگو چنیں
+clear_icon	آئیکن ہٹائیں
+clear_photo	تصویر ہٹائیں
+copy_day_book_csv	روز بک CSV کاپی
+copy_day_close	دن بند کاپی کریں
+copy_items_csv	آئٹم CSV کاپی
+copy_outstanding_csv	بقایا CSV کاپی
+copy_parties_csv	پارٹی CSV کاپی
+copy_party_ledger_csv	پارٹی لیجر CSV کاپی
+copy_receipt	رسید کاپی کریں
+share_whatsapp	واٹس ایپ شیئر
+lan_pages_heading	Wi‑Fi پر مہمان صفحات
+lan_pages_help	دکان کے وائی فائی پر مہمانوں کے صفحات چلتے ہیں: ڈسپلے بورڈ، ٹوکن، ایکسپو، کیوسک، ٹیبل QR اور رائے۔ موبائل ڈیٹا والے مہمانوں کے لیے بعد میں Cloud چاہیے۔ انٹرنیٹ ہو تو کارڈ ٹرمینل / ادائیگی لنک اختیاری ہے — یہ کاؤنٹر کو کبھی نہیں روکتا۔
+diag_send_heading	اس ڈیوائس سے باہر شیئر کریں
+kot_dest_heading	باورچی خانہ اسٹیشن
+optional_login_heading	اختیاری لاگ اِن
+rights_heading	اختیارات
+ops_panel	مقامی کام
+crm_heading	مہمان اور پیغام
+crm_help	سالگرہ، لائلٹی — SMS/WhatsApp قطار۔ {name}، {points}۔ مالک بھیجتا ہے۔
+crm_queue_sms	SMS قطار
+crm_queue_wa	WhatsApp قطار
+crm_seg_bday_week	سالگرہ ہفتہ
+crm_seg_bday_month	سالگرہ مہینہ
+crm_seg_phone	فون والے
+crm_seg_loyalty	لائلٹی
+crm_seg_inactive	غیر فعال
+crm_seg_top	ٹاپ خرچ
+birthday_ph	سالگرہ (MM-DD یا YYYY-MM-DD)
+crm_message_ph	سالگرہ مبارک {name}! آپ کے پاس {points} پوائنٹس ہیں۔
+till_apply_redeem	بل پر لگائیں
+till_clear_redeem	ریڈیم صاف
+till_wallet_topup	والیٹ ٹاپ اپ
+till_issue_voucher	واؤچر جاری
+till_points_ph	ریڈیم پوائنٹس
+till_wallet_ph	والیٹ خرچ
+till_voucher_code_ph	واؤچر کوڈ
+till_voucher_amt_ph	واؤچر رقم (خالی = سب)
+till_wallet_topup_ph	والیٹ ٹاپ اپ رقم
+till_voucher_issue_amt_ph	نیا واؤچر رقم
+till_voucher_issue_code_ph	نیا واؤچر کوڈ
+split_evenly	برابر تقسیم
+waitlist	ویٹ لسٹ
+fire_course	کورس بھیجیں
+hold_item	روکو
+waiter_call	ویٹر بلائیں
+waitlist_add	ویٹ لسٹ میں شامل کریں
+floor_view_grid	گرڈ
+floor_view_layout	لے آؤٹ
+floor_layout_x	X
+floor_layout_y	Y
+floor_layout_w	W
+floor_layout_h	H
+floor_layout_save	لے آؤٹ محفوظ کریں
+floor_layout_open	ٹیبل کھولیں
+floor_layout_edit	لے آؤٹ ترمیم
+floor_layout_pick	لے آؤٹ بدلنے کے لیے ٹیبل ٹیپ کریں
+floor_layout_saved	ٹیبل لے آؤٹ محفوظ ہو گیا
+floor_layout_nudge_left	← 20
+floor_layout_nudge_right	→ 20
+floor_layout_nudge_up	↑ 20
+floor_layout_nudge_down	↓ 20
+sibling_pickers_help	یونٹ کی طرح On/Off — علاقے، اسٹیشن، ٹیکس شرحیں روزمرہ پکر سے چھپائیں؛ پیک ڈیفالٹ رہیں گے۔
+bulk_price_apply	بلک قیمت لگائیں
+card_terminal_optional	کارڈ ٹرمینل / ادائیگی لنک (انٹرنیٹ ہو تو اختیاری)
+copy_report	رپورٹ کاپی کریں
+counted_cash_ph	دراز میں گنی نقدی
+country_tax	ملک اور ٹیکس
+tax_chrome	ٹل پر ٹیکس لیبل
+tax_chrome_help	بند ہونے پر آرڈر ڈیسک GST/ٹیکس اندازے کی قطاریں اور قیمت-میں-GST اشارے چھپا دیتا ہے۔ ٹیکس شرحیں اور ملک و ٹیکس سیٹنگز رہتی ہیں — لیبل کبھی بھی دوبارہ آن کریں۔ راجدھانی ایپ ٹیمپلیٹ اسے بند رکھ کر شروع ہوتا ہے۔
+tax_chrome_on	دکھائیں
+tax_chrome_off	چھپائیں
+tax_chrome_saved_on	ٹل پر ٹیکس لیبل
+tax_chrome_saved_off	ٹل پر ٹیکس لیبل چھپے
+tax_invoice_till	ٹل پر ٹیکس انوائس
+tax_invoice_help	بند ہونے پر بل صرف کیش میمو ہوتے ہیں اور آرڈر ڈیسک پر ٹیکس انوائس / کیش میمو چپس چھپ جاتے ہیں۔ راجدھانی ایپ ٹیمپلیٹ اسے بند رکھ کر شروع ہوتا ہے — ٹیکس انوائس دوبارہ چننے کے لیے کبھی بھی دکھائیں آن کریں۔
+tax_invoice_on	دکھائیں
+tax_invoice_off	چھپائیں
+tax_invoice_saved_on	ٹل پر ٹیکس انوائس
+tax_invoice_saved_off	ٹیکس انوائس چھپا — صرف کیش میمو
+pay_methods	ادائیگی کے طریقے
+pay_methods_help	ادائیگی لیں پر کون سے چپس نظر آئیں۔ نقد ہمیشہ رہتا ہے۔ راجدھانی ایپ ٹیمپلیٹ صرف نقد سے شروع ہوتا ہے — UPI / کارڈ / ادھار / تقسیم یہاں دوبارہ آن کریں۔
+create_backup	بیک اپ بنائیں
+credit_limit_heading	کریڈٹ حد (منتخب / نامی پارٹی)
+day_close_summary	دن بند خلاصہ
+delete_party	منتخب پارٹی حذف کریں
+delivery	ڈیلیوری
+done_open_books	ہو گیا — بکس کھولیں
+drawer_count	دراز گنتی (اختیاری)
+expense_heading	خرچ
+export_day	دن ایکسپورٹ کریں
+extra_note_bill_ph	اس بل / فروخت پر اضافی نوٹ
+extra_note_expense_ph	آخری خرچ پر اضافی نوٹ
+extra_tills_heading	اضافی ٹل
+other_devices_help_heading	دیگر ڈیوائسز سیٹ کریں
+other_devices_help	اس ڈیوائس پر (سرور): اضافی ٹل → اضافی ٹل کی اجازت دیں۔ جوڑنے کا کوڈ اور وائی‑فائی پتہ نوٹ کریں۔ اگر نظر آئے تو دیگر ڈیوائسز کو کنیکٹ ہونے دیں دبائیں۔ کمپیوٹر پر اس کمپیوٹر کے ساتھ شروع کریں دبائیں۔ ہر دوسری ڈیوائس پر: ایپ لگائیں، کلائنٹ موڈ چنیں، دکان کا سرور تلاش کریں (یا پتہ لکھیں)، جوڑنے کا کوڈ ڈالیں، ابھی جوڑیں۔ وائی‑فائی گرے تو آرڈر ڈیوائس پر رک جاتے ہیں اور سرور جواب دے تو چلے جاتے ہیں۔
+forget_shop	یہ دکان بھول جائیں
+goods_received	مال موصول
+import_day	دن امپورٹ کریں
+import_items_csv_plain	آئٹم CSV امپورٹ…
+import_parties_csv	پارٹی CSV امپورٹ…
+item_name	آئٹم کا نام
+kitchen_printing	کچن پرنٹنگ
+login_id_ph	لاگ ان آئی ڈی
+mark_cleared	کلیئر نشان زد کریں
+new_party_clear	نئی پارٹی (فارم صاف کریں)
+new_party_kind_supplier_ph	نئی پارٹی کی قسم (سپلائر)
+next_country	اگلا ملک
+next_order	اگلا آرڈر (ڈیسک صاف)
+note_gstin_ph	نوٹ / GSTIN / معاہدہ یاددہانی
+notes_attach_party	نوٹس اور منسلکات (منتخب پارٹی)
+notes_attach_sale	نوٹس اور منسلکات (منتخب فروخت)
+on_account_ap	کھاتے پر (AP)
+org_optional_ph	تنظیم (اختیاری)
+paid_by	ادائیگی بذریعہ
+paid_now	ابھی ادا
+pair_now	ابھی جوڑیں
+pairing_code_ph	پیئرنگ کوڈ
+party_name_selected_ph	پارٹی کا نام (یا منتخب استعمال کریں)
+password_ph	پاس ورڈ
+pay_ap_card	AP کارڈ سے ادا کریں
+pay_ap_cash	AP نقد ادا کریں
+pay_ap_heading	جو ہمیں انہیں دینا ہے (AP)
+pay_ap_upi	AP UPI ادا کریں
+pay_selected_heading	منتخب ادا کریں (قرض نمٹائیں / ایڈوانس)
+pick_from_items	ہماری آئٹمز سے چنیں
+prev_country	پچھلا ملک
+print_open	چھاپیں / کھولیں
+reason_amend_ph	ترمیم / منسوخی / واپسی کی وجہ
+reason_note_ph	وجہ / نوٹ (ضیاع، گنتی، …)
+record_day_close	دن بند درج کریں
+refresh_from_shop	دکان سے تازہ کریں
+refund	واپسی
+remove_selected	منتخب ہٹائیں
+request_bill	بل مانگیں
+restaurant_name_ph	ریستوراں کا نام (اختیاری)
+restore_backup	بیک اپ بحال کریں
+role_both	دونوں
+role_admin	ایڈمن
+role_cashier	کیشیئر
+role_customer	گاہک
+role_manager	مینیجر
+history_retention	کاروبار کی تاریخ
+history_retention_help	پرانی فروخت اور KOT خود بخود صاف کریں۔ مینو، عملہ اور سیٹنگز رہتی ہیں۔ ابھی صاف کریں تمام کاروباری قطاریں مٹاتا ہے اور سیٹ اپ رکھتا ہے۔
+history_off	رکھیں
+history_day_close	دن بند ہونے پر
+history_after_hours	گھنٹوں بعد
+history_hours_ph	گھنٹے (1–168، پہلے سے 4)
+history_hours_save	گھنٹے محفوظ کریں
+history_clear_now	تاریخ ابھی صاف کریں
+history_cleared	کاروبار کی تاریخ صاف — سیٹ اپ باقی رہا
+history_retention_saved	تاریخ صاف کرنے کی سیٹنگ محفوظ ہوئی
+history_hours_saved	تاریخ کے گھنٹے محفوظ ہوئے
+history_owner_only	صرف مالک یا ایڈمن تاریخ صاف کر سکتے ہیں
+rollup	رول اپ
+save_brand	برانڈ محفوظ کریں
+save_business_id	کاروباری آئی ڈی اور سروس % محفوظ کریں
+save_business_name	کاروبار کا نام محفوظ کریں
+save_features	منتخب عملے کی خصوصیات محفوظ کریں
+save_features_named	{name} محفوظ کریں
+save_features_ok	{name} کا سیٹ اپ محفوظ ہوا
+save_names	نام محفوظ کریں
+second_way	دوسرا طریقہ
+server_ip_ph	سرور IP (مثلاً 192.168.1.10)
+set_credit_limit	کریڈٹ حد مقرر کریں
+set_login_selected	منتخب پر لاگ ان لگائیں
+set_login_named	{name} پر لاگ ان لگائیں
+shop	دکان
+show	دکھائیں
+spreadsheet_csv	اسپریڈشیٹ (CSV)
+start_fresh	نئے سرے سے شروع کریں
+stop_extra_tills	اضافی ٹل بند کریں
+floor_cols_ph	کالم
+floor_cols_fit	اسکرین کے مطابق
+floor_cols_fit_sub	یہاں {n} آتے ہیں
+floor_cols_fits	سما جاتا ہے
+floor_cols_scroll	دائیں بائیں اسکرول
+floor_cols_min	کالم: کم از کم 1 — یا اسکرین کے مطابق رکھنے کے لیے خالی چھوڑیں
+floor_zoom_auto	خودکار
+floor_zoom_out	چھوٹا کریں
+floor_zoom_in	بڑا کریں
+backup_auto	روزانہ خودکار بیک اپ · آخری {when} · آخری 14 دن {dir} میں رکھے جاتے ہیں۔
+backup_auto_none	روزانہ خودکار بیک اپ — پہلا ابھی چلے گا۔
+backup_copy_to	نقول {dir} میں بھی جاتی ہیں۔
+backup_copy_btn	بیک اپ ایک فولڈر میں بھی کاپی کریں…
+autostart_off	اس کمپیوٹر کے ساتھ شروع کریں
+autostart_on	اس کمپیوٹر کے ساتھ شروع ہوتا ہے ✓ — روکنے کے لیے دبائیں
+autostart_done_on	اب کمپیوٹر شروع ہوتے ہی ایپ کھلے گی — بجلی جانے کے بعد بھی دکان کا سرور دوبارہ چلے گا۔
+autostart_done_off	اب کمپیوٹر شروع ہونے پر ایپ نہیں کھلے گی۔
+device_forgotten	دکان نے یہ ڈیوائس ہٹا دی — دکان کے موجودہ کوڈ سے دوبارہ جوڑیں۔ رکے ہوئے آرڈر محفوظ ہیں۔
+lan_offline	آف لائن
+forget_device	بھول جائیں
+last_seen	آخری بار
+copy_pair_code	پیئرنگ کوڈ کاپی کریں
+new_pair_code	نیا پیئرنگ کوڈ
+pair_finishing	پیئرنگ مکمل ہو رہی ہے… دکان کی کتابیں لگ رہی ہیں
+pair_opening	ٹل کھل رہا ہے…
+pair_copied	پیئرنگ کوڈ کاپی ہو گیا
+kot_waiting	بھیجنے کا انتظار
+lan_offline_waiting	آف لائن · {n} انتظار میں
+lan_connecting	دکان سے جڑ رہے ہیں…
+lan_live	لائیو
+lan_sending	{n} بھیجے جا رہے ہیں
+lan_sign_in_to_send	{n} بھیجنے کے لیے دوبارہ سائن ان کریں
+lan_pair_again	اس ڈیوائس کو دوبارہ جوڑیں
+lan_update_app	ایپ اپ ڈیٹ کریں — اس آلے اور دکان کے سرور کے ورژن مختلف ہیں
+allow_firewall	دوسری ڈیوائسز کو جڑنے دیں
+firewall_blocked	اس کمپیوٹر کا فائر وال دوسری ڈیوائسز کو روک رہا ہے — “دوسری ڈیوائسز کو جڑنے دیں” دبائیں۔
+firewall_waiting	ایڈمن اجازت کا انتظار…
+lan_join_help	دوسرے ڈیوائس اس سے جڑ سکتے ہیں — جوڑنے کا کوڈ {code}۔ دوسرے ڈیوائس پر کلائنٹ موڈ چنیں، پھر دکان کا سرور تلاش کریں، یا یہ پتہ لکھیں: {addr}
+lan_pair_status	وائی فائی {addr}
+lan_join_help_no_addr	پتہ پانے کے لیے اس ڈیوائس کو Wi‑Fi سے جوڑیں۔
+lan_no_address	اس ڈیوائس کا ابھی کوئی وائی فائی پتہ نہیں — اسے دکان کے وائی فائی سے جوڑیں۔
+lan_not_listening	ابھی ڈیوائس نہیں جڑ پا رہے — شاید کوئی دوسرا پروگرام پورٹ {port} استعمال کر رہا ہے۔ ایپ دوبارہ شروع کریں۔
+lan_tills_off	اضافی ٹل بند ہیں۔ اس دکان کے کھاتے اسی ڈیوائس پر رہتے ہیں۔ اگر کوئی دوسرا ڈیوائس بھی آرڈر لے یا بل بنائے تو اضافی ٹل کی اجازت دیں۔
+paired_with	{url} پر دکان سے جڑا ہوا
+not_paired	جڑا نہیں — دکان کے سرور سے جوڑیں۔
+choose_device_use	منتخب کریں کہ یہ ڈیوائس کیسے استعمال ہوگا۔
+paired_note	جڑ گیا۔ بیچنے کے لیے کھولیں، یا دکان سے تازہ ترین لینے کے لیے تازہ کریں۔
+last_update_at	دکان سے آخری اپ ڈیٹ: {time}۔
+pair_intro	سرور تلاش کریں، یا اس کا پتا اور پیئرنگ کوڈ لکھیں۔
+queue_waiting	دکان تک پہنچنے کے انتظار میں ({n}):
+queue_tries	{n} بار کوشش · آخری جواب: {e}
+save_backup_copy	بیک اپ کی کاپی محفوظ کریں…
+backup_copy_saved	بیک اپ کاپی محفوظ ہو گئی — اسے اس ڈیوائس سے باہر رکھیں (USB اسٹک یا دوسری ڈیوائس)
+backup_copy_overdue	{n} دن سے کوئی بیک اپ کاپی اس ڈیوائس سے باہر نہیں گئی — سیٹنگز → بیک اپ
+backup_copy_failed	بیک اپ کاپی وہاں محفوظ نہ ہو سکی — کوئی اور جگہ چنیں
+clock_off	اس ڈیوائس کی گھڑی دکان کے سرور سے {min} منٹ مختلف ہے — اس ڈیوائس پر درست وقت لگائیں
+printers_heading	اس ڈیوائس کے پرنٹر
+printers_help	ہر پرنٹر ایک بار شامل کریں، پھر منتخب کریں بل اور ہر باورچی خانہ کہاں پرنٹ ہو — فہرست میں پہلا پہلے آزمایا جاتا ہے؛ ناکام ہو تو اگلا۔ روٹ خالی = وہ فیچر پرنٹ نہیں۔ ہدف خالی (ڈیفالٹ)، سسٹم نام، یا نیٹ ورک پتہ (جیسے 192.168.1.50)। ہر ڈیوائس اپنے پرنٹر رکھتی ہے۔
+printers_host_only	پرنٹر دکان والے ڈیوائس (Server) پر سیٹ ہوتے ہیں۔ یہ ٹِل وہاں بل اور KOT بھیجتا ہے — تلاش / شامل / تفویض Server پر ہی رہتے ہیں۔ ٹیسٹ صفحہ اور بل پرنٹ سائز Server پر جاتے ہیں۔
+printers_find_heading	پرنٹر تلاش کریں
+printers_find_tip	تلاش اس ڈیوائس کو اسکین کر کے فہرست تازہ رکھتی ہے۔ سسٹم پرنٹرز پہلے؛ نیٹ ورک اسکین پس منظر میں جاری رہ سکتا ہے۔
+printers_pool_heading	1. آپ کے پرنٹر
+printers_pool_tip	تلاش اس ڈیوائس کو اسکین کر کے فہرست تازہ رکھتی ہے۔
+printers_pool_empty	(ابھی کوئی نہیں — نیچے شامل کریں)
+printers_routes_help	جگہ منتخب کریں، پھر پرنٹر۔ نام (KOT)، (Standard Portrait) یا (Standard Landscape) چیک۔ ↑↓ ترتیب (پہلا اعلیٰ)۔ ہٹانے کے لیے انچیک۔ آخر میں Done۔
+printer_assign_dd	{place} کے لیے پرنٹر منتخب کریں
+printer_assign_pick	اصل پرنٹر منتخب کریں
+printer_profile_heading	لے آؤٹ
+printer_send_heading	ڈیلیوری
+vp_delivery_heading	ڈیلیوری
+vp_delivery_help	یہ ورچوئل پرنٹر جاب کیسے بھیجتا ہے — OS دستاویز، خام بائٹس یا ESC/POS۔ سلپ مواد (حرف کا سائز، ریپ، مارجن) بل / KOT فارمیٹ طے کرتا ہے، یہاں نہیں۔
+vp_type_size_heading	حرف کا سائز
+vp_wrap_heading	ریپ چوڑائی
+vp_margin_heading	مارجن
+vp_delivery_spooler	OS دستاویز (سسٹم اسپولر)
+vp_delivery_raw	ڈیوائس کو خام بائٹس
+vp_delivery_escpos	ESC/POS تھرمل کمانڈز
+virtual_printer_new	نیا ورچوئل پرنٹر
+virtual_printer_selected	“{name}” ترمیم — فہرست میں دوسرے پر ٹیپ کر کے بدلیں
+virtual_printer_tap_list	فہرست میں ورچوئل پرنٹر پر ٹیپ کر کے ترمیم کریں
+config_layout_portrait	پورٹریٹ
+config_layout_landscape	لینڈسکیپ
+config_send_os	سسٹم اسپولر
+config_send_escpos	ESC/POS
+profiles_heading	لے آؤٹس
+profiles_empty	(ابھی کوئی لے آؤٹ نہیں)
+profile_builtin	بلٹ اِن
+profile_custom	حسب ضرورت
+profile_name_ph	لے آؤٹ کا نام
+profile_new	نیا لے آؤٹ
+profile_delete	لے آؤٹ حذف کریں
+profile_created	لے آؤٹ بن گیا
+profile_deleted	لے آؤٹ حذف ہو گیا
+profile_builtin_keep	بلٹ اِن لے آؤٹ حذف نہیں کیے جا سکتے
+config_saved	اپ ڈیٹ ہو گیا
+config_selected	“{name}” منتخب
+printer_output_heading	ورچوئل پرنٹر
+virtual_printers_heading	ورچوئل پرنٹر
+virtual_printers_empty	ابھی کوئی ورچوئل پرنٹر نہیں — نیچے قدریں سیٹ کر کے محفوظ کریں۔ کچھ ہونے کے بعد فہرست میں ٹیپ کر کے ترمیم کریں۔
+virtual_printer_name_ph	ورچوئل پرنٹر کا نام (اختیاری)
+virtual_printer_create	ورچوئل پرنٹر بنائیں
+virtual_printer_save	ورچوئل پرنٹر محفوظ کریں
+virtual_printer_delete	ورچوئل پرنٹر ہٹائیں
+virtual_printer_created	ورچوئل پرنٹر “{name}” بن گیا
+virtual_printer_deleted	ورچوئل پرنٹر “{name}” ہٹا دیا
+virtual_printer_updated	ورچوئل پرنٹر اپ ڈیٹ ہو گیا
+virtual_printer_updated_named	ورچوئل پرنٹر “{name}” اپ ڈیٹ ہو گیا
+virtual_draft_layout	اگلے ورچوئل پرنٹر کے لیے قدریں سیٹ
+virtual_draft_send	اگلے ورچوئل پرنٹر کے لیے قدر سیٹ
+virtual_need_real	پہلے اصل پرنٹر منتخب کریں
+virtual_need_select	ہٹانے کے لیے ورچوئل پرنٹر منتخب کریں
+real_printer_selected	اصل پرنٹر: {name}
+station_group_heading	ورچوئل پرنٹر
+station_group_apply	ورچوئل پرنٹر ہٹائیں
+station_group_applied	ہٹا دیا
+station_group_empty	ورچوئل پرنٹر منتخب کریں
+station_group_name_ph	ورچوئل پرنٹر کا نام (اختیاری)
+station_group_save	ورچوئل پرنٹر بنائیں
+station_group_saved	ورچوئل پرنٹر محفوظ
+station_manage_heading	باورچی خانہ اسٹیشن شامل / ہٹائیں
+printers_routes_heading	2. کہاں پرنٹ
+route_pick_heading	جگہ
+route_editing	ترمیم: {name}
+route_assigned	{printer} کو {place} میں شامل کیا
+route_already_assigned	اس جگہ پہلے سے: {printer}
+route_removed	{printer} کو {place} سے ہٹایا
+route_cleared	{name} صاف کیا
+route_assigned_empty	اس جگہ کچھ نہیں
+route_tap_remove	ہٹانے کے لیے دبائیں
+route_tap_select	منتخب کرنے کے لیے ٹیپ
+route_tap_selected	منتخب
+route_pick_printer_first	پہلے ایک پرنٹر ٹیپ کریں
+route_assigned_heading	پرنٹرز
+route_add_heading	تفویض
+printer_label_ph	نام (جیسے باورچی خانہ)
+printer_target_ph	پتہ یا سسٹم نام
+printer_target_default	ڈیفالٹ پرنٹر
+printer_wire_heading	فارمیٹ
+printer_wire_escpos	KOT
+printer_wire_os	معیاری پورٹریٹ
+printer_wire_os_portrait	معیاری پورٹریٹ
+printer_wire_os_landscape	معیاری لینڈسکیپ
+printer_wire_escpos_short	KOT
+printer_wire_os_short	پورٹریٹ
+printer_wire_os_landscape_short	لینڈسکیپ
+printer_format_custom	نیا اپنا فارمیٹ
+printer_format_custom_label	اپنا
+printer_format_custom_added	اس روٹ کے لیے اپنا فارمیٹ شامل ہو گیا
+add_printer	پرنٹر شامل کریں
+remove_printer	آخری ہٹائیں
+route_pick_ph	بل یا باورچی خانہ
+route_bill	بل
+route_default_kitchen	ڈیفالٹ باورچی خانہ
+route_kot_station	باورچی خانہ
+route_dont_print	پرنٹ نہ کریں
+stations_heading	باورچی خانہ اسٹیشن
+stations_help	ڈشز اور KOT کے لیے باورچی خانہ اسٹیشن شامل کریں۔ ہر اسٹیشن پر اس کے پرنٹر لگائیں (سیٹنگز → پرنٹرز میں ملیں گے)، ترجیح طے کریں، اور جو پہلے چلے یا سب پر چھاپیں چنیں۔ تبدیلیاں ساتھ ساتھ محفوظ ہوتی ہیں — محفوظ کریں بٹن نہیں۔
+station_print_heading	اس اسٹیشن کے پرنٹر
+station_print_help	اسٹیشن منتخب کریں، پھر ایک یا زیادہ پرنٹر جوڑیں۔ ↑↓ کوشش کی ترتیب۔ پہلا کامیاب رک جاتا ہے؛ سب پر پرنٹ ہر منسلک پرنٹر کو بھیجتا ہے۔
+station_print_pick_ph	پرنٹر سیٹ کرنے کا اسٹیشن
+station_print_pick_first	پہلے باورچی خانہ اسٹیشن منتخب کریں
+station_print_editing	“{name}” کے پرنٹر ترمیم
+station_vps_dd	اس اسٹیشن کے پرنٹر
+station_vps_dd_n	{n} پرنٹر · بدلنے کے لیے ٹیپ
+station_vps_empty	ابھی پرنٹر نہیں — سیٹنگز → پرنٹرز میں تلاش کریں
+bill_printers_dd	بل کے پرنٹر
+bill_printers_dd_n	بل کے لیے {n} پرنٹر · بدلنے کے لیے دبائیں
+job_layout	لے آؤٹ
+job_delivery	کام کیسے بھیجا جاتا ہے
+job_delivery_help	OS دستاویز، خام بائٹس یا ESC/POS۔ بل اور باورچی خانے کا ٹکٹ دونوں اپنا اپنا رکھتے ہیں۔ کوئی بھی کام تلاش کے محفوظ کیے کسی بھی پرنٹر پر جا سکتا ہے۔
+station_vp_attached	پرنٹر منسلک
+station_vp_detached	اسٹیشن سے پرنٹر ہٹا دیا
+station_print_summary	{mode} · {n} پرنٹر
+station_print_summary_none	اس اسٹیشن پر ابھی پرنٹر نہیں — پرنٹ نہیں ہوگا
+stations_none	ابھی کوئی اسٹیشن نہیں — نیچے ایک شامل کریں۔ مینو آئٹمز کوئی اسٹیشن لے سکتے ہیں تاکہ ان کا KOT وہیں چھپے۔
+route_up	اوپر
+route_down	نیچے
+route_remove	آخری ہٹائیں
+route_clear	پرنٹ نہ کریں
+save_printers	پرنٹر محفوظ کریں
+print_test_page	ٹیسٹ صفحہ چھاپیں
+no_printer_assigned	کوئی پرنٹر نہیں
+test_page_no_printer	{place} کے لیے پرنٹر نہیں — اوپر تفویض کریں، پھر دوبارہ کوشش کریں
+test_page_pick_first	پہلے ٹیسٹ پرنٹر منتخب کریں — پھر ٹیسٹ صفحہ چھاپیں
+test_printers_dd	ٹیسٹ صفحہ کے پرنٹر
+test_printers_dd_n	{n} ٹیسٹ پرنٹر · بدلنے کے لیے تھپتھپائیں
+kot_test_printers_dd	Test KOT کے پرنٹر
+kot_test_printers_dd_n	{n} Test KOT پرنٹر · بدلنے کے لیے تھپتھپائیں
+test_printer_picked	ٹیسٹ: {name}
+test_printer_cleared	ٹیسٹ نہیں: {name}
+test_page_sent_n	ٹیسٹ صفحہ {n} پرنٹروں کو بھیج دیا
+test_kot_pick_first	پہلے Test KOT کے پرنٹر منتخب کریں — پھر Test KOT
+test_kot_sent_n	Test KOT {n} پرنٹروں کو بھیج دیا
+cancel_pick	نشان
+cancel_pick_on	نشان لگایا
+cancel_pick_meta	منسوخ کے لیے نشان
+batch_cancel	نشان شدہ منسوخ
+batch_cancel_n	نشان شدہ منسوخ ({n})
+batch_cancel_none	پہلے بھیجے پکوان نشان کریں — پھر نشان شدہ منسوخ
+batch_cancel_title	نشان شدہ پکوان منسوخ — ایک وجہ، باورچی خانے کو ایک سلپ
+batch_cancel_ok	{n} پکوان منسوخ · {slips} سلپ → {kitchens}
+batch_cancel_ok_noprint	{n} پکوان منسوخ — KOT آٹو پرنٹ بند، سلپ نہیں
+no_printer_kitchen_station	اس باورچی خانہ اسٹیشن کے لیے پرنٹر نہیں — باورچی خانہ → باورچی خانہ اسٹیشن → اس اسٹیشن کے پرنٹر
+printers_saved	اس ڈیوائس کے پرنٹر محفوظ ہو گئے
+test_page_sent	ٹیسٹ صفحہ بھیج دیا — پرنٹر دیکھیں
+test_page_sent_one	ٹیسٹ صفحہ {name} کو بھیج دیا — وہی پرنٹر دیکھیں
+printers_found	{n} ملے: {list}
+printers_find_synced	{n} ملے — {new} نئے
+printer_on_device	محفوظ
+printer_already_added	پہلے سے شامل
+printer_already_saved	پہلے سے محفوظ: {name}
+find_printers	پرنٹر تلاش کریں
+printers_looking	اس ڈیوائس اور Wi‑Fi پر پرنٹر تلاش ہو رہے ہیں…
+saving_printer	پرنٹر شامل ہو رہا ہے…
+cancelled	منسوخ
+printers_tap_find	اس ڈیوائس کے پرنٹر دیکھنے کے لیے تلاش کریں دبائیں۔
+printers_none_found	کوئی پرنٹر نہیں ملا — سسٹم پرنٹر کا نام یا نیٹ ورک پتہ لکھیں (جیسے 192.168.1.50)।
+printer_from_find	{name} شامل کیا
+kot_printer_ph	KOT کا پرنٹر
+bill_printer_ph	بل کا پرنٹر
+kot_print_on	کچن پرنٹنگ: آن
+kot_print_off	کچن پرنٹنگ: آف
+queue_refused	دکان نے قبول نہیں کیا ({n}) — ہر ایک کو کاؤنٹر پر جانچیں:
+clear_not_accepted	جانچ لیا — یہ فہرست صاف کریں
+device_name_ph	اس ڈیوائس کا نام
+lan_last_update	آخری اپ ڈیٹ {time}
+lan_not_accepted	{n} قبول نہیں ہوئے
+connected_now	ابھی جڑا ہوا
+backup_failed	پچھلا خودکار بیک اپ ناکام رہا: {e}
+backup_overdue	{n} دن سے بیک اپ نہیں ہوا — بیک اپ کے لیے اس ڈیوائس پر ایپ کھلی رکھیں۔
+disk_low	اس ڈیوائس پر صرف {mb} MB جگہ باقی ہے — جلد ہی بیک اپ ناکام ہوں گے۔ کچھ جگہ خالی کریں۔
+last_seen_devices	آخری بار دیکھا: {time}
+sync_interval	ہر {secs} سیکنڈ میں سنک
+connection_to_shop	دکان سے کنکشن
+supplier_name_ph	سپلائر کا نام (یا پارٹی)
+supplier_ph	سپلائر
+switch_device	یہ ڈیوائس بدلیں
+take_payment	ادائیگی لیں
+tax_added_till	{tax} الگ
+tax_inside_price	{tax} شامل
+tax_invoice	ٹیکس انوائس
+till_to_bank	ٹل → بینک
+units_heading	یونٹس
+unlock_after_pairing	پن درج کریں
+unlock_with_login	لاگ ان سے ان لاک
+unmark	نشان ہٹائیں
+update_my_password	میرا پاس ورڈ بدلیں
+update_my_pin	میرا PIN بدلیں
+duress_heading	ہنگامی ان لاک PIN (صرف Owner)
+duress_help	اختیاری۔ ان لاک پر اپنے PIN کی بجائے یہ دیں تو فروخت کی تاریخ مٹ جاتی ہے — مینو، قیمتیں، میزیں، عملہ رہتا ہے۔ زبردستی پر ہی۔ خالی محفوظ کر کے بند۔ کسی کے PIN جیسا نہ ہو۔
+duress_pin_ph	ہنگامی PIN (4–12 ہندسے)
+duress_confirm_ph	دوبارہ ٹائپ کریں
+save_duress_pin	ہنگامی PIN محفوظ کریں
+clear_duress_pin	ہنگامی PIN بند کریں
+duress_on	ہنگامی ان لاک PIN آن ہے
+duress_off	ہنگامی ان لاک PIN آف ہے
+duress_saved	ہنگامی ان لاک PIN محفوظ ہو گیا
+duress_cleared	ہنگامی ان لاک PIN بند کر دیا
+upi_amount_ph	UPI رقم
+void	منسوخ کریں
+write_off_ap	AP معاف کریں
+write_off_heading	معاف کریں (ادائیگی کے بغیر نمٹائیں)
+write_off_nil	معاف کریں / بیلنس صفر
+your_brand	آپ کا برانڈ (ایپ میں)
+your_categories	آپ کے زمرے
+account_kind	کھاتے کی قسم (ایک دبائیں)
+actual_total_cap	اصل کل
+amend_help	ترمیم، منسوخی یا واپسی کے لیے فروخت منتخب کریں۔ ترامیم مکمل تاریخ رکھتی ہیں۔
+applied_total_cap	لاگو کل
+bank_balance	بینک بیلنس
+bank_net_today	آج کا بینک نیٹ
+branch_export_help	Export بیک اپ فولڈر میں branch_snapshot_CODE_DATE.json لکھتا ہے اور کلپ بورڈ پر کاپی کرتا ہے۔ دوسرے آؤٹ لیٹ کا دن امپورٹ کرنے کے لیے، اس کی فائل اسی فولڈر میں import_branch_snapshot.json نام سے رکھیں، پھر Import دبائیں۔
+brand_shown_help	ایپ کے اندر اسکرینوں پر دکھایا جاتا ہے۔ اس ڈیوائس پر انسٹال ایپ کا نام اور آئیکن پلیٹفارم لسٹنگ جیسا ہی رہتا ہے۔
+app_icon	ایپ آئیکن
+logo_help	ایپ کی اسکرینوں پر دکان کا اختیاری نشان۔
+onboard_layout	آپ کو کیا ملتا ہے
+item_photo_help	اختیاری۔ تصویر نہ ہو تو آئٹم کے نام کے پہلے حروف دکھاتے ہیں۔
+stamp_heading	مہر
+stamp_image_help	چھپے بلوں اور مہمان ڈسپلے پر اختیاری مہر کی تصویر۔
+payment_qr_heading	ادائیگی QR
+payment_qr_image_help	بلوں اور مہمان ڈسپلے پر مستقل QR؛ ورنہ ادائیگی اوپر کے VPA سے بنا ڈائنامک UPI QR لیتی ہے۔
+cash_in_hand	ہاتھ میں نقدی (ٹل)
+change_my_pin_heading	میرا PIN بدلیں (صرف آپ کا)
+connect_to_server	سرور سے جڑیں
+counter_locked	کاؤنٹر 01 · لاک
+country_pack_help	ملکی پیک ٹیکس کا نام اور حساب، فوری ادائیگی ریل، اور بلوں پر چھپنے والی کاروباری آئی ڈی مقرر کرتا ہے۔ Kumkaj کہیں بھی ٹیکس فائل نہیں کرتا یا سرکاری ای-انوائس جاری نہیں کرتا۔
+currency_use_help	اسکرول کریں اور کسی بھی معاون کرنسی کے لیے Use دبائیں۔
+day_close_help	دن بند درج کرنے سے یہ خلاصہ (گنتی ہو تو دراز فرق سمیت) آڈٹ لاگ میں محفوظ ہوتا ہے۔ یہ فروخت نہیں روکتا۔
+expenses_word	اخراجات
+feature_access_help	منتخب عملے کی خصوصیات تک رسائی (شامل کرنے کے بعد دبائیں)
+footer_local	مقامی SQLite · ہمیشہ مفت · کوئی کلاؤڈ نہیں
+fresh_book_khaynjo	Fresh = خالی مینو (ڈشز بعد میں مینو میں شامل کریں)۔ Book = نیچے ابتدائی آئٹم اور کون آپ کا مقروض ہے لکھیں۔
+fresh_selected	Fresh منتخب — کیٹلاگ خالی رہے گا۔ تیار ہونے پر Done دبائیں۔
+gross_word	مجموعی
+how_start	آپ کیسے شروع کرنا چاہتے ہیں؟
+kot_print_help_khaynjo	جب KOT بھیجا جاتا ہے — کاؤنٹر سے یا ویٹر کی ڈیوائس سے — کچن کا کاغذ یہاں خود بخود چھپتا ہے۔
+later_country_pack	بعد میں: سیٹنگز → ٹیکس اور ادائیگی کے لیبلوں کے لیے اپنا ملکی پیک لاگو کریں۔
+local_badge	مقامی
+mix_type_hint_khaynjo	ضرورت ہو تو نقد / UPI / کارڈ / ادھار میں بانٹیں۔ ادھار کے لیے اوپر گاہک چاہیے۔
+money_in_sales	رقم آئی (فروخت)
+net_word	نیٹ
+offline_badge	آف لائن
+optional_login_help	اختیاری لاگ ان (آئی ڈی + پاس ورڈ)۔ مالک ایک بار لگاتا ہے؛ بعد میں صرف صارف ہی پاس ورڈ بدل سکتا ہے۔
+or_unlock_login	یا لاگ ان آئی ڈی + پاس ورڈ سے ان لاک کریں
+permission_preset	اجازت پری سیٹ (کس تک رسائی)
+preset_help_khaynjo	کیشیئر: فروخت۔ مینیجر: فروخت + آئٹمز + منسوخی/ترمیم۔
+product_locked_khaynjo	Khaynjo
+product_only_khaynjo	یہ ایپ صرف Khaynjo ہے — ریستوران آپریٹنگ سسٹم۔ دوسرے کاروباروں کے لیے الگ Kumkaj پروڈکٹس ہیں۔
+purchases_cogs	خریداری (COGS)
+qty_cap	مقدار
+restore_help	Restore: ایک بیک اپ چنیں۔ کھاتے اُس وقت جیسے کھلیں گے؛ ابھی کے کھاتے پہلے محفوظ ہوتے ہیں، اس لیے یہ واپس ہو سکتا ہے۔
+wipe_data_heading	مقامی ڈیٹا حذف کریں
+wipe_data_help	صرف Owner — Windows ان انسٹال جیسا۔ کاروباری ریکارڈ تاریخ مٹاتے، مینو/سیٹ اپ رکھتے ہیں۔ دکان سیٹ اپ کتابیں ہٹاتا ہے۔ اسکرین ترجیحات ونڈو/زبان۔ Owner PIN سے تصدیق۔
+wipe_trading	کاروباری ریکارڈ
+wipe_schema	دکان سیٹ اپ
+wipe_ui	اسکرین ترجیحات
+wipe_owner_pin_ph	حذف کے لیے Owner PIN
+wipe_delete_selected	منتخب حذف کریں
+wipe_owner_only	صرف Owner مقامی ڈیٹا حذف کر سکتا ہے۔
+restore_owner_only	صرف Owner بیک اپ واپس لگا سکتا ہے۔
+wipe_owner_pin_needed	مقامی ڈیٹا حذف کرنے کے لیے Owner PIN درج کریں۔
+wipe_nothing_selected	پہلے کیا حذف کرنا ہے منتخب کریں۔
+wipe_done	منتخب مقامی ڈیٹا حذف ہو گیا۔
+wipe_schema_done	دکان سیٹ اپ مٹا — جاری رکھنے کے لیے Server یا Client منتخب کریں۔
+rounded_total	راؤنڈ کل
+setup_app_khaynjo	Khaynjo سیٹ کریں
+shop_logo_optional	دکان لوگو (اختیاری)
+stock_type_help	آئٹم کا نام لکھیں (اس کا حصہ ہی کافی ہے)، مقدار لکھیں، پھر ایڈجسٹ کریں۔ جو آئٹمز ابھی گنے نہیں گئے انہیں ایک بار Start tracking چاہیے۔
+team_owner_help	مالک ہر شخص کو نام، کردار عنوان، اجازت پری سیٹ اور ابتدائی PIN کے ساتھ بناتا ہے۔ مالک بعد میں کسی کا PIN نہیں بدل سکتا — صرف وہی شخص اپنا PIN بدل سکتا ہے۔
+staff_name_ph	اسٹاف نام / آئی ڈی
+staff_copy_hire_ph	سیٹ اپ کہاں سے کاپی کریں (اختیاری)
+staff_copy_hire	اس شخص کا سیٹ اپ استعمال کریں
+staff_edit_name_ph	دکھنے والا نام
+staff_rename	نام محفوظ کریں
+staff_copy_edit_ph	کسی اور شخص سے سیٹ اپ کاپی کریں
+staff_copy_edit	ان کا سیٹ اپ منتخب شخص پر کاپی کریں
+staff_copy_edit_onto	ان کا سیٹ اپ {name} پر کاپی کریں
+staff_deactivate_named	{name} کو ہٹائیں
+staff_renamed	نام محفوظ ہوا
+staff_setup_copied_hire	{name} سے سیٹ اپ کاپی ہوا — نیا نام اور PIN دیں، پھر عملہ شامل کریں
+staff_setup_copied_edit	{from} کا سیٹ اپ {to} پر کاپی ہوا
+staff_copy_need_selected	پہلے چنیں کس میں ترمیم کرنی ہے
+staff_copy_need_source	چنیں کس کا سیٹ اپ کاپی کرنا ہے
+staff_copy_same	یہ وہی شخص ہے — کوئی اور چنیں
+staff_rename_need_selected	پہلے چنیں کس کا نام بدلنا ہے
+team_pick_hint	چنیں کس میں ترمیم کرنی ہے — اسکرینیں، پیسے کے حقوق اور باورچی خانہ اسٹیشن صرف اسی شخص کے لیے دکھتے ہیں۔
+team_stations_help	وہ کون سے باورچی خانہ اسٹیشن استعمال کر سکتے ہیں
+team_stations_changed	باورچی خانہ اسٹیشن بدلے — اس شخص کا سیٹ اپ محفوظ کریں
+team_features_changed	اسکرینیں بدلیں — اس شخص کا سیٹ اپ محفوظ کریں
+team_rights_changed	حقوق بدلے — اس شخص کا سیٹ اپ محفوظ کریں
+they_owe_us	وہ ہمارے مقروض
+unit_at_cap	یونٹ نرخ
+units_help	آئٹم لیبلز کے کوڈ (kg, piece, bag)۔ ہر یونٹ کو — براہ راست یا دیگر یونٹس کے ذریعے — ایک معیار (kg · cm · ml · pc) سے منسلک ہونا چاہیے، مثلاً 1 crate = 2 box اور 1 box = 20 cm۔ تبدیلیاں: 1 from = factor to۔ کرنسیاں کبھی یونٹ نہیں ہوتیں۔
+units_picker_help	خرید اور مینو فہرستوں میں یونٹ دکھانے کے لیے آن/آف تھپتھپائیں۔ بند یونٹ اب بھی تبدیل ہوتے ہیں۔
+unit_picker_on	آن
+unit_picker_off	آف
+we_owe_them	ہم ان کے مقروض
+who_unlocking	کون ان لاک کر رہا ہے؟
+locked_word	لاک
+show_pin	PIN دکھائیں
+hide_pin	PIN چھپائیں
+set_owner_pin	مالک PIN لگائیں
+enter_owner_passcode	مالک پاس کوڈ ڈالیں
+enter_staff_passcode	عملے کا پاس کوڈ ڈالیں
+pin_count_zero	0 / 12 ہندسے · کم از کم 4، پھر OK
+pin_count_need	{} / 12 ہندسے · {} مزید درکار
+pin_count_full	12 / 12 ہندسے · OK دبائیں
+pin_count_ready	{} / 12 ہندسے · تیار ہونے پر OK دبائیں
+pin_hint_choose	4–12 ہندسے چنیں (کی بورڈ یا پیڈ) · محفوظ کرنے کے لیے Enter/OK
+pin_hint_new	نیا 4–12 ہندسوں کا مالک PIN (کی بورڈ یا پیڈ) · Enter/OK
+pin_hint_shop_code	دکان ڈیوائس · پیئرنگ کوڈ {}
+pin_hint_books	یہ ڈیوائس بکس رکھتی ہے
+pin_hint_paired	اضافی ٹل جڑا ہوا — بیچنے کے لیے ان لاک کریں
+pin_hint_pair_first	اضافی ٹل — پہلے دکان ڈیوائس سے جوڑیں
+unlock_to_continue	جاری رکھنے کے لیے ان لاک کریں
+no_staff_yet	ابھی کوئی عملہ نہیں — مالک کے طور پر ان لاک کریں، پھر Team
+status_server_set_pin	سرور موڈ — مالک PIN لگائیں
+status_server_tills	سرور موڈ — اضافی ٹل جڑ سکتے ہیں۔ ان لاک کریں
+status_server_unlock	سرور موڈ — مالک کے طور پر ان لاک کریں
+status_client_unlock	کلائنٹ موڈ — بیچنے کے لیے ان لاک کریں
+icon_new_selected	آئیکن: نئی فائل منتخب — برانڈ محفوظ کریں دبائیں
+icon_custom	آئیکن: آپ کی دکان کا نشان
+icon_default	آئیکن: Kumkaj نشان (پہلے سے طے شدہ) — اپنا منتخب کریں
+logo_yours	لوگو: آپ کی دکان کا لوگو — اسکرینوں اور رسیدوں پر دکھایا جائے گا
+logo_default	لوگو: Kumkaj نشان (پہلے سے طے شدہ) — اپنا ہو تو منتخب کریں
+tmpl_current	موجودہ: {} — {}
+tmpl_selected	منتخب: {} — {}
+setup_complete	سیٹ اپ مکمل
+onboard_fresh_tmpl	نیا · {} — کیٹلاگ خالی سے شروع؛ اشیاء میں شامل کریں، پھر Done دبائیں۔
+onboard_book_tmpl	کتاب · {} — اشیاء اور ابتدائی ادھار شامل کریں، پھر Done دبائیں۔
+onboard_template_tmpl	چاہیں تو جگہ کا نام دیں، پھر شروع کرنے کا طریقہ چنیں۔
+tmpl_blurb	میزیں، آرڈر، کچن ٹکٹ، بلنگ اور کھاتے۔
+tmpl_how	کاؤنٹر پر بیچیں؛ میزوں اور KOT کے لیے فلور؛ روزنامچے کے لیے کھاتے۔
+reports_facet_title	رپورٹس
+reports_facet_help	دن کی کتابیں، فریق ایجنگ، بینک پوسٹس اور مدت کا نفع نقصان۔
+against_bill_ph	اوپر والے بل # کے خلاف (اختیاری)
+aliases_ph	عرفی نام — دیگر نام، کاما سے الگ
+amount_blank_full_ph	رقم (خالی = پورا بقایا)
+amount_owed_ph	واجب الادا رقم
+amount_ph	رقم
+amount_received_ph	موصولہ رقم
+amount_we_pay_ph	ہم جو رقم دیتے ہیں
+business_name_ph	کاروبار کا نام
+category_new_ph	زمرہ (اختیاری، نیا ہو تو بن جائے گا)
+code_bag_ph	کوڈ (bag)
+conv_factor_ph	عامل (25 = 1 bag → 25 kg)
+country_code_ph	ملکی کوڈ مثلاً IN, GB, US, AE, BR
+credit_khata_amount_ph	ادھار / کھاتہ رقم
+credit_limit_ph	ادھار حد (0 = کوئی نہیں)
+from_code_ph	سے کوڈ (bag)
+item_name_lang_ph	شے کا نام — اپنی زبان میں لکھیں
+login_id_opt_ph	لاگ ان آئی ڈی (اختیاری)
+manager_pin_ph	مینیجر PIN (صرف اس صورت میں جب آپ منسوخ نہ کر سکیں)
+new_branch_name_ph	نئی شاخ کا نام
+new_password_ph	نیا پاس ورڈ (اختیاری)
+new_pin_ph	نیا PIN (4–12 ہندسے)
+note_bank_ph	نوٹ (جمع، نکاسی، …)
+note_buy_expense_ph	نوٹ (ایندھن، کرایہ، …)
+note_expense_ph	نوٹ (ایندھن، دفتر، …)
+options_khaynjo_ph	اختیارات (اختیاری) — Extra cheese=40, Large=80
+part_second_way_ph	دوسرے طریقے سے حصہ (اختیاری)
+phone_ph	فون
+place_name_ph	اس جگہ کا نام
+qty_example_ph	مقدار (مثلاً kg کے لیے 1.5)
+quantity_ph	مقدار
+reason_required_ph	وجہ (لازمی)
+role_title_ph	کردار عنوان (مثلاً Barista)
+service_pct_ph	سروس % اختیاری 0/10/12
+short_code_ph	مختصر کوڈ (MG02)
+starting_password_ph	ابتدائی پاس ورڈ (اختیاری)
+starting_pin_ph	ابتدائی PIN (4–12 ہندسے)
+station_name_ph	اسٹیشن کا نام (مثلاً Tandoor, Fryer, Cold)
+station_new_ph	باورچی خانہ اسٹیشن (اختیاری، مثلاً Tandoor — نیا ہو تو بن جائے گا)
+table_name_ph	میز کا نام (مثلاً Patio 1, Counter 2)
+tax_rate_ph	ٹیکس شرح کا نام یا % — Standard, Reduced, 0, 5, 12, 18, 20
+to_code_ph	کو کوڈ (kg)
+uncleared_no_ph	اوپر والا غیر کلیئر #
+unit_cost_ph	فی یونٹ لاگت
+unit_name_bag_ph	نام (Bag)
+unit_plate_ph	یونٹ (پلیٹ / پیس — خالی = ہر ایک)
+pay_credit	ادھار
+book_kind_today	آج کی کتاب
+book_kind_month	اس مہینے کی کتاب
+book_kind_aging	بقایا / ڈیبٹ-کریڈٹ
+book_kind_balance	بیلنس شیٹ
+order_help	کھلا آرڈر منتخب کریں، یا ٹیبل منتخب کر کے نیا شروع کریں۔ تیار آئٹمز پر ٹیپ کریں، KOT بھیجیں، ایک یا زیادہ آئٹمز کا بل بنائیں، بل تقسیم کریں اور ادائیگی طے کریں۔
+floor_help	ہر ٹیبل دکھاتی ہے کہ مہمان بیٹھے ہیں یا نہیں، ان کا کھلا بل کیا ہے اور اگلی خدمت کسے چاہیے۔
+kitchen_help	ہر ویرینٹ یا ہر آئٹم کے حساب سے تیار مقدار پر نظر رکھیں — KOT میں جیسے چاہیں درج کریں۔
+kitchen_empty	فی الحال کچھ کھلا نہیں — نئے آرڈر یہاں نظر آئیں گے۔
+add_a_table	ٹیبل شامل کریں
+add_station_heading	اسٹیشن شامل کریں · مثلاً تندور، ساؤتھ انڈین
+categories_help	زمرہ دکھاتا ہے کہ ڈش کس مینو حصے میں آتی ہے — مثلاً اسنیکس، مین کورس یا بریانی۔ زمرے اپنی مرضی سے بنائیں: ہمارے تجویز کردہ نام منتخب کریں، ان کے نام بدلیں یا اپنا شامل کریں۔
+dish_search_ph	آئٹم کا نام — ہمارے پکوان تلاش کریں یا اپنا لکھیں
+tile_free	خالی
+tile_occupied	مصروف
+tile_food_ready	کھانا تیار
+tile_bill_printed	بل چھپ گیا
+tile_paid	ادا ہو گیا
+tile_bill_btn	بل
+tile_occupy_btn	مہمان بٹھائیں
+tile_free_btn	میز خالی کریں
+tile_ready_btn	تیار
+tile_undo_bill	بل واپس
+summary_busy	میزیں مصروف
+summary_to_collect	وصول کرنا ہے
+summary_on_floor	فلور پر
+floor	فلور
+sizes_as_items_ph	سائز الگ آئٹم کے طور پر (اختیاری) — Half=120, Full=200
+dish_group_ph	پکوان گروپ (اختیاری) — مثلاً Paneer Tikka
+discount	رعایت
+remove_discount	رعایت ہٹائیں
+apply_discount	رعایت لگائیں
+save_opening_cash	ابتدائی نقد محفوظ کریں
+close_shift_print	شفٹ بند کریں اور پرچی چھاپیں
+area_prices_ph	حصے کی قیمتیں (اختیاری) — AC=220, Parcel=210
+discount_ph	10% یا 50
+discount_reason_ph	وجہ (مثلاً مستقل مہمان، کھانے میں تاخیر)
+opening_float_ph	آج صبح دراز میں رکھی نقدی
+shift_counted_ph	حوالگی پر گنی گئی نقدی
+opening_float	ابتدائی نقد
+shift_handover	شفٹ حوالگی
+shift_since	یہ شفٹ شروع
+expected_in_drawer	دراز میں متوقع
+right_discount	رعایت دینا
+floor_in_kitchen	باورچی خانے میں
+floor_eating	کھانا کھا رہے ہیں
+pick_category	زمرہ منتخب کریں
+close_category_list	زمروں کی فہرست بند کریں
+new_category_row	نیا زمرہ — آئٹم محفوظ کرنے پر بنے گا
+your_category	آپ کا زمرہ
+suggested_category	تجویز — ہمارے پکوانوں سے
+category_search_ph	زمرہ — اپنا تلاش کریں یا نیا لکھیں
+line_sent_state	باورچی خانے کو بھیجا گیا
+line_nc_state	مفت (NC) — کوئی چارج نہیں
+cancel_item_short	منسوخ
+nc_short	مفت
+charge_again_short	چارج
+move_short	منتقل
+cancel_item_title	یہ آئٹم منسوخ کریں — باورچی خانے کو منسوخی پرچی جائے گی
+nc_item_title	اس آئٹم کو مفت کریں (NC)
+charge_again_title	اس آئٹم کا دوبارہ چارج کریں
+move_item_title	یہ آئٹم دوسری میز پر منتقل کریں
+already_cooked	پہلے ہی پک چکا (ضیاع)
+not_cooked_yet	ابھی نہیں پکا
+return_to_customer	گاہک کو واپس کریں
+short_by	کم ہے
+tip_not_sale	ٹپ (عملے کی، فروخت نہیں)
+right_settle	ادائیگی لینا
+right_cancel_sent	بھیجا گیا آئٹم منسوخ کرنا
+right_complimentary	مفت دینا (NC)
+right_move_table	میز منتقل / یکجا کرنا
+right_reprint	بل دوبارہ پرنٹ کرنا
+right_allowed	اجازت ہے
+right_with_approval	منظوری کے ساتھ
+right_denied	اجازت نہیں
+editing_staff	ان کے اختیارات
+finding_server	اس وائی فائی پر دکان کا سرور تلاش ہو رہا ہے…
+no_server_found	کوئی سرور نہیں ملا۔ دیکھیں کہ دکان کا آلہ اسی وائی فائی پر اضافی ٹِل کی اجازت کے ساتھ ہے، یا اس کا IP لکھیں۔
+servers_found_pick	جس دکان سے جڑنا ہے اسے ٹیپ کریں۔
+server_host_selected	{host} استعمال — پیئرنگ کوڈ درج کریں، پھر ابھی پیئر کریں۔
+print_bill	بل پرنٹ کریں
+table_actions	میز کی کارروائیاں
+move_merge_table	میز منتقل / یکجا کریں
+move_help	اس میز کا آرڈر خالی میز پر لے جائیں، یا چلتی میز میں یکجا کریں۔
+move_target_ph	میز کا نام (مثلاً D5، P2)
+approval_pin_ph	مینیجر PIN (صرف پوچھنے پر)
+move_here	یہاں منتقل کریں
+merge_into	اس میں یکجا کریں
+line_reason_ph	وجہ (مثلاً مہمان نے ارادہ بدلا، اسٹاک ختم)
+line_qty_ph	کتنے منسوخ کریں (خالی = سب)
+line_target_ph	میز پر منتقل کریں (مثلاً D5)
+confirm	تصدیق کریں
+menu_search_ph	آئٹم یا شارٹ کوڈ تلاش کریں
+customer_paid_ph	گاہک نے دیے
+tip_ph	ٹپ
+table_area_ph	حصہ (مثلاً ڈائن اِن، پارسل، AC)
+table_range_ph	ایک ساتھ کئی: D1-D20
+add_these_tables	یہ میزیں شامل کریں
+remove_these_tables	یہ میزیں ہٹائیں
+table_remove_ph	ہٹائیں: T1-T24، یا ایک میز کا نام
+find_server	دکان کا سرور تلاش کریں
+bill_format	بل کی ترتیب
+bill_format_help	ہر بل پر آپ کے ریستوران کے نام کے نیچے چھپتا ہے۔ سطریں | سے الگ کریں (مثلاً MG Road, Rajkot | Ph 98250 00000)۔
+bill_header_ph	پتہ | فون
+fssai_ph	FSSAI لائسنس نمبر (بھارت)
+bill_footer_ph	فوٹر (مثلاً شکریہ، پھر تشریف لائیں)
+save_bill_format	بل کی ترتیب محفوظ کریں
+reset_bill_format	ڈیفالٹ پر واپس
+bill_format_reset	بل کی ترتیب ڈیفالٹ پر
+reset_kot_format	ڈیفالٹ پر واپس
+kot_format_reset	KOT فارمیٹ ڈیفالٹ پر
+kot_format	KOT فارمیٹ
+kot_format_help	باورچی خانے کی سلپس معیاری KOT — قیمتیں نہیں؛ پکوان ہمیشہ چھپتے ہیں۔ اختیاری سطریں، عنوان، کاپیاں، کاغذ کی چوڑائی اور حرف کا سائز نہیں کٹتے۔
+kot_format_fields	فیلڈز
+kot_field_next	اگلا فیلڈ
+kot_field_show	دکھائیں
+kot_field_hide	چھپائیں
+kot_field_on	دکھائیں
+kot_field_off	چھپائیں
+kot_field_size	فونٹ سائز
+kot_field_size_ph	جیسے 16, 20, 24, 28, 32…
+kot_weight_light	ہلکا
+bill_kot_panel_help	بل مواد اور باورچی خانے کی سلپ ٹائپوگرافی۔ اوپر کی مواد کی چوڑائی ہی بل اور باورچی خانے کی سلپ دونوں کی چوڑائی ہے۔
+std_size_ph	جیسے 18, 20, 26…
+kot_show_shop	دکان کا نام
+kot_hide_shop	دکان چھپائیں
+kot_show_time	وقت
+kot_hide_time	وقت چھپائیں
+kot_show_waiter	ویٹر
+kot_hide_waiter	ویٹر چھپائیں
+kot_show_station	اسٹیشن
+kot_hide_station	اسٹیشن چھپائیں
+kot_show_table	میز
+kot_hide_table	میز چھپائیں
+kot_show_kot_no	KOT نمبر
+kot_hide_kot_no	KOT نمبر چھپائیں
+kot_width	کاغذ کی چوڑائی
+kot_width_58	58 mm
+kot_width_80	80 mm
+kot_kind_heading	KOT قسم
+kot_kind_original	اصل
+kot_kind_duplicate	نقل
+kot_kind_modified	ترمیم شدہ
+kot_kind_cancelled	منسوخ
+kot_style_heading	فیلڈ سائز اور وزن
+kot_style_title	عنوان
+kot_style_item_qty	آئٹم · تعداد
+kot_style_field_pick	فیلڈ منتخب کریں
+kot_weight_regular	عام
+kot_weight_bold	موٹا
+kot_align	سیدھ
+kot_align_start	شروع کریں
+kot_align_center	درمیان
+kot_align_end	آخر
+content_width	مواد کی چوڑائی (ملی میٹر)
+content_width_bill	بل کی چوڑائی (mm)
+content_width_kot	KOT کی چوڑائی (mm)
+content_width_ph	یا مواد کی چوڑائی لکھیں، 40–210 ملی میٹر
+content_width_help	یہ پرچی کتنی چوڑی چھپے۔ بل اور KOT دونوں اپنی اپنی چوڑائی رکھتے ہیں۔
+content_width_bill_help	مہمان کا بل کتنا چوڑا چھپے۔ پہلے سے 210 mm (صفحہ)۔ 58 mm تنگ پرچی، 80 mm چوڑی پرچی، 112 mm 4-انچ، 210 mm A4-چوڑا۔ 40 سے 210 تک کوئی بھی قدر لکھیں۔ باورچی خانے کے ٹکٹ کی اپنی چوڑائی KOT ٹیب پر ہے۔
+content_width_kot_help	باورچی خانے کا ٹکٹ کتنا چوڑا چھپے۔ پہلے سے 80 mm۔ 58 mm تنگ پرچی، 80 mm چوڑی پرچی، 112 mm 4-انچ، 210 mm صفحہ۔ 40 سے 210 تک کوئی بھی قدر لکھیں۔ مہمان بل کی اپنی چوڑائی بل ٹیب پر ہے۔
+vp_paper_width	مواد کی چوڑائی (ملی میٹر)
+vp_paper_width_ph	یا مواد کی چوڑائی لکھیں، 40–210 ملی میٹر
+vp_paper_width_help	مواد کی چوڑائی بل اور KOT فارمیٹ میں سیٹ ہوتی ہے۔ یہ بل اور باورچی خانے کے ٹکٹ دونوں پر لاگو ہوتی ہے۔
+kot_size	حرف کا سائز
+kot_size_s	چھوٹا
+kot_size_m	عام
+kot_size_l	بڑا
+std_size	حرف کا سائز
+kot_copies	کاپیاں
+kot_copies_1	1
+kot_copies_2	2
+kot_copies_3	3
+kot_title_ph	عنوان (خالی = KOT - KITCHEN ORDER)
+kot_footer_ph	باورچی خانہ نوٹ (اختیاری، قیمت نہیں)
+kot_preview	پیش نظارہ
+save_kot_format	KOT فارمیٹ محفوظ کریں
+test_kot_format	ٹیسٹ KOT
+test_kot_sent	باورچی خانے کے ٹکٹ کا نمونہ بھیجا
+test_bill_format	ٹیسٹ بل
+test_bill_sent	بل کا نمونہ بھیجا
+test_print_no_printer	اس کام کے لیے پرنٹر نہیں — اسی اسکرین پر ایک چنیں
+kot_format_saved	KOT فارمیٹ محفوظ
+std_print	بل پرنٹ سائز
+std_print_help	اسٹینڈرڈ پورٹریٹ اور لینڈ اسکیپ بل جابز کے لیے حرف کا سائز (تھرمل KOT الگ)۔ دونوں رخ پر ایک ہی سائز۔
+std_size_s	چھوٹا
+std_size_m	عام
+std_size_l	بڑا
+save_std_print	بل پرنٹ سائز محفوظ کریں
+std_print_saved	بل پرنٹ سائز محفوظ
+print_brand_kit	پرنٹ برانڈ کٹ
+print_brand_kit_help	اختیاری اسٹیمپ اور ادائیگی QR بل اور LAN ڈسپلے پر۔ ادائیگی QR نہ ہو تو اوپر والے UPI سے رقم QR۔
+choose_stamp	اسٹیمپ چنیں
+clear_stamp	اسٹیمپ ہٹائیں
+stamp_set	اسٹیمپ: فائل پر — گیسٹ ڈسپلے اور بل پر نام
+stamp_none	اسٹیمپ: نہیں
+choose_payment_qr	ادائیگی QR چنیں
+clear_payment_qr	ادائیگی QR ہٹائیں
+payment_qr_set	ادائیگی QR: فائل پر — گیسٹ ڈسپلے پر (رقم UPI QR کی جگہ)
+payment_qr_none	ادائیگی QR: نہیں — ادائیگی پر UPI ID سے رقم QR
+aggregator_import	ایگریگیٹر آرڈر (فائل)
+aggregator_import_help	اختیاری Local: backups میں import_aggregator_orders.json رکھ کر Import۔ کاؤنٹر نہیں رکے گا؛ لائیو Zomato/Swiggy = Cloud۔
+import_aggregator_file	ایگریگیٹر فائل درآمد
+team_pick_ph	ترمیم کے لیے عملے کا نام
+select_staff	یہ عملہ منتخب کریں
+rights_help	اختیارات — بدلنے کے لیے دبائیں: اجازت ہے → منظوری کے ساتھ (اسی وقت مینیجر کا PIN) → اجازت نہیں۔
+dish_picker_help	ہمارے پکوان تلاش کریں یا دیکھیں اور کسی ایک کو دبائیں — اس کا نام اور تصویر بھر جائیں گے، یا اپنا نام رکھیں۔ قیمت لکھیں (0 بھی ٹھیک ہے)، پھر آئٹم شامل کریں۔
+close_dish_list	پکوانوں کی فہرست بند کریں
+own_item_name	اسے اپنے آئٹم کے نام کے طور پر استعمال کریں
+on_your_menu	آپ کے مینو میں
+edit	ترمیم
+schemes	اسکیم / آفر
+schemes_help	X خریدیں Y پائیں — سیٹل پر خود بخود۔ مثال Buy 2 Thali get 1 Chaas
+scheme_bogo_ph	2 Thali خریدیں تو 1 Chaas پائیں
+add_scheme	BOGO شامل کریں
+schedule_ph	وقت / ہیپی آور — Mon-Fri 07:00-11:00 یا HappyHour 17:00-19:00=150
+upi_vpa_ph	UPI ID (VPA)
+upi_payee_ph	UPI وصول کنندہ (اختیاری)
+upi_qr	UPI QR
+show_upi_qr	UPI QR دکھائیں
+close_upi_qr	بند
+upi_qr_help	مہمان اسکین کر کے ادا کرے۔ پھر Take payment دبائیں۔
+kot_recall	واپس لائیں
+recently_done	ابھی مکمل
+recall_kot_ph	واپس لانے کے لیے KOT #
+role_help_customer	کردار: گاہک — AR (وہ ہمارے مقروض)۔ وہی فرم سپلائر بھی ہو سکتی ہے۔
+role_help_both	کردار: بھیجنے والا + کیریئر — ایک فریق، AR اور AP کھاتے، رپورٹس میں نیٹ۔
+role_help_supplier	کردار: سپلائر — خریداری کے لیے AP۔
+dine_in_pick_table	ڈائن اِن کے لیے ٹیبل منتخب کریں…
+choose_table	ٹیبل منتخب کریں
+change_table	ٹیبل بدلیں
+pick_table_banner	اس آرڈر کے لیے ٹیبل منتخب کریں
+items_word	آئٹمز
+items_section	آئٹمز
+back_to_order	آرڈر پر واپس
+new_items_head	ابھی نہیں بھیجا
+price_ph	قیمت
+price_ph_gst_inside	قیمت ({tax} شامل)
+cancel_needs_table	باورچی خانے کے بعد منسوخ کرنے کے لیے یہ آرڈر فلور (میز) سے کھولیں — کاؤنٹر KOT ادائیگی تک ٹکٹ پر رہتے ہیں
+tax_rates_missing_hint	ان پکوانوں پر {tax} شرح نہیں — مینو میں ٹیکس شرح سیٹ کریں ({tax} inclusive میں قیمت میں پہلے سے {tax} ہے)
+taxable_value	قابلِ ٹیکس قیمت
+gst_inside_price_note	({tax} شامل)
+start_with_template	ہمارے مینو ٹیمپلیٹ سے شروع کریں
+template_heading	ہمارا مینو ٹیمپلیٹ
+template_info	{c} زمرے اور {d} ڈشیں تصاویر کے ساتھ تیار۔ قیمت ₹0 — بعد میں اپنی قیمت رکھیں۔
+template_import	مکمل ٹیمپلیٹ شامل کریں
+template_confirm	{d} ڈشیں ان کے زمروں سمیت شامل کریں؟ آپ کی موجودہ ڈشیں ویسی ہی رہیں گی۔
+template_yes	ہاں، شامل کریں
+template_importing	مینو درآمد…
+template_import_progress	درآمد… {d}/{t}
+template_done	ہمارے ٹیمپلیٹ کی ہر ڈش آپ کے مینو میں ہے۔
+template_imported	{d} ڈشیں اور {c} زمرے شامل ہوئے — اسی اسکرین پر قیمتیں رکھیں
+client_template_heading	کلائنٹ مینو
+client_template_info	{title}: {c} زمرے، {d} ڈشیں قیمتوں، تصاویر اور عرفی ناموں کے ساتھ۔ صرف غائب — آپ کے نام ویسے ہی رہیں گے۔
+client_template_import	یہ مینو شامل کریں
+client_template_confirm	{title} سے {d} ڈشیں شامل کریں؟ آپ کی موجودہ ویسی ہی رہیں گی۔
+client_template_importing	{title} درآمد…
+client_template_done	{title} کی ہر ڈش آپ کے مینو میں ہے۔
+client_template_imported	{title} سے {d} ڈشیں اور {c} زمرے شامل ہوئے
+resv_heading	ریزرویشن
+resv_name_ph	مہمان کا نام
+resv_phone_ph	فون (اختیاری)
+resv_guests_ph	مہمان
+resv_when_ph	کب — 20:30, tomorrow 13:00
+resv_table_ph	میز (اختیاری)
+resv_add	بک کریں
+resv_seat	بیٹھ گئے
+resv_none	کوئی آنے والی بکنگ نہیں۔
+guests_word	مہمان
+delivery_by_ph	ڈیلیوری کون لے جائے گا (رائیڈر یا عملہ)
+kitchen_all_day	ابھی پکانا ہے: {items}
+kitchen_all_day_head	ابھی پکانا ہے
+kitchen_tab_live	لائیو
+kitchen_tab_recall	واپس لائیں
+kitchen_tab_stations	اسٹیشن
+split_bill	بل تقسیم کریں
+split_go	الگ بل بنائیں
+cancel	منسوخ
+opening_client	کلائنٹ کھل رہا ہے…
+preparing_desk	ڈیسک تیار ہو رہا ہے…
+opening_server	سرور کھل رہا ہے…
+creating_server	سرور بن رہا ہے…
+split_help	ایک مہمان جن ڈشوں کی ادائیگی کرے گا انہیں دبائیں · {n} چنی
+split_send_first	پہلے KOT بھیجیں — صرف کچن تک پہنچی ڈشیں الگ بل میں جا سکتی ہیں
+split_pick_some	پہلے الگ بل کی ڈشیں دبائیں
+split_done	الگ بل بن گیا — فلور پر اسی میز کے ساتھ ہے
+split_marked	الگ بل
+order_empty_pick	آرڈر خالی ہے — ڈشیں چننے کے لیے اوپر “ڈشیں شامل کریں” دبائیں۔
+add_dishes	ڈشیں شامل کریں
+order_so_far	اس آرڈر میں: {n} · {total}
+no_dish_match	“{q}” سے ملتی کوئی ڈش نہیں
+pick_dishes_help	ڈش شامل کرنے کے لیے دبائیں · فہرست مختصر کرنے کے لیے زمرہ چنیں
+pick_done	ہو گیا
+pick_done_dd	ہو گیا · {label}
+printer_route_mode	اگر اس جگہ کئی پرنٹر ہوں
+printer_mode_first	جو پہلے چلے
+printer_mode_all	سب پر چھاپیں
+kot_show_area	علاقہ
+kot_hide_area	علاقہ چھپائیں
+kot_show_item_hdr	آئٹم · تعداد
+kot_hide_item_hdr	کالم چھپائیں
+kot_show_title	عنوان کی قطار
+kot_hide_title	عنوان چھپائیں
+kot_field_order	چھپائی کی ترتیب
+kot_field_up	اوپر کریں
+kot_field_down	نیچے کریں
+kot_field_cycle	اگلا چنیں
+kot_field_select	اگلا چنیں
+kot_field_time	وقت
+kot_field_kot_no	KOT نمبر
+kot_field_area	علاقہ
+kot_field_table	میز
+kot_field_shop	دکان کا نام
+kot_field_waiter	عملہ
+kot_field_station	اسٹیشن
+app_template_blurb_extra	ساتھ میں: مالک ظہیر، ایڈمن آصف، ویٹر نواز؛ FOH سائیڈ بار؛ 4 گھنٹے بعد تاریخ؛ آج کی پٹی بند؛ چھوٹا KOT۔
+dishes_n	{n} ڈشیں
+recipe_ph	ترکیب (اختیاری) — ایک پلیٹ میں لگتا ہے: Rice=0.2, Paneer=0.15
+reorder_ph	اتنے پر مزید خریدیں
+set_reorder	دوبارہ آرڈر کی حد رکھیں
+low_stock_alert	کم ہو رہا ہے — جلد خریدیں: {items}
+unpriced_note	آپ کے مینو کی {n} ڈشوں کی ابھی کوئی قیمت نہیں — قیمت رکھنے تک ان کا بل 0 بنے گا۔
+show_unpriced	صرف بغیر قیمت والی ڈشیں دکھائیں
+show_all_dishes	تمام ڈشیں دکھائیں
+role_waiter	ویٹر
+role_kitchen	باورچی خانہ
+role_title_rest_ph	عہدہ (مثلاً کیپٹن، ہیڈ کک)
+preset_help_rest	ویٹر: آرڈر لیتا اور میزیں سنبھالتا ہے۔ کیشیئر: ادائیگی بھی لیتا ہے۔ باورچی خانہ: کچن اسکرین۔ مینیجر: مینو، منسوخی اور رعایت بھی۔
+kind_raw	خام مال
+kind_resale	خرید کر فروخت
+kind_dish	ہماری ڈش
+buy_unit_ph	اکائی (کلو، لیٹر، عدد)
+add_another_way	+ ایک اور طریقہ
+parts_status	درج {a} / {b} · {c} باقی
+save_expense	خرچ محفوظ کریں
+rest_ph	باقی
+low_badge	کم
+stock_empty	ابھی اسٹاک میں کچھ نہیں — خرید میں درج کیا ہوا یہاں نظر آئے گا۔
+recent_changes	حالیہ تبدیلیاں
+lane_declared_label	ٹیکس انوائس
+lane_owner_label	کیش میمو
+money_lane_bill	بل: {lane}

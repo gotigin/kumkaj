@@ -1,0 +1,835 @@
+# Telugu — తెలుగు (te). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	కొరియర్ బుక్స్ + బుకింగ్ డెస్క్. ఉచిత ఆఫ్‌లైన్.
+unlock	అన్‌లాక్
+pin_hint	యజమాని PIN 0000 తో మొదలవుతుంది
+sell	బుకింగ్
+buy	చెల్లించు
+books	రోజు పుస్తకం
+books_help	నేటి స్థితి. బుకింగ్ = పార్సిళ్లు వచ్చాయి. చెల్లింపు = క్యారియర్ బిల్లులు & ఖర్చులు. పార్టీలు = పంపినవారు & క్యారియర్లు.
+buy_help	ఖర్చు వోచర్లు మరియు క్యారియర్ బిల్లులు (డబ్బు బయటకు). ఖాతాపై ఉన్నది పార్టీ లెడ్జర్‌లో ఉంటుంది.
+sell_money_in	పార్శిల్ బుక్ చేయి
+buy_money_out	ఖర్చు / క్యారియర్ బిల్
+record_purchase	కొనుగోలు నమోదు
+add_expense	ఖర్చు వోచర్
+bank_book	బ్యాంక్ బుక్
+credit_help	పార్టీ ఐడీ ప్రత్యేకం (పేర్లు పునరావృతం కావచ్చు). పాత్రలు: పంపినవారు (AR), క్యారియర్ (AP), లేదా అదే ఐడీపై ఇద్దరూ. లెడ్జర్లు విడివిడిగా ఉంటాయి; నివేదికలు నికరాన్ని చూపుతాయి.
+party_kind_ph	కస్టమ్ పాత్ర (ఐచ్ఛికం) — లేదా పై చిప్ నొక్కండి
+parties_list_heading	సేవ్ చేసిన పార్టీలు
+reports_help	రోజు పుస్తకం, రుణగ్రస్తులు & రుణదాతలు, బ్యాంక్ బుక్, ఖర్చు వోచర్లు, లాభనష్టాలు.
+reports_today	రోజు పుస్తకం (నేడు)
+reports_month	లాభనష్టాలు (నెల)
+reports_aging	బకాయి / Dr-Cr
+reports_balance_sheet	బ్యాలెన్స్ షీట్
+reports	నివేదికలు
+refresh	రిఫ్రెష్
+undo	రద్దు
+start_tracking	లెక్క ప్రారంభించు
+stock_minus	− నిల్వ
+stock_plus	+ నిల్వ
+settle_cash	నగదు చెల్లించు
+settle_card	కార్డుతో చెల్లించు
+items	రేట్లు & సేవలు
+nav_items	రేట్లు
+more	మరిన్ని
+your_items	మీ రేట్లు
+items_help	ప్రతి వరుస ఒక రేట్ (ఉదా. Surface Zone A). యూనిట్ సాధారణంగా kg. సవరించడానికి నొక్కండి.
+add_item	రేట్ జోడించు
+new_item	కొత్త రేట్
+adding_item	కొత్త రేట్ జోడిస్తోంది
+editing_item	సవరిస్తోంది
+save	సేవ్ చేయి
+remove	తొలగించు
+empty_catalog	ఇంకా రేట్లు లేవు. రేట్లు & సేవలు తెరిచి, ఒకటి జోడించండి (పేరు + ధర, యూనిట్ kg), తర్వాత బుకింగ్.
+counter_sale	కౌంటర్ బుకింగ్
+total	మొత్తం
+cash	నగదు
+upi	यूपीआई
+card	కార్డు
+credit	పార్టీలు
+clear	తుడిచివేయి
+ready_to_sell	బుకింగ్‌కు సిద్ధం
+today_prefix	ఈరోజు
+today_mid	ఈరోజు
+owed	బాకీ
+round_word	రౌండ్
+back	వెనుకకు
+sold_out	అమ్ముడైంది
+restock	తిరిగి పెట్టు
+not_tracked	లెక్క లేదు
+in_stock	నిల్వలో
+marked_sold_out	అమ్ముడైందని గుర్తు
+add_upper	జోడించు
+na	లేదు
+qty	సంఖ్య
+unit_at	ధర
+actual	వాస్తవం
+applied	వర్తింపు
+note_ph	గమనిక (ఐచ్ఛికం)
+rounded	రౌండ్
+split	విభజించు
+counter	కౌంటర్
+parcel	పార్సెల్
+order	ఆర్డర్
+sales	బుకింగ్‌లు
+sales_refunds	బుకింగ్‌లు & వాపసులు
+day_close	రోజు ముగింపు
+reports_expenses	నివేదికలు మరియు ఖర్చు
+nav_reports	నివేదికలు
+nav_settings	సెట్టింగ్‌లు
+nav_lock	లాక్
+sidebar_settings	సైడ్‌బార్ సెట్టింగ్‌లు
+sidebar_settings_help	పక్క పట్టీ లాంటి ఐకాన్లే. క్రమం మార్చడానికి వరుసను లాగండి. చూపడానికి లేదా దాచడానికి స్విచ్ మార్చండి. సెట్టింగ్‌లు, లాక్ ఎప్పుడూ పట్టీపై ఉంటాయి.
+sidebar_always_on_short	ఎప్పుడూ ఆన్
+sidebar_back_settings	వెనుకకు
+sidebar_shown	చూపబడింది
+sidebar_hidden	దాచబడింది
+sidebar_always_on	ఎప్పుడూ పట్టీపై
+sidebar_shown_hint	పక్క పట్టీ / కింది ట్యాబ్‌లలో చూపబడుతుంది
+sidebar_hidden_hint	పట్టీ నుండి దాచబడింది
+sidebar_menu_items	మెనూ & ఐటమ్‌లు
+sidebar_enable_all	అన్నీ ఆన్ చేయి
+sidebar_disable_all	అన్నీ ఆఫ్ చేయి
+sidebar_order_saved	సైడ్‌బార్ క్రమం సేవ్ అయింది
+sidebar_visibility_saved	సైడ్‌బార్ కనిపించే తీరు సేవ్ అయింది
+amounts_hide	దాచు
+amounts_show	చూపు
+no_sale_yet	ఇంకా అమ్మకం లేదు
+favorites	ఇష్టమైనవి
+favorites_help	మీరు తరచుగా అమ్మే వస్తువులు, మీ లాగిన్ కోసం సేవ్ చేయబడినవి. ఒకదాన్ని బిల్లుకు జోడించండి, లేదా క్రింద ఉన్న అన్ని వస్తువుల నుండి మీ జాబితాను తయారు చేయండి.
+your_favorites	మీ ఇష్టమైనవి
+all_items	అన్ని వస్తువులు
+no_favorites	ఇంకా ఇష్టమైనవి లేవు — క్రింది జాబితా నుండి వస్తువులను జోడించండి.
+add_to_bill	బిల్లుకు జోడించండి
+added	జోడించబడింది
+owes_word	అప్పు ఉన్నారు
+selected_word	ఎంచుకోబడింది
+chip_clear_credit	క్లియర్ — అప్పు ఇవ్వండి లేదా అడ్వాన్స్ తీసుకోండి
+chip_missing_customer	ఎంచుకున్న కస్టమర్ లేరు — మళ్లీ ఎంచుకోండి
+chip_no_customer	ఇంకా కస్టమర్ లేరు — పేరు రాయండి, తర్వాత Credit నొక్కండి
+credit_summary_fmt	{} కస్టమర్లు · ఓపెన్ క్రెడిట్ {} · అడ్వాన్సులు {}
+recent_label	ఇటీవలివి:
+inventory	నిల్వ
+inventory_stock	నిల్వ మరియు లెక్క
+branches	శాఖలు
+branches_org	శాఖ మరియు సంస్థ
+credit_customers	పార్టీలు (రుణగ్రహీతలు & రుణదాతలు)
+customer_name_ph	పార్టీ పేరు
+new_customer_ph	కొత్త పార్టీ పేరు
+item_name_ph	రేట్ పేరు (ఉదా. Surface Zone A)
+item_price_ph	kg కి / మొదటి స్లాబ్
+start_template	ఉత్పత్తి
+next_booking	తదుపరి బుకింగ్
+destination_ph	గమ్య నగరం / జోన్
+consignee_ph	స్వీకర్త
+consignee_phone_ph	స్వీకర్త ఫోన్
+consignee_address_ph	డెలివరీ చిరునామా
+origin_name_ph	పంపినవారి పేరు
+origin_phone_ph	పంపినవారి ఫోన్
+origin_address_ph	పికప్ / మూల చిరునామా
+booking_consignor_heading	పంపినవారు (కస్టమర్ / పంపేవారు)
+booking_consignee_heading	స్వీకర్త (రిసీవర్)
+booking_consignor_hint	నింపడానికి ఒక పార్టీని ఎంచుకోండి, లేదా నేరుగా వచ్చిన కస్టమర్‌కు ఖాళీగా వదలండి. ఇంటి పికప్, RTO కోసం అవసరం.
+booking_consignee_hint	పార్సెల్ స్వీకర్త. కౌంటర్‌లో నేరుగా ఇచ్చే పార్సెల్‌కు ఖాళీగా వదలండి.
+weight_kg_ph	వాస్తవ kg
+length_cm_ph	పొడవు cm
+breadth_cm_ph	వెడల్పు cm
+height_cm_ph	ఎత్తు cm
+chargeable_kg	ఛార్జ్ చేయదగిన kg
+awb_label	AWB
+booking_help	వాక్-ఇన్: గమ్యం → బరువు → రేట్ ఎంచుకో → ఖాతా/నగదు బుకింగ్ → చెల్లింపు. రసీదుపై AWB ముద్రిస్తుంది. తదుపరి బుకింగ్ డెస్క్ ఖాళీ చేస్తుంది.
+cart_empty_hint	డెస్క్ ఖాళీ — గమ్యం & బరువు సెట్ చేసి, రేటుపై ADD నొక్కి, తర్వాత చెల్లించండి.
+team	బృందం
+team_pins	బృందం మరియు పిన్
+my_pin_settings	నా PIN
+settings_hub_help_my_pin	ఈ పరికరంలో సైన్ ఇన్ అయిన వారి అన్‌లాక్ PIN మార్చండి.
+team_self_help	మీ అన్‌లాక్ PIN (ఐచ్ఛిక లాగిన్ పాస్‌వర్డ్ కూడా) మీరు మాత్రమే మార్చగలరు. వేరే స్క్రీన్లు లేదా హక్కులు కావాలంటే యజమానిని అడగండి.
+backup_settings	బ్యాకప్ మరియు సెట్టింగ్
+lock_app	తాళం
+pick	ఎంచుకో
+select	ఎంచుకో
+advance	తదుపరి
+owner	యజమాని
+staff	సిబ్బంది
+photo	ఫోటో
+auto	స్వయంచాలకం
+prev	మునుపటి
+next	తదుపరి
+ok	సరే
+this_shop	సర్వర్ మోడ్
+extra_till	క్లయింట్ మోడ్
+off	ఆఫ్
+server	సర్వర్
+client	క్లయింట్
+language_currency	భాష మరియు కరెన్సీ
+language	భాష
+choose_language	మీ భాషను ఎంచుకోండి
+language_setup_hint	ఈ పరికరం భాషను అనుసరించండి, లేదా మీరే ఒకదాన్ని ఎంచుకోండి.
+lang_follow_platform	పరికర భాషను ఉపయోగించు
+lang_pick_user	ఎంచుకున్న భాషను ఉపయోగించు
+lang_platform_now	ప్రస్తుత పరికర భాష
+selected_language	ఎంచుకున్నది
+continue	కొనసాగించు
+this_device	ఈ పరికరం
+device_use_q	ఈ పరికరం ఎలా ఉపయోగించబడుతుంది?
+last_server_mode	ఇంతకు ముందు సర్వర్ — కొనసాగించడానికి నొక్కండి
+last_client_mode	ఇంతకు ముందు క్లయింట్ — కొనసాగించడానికి నొక్కండి
+choose_server	సర్వర్‌ను ఎంచుకోండి
+choose_server_hint	ఈ పరికరంలో ఇప్పటికే సర్వర్లు ఉన్నాయి. ఒకదాన్ని తెరవండి, లేదా మరో వ్యాపారం కోసం కొత్త సర్వర్ సృష్టించండి.
+create_new_server	కొత్త సర్వర్ సృష్టించు
+open_server	తెరువు
+new_server_name_ph	కొత్త సర్వర్ పేరు (ఐచ్ఛికం)
+server_remove_pin_ph	సర్వర్ తొలగించడానికి Owner PIN
+only_owner_remove_server	సర్వర్‌ను Owner మాత్రమే తొలగించగలరు
+owner_pin_remove_server	సర్వర్ తొలగించడానికి Owner PIN అవసరం
+device_setup_help	సర్వర్ ఖాతాలను ఇక్కడే ఉంచుతుంది. క్లయింట్ ఒక సర్వర్‌తో జత అవుతుంది.
+currency	కరెన్సీ
+backup	బ్యాకప్
+settings_sec_diag	డయాగ్నస్టిక్స్
+settings_hub_help	ఒకసారి ఒక విభాగం తెరవండి — తక్కువ స్క్రోల్, స్పష్టమైన ఎంపికలు.
+settings_sec_devices	అదనపు టిల్‌లు & శాఖలు
+settings_sec_alerts	హెచ్చరికలు
+alerts_help	స్థితి సందేశాలు మీకు తెరపై ఎంతసేపు ఉండాలి (ఈ లాగిన్‌కు).
+snack_secs_ph	సెకన్లు (3–60, డిఫాల్ట్ 10)
+snack_secs_save	హెచ్చరిక సమయం సేవ్ చేయి
+snack_secs_saved	హెచ్చరిక సమయం సేవ్ అయింది — {n} సెకన్లు
+snack_secs_bad	సెకన్లను సంఖ్యగా ఇవ్వండి (3–60)
+cancelled	రద్దు చేయబడింది
+cancel	రద్దు
+opening_client	క్లయింట్ తెరుస్తోంది…
+preparing_desk	డెస్క్ సిద్ధం చేస్తోంది…
+opening_server	సర్వర్ తెరుస్తోంది…
+creating_server	సర్వర్ సృష్టిస్తోంది…
+diag_privacy_help	లాగ్‌లు ఈ పరికరంలోనే ఉంటాయి. రహస్యాలు (PIN, పాస్‌వర్డ్‌లు) ఎప్పుడూ నిల్వ చేయబడవు. పరికరం బయటకు ప్యాకేజీ పంపడానికి ప్రతిసారి మీ స్పష్టమైన ఆమోదం కావాలి — ఎప్పుడూ అమ్మబడదు, మూడో పక్షాలకు ఇవ్వబడదు.
+diag_level	వివరాల స్థాయి
+diag_level_error	లోపాలు
+diag_level_warn	హెచ్చరికలు
+diag_level_info	సమాచారం
+diag_level_debug	డీబగ్
+diag_support_start	30 నిమిషాల సహాయ సెషన్ ప్రారంభించు
+diag_support_stop	సహాయ సెషన్ ముగించు
+diag_support_started	సహాయ సెషన్ ఆన్ — 30 నిమిషాలు డీబగ్ వివరాలు
+diag_support_ended	సహాయ సెషన్ ముగిసింది
+diag_export_local	స్థానిక కాపీ ఎగుమతి చేయి
+diag_export_local_done	స్థానిక డయాగ్నస్టిక్స్ {path}లో సిద్ధం — కాపీ ఎక్కడ సేవ్ చేయాలో ఎంచుకోండి
+diag_approve_send	పరికరం బయటకు పంపడానికి ఆమోదించు
+diag_send_heading	ఈ పరికరం నుండి పంచుకోండి
+diag_send_help	ఆమోదం ఒక ప్యాకేజీకి, తర్వాత గడువు ముగుస్తుంది. తాత్కాలికం — ఉత్పత్తిని సరిచేయడానికి లేదా మెరుగుపరచడానికి మాత్రమే. మూడో పక్షాలతో పంచుకోబడదు. Linux, Windows, macOS, Androidలో పనిచేస్తుంది.
+optional_login_heading	ఐచ్ఛిక లాగిన్
+rights_heading	హక్కులు
+booking_scope_heading	దేశీయ / అంతర్జాతీయ
+diag_send_approved	ఒక ప్యాకేజీ పంపడానికి ఆమోదం వచ్చింది (త్వరలో గడువు)
+diag_export_send	పంపే ప్యాకేజీ సృష్టించు (ఆమోదం కావాలి)
+diag_export_send_done	పంపే ప్యాకేజీ {path}లో సిద్ధం — ఎక్కడ సేవ్ చేయాలో ఎంచుకోండి, తర్వాత Kumkaj సహాయానికి మాత్రమే పంపండి
+diag_save_bundle	డయాగ్నస్టిక్స్ కాపీ సేవ్ చేయి
+diag_bundle_saved	డయాగ్నస్టిక్స్ కాపీ {path}లో సేవ్ అయింది
+diag_bundle_failed	డయాగ్నస్టిక్స్ కాపీ సేవ్ కాలేదు — మళ్లీ ప్రయత్నించండి
+diag_clear	డయాగ్నస్టిక్ లాగ్‌లు తుడిచివేయి
+diag_cleared	డయాగ్నస్టిక్ లాగ్‌లు తుడిచేశారు
+use	ఉపయోగించు
+add_branch	శాఖను జోడించు
+add_conversion	మార్పిడి జోడించు
+add_item_plain	ఐటమ్ జోడించు
+add_note	గమనిక జోడించు
+add_opening_balance	ప్రారంభ నిల్వ జోడించు
+add_rider	రైడర్‌ను జోడించు
+add_staff	సిబ్బందిని జోడించు
+add_unit	యూనిట్ జోడించు
+add_use_name	ఈ పేరును జోడించు / ఉపయోగించు
+allow_extra_tills	అదనపు టిల్‌లను అనుమతించు
+amend	సవరణ
+apply_country_pack	దేశ ప్యాక్ వర్తింపజేయి
+datetime_appearance	తేదీ & సమయం రూపం
+datetime_appearance_help	పుస్తకాలు లోపల సంవత్సరం-ముందు RFC3339 ఉంచుతాయి. ఇవి రసీదులు, లేబుళ్లు, నివేదికలు, స్క్రీన్‌పై తేదీలు, గడియారాల రూపాన్ని మాత్రమే మారుస్తాయి.
+datetime_example	ఇప్పటి ఉదాహరణ: {ex}
+date_order	తేదీ క్రమం
+date_order_dmy	రో/నె/సం
+date_order_mdy	నె/రో/సం
+date_order_ymd	సం-నె-రో
+time_format	గడియారం
+time_format_24h	24 గంటలు
+time_format_12h	12 గంటలు
+attach_bill_photo	బిల్ ఫోటో జతచేయి
+attach_pdf	PDF జతచేయి
+attach_photo	ఫోటో జతచేయి
+bank	బ్యాంక్
+bank_in	బ్యాంక్‌లో వేయి
+bank_out	బ్యాంక్ నుండి తీయి
+bank_to_till	బ్యాంక్ → టిల్
+till_to_bank	టిల్ → బ్యాంక్
+mark_cleared	క్లియర్‌గా గుర్తించు
+unmark	గుర్తు తీసివేయి
+role_both	ఇద్దరూ
+role_carrier	క్యారియర్
+role_cashier	క్యాషియర్
+role_consignor	పంపినవారు
+role_manager	మేనేజర్
+role_supplier	సరఫరాదారు
+branch_name_sell_ph	అమ్మవలసిన శాఖ పేరు
+bring_my_book	నా బుక్ తీసుకురా
+business_tax_id_ph	వ్యాపార పన్ను ఐడీ
+card_amount_ph	కార్డు మొత్తం
+cash_amount_ph	నగదు మొత్తం
+upi_amount_ph	UPI మొత్తం
+carrier_cost_ph	క్యారియర్ ఖర్చు
+carrier_party_ph	క్యారియర్ పార్టీ
+choose_icon	ఐకాన్ ఎంచుకో
+choose_logo	లోగో ఎంచుకో
+choose_receipt_stamp	రసీదు స్టాంప్ ఎంచుకో
+choose_payment_qr	పేమెంట్ QR ఎంచుకో
+clear_icon	ఐకాన్ తీసివేయి
+clear_logo	లోగో తీసివేయి
+clear_photo	ఫోటో తీసివేయి
+clear_stamp	స్టాంప్ తొలగించు
+clear_payment_qr	పేమెంట్ QR తొలగించు
+print_faces	ముద్రణ రూపం (రసీదు / కాల బిల్)
+print_faces_help	బుకింగ్ రసీదులు, కాల బిల్లులపై మీ లోగో పక్కన ఐచ్ఛిక ముద్ర మరియు చెల్లింపు QR.
+awb_pools_heading	క్యారియర్ AWB నంబర్ పూల్స్
+add_awb_pool	AWB పూల్ జోడించు
+awb_pool_carrier_ph	క్యారియర్ పార్టీ పేరు
+awb_pool_start_ph	ప్రారంభ సంఖ్య
+awb_pool_end_ph	చివరి సంఖ్య
+awb_pool_prefix_ph	ఉపసర్గ (ఐచ్ఛికం)
+awb_pool_label_ph	లేబుల్ (ఐచ్ఛికం)
+pieces_ph	ముక్కలు (ఖాళీ = 1) — కార్గో / బహుళ ముక్కలకు విస్తరించండి
+bulk_awbs_ph	బల్క్ AWBలు — ఒకేసారి స్థితి ముందుకు జరపడానికి చాలా అతికించండి (కొత్త లైన్ లేదా కామా)
+tds_cut_ph	TDS కోత (ఐచ్ఛికం)
+discount_ph	తగ్గింపు (ఐచ్ఛికం)
+cheque_no_ph	చెక్ నంబర్ (ఐచ్ఛికం)
+bill_reminder_chase	బిల్ రిమైండర్ జాబితా
+month_mix_report	నెల మిశ్రమ నివేదిక
+copy_month_gst_csv	నెల GST CSV కాపీ
+domestic	దేశీయ
+international	అంతర్జాతీయ
+pick_logo	లోగో ఎంచుకో
+booking_scope_hint_domestic	వాల్యూమ్ ÷5000 (దేశీయ) — అంతర్జాతీయానికి ÷6000
+booking_scope_hint_intl	వాల్యూమ్ ÷6000 (అంతర్జాతీయ) — దేశీయానికి ÷5000
+cod_register	COD రిజిస్టర్
+collect_cod	COD వసూలు (AWB)
+consignments_dispatch	సరకులు & డిస్‌పాచ్
+consignor_party_ph	పంపినవారు / పార్టీ పేరు
+copy_day_book_csv	రోజు పుస్తకం CSV కాపీ
+copy_day_close	రోజు ముగింపు కాపీ
+copy_items_csv	ఐటమ్‌ల CSV కాపీ
+copy_outstanding_csv	బకాయి CSV కాపీ
+copy_parties_csv	పార్టీల CSV కాపీ
+copy_party_ledger_csv	పార్టీ లెడ్జర్ CSV కాపీ
+copy_receipt	రసీదు కాపీ
+copy_report	నివేదిక కాపీ
+counted_cash_ph	డ్రాయర్‌లో లెక్కించిన నగదు
+counter_agency_ph	కౌంటర్ / ఏజెన్సీ పేరు (ఐచ్ఛికం)
+create_backup	బ్యాకప్ సృష్టించు
+day_close_summary	రోజు ముగింపు సారాంశం
+delete_party	ఎంచుకున్న పార్టీని తొలగించు
+dispatch_to_rider	బుక్ చేసినది → రైడర్‌కు
+docket_charge_ph	డాకెట్ ఛార్జ్
+declared_value_ph	ప్రకటిత విలువ
+contents_ph	విషయాలు
+eway_ph	ఈ-వే బిల్ నం.
+insurance_label	భీమా (అవును/కాదు)
+yes_label	అవును
+no_label	కాదు
+print_route_label	ముద్రణ మార్గం
+new_party_kind_label	కొత్త పార్టీ రకం
+done_open_books	అయిపోయింది — బుక్స్ తెరువు
+export_day	రోజును ఎగుమతి చేయి
+extra_note_expense_ph	చివరి ఖర్చుపై అదనపు గమనిక
+extra_note_awb_ph	ఈ AWB / అమ్మకంపై అదనపు గమనిక
+failed_delivery	డెలివరీ విఫలం
+find_scan_awb	AWB కనుగొను / స్కాన్
+forget_shop	ఈ షాప్‌ను మర్చిపో
+fuel_ph	ఇంధనం
+handover_carrier	బుక్ చేసినది → క్యారియర్‌కు
+import_day	రోజును దిగుమతి చేయి
+import_items_csv	ఐటమ్‌లు / రేట్లు CSV దిగుమతి…
+import_parties_csv	పార్టీల CSV దిగుమతి…
+import_pincodes_csv	పిన్‌కోడ్ CSV దిగుమతి…
+import_carrier_bill_csv	క్యారియర్ బిల్ CSV దిగుమతి…
+copy_carrier_bill_report	చివరి క్యారియర్ బిల్ నివేదిక కాపీ
+use_carrier_cost	క్యారియర్ ఖర్చు వాడు
+rate_carrier_ph	క్యారియర్ (ఖాళీ = మా అమ్మకపు రేటు)
+rate_party_ph	పార్టీ (ఖాళీ = అందరు కస్టమర్లు)
+carrier_pick_ph	ఖర్చు కోసం క్యారియర్ (పోలిక నుండి)
+item_name	ఐటమ్ పేరు
+load_bulk_row	బల్క్ వరుస లోడ్ → డెస్క్
+login_id_ph	లాగిన్ ఐడీ
+mark_delivered	డెలివర్‌గా గుర్తించు
+manifest_cod_total	COD మొత్తం
+manifest_received_by	స్వీకరించినవారు
+manifest_sign	సంతకం
+ndr_address_wrong	చిరునామా తప్పు
+ndr_customer_unavailable	కస్టమర్ లేరు
+ndr_door_locked	తలుపు తాళం
+ndr_other	ఇతర
+ndr_refused	తిరస్కరించబడింది
+out_for_delivery	డెలివరీ కోసం బయటకు
+print_drs	DRS ముద్రించు
+print_run_sheet	రన్ షీట్ ముద్రించు
+reattempt	మళ్లీ ప్రయత్నం
+rider_cod_handed_ph	రైడర్ అందించిన COD
+settle_rider_cod	రైడర్ COD సెటిల్
+mode_desk	డెస్క్
+mode_rider	రైడర్
+waiting_office	ఆఫీస్ చేరే వేచి
+capture_signature	సంతకం తీసుకో
+incoming_manifest	ఇన్‌కమింగ్ మానిఫెస్ట్
+pickup_request	పికప్ అభ్యర్థన
+pickup_run	పికప్ రన్
+auto_assign_area	ప్రాంతం స్వయం కేటాయింపు
+reorder_stops	స్టాప్‌లు తిరిగి క్రమం
+settle_rider_pay	రైడర్ పే సెటిల్
+vehicle_inspect	వాహన తనిఖీ
+print_docket	సి-నోట్ ముద్రించు
+franchise_statement	ఫ్రాంచైజ్ స్టేట్‌మెంట్
+tally_export	టాలీ వోచర్ ఎగుమతి
+open_whatsapp	వాట్సాప్ తెరువు
+copy_sms	SMS టెక్స్ట్ కాపీ
+pick_barcode_image	స్కాన్ కోసం చిత్రం ఎంచుకో
+share_receipt_whatsapp	రసీదుని వాట్సాప్‌లో షేర్
+delivery_feedback	డెలివరీ అభిప్రాయం
+lan_self_book	LAN స్వీయ బుకింగ్
+new_party_clear	కొత్త పార్టీ (ఫారం ఖాళీ చేయి)
+new_party_kind_ph	కొత్త పార్టీ రకం (సరఫరాదారు / క్యారియర్)
+next_country	తదుపరి దేశం
+prev_country	మునుపటి దేశం
+note_gstin_ph	గమనిక / GSTIN / ఒప్పంద రిమైండర్
+note_pod_ph	గమనిక / POD (ఐచ్ఛికం)
+on_account_ap	ఖాతాపై (AP)
+org_optional_ph	సంస్థ (ఐచ్ఛికం)
+paid_now	ఇప్పుడు చెల్లించారు
+pairing_code_ph	జత కోడ్
+pair_now	ఇప్పుడు జత చేయి
+party_name_selected_ph	పార్టీ పేరు (లేదా ఎంచుకున్నది వాడండి)
+password_ph	పాస్‌వర్డ్
+pay_ap_card	AP కార్డుతో చెల్లించు
+pay_ap_cash	AP నగదు చెల్లించు
+pay_ap_upi	AP UPI చెల్లించు
+period_bill	కాల బిల్
+period_bill_party	కాల బిల్ (పార్టీ)
+pick_pod_photo	POD ఫోటో ఎంచుకో
+print_awb_label	AWB లేబుల్ ముద్రించు
+print_open	ముద్రించు / తెరువు
+reason_amend_ph	సవరణ / రద్దు / వాపసు కారణం
+reason_note_ph	కారణం / గమనిక (నష్టం, లెక్క, …)
+record_day_close	రోజు ముగింపు నమోదు చేయి
+refresh_from_shop	షాప్ నుండి రిఫ్రెష్
+refund	వాపసు
+remit_cod	COD చెల్లించు (పార్టీ)
+remove_selected	ఎంచుకున్నది తొలగించు
+restore_backup	బ్యాకప్ పునరుద్ధరించు
+rider_name_ph	రైడర్ పేరు
+rider_phone_ph	రైడర్ ఫోన్
+riders	రైడర్లు
+riders_own_fleet	రైడర్లు (స్వంత ఫ్లీట్)
+rollup	రోల్-అప్
+save_booking_measures	బుకింగ్ కొలతలు సేవ్ చేయి
+save_brand	బ్రాండ్ సేవ్ చేయి
+save_business_id	వ్యాపార ఐడీ & సేవ % సేవ్ చేయి
+save_business_name	వ్యాపార పేరు సేవ్ చేయి
+save_features	పని సెటప్ సేవ్ చేయి
+save_names	పేర్లు సేవ్ చేయి
+server_ip_ph	సర్వర్ IP (ఉదా. 192.168.1.10)
+set_credit_limit	క్రెడిట్ పరిమితి సెట్ చేయి
+set_login_selected	ఎంచుకున్నదానిపై లాగిన్ సెట్ చేయి
+set_login_named	{name}పై లాగిన్ సెట్ చేయి
+shop	షాప్
+start_fresh	కొత్తగా ప్రారంభించు
+stop_extra_tills	అదనపు టిల్‌లను ఆపు
+backup_auto	ప్రతిరోజూ ఆటోమేటిక్ బ్యాకప్ · చివరిది {when} · చివరి 14 రోజులు {dir} లో ఉంచబడతాయి.
+backup_auto_none	ప్రతిరోజూ ఆటోమేటిక్ బ్యాకప్ — మొదటిది కాసేపట్లో జరుగుతుంది.
+backup_copy_to	కాపీలు {dir} కి కూడా వెళ్తాయి.
+backup_copy_btn	బ్యాకప్‌లను ఒక ఫోల్డర్‌కు కూడా కాపీ చేయి…
+autostart_off	ఈ కంప్యూటర్‌తో ప్రారంభించు
+autostart_on	ఈ కంప్యూటర్‌తో ప్రారంభమవుతుంది ✓ — ఆపడానికి నొక్కండి
+autostart_done_on	ఇకపై ఈ కంప్యూటర్ ప్రారంభమైనప్పుడు యాప్ తెరుస్తుంది — కరెంటు పోయి వచ్చాక షాప్ సర్వర్ మళ్లీ నడుస్తుంది.
+autostart_done_off	ఇకపై కంప్యూటర్ ప్రారంభమైనప్పుడు యాప్ తెరవదు.
+right_allowed	అనుమతి ఉంది
+right_with_approval	ఆమోదంతో
+right_denied	అనుమతి లేదు
+editing_staff	వీరి హక్కులు
+team_pick_ph	సవరించాల్సిన సిబ్బంది పేరు
+select_staff	ఈ సిబ్బందిని ఎంచుకో
+rights_help	హక్కులు — మార్చడానికి నొక్కండి: అనుమతి → ఆమోదంతో (ఆ క్షణం మేనేజర్ PIN) → అనుమతి లేదు.
+right_void_refund	బుకింగ్ రద్దు లేదా రీఫండ్
+right_amend_sale	నమోదైన బుకింగ్ సవరణ
+find_server	షాప్ సర్వర్ కనుగొనండి
+finding_server	ఈ Wi‑Fiలో షాప్ సర్వర్ కోసం వెతుకుతోంది…
+no_server_found	సర్వర్ కనబడలేదు. షాప్ పరికరం అదే Wi‑Fiలో అదనపు టిల్ అనుమతితో ఉందో చూడండి, లేదా దాని IP టైప్ చేయండి.
+servers_found_pick	మీరు కనెక్ట్ కావాలనుకునే షాప్‌ను ట్యాప్ చేయండి.
+server_host_selected	{host} ఉపయోగిస్తున్నాం — పెయిరింగ్ కోడ్ ఇచ్చి, ఇప్పుడు పెయిర్ నొక్కండి.
+device_forgotten	షాప్ ఈ పరికరాన్ని తొలగించింది — షాప్ ప్రస్తుత కోడ్‌తో మళ్లీ జత చేయండి. వేచి ఉన్న ఆర్డర్‌లు ఉంచబడ్డాయి.
+forget_device	మర్చిపో
+last_seen	చివరిగా
+new_pair_code	కొత్త జత కోడ్
+lan_offline	ఆఫ్‌లైన్
+lan_offline_waiting	ఆఫ్‌లైన్ · {n} వేచి ఉన్నాయి
+lan_connecting	షాప్‌కు కనెక్ట్ అవుతోంది…
+pair_finishing	జత చేయడం ముగుస్తోంది… ఆఫీస్ పుస్తకాలు వర్తింపజేస్తోంది
+pair_opening	ఆఫీస్ తెరుస్తోంది…
+lan_live	లైవ్
+lan_sending	{n} పంపుతోంది
+lan_sign_in_to_send	{n} పంపడానికి మళ్లీ సైన్ ఇన్ చేయండి
+lan_pair_again	ఈ పరికరాన్ని మళ్లీ జత చేయండి
+lan_update_app	యాప్‌ను అప్‌డేట్ చేయండి — ఈ పరికరం, ఆఫీస్ సర్వర్ వేర్వేరు వెర్షన్లు
+allow_firewall	ఇతర పరికరాలను కనెక్ట్ అవ్వనివ్వు
+firewall_blocked	ఈ కంప్యూటర్ ఫైర్‌వాల్ ఇతర పరికరాలను అడ్డుకుంటోంది — “ఇతర పరికరాలను కనెక్ట్ అవ్వనివ్వు” నొక్కండి.
+firewall_waiting	అడ్మిన్ అనుమతి కోసం వేచి ఉంది…
+lan_join_help	ఇతర పరికరాలు దీనితో జత కావచ్చు — జత కోడ్ {code}. ఇతర పరికరంలో క్లయింట్ మోడ్ ఎంచుకుని, షాప్ సర్వర్ కనుగొనండి నొక్కండి, లేదా ఈ చిరునామా టైప్ చేయండి: {addr}
+lan_pair_status	వై‑ఫై {addr}
+lan_join_help_no_addr	చిరునామా కోసం ఈ పరికరాన్ని Wi‑Fiకి కనెక్ట్ చేయండి.
+lan_no_address	ఈ పరికరానికి ఇంకా Wi‑Fi చిరునామా లేదు — దీన్ని షాప్ Wi‑Fiకి కనెక్ట్ చేయండి.
+lan_not_listening	ప్రస్తుతం పరికరాలను స్వీకరించడం లేదు — మరో ప్రోగ్రామ్ పోర్ట్ {port}ను వాడుతుండవచ్చు. యాప్‌ను మళ్లీ ప్రారంభించండి.
+lan_tills_off	అదనపు టిల్‌లు ఆఫ్‌లో ఉన్నాయి. ఈ ఆఫీస్ ఖాతాలు ఈ పరికరంలోనే ఉంటాయి. మరో పరికరం కూడా పార్సిల్‌లు బుక్ చేయాలన్నా చెల్లింపులు తీసుకోవాలన్నా అదనపు టిల్‌లను అనుమతించండి.
+paired_with	{url} వద్ద ఉన్న షాప్‌తో జత అయింది
+not_paired	జత కాలేదు — షాప్ సర్వర్‌కు కనెక్ట్ చేయండి.
+choose_device_use	ఈ పరికరాన్ని ఎలా వాడాలో ఎంచుకోండి.
+paired_note	జత అయింది. అమ్మడానికి అన్‌లాక్ చేయండి, లేదా షాప్ నుండి తాజా వివరాలకు రిఫ్రెష్ చేయండి.
+last_update_at	షాప్ నుండి చివరి అప్‌డేట్: {time}.
+pair_intro	సర్వర్‌ను కనుగొనండి, లేదా దాని చిరునామా, జత కోడ్ టైప్ చేయండి.
+queue_waiting	షాప్‌కు చేరడానికి వేచి ఉన్నాయి ({n}):
+queue_tries	{n} సార్లు ప్రయత్నం · చివరి జవాబు: {e}
+save_backup_copy	బ్యాకప్ కాపీ సేవ్ చేయి…
+backup_copy_saved	బ్యాకప్ కాపీ సేవ్ అయింది — దీన్ని ఈ పరికరం బయట ఉంచండి (USB స్టిక్ లేదా మరో పరికరం)
+backup_copy_overdue	{n} రోజులుగా ఏ బ్యాకప్ కాపీ ఈ పరికరం బయటకు వెళ్లలేదు — సెట్టింగ్‌లు → బ్యాకప్
+backup_copy_failed	బ్యాకప్ కాపీని అక్కడ సేవ్ చేయలేకపోయాం — వేరే చోటు ఎంచుకోండి
+clock_off	ఈ పరికరం గడియారం షాప్ సర్వర్ కంటే {min} నిమిషాలు తేడాగా ఉంది — ఈ పరికరంలో సరైన సమయం పెట్టండి
+printers_heading	ఈ పరికరంలోని ప్రింటర్లు
+printers_help	ప్రతి ప్రింటర్‌ను ఒకసారి జోడించి, రసీదులు మరియు AWB లేబుల్స్ ఎక్కడ ప్రింట్ అవుతాయో ఎంచుకోండి — జాబితాలో మొదటిది మొదట ప్రయత్నించబడుతుంది; విఫలమైతే తదుపరి. మార్గం ఖాళీ = ఆ ఫీచర్ ప్రింట్ కాదు. లక్ష్యం ఖాళీ (డిఫాల్ట్), సిస్టమ్ పేరు, లేదా నెట్‌వర్క్ చిరునామా (ఉదా. 192.168.1.50). ప్రతి పరికరం తన ప్రింటర్లను ఉంచుకుంటుంది.
+job_width	కంటెంట్ వెడల్పు (మిమీ)
+job_width_ph	లేదా వెడల్పు టైప్ చేయండి, 40–210 mm
+job_layout	లేఅవుట్
+job_delivery	పని ఎలా పంపబడుతుంది
+job_size	ఫాంట్ పరిమాణం
+job_size_ph	ఉదా. 18, 20, 26…
+save_receipt_format	రసీదు ఫార్మాట్ సేవ్ చేయి
+save_label_format	లేబుల్ ఫార్మాట్ సేవ్ చేయి
+test_receipt_format	టెస్ట్ రసీదు
+test_label_format	టెస్ట్ లేబుల్
+test_receipt_sent	నమూనా రసీదు పంపారు
+test_label_sent	నమూనా లేబుల్ పంపారు
+test_print_no_printer	ఆ పనికి ప్రింటర్ లేదు — ఈ చోటు కింద ఒకటి జోడించండి
+printers_host_only	ప్రింటర్లు షాప్ పరికరం (Server)పై సెట్ అవుతాయి. ఈ టిల్ అక్కడికి జాబ్‌లు పంపుతుంది — కనుగొను / జోడించు / అసైన్ Serverపైనే ఉంటాయి. టెస్ట్ పేజీ Serverకు వెళ్తుంది.
+printers_pool_heading	ప్రింటర్లు
+printers_routes_heading	ఎక్కడ ప్రింట్
+printer_label_ph	పేరు (ఉదా. డెస్క్)
+printer_target_ph	host:9100 · bt:MAC · usb:VID:PID · సిస్టమ్ పేరు
+printer_mode_heading	ఎంచుకున్న మార్గానికి ఫార్మాట్
+printer_mode_standard	ప్రామాణిక పోర్ట్రెయిట్
+printer_mode_landscape	ప్రామాణిక ల్యాండ్‌స్కేప్
+printer_mode_thermal	థర్మల్
+printer_mode_standard_short	పోర్ట్రెయిట్
+printer_mode_landscape_short	ల్యాండ్‌స్కేప్
+printer_mode_thermal_short	థర్మల్
+printer_format_custom	కొత్త అనుకూల ఫార్మాట్
+printer_format_custom_label	అనుకూల
+printer_format_custom_added	ఈ మార్గానికి అనుకూల ఫార్మాట్ జోడించబడింది
+add_printer	ప్రింటర్ జోడించు
+remove_printer	చివరిది తీసివేయి
+route_pick_ph	receipt లేదా label
+route_add_printer_ph	ఈ మార్గంలో ప్రింటర్ జోడించు
+route_receipt	రసీదు
+route_label	AWB లేబుల్
+route_dont_print	ప్రింటర్ కేటాయించలేదు
+route_add	మార్గంలో జోడించు
+route_up	పైకి
+route_down	కిందికి
+route_remove	చివరిది తీసివేయి
+route_clear	ఈ చోటు ప్రింటర్లు తుడువు
+save_printers	ప్రింటర్లను సేవ్ చేయి
+print_test_page	టెస్ట్ పేజీ ముద్రించు
+printers_saved	ఈ పరికరం ప్రింటర్లు సేవ్ అయ్యాయి
+test_page_sent	టెస్ట్ పేజీ పంపబడింది — ప్రింటర్ చూడండి
+printers_found	ఈ పరికరంలో దొరికినవి: {list}
+find_printers	ప్రింటర్లను కనుగొను
+printers_looking	ఈ పరికరం, Wi‑Fiలో ప్రింటర్లు వెతుకుతోంది…
+printers_tap_find	పనులు స్వీకరించే క్యూలు, ఈ Wi‑Fiలోని నెట్‌వర్క్ రసీదు ప్రింటర్ల కోసం ప్రింటర్లు వెతుకు నొక్కండి (తీసేసినవి లేదా ఆఫ్‌లైన్‌వి కాదు).
+printers_none_found	ప్రింటర్లు దొరకలేదు — సిస్టమ్ ప్రింటర్ పేరు, లేదా నెట్‌వర్క్ చిరునామా టైప్ చేయండి (ఉదా. 192.168.1.50).
+receipt_printer_ph	రసీదు ప్రింటర్
+queue_refused	షాప్ అంగీకరించలేదు ({n}) — ప్రతిదాన్నీ కౌంటర్ వద్ద తనిఖీ చేయండి:
+clear_not_accepted	తనిఖీ చేశాను — ఈ జాబితా తొలగించు
+device_name_ph	ఈ పరికరం పేరు
+lan_last_update	చివరి అప్‌డేట్ {time}
+lan_not_accepted	{n} అంగీకరించబడలేదు
+connected_now	ఇప్పుడు కనెక్ట్ అయి ఉంది
+backup_failed	చివరి ఆటోమేటిక్ బ్యాకప్ విఫలమైంది: {e}
+backup_overdue	{n} రోజులుగా బ్యాకప్ లేదు — బ్యాకప్ కోసం ఈ పరికరంలో యాప్‌ను తెరిచి ఉంచండి.
+disk_low	ఈ పరికరంలో {mb} MB మాత్రమే ఖాళీగా ఉంది — త్వరలో బ్యాకప్‌లు విఫలమవుతాయి. కొంత స్థలం ఖాళీ చేయండి.
+last_seen_devices	చివరిగా కనిపించింది: {time}
+sync_interval	ప్రతి {secs} సెకన్లకు సింక్
+connection_to_shop	షాప్‌తో కనెక్షన్
+supplier_name_ph	సరఫరాదారు పేరు (లేదా పార్టీ)
+supplier_ph	సరఫరాదారు
+switch_device	ఈ పరికరాన్ని మార్చు
+take_payment	చెల్లింపు తీసుకో
+tax_added_till	{tax} వేరు
+tax_inside_price	{tax} సహా
+today_books	నేటి బుక్స్
+unlock_after_pairing	PIN నమోదు
+unlock_with_login	లాగిన్‌తో అన్‌లాక్
+update_my_password	నా పాస్‌వర్డ్ మార్చు
+update_my_pin	నా PIN మార్చు
+duress_heading	అత్యవసర అన్‌లాక్ PIN (యజమాని మాత్రమే)
+duress_help	ఐచ్ఛికం. అన్‌లాక్‌లో మీ PINకు బదులు ఈ PIN టైప్ చేస్తే, పుస్తకాల ఎంట్రీలన్నీ తుడుచుకుపోతాయి (బుకింగ్‌లు, లెడ్జర్లు, చరిత్ర), డెస్క్ మామూలుగా కనిపిస్తూ యజమానిగా తెరుచుకుంటుంది — రేట్లు, పార్టీలు, జోన్లు, సిబ్బంది, సెట్టింగ్‌లు ఉంటాయి. స్కీమా, కాన్ఫిగ్ తొలగించబడవు. బలవంతంగా అన్‌లాక్ చేయించినప్పుడు మాత్రమే వాడండి. ఆఫ్ చేయడానికి ఖాళీగా వదిలి సేవ్ చేయండి. ఎవరి PINకూ సమానం కాకూడదు.
+duress_pin_ph	అత్యవసర PIN (4–12 అంకెలు)
+duress_confirm_ph	మళ్లీ టైప్ చేయండి
+save_duress_pin	అత్యవసర PIN సేవ్
+clear_duress_pin	అత్యవసర PIN ఆఫ్
+duress_on	అత్యవసర అన్‌లాక్ PIN ఆన్
+duress_off	అత్యవసర అన్‌లాక్ PIN ఆఫ్
+duress_saved	అత్యవసర అన్‌లాక్ PIN సేవ్ అయింది
+duress_cleared	అత్యవసర అన్‌లాక్ PIN ఆఫ్ చేయబడింది
+vehicle_ph	వాహనం
+void	రద్దు చేయి
+write_off_ap	AP రద్దు
+write_off_nil	రద్దు / నిల్వ సున్నా
+zone_ph	జోన్ (రేట్ల నుండి పేరు)
+caption_today	ఈరోజు
+caption_bookings	బుకింగ్‌లు
+caption_payments_today	నేటి చెల్లింపులు
+caption_outstanding	బకాయి
+caption_bank	బ్యాంక్
+paid_by	చెల్లించినది
+second_way	రెండవ మార్గం
+weight_in	బరువు యూనిట్
+size_in	పరిమాణం యూనిట్
+goods_received	సరుకులు అందాయి
+expense_heading	ఖర్చు
+notes_attach_sale	గమనికలు & జోడింపులు (ఎంచుకున్న అమ్మకం)
+notes_attach_party	గమనికలు & జోడింపులు (ఎంచుకున్న పార్టీ)
+attachments_last_expense	జోడింపులు (చివరి ఖర్చు)
+credit_limit_heading	క్రెడిట్ పరిమితి (ఎంచుకున్న / పేరున్న పార్టీ)
+pay_selected_heading	ఎంచుకున్నది చెల్లించు (రుణం తీర్చు / అడ్వాన్స్)
+write_off_heading	రద్దు (చెల్లింపు లేకుండా తీర్చు)
+pay_ap_heading	మేము వారికి ఇవ్వవలసినది (AP)
+country_tax	దేశం & పన్ను
+extra_tills_heading	అదనపు టిల్‌లు
+other_devices_help_heading	ఇతర పరికరాలను సెటప్ చేయి
+other_devices_help	ఈ పరికరంలో (సర్వర్): ఇతర పరికరాలు → అదనపు టిల్‌లను అనుమతించు. పెయిరింగ్ కోడ్, Wi‑Fi చిరునామా రాసుకోండి. కనిపిస్తే ఇతర పరికరాలను కనెక్ట్ కానివ్వు నొక్కండి. కంప్యూటర్‌లో, ఈ కంప్యూటర్‌తో ప్రారంభించు నొక్కండి. ప్రతి ఇతర పరికరంలో: యాప్ ఇన్‌స్టాల్ చేయండి, క్లయింట్ మోడ్ ఎంచుకోండి, దుకాణం సర్వర్ వెతకండి (లేదా చిరునామా టైప్ చేయండి), పెయిరింగ్ కోడ్ పెట్టండి, ఇప్పుడే జత చేయి. Wi‑Fi పోతే ఆర్డర్లు పరికరంలో వేచి ఉండి సర్వర్ మళ్లీ స్పందించినప్పుడు వెళ్తాయి.
+your_brand	మీ బ్రాండ్ (యాప్‌లో)
+units_heading	యూనిట్లు
+booking_measures	బుకింగ్ కొలతలు
+drawer_count	డ్రాయర్ లెక్క (ఐచ్ఛికం)
+spreadsheet_csv	స్ప్రెడ్‌షీట్ (CSV)
+bank_reconciliation	బ్యాంక్ సరిపోలిక (మీ బ్యాంక్ స్టేట్‌మెంట్‌తో టిక్ చేయండి)
+book_add_product	బుక్ — ఉత్పత్తి / రేట్ జోడించు
+book_opening_credit	బుక్ — ప్రారంభ అరువు
+account_kind	ఖాతా రకం (ఒకటి నొక్కండి)
+active_ledger	క్రియాశీల లెడ్జర్
+actual_total_cap	వాస్తవ మొత్తం
+amend_help	సవరించడానికి, రద్దు చేయడానికి లేదా వాపసు కోసం అమ్మకాన్ని ఎంచుకోండి. సవరణలు పూర్తి చరిత్రను ఉంచుతాయి.
+applied_total_cap	వర్తింపజేసిన మొత్తం
+bank_balance	బ్యాంక్ నిల్వ
+bank_net_today	నేటి బ్యాంక్ నికరం
+branch_export_help	ఎగుమతి ఒక రోజు స్నాప్‌షాట్‌ను బ్యాకప్ ఫోల్డర్‌లో రాసి క్లిప్‌బోర్డ్‌కు కాపీ చేస్తుంది. మరో శాఖ రోజును దిగుమతి చేయడానికి దాని ఫైల్‌ను ఆ ఫోల్డర్‌లో import_branch_snapshot.json పేరుతో సేవ్ చేసి, దిగుమతి నొక్కండి.
+brand_shown_help	యాప్ లోపల స్క్రీన్‌లపై చూపిస్తుంది. ఈ పరికరంలో ఇన్‌స్టాల్ చేసిన యాప్ పేరు మరియు ఐకాన్ ప్లాట్‌ఫారమ్ లిస్టింగ్‌లానే ఉంటాయి.
+app_icon	యాప్ ఐకాన్
+logo_help	యాప్ స్క్రీన్లపై ఐచ్ఛిక దుకాణం గుర్తు.
+onboard_layout	మీకు ఏం లభిస్తుంది
+item_photo_help	ఐచ్ఛికం. ఫోటో లేకపోతే ఐటమ్ పేరులోని మొదటి అక్షరాలు చూపిస్తాం.
+cash_in_hand	చేతిలో నగదు (టిల్)
+change_my_pin_heading	నా PIN మార్చు (మీది మాత్రమే)
+connect_to_server	సర్వర్‌కు కనెక్ట్ చేయి
+counter_locked	కౌంటర్ 01 · లాక్
+country_pack_help	దేశ ప్యాక్ పన్ను పేరు మరియు గణన, తక్షణ-చెల్లింపు రైలు, మరియు బిల్లులపై ముద్రించే వ్యాపార ఐడీని సెట్ చేస్తుంది. Kumkaj ఎక్కడా పన్నులు దాఖలు చేయదు లేదా ప్రభుత్వ ఇ-ఇన్‌వాయిస్‌లు జారీ చేయదు.
+currency_use_help	స్క్రోల్ చేసి మద్దతు ఉన్న ఏ కరెన్సీకైనా Use నొక్కండి.
+day_close_help	రోజు ముగింపు నమోదు ఈ సారాంశాన్ని (లెక్కించి ఉంటే డ్రాయర్ తేడాతో) ఆడిట్ లాగ్‌లో సేవ్ చేస్తుంది. ఇది అమ్మకాన్ని ఆపదు.
+expenses_word	ఖర్చులు
+feature_access_help	ఎంచుకున్న సిబ్బందికి ఫీచర్ యాక్సెస్ (జోడించాక నొక్కండి)
+footer_local	స్థానిక SQLite · ఎప్పటికీ ఉచితం · క్లౌడ్ లేదు
+fresh_book_moklanjo	ప్రింటర్లు
+fresh_selected	Fresh ఎంచుకున్నారు — కేటలాగ్ ఖాళీగా ఉంటుంది. సిద్ధమైనప్పుడు Done నొక్కండి.
+gross_word	స్థూల
+how_start	మీరు ఎలా ప్రారంభించాలనుకుంటున్నారు?
+later_country_pack	ప్రింటర్లు
+local_badge	స్థానిక
+measures_help_moklanjo	బుకింగ్ డెస్క్ వద్ద పార్శిళ్లు ఎలా కొలుస్తారు. మీరు ఉపయోగించే యూనిట్లలో కొలతలు మరియు బరువు రాయండి — ప్రామాణిక (cm, m, in, ft · kg, g, lb, oz) లేదా పైన cm / kg తో లింక్ చేసిన మీ స్వంత యూనిట్ (నేరుగా లేదా ఇతర యూనిట్ల ద్వారా). బుక్స్ ఎప్పుడూ kg నమోదు చేస్తాయి. ఫీల్డ్ ఖాళీగా వదిలితే అది అలాగే ఉంటుంది.
+mix_type_hint_moklanjo	ప్రతిదానిలో ఎంత ఉందో రాయండి (నగదు / UPI / కార్డు / అరువు). బిల్లుకు సమానంగా ఉండాలి. అరువు కోసం పైన కస్టమర్ అవసరం.
+money_in_sales	డబ్బు వచ్చింది (అమ్మకాలు)
+more_help_moklanjo	కేటలాగ్, అమ్మకాలు, అరువు, బృందం, బ్యాకప్ — అవసరమైనప్పుడు స్టాక్ మరియు అదనపు టిల్‌లు.
+net_word	నికరం
+offline_badge	ఆఫ్‌లైన్
+optional_login_help	ఐచ్ఛిక లాగిన్ (ఐడీ + పాస్‌వర్డ్). యజమాని ఒకసారి సెట్ చేస్తారు; తర్వాత వినియోగదారు మాత్రమే పాస్‌వర్డ్ మార్చగలరు.
+or_unlock_login	లేదా లాగిన్ ఐడీ + పాస్‌వర్డ్‌తో అన్‌లాక్ చేయండి
+permission_preset	పని (స్క్రీన్లు, హక్కులు పెడుతుంది)
+preset_help_moklanjo	క్యాషియర్: అమ్మండి. మేనేజర్: అమ్మండి + ఐటమ్‌లు + రద్దు/సవరణ.
+product_locked_moklanjo	Moklanjo
+product_only_moklanjo	ఈ యాప్ Moklanjo మాత్రమే — ఖాతాలు + బుకింగ్ డెస్క్. ఇతర వ్యాపారాల ఉత్పత్తులు తర్వాత విడిగా వస్తాయి.
+purchases_cogs	కొనుగోళ్లు (COGS)
+qty_cap	పరిమాణం
+restore_help	Restore: ఒక బ్యాకప్ ఎంచుకోండి. పుస్తకాలు అప్పటిలా తెరుచుకుంటాయి; ఇప్పటి పుస్తకాలు ముందే సేవ్ అవుతాయి, కాబట్టి దీనిని రద్దు చేయవచ్చు.
+wipe_data_heading	స్థానిక డేటా తొలగించు
+wipe_data_help	Owner మాత్రమే — Windows అన్‌ఇన్‌స్టాల్ వంటి ఎంపికలు. వ్యాపార రికార్డులు చరిత్రను తుడుస్తాయి, రేట్లు/సెటప్ ఉంచుతాయి. షాప్ సెటప్ పుస్తకాలు తొలగిస్తుంది. స్క్రీన్ ప్రాధాన్యతలు విండో/భాష. Owner PIN నిర్ధారణ.
+wipe_trading	వ్యాపార రికార్డులు
+wipe_schema	షాప్ సెటప్
+wipe_ui	స్క్రీన్ ప్రాధాన్యతలు
+wipe_owner_pin_ph	తొలగించడానికి Owner PIN
+wipe_delete_selected	ఎంచుకున్నవి తొలగించు
+wipe_owner_only	Owner మాత్రమే స్థానిక డేటా తొలగించగలరు.
+restore_owner_only	Owner మాత్రమే బ్యాకప్ పునరుద్ధరించగలరు.
+wipe_owner_pin_needed	స్థానిక డేటా తొలగించడానికి Owner PIN ఇవ్వండి.
+wipe_nothing_selected	ముందు ఏమి తొలగించాలో ఎంచుకోండి.
+wipe_done	ఎంచుకున్న స్థానిక డేటా తొలగించబడింది.
+wipe_schema_done	షాప్ సెటప్ తుడిచివేయబడింది — కొనసాగించడానికి Server లేదా Client ఎంచుకోండి.
+rounded_total	రౌండ్ మొత్తం
+setup_app_moklanjo	Moklanjo సెటప్ చేయండి
+shop_logo_optional	షాప్ లోగో (ఐచ్ఛికం)
+stock_type_help	ఐటమ్ పేరు రాయండి (దానిలో కొంత భాగం చాలు), పరిమాణం రాసి, తర్వాత సర్దుబాటు చేయండి. ఇంకా లెక్కించని ఐటమ్‌లకు ఒకసారి Start tracking అవసరం.
+team_owner_help	నియామకం: ఒక పని ఎంచుకోండి (క్యాషియర్ / మేనేజర్), పేరు + ప్రారంభ PIN, తర్వాత జోడించండి. ఈ వ్యక్తి వేరుగా ఉంటేనే: కింద స్క్రీన్లు, హక్కులు తెరిచి, పని సెటప్ సేవ్ చేయండి. ప్రతి ఒక్కరూ కింద తమ PIN తామే మార్చుకుంటారు — యజమాని ఇంకెవరిదీ మార్చలేరు.
+they_owe_us	వారు మాకు ఇవ్వవలసినది
+unit_at_cap	యూనిట్ ధర
+units_help	ఐటమ్ లేబుల్‌ల కోసం కోడ్‌లు (kg, piece, bag). ప్రతి యూనిట్ — నేరుగా లేదా ఇతర యూనిట్ల ద్వారా — ఒక ప్రమాణంతో (kg · cm · ml · pc) లింక్ కావాలి, ఉదా. 1 crate = 2 box మరియు 1 box = 20 cm. మార్పిడులు: 1 from = factor to. కరెన్సీలు ఎప్పుడూ యూనిట్లు కావు.
+we_owe_them	మేము వారికి ఇవ్వవలసినది
+who_unlocking	ఎవరు అన్‌లాక్ చేస్తున్నారు?
+locked_word	లాక్ చేయబడింది
+show_pin	PIN చూపించు
+hide_pin	PIN దాచు
+set_owner_pin	యజమాని PIN సెట్ చేయండి
+enter_owner_passcode	యజమాని పాస్‌కోడ్ నమోదు చేయండి
+enter_staff_passcode	సిబ్బంది పాస్‌కోడ్ నమోదు చేయండి
+pin_count_zero	0 / 12 అంకెలు · కనీసం 4, తర్వాత OK
+pin_count_need	{} / 12 అంకెలు · మరో {} అవసరం
+pin_count_full	12 / 12 అంకెలు · OK నొక్కండి
+pin_count_ready	{} / 12 అంకెలు · సిద్ధమైనప్పుడు OK నొక్కండి
+pin_hint_choose	4–12 అంకెలు ఎంచుకోండి (కీబోర్డ్ లేదా ప్యాడ్) · సేవ్ చేయడానికి Enter/OK
+pin_hint_new	కొత్త 4–12 అంకెల యజమాని PIN (కీబోర్డ్ లేదా ప్యాడ్) · Enter/OK
+pin_hint_shop_code	షాప్ పరికరం · జత కోడ్ {}
+pin_hint_books	ఈ పరికరం బుక్స్ ఉంచుతుంది
+pin_hint_paired	అదనపు టిల్ జత చేయబడింది — అమ్మడానికి అన్‌లాక్ చేయండి
+pin_hint_pair_first	అదనపు టిల్ — ముందు షాప్ పరికరానికి జత చేయండి
+unlock_to_continue	కొనసాగించడానికి అన్‌లాక్ చేయండి
+no_staff_yet	ఇంకా సిబ్బంది లేరు — యజమానిగా అన్‌లాక్ చేయండి, తర్వాత Team
+status_server_set_pin	సర్వర్ మోడ్ — యజమాని PIN సెట్ చేయండి
+status_server_tills	సర్వర్ మోడ్ — అదనపు టిల్‌లు చేరవచ్చు. అన్‌లాక్ చేయండి
+status_server_unlock	సర్వర్ మోడ్ — యజమానిగా అన్‌లాక్ చేయండి
+status_client_unlock	క్లయింట్ మోడ్ — అమ్మడానికి అన్‌లాక్ చేయండి
+icon_new_selected	ఐకాన్: కొత్త ఫైల్ ఎంచుకోబడింది — బ్రాండ్ సేవ్ చేయి నొక్కండి
+icon_custom	ఐకాన్: మీ షాపు గుర్తు
+icon_default	ఐకాన్: Kumkaj గుర్తు (డిఫాల్ట్) — మీది ఎంచుకోండి
+logo_yours	లోగో: మీ షాపు లోగో — స్క్రీన్‌లు మరియు రసీదులపై కనిపిస్తుంది
+logo_default	లోగో: Kumkaj గుర్తు (డిఫాల్ట్) — మీది ఉంటే ఎంచుకోండి
+tmpl_current	ప్రస్తుతం: {} — {}
+tmpl_selected	ఎంచుకోబడింది: {} — {}
+setup_complete	సెటప్ పూర్తయింది
+onboard_fresh_tmpl	కొత్త · {} — కేటలాగ్ ఖాళీగా మొదలవుతుంది; వస్తువులలో చేర్చి, తర్వాత Done నొక్కండి.
+onboard_book_tmpl	పుస్తకం · {} — వస్తువులు మరియు ప్రారంభ అప్పు చేర్చి, తర్వాత Done నొక్కండి.
+onboard_template_tmpl	కావాలంటే స్థలానికి పేరు పెట్టండి, తర్వాత ఎలా ప్రారంభించాలో ఎంచుకోండి.
+tmpl_blurb	కొరియర్ ఖాతాలు, బుకింగ్ డెస్క్: పంపినవారు, క్యారియర్లు, రోజు ఖాతా, AWB.
+tmpl_how	డెస్క్‌లో పార్సెల్ బుక్ చేయండి; ఈరోజు కోసం రోజు ఖాతా; రేట్లు, పార్టీలు, నివేదికలకు ట్యాబ్‌లు.
+trk_booked	బుక్ అయింది
+trk_picked_up	పికప్ అయింది
+trk_in_transit	మార్గంలో ఉంది
+trk_delivered	డెలివరీ అయింది
+trk_rto	పంపినవారికి తిరిగి వెళ్తోంది
+lane_to_dispatch	పంపాల్సినవి
+lane_with_carrier	క్యారియర్ వద్ద
+lane_failed	విఫలం
+lane_done_today	ఈరోజు పూర్తి
+ops_board_help	ఈరోజు పనిలో పార్సెల్‌లు ఎక్కడ ఉన్నాయో దాని ప్రకారం. పార్సెల్‌లను తాకి (లేదా స్కాన్ చేసి) ఎంచుకోండి, ఆపై ఎంచుకున్నవన్నింటిపై ఒకేసారి చర్య తీసుకోండి — ప్రతి వరుస దానికి సరిపడే చర్యలను మాత్రమే చూపిస్తుంది.
+lane_empty	ప్రస్తుతం ఇక్కడ ఏమీ లేదు.
+picked_fmt	{n} ఎంచుకున్నవి
+pick_all	అన్నీ ఎంచుకో
+bag_for_carrier	క్యారియర్‌కు అప్పగించు
+send_with_rider	రైడర్‌తో పంపు
+out_again	మళ్లీ పంపు
+return_to_sender	పంపినవారికి తిరిగి పంపు
+runs_bags_heading	ఇటీవలి రౌండ్లు & బ్యాగ్‌లు
+print_word	ముద్రించు
+bag_word	క్యారియర్ బ్యాగ్
+run_word	రైడర్ రౌండ్
+parcels_fmt	{n} పార్సెల్‌లు
+parcel_history	చరిత్ర
+attempt_fmt	ప్రయత్నం {n}
+pieces_short_fmt	{n} ముక్కలు
+note_reason_ph	నోట్ లేదా కారణం
+ops_pick_first	ముందు పార్సెల్‌లను ఎంచుకోండి — తాకండి లేదా స్కాన్ చేయండి
+cod_to_collect	డెలివరీ అయింది — COD వసూలు చేయాలి
+cod_on_road	COD ఇంకా మార్గంలో
+cod_owed_consignors	వసూలైంది — పంపినవారికి చెల్లించాలి
+cod_rto_fees	వసూలు చేయాల్సిన RTO రుసుములు
+cod_to_hand_in	అప్పగించాల్సిన COD
+parcel_one_fmt	{n} పార్సెల్
+facet_bank_title	నివేదికలు
+facet_bank_help	డే బుక్స్, పార్టీ ఏజింగ్, బ్యాంక్ పోస్టులు మరియు పీరియడ్ లాభనష్టాలు.
+facet_ops_title	కన్సైన్‌మెంట్లు & డిస్ప్యాచ్
+facet_ops_help	AWB స్కాన్ చేయండి లేదా టైప్ చేయండి → కనుగొనండి, తర్వాత ముందుకు / లేబుల్ ప్రింట్ / COD. రైడర్ లేదా క్యారియర్‌కు డిస్ప్యాచ్ చేయండి.
+facet_cod_title	COD రిజిస్టర్
+facet_cod_help	డెలివరీ సమయంలో వసూలు చేసి, తర్వాత పంపేవారికి చెల్లించండి.
+facet_riders_title	రైడర్లు (సొంత బృందం)
+facet_riders_help	రైడర్లను చేర్చి, తర్వాత Ops నుండి బుక్ చేసిన AWBలను డిస్ప్యాచ్ చేయండి.
+against_bill_ph	పైన ఉన్న బిల్ # కు వ్యతిరేకంగా (ఐచ్ఛికం)
+aliases_ph	మారుపేర్లు — ఇతర పేర్లు, కామాతో వేరు చేయండి
+amount_blank_full_ph	మొత్తం (ఖాళీ = పూర్తి బ్యాలెన్స్)
+amount_owed_ph	చెల్లించాల్సిన మొత్తం
+amount_ph	మొత్తం
+amount_received_ph	అందిన మొత్తం
+amount_we_pay_ph	మేము చెల్లించే మొత్తం
+awb_scan_ph	AWB / బార్‌కోడ్ స్కాన్
+bulk_csv_ph	బల్క్ CSV — destination,consignee,kg,cod_paise,note
+business_name_ph	వ్యాపార పేరు
+category_new_ph	వర్గం (ఐచ్ఛికం, కొత్తదైతే సృష్టించబడుతుంది)
+cod_amount_ph	COD మొత్తం
+code_bag_ph	కోడ్ (bag)
+conv_factor_ph	కారకం (25 = 1 bag → 25 kg)
+country_code_ph	దేశ కోడ్ ఉదా. IN, GB, US, AE, BR
+credit_khata_amount_ph	అప్పు / ఖాతా మొత్తం
+credit_limit_ph	క్రెడిట్ పరిమితి (0 = లేదు)
+dim_unit_code_ph	కొలత యూనిట్ కోడ్ (cm)
+divisor_ph	ఘనపరిమాణ భాజకం (5000)
+extra_per_kg_ph	అదనపు / kg
+first_amount_ph	మొదటి మొత్తం
+first_kg_ph	మొదటి kg (స్లాబ్)
+from_code_ph	నుండి కోడ్ (bag)
+item_name_lang_ph	వస్తువు పేరు — మీ భాషలో టైప్ చేయండి
+login_id_opt_ph	లాగిన్ ఐడి (ఐచ్ఛికం)
+manager_pin_ph	మేనేజర్ PIN (మీరు రద్దు చేయలేకపోతే మాత్రమే)
+new_branch_name_ph	కొత్త శాఖ పేరు
+new_password_ph	కొత్త పాస్‌వర్డ్ (ఐచ్ఛికం)
+new_pin_ph	కొత్త PIN (4–12 అంకెలు)
+note_bank_ph	గమనిక (డిపాజిట్, ఉపసంహరణ, …)
+note_buy_expense_ph	గమనిక (ఇంధనం, అద్దె, …)
+note_expense_ph	గమనిక (ఇంధనం, కార్యాలయం, …)
+notify_phone_ph	నోటిఫై ఫోన్ (WhatsApp/SMS హుక్)
+options_moklanjo_ph	ఎంపికలు (ఐచ్ఛికం) — Large=20, Gift wrap=10
+part_second_way_ph	రెండవ మార్గంలో భాగం (ఐచ్ఛికం)
+phone_ph	ఫోన్
+address_ph	చిరునామా
+party_custom_fields_heading	కస్టమ్ ఫీల్డ్‌లు (ఎంచుకున్న పార్టీ)
+party_custom_help	ఈ పార్టీపై ఏదైనా లేబుల్ మరియు విలువ జోడించండి — WhatsApp, GSTIN, రూట్ కోడ్, …
+party_custom_key_ph	ఫీల్డ్ పేరు (ఉదా. WhatsApp)
+party_custom_value_ph	విలువ
+party_custom_add	ఫీల్డ్ జోడించు / అప్‌డేట్
+party_custom_remove	ఫీల్డ్ తొలగించు
+party_custom_empty	ఇంకా కస్టమ్ ఫీల్డ్‌లు లేవు
+party_custom_pick_first	కస్టమ్ ఫీల్డ్‌ల కోసం పార్టీని ఎంచుకోండి
+place_name_ph	ఈ ప్రదేశం పేరు
+price_ph	ధర
+qty_example_ph	పరిమాణం (ఉదా. kg కోసం 1.5)
+quantity_ph	పరిమాణం
+reason_required_ph	కారణం (తప్పనిసరి)
+role_title_ph	పాత్ర శీర్షిక (ఉదా. Barista)
+service_pct_ph	సేవ % ఐచ్ఛికం 0/10/12
+short_code_ph	చిన్న కోడ్ (MG02)
+slab_kg_ph	kg లో ఛార్జ్ చేయదగిన స్లాబ్ (0.5)
+staff_name_ph	సిబ్బంది పేరు / id
+starting_password_ph	ప్రారంభ పాస్‌వర్డ్ (ఐచ్ఛికం)
+starting_pin_ph	ప్రారంభ PIN (4–12 అంకెలు)
+tax_rate_ph	పన్ను రేటు పేరు లేదా % — Standard, Reduced, 0, 5, 12, 18, 20
+to_code_ph	కు కోడ్ (kg)
+uncleared_no_ph	పైన ఉన్న అన్‌క్లియర్ #
+unit_cost_ph	యూనిట్ ధర
+unit_kg_blank_ph	యూనిట్ (kg లేదా ఖాళీ)
+unit_name_bag_ph	పేరు (Bag)
+weight_unit_code_ph	బరువు యూనిట్ కోడ్ (kg)
+zone_name_ph	జోన్ పేరు
+pay_credit	అప్పు
+book_kind_today	ఈరోజు పుస్తకం
+book_kind_month	ఈ నెల పుస్తకం
+book_kind_aging	బకాయి / డెబిట్-క్రెడిట్
+book_kind_balance	బ్యాలెన్స్ షీట్
+ops_desk_help	USB బార్‌కోడ్ స్కానర్‌తో AWB స్కాన్ చేయండి (లేదా టైప్ చేయండి) → కనుగొనండి. తర్వాత ముందుకు, లేబుల్ ప్రింట్ లేదా COD వసూలు. లేబుల్స్ Code 128లో ప్రింట్ అవుతాయి.
+role_help_consignor	పాత్ర: పంపేవారు — AR (వారు మాకు అప్పు). అదే సంస్థ క్యారియర్ కూడా కావచ్చు.
+role_help_carrier	పాత్ర: క్యారియర్ — AP (మేము వారికి అప్పు). అదే సంస్థ పంపేవారు కూడా కావచ్చు.
+role_help_both	పాత్రలు: పంపినవారు + క్యారియర్ — ఒక పార్టీ, AR, AP లెడ్జర్లు, నివేదికల్లో నికరం.
+role_help_supplier	పాత్ర: సరఫరాదారు — కొనుగోళ్లకు AP.
+lane_declared_label	ఖాతా బుకింగ్
+lane_owner_label	నగదు బుకింగ్
+money_lane_bill	బిల్లు: {lane}

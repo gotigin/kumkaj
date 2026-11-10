@@ -1,0 +1,1351 @@
+# Amharic — አማርኛ (am). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	የምግብ ቤት ትዕዛዝ፣ ኩሽና እና መዝገብ። ከመስመር ውጭ ነፃ።
+unlock	ክፈት
+pin_hint	የባለቤት ፒን መጀመሪያ 0000 ነው
+sell	ትዕዛዝ
+buy	ግዢ
+books	የቀን መዝገብ
+books_help	የዛሬ ሁኔታ። ትዕዛዝ = የገቡ ትዕዛዞች። ግዢ = ግዢዎች እና ወጪዎች። ተዋዋዮች = በብድር የሚገዙ ደንበኞች እና አቅራቢዎች።
+buy_help	የወጪ ደረሰኞች እና የአቅራቢ ሂሳቦች (የወጣ ገንዘብ)። በሂሳብ ላይ የቆየ በተዋዋይ መዝገብ ይቆያል።
+sell_money_in	ትዕዛዝ ውሰድ
+buy_money_out	ወጪ / የአቅራቢ ሂሳብ
+record_purchase	ግዢ መዝግብ
+add_expense	የወጪ ደረሰኝ
+bank_book	የባንክ መዝገብ
+credit_help	የተዋዋይ መታወቂያ ልዩ ነው (ስሞች ሊደገሙ ይችላሉ)። ደንበኛ የኻታ ትር ይከፍታል (ይበደረናል)፤ አቅራቢ እቃ ይሸጥልናል (እኛ እንበደራለን)፤ ሁለቱም ይቻላል። መዝገቦች ተለያይተው ይቆያሉ፤ ሪፖርቶች የተጣራ ያሳያሉ።
+party_kind_ph	ሚናዎች፦ ደንበኛ፣ አቅራቢ፣ ሁለቱም…
+reports_help	የቀን መዝገብ፣ ተበዳሪዎች እና አበዳሪዎች፣ የባንክ መዝገብ፣ የወጪ ደረሰኞች፣ ትርፍ እና ኪሳራ።
+reports_today	የቀን መዝገብ (ዛሬ)
+reports_month	ትርፍ እና ኪሳራ (ወር)
+reports_aging	ያልተከፈለ / ዴቢት-ክሬዲት
+reports_balance_sheet	የሂሳብ መዝገብ
+reports	የባንክ መዝገብ እና ትርፍ/ኪሳራ
+refresh	አድስ
+undo	ቀልብስ
+start_tracking	ክትትል ጀምር
+stock_minus	− ክምችት
+stock_plus	+ ክምችት
+settle_cash	በጥሬ ገንዘብ ዝጋ
+settle_card	በካርድ ዝጋ
+items	ሜኑ እና እቃዎች
+nav_items	ሜኑ
+more	ተጨማሪ
+your_items	የእርስዎ ሜኑ
+items_help	ለማስተካከል እቃ ይንኩ። አዲስ እቃ ቅጹን ያጸዳል። ምግቦቻችንን ይፈልጉ ወይም የራስዎን ስም እና ፎቶ ይጻፉ፣ ዋጋ ያስቀምጡ (0 ይቻላል)፣ ከዚያ ይጨምሩ። ቀድሞ የተመዘገቡ ሽያጮች የተከፈሉበትን ስም ይይዛሉ።
+add_item	እቃ ጨምር
+new_item	አዲስ እቃ
+adding_item	አዲስ እቃ በመጨመር ላይ
+editing_item	በማስተካከል ላይ
+save	አስቀምጥ
+remove	አስወግድ
+removed_items	የተወገዱ እቃዎች
+removed_help	መመለስ እቃውን ወደ ሜኑ እንደነበረው ይመልሳል — ዋጋ፣ ፎቶ እና ምድብ። የእኛ የምግብ መደርደሪያ አይወገድም፣ ስለዚህ ምግብ ሁልጊዜ እንደገና ሊጨመር ይችላል።
+restore_item	መልስ
+empty_catalog	ገና ምግብ የለም። ሜኑ ይክፈቱ፣ ምግብ ይጨምሩ (ስም + ዋጋ)፣ ከዚያ ትዕዛዝ ይውሰዱ።
+total	ድምር
+cash	ጥሬ ገንዘብ
+upi	UPI
+card	ካርድ
+credit	ተዋዋዮች
+clear	አጽዳ
+ready_to_sell	ለመመዝገብ ዝግጁ
+today_prefix	ዛሬ
+today_mid	ዛሬ
+owed	ያልተከፈለ
+round_word	አጠጋጋ
+back	ተመለስ
+sold_out	አይገኝም
+restock	ክምችት ሙላ
+not_tracked	አልተከታተለም
+in_stock	በክምችት
+marked_sold_out	እንደማይገኝ ምልክት ተደርጓል
+add_upper	ጨምር
+na	የለም
+qty	ክብደት/ብዛት
+unit_at	ዋጋ @
+actual	ትክክለኛ
+applied	የተተገበረ
+note_ph	ማስታወሻ (አማራጭ)
+rounded	የተጠጋጋ
+split	ክፈል
+send_kot	KOT ላክ
+send_kot_to	ላክ → {kitchens}
+send_kot_again	ለቀጣዩ KOT ምግቦች ጨምር
+send_kot_held	የተያዙ ምግቦች — ለመላክ ይልቀቁ
+reprint_kot	የተመረጡትን እንደገና አትም
+reprint_kot_ok	{n} ምግብ እንደገና ታትሟል · {slips} ወረቀት → {kitchens}
+reprint_kot_needed	መጀመሪያ KOT ይላኩ — ከዚያ ምግቦችን አካትተው የተመረጡትን እንደገና ያትሙ
+reprint_kot_none_selected	የተላከው ምግብ ሁሉ ተዘሏል — እንደገና ለማተም በሚፈልጉት ላይ በህትመት ውስጥ ይንኩ
+reprint_kot_client	እንደገና ማተም ({n}) ለ {place} ተልኳል — ኩሽናው በሰርቨር ያትማል
+print_cancelled_kot	የተሰረዙትን ሁሉ አትም
+print_cancelled_kot_ok	{n} የተሰረዙ ምግቦች ታትመዋል · {slips} ወረቀት → {kitchens}
+print_cancelled_kot_needed	መጀመሪያ የተሰረዙ ምግቦች ያሉበትን ጠረጴዛ ይክፈቱ
+print_cancelled_kot_none	በዚህ ትዕዛዝ ላይ የተሰረዘ ምግብ የለም
+print_cancelled_kot_client	የተሰረዘ ማተም ({n}) ለ {place} ተልኳል — ኩሽናው በሰርቨር ያትማል
+kot_banner	የአይነት ሰንደቅ
+kot_banner_ph	ሰንደቅ (ባዶ = የለም)
+kot_item_prefix	የእቃ ቅድመ ቃል
+kot_item_prefix_ph	ለምሳሌ [የተሰረዘ]
+kot_strike	የምግብ ስም ሰርዝ
+kot_strike_note	የምግብ ማስታወሻ ሰርዝ
+kot_strike_on	በርቷል
+kot_strike_off	ጠፍቷል
+bill_item_layout	የእቃ አቀማመጥ
+bill_item_layout_columns	አምዶች
+bill_item_layout_stacked	ተደራራቢ
+bill_item_header	የአምድ ርዕሶች
+bill_item_hdr_item	የእቃ ርዕስ
+bill_item_hdr_qty	የብዛት ርዕስ
+bill_item_hdr_price	የዋጋ ርዕስ
+bill_item_hdr_amount	የመጠን ርዕስ
+bill_item_name	የምግብ ስም
+bill_item_qty	ብዛት
+bill_item_price	ዋጋ
+bill_item_amount	መጠን
+bill_item_note	የምግብ ማስታወሻ
+bill_item_col_gap	የአምድ ክፍተት
+bill_item_col_order	የአምድ ቅደም ተከተል
+bill_item_col_sep	የአምድ መስመሮች
+bill_item_gap_tight	ጠባብ
+bill_item_gap_comfort	ምቹ
+bill_item_gap_wide	ሰፊ
+bill_item_num_width	የቁጥር አምዶች
+bill_item_num_compact	የታመቀ
+bill_item_num_comfort	ምቹ
+bill_item_num_wide	ሰፊ
+bill_item_num_align	ቁጥሮች ይሰለፋሉ
+bill_item_gap_em	ክፍተት (em)
+bill_item_qty_min	ዝቅተኛ ብዛት (em)
+bill_item_price_min	ዝቅተኛ ዋጋ (em)
+bill_item_amount_min	ዝቅተኛ መጠን (em)
+kot_item_qty_width	የብዛት አምድ
+kot_item_num_align	የብዛት አሰላለፍ
+bill_total_qty_label	የጠቅላላ ብዛት መለያ
+bill_total_subtotal_label	የንዑስ ድምር መለያ
+bill_total_grand_label	የጠቅላላ ድምር መለያ
+bill_total_paid_label	የተከፈለ ድምር መለያ
+bill_meta_pair	መስመሩን አጋራ ከ
+bill_pair_alone	ብቻውን
+bill_item_piece_on	በርቷል
+bill_item_piece_off	ጠፍቷል
+bill_total_qty	ጠቅላላ ብዛት
+bill_total_subtotal	ንዑስ ድምር
+bill_total_grand	ጠቅላላ ድምር
+reprint_incl	በህትመት ውስጥ
+reprint_skip	ዝለል
+reprint_skip_meta	የማገገሚያ ህትመት ዝለል
+kot_dest_hint	በቅንብሮች → ማተሚያዎች ውስጥ ለ {kitchens} በመደቡት ማተሚያዎች ላይ ያትማል
+kot_sent_hint	የመጨረሻው KOT ወደ {kitchens} ሄዷል። ለቀጣዩ ትኬት ምግቦች ለመጨመር ይንኩ — ወይም ለዚያው KOT እንደገና ያትሙ።
+kot_sent_printing	KOT ወደ {kitchens} ተልኳል — በማተም ላይ
+kot_sent_not_printed	KOT ወደ {kitchens} ተልኳል ግን አልታተመም፦ {why}። ኩሽናውን ይንገሩ፣ ከዚያ ማተሚያውን አስተካክለው እንደገና ያትሙ።
+kot_sent_screen	KOT ወደ {kitchens} ተልኳል
+kot_queued_shop	ለ {place} → {kitchens} KOT ተቀምጧል፤ የሱቁ መሣሪያ ያትመዋል
+kot_job_label	KOT ለ {place} → {kitchens}
+kot_job_reached	ለ {place} KOT ወደ {kitchens} ደርሷል
+kot_unassigned	ኩሽና (ጣቢያ የለም)
+kot_unassigned_held	{n} ምግብ ያለ ጣቢያ ተይዟል — ለመላክ በመስመሩ ላይ ይልቀቁ
+kot_station_ph	ኩሽና
+kot_station_dd	ኩሽና
+kot_station_dd_n	ኩሽና · {stations}
+kot_set_station	ይህን ጣቢያ ተጠቀም
+kot_station_applied	ጣቢያ በ {n} ምግብ ላይ ተቀምጧል፦ {station}
+kot_station_cleared	ጣቢያ ከ {n} ምግብ ተነስቷል፦ {station}
+kot_station_needed	መጀመሪያ የኩሽና ጣቢያ ይምረጡ
+kot_station_not_allowed	ይህን ኩሽና መጠቀም አይፈቀድም፦ {station}
+kot_station_none	ገና የኩሽና ጣቢያ የለም — በኩሽና ወይም በቅንብሮች → አካባቢዎች · ጣቢያዎች ስር ይጨምሩ
+pos_tab_items	የተጨመሩ እቃዎች
+pos_tab_payment	ክፍያ
+hold_send	ያዝ
+hold_send_on	ተይዟል
+hold_send_meta	ተይዟል — ይህ KOT አይደለም
+station_remove	ጣቢያ አስወግድ
+station_remove_ph	ለማስወገድ በዝርዝሩ ውስጥ ጣቢያ ይንኩ
+station_removed	ጣቢያ ተወግዷል፦ {name}
+settings_hub_title	ቅንብሮች
+settings_hub_help	በአንድ ጊዜ አንድ ክፍል ይክፈቱ — ያነሰ ማሸብለል፣ ግልጽ ምርጫ።
+settings_back	ተመለስ
+settings_sec_language	ቋንቋ እና ገንዘብ
+settings_sec_country	ሀገር እና ግብር
+settings_sec_tills	ሌሎች መሣሪያዎች
+settings_sec_brand	የእርስዎ ምልክት
+settings_sec_units	መለኪያዎች እና ቅየራዎች
+settings_sec_pickers	አካባቢዎች · ጣቢያዎች · የግብር ተመኖች
+settings_sec_printers	ማተሚያዎች
+settings_sec_bill	የሂሳብ እና KOT ቅርጸት
+settings_sec_selling	ቅናሾች እና ሽያጭ
+bill_kot_tab_bill	ሂሳብ
+bill_kot_tab_kot	KOT
+settings_sec_alerts	ማንቂያዎች
+alerts_help	የሁኔታ መልዕክቶች በማያው ላይ ለእርስዎ ምን ያህል ጊዜ እንደሚቆዩ (ይህ መግቢያ)።
+snack_secs_ph	ሰከንዶች (3–60፣ ነባሪ 10)
+snack_secs_save	የማንቂያ ጊዜ አስቀምጥ
+snack_secs_saved	የማንቂያ ጊዜ ተቀምጧል — {n} ሰከንድ
+settings_sec_backup	ምትኬ እና መመለስ
+settings_sec_diag	ምርመራ
+diag_privacy_help	መዝገቦች በዚህ መሣሪያ ላይ ይቆያሉ። ሚስጥሮች (ፒን፣ የይለፍ ቃላት) በፍጹም አይቀመጡም። ጥቅልን ከመሣሪያው ውጭ ማጋራት በእያንዳንዱ ጊዜ የእርስዎን ግልጽ ፈቃድ ይፈልጋል — ለሶስተኛ ወገን አይሸጥም ወይም አይሰጥም።
+diag_level	የዝርዝር ደረጃ
+diag_level_error	ስህተቶች
+diag_level_warn	ማስጠንቀቂያዎች
+diag_level_info	መረጃ
+diag_level_debug	ማረሚያ
+diag_support_start	የ30 ደቂቃ የድጋፍ ክፍለ ጊዜ ጀምር
+diag_support_stop	የድጋፍ ክፍለ ጊዜ ጨርስ
+diag_support_started	የድጋፍ ክፍለ ጊዜ በርቷል — የማረሚያ ዝርዝር ለ30 ደቂቃ
+diag_support_ended	የድጋፍ ክፍለ ጊዜ ተጠናቋል
+diag_export_local	የአካባቢ ቅጂ ላክ
+diag_export_local_done	የአካባቢ ምርመራ በ {path} ዝግጁ ነው — ቅጂ የሚቀመጥበትን ቦታ ይምረጡ
+diag_approve_send	ከዚህ መሣሪያ ውጭ ማጋራትን ፍቀድ
+diag_send_help	ፈቃዱ ለአንድ ጥቅል ነው፣ ከዚያ ያበቃል። ጊዜያዊ — ምርቱን ለማስተካከል ወይም ለማሻሻል ብቻ። ለሶስተኛ ወገን አይጋራም። በሊኑክስ፣ ዊንዶውስ፣ ማክ እና አንድሮይድ ይሠራል።
+diag_send_approved	ለአንድ ጥቅል ማጋራት ተፈቅዷል (በቅርቡ ያበቃል)
+diag_export_send	የማጋሪያ ጥቅል ፍጠር (ፈቃድ ይፈልጋል)
+diag_export_send_done	የማጋሪያ ጥቅል በ {path} ዝግጁ ነው — የሚቀመጥበትን ይምረጡ፣ ከዚያ ለ Kumkaj ድጋፍ ብቻ ይላኩ
+diag_save_bundle	የምርመራ ቅጂ አስቀምጥ
+diag_bundle_saved	የምርመራ ቅጂ ወደ {path} ተቀምጧል
+diag_bundle_failed	የምርመራ ቅጂውን ማስቀመጥ አልተቻለም — እንደገና ይሞክሩ
+diag_clear	የምርመራ መዝገቦችን አጽዳ
+diag_cleared	የምርመራ መዝገቦች ጸድተዋል
+sidebar_settings	የጎን አሞሌ
+sidebar_settings_help	ከጎን አሞሌው ጋር አንድ ዓይነት ምልክቶች። ለመደርደር ረድፍ ይጎትቱ። ለማሳየት ወይም ለመደበቅ መቀየሪያውን ያዙሩ። ቅንብሮች እና ቆልፍ ሁልጊዜ በአሞሌው ላይ ይቆያሉ።
+sidebar_always_on_short	ሁልጊዜ በርቷል
+sidebar_back_settings	ተመለስ
+sidebar_shown	ይታያል
+sidebar_hidden	ተደብቋል
+sidebar_always_on	ሁልጊዜ በአሞሌው ላይ
+sidebar_shown_hint	በጎን አሞሌ / በታች ትሮች ላይ ይታያል
+sidebar_hidden_hint	ከአሞሌው ተደብቋል
+sidebar_menu_items	ሜኑ እና እቃዎች
+sidebar_enable_all	ሁሉንም አንቃ
+sidebar_disable_all	ሁሉንም አሰናክል
+sidebar_order_saved	የጎን አሞሌ ቅደም ተከተል ተቀምጧል
+sidebar_visibility_saved	የጎን አሞሌ ታይነት ተቀምጧል
+amounts_hide	ደብቅ
+amounts_show	አሳይ
+printers_none_hint	መጀመሪያ በዚህ መሣሪያ ላይ ማተሚያ ያስቀምጡ፣ ከዚያ ወደ ሂሳብ ወይም ኩሽና ይጨምሩ
+counter	ቆጣሪ
+dine_in	በቦታው መብላት
+takeaway	ይዞ መሄድ
+order	ትዕዛዝ
+tables	ጠረጴዛዎች
+kitchen	ኩሽና
+sales	ሽያጭ
+sales_refunds	ሽያጭ እና ተመላሾች
+day_close	የቀን መዝጊያ
+reports_expenses	የባንክ መዝገብ እና ትርፍ/ኪሳራ
+nav_reports	ሪፖርቶች
+nav_settings	ቅንብሮች
+nav_lock	ቆልፍ
+no_sale_yet	ገና ሽያጭ የለም
+favorites	ተወዳጆች
+favorites_help	ብዙ ጊዜ የሚሸጡ እቃዎች፣ ለዚህ መግቢያዎ የተቀመጡ። አንዱን ወደ ሂሳብ ይጨምሩ፣ ወይም ከታች ካሉት እቃዎች ሁሉ ዝርዝርዎን ይገንቡ።
+your_favorites	የእርስዎ ተወዳጆች
+all_items	ሁሉም እቃዎች
+frequent	ተደጋጋሚ
+added_items	የተጨመሩ እቃዎች
+added_items_empty	በዚህ ትዕዛዝ ላይ ገና ምንም የለም — ከሁሉም እቃዎች ወይም ከምድብ ምግብ ይጨምሩ።
+frequent_config_help	ከተጠናቀቁ ሂሳቦች በጣም የተሸጡ ምግቦች። ስንት ቀን እንደሚታይ እና ስንት ምግብ እንደሚታይ ያስቀምጡ።
+frequent_days_ph	ቀናት (1)
+frequent_limit_ph	እቃዎች (24)
+frequent_apply	ተግብር
+frequent_saved	ተደጋጋሚ፦ ያለፉ {d} ቀን፣ ከፍተኛ {n} — {c} ምግብ
+frequent_empty	በዚህ ጊዜ ገና የተጠናቀቀ ሽያጭ የለም — ሂሳብ ይዝጉ (ቅንብሮች ሲፈቅዱ ₹0 ይቻላል) እና እዚህ ይታያሉ።
+zero_sales	ዜሮ ዋጋ ያላቸው ሽያጮች
+zero_sales_help	ዋጋቸው ₹0 የሆኑ ምግቦችን እና በ ₹0 የተዘጉ ሂሳቦችን ፍቀድ (ስጦታ / የባለቤት ፈቃድ)። በነባሪ በርቷል፣ ነፃ ሽፋኖች በተደጋጋሚ እና በቀን መዝገብ እንዲታዩ።
+zero_sales_on	₹0 ፍቀድ
+zero_sales_off	ዋጋ ጠይቅ
+zero_sales_saved_on	ዜሮ ዋጋ ያላቸው ሽያጮች ተፈቅደዋል
+zero_sales_saved_off	ሽያጭ ከ ₹0 በላይ ዋጋ ሊኖረው ይገባል
+floor_areas_help	አካባቢዎች በአዳራሹ ላይ ክፍሎች ወይም ዞኖች ናቸው (በቦታው መብላት፣ እሽግ፣ ኤሲ …)። መጀመሪያ አካባቢ ይጨምሩ፣ ከዚያ ጠረጴዛዎችን ያስገቡ — እያንዳንዱ አካባቢ በአዳራሹ ላይ የተለየ ቡድን ነው።
+area_new_ph	አዲስ አካባቢ / ክፍል (ለምሳሌ ኤሲ፣ የአትክልት ስፍራ)
+add_area	አካባቢ ጨምር
+area_added	አካባቢ “{name}” ዝግጁ ነው — ጠረጴዛዎችን ያስገቡ
+no_favorites	ገና ተወዳጅ የለም — ከታች ካለው ዝርዝር እቃዎችን ይጨምሩ።
+add_to_bill	ወደ ሂሳብ ጨምር
+added	ተጨምሯል
+owes_word	ይበደራል
+selected_word	ተመርጧል
+chip_clear_credit	አጽዳ — ብድር ወይም ቅድሚያ ውሰድ
+chip_missing_customer	የተመረጠው ደንበኛ ጠፍቷል — እንደገና ይምረጡ
+chip_no_customer	ገና ደንበኛ የለም — ስም ይጻፉ፣ ከዚያ ብድር ይንኩ
+credit_summary_fmt	{} ደንበኞች · ክፍት ብድር {} · የተያዘ ቅድሚያ {}
+recent_label	የቅርብ፦
+kot_new_waiting	አዲስ — በመጠባበቅ
+kot_preparing	በዝግጅት ላይ
+kot_ready_serve	ዝግጁ — አቅርብ
+kot_done_cap	ተጠናቋል
+kot_cancelled	ተሰርዟል
+kot_start_btn	ጀምር
+kot_mark_ready	ዝግጁ ምልክት አድርግ
+kot_done_btn	ጨርስ
+table_free	ነፃ — ትዕዛዝ ለመጀመር ይንኩ
+start_order	ትዕዛዝ ጀምር
+open_bill	ሂሳብ ክፈት
+collect_payment	ክፍያ ሰብስብ
+table_running	በሂደት ላይ
+payment_pending	ክፍያ በመጠባበቅ ላይ
+collect_at_counter	በቆጣሪ ሰብስብ
+inventory	ክምችት
+inventory_stock	ክምችት እና አክሲዮን
+branches	ቅርንጫፎች
+branches_org	ቅርንጫፎች እና ድርጅት
+credit_customers	ተዋዋዮች (ኻታ እና አቅራቢዎች)
+customer_name_ph	የተዋዋይ ስም
+new_customer_ph	አዲስ የተዋዋይ ስም
+item_name_ph	የእቃ ስም (ለምሳሌ ማሳላ ዶሳ)
+item_price_ph	ዋጋ
+start_template	ምርት
+team	ቡድን
+team_pins	ቡድን እና ፒኖች
+my_pin_settings	የእኔ ፒን
+settings_hub_help_my_pin	በዚህ መሣሪያ ላይ ለገባው ሰው የመክፈቻ ፒን ይቀይሩ።
+team_self_help	አንድ መግቢያ፦ አዲስ ፒን፣ አዲስ የይለፍ ቃል፣ ወይም ሁለቱም። ያለዎትን ለማቆየት ሳጥን ባዶ ይተዉ። የተለየ ማያ ወይም መብት ከፈለጉ ባለቤቱን ይጠይቁ።
+backup_settings	ምትኬ እና ቅንብሮች
+lock_app	መተግበሪያውን ቆልፍ
+pick	ምረጥ
+select	ምረጥ
+advance	ቅድሚያ
+owner	ባለቤት
+staff	ሰራተኛ
+photo	ፎቶ
+auto	ራስ-ሰር
+prev	ቀዳሚ
+next	ቀጣይ
+ok	እሺ
+this_shop	ሰርቨር
+extra_till	ክላየንት
+off	ጠፍቷል
+tables_kitchen	ጠረጴዛዎች እና ኩሽና
+server	ሰርቨር
+client	ክላየንት
+language_currency	ቋንቋ እና ገንዘብ
+language	ቋንቋ
+choose_language	ቋንቋዎን ይምረጡ
+language_setup_hint	የዚህን መሣሪያ ቋንቋ ይከተሉ፣ ወይም እርስዎ ይምረጡ።
+lang_follow_platform	የመሣሪያ ቋንቋ
+lang_pick_user	ቋንቋ ምረጥ
+lang_platform_now	አሁን የመሣሪያ ቋንቋ
+selected_language	ተመርጧል
+continue	ቀጥል
+this_device	ይህ መሣሪያ
+device_use_q	ይህ መሣሪያ እንዴት ይጠቀማል?
+last_server_mode	ሰርቨር ነበር — ለመቀጠል ይንኩ
+last_client_mode	ክላየንት ነበር — ለመቀጠል ይንኩ
+choose_server	ሰርቨር ይምረጡ
+choose_server_hint	ያለ ሰርቨር ይክፈቱ፣ ወይም ለሌላ ንግድ አዲስ ይፍጠሩ።
+create_new_server	አዲስ ሰርቨር ፍጠር
+open_server	ክፈት
+new_server_name_ph	አዲስ የሰርቨር ስም (አማራጭ)
+server_remove_pin_ph	ሰርቨር ለማስወገድ የባለቤት ፒን
+only_owner_remove_server	ሰርቨርን ማስወገድ የሚችለው ባለቤት ብቻ ነው
+owner_pin_remove_server	ይህን ሰርቨር ለማስወገድ የባለቤት ፒን ያስፈልጋል
+device_setup_help	ሰርቨር መዝገቦቹን እዚህ ይይዛል። ክላየንት ከሰርቨር ጋር ይጣመራል።
+app_template_heading	Rajdhani የመተግበሪያ ንድፍ
+app_template_blurb	የ Rajdhani ሜኑ ይጭናል፤ ባለቤት Zahir (zahir)፣ አስተዳዳሪ Asif (asif፣ ፒን 1111)፣ አስተናጋጅ Nawaz (nawaz፣ ፒን 0000)፤ የፊት አዳራሽ ጎን አሞሌ፤ ታሪክ ከ4 ሰዓት በኋላ ይጸዳል (እና በምትኬ ውስጥ አሁን አጽዳ)፤ የዛሬ ማሳያ ጠፍቷል፤ ጠባብ ትሪዎች ላይ የታመቀ KOT + መደበኛ ህዳሶች። የጎን አቻዎች በቅንብሮች እንደገና ሊበሩ ይችላሉ።
+app_template_apply	Rajdhani የመተግበሪያ ንድፍ
+app_template_skip	ለአሁን ዝለል
+app_template_status	ሰርቨር ዝግጁ ነው — Rajdhani የመተግበሪያ ንድፍ ይተግብሩ፣ ወይም ይዝለሉ
+app_template_importing	{title} በመተግበር ላይ…
+currency	ገንዘብ
+backup	ምትኬ
+use	ተጠቀም
+dont_use	አትጠቀም
+add_branch	ቅርንጫፍ ጨምር
+add_conversion	ቅየራ ጨምር
+add_dishes_items	ምግቦች እና እቃዎች ጨምር
+add_item_plain	እቃ ጨምር
+add_note	ማስታወሻ ጨምር
+add_opening_balance	የመክፈቻ ቀሪ ጨምር
+add_staff	ሰራተኛ ጨምር
+add_station	ጣቢያ ጨምር
+add_table	ጠረጴዛ ጨምር
+add_unit	መለኪያ ጨምር
+add_use_name	ይህን ስም ጨምር / ተጠቀም
+allow_extra_tills	ተጨማሪ ቆጣሪዎችን ፍቀድ
+amend	አስተካክል
+apply_country_pack	የሀገር ጥቅል ተግብር
+datetime_appearance	የቀን እና ሰዓት አቀራረብ
+datetime_appearance_help	መዝገቦች በውስጥ ዓመት-መጀመሪያ RFC3339 ይይዛሉ። እነዚህ ቀኖች እና ሰዓቶች በሂሳብ፣ KOT፣ ሪፖርት እና ማያ ላይ እንዴት እንደሚታዩ ብቻ ይቀይራሉ።
+datetime_example	አሁን ምሳሌ፦ {ex}
+date_order	የቀን ቅደም ተከተል
+date_order_dmy	ቀ/ወ/ዓ
+date_order_mdy	ወ/ቀ/ዓ
+date_order_ymd	ዓ-ወ-ቀ
+time_format	ሰዓት
+time_format_24h	24 ሰዓት
+time_format_12h	12 ሰዓት
+attach_bill_photo	የሂሳብ ፎቶ አያይዝ
+attach_pdf	PDF አያይዝ
+attach_photo	ፎቶ አያይዝ
+attachments_last_expense	አባሪዎች (የመጨረሻ ወጪ)
+bank	ባንክ
+bank_in	ወደ ባንክ ገቢ
+bank_out	ከባንክ ወጪ
+bank_reconciliation	የባንክ ማስታረቅ (ከባንክ መግለጫዎ ጋር ምልክት ያድርጉ)
+bank_to_till	ባንክ → ቆጣሪ
+book_add_dish	መዝገብ — ምግብ / እቃ ጨምር
+book_opening_credit	መዝገብ — የመክፈቻ ብድር
+branch_name_sell_ph	የሚሸጥበት የቅርንጫፍ ስም
+bring_my_book	መዝገቤን አምጣ
+business_tax_id_ph	የንግድ ግብር መታወቂያ
+caption_bank	ባንክ
+caption_bills	ሂሳቦች
+caption_outstanding	ያልተከፈለ
+caption_payments_today	የዛሬ ክፍያዎች
+caption_today	ዛሬ
+card_amount_ph	የካርድ መጠን
+cash_amount_ph	የጥሬ ገንዘብ መጠን
+cash_memo	የጥሬ ገንዘብ ማስታወሻ
+choose_icon	ምልክት ምረጥ
+choose_logo	አርማ ምረጥ
+clear_icon	ምልክት አጽዳ
+clear_photo	ፎቶ አጽዳ
+copy_day_book_csv	የቀን መዝገብ CSV ቅዳ
+copy_day_close	የቀን መዝጊያ ቅዳ
+copy_items_csv	የእቃዎች CSV ቅዳ
+copy_outstanding_csv	ያልተከፈለ CSV ቅዳ
+copy_parties_csv	የተዋዋዮች CSV ቅዳ
+copy_party_ledger_csv	የተዋዋይ መዝገብ CSV ቅዳ
+copy_receipt	ደረሰኝ ቅዳ
+share_whatsapp	በ WhatsApp አጋራ
+lan_pages_heading	የእንግዳ ገጾች በ Wi‑Fi
+lan_pages_help	በዚህ ሱቅ Wi‑Fi ላይ የእንግዳ ገጾች ለማሳያ ሰሌዳ፣ ቶከኖች፣ ኤክስፖ፣ ኪዮስክ፣ የጠረጴዛ QR እና አስተያየት ይሠራሉ። በሞባይል ዳታ ላይ ያሉ እንግዶች በኋላ ደመና ይፈልጋሉ። የካርድ ተርሚናል / የክፍያ አገናኝ በይነመረብ ሲኖር አማራጭ ነው — ቆጣሪውን በፍጹም አያቆምም።
+diag_send_heading	ከዚህ መሣሪያ ውጭ አጋራ
+kot_dest_heading	የኩሽና ጣቢያ
+optional_login_heading	አማራጭ መግቢያ
+rights_heading	መብቶች
+ops_panel	የአካባቢ ሥራ
+crm_heading	እንግዶች እና መልዕክቶች
+crm_help	የልደት ቀን፣ ታማኝነት፣ የቦዘኑ እና ከፍተኛ እንግዶች — የ SMS ወይም WhatsApp ፍላጎት ወረፋ ያድርጉ። በመልዕክቱ ውስጥ {name} እና {points} ይጠቀሙ። ባለቤቱ ላክ ይንካል፤ ምንም በራሱ አይበተንም።
+crm_queue_sms	SMS ወረፋ አድርግ
+crm_queue_wa	WhatsApp ወረፋ አድርግ
+crm_seg_bday_week	የልደት ሳምንት
+crm_seg_bday_month	የልደት ወር
+crm_seg_phone	ስልክ ያለው
+crm_seg_loyalty	ታማኝነት
+crm_seg_inactive	የቦዘነ
+crm_seg_top	ከፍተኛ ወጪ አድራጊዎች
+birthday_ph	የልደት ቀን (MM-DD ወይም YYYY-MM-DD)
+crm_message_ph	መልካም ልደት {name}! {points} ነጥብ አለዎት።
+till_apply_redeem	በሂሳብ ላይ ተግብር
+till_clear_redeem	መቤዠት አጽዳ
+till_wallet_topup	የኪስ ቦርሳ ሙላ
+till_issue_voucher	ቫውቸር ስጥ
+till_points_ph	የሚቤዡ ነጥቦች
+till_wallet_ph	የሚወጣ የኪስ ቦርሳ መጠን
+till_voucher_code_ph	የቫውቸር ኮድ
+till_voucher_amt_ph	የቫውቸር መጠን (ባዶ = ሁሉ)
+till_wallet_topup_ph	የኪስ ቦርሳ መሙያ መጠን
+till_voucher_issue_amt_ph	የሚሰጥ የቫውቸር መጠን
+till_voucher_issue_code_ph	አዲስ የቫውቸር ኮድ
+split_evenly	እኩል ክፈል
+waitlist	የጥበቃ ዝርዝር
+fire_course	ምግብ አውጣ
+hold_item	ያዝ
+waiter_call	አስተናጋጅ ጥራ
+waitlist_add	ወደ የጥበቃ ዝርዝር ጨምር
+floor_view_grid	ፍርግርግ
+floor_view_layout	አቀማመጥ
+floor_layout_x	X
+floor_layout_y	Y
+floor_layout_w	W
+floor_layout_h	H
+floor_layout_save	አቀማመጥ አስቀምጥ
+floor_layout_open	ጠረጴዛ ክፈት
+floor_layout_edit	አቀማመጥ አስተካክል
+floor_layout_pick	አቀማመጡን ለማስተካከል ጠረጴዛ ይንኩ
+floor_layout_saved	የጠረጴዛ አቀማመጥ ተቀምጧል
+floor_layout_nudge_left	← 20
+floor_layout_nudge_right	→ 20
+floor_layout_nudge_up	↑ 20
+floor_layout_nudge_down	↓ 20
+sibling_pickers_help	እንደ መለኪያዎች በርቷል/ጠፍቷል ይንኩ — አካባቢዎችን፣ ጣቢያዎችን እና የግብር ተመኖችን ከዕለታዊ መራጮች ይደብቁ፤ የጥቅል ነባሪዎች ይቆያሉ።
+bulk_price_apply	የጅምላ ዋጋ ተግብር
+card_terminal_optional	የካርድ ተርሚናል / የክፍያ አገናኝ (በይነመረብ ሲኖር አማራጭ)
+copy_report	ሪፖርት ቅዳ
+counted_cash_ph	በመሳቢያው ውስጥ የተቆጠረ ጥሬ ገንዘብ
+country_tax	ሀገር እና ግብር
+tax_chrome	በቆጣሪ ላይ የግብር መለያዎች
+tax_chrome_help	ሲጠፋ፣ የትዕዛዝ ጠረጴዛው የ GST/ግብር ግምት መስመሮችን እና በዋጋ ውስጥ ያለ GST ቦታ ያዢዎችን ይደብቃል። የግብር ተመኖች እና የሀገር እና ግብር ቅንብሮች ይቆያሉ — መለያዎችን በማንኛውም ጊዜ መልሰው ያብሩ። Rajdhani የመተግበሪያ ንድፍ ይህን ጠፍቶ ይጀምራል።
+tax_chrome_on	አሳይ
+tax_chrome_off	ደብቅ
+tax_chrome_saved_on	የግብር መለያዎች በቆጣሪ ላይ
+tax_chrome_saved_off	የግብር መለያዎች በቆጣሪ ላይ ተደብቀዋል
+tax_invoice_till	የግብር ደረሰኝ በቆጣሪ ላይ
+tax_invoice_help	ሲጠፋ፣ ሂሳቦች የጥሬ ገንዘብ ማስታወሻ ብቻ ናቸው እና የግብር ደረሰኝ / የጥሬ ገንዘብ ማስታወሻ ቺፖች በትዕዛዝ ጠረጴዛው ላይ ይደበቃሉ። Rajdhani የመተግበሪያ ንድፍ ይህን ጠፍቶ ይጀምራል — የግብር ደረሰኝ እንደገና ለመምረጥ አሳይን በማንኛውም ጊዜ ያብሩ።
+tax_invoice_on	አሳይ
+tax_invoice_off	ደብቅ
+tax_invoice_saved_on	የግብር ደረሰኝ በቆጣሪ ላይ
+tax_invoice_saved_off	የግብር ደረሰኝ ተደብቋል — የጥሬ ገንዘብ ማስታወሻ ብቻ
+pay_methods	የክፍያ ዘዴዎች
+pay_methods_help	በክፍያ ውሰድ ላይ የትኞቹ ቺፖች እንደሚታዩ። ጥሬ ገንዘብ ሁልጊዜ ይቆያል። Rajdhani የመተግበሪያ ንድፍ በጥሬ ገንዘብ ብቻ ይጀምራል — UPI / ካርድ / ብድር / ክፍፍልን እዚህ መልሰው ያብሩ።
+create_backup	ምትኬ ፍጠር
+credit_limit_heading	የብድር ገደብ (የተመረጠ / የተሰየመ ተዋዋይ)
+day_close_summary	የቀን መዝጊያ ማጠቃለያ
+delete_party	የተመረጠውን ተዋዋይ ሰርዝ
+delivery	ማድረስ
+done_open_books	ጨርስ — መዝገቦችን ክፈት
+drawer_count	የመሳቢያ ቆጠራ (አማራጭ)
+expense_heading	ወጪ
+export_day	ቀን ላክ
+extra_note_bill_ph	በዚህ ሂሳብ / ሽያጭ ላይ ተጨማሪ ማስታወሻ
+extra_note_expense_ph	በመጨረሻው ወጪ ላይ ተጨማሪ ማስታወሻ
+extra_tills_heading	ተጨማሪ ቆጣሪዎች
+other_devices_help_heading	ሌሎች መሣሪያዎችን አዘጋጅ
+other_devices_help	በዚህ መሣሪያ (ሰርቨር)፦ ሌሎች መሣሪያዎች → ተጨማሪ ቆጣሪዎችን ፍቀድ። የማጣመሪያ ኮዱን እና የ Wi‑Fi አድራሻውን ይያዙ። ከታየ ሌሎች መሣሪያዎች እንዲገናኙ ፍቀድን ይንኩ። በኮምፒውተር ላይ ከዚህ ኮምፒውተር ጋር ጀምርን ይንኩ። በእያንዳንዱ ሌላ መሣሪያ፦ መተግበሪያውን ይጫኑ፣ የክላየንት ሁነታ ይምረጡ፣ የሱቁን ሰርቨር ያግኙ (ወይም አድራሻውን ይጻፉ)፣ የማጣመሪያ ኮዱን ያስገቡ፣ አሁን አጣምር። Wi‑Fi ቢቋረጥ ትዕዛዞች በመሣሪያው ላይ ይጠብቃሉ እና ሰርቨር ሲመልስ ይሄዳሉ። የኩሽና ማተሚያዎች በሰርቨር ላይ ይዘጋጃሉ (ቅንብሮች → ማተሚያዎች) — ተጨማሪ ቆጣሪዎች KOT ወደዚያ ይልካሉ።
+forget_shop	ይህን ሱቅ እርሳ
+goods_received	የተቀበሉ እቃዎች
+import_day	ቀን አስመጣ
+import_items_csv_plain	የእቃዎች CSV አስመጣ…
+import_parties_csv	የተዋዋዮች CSV አስመጣ…
+item_name	የእቃ ስም
+kitchen_printing	ማተሚያዎች
+login_id_ph	የተጠቃሚ ስም
+mark_cleared	እንደተጠራቀመ ምልክት አድርግ
+new_party_clear	አዲስ ተዋዋይ (ቅጹን አጽዳ)
+new_party_kind_supplier_ph	አዲስ የተዋዋይ አይነት (አቅራቢ)
+next_country	ቀጣይ ሀገር
+next_order	ቀጣይ ትዕዛዝ (ጠረጴዛውን አጽዳ)
+note_gstin_ph	ማስታወሻ / GSTIN / የስምምነት ማስታወሻ
+notes_attach_party	ማስታወሻዎች እና አባሪዎች (የተመረጠ ተዋዋይ)
+notes_attach_sale	ማስታወሻዎች እና አባሪዎች (የተመረጠ ሽያጭ)
+on_account_ap	በሂሳብ ላይ (AP)
+org_optional_ph	ድርጅት (አማራጭ)
+paid_by	የከፈለው
+paid_now	አሁን ተከፍሏል
+pair_now	አሁን አጣምር
+pairing_code_ph	የማጣመሪያ ኮድ
+party_name_selected_ph	የተዋዋይ ስም (ወይም የተመረጠውን ተጠቀም)
+password_ph	የይለፍ ቃል
+pay_ap_card	AP በካርድ ክፈል
+pay_ap_cash	AP በጥሬ ገንዘብ ክፈል
+pay_ap_heading	የምንበደራቸውን ክፈል (AP)
+pay_ap_upi	AP በ UPI ክፈል
+pay_selected_heading	የተመረጠውን ክፈል (ዕዳ ዝጋ / ቅድሚያ ውሰድ)
+pick_from_items	ከእቃዎቻችን ምረጥ
+prev_country	ቀዳሚ ሀገር
+print_open	አትም / ክፈት
+reason_amend_ph	የማስተካከል / የመሰረዝ / የተመላሽ ምክንያት
+reason_note_ph	ምክንያት / ማስታወሻ (ብክነት፣ ቆጠራ፣ …)
+record_day_close	የቀን መዝጊያ መዝግብ
+refresh_from_shop	ከሱቅ አድስ
+refund	ተመላሽ
+remove_selected	የተመረጠውን አስወግድ
+request_bill	ሂሳብ ጠይቅ
+restaurant_name_ph	የምግብ ቤት ስም (አማራጭ)
+restore_backup	ምትኬ መልስ
+role_both	ሁለቱም
+role_admin	አስተዳዳሪ
+role_cashier	ገንዘብ ተቀባይ
+role_customer	ደንበኛ
+role_manager	ሥራ አስኪያጅ
+history_retention	የንግድ ታሪክ
+history_retention_help	የቆዩ ሽያጮችን እና KOT በራስ-ሰር አጽዳ። ሜኑ፣ ሰራተኞች እና ቅንብሮች ይቆያሉ። አሁን አጽዳ ሁሉንም የንግድ ረድፎች ያጠፋል እና ዝግጅቱን ይይዛል።
+history_off	ያዝ
+history_day_close	በቀን መዝጊያ
+history_after_hours	ከሰዓታት በኋላ
+history_hours_ph	ሰዓታት (1–168፣ ነባሪ 4)
+history_hours_save	ሰዓታት አስቀምጥ
+history_clear_now	ታሪክ አሁን አጽዳ
+history_cleared	የንግድ ታሪክ ጸድቷል — ዝግጅቱ ተይዟል
+history_retention_saved	የታሪክ ማጽዳት ተቀምጧል
+history_hours_saved	የታሪክ ሰዓታት ተቀምጠዋል
+history_owner_only	ታሪክን ማጽዳት የሚችሉት ባለቤት ወይም አስተዳዳሪ ብቻ ናቸው
+rollup	ማጠቃለያ
+save_brand	ምልክት አስቀምጥ
+save_business_id	የንግድ መታወቂያ አስቀምጥ
+save_business_name	የንግድ ስም አስቀምጥ
+save_features	አስቀምጥ
+save_features_named	{name} አስቀምጥ
+save_features_ok	ለ {name} ዝግጅት ተቀምጧል
+save_names	ስሞች አስቀምጥ
+second_way	ሁለተኛ መንገድ
+server_ip_ph	የሰርቨር IP (ለምሳሌ 192.168.1.10)
+set_credit_limit	ገደብ በተዋዋይ ላይ ተግብር
+set_login_selected	መግቢያ በተመረጠው ላይ ተግብር
+set_login_named	መግቢያ በ {name} ላይ ተግብር
+shop	ሱቅ
+show	አሳይ
+spreadsheet_csv	ተመን ሰንጠረዥ (CSV)
+start_fresh	አዲስ ጀምር
+stop_extra_tills	ተጨማሪ ቆጣሪዎችን አቁም
+floor_cols_ph	አምዶች
+floor_cols_fit	ማያውን አስማማ
+floor_cols_fit_sub	{n} እዚህ ይገባሉ
+floor_cols_fits	ይገባል
+floor_cols_scroll	ወደ ጎን ይሸብልላል
+floor_cols_min	አምዶች፦ ቢያንስ 1 — ወይም ማያውን ለማስማማት ባዶ ይተዉ
+floor_zoom_auto	ራስ-ሰር
+floor_zoom_out	አሳንስ
+floor_zoom_in	አተልቅ
+backup_auto	በየቀኑ በራስ-ሰር ምትኬ ይቀመጣል · የመጨረሻው {when} · ያለፉት 14 ቀናት በ {dir} ይያዛሉ።
+backup_auto_none	በየቀኑ በራስ-ሰር ምትኬ ይቀመጣል — የመጀመሪያው በቅርቡ ይሠራል።
+backup_copy_to	ቅጂዎችም ወደ {dir} ይሄዳሉ።
+backup_copy_btn	ምትኬዎችን ወደ አቃፊም ቅዳ…
+autostart_off	ከዚህ ኮምፒውተር ጋር ጀምር
+autostart_on	ከዚህ ኮምፒውተር ጋር ይጀምራል ✓ — ለማቆም ይንኩ
+autostart_done_on	ይህ ኮምፒውተር ሲበራ መተግበሪያውን አሁን ይከፍታል — የሱቁ ሰርቨር ከኃይል መቋረጥ በኋላ ይመለሳል።
+autostart_done_off	ይህ ኮምፒውተር ሲበራ መተግበሪያውን ከአሁን በኋላ አይከፍትም።
+device_forgotten	ሱቁ ይህን መሣሪያ ረስቶታል — አሁን ባለው የሱቅ ኮድ እንደገና ያጣምሩ። በላዩ ላይ የሚጠብቁ ትዕዛዞች ይያዛሉ።
+lan_offline	የሱቅ ሰርቨር አልተደረሰም
+forget_device	እርሳ
+last_seen	ታይቷል
+copy_pair_code	የማጣመሪያ ኮድ ቅዳ
+new_pair_code	አዲስ የማጣመሪያ ኮድ
+pair_finishing	ማጣመር በመጨረስ ላይ… የሱቁን መዝገቦች በመተግበር
+pair_opening	ቆጣሪውን በመክፈት ላይ…
+pair_copied	የማጣመሪያ ኮድ ተቀድቷል
+kot_waiting	ለመላክ በመጠባበቅ
+lan_offline_waiting	የሱቅ ሰርቨር አልተደረሰም · {n} በመጠባበቅ
+lan_connecting	ከሱቅ ጋር በመገናኘት ላይ…
+lan_live	ቀጥታ
+lan_sending	{n} በመላክ ላይ
+lan_sign_in_to_send	{n} ለመላክ እንደገና ይግቡ
+lan_pair_again	ይህን መሣሪያ እንደገና አጣምር
+lan_update_app	መተግበሪያውን ያዘምኑ — ይህ መሣሪያ እና የሱቁ ሰርቨር የተለያዩ ስሪቶች አሏቸው
+allow_firewall	ሌሎች መሣሪያዎች እንዲገናኙ ፍቀድ
+firewall_blocked	የዚህ ኮምፒውተር ፋየርዎል ሌሎች መሣሪያዎችን እየከለከለ ነው — ሌሎች መሣሪያዎች እንዲገናኙ ፍቀድን ይንኩ።
+firewall_waiting	የአስተዳዳሪ ጥያቄን በመጠባበቅ ላይ…
+lan_join_help	በሌላኛው መሣሪያ፦ የክላየንት ሁነታ → የሱቁን ሰርቨር ያግኙ (ወይም {addr} ይጻፉ) → የማጣመሪያ ኮድ {code}።
+lan_pair_status	Wi‑Fi {addr}
+lan_join_help_no_addr	አድራሻ ለማግኘት ይህን መሣሪያ ከ Wi‑Fi ጋር ያገናኙ።
+lan_no_address	ገና የ Wi‑Fi አድራሻ የለም — ከሱቁ Wi‑Fi ጋር ያገናኙ።
+lan_not_listening	መሣሪያዎችን አይቀበልም (ወደብ {port} ተይዟል)። መተግበሪያውን እንደገና ያስጀምሩ።
+lan_tills_off	ተጨማሪ ቆጣሪዎች ጠፍተዋል። ሌላ መሣሪያ እንዲቀላቀል ይፍቀዱ።
+paired_with	ተጣምሯል · {url}
+not_paired	አልተጣመረም
+choose_device_use	ሰርቨር ወይም ክላየንት ይምረጡ።
+paired_note	ተጣምሯል። ለመሸጥ ይክፈቱ፣ ወይም የቅርቡን ለማግኘት ያድሱ።
+last_update_at	የመጨረሻ ዝማኔ፦ {time}።
+pair_intro	ሰርቨሩን ያግኙ፣ ወይም አድራሻውን እና የማጣመሪያ ኮዱን ይጻፉ።
+queue_waiting	ሱቁን ለመድረስ በመጠባበቅ ({n})፦
+queue_tries	{n} ጊዜ ተሞክሯል · የመጨረሻ መልስ፦ {e}
+save_backup_copy	የምትኬ ቅጂ አስቀምጥ…
+backup_copy_saved	የምትኬ ቅጂ ተቀምጧል — ከዚህ መሣሪያ ውጭ ያቆዩት (USB ወይም ሌላ መሣሪያ)
+backup_copy_overdue	ለ {n} ቀናት የምትኬ ቅጂ ከዚህ መሣሪያ አልወጣም — ቅንብሮች → ምትኬ
+backup_copy_failed	የምትኬ ቅጂው እዚያ ሊቀመጥ አልቻለም — ሌላ ቦታ ይምረጡ
+clock_off	የዚህ መሣሪያ ሰዓት ከሱቁ ሰርቨር {min} ደቂቃ ተለይቷል — በዚህ መሣሪያ ትክክለኛውን ሰዓት ያስቀምጡ
+printers_heading	ማተሚያዎች
+printers_help	ማተሚያዎችን ያግኙ፣ አንዱን ለመምረጥ ይንኩ፣ ከዚያ የሙከራ ገጽ በዚያ መሣሪያ ብቻ ያትሙ። የሂሳብ ማተሚያዎች፦ የሂሳብ እና KOT ቅርጸት → ሂሳብ። የኩሽና ማተሚያዎች፦ ኩሽና → የኩሽና ጣቢያዎች (መጀመሪያ ጣቢያ ይጨምሩ — ፈልግ ጣቢያ አይፈጥርም)።
+printers_host_only	ማተሚያዎች በሱቁ መሣሪያ (ሰርቨር) ላይ ይዘጋጃሉ። ይህ ቆጣሪ ሂሳቦችን እና KOT ወደዚያ ይልካል — ፈልግ / ጨምር / መድብ በሰርቨር ላይ ይቆያሉ። የሙከራ ገጽ እና የሂሳብ የህትመት መጠን ወደ ሰርቨር ይሄዳሉ።
+printers_find_heading	ማተሚያዎችን ፈልግ
+printers_find_tip	ፈልግ ይህን መሣሪያ ይቃኛል እና ዝርዝሩን ወቅታዊ ያደርጋል።
+printers_pool_heading	ማተሚያዎች
+printers_pool_tip	ፈልግ ይህን መሣሪያ ይቃኛል እና ይህን ዝርዝር ወቅታዊ ያደርጋል።
+printers_pool_empty	(ገና የለም — ፈልግን ይንኩ)
+printers_routes_help	ስርዓተ ክወናው አስቀድሞ የሚያውቃቸውን ማተሚያዎች ያግኙ። በሂሳብ እና KOT ቅርጸት ስር ለሂሳቡ እና ለእያንዳንዱ ኩሽና ይመድቧቸው።
+printer_assign_dd	እውነተኛ ማተሚያ፦ {place}
+printer_assign_pick	እውነተኛ ማተሚያ ምረጥ
+printer_profile_heading	አቀማመጥ
+printer_send_heading	ማድረስ
+vp_delivery_heading	ማድረስ
+vp_delivery_help	ይህ ምናባዊ ማተሚያ ሥራዎችን እንዴት እንደሚልክ — የስርዓት ሰነድ፣ ጥሬ ባይቶች፣ ወይም ESC/POS። የወረቀት ይዘት (የፊደል መጠን፣ መጠቅለያ፣ ህዳሶች) በሂሳብ / KOT ቅርጸት ይወሰናል፣ እዚህ አይደለም።
+vp_type_size_heading	የፊደል መጠን
+vp_wrap_heading	የመጠቅለያ ስፋት
+vp_margin_heading	ህዳሶች
+vp_delivery_spooler	የስርዓት ሰነድ (የስርዓት ስፑለር)
+vp_delivery_raw	ጥሬ ባይቶች ወደ መሣሪያ
+vp_delivery_escpos	ESC/POS የሙቀት ትዕዛዞች
+virtual_printer_new	አዲስ ምናባዊ ማተሚያ
+virtual_printer_selected	“{name}” በማስተካከል ላይ — ለመቀየር በዝርዝሩ ሌላውን ይንኩ
+virtual_printer_tap_list	ለማስተካከል በዝርዝሩ ውስጥ ምናባዊ ማተሚያ ይንኩ
+config_layout_portrait	ቁም
+config_layout_landscape	አግድም
+config_send_os	የስርዓት ስፑለር
+config_send_escpos	ESC/POS
+profiles_heading	አቀማመጦች
+profiles_empty	(ገና አቀማመጥ የለም)
+profile_builtin	አብሮ የተሰራ
+profile_custom	ብጁ
+profile_name_ph	የአቀማመጥ ስም
+profile_new	አዲስ አቀማመጥ
+profile_delete	አቀማመጥ ሰርዝ
+profile_created	አቀማመጥ ተፈጥሯል
+profile_deleted	አቀማመጥ ተሰርዟል
+profile_builtin_keep	አብሮ የተሰሩ አቀማመጦች ሊሰረዙ አይችሉም
+config_saved	ተዘምኗል
+config_selected	“{name}” ተመርጧል
+printer_output_heading	ምናባዊ ማተሚያዎች
+virtual_printers_heading	ምናባዊ ማተሚያዎች
+virtual_printers_empty	ገና ምናባዊ ማተሚያ የለም — ከታች እሴቶችን ያስቀምጡ፣ ከዚያ ያስቀምጡ። ከኖሩ በኋላ ለማስተካከል በዝርዝሩ አንዱን ይንኩ።
+virtual_printer_name_ph	የምናባዊ ማተሚያ ስም (አማራጭ)
+virtual_printer_create	ምናባዊ ማተሚያ ፍጠር
+virtual_printer_save	ምናባዊ ማተሚያ አስቀምጥ
+virtual_printer_delete	ምናባዊ ማተሚያ ሰርዝ
+virtual_printer_created	ምናባዊ ማተሚያ “{name}” ተፈጥሯል
+virtual_printer_deleted	ምናባዊ ማተሚያ “{name}” ተሰርዟል
+virtual_printer_updated	ምናባዊ ማተሚያ ተዘምኗል
+virtual_printer_updated_named	ምናባዊ ማተሚያ “{name}” ተዘምኗል
+virtual_draft_layout	ለቀጣዩ ምናባዊ ማተሚያ እሴቶች ተቀምጠዋል
+virtual_draft_send	ለቀጣዩ ምናባዊ ማተሚያ እሴት ተቀምጧል
+virtual_need_real	መጀመሪያ እውነተኛ ማተሚያ ይምረጡ
+virtual_need_select	ለመሰረዝ ምናባዊ ማተሚያ ይምረጡ
+real_printer_selected	ተመርጧል፦ {name}
+station_group_heading	ምናባዊ ማተሚያዎች
+station_group_apply	ምናባዊ ማተሚያ ሰርዝ
+station_group_applied	ተሰርዟል
+station_group_empty	ምናባዊ ማተሚያ ይምረጡ
+station_group_name_ph	የምናባዊ ማተሚያ ስም (አማራጭ)
+station_group_save	ምናባዊ ማተሚያ ፍጠር
+station_group_saved	ምናባዊ ማተሚያ ተቀምጧል
+station_manage_heading	የኩሽና ጣቢያ ጨምር ወይም አስወግድ
+printers_routes_heading	ነገሮች የት እንደሚታተሙ
+route_pick_heading	ቦታ
+route_editing	በማስተካከል ላይ፦ {name}
+route_assigned	{printer} ወደ {place} ተጨምሯል
+route_already_assigned	አስቀድሞ በዚህ ቦታ ላይ፦ {printer}
+route_removed	{printer} ከ {place} ተወግዷል
+route_cleared	{name} ጸድቷል
+route_assigned_empty	በዚህ ቦታ ላይ የለም
+route_tap_remove	ለማስወገድ ይንኩ
+route_tap_select	ለመምረጥ ይንኩ
+route_tap_selected	ተመርጧል
+route_pick_printer_first	መጀመሪያ ማተሚያ ይንኩ
+route_assigned_heading	ማተሚያዎች
+route_add_heading	መድብ
+printer_label_ph	ስም (ለምሳሌ ኩሽና)
+printer_target_ph	የስርዓት ማተሚያ ስም ወይም host:9100
+printer_target_default	የዚህ ኮምፒውተር የተለመደ ማተሚያ (ባዶ አድራሻ)
+printer_wire_heading	መገለጫ
+printer_wire_escpos	ESC/POS
+printer_wire_os	ቁም
+printer_wire_os_portrait	ቁም
+printer_wire_os_landscape	አግድም
+printer_wire_escpos_short	ESC/POS
+printer_wire_os_short	ቁም
+printer_wire_os_landscape_short	አግድም
+printer_format_custom	አዲስ ብጁ መገለጫ
+printer_format_custom_label	ብጁ
+printer_format_custom_added	ለዚህ ቦታ ብጁ መገለጫ ተጨምሯል
+add_printer	ማተሚያ ጨምር
+remove_printer	አስወግድ
+route_pick_ph	ሂሳብ ወይም የኩሽና ጣቢያ
+route_bill	ሂሳብ
+route_default_kitchen	ጣቢያ የለም (ያልተመደቡ ምግቦች)
+route_kot_station	ኩሽና
+route_dont_print	ማተሚያ የለም
+stations_heading	የኩሽና ጣቢያዎች
+stations_help	ለምግቦች እና KOT የኩሽና ጣቢያዎችን ይጨምሩ። በእያንዳንዱ ጣቢያ ማተሚያዎቹን ያያይዙ (በቅንብሮች → ማተሚያዎች ስር የተገኙ)፣ ቅድሚያ ያስቀምጡ፣ እና የመጀመሪያው የሚሠራውን ወይም በሁሉም ላይ አትምን ይምረጡ። ለውጦች እየሄዱ ይቀመጣሉ — የአስቀምጥ ቁልፍ የለም።
+station_print_heading	ለዚህ ጣቢያ ማተሚያዎች
+station_print_help	ጣቢያ ይምረጡ፣ ከዚያ አንድ ወይም ከዚያ በላይ ማተሚያዎችን ያያይዙ። ↑↓ የሙከራ ቅደም ተከተል ያስቀምጣል። የመጀመሪያው የሚሠራው ከመጀመሪያው ስኬት በኋላ ይቆማል፤ በሁሉም ላይ አትም ወደ እያንዳንዱ የተያያዘ ማተሚያ ይልካል። እያንዳንዱ ለውጥ ወዲያው ይቀመጣል።
+station_print_pick_ph	ማተሚያ የሚዘጋጅበት ጣቢያ
+station_print_pick_first	መጀመሪያ የኩሽና ጣቢያ ይምረጡ
+station_print_editing	ለ “{name}” ማተሚያዎች በማስተካከል ላይ
+station_vps_dd	ለዚህ ጣቢያ ማተሚያዎች
+station_vps_dd_n	{n} ማተሚያ · ለመቀየር ይንኩ
+station_vps_empty	ገና ማተሚያ የለም — በቅንብሮች → ማተሚያዎች ስር ያግኟቸው
+bill_printers_dd	ለሂሳቡ ማተሚያዎች
+bill_printers_dd_n	ለሂሳቡ {n} ማተሚያ · ለመቀየር ይንኩ
+job_layout	አቀማመጥ
+job_delivery	ሥራው እንዴት እንደሚላክ
+job_delivery_help	የስርዓት ሰነድ፣ ጥሬ ባይቶች፣ ወይም ESC/POS። ሂሳቡ እና የኩሽና ትኬቱ እያንዳንዱ የራሱን ይይዛል። ማንኛውም ሥራ ፈልግ ወደ ባስቀመጠው ማንኛውም ማተሚያ ሊሄድ ይችላል።
+station_vp_attached	ማተሚያ ተያይዟል
+station_vp_detached	ማተሚያ ከጣቢያ ተወግዷል
+station_print_summary	{mode} · {n} ማተሚያ
+station_print_summary_none	በዚህ ጣቢያ ላይ ገና ማተሚያ የለም — አያትምም
+stations_none	ገና ጣቢያ የለም — ከታች ይጨምሩ። የሜኑ እቃዎች KOT እዚያ እንዲታተም ጣቢያ ሊጠቀሙ ይችላሉ።
+route_up	ወደ ላይ
+route_down	ወደ ታች
+route_remove	አስወግድ
+route_clear	አጽዳ
+save_printers	ማተሚያዎችን አስቀምጥ
+print_test_page	የሙከራ ገጽ አትም
+no_printer_assigned	ማተሚያ የለም
+test_page_no_printer	ለ {place} ማተሚያ የለም — ማተሚያ ያያይዙ፣ ከዚያ እንደገና ይሞክሩ
+test_page_pick_first	መጀመሪያ ለሙከራ ገጽ ማተሚያ ይምረጡ — ከዚያ የሙከራ ገጽ ያትሙ
+test_printers_dd	ለሙከራ ገጽ ማተሚያዎች
+test_printers_dd_n	ለሙከራ ገጽ {n} ማተሚያ · ለመቀየር ይንኩ
+kot_test_printers_dd	ለሙከራ KOT ማተሚያዎች
+kot_test_printers_dd_n	ለሙከራ KOT {n} ማተሚያ · ለመቀየር ይንኩ
+test_printer_picked	ሙከራ በ፦ {name}
+test_printer_cleared	ሙከራ አይደለም በ፦ {name}
+test_page_sent_n	የሙከራ ገጽ ወደ {n} ማተሚያ ተልኳል
+test_kot_pick_first	መጀመሪያ ለሙከራ KOT ማተሚያ ይምረጡ — ከዚያ ሙከራ KOT
+test_kot_sent_n	የሙከራ KOT ወደ {n} ማተሚያ ተልኳል
+cancel_pick	ምልክት አድርግ
+cancel_pick_on	ምልክት ተደርጓል
+cancel_pick_meta	ለመሰረዝ ምልክት ተደርጓል
+batch_cancel	ምልክት የተደረገውን ሰርዝ
+batch_cancel_n	ምልክት የተደረገውን ሰርዝ ({n})
+batch_cancel_none	መጀመሪያ አንድ ወይም ከዚያ በላይ የተላኩ ምግቦችን ምልክት ያድርጉ — ከዚያ ምልክት የተደረገውን ይሰርዙ
+batch_cancel_title	ምልክት የተደረጉ ምግቦችን ሰርዝ — አንድ ምክንያት፣ ለእያንዳንዱ ኩሽና አንድ የስረዛ ወረቀት
+batch_cancel_ok	{n} ምግብ ተሰርዟል · {slips} የስረዛ ወረቀት → {kitchens}
+batch_cancel_ok_noprint	{n} ምግብ ተሰርዟል — የ KOT ራስ-ህትመት ጠፍቷል፣ ስለዚህ የስረዛ ወረቀት የለም
+no_printer_kitchen_station	ለዚያ የኩሽና ጣቢያ ማተሚያ የለም — ኩሽና → የኩሽና ጣቢያዎች → ለዚህ ጣቢያ ማተሚያዎች
+printers_saved	ተቀምጧል
+test_page_sent	የሙከራ ገጽ ተልኳል — ማተሚያውን ያረጋግጡ
+test_page_sent_one	የሙከራ ገጽ ወደ {name} ተልኳል — ያንን ማተሚያ ያረጋግጡ
+printers_found	{n} ተገኝቷል፦ {list}
+printers_find_synced	{n} ተገኝቷል — {new} አዲስ
+printer_on_device	ተቀምጧል
+printer_already_added	አስቀድሞ ተጨምሯል
+printer_already_saved	አስቀድሞ ተቀምጧል፦ {name}
+find_printers	ማተሚያዎችን ፈልግ
+printers_looking	በመፈለግ ላይ…
+saving_printer	ማተሚያ በመጨመር ላይ…
+cancelled	ተሰርዟል
+printers_tap_find	ይህ መሣሪያ ሊጠቀምባቸው የሚችላቸውን ማተሚያዎች ለመዘርዘር ፈልግን ይንኩ።
+printers_none_found	ምንም አልተገኘም — የስርዓት ማተሚያ ስም ወይም IP ይጻፉ (ለምሳሌ 192.168.1.50)።
+printer_from_find	{name} ተጨምሯል
+kot_printer_ph	ለ KOT ማተሚያ
+bill_printer_ph	ለሂሳቦች ማተሚያ
+kot_print_on	የኩሽና ትኬቶች ራስ-ህትመት፦ በርቷል
+kot_print_off	የኩሽና ትኬቶች ራስ-ህትመት፦ ጠፍቷል
+queue_refused	በሱቁ አልተቀበለም ({n}) — እያንዳንዱን በቆጣሪ ያረጋግጡ፦
+clear_not_accepted	ተረጋግጧል — ይህን ዝርዝር አጽዳ
+device_name_ph	የዚህ መሣሪያ ስም
+lan_last_update	የመጨረሻ ዝማኔ {time}
+lan_not_accepted	{n} አልተቀበለም
+connected_now	አሁን ተገናኝቷል
+backup_failed	የመጨረሻው ራስ-ሰር ምትኬ አልተሳካም፦ {e}
+backup_overdue	ለ {n} ቀናት ምትኬ የለም — ምትኬ እንዲቀመጥ መተግበሪያውን በዚህ መሣሪያ ክፍት ያድርጉ።
+disk_low	በዚህ መሣሪያ {mb} ሜባ ብቻ ነፃ ነው — ምትኬዎች በቅርቡ ይወድቃሉ። ቦታ ያስለቅቁ።
+last_seen_devices	መጨረሻ የታየው፦ {time}
+sync_interval	በየ {secs} ሰ ማመሳሰል
+connection_to_shop	ከሱቅ ጋር ያለ ግንኙነት
+supplier_name_ph	የአቅራቢ ስም (ወይም ተዋዋይ)
+supplier_ph	አቅራቢ
+switch_device	ይህን መሣሪያ ቀይር
+take_payment	ክፍያ ውሰድ
+tax_added_till	{tax} ተጨማሪ
+tax_inside_price	{tax} በዋጋ ውስጥ
+tax_invoice	የግብር ደረሰኝ
+till_to_bank	ቆጣሪ → ባንክ
+units_heading	መለኪያዎች
+unlock_after_pairing	ፒን ያስገቡ
+unlock_with_login	በመግቢያ ክፈት
+unmark	ምልክት አንሳ
+update_my_password	የይለፍ ቃሌን አዘምን
+update_my_pin	መግቢያዬን አዘምን
+duress_heading	የአደጋ ጊዜ መክፈቻ ፒን (ባለቤት ብቻ)
+duress_help	አማራጭ። ይህ ፒን በመክፈቻ ላይ ከእርስዎ ፒን ፈንታ ከተጻፈ፣ ሁሉም የመዝገብ ግቤቶች ይጠፋሉ (ሽያጭ፣ መዝገቦች፣ ታሪክ) እና ቆጣሪው እንደ ባለቤት መደበኛ ሆኖ ይከፈታል — ሜኑ፣ ዋጋዎች፣ ጠረጴዛዎች፣ ሰራተኞች እና ቅንብሮች ይቆያሉ። መዋቅር እና ውቅር አይሰረዙም። ለመክፈት ከተገደዱ ብቻ ይጠቀሙ። ለማጥፋት ባዶ ይተዉ እና ያስቀምጡ። ከማንም ፒን ጋር አንድ አይሁን።
+duress_pin_ph	የአደጋ ጊዜ ፒን (4–12 አሃዝ)
+duress_confirm_ph	ለማረጋገጥ እንደገና ይጻፉ
+save_duress_pin	የአደጋ ጊዜ ፒን አስቀምጥ
+clear_duress_pin	የአደጋ ጊዜ ፒን አጥፋ
+duress_on	የአደጋ ጊዜ መክፈቻ ፒን በርቷል
+duress_off	የአደጋ ጊዜ መክፈቻ ፒን ጠፍቷል
+duress_saved	የአደጋ ጊዜ መክፈቻ ፒን ተቀምጧል
+duress_cleared	የአደጋ ጊዜ መክፈቻ ፒን ጠፍቷል
+upi_amount_ph	የ UPI መጠን
+void	ሰርዝ
+write_off_ap	AP ሰርዝ
+write_off_heading	ሰርዝ (ያለ ክፍያ አጽዳ)
+write_off_nil	ሰርዝ / ዜሮ ቀሪ
+your_brand	የእርስዎ ምልክት (በመተግበሪያው ውስጥ)
+your_categories	የእርስዎ ምድቦች
+account_kind	የሂሳብ አይነት (አንዱን ይንኩ)
+actual_total_cap	ትክክለኛ ድምር
+amend_help	ለማስተካከል፣ ለመሰረዝ ወይም ለመመለስ ሽያጭ ይምረጡ። ማስተካከያዎች ሙሉ ታሪክ ይይዛሉ። የተጠጋጋ ድምር ከተተገበረው ጋር እኩል ይጀምራል — ለማጠጋጋት ብቻ ያስተካክሉ። መሰረዝ እና ተመላሽ የባለቤት ወይም የሥራ አስኪያጅ ፒን ሊፈልጉ ይችላሉ (ከላይ የተጻፈ፤ በስምዎ ይመዘገባል)።
+applied_total_cap	የተተገበረ ድምር
+bank_balance	የባንክ ቀሪ
+bank_net_today	የዛሬ የባንክ ተጣራ
+branch_export_help	ላክ branch_snapshot_CODE_DATE.json ወደ ምትኬ አቃፊ ይጽፋል እና ወደ ቅንጥብ ሰሌዳ ይቀዳል። የሌላ መሸጫ ቀን ለማስመጣት ፋይሉን በዚያው አቃፊ import_branch_snapshot.json ብለው ያስቀምጡ፣ ከዚያ አስመጣን ይንኩ።
+brand_shown_help	በመተግበሪያው ውስጥ ባሉ ማያዎች ላይ ይታያል። በዚህ መሣሪያ ላይ የተጫነው የመተግበሪያ ስም እና ምልክት እንደ መድረክ ዝርዝር ይቆያሉ።
+app_icon	የመተግበሪያ ምልክት
+logo_help	በመተግበሪያው ማያዎች ላይ አማራጭ የሱቅ ምልክት።
+onboard_layout	የሚያገኙት
+item_photo_help	አማራጭ። ፎቶ ከሌለ ከእቃው ስም የመጀመሪያ ፊደላት እናሳያለን።
+stamp_heading	ማህተም
+stamp_image_help	በታተሙ ሂሳቦች እና በእንግዳ ማሳያ ላይ አማራጭ የማህተም ምስል።
+payment_qr_heading	የክፍያ QR
+payment_qr_image_help	በሂሳቦች እና በእንግዳ ማሳያ ላይ ቋሚ QR፤ ካልሆነ ክፍያ ከላይ ካለው VPA ተለዋዋጭ UPI QR ይጠቀማል።
+cash_in_hand	በእጅ ያለ ጥሬ ገንዘብ (ቆጣሪ)
+change_my_pin_heading	መግቢያዬ
+connect_to_server	ከሰርቨር ጋር ተገናኝ
+counter_locked	ቆጣሪ 01 · ተቆልፏል
+country_pack_help	የሀገር ጥቅል የግብር ስም እና ስሌት፣ የፈጣን ክፍያ መንገድ፣ እና በሂሳቦች ላይ የሚታተመውን የንግድ መታወቂያ ያዘጋጃል። Kumkaj ግብር አያስገባም ወይም የመንግሥት ኢ-ደረሰኝ በየትኛውም ቦታ አያወጣም።
+currency_use_help	ለማንኛውም የሚደገፍ ገንዘብ ይሸብልሉ እና ተጠቀምን ይንኩ።
+day_close_help	የቀን መዝጊያ መመዝገብ ይህን ማጠቃለያ (እና ከተቆጠረ የመሳቢያ ልዩነት) ወደ ኦዲት መዝገብ ያስቀምጣል። ሽያጭን አያቆምም።
+expenses_word	ወጪዎች
+feature_access_help	ሊከፍቱት የሚችሉት — አማራጭ፤ ከላይ ያለው ሥራ አስቀድሞ ነባሪ ያዘጋጃል
+footer_local	አካባቢ SQLite · ለዘላለም ነፃ · ዜሮ ደመና
+fresh_book_khaynjo	አዲስ = ባዶ ሜኑ (ምግቦችን በኋላ በሜኑ ይጨምሩ)። መዝገብ = የመክፈቻ እቃዎችን እና ማን እንደሚበድርዎት ከታች ይጻፉ።
+fresh_selected	አዲስ ተመርጧል — መዝገቡ ባዶ ይቆያል። ዝግጁ ሲሆኑ ጨርስን ይንኩ።
+gross_word	ጠቅላላ
+how_start	እንዴት መጀመር ይፈልጋሉ?
+kot_print_help_khaynjo	ሲበራ፣ እያንዳንዱ ኩሽና ልክ ሲልኩ የራሱን KOT ወረቀት ያትማል።
+later_country_pack	በኋላ፦ ቅንብሮች → ለግብር እና የክፍያ መለያዎች የሀገር ጥቅልዎን ይተግብሩ።
+local_badge	አካባቢ
+mix_type_hint_khaynjo	ከፈለጉ በጥሬ ገንዘብ / UPI / ካርድ / ብድር ይክፈሉ። ብድር ከላይ ደንበኛ ይፈልጋል።
+money_in_sales	ገቢ ገንዘብ (ሽያጭ)
+net_word	ተጣራ
+offline_badge	ከመስመር ውጭ
+optional_login_help	አማራጭ መግቢያ (መታወቂያ + የይለፍ ቃል)። ባለቤቱ አንድ ጊዜ ያዘጋጃል፤ የይለፍ ቃልን በኋላ የሚቀይረው ተጠቃሚው ብቻ ነው።
+or_unlock_login	ወይም በመግቢያ መታወቂያ + የይለፍ ቃል ይክፈቱ
+permission_preset	ሥራ (ማያዎችን እና የገንዘብ እርምጃዎችን ያዘጋጃል)
+preset_help_khaynjo	ገንዘብ ተቀባይ፦ ይሽጣል። ሥራ አስኪያጅ፦ ይሽጣል + እቃዎች + መሰረዝ/ማስተካከል።
+product_locked_khaynjo	Khaynjo
+product_only_khaynjo	ይህ መተግበሪያ Khaynjo ብቻ ነው — የምግብ ቤት ኦፕሬቲንግ ሲስተም። ሌሎች የንግድ ገጽታዎች እንደ ተለያዩ የ Kumkaj ምርቶች ይላካሉ።
+purchases_cogs	ግዢዎች (COGS)
+qty_cap	ብዛት
+restore_help	መመለስ፦ ምትኬ ይምረጡ። መዝገቦቹ እንደዚያን ጊዜ ይከፈታሉ፤ አሁን ያሉት መዝገቦች መጀመሪያ ይቀመጣሉ፣ ስለዚህ ይህ ሊቀለበስ ይችላል።
+wipe_data_heading	የአካባቢ ውሂብ ሰርዝ
+wipe_data_help	ባለቤት ብቻ — እንደ ዊንዶውስ ማራገፍ ተመሳሳይ ምርጫዎች። የንግድ መዝገቦች የንግድ ታሪክን ያጸዳሉ ነገር ግን ሜኑ እና ዝግጅት ይይዛሉ (እንደ የአደጋ ጊዜ መክፈቻ ፒን)። የሱቅ ዝግጅት የመዝገብ ዳታቤዝን ያስወግዳል። የማያ ምርጫዎች መስኮት/ቋንቋ ያጸዳሉ። በባለቤት ፒን ያረጋግጡ። በቡድን ላይ ያለው የአደጋ ጊዜ መክፈቻ ፒን የተለየ ነው (በመክፈቻ ላይ የተደበቀ ማጥፋት)።
+wipe_trading	የንግድ መዝገቦች
+wipe_schema	የሱቅ ዝግጅት
+wipe_ui	የማያ ምርጫዎች
+wipe_owner_pin_ph	ለመሰረዝ የባለቤት ፒን
+wipe_delete_selected	የተመረጠውን ሰርዝ
+wipe_owner_only	የአካባቢ ውሂብን መሰረዝ የሚችለው ባለቤት ብቻ ነው።
+restore_owner_only	ምትኬን መመለስ የሚችለው ባለቤት ብቻ ነው።
+wipe_owner_pin_needed	የአካባቢ ውሂብ ለመሰረዝ የባለቤት ፒን ያስገቡ።
+wipe_nothing_selected	መጀመሪያ ምን እንደሚሰረዝ ይምረጡ።
+wipe_done	የተመረጠው የአካባቢ ውሂብ ተሰርዟል።
+wipe_schema_done	የሱቅ ዝግጅት ጠፍቷል — ለመቀጠል ሰርቨር ወይም ክላየንት ይምረጡ።
+rounded_total	የተጠጋጋ ድምር
+setup_app_khaynjo	Khaynjo ያዘጋጁ
+shop_logo_optional	የሱቅ አርማ (አማራጭ)
+stock_type_help	የእቃውን ስም ይጻፉ (ከፊሉ በቂ ነው)፣ ብዛት፣ ከዚያ ያስተካክሉ። ገና ያልተቆጠሩ እቃዎች አንድ ጊዜ ክትትል ጀምር ይፈልጋሉ።
+team_owner_help	ሰው ለመጨመር ሰውየውን ባዶ ይተዉ፦ ስም፣ ሥራ፣ የተጠቃሚ ስም፣ ፒን፣ እና አማራጭ የይለፍ ቃል፣ ከዚያ ይጨምሩ። ሰው ለማስተካከል ይምረጡ — ስም፣ የተጠቃሚ ስም፣ የይለፍ ቃል፣ ማያዎች እና መብቶች — ከዚያ ያስቀምጡ። የራስዎ ፒን እና የይለፍ ቃል ከታች አንድ መግቢያ ናቸው። ባለቤቱ የሌላ ሰው ፒን አይቀይርም።
+staff_name_ph	የሰራተኛ ስም
+staff_copy_hire_ph	ዝግጅት ቅዳ ከ (አማራጭ)
+staff_copy_hire	የዚህን ሰው ዝግጅት ተጠቀም
+staff_edit_name_ph	የማሳያ ስም
+staff_rename	ስም አስቀምጥ
+staff_copy_edit_ph	ዝግጅት ከሌላ ሰው ቅዳ
+staff_copy_edit	ዝግጅታቸውን በተመረጠው ላይ ቅዳ
+staff_copy_edit_onto	ዝግጅታቸውን በ {name} ላይ ቅዳ
+staff_deactivate_named	{name} አስወግድ
+staff_renamed	ስም ተቀምጧል
+staff_setup_copied_hire	ዝግጅት ከ {name} ተቀድቷል — አዲስ ስም እና ፒን ያስቀምጡ፣ ከዚያ ሰራተኛ ይጨምሩ
+staff_setup_copied_edit	የ {from} ዝግጅት በ {to} ላይ ተቀድቷል
+staff_copy_need_selected	መጀመሪያ ማን እንደሚስተካከል ይምረጡ
+staff_copy_need_source	የማን ዝግጅት እንደሚቀዳ ይምረጡ
+staff_copy_same	ያው ሰው ነው — ሌላ ሰው ይምረጡ
+staff_rename_need_selected	መጀመሪያ ማን እንደሚሰየም ይምረጡ
+team_pick_hint	ማን እንደሚስተካከል ይምረጡ — ማያዎች፣ የገንዘብ መብቶች እና የኩሽና ጣቢያዎች ለዚያ ሰው ብቻ ይታያሉ።
+team_stations_help	ሊጠቀሙባቸው የሚችሉ የኩሽና ጣቢያዎች
+team_stations_changed	የኩሽና ጣቢያዎች ተቀይረዋል — ለዚህ ሰው ዝግጅት ያስቀምጡ
+team_features_changed	ማያዎች ተቀይረዋል — ለዚህ ሰው ዝግጅት ያስቀምጡ
+team_rights_changed	መብቶች ተቀይረዋል — ለዚህ ሰው ዝግጅት ያስቀምጡ
+they_owe_us	እነሱ ይበድሩናል
+unit_at_cap	መለኪያ @
+units_help	ለእቃ መለያዎች ኮዶች (ኪግ፣ ቁራጭ፣ ከረጢት)። እያንዳንዱ መለኪያ — በቀጥታ ወይም በሌሎች መለኪያዎች — ወደ መለኪያ ደረጃ መያያዝ አለበት (ኪግ · ሴሜ · ሚሊ · ቁራጭ)፣ ለምሳሌ 1 crate = 2 box እና 1 box = 20 cm። ቅየራዎች፦ 1 from = factor to። ገንዘቦች በፍጹም መለኪያ አይደሉም።
+units_picker_help	መለኪያ በግዢ እና በሜኑ መራጮች እንዲታይ በርቷል/ጠፍቷል ይንኩ። የጠፉ መለኪያዎች አሁንም ይቀየራሉ።
+unit_picker_on	በርቷል
+unit_picker_off	ጠፍቷል
+we_owe_them	እኛ እንበድራቸዋለን
+who_unlocking	ማን እየከፈተ ነው?
+locked_word	ተቆልፏል
+show_pin	ፒን አሳይ
+hide_pin	ፒን ደብቅ
+set_owner_pin	የባለቤት ፒን ያስቀምጡ
+enter_owner_passcode	የባለቤት የይለፍ ኮድ ያስገቡ
+enter_staff_passcode	የሰራተኛ የይለፍ ኮድ ያስገቡ
+pin_count_zero	0 / 12 አሃዝ · ቢያንስ 4፣ ከዚያ እሺ
+pin_count_need	{} / 12 አሃዝ · {} ተጨማሪ ያስፈልጋል
+pin_count_full	12 / 12 አሃዝ · እሺ ይጫኑ
+pin_count_ready	{} / 12 አሃዝ · ዝግጁ ሲሆኑ እሺ ይጫኑ
+pin_hint_choose	4–12 አሃዝ ይምረጡ · ለማስቀመጥ አስገባ ወይም ክፈት
+pin_hint_new	አዲስ 4–12 አሃዝ የባለቤት ፒን · አስገባ ወይም ክፈት
+pin_hint_shop_code	የሱቅ መሣሪያ · የማጣመሪያ ኮድ {}
+pin_hint_books	ይህ መሣሪያ መዝገቦቹን ይይዛል
+pin_hint_paired	ተጨማሪ ቆጣሪ ተጣምሯል — ለመሸጥ ይክፈቱ
+pin_hint_pair_first	ተጨማሪ ቆጣሪ — መጀመሪያ ከሱቁ መሣሪያ ጋር ያጣምሩ
+unlock_to_continue	ለመቀጠል ይክፈቱ
+no_staff_yet	ገና ሰራተኛ የለም — እንደ ባለቤት ይክፈቱ፣ ከዚያ ቡድን
+status_server_set_pin	የሰርቨር ሁነታ — የባለቤት ፒን ያስቀምጡ
+status_server_tills	የሰርቨር ሁነታ — ተጨማሪ ቆጣሪዎች ሊቀላቀሉ ይችላሉ። ይክፈቱ
+status_server_unlock	የሰርቨር ሁነታ — እንደ ባለቤት ይክፈቱ
+status_client_unlock	የክላየንት ሁነታ — ለመሸጥ ይክፈቱ
+icon_new_selected	ምልክት፦ አዲስ ፋይል ተመርጧል — ምልክት አስቀምጥን ይንኩ
+icon_custom	ምልክት፦ ብጁ የቦታ ምልክት
+icon_default	ምልክት፦ የ Kumkaj ምልክት (ነባሪ) — ብጁ ይምረጡ
+logo_yours	አርማ፦ የሱቅዎ አርማ — በማያዎች እና በደረሰኞች ላይ ይታያል
+logo_default	አርማ፦ የ Kumkaj ምልክት (ነባሪ) — ካለዎት የራስዎን ይምረጡ
+tmpl_current	አሁን፦ {} — {}
+tmpl_selected	ተመርጧል፦ {} — {}
+setup_complete	ዝግጅት ተጠናቋል
+onboard_fresh_tmpl	አዲስ · {} — መዝገቡ ባዶ ይጀምራል፤ እቃዎችን በእቃዎች ይጨምሩ፣ ከዚያ ጨርስ።
+onboard_book_tmpl	መዝገብ · {} — እቃዎችን እና የመክፈቻ ብድር ይጨምሩ፣ ከዚያ ጨርስ።
+onboard_template_tmpl	ከፈለጉ ቦታውን ይሰይሙ፣ ከዚያ እንዴት እንደሚጀምሩ ይምረጡ።
+tmpl_blurb	ጠረጴዛዎች፣ ትዕዛዝ፣ የኩሽና ትኬቶች፣ ሂሳብ እና መዝገቦች።
+tmpl_how	በቆጣሪ ይሽጡ፤ አዳራሽ ለጠረጴዛዎች እና KOT፤ መዝገቦች ለቀን መዝገብ።
+reports_facet_title	ሪፖርቶች
+reports_facet_help	የቀን መዝገቦች፣ የተዋዋይ እድሜ፣ የባንክ ምዝገባዎች እና የጊዜ ትርፍ/ኪሳራ።
+against_bill_ph	ከላይ ባለው የሂሳብ ቁጥር ላይ (አማራጭ)
+aliases_ph	ሌሎች ስሞች — በኮማ የተለዩ
+amount_blank_full_ph	መጠን (ባዶ = ሙሉ ቀሪ)
+amount_owed_ph	የተበደረ መጠን
+amount_ph	መጠን
+amount_received_ph	የተቀበልን መጠን
+amount_we_pay_ph	የምንከፍለው መጠን
+business_name_ph	የንግድ ስም
+category_new_ph	ምድብ (አማራጭ፣ አዲስ ከሆነ ይፈጠራል)
+code_bag_ph	ኮድ (ከረጢት)
+conv_factor_ph	ምክንያት (25 = 1 ከረጢት → 25 ኪግ)
+country_code_ph	የሀገር ኮድ ለምሳሌ IN፣ GB፣ US፣ AE፣ BR
+credit_khata_amount_ph	የብድር / ኻታ መጠን
+credit_limit_ph	የብድር ገደብ (0 = የለም)
+from_code_ph	ከኮድ (ከረጢት)
+item_name_lang_ph	የእቃ ስም — በቋንቋዎ ይጻፉ
+login_id_opt_ph	የተጠቃሚ ስም (ግዴታ፣ ልዩ)
+manager_pin_ph	ለማጽደቅ የሥራ አስኪያጅ ፒን (መሰረዝ ካልቻሉ ብቻ)
+new_branch_name_ph	አዲስ የቅርንጫፍ ስም
+new_password_ph	አዲስ የይለፍ ቃል (አማራጭ)
+new_pin_ph	አዲስ ፒን (4–12 አሃዝ)
+note_bank_ph	ማስታወሻ (ተቀማጭ፣ ወጪ፣ …)
+note_buy_expense_ph	ማስታወሻ (ነዳጅ፣ ኪራይ፣ …)
+note_expense_ph	ማስታወሻ (ነዳጅ፣ ቢሮ፣ …)
+options_khaynjo_ph	አማራጮች — መጠን*: ትንሽ=199፣ ትልቅ=399 | ተጨማሪ+3: አይብ=40፣ ወይራ=30 | ተጨማሪ አይብ=40
+part_second_way_ph	በሁለተኛ መንገድ ክፍል (አማራጭ)
+phone_ph	ስልክ
+place_name_ph	የዚህ ቦታ ስም
+qty_example_ph	ብዛት (ለምሳሌ 1.5 ለኪግ)
+quantity_ph	ብዛት
+reason_required_ph	ምክንያት (ግዴታ)
+role_title_ph	የሚና ርዕስ (ለምሳሌ ባሪስታ)
+service_pct_ph	የአገልግሎት % አማራጭ 0/10/12
+short_code_ph	አጭር ኮድ (MG02)
+starting_password_ph	የመጀመሪያ የይለፍ ቃል (አማራጭ)
+starting_pin_ph	የመጀመሪያ ፒን (4–12 አሃዝ)
+station_name_ph	የጣቢያ ስም (ለምሳሌ ታንዱር፣ መጥበሻ፣ ቀዝቃዛ)
+station_new_ph	የኩሽና ጣቢያ (አማራጭ፣ ለምሳሌ ታንዱር — አዲስ ከሆነ ይፈጠራል)
+table_name_ph	የጠረጴዛ ስም (ለምሳሌ በረንዳ 1፣ ቆጣሪ 2)
+tax_rate_ph	የግብር ተመን ስም ወይም % — መደበኛ፣ ቀነሰ፣ 0፣ 5፣ 12፣ 18፣ 20
+to_code_ph	ወደ ኮድ (ኪግ)
+uncleared_no_ph	ካልተጠራቀመ # በላይ
+unit_cost_ph	የአንድ ዋጋ
+unit_name_bag_ph	ስም (ከረጢት)
+unit_plate_ph	መለኪያ (ሳህን / ቁራጭ — ባዶ = እያንዳንዱ)
+pay_credit	ብድር
+book_kind_today	የዛሬ መዝገቦች
+book_kind_month	የዚህ ወር መዝገቦች
+book_kind_aging	ያልተከፈለ / ዴቢት-ክሬዲት
+book_kind_balance	የሂሳብ መዝገብ
+order_help	ለመጨመር እቃ ይንኩ።
+floor_help	ትዕዛዝ ለመውሰድ ወይም ለመቀየር ጠረጴዛ ይንኩ። ቀለሞች ነፃ → ተቀምጧል → ኩሽና → ዝግጁ → እየበላ → ሂሳብ → ተከፍሏል ያሳያሉ። የጥበቃ ዝርዝር፣ ቦታ ማስያዝ እና ጠረጴዛ መጨመር ከታች ባሉ ክፍሎች ውስጥ ናቸው።
+kitchen_help	የኩሽና ትኬቶች (KOT)፣ አዲሱ መጨረሻ። ጀምር → ዝግጁ → ጨርስ ትኬቱን ያንቀሳቅሳል። ትኬቶች ዋጋ በፍጹም አያሳዩም።
+kitchen_empty	ክፍት ትኬት የለም። ከትዕዛዝ ወይም ከአዳራሽ የተላከ KOT እዚህ ይታያል።
+add_a_table	ጠረጴዛ ጨምር
+add_station_heading	የኩሽና ጣቢያ ጨምር
+categories_help	ከላይ ያለውን እቃ በዚያ ምድብ ስር ለማስቀመጥ ተጠቀምን ይንኩ። ፎቶ ለምድቡ ምስል ይሰጣል፤ ከሌለ የመጀመሪያ ፊደላቱን ያሳያል።
+dish_search_ph	የእቃ ስም — ምግቦቻችንን ይፈልጉ ወይም የራስዎን ይጻፉ
+tile_free	ነፃ
+tile_occupied	ተይዟል
+tile_food_ready	ምግብ ዝግጁ
+tile_bill_printed	ሂሳብ ታትሟል
+tile_paid	ተከፍሏል
+tile_bill_btn	ሂሳብ
+tile_occupy_btn	እንግዶች አስቀምጥ
+tile_free_btn	ጠረጴዛ አስለቅ
+tile_ready_btn	ጠረጴዛ አስለቅ
+tile_undo_bill	ሂሳብ ቀልብስ
+summary_busy	ጠረጴዛዎች ተይዘዋል
+summary_to_collect	የሚሰበሰብ
+summary_on_floor	በአዳራሹ ላይ
+floor	አዳራሽ
+sizes_as_items_ph	መጠኖች እንደ ተለያዩ እቃዎች (አማራጭ) — ግማሽ=120፣ ሙሉ=200
+dish_group_ph	የምግብ ቡድን (አማራጭ) — ለምሳሌ ፓኒር ቲካ
+discount	ቅናሽ
+remove_discount	ቅናሽ አስወግድ
+apply_discount	ቅናሽ ተግብር
+save_opening_cash	የመክፈቻ ጥሬ ገንዘብ አስቀምጥ
+close_shift_print	ፈረቃ ዝጋ እና ወረቀት አትም
+area_prices_ph	የአካባቢ ዋጋዎች (አማራጭ) — ኤሲ=220፣ እሽግ=210
+discount_ph	10% ወይም 50
+discount_reason_ph	ምክንያት (ለምሳሌ ቋሚ እንግዳ፣ ዘግይቶ የመጣ ምግብ)
+opening_float_ph	ዛሬ ጠዋት በመሳቢያው ውስጥ የገባ ጥሬ ገንዘብ
+shift_counted_ph	በመረከቢያ ላይ የተቆጠረ ጥሬ ገንዘብ
+opening_float	የመክፈቻ ጥሬ ገንዘብ (ተንሳፋፊ)
+shift_handover	የፈረቃ መረከቢያ
+shift_since	ይህ ፈረቃ ከ
+expected_in_drawer	በመሳቢያው ውስጥ የሚጠበቅ
+right_discount	ቅናሽ ስጥ
+floor_in_kitchen	በኩሽና
+floor_eating	ቀርቧል
+pick_category	ምድብ ይምረጡ
+close_category_list	የምድብ ዝርዝር ዝጋ
+new_category_row	አዲስ ምድብ — እቃውን ሲያስቀምጡ ይፈጠራል
+your_category	የእርስዎ ምድብ
+suggested_category	የተጠቆመ — ከምግቦቻችን
+category_search_ph	ምድብ — የእርስዎን ይፈልጉ ወይም አዲስ ይጻፉ
+line_sent_state	ወደ ኩሽና ተልኳል
+line_nc_state	ስጦታ (NC) — አልተከፈለም
+cancel_item_short	ሰርዝ
+nc_short	NC
+charge_again_short	ክፈል
+move_short	አንቀሳቅስ
+cancel_item_title	ይህን እቃ ሰርዝ — ኩሽናው የስረዛ ወረቀት ያገኛል
+nc_item_title	ይህን እቃ ስጦታ አድርግ (NC)
+charge_again_title	ይህን እቃ እንደገና ክፈል
+move_item_title	ይህን እቃ ወደ ሌላ ጠረጴዛ አንቀሳቅስ
+already_cooked	አስቀድሞ ተበስሏል (ብክነት)
+not_cooked_yet	ገና አልተበስልም
+return_to_customer	ለደንበኛ መልስ
+short_by	ያነሰ በ
+tip_not_sale	ትፕ (የሰራተኞች፣ ሽያጭ አይደለም)
+right_settle	ክፍያ ውሰድ
+right_cancel_sent	የተላከ እቃ ሰርዝ
+right_complimentary	ስጦታ (NC)
+right_move_table	ጠረጴዛዎችን አንቀሳቅስ / አዋህድ
+right_reprint	ሂሳብ እንደገና አትም
+right_allowed	ተፈቅዷል
+right_with_approval	በፈቃድ
+right_denied	አይፈቀድም
+editing_staff	በማስተካከል ላይ
+finding_server	በዚህ Wi‑Fi ላይ የሱቁን ሰርቨር በመፈለግ ላይ…
+no_server_found	ምንም አልተገኘም። በሰርቨር ላይ፦ ቅንብሮች → ሌሎች መሣሪያዎች → ተጨማሪ ቆጣሪዎችን ፍቀድ (ተመሳሳይ Wi‑Fi)። ወይም እዚያ የሚታየውን IP ይጻፉ።
+servers_found_pick	ለመገናኘት የሚፈልጉትን ሱቅ ይንኩ።
+server_host_selected	{host} በመጠቀም ላይ — የማጣመሪያ ኮዱን ያስገቡ፣ ከዚያ አሁን አጣምር።
+print_bill	ሂሳብ አትም
+table_actions	የጠረጴዛ እርምጃዎች
+move_merge_table	ጠረጴዛ አንቀሳቅስ / አዋህድ
+move_help	የዚህን ጠረጴዛ ትዕዛዝ ወደ ነፃ ጠረጴዛ ያንቀሳቅሱ፣ ወይም ወደ እየሄደ ያለው ያዋህዱ።
+move_target_ph	የጠረጴዛ ስም (ለምሳሌ D5፣ P2)
+approval_pin_ph	የሥራ አስኪያጅ ፒን (ከተጠየቀ ብቻ)
+move_here	ወደዚህ አንቀሳቅስ
+merge_into	ወደ እሱ አዋህድ
+line_reason_ph	ምክንያት (ለምሳሌ እንግዳ ሐሳቡን ቀየረ፣ ክምችት አለቀ)
+line_qty_ph	ስንት እንደሚሰረዝ (ባዶ = ሁሉ)
+line_target_ph	ወደ ጠረጴዛ አንቀሳቅስ (ለምሳሌ D5)
+confirm	አረጋግጥ
+menu_search_ph	እቃ ወይም አጭር ኮድ ፈልግ
+customer_paid_ph	ደንበኛ የከፈለው
+tip_ph	ትፕ
+table_area_ph	አካባቢ (ለምሳሌ በቦታው መብላት፣ እሽግ፣ ኤሲ)
+table_range_ph	ብዙ በአንድ ጊዜ፦ D1-D20
+add_these_tables	እነዚህን ጠረጴዛዎች ጨምር
+remove_these_tables	እነዚህን ጠረጴዛዎች አስወግድ
+table_remove_ph	አስወግድ፦ T1-T24፣ ወይም የአንድ ጠረጴዛ ስም
+find_server	የሱቁን ሰርቨር ፈልግ
+bill_format	የሂሳብ ቅርጸት
+bill_format_help	በእያንዳንዱ ሂሳብ ላይ ከምግብ ቤትዎ ስም በታች ይታተማል። መስመሮችን በ | ይለዩ (ለምሳሌ MG Road, Rajkot | ስል 98250 00000)።
+bill_header_ph	አድራሻ | ስልክ
+fssai_ph	የ FSSAI ፈቃድ ቁጥር (ሕንድ)
+bill_footer_ph	ግርጌ (ለምሳሌ አመሰግናለሁ፣ እንደገና ይምጡ)
+save_bill_format	የሂሳብ ቅርጸት አስቀምጥ
+reset_bill_format	ወደ ነባሪ መልስ
+bill_format_reset	የሂሳብ ቅርጸት ወደ ነባሪ ተመልሷል
+reset_kot_format	ወደ ነባሪ መልስ
+kot_format_reset	የ KOT ቅርጸት ወደ ነባሪ ተመልሷል
+kot_format	የ KOT ቅርጸት
+kot_format_help	በዝርዝሩ ውስጥ መስክ ይንኩ። አሳይ፣ የፊደል መጠን እና ክብደት ከላይ በተመረጠው የ KOT አይነት ላይ በዚያ መስክ ይተገበራሉ። እያንዳንዱ አይነት የራሱን መጠኖች እና ክብደቶች ይይዛል።
+kot_format_fields	መስኮች
+kot_field_next	ቀጣይ መስክ
+kot_field_show	አሳይ
+kot_field_hide	ደብቅ
+kot_field_on	አሳይ
+kot_field_off	ደብቅ
+kot_field_size	የፊደል መጠን
+kot_field_size_ph	ለምሳሌ 16፣ 20፣ 24፣ 28፣ 32…
+kot_weight_light	ቀጭን
+bill_kot_panel_help	የሂሳብ እና የኩሽና ወረቀት አቀማመጥ፣ እያንዳንዱ የራሱ የይዘት ስፋት አለው። የሂሳብ ገንዘብ ተቀባይ ሂሳቡን ያወጣ ወይም የዘጋው ነው፤ የ KOT አስተናጋጅ ያንን የኩሽና ትኬት የላከው ነው — ሙሉ የትዕዛዝ ታሪክ በመዝገቦች ውስጥ ይቆያል።
+std_size_ph	ለምሳሌ 18፣ 20፣ 26…
+kot_show_shop	የሱቅ ስም
+kot_hide_shop	ሱቅ ደብቅ
+kot_show_time	ሰዓት
+kot_hide_time	ሰዓት ደብቅ
+kot_show_waiter	አስተናጋጅ
+kot_hide_waiter	አስተናጋጅ ደብቅ
+kot_show_station	ጣቢያ
+kot_hide_station	ጣቢያ ደብቅ
+kot_show_table	ጠረጴዛ
+kot_hide_table	ጠረጴዛ ደብቅ
+kot_show_kot_no	የ KOT ቁጥር
+kot_hide_kot_no	የ KOT ቁጥር ደብቅ
+kot_width	የቅድመ እይታ መጠቅለያ (የይዘት ስፋትን በ KOT ትር ያዘጋጁ)
+kot_width_58	58 ሚሜ
+kot_width_80	80 ሚሜ
+kot_kind_heading	የ KOT አይነት
+kot_kind_original	ዋና
+kot_kind_duplicate	ቅጂ
+kot_kind_modified	የተሻሻለ
+kot_kind_cancelled	የተሰረዘ
+kot_style_heading	የመስክ ፊደል መጠን እና ክብደት
+kot_style_title	ርዕስ
+kot_style_item_qty	እቃ · ብዛት
+kot_style_field_pick	መስክ ምረጥ
+kot_weight_regular	መደበኛ
+kot_weight_bold	ደማቅ
+kot_align	አሰላለፍ
+kot_align_start	መጀመሪያ
+kot_align_center	መሃል
+kot_align_end	መጨረሻ
+content_width	የይዘት ስፋት (ሚሜ)
+content_width_bill	የሂሳብ ይዘት ስፋት (ሚሜ)
+content_width_kot	የ KOT ይዘት ስፋት (ሚሜ)
+content_width_ph	ወይም የይዘት ስፋት ይጻፉ፣ 40–210 ሚሜ
+content_width_help	ይህ ወረቀት ምን ያህል ስፋት እንደሚታተም። ሂሳብ እና KOT እያንዳንዱ የራሱን ስፋት ይይዛል።
+content_width_bill_help	የእንግዳ ሂሳብ ምን ያህል ስፋት እንደሚታተም። ነባሪ 210 ሚሜ (ገጽ)። 58 ሚሜ ጠባብ ወረቀት፣ 80 ሚሜ ሰፊ ወረቀት፣ 112 ሚሜ 4 ኢንች፣ 210 ሚሜ የ A4 ስፋት። ከ40 እስከ 210 ማንኛውንም እሴት ይጻፉ። የኩሽና ትኬቶች በ KOT ትር የራሳቸው ስፋት አላቸው።
+content_width_kot_help	የኩሽና ትኬት ምን ያህል ስፋት እንደሚታተም። ነባሪ 80 ሚሜ። 58 ሚሜ ጠባብ ወረቀት፣ 80 ሚሜ ሰፊ ወረቀት፣ 112 ሚሜ 4 ኢንች፣ 210 ሚሜ ገጽ። ከ40 እስከ 210 ማንኛውንም እሴት ይጻፉ። የእንግዳ ሂሳቦች በሂሳብ ትር የራሳቸው ስፋት አላቸው።
+vp_paper_width	የይዘት ስፋት (ሚሜ)
+vp_paper_width_ph	ወይም የይዘት ስፋት ይጻፉ፣ 40–210 ሚሜ
+vp_paper_width_help	የይዘት ስፋት በሂሳብ እና KOT ቅርጸት ስር ይዘጋጃል — ለሂሳቡ (ነባሪ 210 ሚሜ) እና ለኩሽና ትኬቱ (ነባሪ 80 ሚሜ) ለብቻ።
+kot_size	የፊደል መጠን
+kot_size_s	ትንሽ
+kot_size_m	መደበኛ
+kot_size_l	ትልቅ
+std_size	የፊደል መጠን
+kot_copies	ቅጂዎች
+kot_copies_1	1
+kot_copies_2	2
+kot_copies_3	3
+kot_title_ph	ርዕስ (ባዶ = KOT - የኩሽና ትዕዛዝ)
+kot_footer_ph	የኩሽና ማስታወሻ (አማራጭ፣ ዋጋ የለም)
+kot_preview	ቅድመ እይታ
+save_kot_format	የ KOT ቅርጸት አስቀምጥ
+test_kot_format	ሙከራ KOT
+test_kot_sent	የኩሽና ትኬት ቅድመ እይታ ተልኳል
+test_bill_format	የሙከራ ሂሳብ
+test_bill_sent	የሂሳብ ቅድመ እይታ ተልኳል
+test_print_no_printer	ለዚያ ሥራ ማተሚያ የለም — በዚህ ማያ ላይ አንዱን ይምረጡ
+kot_format_saved	የ KOT ቅርጸት ተቀምጧል
+std_print	የሂሳብ የህትመት መጠን
+std_print_help	ለመደበኛ ቁም እና አግድም የሂሳብ ሥራዎች በስርዓት / የሰነድ ማተሚያዎች ላይ የፊደል መጠን (ነጥቦችን ያስገቡ — ትንሽ/መደበኛ/ትልቅ አይደለም)። በሁለቱም አቅጣጫዎች አንድ መጠን። የኩሽና ወረቀት መጠኖች በ KOT ትር ላይ ናቸው።
+std_size_s	ትንሽ
+std_size_m	መደበኛ
+std_size_l	ትልቅ
+save_std_print	የሂሳብ የህትመት መጠን አስቀምጥ
+std_print_saved	የሂሳብ የህትመት መጠን ተቀምጧል
+print_brand_kit	የህትመት ምልክት ኪት
+print_brand_kit_help	በሂሳብ ገጾች እና በ LAN እንግዳ ማሳያ ላይ አማራጭ ማህተም እና የክፍያ QR ምስሎች። የክፍያ QR ምስል ካልተቀመጠ ከላይ ካለው VPA የሚመጣ ተለዋዋጭ UPI QR አሁንም ይሠራል።
+choose_stamp	ማህተም ምረጥ
+clear_stamp	ማህተም አጽዳ
+stamp_set	ማህተም፦ በፋይል ላይ — በእንግዳ ማሳያ ይታያል እና በታተሙ ሂሳቦች ይጠቀሳል
+stamp_none	ማህተም፦ የለም
+choose_payment_qr	የክፍያ QR ምረጥ
+clear_payment_qr	የክፍያ QR አጽዳ
+payment_qr_set	የክፍያ QR፦ በፋይል ላይ — በእንግዳ ማሳያ ይታያል (እዚያ ያለውን የመጠን UPI QR ይተካል)
+payment_qr_none	የክፍያ QR፦ የለም — በሚከፈልበት ጊዜ ከ UPI መታወቂያ የመጠን QR
+aggregator_import	የአሰባሳቢ ትዕዛዞች (ፋይል)
+aggregator_import_help	አማራጭ የአካባቢ ማስመጣት፦ import_aggregator_orders.json በምትኬ አቃፊ ውስጥ ያስቀምጡ (ድርድር ወይም {"orders":[…]})፣ ከዚያ አስመጣን ይንኩ። ቆጣሪውን በፍጹም አያቆምም፤ ቀጥታ Zomato/Swiggy ደመና ነው።
+import_aggregator_file	የአሰባሳቢ ፋይል አስመጣ
+team_pick_ph	የሚስተካከል ሰራተኛ — ስም፣ የተጠቃሚ ስም፣ ወይም ይምረጡ
+select_staff	ይህን ሰራተኛ ምረጥ
+rights_help	ለዚህ ሰው የገንዘብ እና የአዳራሽ እርምጃዎች — ለመቀያየር ይንኩ፦ ተፈቅዷል → የአለቃ ፒን ይፈልጋል → አይፈቀድም። ሂሳብ እንደገና ማተም ለሂሳቦች ብቻ ነው፤ የኩሽና ጣቢያዎች ከታች ያለው የማረጋገጫ ዝርዝር ናቸው።
+dish_picker_help	ምግቦቻችንን ይፈልጉ ወይም ይቃኙ እና ስሙን እና ፎቶውን ለመሙላት አንዱን ይንኩ — ወይም የራስዎን ስም ያቆዩ። ዋጋዎን ያስቀምጡ (0 ይቻላል)፣ ከዚያ እቃ ይጨምሩ።
+close_dish_list	የምግብ ዝርዝር ዝጋ
+own_item_name	ይህን እንደ የራስዎ የእቃ ስም ተጠቀም
+on_your_menu	በሜኑዎ ላይ
+edit	አስተካክል
+schemes	ዕቅዶች / ቅናሾች
+schemes_help	BOGO፣ በመቶኛ ቅናሽ እና ቋሚ ጥምረቶች። ጥምረቶች KOT ሲልኩ ወደ የኩሽና መስመሮች ይሰፋሉ፤ ክፍሎች ጥምረቱ እስኪነሳ ድረስ ተይዘው ይቆያሉ። ምሳሌ፦ 2 ጣሊ ግዙ 1 ጫስ ያግኙ
+scheme_bogo_ph	2 ጣሊ ግዙ 1 ጫስ ያግኙ
+add_scheme	BOGO ጨምር
+schedule_ph	ሰዓታት / የደስታ ሰዓት — ሰኞ-አርብ 07:00-11:00 ወይም HappyHour 17:00-19:00=150
+upi_vpa_ph	የ UPI መታወቂያ (VPA)
+upi_payee_ph	የ UPI ተቀባይ ስም (አማራጭ)
+upi_qr	UPI QR
+show_upi_qr	UPI QR አሳይ
+close_upi_qr	ዝጋ
+upi_qr_help	እንግዳ ይቃኛል እና ይከፍላል። ከከፈሉ በኋላ ክፍያ ውሰድን ይንኩ። ሁለተኛ ማያ፦ በ LAN ላይ የሰርቨር URL /display ይክፈቱ።
+kot_recall	መልስ
+recently_done	በቅርቡ የተጠናቀቀ
+recall_kot_ph	የሚመለስ የ KOT ቁጥር
+role_help_customer	ሚና፦ ደንበኛ — ኻታ (እነሱ ይበድሩናል)። ተመሳሳይ ተዋዋይ ክምችትም ሊያቀርብ ይችላል።
+role_help_both	ሚናዎች፦ ደንበኛ + አቅራቢ — አንድ ተዋዋይ፣ ኻታ እና የሚከፈል መዝገቦች፣ ተጣራ በሪፖርቶች።
+role_help_supplier	ሚና፦ አቅራቢ — ለግዢዎች እንበድራቸዋለን።
+dine_in_pick_table	በቦታው መብላት — በአዳራሽ ጠረጴዛ ይምረጡ
+choose_table	ጠረጴዛ ይምረጡ
+change_table	ጠረጴዛ ቀይር
+pick_table_banner	ለዚህ ትዕዛዝ ጠረጴዛ ይምረጡ
+items_word	እቃዎች
+items_section	እቃዎች
+back_to_order	ወደ ትዕዛዝ ተመለስ
+new_items_head	ገና አልተላከም
+price_ph	ዋጋ
+price_ph_gst_inside	ዋጋ ({tax} በውስጥ)
+cancel_needs_table	ኩሽናው ከያዘ በኋላ ለመሰረዝ ይህን ትዕዛዝ ከአዳራሽ (ጠረጴዛ) ይክፈቱ — የቆጣሪ KOT ክፍያ እስኪወስዱ ድረስ በትኬቱ ላይ ይቆያል
+tax_rates_missing_hint	በእነዚህ ምግቦች ላይ የ {tax} ተመን የለም — በሜኑ የግብር ተመን ያዘጋጁ (ዋጋዎች አስቀድመው {tax} በ {tax} በውስጥ ያካትታሉ)
+taxable_value	የሚታክስ ዋጋ
+gst_inside_price_note	({tax} በውስጥ)
+start_with_template	በሜኑ ንድፋችን ይጀምሩ
+template_heading	የሜኑ ንድፋችን
+template_info	{c} ምድቦች እና {d} ምግቦች ከፎቶ ጋር፣ ለመጨመር ዝግጁ። ዋጋዎች ከ ₹0 ይጀምራሉ — የእርስዎን በኋላ ያስቀምጡ።
+template_import	ሙሉ ንድፍ አስመጣ
+template_confirm	{d} ምግቦች ከምድቦቻቸው ጋር ይጨመሩ? አስቀድመው ያሉዎት ምግቦች እንዳሉ ይቆያሉ።
+template_yes	አዎ፣ አስመጣ
+template_importing	ሜኑ በማስመጣት ላይ…
+template_import_progress	በማስመጣት ላይ… {d}/{t}
+template_done	ከንድፋችን ያለው እያንዳንዱ ምግብ በሜኑዎ ላይ ነው።
+template_imported	{d} ምግቦች እና {c} ምድቦች ተጨምረዋል — ዋጋቸውን በዚህ ማያ ያስቀምጡ
+client_template_heading	የክላየንት ሜኑ
+client_template_info	{title}፦ {c} ምድቦች፣ {d} ምግቦች ከዋጋ፣ ፎቶ እና ሌሎች ስሞች ጋር። የጎደሉ ምግቦች ብቻ — አስቀድመው ያሉዎት ስሞች ይቆያሉ።
+client_template_import	ይህን ሜኑ አስመጣ
+client_template_confirm	{d} ምግቦች ከ {title} ይጨመሩ? አስቀድመው ያሉዎት ምግቦች እንዳሉ ይቆያሉ።
+client_template_importing	{title} በማስመጣት ላይ…
+client_template_done	ከ {title} ያለው እያንዳንዱ ምግብ በሜኑዎ ላይ ነው።
+client_template_imported	{d} ምግቦች እና {c} ምድቦች ከ {title} ተጨምረዋል
+resv_heading	ቦታ ማስያዣዎች
+resv_name_ph	የእንግዳ ስም
+resv_phone_ph	ስልክ (አማራጭ)
+resv_guests_ph	እንግዶች
+resv_when_ph	መቼ — 20:30፣ ነገ 13:00
+resv_table_ph	ጠረጴዛ (አማራጭ)
+resv_add	ያስይዙ
+resv_seat	ተቀምጧል
+resv_none	የሚመጣ ቦታ ማስያዣ የለም።
+guests_word	እንግዶች
+delivery_by_ph	የሚያደርሰው (የራይደር ወይም የሰራተኛ ስም)
+kitchen_all_day	አሁን የሚበስል፦ {items}
+kitchen_all_day_head	አሁን የሚበስል
+kitchen_tab_live	ቀጥታ
+kitchen_tab_recall	መልስ
+kitchen_tab_stations	ጣቢያዎች
+split_bill	ሂሳብ ክፈል
+split_go	የተለየ ሂሳብ አድርግ
+cancel	ሰርዝ
+opening_client	ክላየንት በመክፈት ላይ…
+preparing_desk	ጠረጴዛ በማዘጋጀት ላይ…
+opening_server	ሰርቨር በመክፈት ላይ…
+creating_server	ሰርቨር በመፍጠር ላይ…
+split_help	አንድ እንግዳ የሚከፍልባቸውን ምግቦች ይንኩ · {n} ተመርጧል
+split_send_first	መጀመሪያ KOT ይላኩ — ኩሽናው ያለው ምግብ ብቻ ወደ የተለየ ሂሳብ ሊሄድ ይችላል
+split_pick_some	መጀመሪያ ለተለየ ሂሳብ ምግቦችን ይንኩ
+split_done	የተለየ ሂሳብ ተደርጓል — በአዳራሹ ላይ ከዚህ ጠረጴዛ አጠገብ ነው
+split_marked	የተለየ ሂሳብ
+order_empty_pick	ትዕዛዝ ባዶ ነው — ምግቦች ለመምረጥ ከላይ ምግቦች ጨምርን ይንኩ።
+add_dishes	ምግቦች ጨምር
+order_so_far	በዚህ ትዕዛዝ፦ {n} · {total}
+no_dish_match	ከ “{q}” ጋር የሚዛመድ ምግብ የለም
+pick_dishes_help	ለመጨመር ምግብ ይንኩ · ዝርዝሩን ለማጥበብ ምድብ ይምረጡ
+pick_done	ጨርስ
+pick_done_dd	ጨርስ · {label}
+printer_route_mode	በዚህ ቦታ ብዙ ማተሚያዎች ካሉ
+printer_mode_first	የመጀመሪያው የሚሠራው
+printer_mode_all	በሁሉም ላይ አትም
+kot_show_area	አካባቢ
+kot_hide_area	አካባቢ ደብቅ
+kot_show_item_hdr	እቃ · ብዛት
+kot_hide_item_hdr	አምዶች ደብቅ
+kot_show_title	የርዕስ መስመር
+kot_hide_title	ርዕስ ደብቅ
+kot_field_order	የህትመት ቅደም ተከተል
+kot_field_up	ወደ ላይ አንቀሳቅስ
+kot_field_down	ወደ ታች አንቀሳቅስ
+kot_field_cycle	ቀጣዩን ምረጥ
+kot_field_select	ቀጣዩን ምረጥ
+kot_field_time	ሰዓት
+kot_field_kot_no	የ KOT ቁጥር
+kot_field_area	አካባቢ
+kot_field_table	ጠረጴዛ
+kot_field_shop	የሱቅ ስም
+kot_field_waiter	ሰራተኛ
+kot_field_station	ጣቢያ
+app_template_blurb_extra	እንዲሁ፦ ባለቤት Zahir፣ አስተዳዳሪ Asif፣ አስተናጋጅ Nawaz፤ የፊት አዳራሽ ጎን አሞሌ፤ ታሪክ ከ4 ሰዓት በኋላ፤ የዛሬ ማሳያ ጠፍቷል፤ የታመቀ KOT።
+dishes_n	{n} ምግቦች
+recipe_ph	የምግብ አሰራር (አማራጭ) — አንድ ድርሻ ይጠቀማል፦ ሩዝ=0.2፣ ፓኒር=0.15
+reorder_ph	ተጨማሪ ግዛ በ
+set_reorder	የድጋሚ ትዕዛዝ ደረጃ አስቀምጥ
+low_stock_alert	እየቀነሰ ነው — በቅርቡ ይግዙ፦ {items}
+unpriced_note	በሜኑዎ ላይ {n} ምግቦች ገና ዋጋ የላቸውም — አንድ እስኪያስቀምጡ ድረስ በ 0 ይከፈላሉ።
+show_unpriced	ዋጋ የሌላቸውን ምግቦች ብቻ አሳይ
+show_all_dishes	ሁሉንም ምግቦች አሳይ
+role_waiter	አስተናጋጅ
+role_kitchen	ኩሽና
+role_title_rest_ph	የሚና ርዕስ (ለምሳሌ ካፒቴን፣ ዋና ምግብ አብሳይ)
+preset_help_rest	አስተናጋጅ፦ ትዕዛዝ ይወስዳል እና ጠረጴዛዎችን ያስተዳድራል። ገንዘብ ተቀባይ፦ ክፍያም ይወስዳል። ኩሽና፦ የኩሽና ማያ። ሥራ አስኪያጅ፦ ሜኑም፣ መሰረዝ እና ቅናሽ።
+kind_raw	ጥሬ እቃ
+kind_resale	የተገዛ እና እንደገና የተሸጠ
+kind_dish	የምናበስለው ምግብ
+buy_unit_ph	መለኪያ (ኪግ፣ ሊትር፣ ቁርጥራጭ)
+add_another_way	+ ሌላ መንገድ ጨምር
+parts_status	ገብቷል {a} ከ {b} · {c} ቀርቷል
+save_expense	ወጪ አስቀምጥ
+rest_ph	ቀሪ
+low_badge	ዝቅተኛ
+stock_empty	ገና በክምችት ምንም የለም — በግዢ የመዘገቡት እዚህ ይታያል።
+recent_changes	የቅርብ ለውጦች
+lane_declared_label	የግብር ደረሰኝ
+lane_owner_label	የጥሬ ገንዘብ ማስታወሻ
+money_lane_bill	ሂሳብ፦ {lane}

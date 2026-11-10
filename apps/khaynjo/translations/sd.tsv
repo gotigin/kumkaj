@@ -1,0 +1,1351 @@
+# Sindhi — سنڌي (sd). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	ريستوران جون حڪم، باورچی خانه ۽ ڪتاب. مفت آف لائن.
+unlock	ان لاڪ ڪريو
+pin_hint	مالڪ PIN 0000 طور شروع ٿئي ٿو
+sell	آرڊر
+buy	خريد ڪريو
+books	روزنامچو
+books_help	اڄ جي حالت. حڪم = اندر حڪم. خريد = خريداريون ۽ خرچ. پارٽيون = ڪريڊٽ گراهڪ ۽ فراهم ڪندڙ.
+buy_help	خرچن جا واؤچر ۽ فراهم ڪندڙ جا بل (پئسو ٻاهر). آن-اڪائونٽ پارٽي ليجر تي رهي ٿو.
+sell_money_in	آرڊر وٺو
+buy_money_out	خرچ / فراهم ڪندڙ بل
+record_purchase	خريداري رڪارڊ ڪريو
+add_expense	خرچ جو ووچر
+bank_book	بينڪ ڪتاب
+credit_help	پارٽي جي سڃاڻپ منفرد آهي (نالا وري ٿي سگهن ٿا). هڪ گراهڪ کھاتا ٽيبل هلائي ٿو (اسان کان قرضو آهي)؛ هڪ فراهم ڪندڙ اسان کي اسٽاڪ وڪڻي ٿو (اسان انهن تي قرضو آهي)؛ ٻئي ٺيڪ آهن. ليجر الڳ رهن ٿا؛ رپورٽون نيٽ ڏيکارين ٿيون.
+party_kind_ph	ڪردار: گراهڪ، فراهم ڪندڙ، ٻئي...
+reports_help	ڊي بُڪ، قرضدار ۽ قرض ڏيندڙ، بئنڪ بُڪ، خرچ جا واؤچرز، نفعي ۽ نقصان.
+reports_today	ڏينهن جو ڪتاب (اڄ)
+reports_month	نفعي ۽ نقصان (مهينو)
+reports_aging	باقي / ڊيبٽ-ڪريڊٽ
+reports_balance_sheet	بیلنس شيٽ
+reports	بينڪ ڪتاب ۽ نفعو ۽ نقصان
+refresh	تازو ڪريو
+undo	واپس ڪريو
+start_tracking	ٽريڪنگ شروع ڪريو
+stock_minus	− اسٽاڪ
+stock_plus	+ اسٽاڪ
+settle_cash	نقدي سان طئي ڪريو
+settle_card	ڪارڊ سان طئي ڪريو
+items	مينيو ۽ شيون
+nav_items	مينيو
+more	وڌيڪ
+your_items	توهانجو مينيو
+items_help	ڪڻڪ تي ٽيپ ڪريو تبديل ڪرڻ لاءِ. نئين شيءَ فارم صاف ڪري ٿي. اسان جا ڊشز ڳوليو يا پنهنجو نالو ۽ فوٽو ٽائپ ڪريو، قيمت مقرر ڪريو (0 ٺيڪ آهي)، پوءِ شامل ڪريو. اڳ ۾ رڪارڊ ٿيل سيلز انهن جو نالو رکندا جنهن سان انهن کان چارج ڪيو ويو هو.
+add_item	شيءَ شامل ڪريو
+new_item	نئون شئي
+adding_item	نئون شئي شامل ڪرڻ
+editing_item	ترميم
+save	محفوظ ڪريو
+remove	هٽايو
+removed_items	هٽايل شيون
+removed_help	ري اسٽور شيءِ کي صحيح طرح مينيو ۾ واپس وجھي ٿو — قيمت، تصوير ۽ ڪيٽيگري سميت. اسان جي ڊشز جي الماري ڪڏهن به ختم ناهي ٿيندي، تنهنڪري هڪ ڊش هميشه ٻيھر شامل ڪري سگھجي ٿي.
+restore_item	ري اسٽور
+empty_catalog	اڃا تائين ڪا ڊش ناهي. مينيو کوليو، هڪ ڊش شامل ڪريو (نالو + قيمت)، پوءِ آرڊر وٺو.
+total	ڪل
+cash	نقد
+upi	UPI
+card	ڪارڊ
+credit	ڌريون
+clear	صاف ڪريو
+ready_to_sell	بڪ ڪرڻ لاءِ تيار
+today_prefix	اڄ
+today_mid	اڄ
+owed	ناقابلِ فراموش
+round_word	گول
+back	پوئتي
+sold_out	دستياب ناهي
+restock	ٻيهر اسٽاڪ ڪريو
+not_tracked	ٽريڪ ناهي
+in_stock	اسٽاڪ ۾
+marked_sold_out	نشانو لڳل موجود ناهي
+add_upper	شامل ڪريو
+na	N/A
+qty	وزن/مقدار
+unit_at	ريٽ @
+actual	اصلي
+applied	لاڳو ٿيل
+note_ph	نوٽ (اختياري)
+rounded	گول ٿيل
+split	ورهايو
+send_kot	موڪليو KOT
+send_kot_to	موڪليو → {kitchens}
+send_kot_again	اڳيان KOT لاءِ ڊش شامل ڪريو
+send_kot_held	رڪيل ڊش — موڪلين لاءِ ان کي آزاد ڪريو
+reprint_kot	چونڊيل ٻيهر ڇپيو
+reprint_kot_ok	ٻيهر {n} ڊش(ز) ڇپيا ويا · {slips} سليپ(ز) → {kitchens}
+reprint_kot_needed	پهريان هڪ KOT موڪليو — پوءِ ڊشز شامل ڪريو ۽ چونڊيل ٻيهر ڇپيو
+reprint_kot_none_selected	هر موڪليل ڊش کي ڇاهي ڇڏيو ويندو آهي — ٻيهر ڇپڻ لاءِ جيڪي آهن انهن تي In print تي ٽيپ ڪريو
+reprint_kot_client	ٻيهر ڇپيو ({n}) {place} موڪليل لاءِ — باورچی خانه ۾ Server تي ڇپيو
+print_cancelled_kot	سڀ منسوخ ٿيل ڇپيو
+print_cancelled_kot_ok	ڇپيل {n} منسوخ ٿيل ڊش(ز) · {slips} سلپ(س) → {kitchens}
+print_cancelled_kot_needed	پهريون منسوخ ٿيل ڊشز سان ٽيبل کوليو
+print_cancelled_kot_none	هن آرڊر تي ڪوئي منسوخ ٿيل ڊش ناهي
+print_cancelled_kot_client	منسوخ ٿيل پرنٽ ڪريو ({n}) لاءِ {place} موڪلڻي — کاڌي جي ڪمري ۾ پرنٽ ٿيندو Server تي
+kot_banner	سٺي بينر
+kot_banner_ph	بينر (خالي = نه ڪو)
+kot_item_prefix	شئي جي پيش لفظ
+kot_item_prefix_ph	مثال طور [CANCELLED]
+kot_strike	ڊش جو نالو ختم ڪريو
+kot_strike_note	ڊش جو نوٽ ختم ڪريو
+kot_strike_on	چالو
+kot_strike_off	بند
+bill_item_layout	شئي جو ترتيب
+bill_item_layout_columns	ڪالمن
+bill_item_layout_stacked	اسٽيڪ ٿيل
+bill_item_header	ڪالمن جا هيڊر
+bill_item_hdr_item	آئٽم هيڊر
+bill_item_hdr_qty	مقدار هيڊر
+bill_item_hdr_price	قيمت هيڊر
+bill_item_hdr_amount	رقم هيڊر
+bill_item_name	پاڻيءَ جو نالو
+bill_item_qty	تعداد
+bill_item_price	اگهه
+bill_item_amount	رقم
+bill_item_note	پاڻيءَ جو نوٽ
+bill_item_col_gap	ڪالم جو فرق
+bill_item_col_order	ڪالم جو ترتيب
+bill_item_col_sep	ڪالمن جون ضابطيون
+bill_item_gap_tight	تنگ
+bill_item_gap_comfort	آرامده
+bill_item_gap_wide	وڏي
+bill_item_num_width	نمبر ڪالمن
+bill_item_num_compact	مختصر
+bill_item_num_comfort	آرامده
+bill_item_num_wide	وڏي
+bill_item_num_align	نمبر ترتيب ۾
+bill_item_gap_em	خلاءُ (em)
+bill_item_qty_min	گهٽ ۾ گهٽ مقدار (ايم)
+bill_item_price_min	گهٽ ۾ گهٽ قيمت (ايم)
+bill_item_amount_min	گهٽ ۾ گهٽ رقم (ايم)
+kot_item_qty_width	مقدار ڪالمن
+kot_item_num_align	مقدار جو ترتيب
+bill_total_qty_label	ڪل مقدار جو ليبل
+bill_total_subtotal_label	ذيل جي ڪل جو ليبل
+bill_total_grand_label	مڪمل ڪل جو ليبل
+bill_total_paid_label	ادا ڪيل ڪل ليبل
+bill_meta_pair	سان شيئر لائن
+bill_pair_alone	اڪيلو
+bill_item_piece_on	چالو
+bill_item_piece_off	بند
+bill_total_qty	ڪل مقدار
+bill_total_subtotal	ذيلي ڪل
+bill_total_grand	مڪمل ڪل
+reprint_incl	ڇپائي ۾
+reprint_skip	ڇڏيو
+reprint_skip_meta	بحالي ڇپائي کي ڇڏي ڏيو
+kot_dest_hint	سيٽنگس → پرنٽرز ۾ توھان مقرر ڪيل پرنٽر تي ڇپائي ٿي {kitchens}
+kot_sent_hint	آخري KOT تي موڪليو ويو {kitchens}. ايندڙ ٽڪيٽ لاءِ ڊشز شامل ڪرڻ لاءِ ٽيپ ڪريو — يا ساڳئي لاءِ KOT ٻيهر ڇپيو.
+kot_sent_printing	KOT موڪليو ويو {kitchens} — ڇپائي ٿي رهي آهي
+kot_sent_not_printed	KOT موڪليو ويو {kitchens} پر ڇپيل ناهي: {why}. باورچي خانه کي ٻڌايو، پوءِ پرنٽر کي ٺيڪ ڪريو ۽ ٻيهر ڇپيو.
+kot_sent_screen	KOT کي {kitchens} تي موڪليو ويو
+kot_queued_shop	KOT کي {place} لاءِ → {kitchens} محفوظ ٿيو؛ دڪان جو ڊوائيس ان کي پرنٽ ڪري ٿو
+kot_job_label	KOT کي {place} لاءِ → {kitchens}
+kot_job_reached	KOT کي {place} لاءِ پهتو {kitchens}
+kot_unassigned	ڪچن (ڪو اسٽيشن ناهي)
+kot_unassigned_held	ڪو اسٽيشن بغير {n} ڊش(ون) رکي وئي — موڪلڻ لاءِ لائن تي ان هولڊ ڪريو
+kot_station_ph	باورچی خانو
+kot_station_dd	باورچی خانو
+kot_station_dd_n	ڪچن · {stations}
+kot_set_station	هن اسٽيشن کي استعمال ڪريو
+kot_station_applied	اسٽيشن مقرر ڪيو ويو {n} ٿالن تي: {station}
+kot_station_cleared	اسٽيشن خالي ڪيو ويو {n} ٿالن مان: {station}
+kot_station_needed	پهريان هڪ رڌڻي اسٽيشن چونڊيو
+kot_station_not_allowed	رڌڻي استعمال ڪرڻ جي اجازت ناهي: {station}
+kot_station_none	هن وقت تائين ڪا به باورچی خانه اسٽيشنس نه آهن — هڪ شامل ڪريو باورچی خانه يا سيٽنگز → ايرياز · اسٽيشنس هيٺ
+pos_tab_items	شامل ڪيل شيون
+pos_tab_payment	ادائيگي
+hold_send	روڪيو
+hold_send_on	روڪيل
+hold_send_meta	رڪيل — نه هي KOT
+station_remove	اسٽيشن هٽايو
+station_remove_ph	هٽائڻ لاءِ فهرست ۾ هڪ اسٽيشن تي ٽيپ ڪريو
+station_removed	اسٽيشن هٽايو ويو: {name}
+settings_hub_title	سيٽنگون
+settings_hub_help	هڪ وقت ۾ هڪ ئي علائقو کوليو — گھٽ اسڪالرنگ، واضح چونڊون.
+settings_back	پوئتي
+settings_sec_language	ٻولي ۽ ڪرنسي
+settings_sec_country	ملڪ ۽ ٽيڪس
+settings_sec_tills	ٻيا ڊوائيسز
+settings_sec_brand	توھانجو برانڊ
+settings_sec_units	يونٽس ۽ تبديليون
+settings_sec_pickers	علائقو · اسٽيسڻ · ٽيڪس جون شرحون
+settings_sec_printers	پرنٽر
+settings_sec_bill	بل ۽ KOT فارميٽ
+settings_sec_selling	اسڪيمون ۽ وڪرو
+bill_kot_tab_bill	بل
+bill_kot_tab_kot	KOT
+settings_sec_alerts	خبردار
+alerts_help	توهان لاءِ اسٽيٽس پيغام اسڪرين تي ڪيتري دير لاءِ ظاهر رهن ٿا (هن لاگ ان ۾).
+snack_secs_ph	سيڪنڊ (3–60، ڊيفالٽ 10)
+snack_secs_save	خبردار وقت محفوظ ڪريو
+snack_secs_saved	خبردار وقت محفوظ ٿيو — {n} سيڪنڊ
+settings_sec_backup	بيڪ اپ ۽ بحالي
+settings_sec_diag	تشخيص
+diag_privacy_help	لاگز هن ڊوائيس تي رهندا آهن. راز (PIN، پاسورڊ) ڪڏهن به محفوظ نه ڪيا ويندا آهن. ڊوائيس کان ٻاهر پيڪيج شيئر ڪرڻ لاءِ هر وقت توهان جي واضع منظوري گهربل آهي — ڪڏهن به ٽئين پارٽين کي نه وڪيو وڃي ٿو ۽ نه ڏنو وڃي ٿو.
+diag_level	تفصيل جي سطح
+diag_level_error	غلطيون
+diag_level_warn	تنبيهون
+diag_level_info	Info
+diag_level_debug	Debug
+diag_support_start	30 منٽن جي مدد سيشن شروع ڪريو
+diag_support_stop	مدد سيشن ختم ڪريو
+diag_support_started	مدد سيشن تي - Debug تفصيل لاءِ 30 منٽ
+diag_support_ended	مدد سيشن ختم ٿي ويو
+diag_export_local	مقامي ڪاپي برآمد ڪريو
+diag_export_local_done	مقامي تشخيص تيار آهي {path} — جتي ڪاپي محفوظ ڪرڻ چاهيو اتي چونڊيو
+diag_approve_send	هن ڊوائيس مان شيئر جي منظوري ڏيو
+diag_send_help	منظوري هڪ پيڪيج آهي، پوءِ ختم ٿي وڃي ٿي. عارضي — صرف پراڊڪٽ کي درست يا بهتر ڪرڻ لاءِ استعمال ڪيو وڃي ٿو. ٽئين پارٽين سان نه ورهايو وڃي. لينڪس، ونڊوز، ميڪ او ايس، ۽ اينڊرائيڊ تي ڪم ڪري ٿو.
+diag_send_approved	هڪ پيڪيج لاءِ شيئر منظور ڪيو ويو (جلد ختم ٿي رهيو آهي)
+diag_export_send	شيئر پيڪيج ٺاهيو (منظوري جي ضرورت آهي)
+diag_export_send_done	پيڪيج تيار آهي {path} — محفوظ ڪرڻ لاءِ جاءِ چونڊيو، پوءِ صرف Kumkaj سپورٽ ڏانهن موڪليو
+diag_save_bundle	تشخيصي نقل محفوظ ڪريو
+diag_bundle_saved	تشخيصي ڪاپي {path} تي محفوظ ٿي وئي
+diag_bundle_failed	تشخيصي ڪاپي محفوظ نه ٿي سگهي — ٻيهر ڪوشش ڪريو
+diag_clear	تشخيصي لاگز صاف ڪريو
+diag_cleared	تشخيصي لاگز صاف ڪيا ويا
+sidebar_settings	سايڊبار
+sidebar_settings_help	ساڳيا آئڪن جيئن سائڊ ريل تي. ترتيب بدلائڻ لاءِ هڪ قطار ڊريگ ڪريو. ڏيکارڻ يا لڪائڻ لاءِ سوئچ کي تبديل ڪريو. سيٽنگون ۽ لاڪ هميشه بار تي رهندا.
+sidebar_always_on_short	هميشه آن
+sidebar_back_settings	پوئتي
+sidebar_shown	ظاهر ٿيل
+sidebar_hidden	لڪل
+sidebar_always_on	هميشه بار تي
+sidebar_shown_hint	پاسي واري ريل / هيٺين ٽيبز تي ڏيکاريل
+sidebar_hidden_hint	بار کان لڪل
+sidebar_menu_items	مينيو ۽ شيون
+sidebar_enable_all	سڀ کي چالو ڪريو
+sidebar_disable_all	سڀ کي غير فعال ڪريو
+sidebar_order_saved	سائيڊبار جو ترتيب محفوظ ٿي وئي
+sidebar_visibility_saved	سايڊبار جي نظر اچڻ محفوظ ڪئي وئي
+amounts_hide	لڪايو
+amounts_show	ڏيکاريو
+printers_none_hint	پهريان هن ڊوائيس تي پرنٽر محفوظ ڪريو، پوءِ ان کي بل يا ڪچن ۾ شامل ڪريو
+counter	ڪائونٽر
+dine_in	اندر کائڻ
+takeaway	کڻي وڃو
+order	آرڊر
+tables	ٽيبلون
+kitchen	باورچی خانو
+sales	وڪري
+sales_refunds	وڪري ۽ رقم واپس
+day_close	ڏينهن جو اختتام
+reports_expenses	بينڪ ڪتاب ۽ نفعو ۽ نقصان
+nav_reports	رپورٽون
+nav_settings	سيٽنگون
+nav_lock	تالا
+no_sale_yet	اڃا تائين وڪرو ناهي ٿيو
+favorites	پسنديده
+favorites_help	جن شين کي توهان اڪثر وڪرو ڪريو ٿا، توهان جي لاگ ان لاءِ محفوظ ٿيل آهن. بل ۾ هڪ شامل ڪريو، يا هيٺين سڀني شين مان پنهنجي فهرست ٺاھيو.
+your_favorites	توهان جا پسنديده
+all_items	سڀ شيون
+frequent	بار بار
+added_items	شامل ڪيل شيءِ(ون)
+added_items_empty	هن آرڊر تي اڃا ڪجھ ناهي — سڀني شين يا ڪنهن ڪيٽيگري مان ڪا ڊش شامل ڪريو.
+frequent_config_help	مڪمل ٿيل بلن مان سڀ کان وڪرو ٿيل ڊشز. ڏسو ته ڪيترا ڏينهن ڏسڻا آهن ۽ ڪيتريون ڊشز ڏيکارڻيون آهن.
+frequent_days_ph	ڏينهن (1)
+frequent_limit_ph	شيون (24)
+frequent_apply	لاڳو ڪريو
+frequent_saved	بار بار: آخري {d} ڏينهن، مٿيون {n} — {c} ڊش(ز)
+frequent_empty	هن مدت ۾ اڃا تائين ڪا مڪمل ٿيل وڪرو ناهي — هڪ بل طئي ڪريو (سيٽنگز مطابق ₹0 جي اجازت آهي) ۽ اهي هتي ظاهر ٿيندا.
+zero_sales	صفر قيمت وڪرو
+zero_sales_help	₹0 ۾ قيمت واريون ڊشز ۽ ₹0 تي طئي ٿيل بلز جي اجازت ڏيو (مفت / مالڪ جي خواهش مطابق). ڊفالٽ تي آن آهن، تنهنڪري مفت ڪورز اڃا تائين بار بار ۽ روزاني ڪتابن ۾ ظاهر ٿيندا.
+zero_sales_on	₹0 جي اجازت ڏيو
+zero_sales_off	قيمت گهرجي
+zero_sales_saved_on	صفر قيمت وارا وڪرو اجازت ٿيل آهن
+zero_sales_saved_off	وڪرو کي ₹0 کان مٿي قيمت هجڻ گھرجي
+floor_areas_help	علائقو هال تي ڪمرا يا زون آهن (ڊائن ان، پارسل، ايئر ڪنڊيشن... ). پهريان هڪ علائقو شامل ڪيو، پوءِ ان ۾ ميز رکيا — هر علائقو هال تي هڪ الڳ گروپ آهي.
+area_new_ph	نئون علائقو / ڪمرو (مثال طور ايئر ڪنڊيشن، باغ)
+add_area	علائقو شامل ڪريو
+area_added	علائقو “{name}” تيار آهي — ان ۾ ميز شامل ڪريو
+no_favorites	اڃا ڪا پسنديده ناهي — هيٺ ڏنل فهرست مان شيون شامل ڪريو.
+add_to_bill	بل ۾ شامل ڪريو
+added	شامل ڪيو ويو
+owes_word	ڪو قرضدار آهي
+selected_word	منتخب ٿيل
+chip_clear_credit	صاف ڪريو — ڪريڊٽ يا اڳواٽ وٺو
+chip_missing_customer	منتخب ٿيل گراهڪ غائب — ٻيهر چونڊيو
+chip_no_customer	اڃا ڪوبه گراهڪ ناهي — نالو لکو، پوءِ ڪريڊٽ تي ٽيپ ڪريو
+credit_summary_fmt	{} گراهڪ · کليل ڪريڊٽ {} · رکيون ويون اڳواڻيون {}
+recent_label	تازو:
+kot_new_waiting	نئون — انتظار
+kot_preparing	تيار ڪري رهيو آهيون
+kot_ready_serve	تيار — ان کي پيش ڪريو
+kot_done_cap	مڪمل
+kot_cancelled	منسوخ
+kot_start_btn	شروع ڪريو
+kot_mark_ready	مارڪ تيار
+kot_done_btn	ٿي ويو
+table_free	مفت — آرڊر شروع ڪرڻ لاءِ ٽئپ ڪريو
+start_order	آرڊر شروع ڪريو
+open_bill	بل کوليو
+collect_payment	ادائگي گڏ ڪريو
+table_running	ڏوڙ
+payment_pending	اداگي ملتوي
+collect_at_counter	ڪائونٽر تي گڏ ڪريو
+inventory	انوينٽري
+inventory_stock	انوينٽري ۽ اسٽاڪ
+branches	برانچز
+branches_org	برانچز ۽ ادارو
+credit_customers	پارٽيون (ڪھاتا ۽ سپلائرز)
+customer_name_ph	پارٽي جو نالو
+new_customer_ph	نئين پارٽي جو نالو
+item_name_ph	شيءِ جو نالو (مثال طور Masala Dosa)
+item_price_ph	اگهه
+start_template	پراڊڪٽ
+team	ٽيم
+team_pins	ٽيم ۽ PINس
+my_pin_settings	منهنجو PIN
+settings_hub_help_my_pin	هن ڊيوائس تي سائن ان ٿيل شخص لاءِ ان لاڪ PIN کي تبديل ڪريو.
+team_self_help	هڪ سائن ان: نئون PIN، نئون پاسورڊ، يا ٻئي. جيڪو توهان وٽ آهي ان کي برقرار رکڻ لاءِ باڪس خالي ڇڏيو. جيڪڏهن توهان کي مختلف اسڪرين يا حقن جي ضرورت هجي ته مالڪ کان پڇو.
+backup_settings	بيڪ اپ ۽ سيٽنگون
+lock_app	ايپ کي لاڪ ڪريو
+pick	چونڊيو
+select	چونڊيو
+advance	اڳتي وڌايو
+owner	مالڪ
+staff	عملو
+photo	تصوير
+auto	Auto
+prev	پوءِ وارو
+next	اڳتي
+ok	OK
+this_shop	Server
+extra_till	Client
+off	بند
+tables_kitchen	ٽيبلون ۽ باورچی خانه
+server	Server
+client	Client
+language_currency	ٻولي ۽ ڪرنسي
+language	ٻولي
+choose_language	پنهنجي ٻولي چونڊيو
+language_setup_hint	هن ڊيوائس جي ٻولي جي پيروي ڪريو، يا پاڻ هڪ چونڊيو.
+lang_follow_platform	ڊيوائس جي ٻولي
+lang_pick_user	ٻولي چونڊيو
+lang_platform_now	هن وقت ڊوائيس جي ٻولي
+selected_language	منتخب ٿيل
+continue	جاري رکو
+this_device	هن ڊوائيس
+device_use_q	هن ڊوائيس کي ڪهڙي طرح استعمال ڪيو ويندو؟
+last_server_mode	هو Server — جاري رکڻ لاءِ ٽيپ ڪريو
+last_client_mode	هو Client — جاري رکڻ لاءِ ٽيپ ڪريو
+choose_server	هڪ سرور چونڊيو
+choose_server_hint	هڪ موجوده سرور کوليو، يا ٻين ڪاروبار لاءِ هڪ ٺاهيو.
+create_new_server	نئون سرور ٺاهيو
+open_server	کوليو
+new_server_name_ph	نئين سرور جو نالو (اختياري)
+server_remove_pin_ph	مالڪ PIN سرور هٽائڻ لاءِ
+only_owner_remove_server	رڳو مالڪ سرور هٽائي سگھي ٿو
+owner_pin_remove_server	مالڪ PIN کي هن سرور کي هٽائڻ جي ضرورت آهي
+device_setup_help	Server هتي ڪتاب رکي ٿو. Client جو جوڙو Server سان آهي.
+app_template_heading	Rajdhani ايپ ٽيمپليٽ
+app_template_blurb	Rajdhani مينيو لوڊ ڪري ٿو؛ مالڪ Zahir (ظاهر), Admin Asif (آصف, PIN 1111), ويٽر Nawaz (نواز, PIN 0000); FOH سايڊبار; تاريخ چار ڪلاڪن بعد صاف ٿئي ٿي (۽ بیک اپ ۾ هاڻي صاف ڪريو); اڄ قطار ختم ڪريو; محدود ٽريز لاءِ KOT + معياري ڪنارن سان گڏ ڪنڊيڪٽ. سايڊبار پيئرز کي سيٽنگز ۾ واپس آن ڪري سگهجي ٿو.
+app_template_apply	Rajdhani ايپ ٽيمپليٽ
+app_template_skip	هاڻي لاءِ ڇڏي ڏيو
+app_template_status	Server تيار — Rajdhani ايپ ٽيمپليٽ لاڳو ڪريو، يا ڇڏي ڏيو
+app_template_importing	{title} لاڳو ٿي رهيو آهي...
+currency	ڪرنسي
+backup	بيڪ اپ
+use	استعمال ڪريو
+dont_use	استعمال نه ڪريو
+add_branch	شاخ شامل ڪريو
+add_conversion	تبديل شامل ڪريو
+add_dishes_items	ڊشز ۽ شيون شامل ڪريو
+add_item_plain	شيءَ شامل ڪريو
+add_note	نوٽ شامل ڪريو
+add_opening_balance	شروعاتي بيلنس شامل ڪريو
+add_staff	اسٽاف شامل ڪريو
+add_station	اسٽیشن شامل ڪريو
+add_table	ٽيبل شامل ڪريو
+add_unit	يونٽ شامل ڪريو
+add_use_name	هن نالي کي شامل / استعمال ڪريو
+allow_extra_tills	اضافي ڪيش ڪائونٽر جي اجازت ڏيو
+amend	ترميم ڪريو
+apply_country_pack	ملڪ جو پيڪ لاڳو ڪريو
+datetime_appearance	تاريخ ۽ وقت جي ڏيک
+datetime_appearance_help	ڪتابن ۾ سال پهرين RFC3339 اندر رکيو ويندو آهي. اهي صرف تبديل ڪن ٿا ته بلن، KOT، رپورٽن ۽ اسڪرين تي تاريخون ۽ ڪلاڪ ڪيئن ڏسجن.
+datetime_example	هاڻوڪو مثال: {ex}
+date_order	تاريخ جو ترتيب
+date_order_dmy	D/M/Y
+date_order_mdy	M/D/Y
+date_order_ymd	Y-M-D
+time_format	ڪلاڪ
+time_format_24h	24 ڪلاڪ
+time_format_12h	12 ڪلاڪ
+attach_bill_photo	بل جو فوٽو لڳايو
+attach_pdf	PDF لڳايو
+attach_photo	تصوير لڳايو
+attachments_last_expense	منسلڪات (آخري خرچ)
+bank	بئنڪ
+bank_in	اندر بئنڪ
+bank_out	بينڪ ٻاهر
+bank_reconciliation	بينڪ ميل جول (پنهنجي بينڪ اسٽيٽمينٽ جي مقابلي ۾ نشان لڳايو)
+bank_to_till	بينڪ → ڪيش ڪائونٽر
+book_add_dish	ڪتاب — ڊش / شيءَ شامل ڪريو
+book_opening_credit	ڪتاب — کولڻ جي ڪريڊٽ
+branch_name_sell_ph	وڪڻ لاءِ شاخ جو نالو
+bring_my_book	منهنجو ڪتاب آڻيو
+business_tax_id_ph	ڪاروباري ٽيڪس جي سڃاڻپ
+caption_bank	بينڪ
+caption_bills	بل
+caption_outstanding	باقيماندہ
+caption_payments_today	اڄ جون ادائيگيون
+caption_today	اڄ
+card_amount_ph	ڪارڊ رقم
+cash_amount_ph	نقد رقم
+cash_memo	نقد ميمو
+choose_icon	آئڪن چونڊيو
+choose_logo	لوگو چونڊيو
+clear_icon	آئڪن صاف ڪريو
+clear_photo	تصوير صاف ڪريو
+copy_day_book_csv	روزانو ڪتاب نقل ڪريو CSV
+copy_day_close	روزانو بند ڪريو
+copy_items_csv	شيون نقل ڪريو CSV
+copy_outstanding_csv	بقايه نقل ڪريو CSV
+copy_parties_csv	پارٽيز جي نقل CSV
+copy_party_ledger_csv	پارٽي ليجر جي نقل CSV
+copy_receipt	رسيد جي نقل ڪريو
+share_whatsapp	واٽس اپ شيئر ڪريو
+lan_pages_heading	Wi‑Fi تي مهمان صفحا
+lan_pages_help	هن اسٽور جي Wi‑Fi تي، مهمان صفحا ڊسپلي بورڊ، ٽوڪنز، ايڪسپو، ڪيوسڪ، ٽيبل QR، ۽ راءِ لاءِ ڪم ڪن ٿا. موبائيل ڊيٽا تي مهمان کي پوءِ ڪلاوڊ جي ضرورت پوي ٿي. ڪارڊ ٽرمينل / ادائيگي لنڪ اختياري آهي جڏهن انٽرنيٽ هلندي هجي — اهو ڪائونٽر کي ڪڏهن به روڪيندو ناهي.
+diag_send_heading	هن ڊوائيس مان شيئر ڪريو
+kot_dest_heading	ڪچن اسٽيشن
+optional_login_heading	اختياري لاگ ان
+rights_heading	حق
+ops_panel	مقامي آپريشن
+crm_heading	ميزبان ۽ پيغام
+crm_help	سالگره، وفاداري، غير فعال ۽ مٿيان مهمان — قطار SMS يا WhatsApp ارادا. پيغام ۾ {name} ۽ {points} استعمال ڪريو. مالڪ موڪليو تي ٽيپ ڪري ٿو؛ ڪجهه پاڻمرادو نه نڪري ٿو.
+crm_queue_sms	قطار SMS
+crm_queue_wa	قطار WhatsApp
+crm_seg_bday_week	سالگره هفتي
+crm_seg_bday_month	سالگره جو مهينو
+crm_seg_phone	فون سان
+crm_seg_loyalty	وفاداري
+crm_seg_inactive	غير فعال
+crm_seg_top	وڏي خرچ ڪندڙ
+birthday_ph	جنم ڏينهن (MM-DD يا YYYY-MM-DD)
+crm_message_ph	جنم ڏينهن مبارڪ {name}! توهان وٽ {points} پوائنٽس آهن.
+till_apply_redeem	بل تي لاڳو ڪريو
+till_clear_redeem	صاف ڪرڻ لاءِ ريڊيم ڪريو
+till_wallet_topup	والٽ ۾ پئسو جمع ڪريو
+till_issue_voucher	ووچر جاري ڪريو
+till_points_ph	ريڊيم ڪرڻ لاءِ پوائنٽس
+till_wallet_ph	خرچ ڪرڻ لاءِ والٽ رقم
+till_voucher_code_ph	ووچر ڪوڊ
+till_voucher_amt_ph	ووچر رقم (خالي = سڀ)
+till_wallet_topup_ph	والٽ ۾ رقم وڌائڻ
+till_voucher_issue_amt_ph	وائچر جي رقم جاري ڪريو
+till_voucher_issue_code_ph	نئون وائچر ڪوڊ
+split_evenly	برابر ورهايو
+waitlist	انتظار جي فهرست
+fire_course	آگ جو ڪورس
+hold_item	روڪيو
+waiter_call	ويٽر کي سڏيو
+waitlist_add	ويٽ لسٽ ۾ شامل ڪريو
+floor_view_grid	گرڊ
+floor_view_layout	خاڪو
+floor_layout_x	X
+floor_layout_y	Y
+floor_layout_w	W
+floor_layout_h	H
+floor_layout_save	لي آئوٽ محفوظ ڪريو
+floor_layout_open	ٽيبل کوليو
+floor_layout_edit	لي آئوٽ ترميم ڪريو
+floor_layout_pick	ٽيبل تي ٽپ ڪريو ته جيئن ان جو لي آئوٽ ترميم ڪري سگهجي
+floor_layout_saved	ٽيبل جو خاڪو محفوظ ڪيو ويو
+floor_layout_nudge_left	← 20
+floor_layout_nudge_right	→ 20
+floor_layout_nudge_up	↑ 20
+floor_layout_nudge_down	↓ 20
+sibling_pickers_help	يونٽس وانگر آن/آف تي ٽيپ ڪريو — علائقن، اسٽيجنز، ۽ ٽيڪس جي شرح کي روزاني چونڊ ڪندڙن کان لڪايو؛ پيڪ ڊيفالٽس برقرار رهن ٿا.
+bulk_price_apply	بلڪ قيمت لاڳو ڪريو
+card_terminal_optional	ڪارڊ ٽرمينل / ادائگي لنڪ (اختياري جڏهن انٽرنيٽ موجود هجي)
+copy_report	رپورٽ ڪاپي ڪريو
+counted_cash_ph	درانور ۾ ڳڻيل نقد
+country_tax	ملڪ ۽ ٽيڪس
+tax_chrome	ڪيش ڪائونٽر تي ٽيڪس ليبل
+tax_chrome_help	جڏهن بند هوندو آهي، آرڊر ڊيسڪ GST/ٽيڪس تخمينو لائينز ۽ GST-ان-قیمت پلاسبولڊر لڪائي ٿو. ٽيڪس جي شرح ۽ ملڪ & ٽيڪس جون سيٽنگون قائم رهن ٿيون — ڪنهن به وقت ليبل واپس آن ڪري سگهجن ٿا. Rajdhani ايپ ٽيمپليٽ انهي سان بند ٿيل شروع ٿئي ٿو.
+tax_chrome_on	ڏيکاريو
+tax_chrome_off	لڪايو
+tax_chrome_saved_on	ڪيش ڪائونٽر تي ٽيڪس ليبل
+tax_chrome_saved_off	ڪيش ڪائونٽر تي ٽيڪس ليبل لڪل آهن
+tax_invoice_till	ڪيش ڪائونٽر تي ٽيڪس انوائس
+tax_invoice_help	جڏھن بند ھجي، بل صرف نقد ميمو ھوندا آھن ۽ ٽيڪس انوائس / نقد ميمو چپس آرڊر ڊيسڪ تي لڪيل ھوندا آھن. Rajdhani ايپ ٽيمپليٽ ان سان شروع ٿئي ٿي بند — ٻيهر ٽيڪس انوائس چونڊڻ لاءِ ڪڏهن به ڏيکارڻ کي آن ڪريو.
+tax_invoice_on	ڏيکاريو
+tax_invoice_off	لڪايو
+tax_invoice_saved_on	ڪيش ڪائونٽر تي ٽيڪس انوائس
+tax_invoice_saved_off	ٽيڪس انوائس لڪل — صرف نقد ميمو
+pay_methods	ادائيگي جا طريقا
+pay_methods_help	ڪهڙا چپس ادائيگي وٺڻ تي ظاهر ٿين ٿا. نقدي هميشه رهي ٿي. Rajdhani ايپ ٽيمپليٽ فقط نقدي سان شروع ٿئي ٿي — هتي UPI / ڪارڊ / ڪريڊٽ / اسپلٽ کي واپس آن ڪريو.
+create_backup	بيڪ اپ ٺاهيو
+credit_limit_heading	ڪريڊٽ حد (چونڊيل / نالي سان پارٽي)
+day_close_summary	ڏينهن جو اختتامي خلاصو
+delete_party	منتخب پارٽي کي ختم ڪريو
+delivery	پهچ
+done_open_books	ڪَم مڪمل — ڪتاب کوليو
+drawer_count	درائور جو ڳڻپ (اختياري)
+expense_heading	خرچ
+export_day	برآمدي ڏينهن
+extra_note_bill_ph	هن بل / وڪري تي اضافي نوٽ
+extra_note_expense_ph	گذريل خرچ تي اضافي نوٽ
+extra_tills_heading	اضافي ڪيش ڪائونٽر
+other_devices_help_heading	ٻيا ڊوائيس سيٽ ڪريو
+other_devices_help	هن ڊوائيس تي (Server): ٻيا ڊوائيس → اضافي ڪيش ڪائونٽر کي اجازت ڏيو. پيئرنگ ڪوڊ ۽ Wi‑Fi پتو نوٽ ڪريو. جيڪڏهن ظاهر ٿئي ٿو ته ٻين ڊوائيسز کي ڳنڍڻ جي اجازت ڏيو تي ٽيپ ڪريو. ڪمپيوٽر تي، هن ڪمپيوٽر سان شروع ڪريو تي ٽيپ ڪريو. هر ٻئي ڊوائيس تي: ايپ انسٽال ڪريو، Client موڊ چونڊيو، دڪان جو سرور ڳوليو (يا پتو ٽائپ ڪريو)، پيئرنگ ڪوڊ داخل ڪريو، هاڻي جوڙي ٺاهيو. آرڊر ڊوائيس تي انتظار ڪندا آهن جيڪڏهن Wi‑Fi ڊراپ ٿئي ٿو ۽ جڏهن Server ٻيهر جواب ڏئي ٿو ته ويندا آهن. ڪچن پرنٽر Server تي سيٽ ٿيل آهن (سيٽنگون → پرنٽر) — اضافي ڪيش ڪائونٽر اتي KOTس موڪليندا آهن.
+forget_shop	ھن دڪان کي وساريو
+goods_received	مال وصول ٿيو
+import_day	درآمد جو ڏينهن
+import_items_csv_plain	درآمد ٿيل شيون CSV...
+import_parties_csv	پارٽيون درآمد ڪريو CSV...
+item_name	شيءِ جو نالو
+kitchen_printing	پرنٽر
+login_id_ph	صارف جو نالو
+mark_cleared	مارڪ ڪيل صاف ڪري ڇڏيو
+new_party_clear	نئون پارٽي (فارم صاف ڪريو)
+new_party_kind_supplier_ph	نئين پارٽي جو قسم (سپلائر)
+next_country	اڳيون ملڪ
+next_order	اڳيون آرڊر (ڊيسڪ صاف ڪريو)
+note_gstin_ph	نوٽ / GSTIN / معاهدي جي ياددھاني
+notes_attach_party	نوٽس ۽ منسلڪ (منتخب پارٽي)
+notes_attach_sale	نوٽس ۽ منسلڪ (منتخب وڪري)
+on_account_ap	حساب تي (AP)
+org_optional_ph	اداره (اختياري)
+paid_by	ادا ڪيو ويو
+paid_now	هاڻي ادا ڪريو
+pair_now	هاڻي جوڙيو
+pairing_code_ph	جيڙي ڪوڊ
+party_name_selected_ph	پارٽي جو نالو (يا چونڊيل استعمال ڪريو)
+password_ph	پاسورڊ
+pay_ap_card	اي پي ڪارڊ سان ادا ڪريو
+pay_ap_cash	اي پي نقد سان ادا ڪريو
+pay_ap_heading	جن جو اسان تي قرض آهي اهو ادا ڪريو (AP)
+pay_ap_upi	AP ادا ڪريو UPI
+pay_selected_heading	منتخب ادا ڪريو (قرض صاف ڪريو / اڳواٽ وٺو)
+pick_from_items	اسان جي شين مان چونڊيو
+prev_country	پويون ملڪ
+print_open	پرنٽ / کوليو
+reason_amend_ph	ترميم / رد / رقم واپس ڪرڻ جو سبب
+reason_note_ph	سبب / نوٽ (فضول، ڳڻپ، ...)
+record_day_close	ڏينهن جو رڪارڊ بند ڪريو
+refresh_from_shop	دوڪان مان تازو ڪريو
+refund	واپسي
+remove_selected	منتخب ڪيل هٽايو
+request_bill	بل جي درخواست ڪريو
+restaurant_name_ph	ريستوران جو نالو (اختياري)
+restore_backup	بيڪ اپ بحال ڪريو
+role_both	ٻئي
+role_admin	Admin
+role_cashier	ڪيشيئر
+role_customer	گراهڪ
+role_manager	مئنيجر
+history_retention	واپار جي تاريخ
+history_retention_help	پراني وڪرو ۽ KOT پاڻمرادو صاف ڪريو. مينيو، اسٽاف، ۽ سيٽنگون برقرار رهن ٿيون. هاڻي صاف ڪرڻ سان سڀ واپار جون قطارون ختم ٿي وڃن ٿيون ۽ سيٽ اپ برقرار رهي ٿو.
+history_off	رکو
+history_day_close	ڏينهن جي اختتام تي
+history_after_hours	ڪلاڪن کان پوءِ
+history_hours_ph	ڪلاڪ (1–168، ڊيفالٽ 4)
+history_hours_save	ڪلاڪ محفوظ ڪريو
+history_clear_now	هاڻي تاريخ صاف ڪريو
+history_cleared	واپار جي تاريخ صاف ٿي وئي — سيٽ اپ برقرار رکيو
+history_retention_saved	تاريخ صاف ڪرڻ محفوظ ٿيو
+history_hours_saved	تاريخ جا ڪلاڪ محفوظ ٿيا
+history_owner_only	صرف مالڪ يا Admin تاريخ صاف ڪري سگهي ٿو
+rollup	رول-اپ
+save_brand	برانڊ محفوظ ڪريو
+save_business_id	ڪاروبار جي سڃاڻپ محفوظ ڪريو
+save_business_name	ڪاروبار جو نالو محفوظ ڪريو
+save_features	محفوظ ڪريو
+save_features_named	{name} محفوظ ڪريو
+save_features_ok	{name} لاءِ محفوظ ٿيل سيٽ اپ
+save_names	نالن کي محفوظ ڪريو
+second_way	ٻيو طريقو
+server_ip_ph	Server IP (مثال طور 192.168.1.10)
+set_credit_limit	پارٽي تي حد لاڳو ڪريو
+set_login_selected	منتخب تي لاگ ان لاڳو ڪريو
+set_login_named	{name} تي لاگ ان لاڳو ڪريو
+shop	دڪان
+show	ڏيکاريو
+spreadsheet_csv	اسپريڊ شيٽ (CSV)
+start_fresh	نئون شروع ڪريو
+stop_extra_tills	اضافي ڪيش ڪائونٽر بند ڪريو
+floor_cols_ph	ڪالمن
+floor_cols_fit	اسڪرين تي فٽ ڪريو
+floor_cols_fit_sub	{n} هتي فٽ ٿئي ٿو
+floor_cols_fits	فٽ ٿئي ٿو
+floor_cols_scroll	ڪوڙا پهلو ڏانهن ڦري ٿو
+floor_cols_min	ڪالمن: گهٽ ۾ گهٽ 1 — يا اسڪرين سان فٽ ڪرڻ لاءِ خالي ڇڏي ڏيو
+floor_zoom_auto	Auto
+floor_zoom_out	ٻاهر زوم ڪريو
+floor_zoom_in	اندر زوم ڪريو
+backup_auto	هر ڏينهن پاڻمرادو بيڪ اپ ٿيو · آخري {when} · گذريل 14 ڏينهن {dir} ۾ محفوظ آهن.
+backup_auto_none	هر ڏينهن پاڻمرادو بيڪ اپ ٿيو — پهريون هڪ لمحي ۾ هلندو.
+backup_copy_to	ڪاپيون پڻ {dir} ڏانهن وڃن ٿيون.
+backup_copy_btn	ڪاپيون بيڪ اپ پڻ هڪ فولڊر ڏانهن...
+autostart_off	هن ڪمپيوٽر سان شروع ڪريو
+autostart_on	هن ڪمپيوٽر سان شروع ٿئي ٿو ✓ — بند ڪرڻ لاءِ ٽيپ ڪريو
+autostart_done_on	هي ڪمپيوٽر هاڻي ايپ کوليندو آهي جڏهن اهو شروع ٿئي ٿو — دوڪان جو سرور بجلي بند ٿيڻ کان پوءِ واپس آيو آهي.
+autostart_done_off	هي ڪمپيوٽر هاڻي ايپ کولڻ بند ڪري ڇڏيو آهي جڏهن اهو شروع ٿئي ٿو.
+device_forgotten	دوڪان هن ڊوائيس کي وساري ڇڏيو آهي — ٻيهر ان کي دوڪان جي موجوده ڪوڊ سان جوڙي ڇڏيو. ان تي انتظار ڪندڙ آرڊر رکيا ويا آهن.
+lan_offline	دوڪان جو سرور پهچي نه سگهيو
+forget_device	ڀلجي وڃو
+last_seen	ڏٺو
+copy_pair_code	جوڙي ڪوڊ ڪاپي ڪريو
+new_pair_code	نئون جوڙي ڪوڊ
+pair_finishing	جوڙو مڪمل ڪرڻ... دوڪان جي ڪتابن تي لاڳو ڪرڻ
+pair_opening	ڪيش ڪائونٽر کوليو پيو…
+pair_copied	ڪوڊ جوڙو ڪاپي ڪيو
+kot_waiting	موڪلڻ لاءِ انتظار
+lan_offline_waiting	دوڪان سرور پهچڻ لائق ناهي · {n} انتظار ڪري رهيو آهي
+lan_connecting	دوڪان سان ڳنڍجي رهيو آهي...
+lan_live	لائيو
+lan_sending	{n} موڪلي رهيو آهي
+lan_sign_in_to_send	ٻيهر سائين ان ڪريو ته موڪلي سگهو {n}
+lan_pair_again	هن ڊوائيس کي ٻيهر جوڙي ڇڏيو
+lan_update_app	ايپ کي اپڊيٽ ڪريو — هي ڊوائيس ۽ دڪان جو سرور مختلف ورجنون رکن ٿا
+allow_firewall	ٻين ڊوائيسن کي ڳنڍڻ جي اجازت ڏيو
+firewall_blocked	هن ڪمپيوٽر جو فائر وال ٻين ڊوائيسز کي بلاڪ ڪري رهيو آهي — ٻين ڊوائيسز کي ڪنيڪٽ ڪرڻ جي اجازت ڏيڻ لاءِ Allow other devices تي ٽيپ ڪريو.
+firewall_waiting	ايڊمن پرامپٽ جو انتظار...
+lan_join_help	ٻئي ڊوائيس تي: Client موڊ → دڪان جو سرور ڳوليو (يا {addr} ٽائيپ ڪريو) → پئيرنگ ڪوڊ {code}.
+lan_pair_status	Wi‑Fi {addr}
+lan_join_help_no_addr	هن ڊوائيس کي Wi‑Fi سان ڳنڍيو ايڊريس لاءِ.
+lan_no_address	اڃا ڪو به Wi‑Fi پتو ناهي — دڪان سان Wi‑Fi ڳنڍيو.
+lan_not_listening	جي ڊوائيس قبول نٿا ٿين (پورٽ {port} مصروف). ايپ وري شروع ڪريو.
+lan_tills_off	اضافي ڪيش ڪائونٽر بند آهن. ٻئي ڊوائيس کي شامل ٿيڻ جي اجازت ڏيو.
+paired_with	جوڙيل · {url}
+not_paired	نه جوڙو
+choose_device_use	Server يا Client چونڊيو.
+paired_note	جوڙو ٿيل. وڪرو ڪرڻ لاءِ آنلاڪ ڪريو، يا تازو ڪرڻ لاءِ ريفريش ڪريو.
+last_update_at	آخري تازه ڪاري: {time}.
+pair_intro	سرور ڳوليو، يا انجو پتو ۽ پئيرنگ ڪوڊ لکو.
+queue_waiting	دوڪان تائين پهچڻ جو انتظار ({n}):
+queue_tries	ڪوشش ڪئي {n} ڀيرا · آخري جواب: {e}
+save_backup_copy	بيڪ اپ ڪاپي محفوظ ڪريو...
+backup_copy_saved	بيڪ اپ ڪاپي محفوظ ٿي وئي — ان کي هن ڊوائيس کان ٻاهر رکو (هڪ USB اسٽڪ يا ٻيو ڊوائيس)
+backup_copy_overdue	هن ڊوائيس مان {n} ڏينهن لاءِ ڪو به بيڪ اپ ڪاپي نه نڪتو — سيٽنگون → بيڪ اپ
+backup_copy_failed	بيڪ اپ ڪاپي اتي محفوظ نه ٿي سگهي — ٻيو جاءِ چونڊيو
+clock_off	هن ڊوائيس جو ڪلاڪ دُڪان جي سرور کان {min} منٽ پٺتي آهي — هن ڊوائيس تي صحيح وقت سيٽ ڪريو
+printers_heading	پرنٽر
+printers_help	پرنٽر ڳوليو، ڪنهن تي ٽيپ ڪري ان کي منتخب ڪريو، پوءِ صرف انهي ڊوائيس تي هڪ ٽيسٽ پيج پرنٽ ڪريو. بل پرنٽر: بل & KOT فارميٽ → بل. ڪچن پرنٽر: ڪچن → ڪچن اسٽيشن (پهريان هڪ اسٽيشن شامل ڪريو — ڳولھڻ اسٽيشنون نه ٺاهي ٿو).
+printers_host_only	پرنٽر دڪان جي ڊوائيس (Server) تي سيٽ ٿيل آهن. هي ڪيش ڪائونٽر بل ۽ KOT اتي موڪلي ٿو — ڳولا / شامل / مقرر Server تي رهن ٿا. ٽيسٽ پيج ۽ بل جي پرنٽ سائيز Server ڏانهن وڃن ٿا.
+printers_find_heading	پرنٽر ڳوليو
+printers_find_tip	هي ڊوائيس اسڪين ڪندو آهي ۽ لسٽ کي تازه ترين رکي ٿو.
+printers_pool_heading	پرنٽر
+printers_pool_tip	فالهي ڊوائيس کي اسڪين ڪندو ۽ هن فهرست کي تازه ڪاري رکندو.
+printers_pool_empty	(اڃان ڪوبه ناهي — فالهي تي ٽيپ ڪريو)
+printers_routes_help	فالهي اهي پرنٽر ڳوليندو جيڪي آپريٽنگ سسٽم اڳي ئي ڄاڻن ٿا. انهن کي بل ۽ هر کچن ۾ بل ۽ KOT فارميٽ تحت مقرر ڪريو.
+printer_assign_dd	اصلي پرنٽر: {place}
+printer_assign_pick	اصل پرنٽر چونڊيو
+printer_profile_heading	خاڪو
+printer_send_heading	پهچ
+vp_delivery_heading	پهچ
+vp_delivery_help	هن ورچوئل پرنٽر ڪئين ڪم موڪليندو آهي — OS دستاويز، خام بائٽس، يا ESC/POS. سلپ جو مواد (قسم، سائيز، لپيٽ، ڪنڊ) بل / KOT فارميٽ پاران طئي ڪيو ويندو آهي، هتي نه.
+vp_type_size_heading	قسم جي سائيز
+vp_wrap_heading	لپيٽ جي ويڪرائي
+vp_margin_heading	مارجنز
+vp_delivery_spooler	او ايس دستاويز (سسٽم اسپولر)
+vp_delivery_raw	ڊيوائس ڏانهن را بائيٽس
+vp_delivery_escpos	ESC/POS ٿرمل ڪمانڊس
+virtual_printer_new	نئون ورچوئل پرنٽر
+virtual_printer_selected	“{name}” کي ايڊٽ ڪري ٿو — تبديل ڪرڻ لاءِ لسٽ ۾ ٻئي تي ٽيپ ڪريو
+virtual_printer_tap_list	لسٽ ۾ ورچوئل پرنٽر تي ٽيپ ڪري ان کي ايڊٽ ڪريو
+config_layout_portrait	پورٽريٽ
+config_layout_landscape	لائينڊ اسڪيپ
+config_send_os	سسٽم اسپولر
+config_send_escpos	ESC/POS
+profiles_heading	خاڪا
+profiles_empty	(هن وقت ڪا ترتيب ناهي)
+profile_builtin	بلٽ ان
+profile_custom	ڪسٽم
+profile_name_ph	لي آئوٽ جو نالو
+profile_new	نئون لي آئوٽ
+profile_delete	لي آئوٽ ختم ڪريو
+profile_created	لي آئوٽ ٺهيل
+profile_deleted	لي آئوٽ حذف ڪيو ويو
+profile_builtin_keep	بلٽ ان لي آئوٽ حذف نٿا ٿي سگهن
+config_saved	اپڊيٽ ڪيو ويو
+config_selected	منتخب ٿيل “{name}”
+printer_output_heading	ورچوئل پرنٽر
+virtual_printers_heading	ورچوئل پرنٽر
+virtual_printers_empty	هن وقت ڪو ورچوئل پرنٽر ناهي — هيٺ ڏنل قدر قائم ڪريو، پوءِ محفوظ ڪريو. جيئن ئي توهان وٽ ڪجھ هوندو، فهرست ۾ ڪنهن تي ٽيپ ڪري ايڊٽ ڪريو.
+virtual_printer_name_ph	ورچوئل پرنٽر جو نالو (اختياري)
+virtual_printer_create	ورچوئل پرنٽر ٺاهيو
+virtual_printer_save	ورچوئل پرنٽر محفوظ ڪريو
+virtual_printer_delete	ورچوئل پرنٽر ختم ڪريو
+virtual_printer_created	ورچوئل پرنٽر “{name}” ٺاهي وئي
+virtual_printer_deleted	ورچوئل پرنٽر “{name}” حذف ڪيو ويو
+virtual_printer_updated	ورچوئل پرنٽر تازه ڪيو ويو
+virtual_printer_updated_named	ورچوئل پرنٽر “{name}” تازه ڪيو ويو
+virtual_draft_layout	اڳين ورچوئل پرنٽر لاءِ قيمتون مقرر ڪيون ويون
+virtual_draft_send	اڳين ورچوئل پرنٽر لاءِ مقرر ٿيل قيمت
+virtual_need_real	پهريان هڪ حقيقي پرنٽر چونڊيو
+virtual_need_select	هٽائڻ لاءِ هڪ ورچوئل پرنٽر چونڊيو
+real_printer_selected	چونڊيو ويو: {name}
+station_group_heading	ورچوئل پرنٽر
+station_group_apply	ورچوئل پرنٽر ختم ڪريو
+station_group_applied	حذف ٿيل
+station_group_empty	هڪ ورچوئل پرنٽر چونڊيو
+station_group_name_ph	ورچوئل پرنٽر جو نالو (اختياري)
+station_group_save	ورچوئل پرنٽر ٺاهيو
+station_group_saved	ورچوئل پرنٽر محفوظ ڪيو ويو
+station_manage_heading	ڪچن اسٽیشن شامل يا ختم ڪريو
+printers_routes_heading	جتي شيون ڇاپجن ٿيون
+route_pick_heading	جڳهه
+route_editing	ايڊٽنگ: {name}
+route_assigned	شامل ڪيو {printer} ۾ {place}
+route_already_assigned	ھن جڳھ تي اڳ ئي: {printer}
+route_removed	{place} مان {printer} هٽايو ويو
+route_cleared	{name} صاف ڪيو ويو
+route_assigned_empty	ھن جڳھ تي ڪوبه ناهي
+route_tap_remove	هٽائڻ لاءِ ٽيپ ڪريو
+route_tap_select	چوڻ لاءِ ٽيپ ڪريو
+route_tap_selected	منتخب
+route_pick_printer_first	پهريان پرنٽر تي ٽيپ ڪريو
+route_assigned_heading	پرنٽر
+route_add_heading	مختص ڪرڻ
+printer_label_ph	نالو (جهڙوڪ باورچی خانه)
+printer_target_ph	سسٽم پرنٽر جو نالو يا ھوسٽ:9100
+printer_target_default	ھن ڪمپيوٽر جو عام پرنٽر (خالي ايڊريس)
+printer_wire_heading	پروفائل
+printer_wire_escpos	ESC/POS
+printer_wire_os	پورٽريٽ
+printer_wire_os_portrait	پورٽريٽ
+printer_wire_os_landscape	لائينڊ اسڪيپ
+printer_wire_escpos_short	ESC/POS
+printer_wire_os_short	پورٽريٽ
+printer_wire_os_landscape_short	لائينڊ اسڪيپ
+printer_format_custom	نئون ڪسٽم پروفائل
+printer_format_custom_label	ڪسٽم
+printer_format_custom_added	هن هنڌ لاءِ ڪسٽم پروفائل شامل ڪيو ويو
+add_printer	پرنٽر شامل ڪريو
+remove_printer	هٽايو
+route_pick_ph	بل يا ڪچن اسٽيشن
+route_bill	بل
+route_default_kitchen	ڪو به اسٽيشن ناهي (غير مقرر ٿيل ڊش)
+route_kot_station	باورچی خانو
+route_dont_print	ڪو پرنٽر ناهي
+stations_heading	باورچی خانه جون اسٽيشنون
+stations_help	ڊشز ۽ KOT لاءِ باورچی خانه جون اسٽيشنون شامل ڪريو. هر اسٽيشن تي، ان جا پرِنٽر ڳنڍيو (سيٽنگز → پرنٽرز ۾ موجود)، ترجيح مقرر ڪريو، ۽ پهريون جيڪو ڪم ڪري چونڊيو يا سڀني تي ڇاپيو. تبديليون پاڻمرادو محفوظ ٿين ٿيون — محفوظ ڪرڻ جو بٽڻ ناهي.
+station_print_heading	هن اسٽيشن جا پرِنٽر
+station_print_help	هڪ اسٽيشن چونڊيو، پوءِ هڪ يا وڌيڪ پرنٽر ڳنڍيو. ↑↓ ڪوشش جو آرڊر مقرر ڪن ٿا. پهريون جيڪو ڪم ڪري پهريون ڪاميابي بعد رُڪجي ٿو؛ سڀني تي ڇاپڻ هر ڳنڍيل پرنٽر تي ڇپائي ٿو. هر تبديلي فوري طور محفوظ ٿي وڃي ٿي.
+station_print_pick_ph	اسٽيشن تي پرنٽر سيٽ ڪريو
+station_print_pick_first	پهريان هڪ رڌڻي اسٽيشن چونڊيو
+station_print_editing	“{name}” جي لاءِ پرنٽر ايڊٽ ڪري رهيا آهيو
+station_vps_dd	هن اسٽيشن جا پرِنٽر
+station_vps_dd_n	{n} پرنٽر(س) · تبديل ڪرڻ لاءِ ٽيپ ڪريو
+station_vps_empty	هاڻي تائين ڪا پرنٽر ناهي — سيٽنگز → پرنٽرز هيٺ ڳوليو
+bill_printers_dd	بل لاءِ پرنٽر
+bill_printers_dd_n	{n} پرنٽر(ز) بل لاءِ · تبديل ڪرڻ لاءِ ٽيپ ڪريو
+job_layout	خاڪو
+job_delivery	نوڪري ڪيئن موڪلي وڃي ٿي
+job_delivery_help	او ايس دستاويز، را بائيٽس، يا ESC/POS. بل ۽ باورچی خانه جو ٽڪيٽ هر هڪ پنهنجو رکندا آهن. ڪنهن به نوڪري کي ڪنهن به پرنٽر تي موڪلي سگهجي ٿو جيڪو Find محفوظ ڪيو آهي.
+station_vp_attached	پرنٽر لڳايو ويو
+station_vp_detached	اسٽیشن مان پرنٽر هٽايو ويو
+station_print_summary	{mode} · {n} پرنٽر(س)
+station_print_summary_none	هن اسٽیشن تي اڃان ڪو پرنٽر نه آهي — اهو پرنٽ نه ڪندو
+stations_none	هن وقت ڪوبه اسٽیشن ناهي — ھيٺ ھڪڙو شامل ڪريو. مينيو جا شيون اسٽیشن استعمال ڪري سگھن ٿيون ته جيئن انهن جا KOT اتي پرنٽ ٿين.
+route_up	مٿي
+route_down	هيٺ
+route_remove	هٽايو
+route_clear	صاف ڪريو
+save_printers	پرنٽر محفوظ ڪريو
+print_test_page	هڪ ٽيسٽ صفحو ڇاپيو
+no_printer_assigned	ڪو پرنٽر ناهي
+test_page_no_printer	{place} لاءِ ڪو پرنٽر ناهي — ان سان هڪ پرنٽر ڳنڍيو، پوءِ ٻيهر ڪوشش ڪريو
+test_page_pick_first	پهريان ٽيسٽ صفحي لاءِ پرنٽر چونڊيو — پوءِ هڪ ٽيسٽ صفحو ڇاپيو
+test_printers_dd	ٽيسٽ صفحي لاءِ پرنٽر
+test_printers_dd_n	{n} پرنٽر(س) لاءِ هڪ ٽيسٽ صفحو · مٽائڻ لاءِ ٽيپ ڪريو
+kot_test_printers_dd	ٽيسٽ لاءِ پرنٽر KOT
+kot_test_printers_dd_n	{n} پرنٽر(س) لاءِ ٽيسٽ KOT · مٽائڻ لاءِ ٽيپ ڪريو
+test_printer_picked	ٽيسٽ تي: {name}
+test_printer_cleared	ٽيسٽ نه پئي ڪئي وڃي: {name}
+test_page_sent_n	ٽيسٽ صفحو موڪليو ويو {n} پرنٽر(ن) ڏانهن
+test_kot_pick_first	ٽيسٽ KOT لاءِ پرنٽر(ن) چونڊيو پهرين — پوءِ ٽيسٽ KOT
+test_kot_sent_n	ٽيسٽ KOT موڪليو ويو {n} پرنٽر(ن) ڏانهن
+cancel_pick	نشان لڳايو
+cancel_pick_on	نشان لڳايو ويو
+cancel_pick_meta	منسوخي لاءِ نشان لڳايو
+batch_cancel	نشان منسوخ ڪريو
+batch_cancel_n	نشان لڳايل کي منسوخ ڪريو ({n})
+batch_cancel_none	پهريان هڪ يا وڌيڪ موڪليل ڊش کي نشان لڳايو — پوءِ نشان لڳايل کي منسوخ ڪريو
+batch_cancel_title	نشان لڳايل ڊش کي منسوخ ڪريو — هڪ سبب، هر رسوئي لاءِ هڪ منسوخي سلپ
+batch_cancel_ok	{n} ڊش(ون) منسوخ ڪيا· {slips} منسوخي سلپ(ون) → {kitchens}
+batch_cancel_ok_noprint	{n} ڊش(ون) منسوخ ڪيا ويا — KOT آٽو پرنٽ بند آهي، تنهنڪري ڪو به منسوخي رسيد ناهي
+no_printer_kitchen_station	ان پچائڻ واري اسٽئشن لاءِ ڪو پرنٽر ناهي — ڪچن → ڪچن اسٽئشنز → هن اسٽئشن لاءِ پرنٽر
+printers_saved	محفوظ ڪيو ويو
+test_page_sent	ٽيسٽ صفحو موڪليو ويو — پرنٽر کي چيڪ ڪريو
+test_page_sent_one	ٽيسٽ صفحو {name} ڏانهن موڪليو ويو — پرنٽر کي چيڪ ڪريو
+printers_found	{n} مليو: {list}
+printers_find_synced	{n} مليو — {new} نئون
+printer_on_device	ذخيرو ڪيو ويو
+printer_already_added	پهريان ئي شامل ڪيو ويو
+printer_already_saved	پهريان ئي محفوظ ٿيو: {name}
+find_printers	پرنٽر ڳوليو
+printers_looking	ڳولي رهيو آهيان...
+saving_printer	پرنٽر شامل ڪري رهيو آهيان...
+cancelled	منسوخ ٿي ويو
+printers_tap_find	ٽپ ڪريو ڳوليو ته هن ڊوائيس ڪهڙن پرنٽرز کي استعمال ڪري سگھي ٿو.
+printers_none_found	ڪوبه نه لڌو ويو — سسٽم پرنٽر جو نالو يا IP لکڻ (مثال طور 192.168.1.50).
+printer_from_find	شامل ڪيو {name}
+kot_printer_ph	پرنٽر لاءِ KOTs
+bill_printer_ph	بلن لاءِ پرنٽر
+kot_print_on	ڪچن ٽڪيٽن جي پاڻمرادو پرنٽنگ: آن
+kot_print_off	ڪچن ٽڪيٽن جي پاڻمرادو پرنٽنگ: بند
+queue_refused	دڪان پاران قبول نه ٿيو ({n}) — هر هڪ کي ڪائونٽر تي چيڪ ڪريو:
+clear_not_accepted	چيڪ ڪيو — هن لسٽ کي صاف ڪريو
+device_name_ph	هن ڊوائيس جو نالو
+lan_last_update	آخري تازه ڪاري {time}
+lan_not_accepted	{n} قبول نه ٿيو
+connected_now	هاڻي ڳنڍيل
+backup_failed	آخري خودڪار بيڪ اپ ناڪام ٿيو: {e}
+backup_overdue	{n} ڏينهن لاءِ ڪا بيڪ اپ نه آهي — هن ڊوائيس تي ايپ کليل رکو ته جيئن اها بيڪ اپ ڪري سگهي.
+disk_low	هن ڊوائيس تي صرف {mb} MB خالي آهي — بيڪ اپ جلد ناڪام ٿي ويندا. ڪجهه جاءِ خالي ڪريو.
+last_seen_devices	آخري ڏٺو ويو: {time}
+sync_interval	هر {secs} سيڪنڊ ۾ هم وقت سازي
+connection_to_shop	دڪان سان ڳانڍاپو
+supplier_name_ph	سپلائر جو نالو (يا پارٽي)
+supplier_ph	سپلائر
+switch_device	هن ڊيوائس کي تبديل ڪريو
+take_payment	ادائگي وٺو
+tax_added_till	{tax} خصوصي
+tax_inside_price	{tax} شامل
+tax_invoice	ٽيڪس انوائس
+till_to_bank	ڪيش ڪائونٽر → بئنڪ
+units_heading	يونٽس
+unlock_after_pairing	داخل ڪريو PIN
+unlock_with_login	لاگ ان سان کوليو
+unmark	غير نشان لڳايو
+update_my_password	منهنجو پاسورڊ اپڊيٽ ڪريو
+update_my_pin	منهنجو سائن-ان اپڊيٽ ڪريو
+duress_heading	ايمرجنسي ان لاڪ PIN (صرف مالڪ لاءِ)
+duress_help	اختياري. جيڪڏهن هي PIN توهان جي جاءِ تي ان لاڪ دوران ٽائپ ڪيو وڃي، ته سڀئي ڪتاب جا داخلا مٽجي ويندا (سيلز، ليجرز، تاريخ) ۽ ڪيش ڪائونٽر مالڪ جي حيثيت سان کولبو جيئن اهو ٺيڪ آهي — مينيو، قيمتون، ٽيبلون، اسٽاف ۽ سيٽنگون رهنديون. اسڪيم ۽ ڪنفيگ حذف نه ٿيندا. صرف ان صورت ۾ استعمال ڪيو جڏهن توهان کي ان لاڪ ڪرڻ تي مجبور ڪيو وڃي. بند ڪرڻ لاءِ خالي ڇڏي ۽ محفوظ ڪريو. ڪڏھن به ڪنهن جي PIN سان نه ملاءِ.
+duress_pin_ph	ايمرجنسي PIN (4–12 عدد)
+duress_confirm_ph	تصديق لاءِ ٻيهر ٽائپ ڪريو
+save_duress_pin	اي مرجنسي محفوظ ڪريو PIN
+clear_duress_pin	اي مرجنسي بند ڪريو PIN
+duress_on	اي مرجنسي لڪ کي کوليو PIN هلندڙ آهي
+duress_off	ايمرجنسي ان لاڪ PIN بند آهي
+duress_saved	ايمرجنسي ان لاڪ PIN محفوظ ڪيو ويو
+duress_cleared	ايمرجنسي ان لاڪ PIN بند ڪيو ويو
+upi_amount_ph	UPI رقم
+void	رد
+write_off_ap	اي پي ختم ڪريو
+write_off_heading	ادائيگي کان بغير ختم ڪريو
+write_off_nil	ختم ڪريو / صفر بيلينس
+your_brand	توهان جو برانڊ (ايپ ۾)
+your_categories	توهان جون ڪيٽيگريون
+account_kind	اڪائونٽ قسم (هڪ کي ٽپ ڪريو)
+actual_total_cap	حقيقي مجموعو
+amend_help	فروخت کي تبديل ڪرڻ، منسوخ ڪرڻ يا رقم واپس ڪرڻ لاءِ چونڊيو. تبديليون مڪمل تاريخ رکندي. گول ٿيل مجموعو شروعات ۾ لاڳو ٿيل جي برابر هوندو — صرف گول ڪرڻ لاءِ ترتيب ڏيو. منسوخ ۽ رقم واپس ڪرڻ لاءِ مالڪ يا مينيجر جي ضرورت پئجي سگهي ٿي PIN (مٿي لکيل؛ توهان جي نالي سان رڪارڊ ٿيل).
+applied_total_cap	اپلائيڊ ٽوٽل
+bank_balance	بينڪ بيلنس
+bank_net_today	اڄ بينڪ نيٽ
+branch_export_help	ايڪسپورٽ بيڪ اپس فولڊر ۾ branch_snapshot_CODE_DATE.json لکي ٿو ۽ ان کي ڪاپي بورڊ تي ڪاپي ڪري ٿو. ٻئي آئوٽليٽ جو ڏينهن درآمد ڪرڻ لاءِ، ان جي فائل کي ساڳئي فولڊر ۾ import_branch_snapshot.json طور محفوظ ڪريو، پوءِ Import تي ٽيپ ڪريو.
+brand_shown_help	ايپ اندر اسڪرين تي ڏيکاريل. هن ڊوائيس تي نصب ٿيل ايپ جو نالو ۽ آئڪن پليٽ فارم لسٽنگ جي طور تي رهندو.
+app_icon	ايپ آئڪن
+logo_help	ايپ ۾ اسڪرين تي اختيار واري دڪان جي نشان.
+onboard_layout	توهان ڇا حاصل ڪندا
+item_photo_help	اختياري. بغير تصوير جي، اسان شيءَ جي نالي جا ابتدائي اکر ڏيکارجون ٿا.
+stamp_heading	اسٽيمپ
+stamp_image_help	ڇاپيل بِلز ۽ مهمان جي ڊسپلي تي اختياري اسٽيمپ تصوير.
+payment_qr_heading	ادائگي QR
+payment_qr_image_help	بلن ۽ مهمان جي ڏيک تي جامد QR؛ ٻي صورت ۾ ادائيگي مٿين VPA مان هڪ متحرڪ UPI QR استعمال ڪري ٿي.
+cash_in_hand	هٿ ۾ نقد (ڪيش ڪائونٽر)
+change_my_pin_heading	منهنجو سائن ان
+connect_to_server	Server سان ڳنڍيو
+counter_locked	ڪائونٽر 01 · لاڪ ٿيل
+country_pack_help	هڪ ملڪ جو پيڪ ٽيڪس جو نالو ۽ حساب ڪتاب، فوري ادائيگي واري ريل، ۽ بلن تي ڇپيل ڪاروباري آءِ ڊي مقرر ڪري ٿو. Kumkaj ڪٿي به ٽيڪس نه ٿو داخل ڪري يا سرڪاري اي-انوائس جاري نه ٿو ڪري.
+currency_use_help	ڪنهن به مدد ٿيل ڪرنسي لاءِ استعمال ڪرڻ لاءِ اسڪرول ڪريو ۽ ٽيپ ڪريو.
+day_close_help	هڪ ڏينهن جو بند رڪارڊ ڪرڻ هن خلاصو (۽ درائير ۾ فرق جيڪڏهن ڳڻپ ڪيو ويو) آڊٽ لاگ ۾ محفوظ ڪري ٿو. اها وڪري کي روڪي نٿي.
+expenses_word	خرچ
+feature_access_help	اهي ڇا کولڻ ڪري سگهن ٿا — اختياري؛ مٿي واري نوڪري اڳ ۾ ئي هڪ ڊيفالٽ مقرر ڪري ٿي
+footer_local	مقامي SQLite · هميشه لاءِ مفت · صفر ڪلائوڊ
+fresh_book_khaynjo	تازو = خالي مينيو (بعد ۾ مينيو ۾ ڊشز شامل ڪريو). ڪتاب = کولڻ وارا شيون ٽائيپ ڪريو ۽ هيٺ ڏنل ٻڌايو ته ڪنهن تي قرض آهي.
+fresh_selected	تازو چونڊيل — فهرست خالي رهي ٿي. تيار ٿيڻ تي Done تي ٽيپ ڪريو.
+gross_word	ڪُل
+how_start	توهان ڪيئن شروع ڪرڻ چاهيو ٿا؟
+kot_print_help_khaynjo	جڏهن On تي هجي، هر باورچی خانو پنهنجي KOT ڪاغذ فوري طور تي جڏهن توهان Send ڪريو ته پرنٽ ڪري ٿو.
+later_country_pack	بعد ۾: سيٽنگون → توهان جي ملڪ جو پيڪ ٽيڪس ۽ ادائگي ليبل لاءِ لاڳو ڪريو.
+local_badge	مقامي
+mix_type_hint_khaynjo	في ضرورت نقد / UPI / ڪارڊ / ڪريڊٽ ۾ ورهايو. ڪريڊٽ لاءِ مٿيان گراهڪ گهرجي.
+money_in_sales	پئسو اندر (سيلز)
+net_word	نيٽ
+offline_badge	آف لائن
+optional_login_help	رضا مطابق لاگ ان (آءِ ڊي + پاسورڊ). مالڪ هڪ ڀيرو مقرر ڪري ٿو؛ رڳو استعمال ڪندڙ ئي بعد ۾ پاسورڊ تبديل ڪري سگهي ٿو.
+or_unlock_login	يا لاگ ان آءِ ڊي + پاسورڊ سان ان لاڪ ڪريو
+permission_preset	نوڪري (اسڪرين ۽ پئسي جا عمل سيٽ ڪري ٿو)
+preset_help_khaynjo	ڪيشئر: وڪرو. مينيجر: وڪرو + شيون + منسوخ/ترميم.
+product_locked_khaynjo	Khaynjo
+product_only_khaynjo	هي ايپ صرف Khaynjo لاءِ آهي — ريسٽورنٽ آپريٽنگ سسٽم. ٻي واپار جون شيون الڳ Kumkaj پراڊڪٽس طور موجود آهن.
+purchases_cogs	خريداريون (COGS)
+qty_cap	مقدار
+restore_help	بحال ڪريو: بيڪ اپ چونڊيو. ڪتاب ان وقت وانگر کوليا وڃن ٿا؛ جيڪي ڪتاب هاڻي آهن، پهريان محفوظ ڪيا وڃن ٿا، جيئن اهو واپس ڪري سگهجي.
+wipe_data_heading	مقامي ڊيٽا حذف ڪريو
+wipe_data_help	صرف مالڪ لاءِ — ونڊوز انسٽال وانگر ساڳيا اختيار. ڪاروباري رڪارڊز ٽريڊنگ جي تاريخ صاف ڪن ٿا پر مينيو ۽ سيٽ اپ رکندا آهن (جيئن ايمرجنسي ان لاڪ PIN). اسٽور سيٽ اپ ڪتابن جي ڊيٽابيس کي هٽائي ٿو. اسڪرين جون ترجيحات ونڊو / ٻولي کي صاف ڪن ٿيون. مالڪ سان تصديق ڪريو PIN. ٽيمن تي ايمرجنسي ان لاڪ PIN الڳ آهي (ان لاڪ تي خفيه صفائي).
+wipe_trading	ڪاروباري رڪارڊ
+wipe_schema	دوڪان جو ترتيب
+wipe_ui	اسڪرين جون ترجيحات
+wipe_owner_pin_ph	مالڪ PIN کي ختم ڪرڻ
+wipe_delete_selected	منتخب حذف ڪريو
+wipe_owner_only	صرف مالڪ مقامي ڊيٽا کي حذف ڪري سگهي ٿو.
+restore_owner_only	صرف مالڪ بئڪ اپ کي بحال ڪري سگهي ٿو.
+wipe_owner_pin_needed	مقامي ڊيٽا کي حذف ڪرڻ لاءِ مالڪ PIN داخل ڪريو.
+wipe_nothing_selected	پهريون ڇا ختم ڪرڻو آهي چونڊيو.
+wipe_done	منتخب ٿيل مقامي ڊيٽا ختم ڪئي وئي.
+wipe_schema_done	دوڪان جي سيٽ اپ ختم ڪئي وئي — جاري رکڻ لاءِ Server يا Client چونڊيو.
+rounded_total	گول ڪيل ڪل
+setup_app_khaynjo	سيٽ اپ Khaynjo
+shop_logo_optional	دڪان جو لوگو (اختياري)
+stock_type_help	شيءَ جو نالو ٽائيپ ڪريو (ان جو هڪ حصو ڪافي آهي)، مقدار، پوءِ ترتيب ڏيو. اهڙا شيون جيڪي اڃا ڳڻپيل نه آهن، هڪ دفعي شروع ڪرڻ جي ضرورت آهي.
+team_owner_help	شخص کي خالي ڇڏيو ڪنهن کي شامل ڪرڻ لاءِ: نالو، نوڪري، يوزر نيم، PIN، ۽ هڪ اختياري پاسورڊ، پوءِ شامل ڪريو. ساڳئي قسم جي فارم کي ايڊٽ ڪرڻ لاءِ ڪنهن شخص کي چونڊيو — نالو، يوزر نيم، پاسورڊ، اسڪرين، ۽ حق — پوءِ محفوظ ڪريو. توهان جو پنهنجو PIN ۽ پاسورڊ هيٺ هڪ سائن ان آهن. مالڪ ڪنهن ٻئي جي PIN تبديل نٿو ڪري.
+staff_name_ph	عملدار جو نالو
+staff_copy_hire_ph	(اختياري) کان سيٽ اپ نقل ڪريو
+staff_copy_hire	هن شخص جو سيٽ اپ استعمال ڪريو
+staff_edit_name_ph	ڊسپلي نالو
+staff_rename	نالو محفوظ ڪريو
+staff_copy_edit_ph	ٻئي شخص کان سيٽ اپ نقل ڪريو
+staff_copy_edit	انهن جو سيٽ اپ منتخب ٿيل تي نقل ڪريو
+staff_copy_edit_onto	انهن جو سيٽ اپ {name} تي نقل ڪريو
+staff_deactivate_named	هٽايو {name}
+staff_renamed	نالو محفوظ ٿيو
+staff_setup_copied_hire	سيٽ اپ {name} مان ڪاپي ڪيو ويو — نئون نالو مقرر ڪريو ۽ PIN، پوءِ اسٽاف شامل ڪريو
+staff_setup_copied_edit	{from} جو سيٽ اپ {to} تي ڪاپي ڪيو ويو
+staff_copy_need_selected	پهريان ڪنهن کي ايڊٽ ڪرڻ لاءِ چونڊيو
+staff_copy_need_source	چونڊيو ته ڪنهن جو سيٽ اپ ڪاپي ڪرڻو آهي
+staff_copy_same	اهو ئي ماڻهو آهي — ڪير ٻئي چونڊيو
+staff_rename_need_selected	پهريان ڪنهن جو نالو بدلاڻو آهي چونڊيو
+team_pick_hint	ايڊيٽ ڪرڻ لاءِ چونڊيو — اسڪرين، پئسن جا حق، ۽ ڪچن اسٽيشنون رڳو ان شخص لاءِ ظاهر ٿينديون.
+team_stations_help	جن ڪچن اسٽيشنن کي اهي استعمال ڪري سگهن ٿا
+team_stations_changed	ڪچن اسٽيشنون تبديل ٿي ويون — هن شخص لاءِ سيٽ اپ محفوظ ڪريو
+team_features_changed	اسڪرين تبديل ٿي ويون — هن شخص لاءِ سيٽ اپ محفوظ ڪريو
+team_rights_changed	حقن تبديل ٿي ويو — هن شخص لاءِ ترتيب محفوظ ڪريو
+they_owe_us	انهن تي اسان جو قرض آهي
+unit_at_cap	يونٽ @
+units_help	شيون ليبل لاءِ ڪوڊ (ڪلو، ٽڪرو، ٿيلو). هر يونٽ لازمي طور تي هڪ معياري سان سڌو يا ٻين يونٽن ذريعي ڳنڍيل هجي (ڪلو · سينٽي ميٽر · ملي ليٽر · ٽڪرو)، مثال طور 1 ڪريٽ = 2 دٻو ۽ 1 دٻو = 20 سينٽي ميٽر. تبديليون: 1 کان = عنصر تائين. ڪرنسي ڪڏهن به يونٽ نه هوندي آهي.
+units_picker_help	خريد ۽ مينيو چونڊيندڙن ۾ يونٽ ڏيکارڻ لاءِ آن/آف ڪريو. آف يونٽ اڃا به تبديل ٿين ٿا.
+unit_picker_on	چالو
+unit_picker_off	بند
+we_owe_them	اسين انهن جا قرضدار آهيون
+who_unlocking	ڪير آنلاڪ ڪري رهيو آهي؟
+locked_word	لت ٿيل
+show_pin	ڏيکاريو PIN
+hide_pin	لڪاءِ PIN
+set_owner_pin	مالڪ مقرر ڪريو PIN
+enter_owner_passcode	مالڪ جو پاس ڪوڊ داخل ڪريو
+enter_staff_passcode	اسٽاف پاسڪوڊ داخل ڪريو
+pin_count_zero	0 / 12 انگ · گهٽ ۾ گهٽ 4، پوءِ اوڪي دٻايو
+pin_count_need	{} / 12 انگ · اڃا {} گهربل
+pin_count_full	12 / 12 انگ · اوڪي دٻايو
+pin_count_ready	{} / 12 عددن · تيار هئڻ تي OK دٻايو
+pin_hint_choose	4–12 عددن چونڊيو · محفوظ ڪرڻ لاءِ داخل ڪريو يا ان لاڪ ڪريو
+pin_hint_new	نئون 4–12 عددن وارو مالڪ PIN · داخل ڪريو يا ان لاڪ ڪريو
+pin_hint_shop_code	دڪان ڊوائيس · جوڙي جو ڪوڊ {}
+pin_hint_books	هي ڊوائيس ڪتاب رکندي آهي
+pin_hint_paired	اضافي ڪيش ڪائونٽر جوڙيو ويو — وڪڻڻ لاءِ کوليو
+pin_hint_pair_first	اضافي ڪيش ڪائونٽر — پهريان دوڪان جي ڊوائيس سان جوڙيو
+unlock_to_continue	جا جاري رکڻ لاءِ لاڪ کوليو
+no_staff_yet	اڃا ڪا اسٽاف ناهي — مالڪ طور کوليو، پوءِ ٽيم
+status_server_set_pin	Server موڊ — مالڪ مقرر ڪريو PIN
+status_server_tills	Server طريقو — اضافي ڪيش ڪائونٽر شامل ٿي سگهن ٿا. کوليو
+status_server_unlock	Server طريقو — مالڪ جي طور تي کوليو
+status_client_unlock	Client موڊ — وڪڻڻ لاءِ ان لاڪ ڪريو
+icon_new_selected	آئڪن: نئون فائل چونڊيل — برانڊ محفوظ ڪريو تي ٽيپ ڪريو
+icon_custom	آئڪن: ڪسٽم جڳهه جو نشان
+icon_default	آئڪن: Kumkaj نشان (ڊيفالٽ) — هڪ ڪسٽم چونڊيو
+logo_yours	لوگو: توهانجي دڪان جو لوگو — اسڪرين ۽ رسيدن تي ڏيکاريل
+logo_default	لوگو: Kumkaj نشان (ڊيٽفالٽ) — جيڪڏهن توهان وٽ پنهنجو آهي ته چونڊيو
+tmpl_current	موجوده: {} — {}
+tmpl_selected	منتخب: {} — {}
+setup_complete	سيٽ اپ مڪمل ٿيو
+onboard_fresh_tmpl	نئون · {} — ڪيٽلاگ خالي آهي؛ شيون شامل ڪريو تنهن کان پوءِ مڪمل تي ڪلڪ ڪريو.
+onboard_book_tmpl	ڪتاب · {} — شيون ۽ شروعاتي ڪريڊٽ شامل ڪريو، پوءِ مڪمل تي ڪلڪ ڪريو.
+onboard_template_tmpl	جيڪڏهن توهان چاهيو ته جاءِ جو نالو ڏيو، پوءِ شروع ڪرڻ جو طريقو چونڊيو.
+tmpl_blurb	ميزون، آرڊر ڏيڻ، باورچی خانه جا ٽڪيٽ، بلنگ، ۽ ڪتاب.
+tmpl_how	ڪائونٽر تي وڪرو ڪريو؛ ميزن ۽ KOT لاءِ هال؛ روزاني ڪتاب لاءِ ڪتاب.
+reports_facet_title	رپورٽون
+reports_facet_help	ڊي ڏينهن جون ڪتابون، پارٽي جي عمر، بينڪ جون پوسٽون، ۽ عرصي جو نفعو ۽ نقصان.
+against_bill_ph	مٿي ڄاڻايل بل نمبر جي خلاف (اختياري)
+aliases_ph	متبادل نالا — ٻيا نالا، ڪاما سان الڳ ٿيل
+amount_blank_full_ph	رقم (خالي = مڪمل بيلنس)
+amount_owed_ph	بقايه رقم
+amount_ph	رقم
+amount_received_ph	موصوله رقم
+amount_we_pay_ph	ادا ڪيل رقم
+business_name_ph	ڪاروبار جو نالو
+category_new_ph	زمره (اختياري، جيڪڏهن نئون ته ٺاهيو ويندو)
+code_bag_ph	ڪوڊ (ٿيلو)
+conv_factor_ph	فئڪٽر (25 = 1 بيگ → 25 ڪلو)
+country_code_ph	ملڪ جو ڪوڊ مثال طور IN, GB, US, AE, BR
+credit_khata_amount_ph	ڪريڊٽ / کاتا رقم
+credit_limit_ph	ڪريڊٽ حد (0 = ڪوبه ناهي)
+from_code_ph	ڪوڊ (ٻورو) مان
+item_name_lang_ph	شيءِ جو نالو — پنھنجي ٻولي ۾ لکو
+login_id_opt_ph	يوزر نيم (گهربل، منفرد)
+manager_pin_ph	مينجر PIN جي منظوري لاءِ (صرف جيڪڏهن توهان رد نٿا ڪري سگھو)
+new_branch_name_ph	نئين شاخ جو نالو
+new_password_ph	نئون پاسورڊ (اختياري)
+new_pin_ph	نئون PIN (4–12 عدد)
+note_bank_ph	نوٽ (جمع، ڪڍڻ، ...)
+note_buy_expense_ph	نوٽ (ايندھن، ڪرايو، ...)
+note_expense_ph	نوٽ (ايندھن، آفيس، ...)
+options_khaynjo_ph	اختيار — سائيز*: ننڍو=199، وڏو=399 | ٽاپنگ +3: پنير=40، زيتون=30 | اضافي پنير=40
+part_second_way_ph	ٻي طريقي سان حصو (اختياري)
+phone_ph	فون
+place_name_ph	هن جڳهه جو نالو
+qty_example_ph	مقدار (مثال طور 1.5 ڪلوگرام لاءِ)
+quantity_ph	مقدار
+reason_required_ph	سبب (ضروري)
+role_title_ph	ڪردار جو عنوان (جهڙوڪ: بارسٽا)
+service_pct_ph	سروس % اختياري 0/10/12
+short_code_ph	مختصر ڪوڊ (MG02)
+starting_password_ph	شروعاتي پاسورڊ (اختياري)
+starting_pin_ph	شروع ڪندي PIN (4–12 عدد)
+station_name_ph	اسٽيشن جو نالو (مثال طور تندور، فرائر، ٿڌو)
+station_new_ph	ڪچن اسٽيشن (اختياري، مثال طور تندور — نئون هجڻ تي ٺاهيو ويندو)
+table_name_ph	ٽيبل جو نالو (مثال طور پٽيئو 1، ڪائونٽر 2)
+tax_rate_ph	ٽيڪس جي شرح جو نالو يا ٪ — معياري، گهٽايو ويو، 0، 5، 12، 18، 20
+to_code_ph	ڪوڊ تائين (ڪلوگرام)
+uncleared_no_ph	مٿي غير صاف ٿيل #
+unit_cost_ph	يونٽ جي قيمت
+unit_name_bag_ph	نالو (بيگ)
+unit_plate_ph	يونٽ (پليٽ / ٽڪرو — خالي = هر هڪ)
+pay_credit	ڪريڊٽ
+book_kind_today	اڄ جي ڪتاب
+book_kind_month	هن مهيني ڪتاب
+book_kind_aging	باقي / ڊيبٽ-ڪريڊٽ
+book_kind_balance	بیلنس شيٽ
+order_help	هڪ شيءَ تي ٽيپ ڪريو ان کي شامل ڪرڻ لاءِ.
+floor_help	هڪ ٽيبل تي ٽيپ ڪريو آرڊر وٺڻ يا تبديل ڪرڻ لاءِ. رنگ ڏيکارين ٿا خالي → ويٺل → باورچی خانه → تيار → کائڻ → بل → ادا ٿيل. انتظار واري فهرست، رزرويشن، ۽ ٽيبل شامل ڪرڻ هيٺين سيڪشنن ۾ آهن.
+kitchen_help	باورچی خانه جا ٽڪيٽ (KOT)، سڀ کان نوان آخري ۾. شروع → تيار → مڪمل هڪ ٽڪيٽ کي اڳتي وڌائيندو آهي. ٽڪيٽ ڪڏهن به قيمت ڏيکاريندا نه آهن.
+kitchen_empty	ڪوبه کليل ٽڪيٽ ناهي. آرڊر يا هال مان موڪليل KOT هتي ظاهر ٿيندو آهي.
+add_a_table	هڪ ٽيبل شامل ڪريو
+add_station_heading	هڪ باورچی خانه اسٽيشن شامل ڪريو
+categories_help	مٿين شئي کي ان درجي هيٺ داخل ڪرڻ لاءِ استعمال تي ٽيپ ڪريو. فوٽو درجي کي تصوير ڏئي ٿو؛ جيڪڏهن تصوير نه هجي ته اها ان جا ابتدا ڏيکاري ٿي.
+dish_search_ph	شئي جو نالو — اسان جا کاڌا ڳوليو يا پنهنجو ٽائيپ ڪريو
+tile_free	مفت
+tile_occupied	مصروف
+tile_food_ready	کاڌو تيار آهي
+tile_bill_printed	بل ڇپيل
+tile_paid	ادا ٿيل
+tile_bill_btn	بل
+tile_occupy_btn	مهمان ويهاريو
+tile_free_btn	خالي ميز
+tile_ready_btn	خالي ميز
+tile_undo_bill	رسيد واپس وٺو
+summary_busy	میزون مصروف آهن
+summary_to_collect	وڻ لاءِ
+summary_on_floor	هال تي
+floor	هال
+sizes_as_items_ph	سائزز الڳ شيون طور (اختياري) — اڌ=120، مڪمل=200
+dish_group_ph	ڊش گروپ (اختياري) — مثال طور Paneer Tikka
+discount	رعايت
+remove_discount	رعايت هٽايو
+apply_discount	رعايت لاڳو ڪريو
+save_opening_cash	کراچي جو شروع ٿيندڙ نقد بچايو
+close_shift_print	شفٽ بند ڪريو ۽ پرنٽ سلپ نڪرو
+area_prices_ph	علاقائي قيمتون (اختياري) — اي سي=220، پارسل=210
+discount_ph	10٪ يا 50
+discount_reason_ph	سبب (مثال طور تي باقاعده مهمان، دير سان کاڌو)
+opening_float_ph	هن صبح دراج ۾ رکيل رقم
+shift_counted_ph	منتقلي تي هٿ ۾ رقم ڳڻپڻ
+opening_float	شروعاتي رقم (فلوٽ)
+shift_handover	شفٽ هينڊ اوور
+shift_since	هي شفٽ کان وٺي
+expected_in_drawer	دراز ۾ متوقع
+right_discount	رعايت ڏيو
+floor_in_kitchen	رسوئي ۾
+floor_eating	پيش ڪيو ويو
+pick_category	هڪ زمرہ چونڊيو
+close_category_list	زمره جي فهرست بند ڪريو
+new_category_row	نئون درجو — جڏهن توهان شيءِ محفوظ ڪريو ٿا ته ٺهندو آهي
+your_category	توهانجو درجو
+suggested_category	سفارش شده — اسان جي ڊشز مان
+category_search_ph	درجو — توهانجو ڳوليو يا نئون ٽائپ ڪريو
+line_sent_state	باٿروم ڏانهن موڪليو ويو
+line_nc_state	مفت (NC) — چارج ناهي
+cancel_item_short	منسوخ
+nc_short	NC
+charge_again_short	چارج
+move_short	حرڪت ڪريو
+cancel_item_title	ھن شيءَ کي منسوخ ڪريو — باورچی خانه کي منسوخي سلپ ملي ٿي
+nc_item_title	ھن شيءَ کي مفت ڪريو (NC)
+charge_again_title	ھن شيءَ کي ٻيهر چارج ڪريو
+move_item_title	ھن شيءَ کي ڪنهن ٻئي ميز تي منتقل ڪريو
+already_cooked	پوءِ ئي پچي چڪو (ضايع ٿيل)
+not_cooked_yet	اڃا پچي نه سگهيو
+return_to_customer	ڪسٽمر ڏانهن واپس ڪريو
+short_by	گھٽ
+tip_not_sale	ٽوپ (ڪرمچاريءَ جو، وڪري جو ناهي)
+right_settle	ادائگي وٺو
+right_cancel_sent	موڪليل شيءَ کي منسوخ ڪريو
+right_complimentary	مفت (NC)
+right_move_table	ٽيبل منتقل / ضم ڪريو
+right_reprint	بل ٻيهر ڇاپيو
+right_allowed	جي اجازت آهي
+right_with_approval	منظوري سان
+right_denied	اجازت ناهي
+editing_staff	ترميم
+finding_server	هن Wi‑Fi تي دڪان جي سرور کي ڳولي رهيا آهيو...
+no_server_found	ڪوبه نه مليو. Server تي: سيٽنگون → ٻيا ڊوائيس → اضافي ڪيش ڪائونٽر جي اجازت ڏيو (ساڳيو Wi‑Fi). يا اتي ڏيکاريل IP لکيو.
+servers_found_pick	ان دڪان تي ٽيپ ڪريو جنهن سان توهان ڳنڍڻ چاهيو ٿا.
+server_host_selected	{host} استعمال ڪندي — پئيرنگ ڪوڊ داخل ڪريو، پوءِ هاڻي پئير ڪريو.
+print_bill	بل پرنٽ ڪريو
+table_actions	ٽيبل جا عمل
+move_merge_table	ٽيبل کي منتقل / ملائڻ
+move_help	هن ٽيبل جو آرڊر خالي ٽيبل ڏانهن منتقل ڪريو، يا ان کي ھڪ هلندڙ ٽيبل ۾ شامل ڪريو.
+move_target_ph	ٽيبل جو نالو (جهڙوڪ D5، P2)
+approval_pin_ph	مئنيجر PIN (صرف جيڪڏهن پڇيو وڃي)
+move_here	هتي منتقل ڪريو
+merge_into	ان ۾ شامل ڪريو
+line_reason_ph	وجہ (مثال طور تي مهمان جو ذهن بدلجي ويو، اسٽاڪ ختم ٿي ويو)
+line_qty_ph	ڪيترا ڪينسل ڪرڻا آهن (خالي = سڀ)
+line_target_ph	ٽيبل ڏانهن منتقل ڪريو (مثال طور تي D5)
+confirm	تصديق
+menu_search_ph	شيءِ يا شارٽ ڪوڊ ڳوليو
+customer_paid_ph	گراهڪ ادا ڪيو
+tip_ph	ٽِپ
+table_area_ph	علائقو (مثال طور ڊائن ان، پارسل، اي سي)
+table_range_ph	هڪ ئي وقت ۾ ڪيترائي: D1-D20
+add_these_tables	هي ٽيبلز شامل ڪريو
+remove_these_tables	هي ٽيبلز هٽايو
+table_remove_ph	هٽايو: T1-T24، يا هڪ ٽيبل جو نالو
+find_server	دوڪان جو سرور ڳوليو
+bill_format	بل جو فارميٽ
+bill_format_help	توهان جي ريسٽورنٽ جي نالي هيٺ هر بل تي ڇپيل. الڳ لائينون | سان جدا ڪريو (مثال طور MG روڊ، راڄڪوٽ | فون 98250 00000).
+bill_header_ph	پتو | فون
+fssai_ph	FSSAI لائسنس نمبر (ڀارت)
+bill_footer_ph	فوٽر (مثال طور مهرباني، ٻيهر اچو)
+save_bill_format	بل جو فارميٽ محفوظ ڪريو
+reset_bill_format	ڊيفالٽ تي ري سيٽ ڪريو
+bill_format_reset	بل جو فارميٽ ڊيفالٽ تي ري سيٽ ٿيو
+reset_kot_format	ڊيفالٽ تي ري سيٽ ڪريو
+kot_format_reset	KOT فارميٽ ڊيفالٽ تي واپس ڪريو
+kot_format	KOT فارميٽ
+kot_format_help	لسٽ ۾ ڪنهن به فيلڊ تي ٽپ ڪريو. ڏيکارڻ، فانٽ جو سائز، ۽ وزن مٿي چونڊيل KOT قسم تي ان فيلڊ تي لاڳو ٿيندو. هر قسم پنهنجو سائز ۽ وزن رکندو آهي.
+kot_format_fields	فيلڊز
+kot_field_next	اڳيون ميدان
+kot_field_show	ڏيکاريو
+kot_field_hide	لڪايو
+kot_field_on	ڏيکاريو
+kot_field_off	لڪايو
+kot_field_size	فونٽ جو سائيز
+kot_field_size_ph	مثال طور 16، 20، 24، 28، 32...
+kot_weight_light	روشني
+bill_kot_panel_help	بِل ۽ ڪچن سلپ جو ترتيب، هر هڪ پنهنجي مواد جي ويڪرائي سان. بِل جو ڪيشئر اهو آهي جنهن بِل جاري ڪيو يا نڀايو؛ KOT ويٽر اهو آهي جنهن ڪچن ٽڪيٽ موڪلي — مڪمل آرڊر جي ڪهاڻي ڪتابن ۾ رهي ٿي.
+std_size_ph	مثال طور 18، 20، 26...
+kot_show_shop	دڪان جو نالو
+kot_hide_shop	دڪان لڪايو
+kot_show_time	وقت
+kot_hide_time	وقت لڪايو
+kot_show_waiter	ويٽر
+kot_hide_waiter	ويٽر لڪايو
+kot_show_station	اسٽیشن
+kot_hide_station	اسٽیشن لڪاءِ
+kot_show_table	ٽيبل
+kot_hide_table	ٽيبل لڪاءِ
+kot_show_kot_no	KOT ناهي
+kot_hide_kot_no	لڪائيندڙ KOT ناهي
+kot_width	پريوئو لپيٽو (مواد جي ويڪر کي KOT ٽيب تي سيٽ ڪريو)
+kot_width_58	58 mm
+kot_width_80	80 mm
+kot_kind_heading	KOT قسم
+kot_kind_original	اصلي
+kot_kind_duplicate	نقل ڪريو
+kot_kind_modified	ترميم ٿيل
+kot_kind_cancelled	منسوخ ٿي ويو
+kot_style_heading	ميدان جو قسم، سائيز ۽ وزن
+kot_style_title	عنوان
+kot_style_item_qty	شئ · مقدار
+kot_style_field_pick	فيڪلڊ چونڊيو
+kot_weight_regular	عام
+kot_weight_bold	ٿلهو
+kot_align	صف سان ترتيب ڏيو
+kot_align_start	شروع ڪريو
+kot_align_center	مرڪز
+kot_align_end	آخر
+content_width	مواد جي ويڪرائي (ملی ميٽر)
+content_width_bill	بل جي مواد جي ويڪر (ايم ايم)
+content_width_kot	KOT مواد جو ويڪر (ايم ايم)
+content_width_ph	يا مواد جو ويڪر ٽائپ ڪريو، 40–210 ايم ايم
+content_width_help	هي سلپ ڪيترو ويڪرو ڇپندو. بل ۽ KOT هر هڪ پنهنجو ويڪر رکندو.
+content_width_bill_help	مهمان جو بل ڪيترو ويڪرو پرنٽ ٿئي ٿو. ڊيفالٽ 210 ملي ميٽر (پايو). 58 ملي ميٽر سنڍڙي سليپ، 80 ملي ميٽر ويڪرو سليپ، 112 ملي ميٽر 4-انچ، 210 ملي ميٽر A4-ويڪرو. 40 کان 210 تائين ڪا به قيمت ٽائيپ ڪريو. باورچی خاني جا ٽڪيٽس پنهنجون ويڪرائيون KOT ٽيب تي رکن ٿا.
+content_width_kot_help	باورچی خاني جو ٽڪيٽ ڪيترو ويڪرو پرنٽ ٿئي ٿو. ڊيفالٽ 80 ملي ميٽر. 58 ملي ميٽر سنڍڙي سليپ، 80 ملي ميٽر ويڪرو سليپ، 112 ملي ميٽر 4-انچ، 210 ملي ميٽر صفحو. 40 کان 210 تائين ڪا به قيمت ٽائيپ ڪريو. مهمانن جا بل بيلي ٽيب تي پنهنجون ويڪرائيون رکن ٿا.
+vp_paper_width	مواد جي ويڪرائي (ملی ميٽر)
+vp_paper_width_ph	يا مواد جو ويڪر ٽائپ ڪريو، 40–210 ايم ايم
+vp_paper_width_help	مواد جي ويڪر کي بل ۽ KOT فارميٽ تحت مقرر ڪيو ويو آهي — بل لاءِ الڳ (پهرين سيٽنگ 210 mm) ۽ ڪچن ٽڪيٽ لاءِ الڳ (پهرين سيٽنگ 80 mm).
+kot_size	فونٽ جو سائيز
+kot_size_s	ننڍو
+kot_size_m	عام
+kot_size_l	وڏو
+std_size	فونٽ جو سائيز
+kot_copies	ڪاپيون
+kot_copies_1	1
+kot_copies_2	2
+kot_copies_3	3
+kot_title_ph	عنوان (خالي = KOT - ڪچن آرڊر)
+kot_footer_ph	ڪچن نوٽ (اختياري، ڪو به قيمت نه)
+kot_preview	جھلڪ
+save_kot_format	KOT فارميٽ محفوظ ڪريو
+test_kot_format	KOT ٽيسٽ
+test_kot_sent	ڪچن ٽڪيٽ جو پيش منظر موڪليو ويو
+test_bill_format	ٽيسٽ بل
+test_bill_sent	بل جو پيش منظر موڪليو
+test_print_no_printer	ان ڪم لاءِ ڪو پرنٽر ناهي — هن اسڪرين تي هڪ چونڊيو
+kot_format_saved	KOT فارميٽ محفوظ ٿي ويو
+std_print	بِل پرنٽ سائيز
+std_print_help	او ايس / دستاويزي پرنٽرن تي معياري پورٽريٽ ۽ لينڊ اسڪيپ بِل ڪم لاءِ فونٽ سائيز (پوائنٽس داخل ڪريو — ننڍو / عام / وڏو نه). ٻئي رخن تي ساڳيو سائيز. ڪچن سلپ جون سائيزون KOT ٽيب تي آهن.
+std_size_s	ننڍو
+std_size_m	عام
+std_size_l	وڏو
+save_std_print	بِل پرنٽ سائيز محفوظ ڪريو
+std_print_saved	بِل پرنٽ سائيز محفوظ ٿي وئي
+print_brand_kit	برانڊ ڪٽ ڇاپيو
+print_brand_kit_help	بل جي منهن تي ۽ LAN مهمان ڏيکارڻ تي اختياري اسٽيمپ ۽ ادائگي QR تصويرون. متحرڪ UPI QR مٿين VPA کان اڃا ڪم ڪري ٿو جڏهن ڪا به ادائگي QR تصوير مقرر نه هجي.
+choose_stamp	اسٽيمپ چونڊيو
+clear_stamp	اسٽيمپ صاف ڪريو
+stamp_set	اسٽيمپ: فائل تي — مهمان جي نمائش تي ڏيکاريل ۽ ڇپيل بلن تي نالو ڏنل
+stamp_none	اسٽيمپ: ڪونهي
+choose_payment_qr	ادائيگي چونڊيو QR
+clear_payment_qr	ادائيگي صاف ڪريو QR
+payment_qr_set	ادائگي QR: فائل تي — مهمان جي اسڪرين تي ظاهر ٿئي ٿي (اتان مقدار UPI QR جي جاءِ وٺي ٿو)
+payment_qr_none	ادائگي QR: ڪوبه ناهي — ادا ڪرڻ وقت UPI ID مان مقدار QR
+aggregator_import	ايگريگيٽر آرڊرز (فائل)
+aggregator_import_help	اختياري مقامي درآمد: import_aggregator_orders.json کي بیک اپ فولڊر ۾ رکو (array يا {"orders":[...]}), پوءِ Import تي ٽيپ ڪريو. ڪڏهن به ڪائونٽر کي بلاڪ نه ڪندو؛ لائيو Zomato/Swiggy ڪلائوڊ آهي.
+import_aggregator_file	ايگريگيٽر فائل درآمد ڪريو
+team_pick_ph	اسٽاف کي ايڊٽ ڪرڻ لاءِ — نالو، يوزر نيم، يا چونڊيو
+select_staff	هن اسٽاف کي چونڊيو
+rights_help	هن شخص لاءِ پئسو ۽ هال جا عمل — ٽيپ ڪريو ته چڪر لڳايو: اجازت ڏنل → باس جي ضرورت PIN → اجازت ناهن. ٻيهر بِل ڇاپيو صرف بِل لاءِ؛ باورچی خانه اسٽيشنز هيٺ ڏنل چيڪ لسٽ آهن.
+dish_picker_help	اسان جي کاڌن کي ڳولھو يا براؤز ڪريو ۽ هڪ تي ٽئپ ڪريو ته ان جو نالو ۽ تصوير ڀريو وڃي — يا پنهنجو نالو قائم رکو. پنهنجو قيمت مقرر ڪريو (0 ٺيڪ آهي)، پوءِ شئي شامل ڪريو.
+close_dish_list	کاڌي جي فهرست بند ڪريو
+own_item_name	ان کي پنهنجو شئي نالو طور استعمال ڪريو
+on_your_menu	توهان جي مينيو تي
+edit	سنواريو
+schemes	رٿائون / آڇون
+schemes_help	BOGO، سيڪڙو-رعايت، ۽ مقرر ڪيل ڪامبوز۔ ڪامبوز تيار ڪچن لائينن ڏانهن وڌن ٿا جڏهن موڪليو وڃي KOT؛ جزا رکيا ويندا آهن جيستائين ڪامبو عمل ۾ اچي. مثال: 2 Thali خريد ڪريو 1 Chaas حاصل ڪريو
+scheme_bogo_ph	Buy 2 Thali get 1 Chaas
+add_scheme	شامل ڪريو BOGO
+schedule_ph	ڪلاڪ / خوشي جو وقت — سومر-جمعو 07:00-11:00 يا HappyHour 17:00-19:00=150
+upi_vpa_ph	UPI ID (VPA)
+upi_payee_ph	UPI وصول ڪندڙ جو نالو (اختياري)
+upi_qr	UPI QR
+show_upi_qr	UPI QR ڏيکاريو
+close_upi_qr	بند ڪريو
+upi_qr_help	مهمان اسڪين ڪري ادا ڪن ٿا. جڏهن اهي ادا ڪن ته 'ادائيگي وٺو' تي ٽيپ ڪريو. ٻي اسڪرين: Server URL /display تي LAN کوليو.
+kot_recall	واپس ياد ڪريو
+recently_done	تازو ڪم ٿيو
+recall_kot_ph	KOT # ياد ڪرڻ لاءِ
+role_help_customer	ڪردار: گراهڪ — کاتو (انهن تي اسان جو حق آهي). ساڳي پارٽي اسٽاڪ پڻ فراهم ڪري سگهي ٿي.
+role_help_both	ڪردار: گراهڪ + فراهم ڪندڙ — هڪ پارٽي، کاتو ۽ قابل ادائيگي ليجر، رپورٽن ۾ خالص.
+role_help_supplier	ڪردار: فراهم ڪندڙ — اسان کي خريداري لاءِ انهن جو قرض آهي.
+dine_in_pick_table	اندر ويهي کائڻ — هال تي ميز چونڊيو
+choose_table	ميز چونڊيو
+change_table	ميز تبديل ڪريو
+pick_table_banner	هن آرڊر لاءِ ٽيبل چونڊيو
+items_word	اشياءُ
+items_section	شيون
+back_to_order	آرڊر ڏانهن واپس
+new_items_head	اڃا نه موڪليو
+price_ph	اگهه
+price_ph_gst_inside	قيمت ({tax} شامل)
+cancel_needs_table	هن آرڊر کي هال (هڪ ميز) تان کوليو ته جيئن باورچي خانه وٽ هجڻ کان پوءِ رد ڪري سگهجي — ڪائونٽر جا KOT ٽڪيٽ تي رهندا جيستائين توهان ادائيگي نه وٺو
+tax_rates_missing_hint	انهن ڊشز تي ڪو {tax} شرح نه آهي — مينيو تي ٽيڪس جي شرح مقرر ڪريو (قيمتون اڳ ۾ ئي {tax} شامل هيٺ {tax} ۾ شامل آهن)
+taxable_value	ٽيڪس لائق قيمت
+gst_inside_price_note	({tax} سميت)
+start_with_template	اسان جي مينيو ٽيمپليٽ سان شروع ڪريو
+template_heading	اسان جو مينيو ٽيمپليٽ
+template_info	{c} ڪيٽيگريون ۽ {d} ڊشون فوٽوز سان، شامل ڪرڻ لاءِ تيار. قيمتون ₹0 کان شروع ٿين ٿيون — پنهنجي قيمت پوءِ مقرر ڪريو.
+template_import	مڪمل ٽيمپليٽ درآمد ڪريو
+template_confirm	{d} ڊشز انهن جي قسمن سان شامل ڪريو؟ جيڪي ڊشز توهان وٽ اڳ ۾ آهن، اهي جيئن آهن تيئن رهنديون.
+template_yes	ها، درآمد ڪريو
+template_importing	مينو درآمد ٿي رهيو آهي...
+template_import_progress	درآمد ٿي رهيو آهي... {d}/{t}
+template_done	اسان جي ٽيمپليٽ مان هر ڊش توهان جي مينيو ۾ آهي.
+template_imported	{d} ڊش ۽ {c} ڪيٽيگريز شامل ڪيون ويون — انهن جا قيمت هن اسڪرين تي مقرر ڪريو
+client_template_heading	Client مينيو
+client_template_info	{title}: {c} درجا بنديون، {d} کاڌا قيمتن، تصويرن، ۽ عرفن سان. رڳو غائب کاڌا — جيڪي نالا توهان وٽ اڳ ئي آهن اهي برقرار رهن ٿا.
+client_template_import	هن مينيو کي درآمد ڪريو
+client_template_confirm	{title} مان {d} کاڌا شامل ڪيا وڃن؟ جيڪي کاڌا توهان وٽ اڳ ۾ آهن اهي جيئن آهن تيئن رهن ٿا.
+client_template_importing	{title} درآمد ٿي رهيو آهي...
+client_template_done	هر ڊش {title} مان توهان جي مينيو تي آهي.
+client_template_imported	{title} مان {d} ڊش ۽ {c} ڪيٽيگريون شامل ڪيون ويون
+resv_heading	ريزروميشن
+resv_name_ph	مهمان جو نالو
+resv_phone_ph	فون (اختياري)
+resv_guests_ph	مهمان
+resv_when_ph	جڏهن — 20:30، سڀاڻي 13:00
+resv_table_ph	ٽيبل (اختياري)
+resv_add	کاتو
+resv_seat	ويٺل
+resv_none	ڪوبه ريزرويشن ناهي اچي رهيو.
+guests_word	مهمان
+delivery_by_ph	پهچائڻ (رائيڊر يا اسٽاف جو نالو) طرفان
+kitchen_all_day	هاڻي پچائڻ لاءِ: {items}
+kitchen_all_day_head	هاڻي پچائڻ
+kitchen_tab_live	لائيو
+kitchen_tab_recall	واپس ياد ڪريو
+kitchen_tab_stations	اسٽيشنز
+split_bill	وڃايل بل
+split_go	الڳ بل ٺاهيو
+cancel	منسوخ
+opening_client	ڪسٽمر کوليو پيو وڃي...
+preparing_desk	ميز تيار پيو ڪيو وڃي...
+opening_server	سرور کوليو پيو وڃي...
+creating_server	سرور ٺاهي پيو وڃي...
+split_help	هر مهمان جي لاءِ جن کا ئونڻيون ڏيو · {n} چونڊيا ويا
+split_send_first	KOT پهريون موڪليو — رڳو اهي کا ئونڻيون جيڪي ڪچن وٽ آهن الڳ بل ۾ وڃڻ جي قابل آهن
+split_pick_some	پهريون الڳ بل لاءِ کا ئونڻيون چونڊيو
+split_done	الڳ بل تيار — اهو هن ميز جي ڀر ۾ هال تي آهي
+split_marked	الڳ بل
+order_empty_pick	آرڊر خالي — مٿي 'ڊشز شامل ڪريو' تي ٽيپ ڪريو ڊشز چونڊڻ لاءِ.
+add_dishes	ڊشز شامل ڪريو
+order_so_far	هن آرڊر تي: {n} · {total}
+no_dish_match	ڪوبه ڊش “{q}” سان ميچ نه ٿو ڪري
+pick_dishes_help	ڊش شامل ڪرڻ لاءِ ٽيپ ڪريو · فهرست کي محدود ڪرڻ لاءِ ڪيٽيگري چونڊيو
+pick_done	ٿي ويو
+pick_done_dd	مڪمل ٿيو · {label}
+printer_route_mode	جيڪڏهن هن جڳھ ۾ ڪيترائي پرنٽر آهن
+printer_mode_first	پهريون جيڪو ڪم ڪري ٿو
+printer_mode_all	سڀ تي ڇپيو
+kot_show_area	علائقو
+kot_hide_area	علائقو لڪايو
+kot_show_item_hdr	شئ · مقدار
+kot_hide_item_hdr	ڪالمن کي لڪاءِ
+kot_show_title	عنوان واري لائن
+kot_hide_title	عنوان لڪاءِ
+kot_field_order	ڇپائي جو ترتيب
+kot_field_up	مٿي وڃو
+kot_field_down	هيٺ وڃو
+kot_field_cycle	اڳيون چونڊيو
+kot_field_select	اڳيون چونڊيو
+kot_field_time	وقت
+kot_field_kot_no	KOT ناهي
+kot_field_area	علائقو
+kot_field_table	ٽيبل
+kot_field_shop	دڪان جو نالو
+kot_field_waiter	عملو
+kot_field_station	اسٽیشن
+app_template_blurb_extra	به: مالڪ Zahir، Admin Asif، ويٽر Nawaz؛ FOH سائڊبار؛ 4 ڪلاڪن کان پوءِ تاريخ؛ اڄ اُڇڙي ڇڏيو؛ ڪمپيڪٽ KOT.
+dishes_n	{n} ڊشز
+recipe_ph	ترڪيب (اختياري) — هڪ حصو استعمال ڪري ٿو: چانور=0.2، پنير=0.15
+reorder_ph	وڌيڪ خريد ڪريو
+set_reorder	ري آرڊر ليول مقرر ڪريو
+low_stock_alert	گهٽ ٿي رهيو آهي — جلد خريد ڪريو: {items}
+unpriced_note	{n} توهان جي مينيو ۾ شامل ڊشز تنهنجو اڃا ڪو قيمت ناهي — اهي 0 تي بل ٿينديون جيستائين توهان قيمت مقرر نه ڪريو.
+show_unpriced	صرف اهي ڊشز ڏيکاريو جن جي قيمت ناهي
+show_all_dishes	سڀئي ڊشز ڏيکاريو
+role_waiter	ويٽر
+role_kitchen	باورچی خانو
+role_title_rest_ph	ڪردار جو عنوان (مثال طور ڪيپٽن، هيڊ ڪوڪ)
+preset_help_rest	ويٽر: آرڊر وٺي ٿو ۽ ميز هلائي ٿو. ڪيشئر: پڻ ادائيگي وٺي ٿو. باورچی خانه: باورچی خانه اسڪرين. مئنيجر: پڻ مينيو، منسوخ ۽ رعايتون.
+kind_raw	خام مواد
+kind_resale	خريد ڪيو ويو ۽ ٻيهر وڪرو ڪيو ويو
+kind_dish	ڏيس جتي اسين ٺاهيون ٿا
+buy_unit_ph	يونٽ (ڪلو، لٽر، ٽڪرا)
+add_another_way	+ ٻي طريقي شامل ڪريو
+parts_status	داخل ٿيل {a} مان {b} · {c} باقي
+save_expense	خرچ بچايو
+rest_ph	آرام ڪريو
+low_badge	گهٽ
+stock_empty	اڃا اسٽاڪ ۾ ڪجهه ناهي — جيڪو توهان خريد تي رڪارڊ ڪريو ٿا اهو هتي ظاهر ٿيندو.
+recent_changes	تازيون تبديليون
+lane_declared_label	ٽيڪس انوائس
+lane_owner_label	نقد ميمو
+money_lane_bill	بل: {lane}

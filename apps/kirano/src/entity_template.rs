@@ -47,19 +47,10 @@ pub const KIRANO: EntityTemplate = EntityTemplate {
     title: "Kirano",
     blurb: "Grocery / kirana operating system: counter sell, stock, khata, books.",
     how_to: "Sell = counter billing (item → qty → pay/credit → receipt). Buy = restock from suppliers. Books = day book, parties, stock, expenses & reports. No tables or kitchen — this is a shop counter.",
-    label_overrides: &[
-        ("items", "Items"),
-        ("nav_items", "Items"),
-        ("your_items", "Your items"),
-        ("menu", "Items"),
-        ("aliases_ph", "Short codes & aliases, comma separated"),
-        ("bill_item_name", "Item name"),
-        ("kind_resale", "Bought to sell"),
-        ("kind_raw", "Bought for shop use"),
-        ("add_dishes", "Add items"),
-        ("order", "Sale"),
-        ("orders", "Sales"),
-    ],
+    // Vertical words live in locale::en (this app's own English), so
+    // every language translates them; an overlay here would show its
+    // English in every language (template_overrides_stay_empty).
+    label_overrides: &[],
     venue_mode: VenueMode::Counter,
     qty_unit_hint: "pc",
     lane_declared_label: "Tax invoice",

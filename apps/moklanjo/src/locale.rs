@@ -1,8 +1,14 @@
 //! Locale: languages, currencies and number styles for the whole world.
 //!
-//! The catalogue is intentionally broad. UI copy is translated where we have
-//! a starter set; every other language still selects correctly and falls back
-//! to English strings until its table is filled in.
+//! Every catalogue language ships the whole static UI translated: English
+//! is `en` below, every other language is `translations/<code>.tsv` in this
+//! crate (see `t`). Tests fail on any untranslated key, broken placeholder
+//! or character the shipped fonts cannot draw.
+//!
+//! **New UI string:** add it to `en()`, then
+//! `python3 scripts/scaffold-ui-translations.py --app moklanjo --standin-english`
+//! and `python3 scripts/fill-ui-translations.py --app moklanjo --redo-english`
+//! (see `docs/DEV.md` § Languages). Never ship a label only in English.
 
 use serde::{Deserialize, Serialize};
 
@@ -62,7 +68,7 @@ pub struct CurrencyInfo {
     pub decimals: u8,
 }
 
-/// Worldwide language catalogue (select in Settings; UI strings expand over time).
+/// Worldwide language catalogue — every entry is fully translated (`t`).
 pub const LANGUAGES: &[LanguageInfo] = &[
     // ——— English ———
     LanguageInfo { code: "en", name_en: "English", native_name: "English", region: "World" },
@@ -309,9 +315,18 @@ pub fn match_language_tag(tag: &str) -> String {
         return "zh".into();
     }
     let primary = lower.split('-').next().unwrap_or("en");
-    if primary == "tl" {
-        return "fil".into();
-    }
+    // Other names for catalogue languages: Tagalog, Norwegian Bokmål /
+    // Nynorsk, and the legacy ISO codes older Android still reports.
+    let primary = match primary {
+        "tl" => "fil",
+        "nb" | "nn" => "no",
+        "iw" => "he",
+        "in" => "id",
+        "ji" => "yi",
+        "mo" => "ro",
+        "sh" => "sr",
+        other => other,
+    };
     if let Some(info) = language_by_code(primary) {
         return info.code.into();
     }
@@ -1159,11 +1174,11 @@ fn en(key: &str) -> String {
         "expenses_word" => "Expenses",
         "feature_access_help" => "Feature access for selected staff (tap after adding)",
         "footer_local" => "Local SQLite · Free Forever · Zero Cloud",
-        "fresh_book_moklanjo" => "",
+        "fresh_book_moklanjo" => "Fresh = empty catalogue (add items later). Book = type opening stock and who owes you below.",
         "fresh_selected" => "Fresh selected — catalogue stays empty. Tap Done when ready.",
         "gross_word" => "Gross",
         "how_start" => "How do you want to start?",
-        "later_country_pack" => "",
+        "later_country_pack" => "Later: Settings → apply your country pack for tax and pay labels.",
         "local_badge" => "LOCAL",
         "measures_help_moklanjo" => "How parcels are measured at the booking desk. Type dimensions and weight in the units you use — standard (cm, m, in, ft · kg, g, lb, oz) or your own unit linked to cm / kg above (directly or through other units). Books always record kg. Leave a field empty to keep it.",
         "mix_type_hint_moklanjo" => "Type how much in each (cash / UPI / card / credit). Must add up to the bill. Credit needs a customer above.",
@@ -1354,13 +1369,13 @@ fn en(key: &str) -> String {
         "role_help_carrier" => "Role: Carrier — AP (we owe them). Same firm can also be Consignor.",
         "role_help_both" => "Roles: Consignor + Carrier — one party, AR and AP ledgers, net in Reports.",
         "role_help_supplier" => "Role: Supplier — AP for purchases.",
+        // Money-lane chips on the order desk / Settings (template words).
+        "lane_declared_label" => "Account booking",
+        "lane_owner_label" => "Cash booking",
+        "money_lane_bill" => "Bill: {lane}",
         _ => key,
     }
     .into()
-}
-
-fn lookup(table: &[(&'static str, &'static str)], key: &str) -> Option<&'static str> {
-    table.iter().find(|(k, _)| *k == key).map(|(_, v)| *v)
 }
 
 /// Locale string with optional template overlays (concrete feel without forks).
@@ -1377,454 +1392,77 @@ pub fn parcels(lang: &str, n: i64) -> String {
     t(lang, key).replace("{n}", &n.to_string())
 }
 
-/// Minimal UI string table — expand per language over time.
-pub fn t(lang: &str, key: &str) -> String {
-    // Normalize regional variants to a parent when we only have one table.
-    let lang = match lang {
+/// Catalogue languages that read another language's table: regional
+/// variants share their parent's words, Cantonese reads Traditional
+/// Chinese and Goan Konkani reads Konkani (both Devanagari).
+pub fn table_language(lang: &str) -> &str {
+    match lang {
         "pt-BR" => "pt",
         "es-MX" => "es",
-        "zh-Hant" | "yue" => "zh",
+        "yue" => "zh-Hant",
+        "gom" => "kok",
         other => other,
-    };
-    let translated = match lang {
-        "hi" => lookup(
-            &[
-                ("app_tagline", "कोई भी कारोबार चलाएँ। ऑफ़लाइन मुफ़्त।"),
-                ("unlock", "खोलें"),
-                ("sell", "बेचें"),
-                ("items", "सामान"),
-                ("more", "और"),
-                ("your_items", "आपके सामान"),
-                ("items_help", "सामान पर टैप करके बदलें। नया सामान दबाने पर फ़ॉर्म खाली होता है और दूसरा सामान जोड़ा जा सकता है। पुरानी बिक्री का नाम नहीं बदलता।"),
-                ("add_item", "जोड़ें"),
-                ("new_item", "नया सामान"),
-                ("adding_item", "नया सामान जोड़ रहे हैं"),
-                ("editing_item", "बदल रहे हैं"),
-                ("save", "सहेजें"),
-                ("remove", "हटाएँ"),
-                ("empty_catalog", "अभी कोई सामान नहीं। सामान टैब में जोड़ें।"),
-                ("total", "कुल"),
-                ("cash", "नकद"),
-                ("credit", "उधार"),
-                ("language", "भाषा"),
-                ("currency", "मुद्रा"),
-                ("use", "चुनें"),
-                ("language_setup_hint", "इस डिवाइस की भाषा अपनाएँ, या स्वयं चुनें।"),
-                ("lang_follow_platform", "प्लेटफ़ॉर्म की भाषा उपयोग करें"),
-                ("lang_pick_user", "उपयोगकर्ता चुनी भाषा"),
-                ("lang_platform_now", "अभी डिवाइस की भाषा"),
-                ("selected_language", "चयनित"),
-                ("this_device", "यह डिवाइस"),
-                ("device_use_q", "यह डिवाइस कैसे उपयोग होगा?"),
-                ("device_setup_help", "सर्वर यहाँ किताबें रखता है। क्लाइंट सर्वर से जुड़ता है।"),
-                ("last_server_mode", "पिछली बार: सर्वर मोड — जारी रखने के लिए फिर टैप करें, या बदलें"),
-                ("last_client_mode", "पिछली बार: क्लाइंट मोड — जारी रखने के लिए फिर टैप करें, या बदलें"),
-                ("choose_server", "सर्वर चुनें"),
-                ("choose_server_hint", "इस डिवाइस पर सर्वर पहले से हैं। एक खोलें, या दूसरे कारोबार के लिए नया बनाएँ।"),
-                ("create_new_server", "नया सर्वर बनाएँ"),
-                ("open_server", "खोलें"),
-                ("server_remove_pin_ph", "सर्वर हटाने के लिए Owner PIN"),
-                ("only_owner_remove_server", "केवल Owner सर्वर हटा सकता है"),
-                ("owner_pin_remove_server", "सर्वर हटाने के लिए Owner PIN चाहिए"),
-                ("new_server_name_ph", "नए सर्वर का नाम (वैकल्पिक)"),
-                ("this_shop", "सर्वर मोड"),
-                ("extra_till", "क्लाइंट मोड"),
-                ("continue", "आगे"),
-            ],
-            key,
-        ),
-        "ta" => lookup(
-            &[
-                ("sell", "விற்பனை"),
-                ("items", "பொருட்கள்"),
-                ("more", "மேலும்"),
-                ("total", "மொத்தம்"),
-                ("cash", "ரொக்கம்"),
-                ("credit", "கடன்"),
-                ("language", "மொழி"),
-                ("currency", "நாணயம்"),
-                ("use", "பயன்படுத்து"),
-            ],
-            key,
-        ),
-        "te" => lookup(
-            &[
-                ("sell", "అమ్మకం"),
-                ("items", "వస్తువులు"),
-                ("more", "మరిన్ని"),
-                ("total", "మొత్తం"),
-                ("cash", "నగదు"),
-                ("credit", "క్రెడిట్"),
-                ("language", "భాష"),
-                ("currency", "కరెన్సీ"),
-                ("use", "ఎంచుకో"),
-            ],
-            key,
-        ),
-        "bn" => lookup(
-            &[
-                ("sell", "বিক্রি"),
-                ("items", "পণ্য"),
-                ("more", "আরও"),
-                ("total", "মোট"),
-                ("cash", "নগদ"),
-                ("credit", "বাকি"),
-                ("language", "ভাষা"),
-                ("currency", "মুদ্রা"),
-                ("use", "ব্যবহার"),
-            ],
-            key,
-        ),
-        "mr" => lookup(
-            &[
-                ("sell", "विक्री"),
-                ("items", "वस्तू"),
-                ("more", "अधिक"),
-                ("total", "एकूण"),
-                ("cash", "रोख"),
-                ("credit", "उधार"),
-                ("language", "भाषा"),
-                ("currency", "चलन"),
-                ("use", "वापरा"),
-            ],
-            key,
-        ),
-        "gu" => lookup(
-            &[
-                ("sell", "વેચાણ"),
-                ("items", "વસ્તુઓ"),
-                ("more", "વધુ"),
-                ("total", "કુલ"),
-                ("cash", "રોકડ"),
-                ("credit", "ઉધાર"),
-                ("language", "ભાષા"),
-                ("currency", "ચલણ"),
-                ("use", "વાપરો"),
-            ],
-            key,
-        ),
-        "kn" => lookup(
-            &[
-                ("sell", "ಮಾರಾಟ"),
-                ("items", "ವಸ್ತುಗಳು"),
-                ("more", "ಇನ್ನಷ್ಟು"),
-                ("total", "ಒಟ್ಟು"),
-                ("cash", "ನಗದು"),
-                ("credit", "ಸಾಲ"),
-                ("language", "ಭಾಷೆ"),
-                ("currency", "ಕರೆನ್ಸಿ"),
-                ("use", "ಬಳಸಿ"),
-            ],
-            key,
-        ),
-        "ml" => lookup(
-            &[
-                ("sell", "വിൽപ്പന"),
-                ("items", "സാധനങ്ങൾ"),
-                ("more", "കൂടുതൽ"),
-                ("total", "ആകെ"),
-                ("cash", "പണം"),
-                ("credit", "കടം"),
-                ("language", "ഭാഷ"),
-                ("currency", "കറൻസി"),
-                ("use", "ഉപയോഗിക്കുക"),
-            ],
-            key,
-        ),
-        "pa" => lookup(
-            &[
-                ("sell", "ਵਿਕਰੀ"),
-                ("items", "ਸਮਾਨ"),
-                ("more", "ਹੋਰ"),
-                ("total", "ਕੁੱਲ"),
-                ("cash", "ਨਕਦ"),
-                ("credit", "ਉਧਾਰ"),
-                ("language", "ਭਾਸ਼ਾ"),
-                ("currency", "ਮੁਦਰਾ"),
-                ("use", "ਵਰਤੋ"),
-            ],
-            key,
-        ),
-        "ur" => lookup(
-            &[
-                ("sell", "فروخت"),
-                ("items", "اشیاء"),
-                ("more", "مزید"),
-                ("total", "کل"),
-                ("cash", "نقد"),
-                ("credit", "ادھار"),
-                ("language", "زبان"),
-                ("currency", "کرنسی"),
-                ("use", "استعمال"),
-            ],
-            key,
-        ),
-        "or" => lookup(
-            &[
-                ("sell", "ବିକ୍ରୟ"),
-                ("items", "ସାମଗ୍ରୀ"),
-                ("more", "ଅଧିକ"),
-                ("total", "ମୋଟ"),
-                ("cash", "ନଗଦ"),
-                ("credit", "ଉଧାର"),
-                ("language", "ଭାଷା"),
-                ("currency", "ମୁଦ୍ରା"),
-                ("use", "ବ୍ୟବହାର"),
-            ],
-            key,
-        ),
-        "as" => lookup(
-            &[
-                ("sell", "বিক্ৰী"),
-                ("items", "সামগ্ৰী"),
-                ("more", "অধিক"),
-                ("total", "মুঠ"),
-                ("cash", "নগদ"),
-                ("credit", "ধাৰ"),
-                ("language", "ভাষা"),
-                ("currency", "মুদ্ৰা"),
-                ("use", "ব্যৱহাৰ"),
-            ],
-            key,
-        ),
-        "es" => lookup(
-            &[
-                ("sell", "Vender"),
-                ("items", "Artículos"),
-                ("more", "Más"),
-                ("total", "Total"),
-                ("cash", "Efectivo"),
-                ("credit", "Crédito"),
-                ("language", "Idioma"),
-                ("currency", "Moneda"),
-                ("use", "Usar"),
-            ],
-            key,
-        ),
-        "fr" => lookup(
-            &[
-                ("sell", "Vendre"),
-                ("items", "Articles"),
-                ("more", "Plus"),
-                ("total", "Total"),
-                ("cash", "Espèces"),
-                ("credit", "Crédit"),
-                ("language", "Langue"),
-                ("currency", "Devise"),
-                ("use", "Utiliser"),
-            ],
-            key,
-        ),
-        "pt" => lookup(
-            &[
-                ("sell", "Vender"),
-                ("items", "Itens"),
-                ("more", "Mais"),
-                ("total", "Total"),
-                ("cash", "Dinheiro"),
-                ("credit", "Crédito"),
-                ("language", "Idioma"),
-                ("currency", "Moeda"),
-                ("use", "Usar"),
-            ],
-            key,
-        ),
-        "de" => lookup(
-            &[
-                ("sell", "Verkauf"),
-                ("items", "Artikel"),
-                ("more", "Mehr"),
-                ("total", "Summe"),
-                ("cash", "Bar"),
-                ("credit", "Kredit"),
-                ("language", "Sprache"),
-                ("currency", "Währung"),
-                ("use", "Nutzen"),
-            ],
-            key,
-        ),
-        "ar" => lookup(
-            &[
-                ("sell", "بيع"),
-                ("items", "أصناف"),
-                ("more", "المزيد"),
-                ("total", "الإجمالي"),
-                ("cash", "نقداً"),
-                ("credit", "آجل"),
-                ("language", "اللغة"),
-                ("currency", "العملة"),
-                ("use", "استخدم"),
-            ],
-            key,
-        ),
-        "zh" => lookup(
-            &[
-                ("sell", "销售"),
-                ("items", "商品"),
-                ("more", "更多"),
-                ("total", "合计"),
-                ("cash", "现金"),
-                ("credit", "赊账"),
-                ("language", "语言"),
-                ("currency", "货币"),
-                ("use", "使用"),
-            ],
-            key,
-        ),
-        "ja" => lookup(
-            &[
-                ("sell", "販売"),
-                ("items", "商品"),
-                ("more", "その他"),
-                ("total", "合計"),
-                ("cash", "現金"),
-                ("credit", "掛け売り"),
-                ("language", "言語"),
-                ("currency", "通貨"),
-                ("use", "使う"),
-            ],
-            key,
-        ),
-        "ko" => lookup(
-            &[
-                ("sell", "판매"),
-                ("items", "상품"),
-                ("more", "더보기"),
-                ("total", "합계"),
-                ("cash", "현금"),
-                ("credit", "외상"),
-                ("language", "언어"),
-                ("currency", "통화"),
-                ("use", "사용"),
-            ],
-            key,
-        ),
-        "ru" => lookup(
-            &[
-                ("sell", "Продажа"),
-                ("items", "Товары"),
-                ("more", "Ещё"),
-                ("total", "Итого"),
-                ("cash", "Наличные"),
-                ("credit", "В долг"),
-                ("language", "Язык"),
-                ("currency", "Валюта"),
-                ("use", "Выбрать"),
-            ],
-            key,
-        ),
-        "id" => lookup(
-            &[
-                ("sell", "Jual"),
-                ("items", "Barang"),
-                ("more", "Lainnya"),
-                ("total", "Total"),
-                ("cash", "Tunai"),
-                ("credit", "Kredit"),
-                ("language", "Bahasa"),
-                ("currency", "Mata uang"),
-                ("use", "Pakai"),
-            ],
-            key,
-        ),
-        "tr" => lookup(
-            &[
-                ("sell", "Satış"),
-                ("items", "Ürünler"),
-                ("more", "Daha fazla"),
-                ("total", "Toplam"),
-                ("cash", "Nakit"),
-                ("credit", "Veresiye"),
-                ("language", "Dil"),
-                ("currency", "Para birimi"),
-                ("use", "Kullan"),
-            ],
-            key,
-        ),
-        "vi" => lookup(
-            &[
-                ("sell", "Bán"),
-                ("items", "Mặt hàng"),
-                ("more", "Thêm"),
-                ("total", "Tổng"),
-                ("cash", "Tiền mặt"),
-                ("credit", "Ghi nợ"),
-                ("language", "Ngôn ngữ"),
-                ("currency", "Tiền tệ"),
-                ("use", "Dùng"),
-            ],
-            key,
-        ),
-        "th" => lookup(
-            &[
-                ("sell", "ขาย"),
-                ("items", "สินค้า"),
-                ("more", "เพิ่มเติม"),
-                ("total", "รวม"),
-                ("cash", "เงินสด"),
-                ("credit", "เครดิต"),
-                ("language", "ภาษา"),
-                ("currency", "สกุลเงิน"),
-                ("use", "ใช้"),
-            ],
-            key,
-        ),
-        "it" => lookup(
-            &[
-                ("sell", "Vendi"),
-                ("items", "Articoli"),
-                ("more", "Altro"),
-                ("total", "Totale"),
-                ("cash", "Contanti"),
-                ("credit", "Credito"),
-                ("language", "Lingua"),
-                ("currency", "Valuta"),
-                ("use", "Usa"),
-            ],
-            key,
-        ),
-        "nl" => lookup(
-            &[
-                ("sell", "Verkopen"),
-                ("items", "Artikelen"),
-                ("more", "Meer"),
-                ("total", "Totaal"),
-                ("cash", "Contant"),
-                ("credit", "Krediet"),
-                ("language", "Taal"),
-                ("currency", "Valuta"),
-                ("use", "Gebruik"),
-            ],
-            key,
-        ),
-        "sw" => lookup(
-            &[
-                ("sell", "Uza"),
-                ("items", "Bidhaa"),
-                ("more", "Zaidi"),
-                ("total", "Jumla"),
-                ("cash", "Taslimu"),
-                ("credit", "Mkopo"),
-                ("language", "Lugha"),
-                ("currency", "Sarafu"),
-                ("use", "Tumia"),
-            ],
-            key,
-        ),
-        _ => None,
-    };
-    if let Some(hit) = translated {
-        return hit.to_string();
     }
-    if let Some(hit) = chrome_extra(lang, key) {
+}
+
+/// UI string for `key` in `lang`. English (`en` above) is the source; every
+/// other catalogue language has its own table, `translations/<code>.tsv`
+/// in this crate — one `key<TAB>text` line per `en` key, `{placeholders}`
+/// kept exactly. `every_catalogue_language_translates_every_key` fails on
+/// any gap, so a new `en` key lands with all of its translations.
+pub fn t(lang: &str, key: &str) -> String {
+    if let Some(hit) = translated(lang, key) {
         return hit.to_string();
     }
     en(key)
 }
 
-fn chrome_extra(lang: &str, key: &str) -> Option<&'static str> {
-    include!("locale_chrome.rs")
+fn translated(lang: &str, key: &str) -> Option<&'static str> {
+    if lang == "en" {
+        return None;
+    }
+    loaded_table(table_language(lang))?.1.get(key).copied()
 }
+
+// build.rs (`bake_translations`) deflates each translations/<code>.tsv into
+// OUT_DIR and lists them here as `PACKS`; a table is inflated the first
+// time its language is shown, then kept for the life of the process.
+mod packs {
+    include!(concat!(env!("OUT_DIR"), "/translations.rs"));
+}
+
+type Table = std::collections::HashMap<&'static str, &'static str>;
+
+static TABLES: [std::sync::OnceLock<(&'static str, Table)>; packs::PACKS.len()] =
+    [const { std::sync::OnceLock::new() }; packs::PACKS.len()];
+
+fn loaded_table(code: &str) -> Option<&'static (&'static str, Table)> {
+    let i = packs::PACKS.iter().position(|(c, _)| *c == code)?;
+    Some(TABLES[i].get_or_init(|| {
+        let text = inflate(packs::PACKS[i].1);
+        let table = text
+            .lines()
+            .filter(|line| !line.is_empty() && !line.starts_with('#'))
+            .filter_map(|line| line.split_once('\t'))
+            .collect();
+        (text, table)
+    }))
+}
+
+fn inflate(bytes: &[u8]) -> &'static str {
+    use std::io::Read;
+    let mut text = String::new();
+    // build.rs wrote these bytes; a failure would only mean a corrupt
+    // build, and English is a safe answer then (never panic in t()).
+    if flate2::read::DeflateDecoder::new(bytes)
+        .read_to_string(&mut text)
+        .is_err()
+    {
+        text.clear();
+    }
+    Box::leak(text.into_boxed_str())
+}
+
 
 #[cfg(test)]
 mod tests {
@@ -1840,6 +1478,13 @@ mod tests {
         assert_eq!(match_language_tag("pt_BR"), "pt-BR");
         assert_eq!(match_language_tag("pt-PT"), "pt");
         assert_eq!(match_language_tag("tl-PH"), "fil");
+        assert_eq!(match_language_tag("nb_NO.UTF-8"), "no");
+        assert_eq!(match_language_tag("nn-NO"), "no");
+        assert_eq!(match_language_tag("iw_IL"), "he");
+        assert_eq!(match_language_tag("in-ID"), "id");
+        assert_eq!(match_language_tag("mni-Mtei-IN"), "mni");
+        assert_eq!(match_language_tag("sat_IN"), "sat");
+        assert_eq!(match_language_tag("yue-HK"), "yue");
         assert_eq!(match_language_tag("C"), "en");
         assert_eq!(match_language_tag(""), "en");
         assert_eq!(match_language_tag("xx-YY"), "en");
@@ -1856,208 +1501,152 @@ mod tests {
         }
     }
 
+    /// `en`'s keys, read from this file: the list every table must match.
+    fn english_keys() -> Vec<&'static str> {
+        let src = include_str!("locale.rs");
+        let start = src.find("fn en(key: &str) -> String {").expect("en() in locale.rs");
+        let end = start + src[start..].find("        _ => key,").expect("en() fallback arm");
+        src[start..end]
+            .lines()
+            .filter_map(|line| {
+                let rest = line.trim_start().strip_prefix('"')?;
+                let (key, after) = rest.split_once('"')?;
+                after.trim_start().starts_with("=>").then_some(key)
+            })
+            .collect()
+    }
+
+    /// `{n}`, `{name}`, `{}` … in `text`, sorted (order may change in a
+    /// translation, the set may not).
+    fn placeholders(text: &str) -> Vec<&str> {
+        let mut out = Vec::new();
+        let mut rest = text;
+        while let Some(open) = rest.find('{') {
+            let Some(len) = rest[open..].find('}') else { break };
+            let inner = &rest[open + 1..open + len];
+            if inner.chars().all(|c| c.is_ascii_alphanumeric() || c == '_') {
+                out.push(&rest[open..=open + len]);
+            }
+            rest = &rest[open + len + 1..];
+        }
+        out.sort_unstable();
+        out
+    }
+
+    /// Distinct table codes the catalogue needs (aliases folded).
+    fn needed_tables() -> std::collections::BTreeSet<&'static str> {
+        LANGUAGES
+            .iter()
+            .filter(|l| l.code != "en")
+            .map(|l| table_language(l.code))
+            .collect()
+    }
+
     #[test]
-    fn shipped_languages_translate_chrome() {
-        const LANGS: &[&str] = &[
-            "hi", "ta", "te", "bn", "mr", "gu", "kn", "ml", "pa", "ur", "or", "as", "es", "fr",
-            "pt", "de", "ar", "zh", "ja", "ko", "ru", "id", "tr", "vi", "th", "it", "nl", "sw",
-        ];
-        // Every English key must have a real translation in every
-        // shipped language — static UI must never fall back to English.
-        const KEYS: &[&str] = &[
-            "settings_hub_help", "settings_sec_devices", "settings_sec_alerts", "settings_sec_diag", "sidebar_settings",
-            "alerts_help", "snack_secs_ph", "snack_secs_save", "snack_secs_saved", "snack_secs_bad", "cancelled",
-            "backup_auto", "backup_auto_none", "backup_copy_to", "backup_copy_btn", "autostart_off", "autostart_on", "autostart_done_on", "autostart_done_off",
-            "right_allowed", "right_with_approval", "right_denied", "editing_staff", "team_pick_ph", "select_staff", "rights_help", "right_void_refund", "right_amend_sale",
-            "find_server", "finding_server", "no_server_found", "servers_found_pick", "server_host_selected",
-            "device_forgotten",
-            "forget_device", "last_seen", "new_pair_code",
-            "lan_offline",
-            "lan_offline_waiting", "lan_connecting", "lan_live", "lan_sending", "lan_sign_in_to_send", "lan_pair_again", "lan_update_app",
-            "allow_firewall", "firewall_blocked", "firewall_waiting",
-            "lan_join_help", "lan_pair_status", "lan_join_help_no_addr", "lan_no_address", "lan_not_listening", "lan_tills_off", "paired_with", "not_paired", "choose_device_use", "paired_note", "last_update_at", "pair_intro", "queue_waiting", "queue_tries", "save_backup_copy", "backup_copy_saved", "backup_copy_overdue", "backup_copy_failed", "clock_off", "printers_heading", "printers_help", "printers_host_only", "printers_pool_heading", "printers_routes_heading", "printer_label_ph", "printer_target_ph", "printer_mode_heading", "printer_mode_standard", "printer_mode_landscape", "printer_mode_thermal", "printer_mode_standard_short", "printer_mode_landscape_short", "printer_mode_thermal_short", "printer_format_custom", "printer_format_custom_label", "printer_format_custom_added", "add_printer", "remove_printer", "route_pick_ph", "route_add_printer_ph", "route_receipt", "route_label", "route_dont_print", "route_add", "route_up", "route_down", "route_remove", "route_clear", "save_printers", "print_test_page", "printers_saved", "test_page_sent", "printers_found", "find_printers", "printers_looking", "printers_tap_find", "printers_none_found", "receipt_printer_ph", "queue_refused", "clear_not_accepted", "device_name_ph", "lan_last_update", "lan_not_accepted", "connected_now", "backup_failed", "backup_overdue", "disk_low",
-            "connection_to_shop",
-            "other_devices_help_heading", "other_devices_help",
-            "account_kind", "active_ledger", "actual", "actual_total_cap",
-            "add_branch", "add_conversion", "add_expense", "add_item",
-            "add_item_plain", "add_note", "add_opening_balance", "add_rider",
-            "add_staff", "add_to_bill", "add_unit", "add_upper", "add_use_name",
-            "added", "adding_item", "advance", "against_bill_ph", "aliases_ph",
-            "all_items", "allow_extra_tills", "amend", "amend_help",
-            "amount_blank_full_ph", "amount_owed_ph", "amount_ph",
-            "amount_received_ph", "amount_we_pay_ph", "app_tagline", "applied",
-            "applied_total_cap", "apply_country_pack", "attach_bill_photo",
-            "attach_pdf", "attach_photo", "attachments_last_expense", "auto",
-            "awb_label", "awb_scan_ph", "back", "backup", "backup_settings", "bank",
-            "bank_balance", "bank_book", "bank_in", "bank_net_today", "bank_out",
-            "bank_reconciliation", "bank_to_till", "book_add_product",
-            "book_kind_aging", "book_kind_balance", "book_kind_month",
-            "book_kind_today", "book_opening_credit", "booking_consignee_heading",
-            "booking_consignee_hint", "booking_consignor_heading", "booking_consignor_hint",
-            "booking_help",
-            "booking_measures", "booking_scope_hint_domestic", "booking_scope_hint_intl",
-            "books", "books_help", "branch_export_help",
-            "branch_name_sell_ph", "branches", "branches_org", "brand_shown_help",
-            "breadth_cm_ph", "bring_my_book", "bulk_csv_ph", "business_name_ph",
-            "business_tax_id_ph", "buy", "buy_help", "buy_money_out",
-            "caption_bank", "caption_bookings", "caption_outstanding",
-            "caption_payments_today", "caption_today", "card", "card_amount_ph",
-            "carrier_cost_ph", "carrier_party_ph", "carrier_pick_ph", "cart_empty_hint", "cash",
-            "copy_carrier_bill_report",
-            "cash_amount_ph", "cash_in_hand", "category_new_ph",
-            "change_my_pin_heading", "chargeable_kg", "chip_clear_credit",
-            "duress_heading", "duress_help", "duress_pin_ph", "duress_confirm_ph", "save_duress_pin", "clear_duress_pin", "duress_on", "duress_off", "duress_saved", "duress_cleared",
-            "chip_missing_customer", "chip_no_customer",             "choose_icon",
-            "choose_language", "choose_logo", "choose_payment_qr", "choose_receipt_stamp",
-            "choose_server", "choose_server_hint", "diag_send_heading", "optional_login_heading", "rights_heading", "booking_scope_heading",
-            "clear", "clear_icon", "clear_logo", "clear_payment_qr", "clear_photo",
-            "clear_stamp", "client", "cod_amount_ph",
-            "add_awb_pool", "awb_pool_carrier_ph", "awb_pool_end_ph", "awb_pool_label_ph",
-            "awb_pool_prefix_ph", "awb_pool_start_ph", "awb_pools_heading",
-            "bill_reminder_chase", "bulk_awbs_ph", "cheque_no_ph", "copy_month_gst_csv",
-            "discount_ph", "month_mix_report", "pieces_ph", "print_faces", "print_faces_help",
-            "tds_cut_ph",
-            "domestic",
-            "international",
-            "cod_register", "code_bag_ph", "collect_cod", "connect_to_server",
-            "consignee_ph", "consignments_dispatch", "consignor_party_ph",
-            "continue", "conv_factor_ph", "copy_day_book_csv", "copy_day_close",
-            "copy_items_csv", "copy_outstanding_csv", "copy_parties_csv",
-            "copy_party_ledger_csv", "copy_receipt", "copy_report",
-            "counted_cash_ph", "counter", "counter_agency_ph", "counter_locked", "parcel",
-            "counter_sale", "country_code_ph", "country_pack_help", "country_tax",
-            "create_backup", "create_new_server", "credit", "credit_customers",
-            "credit_help", "credit_khata_amount_ph", "credit_limit_heading",
-            "credit_limit_ph", "credit_summary_fmt", "currency",
-            "currency_use_help", "customer_name_ph", "day_close", "day_close_help",
-            "day_close_summary", "declared_value_ph", "delete_party", "destination_ph",
-            "device_setup_help", "device_use_q", "dim_unit_code_ph",
-            "dispatch_to_rider", "divisor_ph", "docket_charge_ph",
-            "done_open_books", "drawer_count", "editing_item", "empty_catalog",
-            "enter_owner_passcode", "enter_staff_passcode", "eway_ph", "expense_heading",
-            "expenses_word", "export_day", "extra_note_awb_ph",
-            "extra_note_expense_ph", "extra_per_kg_ph", "extra_till",
-            "extra_tills_heading", "facet_bank_help", "facet_bank_title",
-            "facet_cod_help", "facet_cod_title", "facet_ops_help",
-            "facet_ops_title", "facet_riders_help", "facet_riders_title",
-            "failed_delivery", "favorites", "favorites_help", "feature_access_help", "find_scan_awb",
-            "first_amount_ph", "first_kg_ph", "footer_local", "forget_shop",
-            "fresh_book_moklanjo", "fresh_selected", "from_code_ph", "fuel_ph",
-            "goods_received", "gross_word", "handover_carrier", "height_cm_ph",
-            "hide_pin", "how_start", "icon_custom", "icon_default",
-            "icon_new_selected", "import_carrier_bill_csv", "import_day", "import_items_csv",
-            "import_parties_csv", "import_pincodes_csv", "in_stock", "insurance_label", "yes_label", "no_label",
-            "print_route_label", "new_party_kind_label", "inventory", "inventory_stock",
-            "item_name", "item_name_lang_ph", "item_name_ph", "item_price_ph",
-            "items", "items_help", "lang_follow_platform", "lang_pick_user",
-            "lang_platform_now", "language", "language_currency",
-            "language_setup_hint", "last_client_mode", "last_server_mode",
-            "later_country_pack", "length_cm_ph", "load_bulk_row", "local_badge",
-            "lock_app", "locked_word", "login_id_opt_ph", "login_id_ph",
-            "logo_default", "logo_yours", "manager_pin_ph", "manifest_cod_total",
-            "manifest_received_by", "manifest_sign", "mark_cleared",
-            "mark_delivered", "marked_sold_out", "measures_help_moklanjo",
-            "mix_type_hint_moklanjo", "money_in_sales", "more", "more_help_moklanjo",
-            "na", "nav_items", "nav_lock", "nav_reports", "nav_settings", "ndr_address_wrong",
-            "ndr_customer_unavailable", "ndr_door_locked", "ndr_other", "ndr_refused",
-            "net_word",
-            "new_branch_name_ph", "new_customer_ph", "new_item", "new_party_clear",
-            "new_party_kind_ph", "new_password_ph", "new_pin_ph",
-            "new_server_name_ph", "next", "next_booking", "next_country",
-            "no_favorites", "no_sale_yet", "no_staff_yet", "not_tracked",
-            "note_bank_ph", "note_buy_expense_ph", "note_expense_ph",
-            "note_gstin_ph", "note_ph", "note_pod_ph", "notes_attach_party",
-            "notes_attach_sale", "notify_phone_ph", "off", "offline_badge", "ok",
-            "on_account_ap", "onboard_book_tmpl", "onboard_fresh_tmpl",
-            "onboard_template_tmpl", "open_server", "only_owner_remove_server", "owner_pin_remove_server", "server_remove_pin_ph", "ops_desk_help",
-            "optional_login_help", "options_moklanjo_ph", "or_unlock_login", "order",
-            "org_optional_ph", "out_for_delivery", "owed", "owes_word", "owner",
-            "paid_by", "paid_now", "pair_now", "pairing_code_ph",
-            "part_second_way_ph", "party_kind_ph", "parties_list_heading", "party_name_selected_ph",
-            "password_ph", "pay_ap_card", "pay_ap_cash", "pay_ap_heading",
-            "pay_ap_upi", "pay_credit", "pay_selected_heading", "period_bill",
-            "period_bill_party", "permission_preset", "phone_ph", "address_ph",
-            "party_custom_fields_heading", "party_custom_help", "party_custom_key_ph",
-            "party_custom_value_ph", "party_custom_add", "party_custom_remove",
-            "party_custom_empty", "party_custom_pick_first",
-            "photo", "pick", "pick_logo",
-            "pick_pod_photo", "pin_count_full", "pin_count_need", "pin_count_ready",
-            "pin_count_zero", "pin_hint", "pin_hint_books", "pin_hint_choose",
-            "pin_hint_new", "pin_hint_pair_first", "pin_hint_paired",
-            "pin_hint_shop_code", "place_name_ph", "preset_help_moklanjo", "prev",
-            "prev_country", "price_ph", "print_awb_label", "print_drs", "print_open",
-            "print_run_sheet",
-            "product_locked_moklanjo", "product_only_moklanjo", "purchases_cogs",
-            "qty", "qty_cap", "qty_example_ph", "quantity_ph", "ready_to_sell",
-            "rate_carrier_ph", "rate_party_ph",
-            "reason_amend_ph", "reason_note_ph", "reason_required_ph",
-            "reattempt", "recent_label", "record_day_close", "record_purchase", "refresh",
-            "refresh_from_shop", "refund", "remit_cod", "remove", "remove_selected",
-            "reports", "reports_aging", "reports_balance_sheet", "reports_expenses",
-            "reports_help", "reports_month", "reports_today", "restock",
-            "restore_backup", "restore_help", "wipe_data_heading", "wipe_data_help", "wipe_trading", "wipe_schema", "wipe_ui", "wipe_owner_pin_ph", "wipe_delete_selected", "wipe_owner_only", "restore_owner_only", "wipe_owner_pin_needed", "wipe_nothing_selected", "wipe_done", "wipe_schema_done", "rider_cod_handed_ph", "rider_name_ph", "rider_phone_ph",
-            "riders", "riders_own_fleet", "role_both", "role_carrier",
-            "role_cashier", "role_consignor", "role_help_both", "role_help_carrier",
-            "role_help_consignor", "role_help_supplier", "role_manager",
-            "role_supplier", "role_title_ph", "rollup", "round_word", "rounded",
-            "rounded_total", "sales", "sales_refunds", "save",
-            "save_booking_measures", "save_brand", "save_business_id",
-            "save_business_name", "save_features", "save_names", "second_way",
-            "select", "selected_language", "selected_word", "sell", "sell_money_in",
-            "server", "server_ip_ph", "service_pct_ph", "set_credit_limit",
-            "set_login_named", "set_login_selected", "set_owner_pin", "settle_card", "settle_cash",
-            "settle_rider_cod", "settle_rider_pay", "share_receipt_whatsapp",
-            "setup_app_moklanjo", "setup_complete", "shop", "shop_logo_optional",
-            "mode_desk", "mode_rider", "waiting_office", "capture_signature",
-            "incoming_manifest", "pickup_request", "pickup_run", "auto_assign_area",
-            "reorder_stops", "vehicle_inspect", "print_docket", "franchise_statement",
-            "tally_export", "open_whatsapp", "copy_sms", "pick_barcode_image",
-            "delivery_feedback", "lan_self_book",
-            "short_code_ph", "show_pin", "size_in", "slab_kg_ph", "sold_out",
-            "split", "spreadsheet_csv", "staff", "staff_name_ph", "start_fresh",
-            "start_template", "start_tracking", "starting_password_ph",
-            "starting_pin_ph", "status_client_unlock", "status_server_set_pin",
-            "status_server_tills", "status_server_unlock", "stock_minus",
-            "stock_plus", "stock_type_help", "stop_extra_tills", "supplier_name_ph",
-            "supplier_ph", "switch_device", "take_payment", "tax_added_till",
-            "tax_inside_price", "tax_rate_ph", "team", "team_owner_help",
-            "team_self_help", "team_pins", "my_pin_settings", "settings_hub_help_my_pin",
-            "they_owe_us", "this_device", "this_shop", "till_to_bank",
-            "tmpl_blurb", "tmpl_current", "tmpl_how", "tmpl_selected", "to_code_ph",
-            "today_books", "today_mid", "today_prefix", "total", "uncleared_no_ph",
-            "undo", "unit_at", "unit_at_cap", "unit_cost_ph", "unit_kg_blank_ph",
-            "unit_name_bag_ph", "units_heading", "units_help", "unlock",
-            "unlock_after_pairing", "unlock_to_continue", "unlock_with_login",
-            "unmark", "update_my_password", "update_my_pin", "upi", "upi_amount_ph",
-            "use", "use_carrier_cost", "vehicle_ph", "void", "we_owe_them", "weight_in", "weight_kg_ph",
-            "weight_unit_code_ph", "who_unlocking", "write_off_ap",
-            "write_off_heading", "write_off_nil", "your_brand", "your_favorites",
-            "your_items", "zone_name_ph", "zone_ph", "contents_ph",
-            "parcel_one_fmt",
-            "cod_to_collect", "cod_on_road", "cod_owed_consignors", "cod_to_hand_in",
-            "trk_booked", "trk_picked_up", "trk_in_transit", "trk_delivered", "trk_rto", "lane_to_dispatch", "lane_with_carrier", "lane_failed", "lane_done_today", "ops_board_help", "lane_empty", "picked_fmt", "pick_all", "bag_for_carrier", "send_with_rider", "out_again", "return_to_sender", "runs_bags_heading", "print_word", "bag_word", "run_word", "parcels_fmt", "parcel_history", "attempt_fmt", "pieces_short_fmt", "note_reason_ph", "ops_pick_first",
-        ];
+    fn every_catalogue_language_translates_every_key() {
+        let keys = english_keys();
+        assert!(keys.len() > 500, "en() scan found only {} keys", keys.len());
+        let key_set: std::collections::HashSet<&str> = keys.iter().copied().collect();
         // Every gap at once, so one run says everything still to translate.
         let mut gaps = Vec::new();
-        for lang in LANGS {
-            for key in KEYS {
-                let value = t(lang, key);
-                if value == *key {
-                    gaps.push(format!("{lang} left {key} untranslated"));
-                } else if value.is_empty() && !en(key).is_empty() {
-                    gaps.push(format!("{lang} {key} is empty"));
-                } else if chrome_extra(lang, key).is_none() && value == en(key) && !en(key).is_empty() {
-                    // A chrome row (or the per-language table) must cover the
-                    // key — falling back to the English text is a failure.
-                    gaps.push(format!("{lang} falls back to English for {key}"));
+        for (code, _) in packs::PACKS {
+            if !needed_tables().contains(code) {
+                gaps.push(format!("translations/{code}.tsv is not a catalogue language"));
+            }
+        }
+        for code in needed_tables() {
+            let Some((text, table)) = loaded_table(code) else {
+                gaps.push(format!("{code}: no translations/{code}.tsv"));
+                continue;
+            };
+            let mut seen = std::collections::HashSet::new();
+            for line in text.lines().filter(|l| !l.is_empty() && !l.starts_with('#')) {
+                match line.split_once('\t') {
+                    None => gaps.push(format!("{code}: line without a tab: {line}")),
+                    Some((key, _)) if !seen.insert(key) => gaps.push(format!("{code}: {key} twice")),
+                    Some((key, _)) if !key_set.contains(key) => {
+                        gaps.push(format!("{code}: {key} is not an en() key (stale)"))
+                    }
+                    _ => {}
+                }
+            }
+            for key in &keys {
+                let english = en(key);
+                match table.get(key) {
+                    None => gaps.push(format!("{code} left {key} untranslated")),
+                    Some(value) if value.trim().is_empty() && !english.trim().is_empty() => {
+                        gaps.push(format!("{code} {key} is empty"))
+                    }
+                    Some(value) if value == key => gaps.push(format!("{code} {key} shows the raw key")),
+                    Some(value) if placeholders(value) != placeholders(&english) => gaps.push(format!(
+                        "{code} {key} placeholders {:?} ≠ English {:?}",
+                        placeholders(value),
+                        placeholders(&english)
+                    )),
+                    _ => {}
                 }
             }
         }
         assert!(gaps.is_empty(), "{} gaps:\n{}", gaps.len(), gaps.join("\n"));
-        assert_eq!(t("en", "sold_out"), "Unavailable");
-        assert_eq!(t("gu", "cash"), "રોકડ");
-        assert_eq!(t("gu", "owed"), "બાકી");
-        assert_eq!(t("hi", "sold_out"), "बिक गया");
+        // Aliases read their parent's table.
+        assert_eq!(t("pt-BR", "cash"), t("pt", "cash"));
+        assert_eq!(t("yue", "cash"), t("zh-Hant", "cash"));
+        assert_eq!(t("gom", "cash"), t("kok", "cash"));
+        assert_ne!(t("hi", "cash"), t("en", "cash"));
+    }
+
+    /// Every character of every translation has a glyph in the WorldFonts
+    /// chain (ui_script.rs) — a missing script would draw as empty boxes.
+    #[test]
+    fn every_translation_draws_with_the_shipped_fonts() {
+        let script = include_str!("ui_script.rs");
+        let start = script.find("let WorldFonts = FontFamily{").expect("WorldFonts in ui_script.rs");
+        let end = start + script[start..].find("\n    }").expect("end of WorldFonts");
+        let files: Vec<&str> = script[start..end]
+            .lines()
+            .filter_map(|line| line.split_once("crate_resource(\"self:")?.1.split_once('"').map(|(f, _)| f))
+            .collect();
+        assert!(files.len() > 20, "WorldFonts scan found only {files:?}");
+        let data: Vec<Vec<u8>> = files
+            .iter()
+            .map(|f| std::fs::read(std::path::Path::new(env!("CARGO_MANIFEST_DIR")).join(f)).unwrap())
+            .collect();
+        let faces: Vec<_> = data
+            .iter()
+            .map(|d| rustybuzz::ttf_parser::Face::parse(d, 0).unwrap())
+            .collect();
+        let mut missing = std::collections::BTreeMap::<&str, std::collections::BTreeSet<char>>::new();
+        for code in needed_tables() {
+            let Some((_, table)) = loaded_table(code) else { continue };
+            for value in table.values() {
+                for c in value.chars() {
+                    // Joiners / variation selectors steer shaping; they need no glyph.
+                    if c.is_whitespace()
+                        || c.is_control()
+                        || matches!(c, '\u{200b}'..='\u{200f}' | '\u{2060}' | '\u{fe00}'..='\u{fe0f}')
+                    {
+                        continue;
+                    }
+                    if !faces.iter().any(|f| f.glyph_index(c).is_some()) {
+                        missing.entry(code).or_default().insert(c);
+                    }
+                }
+            }
+        }
+        assert!(missing.is_empty(), "characters no shipped font draws: {missing:?}");
+    }
+
+    /// An entity-template overlay would show its English in every language;
+    /// an app's vertical words belong in its own `en` (translated above).
+    #[test]
+    fn template_overrides_stay_empty() {
+        for tmpl in crate::entity_template::TEMPLATES {
+            assert!(
+                tmpl.label_overrides.is_empty(),
+                "{}: move label_overrides into locale::en so every language translates them",
+                tmpl.id
+            );
+        }
     }
 
     /// Buttons must never show snake_case keys to end users.

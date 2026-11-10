@@ -1,0 +1,835 @@
+# Finnish — Suomi (fi). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	Kuriiritoimisto kirjat + varauspöytä. Ilmainen offline-tilassa.
+unlock	Avaa lukitus
+pin_hint	Omistajan PIN on aluksi 0000
+sell	Varaus
+buy	Maksaa
+books	Päiväkirja
+books_help	Tämän päivän asema. Varaus = paketit sisään. Maksa ulos = kuljetuslaskut ja -kulut. Osapuolet = lähettäjät ja kuljettajat.
+buy_help	Kulutuskupongit ja operaattorilaskut (rahat pois). Tili pysyy puoluekirjana.
+sell_money_in	Varaa paketti
+buy_money_out	Kulut / kuljetuslasku
+record_purchase	Kirjaa osto
+add_expense	Kulutosite
+bank_book	Pankkikirja
+credit_help	Osapuolen tunnus on yksilöllinen (nimet voivat toistua). Roolit: Lähettäjä (AR), Kuljettaja (AP) tai molemmat kyseisessä tunnuksessa. Kirjastot pysyvät erillään; raportit näyttävät net.
+party_kind_ph	Mukautettu rooli (valinnainen) – tai napauta yllä olevaa sirua
+parties_list_heading	Tallennetut juhlat
+reports_help	Päiväkirja, velalliset ja velkojat, pankkikirja, kulutositteet, tulos.
+reports_today	Päiväkirja (tänään)
+reports_month	Tulos (kuukausi)
+reports_aging	Avoimet / debet-kredit
+reports_balance_sheet	Tase
+reports	Pankkikirja ja tulos
+refresh	Päivitä
+undo	Kumoa
+start_tracking	Aloita seuranta
+stock_minus	− Varasto
+stock_plus	+ Varasto
+settle_cash	Maksa käteisellä
+settle_card	Maksa kortilla
+items	Hinnat ja palvelut
+nav_items	Hinnat
+more	Lisää
+your_items	Omat hinnat
+items_help	Jokainen rivi on nopeus (esim. pintavyöhyke A). Yksikkö on yleensä kg. Muokkaa napauttamalla.
+add_item	Lisää korko
+new_item	Uusi korko
+adding_item	Lisätään uusi hinta
+editing_item	Muokkaus
+save	Tallenna
+remove	Poista
+empty_catalog	Ei vielä hintoja. Avaa Hinnat ja palvelut, lisää yksi (nimi + hinta, yksikkökg) ja sitten Varaus.
+counter_sale	Vastavaraus
+total	Yhteensä
+cash	Käteinen
+upi	UPI
+card	Kortti
+credit	Osapuolet
+clear	Tyhjennä
+ready_to_sell	Valmis kirjaamaan
+today_prefix	Tänään
+today_mid	tänään
+owed	avoin
+round_word	pyöristä
+back	Takaisin
+sold_out	Ei saatavilla
+restock	Täydennä
+not_tracked	Ei seurata
+in_stock	varastossa
+marked_sold_out	Merkitty ei saataville
+add_upper	LISÄÄ
+na	Ei ole
+qty	Paino/määrä
+unit_at	Hinta @
+actual	Todellinen
+applied	Käytetty
+note_ph	Huomautus (valinnainen)
+rounded	PYÖRISTETTY
+split	Jaa
+counter	Tiski
+parcel	Paketti
+order	Tilaus
+sales	Varaukset
+sales_refunds	Varaukset ja palautukset
+day_close	Päivän sulku
+reports_expenses	Pankkikirja ja tulos
+nav_reports	Raportit
+nav_settings	Asetukset
+nav_lock	Lukitus
+sidebar_settings	Sivupalkin asetukset
+sidebar_settings_help	Samat kuvakkeet kuin sivukiskossa. Vedä riviä järjestääksesi. Käännä kytkin näyttääksesi tai piilottaaksesi. Asetukset ja Lukitus pysyvät aina palkissa.
+sidebar_always_on_short	Aina päällä
+sidebar_back_settings	Takaisin
+sidebar_shown	Näkyvissä
+sidebar_hidden	Piilotettu
+sidebar_always_on	Aina palkissa
+sidebar_shown_hint	Näkyy sivukiskossa / alavälilehdissä
+sidebar_hidden_hint	Piilotettu palkista
+sidebar_menu_items	Ruokalista ja tuotteet
+sidebar_enable_all	Ota kaikki käyttöön
+sidebar_disable_all	Poista kaikki käytöstä
+sidebar_order_saved	Sivupalkin järjestys tallennettu
+sidebar_visibility_saved	Sivupalkin näkyvyys tallennettu
+amounts_hide	Piilota
+amounts_show	Näytä
+no_sale_yet	Ei vielä myyntiä
+favorites	Suosikit
+favorites_help	Usein myymäsi tuotteet, tallennettu tälle kirjautumiselle. Lisää yksi laskuun tai kokoa lista kaikista tuotteista alta.
+your_favorites	Omat suosikit
+all_items	Kaikki tuotteet
+no_favorites	Ei vielä suosikkeja — lisää tuotteita alla olevasta listasta.
+add_to_bill	Lisää laskuun
+added	Lisätty
+owes_word	velkaa
+selected_word	Valittu
+chip_clear_credit	tyhjennä — luotto tai ota ennakko
+chip_missing_customer	Valittu asiakas puuttuu — valitse uudelleen
+chip_no_customer	Ei vielä asiakasta — kirjoita nimi ja napauta Luotto
+credit_summary_fmt	{} asiakasta · avoin luotto {} · pidetyt ennakot {}
+recent_label	Viimeisimmät:
+inventory	Varasto
+inventory_stock	Varasto ja saldot
+branches	Toimipisteet
+branches_org	Toimipisteet ja organisaatio
+credit_customers	Osapuolet (velalliset ja velkojat)
+customer_name_ph	Osapuolen nimi
+new_customer_ph	Uuden osapuolen nimi
+item_name_ph	Arvon nimi (esim. pintavyöhyke A)
+item_price_ph	kg / ensimmäinen laatta
+start_template	Tuote
+next_booking	Seuraava varaus
+destination_ph	Kohdekaupunki/vyöhyke
+consignee_ph	Vastaanottajan nimi
+consignee_phone_ph	Vastaanotin puhelin
+consignee_address_ph	Toimitusosoite
+origin_name_ph	Lähettäjän nimi
+origin_phone_ph	Lähettäjän puhelin
+origin_address_ph	Nouto / lähtöosoite
+booking_consignor_heading	Lähettäjä (asiakas / lähettäjä)
+booking_consignee_heading	Vastaanottaja (vastaanottaja)
+booking_consignor_hint	Valitse täytettävä juhla tai jätä tyhjäksi sisäänkäyntiä varten. Tarvitaan kotiin noutoon ja RTO:hon.
+booking_consignee_hint	Paketin vastaanottaja. Jätä tyhjäksi sisäänkäyntitiskille.
+weight_kg_ph	Todellinen kg
+length_cm_ph	L cm
+breadth_cm_ph	B cm
+height_cm_ph	H cm
+chargeable_kg	Maksullinen kg
+awb_label	AWB
+booking_help	Lähettäjä + vastaanottaja (tyhjä OK) → kohde → punnitus → keräilyhinta → Tili/käteinen → maksa. AWB tulostaa kuitille. Seuraava varaus tyhjentää pöydän. Pyöristetty alkaa yhtä kuin Applied – muokkaa vain pyöristääksesi laskun.
+cart_empty_hint	Työpöytä tyhjä – lähettäjä/vastaanottaja valinnainen, aseta määränpää ja paino, napauta hinnan kohdalla LISÄÄ ja maksa sitten.
+team	Tiimi
+team_pins	Tiimi ja PIN-koodit
+my_pin_settings	Oma PIN
+settings_hub_help_my_pin	Vaihda tälle laitteelle kirjautuneen henkilön avaus-PIN.
+team_self_help	Vain sinä voit vaihtaa lukituksen avaus-PIN-koodin (ja valinnaisen kirjautumissalasanan). Kysy Omistajalta, tarvitsetko erilaisia ​​näyttöjä tai oikeuksia.
+backup_settings	Varmuuskopio ja asetukset
+lock_app	Lukitse sovellus
+pick	Valitse
+select	Valitse
+advance	Ennakko
+owner	Omistaja
+staff	Henkilöstö
+photo	Kuva
+auto	Automaattinen
+prev	Edellinen
+next	Seuraava
+ok	OK
+this_shop	Palvelin
+extra_till	Pääte
+off	Pois
+server	Palvelin
+client	Pääte
+language_currency	Kieli ja valuutta
+language	Kieli
+choose_language	Valitse kieli
+language_setup_hint	Seuraa tämän laitteen kieltä tai valitse itse.
+lang_follow_platform	Laitteen kieli
+lang_pick_user	Valitse kieli
+lang_platform_now	Laitteen kieli nyt
+selected_language	Valittu
+continue	Jatka
+this_device	TÄMÄ LAITE
+device_use_q	Miten tätä laitetta käytetään?
+last_server_mode	Oli palvelin — napauta jatkaaksesi
+last_client_mode	Oli pääte — napauta jatkaaksesi
+choose_server	Valitse palvelin
+choose_server_hint	Avaa olemassa oleva palvelin tai luo uusi toiselle yritykselle.
+create_new_server	Luo uusi palvelin
+open_server	Avaa
+new_server_name_ph	Uuden palvelimen nimi (valinnainen)
+server_remove_pin_ph	Omistajan PIN palvelimen poistoon
+only_owner_remove_server	Vain omistaja voi poistaa palvelimen
+owner_pin_remove_server	Tämän palvelimen poistoon tarvitaan omistajan PIN
+device_setup_help	Palvelin pitää kirjat täällä. Pääte paritetaan palvelimeen.
+currency	Valuutta
+backup	Varmuuskopio
+settings_sec_diag	Diagnostiikka
+settings_hub_help	Avaa yksi alue kerrallaan — vähemmän vieritystä, selvemmät valinnat.
+settings_sec_devices	Muut laitteet
+settings_sec_alerts	Ilmoitukset
+alerts_help	Kuinka kauan tilaviestit pysyvät näytöllä sinulle (tämä kirjautuminen).
+snack_secs_ph	Sekuntia (3–60, oletus 10)
+snack_secs_save	Tallenna ilmoitusaika
+snack_secs_saved	Ilmoitusaika tallennettu — {n} sekuntia
+snack_secs_bad	Syötä sekunnit numerona (3–60)
+cancelled	Peruttu
+cancel	Peru
+opening_client	Avataan päätettä…
+preparing_desk	Valmistellaan pöytää…
+opening_server	Avataan palvelinta…
+creating_server	Luodaan palvelinta…
+diag_privacy_help	Lokit pysyvät tällä laitteella. Salaisuuksia (PIN, salasanat) ei koskaan tallenneta. Paketin jakaminen laitteen ulkopuolelle vaatii joka kerta nimenomaisen hyväksyntäsi — ei myydä eikä luovuteta kolmansille.
+diag_level	Yksityiskohtataso
+diag_level_error	Virheet
+diag_level_warn	Varoitukset
+diag_level_info	Tiedot
+diag_level_debug	Vianjäljitys
+diag_support_start	Aloita 30 min tukisessio
+diag_support_stop	Lopeta tukisessio
+diag_support_started	Tukisessio päällä — vianjäljityksen tiedot 30 minuuttia
+diag_support_ended	Tukisessio päättyi
+diag_export_local	Vie paikallinen kopio
+diag_export_local_done	Paikallinen diagnostiikka valmis kohteessa {path} — valitse mihin kopio tallennetaan
+diag_approve_send	Hyväksy jako tämän laitteen ulkopuolelle
+diag_send_heading	Jaa tämän laitteen ulkopuolelle
+diag_send_help	Hyväksyntä koskee yhtä pakettia ja vanhenee sitten. Väliaikainen — vain tuotteen korjaamiseen tai parantamiseen. Ei jaeta kolmansille. Toimii Linuxissa, Windowsissa, macOS:ssä ja Androidissa.
+optional_login_heading	Valinnainen kirjautuminen
+rights_heading	Oikeudet
+booking_scope_heading	Kotimainen / kansainvälinen
+diag_send_approved	Jako hyväksytty yhdelle paketille (vanhenee pian)
+diag_export_send	Luo jakopaketti (vaatii hyväksynnän)
+diag_export_send_done	Jakopaketti valmis kohteessa {path} — valitse tallennuspaikka ja lähetä vain Kumkaj-tuelle
+diag_save_bundle	Tallenna diagnostiikkakopio
+diag_bundle_saved	Diagnostiikkakopio tallennettu kohteeseen {path}
+diag_bundle_failed	Diagnostiikkakopiota ei voitu tallentaa — yritä uudelleen
+diag_clear	Tyhjennä diagnostiikkalokit
+diag_cleared	Diagnostiikkalokit tyhjennetty
+use	Käytä
+add_branch	Lisää toimipiste
+add_conversion	Lisää muunnos
+add_item_plain	Lisää tuote
+add_note	Lisää huomautus
+add_opening_balance	Lisää alkusaldo
+add_rider	Lisää ratsastaja
+add_staff	Lisää työntekijä
+add_unit	Lisää yksikkö
+add_use_name	Lisää / käytä tätä nimeä
+allow_extra_tills	Salli lisäkassat
+amend	Oikaise
+apply_country_pack	Käytä maapakettia
+datetime_appearance	Päivämäärän ja kellon ulkoasu
+datetime_appearance_help	Kirjat pitävät sisällään vuoden ensimmäinen RFC3339. Nämä muuttavat vain sitä, miltä päivämäärät ja kellot näyttävät kuiteissa, tarroissa, raporteissa ja näytössä.
+datetime_example	Esimerkki nyt: {ex}
+date_order	Päivämäärän järjestys
+date_order_dmy	P/K/V
+date_order_mdy	K/P/V
+date_order_ymd	V-K-P
+time_format	Kello
+time_format_24h	24 tuntia
+time_format_12h	12 tuntia
+attach_bill_photo	Liitä laskun kuva
+attach_pdf	Liitä PDF
+attach_photo	Liitä kuva
+bank	Pankki
+bank_in	Pankkiin
+bank_out	Pankista
+bank_to_till	Pankki → kassa
+till_to_bank	Kassa → pankki
+mark_cleared	Merkitse täsmäytetyksi
+unmark	Poista merkintä
+role_both	Molemmat
+role_carrier	Kuljettaja
+role_cashier	Kassahenkilö
+role_consignor	Lähettäjä
+role_manager	Päällikkö
+role_supplier	Toimittaja
+branch_name_sell_ph	Toimipisteen nimi, josta myydään
+bring_my_book	Tuo kirjani
+business_tax_id_ph	Yrityksen verotunnus
+card_amount_ph	Kortin summa
+cash_amount_ph	Käteisen summa
+upi_amount_ph	UPI-summa
+carrier_cost_ph	Kuljettajan hinta
+carrier_party_ph	Kuljettajan juhla
+choose_icon	Valitse kuvake
+choose_logo	Valitse logo
+choose_receipt_stamp	Valitse kuitin leima
+choose_payment_qr	Valitse maksu-QR
+clear_icon	Tyhjennä kuvake
+clear_logo	Kirkas logo
+clear_photo	Tyhjennä kuva
+clear_stamp	Tyhjennä leima
+clear_payment_qr	Tyhjennä maksu-QR
+print_faces	Tulostetut kasvot (kuitti / kausilasku)
+print_faces_help	Valinnainen leima ja maksu-QR logosi vieressä varauskuitteissa ja kausilaskuissa.
+awb_pools_heading	Operaattorin AWB-numeropoolit
+add_awb_pool	Lisää AWB-allas
+awb_pool_carrier_ph	Operaattorin puolueen nimi
+awb_pool_start_ph	Aloitus nro.
+awb_pool_end_ph	Loppu nro.
+awb_pool_prefix_ph	Etuliite (valinnainen)
+awb_pool_label_ph	Tunniste (valinnainen)
+pieces_ph	Kappaleet (tyhjä = 1) — laajenna rahtia varten / moniosainen
+bulk_awbs_ph	Joukko-AWB:t — liitä monta (rivivaihto tai pilkku) yhdellä tilasiirrolla
+tds_cut_ph	TDS-leikkaus (valinnainen)
+discount_ph	Alennus (valinnainen)
+cheque_no_ph	Tarkista numero (valinnainen)
+bill_reminder_chase	Laskumuistutusten takaa-ajoluettelo
+month_mix_report	Kuukauden sekoitusraportti
+copy_month_gst_csv	Kopioi kuukausi GST CSV
+domestic	Kotimainen
+international	Kansainvälinen
+pick_logo	Valitse logo
+booking_scope_hint_domestic	Volumetrinen ÷5000 (kotimainen) — napauta Kansainvälistä, jos haluat ilmaa ÷6000
+booking_scope_hint_intl	Volumetrinen ÷6000 (kansainvälinen ilma) — hana Kotimainen kauppaan ÷5000
+cod_register	COD-rekisteri
+collect_cod	Kerää COD (AWB)
+consignments_dispatch	Lähetykset ja lähetys
+consignor_party_ph	Lähettäjän / puolueen nimi
+copy_day_book_csv	Kopioi päiväkirjan CSV
+copy_day_close	Kopioi päivän sulku
+copy_items_csv	Kopioi tuotteiden CSV
+copy_outstanding_csv	Kopioi avointen CSV
+copy_parties_csv	Kopioi osapuolten CSV
+copy_party_ledger_csv	Kopioi osapuolen reskontran CSV
+copy_receipt	Kopioi kuitti
+copy_report	Kopioi raportti
+counted_cash_ph	Laskettu käteinen laatikossa
+counter_agency_ph	Myyjän/toimiston nimi (valinnainen)
+create_backup	Luo varmuuskopio
+day_close_summary	Päivän sulun yhteenveto
+delete_party	Poista valittu osapuoli
+dispatch_to_rider	Lähetys varattu → ratsastaja
+docket_charge_ph	Docket maksu
+declared_value_ph	Ilmoitettu arvo
+contents_ph	Sisällys
+eway_ph	E-rahtikirja nro.
+insurance_label	Vakuutus
+yes_label	Kyllä
+no_label	Ei
+print_route_label	Tulosta reitti
+new_party_kind_label	Uusi juhlatyyppi
+done_open_books	Valmis — avaa kirjat
+export_day	Vie päivä
+extra_note_expense_ph	Lisähuomautus viimeiselle kululle
+extra_note_awb_ph	Lisähuomautus tästä AWB:stä / myynnistä
+failed_delivery	Toimitus epäonnistui
+find_scan_awb	Etsi / Skannaa AWB
+forget_shop	Unohda tämä liike
+fuel_ph	Polttoaine
+handover_carrier	Käsin varattu → kantaja
+import_day	Tuo päivä
+import_items_csv	Tuo tuotteet / hinnat CSV…
+import_parties_csv	Tuo osapuolten CSV…
+import_pincodes_csv	Tuo PIN-koodit CSV…
+import_carrier_bill_csv	Tuo operaattorilasku CSV…
+copy_carrier_bill_report	Kopioi viimeinen operaattorin laskuraportti
+use_carrier_cost	Käytä operaattorin kustannuksia
+rate_carrier_ph	Operaattori (tyhjä = myyntihintamme)
+rate_party_ph	Juhla (tyhjä = kaikki asiakkaat)
+carrier_pick_ph	Kuljettaja kustannusten mukaan (vertailusta)
+item_name	Tuotteen nimi
+load_bulk_row	Lataa bulkkirivi → pöytä
+login_id_ph	Käyttäjänimi
+mark_delivered	Mark toimitettu
+manifest_cod_total	COD yhteensä
+manifest_received_by	Vastaanottanut
+manifest_sign	Merkki
+ndr_address_wrong	Osoite väärä
+ndr_customer_unavailable	Ei saatavilla
+ndr_door_locked	Ovi lukossa
+ndr_other	muu
+ndr_refused	Kieltäytyi
+out_for_delivery	Toimitettavaksi
+print_drs	Tulosta DRS
+print_run_sheet	Tulostusarkki
+reattempt	Yritä uudelleen
+rider_cod_handed_ph	COD luovutettu
+settle_rider_cod	Selvitä ratsastaja COD
+mode_desk	Vastaanotto
+mode_rider	Ratsastaja
+waiting_office	odottaa toimistolle pääsyä
+capture_signature	Kaappaa allekirjoitus
+incoming_manifest	Saapuva manifesti
+pickup_request	Noutopyyntö
+pickup_run	Noutoajo
+auto_assign_area	Määritä alue automaattisesti
+reorder_stops	Uudelleenjärjestys pysähtyy
+settle_rider_pay	Selvitä ratsastajan palkka
+vehicle_inspect	Ajoneuvon tarkastus
+print_docket	Tulosta asiakirja
+franchise_statement	Franchise-ilmoitus
+tally_export	Tally-voucherin vienti
+open_whatsapp	Avaa WhatsApp
+copy_sms	Kopioi tekstiviesti
+pick_barcode_image	Valitse skannattava kuva
+share_receipt_whatsapp	Jaa kuitti WhatsAppissa
+delivery_feedback	Palaute toimituksesta
+lan_self_book	LAN itsevaraus
+new_party_clear	Uusi osapuoli (tyhjennä lomake)
+new_party_kind_ph	Uusi juhlatyyppi (toimittaja / kuljetusliike)
+next_country	Seuraava maa
+prev_country	Edellinen maa
+note_gstin_ph	Huomautus / GSTIN / sopimusmuistutus
+note_pod_ph	Huomautus / POD (valinnainen)
+on_account_ap	Tiliin (AP)
+org_optional_ph	Organisaatio (valinnainen)
+paid_now	Maksettu nyt
+pairing_code_ph	Parituskoodi
+pair_now	Parita nyt
+party_name_selected_ph	Osapuolen nimi (tai käytä valittua)
+password_ph	Salasana
+pay_ap_card	Maksa AP kortilla
+pay_ap_cash	Maksa AP käteisellä
+pay_ap_upi	Maksa AP UPI:lla
+period_bill	Kauden lasku
+period_bill_party	Kausilasku (juhla)
+pick_pod_photo	Valitse POD-kuva
+print_awb_label	Tulosta AWB-tarra
+print_open	Tulosta / avaa
+reason_amend_ph	Syy oikaisulle / mitätöinnille / hyvitykselle
+reason_note_ph	Syy / huomautus (hävikki, laskenta, …)
+record_day_close	Kirjaa päivän sulku
+refresh_from_shop	Päivitä liikkeestä
+refund	Hyvitä
+remit_cod	Lähetä COD (osapuoli)
+remove_selected	Poista valittu
+restore_backup	Palauta varmuuskopio
+rider_name_ph	Ratsastajan nimi
+rider_phone_ph	Ratsastajan puhelin
+riders	Ratsastajat
+riders_own_fleet	Ratsastajat (oma laivasto)
+rollup	Yhteenveto
+save_booking_measures	Tallenna varaustoimenpiteet
+save_brand	Tallenna merkki
+save_business_id	Tallenna yritystunnus
+save_business_name	Tallenna yrityksen nimi
+save_features	Tallenna työasetukset
+save_names	Tallenna nimet
+server_ip_ph	Palvelimen IP (esim. 192.168.1.10)
+set_credit_limit	Aseta raja osapuolelle
+set_login_selected	Aseta kirjautuminen valitulle
+set_login_named	Aseta kirjautuminen henkilölle {name}
+shop	Liike
+start_fresh	Aloita tyhjästä
+stop_extra_tills	Pysäytä lisäkassat
+backup_auto	Varmuuskopioidaan automaattisesti joka päivä · viimeksi {when} · viimeiset 14 päivää säilytetään kansiossa {dir}.
+backup_auto_none	Varmuuskopioidaan automaattisesti joka päivä — ensimmäinen ajetaan hetken kuluttua.
+backup_copy_to	Kopiot menevät myös kansioon {dir}.
+backup_copy_btn	Kopioi varmuuskopiot myös kansioon…
+autostart_off	Käynnistä tämän tietokoneen kanssa
+autostart_on	Käynnistyy tämän tietokoneen kanssa ✓ — napauta pysäyttääksesi
+autostart_done_on	Tämä tietokone avaa nyt sovelluksen käynnistyessään — liikkeen palvelin palaa sähkökatkon jälkeen.
+autostart_done_off	Tämä tietokone ei enää avaa sovellusta käynnistyessään.
+right_allowed	Sallittu
+right_with_approval	Hyväksynnällä
+right_denied	Ei sallittu
+editing_staff	Oikeudet
+team_pick_ph	Muokattava työntekijä — nimi, käyttäjänimi tai valitse
+select_staff	Valitse tämä työntekijä
+rights_help	Oikeudet — napauta muuttaaksesi: Sallittu → Hyväksytty (esimiehen PIN-koodi sillä hetkellä) → Ei sallittu.
+right_void_refund	Mitätöi varaus tai hyvitä varaus
+right_amend_sale	Muuta tallennettua varausta
+find_server	Etsi liikkeen palvelin
+finding_server	Etsitään liikkeen palvelinta tässä Wi‑Fi-verkossa…
+no_server_found	Ei löytynyt. Palvelimella: Asetukset → Muut laitteet → Salli lisäkassat (sama Wi‑Fi). Tai kirjoita siellä näkyvä IP.
+servers_found_pick	Napauta liikettä, johon haluat yhdistää.
+server_host_selected	Käytetään {host} — syötä parituskoodi ja sitten Parita nyt.
+device_forgotten	Liike unohti tämän laitteen — parita se uudelleen liikkeen nykyisellä koodilla. Laitteella odottavat tilaukset säilyvät.
+forget_device	Unohda
+last_seen	nähty
+new_pair_code	Uusi parituskoodi
+lan_offline	Liikkeen palvelimeen ei saada yhteyttä
+lan_offline_waiting	Liikkeen palvelimeen ei saada yhteyttä · {n} odottaa
+lan_connecting	Yhdistetään liikkeeseen…
+pair_finishing	Paria viimeistellään… toimistokirjojen käyttöönotto
+pair_opening	Toimisto avataan…
+lan_live	Suora
+lan_sending	{n} lähtee
+lan_sign_in_to_send	Kirjaudu uudelleen lähettääksesi {n}
+lan_pair_again	Parita tämä laite uudelleen
+lan_update_app	Päivitä sovellus – tällä laitteella ja toimistopalvelimella on eri versiot
+allow_firewall	Salli muiden laitteiden yhdistää
+firewall_blocked	Tämän tietokoneen palomuuri estää muita laitteita — napauta Salli muiden laitteiden yhdistää.
+firewall_waiting	Odotetaan ylläpitäjän kehotetta…
+lan_join_help	Toisella laitteella: Päätetila → Etsi liikkeen palvelin (tai kirjoita {addr}) → parituskoodi {code}.
+lan_pair_status	Wi‑Fi {addr}
+lan_join_help_no_addr	Yhdistä tämä laite Wi‑Fi-verkkoon saadaksesi osoitteen.
+lan_no_address	Ei vielä Wi‑Fi-osoitetta — yhdistä liikkeen Wi‑Fi-verkkoon.
+lan_not_listening	Laitteita ei oteta vastaan (portti {port} varattu). Käynnistä sovellus uudelleen.
+lan_tills_off	Lisäkassat ovat pois päältä. Salli ne, jotta toinen laite voi liittyä.
+paired_with	Paritettu · {url}
+not_paired	Ei paritettu
+choose_device_use	Valitse palvelin tai pääte.
+paired_note	Paritettu. Avaa lukitus myydäksesi tai päivitä saadaksesi uusimman.
+last_update_at	Viimeisin päivitys: {time}.
+pair_intro	Etsi palvelin tai kirjoita sen osoite ja parituskoodi.
+queue_waiting	Odottaa pääsyä liikkeeseen ({n}):
+queue_tries	Yritetty {n} kertaa · viimeisin vastaus: {e}
+save_backup_copy	Tallenna varmuuskopion kopio…
+backup_copy_saved	Varmuuskopion kopio tallennettu — pidä se tämän laitteen ulkopuolella (USB-tikku tai toinen laite)
+backup_copy_overdue	Varmuuskopion kopiota ei ole lähtenyt tältä laitteelta {n} päivään — Asetukset → Varmuuskopio
+backup_copy_failed	Varmuuskopion kopiota ei voitu tallentaa sinne — valitse toinen paikka
+clock_off	Tämän laitteen kello on {min} min pielessä liikkeen palvelimesta — aseta oikea aika tälle laitteelle
+printers_heading	Tämän laitteen tulostimet
+printers_help	Etsi oikeat tulostimet ja valitse sitten Kuitti tai AWB-tarra. Jokaisella työllä on oma leveys, pysty- tai vaakasuuntainen kuva ja miten tavut lähetetään. Tarra tulostaa viivakoodin. Tyhjä paikka = älä tulosta.
+job_width	Sisällön leveys (mm)
+job_width_ph	Tai kirjoita leveys, 40–210 mm
+job_layout	Asettelu
+job_delivery	Miten työ lähetetään
+job_size	Kirjasinkoko
+job_size_ph	esim. 18, 20, 26…
+save_receipt_format	Tallenna kuitin muoto
+save_label_format	Tallenna tarran muoto
+test_receipt_format	Testikuitti
+test_label_format	Testitarra
+test_receipt_sent	Kuitin näyte lähetetty
+test_label_sent	Näytetarra lähetetty
+test_print_no_printer	Ei tulostinta tälle työlle – lisää yksi tämän paikan alle
+printers_host_only	Tulostimet on asetettu myymälälaitteeseen (palvelin). Tämä kassa lähettää työt sinne — Etsi/lisää/määritä pysy palvelimella. Testisivu siirtyy palvelimelle.
+printers_pool_heading	Tulostimet
+printers_routes_heading	Minne tulostetaan
+printer_label_ph	Nimi (esim. työpöytä)
+printer_target_ph	isäntä:9100 · bt:MAC · usb:VID:PID · järjestelmän nimi
+printer_mode_heading	Profiili uusille ulostuloille
+printer_mode_standard	Normaali muotokuva
+printer_mode_landscape	Vakiomaisema
+printer_mode_thermal	Lämpö
+printer_mode_standard_short	Pysty
+printer_mode_landscape_short	Vaaka
+printer_mode_thermal_short	Lämpö
+printer_format_custom	Uusi oma profiili
+printer_format_custom_label	Oma
+printer_format_custom_added	Oma profiili lisätty tälle paikalle
+add_printer	Lisää tulostin
+remove_printer	Poista viimeinen
+route_pick_ph	kuitti tai etiketti
+route_add_printer_ph	Lisää tulostin tähän paikkaan
+route_receipt	Kuitti
+route_label	AWB etiketti
+route_dont_print	Tulostinta ei ole määritetty
+route_add	Lisää paikkaan
+route_up	Ylös
+route_down	Alas
+route_remove	Poista viimeinen
+route_clear	Selkeät tulostimet tälle paikalle
+save_printers	Tallenna tulostimet
+print_test_page	Tulosta testisivu
+printers_saved	Tulostimet tallennettu tälle laitteelle
+test_page_sent	Testisivu lähetetty — tarkista tulostin
+printers_found	Löytyi tästä laitteesta: {list}
+find_printers	Etsi tulostimet
+printers_looking	Haetaan tulostimia tälle laitteelle ja Wi-Fi-yhteydelle…
+printers_tap_find	Napauta Etsi tulostimia jonoista, jotka hyväksyvät töitä, ja verkkokuittitulostimia tässä Wi-Fi-verkossa (ei poistettuja tai offline-tilassa).
+printers_none_found	Tulostimia ei löytynyt – kirjoita järjestelmätulostimen nimi tai verkko-osoite (esim. 192.168.1.50).
+receipt_printer_ph	Tulostin kuiteille
+queue_refused	Liike ei hyväksynyt ({n}) — tarkista kukin tiskillä:
+clear_not_accepted	Tarkistettu — tyhjennä tämä lista
+device_name_ph	Tämän laitteen nimi
+lan_last_update	viimeisin päivitys {time}
+lan_not_accepted	{n} ei hyväksytty
+connected_now	yhdistetty nyt
+backup_failed	Viimeisin automaattinen varmuuskopio epäonnistui: {e}
+backup_overdue	Ei varmuuskopiota {n} päivään — pidä sovellus auki tällä laitteella, jotta se voi varmuuskopioida.
+disk_low	Vain {mb} Mt vapaana tällä laitteella — varmuuskopiot epäonnistuvat pian. Vapauta tilaa.
+last_seen_devices	Viimeksi nähty: {time}
+sync_interval	Synkronoi {secs} s välein
+connection_to_shop	Yhteys liikkeeseen
+supplier_name_ph	Toimittajan nimi (tai osapuoli)
+supplier_ph	Toimittaja
+switch_device	Vaihda tämä laite
+take_payment	Ota maksu
+tax_added_till	{tax} lisätään
+tax_inside_price	{tax} sisältyy
+today_books	Tämän päivän kirjat
+unlock_after_pairing	Syötä PIN
+unlock_with_login	Avaa lukitus kirjautumisella
+update_my_password	Päivitä salasanani
+update_my_pin	Päivitä PIN-koodini
+duress_heading	Hätäavauksen PIN (vain omistaja)
+duress_help	Valinnainen. Jos tämä PIN-koodi kirjoitetaan lukituksen avaamisen yhteydessä sinun sijaan, kaikki kirjat pyyhitään (varaukset, kirjanpitotiedot, historia) ja työpöytä avautuu normaalilta omistajalta – hinnat, juhlat, vyöhykkeet, henkilökunta ja asetukset säilyvät. Kaavaa ja määrityksiä ei poisteta. Käytä vain, jos sinun on pakko avata lukitus. Jätä tyhjäksi ja sammuta tallenna. Ei koskaan sama kuin kenenkään PIN-koodi.
+duress_pin_ph	Hätä-PIN (4–12 numeroa)
+duress_confirm_ph	Kirjoita uudelleen vahvistaaksesi
+save_duress_pin	Tallenna hätä-PIN
+clear_duress_pin	Poista hätä-PIN käytöstä
+duress_on	Hätäavauksen PIN on päällä
+duress_off	Hätäavauksen PIN on pois
+duress_saved	Hätäavauksen PIN tallennettu
+duress_cleared	Hätäavauksen PIN poistettu käytöstä
+vehicle_ph	Ajoneuvo
+void	Mitätöi
+write_off_ap	Kirjaa AP pois
+write_off_nil	Kirjaa pois / nollasaldolle
+zone_ph	Alue (nimi hinnasta)
+caption_today	TÄNÄÄN
+caption_bookings	VARAUKSET
+caption_payments_today	TÄNÄÄN MAKSETUT
+caption_outstanding	AVOIN
+caption_bank	PANKKI
+paid_by	Maksaja
+second_way	Toinen tapa
+weight_in	Paino sisään
+size_in	Koko sisään
+goods_received	Tavarat vastaanotettu
+expense_heading	Kulu
+notes_attach_sale	Huomautukset ja liitteet (valittu myynti)
+notes_attach_party	Huomautukset ja liitteet (valittu osapuoli)
+attachments_last_expense	Liitteet (viimeisin kulu)
+credit_limit_heading	Luottoraja (valittu / nimetty osapuoli)
+pay_selected_heading	Maksa valittu (kuittaa velka / ota ennakko)
+write_off_heading	Kirjaa pois (tyhjennä ilman maksua)
+pay_ap_heading	Maksa mitä olemme heille velkaa (AP)
+country_tax	Maa ja vero
+extra_tills_heading	Lisäkassat
+other_devices_help_heading	Määritä muut laitteet
+other_devices_help	Tällä laitteella (palvelin): Muut laitteet → Salli ylimääräiset kassat. Huomaa pariliitoskoodi ja Wi-Fi-osoite. Napauta Salli muiden laitteiden muodostaa yhteys, jos se tulee näkyviin. Napauta tietokoneessa Aloita tällä tietokoneella. Toisilla laitteilla: asenna sovellus, valitse Asiakastila, Etsi kaupan palvelin (tai kirjoita osoite), anna pariliitoskoodi, Muodosta laitepari nyt. Tilaukset odottavat laitteella, jos Wi-Fi katkeaa, ja menevät, kun palvelin vastaa uudelleen.
+your_brand	Oma merkki (sovelluksessa)
+units_heading	Yksiköt
+booking_measures	Varaustoimenpiteet
+drawer_count	Laatikon laskenta (valinnainen)
+spreadsheet_csv	Taulukko (CSV)
+bank_reconciliation	Pankin täsmäytys (ruksi tiliotetta vasten)
+book_add_product	Varaa - lisää tuote / hinta
+book_opening_credit	Kirja — alkuluotto
+account_kind	Tilin laji (napauta yhtä)
+active_ledger	Aktiivinen pääkirja
+actual_total_cap	TODELLINEN SUMMA
+amend_help	Valitse myynti oikaistavaksi, mitätöitäväksi tai hyvitettäväksi. Oikaisut säilyttävät koko historian. Pyöristetty summa alkaa samana kuin käytetty — muokkaa vain pyöristääksesi. Mitätöinti ja hyvitys voivat vaatia omistajan tai päällikön PIN-koodin (kirjoitetaan ylle; tallennetaan nimelläsi).
+applied_total_cap	KÄYTETTY SUMMA
+bank_balance	Pankkisaldo
+bank_net_today	Pankin netto tänään
+branch_export_help	Export kirjoittaa päivän tilannekuvan varmuuskopiot-kansioon ja kopioi sen leikepöydälle. Jos haluat tuoda toisen myyntipisteen päivän, tallenna sen tiedosto kyseiseen kansioon nimellä import_branch_snapshot.json ja napauta sitten Tuo.
+brand_shown_help	Näkyy sovelluksen näytöillä. Asennetun sovelluksen nimi ja kuvake tällä laitteella pysyvät alustan listauksen mukaisina.
+app_icon	Sovelluskuvake
+logo_help	Valinnainen liikkeen merkki sovelluksen näytöillä.
+onboard_layout	Mitä saat
+item_photo_help	Valinnainen. Ilman kuvaa näytämme nimikirjaimet tuotteen nimestä.
+cash_in_hand	Käteinen kädessä (kassa)
+change_my_pin_heading	Vaihda PIN-koodini (vain sinun)
+connect_to_server	Yhdistä palvelimeen
+counter_locked	Tiski 01 · Lukittu
+country_pack_help	Maapaketti asettaa veron nimen ja laskennan, pikamaksukanavan ja laskuille tulostettavan yritystunnuksen. Kumkaj ei tee veroilmoituksia eikä anna viranomaisen e-laskuja missään.
+currency_use_help	Vieritä ja napauta Käytä mille tahansa tuetulle valuutalle.
+day_close_help	Päivän sulun kirjaaminen tallentaa tämän yhteenvedon (ja laatikon eron, jos laskettu) tarkastuslokiin. Se ei lopeta myyntiä.
+expenses_word	Kulut
+feature_access_help	Valitun henkilöstön ominaisuuksien käyttöoikeus (napauta lisäyksen jälkeen)
+footer_local	Paikallinen SQLite · Ilmainen ikuisesti · Ei pilveä
+fresh_book_moklanjo	Tuore = tyhjä luettelo (lisää tuotteita myöhemmin). Kirja = kirjoita avausosake ja kuka on sinulle velkaa alla.
+fresh_selected	Tyhjä valittu — luettelo pysyy tyhjänä. Napauta Valmis kun olet valmis.
+gross_word	Brutto
+how_start	Miten haluat aloittaa?
+later_country_pack	Myöhemmin: Asetukset → käytä maapakettiasi vero- ja maksumerkintöihin.
+local_badge	PAIKALLINEN
+measures_help_moklanjo	Kuinka paketit mitataan varaustiskillä. Kirjoita mitat ja paino käyttämilläsi yksiköillä — vakio (cm, m, in, ft · kg, g, lb, oz) tai oma yksikkösi, joka on linkitetty yllä olevaan cm/kg:iin (suoraan tai muiden yksiköiden kautta). Kirjat kirjaavat aina kg. Jätä kenttä tyhjäksi säilyttääksesi sen.
+mix_type_hint_moklanjo	Kirjoita kunkin summan summa (käteinen / UPI / kortti / luotto). Pitää lisätä laskuun. Luotto tarvitsee asiakkaan yllä.
+money_in_sales	Rahaa sisään (myynti)
+more_help_moklanjo	Luettelo, myynti, luotto, tiimi, varmuuskopio – sekä varasto ja lisäkasseja tarvittaessa.
+net_word	Netto
+offline_badge	EI VERKOSSA
+optional_login_help	Valinnainen kirjautuminen (tunnus + salasana). Omistaja asettaa kerran; vain käyttäjä voi vaihtaa salasanan myöhemmin.
+or_unlock_login	Tai avaa lukitus kirjautumistunnuksella ja salasanalla
+permission_preset	Työ (asettaa näytöt ja oikeudet)
+preset_help_moklanjo	Kassahenkilö: myy. Päällikkö: myy + tuotteet + mitätöi/oikaise.
+product_locked_moklanjo	Moklanjo
+product_only_moklanjo	Tämä sovellus on vain Moklanjo - kirjat + varauspöytä. Muut kaupan pinnat toimitetaan erillisinä tuotteina myöhemmin.
+purchases_cogs	Ostot (COGS)
+qty_cap	MÄÄRÄ
+restore_help	Palautus: valitse varmuuskopio. Kirjat avautuvat sellaisina kuin ne silloin olivat; nykyiset kirjat tallennetaan ensin, joten tämän voi kumota.
+wipe_data_heading	Poista paikalliset tiedot
+wipe_data_help	Vain omistaja – samat vaihtoehdot kuin Windowsin asennuksen poisto. Business Records tyhjentää kauppahistorian, mutta säilyttää hinnat ja asetukset (kuten hätälukituksen PIN-koodin). Kaupan asetukset poistaa kirjatietokannan. Näyttöasetukset tyhjentää ikkunan/kielen. Vahvista omistajan PIN-koodilla. Teamin hätälukituksen avaus-PIN on erillinen (peittopyyhe lukituksen avaamisen yhteydessä).
+wipe_trading	Liiketiedot
+wipe_schema	Liikkeen asetukset
+wipe_ui	Näyttöasetukset
+wipe_owner_pin_ph	Omistajan PIN poistoon
+wipe_delete_selected	Poista valittu
+wipe_owner_only	Vain omistaja voi poistaa paikalliset tiedot.
+restore_owner_only	Vain omistaja voi palauttaa varmuuskopion.
+wipe_owner_pin_needed	Syötä omistajan PIN poistaaksesi paikalliset tiedot.
+wipe_nothing_selected	Valitse ensin mitä poistetaan.
+wipe_done	Valitut paikalliset tiedot poistettu.
+wipe_schema_done	Liikkeen asetukset pyyhitty — valitse palvelin tai pääte jatkaaksesi.
+rounded_total	Pyöristetty summa
+setup_app_moklanjo	Asenna Moklanjo
+shop_logo_optional	Liikkeen logo (valinnainen)
+stock_type_help	Kirjoita tuotteen nimi (osa riittää), määrä ja säädä sitten. Tuotteet, joita ei vielä lasketa, tarvitsevat Aloita seuranta kerran.
+team_owner_help	Vuokraus: valitse työ (kassa/päällikkö), nimi + aloitus-PIN ja sitten Lisää. Vain jos tämä henkilö on erilainen: avaa näytöt ja oikeudet alla, sitten Tallenna työasetukset. Jokainen vaihtaa oman PIN-koodinsa alareunassa – Omistaja ei voi vaihtaa kenenkään muun.
+they_owe_us	He ovat meille velkaa
+unit_at_cap	Yksikkö @
+units_help	Koodit tuoteotsikoille (kg, kpl, pussi). Jokaisen yksikön on linkityttävä — suoraan tai muiden yksiköiden kautta — perusyksikköön (kg · cm · ml · kpl), esim. 1 crate = 2 box ja 1 box = 20 cm. Muunnokset: 1 from = factor to. Valuutat eivät ole koskaan yksiköitä.
+we_owe_them	Olemme heille velkaa
+who_unlocking	Kuka avaa lukituksen?
+locked_word	Lukittu
+show_pin	Näytä PIN
+hide_pin	Piilota PIN
+set_owner_pin	ASETA OMISTAJAN PIN
+enter_owner_passcode	SYÖTÄ OMISTAJAN KOODI
+enter_staff_passcode	SYÖTÄ HENKILÖSTÖN KOODI
+pin_count_zero	0 / 12 numeroa · vähintään 4, sitten OK
+pin_count_need	{} / 12 numeroa · tarvitaan {} lisää
+pin_count_full	12 / 12 numeroa · paina OK
+pin_count_ready	{} / 12 numeroa · paina OK kun valmis
+pin_hint_choose	Valitse 4–12 numeroa · Enter tai Avaa lukitus tallentaaksesi
+pin_hint_new	Uusi 4–12 numeron omistajan PIN · Enter tai Avaa lukitus
+pin_hint_shop_code	Liikkeen laite · parituskoodi {}
+pin_hint_books	Tämä laite pitää kirjat
+pin_hint_paired	Lisäkassa paritettu — avaa lukitus myydäksesi
+pin_hint_pair_first	Lisäkassa — parita ensin liikkeen laitteeseen
+unlock_to_continue	Avaa lukitus jatkaaksesi
+no_staff_yet	Ei vielä henkilöstöä — avaa lukitus omistajana, sitten Tiimi
+status_server_set_pin	Palvelintila — aseta omistajan PIN
+status_server_tills	Palvelintila — lisäkassat voivat liittyä. Avaa lukitus
+status_server_unlock	Palvelintila — avaa lukitus omistajana
+status_client_unlock	Päätetila — avaa lukitus myydäksesi
+icon_new_selected	Kuvake: uusi tiedosto valittu — napauta Tallenna merkki
+icon_custom	Kuvake: oma paikan merkki
+icon_default	Kuvake: Kumkaj-merkki (oletus) — valitse oma
+logo_yours	Logo: liikkeen logo — näkyy näytöillä ja kuiteissa
+logo_default	Logo: Kumkaj-merkki (oletus) — valitse omasi, jos sinulla on sellainen
+tmpl_current	Nykyinen: {} — {}
+tmpl_selected	Valittu: {} — {}
+setup_complete	Käyttöönotto valmis
+onboard_fresh_tmpl	Tyhjä · {} — luettelo alkaa tyhjänä; lisää tuotteet kohdassa Tuotteet ja sitten Valmis.
+onboard_book_tmpl	Kirja · {} — lisää tuotteet ja alkuluotto, sitten Valmis.
+onboard_template_tmpl	Nimeä paikka jos haluat, ja valitse sitten miten aloitat.
+tmpl_blurb	Kuriirikirjat ja varauspöytä: lähettäjät, kuljettajat, päiväkirja, AWB.
+tmpl_how	Varaa paketit pöydän ääressä; Päiväkirja tälle päivälle; välilehdet hintoja, juhlia ja raportteja varten.
+trk_booked	Varattu
+trk_picked_up	Poimittu
+trk_in_transit	Kuljetuksessa
+trk_delivered	Toimitettu
+trk_rto	Palataan lähettäjälle
+lane_to_dispatch	Lähetettäväksi
+lane_with_carrier	Kantajan kanssa
+lane_failed	Epäonnistui
+lane_done_today	Tehty tänään
+ops_board_help	Paketit sen mukaan, missä ne ovat tämän päivän työssä. Napauta paketteja (tai skannaa ne) poimiaksesi ne ja toimi sitten kaikkien poimittujen kanssa kerralla – jokainen kaista tarjoaa vain siihen sopivat liikkeet.
+lane_empty	Ei täällä juuri nyt mitään.
+picked_fmt	{n} valittu
+pick_all	Valitse kaikki
+bag_for_carrier	Käsi kantajalle
+send_with_rider	Lähetä ratsastajan kanssa
+out_again	Taas ulos
+return_to_sender	Palaa lähettäjälle
+runs_bags_heading	Viimeaikaiset lenkit ja laukut
+print_word	Painaa
+bag_word	Muovikassi
+run_word	Ratsastajan juoksu
+parcels_fmt	{n} paketit
+parcel_history	Historia
+attempt_fmt	Yritä {n}
+pieces_short_fmt	{n} kpl
+note_reason_ph	Huomautus tai syy
+ops_pick_first	Valitse paketit ensin – napauta niitä tai skannaa ne
+cod_to_collect	Toimitettu — COD noudettavaksi
+cod_on_road	COD edelleen tiellä
+cod_owed_consignors	Kerätty — lähettäjille maksettavaksi
+cod_rto_fees	RTO-maksut kerättäväksi
+cod_to_hand_in	COD luovutettava
+parcel_one_fmt	{n} paketti
+facet_bank_title	Raportit
+facet_bank_help	Päiväkirjat, osapuolten ikä, pankkiviennit ja kauden tulos.
+facet_ops_title	Lähetykset ja lähetys
+facet_ops_help	Skannaa tai kirjoita AWB → Etsi ja siirry eteenpäin / tulosta tarra / COD. Lähetys kuljettajalle tai kuljettajalle.
+facet_cod_title	COD-rekisteri
+facet_cod_help	Nouda toimituksen yhteydessä ja lähetä sitten lähettäjälle.
+facet_riders_title	Ratsastajat (oma laivasto)
+facet_riders_help	Lisää ajajia ja lähetä sitten varatut AWB:t Opsilta.
+against_bill_ph	Yllä olevaa laskua nro vastaan (valinnainen)
+aliases_ph	Aliakset — muut nimet, pilkulla erotettuna
+amount_blank_full_ph	Summa (tyhjä = koko saldo)
+amount_owed_ph	Velan määrä
+amount_ph	Summa
+amount_received_ph	Saatu summa
+amount_we_pay_ph	Summa jonka maksamme
+awb_scan_ph	AWB / skannaa viivakoodi
+bulk_csv_ph	Joukko-CSV — kohde, vastaanottaja, kg, cod_paise, huomautus
+business_name_ph	Yrityksen nimi
+category_new_ph	Luokka (valinnainen, luodaan jos uusi)
+cod_amount_ph	COD määrä
+code_bag_ph	Koodi (pussi)
+conv_factor_ph	Kerroin (25 = 1 pussi → 25 kg)
+country_code_ph	Maakoodi esim. IN, GB, US, AE, BR
+credit_khata_amount_ph	Luotto- / khata-summa
+credit_limit_ph	Luottoraja (0 = ei rajaa)
+dim_unit_code_ph	Mittayksikön koodi (cm)
+divisor_ph	Tilavuusjakaja (5000)
+extra_per_kg_ph	Ylimääräinen / kg
+first_amount_ph	Ensimmäinen summa
+first_kg_ph	Ensimmäinen kg (laatta)
+from_code_ph	Lähdekoodi (pussi)
+item_name_lang_ph	Tuotteen nimi — kirjoita omalla kielelläsi
+login_id_opt_ph	Käyttäjänimi (pakollinen, yksilöllinen)
+manager_pin_ph	Päällikön PIN hyväksyntään (vain jos et voi mitätöidä)
+new_branch_name_ph	Uuden toimipisteen nimi
+new_password_ph	Uusi salasana (valinnainen)
+new_pin_ph	Uusi PIN (4–12 numeroa)
+note_bank_ph	Huomautus (talletus, nosto, …)
+note_buy_expense_ph	Huomautus (polttoaine, vuokra, …)
+note_expense_ph	Huomautus (polttoaine, toimisto, …)
+notify_phone_ph	Ilmoita puhelimeen (WhatsApp/SMS-koukku)
+options_moklanjo_ph	Vaihtoehdot (valinnainen) — Suuri = 20, Lahjapakkaus = 10
+part_second_way_ph	Osa toisella tavalla (valinnainen)
+phone_ph	Puhelin
+address_ph	Osoite
+party_custom_fields_heading	Muokatut kentät (valittu osapuoli)
+party_custom_help	Lisää mikä tahansa tarra ja arvo tälle osapuolelle – WhatsApp, GSTIN, reittikoodi,…
+party_custom_key_ph	Kentän nimi (esim. WhatsApp)
+party_custom_value_ph	Arvo
+party_custom_add	Lisää kenttä
+party_custom_remove	Poista kenttä
+party_custom_empty	Ei vielä mukautettuja kenttiä
+party_custom_pick_first	Valitse osapuoli lisätäksesi mukautettuja kenttiä
+place_name_ph	Tämän paikan nimi
+price_ph	Hinta
+qty_example_ph	Määrä (esim. 1,5 kilolle)
+quantity_ph	Määrä
+reason_required_ph	Syy (pakollinen)
+role_title_ph	Roolin nimi (esim. barista)
+service_pct_ph	Palvelu-% valinnainen 0/10/12
+short_code_ph	Lyhytkoodi (MG02)
+slab_kg_ph	Ladattava laatta kg (0,5)
+staff_name_ph	Henkilökunnan nimi/tunnus
+starting_password_ph	Aloitussalasana (valinnainen)
+starting_pin_ph	Aloitus-PIN (4–12 numeroa)
+tax_rate_ph	Verokannan nimi tai % — Normaali, Alennettu, 0, 5, 12, 18, 20
+to_code_ph	Kohdekoodi (kg)
+uncleared_no_ph	Täsmäyttämätön nro yllä
+unit_cost_ph	Yksikkökustannus
+unit_kg_blank_ph	Yksikkö (kg tai tyhjä)
+unit_name_bag_ph	Nimi (pussi)
+weight_unit_code_ph	Painoyksikkökoodi (kg)
+zone_name_ph	Alueen nimi
+pay_credit	Luotto
+book_kind_today	Tämän päivän kirjat
+book_kind_month	Tämän kuun kirjat
+book_kind_aging	Avoimet / debet-kredit
+book_kind_balance	Tase
+ops_desk_help	Skannaa AWB USB-viivakoodilukijalla (tai kirjoita se) → Etsi. Sitten siirrä eteenpäin, tulosta tarra tai kerää COD. Tarrat tulostavat koodin 128.
+role_help_consignor	Rooli: Lähettäjä – AR (he ovat meille velkaa). Sama yritys voi olla myös Carrier.
+role_help_carrier	Rooli: Carrier — AP (olemme heille velkaa). Sama yritys voi olla myös Consignor.
+role_help_both	Roolit: Lähettäjä + Kuljettaja – yksi osapuoli, AR- ja AP-kirjat, netto raporteissa.
+role_help_supplier	Rooli: Toimittaja – AP ostoille.
+lane_declared_label	Tilin varaus
+lane_owner_label	Varaus käteisellä
+money_lane_bill	Lasku: {lane}

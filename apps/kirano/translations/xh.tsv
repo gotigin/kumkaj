@@ -1,0 +1,1329 @@
+# Xhosa — isiXhosa (xh). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	Ikhawuntara yeKirana: thengisa, isitokhwe, ikhata kunye neencwadi. Isimahla ngaphandle kweintanethi.
+unlock	Vula
+pin_hint	I-PIN yomnini iqala ngo-0000
+sell	Thengisa
+buy	Thenga
+books	Incwadi yosuku
+books_help	Isikhundla sanamhlanje. Thengisa = imali ngaphakathi. Thenga = ukuthenga kunye neendleko. Amaqela = abathengi betyala & nababoneleli.
+buy_help	Amaxwebhu eenkcitho nee-akhawunti zababoneleli (imali ephumayo). Okwis-akhawunti kuhlala kwincwadi yeqela.
+sell_money_in	Thengisa izinto
+buy_money_out	Ixwebhu lenkcitho / i-akhawunti yomboneleli
+record_purchase	Bhala okuthengiweyo
+add_expense	Ixwebhu lenkcitho
+bank_book	Incwadi yebhanki
+credit_help	Inombolo yeqela yodwa (amagama anokuphinda). Umthengi unencwadi yekhredithi (usityala); Umboneleli usithengisa isitokhwe (simtyala); bobabini kulungile. Iincwadi zihlala zihlukene; iingxelo zibonisa isixa.
+party_kind_ph	Iindima: Umthengi, Umboneleli, bobabini…
+reports_help	Incwadi yosuku, abanamatyala nabanikwe, incwadi yebhanki, amaxwebhu eenkcitho, inzuzo nelahleko.
+reports_today	Incwadi yosuku (namhlanje)
+reports_month	Inzuzo nelahleko (inyanga)
+reports_aging	Okungahlawulwanga / Dr-Cr
+reports_balance_sheet	Iphepha lobalanso
+reports	Incwadi yebhanki nenzuzo
+refresh	Hlaziya
+undo	Buyisela
+start_tracking	Qala ukulandelela
+stock_minus	− Isitokhwe
+stock_plus	+ Isitokhwe
+settle_cash	Hlawula ngemali ephathekayo
+settle_card	Hlawula ngekhadi
+items	Izinto
+nav_items	Izinto
+more	Okungakumbi
+your_items	Izinto zakho
+items_help	Cofa into ukuyihlela. Into entsha icoca ifom. Khangela ngegama okanye ikhowudi emfutshane, seta ixabiso (u-0 ulungile), uze Faka. Iintengiso esele zirekhodiwe gcina igama abahlawuliswe ngalo.
+add_item	Yongeza into
+new_item	Into entsha
+adding_item	Uyongeza into entsha
+editing_item	Uyahlengahlengisa
+save	Gcina
+remove	Susa
+removed_items	Izinto ezisusiweyo
+removed_help	Ukubuyisela kubuyisela into kwi-Items kanye njengoko yayinjalo-ixabiso, ifoto kunye nodidi.
+restore_item	Buyisela
+empty_catalog	Akukho zinto okwangoku. Vula Izinto, yongeza igama kunye nexabiso, emva koko uthengise kwikhawuntara.
+total	Isixa
+cash	Imali ephathekayo
+upi	UPI
+card	Ikhadi
+credit	Amaqela
+clear	Cima
+ready_to_sell	Ulungele ukubhala
+today_prefix	Namhlanje
+today_mid	namhlanje
+owed	okungahlawulwanga
+round_word	ukujikeleza
+back	Emva
+sold_out	Akukho
+restock	Yongeza isitokhwe
+not_tracked	Akulandelelwa
+in_stock	kwisitokhwe
+marked_sold_out	Kufakwe akukho
+add_upper	YONGEZA
+na	N/A
+qty	Ubunzima/Inani
+unit_at	Ixabiso @
+actual	Okwenene
+applied	Okufakwe
+note_ph	Inqaku (akuyomfuneko)
+rounded	KUJIKELEZIWE
+split	Yahlula
+send_kot	Thumela isiliphu
+send_kot_to	Thumela → {kitchens}
+send_kot_again	Yongeza izinto kwisiliphu esilandelayo
+send_kot_held	Izinto ezibanjiweyo — ungabambeki ukuthumela
+reprint_kot	Phinda ushicilele okukhethiweyo
+reprint_kot_ok	Izinto ze-{n} eziprintiweyo kwakhona · {slips} isiliphu(izi) → {kitchens}
+reprint_kot_needed	Thumela isiliphu kuqala — emva koko uquke izinto kwaye uprinte ezikhethiweyo kwakhona
+reprint_kot_none_selected	Yonke into ethunyelweyo iyatsitywa — cofa Kwiprinta kwezo oza kuziprinta kwakhona
+reprint_kot_client	Shicilela kwakhona ({n}) ye-{place} ithunyelwe — isixhobo sevenkile siyayiprinta
+print_cancelled_kot	Shicilela konke okurhoxisiweyo
+print_cancelled_kot_ok	Izinto eziprintiweyo ze-{n} ezirhoxisiweyo · {slips} isiliphu(izi) → {kitchens}
+print_cancelled_kot_needed	Vula itafile enezinto ezirhoxisiweyo kuqala
+print_cancelled_kot_none	Akukho zinto zirhoxisiweyo kule odolo
+print_cancelled_kot_client	Ushicilelo lurhoxisiwe ({n}) lwe-{place} luthunyelwe — isixhobo sevenkile siyayiprinta
+kot_banner	Ibhena yohlobo
+kot_banner_ph	Ibhena (ungenanto = akukho)
+kot_item_prefix	Isimaphambili sento
+kot_item_prefix_ph	umz. [IRHOXISIWE]
+kot_strike	Igama lento yoqhatha
+kot_strike_note	Inqaku lento yoqhatha
+kot_strike_on	Ivuliwe
+kot_strike_off	Icinyiwe
+bill_item_layout	Uyilo lwezinto
+bill_item_layout_columns	Iikholamu
+bill_item_layout_stacked	Zipakishwe
+bill_item_header	Iintloko zeekholamu
+bill_item_hdr_item	Intloko yento
+bill_item_hdr_qty	Intloko yenani
+bill_item_hdr_price	Intloko yexabiso
+bill_item_hdr_amount	Intloko yemali
+bill_item_name	Igama lento
+bill_item_qty	Inani
+bill_item_price	Ixabiso
+bill_item_amount	Imali
+bill_item_note	Inqaku lenqaku
+bill_item_col_gap	Isithuba seekholamu
+bill_item_col_order	Ulandelelwano lweekholamu
+bill_item_col_sep	Imigca yeekholamu
+bill_item_gap_tight	Kufutshane
+bill_item_gap_comfort	Kukhululekile
+bill_item_gap_wide	Kubanzi
+bill_item_num_width	Iikholamu zamanani
+bill_item_num_compact	Kufutshane
+bill_item_num_comfort	Kukhululekile
+bill_item_num_wide	Kubanzi
+bill_item_num_align	Amanani alungelelanisiwe
+bill_item_gap_em	Isithuba (em)
+bill_item_qty_min	Inani elincinci (em)
+bill_item_price_min	Ixabiso elincinci (em)
+bill_item_amount_min	Imali encinci (em)
+kot_item_qty_width	Ikholamu yenani
+kot_item_num_align	Ulungelelaniso lwenani
+bill_total_qty_label	Ileyibhile yenani elipheleleyo
+bill_total_subtotal_label	Ileyibhile yesixa esincinci
+bill_total_grand_label	Ileyibhile yesixa esikhulu
+bill_total_paid_label	Ileyibhile yokuhlawulweyo
+bill_meta_pair	Yabelana ngomgca no
+bill_pair_alone	Yedwa
+bill_item_piece_on	Ivuliwe
+bill_item_piece_off	Icinyiwe
+bill_total_qty	Inani elipheleleyo
+bill_total_subtotal	Isixa esincinci
+bill_total_grand	Isixa esikhulu
+reprint_incl	Ekushicilelweni
+reprint_skip	Tsiba
+reprint_skip_meta	Tsiba ukushicilela kwakhona
+kot_dest_hint	Kushicilelwa kubashicileli obabeke ku-{kitchens} kuSeto → Abashicileli
+kot_sent_hint	Ukuthunyelwa kokugqibela kuyile ku-{kitchens}. Cofa ukongeza izinto zetyala elilandelayo — okanye Shicilela isiliphu kwakhona kwangelo linye.
+kot_sent_printing	Isiliphu sithunyelwe ku-{kitchens} — iyaprinta
+kot_sent_not_printed	Isilayiphu sithunyelwe ku-{kitchens} kodwa AYIshicilelwe: {why}. Xelela ivenkile, emva koko ulungise iprinta kwaye uyiprinte kwakhona.
+kot_sent_screen	Isilayiphu sithunyelwe ku-{kitchens}
+kot_queued_shop	Isiliphu se-{place} → {kitchens} sigciniwe; isixhobo sevenkile siyayiprinta
+kot_job_label	Slip ku-{place} → {kitchens}
+kot_job_reached	Isiliphu se-{place} sifikelele ku-{kitchens}
+kot_unassigned	Akuthunyelwanga
+kot_unassigned_held	Ibambe izinto ze-{n} ngaphandle kwesitishi — yeka ukubamba emgceni ukuze uyithumele
+kot_station_ph	Isikhululo
+kot_station_dd	Isikhululo
+kot_station_dd_n	Isitishi · {stations}
+kot_set_station	Sebenzisa esi sikhululo
+kot_station_applied	Isitishi sisetwe kwizinto ze-{n}: {station}
+kot_station_cleared	Isitishi sisusiwe kwizinto ze-{n}: {station}
+kot_station_needed	Khetha icandelo levenkile kuqala
+kot_station_not_allowed	Ayivumelekanga ukusebenzisa icandelo: {station}
+kot_station_none	Akukho zikhululo okwangoku — azisetyenziswanga kwikhawuntara yevenkile (Useto → IiNdawo ukuba ziyafuneka)
+pos_tab_items	Izinto ezongeziweyo
+pos_tab_payment	Intlawulo
+hold_send	Bamba
+hold_send_on	Kubanjiwe
+hold_send_meta	Ibanjiwe - hayi kwesi siliphu
+station_remove	Susa isikhululo
+station_remove_ph	Cofa isikhululo kuluhlu ukuze usisuse
+station_removed	Isikhululo sisusiwe: {name}
+settings_hub_title	Useto
+settings_hub_help	Vula indawo enye ngexesha — ukuskrola okuncinci, ukhetho olucacileyo.
+settings_back	Emva
+settings_sec_language	Ulwimi nemali
+settings_sec_country	Ilizwe nerhafu
+settings_sec_tills	Ezinye izixhobo
+settings_sec_brand	Uphawu lwakho
+settings_sec_units	Iiyunithi nokuguqula
+settings_sec_pickers	Iindawo · izikhululo · amaxabiso erhafu
+settings_sec_printers	Abashicileli
+settings_sec_bill	IBill & Slip ifomathi
+settings_sec_selling	Iinkqubo neentengiso
+bill_kot_tab_bill	Ityala
+bill_kot_tab_kot	Slip
+settings_sec_alerts	Izilumkiso
+alerts_help	Ixesha imiyalezo yesimo ihlala esikrini sakho (olu ngeno).
+snack_secs_ph	Imizuzwana (3–60, esisiseko 10)
+snack_secs_save	Gcina ixesha lesilumkiso
+snack_secs_saved	Ixesha lesilumkiso ligciniwe — imizuzwana {n}
+settings_sec_backup	Ugcino lwasemva nokubuyisela
+settings_sec_diag	Uvavanyo
+diag_privacy_help	Iilogi zihlala kwesi sixhobo. Iimfihlo (i-PIN, amagama okugqitha) azigcinwa. Ukwabelana ngephakheji ngaphandle kwesixhobo kufuna imvume yakho ecacileyo ngexesha ngalinye — azithengiswa okanye zinikwe abanye.
+diag_level	Inqanaba lenkcukacha
+diag_level_error	Iimpazamo
+diag_level_warn	Izilumkiso
+diag_level_info	Ulwazi
+diag_level_debug	Ukuhlola
+diag_support_start	Qala iseshoni yoncedo yemizuzu engama-30
+diag_support_stop	Gqiba iseshoni yoncedo
+diag_support_started	Iseshoni yoncedo ivuliwe — iinkcukacha zokuhlola imizuzu engama-30
+diag_support_ended	Iseshoni yoncedo iphelile
+diag_export_local	Khupha ikopi yalapha
+diag_export_local_done	Uvavanyo lwalapha lulungile ku-{path} — khetha apho ugcina ikopi
+diag_approve_send	Vuma ukwabelana ngaphandle kwesi sixhobo
+diag_send_help	Imvume yiphakheji enye, emva koko iphelelwa. Ixeshana — isetyenziselwa ukulungisa okanye ukuphucula imveliso kuphela. Ayabiwa nabanye. Isebenza kuLinux, Windows, macOS, nakwi-Android.
+diag_send_approved	Ukwabelana kuvunyiwe kwiphakheji enye (kuphelelwa ngokukhawuleza)
+diag_export_send	Yenza iphakheji yokwabelana (ifuna imvume)
+diag_export_send_done	Iphakheji yokwabelana ilungile ku-{path} — khetha apho ugcina, emva koko uyithumele kuphela kuncedo lukaKumkaj
+diag_save_bundle	Gcina ikopi yovavanyo
+diag_bundle_saved	Ikopi yovavanyo igciniwe ku-{path}
+diag_bundle_failed	Ikopi yovavanyo ayikwazanga ukugcinwa — zama kwakhona
+diag_clear	Cima iilogi zovavanyo
+diag_cleared	Iilogi zovavanyo zicinyiwe
+sidebar_settings	Icala
+sidebar_settings_help	Iziqondiso ezifanayo nomda wecala. Tsala umgca ukuze ulungelelanise. Guqula iswitshi ukuze ubonise okanye ufihle. Useto noTshixa bahlala kwibha.
+sidebar_always_on_short	Rhoqo
+sidebar_back_settings	Emva
+sidebar_shown	Kubonisiwe
+sidebar_hidden	Kufihlwe
+sidebar_always_on	Rhoqo kwibha
+sidebar_shown_hint	Kubonisiwe kumda wecala / iithebhu ezisezantsi
+sidebar_hidden_hint	Kufihlwe kwibha
+sidebar_menu_items	Izinto
+sidebar_enable_all	Vumela konke
+sidebar_disable_all	Vala konke
+sidebar_order_saved	Ulandelelwano lwecala lugciniwe
+sidebar_visibility_saved	Ukubonakala kwecala kugciniwe
+amounts_hide	Fihla
+amounts_show	Bonisa
+printers_none_hint	Gcina umshicileli kwesi sixhobo kuqala, emva koko wongeze kwityala okanye kwicandelo
+counter	Ikhawuntara
+dine_in	Ikhawuntara
+takeaway	Thatha
+order	Iodolo
+tables	Izixhobo zokubala
+kitchen	Amacandelo
+sales	Iintengiso
+sales_refunds	Iintengiso nokubuyiswa
+day_close	Ukuvala usuku
+reports_expenses	Incwadi yebhanki nenzuzo
+nav_reports	Iingxelo
+nav_settings	Useto
+nav_lock	Tshixa
+no_sale_yet	Akukho ntengiso okwangoku
+favorites	Ezizithandayo
+favorites_help	Izinto ozithengisa rhoqo, zigcinelwe olu ngeno. Yongeza enye kwityala, okanye wakhe uluhlu lwakho kuzo zonke izinto ezingezantsi.
+your_favorites	Ezizithandayo zakho
+all_items	Zonke izinto
+frequent	Eziqhelekileyo
+added_items	Izinto ezongeziweyo
+added_items_empty	Akukho nto kweli tyala okwangoku — yongeza into esuka kuzo Zonke izinto okanye udidi.
+frequent_config_help	Izinto ezininzi ezithengisiweyo kumatyala agqityiweyo. Seta ukuba zingaphi iintsuku zokujonga kwaye zingaphi izinto eziza kuboniswa.
+frequent_days_ph	Iintsuku (1)
+frequent_limit_ph	Izinto (24)
+frequent_apply	Faka
+frequent_saved	Rhoqo: iintsuku ze-{d} zokugqibela, phezulu {n} — {c} izinto
+frequent_empty	Akukho ntengiso zigqityiweyo kweli xesha — hlawula ityala (i-₹0 ivumelekile xa uSeto utshilo) zibonakale apha.
+zero_sales	Iintengiso zexabiso elinguziro
+zero_sales_help	Vumela izinto ezixabisa i-R0 kunye namatyala ahlawulwe kwi- ₹0 (iyancomeka / umnqweno womnini). Ngokungagqibekanga, amaqweqwe asimahla asavela kwiincwadi ze Rhoqo nezemini.
+zero_sales_on	Vumela i-₹0
+zero_sales_off	Funa ixabiso
+zero_sales_saved_on	Iintengiso zexabiso elinguziro zivunyelwe
+zero_sales_saved_off	Intengiso kufuneka ibe nexabiso elingaphezu kwe-₹0
+floor_areas_help	Iindawo ngamagumbi okanye iindawo emgangathweni (Dine In, Parcel, AC ...). Yongeza indawo kuqala, emva koko ubeke izinto zokubala kuyo - indawo nganye liqela elahlukileyo emgangathweni.
+area_new_ph	Indawo entsha / igumbi (umz. i-AC, Igadi)
+add_area	Yongeza indawo
+area_added	Indawo "{name}" ilungile - yongeza izinto zokubala kuyo
+no_favorites	Akukho zithandayo — yongeza izinto kuluhlu olungezantsi.
+add_to_bill	Yongeza kwityala
+added	Kongeziwe
+owes_word	utyala
+selected_word	Kukhethiwe
+chip_clear_credit	cima — Ikhredithi okanye thatha imali yangaphambili
+chip_missing_customer	Umthengi okhethiweyo ulahlekile — khetha kwakhona
+chip_no_customer	Akukho mthengi — chwetheza igama, emva koko ucofe Ikhredithi
+credit_summary_fmt	{} abathengi · ikhredithi evulekileyo {} · imali yangaphambili ebanjiweyo {}
+recent_label	Kutshanje:
+kot_new_waiting	ENTSHA — ilindile
+kot_preparing	IYALUNGISWA
+kot_ready_serve	ILUNGILE — yiphakele
+kot_done_cap	IGQITYIWE
+kot_cancelled	IRHOXISIWE
+kot_start_btn	Qala
+kot_mark_ready	Phawula ilungile
+kot_done_btn	Igqityiwe
+table_free	Ayinamntu — cofa ukuqala iodolo
+start_order	Qala iodolo
+open_bill	Vula ityala
+collect_payment	Qokelela intlawulo
+table_running	Iyasebenza
+payment_pending	Intlawulo isalindile
+collect_at_counter	qokelela kwikhawuntara
+inventory	Isitokhwe
+inventory_stock	Isitokhwe nokukho
+branches	Amasebe
+branches_org	Amasebe nombutho
+credit_customers	Amaqela (ikhata nababoneleli)
+customer_name_ph	Igama leqela
+new_customer_ph	Igama elitsha leqela
+item_name_ph	Igama lento (umz. iMasala Dosa)
+item_price_ph	Ixabiso
+start_template	Imveliso
+team	Iqela
+team_pins	Iqela nee-PIN
+my_pin_settings	I-PIN yam
+settings_hub_help_my_pin	Guqula i-PIN yokuvula yomntu ongenileyo kwesi sixhobo.
+team_self_help	Ungeno olunye: i-PIN entsha, igama lokugqitha elitsha, okanye zombini. Shiya ibhokisi ingenanto ukuze ugcine onakho. Cela uMnini ukuba ufuna ezinye izikrini okanye amalungelo.
+backup_settings	Ugcino lwasemva noseto
+lock_app	Tshixa i-app
+pick	Khetha
+select	Khetha
+advance	Imali yangaphambili
+owner	Umnini
+staff	Abasebenzi
+photo	Ifoto
+auto	Ngokuzenzekelayo
+prev	Edlulileyo
+next	Elandelayo
+ok	Kulungile
+this_shop	Iseva
+extra_till	Iklayenti
+off	Icinyiwe
+tables_kitchen	Uyilo lwevenkile
+server	Iseva
+client	Iklayenti
+language_currency	Ulwimi nemali
+language	Ulwimi
+choose_language	Khetha ulwimi lwakho
+language_setup_hint	Landela ulwimi lwesi sixhobo, okanye uzikhethele.
+lang_follow_platform	Ulwimi lwesixhobo
+lang_pick_user	Khetha ulwimi
+lang_platform_now	Ulwimi lwesixhobo ngoku
+selected_language	Kukhethiwe
+continue	Qhubeka
+this_device	ESI SIXHOBO
+device_use_q	Esi sixhobo siya kusetyenziswa njani?
+last_server_mode	YayiyiSeva — cofa ukuze uqhubeke
+last_client_mode	YayiyiKlayenti — cofa ukuze uqhubeke
+choose_server	Khetha iseva
+choose_server_hint	Vula iseva ekhoyo, okanye wenze entsha yeshishini elinye.
+create_new_server	Yenza iseva entsha
+open_server	Vula
+new_server_name_ph	Igama elitsha leseva (akuyomfuneko)
+server_remove_pin_ph	I-PIN yomnini yokususa iseva
+only_owner_remove_server	Umnini kuphela onokususa iseva
+owner_pin_remove_server	I-PIN yomnini iyafuneka ukususa le seva
+device_setup_help	Iseva igcina iincwadi apha. Iklayenti idityaniswa neSeva.
+app_template_heading	Ikhathalogu yabaqalisi (uyazikhethela)
+app_template_blurb	Ilayisha isampulu yekhathalogu; Umnini uZahir (zahir), u-Admin Asif (asif, i-PIN 1111), uCashier Nawaz (nawaz, PIN 0000); irhafu/i-GST isusiwe; ibha esecaleni yangaphambili; imbali iyacinywa emva kweeyure ze-4 (kwaye Sula ngoku kwi-Backup); Namhlanje khulula; I-compact bill + imida esemgangathweni yeetreyi ezimxinwa. Oontanga berhafu kunye nebar esecaleni banokuvuywa kwakhona kwiiSetingi.
+app_template_apply	Faka ikhathalogu yabaqalisi
+app_template_skip	Tsiba okwangoku
+app_template_status	Iseva ilungile — sebenzisa ikhathalogu yoMqalisi, okanye utsibe
+app_template_importing	Ifaka {title}…
+currency	Imali
+backup	Ugcino lwasemva
+use	Sebenzisa
+dont_use	Ungasebenzisi
+add_branch	Yongeza isebe
+add_conversion	Yongeza uguqulo
+add_dishes_items	Yongeza izinto
+add_item_plain	Yongeza into
+add_note	Yongeza inqaku
+add_opening_balance	Yongeza ibhalansi yokuqala
+add_staff	Yongeza umsebenzi
+add_station	Yongeza isikhululo
+add_table	Yongeza itafile
+add_unit	Yongeza iyunithi
+add_use_name	Yongeza / sebenzisa eli gama
+allow_extra_tills	Vumela ezinye iikhawuntara
+amend	Lungisa
+apply_country_pack	Faka ipakethe yelizwe
+datetime_appearance	Imbonakalo yomhla nexesha
+datetime_appearance_help	Iincwadi zigcina unyaka wokuqala i-RFC3339 ngaphakathi. Oku kutshintsha kuphela indlela imihla kunye neewotshi ezijongeka ngayo kumatyala, iingxelo, kunye nesikrini.
+datetime_example	Umzekelo ngoku: {ex}
+date_order	Ulandelelwano lomhla
+date_order_dmy	U/Ny/Y
+date_order_mdy	Ny/U/Y
+date_order_ymd	Y-Ny-U
+time_format	Iwotshi
+time_format_24h	Iiyure ezingama-24
+time_format_12h	Iiyure ezili-12
+attach_bill_photo	Qhobosha ifoto yetyala
+attach_pdf	Qhobosha i-PDF
+attach_photo	Qhobosha ifoto
+attachments_last_expense	Okuqhotyoshelweyo (inkcitho yokugqibela)
+bank	Ibhanki
+bank_in	Ngena ebhankini
+bank_out	Phuma ebhankini
+bank_reconciliation	Ukudibanisa ibhanki (phawula ngokuchasene nengxelo yebhanki yakho)
+bank_to_till	Ibhanki → ikhawuntara
+book_add_dish	Incwadi — yongeza into / into
+book_opening_credit	Incwadi — ikhredithi yokuqala
+branch_name_sell_ph	Igama lesebe lokuthengisa kulo
+bring_my_book	Zisa incwadi yam
+business_tax_id_ph	Inombolo yerhafu yeshishini
+caption_bank	IBHANKI
+caption_bills	AMATYALA
+caption_outstanding	OKUNGAHLAWULWANGA
+caption_payments_today	IINTLAWULO NAMHLANJE
+caption_today	NAMHLANJE
+card_amount_ph	Imali yekhadi
+cash_amount_ph	Imali ephathekayo
+cash_memo	Imemo yemali ephathekayo
+choose_icon	Khetha isiqondiso
+choose_logo	Khetha ilogo
+clear_icon	Cima isiqondiso
+clear_photo	Cima ifoto
+copy_day_book_csv	Kopisha i-CSV yencwadi yosuku
+copy_day_close	Kopisha ukuvala usuku
+copy_items_csv	Kopisha i-CSV yezinto
+copy_outstanding_csv	Kopisha i-CSV yokungahlawulwanga
+copy_parties_csv	Kopisha i-CSV yamaqela
+copy_party_ledger_csv	Kopisha i-CSV yencwadi yeqela
+copy_receipt	Kopisha irisithi
+share_whatsapp	Yabelana kwiWhatsApp
+lan_pages_heading	Amaphepha abathengi kwi-Wi-Fi
+lan_pages_help	KwiWi-Fi yale venkile, amaphepha omthengi asebenzela ibhodi yokubonisa kunye nengxelo. Abantu abakwidatha yeselula bafuna i-Cloud kamva. I-terminal yekhadi okanye ikhonkco lentlawulo liyinketho kwaye ayilokothi ithintele ikhawuntara.
+diag_send_heading	Yabelana ngaphandle kwesi sixhobo
+kot_dest_heading	Isikhululo
+optional_login_heading	Ungeno olukhethwayo
+rights_heading	Amalungelo
+ops_panel	Imisebenzi yalapha
+crm_heading	Abathengi & nemiyalezo
+crm_help	Usuku lokuzalwa, ukunyaniseka, iindwendwe ezingasebenziyo nezona zichithayo — beka i-SMS okanye iWhatsApp kuluhlu. Sebenzisa {name} no-{points} kumyalezo. Umnini ucofa ukuthumela; akukho nto iziqhubele ngokwayo.
+crm_queue_sms	Beka i-SMS kuluhlu
+crm_queue_wa	Beka iWhatsApp kuluhlu
+crm_seg_bday_week	Iveki yosuku lokuzalwa
+crm_seg_bday_month	Inyanga yosuku lokuzalwa
+crm_seg_phone	Inefowuni
+crm_seg_loyalty	Ukunyaniseka
+crm_seg_inactive	Ayisebenzi
+crm_seg_top	Abachitha kakhulu
+birthday_ph	Usuku lokuzalwa (MM-DD okanye YYYY-MM-DD)
+crm_message_ph	Usuku lokuzalwa oluhle {name}! Unamanqaku {points}.
+till_apply_redeem	Faka kwityala
+till_clear_redeem	Cima ukusebenzisa
+till_wallet_topup	Yongeza kwisipaji
+till_issue_voucher	Khupha ivawutsha
+till_points_ph	Amanqaku okusebenzisa
+till_wallet_ph	Imali yesipaji yokusetyenziswa
+till_voucher_code_ph	Ikhowudi yevawutsha
+till_voucher_amt_ph	Imali yevawutsha (ungenanto = yonke)
+till_wallet_topup_ph	Imali yokongeza kwisipaji
+till_voucher_issue_amt_ph	Imali yevawutsha ekhutshwayo
+till_voucher_issue_code_ph	Ikhowudi entsha yevawutsha
+split_evenly	Yahlula ngokulinganayo
+waitlist	Uluhlu lokulinda
+fire_course	Inyathelo elilandelayo
+hold_item	Bamba
+waiter_call	Fowunela i-cashier
+waitlist_add	Yongeza kuluhlu lokulinda
+floor_view_grid	Igridi
+floor_view_layout	Uyilo
+floor_layout_x	X
+floor_layout_y	Y
+floor_layout_w	W
+floor_layout_h	H
+floor_layout_save	Gcina uyilo
+floor_layout_open	Vula itafile
+floor_layout_edit	Hlela uyilo
+floor_layout_pick	Cofa itafile ukuze uhlele uyilo lwayo
+floor_layout_saved	Uyilo lugciniwe
+floor_layout_nudge_left	← 20
+floor_layout_nudge_right	→ 20
+floor_layout_nudge_up	↑ 20
+floor_layout_nudge_down	↓ 20
+sibling_pickers_help	Cofa Ivuliwe/Icinyiwe njengeeyunithi — fihla iindawo, izikhululo, namaxabiso erhafu kukhetho lwemihla ngemihla; iziseko zepakethe zihlala.
+bulk_price_apply	Faka ixabiso eliqokelelweyo
+card_terminal_optional	Itheminali yekhadi / ikhonkco lentlawulo (kukuzikhethela xa i-intanethi ikhona)
+copy_report	Kopisha ingxelo
+counted_cash_ph	Imali ephathekayo ebalwe kwidrowa
+country_tax	Ilizwe nerhafu
+create_backup	Yenza ugcino lwasemva
+credit_limit_heading	Umda wekhredithi (iqela elikhethiweyo / elinegama)
+day_close_summary	Isishwankathelo sokuvala usuku
+delete_party	Cima iqela elikhethiweyo
+delivery	Ukuhambisa
+done_open_books	Igqityiwe — vula iincwadi
+drawer_count	Ubali lwedrowa (akuyomfuneko)
+expense_heading	Inkcitho
+export_day	Khupha usuku
+extra_note_bill_ph	Inqaku elongezelelweyo kweli tyala / intengiso
+extra_note_expense_ph	Inqaku elongezelelweyo kwinkcitho yokugqibela
+extra_tills_heading	Ezinye iikhawuntara
+other_devices_help_heading	Seta ezinye izixhobo
+other_devices_help	Kwesi sixhobo (Iseva): Ezinye izixhobo → Vumela iipelisi ezongezelelweyo. Qaphela ikhowudi yokumatanisa kunye nedilesi ye-Wi-Fi. Cofa Vumela ezinye izixhobo ukuba ziqhagamshelane xa zivela. Kwikhompyuter, cofa Qala ngale khompyutha. Kwisixhobo esinye nesinye: faka i-app, khetha Imo yoMthengi, Fumana iseva yevenkile (okanye uchwetheze idilesi), faka ikhowudi yokubhanqa, Ibhangqa ngoku. Iiodolo zilinda kwisixhobo ukuba iWi-Fi iyawa kwaye ihambe xa iSeva iphendula kwakhona. Abashicileli abongezelelweyo bacwangciswe kwiSeva (Izicwangciso → Iiprinta) — iitill ezongezelelweyo zithumela amatyala apho.
+forget_shop	Libala le venkile
+goods_received	Iimpahla ezifunyenweyo
+import_day	Ngenisa usuku
+import_items_csv_plain	Ngenisa i-CSV yezinto…
+import_parties_csv	Ngenisa i-CSV yamaqela…
+item_name	Igama lento
+kitchen_printing	Abashicileli
+login_id_ph	Igama lomsebenzisi
+mark_cleared	Phawula kucacisiwe
+new_party_clear	Iqela elitsha (cima ifom)
+new_party_kind_supplier_ph	Uhlobo olutsha lweqela (Umboneleli)
+next_country	Ilizwe elilandelayo
+next_order	Iodolo elandelayo (cima ideski)
+note_gstin_ph	Inqaku / i-GSTIN / isikhumbuzi sesivumelwano
+notes_attach_party	Amanqaku nokuqhotyoshelweyo (iqela elikhethiweyo)
+notes_attach_sale	Amanqaku nokuqhotyoshelweyo (intengiso ekhethiweyo)
+on_account_ap	Kwi-akhawunti (i-AP)
+org_optional_ph	Umbutho (akuyomfuneko)
+paid_by	Ihlawulwe ngu
+paid_now	Ihlawulwe ngoku
+pair_now	Dibanisa ngoku
+pairing_code_ph	Ikhowudi yokudibanisa
+party_name_selected_ph	Igama leqela (okanye sebenzisa elikhethiweyo)
+password_ph	Igama lokugqitha
+pay_ap_card	Hlawula i-AP ngekhadi
+pay_ap_cash	Hlawula i-AP ngemali ephathekayo
+pay_ap_heading	Hlawula esibatyala kona (i-AP)
+pay_ap_upi	Hlawula i-AP nge-UPI
+pay_selected_heading	Hlawula okukhethiweyo (gcina ityala / thatha imali yangaphambili)
+pick_from_items	Khetha ezintweni zethu
+prev_country	Ilizwe elidlulileyo
+print_open	Shicilela / vula
+reason_amend_ph	Isizathu sokulungisa / ukurhoxisa ngokupheleleyo / ukubuyisa
+reason_note_ph	Isizathu / inqaku (ukonakala, ubali, …)
+record_day_close	Bhala ukuvala usuku
+refresh_from_shop	Hlaziya usuka evenkileni
+refund	Buyisa
+remove_selected	Susa okukhethiweyo
+request_bill	Cela ityala
+restaurant_name_ph	Igama levenkile (uyazikhethela)
+restore_backup	Buyisela ugcino lwasemva
+role_both	Bobabini
+role_admin	Umlawuli
+role_cashier	Umcangci
+role_customer	Umthengi
+role_manager	Umphathi
+history_retention	Imbali yorhwebo
+history_retention_help	Sula ngokuzenzekelayo iintengiso ezindala kunye namatikiti amadala. Izinto, abasebenzi, kunye nesetingi zihlala. Icacile ngoku yosula yonke imiqolo yorhwebo kwaye igcina ukuseta.
+history_off	Gcina
+history_day_close	Ekuvaleni usuku
+history_after_hours	Emva kweeyure
+history_hours_ph	Iiyure (1–168, esisiseko 4)
+history_hours_save	Gcina iiyure
+history_clear_now	Cima imbali ngoku
+history_cleared	Imbali yorhwebo icinyiwe — useto lugciniwe
+history_retention_saved	Ukucima imbali kugciniwe
+history_hours_saved	Iiyure zembali zigciniwe
+history_owner_only	Umnini okanye uMlawuli kuphela onokucima imbali
+rollup	Isishwankathelo
+save_brand	Gcina uphawu
+save_business_id	Gcina inombolo yeshishini
+save_business_name	Gcina igama leshishini
+save_features	Gcina
+save_features_named	Gcina {name}
+save_features_ok	Useto lugciniwe ku-{name}
+save_names	Gcina amagama
+second_way	Indlela yesibini
+server_ip_ph	I-IP yeseva (umz. 192.168.1.10)
+set_credit_limit	Faka umda kwiqela
+set_login_selected	Faka ungeno kokukhethiweyo
+set_login_named	Faka ungeno ku-{name}
+shop	Ivenkile
+show	Bonisa
+spreadsheet_csv	Iphepha leamanani (i-CSV)
+start_fresh	Qala entsha
+stop_extra_tills	Yima ezinye iikhawuntara
+floor_cols_ph	Iikholamu
+floor_cols_fit	Linganisa isikrini
+floor_cols_fit_sub	{n} zilungele apha
+floor_cols_fits	zilungele
+floor_cols_scroll	ziskrola ecaleni
+floor_cols_min	Iikholamu: ubuncinci 1 — okanye ushiye ingenanto ukuze ilinganise isikrini
+floor_zoom_auto	Ngokuzenzekelayo
+floor_zoom_out	Sondeza ngaphandle
+floor_zoom_in	Sondeza ngaphakathi
+backup_auto	Kuyagcinwa ngokuzenzekelayo yonke imihla · yokugqibela {when} · iintsuku ezili-14 ezidlulileyo zigcinwa ku-{dir}.
+backup_auto_none	Kuyagcinwa ngokuzenzekelayo yonke imihla — eyokuqala iqala ngokukhawuleza.
+backup_copy_to	Iikopi ziya nakuyo {dir}.
+backup_copy_btn	Kopisha ugcino lwasemva nakwifolda…
+autostart_off	Qala nale khompyutha
+autostart_on	Iqala nale khompyutha ✓ — cofa ukuze uyime
+autostart_done_on	Le khompyutha ngoku ivula i-app xa iqala — iseva yevenkile ibuya emva kokuphela kombane.
+autostart_done_off	Le khompyutha ayisayivuli i-app xa iqala.
+device_forgotten	Ivenkile ilibele esi sixhobo — sidibanise kwakhona ngekhowudi yangoku yevenkile. Ii-odolo ezilindileyo kuso zigciniwe.
+lan_offline	Iseva yevenkile ayifikeleleki
+forget_device	Libala
+last_seen	iboniwe
+copy_pair_code	Kopisha ikhowudi yokudibanisa
+new_pair_code	Ikhowudi entsha yokudibanisa
+pair_finishing	Igqibezela ukudibanisa… ifaka iincwadi zevenkile
+pair_opening	Ivula ikhawuntara…
+pair_copied	Ikhowudi yokudibanisa ikopishiwe
+kot_waiting	Ilinde ukuthunyelwa
+lan_offline_waiting	Iseva yevenkile ayifikeleleki · {n} balindile
+lan_connecting	Iyaqhakamshelana nevenkile…
+lan_live	Ngoku
+lan_sending	{n} ziyathunyelwa
+lan_sign_in_to_send	Ngena kwakhona ukuze uthumele {n}
+lan_pair_again	Dibanisa esi sixhobo kwakhona
+lan_update_app	Hlaziya i-app — esi sixhobo neseva yevenkile zineenguqulelo ezahlukeneyo
+allow_firewall	Vumela ezinye izixhobo ukuba ziqhagamshelane
+firewall_blocked	Udongololo lwale khompyutha luvalela ezinye izixhobo — cofa Vumela ezinye izixhobo ukuba ziqhagamshelane.
+firewall_waiting	Kulindwe umyalelo womlawuli…
+lan_join_help	Kwesinye isixhobo: Imo yeKlayenti → Fumana iseva yevenkile (okanye chwetheza {addr}) → ikhowudi yokudibanisa {code}.
+lan_pair_status	Wi‑Fi {addr}
+lan_join_help_no_addr	Qhagamshela esi sixhobo kwi-Wi‑Fi ukuze ufumane idilesi.
+lan_no_address	Akukho dilesi ye-Wi‑Fi — qhagamshela kwi-Wi‑Fi yevenkile.
+lan_not_listening	Ayizamkeli izixhobo (iporti {port} ixakekile). Qalisa i-app kwakhona.
+lan_tills_off	Ezinye iikhawuntara zicinyiwe. Zivumele ukuze esinye isixhobo sijoyine.
+paired_with	Kudityanisiwe · {url}
+not_paired	Akudityaniswanga
+choose_device_use	Khetha iSeva okanye iKlayenti.
+paired_note	Kudityanisiwe. Vula ukuze uthengise, okanye Hlaziya okutsha.
+last_update_at	Uhlaziyo lokugqibela: {time}.
+pair_intro	Fumana iseva, okanye chwetheza idilesi yayo ngekhowudi yokudibanisa.
+queue_waiting	Kulindwe ukufikelela evenkileni ({n}):
+queue_tries	Kuzanywe amaxesha {n} · impendulo yokugqibela: {e}
+save_backup_copy	Gcina ikopi yogcino lwasemva…
+backup_copy_saved	Ikopi yogcino lwasemva igciniwe — yigcine ngaphandle kwesi sixhobo (istiki ye-USB okanye esinye isixhobo)
+backup_copy_overdue	Akukho kopi yogcino lwasemva ishiye esi sixhobo iintsuku ezingama-{n} — uSeto → Ugcino lwasemva
+backup_copy_failed	Ikopi yogcino lwasemva ayikwazanga ukugcinwa apho — khetha enye indawo
+clock_off	Iwotshi yesi sixhobo ingaphandle ngemizuzu engama-{min} kweseva yevenkile — misa ixesha elichanekileyo kwesi sixhobo
+printers_heading	Abashicileli
+printers_help	Fumana abashicileli, cofa enye ukuze uyikhethe, emva koko Shicilela iphepha lovavanyo kweso sixhobo kuphela. Abashicileli beBhili: Ibhili kunye nefomati yokutyibilika → Ibhili.
+printers_host_only	Iiprinta zisetwa kwisixhobo sevenkile (Iseva). Oku kude kuthumela amatyala kunye namatikiti amadala phaya — Fumana / yongeza / yabela ukuhlala kwiSeva. Iphepha lovavanyo kunye nobungakanani boshicilelo lwebhili yiya kumncedisi.
+printers_find_heading	Fumana abashicileli
+printers_find_tip	Fumana ijonga esi sixhobo kwaye igcina uluhlu lutsha.
+printers_pool_heading	Abashicileli
+printers_pool_tip	Fumana ijonga esi sixhobo kwaye igcina olu luhlu lutsha.
+printers_pool_empty	(akukho — cofa Fumana)
+printers_routes_help	Fumana abashicileli inkqubo yokusebenza esele ibazi. Yabele kwityala nakwicandelo ngalinye phantsi kwe-Bill & Slip format.
+printer_assign_dd	Umshicileli wokwenene: {place}
+printer_assign_pick	Khetha umshicileli wokwenene
+printer_profile_heading	Uyilo
+printer_send_heading	Ukuhambisa
+vp_delivery_heading	Ukuhambisa
+vp_delivery_help	Lo mshicileli wenyani uyithumela njani imisebenzi — uxwebhu lwe-OS, iibyte ezingakrwada, okanye ESC/POS. Umxholo wesilayidi (ubungakanani bohlobo, ukusonga, imida) kugqitywe nge-bill / isiliphu ifomathi, hayi apha.
+vp_type_size_heading	Ubukhulu bohlobo
+vp_wrap_heading	Ububanzi bokusonga
+vp_margin_heading	Imida
+vp_delivery_spooler	Uxwebhu lwenkqubo (ispula yenkqubo)
+vp_delivery_raw	Iibhayithi ezimsulwa kwisixhobo
+vp_delivery_escpos	Imiyalelo yobushushu ye-ESC/POS
+virtual_printer_new	Umshicileli omtsha wobuchwepheshe
+virtual_printer_selected	Uhlela “{name}” — cofa omnye kuluhlu ukuze utshintshe
+virtual_printer_tap_list	Cofa umshicileli wobuchwepheshe kuluhlu ukuze umhlele
+config_layout_portrait	Ngokuma
+config_layout_landscape	Ngokubanzi
+config_send_os	Ispula yenkqubo
+config_send_escpos	ESC/POS
+profiles_heading	Uyilo
+profiles_empty	(akukho yilo)
+profile_builtin	eyakhelweyo
+profile_custom	eyakho
+profile_name_ph	Igama loyilo
+profile_new	Uyilo olutsha
+profile_delete	Cima uyilo
+profile_created	Uyilo lwenziwe
+profile_deleted	Uyilo lucinyiwe
+profile_builtin_keep	Uyilo olwakhelweyo alunakucinywa
+config_saved	Kuhlaziyiwe
+config_selected	Kukhethwe “{name}”
+printer_output_heading	Abashicileli bobuchwepheshe
+virtual_printers_heading	Abashicileli bobuchwepheshe
+virtual_printers_empty	Akukho bashicileli bobuchwepheshe — misa amaxabiso ngezantsi, emva koko Gcina. Emva kokuba unabo, cofa omnye kuluhlu ukuze umhlele.
+virtual_printer_name_ph	Igama lomshicileli wobuchwepheshe (akuyomfuneko)
+virtual_printer_create	Yenza umshicileli wobuchwepheshe
+virtual_printer_save	Gcina umshicileli wobuchwepheshe
+virtual_printer_delete	Cima umshicileli wobuchwepheshe
+virtual_printer_created	Umshicileli wobuchwepheshe “{name}” wenzile
+virtual_printer_deleted	Umshicileli wobuchwepheshe “{name}” ucinyiwe
+virtual_printer_updated	Umshicileli wobuchwepheshe uhlaziyiwe
+virtual_printer_updated_named	Umshicileli wobuchwepheshe “{name}” uhlaziyiwe
+virtual_draft_layout	Amaxabiso amiswe kumshicileli wobuchwepheshe olandelayo
+virtual_draft_send	Ixabiso limiswe kumshicileli wobuchwepheshe olandelayo
+virtual_need_real	Khetha umshicileli wokwenene kuqala
+virtual_need_select	Khetha umshicileli wobuchwepheshe oza kucinywa
+real_printer_selected	Kukhethiwe: {name}
+station_group_heading	Abashicileli bobuchwepheshe
+station_group_apply	Cima umshicileli wobuchwepheshe
+station_group_applied	Kucinyiwe
+station_group_empty	Khetha umshicileli wobuchwepheshe
+station_group_name_ph	Igama lomshicileli wobuchwepheshe (akuyomfuneko)
+station_group_save	Yenza umshicileli wobuchwepheshe
+station_group_saved	Umshicileli wobuchwepheshe ugciniwe
+station_manage_heading	Yongeza okanye ususe icandelo levenkile
+printers_routes_heading	Apho izinto zishicilelwa khona
+route_pick_heading	Indawo
+route_editing	Uhlela: {name}
+route_assigned	Kongezwe {printer} ku-{place}
+route_already_assigned	Sele ikule ndawo: {printer}
+route_removed	Kususiwe {printer} ku-{place}
+route_cleared	Kucinyiwe {name}
+route_assigned_empty	Akukho kule ndawo
+route_tap_remove	cofa ukuze ususe
+route_tap_select	cofa ukuze ukhethe
+route_tap_selected	kukhethiwe
+route_pick_printer_first	Cofa umshicileli kuqala
+route_assigned_heading	Abashicileli
+route_add_heading	Yabela
+printer_label_ph	Igama (umzekelo Umshicileli weCounter)
+printer_target_ph	Igama lomshicileli wenkqubo okanye i-host:9100
+printer_target_default	umshicileli oqhelekileyo wale khompyutha (idilesi engenanto)
+printer_wire_heading	Iprofayile
+printer_wire_escpos	ESC/POS
+printer_wire_os	Ngokuma
+printer_wire_os_portrait	Ngokuma
+printer_wire_os_landscape	Ngokubanzi
+printer_wire_escpos_short	ESC/POS
+printer_wire_os_short	Ngokuma
+printer_wire_os_landscape_short	Ngokubanzi
+printer_format_custom	Iprofayile entsha eyakho
+printer_format_custom_label	Eyakho
+printer_format_custom_added	Iprofayile eyakho yongezwe kule ndawo
+add_printer	Yongeza umshicileli
+remove_printer	Susa
+route_pick_ph	Ibhili okanye icandelo levenkile
+route_bill	Ityala
+route_default_kitchen	Akukho sitishi (izinto ezingabiwanga)
+route_kot_station	Isikhululo
+route_dont_print	Akukho mshicileli
+stations_heading	Izikhululo
+stations_help	Amacandelo okuthenga izinto zeqela kunye nabashicileli baloo ndawo yevenkile. Qhoboshela abashicileli abasuka kwiiSetingi → Abashicileli, seta ulandelelwano lokuzama, emva koko Kuqala okusebenzayo okanye Shicilela kuzo zonke. Utshintsho lugcina njengoko uhamba.
+station_print_heading	Abashicileli balesi sikhululo
+station_print_help	Khetha isitishi, emva koko uqhoboshele umshicileli omnye okanye ngaphezulu. ↑↓ icwangcisa ulandelelwano lwetry. Okokuqala oko kusebenza kuyeka emva kwempumelelo yokuqala; Shicilela kuzo zonke izithumelo kumshicileli ngamnye oqhotyoshelweyo.
+station_print_pick_ph	Isikhululo sokumisa abashicileli
+station_print_pick_first	Khetha icandelo levenkile kuqala
+station_print_editing	Uhlela abashicileli be-“{name}”
+station_vps_dd	Abashicileli balesi sikhululo
+station_vps_dd_n	Abashicileli {n} · cofa ukuze utshintshe
+station_vps_empty	Akukho bashicileli — Bafumane phantsi koSeto → Abashicileli
+bill_printers_dd	Abashicileli betyala
+bill_printers_dd_n	Abashicileli {n} betyala · cofa ukuze utshintshe
+job_layout	Uyilo
+job_delivery	Indlela umsebenzi othunyelwa ngayo
+job_delivery_help	Uxwebhu lwe-OS, ii-bytes ekrwada, okanye ESC/POS. Ityala kunye netikiti ngalinye ligcina elakhe. Nawuphi umsebenzi unokuya nakuwuphi umshicileli Fumana ugciniwe.
+station_vp_attached	Umshicileli uqhotyoshelwe
+station_vp_detached	Umshicileli ususiwe esikhululweni
+station_print_summary	{mode} · abashicileli {n}
+station_print_summary_none	Akukho bashicileli kwesi sikhululo — asizukushicilela
+stations_none	Akukho zikhululo okwangoku - yongeza enye ngezantsi. Izitishi azisetyenziswa kwikhawuntara - shiya ungenanto.
+route_up	Phezulu
+route_down	Ezantsi
+route_remove	Susa
+route_clear	Cima
+save_printers	Gcina abashicileli
+print_test_page	Shicilela iphepha lovavanyo
+no_printer_assigned	Akukho mshicileli
+test_page_no_printer	Akukho mshicileli we-{place} — qhobosha umshicileli kuyo, emva koko uzame kwakhona
+test_page_pick_first	Khetha abashicileli bephepha lovavanyo kuqala — emva koko Shicilela iphepha lovavanyo
+test_printers_dd	Abashicileli bephepha lovavanyo
+test_printers_dd_n	Abashicileli {n} bephepha lovavanyo · cofa ukuze utshintshe
+kot_test_printers_dd	Izishicileli zovavanyo lokuprinta
+kot_test_printers_dd_n	{n} umshicileli wovavanyo loshicilelo · cofa ukutshintsha
+test_printer_picked	Uvavanyo ku: {name}
+test_printer_cleared	Akuvavanywa ku: {name}
+test_page_sent_n	Iphepha lovavanyo lithunyelwe kubashicileli {n}
+test_kot_pick_first	Khetha um(izi)shicileli woVavanyo kuqala - emva koko uprinte uvavanyo
+test_kot_sent_n	Ushicilelo lovavanyo luthunyelwe ku-{n} umshicileli(s)
+cancel_pick	Phawula
+cancel_pick_on	Kuphawuliwe
+cancel_pick_meta	Kuphawulelwe ukurhoxisa
+batch_cancel	Rhoxisa okuphawuliweyo
+batch_cancel_n	Rhoxisa okuphawuliweyo ({n})
+batch_cancel_none	Phawula into enye okanye ezingaphezulu ezithunyelweyo kuqala — emva koko Urhoxise uphawulwe
+batch_cancel_title	Rhoxisa izinto eziphawulweyo - isizathu esinye, isiliphu esinye sokurhoxisa kwicandelo ngalinye
+batch_cancel_ok	Izinto ze-{n} zirhoxisiwe · {slips} ukurhoxisa isiliphu (s) → {kitchens}
+batch_cancel_ok_noprint	Izinto ze-{n} zirhoxisiwe — ukuprinta okuzenzekelayo kucinyiwe, ngoko ke akukho siliphu sokurhoxisa
+no_printer_kitchen_station	Akukho mshicileli weso sitishi
+printers_saved	Kugciniwe
+test_page_sent	Iphepha lovavanyo lithunyelwe — jonga umshicileli
+test_page_sent_one	Iphepha lovavanyo lithunyelwe ku-{name} — jonga loo mshicileli
+printers_found	Kufunyenwe {n}: {list}
+printers_find_synced	Kufunyenwe {n} — {new} ezintsha
+printer_on_device	kugciniwe
+printer_already_added	sele yongeziwe
+printer_already_saved	Sele igciniwe: {name}
+find_printers	Fumana abashicileli
+printers_looking	Iyakhangela…
+saving_printer	Iyongeza umshicileli…
+cancelled	Kurhoxisiwe
+printers_tap_find	Cofa Fumana ukuze ubone abashicileli esi sixhobo sinokubasebenzisa.
+printers_none_found	Akukho kufunyenweyo — chwetheza igama lomshicileli wenkqubo okanye i-IP (umz. 192.168.1.50).
+printer_from_find	Kongezwe {name}
+kot_printer_ph	Isishicileli seziliphu
+bill_printer_ph	Umshicileli wamatyala
+kot_print_on	Amatikiti okuprinta ngokuzenzekela: Vula
+kot_print_off	Ukuprinta amatikiti ngokuzenzekela: Cimile
+queue_refused	Akuvunywanga yivenkile ({n}) — jonga nganye kwikhawuntara:
+clear_not_accepted	Kujongiwe — cima olu luhlu
+device_name_ph	Igama lesi sixhobo
+lan_last_update	uhlaziyo lokugqibela {time}
+lan_not_accepted	{n} akuvunywanga
+connected_now	kuqhagamshelwe ngoku
+backup_failed	Ugcino lwasemva oluzenzekelayo lokugqibela aluphumelelanga: {e}
+backup_overdue	Akukho gcino lwasemva iintsuku ezingama-{n} — gcina i-app ivuliwe kwesi sixhobo ukuze ikwazi ukugcina.
+disk_low	Ziyi-{mb} MB kuphela eziseleyo kwesi sixhobo — ugcino lwasemva luya kusilela ngokukhawuleza. Vula indawo.
+last_seen_devices	Ibonwe okokugqibela: {time}
+sync_interval	Dibanisa rhoqo nge-{secs}s
+connection_to_shop	Uqhagamshelo evenkileni
+supplier_name_ph	Igama lomboneleli (okanye iqela)
+supplier_ph	Umboneleli
+switch_device	Tshintsha esi sixhobo
+take_payment	Qokelela intlawulo
+tax_added_till	{tax} ngaphandle kwexabiso
+tax_inside_price	{tax} ngaphakathi kwexabiso
+tax_invoice	I-invoyisi yerhafu
+till_to_bank	Ikhawuntara → ibhanki
+units_heading	Iiyunithi
+unlock_after_pairing	Faka i-PIN
+unlock_with_login	Vula ngokungena
+unmark	Susa uphawu
+update_my_password	Hlaziya igama lam lokugqitha
+update_my_pin	Hlaziya ungeno lwam
+duress_heading	I-PIN yokuvula engxamisekileyo (Umnini kuphela)
+duress_help	Ukhetho. Ukuba le PIN ichwethezwe ekuvuleni endaweni yeyakho, onke amangeno eencwadi ayacinywa (intengiso, iileja, imbali) kwaye itill ivulwa njengoMnikazi ejongeka njengesiqhelo — izinto, amaxabiso, izinto zokubala, abasebenzi kunye nezicwangciso zihlala. I-schema kunye noqwalaselo alucinywanga. Sebenzisa kuphela xa unyanzelekile ukuba uvule. Shiya kungenanto kwaye ugcine ukuze ucime. Ayisoze yafana ne-PIN yakhe nabani na.
+duress_pin_ph	I-PIN engxamisekileyo (amanani 4–12)
+duress_confirm_ph	Chwetheza kwakhona ukuze uqinisekise
+save_duress_pin	Gcina i-PIN engxamisekileyo
+clear_duress_pin	Cima i-PIN engxamisekileyo
+duress_on	I-PIN yokuvula engxamisekileyo ivuliwe
+duress_off	I-PIN yokuvula engxamisekileyo icinyiwe
+duress_saved	I-PIN yokuvula engxamisekileyo igciniwe
+duress_cleared	I-PIN yokuvula engxamisekileyo icinyiwe
+upi_amount_ph	Imali ye-UPI
+void	Rhoxisa ngokupheleleyo
+write_off_ap	Cima i-AP
+write_off_heading	Cima (cima ngaphandle kwentlawulo)
+write_off_nil	Cima / ibhalansi engento
+your_brand	Uphawu lwakho (kwi-app)
+your_categories	Iindidi zakho
+account_kind	Uhlobo lwe-akhawunti (cofa olunye)
+actual_total_cap	ISIXA SOKWENENE
+amend_help	Khetha intengiso ukuze ulungise, urhoxise ngokupheleleyo, okanye ubuyise. Ukulungisa kugcina imbali epheleleyo. Isixa esijikeleziweyo siqala silingana nokuFakweyo — hlela kuphela ukuze ujikeleze. Ukurhoxisa ngokupheleleyo nokubuyisa kunokufuna i-PIN yoMnini okanye yoMphathi (ichwethezwe ngasentla; ibhalwe negama lakho).
+applied_total_cap	ISIXA ESIFAKIWEYO
+bank_balance	Ibhalansi yebhanki
+bank_net_today	I-neto yebhanki namhlanje
+branch_export_help	Ukukhupha kubhala i-branch_snapshot_CODE_DATE.json kwifolda yogcino lwasemva kwaye kuyikopisha kwibhodi yokukopa. Ukungenisa usuku lwenye ivenkile, gcina ifayile yayo njenge-import_branch_snapshot.json kwifolda enye, emva koko ucofe Ngenisa.
+brand_shown_help	Kuboniswa kwizikrini ngaphakathi kwi-app. Igama le-app efakelweyo nesiqondiso kwesi sixhobo kuhlala njengokubhalwa kweqonga.
+app_icon	Isiqondiso se-app
+logo_help	Uphawu lwevenkile olukhethwayo kwizikrini kwi-app.
+onboard_layout	Oku uza kukufumana
+item_photo_help	Akuyomfuneko. Ngaphandle kwefoto sibonisa oonobumba bokuqala begama lento.
+stamp_heading	Isitampu
+stamp_image_help	Ukhetho lwesitampu somfanekiso kumatyala ashicilelweyo kunye nomboniso wabathengi.
+payment_qr_heading	I-QR yentlawulo
+payment_qr_image_help	I-QR engatshintshiyo kumatyala kunye nokuboniswa kwabathengi; kungenjalo ukuhlawula kusebenzisa i-UPI QR eguqukayo evela kwi-VPA engentla.
+cash_in_hand	Imali ephathekayo (ikhawuntara)
+change_my_pin_heading	Ungeno lwam
+connect_to_server	Qhagamshela kwiSeva
+counter_locked	Ikhawuntara 01 · Itshixiwe
+country_pack_help	Ipakethe yelizwe imisa igama lerhafu nemathematika, umzila wentlawulo esukuba, nenombolo yeshishini eshicilelwa kumatyala. UKumkaj akafaki iirhafu okanye akhuphe ii-invoyisi zikarhulumente naphi na.
+currency_use_help	Skrola ucofe Sebenzisa kuyo nayiphi na imali exhaswayo.
+day_close_help	Ukubhala ukuvala usuku kugcina esi sishwankathelo (nomahluko wedrowa ukuba ubaliwe) kwilogi yophicotho. Akuyeki ukuthengisa.
+expenses_word	Iinkcitho
+feature_access_help	Into abanokuyivula — akuyomfuneko; umsebenzi ongentla sele umise isiseko
+footer_local	I-SQLite yalapha · Simahla ngonaphakade · Akukho Cloud
+fresh_book_kirano	Entsha = ikhathalogu engenanto (yongeza izinto kamva). Incwadi = chwetheza isitokhwe sokuvula kwaye ngubani onetyala kuwe ngezantsi.
+fresh_selected	Entsha ikhethiwe — ikhathalogu ihlala ingenanto. Cofa Igqityiwe xa ulungile.
+gross_word	Epheleleyo
+how_start	Ufuna ukuqala njani?
+kot_print_help_kirano	Ayisetyenziswa kwikhawuntara yekirana.
+later_country_pack	Kamva: uSeto → faka ipakethe yelizwe lakho kwiileyibhile zerhafu nentlawulo.
+local_badge	LAPHA
+mix_type_hint_kirano	Yahlula phakathi kwemali ephathekayo / i-UPI / ikhadi / ikhredithi ukuba kuyafuneka. Ikhredithi ifuna umthengi ngentla.
+money_in_sales	Imali engenayo (iintengiso)
+net_word	Neto
+offline_badge	AKUKHO INTANETHI
+optional_login_help	Ungeno olukhethwayo (igama + igama lokugqitha). Umnini umisa kanye; umsebenzisi kuphela onokutshintsha igama lokugqitha kamva.
+or_unlock_login	Okanye vula ngegama lokungena + igama lokugqitha
+permission_preset	Umsebenzi (umisa izikrini nezenzo zemali)
+preset_help_kirano	Umcangci: thengisa. Umphathi: thengisa + izinto + rhoxisa ngokupheleleyo/lungisa.
+product_locked_kirano	Kirano
+product_only_kirano	IKirano yigrosari / inkqubo yokusebenza yekirana: ukuthengiswa kwekhawuntara, isitokhwe, ikhredithi kunye neencwadi - ngaphandle kweintanethi kwizixhobo zakho.
+purchases_cogs	Okuthengiweyo (i-COGS)
+qty_cap	INANI
+restore_help	Buyisela: khetha ugcino lwasemva. Iincwadi zivuleka njengoko zazinjalo ngelo xesha; iincwadi ezinjalo ngoku zigcinwa kuqala, ngoko oku kunokubuyiselwa.
+wipe_data_heading	Cima idatha yalapha
+wipe_data_help	Umnini kuphela-ukhetho olufanayo nolokukhupha iWindows. Iirekhodi zeshishini zicoca imbali yorhwebo kodwa zigcina izinto kunye nokuseta (njenge-PIN yokuvula ngokungxamisekileyo). Ukuseta ivenkile kususa uvimba weencwadi. Izikhethwa zesikrini zicima ifestile/ulwimi. Qinisekisa nge-PIN yoMnini. I-PIN yokuvula likaxakeka kwiQela yahlukile (i-covert yosula ekuvuleni).
+wipe_trading	Iirekhodi zeshishini
+wipe_schema	Useto lwevenkile
+wipe_ui	Ukhetho lwesikrini
+wipe_owner_pin_ph	I-PIN yoMnini yokucima
+wipe_delete_selected	Cima okukhethiweyo
+wipe_owner_only	Umnini kuphela onokucima idatha yalapha.
+restore_owner_only	Umnini kuphela onokubuyisela ugcino lwasemva.
+wipe_owner_pin_needed	Faka i-PIN yoMnini ukuze ucime idatha yalapha.
+wipe_nothing_selected	Khetha into oza kuyicima kuqala.
+wipe_done	Idatha yalapha ekhethiweyo icinyiwe.
+wipe_schema_done	Useto lwevenkile lucinyiwe — khetha iSeva okanye iKlayenti ukuze uqhubeke.
+rounded_total	Isixa esijikeleziweyo
+setup_app_kirano	Misela iKirano
+shop_logo_optional	Ilogo yevenkile (akuyomfuneko)
+stock_type_help	Chwetheza igama lento (inxalenye yanele), inani, emva koko ulungise. Izinto ezingekabalwa zifuna Qala ukulandelela kanye.
+team_owner_help	Shiya umntu engenanto ukuze wongeze umntu: igama, umsebenzi, igama lomsebenzisi, i-PIN, negama lokugqitha olukhethwayo, emva koko Yongeza. Khetha umntu ukuze uhlele ifom enye — igama, igama lomsebenzisi, igama lokugqitha, izikrini, namalungelo — emva koko Gcina. I-PIN yakho negama lokugqitha lungeno olunye ezantsi. Umnini akatshintshi i-PIN yomnye umntu.
+staff_name_ph	Igama lomsebenzi
+staff_copy_hire_ph	Kopisha useto usuka ku (akuyomfuneko)
+staff_copy_hire	Sebenzisa useto lalo mntu
+staff_edit_name_ph	Igama lokubonisa
+staff_rename	Gcina igama
+staff_copy_edit_ph	Kopisha useto komnye umntu
+staff_copy_edit	Kopisha useto lwabo kokukhethiweyo
+staff_copy_edit_onto	Kopisha useto lwabo ku-{name}
+staff_deactivate_named	Susa {name}
+staff_renamed	Igama ligciniwe
+staff_setup_copied_hire	Useto lukopishwe ku-{name} — misa igama elitsha ne-PIN, emva koko Yongeza umsebenzi
+staff_setup_copied_edit	Kukopishwe useto luka-{from} ku-{to}
+staff_copy_need_selected	Khetha umntu oza kumhlela kuqala
+staff_copy_need_source	Khetha useto lomntu oza kulukopisha
+staff_copy_same	Lowo ngumntu omnye — khetha omnye
+staff_rename_need_selected	Khetha umntu oza kuthiya igama lakhe kuqala
+team_pick_hint	Khetha omawuhlele — izikrini, amalungelo emali, kunye nezitishi zivelela loo mntu kuphela.
+team_stations_help	Izitishi ezinokuzisebenzisa
+team_stations_changed	Izitishi zitshintshile — Gcina ukuseta kulo mntu
+team_features_changed	Izikrini zitshintshile — Gcina useto lalo mntu
+team_rights_changed	Amalungelo atshintshile — Gcina useto lalo mntu
+they_owe_us	Basityala
+unit_at_cap	Iyunithi @
+units_help	Iikhowudi zeelayibhile zezinto (kg, isiqwenga, ingxowa). Iyunithi nganye kufuneka idityaniswe — ngokuthe ngqo okanye ngezinye iiyunithi — nesiseko (kg · cm · ml · pc), umz. 1 crate = 2 box no 1 box = 20 cm. Uguqulo: 1 from = factor to. Iimali azizizo iiyunithi.
+units_picker_help	Cofa ku-On/Vala ukubonisa iyunithi kwi-Thenga kunye nabacholi bezinto. Iiyunithi ezivaliweyo zisaguquguquka.
+unit_picker_on	Ivuliwe
+unit_picker_off	Icinyiwe
+we_owe_them	Sibatyala
+who_unlocking	Ngubani ovulayo?
+locked_word	Itshixiwe
+show_pin	Bonisa i-PIN
+hide_pin	Fihla i-PIN
+set_owner_pin	MISA I-PIN YOMNINI
+enter_owner_passcode	FAKA I-PASIKHOWUDI YOMNINI
+enter_staff_passcode	FAKA I-PASIKHOWUDI YABASEBENZI
+pin_count_zero	0 / amanani ali-12 · ubuncinci 4, emva koko Kulungile
+pin_count_need	{} / amanani ali-12 · kufuneka {} ngaphezulu
+pin_count_full	12 / amanani ali-12 · cofa Kulungile
+pin_count_ready	{} / amanani ali-12 · cofa Kulungile xa ulungile
+pin_hint_choose	Khetha amanani 4–12 · Enter okanye Vula ukuze ugcine
+pin_hint_new	I-PIN entsha yoMnini yamanani 4–12 · Enter okanye Vula
+pin_hint_shop_code	Isixhobo sevenkile · ikhowudi yokudibanisa {}
+pin_hint_books	Esi sixhobo sineencwadi
+pin_hint_paired	Enye ikhawuntara idityanisiwe — vula ukuze uthengise
+pin_hint_pair_first	Enye ikhawuntara — yidibanise nesixhobo sevenkile kuqala
+unlock_to_continue	Vula ukuze uqhubeke
+no_staff_yet	Akukho basebenzi — vula njengoMnini, emva koko iQela
+status_server_set_pin	Imo yeSeva — misa i-PIN yoMnini
+status_server_tills	Imo yeSeva — ezinye iikhawuntara zinokudibanisa. Vula
+status_server_unlock	Imo yeSeva — vula njengoMnini
+status_client_unlock	Imo yeKlayenti — vula ukuze uthengise
+icon_new_selected	Isiqondiso: ifayile entsha ikhethiwe — cofa Gcina uphawu
+icon_custom	Isiqondiso: uphawu lwendawo olwakho
+icon_default	Isiqondiso: uphawu lukaKumkaj (esisiseko) — khetha olwakho
+logo_yours	Ilogo: ilogo yevenkile yakho — iboniswa kwizikrini nakwiirisithi
+logo_default	Ilogo: uphawu lukaKumkaj (esisiseko) — khetha eyakho ukuba unayo
+tmpl_current	Okwangoku: {} — {}
+tmpl_selected	Kukhethiwe: {} — {}
+setup_complete	Useto lugqityiwe
+onboard_fresh_tmpl	Entsha · {} — ikhathalogu iqala ingenanto; yongeza izinto kwiZinto, emva koko Igqityiwe.
+onboard_book_tmpl	Incwadi · {} — yongeza izinto nekhredithi yokuqala, emva koko Igqityiwe.
+onboard_template_tmpl	Yithiye igama indawo ukuba ufuna, emva koko ukhethe indlela yokuqala.
+tmpl_blurb	Ikhawuntara yeKirana: thengisa, isitokhwe, ikhata, umthengisi uyathenga, iincwadi.
+tmpl_how	Thengisa kwikhawuntara; Thenga isitokhwe; Iincwadi zencwadi yosuku.
+reports_facet_title	Iingxelo
+reports_facet_help	Iincwadi zosuku, ubudala bamaqela, iiposi zebhanki, nenzuzo nelahleko yexesha.
+against_bill_ph	Ngokuchasene netyala # elingentla (akuyomfuneko)
+aliases_ph	Iikhowudi ezimfutshane kunye neziteketiso — isiphumlisi sahluliwe (umz. MG02, atta)
+amount_blank_full_ph	Imali (ungenanto = ibhalansi epheleleyo)
+amount_owed_ph	Imali etyalwayo
+amount_ph	Imali
+amount_received_ph	Imali efunyenweyo
+amount_we_pay_ph	Imali esiyihlawulayo
+business_name_ph	Igama leshishini
+category_new_ph	Udidi (akuyomfuneko, lwenziwa ukuba lutsha)
+code_bag_ph	Ikhowudi (ingxowa)
+conv_factor_ph	Umlinganiselo (25 = ingxowa 1 → 25 kg)
+country_code_ph	Ikhowudi yelizwe umz. IN, GB, US, AE, BR
+credit_khata_amount_ph	Imali yekhredithi / ikhata
+credit_limit_ph	Umda wekhredithi (0 = akukho)
+from_code_ph	Ikhowudi yokuqala (ingxowa)
+item_name_lang_ph	Igama lento — lichwetheze ngolwimi lwakho
+login_id_opt_ph	Igama lomsebenzisi (liyafuneka, lilodwa)
+manager_pin_ph	I-PIN yomphathi yokuvuma (kuphela ukuba awunakurhoxisa ngokupheleleyo)
+new_branch_name_ph	Igama elitsha lesebe
+new_password_ph	Igama elitsha lokugqitha (akuyomfuneko)
+new_pin_ph	I-PIN entsha (amanani 4–12)
+note_bank_ph	Inqaku (udiphozithi, ukukhupha, …)
+note_buy_expense_ph	Inqaku (ipetroli, irenti, …)
+note_expense_ph	Inqaku (ipetroli, iofisi, …)
+options_kirano_ph	Ukhetho — Ubungakanani*: Incinci=199, Inkulu=399 | Izongezelelo+3: Itshizi=40, iOlive=30 | Itshizi eyongezelelweyo=40
+part_second_way_ph	Inxalenye ngendlela yesibini (akuyomfuneko)
+phone_ph	Ifowuni
+place_name_ph	Igama lale ndawo
+qty_example_ph	Inani (umz. 1.5 ye-kg)
+quantity_ph	Inani
+reason_required_ph	Isizathu (siyafuneka)
+role_title_ph	Isihloko sendima (umz. iBarista)
+service_pct_ph	Ipesenti yenkonzo ekhethwayo 0/10/12
+short_code_ph	Ikhowudi emfutshane (MG02)
+starting_password_ph	Igama lokugqitha lokuqala (akuyomfuneko)
+starting_pin_ph	I-PIN yokuqala (amanani 4–12)
+station_name_ph	Igama lesitishi (uyazikhethela)
+station_new_ph	Icandelo (uyazikhethela)
+table_name_ph	Ikhawuntara / igama lebheyi
+tax_rate_ph	Igama lexabiso lerhafu okanye % — iStandard, Elincitshisiweyo, 0, 5, 12, 18, 20
+to_code_ph	Ikhowudi yokugqibela (kg)
+uncleared_no_ph	Engacaciswanga # engentla
+unit_cost_ph	Ixabiso leyunithi
+unit_name_bag_ph	Igama (Ingxowa)
+unit_plate_ph	Iyunithi (ipleyiti / pc — ungenanto = nganye)
+pay_credit	Ikhredithi
+book_kind_today	Iincwadi zanamhlanje
+book_kind_month	Iincwadi zale nyanga
+book_kind_aging	Okungahlawulwanga / i-debit-khredithi
+book_kind_balance	Iphepha lobalanso
+order_help	Cofa into ukuze uyongeze.
+floor_help	Le venkile ithengisa kwikhawuntara. Iitafile kunye nomgangatho wokutyela aziyonxalenye yeKirano.
+kitchen_help	Ayisetyenziswa kwikhawuntara yevenkile.
+kitchen_empty	Akukho matikiti avuliweyo (iivenkile zokubala zidla ngokushiya esi sikrini singasetyenziswanga).
+add_a_table	Yongeza itafile
+add_station_heading	Yongeza icandelo levenkile
+categories_help	Cofa Sebenzisa ukuze ubeke into engentla phantsi kwaloo didi. Ifoto inika udidi umfanekiso; ngaphandle kwayo ibonisa oonobumba bokuqala.
+dish_search_ph	Khangela izinto okanye ikhowudi emfutshane...
+tile_free	Ayinamntu
+tile_occupied	Ihlaliwe
+tile_food_ready	Ukutya kulungile
+tile_bill_printed	Ityala lishicilelwe
+tile_paid	Ihlawulwe
+tile_bill_btn	Ityala
+tile_occupy_btn	Hlalisa iindwendwe
+tile_free_btn	Khulula itafile
+tile_ready_btn	Khulula itafile
+tile_undo_bill	Buyisela ityala
+summary_busy	iitafile ezixakekileyo
+summary_to_collect	eziza kuqokelelwa
+summary_on_floor	kwisaluni
+floor	Ivenkile
+sizes_as_items_ph	Ubungakanani njengezinto ezahlukeneyo (akuyomfuneko) — Isiqingatha=120, Epheleleyo=200
+dish_group_ph	Iqela lobungakanani bepakethi (ngokuzikhethela) - umz. Atta 1kg / 5kg
+discount	Isaphulelo
+remove_discount	Susa isaphulelo
+apply_discount	Faka isaphulelo
+save_opening_cash	Gcina imali yokuqala
+close_shift_print	Vala ishifti ushicilele isliphu
+area_prices_ph	Amaxabiso eendawo (akuyomfuneko) — i-AC=220, Ukupakisha=210
+discount_ph	10% okanye 50
+discount_reason_ph	Isizathu (umz. undwendwe oluqhelekileyo, ukutya okuliwe)
+opening_float_ph	Imali efakwe kwidrowa ngale ntsasa
+shift_counted_ph	Imali ephathekayo ebalwe ekunikezelweni
+opening_float	Imali yokuqala (i-float)
+shift_handover	Ukunikela ishifti
+shift_since	Le shifti ukususela
+expected_in_drawer	Okulindelweyo kwidrowa
+right_discount	Nika isaphulelo
+floor_in_kitchen	Iyaqhubeka
+floor_eating	Kuphakelwe
+pick_category	Khetha udidi
+close_category_list	Vala uluhlu lweendidi
+new_category_row	Udidi olutsha — lwenziwa xa ugcina into
+your_category	Udidi lwakho
+suggested_category	Kucetyiswa - kwizinto zethu
+category_search_ph	Udidi — khangela olwakho okanye chwetheza olutsha
+line_sent_state	Ithunyelwe
+line_nc_state	Simahla (i-NC) — akuhlawuliswa
+cancel_item_short	Rhoxisa
+nc_short	NC
+charge_again_short	Hlawulisa
+move_short	Shenxisa
+cancel_item_title	Rhoxisa le nto — i-ofisi yasemva ifumana isiliphu sokurhoxisa
+nc_item_title	Yenza le nto ibe simahla (i-NC)
+charge_again_title	Hlawulisa le nto kwakhona
+move_item_title	Shenxisa le nto kwitafile enye
+already_cooked	Sele ipekwe (ukonakala)
+not_cooked_yet	Ayikaphekwa
+return_to_customer	Buyisela kumthengi
+short_by	Kushota ngo
+tip_not_sale	Ithiphu (yabasebenzi, ayiyonanto yokuthengisa)
+right_settle	Qokelela intlawulo
+right_cancel_sent	Rhoxisa into ethunyelweyo
+right_complimentary	Simahla (i-NC)
+right_move_table	Hambisa / dibanisa izixhobo zokubala
+right_reprint	Shicilela ityala kwakhona
+right_allowed	Kuvunyelwe
+right_with_approval	Ngokuvunywa
+right_denied	Akuvunyelwa
+editing_staff	Uyahlengahlengisa
+finding_server	Ikhangela iseva yevenkile kule Wi‑Fi…
+no_server_found	Akukho kufunyenweyo. KwiSeva: uSeto → Ezinye izixhobo → Vumela ezinye iikhawuntara (i-Wi‑Fi enye). Okanye chwetheza i-IP eboniswe apho.
+servers_found_pick	Cofa ivenkile ofuna ukuyiqhagamshela.
+server_host_selected	Isebenzisa {host} — faka ikhowudi yokudibanisa, emva koko Dibanisa ngoku.
+print_bill	Shicilela ityala
+table_actions	Izenzo zekhawuntara
+move_merge_table	Shenxisa / dibanisa itafile
+move_help	Hambisa olu cwangco lwekhawunta kwitafile esimahla, okanye uyidibanise ibeyisebenzayo.
+move_target_ph	Igama lekhawuntara
+approval_pin_ph	I-PIN yomphathi (kuphela ukuba iceliwe)
+move_here	Shenxisa apha
+merge_into	Yidibanise kuyo
+line_reason_ph	Isizathu (umzekelo, umthengi utshintshe ingqondo, iphelile)
+line_qty_ph	Zingaphi eziza kurhoxiswa (ungenanto = zonke)
+line_target_ph	Shenxisa kwitafile (umz. D5)
+confirm	Qinisekisa
+menu_search_ph	Khangela into okanye ikhowudi emfutshane
+customer_paid_ph	Umthengi uhlawule
+tip_ph	Ithiphu
+table_area_ph	Indawo (umz. Tyela apha, Ukupakisha, i-AC)
+table_range_ph	Ezininzi ngaxeshanye: D1-D20
+add_these_tables	Yongeza ezi zibali
+remove_these_tables	Susa ezi zibali
+table_remove_ph	Susa: T1-T24, okanye igama letafile enye
+find_server	Fumana iseva yevenkile
+bill_format	Ufomathi wetyala
+bill_format_help	Ishicilelwe phantsi kwegama levenkile yakho kuwo onke amatyala. Yahlula imigca nge | (umz. MG Road, Rajkot | Ph 98250 00000).
+bill_header_ph	Idilesi | ifowuni
+fssai_ph	FSSAI / inombolo yelayisensi yevenkile. (ukhetho)
+bill_footer_ph	Ezantsi (umz. Enkosi, buyani kwakhona)
+save_bill_format	Gcina ufomathi wetyala
+kot_format	Ifomati yokutyibilika
+kot_format_help	Cofa indawo kuluhlu. Bonisa, ubungakanani befonti, kunye nobunzima busebenza kuloo ndawo kuhlobo lwesiliphu esikhethwe ngasentla. Uhlobo ngalunye lugcina ubungakanani kunye nobunzima balo.
+kot_format_fields	Iintsimi
+kot_field_next	Intsimi elandelayo
+kot_field_show	Bonisa
+kot_field_hide	Fihla
+kot_field_on	bonisa
+kot_field_off	fihla
+kot_field_size	Ubukhulu befonti
+kot_field_size_ph	umz. 16, 20, 24, 28, 32…
+kot_weight_light	Khaphukhaphu
+bill_kot_panel_help	Uyilo lwebhili kunye nobubanzi bomxholo. UCashier nguye owakhupha okanye wahlawula ityala - ibali elipheleleyo lentengiso lihlala ezincwadini.
+std_size_ph	umz. 18, 20, 26…
+kot_show_shop	Igama levenkile
+kot_hide_shop	Fihla ivenkile
+kot_show_time	Ixesha
+kot_hide_time	Fihla ixesha
+kot_show_waiter	Umcangci
+kot_hide_waiter	Fihla i-cashier
+kot_show_station	Isikhululo
+kot_hide_station	Fihla isikhululo
+kot_show_table	Ikhawuntara
+kot_hide_table	Fihla itafile
+kot_show_kot_no	Inombolo yetikiti
+kot_hide_kot_no	Fihla inombolo yetikiti
+kot_width	Usongelo lwangaphambili (seta ububanzi bomxholo kwithebhu yokutyibilika)
+kot_width_58	58 mm
+kot_width_80	80 mm
+kot_kind_heading	Uhlobo lwetikiti
+kot_kind_original	Yokuqala
+kot_kind_duplicate	Ikopi
+kot_kind_modified	Ilungisiwe
+kot_kind_cancelled	Kurhoxisiwe
+kot_style_heading	Ubukhulu nobunzima bohlobo lentsimi
+kot_style_title	Isihloko
+kot_style_item_qty	Into · Inani
+kot_style_field_pick	Khetha intsimi
+kot_weight_regular	Eqhelekileyo
+kot_weight_bold	Etyebileyo
+kot_align	Lungelelanisa
+kot_align_start	Qala
+kot_align_center	Embindini
+kot_align_end	Isiphelo
+content_width	Ububanzi bokuqulathiweyo (mm)
+content_width_bill	Ububanzi bokuqulathiweyo kwetyala (mm)
+content_width_kot	Ububanzi bomxholo wetikiti (mm)
+content_width_ph	Okanye chwetheza ububanzi bokuqulathiweyo, 40–210 mm
+content_width_help	Ububanzi obunjani boshicilelo lwesiliphu. IBill igcina ububanzi bayo.
+content_width_bill_help	Ububanzi boshicilelo lwebhili yomthengi. Ukuhlala kukho 210 mm (iphepha). 58 mm umtyibilizi emxinwa, 80 mm ukutyibilika ububanzi, 112 mm 4-intshi, 210 mm A4-ububanzi. Chwetheza naliphi na ixabiso ukusuka kwi-40 ukuya kwi-210. Amatikiti anobubanzi bawo kwi-slip tab.
+content_width_kot_help	Ububanzi boshicilelo lwetikiti. Ukuhlala kukho 80 mm. 58 mm umtyibilizi emxinwa, 80 mm ukutyibilika ububanzi, 112 mm 4-intshi, 210 mm iphepha. Thayipha naliphi na ixabiso ukusuka kwi-40 ukuya kwi-210.
+vp_paper_width	Ububanzi bokuqulathiweyo (mm)
+vp_paper_width_ph	Okanye chwetheza ububanzi bokuqulathiweyo, 40–210 mm
+vp_paper_width_help	Ububanzi bomxholo bubekwe phantsi kwefomathi yeBill & Slip — ngokwahlukileyo kwibhili (engagqibekanga yi-210 mm) kunye netikiti (engagqibekanga yi-80 mm).
+kot_size	Ubukhulu befonti
+kot_size_s	Incinci
+kot_size_m	Eqhelekileyo
+kot_size_l	Inkulu
+std_size	Ubukhulu befonti
+kot_copies	Iikopi
+kot_copies_1	1
+kot_copies_2	2
+kot_copies_3	3
+kot_title_ph	Isihloko (ingenanto = TICKET)
+kot_footer_ph	Inqaku le-ofisi engasemva (uyazikhethela)
+kot_preview	Ukujonga
+save_kot_format	Gcina ifomathi yeSlip
+test_kot_format	Uvavanyo lokuprinta
+test_kot_sent	Umboniso wetikiti uthunyelwe
+test_bill_format	Ityala lovavanyo
+test_bill_sent	Ukujonga kwetyala kuthunyelwe
+test_print_no_printer	Akukho mshicileli walo msebenzi — khetha omnye kwesi sikrini
+kot_format_saved	Ifomati yesiliphu igciniwe
+std_print	Ubukhulu bokushicilela ityala
+std_print_help	Ubungakanani befonti kuMfanekiso oMgangatho weMifanekiso kunye nemisebenzi yetyala leLandscape kwi-OS / abashicileli bamaxwebhu (ngenisa amanqaku — hayi iNcinci/Eqhelekileyo/Enkulu). Ubungakanani obufanayo kuzo zombini iziqhelaniso.
+std_size_s	Incinci
+std_size_m	Eqhelekileyo
+std_size_l	Inkulu
+save_std_print	Gcina ubukhulu bokushicilela ityala
+std_print_saved	Ubukhulu bokushicilela ityala bugciniwe
+print_brand_kit	Isethi yophawu yokushicilela
+print_brand_kit_help	Isitampu esinokuzikhethela kunye nentlawulo yemifanekiso ye-QR kubuso bebhili kunye nomboniso womthengi we-LAN. Dynamic UPI QR ukusuka VPA ngasentla isasebenza xa kungekho ntlawulo QR umfanekiso usetiwe.
+choose_stamp	Khetha isitampu
+clear_stamp	Cima isitampu
+stamp_set	Isitampu: kwifayile — iboniswe kubathengi kwaye ithiywe kumatyala ashicilelweyo
+stamp_none	Isitampu: asikho
+choose_payment_qr	Khetha i-QR yentlawulo
+clear_payment_qr	Cima i-QR yentlawulo
+payment_qr_set	Intlawulo ye-QR: kwifayile - eboniswe kumboniso wabathengi (ithatha indawo ye-UPI QR apho)
+payment_qr_none	I-QR yentlawulo: ayikho — i-QR yemali isuka kwinombolo ye-UPI xa kuhlawulwa
+aggregator_import	Ii-odolo ze-aggregator (ifayile)
+aggregator_import_help	Ukungenisa kwalapha okukhethwayo: beka i-import_aggregator_orders.json kwifolda yogcino lwasemva (uluhlu okanye {"orders":[…]}), emva koko ucofe Ngenisa. Ayivimbi ikhawuntara; iZomato/iSwiggy ephilayo yi-Cloud.
+import_aggregator_file	Ngenisa ifayile ye-aggregator
+team_pick_ph	Umsebenzi oza kuhlelwa — igama, igama lomsebenzisi, okanye khetha
+select_staff	Khetha lo msebenzi
+rights_help	Iintshukumo zemali zalo mntu — cofa ukujikeleza: Ivunyiwe → Ifuna iPIN yomphathi → Ayivumelekanga. Shicilela ityala kwakhona ngamatyala kuphela; amacandelo luluhlu olungezantsi.
+dish_picker_help	Khangela okanye ukhangele izinto zethu kwaye ucofe enye ukuze ugcwalise igama layo kunye nefoto-okanye ugcine igama lakho. Cwangcisa ixabiso lakho (0 kulungile), emva koko Yongeza into.
+close_dish_list	Vala uluhlu lwezinto
+own_item_name	Sebenzisa oku njengegama lakho lento
+on_your_menu	Kwikhathalogu
+edit	Hlela
+schemes	Iinkqubo / izibonelelo
+schemes_help	Thenga-enye-fumana-enye, isaphulelo ekhulwini, kunye neenyanda fixed. Umzekelo: Thenga irayisi ezi-2 ufumane i-oyile enye.
+scheme_bogo_ph	Thenga irayisi e-2 ufumane ioli e-1
+add_scheme	Yongeza i-BOGO
+schedule_ph	Iiyure - uMvulo-Fri 07:00-11:00 okanye ngorhatya 17:00-19:00=150
+upi_vpa_ph	Inombolo ye-UPI (i-VPA)
+upi_payee_ph	Igama lomntu ofumana i-UPI (akuyomfuneko)
+upi_qr	UPI QR
+show_upi_qr	Bonisa i-UPI QR
+close_upi_qr	Vala
+upi_qr_help	Umthengi uyahlola kwaye ahlawule. Thepha Thatha intlawulo emva kokuba behlawule. Isikrini sesibini: vula i-URL yeseva / bonisa kwi-LAN.
+kot_recall	Buyisela
+recently_done	Kutshanje kugqityiwe
+recall_kot_ph	Itikiti # lokukhumbula
+role_help_customer	Indima: Umthengi — ikhata (basityala). Iqela elinye linokubonelela ngesitokhwe.
+role_help_both	Iindima: Umthengi + Umboneleli — iqela elinye, iincwadi zekhata nezokuhlawulwa, i-neto kwiingxelo.
+role_help_supplier	Indima: Umboneleli — sibatyala ngokuthengiweyo.
+dine_in_pick_table	Ayisetyenziswa kwikhawuntara yevenkile
+choose_table	Khetha isibali
+change_table	Tshintsha itafile
+pick_table_banner	Khetha itafile yale odolo
+items_word	izinto
+items_section	Izinto
+back_to_order	Buyela kwiodolo
+new_items_head	Ayikathunyelwa
+price_ph	Ixabiso
+price_ph_gst_inside	Ixabiso ({tax} ngaphakathi)
+cancel_needs_table	Iintengiso zekhawuntara zihlala kwitikiti de uthathe intlawulo
+tax_rates_missing_hint	Akukho xabiso le-{tax} kwezi zinto — kwizinto ezimiselwe Izinga leRhafu (amaxabiso sele equka i-{tax} phantsi kwe-{tax} ebandakanyiwe)
+taxable_value	Ixabiso elirhafiswayo
+gst_inside_price_note	({tax} ngaphakathi)
+start_with_template	Qala ngethemplate yethu yezinto
+template_heading	Izinto zokuqala
+template_info	Iindidi ze-{c} kunye nezinto ze-{d} ezinezithombe, zilungele ukongeza. Amaxabiso aqala ku- ₹0 — seta owakho emva koko.
+template_import	Ngenisa itemplate epheleleyo
+template_confirm	Yongeza izinto ze-{d} neendidi zazo? Izinto osele unazo zokuhlala njengoko zinjalo.
+template_yes	Ewe, ngenisa
+template_importing	Ithatha ngaphandle izinto...
+template_import_progress	Ingenisa… {d}/{t}
+template_done	Yonke into evela kwitemplate yethu ikwizinto zakho.
+template_imported	Izinto ze-{d} zongezwe kunye neendidi ze-{c} - misela amaxabiso azo kwesi sikrini
+client_template_heading	Ngenisa ikhathalogu
+client_template_info	{title}: Iindidi ze-{c}, izinto ze-{d} ezinamaxabiso, iifoto, kunye neziteketiso. Izinto ezingekhoyo kuphela — amagama osele unawo.
+client_template_import	Thatha ngaphandle ezi zinto
+client_template_confirm	Yongeza izinto ze-{d} ukusuka ku-{title}? Izinto osele unazo zokuhlala njengoko zinjalo.
+client_template_importing	Ingenisa {title}…
+client_template_done	Yonke into esuka kwi-{title} ikwizinto zakho.
+client_template_imported	Izinto ze-{d} zongezwe kunye neendidi ze-{c} ukusuka kwi-{title}
+resv_heading	Ukubhukisha
+resv_name_ph	Igama lomthengi
+resv_phone_ph	Ifowuni (akuyomfuneko)
+resv_guests_ph	Abantu
+resv_when_ph	Nini — 20:30, ngomso 13:00
+resv_table_ph	Ikhawuntala (ukhetho)
+resv_add	Bhukisha
+resv_seat	Ihleli
+resv_none	Akukho kubhukisha okuzayo.
+guests_word	iindwendwe
+delivery_by_ph	Kuhanjiswa ngu (igama lomqhubi okanye umsebenzi)
+kitchen_all_day	Okuphekwayo ngoku: {items}
+split_bill	Yahlula ityala
+split_go	Yenza ityala elahlukileyo
+cancel	Rhoxisa
+opening_client	Ivula iklayenti…
+preparing_desk	Ilungisa ideski…
+opening_server	Ivula iseva…
+creating_server	Yenza iseva…
+split_help	Cinezela izinto umthengi azihlawulelayo · {n} ekhethiweyo
+split_send_first	Thumela isiliphu kuqala - kuphela izinto ezibuya kwiofisi ezinokuya kwityala elahlukileyo
+split_pick_some	Cofa izinto zebhili eyahlukileyo kuqala
+split_done	Ityala elahlukileyo elenziwe - kumgangatho osecaleni kwale khawuntara
+split_marked	ityala elahlukileyo
+order_empty_pick	Iodolo ingenanto — cofa Yongeza izinto ngasentla ukukhetha izinto.
+add_dishes	Yongeza izinto
+order_so_far	Kule odolo: {n} · {total}
+no_dish_match	Akukho nto ihambelana ne-"{q}"
+pick_dishes_help	Cofa into ukuyidibanisa · khetha udidi ukuze ucuthe uluhlu
+pick_done	Igqityiwe
+pick_done_dd	Igqityiwe · {label}
+printer_route_mode	Ukuba abashicileli abaninzi bakule ndawo
+printer_mode_first	Eyokuqala esebenzayo
+printer_mode_all	Shicilela kuzo zonke
+kot_show_area	Indawo
+kot_hide_area	Fihla indawo
+kot_show_item_hdr	Into · Inani
+kot_hide_item_hdr	Fihla iikholamu
+kot_show_title	Umgca wesihloko
+kot_hide_title	Fihla isihloko
+kot_field_order	Ulandelelwano lokushicilela
+kot_field_up	Nyusa
+kot_field_down	Yihlisa
+kot_field_cycle	Khetha elandelayo
+kot_field_select	Khetha elandelayo
+kot_field_time	Ixesha
+kot_field_kot_no	Inombolo yetikiti
+kot_field_area	Indawo
+kot_field_table	Ikhawuntara
+kot_field_shop	Igama levenkile
+kot_field_waiter	Abasebenzi
+kot_field_station	Isikhululo
+app_template_blurb_extra	Kwakhona: uMnini uZahir, uMlawuli uAsif, uCashier Nawaz; ibha esecaleni yangaphambili; imbali emva kweeyure ezi-4; Namhlanje khulula; i-compact bill.
+dishes_n	{n} izinto
+recipe_ph	Iresiphi (uyazikhethela — ayisetyenziswanga kwivenkile ekhawuntara)
+reorder_ph	Thenga ngakumbi ku
+set_reorder	Misa inqanaba lokuphinda uthenge
+low_stock_alert	Iyaphela — thenga ngokukhawuleza: {items}
+unpriced_note	Izinto ze-{n} kwizinto zakho azikabi naxabiso — zihlawula nge-0 de ube usete enye.
+show_unpriced	Bonisa kuphela izinto ngaphandle kwexabiso
+show_all_dishes	Bonisa zonke izinto
+role_waiter	Umcangci
+role_kitchen	Gcina
+role_title_rest_ph	Isihloko sendima (umz. iCaptain, Intloko yabapheki)
+preset_help_rest	Umcangci: thengisa. Umphathi: thengisa + izinto + rhoxisa ngokupheleleyo/lungisa.
+kind_raw	Ithengelwe ukusetyenziswa evenkileni
+kind_resale	Uthengelwe ukuthengisa
+kind_dish	Musa ukubala isitokhwe
+buy_unit_ph	Iyunithi (kg, ilitha, pcs)
+add_another_way	+ Yongeza enye indlela
+parts_status	Kungenisiwe {a} kwe-{b} · {c} eseleyo
+save_expense	Gcina inkcitho
+rest_ph	Okuseleyo
+low_badge	Phantsi
+stock_empty	Akukho nto kwisitokhwe — into oyibhalayo kuThenga ibonakala apha.
+recent_changes	Utshintsho lwakutshanje
+lane_declared_label	I-invoyisi yerhafu
+lane_owner_label	Imemo yemali ephathekayo
+money_lane_bill	Ityala: {lane}

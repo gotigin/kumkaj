@@ -1,0 +1,1341 @@
+# Konkani — कोंकणी (kok). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	फार्मसी काउंटर: वखदां, बॅच, खातें आनी बह्यो. फुकट ऑफलाइन.
+barcode_ph	बारकोड / EAN
+composition_ph	सॉल्ट / रचना (सोदून काडूंक येता)
+schedule_h_off	शेड्यूल H — बंद (धनीची खूण)
+schedule_h_on	शेड्यूल H — चालू (धनीची खूण)
+rx_expected_off	Rx अपेक्षित — बंद (धनीची खूण)
+rx_expected_on	Rx अपेक्षित — चालू (धनीची खूण)
+rx_note_ph	पर्चीची नोंद (पर्यायी — तुमचे शब्द)
+batch_ph	बॅच नं.
+expiry_ph	एक्सपायरी (YYYY-MM-DD)
+expiry_alerts	एक्सपायरी इशारे (फुडले 7 दीस)
+expiry_none	फुडल्या 7 दिसांनी खंयचोच बॅच एक्सपायर जायना.
+rx_nudge	धन्यान Rx / शेड्यूल H खूण केला — गरज आसल्यार नोंद जोडात.
+unlock	उगडात
+pin_hint	धनीचो PIN 0000 सावन सुरू जाता
+sell	विक्री
+buy	खरेदी
+books	दिसाळी बही
+books_help	आयची स्थिती. विक्री = आयिल्ले पयशे. खरेदी = खरेदी आनी खर्च. पार्टी = उधारीचे गिरायक आनी पुरवठादार.
+buy_help	खर्च व्हाउचर आनी पुरवठादार बिल (पयसे भायर). खात्याचेर आशिल्लें पार्टीच्या खात्यांत उरता.
+sell_money_in	वखदां विकात
+buy_money_out	खर्च / पुरवठादार बिल
+record_purchase	खरेदी नोंद करात
+add_expense	खर्च व्हाउचर
+bank_book	बँक बही
+credit_help	पार्टी आयडी एकमेव आसा (नांवां परत येवंक शकतात). गिरायक खातें चलयता (आमचो देणेकरी); पुरवठादार आमकां माल विकता (आमी ताचो देणेकरी); दोनूय चालता. खातीं वेगळीं उरतात; अहवाल नेट दाखयता.
+party_kind_ph	भूमिका: गिरायक, पुरवठादार, दोनूय…
+reports_help	दिसाळी बही, देणेकरी आनी घेणेकरी, बँक बही, खर्च व्हाउचर, फायदो आनी तोटो.
+reports_today	दिसाळी बही (आयज)
+reports_month	फायदो आनी तोटो (म्हयनो)
+reports_aging	थकबाकी / Dr-Cr
+reports_balance_sheet	ताळेबंद
+reports	बँक बही आनी फायदो-तोटो
+refresh	ताजें करात
+undo	पूर्ववत
+start_tracking	मोजणी सुरू करात
+stock_minus	− स्टॉक
+stock_plus	+ स्टॉक
+settle_cash	रोख फेडांत
+settle_card	कार्डान फेडांत
+items	वखदां
+nav_items	वखदां
+more	आनीक
+your_items	तुमचीं वखदां
+items_help	बदलपाक वस्तूचेर टॅप करात. नवी वस्तू फॉर्म रितो करता. नांवान वा आखत्यार कोडान सोदात, किंमत दवरात (0 चालता), मागीर जोडात. आदींच नोंद जाल्ली विक्री त्या नांवान उरता ज्या नांवान आकारलो.
+add_item	वस्त जोडात
+new_item	नवी वस्त
+adding_item	नवी वस्त जोडटा
+editing_item	बदलटा
+save	सांबाळात
+remove	काडांत
+removed_items	काडिल्ले पदार्थ
+removed_help	परत हाडात वस्तू परत वस्तूंनी तशीच दवरता — किंमत, फोटो आनी श्रेणी.
+restore_item	परत हाडात
+empty_catalog	अजून वखदां नात. वखदां उगडात, नांव, बारकोड वा सॉल्ट जोडात, मागीर विकात.
+total	एकूण
+cash	रोख
+upi	यूपीआई
+card	कार्ड
+credit	पार्टी
+clear	निवळ
+ready_to_sell	बुक करपाक तयार
+today_prefix	आयज
+today_mid	आयज
+owed	बाकी
+round_word	राउंड
+back	फाटीं
+sold_out	मेळना
+restock	परत घालात
+not_tracked	मोजणी ना
+in_stock	स्टॉकांत
+marked_sold_out	मेळना अशी खूण
+add_upper	जोडात
+na	लागू ना
+qty	वजन/संख्या
+unit_at	दर @
+actual	खरें
+applied	लाविल्लें
+note_ph	नोंद (ऐच्छिक)
+rounded	राउंड
+split	वांटात
+send_kot	स्लिप धाडात
+send_kot_to	धाडात → {kitchens}
+send_kot_again	फुडल्या स्लिपाक वस्तू जोडात
+send_kot_held	होल्ड केल्ल्यो वस्तू — धाडपाक होल्ड काडात
+reprint_kot	निवडिल्ले परत छापात
+reprint_kot_ok	{n} वस्तू परत छापल्यो · {slips} स्लिप → {kitchens}
+reprint_kot_needed	पयलीं स्लिप धाडात — मागीर वखदां घालात आनी निवडिल्लीं परत छापात
+reprint_kot_none_selected	धाडिल्ली दरेक वस्त सोडली — परत छापपाच्या वस्तूंचेर छापणीत टॅप करात
+reprint_kot_client	{place} खातीर परत छापप ({n}) धाडलें — दुकानाचें डिव्हाइस छापता
+print_cancelled_kot	सगळे रद्द छापात
+print_cancelled_kot_ok	{n} रद्द वस्तू छापल्यो · {slips} स्लिप → {kitchens}
+print_cancelled_kot_needed	पयलीं रद्द वस्तू आशिल्लें टेबल उगडात
+print_cancelled_kot_none	ह्या ऑर्डराचेर रद्द वस्तू नात
+print_cancelled_kot_client	{place} खातीर रद्द छापप ({n}) धाडलें — दुकानाचें डिव्हाइस छापता
+kot_banner	प्रकाराची पट्टी
+kot_banner_ph	पट्टी (रिकामी = कांयच ना)
+kot_item_prefix	वस्तुचो आदलांव
+kot_item_prefix_ph	देखीक [रद्द]
+kot_strike	वस्तूच्या नांवाचेर रेशा
+kot_strike_note	वस्तूच्या नोंदेचेर रेशा
+kot_strike_on	चालू
+kot_strike_off	बंद
+bill_item_layout	वस्तूची मांडावळ
+bill_item_layout_columns	स्तंभ
+bill_item_layout_stacked	एकमेकाचेर
+bill_item_header	स्तंभाचीं शिर्षकां
+bill_item_hdr_item	वस्तुचें शिर्षक
+bill_item_hdr_qty	संख्येचें शिर्षक
+bill_item_hdr_price	किमतीचें शिर्षक
+bill_item_hdr_amount	रकमेचें शिर्षक
+bill_item_name	वखदाचें नांव
+bill_item_qty	संख्या
+bill_item_price	किंमत
+bill_item_amount	रक्कम
+bill_item_note	Rx / विक्री नोंद
+bill_item_col_gap	स्तंभांमदीं जागो
+bill_item_col_order	स्तंभांचो क्रम
+bill_item_col_sep	स्तंभाच्यो रेगो
+bill_item_gap_tight	दाट
+bill_item_gap_comfort	आरामाचें
+bill_item_gap_wide	रुंद
+bill_item_num_width	आंकड्यांचे स्तंभ
+bill_item_num_compact	दाट
+bill_item_num_comfort	आरामाचें
+bill_item_num_wide	रुंद
+bill_item_num_align	आंकडे एका रेशेंत
+bill_item_gap_em	जागो (em)
+bill_item_qty_min	संख्या सगळ्यांत उणी (em)
+bill_item_price_min	किंमत सगळ्यांत उणी (em)
+bill_item_amount_min	रक्कम सगळ्यांत उणी (em)
+kot_item_qty_width	संख्येचो स्तंभ
+kot_item_num_align	संख्येची रेग
+bill_total_qty_label	एकूण संख्येचें लेबल
+bill_total_subtotal_label	उपबेरीज लेबल
+bill_total_grand_label	मुखेल बेरीज लेबल
+bill_total_paid_label	फारीक लेबल
+bill_meta_pair	ओळ वांटात हांचे वांगडा
+bill_pair_alone	एकटें
+bill_item_piece_on	चालू
+bill_item_piece_off	बंद
+bill_total_qty	एकूण संख्या
+bill_total_subtotal	उपबेरीज
+bill_total_grand	मुखेल बेरीज
+reprint_incl	छापणीत
+reprint_skip	सोडात
+reprint_skip_meta	परत छापणी सोडात
+kot_dest_hint	{kitchens} खातीर सेटिंग → प्रिंटर हातूंत जोडिल्ले प्रिंटरांचेर छापता
+kot_sent_hint	निमाणें धाडप {kitchens} कडेन गेलें. फुडल्या बिलाक वस्तू जोडपाक टॅप करात — वा त्याच स्लिपाक परत छापात.
+kot_sent_printing	स्लिप {kitchens} कडेन धाडली — छापता
+kot_sent_not_printed	स्लिप {kitchens} कडेन धाडली पूण छापली ना: {why}. दुकानाक सांगात, मागीर प्रिंटर दुरुस्त करात आनी परत छापात.
+kot_sent_screen	स्लिप {kitchens} कडेन धाडली
+kot_queued_shop	{place} खातीर स्लिप → {kitchens} सांबाळली; दुकानाचें डिव्हाइस छापता
+kot_job_label	{place} खातीर स्लिप → {kitchens}
+kot_job_reached	{place} खातीर स्लिप {kitchens} मेरेन पावली
+kot_unassigned	नेमणूक ना
+kot_unassigned_held	{n} वस्तू स्टेशनाशिवाय होल्ड — धाडपाक वळेरेंत होल्ड काडात
+kot_station_ph	स्टेशन
+kot_station_dd	स्टेशन
+kot_station_dd_n	स्टेशन · {stations}
+kot_set_station	हें स्टेशन वापरात
+kot_station_applied	{n} वस्तूंचेर स्टेशन दवरलें: {station}
+kot_station_cleared	{n} वस्तूंतल्यान स्टेशन काडलें: {station}
+kot_station_needed	पयलीं डिस्पेंसरी विभाग वेंचून काडात
+kot_station_not_allowed	हो विभाग वापरपाक परवानगी ना: {station}
+kot_station_none	अजून स्टेशनां नात — काउंटर दुकानांत वापर ना (गरज आसल्यार सेटिंग → वाठार)
+pos_tab_items	जोडिल्ले वस्तू
+pos_tab_payment	फारीक
+hold_send	होल्ड
+hold_send_on	होल्ड केलां
+hold_send_meta	होल्ड — ह्या स्लिपाचेर ना
+station_remove	स्टेशन काडात
+station_remove_ph	काडपाक वळेरेंत स्टेशनाचेर दामात
+station_removed	स्टेशन काडलें: {name}
+settings_hub_title	सेटिंग
+settings_hub_help	एक फावट एक वाठार उगडात — उणें सरकप, स्पश्ट निवड.
+settings_back	फाटीं
+settings_sec_language	भास आनी चलन
+settings_sec_country	देश आनी कर
+settings_sec_tills	हेर यंत्रां
+settings_sec_brand	तुमची ब्रांड
+settings_sec_units	एकक आनी रूपांतर
+settings_sec_pickers	वाठार · स्टेशन · कर दर
+settings_sec_printers	प्रिंटर
+settings_sec_bill	बिल आनी स्लिप स्वरूप
+settings_sec_selling	येवजणी आनी विक्री
+bill_kot_tab_bill	बिल
+bill_kot_tab_kot	स्लिप
+settings_sec_alerts	सावधान
+alerts_help	स्थितीचे संदेश तुमच्या पडद्याचेर कितलो वेळ उरतात (ही लॉगिन).
+snack_secs_ph	सेकंद (3–60, सामान्य 10)
+snack_secs_save	सावधानाचो वेळ सांबाळात
+snack_secs_saved	सावधानाचो वेळ सांबाळलो — {n} सेकंद
+settings_sec_backup	बॅकअप & पुनर्स्थापना
+settings_sec_diag	निदान करप
+diag_privacy_help	लॉग ह्या डिव्हायसाचेर रावतात. गुपीत (पिन, पासवर्ड) केन्नाच सांठयना. डिव्हायसा भायर पॅकेज वांटपाक दर खेपे तुमची स्पश्ट मान्यताय जाय — केन्नाच विकली ना वा तिसऱ्या पक्षांक दिवंक ना.
+diag_level	तपशील पातळी
+diag_level_error	चुको जावप
+diag_level_warn	शिटकावणी दिवप
+diag_level_info	माहिती
+diag_level_debug	डिबग करचें
+diag_support_start	30 मिण्टांचें आदार सत्र सुरू करचें
+diag_support_stop	आदार सत्र सोंपचें
+diag_support_started	समर्थन सत्र चालू — 30 मिनटां खातीर तपशील डिबग करचो
+diag_support_ended	आदार सत्र सोंपलें
+diag_export_local	थळावी प्रत निर्यात करात
+diag_export_local_done	{path} हांगा तयार थळावें निदान — प्रत खंय जतनाय घेवची तें निवडात
+diag_approve_send	ह्या डिव्हायसा वयल्यान शेअर करपाक मान्यताय दिवची
+diag_send_help	मान्यताय एक पॅकेज आसता, मागीर कालबाह्य जाता. तात्पुरतें — फकत उत्पादन सुदारपाखातीर वा सुदारपाखातीर वापरतात. तिसऱ्या पक्षां कडेन वांटून घेवंक ना. Linux, Windows, macOS, आनी Android चेर काम करता.
+diag_send_approved	एका पॅकेजी खातीर शेअर मान्य (बेगीन कालबाह्य)
+diag_export_send	शेअर पॅकेज तयार करचें (मंजुरीची गरज आसा)
+diag_export_send_done	{path} चेर तयार पॅकेज वांटचें — खंय जतनाय घेवप तें वेंचचें, मागीर फकत कुमकाज समर्थनाक धाडचें
+diag_save_bundle	डायग्नोस्टिक्स प्रत जतनाय घेयात
+diag_bundle_saved	निदान प्रत {path} कडेन जतनाय घेतल्या.
+diag_bundle_failed	डायग्नोस्टिक्स प्रत जतनाय घेवंक शकली ना — परतून यत्न करात
+diag_clear	निदानात्मक लॉग निवळ करात
+diag_cleared	निदानात्मक लॉग निवळ जाले
+sidebar_settings	बाजूचो पट्टी
+sidebar_settings_help	बाजूच्या रेल्वे सारकेच चिन्नां. परतून क्रमवारी करपाक एक ओळ ओडची. दाखोवपाक वा लिपोवपाक स्वीच उलटचो. सेटिंग्ज आनी लॉक सदांच बाराचेर रावतात.
+sidebar_always_on_short	सदांच चालू आसता
+sidebar_back_settings	फाटीं
+sidebar_shown	दाखयला
+sidebar_hidden	लिपिल्लें
+sidebar_always_on	सदांच बाराचेर
+sidebar_shown_hint	बाजूच्या रेल्वे / सकयल्या टॅबांचेर दाखयलां
+sidebar_hidden_hint	बारांतल्यान लिपलां
+sidebar_menu_items	वस्तू
+sidebar_enable_all	सगळे सक्षम करात
+sidebar_disable_all	सगळें अक्षम करचें
+sidebar_order_saved	सायडबार ऑर्डर जतनाय घेतली
+sidebar_visibility_saved	बाजूची पट्टी दृश्यताय जतनाय घेतल्या
+amounts_hide	लिपोवचें
+amounts_show	दाखोवचें
+printers_none_hint	पयलीं ह्या डिव्हाइसाचेर प्रिंटर सांबाळात, मागीर बिलाक वा विभागांक जोडात
+counter	गल्लो
+dine_in	गल्लो
+takeaway	टेकअवे
+order	ऑर्डर
+tables	काउंटर
+kitchen	विभाग
+sales	विक्री
+sales_refunds	विक्री आनी परतावो
+day_close	दीस बंद
+reports_expenses	बँक बही आनी फायदो-तोटो
+nav_reports	अहवाल दितात
+nav_settings	सेटिंग
+nav_lock	लॉक
+no_sale_yet	अजून विक्री ना
+favorites	आवडीचे
+favorites_help	तुमी चड करून विकतात तीं वस्तू, तुमच्या लॉगीन खातीर जतनाय घेतल्यांत. बिलांत एक जोडात, वा सकयल दिल्ल्या सगळ्या वस्तूं वयल्यान तुमची वळेरी तयार करात.
+your_favorites	तुमच्या आवडीचे
+all_items	सगळ्यो वस्तू
+frequent	सतत
+added_items	जोडलेले आयटम (आयटम)
+added_items_empty	ह्या बिलाचेर अजून कांयच ना — सगळ्या वस्तूंतल्यान वा श्रेणीतल्यान एक वस्त जोडात.
+frequent_config_help	पुराय जाल्ल्या बिलांतलीं सगळ्यांत चड विकिल्ल्यो वस्तू. कितले दीस पळोवचे आनी कितल्यो वस्तू दाखोवच्यो तें दवरात.
+frequent_days_ph	दीस (१) ४.
+frequent_limit_ph	आयटम (24) 1.1.
+frequent_apply	लागू करचें
+frequent_saved	सतत: निमाणे {d} दीस, वयले {n} — {c} वस्तू
+frequent_empty	ह्या काळांत अजून पुराय केल्ली विक्री ना — बिल निवळावचें (सेटिंग्स म्हणटा तेन्ना ₹0 परवानगी) आनी ते हांगा दाखयतात.
+zero_sales	शून्य मोलाची विक्री
+zero_sales_help	₹0 किंमतीच्यो वस्तू आनी ₹0 खातीर फेडिल्ले बिल चालू दवरात (फुकट / धनीची इत्सा). मुळावें चालू, म्हणून फुकट कव्हर सतत आनी दिसाळी बह्येंत दिसतात.
+zero_sales_on	₹0 परवानगी दिवची
+zero_sales_off	किंमत जाय पडटा
+zero_sales_saved_on	शून्य मोलाची विक्री परवानगी
+zero_sales_saved_off	विक्रीची किंमत ₹0 परस चड आसूंक जाय
+floor_areas_help	वाठार म्हळ्यार मजलेचेर कुडी वा विभाग (डाइन इन, पार्सल, एसी …). पयलीं वाठार जोडात, मागीर तातूंत काउंटर दवरात — दरेक वाठार मजलेचेर वेगळो पंगड.
+area_new_ph	नवो वाठार / खोली (देखीक- एसी, बाग)
+add_area	क्षेत्र जोडचें
+area_added	वाठार “{name}” तयार — तातूंत काउंटर जोडात
+no_favorites	अजून आवडीचे नात — सकयल दिल्ल्या वळेरेंतल्यान आयटम जोडात.
+add_to_bill	बिलांत जोडचें
+added	जोडले
+owes_word	रिण आसा
+selected_word	वेंचून काडलां
+chip_clear_credit	clear — पतपुरवण वा आगाऊ घेवप
+chip_missing_customer	निवडिल्लो गिरायक गळून पडला — परतून उखलचो
+chip_no_customer	अजून गिरायक ना — नांव टाइप करात, मागीर क्रेडीट टॅप करात
+credit_summary_fmt	{} गिरायक · उक्ते पतपुरवण {} · आगाऊ दवरलेले {}
+recent_label	हालींचें:
+kot_new_waiting	NEW — वाट पळयता
+kot_preparing	तयारी करप
+kot_ready_serve	READY — ताची सेवा करप
+kot_done_cap	जालें
+kot_cancelled	रद्द केलां
+kot_start_btn	सुरवात
+kot_mark_ready	मार्क तयार
+kot_done_btn	जालें
+table_free	फुकट — ऑर्डर सुरू करपाक टॅप करात
+start_order	ऑर्डर सुरू करप
+open_bill	उक्ते बिल
+collect_payment	फारीकणी एकठांय करप
+table_running	धांवडी
+payment_pending	फारीकणी प्रलंबीत आसा
+collect_at_counter	काउंटराचेर एकठांय करप
+inventory	इनवेंटोरी
+inventory_stock	इन्व्हेंट्री आनी स्टॉक
+branches	फांटे
+branches_org	शाखा आनी ऑर्ग
+credit_customers	पार्ट्यो (खाटा आनी पुरवणदार) .
+customer_name_ph	पक्षाचें नांव
+new_customer_ph	नव्या पक्षाचें नांव
+item_name_ph	आयटमाचें नांव (देखीक- मसाला दोसा)
+item_price_ph	किंमत
+start_template	उत्पादन
+team	पंगड
+team_pins	पंगड आनी पिन
+my_pin_settings	माझें पिन
+settings_hub_help_my_pin	ह्या डिव्हायसाचेर सायन इन केल्ल्या व्यक्तीचो उगडावपाचो पिन बदलात.
+team_self_help	एक सायन-इन: नवो पिन, नवो पासवर्ड, वा दोनूय. तुमचे कडेन आसा तें दवरपा खातीर एक पेटी रिती सोडची. तुमकां वेगवेगळे पडदे वा हक्क जाय काय ना तें मालकाक विचारात.
+backup_settings	बॅकअप & सेटिंग्ज
+lock_app	लॉक अॅप
+pick	वेंचप
+select	वेंचचें
+advance	आगाऊ रक्कम
+owner	धनी
+staff	कर्मचारीवर्ग
+photo	फोटो
+auto	ऑटो
+prev	पूर्व
+next	फुडें
+ok	OK
+this_shop	सर्वर
+extra_till	क्लायंट
+off	बंद
+tables_kitchen	दुकानाची मांडावळ
+server	सर्वर
+client	क्लायंट
+language_currency	भास आनी चलन
+language	भास
+choose_language	तुमची भास वेंचून काडात
+language_setup_hint	ह्या डिव्हायसाची भास पाळची, वा स्वता एक वेंचची.
+lang_follow_platform	डिव्हायस भास
+lang_pick_user	भास निवडात
+lang_platform_now	आतां डिव्हायस भास
+selected_language	वेंचून काडलां
+continue	फुडें व्हरप
+this_device	हें साधन
+device_use_q	हें साधन कशें वापरतले?
+last_server_mode	Was Server — चालू दवरपाक टॅप करात
+last_client_mode	Was Client — चालू दवरपाक टॅप करात
+choose_server	सर्वर निवडात
+choose_server_hint	सद्याचो सर्वर उगडात, वा दुसऱ्या वेवसायाक एक तयार करात.
+create_new_server	नवो सर्वर तयार करचो
+open_server	उकतें
+new_server_name_ph	नवें सर्वर नांव (पर्यायी) .
+server_remove_pin_ph	सर्वर काडून उडोवपाक मालक पिन
+only_owner_remove_server	फकत मालकाकच सर्वर काडून उडोवंक मेळटा
+owner_pin_remove_server	हो सर्वर काडून उडोवपाक मालक पिन जाय
+device_setup_help	सर्वर पुस्तकां हांगा दवरता. क्लायंट जोडी सर्वराक.
+app_template_heading	सुरवातीची यादी (पर्यायी)
+app_template_blurb	नमुन्याची यादी घालता; धनी जहीर (zahir), एडमिन आसिफ (asif, PIN 1111), कॅशियर नवाज (nawaz, PIN 0000); कर/GST बंद; मुखार सायडबार; 4 वरांनी इतिहास रितो जाता (आनी बॅकअपांत आतां रितें); आयज पट्टी बंद; अशीर ट्रेयांक दाट बिल + मानक समास. कर आनी सायडबार इतर सेटिंगांत परत चालू करूंक येतात.
+app_template_apply	सुरवातीची यादी घालात
+app_template_skip	आतां खातीर वगडावचें
+app_template_status	सर्वर तयार — सुरवातीची यादी घालात, वा सोडात
+app_template_importing	{title} लागू करप...
+currency	चलन
+backup	बॅकअप घेवप
+use	वापर
+dont_use	वापरूंक नाकात
+add_branch	शाखा जोडची
+add_conversion	रुपांतर जोडचें
+add_dishes_items	वस्तू जोडात
+add_item_plain	वस्त जोडात
+add_note	टिप जोडची
+add_opening_balance	उगडपाची शिल्लक जोडची
+add_staff	कर्मचारी जोडप
+add_station	स्टेशन जोडचें
+add_table	टेबल जोडचें
+add_unit	एकक जोडचें
+add_use_name	हें नांव जोडचें / वापरचें
+allow_extra_tills	अतिरिक्त टिल्स करपाक परवानगी दिवची
+amend	दुरुस्ती
+apply_country_pack	देश पॅक लागू करचो
+datetime_appearance	तारीख & वेळ दिसप
+datetime_appearance_help	बह्यो भितर वर्स-पयलीं RFC3339 दवरतात. हीं फकत बिलां, अहवाल आनी पडद्याचेर तारीख आनी घड्याळ कशें दिसता तें बदलतात.
+datetime_example	आतां उदाहरण : {ex}
+date_order	तारीख क्रमवारी
+date_order_dmy	D/M/Y
+date_order_mdy	M/D/Y
+date_order_ymd	Y-M-D
+time_format	घड्याळ
+time_format_24h	२४ तास
+time_format_12h	१२ तासांचो
+attach_bill_photo	बिल फोटो संलग्न करात
+attach_pdf	पीडीएफ संलग्न करचें
+attach_photo	फोटो संलग्न करात
+attachments_last_expense	संलग्नक (निमाणो खर्च) 1.1.
+bank	बँक
+bank_in	बँक इन
+bank_out	बँक आउट
+bank_reconciliation	बँक समेट (तुमच्या बँक स्टेटमेंटाचेर टिक ऑफ करात)
+bank_to_till	बँक → ते
+book_add_dish	बही — वस्त जोडात / वस्त
+book_opening_credit	पुस्तक — उगडपाचें श्रेय
+branch_name_sell_ph	शाखेचें नांव विकपाक
+bring_my_book	म्हजें पुस्तक हाडून
+business_tax_id_ph	वेवसाय कर आयडी
+caption_bank	बँक
+caption_bills	बिलां
+caption_outstanding	सर्वोत्तम
+caption_payments_today	आयज फारीकणी
+caption_today	आयज
+card_amount_ph	कार्डाची रक्कम
+cash_amount_ph	रोख रक्कम
+cash_memo	रोख मेमो
+choose_icon	चिन्न निवडात
+choose_logo	लोगो निवडात
+clear_icon	चिन्न निवळ करचें
+clear_photo	स्पश्ट फोटो
+copy_day_book_csv	कॉपी डे पुस्तक CSV
+copy_day_close	कॉपी डे बंद
+copy_items_csv	आयटम CSV कॉपी करात
+copy_outstanding_csv	उरिल्ली सीएसव्ही प्रत करात
+copy_parties_csv	पक्ष सीएसव्ही प्रत करात
+copy_party_ledger_csv	पक्ष लेजर सीएसव्ही प्रत करात
+copy_receipt	पावती प्रत करप
+share_whatsapp	व्हॉट्सअॅप शेअर करात
+lan_pages_heading	Wi‑Fi चेर गिरायकांचीं पानां
+lan_pages_help	ह्या दुकानाच्या Wi‑Fi चेर गिरायकांचीं पानां डिस्प्ले बोर्ड आनी अभिप्रायाक काम करतात. मोबायल डेटाचेर आशिल्ल्यांक फुडें क्लाउड जाय. कार्ड टर्मिनल वा पेमेंट लिंक पर्यायी आनी काउंटर केन्नाच आडावत ना.
+diag_send_heading	हें डिव्हायस बंद शेअर करचें
+kot_dest_heading	स्टेशन
+optional_login_heading	पर्यायी लॉगीन
+rights_heading	हक्क
+ops_panel	थळावे ऑप्स
+crm_heading	गिरायक आनी संदेश
+crm_help	वाडदीस, निश्ठा, निश्क्रीय आनी शीर्ष सोयरे — एसएमएस वा व्हॉट्सअॅप हेतू रांक. संदेशांत {name} आनी {points} वापरात. मालक टॅप धाडटा; कांयच स्वता स्फोट जायना.
+crm_queue_sms	रांक एसएमएस
+crm_queue_wa	रांक व्हॉट्सअॅप
+crm_seg_bday_week	वाडदिसाचो सप्तक
+crm_seg_bday_month	वाडदिसाचो म्हयनो
+crm_seg_phone	फोन घेवन
+crm_seg_loyalty	इमानीपण
+crm_seg_inactive	निश्क्रीय
+crm_seg_top	पयल्या क्रमांकाचेर खर्च करपी
+birthday_ph	वाडदीस (एमएम-डीडी वा वायवायवाय-एमएम-डीडी)
+crm_message_ph	वाडदिसाचीं परबीं {name}! तुमकां {points} गुण आसात.
+till_apply_redeem	बिलाचेर अर्ज करचो
+till_clear_redeem	स्पश्ट रिडीम करप
+till_wallet_topup	टॉप अप पाकीट
+till_issue_voucher	व्हाऊचर जारी करप
+till_points_ph	सोडवपाचे पॉयंट
+till_wallet_ph	खर्च करपाची पाकीट रक्कम
+till_voucher_code_ph	व्हाऊचर कोड
+till_voucher_amt_ph	व्हाऊचर रक्कम (रिक्त = सगळे)
+till_wallet_topup_ph	टॉप-अप पाकीट रक्कम
+till_voucher_issue_amt_ph	व्हाऊचर रक्कम जारी करप
+till_voucher_issue_code_ph	नवो व्हाऊचर कोड
+split_evenly	एकसारकें वांटून घेवप
+waitlist	वेटलिस्ट
+fire_course	फुडलो पावल
+hold_item	होल्ड
+waiter_call	कॅशियराक आपोवचें
+waitlist_add	वेटलिस्टांत जोडचें
+floor_view_grid	हांवेस
+floor_view_layout	रचणाय
+floor_layout_x	X
+floor_layout_y	Y
+floor_layout_w	W
+floor_layout_h	H
+floor_layout_save	मांडावळ जतनाय घेयात
+floor_layout_open	उक्ते मेज
+floor_layout_edit	मांडावळ संपादीत करप
+floor_layout_pick	ताची मांडावळ संपादीत करपाक टेबल टॅप करात
+floor_layout_saved	मांडावळ सांबाळली
+floor_layout_nudge_left	← 20
+floor_layout_nudge_right	→ 20
+floor_layout_nudge_up	↑ 20
+floor_layout_nudge_down	↓ 20
+sibling_pickers_help	युनिटां सारके चालू/बंद टॅप करात — दिसपट्ट्या पिकरां कडल्यान वाठार, स्टेशनां, आनी कर दर लिपोवचे; पॅक डिफॉल्ट रावतात.
+bulk_price_apply	बल्क किंमत लागू करात
+card_terminal_optional	कार्ड टर्मिनल / फारीकणी दुवो (इंटरनेट उपलब्ध आसतना पर्यायी)
+copy_report	अहवालाची प्रत करात
+counted_cash_ph	ड्रॉअरांत रोख रक्कम मेजली
+country_tax	देश आनी कर
+create_backup	बॅकअप तयार करचो
+credit_limit_heading	पतपुरवठ्याची मर्यादा (निवड केल्लो / नांव दिल्लो पक्ष)
+day_close_summary	दीस बंद सारांश
+delete_party	निवडिल्लो पक्ष काडून उडोवप
+delivery	डिलिवरी
+done_open_books	केलें — उक्ते पुस्तकें
+drawer_count	ड्रॉअर काउंट (पर्यायी) 1.1.
+expense_heading	खर्च करप
+export_day	निर्यात दीस
+extra_note_bill_ph	ह्या बिलाचेर / विक्रीचेर अतिरिक्त टिप
+extra_note_expense_ph	निमाण्या खर्चाचेर अतिरिक्त टिप
+extra_tills_heading	जो मेरेन अतिरिक्त
+other_devices_help_heading	हेर साधनां सेट करात
+other_devices_help	ह्या डिव्हाइसाचेर (सर्वर): हेर डिव्हाइस → आनीक काउंटर परवानगी. जोडी कोड आनी Wi‑Fi पत्तो नोंद करात. दिसल्यार हेर डिव्हाइस जोडपाक परवानगी टॅप करात. संगणकाचेर ह्या संगणकान सुरू करात टॅप करात. दरेक हेर डिव्हाइसाचेर: अॅप बसयात, क्लायंट मोड वेंचात, दुकानाचो सर्वर सोदात (वा पत्तो बरोवात), जोडी कोड घालात, आतां जोडी करात. Wi‑Fi तुटल्यार ऑर्डर डिव्हाइसाचेर रावतात आनी सर्वर परत जाप दितना वतात. आनीक प्रिंटर सर्वेराचेर दवरतात (सेटिंग → प्रिंटर) — आनीक काउंटर थंय बिलां धाडटात.
+forget_shop	हें दुकान विसरात
+goods_received	मेळिल्लो माल
+import_day	आयात दीस
+import_items_csv_plain	आयटम आयात करात CSV...
+import_parties_csv	आयात पक्ष सीएसव्ही...
+item_name	आयटम नांव
+kitchen_printing	प्रिंटर
+login_id_ph	वापरप्याचें नांव
+mark_cleared	मार्क क्लियर जालो
+new_party_clear	नवो पक्ष (स्पष्ट रूप) २.
+new_party_kind_supplier_ph	नवी पार्टी प्रकार (पुरवणदार)
+next_country	फुडलो देश
+next_order	फुडलो ऑर्डर (क्लियर डेस्क)
+note_gstin_ph	टिप / जीएसटीआयएन / कराराची याद करून दिवप
+notes_attach_party	टिपा आनी संलग्नक (निवडिल्लो पक्ष)
+notes_attach_sale	नोंदी आनी संलग्नक (निवडित विक्री)
+on_account_ap	खात्याचेर (एपी) 1.1.
+org_optional_ph	संघटना (पर्यायी) २.
+paid_by	द्वारे फारीक केल्लें
+paid_now	आतां फारीक केलां
+pair_now	आतां जोडी करात
+pairing_code_ph	जोडणी कोड
+party_name_selected_ph	पक्षाचें नांव (वा निवडिल्लो वापर)
+password_ph	पासवर्ड
+pay_ap_card	एपी कार्ड फारीक करचें
+pay_ap_cash	एपी रोख फारीक करप
+pay_ap_heading	आमी तांकां जें रिणाचे आसात तें फारीक करचें (एपी)
+pay_ap_upi	एपी यूपीआय फारीक करचें
+pay_selected_heading	वेंचून काडिल्लें फारीक करचें (रीण निवळावप / आगाऊ घेवप)
+pick_from_items	आमच्या वस्तूंतल्यान वेंचून काडात
+prev_country	आदलो देश
+print_open	छापप / उगडप
+reason_amend_ph	दुरुस्ती / रद्द / परतावो करपाचें कारण
+reason_note_ph	कारण / टिप (वाया घालप, गणना, ...)
+record_day_close	विक्रमी दीस बंद
+refresh_from_shop	दुकानांतल्यान ताजें करचें
+refund	रिफंड
+remove_selected	निवडिल्लें काडून उडोवचें
+request_bill	बिलाची विनंती करची
+restaurant_name_ph	दुकानाचें नांव (पर्यायी)
+restore_backup	बॅकअप परतून मेळोवचो
+role_both	दोनूय
+role_admin	एडमिन
+role_cashier	कॅशियर
+role_customer	गिरायक
+role_manager	वेवस्थापक
+history_retention	वेपारी इतिहास
+history_retention_help	पोरणी विक्री आनी पोरणे तिकीट आपसूक रिते जातात. वखदां, कर्मचारी आनी सेटिंग उरतात. आतां रितें सगळ्यो व्यवहार ओळी काडटा आनी मांडावळ दवरता.
+history_off	दवरचें
+history_day_close	बंद दिसा
+history_after_hours	वरां उपरांत
+history_hours_ph	तास (1-168, मुलभूत 4)
+history_hours_save	तास वाचवप
+history_clear_now	आतां इतिहास स्पश्ट करात
+history_cleared	वेपारी इतिहास निवळ जालो — सेटअप दवरलो
+history_retention_saved	इतिहास क्लियरिंग वाचयलें
+history_hours_saved	इतिहास तास वाचयले
+history_owner_only	फकत मालक वा प्रशासक इतिहास निवळ करूंक शकता
+rollup	रोल-अप करप
+save_brand	ब्रँड वाचवचो
+save_business_id	वेवसाय आयडी जतनाय घेयात
+save_business_name	वेवसायाचे नांव जतनाय घेयात
+save_features	सांबाळात
+save_features_named	वाचवचें {name} .
+save_features_ok	{name} खातीर जतनाय घेतिल्लें सेटअप
+save_names	नांवां जतनाय घेयात
+second_way	दुसरो मार्ग
+server_ip_ph	सर्वर आयपी (देखीक- 192.168.1.10)
+set_credit_limit	पक्षाक मर्यादा लागू करची
+set_login_selected	निवडिल्ल्याक लॉगीन लागू करात
+set_login_named	{name} कडेन लॉगीन लागू करचें.
+shop	दुकान
+show	दाखोवचें
+spreadsheet_csv	स्प्रेडशीट (सीएसव्ही) 1.1.
+start_fresh	ताजें सुरू करचें
+stop_extra_tills	अतिरिक्त टिल्स थांबयात
+floor_cols_ph	स्तंभ
+floor_cols_fit	स्क्रीन फिट करप
+floor_cols_fit_sub	{n} हांगा बसता
+floor_cols_fits	फिट जाता
+floor_cols_scroll	कुशीक स्क्रोल करता
+floor_cols_min	स्तंभ: उण्यांत उणे 1 — वा पडद्याक बसपाक रितें सोडचें
+floor_zoom_auto	ऑटो
+floor_zoom_out	झूम आउट करात
+floor_zoom_in	झूम इन करात
+backup_auto	दर दिसा आपोआप बॅकअप घेतात · निमाणें {when} · निमाणे 14 दीस {dir} मदीं दवरतात.
+backup_auto_none	दर दिसा आपोआप बॅकअप घेता — पयलो खिणाक चलता.
+backup_copy_to	प्रतीय {dir} कडेन वतात.
+backup_copy_btn	तशेंच बॅकअप फोल्डरांत कॉपी करात...
+autostart_off	ह्या संगणका पासून सुरवात करात
+autostart_on	ह्या संगणका पासून सुरू जाता ✓ — थांबवपाक टॅप करात
+autostart_done_on	हो संगणक आतां सुरू जातकच अॅप उगडटा — वीज कापल्या उपरांत दुकानाचो सर्वर परतून आयला.
+autostart_done_off	हो संगणक आतां ऍप्लिकेशन सुरू जातकच उगडना.
+device_forgotten	दुकान हें साधन विसरलें — दुकानाच्या सद्याच्या कोडाक परतून जोडचें. ताचेर वाट पळोवपी ऑर्डर पाळटात.
+lan_offline	दुकान सर्वर पावपाक शकना
+forget_device	विसरप
+last_seen	पळयलें
+copy_pair_code	जोडणी कोड कॉपी करात
+new_pair_code	नवो जोडणी कोड
+pair_finishing	जोडी सोंपोवप... दुकानाचीं पुस्तकां लागू करप
+pair_opening	टिल्ल उगडून...
+pair_copied	जोडणी कोड कॉपी केला
+kot_waiting	धाडपाची वाट पळयता
+lan_offline_waiting	दुकान सर्वर पावपाक शकना · {n} वाट पळयता
+lan_connecting	खरेदी करपाक जोडप...
+lan_live	जिवें
+lan_sending	{n} धाडून दिवप
+lan_sign_in_to_send	धाडपाक परतून सायन इन करात {n}
+lan_pair_again	हें साधन परतून जोडचें
+lan_update_app	ऍप्लिकेशन अद्ययावत करचें — ह्या डिव्हायसाची आनी दुकानाच्या सर्वराची वेगवेगळी आवृत्ती आसा
+allow_firewall	हेर साधनांक जोडणी करपाक परवानगी दिवची
+firewall_blocked	ह्या संगणकाची फायरवॉल हेर साधनांक आडायता — हेर साधनांक जोडणी करपाक परवानगी दिवची टॅप करात.
+firewall_waiting	एडमिन प्रॉम्प्टाची वाट पळयतात...
+lan_join_help	दुसऱ्या डिव्हायसाचेर: क्लायंट मोड → दुकानाचो सर्वर सोदून काडात (वा {addr} टाइप करात) → जोडणी कोड {code}.
+lan_pair_status	वाय-फाय {addr}
+lan_join_help_no_addr	पत्त्या खातीर हें डिव्हायस Wi‐Fi कडेन जोडचें.
+lan_no_address	अजून वाय-फाय पत्तो ना — दुकानाक वाय-फाय कडेन जोडणी करात.
+lan_not_listening	साधनां स्वीकारनात (पोर्ट {port} व्यस्त). ऍप्लिकेशन परतून सुरू करचें.
+lan_tills_off	अतिरिक्त टिल्स बंद आसात. तांकां दुसरें साधन जोडपाक दिवचें.
+paired_with	जोडीदार · {url}
+not_paired	जोडीदार ना
+choose_device_use	सर्वर वा क्लायंट निवडात.
+paired_note	जोडीदार केल्लें. विकपाक उगडात, वा नवीनतम खातीर ताजें करात.
+last_update_at	निमाणें अद्ययावत: {time}.
+pair_intro	सर्वर सोदून काडात, वा ताचो पत्तो आनी जोडणी कोड टाइप करात.
+queue_waiting	दुकानांत पावपाची वाट पळयतना ({n}):
+queue_tries	{n} वेळा प्रयत्न केला · निमाणी जाप: {e}
+save_backup_copy	बॅकअप प्रत जतनाय घेयात...
+backup_copy_saved	बॅकअप प्रत जतनाय घेतल्या — ती ह्या डिव्हायसा बंद दवरात (USB स्टिक वा हेर डिव्हायस)
+backup_copy_overdue	{n} दिसां खातीर खंयचीच बॅकअप प्रत ह्या डिव्हायसाक सोडली ना — मांडावळी → बॅकअप
+backup_copy_failed	बॅकअप प्रत थंय जतनाय घेवंक मेळ्ळी ना — दुसरी सुवात वेंचून काडात
+clock_off	ह्या डिव्हायसाचें घड्याळ दुकानाच्या सर्वरा वयल्यान {min} मिण्टां बंद आसा — ह्या डिव्हायसाचेर योग्य वेळ सेट करचो
+printers_heading	प्रिंटर
+printers_help	प्रिंटर सोदून काडात, वेंचपाक एकाचेर टॅप करात, मागीर फकत त्या डिव्हाइसाचेर चांचणी पान छापात. बिलाचे प्रिंटर: बिल आनी स्लिप स्वरूप → बिल.
+printers_host_only	प्रिंटर दुकानाच्या डिव्हाइसाचेर (सर्वर) दवरतात. हो काउंटर थंय बिलां आनी पोरणे तिकीट धाडटा — सोद / जोड / नेमणूक सर्वेराचेर उरता. चांचणी पान आनी बिलाच्या छापाचो आकार सर्वेराक वता.
+printers_find_heading	प्रिंटर सोदून काडात
+printers_find_tip	सोद हें डिव्हायस स्कॅन करता आनी वळेरी अद्ययावत दवरता.
+printers_pool_heading	प्रिंटर
+printers_pool_tip	सोद हें डिव्हायस स्कॅन करता आनी ही वळेरी अद्ययावत दवरता.
+printers_pool_empty	(आतां मेरेन कोणूच ना — सोद टॅप करात)
+printers_routes_help	ऑपरेटिंग सिस्टम आदींच वळखता ते प्रिंटर सोदून काडात. बिल आनी स्लिप स्वरूपाखाला बिलाक आनी दरेक विभागांक नेमात.
+printer_assign_dd	खरो प्रिंटर: {place}
+printer_assign_pick	खरो प्रिंटर निवडात
+printer_profile_heading	रचणाय
+printer_send_heading	डिलिवरी
+vp_delivery_heading	डिलिवरी
+vp_delivery_help	हो आभासी प्रिंटर काम कशें धाडटा — OS दस्तावेज, रॉ बाइट, वा ESC/POS. स्लिपाचो मजकूर (अक्षर आकार, वळण, समास) बिल / स्लिप स्वरूप थारायता, हांगा ना.
+vp_type_size_heading	प्रकार आकार
+vp_wrap_heading	गुठलावपाची रुंदाय
+vp_margin_heading	मार्जिन
+vp_delivery_spooler	ओएस दस्तावेज (सिस्टम स्पूलर) 1.1.
+vp_delivery_raw	डिव्हायसाक कच्चे बाइट
+vp_delivery_escpos	ईएससी/पीओएस उश्णताय आदेश
+virtual_printer_new	नवो आभासी प्रिंटर
+virtual_printer_selected	“{name}” संपादीत करप — स्वीच करपाक वळेरेंत दुसरो टॅप करचो
+virtual_printer_tap_list	संपादीत करपाक वळेरेंतल्या आभासी मुद्रकाचेर टॅप करात
+config_layout_portrait	पोर्ट्रेट हें नांव
+config_layout_landscape	लँडस्केप
+config_send_os	सिस्टम स्पूलर
+config_send_escpos	ESC/POS
+profiles_heading	मांडावळी
+profiles_empty	(आतां मेरेन मांडावळ ना)
+profile_builtin	बिल्ट-इन केल्लें
+profile_custom	कस्टम
+profile_name_ph	मांडावळ नांव
+profile_new	नवी मांडावळ
+profile_delete	मांडावळ काडून उडोवप
+profile_created	मांडावळ तयार केल्या
+profile_deleted	मांडावळ काडून उडयल्या
+profile_builtin_keep	बिल्ट-इन मांडावळ काडून उडोवंक मेळना
+config_saved	अद्ययावत केलां
+config_selected	निवडलेले “{name}”
+printer_output_heading	आभासी प्रिंटर
+virtual_printers_heading	आभासी प्रिंटर
+virtual_printers_empty	अजून आभासी मुद्रक नात — सकयल मोलां सेट करात, मागीर जतनाय घेयात. तुमचे कडेन कांय मेळ्ळ्या उपरांत, संपादीत करपाक वळेरेंतल्यान एक टॅप करात.
+virtual_printer_name_ph	आभासी मुद्रकाचें नांव (पर्यायी)
+virtual_printer_create	आभासी प्रिंटर तयार करचो
+virtual_printer_save	आभासी प्रिंटर जतनाय घेयात
+virtual_printer_delete	आभासी प्रिंटर काडून उडोवप
+virtual_printer_created	आभासी प्रिंटर “{name}” तयार केला
+virtual_printer_deleted	आभासी मुद्रक काडून उडयला “{name}”
+virtual_printer_updated	आभासी प्रिंटर अद्ययावत केला
+virtual_printer_updated_named	आभासी प्रिंटर “{name}” अद्ययावत केला
+virtual_draft_layout	फुडल्या आभासी मुद्रकाखातीर सेट केल्लीं मोलां
+virtual_draft_send	फुडल्या आभासी मुद्रकाखातीर मोल सेट केलां
+virtual_need_real	पयलीं खरो मुद्रक निवडात
+virtual_need_select	काडून उडोवपाक आभासी मुद्रक निवडात
+real_printer_selected	निवडलेले: {name}
+station_group_heading	आभासी प्रिंटर
+station_group_apply	आभासी प्रिंटर काडून उडोवप
+station_group_applied	काडून उडयलां
+station_group_empty	आभासी मुद्रक निवडात
+station_group_name_ph	आभासी मुद्रकाचें नांव (पर्यायी)
+station_group_save	आभासी प्रिंटर तयार करचो
+station_group_saved	आभासी प्रिंटर जतनाय घेतला
+station_manage_heading	डिस्पेंसरी विभाग जोडात वा काडात
+printers_routes_heading	जंय गजाली छापतात
+route_pick_heading	सुवात
+route_editing	संपादन: {name}
+route_assigned	{printer} ते {place} जोडले.
+route_already_assigned	आदींच ह्या जाग्यार: {printer}
+route_removed	{place} पासून {printer} काडून उडयले.
+route_cleared	निवळ जालें {name} .
+route_assigned_empty	ह्या जाग्यार कोणूच ना
+route_tap_remove	काडपाक टॅप करात
+route_tap_select	निवडपाक टॅप करात
+route_tap_selected	निवडलेले
+route_pick_printer_first	पयलीं प्रिंटर टॅप करात
+route_assigned_heading	प्रिंटर
+route_add_heading	नेमून दिवप
+printer_label_ph	नांव (देखीक काउंटर प्रिंटर)
+printer_target_ph	प्रणाली मुद्रकाचें नांव वा यजमान:9100
+printer_target_default	ह्या संगणकाचो सदचो मुद्रक (कोरो पत्तो)
+printer_wire_heading	प्रोफायल
+printer_wire_escpos	ESC/POS
+printer_wire_os	पोर्ट्रेट हें नांव
+printer_wire_os_portrait	पोर्ट्रेट हें नांव
+printer_wire_os_landscape	लँडस्केप
+printer_wire_escpos_short	ESC/POS
+printer_wire_os_short	पोर्ट्रेट हें नांव
+printer_wire_os_landscape_short	लँडस्केप
+printer_format_custom	नवी सानुकूल प्रोफायल
+printer_format_custom_label	कस्टम
+printer_format_custom_added	ह्या जाग्या खातीर सानुकूल प्रोफायल जोडला
+add_printer	प्रिंटर जोडचो
+remove_printer	काडांत
+route_pick_ph	बिल वा डिस्पेंसरी विभाग
+route_bill	बिल
+route_default_kitchen	स्टेशन ना (नेमणूक नाशिल्ले वस्तू)
+route_kot_station	स्टेशन
+route_dont_print	प्रिंटर ना
+stations_heading	स्टेशनां
+stations_help	डिस्पेंसरी विभाग दुकानाच्या त्या भागांतलीं वखदां आनी प्रिंटर एकठांय करतात. सेटिंग → प्रिंटर हातूंतल्यान प्रिंटर जोडात, यत्न क्रम दवरात, मागीर पयलें तें काम करता वा सगळ्यांचेर छापप. बदल करताच सांबाळटात.
+station_print_heading	ह्या स्टेशनाचे प्रिंटर
+station_print_help	पयलीं स्टेशन वेंचात, मागीर एक वा चड प्रिंटर जोडात. ↑↓ यत्न क्रम दवरता. पयलें तें काम करता पयल्या यशाउपरांत थांबता; सगळ्यांचेर छापप दरेक जोडिल्ल्या प्रिंटराक धाडटा.
+station_print_pick_ph	प्रिंटर सेट करपाक स्टेशन
+station_print_pick_first	पयलीं डिस्पेंसरी विभाग वेंचून काडात
+station_print_editing	“{name}” खातीर प्रिंटर संपादीत करप.
+station_vps_dd	ह्या स्टेशनाचे प्रिंटर
+station_vps_dd_n	{n} मुद्रक (मुद्रक) · बदलपाक टॅप करात
+station_vps_empty	अजून मुद्रक नात — मांडावळी → मुद्रक खाला तांकां सोदून काडात
+bill_printers_dd	बिला खातीर प्रिंटर
+bill_printers_dd_n	{n} बिला खातीर मुद्रक (मुद्रक) · बदलपाक टॅप करात
+job_layout	रचणाय
+job_delivery	नोकरी कशी धाडटात
+job_delivery_help	OS दस्तावेज, रॉ बाइट, वा ESC/POS. बिल आनी तिकीट दरेकाक आपलें दवरतात. दोगांय काम सोदांत सांबाळिल्ल्या खंयच्याय प्रिंटराक वचूंक शकतात.
+station_vp_attached	प्रिंटर जोडला
+station_vp_detached	स्टेशनांतल्यान प्रिंटर काडून उडयलो
+station_print_summary	{mode} · {n} मुद्रक (मुद्रक)
+station_print_summary_none	ह्या स्टेशनाचेर अजून प्रिंटर नात — तो छापचो ना
+stations_none	अजून स्टेशनां नात — सकयल एक जोडात. काउंटर दुकानांत स्टेशनांचो वापर ना — रितें सोडात.
+route_up	वयर
+route_down	सकयल
+route_remove	काडांत
+route_clear	निवळ
+save_printers	प्रिंटर जतनाय घेयात
+print_test_page	चांचणी पान छापचें
+no_printer_assigned	प्रिंटर ना
+test_page_no_printer	{place} खातीर प्रिंटर ना — ताका प्रिंटर जोडचो, मागीर परतून यत्न करचो
+test_page_pick_first	पयलीं चांचणी पानाखातीर मुद्रक(मुद्रक) वेंचून काडात — मागीर चांचणी पान छापचें
+test_printers_dd	चांचणी पानाखातीर मुद्रक
+test_printers_dd_n	{n} चांचणी पानाखातीर मुद्रक (मुद्रक) · बदलपाक टॅप करात
+kot_test_printers_dd	चांचणी छापाचे प्रिंटर
+kot_test_printers_dd_n	चांचणी छापाक {n} प्रिंटर · बदलपाक टॅप करात
+test_printer_picked	वर चांचणी: {name}
+test_printer_cleared	चांचणी करीना: {name}
+test_page_sent_n	{n} प्रिंटर(s) कडेन धाडिल्लें चांचणी पान
+test_kot_pick_first	पयलीं चांचणी छापाक प्रिंटर वेंचात — मागीर चांचणी छाप
+test_kot_sent_n	चांचणी छाप {n} प्रिंटरांक धाडलो
+cancel_pick	मार्क
+cancel_pick_on	चिन्न केल्लें
+cancel_pick_meta	रद्द करपा खातीर चिन्न केल्लें
+batch_cancel	रद्द करपाचें चिन्न
+batch_cancel_n	रद्द करपाचें चिन्न ({n})
+batch_cancel_none	पयलीं एक वा चड धाडिल्ले वस्तू चिन्न करात — मागीर चिन्न केल्ले रद्द
+batch_cancel_title	चिन्न केल्लीं वखदां रद्द — एक कारण, दरेक विभागांक एक रद्द स्लिप
+batch_cancel_ok	{n} वस्तू रद्द · {slips} रद्द स्लिप → {kitchens}
+batch_cancel_ok_noprint	{n} वस्तू रद्द — आपसूक छाप बंद, म्हणून रद्द स्लिप ना
+no_printer_kitchen_station	त्या स्टेशनाखातीर प्रिंटर ना
+printers_saved	जतनाय घेतल्या
+test_page_sent	चांचणी पान धाडलां — मुद्रक तपासात
+test_page_sent_one	{name} कडेन धाडिल्लें चांचणी पान — तो मुद्रक तपासात
+printers_found	मेळ्ळें {n}: {list}
+printers_find_synced	मेळ्ळें {n} — {new} नवें
+printer_on_device	वाचयले
+printer_already_added	पयलींच जोडलां
+printer_already_saved	पयलींच जतनाय घेतिल्लें: {name}
+find_printers	प्रिंटर सोदून काडात
+printers_looking	पळयता...
+saving_printer	प्रिंटर जोडप...
+cancelled	रद्द केलां
+printers_tap_find	हें डिव्हायस वापरूं येता अशा मुद्रकांची वळेरी करपाक सोद टॅप करात.
+printers_none_found	कोणूच मेळूंक ना — प्रणाली मुद्रक नांव वा IP टाइप करात (देखीक 192.168.1.50).
+printer_from_find	जोडले {name}
+kot_printer_ph	स्लिपाखातीर प्रिंटर
+bill_printer_ph	बिलां खातीर प्रिंटर
+kot_print_on	तिकीट आपसूक छापप: चालू
+kot_print_off	तिकीट आपसूक छापप: बंद
+queue_refused	दुकानान मान्य ना ({n}) — काउंटराचेर दरेक तपासात:
+clear_not_accepted	तपासले — ही वळेरी निवळ करात
+device_name_ph	ह्या साधनाचें नांव
+lan_last_update	निमाणें अद्ययावत {time}
+lan_not_accepted	{n} मान्य ना
+connected_now	आतां जोडला
+backup_failed	निमाणो स्वयंचलित बॅकअप अपयशी थारलो: {e}
+backup_overdue	{n} दिसां खातीर बॅकअप ना — ऍप्लिकेशन ह्या डिव्हायसाचेर उक्तो दवरात म्हणजे तो बॅकअप घेवंक शकता.
+disk_low	ह्या डिव्हायसाचेर फकत {mb} MB मुक्त — बॅकअप बेगीन अपयशी थारतले. थोडी सुवात मुक्त करात.
+last_seen_devices	निमाणें पळयल्लें: {time}
+sync_interval	दर {secs}s समक्रमण करचें
+connection_to_shop	दुकाना कडेन जोडणी
+supplier_name_ph	पुरवणदाराचें नांव (वा पक्ष)
+supplier_ph	पुरवणदार
+switch_device	हें साधन स्विच करचें
+take_payment	फारीकणी घेवची
+tax_added_till	{tax} अनन्य
+tax_inside_price	{tax} समावेशक
+tax_invoice	कर पावणी
+till_to_bank	To → बँक
+units_heading	एकक
+unlock_after_pairing	पिन दाखयात
+unlock_with_login	लॉगीन करून उगडात
+unmark	अनमार्क करप
+update_my_password	म्हजो पासवर्ड अद्ययावत करचो
+update_my_pin	म्हजें सायन-इन अपडेट करचें
+duress_heading	आपत्कालीन उगडावपाचो पिन (फकत मालकाक)
+duress_help	पर्यायी. उगडपाक तुमच्या बदला हें PIN टायप केल्यार सगळ्यो बही नोंदी रित्यो जातात (विक्री, खातीं, इतिहास) आनी काउंटर धनी म्हणून सामान्य दिसून उगडटा — वखदां, किंमती, काउंटर, कर्मचारी आनी सेटिंग उरतात. स्कीमा आनी मांडावळ काडून उडयनात. फकत बळजबरीन उगडावचें पडटा तेन्नाच वापरात. बंद करपाक रितें सोडात आनी सांबाळात. खंयच्याच व्यक्तीच्या PIN सारकें न्हय.
+duress_pin_ph	आपत्कालीन पिन (4-12 अंक) 1.1.
+duress_confirm_ph	पुष्टी करपाक परतून टाइप करात
+save_duress_pin	आपत्कालीन पिन जतनाय घेयात
+clear_duress_pin	आपत्कालीन पिन बंद करात
+duress_on	आपत्कालीन उगडावपाचो पिन चालू आसा
+duress_off	आपत्कालीन उगडावपाचो पिन बंद आसा
+duress_saved	आपत्कालीन उगडावपाचो पिन जतनाय घेतलो
+duress_cleared	आपत्कालीन उगडावपाचो पिन बंद
+upi_amount_ph	यूपीआय रक्कम
+void	रद्द
+write_off_ap	एपी बंद करात
+write_off_heading	बंद करप (फारीकणी करिनासतना निवळ करप)
+write_off_nil	बंद करप / शून्य शिल्लक
+your_brand	तुमचो ब्रँड (इन-एप)
+your_categories	तुमचीं श्रेणीं
+account_kind	खातें प्रकार (एक टॅप करात)
+actual_total_cap	ACTUAL TOTAL हें एकूण
+amend_help	दुरुस्ती करपाक, रद्द करपाक वा परतावो करपाक विक्री निवडात. दुरुस्त्यो पुराय इतिहास दवरतात. गोल केल्लो एकूण लागू केल्ल्या इतलो सुरू जाता — फकत गोल करपाक संपादीत करचो. रद्द आनी परतावो करपाक मालक वा वेवस्थापक पिन (वयर टायप केला; तुमच्या नांवान रेकॉर्ड केल्लो) जाय आसूं येता.
+applied_total_cap	लागू केल्लें एकूण
+bank_balance	बँक शिल्लक
+bank_net_today	बँक नेट आयज
+branch_export_help	निर्यात branch_snapshot_CODE_DATE.json बॅकअप फोल्डरांत बरयता आनी क्लिपबोर्डाचेर कॉपी करता. दुसऱ्या आउटलेटाचो दीस आयात करपाक, तिची फायल त्याच फोल्डरांत import_branch_snapshot.json म्हणून जतनाय घेयात, मागीर आयात टॅप करात.
+brand_shown_help	अॅपा भितरल्या पडद्यांचेर दाखयलां. ह्या डिव्हायसाचेर स्थापीत केल्लें ऍप्लिकेशन नांव आनी चिन्न प्लॅटफॉर्म यादी म्हणून उरता.
+app_icon	अॅप चिन्न
+logo_help	अॅपांतल्या स्क्रीनांचेर पर्यायी दुकान चिन्न.
+onboard_layout	जें मेळटा तें
+item_photo_help	पर्यायी. फोटो नासतना आमी आयटम नांवा वयल्यान आद्याक्षरां दाखयतात.
+stamp_heading	छाप
+stamp_image_help	छापील बिलांचेर आनी गिरायक डिस्प्लेचेर पर्यायी शिक्क्याची प्रतिमा.
+payment_qr_heading	फारीकणी क्यूआर
+payment_qr_image_help	बिलांचेर आनी गिरायक डिस्प्लेचेर स्थिर QR; नाजाल्यार फेडप वयल्या VPA तल्यान बदलपी यूपीआई QR वापरता.
+cash_in_hand	हातांत रोख (तिल) .
+change_my_pin_heading	म्हजें सायन-इन
+connect_to_server	सर्वराक जोडणी करात
+counter_locked	काउंटर 01 · लॉक केला
+country_pack_help	एक कंट्री पॅक कर नांव आनी गणित, इंस्टंट-पे रेल्वे आनी बिलांचेर छापून आयिल्ली बिझनेस आयडी थारायता. कुमकाज खंयच कर भरना वा सरकारी ई-पाणी जारी करिना.
+currency_use_help	स्क्रोल करात आनी खंयच्याय समर्थीत चलना खातीर वापरात टॅप करात.
+day_close_help	एक दीस बंद रेकॉर्ड केल्यार हो सारांश (आनी मेजल्यार ड्रॉअर व्हेरिएन्स) ऑडिट लॉगांत जतनाय घेता. तो विकपाक थांबना.
+expenses_word	खर्च
+feature_access_help	तांकां कितें उगडूंक मेळटा — पर्यायी; वयर दिल्लें काम पयलींच मुलभूत सेट करता
+footer_local	थळावें SQLite · मुक्त कायमचें · शून्य मेघ
+fresh_book_tabiyat	ताजें = रिती यादी (वस्तू फुडें जोडात). बही = सकयल उगडपी स्टॉक आनी कोण तुमकां देणें आसा तें बरोवप.
+fresh_selected	ताजें निवडलां — कॅटलॉग रितें उरता. तयार जातकच Done टॅप करात.
+gross_word	एकूण
+how_start	तुमकां कशी सुरवात करपाची आसा?
+kot_print_help_tabiyat	काउंटर दुकानांत वापर ना.
+later_country_pack	उपरांत: मांडावळी → कर आनी फारीकणी लेबलां खातीर तुमचो देश पॅक लागू करचो.
+local_badge	थळावें
+mix_type_hint_tabiyat	गरज पडल्यार रोख / यूपीआय / कार्ड / क्रेडिट हांचे मदीं विभागप. पतपुरवणेक वयर गिरायक जाय.
+money_in_sales	(विक्री) मदीं पयशे .
+net_word	जाळें
+offline_badge	OFFLINE हें नांव
+optional_login_help	पर्यायी लॉगीन (आयडी + पासवर्ड). मालक एकदां सेट करता; फकत वापरप्याकच फुडें पासवर्ड बदलूं येता.
+or_unlock_login	वा लॉगीन आयडी + पासवर्डान उगडात
+permission_preset	नोकरी (स्क्रीन आनी पयशांचीं कृती सेट करता)
+preset_help_tabiyat	कॅशियर: विकप. वेवस्थापक: विकप + वस्तू + शून्य/दुरुस्ती करप.
+product_locked_tabiyat	Tabiyat
+product_only_tabiyat	Tabiyat म्हळ्यार फार्मसी चालोवपाची व्यवस्था: वखद विक्री, बॅच/एक्सपायरी बही, उधार आनी बह्यो — तुमच्या डिव्हाइसांचेर ऑफलाइन. शेड्यूल H / Rx खूण्यो धनीच्यो नोंदी, अनुपालन न्हय.
+purchases_cogs	खरेदी (सीओजीएस) 1.1.
+qty_cap	क्यूटीवाय
+restore_help	पुनर्स्थापना: बॅकअप उखलचो. पुस्तकां तेन्ना आशिल्लीं तशीं उगडटात; आतां तशीं पुस्तकां पयलीं जतनाय घेतात, देखून हें फाटीं घेवंक मेळटा.
+wipe_data_heading	थळावो डेटा काडून उडोवप
+wipe_data_help	फकत धनी — Windows काडून उडोवपाचे तेच पर्याय. धंद्याच्यो नोंदी व्यवहार इतिहास रितो करतात पूण वस्तू आनी मांडावळ दवरतात (आपत्कालीन उगडपाच्या PIN भशेन). दुकान मांडावळ बह्यांचो डेटाबेस काडटा. पडद्याच्यो पसंती विंडो/भास रित्यो करतात. धनीच्या PIN न पुष्टी करात. पंगडावेलो आपत्कालीन उगडपाचो PIN वेगळो (उगडटाना गुप्त रितें).
+wipe_trading	वेवसायीक नोंदी
+wipe_schema	दुकान सेटअप करप
+wipe_ui	स्क्रीन पसंती
+wipe_owner_pin_ph	काडून उडोवपाक मालक पिन
+wipe_delete_selected	काडून उडोवप निवडलां
+wipe_owner_only	फकत मालकाकच थळावो डेटा काडून उडोवंक मेळटा.
+restore_owner_only	फकत मालक बॅकअप परतून मेळोवंक शकता.
+wipe_owner_pin_needed	थळावो डेटा काडून उडोवपाक मालक पिन दाखयात.
+wipe_nothing_selected	पयलीं कितें काडून उडोवप तें निवडात.
+wipe_done	निवडिल्लो थळावो डेटा काडून उडयला.
+wipe_schema_done	दुकान सेटअप पुसलें — चालू दवरपाक सर्वर वा क्लायंट निवडात.
+rounded_total	गोल एकूण
+setup_app_tabiyat	Tabiyat मांडात
+shop_logo_optional	दुकान लोगो (पर्यायी) 1.1.
+stock_type_help	आयटमाचें नांव (ताचो एक भाग पुरो), एक प्रमाण टाइप करात, मागीर समायोजीत करात. अजून मेजूंक नाशिल्ल्या वस्तूंक एकदां ट्रॅकिंग सुरू करपाची गरज आसा.
+team_owner_help	कोणाकूय जोडपाक व्यक्ती रिती सोडची: नांव, नोकरी, वापरप्याचें नांव, पिन, आनी पर्यायी पासवर्ड, मागीर जोडचो. त्याच प्रकारच्या फॉर्माक संपादीत करपाक व्यक्ती वेंचची — नांव, वापरप्याचें नांव, पासवर्ड, पडदे, आनी हक्क — मागीर जतनाय घेयात. तुमचो स्वताचो पिन आनी पासवर्ड सकयल एक सायन-इन आसा. मालक दुसऱ्याचो पिन बदलना.
+staff_name_ph	कर्मचाऱ्यांचें नांव
+staff_copy_hire_ph	(पर्यायी) पासून सेटअप कॉपी करचें.
+staff_copy_hire	ह्या व्यक्तीचें सेटअप वापरात
+staff_edit_name_ph	नांव दाखोवचें
+staff_rename	नांव जतनाय घेयात
+staff_copy_edit_ph	दुसऱ्या मनशा कडल्यान सेटअप कॉपी करात
+staff_copy_edit	तांचें सेटअप निवडिल्ल्याचेर कॉपी करात
+staff_copy_edit_onto	तांचें सेटअप {name} 1000 चेर कॉपी करात.
+staff_deactivate_named	काडून उडोवप {name} .
+staff_renamed	नांव जतनाय घेतलां
+staff_setup_copied_hire	{name} कडल्यान कॉपी केल्लें सेटअप — नवे नांव आनी पिन सेट करात, मागीर कर्मचारी जोडात
+staff_setup_copied_edit	{from} च्या सेटअपाची {to} चेर कॉपी केल्या.
+staff_copy_need_selected	पयलीं कोणाक संपादीत करचो तें निवडात
+staff_copy_need_source	कोणाचें सेटअप कॉपी करपाचें तें वेंचून काडात
+staff_copy_same	तीच व्यक्ती — दुसर् याक वेंचून काडात
+staff_rename_need_selected	पयलीं कोणाचें नांव बदलचें तें निवडात
+team_pick_hint	कोणाक बदलपाचें तें वेंचात — पडदे, पयशांचे हक्क आनी स्टेशनां फकत त्या व्यक्तीखातीर दिसतात.
+team_stations_help	जीं स्टेशनां तांकां वापरूंक मेळटात
+team_stations_changed	स्टेशनां बदललीं — ह्या व्यक्तीखातीर मांडावळ सांबाळात
+team_features_changed	पडदे बदलल्यात — ह्या व्यक्ती खातीर सेटअप जतनाय घेयात
+team_rights_changed	हक्क बदलले — ह्या व्यक्ती खातीर सेटअप जतनाय घेयात
+they_owe_us	ते आमचेर ऋणी आसात
+unit_at_cap	युनिट @
+units_help	आयटम लेबलां खातीर कोड (किग्रॅ, तुकडो, पोती). दरेक एकक जोडपाक जाय — थेट वा हेर एककां वरवीं — मानकाक (kg · cm · ml · pc), उदा. १ टोपली = २ पेटी आनी १ पेटी = २० सेंमी. रुपांतरां: 1 पासून = घटक ते. चलनां केन्नाच एकक न्हय.
+units_picker_help	खरेदी आनी वस्तू वेंचपाक एकक दाखोवपाक चालू/बंद टॅप करात. बंद एकक अजून रूपांतर करतात.
+unit_picker_on	चालू
+unit_picker_off	बंद
+we_owe_them	आमी तांकां ऋणी आसात
+who_unlocking	कोण उगडावता?
+locked_word	लॉक केल्लें
+show_pin	पिन दाखोवचें
+hide_pin	पिन लिपोवप
+set_owner_pin	मालक पिन सेट करात
+enter_owner_passcode	मालक पासकोड घालचो
+enter_staff_passcode	कर्मचारी पासकोड दाखयात
+pin_count_zero	० / १२ अंक · उण्यांत उणे ४, मागीर बरोबर
+pin_count_need	{} / 12 अंक · {} चड गरज आसा
+pin_count_full	12 / 12 अंक · बरोबर दामचें
+pin_count_ready	{} / 12 अंक · तयार जातकच बरोबर दामचो
+pin_hint_choose	4–12 अंक निवडात · जतनाय घेवपाक दाखयात वा उगडात
+pin_hint_new	नवो 4–12 अंकांचो मालक पिन · दाखयात वा उगडात
+pin_hint_shop_code	दुकान साधन · जोडणी कोड {}
+pin_hint_books	ह्या साधनांत पुस्तकां दवरतात
+pin_hint_paired	जोडी मेरेन अतिरिक्त — विकपाक उगडावप
+pin_hint_pair_first	अतिरिक्त टिल्ल — पयलीं दुकानाच्या साधनाक जोडप
+unlock_to_continue	चालू दवरपाक उगडात
+no_staff_yet	अजून कर्मचारी ना — मालक म्हणून उगडात, मागीर पंगड
+status_server_set_pin	सर्वर मोड — मालक पिन सेट करचो
+status_server_tills	सर्वर मोड — अतिरिक्त टिल्स सामील जावंक शकतात. उगडात
+status_server_unlock	सर्वर मोड — मालक म्हणून उगडात
+status_client_unlock	क्लायंट मोड — विकपाक उगडात
+icon_new_selected	चिन्न: नवी फायल निवडल्या — ब्रँड जतनाय घेयात टॅप करात
+icon_custom	चिन्न: सानुकूल स्थळ चिन्न
+icon_default	चिन्न: कुमकाज चिन्न (मुळावी) — सानुकूल निवडात
+logo_yours	लोगो: तुमचो दुकानाचो लोगो — पडद्याचेर आनी पावतींचेर दाखयला
+logo_default	लोगो: कुमकाज चिन्न (मुळावी) — तुमचे कडेन आसल्यार तुमचो स्वताचो निवडात
+tmpl_current	सद्याचें: {} — {}
+tmpl_selected	निवडलेले: {} — {}
+setup_complete	सेटअप पुराय जाला
+onboard_fresh_tmpl	ताजें · {} — कॅटलॉग रितें सुरू जाता; आयटमांत आयटम जोडात, मागीर Done.
+onboard_book_tmpl	पुस्तक · {} — आयटम जोडचें आनी उगडपाचें श्रेय, मागीर Done.
+onboard_template_tmpl	तुमकां जाय जाल्यार जाग्याचें नांव सांगात, मागीर कशी सुरू करची तें वेंचून काडात.
+tmpl_blurb	फार्मसी काउंटर: वखदां, बॅच/एक्सपायरी, खातें, बह्यो.
+tmpl_how	काउंटराचेर विक्री; स्टॉकाक खरेदी; दिसाळी बह्येक बह्यो.
+reports_facet_title	अहवाल दितात
+reports_facet_help	डे बुक, पार्टी एजिंग, बँक पोस्ट, आनी पीरियड पी अँड एल.
+against_bill_ph	वयर दिल्ल्या # बिलाच्या आड (पर्यायी)
+aliases_ph	उर्फ, आखत्यार नांवां — स्वल्पविरामान वेगळीं
+amount_blank_full_ph	रक्कम (रिक्त = पुराय शिल्लक) 1.1.
+amount_owed_ph	रिणाची रक्कम
+amount_ph	रक्कम
+amount_received_ph	मेळिल्ली रक्कम
+amount_we_pay_ph	आमी दितात रक्कम
+business_name_ph	वेवसायाचे नांव
+category_new_ph	श्रेणी (पर्यायी, नवी आसल्यार तयार केल्ली)
+code_bag_ph	कोड (बॅग) 1.1.
+conv_factor_ph	घटक (25 = 1 पोती → 25 किग्रॅ) 1.1.
+country_code_ph	देश संहिता उदा. आयएन, जीबी, अमेरिकेचीं संयुक्त संस्थानां, एई, बीआर
+credit_khata_amount_ph	क्रेडिट / खटा रक्कम
+credit_limit_ph	पतपुरवठ्याची मर्यादा (0 = ना) 1.1.
+from_code_ph	कोड (बॅग) पासून
+item_name_lang_ph	आयटमाचें नांव — तुमच्या भाशेंत टाइप करचें
+login_id_opt_ph	वापरप्याचें नांव (गरजेचें, अद्वितीय)
+manager_pin_ph	मान्यताय दिवपाक वेवस्थापक पिन (फकत तुमकां रद्द करूंक मेळना जाल्यार)
+new_branch_name_ph	नव्या शाखेचें नांव
+new_password_ph	नवो पासवर्ड (पर्यायी) 1.1.
+new_pin_ph	नवो पिन (4-12 अंक) 1.1.
+note_bank_ph	टिप (डिपॉझिट, काडप, ...)
+note_buy_expense_ph	टिप (इंधन, भाडें, ...)
+note_expense_ph	टिप (इंधन, ऑफिस, ...)
+options_tabiyat_ph	पर्याय — आकार*: ल्हान=199, व्हड=399 | टॉपिंग+3: चीज = 40, ऑलिव्ह = 30 | अतिरिक्त चीज=40
+part_second_way_ph	दुसर् या मार्गान भाग (पर्यायी) .
+phone_ph	फोन
+place_name_ph	ह्या जाग्याचें नांव
+qty_example_ph	प्रमाण (देखीक- किलो खातीर १.५) २.
+quantity_ph	प्रमाण
+reason_required_ph	कारण (आवश्यक) २.
+role_title_ph	भुमिकेचें नांव (देखीक- बारिस्ता)
+service_pct_ph	सेवा % पर्यायी 0/10/12
+short_code_ph	लघु कोड (एमजी02) 1.1.
+starting_password_ph	पासवर्ड सुरू करप (पर्यायी) .
+starting_pin_ph	पिन सुरू करप (4-12 अंक)
+station_name_ph	स्टेशनाचें नांव (पर्यायी)
+station_new_ph	विभाग (पर्यायी)
+table_name_ph	काउंटर / बे नांव
+tax_rate_ph	कर दर नांव वा % — मानक, उणें केल्लें, ०, ५, १२, १८, २०
+to_code_ph	कोड करपाक (किग्रॅ) .
+uncleared_no_ph	वयर # स्पश्ट ना
+unit_cost_ph	एकक खर्च
+unit_name_bag_ph	नांव (बॅग) 1 .
+unit_plate_ph	एकक (प्लेट / पीसी — रिक्त = दरेक)
+pay_credit	क्रेडिट
+book_kind_today	आयज पुस्तकां
+book_kind_month	ह्या म्हयन्यांत पुस्तकां
+book_kind_aging	उरिल्लें / डेबिट-क्रेडिट
+book_kind_balance	ताळेबंद
+order_help	एक आयटम जोडपाक टॅप करात.
+floor_help	हें दुकान काउंटराचेर विकता. टेबल आनी जेवणाचो मजलो Tabiyat चो भाग न्हय.
+kitchen_help	काउंटर दुकानांत वापर ना.
+kitchen_empty	उक्तीं तिकीट नात (काउंटर दुकानां हो पडदो सादारण वापरिनात).
+add_a_table	एक टेबल जोडचें
+add_station_heading	डिस्पेंसरी विभाग जोडात
+categories_help	त्या वर्गा खाला वयर दिल्लें आयटम फायल करपाक वापरात टॅप करात. फोटो वर्गाक चित्र दिता; एक नासतना तो आपलीं आद्याक्षरां दाखयता.
+dish_search_ph	नांव, सॉल्ट वा बारकोड सोदात…
+tile_free	फुकट
+tile_occupied	सुवात घेतल्या
+tile_food_ready	जेवण तयार
+tile_bill_printed	बिल छापलें
+tile_paid	फारीक केल्लें
+tile_bill_btn	बिल
+tile_occupy_btn	सोयऱ्यांक बसप
+tile_free_btn	मुक्त मेज
+tile_ready_btn	मुक्त मेज
+tile_undo_bill	बिल पूर्ववत करचें
+summary_busy	मेज व्यस्त
+summary_to_collect	एकठांय करप
+summary_on_floor	जमनीर आसता
+floor	दुकान
+sizes_as_items_ph	वेगवेगळीं वस्तू म्हणून आकार (पर्यायी) — अर्द=120, पुराय=200
+dish_group_ph	ताकद / पॅक पंगड (पर्यायी) — देखीक 500mg पट्टी
+discount	सवलत
+remove_discount	सवलत काडून उडोवप
+apply_discount	सवलत लागू करात
+save_opening_cash	उगडपाची रोख रक्कम जतनाय घेयात
+close_shift_print	शिफ्ट बंद करात आनी स्लिप प्रिंट करात
+area_prices_ph	क्षेत्र दर (पर्यायी) — एसी = 220, पार्सल = 210
+discount_ph	१०% वा ५०%
+discount_reason_ph	कारण (देखीक- नेमान सोयरो, उशीराक जेवण)
+opening_float_ph	आज सकाळीं ड्रॉअरांत घालून दिल्लें रोख पयशे
+shift_counted_ph	हस्तांतरित करतना रोख रक्कम मेजली
+opening_float	रोख उगडप (फ्लोट) 1.1.
+shift_handover	शिफ्ट हस्तांतरित करप
+shift_since	तेन्नासावन हें स्थलांतर
+expected_in_drawer	ड्रॉअरांत अपेक्षीत आसा
+right_discount	सवलत दिवची
+floor_in_kitchen	चालू आसा
+floor_eating	सेवा दिली
+pick_category	एक वर्ग वेंचून काडात
+close_category_list	श्रेणी वळेरी बंद करात
+new_category_row	नवी श्रेणी — तुमी आयटम जतनाय घेतना तयार केल्ली
+your_category	तुमचो वर्ग
+suggested_category	सुचोवणें — आमच्या वस्तूंतल्यान
+category_search_ph	श्रेणी — तुमचो सोद वा नवो टाइप करचो
+line_sent_state	धाडलें
+line_nc_state	प्रशस्ती (एनसी) — शुल्क ना
+cancel_item_short	रद्द
+nc_short	एनसी
+charge_again_short	चार्ज
+move_short	हालोवचें
+cancel_item_title	ही वस्त रद्द करात — मागील कार्यालयाक रद्द स्लिप मेळटा
+nc_item_title	ही वस्तू प्रशस्ती करपासारकी करात (एनसी)
+charge_again_title	ही आयटम परतून चार्ज करात
+move_item_title	ही वस्त दुसऱ्या टेबलाचेर व्हरची
+already_cooked	पयलींच शिजयल्लें (वाया घालप) .
+not_cooked_yet	अजून शिजयल्लें ना
+return_to_customer	गिरायका कडेन परत वचप
+short_by	थोडयाच उतरांनी
+tip_not_sale	टिप (कर्मचाऱ्याची, विक्री न्हय)
+right_settle	फारीकणी घेवची
+right_cancel_sent	धाडिल्ली वस्त रद्द करात
+right_complimentary	स्तुती (एनसी) 1.1.
+right_move_table	काउंटर हलयात / एकठांय करात
+right_reprint	परतून बिल छापचें
+right_allowed	मान्यताय आसपी
+right_with_approval	मान्यताय घेवन
+right_denied	परवानगी ना
+editing_staff	बदलटा
+finding_server	ह्या वाय-फायचेर दुकानाचो सर्वर सोदतात...
+no_server_found	कोणूच मेळूंक ना. सर्वराचेर: मांडावळी → हेर साधनां → अतिरिक्त टिल्स (तेच Wi‐Fi) परवानगी दिवची. वा थंय दाखयल्लो IP टाइप करचो.
+servers_found_pick	तुमकां जोडपाक जाय आशिल्ल्या दुकानाचेर टॅप करात.
+server_host_selected	{host} वापरून — जोडणी कोड दाखयात, मागीर आतां जोडणी करात.
+print_bill	बिल छापचें
+table_actions	काउंटर कृती
+move_merge_table	टेबल हालयप / विलीन करप
+move_help	ह्या काउंटराचो ऑर्डर फुकट टेबलाचेर व्हरात, वा चालू आशिल्ल्यांत एकठांय करात.
+move_target_ph	काउंटराचें नांव
+approval_pin_ph	वेवस्थापक पिन (फकत विचारल्यार)
+move_here	हांगासर वचचें
+merge_into	तातूंत विलीन जावप
+line_reason_ph	कारण (देखीक गिरायकाचें मन बदललें, स्टॉक ना)
+line_qty_ph	कितले रद्द करचे (रिक्त = सगळे)
+line_target_ph	टेबलाचेर वचचें (देखीक- D5)
+confirm	निश्चीत
+menu_search_ph	आयटम वा शॉर्ट कोड सोदचो
+customer_paid_ph	गिरायकान फारीक केलें
+tip_ph	टीप
+table_area_ph	क्षेत्र (देखीक- डाइन इन, पार्सल, एसी)
+table_range_ph	एकाच वेळार जायते: डी१-डी२०
+add_these_tables	हे काउंटर जोडात
+remove_these_tables	हे काउंटर काडात
+table_remove_ph	काडून उडोवचें: T1-T24, वा एका टेबलाचें नांव
+find_server	दुकानाचो सर्वर सोदून काडात
+bill_format	बिल स्वरूप
+bill_format_help	दरेक बिलाचेर दुकानाच्या नांवाखाला छापता. ओळी | न वेगळ्यो करात (देखीक MG Road, Rajkot | Ph 98250 00000).
+bill_header_ph	पत्तो | फोन
+fssai_ph	औषध परवानो नं. (पर्यायी — तुमचे शब्द)
+bill_footer_ph	तळटीप (देखीक- धन्यवाद, परतून भेट दिवची)
+save_bill_format	बिल स्वरूप जतनाय घेयात
+kot_format	स्लिप स्वरूप
+kot_format_help	वळेरेंतल्या क्षेत्राचेर टॅप करात. दाखोवप, फॉन्ट आकार आनी वजन वयल्या निवडिल्ल्या स्लिप प्रकाराच्या त्या क्षेत्राक लागू जाता. दरेक प्रकार आपले आकार आनी वजन दवरता.
+kot_format_fields	शेतां
+kot_field_next	फुडलें क्षेत्र
+kot_field_show	दाखोवचें
+kot_field_hide	लिपोवचें
+kot_field_on	दाखोवचें
+kot_field_off	लिपोवचें
+kot_field_size	फॉन्टाचो आकार
+kot_field_size_ph	उदा. १६, २०, २४, २८, ३२...
+kot_weight_light	उजवाड
+bill_kot_panel_help	बिलाची मांडावळ आनी मजकुराची रुंदी. कॅशियर म्हळ्यार बिल दिल्लो वा फेडलो तो — पुराय विक्रीची गजाल बह्यांत उरता.
+std_size_ph	उदा. १८, २०, २६ आनी...
+kot_show_shop	दुकानाचें नांव
+kot_hide_shop	दुकान लिपोवप
+kot_show_time	वेळ
+kot_hide_time	वेळ लिपोवप
+kot_show_waiter	कॅशियर
+kot_hide_waiter	कॅशियर लिपोवचो
+kot_show_station	स्टेशन
+kot_hide_station	स्टेशन लिपोवप
+kot_show_table	गल्लो
+kot_hide_table	टेबल लिपोवप
+kot_show_kot_no	तिकीट नं
+kot_hide_kot_no	तिकीट नं लिपोवचें
+kot_width	पूर्वावलोकन वळण (स्लिप टॅबाचेर मजकूर रुंदी दवरात)
+kot_width_58	58 mm
+kot_width_80	80 mm
+kot_kind_heading	तिकीट प्रकार
+kot_kind_original	मूळ
+kot_kind_duplicate	डुप्लीकेट करप
+kot_kind_modified	सुदारीत केल्लें
+kot_kind_cancelled	रद्द केलां
+kot_style_heading	शेत प्रकार आकार & वजन
+kot_style_title	शीर्षक
+kot_style_item_qty	आयटम · प्रमाण
+kot_style_field_pick	क्षेत्र निवडात
+kot_weight_regular	नियमीत
+kot_weight_bold	ठळक
+kot_align	एके वळीन दवरचें
+kot_align_start	सुरवात
+kot_align_center	केंद्र
+kot_align_end	समाप्ती
+content_width	आशय रुंदी (मिमी) 1 .
+content_width_bill	बिल सामुग्री रुंदी (मिमी) 1.1.
+content_width_kot	तिकीट मजकूर रुंदी (mm)
+content_width_ph	वा आशयाची रुंदाय, ४०-२१० मिमी
+content_width_help	ही स्लिप कितली रुंद छापता. बिल आपली रुंदी दवरता.
+content_width_bill_help	गिरायकाचें बिल कितलें रुंद छापता. मुळावें 210 mm (पान). 58 mm अशीर स्लिप, 80 mm रुंद स्लिप, 112 mm 4-इंच, 210 mm A4-रुंद. 40 ते 210 खंयचोय आंकडो बरोवात. तिकीटांक स्लिप टॅबाचेर आपली रुंदी आसा.
+content_width_kot_help	तिकीट कितलें रुंद छापता. मुळावें 80 mm. 58 mm अशीर स्लिप, 80 mm रुंद स्लिप, 112 mm 4-इंच, 210 mm पान. 40 ते 210 खंयचोय आंकडो बरोवात. गिरायकाच्या बिलांक बिल टॅबाचेर आपली रुंदी आसा.
+vp_paper_width	आशय रुंदी (मिमी) 1 .
+vp_paper_width_ph	वा आशयाची रुंदाय, ४०-२१० मिमी
+vp_paper_width_help	मजकूर रुंदी बिल आनी स्लिप स्वरूपाखाला दवरतात — बिलाक वेगळी (मुळावें 210 mm) आनी तिकीटाक वेगळी (मुळावें 80 mm).
+kot_size	फॉन्टाचो आकार
+kot_size_s	ल्हान
+kot_size_m	सामान्य
+kot_size_l	व्हड
+std_size	फॉन्टाचो आकार
+kot_copies	प्रतीं
+kot_copies_1	1
+kot_copies_2	2
+kot_copies_3	3
+kot_title_ph	शिर्षक (रितें = TICKET)
+kot_footer_ph	मागील कार्यालयाची नोंद (पर्यायी)
+kot_preview	पूर्वावलोकन
+save_kot_format	स्लिप स्वरूप सांबाळात
+test_kot_format	चांचणी छाप
+test_kot_sent	तिकीट पूर्वावलोकन धाडलें
+test_bill_format	चांचणेचें बिल
+test_bill_sent	बिलाचो पूर्वावलोकन धाडलो
+test_print_no_printer	त्या कामा खातीर प्रिंटर ना — ह्या स्क्रीनाचेर एक वेंचून काडचो
+kot_format_saved	स्लिप स्वरूप सांबाळलें
+std_print	बिल छापपाचो आकार
+std_print_help	OS / दस्तावेज प्रिंटरांचेर मानक पोर्ट्रेट आनी लँडस्केप बिल कामांक फॉन्ट आकार (पॉइंट घालात — ल्हान/सामान्य/व्हड न्हय). दोनूय दिशा एकच आकार.
+std_size_s	ल्हान
+std_size_m	सामान्य
+std_size_l	व्हड
+save_std_print	बिल प्रिंटाचो आकार सांबाळ
+std_print_saved	बिल छापाचो आकार सांबाळलो
+print_brand_kit	छापील ब्रँड किट
+print_brand_kit_help	बिलाच्या तोंडाचेर आनी LAN गिरायक डिस्प्लेचेर पर्यायी शिक्को आनी फेडप QR प्रतिमा. फेडप QR प्रतिमा नासतना वयल्या VPA तल्यान बदलपी यूपीआई QR अजून काम करता.
+choose_stamp	स्टॅम्प निवडात
+clear_stamp	शिक्को निवळ कर
+stamp_set	शिक्को: फाइलार आसा — गिरायक डिस्प्लेचेर दिसता आनी छापील बिलांचेर नांव येता
+stamp_none	शिक्को: कांयच ना
+choose_payment_qr	पेमेंट क्यू.आर. निवड
+clear_payment_qr	पेमेंट निवळ करपाचो क्यू.आर.
+payment_qr_set	फेडप QR: फाइलार आसा — गिरायक डिस्प्लेचेर दिसता (थंय रकमेचो यूपीआई QR बदलता)
+payment_qr_none	पेमेंट क्यूआर: कांयच ना — फारीक करतना यूपीआय आयडींतल्यान क्यू.आर. रक्कम रक्कम
+aggregator_import	ऍग्रीगेटर ऑर्डर (फायल)
+aggregator_import_help	पर्यायी थळावे आयात: बॅकअप फोल्डरांत import_aggregator_orders.json घालात (अ ॅरे वा {"ऑर्डर":[...]}), मागीर आयात टॅप करात. काऊंटर केन्नाच ब्लॉक करचो न्हय. लायव्ह झोमॅटो/स्विगी म्हळ्यार क्लाऊड.
+import_aggregator_file	एकठांय करपी फायल आयात कर
+team_pick_ph	संपादीत करपाक कर्मचारी — नांव, वापरकर्तानांव, वा वेंचून काडप
+select_staff	हो कर्मचारी वेंचून काड
+rights_help	ह्या व्यक्तीच्यो पयशांच्यो कृती — चक्र करपाक टॅप करात: मान्यताय आसपी → बॉस PIN जाय → परवानगी ना. बिल परत छापप फकत बिलांक; विभाग सकयलची तपासणी वळेरी.
+dish_picker_help	आमच्यो वस्तू सोदात वा चाळात आनी नांव आनी फोटो भरपाक एकाचेर टॅप करात — वा तुमचें नांव दवरात. तुमची किंमत दवरात (0 चालता), मागीर वस्त जोडात.
+close_dish_list	वस्तू वळेरी बंद करात
+own_item_name	हें तुमचें स्वताचें आयटम नांव म्हणून वापरात
+on_your_menu	वखदांच्या वळेरेंत
+edit	संपादन करात[बदल]
+schemes	येवजण्यो / ऑफर
+schemes_help	एक घेयात एक मेळो, टक्के सूट, आनी थारायिल्ले गठ्ठे. देखीक: 2 पॅरासिटामॉल घेयात 1 व्हिटामिन मेळो.
+scheme_bogo_ph	2 पॅरासिटामॉल घेयात 1 व्हिटामिन मेळो
+add_scheme	बोगो जोडा
+schedule_ph	वरां — सोम-शुक्र 07:00-11:00 वा संध्याकाळ 17:00-19:00=150
+upi_vpa_ph	UPI ID (VPA)
+upi_payee_ph	यू.पी.आय फारीकणीचें नांव (पर्यायी)
+upi_qr	UPI QR
+show_upi_qr	यू.पी.आय क्यू.आर. दाखय
+close_upi_qr	बंद करात
+upi_qr_help	गिरायक स्कॅन करून फेडता. तांणी फेडले उपरांत फेड घेयात टॅप करात. दुसरो पडदो: LAN चेरे सर्वर URL /display उगडात.
+kot_recall	याद करात
+recently_done	हालींच केल्लें
+recall_kot_ph	याद करपाक तिकीट #
+role_help_customer	भुमिका: गिरायक — खातें (ते आमकां रिणदार आसात). तोच पक्ष स्टॉक पुरवण लेगीत करूंक शकता.
+role_help_both	भुमिका: गिरायक + पुरवणदार - एक पक्ष, खाता आनी देय लेजर, अहवालांत जाळ.
+role_help_supplier	भुमिका: पुरवणदार - खरेदी खातीर आमी तांकां रिणदार करतात.
+dine_in_pick_table	काउंटर दुकानांत वापर ना
+choose_table	काउंटर वेंचात
+change_table	टेबल बदलचें
+pick_table_banner	ह्या ऑर्डरा खातीर एक टेबल निवडात
+items_word	वस्तू
+items_section	वस्तू
+back_to_order	परत ऑर्डराचेर
+new_items_head	अजून धाडूंक ना
+price_ph	किंमत
+price_ph_gst_inside	किंमत ({tax} समावेशक)
+cancel_needs_table	फेड घेमेरेन काउंटर विक्री तिकीटाचेर उरता
+tax_rates_missing_hint	ह्या वस्तूंचेर {tax} दर ना — वस्तूंनी कर दर दवरात (किंमतींत आदींच {tax} आसा, {tax} समावेशक खाला)
+taxable_value	करपात्र मोल
+gst_inside_price_note	({tax} समावेशक)
+start_with_template	आमच्या वस्तूंच्या नमुन्यान सुरू करात
+template_heading	सुरवातीच्यो वस्तू
+template_info	{c} श्रेणी आनी {d} फोटो आशिल्ले वस्तू, जोडपाक तयार. किंमती ₹0 सावन सुरू — मागीर तुमच्यो दवरात.
+template_import	पुराय साचो आयात कर
+template_confirm	तांच्या श्रेणींसह {d} वस्तू जोडच्यो? आदींच आशिल्ले वस्तू तशेच उरतात.
+template_yes	हय, आयात
+template_importing	वखदां आयात जातात…
+template_import_progress	आयात करता... {d}/{t}
+template_done	आमच्या नमुन्यांतली दरेक वस्त तुमच्या वस्तूंनी आसा.
+template_imported	{d} वस्तू आनी {c} श्रेणी जोडल्यो — ह्या पडद्याचेर तांच्यो किंमती दवरात
+client_template_heading	यादी आयात करात
+client_template_info	{title}: {c} श्रेणी, {d} किंमत, फोटो आनी उर्फ आशिल्ले वस्तू. फकत नाशिल्ले वस्तू — आदींच आशिल्लीं नांवां उरतात.
+client_template_import	हीं वखदां आयात करात
+client_template_confirm	{title} तलीं {d} वस्तू जोडचीं? आदींच आशिल्ले वस्तू तशेच उरतात.
+client_template_importing	आयात {title}...
+client_template_done	{title} तली दरेक वस्त तुमच्या वस्तूंनी आसा.
+client_template_imported	{title} तलीं {d} वस्तू आनी {c} श्रेणी जोडलीं
+resv_heading	आरक्षण[बदल]
+resv_name_ph	गिरायकाचें नांव
+resv_phone_ph	फोन (पर्यायी)
+resv_guests_ph	जाण
+resv_when_ph	केन्ना — 20:30, फाल्यां 13:00
+resv_table_ph	काउंटर (पर्यायी)
+resv_add	पुस्तक
+resv_seat	बशिल्लो
+resv_none	कसलेंच बुकिंग येवंक ना.
+guests_word	सोयऱ्यांनी
+delivery_by_ph	डिलिव्हरी (रायडर वा कर्मचार् याचें नांव)
+kitchen_all_day	आतां रांदपाक: {items}
+split_bill	बिलाची वांटणी करची
+split_go	एक वेगळें बिल तयार करात
+cancel	रद्द
+opening_client	उगडपी गिरायक...
+preparing_desk	डेस्क तयार करप...
+opening_server	सर्व्हर उगडटा...
+creating_server	सर्वर तयार करप...
+split_help	एक गिरायक ज्यो वस्तू फेडटा तांचेर टॅप करात · {n} वेंचल्यो
+split_send_first	पयलीं स्लिप धाडात — फकत मागील कार्यालयाकडल्यो वस्तू वेगळ्या बिलाक वचूंक शकतात
+split_pick_some	पयलीं वेगळ्या बिलाच्या वस्तूंचेर टॅप करात
+split_done	वेगळें बिल जालें — तें ह्या काउंटराच्या कुशीक मजलेचेर आसा
+split_marked	वेगळें बिल
+order_empty_pick	ऑर्डर रितो — वस्तू वेंचपाक वयले वस्तू जोडात टॅप करात.
+add_dishes	वखदां जोडात
+order_so_far	ह्या ऑर्डराचेर: {n} · {total}
+no_dish_match	“{q}” कडेन खंयचीच वस्त मेळना
+pick_dishes_help	जोडपाक वस्तूचेर टॅप करात · वळेरी अशी करपाक श्रेणी वेंचात
+pick_done	जालें
+pick_done_dd	जालें · {label}
+printer_route_mode	ह्या जाग्यार जर साबार प्रिंटर आसल्यार
+printer_mode_first	पयलें, तें काम करता
+printer_mode_all	सगळ्यांचेर छापप
+kot_show_area	वाठार
+kot_hide_area	सुवात लिपोवप
+kot_show_item_hdr	आयटम · प्रमाण
+kot_hide_item_hdr	स्तंभ लिपोय
+kot_show_title	शिर्षक ओळ
+kot_hide_title	शिर्षक लिपोवप
+kot_field_order	छापपाची क्रम[बदल]
+kot_field_up	वयर सरचें
+kot_field_down	सकयल वचात
+kot_field_cycle	फुडलें निवडात
+kot_field_select	फुडलें निवडात
+kot_field_time	वेळ
+kot_field_kot_no	तिकीट नं
+kot_field_area	वाठार
+kot_field_table	गल्लो
+kot_field_shop	दुकानाचें नांव
+kot_field_waiter	कर्मचारीवर्ग
+kot_field_station	स्टेशन
+app_template_blurb_extra	आनी: धनी जहीर, एडमिन आसिफ, कॅशियर नवाज; मुखार सायडबार; 4 वरांनी इतिहास; आयज पट्टी बंद; दाट बिल.
+dishes_n	{n} वस्तू
+recipe_ph	रेसिपी (पर्यायी — काउंटर दुकानांत वापर ना)
+reorder_ph	हांगा चड खरेदी करात
+set_reorder	रिऑर्डर लेव्हल सेट करात
+low_stock_alert	उणो जायत आसा — बेगीन विकत घेयात: {items}
+unpriced_note	तुमच्या वस्तूंनी {n} वस्तूंक अजून किंमत ना — तुमी दवरमेरेन त्यो 0 खातीर बिल जातात.
+show_unpriced	फकत किंमत नाशिल्ले वस्तू दाखोवच्यो
+show_all_dishes	सगळ्यो वस्तू दाखोवच्यो
+role_waiter	कॅशियर
+role_kitchen	गोदाम
+role_title_rest_ph	भुमिकेचें नांव (देखीक कॅप्टन, हेड कूक)
+preset_help_rest	कॅशियर: विकप. वेवस्थापक: विकप + वस्तू + शून्य/दुरुस्ती करप.
+kind_raw	कंपाउंडिंग स्टॉक
+kind_resale	विकत घेतिल्लें वखद
+kind_dish	स्टॉक मोजचो न्हय
+buy_unit_ph	एकक (किलो, लिटर, पीसी)
+add_another_way	+ आनीक एक मार्ग जोडचो
+parts_status	{b} च्या {a} · {c} लेफ्ट
+save_expense	खर्च वाचोवप
+rest_ph	विसव घेवप
+low_badge	उणो
+stock_empty	अजून स्टॉकांत कांयच ना — तुमी बाय चेर जें रेकॉर्ड करतात तें हांगा दिसता.
+recent_changes	हालींचे बदल
+lane_declared_label	कर पावणी
+lane_owner_label	रोख मेमो
+money_lane_bill	बिल: {lane}

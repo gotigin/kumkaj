@@ -1,0 +1,35 @@
+---
+description: Every new UI string must ship in all catalogue language packs
+globs: apps/*/src/locale.rs,apps/*/translations/**
+---
+
+# UI translations (all four apps)
+
+Canonical: `docs/DEV.md` § Languages. Vision §23.
+
+## Rule
+
+- English source = `en()` in that app’s `src/locale.rs` only.
+- Every other catalogue language = `translations/<code>.tsv` (one `key<TAB>text` per `en` key, `{placeholders}` kept).
+- **Never** add a user-visible label only in English. After editing `en()`, update **all** packs for that app.
+- No shared i18n crate — duplicate the workflow per app (copy-then-diverge).
+
+## When you add or change a string
+
+```bash
+# after editing apps/<app>/src/locale.rs en()
+./scripts/scaffold-ui-translations.sh --app <app> --standin-english
+# replace English stand-ins in apps/<app>/translations/*.tsv (agent / manual)
+./scripts/check-ui-translations.sh --app <app>
+```
+
+Or edit the new TSV rows by hand, then run the check. Prefer bash (or a
+Rust tool) — **no Python** for this workflow (see `no-python-scripts.mdc`).
+`cargo test -p <crate> --lib every_catalogue_language_translates_every_key`
+must stay green.
+
+## Do not
+
+- Reintroduce `locale_chrome.rs` or a “29 language” subset that leaves catalogue entries in English.
+- Ship with `KUMKAJ_ALLOW_TRANSLATION_GAPS=1` (fill-pipeline only).
+- Copy TSV packs between apps — each app’s `en()` key set differs.

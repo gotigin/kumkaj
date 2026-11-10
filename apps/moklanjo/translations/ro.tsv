@@ -1,0 +1,835 @@
+# Romanian — Română (ro). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	Registre de agenție de curierat + tejghea de expediere. Gratuit offline.
+unlock	Deblochează
+pin_hint	PIN-ul proprietarului începe cu 0000
+sell	Expediere
+buy	Plată
+books	Jurnalul zilei
+books_help	Poziția de azi. Expediere = colete intrate. Plată = facturi de transportator și cheltuieli. Parteneri = expeditori și transportatori.
+buy_help	Documente de cheltuieli și facturi de transportator (bani ieșiți). Pe cont rămâne în registrul partenerului.
+sell_money_in	Înregistrează un colet
+buy_money_out	Cheltuială / factură transportator
+record_purchase	Înregistrează achiziția
+add_expense	Bon de cheltuieli
+bank_book	Registru bancar
+credit_help	Id-ul partenerului este unic (numele se pot repeta). Roluri: Expeditor (AR), Transportator (AP) sau ambele pe acel id. Registrele rămân separate; rapoartele arată netul.
+party_kind_ph	Rol personalizat (opțional) — sau atinge o pastilă de mai sus
+parties_list_heading	Parteneri salvați
+reports_help	Jurnalul zilei, debitori și creditori, registru bancar, bonuri de cheltuieli, profit și pierdere.
+reports_today	Jurnalul zilei (azi)
+reports_month	Profit și pierdere (lună)
+reports_aging	Restant / Debit-Credit
+reports_balance_sheet	Bilanț
+reports	Registru bancar și P&P
+refresh	Reîmprospătează
+undo	Anulează
+start_tracking	Începe urmărirea
+stock_minus	− Stoc
+stock_plus	+ Stoc
+settle_cash	Închide cu numerar
+settle_card	Închide cu cardul
+items	Tarife și servicii
+nav_items	Tarife
+more	Mai mult
+your_items	Tarifele tale
+items_help	Fiecare rând e un tarif (de ex. Surface Zone A). Unitatea e de obicei kg. Atinge ca să editezi.
+add_item	Adaugă tarif
+new_item	Tarif nou
+adding_item	Adăugarea unui tarif nou
+editing_item	Editare
+save	Salvează
+remove	Elimină
+empty_catalog	Niciun tarif încă. Deschide Tarife și servicii, adaugă unul (nume + preț, unitate kg), apoi Expediere.
+counter_sale	Expediere la tejghea
+total	Total
+cash	Numerar
+upi	UPI
+card	Card
+credit	Parteneri
+clear	Golește
+ready_to_sell	Gata de înregistrat
+today_prefix	Azi
+today_mid	azi
+owed	restant
+round_word	rotunjire
+back	Înapoi
+sold_out	Indisponibil
+restock	Reaprovizionează
+not_tracked	Neurmat
+in_stock	în stoc
+marked_sold_out	Marcat indisponibil
+add_upper	ADAUGĂ
+na	N/A
+qty	Greut./Cant.
+unit_at	Tarif @
+actual	Efectiv
+applied	Aplicat
+note_ph	Notă (opțional)
+rounded	ROTUNJIT
+split	Împarte
+counter	Tejghea
+parcel	Colet
+order	Comandă
+sales	Expedieri
+sales_refunds	Expedieri și rambursări
+day_close	Închidere de zi
+reports_expenses	Registru bancar și P&P
+nav_reports	Rapoarte
+nav_settings	Setări
+nav_lock	Blochează
+sidebar_settings	Setări bară laterală
+sidebar_settings_help	Aceleași pictograme ca șina laterală. Trage un rând ca să reordonezi. Comută ca să arăți sau să ascunzi. Setări și Blocare rămân mereu pe bară.
+sidebar_always_on_short	Mereu pornit
+sidebar_back_settings	Înapoi
+sidebar_shown	Afișat
+sidebar_hidden	Ascuns
+sidebar_always_on	Mereu pe bară
+sidebar_shown_hint	Afișat pe șina laterală / filele de jos
+sidebar_hidden_hint	Ascuns de pe bară
+sidebar_menu_items	Meniu și articole
+sidebar_enable_all	Activează tot
+sidebar_disable_all	Dezactivează tot
+sidebar_order_saved	Ordinea barei laterale salvată
+sidebar_visibility_saved	Vizibilitatea barei laterale salvată
+amounts_hide	Ascunde
+amounts_show	Arată
+no_sale_yet	Încă nicio vânzare
+favorites	Favorite
+favorites_help	Articole pe care le vinzi des, salvate pentru autentificarea ta. Adaugă unul la notă sau fă lista din toate articolele de mai jos.
+your_favorites	Favoritele tale
+all_items	Toate articolele
+no_favorites	Încă nu sunt favorite — adaugă articole din lista de mai jos.
+add_to_bill	Adaugă la notă
+added	Adăugat
+owes_word	datorează
+selected_word	Selectat
+chip_clear_credit	golește — Credit sau ia un avans
+chip_missing_customer	Clientul selectat lipsește — alege din nou
+chip_no_customer	Încă niciun client — tastează un nume, apoi atinge Credit
+credit_summary_fmt	{} clienți · credit deschis {} · avansuri reținute {}
+recent_label	Recente:
+inventory	Inventar
+inventory_stock	Inventar și stoc
+branches	Filiale
+branches_org	Filiale și organizație
+credit_customers	Parteneri (debitori și creditori)
+customer_name_ph	Nume partener
+new_customer_ph	Nume nou de partener
+item_name_ph	Nume tarif (de ex. Surface Zone A)
+item_price_ph	Pe kg / prima tranșă
+start_template	Produs
+next_booking	Expedierea următoare
+destination_ph	Oraș / zonă de destinație
+consignee_ph	Nume destinatar
+consignee_phone_ph	Telefon destinatar
+consignee_address_ph	Adresă de livrare
+origin_name_ph	Nume expeditor
+origin_phone_ph	Telefon expeditor
+origin_address_ph	Adresă de preluare / origine
+booking_consignor_heading	Expeditor (client / trimițător)
+booking_consignee_heading	Destinatar
+booking_consignor_hint	Alege un partener de completat sau lasă gol pentru client la tejghea. Necesar pentru preluare de acasă și RTO.
+booking_consignee_hint	Destinatarul coletului. Lasă gol pentru predări la tejghea.
+weight_kg_ph	Kg reali
+length_cm_ph	L cm
+breadth_cm_ph	B cm
+height_cm_ph	H cm
+chargeable_kg	Kg de taxat
+awb_label	AWB
+booking_help	Expeditor + destinatar (gol e în regulă) → destinație → cântărește → alege tariful → Cont/Numerar → plătește. AWB se tipărește pe chitanță. Expedierea următoare golește tejgheaua. Rotunjit pornește egal cu Aplicat — editează doar ca să rotunjești nota.
+cart_empty_hint	Tejghea goală — expeditorul/destinatarul sunt opționali, pune destinația și greutatea, atinge ADAUGĂ pe un tarif, apoi plătește.
+team	Echipă
+team_pins	Echipă și PIN
+my_pin_settings	PIN-ul meu
+settings_hub_help_my_pin	Schimbă PIN-ul de deblocare al persoanei conectate pe acest dispozitiv.
+team_self_help	Doar tu îți poți schimba PIN-ul de deblocare (și parola opțională de autentificare). Întreabă proprietarul dacă ai nevoie de alte ecrane sau drepturi.
+backup_settings	Copie de rezervă și setări
+lock_app	Blochează aplicația
+pick	Alege
+select	Selectează
+advance	Avans
+owner	Proprietar
+staff	Personal
+photo	Poză
+auto	Automat
+prev	Înapoi
+next	Înainte
+ok	OK
+this_shop	Server
+extra_till	Client
+off	Oprit
+server	Server
+client	Client
+language_currency	Limbă și monedă
+language	Limbă
+choose_language	Alege limba
+language_setup_hint	Urmează limba acestui dispozitiv sau alege tu una.
+lang_follow_platform	Limba dispozitivului
+lang_pick_user	Alege limba
+lang_platform_now	Limba dispozitivului acum
+selected_language	Selectat
+continue	Continuă
+this_device	ACEST DISPOZITIV
+device_use_q	Cum va fi folosit acest dispozitiv?
+last_server_mode	Era Server — atinge ca să continui
+last_client_mode	Era Client — atinge ca să continui
+choose_server	Alege un server
+choose_server_hint	Deschide un server existent sau creează unul pentru altă afacere.
+create_new_server	Creează server nou
+open_server	Deschide
+new_server_name_ph	Nume server nou (opțional)
+server_remove_pin_ph	PIN proprietar pentru a elimina un server
+only_owner_remove_server	Doar Proprietarul poate elimina un server
+owner_pin_remove_server	PIN-ul proprietarului e necesar ca să elimini acest server
+device_setup_help	Serverul ține registrele aici. Clientul se împerechează cu un Server.
+currency	Monedă
+backup	Copie de rezervă
+settings_sec_diag	Diagnostic
+settings_hub_help	Deschide câte o zonă — mai puțină derulare, alegeri mai clare.
+settings_sec_devices	Alte dispozitive
+settings_sec_alerts	Alerte
+alerts_help	Cât rămân mesajele de stare pe ecran pentru tine (această autentificare).
+snack_secs_ph	Secunde (3–60, implicit 10)
+snack_secs_save	Salvează timpul alertei
+snack_secs_saved	Timpul alertei salvat — {n} secunde
+snack_secs_bad	Introdu secundele ca număr (3–60)
+cancelled	Anulat
+cancel	Anulează
+opening_client	Se deschide clientul…
+preparing_desk	Se pregătește tejgheaua…
+opening_server	Se deschide serverul…
+creating_server	Se creează serverul…
+diag_privacy_help	Jurnalele rămân pe acest dispozitiv. Secretele (PIN, parole) nu sunt niciodată stocate. Partajarea unui pachet în afara dispozitivului cere de fiecare dată aprobarea ta explicită — nu se vinde și nu se dă terților.
+diag_level	Nivel de detaliu
+diag_level_error	Erori
+diag_level_warn	Avertismente
+diag_level_info	Informații
+diag_level_debug	Depanare
+diag_support_start	Începe o sesiune de asistență de 30 min
+diag_support_stop	Încheie sesiunea de asistență
+diag_support_started	Sesiune de asistență pornită — detaliu Depanare timp de 30 de minute
+diag_support_ended	Sesiunea de asistență s-a încheiat
+diag_export_local	Exportă copia locală
+diag_export_local_done	Diagnosticul local e gata la {path} — alege unde salvezi o copie
+diag_approve_send	Aprobă partajarea în afara dispozitivului
+diag_send_heading	Partajează în afara dispozitivului
+diag_send_help	Aprobarea e pentru un pachet, apoi expiră. Temporar — doar ca să repari sau să îmbunătățești produsul. Nu se partajează cu terți. Merge pe Linux, Windows, macOS și Android.
+optional_login_heading	Autentificare opțională
+rights_heading	Drepturi
+booking_scope_heading	Intern / internațional
+diag_send_approved	Partajare aprobată pentru un pachet (expiră curând)
+diag_export_send	Creează pachet de partajare (necesită aprobare)
+diag_export_send_done	Pachetul de partajare e gata la {path} — alege unde îl salvezi, apoi trimite-l doar la suportul Kumkaj
+diag_save_bundle	Salvează copia de diagnostic
+diag_bundle_saved	Copia de diagnostic salvată în {path}
+diag_bundle_failed	Copia de diagnostic nu s-a putut salva acolo — încearcă din nou
+diag_clear	Golește jurnalele de diagnostic
+diag_cleared	Jurnalele de diagnostic au fost golite
+use	Folosește
+add_branch	Adaugă filială
+add_conversion	Adaugă conversie
+add_item_plain	Adaugă articol
+add_note	Adaugă notă
+add_opening_balance	Adaugă sold de deschidere
+add_rider	Adaugă curier
+add_staff	Adaugă personal
+add_unit	Adaugă unitate
+add_use_name	Adaugă / folosește acest nume
+allow_extra_tills	Permite case suplimentare
+amend	Modifică
+apply_country_pack	Aplică pachetul de țară
+datetime_appearance	Aspect dată și oră
+datetime_appearance_help	Registrele păstrează înăuntru RFC3339 cu anul întâi. Astea schimbă doar cum arată datele și ceasurile pe chitanțe, etichete, rapoarte și ecran.
+datetime_example	Exemplu acum: {ex}
+date_order	Ordinea datei
+date_order_dmy	D/M/Y
+date_order_mdy	M/D/Y
+date_order_ymd	Y-M-D
+time_format	Ceas
+time_format_24h	24 de ore
+time_format_12h	12 ore
+attach_bill_photo	Atașează poza notei
+attach_pdf	Atașează PDF
+attach_photo	Atașează poză
+bank	Bancă
+bank_in	Intrare bancă
+bank_out	Ieșire bancă
+bank_to_till	Bancă → casă
+till_to_bank	Casă → bancă
+mark_cleared	Marchează decontat
+unmark	Demarchează
+role_both	Ambele
+role_carrier	Transportator
+role_cashier	Casier
+role_consignor	Expeditor
+role_manager	Manager
+role_supplier	Furnizor
+branch_name_sell_ph	Numele filialei din care vinzi
+bring_my_book	Adu registrul meu
+business_tax_id_ph	Id fiscal al afacerii
+card_amount_ph	Sumă card
+cash_amount_ph	Sumă numerar
+upi_amount_ph	Sumă UPI
+carrier_cost_ph	Cost transportator
+carrier_party_ph	Partener transportator
+choose_icon	Alege pictograma
+choose_logo	Alege sigla
+choose_receipt_stamp	Alege ștampila chitanței
+choose_payment_qr	Alege QR de plată
+clear_icon	Golește pictograma
+clear_logo	Șterge logo
+clear_photo	Golește poza
+clear_stamp	Golește ștampila
+clear_payment_qr	Golește QR de plată
+print_faces	Fețe de tipărire (chitanță / factură de perioadă)
+print_faces_help	Ștampilă și QR de plată opționale lângă logo, pe chitanțele de expediere și pe facturile de perioadă.
+awb_pools_heading	Grupuri de numere AWB ale transportatorului
+add_awb_pool	Adaugă grup AWB
+awb_pool_carrier_ph	Nume partener transportator
+awb_pool_start_ph	Nr. de start
+awb_pool_end_ph	Nr. final
+awb_pool_prefix_ph	Prefix (opțional)
+awb_pool_label_ph	Etichetă (opțional)
+pieces_ph	Bucăți (gol = 1) — extinde pentru marfă / mai multe bucăți
+bulk_awbs_ph	AWB-uri bulk — lipește multe (linie nouă sau virgulă) pentru un singur avans de stare
+tds_cut_ph	Reținere TDS (opțional)
+discount_ph	Reducere (opțional)
+cheque_no_ph	Număr cec (opțional)
+bill_reminder_chase	Listă de urmărire a restanțelor
+month_mix_report	Raport amestec lunar
+copy_month_gst_csv	Copiază CSV-ul GST al lunii
+domestic	Intern
+international	Internațional
+pick_logo	Alege logo
+booking_scope_hint_domestic	Volumetric ÷5000 (intern) — atinge Internațional pentru ÷6000 aerian
+booking_scope_hint_intl	Volumetric ÷6000 (aerian internațional) — atinge Intern pentru ÷5000 al magazinului
+cod_register	Registru COD
+collect_cod	Încasează COD (AWB)
+consignments_dispatch	Expedieri și dispecerat
+consignor_party_ph	Expeditor / nume partener
+copy_day_book_csv	Copiază jurnalul zilei CSV
+copy_day_close	Copiază închiderea de zi
+copy_items_csv	Copiază articolele CSV
+copy_outstanding_csv	Copiază restanțele CSV
+copy_parties_csv	Copiază partenerii CSV
+copy_party_ledger_csv	Copiază registrul partenerului CSV
+copy_receipt	Copiază chitanța
+copy_report	Copiază raportul
+counted_cash_ph	Numerar numărat în sertar
+counter_agency_ph	Nume tejghea / agenție (opțional)
+create_backup	Creează copie de rezervă
+day_close_summary	Rezumatul închiderii de zi
+delete_party	Șterge partenerul selectat
+dispatch_to_rider	Expediază înregistratele → curier
+docket_charge_ph	Taxă scrisoare de transport
+declared_value_ph	Valoare declarată
+contents_ph	Conținut
+eway_ph	Nr. e-way bill
+insurance_label	Asigurare
+yes_label	Da
+no_label	Nu
+print_route_label	Tipărește ruta
+new_party_kind_label	Tip nou de partener
+done_open_books	Gata — deschide registrele
+export_day	Exportă ziua
+extra_note_expense_ph	Notă suplimentară pe ultima cheltuială
+extra_note_awb_ph	Notă suplimentară pe acest AWB / vânzare
+failed_delivery	Livrare eșuată
+find_scan_awb	Găsește / scanează AWB
+forget_shop	Uită acest local
+fuel_ph	Combustibil
+handover_carrier	Predă înregistratele → transportator
+import_day	Importă ziua
+import_items_csv	Importă CSV articole / tarife…
+import_parties_csv	Importă parteneri CSV…
+import_pincodes_csv	Importă CSV de coduri poștale…
+import_carrier_bill_csv	Importă CSV factură transportator…
+copy_carrier_bill_report	Copiază ultimul raport de factură transportator
+use_carrier_cost	Folosește costul transportatorului
+rate_carrier_ph	Transportator (gol = tariful nostru de vânzare)
+rate_party_ph	Partener (gol = toți clienții)
+carrier_pick_ph	Transportator pentru cost (din comparare)
+item_name	Nume articol
+load_bulk_row	Încarcă rândul bulk → tejghea
+login_id_ph	Nume de utilizator
+mark_delivered	Marchează livrat
+manifest_cod_total	Total COD
+manifest_received_by	Primit de
+manifest_sign	Semnează
+ndr_address_wrong	Adresă greșită
+ndr_customer_unavailable	Indisponibil
+ndr_door_locked	Ușă încuiată
+ndr_other	Altele
+ndr_refused	Refuzat
+out_for_delivery	În curs de livrare
+print_drs	Tipărește DRS
+print_run_sheet	Tipărește foaia de cursă
+reattempt	Reîncearcă
+rider_cod_handed_ph	COD predat
+settle_rider_cod	Decontează COD-ul curierului
+mode_desk	Birou
+mode_rider	Curier
+waiting_office	așteaptă să ajungă la birou
+capture_signature	Captează semnătura
+incoming_manifest	Manifest de intrare
+pickup_request	Cerere de preluare
+pickup_run	Cursă de preluare
+auto_assign_area	Alocă zona automat
+reorder_stops	Reordonează opririle
+settle_rider_pay	Decontează plata curierului
+vehicle_inspect	Inspectare vehicul
+print_docket	Tipărește scrisoarea de transport
+franchise_statement	Situație franciză
+tally_export	Export document Tally
+open_whatsapp	Deschide WhatsApp
+copy_sms	Copiază textul SMS
+pick_barcode_image	Alege imaginea de scanat
+share_receipt_whatsapp	Trimite chitanța pe WhatsApp
+delivery_feedback	Feedback livrare
+lan_self_book	Auto-expediere LAN
+new_party_clear	Partener nou (golește formularul)
+new_party_kind_ph	Tip nou de partener (Furnizor / Transportator)
+next_country	Țara următoare
+prev_country	Țara anterioară
+note_gstin_ph	Notă / GSTIN / memento de acord
+note_pod_ph	Notă / POD (opțional)
+on_account_ap	Pe cont (AP)
+org_optional_ph	Organizație (opțional)
+paid_now	Plătit acum
+pairing_code_ph	Cod de împerechere
+pair_now	Împerechează acum
+party_name_selected_ph	Nume partener (sau folosește cel selectat)
+password_ph	Parolă
+pay_ap_card	Plătește AP cu cardul
+pay_ap_cash	Plătește AP numerar
+pay_ap_upi	Plătește AP cu UPI
+period_bill	Factură de perioadă
+period_bill_party	Factură de perioadă (partener)
+pick_pod_photo	Alege foto POD
+print_awb_label	Tipărește eticheta AWB
+print_open	Tipărește / deschide
+reason_amend_ph	Motiv pentru modificare / anulare / rambursare
+reason_note_ph	Motiv / notă (pierdere, numărare, …)
+record_day_close	Înregistrează închiderea de zi
+refresh_from_shop	Reîmprospătează din local
+refund	Rambursare
+remit_cod	Remite COD (partener)
+remove_selected	Elimină selecția
+restore_backup	Restaurează copia de rezervă
+rider_name_ph	Nume curier
+rider_phone_ph	Telefon curier
+riders	Curieri
+riders_own_fleet	Curieri (flotă proprie)
+rollup	Centralizare
+save_booking_measures	Salvează măsurile de expediere
+save_brand	Salvează marca
+save_business_id	Salvează id-ul afacerii
+save_business_name	Salvează numele afacerii
+save_features	Salvează configurarea postului
+save_names	Salvează numele
+server_ip_ph	IP server (ex. 192.168.1.10)
+set_credit_limit	Aplică limita partenerului
+set_login_selected	Aplică autentificarea celui selectat
+set_login_named	Aplică autentificarea lui {name}
+shop	Local
+start_fresh	Începe de la zero
+stop_extra_tills	Oprește casele suplimentare
+backup_auto	Copie de rezervă automată în fiecare zi · ultima {when} · ultimele 14 zile se păstrează în {dir}.
+backup_auto_none	Copie de rezervă automată în fiecare zi — prima pornește într-o clipă.
+backup_copy_to	Copiile merg și în {dir}.
+backup_copy_btn	Copiază și copiile de rezervă într-un folder…
+autostart_off	Pornește cu acest calculator
+autostart_on	Pornește cu acest calculator ✓ — atinge ca să oprești
+autostart_done_on	Acest calculator deschide acum aplicația la pornire — serverul localului revine după o pană de curent.
+autostart_done_off	Acest calculator nu mai deschide aplicația la pornire.
+right_allowed	Permis
+right_with_approval	Cu aprobare
+right_denied	Nepermis
+editing_staff	Drepturi pentru
+team_pick_ph	Personal de editat — nume, nume de utilizator sau alege
+select_staff	Selectează acest angajat
+rights_help	Drepturi — atinge ca să schimbi: Permis → Cu aprobare (PIN-ul unui șef în acel moment) → Nepermis.
+right_void_refund	Anulează sau rambursează o expediere
+right_amend_sale	Modifică o expediere înregistrată
+find_server	Găsește serverul localului
+finding_server	Se caută serverul localului pe acest Wi‑Fi…
+no_server_found	Nimic găsit. Pe Server: Setări → Alte dispozitive → Permite case suplimentare (același Wi‑Fi). Sau tastează IP-ul afișat acolo.
+servers_found_pick	Atinge localul la care vrei să te conectezi.
+server_host_selected	Se folosește {host} — introdu codul de împerechere, apoi Împerechează acum.
+device_forgotten	Localul a uitat acest dispozitiv — împerechează-l din nou cu codul curent. Comenzile care așteaptă pe el se păstrează.
+forget_device	Uită
+last_seen	văzut
+new_pair_code	Cod nou de împerechere
+lan_offline	Serverul localului e inaccesibil
+lan_offline_waiting	Serverul e inaccesibil · {n} așteaptă
+lan_connecting	Se conectează la local…
+pair_finishing	Se termină asocierea… se aplică registrele biroului
+pair_opening	Se deschide biroul…
+lan_live	În direct
+lan_sending	{n} se trimit
+lan_sign_in_to_send	Autentifică-te din nou ca să trimiți {n}
+lan_pair_again	Împerechează acest dispozitiv din nou
+lan_update_app	Actualizează aplicația — acest dispozitiv și serverul biroului au versiuni diferite
+allow_firewall	Permite altor dispozitive să se conecteze
+firewall_blocked	Paravanul acestui calculator blochează alte dispozitive — atinge Permite altor dispozitive să se conecteze.
+firewall_waiting	Se așteaptă solicitarea administratorului…
+lan_join_help	Pe celălalt dispozitiv: Modul Client → Găsește serverul localului (sau tastează {addr}) → cod de împerechere {code}.
+lan_pair_status	Wi‑Fi {addr}
+lan_join_help_no_addr	Conectează acest dispozitiv la Wi‑Fi ca să aibă o adresă.
+lan_no_address	Încă nu e adresă Wi‑Fi — conectează-te la Wi‑Fi-ul localului.
+lan_not_listening	Nu acceptă dispozitive (portul {port} e ocupat). Repornește aplicația.
+lan_tills_off	Casele suplimentare sunt oprite. Permite-le ca să se alăture alt dispozitiv.
+paired_with	Împerecheat · {url}
+not_paired	Neîmperecheat
+choose_device_use	Alege Server sau Client.
+paired_note	Împerecheat. Deblochează ca să vinzi, sau Reîmprospătează pentru ultimele.
+last_update_at	Ultima actualizare: {time}.
+pair_intro	Găsește serverul sau tastează adresa și codul de împerechere.
+queue_waiting	Așteaptă să ajungă la local ({n}):
+queue_tries	Încercat de {n} ori · ultimul răspuns: {e}
+save_backup_copy	Salvează o copie de rezervă…
+backup_copy_saved	Copie de rezervă salvată — ține-o în afara acestui dispozitiv (un stick USB sau alt dispozitiv)
+backup_copy_overdue	De {n} zile nicio copie de rezervă n-a părăsit acest dispozitiv — Setări → Copie de rezervă
+backup_copy_failed	Copia de rezervă nu s-a putut salva acolo — alege alt loc
+clock_off	Ceasul acestui dispozitiv e decalat cu {min} min față de serverul localului — setează ora corectă
+printers_heading	Imprimante pe acest dispozitiv
+printers_help	Găsește imprimante reale, apoi alege Chitanță sau Etichetă AWB. Fiecare job are lățimea lui, portret sau peisaj, și felul în care se trimit octeții. O etichetă tipărește codul de bare. Loc gol = nu tipări.
+job_width	Lățime conținut (mm)
+job_width_ph	Sau scrie o lățime, 40–210 mm
+job_layout	Așezare
+job_delivery	Cum se trimite lucrarea
+job_size	Mărime font
+job_size_ph	ex. 18, 20, 26…
+save_receipt_format	Salvează formatul chitanței
+save_label_format	Salvează formatul etichetei
+test_receipt_format	Chitanță de test
+test_label_format	Etichetă de test
+test_receipt_sent	Chitanță mostră trimisă
+test_label_sent	Etichetă mostră trimisă
+test_print_no_printer	Nicio imprimantă pentru acel job — adaugă una la acest loc
+printers_host_only	Imprimantele se setează pe dispozitivul magazinului (Server). Această casă trimite joburile acolo — Găsește / adaugă / alocă rămân pe server. Pagina de test merge la server.
+printers_pool_heading	Imprimante
+printers_routes_heading	Unde se tipărește
+printer_label_ph	Nume (de ex. Birou)
+printer_target_ph	host:9100 · bt:MAC · usb:VID:PID · nume de sistem
+printer_mode_heading	Profil pentru ieșiri noi
+printer_mode_standard	Portret standard
+printer_mode_landscape	Peisaj standard
+printer_mode_thermal	Termic
+printer_mode_standard_short	Portret
+printer_mode_landscape_short	Peisaj
+printer_mode_thermal_short	Termic
+printer_format_custom	Profil personalizat nou
+printer_format_custom_label	Personalizat
+printer_format_custom_added	Profil personalizat adăugat pentru acest loc
+add_printer	Adaugă imprimantă
+remove_printer	Elimină ultimul
+route_pick_ph	chitanță sau etichetă
+route_add_printer_ph	Adaugă imprimantă la acest loc
+route_receipt	Chitanță
+route_label	Etichetă AWB
+route_dont_print	Nicio imprimantă alocată
+route_add	Adaugă la loc
+route_up	Sus
+route_down	Jos
+route_remove	Elimină ultimul
+route_clear	Șterge imprimantele pentru acest loc
+save_printers	Salvează imprimantele
+print_test_page	Tipărește o pagină de test
+printers_saved	Imprimante salvate pentru acest dispozitiv
+test_page_sent	Pagină de test trimisă — verifică imprimanta
+printers_found	Găsite pe acest dispozitiv: {list}
+find_printers	Găsește imprimante
+printers_looking	Se caută imprimante pe acest dispozitiv și pe Wi‑Fi…
+printers_tap_find	Atinge Găsește imprimante pentru cozile care acceptă joburi și imprimantele de chitanță din rețea de pe acest Wi‑Fi (nu cele scoase sau offline).
+printers_none_found	Nicio imprimantă găsită — scrie un nume de imprimantă de sistem sau o adresă de rețea (de ex. 192.168.1.50).
+receipt_printer_ph	Imprimantă pentru chitanțe
+queue_refused	Neacceptat de local ({n}) — verifică fiecare la casă:
+clear_not_accepted	Verificat — golește lista asta
+device_name_ph	Numele acestui dispozitiv
+lan_last_update	ultima actualizare {time}
+lan_not_accepted	{n} neacceptate
+connected_now	conectat acum
+backup_failed	Ultima copie de rezervă automată a eșuat: {e}
+backup_overdue	Nicio copie de rezervă de {n} zile — ține aplicația deschisă pe acest dispozitiv ca să poată face backup.
+disk_low	Doar {mb} MB liberi pe acest dispozitiv — copiile de rezervă vor eșua curând. Eliberează spațiu.
+last_seen_devices	Văzut ultima dată: {time}
+sync_interval	Sincronizare la fiecare {secs} s
+connection_to_shop	Conexiune la local
+supplier_name_ph	Nume furnizor (sau partener)
+supplier_ph	Furnizor
+switch_device	Schimbă acest dispozitiv
+take_payment	Încasează plata
+tax_added_till	{tax} exclusiv
+tax_inside_price	{tax} inclus
+today_books	Cărțile de azi
+unlock_after_pairing	Introdu PIN
+unlock_with_login	Deblochează cu autentificare
+update_my_password	Actualizează parola mea
+update_my_pin	Actualizează PIN-ul meu
+duress_heading	PIN de deblocare de urgență (doar Proprietar)
+duress_help	Opțional. Dacă acest PIN este tastat la deblocare în locul tău, toate înregistrările din registre sunt șterse (expedieri, registre, istoric) și tejgheaua se deschide ca proprietar și arată normal — tarifele, partenerii, zonele, personalul și setările rămân. Schema și configurația nu se șterg. Folosește-l doar dacă ești forțat să deblochezi. Lasă gol și salvează ca să-l oprești. Niciodată același cu PIN-ul cuiva.
+duress_pin_ph	PIN de urgență (4–12 cifre)
+duress_confirm_ph	Tastează din nou pentru confirmare
+save_duress_pin	Salvează PIN-ul de urgență
+clear_duress_pin	Oprește PIN-ul de urgență
+duress_on	PIN-ul de deblocare de urgență e pornit
+duress_off	PIN-ul de deblocare de urgență e oprit
+duress_saved	PIN de deblocare de urgență salvat
+duress_cleared	PIN de deblocare de urgență oprit
+vehicle_ph	Vehicul
+void	Anulează
+write_off_ap	Trece AP la pierdere
+write_off_nil	Trecere la pierdere / sold zero
+zone_ph	Zonă (nume din Tarife)
+caption_today	AZI
+caption_bookings	EXPEDIERI
+caption_payments_today	PLĂȚI AZI
+caption_outstanding	RESTANT
+caption_bank	BANCĂ
+paid_by	Plătit de
+second_way	A doua cale
+weight_in	Greutate în
+size_in	Dimensiune în
+goods_received	Mărfuri primite
+expense_heading	Cheltuială
+notes_attach_sale	Note și atașamente (vânzare selectată)
+notes_attach_party	Note și atașamente (partener selectat)
+attachments_last_expense	Atașamente (ultima cheltuială)
+credit_limit_heading	Limită de credit (partener selectat / numit)
+pay_selected_heading	Plătește selecția (stinge datoria / ia avans)
+write_off_heading	Trecere la pierdere (stingere fără plată)
+pay_ap_heading	Plătește ce le datorăm (AP)
+country_tax	Țară și taxă
+extra_tills_heading	Case suplimentare
+other_devices_help_heading	Configurează alte dispozitive
+other_devices_help	Pe acest dispozitiv (Server): Alte dispozitive → Permite tejghele suplimentare. Notează codul de asociere și adresa Wi‑Fi. Atinge Permite altor dispozitive să se conecteze dacă apare. Pe un calculator, atinge Pornește cu acest calculator. Pe fiecare alt dispozitiv: instalează aplicația, alege Modul client, Găsește serverul magazinului (sau scrie adresa), introdu codul de asociere, Asociază acum. Comenzile așteaptă pe dispozitiv dacă pică Wi‑Fi și pleacă când serverul răspunde din nou.
+your_brand	Marca ta (în aplicație)
+units_heading	Unități
+booking_measures	Măsuri de expediere
+drawer_count	Numărătoare sertar (opțional)
+spreadsheet_csv	Foaie de calcul (CSV)
+bank_reconciliation	Reconciliere bancară (bifați față de extrasul bancar)
+book_add_product	Registru — adaugă produs / tarif
+book_opening_credit	Registru — credit de deschidere
+account_kind	Tip de cont (atinge unul)
+active_ledger	Registru activ
+actual_total_cap	TOTAL REAL
+amend_help	Alege o vânzare de modificat, anulat sau rambursat. Modificările păstrează istoricul complet. Totalul rotunjit începe egal cu Aplicat — editează doar pentru rotunjire. Anularea și rambursarea pot cere PIN de Proprietar sau Manager (tastat mai sus; înregistrat cu numele tău).
+applied_total_cap	TOTAL APLICAT
+bank_balance	Sold bancar
+bank_net_today	Net bancar azi
+branch_export_help	Exportul scrie un instantaneu al zilei în folderul de copii de rezervă și îl copiază în clipboard. Ca să imporți ziua altei unități, salvează fișierul ca import_branch_snapshot.json în folderul acela, apoi atinge Importă.
+brand_shown_help	Se arată pe ecranele din aplicație. Numele și pictograma aplicației instalate pe acest dispozitiv rămân ca în lista platformei.
+app_icon	Pictogramă aplicație
+logo_help	Marcajul localului, opțional, pe ecranele din aplicație.
+onboard_layout	Ce primești
+item_photo_help	Opțional. Fără poză arătăm inițialele din numele articolului.
+cash_in_hand	Numerar în casă
+change_my_pin_heading	Schimbă PIN-ul meu (doar al tău)
+connect_to_server	Conectează-te la Server
+counter_locked	Casă 01 · Blocată
+country_pack_help	Un pachet de țară setează numele și calculul taxei, canalul de plată instant și identificatorul de firmă tipărit pe note. Kumkaj nu depune taxe și nu emite facturi electronice guvernamentale nicăieri.
+currency_use_help	Derulează și atinge Folosește pentru orice monedă acceptată.
+day_close_help	Înregistrarea închiderii zilei salvează acest rezumat (și diferența sertarului, dacă a fost numărată) în jurnalul de audit. Nu oprește vânzarea.
+expenses_word	Cheltuieli
+feature_access_help	Acces la funcții pentru personalul ales (atinge după adăugare)
+footer_local	SQLite local · Gratuit pentru totdeauna · Fără cloud
+fresh_book_moklanjo	Nou = catalog gol (adaugi articole mai târziu). Registru = scrie stocul inițial și cine îți datorează, mai jos.
+fresh_selected	Fresh selectat — catalogul rămâne gol. Atinge Gata când ești pregătit.
+gross_word	Brut
+how_start	Cum vrei să începi?
+later_country_pack	Mai târziu: Setări → aplică pachetul de țară pentru etichetele de taxă și plată.
+local_badge	LOCAL
+measures_help_moklanjo	Cum se măsoară coletele la tejgheaua de expediere. Scrie dimensiunile și greutatea în unitățile pe care le folosești — standard (cm, m, in, ft · kg, g, lb, oz) sau unitatea ta legată de cm / kg de mai sus (direct sau prin alte unități). Registrele înregistrează mereu kg. Lasă un câmp gol ca să-l păstrezi.
+mix_type_hint_moklanjo	Scrie cât în fiecare (numerar / UPI / card / credit). Trebuie să dea totalul notei. Creditul cere un client mai sus.
+money_in_sales	Bani încasați (vânzări)
+more_help_moklanjo	Catalog, vânzări, credit, echipă, copie de rezervă — plus stoc și tejghele suplimentare când e nevoie.
+net_word	Net
+offline_badge	DECONECTAT
+optional_login_help	Autentificare opțională (id + parolă). Proprietarul setează o dată; doar utilizatorul poate schimba parola mai târziu.
+or_unlock_login	Sau deblochează cu id de autentificare + parolă
+permission_preset	Post (setează ecranele și drepturile)
+preset_help_moklanjo	Casier: vinde. Manager: vânzare + articole + anulare/modificare.
+product_locked_moklanjo	Moklanjo
+product_only_moklanjo	Aplicația aceasta este doar Moklanjo — registre + tejghea de expediere. Celelalte meserii vin mai târziu ca produse separate.
+purchases_cogs	Cumpărări (costul mărfurilor)
+qty_cap	CANT
+restore_help	Restaurare: alege o copie de rezervă. Cărțile se deschid cum erau atunci; cărțile de acum se salvează întâi, deci asta se poate anula.
+wipe_data_heading	Șterge datele locale
+wipe_data_help	Doar proprietarul — aceleași alegeri ca la dezinstalarea Windows. Înregistrările de afaceri șterg istoricul de tranzacții dar păstrează tarifele și configurarea (ca PIN-ul de deblocare de urgență). Configurarea magazinului elimină baza de date a registrelor. Preferințele de ecran șterg fereastra/limba. Confirmă cu PIN-ul proprietarului. PIN-ul de deblocare de urgență de la Echipă este separat (ștergere discretă la deblocare).
+wipe_trading	Înregistrări de afaceri
+wipe_schema	Configurarea localului
+wipe_ui	Preferințe de ecran
+wipe_owner_pin_ph	PIN Proprietar pentru ștergere
+wipe_delete_selected	Șterge selecția
+wipe_owner_only	Doar Proprietarul poate șterge datele locale.
+restore_owner_only	Doar Proprietarul poate restaura o copie de rezervă.
+wipe_owner_pin_needed	Introdu PIN-ul Proprietarului ca să ștergi datele locale.
+wipe_nothing_selected	Alege mai întâi ce să ștergi.
+wipe_done	Datele locale selectate au fost șterse.
+wipe_schema_done	Configurarea localului a fost ștearsă — alege Server sau Client ca să continui.
+rounded_total	Total rotunjit
+setup_app_moklanjo	Configurează Moklanjo
+shop_logo_optional	Logo local (opțional)
+stock_type_help	Tastează numele articolului (o parte e de ajuns), o cantitate, apoi ajustează. Articolele care nu sunt numărate încă au nevoie o dată de Începe urmărirea.
+team_owner_help	Angajează: alege un post (Casier / Șef), nume + PIN de start, apoi Adaugă. Doar dacă persoana diferă: deschide ecranele și drepturile de mai jos, apoi Salvează configurarea postului. Fiecare își schimbă PIN-ul jos — proprietarul nu poate schimba PIN-ul altcuiva.
+they_owe_us	Ei ne datorează
+unit_at_cap	Unitate @
+units_help	Coduri pentru etichete de articol (kg, bucată, sac). Fiecare unitate trebuie să se lege — direct sau prin alte unități — de un standard (kg · cm · ml · pc), ex. 1 ladă = 2 cutii și 1 cutie = 20 cm. Conversii: 1 din = factor către. Monedele nu sunt niciodată unități.
+we_owe_them	Noi le datorăm
+who_unlocking	Cine deblochează?
+locked_word	Blocat
+show_pin	Arată PIN
+hide_pin	Ascunde PIN
+set_owner_pin	SETEAZĂ PIN PROPRIETAR
+enter_owner_passcode	INTRODU CODUL PROPRIETARULUI
+enter_staff_passcode	INTRODU CODUL PERSONALULUI
+pin_count_zero	0 / 12 cifre · cel puțin 4, apoi OK
+pin_count_need	{} / 12 cifre · mai trebuie {}
+pin_count_full	12 / 12 cifre · apasă OK
+pin_count_ready	{} / 12 cifre · apasă OK când ești gata
+pin_hint_choose	Alege 4–12 cifre · Enter sau Deblochează pentru salvare
+pin_hint_new	PIN Proprietar nou de 4–12 cifre · Enter sau Deblochează
+pin_hint_shop_code	Dispozitivul localului · cod de împerechere {}
+pin_hint_books	Acest dispozitiv ține cărțile
+pin_hint_paired	Casă suplimentară împerecheată — deblochează ca să vinzi
+pin_hint_pair_first	Casă suplimentară — împerecheaz-o întâi cu dispozitivul localului
+unlock_to_continue	Deblochează ca să continui
+no_staff_yet	Încă nu e personal — deblochează ca Proprietar, apoi Echipă
+status_server_set_pin	Mod Server — setează PIN-ul Proprietarului
+status_server_tills	Mod Server — casele suplimentare se pot alătura. Deblochează
+status_server_unlock	Mod Server — deblochează ca Proprietar
+status_client_unlock	Mod Client — deblochează ca să vinzi
+icon_new_selected	Pictogramă: fișier nou selectat — atinge Salvează marca
+icon_custom	Pictogramă: marcă proprie a localului
+icon_default	Pictogramă: marca Kumkaj (implicit) — alege una proprie
+logo_yours	Logo: logo-ul localului tău — se arată pe ecrane și chitanțe
+logo_default	Logo: marca Kumkaj (implicit) — alege-l pe al tău dacă ai
+tmpl_current	Curent: {} — {}
+tmpl_selected	Selectat: {} — {}
+setup_complete	Configurare completă
+onboard_fresh_tmpl	Fresh · {} — catalogul începe gol; adaugă articole în Articole, apoi Gata.
+onboard_book_tmpl	Book · {} — adaugă articole și credit de început, apoi Gata.
+onboard_template_tmpl	Pune numele locului dacă vrei, apoi alege cum să începi.
+tmpl_blurb	Registre de curierat și tejghea de expediere: expeditori, transportatori, jurnalul zilei, AWB.
+tmpl_how	Înregistrează colete la tejghea; jurnalul zilei pentru azi; file pentru tarife, parteneri, rapoarte.
+trk_booked	Înregistrat
+trk_picked_up	Preluat
+trk_in_transit	În tranzit
+trk_delivered	Livrat
+trk_rto	Se întoarce la expeditor
+lane_to_dispatch	De expediat
+lane_with_carrier	La transportator
+lane_failed	Eșuat
+lane_done_today	Gata azi
+ops_board_help	Colete după locul lor în munca de azi. Atinge coletele (sau scanează-le) ca să le alegi, apoi acționează pe toate alese deodată — fiecare culoar oferă doar mutările care i se potrivesc.
+lane_empty	Nimic aici acum.
+picked_fmt	{n} alese
+pick_all	Alege tot
+bag_for_carrier	Predă transportatorului
+send_with_rider	Trimite cu curierul
+out_again	Ieșit din nou
+return_to_sender	Retur la expeditor
+runs_bags_heading	Curse și saci recenți
+print_word	Tipărește
+bag_word	Sac transportator
+run_word	Cursă curier
+parcels_fmt	{n} colete
+parcel_history	Istoric
+attempt_fmt	Încercarea {n}
+pieces_short_fmt	{n} buc.
+note_reason_ph	Notă sau motiv
+ops_pick_first	Alege mai întâi coletele — atinge-le sau scanează-le
+cod_to_collect	Livrat — COD de încasat
+cod_on_road	COD încă pe drum
+cod_owed_consignors	Încasat — de plătit expeditorilor
+cod_rto_fees	Taxe RTO de încasat
+cod_to_hand_in	COD de predat
+parcel_one_fmt	{n} colet
+facet_bank_title	Rapoarte
+facet_bank_help	Jurnalele zilei, vechimea partenerilor, înregistrări bancare și profit și pierdere pe perioadă.
+facet_ops_title	Expedieri și dispecerat
+facet_ops_help	Scanează sau scrie AWB → Găsește, apoi avansează / tipărește eticheta / COD. Expediază la curier sau transportator.
+facet_cod_title	Registru COD
+facet_cod_help	Încasează la livrare, apoi remite expeditorului.
+facet_riders_title	Curieri (flotă proprie)
+facet_riders_help	Adaugă curieri, apoi expediază AWB-urile înregistrate din Operațiuni.
+against_bill_ph	La nota nr. de mai sus (opțional)
+aliases_ph	Aliasuri — alte nume, separate prin virgulă
+amount_blank_full_ph	Sumă (gol = soldul întreg)
+amount_owed_ph	Sumă datorată
+amount_ph	Sumă
+amount_received_ph	Sumă primită
+amount_we_pay_ph	Suma pe care o plătim
+awb_scan_ph	AWB / scanează codul de bare
+bulk_csv_ph	CSV bulk — destination,consignee,kg,cod_paise,note
+business_name_ph	Numele firmei
+category_new_ph	Categorie (opțional, se creează dacă e nouă)
+cod_amount_ph	Sumă COD
+code_bag_ph	Cod (sac)
+conv_factor_ph	Factor (25 = 1 sac → 25 kg)
+country_code_ph	Cod de țară ex. IN, GB, US, AE, BR
+credit_khata_amount_ph	Credit / sumă pe cont
+credit_limit_ph	Limită de credit (0 = niciuna)
+dim_unit_code_ph	Cod unitate de dimensiune (cm)
+divisor_ph	Divizor volumetric (5000)
+extra_per_kg_ph	Extra / kg
+first_amount_ph	Prima sumă
+first_kg_ph	Primul kg (tranșă)
+from_code_ph	Din cod (sac)
+item_name_lang_ph	Nume articol — scrie-l în limba ta
+login_id_opt_ph	Nume de utilizator (obligatoriu, unic)
+manager_pin_ph	PIN de manager pentru aprobare (doar dacă nu poți anula)
+new_branch_name_ph	Nume sucursală nouă
+new_password_ph	Parolă nouă (opțională)
+new_pin_ph	PIN nou (4–12 cifre)
+note_bank_ph	Notă (depunere, retragere, …)
+note_buy_expense_ph	Notă (combustibil, chirie, …)
+note_expense_ph	Notă (combustibil, birou, …)
+notify_phone_ph	Telefon de notificare (legătură WhatsApp/SMS)
+options_moklanjo_ph	Opțiuni (opțional) — Mare=20, Ambalaj cadou=10
+part_second_way_ph	Parte pe o a doua cale (opțional)
+phone_ph	Telefon
+address_ph	Adresă
+party_custom_fields_heading	Câmpuri personalizate (partenerul ales)
+party_custom_help	Adaugă orice etichetă și valoare la acest partener — WhatsApp, GSTIN, cod rută, …
+party_custom_key_ph	Nume câmp (de ex. WhatsApp)
+party_custom_value_ph	Valoare
+party_custom_add	Adaugă câmp
+party_custom_remove	Elimină câmpul
+party_custom_empty	Niciun câmp personalizat încă
+party_custom_pick_first	Alege un partener ca să adaugi câmpuri personalizate
+place_name_ph	Numele acestui loc
+price_ph	Preț
+qty_example_ph	Cant. (ex. 1.5 pentru kg)
+quantity_ph	Cantitate
+reason_required_ph	Motiv (obligatoriu)
+role_title_ph	Titlu rol (ex. Barista)
+service_pct_ph	Serviciu % opțional 0/10/12
+short_code_ph	Cod scurt (MG02)
+slab_kg_ph	Tranșă de taxare în kg (0.5)
+staff_name_ph	Nume / id personal
+starting_password_ph	Parolă de început (opțională)
+starting_pin_ph	PIN de început (4–12 cifre)
+tax_rate_ph	Nume cotă sau % — Standard, Redus, 0, 5, 12, 18, 20
+to_code_ph	Către cod (kg)
+uncleared_no_ph	Necompensat nr. deasupra
+unit_cost_ph	Cost unitar
+unit_kg_blank_ph	Unitate (kg sau gol)
+unit_name_bag_ph	Nume (Sac)
+weight_unit_code_ph	Cod unitate de greutate (kg)
+zone_name_ph	Nume zonă
+pay_credit	Pe credit
+book_kind_today	Cărțile de azi
+book_kind_month	Cărțile lunii acesteia
+book_kind_aging	Neachitat / debit-credit
+book_kind_balance	Bilanț
+ops_desk_help	Scanează AWB cu un scaner USB de coduri de bare (sau scrie-l) → Găsește. Apoi avansează, tipărește eticheta sau încasează COD. Etichetele tipăresc Code 128.
+role_help_consignor	Rol: Expeditor — AR (ne datorează). Aceeași firmă poate fi și transportator.
+role_help_carrier	Rol: Transportator — AP (le datorăm). Aceeași firmă poate fi și expeditor.
+role_help_both	Roluri: Expeditor + Transportator — un partener, registre AR și AP, net în Rapoarte.
+role_help_supplier	Rol: Furnizor — AP pentru achiziții.
+lane_declared_label	Expediere în cont
+lane_owner_label	Expediere cu numerar
+money_lane_bill	Notă: {lane}

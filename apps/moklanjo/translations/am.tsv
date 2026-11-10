@@ -1,0 +1,835 @@
+# Amharic — አማርኛ (am). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	የፖስታ-ኤጀንሲ መጽሐፍት + የቦታ ማስያዣ ጠረጴዛ። ከመስመር ውጭ ነፃ።
+unlock	ክፈት
+pin_hint	የባለቤት ፒን መጀመሪያ 0000 ነው
+sell	ቦታ ማስያዝ
+buy	Pay out
+books	የቀን መዝገብ
+books_help	Today’s position. Booking = parcels in. Pay out = carrier bills & expenses. Parties = consignors & carriers.
+buy_help	የወጪ ቫውቸሮች እና የአገልግሎት አቅራቢ ሂሳቦች (ገንዘብ መውጣት)። በመለያው ላይ በፓርቲው ደብተር ላይ ይቆያል።
+sell_money_in	እሽግ ያስይዙ
+buy_money_out	ወጪ / ተሸካሚ ሂሳብ
+record_purchase	ግዢ መዝግብ
+add_expense	የወጪ ደረሰኝ
+bank_book	የባንክ መዝገብ
+credit_help	Party id is unique (names may repeat). Roles: Consignor (AR), Carrier (AP), or both on that id. Ledgers stay separate; reports show net.
+party_kind_ph	ብጁ ሚና (አማራጭ) - ወይም ከላይ ያለውን ቺፕ ይንኩ
+parties_list_heading	Saved parties
+reports_help	የቀን መዝገብ፣ ተበዳሪዎች እና አበዳሪዎች፣ የባንክ መዝገብ፣ የወጪ ደረሰኞች፣ ትርፍ እና ኪሳራ።
+reports_today	የቀን መዝገብ (ዛሬ)
+reports_month	ትርፍ እና ኪሳራ (ወር)
+reports_aging	ያልተከፈለ / ዴቢት-ክሬዲት
+reports_balance_sheet	የሂሳብ መዝገብ
+reports	የባንክ መዝገብ እና ትርፍ/ኪሳራ
+refresh	አድስ
+undo	ቀልብስ
+start_tracking	ክትትል ጀምር
+stock_minus	− ክምችት
+stock_plus	+ ክምችት
+settle_cash	በጥሬ ገንዘብ ዝጋ
+settle_card	በካርድ ዝጋ
+items	Rates & services
+nav_items	Rates
+more	ተጨማሪ
+your_items	Your rates
+items_help	እያንዳንዱ ረድፍ ተመን ነው (ለምሳሌ የገጽታ ዞን A)። አሃዱ ብዙውን ጊዜ ኪ.ግ ነው። ለማርትዕ መታ ያድርጉ።
+add_item	ተመን አክል
+new_item	አዲስ ተመን
+adding_item	አዲስ ተመን በማከል ላይ
+editing_item	በማስተካከል ላይ
+save	አስቀምጥ
+remove	አስወግድ
+empty_catalog	እስካሁን ምንም ተመኖች የሉም። ክፍት ተመኖች እና አገልግሎቶች, አንድ ያክሉ (ስም + ዋጋ, አሃድ ኪግ), ከዚያም ቦታ ማስያዝ.
+counter_sale	አጸፋዊ ቦታ ማስያዝ
+total	ድምር
+cash	ጥሬ ገንዘብ
+upi	UPI
+card	ካርድ
+credit	ተዋዋዮች
+clear	አጽዳ
+ready_to_sell	ለመመዝገብ ዝግጁ
+today_prefix	ዛሬ
+today_mid	ዛሬ
+owed	ያልተከፈለ
+round_word	አጠጋጋ
+back	ተመለስ
+sold_out	አይገኝም
+restock	ክምችት ሙላ
+not_tracked	አልተከታተለም
+in_stock	በክምችት
+marked_sold_out	እንደማይገኝ ምልክት ተደርጓል
+add_upper	ጨምር
+na	የለም
+qty	ክብደት/ብዛት
+unit_at	ዋጋ @
+actual	ትክክለኛ
+applied	የተተገበረ
+note_ph	ማስታወሻ (አማራጭ)
+rounded	የተጠጋጋ
+split	ክፈል
+counter	ቆጣሪ
+parcel	Parcel
+order	ትዕዛዝ
+sales	ምዝገባዎች
+sales_refunds	ማስያዣዎች እና ተመላሽ ገንዘቦች
+day_close	የቀን መዝጊያ
+reports_expenses	የባንክ መዝገብ እና ትርፍ/ኪሳራ
+nav_reports	ሪፖርቶች
+nav_settings	ቅንብሮች
+nav_lock	ቆልፍ
+sidebar_settings	Sidebar settings
+sidebar_settings_help	ከጎን አሞሌው ጋር አንድ ዓይነት ምልክቶች። ለመደርደር ረድፍ ይጎትቱ። ለማሳየት ወይም ለመደበቅ መቀየሪያውን ያዙሩ። ቅንብሮች እና ቆልፍ ሁልጊዜ በአሞሌው ላይ ይቆያሉ።
+sidebar_always_on_short	ሁልጊዜ በርቷል
+sidebar_back_settings	ተመለስ
+sidebar_shown	ይታያል
+sidebar_hidden	ተደብቋል
+sidebar_always_on	ሁልጊዜ በአሞሌው ላይ
+sidebar_shown_hint	በጎን አሞሌ / በታች ትሮች ላይ ይታያል
+sidebar_hidden_hint	ከአሞሌው ተደብቋል
+sidebar_menu_items	ሜኑ እና እቃዎች
+sidebar_enable_all	ሁሉንም አንቃ
+sidebar_disable_all	ሁሉንም አሰናክል
+sidebar_order_saved	የጎን አሞሌ ቅደም ተከተል ተቀምጧል
+sidebar_visibility_saved	የጎን አሞሌ ታይነት ተቀምጧል
+amounts_hide	ደብቅ
+amounts_show	አሳይ
+no_sale_yet	ገና ሽያጭ የለም
+favorites	ተወዳጆች
+favorites_help	ብዙ ጊዜ የሚሸጡ እቃዎች፣ ለዚህ መግቢያዎ የተቀመጡ። አንዱን ወደ ሂሳብ ይጨምሩ፣ ወይም ከታች ካሉት እቃዎች ሁሉ ዝርዝርዎን ይገንቡ።
+your_favorites	የእርስዎ ተወዳጆች
+all_items	ሁሉም እቃዎች
+no_favorites	ገና ተወዳጅ የለም — ከታች ካለው ዝርዝር እቃዎችን ይጨምሩ።
+add_to_bill	ወደ ሂሳብ ጨምር
+added	ተጨምሯል
+owes_word	ይበደራል
+selected_word	ተመርጧል
+chip_clear_credit	አጽዳ — ብድር ወይም ቅድሚያ ውሰድ
+chip_missing_customer	የተመረጠው ደንበኛ ጠፍቷል — እንደገና ይምረጡ
+chip_no_customer	ገና ደንበኛ የለም — ስም ይጻፉ፣ ከዚያ ብድር ይንኩ
+credit_summary_fmt	{} ደንበኞች · ክፍት ብድር {} · የተያዘ ቅድሚያ {}
+recent_label	የቅርብ፦
+inventory	ክምችት
+inventory_stock	ክምችት እና አክሲዮን
+branches	ቅርንጫፎች
+branches_org	ቅርንጫፎች እና ድርጅት
+credit_customers	Parties (debtors & creditors)
+customer_name_ph	የተዋዋይ ስም
+new_customer_ph	አዲስ የተዋዋይ ስም
+item_name_ph	Rate name (e.g. Surface Zone A)
+item_price_ph	Per kg / first slab
+start_template	ምርት
+next_booking	ቀጣይ ቦታ ማስያዝ
+destination_ph	መድረሻ ከተማ / ዞን
+consignee_ph	Receiver name
+consignee_phone_ph	Receiver phone
+consignee_address_ph	የመላኪያ አድራሻ
+origin_name_ph	Sender name
+origin_phone_ph	Sender phone
+origin_address_ph	Pickup / origin address
+booking_consignor_heading	ላኪ (ደንበኛ / ላኪ)
+booking_consignee_heading	ተቀባይ (ተቀባይ)
+booking_consignor_hint	Pick a party to fill, or leave blank for walk-in. Needed for home pickup and RTO.
+booking_consignee_hint	Receiver of the parcel. Leave blank for walk-in counter drop-offs.
+weight_kg_ph	ትክክለኛ ኪ.ግ
+length_cm_ph	ኤል ሴ.ሜ
+breadth_cm_ph	ቢ ሴ.ሜ
+height_cm_ph	ኤች ሴ.ሜ
+chargeable_kg	ሊሞላ የሚችል ኪ.ግ
+awb_label	AWB
+booking_help	ላኪ + ተቀባይ (ባዶ እሺ) → መድረሻ → → የመምረጥ ተመን → ሂሳብ/ጥሬ ገንዘብ → ክፍያ ይመዝኑ። AWB በደረሰኙ ላይ ያትማል. የሚቀጥለው ቦታ ማስያዝ ጠረጴዛውን ያጸዳል. የተጠጋጋ ይጀምራል ከተተገበረው ጋር እኩል ነው - ሂሳቡን ለመጠቅለል ብቻ ያርትዑ።
+cart_empty_hint	ጠረጴዛ ባዶ - ላኪ / ተቀባይ አማራጭ, መድረሻ እና ክብደት ያዘጋጁ, ተመን ላይ አክል መታ ያድርጉ, ከዚያ ይክፈሉ.
+team	ቡድን
+team_pins	ቡድን እና ፒኖች
+my_pin_settings	የእኔ ፒን
+settings_hub_help_my_pin	በዚህ መሣሪያ ላይ ለገባው ሰው የመክፈቻ ፒን ይቀይሩ።
+team_self_help	Only you can change your unlock PIN (and optional login password). Ask the Owner if you need different screens or rights.
+backup_settings	ምትኬ እና ቅንብሮች
+lock_app	መተግበሪያውን ቆልፍ
+pick	ምረጥ
+select	ምረጥ
+advance	ቅድሚያ
+owner	ባለቤት
+staff	ሰራተኛ
+photo	ፎቶ
+auto	ራስ-ሰር
+prev	ቀዳሚ
+next	ቀጣይ
+ok	እሺ
+this_shop	ሰርቨር
+extra_till	ክላየንት
+off	ጠፍቷል
+server	ሰርቨር
+client	ክላየንት
+language_currency	ቋንቋ እና ገንዘብ
+language	ቋንቋ
+choose_language	ቋንቋዎን ይምረጡ
+language_setup_hint	የዚህን መሣሪያ ቋንቋ ይከተሉ፣ ወይም እርስዎ ይምረጡ።
+lang_follow_platform	የመሣሪያ ቋንቋ
+lang_pick_user	ቋንቋ ምረጥ
+lang_platform_now	አሁን የመሣሪያ ቋንቋ
+selected_language	ተመርጧል
+continue	ቀጥል
+this_device	ይህ መሣሪያ
+device_use_q	ይህ መሣሪያ እንዴት ይጠቀማል?
+last_server_mode	ሰርቨር ነበር — ለመቀጠል ይንኩ
+last_client_mode	ክላየንት ነበር — ለመቀጠል ይንኩ
+choose_server	ሰርቨር ይምረጡ
+choose_server_hint	ያለ ሰርቨር ይክፈቱ፣ ወይም ለሌላ ንግድ አዲስ ይፍጠሩ።
+create_new_server	አዲስ ሰርቨር ፍጠር
+open_server	ክፈት
+new_server_name_ph	አዲስ የሰርቨር ስም (አማራጭ)
+server_remove_pin_ph	ሰርቨር ለማስወገድ የባለቤት ፒን
+only_owner_remove_server	ሰርቨርን ማስወገድ የሚችለው ባለቤት ብቻ ነው
+owner_pin_remove_server	ይህን ሰርቨር ለማስወገድ የባለቤት ፒን ያስፈልጋል
+device_setup_help	ሰርቨር መዝገቦቹን እዚህ ይይዛል። ክላየንት ከሰርቨር ጋር ይጣመራል።
+currency	ገንዘብ
+backup	ምትኬ
+settings_sec_diag	ምርመራ
+settings_hub_help	በአንድ ጊዜ አንድ ክፍል ይክፈቱ — ያነሰ ማሸብለል፣ ግልጽ ምርጫ።
+settings_sec_devices	ሌሎች መሣሪያዎች
+settings_sec_alerts	ማንቂያዎች
+alerts_help	የሁኔታ መልዕክቶች በማያው ላይ ለእርስዎ ምን ያህል ጊዜ እንደሚቆዩ (ይህ መግቢያ)።
+snack_secs_ph	ሰከንዶች (3–60፣ ነባሪ 10)
+snack_secs_save	የማንቂያ ጊዜ አስቀምጥ
+snack_secs_saved	የማንቂያ ጊዜ ተቀምጧል — {n} ሰከንድ
+snack_secs_bad	ሰከንዶችን እንደ ቁጥር ያስገቡ (3–60)
+cancelled	ተሰርዟል
+cancel	ሰርዝ
+opening_client	ክላየንት በመክፈት ላይ…
+preparing_desk	ጠረጴዛ በማዘጋጀት ላይ…
+opening_server	ሰርቨር በመክፈት ላይ…
+creating_server	ሰርቨር በመፍጠር ላይ…
+diag_privacy_help	መዝገቦች በዚህ መሣሪያ ላይ ይቆያሉ። ሚስጥሮች (ፒን፣ የይለፍ ቃላት) በፍጹም አይቀመጡም። ጥቅልን ከመሣሪያው ውጭ ማጋራት በእያንዳንዱ ጊዜ የእርስዎን ግልጽ ፈቃድ ይፈልጋል — ለሶስተኛ ወገን አይሸጥም ወይም አይሰጥም።
+diag_level	የዝርዝር ደረጃ
+diag_level_error	ስህተቶች
+diag_level_warn	ማስጠንቀቂያዎች
+diag_level_info	መረጃ
+diag_level_debug	ማረሚያ
+diag_support_start	የ30 ደቂቃ የድጋፍ ክፍለ ጊዜ ጀምር
+diag_support_stop	የድጋፍ ክፍለ ጊዜ ጨርስ
+diag_support_started	የድጋፍ ክፍለ ጊዜ በርቷል — የማረሚያ ዝርዝር ለ30 ደቂቃ
+diag_support_ended	የድጋፍ ክፍለ ጊዜ ተጠናቋል
+diag_export_local	የአካባቢ ቅጂ ላክ
+diag_export_local_done	የአካባቢ ምርመራ በ {path} ዝግጁ ነው — ቅጂ የሚቀመጥበትን ቦታ ይምረጡ
+diag_approve_send	ከዚህ መሣሪያ ውጭ ማጋራትን ፍቀድ
+diag_send_heading	ከዚህ መሣሪያ ውጭ አጋራ
+diag_send_help	ፈቃዱ ለአንድ ጥቅል ነው፣ ከዚያ ያበቃል። ጊዜያዊ — ምርቱን ለማስተካከል ወይም ለማሻሻል ብቻ። ለሶስተኛ ወገን አይጋራም። በሊኑክስ፣ ዊንዶውስ፣ ማክ እና አንድሮይድ ይሠራል።
+optional_login_heading	አማራጭ መግቢያ
+rights_heading	መብቶች
+booking_scope_heading	የሀገር ውስጥ / ዓለም አቀፍ
+diag_send_approved	ለአንድ ጥቅል ማጋራት ተፈቅዷል (በቅርቡ ያበቃል)
+diag_export_send	የማጋሪያ ጥቅል ፍጠር (ፈቃድ ይፈልጋል)
+diag_export_send_done	የማጋሪያ ጥቅል በ {path} ዝግጁ ነው — የሚቀመጥበትን ይምረጡ፣ ከዚያ ለ Kumkaj ድጋፍ ብቻ ይላኩ
+diag_save_bundle	የምርመራ ቅጂ አስቀምጥ
+diag_bundle_saved	የምርመራ ቅጂ ወደ {path} ተቀምጧል
+diag_bundle_failed	የምርመራ ቅጂውን ማስቀመጥ አልተቻለም — እንደገና ይሞክሩ
+diag_clear	የምርመራ መዝገቦችን አጽዳ
+diag_cleared	የምርመራ መዝገቦች ጸድተዋል
+use	ተጠቀም
+add_branch	ቅርንጫፍ ጨምር
+add_conversion	ቅየራ ጨምር
+add_item_plain	እቃ ጨምር
+add_note	ማስታወሻ ጨምር
+add_opening_balance	የመክፈቻ ቀሪ ጨምር
+add_rider	ጋላቢ ያክሉ
+add_staff	ሰራተኛ ጨምር
+add_unit	መለኪያ ጨምር
+add_use_name	ይህን ስም ጨምር / ተጠቀም
+allow_extra_tills	ተጨማሪ ቆጣሪዎችን ፍቀድ
+amend	አስተካክል
+apply_country_pack	የሀገር ጥቅል ተግብር
+datetime_appearance	የቀን እና ሰዓት አቀራረብ
+datetime_appearance_help	መጽሃፍቶች በዓመት የመጀመሪያ RFC3339 ውስጥ ይይዛሉ። እነዚህ ቀኖች እና ሰዓቶች ደረሰኞችን፣ መለያዎችን፣ ሪፖርቶችን እና ስክሪኑን እንዴት እንደሚመለከቱ ብቻ ይለውጣሉ።
+datetime_example	አሁን ምሳሌ፦ {ex}
+date_order	የቀን ቅደም ተከተል
+date_order_dmy	ቀ/ወ/ዓ
+date_order_mdy	ወ/ቀ/ዓ
+date_order_ymd	ዓ-ወ-ቀ
+time_format	ሰዓት
+time_format_24h	24 ሰዓት
+time_format_12h	12 ሰዓት
+attach_bill_photo	የሂሳብ ፎቶ አያይዝ
+attach_pdf	PDF አያይዝ
+attach_photo	ፎቶ አያይዝ
+bank	ባንክ
+bank_in	ወደ ባንክ ገቢ
+bank_out	ከባንክ ወጪ
+bank_to_till	ባንክ → ቆጣሪ
+till_to_bank	ቆጣሪ → ባንክ
+mark_cleared	እንደተጠራቀመ ምልክት አድርግ
+unmark	ምልክት አንሳ
+role_both	ሁለቱም
+role_carrier	ተሸካሚ
+role_cashier	ገንዘብ ተቀባይ
+role_consignor	ላኪ
+role_manager	ሥራ አስኪያጅ
+role_supplier	አቅራቢ
+branch_name_sell_ph	የሚሸጥበት የቅርንጫፍ ስም
+bring_my_book	መዝገቤን አምጣ
+business_tax_id_ph	የንግድ ግብር መታወቂያ
+card_amount_ph	የካርድ መጠን
+cash_amount_ph	የጥሬ ገንዘብ መጠን
+upi_amount_ph	የ UPI መጠን
+carrier_cost_ph	የአገልግሎት አቅራቢ ወጪ
+carrier_party_ph	ተሸካሚ ፓርቲ
+choose_icon	ምልክት ምረጥ
+choose_logo	አርማ ምረጥ
+choose_receipt_stamp	ደረሰኝ ማህተም ይምረጡ
+choose_payment_qr	የክፍያ QR ምረጥ
+clear_icon	ምልክት አጽዳ
+clear_logo	አርማ አጽዳ
+clear_photo	ፎቶ አጽዳ
+clear_stamp	ማህተም አጽዳ
+clear_payment_qr	የክፍያ QR አጽዳ
+print_faces	Print faces (receipt / period bill)
+print_faces_help	Optional stamp and payment QR next to your logo on booking receipts and period bills.
+awb_pools_heading	የአገልግሎት አቅራቢ AWB ቁጥር ገንዳዎች
+add_awb_pool	AWB ገንዳ ያክሉ
+awb_pool_carrier_ph	ተሸካሚ ፓርቲ ስም
+awb_pool_start_ph	Start no.
+awb_pool_end_ph	መጨረሻ ቁጥር.
+awb_pool_prefix_ph	Prefix (optional)
+awb_pool_label_ph	መለያ (አማራጭ)
+pieces_ph	Pieces (blank = 1) — expand for cargo / multi-piece
+bulk_awbs_ph	የጅምላ AWBs - ለአንድ የሁኔታ ቅድመ ሁኔታ ብዙ (አዲስ መስመር ወይም ነጠላ ሰረዝ) ይለጥፉ
+tds_cut_ph	TDS cut (optional)
+discount_ph	ቅናሽ (አማራጭ)
+cheque_no_ph	የቼክ ቁጥር (አማራጭ)
+bill_reminder_chase	የቢል አስታዋሽ ማሳደድ ዝርዝር
+month_mix_report	የወር ድብልቅ ሪፖርት
+copy_month_gst_csv	ወር GST CSV ቅዳ
+domestic	የቤት ውስጥ
+international	አለምአቀፍ
+pick_logo	Pick logo
+booking_scope_hint_domestic	Volumetric ÷5000 (domestic) — tap International for ÷6000 air
+booking_scope_hint_intl	Volumetric ÷6000 (international air) — tap Domestic for shop ÷5000
+cod_register	የ COD ምዝገባ
+collect_cod	COD (AWB) ሰብስብ
+consignments_dispatch	ማጓጓዣዎች እና መላኪያዎች
+consignor_party_ph	ላኪ / የፓርቲ ስም
+copy_day_book_csv	የቀን መዝገብ CSV ቅዳ
+copy_day_close	የቀን መዝጊያ ቅዳ
+copy_items_csv	የእቃዎች CSV ቅዳ
+copy_outstanding_csv	ያልተከፈለ CSV ቅዳ
+copy_parties_csv	የተዋዋዮች CSV ቅዳ
+copy_party_ledger_csv	የተዋዋይ መዝገብ CSV ቅዳ
+copy_receipt	ደረሰኝ ቅዳ
+copy_report	ሪፖርት ቅዳ
+counted_cash_ph	በመሳቢያው ውስጥ የተቆጠረ ጥሬ ገንዘብ
+counter_agency_ph	የቆጣሪ / የኤጀንሲ ስም (አማራጭ)
+create_backup	ምትኬ ፍጠር
+day_close_summary	የቀን መዝጊያ ማጠቃለያ
+delete_party	የተመረጠውን ተዋዋይ ሰርዝ
+dispatch_to_rider	ላክ የተያዘ → ጋላቢ
+docket_charge_ph	የዶኬት ክፍያ
+declared_value_ph	የታወጀ ዋጋ
+contents_ph	ይዘቶች
+eway_ph	ኢ-ዌይ ቢል ቁ.
+insurance_label	ኢንሹራንስ
+yes_label	Yes
+no_label	አይ
+print_route_label	Print route
+new_party_kind_label	አዲስ የፓርቲ ዓይነት
+done_open_books	ጨርስ — መዝገቦችን ክፈት
+export_day	ቀን ላክ
+extra_note_expense_ph	በመጨረሻው ወጪ ላይ ተጨማሪ ማስታወሻ
+extra_note_awb_ph	በዚህ AWB / ሽያጭ ላይ ተጨማሪ ማስታወሻ
+failed_delivery	ማድረስ አልተሳካም
+find_scan_awb	AWB ን ያግኙ / ይቃኙ
+forget_shop	ይህን ሱቅ እርሳ
+fuel_ph	ነዳጅ
+handover_carrier	በእጅ የተያዘ → ተሸካሚ
+import_day	ቀን አስመጣ
+import_items_csv	Import items / rates CSV…
+import_parties_csv	የተዋዋዮች CSV አስመጣ…
+import_pincodes_csv	Import pincodes CSV…
+import_carrier_bill_csv	Import carrier bill CSV…
+copy_carrier_bill_report	የመጨረሻውን የአገልግሎት አቅራቢ ደረሰኝ ሪፖርት ይቅዱ
+use_carrier_cost	Use carrier cost
+rate_carrier_ph	አገልግሎት አቅራቢ (ባዶ = የእኛ የሽያጭ ዋጋ)
+rate_party_ph	Party (blank = all customers)
+carrier_pick_ph	ተሸካሚ ለወጪ (ከንፅፅር)
+item_name	የእቃ ስም
+load_bulk_row	የጅምላ ረድፍ → ዴስክ ጫን
+login_id_ph	የተጠቃሚ ስም
+mark_delivered	ምልክት ደርሷል
+manifest_cod_total	COD ጠቅላላ
+manifest_received_by	Received by
+manifest_sign	Sign
+ndr_address_wrong	አድራሻ የተሳሳተ ነው
+ndr_customer_unavailable	አይገኝም
+ndr_door_locked	በር ተቆልፏል
+ndr_other	Other
+ndr_refused	Refused
+out_for_delivery	Out for delivery
+print_drs	Print DRS
+print_run_sheet	Print run sheet
+reattempt	Reattempt
+rider_cod_handed_ph	COD አስረክቧል
+settle_rider_cod	Settle rider COD
+mode_desk	ጠረጴዛ
+mode_rider	Rider
+waiting_office	waiting to reach office
+capture_signature	ፊርማ ይያዙ
+incoming_manifest	ገቢ መግለጫ
+pickup_request	Pickup request
+pickup_run	Pickup run
+auto_assign_area	በራስ-መመደብ ቦታ
+reorder_stops	Reorder stops
+settle_rider_pay	Settle rider pay
+vehicle_inspect	Vehicle inspection
+print_docket	Print docket
+franchise_statement	የፍራንቻይዝ መግለጫ
+tally_export	Tally voucher export
+open_whatsapp	Open WhatsApp
+copy_sms	የኤስኤምኤስ ጽሁፍ ቅዳ
+pick_barcode_image	Pick image to scan
+share_receipt_whatsapp	Share receipt on WhatsApp
+delivery_feedback	የመላኪያ ግብረመልስ
+lan_self_book	LAN ራስን ማስያዝ
+new_party_clear	አዲስ ተዋዋይ (ቅጹን አጽዳ)
+new_party_kind_ph	አዲስ የፓርቲ ዓይነት (አቅራቢ / ተሸካሚ)
+next_country	ቀጣይ ሀገር
+prev_country	ቀዳሚ ሀገር
+note_gstin_ph	ማስታወሻ / GSTIN / የስምምነት ማስታወሻ
+note_pod_ph	Note / POD (optional)
+on_account_ap	በሂሳብ ላይ (AP)
+org_optional_ph	ድርጅት (አማራጭ)
+paid_now	አሁን ተከፍሏል
+pairing_code_ph	የማጣመሪያ ኮድ
+pair_now	አሁን አጣምር
+party_name_selected_ph	የተዋዋይ ስም (ወይም የተመረጠውን ተጠቀም)
+password_ph	የይለፍ ቃል
+pay_ap_card	AP በካርድ ክፈል
+pay_ap_cash	AP በጥሬ ገንዘብ ክፈል
+pay_ap_upi	AP በ UPI ክፈል
+period_bill	Period bill
+period_bill_party	Period bill (party)
+pick_pod_photo	Pick POD photo
+print_awb_label	Print AWB label
+print_open	አትም / ክፈት
+reason_amend_ph	የማስተካከል / የመሰረዝ / የተመላሽ ምክንያት
+reason_note_ph	ምክንያት / ማስታወሻ (ብክነት፣ ቆጠራ፣ …)
+record_day_close	የቀን መዝጊያ መዝግብ
+refresh_from_shop	ከሱቅ አድስ
+refund	ተመላሽ
+remit_cod	Remit COD (party)
+remove_selected	የተመረጠውን አስወግድ
+restore_backup	ምትኬ መልስ
+rider_name_ph	Rider name
+rider_phone_ph	Rider phone
+riders	Riders
+riders_own_fleet	Riders (own fleet)
+rollup	ማጠቃለያ
+save_booking_measures	Save booking measures
+save_brand	ምልክት አስቀምጥ
+save_business_id	የንግድ መታወቂያ አስቀምጥ
+save_business_name	የንግድ ስም አስቀምጥ
+save_features	Save job setup
+save_names	ስሞች አስቀምጥ
+server_ip_ph	የሰርቨር IP (ለምሳሌ 192.168.1.10)
+set_credit_limit	ገደብ በተዋዋይ ላይ ተግብር
+set_login_selected	መግቢያ በተመረጠው ላይ ተግብር
+set_login_named	መግቢያ በ {name} ላይ ተግብር
+shop	ሱቅ
+start_fresh	አዲስ ጀምር
+stop_extra_tills	ተጨማሪ ቆጣሪዎችን አቁም
+backup_auto	በየቀኑ በራስ-ሰር ምትኬ ይቀመጣል · የመጨረሻው {when} · ያለፉት 14 ቀናት በ {dir} ይያዛሉ።
+backup_auto_none	በየቀኑ በራስ-ሰር ምትኬ ይቀመጣል — የመጀመሪያው በቅርቡ ይሠራል።
+backup_copy_to	ቅጂዎችም ወደ {dir} ይሄዳሉ።
+backup_copy_btn	ምትኬዎችን ወደ አቃፊም ቅዳ…
+autostart_off	ከዚህ ኮምፒውተር ጋር ጀምር
+autostart_on	ከዚህ ኮምፒውተር ጋር ይጀምራል ✓ — ለማቆም ይንኩ
+autostart_done_on	ይህ ኮምፒውተር ሲበራ መተግበሪያውን አሁን ይከፍታል — የሱቁ ሰርቨር ከኃይል መቋረጥ በኋላ ይመለሳል።
+autostart_done_off	ይህ ኮምፒውተር ሲበራ መተግበሪያውን ከአሁን በኋላ አይከፍትም።
+right_allowed	ተፈቅዷል
+right_with_approval	በፈቃድ
+right_denied	አይፈቀድም
+editing_staff	Rights for
+team_pick_ph	የሚስተካከል ሰራተኛ — ስም፣ የተጠቃሚ ስም፣ ወይም ይምረጡ
+select_staff	ይህን ሰራተኛ ምረጥ
+rights_help	Rights — tap to change: Allowed → With approval (a manager's PIN at that moment) → Not allowed.
+right_void_refund	Void or refund a booking
+right_amend_sale	የተቀዳ ቦታ ማስያዝ ያስተካክሉ
+find_server	የሱቁን ሰርቨር ፈልግ
+finding_server	በዚህ Wi‑Fi ላይ የሱቁን ሰርቨር በመፈለግ ላይ…
+no_server_found	ምንም አልተገኘም። በሰርቨር ላይ፦ ቅንብሮች → ሌሎች መሣሪያዎች → ተጨማሪ ቆጣሪዎችን ፍቀድ (ተመሳሳይ Wi‑Fi)። ወይም እዚያ የሚታየውን IP ይጻፉ።
+servers_found_pick	ለመገናኘት የሚፈልጉትን ሱቅ ይንኩ።
+server_host_selected	{host} በመጠቀም ላይ — የማጣመሪያ ኮዱን ያስገቡ፣ ከዚያ አሁን አጣምር።
+device_forgotten	ሱቁ ይህን መሣሪያ ረስቶታል — አሁን ባለው የሱቅ ኮድ እንደገና ያጣምሩ። በላዩ ላይ የሚጠብቁ ትዕዛዞች ይያዛሉ።
+forget_device	እርሳ
+last_seen	ታይቷል
+new_pair_code	አዲስ የማጣመሪያ ኮድ
+lan_offline	የሱቅ ሰርቨር አልተደረሰም
+lan_offline_waiting	የሱቅ ሰርቨር አልተደረሰም · {n} በመጠባበቅ
+lan_connecting	ከሱቅ ጋር በመገናኘት ላይ…
+pair_finishing	ጥንድ ማጠናቀቅ... የቢሮ መጽሐፍትን በመተግበር ላይ
+pair_opening	Opening the office…
+lan_live	ቀጥታ
+lan_sending	{n} በመላክ ላይ
+lan_sign_in_to_send	{n} ለመላክ እንደገና ይግቡ
+lan_pair_again	ይህን መሣሪያ እንደገና አጣምር
+lan_update_app	Update the app — this device and the office server have different versions
+allow_firewall	ሌሎች መሣሪያዎች እንዲገናኙ ፍቀድ
+firewall_blocked	የዚህ ኮምፒውተር ፋየርዎል ሌሎች መሣሪያዎችን እየከለከለ ነው — ሌሎች መሣሪያዎች እንዲገናኙ ፍቀድን ይንኩ።
+firewall_waiting	የአስተዳዳሪ ጥያቄን በመጠባበቅ ላይ…
+lan_join_help	በሌላኛው መሣሪያ፦ የክላየንት ሁነታ → የሱቁን ሰርቨር ያግኙ (ወይም {addr} ይጻፉ) → የማጣመሪያ ኮድ {code}።
+lan_pair_status	Wi‑Fi {addr}
+lan_join_help_no_addr	አድራሻ ለማግኘት ይህን መሣሪያ ከ Wi‑Fi ጋር ያገናኙ።
+lan_no_address	ገና የ Wi‑Fi አድራሻ የለም — ከሱቁ Wi‑Fi ጋር ያገናኙ።
+lan_not_listening	መሣሪያዎችን አይቀበልም (ወደብ {port} ተይዟል)። መተግበሪያውን እንደገና ያስጀምሩ።
+lan_tills_off	ተጨማሪ ቆጣሪዎች ጠፍተዋል። ሌላ መሣሪያ እንዲቀላቀል ይፍቀዱ።
+paired_with	ተጣምሯል · {url}
+not_paired	አልተጣመረም
+choose_device_use	ሰርቨር ወይም ክላየንት ይምረጡ።
+paired_note	ተጣምሯል። ለመሸጥ ይክፈቱ፣ ወይም የቅርቡን ለማግኘት ያድሱ።
+last_update_at	የመጨረሻ ዝማኔ፦ {time}።
+pair_intro	ሰርቨሩን ያግኙ፣ ወይም አድራሻውን እና የማጣመሪያ ኮዱን ይጻፉ።
+queue_waiting	ሱቁን ለመድረስ በመጠባበቅ ({n})፦
+queue_tries	{n} ጊዜ ተሞክሯል · የመጨረሻ መልስ፦ {e}
+save_backup_copy	የምትኬ ቅጂ አስቀምጥ…
+backup_copy_saved	የምትኬ ቅጂ ተቀምጧል — ከዚህ መሣሪያ ውጭ ያቆዩት (USB ወይም ሌላ መሣሪያ)
+backup_copy_overdue	ለ {n} ቀናት የምትኬ ቅጂ ከዚህ መሣሪያ አልወጣም — ቅንብሮች → ምትኬ
+backup_copy_failed	የምትኬ ቅጂው እዚያ ሊቀመጥ አልቻለም — ሌላ ቦታ ይምረጡ
+clock_off	የዚህ መሣሪያ ሰዓት ከሱቁ ሰርቨር {min} ደቂቃ ተለይቷል — በዚህ መሣሪያ ትክክለኛውን ሰዓት ያስቀምጡ
+printers_heading	Printers on this device
+printers_help	ትክክለኛ አታሚዎችን ያግኙ፣ ከዚያ ደረሰኝ ወይም AWB መለያን ይምረጡ። እያንዳንዱ ተግባር የራሱ ስፋት፣ የቁም ወይም የመሬት ገጽታ አቅጣጫ እና ባይቶች የሚላኩበት መንገድ አለው። መለያ ባርኮዱን ያትማል። ባዶ ቦታ = አትታተም.
+job_width	የይዘት ስፋት (ሚሜ)
+job_width_ph	Or type a width, 40–210 mm
+job_layout	አቀማመጥ
+job_delivery	ሥራው እንዴት እንደሚላክ
+job_size	የፊደል መጠን
+job_size_ph	ለምሳሌ 18፣ 20፣ 26…
+save_receipt_format	Save receipt format
+save_label_format	Save label format
+test_receipt_format	Test receipt
+test_label_format	Test label
+test_receipt_sent	Sample receipt sent
+test_label_sent	Sample label sent
+test_print_no_printer	ለዚያ ሥራ ምንም አታሚ የለም - በዚህ ቦታ ስር አንድ ይጨምሩ
+printers_host_only	Printers are set on the shop device (Server). This till sends jobs there — Find / add / assign stay on the Server. Test page goes to the Server.
+printers_pool_heading	ማተሚያዎች
+printers_routes_heading	ነገሮች የት እንደሚታተሙ
+printer_label_ph	ስም (ለምሳሌ ጠረጴዛ)
+printer_target_ph	host:9100 · bt:MAC · usb:VID:PID · system name
+printer_mode_heading	Profile for new outputs
+printer_mode_standard	Standard Portrait
+printer_mode_landscape	Standard Landscape
+printer_mode_thermal	Thermal
+printer_mode_standard_short	ቁም
+printer_mode_landscape_short	አግድም
+printer_mode_thermal_short	Thermal
+printer_format_custom	አዲስ ብጁ መገለጫ
+printer_format_custom_label	ብጁ
+printer_format_custom_added	ለዚህ ቦታ ብጁ መገለጫ ተጨምሯል
+add_printer	ማተሚያ ጨምር
+remove_printer	Remove last
+route_pick_ph	receipt or label
+route_add_printer_ph	አታሚ ወደዚህ ቦታ ያክሉ
+route_receipt	Receipt
+route_label	የ AWB መለያ
+route_dont_print	ምንም አታሚ አልተመደበም
+route_add	ወደ ቦታ ይጨምሩ
+route_up	ወደ ላይ
+route_down	ወደ ታች
+route_remove	Remove last
+route_clear	ለዚህ ቦታ አታሚዎችን ያፅዱ
+save_printers	ማተሚያዎችን አስቀምጥ
+print_test_page	የሙከራ ገጽ አትም
+printers_saved	Printers saved for this device
+test_page_sent	የሙከራ ገጽ ተልኳል — ማተሚያውን ያረጋግጡ
+printers_found	በዚህ መሣሪያ ላይ ተገኝቷል {list}
+find_printers	ማተሚያዎችን ፈልግ
+printers_looking	በዚህ መሣሪያ እና በ Wi-Fi ላይ አታሚዎችን በመፈለግ ላይ...
+printers_tap_find	Tap Find printers for queues that accept jobs and network receipt printers on this Wi‑Fi (not removed or offline ones).
+printers_none_found	ምንም አታሚዎች አልተገኙም - የስርዓት አታሚ ስም ወይም የአውታረ መረብ አድራሻ ይተይቡ (ለምሳሌ 192.168.1.50)።
+receipt_printer_ph	Printer for receipts
+queue_refused	በሱቁ አልተቀበለም ({n}) — እያንዳንዱን በቆጣሪ ያረጋግጡ፦
+clear_not_accepted	ተረጋግጧል — ይህን ዝርዝር አጽዳ
+device_name_ph	የዚህ መሣሪያ ስም
+lan_last_update	የመጨረሻ ዝማኔ {time}
+lan_not_accepted	{n} አልተቀበለም
+connected_now	አሁን ተገናኝቷል
+backup_failed	የመጨረሻው ራስ-ሰር ምትኬ አልተሳካም፦ {e}
+backup_overdue	ለ {n} ቀናት ምትኬ የለም — ምትኬ እንዲቀመጥ መተግበሪያውን በዚህ መሣሪያ ክፍት ያድርጉ።
+disk_low	በዚህ መሣሪያ {mb} ሜባ ብቻ ነፃ ነው — ምትኬዎች በቅርቡ ይወድቃሉ። ቦታ ያስለቅቁ።
+last_seen_devices	መጨረሻ የታየው፦ {time}
+sync_interval	በየ {secs} ሰ ማመሳሰል
+connection_to_shop	ከሱቅ ጋር ያለ ግንኙነት
+supplier_name_ph	የአቅራቢ ስም (ወይም ተዋዋይ)
+supplier_ph	አቅራቢ
+switch_device	ይህን መሣሪያ ቀይር
+take_payment	ክፍያ ውሰድ
+tax_added_till	{tax} ተጨማሪ
+tax_inside_price	{tax} በዋጋ ውስጥ
+today_books	የዛሬ መዝገቦች
+unlock_after_pairing	ፒን ያስገቡ
+unlock_with_login	በመግቢያ ክፈት
+update_my_password	የይለፍ ቃሌን አዘምን
+update_my_pin	Update my PIN
+duress_heading	የአደጋ ጊዜ መክፈቻ ፒን (ባለቤት ብቻ)
+duress_help	Optional. If this PIN is typed at unlock instead of yours, all books entries are wiped (bookings, ledgers, history) and the desk opens as Owner looking normal — rates, parties, zones, staff and settings stay. Schema and config are not deleted. Use only if you are forced to unlock. Leave blank and save to turn off. Never the same as anyone's PIN.
+duress_pin_ph	የአደጋ ጊዜ ፒን (4–12 አሃዝ)
+duress_confirm_ph	ለማረጋገጥ እንደገና ይጻፉ
+save_duress_pin	የአደጋ ጊዜ ፒን አስቀምጥ
+clear_duress_pin	የአደጋ ጊዜ ፒን አጥፋ
+duress_on	የአደጋ ጊዜ መክፈቻ ፒን በርቷል
+duress_off	የአደጋ ጊዜ መክፈቻ ፒን ጠፍቷል
+duress_saved	የአደጋ ጊዜ መክፈቻ ፒን ተቀምጧል
+duress_cleared	የአደጋ ጊዜ መክፈቻ ፒን ጠፍቷል
+vehicle_ph	Vehicle
+void	ሰርዝ
+write_off_ap	AP ሰርዝ
+write_off_nil	ሰርዝ / ዜሮ ቀሪ
+zone_ph	Zone (name from Rates)
+caption_today	ዛሬ
+caption_bookings	ቦታ ማስያዝ
+caption_payments_today	የዛሬ ክፍያዎች
+caption_outstanding	ያልተከፈለ
+caption_bank	ባንክ
+paid_by	የከፈለው
+second_way	ሁለተኛ መንገድ
+weight_in	Weight in
+size_in	Size in
+goods_received	የተቀበሉ እቃዎች
+expense_heading	ወጪ
+notes_attach_sale	ማስታወሻዎች እና አባሪዎች (የተመረጠ ሽያጭ)
+notes_attach_party	ማስታወሻዎች እና አባሪዎች (የተመረጠ ተዋዋይ)
+attachments_last_expense	አባሪዎች (የመጨረሻ ወጪ)
+credit_limit_heading	የብድር ገደብ (የተመረጠ / የተሰየመ ተዋዋይ)
+pay_selected_heading	የተመረጠውን ክፈል (ዕዳ ዝጋ / ቅድሚያ ውሰድ)
+write_off_heading	ሰርዝ (ያለ ክፍያ አጽዳ)
+pay_ap_heading	የምንበደራቸውን ክፈል (AP)
+country_tax	ሀገር እና ግብር
+extra_tills_heading	ተጨማሪ ቆጣሪዎች
+other_devices_help_heading	ሌሎች መሣሪያዎችን አዘጋጅ
+other_devices_help	On this device (Server): Other devices → Allow extra tills. Note the pairing code and Wi‑Fi address. Tap Allow other devices to connect if it appears. On a computer, tap Start with this computer. On each other device: install the app, choose Client Mode, Find the shop's server (or type the address), enter the pairing code, Pair now. Orders wait on the device if Wi‑Fi drops and go when the Server answers again.
+your_brand	የእርስዎ ምልክት (በመተግበሪያው ውስጥ)
+units_heading	መለኪያዎች
+booking_measures	የቦታ ማስያዣ እርምጃዎች
+drawer_count	የመሳቢያ ቆጠራ (አማራጭ)
+spreadsheet_csv	ተመን ሰንጠረዥ (CSV)
+bank_reconciliation	የባንክ ማስታረቅ (ከባንክ መግለጫዎ ጋር ምልክት ያድርጉ)
+book_add_product	መጽሐፍ - ምርት / መጠን ያክሉ
+book_opening_credit	መዝገብ — የመክፈቻ ብድር
+account_kind	የሂሳብ አይነት (አንዱን ይንኩ)
+active_ledger	ንቁ ደብተር
+actual_total_cap	ትክክለኛ ድምር
+amend_help	ለማስተካከል፣ ለመሰረዝ ወይም ለመመለስ ሽያጭ ይምረጡ። ማስተካከያዎች ሙሉ ታሪክ ይይዛሉ። የተጠጋጋ ድምር ከተተገበረው ጋር እኩል ይጀምራል — ለማጠጋጋት ብቻ ያስተካክሉ። መሰረዝ እና ተመላሽ የባለቤት ወይም የሥራ አስኪያጅ ፒን ሊፈልጉ ይችላሉ (ከላይ የተጻፈ፤ በስምዎ ይመዘገባል)።
+applied_total_cap	የተተገበረ ድምር
+bank_balance	የባንክ ቀሪ
+bank_net_today	የዛሬ የባንክ ተጣራ
+branch_export_help	ወደ ውጭ መላክ የቀን ቅጽበታዊ ገጽ እይታን ወደ ምትኬ አቃፊ ይጽፋል እና ወደ ቅንጥብ ሰሌዳው ይገለብጣል። የሌላ መውጫ ቀን ለማስመጣት ፋይሉን በዚያ አቃፊ ውስጥ እንደ import_branch_snapshot.json ያስቀምጡ እና ከዚያ አስመጣን የሚለውን ይንኩ።
+brand_shown_help	በመተግበሪያው ውስጥ ባሉ ማያዎች ላይ ይታያል። በዚህ መሣሪያ ላይ የተጫነው የመተግበሪያ ስም እና ምልክት እንደ መድረክ ዝርዝር ይቆያሉ።
+app_icon	የመተግበሪያ ምልክት
+logo_help	በመተግበሪያው ማያዎች ላይ አማራጭ የሱቅ ምልክት።
+onboard_layout	የሚያገኙት
+item_photo_help	አማራጭ። ፎቶ ከሌለ ከእቃው ስም የመጀመሪያ ፊደላት እናሳያለን።
+cash_in_hand	በእጅ ያለ ጥሬ ገንዘብ (ቆጣሪ)
+change_my_pin_heading	የእኔን ፒን ቀይር (የእርስዎ ብቻ)
+connect_to_server	ከሰርቨር ጋር ተገናኝ
+counter_locked	ቆጣሪ 01 · ተቆልፏል
+country_pack_help	የሀገር ጥቅል የግብር ስም እና ስሌት፣ የፈጣን ክፍያ መንገድ፣ እና በሂሳቦች ላይ የሚታተመውን የንግድ መታወቂያ ያዘጋጃል። Kumkaj ግብር አያስገባም ወይም የመንግሥት ኢ-ደረሰኝ በየትኛውም ቦታ አያወጣም።
+currency_use_help	ለማንኛውም የሚደገፍ ገንዘብ ይሸብልሉ እና ተጠቀምን ይንኩ።
+day_close_help	የቀን መዝጊያ መመዝገብ ይህን ማጠቃለያ (እና ከተቆጠረ የመሳቢያ ልዩነት) ወደ ኦዲት መዝገብ ያስቀምጣል። ሽያጭን አያቆምም።
+expenses_word	ወጪዎች
+feature_access_help	ለተመረጡት ሰራተኞች የባህሪ መዳረሻ (ከተጨመሩ በኋላ መታ ያድርጉ)
+footer_local	አካባቢ SQLite · ለዘላለም ነፃ · ዜሮ ደመና
+fresh_book_moklanjo	ትኩስ = ባዶ ካታሎግ (በኋላ እቃዎችን ያክሉ)። መጽሐፍ = የመክፈቻ ክምችት ይተይቡ እና ከዚህ በታች ማን ዕዳ አለበት።
+fresh_selected	አዲስ ተመርጧል — መዝገቡ ባዶ ይቆያል። ዝግጁ ሲሆኑ ጨርስን ይንኩ።
+gross_word	ጠቅላላ
+how_start	እንዴት መጀመር ይፈልጋሉ?
+later_country_pack	በኋላ፦ ቅንብሮች → ለግብር እና የክፍያ መለያዎች የሀገር ጥቅልዎን ይተግብሩ።
+local_badge	አካባቢ
+measures_help_moklanjo	How parcels are measured at the booking desk. Type dimensions and weight in the units you use — standard (cm, m, in, ft · kg, g, lb, oz) or your own unit linked to cm / kg above (directly or through other units). Books always record kg. Leave a field empty to keep it.
+mix_type_hint_moklanjo	Type how much in each (cash / UPI / card / credit). Must add up to the bill. Credit needs a customer above.
+money_in_sales	ገቢ ገንዘብ (ሽያጭ)
+more_help_moklanjo	ካታሎግ፣ ሽያጭ፣ ክሬዲት፣ ቡድን፣ ምትኬ - በተጨማሪም አክሲዮን እና አስፈላጊ ሆኖ ሲገኝ ተጨማሪ እርሻዎች።
+net_word	ተጣራ
+offline_badge	ከመስመር ውጭ
+optional_login_help	አማራጭ መግቢያ (መታወቂያ + የይለፍ ቃል)። ባለቤቱ አንድ ጊዜ ያዘጋጃል፤ የይለፍ ቃልን በኋላ የሚቀይረው ተጠቃሚው ብቻ ነው።
+or_unlock_login	ወይም በመግቢያ መታወቂያ + የይለፍ ቃል ይክፈቱ
+permission_preset	ሥራ (ማያ ገጾችን እና መብቶችን ያዘጋጃል)
+preset_help_moklanjo	ገንዘብ ተቀባይ፦ ይሽጣል። ሥራ አስኪያጅ፦ ይሽጣል + እቃዎች + መሰረዝ/ማስተካከል።
+product_locked_moklanjo	Moklanjo
+product_only_moklanjo	This app is Moklanjo only — books + booking desk. Other trade faces ship as separate products later.
+purchases_cogs	ግዢዎች (COGS)
+qty_cap	ብዛት
+restore_help	መመለስ፦ ምትኬ ይምረጡ። መዝገቦቹ እንደዚያን ጊዜ ይከፈታሉ፤ አሁን ያሉት መዝገቦች መጀመሪያ ይቀመጣሉ፣ ስለዚህ ይህ ሊቀለበስ ይችላል።
+wipe_data_heading	የአካባቢ ውሂብ ሰርዝ
+wipe_data_help	Owner only — same choices as Windows uninstall. Business records clears trading history but keeps rates and setup (like the emergency unlock PIN). Shop setup removes the books database. Screen preferences clears window/language. Confirm with the Owner PIN. The emergency unlock PIN on Team is separate (covert wipe at unlock).
+wipe_trading	የንግድ መዝገቦች
+wipe_schema	የሱቅ ዝግጅት
+wipe_ui	የማያ ምርጫዎች
+wipe_owner_pin_ph	ለመሰረዝ የባለቤት ፒን
+wipe_delete_selected	የተመረጠውን ሰርዝ
+wipe_owner_only	የአካባቢ ውሂብን መሰረዝ የሚችለው ባለቤት ብቻ ነው።
+restore_owner_only	ምትኬን መመለስ የሚችለው ባለቤት ብቻ ነው።
+wipe_owner_pin_needed	የአካባቢ ውሂብ ለመሰረዝ የባለቤት ፒን ያስገቡ።
+wipe_nothing_selected	መጀመሪያ ምን እንደሚሰረዝ ይምረጡ።
+wipe_done	የተመረጠው የአካባቢ ውሂብ ተሰርዟል።
+wipe_schema_done	የሱቅ ዝግጅት ጠፍቷል — ለመቀጠል ሰርቨር ወይም ክላየንት ይምረጡ።
+rounded_total	የተጠጋጋ ድምር
+setup_app_moklanjo	Set up Moklanjo
+shop_logo_optional	የሱቅ አርማ (አማራጭ)
+stock_type_help	የእቃውን ስም ይጻፉ (ከፊሉ በቂ ነው)፣ ብዛት፣ ከዚያ ያስተካክሉ። ገና ያልተቆጠሩ እቃዎች አንድ ጊዜ ክትትል ጀምር ይፈልጋሉ።
+team_owner_help	ቅጥር ሥራ ይምረጡ (ገንዘብ ተቀባይ/አስተዳዳሪ)፣ ስም + ፒን መጀመር፣ ከዚያ ያክሉ። ይህ ሰው የሚለያይ ከሆነ ብቻ ስክሪኖችን እና መብቶችን ከታች ይክፈቱ፣ ከዚያ የስራ ማዋቀርን ያስቀምጡ። ሁሉም ሰው ከታች የራሱን ፒን ይለውጣል - ባለቤቱ የሌላውን ሰው መለወጥ አይችልም።
+they_owe_us	እነሱ ይበድሩናል
+unit_at_cap	መለኪያ @
+units_help	ለእቃ መለያዎች ኮዶች (ኪግ፣ ቁራጭ፣ ከረጢት)። እያንዳንዱ መለኪያ — በቀጥታ ወይም በሌሎች መለኪያዎች — ወደ መለኪያ ደረጃ መያያዝ አለበት (ኪግ · ሴሜ · ሚሊ · ቁራጭ)፣ ለምሳሌ 1 crate = 2 box እና 1 box = 20 cm። ቅየራዎች፦ 1 from = factor to። ገንዘቦች በፍጹም መለኪያ አይደሉም።
+we_owe_them	እኛ እንበድራቸዋለን
+who_unlocking	ማን እየከፈተ ነው?
+locked_word	ተቆልፏል
+show_pin	ፒን አሳይ
+hide_pin	ፒን ደብቅ
+set_owner_pin	የባለቤት ፒን ያስቀምጡ
+enter_owner_passcode	የባለቤት የይለፍ ኮድ ያስገቡ
+enter_staff_passcode	የሰራተኛ የይለፍ ኮድ ያስገቡ
+pin_count_zero	0 / 12 አሃዝ · ቢያንስ 4፣ ከዚያ እሺ
+pin_count_need	{} / 12 አሃዝ · {} ተጨማሪ ያስፈልጋል
+pin_count_full	12 / 12 አሃዝ · እሺ ይጫኑ
+pin_count_ready	{} / 12 አሃዝ · ዝግጁ ሲሆኑ እሺ ይጫኑ
+pin_hint_choose	4–12 አሃዝ ይምረጡ · ለማስቀመጥ አስገባ ወይም ክፈት
+pin_hint_new	አዲስ 4–12 አሃዝ የባለቤት ፒን · አስገባ ወይም ክፈት
+pin_hint_shop_code	የሱቅ መሣሪያ · የማጣመሪያ ኮድ {}
+pin_hint_books	ይህ መሣሪያ መዝገቦቹን ይይዛል
+pin_hint_paired	ተጨማሪ ቆጣሪ ተጣምሯል — ለመሸጥ ይክፈቱ
+pin_hint_pair_first	ተጨማሪ ቆጣሪ — መጀመሪያ ከሱቁ መሣሪያ ጋር ያጣምሩ
+unlock_to_continue	ለመቀጠል ይክፈቱ
+no_staff_yet	ገና ሰራተኛ የለም — እንደ ባለቤት ይክፈቱ፣ ከዚያ ቡድን
+status_server_set_pin	የሰርቨር ሁነታ — የባለቤት ፒን ያስቀምጡ
+status_server_tills	የሰርቨር ሁነታ — ተጨማሪ ቆጣሪዎች ሊቀላቀሉ ይችላሉ። ይክፈቱ
+status_server_unlock	የሰርቨር ሁነታ — እንደ ባለቤት ይክፈቱ
+status_client_unlock	የክላየንት ሁነታ — ለመሸጥ ይክፈቱ
+icon_new_selected	ምልክት፦ አዲስ ፋይል ተመርጧል — ምልክት አስቀምጥን ይንኩ
+icon_custom	ምልክት፦ ብጁ የቦታ ምልክት
+icon_default	ምልክት፦ የ Kumkaj ምልክት (ነባሪ) — ብጁ ይምረጡ
+logo_yours	አርማ፦ የሱቅዎ አርማ — በማያዎች እና በደረሰኞች ላይ ይታያል
+logo_default	አርማ፦ የ Kumkaj ምልክት (ነባሪ) — ካለዎት የራስዎን ይምረጡ
+tmpl_current	አሁን፦ {} — {}
+tmpl_selected	ተመርጧል፦ {} — {}
+setup_complete	ዝግጅት ተጠናቋል
+onboard_fresh_tmpl	አዲስ · {} — መዝገቡ ባዶ ይጀምራል፤ እቃዎችን በእቃዎች ይጨምሩ፣ ከዚያ ጨርስ።
+onboard_book_tmpl	መዝገብ · {} — እቃዎችን እና የመክፈቻ ብድር ይጨምሩ፣ ከዚያ ጨርስ።
+onboard_template_tmpl	ከፈለጉ ቦታውን ይሰይሙ፣ ከዚያ እንዴት እንደሚጀምሩ ይምረጡ።
+tmpl_blurb	የፖስታ መጽሐፍት እና የቦታ ማስያዣ ዴስክ ላኪዎች፣ አጓጓዦች፣ የቀን መጽሐፍ፣ AWB።
+tmpl_how	በጠረጴዛው ላይ የመጽሐፍ እሽጎች; ለዛሬ የቀን መጽሐፍ; ለተመኖች ፣ ለፓርቲዎች ፣ ለሪፖርቶች ትሮች።
+trk_booked	የተያዙ
+trk_picked_up	Picked up
+trk_in_transit	በመጓጓዣ ላይ
+trk_delivered	የቀረበ
+trk_rto	Returning to sender
+lane_to_dispatch	To dispatch
+lane_with_carrier	With carrier
+lane_failed	አልተሳካም
+lane_done_today	ዛሬ ተከናውኗል
+ops_board_help	Parcels by where they are in today's work. Tap parcels (or scan them) to pick them, then act on all picked at once — each lane offers only the moves that fit it.
+lane_empty	Nothing here right now.
+picked_fmt	{n} picked
+pick_all	Pick all
+bag_for_carrier	እጅ ወደ ተሸካሚ
+send_with_rider	Send with rider
+out_again	Out again
+return_to_sender	Return to sender
+runs_bags_heading	Recent runs & bags
+print_word	Print
+bag_word	ተሸካሚ ቦርሳ
+run_word	Rider run
+parcels_fmt	{n} parcels
+parcel_history	History
+attempt_fmt	{n} ይሞክሩ
+pieces_short_fmt	{n} pcs
+note_reason_ph	Note or reason
+ops_pick_first	Pick parcels first — tap them or scan them
+cod_to_collect	ደርሷል - ለመሰብሰብ COD
+cod_on_road	COD አሁንም በመንገድ ላይ ነው
+cod_owed_consignors	የተሰበሰበ - ላኪዎችን ለመክፈል
+cod_rto_fees	RTO fees to collect
+cod_to_hand_in	COD ለማስገባት
+parcel_one_fmt	{n} parcel
+facet_bank_title	ሪፖርቶች
+facet_bank_help	የቀን መዝገቦች፣ የተዋዋይ እድሜ፣ የባንክ ምዝገባዎች እና የጊዜ ትርፍ/ኪሳራ።
+facet_ops_title	ማጓጓዣዎች እና መላኪያዎች
+facet_ops_help	Scan or type AWB → Find, then advance / print label / COD. Dispatch to rider or carrier.
+facet_cod_title	የ COD ምዝገባ
+facet_cod_help	በማድረስ ላይ ይሰብስቡ እና ከዚያ ለላኪው ያስተላልፉ።
+facet_riders_title	Riders (own fleet)
+facet_riders_help	አሽከርካሪዎችን ያክሉ፣ ከዚያ የተያዙ AWBs ከኦፕስ ይላኩ።
+against_bill_ph	ከላይ ባለው የሂሳብ ቁጥር ላይ (አማራጭ)
+aliases_ph	ሌሎች ስሞች — በኮማ የተለዩ
+amount_blank_full_ph	መጠን (ባዶ = ሙሉ ቀሪ)
+amount_owed_ph	የተበደረ መጠን
+amount_ph	መጠን
+amount_received_ph	የተቀበልን መጠን
+amount_we_pay_ph	የምንከፍለው መጠን
+awb_scan_ph	AWB / ቅኝት ባርኮድ
+bulk_csv_ph	የጅምላ CSV - መድረሻ ፣ ተቀባይ ፣ ኪግ ፣ cod_paise ፣ ማስታወሻ
+business_name_ph	የንግድ ስም
+category_new_ph	ምድብ (አማራጭ፣ አዲስ ከሆነ ይፈጠራል)
+cod_amount_ph	የ COD መጠን
+code_bag_ph	ኮድ (ከረጢት)
+conv_factor_ph	ምክንያት (25 = 1 ከረጢት → 25 ኪግ)
+country_code_ph	የሀገር ኮድ ለምሳሌ IN፣ GB፣ US፣ AE፣ BR
+credit_khata_amount_ph	የብድር / ኻታ መጠን
+credit_limit_ph	የብድር ገደብ (0 = የለም)
+dim_unit_code_ph	ልኬት አሃድ ኮድ (ሴሜ)
+divisor_ph	Volumetric divisor (5000)
+extra_per_kg_ph	ተጨማሪ / ኪ.ግ
+first_amount_ph	የመጀመሪያ መጠን
+first_kg_ph	የመጀመሪያ ኪ.ግ (ንጣፍ)
+from_code_ph	ከኮድ (ከረጢት)
+item_name_lang_ph	የእቃ ስም — በቋንቋዎ ይጻፉ
+login_id_opt_ph	የተጠቃሚ ስም (ግዴታ፣ ልዩ)
+manager_pin_ph	ለማጽደቅ የሥራ አስኪያጅ ፒን (መሰረዝ ካልቻሉ ብቻ)
+new_branch_name_ph	አዲስ የቅርንጫፍ ስም
+new_password_ph	አዲስ የይለፍ ቃል (አማራጭ)
+new_pin_ph	አዲስ ፒን (4–12 አሃዝ)
+note_bank_ph	ማስታወሻ (ተቀማጭ፣ ወጪ፣ …)
+note_buy_expense_ph	ማስታወሻ (ነዳጅ፣ ኪራይ፣ …)
+note_expense_ph	ማስታወሻ (ነዳጅ፣ ቢሮ፣ …)
+notify_phone_ph	Notify phone (WhatsApp/SMS hook)
+options_moklanjo_ph	Options (optional) — Large=20, Gift wrap=10
+part_second_way_ph	በሁለተኛ መንገድ ክፍል (አማራጭ)
+phone_ph	ስልክ
+address_ph	አድራሻ
+party_custom_fields_heading	ማስተካከያ ሜዳዎች (የተመረጠው ፓርቲ)
+party_custom_help	በዚህ ፓርቲ ላይ ማንኛውንም መለያ እና እሴት ያክሉ - WhatsApp፣ GSTIN፣ የመንገድ ኮድ፣...
+party_custom_key_ph	የመስክ ስም (ለምሳሌ WhatsApp)
+party_custom_value_ph	Value
+party_custom_add	መስክ ያክሉ
+party_custom_remove	Remove field
+party_custom_empty	ገና ምንም ብጁ መስኮች የሉም
+party_custom_pick_first	Pick a party to add custom fields
+place_name_ph	የዚህ ቦታ ስም
+price_ph	ዋጋ
+qty_example_ph	ብዛት (ለምሳሌ 1.5 ለኪግ)
+quantity_ph	ብዛት
+reason_required_ph	ምክንያት (ግዴታ)
+role_title_ph	የሚና ርዕስ (ለምሳሌ ባሪስታ)
+service_pct_ph	የአገልግሎት % አማራጭ 0/10/12
+short_code_ph	አጭር ኮድ (MG02)
+slab_kg_ph	ኪ.ግ (0.5) ውስጥ የሚከፈል ንጣፍ
+staff_name_ph	Staff name / id
+starting_password_ph	የመጀመሪያ የይለፍ ቃል (አማራጭ)
+starting_pin_ph	የመጀመሪያ ፒን (4–12 አሃዝ)
+tax_rate_ph	የግብር ተመን ስም ወይም % — መደበኛ፣ ቀነሰ፣ 0፣ 5፣ 12፣ 18፣ 20
+to_code_ph	ወደ ኮድ (ኪግ)
+uncleared_no_ph	ካልተጠራቀመ # በላይ
+unit_cost_ph	የአንድ ዋጋ
+unit_kg_blank_ph	Unit (kg or blank)
+unit_name_bag_ph	ስም (ከረጢት)
+weight_unit_code_ph	Weight unit code (kg)
+zone_name_ph	Zone name
+pay_credit	ብድር
+book_kind_today	የዛሬ መዝገቦች
+book_kind_month	የዚህ ወር መዝገቦች
+book_kind_aging	ያልተከፈለ / ዴቢት-ክሬዲት
+book_kind_balance	የሂሳብ መዝገብ
+ops_desk_help	Scan AWB with a USB barcode scanner (or type it) → Find. Then advance, print label, or collect COD. Labels print Code 128.
+role_help_consignor	Role: Consignor — AR (they owe us). Same firm can also be Carrier.
+role_help_carrier	Role: Carrier — AP (we owe them). Same firm can also be Consignor.
+role_help_both	Roles: Consignor + Carrier — one party, AR and AP ledgers, net in Reports.
+role_help_supplier	Role: Supplier — AP for purchases.
+lane_declared_label	የሂሳብ ቦታ ማስያዝ
+lane_owner_label	በጥሬ ገንዘብ ማስያዝ
+money_lane_bill	ሂሳብ፦ {lane}

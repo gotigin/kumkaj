@@ -1,0 +1,835 @@
+# Sindhi — سنڌي (sd). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	ڪوريئر ايجنسي ڪتاب + بکنگ ڊيسڪ. مفت آف لائن.
+unlock	ان لاڪ ڪريو
+pin_hint	مالڪ PIN 0000 طور شروع ٿئي ٿو
+sell	بکنگ
+buy	ادا ڪريو
+books	روزنامچو
+books_help	اڄ جي پوزيشن. بکنگ = پارسل اندر. ادا ڪريو = ڪيريئر بل ۽ خرچ. پارٽيون = موڪليندڙ ۽ ڪيريئر.
+buy_help	خرچ واوچر ۽ ڪيريئر بل (پئسا ٻاهر). اڪائونٽ پارٽي ليجر تي رهي ٿو.
+sell_money_in	هڪ پارسل بک ڪريو
+buy_money_out	خرچ / ڪيريئر بل
+record_purchase	خريداري رڪارڊ ڪريو
+add_expense	خرچ جو ووچر
+bank_book	بينڪ ڪتاب
+credit_help	پارٽي جي سڃاڻپ منفرد آهي (نالا ورجائي سگهن ٿا). ڪردار: Consignor (AR)، ڪيريئر (AP)، يا ٻئي ان id تي. ليڊر الڳ الڳ رهندا؛ رپورٽون net ڏيکاريو.
+party_kind_ph	حسب ضرورت ڪردار (اختياري) - يا مٿي هڪ چپ تي ٽيپ ڪريو
+parties_list_heading	محفوظ ٿيل پارٽيون
+reports_help	ڊي بُڪ، قرضدار ۽ قرض ڏيندڙ، بئنڪ بُڪ، خرچ جا واؤچرز، نفعي ۽ نقصان.
+reports_today	ڏينهن جو ڪتاب (اڄ)
+reports_month	نفعي ۽ نقصان (مهينو)
+reports_aging	باقي / ڊيبٽ-ڪريڊٽ
+reports_balance_sheet	بیلنس شيٽ
+reports	بينڪ ڪتاب ۽ نفعو ۽ نقصان
+refresh	تازو ڪريو
+undo	واپس ڪريو
+start_tracking	ٽريڪنگ شروع ڪريو
+stock_minus	− اسٽاڪ
+stock_plus	+ اسٽاڪ
+settle_cash	نقدي سان طئي ڪريو
+settle_card	ڪارڊ سان طئي ڪريو
+items	قيمتون ۽ خدمتون
+nav_items	قيمتون
+more	وڌيڪ
+your_items	توهان جي شرح
+items_help	هر قطار هڪ شرح آهي (مثال طور سطحي زون A). يونٽ عام طور تي ڪلو آهي. ايڊٽ ڪرڻ لاءِ ٽيپ ڪريو.
+add_item	شرح شامل ڪريو
+new_item	نئين شرح
+adding_item	نئين شرح شامل ڪرڻ
+editing_item	ترميم
+save	محفوظ ڪريو
+remove	هٽايو
+empty_catalog	في الحال ڪوبه ريٽ. اوپن قيمتون ۽ خدمتون، ھڪڙو شامل ڪريو (نالو + قيمت، يونٽ ڪلو)، پوء بکنگ.
+counter_sale	انسداد بکنگ
+total	ڪل
+cash	نقد
+upi	UPI
+card	ڪارڊ
+credit	ڌريون
+clear	صاف ڪريو
+ready_to_sell	بڪ ڪرڻ لاءِ تيار
+today_prefix	اڄ
+today_mid	اڄ
+owed	ناقابلِ فراموش
+round_word	گول
+back	پوئتي
+sold_out	دستياب ناهي
+restock	ٻيهر اسٽاڪ ڪريو
+not_tracked	ٽريڪ ناهي
+in_stock	اسٽاڪ ۾
+marked_sold_out	نشانو لڳل موجود ناهي
+add_upper	شامل ڪريو
+na	N/A
+qty	وزن/مقدار
+unit_at	ريٽ @
+actual	اصلي
+applied	لاڳو ٿيل
+note_ph	نوٽ (اختياري)
+rounded	گول ٿيل
+split	ورهايو
+counter	ڪائونٽر
+parcel	پارسل
+order	آرڊر
+sales	بکنگ
+sales_refunds	بکنگ ۽ واپسي
+day_close	ڏينهن جو اختتام
+reports_expenses	بينڪ ڪتاب ۽ نفعو ۽ نقصان
+nav_reports	رپورٽون
+nav_settings	سيٽنگون
+nav_lock	تالا
+sidebar_settings	سائڊبار سيٽنگون
+sidebar_settings_help	ساڳيا آئڪن جيئن سائڊ ريل تي. ترتيب بدلائڻ لاءِ هڪ قطار ڊريگ ڪريو. ڏيکارڻ يا لڪائڻ لاءِ سوئچ کي تبديل ڪريو. سيٽنگون ۽ لاڪ هميشه بار تي رهندا.
+sidebar_always_on_short	هميشه آن
+sidebar_back_settings	پوئتي
+sidebar_shown	ظاهر ٿيل
+sidebar_hidden	لڪل
+sidebar_always_on	هميشه بار تي
+sidebar_shown_hint	پاسي واري ريل / هيٺين ٽيبز تي ڏيکاريل
+sidebar_hidden_hint	بار کان لڪل
+sidebar_menu_items	مينيو ۽ شيون
+sidebar_enable_all	سڀ کي چالو ڪريو
+sidebar_disable_all	سڀ کي غير فعال ڪريو
+sidebar_order_saved	سائيڊبار جو ترتيب محفوظ ٿي وئي
+sidebar_visibility_saved	سايڊبار جي نظر اچڻ محفوظ ڪئي وئي
+amounts_hide	لڪايو
+amounts_show	ڏيکاريو
+no_sale_yet	اڃا تائين وڪرو ناهي ٿيو
+favorites	پسنديده
+favorites_help	جن شين کي توهان اڪثر وڪرو ڪريو ٿا، توهان جي لاگ ان لاءِ محفوظ ٿيل آهن. بل ۾ هڪ شامل ڪريو، يا هيٺين سڀني شين مان پنهنجي فهرست ٺاھيو.
+your_favorites	توهان جا پسنديده
+all_items	سڀ شيون
+no_favorites	اڃا ڪا پسنديده ناهي — هيٺ ڏنل فهرست مان شيون شامل ڪريو.
+add_to_bill	بل ۾ شامل ڪريو
+added	شامل ڪيو ويو
+owes_word	ڪو قرضدار آهي
+selected_word	منتخب ٿيل
+chip_clear_credit	صاف ڪريو — ڪريڊٽ يا اڳواٽ وٺو
+chip_missing_customer	منتخب ٿيل گراهڪ غائب — ٻيهر چونڊيو
+chip_no_customer	اڃا ڪوبه گراهڪ ناهي — نالو لکو، پوءِ ڪريڊٽ تي ٽيپ ڪريو
+credit_summary_fmt	{} گراهڪ · کليل ڪريڊٽ {} · رکيون ويون اڳواڻيون {}
+recent_label	تازو:
+inventory	انوينٽري
+inventory_stock	انوينٽري ۽ اسٽاڪ
+branches	برانچز
+branches_org	برانچز ۽ ادارو
+credit_customers	پارٽيون (قرضدار ۽ قرضدار)
+customer_name_ph	پارٽي جو نالو
+new_customer_ph	نئين پارٽي جو نالو
+item_name_ph	شرح جو نالو (مثال طور سطحي علائقو A)
+item_price_ph	في ڪلوگرام / پهريون سليب
+start_template	پراڊڪٽ
+next_booking	ايندڙ بکنگ
+destination_ph	منزل شهر / زون
+consignee_ph	وصول ڪندڙ جو نالو
+consignee_phone_ph	وصول ڪندڙ فون
+consignee_address_ph	پهچائڻ جو پتو
+origin_name_ph	موڪليندڙ جو نالو
+origin_phone_ph	موڪليندڙ فون
+origin_address_ph	کڻڻ / اصلي پتو
+booking_consignor_heading	موڪليندڙ (گراهڪ / موڪليندڙ)
+booking_consignee_heading	موڪليندڙ (وصول ڪندڙ)
+booking_consignor_hint	ڀرڻ لاءِ پارٽي چونڊيو، يا اندر وڃڻ لاءِ خالي ڇڏي ڏيو. گهر کڻڻ ۽ RTO جي ضرورت آهي.
+booking_consignee_hint	پارسل وصول ڪندڙ. واڪ-ان ڪائونٽر ڊراپ آف لاءِ خالي ڇڏي ڏيو.
+weight_kg_ph	اصل ڪلو
+length_cm_ph	ايل سي ايم
+breadth_cm_ph	بي سي ايم
+height_cm_ph	ايڇ سي ايم
+chargeable_kg	قابل چارج ڪلو
+awb_label	AWB
+booking_help	موڪليندڙ + موڪليندڙ (خالي ٺيڪ) → منزل → وزن → کڻڻ جي شرح → اڪائونٽ/نقد → ادا. AWB رسيد تي پرنٽ ڪري ٿو. ايندڙ بکنگ ڊيسڪ کي صاف ڪري ٿي. گول شروع ٿئي ٿو برابر لاڳو ٿيل - ترميم ڪريو صرف بل کي گول ڪرڻ لاءِ.
+cart_empty_hint	ڊيسڪ خالي - موڪليندڙ / موڪليندڙ اختياري، منزل ۽ وزن مقرر ڪريو، ADD تي ٽيپ ڪريو شرح، پوء ادا ڪريو.
+team	ٽيم
+team_pins	ٽيم ۽ PINس
+my_pin_settings	منهنجو PIN
+settings_hub_help_my_pin	هن ڊيوائس تي سائن ان ٿيل شخص لاءِ ان لاڪ PIN کي تبديل ڪريو.
+team_self_help	صرف توھان پنھنجي انلاڪ پن کي تبديل ڪري سگھو ٿا (۽ اختياري لاگ ان پاسورڊ). مالڪ کان پڇو جيڪڏهن توهان کي مختلف اسڪرين يا حقن جي ضرورت آهي.
+backup_settings	بيڪ اپ ۽ سيٽنگون
+lock_app	ايپ کي لاڪ ڪريو
+pick	چونڊيو
+select	چونڊيو
+advance	اڳتي وڌايو
+owner	مالڪ
+staff	عملو
+photo	تصوير
+auto	Auto
+prev	پوءِ وارو
+next	اڳتي
+ok	OK
+this_shop	Server
+extra_till	Client
+off	بند
+server	Server
+client	Client
+language_currency	ٻولي ۽ ڪرنسي
+language	ٻولي
+choose_language	پنهنجي ٻولي چونڊيو
+language_setup_hint	هن ڊيوائس جي ٻولي جي پيروي ڪريو، يا پاڻ هڪ چونڊيو.
+lang_follow_platform	ڊيوائس جي ٻولي
+lang_pick_user	ٻولي چونڊيو
+lang_platform_now	هن وقت ڊوائيس جي ٻولي
+selected_language	منتخب ٿيل
+continue	جاري رکو
+this_device	هن ڊوائيس
+device_use_q	هن ڊوائيس کي ڪهڙي طرح استعمال ڪيو ويندو؟
+last_server_mode	هو Server — جاري رکڻ لاءِ ٽيپ ڪريو
+last_client_mode	هو Client — جاري رکڻ لاءِ ٽيپ ڪريو
+choose_server	هڪ سرور چونڊيو
+choose_server_hint	هڪ موجوده سرور کوليو، يا ٻين ڪاروبار لاءِ هڪ ٺاهيو.
+create_new_server	نئون سرور ٺاهيو
+open_server	کوليو
+new_server_name_ph	نئين سرور جو نالو (اختياري)
+server_remove_pin_ph	مالڪ PIN سرور هٽائڻ لاءِ
+only_owner_remove_server	رڳو مالڪ سرور هٽائي سگھي ٿو
+owner_pin_remove_server	مالڪ PIN کي هن سرور کي هٽائڻ جي ضرورت آهي
+device_setup_help	Server هتي ڪتاب رکي ٿو. Client جو جوڙو Server سان آهي.
+currency	ڪرنسي
+backup	بيڪ اپ
+settings_sec_diag	تشخيص
+settings_hub_help	هڪ وقت ۾ هڪ ئي علائقو کوليو — گھٽ اسڪالرنگ، واضح چونڊون.
+settings_sec_devices	ٻيا ڊوائيسز
+settings_sec_alerts	خبردار
+alerts_help	توهان لاءِ اسٽيٽس پيغام اسڪرين تي ڪيتري دير لاءِ ظاهر رهن ٿا (هن لاگ ان ۾).
+snack_secs_ph	سيڪنڊ (3–60، ڊيفالٽ 10)
+snack_secs_save	خبردار وقت محفوظ ڪريو
+snack_secs_saved	خبردار وقت محفوظ ٿيو — {n} سيڪنڊ
+snack_secs_bad	سيڪنڊن کي نمبر طور داخل ڪريو (3-60)
+cancelled	منسوخ ٿي ويو
+cancel	منسوخ
+opening_client	ڪسٽمر کوليو پيو وڃي...
+preparing_desk	ميز تيار پيو ڪيو وڃي...
+opening_server	سرور کوليو پيو وڃي...
+creating_server	سرور ٺاهي پيو وڃي...
+diag_privacy_help	لاگز هن ڊوائيس تي رهندا آهن. راز (PIN، پاسورڊ) ڪڏهن به محفوظ نه ڪيا ويندا آهن. ڊوائيس کان ٻاهر پيڪيج شيئر ڪرڻ لاءِ هر وقت توهان جي واضع منظوري گهربل آهي — ڪڏهن به ٽئين پارٽين کي نه وڪيو وڃي ٿو ۽ نه ڏنو وڃي ٿو.
+diag_level	تفصيل جي سطح
+diag_level_error	غلطيون
+diag_level_warn	تنبيهون
+diag_level_info	Info
+diag_level_debug	Debug
+diag_support_start	30 منٽن جي مدد سيشن شروع ڪريو
+diag_support_stop	مدد سيشن ختم ڪريو
+diag_support_started	مدد سيشن تي - Debug تفصيل لاءِ 30 منٽ
+diag_support_ended	مدد سيشن ختم ٿي ويو
+diag_export_local	مقامي ڪاپي برآمد ڪريو
+diag_export_local_done	مقامي تشخيص تيار آهي {path} — جتي ڪاپي محفوظ ڪرڻ چاهيو اتي چونڊيو
+diag_approve_send	هن ڊوائيس مان شيئر جي منظوري ڏيو
+diag_send_heading	هن ڊوائيس مان شيئر ڪريو
+diag_send_help	منظوري هڪ پيڪيج آهي، پوءِ ختم ٿي وڃي ٿي. عارضي — صرف پراڊڪٽ کي درست يا بهتر ڪرڻ لاءِ استعمال ڪيو وڃي ٿو. ٽئين پارٽين سان نه ورهايو وڃي. لينڪس، ونڊوز، ميڪ او ايس، ۽ اينڊرائيڊ تي ڪم ڪري ٿو.
+optional_login_heading	اختياري لاگ ان
+rights_heading	حق
+booking_scope_heading	ملڪي / بين الاقوامي
+diag_send_approved	هڪ پيڪيج لاءِ شيئر منظور ڪيو ويو (جلد ختم ٿي رهيو آهي)
+diag_export_send	شيئر پيڪيج ٺاهيو (منظوري جي ضرورت آهي)
+diag_export_send_done	پيڪيج تيار آهي {path} — محفوظ ڪرڻ لاءِ جاءِ چونڊيو، پوءِ صرف Kumkaj سپورٽ ڏانهن موڪليو
+diag_save_bundle	تشخيصي نقل محفوظ ڪريو
+diag_bundle_saved	تشخيصي ڪاپي {path} تي محفوظ ٿي وئي
+diag_bundle_failed	تشخيصي ڪاپي محفوظ نه ٿي سگهي — ٻيهر ڪوشش ڪريو
+diag_clear	تشخيصي لاگز صاف ڪريو
+diag_cleared	تشخيصي لاگز صاف ڪيا ويا
+use	استعمال ڪريو
+add_branch	شاخ شامل ڪريو
+add_conversion	تبديل شامل ڪريو
+add_item_plain	شيءَ شامل ڪريو
+add_note	نوٽ شامل ڪريو
+add_opening_balance	شروعاتي بيلنس شامل ڪريو
+add_rider	سوار شامل ڪريو
+add_staff	اسٽاف شامل ڪريو
+add_unit	يونٽ شامل ڪريو
+add_use_name	هن نالي کي شامل / استعمال ڪريو
+allow_extra_tills	اضافي ڪيش ڪائونٽر جي اجازت ڏيو
+amend	ترميم ڪريو
+apply_country_pack	ملڪ جو پيڪ لاڳو ڪريو
+datetime_appearance	تاريخ ۽ وقت جي ڏيک
+datetime_appearance_help	ڪتاب سال جي پهرين RFC3339 اندر رکي ٿو. اهي صرف تبديل ڪندا آهن ته ڪيئن تاريخون ۽ ڪلاڪ رسيدن، ليبلز، رپورٽون، ۽ اسڪرين تي نظر اچن ٿا.
+datetime_example	هاڻوڪو مثال: {ex}
+date_order	تاريخ جو ترتيب
+date_order_dmy	D/M/Y
+date_order_mdy	M/D/Y
+date_order_ymd	Y-M-D
+time_format	ڪلاڪ
+time_format_24h	24 ڪلاڪ
+time_format_12h	12 ڪلاڪ
+attach_bill_photo	بل جو فوٽو لڳايو
+attach_pdf	PDF لڳايو
+attach_photo	تصوير لڳايو
+bank	بئنڪ
+bank_in	اندر بئنڪ
+bank_out	بينڪ ٻاهر
+bank_to_till	بينڪ → ڪيش ڪائونٽر
+till_to_bank	ڪيش ڪائونٽر → بئنڪ
+mark_cleared	مارڪ ڪيل صاف ڪري ڇڏيو
+unmark	غير نشان لڳايو
+role_both	ٻئي
+role_carrier	ڪيريئر
+role_cashier	ڪيشيئر
+role_consignor	موڪليندڙ
+role_manager	مئنيجر
+role_supplier	سپلائر
+branch_name_sell_ph	وڪڻ لاءِ شاخ جو نالو
+bring_my_book	منهنجو ڪتاب آڻيو
+business_tax_id_ph	ڪاروباري ٽيڪس جي سڃاڻپ
+card_amount_ph	ڪارڊ رقم
+cash_amount_ph	نقد رقم
+upi_amount_ph	UPI رقم
+carrier_cost_ph	ڪيريئر خرچ
+carrier_party_ph	ڪيريئر پارٽي
+choose_icon	آئڪن چونڊيو
+choose_logo	لوگو چونڊيو
+choose_receipt_stamp	رسيد جو نشان چونڊيو
+choose_payment_qr	ادائيگي چونڊيو QR
+clear_icon	آئڪن صاف ڪريو
+clear_logo	لوگو صاف ڪريو
+clear_photo	تصوير صاف ڪريو
+clear_stamp	اسٽيمپ صاف ڪريو
+clear_payment_qr	ادائيگي صاف ڪريو QR
+print_faces	پرنٽ منهن (رسيد / مدت بل)
+print_faces_help	بکنگ جي رسيدن ۽ مدت جي بلن تي توهان جي لوگو جي اڳيان اختياري اسٽيمپ ۽ ادائيگي QR.
+awb_pools_heading	ڪيريئر AWB نمبر پول
+add_awb_pool	AWB پول شامل ڪريو
+awb_pool_carrier_ph	ڪيريئر پارٽي جو نالو
+awb_pool_start_ph	شروع نمبر.
+awb_pool_end_ph	آخر نمبر.
+awb_pool_prefix_ph	اڳوڻو (اختياري)
+awb_pool_label_ph	ليبل (اختياري)
+pieces_ph	ٽڪرا (خالي = 1) - سامان / ملٽي پيس لاءِ وڌايو
+bulk_awbs_ph	بلڪ AWBs - ھڪڙي اسٽيٽس ايڊوانس لاءِ گھڻن (نئين لائن يا ڪاما) کي پيسٽ ڪريو
+tds_cut_ph	TDS ڪٽ (اختياري)
+discount_ph	رعايت (اختياري)
+cheque_no_ph	چيڪ نمبر (اختياري)
+bill_reminder_chase	بل ياد ڏياريندڙ چيس لسٽ
+month_mix_report	مهيني ملائي رپورٽ
+copy_month_gst_csv	ڪاپي مهيني GST CSV
+domestic	گهريلو
+international	بين الاقوامي
+pick_logo	لوگو چونڊيو
+booking_scope_hint_domestic	حجم ÷5000 (گهريلو) - ٽيپ ڪريو انٽرنيشنل ÷6000 هوا لاءِ
+booking_scope_hint_intl	Volumetric ÷6000 (بين الاقوامي هوائي) - دڪان لاءِ گھربل ٽيپ ڪريو ÷5000
+cod_register	COD رجسٽر
+collect_cod	گڏ ڪريو COD (AWB)
+consignments_dispatch	سامان ۽ ترسيل
+consignor_party_ph	موڪليندڙ / پارٽي جو نالو
+copy_day_book_csv	روزانو ڪتاب نقل ڪريو CSV
+copy_day_close	روزانو بند ڪريو
+copy_items_csv	شيون نقل ڪريو CSV
+copy_outstanding_csv	بقايه نقل ڪريو CSV
+copy_parties_csv	پارٽيز جي نقل CSV
+copy_party_ledger_csv	پارٽي ليجر جي نقل CSV
+copy_receipt	رسيد جي نقل ڪريو
+copy_report	رپورٽ ڪاپي ڪريو
+counted_cash_ph	درانور ۾ ڳڻيل نقد
+counter_agency_ph	ڪائونٽر / ايجنسي جو نالو (اختياري)
+create_backup	بيڪ اپ ٺاهيو
+day_close_summary	ڏينهن جو اختتامي خلاصو
+delete_party	منتخب پارٽي کي ختم ڪريو
+dispatch_to_rider	ڊسپيچ بک ٿيل → سوار
+docket_charge_ph	ڊڪٽي چارج
+declared_value_ph	بيان ڪيل قدر
+contents_ph	مواد
+eway_ph	اليڪٽرڪ بل نمبر.
+insurance_label	بيمه
+yes_label	ها
+no_label	نه
+print_route_label	پرنٽ جو رستو
+new_party_kind_label	نئين قسم جي پارٽي
+done_open_books	ڪَم مڪمل — ڪتاب کوليو
+export_day	برآمدي ڏينهن
+extra_note_expense_ph	گذريل خرچ تي اضافي نوٽ
+extra_note_awb_ph	هن AWB / وڪرو تي اضافي نوٽ
+failed_delivery	ناڪام پهچائڻ
+find_scan_awb	ڳوليو / اسڪين AWB
+forget_shop	ھن دڪان کي وساريو
+fuel_ph	ٻارڻ
+handover_carrier	هٿ سان بک ٿيل → ڪيريئر
+import_day	درآمد جو ڏينهن
+import_items_csv	شيون درآمد ڪريو / قيمتون CSV…
+import_parties_csv	پارٽيون درآمد ڪريو CSV...
+import_pincodes_csv	درآمد ڪريو پن ڪوڊ CSV…
+import_carrier_bill_csv	ڪيريئر بل CSV درآمد ڪريو...
+copy_carrier_bill_report	آخري ڪيريئر بل جي رپورٽ کي نقل ڪريو
+use_carrier_cost	ڪيريئر خرچ استعمال ڪريو
+rate_carrier_ph	ڪيريئر (خالي = اسان جي وڪرو جي شرح)
+rate_party_ph	پارٽي (خالي = سڀ گراهڪ)
+carrier_pick_ph	قيمت لاء ڪيريئر (مقابلي کان)
+item_name	شيءِ جو نالو
+load_bulk_row	گھڻي قطار لوڊ ڪريو → ڊيسڪ
+login_id_ph	صارف جو نالو
+mark_delivered	نشان پهچايو
+manifest_cod_total	COD ڪل
+manifest_received_by	پاران وصول ڪيو ويو
+manifest_sign	نشاني
+ndr_address_wrong	پتو غلط
+ndr_customer_unavailable	دستياب ناهي
+ndr_door_locked	دروازو بند
+ndr_other	ٻيو
+ndr_refused	انڪار ڪيو
+out_for_delivery	پهچائڻ لاء ٻاهر
+print_drs	پرنٽ DRS
+print_run_sheet	پرنٽ رن شيٽ
+reattempt	ٻيهر ڪوشش
+rider_cod_handed_ph	COD حوالي ڪيو ويو
+settle_rider_cod	سيٽل رائڊر COD
+mode_desk	ڊيسڪ
+mode_rider	سوار
+waiting_office	آفيس پهچڻ جي انتظار ۾
+capture_signature	دستخط تي قبضو ڪريو
+incoming_manifest	ايندڙ پڌرو
+pickup_request	کڻڻ جي درخواست
+pickup_run	کڻڻ جي ڊوڙ
+auto_assign_area	خودڪار تفويض واري علائقي
+reorder_stops	ٻيهر ترتيب ڏئي ٿو
+settle_rider_pay	سواري جي ادائيگي کي ترتيب ڏيو
+vehicle_inspect	گاڏين جي چڪاس
+print_docket	پرنٽ ڊاکٽ
+franchise_statement	فرنچائز بيان
+tally_export	ٽيلي واؤچر برآمد
+open_whatsapp	WhatsApp کوليو
+copy_sms	ڪاپي ايس ايم ايس ٽيڪسٽ
+pick_barcode_image	اسڪين ڪرڻ لاءِ تصوير چونڊيو
+share_receipt_whatsapp	WhatsApp تي رسيد حصيداري ڪريو
+delivery_feedback	ترسيل موٽ
+lan_self_book	LAN خود بڪنگ
+new_party_clear	نئون پارٽي (فارم صاف ڪريو)
+new_party_kind_ph	نئين پارٽي جو قسم (فراهم ڪندڙ / ڪيريئر)
+next_country	اڳيون ملڪ
+prev_country	پويون ملڪ
+note_gstin_ph	نوٽ / GSTIN / معاهدي جي ياددھاني
+note_pod_ph	نوٽ / POD (اختياري)
+on_account_ap	حساب تي (AP)
+org_optional_ph	اداره (اختياري)
+paid_now	هاڻي ادا ڪريو
+pairing_code_ph	جيڙي ڪوڊ
+pair_now	هاڻي جوڙيو
+party_name_selected_ph	پارٽي جو نالو (يا چونڊيل استعمال ڪريو)
+password_ph	پاسورڊ
+pay_ap_card	اي پي ڪارڊ سان ادا ڪريو
+pay_ap_cash	اي پي نقد سان ادا ڪريو
+pay_ap_upi	AP ادا ڪريو UPI
+period_bill	مدت بل
+period_bill_party	مدت بل (پارٽي)
+pick_pod_photo	POD فوٽو چونڊيو
+print_awb_label	AWB ليبل پرنٽ ڪريو
+print_open	پرنٽ / کوليو
+reason_amend_ph	ترميم / رد / رقم واپس ڪرڻ جو سبب
+reason_note_ph	سبب / نوٽ (فضول، ڳڻپ، ...)
+record_day_close	ڏينهن جو رڪارڊ بند ڪريو
+refresh_from_shop	دوڪان مان تازو ڪريو
+refund	واپسي
+remit_cod	موڪلڻ COD (پارٽي)
+remove_selected	منتخب ڪيل هٽايو
+restore_backup	بيڪ اپ بحال ڪريو
+rider_name_ph	سوار جو نالو
+rider_phone_ph	سوار فون
+riders	سوار
+riders_own_fleet	سوار (پنهنجو جهاز)
+rollup	رول-اپ
+save_booking_measures	بکنگ جي قدمن کي بچايو
+save_brand	برانڊ محفوظ ڪريو
+save_business_id	ڪاروبار جي سڃاڻپ محفوظ ڪريو
+save_business_name	ڪاروبار جو نالو محفوظ ڪريو
+save_features	نوڪري جي سيٽنگ کي بچايو
+save_names	نالن کي محفوظ ڪريو
+server_ip_ph	Server IP (مثال طور 192.168.1.10)
+set_credit_limit	پارٽي تي حد لاڳو ڪريو
+set_login_selected	منتخب تي لاگ ان لاڳو ڪريو
+set_login_named	{name} تي لاگ ان لاڳو ڪريو
+shop	دڪان
+start_fresh	نئون شروع ڪريو
+stop_extra_tills	اضافي ڪيش ڪائونٽر بند ڪريو
+backup_auto	هر ڏينهن پاڻمرادو بيڪ اپ ٿيو · آخري {when} · گذريل 14 ڏينهن {dir} ۾ محفوظ آهن.
+backup_auto_none	هر ڏينهن پاڻمرادو بيڪ اپ ٿيو — پهريون هڪ لمحي ۾ هلندو.
+backup_copy_to	ڪاپيون پڻ {dir} ڏانهن وڃن ٿيون.
+backup_copy_btn	ڪاپيون بيڪ اپ پڻ هڪ فولڊر ڏانهن...
+autostart_off	هن ڪمپيوٽر سان شروع ڪريو
+autostart_on	هن ڪمپيوٽر سان شروع ٿئي ٿو ✓ — بند ڪرڻ لاءِ ٽيپ ڪريو
+autostart_done_on	هي ڪمپيوٽر هاڻي ايپ کوليندو آهي جڏهن اهو شروع ٿئي ٿو — دوڪان جو سرور بجلي بند ٿيڻ کان پوءِ واپس آيو آهي.
+autostart_done_off	هي ڪمپيوٽر هاڻي ايپ کولڻ بند ڪري ڇڏيو آهي جڏهن اهو شروع ٿئي ٿو.
+right_allowed	جي اجازت آهي
+right_with_approval	منظوري سان
+right_denied	اجازت ناهي
+editing_staff	لاءِ حق
+team_pick_ph	اسٽاف کي ايڊٽ ڪرڻ لاءِ — نالو، يوزر نيم، يا چونڊيو
+select_staff	هن اسٽاف کي چونڊيو
+rights_help	حق - تبديل ڪرڻ لاءِ ٽيپ ڪريو: اجازت ڏنل → منظوري سان (ان وقت مينيجر جو پن) → اجازت ناهي.
+right_void_refund	بکنگ کي رد يا واپسي
+right_amend_sale	رڪارڊ ٿيل بکنگ ۾ ترميم ڪريو
+find_server	دوڪان جو سرور ڳوليو
+finding_server	هن Wi‑Fi تي دڪان جي سرور کي ڳولي رهيا آهيو...
+no_server_found	ڪوبه نه مليو. Server تي: سيٽنگون → ٻيا ڊوائيس → اضافي ڪيش ڪائونٽر جي اجازت ڏيو (ساڳيو Wi‑Fi). يا اتي ڏيکاريل IP لکيو.
+servers_found_pick	ان دڪان تي ٽيپ ڪريو جنهن سان توهان ڳنڍڻ چاهيو ٿا.
+server_host_selected	{host} استعمال ڪندي — پئيرنگ ڪوڊ داخل ڪريو، پوءِ هاڻي پئير ڪريو.
+device_forgotten	دوڪان هن ڊوائيس کي وساري ڇڏيو آهي — ٻيهر ان کي دوڪان جي موجوده ڪوڊ سان جوڙي ڇڏيو. ان تي انتظار ڪندڙ آرڊر رکيا ويا آهن.
+forget_device	ڀلجي وڃو
+last_seen	ڏٺو
+new_pair_code	نئون جوڙي ڪوڊ
+lan_offline	دوڪان جو سرور پهچي نه سگهيو
+lan_offline_waiting	دوڪان سرور پهچڻ لائق ناهي · {n} انتظار ڪري رهيو آهي
+lan_connecting	دوڪان سان ڳنڍجي رهيو آهي...
+pair_finishing	جوڙو ختم ڪرڻ… آفيس جي ڪتابن کي لاڳو ڪرڻ
+pair_opening	آفيس جو افتتاح…
+lan_live	لائيو
+lan_sending	{n} موڪلي رهيو آهي
+lan_sign_in_to_send	ٻيهر سائين ان ڪريو ته موڪلي سگهو {n}
+lan_pair_again	هن ڊوائيس کي ٻيهر جوڙي ڇڏيو
+lan_update_app	ايپ کي اپڊيٽ ڪريو - هي ڊوائيس ۽ آفيس سرور جا مختلف ورجن آهن
+allow_firewall	ٻين ڊوائيسن کي ڳنڍڻ جي اجازت ڏيو
+firewall_blocked	هن ڪمپيوٽر جو فائر وال ٻين ڊوائيسز کي بلاڪ ڪري رهيو آهي — ٻين ڊوائيسز کي ڪنيڪٽ ڪرڻ جي اجازت ڏيڻ لاءِ Allow other devices تي ٽيپ ڪريو.
+firewall_waiting	ايڊمن پرامپٽ جو انتظار...
+lan_join_help	ٻئي ڊوائيس تي: Client موڊ → دڪان جو سرور ڳوليو (يا {addr} ٽائيپ ڪريو) → پئيرنگ ڪوڊ {code}.
+lan_pair_status	Wi‑Fi {addr}
+lan_join_help_no_addr	هن ڊوائيس کي Wi‑Fi سان ڳنڍيو ايڊريس لاءِ.
+lan_no_address	اڃا ڪو به Wi‑Fi پتو ناهي — دڪان سان Wi‑Fi ڳنڍيو.
+lan_not_listening	جي ڊوائيس قبول نٿا ٿين (پورٽ {port} مصروف). ايپ وري شروع ڪريو.
+lan_tills_off	اضافي ڪيش ڪائونٽر بند آهن. ٻئي ڊوائيس کي شامل ٿيڻ جي اجازت ڏيو.
+paired_with	جوڙيل · {url}
+not_paired	نه جوڙو
+choose_device_use	Server يا Client چونڊيو.
+paired_note	جوڙو ٿيل. وڪرو ڪرڻ لاءِ آنلاڪ ڪريو، يا تازو ڪرڻ لاءِ ريفريش ڪريو.
+last_update_at	آخري تازه ڪاري: {time}.
+pair_intro	سرور ڳوليو، يا انجو پتو ۽ پئيرنگ ڪوڊ لکو.
+queue_waiting	دوڪان تائين پهچڻ جو انتظار ({n}):
+queue_tries	ڪوشش ڪئي {n} ڀيرا · آخري جواب: {e}
+save_backup_copy	بيڪ اپ ڪاپي محفوظ ڪريو...
+backup_copy_saved	بيڪ اپ ڪاپي محفوظ ٿي وئي — ان کي هن ڊوائيس کان ٻاهر رکو (هڪ USB اسٽڪ يا ٻيو ڊوائيس)
+backup_copy_overdue	هن ڊوائيس مان {n} ڏينهن لاءِ ڪو به بيڪ اپ ڪاپي نه نڪتو — سيٽنگون → بيڪ اپ
+backup_copy_failed	بيڪ اپ ڪاپي اتي محفوظ نه ٿي سگهي — ٻيو جاءِ چونڊيو
+clock_off	هن ڊوائيس جو ڪلاڪ دُڪان جي سرور کان {min} منٽ پٺتي آهي — هن ڊوائيس تي صحيح وقت سيٽ ڪريو
+printers_heading	هن ڊوائيس تي پرنٽر
+printers_help	حقيقي پرنٽر ڳوليو، پوءِ رسيد يا AWB ليبل چونڊيو. هر نوڪري جي پنهنجي چوٽي، پورٽريٽ يا لينڊ اسڪيپ آهي، ۽ بائيٽ ڪيئن موڪليا ويا آهن. هڪ ليبل بارڪوڊ کي پرنٽ ڪري ٿو. خالي جاءِ = نه ڇپايو.
+job_width	مواد جي ويڪرائي (ملی ميٽر)
+job_width_ph	يا ٽائپ ڪريو ويڪر، 40-210 ملي ايم
+job_layout	خاڪو
+job_delivery	نوڪري ڪيئن موڪلي وڃي ٿي
+job_size	فونٽ جو سائيز
+job_size_ph	مثال طور 18، 20، 26...
+save_receipt_format	محفوظ ڪريو رسيد فارميٽ
+save_label_format	محفوظ ڪريو ليبل فارميٽ
+test_receipt_format	ٽيسٽ جي رسيد
+test_label_format	ٽيسٽ ليبل
+test_receipt_sent	نموني جي رسيد موڪلي وئي
+test_label_sent	نموني ليبل موڪليو
+test_print_no_printer	ان ڪم لاءِ ڪو پرنٽر نه آھي - ھن جڳھ ھيٺ ھڪڙو شامل ڪريو
+printers_host_only	شاپ ڊيوائس (سرور) تي پرنٽر مقرر ٿيل آهن. هي جيستائين اتي نوڪريون موڪلي ٿو - سرور تي رهڻ / شامل ڪريو / تفويض ڪريو. ٽيسٽ صفحو سرور ڏانهن وڃي ٿو.
+printers_pool_heading	پرنٽر
+printers_routes_heading	جتي شيون ڇاپجن ٿيون
+printer_label_ph	نالو (مثال طور ڊيسڪ)
+printer_target_ph	ميزبان:9100 · bt:MAC · usb:VID:PID · سسٽم جو نالو
+printer_mode_heading	نئين پيداوار لاء پروفائل
+printer_mode_standard	معياري پورٽريٽ
+printer_mode_landscape	معياري منظر
+printer_mode_thermal	حرارتي
+printer_mode_standard_short	پورٽريٽ
+printer_mode_landscape_short	لائينڊ اسڪيپ
+printer_mode_thermal_short	حرارتي
+printer_format_custom	نئون ڪسٽم پروفائل
+printer_format_custom_label	ڪسٽم
+printer_format_custom_added	هن هنڌ لاءِ ڪسٽم پروفائل شامل ڪيو ويو
+add_printer	پرنٽر شامل ڪريو
+remove_printer	آخري هٽايو
+route_pick_ph	رسيد يا ليبل
+route_add_printer_ph	ھن جڳھ تي پرنٽر شامل ڪريو
+route_receipt	رسيد
+route_label	AWB ليبل
+route_dont_print	ڪو پرنٽر مقرر نه ڪيو ويو
+route_add	جڳھ ۾ شامل ڪريو
+route_up	مٿي
+route_down	هيٺ
+route_remove	آخري هٽايو
+route_clear	ھن جڳھ لاءِ پرنٽر صاف ڪريو
+save_printers	پرنٽر محفوظ ڪريو
+print_test_page	هڪ ٽيسٽ صفحو ڇاپيو
+printers_saved	هن ڊوائيس لاء پرنٽر محفوظ ڪيا ويا
+test_page_sent	ٽيسٽ صفحو موڪليو ويو — پرنٽر کي چيڪ ڪريو
+printers_found	هن ڊوائيس تي مليو: {list}
+find_printers	پرنٽر ڳوليو
+printers_looking	ھن ڊوائيس ۽ وائي فائي تي پرنٽر ڳولي رھيا آھن...
+printers_tap_find	ٽيپ ڪريو پرنٽر ڳوليو قطارن لاءِ جيڪي نوڪريون قبول ڪن ٿيون ۽ نيٽ ورڪ رسيد پرنٽر هن وائي فائي تي (نه هٽايا ويا يا آف لائن نه).
+printers_none_found	ڪي به پرنٽر نه مليا - ٽائپ ڪريو سسٽم پرنٽر جو نالو، يا نيٽ ورڪ پتو (مثال طور 192.168.1.50).
+receipt_printer_ph	رسيدن لاء پرنٽر
+queue_refused	دڪان پاران قبول نه ٿيو ({n}) — هر هڪ کي ڪائونٽر تي چيڪ ڪريو:
+clear_not_accepted	چيڪ ڪيو — هن لسٽ کي صاف ڪريو
+device_name_ph	هن ڊوائيس جو نالو
+lan_last_update	آخري تازه ڪاري {time}
+lan_not_accepted	{n} قبول نه ٿيو
+connected_now	هاڻي ڳنڍيل
+backup_failed	آخري خودڪار بيڪ اپ ناڪام ٿيو: {e}
+backup_overdue	{n} ڏينهن لاءِ ڪا بيڪ اپ نه آهي — هن ڊوائيس تي ايپ کليل رکو ته جيئن اها بيڪ اپ ڪري سگهي.
+disk_low	هن ڊوائيس تي صرف {mb} MB خالي آهي — بيڪ اپ جلد ناڪام ٿي ويندا. ڪجهه جاءِ خالي ڪريو.
+last_seen_devices	آخري ڏٺو ويو: {time}
+sync_interval	هر {secs} سيڪنڊ ۾ هم وقت سازي
+connection_to_shop	دڪان سان ڳانڍاپو
+supplier_name_ph	سپلائر جو نالو (يا پارٽي)
+supplier_ph	سپلائر
+switch_device	هن ڊيوائس کي تبديل ڪريو
+take_payment	ادائگي وٺو
+tax_added_till	{tax} خصوصي
+tax_inside_price	{tax} شامل
+today_books	اڄ جي ڪتاب
+unlock_after_pairing	داخل ڪريو PIN
+unlock_with_login	لاگ ان سان کوليو
+update_my_password	منهنجو پاسورڊ اپڊيٽ ڪريو
+update_my_pin	منهنجو PIN اپڊيٽ ڪريو
+duress_heading	ايمرجنسي ان لاڪ PIN (صرف مالڪ لاءِ)
+duress_help	اختياري. جيڪڏهن هي PIN توهان جي بدران ان لاڪ تي ٽائيپ ڪيو ويو آهي، سڀني ڪتابن جي اندراج کي صاف ڪيو وڃي ٿو (بڪنگ، ليجر، تاريخ) ۽ ڊيسڪ کليل آهي جيئن مالڪ عام نظر اچي ٿو - قيمتون، پارٽيون، زون، اسٽاف ۽ سيٽنگون رهنديون. اسڪيما ۽ ترتيب ختم نه ڪيا ويا آهن. صرف استعمال ڪريو جيڪڏھن توھان ان لاڪ ڪرڻ تي مجبور آھيو. خالي ڇڏي ڏيو ۽ محفوظ ڪريو بند ڪرڻ لاءِ. ڪڏهن به ڪنهن جي پن وانگر ساڳيو ناهي.
+duress_pin_ph	ايمرجنسي PIN (4–12 عدد)
+duress_confirm_ph	تصديق لاءِ ٻيهر ٽائپ ڪريو
+save_duress_pin	اي مرجنسي محفوظ ڪريو PIN
+clear_duress_pin	اي مرجنسي بند ڪريو PIN
+duress_on	اي مرجنسي لڪ کي کوليو PIN هلندڙ آهي
+duress_off	ايمرجنسي ان لاڪ PIN بند آهي
+duress_saved	ايمرجنسي ان لاڪ PIN محفوظ ڪيو ويو
+duress_cleared	ايمرجنسي ان لاڪ PIN بند ڪيو ويو
+vehicle_ph	گاڏي
+void	رد
+write_off_ap	اي پي ختم ڪريو
+write_off_nil	ختم ڪريو / صفر بيلينس
+zone_ph	زون (نالو قيمتن مان)
+caption_today	اڄ
+caption_bookings	بکنگ
+caption_payments_today	اڄ جون ادائيگيون
+caption_outstanding	باقيماندہ
+caption_bank	بينڪ
+paid_by	ادا ڪيو ويو
+second_way	ٻيو طريقو
+weight_in	وزن ۾
+size_in	سائيز ۾
+goods_received	مال وصول ٿيو
+expense_heading	خرچ
+notes_attach_sale	نوٽس ۽ منسلڪ (منتخب وڪري)
+notes_attach_party	نوٽس ۽ منسلڪ (منتخب پارٽي)
+attachments_last_expense	منسلڪات (آخري خرچ)
+credit_limit_heading	ڪريڊٽ حد (چونڊيل / نالي سان پارٽي)
+pay_selected_heading	منتخب ادا ڪريو (قرض صاف ڪريو / اڳواٽ وٺو)
+write_off_heading	ادائيگي کان بغير ختم ڪريو
+pay_ap_heading	جن جو اسان تي قرض آهي اهو ادا ڪريو (AP)
+country_tax	ملڪ ۽ ٽيڪس
+extra_tills_heading	اضافي ڪيش ڪائونٽر
+other_devices_help_heading	ٻيا ڊوائيس سيٽ ڪريو
+other_devices_help	هن ڊوائيس تي (سرور): ٻيا ڊوائيس → اضافي ٽائلس جي اجازت ڏيو. جوڙڻ جو ڪوڊ ۽ وائي فائي ايڊريس نوٽ ڪريو. ٽيپ ڪريو ٻين ڊوائيسز کي ڳنڍڻ جي اجازت ڏيو جيڪڏهن اهو ظاهر ٿئي ٿو. ڪمپيوٽر تي، ٽيپ ڪريو هن ڪمپيوٽر سان شروع ڪريو. هڪ ٻئي ڊوائيس تي: ايپ انسٽال ڪريو، ڪلائنٽ موڊ چونڊيو، دڪان جو سرور ڳولھيو (يا پتو ٽائيپ ڪريو)، جوڙيو ڪوڊ داخل ڪريو، ھاڻي جوڙو. آرڊر ڊوائيس تي انتظار ڪن ٿا جيڪڏهن وائي فائي ڦوٽو ۽ وڃو جڏهن سرور ٻيهر جواب ڏئي.
+your_brand	توهان جو برانڊ (ايپ ۾)
+units_heading	يونٽس
+booking_measures	بکنگ جي قدمن
+drawer_count	درائور جو ڳڻپ (اختياري)
+spreadsheet_csv	اسپريڊ شيٽ (CSV)
+bank_reconciliation	بينڪ ميل جول (پنهنجي بينڪ اسٽيٽمينٽ جي مقابلي ۾ نشان لڳايو)
+book_add_product	ڪتاب - پيداوار / شرح شامل ڪريو
+book_opening_credit	ڪتاب — کولڻ جي ڪريڊٽ
+account_kind	اڪائونٽ قسم (هڪ کي ٽپ ڪريو)
+active_ledger	فعال ليجر
+actual_total_cap	حقيقي مجموعو
+amend_help	فروخت کي تبديل ڪرڻ، منسوخ ڪرڻ يا رقم واپس ڪرڻ لاءِ چونڊيو. تبديليون مڪمل تاريخ رکندي. گول ٿيل مجموعو شروعات ۾ لاڳو ٿيل جي برابر هوندو — صرف گول ڪرڻ لاءِ ترتيب ڏيو. منسوخ ۽ رقم واپس ڪرڻ لاءِ مالڪ يا مينيجر جي ضرورت پئجي سگهي ٿي PIN (مٿي لکيل؛ توهان جي نالي سان رڪارڊ ٿيل).
+applied_total_cap	اپلائيڊ ٽوٽل
+bank_balance	بينڪ بيلنس
+bank_net_today	اڄ بينڪ نيٽ
+branch_export_help	ايڪسپورٽ هڪ ڏينهن جي سنيپ شاٽ کي بيڪ اپ فولڊر ۾ لکي ٿو ۽ ان کي ڪلپ بورڊ ڏانهن نقل ڪري ٿو. ٻئي آئوٽليٽ جي ڏينهن کي درآمد ڪرڻ لاء، ان جي فائل کي محفوظ ڪريو import_branch_snapshot.json ان فولڊر ۾، پوء ٽيپ ڪريو درآمد ڪريو.
+brand_shown_help	ايپ اندر اسڪرين تي ڏيکاريل. هن ڊوائيس تي نصب ٿيل ايپ جو نالو ۽ آئڪن پليٽ فارم لسٽنگ جي طور تي رهندو.
+app_icon	ايپ آئڪن
+logo_help	ايپ ۾ اسڪرين تي اختيار واري دڪان جي نشان.
+onboard_layout	توهان ڇا حاصل ڪندا
+item_photo_help	اختياري. بغير تصوير جي، اسان شيءَ جي نالي جا ابتدائي اکر ڏيکارجون ٿا.
+cash_in_hand	هٿ ۾ نقد (ڪيش ڪائونٽر)
+change_my_pin_heading	منهنجو PIN تبديل ڪريو (صرف توهان جو)
+connect_to_server	Server سان ڳنڍيو
+counter_locked	ڪائونٽر 01 · لاڪ ٿيل
+country_pack_help	هڪ ملڪ جو پيڪ ٽيڪس جو نالو ۽ حساب ڪتاب، فوري ادائيگي واري ريل، ۽ بلن تي ڇپيل ڪاروباري آءِ ڊي مقرر ڪري ٿو. Kumkaj ڪٿي به ٽيڪس نه ٿو داخل ڪري يا سرڪاري اي-انوائس جاري نه ٿو ڪري.
+currency_use_help	ڪنهن به مدد ٿيل ڪرنسي لاءِ استعمال ڪرڻ لاءِ اسڪرول ڪريو ۽ ٽيپ ڪريو.
+day_close_help	هڪ ڏينهن جو بند رڪارڊ ڪرڻ هن خلاصو (۽ درائير ۾ فرق جيڪڏهن ڳڻپ ڪيو ويو) آڊٽ لاگ ۾ محفوظ ڪري ٿو. اها وڪري کي روڪي نٿي.
+expenses_word	خرچ
+feature_access_help	منتخب ٿيل عملي لاءِ خصوصيت جي رسائي (شامل ڪرڻ کان پوءِ ٽيپ ڪريو)
+footer_local	مقامي SQLite · هميشه لاءِ مفت · صفر ڪلائوڊ
+fresh_book_moklanjo	تازو = خالي فهرست (بعد ۾ شيون شامل ڪريو). ڪتاب = قسم جو افتتاحي اسٽاڪ ۽ جيڪو توهان کي هيٺ ڏنل آهي.
+fresh_selected	تازو چونڊيل — فهرست خالي رهي ٿي. تيار ٿيڻ تي Done تي ٽيپ ڪريو.
+gross_word	ڪُل
+how_start	توهان ڪيئن شروع ڪرڻ چاهيو ٿا؟
+later_country_pack	بعد ۾: سيٽنگون → توهان جي ملڪ جو پيڪ ٽيڪس ۽ ادائگي ليبل لاءِ لاڳو ڪريو.
+local_badge	مقامي
+measures_help_moklanjo	بکنگ ڊيسڪ تي پارسل ڪيئن ماپيا ويندا آهن. ٽائيپ ڪريو طول و عرض ۽ وزن انهن يونٽن ۾ جيڪي توهان استعمال ڪندا آهيو - معياري (cm, m, in, ft · kg, g, lb, oz) يا توهان جو پنهنجو يونٽ مٿي cm/kg سان ڳنڍيل آهي (سڌي طرح يا ٻين يونٽن ذريعي). ڪتاب هميشه رڪارڊ ڪلو. ان کي رکڻ لاءِ ميدان خالي ڪريو.
+mix_type_hint_moklanjo	ٽائپ ڪريو ڪيترو هر هڪ ۾ (نقد / UPI / ڪارڊ / ڪريڊٽ). بل ۾ شامل ڪرڻو پوندو. ڪريڊٽ مٿي هڪ گراهڪ جي ضرورت آهي.
+money_in_sales	پئسو اندر (سيلز)
+more_help_moklanjo	فهرست، سيلز، ڪريڊٽ، ٽيم، بيڪ اپ - گڏوگڏ اسٽاڪ ۽ اضافي ٽائلس جڏهن ضرورت هجي.
+net_word	نيٽ
+offline_badge	آف لائن
+optional_login_help	رضا مطابق لاگ ان (آءِ ڊي + پاسورڊ). مالڪ هڪ ڀيرو مقرر ڪري ٿو؛ رڳو استعمال ڪندڙ ئي بعد ۾ پاسورڊ تبديل ڪري سگهي ٿو.
+or_unlock_login	يا لاگ ان آءِ ڊي + پاسورڊ سان ان لاڪ ڪريو
+permission_preset	نوڪري (اسڪرين ۽ حق مقرر ڪري ٿو)
+preset_help_moklanjo	ڪيشئر: وڪرو. مينيجر: وڪرو + شيون + منسوخ/ترميم.
+product_locked_moklanjo	مڪلانجو
+product_only_moklanjo	هي ايپ صرف Moklanjo آهي - ڪتاب + بکنگ ڊيسڪ. ٻيا واپاري منهن بعد ۾ الڳ پراڊڪٽ طور ٻيڙيءَ ۾ موڪليا وڃن ٿا.
+purchases_cogs	خريداريون (COGS)
+qty_cap	مقدار
+restore_help	بحال ڪريو: بيڪ اپ چونڊيو. ڪتاب ان وقت وانگر کوليا وڃن ٿا؛ جيڪي ڪتاب هاڻي آهن، پهريان محفوظ ڪيا وڃن ٿا، جيئن اهو واپس ڪري سگهجي.
+wipe_data_heading	مقامي ڊيٽا حذف ڪريو
+wipe_data_help	صرف مالڪ - ساڳيون چونڊون جيئن ونڊوز انسٽال ڪريو. ڪاروباري رڪارڊ واپار جي تاريخ کي صاف ڪري ٿو پر قيمتون ۽ سيٽ اپ رکي ٿو (جهڙوڪ ايمرجنسي انلاڪ پن). دڪان سيٽ اپ ڪتابن جي ڊيٽابيس کي هٽائي ٿو. اسڪرين ترجيحات ونڊو/ٻولي کي صاف ڪري ٿو. مالڪ جي پن سان تصديق ڪريو. ٽيم تي ايمرجنسي انلاڪ پن الڳ آهي (انلاڪ ڪرڻ تي پوشيده وائپ).
+wipe_trading	ڪاروباري رڪارڊ
+wipe_schema	دوڪان جو ترتيب
+wipe_ui	اسڪرين جون ترجيحات
+wipe_owner_pin_ph	مالڪ PIN کي ختم ڪرڻ
+wipe_delete_selected	منتخب حذف ڪريو
+wipe_owner_only	صرف مالڪ مقامي ڊيٽا کي حذف ڪري سگهي ٿو.
+restore_owner_only	صرف مالڪ بئڪ اپ کي بحال ڪري سگهي ٿو.
+wipe_owner_pin_needed	مقامي ڊيٽا کي حذف ڪرڻ لاءِ مالڪ PIN داخل ڪريو.
+wipe_nothing_selected	پهريون ڇا ختم ڪرڻو آهي چونڊيو.
+wipe_done	منتخب ٿيل مقامي ڊيٽا ختم ڪئي وئي.
+wipe_schema_done	دوڪان جي سيٽ اپ ختم ڪئي وئي — جاري رکڻ لاءِ Server يا Client چونڊيو.
+rounded_total	گول ڪيل ڪل
+setup_app_moklanjo	Moklanjo قائم ڪريو
+shop_logo_optional	دڪان جو لوگو (اختياري)
+stock_type_help	شيءَ جو نالو ٽائيپ ڪريو (ان جو هڪ حصو ڪافي آهي)، مقدار، پوءِ ترتيب ڏيو. اهڙا شيون جيڪي اڃا ڳڻپيل نه آهن، هڪ دفعي شروع ڪرڻ جي ضرورت آهي.
+team_owner_help	ملازمت: نوڪري چونڊيو (ڪيشير / مئنيجر)، نالو + شروعاتي پن، پوء شامل ڪريو. صرف جيڪڏھن ھي شخص مختلف آھي: کليل اسڪرين ۽ حق ھيٺ، پوء محفوظ ڪريو نوڪري سيٽ اپ. هرڪو پنهنجو پن بدلائي ٿو تري ۾ - مالڪ ڪنهن ٻئي جو پن نه ٿو بدلائي.
+they_owe_us	انهن تي اسان جو قرض آهي
+unit_at_cap	يونٽ @
+units_help	شيون ليبل لاءِ ڪوڊ (ڪلو، ٽڪرو، ٿيلو). هر يونٽ لازمي طور تي هڪ معياري سان سڌو يا ٻين يونٽن ذريعي ڳنڍيل هجي (ڪلو · سينٽي ميٽر · ملي ليٽر · ٽڪرو)، مثال طور 1 ڪريٽ = 2 دٻو ۽ 1 دٻو = 20 سينٽي ميٽر. تبديليون: 1 کان = عنصر تائين. ڪرنسي ڪڏهن به يونٽ نه هوندي آهي.
+we_owe_them	اسين انهن جا قرضدار آهيون
+who_unlocking	ڪير آنلاڪ ڪري رهيو آهي؟
+locked_word	لت ٿيل
+show_pin	ڏيکاريو PIN
+hide_pin	لڪاءِ PIN
+set_owner_pin	مالڪ مقرر ڪريو PIN
+enter_owner_passcode	مالڪ جو پاس ڪوڊ داخل ڪريو
+enter_staff_passcode	اسٽاف پاسڪوڊ داخل ڪريو
+pin_count_zero	0 / 12 انگ · گهٽ ۾ گهٽ 4، پوءِ اوڪي دٻايو
+pin_count_need	{} / 12 انگ · اڃا {} گهربل
+pin_count_full	12 / 12 انگ · اوڪي دٻايو
+pin_count_ready	{} / 12 عددن · تيار هئڻ تي OK دٻايو
+pin_hint_choose	4–12 عددن چونڊيو · محفوظ ڪرڻ لاءِ داخل ڪريو يا ان لاڪ ڪريو
+pin_hint_new	نئون 4–12 عددن وارو مالڪ PIN · داخل ڪريو يا ان لاڪ ڪريو
+pin_hint_shop_code	دڪان ڊوائيس · جوڙي جو ڪوڊ {}
+pin_hint_books	هي ڊوائيس ڪتاب رکندي آهي
+pin_hint_paired	اضافي ڪيش ڪائونٽر جوڙيو ويو — وڪڻڻ لاءِ کوليو
+pin_hint_pair_first	اضافي ڪيش ڪائونٽر — پهريان دوڪان جي ڊوائيس سان جوڙيو
+unlock_to_continue	جا جاري رکڻ لاءِ لاڪ کوليو
+no_staff_yet	اڃا ڪا اسٽاف ناهي — مالڪ طور کوليو، پوءِ ٽيم
+status_server_set_pin	Server موڊ — مالڪ مقرر ڪريو PIN
+status_server_tills	Server طريقو — اضافي ڪيش ڪائونٽر شامل ٿي سگهن ٿا. کوليو
+status_server_unlock	Server طريقو — مالڪ جي طور تي کوليو
+status_client_unlock	Client موڊ — وڪڻڻ لاءِ ان لاڪ ڪريو
+icon_new_selected	آئڪن: نئون فائل چونڊيل — برانڊ محفوظ ڪريو تي ٽيپ ڪريو
+icon_custom	آئڪن: ڪسٽم جڳهه جو نشان
+icon_default	آئڪن: Kumkaj نشان (ڊيفالٽ) — هڪ ڪسٽم چونڊيو
+logo_yours	لوگو: توهانجي دڪان جو لوگو — اسڪرين ۽ رسيدن تي ڏيکاريل
+logo_default	لوگو: Kumkaj نشان (ڊيٽفالٽ) — جيڪڏهن توهان وٽ پنهنجو آهي ته چونڊيو
+tmpl_current	موجوده: {} — {}
+tmpl_selected	منتخب: {} — {}
+setup_complete	سيٽ اپ مڪمل ٿيو
+onboard_fresh_tmpl	نئون · {} — ڪيٽلاگ خالي آهي؛ شيون شامل ڪريو تنهن کان پوءِ مڪمل تي ڪلڪ ڪريو.
+onboard_book_tmpl	ڪتاب · {} — شيون ۽ شروعاتي ڪريڊٽ شامل ڪريو، پوءِ مڪمل تي ڪلڪ ڪريو.
+onboard_template_tmpl	جيڪڏهن توهان چاهيو ته جاءِ جو نالو ڏيو، پوءِ شروع ڪرڻ جو طريقو چونڊيو.
+tmpl_blurb	ڪوريئر ڪتاب ۽ بکنگ ڊيسڪ: موڪليندڙ، ڪيريئر، ڏينهن جو ڪتاب، AWB.
+tmpl_how	ڊيسڪ تي ڪتاب پارسل؛ اڄ ڏينهن لاء ڪتاب؛ قيمتون، پارٽيون، رپورٽون لاء ٽيب.
+trk_booked	بک ٿيل
+trk_picked_up	کنيو
+trk_in_transit	لنگهه ۾
+trk_delivered	پهچايو ويو
+trk_rto	موڪليندڙ ڏانهن واپسي
+lane_to_dispatch	موڪلائڻ
+lane_with_carrier	ڪيريئر سان
+lane_failed	ناڪام ٿيو
+lane_done_today	اڄ ٿي ويو
+ops_board_help	پارسل جتي اهي اڄ جي ڪم ۾ آهن. پارسلن کي ٽيپ ڪريو (يا انھن کي اسڪين ڪريو) انھن کي چونڊڻ لاءِ، پوءِ ھڪڙي ئي وقت چونڊيل سڀني تي عمل ڪريو - ھر لين صرف اھي حرڪتون پيش ڪري ٿو جيڪي ان ۾ مناسب آھن.
+lane_empty	في الحال هتي ڪجهه به ناهي.
+picked_fmt	{n} چونڊيو
+pick_all	سڀ چونڊيو
+bag_for_carrier	هٿ کڻندڙ ڏانهن
+send_with_rider	سواري سان موڪليو
+out_again	ٻيهر ٻاهر
+return_to_sender	موڪليندڙ ڏانھن واپس وڃو
+runs_bags_heading	تازو رن ۽ بيگز
+print_word	ڇپائي
+bag_word	ڪيريئر بيگ
+run_word	ڊوڙندڙ
+parcels_fmt	{n} پارسل
+parcel_history	تاريخ
+attempt_fmt	ڪوشش ڪريو {n}
+pieces_short_fmt	{n} پي سي
+note_reason_ph	نوٽ يا دليل
+ops_pick_first	پهرين پارسل چونڊيو - انهن کي ٽيپ ڪريو يا انهن کي اسڪين ڪريو
+cod_to_collect	پهچائڻ - COD گڏ ڪرڻ لاءِ
+cod_on_road	COD اڃا تائين روڊ تي
+cod_owed_consignors	گڏ ڪيل - موڪليندڙن کي ادا ڪرڻ لاءِ
+cod_rto_fees	RTO فيس گڏ ڪرڻ لاء
+cod_to_hand_in	COD هٿ ڪرڻ لاءِ
+parcel_one_fmt	{n} پارسل
+facet_bank_title	رپورٽون
+facet_bank_help	ڊي ڏينهن جون ڪتابون، پارٽي جي عمر، بينڪ جون پوسٽون، ۽ عرصي جو نفعو ۽ نقصان.
+facet_ops_title	سامان ۽ ترسيل
+facet_ops_help	اسڪين ڪريو يا ٽائيپ ڪريو AWB → ڳولھيو، پوءِ اڳڀرو / پرنٽ ليبل / COD. سوار يا ڪيريئر ڏانهن موڪل.
+facet_cod_title	COD رجسٽر
+facet_cod_help	ترسيل تي گڏ ڪريو، پوءِ موڪليندڙ کي موڪليو.
+facet_riders_title	سوار (پنهنجو جهاز)
+facet_riders_help	رائڊرز شامل ڪريو، پوءِ موڪليا بک ٿيل AWBs کان Ops.
+against_bill_ph	مٿي ڄاڻايل بل نمبر جي خلاف (اختياري)
+aliases_ph	متبادل نالا — ٻيا نالا، ڪاما سان الڳ ٿيل
+amount_blank_full_ph	رقم (خالي = مڪمل بيلنس)
+amount_owed_ph	بقايه رقم
+amount_ph	رقم
+amount_received_ph	موصوله رقم
+amount_we_pay_ph	ادا ڪيل رقم
+awb_scan_ph	AWB / اسڪين بارڪوڊ
+bulk_csv_ph	بلڪ CSV — منزل، موڪليندڙ، ڪلوگرام، ڪوڊ_پيس، نوٽ
+business_name_ph	ڪاروبار جو نالو
+category_new_ph	زمره (اختياري، جيڪڏهن نئون ته ٺاهيو ويندو)
+cod_amount_ph	COD رقم
+code_bag_ph	ڪوڊ (ٿيلو)
+conv_factor_ph	فئڪٽر (25 = 1 بيگ → 25 ڪلو)
+country_code_ph	ملڪ جو ڪوڊ مثال طور IN, GB, US, AE, BR
+credit_khata_amount_ph	ڪريڊٽ / کاتا رقم
+credit_limit_ph	ڪريڊٽ حد (0 = ڪوبه ناهي)
+dim_unit_code_ph	ماپ يونٽ ڪوڊ (cm)
+divisor_ph	حجم ورهائيندڙ (5000)
+extra_per_kg_ph	اضافي / ڪلو
+first_amount_ph	پهرين رقم
+first_kg_ph	پهريون ڪلو (سليب)
+from_code_ph	ڪوڊ (ٻورو) مان
+item_name_lang_ph	شيءِ جو نالو — پنھنجي ٻولي ۾ لکو
+login_id_opt_ph	يوزر نيم (گهربل، منفرد)
+manager_pin_ph	مينجر PIN جي منظوري لاءِ (صرف جيڪڏهن توهان رد نٿا ڪري سگھو)
+new_branch_name_ph	نئين شاخ جو نالو
+new_password_ph	نئون پاسورڊ (اختياري)
+new_pin_ph	نئون PIN (4–12 عدد)
+note_bank_ph	نوٽ (جمع، ڪڍڻ، ...)
+note_buy_expense_ph	نوٽ (ايندھن، ڪرايو، ...)
+note_expense_ph	نوٽ (ايندھن، آفيس، ...)
+notify_phone_ph	فون کي اطلاع ڏيو (WhatsApp/SMS ٿلهو)
+options_moklanjo_ph	اختيار (اختياري) - وڏو = 20، تحفا لفاف = 10
+part_second_way_ph	ٻي طريقي سان حصو (اختياري)
+phone_ph	فون
+address_ph	پتو
+party_custom_fields_heading	ڪسٽم فيلڊ (چونڊيل پارٽي)
+party_custom_help	هن پارٽي تي ڪو به ليبل ۽ قيمت شامل ڪريو - WhatsApp، GSTIN، روٽ ڪوڊ، ...
+party_custom_key_ph	فيلڊ جو نالو (مثال طور WhatsApp)
+party_custom_value_ph	قدر
+party_custom_add	فيلڊ شامل ڪريو
+party_custom_remove	فيلڊ کي هٽايو
+party_custom_empty	في الحال ڪوبه ڪسٽم فيلڊ ناهي
+party_custom_pick_first	ڪسٽم فيلڊ شامل ڪرڻ لاء پارٽي چونڊيو
+place_name_ph	هن جڳهه جو نالو
+price_ph	اگهه
+qty_example_ph	مقدار (مثال طور 1.5 ڪلوگرام لاءِ)
+quantity_ph	مقدار
+reason_required_ph	سبب (ضروري)
+role_title_ph	ڪردار جو عنوان (جهڙوڪ: بارسٽا)
+service_pct_ph	سروس % اختياري 0/10/12
+short_code_ph	مختصر ڪوڊ (MG02)
+slab_kg_ph	ڪلوگرام ۾ چارج لائق سليب (0.5)
+staff_name_ph	اسٽاف جو نالو / id
+starting_password_ph	شروعاتي پاسورڊ (اختياري)
+starting_pin_ph	شروع ڪندي PIN (4–12 عدد)
+tax_rate_ph	ٽيڪس جي شرح جو نالو يا ٪ — معياري، گهٽايو ويو، 0، 5، 12، 18، 20
+to_code_ph	ڪوڊ تائين (ڪلوگرام)
+uncleared_no_ph	مٿي غير صاف ٿيل #
+unit_cost_ph	يونٽ جي قيمت
+unit_kg_blank_ph	يونٽ (ڪلو يا خالي)
+unit_name_bag_ph	نالو (بيگ)
+weight_unit_code_ph	وزن يونٽ ڪوڊ (ڪلو)
+zone_name_ph	علائقي جو نالو
+pay_credit	ڪريڊٽ
+book_kind_today	اڄ جي ڪتاب
+book_kind_month	هن مهيني ڪتاب
+book_kind_aging	باقي / ڊيبٽ-ڪريڊٽ
+book_kind_balance	بیلنس شيٽ
+ops_desk_help	USB بارڪوڊ اسڪينر سان AWB اسڪين ڪريو (يا ٽائيپ ڪريو) → ڳولھيو. پوءِ اڳواٽ، پرنٽ ليبل، يا COD گڏ ڪريو. ليبل پرنٽ ڪوڊ 128.
+role_help_consignor	ڪردار: Consignor - AR (اهي اسان جا قرض آهن). ساڳي فرم ڪيريئر پڻ ٿي سگهي ٿي.
+role_help_carrier	ڪردار: ڪيريئر - اي پي (اسان انهن کي قرض ڏيون ٿا). ساڳي فرم Consignor به ٿي سگهي ٿي.
+role_help_both	ڪردار: Consignor + ڪيريئر - ھڪڙي پارٽي، AR ۽ AP ليجرز، رپورٽن ۾ خالص.
+role_help_supplier	ڪردار: فراهم ڪندڙ - خريداري لاءِ اي پي.
+lane_declared_label	حساب ڪتاب
+lane_owner_label	ڪيش بکنگ
+money_lane_bill	بل: {lane}

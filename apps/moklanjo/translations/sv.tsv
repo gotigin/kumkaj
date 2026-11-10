@@ -1,0 +1,835 @@
+# Swedish — Svenska (sv). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	Budbyråböcker + bokningsdisk. Gratis offline.
+unlock	Lås upp
+pin_hint	Ägarens PIN börjar som 0000
+sell	Bokning
+buy	Betala ut
+books	Dagbok
+books_help	Dagens läge. Bokning = paket in. Betala ut = transportörens räkningar & utlägg. Parter = avsändare & transportörer.
+buy_help	Kostnadskuponger och transportörsräkningar (pengar ut). Akonto stannar på partiboken.
+sell_money_in	Boka ett paket
+buy_money_out	Kostnad/fraktarräkning
+record_purchase	Bokför inköp
+add_expense	Utgiftsverifikation
+bank_book	Bankbok
+credit_help	Parti-id är unikt (namn kan upprepas). Roller: Avsändare (AR), Transportör (AP) eller båda på det id. Ledböcker förblir separata; rapporter visar netto.
+party_kind_ph	Anpassad roll (valfritt) – eller tryck på ett chip ovan
+parties_list_heading	Rädda partier
+reports_help	Dagbok, gäldenärer och borgenärer, bankbok, utgiftsverifikationer, resultat.
+reports_today	Dagbok (idag)
+reports_month	Resultat (månad)
+reports_aging	Utestående / Dr-Kr
+reports_balance_sheet	Balansräkning
+reports	Bankbok och resultat
+refresh	Uppdatera
+undo	Ångra
+start_tracking	Börja följa
+stock_minus	− Lager
+stock_plus	+ Lager
+settle_cash	Ta emot kontant
+settle_card	Ta emot kort
+items	Priser och tjänster
+nav_items	Priser
+more	Mer
+your_items	Dina priser
+items_help	Varje rad är en hastighet (t.ex. Ytzon A). Enheten är vanligtvis kg. Tryck för att redigera.
+add_item	Lägg till kurs
+new_item	Ny kurs
+adding_item	Lägger till en ny kurs
+editing_item	Redigerar
+save	Spara
+remove	Ta bort
+empty_catalog	Inga priser ännu. Öppna priser och tjänster, lägg till en (namn + pris, enhet kg), sedan Bokning.
+counter_sale	Motbokning
+total	Totalt
+cash	Kontant
+upi	UPI
+card	Kort
+credit	Parter
+clear	Rensa
+ready_to_sell	Redo att boka
+today_prefix	Idag
+today_mid	idag
+owed	utestående
+round_word	avrunda
+back	Tillbaka
+sold_out	Ej tillgänglig
+restock	Fyll på
+not_tracked	Följs inte
+in_stock	i lager
+marked_sold_out	Markerad som ej tillgänglig
+add_upper	LÄGG TILL
+na	E/T
+qty	Vikt/Antal
+unit_at	À-pris @
+actual	Faktiskt
+applied	Tillämpat
+note_ph	Anteckning (valfritt)
+rounded	AVRUNDAT
+split	Dela
+counter	Räknare
+parcel	Paket
+order	Beställning
+sales	Bokningar
+sales_refunds	Bokningar och återbetalningar
+day_close	Dagsavslut
+reports_expenses	Bankbok och resultat
+nav_reports	Rapporter
+nav_settings	Inställningar
+nav_lock	Lås
+sidebar_settings	Sidofältsinställningar
+sidebar_settings_help	Samma ikoner som sidoräcket. Dra en rad för att ändra ordning. Vrid reglaget för att visa eller dölja. Inställningar och lås förblir alltid på baren.
+sidebar_always_on_short	Alltid på
+sidebar_back_settings	Tillbaka
+sidebar_shown	Visas
+sidebar_hidden	Dold
+sidebar_always_on	Alltid på baren
+sidebar_shown_hint	Visas på sidostången / nedre flikarna
+sidebar_hidden_hint	Gömd från baren
+sidebar_menu_items	Meny & objekt
+sidebar_enable_all	Aktivera alla
+sidebar_disable_all	Inaktivera alla
+sidebar_order_saved	Beställningen i sidofältet har sparats
+sidebar_visibility_saved	Sidofältets synlighet har sparats
+amounts_hide	Göm
+amounts_show	Visa
+no_sale_yet	Ingen försäljning ännu
+favorites	Favoriter
+favorites_help	Artiklar du säljer ofta, sparade för din inloggning. Lägg till en till räkningen, eller bygg din lista från alla objekt nedan.
+your_favorites	Dina favoriter
+all_items	Alla föremål
+no_favorites	Inga favoriter än – lägg till objekt från listan nedan.
+add_to_bill	Lägg till på räkningen
+added	Tillagd
+owes_word	är skyldig
+selected_word	Vald
+chip_clear_credit	klara — Kreditera eller ta förskott
+chip_missing_customer	Vald kund saknas — välj igen
+chip_no_customer	Ingen kund ännu – skriv ett namn och tryck sedan på Kredit
+credit_summary_fmt	{} kunder · öppen kredit {} · hållna förskott {}
+recent_label	Senaste:
+inventory	Inventering
+inventory_stock	Inventering & lager
+branches	Grenar
+branches_org	Filialer & org
+credit_customers	Parter (gäldenärer och borgenärer)
+customer_name_ph	Partiets namn
+new_customer_ph	Nytt partinamn
+item_name_ph	Prisnamn (t.ex. Ytzon A)
+item_price_ph	Per kg / första platta
+start_template	Produkt
+next_booking	Nästa bokning
+destination_ph	Destinationsstad/zon
+consignee_ph	Mottagarens namn
+consignee_phone_ph	Mottagare telefon
+consignee_address_ph	Leveransadress
+origin_name_ph	Avsändarens namn
+origin_phone_ph	Avsändartelefon
+origin_address_ph	Avhämtning / ursprungsadress
+booking_consignor_heading	Avsändare (kund / avsändare)
+booking_consignee_heading	Mottagare (mottagare)
+booking_consignor_hint	Välj ett sällskap att fylla, eller lämna tomt för walk-in. Behövs för hemhämtning och RTO.
+booking_consignee_hint	Mottagare av paketet. Lämna tomt för avlämningar från walk-in-disken.
+weight_kg_ph	Faktiska kg
+length_cm_ph	L cm
+breadth_cm_ph	B cm
+height_cm_ph	H cm
+chargeable_kg	Laddbar kg
+awb_label	AWB
+booking_help	Avsändare + mottagare (blank OK) → destination → väga → plocktaxa → Konto/Kontant → betala. AWB skriver ut på kvittot. Nästa bokning rensar skrivbordet. Avrundade starter lika med Tillämpad — redigera endast för att runda sedeln.
+cart_empty_hint	Skrivbordet är tomt — avsändare/mottagare valfritt, ställ in destination och vikt, tryck på LÄGG TILL på ett pris och betala sedan.
+team	Team
+team_pins	Team & PIN-koder
+my_pin_settings	Min PIN-kod
+settings_hub_help_my_pin	Ändra upplåsnings-PIN för personen som är inloggad på den här enheten.
+team_self_help	Det är bara du som kan ändra din upplåsnings-PIN (och valfritt inloggningslösenord). Fråga ägaren om du behöver andra skärmar eller rättigheter.
+backup_settings	Säkerhetskopiering och inställningar
+lock_app	Lås appen
+pick	Välj
+select	Välj
+advance	Avancera
+owner	Ägare
+staff	Personal
+photo	Foto
+auto	Auto
+prev	Föreg
+next	Nästa
+ok	OK
+this_shop	Server
+extra_till	Klient
+off	Av
+server	Server
+client	Klient
+language_currency	Språk och valuta
+language	Språk
+choose_language	Välj ditt språk
+language_setup_hint	Följ enhetens språk eller välj ett själv.
+lang_follow_platform	Enhetens språk
+lang_pick_user	Välj språk
+lang_platform_now	Enhetens språk nu
+selected_language	Vald
+continue	Fortsätt
+this_device	DENNA ENHET
+device_use_q	Hur kommer den här enheten att användas?
+last_server_mode	Var server — tryck för att fortsätta
+last_client_mode	Var klient — tryck för att fortsätta
+choose_server	Välj en server
+choose_server_hint	Öppna en befintlig server eller skapa en för ett annat företag.
+create_new_server	Skapa ny server
+open_server	Öppna
+new_server_name_ph	Nytt servernamn (valfritt)
+server_remove_pin_ph	Ägarens PIN-kod för att ta bort en server
+only_owner_remove_server	Endast ägaren kan ta bort en server
+owner_pin_remove_server	Ägarens PIN-kod krävs för att ta bort den här servern
+device_setup_help	Servern håller böckerna här. Klientpar till en server.
+currency	Valuta
+backup	Säkerhetskopiering
+settings_sec_diag	Diagnostik
+settings_hub_help	Öppna ett område i taget — mindre scrollning, tydligare val.
+settings_sec_devices	Andra enheter
+settings_sec_alerts	Aviseringar
+alerts_help	Hur länge statusmeddelanden ligger kvar på skärmen för dig (den här inloggningen).
+snack_secs_ph	Sekunder (3–60, standard 10)
+snack_secs_save	Spara aviseringstid
+snack_secs_saved	Aviseringstid sparad — {n} sekunder
+snack_secs_bad	Ange sekunder som ett tal (3–60)
+cancelled	Avbruten
+cancel	Avbryt
+opening_client	Öppnar klient...
+preparing_desk	Förbereder skrivbordet...
+opening_server	Öppnar server...
+creating_server	Skapar server...
+diag_privacy_help	Loggar stannar på den här enheten. Hemligheter (PIN, lösenord) lagras aldrig. Att dela ett paket från enheten kräver ditt uttryckliga godkännande varje gång – aldrig sålt eller ges till tredje part.
+diag_level	Detaljnivå
+diag_level_error	Fel
+diag_level_warn	Varningar
+diag_level_info	Info
+diag_level_debug	Felsök
+diag_support_start	Starta en 30-minuters supportsession
+diag_support_stop	Avsluta supportsessionen
+diag_support_started	Supportsession på — Felsök detaljer i 30 minuter
+diag_support_ended	Supportsessionen avslutad
+diag_export_local	Exportera lokal kopia
+diag_export_local_done	Lokal diagnostik redo vid {path} — välj var du vill spara en kopia
+diag_approve_send	Godkänn delning från den här enheten
+diag_send_heading	Dela av den här enheten
+diag_send_help	Godkännandet är ett paket och upphör sedan att gälla. Tillfälligt – används endast för att fixa eller förbättra produkten. Delas inte med tredje part. Fungerar på Linux, Windows, macOS och Android.
+optional_login_heading	Valfri inloggning
+rights_heading	Rättigheter
+booking_scope_heading	Inrikes / Internationellt
+diag_send_approved	Del godkänd för ett paket (går snart ut)
+diag_export_send	Skapa delningspaket (behöver godkännande)
+diag_export_send_done	Dela paket redo på {path} — välj var du vill spara och skicka sedan endast till Kumkaj-support
+diag_save_bundle	Spara diagnostikkopia
+diag_bundle_saved	Diagnostikkopia sparad till {path}
+diag_bundle_failed	Det gick inte att spara diagnostikkopian – försök igen
+diag_clear	Rensa diagnostiska loggar
+diag_cleared	Diagnostikloggarna rensades
+use	Använd
+add_branch	Lägg till gren
+add_conversion	Lägg till konvertering
+add_item_plain	Lägg till artikel
+add_note	Lägg till anteckning
+add_opening_balance	Lägg till ingående saldo
+add_rider	Lägg till ryttare
+add_staff	Lägg till personal
+add_unit	Lägg till enhet
+add_use_name	Lägg till / använd detta namn
+allow_extra_tills	Tillåt extra kassar
+amend	Ändra
+apply_country_pack	Använd landspaket
+datetime_appearance	Datum & tid utseende
+datetime_appearance_help	Böcker håller första året RFC3339 inne. Dessa ändrar bara hur datum och klockor ser ut på kvitton, etiketter, rapporter och skärmen.
+datetime_example	Exempel nu: {ex}
+date_order	Beställning av datum
+date_order_dmy	D/M/Y
+date_order_mdy	M/D/Y
+date_order_ymd	Y-M-D
+time_format	Klocka
+time_format_24h	24 timmar om dygnet
+time_format_12h	12 timmar
+attach_bill_photo	Bifoga räkningsfoto
+attach_pdf	Bifoga PDF
+attach_photo	Bifoga foto
+bank	Bank
+bank_in	Banka in
+bank_out	Bank ut
+bank_to_till	Bank → kassa
+till_to_bank	Kassa → bank
+mark_cleared	Mark rensat
+unmark	Avmarkera
+role_both	Båda
+role_carrier	Bärare
+role_cashier	Kassörska
+role_consignor	Avsändare
+role_manager	Chef
+role_supplier	Leverantör
+branch_name_sell_ph	Filialnamn att sälja från
+bring_my_book	Ta med min bok
+business_tax_id_ph	Företagsskattenummer
+card_amount_ph	Kortbelopp
+cash_amount_ph	Kontantbelopp
+upi_amount_ph	UPI-belopp
+carrier_cost_ph	Transportörskostnad
+carrier_party_ph	Transportör part
+choose_icon	Välj ikon
+choose_logo	Välj logotyp
+choose_receipt_stamp	Välj kvittotstämpel
+choose_payment_qr	Välj betalning QR
+clear_icon	Rensa ikon
+clear_logo	Tydlig logotyp
+clear_photo	Rensa foto
+clear_stamp	Tydlig stämpel
+clear_payment_qr	Rensa betalning QR
+print_faces	Skriv ut ansikten (kvitto/periodräkning)
+print_faces_help	Valfri stämpel och betalnings-QR bredvid din logotyp på bokningskvitton och periodräkningar.
+awb_pools_heading	Carrier AWB-nummerpooler
+add_awb_pool	Lägg till AWB-pool
+awb_pool_carrier_ph	Operatörens namn
+awb_pool_start_ph	Start nr.
+awb_pool_end_ph	Slut nr.
+awb_pool_prefix_ph	Prefix (valfritt)
+awb_pool_label_ph	Etikett (valfritt)
+pieces_ph	Bitar (blank = 1) — expandera för last / flerdelad
+bulk_awbs_ph	Bulk AWBs — klistra in många (nyrad eller komma) för en statusförflyttning
+tds_cut_ph	TDS cut (valfritt)
+discount_ph	Rabatt (valfritt)
+cheque_no_ph	Kontrollnummer (valfritt)
+bill_reminder_chase	Billpåminnelsejaktlista
+month_mix_report	Månadsblandningsrapport
+copy_month_gst_csv	Kopiera månad GST CSV
+domestic	Inhemsk
+international	Internationell
+pick_logo	Välj logotyp
+booking_scope_hint_domestic	Volumetrisk ÷5000 (inrikes) — tryck på Internationell för ÷6000 luft
+booking_scope_hint_intl	Volumetrisk ÷6000 (internationell luft) — tryck inrikes för butik ÷5000
+cod_register	COD register
+collect_cod	Samla COD (AWB)
+consignments_dispatch	Försändelser & utskick
+consignor_party_ph	Avsändarens/partens namn
+copy_day_book_csv	Kopiera dagbok CSV
+copy_day_close	Kopiera dagsavslut
+copy_items_csv	Kopiera objekt CSV
+copy_outstanding_csv	Kopiera utestående CSV
+copy_parties_csv	Kopiera partier CSV
+copy_party_ledger_csv	Kopiera partibok CSV
+copy_receipt	Kopiera kvitto
+copy_report	Kopiera rapporten
+counted_cash_ph	Räknade kontanter i lådan
+counter_agency_ph	Räknare/byrånamn (valfritt)
+create_backup	Skapa backup
+day_close_summary	Dagens stängning sammanfattning
+delete_party	Ta bort vald part
+dispatch_to_rider	Utskick bokad → ryttare
+docket_charge_ph	Docket avgift
+declared_value_ph	Deklarerat värde
+contents_ph	Innehåll
+eway_ph	E-vägsedel nr.
+insurance_label	Försäkring
+yes_label	Ja
+no_label	Inga
+print_route_label	Skriv ut rutt
+new_party_kind_label	Nytt parti
+done_open_books	Klart - öppna böcker
+export_day	Exportdag
+extra_note_expense_ph	Extra anmärkning om sista utgiften
+extra_note_awb_ph	Extra notering om denna AWB/rea
+failed_delivery	Misslyckad leverans
+find_scan_awb	Hitta / Skanna AWB
+forget_shop	Glöm den här butiken
+fuel_ph	Bränsle
+handover_carrier	Handbokad → transportör
+import_day	Importdag
+import_items_csv	Importera varor/priser CSV...
+import_parties_csv	Importera partier CSV...
+import_pincodes_csv	Importera pinkoder CSV...
+import_carrier_bill_csv	Importera operatörsfaktura CSV...
+copy_carrier_bill_report	Kopiera den senaste operatörsräkningsrapporten
+use_carrier_cost	Använd transportörens kostnad
+rate_carrier_ph	Transportör (tom = vår försäljningskurs)
+rate_party_ph	Party (tom = alla kunder)
+carrier_pick_ph	Transportör för kostnad (från jämför)
+item_name	Objektets namn
+load_bulk_row	Ladda bulk rad → skrivbord
+login_id_ph	Användarnamn
+mark_delivered	Mark levererad
+manifest_cod_total	COD totalt
+manifest_received_by	Mottaget av
+manifest_sign	Tecken
+ndr_address_wrong	Adress fel
+ndr_customer_unavailable	Ej tillgänglig
+ndr_door_locked	Dörren låst
+ndr_other	Andra
+ndr_refused	Vägrade
+out_for_delivery	Ute för leverans
+print_drs	Skriv ut DRS
+print_run_sheet	Skriv ut ark
+reattempt	Försök igen
+rider_cod_handed_ph	COD inlämnad
+settle_rider_cod	Avgör ryttare COD
+mode_desk	Skrivbord
+mode_rider	Ryttare
+waiting_office	väntar på att nå kontoret
+capture_signature	Fånga signatur
+incoming_manifest	Inkommande manifest
+pickup_request	Begäran om hämtning
+pickup_run	Upphämtningskörning
+auto_assign_area	Autotilldela område
+reorder_stops	Omordning stoppar
+settle_rider_pay	Avgör förarens lön
+vehicle_inspect	Fordonsbesiktning
+print_docket	Skriv ut dokument
+franchise_statement	Franchise uttalande
+tally_export	Tally voucher export
+open_whatsapp	Öppna WhatsApp
+copy_sms	Kopiera SMS-text
+pick_barcode_image	Välj bild att skanna
+share_receipt_whatsapp	Dela kvitto på WhatsApp
+delivery_feedback	Leveransfeedback
+lan_self_book	LAN självbokning
+new_party_clear	Nytt parti (tydlig form)
+new_party_kind_ph	Ny festtyp (leverantör / transportör)
+next_country	Nästa land
+prev_country	Föregående land
+note_gstin_ph	Anmärkning / GSTIN / avtalspåminnelse
+note_pod_ph	Note / POD (valfritt)
+on_account_ap	På konto (AP)
+org_optional_ph	Organisation (valfritt)
+paid_now	Betalt nu
+pairing_code_ph	Parningskod
+pair_now	Para ihop nu
+party_name_selected_ph	Partinamn (eller använd valt)
+password_ph	Lösenord
+pay_ap_card	Betala AP-kort
+pay_ap_cash	Betala AP kontant
+pay_ap_upi	Betala AP UPI
+period_bill	Periodräkning
+period_bill_party	Periodräkning (fest)
+pick_pod_photo	Välj POD-foto
+print_awb_label	Skriv ut AWB-etikett
+print_open	Skriv ut / öppna
+reason_amend_ph	Orsak till ändring / annullering / återbetalning
+reason_note_ph	Orsak/anmärkning (slöseri, räkning, …)
+record_day_close	Bokför dagsavslut
+refresh_from_shop	Uppdatera från butiken
+refund	Återbetalning
+remit_cod	Remittera COD (part)
+remove_selected	Ta bort markerade
+restore_backup	Återställ säkerhetskopia
+rider_name_ph	Ryttarens namn
+rider_phone_ph	Ryttare telefon
+riders	Ryttare
+riders_own_fleet	Ryttare (egen flotta)
+rollup	Sammanställning
+save_booking_measures	Spara bokningsåtgärder
+save_brand	Spara varumärke
+save_business_id	Spara företags-id
+save_business_name	Spara företagsnamn
+save_features	Spara jobbinställningar
+save_names	Spara namn
+server_ip_ph	Server-IP (t.ex. 192.168.1.10)
+set_credit_limit	Tillämpa gräns för fest
+set_login_selected	Använd inloggning på valda
+set_login_named	Ansök inloggning på {name}
+shop	Handla
+start_fresh	Börja fräscht
+stop_extra_tills	Stoppa extra kassar
+backup_auto	Säkerhetskopieras automatiskt varje dag · senaste {when} · de senaste 14 dagarna sparas i {dir}.
+backup_auto_none	Säkerhetskopieras automatiskt varje dag – den första körs på ett ögonblick.
+backup_copy_to	Kopior går också till {dir}.
+backup_copy_btn	Kopiera även säkerhetskopior till en mapp...
+autostart_off	Börja med den här datorn
+autostart_on	Startar med den här datorn ✓ — tryck för att stoppa
+autostart_done_on	Den här datorn öppnar nu appen när den startar — butikens server är tillbaka efter ett strömavbrott.
+autostart_done_off	Den här datorn öppnar inte längre appen när den startar.
+right_allowed	Tillåtet
+right_with_approval	Med godkännande
+right_denied	Inte tillåtet
+editing_staff	Rättigheter för
+team_pick_ph	Personal att redigera - namn, användarnamn eller val
+select_staff	Välj denna personal
+rights_help	Rättigheter — tryck för att ändra: Tillåtet → Med godkännande (en chefs PIN-kod vid det tillfället) → Inte tillåtet.
+right_void_refund	Ogiltigförklara eller återbetala en bokning
+right_amend_sale	Ändra en registrerad bokning
+find_server	Hitta butikens server
+finding_server	Letar efter butikens server på detta Wi-Fi...
+no_server_found	Ingen hittades. På servern: Inställningar → Andra enheter → Tillåt extra kassar (samma Wi-Fi). Eller skriv in IP-adressen som visas där.
+servers_found_pick	Tryck på butiken du vill ansluta till.
+server_host_selected	Använd {host} — ange kopplingskoden och sedan Koppla nu.
+device_forgotten	Butiken glömde den här enheten — koppla ihop den igen med butikens nuvarande kod. Beställningar som väntar på den behålls.
+forget_device	Glöm
+last_seen	sett
+new_pair_code	Ny parningskod
+lan_offline	Butiksservern går inte att nå
+lan_offline_waiting	Butiksservern går inte att nå · {n} väntar
+lan_connecting	Ansluter till butik...
+pair_finishing	Avslutar par... tillämpar kontorsböckerna
+pair_opening	Öppnar kontoret...
+lan_live	Live
+lan_sending	{n} skickar
+lan_sign_in_to_send	Logga in igen för att skicka {n}
+lan_pair_again	Para ihop den här enheten igen
+lan_update_app	Uppdatera appen – den här enheten och kontorsservern har olika versioner
+allow_firewall	Tillåt andra enheter att ansluta
+firewall_blocked	Den här datorns brandvägg blockerar andra enheter — tryck på Tillåt andra enheter att ansluta.
+firewall_waiting	Väntar på adminprompten...
+lan_join_help	På den andra enheten: Klientläge → Hitta butikens server (eller skriv {addr}) → parningskod {code}.
+lan_pair_status	Wi‑Fi {addr}
+lan_join_help_no_addr	Anslut den här enheten till Wi-Fi för en adress.
+lan_no_address	Ingen Wi‑Fi-adress än – anslut till butikens Wi‑Fi.
+lan_not_listening	Accepterar inte enheter (port {port} upptagen). Starta om appen.
+lan_tills_off	Extra kassar är avstängda. Tillåt dem att låta en annan enhet gå med.
+paired_with	Parat · {url}
+not_paired	Inte parat
+choose_device_use	Välj Server eller Klient.
+paired_note	Parat. Lås upp för att sälja, eller uppdatera för det senaste.
+last_update_at	Senaste uppdatering: {time}.
+pair_intro	Hitta servern eller skriv in dess adress och kopplingskod.
+queue_waiting	Väntar på att nå butiken ({n}):
+queue_tries	Försökt {n} gånger · senaste svar: {e}
+save_backup_copy	Spara en säkerhetskopia...
+backup_copy_saved	Säkerhetskopiering sparad – håll den borta från den här enheten (ett USB-minne eller annan enhet)
+backup_copy_overdue	Ingen säkerhetskopia har lämnat den här enheten på {n} dagar — Inställningar → Säkerhetskopiering
+backup_copy_failed	Säkerhetskopieringen kunde inte sparas där – välj en annan plats
+clock_off	Den här enhetens klocka är {min} min utanför butikens server – ställ in rätt tid på den här enheten
+printers_heading	Skrivare på den här enheten
+printers_help	Hitta riktiga skrivare och välj sedan kvitto eller AWB-etikett. Varje jobb har sin egen bredd, stående eller liggande och hur byten skickas. En etikett skriver ut streckkoden. Tom plats = skriv inte ut.
+job_width	Innehållsbredd (mm)
+job_width_ph	Eller skriv en bredd, 40–210 mm
+job_layout	Plan
+job_delivery	Hur jobbet skickas
+job_size	Teckenstorlek
+job_size_ph	t.ex. 18, 20, 26...
+save_receipt_format	Spara kvittoformat
+save_label_format	Spara etikettformat
+test_receipt_format	Testkvitto
+test_label_format	Testetikett
+test_receipt_sent	Provkvitto skickat
+test_label_sent	Exempeletikett har skickats
+test_print_no_printer	Ingen skrivare för det jobbet – lägg till en under den här platsen
+printers_host_only	Skrivare ställs in på butiksenheten (server). Denna till skickar jobb dit — Hitta/lägg till/tilldela vistelse på servern. Testsidan går till servern.
+printers_pool_heading	Skrivare
+printers_routes_heading	Där saker trycks
+printer_label_ph	Namn (t.ex. skrivbord)
+printer_target_ph	värd:9100 · bt:MAC · usb:VID:PID · systemnamn
+printer_mode_heading	Profil för nya utgångar
+printer_mode_standard	Standard porträtt
+printer_mode_landscape	Standard Landskap
+printer_mode_thermal	Termisk
+printer_mode_standard_short	Porträtt
+printer_mode_landscape_short	Landskap
+printer_mode_thermal_short	Termisk
+printer_format_custom	Ny anpassad profil
+printer_format_custom_label	Anpassad
+printer_format_custom_added	Anpassad profil har lagts till för denna plats
+add_printer	Lägg till skrivare
+remove_printer	Ta bort sist
+route_pick_ph	kvitto eller etikett
+route_add_printer_ph	Lägg till skrivare på den här platsen
+route_receipt	Mottagande
+route_label	AWB-etikett
+route_dont_print	Ingen skrivare tilldelad
+route_add	Lägg till plats
+route_up	Upp
+route_down	Ner
+route_remove	Ta bort sist
+route_clear	Rensa skrivare för den här platsen
+save_printers	Spara skrivare
+print_test_page	Skriv ut en testsida
+printers_saved	Skrivare sparade för den här enheten
+test_page_sent	Testsida skickad — kontrollera skrivaren
+printers_found	Hittade på den här enheten: {list}
+find_printers	Hitta skrivare
+printers_looking	Letar efter skrivare på den här enheten och Wi-Fi...
+printers_tap_find	Tryck på Hitta skrivare för köer som accepterar jobb och nätverkskvittoskrivare på detta Wi-Fi (inte borttagna eller offline).
+printers_none_found	Inga skrivare hittades – ange ett systemskrivarnamn eller en nätverksadress (t.ex. 192.168.1.50).
+receipt_printer_ph	Skrivare för kvitton
+queue_refused	Godkänns inte av butiken ({n}) — kontrollera var och en vid disken:
+clear_not_accepted	Markerad – rensa den här listan
+device_name_ph	Den här enhetens namn
+lan_last_update	senaste uppdatering {time}
+lan_not_accepted	{n} accepteras inte
+connected_now	ansluten nu
+backup_failed	Den senaste automatiska säkerhetskopieringen misslyckades: {e}
+backup_overdue	Ingen säkerhetskopiering på {n} dagar – håll appen öppen på den här enheten så att den kan säkerhetskopiera.
+disk_low	Endast {mb} MB ledigt på den här enheten — säkerhetskopieringar kommer snart att misslyckas. Frigör lite utrymme.
+last_seen_devices	Senast sett: {time}
+sync_interval	Synkronisera var {secs}s
+connection_to_shop	Anslutning till butiken
+supplier_name_ph	Leverantörens namn (eller part)
+supplier_ph	Leverantör
+switch_device	Byt den här enheten
+take_payment	Ta betalt
+tax_added_till	{tax} exklusivt
+tax_inside_price	{tax} inklusive
+today_books	Idag böcker
+unlock_after_pairing	Ange PIN-kod
+unlock_with_login	Lås upp med inloggning
+update_my_password	Uppdatera mitt lösenord
+update_my_pin	Uppdatera min PIN-kod
+duress_heading	PIN-kod för nödupplåsning (endast ägare)
+duress_help	Frivillig. Om denna PIN-kod skrivs in vid upplåsning istället för din, raderas alla bokposter (bokningar, reskontra, historik) och skrivbordet öppnas som ägaren ser normalt ut - priser, fester, zoner, personal och inställningar stannar. Schema och konfiguration raderas inte. Använd endast om du tvingas låsa upp. Lämna tomt och spara för att stänga av. Aldrig samma som någons PIN-kod.
+duress_pin_ph	Nöd-PIN (4–12 siffror)
+duress_confirm_ph	Skriv igen för att bekräfta
+save_duress_pin	Spara nöd-PIN
+clear_duress_pin	Stäng av nöd-PIN
+duress_on	PIN-kod för nödupplåsning är på
+duress_off	PIN-koden för nödlåsning är avstängd
+duress_saved	PIN-koden för nödupplåsning har sparats
+duress_cleared	PIN-kod för nödupplåsning avstängd
+vehicle_ph	Fordon
+void	Makulera
+write_off_ap	Skriv av AP
+write_off_nil	Avskrivning / noll saldo
+zone_ph	Zon (namn från priser)
+caption_today	IDAG
+caption_bookings	BOKNINGAR
+caption_payments_today	BETALNINGAR IDAG
+caption_outstanding	ENESTÅENDE
+caption_bank	BANK
+paid_by	Betalas av
+second_way	Andra sättet
+weight_in	Vikt in
+size_in	Storlek in
+goods_received	Varor mottagna
+expense_heading	Kostnad
+notes_attach_sale	Anteckningar och bilagor (vald rea)
+notes_attach_party	Anteckningar och bilagor (vald part)
+attachments_last_expense	Bilagor (senaste utgiften)
+credit_limit_heading	Kreditgräns (vald / namngiven part)
+pay_selected_heading	Vald lön (reglera skuld / ta förskott)
+write_off_heading	Avskriva (rensa utan betalning)
+pay_ap_heading	Betala vad vi är skyldiga dem (AP)
+country_tax	Land och skatt
+extra_tills_heading	Extra kassar
+other_devices_help_heading	Konfigurera andra enheter
+other_devices_help	På den här enheten (Server): Andra enheter → Tillåt extra kassar. Notera ihopkopplingskoden och Wi-Fi-adressen. Tryck på Tillåt andra enheter att ansluta om det visas. På en dator trycker du på Starta med den här datorn. På varje annan enhet: installera appen, välj Klientläge, Hitta butikens server (eller skriv adressen), ange kopplingskoden, Koppla nu. Beställningar väntar på enheten om Wi-Fi sjunker och går när servern svarar igen.
+your_brand	Ditt varumärke (i appen)
+units_heading	Enheter
+booking_measures	Bokningsåtgärder
+drawer_count	Antal lådor (valfritt)
+spreadsheet_csv	Kalkylblad (CSV)
+bank_reconciliation	Bankavstämning (kryssa av mot ditt kontoutdrag)
+book_add_product	Boka — lägg till produkt/pris
+book_opening_credit	Bok — inledande kredit
+account_kind	Kontotyp (tryck på en)
+active_ledger	Aktiv reskontra
+actual_total_cap	FAKTISK TOTALT
+amend_help	Välj en försäljning för att ändra, ogiltigförklara eller återbetala. Ändringar håller hela historiken. Avrundad summa börjar lika med Tillämpad — redigera endast till runda. Ogiltig och återbetalning kan behöva en PIN-kod för ägare eller chef (skriven ovan, registrerad med ditt namn).
+applied_total_cap	TILLÄMPAD TOTALT
+bank_balance	Banksaldo
+bank_net_today	Banknetto idag
+branch_export_help	Export skriver en ögonblicksbild av dagen till mappen för säkerhetskopior och kopierar den till urklipp. För att importera en annan butiks dag, spara filen som import_branch_snapshot.json i den mappen och tryck sedan på Importera.
+brand_shown_help	Visas på skärmar inuti appen. Det installerade appnamnet och ikonen på den här enheten kvarstår som plattformslistan.
+app_icon	App-ikon
+logo_help	Valfritt butiksmärke på skärmar i appen.
+onboard_layout	Vad du får
+item_photo_help	Frivillig. Utan ett foto visar vi initialer från objektets namn.
+cash_in_hand	Kontanter i handen (till)
+change_my_pin_heading	Ändra min PIN-kod (endast din)
+connect_to_server	Anslut till servern
+counter_locked	Räknare 01 · Låst
+country_pack_help	Ett landspaket anger skattenamnet och matematiken, räls för omedelbar betalning och företags-ID tryckt på räkningar. Kumkaj lämnar inte in skatter eller utfärdar statliga e-fakturor någonstans.
+currency_use_help	Bläddra och tryck på Använd för valfri valuta som stöds.
+day_close_help	Om du registrerar en stängd dag sparas denna sammanfattning (och lådavvikelse om den räknas) i granskningsloggen. Det slutar inte sälja.
+expenses_word	Utgifter
+feature_access_help	Funktionsåtkomst för utvald personal (tryck efter att du har lagt till)
+footer_local	Lokal SQLite · Gratis för alltid · Zero Cloud
+fresh_book_moklanjo	Färsk = tom katalog (lägg till objekt senare). Bok = typ ingående lager och vem som är skyldig dig nedan.
+fresh_selected	Ny markerad — katalogen förblir tom. Tryck på Klar när du är klar.
+gross_word	Grovt
+how_start	Hur vill du börja?
+later_country_pack	Senare: Inställningar → tillämpa ditt landspaket för skatte- och betaletiketter.
+local_badge	LOKAL
+measures_help_moklanjo	Hur paket mäts vid bokningsdisken. Skriv mått och vikt i de enheter du använder — standard (cm, m, in, ft · kg, g, lb, oz) eller din egen enhet kopplad till cm/kg ovan (direkt eller genom andra enheter). Böcker registrerar alltid kg. Lämna ett fält tomt för att behålla det.
+mix_type_hint_moklanjo	Skriv hur mycket i varje (kontanter / UPI / kort / kredit). Måste läggas till räkningen. Kredit behöver en kund ovan.
+money_in_sales	Pengar i (försäljning)
+more_help_moklanjo	Katalog, försäljning, kredit, team, backup — plus lager och extra kassar vid behov.
+net_word	Netto
+offline_badge	OFFLINE
+optional_login_help	Valfri inloggning (id + lösenord). Ägaren sätter en gång; endast användaren kan ändra lösenordet senare.
+or_unlock_login	Eller lås upp med inloggnings-id + lösenord
+permission_preset	Jobb (ställer in skärmar och rättigheter)
+preset_help_moklanjo	Kassör: sälja. Manager: sälja + varor + ogiltigförklara/ändra.
+product_locked_moklanjo	Moklanjo
+product_only_moklanjo	Denna app är endast Moklanjo — böcker + bokningsdisk. Andra handelsansikter skickas som separata produkter senare.
+purchases_cogs	Köp (COGS)
+qty_cap	ANTAL
+restore_help	Återställ: välj en säkerhetskopia. Böckerna öppnas som de var då; böckerna som de är nu sparas först, så detta kan ångras.
+wipe_data_heading	Ta bort lokal data
+wipe_data_help	Endast ägare – samma val som avinstallation av Windows. Affärsregister rensar handelshistorik men behåller priser och inställningar (som PIN-koden för nödlåsning). Butiksinställningar tar bort bokdatabasen. Skärminställningar rensar fönster/språk. Bekräfta med ägarens PIN-kod. PIN-koden för nödupplåsning på Team är separat (doldtorkning vid upplåsning).
+wipe_trading	Affärsrekord
+wipe_schema	Butiksinställning
+wipe_ui	Skärminställningar
+wipe_owner_pin_ph	Ägarens PIN-kod att radera
+wipe_delete_selected	Ta bort markerade
+wipe_owner_only	Endast ägaren kan radera lokal data.
+restore_owner_only	Endast ägaren kan återställa en säkerhetskopia.
+wipe_owner_pin_needed	Ange ägar-PIN för att radera lokal data.
+wipe_nothing_selected	Välj vad som ska raderas först.
+wipe_done	Vald lokal data raderad.
+wipe_schema_done	Butiksinställningar raderade — välj Server eller Klient för att fortsätta.
+rounded_total	Avrundat totalt
+setup_app_moklanjo	Ställ in Moklanjo
+shop_logo_optional	Butikslogotyp (valfritt)
+stock_type_help	Skriv in objektets namn (en del av det räcker), en kvantitet och justera sedan. Föremål som inte räknas ännu behöver Börja spåra en gång.
+team_owner_help	Anställning: välj ett jobb (kassör/chef), namn + start-PIN och sedan Lägg till. Endast om denna person skiljer sig: öppna skärmar och rättigheter nedan, sedan Spara jobbinställning. Alla ändrar sin egen PIN-kod längst ner — Ägaren kan inte ändra någon annans.
+they_owe_us	De är skyldiga oss
+unit_at_cap	Enhet @
+units_help	Koder för artikeletiketter (kg, styck, påse). Varje enhet ska länka — direkt eller genom andra enheter — till en standard (kg · cm · ml · st), t.ex. 1 låda = 2 låda och 1 låda = 20 cm. Omvandlingar: 1 från = faktor till. Valuta är aldrig enheter.
+we_owe_them	Vi är skyldiga dem
+who_unlocking	Vem låser upp?
+locked_word	Låst
+show_pin	Visa PIN-kod
+hide_pin	Dölj PIN-kod
+set_owner_pin	STÄLL IN ÄGARE PIN
+enter_owner_passcode	SKRIV IN ÄGARE LÖSENKOD
+enter_staff_passcode	SKRIV IN PERSONALENS LÖSENKOD
+pin_count_zero	0 / 12 siffror · minst 4, sedan OK
+pin_count_need	{} / 12 siffror · behöver {} mer
+pin_count_full	12/12 siffror · tryck på OK
+pin_count_ready	{} / 12 siffror · tryck på OK när du är klar
+pin_hint_choose	Välj 4–12 siffror · Enter eller Lås upp för att spara
+pin_hint_new	Ny 4–12-siffrig ägar-PIN · Ange eller lås upp
+pin_hint_shop_code	Handla enhet · kopplingskod {}
+pin_hint_books	Denna enhet håller böckerna
+pin_hint_paired	Extra till parat – lås upp för att sälja
+pin_hint_pair_first	Extra till — koppla ihop till butiksenheten först
+unlock_to_continue	Lås upp för att fortsätta
+no_staff_yet	Ingen personal ännu – lås upp som ägare och sedan Team
+status_server_set_pin	Serverläge — ställ in ägarens PIN-kod
+status_server_tills	Serverläge — extra kassar kan gå med. Lås upp
+status_server_unlock	Serverläge — lås upp som ägare
+status_client_unlock	Klientläge — lås upp för att sälja
+icon_new_selected	Ikon: ny fil vald — tryck på Spara varumärke
+icon_custom	Ikon: anpassat platsmärke
+icon_default	Ikon: Kumkaj-märke (standard) — välj en anpassad
+logo_yours	Logotyp: din butikslogotyp — visas på skärmar och kvitton
+logo_default	Logotyp: Kumkaj-märke (standard) — välj din egen om du har en
+tmpl_current	Aktuell: {} — {}
+tmpl_selected	Valda: {} — {}
+setup_complete	Installationen är klar
+onboard_fresh_tmpl	Färsk · {} — katalogen börjar tom; lägg till objekt i Objekt och sedan Klar.
+onboard_book_tmpl	Boka · {} — lägg till föremål och öppningskredit och sedan Klar.
+onboard_template_tmpl	Namnge platsen om du vill och välj sedan hur du ska börja.
+tmpl_blurb	Budböcker och bokningsdisk: avsändare, transportörer, dagbok, AWB.
+tmpl_how	Boka paket vid skrivbordet; Dagbok för idag; flikar för priser, fester, rapporter.
+trk_booked	Bokad
+trk_picked_up	Plockade upp
+trk_in_transit	På väg
+trk_delivered	Levereras
+trk_rto	Återgår till avsändaren
+lane_to_dispatch	Att skicka
+lane_with_carrier	Med bärare
+lane_failed	Misslyckades
+lane_done_today	Klart idag
+ops_board_help	Paket efter var de är i dagens arbete. Tryck på paket (eller skanna dem) för att välja dem och agera sedan på alla plockade på en gång - varje körfält erbjuder bara de rörelser som passar den.
+lane_empty	Inget här just nu.
+picked_fmt	{n} valdes
+pick_all	Välj alla
+bag_for_carrier	Hand till bärare
+send_with_rider	Skicka med ryttare
+out_again	Ut igen
+return_to_sender	Återgå till avsändaren
+runs_bags_heading	Senaste körningar & väskor
+print_word	Skriva ut
+bag_word	Bärkasse
+run_word	Ryttare springa
+parcels_fmt	{n} paket
+parcel_history	Historia
+attempt_fmt	Försök {n}
+pieces_short_fmt	{n} st
+note_reason_ph	Notera eller skäl
+ops_pick_first	Välj paket först – tryck på dem eller skanna dem
+cod_to_collect	Levereras - efterkrav att hämta
+cod_on_road	COD fortfarande på väg
+cod_owed_consignors	Samlas — för att betala avsändare
+cod_rto_fees	RTO-avgifter att samla in
+cod_to_hand_in	COD att lämna in
+parcel_one_fmt	{n} paket
+facet_bank_title	Rapporter
+facet_bank_help	Dagböcker, feståldring, bankinlägg och periodisk P&L.
+facet_ops_title	Försändelser & utskick
+facet_ops_help	Skanna eller skriv AWB → Hitta och sedan framåt / skriv ut etikett / COD. Skickas till ryttare eller transportör.
+facet_cod_title	COD register
+facet_cod_help	Hämtas vid leverans, skicka sedan till avsändaren.
+facet_riders_title	Ryttare (egen flotta)
+facet_riders_help	Lägg till ryttare och skicka sedan bokade AWB från Ops.
+against_bill_ph	Mot räkning # ovan (valfritt)
+aliases_ph	Alias — andra namn, kommaseparerade
+amount_blank_full_ph	Belopp (tomt = fullt saldo)
+amount_owed_ph	Skuldbelopp
+amount_ph	Belopp
+amount_received_ph	Mottaget belopp
+amount_we_pay_ph	Belopp vi betalar
+awb_scan_ph	AWB / skanna streckkod
+bulk_csv_ph	Bulk CSV — destination, mottagare, kg, cod_paise, not
+business_name_ph	Företagsnamn
+category_new_ph	Kategori (valfritt, skapad om ny)
+cod_amount_ph	COD-belopp
+code_bag_ph	Kod (väska)
+conv_factor_ph	Faktor (25 = 1 påse → 25 kg)
+country_code_ph	Landskod t.ex. IN, GB, US, AE, BR
+credit_khata_amount_ph	Kredit / khata belopp
+credit_limit_ph	Kreditgräns (0 = ingen)
+dim_unit_code_ph	Måttenhetskod (cm)
+divisor_ph	Volumetrisk divisor (5000)
+extra_per_kg_ph	Extra / kg
+first_amount_ph	Första beloppet
+first_kg_ph	Första kg (platta)
+from_code_ph	Från kod (påse)
+item_name_lang_ph	Objektets namn – skriv det på ditt språk
+login_id_opt_ph	Användarnamn (obligatoriskt, unikt)
+manager_pin_ph	Chefs-PIN att godkänna (endast om du inte kan annullera)
+new_branch_name_ph	Nytt filialnamn
+new_password_ph	Nytt lösenord (valfritt)
+new_pin_ph	Ny PIN-kod (4–12 siffror)
+note_bank_ph	Notera (insättning, uttag, ...)
+note_buy_expense_ph	Obs (bränsle, hyra, …)
+note_expense_ph	Notera (bränsle, kontor, …)
+notify_phone_ph	Meddela telefon (WhatsApp/SMS-krok)
+options_moklanjo_ph	Alternativ (valfritt) — Large=20, Presentpapper=10
+part_second_way_ph	Dela på ett annat sätt (valfritt)
+phone_ph	Telefon
+address_ph	Adress
+party_custom_fields_heading	Anpassade fält (vald part)
+party_custom_help	Lägg till valfri etikett och värde på den här festen - WhatsApp, GSTIN, ruttkod, ...
+party_custom_key_ph	Fältnamn (t.ex. WhatsApp)
+party_custom_value_ph	Värde
+party_custom_add	Lägg till fält
+party_custom_remove	Ta bort fält
+party_custom_empty	Inga anpassade fält ännu
+party_custom_pick_first	Välj ett parti för att lägga till anpassade fält
+place_name_ph	Namnet på denna plats
+price_ph	Pris
+qty_example_ph	Antal (t.ex. 1,5 för kg)
+quantity_ph	Kvantitet
+reason_required_ph	Orsak (obligatoriskt)
+role_title_ph	Rolltitel (t.ex. Barista)
+service_pct_ph	Service % valfritt 0/10/12
+short_code_ph	Kortkod (MG02)
+slab_kg_ph	Laddbar platta i kg (0,5)
+staff_name_ph	Personalens namn/id
+starting_password_ph	Startlösenord (valfritt)
+starting_pin_ph	Start-PIN (4–12 siffror)
+tax_rate_ph	Skattesatsens namn eller % — Standard, Reduced, 0, 5, 12, 18, 20
+to_code_ph	Till kod (kg)
+uncleared_no_ph	Oavstämt # ovan
+unit_cost_ph	Enhetskostnad
+unit_kg_blank_ph	Enhet (kg eller blank)
+unit_name_bag_ph	Namn (påse)
+weight_unit_code_ph	Viktenhetskod (kg)
+zone_name_ph	Zonnamn
+pay_credit	Kredit
+book_kind_today	Idag böcker
+book_kind_month	Böcker denna månad
+book_kind_aging	Utestående / debet-kredit
+book_kind_balance	Balansräkning
+ops_desk_help	Skanna AWB med en USB-streckkodsläsare (eller skriv in den) → Hitta. Avancera sedan, skriv ut etiketten eller samla efterkrav. Etiketter tryck kod 128.
+role_help_consignor	Roll: Avsändare — AR (de är skyldiga oss). Samma företag kan också vara Carrier.
+role_help_carrier	Roll: Carrier — AP (vi är skyldiga dem). Samma företag kan också vara avsändare.
+role_help_both	Roller: Avsändare + Transportör — en part, AR- och AP-reskontra, netto i rapporter.
+role_help_supplier	Roll: Leverantör — AP för inköp.
+lane_declared_label	Kontobokning
+lane_owner_label	Kontantbokning
+money_lane_bill	Nota: {lane}

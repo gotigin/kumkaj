@@ -1,0 +1,1351 @@
+# Chinese (Traditional) — 繁體中文 (zh-Hant). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	餐廳訂單、廚房與帳本。免費離線。
+unlock	解鎖
+pin_hint	店主PIN初始為0000
+sell	訂單
+buy	採購
+books	日記帳
+books_help	今日狀況。下單 = 訂單入。採購 = 進貨和費用。往來方 = 賒帳顧客和供應商。
+buy_help	費用憑證和供應商帳單（支出）。記帳的留在往來方帳本。
+sell_money_in	接訂單
+buy_money_out	費用/供應商帳單
+record_purchase	記錄採購
+add_expense	費用憑證
+bank_book	銀行帳本
+credit_help	往來方編號唯一（名稱可重複）。顧客記帳（欠我們）；供應商賣貨給我們（我們欠他）；兩者都可。帳本分開；報表顯示淨額。
+party_kind_ph	角色：顧客、供應商、兩者…
+reports_help	日記帳、應收應付、銀行帳本、費用憑證、損益。
+reports_today	日記帳（今天）
+reports_month	損益（月）
+reports_aging	未結 / Dr-Cr
+reports_balance_sheet	資產負債表
+reports	報表
+refresh	刷新
+undo	撤銷
+start_tracking	開始盤點
+stock_minus	− 庫存
+stock_plus	+ 庫存
+settle_cash	現金結清
+settle_card	刷卡結清
+items	菜單與項目
+nav_items	菜單
+more	更多
+your_items	你的菜單
+items_help	每行是一道菜或項目（如 Masala Dosa）。添加價格和廚房工位。點擊編輯。
+add_item	添加項目
+new_item	新項目
+adding_item	正在添加新項目
+editing_item	編輯中
+save	保存
+remove	刪除
+removed_items	已移除的項目
+removed_help	恢復會把項目原樣放回菜單 — 價格、照片和分類都不變。我們的菜品貨架永遠不會被移除，所以隨時都能再次添加菜品。
+restore_item	恢復
+empty_catalog	尚無項目。打開菜單與項目，添加一個（名稱+價格），然後下單。
+total	總計
+cash	現金
+upi	UPI
+card	銀行卡
+credit	往來方
+clear	清空
+ready_to_sell	可以寄件了
+today_prefix	今天
+today_mid	今天
+owed	未收
+round_word	舍入
+back	返回
+sold_out	售罄
+restock	補貨
+not_tracked	未計數
+in_stock	有庫存
+marked_sold_out	已標售罄
+add_upper	加入
+na	無
+qty	數量
+unit_at	單價
+actual	實際
+applied	應付
+note_ph	備註（可選）
+rounded	舍入後
+split	拆分
+send_kot	送廚
+send_kot_to	發送 → {kitchens}
+send_kot_again	為下一張 KOT 添加菜品
+send_kot_held	已暫存菜品 — 取消暫存以發送
+reprint_kot	重打所選
+reprint_kot_ok	已重打 {n} 道菜 · {slips} 張單 → {kitchens}
+reprint_kot_needed	先發送廚單 — 再勾選菜品並重打所選
+reprint_kot_none_selected	已發送的都已跳過 — 在要重打的菜上點「列入打印」
+reprint_kot_client	為 {place} 已發送的訂單再次打印 ({n}) — 廚房在服務員處打印
+print_cancelled_kot	打印全部取消
+print_cancelled_kot_ok	已打印 {n} 項取消 · {slips} 張 → {kitchens}
+print_cancelled_kot_needed	請打開有取消菜品的桌臺
+print_cancelled_kot_none	此單沒有取消菜品
+print_cancelled_kot_client	已發送 {place} 的取消 ({n}) — 在服務器打印
+kot_banner	橫幅
+kot_banner_ph	橫幅（空=無）
+kot_item_prefix	菜名前綴
+kot_item_prefix_ph	例如 [CANCELLED]
+kot_strike	劃掉菜名
+kot_strike_note	劃掉備註
+kot_strike_on	開
+kot_strike_off	關
+bill_item_layout	菜品版式
+bill_item_layout_columns	列
+bill_item_layout_stacked	堆疊
+bill_item_header	列標題
+bill_item_hdr_item	品名錶頭
+bill_item_hdr_qty	數量表頭
+bill_item_hdr_price	單價表頭
+bill_item_hdr_amount	金額表頭
+bill_item_name	菜名
+bill_item_qty	數量
+bill_item_price	單價
+bill_item_amount	金額
+bill_item_note	備註
+bill_item_col_gap	列間距
+bill_item_col_order	列順序
+bill_item_col_sep	列線
+bill_item_gap_tight	緊
+bill_item_gap_comfort	舒適
+bill_item_gap_wide	寬
+bill_item_num_width	數字列
+bill_item_num_compact	緊湊
+bill_item_num_comfort	舒適
+bill_item_num_wide	寬
+bill_item_num_align	數字對齊
+bill_item_gap_em	間距 (em)
+bill_item_qty_min	數量最小 (em)
+bill_item_price_min	單價最小 (em)
+bill_item_amount_min	金額最小 (em)
+kot_item_qty_width	數量列
+kot_item_num_align	數量對齊
+bill_total_qty_label	總數量標籤
+bill_total_subtotal_label	小計標籤
+bill_total_grand_label	總計標籤
+bill_total_paid_label	已付標籤
+bill_meta_pair	與…同行
+bill_pair_alone	單獨
+bill_item_piece_on	開
+bill_item_piece_off	關
+bill_total_qty	總數量
+bill_total_subtotal	小計
+bill_total_grand	總計
+reprint_incl	列入打印
+reprint_skip	跳過
+reprint_skip_meta	不重打
+kot_dest_hint	在您設置的“設置 → 打印機”中分配給 {kitchens} 的打印機上打印
+kot_sent_hint	上一張 KOT 發送至 {kitchens}。點擊可為下一張票據添加菜品，或為同一張票據再次打印 KOT
+kot_sent_printing	KOT 已發送到 {kitchens} — 正在打印
+kot_sent_not_printed	KOT 已發送到 {kitchens}，但未打印：{why}。請告知廚房，修好打印機後重新打印。
+kot_sent_screen	KOT 已發送到 {kitchens}
+kot_queued_shop	{place} 的 KOT → {kitchens} 已保存；由店裡的設備打印
+kot_job_label	{place} 的 KOT → {kitchens}
+kot_job_reached	{place} 的 KOT 已到達 {kitchens}
+kot_unassigned	廚房（無工作站）
+kot_unassigned_held	{n} 道菜無工位已暫留 — 取消暫留後再發送
+kot_station_ph	廚房
+kot_station_dd	廚房
+kot_station_dd_n	廚房 · {stations}
+kot_set_station	使用此工作站
+kot_station_applied	工作站已設置為 {n} 道菜品：{station}
+kot_station_cleared	已從 {n} 道菜品中清除工作站：{station}
+kot_station_needed	請先選擇廚房工位
+kot_station_not_allowed	不允許使用廚房：{station}
+kot_station_none	尚未設置廚房工作站 — 請在“廚房”或“設置 → 區域 · 工作站”下添加一個
+pos_tab_items	已添加
+pos_tab_payment	付款
+hold_send	暫緩
+hold_send_on	已暫存
+hold_send_meta	已暫存 — 非本張 KOT
+station_remove	移除工作站
+station_remove_ph	點擊列表中的工作站以移除它
+station_removed	工作站已移除：{name}
+settings_hub_title	設置
+settings_hub_help	一次打開一個區域——少滾動，選項更清楚。
+settings_back	返回
+settings_sec_language	語言與貨幣
+settings_sec_country	國家與稅務
+settings_sec_tills	額外櫃檯與分店
+settings_sec_brand	您的品牌
+settings_sec_units	單位與換算
+settings_sec_pickers	區域 · 工作站 · 稅率
+settings_sec_printers	打印機
+settings_sec_bill	帳單與 KOT 格式
+settings_sec_selling	方案與銷售
+bill_kot_tab_bill	帳單
+bill_kot_tab_kot	KOT
+settings_sec_alerts	提示
+alerts_help	狀態消息為你在屏幕上停留多久（本次登錄）。
+snack_secs_ph	秒數（3–60，默認 10）
+snack_secs_save	保存提示時長
+snack_secs_saved	提示時長已保存——{n} 秒
+settings_sec_backup	備份與恢復
+settings_sec_diag	診斷
+diag_privacy_help	日誌保留在此設備上。密鑰（PIN、密碼）從不存儲。每次共享設備外的包都需要您明確批准 — 絕不出售或提供給第三方
+diag_level	詳細級別
+diag_level_error	錯誤
+diag_level_warn	警告
+diag_level_info	信息
+diag_level_debug	調試
+diag_support_start	開始 30 分鐘支持會話
+diag_support_stop	結束支持會話
+diag_support_started	支持會話開啟 — 30 分鐘調試詳情
+diag_support_ended	支持會話已結束
+diag_export_local	導出本地副本
+diag_export_local_done	本地診斷就緒於 {path} — 選擇保存位置
+diag_approve_send	批准從此設備共享
+diag_send_help	批准僅針對一個包，隨後過期。臨時使用 — 僅用於修復或改進產品。不與第三方共享。適用於 Linux、Windows、macOS 和 Android
+diag_send_approved	已批准共享一個包（即將過期）
+diag_export_send	創建共享包（需要批准）
+diag_export_send_done	共享包就緒於 {path} — 選擇保存位置，然後僅發送給 Kumkaj 支持團隊
+diag_save_bundle	保存診斷副本
+diag_bundle_saved	診斷副本已保存至 {path}
+diag_bundle_failed	無法保存診斷副本 — 請重試
+diag_clear	清除診斷日誌
+diag_cleared	診斷日誌已清除
+sidebar_settings	側邊欄
+sidebar_settings_help	與側邊欄使用相同圖標。拖動行以重新排序。切換開關以顯示或隱藏。設置和鎖定始終保留在欄上
+sidebar_always_on_short	始終顯示
+sidebar_back_settings	返回
+sidebar_shown	已顯示
+sidebar_hidden	已隱藏
+sidebar_always_on	始終顯示在吧檯
+sidebar_shown_hint	顯示在側邊欄/底部標籤頁
+sidebar_hidden_hint	隱藏吧檯
+sidebar_menu_items	菜單與項目
+sidebar_enable_all	啟用全部
+sidebar_disable_all	禁用全部
+sidebar_order_saved	側邊欄訂單已保存
+sidebar_visibility_saved	側邊欄可見性已保存
+amounts_hide	隱藏
+amounts_show	顯示
+printers_none_hint	請先在此設備上保存打印機，然後將其添加到帳單或廚房
+counter	櫃檯
+dine_in	堂食
+takeaway	外帶
+order	訂單
+tables	桌臺
+kitchen	廚房
+sales	銷售
+sales_refunds	銷售與退款
+day_close	日結
+reports_expenses	報表與支出
+nav_reports	報表
+nav_settings	設置
+nav_lock	鎖定
+no_sale_yet	尚無銷售
+favorites	收藏
+favorites_help	您經常出售的商品，已為您的登錄保存。將一個添加到帳單，或從下面所有商品中建立您的列表。
+your_favorites	您的收藏
+all_items	所有商品
+frequent	常點
+added_items	已點
+added_items_empty	本單還沒有菜 — 從 All items 或分類添加。
+frequent_config_help	已結帳中賣得最多的菜。在此設置看幾天、顯示幾道。
+frequent_days_ph	天數 (1)
+frequent_limit_ph	數量 (24)
+frequent_apply	應用
+frequent_saved	高頻：最近 {d} 天，前 {n} — {c} 道菜
+frequent_empty	本時段尚無已完成銷售 — 結算一筆帳單（設置允許時可 ₹0）後會出現在此。
+zero_sales	零元銷售
+zero_sales_help	允許 ₹0 菜品和 ₹0 收款。關閉後付款需有金額。
+zero_sales_on	零元銷售：開
+zero_sales_off	零元銷售：關
+zero_sales_saved_on	已保存零元銷售許可（開）
+zero_sales_saved_off	已保存零元銷售許可（關）
+floor_areas_help	區域是廳內房間/分區（堂食、外帶、AC…）。先添加區域再往裡加桌——每個區域在平面圖上是一組。
+area_new_ph	新區域/房間（如 AC、Garden）
+add_area	添加區域
+area_added	區域“{name}”已就緒 — 向其中添加桌臺
+no_favorites	尚無收藏 — 從下面的列表添加商品。
+add_to_bill	加入帳單
+added	已添加
+owes_word	欠
+selected_word	已選擇
+chip_clear_credit	已結清 — 賒帳或預付
+chip_missing_customer	所選客戶不存在 — 請重新選擇
+chip_no_customer	尚無客戶 — 輸入姓名，然後點賒帳
+credit_summary_fmt	{} 位客戶 · 未結賒帳 {} · 預付 {}
+recent_label	最近:
+kot_new_waiting	新單 — 等待中
+kot_preparing	準備中
+kot_ready_serve	已備好 — 請上菜
+kot_done_cap	完成
+kot_cancelled	已取消
+kot_start_btn	開始
+kot_mark_ready	標記為已備好
+kot_done_btn	完成
+table_free	空閒 — 點按開始點單
+start_order	開始點單
+open_bill	打開帳單
+collect_payment	收款
+table_running	進行中
+payment_pending	待付款
+collect_at_counter	在櫃檯收款
+inventory	庫存
+inventory_stock	庫存與盤點
+branches	分店
+branches_org	分店與組織
+credit_customers	賒帳客戶
+customer_name_ph	往來方名稱
+new_customer_ph	新往來方名稱
+item_name_ph	項目名稱（如 Masala Dosa）
+item_price_ph	價格
+start_template	產品
+team	團隊
+team_pins	團隊與密碼
+my_pin_settings	我的密碼
+settings_hub_help_my_pin	更改此設備上已登錄人員的解鎖密碼。
+team_self_help	只有你可以更改自己的解鎖密碼（及可選登錄口令）。需要其他界面或權限請找店主。
+backup_settings	備份與設置
+lock_app	鎖定
+pick	選擇
+select	選定
+advance	推進
+owner	店主
+staff	員工
+photo	照片
+auto	自動
+prev	上一頁
+next	下一頁
+ok	確定
+this_shop	服務器模式
+extra_till	客戶端模式
+off	關
+tables_kitchen	桌臺與廚房
+server	服務器
+client	客戶端
+language_currency	語言與貨幣
+language	語言
+choose_language	選擇你的語言
+language_setup_hint	跟隨此設備的語言，或自己選擇一種。
+lang_follow_platform	使用設備語言
+lang_pick_user	使用所選語言
+lang_platform_now	當前設備語言
+selected_language	已選
+continue	繼續
+this_device	此設備
+device_use_q	此設備將如何使用？
+last_server_mode	之前是服務器——點按繼續
+last_client_mode	之前是客戶端——點按繼續
+choose_server	選擇服務器
+choose_server_hint	此設備已有服務器。打開一個，或為另一家企業創建新服務器。
+create_new_server	創建新服務器
+open_server	打開
+new_server_name_ph	新服務器名稱（可選）
+server_remove_pin_ph	刪除服務器需 Owner PIN
+only_owner_remove_server	僅 Owner 可刪除服務器
+owner_pin_remove_server	刪除此服務器需要 Owner PIN
+device_setup_help	服務器在此保存帳簿。客戶端與服務器配對。
+app_template_heading	Rajdhani 應用模板
+app_template_blurb	加載 Rajdhani 菜單；所有者 Zahir (zahir)，管理員 Asif (asif, PIN 1111)，服務員 Nawaz (nawaz, PIN 0000)；前臺側邊欄；歷史數據在 4 小時後自動清除（備份中有“立即清除”選項）；今日條帶移除；緊湊式 KOT + 窄托盤標準邊距。可在設置中重新啟用側邊欄同伴功能。
+app_template_apply	Rajdhani 應用模板
+app_template_skip	暫時跳過
+app_template_status	服務員就緒——應用 Rajdhani 應用模板，或跳過
+app_template_importing	正在應用 {title}…
+currency	貨幣
+backup	備份
+use	使用
+dont_use	不使用
+add_branch	添加分店
+add_conversion	添加換算
+add_dishes_items	添加菜品和項目
+add_item_plain	添加項目
+add_note	添加備註
+add_opening_balance	添加期初餘額
+add_staff	添加員工
+add_station	添加工位
+add_table	添加桌臺
+add_unit	添加單位
+add_use_name	添加/使用此名稱
+allow_extra_tills	允許額外櫃檯
+amend	修改
+apply_country_pack	應用國家包
+datetime_appearance	日期與時間顯示方式
+datetime_appearance_help	帳本內部始終保留年份優先的 RFC3339 格式。這些設置僅更改帳單、KOT、報表及屏幕上的日期和時鐘外觀。
+datetime_example	當前示例：{ex}
+date_order	日期順序
+date_order_dmy	D/M/Y
+date_order_mdy	M/D/Y
+date_order_ymd	Y-M-D
+time_format	時鐘
+time_format_24h	24 小時制
+time_format_12h	12 小時制
+attach_bill_photo	附上帳單照片
+attach_pdf	附上PDF
+attach_photo	附上照片
+attachments_last_expense	附件（上一筆費用）
+bank	銀行
+bank_in	存入銀行
+bank_out	從銀行取出
+bank_reconciliation	銀行對帳（按銀行對帳單勾選）
+bank_to_till	銀行 → 櫃檯
+book_add_dish	下單 — 添加菜品/項目
+book_opening_credit	寄件 — 期初賒帳
+branch_name_sell_ph	要從哪個分店銷售
+bring_my_book	帶上我的帳本
+business_tax_id_ph	企業稅號
+caption_bank	銀行
+caption_bills	帳單
+caption_outstanding	未結
+caption_payments_today	今日付款
+caption_today	今天
+card_amount_ph	銀行卡金額
+cash_amount_ph	現金金額
+cash_memo	現金小票
+choose_icon	選擇圖標
+choose_logo	選擇標誌
+clear_icon	清除圖標
+clear_photo	清除照片
+copy_day_book_csv	複製日記帳CSV
+copy_day_close	複製日結
+copy_items_csv	複製項目CSV
+copy_outstanding_csv	複製未結CSV
+copy_parties_csv	複製往來方CSV
+copy_party_ledger_csv	複製往來方帳本CSV
+copy_receipt	複製小票
+share_whatsapp	分享到 WhatsApp
+lan_pages_heading	Wi‑Fi 上的客人頁面
+lan_pages_help	在店內 Wi‑Fi 上可用客人頁面：展示屏、取餐號、出餐口、自助點餐、桌臺二維碼和評價。使用移動數據的客人以後需要 Cloud。有網絡時刷卡終端/付款鏈接為可選——絕不阻塞前臺。
+diag_send_heading	從本設備分享出去
+kot_dest_heading	廚房工位
+optional_login_heading	可選登錄
+rights_heading	權限
+ops_panel	本地運營
+crm_heading	賓客與消息
+crm_help	生日與積分：短信/WhatsApp隊列。{name}、{points}。店主發送。
+crm_queue_sms	排隊短信
+crm_queue_wa	排隊 WhatsApp
+crm_seg_bday_week	本週生日
+crm_seg_bday_month	本月生日
+crm_seg_phone	有電話
+crm_seg_loyalty	積分
+crm_seg_inactive	不活躍
+crm_seg_top	消費最高
+birthday_ph	生日（MM-DD 或 YYYY-MM-DD）
+crm_message_ph	生日快樂 {name}！您有 {points} 積分。
+till_apply_redeem	應用到帳單
+till_clear_redeem	清除兌換
+till_wallet_topup	充值錢包
+till_issue_voucher	發放代金券
+till_points_ph	兌換積分
+till_wallet_ph	錢包支出
+till_voucher_code_ph	代金券代碼
+till_voucher_amt_ph	代金券金額（空=全部）
+till_wallet_topup_ph	錢包充值金額
+till_voucher_issue_amt_ph	新代金券金額
+till_voucher_issue_code_ph	新代金券代碼
+split_evenly	平均拆分
+waitlist	候位名單
+fire_course	上菜
+hold_item	暫緩
+waiter_call	呼叫服務員
+waitlist_add	加入候位
+floor_view_grid	網格
+floor_view_layout	平面圖
+floor_layout_x	X
+floor_layout_y	Y
+floor_layout_w	W
+floor_layout_h	H
+floor_layout_save	保存平面圖
+floor_layout_open	打開桌臺
+floor_layout_edit	編輯平面圖
+floor_layout_pick	點按桌臺以編輯平面位置
+floor_layout_saved	桌臺平面已保存
+floor_layout_nudge_left	← 20
+floor_layout_nudge_right	→ 20
+floor_layout_nudge_up	↑ 20
+floor_layout_nudge_down	↓ 20
+sibling_pickers_help	與單位相同 On/Off：從日常選擇器隱藏區域、檔口、稅率；包裝默認保留。
+bulk_price_apply	應用批量改價
+card_terminal_optional	刷卡機/支付鏈接（有網時可選）
+copy_report	複製報表
+counted_cash_ph	抽屜裡點清的現金
+country_tax	國家與稅務
+tax_chrome	收銀臺稅標籤
+tax_chrome_help	關閉時，點餐檯將隱藏 GST/稅額估算行及含稅價格佔位符。稅率和國家稅務設置保持不變——可隨時重新開啟稅標籤。Rajdhani 應用模板默認關閉此功能。
+tax_chrome_on	顯示
+tax_chrome_off	隱藏
+tax_chrome_saved_on	收銀臺稅標籤
+tax_chrome_saved_off	收銀臺稅標籤已隱藏
+tax_invoice_till	收銀臺稅務發票
+tax_invoice_help	關閉時，帳單僅顯示現金收據，點餐檯上的“稅務發票/現金收據”芯片將隱藏。Rajdhani 應用模板默認關閉此功能——隨時開啟“顯示”即可重新選擇稅務發票。
+tax_invoice_on	顯示
+tax_invoice_off	隱藏
+tax_invoice_saved_on	收銀臺稅務發票
+tax_invoice_saved_off	稅務發票已隱藏——僅現金收據
+pay_methods	支付方式
+pay_methods_help	此處決定“收取支付”時顯示的芯片。現金始終保留。Rajdhani 應用模板默認僅顯示現金——在此處重新開啟 UPI/卡/信用卡/分帳等功能。
+create_backup	創建備份
+credit_limit_heading	信用額度（所選/指定往來方）
+day_close_summary	日結匯總
+delete_party	刪除所選往來方
+delivery	外送
+done_open_books	完成 — 打開帳本
+drawer_count	抽屜盤點（可選）
+expense_heading	費用
+export_day	導出當天
+extra_note_bill_ph	此帳單/銷售的附加備註
+extra_note_expense_ph	上一筆費用的附加備註
+extra_tills_heading	額外櫃檯
+other_devices_help_heading	設置其他設備
+other_devices_help	在本設備（服務器）上：額外櫃檯 → 允許額外櫃檯。記下配對碼和 Wi‑Fi 地址。若出現“允許其他設備連接”，點一下。在電腦上點“隨本電腦啟動”。在每臺其他設備上：安裝應用，選擇客戶端模式，查找店內服務器（或輸入地址），輸入配對碼，立即配對。Wi‑Fi 中斷時訂單留在設備上，服務器恢復後再發送。
+forget_shop	忘記此店鋪
+goods_received	已收貨
+import_day	導入當天
+import_items_csv_plain	導入項目CSV…
+import_parties_csv	導入往來方CSV…
+item_name	項目名稱
+kitchen_printing	廚房打印
+login_id_ph	登錄編號
+mark_cleared	標記為已清算
+new_party_clear	新往來方（清空表單）
+new_party_kind_supplier_ph	新往來方類型（供應商）
+next_country	下一個國家
+next_order	下一單（清空櫃檯）
+note_gstin_ph	備註/GSTIN/協議提醒
+notes_attach_party	備註與附件（所選往來方）
+notes_attach_sale	備註與附件（所選銷售）
+on_account_ap	記帳(AP)
+org_optional_ph	組織（可選）
+paid_by	付款方式
+paid_now	已付款
+pair_now	立即配對
+pairing_code_ph	配對碼
+party_name_selected_ph	往來方名稱（或使用所選）
+password_ph	密碼
+pay_ap_card	用卡付AP
+pay_ap_cash	用現金付AP
+pay_ap_heading	支付我們欠他們的(AP)
+pay_ap_upi	用UPI付AP
+pay_selected_heading	支付所選（結清欠款/預付）
+pick_from_items	從我們的項目中選擇
+prev_country	上一個國家
+print_open	打印/打開
+reason_amend_ph	修改/作廢/退款原因
+reason_note_ph	原因/備註（損耗、盤點…）
+record_day_close	記錄日結
+refresh_from_shop	從店鋪刷新
+refund	退款
+remove_selected	刪除所選
+request_bill	請求帳單
+restaurant_name_ph	餐廳名稱（可選）
+restore_backup	恢復備份
+role_both	兩者
+role_admin	管理員
+role_cashier	收銀員
+role_customer	顧客
+role_manager	經理
+history_retention	交易歷史
+history_retention_help	自動清除舊銷售記錄和 KOT。菜單、員工及設置保持不變。立即清除將刪除所有交易行並保留系統配置。
+history_off	保留
+history_day_close	日結時
+history_after_hours	營業結束後
+history_hours_ph	時長（1–168，默認 4）
+history_hours_save	保存時長
+history_clear_now	立即清除歷史
+history_cleared	交易歷史已清除——配置保留
+history_retention_saved	歷史清除設置已保存
+history_hours_saved	歷史時長已保存
+history_owner_only	僅所有者或管理員可清除歷史
+rollup	彙總
+save_brand	保存品牌
+save_business_id	保存企業稅號和服務%
+save_business_name	保存企業名稱
+save_features	保存所選員工的功能
+save_features_named	保存 {name}
+save_features_ok	已保存 {name} 的設置
+save_names	保存名稱
+second_way	第二種方式
+server_ip_ph	服務器IP（如192.168.1.10）
+set_credit_limit	設置信用額度
+set_login_selected	為所選設置登錄
+set_login_named	為 {name} 應用登錄
+shop	店鋪
+show	顯示
+spreadsheet_csv	電子表格(CSV)
+start_fresh	從頭開始
+stop_extra_tills	停止額外櫃檯
+floor_cols_ph	列數
+floor_cols_fit	適應屏幕
+floor_cols_fit_sub	可放 {n} 個
+floor_cols_fits	放得下
+floor_cols_scroll	左右滾動
+floor_cols_min	列數：至少 1 — 或留空以適應屏幕
+floor_zoom_auto	自動
+floor_zoom_out	縮小
+floor_zoom_in	放大
+backup_auto	每天自動備份 · 上次 {when} · 最近 14 天保存在 {dir}。
+backup_auto_none	每天自動備份 — 第一次馬上開始。
+backup_copy_to	副本也會存到 {dir}。
+backup_copy_btn	同時把備份複製到文件夾…
+autostart_off	隨電腦啟動
+autostart_on	隨電腦啟動 ✓ — 點按停止
+autostart_done_on	現在電腦開機就會打開應用 — 停電後店鋪服務器也會恢復。
+autostart_done_off	電腦開機不再打開應用。
+device_forgotten	店鋪已移除此設備 — 請用店鋪當前的配對碼重新配對。等待中的訂單會保留。
+lan_offline	離線
+forget_device	忘記
+last_seen	上次
+copy_pair_code	複製配對碼
+new_pair_code	新的配對碼
+pair_finishing	正在完成配對… 正在套用店鋪帳簿
+pair_opening	正在打開收銀機…
+pair_copied	配對碼已複製
+kot_waiting	等待發送
+lan_offline_waiting	離線 · {n} 條等待中
+lan_connecting	正在連接店鋪…
+lan_live	實時
+lan_sending	正在發送 {n} 條
+lan_sign_in_to_send	重新登錄以發送 {n} 條
+lan_pair_again	請重新配對此設備
+lan_update_app	請更新應用——此設備與店鋪服務器版本不同
+allow_firewall	允許其他設備連接
+firewall_blocked	本電腦的防火牆正在阻止其他設備——請點“允許其他設備連接”。
+firewall_waiting	正在等待管理員確認…
+lan_join_help	其他設備可以連接到本機 — 配對碼 {code}。在另一臺設備上選擇客戶端模式，然後點“查找店內服務器”，或輸入此地址：{addr}
+lan_pair_status	無線網絡 {addr}
+lan_join_help_no_addr	連接此設備到 Wi‑Fi 以獲取地址。
+lan_no_address	本機還沒有 Wi‑Fi 地址 — 請連接店內的 Wi‑Fi。
+lan_not_listening	目前無法接受設備連接 — 可能有其他程序佔用了端口 {port}。請重新啟動應用。
+lan_tills_off	額外櫃檯已關閉。本店帳本保存在本機。若另一臺設備也要點單或結帳，請允許額外櫃檯。
+paired_with	已與 {url} 上的店鋪配對
+not_paired	未配對 — 請連接店內服務器。
+choose_device_use	選擇本設備的用途。
+paired_note	已配對。解鎖即可收款，或點刷新獲取店裡的最新數據。
+last_update_at	最後一次從店裡更新：{time}。
+pair_intro	查找服務器，或輸入其地址和配對碼。
+queue_waiting	等待發送到店裡（{n}）：
+queue_tries	已嘗試 {n} 次 · 最後回覆：{e}
+save_backup_copy	保存備份副本…
+backup_copy_saved	備份副本已保存——請放在本設備之外（U 盤或另一臺設備）
+backup_copy_overdue	已有 {n} 天沒有備份副本離開本設備——設置 → 備份
+backup_copy_failed	無法在該處保存備份副本——請選擇其他位置
+clock_off	本設備的時鐘與店鋪服務器相差 {min} 分鐘——請在本設備上設置正確時間
+printers_heading	本設備的打印機
+printers_help	添加每臺打印機一次，然後選擇帳單和各廚房的打印位置——列表中的第一臺優先嚐試；失敗則下一臺。路線為空=不打印該功能。目標空白（默認）、系統名稱或網絡地址（如 192.168.1.50）。每臺設備保留自己的打印機。
+printers_host_only	打印機在店鋪設備（Server）上設置。本收銀機把帳單和 KOT 發到那裡——查找 / 添加 / 分配仍在 Server 上。測試頁和帳單字號發到 Server。
+printers_find_heading	查找打印機
+printers_find_tip	“查找”會掃描本機並更新列表。系統打印機優先；網絡掃描可在後臺繼續。
+printers_pool_heading	1. 您的打印機
+printers_pool_tip	“查找”會掃描本機並更新列表。
+printers_pool_empty	(暫無 — 請在下方添加)
+printers_routes_help	選擇地點，再選擇打印機。勾選名稱 (KOT)、(Standard Portrait) 或 (Standard Landscape)。↑↓ 順序（第一個最高）。取消勾選即可移除。完成後點 Done。
+printer_assign_dd	為 {place} 選擇打印機
+printer_assign_pick	選擇真實打印機
+printer_profile_heading	版式
+printer_send_heading	發送方式
+vp_delivery_heading	發送方式
+vp_delivery_help	此虛擬打印機如何發送作業 — 系統文檔、原始字節或 ESC/POS。小票內容（字號、換行、邊距）由帳單 / KOT 格式決定，不在此處。
+vp_type_size_heading	字號
+vp_wrap_heading	換行寬度
+vp_margin_heading	邊距
+vp_delivery_spooler	系統文檔（系統後臺打印）
+vp_delivery_raw	原始字節到設備
+vp_delivery_escpos	ESC/POS 熱敏命令
+virtual_printer_new	新建虛擬打印機
+virtual_printer_selected	正在編輯“{name}”——點列表中另一項以切換
+virtual_printer_tap_list	點按列表中的虛擬打印機以編輯
+config_layout_portrait	縱向
+config_layout_landscape	橫向
+config_send_os	系統後臺打印
+config_send_escpos	ESC/POS
+profiles_heading	版式
+profiles_empty	（還沒有版式）
+profile_builtin	內置
+profile_custom	自定義
+profile_name_ph	版式名稱
+profile_new	新建版式
+profile_delete	刪除版式
+profile_created	已創建版式
+profile_deleted	已刪除版式
+profile_builtin_keep	內置版式不能刪除
+config_saved	已更新
+config_selected	已選擇“{name}”
+printer_output_heading	虛擬打印機
+virtual_printers_heading	虛擬打印機
+virtual_printers_empty	尚無虛擬打印機 — 先在下方設置數值並保存。有若干臺後，點列表中的一項以編輯。
+virtual_printer_name_ph	虛擬打印機名稱（可選）
+virtual_printer_create	創建虛擬打印機
+virtual_printer_save	保存虛擬打印機
+virtual_printer_delete	刪除虛擬打印機
+virtual_printer_created	已創建虛擬打印機“{name}”
+virtual_printer_deleted	已刪除虛擬打印機“{name}”
+virtual_printer_updated	虛擬打印機已更新
+virtual_printer_updated_named	已更新虛擬打印機“{name}”
+virtual_draft_layout	已為下一臺虛擬打印機設置數值
+virtual_draft_send	已為下一臺虛擬打印機設置數值
+virtual_need_real	請先選擇真實打印機
+virtual_need_select	請選擇要刪除的虛擬打印機
+real_printer_selected	真實打印機：{name}
+station_group_heading	虛擬打印機
+station_group_apply	刪除虛擬打印機
+station_group_applied	已刪除
+station_group_empty	請選擇虛擬打印機
+station_group_name_ph	虛擬打印機名稱（可選）
+station_group_save	創建虛擬打印機
+station_group_saved	虛擬打印機已保存
+station_manage_heading	添加或移除廚房工位
+printers_routes_heading	2. 打印位置
+route_pick_heading	位置
+route_editing	編輯中：{name}
+route_assigned	已將 {printer} 添加到 {place}
+route_already_assigned	已在此位置：{printer}
+route_removed	已從 {place} 移除 {printer}
+route_cleared	已清空 {name}
+route_assigned_empty	此位置無
+route_tap_remove	點擊以移除
+route_tap_select	點按選擇
+route_tap_selected	已選
+route_pick_printer_first	請先點按一臺打印機
+route_assigned_heading	打印機
+route_add_heading	分配
+printer_label_ph	名稱（如廚房）
+printer_target_ph	地址或系統名稱
+printer_target_default	默認打印機
+printer_wire_heading	格式
+printer_wire_escpos	KOT
+printer_wire_os	標準縱向
+printer_wire_os_portrait	標準縱向
+printer_wire_os_landscape	標準橫向
+printer_wire_escpos_short	KOT
+printer_wire_os_short	縱向
+printer_wire_os_landscape_short	橫向
+printer_format_custom	新建自定義格式
+printer_format_custom_label	自定義
+printer_format_custom_added	已為此路線添加自定義格式
+add_printer	添加打印機
+remove_printer	移除最後一個
+route_pick_ph	帳單或廚房
+route_bill	帳單
+route_default_kitchen	默認廚房
+route_kot_station	廚房
+route_dont_print	不打印
+stations_heading	廚房工作站
+stations_help	為菜品和 KOT 添加廚房工作站。在每個工作站上，附加其打印機（在“設置 → 打印機”下找到），設置優先級，並選擇“第一個可用”或“全部打印”。更改會即時保存——無需保存按鈕。
+station_print_heading	此工位的打印機
+station_print_help	選擇工位，再掛接一臺或多臺打印機。↑↓ 設定嘗試順序。第一個成功即停止；全部打印會發到每臺已掛接打印機。
+station_print_pick_ph	要設置打印機的工位
+station_print_pick_first	請先選擇廚房工位
+station_print_editing	正在編輯“{name}”的打印機
+station_vps_dd	此工位的打印機
+station_vps_dd_n	{n} 臺打印機 · 點按更改
+station_vps_empty	尚無打印機 — 請在「設置 → 打印機」中查找
+bill_printers_dd	帳單打印機
+bill_printers_dd_n	{n} 臺帳單打印機 · 點擊以更改
+job_layout	版式
+job_delivery	任務發送方式
+job_delivery_help	OS 文檔、原始字節或 ESC/POS。帳單和廚房票據各自保留自己的設置。任一任務均可發送至“已保存的”任意打印機。
+station_vp_attached	已掛接打印機
+station_vp_detached	已從工位移除打印機
+station_print_summary	{mode} · {n} 臺打印機
+station_print_summary_none	此工位尚無打印機 — 不會打印
+stations_none	尚無工作站——請在下方添加一個。菜單項可使用工作站，使其 KOT 打印在該處。
+route_up	上移
+route_down	下移
+route_remove	移除最後一個
+route_clear	不打印
+save_printers	保存打印機
+print_test_page	打印測試頁
+no_printer_assigned	無打印機
+test_page_no_printer	{place} 沒有打印機——請在上方分配後再試
+test_page_pick_first	請先選擇測試打印機——再打印測試頁
+test_printers_dd	測試頁打印機
+test_printers_dd_n	{n} 臺測試打印機 · 點按更改
+kot_test_printers_dd	Test KOT 打印機
+kot_test_printers_dd_n	{n} 臺 Test KOT 打印機 · 點按更改
+test_printer_picked	測試於：{name}
+test_printer_cleared	不測試：{name}
+test_page_sent_n	測試頁已發送到 {n} 臺打印機
+test_kot_pick_first	請先選擇 Test KOT 的打印機——再點 Test KOT
+test_kot_sent_n	Test KOT 已發送到 {n} 臺打印機
+cancel_pick	標記
+cancel_pick_on	已標記
+cancel_pick_meta	已標記取消
+batch_cancel	取消已標記
+batch_cancel_n	取消已標記 ({n})
+batch_cancel_none	請先標記已送廚菜品——再取消已標記
+batch_cancel_title	取消已標記 — 一個原因，每廚一張單
+batch_cancel_ok	已取消 {n} 道菜 · {slips} 張 → {kitchens}
+batch_cancel_ok_noprint	已取消 {n} 道菜 — KOT 自動打印已關，無單
+no_printer_kitchen_station	該廚房工作站無打印機——廚房 → 廚房工作站 → 此工作站的打印機
+printers_saved	已保存本設備的打印機
+test_page_sent	測試頁已發送——請查看打印機
+test_page_sent_one	測試頁已發送到 {name}——請查看該打印機
+printers_found	找到 {n}：{list}
+printers_find_synced	找到 {n} — {new} 個新
+printer_on_device	已保存
+printer_already_added	已添加
+printer_already_saved	已保存：{name}
+find_printers	查找打印機
+printers_looking	正在本設備和 Wi‑Fi 上查找打印機…
+saving_printer	正在添加打印機…
+cancelled	已取消
+printers_tap_find	點按「查找」，列出此設備可用的打印機。
+printers_none_found	未找到打印機——請輸入系統打印機名稱或網絡地址（如 192.168.1.50）。
+printer_from_find	已添加 {name}
+kot_printer_ph	廚房單 (KOT) 打印機
+bill_printer_ph	帳單打印機
+kot_print_on	廚房打印：開
+kot_print_off	廚房打印：關
+queue_refused	店裡未接受（{n}）— 請在櫃檯逐一核對：
+clear_not_accepted	已核對 — 清空此列表
+device_name_ph	本設備名稱
+lan_last_update	最後更新 {time}
+lan_not_accepted	{n} 條未被接受
+connected_now	當前在線
+backup_failed	上次自動備份失敗：{e}
+backup_overdue	已 {n} 天沒有備份 — 請讓本機上的應用保持打開，以便備份。
+disk_low	本機僅剩 {mb} MB 可用空間 — 備份很快會失敗。請清理一些空間。
+last_seen_devices	最後看到：{time}
+sync_interval	每 {secs} 秒同步一次
+connection_to_shop	與店鋪的連接
+supplier_name_ph	供應商名稱（或往來方）
+supplier_ph	供應商
+switch_device	切換此設備
+take_payment	收款
+tax_added_till	{tax}未稅
+tax_inside_price	{tax}含稅
+tax_invoice	稅務發票
+till_to_bank	櫃檯 → 銀行
+units_heading	單位
+unlock_after_pairing	輸入密碼
+unlock_with_login	用登錄解鎖
+unmark	取消標記
+update_my_password	修改我的密碼
+update_my_pin	修改我的PIN
+duress_heading	緊急解鎖PIN（僅店主）
+duress_help	可選。解鎖時若輸入此PIN而非您的PIN，則清除銷售記錄——菜單、價格、桌臺和員工保留。僅在被強迫時使用。留空保存可關閉。勿與任何人的PIN相同。
+duress_pin_ph	緊急PIN（4–12位）
+duress_confirm_ph	再輸入一次確認
+save_duress_pin	保存緊急PIN
+clear_duress_pin	關閉緊急PIN
+duress_on	緊急解鎖PIN已開啟
+duress_off	緊急解鎖PIN已關閉
+duress_saved	已保存緊急解鎖PIN
+duress_cleared	已關閉緊急解鎖PIN
+upi_amount_ph	UPI金額
+void	作廢
+write_off_ap	核銷AP
+write_off_heading	核銷（無付款結清）
+write_off_nil	核銷/餘額清零
+your_brand	你的品牌（應用內）
+your_categories	你的分類
+account_kind	帳戶類型（點選其一）
+actual_total_cap	實際總額
+amend_help	選擇一筆銷售進行修改、作廢或退款。修改保留完整歷史。
+applied_total_cap	應付總額
+bank_balance	銀行餘額
+bank_net_today	今日銀行淨額
+branch_export_help	導出會將 branch_snapshot_CODE_DATE.json 寫入備份文件夾並複製到剪貼板。要導入另一網點的日結，將其文件存為 import_branch_snapshot.json 放入同一文件夾，然後點擊導入。
+brand_shown_help	顯示在應用內屏幕上。此設備上已安裝應用的名稱和圖標保持平臺列表的樣子。
+app_icon	應用圖標
+logo_help	可選的應用內屏幕商店標記。
+onboard_layout	您將獲得
+item_photo_help	可選。若無照片，我們將顯示來自項目名的首字母。
+stamp_heading	印章
+stamp_image_help	打印帳單和客人顯示屏上的可選印章圖像。
+payment_qr_heading	支付二維碼
+payment_qr_image_help	帳單和客人顯示屏上的靜態二維碼；否則付款將使用上方 VPA 的動態 UPI 二維碼。
+cash_in_hand	手頭現金（櫃檯）
+change_my_pin_heading	修改我的PIN（僅你的）
+connect_to_server	連接到服務器
+counter_locked	櫃檯01 · 已鎖定
+country_pack_help	國家包設置稅名和計算方式、即時付款通道以及打印在帳單上的企業稅號。Kumkaj 不在任何地方報稅或開具政府電子發票。
+currency_use_help	滾動併為任何支持的貨幣點擊使用。
+day_close_help	記錄日結會將此彙總（及盤點差異）保存到審計日誌。不會停止銷售。
+expenses_word	費用
+feature_access_help	所選員工的功能權限（添加後點擊）
+footer_local	本地SQLite · 永久免費 · 零雲端
+fresh_book_khaynjo	從頭開始 = 空菜單（稍後在菜單裡添加菜品）。帳本 = 在下方填寫期初物品和誰欠你的錢。
+fresh_selected	已選Fresh — 目錄保持為空。準備好後點擊Done。
+gross_word	毛額
+how_start	您想如何開始？
+kot_print_help_khaynjo	當發送KOT時 — 在櫃檯或服務員設備上 — 廚房小票會在這裡自動打印。
+later_country_pack	稍後：設置 → 應用國家包，以使用當地的稅和付款名稱。
+local_badge	本地
+mix_type_hint_khaynjo	需要時可拆分到現金/UPI/銀行卡/賒帳。賒帳需要在上方選擇顧客。
+money_in_sales	收入（銷售）
+net_word	淨額
+offline_badge	離線
+optional_login_help	可選登錄（編號+密碼）。店主設置一次；之後只有用戶本人可改密碼。
+or_unlock_login	或用登錄編號+密碼解鎖
+permission_preset	權限預設（可訪問什麼）
+preset_help_khaynjo	收銀員：銷售。經理：銷售+項目+作廢/修改。
+product_locked_khaynjo	Khaynjo
+product_only_khaynjo	此應用僅為 Khaynjo——餐廳經營系統。其他行業另有獨立的 Kumkaj 產品。
+purchases_cogs	採購(COGS)
+qty_cap	數量
+restore_help	恢復：選擇一個備份。帳本會回到當時的樣子；當前帳本會先保存，所以可以撤回。
+wipe_data_heading	刪除本地數據
+wipe_data_help	僅店主 — 與 Windows 卸載相同選項。營業記錄清除歷史並保留菜單/設置。店鋪設置刪除帳本。屏幕偏好：窗口/語言。用店主 PIN 確認。
+wipe_trading	營業記錄
+wipe_schema	店鋪設置
+wipe_ui	屏幕偏好
+wipe_owner_pin_ph	刪除用店主 PIN
+wipe_delete_selected	刪除所選
+wipe_owner_only	只有店主可以刪除本地數據。
+restore_owner_only	只有店主可以恢復備份。
+wipe_owner_pin_needed	輸入店主 PIN 以刪除本地數據。
+wipe_nothing_selected	請先選擇要刪除的內容。
+wipe_done	已刪除所選本地數據。
+wipe_schema_done	店鋪設置已清除 — 選擇 Server 或 Client 繼續。
+rounded_total	舍入總額
+setup_app_khaynjo	設置 Khaynjo
+shop_logo_optional	店鋪標誌（可選）
+stock_type_help	輸入項目名稱（部分即可）、數量，然後調整。尚未盤點的項目需要先開始計數一次。
+team_owner_help	店主為每位員工創建姓名、角色頭銜、權限預設和初始PIN。店主之後不能更改任何人的PIN — 只有本人可以更新自己的PIN。
+staff_name_ph	員工姓名/編號
+staff_copy_hire_ph	從（可選）複製設置
+staff_copy_hire	使用此人的設置
+staff_edit_name_ph	顯示名稱
+staff_rename	保存名稱
+staff_copy_edit_ph	從另一個人複製設置
+staff_copy_edit	將其設置複製到所選人員
+staff_copy_edit_onto	將其設置複製到 {name}
+staff_deactivate_named	移除 {name}
+staff_renamed	名稱已保存
+staff_setup_copied_hire	已從 {name} 複製設置——請設置新名稱和 PIN，然後添加員工
+staff_setup_copied_edit	已將 {from} 的設置複製到 {to}
+staff_copy_need_selected	選擇首先編輯誰
+staff_copy_need_source	選擇要複製其設置的誰
+staff_copy_same	這是同一人——請選擇其他人
+staff_rename_need_selected	選擇首先重命名誰
+team_pick_hint	選擇要編輯誰——屏幕、資金權限和廚房工作站僅針對該人員顯示。
+team_stations_help	他們可能使用的廚房工作站
+team_stations_changed	廚房工作站已更改——為此人員保存設置
+team_features_changed	屏幕已更改 — 保存此人員的設置
+team_rights_changed	權限已更改 — 保存此人員的設置
+they_owe_us	他們欠我們
+unit_at_cap	單價
+units_help	項目標籤代碼（kg、piece、bag）。每個單位必須直接或通過其他單位與標準（kg · cm · ml · pc）關聯，如 1 crate = 2 box 且 1 box = 20 cm。換算：1 from = factor to。貨幣永遠不是單位。
+units_picker_help	點開/關以在採購和菜單列表中顯示單位。關閉的單位仍可換算。
+unit_picker_on	開
+unit_picker_off	關
+we_owe_them	我們欠他們
+who_unlocking	誰在解鎖？
+locked_word	已鎖定
+show_pin	顯示PIN
+hide_pin	隱藏PIN
+set_owner_pin	設置店主PIN
+enter_owner_passcode	輸入店主密碼
+enter_staff_passcode	輸入員工密碼
+pin_count_zero	0/12 位 · 至少 4 位，然後確定
+pin_count_need	{} / 12 位 · 還需要 {} 位
+pin_count_full	12/12 位 · 請按確定
+pin_count_ready	{} / 12 位 · 準備好後按確定
+pin_hint_choose	選擇4–12位數字（鍵盤或面板）· 回車/確定保存
+pin_hint_new	新的4–12位店主PIN（鍵盤或面板）· 回車/確定
+pin_hint_shop_code	店鋪設備 · 配對碼 {}
+pin_hint_books	此設備保存帳本
+pin_hint_paired	額外櫃檯已配對 — 解鎖以銷售
+pin_hint_pair_first	額外櫃檯 — 先與店鋪設備配對
+unlock_to_continue	解鎖以繼續
+no_staff_yet	尚無員工 — 以店主解鎖，然後團隊
+status_server_set_pin	服務器模式 — 設置店主PIN
+status_server_tills	服務器模式 — 額外櫃檯可加入。解鎖
+status_server_unlock	服務器模式 — 以店主解鎖
+status_client_unlock	客戶端模式 — 解鎖以銷售
+icon_new_selected	圖標：已選新文件 — 點保存品牌
+icon_custom	圖標：您店鋪的標誌
+icon_default	圖標：Kumkaj 標誌（默認）— 選擇您自己的
+logo_yours	徽標：您店鋪的徽標 — 顯示在屏幕和收據上
+logo_default	徽標：Kumkaj 標誌（默認）— 如有自己的請選擇
+tmpl_current	當前：{} — {}
+tmpl_selected	已選：{} — {}
+setup_complete	設置完成
+onboard_fresh_tmpl	全新 · {} — 目錄從空開始；在物品中添加，然後點完成。
+onboard_book_tmpl	帳本 · {} — 添加物品和期初賒帳，然後點完成。
+onboard_template_tmpl	可先為店鋪命名，然後選擇開始方式。
+tmpl_blurb	桌臺、點單、廚房單、結帳與帳簿。
+tmpl_how	在櫃檯銷售；樓面管理桌臺與廚房單；帳簿查看當日帳。
+reports_facet_title	報表
+reports_facet_help	日記帳、往來帳齡、銀行記錄和期間損益。
+against_bill_ph	對應上方帳單號（可選）
+aliases_ph	別名 — 其他名稱，逗號分隔
+amount_blank_full_ph	金額（空 = 全部餘額）
+amount_owed_ph	欠款金額
+amount_ph	金額
+amount_received_ph	收到金額
+amount_we_pay_ph	我們支付的金額
+business_name_ph	企業名稱
+category_new_ph	類別（可選，新類別將自動創建）
+code_bag_ph	代碼（bag）
+conv_factor_ph	係數（25 = 1 bag → 25 kg）
+country_code_ph	國家代碼，如 IN, GB, US, AE, BR
+credit_khata_amount_ph	賒帳金額
+credit_limit_ph	信用額度（0 = 無）
+from_code_ph	從代碼（bag）
+item_name_lang_ph	物品名稱 — 用您的語言輸入
+login_id_opt_ph	登錄 ID（可選）
+manager_pin_ph	經理 PIN（僅當您無法作廢時）
+new_branch_name_ph	新分支名稱
+new_password_ph	新密碼（可選）
+new_pin_ph	新 PIN（4–12 位）
+note_bank_ph	備註（存款、取款、…）
+note_buy_expense_ph	備註（燃料、租金、…）
+note_expense_ph	備註（燃料、辦公、…）
+options_khaynjo_ph	選項（可選）— Extra cheese=40, Large=80
+part_second_way_ph	第二種方式的部分（可選）
+phone_ph	電話
+place_name_ph	此地點名稱
+qty_example_ph	數量（例如 kg 用 1.5）
+quantity_ph	數量
+reason_required_ph	原因（必填）
+role_title_ph	職位名稱（例如 Barista）
+service_pct_ph	服務 % 可選 0/10/12
+short_code_ph	短代碼（MG02）
+starting_password_ph	初始密碼（可選）
+starting_pin_ph	初始 PIN（4–12 位）
+station_name_ph	站點名稱（例如 Tandoor, Fryer, Cold）
+station_new_ph	廚房站點（可選，例如 Tandoor — 新站點將自動創建）
+table_name_ph	餐桌名稱（例如 Patio 1, Counter 2）
+tax_rate_ph	稅率名稱或 % — Standard, Reduced, 0, 5, 12, 18, 20
+to_code_ph	到代碼（kg）
+uncleared_no_ph	上方未清算編號
+unit_cost_ph	單位成本
+unit_name_bag_ph	名稱（Bag）
+unit_plate_ph	單位（盤/件 — 空 = 每件）
+pay_credit	賒帳
+book_kind_today	今日帳本
+book_kind_month	本月帳本
+book_kind_aging	未結 / 借貸
+book_kind_balance	資產負債表
+order_help	選擇一個未結訂單，或選擇桌臺開始新訂單。點選就緒菜品，發送 KOT，為一個或多個菜品結帳，拆分帳單並完成付款。
+floor_help	每張桌子都顯示客人是否就座、他們的未結帳單以及接下來誰需要服務。
+kitchen_help	按變體或按菜品跟蹤出餐量 — 在 KOT 中按您想要的方式記錄。
+kitchen_empty	現在沒有打開的訂單 — 新訂單會顯示在這裡。
+add_a_table	添加桌子
+add_station_heading	添加工位 · 如坦都裡、南印度
+categories_help	分類顯示一道菜屬於菜單的哪一部分 — 如小吃、主菜或印度香飯。按您的方式創建分類：選擇我們建議的名稱、重命名或添加您自己的。
+dish_search_ph	菜品名稱 — 搜索我們的菜品或輸入您自己的
+tile_free	空閒
+tile_occupied	有客
+tile_food_ready	菜已好
+tile_bill_printed	已打單
+tile_paid	已付款
+tile_bill_btn	結帳
+tile_occupy_btn	安排入座
+tile_free_btn	清檯
+tile_ready_btn	可入座
+tile_undo_bill	撤銷帳單
+summary_busy	桌在用
+summary_to_collect	待收款
+summary_on_floor	在場
+floor	樓面
+sizes_as_items_ph	規格作為獨立菜品（可選）— 半份=120, 整份=200
+dish_group_ph	菜品組（可選）— 如 Paneer Tikka
+discount	折扣
+remove_discount	取消折扣
+apply_discount	應用折扣
+save_opening_cash	保存備用金
+close_shift_print	交班並打印交班單
+area_prices_ph	區域價（可選）— 空調區=220, 打包=210
+discount_ph	10% 或 50
+discount_reason_ph	原因（如常客、上菜慢）
+opening_float_ph	今早放入錢箱的現金
+shift_counted_ph	交班時點算的現金
+opening_float	備用金
+shift_handover	交班
+shift_since	本班次開始於
+expected_in_drawer	錢箱應有
+right_discount	給予折扣
+floor_in_kitchen	製作中
+floor_eating	用餐中
+pick_category	選擇分類
+close_category_list	關閉分類列表
+new_category_row	新分類 — 保存菜品時創建
+your_category	您的分類
+suggested_category	推薦 — 來自我們的菜品
+category_search_ph	分類 — 搜索已有或輸入新分類
+line_sent_state	已送廚房
+line_nc_state	贈送 (NC) — 不收費
+cancel_item_short	取消
+nc_short	贈送
+charge_again_short	收費
+move_short	移動
+cancel_item_title	取消此菜品 — 廚房會收到取消單
+nc_item_title	將此菜品設為贈送 (NC)
+charge_again_title	重新對此菜品收費
+move_item_title	將此菜品移到另一桌
+already_cooked	已做好（損耗）
+not_cooked_yet	還沒做
+return_to_customer	找零
+short_by	還差
+tip_not_sale	小費（歸員工，非營業額）
+right_settle	收款
+right_cancel_sent	取消已下單菜品
+right_complimentary	贈送 (NC)
+right_move_table	換桌 / 並桌
+right_reprint	重打帳單
+right_allowed	允許
+right_with_approval	需審批
+right_denied	不允許
+editing_staff	權限：
+finding_server	正在此 Wi‑Fi 上查找店內服務器…
+no_server_found	未找到服務器。請確認店內設備在同一 Wi‑Fi 並已允許額外收銀臺，或輸入其 IP。
+servers_found_pick	點按要連接的店鋪。
+server_host_selected	正在使用 {host} — 輸入配對碼，然後點立即配對。
+print_bill	打印帳單
+table_actions	桌臺操作
+move_merge_table	換桌 / 並桌
+move_help	把本桌訂單移到空桌，或併入進行中的桌。
+move_target_ph	桌名（如 D5、P2）
+approval_pin_ph	經理 PIN（需要時才填）
+move_here	移到這桌
+merge_into	併入該桌
+line_reason_ph	原因（如客人改主意、缺貨）
+line_qty_ph	取消數量（空 = 全部）
+line_target_ph	移到桌（如 D5）
+confirm	確認
+menu_search_ph	搜索菜品或簡碼
+customer_paid_ph	客人付款
+tip_ph	小費
+table_area_ph	區域（如堂食、打包、空調區）
+table_range_ph	一次多個：D1-D20
+add_these_tables	添加這些桌
+remove_these_tables	刪除這些桌臺
+table_remove_ph	刪除：T1-T24，或某張桌臺的名稱
+find_server	查找店內服務器
+bill_format	帳單格式
+bill_format_help	打印在每張帳單的餐廳名稱下方。用 | 分行（如 MG Road, Rajkot | 電話 98250 00000）。
+bill_header_ph	地址 | 電話
+fssai_ph	FSSAI 許可證號（印度）
+bill_footer_ph	頁腳（如：謝謝，歡迎再來）
+save_bill_format	保存帳單格式
+reset_bill_format	恢復默認
+bill_format_reset	帳單格式已恢復默認
+reset_kot_format	恢復默認
+kot_format_reset	KOT 格式已恢復默認
+kot_format	KOT 格式
+kot_format_help	廚房小票仍是標準 KOT — 無價格；菜品總會打印。可選行、標題、份數、紙寬和字號會限制，避免裁切。
+kot_format_fields	字段
+kot_field_next	下一字段
+kot_field_show	顯示
+kot_field_hide	隱藏
+kot_field_on	顯示
+kot_field_off	隱藏
+kot_field_size	字號
+kot_field_size_ph	例如 16, 20, 24, 28, 32…
+kot_weight_light	細
+bill_kot_panel_help	帳單內容與廚房小票字體。上方的內容寬度同時是帳單和廚房小票的寬度。
+std_size_ph	例如 18, 20, 26…
+kot_show_shop	店名
+kot_hide_shop	隱藏店名
+kot_show_time	時間
+kot_hide_time	隱藏時間
+kot_show_waiter	服務員
+kot_hide_waiter	隱藏服務員
+kot_show_station	工位
+kot_hide_station	隱藏工位
+kot_show_table	桌臺
+kot_hide_table	隱藏桌臺
+kot_show_kot_no	KOT 號
+kot_hide_kot_no	隱藏 KOT 號
+kot_width	紙寬
+kot_width_58	58 mm
+kot_width_80	80 mm
+kot_kind_heading	KOT 種類
+kot_kind_original	原件
+kot_kind_duplicate	副本
+kot_kind_modified	已修改
+kot_kind_cancelled	已取消
+kot_style_heading	字段字號與字重
+kot_style_title	標題
+kot_style_item_qty	品項 · 數量
+kot_style_field_pick	選擇字段
+kot_weight_regular	常規
+kot_weight_bold	粗體
+kot_align	對齊
+kot_align_start	開始
+kot_align_center	居中
+kot_align_end	結束
+content_width	內容寬度（毫米）
+content_width_bill	帳單內容寬度 (mm)
+content_width_kot	KOT 內容寬度 (mm)
+content_width_ph	或輸入內容寬度，40–210 毫米
+content_width_help	此小票的打印寬度。帳單和 KOT 各自保持自己的寬度。
+content_width_bill_help	客人帳單的打印寬度。默認 210 mm（頁面）。58 mm 窄式小票，80 mm 寬式小票，112 mm 4 英寸，210 mm A4 寬幅。輸入 40 到 210 之間的任意值。廚房票據在 KOT 選項卡上擁有自己的寬度。
+content_width_kot_help	廚房票據的打印寬度。默認 80 mm。58 mm 窄式小票，80 mm 寬式小票，112 mm 4 英寸，210 mm 頁面。輸入 40 到 210 之間的任意值。客人帳單在帳單選項卡上擁有自己的寬度。
+vp_paper_width	內容寬度（毫米）
+vp_paper_width_ph	或輸入內容寬度，40–210 毫米
+vp_paper_width_help	內容寬度在「帳單與 KOT 格式」中設置。適用於帳單和廚房小票。
+kot_size	字號
+kot_size_s	小
+kot_size_m	標準
+kot_size_l	大
+std_size	字號
+kot_copies	份數
+kot_copies_1	1
+kot_copies_2	2
+kot_copies_3	3
+kot_title_ph	標題（空白 = KOT - KITCHEN ORDER）
+kot_footer_ph	廚房備註（可選，無價格）
+kot_preview	預覽
+save_kot_format	保存 KOT 格式
+test_kot_format	測試 KOT
+test_kot_sent	廚房票據預覽已發送
+test_bill_format	測試帳單
+test_bill_sent	帳單預覽已發送
+test_print_no_printer	該任務沒有打印機 — 在此屏幕選擇一個
+kot_format_saved	已保存 KOT 格式
+std_print	帳單字號
+std_print_help	標準縱向與橫向帳單字號（熱敏 KOT 單獨設置）。兩種方向相同字號。
+std_size_s	小
+std_size_m	標準
+std_size_l	大
+save_std_print	保存帳單字號
+std_print_saved	已保存帳單字號
+print_brand_kit	打印品牌套件
+print_brand_kit_help	可選印章與付款二維碼用於帳單與局域網顯示。未設付款碼時，上方 UPI 生成金額碼。
+choose_stamp	選擇印章
+clear_stamp	清除印章
+stamp_set	印章：已存檔 — 賓客屏與帳單標註
+stamp_none	印章：無
+choose_payment_qr	選擇付款二維碼
+clear_payment_qr	清除付款二維碼
+payment_qr_set	付款二維碼：已存檔 — 賓客屏顯示（替換金額 UPI 碼）
+payment_qr_none	付款二維碼：無 — 付款時用 UPI 生成金額碼
+aggregator_import	聚合商訂單（文件）
+aggregator_import_help	可選本地：將 import_aggregator_orders.json 放入 backups 後導入。不擋櫃檯；在線 Zomato/Swiggy = 雲。
+import_aggregator_file	導入聚合商文件
+team_pick_ph	要編輯的員工姓名
+select_staff	選擇該員工
+rights_help	權限 — 點擊切換：允許 → 需審批（當場輸入經理 PIN）→ 不允許。
+dish_picker_help	搜索或瀏覽我們的菜品，點一下即可填入名稱和圖片，也可以保留您自己的名稱。填寫價格（可以為 0），然後添加菜品。
+close_dish_list	關閉菜品列表
+own_item_name	用作您自己的菜品名稱
+on_your_menu	已在您的菜單中
+edit	編輯
+schemes	優惠方案
+schemes_help	買 X 送 Y — 結帳自動。例：Buy 2 Thali get 1 Chaas
+scheme_bogo_ph	買 2 份 Thali 送 1 杯 Chaas
+add_scheme	添加買贈
+schedule_ph	時段/歡樂時光 — Mon-Fri 07:00-11:00 或 HappyHour 17:00-19:00=150
+upi_vpa_ph	UPI ID (VPA)
+upi_payee_ph	UPI收款人（可選）
+upi_qr	UPI QR
+show_upi_qr	顯示 UPI 二維碼
+close_upi_qr	關閉
+upi_qr_help	客人掃碼支付。支付後點 Take payment。
+kot_recall	召回
+recently_done	剛完成
+recall_kot_ph	要召回的 KOT #
+role_help_customer	角色：客戶 — AR（他們欠我們）。同一家公司也可以是供應商。
+role_help_both	角色：寄件人 + 承運人 — 一個往來方，AR 和 AP 帳本，報表中淨額。
+role_help_supplier	角色：供應商 — 採購的 AP。
+dine_in_pick_table	選擇堂食桌臺…
+choose_table	選擇桌臺
+change_table	更換桌臺
+pick_table_banner	為此訂單選擇桌臺
+items_word	項
+items_section	項目
+back_to_order	返回訂單
+new_items_head	尚未發送
+price_ph	價格
+price_ph_gst_inside	價格（含{tax}）
+cancel_needs_table	從樓面（桌臺）打開此單以便廚後取消 — 櫃檯 KOT 會留在票據上直至收款
+tax_rates_missing_hint	這些菜沒有{tax}稅率 — 在菜單設置稅率（{tax} inclusive 時價格已含{tax}）
+taxable_value	應稅金額
+gst_inside_price_note	（含{tax}）
+start_with_template	從我們的菜單模板開始
+template_heading	我們的菜單模板
+template_info	{c} 個分類、{d} 道帶圖菜品可直接添加。價格為 ₹0，之後再設置。
+template_import	導入完整模板
+template_confirm	添加 {d} 道菜及其分類？已有菜品保持不變。
+template_yes	是，導入
+template_importing	正在導入菜單…
+template_import_progress	正在導入… {d}/{t}
+template_done	模板中的所有菜品都已在您的菜單中。
+template_imported	已添加 {d} 道菜和 {c} 個分類——請在此頁設置價格
+client_template_heading	客戶菜單
+client_template_info	{title}：{c} 個分類、{d} 道菜（含價格、圖片和別名）。只添加缺失的——已有名稱保持不變。
+client_template_import	導入此菜單
+client_template_confirm	從 {title} 添加 {d} 道菜？已有菜品保持不變。
+client_template_importing	正在導入{title}…
+client_template_done	{title} 的所有菜品都已在您的菜單中。
+client_template_imported	已從 {title} 添加 {d} 道菜和 {c} 個分類
+resv_heading	預訂
+resv_name_ph	客人姓名
+resv_phone_ph	電話（可選）
+resv_guests_ph	人數
+resv_when_ph	時間 — 20:30，tomorrow 13:00
+resv_table_ph	桌號（可選）
+resv_add	預訂
+resv_seat	已入座
+resv_none	暫無即將到來的預訂。
+guests_word	位
+delivery_by_ph	配送人（騎手或員工）
+kitchen_all_day	待做：{items}
+kitchen_all_day_head	立即製作
+kitchen_tab_live	實時
+kitchen_tab_recall	召回
+kitchen_tab_stations	工作站
+split_bill	分單
+split_go	生成單獨帳單
+cancel	取消
+opening_client	正在打開客戶端…
+preparing_desk	正在準備桌面…
+opening_server	正在打開服務員…
+creating_server	正在創建服務員…
+split_help	點選一位客人要付的菜 · 已選 {n}
+split_send_first	先送廚房單 — 只有已下廚的菜能分單
+split_pick_some	請先點選要分出的菜
+split_done	已分出單獨帳單 — 在桌位圖上本桌旁邊
+split_marked	單獨帳單
+order_empty_pick	訂單為空——點上方“添加菜品”選菜。
+add_dishes	添加菜品
+order_so_far	本單：{n} · {total}
+no_dish_match	沒有與“{q}”匹配的菜品
+pick_dishes_help	點菜品即可加入 · 選分類縮小列表
+pick_done	完成
+pick_done_dd	完成 · {label}
+printer_route_mode	如果此地點有多個打印機
+printer_mode_first	第一個可用的
+printer_mode_all	全部打印
+kot_show_area	區域
+kot_hide_area	隱藏區域
+kot_show_item_hdr	品項 · 數量
+kot_hide_item_hdr	隱藏列
+kot_show_title	標題行
+kot_hide_title	隱藏標題
+kot_field_order	打印訂單
+kot_field_up	上移
+kot_field_down	下移
+kot_field_cycle	選擇下一個
+kot_field_select	選擇下一個
+kot_field_time	時間
+kot_field_kot_no	KOT 號
+kot_field_area	區域
+kot_field_table	桌臺
+kot_field_shop	店名
+kot_field_waiter	員工
+kot_field_station	工位
+app_template_blurb_extra	此外：所有者 Zahir，管理員 Asif，服務員 Nawaz；前臺側邊欄；4 小時後的歷史記錄；今日條帶關閉；緊湊 KOT。
+dishes_n	{n} 道菜
+recipe_ph	配方（可選）— 每份用料：Rice=0.2, Paneer=0.15
+reorder_ph	低於此數補貨
+set_reorder	設置補貨線
+low_stock_alert	庫存不足——儘快補貨：{items}
+unpriced_note	菜單中有 {n} 道菜還沒有價格——設定價格前按 0 計費。
+show_unpriced	只顯示沒有價格的菜
+show_all_dishes	顯示全部菜品
+role_waiter	服務員
+role_kitchen	廚房
+role_title_rest_ph	職位（如領班、主廚）
+preset_help_rest	服務員：點單、照看桌臺。收銀：還可收款。廚房：廚房屏幕。經理：還可管理菜單、取消和折扣。
+kind_raw	原材料
+kind_resale	外購轉售
+kind_dish	自制菜品
+buy_unit_ph	單位（公斤、升、個）
+add_another_way	+ 另一種方式
+parts_status	已填 {a} / {b} · 剩 {c}
+save_expense	保存支出
+rest_ph	餘額
+low_badge	偏低
+stock_empty	暫無庫存——在“採購”中記錄的物品會顯示在這裡。
+recent_changes	最近變動
+lane_declared_label	稅務發票
+lane_owner_label	現金小票
+money_lane_bill	帳單：{lane}

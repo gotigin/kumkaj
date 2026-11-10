@@ -1,0 +1,835 @@
+# Khmer — ខ្មែរ (km). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	សៀវភៅភ្នាក់ងារនាំសំបុត្រ + តុកក់។ ក្រៅបណ្តាញឥតគិតថ្លៃ។
+unlock	ដោះសោ
+pin_hint	PIN របស់ម្ចាស់ចាប់ផ្ដើមពី 0000
+sell	ការកក់ទុក
+buy	បង់ចេញ
+books	សៀវភៅប្រចាំថ្ងៃ
+books_help	ទីតាំងថ្ងៃនេះ។ ការកក់ = ក្បាលដីចូល។ បង់ចេញ = វិក័យប័ត្រដឹកជញ្ជូន និងការចំណាយ។ ភាគី = អ្នកដឹកជញ្ជូន & អ្នកដឹកជញ្ជូន។
+buy_help	វិក័យប័ត្រចំណាយ និងវិក្កយបត្រក្រុមហ៊ុនដឹកជញ្ជូន (ប្រាក់ចេញ)។ គណនីនៅលើបញ្ជីឈ្មោះគណបក្ស។
+sell_money_in	កក់កញ្ចប់មួយ។
+buy_money_out	វិក័យប័ត្រចំណាយ / ក្រុមហ៊ុនដឹកជញ្ជូន
+record_purchase	កត់ត្រាការទិញ
+add_expense	បង្កាន់ដៃចំណាយ
+bank_book	សៀវភៅធនាគារ
+credit_help	លេខ​សម្គាល់​គណបក្ស​គឺ​មាន​តែ​មួយ (ឈ្មោះ​អាច​នឹង​កើត​ឡើង​វិញ) ។ តួនាទី៖ អ្នកផ្ញើ (AR) ក្រុមហ៊ុនដឹកជញ្ជូន (AP) ឬទាំងពីរនៅលើលេខសម្គាល់នោះ។ សៀវភៅកត់ត្រានៅដាច់ដោយឡែក; របាយការណ៍បង្ហាញសុទ្ធ។
+party_kind_ph	តួនាទីផ្ទាល់ខ្លួន (ជាជម្រើស) — ឬប៉ះបន្ទះឈីបខាងលើ
+parties_list_heading	ភាគីដែលបានរក្សាទុក
+reports_help	សៀវភៅប្រចាំថ្ងៃ អ្នកជំពាក់ និងអ្នកដែលយើងជំពាក់ សៀវភៅធនាគារ បង្កាន់ដៃចំណាយ ចំណេញ និងខាត។
+reports_today	សៀវភៅប្រចាំថ្ងៃ (ថ្ងៃនេះ)
+reports_month	ចំណេញ និងខាត (ខែ)
+reports_aging	សមតុល្យ / ជំពាក់-ជំពាក់
+reports_balance_sheet	តារាងតុល្យការ
+reports	សៀវភៅធនាគារ និងច&ខ
+refresh	ធ្វើឱ្យស្រស់
+undo	មិនធ្វើវិញ
+start_tracking	ចាប់ផ្ដើមរាប់
+stock_minus	− ស្តុក
+stock_plus	+ ស្តុក
+settle_cash	បង់ជាសាច់ប្រាក់
+settle_card	បង់ជាកាត
+items	តម្លៃ និងសេវាកម្ម
+nav_items	អត្រា
+more	បន្ថែម
+your_items	អត្រារបស់អ្នក។
+items_help	ជួរនីមួយៗគឺជាអត្រាមួយ (ឧ. តំបន់ផ្ទៃ A)។ ឯកតាគឺជាធម្មតាគីឡូក្រាម។ ប៉ះដើម្បីកែសម្រួល។
+add_item	បន្ថែមអត្រា
+new_item	អត្រាថ្មី។
+adding_item	ការបន្ថែមអត្រាថ្មី។
+editing_item	កំពុងកែ
+save	រក្សាទុក
+remove	ដកចេញ
+empty_catalog	មិនមានអត្រានៅឡើយទេ។ បើកអត្រា និងសេវាកម្ម បន្ថែមមួយ (ឈ្មោះ + តម្លៃ ឯកតាគីឡូក្រាម) បន្ទាប់មកកក់។
+counter_sale	ការកក់តាមបញ្ជរ
+total	សរុប
+cash	សាច់ប្រាក់
+upi	UPI
+card	កាត
+credit	ភាគី
+clear	សម្អាត
+ready_to_sell	រួចរាល់សម្រាប់កត់
+today_prefix	ថ្ងៃនេះ
+today_mid	ថ្ងៃនេះ
+owed	នៅសល់
+round_word	បង្គត់
+back	ថយក្រោយ
+sold_out	អស់
+restock	បំពេញវិញ
+not_tracked	មិនរាប់
+in_stock	ក្នុងស្តុក
+marked_sold_out	បានសម្គាល់ថាអស់
+add_upper	បន្ថែម
+na	—
+qty	បរិមាណ
+unit_at	តម្លៃ @
+actual	ពិត
+applied	បានអនុវត្ត
+note_ph	កំណត់ចំណាំ (ស្រេចចិត្ត)
+rounded	បានបង្គត់
+split	បែង
+counter	តុលក់
+parcel	កញ្ចប់
+order	ការកុម្ម៉ង់
+sales	ការកក់ទុក
+sales_refunds	ការកក់ និងការសងប្រាក់វិញ។
+day_close	បិទថ្ងៃ
+reports_expenses	សៀវភៅធនាគារ និងច&ខ
+nav_reports	របាយការណ៍
+nav_settings	ការកំណត់
+nav_lock	ចាក់សោ
+sidebar_settings	ការកំណត់របារចំហៀង
+sidebar_settings_help	រូបតំណាងដូចរបារចំហៀង។ អូសជួរដើម្បីប្ដូរលំដាប់។ ប្ដូរប៊ូតុងដើម្បីបង្ហាញ ឬលាក់។ ការកំណត់ និងចាក់សោនៅលើរបារជានិច្ច។
+sidebar_always_on_short	បើកជានិច្ច
+sidebar_back_settings	ថយក្រោយ
+sidebar_shown	បានបង្ហាញ
+sidebar_hidden	បានលាក់
+sidebar_always_on	នៅលើរបារជានិច្ច
+sidebar_shown_hint	បង្ហាញនៅរបារចំហៀង / ផ្ទាំងខាងក្រោម
+sidebar_hidden_hint	បានលាក់ពីរបារ
+sidebar_menu_items	ម៉ឺនុយ និងទំនិញ
+sidebar_enable_all	បើកទាំងអស់
+sidebar_disable_all	បិទទាំងអស់
+sidebar_order_saved	លំដាប់ចំហៀងបានរក្សាទុក
+sidebar_visibility_saved	ការបង្ហាញចំហៀងបានរក្សាទុក
+amounts_hide	លាក់
+amounts_show	បង្ហាញ
+no_sale_yet	មិនទាន់មានការលក់
+favorites	ចូលចិត្ត
+favorites_help	ទំនិញដែលអ្នកលក់ញឹកញាប់ បានរក្សាទុកសម្រាប់ការចូលរបស់អ្នក។ បន្ថែមមួយទៅវិក្កយបត្រ ឬបង្កើតបញ្ជីពីទំនិញទាំងអស់ខាងក្រោម។
+your_favorites	អ្វីដែលអ្នកចូលចិត្ត
+all_items	ទំនិញទាំងអស់
+no_favorites	មិនទាន់មានចូលចិត្ត — បន្ថែមទំនិញពីបញ្ជីខាងក្រោម។
+add_to_bill	បន្ថែមទៅវិក្កយបត្រ
+added	បានបន្ថែម
+owes_word	ជំពាក់
+selected_word	បានជ្រើស
+chip_clear_credit	សម្អាត — ជំពាក់ ឬយកប្រាក់មុន
+chip_missing_customer	អតិថិជនដែលបានជ្រើសបាត់ — ជ្រើសម្ដងទៀត
+chip_no_customer	មិនទាន់មានអតិថិជន — វាយឈ្មោះ រួចប៉ះ ជំពាក់
+credit_summary_fmt	អតិថិជន {} · ជំពាក់បើក {} · ប្រាក់មុនដែលរក្សា {}
+recent_label	ថ្មីៗ៖
+inventory	ស្តុក
+inventory_stock	ស្តុក និងទំនិញ
+branches	សាខា
+branches_org	សាខា និងអង្គភាព
+credit_customers	ភាគី (កូនបំណុល និងម្ចាស់បំណុល)
+customer_name_ph	ឈ្មោះភាគី
+new_customer_ph	ឈ្មោះភាគីថ្មី
+item_name_ph	ឈ្មោះវាយតម្លៃ (ឧ. តំបន់ផ្ទៃ A)
+item_price_ph	ក្នុងមួយគីឡូក្រាម / បន្ទះដំបូង
+start_template	ទំនិញ
+next_booking	ការកក់បន្ទាប់
+destination_ph	ទីក្រុងគោលដៅ / តំបន់
+consignee_ph	ឈ្មោះអ្នកទទួល
+consignee_phone_ph	ទូរស័ព្ទអ្នកទទួល
+consignee_address_ph	អាសយដ្ឋានដឹកជញ្ជូន
+origin_name_ph	ឈ្មោះអ្នកផ្ញើ
+origin_phone_ph	អ្នកផ្ញើទូរស័ព្ទ
+origin_address_ph	អាសយដ្ឋានទទួល / ប្រភពដើម
+booking_consignor_heading	អ្នកផ្ញើ (អតិថិជន/អ្នកផ្ញើ)
+booking_consignee_heading	អ្នកទទួល (អ្នកទទួល)
+booking_consignor_hint	ជ្រើសរើសពិធីជប់លៀងដើម្បីបំពេញ ឬទុកចន្លោះទំនេរសម្រាប់ការដើរចូល។ ត្រូវការសម្រាប់ការយកតាមផ្ទះ និង RTO ។
+booking_consignee_hint	អ្នកទទួលកញ្ចប់។ ទុកកន្លែងទំនេរសម្រាប់ការដើរក្នុងបញ្ជរទម្លាក់។
+weight_kg_ph	គីឡូក្រាមជាក់ស្តែង
+length_cm_ph	លីត្រ សង់ទីម៉ែត្រ
+breadth_cm_ph	B សង់ទីម៉ែត្រ
+height_cm_ph	H សង់ទីម៉ែត្រ
+chargeable_kg	គីឡូក្រាម
+awb_label	AWB
+booking_help	អ្នកផ្ញើ + អ្នកទទួល (ទទេ យល់ព្រម) → ទិសដៅ → ថ្លឹង → អត្រាជ្រើសរើស → គណនី/សាច់ប្រាក់ → បង់។ AWB បោះពុម្ពនៅលើបង្កាន់ដៃ។ ការកក់បន្ទាប់នឹងសម្អាតតុ។ ចាប់ផ្តើមបង្គត់ស្មើនឹងបានអនុវត្ត — កែសម្រួលដើម្បីបង្គត់វិក្កយបត្រប៉ុណ្ណោះ។
+cart_empty_hint	តុទទេ — ស្រេចចិត្តអ្នកផ្ញើ/អ្នកទទួលទំនិញ កំណត់ទិសដៅ និងទម្ងន់ ចុចលើ បន្ថែមលើអត្រាមួយ បន្ទាប់មកបង់ប្រាក់។
+team	ក្រុម
+team_pins	ក្រុម និង PIN
+my_pin_settings	PIN របស់ខ្ញុំ
+settings_hub_help_my_pin	ប្ដូរ PIN ដោះសោរបស់អ្នកដែលបានចូលឧបករណ៍នេះ។
+team_self_help	មានតែអ្នកទេដែលអាចផ្លាស់ប្តូរកូដ PIN ដោះសោរបស់អ្នក (និងពាក្យសម្ងាត់ចូលស្រេចចិត្ត)។ សួរម្ចាស់ប្រសិនបើអ្នកត្រូវការអេក្រង់ ឬសិទ្ធិផ្សេង។
+backup_settings	ច្បាប់ចម្លង និងការកំណត់
+lock_app	ចាក់សោកម្មវិធី
+pick	យក
+select	ជ្រើស
+advance	ប្រាក់មុន
+owner	ម្ចាស់
+staff	បុគ្គលិក
+photo	រូប
+auto	ស្វ័យប្រវត្តិ
+prev	មុន
+next	បន្ទាប់
+ok	OK
+this_shop	Server
+extra_till	ម៉ាស៊ីនភ្ញៀវ
+off	បិទ
+server	Server
+client	ម៉ាស៊ីនភ្ញៀវ
+language_currency	ភាសា និងរូបិយប័ណ្ណ
+language	ភាសា
+choose_language	ជ្រើសភាសារបស់អ្នក
+language_setup_hint	តាមភាសាឧបករណ៍នេះ ឬជ្រើសដោយខ្លួនឯង។
+lang_follow_platform	ភាសាឧបករណ៍
+lang_pick_user	ជ្រើសភាសា
+lang_platform_now	ភាសាឧបករណ៍ឥឡូវ
+selected_language	បានជ្រើស
+continue	បន្ត
+this_device	ឧបករណ៍នេះ
+device_use_q	ឧបករណ៍នេះនឹងប្រើយ៉ាងដូចម្ដេច?
+last_server_mode	ធ្លាប់ជា Server — ប៉ះដើម្បីបន្ត
+last_client_mode	ធ្លាប់ជាម៉ាស៊ីនភ្ញៀវ — ប៉ះដើម្បីបន្ត
+choose_server	ជ្រើស server
+choose_server_hint	បើក server ដែលមាន ឬបង្កើតសម្រាប់អាជីវកម្មផ្សេង។
+create_new_server	បង្កើត server ថ្មី
+open_server	បើក
+new_server_name_ph	ឈ្មោះ server ថ្មី (ស្រេចចិត្ត)
+server_remove_pin_ph	PIN ម្ចាស់ដើម្បីដក server
+only_owner_remove_server	មានតែម្ចាស់អាចដក server
+owner_pin_remove_server	ត្រូវការ PIN ម្ចាស់ដើម្បីដក server នេះ
+device_setup_help	Server រក្សាសៀវភៅនៅទីនេះ។ ម៉ាស៊ីនភ្ញៀវធ្វើសមកាលកម្មជាមួយ Server។
+currency	រូបិយប័ណ្ណ
+backup	ច្បាប់ចម្លង
+settings_sec_diag	ពិនិត្យបញ្ហា
+settings_hub_help	បើកកន្លែងមួយក្នុងមួយលើក — រំកិលតិច ជម្រើសច្បាស់។
+settings_sec_devices	ឧបករណ៍ផ្សេង
+settings_sec_alerts	ការជូនដំណឹង
+alerts_help	សារស្ថានភាពនៅលើអេក្រង់អ្នកយូរប៉ុណ្ណា (វិនាទី)
+snack_secs_ph	វិនាទី (3–60 លំនាំដើម 10)
+snack_secs_save	រក្សាទុករយៈពេលជូនដំណឹង
+snack_secs_saved	រយៈពេលជូនដំណឹងបានរក្សាទុក — {n} វិនាទី
+snack_secs_bad	បញ្ចូលវិនាទីជាលេខ (3–60)
+cancelled	បានលុបចោល
+cancel	លុបចោល
+opening_client	កំពុងបើកម៉ាស៊ីនភ្ញៀវ…
+preparing_desk	កំពុងរៀបចំតុ…
+opening_server	កំពុងបើក server…
+creating_server	កំពុងបង្កើត server…
+diag_privacy_help	កំណត់ហេតុនៅលើឧបករណ៍នេះ។ អាថ៌កំបាំង (PIN ពាក្យសម្ងាត់) មិនដែលត្រូវបានរក្សាទុក។ ការយកកញ្ចប់ចេញពីឧបករណ៍ត្រូវការការអនុញ្ញាតច្បាស់របស់អ្នករាល់លើក — មិនដែលលក់ ឬឱ្យអ្នកដទៃ។
+diag_level	កម្រិតលម្អិត
+diag_level_error	កំហុស
+diag_level_warn	ការព្រមាន
+diag_level_info	ព័ត៌មាន
+diag_level_debug	ពិនិត្យ
+diag_support_start	ចាប់ផ្ដើមវគ្គជំនួយ 30 នាទី
+diag_support_stop	បញ្ចប់វគ្គជំនួយ
+diag_support_started	វគ្គជំនួយបានបើក — លម្អិតពិនិត្យ 30 នាទី
+diag_support_ended	វគ្គជំនួយបានបញ្ចប់
+diag_export_local	នាំចេញច្បាប់ចម្លងក្នុង
+diag_export_local_done	ពិនិត្យក្នុងរួចរាល់ {path} — ជ្រើសកន្លែងរក្សាទុកច្បាប់ចម្លង
+diag_approve_send	អនុញ្ញាតឱ្យយកចេញពីឧបករណ៍នេះ
+diag_send_heading	យកចេញពីឧបករណ៍នេះ
+diag_send_help	ការអនុញ្ញាតសម្រាប់កញ្ចប់មួយ រួចផុតកំណត់។ បណ្ដោះអាសន្ន — ប្រើតែដើម្បីជួសជុល ឬកែលម្អផលិតផល។ មិនចែកឱ្យអ្នកដទៃ។ ដំណើរការលើ Linux, Windows, macOS និង Android។
+optional_login_heading	ការចូលស្រេចចិត្ត
+rights_heading	សិទ្ធិ
+booking_scope_heading	ក្នុងស្រុក / អន្តរជាតិ
+diag_send_approved	បានអនុញ្ញាតកញ្ចប់មួយ (ផុតកំណត់ឆាប់ៗ)
+diag_export_send	បង្កើតកញ្ចប់ចែករំលែក (ត្រូវការអនុញ្ញាត)
+diag_export_send_done	កញ្ចប់ចែករំលែករួចរាល់ {path} — ជ្រើសកន្លែងរក្សាទុក រួចផ្ញើទៅជំនួយ Kumkaj តែប៉ុណ្ណោះ
+diag_save_bundle	រក្សាទុកច្បាប់ចម្លងពិនិត្យ
+diag_bundle_saved	ច្បាប់ចម្លងពិនិត្យបានរក្សាទុកនៅ {path}
+diag_bundle_failed	ច្បាប់ចម្លងពិនិត្យរក្សាទុកមិនបាន — សាកម្ដងទៀត
+diag_clear	សម្អាតកំណត់ហេតុពិនិត្យ
+diag_cleared	កំណត់ហេតុពិនិត្យបានសម្អាត
+use	ប្រើ
+add_branch	បន្ថែមសាខា
+add_conversion	បន្ថែមការបំប្លែង
+add_item_plain	បន្ថែមទំនិញ
+add_note	បន្ថែមកំណត់ចំណាំ
+add_opening_balance	បន្ថែមសមតុល្យដើម
+add_rider	បន្ថែមអ្នកជិះ
+add_staff	បន្ថែមបុគ្គលិក
+add_unit	បន្ថែមឯកតា
+add_use_name	បន្ថែម / ប្រើឈ្មោះនេះ
+allow_extra_tills	អនុញ្ញាតបញ្ជរបន្ថែម
+amend	កែ
+apply_country_pack	អនុវត្តកញ្ចប់ប្រទេស
+datetime_appearance	រូបរាងកាលបរិច្ឆេទ និងម៉ោង
+datetime_appearance_help	សៀវភៅរក្សា RFC3339 ឆ្នាំដំបូងនៅខាងក្នុង។ ទាំងនេះគ្រាន់តែផ្លាស់ប្តូររបៀបដែលកាលបរិច្ឆេទ និងនាឡិកាមើលទៅលើបង្កាន់ដៃ ស្លាក របាយការណ៍ និងអេក្រង់ប៉ុណ្ណោះ។
+datetime_example	ឧទាហរណ៍ឥឡូវ៖ {ex}
+date_order	លំដាប់កាលបរិច្ឆេទ
+date_order_dmy	ថ/ខ/ឆ
+date_order_mdy	ខ/ថ/ឆ
+date_order_ymd	ឆ-ខ-ថ
+time_format	ម៉ោង
+time_format_24h	24 ម៉ោង
+time_format_12h	12 ម៉ោង
+attach_bill_photo	ភ្ជាប់រូបវិក្កយបត្រ
+attach_pdf	ភ្ជាប់ PDF
+attach_photo	ភ្ជាប់រូប
+bank	ធនាគារ
+bank_in	ធនាគារចូល
+bank_out	ធនាគារចេញ
+bank_to_till	ធនាគារ → បញ្ជរ
+till_to_bank	បញ្ជរ → ធនាគារ
+mark_cleared	សម្គាល់ថាបានសម្អាត
+unmark	ដកសម្គាល់
+role_both	ទាំងពីរ
+role_carrier	ក្រុមហ៊ុនដឹកជញ្ជូន
+role_cashier	អ្នកគិតលុយ
+role_consignor	អ្នកដឹកជញ្ជូន
+role_manager	អ្នកចាត់ការ
+role_supplier	អ្នកផ្គត់ផ្គង់
+branch_name_sell_ph	ឈ្មោះសាខាដែលលក់
+bring_my_book	យកសៀវភៅរបស់ខ្ញុំ
+business_tax_id_ph	អត្តសញ្ញាណពន្ធអាជីវកម្ម
+card_amount_ph	ទឹកប្រាក់កាត
+cash_amount_ph	ទឹកប្រាក់សាច់ប្រាក់
+upi_amount_ph	ទឹកប្រាក់ UPI
+carrier_cost_ph	តម្លៃក្រុមហ៊ុនដឹកជញ្ជូន
+carrier_party_ph	ភាគីក្រុមហ៊ុនដឹកជញ្ជូន
+choose_icon	ជ្រើសរូបតំណាង
+choose_logo	ជ្រើសឡូហ្គោ
+choose_receipt_stamp	ជ្រើសរើសត្រាបង្កាន់ដៃ
+choose_payment_qr	ជ្រើស QR បង់
+clear_icon	សម្អាតរូបតំណាង
+clear_logo	ជម្រះឡូហ្គោ
+clear_photo	សម្អាតរូប
+clear_stamp	សម្អាតត្រា
+clear_payment_qr	សម្អាត QR បង់
+print_faces	បោះពុម្ពមុខ (វិក័យប័ត្របង្កាន់ដៃ / រយៈពេល)
+print_faces_help	ត្រាជាជម្រើស និងការទូទាត់ QR នៅជាប់និមិត្តសញ្ញារបស់អ្នកនៅលើបង្កាន់ដៃការកក់ និងវិក្កយបត្ររយៈពេល។
+awb_pools_heading	បណ្តុំលេខ AWB របស់ក្រុមហ៊ុនដឹកជញ្ជូន
+add_awb_pool	បន្ថែមអាង AWB
+awb_pool_carrier_ph	ឈ្មោះភាគីក្រុមហ៊ុនដឹកជញ្ជូន
+awb_pool_start_ph	ចាប់ផ្តើមទេ។
+awb_pool_end_ph	បញ្ចប់លេខ
+awb_pool_prefix_ph	បុព្វបទ (ជាជម្រើស)
+awb_pool_label_ph	ស្លាក (ជាជម្រើស)
+pieces_ph	បំណែក (ទទេ = 1) — ពង្រីកសម្រាប់ទំនិញ / ច្រើនដុំ
+bulk_awbs_ph	AWBs ច្រើន — បិទភ្ជាប់ជាច្រើន (បន្ទាត់ថ្មី ឬសញ្ញាក្បៀស) សម្រាប់ស្ថានភាពមួយទៅមុខ
+tds_cut_ph	កាត់ TDS (ជាជម្រើស)
+discount_ph	ការបញ្ចុះតម្លៃ (ជាជម្រើស)
+cheque_no_ph	ពិនិត្យលេខ (ស្រេចចិត្ត)
+bill_reminder_chase	បញ្ជីតាមដានការរំលឹកវិក្កយបត្រ
+month_mix_report	របាយការណ៍ចម្រុះប្រចាំខែ
+copy_month_gst_csv	ចម្លងខែ GST CSV
+domestic	ក្នុងស្រុក
+international	អន្តរជាតិ
+pick_logo	ជ្រើសរើសនិមិត្តសញ្ញា
+booking_scope_hint_domestic	Volumetric ÷5000 (ក្នុងស្រុក) — ប៉ះ International សម្រាប់ ÷6000 ខ្យល់
+booking_scope_hint_intl	បរិមាណ ÷6000 (ខ្យល់អន្តរជាតិ) — ប៉ះ ក្នុងស្រុក សម្រាប់ហាង ÷5000
+cod_register	ចុះឈ្មោះ COD
+collect_cod	ប្រមូល COD (AWB)
+consignments_dispatch	ការដឹកជញ្ជូននិងការដឹកជញ្ជូន
+consignor_party_ph	ឈ្មោះអ្នកផ្ញើ / ភាគី
+copy_day_book_csv	ចម្លងសៀវភៅប្រចាំថ្ងៃ CSV
+copy_day_close	ចម្លងការបិទថ្ងៃ
+copy_items_csv	ចម្លងទំនិញ CSV
+copy_outstanding_csv	ចម្លងនៅសល់ CSV
+copy_parties_csv	ចម្លងភាគី CSV
+copy_party_ledger_csv	ចម្លងសៀវភៅភាគី CSV
+copy_receipt	ចម្លងបង្កាន់ដៃ
+copy_report	ចម្លងរបាយការណ៍
+counted_cash_ph	សាច់ប្រាក់ដែលបានរាប់ក្នុងថត
+counter_agency_ph	ឈ្មោះបញ្ជរ / ភ្នាក់ងារ (ជាជម្រើស)
+create_backup	បង្កើតច្បាប់ចម្លង
+day_close_summary	សង្ខេបបិទថ្ងៃ
+delete_party	លុបភាគីដែលបានជ្រើស
+dispatch_to_rider	ការដឹកជញ្ជូនត្រូវបានកក់ → អ្នកជិះ
+docket_charge_ph	ការគិតថ្លៃឯកសារ
+declared_value_ph	តម្លៃដែលបានប្រកាស
+contents_ph	មាតិកា
+eway_ph	វិក័យប័ត្រអេឡិចត្រូនិចលេខ
+insurance_label	ធានារ៉ាប់រង
+yes_label	បាទ
+no_label	ទេ
+print_route_label	ផ្លូវបោះពុម្ព
+new_party_kind_label	ពិធីជប់លៀងថ្មី។
+done_open_books	រួច — បើកសៀវភៅ
+export_day	នាំចេញថ្ងៃ
+extra_note_expense_ph	កំណត់ចំណាំបន្ថែមលើចំណាយចុងក្រោយ
+extra_note_awb_ph	កំណត់ចំណាំបន្ថែមលើ AWB / ការលក់នេះ។
+failed_delivery	ការដឹកជញ្ជូនបរាជ័យ
+find_scan_awb	ស្វែងរក / ស្កេន AWB
+forget_shop	ភ្លេចហាងនេះ
+fuel_ph	ប្រេងឥន្ធនៈ
+handover_carrier	ការកក់ដោយដៃ → ក្រុមហ៊ុនដឹកជញ្ជូន
+import_day	នាំចូលថ្ងៃ
+import_items_csv	នាំចូលទំនិញ/អត្រា CSV...
+import_parties_csv	នាំចូលភាគី CSV…
+import_pincodes_csv	នាំចូលកូដ PIN CSV…
+import_carrier_bill_csv	នាំចូលវិក្កយបត្រក្រុមហ៊ុនដឹកជញ្ជូន CSV…
+copy_carrier_bill_report	ចម្លងរបាយការណ៍វិក្កយបត្រក្រុមហ៊ុនដឹកជញ្ជូនចុងក្រោយ
+use_carrier_cost	ប្រើថ្លៃសេវាដឹកជញ្ជូន
+rate_carrier_ph	ក្រុមហ៊ុនដឹកជញ្ជូន (ទទេ = អត្រាលក់របស់យើង)
+rate_party_ph	ពិធីជប់លៀង (ទទេ = អតិថិជនទាំងអស់)
+carrier_pick_ph	ក្រុមហ៊ុនដឹកជញ្ជូនសម្រាប់ថ្លៃដើម (ពីការប្រៀបធៀប)
+item_name	ឈ្មោះទំនិញ
+load_bulk_row	ផ្ទុកជួរភាគច្រើន → តុ
+login_id_ph	ឈ្មោះអ្នកប្រើ
+mark_delivered	ម៉ាកបានចែកចាយ
+manifest_cod_total	សរុប COD
+manifest_received_by	ទទួលបានដោយ
+manifest_sign	សញ្ញា
+ndr_address_wrong	អាសយដ្ឋានខុស
+ndr_customer_unavailable	អស់
+ndr_door_locked	ទ្វារចាក់សោ
+ndr_other	ផ្សេងៗ
+ndr_refused	បដិសេធ
+out_for_delivery	ចេញសម្រាប់ការដឹកជញ្ជូន
+print_drs	បោះពុម្ព DRS
+print_run_sheet	បោះពុម្ពសន្លឹករត់
+reattempt	ការព្យាយាមឡើងវិញ
+rider_cod_handed_ph	COD បានប្រគល់ឱ្យ
+settle_rider_cod	ដោះស្រាយអ្នកជិះ COD
+mode_desk	តុ
+mode_rider	អ្នកជិះ
+waiting_office	រង់ចាំដល់ការិយាល័យ
+capture_signature	ចាប់យកហត្ថលេខា
+incoming_manifest	ការបង្ហាញចូល
+pickup_request	សំណើទៅយក
+pickup_run	រត់ទៅយក
+auto_assign_area	តំបន់កំណត់ដោយស្វ័យប្រវត្តិ
+reorder_stops	បញ្ឈប់ការបញ្ជាទិញឡើងវិញ
+settle_rider_pay	បង់ថ្លៃអ្នកជិះ
+vehicle_inspect	ការត្រួតពិនិត្យយានយន្ត
+print_docket	បោះពុម្ពឯកសារ
+franchise_statement	សេចក្តីថ្លែងការណ៍ Franchise
+tally_export	ការនាំចេញប័ណ្ណទូទាត់សរុប
+open_whatsapp	បើក WhatsApp
+copy_sms	ចម្លងអត្ថបទ SMS
+pick_barcode_image	ជ្រើសរើសរូបភាពដើម្បីស្កេន
+share_receipt_whatsapp	ចែករំលែកបង្កាន់ដៃនៅលើ WhatsApp
+delivery_feedback	ការផ្តល់មតិកែលម្អ
+lan_self_book	LAN កក់ដោយខ្លួនឯង។
+new_party_clear	ភាគីថ្មី (សម្អាតទម្រង់)
+new_party_kind_ph	ប្រភេទពិធីជប់លៀងថ្មី (អ្នកផ្គត់ផ្គង់ / ក្រុមហ៊ុនដឹកជញ្ជូន)
+next_country	ប្រទេសបន្ទាប់
+prev_country	ប្រទេសមុន
+note_gstin_ph	កំណត់ចំណាំ / GSTIN / រំលឹកកិច្ចព្រមព្រៀង
+note_pod_ph	ចំណាំ / POD (ជាជម្រើស)
+on_account_ap	លើគណនី (AP)
+org_optional_ph	អង្គភាព (ស្រេចចិត្ត)
+paid_now	បានបង់ឥឡូវ
+pairing_code_ph	កូដផ្គូផ្គង
+pair_now	ផ្គូផ្គងឥឡូវ
+party_name_selected_ph	ឈ្មោះភាគី (ឬប្រើអ្វីដែលបានជ្រើស)
+password_ph	ពាក្យសម្ងាត់
+pay_ap_card	បង់ AP ដោយកាត
+pay_ap_cash	បង់ AP ដោយសាច់ប្រាក់
+pay_ap_upi	បង់ AP ដោយ UPI
+period_bill	វិក្កយបត្ររយៈពេល
+period_bill_party	វិក្កយបត្ររយៈពេល (ភាគី)
+pick_pod_photo	ជ្រើសរើសរូបថត POD
+print_awb_label	បោះពុម្ពស្លាក AWB
+print_open	បោះពុម្ព / បើក
+reason_amend_ph	មូលហេតុកែ / លុបចោល / សង
+reason_note_ph	មូលហេតុ / កំណត់ចំណាំ (ខាត រាប់ …)
+record_day_close	កត់ត្រាបិទថ្ងៃ
+refresh_from_shop	ធ្វើឱ្យស្រស់ពីហាង
+refund	សងប្រាក់
+remit_cod	ផ្ញើ COD (ភាគី)
+remove_selected	ដកអ្វីដែលបានជ្រើស
+restore_backup	ស្ដារច្បាប់ចម្លង
+rider_name_ph	ឈ្មោះអ្នកជិះ
+rider_phone_ph	ទូរស័ព្ទអ្នកជិះ
+riders	អ្នកជិះ
+riders_own_fleet	អ្នកជិះ (កងនាវាផ្ទាល់ខ្លួន)
+rollup	សង្ខេបរួម
+save_booking_measures	រក្សាទុកវិធានការកក់
+save_brand	រក្សាទុកម៉ាក
+save_business_id	រក្សាទុកអត្តសញ្ញាណអាជីវកម្ម
+save_business_name	រក្សាទុកឈ្មោះអាជីវកម្ម
+save_features	រក្សាទុកការដំឡើងការងារ
+save_names	រក្សាទុកឈ្មោះ
+server_ip_ph	IP របស់ Server (ឧ. 192.168.1.10)
+set_credit_limit	អនុវត្តដែនកំណត់លើភាគី
+set_login_selected	អនុវត្តការចូលលើអ្នកដែលបានជ្រើស
+set_login_named	អនុវត្តការចូលលើ {name}
+shop	ហាង
+start_fresh	ចាប់ផ្ដើមថ្មី
+stop_extra_tills	បញ្ឈប់បញ្ជរបន្ថែម
+backup_auto	ចម្លងដោយស្វ័យប្រវត្តិរាល់ថ្ងៃ · ចុងក្រោយ {when} · 14 ថ្ងៃចុងក្រោយរក្សាក្នុង {dir}។
+backup_auto_none	ចម្លងដោយស្វ័យប្រវត្តិរាល់ថ្ងៃ — លើកទីមួយដំណើរការក្នុងពេលបន្តិច។
+backup_copy_to	ច្បាប់ចម្លងក៏ទៅ {dir} ផងដែរ។
+backup_copy_btn	ចម្លងច្បាប់ចម្លងទៅថតផងដែរ…
+autostart_off	ចាប់ផ្ដើមជាមួយកុំព្យូទ័រនេះ
+autostart_on	ចាប់ផ្ដើមជាមួយកុំព្យូទ័រនេះ ✓ — ប៉ះដើម្បីបញ្ឈប់
+autostart_done_on	កុំព្យូទ័រនេះឥឡូវបើកកម្មវិធីពេលវាចាប់ផ្ដើម — server ហាងត្រឡប់មកវិញក្រោយភ្លើងដាច់។
+autostart_done_off	កុំព្យូទ័រនេះលែងបើកកម្មវិធីពេលវាចាប់ផ្ដើម។
+right_allowed	បានអនុញ្ញាត
+right_with_approval	ត្រូវអនុម័ត
+right_denied	មិនអនុញ្ញាត
+editing_staff	សិទ្ធិសម្រាប់
+team_pick_ph	បុគ្គលិកដែលត្រូវកែ — ឈ្មោះ ឈ្មោះអ្នកប្រើ ឬជ្រើស
+select_staff	ជ្រើសបុគ្គលិកនេះ
+rights_help	សិទ្ធិ — ចុចដើម្បីផ្លាស់ប្តូរ៖ បានអនុញ្ញាត → ដោយមានការយល់ព្រម (កូដ PIN របស់អ្នកគ្រប់គ្រងនៅពេលនោះ) → មិនអនុញ្ញាត។
+right_void_refund	លុបចោល ឬបង្វិលសងការកក់
+right_amend_sale	កែប្រែការកក់ដែលបានកត់ត្រា
+find_server	ស្វែងរក server ហាង
+finding_server	កំពុងស្វែងរក server ហាងលើ Wi‑Fi នេះ…
+no_server_found	រកមិនឃើញ។ លើ Server៖ ការកំណត់ → ឧបករណ៍ផ្សេង → អនុញ្ញាតបញ្ជរបន្ថែម (Wi‑Fi ដដែល)។ ឬវាយ IP ដែលបង្ហាញនៅទីនោះ។
+servers_found_pick	ប៉ះហាងដែលអ្នកចង់ភ្ជាប់។
+server_host_selected	កំពុងប្រើ {host} — បញ្ចូលកូដផ្គូផ្គង រួចផ្គូផ្គងឥឡូវ។
+device_forgotten	ហាងបានភ្លេចឧបករណ៍នេះ — ផ្គូផ្គងម្ដងទៀតជាមួយកូដបច្ចុប្បន្នរបស់ហាង។ ការកុម្ម៉ង់ដែលរង់ចាំនៅដដែល។
+forget_device	ភ្លេច
+last_seen	បានឃើញ
+new_pair_code	កូដផ្គូផ្គងថ្មី
+lan_offline	server ហាងមិនអាចទៅដល់
+lan_offline_waiting	server ហាងមិនអាចទៅដល់ · {n} កំពុងរង់ចាំ
+lan_connecting	កំពុងភ្ជាប់ទៅហាង…
+pair_finishing	ការ​បញ្ចប់​គូ… កំពុង​អនុវត្ត​សៀវភៅ​ការិយាល័យ
+pair_opening	ការបើកការិយាល័យ…
+lan_live	ផ្ទាល់
+lan_sending	{n} កំពុងផ្ញើ
+lan_sign_in_to_send	ចូលម្ដងទៀតដើម្បីផ្ញើ {n}
+lan_pair_again	ផ្គូផ្គងឧបករណ៍នេះម្ដងទៀត
+lan_update_app	ធ្វើបច្ចុប្បន្នភាពកម្មវិធី — ឧបករណ៍នេះ និងម៉ាស៊ីនមេការិយាល័យមានកំណែផ្សេងៗគ្នា
+allow_firewall	អនុញ្ញាតឧបករណ៍ផ្សេងឱ្យភ្ជាប់
+firewall_blocked	ជញ្ជាំងភ្លើងកុំព្យូទ័រនេះកំពុងរារាំងឧបករណ៍ផ្សេង — ប៉ះ អនុញ្ញាតឧបករណ៍ផ្សេងឱ្យភ្ជាប់។
+firewall_waiting	កំពុងរង់ចាំសំណួរអ្នកគ្រប់គ្រង…
+lan_join_help	លើឧបករណ៍ផ្សេង៖ របៀបម៉ាស៊ីនភ្ញៀវ → ស្វែងរក server ហាង (ឬវាយ {addr}) → កូដផ្គូផ្គង {code}។
+lan_pair_status	Wi‑Fi {addr}
+lan_join_help_no_addr	ភ្ជាប់ឧបករណ៍នេះទៅ Wi‑Fi ដើម្បីបានអាសយដ្ឋាន។
+lan_no_address	មិនទាន់មានអាសយដ្ឋាន Wi‑Fi — ភ្ជាប់ Wi‑Fi ហាង។
+lan_not_listening	មិនទទួលឧបករណ៍ (ច្រក {port} រវល់)។ ចាប់ផ្ដើមកម្មវិធីឡើងវិញ។
+lan_tills_off	បញ្ជរបន្ថែមបិទ។ អនុញ្ញាតវាដើម្បីឱ្យឧបករណ៍ផ្សេងចូលរួម។
+paired_with	បានផ្គូផ្គង · {url}
+not_paired	មិនទាន់ផ្គូផ្គង
+choose_device_use	ជ្រើស Server ឬម៉ាស៊ីនភ្ញៀវ។
+paired_note	បានផ្គូផ្គង។ ដោះសោដើម្បីលក់ ឬធ្វើឱ្យស្រស់សម្រាប់ថ្មីបំផុត។
+last_update_at	ធ្វើបច្ចុប្បន្នភាពចុងក្រោយ៖ {time}។
+pair_intro	ស្វែងរក server ឬវាយអាសយដ្ឋាន និងកូដផ្គូផ្គងរបស់វា។
+queue_waiting	កំពុងរង់ចាំដល់ហាង ({n})៖
+queue_tries	បានសាក {n} ដង · ចម្លើយចុងក្រោយ៖ {e}
+save_backup_copy	រក្សាទុកច្បាប់ចម្លង…
+backup_copy_saved	ច្បាប់ចម្លងបានរក្សាទុក — ទុកវាក្រៅឧបករណ៍នេះ (USB ឬឧបករណ៍ផ្សេង)
+backup_copy_overdue	គ្មានច្បាប់ចម្លងចេញពីឧបករណ៍នេះអស់ {n} ថ្ងៃ — ការកំណត់ → ច្បាប់ចម្លង
+backup_copy_failed	ច្បាប់ចម្លងរក្សាទុកនៅទីនោះមិនបាន — ជ្រើសកន្លែងផ្សេង
+clock_off	នាឡិកាឧបករណ៍នេះខុសពី server ហាង {min} នាទី — កំណត់ម៉ោងត្រឹមត្រូវលើឧបករណ៍នេះ
+printers_heading	ម៉ាស៊ីនបោះពុម្ពនៅលើឧបករណ៍នេះ។
+printers_help	ស្វែងរកម៉ាស៊ីនបោះពុម្ពពិតប្រាកដ បន្ទាប់មកជ្រើសរើស Receipt ឬ AWB label។ ការងារនីមួយៗមានទទឹង បញ្ឈរ ឬទេសភាពផ្ទាល់ខ្លួន និងរបៀបដែលបៃត្រូវបានផ្ញើ។ ស្លាក​បោះពុម្ព​បាកូដ។ កន្លែងទទេ = កុំបោះពុម្ព។
+job_width	ទទឹងខ្លឹមសារ (mm)
+job_width_ph	ឬវាយទទឹង 40-210 ម។
+job_layout	ប្លង់
+job_delivery	របៀបផ្ញើការងារ
+job_size	ទំហំអក្សរ
+job_size_ph	ឧ. 18, 20, 26…
+save_receipt_format	រក្សាទុកទម្រង់បង្កាន់ដៃ
+save_label_format	រក្សាទុកទម្រង់ស្លាក
+test_receipt_format	បង្កាន់ដៃសាកល្បង
+test_label_format	ផ្លាកសញ្ញាសាកល្បង
+test_receipt_sent	គំរូបង្កាន់ដៃត្រូវបានផ្ញើ
+test_label_sent	ស្លាកគំរូត្រូវបានផ្ញើ
+test_print_no_printer	គ្មានម៉ាស៊ីនបោះពុម្ពសម្រាប់ការងារនោះ — បន្ថែមមួយនៅក្រោមកន្លែងនេះ។
+printers_host_only	ម៉ាស៊ីនបោះពុម្ពត្រូវបានកំណត់នៅលើឧបករណ៍ហាង (ម៉ាស៊ីនមេ) ។ នេះរហូតដល់ផ្ញើការងារនៅទីនោះ - ស្វែងរក / បន្ថែម / កំណត់ការស្នាក់នៅលើម៉ាស៊ីនមេ។ ទំព័រសាកល្បងទៅម៉ាស៊ីនមេ។
+printers_pool_heading	ម៉ាស៊ីនបោះពុម្ព
+printers_routes_heading	កន្លែងដែលបោះពុម្ព
+printer_label_ph	ឈ្មោះ (ឧ. តុ)
+printer_target_ph	host:9100 · bt:MAC · usb:VID:PID · ឈ្មោះប្រព័ន្ធ
+printer_mode_heading	កម្រងព័ត៌មានសម្រាប់លទ្ធផលថ្មី។
+printer_mode_standard	រូបបញ្ឈរស្តង់ដារ
+printer_mode_landscape	ទេសភាពស្តង់ដារ
+printer_mode_thermal	កំដៅ
+printer_mode_standard_short	បញ្ឈរ
+printer_mode_landscape_short	ផ្ដេក
+printer_mode_thermal_short	កំដៅ
+printer_format_custom	ប្រភេទផ្ទាល់ខ្លួនថ្មី
+printer_format_custom_label	ផ្ទាល់ខ្លួន
+printer_format_custom_added	ប្រភេទផ្ទាល់ខ្លួនបានបន្ថែមសម្រាប់កន្លែងនេះ
+add_printer	បន្ថែមម៉ាស៊ីនបោះពុម្ព
+remove_printer	លុបចុងក្រោយ
+route_pick_ph	បង្កាន់ដៃឬស្លាក
+route_add_printer_ph	បន្ថែមម៉ាស៊ីនបោះពុម្ពទៅកន្លែងនេះ។
+route_receipt	បង្កាន់ដៃ
+route_label	ស្លាក AWB
+route_dont_print	មិនបានកំណត់ម៉ាស៊ីនបោះពុម្ពទេ។
+route_add	បន្ថែមទៅកន្លែង
+route_up	ឡើង
+route_down	ចុះ
+route_remove	លុបចុងក្រោយ
+route_clear	សម្អាតម៉ាស៊ីនបោះពុម្ពសម្រាប់កន្លែងនេះ។
+save_printers	រក្សាទុកម៉ាស៊ីនបោះពុម្ព
+print_test_page	បោះពុម្ពទំព័រសាក
+printers_saved	ម៉ាស៊ីនបោះពុម្ពត្រូវបានរក្សាទុកសម្រាប់ឧបករណ៍នេះ។
+test_page_sent	ទំព័រសាកបានផ្ញើ — ពិនិត្យម៉ាស៊ីន
+printers_found	បានរកឃើញនៅលើឧបករណ៍នេះ៖ {list}
+find_printers	ស្វែងរកម៉ាស៊ីនបោះពុម្ព
+printers_looking	កំពុងរកមើលម៉ាស៊ីនបោះពុម្ពនៅលើឧបករណ៍នេះ និង Wi‑Fi…
+printers_tap_find	ប៉ះ ស្វែងរកម៉ាស៊ីនបោះពុម្ពសម្រាប់ជួរដែលទទួលយកការងារ និងម៉ាស៊ីនបោះពុម្ពបង្កាន់ដៃបណ្តាញនៅលើ Wi‑Fi នេះ (មិនត្រូវបានដកចេញ ឬក្រៅបណ្តាញ)។
+printers_none_found	រកមិនឃើញម៉ាស៊ីនបោះពុម្ពទេ — វាយឈ្មោះម៉ាស៊ីនបោះពុម្ពប្រព័ន្ធ ឬអាសយដ្ឋានបណ្តាញ (ឧ. 192.168.1.50)។
+receipt_printer_ph	ម៉ាស៊ីនបោះពុម្ពសម្រាប់បង្កាន់ដៃ
+queue_refused	ហាងមិនទទួល ({n}) — ពិនិត្យនីមួយៗនៅតុលក់៖
+clear_not_accepted	បានពិនិត្យ — សម្អាតបញ្ជីនេះ
+device_name_ph	ឈ្មោះឧបករណ៍នេះ
+lan_last_update	ធ្វើបច្ចុប្បន្នភាពចុងក្រោយ {time}
+lan_not_accepted	{n} មិនបានទទួល
+connected_now	បានភ្ជាប់ឥឡូវ
+backup_failed	ច្បាប់ចម្លងស្វ័យប្រវត្តិចុងក្រោយបរាជ័យ៖ {e}
+backup_overdue	គ្មានច្បាប់ចម្លងអស់ {n} ថ្ងៃ — បើកកម្មវិធីលើឧបករណ៍នេះដើម្បីឱ្យវាចម្លង។
+disk_low	នៅសល់តែ {mb} MB លើឧបករណ៍នេះ — ច្បាប់ចម្លងនឹងបរាជ័យឆាប់ៗ។ សម្អាតទំហំ។
+last_seen_devices	បានឃើញចុងក្រោយ៖ {time}
+sync_interval	សមកាលកម្មរាល់ {secs} វិ
+connection_to_shop	ការភ្ជាប់ទៅហាង
+supplier_name_ph	ឈ្មោះអ្នកផ្គត់ផ្គង់ (ឬភាគី)
+supplier_ph	អ្នកផ្គត់ផ្គង់
+switch_device	ប្ដូរឧបករណ៍នេះ
+take_payment	ទទួលការបង់
+tax_added_till	{tax} ក្រៅតម្លៃ
+tax_inside_price	{tax} ក្នុងតម្លៃ
+today_books	សៀវភៅថ្ងៃនេះ
+unlock_after_pairing	បញ្ចូល PIN
+unlock_with_login	ដោះសោដោយការចូល
+update_my_password	ធ្វើបច្ចុប្បន្នភាពពាក្យសម្ងាត់របស់ខ្ញុំ
+update_my_pin	ធ្វើបច្ចុប្បន្នភាពកូដ PIN របស់ខ្ញុំ
+duress_heading	PIN ដោះសោបន្ទាន់ (ម្ចាស់តែប៉ុណ្ណោះ)
+duress_help	ស្រេចចិត្ត។ ប្រសិនបើលេខកូដ PIN នេះត្រូវបានគេវាយបញ្ចូលនៅពេលដោះសោជំនួសឱ្យរបស់អ្នក រាល់ការបញ្ចូលសៀវភៅទាំងអស់ត្រូវបានលុបចោល (ការកក់ទុក សៀវភៅកត់ត្រា ប្រវត្តិ) ហើយតុបើកនៅពេលដែលម្ចាស់មើលទៅធម្មតា — អត្រាការប្រាក់ ពិធីជប់លៀង តំបន់ បុគ្គលិក និងការកំណត់នៅតែមាន។ គ្រោងការណ៍ និងការកំណត់មិនត្រូវបានលុបទេ។ ប្រើតែក្នុងករណីដែលអ្នកត្រូវបានបង្ខំឱ្យដោះសោ។ ទុកឱ្យទទេហើយរក្សាទុកដើម្បីបិទ។ មិនដូចលេខ PIN របស់នរណាម្នាក់ឡើយ។
+duress_pin_ph	PIN បន្ទាន់ (4–12 ខ្ទង់)
+duress_confirm_ph	វាយម្ដងទៀតដើម្បីបញ្ជាក់
+save_duress_pin	រក្សាទុក PIN បន្ទាន់
+clear_duress_pin	បិទ PIN បន្ទាន់
+duress_on	PIN ដោះសោបន្ទាន់បើក
+duress_off	PIN ដោះសោបន្ទាន់បិទ
+duress_saved	PIN ដោះសោបន្ទាន់បានរក្សាទុក
+duress_cleared	PIN ដោះសោបន្ទាន់បានបិទ
+vehicle_ph	យានជំនិះ
+void	លុបចោល
+write_off_ap	កាត់ AP
+write_off_nil	កាត់ / សមតុល្យសូន្យ
+zone_ph	តំបន់ (ឈ្មោះពីអត្រា)
+caption_today	ថ្ងៃនេះ
+caption_bookings	ការកក់ទុក
+caption_payments_today	ការបង់ថ្ងៃនេះ
+caption_outstanding	នៅសល់
+caption_bank	ធនាគារ
+paid_by	បង់ដោយ
+second_way	វិធីទីពីរ
+weight_in	ទំងន់ចូល
+size_in	ទំហំនៅក្នុង
+goods_received	ទំនិញបានទទួល
+expense_heading	ចំណាយ
+notes_attach_sale	កំណត់ចំណាំ និងឯកសារភ្ជាប់ (ការលក់ដែលបានជ្រើស)
+notes_attach_party	កំណត់ចំណាំ និងឯកសារភ្ជាប់ (ភាគីដែលបានជ្រើស)
+attachments_last_expense	ឯកសារភ្ជាប់ (ចំណាយចុងក្រោយ)
+credit_limit_heading	ដែនកំណត់ជំពាក់ (ភាគីដែលបានជ្រើស / ដាក់ឈ្មោះ)
+pay_selected_heading	បង់អ្វីដែលបានជ្រើស (ទូទាត់ជំពាក់ / យកប្រាក់មុន)
+write_off_heading	កាត់ (សម្អាតដោយមិនបង់)
+pay_ap_heading	បង់អ្វីដែលយើងជំពាក់គេ (AP)
+country_tax	ប្រទេស និងពន្ធ
+extra_tills_heading	បញ្ជរបន្ថែម
+other_devices_help_heading	រៀបចំឧបករណ៍ផ្សេង
+other_devices_help	នៅលើឧបករណ៍នេះ (ម៉ាស៊ីនមេ)៖ ឧបករណ៍ផ្សេងទៀត → អនុញ្ញាតការបន្ថែម។ ចំណាំលេខកូដផ្គូផ្គង និងអាសយដ្ឋាន Wi-Fi ។ ប៉ះអនុញ្ញាតឱ្យឧបករណ៍ផ្សេងទៀតភ្ជាប់ប្រសិនបើវាលេចឡើង។ នៅលើកុំព្យូទ័រ សូមចុចចាប់ផ្តើមជាមួយកុំព្យូទ័រនេះ។ នៅលើឧបករណ៍ផ្សេងទៀត៖ ដំឡើងកម្មវិធី ជ្រើសរើសរបៀបអតិថិជន ស្វែងរកម៉ាស៊ីនមេរបស់ហាង (ឬវាយអាសយដ្ឋាន) បញ្ចូលលេខកូដផ្គូផ្គង ផ្គូផ្គងឥឡូវនេះ។ ការបញ្ជាទិញរង់ចាំនៅលើឧបករណ៍ ប្រសិនបើ Wi‑Fi ធ្លាក់ចុះ ហើយដំណើរការនៅពេលដែលម៉ាស៊ីនមេឆ្លើយតបម្តងទៀត។
+your_brand	ម៉ាករបស់អ្នក (ក្នុងកម្មវិធី)
+units_heading	ឯកតា
+booking_measures	វិធានការកក់
+drawer_count	ការរាប់ថត (ស្រេចចិត្ត)
+spreadsheet_csv	សៀវភៅបញ្ជី (CSV)
+bank_reconciliation	ផ្គូផ្គងធនាគារ (ធីកជាមួយរបាយការណ៍ធនាគាររបស់អ្នក)
+book_add_product	សៀវភៅ - បន្ថែមផលិតផល / អត្រា
+book_opening_credit	សៀវភៅ — ជំពាក់ដើម
+account_kind	ប្រភេទគណនី (ប៉ះមួយ)
+active_ledger	សៀវភៅកត់ត្រាសកម្ម
+actual_total_cap	សរុបពិត
+amend_help	ជ្រើសការលក់ដើម្បីកែ លុបចោល ឬសង។ ការកែរក្សាប្រវត្តិពេញ។ សរុបបង្គត់ចាប់ផ្ដើមស្មើនឹងបានអនុវត្ត — កែតែដើម្បីបង្គត់។ ការលុបចោល និងសងអាចត្រូវការ PIN ម្ចាស់ ឬអ្នកចាត់ការ (វាយខាងលើ; កត់ជាមួយឈ្មោះអ្នក)។
+applied_total_cap	សរុបបានអនុវត្ត
+bank_balance	សមតុល្យធនាគារ
+bank_net_today	សុទ្ធធនាគារថ្ងៃនេះ
+branch_export_help	នាំចេញសរសេររូបថតមួយថ្ងៃទៅក្នុងថតឯកសារបម្រុងទុក ហើយចម្លងវាទៅក្ដារតម្បៀតខ្ទាស់។ ដើម្បីនាំចូលថ្ងៃរបស់ហាងផ្សេង រក្សាទុកឯកសាររបស់វាជា import_branch_snapshot.json នៅក្នុងថតនោះ បន្ទាប់មកចុច នាំចូល។
+brand_shown_help	បង្ហាញលើអេក្រង់ក្នុងកម្មវិធី។ ឈ្មោះកម្មវិធីដែលបានដំឡើង និងរូបតំណាងលើឧបករណ៍នេះនៅដូចបញ្ជីវេទិកា។
+app_icon	រូបតំណាងកម្មវិធី
+logo_help	ស្លាកហាងស្រេចចិត្តលើអេក្រង់ក្នុងកម្មវិធី។
+onboard_layout	អ្វីដែលអ្នកទទួល
+item_photo_help	ស្រេចចិត្ត។ គ្មានរូប យើងបង្ហាញអក្សរដើមពីឈ្មោះទំនិញ។
+cash_in_hand	សាច់ប្រាក់ក្នុងដៃ (បញ្ជរ)
+change_my_pin_heading	ផ្លាស់ប្តូរលេខសម្ងាត់របស់ខ្ញុំ (សម្រាប់តែរបស់អ្នក)
+connect_to_server	ភ្ជាប់ទៅ Server
+counter_locked	តុ 01 · ចាក់សោ
+country_pack_help	កញ្ចប់ប្រទេសកំណត់ឈ្មោះពន្ធ និងគណិត ផ្លូវបង់ភ្លាម និងអត្តសញ្ញាណអាជីវកម្មដែលបោះពុម្ពលើវិក្កយបត្រ។ Kumkaj មិនដាក់ពន្ធ ឬចេញវិក្កយបត្រអេឡិចត្រូនិករដ្ឋាភិបាលនៅកន្លែងណាទេ។
+currency_use_help	រំកិល ហើយប៉ះប្រើសម្រាប់រូបិយប័ណ្ណដែលគាំទ្រ។
+day_close_help	ការកត់ត្រាបិទថ្ងៃរក្សាទុកសង្ខេបនេះ (និងភាពខុសថតបើបានរាប់) ទៅកំណត់ហេតុត្រួតពិនិត្យ។ វាមិនបញ្ឈប់ការលក់។
+expenses_word	ចំណាយ
+feature_access_help	ការចូលប្រើមុខងារសម្រាប់បុគ្គលិកដែលបានជ្រើសរើស (ចុចបន្ទាប់ពីបន្ថែម)
+footer_local	SQLite ក្នុង · ឥតគិតថ្លៃជានិច្ច · គ្មានពពក
+fresh_book_moklanjo	ស្រស់ = កាតាឡុកទទេ (បន្ថែមធាតុនៅពេលក្រោយ)។ សៀវភៅ = ប្រភេទបើកភាគហ៊ុន ហើយអ្នកណាជំពាក់អ្នកខាងក្រោម។
+fresh_selected	បានជ្រើសថ្មី — បញ្ជីនៅទទេ។ ប៉ះរួចរាល់ពេលត្រៀម។
+gross_word	ដុល
+how_start	អ្នកចង់ចាប់ផ្ដើមយ៉ាងដូចម្ដេច?
+later_country_pack	ពេលក្រោយ៖ ការកំណត់ → អនុវត្តកញ្ចប់ប្រទេសរបស់អ្នកសម្រាប់ស្លាកពន្ធ និងបង់។
+local_badge	ក្នុង
+measures_help_moklanjo	របៀបដែលក្បាលដីត្រូវបានវាស់នៅតុកក់។ វាយទំហំ និងទម្ងន់នៅក្នុងឯកតាដែលអ្នកប្រើ — ស្តង់ដារ (cm, m, in, ft · kg, g, lb, oz) ឬឯកតាផ្ទាល់ខ្លួនរបស់អ្នកដែលភ្ជាប់ទៅនឹង cm/kg ខាងលើ (ដោយផ្ទាល់ ឬតាមរយៈឯកតាផ្សេងទៀត)។ សៀវភៅតែងតែកត់ត្រាគីឡូក្រាម។ ទុកវាលទទេដើម្បីរក្សាវា។
+mix_type_hint_moklanjo	វាយចំនួនប៉ុន្មានក្នុងនីមួយៗ (សាច់ប្រាក់ / UPI / កាត / ឥណទាន) ។ ត្រូវតែបន្ថែមទៅវិក័យប័ត្រ។ ឥណទានត្រូវការអតិថិជនខាងលើ។
+money_in_sales	លុយចូល (ការលក់)
+more_help_moklanjo	កាតាឡុក, ការលក់, ឥណទាន, ក្រុម, ការបម្រុងទុក — បូកនឹងភាគហ៊ុន និងប្រាក់បន្ថែមនៅពេលចាំបាច់។
+net_word	សុទ្ធ
+offline_badge	ក្រៅបណ្ដាញ
+optional_login_help	ការចូលស្រេចចិត្ត (អត្តសញ្ញាណ + ពាក្យសម្ងាត់)។ ម្ចាស់កំណត់ម្ដង; មានតែអ្នកប្រើប្ដូរពាក្យសម្ងាត់ពេលក្រោយបាន។
+or_unlock_login	ឬដោះសោដោយអត្តសញ្ញាណចូល + ពាក្យសម្ងាត់
+permission_preset	ការងារ (កំណត់អេក្រង់ និងសិទ្ធិ)
+preset_help_moklanjo	អ្នកគិតលុយ៖ លក់។ អ្នកចាត់ការ៖ លក់ + ទំនិញ + លុបចោល/កែ។
+product_locked_moklanjo	ម៉ុកឡានចូ
+product_only_moklanjo	កម្មវិធីនេះគឺមានតែ Moklanjo - សៀវភៅ + តុកក់។ ពាណិជ្ជកម្មផ្សេងទៀតប្រឈមនឹងការដឹកជញ្ជូនជាផលិតផលដាច់ដោយឡែកនៅពេលក្រោយ។
+purchases_cogs	ការទិញ (COGS)
+qty_cap	បរិមាណ
+restore_help	ស្ដារ៖ ជ្រើសច្បាប់ចម្លង។ សៀវភៅបើកដូចពេលនោះ; សៀវភៅបច្ចុប្បន្នត្រូវបានរក្សាទុកជាមុន ដូច្នេះអាចមិនធ្វើវិញបាន។
+wipe_data_heading	លុបទិន្នន័យក្នុង
+wipe_data_help	ម្ចាស់តែមួយគត់ - ជម្រើសដូចគ្នានឹងការលុបវីនដូ។ កំណត់ត្រាអាជីវកម្មសម្អាតប្រវត្តិនៃការជួញដូរ ប៉ុន្តែរក្សាអត្រាការប្រាក់ និងការដំឡើង (ដូចជាកូដ PIN ដោះសោបន្ទាន់)។ ការរៀបចំហាងយកមូលដ្ឋានទិន្នន័យសៀវភៅចេញ។ ចំណូលចិត្តអេក្រង់សម្អាតបង្អួច/ភាសា។ បញ្ជាក់ដោយប្រើលេខកូដ PIN របស់ម្ចាស់។ កូដ PIN ដោះសោពេលមានអាសន្ននៅលើក្រុមគឺដាច់ដោយឡែកពីគ្នា (លាក់បាំងពេលដោះសោ)។
+wipe_trading	កំណត់ត្រាអាជីវកម្ម
+wipe_schema	ការរៀបចំហាង
+wipe_ui	ចំណូលចិត្តអេក្រង់
+wipe_owner_pin_ph	PIN ម្ចាស់ដើម្បីលុប
+wipe_delete_selected	លុបអ្វីដែលបានជ្រើស
+wipe_owner_only	មានតែម្ចាស់អាចលុបទិន្នន័យក្នុង។
+restore_owner_only	មានតែម្ចាស់អាចស្ដារច្បាប់ចម្លង។
+wipe_owner_pin_needed	បញ្ចូល PIN ម្ចាស់ដើម្បីលុបទិន្នន័យក្នុង។
+wipe_nothing_selected	ជ្រើសអ្វីដែលត្រូវលុបជាមុនសិន។
+wipe_done	ទិន្នន័យក្នុងដែលបានជ្រើសបានលុប។
+wipe_schema_done	ការរៀបចំហាងបានលុប — ជ្រើស Server ឬម៉ាស៊ីនភ្ញៀវដើម្បីបន្ត។
+rounded_total	សរុបបង្គត់
+setup_app_moklanjo	ដំឡើង Moklanjo
+shop_logo_optional	ឡូហ្គោហាង (ស្រេចចិត្ត)
+stock_type_help	វាយឈ្មោះទំនិញ (ផ្នែកមួយគ្រប់គ្រាន់) បរិមាណ រួចកែ។ ទំនិញដែលមិនទាន់រាប់ត្រូវការ ចាប់ផ្ដើមរាប់ ម្ដង។
+team_owner_help	ជួល៖ ជ្រើសរើសការងារ (អ្នកគិតលុយ/អ្នកគ្រប់គ្រង) ឈ្មោះ + PIN ចាប់ផ្តើម បន្ទាប់មកបន្ថែម។ លុះត្រាតែបុគ្គលនេះខុសគ្នា៖ បើកអេក្រង់ និងសិទ្ធិខាងក្រោម បន្ទាប់មករក្សាទុកការដំឡើងការងារ។ មនុស្សគ្រប់គ្នាផ្លាស់ប្តូរលេខសម្ងាត់ផ្ទាល់ខ្លួនរបស់ពួកគេនៅខាងក្រោម — ម្ចាស់មិនអាចផ្លាស់ប្តូរអ្នកផ្សេងបានទេ។
+they_owe_us	ពួកគេជំពាក់យើង
+unit_at_cap	ឯកតា @
+units_help	កូដសម្រាប់ស្លាកទំនិញ (kg ដុំ ថង់)។ ឯកតានីមួយៗត្រូវតភ្ជាប់ — ផ្ទាល់ ឬតាមឯកតាផ្សេង — ទៅស្តង់ដារ (kg · cm · ml · pc) ឧ. 1 ប្រអប់ = 2 កេស និង 1 កេស = 20 cm។ ការបំប្លែង៖ 1 ពី = មេគុណ ទៅ។ រូបិយប័ណ្ណមិនដែលជាឯកតា។
+we_owe_them	យើងជំពាក់ពួកគេ
+who_unlocking	នរណាកំពុងដោះសោ?
+locked_word	ចាក់សោ
+show_pin	បង្ហាញ PIN
+hide_pin	លាក់ PIN
+set_owner_pin	កំណត់ PIN ម្ចាស់
+enter_owner_passcode	បញ្ចូលកូដម្ចាស់
+enter_staff_passcode	បញ្ចូលកូដបុគ្គលិក
+pin_count_zero	0 / 12 ខ្ទង់ · យ៉ាងហោចណាស់ 4 រួច OK
+pin_count_need	{} / 12 ខ្ទង់ · ត្រូវការ {} ទៀត
+pin_count_full	12 / 12 ខ្ទង់ · ចុច OK
+pin_count_ready	{} / 12 ខ្ទង់ · ចុច OK ពេលរួច
+pin_hint_choose	ជ្រើស 4–12 ខ្ទង់ · Enter ឬដោះសោដើម្បីរក្សាទុក
+pin_hint_new	PIN ម្ចាស់ថ្មី 4–12 ខ្ទង់ · Enter ឬដោះសោ
+pin_hint_shop_code	ឧបករណ៍ហាង · កូដផ្គូផ្គង {}
+pin_hint_books	ឧបករណ៍នេះរក្សាសៀវភៅ
+pin_hint_paired	បញ្ជរបន្ថែមបានផ្គូផ្គង — ដោះសោដើម្បីលក់
+pin_hint_pair_first	បញ្ជរបន្ថែម — ផ្គូផ្គងទៅឧបករណ៍ហាងជាមុនសិន
+unlock_to_continue	ដោះសោដើម្បីបន្ត
+no_staff_yet	មិនទាន់មានបុគ្គលិក — ដោះសោជាម្ចាស់ រួចក្រុម
+status_server_set_pin	របៀប Server — កំណត់ PIN ម្ចាស់
+status_server_tills	របៀប Server — បញ្ជរបន្ថែមអាចចូលរួម។ ដោះសោ
+status_server_unlock	របៀប Server — ដោះសោជាម្ចាស់
+status_client_unlock	របៀបម៉ាស៊ីនភ្ញៀវ — ដោះសោដើម្បីលក់
+icon_new_selected	រូបតំណាង៖ ឯកសារថ្មីបានជ្រើស — ប៉ះរក្សាទុកម៉ាក
+icon_custom	រូបតំណាង៖ ស្លាកទីតាំងផ្ទាល់ខ្លួន
+icon_default	រូបតំណាង៖ ស្លាក Kumkaj (លំនាំដើម) — ជ្រើសមួយផ្ទាល់ខ្លួន
+logo_yours	ឡូហ្គោ៖ ឡូហ្គោហាងអ្នក — បង្ហាញលើអេក្រង់ និងបង្កាន់ដៃ
+logo_default	ឡូហ្គោ៖ ស្លាក Kumkaj (លំនាំដើម) — ជ្រើសរបស់អ្នកបើមាន
+tmpl_current	បច្ចុប្បន្ន៖ {} — {}
+tmpl_selected	បានជ្រើស៖ {} — {}
+setup_complete	ការរៀបចំរួចរាល់
+onboard_fresh_tmpl	ថ្មី · {} — បញ្ជីចាប់ផ្ដើមទទេ; បន្ថែមទំនិញក្នុងទំនិញ រួចរួចរាល់។
+onboard_book_tmpl	សៀវភៅ · {} — បន្ថែមទំនិញ និងជំពាក់ដើម រួចរួចរាល់។
+onboard_template_tmpl	ដាក់ឈ្មោះកន្លែងបើចង់ រួចជ្រើសរបៀបចាប់ផ្ដើម។
+tmpl_blurb	សៀវភៅនាំសំបុត្រ និងតុកក់៖ អ្នកនាំសំបុត្រ អ្នកដឹកជញ្ជូន សៀវភៅថ្ងៃ AWB ។
+tmpl_how	កក់ក្បាលដីនៅតុ; សៀវភៅថ្ងៃសម្រាប់ថ្ងៃនេះ; ផ្ទាំងសម្រាប់អត្រា, ភាគី, របាយការណ៍។
+trk_booked	បានកក់ទុក
+trk_picked_up	រើសបាន។
+trk_in_transit	ក្នុងពេលឆ្លងកាត់
+trk_delivered	ចែកចាយ
+trk_rto	ត្រឡប់ទៅអ្នកផ្ញើវិញ។
+lane_to_dispatch	ដើម្បីបញ្ជូន
+lane_with_carrier	ជាមួយក្រុមហ៊ុនដឹកជញ្ជូន
+lane_failed	បរាជ័យ
+lane_done_today	រួចរាល់ថ្ងៃនេះ
+ops_board_help	ក្បាលដីតាមកន្លែងដែលពួកគេនៅក្នុងការងារថ្ងៃនេះ។ ប៉ះក្បាលដី (ឬស្កេនពួកវា) ដើម្បីរើសវា បន្ទាប់មកធ្វើសកម្មភាពទាំងអស់នៅពេលជ្រើសរើស — ផ្លូវនីមួយៗផ្តល់តែចលនាដែលសមនឹងវា។
+lane_empty	គ្មានអ្វីនៅទីនេះទេឥឡូវនេះ។
+picked_fmt	{n} បានជ្រើសរើស
+pick_all	ជ្រើសរើសទាំងអស់។
+bag_for_carrier	ប្រគល់ជូនក្រុមហ៊ុនដឹកជញ្ជូន
+send_with_rider	ផ្ញើជាមួយអ្នកជិះ
+out_again	ចេញទៀតហើយ
+return_to_sender	ត្រឡប់ទៅ អ្នកផ្ញើ វិញ
+runs_bags_heading	ការរត់ និងកាបូបថ្មីៗ
+print_word	បោះពុម្ព
+bag_word	កាបូបដឹកជញ្ជូន
+run_word	អ្នកជិះរត់
+parcels_fmt	ក្បាលដី {n}
+parcel_history	ប្រវត្តិសាស្ត្រ
+attempt_fmt	ព្យាយាម {n}
+pieces_short_fmt	កុំព្យូទ័រ {n}
+note_reason_ph	កំណត់ចំណាំឬហេតុផល
+ops_pick_first	ជ្រើសរើសក្បាលដីជាមុនសិន — ប៉ះពួកវា ឬស្កេនពួកវា
+cod_to_collect	ប្រគល់ជូន — COD ដើម្បីប្រមូល
+cod_on_road	COD នៅតែនៅលើផ្លូវ
+cod_owed_consignors	ប្រមូល - ដើម្បីបង់ថ្លៃអ្នកផ្ញើ
+cod_rto_fees	ថ្លៃ RTO ដើម្បីប្រមូល
+cod_to_hand_in	COD ដល់ដៃ
+parcel_one_fmt	កញ្ចប់ {n}
+facet_bank_title	របាយការណ៍
+facet_bank_help	សៀវភៅប្រចាំថ្ងៃ អាយុភាគី ការបង្ហោះធនាគារ និងច&ខតាមរយៈពេល។
+facet_ops_title	ការដឹកជញ្ជូននិងការដឹកជញ្ជូន
+facet_ops_help	ស្កែន ឬវាយ AWB → ស្វែងរក បន្ទាប់មកទៅមុខ / បោះពុម្ពស្លាក / COD ។ បញ្ជូនទៅកាន់អ្នកជិះ ឬអ្នកដឹកជញ្ជូន។
+facet_cod_title	ចុះឈ្មោះ COD
+facet_cod_help	ប្រមូលនៅពេលដឹកជញ្ជូន បន្ទាប់មកផ្ញើទៅអ្នកដឹកជញ្ជូន។
+facet_riders_title	អ្នកជិះ (កងនាវាផ្ទាល់ខ្លួន)
+facet_riders_help	បន្ថែមអ្នកជិះ បន្ទាប់មកបញ្ជូន AWBs ដែលបានកក់ពី Ops ។
+against_bill_ph	ធៀបនឹងវិក្កយបត្រ # ខាងលើ (ស្រេចចិត្ត)
+aliases_ph	ឈ្មោះផ្សេង — ឈ្មោះផ្សេង បំបែកដោយក្បៀស
+amount_blank_full_ph	ទឹកប្រាក់ (ទទេ = សមតុល្យពេញ)
+amount_owed_ph	ទឹកប្រាក់ជំពាក់
+amount_ph	ទឹកប្រាក់
+amount_received_ph	ទឹកប្រាក់បានទទួល
+amount_we_pay_ph	ទឹកប្រាក់ដែលយើងបង់
+awb_scan_ph	AWB / ស្កេនបាកូដ
+bulk_csv_ph	CSV ច្រើន — ទិសដៅ, អ្នកទទួល, គីឡូក្រាម, cod_paise, ចំណាំ
+business_name_ph	ឈ្មោះអាជីវកម្ម
+category_new_ph	ប្រភេទ (ស្រេចចិត្ត បង្កើតបើថ្មី)
+cod_amount_ph	ចំនួនទឹកប្រាក់ COD
+code_bag_ph	កូដ (ថង់)
+conv_factor_ph	មេគុណ (25 = 1 ថង់ → 25 kg)
+country_code_ph	កូដប្រទេស ឧ. IN, GB, US, AE, BR
+credit_khata_amount_ph	ទឹកប្រាក់ជំពាក់ / ខាតា
+credit_limit_ph	ដែនកំណត់ជំពាក់ (0 = គ្មាន)
+dim_unit_code_ph	លេខកូដឯកតាវិមាត្រ (សង់ទីម៉ែត្រ)
+divisor_ph	ការបែងចែកបរិមាណ (5000)
+extra_per_kg_ph	បន្ថែម / គីឡូក្រាម
+first_amount_ph	ចំនួនទឹកប្រាក់ដំបូង
+first_kg_ph	គីឡូក្រាមដំបូង (បន្ទះ)
+from_code_ph	កូដពី (ថង់)
+item_name_lang_ph	ឈ្មោះទំនិញ — វាយជាភាសារបស់អ្នក
+login_id_opt_ph	ឈ្មោះអ្នកប្រើ (ត្រូវការ មានតែមួយ)
+manager_pin_ph	PIN អ្នកចាត់ការដើម្បីអនុម័ត (តែបើអ្នកលុបចោលមិនបាន)
+new_branch_name_ph	ឈ្មោះសាខាថ្មី
+new_password_ph	ពាក្យសម្ងាត់ថ្មី (ស្រេចចិត្ត)
+new_pin_ph	PIN ថ្មី (4–12 ខ្ទង់)
+note_bank_ph	កំណត់ចំណាំ (ដាក់ ដក …)
+note_buy_expense_ph	កំណត់ចំណាំ (ប្រេង ជួល …)
+note_expense_ph	កំណត់ចំណាំ (ប្រេង ការិយាល័យ …)
+notify_phone_ph	ជូន​ដំណឹង​តាម​ទូរស័ព្ទ (WhatsApp/SMS)
+options_moklanjo_ph	ជម្រើស (ស្រេចចិត្ត) — ធំ = 20, រុំអំណោយ = 10
+part_second_way_ph	ផ្នែកតាមវិធីទីពីរ (ស្រេចចិត្ត)
+phone_ph	ទូរស័ព្ទ
+address_ph	អាស័យដ្ឋាន
+party_custom_fields_heading	វាលផ្ទាល់ខ្លួន (ភាគីដែលបានជ្រើសរើស)
+party_custom_help	បន្ថែមស្លាក និងតម្លៃណាមួយនៅលើពិធីជប់លៀងនេះ — WhatsApp, GSTIN, លេខកូដផ្លូវ, …
+party_custom_key_ph	ឈ្មោះវាល (ឧ. WhatsApp)
+party_custom_value_ph	តម្លៃ
+party_custom_add	បន្ថែមវាល
+party_custom_remove	លុប​វាល
+party_custom_empty	មិនទាន់មានវាលផ្ទាល់ខ្លួននៅឡើយទេ
+party_custom_pick_first	ជ្រើសរើសភាគីដើម្បីបន្ថែមវាលផ្ទាល់ខ្លួន
+place_name_ph	ឈ្មោះកន្លែងនេះ
+price_ph	តម្លៃ
+qty_example_ph	បរិមាណ (ឧ. 1.5 សម្រាប់ kg)
+quantity_ph	បរិមាណ
+reason_required_ph	មូលហេតុ (ត្រូវការ)
+role_title_ph	ងារតួនាទី (ឧ. Barista)
+service_pct_ph	សេវា % ស្រេចចិត្ត 0/10/12
+short_code_ph	កូដខ្លី (MG02)
+slab_kg_ph	បន្ទះសាកគិតជាគីឡូក្រាម (0.5)
+staff_name_ph	ឈ្មោះបុគ្គលិក / លេខសម្គាល់
+starting_password_ph	ពាក្យសម្ងាត់ដើម (ស្រេចចិត្ត)
+starting_pin_ph	PIN ដើម (4–12 ខ្ទង់)
+tax_rate_ph	ឈ្មោះអត្រាពន្ធ ឬ % — ស្តង់ដារ បញ្ចុះ 0, 5, 12, 18, 20
+to_code_ph	កូដទៅ (kg)
+uncleared_no_ph	មិនទាន់សម្អាត # ខាងលើ
+unit_cost_ph	ថ្លៃឯកតា
+unit_kg_blank_ph	ឯកតា (គីឡូក្រាមឬទទេ)
+unit_name_bag_ph	ឈ្មោះ (ថង់)
+weight_unit_code_ph	លេខកូដឯកតាទម្ងន់ (គីឡូក្រាម)
+zone_name_ph	ឈ្មោះតំបន់
+pay_credit	ជំពាក់
+book_kind_today	សៀវភៅថ្ងៃនេះ
+book_kind_month	សៀវភៅខែនេះ
+book_kind_aging	នៅសល់ / ជំពាក់-ជំពាក់
+book_kind_balance	តារាងតុល្យការ
+ops_desk_help	ស្កេន AWB ដោយ​ប្រើ​ម៉ាស៊ីន​ស្កេន​បាកូដ USB (ឬ​វាយ​វា) → ស្វែងរក។ បន្ទាប់មកទៅមុខ បោះពុម្ពស្លាក ឬប្រមូល COD ។ ស្លាកបោះពុម្ពលេខ 128 ។
+role_help_consignor	តួនាទី៖ អ្នកផ្ញើ - AR (ពួកគេជំពាក់យើង)។ ក្រុមហ៊ុនដូចគ្នាក៏អាចជាក្រុមហ៊ុនដឹកជញ្ជូនផងដែរ។
+role_help_carrier	តួនាទី៖ ក្រុមហ៊ុនដឹកជញ្ជូន — AP (យើងជំពាក់ពួកគេ)។ ក្រុមហ៊ុនដូចគ្នាក៏អាចជា Consignor ផងដែរ។
+role_help_both	តួនាទី៖ អ្នកផ្ញើ + ក្រុមហ៊ុនដឹកជញ្ជូន — ភាគីមួយ សៀវភៅបញ្ជី AR និង AP សុទ្ធនៅក្នុងរបាយការណ៍។
+role_help_supplier	តួនាទី៖ អ្នកផ្គត់ផ្គង់ — AP សម្រាប់ការទិញ។
+lane_declared_label	ការកក់គណនី
+lane_owner_label	ការកក់សាច់ប្រាក់
+money_lane_bill	វិក្កយបត្រ៖ {lane}

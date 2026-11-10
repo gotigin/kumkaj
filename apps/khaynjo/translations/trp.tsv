@@ -1,0 +1,1351 @@
+# Kokborok — ককবরক (trp). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	খামুং চানাই ওরদের, চামুং চানাই & বিজাপ. ওফলিনে নি রাং কুরুই.
+unlock	লচক খুলকদি
+pin_hint	মালিক PIN 0000 নি সিমি চেংনাই
+sell	অর্ডার
+buy	পাইদি
+books	সালনি বিজাপ
+books_help	তিনি’নি থানি. ওরদের = ওরদের উংখা.কুতাল = পাইমানি & খারমানি. পারতয় রক = রাং রুনাই রক & রাং রুনাই রক.
+buy_help	খারচা খারমানি ভউচের তেই তুবুনাইরকনি বিল (রাং উংখা). ওন-খাতাও তংনাই পারতয় নি লেদগের ও.
+sell_money_in	ওরদের নাই দি
+buy_money_out	খারচা/ফাইনাই বিল
+record_purchase	রেচরদ পাইমানি
+add_expense	খারজামানি ভউচের
+bank_book	বানক নি বিজাপ
+credit_help	পারতয় ইদ উংখা কুতাল (মুং তেই কাইসা উঙুই মান). খরকসা গরাহাক খাতা তাব (চুংন দেবত) চালাইও; কাইসা ফালনাই চুংন সতচক ফালনাই (চুং বোরকন দেবত রুনাই); ব কাহাম. লেদগেরক খে সুকাং সুকাং খে তংনাই; রিপরত রক নেত ফুনুক খা.
+party_kind_ph	সামুং: গরাহক, ফালনাই, খরকনুই...
+reports_help	সালনি বিজাপ, রাং রুনাইরক তেই রাং রুনাইরক, বানকনি বিজাপ, রাং খারমানি ভউচের, রাং আজিমানি তেই কুমাজাক.
+reports_today	সালনি বিজাপ (তিনি)
+reports_month	লামা & কুমাজাক (তাল)
+reports_aging	কুতাল / দর-চর
+reports_balance_sheet	বালানচে সুইজাক
+reports	বানক নি বিজাপ তেই প&ল
+refresh	কুতাল খলাইদি
+undo	উনদ
+start_tracking	নাইনা চেংদি
+stock_minus	- সতক
+stock_plus	+ সতক
+settle_cash	রাং সেতলে
+settle_card	কারদ সুনামদি
+items	মেনু & মানুইরক
+nav_items	মেনু
+more	তেইব
+your_items	নিনি মেনু
+items_help	এদিত খাইনা বাগুই কাইসা মানুই ন তাপ খাই দি. কুতাল মানুই ফরম ন চলেআর খলাইও. চিনি দিশেস ন নাইউই নাইদি এবা নিনি মুং তেই ফত তয়পে খাইদি, পরিচে সেত খাইদি (0 উংখা কাহাম), আবনি উল আদ খাইদি. সালেস সুকাংনি সিমিন রেচরদ খলাইজাক মুংন বহরক চারগে খলাইজাকমানি.
+add_item	মানুই চাপদি
+new_item	কুতাল মানুই
+adding_item	কুতাল মানুই তুবুমানি
+editing_item	সুনামজাক
+save	মুথাংদি
+remove	কুথার খাইদি
+removed_items	কুমাজাক মানুইরক
+removed_help	রেসতরে উংমা জরাও আব সুকাংনি হাই খেন মেনু-ও কিফিলুই ফাইও — রাং, ফত তেই রাং. চিনি শেলফ নি দিশ রক ন জেফুরু ফান রুজাকয়া, আবনি বাগুই দিশ ন জেফুরু ফান তেইসা রুউই মান.
+restore_item	কিফিলুই তুবুদি
+empty_catalog	তাবুকব দিশ কুরুই. মেনু খুলকদি, কাইসা চামুং (মুং + রাং) রুদি, আবনি উল ওরদের রুদি.
+total	জত
+cash	রাং
+upi	UPI
+card	কারদ
+credit	বরক
+clear	কুথার
+ready_to_sell	বওক খাইনা বাগুই তিয়ার
+today_prefix	তিনি
+today_mid	তিনি
+owed	কতর
+round_word	কুচার
+back	ফাই
+sold_out	মানুই মানলিয়া
+restock	সতচক তুবুদি
+not_tracked	তরাচক উংয়া খ
+in_stock	সতচক ও
+marked_sold_out	মানজাকয়া হুনুই মারক খাইজাক
+add_upper	আদ
+na	N/A
+qty	উত/কুবাংমা
+unit_at	রাতে @
+actual	কুবুই
+applied	আপলয় খাইজাক
+note_ph	কক নারুকদি (চাজাকয়া)
+rounded	খুমুলুং
+split	খাকচাংমা
+send_kot	রহর দি KOT
+send_kot_to	রহর দি → {kitchens}
+send_kot_again	তেই KOT নি বাগুই দিশ তুবুদি
+send_kot_held	দিশ রক রমজাক — রহরনা বাগুই রমজাক য়া
+reprint_kot	পরিনত খাইজাক তেইসা
+reprint_kot_ok	{n} চামুং(রক) তেইসা চাপজাক খা · {slips} সলিপ(রক) → {kitchens}
+reprint_kot_needed	পুইলা KOT রহর দি — আবনি উল দিশেস তেই পরিনত চংজাক .
+reprint_kot_none_selected	জত রহরজাক দিশ ন সকিপ খলাইজাক — পরিনত খলাইনা বাগুই তাপ খাই দি .
+reprint_kot_client	{place} রহরজাকনা বাগুই তেইসা পরিনত খলাই দি ({n}) — Server ও পরিনত খলাই দি
+print_cancelled_kot	জত চানচেল খাইজাক পরিনত খাই দি
+print_cancelled_kot_ok	রাপজাক {n} সুকাকজাক চামুং(রক) · {slips} সলিপ(রক) → {kitchens}
+print_cancelled_kot_needed	পুইলা চানচেল উংজাক চামুংরক বাই তাবলে ফিয়গুই দি
+print_cancelled_kot_none	ও ওরদের নি মুঙুই মুংসা চামুং চানচেল উংয়া
+print_cancelled_kot_client	{place} রহরজাকনা বাগুই পরিনত রুজাকয়া ({n}) — চামুংনি পরিনতরক Server ও
+kot_banner	খাপাং সরাঙুই
+kot_banner_ph	বানের (কুরুই = কুরুই)
+kot_item_prefix	মানুই সুকাংনি
+kot_item_prefix_ph	উ.গ. [খাNCকুথাং খলাইজাক]
+kot_strike	দিশ নি মুং
+kot_strike_note	দিশ সুইজাক
+kot_strike_on	ওন
+kot_strike_off	ওফ
+bill_item_layout	মানুই নি লায়উত
+bill_item_layout_columns	খলম
+bill_item_layout_stacked	সতাচক খাইজাক
+bill_item_header	খলমনি বখরক
+bill_item_hdr_item	মানুই নি বখরক
+bill_item_hdr_qty	কতয় বখরক
+bill_item_hdr_price	মুচুংমা বখরক
+bill_item_hdr_amount	বখরক রাং
+bill_item_name	দিশ নি মুং
+bill_item_qty	কুবাংমা
+bill_item_price	দাম
+bill_item_amount	রাং
+bill_item_note	দিশ নি ককতুমা
+bill_item_col_gap	খলম গাপ
+bill_item_col_order	খলম নি ওরদের
+bill_item_col_sep	কলম নি কেরং
+bill_item_gap_tight	কুরাক
+bill_item_gap_comfort	কুচাংমা
+bill_item_gap_wide	কুপলাইসা
+bill_item_num_width	নমবার কলম
+bill_item_num_compact	কুচাক
+bill_item_num_comfort	কুচাংমা
+bill_item_num_wide	কুপলাইসা
+bill_item_num_align	নমবার আলিগন খাইজাক
+bill_item_gap_em	গাপ (এম)
+bill_item_qty_min	কুবাংমা (এম)
+bill_item_price_min	কুচাক রাং (এম)
+bill_item_amount_min	কুবাংমা রাং (এম)
+kot_item_qty_width	কতয় খলম
+kot_item_num_align	কুবাংমা সুলাইউই
+bill_total_qty_label	জত কুতয় মুং
+bill_total_subtotal_label	সুব জত লাবেল
+bill_total_grand_label	কুপলাইসা বেবাক লেবেল
+bill_total_paid_label	জত লাবেল রাং রুজাক
+bill_meta_pair	লিনে বাই শারে খাইদি
+bill_pair_alone	খরকসা
+bill_item_piece_on	ওন
+bill_item_piece_off	ওফ
+bill_total_qty	জত কুতয়
+bill_total_subtotal	সুব জত
+bill_total_grand	জত কতর
+reprint_incl	পরিনত উংখা
+reprint_skip	সকিপ খাইদি
+reprint_skip_meta	সকিপ খাইনানি পরিনত
+kot_dest_hint	নুং রুমানি পরিনতেরগ {kitchens} সেতিংস → পরিনতারক
+kot_sent_hint	লাসত KOT উংখা {kitchens}. তেই কাইসা তিচকেত নি বাগুই দিশেস রুনা বাগুই তাপ খাই দি — এবা আব হাই খেন KOT তেই উআইসা পরিনত খাই দি.
+kot_sent_printing	KOT {kitchens} ও রহরজাক খা — চাপজাক খা
+kot_sent_not_printed	KOT {kitchens} ও রহরজাক খা ফিয়া খুমুলুং খলাইজাক: {why}. কিতচেন ন সা দি, আবনি উল পরিনতের ন থিক খাইউই তেই পরিনত খাই দি.
+kot_sent_screen	KOT রহরজাক খা {kitchens}
+kot_queued_shop	KOT নি বাগুই {place} → {kitchens} মুথাংজাক; দুকান নি মানুই পরিনত খাইও
+kot_job_label	KOT নি বাগুই {place} → {kitchens}
+kot_job_reached	KOT নি বাগুই {place} সোক ফাই খা {kitchens}
+kot_unassigned	চামুং নক (সতাতিওন কুরুই)
+kot_unassigned_held	সতাতিওন কুরুই খে রমজাক {n} চামুং(রক) — রহরনা বাগুই লিনে-ও রমজাক য়া
+kot_station_ph	চানানোক
+kot_station_dd	চানানোক
+kot_station_dd_n	চামুং নক · {stations}
+kot_set_station	ও সতাতিওন ন সুনামদি
+kot_station_applied	সতাশন {n} চামুং(রক): {station}
+kot_station_cleared	সতাসন {n} চামুং(রক) নি সিমি সুকাকজাক খা: {station}
+kot_station_needed	পুইলা চামুং সুংমানি জাগা চংদি
+kot_station_not_allowed	চিতচেন ন সুনামনা বাগুই রুংজাকয়া: {station}
+kot_station_none	তাবুক জরাও চামুং সনামনানি জাগা কুরুই — চামুং সনামনানি জাগা এবা সেতিংস → জাগা · জাগারকনি থানি কাইসা চাপদি
+pos_tab_items	ফিয়াবা মানুইরক
+pos_tab_payment	রাং রুমানি
+hold_send	রমদি
+hold_send_on	খলাইজাক
+hold_send_meta	কুথাং — ওম হাই KOT .
+station_remove	সতাতিওন ন খিবি দি
+station_remove_ph	লিসত নি কাইসা সতাতিওন ন তাপ খাইদি আব ন সুকাকনা বাগুই
+station_removed	সতাসন সুকাকজাক খা: {name}
+settings_hub_title	সেটিং
+settings_hub_help	কাইসা জরাও কাইসা জাগান খলকদি — সচরল কুরুই, কলাইজাক চংমুং.
+settings_back	ফাই
+settings_sec_language	কক & রাং
+settings_sec_country	হাসতে & তাক্ষ
+settings_sec_tills	কুবুন মানুইরক
+settings_sec_brand	নিনি মুং
+settings_sec_units	উনিত & সুলাইজাকমা
+settings_sec_pickers	জাগা · সতাতিওন · তাক্ষ নি রাং
+settings_sec_printers	প্রিন্টার
+settings_sec_bill	বিল তেই KOT সুনামুং
+settings_sec_selling	সচেমে তেই ফালমানি
+bill_kot_tab_bill	বিল
+bill_kot_tab_kot	KOT
+settings_sec_alerts	সিচামুং
+alerts_help	নুংনি বাগুই সচরেএন ও বুসুক জরা তংনাই (ও লগিন).
+snack_secs_ph	সেকনদ (3-60, সুকাংনি 10)
+snack_secs_save	আলেরত জরা মুথাংদি
+snack_secs_saved	আলেরত জরা মুথাংজাক খা — {n} সেকন
+settings_sec_backup	বাচকুপ তেই কিফিলুই তুবুদি
+settings_sec_diag	বেমার সাইমানমানি
+diag_privacy_help	লগস রক ও দেভিচে ও তংনাই. সিরিজাক ককরক (PIN, ককথাইরক) উঙুই তংনাই. দেভিচে নি ফাতারনি পাচকাগে শারে খলাইনানি বাগুই নিনি সুকাংনি সুমাই তাংমানি নাংনাই জরা জরা — তেই কাইসা ফান ফালজাকয়া এবা খরকসা সুকন রুজাকয়া.
+diag_level	কুথার লেভেল
+diag_level_error	চবা
+diag_level_warn	হুসনিং
+diag_level_info	Info
+diag_level_debug	Debug
+diag_support_start	30-মিনিত চুবাচু জরা চেংদি
+diag_support_stop	চুবাচু পানদা পাই দি
+diag_support_started	চুবাচুনি জরা — Debug ককতুমা 30 মিনিতনি বাগুই
+diag_support_ended	চুবাচু পানদা পাই খা
+diag_export_local	ফাতারনি চপয় তুবুদি
+diag_export_local_done	{path} ও থানি-থানি থুংমুং তিয়ার উংখা — কাইসা চপয় ন বাহাই খে তনাই আবন চংদি
+diag_approve_send	ও মানুই ন শারে খাইনানি রুংদি
+diag_send_help	সুমাই উংখা কাইসা পাচকাগে, আবনি উল জরা পাইউই থাঙ. তেমপরারয় — আবন সুনামনা বাগুই এবা সুনামনা বাগুই সিমি সে সুনামজাক. তেই খরকসা বাই শারে খলাইজাকয়া. লিনুক্ষ, উইনদউস, মাচস, তেই আনদরইদ ও সামুং তাংনাই.
+diag_send_approved	কাইসা পাচকাগে নি বাগুই রুনা বাগুই সুমাই তাংজাক খা (কুপলাইসা জরা পাইনাই)
+diag_export_send	রুচাপমুং সুনামদি (সুনামজাকনা নাংনাই)
+diag_export_send_done	{path} ও পাচকাগে তিয়ার উংখা — বাহাই খে নারুকনা নাংন চং দি, আবনি উল Kumkaj চুবাচু ন সিমি রহর দি
+diag_save_bundle	নাইকলমানি চপয় ন মুথাংদি
+diag_bundle_saved	বেমার সুংমানি চপয় {path} ও মুথাংজাক খা
+diag_bundle_failed	দফানি চপয় ন মুথাঙুই মানলিয়া — তেইসা তরয় খাইদি
+diag_clear	কুচাক নাইমানি লগস
+diag_cleared	বেমার নাইমানি লগস সুকাকজাক খা
+sidebar_settings	সিদে বার
+sidebar_settings_help	সিদে নি রাইল নি হাই খেন ইচন রক. ওরদের খুলাইনা বাগুই কাইসা রউ দরাগ খাইদি. সুইতচ ন ফলিপ খাইউই ফুনুকদি এবা রুদি. সেতিং তেই লচক জত জরা বার ও তংনাই.
+sidebar_always_on_short	জরা জরা
+sidebar_back_settings	ফাই
+sidebar_shown	ফুনুকজাক খা
+sidebar_hidden	হুকজাক
+sidebar_always_on	জরা জরা বার ও
+sidebar_shown_hint	সিদে নি রাইল ও ফুনুকজাক/তউই তাবস
+sidebar_hidden_hint	বার নি থানি চুকজাক
+sidebar_menu_items	মেনু তেই মানুইরক
+sidebar_enable_all	জতন সুনামদি
+sidebar_disable_all	জত ন সুকাক দি
+sidebar_order_saved	সিদেবার নি দাগিমুং মুথাংজাক খা
+sidebar_visibility_saved	সিদেবার নুকজাকমা মুথাংজাক খা
+amounts_hide	হুকদি
+amounts_show	পুইলা
+printers_none_hint	পুইলা ও মানুই-ও পরিনতের সুনামদি, আবনি উল বিল এবা চামুং নক-ও চাপদি
+counter	লেখাজাক
+dine_in	চামুং-চামুং
+takeaway	তুই থাংমানি
+order	অর্ডার
+tables	মেজা
+kitchen	চানানোক
+sales	ফালমানি
+sales_refunds	ফালমানি তেই রাং কিফিলুই রুমানি
+day_close	সাল উংখা
+reports_expenses	বানক নি বিজাপ তেই প&ল
+nav_reports	রিপোর্ট
+nav_settings	সেটিং
+nav_lock	লচক
+no_sale_yet	তাবুকব ফালজাকয়া
+favorites	হামজাকমা
+favorites_help	নুং কুবাংমা জরাও ফালনাই মানুইরক, নিনি লগিন নি বাগুই সাভে খলাইজাক. বিল ও কাইসা আদ খাইদি, এবা নিনি লিসত ন সুনামদি জত মানুইরকনি বিসিংতুই.
+your_favorites	নিনি হামজাকমা
+all_items	জত মানুই
+frequent	কুবাংমা
+added_items	কুপলাইসা মানুই(রক)
+added_items_empty	ও ওরদের ও মুংসা ফান কুরুই — জত মানুইরকনি বিসিঙ কাইসা দিশ এবা কাইসা রাংচাকনি বিসিঙ কাইসা দিশ আদ খলাই দি.
+frequent_config_help	কুবাংমা বিল উঙুই থাংমানি দিশেস ফালজাক. সেত খাইদি বুসুক সাল নাইনা বাগুই তেই বুসুক দিশ ফুনুকনা বাগুই.
+frequent_days_ph	সাল (1)
+frequent_limit_ph	মানুই (24)
+frequent_apply	আপলয় খাইদি
+frequent_saved	কুবাংমা জরা: পাইথাগ {d} সাল(রক), সাকা {n} — {c} চামুং(রক)
+frequent_empty	ও জরাও ফালজাক য়া খ তাবুক জরা — বিল সেতলে খলাই দি (সেতিংস হাই হুনুই সা ফুরু ₹0 উঙুই মান) তেই বহরক ও জাগাও ফুনুকনাই.
+zero_sales	জের-মানুই ফালমানি
+zero_sales_help	₹0 নি রাং বাই চামুং চানা রু দি তেই বিল ₹0 ও রাং রু দি (হামবাই / মালখুংনি মুচুংতুই). দেফাউলত বাই খে ওন উং খা আবনি বাগুইন কুবাংমা জরা তেই সালনি বিজাপরগ কুরুই চভের তাবুকব নুকজাগ.
+zero_sales_on	₹000 রুদি.
+zero_sales_off	মুচুংমা রাং
+zero_sales_saved_on	জের-মানুই ফালনানি রুংজাক
+zero_sales_saved_off	সালেস নি পরিচে ₹000 নি সাকা উংনা নাংনাই.
+floor_areas_help	জাগা উংখা রওম এবা জনে উংখা হা সাকাও (চামুং চানা, পারচেল, আচ ...). পুইলা কাইসা জাগা রুদি, আবনি উল তাবলে রুদি — কাইসা জাগা খে থুংমানি সাকাও কাইসা গরউপ.
+area_new_ph	কুতাল জাগা / নক (এ.গ. আচ, বাগান)
+add_area	আরেআ সুনামদি
+area_added	জাগা “{name}” তিয়ার উংখা — আবনি বিসিঙ তাবলেরক চাপদি
+no_favorites	তাবুক জরাও হামজাকমা কুরুই — লিসত নি মানুইরকন আদ খলাই দি.
+add_to_bill	বিল বাই চাপদি
+added	সুবাংজাক
+owes_word	উংখা
+selected_word	চংজাক
+chip_clear_credit	চলেআর — করেদিত এবা সুকাং রুদি .
+chip_missing_customer	চংজাক বরক কুমাজাক — তেইসা তুবুদি
+chip_no_customer	তাবুক জরাও বরক কুরুই — মুং সুইদি, হাখে চরেদিত ন তাপ দি .
+credit_summary_fmt	{} বরক · রাং রুজাক {} · সুকাং রুজাক {}
+recent_label	তাবুকনি:
+kot_new_waiting	কুতাল — নাইসিঙুই তংমানি
+kot_preparing	তিয়ারি খলাইউই তংমানি
+kot_ready_serve	তিয়ারি — আবন সেবা খলাই দি
+kot_done_cap	খলাইজাক
+kot_cancelled	চাNCখরকসা
+kot_start_btn	চেংদি
+kot_mark_ready	মারক তিয়ার উংখা
+kot_done_btn	কুথার
+table_free	কুপলাইসা — ওরদের চেংনা বাগুই তাপ খাই দি
+start_order	ওরদের চেংদি
+open_bill	বিল খলবুই
+collect_payment	রাং থুমদি
+table_running	কুলাইউই তংমানি
+payment_pending	রাং রুমানি নাইসিঙুই তঙ
+collect_at_counter	চউনতের ও থুমদি
+inventory	মানুই মানুই
+inventory_stock	মানুই মানুই তেই সতচক
+branches	বরানচ
+branches_org	বরানচ তেই ওরগ
+credit_customers	পারতয় রক (খাতা তেই মানুই তুবুনাই)
+customer_name_ph	পারতয় নি মুং
+new_customer_ph	কুতাল পারতয় নি মুং
+item_name_ph	মানুই নি মুং (উ.গ. Masala Dosa)
+item_price_ph	দাম
+start_template	মানুই
+team	তেআম
+team_pins	তেআম ও PIN
+my_pin_settings	আনি PIN
+settings_hub_help_my_pin	ও দেভিচে ও সিগন খাইজাক বরকনি বাগুই উনলচক PIN সুলাই দি.
+team_self_help	কাইসা সিগন-ইন: কুতাল PIN, কুতাল পাসুওরদ, এবা খরকনুই. নিনি থানি তংমানি মানুইরকন রুনা বাগুই কাইসা বক্ষ বলানক খে তনুই রুদি. ওউনের ন সুংদি, নুং জুদা জুদা সচরেএন এবা রিঘতস নাংখা দে.
+backup_settings	বাচকুপ তেই সুনামুং
+lock_app	আপ ন লচক খাই দি
+pick	পিচক
+select	চংদি
+advance	সুকাং থাংদি
+owner	মালিক
+staff	কামবরক
+photo	ফত
+auto	Auto
+prev	সুকাংনি
+next	উল
+ok	OK
+this_shop	Server
+extra_till	Client
+off	ওফ
+tables_kitchen	মেজলা তেই চামুং নক
+server	Server
+client	Client
+language_currency	কক & রাং
+language	ককবরক
+choose_language	নিনি ককন চংদি .
+language_setup_hint	ও দেভিচে’নি ককন তউইউই তংদি, এবা সাক সাক কাইসা চংদি.
+lang_follow_platform	সামান কক
+lang_pick_user	ককথাই চংদি
+lang_platform_now	দেভিচে নি কক তাবুক
+selected_language	চংজাক
+continue	তুলাংদি
+this_device	ওহ দেভিচে
+device_use_q	ও দেভিচে ন বাহাই খে উসে খলাই নাই?
+last_server_mode	Server উংখা — সুকাং থাংনা বাগুই তাপ দি
+last_client_mode	Client উংখা — সুকাং থাংনা বাগুই তাপ দি
+choose_server	সেরভের চংদি
+choose_server_hint	কাইসা তংনাই সেরভের ন খলক দি, এবা তেই কাইসা সামুংনি বাগুই কাইসা সুনাম দি.
+create_new_server	সেরভের কুতাল সুনামদি
+open_server	খলকদি
+new_server_name_ph	সেরভের নি মুং কুতাল (চাজাক)
+server_remove_pin_ph	মালিক PIN কাইসা সেরভের ন সুকাকনা বাগুই
+only_owner_remove_server	নকফাং সিমি সে সেরভের ন সুকাকুই মান
+owner_pin_remove_server	ও সেরভের ন সুকাকনা বাগুই মালিক PIN নাংনাই
+device_setup_help	Server বওক রক ন আর তনুই তঙ. Client জরা উঙুই Server উংনাই.
+app_template_heading	Rajdhani আপ নি মুং
+app_template_blurb	Rajdhani নি মেনু ন লআদ খাই দি; মালিক Zahir (জাহির), Admin Asif (আসিফ, PIN 1111), সামুং তাংনাই Nawaz (নাউআজ, PIN 0000); FOH বুখাকনি; হউরস নি উল হিসতরয় উংনাই (তেই বাচকুপ ও তাবুক সুকাং উংনাই); তিনি সতরিপ খলাই দি; কুচাক KOT + কুচাক তরায় নি বাগুই কাহাম মারগিন. সিদেবার নি পেএর রক সেতিংস ওহ তেইসা ওন খাই মান নাই.
+app_template_apply	Rajdhani আপ নি মুং
+app_template_skip	তাবুকনি বাগুই সকিপ খাইদি
+app_template_status	Server তিয়ার — Rajdhani আপ নি সুমাই তাংদি, এবা য়াকার দি
+app_template_importing	সামুং খলাইও {title}...
+currency	রাং
+backup	বাচকুপ
+use	বেবহার
+dont_use	তা উসে খাইদি
+add_branch	বরানচ চাপদি
+add_conversion	সুলাইমুং চাপদি
+add_dishes_items	থালা তেই মানুইরক তুবুদি
+add_item_plain	মানুই চাপদি
+add_note	নতে চাপদি
+add_opening_balance	কুতাল বালানচে তুবুদি
+add_staff	সামুং তাংনাইরক তুবুদি
+add_station	সতাসন চাপদি
+add_table	মেবল চাপদি
+add_unit	উনিত চাপদি
+add_use_name	ও মুংন চাপদি / সুনামদি
+allow_extra_tills	কুবাংমা তিলস রুদি
+amend	সুলাইউই
+apply_country_pack	হাসতেনি পাচক রুদি
+datetime_appearance	সাল & জরা নুকজাকমা
+datetime_appearance_help	বুখুকরক বিসি-সুংমুং RFC3339 নি বিসিঙ তনুই তঙ. ওব বিল, KOT, রেপরত, তেই সচরেএন-ও সাল তেই জরা বাহাই খে নুকজাক আব সিমি সে সুলাইউই মান.
+datetime_example	উধাহরন তাবুক: {ex}
+date_order	সাল ওরদের
+date_order_dmy	D/M/Y
+date_order_mdy	M/D/Y
+date_order_ymd	Y-M-D
+time_format	জরা
+time_format_24h	24-ঘন
+time_format_12h	12-ঘন
+attach_bill_photo	বিল নি মাংপিলি চাপদি
+attach_pdf	কুথালাই দি PDF
+attach_photo	ফত চাপদি
+attachments_last_expense	কুথার মানুইরক (পাইথাগ রাং খারমানি)
+bank	বানক
+bank_in	বানক ও
+bank_out	বানক নি ফাতার
+bank_reconciliation	বানক নি কুথালাইমুং (নিনি বানক নি ককতুমা বাই তিচক খাই দি)
+bank_to_till	বানক → জরা
+book_add_dish	বিজাপ — চামুং / মানুই তুবুদি
+book_opening_credit	বিজাপ — চরেদিত ফুআরমানি
+branch_name_sell_ph	বরানচ নি মুং ফালনানি
+bring_my_book	আনি বিজাপ তুবুদি
+business_tax_id_ph	বিসিংনি তাক্ষ ইদ
+caption_bank	বানক
+caption_bills	বিল
+caption_outstanding	খুমুলুং
+caption_payments_today	তিনি রাং খলাইজাক
+caption_today	তিনি
+card_amount_ph	চারদ নি রাং
+cash_amount_ph	রাংনি রাং
+cash_memo	রাং নি মেম
+choose_icon	ইচন ন চংদি
+choose_logo	লগ চংদি
+clear_icon	ইচন ন সুকাক দি
+clear_photo	কুথার ফত
+copy_day_book_csv	কপি সালনি বিজাপ CSV .
+copy_day_close	চপয় সাল উংখা
+copy_items_csv	কপি মানুই CSV
+copy_outstanding_csv	কপি কাহাম CSV
+copy_parties_csv	পারতয় রক CSV
+copy_party_ledger_csv	পারতয় নি বিজাপ কপি খাইদি CSV
+copy_receipt	রাসিত নি চপয়
+share_whatsapp	উহাতসাপ ন শারে খাইদি
+lan_pages_heading	Wi‑Fi নি বিসিংনি বিসিঙ
+lan_pages_help	ও দুকান’নি Wi‑Fi ও, ফাতারনি ফাইনাইরক ফুনুকমানি বআরদ, তকেন, এক্ষপ, কিওসক, মেজা QR, তেই উআনসুকমুংনি বাগুই সামুং খলাইও. মবিলে নি দাতা ও গুএসত রক ন চলউদ নি উল নাংনাই. ইনতেরনেত তংফুরু চারদ নি তেরমিনাল / রাং রুনানি লিনক উংনাই — আব চউনতের ন মুংসা জরাব বলচক খলাই য়া.
+diag_send_heading	ও মানুই ন শারে খাই দি
+kot_dest_heading	চামুং সুংমানি জাগা
+optional_login_heading	চংমানি লগিন
+rights_heading	হকুম
+ops_panel	থানি ওপস
+crm_heading	ফাইনাইরক তেই ককতুমা
+crm_help	আচাইমা সাল, খাকচাংমা, সামুং খলাই য়া তেই কতর কতর ফাইনাইরক — কুএউএ SMS এবা উহাতসাপ নি মুচুংতুই. মেসাগে নি বিসিঙ {name} তেই {points} ন সুনামদি. মালিক তাপ রহরনাই; মুংসা ফান সাক বাই সাক বলাসত উং য়া.
+crm_queue_sms	খরাং SMS
+crm_queue_wa	উহাতসাপ নি কুএউএ
+crm_seg_bday_week	আচাইমা সাল হাপতা
+crm_seg_bday_month	আচাইমা সাল তাল
+crm_seg_phone	ফনে বাই
+crm_seg_loyalty	খাকচাংমা
+crm_seg_inactive	কুতাল উংয়া
+crm_seg_top	কাহাম রাং খারনাই
+birthday_ph	আচাইমা সাল (ম-দ এবা য়য়-ম-দ)
+crm_message_ph	খাপাং সরাঙুই আচাইমা সাল {name}! নুং {points} পইনত মানখা.
+till_apply_redeem	বিল নি সাকাও আপলয় খাইদি
+till_clear_redeem	কুথার রেদেএম
+till_wallet_topup	তপ উপ খাই দি
+till_issue_voucher	ভউচের রুদি
+till_points_ph	পইনত রক ন সুকাকনা বাগুই
+till_wallet_ph	উআলেত নি রাং খারুই নাই
+till_voucher_code_ph	বাউচের নি চদে
+till_voucher_amt_ph	ভউচের নি রাং (কুরুই = বেবাক)
+till_wallet_topup_ph	তপ-উপ রাংনি রাং
+till_voucher_issue_amt_ph	ভউচের নি রাং রুদি
+till_voucher_issue_code_ph	ভউচের নি কুতাল চদে
+split_evenly	কুথার খে খাইদি
+waitlist	নাইসিঙুই তংমানি লিসত
+fire_course	হরনি চউরসে
+hold_item	রমদি
+waiter_call	উআইতের ন রিংদি
+waitlist_add	নাইসিঙুই তংমানি লিসত ও তুবুদি
+floor_view_grid	গরিদ
+floor_view_layout	নকসা
+floor_layout_x	X
+floor_layout_y	Y
+floor_layout_w	W
+floor_layout_h	H
+floor_layout_save	লায়উত ন মুথাংদি
+floor_layout_open	মেজা খুলকদি
+floor_layout_edit	লায়উত সুলাইদি
+floor_layout_pick	তাবলে ন তাপ খাই দি বিনি লায়উত ন সুলাইনা বাগুই
+floor_layout_saved	মেবল নি সুনামুং মুথাংজাক খা
+floor_layout_nudge_left	← 20
+floor_layout_nudge_right	→ 20
+floor_layout_nudge_up	↑ 20
+floor_layout_nudge_down	↓ 20
+sibling_pickers_help	উনিত হাই খে ওন/ওফ ন তাপ খাই দি — সালবরুম পিচকেরস রকনি থানি জাগা, সতাতিওন, তেই তাক্ষ নি রাং ন রুদি; পাচক নি সুকাংনি তংমুং.
+bulk_price_apply	বুলক রাং রুদি
+card_terminal_optional	কারদ থাংমানি / রাং রুনানি লামা (ইনতেরনেত তংফুরু চংমানি)
+copy_report	রিপরত চপয় খাইদি
+counted_cash_ph	দরাউএর ও রাং লেখাজাক
+country_tax	হাসতে & তাক্ষ
+tax_chrome	2019 জরা তাক্ষ নি লেবেল.
+tax_chrome_help	ওফ উংফুরু, ওরদের দেসক GST/তাক্ষ রাংনি লিনে তেই GST-নি-রাংনি জাগারকন রুখা. তাক্ষ নি রাং তেই হাসতে & তাক্ষ নি রাংরক তঙুই — জেফুরু ফান লাবেল ন কিফিলুই রুদি. Rajdhani আপ নি তেমপলাতে ন ওফ খাইউই চেংনাই.
+tax_chrome_on	পুইলা
+tax_chrome_off	হুকদি
+tax_chrome_saved_on	2019 জরা তাক্ষ নি লেবেল.
+tax_chrome_saved_off	তাক্ষ নি মুংরক 2019 জরা চুকজাক.
+tax_invoice_till	তাক্ষ নি বিল 2019 জরা.
+tax_invoice_help	ওফ উংফুরু, বিল রক রাং নি সুইমুং সিমি সে উংনাই তেই রাং নি সুইমুং নি চিপস রক ওরদের দেসক ও রুজাক. Rajdhani আপ নি তেমপলাতে ও ওফ বাই সুকাং উংনাই — তাক্ষ নি রাং ন তেই উআইসা তুবুনা বাগুই জেফুরু ফান ফুনুক দি.
+tax_invoice_on	পুইলা
+tax_invoice_off	হুকদি
+tax_invoice_saved_on	তাক্ষ নি বিল 2019 জরা.
+tax_invoice_saved_off	তাক্ষ নি বিচে খুমজাক — রাং নি মেম সিমি সে
+pay_methods	রাং রুমানি লামা
+pay_methods_help	তাকে রাং রুমানি সাকাও চিপস নুকজাকনাই. চাশ জরা জরা তংনাই. Rajdhani আপ নি তেমপলাতে রাং বাই সিমি সে চেংজাক — UPI / কারদ / করেদিত / সপলিত ন আর কিফিলুই রুদি.
+create_backup	বাচকুপ সুনামদি
+credit_limit_heading	করেদিত নি সিমি (চংজাক / মুং রুজাক বরক)
+day_close_summary	সালনি কুচাক কুফুর
+delete_party	চংজাক পারতয় ন সুকাক দি
+delivery	তুবুমানি
+done_open_books	দনে — বিজাপ ফুআরুই .
+drawer_count	দরাউএর লেখামুং (চাজাক)
+expense_heading	খারজা
+export_day	ফাতার রহরমানি সাল
+extra_note_bill_ph	ও বিল/ফালমানি ককন তেইব সুইজাক
+extra_note_expense_ph	পইত খারমানি কক কুবাং সুইজাক
+extra_tills_heading	কুবাংমা তিলস
+other_devices_help_heading	কুবুন মানুইরক সেত খাইদি
+other_devices_help	ও মানুই-ও (Server): কুবুন মানুই-ও → এক্ষতরা তিলস-ও রুজাক. পাইরিং চদে তেই Wi‑Fi নি কক ন নাইউই নাই. তাপ খাই দি, আব নুকজাক খে তেই কুবুন দেভিচে রক ন চনেচত উংনা বাগুই. কমপিতার নি সাকাও, ও কমপিতার বাই সুকাং উংদি. তেই কাইসা কাইসা মানুই-ও: আপ ইনসতাল খলাই দি, Client মদে চং দি, দুকান নি সেরভের ন নাইদি (এবা আদরেস সুই দি), পাইরিং চদে ন সুই দি, তাবুক পাইরিং খাই দি. ওরদের রক দেভিচে ও উআইত খাইও Wi‑Fi উঙুই থাংখে তেই Server উঙুই থাংখে তেই থাংনাই. কিতচেন নি রাংচাকরক Server (সেতিংস → পরিনতারক) ও সেত খলাইজাক — এক্ষতরা তিলস রক আর KOT রহরনাই.
+forget_shop	ও দুকান ন পকদি
+goods_received	মানুই মানখা
+import_day	ফাইমানি সাল
+import_items_csv_plain	ফাইমানি মানুই CSV...
+import_parties_csv	পারতয় তুবুদি CSV...
+item_name	মানুই নি মুং
+kitchen_printing	প্রিন্টার
+login_id_ph	সুনামনাই মুং
+mark_cleared	মারক সুকাকজাক খা
+new_party_clear	কুতাল পারতয় (কুথার ফরম)
+new_party_kind_supplier_ph	কুতাল পারতয় নি (ফাইনাই)
+next_country	নেক্ষত হাসতে
+next_order	তেই কাইসা ওরদের (কুথার দেসক)
+note_gstin_ph	নতে / GSTIN / সুমাই তাংমানি মুইতু
+notes_attach_party	নতেস তেই চাপজাকমারক (চংজাক বরক)
+notes_attach_sale	নতেস তেই চাপজাকমারক (চংজাক ফালমানি)
+on_account_ap	খাতাও (আপ)
+org_optional_ph	দফা (চংমানি)
+paid_by	রাং রুজাক খা
+paid_now	তাবুক রাং রুজাক
+pair_now	পাইর তাবুক
+pairing_code_ph	কদ পাইজাক
+party_name_selected_ph	পারতয় নি মুং ( এবা চংজাক উসে)
+password_ph	পাসুওরদ
+pay_ap_card	আপ চারদ রাং রুদি
+pay_ap_cash	আপ ন রাং রুদি
+pay_ap_heading	চুং বহরকন তাম রুনা নাং আব রুদি (আপ)
+pay_ap_upi	আপ রাং রুদি UPI
+pay_selected_heading	চংজাক রাং রুদি (রাং রুমানি / সুকাং নাইমানি)
+pick_from_items	চিনি মানুইরকনি বিসিংনি পিচক
+prev_country	সুকাংনি হাসতে
+print_open	পরিনত / ফিয়কদি
+reason_amend_ph	সুলাইমানি কারন / ভইদ / রাং কিফিলুই রুমানি
+reason_note_ph	কাহাম / ককতুমা (কুমাজাক, লেখাজাক, ...)
+record_day_close	রেচরদ সাল উংখা
+refresh_from_shop	দুকান নি কুতাল তুবুদি
+refund	রাং কিফিলুই রুদি
+remove_selected	চংজাকরকন সুকাকদি
+request_bill	বিল সানমানি
+restaurant_name_ph	চামুং চামুংনি মুং (চাজাক য়া)
+restore_backup	বাচকুপ কিফিলুই তুবুদি
+role_both	বহরক
+role_admin	Admin
+role_cashier	রাং থুমনাই
+role_customer	গ্রাহক
+role_manager	মানাজের
+history_retention	বিয়ালনি ককতুমা
+history_retention_help	আউত-কুথার উংনাই কুমাজাক মানুইরক তেই KOTস. মেনু, সামুং তাংনাইরক, তেই সুনামুংরক তংদি. তাবুক বেবাক সুলাইমানি রউরকন সুকাকদি তেই সেতুপ খলাইউই তনুই তঙ.
+history_off	তংদি
+history_day_close	সাল কুমাজাক
+history_after_hours	জরা নি উল
+history_hours_ph	জরা (1-168, সুকাংনি 4)
+history_hours_save	জরা মুথাংদি
+history_clear_now	তাবুক হিসতরয় ন সুকাক দি
+history_cleared	বিয়ালনি ককতুমা সুকাকজাক খা — সেতুপ নারুকজাক খা
+history_retention_saved	হিসতরয় সুকাকমানি মুথাংজাক খা
+history_hours_saved	হিসতরয় জরা মুথাংজাক
+history_owner_only	ওউনের এবা Admin সিমি সে হিসতরয় ন সুকাকুই মান
+rollup	রল উপ
+save_brand	বরানদ মুথাংদি
+save_business_id	বুসিনেস ইদ ন মুথাঙুই তন দি
+save_business_name	বুসিনেস মুং মুথাংদি
+save_features	মুথাংদি
+save_features_named	মুথাংদি {name}
+save_features_ok	{name} নি বাগুই মুথাংজাক সেতুপ
+save_names	মুচুংতুই মুং মুথাংদি
+second_way	দফানি লামা
+server_ip_ph	ইপ (উ.গ. 192.168.1.10)
+set_credit_limit	পারতয় নি বাগুই লিমিত রুদি
+set_login_selected	চংজাকরকন লগিন খলাই দি
+set_login_named	{name} ও লগিন খাই দি
+shop	দুকানি
+show	পুইলা
+spreadsheet_csv	সুনামজাক বিজাপ (CSV)
+start_fresh	কুতাল খে চেংদি
+stop_extra_tills	এক্ষতরা তিলস রক ন রুদি
+floor_cols_ph	খলম
+floor_cols_fit	সচরেএন ন সুনামদি
+floor_cols_fit_sub	{n} আর উংখা
+floor_cols_fits	উংখা
+floor_cols_scroll	বুখাক খে সুপরাক দি
+floor_cols_min	কলম: 1 নি সলাই কুবাং — এবা সচরেএন বাই থুংনা বাগুই খালি রুদি
+floor_zoom_auto	Auto
+floor_zoom_out	জওম খাইউই
+floor_zoom_in	জওম খাইদি
+backup_auto	সাল সালসা সাক বাই সাক বাচকুপ খলাইও · সুকাংনি {when} · সুকাংনি 14 সাল {dir} ও তনজাক.
+backup_auto_none	সালবরুম বাচকুপ উঙুই তংনাই — পুইলানি উঙুই তংনাই.
+backup_copy_to	চপয় রকব {dir} ও থাংনাই.
+backup_copy_btn	তেই বাচকুপ রক ন কাইসা ফলদা ও চপয় খাই দি...
+autostart_off	ও চমপুতের বাই চেংদি
+autostart_on	ও চমপুতের বাই চেংজাক ✓ — থুংনা বাগুই তাপ দি
+autostart_done_on	ও চমপুতের তাবুক আপ ন সুকাং সুকাং খে ফুআরুই রুখা — দুকান নি সেরভের পউএর চুত উংমানি উল কিফিলুই ফাইখা.
+autostart_done_off	ও চমপুতের আপ ন ​​সুনাম ফুরু খে আব ন সুনামুই মান.
+device_forgotten	দুকান ও দেভিচে ন মুইতু কুরুই উংখা — দকান নি তাবুক নি চদে বাই পাইরিং খলাই দি. ওরদের রক ন উআইত খাই তংমানি.
+lan_offline	দুকানি সেরভের সোক ফাই য়া
+forget_device	পগুই থাংদি
+last_seen	নুকজাক
+copy_pair_code	জত কথমা কপি খাই দি
+new_pair_code	কুতাল পাইরিং চদে
+pair_finishing	পাইর পাইউই... দকান নি বিজাপ ন সুনামুই
+pair_opening	তিল খুলাইজাক...
+pair_copied	পাইরিং চদে চপয় খাইজাক খা
+kot_waiting	রহরনা বাগুই নাইসিঙুই তঙ
+lan_offline_waiting	দুকানি সেরভের সোক ফাই য়া · {n} নাইসিঙুই তংমানি
+lan_connecting	দুকান বাই কুরুঙুই তংখা...
+lan_live	কুথাং
+lan_sending	{n} রহরুই তঙ
+lan_sign_in_to_send	{n} রহরনা বাগুই তেইসা সিগন ইন খাইদি
+lan_pair_again	ও মানুই ন তেইসা পাই দি
+lan_update_app	আপ ন কুতাল খলাই দি — ও মানুই তেই দুকান নি সেরভের নি জুদা জুদা ভেরসিওন তঙ .
+allow_firewall	কুবুন দেভিচে ন জরা রুদি
+firewall_blocked	ও চমপুতের নি ফিরেউআল বুইনি মানুইরকন বলচক খলাইউই তঙ — তাপ দি তেই কুবুন মানুইরকন কুথা রুদি.
+firewall_waiting	আদমিন নি কক ন নাইসিঙুই তঙ...
+lan_join_help	তেই কাইসা মানুই-ও: Client মদে → দুকান নি সেরভের ন নাইদি (এবা {addr} সুইদি) → পাইরিং চদে {code}.
+lan_pair_status	Wi‑Fi {addr}
+lan_join_help_no_addr	আদরেসনি বাগুই ও দেভিচে ন Wi‑Fi বাই কুরুঙুই রুদি.
+lan_no_address	তাবুক জরাও Wi‑Fi আদরেস কুরুই — Wi‑Fi নি দুকান বাই কুরুঙুই তংদি.
+lan_not_listening	সামানরকন য়াচাকয়া (পরত {port} সামুং কুরুই). আপ ন ​​রেসতারত খাই দি.
+lan_tills_off	এক্ষতরা তিল রক ওফ উংখা. বহরক ন তেই কাইসা দেভিচে ন জইন খুলাইনা বাগুই রুদি.
+paired_with	জরা উংখা · {url}
+not_paired	পাইর উংয়া
+choose_device_use	Server এবা Client ন চংদি.
+paired_note	জরা উংখা. ফালনা বাগুই উনলচক খাইদি, এবা কুতাল উংনা বাগুই রেফরেশ খাইদি.
+last_update_at	পইত খলাইমানি: {time}.
+pair_intro	সেরভের ন নাইদি, এবা বিনি আদরেস তেই পাইরিং চদে ন সুইদি.
+queue_waiting	দুকান সোক ফাইনা বাগুই নাইসিঙুই তংমানি ({n}):
+queue_tries	{n} জরা তরয় খাইখা · পাইথাগ আনসুএর: {e}
+save_backup_copy	কাইসা বাচকুপ চপয় নারুকদি...
+backup_copy_saved	বাচকুপ চপয় উংখা — ও মানুই নি য়াকনি (USB সতিচক এবা তেই কাইসা মানুই) সুকাক দি.
+backup_copy_overdue	{n} সাল জরা বাচকুপ চপয় কুরুই উংখা — সেতিংস → বাচকুপ
+backup_copy_failed	বাচকুপ চপয় আর রুউই মানলিয়া — তেই কাইসা জাগা তুবুদি .
+clock_off	ও মানুই নি জরা {min} মিন দকান নি সেরভের নি ফাতার তঙ — ও মানুই নি জরা ন থিক খে সেত খাই দি
+printers_heading	প্রিন্টার
+printers_help	পরিনতের ন নাই দি, কাইসা ন তাপ খাই দি, আবনি উল তেসত পাগে ন আব দেভিচে ও সিমি পরিনত খাই দি. বিল সুইনাইরক: বিল তেই KOT সুনামানি → বিল. কিতচেন নি পরিনতের: কিতচেন → কিতচেন নি সতাতিওন রক (সুকাং সুকাং সতাতিওন রুদি — ফিনদ সতাতিওন সুনাম য়া).
+printers_host_only	পরিনতের রক ন দুকান নি মানুই (Server) ও সেত খলাইজাক. ও তিল বিল তেই KOTরকন আর রহরনাই — Server-ও তংনা বাগুই মানুই / রুদি / রুদি. তেসত পাগে তেই বিল চাপমানি সিজে Server ও থাংদি.
+printers_find_heading	পরিনতের নাইদি
+printers_find_tip	ও দেভিচে ন সচান খাইউই লিসত ন কুতাল খে তনুই তঙ.
+printers_pool_heading	প্রিন্টার
+printers_pool_tip	ও দেভিচে ন সচান খাইউই ও লিসত ন কুতাল খে তনুই তঙ.
+printers_pool_empty	(তাবুকব কুরুই — নাইদি হুনুই তাপ দি)
+printers_routes_help	সামুং তাংনাই সয়সতেম সুকাংনি সিমিন সাইমানজাক পরিনতেরকন তুবুদি. বিল & KOT ফরমাত নি বিসিংতুই খরকসা খরকসান রাং রুদি.
+printer_assign_dd	কুবুই সুইনাই: {place}
+printer_assign_pick	পরিনতের কুবুই চংদি
+printer_profile_heading	নকসা
+printer_send_heading	তুবুমানি
+vp_delivery_heading	তুবুমানি
+vp_delivery_help	ও সুকাংনি সুইনাইরক বাহাই খে সামুংরক রহরনাই — ওস নি সুইজাক, কুতাল বয়তে, এবা ESC/POS. সলিপ নি মানুই (সুকাংনি কতরমা, খুমুলুঙ, মারগিন) বিল / KOT সুনামুং বাই চংজাক, ওর য়া.
+vp_type_size_heading	সিজে তয়পে
+vp_wrap_heading	উরাপ নি কতরমা
+vp_margin_heading	মারজিন
+vp_delivery_spooler	ওস নি সুইজাক (সিসতেম ন সুকাকনাই)
+vp_delivery_raw	সামান নি বাগুই কুতাল বয়তেস
+vp_delivery_escpos	ESC/POS কুচাংমা দাগিমুং
+virtual_printer_new	কুতাল সুনামজাক পরিনতের
+virtual_printer_selected	“{name}” ন সুলাইউই — সুলাইনা বাগুই লিসত নি তেই কাইসা ন চলিচক খাই দি
+virtual_printer_tap_list	আবন সুলাইনা বাগুই লিসত ও কাইসা সুকাংনি পরিনতের ন তাপ খাই দি
+config_layout_portrait	মুতাই
+config_layout_landscape	হায়ুংনি নাইথকমা
+config_send_os	সিসতিম সুনামনাই
+config_send_escpos	ESC/POS
+profiles_heading	নকসা
+profiles_empty	(তাবুক জরাব সুনামজাকয়া)
+profile_builtin	সুনামজাক
+profile_custom	তংমুং
+profile_name_ph	লায়উত নি মুং
+profile_new	কুতাল লায়উত
+profile_delete	লায়উত ন সুকাকদি
+profile_created	লায়উত সুনামজাক খা
+profile_deleted	লায়উত সুকাকজাক খা
+profile_builtin_keep	বুইলত-ও সুনামজাক মানুইরকন সুকাকুই মানলিয়া
+config_saved	কুতাল উংখা
+config_selected	“{name}” হুনুই চংজাক
+printer_output_heading	কুথার চাপনাইরক
+virtual_printers_heading	কুথার চাপনাইরক
+virtual_printers_empty	তাবুক জরাও পরিনতের কুরুই — তলাও রাং রুদি, আবনি উল সাভে খলাই দি. নুং কিচিং কিচিং তংমানি উল, এদিত খুলাইনা বাগুই লিসত নি কাইসা তাপ খাইদি.
+virtual_printer_name_ph	কুথার পরিনতের মুং (চাজাকয়া)
+virtual_printer_create	কুতাল পরিনতের সুনামদি
+virtual_printer_save	ভিরতুআল পরিনতের ন মুথাঙুই তন দি
+virtual_printer_delete	ভিরতুআল পরিনতের ন সুকাক দি
+virtual_printer_created	“{name}” সুনামজাক খা
+virtual_printer_deleted	“{name}” হুনুই সুইজাক সুইজাক সুইজাক
+virtual_printer_updated	ভিরতুআল পরিনতের কুতাল উংখা
+virtual_printer_updated_named	কুতাল সুইজাক "{name}" কুতাল উংখা
+virtual_draft_layout	তেই কাইসা ভিরতুআল পরিনতের নি বাগুই রাং সেত খাইজাক
+virtual_draft_send	তেই কাইসা ভিরতুআল পরিনতের নি বাগুই রাং সেত খাইজাক
+virtual_need_real	পুইলা কাইসা কুবুই পরিনতের চংদি
+virtual_need_select	কুমাজাকনা বাগুই কাইসা সুকাংনি পরিনতের চংদি
+real_printer_selected	চংজাক: {name}
+station_group_heading	কুথার চাপনাইরক
+station_group_apply	ভিরতুআল পরিনতের ন সুকাক দি
+station_group_applied	দেলেতে উংখা
+station_group_empty	কাইসা কুবুই পরিনতের চংদি
+station_group_name_ph	কুথার পরিনতের মুং (চাজাকয়া)
+station_group_save	কুতাল পরিনতের সুনামদি
+station_group_saved	ভিরতুআল পরিনতের মুথাংজাক খা
+station_manage_heading	চামুং সুংমানি জাগান তুবুদি এবা সুকাকদি
+printers_routes_heading	জে জাগাও মানুইরক পরিনত উংনাই
+route_pick_heading	জাগা
+route_editing	সুনামানি: {name}
+route_assigned	{printer} নি সিমি {place} উংখা
+route_already_assigned	ও জাগাও সুকাংনি সিমিন: {printer}
+route_removed	{place} নি {printer} ন সুকাকজাক খা
+route_cleared	কুথার উংখা {name}
+route_assigned_empty	ও জাগাও খরকসা ফান কুরুই
+route_tap_remove	সুকাকনা বাগুই তাপ দি
+route_tap_select	চংনা বাগুই তাপ খাই দি
+route_tap_selected	চংজাক
+route_pick_printer_first	পুইলা পরিনতের ন তাপ দি
+route_assigned_heading	প্রিন্টার
+route_add_heading	য়াফার দি
+printer_label_ph	মুচুংতুই (এ.গ. চামুং নক)
+printer_target_ph	সিসতিম সুইনাই মুং এবা নকফাং:9100
+printer_target_default	ও চমপুতের নি সুকাংনি পরিনতের (কুমাজাক জাগা)
+printer_wire_heading	পরফাইল
+printer_wire_escpos	ESC/POS
+printer_wire_os	মুতাই
+printer_wire_os_portrait	মুতাই
+printer_wire_os_landscape	হায়ুংনি নাইথকমা
+printer_wire_escpos_short	ESC/POS
+printer_wire_os_short	মুতাই
+printer_wire_os_landscape_short	হায়ুংনি নাইথকমা
+printer_format_custom	কুতাল সুনামজাক পরফিলে
+printer_format_custom_label	কাহাম
+printer_format_custom_added	ও জাগা নি বাগুই সুনামজাক পরফিলে চাপজাক খা
+add_printer	পরিনতের তুবুদি
+remove_printer	কুথার খাইদি
+route_pick_ph	বিল এবা কাইসা চামুং সুংমানি
+route_bill	বিল
+route_default_kitchen	সতাশন কুরুই (চাজাক য়া চামুংরক)
+route_kot_station	চানানোক
+route_dont_print	পরিনতের কুরুই
+stations_heading	চামুং সুংমানি জাগা
+stations_help	দিশ নি বাগুই থুংমুংনি সতাতিওনরকন রুদি তেই KOT. সতাতিওন কাইসা-কাইসা-ও, বিনি পরিনতেরকন (সেতিংস → পরিনতেরকনি বিসিঙ মানাই), সুকাং সুকাং রুদি, তেই পুইলা আব সামুং খলাইনাই এবা বেবাকন পরিনত খলাই দি হুনুই চং দি. নুং থাংমা হাই খেন সুলাইজাকমানি — সাভে বুতন কুরুই.
+station_print_heading	ও সতাতিওন নি বাগুই পরিনতের
+station_print_help	সতাতিওন কাইসা চংদি, আবনি উল কাইসা এবা কুবাংমা পরিনতের রুদি. ↑↓ তরয় খলাই দি. পুইলা আব সামুং খলাইমানি উল পুইলা থুংমুংনি উল থুঙুই থাঙ; জত রহরজাক জত পরিনতের ন পরিনত খাই দি. জত সুলাইজাকমানি আব রাংচাকন সাভে খলাইও.
+station_print_pick_ph	পরিনতার সেত খলাইনানি বাগুই সতাতিওন
+station_print_pick_first	পুইলা চামুং সুংমানি জাগা চংদি
+station_print_editing	“{name}” নি বাগুই সুইজাক মানুইরকন সুলাইউই
+station_vps_dd	ও সতাতিওন নি বাগুই পরিনতের
+station_vps_dd_n	{n} সুইজাক(রক) · সুলাইনা বাগুই চাপদি
+station_vps_empty	তাবুক জরাও পরিনতের কুরুই — সেতিংস → পরিনতারকনি বিসিঙ নাইদি .
+bill_printers_dd	বিল নি বাগুই পরিনতের
+bill_printers_dd_n	{n} বিল নি বাগুই পরিনতের(রক) · সুলাইনা বাগুই তাপদি
+job_layout	নকসা
+job_delivery	সামুং বাহাই খে রহরজাক
+job_delivery_help	ওস নি সুইজাক, কুতাল বাইত, এবা ESC/POS. বিল তেই রাংচাকনি তিচকেত খরকসা খরকসা খে সাক সাকনি থানি তঙুই তঙ. জেসা ফান সামুং জেসা ফান পরিনতের ও থাঙুই মান ফিনদ সাভে খলাইজাক.
+station_vp_attached	পরিনতের চাপজাক
+station_vp_detached	পরিনতের ন সতাতিওন নি সুকাকজাক খা
+station_print_summary	{mode} · {n} সুইনাই(রক)
+station_print_summary_none	ও সতাতিওন ও তাবুক জরা পরিনতের কুরুই — আব পরিনতের উংনাই য়া .
+stations_none	সতাতিওনস কুরুই — তউইউই কাইসা আদ খলাই দি. মেনু নি মানুইরক কাইসা সতাতিওন ন উসে খলাইউই মান আবনি বাগুই বহরকনি KOT আর পরিনত উংনাই.
+route_up	উপ
+route_down	দউন
+route_remove	কুথার খাইদি
+route_clear	কুথার
+save_printers	পরিনতের ন মুথাংদি
+print_test_page	তেসত পাগে পরিনত খাইদি
+no_printer_assigned	পরিনতের কুরুই
+test_page_no_printer	{place} নি বাগুই পরিনতের কুরুই — আব বাই পরিনতের চাপদি, হাখে তেইসা তরয় খাইদি
+test_page_pick_first	পুইলা তেসত পাগে নি বাগুই পরিনতের(রক) চংদি — আবনি উল তেসত পাগে পরিনত খাইদি
+test_printers_dd	তেসত পাগে নি বাগুই পরিনতের
+test_printers_dd_n	{n} সুংমুংনি পাগে নি বাগুই পরিনতের(রক) · সুলাইনা বাগুই তাপদি
+kot_test_printers_dd	তেসত নি বাগুই সুইনাইরক KOT
+kot_test_printers_dd_n	তেসত নি বাগুই {n} পরিনতের(রক) KOT · সুলাইনা বাগুই তাপদি
+test_printer_picked	তেসত খাইদি: {name}
+test_printer_cleared	তেসত খলাইজাকয়া: {name}
+test_page_sent_n	তেসত পাগে {n} সুইনাই(রক) ন রহরজাক খা
+test_kot_pick_first	পুইলা KOT সুংনা বাগুই পরিনতের(রক) চংদি — আবনি উল সুংদি KOT
+test_kot_sent_n	তেসত KOT {n} সুইনাই(রক) রহরজাক খা
+cancel_pick	মারক
+cancel_pick_on	মারক খাইজাক
+cancel_pick_meta	চানচেল উংনা বাগুই মারক খাইজাক
+batch_cancel	চানচেল খাইজাক খা
+batch_cancel_n	মারি খাইজাক খা ({n})
+batch_cancel_none	পুইলা কাইসা এবা কুবাংমা রহরজাক চামুংরকন মারক খলাই দি — আবনি উল মারক খলাইজাকমান চানচেল খলাই দি
+batch_cancel_title	মারক খাইজাক চামুংরকন সুবাই দি — কাইসা কারন, চামুং নকনি কাইসা সলিপ সুবাই দি
+batch_cancel_ok	{n} চামুং(রক) সুবাইজাক খা · {slips} সলিপ(রক) সুবাইজাক খা → {kitchens}
+batch_cancel_ok_noprint	{n} চামুং(রক) সুবাইজাক খা — KOT সাক বাই সাক সুইজাক য়া, আবনি বাগুই সুবাইজাক য়া
+no_printer_kitchen_station	আ থুংমুংনি থানি পরিনতের কুরুই — থুংমুংনি থানি → থুংমুংনি থানি → ও থানিনি বাগুই পরিনতের
+printers_saved	মুথাংজাক
+test_page_sent	তেসত পাগে রহরজাক খা — পরিনতের ন নাইউই নাইদি
+test_page_sent_one	তেসত পাগে {name} ও রহরজাক খা — আব পরিনতের ন নাইদি
+printers_found	মানজাক খা {n}: {list}
+printers_find_synced	ফউনদ {n} — {new} নেউ
+printer_on_device	মুথাংজাক খা
+printer_already_added	সুকাংন আদ উংখা
+printer_already_saved	সুকাংনি মুথাংজাক: {name}
+find_printers	পরিনতের নাইদি
+printers_looking	নাইউই তংমানি...
+saving_printer	পরিনতের তুবুই তঙ...
+cancelled	চানচেল উংখা
+printers_tap_find	ও দেভিচে বাই সুনামজাক পরিনতের লিসত উংনা বাগুই ফিনদ ন তাপ খাই দি.
+printers_none_found	খরকসা ফান মানলিয়া — সয়সতেম নি পরিনতের নি মুং এবা ইপ (এ.গ. 192.168.1.50) সুইদি.
+printer_from_find	কুথার উংখা {name}
+kot_printer_ph	KOTস নি বাগুই সুইনাই
+bill_printer_ph	বিল নি বাগুই পরিনতের
+kot_print_on	খাকচাংমা বাই পরিনত উংনাই চামুংনি তিচকেত: ওন
+kot_print_off	খাকচাংমা বাই পরিনত উংনাই চামুংনি তিচকেত: কুমাজাক
+queue_refused	দুকান নি থানি রুজাকয়া ({n}) — চউনতের ও খরকসা খরকসান নাই দি:
+clear_not_accepted	চেচক খাইখা — ও লিসত ন সুকাক খা
+device_name_ph	ও দেভিচে নি মুং
+lan_last_update	পাইথাগ কুতাল উংমানি {time}
+lan_not_accepted	{n} রুজাকয়া
+connected_now	তাবুক কুথালাইজাক
+backup_failed	পইতনি সাক বাই সাক বাচকুপ উংলিয়া: {e}
+backup_overdue	{n} সালনি বাগুই বাচকুপ কুরুই — ও আপ ন ও দেভিচে ও খুলাইউই তংদি আব বাই বাচকুপ উঙুই মান.
+disk_low	ও দেভিচে ও {mb} মব সিমি সে রাং রুজাক — বাচকুপ উঙুই থাংনাই. কুবাংমা জাগা ফরেএ খাইদি.
+last_seen_devices	কুতাল নুকজাকমানি: {time}
+sync_interval	{secs}স জরা সয়নচ খাইদি
+connection_to_shop	দুকান বাই কুরুংজাক
+supplier_name_ph	ফালনাই নি মুং ( এবা পারতয়)
+supplier_ph	ফাইনাই
+switch_device	ও মানুই ন সুলাই দি
+take_payment	রাং রুদি
+tax_added_till	{tax} খাকচাংমা
+tax_inside_price	{tax} উঙুই
+tax_invoice	তাক্ষ নি রাং
+till_to_bank	জরা → বানক
+units_heading	উনিত
+unlock_after_pairing	PIN রুদি
+unlock_with_login	লগিন বাই লচক ফিয়কদি
+unmark	মারক খিবি দি
+update_my_password	আনি পাসুওরদ কুতাল খাইদি
+update_my_pin	আনি সিগন-ইন কুতাল খলাই দি
+duress_heading	খাকচাংমা জরাও ফিয়কদি PIN (মালিকনি সিমি)
+duress_help	চংমানি. ও PIN ন নিনি নি সলাই উনলচক ও তয়পে খাই খে, বেবাক বিজাপ নি সুইজাকমা রক উইপে উংনাই (ফালমানি, রাংচাক, ককতুমা) তেই তিল ওউনের হাই খে ফুআরজাকনাই নরমাল নুকজাক — মেনু, রাং, তাবলে, সামুং তাংনাই তেই সেতিংস তংনাই. সচেমা তেই চনফিগ ন সুকাক নাই. উনলচক খাইনা বাগুই ফরচে খাইজাক খে সিমি উসে খাইদি. বলানক খে রুউই সাভে খাইউই রুদি. খরকসা সুকনি PIN বাই খে কাইসা উংয়া.
+duress_pin_ph	কুপলাইসা PIN (4-12 দিগিত)
+duress_confirm_ph	কুথার উংনা বাগুই তেইসা তয়পে খাই দি
+save_duress_pin	কুপলাইসা জরাও মুথাংদি PIN
+clear_duress_pin	এমেরগেনচয় ন সুকাক দি PIN
+duress_on	কুপলাইসা জরাও ফিয়কজাক PIN উংখা
+duress_off	কুপলাইসা জরাও ফিয়কমানি PIN ওফ উংখা
+duress_saved	কুপলাইসা জরাও খুলকজাক PIN মুথাংজাক
+duress_cleared	খাকচাংমা জরাও ফিয়কজাক PIN সুকাকজাক
+upi_amount_ph	UPI রাং
+void	ভইদ
+write_off_ap	আপ ন সুইউই রুদি
+write_off_heading	সুবাইউই রুদি (রাং রুয়াউই সুকাকদি)
+write_off_nil	সুবাইউই পাই দি / কুরুই
+your_brand	নিনি মুং (আপ নি বিসিঙ)
+your_categories	নিনি রুংথমা
+account_kind	খাতা নি মুং (কাইসা ন চলিচক)
+actual_total_cap	কুবুই জত
+amend_help	সুনামনা বাগুই, ভইদ খলাইনা বাগুই, এবা রাং কিফিলুই রুনা বাগুই কাইসা ফালমানি চংদি. আমেনদমেনত রক জতন হিসতরয় ন নারুকনাই. রউনদ উংমানি ততাল আপলিএদ বাই বাকসা উংনাই — রউনদ উংনা বাগুই সিমি সে এদিত খলাই দি. ভইদ তেই রাং রুনা বাগুই ওউনের এবা মানাগের PIN (উচুগ তয়পে খলাইজাক; নিনি মুং বাই সুইজাক) নাংনাই.
+applied_total_cap	জত আপলয় খলাইজাক
+bank_balance	বানক নি রাং
+bank_net_today	বানক নেত তিনি
+branch_export_help	এক্ষপরত খাইউই branch_snapshot_CODE_DATE.json সুইউই বাচকুপস নি জাগাও চপয় খাইউই রুদি. তেই কাইসা ওউতলেত নি সাল ন তুবুনা বাগুই, বিনি ফিলে ন import_branch_snapshot.json উঙুই আব হাই খেন সুনামদি, আবনি উল ইমপরত ন তাপ খাইদি.
+brand_shown_help	আপ নি বিসিঙ সচরেএন ও ফুনুকজাক. ও মানুই ও ইনসতাল খাইজাক আপ নি মুং তেই ইচন পলাতফরম নি মুং হাই খে তংনাই.
+app_icon	আপ নি মুখাং
+logo_help	আপ নি সচরেএন ও দুকান মারক খাই দি.
+onboard_layout	নুং তাম মানখা
+item_photo_help	চংমানি. ফত কুরুই খে চুং মানুই নি মুং নি সুকাংনি সুইমুং ন ফুনুকনাই.
+stamp_heading	সতামপ
+stamp_image_help	চাকজাক বিল তেই ফাতারনি ফুনুকমা সাকাও চংজাক সতামপ নি মাংপিলি.
+payment_qr_heading	রাং রুমানি QR
+payment_qr_image_help	বিল তেই ফাতারসারকনি ফুনুকমা-ও তংনাই QR; আব হাই উংয়া খে রাং রুমানি VPA নি সাকানি UPI QR নি দয়নামিচ উসে খলাইও.
+cash_in_hand	য়াগ রাং (জরা)
+change_my_pin_heading	আনি সিগন খাইমানি
+connect_to_server	Server বাই কুরুংদি
+counter_locked	লেখাজাক 01 · লচক উংখা
+country_pack_help	কাইসা হাসতেও পাচক খাইমানি মুং তেই রুংথমা, রাং রুনানি রেল, তেই বিল সাকাও সুইজাক সামুংনি ইদ সেত খলাইও. Kumkaj তাক্ষ ফিলে খলাই য়া এবা সরকারনি এ-ইনভইচে জে জাগাও ফান রু য়া.
+currency_use_help	সচরল খাইউই উসে খাইদি জেসা ফান সুপরত উংনাই রাংনি বাগুই.
+day_close_help	সালসা সুকাং সুইজাক খে ও ককতুমা ন (তেই লেখাজাক খে দরাউএর নি সুলাইমুং) আউদিত লগ ও তুবুও. আব সেল উঙুই তংনাই.
+expenses_word	খারজা
+feature_access_help	বহরক তাম উঙুই মান — উঙুই মান; সাকানি সামুং সুকাংনি সিমি সে সেত খাইজাক
+footer_local	থানি SQLite · মল বরুম বরুম কুরুই · চুমুই কুরুই
+fresh_book_khaynjo	কুতাল = মেনু খালি (মেনু নি উল দিশেস রুদি). বওক = তয়পে খাইমানি মানুইরক তেই সাব নুংন দেবত খলাইখা.
+fresh_selected	কুতাল খে চংজাক — কাতালগ কুরুই খে তংনাই. তিয়ার উং খে দনে ন তাপ খাই দি.
+gross_word	কুপলাইসা
+how_start	নুং বাহাই খে চেংনা মুচুং?
+kot_print_help_khaynjo	ওন উংফুরু, নুং সেনদ খলাইমা জরাও খরকসা খরকসা খে বিনি KOT পাপের ন পরিনত খলাইও.
+later_country_pack	ফিয়াবা: সেতিংস → তাক্ষ তেই রাং রুমানি লাবেলনি বাগুই নিনি হাসতে পাচক ন সুনামদি.
+local_badge	থাংনি
+mix_type_hint_khaynjo	নাংখে রাং/UPI/চারদ/চরেদিত বাই বাকসা খে রুদি. চরেদিত নেএদস আ চুসতমের আবভে.
+money_in_sales	রাং উংখা (ফালমানি)
+net_word	নেত
+offline_badge	ওফলিনে
+optional_login_help	ওপতিওনাল লগিন (ইদ + পাসুওরদ). ওউনের কাইসা সেত খলাইও; ওনলয় থে উসের চান চাঙে পাসুওরদ লাতের.
+or_unlock_login	এবা লগিন ইদ + ককতুমা বাই লচক ফিয়গুই দি
+permission_preset	সামুং (সচরেএন তেই রাংনি সামুংরকন সুনামনাই)
+preset_help_khaynjo	চাশিএর: ফালদি. মানাগের: ফালদি + মানুইরক + সুকাকজাক/সুনামদি.
+product_locked_khaynjo	Khaynjo
+product_only_khaynjo	ও আপ Khaynjo সিমি সে — চামুং চামুংনি সয়সতেম. কুবুন তরাদে নি বুসকাঙ শিপ উংনাই Kumkaj মানুই উঙুই.
+purchases_cogs	কিরিমানি (COGS)
+qty_cap	কতয়
+restore_help	ফিয়াবা: কাইসা বাচকুপ তুবুদি. বিজাপরক আব জরা-ও তংমানি হাই খেন ফুআরজাক; তাবুক তংমানি হাই খে বিজাপরক সুকাং মুথাংজাক, আবনি বাগুই ওমন উনদ খলাইউই মান.
+wipe_data_heading	লচাল নি দাতা ন সুকাক দি
+wipe_data_help	মালিকনি বরক সিমি — উইনদউস ন সুকাকমানি হাই খেন. সামুংনি ককতুমারক সামুংনি ককতুমা ন সুকাকনাই ফিয়া মেনু তেই সেতুপ ন নারুকনাই (জেসা খে নাংকুকমা জরাও PIN). দুকান সেতুপ খাইমানি বিসিংতুই বুখুকরকনি দাতাবাসে ন সুকাকজাক. সচরেএন নি হামজাকমারক উইনদউ/ককথাই ন সুকাকনাই. বরক বাই কুরুঙুই তংদি PIN. তেআম নি এমেরগেনচয় নি লচক PIN নি সুলাই (কুলাই ফুরু খুকচাজাক).
+wipe_trading	বিসিংনি সুইজাক
+wipe_schema	দুকান সেতুপ
+wipe_ui	সচরেএন নি হামজাকমা
+wipe_owner_pin_ph	মালিক PIN ন সুকাকনা বাগুই
+wipe_delete_selected	দেলেতে খাইজাক
+wipe_owner_only	ওউনের সিমি সে থানি তংনাই দাতা ন দেলেতে খুলাইউই মান.
+restore_owner_only	ওউনের সিমি সে বাচকুপ উঙুই মান.
+wipe_owner_pin_needed	লচাল নি দাতা ন সুকাকনা বাগুই ওউনের PIN ন রুদি.
+wipe_nothing_selected	পুইলা তাম দেলেতে খুলাই নাই আবন চংদি.
+wipe_done	খাপাংনি দাতা ন সুকাকজাক খা.
+wipe_schema_done	দুকান নি সেতুপ উংখা — Server এবা Client ন চংদি.
+rounded_total	জত রউনদ খাইজাক
+setup_app_khaynjo	Khaynjo সুনামদি
+shop_logo_optional	দুকান নি লগ (চাজাক)
+stock_type_help	তয়পে খাই দি মানুই নি মুং (আবনি পারত উংখা), কাইসা মানুই, আবনি উল আদজুসত খাই দি. তাবুক জরাও চউনত উংয়া মানুইরকন কাইসা জরা তরাচকিং চেংনানি নাংনাই.
+team_owner_help	খরকসা সুকন রুনা বাগুই বরকন বলানক খে তনুই রুদি: মুং, সামুং, মুং, PIN, তেই মুংসা সুক পাসুওরদ, আবনি উল আদ খলাই দি. আব হাই খেন ফরম ন সুলাইনা বাগুই খরকসা বরকন চংদি — মুং, মুং, মুং, সচরেএন, তেই হকরক — আবনি উল সাভে খলাই দি. নিনি সাকনি PIN তেই পাসুওরদ কাইসা সিগন-ইন উঙুই তঙ. ওউনের খে খরকসা সুক নি PIN ন সুলাইউই মান য়া.
+staff_name_ph	সামুং তাংনাইরকনি মুং
+staff_copy_hire_ph	সেতুপ নি চপয় খাইদি (চাজাক য়া)
+staff_copy_hire	ও বরক নি সেতুপ ন উসে খাইদি
+staff_edit_name_ph	মুং ফুনুকদি
+staff_rename	মুং মুথাংদি
+staff_copy_edit_ph	কুবুন বরক নি সেতুপ চপয় খাই দি
+staff_copy_edit	বহরকনি সেতুপ ন চংজাক জাগাও চপয় খাইদি
+staff_copy_edit_onto	বহরকনি সেতুপ ন {name} ও চপয় খাইদি
+staff_deactivate_named	কুথার {name}
+staff_renamed	মুচুংতুই মুথাংজাক খা
+staff_setup_copied_hire	{name} নি চপয় খলাইজাক সেতুপ — মুং কুতাল সেত খাই দি তেই PIN, আবনি উল সামুং তাংনাই রক ন চাপ দি
+staff_setup_copied_edit	{from} নি সেতুপ {to} ও চপয় খাইজাক
+staff_copy_need_selected	পুইলা সাবন এদিত খলাইনা নাংন চংদি
+staff_copy_need_source	চপয় খুলাইনা বাগুই সাবনি সেতুপ ন চংদি
+staff_copy_same	আব উং খা খরকসা বরক — তেই খরকসান পিচক .
+staff_rename_need_selected	পুইলা সাবন মুং সুলাইনা নাংন চংদি
+team_pick_hint	সাবন এদিত খলাইনা বাগুই চংদি — সচরেএন, রাংনি হক, তেই থুংমুংনি সতাতিওনরক আ বরকনি বাগুই সিমি সে নুকজাগ.
+team_stations_help	বোরক চামুং সনামানি জাগান সুনামুই মান
+team_stations_changed	চামুং সুংমানি জাগা সুলাইজাক — ও বরকনি বাগুই সেতুপ নারুকদি
+team_features_changed	সচরেএন সুলাইজাক — ও বরকনি বাগুই সেতুপ নারুকদি
+team_rights_changed	হকুম সুলাইজাক — ও বরকনি বাগুই সেতুপ মুথাংদি
+they_owe_us	বহরক চুংন দেবত উংখা
+unit_at_cap	উনিত @
+units_help	সামুংনি মুংনি বাগুই চদে (কগ, মানুই, বাগ). জত উনিত ন — কুচাক কুফুর খে এবা কুবুন উনিত নি বিসিংতুই — কাইসা সুংচারনি (কগ · চম · মল · পচ) বাই কুরুঙুই তংনা নাংনাই, এ.গ. 1 করেত = 2 বক্ষ তেই 1 বক্ষ = 20 চম. কুতাল উংমানি: 1 নি = ফাচতর নি. তাকার রক উনিত উংয়া.
+units_picker_help	ওন/ওফ ন তাপ খাইদি, উনিত ন ফুনুকনা বাগুই. ওফ উনিত রক তাবুকব সুলাইজাক.
+unit_picker_on	ওন
+unit_picker_off	ওফ
+we_owe_them	চুং বহরক ন দেবত উংখা
+who_unlocking	সাব লচক খাই তং?
+locked_word	লচক উংখা
+show_pin	ফুনুকদি PIN
+hide_pin	হুকদি PIN
+set_owner_pin	সেত নি মালিক PIN
+enter_owner_passcode	মালিকনি পাসচদে খলাইদি
+enter_staff_passcode	সাংনাই রকনি পাসচদে খলাইদি
+pin_count_zero	0/12 মাংপিলি · কুচাক কুফুর 4, আবনি উল কাহাম
+pin_count_need	{} / 12 দিগিত · নাংমানি {} তেইব
+pin_count_full	12/12 মাংপিলি · ওক ন দিপদি
+pin_count_ready	{} / 12 দিগিত · তিয়ার উং খে ওক ন দিপ দি
+pin_hint_choose	4–12 দিগিত চংদি · সাভে খলাইনানি বাগুই তুবুদি এবা ফিয়কদি
+pin_hint_new	কুতাল 4–12 দিগিত মালিক PIN · কুতাল এবা ফিয়কদি
+pin_hint_shop_code	দুকানি মানুই · কুথালাইমানি চদে {}
+pin_hint_books	ও মানুই বিজাপরকন রমুই তঙ
+pin_hint_paired	জরা উংমা জরা তেইব — ফালনা বাগুই লচক ফিয়কদি
+pin_hint_pair_first	কুবাংমা জরা — সুকাং দুকানি মানুই বাই পাইর খলাই দি
+unlock_to_continue	তুলাংনা বাগুই লচক ফিয়ক দি
+no_staff_yet	তাবুক জরাও সামুং তাংনাইরক কুরুই — মালিক উঙুই ফুআরজাক, আবনি উল তেআম
+status_server_set_pin	Server মদে — নকফাংন সুনামদি PIN
+status_server_tills	Server মদে — কুবাংমা তিলস উঙুই মান. লচক খুলকদি
+status_server_unlock	Server মদে — মালিক উঙুই ফুআরুই রুদি
+status_client_unlock	Client মদে — ফালনা বাগুই লচক খুলকদি
+icon_new_selected	ইচন: কুতাল ফিলে চংজাক — বরানদ মুথাংদি
+icon_custom	ইচন: সুনামজাকমানি জাগানি মারি
+icon_default	ইচন: Kumkaj মারি (সুকাংনি) — কাইসা সুক চংদি
+logo_yours	লগ: নিনি দুকান নি লগ — সচরেএন ও ফুনুকজাক তেই রাং রুজাক
+logo_default	লগ: Kumkaj মারক (সুকাংনি) — নিনি থানি তংখে নিনি সাকনি চংদি
+tmpl_current	তাবুক: {} — {}
+tmpl_selected	চংজাক: {} — {}
+setup_complete	সেতুপ উংখা
+onboard_fresh_tmpl	কুতাল · {} — কাতালগ উঙুই থাঙ; ইতেমস নি বিসিঙ মানুইরক আদ খাই দি, আবনি উল দনে খাই দি.
+onboard_book_tmpl	বুখুক · {} — মানুইরক তেই সুকাংনি চরেদিত রুদি, আবনি উল দনে উংখা.
+onboard_template_tmpl	নুং মুচুংখে জাগা নি মুং সাদি, আবনি উল বাহাই খে সুকাং উংনাই আবন পিচক খাইদি.
+tmpl_blurb	মেজা, দাগিমুং, চামুং চামুং তিকেত, রাং রুমানি, তেই বিজাপরক.
+tmpl_how	চউনতের ও ফাল দি; মেজারকনি বাগুই থুং & KOT; সাল বওক নি বাগুই বওক.
+reports_facet_title	রিপোর্ট
+reports_facet_help	সালনি বিজাপ, পারতয় উংমানি, বানকনি পসত, তেই জরানি প&ল.
+against_bill_ph	বিল # সাকানি (চাজাকয়া)
+aliases_ph	মুচুংমা — কুবুন মুং, চমা বাই খাকচাংজাক
+amount_blank_full_ph	রাং (কুরুই = বেবাক তংমানি)
+amount_owed_ph	রাং রুজাকমানি
+amount_ph	রাং
+amount_received_ph	রাং মানখা
+amount_we_pay_ph	চুং রাং রুনাই
+business_name_ph	বুসিনেস নি মুং
+category_new_ph	কুতাল খে (চাজাক য়া, কুতাল উং খে সনামজাক)
+code_bag_ph	কদ (বাগ)
+conv_factor_ph	কাহাম (25 = 1 বাগ → 25 কগ)
+country_code_ph	হাসতেনি কক এ.গ. ইন, গব, উস, আএ, বর
+credit_khata_amount_ph	করেদিত/খাতা রাং
+credit_limit_ph	করেদিত নি সিমি (0 = কুরুই)
+from_code_ph	কদ নি (বাগ)
+item_name_lang_ph	ইতেম নি মুং — নিনি কক বাই সুইদি .
+login_id_opt_ph	উসের নি মুং (নাংমানি, কুতাল)
+manager_pin_ph	মানাগের PIN সুমাই তাংনা বাগুই (নুং ভইদ খলাইউই মানলিয়া হুনখে সিমি)
+new_branch_name_ph	বরানচ কুতাল নি মুং
+new_password_ph	কুতাল পাসুওরদ (চাজাকয়া)
+new_pin_ph	কুতাল PIN (4-12 মুং)
+note_bank_ph	নতে (রাং রুমানি, রাং তুবুমানি, ...)
+note_buy_expense_ph	কক নারুকদি (থুং, রেনত, ...)
+note_expense_ph	কক নারুকদি (থুং, ওফিস, ...)
+options_khaynjo_ph	খাইরকমা — কুপলাইসা*: কুচাক=199, কুপলাইসা=399 | তপিংস+3: চাকমা=40, জাইতুন=30 | কুবাংমা বুফাং=40
+part_second_way_ph	তেই কাইসা লামা বাই পারত (চাজাকয়া)
+phone_ph	ফোন
+place_name_ph	ও জাগা নি মুং
+qty_example_ph	কুবাংমা (উ.গ. কগ নি বাগুই 1.5)
+quantity_ph	কুবাংমা
+reason_required_ph	কাহাম (নাংমানি)
+role_title_ph	সামুংনি মুং (উ.গ. বারিসতা)
+service_pct_ph	সামুং % চংমানি 0/10/12
+short_code_ph	কুচাক কক (মগ02)
+starting_password_ph	পাসুওরদ চেংমানি (চাজাকয়া)
+starting_pin_ph	সুকাং PIN (4-12 মাং)
+station_name_ph	সতাসন নি মুং (উ.গ. তানদওর, ফরয়ের, কুচাং)
+station_new_ph	চামুং চামানি জাগা (চাজাক য়া, উ.গ. তানদওর — কুতাল উং খে সনামজাক)
+table_name_ph	মেজানি মুং (এ.গ. দুগলাম 1, লেখানাই 2)
+tax_rate_ph	তাক্ষ নি মুং এবা % — কুমাজাক, কুমাজাক, 0, 5, 12, 18, 20
+to_code_ph	কদনি বাগুই (কগ)
+uncleared_no_ph	কুথার উংয়া # সাকানি
+unit_cost_ph	উনিত নি রাং
+unit_name_bag_ph	মুচুংমা (বাগ)
+unit_plate_ph	কাইসা (পলাতে / পচ - কুরুই = খরকসা খরকসা)
+pay_credit	করেদিত
+book_kind_today	তিনি বওকস
+book_kind_month	ও তালনি বিজাপরক
+book_kind_aging	কুতাল / দেবিত-করেদিত
+book_kind_balance	বালানচে সুইজাক
+order_help	আদ খাইনা বাগুই কাইসা মানুই ন তাপ খাই দি.
+floor_help	ওরদের নানা বাগুই এবা সুলাইনা বাগুই তাবলে ন তাপ খাই দি. রাংচাকরক ফুনুকজাক → আচুকথাই → চামুং → তিয়ার → চামুং → বিল → রাং রুজাক. নাইসিঙুই তংমানি লিসত, জাগা নারুকমানি, তেই আদ-তাবলেরক তলাও তংনাই.
+kitchen_help	খামজাকমা তিকেত (KOT), কুতাল কুতাল. সুকাংনি → তিয়ার → খলাইমানি তিচকেত ন তউইউই থাংনাই. তিচকেত নি রাং ন নুং ফুনুকয়া.
+kitchen_empty	তিচকেত খলকজাকয়া. ওরদের এবা ফলওর নি থানি রহরজাক KOT ন আর নুকজাকনাই.
+add_a_table	কাইসা তাবলে চাপদি
+add_station_heading	চামুং সুংমানি জাগা তুবুদি
+categories_help	উসে ন তাপ খাইউই আবনি থানি ফিলে খাইদি. ফত উংখা রাংচাকনি রাংচাক; কাইসা কুরুই খে আব বিনি সুকাংনি লেখারকন ফুনুকনাই.
+dish_search_ph	ইতেম নি মুং — চিনি দিশ ন নাইদি এবা নিনি তয়পে খাই দি
+tile_free	কুপলাইসা
+tile_occupied	চাজাক
+tile_food_ready	চামুং তিয়ার উংখা
+tile_bill_printed	বিল চাপজাক খা
+tile_paid	রাং রুজাক
+tile_bill_btn	বিল
+tile_occupy_btn	ফাইরক আচুকথাই
+tile_free_btn	মেজা কুরুই
+tile_ready_btn	মেজা কুরুই
+tile_undo_bill	বিল ন ফিয়ক দি
+summary_busy	মেজারক সামুং কুরুই
+summary_to_collect	থুমনানি
+summary_on_floor	হা সাকাও
+floor	মেজানি হা
+sizes_as_items_ph	সিজে রক জুদা জুদা মানুই হাই (চাজাকয়া) — খাকচাং=120, পুইলা=200
+dish_group_ph	চানা দল (চাজাকয়া) — উ.গ. Paneer Tikka
+discount	দিসচউনত
+remove_discount	দিসচউনত সুকাকদি
+apply_discount	দিসচউনত খুলাই দি
+save_opening_cash	রাং ফুআরুই বাচাদি
+close_shift_print	শিফত খাইউই সলিপ চাপদি
+area_prices_ph	জাগা নি রাং (চাজাকয়া) — আচ=220, মানুই=210
+discount_ph	10% এবা 50
+discount_reason_ph	কাহাম (এ.গ. জরা জরা ফাইনাই, উল চামুং)
+opening_float_ph	তিনি সাল রাং দরাউএর ও তনখা
+shift_counted_ph	য়াফার ফুরু রাং লেখাজাক
+opening_float	রাং খুলাইমানি (ফলআত)
+shift_handover	শিফত য়াফারমানি
+shift_since	ও শিফত উংখা 1990 বিসিনি সিমি.
+expected_in_drawer	দরাউএর ও খাতুংজাক
+right_discount	দিসচউনত রুদি
+floor_in_kitchen	চামুং চামুং নকনি
+floor_eating	সেবা খলাইখা
+pick_category	কাইসা জাগা চংদি
+close_category_list	কুতাল লিসত ন সুকাকদি
+new_category_row	কুতাল খে — নুং মানুই ন মুথাঙুই তন ফুরু সুনামজাক .
+your_category	নিনি উংখা
+suggested_category	সুগেসত খলাইজাক — চিনি দিশ নি
+category_search_ph	চাতেগরয় — নিনি উঙুই নাই দি এবা কুতাল তয়পে খাই দি .
+line_sent_state	চানা নগ রহরজাক খা
+line_nc_state	কুপলাইসা (NC) — রাং রুজাকয়া
+cancel_item_short	চানচেল খাইদি
+nc_short	NC
+charge_again_short	চারগে খাইদি
+move_short	মলদি
+cancel_item_title	ও মানুই ন সুকাক দি — চামুং ন সুকাক দি সলিপ মানাই
+nc_item_title	ও মানুই ন বেলাই খেন হামবাই রুদি (NC)
+charge_again_title	ও মানুই ন তেইসা চারগে খাইদি
+move_item_title	ও মানুই ন তেই কাইসা তাবলে ও তুবুদি
+already_cooked	সুকাংন থুংজাক (কুমাজাক)
+not_cooked_yet	তাবুকব থুংজাকয়া
+return_to_customer	গরাহকনি থানি কিফিলুই ফাইদি
+short_by	কুচাক খে
+tip_not_sale	তিপ (সামুং তাংনাইরকনি, ফালজাক য়া)
+right_settle	রাং রুদি
+right_cancel_sent	রহরজাক মানুই ন সুকাক দি
+right_complimentary	হামজাকয়া (NC)
+right_move_table	তেবলরকন সুকাকদি / থানসা খলাইদি
+right_reprint	বিল তেইসা পরিনত খাইদি
+right_allowed	কুথার
+right_with_approval	সুনামজাকমা বাই
+right_denied	কুথার য়া
+editing_staff	সুনামজাক
+finding_server	ও Wi‑Fi ও দুকান নি সেরভের ন নাইতুক তংখা...
+no_server_found	খরকসা ফান মানলিয়া. Server নি সাকাও: সেতিংস → কুবুন মানুইরক → কুবাংমা তিলস রুনানি রুদি (আব হাই Wi‑Fi). ওব আর ফুনুকজাক ইপ ন তয়পে খাইদি.
+servers_found_pick	নুং চনেচত উংনা মুচুংমানি শপ ন তাপ খাই দি.
+server_host_selected	{host} ন সুনামুই — পাইরিং চদে রুদি, আবনি উল পাইর তাবুক রুদি.
+print_bill	বিল চাপদি
+table_actions	তাবলে নি সামুংরক
+move_merge_table	তেবল ন সুকাকদি / থানসা খাইদি
+move_help	ও তাবলে নি ওরদের ন ফরেএ তাবলে ও তুবুদি, এবা কাইসা থুংনাই তাবলে ও মেরগে খাই দি.
+move_target_ph	মেজানি মুং (উ.গ. দ5, প2)
+approval_pin_ph	মানাগের PIN (সুংজাক খে সিমি)
+move_here	ওর থাংদি
+merge_into	আবনি বিসিঙ থানসা উংদি
+line_reason_ph	কাহাম (এ.গ. ফাতারনি বরক উআনসুকমা সুলাইখা, সতচক কুরুই)
+line_qty_ph	বুসুক চানচেল খুলাই নাই (কুরুই = বেবাক)
+line_target_ph	মেজানি থানি থাংদি (উ.গ. দ5)
+confirm	সিচাদি
+menu_search_ph	মানুই এবা কুচাক চদে নাই দি
+customer_paid_ph	গরাহক রাং রুখা
+tip_ph	তিপ
+table_area_ph	জাগা (উ.গ. চামুং চামানি, পারচেল, আচ)
+table_range_ph	কুবাংমা কাইসা জরাও: দ1-দ20
+add_these_tables	ও তাবলে রক ন চাপদি
+remove_these_tables	ও তাবলে ন সুকাক দি
+table_remove_ph	কুচাক দি: ত1-ত24, এবা কাইসা তাবলে নি মুং
+find_server	দুকান নি সেরভের ন নাইদি
+bill_format	বিল নি সুনামুং
+bill_format_help	জত বিল নি সাকাও নিনি রেসতাউরানত নি মুং বাই পরিনত খলাইজাক. কুতাল লিনে বাই | (উ.গ. মগ লামা, রাজকত | ফ 98250 00000).
+bill_header_ph	আদরেস নি কক | ফনে
+fssai_ph	FSSAI লাইসেনস নি রাং. (ভারাত)
+bill_footer_ph	য়াফাঙ (এ.গ. হামবাই য়াফার, তেইসা নাইদি)
+save_bill_format	বিল নি ফরম মুথাংদি
+reset_bill_format	সুকাংনি হাই খে রেসেত খাই দি
+bill_format_reset	বিল নি ফরমাত সুকাংনি হাই খে সুলাইজাক
+reset_kot_format	সুকাংনি হাই খে রেসেত খাই দি
+kot_format_reset	KOT সুকাংনি সুলাইমুংন সুনামদি
+kot_format	KOT সুনামানি
+kot_format_help	লিসত নি বিসিঙ কাইসা জাগা ন তাপ খাই দি. ফিয়াবা, ফনত নি সিজে, তেই রাংচাকনি রাংচাক KOT নি সাকাও চংজাক. জেসা খেন সাক সাকনি সিজে তেই উএইঘত ন নারুকনাই.
+kot_format_fields	কুতাল
+kot_field_next	সুকাংনি খেত
+kot_field_show	পুইলা
+kot_field_hide	হুকদি
+kot_field_on	ফুনুকদি
+kot_field_off	হুকদি
+kot_field_size	ফনত কতরমা
+kot_field_size_ph	উ.গ. 16, 20, 24, 28, 32...
+kot_weight_light	পহর
+bill_kot_panel_help	বিল তেই চামুং চামুংনি সলিপ সুনামুং, খরকসা খরকসানি সাকনি মানুইরকনি কতরমা তঙ. বিল চাশিএর উংখা বিল রুনাই এবা রাং রুনাই; KOT উআইতের উংখা আ থুংমুংনি তিচকেত রহরনাই — ওরদের নি ককতুমা বেবাক বিজাপরগ তঙুই তঙ.
+std_size_ph	উ.গ. 18, 20, 26...
+kot_show_shop	দুকান নি মুং
+kot_hide_shop	দুকান হুকদি
+kot_show_time	জরা
+kot_hide_time	জরা ন হুই দি
+kot_show_waiter	চাকনাই
+kot_hide_waiter	উআইতের ন রুদি
+kot_show_station	সতাতিওন
+kot_hide_station	সতাতিওন ন খুমদি
+kot_show_table	মেজা
+kot_hide_table	মেজা ন হুই দি
+kot_show_kot_no	KOT য়া
+kot_hide_kot_no	হুকদি KOT য়া
+kot_width	সুকাং নাইমানি উরাপ (KOT তাব ও মানুই কতরমা সেত খাই দি)
+kot_width_58	58 mm
+kot_width_80	80 mm
+kot_kind_heading	KOT খাইরকমা
+kot_kind_original	আসুক
+kot_kind_duplicate	দুপলিচাতে
+kot_kind_modified	সুলাইজাক
+kot_kind_cancelled	চানচেল উংখা
+kot_style_heading	কুতাল মুংনি কতরমা & কতরমা
+kot_style_title	মুং
+kot_style_item_qty	মানুই · কুবাংমা
+kot_style_field_pick	খাকচাংমা জাগা চংদি
+kot_weight_regular	কুপলাইসা
+kot_weight_bold	বলদ
+kot_align	আলিগন
+kot_align_start	চেংদি
+kot_align_center	কুতাল
+kot_align_end	পাতিমুং
+content_width	কুমাজাকনি কতরমা (ম)
+content_width_bill	বিল নি মানুই নি কতরমা (ম)
+content_width_kot	KOT মানুইরকনি কতরমা (ম)
+content_width_ph	এবা খে কাইসা মানুই কতরমা সুইদি, 40-210 ম
+content_width_help	ও সলিপ নি পরিনত বুসুক উংখা. বিল তেই KOT খরকসা খরকসা সাক সাকনি রাংচাকন নারুকনাই.
+content_width_bill_help	গুএসত বিল বাহাই খে পরিনত উংখা. 210 ম নি সুকাং (পাজাক). 58 ম কুচার সলিপ, 80 ম কতর সলিপ, 112 ম 4-ইনচ, 210 ম আ4-কুরাক. নি সিমি 210 জরা জেসা ফান রাং তয়পে খাই দি.KOT তাব ও রাংচাকনি তিচকেত নি রাং নি রাংচাক তঙ.
+content_width_kot_help	তিচকেত নি পরিনত উংখা বাহাই খে. সুকাং 80 ম. 58 ম সুপরাকজাক, 80 ম কতর সুপরাকজাক, 112 ম 4-ইনচ, 210 ম বুলা. নি সিমি 210 জরা জেসা ফান ভালুএ ন তয়পে খাই দি.বিল তাব ও গুএসত নি বিল রক নি সাক সাকনি উইদথ তঙ.
+vp_paper_width	কুমাজাকনি কতরমা (ম)
+vp_paper_width_ph	এবা খে কাইসা মানুই কতরমা সুইদি, 40-210 ম
+vp_paper_width_help	বিল & KOT ফরমাত নি বিসিংতুই উঙুই তঙ — বিল (সুকাংনি 210 ম) তেই থুংমুংনি তিকেত (সুকাংনি 80 ম) নি বাগুই কাইসা খে.
+kot_size	ফনত কতরমা
+kot_size_s	কুচাক
+kot_size_m	সাজলা
+kot_size_l	বরক
+std_size	ফনত কতরমা
+kot_copies	কপি
+kot_copies_1	1
+kot_copies_2	2
+kot_copies_3	3
+kot_title_ph	মুচুংতুই (কুরুই = KOT - চামুংনি খুমুলুং)
+kot_footer_ph	চামুং চামানি ককতুমা (চাজাক য়া, রাং কুরুই)
+kot_preview	সুকাংনি নাইমুং
+save_kot_format	KOT সুনামদি
+test_kot_format	তেসত খাইদি KOT
+test_kot_sent	রাংচাকনি তিচকেত সুকাংনি নুকমুং রহরজাক খা
+test_bill_format	তেসত বিল
+test_bill_sent	বিল সুকাংনি নুকমুং রহরজাক খা
+test_print_no_printer	আ সামুংনি বাগুই পরিনতের কুরুই — ও সচরেএন-ও কাইসা চংদি .
+kot_format_saved	KOT মুথাংজাক খা
+std_print	বিল সুইজাকমানি কতরমা
+std_print_help	ওস / সুইজাক সুইনাইরকনি সাকা-ও সুকাংনি মাংপিলি তেই হায়ুংনি বিল সামুংনি বাগুই ফনত কতরমা (পইনতস সুইদি — কুচাক/কুতাল/কুপলাইসা য়া). বহরকনি সিজে কাইসা. সলিপ নি সিজে রক KOT নি তাব ও তঙ.
+std_size_s	কুচাক
+std_size_m	সাজলা
+std_size_l	বরক
+save_std_print	বিল চাপমানি সিজে মুথাংদি
+std_print_saved	বিল সুইজাকমানি সিজে মুথাংজাক খা
+print_brand_kit	পরিপ খাই দি বরানদ কিত
+print_brand_kit_help	বিল নি মুখাঙ তেই LAN ফাতারনি ফুনুকমাও রাং রুমানি সতামপ তেই রাং রুমানি QR মাংপিলি. দয়নামিচ UPI QR নি VPA নি সাকাও তাবুকব সামুং খলাইও, রাং রুজাকয়া QR নি মাংপিলি সেত উংয়া জরাও.
+choose_stamp	সতামপ চংদি
+clear_stamp	সতামপ কুথার
+stamp_set	সতামপ: ফিলে-ও — ফাতারসারকনি ফুনুকমা-ও ফুনুকজাক তেই সুইজাক বিল-ও মুং সুইজাক
+stamp_none	সতামপ: কুরুই
+choose_payment_qr	রাং রুমানি চংদি QR
+clear_payment_qr	কুথার রাং রুমানি QR
+payment_qr_set	রাং রুমানি QR: ফিলে-ও — ফাতারনি ফুনুকমা-ও ফুনুকজাক (রাং UPI QR আর সুলাইজাক)
+payment_qr_none	রাং রুমানি QR: কুরুই — রাং রুমানি জরাও UPI ইদ নি সিমি রাং QR
+aggregator_import	কুথুমনাইরকনি দাগিমুং (ফাইল)
+aggregator_import_help	রাংচাকনি থানি তুবুমানি: import_aggregator_orders.json ন তুবুমানি জাগা ও তন দি (আরায় এবা {"কথমা":[...]}), আবনি উল তুবুমানি ন তাপ দি. কাউনতের ন বলচক তা খলাই দি; কুথাং Zomato/Swiggy উংখা চুমুই.
+import_aggregator_file	কুথুমনাই ফিলে তুবুদি
+team_pick_ph	সতাফ ন সুলাইনা বাগুই — মুং, মুং, এবা পিচক
+select_staff	ও সতাফ ন চংদি
+rights_help	ও বরকনি বাগুই রাং & ফলওর সামুংরক — চয়চলে উংনা বাগুই তাপ খাই দি: কুথার → বস নাংনাই PIN → কুথার য়া. বিল পরিনত খাইমানি আব বিল সিমি সে; রাংচাকনি সতাতিওনরক উংখা লিসত নি থানি.
+dish_picker_help	চিনি দিশেস ন নাই দি এবা বরউসে খাই দি তেই বিনি মুং তেই ফত ন ফুআরনা বাগুই কাইসা ন তাপ খাই দি — এবা নিনি মুং ন নারুক দি. নিনি পরিচে সেত খাইদি (0 উংখা কাহাম), আবনি উল আদ খাইদি.
+close_dish_list	দিশ নি লিসত ন বনদি দি
+own_item_name	ওব নিনি সাকনি মানুই নি মুং উঙুই উসে খাইদি
+on_your_menu	নিনি মেনু ও
+edit	সুনামদি
+schemes	সকিম / য়াফারমুং
+schemes_help	BOGO, 100-1000, তেই সুলাইজাক চমব. চমব রক রহর দি KOT; চমব উঙুই থাংমা জরা জরা উঙুই তংনাই. উধাহারানা: 2 Thali পাইখে 1 Chaas মানাই
+scheme_bogo_ph	Buy 2 Thali get 1 Chaas
+add_scheme	BOGO চাপদি
+schedule_ph	জরা / খাকচাংমা জরা — সাল-সুম 07:00-11:00 এবা HappyHour 17:00-19:00=150
+upi_vpa_ph	UPI ID (VPA)
+upi_payee_ph	UPI রাং মানাই মুং (চাজাক য়া)
+upi_qr	UPI QR
+show_upi_qr	ফুনুকদি UPI QR
+close_upi_qr	খলবুই
+upi_qr_help	গুএসত সচান খাইউই রাং রুখা. বহরক রাং রুমানি উল রাং রুমানি তাকে ন তাপ খাই দি. তেই কাইসা সকরিন: Server উরল /LAN ও ফুনুকদি.
+kot_recall	মুইতু নারুকদি
+recently_done	তাবুক সিমি খলাইজাক
+recall_kot_ph	KOT # মুইতু নারুকনা বাগুই
+role_help_customer	রল: গরাহক — খাতা (বহরক চুংন রাং রুনাই). সামে পারতয় ব সতচক সুপলয় খাই মান.
+role_help_both	সামুংরক: গরাহকনাই + ফালনাই — কাইসা পারতয়, খাতা তেই রাং রুনা নাংনাই, রেপরত-ও নেত.
+role_help_supplier	রলে: সুপলিএর — চুং বহরকন রাং রুনা বাগুই রাং রুনাই.
+dine_in_pick_table	চামুং চাদি — হা সাকাও কাইসা তাবলে চংদি
+choose_table	কাইসা তাবলে চংদি
+change_table	তাবলে সুলাই দি
+pick_table_banner	ও ওরদের নি বাগুই কাইসা তাবলে চংদি
+items_word	মানুইরক
+items_section	মানুই
+back_to_order	ওরদের খুলাইনা বাগুই কিফিলুই ফাইদি
+new_items_head	তাবুকব রহরজাকয়া
+price_ph	দাম
+price_ph_gst_inside	খরকসা খরকসানি রাং ({tax} বাই বাকসা)
+cancel_needs_table	ও ওরদের ন ফলওর নি সিমি (কাইসা মেজা) ফিয়গুই দি, নুং রাং রুজাক য়া সাক তিচকেত ও চউনতের KOTস তং দি
+tax_rates_missing_hint	এ চানারকো {tax} নি রাং কুরুই — মেনু ও {tax} নি রাং সেত খাইদি (রাং সুকাংনি {tax} সিমিতি)
+taxable_value	তাক্ষ উংনাই মানুই
+gst_inside_price_note	({tax} উঙুই)
+start_with_template	চিনি মেনু নি তেমপলাতে বাই চেংদি
+template_heading	চিনি মেনু নি তেমপলাতে
+template_info	{c} উংখা তেই {d} উংখা মাংপিলি বাই, চাপনা বাগুই তিয়ার. পরিচে ₹0 নি সিমি চেংজাক — নিনি রাং ন সেত খাই দি.
+template_import	পুইলা তেমপলাতে তুবুদি
+template_confirm	বহরকনি জাত বাই {d} চামুংরক চাপদি? দিশেস নরক সুকাংনি সিমি তংমানি আব হাই খেন তঙুই মান.
+template_yes	হই, তুবুমানি
+template_importing	মেনু তুবুই তঙ...
+template_import_progress	ফাইমানি... {d}/{t}
+template_done	চিনি তেমপলাতে নি জত চামুং ন নিনি মেনু ও তঙ.
+template_imported	{d} চামুংরক তেই {c} চামুংরক চাপজাক খা — ও সচরেএন-ও বোরকনি রাং সেত খলাই দি
+client_template_heading	Client মেনু
+client_template_info	{title}: {c} উংখা, {d} উংখা রাং, মাংপিলি, তেই মুং কুরুই. মিসিং দিশেস সিমি সে — মুংরক নরক সুকাংনি সিমি’-ন তঙুই মান.
+client_template_import	ও মেনু তুবুদি
+client_template_confirm	{title} নি সিমি {d} উংখা? দিশেস নরক সুকাংনি সিমি তংমানি আব হাই খেন তঙুই মান.
+client_template_importing	ফাইমানি {title}...
+client_template_done	{title} নি সিমি জত দিশ ন নিনি মেনু ও তঙ.
+client_template_imported	{title} নি সিমি {d} চামুং তেই {c} মুংরক চাপজাক খা
+resv_heading	রেসেরভাতিওন
+resv_name_ph	ফাইনাইরকনি মুং
+resv_phone_ph	ফনে (চাজাকয়া)
+resv_guests_ph	ফাইনাইরক
+resv_when_ph	জেফুরু — 20:30, থুংসা 13:00
+resv_table_ph	মেজা (চাজাকয়া)
+resv_add	বিজাপ
+resv_seat	আচুকমানি
+resv_none	বওকিং উঙুই তংনাই.
+guests_word	বিসিঙ ফাইনাইরক
+delivery_by_ph	(রিদের এবা সামুং তাংনাইরকনি মুং বাই) তুবুমানি
+kitchen_all_day	তাবুক থুংনা বাগুই: {items}
+kitchen_all_day_head	তাবুক থুংনা বাগুই
+kitchen_tab_live	কুথাং
+kitchen_tab_recall	মুইতু নারুকদি
+kitchen_tab_stations	সতাশন
+split_bill	বিল খাই দি
+split_go	কুতাল বিল সুনামদি
+cancel	চানচেল খাইদি
+opening_client	চলিএনত খুলকজাক...
+preparing_desk	দেসক তিয়ার খলাইউই তঙ...
+opening_server	সেরভের খুলাইজাক...
+creating_server	সেরভের সুনামুই তঙ...
+split_help	খরকসা ফাতারসা রাং রুমানি চামুংরকন তাপ দি · {n} চংখা
+split_send_first	পুইলা KOT রহর দি — থুংমুংনি থানি তংনাই চামুংরক সিমি সে তেই কাইসা বিল-ও থাঙুই মান
+split_pick_some	পুইলা কুতাল বিল নি বাগুই দিশ ন তাপ খাই দি
+split_done	কুতাল বিল সুনামজাক — আব ও তাবলেনি গানাও হা সাকাও তঙ
+split_marked	কুথার বিল
+order_empty_pick	ওরদের খাইউই — দিশ পিচক খলাইনানি বাগুই সাকাও দিশ আদ খাই দি.
+add_dishes	থালারক তুবুদি
+order_so_far	ও ককতুমা বাই: {n} · {total}
+no_dish_match	খরকসা ফান চামুং “{q}” বাই কুরুংয়া
+pick_dishes_help	কাইসা দিশ ন চাপদি আবন তুবুনা বাগুই · লিসত ন নারউ খুলাইনা বাগুই কাইসা জাগা চংদি
+pick_done	কুথার
+pick_done_dd	কুথার · {label}
+printer_route_mode	ও জাগাও কুবাংমা পরিনতের তংখে
+printer_mode_first	পুইলা আব সামুং তাংনাই
+printer_mode_all	জতন পরিনত খাইদি
+kot_show_area	আমচাই
+kot_hide_area	জাগা ন খুমদি
+kot_show_item_hdr	মানুই · কুবাংমা
+kot_hide_item_hdr	কলম ন খুমদি
+kot_show_title	মুচুংতুই লিনে
+kot_hide_title	মুচুংতুই রুদি
+kot_field_order	পরিপ খাইনানি ওরদের
+kot_field_up	সাকাও হিমদি
+kot_field_down	তুইমাও হিমদি
+kot_field_cycle	তেই কাইসা চংদি
+kot_field_select	তেই কাইসা চংদি
+kot_field_time	জরা
+kot_field_kot_no	KOT য়া
+kot_field_area	আমচাই
+kot_field_table	মেজা
+kot_field_shop	দুকান নি মুং
+kot_field_waiter	কামবরক
+kot_field_station	সতাতিওন
+app_template_blurb_extra	তেই: মালখুংনি Zahir, Admin Asif, সামুং তাংনাই Nawaz; FOH বুখাকনি; হউরস নি উল হিসতরয়; তিনি সতরিপ খলাই দি; কুচাক KOT.
+dishes_n	{n} থালা
+recipe_ph	চামুংনি মুং (চাজাকয়া) — কাইসা উঙুই সুনামনাই: চানা=0.2, পানেএর=0.15
+reorder_ph	তেইব পাই দি
+set_reorder	লেভেল সুনামদি
+low_stock_alert	কুমাজাক — দাকতিন কিরিদি: {items}
+unpriced_note	{n} নিনি মেনু ও তংনাই চামুংরকনি রাং তাবুক জরা কুরুই — নুং কাইসা সেত খলাই য়া সাক বহরক 0 ও বিল খলাইও.
+show_unpriced	দিশেস সিমি ফুনুকদি রাং কুরুই খে
+show_all_dishes	জত দিশ ফুনুকদি
+role_waiter	চাকনাই
+role_kitchen	চানানোক
+role_title_rest_ph	সামুংনি মুং (উ.গ. কাপতেন, বখরক চানাই)
+preset_help_rest	সামুং তাংনাই: ওরদের নাখা তেই তাবলে চালাইও. চাশিএর: ব রাং রুনাই. কিচিং: কিচিং নি সচরেএন. নাইকলনাই: আব হাইন হাই মেনু, সুবাই তেই কুমাজাক.
+kind_raw	রাউ মানুই
+kind_resale	কিরিজাক তেই ফালজাক
+kind_dish	চুং সুনামনাই চামুং
+buy_unit_ph	কাইসা (কগ, লিতার, পচস)
+add_another_way	+ তেই কাইসা লামা আদ
+parts_status	{b} নি {a} উংখা · {c} উংখা
+save_expense	খারজা বাচাদি
+rest_ph	খাকচাংমা
+low_badge	লউ
+stock_empty	তাবুক জরা সতচক ও মুংসা ফান কুরুই — বুয় ও রেচরদ খলাইমানি আব আর ফুনুকজাক.
+recent_changes	তাবুকনি সুলাইজাকমা
+lane_declared_label	তাক্ষ নি রাং
+lane_owner_label	রাং নি মেম
+money_lane_bill	বিল: {lane}

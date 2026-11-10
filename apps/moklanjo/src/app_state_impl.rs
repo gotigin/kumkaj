@@ -873,14 +873,16 @@ impl AppState {
                 self.fiscal.credit_label(),
                 self.money(Money(report.day.credit_paise))
             ),
+            // Report text is English data output (vision §23): the
+            // template's own words, not the translated chip labels.
             format!(
                 "{} {}",
-                self.lane_declared_label(),
+                entity_template::resolve(&self.entity_template_id).lane_declared_label,
                 self.money(Money(report.day.declared_paise))
             ),
             format!(
                 "{} {}",
-                self.lane_owner_label(),
+                entity_template::resolve(&self.entity_template_id).lane_owner_label,
                 self.money(Money(report.day.owner_lane_paise))
             ),
             format!(
@@ -1324,16 +1326,14 @@ impl AppState {
         self.suggest_rev = self.suggest_rev.wrapping_add(1);
     }
 
+    /// Money-lane chip words in the UI language (`lane_*_label` keys). The
+    /// template's English copy stays for books / report text only.
     fn lane_declared_label(&self) -> String {
-        entity_template::resolve(&self.entity_template_id)
-            .lane_declared_label
-            .into()
+        self.t("lane_declared_label")
     }
 
     fn lane_owner_label(&self) -> String {
-        entity_template::resolve(&self.entity_template_id)
-            .lane_owner_label
-            .into()
+        self.t("lane_owner_label")
     }
 
     /// One-line/multi-line “today” strip. Word prefixes and counts stay

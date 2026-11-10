@@ -1,0 +1,835 @@
+# Italian — Italiano (it). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	Libri corriere + banco spedizioni. Gratis offline.
+unlock	Sblocca
+pin_hint	Il PIN del titolare inizia con 0000
+sell	Spedizioni
+buy	Pagamenti
+books	Libro del giorno
+books_help	Posizione di oggi. Spedizioni = pacchi in entrata. Pagamenti = fatture corrieri e spese. Parti = mittenti e corrieri.
+buy_help	Buoni spesa e fatture corrieri (denaro in uscita). A conto resta nel libro della parte.
+sell_money_in	Registra un pacco
+buy_money_out	Spesa / fattura corriere
+record_purchase	Registra acquisto
+add_expense	Buono spesa
+bank_book	Libro banca
+credit_help	L'id parte è unico (i nomi possono ripetersi). Ruoli: mittente (AR), corriere (AP), o entrambi sullo stesso id. I libri restano separati; i report mostrano il netto.
+party_kind_ph	Ruolo personalizzato (opzionale) — o tocca un chip
+parties_list_heading	Parti salvate
+reports_help	Libro del giorno, debitori e creditori, libro banca, buoni spesa, profitti e perdite.
+reports_today	Libro del giorno (oggi)
+reports_month	Profitti e perdite (mese)
+reports_aging	Scadenze / Dr-Cr
+reports_balance_sheet	Bilancio
+reports	Report
+refresh	Aggiorna
+undo	Annulla
+start_tracking	Inizia conteggio
+stock_minus	− Scorte
+stock_plus	+ Scorte
+settle_cash	Incassa contanti
+settle_card	Incassa carta
+items	Tariffe e servizi
+nav_items	Tariffe
+more	Altro
+your_items	Le tue tariffe
+items_help	Ogni riga è una tariffa (es. Surface Zone A). L'unità è di solito kg. Tocca per modificare.
+add_item	Aggiungi tariffa
+new_item	Nuova tariffa
+adding_item	Aggiunta tariffa
+editing_item	Modifica
+save	Salva
+remove	Rimuovi
+empty_catalog	Nessuna tariffa ancora. Apri Tariffe e servizi, aggiungine una (nome + prezzo, unità kg), poi Spedizioni.
+counter_sale	Spedizione al banco
+total	Totale
+cash	Contanti
+upi	UPI
+card	Carta
+credit	Parti
+clear	Svuota
+ready_to_sell	Pronto a spedire
+today_prefix	Oggi
+today_mid	oggi
+owed	dovuto
+round_word	arrotondamento
+back	Indietro
+sold_out	Esaurito
+restock	Rifornisci
+not_tracked	Non contato
+in_stock	in magazzino
+marked_sold_out	Segnato esaurito
+add_upper	Aggiungi
+na	N/D
+qty	Qtà
+unit_at	Prezzo
+actual	Effettivo
+applied	Applicato
+note_ph	Nota (facoltativo)
+rounded	Arrotondato
+split	Dividi
+counter	Banco
+parcel	Pacco
+order	Ordine
+sales	Spedizioni
+sales_refunds	Spedizioni e rimborsi
+day_close	Chiusura giorno
+reports_expenses	Report e spese
+nav_reports	Report
+nav_settings	Impostazioni
+nav_lock	Blocca
+sidebar_settings	Impostazioni barra laterale
+sidebar_settings_help	Stessi icone della barra laterale. Trascina una riga per riordinare. Inverti l'interruttore per mostrare o nascondere. Impostazioni e Blocco rimangono sempre sulla barra.
+sidebar_always_on_short	Sempre attivo
+sidebar_back_settings	Indietro
+sidebar_shown	Visualizzato
+sidebar_hidden	Nascosto
+sidebar_always_on	Sempre sulla barra
+sidebar_shown_hint	Visualizzato nella barra laterale o nelle schede inferiori
+sidebar_hidden_hint	Nascosto dalla barra
+sidebar_menu_items	Menu e Articoli
+sidebar_enable_all	Abilita tutto
+sidebar_disable_all	Disabilita tutto
+sidebar_order_saved	Ordine salvato nella barra laterale
+sidebar_visibility_saved	Visibilità della barra laterale salvata
+amounts_hide	Nascondi
+amounts_show	Mostra
+no_sale_yet	Nessuna vendita ancora
+favorites	Preferiti
+favorites_help	Articoli che vendi spesso, salvati per il tuo accesso. Aggiungine uno al conto o crea la tua lista da tutti gli articoli qui sotto.
+your_favorites	I tuoi preferiti
+all_items	Tutti gli articoli
+no_favorites	Nessun preferito ancora — aggiungi articoli dall'elenco qui sotto.
+add_to_bill	Aggiungi al conto
+added	Aggiunto
+owes_word	deve
+selected_word	Selezionato
+chip_clear_credit	in pari: fai credito o prendi un anticipo
+chip_missing_customer	Cliente scelto mancante: scegli di nuovo
+chip_no_customer	Nessun cliente ancora: scrivi un nome e tocca Credito
+credit_summary_fmt	{} clienti · credito aperto {} · anticipi trattenuti {}
+recent_label	Recenti:
+inventory	Scorte
+inventory_stock	Scorte e conteggio
+branches	Filiali
+branches_org	Filiali e organizzazione
+credit_customers	Parti (debitori e creditori)
+customer_name_ph	Nome parte
+new_customer_ph	Nome nuova parte
+item_name_ph	Nome tariffa (es. Surface Zone A)
+item_price_ph	Per kg / prima fascia
+start_template	Prodotto
+next_booking	Prossima spedizione
+destination_ph	Città / zona di destinazione
+consignee_ph	Destinatario
+consignee_phone_ph	Telefono del destinatario
+consignee_address_ph	Indirizzo di consegna
+origin_name_ph	Nome del mittente
+origin_phone_ph	Telefono del mittente
+origin_address_ph	Indirizzo di ritiro / origine
+booking_consignor_heading	Mittente (cliente)
+booking_consignee_heading	Destinatario
+booking_consignor_hint	Scegli una parte per compilare, o lascia vuoto per un cliente di passaggio. Serve per ritiro a domicilio e RTO.
+booking_consignee_hint	Chi riceve il pacco. Lascia vuoto per i pacchi consegnati direttamente al banco.
+weight_kg_ph	Kg effettivo
+length_cm_ph	Lunghezza cm
+breadth_cm_ph	Larghezza cm
+height_cm_ph	Altezza cm
+chargeable_kg	Kg addebitabile
+awb_label	AWB
+booking_help	Senza appuntamento: destinazione → pesa → scegli tariffa → a conto/contanti → paga. L'AWB si stampa sulla ricevuta. La prossima spedizione svuota il banco.
+cart_empty_hint	Banco vuoto — imposta destinazione e peso, tocca ADD su una tariffa, poi paga.
+team	Squadra
+team_pins	Squadra e PIN
+my_pin_settings	Il mio PIN
+settings_hub_help_my_pin	Cambia il PIN di sblocco di chi ha effettuato l'accesso su questo dispositivo.
+team_self_help	Solo tu puoi cambiare il tuo PIN di sblocco (e la password di accesso facoltativa). Chiedi al Titolare se ti servono altre schermate o diritti.
+backup_settings	Backup e impostazioni
+lock_app	Blocca
+pick	Scegli
+select	Seleziona
+advance	Avanza
+owner	Titolare
+staff	Personale
+photo	Foto
+auto	Auto
+prev	Precedente
+next	Successivo
+ok	OK
+this_shop	Modalità server
+extra_till	Modalità client
+off	No
+server	Server
+client	Client
+language_currency	Lingua e valuta
+language	Lingua
+choose_language	Scegli la lingua
+language_setup_hint	Segui la lingua di questo dispositivo o scegline una tu.
+lang_follow_platform	Usa la lingua del dispositivo
+lang_pick_user	Usa la lingua scelta
+lang_platform_now	Lingua attuale del dispositivo
+selected_language	Selezionata
+continue	Continua
+this_device	QUESTO DISPOSITIVO
+device_use_q	Come verrà usato questo dispositivo?
+last_server_mode	Era server — tocca per continuare
+last_client_mode	Era client — tocca per continuare
+choose_server	Scegli un server
+choose_server_hint	Questo dispositivo ha già dei server. Aprine uno o creane uno nuovo per un'altra attività.
+create_new_server	Crea nuovo server
+open_server	Apri
+new_server_name_ph	Nome nuovo server (facoltativo)
+server_remove_pin_ph	PIN Owner per rimuovere
+only_owner_remove_server	Solo l'Owner può rimuovere un server
+owner_pin_remove_server	Serve il PIN Owner per rimuovere questo server
+device_setup_help	Il server tiene qui i libri. Il client si abbina a un server.
+currency	Valuta
+backup	Backup
+settings_sec_diag	Diagnostica
+settings_hub_help	Apri un'area alla volta — meno scorrimento, scelte più chiare.
+settings_sec_devices	Casse extra e filiali
+settings_sec_alerts	Avvisi
+alerts_help	Quanto restano sullo schermo i messaggi di stato per te (questo accesso).
+snack_secs_ph	Secondi (3–60, predefinito 10)
+snack_secs_save	Salva durata avvisi
+snack_secs_saved	Durata avvisi salvata — {n} secondi
+snack_secs_bad	Inserisci i secondi come numero (3–60)
+cancelled	Annullato
+cancel	Annulla
+opening_client	Apertura cliente…
+preparing_desk	Preparazione bancone…
+opening_server	Apertura cameriere…
+creating_server	Creazione cameriere…
+diag_privacy_help	I log rimangono su questo dispositivo. I segreti (PIN, password) non sono mai archiviati. La condivisione di un pacchetto fuori dal dispositivo richiede la tua approvazione esplicita ogni volta — mai venduto o fornito a terze parti.
+diag_level	Livello di dettaglio
+diag_level_error	Errori
+diag_level_warn	Avvisi
+diag_level_info	Informazioni
+diag_level_debug	Debug
+diag_support_start	Avvia sessione di supporto 30 minuti
+diag_support_stop	Termina sessione di supporto
+diag_support_started	Sessione di supporto su — Dettagli debug per 30 minuti
+diag_support_ended	Sessione di supporto terminata
+diag_export_local	Esporta copia locale
+diag_export_local_done	Diagnostica pronta in {path} — scegli dove salvare la copia
+diag_approve_send	Approva condivisione da questo dispositivo
+diag_send_heading	Condividi fuori da questo dispositivo
+diag_send_help	L'approvazione è valida per un pacchetto, poi scade. Temporanea — utilizzata solo per correggere o migliorare il prodotto. Non condivisa con terze parti. Funziona su Linux, Windows, macOS e Android.
+optional_login_heading	Accesso facoltativo
+rights_heading	Permessi
+booking_scope_heading	Nazionale / Internazionale
+diag_send_approved	Condivisione approvata per un pacchetto (scadenza imminente)
+diag_export_send	Crea pacchetto di condivisione (richiede approvazione)
+diag_export_send_done	Pacchetto di condivisione pronto in {path} — scegli dove salvare, poi invia solo al supporto Kumkaj
+diag_save_bundle	Salva copia diagnostica
+diag_bundle_saved	Copia diagnostica salvata in {path}
+diag_bundle_failed	Impossibile salvare la copia diagnostica — riprova
+diag_clear	Cancella log diagnostici
+diag_cleared	Log diagnostici cancellati
+use	Usa
+add_branch	Aggiungi filiale
+add_conversion	Aggiungi conversione
+add_item_plain	Aggiungi articolo
+add_note	Aggiungi nota
+add_opening_balance	Aggiungi saldo iniziale
+add_rider	Aggiungi rider
+add_staff	Aggiungi personale
+add_unit	Aggiungi unità
+add_use_name	Aggiungi / usa questo nome
+allow_extra_tills	Consenti casse extra
+amend	Modifica
+apply_country_pack	Applica pacchetto paese
+datetime_appearance	Aspetto della data e dell'ora
+datetime_appearance_help	I libri tengono dentro la data anno-prima in RFC3339. Questo cambia solo come si vedono date e orari su ricevute, etichette, report e schermo.
+datetime_example	Esempio ora: {ex}
+date_order	Ordine della data
+date_order_dmy	G/M/A
+date_order_mdy	M/G/A
+date_order_ymd	A-M-G
+time_format	Orologio
+time_format_24h	24 ore
+time_format_12h	12 ore
+attach_bill_photo	Allega foto fattura
+attach_pdf	Allega PDF
+attach_photo	Allega foto
+bank	Banca
+bank_in	Versamento banca
+bank_out	Prelievo banca
+bank_to_till	Banca → cassa
+till_to_bank	Cassa → banca
+mark_cleared	Segna compensato
+unmark	Togli segno
+role_both	Entrambi
+role_carrier	Corriere
+role_cashier	Cassiere
+role_consignor	Mittente
+role_manager	Manager
+role_supplier	Fornitore
+branch_name_sell_ph	Nome della filiale da cui vendere
+bring_my_book	Porta il mio libro
+business_tax_id_ph	Id fiscale attività
+card_amount_ph	Importo carta
+cash_amount_ph	Importo contanti
+upi_amount_ph	Importo UPI
+carrier_cost_ph	Costo corriere
+carrier_party_ph	Parte corriere
+choose_icon	Scegli icona
+choose_logo	Scegli logo
+choose_receipt_stamp	Scegli timbro ricevuta
+choose_payment_qr	Scegli QR pagamento
+clear_icon	Rimuovi icona
+clear_logo	Rimuovi logo
+clear_photo	Cancella foto
+clear_stamp	Cancella timbro
+clear_payment_qr	Cancella QR pagamento
+print_faces	Aspetto di stampa (ricevuta / fattura periodo)
+print_faces_help	Timbro e QR di pagamento facoltativi accanto al logo su ricevute di spedizione e fatture periodo.
+awb_pools_heading	Blocchi di numeri AWB del corriere
+add_awb_pool	Aggiungi pool AWB
+awb_pool_carrier_ph	Nome corriere
+awb_pool_start_ph	N. iniziale
+awb_pool_end_ph	N. finale
+awb_pool_prefix_ph	Prefisso (facoltativo)
+awb_pool_label_ph	Etichetta (facoltativa)
+pieces_ph	Colli (vuoto = 1) — espandi per merci / più colli
+bulk_awbs_ph	AWB in blocco: incollane molti (a capo o virgola) per avanzare lo stato in una volta
+tds_cut_ph	Ritenuta TDS (facoltativa)
+discount_ph	Sconto (facoltativo)
+cheque_no_ph	Numero assegno (facoltativo)
+bill_reminder_chase	Elenco sollecito fatture
+month_mix_report	Report mix del mese
+copy_month_gst_csv	Copia CSV GST del mese
+domestic	Nazionale
+international	Internazionale
+pick_logo	Scegli logo
+booking_scope_hint_domestic	Volumetrico ÷5000 (nazionale) — internazionale ÷6000
+booking_scope_hint_intl	Volumetrico ÷6000 (internazionale) — nazionale ÷5000
+cod_register	Registro contrassegno
+collect_cod	Incassa contrassegno (AWB)
+consignments_dispatch	Spedizioni e invio
+consignor_party_ph	Mittente / nome parte
+copy_day_book_csv	Copia CSV libro del giorno
+copy_day_close	Copia chiusura giorno
+copy_items_csv	Copia CSV articoli
+copy_outstanding_csv	Copia CSV scadenze
+copy_parties_csv	Copia CSV parti
+copy_party_ledger_csv	Copia CSV libro parte
+copy_receipt	Copia ricevuta
+copy_report	Copia report
+counted_cash_ph	Contanti contati in cassa
+counter_agency_ph	Nome banco / agenzia (facoltativo)
+create_backup	Crea backup
+day_close_summary	Riepilogo chiusura giorno
+delete_party	Elimina parte selezionata
+dispatch_to_rider	Prenotato → al rider
+docket_charge_ph	Costo bolla
+declared_value_ph	Valore dichiarato
+contents_ph	Contenuto
+eway_ph	N. e-way bill
+insurance_label	Assicurazione (sì/no)
+yes_label	Sì
+no_label	No
+print_route_label	Percorso di stampa
+new_party_kind_label	Tipo di nuova parte
+done_open_books	Fatto — apri i libri
+export_day	Esporta giorno
+extra_note_expense_ph	Nota extra sull'ultima spesa
+extra_note_awb_ph	Nota extra su questo AWB / vendita
+failed_delivery	Consegna fallita
+find_scan_awb	Trova / scansiona AWB
+forget_shop	Dimentica questo negozio
+fuel_ph	Carburante
+handover_carrier	Prenotato → al corriere
+import_day	Importa giorno
+import_items_csv	Importa CSV articoli / tariffe…
+import_parties_csv	Importa CSV parti…
+import_pincodes_csv	Importa CSV CAP…
+import_carrier_bill_csv	Importa CSV fattura corriere…
+copy_carrier_bill_report	Copia ultimo report fattura
+use_carrier_cost	Usa costo corriere
+rate_carrier_ph	Corriere (vuoto = nostra tariffa vendita)
+rate_party_ph	Parte (vuoto = tutti i clienti)
+carrier_pick_ph	Corriere per il costo (dal confronto)
+item_name	Nome articolo
+load_bulk_row	Carica riga massiva → banco
+login_id_ph	Id di accesso
+mark_delivered	Segna consegnato
+manifest_cod_total	Totale COD
+manifest_received_by	Ricevuto da
+manifest_sign	Firma
+ndr_address_wrong	Indirizzo errato
+ndr_customer_unavailable	Cliente non disponibile
+ndr_door_locked	Porta chiusa
+ndr_other	Altro
+ndr_refused	Rifiutato
+out_for_delivery	In consegna
+print_drs	Stampa DRS
+print_run_sheet	Stampa foglio di corsa
+reattempt	Nuovo tentativo
+rider_cod_handed_ph	COD consegnato dal rider
+settle_rider_cod	Salda COD rider
+mode_desk	Banco
+mode_rider	Rider
+waiting_office	in attesa dell'ufficio
+capture_signature	Acquisisci firma
+incoming_manifest	Manifesto in arrivo
+pickup_request	Richiesta ritiro
+pickup_run	Giro ritiro
+auto_assign_area	Assegna zona auto
+reorder_stops	Riordina fermate
+settle_rider_pay	Salda paga rider
+vehicle_inspect	Ispezione veicolo
+print_docket	Stampa docket
+franchise_statement	Rendiconto franchise
+tally_export	Esporta buoni Tally
+open_whatsapp	Apri WhatsApp
+copy_sms	Copia testo SMS
+pick_barcode_image	Scegli immagine da scansionare
+share_receipt_whatsapp	Condividi ricevuta su WhatsApp
+delivery_feedback	Feedback consegna
+lan_self_book	Prenotazione LAN
+new_party_clear	Nuova parte (pulisci modulo)
+new_party_kind_ph	Tipo nuova parte (fornitore / corriere)
+next_country	Paese successivo
+prev_country	Paese precedente
+note_gstin_ph	Nota / GSTIN / promemoria accordo
+note_pod_ph	Nota / POD (facoltativo)
+on_account_ap	A conto (AP)
+org_optional_ph	Organizzazione (facoltativo)
+paid_now	Pagato ora
+pairing_code_ph	Codice di abbinamento
+pair_now	Abbina ora
+party_name_selected_ph	Nome parte (o usa la selezionata)
+password_ph	Password
+pay_ap_card	Paga AP con carta
+pay_ap_cash	Paga AP in contanti
+pay_ap_upi	Paga AP con UPI
+period_bill	Fattura periodo
+period_bill_party	Fattura periodo (parte)
+pick_pod_photo	Scegli foto POD
+print_awb_label	Stampa etichetta AWB
+print_open	Stampa / apri
+reason_amend_ph	Motivo modifica / annullo / rimborso
+reason_note_ph	Motivo / nota (scarto, conteggio, …)
+record_day_close	Registra chiusura giorno
+refresh_from_shop	Aggiorna dal negozio
+refund	Rimborso
+remit_cod	Versa contrassegno (parte)
+remove_selected	Rimuovi selezionato
+restore_backup	Ripristina backup
+rider_name_ph	Nome rider
+rider_phone_ph	Telefono rider
+riders	Rider
+riders_own_fleet	Rider (flotta propria)
+rollup	Riepilogo
+save_booking_measures	Salva misure spedizione
+save_brand	Salva marchio
+save_business_id	Salva id fiscale e % servizio
+save_business_name	Salva nome attività
+save_features	Salva configurazione del ruolo
+save_names	Salva nomi
+server_ip_ph	IP server (es. 192.168.1.10)
+set_credit_limit	Imposta limite di credito
+set_login_selected	Imposta accesso al selezionato
+set_login_named	Applica accesso a {name}
+shop	Negozio
+start_fresh	Ricomincia da zero
+stop_extra_tills	Ferma casse extra
+backup_auto	Backup automatico ogni giorno · ultimo {when} · gli ultimi 14 giorni sono in {dir}.
+backup_auto_none	Backup automatico ogni giorno: il primo parte tra poco.
+backup_copy_to	Le copie vanno anche in {dir}.
+backup_copy_btn	Copia i backup anche in una cartella…
+autostart_off	Avvia con questo computer
+autostart_on	Si avvia con questo computer ✓ — tocca per fermare
+autostart_done_on	Ora l'app si apre all'avvio di questo computer: il server torna dopo un blackout.
+autostart_done_off	Il computer non apre più l'app all'avvio.
+right_allowed	Consentito
+right_with_approval	Con approvazione
+right_denied	Non consentito
+editing_staff	Diritti di
+team_pick_ph	Nome del dipendente da modificare
+select_staff	Scegli questo dipendente
+rights_help	Diritti — tocca per cambiare: Consentito → Con approvazione (il PIN di un manager in quel momento) → Non consentito.
+right_void_refund	Annullare o rimborsare una spedizione
+right_amend_sale	Modificare una spedizione registrata
+find_server	Trova il server del locale
+finding_server	Cerco il server del locale su questo Wi‑Fi…
+no_server_found	Nessun server trovato. Verifica che il dispositivo del locale sia sullo stesso Wi‑Fi con casse extra consentite, o digita il suo IP.
+servers_found_pick	Tocca il negozio a cui vuoi collegarti.
+server_host_selected	Usando {host}: inserisci il codice di associazione, poi Associa ora.
+device_forgotten	Il negozio ha dimenticato questo dispositivo: associalo di nuovo con il codice attuale. Gli ordini in attesa restano.
+forget_device	Dimentica
+last_seen	visto
+new_pair_code	Nuovo codice di associazione
+lan_offline	Offline
+lan_offline_waiting	Offline · {n} in attesa
+lan_connecting	Connessione al negozio…
+pair_finishing	Abbinamento in chiusura… si applicano i libri dell'ufficio
+pair_opening	Apertura dell'ufficio…
+lan_live	Dal vivo
+lan_sending	{n} in invio
+lan_sign_in_to_send	Accedi di nuovo per inviare {n}
+lan_pair_again	Associa di nuovo questo dispositivo
+lan_update_app	Aggiorna l'app: questo dispositivo e il server dell'ufficio hanno versioni diverse
+allow_firewall	Consenti ad altri dispositivi di collegarsi
+firewall_blocked	Il firewall di questo computer blocca gli altri dispositivi — tocca «Consenti ad altri dispositivi di collegarsi».
+firewall_waiting	In attesa dell'autorizzazione amministratore…
+lan_join_help	Altri dispositivi possono collegarsi a questo — codice di abbinamento {code}. Sull'altro dispositivo scegli Modalità client, poi Trova il server del locale, oppure scrivi questo indirizzo: {addr}
+lan_pair_status	Wi‑Fi {addr}
+lan_join_help_no_addr	Collega questo dispositivo a Wi‑Fi per un indirizzo.
+lan_no_address	Questo dispositivo non ha ancora un indirizzo Wi‑Fi: collegalo al Wi‑Fi del locale.
+lan_not_listening	Al momento non accetta dispositivi: un altro programma potrebbe usare la porta {port}. Riavvia l'app.
+lan_tills_off	Le casse extra sono spente. I libri di questo ufficio restano su questo dispositivo. Consenti le casse extra se anche un altro dispositivo deve registrare spedizioni o incassare.
+paired_with	Abbinato al locale su {url}
+not_paired	Non abbinato: collegati al server del locale.
+choose_device_use	Scegli come usare questo dispositivo.
+paired_note	Abbinato. Sblocca per vendere, oppure Aggiorna per avere gli ultimi dati del locale.
+last_update_at	Ultimo aggiornamento dal locale: {time}.
+pair_intro	Trova il server, oppure scrivi il suo indirizzo e il codice di abbinamento.
+queue_waiting	In attesa di arrivare al locale ({n}):
+queue_tries	{n} tentativi · ultima risposta: {e}
+save_backup_copy	Salva una copia di backup…
+backup_copy_saved	Copia di backup salvata — tienila fuori da questo dispositivo (chiavetta USB o altro dispositivo)
+backup_copy_overdue	Da {n} giorni nessuna copia di backup ha lasciato questo dispositivo — Impostazioni → Backup
+backup_copy_failed	Impossibile salvare la copia lì — scegli un altro posto
+clock_off	L'orologio di questo dispositivo differisce di {min} min dal server del locale — imposta l'ora giusta
+printers_heading	Stampanti di questo dispositivo
+printers_help	Aggiungi ogni stampante una volta, poi scegli dove stampano le ricevute e le etichette AWB — si prova la prima dell'elenco; se fallisce, la successiva. Percorso vuoto = non stampare quella funzione. Destinazione vuota (predefinita), nome di sistema o indirizzo di rete (es. 192.168.1.50). Ogni dispositivo tiene le sue stampanti.
+job_width	Larghezza contenuto (mm)
+job_width_ph	Oppure scrivi una larghezza, 40–210 mm
+job_layout	Layout
+job_delivery	Come viene inviato il lavoro
+job_size	Dimensione carattere
+job_size_ph	es. 18, 20, 26…
+save_receipt_format	Salva formato ricevuta
+save_label_format	Salva formato etichetta
+test_receipt_format	Prova ricevuta
+test_label_format	Prova etichetta
+test_receipt_sent	Ricevuta di esempio inviata
+test_label_sent	Etichetta di esempio inviata
+test_print_no_printer	Nessuna stampante per quel lavoro — aggiungine una in questo posto
+printers_host_only	Le stampanti si impostano sul dispositivo del locale (Server). Questa cassa invia lì i lavori — Trova / aggiungi / assegna restano sul Server. La pagina di prova va al Server.
+printers_pool_heading	Stampanti
+printers_routes_heading	Dove stampare
+printer_label_ph	Nome (es. Banco)
+printer_target_ph	host:9100 · bt:MAC · usb:VID:PID · nome di sistema
+printer_mode_heading	Formato per il percorso scelto
+printer_mode_standard	Standard verticale
+printer_mode_landscape	Standard orizzontale
+printer_mode_thermal	Termica
+printer_mode_standard_short	Verticale
+printer_mode_landscape_short	Orizzontale
+printer_mode_thermal_short	Termica
+printer_format_custom	Nuovo formato personalizzato
+printer_format_custom_label	Personalizzato
+printer_format_custom_added	Formato personalizzato aggiunto a questo percorso
+add_printer	Aggiungi stampante
+remove_printer	Togli l'ultimo
+route_pick_ph	receipt o label
+route_add_printer_ph	Aggiungi stampante a questo percorso
+route_receipt	Ricevuta
+route_label	Etichetta AWB
+route_dont_print	Nessuna stampante assegnata
+route_add	Aggiungi al percorso
+route_up	Su
+route_down	Giù
+route_remove	Togli l'ultimo
+route_clear	Togli le stampanti da questo posto
+save_printers	Salva stampanti
+print_test_page	Stampa pagina di prova
+printers_saved	Stampanti salvate per questo dispositivo
+test_page_sent	Pagina di prova inviata — controlla la stampante
+printers_found	Trovato su questo dispositivo: {list}
+find_printers	Trova stampanti
+printers_looking	Ricerca stampanti su questo dispositivo e sul Wi‑Fi…
+printers_tap_find	Tocca Trova stampanti per le code che accettano lavori e le stampanti di ricevute in rete su questo Wi‑Fi (non quelle rimosse o offline).
+printers_none_found	Nessuna stampante trovata — scrivi il nome di una stampante di sistema, o un indirizzo di rete (es. 192.168.1.50).
+receipt_printer_ph	Stampante ricevute
+queue_refused	Non accettati dal locale ({n}): controlla ognuno alla cassa:
+clear_not_accepted	Controllato — svuota l'elenco
+device_name_ph	Nome di questo dispositivo
+lan_last_update	ultimo aggiornamento {time}
+lan_not_accepted	{n} non accettati
+connected_now	connesso ora
+backup_failed	L'ultimo backup automatico non è riuscito: {e}
+backup_overdue	Nessun backup da {n} giorni: tieni l'app aperta su questo dispositivo perché possa farlo.
+disk_low	Restano solo {mb} MB liberi su questo dispositivo: i backup falliranno presto. Libera spazio.
+last_seen_devices	Ultima visualizzazione: {time}
+sync_interval	Sincronizza ogni {secs} secondi
+connection_to_shop	Connessione al locale
+supplier_name_ph	Nome fornitore (o parte)
+supplier_ph	Fornitore
+switch_device	Cambia questo dispositivo
+take_payment	Incassa
+tax_added_till	{tax} escluso
+tax_inside_price	{tax} incluso
+today_books	Libri di oggi
+unlock_after_pairing	Inserisci PIN
+unlock_with_login	Sblocca con accesso
+update_my_password	Cambia la mia password
+update_my_pin	Aggiorna il mio PIN
+duress_heading	PIN di sblocco di emergenza (solo titolare)
+duress_help	Facoltativo. Se questo PIN viene digitato allo sblocco al posto del tuo, tutte le scritture dei libri vengono cancellate (spedizioni, mastri, cronologia) e il banco si apre come Titolare, con aspetto normale — tariffe, parti, zone, personale e impostazioni restano. Schema e configurazione non si cancellano. Usalo solo se sei costretto a sbloccare. Lascia vuoto e salva per disattivare. Mai uguale al PIN di qualcuno.
+duress_pin_ph	PIN di emergenza (4–12 cifre)
+duress_confirm_ph	Digitare di nuovo
+save_duress_pin	Salva PIN di emergenza
+clear_duress_pin	Disattiva PIN di emergenza
+duress_on	PIN di emergenza attivo
+duress_off	PIN di emergenza disattivo
+duress_saved	PIN di emergenza salvato
+duress_cleared	PIN di emergenza disattivato
+vehicle_ph	Veicolo
+void	Annulla
+write_off_ap	Storna AP
+write_off_nil	Storna / saldo zero
+zone_ph	Zona (nome da Tariffe)
+caption_today	OGGI
+caption_bookings	SPEDIZIONI
+caption_payments_today	PAGAMENTI DI OGGI
+caption_outstanding	SCADENZE
+caption_bank	BANCA
+paid_by	Pagato con
+second_way	Secondo modo
+weight_in	Peso in
+size_in	Misura in
+goods_received	Merci ricevute
+expense_heading	Spesa
+notes_attach_sale	Note e allegati (vendita selezionata)
+notes_attach_party	Note e allegati (parte selezionata)
+attachments_last_expense	Allegati (ultima spesa)
+credit_limit_heading	Limite di credito (parte selezionata / nominata)
+pay_selected_heading	Paga selezionato (salda debito / anticipo)
+write_off_heading	Storna (chiudi senza pagamento)
+pay_ap_heading	Paga ciò che dobbiamo loro (AP)
+country_tax	Paese e tasse
+extra_tills_heading	Casse extra
+other_devices_help_heading	Configura altri dispositivi
+other_devices_help	Su questo dispositivo (Modalità server): Casse extra e filiali → Consenti casse extra. Annota il codice di abbinamento e l'indirizzo Wi‑Fi. Tocca Consenti ad altri dispositivi di collegarsi se compare. Su un computer, tocca Avvia con questo computer. Su ogni altro dispositivo: installa l'app, scegli Modalità client, trova il server del negozio (o scrivi l'indirizzo), inserisci il codice, Abbina ora. Gli ordini aspettano sul dispositivo se cade il Wi‑Fi e partono quando il server risponde.
+your_brand	Il tuo marchio (nell'app)
+units_heading	Unità
+booking_measures	Misure spedizione
+drawer_count	Conteggio cassa (facoltativo)
+spreadsheet_csv	Foglio di calcolo (CSV)
+bank_reconciliation	Riconciliazione bancaria (spunta con l'estratto)
+book_add_product	Spedizione — aggiungi prodotto / tariffa
+book_opening_credit	Spedizione — credito iniziale
+account_kind	Tipo conto (tocca uno)
+active_ledger	Libro attivo
+actual_total_cap	TOTALE EFFETTIVO
+amend_help	Seleziona una vendita da modificare, annullare o rimborsare. Le modifiche conservano tutta la cronologia.
+applied_total_cap	TOTALE APPLICATO
+bank_balance	Saldo banca
+bank_net_today	Netto banca oggi
+branch_export_help	Esporta scrive un'istantanea del giorno nella cartella dei backup e la copia negli appunti. Per importare il giorno di un altro punto vendita, salva il file come import_branch_snapshot.json in quella cartella, poi tocca Importa.
+brand_shown_help	Mostrato sulle schermate dentro l'app. Il nome e l'icona dell'app installata su questo dispositivo restano come nello store.
+app_icon	Icona dell'app
+logo_help	Marchio opzionale del negozio sugli schermi dell'app.
+onboard_layout	Ciò che ottieni
+item_photo_help	Opzionale. Senza foto mostriamo le iniziali dal nome dell'articolo.
+cash_in_hand	Contanti in cassa
+change_my_pin_heading	Cambia il mio PIN (solo il tuo)
+connect_to_server	Connetti al server
+counter_locked	Banco 01 · Bloccato
+country_pack_help	Un pacchetto paese imposta nome e calcolo della tassa, il rail di pagamento istantaneo e l'id fiscale stampato sulle fatture. Kumkaj non presenta tasse né emette fatture elettroniche governative da nessuna parte.
+currency_use_help	Scorri e tocca Usa per qualsiasi valuta supportata.
+day_close_help	Registrare una chiusura giorno salva questo riepilogo (e la differenza di cassa se contata) nel log di audit. Non ferma le vendite.
+expenses_word	Spese
+feature_access_help	Accesso alle funzioni del personale scelto (tocca dopo l'aggiunta)
+footer_local	SQLite locale · Gratis per sempre · Zero cloud
+fresh_book_moklanjo	Stampanti
+fresh_selected	Fresh selezionato — il catalogo resta vuoto. Tocca Done quando sei pronto.
+gross_word	Lordo
+how_start	Come vuoi iniziare?
+later_country_pack	Stampanti
+local_badge	LOCALE
+measures_help_moklanjo	Come si misurano i pacchi al banco. Scrivi dimensioni e peso nelle unità che usi — standard (cm, m, in, ft · kg, g, lb, oz) o la tua unità legata a cm / kg sopra (direttamente o tramite altre unità). I libri registrano sempre kg. Lascia un campo vuoto per mantenerlo.
+mix_type_hint_moklanjo	Scrivi quanto in ciascuno (contanti / UPI / carta / credito). Deve eguagliare la fattura. Il credito richiede un cliente sopra.
+money_in_sales	Denaro in entrata (vendite)
+more_help_moklanjo	Catalogo, vendite, credito, squadra, backup — più scorte e casse extra quando serve.
+net_word	Netto
+offline_badge	OFFLINE
+optional_login_help	Accesso facoltativo (id + password). Il titolare lo imposta una volta; poi solo l'utente può cambiare la password.
+or_unlock_login	Oppure sblocca con id di accesso + password
+permission_preset	Ruolo (imposta schermate e diritti)
+preset_help_moklanjo	Cassiere: vendi. Manager: vendi + articoli + annulla/modifica.
+product_locked_moklanjo	Moklanjo
+product_only_moklanjo	Questa app è solo Moklanjo: libri e banco spedizioni. Gli altri mestieri avranno prodotti propri più avanti.
+purchases_cogs	Acquisti (COGS)
+qty_cap	QTÀ
+restore_help	Ripristina: scegli un backup. I libri si aprono com'erano allora; quelli attuali vengono salvati prima, quindi si può annullare.
+wipe_data_heading	Elimina dati locali
+wipe_data_help	Solo il titolare — stesse scelte della disinstallazione Windows. I registri commerciali cancellano la cronologia e tengono tariffe/impostazioni. La configurazione negozio rimuove i libri. Preferenze schermo: finestra/lingua. Conferma con il PIN del titolare.
+wipe_trading	Registri commerciali
+wipe_schema	Configurazione negozio
+wipe_ui	Preferenze schermo
+wipe_owner_pin_ph	PIN titolare per eliminare
+wipe_delete_selected	Elimina selezione
+wipe_owner_only	Solo il titolare può eliminare i dati locali.
+restore_owner_only	Solo il titolare può ripristinare un backup.
+wipe_owner_pin_needed	Inserisci il PIN del titolare per eliminare i dati locali.
+wipe_nothing_selected	Scegli prima cosa eliminare.
+wipe_done	Dati locali selezionati eliminati.
+wipe_schema_done	Configurazione negozio cancellata — scegli Server o Client per continuare.
+rounded_total	Totale arrotondato
+setup_app_moklanjo	Configura Moklanjo
+shop_logo_optional	Logo negozio (facoltativo)
+stock_type_help	Scrivi il nome dell'articolo (basta una parte), una quantità, poi regola. Gli articoli non ancora contati hanno bisogno di Inizia conteggio una volta.
+team_owner_help	Assumi: scegli un ruolo (Cassiere / Manager), nome + PIN iniziale, poi Aggiungi. Solo se questa persona è diversa: apri schermate e diritti sotto, poi Salva configurazione del ruolo. Ognuno cambia il proprio PIN in basso — il Titolare non può cambiare quello di nessun altro.
+they_owe_us	Ci devono
+unit_at_cap	Prezzo unit.
+units_help	Codici per etichette articoli (kg, piece, bag). Ogni unità deve collegarsi — direttamente o tramite altre unità — a uno standard (kg · cm · ml · pc), es. 1 crate = 2 box e 1 box = 20 cm. Conversioni: 1 from = factor to. Le valute non sono mai unità.
+we_owe_them	Dobbiamo loro
+who_unlocking	Chi sta sbloccando?
+locked_word	Bloccato
+show_pin	Mostra PIN
+hide_pin	Nascondi PIN
+set_owner_pin	IMPOSTA PIN TITOLARE
+enter_owner_passcode	INSERISCI CODICE TITOLARE
+enter_staff_passcode	INSERISCI CODICE PERSONALE
+pin_count_zero	0 / 12 cifre · almeno 4, poi OK
+pin_count_need	{} / 12 cifre · ne servono altre {}
+pin_count_full	12 / 12 cifre · tocca OK
+pin_count_ready	{} / 12 cifre · tocca OK quando sei pronto
+pin_hint_choose	Scegli 4–12 cifre (tastiera o pad) · Invio/OK per salvare
+pin_hint_new	Nuovo PIN titolare di 4–12 cifre (tastiera o pad) · Invio/OK
+pin_hint_shop_code	Dispositivo negozio · codice di abbinamento {}
+pin_hint_books	Questo dispositivo tiene i libri
+pin_hint_paired	Cassa extra abbinata — sblocca per vendere
+pin_hint_pair_first	Cassa extra — abbina prima al dispositivo negozio
+unlock_to_continue	Sblocca per continuare
+no_staff_yet	Ancora nessun personale — sblocca come Titolare, poi Squadra
+status_server_set_pin	Modalità server — imposta PIN titolare
+status_server_tills	Modalità server — le casse extra possono unirsi. Sblocca
+status_server_unlock	Modalità server — sblocca come Titolare
+status_client_unlock	Modalità client — sblocca per vendere
+icon_new_selected	Icona: nuovo file selezionato — tocca Salva marchio
+icon_custom	Icona: marchio proprio del negozio
+icon_default	Icona: marchio Kumkaj (predefinito) — scegline uno tuo
+logo_yours	Logo: quello del tuo negozio — mostrato su schermate e scontrini
+logo_default	Logo: marchio Kumkaj (predefinito) — scegline uno tuo se ce l'hai
+tmpl_current	Attuale: {} — {}
+tmpl_selected	Selezionato: {} — {}
+setup_complete	Configurazione completata
+onboard_fresh_tmpl	Nuovo · {} — il catalogo parte vuoto; aggiungi articoli in Articoli, poi tocca Fine.
+onboard_book_tmpl	Libro · {} — aggiungi articoli e credito iniziale, poi tocca Fine.
+onboard_template_tmpl	Dai un nome al locale se vuoi, poi scegli come iniziare.
+tmpl_blurb	Libri e banco del corriere: mittenti, vettori, giornale, AWB.
+tmpl_how	Registra i pacchi al banco; il giornale per oggi; schede per tariffe, parti, report.
+trk_booked	Accettato
+trk_picked_up	Ritirato
+trk_in_transit	In transito
+trk_delivered	Consegnato
+trk_rto	In reso al mittente
+lane_to_dispatch	Da spedire
+lane_with_carrier	Presso il corriere
+lane_failed	Non consegnati
+lane_done_today	Completati oggi
+ops_board_help	Le spedizioni in base a dove sono nel lavoro di oggi. Tocca le spedizioni (o scansionale) per sceglierle, poi agisci su tutte quelle scelte insieme: ogni corsia offre solo i passi adatti.
+lane_empty	Niente qui per ora.
+picked_fmt	{n} scelti
+pick_all	Scegli tutti
+bag_for_carrier	Consegna al corriere
+send_with_rider	Affida al rider
+out_again	Di nuovo in consegna
+return_to_sender	Rendi al mittente
+runs_bags_heading	Giri e sacchi recenti
+print_word	Stampa
+bag_word	Sacco per il corriere
+run_word	Giro del rider
+parcels_fmt	{n} spedizioni
+parcel_history	Cronologia
+attempt_fmt	Tentativo {n}
+pieces_short_fmt	{n} colli
+note_reason_ph	Nota o motivo
+ops_pick_first	Prima scegli le spedizioni: toccale o scansionale
+cod_to_collect	Consegnati — contrassegno da incassare
+cod_on_road	Contrassegno ancora in viaggio
+cod_owed_consignors	Incassato — da versare ai mittenti
+cod_rto_fees	Spese RTO da incassare
+cod_to_hand_in	Contrassegno da versare
+parcel_one_fmt	{n} spedizione
+facet_bank_title	Report
+facet_bank_help	Libri giornali, aging delle parti, movimenti bancari e Profitti e perdite del periodo.
+facet_ops_title	Spedizioni e invio
+facet_ops_help	Scansiona o digita l'AWB → Trova, poi avanza / stampa etichetta / COD. Spedisci al corriere o al vettore.
+facet_cod_title	Registro COD
+facet_cod_help	Incassa alla consegna, poi rimetti al mittente.
+facet_riders_title	Corrieri (flotta propria)
+facet_riders_help	Aggiungi corrieri, poi spedisci gli AWB prenotati da Ops.
+against_bill_ph	Contro la fattura n. sopra (facoltativo)
+aliases_ph	Alias — altri nomi, separati da virgola
+amount_blank_full_ph	Importo (vuoto = saldo intero)
+amount_owed_ph	Importo dovuto
+amount_ph	Importo
+amount_received_ph	Importo ricevuto
+amount_we_pay_ph	Importo che paghiamo
+awb_scan_ph	AWB / scansiona codice
+bulk_csv_ph	CSV massivo — destination,consignee,kg,cod_paise,note
+business_name_ph	Nome dell'attività
+category_new_ph	Categoria (facoltativo, creata se nuova)
+cod_amount_ph	Importo COD
+code_bag_ph	Codice (bag)
+conv_factor_ph	Fattore (25 = 1 bag → 25 kg)
+country_code_ph	Codice paese es. IN, GB, US, AE, BR
+credit_khata_amount_ph	Importo a credito / conto
+credit_limit_ph	Limite di credito (0 = nessuno)
+dim_unit_code_ph	Codice unità di misura (cm)
+divisor_ph	Divisore volumetrico (5000)
+extra_per_kg_ph	Extra / kg
+first_amount_ph	Primo importo
+first_kg_ph	Primo kg (scaglione)
+from_code_ph	Codice da (bag)
+item_name_lang_ph	Nome articolo — scrivilo nella tua lingua
+login_id_opt_ph	Id di accesso (facoltativo)
+manager_pin_ph	PIN del responsabile (solo se non puoi annullare)
+new_branch_name_ph	Nome della nuova filiale
+new_password_ph	Nuova password (facoltativo)
+new_pin_ph	Nuovo PIN (4–12 cifre)
+note_bank_ph	Nota (deposito, prelievo, …)
+note_buy_expense_ph	Nota (carburante, affitto, …)
+note_expense_ph	Nota (carburante, ufficio, …)
+notify_phone_ph	Telefono notifiche (hook WhatsApp/SMS)
+options_moklanjo_ph	Opzioni (facoltativo) — Large=20, Gift wrap=10
+part_second_way_ph	Parte con un secondo metodo (facoltativo)
+phone_ph	Telefono
+address_ph	Indirizzo
+party_custom_fields_heading	Campi personalizzati (parte scelta)
+party_custom_help	Aggiungi qualsiasi etichetta e valore su questa parte — WhatsApp, GSTIN, codice percorso…
+party_custom_key_ph	Nome campo (es. WhatsApp)
+party_custom_value_ph	Valore
+party_custom_add	Aggiungi / aggiorna campo
+party_custom_remove	Rimuovi campo
+party_custom_empty	Nessun campo personalizzato
+party_custom_pick_first	Scegli una parte per i campi personalizzati
+place_name_ph	Nome di questo luogo
+price_ph	Prezzo
+qty_example_ph	Quantità (es. 1,5 per kg)
+quantity_ph	Quantità
+reason_required_ph	Motivo (obbligatorio)
+role_title_ph	Titolo del ruolo (es. Barista)
+service_pct_ph	Servizio % facoltativo 0/10/12
+short_code_ph	Codice breve (MG02)
+slab_kg_ph	Scaglione addebitabile in kg (0,5)
+staff_name_ph	Nome / id del personale
+starting_password_ph	Password iniziale (facoltativo)
+starting_pin_ph	PIN iniziale (4–12 cifre)
+tax_rate_ph	Nome aliquota o % — Standard, Reduced, 0, 5, 12, 18, 20
+to_code_ph	Codice a (kg)
+uncleared_no_ph	N. non compensato sopra
+unit_cost_ph	Costo unitario
+unit_kg_blank_ph	Unità (kg o vuoto)
+unit_name_bag_ph	Nome (Bag)
+weight_unit_code_ph	Codice unità di peso (kg)
+zone_name_ph	Nome della zona
+pay_credit	Credito
+book_kind_today	Libro di oggi
+book_kind_month	Libro di questo mese
+book_kind_aging	In sospeso / dare-avere
+book_kind_balance	Bilancio
+ops_desk_help	Scansiona l'AWB con un lettore USB (o digitalo) → Trova. Poi avanza, stampa l'etichetta o incassa il COD. Le etichette si stampano in Code 128.
+role_help_consignor	Ruolo: Mittente — AR (ci devono). La stessa ditta può essere anche vettore.
+role_help_carrier	Ruolo: Vettore — AP (dobbiamo loro). La stessa ditta può essere anche mittente.
+role_help_both	Ruoli: Mittente + Corriere — una parte, mastri AR e AP, netto nei Report.
+role_help_supplier	Ruolo: Fornitore — AP degli acquisti.
+lane_declared_label	Spedizione in conto
+lane_owner_label	Spedizione in contanti
+money_lane_bill	Fattura: {lane}

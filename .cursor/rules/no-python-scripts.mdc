@@ -1,0 +1,35 @@
+---
+description: Workspace and app scripts must not use Python
+globs: scripts/**,apps/*/scripts/**
+---
+
+# No Python in scripts
+
+**Decided repeatedly (e.g. 2026-10-14):** packaging, gates, scaffolding, and
+dev tooling under `scripts/` and `apps/*/scripts/` are **bash** (or Rust
+`tools/` crates) — **not** Python.
+
+## Do
+
+- Write new tooling as `.sh` (preferred) or a small Rust binary under `tools/`.
+- Prefer `gawk` / `jq` / `curl` / existing bash helpers over spinning up `python3`.
+- When replacing a retired `.py`, delete it and update `docs/DEV.md` + any
+  Cursor rule that still shows `python3 …`.
+
+## Do not
+
+```text
+❌ Add or revive scripts/*.py or apps/*/scripts/*.py for product tooling
+❌ Wire load_kumkaj_env / packaging gates to python3
+❌ Document python3 as the “official” way to scaffold or check UI translations
+❌ “Just this once” Python for a bulk fill — use bash, agents editing TSVs, or a Rust tool
+```
+
+```text
+✅ ./scripts/check-ui-translations.sh
+✅ ./scripts/scaffold-ui-translations.sh
+✅ cargo test -p <crate> --lib every_catalogue_language_translates_every_key
+```
+
+Exception: throwaway probes under `local/` (gitignored) may use anything;
+they must not become the documented or gated path.

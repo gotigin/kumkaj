@@ -1,0 +1,835 @@
+# Zulu — isiZulu (zu). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	Izincwadi ze-courier-ejensi + ideski lokubhuka. Mahhala okungaxhunyiwe ku-inthanethi.
+unlock	Vula
+pin_hint	Umnikazi PIN uqala ngokuthi 0000
+sell	Ukubhuka
+buy	Khokha
+books	Incwadi yosuku
+books_help	Isikhundla sanamuhla. Ukubhuka = ​​amaphasela angenile. Khokha = izikweletu zenkampani yenethiwekhi nezindleko. Amaqembu = abathumeli nabathwali.
+buy_help	Amavawusha ezindleko kanye nezikweletu zenkampani yenethiwekhi (imali ekhishiwe). I-akhawunti ihlala encwadini yephathi.
+sell_money_in	Bhukha iphasela
+buy_money_out	Izindleko / inkokhiso yenkampani yenethiwekhi
+record_purchase	Londoloza ukuthenga
+add_expense	Irisidi yezindleko
+bank_book	Incwadi yebhange
+credit_help	Umazisi wephathi uhlukile (amagama angaphinda). Izindima: Umthumeli (AR), Inkampani Yenethiwekhi (AP), noma kokubili kuleyo ID. Ama-ledger ahlala ehlukene; imibiko ikhombisa inethi.
+party_kind_ph	Indima yangokwezifiso (ongakukhetha) — noma thepha i-chip ngenhla
+parties_list_heading	Amaphathi alondoloziwe
+reports_help	Ibhuku losuku, abakweletwayo nabakweletwayo, ileja yasebhange, amarisidi ezindleko, inzuzo nokulahlekelwa.
+reports_today	Ileja yosuku (namuhla)
+reports_month	Inzuzo nokulahlekelwa (inyanga)
+reports_aging	Okusasele / debit-credit
+reports_balance_sheet	Ibhalansi
+reports	Incwadi yebhange ne-P&L
+refresh	Vuselela
+undo	Hlehlisa
+start_tracking	Qala ukulandelela
+stock_minus	− Isitoko
+stock_plus	+ Isitoko
+settle_cash	Khokha imali
+settle_card	Khokha ikhadi
+items	Amanani namasevisi
+nav_items	Amanani
+more	Okuningi
+your_items	Amanani akho
+items_help	Umugqa ngamunye uyinani (isb. I-Surface Zone A). Iyunithi ngokuvamile i-kg. Thepha ukuze uhlele.
+add_item	Engeza isilinganiso
+new_item	Isilinganiso esisha
+adding_item	Ingeza inani elisha
+editing_item	Iyahlela
+save	Londoloza
+remove	Susa
+empty_catalog	Awekho amanani okwamanje. Vula Amanani namasevisi, engeza eyodwa (igama + inani, iyunithi kg), bese Ubhukha.
+counter_sale	Ukubhukha ikhawunta
+total	Ingqikithi
+cash	Imali
+upi	UPI
+card	Ikhadi
+credit	Amakhasimende nabahlinzeki
+clear	Kucace
+ready_to_sell	Ilungele incwadi
+today_prefix	Namuhla
+today_mid	namuhla
+owed	ezivelele
+round_word	nxazonke
+back	Emuva
+sold_out	Ayitholakali
+restock	Sitoko kabusha
+not_tracked	Ayilandelelwa
+in_stock	esitokweni
+marked_sold_out	Imakwe njengengatholakali
+add_upper	ENGEZA
+na	Ayikho
+qty	Isisindo/Inani
+unit_at	Linganisa @
+actual	Okwangempela
+applied	Kusetshenzisiwe
+note_ph	Inothi (uyazikhethela)
+rounded	I-ROUNDED
+split	Hlukanisa
+counter	Ikhawunta
+parcel	Iphasela
+order	I-oda yokudlela
+sales	Ukubhuka
+sales_refunds	Ukubhuka nokubuyiselwa imali
+day_close	Ukuvalwa kosuku
+reports_expenses	Incwadi yebhange ne-P&L
+nav_reports	Imibiko
+nav_settings	Izilungiselelo
+nav_lock	Khiya
+sidebar_settings	Izilungiselelo zebha eseceleni
+sidebar_settings_help	Izithonjana ezifanayo njengesitimela esiseceleni. Hudula umugqa ukuze uhlele kabusha. Phenya iswishi ukuze ubonise noma ufihle. Izilungiselelo kanye Nokhiye kuhlala kubha.
+sidebar_always_on_short	Ihlala ivuliwe
+sidebar_back_settings	Emuva
+sidebar_shown	Kubonisiwe
+sidebar_hidden	Kufihliwe
+sidebar_always_on	Njalo kubha
+sidebar_shown_hint	Kuboniswa kumathebhu ohlangothini wesitimela / phansi
+sidebar_hidden_hint	Kufihliwe kubha
+sidebar_menu_items	Izinto zemenyu nezemenyu
+sidebar_enable_all	Vumela Konke
+sidebar_disable_all	Khubaza Konke
+sidebar_order_saved	I-oda lebha eseceleni lilondoloziwe
+sidebar_visibility_saved	Ukubonakala kwebha eseceleni kulondoloziwe
+amounts_hide	Fihla
+amounts_show	Bonisa
+no_sale_yet	Ayikathengiswa okwamanje
+favorites	Izintandokazi
+favorites_help	Izinto zemenyu ozithengisa njalo, zilondolozelwe ukungena kwakho ngemvume. Engeza eyodwa kubhili yesivakashi, noma yakha uhlu lwakho kuzo zonke izinto zemenyu ezingezansi.
+your_favorites	Izintandokazi zakho
+all_items	Zonke izinto zemenyu
+no_favorites	Azikho izintandokazi okwamanje — engeza izinto zemenyu ohlwini olungezansi.
+add_to_bill	Engeza kubhili yesivakashi
+added	Kwengeziwe
+owes_word	ukweleta
+selected_word	Ikhethiwe
+chip_clear_credit	cacile - Credit noma thatha kusengaphambili
+chip_missing_customer	Ikhasimende elikhethiwe alikho — khetha futhi
+chip_no_customer	Alikho ikhasimende okwamanje — thayipha igama, bese uthepha okuthi Ikhredithi
+credit_summary_fmt	{} amakhasimende · ikhredithi evulekile {} · intuthuko ebanjiwe {}
+recent_label	Kwakamuva:
+inventory	Impahla
+inventory_stock	Impahla nesitoko
+branches	Amagatsha
+branches_org	Amagatsha & org
+credit_customers	Amaqembu (abakweletayo nabakweletwayo)
+customer_name_ph	Igama lekhasimende noma lomphakeli
+new_customer_ph	Ikhasimende elisha noma igama lomhlinzeki
+item_name_ph	Linganisa igama (isb. I-Surface Zone A)
+item_price_ph	Nge-kg / i-slab yokuqala
+start_template	Umkhiqizo
+next_booking	Ukubhukha okulandelayo
+destination_ph	Idolobha/indawo okuyiwa kuyo
+consignee_ph	Igama lomamukeli
+consignee_phone_ph	Ifoni yomamukeli
+consignee_address_ph	Ikheli lokuletha
+origin_name_ph	Igama lomthumeli
+origin_phone_ph	Ifoni yomthumeli
+origin_address_ph	Ikheli lokulandwa/lomsuka
+booking_consignor_heading	Umthumeli (ikhasimende / umthumeli)
+booking_consignee_heading	Othunyelwe (umamukeli)
+booking_consignor_hint	Khetha iphathi ozoyigcwalisa, noma shiya kungenalutho ukuze ungene. Iyadingeka ukuze kulandwe ekhaya kanye ne-RTO.
+booking_consignee_hint	Umamukeli wephasela. Shiya kungenalutho ezindaweni zokwehla ezikhawulweni zokungena.
+weight_kg_ph	I-kg yangempela
+length_cm_ph	L cm
+breadth_cm_ph	B cm
+height_cm_ph	H cm
+chargeable_kg	I-kg ekhokhiswayo
+awb_label	AWB
+booking_help	Umthumeli + othunyiwe (okungenalutho KULUNGILE) → indawo → kala → isilinganiso sokukhetha → I-akhawunti/Ukheshi → khokha. I-AWB iphrinta kurisidi. Ukubhukha okulandelayo kusula ideski. I-rounding iqala ilingana ne-Applied — hlela kuphela ukuzungeza ibhili.
+cart_empty_hint	Ideski alinalutho — umthumeli/umthumeli uyazikhethela, setha indawo oya kuyo nesisindo, cindezela okuthi ENGEZA inani, bese ukhokha.
+team	Ithimba
+team_pins	Ithimba & PINs
+my_pin_settings	Eyami PIN
+settings_hub_help_my_pin	Shintsha ukuvula PIN komuntu ongene ngemvume kule divayisi.
+team_self_help	Uwena kuphela ongashintsha i-PIN yakho yokuvula (kanye nephasiwedi yokungena ozikhethela yona). Buza Umnikazi ukuthi udinga izikrini ezihlukile noma amalungelo.
+backup_settings	Ikhophi yasenqolobaneni nezilungiselelo
+lock_app	Khiya uhlelo lokusebenza
+pick	Khetha
+select	Khetha
+advance	Phambili
+owner	Umnikazi
+staff	Abasebenzi
+photo	Isithombe
+auto	Okuzenzakalelayo
+prev	Okwedlule
+next	Okulandelayo
+ok	OK
+this_shop	Imodi yeseva
+extra_till	Imodi yeklayenti
+off	Valiwe
+server	Imodi yeseva
+client	Imodi yeklayenti
+language_currency	Ulimi nemali
+language	Ulimi
+choose_language	Khetha ulimi lwakho
+language_setup_hint	Landela ulimi lwale divayisi, noma uzikhethele wena.
+lang_follow_platform	Ulimi lwedivayisi
+lang_pick_user	Khetha ulimi
+lang_platform_now	Ulimi lwedivayisi manje
+selected_language	Ikhethiwe
+continue	Qhubeka
+this_device	LE DIVAYISI
+device_use_q	Izosetshenziswa kanjani le divayisi?
+last_server_mode	Bekuyiseva — thepha ukuze uqhubeke
+last_client_mode	Bekuyiklayenti — thepha ukuze uqhubeke
+choose_server	Khetha iseva
+choose_server_hint	Vula iseva ekhona, noma udale enye ibhizinisi.
+create_new_server	Dala iseva entsha
+open_server	Vula
+new_server_name_ph	Igama leseva entsha (uyazikhethela)
+server_remove_pin_ph	Umnikazi PIN ukususa iseva
+only_owner_remove_server	Umnikazi kuphela ongasusa iseva
+owner_pin_remove_server	Umnikazi PIN uyadingeka ukuze kukhishwe le seva
+device_setup_help	Iseva igcina amaleja lapha. Iklayenti libhangqa kuseva.
+currency	Imali
+backup	Yenza ikhophi yasenqolobaneni
+settings_sec_diag	Ukuxilonga
+settings_hub_help	Vula indawo eyodwa ngesikhathi — ukuskrola okuncane, ukukhetha okucacile.
+settings_sec_devices	Amanye amadivaysi
+settings_sec_alerts	Izexwayiso
+alerts_help	Imilayezo yesimo ihlala isikhathi esingakanani esikrinini kuwe (lokhu kungena ngemvume).
+snack_secs_ph	Amasekhondi (3–60, okuzenzakalelayo 10)
+snack_secs_save	Londoloza isikhathi sokuxwayisa
+snack_secs_saved	Isikhathi sesexwayiso silondoloziwe — {n} imizuzwana
+snack_secs_bad	Faka imizuzwana njengenombolo (3–60)
+cancelled	Kukhanseliwe
+cancel	Khansela
+opening_client	Ivula iklayenti...
+preparing_desk	Ilungiselela ideski...
+opening_server	Ivula iseva...
+creating_server	Idala iseva...
+diag_privacy_help	Amalogi ahlala kule divayisi. Izimfihlo (PIN, amagama ayimfihlo) azilokothi zigcinwe. Ukwabelana ngephakheji ocingweni kudinga imvume yakho ecacile njalo - akukaze kuthengiswe noma kunikezwe izinkampani zangaphandle.
+diag_level	Ileveli yemininingwane
+diag_level_error	Amaphutha
+diag_level_warn	Izixwayiso
+diag_level_info	Ulwazi
+diag_level_debug	Susa iphutha
+diag_support_start	Qala iseshini yosekelo yemizuzu engama-30
+diag_support_stop	Qeda iseshini yosekelo
+diag_support_started	Iseshini yokusekela ivuliwe - Imininingwane yokususa iphutha imizuzu engama-30
+diag_support_ended	Isikhathi sokusekela siphelile
+diag_export_local	Khipha ikhophi yendawo
+diag_export_local_done	Ukuxilonga kwendawo sekumi ngomumo kokuthi {path} — khetha lapho ongagcina khona ikhophi
+diag_approve_send	Gunyaza ukwabelana ngale divayisi
+diag_send_heading	Yabelana ngale divayisi
+diag_send_help	Ukugunyaza iphakheji elilodwa, bese kuphelelwa yisikhathi. Yesikhashana — isetshenziswa kuphela ukulungisa noma ukuthuthukisa umkhiqizo. Akwabelwanga nezinkampani zangaphandle. Isebenza kokuthi Linux, Windows, macOS, kanye Android.
+optional_login_heading	Ukungena ngemvume ngokuzithandela
+rights_heading	Amalungelo
+booking_scope_heading	Ezasekhaya / Ezamazwe ngamazwe
+diag_send_approved	Ukwabelana okugunyazwe iphakheji eyodwa (kuphelelwa yisikhathi maduze)
+diag_export_send	Dala iphakheji yokwabelana (idinga imvume)
+diag_export_send_done	Yabelana ngephakheji isilungile kokuthi {path} — khetha lapho ozogcina khona, bese uthumela kuphela kusekelo Kumkaj
+diag_save_bundle	Londoloza ikhophi yokuxilonga
+diag_bundle_saved	Ikhophi yokuxilonga ilondolozwe kokuthi {path}
+diag_bundle_failed	Ayikwazanga ukulondoloza ikhophi yokuxilonga — zama futhi
+diag_clear	Sula amalogi okuxilonga
+diag_cleared	Amalogi okuxilonga asuliwe
+use	Sebenzisa
+add_branch	Engeza igatsha
+add_conversion	Engeza ukuguqulwa
+add_item_plain	Engeza into yemenyu
+add_note	Engeza inothi
+add_opening_balance	Engeza ibhalansi yokuvula
+add_rider	Engeza umgibeli
+add_staff	Engeza abasebenzi
+add_unit	Engeza iyunithi
+add_use_name	Faka / sebenzisa leli gama
+allow_extra_tills	Vumela amarejista emali eyengeziwe
+amend	Shintsha
+apply_country_pack	Faka iphakethe lezwe
+datetime_appearance	Ukubukeka kwedethi nesikhathi
+datetime_appearance_help	Izincwadi zigcina unyaka wokuqala i-RFC3339 ngaphakathi. Lokhu kushintsha kuphela indlela amadethi namawashi abukeka ngayo kumarisidi, amalebula, imibiko, kanye nesikrini.
+datetime_example	Isibonelo manje: {ex}
+date_order	I-oda ledethi
+date_order_dmy	D/M/Y
+date_order_mdy	M/D/Y
+date_order_ymd	Y-M-D
+time_format	Iwashi
+time_format_24h	Amahora angu-24
+time_format_12h	Amahora angu-12
+attach_bill_photo	Namathisela isithombe sebhili yesivakashi
+attach_pdf	Namathisela PDF
+attach_photo	Namathisela isithombe
+bank	Ibhange
+bank_in	Ibhange lingene
+bank_out	Imali ephuma ebhange
+bank_to_till	Ibhange → irejista yemali
+till_to_bank	Irejista yemali → ibhange
+mark_cleared	Umaka usuliwe
+unmark	Susa ukumaka
+role_both	Kokubili
+role_carrier	Inkampani yenethiwekhi
+role_cashier	Ukheshi
+role_consignor	Umthumeli
+role_manager	Umphathi
+role_supplier	Umphakeli
+branch_name_sell_ph	Igama legatsha ozothengisa ngalo
+bring_my_book	Letha ileja yami
+business_tax_id_ph	I-id yentela yebhizinisi
+card_amount_ph	Inani lekhadi
+cash_amount_ph	Inani lemali
+upi_amount_ph	UPI inani
+carrier_cost_ph	Izindleko zenkampani yenethiwekhi
+carrier_party_ph	Iphathi yenkampani yenethiwekhi
+choose_icon	Khetha isithonjana
+choose_logo	Khetha ilogo
+choose_receipt_stamp	Khetha isitembu serisidi
+choose_payment_qr	Khetha i-QR yokukhokha
+clear_icon	Sula isithonjana
+clear_logo	Sula ilogo
+clear_photo	Sula isithombe
+clear_stamp	Sula isitembu
+clear_payment_qr	Sula i-QR yokukhokha
+print_faces	Ubuso bokuphrinta (iresidi / inkokhiso yesikhathi)
+print_faces_help	Isitembu sokuzithandela kanye ne-QR yokukhokha eduze kwelogo yakho kumarisidi okubhuka kanye nezikweletu zenkathi.
+awb_pools_heading	Amachibi ezinombolo zenkampani yenethiwekhi ye-AWB
+add_awb_pool	Engeza iphuli ye-AWB
+awb_pool_carrier_ph	Igama lenkampani yenethiwekhi
+awb_pool_start_ph	Qala inombolo.
+awb_pool_end_ph	Inombolo yokugcina.
+awb_pool_prefix_ph	Isiqalo (ongakukhetha)
+awb_pool_label_ph	Ilebula (uyazikhethela)
+pieces_ph	Izingcezu (akunalutho = 1) — nwebela impahla / izingcezu eziningi
+bulk_awbs_ph	Ama-AWB amaningi - namathisela amaningi (umugqa omusha noma ukhefana) ukuze uthole isimo esisodwa kusengaphambili
+tds_cut_ph	I-TDS cut (ongakukhetha)
+discount_ph	Isaphulelo (ongakukhetha)
+cheque_no_ph	Hlola inombolo (uma uthanda)
+bill_reminder_chase	Uhlu lokujaha isikhumbuzi sebhili
+month_mix_report	Umbiko wenyanga wengxube
+copy_month_gst_csv	Kopisha inyanga ye-GST CSV
+domestic	Okwasekhaya
+international	Amazwe ngamazwe
+pick_logo	Khetha ilogo
+booking_scope_hint_domestic	I-Volumetric ÷5000 (yasekhaya) — cindezela Okwamazwe ngamazwe ukuze uthole umoya ongu-÷6000
+booking_scope_hint_intl	I-Volumetric ÷6000 (umoya wamazwe ngamazwe) — thepha okuthi I-Domestic for shop ÷5000
+cod_register	Irejista ye-COD
+collect_cod	Qoqa i-COD (AWB)
+consignments_dispatch	Izimpahla nokuthunyelwa
+consignor_party_ph	Igama lomthumeli / lephathi
+copy_day_book_csv	Kopisha ileja yosuku CSV
+copy_day_close	Kopisha usuku lokuvala
+copy_items_csv	Kopisha izinto zemenyu CSV
+copy_outstanding_csv	Kopisha okuvelele CSV
+copy_parties_csv	Kopisha amakhasimende nabahlinzeki CSV
+copy_party_ledger_csv	Kopisha incwadi yekhasimende CSV
+copy_receipt	Kopisha irisidi
+copy_report	Kopisha umbiko
+counted_cash_ph	Kubalwa ukheshi ekhabetheni
+counter_agency_ph	Ikhawunta / igama le-ejensi (ongakukhetha)
+create_backup	Dala ikhophi yasenqolobaneni
+day_close_summary	Isifinyezo sokuvala usuku
+delete_party	Susa ikhasimende elikhethiwe noma umphakeli
+dispatch_to_rider	Ukuthumela kubhukhiwe → umgibeli
+docket_charge_ph	Ukushaja idokodo
+declared_value_ph	Inani elimenyezelwe
+contents_ph	Okuqukethwe
+eway_ph	Inombolo ye-E-way bill.
+insurance_label	Umshwalense
+yes_label	Yebo
+no_label	Cha
+print_route_label	Phrinta umzila
+new_party_kind_label	Iphathi entsha
+done_open_books	Kwenziwe — amaleja avuliwe
+export_day	Thumela usuku
+extra_note_expense_ph	Inothi elengeziwe ngezindleko zokugcina
+extra_note_awb_ph	Inothi elengeziwe kule AWB / sale
+failed_delivery	Yehlulekile ukulethwa
+find_scan_awb	Thola / Skena i-AWB
+forget_shop	Khohlwa lesi sitolo
+fuel_ph	Okokhelekayo
+handover_carrier	Ibhukwe ngesandla → inkampani yenethiwekhi
+import_day	Ngenisa usuku
+import_items_csv	Ngenisa izinto / amanani e-CSV...
+import_parties_csv	Ngenisa amakhasimende nabahlinzeki CSV…
+import_pincodes_csv	Ngenisa amaphinikhodi e-CSV...
+import_carrier_bill_csv	Ngenisa ibhili yenkampani yenethiwekhi ye-CSV...
+copy_carrier_bill_report	Kopisha umbiko webhili yenkampani yenethiwekhi yokugcina
+use_carrier_cost	Sebenzisa izindleko zenkampani yenethiwekhi
+rate_carrier_ph	Inkampani yenethiwekhi (akunalutho = isilinganiso sethu sokuthengisa)
+rate_party_ph	Iphathi (akunalutho = wonke amakhasimende)
+carrier_pick_ph	Inkampani yenethiwekhi yezindleko (kusuka ekuqhathaniseni)
+item_name	Igama lento yemenyu
+load_bulk_row	Layisha inqwaba yomugqa → ideski
+login_id_ph	Igama lomsebenzisi
+mark_delivered	Maka kulethiwe
+manifest_cod_total	Isamba se-COD
+manifest_received_by	Kutholwe ngu
+manifest_sign	Sayina
+ndr_address_wrong	Ikheli alilungile
+ndr_customer_unavailable	Ayitholakali
+ndr_door_locked	Umnyango ukhiyiwe
+ndr_other	Okunye
+ndr_refused	Wenqabile
+out_for_delivery	Iphumile ukuyodiliva
+print_drs	Phrinta i-DRS
+print_run_sheet	Phrinta ishidi lokugijima
+reattempt	Phinda uzame
+rider_cod_handed_ph	I-COD ingenisiwe
+settle_rider_cod	Khonza umgibeli we-COD
+mode_desk	Ideski
+mode_rider	Umgibeli
+waiting_office	elinde ukufinyelela ehhovisi
+capture_signature	Thatha isiginesha
+incoming_manifest	I-manifest engenayo
+pickup_request	Isicelo sokulanda
+pickup_run	Ukugijima kokulanda
+auto_assign_area	Yabela ngokuzenzakalelayo indawo
+reorder_stops	Hlela kabusha izitobhi
+settle_rider_pay	Khonza inkokhelo yomgibeli
+vehicle_inspect	Ukuhlolwa kwemoto
+print_docket	Phrinta idokodo
+franchise_statement	Isitatimende seFranchise
+tally_export	Ukuthekelisa ivawusha
+open_whatsapp	Vula i-WhatsApp
+copy_sms	Kopisha umbhalo we-SMS
+pick_barcode_image	Khetha isithombe ozosiskena
+share_receipt_whatsapp	Yabelana ngesiliphu ku-WhatsApp
+delivery_feedback	Impendulo yokulethwa
+lan_self_book	Ukuzibhukha nge-LAN
+new_party_clear	Ikhasimende elisha noma umphakeli (ifomu elicacile)
+new_party_kind_ph	Uhlobo lwephathi entsha (Umhlinzeki / Inkampani Yenethiwekhi)
+next_country	Izwe elilandelayo
+prev_country	Izwe langaphambilini
+note_gstin_ph	Qaphela / GSTIN / isikhumbuzi sesivumelwano
+note_pod_ph	Inothi / I-POD (uyazikhethela)
+on_account_ap	Ku-akhawunti (AP)
+org_optional_ph	Inhlangano (uyazikhethela)
+paid_now	Khokhiwe manje
+pairing_code_ph	Ikhodi yokumatanisa
+pair_now	Bhanqa manje
+party_name_selected_ph	Igama lekhasimende noma lomhlinzeki (noma sebenzisa okukhethiwe)
+password_ph	Iphasiwedi
+pay_ap_card	Khokha ikhadi le-AP
+pay_ap_cash	Khokha imali ye-AP
+pay_ap_upi	Khokha i-AP UPI
+period_bill	Ibhili yesikhathi
+period_bill_party	Ibhili yesikhathi (iphathi)
+pick_pod_photo	Khetha isithombe se-POD
+print_awb_label	Phrinta ilebula ye-AWB
+print_open	Phrinta / vula
+reason_amend_ph	Isizathu sokuchibiyela / ukungasebenzi / ukubuyiselwa imali
+reason_note_ph	Isizathu / inothi (ukumosha, ukubala, ...)
+record_day_close	Londoloza usuku eduze
+refresh_from_shop	Vuselela esitolo
+refund	Imbuyiselo
+remit_cod	Thumela i-COD (iphathi)
+remove_selected	Susa okukhethiwe
+restore_backup	Buyisela isipele
+rider_name_ph	Igama lomgibeli
+rider_phone_ph	Ifoni yomgibeli
+riders	Abagibeli
+riders_own_fleet	Abagibeli (imikhumbi yabo)
+rollup	Ukugoqa isifinyezo
+save_booking_measures	Londoloza izinyathelo zokubhuka
+save_brand	Londoloza umkhiqizo
+save_business_id	Londoloza i-id yebhizinisi
+save_business_name	Londoloza igama lebhizinisi
+save_features	Londoloza ukusethwa komsebenzi
+save_names	Londoloza amagama
+server_ip_ph	IP yeseva (isb. 192.168.1.10)
+set_credit_limit	Faka umkhawulo kukhasimende noma umphakeli
+set_login_selected	Faka ukungena ngemvume kokukhethiwe
+set_login_named	Faka isicelo sokungena ku-{name}
+shop	Thenga
+start_fresh	Qala kabusha
+stop_extra_tills	Misa amarejista emali eyengeziwe
+backup_auto	Kwenziwe isipele ngokuzenzakalela nsuku zonke · okokugcina {when} · izinsuku zokugcina eziyi-14 zigcinwa kokuthi {dir}.
+backup_auto_none	Yenziwa isipele ngokuzenzakalelayo nsuku zonke — eyokuqala iqalisa ngemva kwesikhashana.
+backup_copy_to	Amakhophi aya kokuthi {dir}.
+backup_copy_btn	Futhi kopisha izipele kufolda...
+autostart_off	Qala ngale khompyutha
+autostart_on	Iqala ngale khompyutha ✓ — cindezela ukuze umise
+autostart_done_on	Le khompyutha manje ivula uhlelo lokusebenza uma iqala - iseva yesitolo ibuyile ngemva kokunqanyulwa kwamandla.
+autostart_done_off	Le khompyutha ayisaluvuli uhlelo lokusebenza uma iqala.
+right_allowed	Kuvunyelwe
+right_with_approval	Ngemvume
+right_denied	Akuvunyelwe
+editing_staff	Amalungelo we
+team_pick_ph	Izisebenzi ezizohlelwa — igama, igama lomsebenzisi, noma ukukhetha
+select_staff	Khetha lesi sisebenzi
+rights_help	Amalungelo — thepha ukuze ushintshe: Kuvunyelwe → Ngemvume (iphinikhodi yomphathi ngaleso sikhathi) → Ayivunyelwe.
+right_void_refund	Yekisa noma ubuyisele imali ekubhukheni
+right_amend_sale	Shintsha ukubhukha okurekhodiwe
+find_server	Thola iseva yesitolo
+finding_server	Ifuna iseva yesitolo kulokhu Wi‑Fi…
+no_server_found	Akukho okutholiwe. Kuseva: Izilungiselelo → Amanye amadivaysi → Vumela amarejista emali engeziwe (okufanayo Wi‑Fi). Noma thayipha i-IP eboniswe lapho.
+servers_found_pick	Thepha isitolo ofuna ukuxhuma kuso.
+server_host_selected	Usebenzisa {host} — faka ikhodi yokumatanisa, bese Bhangqa manje.
+device_forgotten	Isitolo sikhohlwe lolu cingo — lubhanqe futhi nekhodi yamanje yesitolo. Imiyalo elindile kuyo igcinwa.
+forget_device	Khohlwa
+last_seen	sibonile
+new_pair_code	Ikhodi yokumatanisa entsha
+lan_offline	Iseva yokuthenga ayifinyeleleki
+lan_offline_waiting	Iseva yesitolo ayifinyeleleki · {n} ilindile
+lan_connecting	Ixhumeka esitolo...
+pair_finishing	Iqedela ukubhanqa… kusetshenziswa izincwadi zasehhovisi
+pair_opening	Ivula ihhovisi...
+lan_live	Phila
+lan_sending	{n} ukuthumela
+lan_sign_in_to_send	Ngena ngemvume futhi ukuze uthumele {n}
+lan_pair_again	Bhangqa le divayisi futhi
+lan_update_app	Buyekeza uhlelo lokusebenza — le divayisi kanye neseva yehhovisi zinezinguqulo ezihlukile
+allow_firewall	Vumela ezinye izisetshenziswa ukuthi zixhume
+firewall_blocked	I-firewall yale khompuyutha ivimba amanye amadivaysi — thepha okuthi Vumela amanye amadivaysi ukuthi axhume.
+firewall_waiting	Ilinde ukwaziswa komlawuli...
+lan_join_help	Kwenye idivayisi: Imodi yeklayenti → Thola iseva yesitolo (noma thayipha {addr}) → ikhodi yokumatanisa {code}.
+lan_pair_status	Wi‑Fi {addr}
+lan_join_help_no_addr	Xhuma le divayisi ku-Wi‑Fi ukuze uthole ikheli.
+lan_no_address	Alikho ikheli Wi‑Fi okwamanje — xhuma esitolo Wi‑Fi.
+lan_not_listening	Ayamukeli amadivayisi (imbobo {port} imatasa). Qala kabusha uhlelo lokusebenza.
+lan_tills_off	Amarejista emali eyengeziwe avaliwe. Bavumele ukuthi bavumele enye idivayisi ukuthi ijoyine.
+paired_with	Kubhangqiwe · {url}
+not_paired	Akumatanisiwe
+choose_device_use	Khetha Iseva noma Iklayenti.
+paired_note	Kubhanqiwe. Vula ukuze udayise, noma Vuselela ukuze uthole okwakamuva.
+last_update_at	Isibuyekezo sokugcina: {time}.
+pair_intro	Thola iseva, noma thayipha ikheli layo kanye nekhodi yokumatanisa.
+queue_waiting	Ilinde ukufinyelela esitolo ({n}):
+queue_tries	Izanywe izikhathi {n} · impendulo yokugcina: {e}
+save_backup_copy	Londoloza ikhophi eyisipele...
+backup_copy_saved	Ikhophi eyisipele ilondoloziwe — igcine ingangeni kule divayisi (induku ye-USB noma enye idivayisi)
+backup_copy_overdue	Ayikho ikhophi eyisipele eshiye le divayisi izinsuku ezingu-{n} — Izilungiselelo → Isipele
+backup_copy_failed	Ikhophi eyisipele ayikwazanga ukulondolozwa lapho — khetha enye indawo
+clock_off	Iwashi lale divayisi liyimizuzu engu-{min} kwiseva yesitolo — setha isikhathi esifanele kule divayisi.
+printers_heading	Amaphrinta kule divayisi
+printers_help	Thola amaphrinta wangempela, bese ukhetha Irisidi noma ilebula ye-AWB. Umsebenzi ngamunye unobubanzi bawo, isithombe noma ukuma kwezwe, nokuthi amabhayithi athunyelwa kanjani. Ilebula iphrinta ibhakhodi. Indawo engenalutho = ungaphrinti.
+job_width	Ububanzi bokuqukethwe (mm)
+job_width_ph	Noma thayipha ububanzi, 40–210 mm
+job_layout	Isakhiwo
+job_delivery	Umsebenzi uthunyelwa kanjani
+job_size	Usayizi wefonti
+job_size_ph	isib. 18, 20, 26…
+save_receipt_format	Londoloza ifomethi yerisidi
+save_label_format	Londoloza ifomethi yelebula
+test_receipt_format	Irisidi yokuhlola
+test_label_format	Ilebula yokuhlola
+test_receipt_sent	Isiliphu esiyisampula sithunyelwe
+test_label_sent	Ilebula yesampula ithunyelwe
+test_print_no_printer	Ayikho iphrinta yalowo msebenzi — engeza eyodwa ngaphansi kwale ndawo
+printers_host_only	Amaphrinta asethwe kudivayisi yesitolo (Iseva). Lokhu kuze kuthumele imisebenzi lapho - Thola / engeza / yabela ukuhlala Kuseva. Ikhasi lokuhlola liya Kuseva.
+printers_pool_heading	Amaphrinta
+printers_routes_heading	Lapho izinto ziphrinta khona
+printer_label_ph	Igama (isb. Ideski)
+printer_target_ph	umphathi:9100 · bt:MAC · usb:VID:PID · igama lesistimu
+printer_mode_heading	Iphrofayela yemiphumela emisha
+printer_mode_standard	Ukuma ngobude okuvamile
+printer_mode_landscape	I-Standard Landscape
+printer_mode_thermal	Okushisayo
+printer_mode_standard_short	Ukuma ngobude
+printer_mode_landscape_short	Ukuma kwezwe
+printer_mode_thermal_short	Okushisayo
+printer_format_custom	Iphrofayela entsha yangokwezifiso
+printer_format_custom_label	Ngokwezifiso
+printer_format_custom_added	Iphrofayela yangokwezifiso yengezwe kule ndawo
+add_printer	Engeza iphrinta
+remove_printer	Susa okokugcina
+route_pick_ph	irisidi noma ilebula
+route_add_printer_ph	Engeza iphrinta kule ndawo
+route_receipt	Irisidi
+route_label	Ilebula ye-AWB
+route_dont_print	Ayikho iphrinta enikeziwe
+route_add	Engeza endaweni
+route_up	Phezulu
+route_down	Phansi
+route_remove	Susa okokugcina
+route_clear	Sula amaphrinta ale ndawo
+save_printers	Londoloza amaphrinta
+print_test_page	Phrinta ikhasi lokuhlola
+printers_saved	Amaphrinta alondolozelwe le divayisi
+test_page_sent	Ikhasi lokuhlola lithunyelwe — hlola iphrinta
+printers_found	Kutholwe kule divayisi: {list}
+find_printers	Thola amaphrinta
+printers_looking	Ibheka amaphrinta kule divayisi ne-Wi-Fi...
+printers_tap_find	Thepha okuthi Thola amaphrinta ukuze uthole olayini abamukela imisebenzi namaphrinta amarisidi enethiwekhi kule Wi-Fi (angakhishiwe noma angaxhunyiwe ku-inthanethi).
+printers_none_found	Awekho amaphrinta atholiwe — thayipha igama lephrinta yesistimu, noma ikheli lenethiwekhi (isb. 192.168.1.50).
+receipt_printer_ph	Iphrinta yamarisidi
+queue_refused	Akwamukelwe isitolo ({n}) — hlola ngayinye ekhawuntarini:
+clear_not_accepted	Ihloliwe - sula lolu hlu
+device_name_ph	Igama lale divayisi
+lan_last_update	isibuyekezo sokugcina {time}
+lan_not_accepted	{n} akwamukelekile
+connected_now	ixhunyiwe manje
+backup_failed	Ukwenza isipele okuzenzakalelayo kokugcina kwehlulekile: {e}
+backup_overdue	Asikho isipele sezinsuku ezingu-{n} — gcina uhlelo lokusebenza luvuliwe kule divayisi ukuze lukwazi ukwenza isipele.
+disk_low	Kuphela {mb} MB mahhala kule divayisi — izipele zizohluleka maduzane. Khulula isikhala.
+last_seen_devices	Ugcine ukubonwa: {time}
+sync_interval	Vumelanisa njalo {secs}s
+connection_to_shop	Ukuxhumana esitolo
+supplier_name_ph	Igama lomhlinzeki (noma ikhasimende)
+supplier_ph	Umphakeli
+switch_device	Shintsha le divayisi
+take_payment	Thatha inkokhelo
+tax_added_till	{tax} okukhethekile
+tax_inside_price	{tax} okuhlanganisiwe
+today_books	Namuhla amaleja
+unlock_after_pairing	Faka PIN
+unlock_with_login	Vula ngokungena ngemvume
+update_my_password	Buyekeza iphasiwedi yami
+update_my_pin	Buyekeza iphinikhodi yami
+duress_heading	Ukuvula izimo eziphuthumayo PIN (Umnikazi kuphela)
+duress_help	Ongakukhetha. Uma le phinikhodi ibhalwe ekuvuleni esikhundleni seyakho, konke okufakiwe kwezincwadi kuyasulwa (ukubhuka, amaleja, umlando) futhi ideski livuleka njengomnikazi ebukeka evamile — amanani, amaqembu, izindawo, abasebenzi kanye nezilungiselelo zokuhlala. I-schema ne-config akususwa. Sebenzisa kuphela uma uphoqelekile ukuthi uvule. Shiya kungenalutho futhi ulondoloze ukuze uvale. Ayifani nephinikhodi yanoma ubani.
+duress_pin_ph	Isimo esiphuthumayo PIN (amadijithi angu-4–12)
+duress_confirm_ph	Thayipha futhi ukuze uqinisekise
+save_duress_pin	Londoloza isimo esiphuthumayo PIN
+clear_duress_pin	Vala isimo esiphuthumayo PIN
+duress_on	Ukuvula isimo esiphuthumayo PIN kuvuliwe
+duress_off	Ukuvula izimo eziphuthumayo PIN kuvaliwe
+duress_saved	Ukuvula izimo eziphuthumayo PIN kulondoloziwe
+duress_cleared	Ukuvula izimo eziphuthumayo PIN kuvaliwe
+vehicle_ph	Imoto
+void	Ukuthengisa okuyize
+write_off_ap	Sula i-AP
+write_off_nil	Susa / awukho ibhalansi
+zone_ph	Indawo (igama elisuka kuzilinganiso)
+caption_today	NAMUHLA
+caption_bookings	UKUBEKA
+caption_payments_today	IZIKHOKHELO NAMUHLA
+caption_outstanding	OKUPHUMILE
+caption_bank	IBHANGE
+paid_by	Ikhokhelwe ngu
+second_way	Indlela yesibili
+weight_in	Isisindo phakathi
+size_in	Usayizi phakathi
+goods_received	Izimpahla zamukelwe
+expense_heading	Izindleko
+notes_attach_sale	Amanothi nezinanyathiselwa (indali ekhethiwe)
+notes_attach_party	Amanothi nezinanyathiselwa (ikhasimende elikhethiwe noma umphakeli)
+attachments_last_expense	Okunamathiselwe kwi-imeyili (izindleko zokugcina)
+credit_limit_heading	Umkhawulo wesikweletu (ikhasimende elikhethiwe noma umphakeli)
+pay_selected_heading	Khokha ukhethiwe (khokha isikweletu / thatha kusengaphambili)
+write_off_heading	Sula (sula ngaphandle kwenkokhelo)
+pay_ap_heading	Khokha lokho esibakweleta kona (AP)
+country_tax	Izwe nentela
+extra_tills_heading	Amarejista emali eyengeziwe
+other_devices_help_heading	Setha amanye amadivayisi
+other_devices_help	Kule divayisi (Iseva): Amanye amadivayisi → Vumela amathili engeziwe. Qaphela ikhodi yokumatanisa nekheli le-Wi-Fi. Thepha okuthi Vumela amanye amadivaysi ukuthi axhume uma evela. Kukhompyutha, thepha okuthi Qala ngale khompyutha. Edivayisini ngayinye: faka uhlelo lokusebenza, khetha Imodi Yeklayenti, Thola iseva yesitolo (noma thayipha ikheli), faka ikhodi yokumatanisa, Bhangqa manje. Ama-oda alinda kudivayisi uma i-Wi-Fi iwela bese iya lapho Iseva iphendula futhi.
+your_brand	Ibhrendi yakho (ngaphakathi nohlelo)
+units_heading	Amayunithi
+booking_measures	Izinyathelo zokubhuka
+drawer_count	Isibalo samadrowa (kuyakhetheka)
+spreadsheet_csv	Isipredishithi (CSV)
+bank_reconciliation	Ukubuyisana kwebhange (maka uqhathanise nesitatimende sakho sasebhange)
+book_add_product	Incwadi - engeza umkhiqizo / isilinganiso
+book_opening_credit	Incwadi - ikhredithi yokuvula
+account_kind	Uhlobo lwe-akhawunti (thepha okukodwa)
+active_ledger	I-ledger esebenzayo
+actual_total_cap	INANI LEMPELA
+amend_help	Khetha indali ozoyichibiyela, uyichithe, noma uyibuyisele. Izichibiyelo zigcina umlando ogcwele. Ingqikithi Eyindingilizi iqala ilingana ne-Sebenzisiwe — hlela ukuzungeza kuphela. Ubuze nokubuyiselwa imali kungase kudinge Umnikazi noma Umphathi PIN (othayiphe ngenhla; kuqoshwe ngegama lakho).
+applied_total_cap	KUSEBENZE INANI LONKE
+bank_balance	Ibhalansi yasebhange
+bank_net_today	Imali yasebhange namuhla
+branch_export_help	Ukuthekelisa kubhala isifinyezo sosuku kufolda yezipele bese kusikopishela ebhodini lokunamathisela. Ukuze ungenise olunye usuku lwesitolo, londoloza ifayela layo njenge import_branch_snapshot.json kuleyo folda, bese uthepha okuthi Ngenisa.
+brand_shown_help	Iboniswa ezikrinini ngaphakathi kohlelo lokusebenza. Igama lohlelo lokusebenza olufakiwe nesithonjana kule divayisi kuhlala njengohlu lwenkundla.
+app_icon	Isithonjana sohlelo lokusebenza
+logo_help	Umaki wesitolo ozikhethela wona ezikrinini kuhlelo lokusebenza.
+onboard_layout	Okutholayo
+item_photo_help	Ongakukhetha. Ngaphandle kwesithombe sibonisa amagama okuqala asuka egameni lento yemenyu.
+cash_in_hand	Imali esandleni (irejista yemali)
+change_my_pin_heading	Shintsha i-PIN yami (eyakho kuphela)
+connect_to_server	Xhuma Kuseva
+counter_locked	Ikhawunta 01 · Ikhiyiwe
+country_pack_help	Iphakethe lezwe lisetha igama lentela nezibalo, ujantshi okhokha ngokushesha, kanye ne-id yebhizinisi ephrintwe ezinkokhelweni zesivakashi. Kumkaj ayifaki izintela noma ikhiphe ama-invoyisi kahulumeni noma kuphi.
+currency_use_help	Skrola bese ucindezela okuthi Sebenzisa kunoma yiluphi uhlobo lwemali olusekelwe.
+day_close_help	Ukurekhoda ukuvalwa kosuku kulondoloza lesi sifinyezo (kanye nokwehluka kwekhabethe uma kubalwa) elogu lokuhlola. Ayiyeki ukudayisa.
+expenses_word	Izindleko
+feature_access_help	Ukufinyelela kwesici kwabasebenzi abakhethiwe (thepha ngemva kokungeza)
+footer_local	Local SQLite · Mahhala Kwaphakade · Zero Cloud
+fresh_book_moklanjo	Okusha = ikhathalogi engenalutho (engeza izinto kamuva). Incwadi = thayipha isitoko sokuvula futhi ngubani okukweleta ngezansi.
+fresh_selected	Okusha okukhethiwe — ikhathalogi ihlala ingenalutho. Thepha okuthi Kwenziwe uma usulungile.
+gross_word	Ingqikithi
+how_start	Ufuna ukuqala kanjani?
+later_country_pack	Kamuva: Izilungiselelo → sebenzisa iphekhi yezwe lakho ukuze uthole amalebula entela namalebula okukhokha.
+local_badge	INDAWO
+measures_help_moklanjo	Ukuthi amaphasela akalwa kanjani etafuleni lokubhuka. Thayipha ubukhulu nesisindo kumayunithi owasebenzisayo — okujwayelekile (cm, m, in, ft · kg, g, lb, oz) noma iyunithi yakho exhunywe ku-cm/kg ngenhla (ngqo noma ngamanye amayunithi). Izincwadi zihlala zirekhoda kg. Shiya inkambu ingenalutho ukuze uyigcine.
+mix_type_hint_moklanjo	Thayipha ukuthi yimalini kunto ngayinye (ukheshi / i-UPI / ikhadi / isikweletu). Kumelwe ingezwe kubhili. Ikhredithi idinga ikhasimende ngenhla.
+money_in_sales	Imali etholakalayo (yokuthengisa)
+more_help_moklanjo	Ikhathalogu, ukuthengisa, isikweletu, iqembu, ikhophi yasenqolobaneni - kanye nesitoko namathili engeziwe lapho kudingeka.
+net_word	Okusele
+offline_badge	OKUNGAxhumekile ku-inthanethi
+optional_login_help	Ukungena ngemvume ngokuzithandela (id + iphasiwedi). Umnikazi usetha kanye; umsebenzisi kuphela ongashintsha iphasiwedi kamuva.
+or_unlock_login	Noma vula nge-id yokungena + nephasiwedi
+permission_preset	Umsebenzi (usetha izikrini namalungelo)
+preset_help_moklanjo	Umthengisi: thengisa. Umphathi: thengisa + izinto zemenyu + ukuqeda/ukulungisa.
+product_locked_moklanjo	I-Moklanjo
+product_only_moklanjo	Lolu hlelo lokusebenza yi-Moklanjo kuphela - izincwadi + nedeski lokubhuka. Obunye ubuso bezohwebo buthunyelwa njengemikhiqizo ehlukene kamuva.
+purchases_cogs	Ukuthenga (COGS)
+qty_cap	INANI
+restore_help	Buyisela: khetha ikhophi yasenqolobaneni. Amaleja avuleka njengoba ayenjalo ngaleso sikhathi; amaleja njengoba enjalo manje agcinwa kuqala, ngakho lokhu kungahlehliswa.
+wipe_data_heading	Susa idatha yendawo
+wipe_data_help	Umnikazi kuphela - ukukhetha okufanayo nokukhishwa kweWindows. Amarekhodi ebhizinisi asula umlando wokuhweba kodwa agcina amanani nokusetha (njengephinikhodi yokuvula izimo eziphuthumayo). Ukusethwa kwesitolo kususa isizindalwazi sezincwadi. Okuthandwayo kwesikrini kusula iwindi/ulimi. Qinisekisa ngephinikhodi yomnikazi. Iphinikhodi yokuvula izimo eziphuthumayo Eqenjini ihlukene (ukusula okuyimfihlo ekuvuleni).
+wipe_trading	Amarekhodi ebhizinisi
+wipe_schema	Ukusethwa kwesitolo
+wipe_ui	Izintandokazi zesikrini
+wipe_owner_pin_ph	Umnikazi PIN okumele asuswe
+wipe_delete_selected	Susa okukhethiwe
+wipe_owner_only	Umnikazi kuphela ongasusa idatha yendawo.
+restore_owner_only	Umnikazi kuphela ongabuyisela ikhophi yasenqolobaneni.
+wipe_owner_pin_needed	Faka Umnikazi PIN ukuze ususe idatha yendawo.
+wipe_nothing_selected	Khetha ukuthi yini ozoyisusa kuqala.
+wipe_done	Idatha yendawo ekhethiwe isusiwe.
+wipe_schema_done	Ukusethwa kwesitolo kusuliwe — khetha Iseva noma Iklayenti ukuze uqhubeke.
+rounded_total	Ingqikithi Eyindilinga
+setup_app_moklanjo	Setha i-Moklanjo
+shop_logo_optional	Ilogo yesitolo (uyazikhethela)
+stock_type_help	Thayipha igama lento yemenyu (ingxenye yayo yanele), inani, bese ulungisa. Izinto zemenyu ezingabaliwe okwamanje zidinga Qala ukulandelela kanye.
+team_owner_help	Qasha: khetha umsebenzi (I-Cashier / Manager), igama + i-PIN yokuqala, bese Ungeza. Kuphela uma lo muntu ehluka: vula izikrini namalungelo ngezansi, bese Londoloza ukusethwa komsebenzi. Wonke umuntu ushintsha i-PIN yakhe ngezansi — Umnikazi akakwazi ukushintsha eyomunye umuntu.
+they_owe_us	Bayasikweleta
+unit_at_cap	Iyunithi @
+units_help	Amakhodi amalebula ento yemenyu (kg, ucezu, isikhwama). Yonke iyunithi kufanele ixhume — ngokuqondile noma ngamanye amayunithi — ezingeni (kg · cm · ml · pc), isb. Ikhreyithi elingu-1 = ibhokisi eli-2 nebhokisi elingu-1 = 20 cm. Ukuguqulwa: 1 kusuka = ​​isici kuya. Izimali aziwona amayunithi.
+we_owe_them	Siyabakweleta
+who_unlocking	Ubani ovulayo?
+locked_word	Kukhiyiwe
+show_pin	Bonisa PIN
+hide_pin	Fihla PIN
+set_owner_pin	ISETHA UMNIKAZI PIN
+enter_owner_passcode	FAKA IKHODI YOKUDLULA YOMNIKAZI
+enter_staff_passcode	FAKA IKHODI YOKUDLULA YABASEBENZI
+pin_count_zero	0/12 amadijithi · okungenani 4, bese KULUNGILE
+pin_count_need	{} / amadijithi ayi-12 · ngidinga {} okwengeziwe
+pin_count_full	12/12 amadijithi · cindezela KULUNGILE
+pin_count_ready	{} / amadijithi ayi-12 · cindezela KULUNGILE uma usulungile
+pin_hint_choose	Khetha amadijithi angu-4–12 · Faka noma Vula ukuze ugcine
+pin_hint_new	Umnikazi omusha wamadijithi angu-4–12 PIN · Ngena noma Vula
+pin_hint_shop_code	Thenga idivayisi · ikhodi yokumatanisa {}
+pin_hint_books	Le divayisi iphethe amaleja
+pin_hint_paired	Irejista yemali eyengeziwe ibhanqiwe — vula ukuze udayise
+pin_hint_pair_first	Irejista yemali eyengeziwe — bhanqa nedivaysi yesitolo kuqala
+unlock_to_continue	Vula ukuze uqhubeke
+no_staff_yet	Abekho abasebenzi okwamanje — vula njengoMnikazi, bese kuthi Ithimba
+status_server_set_pin	Imodi Yeseva — setha Umnikazi PIN
+status_server_tills	I-Server Mode — amarejista emali eyengeziwe angajoyina. Vula
+status_server_unlock	Imodi yeseva — vula njengoMnikazi
+status_client_unlock	Imodi Yeklayenti — vula ukuze udayise
+icon_new_selected	Isithonjana: ifayela elisha likhethiwe — thepha Londoloza uhlobo
+icon_custom	Isithonjana: uphawu lwendawo yangokwezifiso
+icon_default	Isithonjana: Kumkaj maka (okuzenzakalelayo) — khetha engokwezifiso
+logo_yours	Ilogo: ilogo yesitolo sakho — iboniswa ezikrinini namarisidi
+logo_default	Ilogo: Kumkaj maka (okuzenzakalelayo) — khetha eyakho uma unayo
+tmpl_current	Okwamanje: {} — {}
+tmpl_selected	Okukhethiwe: {} — {}
+setup_complete	Ukusetha kuqedile
+onboard_fresh_tmpl	Okusha · {} — ikhathalogi iqala ingenalutho; engeza izinto zemenyu Ezintweni zemenyu, bese Kwenziw.
+onboard_book_tmpl	Ileja · {} — engeza izinto zemenyu bese uvula ikhredithi, bese Kwenziwe.
+onboard_template_tmpl	Yisho indawo uma ufuna, bese ukhetha ukuthi ungaqala kanjani.
+tmpl_blurb	Izincwadi ze-courier nedeski lokubhuka: abathumeli, abathwali, incwadi yosuku, i-AWB.
+tmpl_how	Bhukha amaphasela etafuleni; Incwadi yosuku yanamuhla; amathebhu for rates, amaqembu, imibiko.
+trk_booked	Ibhukhiwe
+trk_picked_up	Thathiwe
+trk_in_transit	Iyathutha
+trk_delivered	Kulethiwe
+trk_rto	Ibuyela kumthumeli
+lane_to_dispatch	Ukuthumela
+lane_with_carrier	Nenkampani yenethiwekhi
+lane_failed	Yehlulekile
+lane_done_today	Kwenziwe namuhla
+ops_board_help	Amaphasela ngokuthi akuphi emsebenzini wanamuhla. Thepha amaphasela (noma uwaskene) ukuze uwakhethe, bese wenza konke okukhethiwe ngesikhathi esisodwa - umzila ngamunye unikeza kuphela iminyakazo elingana nawo.
+lane_empty	Akukho lutho lapha njengamanje.
+picked_fmt	I-{n} ikhethiwe
+pick_all	Khetha konke
+bag_for_carrier	Isandla esiphathini
+send_with_rider	Thumela nomgibeli
+out_again	Phuma futhi
+return_to_sender	Buyela kumthumeli
+runs_bags_heading	Imigijimo nezikhwama zakamuva
+print_word	Phrinta
+bag_word	Isikhwama senkampani yenethiwekhi
+run_word	Ukugijima komgibeli
+parcels_fmt	Amaphasela we-{n}
+parcel_history	Umlando
+attempt_fmt	Umzamo we-{n}
+pieces_short_fmt	{n} ama-PC
+note_reason_ph	Qaphela noma isizathu
+ops_pick_first	Khetha amaphasela kuqala — wathephe noma uwaskene
+cod_to_collect	Kulethiwe - COD ezoqoqwa
+cod_on_road	I-COD isesendleleni
+cod_owed_consignors	Iqoqiwe — ukukhokhela abathumeli
+cod_rto_fees	Izimali ze-RTO zokuqoqa
+cod_to_hand_in	I-COD yokuletha
+parcel_one_fmt	Ingxenye ye-{n}
+facet_bank_title	Imibiko
+facet_bank_help	Amaleja osuku, ukuguga kwekhasimende noma umphakeli, amaposi ebhange, kanye nesikhathi P&L.
+facet_ops_title	Izimpahla nokuthunyelwa
+facet_ops_help	Skena noma thayipha i-AWB → Thola, bese uthuthukela phambili / phrinta ilebula / COD. Thumela kumgibeli noma inkampani yenethiwekhi.
+facet_cod_title	Irejista ye-COD
+facet_cod_help	Qoqa ngesikhathi sokulethwa, bese uthumela kumthumeli.
+facet_riders_title	Abagibeli (imikhumbi yabo)
+facet_riders_help	Engeza abagibeli, bese uthumela ama-AWB abhukhiwe ukusuka ku-Ops.
+against_bill_ph	Imelene nebhili yesivakashi # ngenhla (ongakukhetha)
+aliases_ph	Iziteketiso — amanye amagama, ahlukaniswe ngokhefana
+amount_blank_full_ph	Inani (elingenalutho = ibhalansi egcwele)
+amount_owed_ph	Inani elikweletwayo
+amount_ph	Inani
+amount_received_ph	Inani elitholiwe
+amount_we_pay_ph	Imali esiyikhokhayo
+awb_scan_ph	AWB / scan ibhakhodi
+bulk_csv_ph	Inqwaba ye-CSV — indawo, othunyiweyo, kg,i-cod_paise, inothi
+business_name_ph	Igama lebhizinisi
+category_new_ph	Isigaba (ongakukhetha, sidalwe uma sisisha)
+cod_amount_ph	Inani le-COD
+code_bag_ph	Ikhodi (isikhwama)
+conv_factor_ph	Isici (25 = isikhwama esingu-1 → 25 kg)
+country_code_ph	Ikhodi yezwe isb. IN, GB, US, AE, BR
+credit_khata_amount_ph	Inani leleja yekhredithi / yekhredithi
+credit_limit_ph	Umkhawulo wesikweletu (0 = none)
+dim_unit_code_ph	Ikhodi yeyunithi yobukhulu (cm)
+divisor_ph	I-Volumetric divisor (5000)
+extra_per_kg_ph	Okungeziwe / kg
+first_amount_ph	Inani lokuqala
+first_kg_ph	I-kg yokuqala (i-slab)
+from_code_ph	Kusuka kukhodi (isikhwama)
+item_name_lang_ph	Igama lento yemenyu — bhala ngolimi lwakho
+login_id_opt_ph	Igama lomsebenzisi (liyadingeka, lihlukile)
+manager_pin_ph	Umphathi PIN ukugunyaza (kuphela uma ungakwazi ukuvala)
+new_branch_name_ph	Igama elisha legatsha
+new_password_ph	Iphasiwedi entsha (uyazikhethela)
+new_pin_ph	Okusha PIN (amadijithi angu-4–12)
+note_bank_ph	Inothi (idiphozithi, ukuhoxiswa, ...)
+note_buy_expense_ph	Inothi (uphethiloli, ukuqasha, ...)
+note_expense_ph	Inothi (uphethiloli, ihhovisi, ...)
+notify_phone_ph	Yazisa ifoni (WhatsApp/SMS hook)
+options_moklanjo_ph	Ongakhetha kukho (ongakukhetha) — Okukhulu=20, Ukugoqa kwezipho=10
+part_second_way_ph	Ingxenye ngendlela yesibili (ongakukhetha)
+phone_ph	Ucingo
+address_ph	Ikheli
+party_custom_fields_heading	Izinkambu ngokwezifiso (iphathi ekhethiwe)
+party_custom_help	Engeza noma iyiphi ilebula nenani kule phathi — I-WhatsApp, i-GSTIN, ikhodi yomzila, ...
+party_custom_key_ph	Igama lenkundla (isb. WhatsApp)
+party_custom_value_ph	Inani
+party_custom_add	Engeza inkambu
+party_custom_remove	Susa inkambu
+party_custom_empty	Azikho izinkambu zangokwezifiso okwamanje
+party_custom_pick_first	Khetha iphathi ukuze ungeze izinkambu ngokwezifiso
+place_name_ph	Igama lale ndawo
+price_ph	Inani
+qty_example_ph	Ubuningi (isb. 1.5 nge-kg)
+quantity_ph	Ubuningi
+reason_required_ph	Isizathu (siyadingeka)
+role_title_ph	Isihloko sendima (isb. u-Barista)
+service_pct_ph	Isevisi % ngokuzikhethela 0/10/12
+short_code_ph	Ikhodi emfushane (MG02)
+slab_kg_ph	I-slab ekhokhiswayo ngo-kg (0.5)
+staff_name_ph	Igama lomsebenzisi / id
+starting_password_ph	Iphasiwedi yokuqala (ongakukhetha)
+starting_pin_ph	Iqala PIN (amadijithi angu-4–12)
+tax_rate_ph	Igama lesilinganiso sentela noma i-% — Okujwayelekile, Kwehlisiwe, 0, 5, 12, 18, 20
+to_code_ph	Ikhodi (kg)
+uncleared_no_ph	Akucaciswanga # ngenhla
+unit_cost_ph	Izindleko zeyunithi
+unit_kg_blank_ph	Iyunithi (kg noma engenalutho)
+unit_name_bag_ph	Igama (Isikhwama)
+weight_unit_code_ph	Ikhodi yeyunithi yesisindo (kg)
+zone_name_ph	Igama lendawo
+pay_credit	Ku-akhawunti
+book_kind_today	Namuhla amaleja
+book_kind_month	Amaleja enyanga
+book_kind_aging	Okusasele / debit-credit
+book_kind_balance	Ibhalansi
+ops_desk_help	Skena i-AWB ngesithwebuli sebhakhodi ye-USB (noma uyibhale) → Thola. Bese uthuthukela, phrinta ilebula, noma uqoqe i-COD. Amalebula aphrinte Ikhodi 128.
+role_help_consignor	Iqhaza: Umthumeli - AR (bayasikweleta). Inkampani efanayo ingaba inkampani yenethiwekhi.
+role_help_carrier	Iqhaza: Umthwali - AP (siyabakweleta). Ifemu efanayo nayo ingaba Consignor.
+role_help_both	Izindima: Umthumeli + Isithwali - iqembu elilodwa, amaleja e-AR kanye ne-AP, ingqikithi Yemibiko.
+role_help_supplier	Iqhaza: Umhlinzeki - AP yokuthenga.
+lane_declared_label	Ukubhukha i-akhawunti
+lane_owner_label	Ukubhukha imali
+money_lane_bill	Ibhili yesivakashi sesivakashi: {lane}

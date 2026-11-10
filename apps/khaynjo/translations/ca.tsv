@@ -1,0 +1,1351 @@
+# Catalan — Català (ca). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	Comandes de restaurant, cuina i llibres. Gratuït sense connexió.
+unlock	Desbloqueja
+pin_hint	El PIN del propietari comença per 0000
+sell	Comanda
+buy	Compres
+books	Llibre del dia
+books_help	Posició d'avui. Comanda = comandes que entren. Compres = compres i despeses. Parts = clients a crèdit i proveïdors.
+buy_help	Vals de despesa i factures de proveïdor (diners que surten). El que queda a compte resta al llibre de la part.
+sell_money_in	Prendre una comanda
+buy_money_out	Despesa / factura de proveïdor
+record_purchase	Registrar compra
+add_expense	Val de despesa
+bank_book	Llibre de banc
+credit_help	L'id de part és únic (els noms es poden repetir). Un client porta un compte khata (ens deu); un proveïdor ens ven estoc (li devem); tots dos és vàlid. Els llibres queden separats; els informes mostren el net.
+party_kind_ph	Rols: Client, Proveïdor, tots dos…
+reports_help	Llibre del dia, deutors i creditors, llibre de banc, vals de despesa, pèrdues i guanys.
+reports_today	Llibre del dia (avui)
+reports_month	Pèrdues i guanys (mes)
+reports_aging	Pendent / Deutor-Creditor
+reports_balance_sheet	Balanç
+reports	Llibre de banc i PiG
+refresh	Actualitza
+undo	Desfés
+start_tracking	Comença el seguiment
+stock_minus	− Estoc
+stock_plus	+ Estoc
+settle_cash	Tanca en efectiu
+settle_card	Tanca amb targeta
+items	Menú i articles
+nav_items	Menú
+more	Més
+your_items	El vostre menú
+items_help	Toqueu un article per editar-lo. Un article nou buida el formulari. Cerqueu els nostres plats o escriviu el vostre nom i foto, poseu un preu (0 està bé) i després Afegeix. Les vendes ja registrades conserven el nom amb què es van cobrar.
+add_item	Afegeix article
+new_item	Article nou
+adding_item	S'afegeix un article nou
+editing_item	Edició
+save	Desa
+remove	Treu
+removed_items	Articles trets
+removed_help	Restaurar torna l'article al menú tal com era — preu, foto i categoria. El nostre prestatge de plats no s'elimina mai, així que un plat es pot tornar a afegir sempre.
+restore_item	Restaura
+empty_catalog	Encara no hi ha plats. Obriu el Menú, afegiu un plat (nom + preu) i preneu una comanda.
+total	Total
+cash	Efectiu
+upi	UPI
+card	Targeta
+credit	Parts
+clear	Neteja
+ready_to_sell	A punt per anotar
+today_prefix	Avui
+today_mid	avui
+owed	pendent
+round_word	arrodoniment
+back	Enrere
+sold_out	No disponible
+restock	Reposa estoc
+not_tracked	Sense seguiment
+in_stock	en estoc
+marked_sold_out	Marcat com a no disponible
+add_upper	AFEGEIX
+na	N/D
+qty	Pes/Qtat
+unit_at	Tarifa @
+actual	Real
+applied	Aplicat
+note_ph	Nota (opcional)
+rounded	ARRODONIT
+split	Divideix
+send_kot	Envia KOT
+send_kot_to	Envia → {kitchens}
+send_kot_again	Afegeix plats per al proper KOT
+send_kot_held	Plats retinguts — treu la retenció per enviar
+reprint_kot	Torna a imprimir la selecció
+reprint_kot_ok	{n} plat(s) tornat(s) a imprimir · {slips} tiquet(s) → {kitchens}
+reprint_kot_needed	Envieu primer un KOT — després incloeu plats i torneu a imprimir la selecció
+reprint_kot_none_selected	Tots els plats enviats es salten — toqueu A la impressió als que voleu reimprimir
+reprint_kot_client	Torna a imprimir ({n}) per a {place} enviat — la cuina imprimeix al Servidor
+print_cancelled_kot	Imprimeix tots els anul·lats
+print_cancelled_kot_ok	Imprès {n} plat(s) anul·lat(s) · {slips} tiquet(s) → {kitchens}
+print_cancelled_kot_needed	Obriu primer una taula amb plats anul·lats
+print_cancelled_kot_none	No hi ha plats anul·lats en aquesta comanda
+print_cancelled_kot_client	Anul·lats ({n}) per a {place} enviats — la cuina imprimeix al Servidor
+kot_banner	Bàner de tipus
+kot_banner_ph	Bàner (buit = cap)
+kot_item_prefix	Prefix d'article
+kot_item_prefix_ph	p. ex. [ANUL·LAT]
+kot_strike	Ratlla el nom del plat
+kot_strike_note	Ratlla la nota del plat
+kot_strike_on	Activat
+kot_strike_off	Desactivat
+bill_item_layout	Disposició de l'article
+bill_item_layout_columns	Columnes
+bill_item_layout_stacked	Apilat
+bill_item_header	Capçaleres de columna
+bill_item_hdr_item	Capçalera d'article
+bill_item_hdr_qty	Capçalera de qtat
+bill_item_hdr_price	Capçalera de preu
+bill_item_hdr_amount	Capçalera d'import
+bill_item_name	Nom del plat
+bill_item_qty	Qtat
+bill_item_price	Preu
+bill_item_amount	Import
+bill_item_note	Nota del plat
+bill_item_col_gap	Espai de columna
+bill_item_col_order	Ordre de columnes
+bill_item_col_sep	Línies de columna
+bill_item_gap_tight	Estret
+bill_item_gap_comfort	Còmode
+bill_item_gap_wide	Ample
+bill_item_num_width	Columnes numèriques
+bill_item_num_compact	Compacte
+bill_item_num_comfort	Còmode
+bill_item_num_wide	Ample
+bill_item_num_align	Alineació dels números
+bill_item_gap_em	Espai (em)
+bill_item_qty_min	Qtat mín (em)
+bill_item_price_min	Preu mín (em)
+bill_item_amount_min	Import mín (em)
+kot_item_qty_width	Columna de qtat
+kot_item_num_align	Alineació de qtat
+bill_total_qty_label	Etiqueta de qtat total
+bill_total_subtotal_label	Etiqueta de subtotal
+bill_total_grand_label	Etiqueta de total general
+bill_total_paid_label	Etiqueta de total pagat
+bill_meta_pair	Comparteix la línia amb
+bill_pair_alone	Sol
+bill_item_piece_on	Activat
+bill_item_piece_off	Desactivat
+bill_total_qty	Qtat total
+bill_total_subtotal	Subtotal
+bill_total_grand	Total general
+reprint_incl	A la impressió
+reprint_skip	Omet
+reprint_skip_meta	Omet la reimpressió
+kot_dest_hint	S'imprimeix a les impressores que heu assignat a {kitchens} a Ajustos → Impressores
+kot_sent_hint	L'últim KOT ha anat a {kitchens}. Toqueu per afegir plats al tiquet següent — o torneu a imprimir el KOT per al mateix.
+kot_sent_printing	KOT enviat a {kitchens} — imprimint
+kot_sent_not_printed	KOT enviat a {kitchens} però NO imprès: {why}. Avisar la cuina, després arregleu la impressora i torneu-lo a imprimir.
+kot_sent_screen	KOT enviat a {kitchens}
+kot_queued_shop	KOT per a {place} → {kitchens} desat; el dispositiu de la botiga l'imprimeix
+kot_job_label	KOT per a {place} → {kitchens}
+kot_job_reached	El KOT per a {place} ha arribat a {kitchens}
+kot_unassigned	Cuina (sense estació)
+kot_unassigned_held	Retinguts {n} plat(s) sense estació — treu la retenció a la línia per enviar
+kot_station_ph	Cuina
+kot_station_dd	Cuina
+kot_station_dd_n	Cuina · {stations}
+kot_set_station	Fes servir aquesta estació
+kot_station_applied	Estació posada a {n} plat(s): {station}
+kot_station_cleared	Estació treta de {n} plat(s): {station}
+kot_station_needed	Trieu primer una estació de cuina
+kot_station_not_allowed	No es pot fer servir la cuina: {station}
+kot_station_none	Encara no hi ha estacions de cuina — afegiu-ne una a Cuina o Ajustos → Zones · estacions
+pos_tab_items	Articles afegits
+pos_tab_payment	Pagament
+hold_send	Retén
+hold_send_on	Retingut
+hold_send_meta	Retingut — no en aquest KOT
+station_remove	Treu l'estació
+station_remove_ph	Toqueu una estació de la llista per treure-la
+station_removed	Estació treta: {name}
+settings_hub_title	Ajustos
+settings_hub_help	Obriu una àrea cada vegada — menys desplaçament, tries més clares.
+settings_back	Enrere
+settings_sec_language	Llengua i moneda
+settings_sec_country	País i impost
+settings_sec_tills	Altres dispositius
+settings_sec_brand	La vostra marca
+settings_sec_units	Unitats i conversions
+settings_sec_pickers	Zones · estacions · tipus impositius
+settings_sec_printers	Impressores
+settings_sec_bill	Format de compte i KOT
+settings_sec_selling	Promocions i vendes
+bill_kot_tab_bill	Compte
+bill_kot_tab_kot	KOT
+settings_sec_alerts	Avisos
+alerts_help	Quant de temps romanen a la pantalla els missatges d'estat per a vós (aquest inici de sessió).
+snack_secs_ph	Segons (3–60, per defecte 10)
+snack_secs_save	Desa el temps d'avís
+snack_secs_saved	Temps d'avís desat — {n} segons
+settings_sec_backup	Còpia i restauració
+settings_sec_diag	Diagnòstic
+diag_privacy_help	Els registres queden en aquest dispositiu. Els secrets (PIN, contrasenyes) no s'emmagatzemen mai. Compartir un paquet fora del dispositiu demana la vostra aprovació explícita cada vegada — no es ven ni es dona a tercers.
+diag_level	Nivell de detall
+diag_level_error	Errors
+diag_level_warn	Advertiments
+diag_level_info	Info
+diag_level_debug	Depuració
+diag_support_start	Inicia una sessió de suport de 30 min
+diag_support_stop	Acaba la sessió de suport
+diag_support_started	Sessió de suport activa — detall de depuració durant 30 minuts
+diag_support_ended	Sessió de suport acabada
+diag_export_local	Exporta una còpia local
+diag_export_local_done	Diagnòstic local a punt a {path} — trieu on desar una còpia
+diag_approve_send	Aprova compartir fora d'aquest dispositiu
+diag_send_help	L'aprovació és per un paquet i després caduca. Temporal — només per corregir o millorar el producte. No es comparteix amb tercers. Funciona a Linux, Windows, macOS i Android.
+diag_send_approved	Compartició aprovada per un paquet (caduca aviat)
+diag_export_send	Crea el paquet per compartir (cal aprovació)
+diag_export_send_done	Paquet a punt a {path} — trieu on desar-lo i envieu-lo només al suport de Kumkaj
+diag_save_bundle	Desa la còpia de diagnòstic
+diag_bundle_saved	Còpia de diagnòstic desada a {path}
+diag_bundle_failed	No s'ha pogut desar la còpia de diagnòstic — torneu-ho a provar
+diag_clear	Neteja els registres de diagnòstic
+diag_cleared	Registres de diagnòstic netejats
+sidebar_settings	Barra lateral
+sidebar_settings_help	Les mateixes icones que el rail lateral. Arrossegueu una fila per reordenar. Gireu l'interruptor per mostrar o amagar. Ajustos i Bloqueig sempre queden a la barra.
+sidebar_always_on_short	Sempre actiu
+sidebar_back_settings	Enrere
+sidebar_shown	Visible
+sidebar_hidden	Amagat
+sidebar_always_on	Sempre a la barra
+sidebar_shown_hint	Visible al rail lateral / pestanyes inferiors
+sidebar_hidden_hint	Amagat de la barra
+sidebar_menu_items	Menú i articles
+sidebar_enable_all	Activa-ho tot
+sidebar_disable_all	Desactiva-ho tot
+sidebar_order_saved	Ordre de la barra lateral desat
+sidebar_visibility_saved	Visibilitat de la barra lateral desada
+amounts_hide	Amaga
+amounts_show	Mostra
+printers_none_hint	Deseu primer una impressora en aquest dispositiu i després afegiu-la al Compte o a una cuina
+counter	Mostrador
+dine_in	Al local
+takeaway	Per emportar
+order	Comanda
+tables	Taules
+kitchen	Cuina
+sales	Vendes
+sales_refunds	Vendes i devolucions
+day_close	Tancament del dia
+reports_expenses	Llibre de banc i PiG
+nav_reports	Informes
+nav_settings	Ajustos
+nav_lock	Bloqueig
+no_sale_yet	Encara no hi ha venda
+favorites	Preferits
+favorites_help	Articles que veneu sovint, desats per al vostre inici de sessió. Afegiu-ne un al compte o feu la llista amb tots els articles de sota.
+your_favorites	Els vostres preferits
+all_items	Tots els articles
+frequent	Freqüents
+added_items	Article(s) afegit(s)
+added_items_empty	Encara no hi ha res en aquesta comanda — afegiu un plat des de Tots els articles o una categoria.
+frequent_config_help	Plats més venuts dels comptes tancats. Indiqueu quants dies mirar i quants plats mostrar.
+frequent_days_ph	Dies (1)
+frequent_limit_ph	Articles (24)
+frequent_apply	Aplica
+frequent_saved	Freqüents: darrers {d} dia(es), primers {n} — {c} plat(s)
+frequent_empty	Encara no hi ha vendes tancades en aquest període — tanqueu un compte (₹0 permès si Ajustos ho diu) i apareixeran aquí.
+zero_sales	Vendes de valor zero
+zero_sales_help	Permet plats a ₹0 i comptes tancats a ₹0 (cortesia / desig del propietari). Actiu per defecte perquè els coberts gratuïts surtin igualment a Freqüents i als llibres del dia.
+zero_sales_on	Permet ₹0
+zero_sales_off	Exigeix preu
+zero_sales_saved_on	Vendes de valor zero permeses
+zero_sales_saved_off	Les vendes han de tenir un preu superior a ₹0
+floor_areas_help	Les zones són sales o àrees de la sala (Menjar al local, Per emportar, AC …). Afegiu primer una zona i després poseu-hi taules — cada zona és un grup a part a la sala.
+area_new_ph	Zona / sala nova (p. ex. AC, Jardí)
+add_area	Afegeix zona
+area_added	Zona «{name}» a punt — afegiu-hi taules
+no_favorites	Encara no hi ha preferits — afegiu articles de la llista de sota.
+add_to_bill	Afegeix al compte
+added	Afegit
+owes_word	deu
+selected_word	Seleccionat
+chip_clear_credit	neteja — Crèdit o pren bestreta
+chip_missing_customer	Falta el client seleccionat — trieu-lo de nou
+chip_no_customer	Encara no hi ha client — escriviu un nom i toqueu Crèdit
+credit_summary_fmt	{} clients · crèdit obert {} · bestretes retingudes {}
+recent_label	Recents:
+kot_new_waiting	NOU — en espera
+kot_preparing	EN PREPARACIÓ
+kot_ready_serve	A PUNT — serviu-lo
+kot_done_cap	FET
+kot_cancelled	ANUL·LAT
+kot_start_btn	Comença
+kot_mark_ready	Marca a punt
+kot_done_btn	Fet
+table_free	Lliure — toqueu per començar una comanda
+start_order	Comença comanda
+open_bill	Obre el compte
+collect_payment	Cobra
+table_running	En curs
+payment_pending	Pagament pendent
+collect_at_counter	cobra al mostrador
+inventory	Inventari
+inventory_stock	Inventari i estoc
+branches	Sucursals
+branches_org	Sucursals i organització
+credit_customers	Parts (khata i proveïdors)
+customer_name_ph	Nom de la part
+new_customer_ph	Nom de la part nova
+item_name_ph	Nom de l'article (p. ex. Masala Dosa)
+item_price_ph	Preu
+start_template	Producte
+team	Equip
+team_pins	Equip i PIN
+my_pin_settings	El meu PIN
+settings_hub_help_my_pin	Canvia el PIN de desbloqueig de la persona que ha iniciat sessió en aquest dispositiu.
+team_self_help	Un sol inici de sessió: un PIN nou, una contrasenya nova o tots dos. Deixeu una casella buida per conservar el que teniu. Demaneu al Propietari si necessiteu altres pantalles o drets.
+backup_settings	Còpia i ajustos
+lock_app	Bloqueja l'app
+pick	Tria
+select	Selecciona
+advance	Bestreta
+owner	Propietari
+staff	Personal
+photo	Foto
+auto	Auto
+prev	Ant
+next	Següent
+ok	D'acord
+this_shop	Servidor
+extra_till	Client
+off	Desactivat
+tables_kitchen	Taules i cuina
+server	Servidor
+client	Client
+language_currency	Llengua i moneda
+language	Llengua
+choose_language	Trieu la vostra llengua
+language_setup_hint	Seguiu la llengua d'aquest dispositiu o trieu-ne una vós.
+lang_follow_platform	Llengua del dispositiu
+lang_pick_user	Tria la llengua
+lang_platform_now	Llengua del dispositiu ara
+selected_language	Seleccionada
+continue	Continua
+this_device	AQUEST DISPOSITIU
+device_use_q	Com s'utilitzarà aquest dispositiu?
+last_server_mode	Era Servidor — toqueu per continuar
+last_client_mode	Era Client — toqueu per continuar
+choose_server	Trieu un servidor
+choose_server_hint	Obriu un servidor existent o creeu-ne un per a un altre negoci.
+create_new_server	Crea un servidor nou
+open_server	Obre
+new_server_name_ph	Nom del servidor nou (opcional)
+server_remove_pin_ph	PIN del propietari per treure un servidor
+only_owner_remove_server	Només el Propietari pot treure un servidor
+owner_pin_remove_server	Cal el PIN del propietari per treure aquest servidor
+device_setup_help	El Servidor guarda els llibres aquí. El Client s'aparella amb un Servidor.
+app_template_heading	Rajdhani App Template
+app_template_blurb	Carrega el menú Rajdhani; Propietari Zahir (zahir), Admin Asif (asif, PIN 1111), Cambrer Nawaz (nawaz, PIN 0000); barra lateral FOH; l'historial s'esborra al cap de 4 hores (i Neteja ara a Còpia); franja d'Avui desactivada; KOT compacte + marges Estàndard per a safates estretes. Els companys de la barra lateral es poden tornar a activar a Ajustos.
+app_template_apply	Rajdhani App Template
+app_template_skip	Omet de moment
+app_template_status	Servidor a punt — apliqueu Rajdhani App Template o ometeu
+app_template_importing	S'aplica {title}…
+currency	Moneda
+backup	Còpia
+use	Fes servir
+dont_use	No ho facis servir
+add_branch	Afegeix sucursal
+add_conversion	Afegeix conversió
+add_dishes_items	Afegeix plats i articles
+add_item_plain	Afegeix article
+add_note	Afegeix nota
+add_opening_balance	Afegeix saldo d'obertura
+add_staff	Afegeix personal
+add_station	Afegeix estació
+add_table	Afegeix taula
+add_unit	Afegeix unitat
+add_use_name	Afegeix / fes servir aquest nom
+allow_extra_tills	Permet caixes extra
+amend	Esmena
+apply_country_pack	Aplica el paquet de país
+datetime_appearance	Aspecte de data i hora
+datetime_appearance_help	Els llibres guarden RFC3339 amb l'any primer a dins. Això només canvia com es veuen les dates i els rellotges als comptes, KOT, informes i la pantalla.
+datetime_example	Exemple ara: {ex}
+date_order	Ordre de la data
+date_order_dmy	D/M/A
+date_order_mdy	M/D/A
+date_order_ymd	A-M-D
+time_format	Rellotge
+time_format_24h	24 hores
+time_format_12h	12 hores
+attach_bill_photo	Adjunta foto del compte
+attach_pdf	Adjunta PDF
+attach_photo	Adjunta foto
+attachments_last_expense	Adjunts (darrera despesa)
+bank	Banc
+bank_in	Entrada a banc
+bank_out	Sortida de banc
+bank_reconciliation	Conciliació bancària (marqueu contra l'extracte)
+bank_to_till	Banc → caixa
+book_add_dish	Llibre — afegeix plat / article
+book_opening_credit	Llibre — crèdit d'obertura
+branch_name_sell_ph	Nom de la sucursal des d'on es ven
+bring_my_book	Porta el meu llibre
+business_tax_id_ph	Id fiscal del negoci
+caption_bank	BANC
+caption_bills	COMPTES
+caption_outstanding	PENDENT
+caption_payments_today	PAGAMENTS D'AVUI
+caption_today	AVUI
+card_amount_ph	Import de targeta
+cash_amount_ph	Import en efectiu
+cash_memo	Nota d'efectiu
+choose_icon	Tria icona
+choose_logo	Tria logotip
+clear_icon	Treu la icona
+clear_photo	Treu la foto
+copy_day_book_csv	Copia el llibre del dia CSV
+copy_day_close	Copia el tancament del dia
+copy_items_csv	Copia articles CSV
+copy_outstanding_csv	Copia pendents CSV
+copy_parties_csv	Copia parts CSV
+copy_party_ledger_csv	Copia el llibre de la part CSV
+copy_receipt	Copia el rebut
+share_whatsapp	Comparteix per WhatsApp
+lan_pages_heading	Pàgines de convidats al Wi‑Fi
+lan_pages_help	Al Wi‑Fi d'aquesta botiga, les pàgines de convidats serveixen per al tauler, fitxes, expo, quiosc, QR de taula i comentaris. Els convidats amb dades mòbils necessitaran Cloud més endavant. El terminal de targeta / enllaç de pagament és opcional quan hi ha internet — no bloqueja mai el mostrador.
+diag_send_heading	Comparteix fora d'aquest dispositiu
+kot_dest_heading	Estació de cuina
+optional_login_heading	Inici de sessió opcional
+rights_heading	Drets
+ops_panel	Operacions locals
+crm_heading	Convidats i missatges
+crm_help	Aniversari, fidelització, inactius i millors convidats — poseu a la cua intencions d'SMS o WhatsApp. Feu servir {name} i {points} al missatge. El propietari toca enviar; res no s'envia sol.
+crm_queue_sms	Posa SMS a la cua
+crm_queue_wa	Posa WhatsApp a la cua
+crm_seg_bday_week	Setmana d'aniversari
+crm_seg_bday_month	Mes d'aniversari
+crm_seg_phone	Amb telèfon
+crm_seg_loyalty	Fidelització
+crm_seg_inactive	Inactius
+crm_seg_top	Qui més gasta
+birthday_ph	Aniversari (MM-DD o YYYY-MM-DD)
+crm_message_ph	Per molts anys, {name}! Tens {points} punts.
+till_apply_redeem	Aplica al compte
+till_clear_redeem	Neteja el bescanvi
+till_wallet_topup	Recarrega la cartera
+till_issue_voucher	Emet un val
+till_points_ph	Punts a bescanviar
+till_wallet_ph	Import de la cartera a gastar
+till_voucher_code_ph	Codi del val
+till_voucher_amt_ph	Import del val (buit = tot)
+till_wallet_topup_ph	Import de recàrrega de la cartera
+till_voucher_issue_amt_ph	Import del val a emetre
+till_voucher_issue_code_ph	Codi del val nou
+split_evenly	Divideix a parts iguals
+waitlist	Llista d'espera
+fire_course	Envia el curs
+hold_item	Retén
+waiter_call	Crida el cambrer
+waitlist_add	Afegeix a la llista d'espera
+floor_view_grid	Graella
+floor_view_layout	Disposició
+floor_layout_x	X
+floor_layout_y	Y
+floor_layout_w	W
+floor_layout_h	H
+floor_layout_save	Desa la disposició
+floor_layout_open	Obre la taula
+floor_layout_edit	Edita la disposició
+floor_layout_pick	Toqueu una taula per editar-ne la disposició
+floor_layout_saved	Disposició de la taula desada
+floor_layout_nudge_left	← 20
+floor_layout_nudge_right	→ 20
+floor_layout_nudge_up	↑ 20
+floor_layout_nudge_down	↓ 20
+sibling_pickers_help	Toqueu Activat/Desactivat com a les unitats — amagueu zones, estacions i tipus impositius dels selectors del dia a dia; els valors del paquet es queden.
+bulk_price_apply	Aplica preu massiu
+card_terminal_optional	Terminal de targeta / enllaç de pagament (opcional quan hi ha internet)
+copy_report	Copia l'informe
+counted_cash_ph	Efectiu comptat al calaix
+country_tax	País i impost
+tax_chrome	Etiquetes d'impost al caixa
+tax_chrome_help	Quan està desactivat, el taulell de comandes amaga les línies d'estimació GST/impost i els marcadors de GST dins el preu. Els tipus i els ajustos de País i impost es queden — torneu a activar les etiquetes quan vulgueu. Rajdhani App Template comença amb això desactivat.
+tax_chrome_on	Mostra
+tax_chrome_off	Amaga
+tax_chrome_saved_on	Etiquetes d'impost al caixa
+tax_chrome_saved_off	Etiquetes d'impost amagades al caixa
+tax_invoice_till	Factura fiscal al caixa
+tax_invoice_help	Quan està desactivat, els comptes són només Nota d'efectiu i les fitxes Factura fiscal / Nota d'efectiu s'amaguen al taulell. Rajdhani App Template comença amb això desactivat — torneu a activar Mostra quan vulgueu per triar Factura fiscal.
+tax_invoice_on	Mostra
+tax_invoice_off	Amaga
+tax_invoice_saved_on	Factura fiscal al caixa
+tax_invoice_saved_off	Factura fiscal amagada — només Nota d'efectiu
+pay_methods	Formes de pagament
+pay_methods_help	Quines fitxes surten a Cobra. L'efectiu sempre hi és. Rajdhani App Template comença només amb Efectiu — torneu a activar aquí UPI / Targeta / Crèdit / Divideix.
+create_backup	Crea una còpia
+credit_limit_heading	Límit de crèdit (part seleccionada / amb nom)
+day_close_summary	Resum del tancament del dia
+delete_party	Elimina la part seleccionada
+delivery	Lliurament
+done_open_books	Fet — obre els llibres
+drawer_count	Recompte del calaix (opcional)
+expense_heading	Despesa
+export_day	Exporta el dia
+extra_note_bill_ph	Nota extra en aquest compte / venda
+extra_note_expense_ph	Nota extra a la darrera despesa
+extra_tills_heading	Caixes extra
+other_devices_help_heading	Configura altres dispositius
+other_devices_help	En aquest dispositiu (Servidor): Altres dispositius → Permet caixes extra. Anoteu el codi d'aparellament i l'adreça Wi‑Fi. Toqueu Permet que altres dispositius es connectin si apareix. En un ordinador, toqueu Inicia amb aquest ordinador. A cada altre dispositiu: instal·leu l'app, trieu Mode client, Troba el servidor de la botiga (o escriviu l'adreça), introduïu el codi d'aparellament, Aparella ara. Les comandes esperen al dispositiu si cau el Wi‑Fi i surten quan el Servidor torna a respondre. Les impressores de cuina es configuren al Servidor (Ajustos → Impressores) — les caixes extra hi envien els KOT.
+forget_shop	Oblida aquesta botiga
+goods_received	Mercaderia rebuda
+import_day	Importa el dia
+import_items_csv_plain	Importa articles CSV…
+import_parties_csv	Importa parts CSV…
+item_name	Nom de l'article
+kitchen_printing	Impressores
+login_id_ph	Nom d'usuari
+mark_cleared	Marca com a conciliat
+new_party_clear	Part nova (buida el formulari)
+new_party_kind_supplier_ph	Tipus de part nova (Proveïdor)
+next_country	País següent
+next_order	Comanda següent (buida el taulell)
+note_gstin_ph	Nota / GSTIN / recordatori d'acord
+notes_attach_party	Notes i adjunts (part seleccionada)
+notes_attach_sale	Notes i adjunts (venda seleccionada)
+on_account_ap	A compte (AP)
+org_optional_ph	Organització (opcional)
+paid_by	Pagat per
+paid_now	Pagat ara
+pair_now	Aparella ara
+pairing_code_ph	Codi d'aparellament
+party_name_selected_ph	Nom de la part (o fes servir la seleccionada)
+password_ph	Contrasenya
+pay_ap_card	Paga AP amb targeta
+pay_ap_cash	Paga AP en efectiu
+pay_ap_heading	Paga el que els devem (AP)
+pay_ap_upi	Paga AP amb UPI
+pay_selected_heading	Paga la selecció (salda el deute / pren bestreta)
+pick_from_items	Tria dels nostres articles
+prev_country	País anterior
+print_open	Imprimeix / obre
+reason_amend_ph	Motiu d'esmena / anul·lació / devolució
+reason_note_ph	Motiu / nota (minva, recompte, …)
+record_day_close	Registra el tancament del dia
+refresh_from_shop	Actualitza des de la botiga
+refund	Devolució
+remove_selected	Treu la selecció
+request_bill	Demana el compte
+restaurant_name_ph	Nom del restaurant (opcional)
+restore_backup	Restaura la còpia
+role_both	Tots dos
+role_admin	Admin
+role_cashier	Caixer
+role_customer	Client
+role_manager	Encarregat
+history_retention	Historial comercial
+history_retention_help	Esborra automàticament vendes i KOT antics. El menú, el personal i els ajustos es queden. Neteja ara esborra totes les files comercials i conserva la configuració.
+history_off	Conserva
+history_day_close	En tancar el dia
+history_after_hours	Al cap d'hores
+history_hours_ph	Hores (1–168, per defecte 4)
+history_hours_save	Desa les hores
+history_clear_now	Neteja l'historial ara
+history_cleared	Historial comercial netejat — configuració conservada
+history_retention_saved	Neteja de l'historial desada
+history_hours_saved	Hores de l'historial desades
+history_owner_only	Només el Propietari o l'Admin poden netejar l'historial
+rollup	Acumulat
+save_brand	Desa la marca
+save_business_id	Desa l'id del negoci
+save_business_name	Desa el nom del negoci
+save_features	Desa
+save_features_named	Desa {name}
+save_features_ok	Configuració desada per a {name}
+save_names	Desa els noms
+second_way	Segona via
+server_ip_ph	IP del servidor (p. ex. 192.168.1.10)
+set_credit_limit	Aplica el límit a la part
+set_login_selected	Aplica l'inici de sessió a la selecció
+set_login_named	Aplica l'inici de sessió a {name}
+shop	Botiga
+show	Mostra
+spreadsheet_csv	Full de càlcul (CSV)
+start_fresh	Comença de zero
+stop_extra_tills	Atura les caixes extra
+floor_cols_ph	Columnes
+floor_cols_fit	Ajusta a la pantalla
+floor_cols_fit_sub	{n} hi caben
+floor_cols_fits	hi cap
+floor_cols_scroll	es desplaça de costat
+floor_cols_min	Columnes: com a mínim 1 — o deixeu-ho buit per ajustar a la pantalla
+floor_zoom_auto	Auto
+floor_zoom_out	Allunya
+floor_zoom_in	Apropa
+backup_auto	Còpia automàtica cada dia · darrera {when} · es conserven els darrers 14 dies a {dir}.
+backup_auto_none	Còpia automàtica cada dia — la primera es farà d'aquí a un moment.
+backup_copy_to	Les còpies també van a {dir}.
+backup_copy_btn	Copia també les còpies a una carpeta…
+autostart_off	Inicia amb aquest ordinador
+autostart_on	S'inicia amb aquest ordinador ✓ — toqueu per aturar
+autostart_done_on	Aquest ordinador ara obre l'app en arrencar — el servidor de la botiga torna després d'una tallada de corrent.
+autostart_done_off	Aquest ordinador ja no obre l'app en arrencar.
+device_forgotten	La botiga ha oblidat aquest dispositiu — torneu-lo a aparellar amb el codi actual. Les comandes que hi esperen es conserven.
+lan_offline	No es pot arribar al servidor de la botiga
+forget_device	Oblida
+last_seen	vist
+copy_pair_code	Copia el codi d'aparellament
+new_pair_code	Codi d'aparellament nou
+pair_finishing	S'acaba l'aparellament… s'apliquen els llibres de la botiga
+pair_opening	S'obre el caixa…
+pair_copied	Codi d'aparellament copiat
+kot_waiting	En espera d'enviar
+lan_offline_waiting	No es pot arribar al servidor de la botiga · {n} en espera
+lan_connecting	Connectant amb la botiga…
+lan_live	En directe
+lan_sending	{n} enviant
+lan_sign_in_to_send	Torneu a iniciar sessió per enviar {n}
+lan_pair_again	Torneu a aparellar aquest dispositiu
+lan_update_app	Actualitzeu l'app — aquest dispositiu i el servidor de la botiga tenen versions diferents
+allow_firewall	Permet que altres dispositius es connectin
+firewall_blocked	El tallafoc d'aquest ordinador bloqueja altres dispositius — toqueu Permet que altres dispositius es connectin.
+firewall_waiting	S'espera l'avís de l'administrador…
+lan_join_help	A l'altre dispositiu: Mode client → Troba el servidor de la botiga (o escriviu {addr}) → codi d'aparellament {code}.
+lan_pair_status	Wi‑Fi {addr}
+lan_join_help_no_addr	Connecteu aquest dispositiu al Wi‑Fi per tenir una adreça.
+lan_no_address	Encara no hi ha adreça Wi‑Fi — connecteu-vos al Wi‑Fi de la botiga.
+lan_not_listening	No s'accepten dispositius (el port {port} està ocupat). Reinicieu l'app.
+lan_tills_off	Les caixes extra estan desactivades. Permeteu-les perquè un altre dispositiu s'hi uneixi.
+paired_with	Aparellat · {url}
+not_paired	No aparellat
+choose_device_use	Trieu Servidor o Client.
+paired_note	Aparellat. Desbloquegeu per vendre, o Actualitza per tenir l'últim.
+last_update_at	Darrera actualització: {time}.
+pair_intro	Trobeu el servidor, o escriviu-ne l'adreça i el codi d'aparellament.
+queue_waiting	En espera d'arribar a la botiga ({n}):
+queue_tries	Intentat {n} vegades · darrera resposta: {e}
+save_backup_copy	Desa una còpia de seguretat…
+backup_copy_saved	Còpia de seguretat desada — guardeu-la fora d'aquest dispositiu (un USB o un altre dispositiu)
+backup_copy_overdue	Fa {n} dies que cap còpia no ha sortit d'aquest dispositiu — Ajustos → Còpia
+backup_copy_failed	La còpia de seguretat no s'hi ha pogut desar — trieu un altre lloc
+clock_off	El rellotge d'aquest dispositiu va {min} min desviat del servidor de la botiga — poseu l'hora correcta en aquest dispositiu
+printers_heading	Impressores
+printers_help	Trobeu impressores, toqueu-ne una per seleccionar-la i després Imprimeix una pàgina de prova només en aquell dispositiu. Impressores de compte: Format de compte i KOT → Compte. Impressores de cuina: Cuina → Estacions de cuina (afegiu primer una estació — Troba no en crea).
+printers_host_only	Les impressores es configuren al dispositiu de la botiga (Servidor). Aquest caixa hi envia comptes i KOT — Troba / afegeix / assigna queden al Servidor. La pàgina de prova i la mida d'impressió del compte van al Servidor.
+printers_find_heading	Troba impressores
+printers_find_tip	Troba escaneja aquest dispositiu i manté la llista al dia.
+printers_pool_heading	Impressores
+printers_pool_tip	Troba escaneja aquest dispositiu i manté aquesta llista al dia.
+printers_pool_empty	(encara cap — toqueu Troba)
+printers_routes_help	Trobeu impressores que el sistema operatiu ja coneix. Assigneu-les al compte i a cada cuina a Format de compte i KOT.
+printer_assign_dd	Impressora real: {place}
+printer_assign_pick	Selecciona la impressora real
+printer_profile_heading	Disseny
+printer_send_heading	Lliurament
+vp_delivery_heading	Lliurament
+vp_delivery_help	Com envia els treballs aquesta impressora virtual — document del SO, bytes en brut o ESC/POS. El contingut del tiquet (mida, ajust, marges) el decideix el format de compte / KOT, no aquí.
+vp_type_size_heading	Mida de lletra
+vp_wrap_heading	Amplada de línia
+vp_margin_heading	Marges
+vp_delivery_spooler	Document del SO (cua del sistema)
+vp_delivery_raw	Bytes en brut al dispositiu
+vp_delivery_escpos	Ordres tèrmiques ESC/POS
+virtual_printer_new	Impressora virtual nova
+virtual_printer_selected	S'edita «{name}» — toqueu-ne una altra de la llista per canviar
+virtual_printer_tap_list	Toqueu una impressora virtual de la llista per editar-la
+config_layout_portrait	Vertical
+config_layout_landscape	Horitzontal
+config_send_os	Cua del sistema
+config_send_escpos	ESC/POS
+profiles_heading	Dissenys
+profiles_empty	(encara no hi ha dissenys)
+profile_builtin	integrat
+profile_custom	personalitzat
+profile_name_ph	Nom del disseny
+profile_new	Disseny nou
+profile_delete	Elimina el disseny
+profile_created	Disseny creat
+profile_deleted	Disseny eliminat
+profile_builtin_keep	Els dissenys integrats no es poden eliminar
+config_saved	Actualitzat
+config_selected	Seleccionat «{name}»
+printer_output_heading	Impressores virtuals
+virtual_printers_heading	Impressores virtuals
+virtual_printers_empty	Encara no hi ha impressores virtuals — poseu els valors a sota i Desa. Quan n'hi hagi, toqueu-ne una de la llista per editar-la.
+virtual_printer_name_ph	Nom de la impressora virtual (opcional)
+virtual_printer_create	Crea una impressora virtual
+virtual_printer_save	Desa la impressora virtual
+virtual_printer_delete	Elimina la impressora virtual
+virtual_printer_created	Impressora virtual «{name}» creada
+virtual_printer_deleted	Impressora virtual «{name}» eliminada
+virtual_printer_updated	Impressora virtual actualitzada
+virtual_printer_updated_named	Impressora virtual «{name}» actualitzada
+virtual_draft_layout	Valors posats per a la propera impressora virtual
+virtual_draft_send	Valor posat per a la propera impressora virtual
+virtual_need_real	Seleccioneu primer una impressora real
+virtual_need_select	Seleccioneu una impressora virtual per eliminar
+real_printer_selected	Seleccionada: {name}
+station_group_heading	Impressores virtuals
+station_group_apply	Elimina la impressora virtual
+station_group_applied	Eliminada
+station_group_empty	Seleccioneu una impressora virtual
+station_group_name_ph	Nom de la impressora virtual (opcional)
+station_group_save	Crea una impressora virtual
+station_group_saved	Impressora virtual desada
+station_manage_heading	Afegeix o treu una estació de cuina
+printers_routes_heading	On s'imprimeix
+route_pick_heading	Lloc
+route_editing	Edició: {name}
+route_assigned	Afegida {printer} a {place}
+route_already_assigned	Ja és en aquest lloc: {printer}
+route_removed	Tret {printer} de {place}
+route_cleared	Netjat {name}
+route_assigned_empty	Res en aquest lloc
+route_tap_remove	toqueu per treure
+route_tap_select	toqueu per seleccionar
+route_tap_selected	seleccionat
+route_pick_printer_first	Toqueu primer una impressora
+route_assigned_heading	Impressores
+route_add_heading	Assigna
+printer_label_ph	Nom (p. ex. Cuina)
+printer_target_ph	Nom de la impressora del sistema o host:9100
+printer_target_default	la impressora habitual d'aquest ordinador (adreça buida)
+printer_wire_heading	Perfil
+printer_wire_escpos	ESC/POS
+printer_wire_os	Vertical
+printer_wire_os_portrait	Vertical
+printer_wire_os_landscape	Horitzontal
+printer_wire_escpos_short	ESC/POS
+printer_wire_os_short	Vertical
+printer_wire_os_landscape_short	Horitzontal
+printer_format_custom	Perfil personalitzat nou
+printer_format_custom_label	Personalitzat
+printer_format_custom_added	Perfil personalitzat afegit per a aquest lloc
+add_printer	Afegeix impressora
+remove_printer	Treu
+route_pick_ph	Compte o una estació de cuina
+route_bill	Compte
+route_default_kitchen	Sense estació (plats sense assignar)
+route_kot_station	Cuina
+route_dont_print	Sense impressora
+stations_heading	Estacions de cuina
+stations_help	Afegiu estacions de cuina per als plats i el KOT. A cada estació, acopleu-hi les impressores (trobades a Ajustos → Impressores), poseu la prioritat i trieu La primera que funcioni o Imprimeix a totes. Els canvis es desen sols — no hi ha botó Desa.
+station_print_heading	Impressores d'aquesta estació
+station_print_help	Trieu una estació i acopleu-hi una o més impressores. ↑↓ posa l'ordre d'intent. La primera que funcioni s'atura al primer èxit; Imprimeix a totes envia a cada impressora acoblada. Cada canvi es desa de seguida.
+station_print_pick_ph	Estació a la qual posar impressores
+station_print_pick_first	Trieu primer una estació de cuina
+station_print_editing	S'editen les impressores de «{name}»
+station_vps_dd	Impressores d'aquesta estació
+station_vps_dd_n	{n} impressora(es) · toqueu per canviar
+station_vps_empty	Encara no hi ha impressores — trobeu-les a Ajustos → Impressores
+bill_printers_dd	Impressores del compte
+bill_printers_dd_n	{n} impressora(es) per al compte · toqueu per canviar
+job_layout	Disseny
+job_delivery	Com s'envia el treball
+job_delivery_help	Document del SO, bytes en brut o ESC/POS. El compte i el tiquet de cuina en guarden un de propi. Qualsevol treball pot anar a qualsevol impressora que Troba hagi desat.
+station_vp_attached	Impressora acoblada
+station_vp_detached	Impressora treta de l'estació
+station_print_summary	{mode} · {n} impressora(es)
+station_print_summary_none	Encara no hi ha impressores en aquesta estació — no imprimirà
+stations_none	Encara no hi ha estacions — afegiu-ne una a sota. Els articles del menú poden fer servir una estació perquè el KOT s'hi imprimeixi.
+route_up	Amunt
+route_down	Avall
+route_remove	Treu
+route_clear	Neteja
+save_printers	Desa les impressores
+print_test_page	Imprimeix una pàgina de prova
+no_printer_assigned	Sense impressora
+test_page_no_printer	No hi ha impressora per a {place} — acopleu-n'hi una i torneu-ho a provar
+test_page_pick_first	Trieu primer impressora(es) per a una pàgina de prova — després Imprimeix una pàgina de prova
+test_printers_dd	Impressores per a una pàgina de prova
+test_printers_dd_n	{n} impressora(es) per a una pàgina de prova · toqueu per canviar
+kot_test_printers_dd	Impressores per al KOT de prova
+kot_test_printers_dd_n	{n} impressora(es) per al KOT de prova · toqueu per canviar
+test_printer_picked	Prova a: {name}
+test_printer_cleared	Sense prova a: {name}
+test_page_sent_n	Pàgina de prova enviada a {n} impressora(es)
+test_kot_pick_first	Trieu primer impressora(es) per al KOT de prova — després KOT de prova
+test_kot_sent_n	KOT de prova enviat a {n} impressora(es)
+cancel_pick	Marca
+cancel_pick_on	Marcat
+cancel_pick_meta	Marcat per anul·lar
+batch_cancel	Anul·la els marcats
+batch_cancel_n	Anul·la els marcats ({n})
+batch_cancel_none	Marqueu primer un o més plats enviats — després Anul·la els marcats
+batch_cancel_title	Anul·la els plats marcats — un motiu, un tiquet d'anul·lació per cuina
+batch_cancel_ok	{n} plat(s) anul·lat(s) · {slips} tiquet(s) d'anul·lació → {kitchens}
+batch_cancel_ok_noprint	{n} plat(s) anul·lat(s) — la impressió automàtica de KOT està desactivada, així que no hi ha tiquet d'anul·lació
+no_printer_kitchen_station	No hi ha impressora per a aquella estació de cuina — Cuina → Estacions de cuina → Impressores d'aquesta estació
+printers_saved	Desat
+test_page_sent	Pàgina de prova enviada — comproveu la impressora
+test_page_sent_one	Pàgina de prova enviada a {name} — comproveu aquella impressora
+printers_found	Trobades {n}: {list}
+printers_find_synced	Trobades {n} — {new} noves
+printer_on_device	desada
+printer_already_added	ja afegida
+printer_already_saved	Ja desada: {name}
+find_printers	Troba impressores
+printers_looking	S'està cercant…
+saving_printer	S'afegeix la impressora…
+cancelled	Anul·lat
+printers_tap_find	Toqueu Troba per llistar les impressores que aquest dispositiu pot fer servir.
+printers_none_found	No se n'ha trobat cap — escriviu un nom d'impressora del sistema o una IP (p. ex. 192.168.1.50).
+printer_from_find	Afegida {name}
+kot_printer_ph	Impressora per als KOT
+bill_printer_ph	Impressora per als comptes
+kot_print_on	Impressió automàtica de tiquets de cuina: Activada
+kot_print_off	Impressió automàtica de tiquets de cuina: Desactivada
+queue_refused	La botiga no ho ha acceptat ({n}) — comproveu-ho cadascun al mostrador:
+clear_not_accepted	Comprovat — neteja aquesta llista
+device_name_ph	Nom d'aquest dispositiu
+lan_last_update	darrera actualització {time}
+lan_not_accepted	{n} no acceptat
+connected_now	connectat ara
+backup_failed	La darrera còpia automàtica ha fallat: {e}
+backup_overdue	Fa {n} dies sense còpia — deixeu l'app oberta en aquest dispositiu perquè en pugui fer.
+disk_low	Només queden {mb} MB lliures en aquest dispositiu — les còpies fallaran aviat. Allibereu espai.
+last_seen_devices	Vist per darrer cop: {time}
+sync_interval	Sincronitza cada {secs} s
+connection_to_shop	Connexió amb la botiga
+supplier_name_ph	Nom del proveïdor (o part)
+supplier_ph	Proveïdor
+switch_device	Canvia aquest dispositiu
+take_payment	Cobra
+tax_added_till	{tax} exclòs
+tax_inside_price	{tax} inclòs
+tax_invoice	Factura fiscal
+till_to_bank	Caixa → banc
+units_heading	Unitats
+unlock_after_pairing	Introduïu el PIN
+unlock_with_login	Desbloqueja amb l'inici de sessió
+unmark	Desmarca
+update_my_password	Actualitza la meva contrasenya
+update_my_pin	Actualitza el meu inici de sessió
+duress_heading	PIN de desbloqueig d'emergència (només el Propietari)
+duress_help	Opcional. Si s'escriu aquest PIN en desbloquejar en lloc del vostre, s'esborren totes les entrades dels llibres (vendes, llibres majors, historial) i el caixa s'obre com a Propietari amb aspecte normal — el menú, els preus, les taules, el personal i els ajustos es queden. L'esquema i la configuració no s'eliminen. Feu-lo servir només si us obliguen a desbloquejar. Deixeu-lo buit i deseu per desactivar-lo. Mai el mateix PIN que el de ningú.
+duress_pin_ph	PIN d'emergència (4–12 dígits)
+duress_confirm_ph	Torneu-lo a escriure per confirmar
+save_duress_pin	Desa el PIN d'emergència
+clear_duress_pin	Desactiva el PIN d'emergència
+duress_on	El PIN de desbloqueig d'emergència està activat
+duress_off	El PIN de desbloqueig d'emergència està desactivat
+duress_saved	PIN de desbloqueig d'emergència desat
+duress_cleared	PIN de desbloqueig d'emergència desactivat
+upi_amount_ph	Import UPI
+void	Anul·la
+write_off_ap	Cancel·la l'AP
+write_off_heading	Cancel·lació (neteja sense pagament)
+write_off_nil	Cancel·lació / saldo zero
+your_brand	La vostra marca (dins l'app)
+your_categories	Les vostres categories
+account_kind	Tipus de compte (toqueu-ne un)
+actual_total_cap	TOTAL REAL
+amend_help	Seleccioneu una venda per esmenar, anul·lar o tornar. Les esmenes conserven tot l'historial. El Total arrodonit comença igual que l'Aplicat — editeu-lo només per arrodonir. Anul·lar i tornar pot demanar un PIN de Propietari o Encarregat (escrit a dalt; queda registrat amb el vostre nom).
+applied_total_cap	TOTAL APLICAT
+bank_balance	Saldo bancari
+bank_net_today	Net bancari d'avui
+branch_export_help	L'exportació escriu branch_snapshot_CODE_DATE.json a la carpeta de còpies i el copia al porta-retalls. Per importar el dia d'un altre local, deseu-ne el fitxer com a import_branch_snapshot.json a la mateixa carpeta i toqueu Importa.
+brand_shown_help	Es mostra a les pantalles de dins l'app. El nom i la icona de l'app instal·lada en aquest dispositiu queden com a la fitxa de la plataforma.
+app_icon	Icona de l'app
+logo_help	Marca de botiga opcional a les pantalles de l'app.
+onboard_layout	Què obteniu
+item_photo_help	Opcional. Sense foto mostrem les inicials del nom de l'article.
+stamp_heading	Segell
+stamp_image_help	Imatge de segell opcional als comptes impresos i a la pantalla de convidats.
+payment_qr_heading	QR de pagament
+payment_qr_image_help	QR estàtic als comptes i a la pantalla de convidats; si no, el pagament fa servir un QR UPI dinàmic del VPA de dalt.
+cash_in_hand	Efectiu en caixa
+change_my_pin_heading	El meu inici de sessió
+connect_to_server	Connecta amb el Servidor
+counter_locked	Mostrador 01 · Bloquejat
+country_pack_help	Un paquet de país posa el nom i el càlcul de l'impost, el rail de pagament instantani i l'id de negoci imprès als comptes. Kumkaj no presenta impostos ni emet factures electròniques oficials enlloc.
+currency_use_help	Desplaceu i toqueu Fes servir per a qualsevol moneda admesa.
+day_close_help	Registrar un tancament del dia desa aquest resum (i la diferència del calaix si s'ha comptat) al registre d'auditoria. No atura les vendes.
+expenses_word	Despeses
+feature_access_help	Què poden obrir — opcional; la feina de dalt ja posa un valor per defecte
+footer_local	SQLite local · Gratuït per sempre · Zero Cloud
+fresh_book_khaynjo	Nou = menú buit (afegiu plats després al Menú). Llibre = escriviu a sota els articles d'obertura i qui us deu.
+fresh_selected	Nou seleccionat — el catàleg queda buit. Toqueu Fet quan estigueu a punt.
+gross_word	Brut
+how_start	Com voleu començar?
+kot_print_help_khaynjo	Quan està activat, cada cuina imprimeix el seu paper de KOT tan bon punt premeu Envia.
+later_country_pack	Més endavant: Ajustos → apliqueu el paquet del vostre país per a les etiquetes d'impost i pagament.
+local_badge	LOCAL
+mix_type_hint_khaynjo	Dividiu entre efectiu / UPI / targeta / crèdit si cal. El crèdit necessita un client a dalt.
+money_in_sales	Diners que entren (vendes)
+net_word	Net
+offline_badge	SENSE XARXA
+optional_login_help	Inici de sessió opcional (id + contrasenya). El propietari el posa un cop; només l'usuari pot canviar la contrasenya després.
+or_unlock_login	O desbloquegeu amb id d'inici de sessió + contrasenya
+permission_preset	Feina (posa pantalles i accions de diners)
+preset_help_khaynjo	Caixer: vendre. Encarregat: vendre + articles + anul·lar/esmenar.
+product_locked_khaynjo	Khaynjo
+product_only_khaynjo	Aquesta app és només Khaynjo — sistema operatiu de restaurant. Les altres cares de negoci surten com a productes Kumkaj a part.
+purchases_cogs	Compres (COGS)
+qty_cap	QTAT
+restore_help	Restaura: trieu una còpia. Els llibres s'obren com eren llavors; els llibres d'ara es desen primer, així que es pot desfer.
+wipe_data_heading	Elimina les dades locals
+wipe_data_help	Només el Propietari — les mateixes tries que la desinstal·lació de Windows. Registres del negoci esborra l'historial comercial però conserva el menú i la configuració (com el PIN de desbloqueig d'emergència). Configuració de la botiga elimina la base de dades dels llibres. Preferències de pantalla esborra finestra/llengua. Confirmeu amb el PIN del Propietari. El PIN d'emergència a Equip és a part (esborrat encobert en desbloquejar).
+wipe_trading	Registres del negoci
+wipe_schema	Configuració de la botiga
+wipe_ui	Preferències de pantalla
+wipe_owner_pin_ph	PIN del propietari per eliminar
+wipe_delete_selected	Elimina la selecció
+wipe_owner_only	Només el Propietari pot eliminar les dades locals.
+restore_owner_only	Només el Propietari pot restaurar una còpia.
+wipe_owner_pin_needed	Introduïu el PIN del Propietari per eliminar les dades locals.
+wipe_nothing_selected	Trieu primer què eliminar.
+wipe_done	Dades locals seleccionades eliminades.
+wipe_schema_done	Configuració de la botiga esborrada — trieu Servidor o Client per continuar.
+rounded_total	Total arrodonit
+setup_app_khaynjo	Configura Khaynjo
+shop_logo_optional	Logotip de la botiga (opcional)
+stock_type_help	Escriviu el nom de l'article (en basta una part), una quantitat i després ajusteu. Els articles que encara no es compten necessiten Comença el seguiment un cop.
+team_owner_help	Deixeu la persona en blanc per afegir-ne una: nom, feina, nom d'usuari, PIN i una contrasenya opcional, després Afegeix. Trieu una persona per editar el mateix formulari — nom, nom d'usuari, contrasenya, pantalles i drets — i Desa. El vostre PIN i contrasenya són un sol inici de sessió a baix. El Propietari no canvia el PIN de ningú altre.
+staff_name_ph	Nom del personal
+staff_copy_hire_ph	Copia la configuració de (opcional)
+staff_copy_hire	Fes servir la configuració d'aquesta persona
+staff_edit_name_ph	Nom visible
+staff_rename	Desa el nom
+staff_copy_edit_ph	Copia la configuració d'una altra persona
+staff_copy_edit	Copia la seva configuració sobre la selecció
+staff_copy_edit_onto	Copia la seva configuració sobre {name}
+staff_deactivate_named	Treu {name}
+staff_renamed	Nom desat
+staff_setup_copied_hire	Configuració copiada de {name} — poseu un nom i un PIN nous i Afegeix personal
+staff_setup_copied_edit	Configuració de {from} copiada sobre {to}
+staff_copy_need_selected	Seleccioneu primer qui editar
+staff_copy_need_source	Trieu de qui copiar la configuració
+staff_copy_same	És la mateixa persona — trieu-ne una altra
+staff_rename_need_selected	Seleccioneu primer a qui canviar el nom
+team_pick_hint	Trieu qui editar — les pantalles, els drets de diners i les estacions de cuina surten només per a aquella persona.
+team_stations_help	Estacions de cuina que poden fer servir
+team_stations_changed	Estacions de cuina canviades — Desa la configuració d'aquesta persona
+team_features_changed	Pantalles canviades — Desa la configuració d'aquesta persona
+team_rights_changed	Drets canviats — Desa la configuració d'aquesta persona
+they_owe_us	Ens deuen
+unit_at_cap	Unitat @
+units_help	Codis per a les etiquetes d'article (kg, peça, sac). Cada unitat s'ha d'enllaçar — directament o a través d'altres unitats — a un estàndard (kg · cm · ml · pc), p. ex. 1 caixa = 2 capses i 1 capsa = 20 cm. Conversions: 1 des de = factor cap a. Les monedes no són mai unitats.
+units_picker_help	Toqueu Activat/Desactivat per mostrar una unitat als selectors de Compres i Menú. Les unitats desactivades continuen convertint.
+unit_picker_on	Activat
+unit_picker_off	Desactivat
+we_owe_them	Els devem
+who_unlocking	Qui desbloqueja?
+locked_word	Bloquejat
+show_pin	Mostra el PIN
+hide_pin	Amaga el PIN
+set_owner_pin	POSA EL PIN DEL PROPIETARI
+enter_owner_passcode	INTRODUEIX EL CODI DEL PROPIETARI
+enter_staff_passcode	INTRODUEIX EL CODI DEL PERSONAL
+pin_count_zero	0 / 12 dígits · com a mínim 4, després D'acord
+pin_count_need	{} / 12 dígits · en calen {} més
+pin_count_full	12 / 12 dígits · premeu D'acord
+pin_count_ready	{} / 12 dígits · premeu D'acord quan estigueu a punt
+pin_hint_choose	Trieu 4–12 dígits · Retorn o Desbloqueja per desar
+pin_hint_new	PIN de propietari nou de 4–12 dígits · Retorn o Desbloqueja
+pin_hint_shop_code	Dispositiu de la botiga · codi d'aparellament {}
+pin_hint_books	Aquest dispositiu guarda els llibres
+pin_hint_paired	Caixa extra aparellada — desbloquegeu per vendre
+pin_hint_pair_first	Caixa extra — aparelleu primer amb el dispositiu de la botiga
+unlock_to_continue	Desbloquegeu per continuar
+no_staff_yet	Encara no hi ha personal — desbloquegeu com a Propietari i després Equip
+status_server_set_pin	Mode servidor — poseu el PIN del propietari
+status_server_tills	Mode servidor — les caixes extra s'hi poden unir. Desbloquegeu
+status_server_unlock	Mode servidor — desbloquegeu com a Propietari
+status_client_unlock	Mode client — desbloquegeu per vendre
+icon_new_selected	Icona: fitxer nou seleccionat — toqueu Desa la marca
+icon_custom	Icona: marca pròpia del local
+icon_default	Icona: marca Kumkaj (per defecte) — trieu-ne una de pròpia
+logo_yours	Logotip: el de la vostra botiga — es mostra a les pantalles i als rebuts
+logo_default	Logotip: marca Kumkaj (per defecte) — poseu el vostre si en teniu
+tmpl_current	Actual: {} — {}
+tmpl_selected	Seleccionat: {} — {}
+setup_complete	Configuració completa
+onboard_fresh_tmpl	Nou · {} — el catàleg comença buit; afegiu articles a Articles i després Fet.
+onboard_book_tmpl	Llibre · {} — afegiu articles i crèdit d'obertura, després Fet.
+onboard_template_tmpl	Poseu nom al local si voleu i trieu com començar.
+tmpl_blurb	Taules, comandes, tiquets de cuina, comptes i llibres.
+tmpl_how	Veneu al mostrador; Sala per a taules i KOT; Llibres per al llibre del dia.
+reports_facet_title	Informes
+reports_facet_help	Llibres del dia, antiguitat de parts, assentaments bancaris i PiG del període.
+against_bill_ph	Contra el compte núm. de dalt (opcional)
+aliases_ph	Àlies — altres noms, separats per comes
+amount_blank_full_ph	Import (buit = saldo sencer)
+amount_owed_ph	Import degut
+amount_ph	Import
+amount_received_ph	Import rebut
+amount_we_pay_ph	Import que paguem
+business_name_ph	Nom del negoci
+category_new_ph	Categoria (opcional, es crea si és nova)
+code_bag_ph	Codi (bag)
+conv_factor_ph	Factor (25 = 1 bag → 25 kg)
+country_code_ph	Codi de país, p. ex. IN, GB, US, AE, BR
+credit_khata_amount_ph	Import de crèdit / khata
+credit_limit_ph	Límit de crèdit (0 = cap)
+from_code_ph	Codi d'origen (bag)
+item_name_lang_ph	Nom de l'article — escriviu-lo en la vostra llengua
+login_id_opt_ph	Nom d'usuari (obligatori, únic)
+manager_pin_ph	PIN d'encarregat per aprovar (només si no podeu anul·lar)
+new_branch_name_ph	Nom de la sucursal nova
+new_password_ph	Contrasenya nova (opcional)
+new_pin_ph	PIN nou (4–12 dígits)
+note_bank_ph	Nota (ingrés, retirada, …)
+note_buy_expense_ph	Nota (combustible, lloguer, …)
+note_expense_ph	Nota (combustible, oficina, …)
+options_khaynjo_ph	Opcions — Size*: Small=199, Large=399 | Toppings+3: Cheese=40, Olive=30 | Extra cheese=40
+part_second_way_ph	Part per una segona via (opcional)
+phone_ph	Telèfon
+place_name_ph	Nom d'aquest local
+qty_example_ph	Qtat (p. ex. 1,5 per a kg)
+quantity_ph	Quantitat
+reason_required_ph	Motiu (obligatori)
+role_title_ph	Títol del rol (p. ex. Barista)
+service_pct_ph	Servei % opcional 0/10/12
+short_code_ph	Codi curt (MG02)
+starting_password_ph	Contrasenya inicial (opcional)
+starting_pin_ph	PIN inicial (4–12 dígits)
+station_name_ph	Nom de l'estació (p. ex. Tandoor, Fryer, Cold)
+station_new_ph	Estació de cuina (opcional, p. ex. Tandoor — es crea si és nova)
+table_name_ph	Nom de la taula (p. ex. Pati 1, Mostrador 2)
+tax_rate_ph	Nom del tipus impositiu o % — Estàndard, Reduït, 0, 5, 12, 18, 20
+to_code_ph	Codi de destí (kg)
+uncleared_no_ph	Núm. no conciliat de dalt
+unit_cost_ph	Cost unitari
+unit_name_bag_ph	Nom (Bag)
+unit_plate_ph	Unitat (plate / pc — buit = cada un)
+pay_credit	Crèdit
+book_kind_today	Llibres d'avui
+book_kind_month	Llibres d'aquest mes
+book_kind_aging	Pendent / deure-haver
+book_kind_balance	Balanç
+order_help	Toqueu un article per afegir-lo.
+floor_help	Toqueu una taula per prendre o canviar la comanda. Els colors mostren lliure → assegut → cuina → a punt → menjant → compte → pagat. La llista d'espera, les reserves i afegir taules són a les seccions de sota.
+kitchen_help	Tiquets de cuina (KOT), el més nou al final. Comença → A punt → Fet fa avançar un tiquet. Els tiquets no mostren mai preus.
+kitchen_empty	No hi ha tiquets oberts. Un KOT enviat des de Comanda o Sala apareix aquí.
+add_a_table	Afegeix una taula
+add_station_heading	Afegeix una estació de cuina
+categories_help	Toqueu Fes servir per classificar l'article de dalt en aquella categoria. La foto dona una imatge a la categoria; sense, en mostra les inicials.
+dish_search_ph	Nom de l'article — cerqueu els nostres plats o escriviu el vostre
+tile_free	Lliure
+tile_occupied	Ocupada
+tile_food_ready	Menjar a punt
+tile_bill_printed	Compte imprès
+tile_paid	Pagat
+tile_bill_btn	Compte
+tile_occupy_btn	Asseu els convidats
+tile_free_btn	Allibera la taula
+tile_ready_btn	Allibera la taula
+tile_undo_bill	Desfés el compte
+summary_busy	taules ocupades
+summary_to_collect	per cobrar
+summary_on_floor	a la sala
+floor	Sala
+sizes_as_items_ph	Mides com a articles a part (opcional) — Half=120, Full=200
+dish_group_ph	Grup de plat (opcional) — p. ex. Paneer Tikka
+discount	Descompte
+remove_discount	Treu el descompte
+apply_discount	Aplica el descompte
+save_opening_cash	Desa l'efectiu d'obertura
+close_shift_print	Tanca el torn i imprimeix el tiquet
+area_prices_ph	Preus per zona (opcional) — AC=220, Parcel=210
+discount_ph	10% o 50
+discount_reason_ph	Motiu (p. ex. client habitual, menjar tard)
+opening_float_ph	Efectiu posat al calaix aquest matí
+shift_counted_ph	Efectiu comptat en el relleu
+opening_float	Efectiu d'obertura (fons de caixa)
+shift_handover	Relleu de torn
+shift_since	Aquest torn des de
+expected_in_drawer	Esperat al calaix
+right_discount	Fer un descompte
+floor_in_kitchen	A la cuina
+floor_eating	Servit
+pick_category	Trieu una categoria
+close_category_list	Tanca la llista de categories
+new_category_row	Categoria nova — es crea en desar l'article
+your_category	La vostra categoria
+suggested_category	Suggerida — dels nostres plats
+category_search_ph	Categoria — cerqueu la vostra o escriviu-ne una de nova
+line_sent_state	Enviat a la cuina
+line_nc_state	Cortesia (NC) — no es cobra
+cancel_item_short	Anul·la
+nc_short	NC
+charge_again_short	Cobra
+move_short	Mou
+cancel_item_title	Anul·la aquest article — la cuina rep un tiquet d'anul·lació
+nc_item_title	Fes aquest article de cortesia (NC)
+charge_again_title	Torna a cobrar aquest article
+move_item_title	Mou aquest article a una altra taula
+already_cooked	Ja cuinat (minva)
+not_cooked_yet	Encara no cuinat
+return_to_customer	Torna al client
+short_by	Falta
+tip_not_sale	Propina (del personal, no és una venda)
+right_settle	Cobrar
+right_cancel_sent	Anul·lar un article enviat
+right_complimentary	Cortesia (NC)
+right_move_table	Moure / fusionar taules
+right_reprint	Tornar a imprimir el compte
+right_allowed	Permès
+right_with_approval	Amb aprovació
+right_denied	No permès
+editing_staff	Edició
+finding_server	S'està cercant el servidor de la botiga en aquest Wi‑Fi…
+no_server_found	No se n'ha trobat cap. Al Servidor: Ajustos → Altres dispositius → Permet caixes extra (el mateix Wi‑Fi). O escriviu la IP que s'hi mostra.
+servers_found_pick	Toqueu la botiga a la qual us voleu connectar.
+server_host_selected	S'usa {host} — introduïu el codi d'aparellament i Aparella ara.
+print_bill	Imprimeix el compte
+table_actions	Accions de taula
+move_merge_table	Mou / fusiona la taula
+move_help	Moveu la comanda d'aquesta taula a una taula lliure, o fusioneu-la amb una que estigui en curs.
+move_target_ph	Nom de la taula (p. ex. D5, P2)
+approval_pin_ph	PIN d'encarregat (només si es demana)
+move_here	Mou aquí
+merge_into	Fusiona-hi
+line_reason_ph	Motiu (p. ex. el client ha canviat d'idea, sense estoc)
+line_qty_ph	Quants n'anul·leu (buit = tots)
+line_target_ph	Mou a la taula (p. ex. D5)
+confirm	Confirma
+menu_search_ph	Cerca article o codi curt
+customer_paid_ph	El client ha pagat
+tip_ph	Propina
+table_area_ph	Zona (p. ex. Al local, Per emportar, AC)
+table_range_ph	Moltes alhora: D1-D20
+add_these_tables	Afegeix aquestes taules
+remove_these_tables	Treu aquestes taules
+table_remove_ph	Treu: T1-T24, o el nom d'una taula
+find_server	Troba el servidor de la botiga
+bill_format	Format del compte
+bill_format_help	S'imprimeix sota el nom del restaurant a cada compte. Separeu les línies amb | (p. ex. MG Road, Rajkot | Tel 98250 00000).
+bill_header_ph	Adreça | telèfon
+fssai_ph	Núm. de llicència FSSAI (Índia)
+bill_footer_ph	Peu (p. ex. Gràcies, torneu)
+save_bill_format	Desa el format del compte
+reset_bill_format	Torna al valor per defecte
+bill_format_reset	Format del compte tornat al valor per defecte
+reset_kot_format	Torna al valor per defecte
+kot_format_reset	Format de KOT tornat al valor per defecte
+kot_format	Format de KOT
+kot_format_help	Toqueu un camp de la llista. Mostra, mida de lletra i gruix s'apliquen a aquell camp del tipus de KOT seleccionat a dalt. Cada tipus conserva les seves mides i gruixos.
+kot_format_fields	Camps
+kot_field_next	Camp següent
+kot_field_show	Mostra
+kot_field_hide	Amaga
+kot_field_on	mostra
+kot_field_off	amaga
+kot_field_size	Mida de lletra
+kot_field_size_ph	p. ex. 16, 20, 24, 28, 32…
+kot_weight_light	Prima
+bill_kot_panel_help	Disposició del compte i del tiquet de cuina, cadascun amb la seva amplada de contingut. El Caixer del compte és qui l'ha emès o tancat; el Cambrer del KOT és qui ha enviat aquell tiquet — la història sencera de la comanda queda als llibres.
+std_size_ph	p. ex. 18, 20, 26…
+kot_show_shop	Nom de la botiga
+kot_hide_shop	Amaga la botiga
+kot_show_time	Hora
+kot_hide_time	Amaga l'hora
+kot_show_waiter	Cambrer
+kot_hide_waiter	Amaga el cambrer
+kot_show_station	Estació
+kot_hide_station	Amaga l'estació
+kot_show_table	Taula
+kot_hide_table	Amaga la taula
+kot_show_kot_no	Núm. KOT
+kot_hide_kot_no	Amaga el núm. KOT
+kot_width	Ajust de la vista prèvia (poseu l'amplada de contingut a la pestanya KOT)
+kot_width_58	58 mm
+kot_width_80	80 mm
+kot_kind_heading	Tipus de KOT
+kot_kind_original	Original
+kot_kind_duplicate	Duplicat
+kot_kind_modified	Modificat
+kot_kind_cancelled	Anul·lat
+kot_style_heading	Mida i gruix del camp
+kot_style_title	Títol
+kot_style_item_qty	Article · Qtat
+kot_style_field_pick	Selecciona el camp
+kot_weight_regular	Normal
+kot_weight_bold	Negreta
+kot_align	Alineació
+kot_align_start	Inici
+kot_align_center	Centre
+kot_align_end	Final
+content_width	Amplada del contingut (mm)
+content_width_bill	Amplada del contingut del compte (mm)
+content_width_kot	Amplada del contingut del KOT (mm)
+content_width_ph	O escriviu una amplada de contingut, 40–210 mm
+content_width_help	Quina amplada té aquest tiquet en imprimir. El compte i el KOT conserven cadascun la seva amplada.
+content_width_bill_help	Quina amplada té el compte del convidat. Per defecte 210 mm (pàgina). 58 mm tiquet estret, 80 mm tiquet ample, 112 mm 4 polzades, 210 mm ample A4. Escriviu qualsevol valor de 40 a 210. Els tiquets de cuina tenen la seva amplada a la pestanya KOT.
+content_width_kot_help	Quina amplada té el tiquet de cuina. Per defecte 80 mm. 58 mm tiquet estret, 80 mm tiquet ample, 112 mm 4 polzades, 210 mm pàgina. Escriviu qualsevol valor de 40 a 210. Els comptes de convidat tenen la seva amplada a la pestanya Compte.
+vp_paper_width	Amplada del contingut (mm)
+vp_paper_width_ph	O escriviu una amplada de contingut, 40–210 mm
+vp_paper_width_help	L'amplada del contingut es posa a Format de compte i KOT — a part per al compte (per defecte 210 mm) i per al tiquet de cuina (per defecte 80 mm).
+kot_size	Mida de lletra
+kot_size_s	Petita
+kot_size_m	Normal
+kot_size_l	Gran
+std_size	Mida de lletra
+kot_copies	Còpies
+kot_copies_1	1
+kot_copies_2	2
+kot_copies_3	3
+kot_title_ph	Títol (buit = KOT - KITCHEN ORDER)
+kot_footer_ph	Nota de cuina (opcional, sense preus)
+kot_preview	Vista prèvia
+save_kot_format	Desa el format de KOT
+test_kot_format	KOT de prova
+test_kot_sent	Vista prèvia del tiquet de cuina enviada
+test_bill_format	Compte de prova
+test_bill_sent	Vista prèvia del compte enviada
+test_print_no_printer	No hi ha impressora per a aquest treball — trieu-ne una en aquesta pantalla
+kot_format_saved	Format de KOT desat
+std_print	Mida d'impressió del compte
+std_print_help	Mida de lletra per als treballs de compte Vertical i Horitzontal estàndard en impressores del SO / de document (escriviu punts — no Petita/Normal/Gran). La mateixa mida en les dues orientacions. Les mides del tiquet de cuina són a la pestanya KOT.
+std_size_s	Petita
+std_size_m	Normal
+std_size_l	Gran
+save_std_print	Desa la mida d'impressió del compte
+std_print_saved	Mida d'impressió del compte desada
+print_brand_kit	Imprimeix el kit de marca
+print_brand_kit_help	Imatges opcionals de segell i QR de pagament a les cares del compte i a la pantalla de convidats de la LAN. El QR UPI dinàmic del VPA de dalt continua funcionant si no hi ha imatge de QR de pagament.
+choose_stamp	Tria el segell
+clear_stamp	Treu el segell
+stamp_set	Segell: al fitxer — es mostra a la pantalla de convidats i s'anomena als comptes impresos
+stamp_none	Segell: cap
+choose_payment_qr	Tria el QR de pagament
+clear_payment_qr	Treu el QR de pagament
+payment_qr_set	QR de pagament: al fitxer — es mostra a la pantalla de convidats (hi substitueix el QR UPI de l'import)
+payment_qr_none	QR de pagament: cap — QR de l'import des de l'ID UPI en pagar
+aggregator_import	Comandes d'agregador (fitxer)
+aggregator_import_help	Importació local opcional: poseu import_aggregator_orders.json a la carpeta de còpies (matriu o {"orders":[…]}), i toqueu Importa. No bloqueja mai el mostrador; Zomato/Swiggy en directe és Cloud.
+import_aggregator_file	Importa el fitxer d'agregador
+team_pick_ph	Personal a editar — nom, nom d'usuari o trieu
+select_staff	Selecciona aquest personal
+rights_help	Accions de diners i de sala per a aquesta persona — toqueu per fer el cicle: Permès → Cal el PIN del cap → No permès. Tornar a imprimir el compte és només comptes; les estacions de cuina són la llista de sota.
+dish_picker_help	Cerqueu o navegueu pels nostres plats i toqueu-ne un per omplir-ne el nom i la foto — o conserveu el vostre nom. Poseu el preu (0 està bé) i Afegeix article.
+close_dish_list	Tanca la llista de plats
+own_item_name	Fes servir això com a nom propi de l'article
+on_your_menu	Al vostre menú
+edit	Edita
+schemes	Promocions / ofertes
+schemes_help	BOGO, percentatge de descompte i combos fixos. Els combos s'expandeixen en línies de cuina en Enviar KOT; els components queden retinguts fins que el combo s'activa. Exemple: Buy 2 Thali get 1 Chaas
+scheme_bogo_ph	Buy 2 Thali get 1 Chaas
+add_scheme	Afegeix BOGO
+schedule_ph	Hores / hora feliç — Mon-Fri 07:00-11:00 o HappyHour 17:00-19:00=150
+upi_vpa_ph	UPI ID (VPA)
+upi_payee_ph	Nom del beneficiari UPI (opcional)
+upi_qr	UPI QR
+show_upi_qr	Mostra el QR UPI
+close_upi_qr	Tanca
+upi_qr_help	El convidat escaneja i paga. Toqueu Cobra després que hagin pagat. Segona pantalla: obriu l'URL del Servidor /display a la LAN.
+kot_recall	Recupera
+recently_done	Fets fa poc
+recall_kot_ph	Núm. de KOT a recuperar
+role_help_customer	Rol: Client — khata (ens deuen). La mateixa part també pot subministrar estoc.
+role_help_both	Rols: Client + Proveïdor — una part, llibres de khata i a pagar, net als Informes.
+role_help_supplier	Rol: Proveïdor — els devem les compres.
+dine_in_pick_table	Al local — trieu una taula a la Sala
+choose_table	Trieu una taula
+change_table	Canvia la taula
+pick_table_banner	Trieu una taula per a aquesta comanda
+items_word	articles
+items_section	Articles
+back_to_order	Torna a la comanda
+new_items_head	Encara no enviat
+price_ph	Preu
+price_ph_gst_inside	Preu ({tax} inclòs)
+cancel_needs_table	Obriu aquesta comanda des de la Sala (una taula) per anul·lar després que la cuina la tingui — els KOT del mostrador queden al tiquet fins que cobreu
+tax_rates_missing_hint	No hi ha tipus de {tax} en aquests plats — al Menú poseu el tipus impositiu (els preus ja inclouen {tax} sota {tax} inclòs)
+taxable_value	Base imposable
+gst_inside_price_note	({tax} inclòs)
+start_with_template	Comença amb la nostra plantilla de menú
+template_heading	La nostra plantilla de menú
+template_info	{c} categories i {d} plats amb fotos, a punt per afegir. Els preus comencen a ₹0 — poseu els vostres després.
+template_import	Importa la plantilla completa
+template_confirm	Afegir {d} plats amb les seves categories? Els plats que ja teniu es queden com són.
+template_yes	Sí, importa
+template_importing	S'importa el menú…
+template_import_progress	S'importa… {d}/{t}
+template_done	Tots els plats de la nostra plantilla són al vostre menú.
+template_imported	Afegits {d} plats i {c} categories — poseu-ne els preus en aquesta pantalla
+client_template_heading	Menú del client
+client_template_info	{title}: {c} categories, {d} plats amb preus, fotos i àlies. Només els plats que falten — els noms que ja teniu es queden.
+client_template_import	Importa aquest menú
+client_template_confirm	Afegir {d} plats de {title}? Els plats que ja teniu es queden com són.
+client_template_importing	S'importa {title}…
+client_template_done	Tots els plats de {title} són al vostre menú.
+client_template_imported	Afegits {d} plats i {c} categories de {title}
+resv_heading	Reserves
+resv_name_ph	Nom del convidat
+resv_phone_ph	Telèfon (opcional)
+resv_guests_ph	Convidats
+resv_when_ph	Quan — 20:30, demà 13:00
+resv_table_ph	Taula (opcional)
+resv_add	Reserva
+resv_seat	Asseguts
+resv_none	No hi ha reserves properes.
+guests_word	convidats
+delivery_by_ph	Lliurament per (nom del repartidor o del personal)
+kitchen_all_day	Per cuinar ara: {items}
+kitchen_all_day_head	Per cuinar ara
+kitchen_tab_live	En directe
+kitchen_tab_recall	Recupera
+kitchen_tab_stations	Estacions
+split_bill	Divideix el compte
+split_go	Fes un compte a part
+cancel	Cancel·la
+opening_client	S'obre el client…
+preparing_desk	Es prepara el taulell…
+opening_server	S'obre el servidor…
+creating_server	Es crea el servidor…
+split_help	Toqueu els plats que paga un convidat · {n} triats
+split_send_first	Envieu primer el KOT — només els plats que la cuina ja té poden anar a un compte a part
+split_pick_some	Toqueu primer els plats del compte a part
+split_done	Compte a part fet — és a la sala al costat d'aquesta taula
+split_marked	compte a part
+order_empty_pick	Comanda buida — toqueu Afegeix plats a dalt per triar plats.
+add_dishes	Afegeix plats
+order_so_far	En aquesta comanda: {n} · {total}
+no_dish_match	Cap plat no coincideix amb «{q}»
+pick_dishes_help	Toqueu un plat per afegir-lo · trieu una categoria per reduir la llista
+pick_done	Fet
+pick_done_dd	Fet · {label}
+printer_route_mode	Si hi ha diverses impressores en aquest lloc
+printer_mode_first	La primera que funcioni
+printer_mode_all	Imprimeix a totes
+kot_show_area	Zona
+kot_hide_area	Amaga la zona
+kot_show_item_hdr	Article · Qtat
+kot_hide_item_hdr	Amaga les columnes
+kot_show_title	Línia de títol
+kot_hide_title	Amaga el títol
+kot_field_order	Ordre d'impressió
+kot_field_up	Puja
+kot_field_down	Baixa
+kot_field_cycle	Selecciona el següent
+kot_field_select	Selecciona el següent
+kot_field_time	Hora
+kot_field_kot_no	Núm. KOT
+kot_field_area	Zona
+kot_field_table	Taula
+kot_field_shop	Nom de la botiga
+kot_field_waiter	Personal
+kot_field_station	Estació
+app_template_blurb_extra	També: Propietari Zahir, Admin Asif, Cambrer Nawaz; barra lateral FOH; historial al cap de 4 hores; franja d'Avui desactivada; KOT compacte.
+dishes_n	{n} plats
+recipe_ph	Recepta (opcional) — una ració fa servir: Rice=0.2, Paneer=0.15
+reorder_ph	Torna a comprar a
+set_reorder	Posa el nivell de reposició
+low_stock_alert	S'està acabant — compreu aviat: {items}
+unpriced_note	{n} plats del vostre menú encara no tenen preu — es cobren a 0 fins que en poseu un.
+show_unpriced	Mostra només els plats sense preu
+show_all_dishes	Mostra tots els plats
+role_waiter	Cambrer
+role_kitchen	Cuina
+role_title_rest_ph	Títol del rol (p. ex. Capità, Cap de cuina)
+preset_help_rest	Cambrer: pren comandes i porta les taules. Caixer: també cobra. Cuina: la pantalla de cuina. Encarregat: també el menú, anul·lacions i descomptes.
+kind_raw	Matèria primera
+kind_resale	Comprat i revenut
+kind_dish	Plat que fem
+buy_unit_ph	Unitat (kg, litre, pcs)
+add_another_way	+ Afegeix una altra via
+parts_status	Introduïts {a} de {b} · en queden {c}
+save_expense	Desa la despesa
+rest_ph	Resta
+low_badge	Baix
+stock_empty	Encara no hi ha res en estoc — el que enregistreu a Compres surt aquí.
+recent_changes	Canvis recents
+lane_declared_label	Factura fiscal
+lane_owner_label	Nota d'efectiu
+money_lane_bill	Compte: {lane}

@@ -1,0 +1,835 @@
+# Estonian — Eesti (et). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	Kuller-agentuuri raamatud + broneerimislaud. Tasuta võrguühenduseta.
+unlock	Avage lukustus
+pin_hint	Omanik PIN algab 0000-st
+sell	Broneerimine
+buy	Makske välja
+books	Päevaraamat
+books_help	Tänane positsioon. Broneerimine = pakid sisse. Makske välja = vedaja arved ja kulud. Osapooled = kaubasaatjad ja vedajad.
+buy_help	Kulutšekid ja vedajaarved (raha välja). Kontol jääb peoraamatusse.
+sell_money_in	Broneeri pakk
+buy_money_out	Kulu / vedaja arve
+record_purchase	Rekordost
+add_expense	Kulu vautšer
+bank_book	Pangaraamat
+credit_help	Partei ID on kordumatu (nimed võivad korduda). Rollid: kaubasaatja (AR), vedaja (AP) või mõlemad sellel ID-l. Pearaamatud jäävad eraldi; aruanded näitavad net.
+party_kind_ph	Kohandatud roll (valikuline) või puudutage ülalolevat kiipi
+parties_list_heading	Salvestatud peod
+reports_help	Päevaraamat, võlgnikud ja võlausaldajad, pangaraamat, kulutšekid, kasum ja kahjum.
+reports_today	Päevaraamat (täna)
+reports_month	Kasum ja kahjum (kuu)
+reports_aging	Tasumata / deebetkrediit
+reports_balance_sheet	Bilanss
+reports	Pangaraamat ja P&L
+refresh	Värskenda
+undo	Võta tagasi
+start_tracking	Alustage jälgimist
+stock_minus	− Varud
+stock_plus	+ Laoseis
+settle_cash	Arvelda sularaha
+settle_card	Arvelda kaart
+items	Hinnad ja teenused
+nav_items	Hinnad
+more	Rohkem
+your_items	Teie hinnad
+items_help	Iga rida on määr (nt pinnatsoon A). Ühik on tavaliselt kg. Puudutage muutmiseks.
+add_item	Lisa määr
+new_item	Uus määr
+adding_item	Uue määra lisamine
+editing_item	Redigeerimine
+save	Salvesta
+remove	Eemalda
+empty_catalog	Hinda veel pole. Avage Hinnad ja teenused, lisage üks (nimi + hind, ühik kg), seejärel Broneerimine.
+counter_sale	Leti broneerimine
+total	Kokku
+cash	Sularaha
+upi	UPI
+card	Kaart
+credit	Kliendid ja tarnijad
+clear	Selge
+ready_to_sell	Broneerimiseks valmis
+today_prefix	Täna
+today_mid	täna
+owed	silmapaistev
+round_word	ümmargune
+back	Tagasi
+sold_out	Pole saadaval
+restock	Varude taastamine
+not_tracked	Ei jälgita
+in_stock	laos
+marked_sold_out	Märgitud kättesaamatuks
+add_upper	LISA
+na	Ei kehti
+qty	Wt/kv
+unit_at	Hinda @
+actual	Tegelik
+applied	Rakendatud
+note_ph	Märkus (valikuline)
+rounded	Ümardatud
+split	Lõhestatud
+counter	Loendur
+parcel	Pakk
+order	Tellimus
+sales	Broneeringud
+sales_refunds	Broneeringud ja tagasimaksed
+day_close	Päev lähedal
+reports_expenses	Pangaraamat ja P&L
+nav_reports	Aruanded
+nav_settings	Seaded
+nav_lock	Lukk
+sidebar_settings	Külgriba seaded
+sidebar_settings_help	Samad ikoonid mis külgsiinil. Järjestuse muutmiseks lohistage rida. Kuvamiseks või peitmiseks pöörake lülitit. Seaded ja Lukk jäävad alati ribale.
+sidebar_always_on_short	Alati sees
+sidebar_back_settings	Tagasi
+sidebar_shown	Näidatud
+sidebar_hidden	Peidetud
+sidebar_always_on	Alati baaris
+sidebar_shown_hint	Näidatud külgmisel siinil / alumistel sakidel
+sidebar_hidden_hint	Baari eest peidetud
+sidebar_menu_items	Menüü ja üksused
+sidebar_enable_all	Luba kõik
+sidebar_disable_all	Keela kõik
+sidebar_order_saved	Külgriba järjekord salvestatud
+sidebar_visibility_saved	Külgriba nähtavus on salvestatud
+amounts_hide	Peida
+amounts_show	Näita
+no_sale_yet	Müüki veel pole
+favorites	Lemmikud
+favorites_help	Tooted, mida müüte sageli ja mis on salvestatud teie sisselogimiseks. Lisage arvele üks või koostage loend kõigist allolevatest üksustest.
+your_favorites	Sinu lemmikud
+all_items	Kõik esemed
+no_favorites	Lemmikuid pole veel – lisage üksusi allolevast loendist.
+add_to_bill	Lisa arvele
+added	Lisatud
+owes_word	võlgu
+selected_word	Valitud
+chip_clear_credit	selge — krediit või avanss
+chip_missing_customer	Valitud klient puudub – vali uuesti
+chip_no_customer	Klienti veel pole – sisestage nimi ja puudutage seejärel Krediit
+credit_summary_fmt	{} kliendid · avatud krediit {} · hoitud ettemaksed {}
+recent_label	Viimased:
+inventory	Inventuur
+inventory_stock	Varud ja laoseisud
+branches	Filiaalid
+branches_org	Filiaalid & org
+credit_customers	Pooled (võlgnikud ja võlausaldajad)
+customer_name_ph	Kliendi või tarnija nimi
+new_customer_ph	Uue kliendi või tarnija nimi
+item_name_ph	Hindamise nimi (nt Surface Zone A)
+item_price_ph	kg / esimene plaat
+start_template	Toode
+next_booking	Järgmine broneering
+destination_ph	Sihtlinn/tsoon
+consignee_ph	Vastuvõtja nimi
+consignee_phone_ph	Vastuvõtja telefon
+consignee_address_ph	Kohaletoimetamise aadress
+origin_name_ph	Saatja nimi
+origin_phone_ph	Saatja telefon
+origin_address_ph	Vastuvõtu / lähtekoha aadress
+booking_consignor_heading	Kauba saatja (klient / saatja)
+booking_consignee_heading	Kaubasaaja (vastuvõtja)
+booking_consignor_hint	Valige pidu, mida täita, või jätke sissepääsuks tühjaks. Vajalik kojutoomiseks ja RTO-ks.
+booking_consignee_hint	Paki vastuvõtja. Jäta tühjaks, et saaksite sissepääsuleti ära anda.
+weight_kg_ph	Tegelik kg
+length_cm_ph	L cm
+breadth_cm_ph	B cm
+height_cm_ph	H cm
+chargeable_kg	Tasuline kg
+awb_label	AWB
+booking_help	Kauba saatja + kaubasaaja (tühi OK) → sihtkoht → kaalumine → komplekteerimismäär → Konto/sularaha → maks. AWB prindib kviitungile. Järgmine broneering tühjendab laua. Ümardatud algus on võrdne Rakendatud – muutke ainult arve ümardamiseks.
+cart_empty_hint	Töölaud tühi – kaubasaatja/kaubasaaja valikuline, määrake sihtkoht ja kaal, puudutage hinna juures LISA, seejärel makske.
+team	Meeskond
+team_pins	Meeskond ja PIN-d
+my_pin_settings	Minu PIN
+settings_hub_help_my_pin	Muutke sellesse seadmesse sisse logitud inimese avamisnumbrit PIN.
+team_self_help	Ainult teie saate muuta oma avamise PIN-koodi (ja valikulist sisselogimisparooli). Küsige omanikult, kas vajate erinevaid ekraane või õigusi.
+backup_settings	Varundamine ja seaded
+lock_app	Lukusta rakendus
+pick	Vali
+select	Valige
+advance	Edasiminek
+owner	Omanik
+staff	Personal
+photo	Foto
+auto	Automaatne
+prev	Eelmine
+next	Edasi
+ok	OK
+this_shop	Serveri režiim
+extra_till	Kliendi režiim
+off	Väljas
+server	Serveri režiim
+client	Kliendi režiim
+language_currency	Keel ja valuuta
+language	Keel
+choose_language	Valige oma keel
+language_setup_hint	Järgige selle seadme keelt või valige see ise.
+lang_follow_platform	Seadme keel
+lang_pick_user	Valige keel
+lang_platform_now	Seadme keel nüüd
+selected_language	Valitud
+continue	Jätka
+this_device	SEE SEADE
+device_use_q	Kuidas seda seadet kasutatakse?
+last_server_mode	Oli server – puudutage jätkamiseks
+last_client_mode	Oli klient – puudutage jätkamiseks
+choose_server	Valige server
+choose_server_hint	Avage olemasolev server või looge see teise ettevõtte jaoks.
+create_new_server	Loo uus server
+open_server	Avatud
+new_server_name_ph	Uus serveri nimi (valikuline)
+server_remove_pin_ph	Omanik PIN serveri eemaldamiseks
+only_owner_remove_server	Ainult omanik saab serveri eemaldada
+owner_pin_remove_server	Selle serveri eemaldamiseks on vaja omanikku PIN
+device_setup_help	Server hoiab siin raamatuid. Klient ühendab serveriga.
+currency	Valuuta
+backup	Varundamine
+settings_sec_diag	Diagnostika
+settings_hub_help	Avage üks ala korraga – vähem kerimist, selgemad valikud.
+settings_sec_devices	Muud seadmed
+settings_sec_alerts	Märguanded
+alerts_help	Kui kaua olekuteated teie jaoks ekraanil püsivad (see sisselogimine).
+snack_secs_ph	Sekundid (3–60, vaikeväärtus 10)
+snack_secs_save	Säästke hoiatusaega
+snack_secs_saved	Hoiatuse aeg salvestatud — {n} sekundit
+snack_secs_bad	Sisestage sekundid numbrina (3–60)
+cancelled	Tühistatud
+cancel	Tühista
+opening_client	Kliendi avamine…
+preparing_desk	Töölaua ettevalmistamine…
+opening_server	Serveri avamine…
+creating_server	Serveri loomine…
+diag_privacy_help	Logid jäävad sellesse seadmesse. Saladusi (PIN, paroole) ei salvestata kunagi. Paketi jagamine seadmest väljas vajab iga kord teie selgesõnalist nõusolekut – seda ei müüda ega anta kolmandatele isikutele.
+diag_level	Detailide tase
+diag_level_error	Vead
+diag_level_warn	Hoiatused
+diag_level_info	Info
+diag_level_debug	Silumine
+diag_support_start	Alustage 30-minutist tugiseanssi
+diag_support_stop	Lõpetage tugiseanss
+diag_support_started	Tugiseanss sisse lülitatud – silumise üksikasjad 30 minutit
+diag_support_ended	Tugiseanss lõppes
+diag_export_local	Ekspordi kohalik koopia
+diag_export_local_done	Kohalik diagnostika on valmis {path} – valige, kuhu koopia salvestada
+diag_approve_send	Kinnitage selle seadme jagamine
+diag_send_heading	Jaga seda seadet välja
+diag_send_help	Heakskiit on üks pakett, siis aegub. Ajutine – kasutatakse ainult toote parandamiseks või täiustamiseks. Ei jagata kolmandate osapooltega. Töötab numbritega Linux, Windows, macOS ja Android.
+optional_login_heading	Valikuline sisselogimine
+rights_heading	Õigused
+booking_scope_heading	Kodumaine / rahvusvaheline
+diag_send_approved	Ühe paketi jagamine on heaks kiidetud (aegub peagi)
+diag_export_send	Loo jagamispakett (vajab kinnitust)
+diag_export_send_done	Jagage paketti valmis aadressil {path} — valige, kuhu salvestada, ja saatke siis ainult numbri Kumkaj toele
+diag_save_bundle	Salvestage diagnostikakoopia
+diag_bundle_saved	Diagnostika koopia salvestati asukohta {path}
+diag_bundle_failed	Diagnostikakoopiat ei saanud salvestada – proovige uuesti
+diag_clear	Tühjendage diagnostikalogid
+diag_cleared	Diagnostikalogid on kustutatud
+use	Kasutage
+add_branch	Lisa haru
+add_conversion	Lisa konversioon
+add_item_plain	Lisa üksus
+add_note	Lisa märkus
+add_opening_balance	Lisa algsaldo
+add_rider	Lisa rattur
+add_staff	Lisage töötajaid
+add_unit	Lisa üksus
+add_use_name	Lisa/kasuta seda nime
+allow_extra_tills	Lubage lisakasse
+amend	Muuda
+apply_country_pack	Rakenda riigipakett
+datetime_appearance	Kuupäeva ja kellaaja välimus
+datetime_appearance_help	Raamatud hoiavad aasta alguses RFC3339 sees. Need muudavad ainult seda, kuidas kuupäevad ja kellad kviitungitel, siltidel, aruannetel ja ekraanil välja näevad.
+datetime_example	Näide praegu: {ex}
+date_order	Kuupäeva järjekord
+date_order_dmy	D/M/Y
+date_order_mdy	M/D/Y
+date_order_ymd	Y-M-D
+time_format	Kell
+time_format_24h	24-tunnine
+time_format_12h	12-tunnine
+attach_bill_photo	Lisa arve foto
+attach_pdf	Manusta PDF
+attach_photo	Lisa foto
+bank	pank
+bank_in	Pank sisse
+bank_out	Pank välja
+bank_to_till	Pank → kassa
+till_to_bank	Kuni → pank
+mark_cleared	Mark kustutatud
+unmark	Tühista märgistus
+role_both	Mõlemad
+role_carrier	Kandja
+role_cashier	Kassapidaja
+role_consignor	Kaubasaatja
+role_manager	Juht
+role_supplier	Tarnija
+branch_name_sell_ph	Filiaali nimi, millelt müüa
+bring_my_book	Too mu raamat
+business_tax_id_ph	Ettevõtlusmaksu id
+card_amount_ph	Kaardi summa
+cash_amount_ph	Sularaha summa
+upi_amount_ph	UPI summa
+carrier_cost_ph	Vedaja kulu
+carrier_party_ph	Vedaja pidu
+choose_icon	Valige ikoon
+choose_logo	Valige logo
+choose_receipt_stamp	Valige kviitungi tempel
+choose_payment_qr	Valige makse QR
+clear_icon	Tühjenda ikoon
+clear_logo	Selge logo
+clear_photo	Selge foto
+clear_stamp	Selge tempel
+clear_payment_qr	Tühjenda makse QR
+print_faces	Prinditud näod (kviitung / perioodi arve)
+print_faces_help	Valikuline tempel ja makse QR teie logo kõrval broneeringute kviitungil ja perioodi arvetel.
+awb_pools_heading	Vedaja AWB numbrikogumid
+add_awb_pool	Lisage AWB bassein
+awb_pool_carrier_ph	Vedaja partei nimi
+awb_pool_start_ph	Algus nr.
+awb_pool_end_ph	Lõpp nr.
+awb_pool_prefix_ph	Eesliide (valikuline)
+awb_pool_label_ph	Silt (valikuline)
+pieces_ph	Tükid (tühi = 1) — laiendage lasti jaoks / mitmeosaline
+bulk_awbs_ph	Hulgi-AWB-d – kleepige mitu (reavahetus või koma) üheks oleku edasiliikumiseks
+tds_cut_ph	TDS-lõik (valikuline)
+discount_ph	Allahindlus (valikuline)
+cheque_no_ph	Tšeki number (valikuline)
+bill_reminder_chase	Arvete meeldetuletuste tagaajamise loend
+month_mix_report	Kuu seguaruanne
+copy_month_gst_csv	Kopeeri kuu GST CSV
+domestic	Kodune
+international	Rahvusvaheline
+pick_logo	Valige logo
+booking_scope_hint_domestic	Mahuline ÷5000 (siseriiklik) – puudutage Rahvusvahelist, et saada ÷6000 õhku
+booking_scope_hint_intl	Mahuline ÷6000 (rahvusvaheline õhk) — kraan siseriiklik poe jaoks ÷5000
+cod_register	COD register
+collect_cod	COD (AWB) kogumine
+consignments_dispatch	Saadetised ja lähetamine
+consignor_party_ph	Kaubasaatja/partei nimi
+copy_day_book_csv	Kopeeri päevaraamat CSV
+copy_day_close	Kopeeri päev sulge
+copy_items_csv	Kopeeri üksused CSV
+copy_outstanding_csv	Kopeeri ootel CSV
+copy_parties_csv	Klientide ja tarnijate kopeerimine CSV
+copy_party_ledger_csv	Kliendi pearaamatu kopeerimine CSV
+copy_receipt	Kopeeri kviitung
+copy_report	Kopeeri aruanne
+counted_cash_ph	Loetud sularaha sahtlis
+counter_agency_ph	Leti/agentuuri nimi (valikuline)
+create_backup	Loo varukoopia
+day_close_summary	Päeva kokkuvõte
+delete_party	Kustutage valitud klient või tarnija
+dispatch_to_rider	Ärasaatmine broneeritud → rattur
+docket_charge_ph	Docketi tasu
+declared_value_ph	Deklareeritud väärtus
+contents_ph	Sisu
+eway_ph	E-saateleht nr.
+insurance_label	Kindlustus
+yes_label	Jah
+no_label	Ei
+print_route_label	Prindi marsruut
+new_party_kind_label	Uus peolaad
+done_open_books	Valmis — raamatud lahti
+export_day	Ekspordi päev
+extra_note_expense_ph	Lisamärkus viimase kulu kohta
+extra_note_awb_ph	Lisamärkus selle AWB / müügi kohta
+failed_delivery	Ebaõnnestunud kohaletoimetamine
+find_scan_awb	Otsige / skannige AWB
+forget_shop	Unustage see pood
+fuel_ph	Kütus
+handover_carrier	Käsitsi broneeritud → vedaja
+import_day	Impordi päev
+import_items_csv	Impordi üksused / hinnad CSV-sse…
+import_parties_csv	Impordi kliente ja tarnijaid CSV…
+import_pincodes_csv	Impordi PIN-koodid CSV…
+import_carrier_bill_csv	Impordi operaatori arve CSV…
+copy_carrier_bill_report	Kopeerige viimane operaatori arve aruanne
+use_carrier_cost	Kasutage operaatoritasu
+rate_carrier_ph	Vedaja (tühi = meie müügimäär)
+rate_party_ph	Pidu (tühi = kõik kliendid)
+carrier_pick_ph	Kulude kandja (võrdlusest)
+item_name	Kauba nimi
+load_bulk_row	Laadi hulgirida → laud
+login_id_ph	Kasutajanimi
+mark_delivered	Mark tarnitud
+manifest_cod_total	COD kokku
+manifest_received_by	Saanud
+manifest_sign	Sign
+ndr_address_wrong	Aadress vale
+ndr_customer_unavailable	Pole saadaval
+ndr_door_locked	Uks lukus
+ndr_other	muud
+ndr_refused	Keeldus
+out_for_delivery	Kohaletoimetamiseks väljas
+print_drs	Prindi DRS
+print_run_sheet	Trükiarv leht
+reattempt	Proovi uuesti
+rider_cod_handed_ph	COD üle antud
+settle_rider_cod	Arveldage rattur COD
+mode_desk	Töölaud
+mode_rider	Rattur
+waiting_office	ootab kontorisse jõudmist
+capture_signature	Püüdke allkiri
+incoming_manifest	Sissetulev manifest
+pickup_request	Korjamise taotlus
+pickup_run	Korjejooks
+auto_assign_area	Määra ala automaatselt
+reorder_stops	Korraldamine peatub
+settle_rider_pay	Lepi ratturi tasuga
+vehicle_inspect	Sõiduki ülevaatus
+print_docket	Prindi dokument
+franchise_statement	Frantsiisi avaldus
+tally_export	Tally vautšeri eksport
+open_whatsapp	Avage WhatsApp
+copy_sms	Kopeeri SMS-tekst
+pick_barcode_image	Valige skannimiseks pilt
+share_receipt_whatsapp	Jaga kviitungit WhatsAppis
+delivery_feedback	Tagasiside kohaletoimetamise kohta
+lan_self_book	LAN isebroneerimine
+new_party_clear	Uus klient või tarnija (selge vorm)
+new_party_kind_ph	Uus peotüüp (tarnija / vedaja)
+next_country	Järgmine riik
+prev_country	Eelmine riik
+note_gstin_ph	Märkus / GSTIN / kokkuleppe meeldetuletus
+note_pod_ph	Märkus / POD (valikuline)
+on_account_ap	kontol (AP)
+org_optional_ph	Organisatsioon (valikuline)
+paid_now	Nüüd makstud
+pairing_code_ph	Sidumiskood
+pair_now	Siduge kohe
+party_name_selected_ph	Kliendi või tarnija nimi (või valitud kasutusviis)
+password_ph	Parool
+pay_ap_card	Maksa AP-kaart
+pay_ap_cash	Makske AP-le sularahas
+pay_ap_upi	Maksa AP UPI
+period_bill	Perioodi arve
+period_bill_party	Perioodiarve (pidu)
+pick_pod_photo	Valige POD-foto
+print_awb_label	Printige AWB silt
+print_open	Prindi / ava
+reason_amend_ph	Muudatuse / tühine / raha tagastamise põhjus
+reason_note_ph	Põhjus/märkus (raiskamine, arv jne)
+record_day_close	Rekordipäev on lähedal
+refresh_from_shop	Värskenda poest
+refund	Tagasimakse
+remit_cod	COD ülekandmine (osaline)
+remove_selected	Eemalda valitud
+restore_backup	Taasta varukoopia
+rider_name_ph	Ratturi nimi
+rider_phone_ph	Sõitja telefon
+riders	Ratturid
+riders_own_fleet	Ratturid (oma laevastik)
+rollup	Koond
+save_booking_measures	Salvestage broneerimismeetmed
+save_brand	Salvestage kaubamärk
+save_business_id	Salvesta ettevõtte ID
+save_business_name	Salvestage ettevõtte nimi
+save_features	Salvestage töö seadistus
+save_names	Salvestage nimed
+server_ip_ph	Serveri IP (nt 192.168.1.10)
+set_credit_limit	Rakendage limiiti kliendile või tarnijale
+set_login_selected	Rakenda valitud jaoks sisselogimine
+set_login_named	Rakenda sisselogimine numbrile {name}
+shop	Pood
+start_fresh	Alusta värskelt
+stop_extra_tills	Lõpetage lisakassad
+backup_auto	Varundatakse automaatselt iga päev · viimane {when} · viimased 14 päeva hoitakse kaustas {dir}.
+backup_auto_none	Varundatakse automaatselt iga päev – esimene käivitatakse hetkega.
+backup_copy_to	Koopiad lähevad ka aadressile {dir}.
+backup_copy_btn	Kopeerige ka varukoopiad kausta…
+autostart_off	Alusta sellest arvutist
+autostart_on	Algab sellest arvutist ✓ – peatamiseks puudutage
+autostart_done_on	See arvuti avab nüüd rakenduse, kui see käivitub – poe server on pärast elektrikatkestust tagasi.
+autostart_done_off	See arvuti ei ava enam rakendust selle käivitamisel.
+right_allowed	Lubatud
+right_with_approval	Heakskiiduga
+right_denied	Pole lubatud
+editing_staff	Õigused
+team_pick_ph	Töötajad, keda muuta – nimi, kasutajanimi või valik
+select_staff	Valige see personal
+rights_help	Õigused — puudutage muutmiseks: Lubatud → Kinnitusega (sel hetkel halduri PIN-kood) → Pole lubatud.
+right_void_refund	Tühistage broneering või tagastage selle eest raha
+right_amend_sale	Salvestatud broneeringu muutmine
+find_server	Otsige üles poe server
+finding_server	Poe serveri otsimine sellel Wi‑Fi…
+no_server_found	Ühtegi ei leitud. Serveris: Seaded → Muud seadmed → Luba lisakassad (sama Wi‑Fi). Või tippige seal näidatud IP.
+servers_found_pick	Puudutage poodi, millega soovite ühenduse luua.
+server_host_selected	Kasutades {host} — sisestage sidumiskood ja seejärel Siduge kohe.
+device_forgotten	Pood unustas selle seadme – siduge see uuesti poe praeguse koodiga. Seda ootavad tellimused hoitakse alles.
+forget_device	Unusta
+last_seen	nähtud
+new_pair_code	Uus sidumiskood
+lan_offline	Poeserver pole kättesaamatu
+lan_offline_waiting	Poe server kättesaamatu · {n} ootab
+lan_connecting	Poega ühendamine…
+pair_finishing	Paari viimistlemine… kontoriraamatute rakendamine
+pair_opening	Kontori avamine…
+lan_live	Otse
+lan_sending	{n} saatmine
+lan_sign_in_to_send	{n} saatmiseks logige uuesti sisse
+lan_pair_again	Siduge seade uuesti
+lan_update_app	Värskendage rakendust – sellel seadmel ja kontoriserveril on erinevad versioonid
+allow_firewall	Lubage teistel seadmetel ühenduda
+firewall_blocked	Selle arvuti tulemüür blokeerib teisi seadmeid – puudutage valikut Luba teistel seadmetel ühenduda.
+firewall_waiting	Administraatori viipa ootamine…
+lan_join_help	Teises seadmes: kliendirežiim → otsige poe server (või sisestage {addr}) → sidumiskood {code}.
+lan_pair_status	Wi‑Fi {addr}
+lan_join_help_no_addr	Ühendage see seade aadressi saamiseks numbriga Wi‑Fi.
+lan_no_address	Aadressi Wi‑Fi pole veel – ühendage poega Wi‑Fi.
+lan_not_listening	Seadmeid ei aktsepteerita (port {port} hõivatud). Taaskäivitage rakendus.
+lan_tills_off	Lisakassad on välja lülitatud. Lubage neil lubada teisel seadmel liituda.
+paired_with	Seotud · {url}
+not_paired	Pole seotud
+choose_device_use	Valige Server või Klient.
+paired_note	Paaritud. Avage müümiseks või värskendage uusima teabe saamiseks.
+last_update_at	Viimane värskendus: {time}.
+pair_intro	Otsige üles server või tippige selle aadress ja sidumiskood.
+queue_waiting	Poodi jõudmise ootel ({n}):
+queue_tries	Proovitud {n} korda · viimane vastus: {e}
+save_backup_copy	Salvesta varukoopia…
+backup_copy_saved	Varukoopia salvestatud – hoidke seda sellest seadmest (USB-mälupulgal või muust seadmest) väljas.
+backup_copy_overdue	Sellest seadmest pole {n} päeva jooksul ühtegi varukoopiat lahkunud — Seaded → Varundamine
+backup_copy_failed	Varukoopiat ei saanud sinna salvestada – valige teine koht
+clock_off	Selle seadme kell on {min} min poe serverist maas – määrake selles seadmes õige aeg
+printers_heading	Selle seadme printerid
+printers_help	Otsige üles tõelised printerid, seejärel valige Kviitung või AWB-silt. Igal tööl on oma laius, vertikaalpaigutus või rõhtpaigutus ning baitide saatmise viis. Silt prindib vöötkoodi. Tühi koht = ära prindi.
+job_width	Sisu laius (mm)
+job_width_ph	Või tippige laius 40–210 mm
+job_layout	Paigutus
+job_delivery	Kuidas töö saadetakse
+job_size	Fondi suurus
+job_size_ph	nt. 18, 20, 26…
+save_receipt_format	Salvesta kviitungivorming
+save_label_format	Salvesta sildi vorming
+test_receipt_format	Testi kviitung
+test_label_format	Katsemärgis
+test_receipt_sent	Kviitungi näidis saadetud
+test_label_sent	Sildi näidis saadetud
+test_print_no_printer	Selle töö jaoks pole printerit – lisage üks selle koha alla
+printers_host_only	Printerid seadistatakse kaupluse seadmes (serveris). See kassa saadab töökohad sinna — leidke / lisage / määrake, jääge serverisse. Testleht läheb serverisse.
+printers_pool_heading	Printerid
+printers_routes_heading	Kus asjad trükitakse
+printer_label_ph	Nimi (nt töölaud)
+printer_target_ph	host:9100 · bt:MAC · usb:VID:PID · süsteemi nimi
+printer_mode_heading	Uute väljundite profiil
+printer_mode_standard	Standardne portree
+printer_mode_landscape	Standardne maastik
+printer_mode_thermal	Termiline
+printer_mode_standard_short	Portree
+printer_mode_landscape_short	Maastik
+printer_mode_thermal_short	Termiline
+printer_format_custom	Uus kohandatud profiil
+printer_format_custom_label	Kohandatud
+printer_format_custom_added	Selle koha jaoks lisati kohandatud profiil
+add_printer	Lisage printer
+remove_printer	Eemalda viimane
+route_pick_ph	kviitung või etikett
+route_add_printer_ph	Lisage sellele kohale printer
+route_receipt	Kviitung
+route_label	AWB silt
+route_dont_print	Printerit pole määratud
+route_add	Lisa kohale
+route_up	Üles
+route_down	Alla
+route_remove	Eemalda viimane
+route_clear	Tühjendage selle koha printerid
+save_printers	Salvestage printerid
+print_test_page	Printige testleht
+printers_saved	Selle seadme jaoks on salvestatud printerid
+test_page_sent	Testleht saadetud – kontrollige printerit
+printers_found	Sellel seadmel leitud: {list}
+find_printers	Otsige printereid
+printers_looking	Printerite otsimine selles seadmes ja WiFi-s…
+printers_tap_find	Puudutage valikut Otsi printereid järjekordade jaoks, mis võtavad vastu töid, ja võrgukviitungiprintereid selles WiFi-s (ei ole eemaldatud või võrguühenduseta printerid).
+printers_none_found	Printereid ei leitud – sisestage süsteemiprinteri nimi või võrguaadress (nt 192.168.1.50).
+receipt_printer_ph	Printer kviitungite jaoks
+queue_refused	Pood ei aktsepteeri ({n}) – kontrollige neid igaüht letist:
+clear_not_accepted	Märgitud – tühjendage see loend
+device_name_ph	Selle seadme nimi
+lan_last_update	viimane värskendus {time}
+lan_not_accepted	{n} ei aktsepteerita
+connected_now	nüüd ühendatud
+backup_failed	Viimane automaatne varundamine ebaõnnestus: {e}
+backup_overdue	{n} päeva ei varundata – hoidke rakendus selles seadmes avatud, et see saaks varundada.
+disk_low	Selles seadmes on ainult {mb} MB vaba – varukoopiate tegemine nurjub peagi. Vabastage ruumi.
+last_seen_devices	Viimati nähtud: {time}
+sync_interval	Sünkroonige iga {secs}s
+connection_to_shop	Ühendus kauplusega
+supplier_name_ph	Tarnija (või kliendi) nimi
+supplier_ph	Tarnija
+switch_device	Vahetage seda seadet
+take_payment	Võtke makse
+tax_added_till	{tax} eksklusiivne
+tax_inside_price	{tax} kaasa arvatud
+today_books	Tänased raamatud
+unlock_after_pairing	Sisesta PIN
+unlock_with_login	Avage sisselogimisega
+update_my_password	Uuenda mu parooli
+update_my_pin	Uuenda minu PIN-koodi
+duress_heading	Hädaavamine PIN (ainult omanik)
+duress_help	Valikuline. Kui avamisel sisestatakse see PIN-kood teie oma asemel, kustutatakse kõik raamatute kirjed (broneeringud, pearaamatud, ajalugu) ja töölaud avaneb tavalise omanikuna – hinnad, peod, tsoonid, töötajad ja seaded jäävad alles. Skeemi ja konfiguratsiooni ei kustutata. Kasutage ainult siis, kui olete sunnitud lukust avama. Jätke tühjaks ja salvestage väljalülitamiseks. Mitte kunagi sama, mis kellegi PIN-kood.
+duress_pin_ph	Hädaabi PIN (4–12 numbrit)
+duress_confirm_ph	Kinnitamiseks tippige uuesti
+save_duress_pin	Salvesta hädaolukord PIN
+clear_duress_pin	Lülita hädaabi välja PIN
+duress_on	Hädaavamine PIN on sisse lülitatud
+duress_off	Hädaavamine PIN on välja lülitatud
+duress_saved	Hädaavamine PIN on salvestatud
+duress_cleared	Hädaavamine PIN on välja lülitatud
+vehicle_ph	Sõiduk
+void	Tühimüük
+write_off_ap	AP maha kanda
+write_off_nil	Mahakandmine / nulljääk
+zone_ph	Tsoon (nimi hinnast)
+caption_today	TÄNA
+caption_bookings	BRONEERIMISED
+caption_payments_today	MAKSED TÄNA
+caption_outstanding	SUUREPÄRANE
+caption_bank	PANK
+paid_by	Maksnud
+second_way	Teine viis
+weight_in	Kaal sisse
+size_in	Suurus sisse
+goods_received	Kaup kätte saadud
+expense_heading	Kulu
+notes_attach_sale	Märkmed ja manused (valitud müük)
+notes_attach_party	Märkused ja manused (valitud klient või tarnija)
+attachments_last_expense	Manused (viimane kulu)
+credit_limit_heading	Krediidilimiit (valitud klient või tarnija)
+pay_selected_heading	Maksmine valitud (võla tasumine / ettemakse võtmine)
+write_off_heading	Kanna maha (tühjenda ilma makseta)
+pay_ap_heading	Makske, mida me neile võlgneme (AP)
+country_tax	Riik ja maks
+extra_tills_heading	Lisakassad
+other_devices_help_heading	Seadistage muud seadmed
+other_devices_help	Selles seadmes (serveris): muud seadmed → Luba lisakassad. Märkige üles sidumiskood ja WiFi-aadress. Puudutage valikut Luba teistel seadmetel ühenduda, kui see kuvatakse. Puudutage arvutis valikut Alusta selle arvutiga. Igas teises seadmes: installige rakendus, valige Kliendirežiim, Otsige üles poe server (või sisestage aadress), sisestage sidumiskood, Siduge kohe. Tellimused ootavad seadmes, kui WiFi katkeb, ja lähevad, kui server uuesti vastab.
+your_brand	Teie bränd (rakendusesisene)
+units_heading	Ühikud
+booking_measures	Broneerimismeetmed
+drawer_count	Sahtlite arv (valikuline)
+spreadsheet_csv	Arvutustabel (CSV)
+bank_reconciliation	Panga vastavusse viimine (märkige oma pangaväljavõttel linnuke)
+book_add_product	Broneeri – lisa toode/hind
+book_opening_credit	Raamat — algustiitrid
+account_kind	Konto tüüp (puudutage ühte)
+active_ledger	Aktiivne pearaamat
+actual_total_cap	TEGELIK KOKKU
+amend_help	Valige müük, mida soovite muuta, tühistada või raha tagastada. Muudatused säilitavad kogu ajaloo. Ümardatud kogusumma algab väärtusega Rakendatud – muutke ainult ümardamiseks. Tühistamiseks ja tagasimaksmiseks võib vaja minna omanikku või haldurit PIN (ülalpool trükitud; salvestatud teie nimega).
+applied_total_cap	RAKENDATUD KOKKU
+bank_balance	Panga saldo
+bank_net_today	Panga nett täna
+branch_export_help	Eksport kirjutab päevapildi varukoopiate kausta ja kopeerib selle lõikepuhvrisse. Teise müügikoha päeva importimiseks salvestage selle fail sellesse kausta nimega import_branch_snapshot.json ja seejärel puudutage valikut Import.
+brand_shown_help	Kuvatakse rakenduse sees olevatel ekraanidel. Selle seadme installitud rakenduse nimi ja ikoon jäävad platvormi loendiks.
+app_icon	Rakenduse ikoon
+logo_help	Valikuline poemärk rakenduse ekraanidel.
+onboard_layout	Mida sa saad
+item_photo_help	Valikuline. Ilma fotota näitame kauba nimetuse initsiaale.
+cash_in_hand	Sularaha kassas (kuni)
+change_my_pin_heading	Muuda minu PIN-koodi (ainult sinu oma)
+connect_to_server	Ühendage serveriga
+counter_locked	Loendur 01 · Lukustatud
+country_pack_help	Riigi pakett määrab arvetele prinditava maksunime ja matemaatika, kiirmakse raudtee ja ettevõtte ID. Kumkaj ei esita kuskil makse ega väljasta riigi e-arveid.
+currency_use_help	Kerige ja toksake Kasuta mis tahes toetatud valuuta jaoks.
+day_close_help	Päeva sulgemise salvestamine salvestab selle kokkuvõtte (ja sahtli dispersiooni, kui see on arvestatud) auditi logisse. See ei lõpeta müüki.
+expenses_word	Kulud
+feature_access_help	Juurdepääs valitud töötajate funktsioonidele (puudutage pärast lisamist)
+footer_local	Kohalik SQLite · Igavesti tasuta · Zero Cloud
+fresh_book_moklanjo	Värske = tühi kataloog (lisage üksusi hiljem). Raamat = tüüp avamisaktsia ja kes on teile võlgu allpool.
+fresh_selected	Värske valitud – kataloog jääb tühjaks. Kui olete valmis, puudutage valikut Valmis.
+gross_word	jäme
+how_start	Kuidas soovite alustada?
+later_country_pack	Hiljem: Seaded → rakendage maksu- ja tasusiltide jaoks oma riigipakett.
+local_badge	KOHALIK
+measures_help_moklanjo	Kuidas broneerimislauas pakke mõõdetakse. Sisestage mõõtmed ja kaal kasutatavates ühikutes – standard (cm, m, tolli, jalg · kg, g, nael, unts) või oma ühik, mis on ülalpool lingitud cm/kg-ga (otse või muude ühikute kaudu). Raamatud salvestavad alati kg. Selle säilitamiseks jätke väli tühjaks.
+mix_type_hint_moklanjo	Sisestage, kui palju kummaski (sularaha / UPI / kaart / krediit). Arvele tuleb lisada. Krediit vajab klienti eespool.
+money_in_sales	Raha sisse (müük)
+more_help_moklanjo	Kataloog, müük, krediit, meeskond, varukoopia – lisaks laos ja vajadusel lisakassad.
+net_word	Neto
+offline_badge	OFFLINE
+optional_login_help	Valikuline sisselogimine (id + parool). Omanik komplekteerib üks kord; ainult kasutaja saab hiljem parooli muuta.
+or_unlock_login	Või avage sisselogimise ID + parool
+permission_preset	Töö (määrab ekraanid ja õigused)
+preset_help_moklanjo	Kassapidaja: müüa. Haldaja: müüa + esemed + tühine/muuda.
+product_locked_moklanjo	Moklanjo
+product_only_moklanjo	See rakendus on ainult Moklanjo – raamatud + broneerimislaud. Muud kaubanduspinnad tarnitakse hiljem eraldi toodetena.
+purchases_cogs	Ostud (COGS)
+qty_cap	QTY
+restore_help	Taasta: vali varukoopia. Raamatud avanevad nagu siis; raamatud, nagu nad praegu on, salvestatakse esmalt, nii et selle saab tagasi võtta.
+wipe_data_heading	Kustutage kohalikud andmed
+wipe_data_help	Ainult omanik – samad valikud nagu Windowsi desinstallimine. Ärikirjed kustutavad kauplemisajaloo, kuid säilitavad intressimäärad ja seadistuse (nagu hädaolukorra avamise PIN-kood). Poe seadistamine eemaldab raamatute andmebaasi. Ekraani eelistused tühjendab akna/keele. Kinnitage omaniku PIN-koodiga. Meeskonna hädaabiluku PIN-kood on eraldi (varjatud pühkimine avamisel).
+wipe_trading	Äridokumendid
+wipe_schema	Poe seadistamine
+wipe_ui	Ekraani eelistused
+wipe_owner_pin_ph	Omanik PIN kustutamiseks
+wipe_delete_selected	Kustuta valitud
+wipe_owner_only	Kohalikke andmeid saab kustutada ainult omanik.
+restore_owner_only	Ainult omanik saab varukoopia taastada.
+wipe_owner_pin_needed	Kohalike andmete kustutamiseks sisestage omanik PIN.
+wipe_nothing_selected	Valige, mida kõigepealt kustutada.
+wipe_done	Valitud kohalikud andmed kustutati.
+wipe_schema_done	Poe seadistus on kustutatud – jätkamiseks valige Server või Klient.
+rounded_total	Ümardatud summa
+setup_app_moklanjo	Seadistage Moklanjo
+shop_logo_optional	Poe logo (valikuline)
+stock_type_help	Sisestage kauba nimi (piisab osast), kogus ja seejärel kohandage. Üksused, mida veel ei loeta, vajavad jälgimist üks kord.
+team_owner_help	Rentimine: valige töökoht (kassapidaja/haldur), nimi + stardi-PIN ja seejärel Lisa. Ainult siis, kui see inimene erineb: avage allolevad ekraanid ja õigused, seejärel Salvesta töö seadistus. Igaüks muudab allosas oma PIN-koodi – omanik ei saa kellegi teise oma muuta.
+they_owe_us	Nad on meile võlgu
+unit_at_cap	Ühik @
+units_help	Kauba siltide koodid (kg, tükk, kott). Iga üksus peab lingima – otse või teiste ühikute kaudu – standardiga (kg · cm · ml · tk), nt. 1 kast = 2 kasti ja 1 kast = 20 cm. Teisendused: 1 = tegur kuni. Valuutad ei ole kunagi ühikud.
+we_owe_them	Oleme neile võlgu
+who_unlocking	Kes avab?
+locked_word	Lukustatud
+show_pin	Näita PIN
+hide_pin	Peida PIN
+set_owner_pin	MÄÄRA OMANIKU PIN
+enter_owner_passcode	SISESTAGE OMANIKU POOLKOOD
+enter_staff_passcode	SISESTAGE PERSONALI POOLKOOD
+pin_count_zero	0/12 numbrit · vähemalt 4, seejärel OK
+pin_count_need	{} / 12 numbrit · vaja {} rohkem
+pin_count_full	12/12 numbrit · vajutage OK
+pin_count_ready	{} / 12 numbrit · vajutage OK, kui olete valmis
+pin_hint_choose	Valige 4–12 numbrit · Salvestamiseks sisestage või avage
+pin_hint_new	Uus 4–12-kohaline omanik PIN · Sisestage või avage
+pin_hint_shop_code	Ostke seadet · sidumiskood {}
+pin_hint_books	See seade hoiab raamatuid
+pin_hint_paired	Lisa kuni sidumiseni – müümiseks avage lukustus
+pin_hint_pair_first	Lisakass – esmalt siduge poeseadmega
+unlock_to_continue	Jätkamiseks avage lukustus
+no_staff_yet	Töötajaid pole veel – avage omanikuna ja seejärel meeskonnana
+status_server_set_pin	Serverirežiim – määrake omanik PIN
+status_server_tills	Serverirežiim – liituda saavad lisakassad. Avage lukustus
+status_server_unlock	Serverirežiim – avage omanikuna lukustus
+status_client_unlock	Kliendirežiim – avage müümiseks
+icon_new_selected	Ikoon: uus fail on valitud – puudutage Salvesta bränd
+icon_custom	Ikoon: kohandatud koha märk
+icon_default	Ikoon: Kumkaj märk (vaikimisi) – valige kohandatud
+logo_yours	Logo: teie poe logo – kuvatakse ekraanidel ja kviitungitel
+logo_default	Logo: Kumkaj märk (vaikimisi) — valige oma, kui teil see on
+tmpl_current	Praegune: {} — {}
+tmpl_selected	Valitud: {} — {}
+setup_complete	Seadistamine on lõpetatud
+onboard_fresh_tmpl	Värske · {} — kataloog algab tühjalt; lisage üksused jaotisesse Üksused ja seejärel Valmis.
+onboard_book_tmpl	Broneeri · {} — lisage üksused ja alguskrediit, seejärel valige Valmis.
+onboard_template_tmpl	Soovi korral nimetage koht ja seejärel valige, kuidas alustada.
+tmpl_blurb	Kulleriraamatud ja broneerimislaud: kaubasaatjad, vedajad, päevaraamat, AWB.
+tmpl_how	Broneerige pakid laua taga; Päevaraamat tänaseks; tariifide, pidude, aruannete vahekaardid.
+trk_booked	Broneeritud
+trk_picked_up	Korjatud
+trk_in_transit	Transiidil
+trk_delivered	Tarnitud
+trk_rto	Saatja juurde tagasi
+lane_to_dispatch	Saatmiseks
+lane_with_carrier	Koos kandjaga
+lane_failed	Ebaõnnestunud
+lane_done_today	Täna tehtud
+ops_board_help	Pakid nende asukoha järgi tänases töös. Pakkide valimiseks puudutage (või skannige neid), seejärel toimige korraga kõigi korjatud toodetega – igal sõidurajal on ainult need käigud, mis sobivad.
+lane_empty	Siin pole praegu midagi.
+picked_fmt	{n} valitud
+pick_all	Vali kõik
+bag_for_carrier	Käsi kandjale
+send_with_rider	Saada koos ratturiga
+out_again	Jälle välja
+return_to_sender	Tagasi saatjale
+runs_bags_heading	Viimased jooksud ja kotid
+print_word	Prindi
+bag_word	Kandekott
+run_word	Ratturi jooks
+parcels_fmt	{n} pakid
+parcel_history	Ajalugu
+attempt_fmt	Proovige {n}
+pieces_short_fmt	{n} tk
+note_reason_ph	Märkus või põhjus
+ops_pick_first	Esmalt valige pakid – puudutage neid või skannige neid
+cod_to_collect	Tarnitud — COD järele
+cod_on_road	COD on endiselt teel
+cod_owed_consignors	Kogutud — kaubasaatjatele tasumiseks
+cod_rto_fees	RTO tasud koguda
+cod_to_hand_in	COD sisse anda
+parcel_one_fmt	{n} pakk
+facet_bank_title	Aruanded
+facet_bank_help	Päevaraamatud, klientide või tarnijate vananemine, pangapostitused ja perioodi kasumiaruanded.
+facet_ops_title	Saadetised ja lähetamine
+facet_ops_help	Skannige või tippige AWB → Otsi, seejärel liigutage / printige silt / COD. Saatmine sõitjale või vedajale.
+facet_cod_title	COD register
+facet_cod_help	Koguge kätte kohaletoimetamisel, seejärel edastage kaubasaatjale.
+facet_riders_title	Ratturid (oma laevastik)
+facet_riders_help	Lisage sõitjaid ja saatke seejärel Opsist broneeritud AWB-d.
+against_bill_ph	Ülaltoodud arve # vastu (valikuline)
+aliases_ph	Varjunimed – muud nimed, eraldatud komadega
+amount_blank_full_ph	Summa (tühi = täielik saldo)
+amount_owed_ph	Võlasumma
+amount_ph	Summa
+amount_received_ph	Saadud summa
+amount_we_pay_ph	Summa, mida maksame
+awb_scan_ph	AWB / skanni vöötkood
+bulk_csv_ph	Hulgi-CSV – sihtkoht, kaubasaaja, kg, cod_paise, märkus
+business_name_ph	Ärinimi
+category_new_ph	Kategooria (valikuline, luuakse, kui uus)
+cod_amount_ph	COD kogus
+code_bag_ph	Kood (kott)
+conv_factor_ph	Tegur (25 = 1 kott → 25 kg)
+country_code_ph	Riigikood nt. IN, GB, USA, AE, BR
+credit_khata_amount_ph	Krediidi / krediidi pearaamatu summa
+credit_limit_ph	Krediidilimiit (0 = puudub)
+dim_unit_code_ph	Mõõtmeühiku kood (cm)
+divisor_ph	Mahuline jagaja (5000)
+extra_per_kg_ph	Ekstra / kg
+first_amount_ph	Esimene summa
+first_kg_ph	Esimene kg (plaat)
+from_code_ph	Koodist (kotist)
+item_name_lang_ph	Kauba nimi – sisestage see oma keeles
+login_id_opt_ph	Kasutajanimi (nõutav, kordumatu)
+manager_pin_ph	Haldur PIN kinnitamiseks (ainult siis, kui te ei saa tühistada)
+new_branch_name_ph	Uus filiaali nimi
+new_password_ph	Uus parool (valikuline)
+new_pin_ph	Uus PIN (4–12 numbrit)
+note_bank_ph	Märkus (deposiit, väljamakse, ...)
+note_buy_expense_ph	Märkus (kütus, rent, …)
+note_expense_ph	Märkus (kütus, kontor, …)
+notify_phone_ph	Teavita telefoni (WhatsApp/SMS-konks)
+options_moklanjo_ph	Valikud (valikuline) — suur = 20, kingituse pakkimine = 10
+part_second_way_ph	Teisel viisil eraldamine (valikuline)
+phone_ph	Telefon
+address_ph	Aadress
+party_custom_fields_heading	Kohandatud väljad (valitud osapool)
+party_custom_help	Lisage sellele peole mis tahes silt ja väärtus – WhatsApp, GSTIN, marsruudikood, …
+party_custom_key_ph	Välja nimi (nt WhatsApp)
+party_custom_value_ph	Väärtus
+party_custom_add	Lisa väli
+party_custom_remove	Eemalda väli
+party_custom_empty	Kohandatud välju pole veel
+party_custom_pick_first	Kohandatud väljade lisamiseks valige pidu
+place_name_ph	Selle koha nimi
+price_ph	Hind
+qty_example_ph	Kogus (nt 1,5 kg kohta)
+quantity_ph	Kogus
+reason_required_ph	Põhjus (nõutav)
+role_title_ph	Rolli nimetus (nt Barista)
+service_pct_ph	Teenus % valikuline 0/10/12
+short_code_ph	Lühikood (MG02)
+slab_kg_ph	Laetav plaat kilogrammides (0,5)
+staff_name_ph	Töötaja nimi/id
+starting_password_ph	Käivitusparool (valikuline)
+starting_pin_ph	Algus PIN (4–12 numbrit)
+tax_rate_ph	Maksumäära nimi või % – standardne, alandatud, 0, 5, 12, 18, 20
+to_code_ph	Kodeerida (kg)
+uncleared_no_ph	Selgitamata # ülal
+unit_cost_ph	Ühiku maksumus
+unit_kg_blank_ph	Ühik (kg või tühi)
+unit_name_bag_ph	Nimi (kott)
+weight_unit_code_ph	Kaaluühiku kood (kg)
+zone_name_ph	Tsooni nimi
+pay_credit	Arvel
+book_kind_today	Tänased raamatud
+book_kind_month	Selle kuu raamatud
+book_kind_aging	Tasumata / deebetkrediit
+book_kind_balance	Bilanss
+ops_desk_help	Skannige AWB-d USB-vöötkoodiskanneriga (või tippige see) → Otsi. Seejärel jätkake, printige silt või koguge COD. Trüki etiketid Kood 128.
+role_help_consignor	Roll: Kauba saatja – AR (nad on meile võlgu). Sama ettevõte võib olla ka vedaja.
+role_help_carrier	Roll: vedaja — AP (me võlgneme neile). Sama firma võib olla ka saatja.
+role_help_both	Rollid: saatja + vedaja – üks osapool, AR ja AP pearaamatud, aruannetes neto.
+role_help_supplier	Roll: Tarnija – ostude jaoks AP.
+lane_declared_label	Konto broneerimine
+lane_owner_label	Sularaha broneerimine
+money_lane_bill	Arve: {lane}

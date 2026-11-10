@@ -1,0 +1,835 @@
+# Belarusian — Беларуская (be). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	Кур'ерскае агенцтва кнігі + браніраванне. Бясплатна ў аўтаномным рэжыме.
+unlock	Разблакіраваць
+pin_hint	PIN уладальніка спачатку 0000
+sell	Бранюванне
+buy	Pay out
+books	Дзённая кніга
+books_help	Today’s position. Booking = parcels in. Pay out = carrier bills & expenses. Parties = consignors & carriers.
+buy_help	Квитанции аб выдатках і рахункі перавозчыка (грошы на выходзе). Па рахунку застаецца на галоўнай кнізе
+sell_money_in	Бранюваць пасылку
+buy_money_out	Выдаткі / рахунак перавозчыка
+record_purchase	Запісаць закупку
+add_expense	Выдатковы ордэр
+bank_book	Банкаўская кніга
+credit_help	Party id is unique (names may repeat). Roles: Consignor (AR), Carrier (AP), or both on that id. Ledgers stay separate; reports show net.
+party_kind_ph	Карыстацкая роля (па жаданні) — або націсніце верхнюю чыпку
+parties_list_heading	Saved parties
+reports_help	Дзённая кніга, дэбіторы і крэдыторы, банкаўская кніга, выдатковыя ордэры, прыбытак і страты.
+reports_today	Дзённая кніга (сёння)
+reports_month	Прыбытак і страты (месяц)
+reports_aging	Непагашанае / Дт-Кт
+reports_balance_sheet	Баланс
+reports	Банкаўская кніга і П і С
+refresh	Абнавіць
+undo	Адрабіць
+start_tracking	Пачаць улік
+stock_minus	− Запас
+stock_plus	+ Запас
+settle_cash	Разлічыць наяўнымі
+settle_card	Разлічыць карткай
+items	Rates & services
+nav_items	Rates
+more	Яшчэ
+your_items	Your rates
+items_help	Кожны радок — гэта стаўка (напрыклад, Паўерхневая зона А). Адзініца звычайна кг. Націсніце, каб рэдагаваць.
+add_item	Дадаць стаўку
+new_item	Новая стаўка
+adding_item	Даданне новага тарыфа
+editing_item	Рэдагаванне
+save	Захаваць
+remove	Выдаліць
+empty_catalog	Тарыфаў пакуль няма. Адкрыйце Разлікі і паслугі, дадайце адзін (назва + цана, адзінка кг), затым Бронь.
+counter_sale	Супрацьстаўленне браніравання
+total	Разам
+cash	Наяўныя
+upi	UPI
+card	Картка
+credit	Бакі
+clear	Ачысціць
+ready_to_sell	Гатова запісаць
+today_prefix	Сёння
+today_mid	сёння
+owed	непагашана
+round_word	акругліць
+back	Назад
+sold_out	Недаступна
+restock	Папоўніць
+not_tracked	Без уліку
+in_stock	у запасе
+marked_sold_out	Пазначана недаступным
+add_upper	ДАДАЦЬ
+na	Н/Д
+qty	Вага/Кольк.
+unit_at	Кошт @
+actual	Факт
+applied	Ужыта
+note_ph	Нататка (неабавязкова)
+rounded	АКРУГЛЕНА
+split	Падзел
+counter	Лічыльнік
+parcel	Parcel
+order	Заказ
+sales	Бранюванні
+sales_refunds	Бранюванні і вяртанні
+day_close	Блізкі дзень
+reports_expenses	Банкаўская кніга і П і С
+nav_reports	Даклады
+nav_settings	Налады
+nav_lock	Замак
+sidebar_settings	Sidebar settings
+sidebar_settings_help	Тыя ж значкі, што і на бакавой рэйцы. Перацягніце радок, каб змяніць парадак. Пераключыце пераключальнік, каб паказаць або схаваць. Налады і блакіроўка заўсёды застаюцца на панэлі.
+sidebar_always_on_short	Заўсёды ўключана
+sidebar_back_settings	Назад
+sidebar_shown	Паказана
+sidebar_hidden	Схаваны
+sidebar_always_on	Заўсёды на бары
+sidebar_shown_hint	Паказана на бакавой планцы / ніжніх выступах
+sidebar_hidden_hint	Схаваны ад бара
+sidebar_menu_items	Меню і пункты
+sidebar_enable_all	Уключыць усе
+sidebar_disable_all	Адключыць усе
+sidebar_order_saved	Парадак бакавой панэлі захаваны
+sidebar_visibility_saved	Бачнасць бакавой панэлі захавана
+amounts_hide	Схаваць
+amounts_show	Паказаць
+no_sale_yet	Продажу пакуль няма
+favorites	Выбранае
+favorites_help	Прадметы, якія вы часта прадаеце, захаваныя для вашага ўваходу. Дадайце адзін у рахунак або складзіце свой спіс з усіх пунктаў ніжэй.
+your_favorites	Вашы любімыя
+all_items	Усе прадметы
+no_favorites	Пакуль няма абраных — дадайце элементы са спісу ніжэй.
+add_to_bill	Дадаць да рахунку
+added	Дададзена
+owes_word	абавязаны
+selected_word	Выбранае
+chip_clear_credit	ачысціць — Крэдыт або ўзяць аванс
+chip_missing_customer	Выбраны кліент адсутнічае — абярыце яшчэ раз
+chip_no_customer	Пакуль няма кліента — увядзіце імя і націсніце Крэдыт
+credit_summary_fmt	{} кліентаў · адкрыты крэдыт {} · авансы ўтрыманы {}
+recent_label	Апошнія:
+inventory	Інвентар
+inventory_stock	Інвентар і запасы
+branches	Галіны
+branches_org	Філіялы і арг
+credit_customers	Parties (debtors & creditors)
+customer_name_ph	Імя кліента або пастаўшчыка
+new_customer_ph	Імя новага кліента або пастаўшчыка
+item_name_ph	Rate name (e.g. Surface Zone A)
+item_price_ph	Per kg / first slab
+start_template	Прадукт
+next_booking	Наступнае браніраванне
+destination_ph	Горад/зона прызначэння
+consignee_ph	Receiver name
+consignee_phone_ph	Receiver phone
+consignee_address_ph	Адрас дастаўкі
+origin_name_ph	Sender name
+origin_phone_ph	Sender phone
+origin_address_ph	Pickup / origin address
+booking_consignor_heading	Адпраўнік (кліент / адпраўляльнік)
+booking_consignee_heading	Атрымальнік
+booking_consignor_hint	Pick a party to fill, or leave blank for walk-in. Needed for home pickup and RTO.
+booking_consignee_hint	Receiver of the parcel. Leave blank for walk-in counter drop-offs.
+weight_kg_ph	Фактычны кг
+length_cm_ph	L см
+breadth_cm_ph	B cm
+height_cm_ph	H см
+chargeable_kg	Аплатны кг
+awb_label	AWB
+booking_help	Адпраўнік + адрасат (пустое дапускаецца) → пункт прызначэння → ўзважванне → стаўка за выбар → Рахунак/Грошы → аплата. AWB друкуецца на чэку. Наступнае браніраванне вызваляе стол. Акруглены пачатковы рахунак роўны прымянёнаму — рэдагаваць толькі для акруглення рахунку.
+cart_empty_hint	Стол пусты — адпраўнік/атрымальнік неабавязковыя, усталюйце пункт прызначэння і вагу, націсніце ДАДАЦЬ у разліку, затым аплаціце.
+team	Каманда
+team_pins	Каманда і PINs
+my_pin_settings	Мой PIN
+settings_hub_help_my_pin	Зменіце разблакіроўку PIN для чалавека, які ўвайшоў у сістэму на гэтай прыладзе.
+team_self_help	Only you can change your unlock PIN (and optional login password). Ask the Owner if you need different screens or rights.
+backup_settings	Рэзервовае капіраванне і налады
+lock_app	Прыкладанне блакіроўкі
+pick	Выбраць
+select	Выберыце
+advance	Аванс
+owner	Уладальнік
+staff	Персанал
+photo	Фота
+auto	Аўто
+prev	Папярэд
+next	Далей
+ok	добра
+this_shop	Рэжым сервера
+extra_till	Кліенцкі рэжым
+off	Выкл
+server	Рэжым сервера
+client	Кліенцкі рэжым
+language_currency	Мова і валюта
+language	мова
+choose_language	Выберыце сваю мову
+language_setup_hint	Сачыце за мовай гэтай прылады або выберыце мову самастойна.
+lang_follow_platform	Мова прылады
+lang_pick_user	Выберыце мову
+lang_platform_now	Зараз мова прылады
+selected_language	Выбранае
+continue	Працягнуць
+this_device	ГЭТАЯ ПРЫЛАДА
+device_use_q	Як будзе выкарыстоўвацца гэта прылада?
+last_server_mode	Быў сервер — націсніце, каб працягнуць
+last_client_mode	Быў кліентам — націсніце, каб працягнуць
+choose_server	Выберыце сервер
+choose_server_hint	Адкрыйце існуючы сервер або стварыце яго для іншай кампаніі.
+create_new_server	Стварыць новы сервер
+open_server	Адкрыты
+new_server_name_ph	Новае імя сервера (неабавязкова)
+server_remove_pin_ph	Уладальнік PIN, каб выдаліць сервер
+only_owner_remove_server	Толькі ўладальнік можа выдаліць сервер
+owner_pin_remove_server	Уладальнік PIN павінен выдаліць гэты сервер
+device_setup_help	Сервер захоўвае кнігі тут. Кліент падключаецца да сервера.
+currency	Валюта
+backup	Рэзервовае капіраванне
+settings_sec_diag	Дыягностыка
+settings_hub_help	Адкрывайце адну вобласць за раз — менш пракруткі, яснішы выбар.
+settings_sec_devices	Іншыя прылады
+settings_sec_alerts	Апавяшчэнні
+alerts_help	Колькі статусныя паведамленні трымаюцца на экране для вас (гэты ўваход).
+snack_secs_ph	Секунды (3–60, прадвызначэнне 10)
+snack_secs_save	Захаваць час апавяшчэння
+snack_secs_saved	Час апавяшчэння захаваны — {n} секунд
+snack_secs_bad	Увядзіце секунды як лік (3–60)
+cancelled	Адменена
+cancel	Адмяніць
+opening_client	Адкрыццё кліента…
+preparing_desk	Падрыхтоўка стала…
+opening_server	Адкрыццё сервера…
+creating_server	Стварэнне сервера…
+diag_privacy_help	Журналы застаюцца на гэтай прыладзе. Сакрэты (PIN, паролі) ніколі не захоўваюцца. Абагульванне пакета з прылады кожны раз патрабуе вашага відавочнага адабрэння — ніколі не прадаецца і не перадаецца трэцім асобам.
+diag_level	Узровень дэталізацыі
+diag_level_error	Памылкі
+diag_level_warn	Папярэджанні
+diag_level_info	Інфармацыя
+diag_level_debug	Адладжваць
+diag_support_start	Пачніце 30-хвілінны сеанс падтрымкі
+diag_support_stop	Завяршыць сеанс падтрымкі
+diag_support_started	Сеанс падтрымкі ўключаны — дэталь адладкі на працягу 30 хвілін
+diag_support_ended	Сеанс падтрымкі завершаны
+diag_export_local	Экспарт лакальнай копіі
+diag_export_local_done	Лакальная дыягностыка гатовая ў {path} — выберыце, дзе захаваць копію
+diag_approve_send	Ухваліць абагульванне з гэтай прылады
+diag_send_heading	Абагуліць гэтую прыладу
+diag_send_help	Зацвярджэнне - гэта адзін пакет, тэрмін дзеяння якога заканчваецца. Часовы — выкарыстоўваецца толькі для выпраўлення або паляпшэння прадукту. Не перадаецца трэцім асобам. Працуе на Linux, Windows, macOS і Android.
+optional_login_heading	Неабавязковы ўваход
+rights_heading	правы
+booking_scope_heading	Унутраны / Міжнародны
+diag_send_approved	Доля зацверджана для аднаго пакета (тэрмін дзеяння хутка скончыцца)
+diag_export_send	Стварыць пакет агульных рэсурсаў (патрабуецца зацвярджэнне)
+diag_export_send_done	Абагуліць пакет, гатовы ў {path} — выберыце, дзе захаваць, а потым адпраўце толькі ў службу падтрымкі Kumkaj
+diag_save_bundle	Захаваць копію дыягностыкі
+diag_bundle_saved	Копія дыягностыкі захавана ў {path}
+diag_bundle_failed	Не ўдалося захаваць копію дыягностыкі — паўтарыце спробу
+diag_clear	Ачысціць журналы дыягностыкі
+diag_cleared	Журналы дыягностыкі ачышчаны
+use	Выкарыстоўвайце
+add_branch	Дадаць галінку
+add_conversion	Дадаць канверсію
+add_item_plain	Дадаць пазіцыю
+add_note	Дадаць нататку
+add_opening_balance	Дадайце пачатковы баланс
+add_rider	Дадаць кур’ера
+add_staff	Дадаць персанал
+add_unit	Дадаць адзінку
+add_use_name	Дадайце/выкарыстоўвайце гэтае імя
+allow_extra_tills	Дазволіць дадатковыя касы
+amend	Паправіць
+apply_country_pack	Прымяніць дачны пакет
+datetime_appearance	Выгляд даты і часу
+datetime_appearance_help	Кнігі захоўваюць унутры год-перш RFC3339. Гэта змяняе толькі тое, як выглядаюць даты і гадзіны ў чэках, этыкетках, справаздачах і на экране.
+datetime_example	Прыклад: {ex}
+date_order	Парадак даты
+date_order_dmy	D/M/Y
+date_order_mdy	M/D/Y
+date_order_ymd	Y-M-D
+time_format	Гадзіннік
+time_format_24h	24-гадзінны
+time_format_12h	12-гадзінны
+attach_bill_photo	Прымацаваць фота рахунку
+attach_pdf	Далучыць PDF
+attach_photo	Далучыць фота
+bank	Банк
+bank_in	Банк в
+bank_out	Банк з
+bank_to_till	Банк → каса
+till_to_bank	Каса → банк
+mark_cleared	Марк ачышчаны
+unmark	Зняць адзнаку
+role_both	Абодва
+role_carrier	Носьбіт
+role_cashier	Касір
+role_consignor	Адпраўнік
+role_manager	Менеджэр
+role_supplier	Пастаўшчык
+branch_name_sell_ph	Назва філіяла для продажу
+bring_my_book	Прынясі маю кнігу
+business_tax_id_ph	Падатковы ідэнтыфікацыйны нумар прадпрыемства
+card_amount_ph	Сума карты
+cash_amount_ph	Грашовая сума
+upi_amount_ph	UPI сума
+carrier_cost_ph	Кошт перавозчыка
+carrier_party_ph	Бок перавозчыка
+choose_icon	Выберыце значок
+choose_logo	Выберыце лагатып
+choose_receipt_stamp	Выбраць адбітак чэка
+choose_payment_qr	Выберыце аплату QR
+clear_icon	Ачысціць значок
+clear_logo	Ачысціць лагатып
+clear_photo	Выразнае фота
+clear_stamp	Чысты штамп
+clear_payment_qr	Ачысціць аплату QR
+print_faces	Print faces (receipt / period bill)
+print_faces_help	Optional stamp and payment QR next to your logo on booking receipts and period bills.
+awb_pools_heading	Базa нумароў AWB перавозчыка
+add_awb_pool	Дадаць пул AWB
+awb_pool_carrier_ph	Назва боку перавозчыка
+awb_pool_start_ph	Start no.
+awb_pool_end_ph	Канечны нумар
+awb_pool_prefix_ph	Prefix (optional)
+awb_pool_label_ph	Этыкетка (па жаданні)
+pieces_ph	Pieces (blank = 1) — expand for cargo / multi-piece
+bulk_awbs_ph	Масавая адпраўка AWB — устаўце шмат (новы радок або коска) для аднаго статусу
+tds_cut_ph	TDS cut (optional)
+discount_ph	Зніжка (па жаданні)
+cheque_no_ph	Нумар чэка (па жаданні)
+bill_reminder_chase	Список нагадванняў аб білінгу
+month_mix_report	Месячны справаздачны звод
+copy_month_gst_csv	Скапіраваць CSV па ПДВ за месяц
+domestic	Унутраны
+international	Міжнародны
+pick_logo	Pick logo
+booking_scope_hint_domestic	Volumetric ÷5000 (domestic) — tap International for ÷6000 air
+booking_scope_hint_intl	Volumetric ÷6000 (international air) — tap Domestic for shop ÷5000
+cod_register	Рэгістр COD
+collect_cod	Забраць аплату пры дастаўцы (AWB)
+consignments_dispatch	Адгрузкі і адпраўкі
+consignor_party_ph	Адпраўнік / назва боку
+copy_day_book_csv	Копія дзённіка CSV
+copy_day_close	Капіяваць дзень закрыцця
+copy_items_csv	Капіяваць элементы CSV
+copy_outstanding_csv	Выдатная копія CSV
+copy_parties_csv	Копія кліентаў і пастаўшчыкоў CSV
+copy_party_ledger_csv	Капіяваць кнігу кліентаў CSV
+copy_receipt	Копія квітанцыі
+copy_report	Капіяваць справаздачу
+counted_cash_ph	Пералічыў грошы ў шуфлядзе
+counter_agency_ph	Назва кантэру / агенцтва (неабавязкова)
+create_backup	Стварыць рэзервовую копію
+day_close_summary	Падвядзенне вынікаў дня
+delete_party	Выдаліць выбранага кліента або пастаўшчыка
+dispatch_to_rider	Адпраўка забраніравана → кур'ер
+docket_charge_ph	Зарэгістраваны абвінавачанне
+declared_value_ph	Абвешчаная вартасць
+contents_ph	Змест
+eway_ph	Нумар электроннага рахунку
+insurance_label	Страхаванне
+yes_label	Yes
+no_label	Не
+print_route_label	Print route
+new_party_kind_label	Новы тып партыі
+done_open_books	Гатова — адкрыйце кнігі
+export_day	Экспартны дзень
+extra_note_expense_ph	Дадатковая заўвага аб апошніх выдатках
+extra_note_awb_ph	Дадатковая заўвага да гэтага AWB / продажу
+failed_delivery	Неадпраўлена
+find_scan_awb	Знайсці / сканаваць AWB
+forget_shop	Забудзьцеся аб гэтай краме
+fuel_ph	Паліва
+handover_carrier	Ручная браніраванне → перавозчык
+import_day	Імпартны дзень
+import_items_csv	Import items / rates CSV…
+import_parties_csv	Імпарт кліентаў і пастаўшчыкоў CSV…
+import_pincodes_csv	Import pincodes CSV…
+import_carrier_bill_csv	Import carrier bill CSV…
+copy_carrier_bill_report	Скапіраваць апошні справаздачу па рахунку перавозчыка
+use_carrier_cost	Use carrier cost
+rate_carrier_ph	Носьбіт (пусты = нашая продажная стаўка)
+rate_party_ph	Party (blank = all customers)
+carrier_pick_ph	Перавозчык для кошту (з параўнання)
+item_name	Назва прадмета
+load_bulk_row	Загрузка масіва радкоў → стол
+login_id_ph	Імя карыстальніка
+mark_delivered	Адзначыць як дастаўлена
+manifest_cod_total	Агульны COD
+manifest_received_by	Received by
+manifest_sign	Sign
+ndr_address_wrong	Няправільны адрас
+ndr_customer_unavailable	Недаступна
+ndr_door_locked	Дзверы зачынены
+ndr_other	Other
+ndr_refused	Refused
+out_for_delivery	Out for delivery
+print_drs	Print DRS
+print_run_sheet	Print run sheet
+reattempt	Reattempt
+rider_cod_handed_ph	COD здадзены
+settle_rider_cod	Settle rider COD
+mode_desk	Стол
+mode_rider	Rider
+waiting_office	waiting to reach office
+capture_signature	Захапіць подпіс
+incoming_manifest	Уходны манифест
+pickup_request	Pickup request
+pickup_run	Pickup run
+auto_assign_area	Auto-assign area
+reorder_stops	Reorder stops
+settle_rider_pay	Settle rider pay
+vehicle_inspect	Vehicle inspection
+print_docket	Print docket
+franchise_statement	Заява франшызы
+tally_export	Tally voucher export
+open_whatsapp	Open WhatsApp
+copy_sms	Скапіраваць тэкст SMS
+pick_barcode_image	Pick image to scan
+share_receipt_whatsapp	Share receipt on WhatsApp
+delivery_feedback	Водгукі пра дастаўку
+lan_self_book	Самастойнае браніраванне LAN
+new_party_clear	Новы кліент або пастаўшчык (чыстая форма)
+new_party_kind_ph	Новы тып партыі (Пастаўшчык / Перавозчык)
+next_country	Наступная краіна
+prev_country	Папярэдняя краіна
+note_gstin_ph	Заўвага / GSTIN / напамін аб пагадненні
+note_pod_ph	Note / POD (optional)
+on_account_ap	На рахунку (AP)
+org_optional_ph	Арганізацыя (неабавязкова)
+paid_now	Аплачана зараз
+pairing_code_ph	Код спалучэння
+pair_now	Пара зараз
+party_name_selected_ph	Імя кліента або пастаўшчыка (або выкарыстоўвайце выбранае)
+password_ph	Пароль
+pay_ap_card	Плацежная карта AP
+pay_ap_cash	Плаціце AP наяўнымі
+pay_ap_upi	Аплата AP UPI
+period_bill	Period bill
+period_bill_party	Period bill (party)
+pick_pod_photo	Pick POD photo
+print_awb_label	Print AWB label
+print_open	Раздрукаваць / адкрыць
+reason_amend_ph	Прычына змены / анулявання / вяртання грошай
+reason_note_ph	Прычына / заўвага (трата, колькасць, ...)
+record_day_close	Закрыццё дня запісу
+refresh_from_shop	Абнавіць з крамы
+refund	Вяртанне грошай
+remit_cod	Remit COD (party)
+remove_selected	Выдаліць выбранае
+restore_backup	Аднавіць рэзервовую копію
+rider_name_ph	Rider name
+rider_phone_ph	Rider phone
+riders	Riders
+riders_own_fleet	Riders (own fleet)
+rollup	Згортванне
+save_booking_measures	Save booking measures
+save_brand	Захаваць брэнд
+save_business_id	Захаваць бізнес-ідэнтыфікатар
+save_business_name	Захаваць назву кампаніі
+save_features	Save job setup
+save_names	Захаваць імёны
+server_ip_ph	IP-адрас сервера (напрыклад, 192.168.1.10)
+set_credit_limit	Прымяніць ліміт да кліента або пастаўшчыка
+set_login_selected	Прымяніць лагін да выбранага
+set_login_named	Прымяніць уваход у {name}
+shop	Крама
+start_fresh	Пачніце спачатку
+stop_extra_tills	Спыніць дадатковыя касы
+backup_auto	Рэзервовае капіраванне ствараецца аўтаматычна кожны дзень · апошнія {when} · апошнія 14 дзён захоўваюцца ў {dir}.
+backup_auto_none	Рэзервовыя копіі ствараюцца аўтаматычна кожны дзень — першая запускаецца праз імгненне.
+backup_copy_to	Копіі таксама ідуць па адрасе {dir}.
+backup_copy_btn	Таксама скапіруйце рэзервовыя копіі ў тэчку…
+autostart_off	Пачніце з гэтага кампутара
+autostart_on	Пачынаецца з гэтага камп'ютара ✓ — націсніце, каб спыніць
+autostart_done_on	Цяпер гэты камп'ютар адкрывае праграму пры запуску — сервер крамы аднавіўся пасля адключэння электрычнасці.
+autostart_done_off	Гэты камп'ютар больш не адкрывае праграму пры запуску.
+right_allowed	Дазволена
+right_with_approval	З адабрэннем
+right_denied	Не дазволена
+editing_staff	Rights for
+team_pick_ph	Персанал для рэдагавання - імя, імя карыстальніка або выбар
+select_staff	Выберыце гэты персанал
+rights_help	Rights — tap to change: Allowed → With approval (a manager's PIN at that moment) → Not allowed.
+right_void_refund	Void or refund a booking
+right_amend_sale	Унесці змяненні ў запісаную браніроўку
+find_server	Знайдзіце сервер крамы
+finding_server	Шукаю сервер крамы на гэтым Wi‑Fi…
+no_server_found	Нічога не знойдзена. На серверы: Налады → Іншыя прылады → Дазволіць дадатковыя касы (тое самае Wi‑Fi). Або ўвядзіце паказаны там IP.
+servers_found_pick	Дакраніцеся да крамы, да якой хочаце падключыцца.
+server_host_selected	Выкарыстоўваючы {host} — увядзіце код спалучэння, затым Спалучыце зараз.
+device_forgotten	Крама забыла гэту прыладу — спалучыце яе яшчэ раз з бягучым кодам крамы. Заказы, якія чакаюць на ім, захоўваюцца.
+forget_device	Забыць
+last_seen	бачыў
+new_pair_code	Новы код спалучэння
+lan_offline	Сервер крамы недаступны
+lan_offline_waiting	Сервер крамы недаступны · {n} чаканне
+lan_connecting	Падключэнне да крамы…
+pair_finishing	Завяршэнне пары... прымяненне офісных кніг
+pair_opening	Opening the office…
+lan_live	жыць
+lan_sending	{n} адпраўка
+lan_sign_in_to_send	Увайдзіце яшчэ раз, каб адправіць {n}
+lan_pair_again	Спалучыце гэту прыладу яшчэ раз
+lan_update_app	Update the app — this device and the office server have different versions
+allow_firewall	Дазволіць іншым прыладам падключацца
+firewall_blocked	Брандмаўэр гэтага камп'ютара блакуе іншыя прылады — націсніце Дазволіць іншым прыладам падключацца.
+firewall_waiting	Чаканне падказкі адміністратара…
+lan_join_help	На іншай прыладзе: рэжым кліента → Знайдзіце сервер крамы (або ўвядзіце {addr}) → код спалучэння {code}.
+lan_pair_status	Wi‑Fi {addr}
+lan_join_help_no_addr	Каб атрымаць адрас, падключыце гэту прыладу да Wi‑Fi.
+lan_no_address	Адрасу Wi‑Fi пакуль няма — падключыцеся да крамы Wi‑Fi.
+lan_not_listening	Прылады не прымаюць (порт {port} заняты). Перазапусціце праграму.
+lan_tills_off	Дадатковыя касы адключаны. Дазвольце ім дазволіць іншай прыладзе далучыцца.
+paired_with	У пары · {url}
+not_paired	Не спараныя
+choose_device_use	Выберыце сервер або кліент.
+paired_note	Парныя. Разблакіруйце, каб прадаць, або абнавіце, каб атрымаць апошняе.
+last_update_at	Апошняе абнаўленне: {time}.
+pair_intro	Знайдзіце сервер або ўвядзіце яго адрас і код спалучэння.
+queue_waiting	У чаканні, каб дабрацца да крамы ({n}):
+queue_tries	Спрабаваў {n} разоў · апошні адказ: {e}
+save_backup_copy	Захаваць рэзервовую копію…
+backup_copy_saved	Рэзервовая копія захавана — трымайце яе далей ад гэтай прылады (USB-назапашвальніка або іншай прылады)
+backup_copy_overdue	На гэтай прыладзе не было рэзервовай копіі на працягу {n} дзён — Налады → Рэзервовае капіраванне
+backup_copy_failed	Не ўдалося захаваць рэзервовую копію — выберыце іншае месца
+clock_off	Гадзіннік гэтай прылады знаходзіцца на {min} мін ад сервера крамы — усталюйце правільны час на гэтай прыладзе
+printers_heading	Printers on this device
+printers_help	Знайсці рэальныя прынтэры, выбраць Квіток або этыкетку AWB. Кожная работа мае сваю шырыню, альбомную або ландшафтную арыентацыю, і як адпраўляюцца байты. Этыкетка друкуе штрыхкод. Пустое месца = не друкаваць.
+job_width	Шырыня змесціва (мм)
+job_width_ph	Or type a width, 40–210 mm
+job_layout	Макет
+job_delivery	Як адпраўляецца заданне
+job_size	Памер шрыфта
+job_size_ph	напр. 18, 20, 26…
+save_receipt_format	Save receipt format
+save_label_format	Save label format
+test_receipt_format	Test receipt
+test_label_format	Test label
+test_receipt_sent	Sample receipt sent
+test_label_sent	Sample label sent
+test_print_no_printer	Прынтара для гэтай задачы няма — дадаць адзін ніжэй пад гэтым месцам
+printers_host_only	Printers are set on the shop device (Server). This till sends jobs there — Find / add / assign stay on the Server. Test page goes to the Server.
+printers_pool_heading	Прынтары
+printers_routes_heading	Дзе друкуюцца рэчы
+printer_label_ph	Назва (напрыклад, Стол)
+printer_target_ph	host:9100 · bt:MAC · usb:VID:PID · system name
+printer_mode_heading	Profile for new outputs
+printer_mode_standard	Standard Portrait
+printer_mode_landscape	Standard Landscape
+printer_mode_thermal	Thermal
+printer_mode_standard_short	Партрэт
+printer_mode_landscape_short	Пейзаж
+printer_mode_thermal_short	Thermal
+printer_format_custom	Новы карыстальніцкі профіль
+printer_format_custom_label	Прыстасаваныя
+printer_format_custom_added	Карыстальніцкі профіль дададзены для гэтага месца
+add_printer	Дадаць прынтэр
+remove_printer	Remove last
+route_pick_ph	receipt or label
+route_add_printer_ph	Дадаць прынтар у гэта месца
+route_receipt	Receipt
+route_label	Этыкетка AWB
+route_dont_print	Друкарка не прызначана
+route_add	Дадаць у месца
+route_up	Уверх
+route_down	Уніз
+route_remove	Remove last
+route_clear	Ачысціць прынтэры для гэтага месца
+save_printers	Захаваць прынтэры
+print_test_page	Раздрукаваць пробную старонку
+printers_saved	Printers saved for this device
+test_page_sent	Тэставая старонка адпраўлена — праверце прынтэр
+printers_found	Знойдзена на гэтым прыладзе: {list}
+find_printers	Знайдзіце прынтэры
+printers_looking	Пошук прынтараў на гэтай прыладзе і Wi‐Fi...
+printers_tap_find	Tap Find printers for queues that accept jobs and network receipt printers on this Wi‑Fi (not removed or offline ones).
+printers_none_found	Прынтары не знойдзены — увядзіце назву сістэмнага прынтара або сеткавы адрас (напрыклад, 192.168.1.50).
+receipt_printer_ph	Printer for receipts
+queue_refused	Крама не прымае ({n}) — правярайце кожны на прылаўку:
+clear_not_accepted	Пазначана — ачысціць гэты спіс
+device_name_ph	Назва гэтай прылады
+lan_last_update	апошняе абнаўленне {time}
+lan_not_accepted	{n} не прымаецца
+connected_now	зараз падключаны
+backup_failed	Збой апошняй аўтаматычнай рэзервовай копіі: {e}
+backup_overdue	Няма рэзервовага капіравання на працягу {n} дзён — трымайце праграму адкрытай на гэтай прыладзе, каб яна магла ствараць рэзервовыя копіі.
+disk_low	На гэтай прыладзе вольна толькі {mb} МБ — рэзервовае капіраванне хутка не атрымаецца. Вызваліце ​​месца.
+last_seen_devices	Апошні раз бачылі: {time}
+sync_interval	Сінхранізацыя кожныя {secs}с
+connection_to_shop	Падключэнне да крамы
+supplier_name_ph	Назва пастаўшчыка (або кліента)
+supplier_ph	Пастаўшчык
+switch_device	Пераключыце гэту прыладу
+take_payment	Прыняць аплату
+tax_added_till	{tax} эксклюзіў
+tax_inside_price	{tax} уключна
+today_books	Сённяшнія кнігі
+unlock_after_pairing	Увядзіце PIN
+unlock_with_login	Разблакіроўка з уваходам
+update_my_password	Абнавіць мой пароль
+update_my_pin	Update my PIN
+duress_heading	Экстраная разблакіроўка PIN (толькі ўладальнік)
+duress_help	Optional. If this PIN is typed at unlock instead of yours, all books entries are wiped (bookings, ledgers, history) and the desk opens as Owner looking normal — rates, parties, zones, staff and settings stay. Schema and config are not deleted. Use only if you are forced to unlock. Leave blank and save to turn off. Never the same as anyone's PIN.
+duress_pin_ph	Экстраная PIN (4–12 лічбаў)
+duress_confirm_ph	Увядзіце яшчэ раз для пацверджання
+save_duress_pin	Аварыйнае выратаванне PIN
+clear_duress_pin	Выключыць аварыйны рэжым PIN
+duress_on	Уключана экстранная разблакіроўка PIN
+duress_off	Экстраная разблакіроўка PIN выключана
+duress_saved	Экстраная разблакіроўка PIN захавана
+duress_cleared	Экстраная разблакіроўка PIN выключана
+vehicle_ph	Vehicle
+void	Несапраўдны продаж
+write_off_ap	Спісаць АП
+write_off_nil	Спісаць / абнуліць баланс
+zone_ph	Zone (name from Rates)
+caption_today	СЁННЯ
+caption_bookings	BOOKINGS
+caption_payments_today	АПЛАТЫ СЁННЯ
+caption_outstanding	ВЫБІТНЫ
+caption_bank	БАНК
+paid_by	Аплачана
+second_way	Другі спосаб
+weight_in	Weight in
+size_in	Size in
+goods_received	Тавар атрыманы
+expense_heading	Расход
+notes_attach_sale	Нататкі і дадаткі (выбраная продаж)
+notes_attach_party	Заўвагі і дадаткі (абраны кліент або пастаўшчык)
+attachments_last_expense	Укладанні (апошнія выдаткі)
+credit_limit_heading	Крэдытны ліміт (выбраны кліент або пастаўшчык)
+pay_selected_heading	Аплата выбрана (разлічыцца з запазычанасцю / атрымаць аванс)
+write_off_heading	Спісаць (ачысціць без аплаты)
+pay_ap_heading	Плацім тое, што мы павінны ім (AP)
+country_tax	Краіна і падатак
+extra_tills_heading	Дадатковыя касы
+other_devices_help_heading	Наладзьце іншыя прылады
+other_devices_help	On this device (Server): Other devices → Allow extra tills. Note the pairing code and Wi‑Fi address. Tap Allow other devices to connect if it appears. On a computer, tap Start with this computer. On each other device: install the app, choose Client Mode, Find the shop's server (or type the address), enter the pairing code, Pair now. Orders wait on the device if Wi‑Fi drops and go when the Server answers again.
+your_brand	Ваш брэнд (у дадатку)
+units_heading	Адзінкі
+booking_measures	Меры бранювання
+drawer_count	Колькасць скрынь (неабавязкова)
+spreadsheet_csv	Табліца (CSV)
+bank_reconciliation	Банкаўская зверка (пастаўце галачку насупраць выпіскі з банкаўскага рахунку)
+book_add_product	Бранюванне — дадаць тавар / тарыф
+book_opening_credit	Кніга — адкрыццё крэдыту
+account_kind	Тып уліковага запісу (націсніце адзін)
+active_ledger	Актыўны рэгістр
+actual_total_cap	ФАКТЫЧНЫ РАЗАМ
+amend_help	Выберыце продаж, які трэба змяніць, ануляваць або вярнуць. Папраўкі захоўваюць поўную гісторыю. Акругленая агульная сума пачынаецца роўная Прыменена — рэдагуйце толькі для акруглення. Для анулявання і вяртання можа спатрэбіцца ўладальнік або менеджэр PIN (уведзена вышэй; запісваецца з вашым імем).
+applied_total_cap	УЖЫВАНЫ РАЗАМ
+bank_balance	Банкаўскі баланс
+bank_net_today	Банкаўская сетка сёння
+branch_export_help	Экспарт запісвае здымак дня ў тэчку рэзервовых копій і копіруе яго ў буфер абмену. Каб імпартаваць дзень іншага аддзялення, захавайце яго файл як import_branch_snapshot.json у гэтай тэчцы, затым націсніце «Імпартаваць»
+brand_shown_help	Паказваецца на экранах у праграме. Назва і значок усталяванай праграмы на гэтай прыладзе застаюцца ў спісе платформы.
+app_icon	Значок праграмы
+logo_help	Дадатковы знак крамы на экранах у дадатку.
+onboard_layout	Што вы атрымаеце
+item_photo_help	Дадаткова. Без фатаграфіі паказваем ініцыялы ад назвы прадмета.
+cash_in_hand	Грашовыя сродкі ў касе (каса)
+change_my_pin_heading	Змяніць мой PIN (толькі ваш)
+connect_to_server	Падключыцеся да сервера
+counter_locked	Лічыльнік 01 · Заблакіравана
+country_pack_help	Пакет краін указвае назву падатку і матэматычныя вылічэнні, чыгунку імгненнай аплаты і ідэнтыфікатар кампаніі, надрукаваны на рахунках. Kumkaj нідзе не дэкларуе падаткі і не выстаўляе дзяржаўныя электронныя рахункі-фактуры.
+currency_use_help	Пракруціце і націсніце Выкарыстоўваць для любой валюты, якая падтрымліваецца.
+day_close_help	Запіс закрыцця дня захоўвае гэтую зводку (і дысперсію скрыні, калі падлічваецца) у журнал аўдыту. Ён не спыняе продаж.
+expenses_word	Выдаткі
+feature_access_help	Доступ да функцый для абраных супрацоўнікаў (націсніце пасля дадання)
+footer_local	Мясцовы SQLite · Бясплатна назаўжды · Zero Cloud
+fresh_book_moklanjo	Свежыя = пусты каталог (дадаць прадметы пазней). Кніга = увядзіце пачатковыя запасы і хто вам павінен ніжэй.
+fresh_selected	Свежы адбор — каталог застаецца пустым. Націсніце "Гатова", калі будзеце гатовыя.
+gross_word	Валавы
+how_start	Як вы хочаце пачаць?
+later_country_pack	Пазней: Налады → прымяніць свой пакет краіны для пазнакі падаткаў і аплаты.
+local_badge	МЯСЦОВЫЯ
+measures_help_moklanjo	How parcels are measured at the booking desk. Type dimensions and weight in the units you use — standard (cm, m, in, ft · kg, g, lb, oz) or your own unit linked to cm / kg above (directly or through other units). Books always record kg. Leave a field empty to keep it.
+mix_type_hint_moklanjo	Type how much in each (cash / UPI / card / credit). Must add up to the bill. Credit needs a customer above.
+money_in_sales	Грошы ў (продаж)
+more_help_moklanjo	Каталог, продажы, крэдыт, каманда, рэзерв — плюс склад і дадатковыя кассы па неабходнасці.
+net_word	Сетка
+offline_badge	ПА-ЗА СЯБОЙ
+optional_login_help	Дадатковы лагін (id + пароль). Уладальнік усталёўвае адзін раз; толькі карыстальнік можа змяніць пароль пазней.
+or_unlock_login	Або разблакіраваць з дапамогай лагіна + пароля
+permission_preset	Задача (наладжвае экраны і правы)
+preset_help_moklanjo	Касір: Прадаем. Менеджэр: прадаць + тавары + ануляваць/змяніць.
+product_locked_moklanjo	Moklanjo
+product_only_moklanjo	This app is Moklanjo only — books + booking desk. Other trade faces ship as separate products later.
+purchases_cogs	Пакупкі (COGS)
+qty_cap	КОЛ-ЦЬ
+restore_help	Аднавіць: выбраць рэзервовую копію. Кнігі адкрываюцца, як і тады; кнігі ў тым выглядзе, у якім яны ёсць, захоўваюцца ў першую чаргу, так што гэта можна адмяніць.
+wipe_data_heading	Выдаліць лакальныя даныя
+wipe_data_help	Owner only — same choices as Windows uninstall. Business records clears trading history but keeps rates and setup (like the emergency unlock PIN). Shop setup removes the books database. Screen preferences clears window/language. Confirm with the Owner PIN. The emergency unlock PIN on Team is separate (covert wipe at unlock).
+wipe_trading	Дзелавая дакументацыя
+wipe_schema	Ўстаноўка крамы
+wipe_ui	Параметры экрана
+wipe_owner_pin_ph	Уладальнік PIN для выдалення
+wipe_delete_selected	Выдаліць выбранае
+wipe_owner_only	Толькі ўладальнік можа выдаліць лакальныя даныя.
+restore_owner_only	Толькі ўладальнік можа аднавіць рэзервовую копію.
+wipe_owner_pin_needed	Каб выдаліць лакальныя даныя, увядзіце ўладальніка PIN.
+wipe_nothing_selected	Выберыце, што спачатку выдаліць.
+wipe_done	Выбраныя лакальныя даныя выдалены.
+wipe_schema_done	Налады крамы сцёрты — каб працягнуць, выберыце «Сервер» або «Кліент».
+rounded_total	Акругленая сума
+setup_app_moklanjo	Set up Moklanjo
+shop_logo_optional	Лагатып крамы (неабавязкова)
+stock_type_help	Увядзіце назву тавару (дастаткова толькі часткі), колькасць, а потым адрэгулюйце. Элементы, якія яшчэ не ўлічаны, трэба пачаць адсочваць адзін раз.
+team_owner_help	Найм: выберыце працу (Касір / Менеджар), імя + пачатковы PIN, затым Дадаць. Толькі калі гэтая асоба адрозніваецца: адкрыйце экраны і правы ніжэй, затым Захаваць наладу працы. Кожны змяняе свой PIN ўнізе — Уладальнік не можа змяніць PIN іншых.
+they_owe_us	Яны павінны нам
+unit_at_cap	Адзінка @
+units_help	Коды таварных этыкетак (кг, штука, мяшок). Кожная адзінка павінна быць звязана — непасрэдна або праз іншыя адзінкі — са стандартам (кг · см · мл · шт), напрыклад. 1 скрыня = 2 скрынкі і 1 скрынка = 20 см. Пераўтварэнні: 1 з = множнік на. Валюты ніколі не бываюць адзінкамі.
+we_owe_them	Мы павінны ім
+who_unlocking	Хто адмыкае?
+locked_word	Зачынены
+show_pin	Паказаць PIN
+hide_pin	Схаваць PIN
+set_owner_pin	УСТАНАВІЦЬ УЛАДНІКА PIN
+enter_owner_passcode	УВЕДЫЦЕ ПАРОЛЬ УЛАДАЛЬНІКА
+enter_staff_passcode	УВЕДЗІЦЕ ПАРОЛЬ ПЕРСАНАЛА
+pin_count_zero	0 / 12 лічбаў · не менш за 4, затым OK
+pin_count_need	{} / 12 лічбаў · трэба яшчэ {}
+pin_count_full	12 / 12 лічбаў · націсніце OK
+pin_count_ready	{} / 12 лічбаў · націсніце OK, калі будзеце гатовыя
+pin_hint_choose	Выберыце 4–12 лічбаў · Каб захаваць, увядзіце або разблакіруйце
+pin_hint_new	Новы 4–12-значны ўладальнік PIN · Увядзіце або разблакіруйце
+pin_hint_shop_code	Крама прылады · код спалучэння {}
+pin_hint_books	Гэта прылада змяшчае кнігі
+pin_hint_paired	Дадаткова да спалучэння — разблакіроўка для продажу
+pin_hint_pair_first	Extra till — спалучэнне з прыладай у краме спачатку
+unlock_to_continue	Разблакіруйце, каб працягнуць
+no_staff_yet	Пакуль няма супрацоўнікаў — разблакіруйце як уладальнік, а затым каманда
+status_server_set_pin	Рэжым сервера — усталяваць уладальніка PIN
+status_server_tills	Рэжым сервера - дадатковыя касы могуць далучыцца. Разблакіраваць
+status_server_unlock	Рэжым сервера — разблакіраваць як уладальнік
+status_client_unlock	Рэжым кліента — разблакіроўка для продажу
+icon_new_selected	Значок: выбраны новы файл — націсніце Захаваць брэнд
+icon_custom	Значок: нестандартная адзнака месца правядзення
+icon_default	Значок: знак Kumkaj (па змаўчанні) — выберыце карыстацкі
+logo_yours	Лагатып: лагатып вашай крамы — паказаны на экранах і чэках
+logo_default	Лагатып: знак Kumkaj (па змаўчанні) — выберыце свой, калі ён у вас ёсць
+tmpl_current	Бягучае: {} — {}
+tmpl_selected	Абрана: {} — {}
+setup_complete	Усталяванне завершана
+onboard_fresh_tmpl	Свежы · {} — каталог пачынаецца пустым; дадайце элементы ў раздзел «Элементы», затым «Гатова».
+onboard_book_tmpl	Забраніраваць · {} — дадайце прадметы і пачатковы крэдыт, затым «Гатова».
+onboard_template_tmpl	Назавіце месца, калі хочаце, а затым выберыце, з чаго пачаць.
+tmpl_blurb	Кнігі кур'ераў і браніраванне: адпраўнікі, перавозчыкі, дзённік, AWB.
+tmpl_how	Бранюваць пасылкі на стале; Дзённік для сёння; укладкі для тарыфаў, партый, справаздач.
+trk_booked	Забранавана
+trk_picked_up	Picked up
+trk_in_transit	У транзіце
+trk_delivered	Дастаўлена
+trk_rto	Returning to sender
+lane_to_dispatch	To dispatch
+lane_with_carrier	With carrier
+lane_failed	Невдала
+lane_done_today	Сделана сёння
+ops_board_help	Parcels by where they are in today's work. Tap parcels (or scan them) to pick them, then act on all picked at once — each lane offers only the moves that fit it.
+lane_empty	Nothing here right now.
+picked_fmt	{n} picked
+pick_all	Pick all
+bag_for_carrier	Рука да перавозчыка
+send_with_rider	Send with rider
+out_again	Out again
+return_to_sender	Return to sender
+runs_bags_heading	Recent runs & bags
+print_word	Print
+bag_word	Пакет перавозчыка
+run_word	Rider run
+parcels_fmt	{n} parcels
+parcel_history	History
+attempt_fmt	Спроба {n}
+pieces_short_fmt	{n} pcs
+note_reason_ph	Note or reason
+ops_pick_first	Pick parcels first — tap them or scan them
+cod_to_collect	Дастаўлена — наложаным плацяжом
+cod_on_road	COD яшчэ ў дарозе
+cod_owed_consignors	Забрана — аплаціць адпраўнікам
+cod_rto_fees	RTO fees to collect
+cod_to_hand_in	COD здаць
+parcel_one_fmt	{n} parcel
+facet_bank_title	Даклады
+facet_bank_help	Дзённікі, старэнне кліентаў або пастаўшчыкоў, банкаўскія паведамленні і перыядычныя прыбыткі і страты.
+facet_ops_title	Адгрузкі і адпраўкі
+facet_ops_help	Scan or type AWB → Find, then advance / print label / COD. Dispatch to rider or carrier.
+facet_cod_title	Рэгістр COD
+facet_cod_help	Забраць аплату пры дастаўцы, потым перадаць адпраўніку.
+facet_riders_title	Riders (own fleet)
+facet_riders_help	Дадаць кур'ераў, затым адпраўляць забранаваныя AWB з Ops.
+against_bill_ph	Супраць законапраекта № вышэй (неабавязкова)
+aliases_ph	Псеўданімы — іншыя імёны праз коску
+amount_blank_full_ph	Сума (пусты = поўны баланс)
+amount_owed_ph	Сума запазычанасці
+amount_ph	Сума
+amount_received_ph	Атрыманая сума
+amount_we_pay_ph	Сума, якую мы плацім
+awb_scan_ph	AWB / сканаваць штрыхкод
+bulk_csv_ph	Масавая CSV — пункт прызначэння, атрымальнік, кг, аплата пры дастаўцы, заўвага
+business_name_ph	Назва кампаніі
+category_new_ph	Катэгорыя (неабавязкова, ствараецца, калі новая)
+cod_amount_ph	Сума аплаты пры дастаўцы
+code_bag_ph	Код (сумка)
+conv_factor_ph	Каэфіцыент (25 = 1 мяшок → 25 кг)
+country_code_ph	Код краіны, напр. IN, GB, US, AE, BR
+credit_khata_amount_ph	Сума крэдыту / крэдытнай кнігі
+credit_limit_ph	Крэдытны ліміт (0 = няма)
+dim_unit_code_ph	Адзінка памеру (см)
+divisor_ph	Volumetric divisor (5000)
+extra_per_kg_ph	Дадаткова / кг
+first_amount_ph	Першая сума
+first_kg_ph	Першыя кг (брусок)
+from_code_ph	З кода (сумка)
+item_name_lang_ph	Назва элемента — увядзіце яго на сваёй мове
+login_id_opt_ph	Імя карыстальніка (абавязкова, унікальнае)
+manager_pin_ph	Менеджэр PIN для зацвярджэння (толькі калі вы не можаце ануляваць)
+new_branch_name_ph	Новая назва філіяла
+new_password_ph	Новы пароль (неабавязкова)
+new_pin_ph	Новы PIN (4–12 лічбаў)
+note_bank_ph	Заўвага (дэпазіт, зняцце, ...)
+note_buy_expense_ph	Заўвага (паліва, арэнда, ...)
+note_expense_ph	Заўвага (паліва, офіс, ...)
+notify_phone_ph	Notify phone (WhatsApp/SMS hook)
+options_moklanjo_ph	Options (optional) — Large=20, Gift wrap=10
+part_second_way_ph	Частка другім шляхам (неабавязкова)
+phone_ph	Тэлефон
+address_ph	Адрас
+party_custom_fields_heading	Карыстацкія палі (выбраная старона)
+party_custom_help	Дадаць любую этыкетку і значэнне для гэтай партыі — WhatsApp, GSTIN, код маршруту, ...
+party_custom_key_ph	Назва поля (напрыклад, WhatsApp)
+party_custom_value_ph	Value
+party_custom_add	Дадаць поле
+party_custom_remove	Remove field
+party_custom_empty	Пакуль няма карыстальніцкіх палёў
+party_custom_pick_first	Pick a party to add custom fields
+place_name_ph	Назва гэтага месца
+price_ph	Цана
+qty_example_ph	Колькасць (напрыклад, 1,5 кг)
+quantity_ph	Колькасць
+reason_required_ph	Прычына (абавязкова)
+role_title_ph	Назва ролі (напрыклад, барыста)
+service_pct_ph	Абслугоўванне % неабавязкова 0/10/12
+short_code_ph	Кароткі код (MG02)
+slab_kg_ph	Аплатны дыяпазон у кг (0.5)
+staff_name_ph	Staff name / id
+starting_password_ph	Стартавы пароль (неабавязкова)
+starting_pin_ph	Пачынаючы з PIN (4–12 лічбаў)
+tax_rate_ph	Назва стаўкі падатку або % — стандартная, зніжаная, 0, 5, 12, 18, 20
+to_code_ph	Кадзіраваць (кг)
+uncleared_no_ph	Неачышчана # вышэй
+unit_cost_ph	Кошт адзінкі
+unit_kg_blank_ph	Unit (kg or blank)
+unit_name_bag_ph	Імя (сумка)
+weight_unit_code_ph	Weight unit code (kg)
+zone_name_ph	Zone name
+pay_credit	На рахунку
+book_kind_today	Сённяшнія кнігі
+book_kind_month	Кнігі гэтага месяца
+book_kind_aging	Неаплачаны / дэбет-крэдыт
+book_kind_balance	Баланс
+ops_desk_help	Scan AWB with a USB barcode scanner (or type it) → Find. Then advance, print label, or collect COD. Labels print Code 128.
+role_help_consignor	Role: Consignor — AR (they owe us). Same firm can also be Carrier.
+role_help_carrier	Role: Carrier — AP (we owe them). Same firm can also be Consignor.
+role_help_both	Roles: Consignor + Carrier — one party, AR and AP ledgers, net in Reports.
+role_help_supplier	Role: Supplier — AP for purchases.
+lane_declared_label	Брань рахунку
+lane_owner_label	Наяўная браня
+money_lane_bill	Рахунак: {lane}

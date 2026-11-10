@@ -1,0 +1,1329 @@
+# Kashmiri — كٲشُر (ks). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	کِرانہٕ کاؤنٹر: فروخت، سٹاک، کھاتہ تہٕ دۄہُک کھاتہ۔ آف لائن مُفت۔
+unlock	ان لاک کٔرِو
+pin_hint	مٲلِک PIN چُھ 0000 پؠٹھ شروع گژھان
+sell	فروخت
+buy	خٔریٖدٲری کٔرِو
+books	دۄہُک کھاتہ
+books_help	اَزُک حال۔ فروخت = اندر آمت پونٛسہ۔ خٔریٖدٲری = خرید تہٕ خرچہٕ۔ پارٹی = قرضِ گاہَک تہٕ سپلائر۔
+buy_help	اخراجاتُک واؤچر تہٕ سپلائر بِل (پٲنسہٕ آوُٹ)۔ آن اکاؤنٹ چھُ پارٹی لیجرَس پیٹھ روزان۔
+sell_money_in	چیٖز کٕنِو
+buy_money_out	خرچہٕ / سپلائر بِل
+record_purchase	ریکارڈ خریدٲری
+add_expense	اخراجاتُک واؤچر
+bank_book	بینک بُک
+credit_help	پارٹی آی ڈی چھُ منفرد (ناو ہیکَن دُہراونہٕ یِتھ)۔ اکھ گراہک چھُ کھٹہ ٹیب تھاوان (اسہِ مقروض)؛ اکھ سپلائر چھُ اسہِ سٹاک کٕنان (أسۍ چھِ تِمَن ہُنٛد مقروض)؛ دۅشوے چھہِ ٹھیٖک۔ لیجر چھ الگ روزان۔ رپورٹس چھ ہاوان نیٹ۔
+party_kind_ph	کردار: گراک، سپلائر، دۄشوے...
+reports_help	ڈے بُک، قرضدار تہٕ قرض دہندگان، بینک بُک، اخراجات واؤچر، نفع تہٕ نقصان۔
+reports_today	ڈے بک (از)
+reports_month	نفع تہٕ نقصان (ریتھ)
+reports_aging	شاندار / Dr-Cr
+reports_balance_sheet	بیلنس شیٹ
+reports	بینک بُک تہٕ پی اینڈ ایل
+refresh	تازہ
+undo	واپس کٔرِو
+start_tracking	ٹریکنگ کٔرِو شروع
+stock_minus	− سٹاک
+stock_plus	+ سٹاک
+settle_cash	نقد رقم طے کٔرِو
+settle_card	سیٹل کارڈ
+items	چیز
+nav_items	چیز
+more	مزید
+your_items	تُہٕنٛز چیٖز
+items_help	بدلُن خٲطرٕ چیٖزَس پٮ۪ٹھ کٔرِو دب۔ نٔو چیٖز چھُ فارم صاف کَران۔ ناوَس یا لۄکُٹ کوڈَس سۭتۍ ژھانٛڑِو، قۭمَت تھٲوِو (0 تہِ چھُ ٹھیک)، پتہٕ کٔرِو شٲمِل۔ گوڈائے ریکارڈ کٔرِتھ فروخت چھِ تَمہِ ناوَس پٮ۪ٹھ روزان یَمہِ سۭتۍ بِل بنن۔
+add_item	آیٹم کٔر ایڈ
+new_item	نٔو چیٖز
+adding_item	اکھ نوٚو چیٖز شٲمِل کَرُن
+editing_item	ایڈیٹنگ
+save	محفوظ کٔرِو
+remove	ہٹاوُن
+removed_items	ہٹاونہٕ آمٕتۍ چیٖز
+removed_help	بحال کَرنہٕ پٮ۪ٹھ چھِ چیٖز چیٖزَن منٛز واپس یِوان، یُتھ اوس — قۭمَت، فوٹو تہٕ زَمرہٕ۔
+restore_item	بحال کٔرِو
+empty_catalog	وُنیُک تام چھُنہٕ کانٛہہ چیٖز۔ چیٖز کٔرِو کھلا، ناو تہٕ قۭمَت کٔرِو شٲمِل، پتہٕ کاؤنٹَر پٮ۪ٹھ کٕنِو۔
+total	کُل
+cash	نَقَد
+upi	UPI
+card	کارڈ
+credit	گاہَک
+clear	صاف
+ready_to_sell	بُک کرنہٕ خٲطرٕ تیار
+today_prefix	اَز
+today_mid	از ۔
+owed	شاندار
+round_word	راؤنڈ
+back	واپس
+sold_out	غیر دستیاب
+restock	ری سٹاک
+not_tracked	ٹریک نہٕ کرنہٕ آمُت
+in_stock	سٹاکَس منٛز
+marked_sold_out	نشان زد غیر دستیاب
+add_upper	ایڈ کٔرِو
+na	N/A
+qty	وزن / مقدار
+unit_at	ریٹ @
+actual	حٔقیٖقی
+applied	اپلائیڈ
+note_ph	نوٹ (اختیاری)
+rounded	گول
+split	تقسیم
+send_kot	پَرچی سوزِو
+send_kot_to	سوز → {kitchens}
+send_kot_again	بیاکِس پَرچی خٲطرٕ کٔرِو چیٖز شٲمِل
+send_kot_held	رُکاونہٕ آمٕژ چیٖز — سوزنہٕ خٲطرٕ کٔرِو رُکاوٹ ہٹ
+reprint_kot	پرنٹ کٔرِو دوبارٕ ژارنہٕ
+reprint_kot_ok	{n} چیٖز دُبارٕ چھاپنہٕ · {slips} پَرچی → {kitchens}
+reprint_kot_needed	گۄڈٕ کٔرِو پَرچی سوز — پتہٕ چیٖز رَلاوِتھ کٔرِو ژارِتھ چیٖز دُبارٕ پرنٹ
+reprint_kot_none_selected	سوزنہٕ آمٕژ پرٮ۪تھ چیٖز چھِ ترٛاونہٕ آمٕژ — یِم دُبارٕ چھاپُن چھِ تِمَن پٮ۪ٹھ پرنٹس منٛز کٔرِو دب
+reprint_kot_client	{place} خٲطرٕ دُبارٕ پرنٹ ({n}) آو سوزنہٕ — دُکانُک ڈیوایس کَرِ پرنٹ
+print_cancelled_kot	سٲری چھاپ کَرنہٕ آمُت
+print_cancelled_kot_ok	{n} منسوخ چیٖز چھاپنہٕ · {slips} پَرچی → {kitchens}
+print_cancelled_kot_needed	گۄڈٕ کٔرِو منسوخ چیٖز وول میز کھلا
+print_cancelled_kot_none	یَتھ آرڈَرَس پٮ۪ٹھ چھُنہٕ کانٛہہ منسوخ چیٖز
+print_cancelled_kot_client	{place} خٲطرٕ منسوخ پرنٹ ({n}) آو سوزنہٕ — دُکانُک ڈیوایس کَرِ پرنٹ
+kot_banner	مہربان بینر
+kot_banner_ph	بینر (خٲلی = کانٛہہ تہِ)
+kot_item_prefix	آیٹم پریفکس
+kot_item_prefix_ph	مثلاً [CANCELLED]
+kot_strike	چیٖزُک ناو کٔرِو کَٹ
+kot_strike_note	چیٖزُک نوٹ کٔرِو کَٹ
+kot_strike_on	چالو
+kot_strike_off	بند
+bill_item_layout	آیٹم لے آؤٹ
+bill_item_layout_columns	کالم
+bill_item_layout_stacked	اسٹیک کٔرِتھ
+bill_item_header	کالم ہیڈر
+bill_item_hdr_item	آیٹم ہیڈر
+bill_item_hdr_qty	Qty ہیڈر
+bill_item_hdr_price	پرائس ہیڈر
+bill_item_hdr_amount	رقم ہیڈر
+bill_item_name	آیٹم ناو
+bill_item_qty	تعداد
+bill_item_price	قۭمَت
+bill_item_amount	رقم
+bill_item_note	چیٖز نوٹ
+bill_item_col_gap	کالمُک فرق
+bill_item_col_order	کالم ترتیب
+bill_item_col_sep	کالم اصول
+bill_item_gap_tight	تنگ
+bill_item_gap_comfort	آرام دہ
+bill_item_gap_wide	وسیع
+bill_item_num_width	نمبر کالم
+bill_item_num_compact	کمپیکٹ
+bill_item_num_comfort	آرام دہ
+bill_item_num_wide	وسیع
+bill_item_num_align	نمبر چِھ سیدھ گژھان
+bill_item_gap_em	گیپ (em)
+bill_item_qty_min	کم از کم مقدار (em)
+bill_item_price_min	قیمت کم از کم (em)
+bill_item_amount_min	رقم کم از کم (em)
+kot_item_qty_width	Qty کالم
+kot_item_num_align	Qty سیدھ
+bill_total_qty_label	کل qty لیبل
+bill_total_subtotal_label	ذیلی کُل لیبل
+bill_total_grand_label	گرینڈ ٹوٹل لیبل
+bill_total_paid_label	پیڈ ٹوٹل لیبل
+bill_meta_pair	لایِن شییر کٔرِو
+bill_pair_alone	کُنی زَن
+bill_item_piece_on	چالو
+bill_item_piece_off	بند
+bill_total_qty	کل qty
+bill_total_subtotal	سب ٹوٹل
+bill_total_grand	گرینڈ ٹوٹل
+reprint_incl	پرنٹس منٛز
+reprint_skip	ترٛاوُن
+reprint_skip_meta	ریکوری پرنٹ کٔرِو سِکِپ
+kot_dest_hint	پرنٹ چھُ تِمَن پرنٹرَن پیٹھ یِم تۄہہِ {kitchens} سیٹینگ → پرنٹرَن مَنٛز دِوان چھِو
+kot_sent_hint	پٔتِم سوزنہٕ گۄو {kitchens}۔ بیاکِس بِلَس خٲطرٕ چیٖز شٲمِل کَرنَس پٮ۪ٹھ کٔرِو دب — یا تَمہِ خٲطرٕ کٔرِو پَرچی دُبارٕ پرنٹ۔
+kot_sent_printing	پَرچی {kitchens} سوزنہٕ — چھاپان
+kot_sent_not_printed	پَرچی {kitchens} سوزنہٕ مگر چھاپہِ نہٕ: {why}۔ دُکانَس وَنِو، پتہٕ پرنٹر ٹھیک کٔرِتھ کٔرِو دُبارٕ پرنٹ۔
+kot_sent_screen	پَرچی {kitchens} سوزنہٕ
+kot_queued_shop	{place} ہٕنٛز پَرچی → {kitchens} محفوظ؛ دُکانُک ڈیوایس کَرِ یہِ پرنٹ
+kot_job_label	{place} ہٕنٛز پَرچی → {kitchens}
+kot_job_reached	{place} ہٕنٛز پَرچی وٲت {kitchens}
+kot_unassigned	بِنا سٹیشن
+kot_unassigned_held	سٹیشنَس بغٲر {n} چیٖز رُکاونہٕ — سوزنہٕ خٲطرٕ لائنَس پٮ۪ٹھ کٔرِو رُکاوٹ ہٹ
+kot_station_ph	سٹیشن
+kot_station_dd	سٹیشن
+kot_station_dd_n	سٹیشن · {stations}
+kot_set_station	یہِ سٹیشن استعمال کٔرِو
+kot_station_applied	{n} چیٖزَن پٮ۪ٹھ سٹیشن لاگنہٕ: {station}
+kot_station_cleared	{n} چیٖزَو پٮ۪ٹھ سٹیشن ہٹاونہٕ: {station}
+kot_station_needed	گۄڈٕ کٔرِو دُکانُک حِصہٕ ژٲر
+kot_station_not_allowed	یَتھ حِصَس ہٕنٛز اجازت چھُنہٕ: {station}
+kot_station_none	وُنیُک تام چھُنہٕ کانٛہہ سٹیشن — کاؤنٹر دُکانَس پٮ۪ٹھ ضروٗرت چھُنہٕ (ضروٗرت آسہِ تیلہِ سیٹنگ → رقبہ)
+pos_tab_items	شٲمِل کَرنہٕ آمٕتۍ چیٖز
+pos_tab_payment	اَدٲیگی
+hold_send	رُکاوُن
+hold_send_on	منعقد کرنہٕ آمُت
+hold_send_meta	رُکاونہٕ — یَتھ پَرچی منٛز چھُنہٕ
+station_remove	سٹیشن ہٹٲوِو
+station_remove_ph	یہِ ہٹاونہٕ خٲطرٕ کٔرِو لِسٹَس منٛز أکِس سٹیشنَس پٮ۪ٹھ دبٲیِو
+station_removed	سٹیشن ہٹاونہٕ آمُت: {name}
+settings_hub_title	سیٹنگ
+settings_hub_help	اَکہِ وِزِ کھولِو اکھ علاقہٕ — کم سکرولنگ، واضح انتخاب۔
+settings_back	واپس
+settings_sec_language	زبان تہٕ کرنسی
+settings_sec_country	ملک تہٕ ٹیکس
+settings_sec_tills	باقٕے آلہٕ
+settings_sec_brand	تُہُنٛد برانڈ
+settings_sec_units	یونٹ تہٕ تبدیلیہٕ
+settings_sec_pickers	علاقہٕ · سٹیشنز · ٹیکسٕک شرح
+settings_sec_printers	پرنٹر
+settings_sec_bill	بِل تہٕ پَرچی فارمیٹ
+settings_sec_selling	سکیمہٕ تہٕ فروخت
+bill_kot_tab_bill	بِل
+bill_kot_tab_kot	پَرچی
+settings_sec_alerts	الرٹ
+alerts_help	سٹیٹس میسج کوتاہ کال چھِ تُہندِ خٲطرٕ سکرینس پیٹھ روزان (یہ لاگ اِن)۔
+snack_secs_ph	سیکنڈ (3–60، ڈیفالٹ 10)
+snack_secs_save	الرٹ ٹایِم بچٲوِو
+snack_secs_saved	الرٹ ٹایِم محفوظ — {n} سیکنڈ
+settings_sec_backup	بیک اپ اینڈ ریسٹور کٔرِو
+settings_sec_diag	تشخیصی
+diag_privacy_help	لاگ چھِ یَتھ ڈیوایسَس پیٹھ روزان۔ راز (PIN، پاس وأرڈ) چِھ نہٕ زانہہ محفوظ یوان کرنہٕ۔ ڈیوایسہٕ پٮ۪ٹھٕ اکھ پیکج شیئر کرنہٕ خٲطرٕ چھِ پرٮ۪تھ لٹہِ تُہٕنٛز واضح منظوٗری ضروٗرت آسان - زانہہ تہِ کٕننہٕ یا ترٛیٚیِم جمٲژ دِنہٕ۔
+diag_level	تفصیل لیول
+diag_level_error	غلطیہٕ
+diag_level_warn	وارننگ
+diag_level_info	Info
+diag_level_debug	Debug
+diag_support_start	30 منٹن ہُند سپورٹ سیشن شروع کرُن
+diag_support_stop	سپورٹ سیشن ختم
+diag_support_started	سپورٹ سیشن آن — Debug تفصیل 30 منٹن خٲطرٕ
+diag_support_ended	سپورٹ سیشن ختم
+diag_export_local	مُقٲمی کاپی کٔرِو ایکسپورٹ
+diag_export_local_done	مُقٲمی تشخیٖصَس چھُ {path} پیٹھ تیار — ژٲرِو کاپی کَتہِ چھُ محفوظ کٔرِتھ
+diag_approve_send	ییٚمہِ ڈیوایسہٕ پٮ۪ٹھٕ کَر شیئرنگ منظوٗری
+diag_send_help	مَنظوٗری چھِ أکِس پیکیجَس خٲطرٕ، پَتہٕ چھُ مۄکلان۔ عارضی — صرف مصنوعات ٹھیک کرنہٕ یا بہتر بناونہٕ خٲطرٕ استعمال کرنہٕ یِوان۔ ترٛیٚیِم جمٲژن سۭتۍ چھنہٕ اشتراک کرنہٕ۔ لینکس، ونڈوز، میک او ایس تہٕ اینڈروئیڈس پیٹھ کٲم کران۔
+diag_send_approved	أکِس پیکیجَس خٲطرٕ منظوٗر شِیر (جلدٕے ایکسپایر گژھِ)
+diag_export_send	شییر پیکیج بناوُن (منظوٗری ہُند ضرورت)
+diag_export_send_done	{path} پیٹھ کْریو شییر پیکیج تیار — تْہ کْریو محفوظ کرنْہ آمُت، تْہ سوزْہ صرف Kumkaj سپورٹس کُن
+diag_save_bundle	تشخیصی کاپی محفوظ کٔرِو
+diag_bundle_saved	تشخیصی کاپی چُھ محفوظ کرنہٕ آمُت {path}
+diag_bundle_failed	تشخیصی کاپی ہیوٚک نْہ محفوظ کٔرِتھ — دوبار کوشش کْریو
+diag_clear	تشخیصی لاگ صاف کٔرِو
+diag_cleared	تشخیصی لاگ آو صاف کرنہٕ
+sidebar_settings	سایڈ بار
+sidebar_settings_help	سائیڈ ریلکۍ پٲٹھۍ۔ دُبارٕ ترتیب دِنہٕ خٲطرٕ کٔرِو اکھ قطار ڈریگ۔ ہاونہٕ یا ہاونہٕ خٲطرٕ کٔرِو سوئچ پلٹٲوِو۔ سیٹینگ تہٕ لاک چھِ ہمیشہٕ بارَس پیٹھ روزان۔
+sidebar_always_on_short	ہمیشہٕ آن
+sidebar_back_settings	واپس
+sidebar_shown	ہاونہٕ آمُت
+sidebar_hidden	پوشیدہ
+sidebar_always_on	ہمیشہٕ بارس پیٹھ
+sidebar_shown_hint	سایڈ ریل/ بۄن ٹیبس پیٹھ ہاونہٕ آمُت
+sidebar_hidden_hint	شراب خانہٕ نش پوشیدٕ
+sidebar_menu_items	چیز
+sidebar_enable_all	سٲری کٔرِو فعال
+sidebar_disable_all	سٲری کْریو ڈیسیبْل
+sidebar_order_saved	سایڈ بار آرڈر آو محفوظ کرنہٕ
+sidebar_visibility_saved	سایڈ بار ویزیبلٹی آو محفوظ کرنہٕ
+amounts_hide	چھُپاوُن
+amounts_show	ہاوُن
+printers_none_hint	گۄڈٕ کٔرِو یَتھ ڈیوایسَس پٮ۪ٹھ پرنٹر محفوظ، پتہٕ کٔرِو یہِ بِلَس یا کُنہِ حِصَس منٛز شٲمِل
+counter	کاؤنٹر
+dine_in	کاؤنٹر
+takeaway	نِیُن
+order	آرڈر
+tables	کاؤنٹر
+kitchen	حِصہٕ
+sales	سیلز
+sales_refunds	سیلز تہٕ رِفنڈ
+day_close	دۄہ بند
+reports_expenses	بینک بُک تہٕ پی اینڈ ایل
+nav_reports	رِپورٹ
+nav_settings	سیٹنگ
+nav_lock	لاک کٔرِتھ
+no_sale_yet	وٕنیُک تام چھُنہٕ کانٛہہ فروخت
+favorites	پسندیدٕ
+favorites_help	تِم چیٖز یِم تُہۍ اکثر کٕنان چھِو، تِم چھِ پننہِ لاگ اِن باپتھ محفوظ کٔرِتھ۔ بِلہِ منٛز کٔرِو اکھ شٲمِل، یا بۄنہٕ کَنہِ دِنہٕ آمٕتۍ تمام چیٖزَو سۭتۍ بنٲوِو پنُن فہرِست۔
+your_favorites	تُہند پسندیدٕ
+all_items	تمام چیٖز
+frequent	بار بار
+added_items	شٲمِل کَرنہٕ آمُت چیٖز
+added_items_empty	یَتھ بِلَس پٮ۪ٹھ چھُنہٕ وُنیُک تام کِہہ — تمام چیٖز یا کُنہِ زَمرَہٕ منٛز چیٖز کٔرِو شٲمِل۔
+frequent_config_help	مُکمل بِلَو منٛز سارِوٕے کھۄتہٕ زیٖادٕ کٕننہٕ آمٕژ چیٖز۔ کِتلہٕ دۄہ وُچھُن تہٕ کِتلہٕ چیٖز ہاوُن، یہِ کٔرِو مُقرَر۔
+frequent_days_ph	دۄہ (1)
+frequent_limit_ph	چیٖز (24)
+frequent_apply	لاگو
+frequent_saved	بار بار: پٔتِم {d} دۄہ، ٹاپ {n} — {c} چیٖز
+frequent_empty	اتھ وقتس منز چھُنہٕ وُنیُک تام کانٛہہ بِل مُکمل — اکھ بِل طے کٔرِو (₹0 اجازت ییٚلہِ سیٹنگ ونان چھِ) تہٕ تِم ہاوَن ییٚتہِ۔
+zero_sales	صفر ویلیو سیلز
+zero_sales_help	₹0 قۭمَت والہٕ چیٖز تہٕ ₹0 پٮ۪ٹھ طے بِلَن ہٕنٛز اجازت دِیُو (مُفت / مالِکَس نِز اِرادٕ)۔ گوڈائے چھُ چالو، تاکہ مُفت فروخت تہِ بار بار تہٕ دۄہُک کھاتہ منٛز ہاو۔
+zero_sales_on	₹0 کَر اجازت
+zero_sales_off	ضروٗرت قۭمَت
+zero_sales_saved_on	زیرو ویلیو فروختُک اجازت
+zero_sales_saved_off	سیلَس گژھہِ ₹0 کھۄتہٕ زیادٕ قۭمتھ آسُن
+floor_areas_help	رقبہ چھِ فرشَس پٮ۪ٹھ کُٹھ یا زون (Dine In, Parcel, AC …)۔ گۄڈٕ کٔرِو رقبہ شٲمِل، پتہٕ تَتھ منٛز کاؤنٹر تھٲوِو — پرٮ۪تھ رقبہ چھُ فرشَس پٮ۪ٹھ الگ جَماتھ۔
+area_new_ph	نٔو علاقہٕ / کمرٕ (مثلاً اے سی، باغ)
+add_area	رۄقبہٕ کٔرِو شٲم
+area_added	رقبہ “{name}” تیار — تَتھ منٛز کٔرِو کاؤنٹر شٲمِل
+no_favorites	وٕنیُک تام چھنہٕ کانٛہہ پسندیدٕ — بۄنہٕ کَنہِ دِنہٕ آمٕتۍ فہرستس منٛز کٔرِو چیٖز شٲمِل۔
+add_to_bill	بِلہِ منٛز کٔرِو ایڈ
+added	شٲمِل کَرنہٕ آمُت
+owes_word	واجب الادا
+selected_word	ژارنہٕ آمُت
+chip_clear_credit	صاف — کریڈٹ یا ایڈوانس لے
+chip_missing_customer	ژارنہٕ آمُت گراہک لاپتہٕ — دوبارٕ تُلِو
+chip_no_customer	وٕنیُک تام چھُنہٕ کانٛہہ خٔریٖدار — ناو ٹایپ کٔرِو، پتہٕ کٔرِو کریڈِٹَس پٮ۪ٹھ دبٲی
+credit_summary_fmt	{} گراہک · اوپن کریڈٹ {} · ایڈوانس منعقد {}
+recent_label	حالیہٕ:
+kot_new_waiting	نٔو — انتظار
+kot_preparing	تیاری
+kot_ready_serve	تیار — سرو کٔرِو
+kot_done_cap	کَرنہٕ آمُت
+kot_cancelled	منسوخ کرنہٕ آمُت
+kot_start_btn	شروع کرُن
+kot_mark_ready	نشان زد تیار
+kot_done_btn	مُکمل
+table_free	مُفت — آرڈر شروع کرنہٕ خٲطرٕ ٹیپ کٔرِو
+start_order	آرڈر کٔرِو شروع
+open_bill	بِل کھولو
+collect_payment	ادٲیگی کٔرِو جمع
+table_running	دوڑُن
+payment_pending	ادٲیگی زیر التوا
+collect_at_counter	کاؤنٹرَس پیٹھ جمع کٔرِو
+inventory	انوینٹری
+inventory_stock	انوینٹری تہٕ سٹاک
+branches	شاخہٕ
+branches_org	برانچز اینڈ آرگ
+credit_customers	پارٹیاں (کھاتا تہٕ سپلائرز)
+customer_name_ph	پارٹی ناو
+new_customer_ph	پارٹی ہُنٛد نٔو ناو
+item_name_ph	چیٖزُک ناو (مِثالَن Masala Dosa)
+item_price_ph	قۭمَت
+start_template	پروڈکٹ
+team	ٹیم
+team_pins	ٹیم & PINs
+my_pin_settings	میون PIN
+settings_hub_help_my_pin	یَتھ ڈیوایسَس پیٹھ سایِن اِن کَرن وٲلِس سٕندِ خٲطرٕ کٔرِو ان لاک PIN تبدیل۔
+team_self_help	اکھ سائن اِن: اکھ نوٚو یوزر ناو، اکھ نوٚو پاس وٲرڈ، یا دۄشوے۔ یہِ تۄہہِ نِش تھاونہٕ خٲطرٕ ترٛٲوِو اکھ ڈبہٕ خٲلی۔ مٲلِکَس پرٛژھِو زِ تۄہہِ چھا مُختٔلِف سکرینَن یا حقوٗقن ہِنٛز ضٔروٗرَت۔
+backup_settings	بیک اپ &سیٹینگ
+lock_app	ایپ لاک کٔرِو
+pick	پِک
+select	چُنو
+advance	ایڈوانس
+owner	مالِک
+staff	مُلازِم
+photo	فوٹو
+auto	Auto
+prev	پٔتِم
+next	بیٚیہِ
+ok	OK
+this_shop	Server
+extra_till	Client
+off	بند
+tables_kitchen	دُکانُک بَناوٹ
+server	Server
+client	Client
+language_currency	زبان تہٕ کرنسی
+language	زبان
+choose_language	پنٕنۍ زبان ژٲرِو
+language_setup_hint	امہِ آلہٕ چہِ زبانہِ پیٹھ عمل کٔرِو، یا پانَے تُلِو۔
+lang_follow_platform	ڈیوائس لینگویج
+lang_pick_user	زبان ژٲر
+lang_platform_now	ڈیوائس لینگویج وْنئ
+selected_language	ژارنہٕ آمُت
+continue	جاری
+this_device	یہِ ڈیوائس
+device_use_q	یہِ آلہٕ کِتھ کٔنۍ ییہِ استعمال کرنہٕ؟
+last_server_mode	اوس Server — جٲری تھاونہٕ خٲطرٕ ٹیپ
+last_client_mode	اوس Client — جٲری تھاونہٕ خٲطرٕ ٹیپ
+choose_server	سرور ژٲرِو
+choose_server_hint	اکھ موجودٕ سرور کھولو، یا بیٚیِس کارٕبارٕ خٲطرٕ بنٲیِو یہِ۔
+create_new_server	نْو سْرور بنٲیِو
+open_server	کھولِو
+new_server_name_ph	نْو سْروور ناو (اختیاری)
+server_remove_pin_ph	مٲلِک PIN سْروَر ہٹاونہٕ خٲطرٕ
+only_owner_remove_server	صرف مٲلک ہیکہِ سرور ہٹٲوِتھ
+owner_pin_remove_server	مٲلِک PIN چھُ یہِ سٕروَر ہٹاونُک ضوروٗرَتھ
+device_setup_help	Server کتابہٕ چھِ یَتہِ تھاوان۔ Client چُھ Server سٕتۍ جوڑان۔
+app_template_heading	شُروعاتی فہرِست (اختیاری)
+app_template_blurb	اکھ نمونہٕ فہرِست چھُ لَدان؛ مالِک Zahir (zahir)، ایڈمِن Asif (asif, PIN 1111)، کیشیئر Nawaz (nawaz, PIN 0000)؛ ٹیکس/GST بند؛ برٛونٛہِم سایڈ بار؛ تَوٲریٖخ چھِ 4 گَنٛٹہٕ پتہٕ صاف گَژھان (تہٕ بیک اپ منٛز وۅنۍ کٔرِو تَوٲریٖخ صاف)؛ اَزُک پَٹی بند؛ تَنگ ٹرے خٲطرٕ لۄکُٹ بِل + Standard مارجِن۔ ٹیکس تہٕ سایڈ بارَک باقی حِصہٕ ہیکَن سیٹنگَس منٛز دُبارٕ چالو کٔرِتھ۔
+app_template_apply	شُروعاتی فہرِست لاگو کٔرِو
+app_template_skip	وُنکینَس کٔرِو سِکِپ
+app_template_status	سرور تیار — شُروعاتی فہرِست لاگو کٔرِو، یا ترٛٲوِو
+app_template_importing	لاگو کَرُن {title}...
+currency	کرنسی
+backup	بیک اپ
+use	استعمال کٔرِو
+dont_use	اِستِمال کٔرِو نہٕ
+add_branch	شاخ کٔرِو شٲمِل
+add_conversion	تبادلہٕ کٔرِو شٲمِل
+add_dishes_items	چیٖز کٔرِو شٲمِل
+add_item_plain	آیٹم کٔر ایڈ
+add_note	نوٹ کٔرِو شٲمِل
+add_opening_balance	اوپننگ بیلنس کٔرِو شٲمِل
+add_staff	سٹاف کٔرِو شٲمِل
+add_station	اؠڈِٹ کَرنہٕ
+add_table	ٹیبل کٔرِو شٲمِل
+add_unit	اَکٲیی کَرنہٕ آمُ
+add_use_name	یہِ ناو ایڈ / استعمال کٔرِو
+allow_extra_tills	اضٲفی کَش کاؤنٹرَن ہُنٛد اجازت
+amend	ترمیم کٔرِو
+apply_country_pack	کُنٹری پیک کٔرِو اِستعمال کَر
+datetime_appearance	تٲریخ تہٕ وقتُک ظٲہِر
+datetime_appearance_help	کھاتہ چھُ اندر وَریاہ-گۄڈٕ RFC3339 منٛز تھاوان۔ یِم چھِ صِرف بِل، رِپورٹ تہٕ سکرینَس پٮ۪ٹھ تٲریٖخ تہٕ گَڑی ہُنٛد روپ بدلَن۔
+datetime_example	مثال: {ex}
+date_order	تٲریخ ترتیب
+date_order_dmy	D/M/Y
+date_order_mdy	M/D/Y
+date_order_ymd	Y-M-D
+time_format	گَرِ
+time_format_24h	24 گھنٹہٕ
+time_format_12h	12 گھنٹہٕ
+attach_bill_photo	بِل فوٹو کٔرِو اٹیچ
+attach_pdf	اٹیچ PDF
+attach_photo	فوٹو کٔرِو اٹیچ
+attachments_last_expense	اٹیچمینٹ (ٲخری اخراجات)
+bank	بینک
+bank_in	بینک اِن
+bank_out	بینک آؤٹ
+bank_reconciliation	بینک مصالحت (تُہنٛدِس بینک سٹیٹمنٹَس خٕلاف کٔرِو ٹِک)
+bank_to_till	بینک → کَش کاؤنٹر
+book_add_dish	کھاتہ — چیٖز کٔرِو شٲمِل
+book_opening_credit	کتاب — اوپننگ کریڈٹ
+branch_name_sell_ph	برانچ ناو کٕننہٕ خٲطرٕ
+bring_my_book	میٲنۍ کِتاب اَن
+business_tax_id_ph	بزنس ٹیکس آی ڈی
+caption_bank	بینک
+caption_bills	بِلہٕ
+caption_outstanding	شاندار
+caption_payments_today	اَدٲیگی کَرنہٕ آمٕژ
+caption_today	از
+card_amount_ph	کارڈُک رقم
+cash_amount_ph	نقد رقم
+cash_memo	کیش میمو
+choose_icon	آئیکن ژٲر
+choose_logo	لوگو ژٲرِو
+clear_icon	کَرنہٕ آمُت آیکن کَرُ
+clear_photo	فوٹو صاف کٔرِو
+copy_day_book_csv	کاپی ڈے بک CSV
+copy_day_close	کاپی ڈے بند
+copy_items_csv	کاپی آیٹم CSV
+copy_outstanding_csv	کاپی بقایا CSV
+copy_parties_csv	کاپی پارٹیز CSV
+copy_party_ledger_csv	کاپی پارٹی لیجر CSV
+copy_receipt	کاپی رسید
+share_whatsapp	واٹس ایپ شیئر کٔرِو
+lan_pages_heading	Wi‑Fi پٮ۪ٹھ گاہَکَن ہٕنٛز صفحہٕ
+lan_pages_help	یَتھ دُکانہِ کِس Wi‑Fi پٮ۪ٹھ چھِ گاہَکَن ہٕنٛز صفحہٕ ڈِسپلے بورڈ تہٕ رائے خٲطرٕ چَلان۔ موبایِل ڈیٹا والٮ۪ن چھُ پتہٕ Cloud ضروٗرت۔ کارڈ مشین یا ادٲیگی ہُنٛد لِنک چھُ اختیاری تہٕ کاؤنٹر کُنہِ ساتہٕ رُکاوَن چھُنہٕ۔
+diag_send_heading	یِہ ڈیوائس کٔر شییر
+kot_dest_heading	سٹیشن
+optional_login_heading	اختیاری لاگ اِن
+rights_heading	حقوق
+ops_panel	لوکل آپس
+crm_heading	گاہَک تہٕ پٲغام
+crm_help	زاہ دۄہ، وفاداری، غیر فعال تہٕ ٹاپ مہمان — قطار SMS یا واٹس ایپ ارادٕ۔ پٲغامَس منٛز کٔرِو {name} تہٕ {points} استعمال۔ مٲلِک ٹیپ سوزان چھُ؛ کانٛہہ تہِ چھُنہٕ پانَے سوزان۔
+crm_queue_sms	قطار SMS
+crm_queue_wa	قطار واٹس ایپ
+crm_seg_bday_week	برتھ ڈے ویک
+crm_seg_bday_month	برتھ ڈے ریتھ
+crm_seg_phone	فونہٕ سۭتۍ
+crm_seg_loyalty	وفاداری
+crm_seg_inactive	غیر فعال
+crm_seg_top	ساروی کھوتہٕ زیادٕ خرچ کرن وٲل
+birthday_ph	زاہ دۄہ (MM-DD یا YYYY-MM-DD)
+crm_message_ph	ہیپی برتھ ڈے {name}! تۄہہِ چھِ {points} پوائنٹس۔
+till_apply_redeem	بِلہِ پیٹھ کٔرِو لاگو
+till_clear_redeem	صاف ریڈیم
+till_wallet_topup	ٹاپ اپ ویلیٹ
+till_issue_voucher	ایشو واؤچر
+till_points_ph	ریڈیم کرنہٕ خٲطرٕ پوینٹ
+till_wallet_ph	ویلٹُک رقم خرچ کرُن
+till_voucher_code_ph	واؤچر کوڈ
+till_voucher_amt_ph	واؤچر رقم (خٲلی = سٲری )
+till_wallet_topup_ph	ٹاپ اپ ویلیٹُک رقم
+till_voucher_issue_amt_ph	واؤچر رقم کَر جٲری
+till_voucher_issue_code_ph	نٔو واؤچر کوڈ
+split_evenly	یکساں طور تقسیٖم کٔرِو
+waitlist	ویٹ لسٹ
+fire_course	بیاکھ قَدَم
+hold_item	رُکاوُن
+waiter_call	کیشیئرَس کٔرِو آواز
+waitlist_add	ویٹ لِسٹَس منٛز ایڈ کٔرِو
+floor_view_grid	گرڈ
+floor_view_layout	خاکہ
+floor_layout_x	X
+floor_layout_y	Y
+floor_layout_w	W
+floor_layout_h	H
+floor_layout_save	لے آؤٹ محفوظ کٔرِو
+floor_layout_open	اوپن ٹیبل
+floor_layout_edit	اؠڈِٹ کَرنہٕ آمُت
+floor_layout_pick	اَمِچ ترتیب اؠڈِٹ کَرنہٕ خٲطرٕ کٔرِو أکِس ٹیبلَس د
+floor_layout_saved	بَناوٹ محفوظ
+floor_layout_nudge_left	← 20
+floor_layout_nudge_right	→ 20
+floor_layout_nudge_up	↑ 20
+floor_layout_nudge_down	↓ 20
+sibling_pickers_help	یِتھ کٔنۍ کٔرِو آن/آف یِتھ کٔنۍ یونٹَن — دۄہ دِش چِنَن والٮ۪ن نِش چھُ ژوٗرِ علاقہٕ، سٹیشن، تہٕ ٹیکسٕچ شرح؛ پیک ڈیفالٹ روزان چھُ۔
+bulk_price_apply	تھوک قۭمتھ لاگو کٔرِو
+card_terminal_optional	کارڈ ٹرمینل / پیمنٹ لنک (اختیاری ییٚلہِ انٹرنیٹ دٔستِیاب چھُ)
+copy_report	رپورٹ کاپی کٔرِو
+counted_cash_ph	دراز منٛز گٔنزۍ نقد رقم
+country_tax	ملک تہٕ ٹیکس
+create_backup	بیک اپ بناو
+credit_limit_heading	کریڈِٹُک حد (ژارنہٕ آمُت / ناو دِنہٕ آمٕژ پارٹی)
+day_close_summary	دۄہ بند خُلاصہٕ
+delete_party	سلیکٹْڈ پارٹی کْریو ڈیلیٹ
+delivery	پہنچ
+done_open_books	کٔرِتھ — اوپن بِکس
+drawer_count	دراز گنتی (اختیاری)
+expense_heading	خَرچ
+export_day	برآمدی دۄہ
+extra_note_bill_ph	یَتھ بِلہِ / سیلَس مُتلِق اضٲفی نوٹ
+extra_note_expense_ph	ٲخری خرچس پیٹھ اضٲفی نوٹ
+extra_tills_heading	اضٲفی کَش کاؤنٹر
+other_devices_help_heading	باقٕے آلہٕ کٔرِو سیٹ اپ
+other_devices_help	یَتھ ڈیوایسَس پٮ۪ٹھ (سرور): باقٕے آلہٕ → اضٲفی کَش کاؤنٹرَن ہُنٛد اجازت۔ جوڑُن کوڈ تہٕ Wi‑Fi پَتہ کٔرِو نوٹ۔ اگر ہاوِ تیلہِ باقی ڈیوایسَن کٔرِو کنیکٹ کرنُک اجازت دَبِو۔ کَمپیوٗٹَرَس پٮ۪ٹھ یَتھ کَمپیوٗٹَرٕ سٕتی کٔر دَبِو۔ پرٮ۪تھ بیٚیِس ڈیوایسَس پٮ۪ٹھ: ایپ کٔرِو انسٹال، Client موڈ ژٲرِو، دُکانُک سرور ژھانٛڑِو (یا پَتہ لِکِھو)، جوڑُن کوڈ دِیُو، وۄنۍ جوڑ۔ Wi‑Fi ٹُٹِ تیلہِ چھِ آرڈر ڈیوایسَس پٮ۪ٹھ رُکان تہٕ سرور دُبارٕ جواب دِیہِ تیلہِ چھِ گَژھان۔ اضٲفی پرنٹر چھِ سرورَس پٮ۪ٹھ لگَن (سیٹنگ → پرنٹر) — اضٲفی کَش کاؤنٹر چھِ بِل تَتَہِ سوزان۔
+forget_shop	یہِ دُکان مٔشِد کٔرِو
+goods_received	موصولہ سامان
+import_day	درآمد کرنُک دۄہ
+import_items_csv_plain	درآمدی چیٖز CSV...
+import_parties_csv	امپورٹ پارٹیاں CSV...
+item_name	آیٹم ناو
+kitchen_printing	پرنٹر
+login_id_ph	یوزر ناو
+mark_cleared	مارک کٔر صاف
+new_party_clear	نٔو پارٹی (واضح شکل)
+new_party_kind_supplier_ph	نٔو پارٹی قٕسم (سپلائر)
+next_country	بیاکھ ملک
+next_order	بیاکھ آرڈر (کلیئر ڈیسک)
+note_gstin_ph	نوٹ / GSTIN / معاہدٕ یاد دہانی
+notes_attach_party	نوٹ تہٕ اٹیچمینٹ (منتخب پارٹی)
+notes_attach_sale	نوٹ تہٕ اٹیچمینٹ (منتخب فروخت)
+on_account_ap	اکاؤنٹس پیٹھ (اے پی)
+org_optional_ph	تنظیم (اختیاری)
+paid_by	ادا کرنہٕ آمُت
+paid_now	وۄنۍ چُھ ادا کرنہٕ آمُت
+pair_now	وۄنۍ جوڑ
+pairing_code_ph	پیرِنگ کوڈ
+party_name_selected_ph	پارٹی ناو (یا استعمال کٔرِتھ ژٲرِتھ)
+password_ph	پاس ورڈ
+pay_ap_card	اے پی کارڈ کٔرِو پے
+pay_ap_cash	اے پی کیش کٔرِو پے
+pay_ap_heading	اسہِ دِیُو تِمَن ہُنٛد دِیُن (اے پی)
+pay_ap_upi	پے اے پی UPI
+pay_selected_heading	اَدٲیگی کٔرِو ژارنہٕ آمُت (قرضہٕ طے کٔرِو / ایڈوانس نِو)
+pick_from_items	سانٮ۪و چیٖزو منٛزٕ ژٲرِو
+prev_country	پٔتِم مُلُک
+print_open	پرنٹ / اوپن
+reason_amend_ph	ترمیم کرنُک وجہ / کالعدم / واپسی
+reason_note_ph	وجہ / نوٹ (ضایع، گنتی ، ...)
+record_day_close	ریکارڈُک دۄہ بند
+refresh_from_shop	دُکانہٕ پٮ۪ٹھٕ کٔرِو تازٕ
+refund	واپسی
+remove_selected	سِلیکٹَن ہٹاو
+request_bill	درخواست بِل
+restaurant_name_ph	دُکانُک ناو (اختیاری)
+restore_backup	بیک اپ کْریو ریسٹور
+role_both	دۄشوے
+role_admin	Admin
+role_cashier	کیشیئر
+role_customer	گاہَک
+role_manager	منیجر
+history_retention	تِجارتی تٲریخ
+history_retention_help	پرٛون فروخت تہٕ پرٛون ٹِکَٹ کٔرِو پانےٚ پانےٚ صاف۔ چیٖز، مُلازِم تہٕ سیٹنگ چھِ روزان۔ وۅنۍ کٔرِو تَوٲریٖخ صاف چھُ تمام وَپارٕک لائنہٕ مِٹاوان تہٕ سیٹ اپ تھاوان۔
+history_off	تھاوُن
+history_day_close	دۄہ بند
+history_after_hours	گھنٹو پتہٕ
+history_hours_ph	گھنٹے (1–168، ڈیفالٹ 4)
+history_hours_save	گھنٹہٕ بچٲوِو
+history_clear_now	وۅنۍ کٔرِو تَوٲریٖخ صاف
+history_cleared	تِجارتی ہسٹری گٔیہِ صاف — سیٹ اپ تھاونہٕ آمُت
+history_retention_saved	ہسٹری کلیئرنگ محفوظ
+history_hours_saved	تٲریخی گھنٹہٕ محفوظ
+history_owner_only	صرف مٲلِک یا Admin ہیکہِ تَوٲریٖخ صاف کٔرِتھ
+rollup	رول اپ
+save_brand	برانڈ محفوظ کٔرِو
+save_business_id	کارٕبارُک آی ڈی محفوظ کٔرِو
+save_business_name	کاربارُک ناو سیو
+save_features	محفوظ کٔرِو
+save_features_named	محفوظ {name}
+save_features_ok	{name} خٲطرٕ آو محفوظ کرنہٕ آمُت سیٹ اپ
+save_names	ناو محفوظ کٔرِو
+second_way	دوٚیِم طریقہٕ
+server_ip_ph	Server IP (مثلاً 192.168.1.10)
+set_credit_limit	پارٹی پیٹھ کٔرِو حد لاگو
+set_login_selected	سلیکٹس پیٹھ کٔرِو لاگ اِن لاگو
+set_login_named	لاگ اِن کٔرِو لاگو {name}
+shop	خٔریٖدٲری کٔرِو
+show	ہاوُن
+spreadsheet_csv	سپریڈ شیٹ (CSV)
+start_fresh	تازٕ شروٗع کٔرِو
+stop_extra_tills	اضٲفی کَش کاؤنٹر رُکٲوِو
+floor_cols_ph	کالم
+floor_cols_fit	فٹ سکرین
+floor_cols_fit_sub	{n} فٹ یتھے
+floor_cols_fits	فٹ چُھ
+floor_cols_scroll	اَکہِ طرفہٕ چھُ طومار
+floor_cols_min	کالم: کم از کم 1 — یا سکرین فٹ گژھنہٕ خٲطرٕ ترٲوِو یہِ خٲلی
+floor_zoom_auto	Auto
+floor_zoom_out	زوم آؤٹ
+floor_zoom_in	زوم اِن کٔرِو
+backup_auto	پرٛٮ۪تھ دۄہ چھُ پانَے بیک اپ · ٲخری {when} · پٔتِم 14 دۄہ چھِ {dir} منٛز تھاونہٕ آمٕتۍ۔
+backup_auto_none	پرٛٮ۪تھ دۄہ چھُ پانَے بیک اپ گژھان — گۄڈنیُک چُھ أکِس لمحس منٛز چلان۔
+backup_copy_to	کاپیہٕ تہٕ چِھ {dir} پیٹھ گژھان۔
+backup_copy_btn	بیک اپ تہِ کٔرِو أکِس فولڈرس منز کاپی...
+autostart_off	یَتھ کَمپیوٗٹَرٕ سٕتی کٔر
+autostart_on	یَتھ کَمپیوٗٹَرَس مَنٛز چُھ شُروٗع گَژھان ✓ — رُکاونہٕ خٲطرٕ ٹیپ کٔرِ
+autostart_done_on	یہِ کمپیوٹر چھُ وۄنۍ ایپ کھولان ییٚلہِ یہِ شروع گژھان چھُ — دُکانُک سرور چھُ بجلی بند گژھنہٕ پتہٕ واپس۔
+autostart_done_off	یہِ کمپیوٹر چھُنہٕ وۄنۍ اسٹارٹ اپَس پیٹھ ایپ کھولان۔
+device_forgotten	دُکان گوٚو یہِ آلہٕ مٔشِد — یہِ جوڑِو دُکانہٕ کِس موجودٕ کوڈَس سۭتۍ۔ اَتھ پیٹھ چھِ حُکُم تھاونہٕ یِوان۔
+lan_offline	شاپ سْروَر چھُ نہٕ وٲتِتھ
+forget_device	مٔشِد کٔرِو
+last_seen	وُچھِو
+copy_pair_code	کاپی پیرنگ کوڈ
+new_pair_code	نٔو پیئرِنٛگ کوڈ
+pair_finishing	فنشنگ جورۍ... دُکانٕچ کتابہٕ لاگو کٔرٕنۍ
+pair_opening	کَش کاؤنٹر کھولُن...
+pair_copied	پیئرِنگ کوڈ آو کاپی کرنہٕ
+kot_waiting	سوزنہٕ خٲطرٕ انتظار
+lan_offline_waiting	شاپ سرور ناقابلِ رسائی · {n} انتظار
+lan_connecting	دُکانَس سۭتۍ رٲبطہٕ کَرُن...
+lan_live	لائیو
+lan_sending	{n} سوزان
+lan_sign_in_to_send	{n} سوزنہٕ خٲطرٕ کٔرِو دُبارٕ سایِن اِن
+lan_pair_again	یہِ ڈیوائس کٔرِو دُبارٕ جوڑ
+lan_update_app	ایپ اپ ڈیٹ کٔرِو — ییٚمہِ آلہٕ تہٕ دُکانٕکۍ سرورس چھِ مُختٔلِف ورجن
+allow_firewall	باقی ڈیوایسَن کٔرِو کنیکٹ کرنُک اجازت
+firewall_blocked	یہِ کمپیوٹرُک فایر وال چھُ باقی ڈیوایسَن بُلاک کران — دَبٲیِو باقٕے ڈیوایسَن کنیکٹ کرنُک اِجازت۔
+firewall_waiting	اِنتِظٲمی اِنتِظام کَرنہٕ خٲطرٕ پیٛارُن...
+lan_join_help	بیٚیِس ڈیوایسَس پیٹھ: Client موڈ → دُکانُک سرور ژھانڈِو (یا ٹایپ {addr}) → پیئرِنگ کوڈ {code}۔
+lan_pair_status	Wi‑Fi {addr}
+lan_join_help_no_addr	یہ ڈیوائس کْریو کنیکٹْہ Wi‐Fi کْریو ایڈریس باپت۔
+lan_no_address	وٕنیُک تام کانٛہہ Wi‐Fi پتہ — دُکانَس سۭتۍ کٔرِو رٲبطہٕ Wi‐Fi۔
+lan_not_listening	ڈیوائس چُھ نْہ قبول کران (پورٹ {port} مصروف)۔ ایپ کٔرِو دُبارٕ شروع۔
+lan_tills_off	اضٲفی کَش کاؤنٹر چھِ بند۔ بیٚیِس آلہٕ شٲمِل گژھنُک اجازت دِیِو۔
+paired_with	جورٕ · {url}
+not_paired	جورٕ نہٕ
+choose_device_use	Server یا Client ژٲرِو۔
+paired_note	جورۍ۔ کٕننہٕ خٲطرٕ کٔرِو ان لاک یا تازٕ ترین خٲطرٕ ریفریش۔
+last_update_at	آخری اپ ڈیٹ: {time}۔
+pair_intro	سرور ژھانٛڑِو، یا کٔرِو اَمیُک پتہ تہٕ پیئرِنٛگ کوڈ ٹایپ ۔
+queue_waiting	دُکانس تام واتنُک انتظار ({n}):
+queue_tries	کوٗشِش کٔرِتھ {n} لٹہِ · ٲخری جواب: {e}
+save_backup_copy	بیک اپ کاپی کٔرِو محفوظ...
+backup_copy_saved	بیک اپ کاپی محفوظ کْریو — یہ تھٲوِو یَتھ ڈیوائس نِش (اکھ USB سٹِک یا بیاکھ ڈیوائس)
+backup_copy_overdue	کانہہ بیک اپ کاپی چُھ نہٕ یہِ ڈیوائس {n} دۄہَو پیٹھٕ ترٲومُت — سیٹینگ → بیک اپ
+backup_copy_failed	بیک اپ کاپی ہیکو نہٕ تتہِ محفوظ کٔرِتھ — بیاکھ جاے ژٲرِو
+clock_off	امہ ڈیوایسُک کلاک چُھ {min} منٹ دُکانہٕ کِس سْرورس نِش — اتھ ڈیوایسس پیٹھ کْریو صحیح ٹایِم سیٹ
+printers_heading	پرنٹر
+printers_help	پرنٹر ژھانٛڑِو، ژارُن خٲطرٕ کٔرِو اَکِس پٮ۪ٹھ دب، پتہٕ صِرف تَتھ ڈیوایسَس پٮ۪ٹھ اکھ ٹیسٹ پیج کٔرِو پرنٹ۔ بِل پرنٹر: بِل تہٕ پَرچی فارمیٹ → بِل۔
+printers_host_only	پرنٹر چھِ دُکانہِ کِس ڈیوایسَس (سرور) پٮ۪ٹھ لگَن۔ یہِ کَش کاؤنٹر چھُ بِل تہٕ پرٛون ٹِکَٹ تَتَہِ سوزان — ژھانٛڑُن / شٲمِل کَرُن / سونپُن چھُ سرورَس پٮ۪ٹھ روزان۔ ٹیسٹ پیج تہٕ بِل پرنٹُک سایِز چھِ سرورَس کُن گَژھان۔
+printers_find_heading	پرنٹر ژھانڈِو
+printers_find_tip	یَتھ ڈیوایسَس پیٹھ چھُ سکینَر ژھانڈان تہٕ فہرست چھُ اپ ڈیٹ تھاوان۔
+printers_pool_heading	پرنٹر
+printers_pool_tip	فایِنڈ چھُ یہِ ڈیوائس سکین کران تہٕ یہِ فہرست چھُ اپ ڈیٹ تھاوان۔
+printers_pool_empty	(وُنیُک تام کانٛہہ تہِ — ٹیپ کٔرِو فائنڈ)
+printers_routes_help	تِم پرنٹر ژھانٛڑِو یِم آپریٹِنگ سِسٹَم گوڈائے زانان چھُ۔ بِل تہٕ پَرچی فارمیٹَس منٛز کٔرِو تِم بِلَس تہٕ پرٮ۪تھ حِصَس سونپ۔
+printer_assign_dd	اصلی پرنٹر: {place}
+printer_assign_pick	اصلی پرنٹر کٔرِو ژار
+printer_profile_heading	خاکہ
+printer_send_heading	پہنچ
+vp_delivery_heading	پہنچ
+vp_delivery_help	یہِ مجازی پرنٹر چھُ کٲم کِتھ پٲٹھۍ سوزان — OS دستاویز، خام بائٹ، یا ESC/POS۔ پَرچی ہُنٛد مواد (اکھَر سایِز، لَپیٹ، مارجِن) چھُ بِل / پَرچی فارمیٹ طے کَران، یہِ نہٕ۔
+vp_type_size_heading	قٕسمُک سایِز
+vp_wrap_heading	ریپ چوڑائی
+vp_margin_heading	حاشیہ
+vp_delivery_spooler	او ایس ڈاکیومینٹ (سسٹم سپولر)
+vp_delivery_raw	را بایِٹ ٹو ڈیوائس
+vp_delivery_escpos	ESC/POS تھرمل کمانڈ
+virtual_printer_new	نٔو ورچوئل پرنٹر
+virtual_printer_selected	اؠڈِٹ کَرنہٕ آمُت "{name}" — بَدلاونہٕ خٲطرٕ کٔرِو بیٚیِس فہرستَس مَنٛز دَبٲیِو
+virtual_printer_tap_list	ایڈٹ کرنہٕ خٲطرٕ کٔرِو لِسٹَس منٛز اکھ ورچوئل پرنٹر ٹیپ
+config_layout_portrait	پورٹریٹ
+config_layout_landscape	لینڈ سکیپ
+config_send_os	سسٹم سپولر
+config_send_escpos	ESC/POS
+profiles_heading	خاکہ
+profiles_empty	(وٕنیُک تام چھُنہٕ کانٛہہ ترتیب)
+profile_builtin	بلٹ ان
+profile_custom	کسٹم
+profile_name_ph	لے آؤٹ ناو
+profile_new	نٔو ترتیب
+profile_delete	لے آؤٹ کْریو ڈیلیٹ
+profile_created	لے آؤٹ آو بناونہٕ
+profile_deleted	لے آؤٹ آو حذف کرنہٕ آمُت
+profile_builtin_keep	بِلٹ اِن لے آؤٹ ہیکو نہٕ حذف کٔرِتھ
+config_saved	اپ ڈیٹ
+config_selected	منتخب "{name}"
+printer_output_heading	ورچوئل پرنٹر
+virtual_printers_heading	ورچوئل پرنٹر
+virtual_printers_empty	وْنیُک تام نْہ کانہہ ورچوئل پرنٹر — ویلیو سیٹ کْریو بۄن کْر، تْہ کْریو سیو۔ کینٛہہ آسنہٕ پتہٕ، ایڈٹ کرنہٕ خٲطرٕ کٔرِو فہرستس منٛز اکھ دبٲیِو۔
+virtual_printer_name_ph	ورچوئل پرنٹر ناو (اختیاری)
+virtual_printer_create	ورچوئل پرنٹر بناو
+virtual_printer_save	ورچوئل پرنٹر کٔرِو محفوظ
+virtual_printer_delete	ورچوئل پرنٹر کٔر ڈیلیٖٹ
+virtual_printer_created	ورچوئل پرنٹر "{name}" تخلیق
+virtual_printer_deleted	مِٹاونہٕ آمُت ورچوئل پرنٹر "{name}"
+virtual_printer_updated	ورچوئل پرنٹر آو اپ ڈیٹ کرنہٕ
+virtual_printer_updated_named	ورچوئل پرنٹر "{name}" اپ ڈیٹ
+virtual_draft_layout	بییِس ورچوئل پرنٹر خٲطرٕ ویلیو سیٹ کٔرِتھ
+virtual_draft_send	بییِس ورچوئل پرنٹر خٲطرٕ ویلیو سیٹ
+virtual_need_real	گۄڈٕ کٔرِو اکھ اصلی پرنٹر ژار
+virtual_need_select	ڈیلیٹ کرنہٕ خٲطرٕ کٔرِو اکھ ورچوئل پرنٹر سلیکٹ
+real_printer_selected	منتخب: {name}
+station_group_heading	ورچوئل پرنٹر
+station_group_apply	ورچوئل پرنٹر کٔر ڈیلیٖٹ
+station_group_applied	حذف کَرنہٕ آمُت
+station_group_empty	اکھ ورچوئل پرنٹر کٔرِو ژار
+station_group_name_ph	ورچوئل پرنٹر ناو (اختیاری)
+station_group_save	ورچوئل پرنٹر بناو
+station_group_saved	ورچوئل پرنٹر آو محفوظ کرنہٕ
+station_manage_heading	دُکانُک حِصہٕ کٔرِو شٲمِل یا ہٹٲوِو
+printers_routes_heading	ییتہِ چیز چھاپان چھاپان
+route_pick_heading	جاے
+route_editing	اؠڈِٹِنگ: {name}
+route_assigned	{printer} {place} منٛز شٲمِل کَرنہٕ آمُت
+route_already_assigned	گۄڈَے چھُ یَتھ جایہِ پیٹھ: {printer}
+route_removed	{printer} ہٹاونہٕ آمُت {place}
+route_cleared	صاف {name}
+route_assigned_empty	اتھ جایہ چھہ نہ کانہہ
+route_tap_remove	ہٹاونہٕ خٲطرٕ ٹیپ کٔرِو
+route_tap_select	سلیکٹ کرنہٕ خٲطرٕ ٹیپ کٔرِو
+route_tap_selected	ژارنہٕ آمُت
+route_pick_printer_first	گۄڈٕ کٔرِو پرنٹرَس ٹیپ
+route_assigned_heading	پرنٹر
+route_add_heading	تفویض کٔرِو
+printer_label_ph	ناو (مثلَن کاؤنٹر پرنٹر)
+printer_target_ph	سسٹم پرنٹر ناو یا ہوسٹ:9100
+printer_target_default	یَتھ کَمپیوٗٹَرُک عام پرنٹر (خٲلی ایڈریس)
+printer_wire_heading	پروفائل
+printer_wire_escpos	ESC/POS
+printer_wire_os	پورٹریٹ
+printer_wire_os_portrait	پورٹریٹ
+printer_wire_os_landscape	لینڈ سکیپ
+printer_wire_escpos_short	ESC/POS
+printer_wire_os_short	پورٹریٹ
+printer_wire_os_landscape_short	لینڈ سکیپ
+printer_format_custom	نٔو کسٹم پروفایل
+printer_format_custom_label	رسم و رواج
+printer_format_custom_added	یَتھ جایہِ خٲطرٕ آو کسٹم پروفایل شٲمِل کرنہٕ
+add_printer	پرنٹر کٔرِو ایڈ
+remove_printer	ہٹاوُن
+route_pick_ph	بِل یا دُکانُک حِصہٕ
+route_bill	بِل
+route_default_kitchen	کانٛہہ سٹیشن چھُنہٕ (بِنا سٹیشن چیٖز)
+route_kot_station	سٹیشن
+route_dont_print	کانٛہہ پرنٹر چھُنہٕ
+stations_heading	سٹیشن
+stations_help	دُکانہِ کِس حِصَن چھِ چیٖز تہٕ تَتھ حِصَس کِس پرنٹرَن اِکوٹہٕ تھاوان۔ سیٹنگ → پرنٹر منٛز پرنٹر لاگِو، کوششُک تَرتیٖب تھٲوِو، پتہٕ گۄڈٕ یُس کٲم کران چھُ یا سارنی پیٹھ چھاپ۔ تبدیٖلی چھِ سۭتۍ سۭتۍ محفوظ گَژھان۔
+station_print_heading	امہ سٹیشنک پرنٹر
+station_print_help	اکھ سٹیشن ژٲرِو، پتہٕ اکھ یا زیادٕ پرنٹر لاگِو۔ ↑↓ چھُ کوششُک تَرتیٖب تھاوان۔ گۄڈٕ یُس کٲم کران چھُ چھُ گۄڈنِچہِ کامیٲبی پٮ۪ٹھ رُکان؛ سارنی پیٹھ چھاپ چھُ پرٮ۪تھ لاگنہٕ آمُت پرنٹرَس سوزان۔
+station_print_pick_ph	پرنٹر سیٹ کرنہٕ خٲطرٕ سٹیشن
+station_print_pick_first	گۄڈٕ کٔرِو دُکانُک حِصہٕ ژٲر
+station_print_editing	"{name}" خٲطرٕ چھُ اؠڈِٹ کَرنہٕ آمُت
+station_vps_dd	امہ سٹیشنک پرنٹر
+station_vps_dd_n	{n} پرنٹر · بدلاونہٕ خٲطرٕ ٹیپ کٔرِو
+station_vps_empty	وٕنیُک تام چھُنہٕ کانٛہہ پرنٹر — تِم ژھٲنڈِو سیٹنگَن → پرنٹرَن
+bill_printers_dd	بلہٕ خٲطرٕ پرنٹر
+bill_printers_dd_n	{n} بِلہِ خٲطرٕ پرنٹر · بدلاونہٕ خٲطرٕ ٹیپ کٔرِو
+job_layout	خاکہ
+job_delivery	نوکری کِتھٕ کٔنۍ چھِ سوزنہٕ یِوان
+job_delivery_help	OS دستاویز، خام بائٹ، یا ESC/POS۔ بِل تہٕ ٹِکَٹ چھِ دۄشوے پنُن پنُن تھاوان۔ کانٛہہ تہِ کٲم ہیکہِ تَتھ کانٛہہ تہِ پرنٹرَس پٮ۪ٹھ گَژھِتھ یُس ژھانٛڑَن محفوظ کۅر۔
+station_vp_attached	پرنٹر منسلک
+station_vp_detached	پرنٹر آو سٹیشنہٕ پیٹھٕ ہٹاونہٕ
+station_print_summary	{mode} · {n} پرنٹر
+station_print_summary_none	اتھ سٹیشنس پیٹھ چھہ نہ وُنیُک کانہہ پرنٹر — یہ کرِ نہ پرنٹ
+stations_none	وُنیُک تام چھُنہٕ کانٛہہ سٹیشن — بۄنہٕ کٔرِو اکھ شٲمِل۔ کاؤنٹر دُکانَس پٮ۪ٹھ چھُ سٹیشن ضروٗرت نہٕ — خٲلی ترٛٲوِو۔
+route_up	اپ
+route_down	بۄن
+route_remove	ہٹاوُن
+route_clear	صاف
+save_printers	پرنٹر محفوظ کٔرِو
+print_test_page	اکھ ٹیسٹ پیج کٔرِو پرنٹ
+no_printer_assigned	کانٛہہ پرنٹر چھُنہٕ
+test_page_no_printer	{place} خٲطرٕ چھُنہٕ کانٛہہ پرنٹر — اَتھ سٍتۍ کٔرِو اکھ پرنٹر اٹیچ، پتہٕ کٔرِو دُبارٕ کوٗشِش
+test_page_pick_first	گۄڈٕ کٔرِو ٹیسٹ پیج خٲطرٕ پرنٹر — پتہٕ کٔرِو اکھ ٹیسٹ پیج پرنٹ
+test_printers_dd	ٹیسٹ صَفہٕ خٲطرٕ چھُ پرنٹر
+test_printers_dd_n	{n} پرنٹر(s) ٹیسٹ صَفہٕ خٲطرٕ · بدلاونہٕ خٲطرٕ ٹیپ کٔرِو
+kot_test_printers_dd	ٹیسٹ پرنٹَس خٲطرٕ پرنٹر
+kot_test_printers_dd_n	ٹیسٹ پرنٹَس خٲطرٕ {n} پرنٹر · بدلُن خٲطرٕ کٔرِو دب
+test_printer_picked	ٹیسٹ آن: {name}
+test_printer_cleared	نَہ آزماونہٕ یِوان: {name}
+test_page_sent_n	ٹیسٹ صَفہٕ سوزنہٕ آمُت {n} پرنٹر(s)
+test_kot_pick_first	گۄڈٕ کٔرِو ٹیسٹ پرنٹَس خٲطرٕ پرنٹر ژٲر — پتہٕ ٹیسٹ پرنٹ
+test_kot_sent_n	ٹیسٹ پرنٹ {n} پرنٹرَن سوزنہٕ
+cancel_pick	مارک
+cancel_pick_on	نشان زد کرنہٕ آمُت
+cancel_pick_meta	منسوخ کرنہٕ خٲطرٕ نشان زد کرنہٕ آمُت
+batch_cancel	منسوخ کَرنہٕ آمُت نشان زد
+batch_cancel_n	منسوخ کَرنہٕ آمُت ({n})
+batch_cancel_none	گۄڈٕ کٔرِو اکھ یا زیادٕ سوزنہٕ آمٕژ چیٖز نشان — پتہٕ نشان والہٕ منسوخ
+batch_cancel_title	نشان والہٕ چیٖز منسوخ — اکھ وَجہ، پرٮ۪تھ حِصَس اکھ منسوخ پَرچی
+batch_cancel_ok	{n} چیٖز منسوخ · {slips} منسوخ پَرچی → {kitchens}
+batch_cancel_ok_noprint	{n} چیٖز منسوخ — پانےٚ پرنٹ چھُ بند، تَمہِ کِنی منسوخ پَرچی چھُنہٕ
+no_printer_kitchen_station	تَتھ سٹیشنَس خٲطرٕ چھُنہٕ پرنٹر
+printers_saved	محفوظ کرنہٕ آمُت
+test_page_sent	ٹیسٹ پیج سوزنہٕ آمُت — چیک کٔرِو پرنٹر
+test_page_sent_one	ٹیسٹ صَفہٕ سوزنہٕ آمُت {name} — چیک کٔرِو یہِ پرنٹر
+printers_found	لوٚب {n}: {list}
+printers_find_synced	لٔب {n} — {new} نٔو
+printer_on_device	محفوظ کرنہٕ آمُت
+printer_already_added	گۄڈَے شٲمِل کَرنہٕ
+printer_already_saved	گۄڈَے چھُ محفوظ کرنہٕ آمُت: {name}
+find_printers	پرنٹر ژھانڈِو
+printers_looking	وچھان...
+saving_printer	پرنٹر شٲمل کَرُن...
+cancelled	منسوخ کرنہٕ آمُت
+printers_tap_find	تِم پرنٹر لسٹ کرنہٕ خٲطرٕ دبٲیِو فایِنڈ یِم یہِ ڈیوائس ہیکہِ استعمال کٔرِتھ۔
+printers_none_found	کانٛہہ تہِ لوٚب نہٕ — ٹایپ کٔرِو اکھ سسٹم پرنٹر ناو یا اکھ IP (مثلاً 192.168.1.50)۔
+printer_from_find	اؠڈِٹ کَرنہٕ آمُت {name}
+kot_printer_ph	پَرچی ہُنٛد پرنٹر
+bill_printer_ph	بِلَن ہُنٛد پرنٹر
+kot_print_on	ٹِکَٹ پانےٚ پرنٹ: چالو
+kot_print_off	ٹِکَٹ پانےٚ پرنٹ: بند
+queue_refused	دُکانہٕ طرفہٕ چُھ نہٕ قبول کرنہٕ آمُت ({n}) — کاؤنٹرَس پیٹھ کٔرِو پرٮ۪تھ اکھ چیک:
+clear_not_accepted	چیک کٔرِو — یہِ فہرست صاف کٔرِو
+device_name_ph	یَمہِ آلہٕ ہُنٛد ناو
+lan_last_update	آخری اپ ڈیٹ {time}
+lan_not_accepted	{n} چُھ نہٕ قبول کرنہٕ آمُت
+connected_now	وۄنۍ رٲبطہٕ کٔرِتھ
+backup_failed	ٲخری آٹومیٹک بیک اپ گو ناکام: {e}
+backup_overdue	{n} دۄہَن خٲطرٕ چھُنہٕ کانٛہہ بیک اپ — ایپ تھٲوِو یَتھ ڈیوایسَس پیٹھ یَلہٕ تاکہِ یہِ ہیکہِ بیک اپ کٔرِتھ۔
+disk_low	صرف {mb} MB مُفت یَتھ ڈیوایسَس پیٹھ — بیک اپ گژھِ جلدٕے ناکام۔ کینہہ جاے کٔرِو خٲلی۔
+last_seen_devices	آخری بار آو وُچھنہٕ: {time}
+sync_interval	ہر {secs}s سِنک کٔرِو
+connection_to_shop	دُکانَس سۭتۍ کنیکشن
+supplier_name_ph	سپلائر ناو (یا پارٹی)
+supplier_ph	سپلائر
+switch_device	یہِ ڈیوائس کَر بدلاوُن
+take_payment	ادٲیگی کٔرِو
+tax_added_till	{tax} خصوصی
+tax_inside_price	{tax} شمولیتی
+tax_invoice	ٹیکس انوائس
+till_to_bank	کَش کاؤنٹر → بینک
+units_heading	یونٹ
+unlock_after_pairing	دَرٕج PIN
+unlock_with_login	لاگ اِن سۭتۍ کٔرِو ان لاک
+unmark	ان مارک
+update_my_password	میون پاس ورڈ اپ ڈیٹ
+update_my_pin	میون سائن اِن کٔرِو اپ ڈیٹ
+duress_heading	ایمرجنسی ان لاک PIN (صرف مٲلک)
+duress_help	اختیاری۔ اگر انلاکَس پٮ۪ٹھ تُہٕنٛدِس بَدلَس یہِ PIN دِنہٕ ییہِ، کھاتہٕ کِس تمام اِندراجَن چھِ مِٹان (فروخت، لیجر، تَوٲریٖخ) تہٕ کَش کاؤنٹر چھُ عام ہیوٗر مالِک کِس طورَس پٮ۪ٹھ کھولان — چیٖز، قۭمَت، کاؤنٹر، مُلازِم تہٕ سیٹنگ چھِ روزان۔ بَناوٹ تہٕ کانفِگ چھِ نہٕ مِٹان۔ صِرف تیلہِ کٔرِو استعمال ییلہِ تُہۍ زبردستی انلاک کَرُن پٮ۪و۔ بند کَرنَس خٲطرٕ خٲلی ترٛٲوِتھ کٔرِو محفوظ۔ کُنہِ ساتہٕ تہِ کُنہِ سنٛد PIN ہیوٗر نہٕ۔
+duress_pin_ph	ایمرجنسی PIN (4–12 ہندس)
+duress_confirm_ph	تصدیٖق کرنہٕ خٲطرٕ دُبارٕ ٹایپ کٔرِ
+save_duress_pin	ایمرجنسی محفوظ کٔرِو PIN
+clear_duress_pin	ایمرجنسی کْریو بند PIN
+duress_on	ایمرجنسی ان لاک PIN چُھ آن
+duress_off	ایمرجنسی ان لاک PIN چُھ بند
+duress_saved	ایمرجنسی ان لاک PIN آو محفوظ کرنہٕ
+duress_cleared	ایمرجنسی ان لاک PIN آو بند
+upi_amount_ph	UPI رقم
+void	رد
+write_off_ap	اے پی لیکھُن
+write_off_heading	لیٚکھِو (اَدٲیگی بغٲر صاف کَرُن)
+write_off_nil	لیکھِو / نِل بیلنس
+your_brand	تُہُنٛد برانڈ (اِن ایپ)
+your_categories	تُہٕنٛدِ زَمرہٕ
+account_kind	اکاؤنٹُک قٕسم (ٹیپ کَرُن)
+actual_total_cap	اصلی کل
+amend_help	ترمیم کرنہٕ، کالعدم یا واپسی خٲطرٕ کٔرِو فروخت ہُنٛد انتخاب۔ ترامیم چھِ پوٗرٕ تٲریخ تھاوان۔ راؤنڈ کُل چھُ اِستِمال کَرنہٕ آمُت — اؠڈِٹ کَرنہٕ آمُت اؠڈِٹ کَرنہٕ آمُت۔ خٲلی تہٕ واپسیَس خٲطرٕ ہیکہِ مٲلِک یا منیجر PIN ہٕنٛز ضروٗرت ٲسِتھ (ہیٚرٕ کٔرِتھ ٹایپ کٔرِتھ؛ تُہنٛدِس ناوَس سۭتۍ درٕج کٔرِتھ)۔
+applied_total_cap	اپلائیڈ کُل
+bank_balance	بینک بیلنس
+bank_net_today	بینک نیٹ از
+branch_export_help	ایکسپورٹ چُھ branch_snapshot_CODE_DATE.json بیک اپ فولڈرس منز لیکھان تْہ کاپی کْریو کلپ بورڈس منز۔ بییِس آؤٹ لیٹُک دۄہ امپورٹ کرنْہ باپت، تْہ کْریو امپورٹ کرنْہ آمْنئ فایلْہ بطور import_branch_snapshot.json تْہ تْہ ٹیپ کْریو امپورٹ۔
+brand_shown_help	ایپَس اندر سکرینَن پیٹھ ہاونہٕ آمُت۔ اَتھ ڈیوایسَس پیٹھ انسٹال کرنہٕ آمُت ایپ ناو تہٕ آئکن چھُ پلیٹ فارمَس پیٹھ درٕج روزان۔
+app_icon	ایپ آیکن
+logo_help	ایپَس منٛز سکرینَن پیٹھ اختیاری دُکانُک نِشانہٕ۔
+onboard_layout	تۄہہِ کیا میلان
+item_photo_help	اختیاری۔ فوٹو ورٲے، أسۍ چھِ آیٹم ناوُک ابتدٲیی حروف ہاوان۔
+stamp_heading	سٹیمپ
+stamp_image_help	چھاپنہٕ آمٕتٮ۪ن بِلَن تہٕ گاہَک ڈِسپلے پٮ۪ٹھ اختیاری مُہرُک فوٹو۔
+payment_qr_heading	ادائیگی QR
+payment_qr_image_help	بِلَن تہٕ گاہَک ڈِسپلے پٮ۪ٹھ ساکِن QR؛ نہٕ تیلہِ چھُ ادٲیگی ہیوٚرِم VPA پٮ۪ٹھ بناونہٕ آمُت ڈاینامِک UPI QR نِوان۔
+cash_in_hand	اتھس منٛز نقد (کَش کاؤنٹر)
+change_my_pin_heading	میون سائن اِن
+connect_to_server	Server سۭتۍ کٔرِو رٲبطہٕ
+counter_locked	کاؤنٹر 01 · لاک کٔرِتھ
+country_pack_help	کنٹری پیک چھُ ٹیکسُک ناو تہٕ حِسابہٕ، انسٹنٹ پے ریل، تہٕ رسیدَن پٮ۪ٹھ پرنٹ گژھَن وول کاربٲری آی ڈی سیٹ کران۔ Kumkaj چھُنہٕ کُنہِ جایہِ ٹیکس دٲخل کران یا سرکٲرۍ ای انوائس جٲری کران۔
+currency_use_help	کُنہِ تہِ تعاون یافتہ کرنسی خٲطرٕ کٔرِو سکرول تہٕ ٹیپ کٔرِو استعمال۔
+day_close_help	اکھ دوہ بند ریکارڈ کرنہٕ سۭتۍ چُھ یہٕ خلاصہٕ (تہٕ دراز تغیر اگر شمار ییہٕ کرنہٕ) آڈٹ لاگس منٛز محفوظ کران۔ یہِ چھُنہٕ کٕنُن بند کران۔
+expenses_word	اخراجات
+feature_access_help	تِم کیا ہیکن کھولِتھ — اختیاری؛ ہیرِ کُن نوکری چھیہ گۅڈے ڈیفالٹ سیٹ کران
+footer_local	مقامی SQLite · ہمیشہ آزاد · زیرو کلاؤڈ
+fresh_book_kirano	نٔو = خٲلی فہرِست (چیٖز پتہٕ کٔرِو شٲمِل)۔ کھاتہ = بۄنہٕ کٔرِو شُروعاتی سٹاک تہٕ کَم چھُ تُہۍ واجِب لِکِھو۔
+fresh_selected	تازٕ منتخب — کیٹلاگ چُھ خٲلی روزان۔ تیار گژھنہٕ پتہٕ کٔرِو ٹیپ کرنہٕ۔
+gross_word	گراس
+how_start	تُہۍ کِتھٕ کٔنۍ چھِو شروع کرُن یژھان؟
+kot_print_help_kirano	کِرانہٕ کاؤنٹَرَس پٮ۪ٹھ چھُنہٕ استعمال۔
+later_country_pack	پتہٕ: سیٹنگ → پنُن کنٹری پیک ٹیکس تہٕ پے لیبلَن خٲطرٕ لاگو کٔرِتھ۔
+local_badge	مقامی
+mix_type_hint_kirano	نقد رقم / UPI / کارڈ / کریڈٹَس مَنٛز تقسیٖم کٔرِو اگر ضوروٗرَتھ آسہِ۔ کریڈٹَس خٲطرٕ چھُ اَکھ گراہکَن ہٕنٛز ضروٗرت۔
+money_in_sales	پٲنسہٕ (فروخت)
+net_word	نیٹ
+offline_badge	آف لائن
+optional_login_help	اختیاری لاگ اِن (ID + پاس وٲرڈ)۔ مٲلک چُھ یہٕ اکہ لٹہٕ سیٹ کران۔ صرف اِستِمال کَرن وول ہیکہِ پَتہٕ پاس وٲرڈ بَدلٲوِتھ۔
+or_unlock_login	یا لاگ اِن آی ڈی + پاس وأرڈ سۭتۍ ان لاک
+permission_preset	نوکری (سکرین تہٕ پٲنسہٕ عملہٕ سیٹ کران)
+preset_help_kirano	کیشیئر: کٕنُن۔ منیجر: کٕنُن + چیٖز + کالعدم / ترمیم۔
+product_locked_kirano	Kirano
+product_only_kirano	Kirano چھُ کِرانہٕ آپریٹِنگ سِسٹَم: کاؤنٹر فروخت، سٹاک، قرض تہٕ کھاتہ — تُہٕنٛدٮ۪ن ڈیوایسَن پٮ۪ٹھ آف لائن۔
+purchases_cogs	خریدٲری (COGS)
+qty_cap	مقدار
+restore_help	بحال: اکھ بیک اپ تُلِو۔ کتابہ چھیہ تمہ وقتہ یتھہ پاٹھۍ کھلان۔ کتابہٕ یتھ کٔنۍ تم وۄنۍ چھِ گۄڑٕ محفوظ کرنہٕ آمٕتۍ، لہذا ییہ یہ واپس کرنہٕ۔
+wipe_data_heading	مُقٲمی ڈیٹا کٔرِو حذف
+wipe_data_help	صِرف مالِک — Windows اَن اِنسٹال ہیوٗر اختیار۔ وَپارٕک ریکارڈ چھُ وَپارُک تَوٲریٖخ صاف کَران مگر چیٖز تہٕ سیٹ اپ تھاوان (ایمرجنسی انلاک PIN ہیوٗر)۔ دُکان سیٹ اپ چھُ کھاتہٕ کِس ڈیٹابیسَس ہٹاوان۔ سکرین پسند چھِ وِنڈو/زبان صاف کَران۔ مالِک PIN سۭتۍ کٔرِو تصدیق۔ ٹیمَس پٮ۪ٹھ ایمرجنسی انلاک PIN چھُ الگ (انلاکَس پٮ۪ٹھ چھُپاونہٕ آمُت مِٹاؤن)۔
+wipe_trading	کاروبٲری ریکارڈ
+wipe_schema	دُکانُک سیٹ اپ
+wipe_ui	سکرین ترجیحات
+wipe_owner_pin_ph	مٲلِک PIN مِٹاونہٕ خٲطرٕ
+wipe_delete_selected	سلیکٹڈ کٔرِو ڈیلیٹ
+wipe_owner_only	صرف مٲلِک ہیکہِ مُقٲمی ڈیٹا ڈیلیٹ کٔرِتھ۔
+restore_owner_only	صرف مٲلِک ہیکہِ بیک اپ بحال کٔرِتھ۔
+wipe_owner_pin_needed	مُقٲمی ڈاٹا ڈیلیٹ کَرنہٕ خٲطرٕ کٔرِو مٲلِک PIN دَرٕج۔
+wipe_nothing_selected	گۅڈٕ کیاہ کرو حذف کرنُک انتخاب۔
+wipe_done	منتخب مقامی ڈیٹا آو حذف کرنہٕ۔
+wipe_schema_done	دُکان سیٹ اپ آو مسح کرنہٕ — جٲری تھاونہٕ خٲطرٕ کٔرِو Server یا Client ژٲرِو۔
+rounded_total	راؤنڈ ٹوٹل
+setup_app_kirano	Kirano کٔرِو سیٹ
+shop_logo_optional	دُکانُک لوگو (اختیاری)
+stock_type_help	آیٹم ناو ٹایپ کٔرِو (امیک اکھ حصہ چُھ کٲفی)، اکھ مقدار کٔرِو وضاحت، پتہٕ ایڈجسٹ کٔرِو۔ تِم چیٖز یِم نہٕ وٕنیُک تام گٔنزراونہٕ آمٕتۍ چھِ، تِمن چھِ اکہِ لٹہِ ٹریکنگ شروع کرنٕچ ضرورت۔
+team_owner_help	کانٛہہ نفر شٲمِل کرنہٕ خٲطرٕ ترٲوِو نفر فیلڈ: ناو، نوکری، یوزر نیم، PIN، تہٕ اکھ اختیاری پاس وٲرڈ، پتہٕ کٔرِو کِلک ایڈ۔ اَمی قٕسمُک فارم ایڈٹ کرنہٕ خٲطرٕ کٔرِو اکھ نفر سلیکٹ- ناو، یوزر نیم، پاس وٲرڈ، سکرین، تہٕ رائٹ- پتہٕ کٔرِو سیو۔ تُہند پنُن PIN تہٕ پاس وأرڈ چُھ بۄنہٕ کَنہِ اَکہِ سایِن اِن خٲطرٕ اِستِمال کَرنہٕ یِوان۔ مٲلِک چھُنہٕ بیٚیہِ کٲنٛسہِ ہُنٛد PIN بَدلاوان ۔
+staff_name_ph	سٹاف ناو
+staff_copy_hire_ph	کاپی سیٹ اپ کْریو (اختیاری)
+staff_copy_hire	أمِس نفرٕ سُنٛد سیٹ اپ کٔرِو استعمال
+staff_edit_name_ph	ناو دِیُو دِیُن
+staff_rename	ناو محفوظ کٔرِو
+staff_copy_edit_ph	بییِس نفرٕ سُند سیٹ اپ کْریو کاپی
+staff_copy_edit	تِہُند سیٹ اپ کٔرِو ژارنہٕ آمتِس پیٹھ کاپی
+staff_copy_edit_onto	تِہُند سیٹ اپ کْریو کاپی {name} پیٹھ
+staff_deactivate_named	{name} ہٹٲوِو
+staff_renamed	ناو آو محفوظ کرنہٕ
+staff_setup_copied_hire	سیٹ اپ کْریو کاپی کْریو {name} پیٹھ — اکھ نْو ناو سیٹ کْریو تْہ PIN ، پْتْہ کْریو سٹاف ایڈ
+staff_setup_copied_edit	کاپی کْریو {from} سیٹ اپ {to} پیٹھ
+staff_copy_need_selected	گۄڈٕ کُس چھُ اؠڈِٹ کَرنہٕ آمُت
+staff_copy_need_source	تُلِو کٔمۍ سُنٛد سیٹ اپ کاپی کرُن
+staff_copy_same	سُہ چُھ سُے نفر — بیاکھ کٲنٛسہِ ژٲرِو
+staff_rename_need_selected	گۅڈٕ کُس ناو بدلاوُن منتخب کٔرِو
+team_pick_hint	ژٲرِو کَمَس بدلُن چھُ — سکرین، پونٛسہٕ کِس حق تہٕ سٹیشن چھِ صِرف تَتھ نفرَس خٲطرٕ ہاوان۔
+team_stations_help	تِم سٹیشن یِم تِم استعمال کٔرِتھ ہیکَن
+team_stations_changed	سٹیشن بدلٕ — یَتھ نفرَس ہُنٛد سیٹ اپ کٔرِو محفوظ
+team_features_changed	سکرین بدلیومُت — یَتھ نفرٕ سٕندِ خٲطرٕ کٔرِو سیٹ اپ محفوظ
+team_rights_changed	حقوٗق بدلٲوِتھ — یَتھ شخصہٕ سٕندِ خٲطرٕ سیو سیٹ اپ
+they_owe_us	تِم چھِ اسہِ مقروض
+unit_at_cap	یونٹ @
+units_help	آیٹم لیبلَن خٲطرٕ کوڈ (کِلو، ٹُکرٕ، بیگ)۔ پرتھ یونٹس گژھہِ براہ راست یا باقی یونٹن ذریعہٕ اکس معیارس (kg · cm · ml · pc) سۭتۍ لنک کرُن، یتھ کٔنۍ 1 کریٹ = 2 باکس تہٕ 1 باکس = 20 سینٹی میٹر۔ تبادلہٕ: 1 پیٹھ = عنصر تام۔ کرنسی چھیہ نہ زانہہ اکایی آسان۔
+units_picker_help	خٔریٖدٲری تہٕ چیٖز ژارنَس منٛز یونِٹ ہاوُن خٲطرٕ کٔرِو چالو/بند دب۔ بند یونِٹ تہِ چھِ بدلَن۔
+unit_picker_on	چالو
+unit_picker_off	بند
+we_owe_them	أسۍ چھِ تِمن ہُنٛد مقروض
+who_unlocking	کُس چُھ ان لاکِنگ کران؟
+locked_word	لاک کٔرِتھ
+show_pin	PIN ہاو
+hide_pin	ہٲوِو PIN
+set_owner_pin	سیٹ اونر PIN
+enter_owner_passcode	مٲلِک پاس کوڈ کَر دَرٕج
+enter_staff_passcode	سٹاف پاس کوڈ کٔرِو دَرٕج
+pin_count_zero	0 / 12 ہندسہٕ · کم از کم 4، پتہٕ ٹھیک
+pin_count_need	{} / 12 ہندسہٕ · ضرورت {} مزید
+pin_count_full	12 / 12 ہندسہٕ · اوکے دبٲیِو
+pin_count_ready	{} / 12 ہندسہٕ · تَیار آسنہٕ وِزِ دبٲیِو اوکے
+pin_hint_choose	4–12 ہندسہٕ ژٲرِو · محفوظ کرنہٕ خٲطرٕ کٔرِو دٲخل یا ان لاک
+pin_hint_new	نٔو 4–12 ڈجِٹ مٲلِک PIN · دٲخل یا ان لاک کٔرِو
+pin_hint_shop_code	خٔریٖدٲری ہُنٛد آلہٕ · پیئرنگ کوڈ {}
+pin_hint_books	اتھ آلہٕ منٛز چھ کتابہٕ تھاوان
+pin_hint_paired	اضٲفی کَش کاؤنٹر جوڑِتھ — کٕننہٕ خٲطرٕ انلاک کٔرِو
+pin_hint_pair_first	اضٲفی کَش کاؤنٹر — گۄڈٕ کٔرِو دُکانٕک ڈیوایسَس سۭتۍ جوڑ
+unlock_to_continue	جٲری تھاونہٕ خٲطرٕ کٔرِو ان لاک
+no_staff_yet	وٕنیُک تام کانٛہہ سٹاف نہٕ — بطور مٲلک، پتہٕ ٹیم انلاک
+status_server_set_pin	Server موڈ — سیٹ مالک PIN
+status_server_tills	Server موڈ — اضٲفی کَش کاؤنٹر ہیکن شٲمِل گٔژھِتھ۔ انلاک کٔرِو
+status_server_unlock	Server موڈ — انلاک کْریو بطور مالک
+status_client_unlock	Client موڈ — کٕننہٕ خٲطرٕ انلاک کٔرِو
+icon_new_selected	آئیکن: نٔو فایل منتخب — ٹیپ کٔرِو برانڈ محفوظ
+icon_custom	آئیکن: کسٹم وینیو مارک
+icon_default	آئیکن: Kumkaj مارک (ڈیفالٹ) — کسٹم اکھ منتخب
+logo_yours	لوگو: تُہُنٛد دُکانُک لوگو — سکرین تہٕ رسیدَن پٮ۪ٹھ ہاونہٕ آمُت
+logo_default	لوگو: Kumkaj نشان (ڈیفالٹ) — اگر تۄہہ نِش چُھ پنُن انتخاب
+tmpl_current	موجودٕ: {} — {}
+tmpl_selected	منتخب: {} — {}
+setup_complete	سیٹ اپ مُکمل
+onboard_fresh_tmpl	تازٕ · {} — کیٹلاگ چھُ خٲلی شروع گژھان؛ چیٖزَن مَنٛز کٔرِو چیٖز شٲمِل، پَتہٕ کَرنہٕ آمُت۔
+onboard_book_tmpl	کتاب · {} — آیٹم ایڈ کٔرِو تہٕ اوپنِنگ کریڈٹ، پتہٕ کٔرِو مُکمل.
+onboard_template_tmpl	اگر تُہۍ یژھان چھِو جایہِ ہُنٛد ناو تھاوُن، پتہٕ ژٲرِو کِتھٕ کٔنۍ کرو شُروٗع۔
+tmpl_blurb	کِرانہٕ کاؤنٹر: فروخت، سٹاک، کھاتہ، سپلائرَس نِش خٔریٖدٲری، کھاتہ۔
+tmpl_how	کاؤنٹَرَس پٮ۪ٹھ کٕنِو؛ سٹاکَس خٲطرٕ کٔرِو خٔریٖدٲری؛ دۄہُک کھاتہ خٲطرٕ کھاتہ۔
+reports_facet_title	رِپورٹ
+reports_facet_help	ڈے بُکس، پارٹی ایجنگ، بینک پوسٹس، تہٕ پیریڈ پی اینڈ ایل۔
+against_bill_ph	بِلہِ خلاف # ہیرِ کُن (اختیاری)
+aliases_ph	لۄکُٹ کوڈ تہٕ عرف — کاما سۭتۍ الگ (مثلَن MG02, atta)
+amount_blank_full_ph	رَقَم (مُکمل بیلنس خٲطرٕ تھاوِو خٲلی)
+amount_owed_ph	واجب الادا رقم
+amount_ph	رقم
+amount_received_ph	موصولہ رقم
+amount_we_pay_ph	رقم یُس أسۍ دِوان چھِ
+business_name_ph	کاربارُک ناو
+category_new_ph	زَمرہٕ (اختیاری، بَناونہٕ آمُت اگر نٔو)
+code_bag_ph	کوڈ (بیگ)
+conv_factor_ph	عنصر (25 = 1 بیگ → 25 کلوگرام)
+country_code_ph	کنٹری کوڈ مثلاً IN, GB, US, AE, BR
+credit_khata_amount_ph	کریڈِٹ / کھاتا رقم
+credit_limit_ph	کریڈٹ حد (0 = نہٕ)
+from_code_ph	کوڈ (بیگ) پٮ۪ٹھٕ
+item_name_lang_ph	چیٖزُک ناو — یہِ کٔرِو پننہِ زبانہِ منٛز ٹایپ
+login_id_opt_ph	یوزر ناو (ضروری، منفرد)
+manager_pin_ph	منیجر PIN منظوٗری کَرنہٕ خٲطرٕ (صِرِف اگر تُہۍ ہیکِو نہٕ کالعدم کٔرِتھ)
+new_branch_name_ph	نٔو برانچ ناو
+new_password_ph	نْو پاس وأرڈ (اختیاری)
+new_pin_ph	نیو PIN (4–12 ہندس)
+note_bank_ph	نوٹ (ڈپازٹ، واپسی، ...)
+note_buy_expense_ph	نوٹ (ایندھن، کرایہ، ...)
+note_expense_ph	نوٹ (ایندھن، دفتر، ...)
+options_kirano_ph	آپشن — سائز*: لۄکٹ=199، بٔڑ=399 | ٹاپنگ+3: چیز=40، زیتون=30 | اضٲفی پنیر=40
+part_second_way_ph	حصہٕ بذریعہ دیمہٕ طریقہٕ (اختیاری)
+phone_ph	فون
+place_name_ph	یَمہِ جایہِ ہُنٛد ناو
+qty_example_ph	Qty (مثلاً 1.5 کلوگرام خٲطرٕ)
+quantity_ph	مقدار
+reason_required_ph	وجہ (ضروری)
+role_title_ph	رول ٹائٹل (مثلاً بارسٹا)
+service_pct_ph	سروس ٪ اختیاری 0/10/12
+short_code_ph	شارٹ کوڈ (MG02)
+starting_password_ph	اِبتِدٲیی پاس وأرڈ (اختیاری)
+starting_pin_ph	PIN (4–12 ہندس) شروع
+station_name_ph	سٹیشنُک ناو (اختیاری)
+station_new_ph	حِصہٕ (اختیاری)
+table_name_ph	کاؤنٹر / بے ناو
+tax_rate_ph	ٹیکس ریٹ ناو یا ٪ — معیاری، کمی، 0، 5، 12، 18، 20
+to_code_ph	کوڈ کَرنہٕ خٲطرٕ (کِلوگرام)
+uncleared_no_ph	اَمہِ کَتھِ مَنٛز چھُ اَکھ مَضموٗ
+unit_cost_ph	یونٹ لاگت
+unit_name_bag_ph	ناو (بیگ)
+unit_plate_ph	یونٹ (پلیٹ / پی سی — خالی = ہر ایک)
+pay_credit	کریڈٹ
+book_kind_today	أزِچ کتابہٕ
+book_kind_month	ییٚمہِ رٮ۪تٕچ کتابہٕ
+book_kind_aging	بقایا / ڈیبِٹ کریڈٹ
+book_kind_balance	بیلنس شیٹ
+order_help	اکھ چیٖز شٲمِل کرنہٕ خٲطرٕ دبٲیِو۔
+floor_help	یہِ دُکان چھِ کاؤنٹَرَس پٮ۪ٹھ کٕنان۔ میز تہٕ ڈائنِنگ فرش چھُنہٕ Kirano ہُنٛد حِصہٕ۔
+kitchen_help	کاؤنٹر دُکانَس پٮ۪ٹھ چھُنہٕ استعمال۔
+kitchen_empty	کانٛہہ کھُلا ٹِکَٹ چھُنہٕ (کاؤنٹر دُکان چھِ عام طور یِہ سکرین استعمال نہٕ کَران)۔
+add_a_table	ٹیبل کٔرِو شٲمِل
+add_station_heading	دُکانُک حِصہٕ کٔرِو شٲمِل
+categories_help	اَتھ زمرَس تَحَت کَرنہٕ خٲطرٕ کٔرِو اِستِمال کَرنہٕ خٲطرٕ۔ فوٹو چھُ زمرَس اکھ تصویر دِوان۔ اکہِ ورٲے چھُ یہِ امِکۍ ابتدٲیی حروف ہاوان۔
+dish_search_ph	چیٖز یا لۄکُٹ کوڈ ژھانٛڑِو…
+tile_free	مُفت
+tile_occupied	قبضہٕ
+tile_food_ready	کھٮ۪ن تیار
+tile_bill_printed	بل چھاپنہٕ آمُت
+tile_paid	ادا
+tile_bill_btn	بِل
+tile_occupy_btn	سیٹ پژھ
+tile_free_btn	فری ٹیبل
+tile_ready_btn	فری ٹیبل
+tile_undo_bill	بِل کَر واپس
+summary_busy	ٹیبٕل چھِ آوُر
+summary_to_collect	جمع کرنہٕ خٲطرٕ
+summary_on_floor	ہالَس پیٹھ
+floor	خٔریٖدٲری کٔرِو
+sizes_as_items_ph	سایِز بطور الگ الگ چیٖز (اختیاری) — ہاف=120، مُکمل =200
+dish_group_ph	پیک سایِزُک جَماتھ (اختیاری) — مثلَن آٹہٕ 1kg / 5kg
+discount	چھوٹ
+remove_discount	رِعایت ہٹٲوِو
+apply_discount	رِعایت کٔرِو درخواست
+save_opening_cash	اوپنِنٛگ کیش بَچٲوِو
+close_shift_print	شفٹ تہٕ پرنٹ سلپ کٔرِو بند
+area_prices_ph	ایریا قیمتہٕ (اختیاری) — AC=220، پارسل=210
+discount_ph	10٪ یا 50
+discount_reason_ph	وجہ (مثلاً باقاعدہ مہمان، ژیر کھیٛن)
+opening_float_ph	آز صبحٲے ترٛاو کیش درازَس منٛز
+shift_counted_ph	حَوالہٕ وِزِ نقد رقم گٔنزراوٕنۍ
+opening_float	اوپننگ کیش (فلوٹ)
+shift_handover	شفٹ ہینڈ اوور
+shift_since	امہ تبدیلی پتہٕ
+expected_in_drawer	دراز منٛز متوقع
+right_discount	رِعایت دِیِو
+floor_in_kitchen	جٲری
+floor_eating	خدمت کٔرمٕژ
+pick_category	اکھ زمرٕ ژٲرِو
+close_category_list	زٲژ ہُنٛد فہرست بنٛد کَرُن
+new_category_row	نٔو زمرہٕ — بَناونہٕ آمُت ییٚلہِ تُہۍ چیٖز محفوظ کٔرِو
+your_category	تُہُنٛد زَمرٕ
+suggested_category	تجویز — اسہِ چیٖزَو منٛز
+category_search_ph	زمرہٕ — پنُن تلاش کٔرِو یا اکھ نوٚو ٹایپ کٔرِو
+line_sent_state	سوزنہٕ
+line_nc_state	مُفتٲحی (NC) — چُھ نہٕ چارج کرنہٕ آمُت
+cancel_item_short	منسوخ
+nc_short	NC
+charge_again_short	چارج کٔرِو
+move_short	منتقل کٔرِو
+cancel_item_title	یہِ چیٖز کٔرِو منسوخ — بیک آفِسَس چھِ منسوخ پَرچی مِلان
+nc_item_title	یہِ چیٖز بَنٲیِو مُفتٲحی (0)
+charge_again_title	یہِ چیٖز کَر بیٚیہِ چارج
+move_item_title	یہِ چیٖز کَر بیٚیِس ٹیبلس پٮ۪ٹھ منتقل
+already_cooked	گۄڈَے رَننہٕ آمُت (ضایع)
+not_cooked_yet	وٕنیُک تام چھُنہٕ رَننہ
+return_to_customer	گراہکَس کُن واپسی
+short_by	مختصر
+tip_not_sale	ٹِپ (سٹاف، سیل نہٕ)
+right_settle	ادٲیگی کٔرِو
+right_cancel_sent	سوزنہٕ آمُت آیٹم کَر کینسل
+right_complimentary	تعریفی (NC)
+right_move_table	کاؤنٹر کٔرِو پکناو / رَلاو
+right_reprint	بل کٔرِو دُبارٕ پرنٹ
+right_allowed	اجازت دِنہٕ آمُت
+right_with_approval	منظوٗری سۭتۍ
+right_denied	اجازت چھُنہٕ
+editing_staff	ایڈیٹنگ
+finding_server	دُکانُک سرور ژھانڈان یَتھ Wi‐Fi...
+no_server_found	کانٛہہ تہِ لوٚب نہٕ۔ Server پیٹھ: سیٹنگ → باقی ڈیوایس → اضٲفی کَش کاؤنٹرَن ہُنٛد اجازت (سُہِ Wi‐Fi)۔ یا تَتہِ ہاونہٕ آمُت IP لِکِو۔
+servers_found_pick	تتھ دُکانس پیٹھ دبٲیِو یتھ سۭتۍ تُہۍ رٲبطہٕ کرُن یژھان چھِو۔
+server_host_selected	{host} استعمال کْریو — پیئرِنگ کوڈ کْریو اینٹر، تْہ کْریو وْنئ پیئر۔
+print_bill	پرنٹ بل
+table_actions	کاؤنٹَرَک کٲم
+move_merge_table	منتقل کَرُن / رَلاونہٕ آمُت ٹیبل
+move_help	یَتھ کاؤنٹَرَک آرڈر کُنہِ خٲلی میزَس پٮ۪ٹھ نِیُو، یا کُنہِ چَلان آرڈَرَس منٛز کٔرِو رَلاو۔
+move_target_ph	کاؤنٹَرُک ناو
+approval_pin_ph	مینیجر PIN (صرف اگر پرژھنہٕ آمُت)
+move_here	ییتہِ منتقل کٔرِو
+merge_into	اَتھ مَنٛز کٔرِو رَلاونہٕ
+line_reason_ph	وَجہ (مثلَن گاہَکَن ذہن بدلاو، سٹاک ختُم)
+line_qty_ph	کٲتیاہ چھُ کینسل کرُن (خٲلی تراوُن = سارِنٕے)
+line_target_ph	ٹیبلَس کُن منتقل کٔرِو (مِثالَن D5)
+confirm	تصدیق
+menu_search_ph	آیٹم یا شارٹ کوڈ ژھانڈ
+customer_paid_ph	گراہک ادا کٔرِتھ
+tip_ph	ٹِپ
+table_area_ph	علاقہٕ (مثلاً ڈائن ان، پارسل، اے سی)
+table_range_ph	واریاہ اکی ساتہٕ: D1-D20
+add_these_tables	یِم کاؤنٹر کٔرِو شٲمِل
+remove_these_tables	یِم کاؤنٹر کٔرِو ہٹٲوِو
+table_remove_ph	ہٹٲوِو: T1-T24، یا أکِس ٹیبلُک ناو
+find_server	دُکانُک سرور ژھانٛڑِو
+bill_format	بِل فارمیٹ
+bill_format_help	پرٮ۪تھ بِلَس پٮ۪ٹھ چھُ تُہٕنٛزِ دُکانہِ کِس ناوَس بۄنہٕ چھاپان۔ لائنہٕ | سۭتۍ کٔرِو الگ (مثلَن MG Road, Rajkot | Ph 98250 00000)۔
+bill_header_ph	ایڈریس | فون
+fssai_ph	FSSAI / دُکان لائسنس نمبر (اختیاری)
+bill_footer_ph	فوٹر (مثلاً شُکریہ، دُبارٕ وزِٹ)
+save_bill_format	بِلہِ ہُنٛد فارمیٹ کٔرِو محفوظ
+kot_format	پَرچی فارمیٹ
+kot_format_help	فہرِستَس منٛز کُنہِ خانَس پٮ۪ٹھ کٔرِو دب۔ ہاوُن، اکھَر سایِز تہٕ موٹٲے چھِ ہیوٚرِم ژارِتھ پَرچی قِسمَس کِس تَتھ خانَس پٮ۪ٹھ لگَن۔ پرٮ۪تھ قِسم چھِ پنُن سایِز تہٕ موٹٲے تھاوان۔
+kot_format_fields	فیلڈز
+kot_field_next	بیاکھ فیلڈ
+kot_field_show	ہاوُن
+kot_field_hide	چھُپاوُن
+kot_field_on	ہاو
+kot_field_off	ہوٗر کَر
+kot_field_size	فانٹ سایِز
+kot_field_size_ph	مثلاً 16، 20، 24، 28، 32...
+kot_weight_light	گاش
+bill_kot_panel_help	بِلُک بَناوٹ تہٕ کھجَر۔ کیشیئر چھُ سُہ یُس بِل کاڈان یا طے کَران — فروختُک پوٗرٕ قِصہٕ چھُ کھاتَس منٛز روزان۔
+std_size_ph	مثلاً 18، 20، 26...
+kot_show_shop	دُکانُک ناو
+kot_hide_shop	ژوٗرِ دُکان
+kot_show_time	وَکھ
+kot_hide_time	ہایِڈ ٹایِم
+kot_show_waiter	کیشیئر
+kot_hide_waiter	کیشیئر چھُپٲوِو
+kot_show_station	سٹیشن
+kot_hide_station	ہایِڈ سٹیشن
+kot_show_table	کاؤنٹر
+kot_hide_table	ٹیبل کٔرِو ہٲوِو
+kot_show_kot_no	ٹِکَٹ نمبر
+kot_hide_kot_no	ٹِکَٹ نمبر چھُپٲوِو
+kot_width	پیش نظارٕ لَپیٹ (کھجَر پَرچی ٹیبَس پٮ۪ٹھ تھٲوِو)
+kot_width_58	58 mm
+kot_width_80	80 mm
+kot_kind_heading	ٹِکَٹُک قِسم
+kot_kind_original	اصلی
+kot_kind_duplicate	ڈپلیکیٹ
+kot_kind_modified	ترمیم شُدٕ
+kot_kind_cancelled	منسوخ کرنہٕ آمُت
+kot_style_heading	فیلڈُک قٕسم سایِز تہٕ وزن
+kot_style_title	عنوان
+kot_style_item_qty	آئٹم · Qty
+kot_style_field_pick	ژٲرِو فیلڈٕ
+kot_weight_regular	باقٲعدٕ
+kot_weight_bold	بولڈ
+kot_align	صف بندی کٔرِو
+kot_align_start	شروع کرُن
+kot_align_center	مرکز
+kot_align_end	اند
+content_width	موادُک چوڑائی (ملی میٹر)
+content_width_bill	بِلہِ ہُنٛد موادُک کھجر (ملی میٹر)
+content_width_kot	ٹِکَٹُک کھجَر (mm)
+content_width_ph	یا ٹایپ کٔرِو موادُک کھجر، 40–210 ملی میٹر
+content_width_help	یہِ پَرچی کِتھ کھجَر چھاپہِ۔ بِل چھُ پنُن کھجَر تھاوان۔
+content_width_bill_help	گاہَکُک بِل کِتھ کھجَر چھاپہِ۔ گوڈائے 210 mm (صفحہٕ)۔ 58 mm تَنگ پَرچی، 80 mm کھجَر پَرچی، 112 mm 4-اِنچ، 210 mm A4-کھجَر۔ 40 پٮ۪ٹھ 210 تام کانٛہہ تہِ قَدر لِکِھو۔ ٹِکَٹَن ہُنٛد پنُن کھجَر چھُ پَرچی ٹیبَس پٮ۪ٹھ۔
+content_width_kot_help	ٹِکَٹ کِتھ کھجَر چھاپہِ۔ گوڈائے 80 mm۔ 58 mm تَنگ پَرچی، 80 mm کھجَر پَرچی، 112 mm 4-اِنچ، 210 mm صفحہٕ۔ 40 پٮ۪ٹھ 210 تام کانٛہہ تہِ قَدر لِکِھو۔ گاہَک بِلَن ہُنٛد پنُن کھجَر چھُ بِل ٹیبَس پٮ۪ٹھ۔
+vp_paper_width	موادُک چوڑائی (ملی میٹر)
+vp_paper_width_ph	یا ٹایپ کٔرِو موادُک کھجر، 40–210 ملی میٹر
+vp_paper_width_help	کھجَر چھُ بِل تہٕ پَرچی فارمیٹَس منٛز طے گَژھان — بِلَس خٲطرٕ (گوڈائے 210 mm) تہٕ ٹِکَٹَس خٲطرٕ (گوڈائے 80 mm) الگ الگ۔
+kot_size	فانٹ سایِز
+kot_size_s	لَکُٹ
+kot_size_m	عام
+kot_size_l	بۆڈ
+std_size	فانٹ سایِز
+kot_copies	کاپیہٕ
+kot_copies_1	1
+kot_copies_2	2
+kot_copies_3	3
+kot_title_ph	عنوان (خٲلی = TICKET)
+kot_footer_ph	بیک آفِس نوٹ (اختیاری)
+kot_preview	جھلک
+save_kot_format	پَرچی فارمیٹ محفوظ کٔرِو
+test_kot_format	ٹیسٹ پرنٹ
+test_kot_sent	ٹِکَٹُک نمونہٕ سوزنہٕ
+test_bill_format	ٹیسٹ بِل
+test_bill_sent	بِلُک پیش نظارٕ آو سوزنہٕ
+test_print_no_printer	اَمہِ نوکری خٲطرٕ چھُنہٕ کانٛہہ پرنٹر — یَتھ سکرینس پیٹھ اکھ ژٲرِو
+kot_format_saved	پَرچی فارمیٹ محفوظ
+std_print	بِلہِ ہُنٛد پرنٹ سایِز
+std_print_help	OS / دستاویز پرنٹرَن پٮ۪ٹھ Standard کھڑٮ۪و تہٕ پَدُر بِل کٲمَن خٲطرٕ اکھَر سایِز (پوٗنٹ دِیُو — لۄکُٹ/عام/بۆڈ نہٕ)۔ دۄشوے سَمتَن منٛز اکھُے سایِز۔
+std_size_s	لَکُٹ
+std_size_m	عام
+std_size_l	بۆڈ
+save_std_print	بِلہِ ہُنٛد پرنٹ سایِز کٔرِو محفوظ
+std_print_saved	بِلہِ ہُنٛد پرنٹ سایِز آو محفوظ کرنہٕ
+print_brand_kit	پرنٹ برانڈ کٹ
+print_brand_kit_help	بِلَن ہٕنٛدِس تہِ پٮ۪ٹھ تہٕ LAN گاہَک ڈِسپلے پٮ۪ٹھ اختیاری مُہر تہٕ ادٲیگی QR فوٹو۔ ادٲیگی QR فوٹو نہٕ آسہِ تیلہِ تہِ چھُ ہیوٚرِم VPA پٮ۪ٹھ ڈاینامِک UPI QR چَلان۔
+choose_stamp	ژٲرِو ٹِکٹہٕ
+clear_stamp	صاف سٹیمپ
+stamp_set	مُہر: فایلَس منٛز — گاہَک ڈِسپلے پٮ۪ٹھ چھِ ہاوان تہٕ چھاپنہٕ آمٕتٮ۪ن بِلَن پٮ۪ٹھ چھُ ناو یِوان
+stamp_none	سٹیمپ: کانٛہہ تہِ نہٕ
+choose_payment_qr	ادٲیگی ہُنٛد انتخاب کٔرِو QR
+clear_payment_qr	صاف ادٲیگی QR
+payment_qr_set	ادٲیگی QR: فایلَس منٛز — گاہَک ڈِسپلے پٮ۪ٹھ چھُ ہاوان (تَتہِ رَقَم والٮ۪س UPI QR جاے)
+payment_qr_none	اَدٲیگی QR: کانٛہہ تہِ — رقم UPI آی ڈی پٮ۪ٹھٕ UPI
+aggregator_import	ایگریگیٹر آرڈرز (فایل)
+aggregator_import_help	اختیاری لوکل امپورٹ: import_aggregator_orders.json تھٲوِو بیک اپ فولڈرس منز (ایرے یا {"آرڈرز":[...]})، تْہ تھپ کْریو امپورٹ۔ زانہہ تہِ کاؤنٹر بُلاک کٔرِتھ۔ لائیو Zomato/Swiggy چُھ کلاؤڈ۔
+import_aggregator_file	امپورٹ ایگریگیٹر فایل
+team_pick_ph	اؠڈِٹ کَرنہٕ خٲطرٕ چھُ اؠڈِٹ کَرنہٕ آمُت — ناو، یوزر ناو، یا تُلُ
+select_staff	یہِ سٹاف ژٲرِو
+rights_help	یَتھ نفرَس کِس پونٛسہٕ کِس کٲم — بدلُن خٲطرٕ کٔرِو دب: اجازت دِنہٕ آمُت → مالِک PIN ضروٗرت → اجازت چھُنہٕ۔ بل کٔرِو دُبارٕ پرنٹ چھُ صِرف بِلَن خٲطرٕ؛ حِصہٕ چھِ بۄنہٕ کَنہِ فہرِستَس منٛز۔
+dish_picker_help	اسہِ چیٖز ژھانٛڑِو یا وُچھِو تہٕ ناو تہٕ فوٹو بَرُن خٲطرٕ کٔرِو اَکِس پٮ۪ٹھ دب — یا پنُن ناو تھٲوِو۔ پنُن قۭمَت تھٲوِو (0 تہِ چھُ ٹھیک)، پتہٕ چیٖز کٔرِو شٲمِل۔
+close_dish_list	چیٖز فہرِست بند کٔرِو
+own_item_name	یہِ کٔرِو پنُن چیٖز ناو پٲٹھۍ استعمال
+on_your_menu	فہرِستَس منٛز
+edit	درست کٔرِو
+schemes	سکیمَن / پیشکشَن ہٕنز
+schemes_help	اکھ ہِیو، اکھ مِلیو، فیصد رعایت، تہٕ مُقرَر بنڈل۔ مثال: 2 چاول ہِیو 1 تیٖل مِلیو۔
+scheme_bogo_ph	2 چاول ہِیو 1 تیٖل مِلیو
+add_scheme	BOGO شٲمِل کٔرِو
+schedule_ph	گَنٛٹہٕ — Mon-Fri 07:00-11:00 یا Evening 17:00-19:00=150
+upi_vpa_ph	UPI ID (VPA)
+upi_payee_ph	UPI payee ناو (اختیاری)
+upi_qr	UPI QR
+show_upi_qr	شو UPI QR
+close_upi_qr	بند کٔرِو
+upi_qr_help	گاہَک چھُ سکین کٔرِتھ ادٲیگی کَران۔ ادٲیگی پتہٕ ادٲیگی کٔرِو دَبِو۔ دوٚیِم سکرین: LAN پٮ۪ٹھ سرور URL /display کھلاوِو۔
+kot_recall	یاد کرُن
+recently_done	حالٕے کرنہٕ آمُت
+recall_kot_ph	واپس اننہٕ خٲطرٕ ٹِکَٹ #
+role_help_customer	کردار: گراہک — کھتا (تِم چھِ اسہِ مقروض)۔ اکوے پارٹی ہیکہِ سٹاک تہِ فراہم کٔرِتھ۔
+role_help_both	کردار: کسٹمر + سپلائر — اکھ پارٹی، کھاتا تہٕ قابل ادائیگی لیجر، رپورٹس منٛز نیٹ۔
+role_help_supplier	کردار: سپلائر — أسۍ چھِ تِمَن خٔریٖدٲری ہُنٛد مقروض۔
+dine_in_pick_table	کاؤنٹر دُکانَس پٮ۪ٹھ چھُنہٕ استعمال
+choose_table	کاؤنٹر ژٲرِو
+change_table	ٹیبل بدلاو
+pick_table_banner	اَمہِ ترتیبہٕ خٲطرٕ تُلِو اکھ ٹیبل
+items_word	چیٖز
+items_section	چیز
+back_to_order	بیک ٹو آرڈر۔
+new_items_head	وُنیُک تام چھُنہٕ سوزنہٕ آم
+price_ph	قۭمَت
+price_ph_gst_inside	قٲمت ({tax} شمولیت)
+cancel_needs_table	کاؤنٹر فروخت چھِ ادٲیگی نِنہٕ تام ٹِکَٹَس پٮ۪ٹھ روزان
+tax_rates_missing_hint	یِمَن چیٖزَن پٮ۪ٹھ چھُنہٕ {tax} شرح — چیٖزَن منٛز ٹیکس شرح تھٲوِو (قۭمَتَن منٛز چھُ گوڈائے {tax}، {tax} شٲمِل کِس تحت)
+taxable_value	قٲبل ٹیکس ویلیو
+gst_inside_price_note	({tax} شمولیت)
+start_with_template	اسہِ چیٖز نمونے پٮ۪ٹھ کٔرِو شُروع
+template_heading	شُروعاتی چیٖز
+template_info	{c} زَمرٕ تہٕ {d} چیٖز فوٹو سۭتۍ، شٲمِل کَرنَس خٲطرٕ تیار۔ قۭمَت چھِ ₹0 پٮ۪ٹھ شُروع — پتہٕ پنُن تھٲوِو۔
+template_import	مُکمل ٹیمپلیٹ کٔرِو اَمَلَد ک
+template_confirm	{d} چیٖز تِمَن ہٕنٛدٮ۪ن زَمرَن سۭتۍ کٔرِو شٲمِل؟ یِم چیٖز گوڈائے چھِ تِم چھِ یُتھ تہِ روزان۔
+template_yes	آ، درآمد
+template_importing	چیٖز اندر انان…
+template_import_progress	درآمد کَرُن... {d}/{t}
+template_done	اسہِ نمونے ہٕنٛز پرٮ۪تھ چیٖز چھِ تُہٕنٛزَن چیٖزَن منٛز۔
+template_imported	{d} چیٖز تہٕ {c} زَمرٕ شٲمِل — یَتھ سکرینَس پٮ۪ٹھ تِمَن ہٕنٛز قۭمَت تھٲوِو
+client_template_heading	فہرِست اندر اَنِو
+client_template_info	{title}: {c} زَمرٕ، {d} چیٖز قۭمَت، فوٹو تہٕ عرفَن سۭتۍ۔ صِرف یِم چھِ نہٕ — تُہٕنٛد موجود ناو چھِ یُتھ تہِ روزان۔
+client_template_import	یِم چیٖز اندر اَنِو
+client_template_confirm	{title} منٛز {d} چیٖز کٔرِو شٲمِل؟ یِم چیٖز گوڈائے چھِ تِم چھِ یُتھ تہِ روزان۔
+client_template_importing	درآمد کَرُن {title}...
+client_template_done	{title} ہٕنٛز پرٮ۪تھ چیٖز چھِ تُہٕنٛزَن چیٖزَن منٛز۔
+client_template_imported	{title} منٛز {d} چیٖز تہٕ {c} زَمرٕ شٲمِل
+resv_heading	ریزرویشن
+resv_name_ph	گاہَکُک ناو
+resv_phone_ph	فون (اختیاری)
+resv_guests_ph	لوکھ
+resv_when_ph	ییلہ — 20:30، پگہہ 13:00
+resv_table_ph	کاؤنٹر (اختیاری)
+resv_add	کھاتہ
+resv_seat	بِہتھ
+resv_none	کانٛہہ بُکنگ یِوان نہٕ۔
+guests_word	مہمان
+delivery_by_ph	ڈیلیوری بذریعہ (سوار یا سٹاف ناو)
+kitchen_all_day	وۄنۍ رَننہٕ خٲطرٕ: {items}
+split_bill	سپلِٹ بل
+split_go	اَلگ بِل بَنٲوِو
+cancel	منسوخ
+opening_client	اوپننگ کلائنٹ...
+preparing_desk	ڈیسک تیار کران...
+opening_server	اوپننگ سْروَر...
+creating_server	سرور بناوُن...
+split_help	تِم چیٖز دَبِو یِمَن ہٕنٛز ادٲیگی اکھ گاہَک کَرِ · {n} ژارِتھ
+split_send_first	گۄڈٕ کٔرِو پَرچی سوز — صِرف تِم چیٖز ہیکَن الگ بِلَس منٛز گَژھِتھ یِم بیک آفِسَس وٲت
+split_pick_some	گۄڈٕ کٔرِو الگ بِلَس کِس چیٖزَن پٮ۪ٹھ دب
+split_done	الگ بِل بنو — یہِ چھُ فرشَس پٮ۪ٹھ یَتھ کاؤنٹَرَس نَذدیٖک
+split_marked	اَلگ بِل
+order_empty_pick	آرڈر خٲلی — چیٖز ژارُن خٲطرٕ ہیوٚرِم چیٖز کٔرِو شٲمِل دَبِو۔
+add_dishes	چیٖز کٔرِو شٲمِل
+order_so_far	اتھ ترتیبس پیٹھ: {n} · {total}
+no_dish_match	“{q}” سۭتۍ چھُنہٕ کانٛہہ چیٖز رَلان
+pick_dishes_help	شٲمِل کَرنَس خٲطرٕ چیٖز دَبِو · فہرِست لۄکٕٹ کَرنَس خٲطرٕ زَمرہٕ ژٲرِو
+pick_done	مُکمل
+pick_done_dd	کَرنہٕ آمُت · {label}
+printer_route_mode	اگر اتھ جایہ واریاہ پرنٹر
+printer_mode_first	گۄڈٕ یُس کٲم کران چھُ
+printer_mode_all	سارنی پیٹھ چھاپ
+kot_show_area	رقبہ
+kot_hide_area	ژوٗرِ ہُنٛد علاقہٕ
+kot_show_item_hdr	آئٹم · Qty
+kot_hide_item_hdr	کالم کٔرِو ہٲوِو
+kot_show_title	ٹایٹل لائن
+kot_hide_title	عنوان چھُ ہٲوِو
+kot_field_order	پرنٹ آرڈر
+kot_field_up	ہیوٚر کٔرِو
+kot_field_down	بۄن کُن گٔژھِو
+kot_field_cycle	اَمہِ پتہٕ ژٲرِو
+kot_field_select	اَمہِ پتہٕ ژٲرِو
+kot_field_time	وَکھ
+kot_field_kot_no	ٹِکَٹ نمبر
+kot_field_area	رقبہ
+kot_field_table	کاؤنٹر
+kot_field_shop	دُکانُک ناو
+kot_field_waiter	مُلازِم
+kot_field_station	سٹیشن
+app_template_blurb_extra	ساتھ: مالِک Zahir، ایڈمِن Asif، کیشیئر Nawaz؛ برٛونٛہِم سایڈ بار؛ 4 گَنٛٹہٕ پتہٕ تَوٲریٖخ؛ اَزُک پَٹی بند؛ لۄکُٹ بِل۔
+dishes_n	{n} چیٖز
+recipe_ph	ترکیب (اختیاری — کاؤنٹر دُکانَس پٮ۪ٹھ چھُنہٕ استعمال)
+reorder_ph	مٔزیٖد ہیٚیِو
+set_reorder	ری آرڈرُک لیول سیٹ کَرُن
+low_stock_alert	کم گژھُن — جلدٕے ہییِو: {items}
+unpriced_note	تُہٕنٛزَن {n} چیٖزَن ہٕنٛز وُنیُک تام چھُنہٕ قۭمَت — قۭمَت تَہٕ تام چھِ یِم 0 پٮ۪ٹھ بِل گَژھان۔
+show_unpriced	صِرف بِنا قۭمَت چیٖز ہٲوِو
+show_all_dishes	تمام چیٖز ہٲوِو
+role_waiter	کیشیئر
+role_kitchen	سٹور
+role_title_rest_ph	رول ٹائٹل (مثلاً کیپٹن، ہیڈ کک)
+preset_help_rest	کیشیئر: کٕنُن۔ منیجر: کٕنُن + چیٖز + کالعدم / ترمیم۔
+kind_raw	دُکانہِ کِس استعمالَس خٲطرٕ ہیونہٕ
+kind_resale	کٕننہٕ خٲطرٕ ہیونہٕ
+kind_dish	سٹاک مَہ گٔنِو
+buy_unit_ph	یونٹ (کلوگرام، لیٹر، پی سی ایس)
+add_another_way	+ بیاکھ طریقہٕ کٔرِو شٲمِل
+parts_status	{a} of {b} · {c} کھوورِ
+save_expense	خرچہٕ بچٲوِو
+rest_ph	باقٕے
+low_badge	کم
+stock_empty	سٹاکَس منٛز چھُنہٕ وٕنیُک کانٛہہ تہِ — یُس تُہۍ خریدَس پٮ۪ٹھ ریکارڈ کران چھِو سُہ چھُ ییٚتہِ ظٲہِر گژھان۔
+recent_changes	حالٕے تبدیلیہٕ
+lane_declared_label	ٹیکس انوائس
+lane_owner_label	کیش میمو
+money_lane_bill	بل: {lane}

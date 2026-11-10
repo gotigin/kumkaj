@@ -1,0 +1,835 @@
+# Japanese — 日本語 (ja). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	宅配帳簿＋受付カウンター。無料オフライン。
+unlock	ロック解除
+pin_hint	オーナーPINは0000から始まります
+sell	受付
+buy	支払い
+books	日次帳簿
+books_help	本日の状況。受付＝荷物入荷。支払＝運送会社請求と経費。取引先＝荷送人と運送会社。
+buy_help	経費伝票と運送会社請求（支出）。掛けは取引先台帳に残ります。
+sell_money_in	荷物を受付
+buy_money_out	経費／運送会社請求
+record_purchase	仕入を記録
+add_expense	経費伝票
+bank_book	銀行帳簿
+credit_help	取引先IDは一意です（名前は重複可）。役割：荷送人(AR)、運送会社(AP)、または同一IDで両方。台帳は分離；レポートは純額表示。
+party_kind_ph	独自の役割（任意）— または上のチップ
+parties_list_heading	保存した取引先
+reports_help	日次帳簿、売掛と買掛、銀行帳簿、経費伝票、損益。
+reports_today	日次帳簿（今日）
+reports_month	損益（月）
+reports_aging	未収／Dr-Cr
+reports_balance_sheet	貸借対照表
+reports	レポート
+refresh	更新
+undo	元に戻す
+start_tracking	在庫管理開始
+stock_minus	− 在庫
+stock_plus	+ 在庫
+settle_cash	現金で精算
+settle_card	カードで精算
+items	料金とサービス
+nav_items	料金
+more	その他
+your_items	あなたの料金
+items_help	各行が料金です（例：Surface Zone A）。単位は通常kg。タップで編集。
+add_item	料金を追加
+new_item	新しい料金
+adding_item	新しい料金を追加中
+editing_item	編集中
+save	保存
+remove	削除
+empty_catalog	料金がまだありません。料金とサービスを開き、1つ追加（名前＋価格、単位kg）してから受付へ。
+counter_sale	店頭受付
+total	合計
+cash	現金
+upi	UPI
+card	カード
+credit	取引先
+clear	クリア
+ready_to_sell	受付準備OK
+today_prefix	今日
+today_mid	今日
+owed	未収
+round_word	端数
+back	戻る
+sold_out	売切
+restock	再入荷
+not_tracked	未管理
+in_stock	在庫
+marked_sold_out	売切表示
+add_upper	追加
+na	なし
+qty	数量
+unit_at	単価
+actual	実際
+applied	適用
+note_ph	メモ（任意）
+rounded	端数後
+split	分割
+counter	カウンター
+parcel	荷物
+order	注文
+sales	予約
+sales_refunds	予約と払い戻し
+day_close	日次締め
+reports_expenses	レポートと経費
+nav_reports	レポート
+nav_settings	設定
+nav_lock	ロック
+sidebar_settings	サイドバー設定
+sidebar_settings_help	サイドレールと同じアイコン。行をドラッグして順序を変更します。スイッチを切り替えて表示または非表示にします。設定とロックは常にバーに表示されます。
+sidebar_always_on_short	常時表示
+sidebar_back_settings	戻る
+sidebar_shown	表示中
+sidebar_hidden	非表示
+sidebar_always_on	バー常時表示
+sidebar_shown_hint	サイドレールまたは下部タブに表示
+sidebar_hidden_hint	バーから非表示
+sidebar_menu_items	メニューとアイテム
+sidebar_enable_all	すべて有効化
+sidebar_disable_all	すべて無効化
+sidebar_order_saved	サイドバーの注文が保存されました
+sidebar_visibility_saved	サイドバーの表示設定が保存されました
+amounts_hide	非表示
+amounts_show	表示
+no_sale_yet	まだ売上なし
+favorites	お気に入り
+favorites_help	よく売るアイテムを、あなたのログイン用に保存。一つを請求に追加するか、下の全アイテムからリストを作成してください。
+your_favorites	あなたのお気に入り
+all_items	すべてのアイテム
+no_favorites	お気に入りはまだありません — 下のリストからアイテムを追加してください。
+add_to_bill	請求に追加
+added	追加済み
+owes_word	未払い
+selected_word	選択済み
+chip_clear_credit	精算済み — 掛けにするか前払いを受ける
+chip_missing_customer	選択した顧客が見つかりません — 選び直してください
+chip_no_customer	顧客はまだいません — 名前を入力して「掛け」をタップ
+credit_summary_fmt	{} 顧客 · 未精算 {} · 前払い {}
+recent_label	最近:
+inventory	在庫
+inventory_stock	在庫と棚卸
+branches	店舗
+branches_org	店舗と組織
+credit_customers	当事者（債務者と債権者）
+customer_name_ph	取引先名
+new_customer_ph	新規取引先名
+item_name_ph	料金名（例：Surface Zone A）
+item_price_ph	kg単価／最初の区分
+start_template	商品
+next_booking	次の受付
+destination_ph	宛先の都市／ゾーン
+consignee_ph	受取人
+consignee_phone_ph	受話器
+consignee_address_ph	配送先住所
+origin_name_ph	送信者名
+origin_phone_ph	送信者の電話
+origin_address_ph	引取地/出発地住所
+booking_consignor_heading	荷送人（お客様）
+booking_consignee_heading	受取人
+booking_consignor_hint	取引先を選ぶと入力されます。飛び込み客は空欄で可。集荷とRTOには必要です。
+booking_consignee_hint	荷物の受取人。窓口へ直接持ち込みの場合は空欄で構いません。
+weight_kg_ph	実重量 kg
+length_cm_ph	長さ cm
+breadth_cm_ph	幅 cm
+height_cm_ph	高さ cm
+chargeable_kg	請求重量 kg
+awb_label	伝票番号
+booking_help	店頭：宛先→計量→料金選択→掛け/現金→支払い。伝票番号がレシートに印刷されます。次の受付でクリア。
+cart_empty_hint	受付は空です — 宛先と重量を設定し、料金のADDを押して支払ってください。
+team	チーム
+team_pins	チームとPIN
+my_pin_settings	自分のPIN
+settings_hub_help_my_pin	この端末にサインイン中の人の解除PINを変更します。
+team_self_help	ロック解除 PIN (およびオプションのログイン パスワード) を変更できるのはあなただけです。別の画面や権限が必要かどうかを所有者に問い合わせてください。
+backup_settings	バックアップと設定
+lock_app	ロック
+pick	選ぶ
+select	選択
+advance	進める
+owner	オーナー
+staff	スタッフ
+photo	写真
+auto	自動
+prev	前へ
+next	次へ
+ok	OK
+this_shop	サーバーモード
+extra_till	クライアントモード
+off	オフ
+server	サーバー
+client	クライアント
+language_currency	言語と通貨
+language	言語
+choose_language	言語を選んでください
+language_setup_hint	この端末の言語に従うか、自分で選んでください。
+lang_follow_platform	端末の言語を使う
+lang_pick_user	選んだ言語を使う
+lang_platform_now	現在の端末の言語
+selected_language	選択中
+continue	続ける
+this_device	この端末
+device_use_q	この端末はどう使いますか？
+last_server_mode	前回はサーバー — タップして続行
+last_client_mode	前回はクライアント — タップして続行
+choose_server	サーバーを選ぶ
+choose_server_hint	この端末にはサーバーがあります。1つ開くか、別の事業用に新規作成してください。
+create_new_server	新規サーバー作成
+open_server	開く
+new_server_name_ph	新規サーバー名（任意）
+server_remove_pin_ph	削除する Owner PIN
+only_owner_remove_server	サーバーを削除できるのは Owner のみ
+owner_pin_remove_server	このサーバーを削除するには Owner PIN が必要です
+device_setup_help	サーバーはここに帳簿を保存します。クライアントはサーバーとペアリングします。
+currency	通貨
+backup	バックアップ
+settings_sec_diag	診断
+settings_hub_help	一度に一つの項目を開きます — スクロールが減り、選びやすくなります。
+settings_sec_devices	追加レジと支店
+settings_sec_alerts	お知らせ
+alerts_help	状態メッセージを画面に表示しておく時間（このログイン）。
+snack_secs_ph	秒（3–60、既定 10）
+snack_secs_save	表示時間を保存
+snack_secs_saved	表示時間を保存しました — {n} 秒
+snack_secs_bad	秒数を数字で入力してください（3–60）
+cancelled	キャンセルしました
+cancel	取消
+opening_client	クライアントを開いています…
+preparing_desk	デスクを準備しています…
+opening_server	サーバーを開いています…
+creating_server	サーバーを作成しています…
+diag_privacy_help	ログはこのデバイス上に保持されます。機密情報（PIN、パスワード）は決して保存されません。パッケージをデバイスから共有する場合は、毎回明示的な承認が必要です — 第三者に販売または提供されることはありません
+diag_level	詳細レベル
+diag_level_error	エラー
+diag_level_warn	警告
+diag_level_info	情報
+diag_level_debug	デバッグ
+diag_support_start	サポートセッションを 30 分開始
+diag_support_stop	サポートセッションを終了
+diag_support_started	— デバッグ詳細のサポートセッションを開始（30 分）
+diag_support_ended	サポートセッションが終了しました
+diag_export_local	ローカルコピーをエクスポート
+diag_export_local_done	ローカル診断データが準備できました {path} — 保存先を選択してください
+diag_approve_send	このデバイスからの共有を承認する
+diag_send_heading	この端末の外へ共有
+diag_send_help	承認はパッケージ単位で有効となり、期限があります。一時的なものであり、製品の問題の修正や改善にのみ使用されます。第三者とは共有されません。Linux、Windows、macOS、Android で動作します。
+optional_login_heading	任意のログイン
+rights_heading	権限
+booking_scope_heading	国内 / 国際
+diag_send_approved	共有が承認されました（パッケージ単位）（期限が近いです）
+diag_export_send	共有パッケージを作成する（承認が必要です）
+diag_export_send_done	共有パッケージが準備できました {path} — 保存先を選択し、その後 Kumkaj サポートにのみ送信してください
+diag_save_bundle	診断データのコピーを保存
+diag_bundle_saved	診断データのコピーを {path} に保存しました
+diag_bundle_failed	診断データのコピーの保存に失敗しました — もう一度お試しください
+diag_clear	デバッグログをクリア
+diag_cleared	デバッグログがクリアされました
+use	使う
+add_branch	店舗を追加
+add_conversion	換算を追加
+add_item_plain	品目を追加
+add_note	メモを追加
+add_opening_balance	期首残高を追加
+add_rider	配達員を追加
+add_staff	スタッフを追加
+add_unit	単位を追加
+add_use_name	この名前を追加／使う
+allow_extra_tills	追加レジを許可
+amend	修正
+apply_country_pack	国パックを適用
+datetime_appearance	日付と時刻の表示形式
+datetime_appearance_help	本には年初の RFC3339 が収められています。これらは、レシート、ラベル、レポート、画面上での日付と時計の見え方のみを変更します。
+datetime_example	現在の例：{ex}
+date_order	日付順序
+date_order_dmy	D/M/Y
+date_order_mdy	M/D/Y
+date_order_ymd	Y-M-D
+time_format	クロック
+time_format_24h	24 時間制
+time_format_12h	12 時間制
+attach_bill_photo	請求書の写真を添付
+attach_pdf	PDFを添付
+attach_photo	写真を添付
+bank	銀行
+bank_in	銀行へ入金
+bank_out	銀行から出金
+bank_to_till	銀行→レジ
+till_to_bank	レジ→銀行
+mark_cleared	クリア済みにする
+unmark	マークを外す
+role_both	両方
+role_carrier	運送会社
+role_cashier	レジ係
+role_consignor	荷送人
+role_manager	マネージャー
+role_supplier	仕入先
+branch_name_sell_ph	販売する店舗名
+bring_my_book	自分の帳簿を持ってくる
+business_tax_id_ph	事業者の税ID
+card_amount_ph	カード金額
+cash_amount_ph	現金金額
+upi_amount_ph	UPI金額
+carrier_cost_ph	運送会社コスト
+carrier_party_ph	運送会社
+choose_icon	アイコンを選ぶ
+choose_logo	ロゴを選ぶ
+choose_receipt_stamp	レシート印を選ぶ
+choose_payment_qr	支払いQRを選ぶ
+clear_icon	アイコンを消す
+clear_logo	ロゴを消す
+clear_photo	写真を消す
+clear_stamp	印をクリア
+clear_payment_qr	支払いQRをクリア
+print_faces	印刷レイアウト（レシート／期間請求）
+print_faces_help	受付レシートと期間請求書のロゴ横に、任意で印影と支払い用QRを付けます。
+awb_pools_heading	運送会社の伝票番号枠
+add_awb_pool	AWB番号枠を追加
+awb_pool_carrier_ph	運送会社名
+awb_pool_start_ph	開始番号
+awb_pool_end_ph	終了番号
+awb_pool_prefix_ph	接頭辞（任意）
+awb_pool_label_ph	ラベル（任意）
+pieces_ph	個数（空欄 = 1）— 貨物・複数個は展開
+bulk_awbs_ph	一括伝票番号 — 複数を貼り付け（改行またはカンマ）てまとめてステータスを進める
+tds_cut_ph	TDS 控除（任意）
+discount_ph	割引（任意）
+cheque_no_ph	小切手番号（任意）
+bill_reminder_chase	請求リマインダー一覧
+month_mix_report	月次ミックス報告
+copy_month_gst_csv	月次GST CSVをコピー
+domestic	国内
+international	国際
+pick_logo	ロゴを選ぶ
+booking_scope_hint_domestic	容積÷5000（国内）— 国際÷6000
+booking_scope_hint_intl	容積÷6000（国際）— 国内÷5000
+cod_register	代引台帳
+collect_cod	代引を回収（伝票）
+consignments_dispatch	荷物と発送
+consignor_party_ph	荷送人／取引先名
+copy_day_book_csv	日次帳簿CSVをコピー
+copy_day_close	日次締めをコピー
+copy_items_csv	品目CSVをコピー
+copy_outstanding_csv	未収CSVをコピー
+copy_parties_csv	取引先CSVをコピー
+copy_party_ledger_csv	取引先台帳CSVをコピー
+copy_receipt	レシートをコピー
+copy_report	レポートをコピー
+counted_cash_ph	レジ内の実査現金
+counter_agency_ph	店舗／代理店名（任意）
+create_backup	バックアップ作成
+day_close_summary	日次締め概要
+delete_party	選択した取引先を削除
+dispatch_to_rider	受付済み→配達員へ
+docket_charge_ph	伝票料金
+declared_value_ph	申告価格
+contents_ph	内容品
+eway_ph	Eウェイビル番号
+insurance_label	保険（はい/いいえ）
+yes_label	はい
+no_label	いいえ
+print_route_label	印刷先
+new_party_kind_label	新しい取引先の種類
+done_open_books	完了 — 帳簿を開く
+export_day	当日分をエクスポート
+extra_note_expense_ph	前回の経費への追加メモ
+extra_note_awb_ph	この伝票／売上への追加メモ
+failed_delivery	配達失敗
+find_scan_awb	伝票を検索／スキャン
+forget_shop	この店舗を忘れる
+fuel_ph	燃料
+handover_carrier	受付済み→運送会社へ
+import_day	当日分をインポート
+import_items_csv	品目／料金CSVをインポート…
+import_parties_csv	取引先CSVをインポート…
+import_pincodes_csv	郵便番号CSVをインポート…
+import_carrier_bill_csv	運送会社請求CSVをインポート…
+copy_carrier_bill_report	前回の運送会社請求レポートをコピー
+use_carrier_cost	運送会社コストを使う
+rate_carrier_ph	運送会社（空白＝当社販売料金）
+rate_party_ph	取引先（空白＝全顧客）
+carrier_pick_ph	コスト用運送会社（比較から）
+item_name	品目名
+load_bulk_row	一括行を読み込み→受付
+login_id_ph	ログインID
+mark_delivered	配達済みにする
+manifest_cod_total	COD合計
+manifest_received_by	受領者
+manifest_sign	署名
+ndr_address_wrong	住所違い
+ndr_customer_unavailable	不在
+ndr_door_locked	ドア施錠
+ndr_other	その他
+ndr_refused	受取拒否
+out_for_delivery	配達中
+print_drs	DRSを印刷
+print_run_sheet	ランシートを印刷
+reattempt	再配達
+rider_cod_handed_ph	配達員が渡したCOD
+settle_rider_cod	配達員COD精算
+mode_desk	受付
+mode_rider	配達員
+waiting_office	事務所への同期待ち
+capture_signature	署名を取る
+incoming_manifest	入荷マニフェスト
+pickup_request	集荷依頼
+pickup_run	集荷ラン
+auto_assign_area	エリア自動割当
+reorder_stops	停留順の変更
+settle_rider_pay	配達員給与精算
+vehicle_inspect	車両点検
+print_docket	伝票を印刷
+franchise_statement	フランチャイズ明細
+tally_export	Tally伝票出力
+open_whatsapp	WhatsAppを開く
+copy_sms	SMS文をコピー
+pick_barcode_image	スキャンする画像を選ぶ
+share_receipt_whatsapp	レシートをWhatsAppで共有
+delivery_feedback	配達フィードバック
+lan_self_book	LAN自己予約
+new_party_clear	新規取引先（フォームをクリア）
+new_party_kind_ph	新規取引先の種類（仕入先／運送会社）
+next_country	次の国
+prev_country	前の国
+note_gstin_ph	メモ／GSTIN／契約リマインダー
+note_pod_ph	メモ／POD（任意）
+on_account_ap	掛け（AP）
+org_optional_ph	組織（任意）
+paid_now	支払済み
+pairing_code_ph	ペアリングコード
+pair_now	今すぐペアリング
+party_name_selected_ph	取引先名（または選択中を使う）
+password_ph	パスワード
+pay_ap_card	APをカードで払う
+pay_ap_cash	APを現金で払う
+pay_ap_upi	APをUPIで払う
+period_bill	期間請求
+period_bill_party	期間請求（取引先）
+pick_pod_photo	POD写真を選ぶ
+print_awb_label	伝票ラベルを印刷
+print_open	印刷／開く
+reason_amend_ph	修正／取消／返金の理由
+reason_note_ph	理由／メモ（廃棄、棚卸…）
+record_day_close	日次締めを記録
+refresh_from_shop	店舗から更新
+refund	返金
+remit_cod	代引を精算（取引先）
+remove_selected	選択を削除
+restore_backup	バックアップを復元
+rider_name_ph	配達員名
+rider_phone_ph	配達員の電話
+riders	配達員
+riders_own_fleet	配達員（自社便）
+rollup	集計
+save_booking_measures	受付の寸法を保存
+save_brand	ブランドを保存
+save_business_id	事業者IDとサービス%を保存
+save_business_name	事業者名を保存
+save_features	ジョブ設定の保存
+save_names	名前を保存
+server_ip_ph	サーバーIP（例：192.168.1.10）
+set_credit_limit	与信限度を設定
+set_login_selected	選択中にログインを設定
+set_login_named	{name} にログインを適用
+shop	店舗
+start_fresh	最初から始める
+stop_extra_tills	追加レジを停止
+backup_auto	毎日自動バックアップ · 前回 {when} · 直近14日分を {dir} に保存。
+backup_auto_none	毎日自動バックアップ — 最初の分はまもなく行います。
+backup_copy_to	コピーは {dir} にも保存します。
+backup_copy_btn	バックアップをフォルダーにもコピー…
+autostart_off	このパソコンと一緒に起動
+autostart_on	パソコンと一緒に起動 ✓ — タップで解除
+autostart_done_on	このパソコンの起動時にアプリが開きます — 停電後もサーバーが戻ります。
+autostart_done_off	パソコン起動時にアプリを開かなくなりました。
+right_allowed	許可
+right_with_approval	承認が必要
+right_denied	不可
+editing_staff	の権利
+team_pick_ph	編集するスタッフ名
+select_staff	このスタッフを選択
+rights_help	権利 — タップして変更します: 許可 → 承認あり (その時点で管理者の PIN) → 許可されません。
+right_void_refund	予約の取消・返金
+right_amend_sale	記録済み予約の修正
+find_server	店のサーバーを探す
+finding_server	この Wi‑Fi で店のサーバーを探しています…
+no_server_found	サーバーが見つかりません。店の端末が同じ Wi‑Fi にあり追加レジが許可されているか確認するか、IP を入力してください。
+servers_found_pick	接続したい店をタップしてください。
+server_host_selected	{host} を使用中 — ペアリングコードを入力し、「今すぐペア」をタップ。
+device_forgotten	店舗がこのデバイスを削除しました — 現在のコードで再ペアリングしてください。待機中の注文は保持されます。
+forget_device	削除
+last_seen	最終
+new_pair_code	新しいペアリングコード
+lan_offline	オフライン
+lan_offline_waiting	オフライン · {n} 件待機中
+lan_connecting	店に接続中…
+pair_finishing	仕上げのペア…オフィスブックの適用
+pair_opening	オフィスを開く…
+lan_live	ライブ
+lan_sending	{n} 件送信中
+lan_sign_in_to_send	{n} 件を送るには再サインイン
+lan_pair_again	このデバイスを再ペアリング
+lan_update_app	アプリを更新してください — この端末と事務所のサーバーのバージョンが違います
+allow_firewall	ほかの端末の接続を許可
+firewall_blocked	このコンピューターのファイアウォールがほかの端末を遮断しています — 「ほかの端末の接続を許可」をタップしてください。
+firewall_waiting	管理者の確認を待っています…
+lan_join_help	ほかのデバイスをこの端末につなげられます — ペアリングコード {code}。もう一方のデバイスでクライアントモードを選び、「店のサーバーを探す」を押すか、このアドレスを入力: {addr}
+lan_pair_status	Wi‑Fi {addr}
+lan_join_help_no_addr	アドレスを設定するには、このデバイスを Wi‑Fi に接続してください
+lan_no_address	このデバイスにはまだ Wi‑Fi アドレスがありません — 店の Wi‑Fi に接続してください。
+lan_not_listening	現在デバイスを受け付けていません — 別のプログラムがポート {port} を使っている可能性があります。アプリを再起動してください。
+lan_tills_off	追加レジはオフです。この営業所の帳簿はこのデバイスにあります。別のデバイスでも荷物の受付や会計をするなら、追加レジを許可してください。
+paired_with	{url} の店とペアリング済み
+not_paired	未ペアリング — 店のサーバーに接続してください。
+choose_device_use	このデバイスの使い方を選んでください。
+paired_note	ペアリング済み。ロック解除して販売するか、更新で店の最新情報を取得します。
+last_update_at	店からの最終更新: {time}。
+pair_intro	サーバーを探すか、アドレスとペアリングコードを入力してください。
+queue_waiting	店への送信待ち（{n}）:
+queue_tries	{n} 回試行 · 最後の応答：{e}
+save_backup_copy	バックアップのコピーを保存…
+backup_copy_saved	バックアップのコピーを保存しました — この端末の外に保管してください（USB メモリや別の端末）
+backup_copy_overdue	{n} 日間、バックアップのコピーがこの端末の外に出ていません — 設定 → バックアップ
+backup_copy_failed	そこにはバックアップのコピーを保存できませんでした — 別の場所を選んでください
+clock_off	この端末の時計は店のサーバーと {min} 分ずれています — この端末で正しい時刻を設定してください
+printers_heading	このデバイス上のプリンター
+printers_help	プリンターを一度ずつ追加し、レシートとAWBラベルの印刷先を選びます。リストの先頭から試し、失敗したら次へ。経路が空＝その機能は印刷しません。対象は空（既定）、システム名、またはネットワークアドレス（例: 192.168.1.50）。機器ごとにプリンターを保持します。
+job_width	内容幅（mm）
+job_width_ph	または、幅 40 ～ 210 mm を入力します。
+job_layout	レイアウト
+job_delivery	作業の送信方法
+job_size	フォントサイズ
+job_size_ph	例: 18, 20, 26…
+save_receipt_format	レシートのフォーマットを保存する
+save_label_format	ラベル形式の保存
+test_receipt_format	テスト受信
+test_label_format	テストラベル
+test_receipt_sent	領収書のサンプルを送信しました
+test_label_sent	サンプルラベルを送信しました
+test_print_no_printer	そのジョブにはプリンターがありません - この場所にプリンターを追加します
+printers_host_only	プリンターは店舗端末（Server）で設定します。このレジはジョブをそちらへ送ります — 検索 / 追加 / 割り当ては Server のままです。テストページは Server へ行きます。
+printers_pool_heading	プリンター
+printers_routes_heading	印刷先
+printer_label_ph	名前 (例: デスク)
+printer_target_ph	ホスト:9100 · bt:MAC · usb:VID:PID · システム名
+printer_mode_heading	選んだルートの形式
+printer_mode_standard	標準縦
+printer_mode_landscape	標準横
+printer_mode_thermal	サーマル
+printer_mode_standard_short	縦
+printer_mode_landscape_short	横
+printer_mode_thermal_short	サーマル
+printer_format_custom	新しいカスタム形式
+printer_format_custom_label	カスタム
+printer_format_custom_added	このルートにカスタム形式を追加しました
+add_printer	プリンターを追加
+remove_printer	最後を削除
+route_pick_ph	receipt または label
+route_add_printer_ph	この経路にプリンターを追加
+route_receipt	レシート
+route_label	AWBラベル
+route_dont_print	プリンターが割り当てられていません
+route_add	経路に追加
+route_up	上へ
+route_down	下へ
+route_remove	最後を削除
+route_clear	この場所のプリンターをクリアします
+save_printers	プリンターを保存
+print_test_page	テストページを印刷
+printers_saved	このデバイス用に保存されたプリンター
+test_page_sent	テストページを送信しました — プリンターを確認してください
+printers_found	このデバイスで見つかりました: {list}
+find_printers	プリンターを探す
+printers_looking	このデバイスと Wi-Fi 上のプリンターを探しています…
+printers_tap_find	[この Wi‑Fi 上のジョブを受け入れるキューのプリンターとネットワーク レシート プリンター (削除されたものやオフラインのものではない) を検索] をタップします。
+printers_none_found	プリンターが見つかりません — システム プリンター名またはネットワーク アドレス (例: 192.168.1.50) を入力します。
+receipt_printer_ph	レシートのプリンター
+queue_refused	店で受け付けられなかったもの（{n}）— レジで一件ずつ確認してください:
+clear_not_accepted	確認済み — この一覧を消す
+device_name_ph	このデバイスの名前
+lan_last_update	最終更新 {time}
+lan_not_accepted	{n} 件 受付不可
+connected_now	接続中
+backup_failed	前回の自動バックアップに失敗しました: {e}
+backup_overdue	{n} 日間バックアップがありません — バックアップのため、このデバイスでアプリを開いたままにしてください。
+disk_low	このデバイスの空き容量は {mb} MB だけです — まもなくバックアップできなくなります。空き容量を増やしてください。
+last_seen_devices	最終確認時刻：{time}
+sync_interval	各 {secs} 秒ごとに同期
+connection_to_shop	店との接続
+supplier_name_ph	仕入先名（または取引先）
+supplier_ph	仕入先
+switch_device	この端末を切り替え
+take_payment	支払いを受ける
+tax_added_till	{tax}別
+tax_inside_price	{tax}込
+today_books	本日の帳簿
+unlock_after_pairing	PINを入力
+unlock_with_login	ログインでロック解除
+update_my_password	パスワードを変更
+update_my_pin	PIN を更新する
+duress_heading	緊急ロック解除PIN（オーナーのみ）
+duress_help	オプション。ロック解除時に自分の PIN ではなくこの PIN を入力すると、すべての帳簿エントリ (予約、台帳、履歴) が消去され、デスクは通常どおりの所有者として開きます。料金、パーティー、ゾーン、スタッフ、設定はそのまま残ります。スキーマと構成は削除されません。強制的にロックを解除する必要がある場合にのみ使用してください。オフにするには空白のままにして保存します。誰かの PIN と同じになることはありません。
+duress_pin_ph	緊急PIN（4〜12桁）
+duress_confirm_ph	確認のため再入力
+save_duress_pin	緊急PINを保存
+clear_duress_pin	緊急PINをオフ
+duress_on	緊急ロック解除PINはオン
+duress_off	緊急ロック解除PINはオフ
+duress_saved	緊急ロック解除PINを保存しました
+duress_cleared	緊急ロック解除PINをオフにしました
+vehicle_ph	車両
+void	取消
+write_off_ap	APを償却
+write_off_nil	償却／残高ゼロ
+zone_ph	ゾーン（料金からの名前）
+caption_today	今日
+caption_bookings	受付
+caption_payments_today	本日の支払い
+caption_outstanding	未収
+caption_bank	銀行
+paid_by	支払方法
+second_way	2つ目の方法
+weight_in	重量の単位
+size_in	サイズの単位
+goods_received	入荷
+expense_heading	経費
+notes_attach_sale	メモと添付（選択した売上）
+notes_attach_party	メモと添付（選択した取引先）
+attachments_last_expense	添付（前回の経費）
+credit_limit_heading	与信限度（選択／指定の取引先）
+pay_selected_heading	選択分を支払い（債務精算／前受）
+write_off_heading	償却（支払なしで精算）
+pay_ap_heading	当社が支払う分（AP）
+country_tax	国と税
+extra_tills_heading	追加レジ
+other_devices_help_heading	他のデバイスを設定
+other_devices_help	このデバイス (サーバー) 上: 他のデバイス → 追加のレジを許可します。ペアリング コードと Wi-Fi アドレスをメモします。表示された場合は、「他のデバイスの接続を許可」をタップします。コンピューターで、「このコンピューターで開始」をタップします。他の各デバイスで: アプリをインストールし、クライアント モードを選択し、ショップのサーバーを検索 (またはアドレスを入力) し、ペアリング コードを入力し、今すぐペアリングします。 Wi-Fi が切断された場合、注文はデバイス上で待機し、サーバーが再び応答すると注文は開始されます。
+your_brand	あなたのブランド（アプリ内）
+units_heading	単位
+booking_measures	受付の寸法
+drawer_count	レジ実査（任意）
+spreadsheet_csv	スプレッドシート（CSV）
+bank_reconciliation	銀行照合（明細とチェック）
+book_add_product	受付 — 商品／料金を追加
+book_opening_credit	受付 — 期首の掛け
+account_kind	口座の種類（1つタップ）
+active_ledger	アクティブな台帳
+actual_total_cap	実合計
+amend_help	修正・取消・返金する売上を選んでください。修正は全履歴を保持します。
+applied_total_cap	適用合計
+bank_balance	銀行残高
+bank_net_today	本日の銀行純額
+branch_export_help	エクスポートでは、1 日のスナップショットがバックアップ フォルダーに書き込まれ、クリップボードにコピーされます。別のアウトレットの日をインポートするには、そのフォルダーにファイルを import_branch_snapshot.json として保存し、「インポート」をタップします。
+brand_shown_help	アプリ内の画面に表示されます。この端末にインストールされたアプリ名とアイコンはストア掲載のままです。
+app_icon	アプリアイコン
+logo_help	アプリ内の画面に表示するオプションの店舗マーク
+onboard_layout	ご提供内容
+item_photo_help	オプションです。写真がない場合、項目名から頭文字を表示します
+cash_in_hand	手元現金（レジ）
+change_my_pin_heading	PIN を変更する (自分の PIN のみ)
+connect_to_server	サーバーに接続
+counter_locked	カウンター01・ロック中
+country_pack_help	国パックは税名と計算、即時決済レール、請求書に印刷される事業者IDを設定します。Kumkajは税務申告や政府の電子請求書の発行は一切行いません。
+currency_use_help	スクロールして、対応通貨の「使う」をタップしてください。
+day_close_help	日次締めを記録すると、この概要（実査した場合はレジ差異も）が監査ログに保存されます。販売は止まりません。
+expenses_word	経費
+feature_access_help	選択した譜表の機能へのアクセス (追加後にタップ)
+footer_local	ローカルSQLite・永久無料・クラウドなし
+fresh_book_moklanjo	プリンター
+fresh_selected	Freshを選択中 — カタログは空のままです。準備ができたらDoneをタップ。
+gross_word	粗利益
+how_start	どのように始めますか？
+later_country_pack	プリンター
+local_badge	ローカル
+measures_help_moklanjo	受付で荷物をどう測るか。使う単位で寸法と重量を入力してください — 標準（cm、m、in、ft・kg、g、lb、oz）または上のcm/kgにリンクした独自単位（直接または他の単位経由）。帳簿は常にkgで記録します。空欄にすると保持されます。
+mix_type_hint_moklanjo	それぞれいくらか入力してください（現金／UPI／カード／掛け）。請求額と一致が必要です。掛けには上の顧客が必要です。
+money_in_sales	入金（売上）
+more_help_moklanjo	カタログ、売上、掛け、チーム、バックアップ — 必要に応じて在庫と追加レジも。
+net_word	純額
+offline_badge	オフライン
+optional_login_help	任意ログイン（ID＋パスワード）。オーナーが一度設定し、その後はユーザー本人だけがパスワードを変更できます。
+or_unlock_login	またはログインID＋パスワードで解除
+permission_preset	ジョブ（画面と権限の設定）
+preset_help_moklanjo	レジ係：販売。マネージャー：販売＋品目＋取消／修正。
+product_locked_moklanjo	Moklanjo
+product_only_moklanjo	このアプリは Moklanjo 専用（帳簿＋受付カウンター）です。他の業種向けは後日、別製品として提供します。
+purchases_cogs	仕入（COGS）
+qty_cap	数量
+restore_help	復元：バックアップを選びます。帳簿はその時点の状態で開きます。今の帳簿は先に保存されるので元に戻せます。
+wipe_data_heading	ローカルデータを削除
+wipe_data_help	オーナーのみ — Windowsアンインストールと同じ選択肢。取引記録は履歴を消し料金/設定を残す。店舗セットアップは帳簿を削除。画面設定はウィンドウ/言語。オーナーPINで確認。
+wipe_trading	取引記録
+wipe_schema	店舗セットアップ
+wipe_ui	画面の設定
+wipe_owner_pin_ph	削除用オーナーPIN
+wipe_delete_selected	選択を削除
+wipe_owner_only	オーナーだけがローカルデータを削除できます。
+restore_owner_only	オーナーだけがバックアップを復元できます。
+wipe_owner_pin_needed	ローカルデータを削除するにはオーナーPINを入力。
+wipe_nothing_selected	先に削除する項目を選んでください。
+wipe_done	選択したローカルデータを削除しました。
+wipe_schema_done	店舗セットアップを消去 — 続けるには Server か Client を選んでください。
+rounded_total	端数後合計
+setup_app_moklanjo	Moklanjoをセットアップ
+shop_logo_optional	店舗ロゴ（任意）
+stock_type_help	品目名を入力（一部でOK）、数量を入力して調整してください。まだ数えていない品目は一度「在庫管理開始」が必要です。
+team_owner_help	雇用: ジョブ (レジ係 / マネージャー) を選択し、名前と開始 PIN を入力して、追加します。この人物が異なる場合のみ: 以下の画面と権限を開き、ジョブ設定を保存します。全員が下部にある自分の PIN を変更します。所有者は他の人の PIN を変更できません。
+they_owe_us	当社への未払い
+unit_at_cap	単価
+units_help	品目ラベル用コード（kg、piece、bag）。各単位は直接または他の単位経由で標準（kg・cm・ml・pc）にリンクする必要があります。例：1 crate = 2 box、1 box = 20 cm。換算：1 from = factor to。通貨は決して単位ではありません。
+we_owe_them	当社の買掛け
+who_unlocking	誰がロック解除していますか？
+locked_word	ロック中
+show_pin	PINを表示
+hide_pin	PINを隠す
+set_owner_pin	オーナーPINを設定
+enter_owner_passcode	オーナーのパスコードを入力
+enter_staff_passcode	スタッフのパスコードを入力
+pin_count_zero	0/12桁・最低4桁、その後OK
+pin_count_need	{} / 12桁・あと{}桁必要
+pin_count_full	12/12桁・OKを押してください
+pin_count_ready	{} / 12桁・準備ができたらOKを押してください
+pin_hint_choose	4〜12桁を選んでください（キーボードまたはパッド）・Enter/OKで保存
+pin_hint_new	新しい4〜12桁のオーナーPIN（キーボードまたはパッド）・Enter/OK
+pin_hint_shop_code	店舗端末・ペアリングコード {}
+pin_hint_books	この端末が帳簿を保持します
+pin_hint_paired	追加レジがペアリング済み — 販売するにはロック解除
+pin_hint_pair_first	追加レジ — まず店舗端末とペアリング
+unlock_to_continue	続けるにはロック解除
+no_staff_yet	スタッフがまだいません — オーナーとして解除し、次にチームへ
+status_server_set_pin	サーバーモード — オーナーPINを設定
+status_server_tills	サーバーモード — 追加レジが参加できます。ロック解除
+status_server_unlock	サーバーモード — オーナーとしてロック解除
+status_client_unlock	クライアントモード — 販売するにはロック解除
+icon_new_selected	アイコン：新しいファイルを選択 — ブランドを保存をタップ
+icon_custom	アイコン：自店のマーク
+icon_default	アイコン：Kumkaj マーク（既定）— 独自のものを選択
+logo_yours	ロゴ：自店のロゴ — 画面とレシートに表示されます
+logo_default	ロゴ：Kumkaj マーク（既定）— 独自のものがあれば選択
+tmpl_current	現在：{} — {}
+tmpl_selected	選択中：{} — {}
+setup_complete	セットアップ完了
+onboard_fresh_tmpl	新規 · {} — カタログは空から開始；アイテムで追加し、完了をタップ。
+onboard_book_tmpl	帳簿 · {} — アイテムと開始残高を追加し、完了をタップ。
+onboard_template_tmpl	必要なら店名を付けて、始め方を選んでください。
+tmpl_blurb	宅配の帳簿と受付：荷送人、運送会社、日計帳、伝票番号。
+tmpl_how	受付で荷物を登録、今日は日計帳、運賃・取引先・レポートはタブで。
+trk_booked	受付済み
+trk_picked_up	集荷済み
+trk_in_transit	輸送中
+trk_delivered	配達済み
+trk_rto	返送中
+lane_to_dispatch	発送待ち
+lane_with_carrier	運送会社へ引渡し済み
+lane_failed	配達失敗
+lane_done_today	本日完了
+ops_board_help	今日の作業のどこにあるかで荷物を分けています。荷物をタップ（またはスキャン）して選び、選んだものすべてにまとめて操作します。各レーンにはそのレーンに合う操作だけが出ます。
+lane_empty	今はここに何もありません。
+picked_fmt	{n} 件選択
+pick_all	すべて選択
+bag_for_carrier	運送会社に引き渡す
+send_with_rider	配達員に持たせる
+out_again	再配達に出す
+return_to_sender	差出人に返送
+runs_bags_heading	最近の配達便と引渡し袋
+print_word	印刷
+bag_word	運送会社への引渡し袋
+run_word	配達員の便
+parcels_fmt	{n} 個
+parcel_history	履歴
+attempt_fmt	{n} 回目
+pieces_short_fmt	{n} 個口
+note_reason_ph	メモまたは理由
+ops_pick_first	先に荷物を選んでください（タップまたはスキャン）
+cod_to_collect	配達済み — 代引の回収待ち
+cod_on_road	代引はまだ配送中
+cod_owed_consignors	回収済み — 差出人へ支払い待ち
+cod_rto_fees	徴収する RTO 料金
+cod_to_hand_in	納める代引金
+parcel_one_fmt	{n} 個
+facet_bank_title	レポート
+facet_bank_help	日次帳簿、取引先エイジング、銀行記録、期間損益。
+facet_ops_title	貨物と発送
+facet_ops_help	AWB をスキャンまたは入力 → 検索、次に進行 / ラベル印刷 / COD。ライダーまたは運送業者へ発送。
+facet_cod_title	COD 登録簿
+facet_cod_help	配達時に集金し、荷送人へ送金。
+facet_riders_title	ライダー（自社便）
+facet_riders_help	ライダーを追加し、Ops から予約済み AWB を発送。
+against_bill_ph	上の請求書番号に対して（任意）
+aliases_ph	別名 — 他の名前、カンマ区切り
+amount_blank_full_ph	金額（空欄 = 残高全額）
+amount_owed_ph	未払い金額
+amount_ph	金額
+amount_received_ph	受領金額
+amount_we_pay_ph	当方が支払う金額
+awb_scan_ph	AWB / バーコードスキャン
+bulk_csv_ph	一括CSV — destination,consignee,kg,cod_paise,note
+business_name_ph	事業名
+category_new_ph	カテゴリ（任意、新規なら作成）
+cod_amount_ph	COD 金額
+code_bag_ph	コード（bag）
+conv_factor_ph	係数（25 = 1 bag → 25 kg）
+country_code_ph	国コード 例：IN, GB, US, AE, BR
+credit_khata_amount_ph	掛け / 口座金額
+credit_limit_ph	与信限度（0 = なし）
+dim_unit_code_ph	寸法単位コード（cm）
+divisor_ph	容積除数（5000）
+extra_per_kg_ph	追加 / kg
+first_amount_ph	最初の金額
+first_kg_ph	最初の kg（スラブ）
+from_code_ph	変換元コード（bag）
+item_name_lang_ph	アイテム名 — 自分の言語で入力
+login_id_opt_ph	ログインID（任意）
+manager_pin_ph	マネージャーPIN（取消できない場合のみ）
+new_branch_name_ph	新しい支店名
+new_password_ph	新しいパスワード（任意）
+new_pin_ph	新しいPIN（4–12桁）
+note_bank_ph	メモ（入金、出金、…）
+note_buy_expense_ph	メモ（燃料、家賃、…）
+note_expense_ph	メモ（燃料、事務所、…）
+notify_phone_ph	通知用電話（WhatsApp/SMS フック）
+options_moklanjo_ph	オプション（任意）— Large=20, Gift wrap=10
+part_second_way_ph	2つ目の方法での分担（任意）
+phone_ph	電話
+address_ph	住所
+party_custom_fields_heading	カスタム項目（選択した取引先）
+party_custom_help	この取引先に任意の項目名と値を追加 — WhatsApp、GSTIN、ルートコードなど
+party_custom_key_ph	項目名（例: WhatsApp）
+party_custom_value_ph	値
+party_custom_add	項目を追加／更新
+party_custom_remove	項目を削除
+party_custom_empty	カスタム項目はまだありません
+party_custom_pick_first	カスタム項目のため取引先を選択
+place_name_ph	この場所の名前
+price_ph	価格
+qty_example_ph	数量（例：kg は 1.5）
+quantity_ph	数量
+reason_required_ph	理由（必須）
+role_title_ph	役職名（例：Barista）
+service_pct_ph	サービス % 任意 0/10/12
+short_code_ph	短いコード（MG02）
+slab_kg_ph	kg の課金スラブ（0.5）
+staff_name_ph	スタッフ名/ID
+starting_password_ph	開始パスワード（任意）
+starting_pin_ph	開始PIN（4–12桁）
+tax_rate_ph	税率名または % — Standard, Reduced, 0, 5, 12, 18, 20
+to_code_ph	変換先コード（kg）
+uncleared_no_ph	上の未清算番号
+unit_cost_ph	単価
+unit_kg_blank_ph	単位（kg または空欄）
+unit_name_bag_ph	名前（Bag）
+weight_unit_code_ph	重量単位コード（kg）
+zone_name_ph	ゾーン名
+pay_credit	掛け
+book_kind_today	今日の帳簿
+book_kind_month	今月の帳簿
+book_kind_aging	未精算 / 借方・貸方
+book_kind_balance	貸借対照表
+ops_desk_help	USB バーコードスキャナーで AWB をスキャン（または入力）→ 検索。次に進行、ラベル印刷、または COD 集金。ラベルは Code 128 で印刷されます。
+role_help_consignor	役割：荷送人 — AR（当方への未払い）。同じ会社が運送業者にもなれます。
+role_help_carrier	役割：運送業者 — AP（当方が未払い）。同じ会社が荷送人にもなれます。
+role_help_both	役割: 荷送人 + 運送業者 — 一当事者、AR および AP 台帳、レポートのネット。
+role_help_supplier	役割: サプライヤー — 購入用の AP。
+lane_declared_label	アカウント予約
+lane_owner_label	現金予約
+money_lane_bill	請求書：{lane}

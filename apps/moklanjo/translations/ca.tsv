@@ -1,0 +1,835 @@
+# Catalan — Català (ca). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	Lliureria-agència de reserves + taulell de reserves. Offline gratuït.
+unlock	Desbloqueja
+pin_hint	El PIN del propietari comença per 0000
+sell	Reserva
+buy	Pagueu
+books	Llibre del dia
+books_help	La posició d'avui. Reserva = paquets entrats. Pagament = factures i despeses del transportista. Parts = expedidors i transportistes.
+buy_help	Comprovants de despeses i factures del transportista (sortida de diners). El compte pendent roman al llibre major de la part.
+sell_money_in	Reservar un paquet
+buy_money_out	Despesa / factura del transportista
+record_purchase	Registrar compra
+add_expense	Val de despesa
+bank_book	Llibre de banc
+credit_help	L'identificador del partit és únic (els noms es poden repetir). Funcions: expedidor (AR), transportista (AP) o tots dos en aquest identificador. Els llibres majors romanen separats; els informes mostren net.
+party_kind_ph	Rol personalitzat (opcional) — o toca un xip a sobre
+parties_list_heading	Partits salvats
+reports_help	Llibre del dia, deutors i creditors, llibre de banc, vals de despesa, pèrdues i guanys.
+reports_today	Llibre del dia (avui)
+reports_month	Pèrdues i guanys (mes)
+reports_aging	Pendent / Deutor-Creditor
+reports_balance_sheet	Balanç
+reports	Llibre de banc i PiG
+refresh	Actualitza
+undo	Desfés
+start_tracking	Comença el seguiment
+stock_minus	− Estoc
+stock_plus	+ Estoc
+settle_cash	Tanca en efectiu
+settle_card	Tanca amb targeta
+items	Tarifes i serveis
+nav_items	Tarifes
+more	Més
+your_items	Les teves tarifes
+items_help	Cada fila és una tarifa (p. ex., Zona de superfície A). La unitat és normalment kg. Toca per editar.
+add_item	Afegir tarificació
+new_item	Nova tarifa
+adding_item	Afegir una nova tarifa
+editing_item	Edició
+save	Desa
+remove	Treu
+empty_catalog	Encara no hi ha tarifes. Obre Tarifes i serveis, afegeix-ne una (nom + preu, unitat kg), després Reserva.
+counter_sale	Reserva al taulell
+total	Total
+cash	Efectiu
+upi	UPI
+card	Targeta
+credit	Parts
+clear	Neteja
+ready_to_sell	A punt per anotar
+today_prefix	Avui
+today_mid	avui
+owed	pendent
+round_word	arrodoniment
+back	Enrere
+sold_out	No disponible
+restock	Reposa estoc
+not_tracked	Sense seguiment
+in_stock	en estoc
+marked_sold_out	Marcat com a no disponible
+add_upper	AFEGEIX
+na	N/D
+qty	Pes/Qtat
+unit_at	Tarifa @
+actual	Real
+applied	Aplicat
+note_ph	Nota (opcional)
+rounded	ARRODONIT
+split	Divideix
+counter	Mostrador
+parcel	Paquet
+order	Comanda
+sales	Reserves
+sales_refunds	Reserves i reemborsaments
+day_close	Tancament del dia
+reports_expenses	Llibre de banc i PiG
+nav_reports	Informes
+nav_settings	Ajustos
+nav_lock	Bloqueig
+sidebar_settings	Configuració de la barra lateral
+sidebar_settings_help	Les mateixes icones que el rail lateral. Arrossegueu una fila per reordenar. Gireu l'interruptor per mostrar o amagar. Ajustos i Bloqueig sempre queden a la barra.
+sidebar_always_on_short	Sempre actiu
+sidebar_back_settings	Enrere
+sidebar_shown	Visible
+sidebar_hidden	Amagat
+sidebar_always_on	Sempre a la barra
+sidebar_shown_hint	Visible al rail lateral / pestanyes inferiors
+sidebar_hidden_hint	Amagat de la barra
+sidebar_menu_items	Menú i articles
+sidebar_enable_all	Activa-ho tot
+sidebar_disable_all	Desactiva-ho tot
+sidebar_order_saved	Ordre de la barra lateral desat
+sidebar_visibility_saved	Visibilitat de la barra lateral desada
+amounts_hide	Amaga
+amounts_show	Mostra
+no_sale_yet	Encara no hi ha venda
+favorites	Preferits
+favorites_help	Articles que veneu sovint, desats per al vostre inici de sessió. Afegiu-ne un al compte o feu la llista amb tots els articles de sota.
+your_favorites	Els vostres preferits
+all_items	Tots els articles
+no_favorites	Encara no hi ha preferits — afegiu articles de la llista de sota.
+add_to_bill	Afegeix al compte
+added	Afegit
+owes_word	deu
+selected_word	Seleccionat
+chip_clear_credit	neteja — Crèdit o pren bestreta
+chip_missing_customer	Falta el client seleccionat — trieu-lo de nou
+chip_no_customer	Encara no hi ha client — escriviu un nom i toqueu Crèdit
+credit_summary_fmt	{} clients · crèdit obert {} · bestretes retingudes {}
+recent_label	Recents:
+inventory	Inventari
+inventory_stock	Inventari i estoc
+branches	Sucursals
+branches_org	Sucursals i organització
+credit_customers	Parts (deutors i creditors)
+customer_name_ph	Nom de la part
+new_customer_ph	Nom de la part nova
+item_name_ph	Nom de la tarifa (p. ex., Zona de superfície A)
+item_price_ph	Per kg / primera llosa
+start_template	Producte
+next_booking	Pròxima reserva
+destination_ph	Ciutat / zona de destinació
+consignee_ph	Nom del receptor
+consignee_phone_ph	Telèfon receptor
+consignee_address_ph	Adreça de lliurament
+origin_name_ph	Nom del remitent
+origin_phone_ph	Telèfon remitent
+origin_address_ph	Adreça de recollida/origen
+booking_consignor_heading	Remitent (client / expedidor)
+booking_consignee_heading	Consigna (receptor)
+booking_consignor_hint	Tria una festa per omplir o deixa en blanc per entrar. Necessari per a la recollida a domicili i RTO.
+booking_consignee_hint	Receptor del paquet. Deixeu-lo en blanc per a les baixades del taulell.
+weight_kg_ph	Kg real
+length_cm_ph	L cm
+breadth_cm_ph	B cm
+height_cm_ph	H cm
+chargeable_kg	Kg càrrecable
+awb_label	AWB
+booking_help	Remitent + destinatari (en blanc està bé) → destinació → pesar → tarifa → Compte/Efectiu → pagar. L’AWB s’imprimeix al rebut. La propera reserva allibera la taulell. Els començaments arrodonits igualen a Aplicat — només editar per arrodonir la factura.
+cart_empty_hint	Escriptori buit — remitent/destinatari opcional, estableix destinació i pes, toca AFEGIR en una tarifa, després paga.
+team	Equip
+team_pins	Equip i PIN
+my_pin_settings	El meu PIN
+settings_hub_help_my_pin	Canvia el PIN de desbloqueig de la persona que ha iniciat sessió en aquest dispositiu.
+team_self_help	Només tu pots canviar el PIN de desbloqueig (i la contrasenya d'inici de sessió opcional). Pregunteu al propietari si necessiteu pantalles o drets diferents.
+backup_settings	Còpia i ajustos
+lock_app	Bloqueja l'app
+pick	Tria
+select	Selecciona
+advance	Bestreta
+owner	Propietari
+staff	Personal
+photo	Foto
+auto	Auto
+prev	Ant
+next	Següent
+ok	D'acord
+this_shop	Servidor
+extra_till	Client
+off	Desactivat
+server	Servidor
+client	Client
+language_currency	Llengua i moneda
+language	Llengua
+choose_language	Trieu la vostra llengua
+language_setup_hint	Seguiu la llengua d'aquest dispositiu o trieu-ne una vós.
+lang_follow_platform	Llengua del dispositiu
+lang_pick_user	Tria la llengua
+lang_platform_now	Llengua del dispositiu ara
+selected_language	Seleccionat
+continue	Continua
+this_device	AQUEST DISPOSITIU
+device_use_q	Com s'utilitzarà aquest dispositiu?
+last_server_mode	Era Servidor — toqueu per continuar
+last_client_mode	Era Client — toqueu per continuar
+choose_server	Trieu un servidor
+choose_server_hint	Obriu un servidor existent o creeu-ne un per a un altre negoci.
+create_new_server	Crea un servidor nou
+open_server	Obre
+new_server_name_ph	Nom del servidor nou (opcional)
+server_remove_pin_ph	PIN del propietari per treure un servidor
+only_owner_remove_server	Només el Propietari pot treure un servidor
+owner_pin_remove_server	Cal el PIN del propietari per treure aquest servidor
+device_setup_help	El Servidor guarda els llibres aquí. El Client s'aparella amb un Servidor.
+currency	Moneda
+backup	Còpia
+settings_sec_diag	Diagnòstic
+settings_hub_help	Obriu una àrea cada vegada — menys desplaçament, tries més clares.
+settings_sec_devices	Altres dispositius
+settings_sec_alerts	Avisos
+alerts_help	Quant de temps romanen a la pantalla els missatges d'estat per a vós (aquest inici de sessió).
+snack_secs_ph	Segons (3–60, per defecte 10)
+snack_secs_save	Desa el temps d'avís
+snack_secs_saved	Temps d'avís desat — {n} segons
+snack_secs_bad	Introdueix els segons com un número (3–60)
+cancelled	Anul·lat
+cancel	Anul·la
+opening_client	S'obre el client…
+preparing_desk	Es prepara el taulell…
+opening_server	S'obre el servidor…
+creating_server	Es crea el servidor…
+diag_privacy_help	Els registres queden en aquest dispositiu. Els secrets (PIN, contrasenyes) no s'emmagatzemen mai. Compartir un paquet fora del dispositiu demana la vostra aprovació explícita cada vegada — no es ven ni es dona a tercers.
+diag_level	Nivell de detall
+diag_level_error	Errors
+diag_level_warn	Advertiments
+diag_level_info	Info
+diag_level_debug	Depuració
+diag_support_start	Inicia una sessió de suport de 30 min
+diag_support_stop	Acaba la sessió de suport
+diag_support_started	Sessió de suport activa — detall de depuració durant 30 minuts
+diag_support_ended	Sessió de suport acabada
+diag_export_local	Exporta una còpia local
+diag_export_local_done	Diagnòstic local a punt a {path} — trieu on desar una còpia
+diag_approve_send	Aprova compartir fora d'aquest dispositiu
+diag_send_heading	Comparteix fora d'aquest dispositiu
+diag_send_help	L'aprovació és per un paquet i després caduca. Temporal — només per corregir o millorar el producte. No es comparteix amb tercers. Funciona a Linux, Windows, macOS i Android.
+optional_login_heading	Inici de sessió opcional
+rights_heading	Drets
+booking_scope_heading	Domèstic / Internacional
+diag_send_approved	Compartició aprovada per un paquet (caduca aviat)
+diag_export_send	Crea el paquet per compartir (cal aprovació)
+diag_export_send_done	Paquet a punt a {path} — trieu on desar-lo i envieu-lo només al suport de Kumkaj
+diag_save_bundle	Desa la còpia de diagnòstic
+diag_bundle_saved	Còpia de diagnòstic desada a {path}
+diag_bundle_failed	No s'ha pogut desar la còpia de diagnòstic — torneu-ho a provar
+diag_clear	Neteja els registres de diagnòstic
+diag_cleared	Registres de diagnòstic netejats
+use	Fes servir
+add_branch	Afegeix sucursal
+add_conversion	Afegeix conversió
+add_item_plain	Afegeix article
+add_note	Afegeix nota
+add_opening_balance	Afegeix saldo d'obertura
+add_rider	Afegir repartidor
+add_staff	Afegeix personal
+add_unit	Afegeix unitat
+add_use_name	Afegeix / fes servir aquest nom
+allow_extra_tills	Permet caixes extra
+amend	Esmena
+apply_country_pack	Aplica el paquet de país
+datetime_appearance	Aspecte de data i hora
+datetime_appearance_help	Els llibres mantenen dins el format RFC3339 amb l'any primer. Aquestes només canvien com es veuen les dates i els rellotges a rebuts, etiquetes, informes i la pantalla.
+datetime_example	Exemple ara: {ex}
+date_order	Ordre de la data
+date_order_dmy	D/M/A
+date_order_mdy	M/D/A
+date_order_ymd	A-M-D
+time_format	Rellotge
+time_format_24h	24 hores
+time_format_12h	12 hores
+attach_bill_photo	Adjunta foto del compte
+attach_pdf	Adjunta PDF
+attach_photo	Adjunta foto
+bank	Banc
+bank_in	Entrada a banc
+bank_out	Sortida de banc
+bank_to_till	Banc → caixa
+till_to_bank	Caixa → banc
+mark_cleared	Marca com a conciliat
+unmark	Desmarca
+role_both	Tots dos
+role_carrier	Transportista
+role_cashier	Caixer
+role_consignor	Remitent
+role_manager	Encarregat
+role_supplier	Proveïdor
+branch_name_sell_ph	Nom de la sucursal des d'on es ven
+bring_my_book	Porta el meu llibre
+business_tax_id_ph	Id fiscal del negoci
+card_amount_ph	Import de targeta
+cash_amount_ph	Import en efectiu
+upi_amount_ph	Import UPI
+carrier_cost_ph	Cost del transportista
+carrier_party_ph	Part del transportista
+choose_icon	Tria icona
+choose_logo	Tria logotip
+choose_receipt_stamp	Tria segell de rebut
+choose_payment_qr	Tria el QR de pagament
+clear_icon	Treu la icona
+clear_logo	Esborra logotip
+clear_photo	Treu la foto
+clear_stamp	Treu el segell
+clear_payment_qr	Treu el QR de pagament
+print_faces	Imprimeix cares (rebut / factura del període)
+print_faces_help	Segell opcional i QR de pagament al costat del vostre logotip als rebuts de reserva i factures de període.
+awb_pools_heading	Pools de números AWB del transportista
+add_awb_pool	Afegir grup d'AWB
+awb_pool_carrier_ph	Nom de la part del transportista
+awb_pool_start_ph	Inici núm.
+awb_pool_end_ph	Número final
+awb_pool_prefix_ph	Prefix (opcional)
+awb_pool_label_ph	Etiqueta (opcional)
+pieces_ph	Peces (en blanc = 1) — expandir per a càrrega / multipeça
+bulk_awbs_ph	AWB massiu — enganxa'n molts (nova línia o coma) per a un avançament d'estat
+tds_cut_ph	Tall TDS (opcional)
+discount_ph	Descompte (opcional)
+cheque_no_ph	Número de xec (opcional)
+bill_reminder_chase	Llista de seguiment de recordatori de factura
+month_mix_report	Informe de mescla mensual
+copy_month_gst_csv	Copiar CSV de GST del mes
+domestic	Domèstic
+international	Internacional
+pick_logo	Trieu el logotip
+booking_scope_hint_domestic	Volumètric ÷5000 (domèstic) — toqueu Internacional per a ÷6000 aire
+booking_scope_hint_intl	Volumètric ÷6000 (aire internacional) — toqueu Domèstic per a botiga ÷5000
+cod_register	Registre COD
+collect_cod	Recollir contra reemborsament (AWB)
+consignments_dispatch	Consignacions i enviaments
+consignor_party_ph	Remitent / nom de la part
+copy_day_book_csv	Copia el llibre del dia CSV
+copy_day_close	Copia el tancament del dia
+copy_items_csv	Copia articles CSV
+copy_outstanding_csv	Copia pendents CSV
+copy_parties_csv	Copia parts CSV
+copy_party_ledger_csv	Copia el llibre de la part CSV
+copy_receipt	Copia el rebut
+copy_report	Copia l'informe
+counted_cash_ph	Efectiu comptat al calaix
+counter_agency_ph	Nom del taulell / agència (opcional)
+create_backup	Crea una còpia
+day_close_summary	Resum del tancament del dia
+delete_party	Elimina la part seleccionada
+dispatch_to_rider	Enviament reservat → repartidor
+docket_charge_ph	Càrrec de registre
+declared_value_ph	Valor declarat
+contents_ph	Continguts
+eway_ph	Número de bitllet E-way
+insurance_label	Assegurança
+yes_label	Sí
+no_label	No
+print_route_label	Ruta d'impressió
+new_party_kind_label	Nou tipus de part
+done_open_books	Fet — obre els llibres
+export_day	Exporta el dia
+extra_note_expense_ph	Nota extra a la darrera despesa
+extra_note_awb_ph	Nota extra en aquest AWB / venda
+failed_delivery	Entrega fallida
+find_scan_awb	Cerca / Escaneja AWB
+forget_shop	Oblida aquesta botiga
+fuel_ph	Combustible
+handover_carrier	Reservat a mà → transportista
+import_day	Importa el dia
+import_items_csv	Importa articles/tarifes CSV...
+import_parties_csv	Importa parts CSV…
+import_pincodes_csv	Importa els codis PIN CSV...
+import_carrier_bill_csv	Importa la factura de l'operador CSV...
+copy_carrier_bill_report	Copiar últim informe de factura del transportista
+use_carrier_cost	Utilitzeu el cost del transportista
+rate_carrier_ph	Transportista (blanc = la nostra tarifa de venda)
+rate_party_ph	Festa (en blanc = tots els clients)
+carrier_pick_ph	Transportista per cost (des de comparar)
+item_name	Nom de l'article
+load_bulk_row	Carrega la fila a granel → escriptori
+login_id_ph	Nom d'usuari
+mark_delivered	Mark va lliurar
+manifest_cod_total	Total COD
+manifest_received_by	Rebut per
+manifest_sign	Signar
+ndr_address_wrong	Adreça incorrecta
+ndr_customer_unavailable	No disponible
+ndr_door_locked	Parella tancada
+ndr_other	Altres
+ndr_refused	Negat
+out_for_delivery	Sortida per lliurament
+print_drs	Imprimeix DRS
+print_run_sheet	Imprimeix el full de tirada
+reattempt	Tornar a intentar
+rider_cod_handed_ph	COD lliurat
+settle_rider_cod	Settle rider COD
+mode_desk	Escriptori
+mode_rider	Genet
+waiting_office	esperant arribar a l'oficina
+capture_signature	Capturar signatura
+incoming_manifest	Manifest entrant
+pickup_request	Sol·licitud de recollida
+pickup_run	Carrera de recollida
+auto_assign_area	Assigna automàticament l'àrea
+reorder_stops	Reordena les parades
+settle_rider_pay	Liquidar la paga del genet
+vehicle_inspect	Inspecció de vehicles
+print_docket	Imprimeix expedient
+franchise_statement	Declaració de franquícia
+tally_export	Exportació de vals de comptabilitat
+open_whatsapp	Obre WhatsApp
+copy_sms	Copiar text SMS
+pick_barcode_image	Trieu la imatge per escanejar
+share_receipt_whatsapp	Comparteix el rebut a WhatsApp
+delivery_feedback	Comentaris sobre el lliurament
+lan_self_book	Auto-reserva per LAN
+new_party_clear	Part nova (buida el formulari)
+new_party_kind_ph	Nou tipus de part (Proveïdor / Transportista)
+next_country	País següent
+prev_country	País anterior
+note_gstin_ph	Nota / GSTIN / recordatori d'acord
+note_pod_ph	Nota / POD (opcional)
+on_account_ap	A compte (AP)
+org_optional_ph	Organització (opcional)
+paid_now	Pagat ara
+pairing_code_ph	Codi d'aparellament
+pair_now	Aparella ara
+party_name_selected_ph	Nom de la part (o fes servir la seleccionada)
+password_ph	Contrasenya
+pay_ap_card	Paga AP amb targeta
+pay_ap_cash	Paga AP en efectiu
+pay_ap_upi	Paga AP amb UPI
+period_bill	Factura de període
+period_bill_party	factura del període (part)
+pick_pod_photo	Trieu la foto POD
+print_awb_label	Imprimeix l'etiqueta AWB
+print_open	Imprimeix / obre
+reason_amend_ph	Motiu d'esmena / anul·lació / devolució
+reason_note_ph	Motiu / nota (minva, recompte, …)
+record_day_close	Registra el tancament del dia
+refresh_from_shop	Actualitza des de la botiga
+refund	Devolució
+remit_cod	Remetre COD (part)
+remove_selected	Treu la selecció
+restore_backup	Restaura la còpia
+rider_name_ph	Nom del genet
+rider_phone_ph	Telèfon del genet
+riders	Genets
+riders_own_fleet	Genets (flota pròpia)
+rollup	Acumulat
+save_booking_measures	Estalviï les mesures de reserva
+save_brand	Desa la marca
+save_business_id	Desa l'id del negoci
+save_business_name	Desa el nom del negoci
+save_features	Desa la configuració del treball
+save_names	Desa els noms
+server_ip_ph	IP del servidor (p. ex. 192.168.1.10)
+set_credit_limit	Aplica el límit a la part
+set_login_selected	Aplica l'inici de sessió a la selecció
+set_login_named	Aplica l'inici de sessió a {name}
+shop	Botiga
+start_fresh	Comença de zero
+stop_extra_tills	Atura les caixes extra
+backup_auto	Còpia automàtica cada dia · darrera {when} · es conserven els darrers 14 dies a {dir}.
+backup_auto_none	Còpia automàtica cada dia — la primera es farà d'aquí a un moment.
+backup_copy_to	Les còpies també van a {dir}.
+backup_copy_btn	Copia també les còpies a una carpeta…
+autostart_off	Inicia amb aquest ordinador
+autostart_on	S'inicia amb aquest ordinador ✓ — toqueu per aturar
+autostart_done_on	Aquest ordinador ara obre l'app en arrencar — el servidor de la botiga torna després d'una tallada de corrent.
+autostart_done_off	Aquest ordinador ja no obre l'app en arrencar.
+right_allowed	Permès
+right_with_approval	Amb aprovació
+right_denied	No permès
+editing_staff	Drets per
+team_pick_ph	Personal a editar — nom, nom d'usuari o trieu
+select_staff	Selecciona aquest personal
+rights_help	Drets — toqueu per canviar: Permès → Amb aprovació (el PIN d'un gestor en aquest moment) → No permès.
+right_void_refund	Anul·lar o reemborsar una reserva
+right_amend_sale	Modificar una reserva enregistrada
+find_server	Troba el servidor de la botiga
+finding_server	S'està cercant el servidor de la botiga en aquest Wi‑Fi…
+no_server_found	No se n'ha trobat cap. Al Servidor: Ajustos → Altres dispositius → Permet caixes extra (el mateix Wi‑Fi). O escriviu la IP que s'hi mostra.
+servers_found_pick	Toqueu la botiga a la qual us voleu connectar.
+server_host_selected	S'usa {host} — introduïu el codi d'aparellament i Aparella ara.
+device_forgotten	La botiga ha oblidat aquest dispositiu — torneu-lo a aparellar amb el codi actual. Les comandes que hi esperen es conserven.
+forget_device	Oblida
+last_seen	vist
+new_pair_code	Codi d'aparellament nou
+lan_offline	No es pot arribar al servidor de la botiga
+lan_offline_waiting	No es pot arribar al servidor de la botiga · {n} en espera
+lan_connecting	Connectant amb la botiga…
+pair_finishing	Acabant el parell... aplicant els llibres de l'oficina
+pair_opening	Obrint l'oficina...
+lan_live	En directe
+lan_sending	{n} enviant
+lan_sign_in_to_send	Torneu a iniciar sessió per enviar {n}
+lan_pair_again	Torneu a aparellar aquest dispositiu
+lan_update_app	Actualitza l'aplicació: aquest dispositiu i el servidor d'oficina tenen versions diferents
+allow_firewall	Permet que altres dispositius es connectin
+firewall_blocked	El tallafoc d'aquest ordinador bloqueja altres dispositius — toqueu Permet que altres dispositius es connectin.
+firewall_waiting	S'espera l'avís de l'administrador…
+lan_join_help	A l'altre dispositiu: Mode client → Troba el servidor de la botiga (o escriviu {addr}) → codi d'aparellament {code}.
+lan_pair_status	Wi‑Fi {addr}
+lan_join_help_no_addr	Connecteu aquest dispositiu al Wi‑Fi per tenir una adreça.
+lan_no_address	Encara no hi ha adreça Wi‑Fi — connecteu-vos al Wi‑Fi de la botiga.
+lan_not_listening	No s'accepten dispositius (el port {port} està ocupat). Reinicieu l'app.
+lan_tills_off	Les caixes extra estan desactivades. Permeteu-les perquè un altre dispositiu s'hi uneixi.
+paired_with	Aparellat · {url}
+not_paired	No aparellat
+choose_device_use	Trieu Servidor o Client.
+paired_note	Aparellat. Desbloquegeu per vendre, o Actualitza per tenir l'últim.
+last_update_at	Darrera actualització: {time}.
+pair_intro	Trobeu el servidor, o escriviu-ne l'adreça i el codi d'aparellament.
+queue_waiting	En espera d'arribar a la botiga ({n}):
+queue_tries	Intentat {n} vegades · darrera resposta: {e}
+save_backup_copy	Desa una còpia de seguretat…
+backup_copy_saved	Còpia de seguretat desada — guardeu-la fora d'aquest dispositiu (un USB o un altre dispositiu)
+backup_copy_overdue	Fa {n} dies que cap còpia no ha sortit d'aquest dispositiu — Ajustos → Còpia
+backup_copy_failed	La còpia de seguretat no s'hi ha pogut desar — trieu un altre lloc
+clock_off	El rellotge d'aquest dispositiu va {min} min desviat del servidor de la botiga — poseu l'hora correcta en aquest dispositiu
+printers_heading	Impressores en aquest dispositiu
+printers_help	Troba impressores reals, després tria Rebut o etiqueta AWB. Cada treball té la seva pròpia amplada, vertical o horitzontal, i com s'envien els bytes. Una etiqueta imprimeix el codi de barres. Lloc buit = no imprimir.
+job_width	Amplada del contingut (mm)
+job_width_ph	O escriviu una amplada, de 40 a 210 mm
+job_layout	Disposició
+job_delivery	Com s'envia el treball
+job_size	Mida de lletra
+job_size_ph	p. ex. 18, 20, 26…
+save_receipt_format	Desa el format del rebut
+save_label_format	Desa el format de l'etiqueta
+test_receipt_format	Rebut de prova
+test_label_format	Etiqueta de prova
+test_receipt_sent	Rebut de mostra enviat
+test_label_sent	Mostra d'etiqueta enviada
+test_print_no_printer	Cap impressora per a aquesta feina — afegeix-ne una sota aquest lloc
+printers_host_only	Les impressores es configuren al dispositiu de la botiga (servidor). Això fins que s'envia treballs allà: Trobeu/afegiu/assigneu l'estada al servidor. La pàgina de prova va al servidor.
+printers_pool_heading	Impressores
+printers_routes_heading	On s'imprimeix
+printer_label_ph	Nom (per exemple, Escriptori)
+printer_target_ph	host:9100 · bt:MAC · usb:VID:PID · nom del sistema
+printer_mode_heading	Perfil per a noves sortides
+printer_mode_standard	Retrat estàndard
+printer_mode_landscape	Paisatge estàndard
+printer_mode_thermal	Tèrmica
+printer_mode_standard_short	Vertical
+printer_mode_landscape_short	Horitzontal
+printer_mode_thermal_short	Tèrmica
+printer_format_custom	Perfil personalitzat nou
+printer_format_custom_label	Personalitzat
+printer_format_custom_added	Perfil personalitzat afegit per a aquest lloc
+add_printer	Afegeix impressora
+remove_printer	Elimina l'últim
+route_pick_ph	rebut o etiqueta
+route_add_printer_ph	Afegir impressora a aquest lloc
+route_receipt	Rebut
+route_label	Etiqueta AWB
+route_dont_print	No s’ha assignat cap impressora
+route_add	Afegir al lloc
+route_up	Amunt
+route_down	Avall
+route_remove	Elimina l'últim
+route_clear	Esborra impressores per a aquest lloc
+save_printers	Desa les impressores
+print_test_page	Imprimeix una pàgina de prova
+printers_saved	Impressores desades per a aquest dispositiu
+test_page_sent	Pàgina de prova enviada — comproveu la impressora
+printers_found	Trobat en aquest dispositiu: {list}
+find_printers	Troba impressores
+printers_looking	Busco impressores en aquest dispositiu i Wi-Fi...
+printers_tap_find	Toqueu Cerca impressores per a les cues que accepten tasques i impressores de rebuts de xarxa en aquesta xarxa Wi-Fi (no eliminades o fora de línia).
+printers_none_found	No s'han trobat impressores — escriu un nom d'impressora del sistema, o una adreça de xarxa (p. ex. 192.168.1.50).
+receipt_printer_ph	Impressora per a rebuts
+queue_refused	La botiga no ho ha acceptat ({n}) — comproveu-ho cadascun al mostrador:
+clear_not_accepted	Comprovat — neteja aquesta llista
+device_name_ph	Nom d'aquest dispositiu
+lan_last_update	darrera actualització {time}
+lan_not_accepted	{n} no acceptat
+connected_now	connectat ara
+backup_failed	La darrera còpia automàtica ha fallat: {e}
+backup_overdue	Fa {n} dies sense còpia — deixeu l'app oberta en aquest dispositiu perquè en pugui fer.
+disk_low	Només queden {mb} MB lliures en aquest dispositiu — les còpies fallaran aviat. Allibereu espai.
+last_seen_devices	Vist per darrer cop: {time}
+sync_interval	Sincronitza cada {secs} s
+connection_to_shop	Connexió amb la botiga
+supplier_name_ph	Nom del proveïdor (o part)
+supplier_ph	Proveïdor
+switch_device	Canvia aquest dispositiu
+take_payment	Cobra
+tax_added_till	{tax} exclòs
+tax_inside_price	{tax} inclòs
+today_books	Llibres d'avui
+unlock_after_pairing	Introduïu el PIN
+unlock_with_login	Desbloqueja amb l'inici de sessió
+update_my_password	Actualitza la meva contrasenya
+update_my_pin	Actualitza el meu PIN
+duress_heading	PIN de desbloqueig d'emergència (només el Propietari)
+duress_help	Opcional. Si s'escriu aquest PIN al desbloquejar en comptes del teu, s'esborren totes les entrades dels llibres (reserves, llibres majors, historial) i l'escriptori s'obre com a Propietari amb un aspecte normal: les tarifes, les festes, les zones, el personal i la configuració es mantenen. L'esquema i la configuració no s'eliminen. Utilitzeu només si esteu obligats a desbloquejar. Deixa en blanc i desa per desactivar-lo. Mai és el mateix que el PIN de ningú.
+duress_pin_ph	PIN d'emergència (4–12 dígits)
+duress_confirm_ph	Torneu-lo a escriure per confirmar
+save_duress_pin	Desa el PIN d'emergència
+clear_duress_pin	Desactiva el PIN d'emergència
+duress_on	El PIN de desbloqueig d'emergència està activat
+duress_off	El PIN de desbloqueig d'emergència està desactivat
+duress_saved	PIN de desbloqueig d'emergència desat
+duress_cleared	PIN de desbloqueig d'emergència desactivat
+vehicle_ph	Vehicle
+void	Anul·la
+write_off_ap	Cancel·la l'AP
+write_off_nil	Cancel·lació / saldo zero
+zone_ph	Zona (nom de Tarifes)
+caption_today	AVUI
+caption_bookings	RESERVES
+caption_payments_today	PAGAMENTS D'AVUI
+caption_outstanding	PENDENT
+caption_bank	BANC
+paid_by	Pagat per
+second_way	Segona via
+weight_in	Pes en
+size_in	Talla en
+goods_received	Mercaderia rebuda
+expense_heading	Despesa
+notes_attach_sale	Notes i adjunts (venda seleccionada)
+notes_attach_party	Notes i adjunts (part seleccionada)
+attachments_last_expense	Adjunts (darrera despesa)
+credit_limit_heading	Límit de crèdit (part seleccionada / amb nom)
+pay_selected_heading	Paga la selecció (salda el deute / pren bestreta)
+write_off_heading	Cancel·lació (neteja sense pagament)
+pay_ap_heading	Paga el que els devem (AP)
+country_tax	País i impost
+extra_tills_heading	Caixes extra
+other_devices_help_heading	Configura altres dispositius
+other_devices_help	En aquest dispositiu (servidor): Altres dispositius → Permetre caixes addicionals. Tingueu en compte el codi de vinculació i l'adreça Wi-Fi. Toqueu Permetre que altres dispositius es connectin si apareix. En un ordinador, toqueu Comença amb aquest ordinador. Als altres dispositius: instal·leu l'aplicació, trieu Mode client, Trobeu el servidor de la botiga (o escriviu l'adreça), introduïu el codi de vinculació, Vincula ara. Les comandes esperen al dispositiu si la Wi-Fi baixa i es desactiven quan el servidor torni a respondre.
+your_brand	La vostra marca (dins l'app)
+units_heading	Unitats
+booking_measures	Mesures de reserva
+drawer_count	Recompte del calaix (opcional)
+spreadsheet_csv	Full de càlcul (CSV)
+bank_reconciliation	Conciliació bancària (marqueu contra l'extracte)
+book_add_product	Llibre — afegir producte / tarifa
+book_opening_credit	Llibre — crèdit d'obertura
+account_kind	Tipus de compte (toqueu-ne un)
+active_ledger	Llibre major actiu
+actual_total_cap	TOTAL REAL
+amend_help	Seleccioneu una venda per esmenar, anul·lar o tornar. Les esmenes conserven tot l'historial. El Total arrodonit comença igual que l'Aplicat — editeu-lo només per arrodonir. Anul·lar i tornar pot demanar un PIN de Propietari o Encarregat (escrit a dalt; queda registrat amb el vostre nom).
+applied_total_cap	TOTAL APLICAT
+bank_balance	Saldo bancari
+bank_net_today	Net bancari d'avui
+branch_export_help	Exporta escriu una instantània del dia a la carpeta de còpies de seguretat i la copia al portapapers. Per importar el dia d’una altra botiga, desa el seu fitxer com a import_branch_snapshot.json en aquella carpeta i després toca Importa.
+brand_shown_help	Es mostra a les pantalles de dins l'app. El nom i la icona de l'app instal·lada en aquest dispositiu queden com a la fitxa de la plataforma.
+app_icon	Icona de l'app
+logo_help	Marca de botiga opcional a les pantalles de l'app.
+onboard_layout	Què obteniu
+item_photo_help	Opcional. Sense foto mostrem les inicials del nom de l'article.
+cash_in_hand	Efectiu en caixa
+change_my_pin_heading	Canvia el meu PIN (només el teu)
+connect_to_server	Connecta amb el Servidor
+counter_locked	Mostrador 01 · Bloquejat
+country_pack_help	Un paquet de país posa el nom i el càlcul de l'impost, el rail de pagament instantani i l'id de negoci imprès als comptes. Kumkaj no presenta impostos ni emet factures electròniques oficials enlloc.
+currency_use_help	Desplaceu i toqueu Fes servir per a qualsevol moneda admesa.
+day_close_help	Registrar un tancament del dia desa aquest resum (i la diferència del calaix si s'ha comptat) al registre d'auditoria. No atura les vendes.
+expenses_word	Despeses
+feature_access_help	Accés a funcions per al personal seleccionat (toca després d'afegir)
+footer_local	SQLite local · Gratuït per sempre · Zero Cloud
+fresh_book_moklanjo	Fresc = catàleg buit (afegir articles més tard). Reserva = escriure l'estoc inicial i qui et deu a continuació.
+fresh_selected	Nou seleccionat — el catàleg queda buit. Toqueu Fet quan estigueu a punt.
+gross_word	Brut
+how_start	Com voleu començar?
+later_country_pack	Més endavant: Ajustos → apliqueu el paquet del vostre país per a les etiquetes d'impost i pagament.
+local_badge	LOCAL
+measures_help_moklanjo	Com es mesuren els paquets al taulell de reserves. Escriviu les dimensions i el pes a les unitats que utilitzeu: estàndard (cm, m, polzades, peus · kg, g, lliures, oz) o la vostra pròpia unitat vinculada a cm/kg anterior (directament o mitjançant altres unitats). Els llibres sempre registren kg. Deixa un camp buit per mantenir-lo.
+mix_type_hint_moklanjo	Escriu quant en cadascun (efectiu / UPI / targeta / crèdit). S'ha de sumar a la factura. El crèdit necessita un client a dalt.
+money_in_sales	Diners que entren (vendes)
+more_help_moklanjo	Catàleg, vendes, crèdit, equip, còpia de seguretat — més estoc i caixes addicionals quan sigui necessari.
+net_word	Net
+offline_badge	SENSE XARXA
+optional_login_help	Inici de sessió opcional (id + contrasenya). El propietari el posa un cop; només l'usuari pot canviar la contrasenya després.
+or_unlock_login	O desbloquegeu amb id d'inici de sessió + contrasenya
+permission_preset	Feina (estableix pantalles i drets)
+preset_help_moklanjo	Caixer: vendre. Encarregat: vendre + articles + anul·lar/esmenar.
+product_locked_moklanjo	Moklanjo
+product_only_moklanjo	Aquesta aplicació només és Moklanjo: llibres + taulell de reserves. Altres cares comercials s'envien com a productes separats més tard.
+purchases_cogs	Compres (COGS)
+qty_cap	QTAT
+restore_help	Restaura: trieu una còpia. Els llibres s'obren com eren llavors; els llibres d'ara es desen primer, així que es pot desfer.
+wipe_data_heading	Elimina les dades locals
+wipe_data_help	Només el propietari: les mateixes opcions que la desinstal·lació de Windows. Els registres empresarials esborran l'historial comercial, però mantenen les tarifes i la configuració (com el PIN de desbloqueig d'emergència). La configuració de la botiga elimina la base de dades de llibres. Les preferències de la pantalla esborran la finestra/idioma. Confirmeu amb el PIN del propietari. El PIN de desbloqueig d'emergència a l'equip és independent (neteja encoberta al desbloquejar).
+wipe_trading	Registres del negoci
+wipe_schema	Configuració de la botiga
+wipe_ui	Preferències de pantalla
+wipe_owner_pin_ph	PIN del propietari per eliminar
+wipe_delete_selected	Elimina la selecció
+wipe_owner_only	Només el Propietari pot eliminar les dades locals.
+restore_owner_only	Només el Propietari pot restaurar una còpia.
+wipe_owner_pin_needed	Introduïu el PIN del Propietari per eliminar les dades locals.
+wipe_nothing_selected	Trieu primer què eliminar.
+wipe_done	Dades locals seleccionades eliminades.
+wipe_schema_done	Configuració de la botiga esborrada — trieu Servidor o Client per continuar.
+rounded_total	Total arrodonit
+setup_app_moklanjo	Configura Moklanjo
+shop_logo_optional	Logotip de la botiga (opcional)
+stock_type_help	Escriviu el nom de l'article (en basta una part), una quantitat i després ajusteu. Els articles que encara no es compten necessiten Comença el seguiment un cop.
+team_owner_help	Contractació: tria una feina (Caixer / Gerent), nom + PIN inicial, després Afegeix. Només si aquesta persona és diferent: obre les pantalles i drets a continuació, després Desa la configuració de la feina. Tothom canvia el seu propi PIN a la part inferior — el propietari no pot canviar el PIN de ningú més.
+they_owe_us	Ens deuen
+unit_at_cap	Unitat @
+units_help	Codis per a les etiquetes d'article (kg, peça, sac). Cada unitat s'ha d'enllaçar — directament o a través d'altres unitats — a un estàndard (kg · cm · ml · pc), p. ex. 1 caixa = 2 capses i 1 capsa = 20 cm. Conversions: 1 des de = factor cap a. Les monedes no són mai unitats.
+we_owe_them	Els devem
+who_unlocking	Qui desbloqueja?
+locked_word	Bloquejat
+show_pin	Mostra el PIN
+hide_pin	Amaga el PIN
+set_owner_pin	POSA EL PIN DEL PROPIETARI
+enter_owner_passcode	INTRODUEIX EL CODI DEL PROPIETARI
+enter_staff_passcode	INTRODUEIX EL CODI DEL PERSONAL
+pin_count_zero	0 / 12 dígits · com a mínim 4, després D'acord
+pin_count_need	{} / 12 dígits · en calen {} més
+pin_count_full	12 / 12 dígits · premeu D'acord
+pin_count_ready	{} / 12 dígits · premeu D'acord quan estigueu a punt
+pin_hint_choose	Trieu 4–12 dígits · Retorn o Desbloqueja per desar
+pin_hint_new	PIN de propietari nou de 4–12 dígits · Retorn o Desbloqueja
+pin_hint_shop_code	Dispositiu de la botiga · codi d'aparellament {}
+pin_hint_books	Aquest dispositiu guarda els llibres
+pin_hint_paired	Caixa extra aparellada — desbloquegeu per vendre
+pin_hint_pair_first	Caixa extra — aparelleu primer amb el dispositiu de la botiga
+unlock_to_continue	Desbloquegeu per continuar
+no_staff_yet	Encara no hi ha personal — desbloquegeu com a Propietari i després Equip
+status_server_set_pin	Mode servidor — poseu el PIN del propietari
+status_server_tills	Mode servidor — les caixes extra s'hi poden unir. Desbloquegeu
+status_server_unlock	Mode servidor — desbloquegeu com a Propietari
+status_client_unlock	Mode client — desbloquegeu per vendre
+icon_new_selected	Icona: fitxer nou seleccionat — toqueu Desa la marca
+icon_custom	Icona: marca pròpia del local
+icon_default	Icona: marca Kumkaj (per defecte) — trieu-ne una de pròpia
+logo_yours	Logotip: el de la vostra botiga — es mostra a les pantalles i als rebuts
+logo_default	Logotip: marca Kumkaj (per defecte) — poseu el vostre si en teniu
+tmpl_current	Actual: {} — {}
+tmpl_selected	Seleccionat: {} — {}
+setup_complete	Configuració completa
+onboard_fresh_tmpl	Nou · {} — el catàleg comença buit; afegiu articles a Articles i després Fet.
+onboard_book_tmpl	Llibre · {} — afegiu articles i crèdit d'obertura, després Fet.
+onboard_template_tmpl	Poseu nom al local si voleu i trieu com començar.
+tmpl_blurb	Lliureries i taulell de reserves: consignadors, transportistes, llibre de dia, AWB.
+tmpl_how	Reservar paquets al taulell; Llibre del dia per avui; pestanyes per tarifes, parts, informes.
+trk_booked	Reservat
+trk_picked_up	Recollit
+trk_in_transit	En trànsit
+trk_delivered	Lliurat
+trk_rto	Tornant al remitent
+lane_to_dispatch	Per enviar
+lane_with_carrier	Amb portador
+lane_failed	Fallat
+lane_done_today	Fet avui
+ops_board_help	Parcels per on es troben en el treball d'avui. Toqueu paquets (o escanegeu-los) per recollir-los i, a continuació, actueu sobre tots els recollits alhora: cada carril ofereix només els moviments que s'ajusten.
+lane_empty	No hi ha res aquí ara mateix.
+picked_fmt	{n} escollit
+pick_all	Tria-ho tot
+bag_for_carrier	Donar a transportista
+send_with_rider	Enviar amb genet
+out_again	De nou fora
+return_to_sender	Torna al remitent
+runs_bags_heading	Carreres i bosses recents
+print_word	Imprimeix
+bag_word	Bossa del transportista
+run_word	Rider corre
+parcels_fmt	paquets {n}
+parcel_history	Història
+attempt_fmt	Intent {n}
+pieces_short_fmt	{n} unitats
+note_reason_ph	Nota o raó
+ops_pick_first	Trieu primer paquets: toqueu-los o escanegeu-los
+cod_to_collect	Lliurat — COD a cobrar
+cod_on_road	COD encara a la carretera
+cod_owed_consignors	Recollit — pagar al remitent
+cod_rto_fees	Comissions RTO a cobrar
+cod_to_hand_in	COD a lliurar
+parcel_one_fmt	Paquet {n}
+facet_bank_title	Informes
+facet_bank_help	Llibres del dia, antiguitat de parts, assentaments bancaris i PiG del període.
+facet_ops_title	Consignacions i enviaments
+facet_ops_help	Escaneja o escriviu AWB → Cerca i, a continuació, avança / imprimeix etiqueta / COD. Enviament al motorista o transportista.
+facet_cod_title	Registre COD
+facet_cod_help	Recollir al lliurament, després remetre al remitent.
+facet_riders_title	Genets (flota pròpia)
+facet_riders_help	Afegir repartidors, després enviar els AWB reservats des d'Operacions.
+against_bill_ph	Contra el compte núm. de dalt (opcional)
+aliases_ph	Àlies — altres noms, separats per comes
+amount_blank_full_ph	Import (buit = saldo sencer)
+amount_owed_ph	Import degut
+amount_ph	Import
+amount_received_ph	Import rebut
+amount_we_pay_ph	Import que paguem
+awb_scan_ph	AWB / escanejar codi de barres
+bulk_csv_ph	CSV massiu — destinació, consignatari, kg, cod_paise, nota
+business_name_ph	Nom del negoci
+category_new_ph	Categoria (opcional, es crea si és nova)
+cod_amount_ph	Import de pagament contra reemborsament
+code_bag_ph	Codi (bag)
+conv_factor_ph	Factor (25 = 1 bag → 25 kg)
+country_code_ph	Codi de país, p. ex. IN, GB, US, AE, BR
+credit_khata_amount_ph	Import de crèdit / khata
+credit_limit_ph	Límit de crèdit (0 = cap)
+dim_unit_code_ph	Codi d'unitat de dimensió (cm)
+divisor_ph	Divisor volumètric (5000)
+extra_per_kg_ph	Extra / kg
+first_amount_ph	Primer import
+first_kg_ph	Primer kg (losa)
+from_code_ph	Codi d'origen (bag)
+item_name_lang_ph	Nom de l'article — escriviu-lo en la vostra llengua
+login_id_opt_ph	Nom d'usuari (obligatori, únic)
+manager_pin_ph	PIN d'encarregat per aprovar (només si no podeu anul·lar)
+new_branch_name_ph	Nom de la sucursal nova
+new_password_ph	Contrasenya nova (opcional)
+new_pin_ph	PIN nou (4–12 dígits)
+note_bank_ph	Nota (ingrés, retirada, …)
+note_buy_expense_ph	Nota (combustible, lloguer, …)
+note_expense_ph	Nota (combustible, oficina, …)
+notify_phone_ph	Notificar al telèfon (ganxo per WhatsApp/SMS)
+options_moklanjo_ph	Opcions (opcionals): gran = 20, paper de regal = 10
+part_second_way_ph	Part per una segona via (opcional)
+phone_ph	Telèfon
+address_ph	Adreça
+party_custom_fields_heading	Camps personalitzats (part seleccionada)
+party_custom_help	Afegir qualsevol etiqueta i valor a aquesta part — WhatsApp, GSTIN, codi de ruta, ...
+party_custom_key_ph	Nom del camp (per exemple, WhatsApp)
+party_custom_value_ph	Valor
+party_custom_add	Afegir camp
+party_custom_remove	Elimina el camp
+party_custom_empty	Encara no hi ha camps personalitzats
+party_custom_pick_first	Trieu un grup per afegir camps personalitzats
+place_name_ph	Nom d'aquest local
+price_ph	Preu
+qty_example_ph	Qtat (p. ex. 1,5 per a kg)
+quantity_ph	Quantitat
+reason_required_ph	Motiu (obligatori)
+role_title_ph	Títol del rol (p. ex. Barista)
+service_pct_ph	Servei % opcional 0/10/12
+short_code_ph	Codi curt (MG02)
+slab_kg_ph	Tram carregable en kg (0,5)
+staff_name_ph	Nom/identificador del personal
+starting_password_ph	Contrasenya inicial (opcional)
+starting_pin_ph	PIN inicial (4–12 dígits)
+tax_rate_ph	Nom del tipus impositiu o % — Estàndard, Reduït, 0, 5, 12, 18, 20
+to_code_ph	Codi de destí (kg)
+uncleared_no_ph	Núm. no conciliat de dalt
+unit_cost_ph	Cost unitari
+unit_kg_blank_ph	Unitat (kg o en blanc)
+unit_name_bag_ph	Nom (Bag)
+weight_unit_code_ph	Codi de la unitat de pes (kg)
+zone_name_ph	Nom de la zona
+pay_credit	Crèdit
+book_kind_today	Llibres d'avui
+book_kind_month	Llibres d'aquest mes
+book_kind_aging	Pendent / deure-haver
+book_kind_balance	Balanç
+ops_desk_help	Escaneja AWB amb un escàner de codis de barres USB (o escriviu-lo) → Cerca. A continuació, avança, imprimeix l'etiqueta o recull el COD. Impressió d'etiquetes Codi 128.
+role_help_consignor	Funció: Consignador — AR (ens deuen). La mateixa empresa també pot ser Carrier.
+role_help_carrier	Rol: Carrier — AP (els devem). La mateixa empresa també pot ser remitent.
+role_help_both	Funcions: remitent + transportista: una part, registres AR i AP, nets als informes.
+role_help_supplier	Funció: Proveïdor — AP per a compres.
+lane_declared_label	Reserves de compte
+lane_owner_label	Reserva en efectiu
+money_lane_bill	Compte: {lane}

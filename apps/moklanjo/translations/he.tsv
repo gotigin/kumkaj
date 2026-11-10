@@ -1,0 +1,835 @@
+# Hebrew — עברית (he). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	ספרי סוכנות שליחים + דלפק הזמנות. חינם במצב לא מקוון.
+unlock	פתח
+pin_hint	קוד הבעלים מתחיל ב־0000
+sell	הזמנה
+buy	לשלם
+books	ספר היום
+books_help	העמדה של היום. הזמנה = פנימה חבילות. תשלום = חשבונות והוצאות של המוביל. צדדים = שולחים ומובילים.
+buy_help	שוברי הוצאות וחשבונות מוביל (כסף בחוץ). על חשבון נשאר בפנקס המפלגה.
+sell_money_in	הזמינו חבילה
+buy_money_out	הוצאה / חשבון המוביל
+record_purchase	רשום רכישה
+add_expense	שובר הוצאה
+bank_book	ספר הבנק
+credit_help	מזהה המפלגה הוא ייחודי (שמות עשויים לחזור). תפקידים: Consignor (AR), Carrier (AP) או שניהם במזהה זה. ספרי חשבונות נשארים נפרדים; דוחות מראים נטו.
+party_kind_ph	תפקיד מותאם אישית (אופציונלי) - או הקש על שבב למעלה
+parties_list_heading	נשמר מסיבות
+reports_help	ספר היום, חייבים וזכאים, ספר הבנק, שוברים להוצאות, רווח והפסד.
+reports_today	ספר היום (היום)
+reports_month	רווח והפסד (חודש)
+reports_aging	פתוח / חובה-זכות
+reports_balance_sheet	מאזן
+reports	ספר הבנק ורווח והפסד
+refresh	רענן
+undo	בטל
+start_tracking	התחל מעקב
+stock_minus	− מלאי
+stock_plus	+ מלאי
+settle_cash	סגור במזומן
+settle_card	סגור בכרטיס
+items	תעריפים ושירותים
+nav_items	תעריפים
+more	עוד
+your_items	התעריפים שלך
+items_help	כל שורה היא קצב (לדוגמה, שטח שטח A). היחידה היא בדרך כלל ק"ג. הקש כדי לערוך.
+add_item	הוסף שיעור
+new_item	תעריף חדש
+adding_item	הוספת תעריף חדש
+editing_item	בעריכה
+save	שמור
+remove	הסר
+empty_catalog	עדיין אין תעריפים. פתח את 'תעריפים ושירותים', הוסף אחד (שם + מחיר, יחידת ק"ג), ואז הזמנה.
+counter_sale	הזמנה נגדית
+total	סה״כ
+cash	מזומן
+upi	UPI
+card	כרטיס
+credit	צדדים
+clear	נקה
+ready_to_sell	מוכן לרישום
+today_prefix	היום
+today_mid	היום
+owed	פתוח
+round_word	עיגול
+back	חזרה
+sold_out	לא זמין
+restock	מלא מחדש
+not_tracked	בלי מעקב
+in_stock	במלאי
+marked_sold_out	סומן כלא זמין
+add_upper	הוסף
+na	לא רלוונטי
+qty	משקל/כמות
+unit_at	מחיר @
+actual	בפועל
+applied	הוחל
+note_ph	הערה (לא חובה)
+rounded	מעוגל
+split	פצל
+counter	דלפק
+parcel	חֲבִילָה
+order	הזמנה
+sales	הזמנות
+sales_refunds	הזמנות והחזרים
+day_close	סגירת יום
+reports_expenses	ספר הבנק ורווח והפסד
+nav_reports	דוחות
+nav_settings	הגדרות
+nav_lock	נעל
+sidebar_settings	הגדרות סרגל צד
+sidebar_settings_help	אותם סמלים כמו במסילה הצדדית. גררו שורה כדי לשנות סדר. הפכו את המתג כדי להציג או להסתיר. הגדרות ונעילה נשארים תמיד בסרגל.
+sidebar_always_on_short	תמיד פועל
+sidebar_back_settings	חזרה
+sidebar_shown	מוצג
+sidebar_hidden	מוסתר
+sidebar_always_on	תמיד בסרגל
+sidebar_shown_hint	מוצג במסילה הצדדית / בלשוניות התחתונות
+sidebar_hidden_hint	מוסתר מהסרגל
+sidebar_menu_items	תפריט ופריטים
+sidebar_enable_all	הפעל הכול
+sidebar_disable_all	כבה הכול
+sidebar_order_saved	סדר סרגל הצד נשמר
+sidebar_visibility_saved	נראות סרגל הצד נשמרה
+amounts_hide	הסתר
+amounts_show	הצג
+no_sale_yet	עדיין אין מכירה
+favorites	מועדפים
+favorites_help	פריטים שאתם מוכרים לעיתים קרובות, שמורים לכניסה שלכם. הוסיפו אחד לחשבון, או בנו את הרשימה מכל הפריטים למטה.
+your_favorites	המועדפים שלכם
+all_items	כל הפריטים
+no_favorites	עדיין אין מועדפים — הוסיפו פריטים מהרשימה למטה.
+add_to_bill	הוסף לחשבון
+added	נוסף
+owes_word	חייב
+selected_word	נבחר
+chip_clear_credit	נקה — אשראי או קח מקדמה
+chip_missing_customer	הלקוח שנבחר חסר — בחרו שוב
+chip_no_customer	עדיין אין לקוח — הקלידו שם, ואז הקישו אשראי
+credit_summary_fmt	{} לקוחות · אשראי פתוח {} · מקדמות שנשמרו {}
+recent_label	אחרונים:
+inventory	מלאי
+inventory_stock	מלאי וסחורה
+branches	סניפים
+branches_org	סניפים וארגון
+credit_customers	צדדים (חייבים ונושים)
+customer_name_ph	שם הצד
+new_customer_ph	שם צד חדש
+item_name_ph	שם תעריף (לדוגמה, אזור שטח A)
+item_price_ph	לק"ג / לוח ראשון
+start_template	מוצר
+next_booking	ההזמנה הבאה
+destination_ph	עיר/אזור יעד
+consignee_ph	שם המקלט
+consignee_phone_ph	טלפון מקלט
+consignee_address_ph	כתובת למשלוח
+origin_name_ph	שם השולח
+origin_phone_ph	טלפון השולח
+origin_address_ph	כתובת איסוף/מקור
+booking_consignor_heading	שולח (לקוח / שולח)
+booking_consignee_heading	מקבל (מקבל)
+booking_consignor_hint	בחר מסיבה למלא, או השאר ריק לכניסה. דרוש לאיסוף ביתי ו-RTO.
+booking_consignee_hint	מקבל החבילה. השאר ריק להורדת דלפק כניסה.
+weight_kg_ph	ק"ג בפועל
+length_cm_ph	L ס"מ
+breadth_cm_ph	ב ס"מ
+height_cm_ph	H ס"מ
+chargeable_kg	ק"ג ניתן לטעינה
+awb_label	AWB
+booking_help	שולח + נמען (ריק אישור) ← יעד ← שקל ← תעריף איסוף ← חשבון/מזומן ← תשלום. AWB מדפיס על הקבלה. ההזמנה הבאה מפנה את השולחן. התחלות מעוגלות שווה ליישום - ערוך רק כדי לעגל את השטר.
+cart_empty_hint	השולחן ריק - השוגר/הנמען אופציונלי, הגדר יעד ומשקל, הקש על הוסף בתעריף ולאחר מכן שלם.
+team	צוות
+team_pins	צוות וקודי PIN
+my_pin_settings	ה־PIN שלי
+settings_hub_help_my_pin	שנו את קוד הפתיחה של האדם שמחובר במכשיר הזה.
+team_self_help	רק אתה יכול לשנות את ה-PIN לביטול הנעילה שלך (וסיסמת כניסה אופציונלית). שאל את הבעלים אם אתה צריך מסכים או זכויות שונות.
+backup_settings	גיבוי והגדרות
+lock_app	נעל את היישום
+pick	בחר
+select	סמן
+advance	מקדמה
+owner	בעלים
+staff	צוות
+photo	תמונה
+auto	Auto
+prev	הקודם
+next	הבא
+ok	OK
+this_shop	שרת
+extra_till	מסוף
+off	כבוי
+server	שרת
+client	מסוף
+language_currency	שפה ומטבע
+language	שפה
+choose_language	בחרו את השפה
+language_setup_hint	עקבו אחרי שפת המכשיר, או בחרו אחת בעצמכם.
+lang_follow_platform	שפת המכשיר
+lang_pick_user	בחר שפה
+lang_platform_now	שפת המכשיר עכשיו
+selected_language	נבחר
+continue	המשך
+this_device	המכשיר הזה
+device_use_q	איך ישמש המכשיר הזה?
+last_server_mode	היה שרת — הקישו כדי להמשיך
+last_client_mode	היה מסוף — הקישו כדי להמשיך
+choose_server	בחרו שרת
+choose_server_hint	פתחו שרת קיים, או צרו אחד לעסק אחר.
+create_new_server	צור שרת חדש
+open_server	פתח
+new_server_name_ph	שם שרת חדש (לא חובה)
+server_remove_pin_ph	PIN הבעלים להסרת שרת
+only_owner_remove_server	רק הבעלים יכול להסיר שרת
+owner_pin_remove_server	נדרש PIN הבעלים כדי להסיר את השרת הזה
+device_setup_help	השרת שומר את הספרים כאן. המסוף מזווג לשרת.
+currency	מטבע
+backup	גיבוי
+settings_sec_diag	אבחון
+settings_hub_help	פתחו אזור אחד בכל פעם — פחות גלילה, בחירות ברורות יותר.
+settings_sec_devices	מכשירים אחרים
+settings_sec_alerts	התראות
+alerts_help	כמה זמן הודעות מצב נשארות על המסך עבורכם (הכניסה הזו).
+snack_secs_ph	שניות (3–60, ברירת מחדל 10)
+snack_secs_save	שמור זמן התראה
+snack_secs_saved	זמן ההתראה נשמר — {n} שניות
+snack_secs_bad	הזן שניות כמספר (3-60)
+cancelled	בוטל
+cancel	בטל
+opening_client	פותח מסוף…
+preparing_desk	מכין שולחן…
+opening_server	פותח שרת…
+creating_server	יוצר שרת…
+diag_privacy_help	היומנים נשארים במכשיר הזה. סודות (PIN, סיסמאות) לא נשמרים אף פעם. שיתוף חבילה מחוץ למכשיר דורש את האישור המפורש שלכם בכל פעם — לא נמכר ולא ניתן לצדדים שלישיים.
+diag_level	רמת פירוט
+diag_level_error	שגיאות
+diag_level_warn	אזהרות
+diag_level_info	Info
+diag_level_debug	Debug
+diag_support_start	התחל מפגש תמיכה של 30 דקות
+diag_support_stop	סיים מפגש תמיכה
+diag_support_started	מפגש התמיכה פועל — פירוט Debug ל־30 דקות
+diag_support_ended	מפגש התמיכה הסתיים
+diag_export_local	ייצא עותק מקומי
+diag_export_local_done	אבחון מקומי מוכן ב־{path} — בחרו איפה לשמור עותק
+diag_approve_send	אשר שיתוף מחוץ למכשיר הזה
+diag_send_heading	שתף מחוץ למכשיר הזה
+diag_send_help	האישור הוא לחבילה אחת, ואז פג. זמני — משמש רק לתיקון או שיפור המוצר. לא משותף עם צדדים שלישיים. עובד ב־Linux, Windows, macOS ו־Android.
+optional_login_heading	כניסה אופציונלית
+rights_heading	הרשאות
+booking_scope_heading	מקומי / בינלאומי
+diag_send_approved	השיתוף אושר לחבילה אחת (פג בקרוב)
+diag_export_send	צור חבילת שיתוף (דורש אישור)
+diag_export_send_done	חבילת השיתוף מוכנה ב־{path} — בחרו איפה לשמור, ואז שלחו רק לתמיכת Kumkaj
+diag_save_bundle	שמור עותק אבחון
+diag_bundle_saved	עותק האבחון נשמר אל {path}
+diag_bundle_failed	לא ניתן לשמור את עותק האבחון — נסו שוב
+diag_clear	נקה יומני אבחון
+diag_cleared	יומני האבחון נוקו
+use	השתמש
+add_branch	הוסף סניף
+add_conversion	הוסף המרה
+add_item_plain	הוסף פריט
+add_note	הוסף הערה
+add_opening_balance	הוסף יתרת פתיחה
+add_rider	הוסף רוכב
+add_staff	הוסף איש צוות
+add_unit	הוסף יחידה
+add_use_name	הוסף / השתמש בשם הזה
+allow_extra_tills	אפשר קופות נוספות
+amend	תקן
+apply_country_pack	החל חבילת מדינה
+datetime_appearance	מראה תאריך ושעה
+datetime_appearance_help	ספרים שומרים את RFC3339 של השנה הראשונה בפנים. אלה רק משנים את מראה התאריכים והשעונים בקבלות, תוויות, דוחות ובמסך.
+datetime_example	דוגמה עכשיו: {ex}
+date_order	סדר התאריך
+date_order_dmy	י/ח/ש
+date_order_mdy	ח/י/ש
+date_order_ymd	ש-ח-י
+time_format	שעון
+time_format_24h	24 שעות
+time_format_12h	12 שעות
+attach_bill_photo	צרף תמונת חשבון
+attach_pdf	צרף PDF
+attach_photo	צרף תמונה
+bank	בנק
+bank_in	כניסה לבנק
+bank_out	יציאה מהבנק
+bank_to_till	בנק → קופה
+till_to_bank	קופה → בנק
+mark_cleared	סמן כמותאם
+unmark	בטל סימון
+role_both	שניהם
+role_carrier	מוֹבִיל
+role_cashier	קופאי
+role_consignor	שליח
+role_manager	מנהל משמרת
+role_supplier	ספק
+branch_name_sell_ph	שם הסניף שממנו מוכרים
+bring_my_book	הבא את הספר שלי
+business_tax_id_ph	מזהה מס של העסק
+card_amount_ph	סכום בכרטיס
+cash_amount_ph	סכום במזומן
+upi_amount_ph	סכום UPI
+carrier_cost_ph	עלות המוביל
+carrier_party_ph	צד מוביל
+choose_icon	בחר סמל
+choose_logo	בחר לוגו
+choose_receipt_stamp	בחר חותמת קבלה
+choose_payment_qr	בחר QR תשלום
+clear_icon	נקה סמל
+clear_logo	לוגו ברור
+clear_photo	נקה תמונה
+clear_stamp	נקה חותמת
+clear_payment_qr	נקה QR תשלום
+print_faces	הדפס פנים (קבלה / חשבון תקופה)
+print_faces_help	אופציונלי חותמת ותשלום QR ליד הלוגו שלך על קבלות הזמנה וחשבונות תקופה.
+awb_pools_heading	מאגר מספרי AWB של ספק
+add_awb_pool	הוסף מאגר AWB
+awb_pool_carrier_ph	שם מסיבת הספק
+awb_pool_start_ph	התחלה מס.
+awb_pool_end_ph	סוף לא.
+awb_pool_prefix_ph	קידומת (אופציונלי)
+awb_pool_label_ph	תווית (אופציונלי)
+pieces_ph	חתיכות (ריק = 1) - הרחב עבור מטען / ריבוי חלקים
+bulk_awbs_ph	AWBs בכמות גדולה - הדבק רבים (שורה חדשה או פסיק) עבור התקדמות סטטוס אחת
+tds_cut_ph	חיתוך TDS (אופציונלי)
+discount_ph	הנחה (לא חובה)
+cheque_no_ph	מספר בדיקה (אופציונלי)
+bill_reminder_chase	רשימת מרדף לתזכורת לחשבונות
+month_mix_report	דוח תמהיל חודש
+copy_month_gst_csv	העתק חודש GST CSV
+domestic	בֵּיתִי
+international	בינלאומי
+pick_logo	בחר לוגו
+booking_scope_hint_domestic	נפח ÷5000 (בפנים) - הקש על בינלאומי עבור ÷6000 אוויר
+booking_scope_hint_intl	נפח ÷6000 (אוויר בינלאומי) - הקש על מקומי לחנות ÷5000
+cod_register	רישום COD
+collect_cod	איסוף COD (AWB)
+consignments_dispatch	משלוחים ושיגור
+consignor_party_ph	שם המשלח/המפלגה
+copy_day_book_csv	העתק CSV של ספר היום
+copy_day_close	העתק סגירת יום
+copy_items_csv	העתק CSV של פריטים
+copy_outstanding_csv	העתק CSV של הפתוח
+copy_parties_csv	העתק CSV של צדדים
+copy_party_ledger_csv	העתק CSV של ספר הצד
+copy_receipt	העתק קבלה
+copy_report	העתק דוח
+counted_cash_ph	מזומן שנספר במגירה
+counter_agency_ph	שם מונה / סוכנות (אופציונלי)
+create_backup	צור גיבוי
+day_close_summary	סיכום סגירת יום
+delete_party	מחק את הצד שנבחר
+dispatch_to_rider	הוזמן משלוח → רוכב
+docket_charge_ph	טעינת מזנון
+declared_value_ph	ערך מוצהר
+contents_ph	תוֹכֶן
+eway_ph	חשבון דואר אלקטרוני מס.
+insurance_label	ביטוח
+yes_label	כֵּן
+no_label	לֹא
+print_route_label	הדפס מסלול
+new_party_kind_label	סוג חדש של מסיבה
+done_open_books	בוצע — פתח ספרים
+export_day	ייצא יום
+extra_note_expense_ph	הערה נוספת בהוצאה האחרונה
+extra_note_awb_ph	הערה נוספת על AWB / מבצע זה
+failed_delivery	מסירה נכשלה
+find_scan_awb	מצא / סרוק AWB
+forget_shop	שכח את החנות הזו
+fuel_ph	דֶלֶק
+handover_carrier	בהזמנה ידנית → מוביל
+import_day	ייבא יום
+import_items_csv	ייבוא ​​פריטים / תעריפים CSV...
+import_parties_csv	ייבא CSV של צדדים…
+import_pincodes_csv	יבא קודי PIN CSV...
+import_carrier_bill_csv	ייבוא ​​CSV של חשבון ספק...
+copy_carrier_bill_report	העתק את דוח חשבון הספק האחרון
+use_carrier_cost	השתמש בעלות הספק
+rate_carrier_ph	ספק (ריק = שיעור המכירה שלנו)
+rate_party_ph	מסיבה (ריק = כל הלקוחות)
+carrier_pick_ph	ספק עבור עלות (מהשוואה)
+item_name	שם הפריט
+load_bulk_row	טען שורה בתפזורת → שולחן עבודה
+login_id_ph	שם משתמש
+mark_delivered	מארק נמסר
+manifest_cod_total	סה"כ COD
+manifest_received_by	התקבל על ידי
+manifest_sign	סִימָן
+ndr_address_wrong	כתובת שגויה
+ndr_customer_unavailable	לא זמין
+ndr_door_locked	דלת נעולה
+ndr_other	אַחֵר
+ndr_refused	סירב
+out_for_delivery	יוצא למשלוח
+print_drs	הדפס DRS
+print_run_sheet	הדפס גיליון הפעלה
+reattempt	ניסיון חוזר
+rider_cod_handed_ph	COD נמסר
+settle_rider_cod	הסדר רוכב COD
+mode_desk	שׁוּלְחָן כְּתִיבָה
+mode_rider	רוֹכֵב
+waiting_office	מחכה להגיע למשרד
+capture_signature	ללכוד חתימה
+incoming_manifest	מניפסט נכנס
+pickup_request	בקשת איסוף
+pickup_run	ריצת איסוף
+auto_assign_area	אזור הקצאה אוטומטית
+reorder_stops	הסדר מחדש מפסיק
+settle_rider_pay	הסדר שכר לרוכב
+vehicle_inspect	בדיקת רכב
+print_docket	מסמך הדפסה
+franchise_statement	הצהרת זכיינות
+tally_export	ייצוא שובר טלי
+open_whatsapp	פתח את WhatsApp
+copy_sms	העתק טקסט SMS
+pick_barcode_image	בחר תמונה לסריקה
+share_receipt_whatsapp	שתף קבלה בוואטסאפ
+delivery_feedback	משוב על משלוח
+lan_self_book	הזמנה עצמית LAN
+new_party_clear	צד חדש (נקה טופס)
+new_party_kind_ph	סוג מסיבה חדש (ספק / ספק)
+next_country	המדינה הבאה
+prev_country	המדינה הקודמת
+note_gstin_ph	הערה / GSTIN / תזכורת הסכם
+note_pod_ph	הערה / POD (אופציונלי)
+on_account_ap	בחשבון (AP)
+org_optional_ph	ארגון (לא חובה)
+paid_now	שולם עכשיו
+pairing_code_ph	קוד זיווג
+pair_now	זווג עכשיו
+party_name_selected_ph	שם הצד (או השתמש בנבחר)
+password_ph	סיסמה
+pay_ap_card	שלם AP בכרטיס
+pay_ap_cash	שלם AP במזומן
+pay_ap_upi	שלם AP ב־UPI
+period_bill	חשבון תקופה
+period_bill_party	חשבון תקופה (מסיבה)
+pick_pod_photo	בחר תמונת POD
+print_awb_label	הדפס תווית AWB
+print_open	הדפס / פתח
+reason_amend_ph	סיבה לתיקון / ביטול / החזר
+reason_note_ph	סיבה / הערה (פחת, ספירה, …)
+record_day_close	רשום סגירת יום
+refresh_from_shop	רענן מהחנות
+refund	החזר
+remit_cod	Remit COD (מסיבה)
+remove_selected	הסר את הנבחר
+restore_backup	שחזר גיבוי
+rider_name_ph	שם הרוכב
+rider_phone_ph	טלפון רוכב
+riders	רוכבים
+riders_own_fleet	רוכבים (צי משלו)
+rollup	סיכום
+save_booking_measures	שמור את אמצעי ההזמנה
+save_brand	שמור מותג
+save_business_id	שמור מזהה עסק
+save_business_name	שמור שם עסק
+save_features	שמור את הגדרת העבודה
+save_names	שמור שמות
+server_ip_ph	IP של השרת (למשל 192.168.1.10)
+set_credit_limit	החל תקרה על הצד
+set_login_selected	החל כניסה על הנבחר
+set_login_named	החל כניסה על {name}
+shop	חנות
+start_fresh	התחל מחדש
+stop_extra_tills	עצור קופות נוספות
+backup_auto	גיבוי אוטומטי כל יום · האחרון {when} · 14 הימים האחרונים נשמרים ב־{dir}.
+backup_auto_none	גיבוי אוטומטי כל יום — הראשון רץ בעוד רגע.
+backup_copy_to	עותקים הולכים גם אל {dir}.
+backup_copy_btn	העתק גיבויים גם לתיקייה…
+autostart_off	התחל עם המחשב הזה
+autostart_on	מתחיל עם המחשב הזה ✓ — הקישו כדי לעצור
+autostart_done_on	המחשב הזה פותח עכשיו את היישום כשהוא עולה — שרת החנות חוזר אחרי הפסקת חשמל.
+autostart_done_off	המחשב הזה כבר לא פותח את היישום כשהוא עולה.
+right_allowed	מותר
+right_with_approval	עם אישור
+right_denied	לא מותר
+editing_staff	זכויות עבור
+team_pick_ph	איש צוות לעריכה — שם, שם משתמש, או בחירה
+select_staff	בחר את איש הצוות הזה
+rights_help	זכויות — הקש כדי לשנות: מותר ← באישור (קוד אימות של מנהל באותו רגע) ← אסור.
+right_void_refund	בטל או החזר הזמנה
+right_amend_sale	תקן הזמנה רשומה
+find_server	מצא את שרת החנות
+finding_server	מחפש את שרת החנות ב־Wi‑Fi הזה…
+no_server_found	לא נמצא. בשרת: הגדרות → מכשירים אחרים → אפשר קופות נוספות (אותו Wi‑Fi). או הקלידו את ה־IP שמוצג שם.
+servers_found_pick	הקישו על החנות שאליה אתם רוצים להתחבר.
+server_host_selected	משתמשים ב־{host} — הזינו את קוד הזיווג, ואז זווג עכשיו.
+device_forgotten	החנות שכחה את המכשיר הזה — זווגו שוב עם הקוד הנוכחי של החנות. הזמנות שממתינות בו נשמרות.
+forget_device	שכח
+last_seen	נראה
+new_pair_code	קוד זיווג חדש
+lan_offline	שרת החנות לא נגיש
+lan_offline_waiting	שרת החנות לא נגיש · {n} ממתינים
+lan_connecting	מתחבר לחנות…
+pair_finishing	זוג מסיים... יישום ספרי המשרד
+pair_opening	פותחים את המשרד…
+lan_live	חי
+lan_sending	{n} נשלחים
+lan_sign_in_to_send	היכנסו שוב כדי לשלוח {n}
+lan_pair_again	זווג שוב את המכשיר הזה
+lan_update_app	עדכן את האפליקציה - למכשיר הזה ולשרת המשרד יש גרסאות שונות
+allow_firewall	אפשר למכשירים אחרים להתחבר
+firewall_blocked	חומת האש של המחשב הזה חוסמת מכשירים אחרים — הקישו אפשר למכשירים אחרים להתחבר.
+firewall_waiting	ממתין להנחיית המנהל…
+lan_join_help	במכשיר האחר: מצב מסוף → מצאו את שרת החנות (או הקלידו {addr}) → קוד זיווג {code}.
+lan_pair_status	Wi‑Fi {addr}
+lan_join_help_no_addr	חברו את המכשיר הזה ל־Wi‑Fi כדי לקבל כתובת.
+lan_no_address	עדיין אין כתובת Wi‑Fi — התחברו ל־Wi‑Fi של החנות.
+lan_not_listening	לא מקבל מכשירים (יציאה {port} תפוסה). הפעילו מחדש את היישום.
+lan_tills_off	קופות נוספות כבויות. אפשרו אותן כדי שמכשיר אחר יצטרף.
+paired_with	מזווג · {url}
+not_paired	לא מזווג
+choose_device_use	בחרו שרת או מסוף.
+paired_note	מזווג. פתחו כדי למכור, או רעננו לעדכני.
+last_update_at	עדכון אחרון: {time}.
+pair_intro	מצאו את השרת, או הקלידו את הכתובת ואת קוד הזיווג.
+queue_waiting	ממתין להגיע לחנות ({n}):
+queue_tries	נוסה {n} פעמים · תשובה אחרונה: {e}
+save_backup_copy	שמור עותק גיבוי…
+backup_copy_saved	עותק הגיבוי נשמר — שמרו אותו מחוץ למכשיר הזה (דיסק און קי או מכשיר אחר)
+backup_copy_overdue	אף עותק גיבוי לא יצא מהמכשיר הזה כבר {n} ימים — הגדרות → גיבוי
+backup_copy_failed	לא ניתן לשמור את עותק הגיבוי שם — בחרו מקום אחר
+clock_off	השעון של המכשיר הזה סוטה ב־{min} דק׳ משרת החנות — קבעו את השעה הנכונה במכשיר הזה
+printers_heading	מדפסות במכשיר זה
+printers_help	מצא מדפסות אמיתיות ולאחר מכן בחר קבלה או תווית AWB. לכל עבודה יש ​​רוחב משלה, לאורך או לרוחב, ואופן שליחת הבייטים. תווית מדפיסה את הברקוד. מקום ריק = אל תדפיס.
+job_width	רוחב תוכן (מ״מ)
+job_width_ph	או הקלד רוחב, 40–210 מ"מ
+job_layout	פריסה
+job_delivery	איך העבודה נשלחת
+job_size	גודל גופן
+job_size_ph	למשל 18, 20, 26…
+save_receipt_format	שמור פורמט קבלה
+save_label_format	שמור פורמט תווית
+test_receipt_format	קבלה לבדיקה
+test_label_format	תווית בדיקה
+test_receipt_sent	קבלה לדוגמה נשלחה
+test_label_sent	תווית לדוגמה נשלחה
+test_print_no_printer	אין מדפסת לעבודה זו - הוסף אחת מתחת למקום הזה
+printers_host_only	מדפסות מוגדרות במכשיר החנות (שרת). עד זה שולח לשם עבודות - מצא / הוסף / הקצה שהייה בשרת. דף הבדיקה עובר לשרת.
+printers_pool_heading	מדפסות
+printers_routes_heading	איפה דברים מודפסים
+printer_label_ph	שם (למשל שולחן עבודה)
+printer_target_ph	מארח:9100 · bt:MAC · usb:VID:PID · שם מערכת
+printer_mode_heading	פרופיל לתפוקות חדשות
+printer_mode_standard	פורטרט סטנדרטי
+printer_mode_landscape	נוף סטנדרטי
+printer_mode_thermal	תֶרמִי
+printer_mode_standard_short	לאורך
+printer_mode_landscape_short	לרוחב
+printer_mode_thermal_short	תֶרמִי
+printer_format_custom	פרופיל מותאם חדש
+printer_format_custom_label	מותאם
+printer_format_custom_added	פרופיל מותאם נוסף למקום הזה
+add_printer	הוסף מדפסת
+remove_printer	הסר אחרון
+route_pick_ph	קבלה או תווית
+route_add_printer_ph	הוסף מדפסת למקום הזה
+route_receipt	קַבָּלָה
+route_label	תווית AWB
+route_dont_print	לא הוקצתה מדפסת
+route_add	הוסף למקום
+route_up	למעלה
+route_down	למטה
+route_remove	הסר אחרון
+route_clear	נקה מדפסות עבור המקום הזה
+save_printers	שמור מדפסות
+print_test_page	הדפס דף בדיקה
+printers_saved	מדפסות נשמרו עבור מכשיר זה
+test_page_sent	דף הבדיקה נשלח — בדקו את המדפסת
+printers_found	נמצא במכשיר זה: {list}
+find_printers	מצא מדפסות
+printers_looking	מחפש מדפסות במכשיר זה ו-Wi-Fi...
+printers_tap_find	הקש על מצא מדפסות עבור תורים שמקבלים עבודות ומדפסות קבלות ברשת ב-Wi-Fi זה (לא הוסרו או לא מקוונים).
+printers_none_found	לא נמצאו מדפסות - הקלד שם מדפסת מערכת או כתובת רשת (למשל 192.168.1.50).
+receipt_printer_ph	מדפסת לקבלות
+queue_refused	לא התקבל על ידי החנות ({n}) — בדקו כל אחד בדלפק:
+clear_not_accepted	נבדק — נקה את הרשימה הזו
+device_name_ph	שם המכשיר הזה
+lan_last_update	עדכון אחרון {time}
+lan_not_accepted	{n} לא התקבלו
+connected_now	מחובר עכשיו
+backup_failed	הגיבוי האוטומטי האחרון נכשל: {e}
+backup_overdue	אין גיבוי כבר {n} ימים — השאירו את היישום פתוח במכשיר הזה כדי שיוכל לגבות.
+disk_low	רק {mb} MB פנויים במכשיר הזה — הגיבויים ייכשלו בקרוב. פנו קצת מקום.
+last_seen_devices	נראה לאחרונה: {time}
+sync_interval	סנכרון כל {secs} שנ׳
+connection_to_shop	חיבור לחנות
+supplier_name_ph	שם הספק (או הצד)
+supplier_ph	ספק
+switch_device	החלף את המכשיר הזה
+take_payment	גבה תשלום
+tax_added_till	{tax} נוסף
+tax_inside_price	{tax} כלול
+today_books	ספרי היום
+unlock_after_pairing	הזינו PIN
+unlock_with_login	פתח עם כניסה
+update_my_password	עדכן את הסיסמה שלי
+update_my_pin	עדכן את ה-PIN שלי
+duress_heading	PIN פתיחת חירום (בעלים בלבד)
+duress_help	אופציונלי. אם ה-PIN הזה יוקלד בזמן ביטול הנעילה במקום שלך, כל רשומות הספרים יימחקו (הזמנות, ספרי חשבונות, היסטוריה) והשולחן ייפתח כשהבעלים נראה רגיל - תעריפים, מסיבות, אזורים, צוות והגדרות נשארים. סכימה ותצורה לא נמחקות. השתמש רק אם נאלצת לבטל את הנעילה. השאר ריק ושמור כדי לכבות. לעולם לא זהה ל-PIN של מישהו.
+duress_pin_ph	PIN חירום (4–12 ספרות)
+duress_confirm_ph	הקלידו שוב לאישור
+save_duress_pin	שמור PIN חירום
+clear_duress_pin	כבה PIN חירום
+duress_on	PIN פתיחת החירום פועל
+duress_off	PIN פתיחת החירום כבוי
+duress_saved	PIN פתיחת החירום נשמר
+duress_cleared	PIN פתיחת החירום כובה
+vehicle_ph	רֶכֶב
+void	בטל
+write_off_ap	מחק AP
+write_off_nil	מחיקה / יתרה אפס
+zone_ph	אזור (שם מתוך תעריפים)
+caption_today	היום
+caption_bookings	הזמנות
+caption_payments_today	תשלומים היום
+caption_outstanding	פתוח
+caption_bank	בנק
+paid_by	שולם על ידי
+second_way	דרך שנייה
+weight_in	משקל פנימה
+size_in	גודל פנימה
+goods_received	סחורה שהתקבלה
+expense_heading	הוצאה
+notes_attach_sale	הערות וקבצים (המכירה שנבחרה)
+notes_attach_party	הערות וקבצים (הצד שנבחר)
+attachments_last_expense	קבצים מצורפים (ההוצאה האחרונה)
+credit_limit_heading	תקרת אשראי (הצד שנבחר / שנקרא בשם)
+pay_selected_heading	שלם את הנבחר (סגור חוב / קח מקדמה)
+write_off_heading	מחיקה (נקה בלי תשלום)
+pay_ap_heading	שלם מה שאנחנו חייבים להם (AP)
+country_tax	מדינה ומס
+extra_tills_heading	קופות נוספות
+other_devices_help_heading	הגדר מכשירים אחרים
+other_devices_help	במכשיר זה (שרת): מכשירים אחרים ← אפשר קופות נוספות. שימו לב לקוד ההתאמה וכתובת ה-Wi-Fi. הקש על אפשר למכשירים אחרים להתחבר אם זה מופיע. במחשב, הקש על התחל עם מחשב זה. בכל מכשיר אחר: התקן את האפליקציה, בחר מצב לקוח, מצא את שרת החנות (או הקלד את הכתובת), הזן את קוד ההתאמה, בצע התאמה כעת. הזמנות ממתינות במכשיר אם ה-Wi-Fi נופל ויוצאות כשהשרת עונה שוב.
+your_brand	המותג שלכם (ביישום)
+units_heading	יחידות
+booking_measures	אמצעי הזמנה
+drawer_count	ספירת מגירה (לא חובה)
+spreadsheet_csv	גיליון (CSV)
+bank_reconciliation	התאמת בנק (סמנו מול דף החשבון)
+book_add_product	ספר - הוסף מוצר / תעריף
+book_opening_credit	ספר — אשראי פתיחה
+account_kind	סוג חשבון (הקישו על אחד)
+active_ledger	ספר חשבונות פעיל
+actual_total_cap	סה״כ בפועל
+amend_help	בחרו מכירה לתיקון, ביטול או החזר. תיקונים שומרים היסטוריה מלאה. הסה״כ המעוגל מתחיל שווה למה שהוחל — ערכו רק כדי לעגל. ביטול והחזר עשויים לדרוש PIN של בעלים או מנהל משמרת (מוקלד למעלה; נרשם עם השם שלכם).
+applied_total_cap	סה״כ שהוחל
+bank_balance	יתרת בנק
+bank_net_today	נטו בנק היום
+branch_export_help	ייצוא כותב תמונת מצב של יום לתוך תיקיית הגיבויים ומעתיק אותה ללוח. כדי לייבא יום של שקע אחר, שמור את הקובץ שלו בתור import_branch_snapshot.json בתיקייה זו ולאחר מכן הקש על ייבוא.
+brand_shown_help	מוצג במסכים בתוך היישום. שם היישום והסמל המותקנים במכשיר הזה נשארים כמו ברישום הפלטפורמה.
+app_icon	סמל היישום
+logo_help	סימן חנות אופציונלי במסכי היישום.
+onboard_layout	מה מקבלים
+item_photo_help	לא חובה. בלי תמונה אנחנו מציגים ראשי תיבות משם הפריט.
+cash_in_hand	מזומן ביד (קופה)
+change_my_pin_heading	שנה את ה-PIN שלי (רק שלך)
+connect_to_server	התחבר לשרת
+counter_locked	דלפק 01 · נעול
+country_pack_help	חבילת מדינה קובעת את שם המס והחשבון, את מסילת התשלום המיידי, ואת מזהה העסק המודפס בחשבונות. Kumkaj לא מגיש מסים ולא מנפיק חשבוניות ממשלתיות בשום מקום.
+currency_use_help	גללו והקישו השתמש לכל מטבע נתמך.
+day_close_help	רישום סגירת יום שומר את הסיכום הזה (ואת הפרש המגירה אם נספר) ביומן הביקורת. זה לא עוצר מכירה.
+expenses_word	הוצאות
+feature_access_help	גישה לתכונה עבור צוות נבחר (הקש לאחר הוספה)
+footer_local	SQLite מקומי · חינם לתמיד · אפס ענן
+fresh_book_moklanjo	טרי = קטלוג ריק (הוסף פריטים מאוחר יותר). ספר = סוג מלאי פתיחה ומי חייב לך למטה.
+fresh_selected	חדש נבחר — הקטלוג נשאר ריק. הקישו בוצע כשמוכנים.
+gross_word	ברוטו
+how_start	איך אתם רוצים להתחיל?
+later_country_pack	אחר כך: הגדרות → החילו את חבילת המדינה שלכם לתוויות מס ותשלום.
+local_badge	מקומי
+measures_help_moklanjo	כיצד מודדים חבילות בדלפק ההזמנות. הקלד מידות ומשקל ביחידות שבהן אתה משתמש - סטנדרטי (ס"מ, מ', אינץ', רגל · ק"ג, גרם, לב, אונק) או יחידה משלך המקושרת לס"מ/ק"ג לעיל (ישירות או דרך יחידות אחרות). ספרים תמיד רושמים ק"ג. השאר שדה ריק כדי לשמור אותו.
+mix_type_hint_moklanjo	הקלד כמה בכל אחד (מזומן / UPI / כרטיס / אשראי). חייבים להוסיף לחשבון. אשראי צריך לקוח למעלה.
+money_in_sales	כסף נכנס (מכירות)
+more_help_moklanjo	קטלוג, מכירות, אשראי, צוות, גיבוי - בתוספת מלאי וכרטיסים נוספים בעת הצורך.
+net_word	נטו
+offline_badge	לא מקוון
+optional_login_help	כניסה אופציונלית (מזהה + סיסמה). הבעלים קובע פעם אחת; רק המשתמש יכול לשנות סיסמה אחר כך.
+or_unlock_login	או פתחו עם מזהה כניסה + סיסמה
+permission_preset	עבודה (מגדיר מסכים וזכויות)
+preset_help_moklanjo	קופאי: מוכר. מנהל משמרת: מוכר + פריטים + ביטול/תיקון.
+product_locked_moklanjo	Moklanjo
+product_only_moklanjo	האפליקציה הזו היא מוקלאנג'ו בלבד - ספרים + שולחן הזמנות. פנים סחר אחרות נשלחות כמוצרים נפרדים מאוחר יותר.
+purchases_cogs	רכישות (COGS)
+qty_cap	כמות
+restore_help	שחזור: בחרו גיבוי. הספרים נפתחים כפי שהיו אז; הספרים כפי שהם עכשיו נשמרים קודם, כך שאפשר לבטל את זה.
+wipe_data_heading	מחק נתונים מקומיים
+wipe_data_help	בעלים בלבד - אותן אפשרויות כמו הסרת ההתקנה של Windows. רישומי עסקים מנקים את היסטוריית המסחר אך שומרים על תעריפים והגדרות (כמו קוד חירום לביטול הנעילה). הגדרת החנות מסירה את מסד הנתונים של הספרים. העדפות מסך מנקות חלון/שפה. אשר באמצעות ה-PIN של הבעלים. ה-PIN לשחרור חירום בצוות הוא נפרד (מחיקה סמויה בעת ביטול הנעילה).
+wipe_trading	רשומות העסק
+wipe_schema	הגדרת החנות
+wipe_ui	העדפות מסך
+wipe_owner_pin_ph	PIN בעלים למחיקה
+wipe_delete_selected	מחק את הנבחר
+wipe_owner_only	רק הבעלים יכול למחוק נתונים מקומיים.
+restore_owner_only	רק הבעלים יכול לשחזר גיבוי.
+wipe_owner_pin_needed	הזינו את PIN הבעלים כדי למחוק נתונים מקומיים.
+wipe_nothing_selected	בחרו קודם מה למחוק.
+wipe_done	הנתונים המקומיים שנבחרו נמחקו.
+wipe_schema_done	הגדרת החנות נמחקה — בחרו שרת או מסוף כדי להמשיך.
+rounded_total	סה״כ מעוגל
+setup_app_moklanjo	הגדר את Moklanjo
+shop_logo_optional	לוגו החנות (לא חובה)
+stock_type_help	הקלידו את שם הפריט (חלק ממנו מספיק), כמות, ואז התאימו. פריטים שעדיין לא נספרים צריכים התחל מעקב פעם אחת.
+team_owner_help	העסקה: בחר עבודה (קופאית / מנהל), שם + PIN התחלתי ולאחר מכן הוסף. רק אם אדם זה שונה: פתח את המסכים והזכויות למטה, ולאחר מכן שמור את הגדרת העבודה. כל אחד משנה את ה-PIN שלו בתחתית - הבעלים לא יכול לשנות את ה-PIN של אף אחד אחר.
+they_owe_us	הם חייבים לנו
+unit_at_cap	יחידה @
+units_help	קודים לתוויות פריט (ק״ג, יחידה, שק). כל יחידה חייבת להתקשר — ישירות או דרך יחידות אחרות — לתקן (kg · cm · ml · pc), למשל 1 crate = 2 box ו־1 box = 20 cm. המרות: 1 from = factor to. מטבעות אף פעם לא יחידות.
+we_owe_them	אנחנו חייבים להם
+who_unlocking	מי פותח?
+locked_word	נעול
+show_pin	הצג PIN
+hide_pin	הסתר PIN
+set_owner_pin	קבעו PIN בעלים
+enter_owner_passcode	הזינו קוד בעלים
+enter_staff_passcode	הזינו קוד צוות
+pin_count_zero	0 / 12 ספרות · לפחות 4, ואז OK
+pin_count_need	{} / 12 ספרות · צריך עוד {}
+pin_count_full	12 / 12 ספרות · לחצו OK
+pin_count_ready	{} / 12 ספרות · לחצו OK כשמוכנים
+pin_hint_choose	בחרו 4–12 ספרות · Enter או פתח כדי לשמור
+pin_hint_new	PIN בעלים חדש בן 4–12 ספרות · Enter או פתח
+pin_hint_shop_code	מכשיר החנות · קוד זיווג {}
+pin_hint_books	המכשיר הזה מחזיק את הספרים
+pin_hint_paired	קופה נוספת מזווגת — פתחו כדי למכור
+pin_hint_pair_first	קופה נוספת — זווגו קודם למכשיר החנות
+unlock_to_continue	פתחו כדי להמשיך
+no_staff_yet	עדיין אין צוות — פתחו כבעלים, ואז צוות
+status_server_set_pin	מצב שרת — קבעו PIN בעלים
+status_server_tills	מצב שרת — קופות נוספות יכולות להצטרף. פתח
+status_server_unlock	מצב שרת — פתחו כבעלים
+status_client_unlock	מצב מסוף — פתחו כדי למכור
+icon_new_selected	סמל: נבחר קובץ חדש — הקישו שמור מותג
+icon_custom	סמל: סימן מקום מותאם
+icon_default	סמל: סימן Kumkaj (ברירת מחדל) — בחרו אחד מותאם
+logo_yours	לוגו: לוגו החנות שלכם — מוצג במסכים ובקבלות
+logo_default	לוגו: סימן Kumkaj (ברירת מחדל) — בחרו שלכם אם יש
+tmpl_current	נוכחי: {} — {}
+tmpl_selected	נבחר: {} — {}
+setup_complete	ההגדרה הושלמה
+onboard_fresh_tmpl	חדש · {} — הקטלוג מתחיל ריק; הוסיפו פריטים בפריטים, ואז בוצע.
+onboard_book_tmpl	ספר · {} — הוסיפו פריטים ואשראי פתיחה, ואז בוצע.
+onboard_template_tmpl	תנו שם למקום אם אתם רוצים, ואז בחרו איך להתחיל.
+tmpl_blurb	ספרי שליחים ודלפק הזמנות: שולחים, מובילים, ספר יום, AWB.
+tmpl_how	הזמינו חבילות ליד השולחן; ספר יום להיום; כרטיסיות לתעריפים, מסיבות, דוחות.
+trk_booked	הוזמן
+trk_picked_up	הרים
+trk_in_transit	בְּמַעֲבָר
+trk_delivered	נמסר
+trk_rto	חוזר לשולח
+lane_to_dispatch	לשגר
+lane_with_carrier	עם מנשא
+lane_failed	נִכשָׁל
+lane_done_today	נעשה היום
+ops_board_help	חבילות לפי המקום שבו הן נמצאות בעבודה של היום. הקש על החבילות (או סרוק אותן) כדי לבחור אותן, ואז פעל על כל המנות שנבחרו בבת אחת - כל נתיב מציע רק את המהלכים המתאימים לו.
+lane_empty	שום דבר כאן כרגע.
+picked_fmt	{n} נבחר
+pick_all	בחר הכל
+bag_for_carrier	יד למנשא
+send_with_rider	שלח עם הרוכב
+out_again	שוב החוצה
+return_to_sender	חזור לשולח
+runs_bags_heading	ריצות ושקיות אחרונות
+print_word	הֶדפֵּס
+bag_word	תיק נשיאה
+run_word	ריצת רוכב
+parcels_fmt	חבילות {n}
+parcel_history	הִיסטוֹרִיָה
+attempt_fmt	נסה {n}
+pieces_short_fmt	{n} יחידות
+note_reason_ph	הערה או סיבה
+ops_pick_first	תחילה בחר חבילות - הקש עליהן או סרוק אותן
+cod_to_collect	נמסר - COD לאיסוף
+cod_on_road	COD עדיין על הכביש
+cod_owed_consignors	נאסף - לשלם לשלוחים
+cod_rto_fees	עמלות RTO לגבות
+cod_to_hand_in	COD למסור
+parcel_one_fmt	חבילת {n}
+facet_bank_title	דוחות
+facet_bank_help	ספרי יום, גיול צדדים, תנועות בנק, ורווח והפסד לתקופה.
+facet_ops_title	משלוחים ושיגור
+facet_ops_help	סרוק או הקלד AWB ← מצא, ולאחר מכן הקדם / הדפס תווית / COD. שיגור לרוכב או למוביל.
+facet_cod_title	רישום COD
+facet_cod_help	איסוף במשלוח ולאחר מכן שלח למשלוח.
+facet_riders_title	רוכבים (צי משלו)
+facet_riders_help	הוסף רוכבים, ואז שלח AWB מוזמן מ-Ops.
+against_bill_ph	מול חשבון # למעלה (לא חובה)
+aliases_ph	כינויים — שמות אחרים, מופרדים בפסיק
+amount_blank_full_ph	סכום (ריק = כל היתרה)
+amount_owed_ph	סכום החוב
+amount_ph	סכום
+amount_received_ph	סכום שהתקבל
+amount_we_pay_ph	סכום שאנחנו משלמים
+awb_scan_ph	AWB / סריקת ברקוד
+bulk_csv_ph	CSV בתפזורת - יעד, נמען, kg, cod_paise, הערה
+business_name_ph	שם העסק
+category_new_ph	קטגוריה (לא חובה, נוצרת אם חדשה)
+cod_amount_ph	כמות COD
+code_bag_ph	קוד (שק)
+conv_factor_ph	מקדם (25 = 1 שק → 25 ק״ג)
+country_code_ph	קוד מדינה למשל IN, GB, US, AE, BR
+credit_khata_amount_ph	סכום אשראי / khata
+credit_limit_ph	תקרת אשראי (0 = אין)
+dim_unit_code_ph	קוד יחידת מימד (ס"מ)
+divisor_ph	מחלק נפח (5000)
+extra_per_kg_ph	תוספת / ק"ג
+first_amount_ph	סכום ראשון
+first_kg_ph	ק"ג ראשון (לוח)
+from_code_ph	מקוד (שק)
+item_name_lang_ph	שם הפריט — הקלידו בשפה שלכם
+login_id_opt_ph	שם משתמש (חובה, ייחודי)
+manager_pin_ph	PIN מנהל משמרת לאישור (רק אם אינכם יכולים לבטל)
+new_branch_name_ph	שם סניף חדש
+new_password_ph	סיסמה חדשה (לא חובה)
+new_pin_ph	PIN חדש (4–12 ספרות)
+note_bank_ph	הערה (הפקדה, משיכה, …)
+note_buy_expense_ph	הערה (דלק, שכירות, …)
+note_expense_ph	הערה (דלק, משרד, …)
+notify_phone_ph	הודע לטלפון (וווטסאפ/סמס)
+options_moklanjo_ph	אפשרויות (אופציונלי) - גדול=20, אריזת מתנה=10
+part_second_way_ph	חלק בדרך שנייה (לא חובה)
+phone_ph	טלפון
+address_ph	כְּתוֹבֶת
+party_custom_fields_heading	שדות מותאמים אישית (צד נבחר)
+party_custom_help	הוסף כל תווית וערך במסיבה זו - WhatsApp, GSTIN, קוד מסלול, ...
+party_custom_key_ph	שם שדה (למשל WhatsApp)
+party_custom_value_ph	עֵרֶך
+party_custom_add	הוסף שדה
+party_custom_remove	הסר שדה
+party_custom_empty	עדיין אין שדות מותאמים אישית
+party_custom_pick_first	בחר צד כדי להוסיף שדות מותאמים אישית
+place_name_ph	שם המקום הזה
+price_ph	מחיר
+qty_example_ph	כמות (למשל 1.5 לק״ג)
+quantity_ph	כמות
+reason_required_ph	סיבה (חובה)
+role_title_ph	כותרת תפקיד (למשל בריסטה)
+service_pct_ph	שירות % לא חובה 0/10/12
+short_code_ph	קוד קצר (MG02)
+slab_kg_ph	לוח ניתן לטעינה בק"ג (0.5)
+staff_name_ph	שם הצוות / מזהה
+starting_password_ph	סיסמת התחלה (לא חובה)
+starting_pin_ph	PIN התחלה (4–12 ספרות)
+tax_rate_ph	שם שער מס או % — רגיל, מופחת, 0, 5, 12, 18, 20
+to_code_ph	לקוד (ק״ג)
+uncleared_no_ph	לא מותאם # למעלה
+unit_cost_ph	עלות ליחידה
+unit_kg_blank_ph	יחידה (ק"ג או ריקה)
+unit_name_bag_ph	שם (שק)
+weight_unit_code_ph	קוד יחידת משקל (ק"ג)
+zone_name_ph	שם אזור
+pay_credit	אשראי
+book_kind_today	ספרי היום
+book_kind_month	ספרי החודש
+book_kind_aging	פתוח / חובה-זכות
+book_kind_balance	מאזן
+ops_desk_help	סרוק AWB עם סורק ברקוד USB (או הקלד אותו) ← מצא. לאחר מכן הקדם, הדפס תווית או אסוף COD. תוויות מודפסות קוד 128.
+role_help_consignor	תפקיד: Consignor - AR (הם חייבים לנו). אותה חברה יכולה להיות גם Carrier.
+role_help_carrier	תפקיד: ספק - AP (אנחנו חייבים להם). אותה חברה יכולה להיות גם Consignor.
+role_help_both	תפקידים: Consignor + Carrier - צד אחד, פנקסי AR ו-AP, נטו בדוחות.
+role_help_supplier	תפקיד: ספק - AP לרכישות.
+lane_declared_label	הזמנת חשבון
+lane_owner_label	הזמנה במזומן
+money_lane_bill	חשבון: {lane}

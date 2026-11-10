@@ -39,21 +39,10 @@ pub const TABIYAT: EntityTemplate = EntityTemplate {
     title: "Tabiyat",
     blurb: "Pharmacy operating system: counter sell, medicines, batch/expiry, books.",
     how_to: "Sell = medicine billing (search name, salt or barcode → qty → pay/credit). Buy = restock with batch & expiry. Schedule H / Rx flags are your notes — not compliance. Books = day book, parties, stock & reports.",
-    label_overrides: &[
-        ("items", "Medicines"),
-        ("nav_items", "Medicines"),
-        ("your_items", "Your medicines"),
-        ("menu", "Medicines"),
-        ("aliases_ph", "Aliases / short names, comma separated"),
-        ("bill_item_name", "Medicine name"),
-        ("bill_item_note", "Rx / sale note"),
-        ("kind_resale", "Bought medicine"),
-        ("kind_raw", "Compounding stock"),
-        ("add_dishes", "Add medicines"),
-        ("order", "Sale"),
-        ("orders", "Sales"),
-        ("search_menu_ph", "Search medicine, salt, short code or barcode"),
-    ],
+    // Vertical words live in locale::en (this app's own English), so
+    // every language translates them; an overlay here would show its
+    // English in every language (template_overrides_stay_empty).
+    label_overrides: &[],
     venue_mode: VenueMode::Counter,
     qty_unit_hint: "pc",
     lane_declared_label: "Tax invoice",

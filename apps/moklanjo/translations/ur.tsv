@@ -1,0 +1,835 @@
+# Urdu — اردو (ur). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	کوریئر بکس + بکنگ ڈیسک۔ مفت آف لائن۔
+unlock	ان لاک
+pin_hint	مالک PIN 0000 سے شروع ہوتا ہے
+sell	بکنگ
+buy	ادائیگی
+books	روز بک
+books_help	آج کی صورتحال۔ بکنگ = پارسل آئے۔ پے آؤٹ = کیریئر بل اور خرچے۔ پارٹی = بھیجنے والے اور کیریئر۔
+buy_help	خرچ واؤچر اور کیریئر بل (رقم باہر)۔ کھاتے پر والا پارٹی لیجر میں رہتا ہے۔
+sell_money_in	پارسل بک کریں
+buy_money_out	خرچ / کیریئر بل
+record_purchase	خرید درج
+add_expense	خرچ واؤچر
+bank_book	بینک بک
+credit_help	پارٹی آئی ڈی منفرد ہے (نام دہرائے جا سکتے ہیں)۔ کردار: بھیجنے والا (AR)، کیریئر (AP)، یا اسی آئی ڈی پر دونوں۔ لیجر الگ رہتے ہیں؛ رپورٹ نیٹ دکھاتی ہے۔
+party_kind_ph	حسب ضرورت کردار (اختیاری) — یا اوپر چپ دبائیں
+parties_list_heading	محفوظ پارٹیاں
+reports_help	روز بک، مقروض اور قرض دہندگان، بینک بک، خرچ واؤچر، نفع و نقصان۔
+reports_today	روز بک (آج)
+reports_month	نفع و نقصان (مہینہ)
+reports_aging	بقایا / Dr-Cr
+reports_balance_sheet	بیلنس شیٹ
+reports	رپورٹ
+refresh	تازہ
+undo	واپس
+start_tracking	گنتی شروع
+stock_minus	− اسٹاک
+stock_plus	+ اسٹاک
+settle_cash	نقد ادا
+settle_card	کارڈ سے ادا
+items	ریٹس اور سروسز
+nav_items	ریٹس
+more	مزید
+your_items	آپ کے ریٹس
+items_help	ہر قطار ایک ریٹ ہے (مثلاً Surface Zone A)۔ یونٹ عام طور پر kg ہوتا ہے۔ ترمیم کے لیے دبائیں۔
+add_item	ریٹ شامل کریں
+new_item	نیا ریٹ
+adding_item	نیا ریٹ شامل کر رہا ہے
+editing_item	ترمیم
+save	محفوظ کریں
+remove	ہٹائیں
+empty_catalog	ابھی کوئی ریٹ نہیں۔ ریٹس اور سروسز کھولیں، ایک شامل کریں (نام + قیمت، یونٹ kg)، پھر بکنگ۔
+counter_sale	کاؤنٹر بکنگ
+total	کل
+cash	نقد
+upi	यूपीआई
+card	کارڈ
+credit	پارٹیاں
+clear	صاف
+ready_to_sell	بکنگ کے لیے تیار
+today_prefix	آج
+today_mid	آج
+owed	باقی
+round_word	راؤنڈ
+back	واپس
+sold_out	فروخت ہو گیا
+restock	دوبارہ رکھیں
+not_tracked	گنتی نہیں
+in_stock	اسٹاک میں
+marked_sold_out	فروخت شدہ نشان
+add_upper	شامل
+na	نہیں
+qty	تعداد
+unit_at	نرخ
+actual	اصل
+applied	لاگو
+note_ph	نوٹ (اختیاری)
+rounded	راؤنڈ
+split	تقسیم
+counter	کاؤنٹر
+parcel	پارسل
+order	آرڈر
+sales	بکنگز
+sales_refunds	بکنگز اور رقم واپسی
+day_close	دن بند
+reports_expenses	رپورٹ اور خرچ
+nav_reports	رپورٹس
+nav_settings	سیٹنگز
+nav_lock	لاک
+sidebar_settings	سائیڈبار ترتیبات
+sidebar_settings_help	سائیڈ پٹی جیسے ہی آئیکن۔ ترتیب بدلنے کے لیے قطار گھسیٹیں۔ دکھانے یا چھپانے کے لیے سوئچ بدلیں۔ سیٹنگز اور لاک ہمیشہ پٹی پر رہتے ہیں۔
+sidebar_always_on_short	ہمیشہ آن
+sidebar_back_settings	واپس
+sidebar_shown	دکھایا گیا
+sidebar_hidden	چھپایا گیا
+sidebar_always_on	ہمیشہ پٹی پر
+sidebar_shown_hint	سائیڈ پٹی / نیچے کے ٹیب پر دکھتا ہے
+sidebar_hidden_hint	پٹی سے چھپایا گیا
+sidebar_menu_items	مینو اور آئٹمز
+sidebar_enable_all	سب آن کریں
+sidebar_disable_all	سب بند کریں
+sidebar_order_saved	سائیڈ بار کی ترتیب محفوظ ہوئی
+sidebar_visibility_saved	سائیڈ بار کی نمائش محفوظ ہوئی
+amounts_hide	چھپائیں
+amounts_show	دکھائیں
+no_sale_yet	ابھی کوئی فروخت نہیں
+favorites	پسندیدہ
+favorites_help	وہ اشیاء جو آپ اکثر بیچتے ہیں، آپ کے لاگ اِن کے لیے محفوظ ہیں۔ ایک کو بل میں شامل کریں، یا نیچے تمام اشیاء سے اپنی فہرست بنائیں۔
+your_favorites	آپ کی پسندیدہ
+all_items	تمام اشیاء
+no_favorites	ابھی کوئی پسندیدہ نہیں — نیچے دی گئی فہرست سے اشیاء شامل کریں۔
+add_to_bill	بل میں شامل کریں
+added	شامل کر دیا
+owes_word	مقروض ہیں
+selected_word	منتخب
+chip_clear_credit	صاف — ادھار دیں یا ایڈوانس لیں
+chip_missing_customer	منتخب گاہک نہیں ملا — دوبارہ منتخب کریں
+chip_no_customer	ابھی کوئی گاہک نہیں — نام لکھیں، پھر Credit دبائیں
+credit_summary_fmt	{} گاہک · کھلا ادھار {} · ایڈوانس رکھا {}
+recent_label	حالیہ:
+inventory	اسٹاک
+inventory_stock	اسٹاک اور گنتی
+branches	شاخیں
+branches_org	شاخ اور تنظیم
+credit_customers	پارٹیاں (مقروض اور قرض خواہ)
+customer_name_ph	پارٹی کا نام
+new_customer_ph	نئی پارٹی کا نام
+item_name_ph	ریٹ کا نام (مثلاً Surface Zone A)
+item_price_ph	فی kg / پہلا سلیب
+start_template	پروڈکٹ
+next_booking	اگلی بکنگ
+destination_ph	منزل شہر / زون
+consignee_ph	وصول کنندہ
+consignee_phone_ph	وصول کنندہ کا فون
+consignee_address_ph	ڈیلیوری کا پتہ
+origin_name_ph	بھیجنے والے کا نام
+origin_phone_ph	بھیجنے والے کا فون
+origin_address_ph	پک اپ / روانگی کا پتہ
+booking_consignor_heading	بھیجنے والا (گاہک / مرسل)
+booking_consignee_heading	وصول کنندہ (ریسیور)
+booking_consignor_hint	بھرنے کے لیے پارٹی چنیں، یا سیدھے آئے گاہک کے لیے خالی چھوڑیں۔ گھر سے پک اپ اور RTO کے لیے ضروری ہے۔
+booking_consignee_hint	پارسل وصول کرنے والا۔ کاؤنٹر پر سیدھے دیے گئے پارسل کے لیے خالی چھوڑیں۔
+weight_kg_ph	اصل kg
+length_cm_ph	لمبائی cm
+breadth_cm_ph	چوڑائی cm
+height_cm_ph	اونچائی cm
+chargeable_kg	قابل چارج kg
+awb_label	AWB
+booking_help	واک ان: منزل → وزن → ریٹ چنیں → کھاتہ/نقد بکنگ → ادائیگی۔ رسید پر AWB چھپتا ہے۔ اگلی بکنگ ڈیسک خالی کرتی ہے۔
+cart_empty_hint	ڈیسک خالی — منزل اور وزن درج کریں، ریٹ پر ADD دبائیں، پھر ادائیگی کریں۔
+team	ٹیم
+team_pins	ٹیم اور پن
+my_pin_settings	میرا PIN
+settings_hub_help_my_pin	اس ڈیوائس پر سائن ان شخص کا ان لاک PIN بدلیں۔
+team_self_help	اپنا ان لاک PIN (اور اختیاری لاگ ان پاس ورڈ) صرف آپ بدل سکتے ہیں۔ دوسری اسکرینیں یا حقوق چاہییں تو مالک سے کہیں۔
+backup_settings	بیک اپ اور سیٹنگ
+lock_app	لاک
+pick	چنیں
+select	منتخب
+advance	آگے
+owner	مالک
+staff	عملہ
+photo	تصویر
+auto	خودکار
+prev	پچھلا
+next	اگلا
+ok	ٹھیک
+this_shop	سرور موڈ
+extra_till	کلائنٹ موڈ
+off	بند
+server	سرور
+client	کلائنٹ
+language_currency	زبان اور کرنسی
+language	زبان
+choose_language	اپنی زبان چنیں
+language_setup_hint	اس ڈیوائس کی زبان کی پیروی کریں، یا خود ایک منتخب کریں۔
+lang_follow_platform	ڈیوائس کی زبان استعمال کریں
+lang_pick_user	منتخب زبان استعمال کریں
+lang_platform_now	ابھی ڈیوائس کی زبان
+selected_language	منتخب
+continue	جاری رکھیں
+this_device	یہ ڈیوائس
+device_use_q	یہ ڈیوائس کیسے استعمال ہوگی؟
+last_server_mode	پہلے سرور تھا — جاری رکھنے کے لیے ٹیپ کریں
+last_client_mode	پہلے کلائنٹ تھا — جاری رکھنے کے لیے ٹیپ کریں
+choose_server	سرور چنیں
+choose_server_hint	اس ڈیوائس پر پہلے سے سرور موجود ہیں۔ ایک کھولیں، یا دوسرے کاروبار کے لیے نیا سرور بنائیں۔
+create_new_server	نیا سرور بنائیں
+open_server	کھولیں
+new_server_name_ph	نئے سرور کا نام (اختیاری)
+server_remove_pin_ph	سرور ہٹانے کے لیے Owner PIN
+only_owner_remove_server	صرف Owner سرور ہٹا سکتا ہے
+owner_pin_remove_server	سرور ہٹانے کے لیے Owner PIN درکار ہے
+device_setup_help	سرور کھاتے یہیں رکھتا ہے۔ کلائنٹ کسی سرور سے جڑتا ہے۔
+currency	کرنسی
+backup	بیک اپ
+settings_sec_diag	تشخیص
+settings_hub_help	ایک وقت میں ایک حصہ کھولیں — کم اسکرول، واضح انتخاب۔
+settings_sec_devices	اضافی ٹل اور شاخیں
+settings_sec_alerts	اطلاعات
+alerts_help	حالت کے پیغامات آپ کے لیے اسکرین پر کتنی دیر رہیں (اس لاگ اِن کے لیے)۔
+snack_secs_ph	سیکنڈ (3–60، طے شدہ 10)
+snack_secs_save	اطلاع کا وقت محفوظ کریں
+snack_secs_saved	اطلاع کا وقت محفوظ ہو گیا — {n} سیکنڈ
+snack_secs_bad	سیکنڈ عدد میں لکھیں (3–60)
+cancelled	منسوخ کر دیا
+cancel	منسوخ
+opening_client	کلائنٹ کھل رہا ہے…
+preparing_desk	ڈیسک تیار ہو رہا ہے…
+opening_server	سرور کھل رہا ہے…
+creating_server	سرور بن رہا ہے…
+diag_privacy_help	لاگ اسی ڈیوائس پر رہتے ہیں۔ راز (PIN، پاس ورڈ) کبھی محفوظ نہیں ہوتے۔ ڈیوائس سے باہر پیکج بھیجنے کے لیے ہر بار آپ کی واضح منظوری چاہیے — کبھی بیچا یا کسی تیسرے فریق کو نہیں دیا جاتا۔
+diag_level	تفصیل کی سطح
+diag_level_error	خرابیاں
+diag_level_warn	انتباہات
+diag_level_info	معلومات
+diag_level_debug	ڈیبگ
+diag_support_start	30 منٹ کا مدد سیشن شروع کریں
+diag_support_stop	مدد سیشن ختم کریں
+diag_support_started	مدد سیشن جاری — 30 منٹ ڈیبگ تفصیل
+diag_support_ended	مدد سیشن ختم ہوا
+diag_export_local	مقامی کاپی برآمد کریں
+diag_export_local_done	مقامی تشخیص {path} پر تیار — کاپی کہاں محفوظ کرنی ہے چنیں
+diag_approve_send	ڈیوائس سے باہر بھیجنے کی منظوری دیں
+diag_send_heading	اس ڈیوائس سے باہر شیئر کریں
+diag_send_help	منظوری ایک پیکج کے لیے ہے، پھر ختم ہو جاتی ہے۔ عارضی — صرف پروڈکٹ ٹھیک یا بہتر کرنے کے لیے۔ کسی تیسرے فریق کو نہیں دیا جاتا۔ Linux، Windows، macOS اور Android پر چلتا ہے۔
+optional_login_heading	اختیاری لاگ اِن
+rights_heading	اختیارات
+booking_scope_heading	ملکی / بین الاقوامی
+diag_send_approved	ایک پیکج بھیجنے کی منظوری ملی (جلد ختم ہوگی)
+diag_export_send	بھیجنے کا پیکج بنائیں (منظوری چاہیے)
+diag_export_send_done	بھیجنے کا پیکج {path} پر تیار — کہاں محفوظ کرنا ہے چنیں، پھر صرف Kumkaj مدد کو بھیجیں
+diag_save_bundle	تشخیصی کاپی محفوظ کریں
+diag_bundle_saved	تشخیصی کاپی {path} میں محفوظ ہوئی
+diag_bundle_failed	تشخیصی کاپی محفوظ نہیں ہو سکی — دوبارہ کوشش کریں
+diag_clear	تشخیصی لاگ صاف کریں
+diag_cleared	تشخیصی لاگ صاف ہو گئے
+use	استعمال کریں
+add_branch	شاخ شامل کریں
+add_conversion	تبدیلی شامل کریں
+add_item_plain	آئٹم شامل کریں
+add_note	نوٹ شامل کریں
+add_opening_balance	ابتدائی بیلنس شامل کریں
+add_rider	رائیڈر شامل کریں
+add_staff	عملہ شامل کریں
+add_unit	یونٹ شامل کریں
+add_use_name	یہ نام شامل کریں / استعمال کریں
+allow_extra_tills	اضافی ٹل کی اجازت دیں
+amend	ترمیم
+apply_country_pack	ملکی پیک لاگو کریں
+datetime_appearance	تاریخ اور وقت کی شکل
+datetime_appearance_help	بہی اندر سال-پہلے RFC3339 رکھتی ہے۔ یہ صرف رسیدوں، لیبلز، رپورٹس اور اسکرین پر تاریخ اور گھڑی کی شکل بدلتے ہیں۔
+datetime_example	ابھی کی مثال: {ex}
+date_order	تاریخ کی ترتیب
+date_order_dmy	د/م/س
+date_order_mdy	م/د/س
+date_order_ymd	س-م-د
+time_format	گھڑی
+time_format_24h	24 گھنٹے
+time_format_12h	12 گھنٹے
+attach_bill_photo	بل تصویر منسلک کریں
+attach_pdf	PDF منسلک کریں
+attach_photo	تصویر منسلک کریں
+bank	بینک
+bank_in	بینک میں ڈالیں
+bank_out	بینک سے نکالیں
+bank_to_till	بینک → ٹل
+till_to_bank	ٹل → بینک
+mark_cleared	کلیئر نشان زد کریں
+unmark	نشان ہٹائیں
+role_both	دونوں
+role_carrier	کیریئر
+role_cashier	کیشیئر
+role_consignor	بھیجنے والا
+role_manager	مینیجر
+role_supplier	سپلائر
+branch_name_sell_ph	جس شاخ سے بیچنا ہے اس کا نام
+bring_my_book	میری بک لائیں
+business_tax_id_ph	کاروباری ٹیکس آئی ڈی
+card_amount_ph	کارڈ رقم
+cash_amount_ph	نقد رقم
+upi_amount_ph	UPI رقم
+carrier_cost_ph	کیریئر لاگت
+carrier_party_ph	کیریئر پارٹی
+choose_icon	آئیکن چنیں
+choose_logo	لوگو چنیں
+choose_receipt_stamp	رسید اسٹیمپ چنیں
+choose_payment_qr	ادائیگی QR چنیں
+clear_icon	آئیکن ہٹائیں
+clear_logo	لوگو ہٹائیں
+clear_photo	تصویر ہٹائیں
+clear_stamp	اسٹیمپ صاف
+clear_payment_qr	ادائیگی QR صاف
+print_faces	پرنٹ صورت (رسید / مدتی بل)
+print_faces_help	بکنگ رسیدوں اور مدتی بلوں پر آپ کے لوگو کے ساتھ اختیاری مہر اور ادائیگی QR۔
+awb_pools_heading	کیریئر AWB نمبر پول
+add_awb_pool	AWB پول شامل کریں
+awb_pool_carrier_ph	کیریئر پارٹی کا نام
+awb_pool_start_ph	ابتدائی نمبر
+awb_pool_end_ph	آخری نمبر
+awb_pool_prefix_ph	سابقہ (اختیاری)
+awb_pool_label_ph	لیبل (اختیاری)
+pieces_ph	نگ (خالی = 1) — کارگو / کئی نگ کے لیے کھولیں
+bulk_awbs_ph	متعدد AWB — ایک ساتھ اسٹیٹس آگے بڑھانے کے لیے کئی چسپاں کریں (نئی سطر یا کوما)
+tds_cut_ph	TDS کٹوتی (اختیاری)
+discount_ph	رعایت (اختیاری)
+cheque_no_ph	چیک نمبر (اختیاری)
+bill_reminder_chase	بل یاد دہانی فہرست
+month_mix_report	ماہانہ مکس رپورٹ
+copy_month_gst_csv	ماہ GST CSV کاپی
+domestic	ملکی
+international	بین الاقوامی
+pick_logo	لوگو چنیں
+booking_scope_hint_domestic	والیوم ÷5000 (ملکی) — بین الاقوامی ÷6000
+booking_scope_hint_intl	والیوم ÷6000 (بین الاقوامی) — ملکی ÷5000
+cod_register	COD رجسٹر
+collect_cod	COD وصول کریں (AWB)
+consignments_dispatch	کنسائنمنٹ اور ڈسپیچ
+consignor_party_ph	بھیجنے والا / پارٹی کا نام
+copy_day_book_csv	روز بک CSV کاپی
+copy_day_close	دن بند کاپی کریں
+copy_items_csv	آئٹم CSV کاپی
+copy_outstanding_csv	بقایا CSV کاپی
+copy_parties_csv	پارٹی CSV کاپی
+copy_party_ledger_csv	پارٹی لیجر CSV کاپی
+copy_receipt	رسید کاپی کریں
+copy_report	رپورٹ کاپی کریں
+counted_cash_ph	دراز میں گنی نقدی
+counter_agency_ph	کاؤنٹر / ایجنسی کا نام (اختیاری)
+create_backup	بیک اپ بنائیں
+day_close_summary	دن بند خلاصہ
+delete_party	منتخب پارٹی حذف کریں
+dispatch_to_rider	بک شدہ → رائیڈر کو
+docket_charge_ph	ڈاکٹ چارج
+declared_value_ph	اعلان شدہ قیمت
+contents_ph	مواد
+eway_ph	ای-وے بل نمبر
+insurance_label	بیمہ (ہاں/نہیں)
+yes_label	ہاں
+no_label	نہیں
+print_route_label	پرنٹ روٹ
+new_party_kind_label	نئی پارٹی کی قسم
+done_open_books	ہو گیا — بکس کھولیں
+export_day	دن ایکسپورٹ کریں
+extra_note_expense_ph	آخری خرچ پر اضافی نوٹ
+extra_note_awb_ph	اس AWB / فروخت پر اضافی نوٹ
+failed_delivery	ڈیلیوری ناکام
+find_scan_awb	AWB تلاش / اسکین کریں
+forget_shop	یہ دکان بھول جائیں
+fuel_ph	ایندھن
+handover_carrier	بک شدہ → کیریئر کو
+import_day	دن امپورٹ کریں
+import_items_csv	آئٹم / ریٹ CSV امپورٹ…
+import_parties_csv	پارٹی CSV امپورٹ…
+import_pincodes_csv	پن کوڈ CSV امپورٹ…
+import_carrier_bill_csv	کیریئر بل CSV امپورٹ…
+copy_carrier_bill_report	آخری کیریئر بل رپورٹ کاپی
+use_carrier_cost	کیریئر لاگت لگائیں
+rate_carrier_ph	کیریئر (خالی = ہماری فروخت کی شرح)
+rate_party_ph	پارٹی (خالی = تمام گاہک)
+carrier_pick_ph	لاگت کے لیے کیریئر (موازنے سے)
+item_name	آئٹم کا نام
+load_bulk_row	بلک قطار لوڈ → ڈیسک
+login_id_ph	لاگ ان آئی ڈی
+mark_delivered	ڈیلیور نشان زد کریں
+manifest_cod_total	COD کل
+manifest_received_by	وصول کنندہ
+manifest_sign	دستخط
+ndr_address_wrong	پتہ غلط
+ndr_customer_unavailable	گاہک دستیاب نہیں
+ndr_door_locked	دروازہ بند
+ndr_other	دیگر
+ndr_refused	انکار
+out_for_delivery	ڈیلیوری کے لیے باہر
+print_drs	DRS چھاپیں
+print_run_sheet	رن شیٹ چھاپیں
+reattempt	دوبارہ کوشش
+rider_cod_handed_ph	رائیڈر نے دیا COD
+settle_rider_cod	رائیڈر COD سیٹل
+mode_desk	ڈیسک
+mode_rider	رائیڈر
+waiting_office	دفتر پہنچنے کا انتظار
+capture_signature	دستخط لیں
+incoming_manifest	آنے والا مینی فیسٹ
+pickup_request	پک اپ درخواست
+pickup_run	پک اپ رن
+auto_assign_area	علاقہ خودکار تفویض
+reorder_stops	اسٹاپ ترتیب بدلیں
+settle_rider_pay	رائیڈر تنخواہ سیٹل
+vehicle_inspect	گاڑی معائنہ
+print_docket	سی نوٹ چھاپیں
+franchise_statement	فرنچائز بیان
+tally_export	ٹیلی واؤچر برآمد
+open_whatsapp	واٹس ایپ کھولیں
+copy_sms	SMS متن کاپی
+pick_barcode_image	سکین کے لیے تصویر چنیں
+share_receipt_whatsapp	رسید واٹس ایپ پر شیئر
+delivery_feedback	ڈیلیوری رائے
+lan_self_book	LAN خود بکنگ
+new_party_clear	نئی پارٹی (فارم صاف کریں)
+new_party_kind_ph	نئی پارٹی کی قسم (سپلائر / کیریئر)
+next_country	اگلا ملک
+prev_country	پچھلا ملک
+note_gstin_ph	نوٹ / GSTIN / معاہدہ یاددہانی
+note_pod_ph	نوٹ / POD (اختیاری)
+on_account_ap	کھاتے پر (AP)
+org_optional_ph	تنظیم (اختیاری)
+paid_now	ابھی ادا
+pairing_code_ph	پیئرنگ کوڈ
+pair_now	ابھی جوڑیں
+party_name_selected_ph	پارٹی کا نام (یا منتخب استعمال کریں)
+password_ph	پاس ورڈ
+pay_ap_card	AP کارڈ سے ادا کریں
+pay_ap_cash	AP نقد ادا کریں
+pay_ap_upi	AP UPI ادا کریں
+period_bill	مدتی بل
+period_bill_party	مدتی بل (پارٹی)
+pick_pod_photo	POD تصویر چنیں
+print_awb_label	AWB لیبل چھاپیں
+print_open	چھاپیں / کھولیں
+reason_amend_ph	ترمیم / منسوخی / واپسی کی وجہ
+reason_note_ph	وجہ / نوٹ (ضیاع، گنتی، …)
+record_day_close	دن بند درج کریں
+refresh_from_shop	دکان سے تازہ کریں
+refund	واپسی
+remit_cod	COD جمع کریں (پارٹی)
+remove_selected	منتخب ہٹائیں
+restore_backup	بیک اپ بحال کریں
+rider_name_ph	رائیڈر کا نام
+rider_phone_ph	رائیڈر کا فون
+riders	رائیڈرز
+riders_own_fleet	رائیڈرز (اپنا فلیٹ)
+rollup	رول اپ
+save_booking_measures	بکنگ پیمائش محفوظ کریں
+save_brand	برانڈ محفوظ کریں
+save_business_id	کاروباری آئی ڈی اور سروس % محفوظ کریں
+save_business_name	کاروبار کا نام محفوظ کریں
+save_features	کام کا سیٹ اپ محفوظ کریں
+save_names	نام محفوظ کریں
+server_ip_ph	سرور IP (مثلاً 192.168.1.10)
+set_credit_limit	کریڈٹ حد مقرر کریں
+set_login_selected	منتخب پر لاگ ان لگائیں
+set_login_named	{name} پر لاگ ان لگائیں
+shop	دکان
+start_fresh	نئے سرے سے شروع کریں
+stop_extra_tills	اضافی ٹل بند کریں
+backup_auto	روزانہ خودکار بیک اپ · آخری {when} · آخری 14 دن {dir} میں رکھے جاتے ہیں۔
+backup_auto_none	روزانہ خودکار بیک اپ — پہلا ابھی چلے گا۔
+backup_copy_to	نقول {dir} میں بھی جاتی ہیں۔
+backup_copy_btn	بیک اپ ایک فولڈر میں بھی کاپی کریں…
+autostart_off	اس کمپیوٹر کے ساتھ شروع کریں
+autostart_on	اس کمپیوٹر کے ساتھ شروع ہوتا ہے ✓ — روکنے کے لیے دبائیں
+autostart_done_on	اب کمپیوٹر شروع ہوتے ہی ایپ کھلے گی — بجلی جانے کے بعد بھی دکان کا سرور دوبارہ چلے گا۔
+autostart_done_off	اب کمپیوٹر شروع ہونے پر ایپ نہیں کھلے گی۔
+right_allowed	اجازت ہے
+right_with_approval	منظوری کے ساتھ
+right_denied	اجازت نہیں
+editing_staff	ان کے حقوق
+team_pick_ph	ترمیم کے لیے عملے کا نام
+select_staff	یہ عملہ منتخب کریں
+rights_help	حقوق — بدلنے کے لیے دبائیں: اجازت → منظوری کے ساتھ (اسی وقت منیجر کا PIN) → اجازت نہیں۔
+right_void_refund	بکنگ منسوخ یا رقم واپس
+right_amend_sale	درج شدہ بکنگ میں ترمیم
+find_server	دکان کا سرور تلاش کریں
+finding_server	اس وائی فائی پر دکان کا سرور تلاش ہو رہا ہے…
+no_server_found	کوئی سرور نہیں ملا۔ دیکھیں کہ دکان کا آلہ اسی وائی فائی پر اضافی ٹِل کی اجازت کے ساتھ ہے، یا اس کا IP لکھیں۔
+servers_found_pick	جس دکان سے جڑنا ہے اسے ٹیپ کریں۔
+server_host_selected	{host} استعمال — پیئرنگ کوڈ درج کریں، پھر ابھی پیئر کریں۔
+device_forgotten	دکان نے یہ ڈیوائس ہٹا دی — دکان کے موجودہ کوڈ سے دوبارہ جوڑیں۔ رکے ہوئے آرڈر محفوظ ہیں۔
+forget_device	بھول جائیں
+last_seen	آخری بار
+new_pair_code	نیا پیئرنگ کوڈ
+lan_offline	آف لائن
+lan_offline_waiting	آف لائن · {n} انتظار میں
+lan_connecting	دکان سے جڑ رہے ہیں…
+pair_finishing	جوڑنا مکمل ہو رہا ہے… دفتر کی بہی لگا رہے ہیں
+pair_opening	دفتر کھل رہا ہے…
+lan_live	لائیو
+lan_sending	{n} بھیجے جا رہے ہیں
+lan_sign_in_to_send	{n} بھیجنے کے لیے دوبارہ سائن ان کریں
+lan_pair_again	اس ڈیوائس کو دوبارہ جوڑیں
+lan_update_app	ایپ اپ ڈیٹ کریں — اس آلے اور دفتر کے سرور کے ورژن مختلف ہیں
+allow_firewall	دوسری ڈیوائسز کو جڑنے دیں
+firewall_blocked	اس کمپیوٹر کا فائر وال دوسری ڈیوائسز کو روک رہا ہے — “دوسری ڈیوائسز کو جڑنے دیں” دبائیں۔
+firewall_waiting	ایڈمن اجازت کا انتظار…
+lan_join_help	دوسرے ڈیوائس اس سے جڑ سکتے ہیں — جوڑنے کا کوڈ {code}۔ دوسرے ڈیوائس پر کلائنٹ موڈ چنیں، پھر دکان کا سرور تلاش کریں، یا یہ پتہ لکھیں: {addr}
+lan_pair_status	وائی فائی {addr}
+lan_join_help_no_addr	پتہ پانے کے لیے اس ڈیوائس کو Wi‑Fi سے جوڑیں۔
+lan_no_address	اس ڈیوائس کا ابھی کوئی وائی فائی پتہ نہیں — اسے دکان کے وائی فائی سے جوڑیں۔
+lan_not_listening	ابھی ڈیوائس نہیں جڑ پا رہے — شاید کوئی دوسرا پروگرام پورٹ {port} استعمال کر رہا ہے۔ ایپ دوبارہ شروع کریں۔
+lan_tills_off	اضافی ٹل بند ہیں۔ اس دفتر کے کھاتے اسی ڈیوائس پر رہتے ہیں۔ اگر کوئی دوسرا ڈیوائس بھی پارسل بک کرے یا ادائیگی لے تو اضافی ٹل کی اجازت دیں۔
+paired_with	{url} پر دکان سے جڑا ہوا
+not_paired	جڑا نہیں — دکان کے سرور سے جوڑیں۔
+choose_device_use	منتخب کریں کہ یہ ڈیوائس کیسے استعمال ہوگا۔
+paired_note	جڑ گیا۔ بیچنے کے لیے کھولیں، یا دکان سے تازہ ترین لینے کے لیے تازہ کریں۔
+last_update_at	دکان سے آخری اپ ڈیٹ: {time}۔
+pair_intro	سرور تلاش کریں، یا اس کا پتا اور پیئرنگ کوڈ لکھیں۔
+queue_waiting	دکان تک پہنچنے کے انتظار میں ({n}):
+queue_tries	{n} بار کوشش · آخری جواب: {e}
+save_backup_copy	بیک اپ کی کاپی محفوظ کریں…
+backup_copy_saved	بیک اپ کاپی محفوظ ہو گئی — اسے اس ڈیوائس سے باہر رکھیں (USB اسٹک یا دوسری ڈیوائس)
+backup_copy_overdue	{n} دن سے کوئی بیک اپ کاپی اس ڈیوائس سے باہر نہیں گئی — سیٹنگز → بیک اپ
+backup_copy_failed	بیک اپ کاپی وہاں محفوظ نہ ہو سکی — کوئی اور جگہ چنیں
+clock_off	اس ڈیوائس کی گھڑی دکان کے سرور سے {min} منٹ مختلف ہے — اس ڈیوائس پر درست وقت لگائیں
+printers_heading	اس ڈیوائس کے پرنٹر
+printers_help	ہر پرنٹر ایک بار شامل کریں، پھر منتخب کریں رسید اور AWB لیبل کہاں پرنٹ ہو — فہرست میں پہلا پہلے آزمایا جاتا ہے؛ ناکام ہو تو اگلا۔ روٹ خالی = وہ فیچر پرنٹ نہیں۔ ہدف خالی (ڈیفالٹ)، سسٹم نام، یا نیٹ ورک پتہ (جیسے 192.168.1.50)। ہر ڈیوائس اپنے پرنٹر رکھتی ہے۔
+job_width	مواد کی چوڑائی (ملی میٹر)
+job_width_ph	یا چوڑائی لکھیں، 40–210 mm
+job_layout	لے آؤٹ
+job_delivery	کام کیسے بھیجا جاتا ہے
+job_size	فونٹ سائز
+job_size_ph	جیسے 18, 20, 26…
+save_receipt_format	رسید فارمیٹ محفوظ کریں
+save_label_format	لیبل فارمیٹ محفوظ کریں
+test_receipt_format	ٹیسٹ رسید
+test_label_format	ٹیسٹ لیبل
+test_receipt_sent	نمونہ رسید بھیجی
+test_label_sent	نمونہ لیبل بھیجا
+test_print_no_printer	اس کام کے لیے پرنٹر نہیں — اسی جگہ کے نیچے ایک شامل کریں
+printers_host_only	پرنٹر دکان والے ڈیوائس (Server) پر سیٹ ہوتے ہیں۔ یہ ٹِل وہاں جاب بھیجتا ہے — تلاش / شامل / تفویض Server پر ہی رہتے ہیں۔ ٹیسٹ صفحہ Server پر جاتا ہے۔
+printers_pool_heading	پرنٹرز
+printers_routes_heading	کہاں پرنٹ
+printer_label_ph	نام (مثلاً ڈیسک)
+printer_target_ph	host:9100 · bt:MAC · usb:VID:PID · سسٹم کا نام
+printer_mode_heading	منتخب روٹ کا فارمیٹ
+printer_mode_standard	معیاری پورٹریٹ
+printer_mode_landscape	معیاری لینڈسکیپ
+printer_mode_thermal	تھرمل
+printer_mode_standard_short	پورٹریٹ
+printer_mode_landscape_short	لینڈسکیپ
+printer_mode_thermal_short	تھرمل
+printer_format_custom	نیا اپنا فارمیٹ
+printer_format_custom_label	اپنا
+printer_format_custom_added	اس روٹ کے لیے اپنا فارمیٹ شامل ہو گیا
+add_printer	پرنٹر شامل کریں
+remove_printer	آخری ہٹائیں
+route_pick_ph	receipt یا label
+route_add_printer_ph	اس روٹ میں پرنٹر شامل کریں
+route_receipt	رسید
+route_label	AWB لیبل
+route_dont_print	کوئی پرنٹر تفویض نہیں
+route_add	روٹ میں شامل کریں
+route_up	اوپر
+route_down	نیچے
+route_remove	آخری ہٹائیں
+route_clear	اس جگہ کے پرنٹر صاف کریں
+save_printers	پرنٹر محفوظ کریں
+print_test_page	ٹیسٹ صفحہ چھاپیں
+printers_saved	اس ڈیوائس کے پرنٹر محفوظ ہوئے
+test_page_sent	ٹیسٹ صفحہ بھیج دیا — پرنٹر دیکھیں
+printers_found	اس ڈیوائس پر ملے: {list}
+find_printers	پرنٹر تلاش کریں
+printers_looking	اس ڈیوائس اور Wi‑Fi پر پرنٹر تلاش کر رہے ہیں…
+printers_tap_find	کام لینے والی قطاروں اور اس Wi‑Fi پر نیٹ ورک رسید پرنٹرز کے لیے پرنٹرز تلاش کریں دبائیں (ہٹائے یا آف لائن والے نہیں)۔
+printers_none_found	کوئی پرنٹر نہیں ملا — سسٹم پرنٹر کا نام، یا نیٹ ورک پتہ لکھیں (مثلاً 192.168.1.50)۔
+receipt_printer_ph	رسید کا پرنٹر
+queue_refused	دکان نے قبول نہیں کیا ({n}) — ہر ایک کو کاؤنٹر پر جانچیں:
+clear_not_accepted	جانچ لیا — یہ فہرست صاف کریں
+device_name_ph	اس ڈیوائس کا نام
+lan_last_update	آخری اپ ڈیٹ {time}
+lan_not_accepted	{n} قبول نہیں ہوئے
+connected_now	ابھی جڑا ہوا
+backup_failed	پچھلا خودکار بیک اپ ناکام رہا: {e}
+backup_overdue	{n} دن سے بیک اپ نہیں ہوا — بیک اپ کے لیے اس ڈیوائس پر ایپ کھلی رکھیں۔
+disk_low	اس ڈیوائس پر صرف {mb} MB جگہ باقی ہے — جلد ہی بیک اپ ناکام ہوں گے۔ کچھ جگہ خالی کریں۔
+last_seen_devices	آخری بار دیکھا: {time}
+sync_interval	ہر {secs} سیکنڈ میں سنک
+connection_to_shop	دکان سے کنکشن
+supplier_name_ph	سپلائر کا نام (یا پارٹی)
+supplier_ph	سپلائر
+switch_device	یہ ڈیوائس بدلیں
+take_payment	ادائیگی لیں
+tax_added_till	{tax} الگ
+tax_inside_price	{tax} شامل
+today_books	آج کی بکس
+unlock_after_pairing	پن درج کریں
+unlock_with_login	لاگ ان سے ان لاک
+update_my_password	میرا پاس ورڈ بدلیں
+update_my_pin	میرا PIN بدلیں
+duress_heading	ہنگامی ان لاک PIN (صرف Owner)
+duress_help	اختیاری۔ اگر ان لاک پر آپ کی جگہ یہ PIN لکھا جائے تو بہی کی تمام اندراجات مٹ جاتی ہیں (بکنگز، کھاتے، تاریخ) اور ڈیسک عام دکھتے ہوئے مالک کے طور پر کھلتا ہے — ریٹس، پارٹیاں، زون، عملہ اور سیٹنگز رہتی ہیں۔ ڈھانچہ اور کنفیگ نہیں مٹتے۔ صرف تب استعمال کریں جب آپ کو زبردستی ان لاک کروایا جائے۔ بند کرنے کے لیے خالی چھوڑ کر محفوظ کریں۔ کبھی کسی کے PIN جیسا نہیں۔
+duress_pin_ph	ہنگامی PIN (4–12 ہندسے)
+duress_confirm_ph	دوبارہ ٹائپ کریں
+save_duress_pin	ہنگامی PIN محفوظ کریں
+clear_duress_pin	ہنگامی PIN بند کریں
+duress_on	ہنگامی ان لاک PIN آن ہے
+duress_off	ہنگامی ان لاک PIN آف ہے
+duress_saved	ہنگامی ان لاک PIN محفوظ ہو گیا
+duress_cleared	ہنگامی ان لاک PIN بند کر دیا
+vehicle_ph	گاڑی
+void	منسوخ کریں
+write_off_ap	AP معاف کریں
+write_off_nil	معاف کریں / بیلنس صفر
+zone_ph	زون (ریٹس سے نام)
+caption_today	آج
+caption_bookings	بکنگز
+caption_payments_today	آج کی ادائیگیاں
+caption_outstanding	بقایا
+caption_bank	بینک
+paid_by	ادائیگی بذریعہ
+second_way	دوسرا طریقہ
+weight_in	وزن یونٹ
+size_in	سائز یونٹ
+goods_received	مال موصول
+expense_heading	خرچ
+notes_attach_sale	نوٹس اور منسلکات (منتخب فروخت)
+notes_attach_party	نوٹس اور منسلکات (منتخب پارٹی)
+attachments_last_expense	منسلکات (آخری خرچ)
+credit_limit_heading	کریڈٹ حد (منتخب / نامی پارٹی)
+pay_selected_heading	منتخب ادا کریں (قرض نمٹائیں / ایڈوانس)
+write_off_heading	معاف کریں (ادائیگی کے بغیر نمٹائیں)
+pay_ap_heading	جو ہمیں انہیں دینا ہے (AP)
+country_tax	ملک اور ٹیکس
+extra_tills_heading	اضافی ٹل
+other_devices_help_heading	دیگر ڈیوائسز سیٹ کریں
+other_devices_help	اس ڈیوائس (سرور) پر: دوسری ڈیوائسز → اضافی ٹل کی اجازت دیں۔ پیئرنگ کوڈ اور Wi‑Fi پتہ نوٹ کریں۔ اگر دکھے تو دوسری ڈیوائسز کو جڑنے دیں دبائیں۔ کمپیوٹر پر، اس کمپیوٹر سے شروع کریں دبائیں۔ ہر دوسری ڈیوائس پر: ایپ انسٹال کریں، کلائنٹ موڈ چنیں، دکان کا سرور تلاش کریں (یا پتہ لکھیں)، پیئرنگ کوڈ دیں، ابھی جوڑیں۔ Wi‑Fi کٹے تو آرڈر ڈیوائس پر رکتے ہیں اور سرور دوبارہ جواب دے تو چلے جاتے ہیں۔
+your_brand	آپ کا برانڈ (ایپ میں)
+units_heading	یونٹس
+booking_measures	بکنگ پیمائش
+drawer_count	دراز گنتی (اختیاری)
+spreadsheet_csv	اسپریڈشیٹ (CSV)
+bank_reconciliation	بینک مفاہمت (اپنے بینک اسٹیٹمنٹ سے ٹک کریں)
+book_add_product	بک — پروڈکٹ / ریٹ شامل کریں
+book_opening_credit	بک — ابتدائی ادھار
+account_kind	کھاتے کی قسم (ایک دبائیں)
+active_ledger	فعال لیجر
+actual_total_cap	اصل کل
+amend_help	ترمیم، منسوخی یا واپسی کے لیے فروخت منتخب کریں۔ ترامیم مکمل تاریخ رکھتی ہیں۔
+applied_total_cap	لاگو کل
+bank_balance	بینک بیلنس
+bank_net_today	آج کا بینک نیٹ
+branch_export_help	برآمد ایک دن کا اسنیپ شاٹ بیک اپ فولڈر میں لکھتا ہے اور کلپ بورڈ پر کاپی کرتا ہے۔ دوسری شاخ کا دن درآمد کرنے کے لیے اس کی فائل اسی فولڈر میں import_branch_snapshot.json نام سے محفوظ کریں، پھر درآمد دبائیں۔
+brand_shown_help	ایپ کے اندر اسکرینوں پر دکھایا جاتا ہے۔ اس ڈیوائس پر انسٹال ایپ کا نام اور آئیکن پلیٹفارم لسٹنگ جیسا ہی رہتا ہے۔
+app_icon	ایپ آئیکن
+logo_help	ایپ کی اسکرینوں پر دکان کا اختیاری نشان۔
+onboard_layout	آپ کو کیا ملتا ہے
+item_photo_help	اختیاری۔ تصویر نہ ہو تو آئٹم کے نام کے پہلے حروف دکھاتے ہیں۔
+cash_in_hand	ہاتھ میں نقدی (ٹل)
+change_my_pin_heading	میرا PIN بدلیں (صرف آپ کا)
+connect_to_server	سرور سے جڑیں
+counter_locked	کاؤنٹر 01 · لاک
+country_pack_help	ملکی پیک ٹیکس کا نام اور حساب، فوری ادائیگی ریل، اور بلوں پر چھپنے والی کاروباری آئی ڈی مقرر کرتا ہے۔ Kumkaj کہیں بھی ٹیکس فائل نہیں کرتا یا سرکاری ای-انوائس جاری نہیں کرتا۔
+currency_use_help	اسکرول کریں اور کسی بھی معاون کرنسی کے لیے Use دبائیں۔
+day_close_help	دن بند درج کرنے سے یہ خلاصہ (گنتی ہو تو دراز فرق سمیت) آڈٹ لاگ میں محفوظ ہوتا ہے۔ یہ فروخت نہیں روکتا۔
+expenses_word	اخراجات
+feature_access_help	منتخب عملے کی سہولت تک رسائی (شامل کرنے کے بعد دبائیں)
+footer_local	مقامی SQLite · ہمیشہ مفت · کوئی کلاؤڈ نہیں
+fresh_book_moklanjo	پرنٹرز
+fresh_selected	Fresh منتخب — کیٹلاگ خالی رہے گا۔ تیار ہونے پر Done دبائیں۔
+gross_word	مجموعی
+how_start	آپ کیسے شروع کرنا چاہتے ہیں؟
+later_country_pack	پرنٹرز
+local_badge	مقامی
+measures_help_moklanjo	بکنگ ڈیسک پر پارسل کیسے ناپے جاتے ہیں۔ اپنی استعمال کی اکائیوں میں ابعاد اور وزن لکھیں — معیاری (cm, m, in, ft · kg, g, lb, oz) یا اوپر cm / kg سے منسلک اپنی اکائی (براہ راست یا دیگر اکائیوں کے ذریعے)۔ بکس ہمیشہ kg درج کرتی ہیں۔ کوئی فیلڈ خالی چھوڑنے سے وہ برقرار رہتا ہے۔
+mix_type_hint_moklanjo	ہر ایک میں کتنا ہے لکھیں (نقد / UPI / کارڈ / ادھار)۔ بل کے برابر ہونا چاہیے۔ ادھار کے لیے اوپر گاہک چاہیے۔
+money_in_sales	رقم آئی (فروخت)
+more_help_moklanjo	کیٹلاگ، فروخت، ادھار، ٹیم، بیک اپ — اور ضرورت پڑنے پر اسٹاک اور اضافی ٹل۔
+net_word	نیٹ
+offline_badge	آف لائن
+optional_login_help	اختیاری لاگ ان (آئی ڈی + پاس ورڈ)۔ مالک ایک بار لگاتا ہے؛ بعد میں صرف صارف ہی پاس ورڈ بدل سکتا ہے۔
+or_unlock_login	یا لاگ ان آئی ڈی + پاس ورڈ سے ان لاک کریں
+permission_preset	کام (اسکرینیں اور حقوق طے کرتا ہے)
+preset_help_moklanjo	کیشیئر: فروخت۔ مینیجر: فروخت + آئٹمز + منسوخی/ترمیم۔
+product_locked_moklanjo	Moklanjo
+product_only_moklanjo	یہ ایپ صرف Moklanjo ہے — کھاتے + بکنگ ڈیسک۔ دوسرے کاروباروں کی پروڈکٹس بعد میں الگ آئیں گی۔
+purchases_cogs	خریداری (COGS)
+qty_cap	مقدار
+restore_help	Restore: ایک بیک اپ چنیں۔ کھاتے اُس وقت جیسے کھلیں گے؛ ابھی کے کھاتے پہلے محفوظ ہوتے ہیں، اس لیے یہ واپس ہو سکتا ہے۔
+wipe_data_heading	مقامی ڈیٹا حذف کریں
+wipe_data_help	صرف Owner — Windows ان انسٹال جیسا۔ کاروباری ریکارڈ تاریخ مٹاتے، ریٹس/سیٹ اپ رکھتے ہیں۔ دکان سیٹ اپ کتابیں ہٹاتا ہے۔ اسکرین ترجیحات ونڈو/زبان۔ Owner PIN سے تصدیق۔
+wipe_trading	کاروباری ریکارڈ
+wipe_schema	دکان سیٹ اپ
+wipe_ui	اسکرین ترجیحات
+wipe_owner_pin_ph	حذف کے لیے Owner PIN
+wipe_delete_selected	منتخب حذف کریں
+wipe_owner_only	صرف Owner مقامی ڈیٹا حذف کر سکتا ہے۔
+restore_owner_only	صرف Owner بیک اپ واپس لگا سکتا ہے۔
+wipe_owner_pin_needed	مقامی ڈیٹا حذف کرنے کے لیے Owner PIN درج کریں۔
+wipe_nothing_selected	پہلے کیا حذف کرنا ہے منتخب کریں۔
+wipe_done	منتخب مقامی ڈیٹا حذف ہو گیا۔
+wipe_schema_done	دکان سیٹ اپ مٹا — جاری رکھنے کے لیے Server یا Client منتخب کریں۔
+rounded_total	راؤنڈ کل
+setup_app_moklanjo	Moklanjo سیٹ کریں
+shop_logo_optional	دکان لوگو (اختیاری)
+stock_type_help	آئٹم کا نام لکھیں (اس کا حصہ ہی کافی ہے)، مقدار لکھیں، پھر ایڈجسٹ کریں۔ جو آئٹمز ابھی گنے نہیں گئے انہیں ایک بار Start tracking چاہیے۔
+team_owner_help	بھرتی: ایک کام چنیں (کیشیئر / منیجر)، نام + ابتدائی PIN، پھر شامل کریں۔ صرف اگر یہ شخص مختلف ہو: نیچے اسکرینیں اور حقوق کھولیں، پھر کام کا سیٹ اپ محفوظ کریں۔ ہر کوئی نیچے اپنا PIN خود بدلتا ہے — مالک کسی اور کا نہیں بدل سکتا۔
+they_owe_us	وہ ہمارے مقروض
+unit_at_cap	یونٹ نرخ
+units_help	آئٹم لیبلز کے کوڈ (kg, piece, bag)۔ ہر یونٹ کو — براہ راست یا دیگر یونٹس کے ذریعے — ایک معیار (kg · cm · ml · pc) سے منسلک ہونا چاہیے، مثلاً 1 crate = 2 box اور 1 box = 20 cm۔ تبدیلیاں: 1 from = factor to۔ کرنسیاں کبھی یونٹ نہیں ہوتیں۔
+we_owe_them	ہم ان کے مقروض
+who_unlocking	کون ان لاک کر رہا ہے؟
+locked_word	لاک
+show_pin	PIN دکھائیں
+hide_pin	PIN چھپائیں
+set_owner_pin	مالک PIN لگائیں
+enter_owner_passcode	مالک پاس کوڈ ڈالیں
+enter_staff_passcode	عملے کا پاس کوڈ ڈالیں
+pin_count_zero	0 / 12 ہندسے · کم از کم 4، پھر OK
+pin_count_need	{} / 12 ہندسے · {} مزید درکار
+pin_count_full	12 / 12 ہندسے · OK دبائیں
+pin_count_ready	{} / 12 ہندسے · تیار ہونے پر OK دبائیں
+pin_hint_choose	4–12 ہندسے چنیں (کی بورڈ یا پیڈ) · محفوظ کرنے کے لیے Enter/OK
+pin_hint_new	نیا 4–12 ہندسوں کا مالک PIN (کی بورڈ یا پیڈ) · Enter/OK
+pin_hint_shop_code	دکان ڈیوائس · پیئرنگ کوڈ {}
+pin_hint_books	یہ ڈیوائس بکس رکھتی ہے
+pin_hint_paired	اضافی ٹل جڑا ہوا — بیچنے کے لیے ان لاک کریں
+pin_hint_pair_first	اضافی ٹل — پہلے دکان ڈیوائس سے جوڑیں
+unlock_to_continue	جاری رکھنے کے لیے ان لاک کریں
+no_staff_yet	ابھی کوئی عملہ نہیں — مالک کے طور پر ان لاک کریں، پھر Team
+status_server_set_pin	سرور موڈ — مالک PIN لگائیں
+status_server_tills	سرور موڈ — اضافی ٹل جڑ سکتے ہیں۔ ان لاک کریں
+status_server_unlock	سرور موڈ — مالک کے طور پر ان لاک کریں
+status_client_unlock	کلائنٹ موڈ — بیچنے کے لیے ان لاک کریں
+icon_new_selected	آئیکن: نئی فائل منتخب — برانڈ محفوظ کریں دبائیں
+icon_custom	آئیکن: آپ کی دکان کا نشان
+icon_default	آئیکن: Kumkaj نشان (پہلے سے طے شدہ) — اپنا منتخب کریں
+logo_yours	لوگو: آپ کی دکان کا لوگو — اسکرینوں اور رسیدوں پر دکھایا جائے گا
+logo_default	لوگو: Kumkaj نشان (پہلے سے طے شدہ) — اپنا ہو تو منتخب کریں
+tmpl_current	موجودہ: {} — {}
+tmpl_selected	منتخب: {} — {}
+setup_complete	سیٹ اپ مکمل
+onboard_fresh_tmpl	نیا · {} — کیٹلاگ خالی سے شروع؛ اشیاء میں شامل کریں، پھر Done دبائیں۔
+onboard_book_tmpl	کتاب · {} — اشیاء اور ابتدائی ادھار شامل کریں، پھر Done دبائیں۔
+onboard_template_tmpl	چاہیں تو جگہ کا نام دیں، پھر شروع کرنے کا طریقہ چنیں۔
+tmpl_blurb	کوریئر کھاتے اور بکنگ ڈیسک: بھیجنے والے، کیریئر، روزنامچہ، AWB۔
+tmpl_how	ڈیسک پر پارسل بک کریں؛ آج کے لیے روزنامچہ؛ ریٹس، پارٹیوں، رپورٹوں کے لیے ٹیب۔
+trk_booked	بک ہوا
+trk_picked_up	پک اپ ہوا
+trk_in_transit	راستے میں
+trk_delivered	پہنچا دیا
+trk_rto	بھیجنے والے کو واپس جا رہا
+lane_to_dispatch	بھیجنا باقی
+lane_with_carrier	کیریئر کے پاس
+lane_failed	ناکام
+lane_done_today	آج مکمل
+ops_board_help	آج کے کام میں پارسل کہاں ہیں اس کے مطابق۔ پارسلوں پر ٹیپ کریں (یا اسکین کریں) تاکہ وہ چنے جائیں، پھر سب چنے ہوؤں پر ایک ساتھ کام کریں — ہر حصے میں صرف وہی قدم دکھتے ہیں جو اس کے مطابق ہیں۔
+lane_empty	ابھی یہاں کچھ نہیں۔
+picked_fmt	{n} چنے
+pick_all	سب چنیں
+bag_for_carrier	کیریئر کے حوالے کریں
+send_with_rider	رائیڈر کے ساتھ بھیجیں
+out_again	دوبارہ بھیجیں
+return_to_sender	بھیجنے والے کو واپس کریں
+runs_bags_heading	حالیہ چکر اور بیگ
+print_word	چھاپیں
+bag_word	کیریئر بیگ
+run_word	رائیڈر چکر
+parcels_fmt	{n} پارسل
+parcel_history	تاریخچہ
+attempt_fmt	کوشش {n}
+pieces_short_fmt	{n} عدد
+note_reason_ph	نوٹ یا وجہ
+ops_pick_first	پہلے پارسل چنیں — ٹیپ کریں یا اسکین کریں
+cod_to_collect	ڈیلیور ہوا — COD وصول کرنا باقی
+cod_on_road	COD ابھی راستے میں
+cod_owed_consignors	وصول ہوا — بھیجنے والوں کو ادا کرنا
+cod_rto_fees	وصول کرنے والی RTO فیس
+cod_to_hand_in	جمع کرانے والا COD
+parcel_one_fmt	{n} پارسل
+facet_bank_title	رپورٹس
+facet_bank_help	دن کی کتابیں، فریق ایجنگ، بینک پوسٹس اور مدت کا نفع نقصان۔
+facet_ops_title	کھیپ اور روانگی
+facet_ops_help	AWB اسکین کریں یا لکھیں → تلاش کریں، پھر آگے بڑھائیں / لیبل چھاپیں / COD۔ رائیڈر یا کیریئر کو روانہ کریں۔
+facet_cod_title	COD رجسٹر
+facet_cod_help	ڈیلیوری پر رقم وصول کریں، پھر بھیجنے والے کو واپس کریں۔
+facet_riders_title	رائیڈرز (اپنی ٹیم)
+facet_riders_help	رائیڈرز شامل کریں، پھر Ops سے بک شدہ AWB روانہ کریں۔
+against_bill_ph	اوپر والے بل # کے خلاف (اختیاری)
+aliases_ph	عرفی نام — دیگر نام، کاما سے الگ
+amount_blank_full_ph	رقم (خالی = پورا بقایا)
+amount_owed_ph	واجب الادا رقم
+amount_ph	رقم
+amount_received_ph	موصولہ رقم
+amount_we_pay_ph	ہم جو رقم دیتے ہیں
+awb_scan_ph	AWB / بارکوڈ اسکین
+bulk_csv_ph	بلک CSV — destination,consignee,kg,cod_paise,note
+business_name_ph	کاروبار کا نام
+category_new_ph	زمرہ (اختیاری، نیا ہو تو بن جائے گا)
+cod_amount_ph	COD رقم
+code_bag_ph	کوڈ (bag)
+conv_factor_ph	عامل (25 = 1 bag → 25 kg)
+country_code_ph	ملکی کوڈ مثلاً IN, GB, US, AE, BR
+credit_khata_amount_ph	ادھار / کھاتہ رقم
+credit_limit_ph	ادھار حد (0 = کوئی نہیں)
+dim_unit_code_ph	جہت یونٹ کوڈ (cm)
+divisor_ph	حجمی تقسیم کنندہ (5000)
+extra_per_kg_ph	اضافی / kg
+first_amount_ph	پہلی رقم
+first_kg_ph	پہلا kg (سلیب)
+from_code_ph	سے کوڈ (bag)
+item_name_lang_ph	شے کا نام — اپنی زبان میں لکھیں
+login_id_opt_ph	لاگ ان آئی ڈی (اختیاری)
+manager_pin_ph	مینیجر PIN (صرف اس صورت میں جب آپ منسوخ نہ کر سکیں)
+new_branch_name_ph	نئی شاخ کا نام
+new_password_ph	نیا پاس ورڈ (اختیاری)
+new_pin_ph	نیا PIN (4–12 ہندسے)
+note_bank_ph	نوٹ (جمع، نکاسی، …)
+note_buy_expense_ph	نوٹ (ایندھن، کرایہ، …)
+note_expense_ph	نوٹ (ایندھن، دفتر، …)
+notify_phone_ph	اطلاعی فون (WhatsApp/SMS ہک)
+options_moklanjo_ph	اختیارات (اختیاری) — Large=20, Gift wrap=10
+part_second_way_ph	دوسرے طریقے سے حصہ (اختیاری)
+phone_ph	فون
+address_ph	پتہ
+party_custom_fields_heading	حسب ضرورت فیلڈز (منتخب پارٹی)
+party_custom_help	اس پارٹی پر کوئی بھی لیبل اور قدر شامل کریں — WhatsApp، GSTIN، روٹ کوڈ، …
+party_custom_key_ph	فیلڈ کا نام (جیسے WhatsApp)
+party_custom_value_ph	قدر
+party_custom_add	فیلڈ شامل / اپ ڈیٹ
+party_custom_remove	فیلڈ ہٹائیں
+party_custom_empty	ابھی کوئی حسب ضرورت فیلڈ نہیں
+party_custom_pick_first	حسب ضرورت فیلڈز کے لیے پارٹی منتخب کریں
+place_name_ph	اس جگہ کا نام
+price_ph	قیمت
+qty_example_ph	مقدار (مثلاً kg کے لیے 1.5)
+quantity_ph	مقدار
+reason_required_ph	وجہ (لازمی)
+role_title_ph	کردار عنوان (مثلاً Barista)
+service_pct_ph	سروس % اختیاری 0/10/12
+short_code_ph	مختصر کوڈ (MG02)
+slab_kg_ph	kg میں چارج ایبل سلیب (0.5)
+staff_name_ph	عملے کا نام / id
+starting_password_ph	ابتدائی پاس ورڈ (اختیاری)
+starting_pin_ph	ابتدائی PIN (4–12 ہندسے)
+tax_rate_ph	ٹیکس شرح کا نام یا % — Standard, Reduced, 0, 5, 12, 18, 20
+to_code_ph	کو کوڈ (kg)
+uncleared_no_ph	اوپر والا غیر کلیئر #
+unit_cost_ph	فی یونٹ لاگت
+unit_kg_blank_ph	یونٹ (kg یا خالی)
+unit_name_bag_ph	نام (Bag)
+weight_unit_code_ph	وزن یونٹ کوڈ (kg)
+zone_name_ph	زون کا نام
+pay_credit	ادھار
+book_kind_today	آج کی کتاب
+book_kind_month	اس مہینے کی کتاب
+book_kind_aging	بقایا / ڈیبٹ-کریڈٹ
+book_kind_balance	بیلنس شیٹ
+ops_desk_help	USB بارکوڈ اسکینر سے AWB اسکین کریں (یا لکھیں) → تلاش کریں۔ پھر آگے بڑھائیں، لیبل چھاپیں یا COD وصول کریں۔ لیبل Code 128 میں چھپتے ہیں۔
+role_help_consignor	کردار: بھیجنے والا — AR (وہ ہمارے مقروض)۔ وہی فرم کیریئر بھی ہو سکتی ہے۔
+role_help_carrier	کردار: کیریئر — AP (ہم ان کے مقروض)۔ وہی فرم بھیجنے والی بھی ہو سکتی ہے۔
+role_help_both	کردار: بھیجنے والا + کیریئر — ایک پارٹی، AR اور AP کھاتے، رپورٹس میں خالص۔
+role_help_supplier	کردار: سپلائر — خریداری کے لیے AP۔
+lane_declared_label	اکاؤنٹ بکنگ
+lane_owner_label	نقد بکنگ
+money_lane_bill	بل: {lane}

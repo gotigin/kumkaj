@@ -1,0 +1,835 @@
+# Sanskrit — संस्कृतम् (sa). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	कूरियर-संस्थायाः लेखाः + प्रेषणकार्यपटः। निःशुल्कं, जालं विना।
+unlock	अनलॉक
+pin_hint	स्वामिः PIN 0000 इति आरभ्यते
+sell	प्रेषणम्
+buy	व्ययः
+books	दिवस लेजर
+books_help	अद्य स्थितिः। प्रेषणम् = पोटलिकाः आगताः। व्ययः = वाहकबिलानि च व्ययाः। पक्षाः = प्रेषकाः च वाहकाः।
+buy_help	व्ययपत्रकाणि च वाहकबिलानि (धनं बहिः)। खाते स्थितं पक्षलेखे तिष्ठति।
+sell_money_in	पोटलिकां पञ्जीकुरुत
+buy_money_out	व्ययः / वाहकबिलम्
+record_purchase	क्रयणं रक्षतु
+add_expense	व्यय रसीद
+bank_book	बैंक लेजर
+credit_help	पक्षस्य आयडी अद्वितीयः (नामानि पुनरागच्छेयुः)। भूमिकाः — प्रेषकः (AR), वाहकः (AP), उभौ वा तस्मिन् आयडी। लेखाः पृथक् तिष्ठन्ति; प्रतिवेदने निवलं दृश्यते।
+party_kind_ph	स्वेच्छारूपम् (ऐच्छिकम्) — उपरि चिपं नुदतु वा
+parties_list_heading	रक्षिताः पक्षाः
+reports_help	Day ledger, ऋणदाता & ऋणदाता, बैंक लेजर, व्यय रसीद, लाभ & हानि।
+reports_today	दिवसलेखः (अद्य) २.
+reports_month	लाभः हानिः (मासः) २.
+reports_aging	बकाया / डेबिट-क्रेडिट
+reports_balance_sheet	तुलनपत्रम्
+reports	बैंक लेजर एवं पी एंड एल
+refresh	ताजगी
+undo	पूर्ववत
+start_tracking	अनुसरणं आरभत
+stock_minus	− स्टॉक
+stock_plus	+ स्टॉक्
+settle_cash	नगदं निवेशयन्तु
+settle_card	सेटल कार्ड
+items	शुल्कानि च सेवाः
+nav_items	शुल्कानि
+more	अधिकम्
+your_items	भवदीयानि शुल्कानि
+items_help	प्रत्येकं पङ्क्तिः एकं शुल्कम् (यथा Surface Zone A)। एककं प्रायः kg। सम्पादनाय नुदतु।
+add_item	शुल्कं योजयतु
+new_item	नवं शुल्कम्
+adding_item	नवं शुल्कं योज्यते
+editing_item	सम्पादनम्
+save	रक्षतु
+remove	निष्कासयतु
+empty_catalog	अद्यापि शुल्कं नास्ति। शुल्कानि च सेवाः उद्घाटयतु, एकं योजयतु (नाम + मूल्यम्, एककं kg), ततः प्रेषणम्।
+counter_sale	काउण्टर-प्रेषणम्
+total	कुल
+cash	नगदम्
+upi	UPI
+card	कार्ड
+credit	ग्राहकाः आपूर्तिकर्ताश्च
+clear	स्पष्टम्
+ready_to_sell	लेजरं कर्तुं सज्जः
+today_prefix	अद्य
+today_mid	अद्य
+owed	उत्कृष्टः
+round_word	गोलम्
+back	पृष्ठतः
+sold_out	अनुपलब्धम्
+restock	पुनः संग्रहण
+not_tracked	न अनुसृतम्
+in_stock	स्टॉक् मध्ये अस्ति
+marked_sold_out	अनुपलब्ध इति चिह्नितम्
+add_upper	अड्ड्
+na	न/अ
+qty	भारः/संख्या
+unit_at	दरम् @ .
+actual	वास्तविक
+applied	प्रयुक्तम्
+note_ph	टिप्पणी (वैकल्पिकम्) ९.
+rounded	गोलम्
+split	विभक्तः
+counter	गणकम्
+parcel	पोटलिका
+order	भोजनालयस्य आदेशः
+sales	प्रेषणानि
+sales_refunds	प्रेषणानि च प्रतिदानानि
+day_close	दिवसः समाप्तः
+reports_expenses	बैंक लेजर एवं पी एंड एल
+nav_reports	प्रतिवेदनानि
+nav_settings	सेटिंग्स्
+nav_lock	ताला
+sidebar_settings	पार्श्वपट्टिकायाः विन्यासः
+sidebar_settings_help	पार्श्वरेलस्य समानानि चिह्नानि। पुनर्क्रमणार्थं पङ्क्तिं कर्षन्तु । दर्शयितुं गोपयितुं वा स्विचं प्लवन्तु। सेटिंग्स् तथा Lock सर्वदा बारस्य उपरि एव तिष्ठन्ति।
+sidebar_always_on_short	सदा चालू
+sidebar_back_settings	पृष्ठतः
+sidebar_shown	दर्शितम्
+sidebar_hidden	गुप्तम्
+sidebar_always_on	सदा बारस्य उपरि
+sidebar_shown_hint	पार्श्वरेल / अधः ट्याब्स् इत्यत्र दर्शितम्
+sidebar_hidden_hint	बारात् निगूढम्
+sidebar_menu_items	मेनू & मेनू मेनू आइटम
+sidebar_enable_all	सर्वं सक्षमं कुर्वन्तु
+sidebar_disable_all	सर्वं अक्षमं कुर्वन्तु
+sidebar_order_saved	पार्श्वपट्टिकाक्रमः रक्षितः
+sidebar_visibility_saved	पार्श्वपट्टिकादृश्यता रक्षिता
+amounts_hide	गोपयतु
+amounts_show	दर्शयतु
+no_sale_yet	अद्यापि विक्रयः नास्ति
+favorites	प्रियाः
+favorites_help	मेनू मेनू-वस्तूनि भवन्तः बहुधा विक्रयन्ति, भवतः प्रवेशार्थं रक्षिताः । बिलमध्ये एकं योजयन्तु, अथवा अधोलिखितानां सर्वेभ्यः मेनू-वस्तूनाम् स्वसूचीं निर्मायन्तु ।
+your_favorites	भवतः प्रियाः
+all_items	सर्वाणि मेनू-वस्तूनि
+no_favorites	अद्यापि प्रियाः नास्ति — अधोलिखितायाः सूचीतः मेनू-वस्तूनि योजयन्तु ।
+add_to_bill	बिलम् योजयतु
+added	योजितम्
+owes_word	ऋणी भवति
+selected_word	चयनितम्
+chip_clear_credit	clear — ऋणं वा अग्रिमग्रहणं वा
+chip_missing_customer	चयनितः ग्राहकः अनुपलब्धः — पुनः चिनुत
+chip_no_customer	अद्यापि कोऽपि ग्राहकः नास्ति — नाम टङ्कयन्तु, ततः Credit इति ट्याप् कुर्वन्तु
+credit_summary_fmt	{} ग्राहकाः · मुक्तं ऋणं {} · अग्रिमाणि धारितानि {}
+recent_label	अद्यतनम् : १.
+inventory	इन्वेण्ट्री
+inventory_stock	इन्वेंट्री एवं स्टॉक
+branches	शाखाः
+branches_org	शाखा एवं org
+credit_customers	पक्षाः (देयिनः च प्रापकाः)
+customer_name_ph	ग्राहकस्य वा आपूर्तिकर्तायाः नाम
+new_customer_ph	नवीन ग्राहक अथवा आपूर्तिकर्ता नाम
+item_name_ph	शुल्कस्य नाम (यथा Surface Zone A)
+item_price_ph	प्रति kg / प्रथमः स्लैबः
+start_template	उत्पाद
+next_booking	अग्रिमं प्रेषणम्
+destination_ph	गन्तव्यनगरम् / क्षेत्रम्
+consignee_ph	प्रतिग्रहीतुः नाम
+consignee_phone_ph	प्रतिग्रहीतुः दूरभाषः
+consignee_address_ph	समर्पणस्य पत्रसङ्केतः
+origin_name_ph	प्रेषकस्य नाम
+origin_phone_ph	प्रेषकस्य दूरभाषः
+origin_address_ph	उद्धरणस्य / मूलस्य पत्रसङ्केतः
+booking_consignor_heading	प्रेषकः (ग्राहकः / प्रेषयिता)
+booking_consignee_heading	प्रतिग्रहीता
+booking_consignor_hint	पूरणाय पक्षं चिनुत, वॉक-इनार्थं रिक्तं वा त्यजतु। गृहउद्धरणाय RTO च आवश्यकम्।
+booking_consignee_hint	पोटलिकायाः प्रतिग्रहीता। काउण्टरे प्रत्यक्षनिक्षेपाय रिक्तं त्यजतु।
+weight_kg_ph	वास्तविकं kg
+length_cm_ph	दैर्घ्यं cm
+breadth_cm_ph	विस्तारः cm
+height_cm_ph	औन्नत्यं cm
+chargeable_kg	शुल्कयोग्यं kg
+awb_label	AWB
+booking_help	प्रेषकः + प्रतिग्रहीता (रिक्तं चलति) → गन्तव्यम् → तोलयतु → शुल्कं चिनुत → खातम्/नगदम् → दत्तम्। AWB रसीदि मुद्र्यते। अग्रिमं प्रेषणं कार्यपटं शोधयति। वर्तुलितम् प्रयुक्तस्य समं प्रारभते — पत्रकं वर्तुलीकर्तुम् एव सम्पादयतु।
+cart_empty_hint	कार्यपटः शून्यः — प्रेषकः/प्रतिग्रहीता ऐच्छिकौ, गन्तव्यं भारं च लिखतु, शुल्के ADD नुदतु, ततः ददातु।
+team	दल
+team_pins	दल एवं PINs
+my_pin_settings	मम PIN .
+settings_hub_help_my_pin	अस्मिन् उपकरणे प्रवेशं कृतस्य व्यक्तिस्य कृते अनलॉक् PIN परिवर्तयन्तु ।
+team_self_help	भवतः उद्घाटन-PIN (ऐच्छिकं प्रवेशगुह्यपदं च) केवलं भवान् परिवर्तयितुं शक्नोति। भिन्नाः पटलाः अधिकाराः वा चेत् स्वामिनं पृच्छतु।
+backup_settings	बैकअप & सेटिंग्स
+lock_app	एप्लिकेशन तालाबन्दी
+pick	पिक्
+select	चयनं कुर्वन्तु
+advance	अग्रिमम्
+owner	स्वामिनी
+staff	कर्मचारी
+photo	फोटो
+auto	ऑटो
+prev	पूर्व
+next	तदनन्तरम्
+ok	ठीकम्
+this_shop	सर्वर मोड
+extra_till	क्लायन्ट् मोड्
+off	अफ
+server	सर्वर मोड
+client	क्लायन्ट् मोड्
+language_currency	भाषा एवं मुद्रा
+language	भाषा
+choose_language	स्वभाषां चिनुत
+language_setup_hint	अस्य यन्त्रस्य भाषां अनुसृत्य, अथवा स्वयमेव एकं चिनुत ।
+lang_follow_platform	यन्त्रभाषा
+lang_pick_user	भाषां चिनोतु
+lang_platform_now	इदानीं यन्त्रभाषा
+selected_language	चयनितम्
+continue	निरन्तरं कुर्वन्तु
+this_device	एतत् यन्त्रम्
+device_use_q	एतत् यन्त्रं कथं प्रयुक्तं भविष्यति ?
+last_server_mode	Was Server — निरन्तरं कर्तुं ट्याप् कुर्वन्तु
+last_client_mode	Was Client — निरन्तरं कर्तुं ट्याप् कुर्वन्तु
+choose_server	सर्वरं चिनोतु
+choose_server_hint	विद्यमानं सर्वरं उद्घाटयन्तु, अथवा अन्यव्यापारस्य कृते एकं रचयन्तु ।
+create_new_server	नूतनं सर्वरं रचयन्तु
+open_server	उद्घाटितम्
+new_server_name_ph	नूतनं सर्वरनाम (वैकल्पिकम्) .
+server_remove_pin_ph	स्वामिः PIN सर्वरं निष्कासयितुं
+only_owner_remove_server	केवलं स्वामिः एव सर्वरं हर्तुं शक्नोति
+owner_pin_remove_server	अस्य सर्वरस्य निष्कासनार्थं स्वामिना PIN आवश्यकः
+device_setup_help	सर्वरः अत्र लेजर् रक्षति । क्लायन्ट् एकं सर्वरं प्रति युग्मं करोति ।
+currency	मुद्रा
+backup	बैकअप
+settings_sec_diag	निदानम्
+settings_hub_help	एकैकं क्षेत्रं उद्घाटयन्तु — न्यूनं स्क्रॉलं, स्पष्टतरविकल्पाः ।
+settings_sec_devices	अन्ये यन्त्राणि
+settings_sec_alerts	अलर्ट्स्
+alerts_help	भवतः कृते कियत्कालं यावत् स्थितिसन्देशाः पर्दायां तिष्ठन्ति (एतत् प्रवेशः)।
+snack_secs_ph	सेकण्ड् (३–६०, पूर्वनिर्धारित १०) २.
+snack_secs_save	अलर्टसमयं रक्षतु
+snack_secs_saved	अलर्ट समय रक्षितः — {n} सेकण्ड्
+snack_secs_bad	क्षणान् अङ्कैः लिखतु (3–60)
+cancelled	रद्दं कृतम्
+cancel	रद्दं कुर्वन्तु
+opening_client	क्लायन्ट् उद्घाटयन्...
+preparing_desk	मेजस्य सज्जीकरणम्...
+opening_server	सर्वरं उद्घाटयन्...
+creating_server	सर्वरं निर्माय...
+diag_privacy_help	अस्मिन् यन्त्रे लॉग्स् तिष्ठन्ति । रहस्यं (PIN, गुप्तशब्दाः) कदापि न संगृह्यन्ते। यन्त्रात् बहिः संकुलं साझां कर्तुं प्रत्येकं समये भवतः स्पष्टानुमोदनस्य आवश्यकता भवति — कदापि न विक्रीतम् अथवा तृतीयपक्षेभ्यः न दत्तम् ।
+diag_level	विस्तारस्तरः
+diag_level_error	दोषाः
+diag_level_warn	चेतावनी
+diag_level_info	सूचना
+diag_level_debug	त्रुटिनिवारणम्
+diag_support_start	30-मिनिट् समर्थनसत्रं आरभत
+diag_support_stop	समर्थनसत्रं समाप्तं कुर्वन्तु
+diag_support_started	समर्थनसत्रं चालू — ३० निमेषपर्यन्तं विवरणं त्रुटिनिवारणं कुर्वन्तु
+diag_support_ended	समर्थनसत्रं समाप्तम्
+diag_export_local	स्थानीयप्रतिं निर्यातयन्तु
+diag_export_local_done	{path} इत्यत्र सज्जं स्थानीयनिदानं — प्रतिलिपिं कुत्र रक्षितुं शक्यते इति चिनुत
+diag_approve_send	अस्य यन्त्रस्य भागं अनुमोदयन्तु
+diag_send_heading	एतत् यन्त्रं साझां कुर्वन्तु
+diag_send_help	अनुमोदनं एकं संकुलं भवति, ततः अवधिः समाप्तः भवति । अस्थायी — केवलं उत्पादस्य निराकरणाय अथवा सुधारणाय उपयुज्यते । तृतीयपक्षैः सह न साझाः। Linux, Windows, macOS, तथा Android इत्यत्र कार्यं करोति ।
+optional_login_heading	वैकल्पिकं प्रवेशः
+rights_heading	अधिकारः
+booking_scope_heading	आन्तरिकम् / अन्तर्राष्ट्रीयम्
+diag_send_approved	एकस्य संकुलस्य कृते भागः अनुमोदितः (शीघ्रमेव समाप्तः)
+diag_export_send	share package रचयन्तु (अनुमोदनस्य आवश्यकता अस्ति)
+diag_export_send_done	{path} इत्यत्र सज्जं संकुलं साझां कुर्वन्तु — कुत्र रक्षितुं शक्यते इति चिनुत, ततः केवलं Kumkaj समर्थनाय प्रेषयन्तु
+diag_save_bundle	निदानप्रतिलिपिं रक्षतु
+diag_bundle_saved	निदान प्रतिलिपिः {path} मध्ये रक्षिता ।
+diag_bundle_failed	निदानप्रतिलिपिं रक्षितुं न शक्तवान् — पुनः प्रयासं कुर्वन्तु
+diag_clear	निदानवृत्तानि स्वच्छानि कुर्वन्तु
+diag_cleared	निदानस्य लॉग्स् स्वच्छाः
+use	प्रयोगः
+add_branch	शाखा योजयतु
+add_conversion	परिवर्तनं योजयतु
+add_item_plain	मेनू मदं योजयन्तु
+add_note	टिप्पणी योजयतु
+add_opening_balance	उद्घाटन संतुलनं योजयन्तु
+add_rider	दूतं योजयतु
+add_staff	कर्मचारीं योजयन्तु
+add_unit	एककं योजयतु
+add_use_name	एतत् नाम योजयतु / उपयुज्यताम्
+allow_extra_tills	अतिरिक्त टिल् अनुमन्यताम्
+amend	संशोधनं कुरुत
+apply_country_pack	देशपैकं प्रयोजयन्तु
+datetime_appearance	तिथि एवं समय प्रादुर्भाव
+datetime_appearance_help	लेखाः अन्तः वर्षपूर्वं RFC3339 रक्षन्ति। एतानि केवलं रसीदिषु, नामपत्रेषु, प्रतिवेदनेषु, पटले च तिथ्याः घटेः च रूपं परिवर्तयन्ति।
+datetime_example	अधुना उदाहरणम् : {ex}
+date_order	तिथि क्रम
+date_order_dmy	D/M/Y
+date_order_mdy	M/D/Y
+date_order_ymd	Y-M-D
+time_format	घड़ी
+time_format_24h	२४-घण्टा
+time_format_12h	१२-घण्टा
+attach_bill_photo	बिल फोटो संलग्नं कुर्वन्तु
+attach_pdf	संलग्न PDF .
+attach_photo	फोटो संलग्नं कुर्वन्तु
+bank	बैंक
+bank_in	बैंक in
+bank_out	बैंकात् नगदं बहिः
+bank_to_till	बैंक → टिल्
+till_to_bank	टिल् → तट
+mark_cleared	मार्कः स्वच्छः अभवत्
+unmark	अनमार्क
+role_both	उभयम्
+role_carrier	वाहकः
+role_cashier	कैशियर
+role_consignor	प्रेषकः
+role_manager	प्रबन्धक
+role_supplier	आपूर्तिकर्ता
+branch_name_sell_ph	शाखानाम यस्मात् विक्रेतुं
+bring_my_book	मम लेजरम् आनयतु
+business_tax_id_ph	व्यापार कर id
+card_amount_ph	कार्ड राशि
+cash_amount_ph	नगद राशि
+upi_amount_ph	UPI राशि
+carrier_cost_ph	वाहकव्ययः
+carrier_party_ph	वाहकपक्षः
+choose_icon	चिह्नं चिनोतु
+choose_logo	लोगो चिनोतु
+choose_receipt_stamp	रसीदमुद्रां चिनुत
+choose_payment_qr	भुगतान QR चयन करें
+clear_icon	चिह्नं स्पष्टं कुर्वन्तु
+clear_logo	चिह्नं अपनयतु
+clear_photo	फोटो स्पष्ट करें
+clear_stamp	स्पष्टं मुद्रिका
+clear_payment_qr	स्पष्ट भुगतान QR
+print_faces	मुद्रणरूपाणि (रसीद् / अवधिपत्रकम्)
+print_faces_help	प्रेषणरसीदिषु अवधिपत्रकेषु च भवदीयस्य चिह्नस्य पार्श्वे ऐच्छिका मुद्रा भुगतान-QR च।
+awb_pools_heading	वाहकस्य AWB सङ्ख्याकुण्डानि
+add_awb_pool	AWB कुण्डं योजयतु
+awb_pool_carrier_ph	वाहकपक्षस्य नाम
+awb_pool_start_ph	आरम्भसङ्ख्या
+awb_pool_end_ph	अन्त्यसङ्ख्या
+awb_pool_prefix_ph	उपसर्गः (ऐच्छिकः)
+awb_pool_label_ph	नामपत्रम् (ऐच्छिकम्)
+pieces_ph	खण्डाः (रिक्तम् = 1) — कार्गो / बहुखण्डाय विस्तारयतु
+bulk_awbs_ph	समूह-AWB — एकस्य स्थितेः अग्रे सरणाय बहूनि लेपयतु (नवी पङ्क्तिः अल्पविरामः वा)
+tds_cut_ph	TDS कर्तनम् (ऐच्छिकम्)
+discount_ph	छूटः (ऐच्छिका)
+cheque_no_ph	धनादेशसङ्ख्या (ऐच्छिका)
+bill_reminder_chase	पत्रकस्मृतिसूची
+month_mix_report	मासस्य मिश्रप्रतिवेदनम्
+copy_month_gst_csv	मासस्य GST CSV प्रतिलिपिं कुरुत
+domestic	आन्तरिकम्
+international	अन्तर्राष्ट्रीयम्
+pick_logo	चिह्नं चिनुत
+booking_scope_hint_domestic	आयतनम् ÷5000 (आन्तरिकम्) — वायोः ÷6000 कृते अन्तर्राष्ट्रीयं नुदतु
+booking_scope_hint_intl	आयतनम् ÷6000 (अन्तर्राष्ट्रीयं वायु) — आपणस्य ÷5000 कृते आन्तरिकं नुदतु
+cod_register	COD पञ्जिका
+collect_cod	COD गृह्णातु (AWB)
+consignments_dispatch	प्रेष्याणि च प्रेषणम्
+consignor_party_ph	प्रेषकस्य / पक्षस्य नाम
+copy_day_book_csv	प्रतिलिपि दिवस लेजर CSV .
+copy_day_close	प्रतिलिपि दिवसः समाप्तः
+copy_items_csv	मेनू-वस्तूनाम् प्रतिलिपिं कुर्वन्तु CSV .
+copy_outstanding_csv	प्रतिलिपि बकाया CSV .
+copy_parties_csv	ग्राहकाः आपूर्तिकर्ताश्च प्रतिलिपि कुर्वन्तु CSV .
+copy_party_ledger_csv	ग्राहक लेजर प्रतिलिपि CSV .
+copy_receipt	रसीद की प्रतिलिपि करें
+copy_report	प्रतिवेदनं प्रतिलिख्यताम्
+counted_cash_ph	दराजमध्ये नगदं गणितम्
+counter_agency_ph	काउण्टरस्य / संस्थायाः नाम (ऐच्छिकम्)
+create_backup	बैकअप रचयन्तु
+day_close_summary	दिवस निकट सारांश
+delete_party	चयनितं ग्राहकं वा आपूर्तिकर्तारं वा विलोपयन्तु
+dispatch_to_rider	पञ्जीकृतं प्रेषयतु → दूतः
+docket_charge_ph	डॉकेटशुल्कम्
+declared_value_ph	घोषितं मूल्यम्
+contents_ph	अन्तर्वस्तु
+eway_ph	ई-वे पत्रकसङ्ख्या
+insurance_label	बीमा
+yes_label	आम्
+no_label	न
+print_route_label	मुद्रणमार्गः
+new_party_kind_label	नूतनः पक्षप्रकारः
+done_open_books	कृत — उद्घाटितलेजर्स
+export_day	निर्यातदिवसः
+extra_note_expense_ph	अन्तिमव्ययस्य अतिरिक्तटिप्पणी
+extra_note_awb_ph	अस्मिन् AWB / विक्रये अतिरिक्तं टिप्पणम्
+failed_delivery	समर्पणं विफलम्
+find_scan_awb	AWB अन्विष्यतु / स्कैन कुरुत
+forget_shop	एतत् दुकानं विस्मरतु
+fuel_ph	इन्धनम्
+handover_carrier	पञ्जीकृतं ददातु → वाहकः
+import_day	आयातदिवसः
+import_items_csv	वस्तूनां / शुल्कानां CSV आयातः…
+import_parties_csv	आयात ग्राहक एवं आपूर्तिकर्ता CSV...
+import_pincodes_csv	पिनकोड CSV आयातः…
+import_carrier_bill_csv	वाहकबिलस्य CSV आयातः…
+copy_carrier_bill_report	अन्तिमं वाहकबिलप्रतिवेदनं प्रतिलिपिकुरुत
+use_carrier_cost	वाहकव्ययं प्रयुञ्जतु
+rate_carrier_ph	वाहकः (रिक्तम् = अस्माकं विक्रयशुल्कम्)
+rate_party_ph	पक्षः (रिक्तम् = सर्वे ग्राहकाः)
+carrier_pick_ph	व्ययार्थं वाहकः (तुलनायाः)
+item_name	मेनू मेनू मदस्य नाम
+load_bulk_row	समूहपङ्क्तिं लोड → कार्यपटः
+login_id_ph	उपयोक्तृनाम
+mark_delivered	समर्पितम् इति चिह्नयतु
+manifest_cod_total	COD योगः
+manifest_received_by	प्रतिग्रहीता
+manifest_sign	हस्ताक्षरम्
+ndr_address_wrong	पत्रसङ्केतः मिथ्या
+ndr_customer_unavailable	अनुपलब्धम्
+ndr_door_locked	द्वारं रुद्धम्
+ndr_other	अन्यत्
+ndr_refused	प्रत्याख्यातम्
+out_for_delivery	समर्पणार्थं बहिः
+print_drs	DRS मुद्रयतु
+print_run_sheet	धावनपत्रं मुद्रयतु
+reattempt	पुनः प्रयत्नः
+rider_cod_handed_ph	समर्पितं COD
+settle_rider_cod	दूतस्य COD निस्तारयतु
+mode_desk	कार्यपटः
+mode_rider	दूतः
+waiting_office	कार्यालयप्राप्तेः प्रतीक्षा
+capture_signature	हस्ताक्षरं गृह्णातु
+incoming_manifest	आगच्छन् सूचीपत्रः
+pickup_request	उद्धरणयाचना
+pickup_run	उद्धरणयात्रा
+auto_assign_area	क्षेत्रं स्वयमेव नियुञ्जतु
+reorder_stops	विरामाणां क्रमं परिवर्तयतु
+settle_rider_pay	दूतवेतनं निस्तारयतु
+vehicle_inspect	यानपरीक्षणम्
+print_docket	डॉकेटं मुद्रयतु
+franchise_statement	फ्रैंचाइज-विवरणम्
+tally_export	Tally पत्रकनिर्यातः
+open_whatsapp	WhatsApp उद्घाटयतु
+copy_sms	SMS पाठस्य प्रतिलिपिः
+pick_barcode_image	स्कैनार्थं चित्रं चिनुत
+share_receipt_whatsapp	रसीदं WhatsApp मध्ये प्रेषयतु
+delivery_feedback	समर्पणस्य प्रतिक्रिया
+lan_self_book	LAN स्वप्रेषणम्
+new_party_clear	नवीन ग्राहकः अथवा आपूर्तिकर्ता (स्पष्टं प्रपत्रम्) २.
+new_party_kind_ph	नूतनः पक्षप्रकारः (आपूर्तिकर्ता / वाहकः)
+next_country	अग्रिमः देशः
+prev_country	पूर्वदेशः
+note_gstin_ph	नोट / GSTIN / सम्झौता स्मरण
+note_pod_ph	टिप्पणम् / POD (ऐच्छिकम्)
+on_account_ap	खातेः (ए.पी.) ९.
+org_optional_ph	संगठन (वैकल्पिक) ९.
+paid_now	अधुना भुक्तम्
+pairing_code_ph	युग्मसंहिता
+pair_now	इदानीं युग्मम्
+party_name_selected_ph	ग्राहकस्य अथवा आपूर्तिकर्तायाः नाम (अथवा चयनितः उपयोगः)
+password_ph	गुप्तशब्दः
+pay_ap_card	एपी कार्ड् भुगतानं कुर्वन्तु
+pay_ap_cash	ए पी नगद भुगतान करें
+pay_ap_upi	पे ए पी UPI .
+period_bill	अवधिपत्रकम्
+period_bill_party	अवधिपत्रकम् (पक्षः)
+pick_pod_photo	POD चित्रं चिनुत
+print_awb_label	AWB नामपत्रं मुद्रयतु
+print_open	मुद्रयतु / उद्घाटयतु
+reason_amend_ph	संशोधनस्य कारणम् / शून्यीकरणस्य / धनवापसी
+reason_note_ph	कारण / टिप्पणी (अपव्यय, गणना, ...) .
+record_day_close	दिनं निकटं रक्षतु
+refresh_from_shop	दुकानतः ताजगीं कुर्वन्तु
+refund	धनवापसी
+remit_cod	COD समर्पयतु (पक्षः)
+remove_selected	चयनितं निष्कासयन्तु
+restore_backup	बैकअप पुनः स्थापयन्तु
+rider_name_ph	दूतस्य नाम
+rider_phone_ph	दूतस्य दूरभाषः
+riders	दूताः
+riders_own_fleet	दूताः (स्वयानसमूहः)
+rollup	सारांश रोलअप
+save_booking_measures	प्रेषणमापानि रक्षतु
+save_brand	ब्राण्ड् रक्षतु
+save_business_id	व्यावसायिक आईडी रक्षतु
+save_business_name	व्यापारनाम रक्षतु
+save_features	कार्यविन्यासं रक्षतु
+save_names	नामानि रक्षन्तु
+server_ip_ph	सर्वर IP (उदा. १९२.१६८.१.१०) २.
+set_credit_limit	ग्राहकं वा आपूर्तिकर्तारं वा सीमां प्रयोजयन्तु
+set_login_selected	चयनितेषु प्रवेशं प्रयोजयन्तु
+set_login_named	{name} इत्यत्र प्रवेशं प्रयोजयन्तु ।
+shop	दुकान
+start_fresh	नवीनतया आरभत
+stop_extra_tills	अतिरिक्त टिल् स्थगयन्तु
+backup_auto	प्रतिदिनं स्वयमेव बैकअप क्रियते · अन्तिमः {when} · अन्तिमाः १४ दिवसाः {dir} इत्यत्र स्थापिताः भवन्ति ।
+backup_auto_none	प्रतिदिनं स्वयमेव बैकअप कृतः — प्रथमः क्षणमात्रेण धावति ।
+backup_copy_to	प्रतिलिपानि अपि {dir} यावत् गच्छन्ति।
+backup_copy_btn	अपि च एकस्मिन् फोल्डर् मध्ये बैकअपं प्रतिलिख्य...
+autostart_off	अस्मिन् सङ्गणके आरभत
+autostart_on	अस्मिन् सङ्गणकेन आरभ्यते ✓ — स्थगितुं ट्याप् कुर्वन्तु
+autostart_done_on	इदानीं एतत् सङ्गणकं यदा आरभ्यते तदा एप् उद्घाटयति — विद्युत्-विच्छेदस्य अनन्तरं दुकानस्य सर्वरः पुनः आगतः ।
+autostart_done_off	अयं सङ्गणकः आरम्भे एप् न उद्घाटयति ।
+right_allowed	अनुमतम्
+right_with_approval	अनुमोदनेन सह
+right_denied	न अनुमतम्
+editing_staff	एतस्य अधिकाराः
+team_pick_ph	सम्पादयितुं कर्मचारी — नाम, उपयोक्तृनाम, अथवा चिन्वन्तु
+select_staff	एतत् दण्डं चिनोतु
+rights_help	अधिकाराः — परिवर्तनार्थं नुदतु: अनुज्ञा → अनुमोदनेन (तस्मिन् क्षणे प्रबन्धकस्य PIN) → अनुज्ञा नास्ति।
+right_void_refund	प्रेषणं रद्दं वा प्रतिदानम्
+right_amend_sale	लिखिते प्रेषणे संशोधनम्
+find_server	दुकानस्य सर्वरं अन्वेष्टुम्
+finding_server	अस्मिन् Wi‑Fi...
+no_server_found	न कश्चित् लब्धः। सर्वरे: सेटिंग्स् → अन्ये उपकरणानि → अतिरिक्तं टिल् (समानं Wi‑Fi) अनुमन्यताम् । अथवा तत्र दर्शितं IP टङ्कयन्तु ।
+servers_found_pick	यस्मिन् दुकाने भवन्तः सम्बद्धं कर्तुम् इच्छन्ति तत् ट्याप् कुर्वन्तु।
+server_host_selected	{host} इत्यस्य उपयोगेन — युग्मीकरणसङ्केतं प्रविष्टं कुर्वन्तु, ततः अधुना Pair कुर्वन्तु ।
+device_forgotten	दुकानं एतत् यन्त्रं विस्मृतवान् — पुनः दुकानस्य वर्तमानसङ्केतेन सह युग्मरूपेण स्थापयतु । तस्मिन् प्रतीक्षमाणाः आदेशाः पाल्यन्ते।
+forget_device	विस्मरतु
+last_seen	दृष्टः
+new_pair_code	नवीनः युग्मसंहिता
+lan_offline	दुकान सर्वर अप्राप्य
+lan_offline_waiting	दुकान सर्वर अप्राप्य · {n} प्रतीक्षा
+lan_connecting	दुकानं प्रति सम्बद्धं भवति...
+pair_finishing	युग्मं समाप्यते… कार्यालयस्य लेखाः प्रयुज्यन्ते
+pair_opening	कार्यालयः उद्घाट्यते…
+lan_live	लाइव
+lan_sending	{n} प्रेषण
+lan_sign_in_to_send	प्रेषयितुं पुनः प्रवेशं कुर्वन्तु {n}
+lan_pair_again	पुनः एतत् यन्त्रं युग्मरूपेण स्थापयन्तु
+lan_update_app	अनुप्रयोगं नवीकुरुत — अस्य यन्त्रस्य कार्यालयसर्वरस्य च संस्करणे भिन्ने
+allow_firewall	अन्येषां उपकरणानां संयोजनं कर्तुं अनुमन्यताम्
+firewall_blocked	अस्य सङ्गणकस्य अग्निप्रावरणं अन्ययन्त्राणि अवरुद्धयति — अन्येषां उपकरणानां संयोजनं कर्तुं अनुमन्यताम् इति ट्याप् कुर्वन्तु ।
+firewall_waiting	व्यवस्थापकस्य प्रॉम्प्टस्य प्रतीक्षां कुर्वन्...
+lan_join_help	अन्यस्मिन् उपकरणे: Client Mode → दुकानस्य सर्वरं अन्वेष्टुम् (अथवा {addr} इति टङ्कयन्तु) → युग्मीकरणसङ्केतः {code}।
+lan_pair_status	Wi‑Fi {addr} २.
+lan_join_help_no_addr	एतत् यन्त्रं पतनस्य कृते Wi‑Fi इत्यनेन सह संयोजयन्तु ।
+lan_no_address	अद्यापि Wi‑Fi पता नास्ति — दुकानेन सह Wi‑Fi सह सम्बद्धं कुर्वन्तु।
+lan_not_listening	उपकरणानि न स्वीकुर्वन् (पोर्ट् {port} व्यस्तः)। एप् पुनः आरभत।
+lan_tills_off	अतिरिक्त टिल्स निष्क्रियः अस्ति। अन्यं यन्त्रं सम्मिलितुं तेषां अनुमतिं ददातु।
+paired_with	युग्मितम् · {url}
+not_paired	न युग्मितम्
+choose_device_use	Server अथवा Client इति चिनोतु ।
+paired_note	युग्मितम् । विक्रयणार्थं अनलॉक् कुर्वन्तु, अथवा नवीनतमस्य कृते ताजगीं कुर्वन्तु।
+last_update_at	अन्तिम अद्यतनः {time}।
+pair_intro	सर्वरं अन्वेष्टुम्, अथवा तस्य पतां युग्मनसङ्केतं च टङ्कयन्तु ।
+queue_waiting	दुकानं प्राप्तुं प्रतीक्षमाणः ({n}):
+queue_tries	{n} वारं प्रयतितम् · अन्तिमम् उत्तरम् : {e}
+save_backup_copy	एकं बैकअप प्रतिलिपिं रक्षन्तु...
+backup_copy_saved	बैकअप प्रतिलिपिः रक्षिता — अस्मात् उपकरणात् (USB stick अथवा अन्यत् यन्त्रं) बहिः स्थापयतु ।
+backup_copy_overdue	{n} दिवसान् यावत् कोऽपि बैकअप प्रतिलिपिः अस्मात् उपकरणात् न त्यक्तवती — सेटिंग्स् → बैकअप
+backup_copy_failed	तत्र बैकअप प्रतिलिपिः रक्षितुं न शक्यते स्म — अन्यं स्थानं चिनुत
+clock_off	अस्य यन्त्रस्य घड़ी दुकानस्य सर्वरात् {min} min दूरम् अस्ति — अस्मिन् यन्त्रे समीचीनसमयं सेट् कुर्वन्तु
+printers_heading	अस्मिन् यन्त्रे मुद्रकाः
+printers_help	वास्तविकान् मुद्रकान् अन्विष्यतु, ततः रसीदं AWB नामपत्रं वा चिनुत। प्रत्येकस्य कार्यस्य स्वविस्तारः, पोर्ट्रेट वा लैंडस्केप, बाइट् च कथं प्रेष्यन्ते। नामपत्रं बारकोडं मुद्रयति। रिक्तं स्थानम् = मा मुद्रयतु।
+job_width	सामग्री चौड़ाई (मि.मी.) २.
+job_width_ph	वा विस्तारं लिखतु, 40–210 mm
+job_layout	विन्यासः
+job_delivery	कथं कार्यं प्रेष्यते
+job_size	फन्ट् आकारः
+job_size_ph	यथा--- 18, 20, 26…
+save_receipt_format	रसीद्रूपं रक्षतु
+save_label_format	नामपत्ररूपं रक्षतु
+test_receipt_format	रसीदपरीक्षा
+test_label_format	नामपत्रपरीक्षा
+test_receipt_sent	नमुनारसीद् प्रेषिता
+test_label_sent	नमुनानामपत्रं प्रेषितम्
+test_print_no_printer	तस्मै कार्याय मुद्रकः नास्ति — अस्य स्थानस्य अधः एकं योजयतु
+printers_host_only	मुद्रकाः आपणयन्त्रे (सर्वर) स्थाप्यन्ते। अयं टिल् तत्र कार्याणि प्रेषयति — अन्वेषणं / योजनं / नियुक्तिः सर्वरे तिष्ठति। परीक्षापृष्ठं सर्वरं गच्छति।
+printers_pool_heading	मुद्रकाः
+printers_routes_heading	यत्र वस्तूनि मुद्रयन्ति
+printer_label_ph	नाम (यथा डेस्क)
+printer_target_ph	host:9100 · bt:MAC · usb:VID:PID · यन्त्रनाम
+printer_mode_heading	नूतननिर्गमाणां रूपरेखा
+printer_mode_standard	मानकपोर्ट्रेट
+printer_mode_landscape	मानकलैंडस्केप
+printer_mode_thermal	थर्मल
+printer_mode_standard_short	चित्रम्
+printer_mode_landscape_short	परिदृश्यम्
+printer_mode_thermal_short	थर्मल
+printer_format_custom	नवीनं कस्टम् प्रोफाइल
+printer_format_custom_label	प्रथा
+printer_format_custom_added	अस्य स्थानस्य कृते कस्टम् प्रोफाइल योजितम्
+add_printer	मुद्रकं योजयतु
+remove_printer	अन्तिमम् अपनयतु
+route_pick_ph	रसीद् वा नामपत्रम्
+route_add_printer_ph	अस्मिन् स्थाने मुद्रकं योजयतु
+route_receipt	रसीद्
+route_label	AWB नामपत्रम्
+route_dont_print	मुद्रकः न नियुक्तः
+route_add	स्थाने योजयतु
+route_up	उप
+route_down	अधः
+route_remove	अन्तिमम् अपनयतु
+route_clear	अस्य स्थानस्य मुद्रकान् अपनयतु
+save_printers	मुद्रकाः रक्षन्तु
+print_test_page	परीक्षणपृष्ठं मुद्रयन्तु
+printers_saved	अस्य यन्त्रस्य मुद्रकाः रक्षिताः
+test_page_sent	परीक्षणपृष्ठं प्रेषितम् — मुद्रकं परीक्ष्यताम्
+printers_found	अस्मिन् यन्त्रे लब्धाः: {list}
+find_printers	मुद्रकान् अन्वेष्टुम्
+printers_looking	अस्मिन् यन्त्रे Wi‑Fi मध्ये च मुद्रकाः अन्विष्यन्ते…
+printers_tap_find	कार्याणि गृह्णन्तीः पङ्क्तयः अस्य Wi‑Fi नेटवर्करसीदमुद्रकाः च कृते मुद्रकान् अन्विष्यतु नुदतु (अपनीताः अन्तर्जालबाह्याः वा न)।
+printers_none_found	मुद्रकाः न लब्धाः — यन्त्रमुद्रकस्य नाम, नेटवर्कसङ्केतं वा लिखतु (यथा 192.168.1.50)।
+receipt_printer_ph	रसीदर्थं मुद्रकः
+queue_refused	दुकानेन न स्वीकृतम् ({n}) — प्रत्येकं काउण्टरे पश्यन्तु :
+clear_not_accepted	परीक्षितम् — एतां सूचीं स्वच्छं कुर्वन्तु
+device_name_ph	अस्य यन्त्रस्य नाम
+lan_last_update	अन्तिम अद्यतन {time}
+lan_not_accepted	{n} न स्वीकृतम्
+connected_now	इदानीं सम्बद्धः
+backup_failed	अन्तिमः स्वचालितः बैकअपः विफलः अभवत्: {e}
+backup_overdue	{n} दिवसान् यावत् बैकअपः नास्ति — एप् अस्मिन् उपकरणे उद्घाटितं स्थापयन्तु येन सः बैकअपं कर्तुं शक्नोति।
+disk_low	अस्मिन् उपकरणे केवलं {mb} MB निःशुल्कं — बैकअपं शीघ्रमेव विफलं भविष्यति । किञ्चित् स्थानं मुक्तं कुरुत।
+last_seen_devices	अन्तिमवारं दृष्टः : {time}
+sync_interval	प्रत्येकं {secs}s समन्वयनम्
+connection_to_shop	दुकानेन सह सम्पर्कः
+supplier_name_ph	आपूर्तिकर्तानाम (अथवा ग्राहकः) .
+supplier_ph	आपूर्तिकर्ता
+switch_device	एतत् यन्त्रं स्विच् कुर्वन्तु
+take_payment	भुगतानं गृहाण
+tax_added_till	{tax} अनन्य
+tax_inside_price	{tax} समावेशी
+today_books	अद्य लेजर्स
+unlock_after_pairing	PIN इति प्रविष्टं कुर्वन्तु ।
+unlock_with_login	प्रवेशेन सह अनलॉक् कुर्वन्तु
+update_my_password	मम गुप्तशब्दं अद्यतनं कुर्वन्तु
+update_my_pin	मम PIN नवीकुरुत
+duress_heading	आपत्कालीन अनलॉक PIN (केवल स्वामी)
+duress_help	ऐच्छिकम्। यदि उद्घाटने भवतः स्थाने अयं PIN लिख्यते, लेखानां सर्वाणि प्रविष्टानि लुप्यन्ते (प्रेषणानि, लेखाः, इतिहासः) कार्यपटः च सामान्यदृष्ट्या स्वामिरूपेण उद्घाट्यते — शुल्कानि, पक्षाः, क्षेत्राणि, कर्मचारिणः विन्यासः च तिष्ठन्ति। रूपरेखा कान्फिग् च न लुप्येते। केवलं बलादुद्घाटने प्रयुञ्जतु। निरोधाय रिक्तं त्यक्त्वा रक्षतु। कस्यापि PIN तुल्यं कदापि न।
+duress_pin_ph	आपत्कालीन PIN (४–१२ अंक) २.
+duress_confirm_ph	पुष्ट्यर्थं पुनः टङ्कयन्तु
+save_duress_pin	आपत्कालीन रक्षा PIN .
+clear_duress_pin	आपत्कालीन PIN अवरम्।
+duress_on	आपत्कालीन अनलॉक PIN चालू अस्ति
+duress_off	आपत्कालीन अनलॉक PIN निष्क्रिय अस्ति
+duress_saved	आपत्कालीन अनलॉक PIN रक्षितम्
+duress_cleared	आपत्कालीन अनलॉक PIN निष्क्रिय
+vehicle_ph	यानम्
+void	शून्य विक्रय
+write_off_ap	ए.पी
+write_off_nil	Write off / शून्य शेष
+zone_ph	क्षेत्रम् (शुल्केभ्यः नाम)
+caption_today	अद्य
+caption_bookings	प्रेषणानि
+caption_payments_today	अद्य भुगतान
+caption_outstanding	उत्कृष्टम्
+caption_bank	बैंकः
+paid_by	द्वारा भुक्त
+second_way	द्वितीयः मार्गः
+weight_in	भारस्य एककम्
+size_in	परिमाणस्य एककम्
+goods_received	प्राप्त माल
+expense_heading	व्ययः
+notes_attach_sale	नोट्स् एवं संलग्नक (चयनित विक्रय) 1.1.
+notes_attach_party	टिप्पण्यानि संलग्नकानि च (चयनितः ग्राहकः अथवा आपूर्तिकर्ता)
+attachments_last_expense	संलग्नकाः (अन्तिमव्ययः) २.
+credit_limit_heading	ऋणसीमा (चयनितः ग्राहकः अथवा आपूर्तिकर्ता) २.
+pay_selected_heading	चयनितं भुक्तिं कुर्वन्तु (ऋणं निस्तारयन्तु / अग्रिमं गृह्णन्तु)
+write_off_heading	Write off (देयता विना स्पष्टम्) २.
+pay_ap_heading	वयं तेभ्यः यत् ऋणीः स्मः तत् दातव्यम् (AP)
+country_tax	देश & कर
+extra_tills_heading	अतिरिक्त टिल्स
+other_devices_help_heading	अन्ययन्त्राणि स्थापयन्तु
+other_devices_help	अस्मिन् यन्त्रे (सर्वर): अन्ययन्त्राणि → अधिकटिलानाम् अनुमतिः। युग्मसङ्ख्यां Wi‑Fi सङ्केतं च लिखतु। दृश्यते चेत् अन्ययन्त्राणि संयोजयितुम् अनुमतिं नुदतु। सङ्गणके अनेन सङ्गणकेन आरभतु नुदतु। प्रत्येकस्मिन् अन्ययन्त्रे: अनुप्रयोगं संस्थापयतु, क्लायन्ट् मोडं चिनुत, आपणसर्वरम् अन्विष्यतु (सङ्केतं लिखतु वा), युग्मसङ्ख्यां ददातु, इदानीं युञ्जतु। Wi‑Fi छिन्ने आदेशाः यन्त्रे तिष्ठन्ति, सर्वरः पुनः उत्तरति चेत् गच्छन्ति।
+your_brand	भवतः ब्राण्ड् (in-app) .
+units_heading	इकाइयाँ
+booking_measures	प्रेषणमापानि
+drawer_count	दराज गणना (वैकल्पिक) 1.1.
+spreadsheet_csv	स्प्रेडशीट (CSV) ९.
+bank_reconciliation	बैंकमेलनम् (भवतः बैंकविवरणस्य विरुद्धं टिकं कृत्वा)
+book_add_product	पुस्तकम् — उत्पादं / शुल्कं योजयतु
+book_opening_credit	लेजर — उद्घाटन क्रेडिट
+account_kind	खाता प्रकार (एकं ट्याप् कुर्वन्तु) .
+active_ledger	सक्रियः लेखः
+actual_total_cap	ACTUAL TOTAL इति
+amend_help	संशोधनं कर्तुं, शून्यं कर्तुं, वा धनवापसीं कर्तुं विक्रयं चिनुत। संशोधनं पूर्णं इतिहासं रक्षति। Rounded Total इत्यस्य आरम्भः Applied इत्यस्य बराबरः भवति — केवलं गोलरूपेण सम्पादयन्तु । शून्यं प्रतिदानं च स्वामिनः प्रबन्धकस्य वा आवश्यकता भवितुम् अर्हति PIN (ऊर्ध्वं टङ्कितम्; भवतः नामेन सह अभिलेखितम्)।
+applied_total_cap	APPLIED TOTAL इति
+bank_balance	बैंक शेष
+bank_net_today	अद्य बैंक नेट
+branch_export_help	निर्यातः दिनस्य स्नैपशॉट् बैकअप-पुटे लिखति क्लिपबोर्डे च प्रतिलिपिं करोति। अन्यस्य आपणस्य दिनम् आनेतुं तस्य सञ्चिकां तस्मिन् पुटे import_branch_snapshot.json नाम्ना रक्षतु, ततः आयातं नुदतु।
+brand_shown_help	एप् अन्तः स्क्रीनषु दर्शितम्। अस्मिन् उपकरणे संस्थापितं एप् नाम चिह्नं च मञ्चसूचीरूपेण तिष्ठति ।
+app_icon	एप्लिकेशन चिह्न
+logo_help	एप् मध्ये स्क्रीनषु वैकल्पिकं दुकानचिह्नम्।
+onboard_layout	यत् प्राप्यते
+item_photo_help	वैकल्पिकम्। फोटो विना वयं मेनू-वस्तुनामतः आद्याक्षराणि दर्शयामः ।
+cash_in_hand	हस्ते नगदं (til) .
+change_my_pin_heading	मम PIN परिवर्तयतु (केवलं भवतः)
+connect_to_server	सर्वरेण सह सम्बद्धं कुर्वन्तु
+counter_locked	काउण्टर 01 · तालाबद्ध
+country_pack_help	एकः देशसमूहः करनाम गणितं च, तत्क्षण-वेतन-रेल्, बिलेषु मुद्रितं व्यापार-id च सेट् करोति । Kumkaj कुत्रापि करं न दाखिलं न करोति, सरकारी ई-चालानं वा न निर्गच्छति।
+currency_use_help	स्क्रॉल कृत्वा कस्यापि समर्थितमुद्रायाः कृते उपयोगं ट्याप् कुर्वन्तु ।
+day_close_help	एकं दिवसं बन्दं अभिलेखयित्वा एतत् सारांशं (तथा च दराजविचरणं यदि गण्यते) लेखापरीक्षावृत्ते रक्षति । न विक्रयणं विरमति।
+expenses_word	व्ययः
+feature_access_help	चुनितकर्मचारिणे सुविधाद्वारम् (योजनानन्तरं नुदतु)
+footer_local	स्थानीय SQLite · निःशुल्क सदा · शून्य मेघ
+fresh_book_moklanjo	नूतनम् = शून्या सूची (वस्तूनि पश्चात् योजयतु)। पुस्तकम् = अधः आरम्भभाण्डं कः देयी च लिखतु।
+fresh_selected	ताजा चयनितम् — सूचीपत्रं रिक्तं तिष्ठति । सज्जे सति Done इति ट्याप् कुर्वन्तु।
+gross_word	स्थूल
+how_start	कथं आरम्भं कर्तुम् इच्छसि ?
+later_country_pack	पश्चात्: सेटिंग्स् → कर-वेतन-लेबल्-कृते स्वस्य देश-पैकं प्रयोजयन्तु ।
+local_badge	स्थानीय
+measures_help_moklanjo	प्रेषणकार्यपटे पोटलिकाः कथं मीयन्ते। भवता प्रयुज्यमानैः एककैः परिमाणं भारं च लिखतु — मानकम् (cm, m, in, ft · kg, g, lb, oz) उपरि cm / kg संबद्धं स्वकीयम् एककं वा (प्रत्यक्षं अन्यैः एककैः वा)। लेखाः सर्वदा kg लिखन्ति। क्षेत्रं रिक्तं त्यक्तं चेत् तत् तिष्ठति।
+mix_type_hint_moklanjo	प्रत्येकस्मिन् कियत् लिखतु (नगदम् / UPI / कार्ड् / ऋणम्)। पत्रकस्य समं भवेत्। ऋणाय उपरि ग्राहकः आवश्यकः।
+money_in_sales	(विक्रये) धनम् २.
+more_help_moklanjo	सूची, विक्रयः, ऋणम्, दलम्, बैकअप — आवश्यकत्वे भाण्डं अधिकटिलाः च।
+net_word	नेट्
+offline_badge	OFFLINE इति
+optional_login_help	वैकल्पिकं प्रवेशः (id + password)। स्वामिना एकवारं सेट् भवति; केवलं उपयोक्ता एव पश्चात् गुप्तशब्दं परिवर्तयितुं शक्नोति।
+or_unlock_login	अथवा login id + password इत्यनेन अनलॉक् कुर्वन्तु
+permission_preset	कार्यम् (पटलान् अधिकारान् च निर्धारयति)
+preset_help_moklanjo	कैशियरः विक्रयति। प्रबन्धकः विक्रयणं + मेनू-वस्तूनाम् + शून्यं/संशोधनम् ।
+product_locked_moklanjo	Moklanjo
+product_only_moklanjo	अयम् अनुप्रयोगः केवलं Moklanjo — लेखाः + प्रेषणकार्यपटः। अन्यव्यापाराणां उत्पादानि पश्चात् पृथक् आगमिष्यन्ति।
+purchases_cogs	क्रयम् (COGS) २.
+qty_cap	संख्या
+restore_help	पुनर्स्थापनम्: एकं बैकअपं चिनुत। तदा यथा आसीत् तथा लेजर् उद्घाट्यन्ते; इदानीं यथा सन्ति तथा लेजर् प्रथमं रक्षिताः भवन्ति, अतः एतत् अकृतं कर्तुं शक्यते ।
+wipe_data_heading	स्थानीयदत्तांशं विलोपयन्तु
+wipe_data_help	केवलं स्वामी — Windows अनइंस्टॉल इव विकल्पाः। व्यापारलेखः इतिहासम् अपनयति, शुल्कानि विन्यासं च रक्षति (आपत्कालीन-उद्घाटन-PIN इव)। आपणविन्यासः लेखडाटाबेस् अपनयति। पटलप्राथमिकताः खिड्कीं/भाषां च अपनयन्ति। स्वामिनः PIN द्वारा पुष्टिं कुरुत। दले आपत्कालीन-उद्घाटन-PIN पृथक् (उद्घाटने गुप्तमार्जनम्)।
+wipe_trading	व्यावसायिक अभिलेख
+wipe_schema	दुकान सेटअप
+wipe_ui	स्क्रीन प्राधान्यानि
+wipe_owner_pin_ph	स्वामी PIN लोप करने के लिये
+wipe_delete_selected	चयनितं विलोपयतु
+wipe_owner_only	केवलं स्वामिः एव स्थानीयदत्तांशं विलोपयितुं शक्नोति ।
+restore_owner_only	केवलं स्वामिः एव बैकअपं पुनः स्थापयितुं शक्नोति ।
+wipe_owner_pin_needed	स्थानीयदत्तांशं विलोपयितुं Owner PIN इति प्रविष्टं कुर्वन्तु ।
+wipe_nothing_selected	प्रथमं किं विलोपनीयं इति चिनोतु।
+wipe_done	चयनितः स्थानीयदत्तांशः विलोपितः।
+wipe_schema_done	Shop setup wiped — निरन्तरं कर्तुं Server अथवा Client इति चिनोतु ।
+rounded_total	गोल कुल
+setup_app_moklanjo	Moklanjo संस्थापयतु
+shop_logo_optional	दुकानस्य लोगो (वैकल्पिकः) २.
+stock_type_help	मेनू-वस्तुनाम (तस्य भागः पर्याप्तः), परिमाणं टङ्कयन्तु, ततः समायोजयन्तु । मेनू मेनू-वस्तूनाम् ये अद्यापि न गण्यन्ते, तेषां आवश्यकता अस्ति एकवारं अनुसरणं आरभत ।
+team_owner_help	नियुक्तिः: कार्यं चिनुत (कॅशियर / प्रबन्धकः), नाम + आरम्भ-PIN, ततः योजयतु। केवलं यदि अयं जनः भिन्नः: अधः पटलान् अधिकारान् च उद्घाटयतु, ततः कार्यविन्यासं रक्षतु। प्रत्येकः अधः स्वकीयम् PIN स्वयं परिवर्तयति — स्वामी अन्यस्य परिवर्तयितुं न शक्नोति।
+they_owe_us	ते अस्माकं ऋणी भवन्ति
+unit_at_cap	इकाई @ .
+units_help	मेनू-वस्तु-लेबल् (किलो, खण्डः, बैग्) कृते कोडाः । प्रत्येकं एककं — प्रत्यक्षतया अन्यैः एककैः वा — मानकेन (kg · cm · ml · pc) सह सम्बद्धं भवितुमर्हति, उदा. १ टोकरी = २ पेटी १ पेटी = २० से.मी. परिवर्तनम् : १ तः = कारकं यावत् । मुद्राः कदापि एककाः न भवन्ति।
+we_owe_them	वयं तान् ऋणीमः
+who_unlocking	कः अनलॉक् करोति ?
+locked_word	तालाबद्धः
+show_pin	दर्शयतु PIN
+hide_pin	गोपन PIN .
+set_owner_pin	सेट् स्वामी PIN .
+enter_owner_passcode	OWNER PASSCODE प्रविष्टं कुर्वन्तु
+enter_staff_passcode	STAFF PASSCODE प्रविष्टं कुर्वन्तु
+pin_count_zero	० / १२ अङ्काः · न्यूनातिन्यूनं ४, ततः ठीकम्
+pin_count_need	{} / १२ अङ्काः · अधिकं {} आवश्यकम्
+pin_count_full	१२ / १२ अङ्काः · ठीकम् नुदन्तु
+pin_count_ready	{} / 12 अङ्काः · सज्जाः सति OK नुदन्तु
+pin_hint_choose	4–12 अङ्काः चिनोतु · रक्षितुम् अथवा अनलॉक् कुर्वन्तु
+pin_hint_new	नवीन ४–१२ अङ्कीयः स्वामिः PIN · प्रविष्टं कुर्वन्तु अथवा अनलॉकं कुर्वन्तु
+pin_hint_shop_code	दुकानयन्त्रम् · युग्मसंहिता {}
+pin_hint_books	एतत् यन्त्रं लेजर् धारयति
+pin_hint_paired	अतिरिक्तं यावत् युग्मितम् — विक्रेतुं अनलॉक् कुर्वन्तु
+pin_hint_pair_first	अतिरिक्त टिल् — प्रथमं दुकानयन्त्रं प्रति युग्मम्
+unlock_to_continue	निरन्तरं कर्तुं अनलॉकं कुर्वन्तु
+no_staff_yet	अद्यापि कोऽपि कर्मचारी नास्ति — Owner इति रूपेण अनलॉक् कुर्वन्तु, ततः Team इति
+status_server_set_pin	सर्वर मोड — सेट् स्वामी PIN
+status_server_tills	Server Mode — अतिरिक्त tills सम्मिलितुं शक्नुवन्ति । अनलॉक
+status_server_unlock	Server Mode — Owner इति रूपेण अनलॉक् कुर्वन्तु
+status_client_unlock	Client Mode — विक्रयणार्थं अनलॉक् कुर्वन्तु
+icon_new_selected	चिह्नम्: नूतनसञ्चिका चयनिता — ब्राण्ड् रक्षतु इति ट्याप् कुर्वन्तु
+icon_custom	चिह्नम् : कस्टम स्थल चिह्न
+icon_default	चिह्नम्: Kumkaj चिह्नं (पूर्वनिर्धारितम्) — इष्टं चिनुत
+logo_yours	लोगो: भवतः दुकानस्य लोगो — पटलेषु रसीदेषु च दर्शितम्
+logo_default	लोगो: Kumkaj चिह्नं (पूर्वनिर्धारितम्) — यदि भवतः समीपे अस्ति तर्हि स्वकीयं चिनुत
+tmpl_current	वर्तमानः {} — {}
+tmpl_selected	चयनितम् : {} — {} .
+setup_complete	सेटअप सम्पन्न
+onboard_fresh_tmpl	ताजा · {} — सूची रिक्तं आरभ्यते; Menu menu items इत्यत्र menu items योजयन्तु, ततः Done इति ।
+onboard_book_tmpl	Ledger · {} — मेनू-वस्तूनि योजयन्तु तथा च क्रेडिट् उद्घाटयन्तु, ततः Done ।
+onboard_template_tmpl	यदि इच्छति तर्हि स्थानस्य नामकरणं कुरुत, ततः कथं आरभ्यत इति चिनुत ।
+tmpl_blurb	कूरियरलेखाः प्रेषणकार्यपटः च: प्रेषकाः, वाहकाः, दिनलेखा, AWB।
+tmpl_how	कार्यपटे पोटलिकां पञ्जीकुरुत; अद्यार्थं दिनलेखा; शुल्कानां पक्षानां प्रतिवेदनानां च ट्याब्।
+trk_booked	पञ्जीकृतम्
+trk_picked_up	उद्धृतम्
+trk_in_transit	मार्गे
+trk_delivered	समर्पितम्
+trk_rto	प्रेषकं प्रति प्रत्यागच्छति
+lane_to_dispatch	प्रेषणीयम् शिष्टम्
+lane_with_carrier	वाहकस्य समीपे
+lane_failed	विफलम्
+lane_done_today	अद्य समाप्तम्
+ops_board_help	अद्यतने कार्ये पोटलिकाः कुत्र सन्ति तदनुसारम्। पोटलिकाः नुदतु (स्कैन कुरुत वा) येन ताः चिताः भवन्ति, ततः सर्वासु चितासु एकदा कार्यं कुरुत — प्रत्येकं पङ्क्तिः केवलं तस्यां युक्तान् चलनान् दर्शयति।
+lane_empty	इदानीम् अत्र किमपि नास्ति।
+picked_fmt	{n} चिताः
+pick_all	सर्वान् चिनुत
+bag_for_carrier	वाहकाय समर्पयतु
+send_with_rider	दूतेन सह प्रेषयतु
+out_again	पुनः प्रेषयतु
+return_to_sender	प्रेषकं प्रति प्रत्यावर्तयतु
+runs_bags_heading	अर्वाचीनाः यात्राः पुटाः च
+print_word	मुद्रयतु
+bag_word	वाहकपुटः
+run_word	दूतयात्रा
+parcels_fmt	{n} पोटलिकाः
+parcel_history	इतिहासः
+attempt_fmt	प्रयत्नः {n}
+pieces_short_fmt	{n} खण्डाः
+note_reason_ph	टिप्पणं कारणं वा
+ops_pick_first	प्रथमं पोटलिकाः चिनुत — नुदतु स्कैन कुरुत वा
+cod_to_collect	समर्पितम् — COD ग्रहीतव्यम्
+cod_on_road	COD अद्यापि मार्गे
+cod_owed_consignors	गृहीतम् — प्रेषकेभ्यः दातव्यम्
+cod_rto_fees	ग्रहीतव्यं RTO शुल्कम्
+cod_to_hand_in	समर्पणीयं COD
+parcel_one_fmt	{n} पोटलिका
+facet_bank_title	प्रतिवेदनानि
+facet_bank_help	दिवसलेखाः, ग्राहकः वा आपूर्तिकर्ता वा वृद्धावस्था, बैंकपदानि, अवधिः च पी एण्ड एल।
+facet_ops_title	प्रेष्याणि च प्रेषणम्
+facet_ops_help	AWB स्कैन कुरुत लिखतु वा → अन्विष्यतु, ततः अग्रे / नामपत्रं मुद्रयतु / COD। दूताय वाहकाय वा प्रेषयतु।
+facet_cod_title	COD पञ्जिका
+facet_cod_help	समर्पणे धनं गृह्णातु, ततः प्रेषकाय प्रत्यावर्तयतु।
+facet_riders_title	दूताः (स्वयानसमूहः)
+facet_riders_help	दूतान् योजयतु, ततः Ops तः पञ्जीकृतानि AWB प्रेषयतु।
+against_bill_ph	उपरि # विधेयकस्य विरुद्धम् (वैकल्पिकम्)
+aliases_ph	उपनाम — अन्ये नाम, अल्पविराम विभक्त
+amount_blank_full_ph	राशि (रिक्त = पूर्ण शेष) २.
+amount_owed_ph	ऋणी राशि
+amount_ph	राशि
+amount_received_ph	प्राप्त राशि
+amount_we_pay_ph	वयं यत् राशिं दास्यामः
+awb_scan_ph	AWB / बारकोड स्कैन
+bulk_csv_ph	समूह CSV — destination,consignee,kg,cod_paise,note
+business_name_ph	व्यापार नाम
+category_new_ph	श्रेणी (वैकल्पिकं, नूतनं चेत् निर्मितम्)
+cod_amount_ph	COD धनम्
+code_bag_ph	संहिता (पुटम्) ९.
+conv_factor_ph	कारक (२५ = १ पुट → २५ किलो) २.
+country_code_ph	देशसङ्केतः उदा. IN, GB, US, AE, BR
+credit_khata_amount_ph	ऋण / ऋण लेजर राशि
+credit_limit_ph	ऋणसीमा (० = कोऽपि नास्ति) २.
+dim_unit_code_ph	परिमाणैकककोडः (cm)
+divisor_ph	आयतनभाजकः (5000)
+extra_per_kg_ph	अतिरिक्तम् / kg
+first_amount_ph	प्रथमं धनम्
+first_kg_ph	प्रथमं kg (स्लैबः)
+from_code_ph	कोडात् (पुटम्) .
+item_name_lang_ph	मेनू मेन्यू आइटम् नाम — स्वभाषायां टङ्कयन्तु
+login_id_opt_ph	उपयोक्तृनाम (आवश्यकम्, अद्वितीयम्) २.
+manager_pin_ph	प्रबन्धकः PIN अनुमोदनं कर्तुं (केवलं यदि भवान् शून्यं कर्तुं न शक्नोति)
+new_branch_name_ph	नवीन शाखा नाम
+new_password_ph	नूतनः गुप्तशब्दः (वैकल्पिकः) २.
+new_pin_ph	नवीन PIN (४–१२ अङ्क) २.
+note_bank_ph	नोट (निक्षेप, निष्कासन, ...) २.
+note_buy_expense_ph	टिप्पणी (इन्धन, किराया, ...) .
+note_expense_ph	टिप्पणी (इन्धनम्, कार्यालयम्, ...) २.
+notify_phone_ph	सूचनादूरभाषः (WhatsApp/SMS हुक्)
+options_moklanjo_ph	विकल्पाः (ऐच्छिकाः) — Large=20, Gift wrap=10
+part_second_way_ph	द्वितीयमार्गेण भागः (वैकल्पिकः) २.
+phone_ph	दूरभाषः
+address_ph	पत्रसङ्केतः
+party_custom_fields_heading	स्वेच्छक्षेत्राणि (चितः पक्षः)
+party_custom_help	अस्मिन् पक्षे किमपि नाम मूल्यं च योजयतु — WhatsApp, GSTIN, मार्गकोडः, …
+party_custom_key_ph	क्षेत्रनाम (यथा WhatsApp)
+party_custom_value_ph	मूल्यम्
+party_custom_add	क्षेत्रं योजयतु
+party_custom_remove	क्षेत्रम् अपनयतु
+party_custom_empty	अद्यापि स्वेच्छक्षेत्रं नास्ति
+party_custom_pick_first	स्वेच्छक्षेत्रार्थं पक्षं चिनुत
+place_name_ph	अस्य स्थानस्य नाम
+price_ph	मूल्यम्
+qty_example_ph	मात्रा (उदा. किलोग्रामस्य कृते १.५) २.
+quantity_ph	परिमाणम्
+reason_required_ph	कारणम् (आवश्यकम्) २.
+role_title_ph	भूमिका शीर्षक (उदा. बरिस्ता) २.
+service_pct_ph	सेवा % वैकल्पिक 0/10/12
+short_code_ph	लघु कोड (MG02) .
+slab_kg_ph	kg मध्ये शुल्कयोग्यः स्लैबः (0.5)
+staff_name_ph	कर्मचारिणः नाम / id
+starting_password_ph	गुप्तशब्दस्य आरम्भः (वैकल्पिकः) २.
+starting_pin_ph	आरम्भः PIN (४–१२ अङ्काः) २.
+tax_rate_ph	करदरनाम वा % — मानकं, न्यूनीकृतं, ०, ५, १२, १८, २०
+to_code_ph	कोडं कर्तुं (किलो) .
+uncleared_no_ph	उपरि # अस्पष्टम्
+unit_cost_ph	इकाई लागत
+unit_kg_blank_ph	एककम् (kg रिक्तं वा)
+unit_name_bag_ph	नाम (बैग) ९.
+weight_unit_code_ph	भारैकककोडः (kg)
+zone_name_ph	क्षेत्रस्य नाम
+pay_credit	खातेन
+book_kind_today	अद्य लेजर्स
+book_kind_month	अस्मिन् मासे लेजर्
+book_kind_aging	बकाया / डेबिट-क्रेडिट
+book_kind_balance	तुलनपत्रम्
+ops_desk_help	USB बारकोड-स्कैनरेण AWB स्कैन कुरुत (लिखतु वा) → अन्विष्यतु। ततः अग्रे, नामपत्रं मुद्रयतु, COD गृह्णातु वा। नामपत्राणि Code 128 मुद्रयन्ति।
+role_help_consignor	भूमिका: प्रेषकः — AR (ते अस्माकं देयिनः)। सा एव संस्था वाहकः अपि भवितुम् अर्हति।
+role_help_carrier	भूमिका: वाहकः — AP (वयं तेषां देयिनः)। सा एव संस्था प्रेषकः अपि भवितुम् अर्हति।
+role_help_both	भूमिका: प्रेषकः + वाहकः — एकः पक्षः, AR AP च लेखौ, प्रतिवेदने निवलम्।
+role_help_supplier	भूमिका: आपूर्तिकर्ता — क्रयार्थम् AP।
+lane_declared_label	खातप्रेषणम्
+lane_owner_label	नगदप्रेषणम्
+money_lane_bill	विधेयकः {lane} .

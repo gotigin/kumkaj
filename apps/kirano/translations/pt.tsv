@@ -1,0 +1,1329 @@
+# Portuguese — Português (pt). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	Balcão Kirana: venda, estoque, khata e livros. Gratuito off-line.
+unlock	Desbloquear
+pin_hint	O PIN do dono começa em 0000
+sell	Vender
+buy	Compras
+books	Livro do dia
+books_help	A posição de hoje. Vender = entrada de dinheiro. Comprar = compras e despesas. Partes = clientes e fornecedores de crédito.
+buy_help	Vales de despesa e faturas de fornecedores (dinheiro que sai). O em conta fica no livro da parte.
+sell_money_in	Vender itens
+buy_money_out	Despesa / fatura de fornecedor
+record_purchase	Registar compra
+add_expense	Vale de despesa
+bank_book	Livro bancário
+credit_help	O id da parte é único (nomes podem repetir). Um cliente tem uma conta (deve-nos); um fornecedor vende-nos stock (devemos-lhe); ambos está bem. Os livros ficam separados; os relatórios mostram o líquido.
+party_kind_ph	Funções: cliente, fornecedor, ambos…
+reports_help	Livro do dia, devedores e credores, livro bancário, vales de despesa, lucros e perdas.
+reports_today	Livro do dia (hoje)
+reports_month	Lucros e perdas (mês)
+reports_aging	Pendente / Dr-Cr
+reports_balance_sheet	Balanço
+reports	Relatórios
+refresh	Atualizar
+undo	Desfazer
+start_tracking	Começar contagem
+stock_minus	− Estoque
+stock_plus	+ Estoque
+settle_cash	Receber dinheiro
+settle_card	Receber cartão
+items	Artigos
+nav_items	Artigos
+more	Mais
+your_items	Os seus artigos
+items_help	Toque em um item para editá-lo. Novo item limpa o formulário. Pesquise por nome ou código curto, defina um preço (0 está bom) e adicione. As vendas já registradas mantêm o nome pelo qual foram cobradas.
+add_item	Adicionar item
+new_item	Novo item
+adding_item	A adicionar item
+editing_item	A editar
+save	Guardar
+remove	Remover
+removed_items	Itens removidos
+removed_help	Restaurar coloca o item de volta em Itens exatamente como estava: preço, foto e categoria.
+restore_item	Restaurar
+empty_catalog	Ainda sem artigos. Abra Artigos, acrescente nome e preço, e venda no balcão.
+total	Total
+cash	Dinheiro
+upi	UPI
+card	Cartão
+credit	Partes
+clear	Limpar
+ready_to_sell	Pronto para enviar
+today_prefix	Hoje
+today_mid	hoje
+owed	em dívida
+round_word	arredondamento
+back	Voltar
+sold_out	Esgotado
+restock	Repor
+not_tracked	Sem contagem
+in_stock	em stock
+marked_sold_out	Marcado esgotado
+add_upper	Adicionar
+na	N/D
+qty	Qtd
+unit_at	Preço
+actual	Real
+applied	Aplicado
+note_ph	Nota (opcional)
+rounded	Arredondado
+split	Dividir
+send_kot	Enviar talão
+send_kot_to	Enviar → {kitchens}
+send_kot_again	Adicione itens para o próximo boleto
+send_kot_held	Itens retidos – solte para enviar
+reprint_kot	Reimprimir selecionados
+reprint_kot_ok	Itens {n} impressos novamente · Recibo(s) {slips} → {kitchens}
+reprint_kot_needed	Envie um recibo primeiro – depois inclua os itens e imprima os selecionados novamente
+reprint_kot_none_selected	Cada item enviado é ignorado – toque em Imprimir naqueles para reimprimir
+reprint_kot_client	Imprimir novamente ({n}) para {place} enviado — o dispositivo da loja imprime
+print_cancelled_kot	Imprimir todos os cancelados
+print_cancelled_kot_ok	Itens cancelados {n} impressos · Recibo(s) {slips} → {kitchens}
+print_cancelled_kot_needed	Abra primeiro uma tabela com itens cancelados
+print_cancelled_kot_none	Nenhum item cancelado neste pedido
+print_cancelled_kot_client	Impressão cancelada ({n}) para {place} enviado — o dispositivo da loja imprime
+kot_banner	Banner
+kot_banner_ph	Banner (vazio = nenhum)
+kot_item_prefix	Prefixo do item
+kot_item_prefix_ph	ex. [CANCELLED] 
+kot_strike	Nome do item de ataque
+kot_strike_note	Nota do item de ataque
+kot_strike_on	Sim
+kot_strike_off	Não
+bill_item_layout	Layout dos itens
+bill_item_layout_columns	Colunas
+bill_item_layout_stacked	Empilhado
+bill_item_header	Cabeçalhos
+bill_item_hdr_item	Cabeçalho do item
+bill_item_hdr_qty	Cabeçalho da qtd
+bill_item_hdr_price	Cabeçalho do preço
+bill_item_hdr_amount	Cabeçalho do valor
+bill_item_name	Nome do item
+bill_item_qty	Qtd
+bill_item_price	Preço
+bill_item_amount	Valor
+bill_item_note	Nota do item
+bill_item_col_gap	Espaço das colunas
+bill_item_col_order	Ordem das colunas
+bill_item_col_sep	Riscos das colunas
+bill_item_gap_tight	Apertado
+bill_item_gap_comfort	Confortável
+bill_item_gap_wide	Largo
+bill_item_num_width	Colunas numéricas
+bill_item_num_compact	Compacto
+bill_item_num_comfort	Confortável
+bill_item_num_wide	Largo
+bill_item_num_align	Alinhamento dos números
+bill_item_gap_em	Espaço (em)
+bill_item_qty_min	Qtd mínima (em)
+bill_item_price_min	Preço mínimo (em)
+bill_item_amount_min	Valor mínimo (em)
+kot_item_qty_width	Coluna da qtd
+kot_item_num_align	Alinhamento da qtd
+bill_total_qty_label	Rótulo qtd total
+bill_total_subtotal_label	Rótulo subtotal
+bill_total_grand_label	Rótulo total
+bill_total_paid_label	Rótulo pago
+bill_meta_pair	Partilhar linha com
+bill_pair_alone	Sozinho
+bill_item_piece_on	Sim
+bill_item_piece_off	Não
+bill_total_qty	Qtd total
+bill_total_subtotal	Subtotal
+bill_total_grand	Total
+reprint_incl	Na impressão
+reprint_skip	Excluir
+reprint_skip_meta	Fora da reimpressão
+kot_dest_hint	Impressão nas impressoras atribuídas a {kitchens} em Configurações → Impressoras
+kot_sent_hint	O último envio foi para {kitchens}. Toque para adicionar itens para a próxima fatura – ou Imprima o recibo novamente para a mesma.
+kot_sent_printing	Talão enviado a {kitchens} — a imprimir
+kot_sent_not_printed	Comprovante enviado para {kitchens} mas NÃO impresso: {why}. Informe a loja, conserte a impressora e imprima novamente.
+kot_sent_screen	Boleto enviado para {kitchens}
+kot_queued_shop	Boleto para {place} → {kitchens} salvo; o dispositivo da loja imprime
+kot_job_label	Deslizamento para {place} → {kitchens}
+kot_job_reached	Deslizamento para {place} atingiu {kitchens}
+kot_unassigned	Não atribuído
+kot_unassigned_held	Itens {n} retidos sem estação — solte a linha para enviar
+kot_station_ph	Estação
+kot_station_dd	Estação
+kot_station_dd_n	Estação · {stations}
+kot_set_station	Usar esta estação
+kot_station_applied	Estação definida em itens {n}: {station}
+kot_station_cleared	Estação limpa de itens {n}: {station}
+kot_station_needed	Escolha primeiro uma seção da loja
+kot_station_not_allowed	Não é permitido usar a seção: {station}
+kot_station_none	Nenhuma estação ainda – não utilizada em uma loja de balcão (Configurações → Áreas, se necessário)
+pos_tab_items	Adicionados
+pos_tab_payment	Pagamento
+hold_send	Segurar
+hold_send_on	Retido
+hold_send_meta	Realizado - não neste deslizamento
+station_remove	Remover estação
+station_remove_ph	Toque numa estação na lista para removê-la
+station_removed	Estação removida: {name}
+settings_hub_title	Definições
+settings_hub_help	Abra uma área de cada vez — menos deslocação, escolhas mais claras.
+settings_back	Voltar
+settings_sec_language	Idioma e moeda
+settings_sec_country	País e impostos
+settings_sec_tills	Caixas extra e filiais
+settings_sec_brand	Sua marca
+settings_sec_units	Unidades e conversões
+settings_sec_pickers	Áreas · estações · taxas de imposto
+settings_sec_printers	Impressoras
+settings_sec_bill	Formato de conta e talão
+settings_sec_selling	Esquemas e vendas
+bill_kot_tab_bill	Conta
+bill_kot_tab_kot	Talão
+settings_sec_alerts	Avisos
+alerts_help	Quanto tempo as mensagens de estado ficam no ecrã para si (este início de sessão).
+snack_secs_ph	Segundos (3–60, predefinição 10)
+snack_secs_save	Guardar tempo dos avisos
+snack_secs_saved	Tempo dos avisos guardado — {n} segundos
+settings_sec_backup	Backup e restauração
+settings_sec_diag	Diagnóstico
+diag_privacy_help	Os logs permanecem neste dispositivo. Segredos (PIN, senhas) nunca são armazenados. O compartilhamento de um pacote fora do dispositivo requer sua aprovação explícita cada vez — nunca vendido ou entregue a terceiros.
+diag_level	Nível de detalhe
+diag_level_error	Erros
+diag_level_warn	Avisos
+diag_level_info	Informações
+diag_level_debug	Depuração
+diag_support_start	Iniciar sessão de suporte de 30 minutos
+diag_support_stop	Encerrar sessão de suporte
+diag_support_started	Sessão de suporte ativa — Detalhes de depuração por 30 minutos
+diag_support_ended	Sessão de suporte encerrada
+diag_export_local	Exportar cópia local
+diag_export_local_done	Diagnósticos locais prontos em {path} — escolha onde salvar uma cópia
+diag_approve_send	Aprovar compartilhamento fora deste dispositivo
+diag_send_help	A aprovação é para um pacote, depois expira. Temporária — usada apenas para corrigir ou melhorar o produto. Não compartilhada com terceiros. Funciona no Linux, Windows, macOS e Android.
+diag_send_approved	Compartilhamento aprovado para um pacote (expira em breve)
+diag_export_send	Criar pacote de compartilhamento (precisa de aprovação)
+diag_export_send_done	Pacote de compartilhamento pronto em {path} — escolha onde salvar e envie apenas ao suporte do Kumkaj
+diag_save_bundle	Salvar cópia de diagnóstico
+diag_bundle_saved	Cópia de diagnóstico salva em {path}
+diag_bundle_failed	Não foi possível salvar a cópia de diagnóstico — tente novamente
+diag_clear	Limpar logs de diagnóstico
+diag_cleared	Logs de diagnóstico limpos
+sidebar_settings	Barra lateral
+sidebar_settings_help	Ícones iguais à barra lateral. Arraste uma linha para reordenar. Inverta o interruptor para mostrar ou ocultar. Configurações e Bloqueio permanecem sempre na barra.
+sidebar_always_on_short	Sempre ativo
+sidebar_back_settings	Voltar
+sidebar_shown	Exibido
+sidebar_hidden	Oculto
+sidebar_always_on	Sempre no balcão
+sidebar_shown_hint	Exibido na barra lateral inferior ou nas abas do rodapé
+sidebar_hidden_hint	Oculto do balcão
+sidebar_menu_items	Itens
+sidebar_enable_all	Ativar Tudo
+sidebar_disable_all	Desativar Tudo
+sidebar_order_saved	Pedido da barra lateral salvo
+sidebar_visibility_saved	Visibilidade da barra lateral salva
+amounts_hide	Ocultar
+amounts_show	Mostrar
+printers_none_hint	Salve uma impressora neste dispositivo primeiro e depois adicione-a à fatura ou a uma seção
+counter	Balcão
+dine_in	Balcão
+takeaway	Para levar
+order	Pedido
+tables	Contadores
+kitchen	Secção
+sales	Vendas
+sales_refunds	Vendas e reembolsos
+day_close	Fecho do dia
+reports_expenses	Relatórios e despesas
+nav_reports	Relatórios
+nav_settings	Definições
+nav_lock	Bloquear
+no_sale_yet	Nenhuma venda ainda
+favorites	Favoritos
+favorites_help	Itens que você vende com frequência, salvos para o seu login. Adicione um à conta ou monte sua lista com todos os itens abaixo.
+your_favorites	Seus favoritos
+all_items	Todos os itens
+frequent	Frequentes
+added_items	Adicionados
+added_items_empty	Nada nesta fatura ainda – adicione um item de Todos os itens ou uma categoria.
+frequent_config_help	Itens mais vendidos de contas concluídas. Defina quantos dias visualizar e quantos itens exibir.
+frequent_days_ph	Dias (1)
+frequent_limit_ph	Itens (24)
+frequent_apply	Aplicar
+frequent_saved	Frequente: último(s) dia(s) {d}, principais itens {n} — {c}
+frequent_empty	Ainda sem vendas concluídas neste período — liquidar uma conta (₹0 se as Definições permitirem) e elas aparecem aqui.
+zero_sales	Vendas de valor zero
+zero_sales_help	Permitir itens com preço de ₹ 0 e contas liquidadas em ₹ 0 (cortesia/desejo do proprietário). Ativado por padrão, para que as capas gratuitas ainda apareçam nos livros frequentes e diários.
+zero_sales_on	Vendas zero: ligadas
+zero_sales_off	Vendas zero: desligadas
+zero_sales_saved_on	Permissão de vendas zero guardada (ligada)
+zero_sales_saved_off	Permissão de vendas zero guardada (desligada)
+floor_areas_help	As áreas são salas ou zonas no piso (Dine In, Parcel, AC…). Adicione uma área primeiro e depois coloque balcões nela – cada área é um grupo separado no chão.
+area_new_ph	Nova área / sala (ex. AC, Garden)
+add_area	Adicionar área
+area_added	Área “{name}” pronta – adicione contadores nela
+no_favorites	Nenhum favorito ainda — adicione itens da lista abaixo.
+add_to_bill	Adicionar à conta
+added	Adicionado
+owes_word	deve
+selected_word	Selecionado
+chip_clear_credit	zerado — dar crédito ou receber adiantamento
+chip_missing_customer	Cliente escolhido não encontrado — escolha de novo
+chip_no_customer	Nenhum cliente ainda — escreva um nome e toque em Crédito
+credit_summary_fmt	{} clientes · crédito aberto {} · adiantamentos {}
+recent_label	Recente:
+kot_new_waiting	NOVO — aguardando
+kot_preparing	PREPARANDO
+kot_ready_serve	PRONTO — servir
+kot_done_cap	FEITO
+kot_cancelled	CANCELADO
+kot_start_btn	Iniciar
+kot_mark_ready	Marcar pronto
+kot_done_btn	Feito
+table_free	Livre — toque para iniciar um pedido
+start_order	Iniciar pedido
+open_bill	Abrir conta
+collect_payment	Receber
+table_running	Em andamento
+payment_pending	Pagamento pendente
+collect_at_counter	receber no caixa
+inventory	Estoque
+inventory_stock	Estoque e contagem
+branches	Filiais
+branches_org	Filiais e organização
+credit_customers	Clientes a crédito
+customer_name_ph	Nome da parte
+new_customer_ph	Nome da nova parte
+item_name_ph	Nome do item (ex. Masala Dosa)
+item_price_ph	Preço
+start_template	Produto
+team	Equipa
+team_pins	Equipa e PIN
+my_pin_settings	O meu PIN
+settings_hub_help_my_pin	Altere o PIN de desbloqueio de quem está ligado neste dispositivo.
+team_self_help	Só você pode alterar o seu PIN de desbloqueio (e a palavra-passe de início opcional). Se precisar de outros ecrãs ou direitos, fale com o dono.
+backup_settings	Cópia e ajustes
+lock_app	Bloquear
+pick	Escolher
+select	Selecionar
+advance	Avançar
+owner	Dono
+staff	Equipa
+photo	Foto
+auto	Auto
+prev	Anterior
+next	Seguinte
+ok	OK
+this_shop	Modo servidor
+extra_till	Modo cliente
+off	Não
+tables_kitchen	Layout da loja
+server	Servidor
+client	Cliente
+language_currency	Idioma e moeda
+language	Idioma
+choose_language	Escolha o seu idioma
+language_setup_hint	Siga o idioma deste dispositivo ou escolha um você mesmo.
+lang_follow_platform	Usar o idioma do dispositivo
+lang_pick_user	Usar o idioma escolhido
+lang_platform_now	Idioma atual do dispositivo
+selected_language	Selecionado
+continue	Continuar
+this_device	ESTE DISPOSITIVO
+device_use_q	Como este dispositivo será usado?
+last_server_mode	Era servidor — toque para continuar
+last_client_mode	Era cliente — toque para continuar
+choose_server	Escolher um servidor
+choose_server_hint	Este dispositivo já tem servidores. Abra um ou crie um novo servidor para outro negócio.
+create_new_server	Criar novo servidor
+open_server	Abrir
+new_server_name_ph	Nome do novo servidor (opcional)
+server_remove_pin_ph	PIN do dono para remover
+only_owner_remove_server	Só o dono pode remover um servidor
+owner_pin_remove_server	PIN do dono necessário para remover este servidor
+device_setup_help	O servidor guarda os livros aqui. O cliente emparelha com um servidor.
+app_template_heading	Catálogo inicial (opcional)
+app_template_blurb	Carrega um catálogo de amostra; Proprietário Zahir (zahir), Admin Asif (asif, PIN 1111), Caixa Nawaz (nawaz, PIN 0000); desconto de impostos/GST; barra lateral frontal; o histórico é limpo após 4 horas (e limpo agora no Backup); Hoje tire a roupa; conta compacta + Margens padrão para bandejas estreitas. Os pares fiscais e da barra lateral podem ser ativados novamente em Configurações.
+app_template_apply	Aplicar catálogo inicial
+app_template_skip	Ignorar por enquanto
+app_template_status	Servidor pronto — aplique o catálogo Starter ou pule
+app_template_importing	Aplicando {title}…
+currency	Moeda
+backup	Cópia de segurança
+use	Usar
+dont_use	Não usar
+add_branch	Adicionar filial
+add_conversion	Adicionar conversão
+add_dishes_items	Adicionar itens
+add_item_plain	Adicionar item
+add_note	Adicionar nota
+add_opening_balance	Adicionar saldo inicial
+add_staff	Adicionar funcionário
+add_station	Adicionar estação
+add_table	Adicionar mesa
+add_unit	Adicionar unidade
+add_use_name	Adicionar / usar este nome
+allow_extra_tills	Permitir caixas extra
+amend	Alterar
+apply_country_pack	Aplicar pacote do país
+datetime_appearance	Aparência da data e hora
+datetime_appearance_help	Os livros mantêm o RFC3339 do primeiro ano dentro. Isso altera apenas a aparência das datas e dos relógios nas contas, nos relatórios e na tela.
+datetime_example	Exemplo agora: {ex}
+date_order	Ordem da data
+date_order_dmy	D/M/Y
+date_order_mdy	M/D/Y
+date_order_ymd	Y-M-D
+time_format	Relógio
+time_format_24h	24 horas
+time_format_12h	12 horas
+attach_bill_photo	Anexar foto da fatura
+attach_pdf	Anexar PDF
+attach_photo	Anexar foto
+attachments_last_expense	Anexos (última despesa)
+bank	Banco
+bank_in	Depósito no banco
+bank_out	Saque do banco
+bank_reconciliation	Conciliação bancária (marque com o seu extrato)
+bank_to_till	Banco → caixa
+book_add_dish	Livro — adicionar item/item
+book_opening_credit	Envio — crédito inicial
+branch_name_sell_ph	Nome da filial de onde vender
+bring_my_book	Trazer o meu livro
+business_tax_id_ph	Id fiscal da empresa
+caption_bank	BANCO
+caption_bills	FATURAS
+caption_outstanding	PENDENTE
+caption_payments_today	PAGAMENTOS DE HOJE
+caption_today	HOJE
+card_amount_ph	Valor no cartão
+cash_amount_ph	Valor em dinheiro
+cash_memo	Nota de caixa
+choose_icon	Escolher ícone
+choose_logo	Escolher logótipo
+clear_icon	Remover ícone
+clear_photo	Limpar foto
+copy_day_book_csv	Copiar CSV do livro do dia
+copy_day_close	Copiar fecho do dia
+copy_items_csv	Copiar CSV de itens
+copy_outstanding_csv	Copiar CSV de pendentes
+copy_parties_csv	Copiar CSV de partes
+copy_party_ledger_csv	Copiar CSV do livro da parte
+copy_receipt	Copiar recibo
+share_whatsapp	Partilhar WhatsApp
+lan_pages_heading	Páginas de clientes em Wi‑Fi
+lan_pages_help	No Wi-Fi desta loja, as páginas dos clientes funcionam como painel de exibição e feedback. Pessoas que usam dados móveis precisam da nuvem mais tarde. Um terminal de cartão ou link de pagamento é opcional e nunca bloqueia o balcão.
+diag_send_heading	Partilhar fora deste dispositivo
+kot_dest_heading	Estação
+optional_login_heading	Início de sessão opcional
+rights_heading	Permissões
+ops_panel	Ops locais
+crm_heading	Clientes e mensagens
+crm_help	Aniversários e fidelidade: fila SMS/WhatsApp. {name}, {points}. O dono envia.
+crm_queue_sms	Fila SMS
+crm_queue_wa	Fila WhatsApp
+crm_seg_bday_week	Aniv. semana
+crm_seg_bday_month	Aniv. mês
+crm_seg_phone	Com telefone
+crm_seg_loyalty	Fidelidade
+crm_seg_inactive	Inativos
+crm_seg_top	Maiores gastos
+birthday_ph	Aniversário (MM-DD ou YYYY-MM-DD)
+crm_message_ph	Feliz aniversário {name}! Você tem {points} pontos.
+till_apply_redeem	Aplicar na conta
+till_clear_redeem	Limpar resgate
+till_wallet_topup	Recarregar carteira
+till_issue_voucher	Emitir vale
+till_points_ph	Pontos a resgatar
+till_wallet_ph	Gasto da carteira
+till_voucher_code_ph	Código do vale
+till_voucher_amt_ph	Valor do vale (vazio = tudo)
+till_wallet_topup_ph	Recarga da carteira
+till_voucher_issue_amt_ph	Valor do novo vale
+till_voucher_issue_code_ph	Código do novo vale
+split_evenly	Dividir igualmente
+waitlist	Lista de espera
+fire_course	Próxima etapa
+hold_item	Segurar
+waiter_call	Ligar para o caixa
+waitlist_add	Adicionar à espera
+floor_view_grid	Grelha
+floor_view_layout	Planta
+floor_layout_x	X
+floor_layout_y	Y
+floor_layout_w	W
+floor_layout_h	H
+floor_layout_save	Guardar planta
+floor_layout_open	Abrir mesa
+floor_layout_edit	Editar planta
+floor_layout_pick	Toque uma mesa para editar a planta
+floor_layout_saved	Layout salvo
+floor_layout_nudge_left	← 20
+floor_layout_nudge_right	→ 20
+floor_layout_nudge_up	↑ 20
+floor_layout_nudge_down	↓ 20
+sibling_pickers_help	Como unidades On/Off: oculte áreas, estações e impostos do seletor diário; o pacote permanece.
+bulk_price_apply	Aplicar preço em massa
+card_terminal_optional	Terminal / ligação de pagamento (opcional com internet)
+copy_report	Copiar relatório
+counted_cash_ph	Dinheiro contado na gaveta
+country_tax	País e impostos
+create_backup	Criar cópia de segurança
+credit_limit_heading	Limite de crédito (parte selecionada / nomeada)
+day_close_summary	Resumo do fecho do dia
+delete_party	Eliminar parte selecionada
+delivery	Entrega
+done_open_books	Pronto — abrir livros
+drawer_count	Contagem da gaveta (opcional)
+expense_heading	Despesa
+export_day	Exportar o dia
+extra_note_bill_ph	Nota extra nesta fatura / venda
+extra_note_expense_ph	Nota extra na última despesa
+extra_tills_heading	Caixas extra
+other_devices_help_heading	Configurar outros dispositivos
+other_devices_help	Neste dispositivo (servidor): Outros dispositivos → Permitir caixas extras. Anote o código de emparelhamento e o endereço Wi-Fi. Toque em Permitir que outros dispositivos se conectem, se aparecer. Em um computador, toque em Iniciar com este computador. Em cada outro dispositivo: instale o aplicativo, escolha Modo Cliente, Encontre o servidor da loja (ou digite o endereço), insira o código de emparelhamento, Emparelhe agora. Os pedidos aguardam no dispositivo se o Wi-Fi cair e desaparecem quando o servidor responder novamente. Impressoras extras são configuradas no servidor (Configurações → Impressoras) – caixas extras enviam contas para lá.
+forget_shop	Esquecer esta loja
+goods_received	Mercadoria recebida
+import_day	Importar o dia
+import_items_csv_plain	Importar CSV de itens…
+import_parties_csv	Importar CSV de partes…
+item_name	Nome do item
+kitchen_printing	Impressão da cozinha
+login_id_ph	Id de acesso
+mark_cleared	Marcar compensado
+new_party_clear	Nova parte (limpar formulário)
+new_party_kind_supplier_ph	Tipo da nova parte (fornecedor)
+next_country	País seguinte
+next_order	Próximo pedido (limpar balcão)
+note_gstin_ph	Nota / GSTIN / lembrete de acordo
+notes_attach_party	Notas e anexos (parte selecionada)
+notes_attach_sale	Notas e anexos (venda selecionada)
+on_account_ap	Em conta (AP)
+org_optional_ph	Organização (opcional)
+paid_by	Pago por
+paid_now	Pago agora
+pair_now	Emparelhar agora
+pairing_code_ph	Código de emparelhamento
+party_name_selected_ph	Nome da parte (ou use a selecionada)
+password_ph	Senha
+pay_ap_card	Pagar AP no cartão
+pay_ap_cash	Pagar AP em dinheiro
+pay_ap_heading	Pagar o que lhes devemos (AP)
+pay_ap_upi	Pagar AP por UPI
+pay_selected_heading	Pagar selecionado (quitar dívida / adiantamento)
+pick_from_items	Escolha dos nossos itens
+prev_country	País anterior
+print_open	Imprimir / abrir
+reason_amend_ph	Motivo de alteração / anulação / reembolso
+reason_note_ph	Motivo / nota (perda, contagem, …)
+record_day_close	Registar fecho do dia
+refresh_from_shop	Atualizar da loja
+refund	Reembolso
+remove_selected	Remover selecionado
+request_bill	Pedir a conta
+restaurant_name_ph	Nome da loja (opcional)
+restore_backup	Restaurar cópia
+role_both	Ambos
+role_admin	Administrador
+role_cashier	Caixa
+role_customer	Cliente
+role_manager	Gerente
+history_retention	Histórico comercial
+history_retention_help	Limpe automaticamente vendas antigas e ingressos antigos. Itens, equipe e configurações permanecem. Limpar agora limpa todas as linhas de negociação e mantém a configuração.
+history_off	Manter
+history_day_close	Ao fechar o dia
+history_after_hours	Após o horário
+history_hours_ph	Horas (1–168, padrão 4)
+history_hours_save	Salvar horas
+history_clear_now	Limpar histórico agora
+history_cleared	Histórico comercial limpo — configuração mantida
+history_retention_saved	Limpeza de histórico salva
+history_hours_saved	Horas do histórico salvas
+history_owner_only	Apenas o Proprietário ou Administrador pode limpar o histórico
+rollup	Consolidado
+save_brand	Guardar marca
+save_business_id	Guardar id fiscal e % de serviço
+save_business_name	Guardar nome da empresa
+save_features	Guardar funções do funcionário selecionado
+save_features_named	Salvar {name}
+save_features_ok	Configuração salva para {name}
+save_names	Guardar nomes
+second_way	Segunda via
+server_ip_ph	IP do servidor (ex. 192.168.1.10)
+set_credit_limit	Definir limite de crédito
+set_login_selected	Definir acesso do selecionado
+set_login_named	Aplicar acesso a {name}
+shop	Loja
+show	Mostrar
+spreadsheet_csv	Folha de cálculo (CSV)
+start_fresh	Começar do zero
+stop_extra_tills	Parar caixas extra
+floor_cols_ph	Colunas
+floor_cols_fit	Ajustar ao ecrã
+floor_cols_fit_sub	cabem {n}
+floor_cols_fits	cabe
+floor_cols_scroll	desloca para o lado
+floor_cols_min	Colunas: pelo menos 1 — ou deixe vazio para ajustar ao ecrã
+floor_zoom_auto	Auto
+floor_zoom_out	Zoom para fora
+floor_zoom_in	Zoom para dentro
+backup_auto	Cópia automática todos os dias · última {when} · os últimos 14 dias ficam em {dir}.
+backup_auto_none	Cópia automática todos os dias — a primeira faz-se dentro de momentos.
+backup_copy_to	As cópias também vão para {dir}.
+backup_copy_btn	Copiar também as cópias para uma pasta…
+autostart_off	Iniciar com este computador
+autostart_on	Inicia com este computador ✓ — toque para parar
+autostart_done_on	A app abre agora ao ligar este computador — o servidor volta depois de um corte de luz.
+autostart_done_off	O computador já não abre a app ao ligar.
+device_forgotten	A loja esqueceu este dispositivo — emparelhe-o de novo com o código atual. Os pedidos em espera ficam guardados.
+lan_offline	Offline
+forget_device	Esquecer
+last_seen	visto
+copy_pair_code	Copiar código de emparelhamento
+new_pair_code	Novo código de emparelhamento
+pair_finishing	A concluir o emparelhamento… a aplicar os livros da loja
+pair_opening	Abrindo a caixa…
+pair_copied	Código de emparelhamento copiado
+kot_waiting	A aguardar envio
+lan_offline_waiting	Offline · {n} em espera
+lan_connecting	A ligar à loja…
+lan_live	Ao vivo
+lan_sending	{n} a enviar
+lan_sign_in_to_send	Inicie sessão de novo para enviar {n}
+lan_pair_again	Emparelhe este dispositivo de novo
+lan_update_app	Atualize o app — este aparelho e o servidor da loja têm versões diferentes
+allow_firewall	Permitir que outros dispositivos se liguem
+firewall_blocked	A firewall deste computador bloqueia outros dispositivos — toque em “Permitir que outros dispositivos se liguem”.
+firewall_waiting	À espera da confirmação de administrador…
+lan_join_help	Outros dispositivos podem juntar-se a este — código de emparelhamento {code}. No outro dispositivo escolha Modo cliente e depois Encontrar o servidor da loja, ou escreva este endereço: {addr}
+lan_pair_status	Wi‑Fi {addr}
+lan_join_help_no_addr	Conecte este dispositivo à Wi‑Fi para obter um endereço.
+lan_no_address	Este dispositivo ainda não tem endereço Wi‑Fi — ligue-o ao Wi‑Fi da loja.
+lan_not_listening	Sem aceitar dispositivos agora — outro programa pode estar a usar a porta {port}. Reinicie a app.
+lan_tills_off	As caixas extra estão desligadas. Os livros desta loja ficam neste dispositivo. Permita caixas extra se outro dispositivo também deve receber pedidos ou faturar.
+paired_with	Emparelhado com a loja em {url}
+not_paired	Não emparelhado — ligue-se ao servidor da loja.
+choose_device_use	Escolha como este dispositivo é usado.
+paired_note	Emparelhado. Desbloqueie para vender, ou Atualizar para trazer o mais recente da loja.
+last_update_at	Última atualização da loja: {time}.
+pair_intro	Encontre o servidor ou digite o endereço e o código de emparelhamento.
+queue_waiting	À espera de chegar à loja ({n}):
+queue_tries	{n} tentativas · última resposta: {e}
+save_backup_copy	Guardar uma cópia de segurança…
+backup_copy_saved	Cópia de segurança guardada — guarde-a fora deste dispositivo (pen USB ou outro dispositivo)
+backup_copy_overdue	Há {n} dias que nenhuma cópia de segurança sai deste dispositivo — Definições → Cópia de segurança
+backup_copy_failed	Não foi possível guardar a cópia aí — escolha outro lugar
+clock_off	O relógio deste dispositivo difere {min} min do servidor da loja — acerte a hora neste dispositivo
+printers_heading	Impressoras deste dispositivo
+printers_help	Encontre impressoras, toque em uma para selecioná-la e imprima uma página de teste apenas nesse dispositivo. Impressoras de faturas: Formato fatura e recibo → fatura.
+printers_host_only	As impressoras são configuradas no dispositivo da loja (servidor). Este caixa envia faturas e tickets antigos para lá - Localizar / adicionar / atribuir estadia no servidor. A página de teste e o tamanho de impressão da fatura vão para o servidor.
+printers_find_heading	Impressoras
+printers_find_tip	Procurar analisa este dispositivo e mantém a lista atualizada. Impressoras do sistema primeiro; a análise de rede pode continuar em segundo plano.
+printers_pool_heading	1. As suas impressoras
+printers_pool_tip	Procurar analisa este dispositivo e mantém a lista atualizada.
+printers_pool_empty	(nenhuma ainda — adicione abaixo)
+printers_routes_help	Encontre impressoras que o sistema operacional já conhece. Atribua-os à fatura e a cada seção no formato Bill & Slip.
+printer_assign_dd	Escolher impressora para {place}
+printer_assign_pick	Selecionar impressora real
+printer_profile_heading	Layout
+printer_send_heading	Entrega
+vp_delivery_heading	Entrega
+vp_delivery_help	Como esta impressora virtual envia trabalhos — documento do sistema operacional, bytes brutos ou ESC/POS. O conteúdo do boleto (tamanho do tipo, envoltório, margens) é decidido pelo formato da fatura / boleto, não aqui.
+vp_type_size_heading	Tamanho do tipo
+vp_wrap_heading	Largura de quebra
+vp_margin_heading	Margens
+vp_delivery_spooler	Documento do SO (spooler do sistema)
+vp_delivery_raw	Bytes brutos para o dispositivo
+vp_delivery_escpos	Comandos térmicos ESC/POS
+virtual_printer_new	Nova impressora virtual
+virtual_printer_selected	A editar “{name}” — toque outra na lista para mudar
+virtual_printer_tap_list	Toque uma impressora virtual na lista para a editar
+config_layout_portrait	Retrato
+config_layout_landscape	Paisagem
+config_send_os	Spooler do sistema
+config_send_escpos	ESC/POS
+profiles_heading	Impressoras
+profiles_empty	Impressoras
+profile_builtin	integrado
+profile_custom	personalizado
+profile_name_ph	Impressoras
+profile_new	Impressoras
+profile_delete	Impressoras
+profile_created	Impressoras
+profile_deleted	Impressoras
+profile_builtin_keep	Impressoras
+config_saved	Atualizado
+config_selected	Selecionado “{name}”
+printer_output_heading	Impressoras virtuais
+virtual_printers_heading	Impressoras virtuais
+virtual_printers_empty	Ainda sem impressoras virtuais — defina os valores abaixo e guarde. Depois de ter algumas, toque numa da lista para editar.
+virtual_printer_name_ph	Nome da impressora virtual (opcional)
+virtual_printer_create	Criar impressora virtual
+virtual_printer_save	Guardar impressora virtual
+virtual_printer_delete	Eliminar impressora virtual
+virtual_printer_created	Impressora virtual “{name}” criada
+virtual_printer_deleted	Impressora virtual “{name}” eliminada
+virtual_printer_updated	Impressora virtual atualizada
+virtual_printer_updated_named	Impressora virtual “{name}” atualizada
+virtual_draft_layout	Valores definidos para a próxima impressora virtual
+virtual_draft_send	Valor definido para a próxima impressora virtual
+virtual_need_real	Selecione primeiro uma impressora real
+virtual_need_select	Selecione uma impressora virtual para eliminar
+real_printer_selected	Impressora real: {name}
+station_group_heading	Impressoras virtuais
+station_group_apply	Eliminar impressora virtual
+station_group_applied	Eliminado
+station_group_empty	Selecione uma impressora virtual
+station_group_name_ph	Nome da impressora virtual (opcional)
+station_group_save	Criar impressora virtual
+station_group_saved	Impressora virtual guardada
+station_manage_heading	Adicionar ou remover uma seção da loja
+printers_routes_heading	2. Onde imprimir
+route_pick_heading	Local
+route_editing	Editando: {name}
+route_assigned	Adicionado {printer} a {place}
+route_already_assigned	Já neste local: {printer}
+route_removed	Removido {printer} de {place}
+route_cleared	Limpo {name}
+route_assigned_empty	Nenhuma neste local
+route_tap_remove	toque para remover
+route_tap_select	tocar para selecionar
+route_tap_selected	selecionado
+route_pick_printer_first	Toque primeiro uma impressora
+route_assigned_heading	Impressoras
+route_add_heading	Atribuir
+printer_label_ph	Nome (por exemplo, impressora de contador)
+printer_target_ph	Endereço ou nome do sistema
+printer_target_default	impressora padrão
+printer_wire_heading	Formato
+printer_wire_escpos	KOT
+printer_wire_os	Padrão retrato
+printer_wire_os_portrait	Padrão retrato
+printer_wire_os_landscape	Padrão paisagem
+printer_wire_escpos_short	KOT
+printer_wire_os_short	Retrato
+printer_wire_os_landscape_short	Paisagem
+printer_format_custom	Novo formato personalizado
+printer_format_custom_label	Personalizado
+printer_format_custom_added	Formato personalizado adicionado a esta rota
+add_printer	Adicionar impressora
+remove_printer	Remover o último
+route_pick_ph	Fatura ou seção de loja
+route_bill	Conta
+route_default_kitchen	Nenhuma estação (itens não atribuídos)
+route_kot_station	Estação
+route_dont_print	Não imprimir
+stations_heading	Estações
+stations_help	As seções da loja agrupam itens e as impressoras dessa parte da loja. Anexe impressoras em Configurações → Impressoras, defina a ordem de teste e, em seguida, Primeiro que funciona ou Imprimir em todos. As alterações são salvas conforme você avança.
+station_print_heading	Impressoras desta estação
+station_print_help	Escolha uma estação e conecte uma ou mais impressoras. ↑↓ define a ordem de tentativa. O primeiro que funciona pára após o primeiro sucesso; Imprima em todos os envios para todas as impressoras conectadas.
+station_print_pick_ph	Estação para definir impressoras
+station_print_pick_first	Escolha primeiro uma seção da loja
+station_print_editing	A editar impressoras de “{name}”
+station_vps_dd	Impressoras desta estação
+station_vps_dd_n	{n} impressora(s) · toque para mudar
+station_vps_empty	Ainda sem impressoras — procure em Definições → Impressoras
+bill_printers_dd	Impressoras para a conta
+bill_printers_dd_n	{n} impressora(s) para a conta · toque para alterar
+job_layout	Layout
+job_delivery	Como o trabalho é enviado
+job_delivery_help	Documento do sistema operacional, bytes brutos ou ESC/POS. A conta e o bilhete ficam cada um com o seu. Qualquer trabalho pode ir para qualquer impressora que o Find salvou.
+station_vp_attached	Impressora anexada
+station_vp_detached	Impressora removida da estação
+station_print_summary	{mode} · {n} impressora(s)
+station_print_summary_none	Ainda sem impressoras nesta estação — não imprimirá
+stations_none	Ainda não há estações. Adicione uma abaixo. As estações não são utilizadas em uma loja de balcão – deixe-as vazias.
+route_up	Cima
+route_down	Baixo
+route_remove	Remover o último
+route_clear	Não imprimir
+save_printers	Guardar impressoras
+print_test_page	Imprimir página de teste
+no_printer_assigned	Sem impressora
+test_page_no_printer	Sem impressora para {place} — atribua acima e tente de novo
+test_page_pick_first	Escolha primeiro impressora(s) de teste — depois Imprimir página de teste
+test_printers_dd	Impressoras para página de teste
+test_printers_dd_n	{n} impressora(s) de teste · toque para alterar
+kot_test_printers_dd	Impressoras para impressão de teste
+kot_test_printers_dd_n	Impressora(s) {n} para impressão de teste · toque para alterar
+test_printer_picked	Testar em: {name}
+test_printer_cleared	Sem teste em: {name}
+test_page_sent_n	Página de teste enviada a {n} impressora(s)
+test_kot_pick_first	Escolha primeiro a(s) impressora(s) para impressão de teste - depois impressão de teste
+test_kot_sent_n	Impressão de teste enviada para impressora(s) {n}
+cancel_pick	Marcar
+cancel_pick_on	Marcado
+cancel_pick_meta	Marcado para cancelar
+batch_cancel	Cancelar marcados
+batch_cancel_n	Cancelar marcados ({n})
+batch_cancel_none	Marque um ou mais itens enviados primeiro – depois Cancelar marcado
+batch_cancel_title	Cancelar marcados — um motivo, um talão por secção
+batch_cancel_ok	Itens {n} cancelados · {slips} cancelar recibo(s) → {kitchens}
+batch_cancel_ok_noprint	Itens {n} cancelados – a impressão automática está desativada, portanto, não há recibo de cancelamento
+no_printer_kitchen_station	Nenhuma impressora para essa estação
+printers_saved	Impressoras guardadas para este dispositivo
+test_page_sent	Página de teste enviada — veja a impressora
+test_page_sent_one	Página de teste enviada para {name} — veja essa impressora
+printers_found	Encontrado {n}: {list}
+printers_find_synced	{n} encontrados — {new} novos
+printer_on_device	guardado
+printer_already_added	já adicionado
+printer_already_saved	Já salvo: {name}
+find_printers	Procurar impressoras
+printers_looking	A procurar impressoras neste dispositivo e Wi‑Fi…
+saving_printer	Adicionando impressora…
+cancelled	Cancelado
+printers_tap_find	Toque Procurar impressoras: lista as do sistema e as de recibos em rede neste Wi‑Fi.
+printers_none_found	Nenhuma impressora encontrada — escreva um nome do sistema ou um endereço de rede (ex. 192.168.1.50).
+printer_from_find	Adicionado {name}
+kot_printer_ph	Impressora de talões
+bill_printer_ph	Impressora de contas
+kot_print_on	Impressão automática de ingressos: ativado
+kot_print_off	Impressão automática de ingressos: Desativado
+queue_refused	Não aceite pela loja ({n}) — verifique cada um no balcão:
+clear_not_accepted	Verificado — limpar esta lista
+device_name_ph	Nome deste dispositivo
+lan_last_update	última atualização {time}
+lan_not_accepted	{n} não aceites
+connected_now	ligado agora
+backup_failed	A última cópia de segurança automática falhou: {e}
+backup_overdue	Sem cópia de segurança há {n} dias — mantenha a app aberta neste dispositivo para poder fazê-la.
+disk_low	Só {mb} MB livres neste dispositivo — as cópias de segurança vão falhar em breve. Liberte espaço.
+last_seen_devices	Última vez visto: {time}
+sync_interval	Sincronizar a cada {secs}s
+connection_to_shop	Ligação à loja
+supplier_name_ph	Nome do fornecedor (ou parte)
+supplier_ph	Fornecedor
+switch_device	Trocar este dispositivo
+take_payment	Receber pagamento
+tax_added_till	{tax} exclusive
+tax_inside_price	{tax} incluso
+tax_invoice	Fatura fiscal
+till_to_bank	Caixa → banco
+units_heading	Unidades
+unlock_after_pairing	Digitar PIN
+unlock_with_login	Desbloquear com acesso
+unmark	Desmarcar
+update_my_password	Alterar a minha senha
+update_my_pin	Alterar o meu PIN
+duress_heading	PIN de desbloqueio de emergência (só dono)
+duress_help	Opcional. Se este PIN for digitado no desbloqueio em vez do seu, todas as entradas de livros serão apagadas (vendas, livros contábeis, histórico) e a caixa registradora será aberta como Proprietário com aparência normal - itens, preços, balcões, equipe e configurações permanecerão. Esquema e configuração não são excluídos. Use apenas se você for forçado a desbloquear. Deixe em branco e salve para desligar. Nunca é igual ao PIN de ninguém.
+duress_pin_ph	PIN de emergência (4–12 dígitos)
+duress_confirm_ph	Digite de novo
+save_duress_pin	Guardar PIN de emergência
+clear_duress_pin	Desligar PIN de emergência
+duress_on	PIN de emergência ligado
+duress_off	PIN de emergência desligado
+duress_saved	PIN de emergência guardado
+duress_cleared	PIN de emergência desligado
+upi_amount_ph	Valor UPI
+void	Anular
+write_off_ap	Baixar AP
+write_off_heading	Baixar (quitar sem pagamento)
+write_off_nil	Baixar / saldo zero
+your_brand	A sua marca (na app)
+your_categories	As suas categorias
+account_kind	Tipo de conta (toque num)
+actual_total_cap	TOTAL REAL
+amend_help	Selecione uma venda para alterar, anular ou reembolsar. As alterações guardam todo o histórico.
+applied_total_cap	TOTAL APLICADO
+bank_balance	Saldo bancário
+bank_net_today	Líquido bancário de hoje
+branch_export_help	Export escreve branch_snapshot_CODE_DATE.json na pasta de cópias e copia para a área de transferência. Para importar o dia de outra loja, guarde o ficheiro como import_branch_snapshot.json na mesma pasta e toque em Import.
+brand_shown_help	Mostrado nos ecrãs dentro da app. O nome e o ícone da app instalada neste dispositivo ficam como na loja.
+app_icon	Ícone do aplicativo
+logo_help	Marca da loja opcional nas telas do aplicativo.
+onboard_layout	O que você recebe
+item_photo_help	Opcional. Sem foto, mostramos as iniciais do nome do item.
+stamp_heading	Carimbo
+stamp_image_help	Imagem de carimbo opcional nas faturas impressas e no display do cliente.
+payment_qr_heading	QR de pagamento
+payment_qr_image_help	QR estático nas faturas e display do cliente; caso contrário, o pagamento usa um UPI QR dinâmico do VPA acima.
+cash_in_hand	Dinheiro em mão (caixa)
+change_my_pin_heading	Alterar o meu PIN (só o seu)
+connect_to_server	Ligar ao servidor
+counter_locked	Balcão 01 · Bloqueado
+country_pack_help	Um pacote de país define o nome do imposto e o cálculo, o rail de pagamento instantâneo e o id fiscal impresso nas faturas. A Kumkaj não entrega impostos nem emite faturas eletrónicas governamentais.
+currency_use_help	Deslize e toque Usar para qualquer moeda suportada.
+day_close_help	Registar um fecho do dia guarda este resumo (e a diferença da gaveta, se contada) no registo de auditoria. Não para as vendas.
+expenses_word	Despesas
+feature_access_help	Acesso a funções do funcionário selecionado (toque após adicionar)
+footer_local	SQLite local · Grátis para sempre · Sem nuvem
+fresh_book_kirano	Impressoras
+fresh_selected	Fresh escolhido — o catálogo fica vazio. Toque Done quando estiver pronto.
+gross_word	Bruto
+how_start	Como você quer começar?
+kot_print_help_kirano	Quando um KOT é enviado — no balcão ou do dispositivo do empregado — o papel da cozinha imprime aqui sozinho.
+later_country_pack	Impressoras
+local_badge	LOCAL
+mix_type_hint_kirano	Divida entre dinheiro / UPI / cartão / crédito se preciso. O crédito precisa de um cliente acima.
+money_in_sales	Dinheiro entrante (vendas)
+net_word	Líquido
+offline_badge	OFFLINE
+optional_login_help	Acesso opcional (id + senha). O dono define uma vez; depois só o utilizador pode alterar a senha.
+or_unlock_login	Ou desbloquear com id de acesso + senha
+permission_preset	Predefinição de permissões (o que pode aceder)
+preset_help_kirano	Caixa: vender. Gerente: vender + itens + anular/alterar.
+product_locked_kirano	Kirano
+product_only_kirano	Este app é só Kirano, o sistema para restaurantes. Outros ramos têm produtos Kumkaj próprios.
+purchases_cogs	Compras (COGS)
+qty_cap	QTD
+restore_help	Restaurar: escolha uma cópia. Os livros abrem como estavam; os atuais são guardados antes, por isso pode desfazer.
+wipe_data_heading	Eliminar dados locais
+wipe_data_help	Somente proprietário – mesmas opções da desinstalação do Windows. Os registros comerciais limpam o histórico de negociação, mas mantêm itens e configurações (como o PIN de desbloqueio de emergência). A configuração da loja remove o banco de dados de livros. As preferências de tela limpam a janela/idioma. Confirme com o PIN do proprietário. O PIN de desbloqueio de emergência no Team é separado (limpeza secreta no desbloqueio).
+wipe_trading	Registos comerciais
+wipe_schema	Configuração da loja
+wipe_ui	Preferências de ecrã
+wipe_owner_pin_ph	PIN do dono para eliminar
+wipe_delete_selected	Eliminar seleção
+wipe_owner_only	Só o dono pode eliminar dados locais.
+restore_owner_only	Só o dono pode restaurar uma cópia de segurança.
+wipe_owner_pin_needed	Introduza o PIN do dono para eliminar dados locais.
+wipe_nothing_selected	Escolha o que eliminar primeiro.
+wipe_done	Dados locais selecionados eliminados.
+wipe_schema_done	Configuração da loja apagada — escolha Server ou Client para continuar.
+rounded_total	Total arredondado
+setup_app_kirano	Configurar Kirano
+shop_logo_optional	Logótipo da loja (opcional)
+stock_type_help	Escreva o nome do item (parte basta), uma quantidade, e ajuste. Itens ainda não contados precisam de Começar contagem uma vez.
+team_owner_help	O dono cria cada pessoa com nome, título de função, predefinição de permissões e PIN inicial. O dono não pode alterar o PIN de ninguém depois — só essa pessoa pode atualizar o seu próprio PIN.
+staff_name_ph	Nome / id da equipe
+staff_copy_hire_ph	Copiar configuração de (opcional)
+staff_copy_hire	Use a configuração dessa pessoa
+staff_edit_name_ph	Nome de exibição
+staff_rename	Salvar nome
+staff_copy_edit_ph	Copiar configuração de outra pessoa
+staff_copy_edit	Copie sua configuração para o selecionado
+staff_copy_edit_onto	Copie sua configuração para {name}
+staff_deactivate_named	Remover {name}
+staff_renamed	Nome salvo
+staff_setup_copied_hire	Configuração copiada de {name} — defina um novo nome e PIN, em seguida, Adicionar funcionário
+staff_setup_copied_edit	Configurado de {from} copiado para {to}
+staff_copy_need_selected	Selecione quem editar primeiro
+staff_copy_need_source	Escolha cuja configuração copiar
+staff_copy_same	Essa é a mesma pessoa — escolha outra pessoa
+staff_rename_need_selected	Selecione quem renomear primeiro
+team_pick_hint	Escolha quem editar – telas, direitos monetários e estações aparecem apenas para essa pessoa.
+team_stations_help	Estações que eles podem usar
+team_stations_changed	Estações alteradas — Salvar configuração para esta pessoa
+team_features_changed	Telas alteradas — Salvar configuração para esta pessoa
+team_rights_changed	Permissões alteradas — Salvar configuração para esta pessoa
+they_owe_us	Devem-nos
+unit_at_cap	Preço unit.
+units_help	Códigos para etiquetas de itens (kg, piece, bag). Cada unidade deve ligar — diretamente ou através de outras unidades — a um padrão (kg · cm · ml · pc), ex. 1 crate = 2 box e 1 box = 20 cm. Conversões: 1 from = factor to. Moedas nunca são unidades.
+units_picker_help	Toque em Ativar/Desativar para mostrar uma unidade nos seletores de Compras e Itens. Unidades desligadas ainda são convertidas.
+unit_picker_on	Sim
+unit_picker_off	Não
+we_owe_them	Devemos-lhes
+who_unlocking	Quem está a desbloquear?
+locked_word	Bloqueado
+show_pin	Mostrar PIN
+hide_pin	Ocultar PIN
+set_owner_pin	DEFINIR PIN DO DONO
+enter_owner_passcode	INTRODUZIR CÓDIGO DO DONO
+enter_staff_passcode	INTRODUZIR CÓDIGO DO FUNCIONÁRIO
+pin_count_zero	0 / 12 dígitos · pelo menos 4, depois OK
+pin_count_need	{} / 12 dígitos · faltam {}
+pin_count_full	12 / 12 dígitos · toque OK
+pin_count_ready	{} / 12 dígitos · toque OK quando estiver pronto
+pin_hint_choose	Escolha 4–12 dígitos (teclado ou pad) · Enter/OK para guardar
+pin_hint_new	Novo PIN do dono de 4–12 dígitos (teclado ou pad) · Enter/OK
+pin_hint_shop_code	Dispositivo loja · código de emparelhamento {}
+pin_hint_books	Este dispositivo guarda os livros
+pin_hint_paired	Caixa extra emparelhada — desbloquear para vender
+pin_hint_pair_first	Caixa extra — emparelhe primeiro com o dispositivo loja
+unlock_to_continue	Desbloquear para continuar
+no_staff_yet	Ainda sem funcionários — desbloquear como Dono, depois Equipa
+status_server_set_pin	Modo servidor — definir PIN do dono
+status_server_tills	Modo servidor — caixas extra podem juntar-se. Desbloquear
+status_server_unlock	Modo servidor — desbloquear como Dono
+status_client_unlock	Modo cliente — desbloquear para vender
+icon_new_selected	Ícone: novo arquivo selecionado — toque em Salvar marca
+icon_custom	Ícone: marca própria da loja
+icon_default	Ícone: marca Kumkaj (padrão) — escolha a sua
+logo_yours	Logotipo: o da sua loja — exibido nas telas e recibos
+logo_default	Logotipo: marca Kumkaj (padrão) — escolha o seu se tiver um
+tmpl_current	Atual: {} — {}
+tmpl_selected	Selecionado: {} — {}
+setup_complete	Configuração concluída
+onboard_fresh_tmpl	Novo · {} — o catálogo começa vazio; adicione itens em Itens e depois toque em Concluir.
+onboard_book_tmpl	Livro · {} — adicione itens e crédito inicial, depois toque em Concluir.
+onboard_template_tmpl	Dê um nome ao lugar se quiser e escolha como começar.
+tmpl_blurb	Balcão Kirana: venda, estoque, khata, compras de fornecedores, livros.
+tmpl_how	Venda no balcão; Compre para estoque; Livros para o livro do dia.
+reports_facet_title	Relatórios
+reports_facet_help	Livros diários, aging de partes, lançamentos bancários e DRE do período.
+against_bill_ph	Contra a fatura nº acima (opcional)
+aliases_ph	Códigos curtos e aliases – separados por vírgulas (por exemplo, MG02, atta)
+amount_blank_full_ph	Valor (vazio = saldo total)
+amount_owed_ph	Valor devido
+amount_ph	Valor
+amount_received_ph	Valor recebido
+amount_we_pay_ph	Valor que pagamos
+business_name_ph	Nome da empresa
+category_new_ph	Categoria (opcional, criada se nova)
+code_bag_ph	Código (bag)
+conv_factor_ph	Fator (25 = 1 bag → 25 kg)
+country_code_ph	Código do país ex. IN, GB, US, AE, BR
+credit_khata_amount_ph	Valor a crédito / conta
+credit_limit_ph	Limite de crédito (0 = nenhum)
+from_code_ph	Código de (bag)
+item_name_lang_ph	Nome do item — digite no seu idioma
+login_id_opt_ph	Id de login (opcional)
+manager_pin_ph	PIN do gerente (apenas se você não puder anular)
+new_branch_name_ph	Nome da nova filial
+new_password_ph	Nova senha (opcional)
+new_pin_ph	Novo PIN (4–12 dígitos)
+note_bank_ph	Nota (depósito, saque, …)
+note_buy_expense_ph	Nota (combustível, aluguel, …)
+note_expense_ph	Nota (combustível, escritório, …)
+options_kirano_ph	Opções (opcional) — Extra cheese=40, Large=80
+part_second_way_ph	Parte por uma segunda via (opcional)
+phone_ph	Telefone
+place_name_ph	Nome deste local
+qty_example_ph	Quantidade (ex. 1,5 para kg)
+quantity_ph	Quantidade
+reason_required_ph	Motivo (obrigatório)
+role_title_ph	Cargo (ex. Barista)
+service_pct_ph	Serviço % opcional 0/10/12
+short_code_ph	Código curto (MG02)
+starting_password_ph	Senha inicial (opcional)
+starting_pin_ph	PIN inicial (4–12 dígitos)
+station_name_ph	Nome da estação (opcional)
+station_new_ph	Seção (opcional)
+table_name_ph	Nome do contador/baía
+tax_rate_ph	Nome da taxa ou % — Standard, Reduced, 0, 5, 12, 18, 20
+to_code_ph	Código para (kg)
+uncleared_no_ph	Nº não compensado acima
+unit_cost_ph	Custo unitário
+unit_name_bag_ph	Nome (Bag)
+unit_plate_ph	Unidade (prato / peça — vazio = cada)
+pay_credit	Crédito
+book_kind_today	Livro de hoje
+book_kind_month	Livro deste mês
+book_kind_aging	Pendente / débito-crédito
+book_kind_balance	Balanço patrimonial
+order_help	Escolha um pedido aberto ou uma mesa para começar um novo. Toque nos itens prontos, envie o KOT, fature um ou mais itens, divida a conta e receba.
+floor_help	Esta loja vende no balcão. Mesas e área de jantar não fazem parte do Kirano.
+kitchen_help	Quando um KOT é enviado — no balcão ou do dispositivo do empregado — o papel da cozinha imprime aqui sozinho.
+kitchen_empty	Não há tickets abertos (os balcões geralmente deixam esta tela sem uso).
+add_a_table	Adicionar uma mesa
+add_station_heading	Adicionar secção · ex. Hortaliça, Frio, Caixa
+categories_help	Uma categoria mostra a que parte do cardápio um prato pertence — petiscos, prato principal ou biryani. Crie categorias do seu jeito: escolha nossos nomes, renomeie-os ou adicione os seus.
+dish_search_ph	Pesquisar itens ou código curto…
+tile_free	Livre
+tile_occupied	Ocupada
+tile_food_ready	Comida pronta
+tile_bill_printed	Conta impressa
+tile_paid	Pago
+tile_bill_btn	Conta
+tile_occupy_btn	Assentar
+tile_free_btn	Liberar mesa
+tile_ready_btn	Pronta
+tile_undo_bill	Desfazer conta
+summary_busy	mesas ocupadas
+summary_to_collect	a receber
+summary_on_floor	no salão
+floor	Loja
+sizes_as_items_ph	Tamanhos como itens separados (opcional) — Meia=120, Inteira=200
+dish_group_ph	Grupo de tamanho de embalagem (opcional) — por ex. Ata 1kg / 5kg
+discount	Desconto
+remove_discount	Remover desconto
+apply_discount	Aplicar desconto
+save_opening_cash	Salvar fundo de caixa
+close_shift_print	Fechar turno e imprimir
+area_prices_ph	Preços por área (opcional) — AC=220, Viagem=210
+discount_ph	10% ou 50
+discount_reason_ph	Motivo (ex. cliente frequente, comida atrasada)
+opening_float_ph	Dinheiro colocado no caixa esta manhã
+shift_counted_ph	Dinheiro contado na troca
+opening_float	Fundo de caixa
+shift_handover	Troca de turno
+shift_since	Turno desde
+expected_in_drawer	Esperado no caixa
+right_discount	Dar desconto
+floor_in_kitchen	Em andamento
+floor_eating	Comendo
+pick_category	Escolher categoria
+close_category_list	Fechar lista de categorias
+new_category_row	Nova categoria — criada ao salvar o item
+your_category	Sua categoria
+suggested_category	Sugerido - de nossos itens
+category_search_ph	Categoria — procure a sua ou digite uma nova
+line_sent_state	Enviado
+line_nc_state	Cortesia (NC) — sem cobrança
+cancel_item_short	Cancelar
+nc_short	Cortesia
+charge_again_short	Cobrar
+move_short	Mover
+cancel_item_title	Cancele este item – back office recebe um recibo de cancelamento
+nc_item_title	Dar este item como cortesia (NC)
+charge_again_title	Cobrar este item novamente
+move_item_title	Mover este item para outra mesa
+already_cooked	Já preparado (desperdício)
+not_cooked_yet	Ainda não preparado
+return_to_customer	Troco para o cliente
+short_by	Faltam
+tip_not_sale	Gorjeta (da equipe, não é venda)
+right_settle	Receber pagamento
+right_cancel_sent	Cancelar item enviado
+right_complimentary	Cortesia (NC)
+right_move_table	Mover/mesclar contadores
+right_reprint	Reimprimir a conta
+right_allowed	Permitido
+right_with_approval	Com aprovação
+right_denied	Não permitido
+editing_staff	Permissões de
+finding_server	Procurando o servidor da loja neste Wi‑Fi…
+no_server_found	Nenhum servidor encontrado. Verifique se o aparelho da loja está no mesmo Wi‑Fi com caixas extras permitidas, ou digite o IP.
+servers_found_pick	Toque a loja a que quer ligar.
+server_host_selected	A usar {host} — introduza o código de emparelhamento e toque Emparelhar agora.
+print_bill	Imprimir conta
+table_actions	Contra-ações
+move_merge_table	Mover / juntar mesa
+move_help	Mova a ordem deste contador para uma mesa livre ou mescle-a em uma mesa em execução.
+move_target_ph	Nome do contador
+approval_pin_ph	PIN do gerente (só se pedido)
+move_here	Mover para cá
+merge_into	Juntar a ela
+line_reason_ph	Motivo (por exemplo, cliente mudou de ideia, falta de estoque)
+line_qty_ph	Quantos cancelar (vazio = todos)
+line_target_ph	Mover para a mesa (ex. D5)
+confirm	Confirmar
+menu_search_ph	Buscar item ou código curto
+customer_paid_ph	Cliente pagou
+tip_ph	Gorjeta
+table_area_ph	Área (ex. Salão, Viagem, AC)
+table_range_ph	Várias de uma vez: D1-D20
+add_these_tables	Adicione estes contadores
+remove_these_tables	Remova esses contadores
+table_remove_ph	Remover: T1-T24 ou o nome de uma mesa
+find_server	Encontrar o servidor da loja
+bill_format	Formato da conta
+bill_format_help	Impresso com o nome da sua loja em todas as faturas. Linhas separadas com | (por exemplo, MG Road, Rajkot | Ph 98250 00000).
+bill_header_ph	Endereço | telefone
+fssai_ph	FSSAI / licença de loja nº. (opcional)
+bill_footer_ph	Rodapé (ex. Obrigado, volte sempre)
+save_bill_format	Salvar formato da conta
+kot_format	Formato de talão
+kot_format_help	Toque em um campo da lista. A exibição, o tamanho da fonte e a espessura se aplicam a esse campo no tipo de deslizamento selecionado acima. Cada tipo mantém seus próprios tamanhos e pesos.
+kot_format_fields	Campos
+kot_field_next	Campo seguinte
+kot_field_show	Mostrar
+kot_field_hide	Ocultar
+kot_field_on	mostrar
+kot_field_off	ocultar
+kot_field_size	Tamanho da fonte
+kot_field_size_ph	ex. 16, 20, 24, 28, 32…
+kot_weight_light	Fina
+bill_kot_panel_help	Layout da fatura e largura do conteúdo. O caixa é quem emitiu ou pagou a conta – a história completa da venda permanece nos livros.
+std_size_ph	ex. 18, 20, 26…
+kot_show_shop	Nome da loja
+kot_hide_shop	Ocultar loja
+kot_show_time	Hora
+kot_hide_time	Ocultar hora
+kot_show_waiter	Caixa
+kot_hide_waiter	Ocultar caixa
+kot_show_station	Estação
+kot_hide_station	Ocultar estação
+kot_show_table	Balcão
+kot_hide_table	Ocultar mesa
+kot_show_kot_no	N.º do talão
+kot_hide_kot_no	Ocultar ticket Não
+kot_width	Pré-visualização (definir a largura do conteúdo na guia deslizante)
+kot_width_58	58 mm
+kot_width_80	80 mm
+kot_kind_heading	Tipo de ingresso
+kot_kind_original	Original
+kot_kind_duplicate	Duplicado
+kot_kind_modified	Modificado
+kot_kind_cancelled	Cancelado
+kot_style_heading	Tamanho e peso do campo
+kot_style_title	Título
+kot_style_item_qty	Artigo · Qtd
+kot_style_field_pick	Selecionar campo
+kot_weight_regular	Normal
+kot_weight_bold	Negrito
+kot_align	Alinhar
+kot_align_start	Iniciar
+kot_align_center	Centralizar
+kot_align_end	Final
+content_width	Largura do conteúdo (mm)
+content_width_bill	Largura do conteúdo da conta (mm)
+content_width_kot	Largura do conteúdo do ticket (mm)
+content_width_ph	Ou escreva uma largura de conteúdo, 40–210 mm
+content_width_help	Qual a largura deste deslizamento. Bill mantém sua própria largura.
+content_width_bill_help	Qual a largura da impressão da fatura do cliente. Padrão 210 mm (página). 58 mm de deslizamento estreito, 80 mm de largura, 112 mm de 4 polegadas, 210 mm de largura A4. Digite qualquer valor de 40 a 210. Os tickets têm largura própria na aba slip.
+content_width_kot_help	Qual a largura do bilhete impresso. Padrão 80 mm. Cunha estreita de 58 mm, cunha larga de 80 mm, página de 112 mm, 4 polegadas, 210 mm. Digite qualquer valor entre 40 e 210. As contas do cliente têm sua própria largura na guia Fatura.
+vp_paper_width	Largura do conteúdo (mm)
+vp_paper_width_ph	Ou escreva uma largura de conteúdo, 40–210 mm
+vp_paper_width_help	A largura do conteúdo é definida no formato Bill & Slip — separadamente para a nota (padrão 210 mm) e o bilhete (padrão 80 mm).
+kot_size	Tamanho do tipo
+kot_size_s	Pequeno
+kot_size_m	Normal
+kot_size_l	Grande
+std_size	Tamanho do tipo
+kot_copies	Cópias
+kot_copies_1	1
+kot_copies_2	2
+kot_copies_3	3
+kot_title_ph	Título (em branco = BILHETE)
+kot_footer_ph	Nota de back-office (opcional)
+kot_preview	Pré-visualização
+save_kot_format	Salvar formato de deslizamento
+test_kot_format	Impressão de teste
+test_kot_sent	Visualização do ticket enviada
+test_bill_format	Testar conta
+test_bill_sent	Pré-visualização da conta enviada
+test_print_no_printer	Sem impressora para esse trabalho — escolha uma nesta tela
+kot_format_saved	Formato do boleto salvo
+std_print	Tamanho de impressão da fatura
+std_print_help	Tamanho da fonte para trabalhos de fatura padrão Retrato e Paisagem em impressoras de documentos/sistema operacional (inserir pontos — não Pequeno/Normal/Grande). Mesmo tamanho em ambas as orientações.
+std_size_s	Pequeno
+std_size_m	Normal
+std_size_l	Grande
+save_std_print	Guardar tamanho de impressão
+std_print_saved	Tamanho de impressão guardado
+print_brand_kit	Kit de marca impressa
+print_brand_kit_help	Selo opcional e imagens QR de pagamento nas faces das faturas e no display do cliente LAN. O QR UPI dinâmico do VPA acima ainda funciona quando nenhuma imagem QR de pagamento está definida.
+choose_stamp	Escolher carimbo
+clear_stamp	Remover carimbo
+stamp_set	Carimbo: em arquivo – mostrado no display do cliente e nomeado nas faturas impressas
+stamp_none	Carimbo: nenhum
+choose_payment_qr	Escolher QR de pagamento
+clear_payment_qr	Remover QR de pagamento
+payment_qr_set	QR de pagamento: em arquivo – mostrado no display do cliente (substitui o valor UPI QR lá)
+payment_qr_none	QR de pagamento: nenhum — QR do valor a partir do UPI ao pagar
+aggregator_import	Pedidos agregador (ficheiro)
+aggregator_import_help	Local opcional: coloque import_aggregator_orders.json em backups e Importe. O balcão não bloqueia; Zomato/Swiggy ao vivo = Cloud.
+import_aggregator_file	Importar ficheiro agregador
+team_pick_ph	Nome do funcionário a editar
+select_staff	Escolher este funcionário
+rights_help	Ações financeiras para esta pessoa - toque para alternar: Permitido → Precisa do PIN do chefe → Não permitido. Imprimir fatura novamente é apenas faturas; seções são a lista de verificação abaixo.
+dish_picker_help	Pesquise ou navegue em nossos itens e toque em um deles para preencher seu nome e foto – ou mantenha seu próprio nome. Defina seu preço (0 está bom) e adicione item.
+close_dish_list	Fechar lista de itens
+own_item_name	Usar como nome do seu item
+on_your_menu	No catálogo
+edit	Editar
+schemes	Ofertas
+schemes_help	Leve um grátis, desconto percentual e lotes. Exemplo: 2 de arroz e 1 de óleo.
+scheme_bogo_ph	2 arroz, 1 óleo
+add_scheme	Adicionar BOGO
+schedule_ph	Hours — Mon-Fri 07:00-11:00 or Evening 17:00-19:00=150
+upi_vpa_ph	UPI ID (VPA)
+upi_payee_ph	Beneficiário UPI (opcional)
+upi_qr	UPI QR
+show_upi_qr	Mostrar QR UPI
+close_upi_qr	Fechar
+upi_qr_help	O cliente escaneia e paga. Toque em Aceitar pagamento após o pagamento. Segunda tela: abra o URL do servidor/exibição na LAN.
+kot_recall	Recuperar
+recently_done	Concluídos há pouco
+recall_kot_ph	Bilhete # para cancelar
+role_help_customer	Papel: Cliente — AR (eles nos devem). A mesma firma também pode ser fornecedora.
+role_help_both	Papéis: Remetente + Transportadora — uma parte, livros AR e AP, líquido em Relatórios.
+role_help_supplier	Papel: Fornecedor — AP para compras.
+dine_in_pick_table	Não usado em uma loja de balcão
+choose_table	Escolha o contador
+change_table	Trocar mesa
+pick_table_banner	Escolha uma mesa para este pedido
+items_word	itens
+items_section	Itens
+back_to_order	Voltar ao pedido
+new_items_head	Ainda não enviado
+price_ph	Preço
+price_ph_gst_inside	Preço ({tax} incluído)
+cancel_needs_table	As vendas no balcão permanecem no bilhete até você receber o pagamento
+tax_rates_missing_hint	Nenhuma taxa {tax} nesses itens - nos itens definidos Taxa de imposto (os preços já incluem {tax} sob {tax} inclusive)
+taxable_value	Valor tributável
+gst_inside_price_note	({tax} incluído)
+start_with_template	Comece com nosso modelo de itens
+template_heading	Itens iniciais
+template_info	Categorias {c} e itens {d} com fotos, prontos para adicionar. Os preços começam em ₹ 0 – defina o seu depois.
+template_import	Importar modelo completo
+template_confirm	Adicionar itens {d} com suas categorias? Os itens que você já possui permanecem como estão.
+template_yes	Sim, importar
+template_importing	A importar artigos…
+template_import_progress	A importar… {d}/{t}
+template_done	Cada item do nosso modelo está em seus itens.
+template_imported	Adicionados itens {d} e categorias {c} — defina seus preços nesta tela
+client_template_heading	Catálogo de importação
+client_template_info	{title}: categorias {c}, itens {d} com preços, fotos e apelidos. Apenas itens faltantes – os nomes que você já possui permanecem.
+client_template_import	Importar estes artigos
+client_template_confirm	Adicionar itens {d} do {title}? Os itens que você já possui permanecem como estão.
+client_template_importing	A importar {title}…
+client_template_done	Cada item do {title} está em seus itens.
+client_template_imported	Adicionados itens {d} e categorias {c} do {title}
+resv_heading	Reservas
+resv_name_ph	Nome do cliente
+resv_phone_ph	Telefone (opcional)
+resv_guests_ph	Pessoas
+resv_when_ph	Quando — 20:30, tomorrow 13:00
+resv_table_ph	Contador (opcional)
+resv_add	Reservar
+resv_seat	Sentados
+resv_none	Sem reservas a seguir.
+guests_word	pessoas
+delivery_by_ph	Entrega por (estafeta ou funcionário)
+kitchen_all_day	Para preparar: {items}
+split_bill	Dividir conta
+split_go	Fazer conta separada
+cancel	Cancelar
+opening_client	Abrindo cliente…
+preparing_desk	Preparando mesa…
+opening_server	Abrindo servidor…
+creating_server	Criando servidor…
+split_help	Toque nos itens pelos quais um cliente paga · {n} escolhido
+split_send_first	Envie o recibo primeiro - apenas os itens que o back office possui podem ir para uma fatura separada
+split_pick_some	Toque primeiro nos itens da fatura separada
+split_done	Nota separada feita - está no chão ao lado deste balcão
+split_marked	conta separada
+order_empty_pick	Pedido vazio – toque em Adicionar itens acima para escolher os itens.
+add_dishes	Adicionar itens
+order_so_far	Neste pedido: {n} · {total}
+no_dish_match	Nenhum item corresponde a “{q}”
+pick_dishes_help	Toque em um item para adicioná-lo · escolha uma categoria para restringir a lista
+pick_done	Concluído
+pick_done_dd	Concluído · {label}
+printer_route_mode	Se houver várias impressoras neste local
+printer_mode_first	A primeira que funciona
+printer_mode_all	Imprimir em todos
+kot_show_area	Área
+kot_hide_area	Ocultar área
+kot_show_item_hdr	Artigo · Qtd
+kot_hide_item_hdr	Ocultar colunas
+kot_show_title	Linha de título
+kot_hide_title	Ocultar título
+kot_field_order	Imprimir pedido
+kot_field_up	Mover para cima
+kot_field_down	Mover para baixo
+kot_field_cycle	Selecionar próximo
+kot_field_select	Selecionar próximo
+kot_field_time	Hora
+kot_field_kot_no	N.º do talão
+kot_field_area	Área
+kot_field_table	Balcão
+kot_field_shop	Nome da loja
+kot_field_waiter	Equipa
+kot_field_station	Estação
+app_template_blurb_extra	Também: Proprietário Zahir, Admin Asif, Caixa Nawaz; barra lateral frontal; história após 4 horas; Hoje tire a roupa; conta compacta.
+dishes_n	Itens {n}
+recipe_ph	Receita (opcional – não utilizada em uma loja de balcão)
+reorder_ph	Comprar mais em
+set_reorder	Definir nível de reposição
+low_stock_alert	Está acabando — compre logo: {items}
+unpriced_note	Os itens {n} em seus itens ainda não têm preço – eles cobram 0 até que você defina um.
+show_unpriced	Mostrar apenas itens sem preço
+show_all_dishes	Mostrar todos os itens
+role_waiter	Caixa
+role_kitchen	Armazém
+role_title_rest_ph	Cargo (ex. capitão, chefe de cozinha)
+preset_help_rest	Caixa: vender. Gerente: vender + itens + anular/alterar.
+kind_raw	Comprei para uso na loja
+kind_resale	Comprei para vender
+kind_dish	Sem contagem
+buy_unit_ph	Unidade (kg, litro, un)
+add_another_way	+ Outra forma
+parts_status	Lançado {a} de {b} · faltam {c}
+save_expense	Salvar despesa
+rest_ph	Resto
+low_badge	Baixo
+stock_empty	Nada em estoque ainda — o que registar em Comprar aparece aqui.
+recent_changes	Alterações recentes
+lane_declared_label	Fatura fiscal
+lane_owner_label	Nota de caixa
+money_lane_bill	Conta: {lane}

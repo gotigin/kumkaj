@@ -1,0 +1,1351 @@
+# Burmese — မြန်မာ (my). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	စားသောက်ဆိုင်အမှာစာများ၊ မီးဖုတ်ခန်းနှင့်စာအုပ်များ။ အွန်လိုင်းမလိုအပ်ပဲ အခမဲ့။
+unlock	အဖွင့်ချိတ်ပါ
+pin_hint	ပိုင်ရှင် PIN ကို 0000 အနေဖြင့် စတင်သည်
+sell	အော်ဒါ
+buy	ဝယ်ရန်
+books	နေ့စဉ်စာရင်း
+books_help	ယနေ့၏နေရာ။ အမှာစာ = အမှာစာများဝင်နေသည်။ ဝယ်ယူရန် = ဝယ်ယူမှုများနှင့် သုံးစွဲမှုများ။ ပါတီများ = အကြွေးဧည့်ခံမှုနှင့် ပေးသွင်းသူများ။
+buy_help	သုံးစွဲမှုဘောင်ချာများနှင့် ပေးသွင်းသူဘောင်ချာများ (ငွေထုတ်ရန်)။ အကောင့်ပေါ်တွင် ဖော်ပြထားသည့် တင်းဖက်မှုသည် ပါတီစာရင်းတွင် ဆက်သွယ်နေဆဲ ဖြစ်သည်။
+sell_money_in	အမှာစာယူပါ
+buy_money_out	သုံးစွဲမှု / ပေးသွင်းသူဘောင်ချာ
+record_purchase	ဝယ်ယူမှုမှတ်တမ်းတင်ပါ
+add_expense	အသုံးစရိတ်ဗောင်ချာ
+bank_book	ဘဏ်စာစောင်
+credit_help	ပါတီအိုင်ဒီသည် ထူးခြားသည် (နာမည်များ ထပ်နိုင်သည်)။ ဖောက်သည်သည် ခတာစာရင်း ဖွင့်သည် (ကျွန်ုပ်တို့ကို ပေးရန်ရှိသည်)။ ပေးသွင်းသူသည် ကုန်ပစ္စည်း ရောင်းသည် (ကျွန်ုပ်တို့က သူတို့ကို ပေးရန်ရှိသည်)။ နှစ်မျိုးလုံးလည်း ကောင်းသည်။ စာရင်းများ သီးခြားနေပြီး အစီရင်ခံစာများတွင် အသားတင်ကို ပြသည်။
+party_kind_ph	အခန်းကဏ္ဍများ: ဖောက်သည်၊ ပေးသွင်းသူ၊ နှစ်ဖက်လုံး…
+reports_help	နေ့စဉ်စာအုပ်၊ ငွေချေးသူများနှင့်ပေးချေသူများ၊ ဘဏ်စာစောင်၊ အသုံးစရိတ်ဗောင်ချာများ၊ အမြတ်နှင့်ဆုံးရှုံးမှု
+reports_today	နေ့စဉ်စာအုပ် (ယနေ့)
+reports_month	အမြတ်နှင့်ဆုံးရှုံးမှု (လ)
+reports_aging	အကြွေး/ထုတ်ငွေ-ဝင်ငွေ
+reports_balance_sheet	စာရင်းဇယား
+reports	ဘဏ်စာအုပ်နှင့် အကျိုးအမြတ်နှင့်အစွန်းကြွေးစာမျက်နှာ
+refresh	ပြန်လည်စတင်
+undo	မလုပ်ဆောင်မီ
+start_tracking	နောက်လိုက်စောင့်ကြည့်မှုစတင်မည်
+stock_minus	− စတော့ရှယ်ယာ
+stock_plus	+ စတော့ရှယ်ယာ
+settle_cash	ငွေသားစနစ်ဖြင့်ဖြေရှင်းမည်
+settle_card	ကတ်စနစ်ဖြင့်ဖြေရှင်းမည်
+items	မီနူးနှင့် အချက်အလက်များ
+nav_items	မီနူး
+more	နောက်ထပ်
+your_items	သင့်မီနူး
+items_help	တစ်ခုချင်းစီကိုတည်းဖြတ်ရန် ပေါက်နှိပ်ပါ။ အချက်အလက်အသစ်သည် ဖောင်ကို ရှင်းလင်းစေပါသည်။ ကျွန်ုပ်တို့၏ အစားအစာများကို ရှာကြည့်ပါ သို့မဟုတ် သင့်ကိုယ်ပိုင်အမည်နှင့် ဓာတ်ပုံကို ရိုက်ထည့်ပြီး စျေးနှုန်း သတ်မှတ်ပါ (0 လည်း အဆင်ပြေပါသည်)၊ ထို့နောက် ထည့်ပါ။ ရောင်းအားများကိုပြီးစီးပြီးသား အမည်ဖြင့် ထည့်ထားလိမ့်မည်။
+add_item	အချက်အလက်ထည့်မယ်
+new_item	အချက်အလက်အသစ်
+adding_item	အချက်အလက်အသစ် ထည့်နေခြင်း
+editing_item	တည်းဖြတ်ခြင်း
+save	သိမ်းမည်
+remove	ဖယ်မည်
+removed_items	ဖယ်ရှားလိုက်သော အချက်အလက်များ
+removed_help	ပြန်လည်ထည့်သွင်းခြင်းသည် ပစ္စည်းကို မူလအတိုင်း မီနူးတွင် ပြန်လည်ထည့်သွင်းပေးသည် — စျေးနှုန်း၊ ဓာတ်ပုံနှင့် အကြောင်းအရာအမျိုးအစားတို့ပါဝင်သည်။ ကျွန်ုပ်တို့၏ အစားအစာ အခြေခံ စာရင်းကို မဖျောက်ပါဘူး၊ ထို့ကြောင့် အစားအစာတစ်မျိုးကို ပြန်လည်ထည့်သွင်းနိုင်သည်။
+restore_item	ပြန်လည်ထည့်သွင်းပါ
+empty_catalog	အစားအစာ မရှိသေးပါ။ မီနူးဖွင့်ပြီး အစားအစာတစ်မျိုးထည့်ပါ (နာမည် + စျေးနှုန်း)၊ ထို့နောက် အမိန့်ယူပါ။
+total	စုစုပေါင်း
+cash	ငွေသား
+upi	UPI
+card	ကတ်
+credit	ဖောက်သည်များ
+clear	ရှင်းမည်
+ready_to_sell	ဘွတ်ကင်အဆင်ပြေပြင်ဆင်ပြီး
+today_prefix	ယနေ့
+today_mid	ယနေ့
+owed	ထူးခြားပြီး
+round_word	သွားလည်မည်
+back	နောက်သို့
+sold_out	မရနိုင်ပါ
+restock	ပြန်လည်သိုလှောင်ရန်
+not_tracked	လိုက်လံမထောက်လှမ်းထားပါ
+in_stock	ကုန်ပစ္စည်းရှိတယ်
+marked_sold_out	မရနိုင်အဖြစ်အမှတ်အသားပေးထားသည်
+add_upper	ထည့်ပါ
+na	N/A
+qty	အလေးချိန်/အရေအတွက်
+unit_at	နှုန်းအတွက် @
+actual	အစစ်အမှန်
+applied	လျှပ်စစ်လျင်
+note_ph	မှတ်ချက် (အလိုက်သုံးနိုင်သည်)
+rounded	ဝိုင်းချင်း
+split	ခွဲမည်
+send_kot	အပို့ပါ KOT
+send_kot_to	အပို့ရန် → {kitchens}
+send_kot_again	နောက် KOT အတွက် ဟင်းလျော့များထည့်ရန်
+send_kot_held	သိမ်းဆည်းထားသော ဟင်းလျော့များ — ပို့ရန် အနေဖြင့် သေချာအောင် ပြန်လုပ်ရန်
+reprint_kot	ပြန်လည်ရွေးချယ်၍ ပေါက်ပါ
+reprint_kot_ok	ပြန်လည်ပေါက်ပြီး {n} ဟင်းလျာ(များ) · {slips} စလစ်(များ) → {kitchens}
+reprint_kot_needed	အရင် KOT ပို့ပါ — ထို့နောက် ဟင်းလျာများ ထည့်ပြီး ရွေးထားသည်ကို ပြန်ပုံနှိပ်ပါ
+reprint_kot_none_selected	ပို့ပြီးသော ဟင်းလျာတိုင်းကို ကျော်ထားသည် — ပြန်ပုံနှိပ်မည့် ဟင်းလျာတွင် «ပုံနှိပ်မှုတွင်» ကို နှိပ်ပါ
+reprint_kot_client	ပြန်လည်ပေါက်ပါ ({n}) အပို့အား {place} — မီးဖိုချောင်သည် Server တွင် ပေါက်ပါ
+print_cancelled_kot	အားလုံး ရပ်တန့်မှုများကို ပေါက်ပါ
+print_cancelled_kot_ok	ရပ်တန့်ထားသည့် {n} ဟင်းလျာ(များ) · {slips} စလစ်(များ) → {kitchens}
+print_cancelled_kot_needed	ရပ်တန့်ထားသည့် ဟင်းလျာများဖြင့် စားပွဲကို ပထမဦးစွာ ဖွင့်ပါ
+print_cancelled_kot_none	ဤအမှာစာတွင် ဖျက်သိမ်းထားသောအစားအစာ မရှိပါ
+print_cancelled_kot_client	ဖျက်သိမ်းထားမှု ({n}) ကို {place} ပို့သွားသည် — မီးဖိုချောင်တွင် Server တွင် ပုံနှိပ်သည်
+kot_banner	အမျိုးအစားဘန်နား
+kot_banner_ph	ဘန်နား (သို့မဟုတ် အလွတ် = မရှိ)
+kot_item_prefix	ပစ္စည်း မြှောက်စာသား
+kot_item_prefix_ph	ဥပမာ [CANCELLED]
+kot_strike	အစားအစာအမည် တားဖျက်
+kot_strike_note	အစားအစာ မှတ်ချက် တားဖျက်
+kot_strike_on	ဖွင့်
+kot_strike_off	ပိတ်
+bill_item_layout	မူပိုင်ပစ္စည်း အစီအစဉ်
+bill_item_layout_columns	တန်းများ
+bill_item_layout_stacked	တန်းစွဲထားသည်
+bill_item_header	တန်းခေါင်းစီးများ
+bill_item_hdr_item	ပစ္စည်းခေါင်းစီး
+bill_item_hdr_qty	အရေအတွက် ခေါင်းစီး
+bill_item_hdr_price	စျေးနှုန်း ခေါင်းစီး
+bill_item_hdr_amount	စုစုပေါင်း ခေါင်းစီး
+bill_item_name	မုန့်ဟင်းခါးအမည်
+bill_item_qty	အရေအတွက်
+bill_item_price	ဈေးနှုန်း
+bill_item_amount	ပမာဏ
+bill_item_note	မုန့်ဟင်းခါးမှတ်ချက်
+bill_item_col_gap	ကော်လံအကြားအကွာအဝေး
+bill_item_col_order	ကော်လံအဆင့်
+bill_item_col_sep	ကော်လံစည်းမျဉ်းများ
+bill_item_gap_tight	နီးကပ်
+bill_item_gap_comfort	အဆင်ပြေ
+bill_item_gap_wide	ဝကျယ်
+bill_item_num_width	နံပါတ် ကောလံများ
+bill_item_num_compact	ကုန်စည်း
+bill_item_num_comfort	အဆင်ပြေ
+bill_item_num_wide	ဝကျယ်
+bill_item_num_align	နံပါတ်များ လိုက်ပြီးတန်းစီသည်
+bill_item_gap_em	ကြားနား (em)
+bill_item_qty_min	အရေအတွက် အနည်းဆုံး (em)
+bill_item_price_min	စျေးနှုန်း အနည်းဆုံး (em)
+bill_item_amount_min	စုစုပေါင်း အနည်းဆုံး (em)
+kot_item_qty_width	အရေအတွက် ကောလံ
+kot_item_num_align	ပမာဏ alignment
+bill_total_qty_label	စုစုပမာဏတပ်ဆင်ခြင်း label
+bill_total_subtotal_label	အပိုစုစုပမာဏ label
+bill_total_grand_label	စုစုပေါင်း label
+bill_total_paid_label	ပေးချေပြီးသောစုစုပမာဏ label
+bill_meta_pair	လိုင်းနှင့်မျှဝေပါ
+bill_pair_alone	အကယ်၍မဟုတ်ပါ
+bill_item_piece_on	ဖွင့်
+bill_item_piece_off	ပိတ်
+bill_total_qty	စုစုပမာဏ
+bill_total_subtotal	အပိုစုစုစုပေါင်း
+bill_total_grand	စုစုပေါင်း
+reprint_incl	ပုံနှိပ်မှုတွင်
+reprint_skip	ကျော်မည်
+reprint_skip_meta	ပြန်လုပ်မည့်ပုံနှိပ်မှုကို မလုပ်ပါ
+kot_dest_hint	သင် သတ်မှတ်ထားသော {kitchens} အတွက် ပရင့်တာများတွင်ပုံနှိပ်သည် Settings → Printers မှာ
+kot_sent_hint	နောက်ဆုံး KOT သည် {kitchens} သို့ ဖြစ်ပြီးပါပြီ။ နောက်တစ်လက်မှတ်အတွက် အစားအစာများကိုထည့်ရန်နှိပ်ပါ — သို့မဟုတ် အတူတူ အတွက် KOT ကို ထပ်မံပုံနှိပ်ပါ။
+kot_sent_printing	KOT သည် {kitchens} သို့ ပေးပို့ပြီး — ပုံနှိပ်နေပါသည်
+kot_sent_not_printed	KOT သည် {kitchens} သို့ ပေးပို့ပြီးပါသည် သို့သော် မပုံနှိပ်ရသေး: {why}။ မီးဖိုချောင်ကိုပြောပါ၊ ထို့နောက် ပရင့်တာကို ပြင်ဆင်ပြီး ထပ်မံပုံနှိပ်ပါ။
+kot_sent_screen	KOT ကို {kitchens} သို့ ပေးပို့ပြီး
+kot_queued_shop	KOT ကို {place} အတွက် → {kitchens} သိမ်းဆည်းပြီး; အဆိုပါဆိုင်ကိရိယာသည် ထုတ်ပေးသည်
+kot_job_label	KOT ကို {place} အတွက် → {kitchens}
+kot_job_reached	KOT ကို {place} အတွက် {kitchens} အထိရောက်ရှိသည်
+kot_unassigned	မီးဖိုချောင် (စခန်းမရှိ)
+kot_unassigned_held	စခန်းမပါဘဲ {n} ပန်းကန်(များ) ကို ဖိထားသည် — ပန်းကန်များကို ပေးပို့ရန် လိုင်းပေါ်တွင် ဖိထားမှု ချမှတ်ခြင်းကို ဖျက်ပါ
+kot_station_ph	မီးဖိုချောင်
+kot_station_dd	မီးဖိုချောင်
+kot_station_dd_n	မီးဖိုချောင် · {stations}
+kot_set_station	ဤစခန်းကို အသုံးပြုပါ
+kot_station_applied	စတေးရှင်းကို {n} ပန်းကန်(များ) တွင်စနစ်တကျထားပြီး: {station}
+kot_station_cleared	စတေးရှင်းကို {n} ပန်းကန်(များ) မှ ဖယ်ရှားပြီး: {station}
+kot_station_needed	အရင်ဆုံးမီးဖိုချောင်စတေးရှင်းကိုရွေးပါ
+kot_station_not_allowed	မီးဖိုချောင်အသုံးပြုရန်မခွင့်ပါ: {station}
+kot_station_none	မီးဖိုချောင်စတေးရှင်းများမရှိသေးပါ — Kitchen သို့မဟုတ် Settings → Areas · stations တွင်တစ်ခု ထည့်ပါ
+pos_tab_items	ထည့်ထားသောပစ္စည်းများ
+pos_tab_payment	ငွေတောင်းခံခြင်း
+hold_send	ခဏရပ်
+hold_send_on	တားထားသော
+hold_send_meta	ဖမ်းထားသည် — မဟုတ်ပါ KOT
+station_remove	ရထားဘူတာကို ဖယ်ရှားပါ
+station_remove_ph	ဖယ်ရှားရန် စာရင်းရှိ ဘူတာကို နှိပ်ပါ
+station_removed	ဖယ်ရှားပြီးသော ဘူတာ: {name}
+settings_hub_title	ဆက်တင်
+settings_hub_help	တစ်ချိန်တည်းတွင် တစ်ဧရိယာသာ ဖွင့်ပါ — အလှည့်ကျ စာရွက်နည်း၊ ရွေးချယ်မှု ပိုရှင်းလင်းစေသည်။
+settings_back	နောက်သို့
+settings_sec_language	ဘာသာစကားနှင့် ငွေကြေး
+settings_sec_country	နိုင်ငံနှင့် အခွန်
+settings_sec_tills	အခြားကိရိယာများ
+settings_sec_brand	သင်၏တံဆိပ်
+settings_sec_units	ယူနစ်များနှင့်ပြောင်းလဲမှုများ
+settings_sec_pickers	ဒေသများ · စက်ရုံများ · အခွန်နှုန်းများ
+settings_sec_printers	ပရင်တာများ
+settings_sec_bill	ဘီလ်နှင့် KOT ပုံစံ
+settings_sec_selling	အစီအစဉ်များနှင့်အရောင်း
+bill_kot_tab_bill	ဘေလ်
+bill_kot_tab_kot	KOT
+settings_sec_alerts	သတိပေးချက်များ
+alerts_help	အခြေအနေစာတိုများ မည်မျှကြာမြင့်အောင် အမျိုးအစားတွင် ပြသမည် (ဤ login)
+snack_secs_ph	စက္ကန့်များ (3–60, ပုံမှန် 10)
+snack_secs_save	သတိပေးချိန်ကို သိမ်းဆည်းမည်
+snack_secs_saved	သတိပေးချိန် သိမ်းဆည်းပြီး — {n} စက္ကန့်
+settings_sec_backup	မိတ္တူယူခြင်းနှင့် ပြန်လည်သုံးစွဲခြင်း
+settings_sec_diag	ရောဂါသိပ္ပံစမ်းသပ်ခြင်း
+diag_privacy_help	မှတ်တမ်းများသည် ဒီစက်ပစ္စည်းပေါ်တွင် မျှဝေရန်။ လျှို့ဝှက်ချက်များ (PIN၊ စကားဝှက်များ) မည်သည့်အချိန်မဆို သိမ်းဆည်းမထားပါ။ စက်ပစ္စည်းအပြင်ပေါ်သို့ package မျှဝေရန် သင်၏ ထူးခြားသော အတည်ပြုပြဌာန်းချက် လိုအပ်သည် — မရောင်းချခြင်းနှင့် အခြားပါတီတွေကို မပေးပါ။
+diag_level	အသေးစိတ်အဆင့်
+diag_level_error	အမှားများ
+diag_level_warn	သတိပေးချက်များ
+diag_level_info	Info
+diag_level_debug	Debug
+diag_support_start	30 မိနစ် စိုင်ပေါ် အထောက်အပံ့အစည်းအဝေး စတင်ပါ
+diag_support_stop	အထောက်အပံ့အစည်းအဝေးကို ပြီးဆုံးပါ
+diag_support_started	Debug အချက်အလက်အတွက် 30 မိနစ်အထောက်အပံ့အစည်းအဝေး
+diag_support_ended	အထောက်အပံ့အစည်းအဝေး ပြီးဆုံးသွားပါပြီ
+diag_export_local	ဒေသဆိုင်ရာ မိတ္တူ ရ(export) ထုတ်ပါ
+diag_export_local_done	ဒေသဆိုင်ရာ ရှာဖွေရေး စနစ် {path} တွင် ပြင်ဆင်ပြီး — မိတ္တူသိုလှောင်မည့်နေရာကို ရွေးချယ်ပါ
+diag_approve_send	ဒီစက်မှ မျှဝေရန် ခွင့်ပြုပါ
+diag_send_help	အတည်ပြုချက်သည် တစ်ပက်ကိန်းတည်းဖြစ်ပြီး၊ ထိုအပြီး သက်တမ်းကုန်သည်။ အပေါင်းအသင်း — ထုတ်ကုန်ကို ပြင်ဆင်ရန် သို့မဟုတ် တိုးတက်အောင် သုံးသည်။ တတိယပါတီများနှင့် မမျှဝေပါ။ Linux၊ Windows၊ macOS၊ နှင့် Android ပေါ်တွင် အသုံးပြုနိုင်ပါသည်။
+diag_send_approved	အောက်ပါအထုပ်အတွက် မွန်မည့်မျှဝေမှု (မကြာမီ သက်တမ်းကုန်မည်)
+diag_export_send	မျှဝေမှုအထုပ်ဖန်တီးပါ (အတည်ပြုရန်လိုသည်)
+diag_export_send_done	မျှဝေမှုအထုပ် {path} တွင် အသင့်ဖြစ်ပါပြီ — သိမ်းမည့်နေရာကိုရွေးပြီး၊ ထို့နောက် Kumkaj ပံ့ပိုးမှုထံသာ ပေးပို့ပါ
+diag_save_bundle	သုံးသပ်မှု မိတ္တူကို သိမ်းမည်
+diag_bundle_saved	သုံးသပ်မှု မိတ္တူ {path} သို့ သိမ်းပြီး ဖြစ်ပါသည်
+diag_bundle_failed	သုံးသပ်မှု မိတ္တူကို သိမ်း၍ မရပါ — ထပ်မံကြိုးစားပါ
+diag_clear	သုံးသပ်မှုများသော မှတ်တမ်းများကို ဖယ်ရှားပါ
+diag_cleared	သုံးသပ်မှု မှတ်တမ်းများ ဖယ်ရှားပြီး ဖြစ်ပါသည်
+sidebar_settings	ဘယ်ဘက်ဘား
+sidebar_settings_help	ဘက်ဘားအိုင်ကွန်နှင့်တူညီသည်။ စီးရီးတန်းကိုဆွဲ၍ အစဉ်အတိုင်းပြန်စီနိုင်သည်။ ပြောင်းစက်ကိုဖိ၍ပြသခြင်း သို့မဟုတ် ဖျောက်ခြင်း။ ဆက်တင်များနှင့် ထိန်းချုပ်မှု များကို အမြဲဘားပေါ်တွင်ထားသည်။
+sidebar_always_on_short	အမြဲပေါ်
+sidebar_back_settings	နောက်သို့
+sidebar_shown	ပြသထားသည်
+sidebar_hidden	ဖျောက်ထားသည်
+sidebar_always_on	ဘားပေါ်တွင်အမြဲ
+sidebar_shown_hint	ဘက်ဘား / အောက်ဆုံးတပ်များတွင်ပြသထားသည်
+sidebar_hidden_hint	ဘားမှ ဖျောက်ထားသည်
+sidebar_menu_items	မီနူးနှင့်အချက်အလက်များ
+sidebar_enable_all	အားလုံးဖွင့်ပါ
+sidebar_disable_all	အားလုံးပိတ်ပါ
+sidebar_order_saved	ဘက်ဘားမှာအမှာစာအစီအစဉ်သိမ်းပြီးပြီ
+sidebar_visibility_saved	ဘက်ဘားမြင်သာခြင်းသိမ်းပြီးပြီ
+amounts_hide	ဖျောက်မည်
+amounts_show	ပြမည်
+printers_none_hint	ဤစက်ပေါ်တွင်ပရင်တာကိုမည်သူမဆိုပထမဆုံးသိမ်းပြီးနောက်၊ ငွေလက်ခံခြင်းသို့မဟုတ်မီးဖိုခန်းသို့ထည့်ပါ
+counter	ကောင်တာ
+dine_in	စားသောက်ရန်
+takeaway	ပါဆယ်
+order	အော်ဒါ
+tables	စားပွဲများ
+kitchen	မီးဖိုချောင်
+sales	အရောင်း
+sales_refunds	အရောင်းနှင့်ပြန်အမ်းငွေများ
+day_close	နေ့အဆုံးပိတ်သိမ်းခြင်း
+reports_expenses	ဘဏ်စာအုပ်နှင့် အကျိုးအမြတ်နှင့်အစွန်းကြွေးစာမျက်နှာ
+nav_reports	အစီရင်ခံစာ
+nav_settings	ဆက်တင်
+nav_lock	ပိတ်ထားသည်
+no_sale_yet	အရောင်းမရှိသေးပါ
+favorites	နှစ်သက်ရာများ
+favorites_help	သင့်အကောင့်နဲ့ အမြဲရောင်းတဲ့ပစ္စည်းများ။ ငွေတောင်းပေါက်ထဲသို့ တစ်ခုထည့်ပါ၊ သို့မဟုတ် အောက်ကပစ္စည်းအားလုံးမှ သင့်စာရင်းကို ဖန်တီးပါ။
+your_favorites	သင့်အကြိုက်ဆုံးများ
+all_items	အရာအားလုံး
+frequent	အများဆုံးကြိမ်ကြည့်သော
+added_items	ထည့်ထားသော အရာ(များ)
+added_items_empty	ဤအမှာစာတွင် မည်သည့်အရာမျှ မရှိသေးပါ — အရာအားလုံးမှ သို့မဟုတ် စာရင်းအမျိုးအစားမှ အစားအစာကို ထည့်ပါ။
+frequent_config_help	ပြီးဆုံးထားသော ငွေလက်ခံမှုများအရ အရောင်းအများဆုံး အစားအစာများ။ မည်မျှရက်ကြည့်မည်နှင့် မည်မျှအစားအစာကိုပြသမည်ကို သတ်မှတ်ပါ။
+frequent_days_ph	ရက်များ (၁)
+frequent_limit_ph	အရာ(များ) (၂၄)
+frequent_apply	သုံးမည်
+frequent_saved	အကြိမ်ကြိမ်ဖြစ်သော: နောက်ဆုံး {d} ရက်(များ), ထိပ်ဆုံး {n} — {c} ဟင်း(များ)
+frequent_empty	ဒီကာလအတွင်း မပြီးစီးသေးသော ရောင်းအားများ — ဘေလ်ကို ဖြေရှင်းပါ (Settings မှပြောသလို ₹0 ခွင့်ပြုသည်) သို့မဟုတ် အဲဒီမှာဖော်ပြပါ။
+zero_sales	သုညတန်ဖိုးရတဲ့ ရောင်းအားများ
+zero_sales_help	₹0 သတ်မှတ်ထားသော ဟင်းများနှင့် ₹0 ဖြင့်ဖြေရှင်းထားသော ဘေလ်များ (အခမဲ့ / ပိုင်ရှင်ဆန္ဒ) အတည်ပြုပါ။ ပုံမှန်အားဖြင့် ဖွင့်ထား၍ အခမဲ့အစားအစာများလည်း အကြိမ်ကြိမ်နှင့် ရက်စာရင်းများတွင် မြင်နိုင်ပါသည်။
+zero_sales_on	₹0 ခွင့်ပြုပါ
+zero_sales_off	စျေးနှုန်းလိုအပ်ပါသည်
+zero_sales_saved_on	သုညတန်ဖိုးရ ရောင်းအားကို ခွင့်ပြုသည်
+zero_sales_saved_off	ရောင်းအားများသည် ₹0 ထက် အပေါ်စျေးနှုန်းရှိရမည်
+floor_areas_help	ဧရိယာများသည် စားပွဲခန်းထဲက အခန်း သို့မဟုတ် ဇုန်များဖြစ်သည် (ဆိုင်ထိုင်၊ ပါဆယ်၊ AC …)။ အရင် ဧရိယာ ထည့်ပါ၊ ပြီးမှ စားပွဲများ ထည့်ပါ — ဧရိယာတိုင်းသည် စားပွဲခန်းပေါ်က သီးခြားအုပ်စုဖြစ်သည်။
+area_new_ph	အရပ် / ခန်းအသစ် (ဥပမာ AC, ဧရိယာ)
+add_area	အရပ်ထည့်ရန်
+area_added	အရပ် “{name}” ပြင်ဆင်ပြီး — ထိုအရပ်ထဲတွင် အစားခုံတွေထည့်ပါ
+no_favorites	အကြိုက်ဆုံး မရှိသေးသေး — အောက်ပါစာရင်းမှ ပစ္စည်းများထည့်ပါ
+add_to_bill	ဘီလ်ထဲသို့ ထည့်ရန်
+added	ထည့်ပြီး
+owes_word	အကြွေးကျန်
+selected_word	ရွေးထားပြီး
+chip_clear_credit	ရှင်းလင်း — ခရက်ဒစ် သို့မဟုတ် ရှေ့အရစ်ကျယူမည်
+chip_missing_customer	ရွေးထားသည့် ဖောက်သည်မရှိ — ထပ်ရွေးပါ
+chip_no_customer	ဖောက်သည် မရှိသေးပါ — နာမည်ရိုက်ပြီး ခရက်ဒစ်ကိုနှိပ်ပါ
+credit_summary_fmt	{} ဧည့်သည်များ · ဖွင့်ထားသော ခရက်ဒစ် {} · ထိန်းထားသော ရှေ့အရစ် {}
+recent_label	နောက်ဆုံးသတင်း:
+kot_new_waiting	အသစ် — မျှော်လင့်နေပြီး
+kot_preparing	ပြင်ဆင်နေခြင်း
+kot_ready_serve	ပြင်ဆင်ပြီး — ဝန်ဆောင်ပေးပါ
+kot_done_cap	ပြီးပြီ
+kot_cancelled	ပယ်ဖျက်ပြီး
+kot_start_btn	စတင်ရန်
+kot_mark_ready	ပြင်ဆင်ပြီးအမှတ်အသားပေးပါ
+kot_done_btn	ပြီးပြီ
+table_free	အခမဲ့ — မှာယူရန်နှိပ်ပါ
+start_order	အမှာစာစတင်ပါ
+open_bill	ဘီလ်ဖွင့်ပါ
+collect_payment	ငွေချေမှုစုဆောင်းပါ
+table_running	ပြေးနေသည်
+payment_pending	ငွေချေမှုစောင့်နေသည်
+collect_at_counter	ကောင်တာတွင်စုဆောင်းပါ
+inventory	ကုန်ပစ္စည်းစာရင်း
+inventory_stock	ကုန်ပစ္စည်းစာရင်းနှင့်အရ_inventory
+branches	ဆိုင်များ
+branches_org	ဆိုင်များနှင့်အဖွဲ့အစည်း
+credit_customers	ပါတီများ (ခတ်တ & ပံ့ပိုးသူများ)
+customer_name_ph	ပါတီအမည်
+new_customer_ph	ပါတီအသစ်အမည်
+item_name_ph	ပစ္စည်းအမည် (ဥပမာ Masala Dosa)
+item_price_ph	ဈေးနှုန်း
+start_template	ထုတ်ကုန်
+team	အဖွဲ့
+team_pins	အဖွဲ့ & PINများ
+my_pin_settings	ကျွန်ုပ်၏ PIN
+settings_hub_help_my_pin	ဤစက်ပေါ်တွင် လက်မှတ်ထိုးထားသော ပုဂ္ဂိုလ်အတွက် ဖွင့်မှု PIN ကိုပြောင်းပါ။
+team_self_help	တစ်ကြိမ် စာရင်းထဲဝင်ခြင်း: ဖွင့်မှု PIN အသစ်၊ စကားဝှက်အသစ် သို့မဟုတ် နှစ်ခုလုံး။ မိမိရရှိထားသည့်အတိုင်းထားလိုပါက ရွက်ထည်ကို အသေးစိတ်မဖြည့်ပါနဲ့။ မတူညီသော မျက်နှာပြင်များ သို့မဟုတ် အခွင့်အရေးများ လိုအပ်ပါက နောက်ဖိုင်ပိုင်ရှင်ကိုမေးပါ။
+backup_settings	မိတ္တူယူခြင်းနှင့် ကိရိယာများ
+lock_app	အက်ပလီကေးရှင်းကို လုံခြုံရေးလုပ်ပါ
+pick	ရွေးပါ
+select	ရွေးမည်
+advance	တိုးတက်ပြီး
+owner	ပိုင်ရှင်
+staff	ဝန်ထမ်း
+photo	ဓာတ်ပုံ
+auto	Auto
+prev	ရှေ့တွင်
+next	ရှေ့သို့
+ok	OK
+this_shop	Server
+extra_till	Client
+off	ပိတ်
+tables_kitchen	စားပွဲများနှင့်မီနူးခန်း
+server	Server
+client	Client
+language_currency	ဘာသာစကားနှင့် ငွေကြေး
+language	ဘာသာစကား
+choose_language	သင့်ဘာသာစကားကို ရွေးချယ်ပါ
+language_setup_hint	ဤစက်ပစ္စည်း၏ဘာသာစကားကိုလိုက်နာပါ၊ သို့မဟုတ်ကိုယ်ပိုင်အားရွေးချယ်ပါ။
+lang_follow_platform	စက်ပစ္စည်းဘာသာစကား
+lang_pick_user	ဘာသာစကားကိုရွေးပါ
+lang_platform_now	ဒီစက်ပစ္စည်း၏ဘာသာစကားယခု
+selected_language	ရွေးထားပြီး
+continue	ဆက်လုပ်
+this_device	ဒီစက်ပစ္စည်း
+device_use_q	ဒီစက်ပစ္စည်းကိုဘယ်လိုအသုံးပြုမလဲ?
+last_server_mode	Server ဖြစ်ခဲ့သည် — ဆက်ဖတ်ရန် တိုက်ပါ
+last_client_mode	Client ဖြစ်ခဲ့သည် — ဆက်ဖတ်ရန် တိုက်ပါ
+choose_server	ဆာဗာရွေးပါ
+choose_server_hint	ရှိပြီးသား စာဗာကို ဖွင့်ပါ၊ သို့မဟုတ် အခြားလုပ်ငန်းအတွက် အသစ်ဖန်တီးပါ။
+create_new_server	စာဗာအသစ် ဖန်တီးပါ
+open_server	ဖွင့်မည်
+new_server_name_ph	စာဗာအသစ်အမည် (အလွန်လိုအပ်လျှင်)
+server_remove_pin_ph	စာဗာကို ဖယ်ရှားရန် မူပိုင်ရှင် PIN
+only_owner_remove_server	စာဗာကို ဖယ်ရှားနိုင်သူမှာ မူပိုင်ရှင်ပင်သာ ဖြစ်သည်
+owner_pin_remove_server	ပိုင်ရှင် PIN သည် ဒီဆာဗာကို ဖယ်ရှားရန် လိုအပ်သည်
+device_setup_help	Server သည် ဒီနေရာမှာ စာအုပ်များကို ထိန်းသိမ်းထားသည်။ Client သည် Server နှစ်ခုနှင့် ကိုက်ညီသည်။
+app_template_heading	Rajdhani အက်ပ်အစမ်း
+app_template_blurb	Rajdhani မီနူးကို အသုံးပြုသည်; ပိုင်ရှင် Zahir (ဇာဟီး), Admin Asif (အာစစ်, PIN 1111), ဝိတ်တာ Nawaz (နဝပ်ဇ်, PIN 0000); FOH ဘားဆိုက်ဘာ; သမိုင်းခရီးသည် ၄ နာရီအပြီး ရှင်းလင်းသွားသည် (နှင့် အလွယ်တကူ Backup မှာ Clear လုပ်နိုင်သည်); ဒီနေ့လှည့်ဖျက်ခြင်း; ကွက်တိအကြပ် + သေးငယ်သော tray များအတွက် စံရွေ့ပေါက်များ။ Sidebar အဖွဲ့ဝင်များကို Settings မှာ ပြန်ဖွင့်နိုင်သည်။
+app_template_apply	Rajdhani အက်ပ်အစမ်း
+app_template_skip	ယခုအချိန်တွင် ကျော်ပါ
+app_template_status	Server အသင့်ရှိသည် — Rajdhani အက်ပ်အစမ်းကို အသုံးပြုပါ၊ သို့မဟုတ် ကျော်ပါ
+app_template_importing	{title} ဖြင့် သက်ရောက်မှု လုပ်ဆောင်နေသည်…
+currency	ငွေကြေး
+backup	အရန်သိမ်း
+use	အသုံးပြုပါ
+dont_use	မသုံးပါ
+add_branch	ခေါင်းဆောင်ပေါင်းထည့်ပါ
+add_conversion	ပြောင်းလဲမှုထည့်ပါ
+add_dishes_items	အမျိုးအစားများနှင့်ပစ္စည်းများထည့်ပါ
+add_item_plain	အချက်အလက်ထည့်မယ်
+add_note	မှတ်စုထည့်ပါ
+add_opening_balance	အစရှိသောငွေစာရင်းထည့်ပါ
+add_staff	ဝန်ထမ်းထည့်ပါ
+add_station	စက်ခန်းထည့်ရန်
+add_table	စားပွဲ ထည့်မည်
+add_unit	ယူနစ်ထည့်ရန်
+add_use_name	ဤနာမည်ကိုထည့်ရန် / အသုံးပြုရန်
+allow_extra_tills	အပို ငွေကောင်တာ ခွင့်ပြုမည်
+amend	ပြင်ဆင်ရန်
+apply_country_pack	နိုင်ငံပက်ကိုအသုံးပြုရန်
+datetime_appearance	ရက်စွဲနှင့်အချိန်ပေါ်ပြုခြင်း
+datetime_appearance_help	စာအုပ်များသည်နှစ်အရင် RFC3339 ကိုအတွင်းမှာထားသည်။ ၎င်းများသည် ငွေလက်ခံလွှာများ၊ KOT၊ အစီရင်ခံစာများ နှင့် စက်မျက်နှာပြင်ပေါ်တွင် ရက်စွဲများနှင့် နာရီများ ဘယ်လိုပြသမည်ကိုသာပြောင်းလဲနိုင်သည်။
+datetime_example	ဥပမာလက်ရှိ: {ex}
+date_order	ရက်စွဲ အစီအစဉ်
+date_order_dmy	D/M/Y
+date_order_mdy	M/D/Y
+date_order_ymd	Y-M-D
+time_format	နာရီ
+time_format_24h	၂၄ နာရီ
+time_format_12h	၁၂ နာရီ
+attach_bill_photo	ငွေလက်ခံလွှာဓာတ်ပုံဆက်ပါ
+attach_pdf	PDF ဆက်ပါ
+attach_photo	ဓာတ်ပုံတင်ပါ
+attachments_last_expense	ဆက်စပ်ဖိုင်များ (နောက်ဆုံးအသုံးစရိတ်)
+bank	ဘဏ်
+bank_in	ဘဏ်ထဲသို့
+bank_out	ဘဏ်မှထွက်
+bank_reconciliation	ဘဏ်ကိုက်ညီမှု (သင့်ဘဏ်အရေးအသားနှင့် စစ်စစ်ပါ)
+bank_to_till	ဘဏ် → ငွေကောင်တာ
+book_add_dish	စာအုပ် — စားသောက်ပစ္စည်း / ပစ္စည်းထည့်ပါ
+book_opening_credit	စာအုပ် — အဖွင့်ခရက်ဒစ်
+branch_name_sell_ph	ရောင်းရန် သစ်ခွဲအမည်
+bring_my_book	ကျွန်တော့်စာအုပ်ကို ယူပါ
+business_tax_id_ph	စီးပွားရေးအခွန်အိုင်ဒီ
+caption_bank	ဘဏ်
+caption_bills	ဘိုင်လ်များ
+caption_outstanding	ကျန်ရှိနေသေးသော
+caption_payments_today	ယနေ့ငွေပေးချေမှုများ
+caption_today	ဒီနေ့
+card_amount_ph	ကဒ်ပမာဏ
+cash_amount_ph	ငွေသားပမာဏ
+cash_memo	ငွေသားလက်မှတ်
+choose_icon	အိုင်ကွန်ကိုရွေးချယ်ပါ
+choose_logo	လိုဂိုကိုရွေးချယ်ပါ
+clear_icon	အိုင်ကွန်ကိုသန့်ရှင်းပါ
+clear_photo	ဓာတ်ပုံကိုသန့်ရှင်းပါ
+copy_day_book_csv	နေ့စာအုပ်ကိုမိတ္တူကူးပါ CSV
+copy_day_close	နေ့အဆုံးကိုမိတ္တူကူးပါ
+copy_items_csv	ပစ္စည်းများကိုမိတ္တူကူးပါ CSV
+copy_outstanding_csv	ကျန်ရှိနေသေးသောကိုမိတ္တူကူးပါ CSV
+copy_parties_csv	ပါတီများကိုမိတ္တူကူးပါ CSV
+copy_party_ledger_csv	ပါတီအောက်ခြေစာရင်းကိုမိတ္တူကူးပါ CSV
+copy_receipt	လက်ခံငွေပြေစာကိုမိတ္တူကူးပါ
+share_whatsapp	WhatsApp မှာမျှဝေပါ
+lan_pages_heading	Wi‑Fi ပေါ်ရှိ ဧည့်သည်စာမျက်နှာများ
+lan_pages_help	ဤဆိုင်၏ Wi‑Fi တွင် ဧည့်သည်စာမျက်နှာများကို ပြသမှုဘုတ်၊ တိုးကင်များ၊ ပြပွဲ၊ ကီအိုစ်၊ စားပွဲQR နှင့် တုံ့ပြန်ချက်အတွက် လုပ်ဆောင်နိုင်သည်။ မိုဘိုင်းဒေတာသည် Cloud ကိုနောက်မှလိုအပ်သည်။ ကတ်စနစ် / ငွေပေးချေမှုလင့်ခ်သည် အင်တာနက်ဖွင့်လှစ်ထားချိန်တွင် ရွေးချယ်နိုင်သည် — အထူးသဖြင့် ကာတွန်းကို မပိတ်ဘူး။
+diag_send_heading	ဤစက်မှ မျှဝေပါ
+kot_dest_heading	မီးဖိုချောင်စခန်း
+optional_login_heading	လိုအပ်လျှင် လော့ဂ်အင်
+rights_heading	အခွင့်အရေးများ
+ops_panel	ဒေသဆိုင်ရာ လုပ်ငန်းများ
+crm_heading	ဧည့်သည်များနှင့် စာတိုများ
+crm_help	မွေးနေ့၊ သစ္စာ၊ မလုပ်ဆောင်သောနှင့် ထိပ်တန်းဧည့်သည်များ — စာစောင် SMS သို့မဟုတ် WhatsApp ရည်ရွယ်ချက်များ။ မက်ဆေ့ချ်ထဲတွင် {name} နှင့် {points} ကို အသုံးပြုပါ။ ပိုင်ရှင်က ပို့ကိုနှိပ်သည်; မည်သည့်အရာမှ ကိုယ်တိုင်ပေါက်မသွားပါ။
+crm_queue_sms	စာစောင် SMS
+crm_queue_wa	စာစောင် WhatsApp
+crm_seg_bday_week	မွေးနေ့အပတ်
+crm_seg_bday_month	မွေးနေ့လ
+crm_seg_phone	ဖုန်းဖြင့်
+crm_seg_loyalty	သစ္စာ
+crm_seg_inactive	မလုပ်ဆောင်သော
+crm_seg_top	အမြင့်ဆုံးအသုံးစရိတ်များ
+birthday_ph	မွေးနေ့ (လ-ရက် သို့မဟုတ် နှစ်-လ-ရက်)
+crm_message_ph	မွေးနေ့ပျော်ရွှင်ပါစေ {name}! သင်မှာ {points} အမှတ်များရှိပါတယ်။
+till_apply_redeem	ဘီလ်ပေါ်တွင်အသုံးပြုရန်
+till_clear_redeem	လျှော့ချမှုရှင်းလင်းရန်
+till_wallet_topup	အိတ်ငွေဖြည့်ရန်
+till_issue_voucher	ဗောက်ချာထုတ်ရန်
+till_points_ph	အမှတ်များနှင့်လျှော့ချရန်
+till_wallet_ph	အသုံးခံ ဝေါယာလက်မှတ်ငွေပမာဏ
+till_voucher_code_ph	ဗောက်ချာကုဒ်
+till_voucher_amt_ph	ဗောက်ချာပမာဏ (ဖန်အလွတ် = အားလုံး)
+till_wallet_topup_ph	ဝေါယာလက်မှတ် ထပ်မံပါရန်ငွေပမာဏ
+till_voucher_issue_amt_ph	ဗောက်ချာထုတ်ပေးရန်ငွေပမာဏ
+till_voucher_issue_code_ph	ဗောက်ချာကုဒ်အသစ်
+split_evenly	တန်းတူဖျက်ခြမ်း
+waitlist	စောင့်ဆိုင်းစာရင်း
+fire_course	မီးသင်တန်း
+hold_item	ခဏရပ်
+waiter_call	ဝိတ်တာကိုခေါ်ပါ
+waitlist_add	စောင့်ဆိုင်းစာရင်းသို့ထည့်ပါ
+floor_view_grid	ဂရစ်
+floor_view_layout	ပုံစံ
+floor_layout_x	X
+floor_layout_y	Y
+floor_layout_w	W
+floor_layout_h	H
+floor_layout_save	ပုံစံကိုသိမ်းပါ
+floor_layout_open	စားပွဲကိုဖွင့်ပါ
+floor_layout_edit	ပုံစံကိုပြင်ဆင်ပါ
+floor_layout_pick	ပုံစံကိုပြင်ရန်စားပွဲကိုနှိပ်ပါ
+floor_layout_saved	စားပွဲ အပြင်အဆင် သိမ်းပြီးပါပြီ
+floor_layout_nudge_left	← 20
+floor_layout_nudge_right	→ 20
+floor_layout_nudge_up	↑ 20
+floor_layout_nudge_down	↓ 20
+sibling_pickers_help	တစ်ယူနစ်လို မိမိနှိပ်ပါ — နေ့စဉ်ရွေးချယ်သူများမှ အပိုင်းများ၊ ရှေ့နေများနှင့် အခွန်နှုန်းများကိုဖျောက်ပါ; အစီအစဉ် မူရင်းတန်ဖိုးများနေဆဲ ဖြစ်နေပါသည်။
+bulk_price_apply	အစုဖေါ်စျေးနှုန်းကိုအသုံးပြုပါ
+card_terminal_optional	ကဒ်စနစ် / ငွေပေးချေမည့်လင့်ခ် (အင်တာနက်ရှိနေစဉ်ကရွေးချယ်နိုင်သည်)
+copy_report	အစီရင်ခံစာကိုကူးယူပါ
+counted_cash_ph	ငွေသားရေတွက်သွားပြီးပါပြီ
+country_tax	နိုင်ငံနှင့် အခွန်
+tax_chrome	ငွေကောင်တာပေါ် အခွန်တံဆိပ်များ
+tax_chrome_help	ပိတ်ထားသည့်အခါမှာ အမှာစာဌာနသည် GST/အခွန်ခန့်မှန်းလိုင်းများနှင့် GST-စျေးနှုန်းထဲသို့ထားသည့် အစားထိုးများကိုဖျောက်ထားသည်။ အခွန်နှုန်းများနှင့်နိုင်ငံ & အခွန်ဆက်တင်များနေဆဲဖြစ်သည် — မည်သည့်အချိန်မဆို တံဆိပ်များကိုပြန်ဖွင့်နိုင်သည်။ Rajdhani အက်ပ်နမူနာကိုဤအခြေအနေမဖွင့်ထားပဲ စတင်ပါသည်။
+tax_chrome_on	ပြမည်
+tax_chrome_off	ဖျောက်မည်
+tax_chrome_saved_on	ငွေကောင်တာပေါ် အခွန်တံဆိပ်များ
+tax_chrome_saved_off	ငွေကောင်တာပေါ် အခွန်တံဆိပ်များ ဖျောက်ထားသည်
+tax_invoice_till	ငွေကောင်တာပေါ် အခွန်ပြေစာ
+tax_invoice_help	ပိတ်ထားသောအခါ၊ ဘေလ်များသည် ငွေသားမှတ်တမ်းသာဖြစ်ပြီး ငွေတောင်းခံလွှာ / ငွေသားမှတ်တမ်း ချစ်ပ်များကို အော်ဒါ ထားရာမိသားစုမှာ လျှို့ဝှက်ထားသည်။ Rajdhani အက်ပ်ပုံစံသည် ပိတ်ထားခြင်းဖြင့် စတင်သည် — Tax invoice ကို ပြန်ရွေးချယ်ရန် Show ကို မည်သည့်အချိန်ကမဆို ပြန်ဖွင့်နိုင်သည်။
+tax_invoice_on	ပြမည်
+tax_invoice_off	ဖျောက်မည်
+tax_invoice_saved_on	ငွေကောင်တာပေါ် အခွန်ပြေစာ
+tax_invoice_saved_off	ငွေတောင်းခံလွှာ လျှို့ဝှက်ထားသည် — ငွေသားမှတ်တမ်းသာ
+pay_methods	ငွေပေးချေမှုနည်းများ
+pay_methods_help	Take payment တွင် ဘယ်ချစ်ပ်များ ပေါ်မည်ကို ရွေးနိုင်သည်။ ငွေသားသည် အမြဲနေရန်ရှိသည်။ Rajdhani အက်ပ်ပုံစံသည် ငွေသားသာဖြင့် စတင်သည် — UPI / ကတ် / ခရက်ဒစ် / ခွဲငွေ ချစ်ပ်များကို ဒီမှာပြန်ဖွင့်ပါ။
+create_backup	မိတ္တူ တည်ဆောက်ရန်
+credit_limit_heading	အကြွေးအနည်းဆုံး ကန့်သတ်မှု (ရွေးပြီး / အမည်ပေးထားသောပါတီ)
+day_close_summary	နေ့အဆုံး အကျဉ်းချုပ်
+delete_party	ရွေးချယ်ထားသော ပါတီကို ဖျက်ရန်
+delivery	ပို့ဆောင်မှု
+done_open_books	ပြီးပြီ — စာအုပ်များကို ဖွင့်ရန်
+drawer_count	Drawer အရေအတွက် (အလိုအလျောက် ရွေးချယ်နိုင်)
+expense_heading	အသုံးစရိတ်
+export_day	နေ့အား Export ပြုလုပ်ရန်
+extra_note_bill_ph	ဒီဘီလ် / ရောင်းဝယ်မှုအတွက် အပိုညွှန်းချက်
+extra_note_expense_ph	နောက်ဆုံးစရိတ်အတွက် အပိုညွှန်းချက်
+extra_tills_heading	အပို ငွေကောင်တာများ
+other_devices_help_heading	အခြားစက်ပစ္စည်းများကို ဆက်သွယ်စေခြင်း
+other_devices_help	ဤစက်တွင် (Server): အခြားစက်များ → အပို ငွေကောင်တာ ခွင့်ပြုပါ။ ချိတ်ဆက်ကုဒ်နှင့် Wi‑Fi လိပ်စာကို မှတ်ပါ။ ပေါ်လာလျှင် အခြားစက်များ ချိတ်ဆက်ခွင့်ပြုပါ ကို နှိပ်ပါ။ ကွန်ပျူတာတွင် ဒီကွန်ပျူတာနဲ့ စတင်ပါ ကို နှိပ်ပါ။ အခြားစက်တိုင်းတွင်: အက်ပ်ကို ထည့်သွင်းပါ၊ Client မုဒ် ရွေးပါ၊ ဆိုင်၏ Server ကို ရှာပါ (သို့မဟုတ် လိပ်စာ ရိုက်ပါ)၊ ချိတ်ဆက်ကုဒ် ထည့်ပါ၊ ယခု ချိတ်ဆက်ပါ။ Wi‑Fi ပြတ်လျှင် အော်ဒါများ စက်ပေါ်တွင် စောင့်ပြီး Server ပြန်ဖြေသည့်အခါ ပို့သည်။ မီးဖိုချောင် ပရင်တာများကို Server တွင် သတ်မှတ်သည် (ဆက်တင် → ပရင်တာများ) — အပို ငွေကောင်တာများက KOT များကို အဲဒီသို့ ပို့သည်။
+forget_shop	ဤဆိုင်ကို မေ့ပစ်ရန်
+goods_received	ကုန်ပစ္စည်းရရှိပြီးဖြစ်သည်
+import_day	တင်သွင်းသည့်နေ့
+import_items_csv_plain	တင်သွင်းပစ္စည်းများ CSV…
+import_parties_csv	တင်သွင်းပါတီများ CSV…
+item_name	ပစ္စည်းအမည်
+kitchen_printing	ပရင်တာများ
+login_id_ph	အသုံးပြုသူအမည်
+mark_cleared	Mark ရှင်းလင်းပြီး
+new_party_clear	ပါတီအသစ် (ပုံစံရှင်းလင်းရန်)
+new_party_kind_supplier_ph	ပါတီအသစ်အမျိုးအစား (ပေးသွင်းသူ)
+next_country	နောက်နိုင်ငံ
+next_order	နောက်အမှာစနစ် (စားပွဲရှင်းလင်းရန်)
+note_gstin_ph	မှတ်ချက် / GSTIN / သဘောတူညီချက်အကြောင်းကြားသတိပေးချက်
+notes_attach_party	မှတ်ချက်များနှင့် attachmentများ (ရွေးချယ်ထားသောပါတီ)
+notes_attach_sale	မှတ်တမ်းများနှင့်ဆက်စပ်ချက်များ (ရွေးချယ်ထားသောရောင်းချမှု)
+on_account_ap	အကောင့်အပေါ် (AP)
+org_optional_ph	အဖွဲ့အစည်း (အလိုအလျောက်)
+paid_by	ငွေမည့်သူ
+paid_now	ယခုငွေပေးချေပါ
+pair_now	ယခု ချိတ်ဆက်ပါ
+pairing_code_ph	ချိတ်ဆက်ကုဒ်
+party_name_selected_ph	ပါတီအမည် (သို့မဟုတ် ရွေးချယ်ထားသည့်အရာကိုအသုံးပြုပါ)
+password_ph	စကားဝှက်
+pay_ap_card	AP ကတ်ဖြင့်ပေးဆောင်ပါ
+pay_ap_cash	AP ငွေထည့်ပေးပါ
+pay_ap_heading	ကျွန်တော်တို့မှာကျန်ရှိသမျှကို (AP) ပေးဆောင်ပါ
+pay_ap_upi	AP UPI ပေးဆောင်ပါ
+pay_selected_heading	ရွေးချယ်ပြီးပေးဆောင်ပါ (အကြွေးဆုံးဖြတ် / ကြိုတင်ယူပါ)
+pick_from_items	ကျွန်တော်တို့ပစ္စည်းများထဲမှရွေးချယ်ပါ
+prev_country	ယခင်နိုင်ငံ
+print_open	ပုံနှိပ် / ဖွင့်ပါ
+reason_amend_ph	ပြင်ဆင်ရန် / ငျွှန်းရန် / ပြန်အမ်းရန် အကြောင်းရင်း
+reason_note_ph	အကြောင်းရင်း / မှတ်စု (ပျက်စီးမှု, အရေအတွက်, …)
+record_day_close	နေ့စွဲပိတ်သိမ်းမှုကိုမှတ်တမ်းတင်မည်
+refresh_from_shop	ဆိုင်မှပြန်လည်သင့်စွမ်းမော်
+refund	ပြန်အမ်း
+remove_selected	ရွေးထားကိုဖယ်ရှားမည်
+request_bill	ဘေလ်ကိုတောင်းဆိုမည်
+restaurant_name_ph	စားသောက်ဆိုင်အမည် (ရွေးချယ်နိုင်)
+restore_backup	မူလဘက်ထရီကိုပြန်လည်ထည့်မည်
+role_both	နှစ်ဘက်လုံး
+role_admin	Admin
+role_cashier	ငွေကိုင်
+role_customer	ဖောက်သည်
+role_manager	မန်နေဂျာ
+history_retention	ရောင်းဝယ်မှုမှတ်တမ်းများ
+history_retention_help	အဟောင်းအရောင်းများနှင့် KOT များကိုအလိုအလျောက်ဖျက်ပါ။ မီနူး၊ ဝန်ထမ်းများနှင့် ဆက်တင်များကိုထားရှိပါ။ ယခုဖျက်ခြင်းဖြင့် ရောင်းဝယ်မှုတန်းများအားလုံးကိုဖျက်သည့်အပြင် စတင်ခြင်းကိုထားရှိပါ။
+history_off	ထားရှိပါ
+history_day_close	နေ့ပြီးဆုံးအချိန်တွင်
+history_after_hours	နောက်ပိုင်းနာရီများ
+history_hours_ph	နာရီများ (၁–၁၆၈၊ မူလတန်ဖိုး ၄)
+history_hours_save	နာရီများကိုသိမ်းမည်
+history_clear_now	မှတ်တမ်းများကိုယခုပယ်ပစ်ပါ
+history_cleared	ကုန်သွယ်မှုမှတ်တမ်းများကိုပယ်ဖျက်ပြီး — သတ်မှတ်ချက်ကိုထားရှိ
+history_retention_saved	မှတ်တမ်းများပယ်ဖျက်ခြင်းကိုသိမ်းဆည်းပြီး
+history_hours_saved	မှတ်တမ်းနာရီများကိုသိမ်းဆည်းပြီး
+history_owner_only	ပိုင်ရှင်သာ သို့မဟုတ် Admin သာ မှတ်တမ်းများကိုပယ်ဖျက်နိုင်သည်
+rollup	စုစုပေါင်း
+save_brand	အမှတ်တံဆိပ်ကိုသိမ်းဆည်းပါ
+save_business_id	လုပ်ငန်းအိုင်ဒီကိုသိမ်းဆည်းပါ
+save_business_name	စီးပွားရေးအမည် သိမ်းဆည်းမည်
+save_features	သိမ်းမည်
+save_features_named	{name} ကို သိမ်းဆည်းမည်
+save_features_ok	{name} အတွက် စက်တင်များ သိမ်းဆည်းပြီး
+save_names	အမည်များ သိမ်းဆည်းမည်
+second_way	ဒုတိယနည်းလမ်း
+server_ip_ph	Server IP (ဥပမာ 192.168.1.10)
+set_credit_limit	ပါတီအတွက် ကန့်သတ်ချက် သတ်မှတ်မည်
+set_login_selected	ရွေးချယ်ထားသည့်အတွက် လော့ဂ်အင် သတ်မှတ်မည်
+set_login_named	{name} တွင် လော့ဂ်အင် လျှောက်ထားပါ
+shop	ဆိုင်
+show	ပြမည်
+spreadsheet_csv	စာရင်းဇယား (CSV)
+start_fresh	အသစ်စတင်ပါ
+stop_extra_tills	အပို ငွေကောင်တာများ ရပ်မည်
+floor_cols_ph	တန်းများ
+floor_cols_fit	အိုင်ဇာနဲ့ ကိုက်အောင်ပြပါ
+floor_cols_fit_sub	{n} ဒီမှာ ကိုက်အောင်
+floor_cols_fits	ကိုက်သည်
+floor_cols_scroll	ဘယ်ဘက်အတွက်လည်ပတ်သည်
+floor_cols_min	ကော်လံများ: အနည်းဆုံး 1 ခု — သို့မဟုတ် မျက်နှာကြက်ထဲသို့ ကိုက်အောင် ဖျက်ထားနိုင်သည်
+floor_zoom_auto	Auto
+floor_zoom_out	အကျယ်ချွတ်ပါ
+floor_zoom_in	အကျယ်ကျယ်ထည့်ပါ
+backup_auto	နေ့စဉ်အလိုအလျောက် မိတ္တူရယူထားသည် · နောက်ဆုံး {when} · နောက်ဆုံး 14 ရက်ကို {dir} တွင်သိမ်းထားပါသည်။
+backup_auto_none	နေ့စဉ်အလိုအလျောက် မိတ္တူရယူထားသည် — ပထမတစ်ခုကို ခဏတွင် အစပြုမည်။
+backup_copy_to	မိတ္တူများကို {dir} သို့လည်း ပို့ပါ။
+backup_copy_btn	မိတ္တူများကို ဖိုလ်ဒါသို့လည်း မိတ္တူပြုလုပ်ပါ…
+autostart_off	ဒီကွန်ပျူတာနဲ့ စတင်ပါ
+autostart_on	ဒီကွန်ပျူတာနဲ့ စတင်ပါ ✓ — ရပ်ရန် ထိပါ
+autostart_done_on	ဒီကွန်ပျူတာက အခု စတင်တဲ့အချိန်မှာ app ကို ဖွင့်နေပြီ — စက်ရုံဆိုင်က အင်အားပျောက်တာနောက်ပိုင်း ပြန်ရောက်နေပြီ။
+autostart_done_off	ဒီကွန်ပျူတာက စတင်တဲ့အချိန်မှာ app ကို မဖွင့်တော့ပါ။
+device_forgotten	ဆိုင်က ဒီစက်ကို မေ့နေပြီး — ဆိုင်ရဲ့ လက်ရှိကုဒ်နဲ့ ထပ်မံချိတ်ဆက်ပါ။ အမှာစာများ အဲဒီမှာ စောင့်ဆိုင်းနေပါတယ်။
+lan_offline	ဆိုင်ဆာဗာထိန်းမရနိုင်ပါ
+forget_device	မေ့ရန်
+last_seen	မြင်ဖူးသည်
+copy_pair_code	ကိရိယာကိုယ်တိုင်ချိတ်ဆက်ကုဒ်ကိုကူးယူမည်
+new_pair_code	ချိတ်ဆက်ကုဒ်အသစ်
+pair_finishing	ချိတ်ဆက်ပြီးပါပြီ… ဆိုင်စာအုပ်များကိုလည်ပတ်နေသည်
+pair_opening	ငွေကောင်တာ ဖွင့်နေသည်…
+pair_copied	ချိတ်ဆက်ကုဒ်ကူးယူပြီးပါပြီ
+kot_waiting	ပို့ရန်စောင့်နေသည်
+lan_offline_waiting	ဆိုင်ဆာဗာကိုမရောက်နိုင်ပါ · {n} စောင့်နေရန်
+lan_connecting	ဆိုင်နှင့်ချိတ်ဆက်နေသည်…
+lan_live	အသက်ဝင်နေသည်
+lan_sending	{n} ပို့နေသည်
+lan_sign_in_to_send	ပို့ရန်အတွက် ထပ်မံအားဖြင့် စိုင်အင် ဝင်ပါ {n}
+lan_pair_again	ဒီစက်ကို ထပ်မံချိတ်ဆက်ပါ
+lan_update_app	အက်ပ်ကို အပ်ဒိတ်လုပ်ပါ — ဒီစက်နဲ့ဆိုင်ရဲ့ ဆာဗာတွင် ဗားရှင်းကွာခြားနေသည်
+allow_firewall	အခြားစက်များ ချိတ်ဆက်ခွင့်ပြုပါ
+firewall_blocked	ဒီကွန်ပျူတာရဲ့ ဖိုင်ယားဝေါ်ဟာ အခြားစက်တွေကို တားဆီးနေသည် — "အခြားစက်များ ချိတ်ဆက်ခွင့်ပြုပါ" ကိုနှိပ်ပါ
+firewall_waiting	အက်မင် မှန်အတိုးအဓိကအတွက် စောင့်ဆိုင်းနေသည်…
+lan_join_help	အခြားစက်ပစ္စည်းတွင်: Client အခြေအနေ → ဆိုင်ရဲ့ဆာဗာကိုရှာရန် (သို့မဟုတ် {addr} ကိုရိုက်ပါ) → အတူတူချိတ်ဆက်ရန်ကုဒ် {code}။
+lan_pair_status	Wi‑Fi {addr}
+lan_join_help_no_addr	ဒီစက်ကို Wi‑Fi ထဲကိုဆက်ရန်အတွက်လိပ်စာရရန်။
+lan_no_address	မူလ Wi‑Fi လိပ်စာမရှိသေးပါ — ဆိုင် Wi‑Fi နဲ့ချိတ်ဆက်ပါ။
+lan_not_listening	စက်များကိုမလက်ခံနေပါ (ပေါ့(Port) {port} အလုပ်မဖွင့်ထားပေ). အက်ပ်ကိုပြန်စပြီးစမ်းပါ။
+lan_tills_off	အပို ငွေကောင်တာများ ပိတ်ထားသည်။ အခြားစက်တစ်ခု ချိတ်နိုင်အောင် ခွင့်ပြုပါ။
+paired_with	ချိတ်ဆက်ပြီး · {url}
+not_paired	မချိတ်ဆက်ရေ
+choose_device_use	Server သို့မဟုတ် Client ကိုရွေးပါ။
+paired_note	စုံညီပြီးပါပြီ။ ရောင်းရန် ဖြေ unlock လုပ်ပါ၊ သို့မဟုတ် နောက်ဆုံးအချက်အလက်အတွက် Refresh လုပ်ပါ။
+last_update_at	နောက်ဆုံး update: {time}။
+pair_intro	ဆာဗာကို ရှာပါ၊ သို့မဟုတ် ၎င်း၏လိပ်စာနှင့် စုံညီကုဒ်ကို ရိုက်ထည့်ပါ။
+queue_waiting	ဆိုင်ထိ ရောက်ရန် စောင့်နေခြင်း ({n}):
+queue_tries	{n} ကြိမ် ကြိုးစားခဲ့ပြီး · နောက်ဆုံးတုံ့ပြန်ချက်: {e}
+save_backup_copy	Backup မိတ္တူကို သိမ်းဆည်းပါ…
+backup_copy_saved	Backup မိတ္တူ သိမ်းဆည်းပြီးပါပြီ — ဒီစက်ကိရိယာတွင် မထားပါနဲ့ (USB သုတ်သို့မဟုတ် အခြားစက်ကိရိယာ)
+backup_copy_overdue	Backup မိတ္တူသည် ဒီစက်ကိရိယာကို {n} ရက်မထွက်သေးပါ — ဆက်တင်များ → Backup
+backup_copy_failed	ဘက်အပ်ကူးကို အဲဒီမှာ သိမ်းမရနိုင်ပါ — နေရာတစ်ခု အသစ်ရွေးပါ။
+clock_off	ဒီစက်ရဲ့ နာရီသည် ဆိုင်ဆာဗာနဲ့ {min} မိနစ် ကွာနေပါသည် — ဒီစက်ပေါ်မှာ မှန်ကန်တဲ့အချိန်ကို သတ်မှတ်ပါ။
+printers_heading	ပရင်တာများ
+printers_help	ပရင်တာတွေကို ရှာပါ၊ တစ်ခုကို ထိပြီးရွေးချယ်ပါ၊ ထို့နောက် အဲဒီစက်ပေါ်မှာသာ စမ်းသပ်စာမျက်နှာကို ပုံနှိပ်ပါ။ ဘီလ်ပရင်တာများ: Bill & KOT ဖော်မက် → Bill။ ချက်ရုံပရင်တာများ: Kitchen → Kitchen stations (station တစ်ခု ပထမဆုံး ထည့်ပါ — Find က station မဖန်တီးပါ။)
+printers_host_only	ပရင်တာများကို ဆိုင်စက် (Server) ပေါ်တွင် သတ်မှတ်ထားသည်။ ဒီငွေကောင်တာက ဘေလ်နှင့် KOT များကို အဲဒီသို့ ပို့သည် — Find / add / assign သည် Server ပေါ်တွင် ရှိသည်။ စမ်းသပ်စာမျက်နှာနှင့် ဘေလ်ပုံနှိပ်အရွယ်အစားကို Server သို့ ပို့သည်။
+printers_find_heading	ပရင်တာတွေကို ရှာဖွေပါ
+printers_find_tip	Find သည် ဒီစက်ကို scan လုပ်ပြီး စာရင်းကို အသစ်အပ်နေစေသည်။
+printers_pool_heading	ပရင်တာများ
+printers_pool_tip	Find သည် ဒီစက်ကို scan လုပ်ပြီး ဒီစာရင်းကို အသစ်အပ်နေစေသည်။
+printers_pool_empty	(မရှိသေးပါ — Find ကို ထိပါ)
+printers_routes_help	စက်အတွက် မည်သည့်ပရင်တာများကို အချက်အလက်စနစ်မှာ ရှိနေသည်ကို ရှာပါ။ အဲဒီပရင်တာများကို ဧည့်ခံဘီလ်နှင့် Bill & KOT ဖေါ်မတ်အောက်ရှိ မည်သည့်မီးဖိုခန်းကိုမဆို ပေးသတ်ပါ။
+printer_assign_dd	အမှန်တကယ်ပရင်တာ: {place}
+printer_assign_pick	အမှန်တကယ်ပရင်တာကို ရွေးပါ
+printer_profile_heading	ပုံစံ
+printer_send_heading	ပို့ဆောင်မှု
+vp_delivery_heading	ပို့ဆောင်မှု
+vp_delivery_help	ဤမရုပ်ပိုင်းပရင်တာသည် နောက်လုပ်ဆောင်မှုများကို မည်သို့ပို့မည်ဆိုတာ - OS စာရွက်စာတမ်း, raw bytes, သို့မဟုတ် ESC/POS ဖြစ်သည်။ Slip အကြောင်းအရာ (အမျိုးအစားအရွယ်အစား, wrap, margin) ကို ဤနေရာတွင်မဟုတ်ဘဲ ဘီလ် / KOT ဖော်မတ်မှ သတ်မှတ်သည်။
+vp_type_size_heading	အရေးအသားအရွယ်အစား
+vp_wrap_heading	တောင်ပတ်အမြင့်
+vp_margin_heading	နားခံအကျယ်
+vp_delivery_spooler	OS စာရွက်စာတမ်း (စနစ် စပူးလာ)
+vp_delivery_raw	စက်တစ်လုံးသို့ မသန့်ရှင်းထားသော ဘိုင်များ
+vp_delivery_escpos	ESC/POS ထိုမိုင်းကာအမိန့်များ
+virtual_printer_new	အသစ်သော အမြင်အိုင်ဇာပရင့်တာ
+virtual_printer_selected	“{name}” ကို တည်းဖြတ်နေသည် — လက်စွပ်စာရင်းရှိ တစ်ခုခုကို ထပ်ကိုသွားနှိပ်ပြီး ပြောင်းနိုင်သည်
+virtual_printer_tap_list	စာရင်းထဲရှိ အမြင်အိုင်ဇာပရင့်တာကို တည်းဖြတ်ရန် နှိပ်ပါ
+config_layout_portrait	ဓါတ်ပုံမူပိုင်
+config_layout_landscape	ပုံပြင်
+config_send_os	စနစ်စပူးလာ
+config_send_escpos	ESC/POS
+profiles_heading	ပုံစံများ
+profiles_empty	(ဒီထဲမှာ layout မရှိသေးပါ)
+profile_builtin	အတွင်းထည့်ထားသော
+profile_custom	စိတ်ကြိုက်
+profile_name_ph	Layout အမည်
+profile_new	Layout အသစ်
+profile_delete	Layout ဖျက်ရန်
+profile_created	Layout ဖန်တီးပြီး
+profile_deleted	Layout ဖျက်ပြီး
+profile_builtin_keep	အင်္ဂါရပ်အတွင်းပါတဲ့ပုံစံများကို ဖျက်၍မရပါ
+config_saved	အသစ်ပြင်ဆင်ပြီးပြီ
+config_selected	ရွေးချယ်ထားသော “{name}”
+printer_output_heading	အလေးပုံနှိပ်စက်များ
+virtual_printers_heading	အလေးပုံနှိပ်စက်များ
+virtual_printers_empty	အခုအချိန်တွင် အလေးပုံနှိပ်စက် မရှိသေးပါ — အောက်တွင်တန်ဖိုးများ သတ်မှတ်ပြီး၊ သိမ်းဆည်းပါ။ အချို့ရရှိပြီးနောက်တွင်၊ စာရင်းထဲမှ တစ်ခုကို ထိမှိန်၍ ပြင်ဆင်နိုင်သည်။
+virtual_printer_name_ph	အလေးပုံနှိပ်စက် အမည် (လိုအပ်လျှင်)
+virtual_printer_create	အလေးပုံနှိပ်စက် ဖန်တီးမည်
+virtual_printer_save	အလေးပုံနှိပ်စက်ကို သိမ်းဆည်းမည်
+virtual_printer_delete	အမှန်တကယ်ပရင့်တာကို ရှင်းပယ်ပါ
+virtual_printer_created	ဝက်ဘ်ပရင့်တာ “{name}” ဖန်တီးပြီးပါပြီ
+virtual_printer_deleted	ဝက်ဘ်ပရင့်တာ “{name}” ကို ဖျက်ပြီးပါပြီ
+virtual_printer_updated	ဝက်ဘ်ပရင့်တာကို အပ်ဒိတ်လုပ်ပြီးပါပြီ
+virtual_printer_updated_named	ဝက်ဘ်ပရင့်တာ “{name}” ကို အပ်ဒိတ်လုပ်ပြီးပါပြီ
+virtual_draft_layout	နောက်ထပ်ဝက်ဘ်ပရင့်တာအတွက် တန်ဖိုးများ သတ်မှတ်ပြီးပါပြီ
+virtual_draft_send	နောက်ထပ်ဝက်ဘ်ပရင့်တာအတွက် တန်ဖိုး သတ်မှတ်ပြီးပါပြီ
+virtual_need_real	အရင်မှာ အမှန်တကယ်ပရင့်တာကို ရွေးပါ
+virtual_need_select	ဖျက်ရန် ဗားချူးရုပ်ပုံပရင်တာကို ရွေးချယ်ပါ
+real_printer_selected	ရွေးချယ်ထားသည်: {name}
+station_group_heading	အလေးပုံနှိပ်စက်များ
+station_group_apply	အမှန်တကယ်ပရင့်တာကို ရှင်းပယ်ပါ
+station_group_applied	ဖျက်ပြီးပါပြီ
+station_group_empty	ဗားချူးရုပ်ပုံပရင်တာကို ရွေးချယ်ပါ
+station_group_name_ph	အလေးပုံနှိပ်စက် အမည် (လိုအပ်လျှင်)
+station_group_save	အလေးပုံနှိပ်စက် ဖန်တီးမည်
+station_group_saved	ဗားချူးရုပ်ပုံပရင်တာ သိမ်းဆည်းပြီးပါပြီ
+station_manage_heading	မီးဖိုချောင်စတေးရှင်းကို ထည့်သွင်းသို့မဟုတ် ဖယ်ရှားပါ
+printers_routes_heading	အရာဝတ္ထုများပုံနှိပ်သည့်နေရာ
+route_pick_heading	နေရာ
+route_editing	တည်းဖြတ်ခြင်း: {name}
+route_assigned	{place} သို့ {printer} ကို ထည့်သွင်းပြီး
+route_already_assigned	ဒီနေရာမှာ ရှိပြီးသား: {printer}
+route_removed	{place} မှ {printer} ကို ဖယ်ရှားပြီး
+route_cleared	{name} ကို ဖယ်ရှားပြီးသန့်စင်ထားသည်
+route_assigned_empty	ဒီနေရာမှာ မရှိပါ
+route_tap_remove	ဖယ်ရှားရန် နှိပ်ပါ
+route_tap_select	ရွေးရန် နှိပ်ပါ
+route_tap_selected	ရွေးထားပြီး
+route_pick_printer_first	ပထမဦးစွာ မိတ္ဆက်ပရင့်တာကို တိုက်ကိုင်ပါ
+route_assigned_heading	ပရင်တာများ
+route_add_heading	ပေးအပ်ရန်
+printer_label_ph	အမည် (ဥပမာ- မီးဖိုချောင်)
+printer_target_ph	စနစ်ပရင့်တာအမည် သို့မဟုတ် host:9100
+printer_target_default	ဤကွန်ပျူတာ၏ ရိုးရိုးပရင့်တာ (လွတ်လပ်သော လိပ်စာ)
+printer_wire_heading	ပရိုဖိုင်
+printer_wire_escpos	ESC/POS
+printer_wire_os	ဓါတ်ပုံမူပိုင်
+printer_wire_os_portrait	ဓါတ်ပုံမူပိုင်
+printer_wire_os_landscape	ပုံပြင်
+printer_wire_escpos_short	ESC/POS
+printer_wire_os_short	ဓါတ်ပုံမူပိုင်
+printer_wire_os_landscape_short	ပုံပြင်
+printer_format_custom	ကွန်မူစတမ်းပရိုဖိုငယ်အသစ်
+printer_format_custom_label	စိတ်ကြိုက်
+printer_format_custom_added	ဤနေရာအတွက် စိတ်ကြိုက်အားဖြင့် ပရိုဖိုင် ထည့်ပြီးဖြစ်သည်
+add_printer	ပရင်တာ ထည့်ပါ
+remove_printer	ဖယ်မည်
+route_pick_ph	ဘီလ် သို့မဟုတ် မီးဖိုခန်း စတေးရှင်း
+route_bill	ဘေလ်
+route_default_kitchen	စတေးရှင်းမရှိပါ (သတ်မှတ်မထားသော အစားအစာများ)
+route_kot_station	မီးဖိုချောင်
+route_dont_print	ပရင်တာမရှိပါ
+stations_heading	မီးဖိုခန်း စတေးရှင်းများ
+stations_help	အစားအစာများနှင့် KOT အတွက် မီးဖိုခန်း စတေးရှင်းများ ထည့်ပါ။ စတေးရှင်းတိုင်းတွင်၊ ၎င်း၏ ပရင်တာများကို (Settings → Printers တွင် တွေ့နိုင်သည်) ထိုးထည့်ပြီး ဦးစားပေးမှု သတ်မှတ်ပါ၊ ပထမဆုံး လုပ်ဆောင်နိုင်သည့်အရာ သို့မဟုတ် အားလုံးတွင် ပုံနှိပ်ရန် ရွေးချယ်ပါ။ ပြောင်းလဲမှုများကို သင် တဆင့်တစ်ဆင့် အလိုအလျောက် သိမ်းဆည်းမည် — Save ခလုတ်မလိုပါ။
+station_print_heading	ဤစတေးရှင်းအတွက် ပရင်တာများ
+station_print_help	စတေးရှင်းကိုရွေးချယ်ပြီး ပရင်တာတစ်ခု သို့မဟုတ် ပိုများစွာချိတ်ဆက်ပါ။ ↑↓ သည် စမ်းသပ်မှုအဆင့်ကိုသတ်မှတ်သည်။ ပထမဆုံးအောင်မြင်သည့်စမ်းသပ်မှုတိုင်းပြီးပါက တားဖို့ရပ်သည်။ အားလုံးတွင် ပုံနှိပ်ခြင်းသည် ချိတ်ဆက်ထားသည့် ပရင်တာအားလုံးသို့ ပို့သည်။ မည်သည့်ပြောင်းလဲမှုမျှလွင်တန်းသည် ချက်ချင်း သိမ်းဆည်းသည်။
+station_print_pick_ph	စတေးရှင်းအတွက် ပရင်တာများကို သတ်မှတ်ရန်
+station_print_pick_first	အရင်ဆုံးမီးဖိုချောင်စတေးရှင်းကိုရွေးပါ
+station_print_editing	“{name}” အတွက် ပရင်တာများကို တည်းဖြတ်နေသည်
+station_vps_dd	ဤစတေးရှင်းအတွက် ပရင်တာများ
+station_vps_dd_n	{n} ပရင်တာ(များ) · ပြောင်းရန် နှိပ်ပါ
+station_vps_empty	ပရင်တာ မရှိသေးပါ — ဆက်တင်များ → ပရင်တာများတွင် ရှာပါ
+bill_printers_dd	ဘီလ်အတွက် ပရင်တာများ
+bill_printers_dd_n	ဘီလ်အတွက် {n} ပရင်တာ(များ) · ပြောင်းရန် နှိပ်ပါ
+job_layout	ပုံစံ
+job_delivery	အလုပ်ကို ပို့ပုံ
+job_delivery_help	OS စာတမ်း၊ စက်ရုပ် bytes သို့မဟုတ် ESC/POS။ ငွေတောင်းနှင့် မီးဖိုခန်းလက်မှတ်တိုင်းကို သက်ဆိုင်ရာကိုယ်ပိုင်ထားသည်။ အလုပ်မည်သည့် အရည်အသွေးမဆို Find မှ သိမ်းဆည်းထားသော မော်နီတာကို သို့ပို့နိုင်သည်။
+station_vp_attached	ပရင်တာ ချိတ်ဆက်ပြီး
+station_vp_detached	ပရင်တာကို စတေးရှင်းမှ ဖယ်ရှားပြီး
+station_print_summary	{mode} · {n} ပရင်တာ(များ)
+station_print_summary_none	ဒီစတေးရှင်းတွင် ပရင်တာ မရှိသေးပါ — မပရင့်ပါ
+stations_none	စတေးရှင်း မရှိသေးပါ — အောက်တွင် အတူတက်ပါ။ မီနူးအချက်အလက်များသည် စတေးရှင်းတစ်ခုကို အသုံးပြုနိုင်ပြီး၎င်း၏ KOT သည် အဲဒီမှာပရင့်ထုတ်ပါမည်။
+route_up	အထက်
+route_down	အောက်ကျ
+route_remove	ဖယ်မည်
+route_clear	ရှင်းမည်
+save_printers	ပရင်တာများကို သိမ်းဆည်းမည်
+print_test_page	စမ်းသပ်စာမျက်နှာကို ပုံနှိပ်မည်
+no_printer_assigned	ပရင်တာမရှိပါ
+test_page_no_printer	{place} အတွက် ပရင်တာမရှိပါ — ပရင်တာကို ချိတ်ဆက်ပြီး ထပ်မံကြိုးစားပါ
+test_page_pick_first	စမ်းသပ်စာမျက်နှာအတွက် ပရင်တာ(များ)ကို ရွေးပါ — ထို့နောက် စမ်းသပ်စာမျက်နှာကို ပုံနှိပ်မည်
+test_printers_dd	စမ်းသပ်စာမျက်နှာအတွက် ပရင်တာများ
+test_printers_dd_n	{n} စမ်းသပ်စာမျက်နှာအတွက် ပရင်တာ(များ) · ပြောင်းရန် တစ်ချက်နှိပ်ပါ
+kot_test_printers_dd	စမ်းသပ် KOT အတွက် ပရင်တာများ
+kot_test_printers_dd_n	{n} စမ်းသပ်ရန်ပရင်တာ(များ) · ပြောင်းရန် တပ်
+test_printer_picked	စမ်းသပ်မည့်ပရင်တာ: {name}
+test_printer_cleared	မစမ်းသပ်မည့်ပရင်တာ: {name}
+test_page_sent_n	စမ်းသပ်စာမျက်နှာကို {n} ပရင်တာ(များ)သို့ပို့ပြီး
+test_kot_pick_first	စမ်းသပ်ရန်ပရင်တာ(များ)ကို ပထမဦးစွာ KOT ရွေးပါ — ထို့နောက် စမ်းသပ် KOT
+test_kot_sent_n	စမ်းသပ် KOT ကို {n} ပရင်တာ(များ)သို့ပို့ပြီး
+cancel_pick	မှတ်
+cancel_pick_on	မှတ်ပြီး
+cancel_pick_meta	ဖျက်ရန် စာရင်းထဲသို့ သတ်မှတ်ပြီး
+batch_cancel	သတ်မှတ်ထားသောကို ဖျက်မည်
+batch_cancel_n	သတ်မှတ်ထားသောကို ဖျက်မည် ({n})
+batch_cancel_none	ပထမဦးဆုံး တစ်ခုသို့မဟုတ် ပိုမိုသော အစားအစာများကို သတ်မှတ်ပါ — ထိုပြီးနောက် သတ်မှတ်ထားသောကိုဖျက်မည်
+batch_cancel_title	သတ်မှတ်ထားသော အစားအစာများကို ဖျက်မည် — တစ်ခုချင်းစီအတွက် မှန်ကန်သောအကြောင်းပြချက်နှင့် ဖျက်စရာ စာရွက်တစ်စောင် လိုအပ်သည်
+batch_cancel_ok	{n} အစားအစာ (များ) ဖျက်ပြီး · {slips} ဖျက်စရာစာရွက် (များ) → {kitchens}
+batch_cancel_ok_noprint	{n} အစားအစာ (များ) ဖျက်ပြီး — KOT အလိုအလျောက်ပုံနှိပ်မှု ပိတ်ထားသည်၊ ထို့ကြောင့် ဖျက်စရာစာရွက် မရှိပါ
+no_printer_kitchen_station	အဆိုပါမီးပုံးအတွက် ပရင်တာ မရှိပါ — မီးပုံး → မီးပုံးစခန်းများ → ဒီစခန်းအတွက် ပရင်တာများ
+printers_saved	သိမ်းဆည်းပြီး
+test_page_sent	စမ်းသပ်စာမျက်နှာ ပို့ပြီးပြီ — မိမိမှတ်ပုံတင်စက်ကိုစစ်ပါ
+test_page_sent_one	စမ်းသပ်စာမျက်နှာကို {name} သို့ ပို့ပြီးပြီ — ထိုမိမိမှတ်ပုံတင်စက်ကိုစစ်ပါ
+printers_found	တွေ့ရှိသည် {n}: {list}
+printers_find_synced	တွေ့ရှိသည် {n} — {new} အသစ်
+printer_on_device	သိမ်းဆည်းပြီး
+printer_already_added	ပြီးသားထည့်ပြီးပါပြီ
+printer_already_saved	ပြီးသားသိမ်းဆည်းထားသည်: {name}
+find_printers	ပရင်တာတွေကို ရှာဖွေပါ
+printers_looking	ရှာနေသည်…
+saving_printer	ပရင်တာ ထည့်နေသည်…
+cancelled	အားပယ်လိုက်သည်
+printers_tap_find	အကိန်းမည့် ရှာဖွေပါ။ ဒီစက်မှ အသုံးပြုနိုင်သည့် ပရင်တာများကို စာရင်းပြပါ။
+printers_none_found	မတွေ့ပါ — စနစ်ပရင်တာအမည် သို့မဟုတ် IP (ဥပမာ 192.168.1.50) ရိုက်ထည့်ပါ။
+printer_from_find	ထည့်ပြီး {name}
+kot_printer_ph	KOT အတွက် ပရင်တာ
+bill_printer_ph	ဘီလ်များအတွက် ပရင်တာ
+kot_print_on	မီးဖိုချောင်လက်မှတ်အလိုအလျောက်အပေါ်မူရင်းပုံနှိပ်ခြင်း: ဖွင့်ထားသည်
+kot_print_off	မီးဖိုချောင်လက်မှတ်အလိုအလျောက်အပေါ်မူရင်းပုံနှိပ်ခြင်း: ပိတ်ထားသည်
+queue_refused	ဆိုင်မှလက်မခံသော ({n}) — ကောင်တာတွင် တစ်ခုချင်းစီစစ်ဆေးပါ:
+clear_not_accepted	စစ်ဆေးပြီး — ဒီစာရင်းကိုရှင်းပါ
+device_name_ph	ဤစက်၏နာမည်
+lan_last_update	နောက်ဆုံးအပ်ဒိတ် {time}
+lan_not_accepted	{n} လက်မခံပါ
+connected_now	ယခုချိတ်ဆက်ပြီး
+backup_failed	နောက်ဆုံးအလိုအလျောက်မိတ္တူကူးခြင်းမအောင်မြင်ပါ: {e}
+backup_overdue	{n} ရက် မိတ္တူမရှိပါ — ဒီစက်တွင် အက်ပ်ကို ဖွင့်ထားပါ၊ မိတ္တူကူးနိုင်အောင်။
+disk_low	ဒီစက်တွင် {mb} MB သာ လွတ်သည် — မိတ္တူကူးခြင်း မကြာမီ မအောင်မြင်နိုင်ပါ။ နေရာလွတ် အချို့ ရှင်းပါ။
+last_seen_devices	နောက်ဆုံးတွေ့ရှိချိန်: {time}
+sync_interval	တိုက်ဆိုင်စဉ် {secs} စက္ကန့်အလိုက် sync လုပ်ပါ
+connection_to_shop	ဆိုင်နှင့် ချိတ်ဆက်မှု
+supplier_name_ph	ပစ္စည်းပေးသွင်းသူ အမည် (သို့မဟုတ် အဖွဲ့)
+supplier_ph	ပေးသွင်းသူ
+switch_device	ဒီ device ကို ချိန်ပြောင်းပါ
+take_payment	ငွေလက်ခံပါ
+tax_added_till	{tax} အထူးထည့်သွင်းမထား
+tax_inside_price	{tax} အပါအဝင်
+tax_invoice	အခွန်ငွေတောင်းခံလွှာ
+till_to_bank	ငွေကောင်တာ → ဘဏ်
+units_heading	ယူနစ်များ
+unlock_after_pairing	PIN ထည့်ပါ
+unlock_with_login	လော့ဂ်အင်ဖြင့်(lock) ဖွင့်ပါ
+unmark	အမှတ်မကွက်ဖြုတ်မည်
+update_my_password	ကျွန်ုပ်၏ စကားဝှက်ကို ပြင်မည်
+update_my_pin	ကျွန်ုပ်၏ ဝင်ရောက်မှုကို ပြင်မည်
+duress_heading	အရေးပေါ် အဖွင့် PIN (ပိုင်ရှင်အတွက်သာ)
+duress_help	ရွေးချယ်နိုင်သည်။ ဒီ PIN ကို သင့် PIN အစား ဖွင့်ချိန်တွင် ရိုက်လျှင် စာအုပ်မှတ်တမ်းအားလုံး (အရောင်း၊ စာရင်း၊ မှတ်တမ်း) ပျက်ပြီး ငွေကောင်တာသည် ပိုင်ရှင်အဖြစ် ပုံမှန်ပွင့်သည် — မီနူး၊ ဈေး၊ စားပွဲ၊ ဝန်ထမ်းနှင့် ဆက်တင် မပြောင်းပါ။ ပုံစံနှင့် ပြင်ဆင်ချက်ကို မဖျက်ပါ။ အတင်းဖွင့်ခိုင်းခံရမှသာ သုံးပါ။ ပိတ်ရန် ဗလာထားပြီး သိမ်းပါ။ မည်သူ့ PIN နှင့်မျှ မတူရပါ။
+duress_pin_ph	အရေးပေါ် PIN (အတွက် 4–12 လုံး)
+duress_confirm_ph	အတည်ပြုရန် ထပ်မံရိုက်ပါ
+save_duress_pin	အရေးပေါ် PIN ကို သိမ်းဆည်းပါ
+clear_duress_pin	အရေးပေါ် ပိတ်မည် PIN
+duress_on	အရေးပေါ် ဖွင့်ခြင်း PIN ဖွင့်ထားသည်
+duress_off	အရေးပေါ် ဖွင့်ခြင်း PIN ပိတ်ထားသည်
+duress_saved	အရေးပေါ် ဖွင့်ခြင်း PIN သိမ်းဆည်းပြီး
+duress_cleared	အရေးပေါ် ဖွင့်ခြင်း PIN ပိတ်ခဲ့သည်
+upi_amount_ph	UPI ပမာဏ
+void	ပယ်ဖျက်
+write_off_ap	AP မရေးမည်
+write_off_heading	စာရင်းမှ ဖျက်မည် (ငွေပေးချေမှုမရှိဘဲ ရှင်းလင်းခြင်း)
+write_off_nil	အကောက်ပယ် / ရှင်းလင်းအကြွေးမရှိခြင်း
+your_brand	သင့်အမှတ်တံဆိပ် (အက်ပ်အတွင်း)
+your_categories	သင့်အမျိုးအစားများ
+account_kind	အကောင့်အမျိုးအစား (တစ်ခုနှိပ်ပါ)
+actual_total_cap	တကယ့်စုစုပေါင်း
+amend_help	ပြင်ဆင်, ရုပ်သိမ်း, သို့မဟုတ် ငွေလက်ခံပြန်အမ်းမည့်အရောင်းကို ရွေးချယ်ပါ။ ပြင်ဆင်မှုများသည် အပြည့်အစုံမှတ်တမ်းကို ထိန်းသိမ်းထားသည်။ လတ်တလောစုစုပေါင်းသည် အပြည့်အစုံမှတ်တမ်းနှင့် တန်းညီစတင်သည် — စွပ်စွဲချက်များအတွက်သာ ပြင်ဆင်ပါ။ ရုပ်သိမ်းခြင်းနှင့် ငွေပြန်အမ်းခြင်းအတွက် အိုင်အက်(Owner) သို့မဟုတ် မန်နေဂျာ (Manager) အပေါ်မူတည်နိုင်ပါသည် PIN (အထက်တွင် type လုပ်ထားပြီး သင့်နာမည်ဖြင့် မှတ်တမ်းတင်ထားပါသည်။)
+applied_total_cap	အသုံးပြုပြီးစုစုပေါင်း
+bank_balance	ဘဏ်ထဲတွင်ရှိသည့်အခြေအနေ
+bank_net_today	ဘဏ်နက်ဒီနေ့
+branch_export_help	Export သည် branch_snapshot_CODE_DATE.json ကို backups ဖိုလ်ဒါထဲရေးပြီး clipboard သို့ကူးယူသည်။ တခြား outlet ၏နေ့ကို import လုပ်လိုလျှင် ၎င်း၏ဖိုင်ကို အဲဒီပဲဖိုလ်ဒါထဲတွင် import_branch_snapshot.json အဖြစ်သိမ်းပြီး Import ကိုနှိပ်ပါ။
+brand_shown_help	အက်ပ်ထဲက ဖန်သားပြင်များတွင် ပြသည်။ ဒီစက်တွင် ထည့်သွင်းထားသော အက်ပ်အမည်နှင့် အိုင်ကွန်သည် ပလက်ဖောင်းစာရင်းအတိုင်း ရှိနေသည်။
+app_icon	အက်ပ် icon
+logo_help	အက်ပ်အတွင်း screen များပေါ်တွင် optional shop mark ရှိနိုင်သည်။
+onboard_layout	သင်ရမည့်အရာ
+item_photo_help	Optional။ ဓာတ်ပုံမပါလျှင် item နာမည်မှ စတင်အက္ခရာများကိုပြသပါမည်။
+stamp_heading	တံဆိပ်
+stamp_image_help	ပုံနှိပ်ထားသည့်ဘီလ်များနှင့်ဧည့်သည်ပြသမှုတွင် ရွေးချယ်နိုင်သည့်ထုတ်တံဆိပ်ပုံရိပ်။
+payment_qr_heading	ငွေပေးချေမှု QR
+payment_qr_image_help	ဘီလ်များနှင့်ဧည့်သည်ပြသမှုတွင် Static QR; မဟုတ်လျှင် ငွေပေးချေမှုသည် အထက်ပါ VPA မှ dynamic UPI QR ကို အသုံးပြုသည်။
+cash_in_hand	လက်ထဲရှိ ငွေ (ငွေကောင်တာ)
+change_my_pin_heading	ကျွန်ုပ်၏အထည်ဝင်ခြင်း
+connect_to_server	Server နှင့် ချိတ်ဆက်ပါ
+counter_locked	ကောင်တာ 01 · လုံခြုံထားသည်
+country_pack_help	နိုင်ငံမှုထုပ်ပိုးမှုသည် အခွန်အမည်နှင့် သင်္ချာများ၊ အမြန်ငွေပေးချေမှု လမ်းကြောင်း၊ နှင့် ဘီလ်များပေါ်တွင် ပုံနှိပ်ထားသော စီးပွားရေးအိုင်ဒီအမှတ်ကို သတ်မှတ်သည်။ Kumkaj သည် မည်သည့်နေရာ၌မဆို အခွန်ဖိုင်မလုပ်ဘဲ အစိုးရအီး-ဘိုင်းစ် မထုတ်ပြန်ပါ။
+currency_use_help	အထောက်အပံ့ရနိုင်သည့် ငွေကြေးအမျိုးအစားကို စကရော့လုပ်ပြီး Use ကို တိုက်ပါ။
+day_close_help	နေ့စွဲပိတ်သိမ်းမှုကို မှတ်တမ်းတင်ခြင်းက ဒီ အကျဉ်းချုပ်ကို (နှင့် မျှတမှုအလွဲရှိပါက ရေတွက်ပါ) Audit log ထဲသို့ သိမ်းဆည်းပေးသည်။ ဒါဟာ အရောင်းကို ရပ်တန့်မထားပါ။
+expenses_word	ချိန်ချက်များ
+feature_access_help	သူတို့ဖွင့်နိုင်သည့် အရာများ — လိုအပ်သလို; အထက်ပါ အလုပ်မှာ အပြည့်အစုံကို သတ်မှတ်ထားပြီးဖြစ်သည်
+footer_local	ဒေသဆိုင်ရာ SQLite · အစဉ်အမြဲ အခမဲ့ · Zero Cloud
+fresh_book_khaynjo	အသစ် = ဌာနအစားအစာမရွေး (နောက်မှ အစားအစာများ ထည့်နိုင်ပါသည်)။ စာအုပ် = ဖွင့်ကုန်ပစ္စည်းများနှင့် အားလုံးဘယ်သူကိုပေးရမည်ကို အောက်တွင်ရိုက်ထည့်ပါ။
+fresh_selected	အသစ် ရွေးထား — ကတ်တီလော့ဂျ် အားလုံးလွတ်နေသည်။ ပြင်ဆင်ပြီးပါက Done ကို တိုက်ပါ။
+gross_word	စုစုပေါင်း
+how_start	သင်ဘယ်လိုစတင်ချင်ပါသလဲ?
+kot_print_help_khaynjo	On ဖြစ်နေစဉ်၊ သင့် စားဖိုရုံတိုင်းသည် သင် Send ချိန်တိုင်း မိမိ KOT စက္ကူကို ပုံနှိပ်မည်။
+later_country_pack	နောက်ပိုင်း: Settings → သင့်နိုင်ငံ pack ကို အခွန်နှင့် အပေါ် label များအတွက် သုံးပါ။
+local_badge	ဒေသတွင်း
+mix_type_hint_khaynjo	လိုအပ်ပါက ငွေ / UPI / ကတ် / အကြွေးကပ်ပေါင်းခြားနိုင်သည်။ အကြွေးအတွက် ဖောက်သည်တစ်ဦး လိုအပ်သည်။
+money_in_sales	ငွေဝင် (အရောင်း)
+net_word	တိုးတက်သောငွေ
+offline_badge	အော့ဖ်လိုင်း
+optional_login_help	စိတ်ကြိုက်လော့ဂ်အင် (အိုင်ဒီ + စကားဝှက်)။ ပိုင်ရှင်တစ်ခါတည်း သတ်မှတ်နိုင်ပြီး၊ နောက်ပိုင်းတွင် စကားဝှက်ကို အသုံးပြုသူပဲ ပြောင်းနိုင်သည်။
+or_unlock_login	သို့မဟုတ် လော့ဂ်အင် အိုင်ဒီ + စကားဝှက်ဖြင့် ဖွင့်ရန်
+permission_preset	အလုပ် (မျက်နှာပြင်များနှင့် ငွေမှုဆောင်ရွက်မှုများ သတ်မှတ်သည်)
+preset_help_khaynjo	ငွေထုတ်ယူသူ: ရောင်းသည်။ မန်နေဂျာ: ရောင်းခြင်း + ပစ္စည်းများ + ဖျက်/ပြင်ဆင်ခြင်း။
+product_locked_khaynjo	Khaynjo
+product_only_khaynjo	ဤအက်ပ်သည် Khaynjo တင်သာဖြစ်သည် — စားသောက်ဆိုင် စနစ်ပေါင်းစပ်ခြင်း အက်ပ်။ အခြားကုန်သွယ်မှုများသည် အလွဲသီးခြား Kumkaj ထုတ်ကုန်များအဖြစ် ရှေ့ဆောင်သည်။
+purchases_cogs	ဝယ်ယူမှုများ (COGS)
+qty_cap	အရေအတွက်
+restore_help	ပြန်လည်ထူထောင်မည်: ဘက်အပ်ကိုရွေးပါ။ အဲ့အချိန်တွင် စာအုပ်များအတိုင်းဖွင့်လှစ်ပြီး၊ ယခုအချိန်ကဲ့သို့ စာအုပ်များကို အရင်သိမ်းဆည်းထားသည့်အတွက်၊ ဤမူလအခြေအနေကို ပြန်ဖျက်နိုင်သည်။
+wipe_data_heading	ဒေတာကို ဒေသတွင်းဖျက်ပါ
+wipe_data_help	ပိုင်ရှင်သာ — Windows uninstall လိုရွေးချယ်စရာများတူညီသည်။ စီးပွားရေးမှတ်တမ်းများသည် ကုန်သွယ်မှုသမိုင်းကိုဖျက်ပစ်သော်လည်း မီနူးနှင့် စီမံကိန်းများကို ထားရှိသည် (ဥပမာ အရေးပေါ် ဖွင့်ပေးမှု PIN ကဲ့သို့) ဆိုင်စီမံချက်သည် စာအုပ်ဒေတာဘေ့စ်ကိုဖျက်ပစ်သည်။ အကြည့်အမြင်နှင့် ဗမာ/ဘာသာစကားနှင့် ပတ်သက်သော အတွေ့အကြုံများကို ဖျက်ပစ်သည်။ ပိုင်ရှင်နှင့် အတည်ပြုပါ PIN။ အဖွဲ့ Team တွင် အရေးပေါ်ဖွင့်ပေးမှု PIN သီးခြားဖြစ်သည် (ဖျက်ပစ်မှုကို လျှို့ဝှက် စောင့်ကြည့်သည်)။
+wipe_trading	စီးပွားရေးမှတ်တမ်းများ
+wipe_schema	ဆိုင်စီမံချက်
+wipe_ui	အကြည့်အမြင်နှင့် ဗမာ/ဘာသာစကား
+wipe_owner_pin_ph	ပိုင်ရှင် PIN မှ ဖျက်ရန်
+wipe_delete_selected	ရွေးချယ်ထားသည်များကို ဖျက်ပါ
+wipe_owner_only	ဒေသတွင်းဒေတာကို ဖျက်နိုင်သူမှာ ပိုင်ရှင်တစ်ယောက်သာ ဖြစ်သည်။
+restore_owner_only	ပိုင်ရှင်သာ မိတ္တူကို ပြန်ထားနိုင်သည်။
+wipe_owner_pin_needed	မှတ်ပုံတင် ဒေတာကို ဖျက်ရန် မူပိုင်ရှင် PIN ထည့်ပါ။
+wipe_nothing_selected	မည်ကို အရင် ဖျက်မလဲ ရွေးချယ်ပါ။
+wipe_done	ရွေးထားသည့် ဒေတာများကို ဖျက်ပြီးပါပြီ။
+wipe_schema_done	ဆိုင်စတင်တပ်ဆင်မှု ဖျက်သိမ်းပြီး — ဆက်လက်ရန် Server သို့မဟုတ် Client ကို ရွေးပါ။
+rounded_total	စုစုပေါင်း အချိုးအစား
+setup_app_khaynjo	Khaynjo ကို စတင်တပ်ဆင်ပါ
+shop_logo_optional	ဆိုင်လိုဂို (စိတ်ကြိုက်ဖြစ်နိုင်သည်)
+stock_type_help	ပစ္စည်းအမည်ကို ရိုက်ထည့်ပါ (အစိတ်အပိုင်းလောက် လုံသည်)၊ အရေအတွက်၊ ပြီးမှ ညှိပါ။ မရေတွက်ရသေးသော ပစ္စည်းများအတွက် တစ်ကြိမ် စတင်ခြေရာခံရန် လိုသည်။
+team_owner_help	လူတစ်ဦး ထည့်ရန် လိုအပ်သည့်နေရာကို အလွတ်ထားပါ: အမည်၊ အလုပ်၊ username၊ PIN၊ နဲ့ ရွေးချယ်စရာ စကားဝှက်၊ ထို့နောက် Add နှိပ်ပါ။ အဲဒီ အမျိုးအစားတူ ဖောင်ကို ပြင်ဆင်ရန် လူတစ်ဦးကို ရွေးပါ — အမည်၊ username၊ password၊ screens နဲ့ rights — ထို့နောက် Save နှိပ်ပါ။ သင့်ကိုယ်ပိုင် PIN နဲ့ password သည် အောက်ဆုံး Sign-in တစ်ခုဖြစ်သည်။ Owner သည် အခြားသူများ၏ PIN မပြောင်းနိုင်ပါ။
+staff_name_ph	ဝန်ထမ်းအမည်
+staff_copy_hire_ph	Copy setup မှ (ရွေးချယ်စရာ)
+staff_copy_hire	အဓိကပုဂ္ဂိုလ်ဤအဖွဲ့အစည်းကို အသုံးပြုပါ
+staff_edit_name_ph	ပြသမည့်အမည်
+staff_rename	အမည်ကို သိမ်းဆည်းပါ
+staff_copy_edit_ph	အခြားပုဂ္ဂိုလ်မှ setup ကို ကူးယူပါ
+staff_copy_edit	သူတို့ရဲ့ စနစ်ကို ရွေးချယ်ထားတဲ့နေရာမှာ မိတ္တူကူးပါ
+staff_copy_edit_onto	သူတို့ရဲ့ စနစ်ကို {name} မှာ မိတ္တူကူးပါ
+staff_deactivate_named	{name} ကို ဖျက်ပါ
+staff_renamed	နာမည် သိမ်းပြီးပြီ
+staff_setup_copied_hire	{name} မှ စနစ်ကို မိတ္တူကူးပြီး — နာမည်အသစ်ထည့်ပြီး PIN၊ ထို့နောက် အလုပ်သမားများကို ထည့်ပါ
+staff_setup_copied_edit	{from} ရဲ့ စနစ်ကို {to} မှာ မိတ္တူကူးပြီးပြီ
+staff_copy_need_selected	ပထမဆုံး တည်းဖြတ်မယ့်သူကို ရွေးပါ
+staff_copy_need_source	မိတ္တူကူးဖို့ စနစ်ကို ရွေးချယ်ပါ
+staff_copy_same	သူဟာ အဲဒီပုဂ္ဂိုလ်တူပါ — တခြားသူကို ရွေးချယ်ပါ
+staff_rename_need_selected	ပထမဦးဆုံး အမည်ပြောင်းရန် ရွေးချယ်ပါ
+team_pick_hint	တည်းဖြတ်ရန် ရွေးပါ — အဲဒီပုဂ္ဂိုလ်အတွက်ပဲ အမျိုးအစားများ၊ ငွေခွင့်များနှင့် မီးဖိုချောင်စခန်းများ ပေါ်လာမည်
+team_stations_help	သူတို့အသုံးပြုနိုင်သော မီးဖိုချောင်စခန်းများ
+team_stations_changed	မီးဖိုချောင်စခန်းများကို ပြောင်းပြီး — အဲဒီပုဂ္ဂိုလ်အတွက် စနစ်ထားသိုလှောင်ပါ
+team_features_changed	အမျိုးအစားများကို ပြောင်းပြီး — အဲဒီပုဂ္ဂိုလ်အတွက် စနစ်ထားသိုလှောင်ပါ
+team_rights_changed	ခွင့်များကို ပြောင်းပြီး — အဲဒီပုဂ္ဂိုလ်အတွက် စနစ်ထားသိုလှောင်ပါ
+they_owe_us	သူတို့က ငါတို့ဆီမှာ အပေါင်းအရစ်ကျရှိပါသည်
+unit_at_cap	ယူနစ် @
+units_help	ပစ္စည်းထဲက အမှတ်တံဆိပ်များအတွက်ကုဒ်များ (ကီလိုဂရမ်၊ တစ်ခုချင်း၊ အိတ်)။ ယူနစ်တစ်ခုစီကို တိုက်ရိုက် သို့မဟုတ် အခြားယူနစ်များမှတဆင့် စံ (ကီလိုဂရမ် · စင်တီမီတာ · မီလီလီတာ · တစ်ခု) နှင့် ချိတ်ဆက်ရမည်၊ ဥပမာ 1 ခရိတ် = 2 ဖြတ်ပြီး 1 ဖြတ် = 20 စင်တီမီတာ။ ပြောင်းလဲမှုများ: 1 တိုင်း = အချိုးအစား သို့။ ငွေသွင်းမှုများကို ယူနစ်မဟုတ်ပါ။
+units_picker_help	ဝယ်ခြင်းနှင့် မီနူးရွေးချယ်မှုတွင် ယူနစ်တစ်ခု ပြသရန် ဖွင့်/ပိတ်ပါ။ ပိတ်ထားသည့်ယူနစ်များလည်း ပြောင်းလဲမှုရှိနိုင်သည်။
+unit_picker_on	ဖွင့်
+unit_picker_off	ပိတ်
+we_owe_them	ကျွန်ုပ်တို့ထံ ကျန်ရှိသည်
+who_unlocking	ဘယ်သူထုတ်ဖွင့်နေသနည်း?
+locked_word	ကာလ္
+show_pin	ပြသပါ PIN
+hide_pin	ဖျောက်ပါ PIN
+set_owner_pin	ပိုင်ရှင် သတ်မှတ်ရန် PIN
+enter_owner_passcode	ပိုင်ရှင် ကုဒ်ထည့်ပါ
+enter_staff_passcode	ဝန်ထမ်း ကုဒ်ထည့်ပါ
+pin_count_zero	0 / 12 လုံး · အနည်းဆုံး 4 လုံး၊ ပြီးရင် OK
+pin_count_need	{} / 12 လုံး · {} လုံး ပိုလိုအပ်သည်
+pin_count_full	12 / 12 လုံး · OK နှိပ်ပါ
+pin_count_ready	{} / 12 လုံး · ပြင်ဆင်ပြီးပါက OK နှိပ်ပါ
+pin_hint_choose	4–12 လုံးရွေးပါ · သိမ်းရန် Enter သို့မဟုတ် Unlock နှိပ်ပါ
+pin_hint_new	အသစ် ၄–၁၂ လုံးအထိ ပိုင်ရှင် PIN · မှတ်ပုံတင်မည် သို့မဟုတ် အော့ဖ်လော့ခ်ဖြေမည်
+pin_hint_shop_code	ဆိုင်စက် · ဖက်ရင်းကုဒ် {}
+pin_hint_books	ဤစက်တွင် စာအုပ်များကို သိမ်းဆည်းထားသည်
+pin_hint_paired	အပို ငွေကောင်တာ ချိတ်ဆက်ပြီး — ရောင်းရန် ဖွင့်ပါ
+pin_hint_pair_first	အပို ငွေကောင်တာ — ဆိုင်စက်နှင့် အရင် ချိတ်ဆက်ပါ
+unlock_to_continue	ဆက်ရန် အော့ဖ်လော့ခ်ဖြေပါ
+no_staff_yet	ဝန်ထမ်း မရှိသေး — ပိုင်ရှင်အဖြစ် အော့ဖ်လော့ခ်ဖွင့်ပြီး နောက် TEAM
+status_server_set_pin	Server မုဒ် — ပိုင်ရှင် PIN ကို သတ်မှတ်ပါ
+status_server_tills	Server မုဒ် — အပို ငွေကောင်တာများ ဝင်နိုင်သည်။ ဖွင့်ပါ
+status_server_unlock	Server မုဒ် — မန်နေဂျာအဖြစ် ဖွင့်ပါ
+status_client_unlock	Client မုဒ် — ရောင်းရန် ဖွင့်ပါ
+icon_new_selected	အိုင်ကွန်: ဖိုင်အသစ် ရွေးထားသည် — brand ကို သိမ်းရန် နှိပ်ပါ
+icon_custom	အိုင်ကွန်: အကူးအပြောင်း ရှိသော နေရာမှတ်
+icon_default	အိုင်ကွန်: Kumkaj မှတ် (ပုံမှန်) — အထူးသီးသန့်မှတ် ရွေးပါ
+logo_yours	လိုဂို: သင့်ဆိုင် လိုဂို — မျက်နှာပြင်နှင့် ဘတ်စ်ရေစစ်များပေါ်တွင် ပြသမည်
+logo_default	လိုဂို: Kumkaj မှတ် (ပုံမှန်) — သင့်ကိုယ်ပိုင်ရှိပါက ရွေးချယ်နိုင်သည်
+tmpl_current	လက်ရှိ: {} — {}
+tmpl_selected	ရွေးထားသည်: {} — {}
+setup_complete	ဆက်တင်ပြီးစီးပြီ
+onboard_fresh_tmpl	သစ်လွင်သော · {} — ကတ်တလိုဂ်သည် အလုပ်စတင်မီ ဖျတ်ပြီးပါသည်; ပစ္စည်းများတွင် ပစ္စည်းများထည့်ပြီးပြီးနောက် ပြီးစီးပြီ နှိပ်ပါ။
+onboard_book_tmpl	စာအုပ် · {} — ပစ္စည်းများနှင့် အဖွင့်အကြွေးထည့်ပြီးနောက် ပြီးစီးပြီ နှိပ်ပါ။
+onboard_template_tmpl	သင်လိုလျှင် နေရာအမည်ပေးပြီး၊ စတင်မည့်နည်းကို ရွေးပါ။
+tmpl_blurb	စားပွဲများ၊ အမှာစာပေးခြင်း၊ မီးဖိုချောင်လက်ခံလွှာများ၊ ဘီလ်ပြုလုပ်ခြင်းနှင့် စာအုပ်များ။
+tmpl_how	ကောင်တာတွင် ရောင်းပါ။ စားပွဲနှင့် KOT အတွက် စားပွဲခန်း။ နေ့စဉ်စာရင်းအတွက် စာအုပ်။
+reports_facet_title	အစီရင်ခံစာ
+reports_facet_help	နေ့စာအုပ်များ၊ ပါတီအသက်အရွယ်၊ ဘဏ်အပေါ်တင်သွင်းမှုများ၊ နှင့်ကာလ P&L။
+against_bill_ph	အထက်ပါ bil # အတွက် (စိတ်ကြိုက်)
+aliases_ph	နာမည်အခြားများ — အခြားနာမည်များ၊ ကော်မာဖြင့်ခွဲထားသည်
+amount_blank_full_ph	ပမာဏ (ဗလာ = လက်ကျန် အပြည့်)
+amount_owed_ph	ပမာဏကျန်ရှိသည်
+amount_ph	ပမာဏ
+amount_received_ph	ရရှိသည့်ပမာဏ
+amount_we_pay_ph	ကျွန်ုပ်တို့ပေးရမည့်ပမာဏ
+business_name_ph	စီးပွားရေးနာမည်
+category_new_ph	အမျိုးအစား (ရွေးချယ်စရာ, အသစ်ဖြစ်ရင် ဖန်တီးပါ)
+code_bag_ph	ကုဒ် (အအိတ်)
+conv_factor_ph	အားသွင်းမှု (25 = အအိတ် 1 → 25 ကီလိုဂရမ်)
+country_code_ph	နိုင်ငံကုဒ်ဥပမာ IN, GB, US, AE, BR
+credit_khata_amount_ph	အားသွင်းသည့်ငွေ / ခတ်တာပမာဏ
+credit_limit_ph	အကြွေးအရည်အတွက် ကန့်သတ်ချက် (0 = မရှိ)
+from_code_ph	မှကုဒ် (အအိတ်)
+item_name_lang_ph	ပစ္စည်းအမည် — သင့်ဘာသာစကားနဲ့ရေးပါ
+login_id_opt_ph	အသုံးပြုသူအမည် (လိုအပ်သည်၊ ထူးခြားသည်)
+manager_pin_ph	အုပ်ချုပ်သူ PIN အတည်ပြုရန် (မပယ်ဖျက်နိုင်ပါကသာ)
+new_branch_name_ph	ခိုင်ညီသည့်ဌာနအသစ်အမည်
+new_password_ph	စကားဝှက်အသစ် (စိတ်ကြိုက်)
+new_pin_ph	အသစ် PIN (၄–၁၂ လုံးဂဏန်း)
+note_bank_ph	မှတ်ချက် (အပ်နှံခြင်း၊ ဆိုက်ရင်းခြင်း၊ …)
+note_buy_expense_ph	မှတ်ချက် (ဆီ၊ အငှား၊ …)
+note_expense_ph	မှတ်ချက် (ဆီ၊ ရုံး၊ …)
+options_khaynjo_ph	ရွေးချယ်မှုများ — အရွယ်အစား*: သေး=199, ကြီး=399 | အပေါင်းစပ်များ+3: ချိစ်=40, ငောင်း=30 | စိတ်ကြိုက်ချိစ်=40
+part_second_way_ph	အပိုင်းကို ဒုတိယနည်းလမ်းဖြင့် (ရွေးချယ်မှု)
+phone_ph	ဖုန်း
+place_name_ph	ဤနေရာ၏အမည်
+qty_example_ph	အရေအတွက် (ဥပမာ 1.5 ကီလို)
+quantity_ph	အရေအတွက်
+reason_required_ph	အကြောင်းပြချက် (လိုအပ်သည်)
+role_title_ph	ရာထူးအမည် (ဥပမာ ဘားပေါ်စတာ)
+service_pct_ph	ဝန်ဆောင်မှု % (ရွေးချယ်နိုင်သည် 0/10/12)
+short_code_ph	တိုတိုကုဒ် (MG02)
+starting_password_ph	စတင်စကားဝှက် (မလိုအပ်ပါက စိတ်ကြိုက်)
+starting_pin_ph	စတင် PIN (အရေအတွက် ၄–၁၂ လုံး)
+station_name_ph	စက်ရုံအမည် (ဥပမာ Tandoor, Fryer, Cold)
+station_new_ph	မီးဖိုချောင်စက်ရုံ (မလိုအပ်ပါက, ဥပမာ Tandoor — အသစ်ဖြစ်ပါက ဖန်တီးမည်)
+table_name_ph	စားဖိုခန်းအမည် (ဥပမာ Patio 1, Counter 2)
+tax_rate_ph	အခွန်နှုန်းအမည် သို့မဟုတ် % — စံ, လျော့ချ, 0, 5, 12, 18, 20
+to_code_ph	ကုဒ်သို့ (kg)
+uncleared_no_ph	မရှင်းလင်းသေးသော # အထက်
+unit_cost_ph	ယူနစ်ဈေးနှုန်း
+unit_name_bag_ph	အမည် (ထုပ်)
+unit_plate_ph	ယူနစ် (ပလိတ် / ထုံး — ဗလာ = တစ်ခုအလိုက်)
+pay_credit	အကြွေး
+book_kind_today	ယနေ့စာအုပ်များ
+book_kind_month	ဒီလစာအုပ်များ
+book_kind_aging	မပြီးစီးသေးသော / အကြွေး-အကြွေးပေါင်း
+book_kind_balance	စာရင်းဇယား
+order_help	ပစ္စည်းကို ထည့်ရန် အရာတစ်ခုကို နှိပ်ပါ။
+floor_help	အော်ဒါယူရန် သို့မဟုတ် ပြောင်းရန် စားပွဲကို နှိပ်ပါ။ အရောင်များသည် အောက်ပါအစီအစဉ်ကို ဖော်ပြသည် - အခမဲ့ → ထိုင်ပြီး → မီးဖို → ပြင်ဆင်ပြီး → စားနေ → ဘီလ် → ပေးပြီး။ စောင့်ဆိုင်းစာရင်း၊ ကြိုတင်အမှာစာများ၊ စားပွဲထည့်ရန်များကို အောက်ပါအပိုင်းများတွင် တွေ့နိုင်သည်။
+kitchen_help	မီးဖိုချောင်လက်မှတ်များ (KOT)၊ အသစ်ဆုံး အောက်ဆုံး။ စတင် → အသင့် → ပြီးပြီ ဖြင့် လက်မှတ်ကို ရွှေ့သည်။ လက်မှတ်များတွင် ဈေးမပြပါ။
+kitchen_empty	ဖွင့်ထားသော လက်မှတ် မရှိပါ။ အော်ဒါ သို့မဟုတ် စားပွဲခန်းမှ ပို့သော KOT သည် ဒီမှာ ပေါ်သည်။
+add_a_table	စားပွဲထည့်ရန်
+add_station_heading	မီးဖိုဌာနတစ်ခု ထည့်ရန်
+categories_help	အသုံးပြုရန် ကို နှိပ်၍ အထက်ဖော်ပြထားသော ပစ္စည်းကို အဲဒီအမျိုးအစားအောက်တွင် ဖိုင်မည်။ ဓါတ်ပုံသည် အမျိုးအစားကို ဓါတ်ပုံထည့်နိုင်ရန် ဖြစ်ပြီး မရှိသေးလျှင် အစကွက်စတော့ကို ပြသသည်။
+dish_search_ph	ပစ္စည်းအမည် — ကျွန်ုပ်တို့ရဲ့ အစားအစာများကို ရှာပါ သို့ မရနိုင်လျှင် မိမိနှုတ်စကားဖြင့် ရိုက်ထည့်နိုင်သည်
+tile_free	လွတ်
+tile_occupied	ပြည့်နေသည်
+tile_food_ready	အစားအစာအဆင်သင့်
+tile_bill_printed	ဘီလ်ပုံနှိပ်ပြီး
+tile_paid	ရှင်းပြီး
+tile_bill_btn	ဘေလ်
+tile_occupy_btn	ဧည့်သည်များထိုင်ခုံပေးရန်
+tile_free_btn	စားပွဲလွတ်
+tile_ready_btn	စားပွဲလွတ်
+tile_undo_bill	ဘီလ်မပြန်ဘဲဖျက်ရန်
+summary_busy	စားပွဲများပြည့်နေသည်
+summary_to_collect	စုဆောင်းရန်
+summary_on_floor	စားပွဲခန်းတွင်
+floor	စားပွဲခန်း
+sizes_as_items_ph	အရွယ်အစားများကို သီးသန့်အဖြစ် (မလိုပါက) — အခြမ်း=120, အပြည့်=200
+dish_group_ph	ပန်းကန်အုပ်စု (မလိုပါက) — ဥပမာ Paneer Tikka
+discount	လျှော့ဈေး
+remove_discount	လျှော့ဈေးဖယ်ရှားရန်
+apply_discount	လျှော့ဈေးအသုံးပြုရန်
+save_opening_cash	ဖွင့်ထားသည့်ငွေသိမ်းရန်
+close_shift_print	အလုပ်ချိန်ပိတ်ပြီး စလစ်ပုံနှိပ်ရန်
+area_prices_ph	ဧရိယာစျေးများ (အလိုအလျောက်) — AC=220, Parcel=210
+discount_ph	10% သို့မဟုတ် 50
+discount_reason_ph	အကြောင်းပြချက် (ဥပမာ- စရိတ်ပုံမှန် ဧည့်သည်, အစာ နောက်ကျခြင်း)
+opening_float_ph	ဒီမနက်က ထည့်ထားသည့် လက်ငင်းငွေ
+shift_counted_ph	လက်ဆောင်အချိန်တွင် စစ်ဆေးထားသောငွေ
+opening_float	အဖွင့်ငွေ (float)
+shift_handover	အကြိမ်လှည့် လက်လွှဲပေးခြင်း
+shift_since	ဒီအကြိမ်လှည့်မှသည်
+expected_in_drawer	စောင့်ကြည့်ထားသော ရေကျည်ထဲတွင် မျှော်လင့်ထားသည်
+right_discount	လျှော့စျေးပေးပါ
+floor_in_kitchen	မီးဖိုချောင်တွင်
+floor_eating	ပေးဆောင်ပြီး
+pick_category	အမျိုးအစားကို ရွေးပါ
+close_category_list	အမျိုးအစား စာရင်းကို ပိတ်ပါ
+new_category_row	အမျိုးအစားအသစ် — ပစ္စည်းကို သိမ်းသွင်းသောအခါ ဖန်တီးသည်
+your_category	သင့်အမျိုးအစား
+suggested_category	အကြံပြု — ကျွန်တော်တို့ရဲ့ စားစရာတွေထဲကနေ
+category_search_ph	အမျိုးအစား — သင့်အမျိုးအစားကိုရှာပါ သို့မဟုတ် အသစ်တစ်ခုရိုက်ထည့်ပါ
+line_sent_state	မီးဖိုပြင်သို့ ပို့ထားသည်
+line_nc_state	အခမဲ့ (NC) — အခမဲ့
+cancel_item_short	ပယ်ဖျက်
+nc_short	NC
+charge_again_short	စွဲငွေ
+move_short	ရွှေ့မည်
+cancel_item_title	ဤပစ္စည်းကိုဖျက်ရန် — မီးဖိုမှ ဖျက်သိမ်းလွှာကိုရရှိပါမည်
+nc_item_title	ဤပစ္စည်းကို အခမဲ့ (NC) ပြုလုပ်မည်
+charge_again_title	ဒီပစ္စည်းကို ထပ်မံသွင်းပါ
+move_item_title	ဒီပစ္စည်းကို အခြားစားပွဲသို့ ရွှေ့ပါ
+already_cooked	ပြီးစီးချက်ပြင်ပြီး (ချွေတာမှု)
+not_cooked_yet	မချက်ရသေးပါ
+return_to_customer	ဖောက်သည်ထံပြန်ပေးပါ
+short_by	အနည်းငယ်ပျောက်
+tip_not_sale	အကြောင်းညွှန်ကြားချက် (၀န်ထမ်းရဲ့၊ အရောင်းမဟုတ်)
+right_settle	ငွေလက်ခံပါ
+right_cancel_sent	ပို့သွားပြီးပစ္စည်းကို ဖျက်ပါ
+right_complimentary	အခမဲ့ (NC)
+right_move_table	စားပွဲများ ရွှေ့ / ပေါင်းမည်
+right_reprint	ဘုရားကျင့်ငွေပြန်ထုတ်ပါ
+right_allowed	ခွင့်ပြုထားသည်
+right_with_approval	အတည်ပြုပြီးမှ
+right_denied	ခွင့်မပြုထားပါ
+editing_staff	တည်းဖြတ်ခြင်း
+finding_server	ဤ Wi‑Fi တွင်ဆိုင်၏ဆာဗာကိုရှာနေပါသည်…
+no_server_found	မတွေ့ပါ။ Server တွင်: ဆက်တင် → အခြားစက်များ → အပို ငွေကောင်တာ ခွင့်ပြုပါ (တူညီသော Wi‑Fi)။ သို့မဟုတ် အဲဒီမှာ ပြထားသော IP ကို ရိုက်ထည့်ပါ။
+servers_found_pick	ဆိုင်ချိတ်ဆက်လိုသည့်ဆိုင်ကို တစ်ချက်ထည့်ပါ။
+server_host_selected	{host} ကိုအသုံးပြု၍ — ချိတ်ဆက်ကုတ်ကိုထည့်ပြီး Pair now ကိုနှိပ်ပါ။
+print_bill	ဘေလ်ပေါက်ထုတ်ပါ
+table_actions	စားပွဲဆိုင်ရာ လုပ်ဆောင်ချက်များ
+move_merge_table	စားပွဲကိုရွှေ့ခြင်း / ပေါင်းစပ်ခြင်း
+move_help	ဤစားပွဲ၏ အော်ဒါကို အားလပ်သောစားပွဲသို့ရွှေ့ပါ၊ သို့မဟုတ် လှုပ်ရှားနေသောစားပွဲထဲသို့ပေါင်းစပ်ပါ။
+move_target_ph	စားပွဲအမည် (ဥပမာ D5, P2)
+approval_pin_ph	မန်နေဂျာ PIN (မေးလျှင်သာ)
+move_here	ဒီမှာရွှေ့ပါ
+merge_into	အဲဒီမှာပေါင်းထည့်ပါ
+line_reason_ph	အကြောင်းပြချက် (ဥပမာ ဧည့်သည်စိတ်ပြောင်းတာ၊ စတော့မကျေ)
+line_qty_ph	ဘယ်အရေအတွက်အား ပယ်ဖျက်မလဲ (အလွတ် = အားလုံး)
+line_target_ph	စားပွဲသို့ ရွှေ့ပါ (ဥပမာ D5)
+confirm	အတည်ပြု
+menu_search_ph	ပစ္စည်း သို့မဟုတ် အတိုကုဒ်ရှာပါ
+customer_paid_ph	ဖောက်သည်ငွေပေးချေပြီးပြီ
+tip_ph	အနှစ်သာရ
+table_area_ph	ဧရိယာ (ဥပမာ-စားသောက်ရန်, ပက်ဆယ်, AC)
+table_range_ph	တစ်ပြိုင်နက်အများအပြား: D1-D20
+add_these_tables	ဤစားပွဲများကိုထည့်ပါ
+remove_these_tables	ဤစားပွဲများကိုဖယ်ရှားပါ
+table_remove_ph	ဖယ်ရှားရန်: T1-T24, သို့မဟုတ် တစ်စားပွဲအမည်
+find_server	ဆိုင်၏ဆာဗာကိုရှာပါ
+bill_format	ဘီလ်ပုံစံ
+bill_format_help	သင်၏စားသောက်ဆိုင်အမည်ဖြင့်တိုက်ရိုက်ပုံဖော်ထားသည်။ အကြောင်းအရာတန်းများကို | နဲ့ခွဲပါ (ဥပမာ- MG လမ်း, Rajkot | ဖုန်း 98250 00000)။
+bill_header_ph	လိပ်စာ | ဖုန်း
+fssai_ph	FSSAI လိုင်စင်နံပါတ် (အိန္ဒိယ)
+bill_footer_ph	ဖူးတာ (ဥပမာ: ကျေးဇူးတင်ပါတယ်၊ နောက်တစ်ဖန်လာပါ)
+save_bill_format	ဘီလ်ဖော်မက်သိမ်းမယ်
+reset_bill_format	သတ်မှတ်ထားသောအခြေခံသို့ပြန်လည်သတ်မှတ်မယ်
+bill_format_reset	ဘီလ်ဖော်မက် သတ်မှတ်ထားသို့ပြန်လည်သတ်မှတ်ပြီး
+reset_kot_format	သတ်မှတ်ထားသောအခြေခံသို့ပြန်လည်သတ်မှတ်မယ်
+kot_format_reset	KOT ဖော်မက် သတ်မှတ်ထားသို့ပြန်လည်သတ်မှတ်ပြီး
+kot_format	KOT ဖော်မက်
+kot_format_help	စာရင်းထဲရှိကွက်တစ်ခုကိုထိပါ။ ပြမည့်အတိုင်း၊ ဖောင့်အရွယ်အစားနှင့်ဇန့်ကို အပေါ်တွင်ရွေးထားသော KOT အမျိုးအစားပေါ်တွင် ထည့်သွင်းသည်။ အမျိုးအစားတိုင်းတွင် အရွယ်အစားနှင့် ဇန့်ကို မိမိပိုင်သိမ်းဆည်းထားသည်။
+kot_format_fields	ကွက်များ
+kot_field_next	နောက်တစ်ခုသောကွက်
+kot_field_show	ပြမည်
+kot_field_hide	ဖျောက်မည်
+kot_field_on	ပြရန်
+kot_field_off	ပိတ်ရန်
+kot_field_size	ဖောင့်အရွယ်အစား
+kot_field_size_ph	ဥပမာ 16, 20, 24, 28, 32…
+kot_weight_light	တစ်သက်သာ
+bill_kot_panel_help	ဘီလ်နှင့်မီးဖိုချောင် စလစ်ဖော်မက်အပြင်အစီအရင်အဆင့်၊ တစ်ခုချင်းစီမှာ မူပိုင် အကြောင်းအရာအဝန်း ရှိသည်။ ဘီလ် ငွေတာဝန်ထမ်းသည် ဘီလ်ကို ထုတ်ပြန်သောသူ သို့မဟုတ် ပေးသည့်သူ ဖြစ်သည်။ KOT ဝေတားသည် မီးဖိုချောင်း စလစ်ကို ပို့ခဲ့သူဖြစ်သည် — အော်ဒါ အပြည့်အစုံ အကြောင်းအရာသည် စာအုပ်များထဲတွင် နေဆဲဖြစ်သည်။
+std_size_ph	ဥပမာ၊ 18, 20, 26…
+kot_show_shop	ဆိုင်နာမည်
+kot_hide_shop	ဆိုင်ကို ဖျောက်ပါ
+kot_show_time	အချိန်
+kot_hide_time	အချိန်ကို ဖျောက်ပါ
+kot_show_waiter	စားပွဲထိုး
+kot_hide_waiter	ဝန်ထမ်းကို ဖျောက်ပါ
+kot_show_station	စတေးရှင်း
+kot_hide_station	စခန်းကို ဖျောက်ပါ
+kot_show_table	စားပွဲ
+kot_hide_table	စားပွဲ ဖျောက်မည်
+kot_show_kot_no	KOT မဟုတ်ပါ
+kot_hide_kot_no	ဖျောက်ပါ KOT မဟုတ်ပါ
+kot_width	အစမ်းပတ် (အကျယ်ကို KOT တက်ဘ်တွင် သတ်မှတ်ပါ)
+kot_width_58	58 mm
+kot_width_80	80 mm
+kot_kind_heading	KOT အမျိုးအစား
+kot_kind_original	မူရင်း
+kot_kind_duplicate	သကွေ့နေသော
+kot_kind_modified	ပြင်ဆင်ထားသော
+kot_kind_cancelled	အားပယ်လိုက်သည်
+kot_style_heading	မယ်ထည်အမျိုးအစား အရွယ်အစားနှင့် အလေးချိန်
+kot_style_title	ခေါင်းစဉ်
+kot_style_item_qty	ပစ္စည်း · အရေအတွက်
+kot_style_field_pick	ကွင်းရွေးချယ်ရန်
+kot_weight_regular	ပုံမှန်
+kot_weight_bold	ထူ
+kot_align	စီးတန်းညှိ
+kot_align_start	စတင်ရန်
+kot_align_center	အလယ်
+kot_align_end	အဆုံး
+content_width	အကြောင်းအရာအကျယ် (မီလီမီတာ)
+content_width_bill	ဘီလ်အကြောင်းအရာ အကျယ် (မီလီမီတာ)
+content_width_kot	KOT အကြောင်းအရာအကျယ် (မီလီမီတာ)
+content_width_ph	သို့မဟုတ် အကြောင်းအရာအကျယ် ၄၀–၂၁၀ မီလီမီတာ ဟု ရိုက်ထည့်ပါ
+content_width_help	ဒီစလစ်ပုံနှိပ်မှုက ဘယ်လောက်ကျယ်လဲ။ဘီလ်နဲ့ KOT တစ်ခုချင်းစီမှာ ကိုယ်ပိုင်အကျယ်ရှိပါတယ်။
+content_width_bill_help	ဧည့်သည်ဘီလ်၏ အကျယ်ကို ပုံနှိပ်နိုင်သည်။ပုံမှန် ၂၁၀ မီလီမီတာ (စာမျက်နှာ)။၅၈ မီလီမီတာ ကျဉ်းမြောင်းသော စလစ်၊ ၈၀ မီလီမီတာ အကျယ် စလစ်၊ ၁၁၂ မီလီမီတာ ၄ လက်မ၊ ၂၁၀ မီလီမီတာ A4 အကျယ်။၄၀ မှ ၂၁၀ အထိ မည်သည့်တန်ဖိုးကိုမဆို ရိုက်ထည့်ပါ။မီးဖိုချောင်လက်မှတ်များတွင် KOT တက်ဘ်တွင် ကိုယ်ပိုင်အကျယ်ရှိသည်။
+content_width_kot_help	မီးဖိုချောင်လက်မှတ် ပုံနှိပ်နိုင်မှု အကျယ်။ပုံမှန် ၈၀ မီလီမီတာ။ ၅၈ မီလီမီတာ ကျဉ်းမြောင်းသော စလစ်၊ ၈၀ မီလီမီတာ အကျယ် စလစ်၊ ၁၁၂ မီလီမီတာ ၄ လက်မ၊ ၂၁၀ မီလီမီတာ စာမျက်နှာ။၄၀ မှ ၂၁၀ အထိ မည်သည့်တန်ဖိုးမဆို ရိုက်ထည့်ပါ။ဧည့်သည်ဘီလ်များတွင် ဘီလ်တက်ဘ်တွင် ကိုယ်ပိုင်အကျယ်ရှိသည်။
+vp_paper_width	အကြောင်းအရာအကျယ် (မီလီမီတာ)
+vp_paper_width_ph	သို့မဟုတ် အကြောင်းအရာအကျယ် ၄၀–၂၁၀ မီလီမီတာ ဟု ရိုက်ထည့်ပါ
+vp_paper_width_help	အကြောင်းအရာ အကျယ်ကို ဘေလ်နှင့် KOT ပုံစံအောက်တွင် သတ်မှတ်သည် — ဘေလ် (ပုံမှန် 210 mm) နှင့် မီးဖိုချောင်လက်မှတ် (ပုံမှန် 80 mm) သီးခြား။
+kot_size	ဖောင့်အရွယ်အစား
+kot_size_s	သေး
+kot_size_m	ပုံမှန်
+kot_size_l	ကြီး
+std_size	ဖောင့်အရွယ်အစား
+kot_copies	မိတ္တူများ
+kot_copies_1	1
+kot_copies_2	2
+kot_copies_3	3
+kot_title_ph	ခေါင်းစဉ် (ခလုတ် = KOT - မီးဖိုခန်းမှာယူခြင်း)
+kot_footer_ph	မီးဖိုခန်းမှတ်ချက် (စိတ်ကြိုက်, စျေးနှုန်းမပါ)
+kot_preview	အစမ်းကြည့်
+save_kot_format	KOT ဖော်မတ်ကို သိမ်းဆည်းပါ
+test_kot_format	KOT စမ်းသပ်ပါ
+test_kot_sent	မီးဖိုခန်းလက်မှတ် ကြိုကြည့်မှု ပို့ပြီး
+test_bill_format	စမ်းသပ်ဘီလ်
+test_bill_sent	ဘီလ် ကြိုတင်ကြည့်ရှုချက် ပို့ပြီးပြီ
+test_print_no_printer	အဆိုပါ အလုပ်အတွက် ပရင်တာ မရှိပါ — ဒီအကွက်အတွင်းမှ တစ်ခုကို ရွေးချယ်ပါ
+kot_format_saved	KOT ဖော့မာ့တ် သိမ်းဆည်းပြီးပြီ
+std_print	ဘီလ် ပရင့်အရွယ်အစား
+std_print_help	OS / လက်မှတ်ပရင်တာများပေါ်တွင် Standard Portrait နှင့် Landscape ဘီလ်အလုပ်များအတွက် ဖောင့်အရွယ်အစား (point ဖြင့် ထည့်ပါ — Small/Normal/Large မဟုတ်ဘူး)။ orientation နှစ်ခုလုံးတွင် အရွယ်အစားတူညီပါသည်။ မီးဖိုချောင် စာရင်းအရွယ်အစားများကို KOT တပ်တွင် ရှိသည်။
+std_size_s	သေး
+std_size_m	ပုံမှန်
+std_size_l	ကြီး
+save_std_print	ဘီလ် ပရင့်အရွယ်အစား သိမ်းမည်
+std_print_saved	ဘီလ် ပရင့်အရွယ်အစား သိမ်းပြီးပြီ
+print_brand_kit	အမှတ်တံဆိပ် ကတ်ပရင့်ထုတ်ရန်
+print_brand_kit_help	ဘယ်လ်မျက်နှာများတွင် နိုင်ငံကူးအမှတ်တံဆိပ်နှင့်ငွေပေးချေမှု QR ပုံများကို ရွေးချယ်နိုင်ပြီး LAN ဧည့်သည်ပြသမှုတွင်ပါသည်။ UPI QR ကို အထက်ပါ VPA မှ dynamic ဖြစ်သော်လည်း ငွေပေးချေမှု QR ပုံမတပ်ထားလျှင်လည်း အလုပ်လုပ်ပါသည်။
+choose_stamp	အမှတ်တံဆိပ်ရွေးချယ်ရန်
+clear_stamp	အမှတ်တံဆိပ်သန့်စင်ရန်
+stamp_set	အမှတ်တံဆိပ် - ဖိုင်တွင်ရှိသည် — ဧည့်သည်ပြသမှုတွင်ပြသပြီး ပရင့်ထားသောဘယ်လ်တွင်အမည်ပါသည်
+stamp_none	အမှတ်တံဆိပ် - မရှိပါ
+choose_payment_qr	ငွေပေးချေမှု QR ရွေးချယ်ရန်
+clear_payment_qr	ငွေပေးချေမှု QR သန့်စင်ရန်
+payment_qr_set	ငွေပေးချေမှု QR: ဖိုင်တွင်ရှိပြီး ဧည့်သည်ပြသမှုတွင် ပြသထားသည် (ငွေပမာဏကို UPI QR တွင် အစားထိုးနိုင်သည်)
+payment_qr_none	ငွေပေးချေမှု QR: မရှိပါ — ပမာဏ QR မှ UPI မှ စတင်ငွေပေးချေစဉ် ID
+aggregator_import	စုစည်းသူအော်ဒါများ (ဖိုင်)
+aggregator_import_help	ရွေးချယ်နိုင်သော ဒေသတွင်းတင်သွင်းမှု - import_aggregator_orders.json ကို backup ဖိုလ်ဒါ (array သို့မဟုတ် {"orders":[...]}) ထဲထည့်ပြီး Import ကို နှိပ်ပါ။ကောင်တာကို မပိတ်ပါနှင့်။လက်ရှိ Zomato/Swiggy သည် Cloud ဖြစ်သည်။
+import_aggregator_file	စုစည်းသူဖိုင်ကို တင်သွင်းပါ
+team_pick_ph	ပြင်ဆင်ရန် ဝန်ထမ်းများ — အမည်၊ အသုံးပြုသူအမည် သို့မဟုတ် ရွေးချယ်မှု
+select_staff	ဤဝန်ထမ်းကို ရွေးချယ်ပါ
+rights_help	ဤပုဂ္ဂိုလ်အတွက် ငွေကြေးနှင့် စားပွဲခန်း လုပ်ဆောင်ချက်များ — တစ်ချက်နှိပ်၍ လည်ပတ်နိုင်သည်: ခွင့်ပြုသည် → ဘော့စ် PIN လိုသည် → ခွင့်မပြုပါ။ထပ်မံ၍ ဘီလ်ပုံနှိပ်ခြင်းသည် ဘီလ်များသာဖြစ်သည်;မီးဖိုချောင်စခန်းများကို အောက်တွင် စစ်ဆေးရန် စာရင်းရှိသည်။
+dish_picker_help	ကျွန်ုပ်တို့၏ ဟင်းလျာများကို ရှာပါ သို့မဟုတ် ကြည့်ပါ၊ တစ်ခုကို နှိပ်လျှင် နာမည်နှင့် ဓာတ်ပုံ ပြည့်သည် — သို့မဟုတ် ကိုယ်ပိုင်နာမည် ထားပါ။ ဈေးသတ်မှတ်ပါ (0 လည်း ရသည်)၊ ထို့နောက် ပစ္စည်း ထည့်ပါ။
+close_dish_list	အစားအစာစာရင်းကို ပိတ်ပါ
+own_item_name	ဤအမည်ကို သင့်အထည်အလိမ္မာအမည်အဖြစ် အသုံးပြုပါ
+on_your_menu	သင့်မီနူးပေါ်တွင်
+edit	ပြင်မည်
+schemes	အစီအစဉ်များ / ကမ်းလှမ်းချက်များ
+schemes_help	BOGO ရာခိုင်နှုန်းလျော့ဈေး၊ နှင့် သတ်မှတ်ထားသော ကုမ္ဘိုများ။ ကုမ္ဘိုများသည် Send KOT တွင် မီးဖိုချောင်လိုင်းများသို့ ဖွင့်ပါမည်; အစိတ်အပိုင်းများသည် ကုမ္ဘို စတင်မည်အထိ ထားရှိထားမည်။ ဥပမာ- 2 Thali ဝယ် 1 Chaas ရယူပါ
+scheme_bogo_ph	Buy 2 Thali get 1 Chaas
+add_scheme	BOGO ထည့်ပါ
+schedule_ph	အချိန် / ပျော်စောင့်ချိန်—တနင်္လာမှ စနေ 07:00-11:00 သို့မဟုတ် HappyHour 17:00-19:00=150
+upi_vpa_ph	UPI ID (VPA)
+upi_payee_ph	UPI စာရင်းထဲသို့ငွေပေးရသူအမည် (ရွေးချယ်နိုင်)
+upi_qr	UPI QR
+show_upi_qr	UPI QR ပြပါ
+close_upi_qr	ပိတ်မည်
+upi_qr_help	အတည်ပြုခွင့်ရသည့် ဧည့်သည်မှ စကင်န့်ဆေးပြီး ငွေပေးချေသည်။ သူတို့ငွေပေးချေပြီးနောက် Take payment ကိုနှိပ်ပါ။ ဒုတိယမျက်နှာပြင်: Server URL /display ကို LAN တွင်ဖွင့်ပါ။
+kot_recall	ထပ်မံခေါ်ယူမည်
+recently_done	မကြာသေးမီက ပြုလုပ်ခဲ့သည်
+recall_kot_ph	KOT # ကို ထပ်မံခေါ်ယူရန်
+role_help_customer	အခန်းကဏ္ဍ: Customer — ခါတာ (သူတို့က ကျွန်တော်တို့ဆီ အကြွေးရှိသည်)။ အဖွဲ့တူတစ်ခုက လည်း ပစ္စည်းပေးနိုင်သည်။
+role_help_both	အခန်းကဏ္ဍများ: Customer + Supplier — တစ်ဖွဲ့၊ ခါတာနှင့် ငွေပေးရန်စာရင်းများ၊ Reports တွင် အချက်ပြစုစုပေါင်း။
+role_help_supplier	အလုပ်အကိုင်: ပေးသွင်းသူ — ဝယ်ယူမှုများအတွက်ကျွန်တော်တို့အကြွေးပေးရမည်။
+dine_in_pick_table	ဆိုင်ထိုင် — စားပွဲခန်းတွင် စားပွဲ ရွေးပါ
+choose_table	စားပွဲကိုရွေးပါ
+change_table	စားပွဲကိုပြောင်းပါ
+pick_table_banner	ဒီအမှာစာအတွက်စားပွဲကိုရွေးပါ
+items_word	ပစ္စည်းများ
+items_section	ပစ္စည်းများ
+back_to_order	အမှာစာသို့ပြန်သွားပါ
+new_items_head	မထုတ်ပေးရသေးပါ
+price_ph	ဈေးနှုန်း
+price_ph_gst_inside	စျေးနှုန်း ({tax} ပါဝင်ပြီး)
+cancel_needs_table	မီးဖိုချောင် ရောက်ပြီးမှ ပယ်ဖျက်ရန် ဒီအော်ဒါကို စားပွဲခန်း (စားပွဲတစ်လုံး) မှ ဖွင့်ပါ — ကောင်တာ KOT များသည် ငွေမကောက်မချင်း လက်မှတ်ပေါ်တွင် ကျန်သည်
+tax_rates_missing_hint	ဤချက်မီနူးများတွင် {tax} အတိုးနှုန်းမရှိပါ — မီနူးတွင် အခွန်နှုန်းကို သတ်မှတ်ပါ (စျေးနှုန်းများတွင် {tax} အပါအဝင် {tax} ပါပြီးဖြစ်သည်)
+taxable_value	အခွန်ဝင်စျေး
+gst_inside_price_note	({tax} ပါဝင်ပြီး)
+start_with_template	ကျွန်ုပ်တို့ရဲ့ မီနူးသိမ်းဆည်းပုံစံနှင့် စတင်ပါ
+template_heading	ကျွန်ုပ်တို့ရဲ့ မီနူးသိမ်းဆည်းပုံစံ
+template_info	ဓာတ်ပုံပါအမျိုးအစား {c} ခုနှင့် အစားအစာ {d} ခုများ၊ ထည့်ရန်အသင့်ဖြစ်သည်။ စျေးနှုန်းများသည် ₹0 မှစတင်ပြီး — သင့်တစ်ယောက်အတွက် သတ်မှတ်ပါ။
+template_import	အပြီးသွင်းပြီး template
+template_confirm	{d} မှန်ကန်ချက်အမျိုးအစားများဖြင့် ဟင်းကြော်များ ထည့်သွင်းမလား? သင်မှာရှိပြီးသား ဟင်းများကို အနေအထားအတိုင်း ထားပါ။
+template_yes	ဟုတ်ကဲ့, သွင်းပါ
+template_importing	မီနူးကို သွင်းနေသည်…
+template_import_progress	သွင်းနေသည်… {d}/{t}
+template_done	ကျွန်ုပ်တို့၏ template မှ ဟင်းတိုင်း သင့်မီနူးတွင် ရှိပြီးပါပြီ။
+template_imported	{d} ဟင်းများနှင့် {c} အမျိုးအစားများ ထည့်သွင်းပြီး — ဤအမျိုးအစားများ၏ စျေးနှုန်းကို ဤအကွက်တွင် သတ်မှတ်ပါ
+client_template_heading	Client မီနူး
+client_template_info	{title}: {c} အမျိုးအစားများ၊ {d} အစားအစာများနှင့် စျေးနှုန်းများ၊ ဓါတ်ပုံများနှင့် အမည်ဆိုင်ရာ အသုံးအညွှန်းများ။ လိုသည့် အစားအစာများသာ — သင်မှာပြီးသား အမည်များကို ထားပါမည်။
+client_template_import	ဤမီနူးကို တင်သွင်းရန်
+client_template_confirm	{title} မှ {d} အစားအစာများ ထည့်မလား? သင်မှာပြီးသား အစားအစာများကို အတိုင်းထားပါမည်။
+client_template_importing	{title} ကို တင်သွင်းနေသည်…
+client_template_done	{title} မှ အစားအစာအားလုံး သင့်မီနူးတွင် ရှိနေပြီ။
+client_template_imported	{title} မှ {d} အစားအစာများနှင့် {c} အမျိုးအစားများ ထည့်သွင်းပြီး။
+resv_heading	ကြိုတင်သတ်မှတ်ချက်များ
+resv_name_ph	ဧည့်သည်အမည်
+resv_phone_ph	ဖုန်း (စိတ်ကြိုက်)
+resv_guests_ph	ဧည့်သည်များ
+resv_when_ph	ဘယ်အချိန် — နေမယ့်နေ့ 13:00၊ 20:30
+resv_table_ph	စားပွဲ (စိတ်ကြိုက်)
+resv_add	စာရင်း
+resv_seat	ထိုင်ပြီး
+resv_none	ဘွိုင်ဇာမှုမရှိသေးပါ။
+guests_word	ဧည့်သည်များ
+delivery_by_ph	ပို့ဆောင်မည့်သူ (စီးကမ္ဘာသို့မဟုတ် ဝန်ထမ်းနာမည်)
+kitchen_all_day	ယခုချက်ပြုတ်ရန်: {items}
+kitchen_all_day_head	အခုချက်ဖို့
+kitchen_tab_live	အသက်ဝင်နေသည်
+kitchen_tab_recall	ထပ်မံခေါ်ယူမည်
+kitchen_tab_stations	ဘူတာများ
+split_bill	ဘေလ်ကိုခွဲမယ်
+split_go	အခွဲခွဲဘေလ်လုပ်မယ်
+cancel	ပယ်ဖျက်
+opening_client	ဖောက်သည်ကိုဖွင့်နေသည်…
+preparing_desk	မယ်ဇာတ်ကောင်ပြင်ဆင်နေသည်…
+opening_server	ဆာဗာကိုဖွင့်နေသည်…
+creating_server	ဆာဗာကိုဖန်တီးနေသည်…
+split_help	ဧည့်သည်တစ်ဦးပေးမည့် အစားအစာများကို နှိပ်ပါ · {n} ခုရွေးပြီးဖြစ်သည်
+split_send_first	KOT ကို ပထမဆုံး ပေးပို့ပါ — မီးဖိုချောင်မှာ ရှိသော အစားအစာများသာ မတူဘဲဘေလ်တွင် ထားနိုင်သည်
+split_pick_some	မတူဘဲဘေလ်အတွက် အစားအစာများကို ပထမဆုံး နှိပ်ပါ
+split_done	သီးခြားဘေလ် လုပ်ပြီးပါပြီ — ဒီစားပွဲဘေး စားပွဲခန်းတွင် ရှိသည်
+split_marked	မတူဘဲဘေလ်
+order_empty_pick	အမှာစာ ဗလာနေသည် — အစားအစာများကို ရွေးရန် အထက်ရှိ Add dishes ကို နှိပ်ပါ။
+add_dishes	အစားအစာများ ထည့်ပါ
+order_so_far	ဒီအမှာစာတွင်: {n} · {total}
+no_dish_match	«{q}» နဲ့ကိုက်တဲ့ အစားအစာမရှိပါ
+pick_dishes_help	အစားအစာတစ်မျိုးကို ထည့်ရန် နှိပ်ပါ · စာရင်းကို ကန့်သတ်ရန် အမျိုးအစားကို ရွေးပါ
+pick_done	ပြီးပြီ
+pick_done_dd	ပြီးပြီ · {label}
+printer_route_mode	ဒီနေရာမှာ ပရင်တာအများကြီးရှိလျှင်
+printer_mode_first	အလုပ်ဖြစ်နေတဲ့ ပရင်တာကို ပထမဆုံး
+printer_mode_all	အားလုံးမှာပုံနှိပ်ပါ
+kot_show_area	ဒေသ
+kot_hide_area	ဒေသကို ဖျက်ပါ
+kot_show_item_hdr	ပစ္စည်း · အရေအတွက်
+kot_hide_item_hdr	အတန်းများကို ဖုံးထားပါ
+kot_show_title	ခေါင်းစီးလိုင်း
+kot_hide_title	ခေါင်းစီးကို ဖုံးထားပါ
+kot_field_order	ပုံနှိပ်အမိန့်
+kot_field_up	အပေါ်ကိုရွှေ့ပါ
+kot_field_down	အောက်ကိုရွှေ့ပါ
+kot_field_cycle	နောက်တစ်ခုကိုရွေးပါ
+kot_field_select	နောက်တစ်ခုကိုရွေးပါ
+kot_field_time	အချိန်
+kot_field_kot_no	KOT မဟုတ်ပါ
+kot_field_area	ဒေသ
+kot_field_table	စားပွဲ
+kot_field_shop	ဆိုင်နာမည်
+kot_field_waiter	ဝန်ထမ်း
+kot_field_station	စတေးရှင်း
+app_template_blurb_extra	အခြား: ပိုင်ရှင် Zahir, Admin Asif, ဝန်ဆောင်မှု Nawaz; FOH ဘားဘက်; ၄ နာရီအပြီး သမိုင်း; ဒီနေ့ ရှုတ်တုံး; စုပုံ KOT.
+dishes_n	{n} အစားအစာများ
+recipe_ph	ချက်ပြုတ်နည်း (မလိုအပ်ပါ) — တစ်ပိုင်းမှာ သုံးသောအရာများ: ထမင်း=0.2, ပနီ=0.15
+reorder_ph	ပိုဝယ်ရန်
+set_reorder	ပြန်အမှာအခြေအနေ သတ်မှတ်ရန်
+low_stock_alert	လုပ်ငန်းကျန်နည်းသေး — မကြာခင်ဝယ်ရန်: {items}
+unpriced_note	သင့်မီနူးပေါ်ရှိ {n} အစားအစာများမှာ စျေးနှုန်းမရှိသေးပါ — သင်တစ်ခုထားသည့်အထိ 0 ထားပြီးဘယ်လ်ထုတ်မည်။
+show_unpriced	စျေးနှုန်းမရှိသောအစားအစာများကိုသာ ပြပါ
+show_all_dishes	အစားအစာအားလုံးပြပါ
+role_waiter	စားပွဲထိုး
+role_kitchen	မီးဖိုချောင်
+role_title_rest_ph	အခန်းကဏ္ဍအမည် (ဥပမာ- ဗိုလ်ထိပ်, မီးဖိုချုပ်ဦးစီး)
+preset_help_rest	ဝိတ်တာ: အော်ဒါယူပြီး စားပွဲတွေကို ပြေးပေးတယ်။ ငွေငွေထမ်း: ငွေပေးချေမှုကိုလည်း လက်ခံတယ်။ မီးဖိုချုပ်: မီးဖိုချုပ် စခရင်။ မန်နေဂျာ: မီနူး, ဖျက်ရန်နှင့် လျော့စျေးများကိုလည်း ကြီးကြပ်တယ်။
+kind_raw	အဖြစ်အပျက်အလုံးစုံ
+kind_resale	၀ယ်ပြီး ပြန်ရောင်းတယ်
+kind_dish	ငါတို့ပြင်ဆင်တဲ့ အစားအစာ
+buy_unit_ph	ယူနစ် (ကီလိုဂရမ်, လီတာ, တစ်ခုချင်းစီ)
+add_another_way	+ နည်းလမ်းတစ်ခုကို ထပ်ထည့်ရန်
+parts_status	{b} အနက် {a} ထည့်ပြီး · {c} ကျန်ရှိသည်
+save_expense	ကုန်ကျစရိတ်စုဆောင်းပါ
+rest_ph	အနားယူပါ
+low_badge	နိမ့်
+stock_empty	လက်ကျန်ပစ္စည်းမရှိသေးပါ — ဝယ်ရန်မှာသင်မှတ်သားထားသည့်အရာများသည်အတွင်းတွင်ပြပါမည်။
+recent_changes	မကြာသေးမီပြောင်းလဲမှုများ
+lane_declared_label	အခွန်ငွေတောင်းခံလွှာ
+lane_owner_label	ငွေသားလက်မှတ်
+money_lane_bill	ဘီးလ်: {lane}

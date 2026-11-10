@@ -1,0 +1,835 @@
+# Tajik — Тоҷикӣ (tg). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	Китобҳои хаткашонӣ + мизи фармоиш. Оффлайн ройгон.
+unlock	Кушодан
+pin_hint	PIN-и соҳиб аз 0000 оғоз мешавад
+sell	Бронкунӣ
+buy	Пардохт кунед
+books	Дафтари рӯз
+books_help	Мавқеи имрӯза. Бронкунӣ = посылкаҳо. Пардохт = векселҳои интиқолдиҳанда ва хароҷот. Тарафҳо = ирсолкунандагон ва интиқолдиҳандагон.
+buy_help	Ваучерҳои хароҷот ва векселҳои интиқолдиҳанда (пул берун). Дар хисобот дар дафтарчаи партиявй мемонад.
+sell_money_in	Ба посылка фармоиш диҳед
+buy_money_out	Хароҷот / векселҳои интиқолдиҳанда
+record_purchase	Сабти харид
+add_expense	Варақаи хароҷот
+bank_book	Дафтари бонк
+credit_help	ID-и ҳизб беназир аст (номҳо метавонанд такрор шаванд). Нақшҳо: Интиқолдиҳанда (AR), Интиқолдиҳанда (AP) ё ҳарду дар он ID. Ҳисобҳо алоҳида мемонанд; гузоришҳо нет нишон медиҳанд.
+party_kind_ph	Нақши фармоишӣ (ихтиёрӣ) - ё чипи болоро клик кунед
+parties_list_heading	Тарафҳои наҷотёфта
+reports_help	Дафтари рӯз, қарздорҳо ва қарзҳо, дафтари бонк, варақаҳои хароҷот, фоида ва зиён.
+reports_today	Дафтари рӯз (имрӯз)
+reports_month	Фоида ва зиён (моҳ)
+reports_aging	Боқимонда / қарз-қарз
+reports_balance_sheet	Варақаи тавозун
+reports	Дафтари бонк ва Ф&З
+refresh	Навсозӣ
+undo	Бекор
+start_tracking	Оғози ҳисоб
+stock_minus	− Захира
+stock_plus	+ Захира
+settle_cash	Бо нақд пардохт
+settle_card	Бо корт пардохт
+items	Нархҳо ва хидматҳо
+nav_items	Нархҳо
+more	Бештар
+your_items	Нархҳои шумо
+items_help	Ҳар як сатр меъёр аст (масалан, Минтақаи сатҳи А). Воҳиди он одатан кг аст. Барои таҳрир клик кунед.
+add_item	Қурб илова кунед
+new_item	Нархи нав
+adding_item	Илова кардани меъёри нав
+editing_item	Таҳрир мешавад
+save	Захира
+remove	Хориҷ
+empty_catalog	Ҳанӯз нархҳо нест. Нархҳо ва хидматҳоро кушоед, якеро (ном + нарх, воҳиди кг) илова кунед, пас брон кунед.
+counter_sale	Бронкунии муқобил
+total	Ҷамъ
+cash	Нақд
+upi	UPI
+card	Корт
+credit	Тарафҳо
+clear	Пок
+ready_to_sell	Барои навиштан омода
+today_prefix	Имрӯз
+today_mid	имрӯз
+owed	боқимонда
+round_word	мудаввар
+back	Бозгашт
+sold_out	Нест
+restock	Пур кардан
+not_tracked	Ҳисоб намешавад
+in_stock	дар захира
+marked_sold_out	Ҳамчун нест қайд шуд
+add_upper	ИЛОВА
+na	—
+qty	Миқдор
+unit_at	Нарх @
+actual	Воқеӣ
+applied	Татбиқшуда
+note_ph	Ёддошт (ихтиёрӣ)
+rounded	МУДАВВАР
+split	Тақсим
+counter	Мизи фурӯш
+parcel	Постка
+order	Фармоиш
+sales	Бронкунӣ
+sales_refunds	Бронкунӣ ва баргардонидани маблағ
+day_close	Пӯшидани рӯз
+reports_expenses	Дафтари бонк ва Ф&З
+nav_reports	Ҳисобот
+nav_settings	Танзимот
+nav_lock	Пӯшидан
+sidebar_settings	Танзимоти панели тарафҳо
+sidebar_settings_help	Нишонҳои ҳамон навори канор. Сатрро кашед, то тартибро иваз кунед. Калидро гардонед, то нишон ё пинҳон шавад. Танзимот ва Пӯшидан ҳамеша дар навор мемонанд.
+sidebar_always_on_short	Ҳамеша фаъол
+sidebar_back_settings	Бозгашт
+sidebar_shown	Нишон дода шуд
+sidebar_hidden	Пинҳон шуд
+sidebar_always_on	Ҳамеша дар навор
+sidebar_shown_hint	Дар навори канор / варақаҳои поён нишон дода мешавад
+sidebar_hidden_hint	Аз навор пинҳон шуд
+sidebar_menu_items	Меню ва молҳо
+sidebar_enable_all	Фаъол кардани ҳама
+sidebar_disable_all	Хомӯш кардани ҳама
+sidebar_order_saved	Тартиби канор захира шуд
+sidebar_visibility_saved	Намоиши канор захира шуд
+amounts_hide	Пинҳон
+amounts_show	Нишон
+no_sale_yet	Ҳанӯз фурӯш нест
+favorites	Дӯстдоштаҳо
+favorites_help	Молҳое, ки бештар мефурӯшед, барои даромади шумо захира шудаанд. Якеро ба ҳисоб илова кунед, ё рӯйхатро аз ҳамаи молҳои поён созед.
+your_favorites	Дӯстдоштаҳои шумо
+all_items	Ҳамаи молҳо
+no_favorites	Ҳанӯз дӯстдошта нест — молро аз рӯйхати поён илова кунед.
+add_to_bill	Ба ҳисоб илова
+added	Илова шуд
+owes_word	қарздор аст
+selected_word	Интихобшуда
+chip_clear_credit	пок — Қарз ё пешпардохт
+chip_missing_customer	Муштарии интихобшуда нест — боз интихоб кунед
+chip_no_customer	Ҳанӯз муштарӣ нест — ном нависед, сипас Қарзро зер кунед
+credit_summary_fmt	муштарӣ {} · қарзи кушода {} · пешпардохти нигоҳдошта {}
+recent_label	Ба наздикӣ:
+inventory	Захира
+inventory_stock	Захира ва молҳо
+branches	Шохаҳо
+branches_org	Шохаҳо ва созмон
+credit_customers	Тарафҳо (қарздорон ва кредиторон)
+customer_name_ph	Номи тараф
+new_customer_ph	Номи тарафи нав
+item_name_ph	Номи нарх (масалан, Surface Zone A)
+item_price_ph	Ба як кг / плитаи якум
+start_template	Молҳо
+next_booking	Бронкунии навбатӣ
+destination_ph	Шаҳр/минтақаи таъинот
+consignee_ph	Номи қабулкунанда
+consignee_phone_ph	Телефони қабулкунанда
+consignee_address_ph	Суроғаи интиқол
+origin_name_ph	Номи ирсолкунанда
+origin_phone_ph	Телефони ирсолкунанда
+origin_address_ph	Суроғаи интиқол / пайдоиш
+booking_consignor_heading	Интиқолдиҳанда (фармоишгар/фиристанда)
+booking_consignee_heading	Қабулкунанда (қабулкунанда)
+booking_consignor_hint	Барои пур кардан ҳизберо интихоб кунед ё барои даромадан холӣ гузоред. Барои гирифтани хона ва RTO лозим аст.
+booking_consignee_hint	Қабулкунандаи посылка. Барои афтидани ҳисобкунакҳо холӣ гузоред.
+weight_kg_ph	кг воқеӣ
+length_cm_ph	Л см
+breadth_cm_ph	Б см
+height_cm_ph	Х см
+chargeable_kg	Кг пардохтшаванда
+awb_label	AWB
+booking_help	Ирсолкунанда + боргиранда (холи OK) → макони таъинот → вазн → меъёри интихоб → Ҳисоб/Нақд → пардохт. AWB дар квитанция чоп мекунад. Бронкунии навбатӣ мизро тоза мекунад. Оғози мудавваршуда баробар ба Applied — таҳрир танҳо барои даври ҳисоб.
+cart_empty_hint	Мизи холӣ — ирсолкунанда/боргиранда ихтиёрӣ, макони таъинот ва вазнро таъин кунед, ИЛОВАИ нархро клик кунед ва пас пардохт кунед.
+team	Даста
+team_pins	Даста ва PIN
+my_pin_settings	PIN-и ман
+settings_hub_help_my_pin	PIN-и кушодани шахси воридшуда ба ин дастгоҳро иваз кунед.
+team_self_help	Танҳо шумо метавонед PIN-и кушодаи худро (ва пароли воридшавии ихтиёриро) иваз кунед. Аз Соҳиб пурсед, ки оё ба шумо экран ё ҳуқуқҳои гуногун лозим аст.
+backup_settings	Нусха ва танзимот
+lock_app	Пӯшидани барнома
+pick	Гирифтан
+select	Интихоб
+advance	Пешпардохт
+owner	Соҳиб
+staff	Корманд
+photo	Акс
+auto	Худкор
+prev	Қаблӣ
+next	Навбатӣ
+ok	OK
+this_shop	Server
+extra_till	Мизоҷ
+off	Хомӯш
+server	Server
+client	Мизоҷ
+language_currency	Забон ва асъор
+language	Забон
+choose_language	Забони худро интихоб кунед
+language_setup_hint	Забони ин дастгоҳро пайравӣ кунед, ё худ якеро интихоб кунед.
+lang_follow_platform	Забони дастгоҳ
+lang_pick_user	Интихоби забон
+lang_platform_now	Забони ҳозираи дастгоҳ
+selected_language	Интихобшуда
+continue	Давом
+this_device	ИН ДАСТГОҲ
+device_use_q	Ин дастгоҳ чӣ гуна истифода мешавад?
+last_server_mode	Server буд — зер кунед, то давом диҳед
+last_client_mode	Мизоҷ буд — зер кунед, то давом диҳед
+choose_server	Интихоби server
+choose_server_hint	Server-и мавҷударо кушоед, ё барои тиҷорати дигар яке созед.
+create_new_server	Сохтани server-и нав
+open_server	Кушодан
+new_server_name_ph	Номи server-и нав (ихтиёрӣ)
+server_remove_pin_ph	PIN-и соҳиб барои хориҷи server
+only_owner_remove_server	Танҳо соҳиб метавонад server-ро хориҷ кунад
+owner_pin_remove_server	Барои хориҷи ин server PIN-и соҳиб лозим аст
+device_setup_help	Server дафтарҳоро ин ҷо нигоҳ медорад. Мизоҷ бо Server ҳамоҳанг мешавад.
+currency	Асъор
+backup	Нусха
+settings_sec_diag	Ташхиси хато
+settings_hub_help	Як ҷойро дар як вақт кушоед — ҳаракати кам, интихоби равшан.
+settings_sec_devices	Дастгоҳҳои дигар
+settings_sec_alerts	Огоҳиҳо
+alerts_help	Паёми ҳолат дар экрани шумо чанд сония мемонад (дақиқа не)
+snack_secs_ph	Сонияҳо (3–60, пешфарз 10)
+snack_secs_save	Захираи вақти огоҳӣ
+snack_secs_saved	Вақти огоҳӣ захира шуд — {n} сония
+snack_secs_bad	Сонияҳоро ҳамчун рақам ворид кунед (3–60)
+cancelled	Бекор шуд
+cancel	Бекор
+opening_client	Мизоҷ кушода мешавад…
+preparing_desk	Миз омода мешавад…
+opening_server	Server кушода мешавад…
+creating_server	Server сохта мешавад…
+diag_privacy_help	Сабтҳо дар ҳамин дастгоҳ мемонанд. Сирҳо (PIN, парол) ҳеҷ гоҳ сабт намешаванд. Баровардани баста аз дастгоҳ ҳар бор иҷозати равшани шуморо мехоҳад — ҳеҷ гоҳ фурӯхта намешавад ва ба каси дигар дода намешавад.
+diag_level	Сатҳи ҷузъиёт
+diag_level_error	Хатоҳо
+diag_level_warn	Огоҳиҳо
+diag_level_info	Маълумот
+diag_level_debug	Ташхис
+diag_support_start	Оғози ҷаласаи дастгирии 30 дақиқа
+diag_support_stop	Анҷоми ҷаласаи дастгирӣ
+diag_support_started	Ҷаласаи дастгирӣ фаъол аст — ҷузъиёти ташхис 30 дақиқа
+diag_support_ended	Ҷаласаи дастгирӣ анҷом ёфт
+diag_export_local	Содироти нусхаи дохилӣ
+diag_export_local_done	Ташхиси дохилӣ омода аст {path} — ҷои захираи нусхаро интихоб кунед
+diag_approve_send	Иҷозаи баровардан аз ин дастгоҳ
+diag_send_heading	Баровардан аз ин дастгоҳ
+diag_send_help	Иҷозат барои як баста аст, баъд меафтад. Муваққатӣ — танҳо барои ислоҳ ё беҳтар кардани маҳсулот. Бо каси дигар мубодила намешавад. Дар Linux, Windows, macOS ва Android кор мекунад.
+optional_login_heading	Воридшавии ихтиёрӣ
+rights_heading	Ҳуқуқҳо
+booking_scope_heading	Дохилӣ / Байналмилалӣ
+diag_send_approved	Як баста иҷозат шуд (ба зудӣ меафтад)
+diag_export_send	Сохтани бастаи мубодила (иҷозат лозим)
+diag_export_send_done	Бастаи мубодила омода аст {path} — ҷои захираро интихоб кунед, сипас танҳо ба дастгирии Kumkaj фиристед
+diag_save_bundle	Захираи нусхаи ташхис
+diag_bundle_saved	Нусхаи ташхис дар {path} захира шуд
+diag_bundle_failed	Нусхаи ташхис захира нашуд — боз кӯшиш кунед
+diag_clear	Пок кардани сабтҳои ташхис
+diag_cleared	Сабтҳои ташхис пок шуданд
+use	Истифода
+add_branch	Иловаи шоха
+add_conversion	Иловаи табдил
+add_item_plain	Иловаи мол
+add_note	Иловаи ёддошт
+add_opening_balance	Иловаи боқимондаи оғоз
+add_rider	Савора илова кунед
+add_staff	Иловаи корманд
+add_unit	Иловаи воҳид
+add_use_name	Илова / истифодаи ин ном
+allow_extra_tills	Иҷозаи қуттиҳои иловагӣ
+amend	Ислоҳ
+apply_country_pack	Татбиқи бастаи кишвар
+datetime_appearance	Намуди сана ва вақт
+datetime_appearance_help	Китобҳо RFC3339-ро дар соли аввал нигоҳ медоранд. Инҳо танҳо намуди сана ва соатҳоро дар квитансияҳо, нишонаҳо, ҳисоботҳо ва экран тағир медиҳанд.
+datetime_example	Мисоли ҳозира: {ex}
+date_order	Тартиби сана
+date_order_dmy	Р/М/С
+date_order_mdy	М/Р/С
+date_order_ymd	С-М-Р
+time_format	Соат
+time_format_24h	24 соат
+time_format_12h	12 соат
+attach_bill_photo	Иловаи акси ҳисоб
+attach_pdf	Иловаи PDF
+attach_photo	Иловаи акс
+bank	Бонк
+bank_in	Бонк даромад
+bank_out	Бонк баромад
+bank_to_till	Бонк → қуттӣ
+till_to_bank	Қуттӣ → бонк
+mark_cleared	Покшуда қайд кунед
+unmark	Бардоштани қайд
+role_both	Ҳарду
+role_carrier	Интиқолдиҳанда
+role_cashier	Хазинадор
+role_consignor	Борфиристанда
+role_manager	Мудир
+role_supplier	Таъминкунанда
+branch_name_sell_ph	Номи шохае, ки аз он мефурӯшед
+bring_my_book	Дафтари маро биёр
+business_tax_id_ph	Шиносномаи андози тиҷорат
+card_amount_ph	Маблағи корт
+cash_amount_ph	Маблағи нақд
+upi_amount_ph	Маблағи UPI
+carrier_cost_ph	Арзиши интиқолдиҳанда
+carrier_party_ph	Ҳизби интиқолдиҳанда
+choose_icon	Интихоби нишон
+choose_logo	Интихоби нишон
+choose_receipt_stamp	Мӯҳри квитансияро интихоб кунед
+choose_payment_qr	Интихоби QR-и пардохт
+clear_icon	Пок кардани нишон
+clear_logo	Логотипро тоза кунед
+clear_photo	Пок кардани акс
+clear_stamp	Пок кардани мӯҳр
+clear_payment_qr	Пок кардани QR-и пардохт
+print_faces	Чеҳраҳои чопӣ (квитансия / вексел)
+print_faces_help	Мӯҳри ихтиёрӣ ва QR-и пардохт дар назди логотипи шумо дар квитансияҳои бронкунӣ ва векселҳои давравӣ.
+awb_pools_heading	Ҳавзҳои рақами интиқолдиҳандаи AWB
+add_awb_pool	Иловаи ҳавзи AWB
+awb_pool_carrier_ph	Номи ҳизби интиқолдиҳанда
+awb_pool_start_ph	Рақами оғоз.
+awb_pool_end_ph	Охири рақам.
+awb_pool_prefix_ph	Префикс (ихтиёрӣ)
+awb_pool_label_ph	Нишон (ихтиёрӣ)
+pieces_ph	Дона (холӣ = 1) - васеъ барои бор / бисёр-порчаи
+bulk_awbs_ph	AWB-ҳои оммавӣ — барои як пешравии вазъ бисёрро (хати нав ё вергул) часбонед
+tds_cut_ph	буриши TDS (ихтиёрӣ)
+discount_ph	Тахфиф (ихтиёрӣ)
+cheque_no_ph	Рақами чек (ихтиёрӣ)
+bill_reminder_chase	Рӯйхати ёдраскуниҳои билл
+month_mix_report	Ҳисоботи омехтаи моҳ
+copy_month_gst_csv	Нусхаи моҳи GST CSV
+domestic	дохилӣ
+international	байналхалкй
+pick_logo	Логотипро интихоб кунед
+booking_scope_hint_domestic	Ҳаҷмӣ ÷5000 (дохилӣ) — пахш кунед Байналмилалӣ барои ÷6000 ҳаво
+booking_scope_hint_intl	Ҳаҷмӣ ÷6000 (ҳавои байналмиллалӣ) — клик Дохилӣ барои мағоза ÷5000
+cod_register	Феҳристи COD
+collect_cod	Ҷамъоварии COD (AWB)
+consignments_dispatch	Интиқол ва интиқол
+consignor_party_ph	Интиқолдиҳанда / номи тараф
+copy_day_book_csv	Нусхаи дафтари рӯз CSV
+copy_day_close	Нусхаи пӯшидани рӯз
+copy_items_csv	Нусхаи молҳо CSV
+copy_outstanding_csv	Нусхаи боқимонда CSV
+copy_parties_csv	Нусхаи тарафҳо CSV
+copy_party_ledger_csv	Нусхаи дафтари тараф CSV
+copy_receipt	Нусхаи расид
+copy_report	Нусхаи ҳисобот
+counted_cash_ph	Нақди шумурдашуда дар қуттӣ
+counter_agency_ph	Номи ҳисобкунак / агентӣ (ихтиёрӣ)
+create_backup	Сохтани нусха
+day_close_summary	Хулосаи пӯшидани рӯз
+delete_party	Нест кардани тарафи интихобшуда
+dispatch_to_rider	Интиқол фармоиш дода шуд → савора
+docket_charge_ph	Пардохти док
+declared_value_ph	Арзиши эълоншуда
+contents_ph	Мундариҷа
+eway_ph	Билели электронии №.
+insurance_label	Суғурта
+yes_label	Бале
+no_label	Не
+print_route_label	Роҳи чоп
+new_party_kind_label	Навъи нави ҳизб
+done_open_books	Тайёр — кушодани дафтарҳо
+export_day	Содироти рӯз
+extra_note_expense_ph	Ёддошти иловагӣ дар хароҷоти охирин
+extra_note_awb_ph	Қайдҳои иловагӣ дар бораи ин AWB / фурӯш
+failed_delivery	Интиқоли ноком
+find_scan_awb	Ҷустуҷӯ / скан кардани AWB
+forget_shop	Ин дӯконро фаромӯш кунед
+fuel_ph	Сӯзишворӣ
+handover_carrier	Дастӣ фармоиш → интиқолдиҳанда
+import_day	Воридоти рӯз
+import_items_csv	Воридоти ашё / нархҳо CSV…
+import_parties_csv	Воридоти тарафҳо CSV…
+import_pincodes_csv	Воридоти пинкодҳои CSV…
+import_carrier_bill_csv	Ҳисоби интиқолдиҳандаи CSV ворид кунед…
+copy_carrier_bill_report	Ҳисоботи охирини ҳисоби интиқолдиҳандаро нусхабардорӣ кунед
+use_carrier_cost	Арзиши интиқолро истифода баред
+rate_carrier_ph	Интиқолдиҳанда (бланка = қурби фурӯши мо)
+rate_party_ph	Ҳизби (холӣ = ҳама муштариён)
+carrier_pick_ph	Интиқолдиҳанда барои нарх (аз муқоиса)
+item_name	Номи мол
+load_bulk_row	Сатри оммавиро бор кунед → мизи корӣ
+login_id_ph	Номи корбар
+mark_delivered	Марк расонида шуд
+manifest_cod_total	Маҷмӯи COD
+manifest_received_by	Аз ҷониби
+manifest_sign	Имзо
+ndr_address_wrong	Суроға нодуруст
+ndr_customer_unavailable	Нест
+ndr_door_locked	Дари баста
+ndr_other	Дигар
+ndr_refused	Рад кард
+out_for_delivery	Барои расонидани
+print_drs	DRS чоп кунед
+print_run_sheet	Варақаи иҷроро чоп кунед
+reattempt	Кӯшиши такрорӣ
+rider_cod_handed_ph	COD супурда шуд
+settle_rider_cod	Савораи COD-ро ҳал кунед
+mode_desk	Мизи миз
+mode_rider	Савор
+waiting_office	мунтазири расидан ба идора
+capture_signature	Гирифтани имзо
+incoming_manifest	Манифести воридотӣ
+pickup_request	Дархости гирифтан
+pickup_run	Давраи гирифтани
+auto_assign_area	Минтақаи таъини худкор
+reorder_stops	Тартиби дубора қатъ мешавад
+settle_rider_pay	Музди савораро ҳал кунед
+vehicle_inspect	Санҷиши воситаҳои нақлиёт
+print_docket	Ҳуҷҷати чоп
+franchise_statement	Изҳороти франшиза
+tally_export	Содироти ваучер
+open_whatsapp	WhatsApp-ро кушоед
+copy_sms	Матни SMS-ро нусхабардорӣ кунед
+pick_barcode_image	Барои скан тасвирро интихоб кунед
+share_receipt_whatsapp	Квитансияро дар WhatsApp мубодила кунед
+delivery_feedback	Бознигарии интиқол
+lan_self_book	Худтанзимкунии LAN
+new_party_clear	Тарафи нав (варақаро пок)
+new_party_kind_ph	Навъи нави ҳизб (таъминкунанда / интиқолдиҳанда)
+next_country	Кишвари навбатӣ
+prev_country	Кишвари қаблӣ
+note_gstin_ph	Ёддошт / GSTIN / ёдраскунии шартнома
+note_pod_ph	Эзоҳ / POD (ихтиёрӣ)
+on_account_ap	Дар ҳисоб (AP)
+org_optional_ph	Созмон (ихтиёрӣ)
+paid_now	Ҳозир пардохт шуд
+pairing_code_ph	Рамзи ҷуфт
+pair_now	Ҳозир ҷуфт
+party_name_selected_ph	Номи тараф (ё интихобшударо истифода баред)
+password_ph	Парол
+pay_ap_card	Пардохти AP бо корт
+pay_ap_cash	Пардохти AP бо нақд
+pay_ap_upi	Пардохти AP бо UPI
+period_bill	Ҳисоби давра
+period_bill_party	Ҳисоби даврӣ (тараф)
+pick_pod_photo	Сурати POD-ро интихоб кунед
+print_awb_label	Нишони AWB-ро чоп кунед
+print_open	Чоп / кушодан
+reason_amend_ph	Сабаби ислоҳ / бекор / баргашт
+reason_note_ph	Сабаб / ёддошт (талаф, шумор, …)
+record_day_close	Сабти пӯшидани рӯз
+refresh_from_shop	Навсозӣ аз дӯкон
+refund	Баргашт
+remit_cod	Интиқоли COD (ҳизб)
+remove_selected	Хориҷи интихобшуда
+restore_backup	Барқарор кардани нусха
+rider_name_ph	Номи ронанда
+rider_phone_ph	Телефони ронанда
+riders	Саворон
+riders_own_fleet	Савораҳо (парки худӣ)
+rollup	Ҷамъбаст
+save_booking_measures	Тадбирҳои фармоишро сарфа кунед
+save_brand	Захираи нишон
+save_business_id	Захираи шиносномаи тиҷорат
+save_business_name	Захираи номи тиҷорат
+save_features	Танзимоти корро захира кунед
+save_names	Захираи номҳо
+server_ip_ph	IP-и Server (мисол 192.168.1.10)
+set_credit_limit	Татбиқи ҳадд ба тараф
+set_login_selected	Татбиқи воридшавӣ ба интихобшуда
+set_login_named	Татбиқи воридшавӣ ба {name}
+shop	Дӯкон
+start_fresh	Аз нав оғоз
+stop_extra_tills	Истодани қуттиҳои иловагӣ
+backup_auto	Ҳар рӯз худкор нусха мешавад · охирин {when} · 14 рӯзи охир дар {dir} нигоҳ дошта мешавад.
+backup_auto_none	Ҳар рӯз худкор нусха мешавад — якум ба зудӣ иҷро мешавад.
+backup_copy_to	Нусхаҳо инчунин ба {dir} мераванд.
+backup_copy_btn	Инчунин нусхаҳоро ба ҷузвдон…
+autostart_off	Бо ин компютер оғоз
+autostart_on	Бо ин компютер оғоз мешавад ✓ — зер кунед, то биистед
+autostart_done_on	Ин компютер ҳоло ҳангоми оғоз барномаро мекушояд — server-и дӯкон пас аз қатъи барқ бармегардад.
+autostart_done_off	Ин компютер дигар ҳангоми оғоз барномаро намекушояд.
+right_allowed	Иҷозат
+right_with_approval	Бо тасдиқ
+right_denied	Иҷозат нест
+editing_staff	Ҳуқуқ барои
+team_pick_ph	Корманде, ки таҳрир мешавад — ном, номи корбар, ё интихоб
+select_staff	Ин кормандро интихоб кунед
+rights_help	Ҳуқуқҳо — барои тағир додан клик кунед: Иҷозат дода мешавад → Бо тасдиқ (коди PIN-и мудир дар он лаҳза) → Иҷозат дода намешавад.
+right_void_refund	Бронкуниро бекор кунед ё баргардонед
+right_amend_sale	Тағйир додани фармоиши сабтшуда
+find_server	Ёфтани server-и дӯкон
+finding_server	Ҷустуҷӯи server-и дӯкон дар ин Wi‑Fi…
+no_server_found	Ҳеҷ ёфт нашуд. Дар Server: Танзимот → Дастгоҳҳои дигар → Иҷозаи қуттиҳои иловагӣ (ҳамон Wi‑Fi). Ё IP-и он ҷо нишондодашударо нависед.
+servers_found_pick	Дӯконеро, ки пайваст шудан мехоҳед, зер кунед.
+server_host_selected	{host} истифода мешавад — рамзи ҷуфтро ворид кунед, сипас Ҳозир ҷуфт.
+device_forgotten	Дӯкон ин дастгоҳро фаромӯш кард — бо рамзи ҳозираи дӯкон боз ҷуфт кунед. Фармоишҳои интизор мемонанд.
+forget_device	Фаромӯш
+last_seen	дида шуд
+new_pair_code	Рамзи ҷуфти нав
+lan_offline	Server-и дӯкон дастнорас аст
+lan_offline_waiting	Server-и дӯкон дастнорас · {n} интизор
+lan_connecting	Ба дӯкон пайваст мешавад…
+pair_finishing	Ҷуфти анҷом… татбиқи китобҳои офисӣ
+pair_opening	Ифтитоҳи офис…
+lan_live	Зинда
+lan_sending	{n} фиристода мешавад
+lan_sign_in_to_send	Боз ворид шавед, то {n}-ро фиристед
+lan_pair_again	Ин дастгоҳро боз ҷуфт кунед
+lan_update_app	Барномаро навсозӣ кунед — ин дастгоҳ ва сервери офис версияҳои гуногун доранд
+allow_firewall	Иҷозаи пайвастшавии дастгоҳҳои дигар
+firewall_blocked	Девори оташи ин компютер дастгоҳҳои дигарро мебандад — Иҷозаи пайвастшавии дастгоҳҳои дигарро зер кунед.
+firewall_waiting	Интизори дархости маъмур…
+lan_join_help	Дар дастгоҳи дигар: Ҳолати Мизоҷ → Server-и дӯконро ёбед (ё {addr}-ро нависед) → рамзи ҷуфт {code}.
+lan_pair_status	Wi‑Fi {addr}
+lan_join_help_no_addr	Ин дастгоҳро ба Wi‑Fi пайваст кунед, то суроға гиред.
+lan_no_address	Ҳанӯз суроғаи Wi‑Fi нест — ба Wi‑Fi-и дӯкон пайваст шавед.
+lan_not_listening	Дастгоҳҳоро қабул намекунад (бандари {port} банд аст). Барномаро аз нав оғоз кунед.
+lan_tills_off	Қуттиҳои иловагӣ хомӯшанд. Иҷозат диҳед, то дастгоҳи дигар ҳамроҳ шавад.
+paired_with	Ҷуфт шуд · {url}
+not_paired	Ҷуфт нашудааст
+choose_device_use	Server ё Мизоҷро интихоб кунед.
+paired_note	Ҷуфт шуд. Барои фурӯш кушоед, ё барои охирин Навсозӣ кунед.
+last_update_at	Навсозии охирин: {time}.
+pair_intro	Server-ро ёбед, ё суроға ва рамзи ҷуфташро нависед.
+queue_waiting	Интизори расидан ба дӯкон ({n}):
+queue_tries	{n} бор кӯшиш шуд · ҷавоби охирин: {e}
+save_backup_copy	Захираи нусхаи эҳтиётӣ…
+backup_copy_saved	Нусхаи эҳтиётӣ захира шуд — онро берун аз ин дастгоҳ нигоҳ доред (USB ё дастгоҳи дигар)
+backup_copy_overdue	{n} рӯз аст, ки нусхаи эҳтиётӣ аз ин дастгоҳ набаромадааст — Танзимот → Нусха
+backup_copy_failed	Нусхаи эҳтиётӣ он ҷо захира нашуд — ҷои дигар интихоб кунед
+clock_off	Соати ин дастгоҳ аз server-и дӯкон {min} дақиқа фарқ мекунад — вақти дурустро дар ин дастгоҳ гузоред
+printers_heading	Принтерҳо дар ин дастгоҳ
+printers_help	Принтерҳои воқеиро ёбед, пас Квитант ё тамғаи AWB -ро интихоб кунед. Ҳар як кор дорои паҳнои худ, портрет ё манзараи худ ва чӣ гуна фиристодани байтҳо мебошад. Нишона штрих-кодро чоп мекунад. Ҷои холӣ = чоп накунед.
+job_width	Паҳнои мундариҷа (мм)
+job_width_ph	Ё паҳнои 40–210 ммро нависед
+job_layout	Тарҳ
+job_delivery	Чӣ гуна кор фиристода мешавад
+job_size	Андозаи ҳарф
+job_size_ph	мисол 18, 20, 26…
+save_receipt_format	Формати квитансияро захира кунед
+save_label_format	Формати барчаспро захира кунед
+test_receipt_format	Квитансияи санҷишӣ
+test_label_format	Нишони санҷишӣ
+test_receipt_sent	Намунаи квитансия фиристода шуд
+test_label_sent	Намунаи нишона фиристода шуд
+test_print_no_printer	Барои ин кор чопгар нест - дар зери ин ҷой як чопгарро илова кунед
+printers_host_only	Принтерҳо дар дастгоҳи мағоза (Сервер) насб карда шудаанд. Ин то он даме, ки корҳоро ба он ҷо мефиристад - Дар сервер мондан / илова кардан / таъин кардан. Саҳифаи санҷишӣ ба сервер меравад.
+printers_pool_heading	Чопгарҳо
+printers_routes_heading	Ҷои чоп
+printer_label_ph	Ном (масалан, миз)
+printer_target_ph	мизбон: 9100 · bt: MAC · usb: VID: PID · номи система
+printer_mode_heading	Профил барои баромадҳои нав
+printer_mode_standard	Портрети стандартӣ
+printer_mode_landscape	Манзараи стандартӣ
+printer_mode_thermal	Гармӣ
+printer_mode_standard_short	Амудӣ
+printer_mode_landscape_short	Уфуқӣ
+printer_mode_thermal_short	Гармӣ
+printer_format_custom	Намуди махсуси нав
+printer_format_custom_label	Махсус
+printer_format_custom_added	Намуди махсус ба ин ҷой илова шуд
+add_printer	Иловаи чопгар
+remove_printer	Охиринро нест кунед
+route_pick_ph	квитанция ё нишона
+route_add_printer_ph	Ба ин ҷой чопгар илова кунед
+route_receipt	Квитансия
+route_label	Нишони AWB
+route_dont_print	Ягон принтер таъин нашудааст
+route_add	Ба ҷой илова кунед
+route_up	Боло
+route_down	Поён
+route_remove	Охиринро нест кунед
+route_clear	Барои ин ҷой чопгарҳоро тоза кунед
+save_printers	Захираи чопгарҳо
+print_test_page	Чопи саҳифаи озмоиш
+printers_saved	Принтерҳо барои ин дастгоҳ захира шудаанд
+test_page_sent	Саҳифаи озмоиш фиристода шуд — чопгарро санҷед
+printers_found	Дар ин дастгоҳ ёфт шуд: {list}
+find_printers	Ҷустуҷӯи чопгарҳо
+printers_looking	Дар ин дастгоҳ чопгарҳо ва Wi‑Fi ҷустуҷӯ карда мешаванд…
+printers_tap_find	Ҷустуҷӯи чопгарҳоро барои навбатҳое, ки корҳоро қабул мекунанд ва чопгарҳои квитансияи шабакавӣ дар ин Wi‑Fi (нашуда ё офлайн нестанд) пахш кунед.
+printers_none_found	Ягон принтер ёфт нашуд — номи чопгари система ё суроғаи шабакаро ворид кунед (масалан, 192.168.1.50).
+receipt_printer_ph	Принтер барои квитансия
+queue_refused	Дӯкон қабул накард ({n}) — ҳар якеро дар мизи фурӯш санҷед:
+clear_not_accepted	Санҷида шуд — ин рӯйхатро пок кунед
+device_name_ph	Номи ин дастгоҳ
+lan_last_update	навсозии охирин {time}
+lan_not_accepted	{n} қабул нашуд
+connected_now	ҳоло пайваст аст
+backup_failed	Нусхаи худкори охирин ноком шуд: {e}
+backup_overdue	{n} рӯз нусха нест — барномаро дар ин дастгоҳ кушода нигоҳ доред, то нусха гирад.
+disk_low	Дар ин дастгоҳ танҳо {mb} MB холӣ аст — нусхаҳо ба зудӣ ноком мешаванд. Ҷой холӣ кунед.
+last_seen_devices	Охирин дида шуд: {time}
+sync_interval	Ҳамоҳанг ҳар {secs} сония
+connection_to_shop	Пайваст ба дӯкон
+supplier_name_ph	Номи таъминкунанда (ё тараф)
+supplier_ph	Таъминкунанда
+switch_device	Иваз кардани ин дастгоҳ
+take_payment	Гирифтани пардохт
+tax_added_till	{tax} берун аз нарх
+tax_inside_price	{tax} дар нарх
+today_books	Дафтарҳои имрӯз
+unlock_after_pairing	PIN-ро ворид кунед
+unlock_with_login	Бо воридшавӣ кушоед
+update_my_password	Нав кардани пароли ман
+update_my_pin	PIN-и маро навсозӣ кунед
+duress_heading	PIN-и кушодани фавқулодда (танҳо Соҳиб)
+duress_help	Ихтиёрӣ. Агар ин PIN дар вақти кушодан ба ҷои шумо чоп карда шавад, ҳама вурудоти китобҳо нест карда мешаванд (бандҳо, китобҳо, таърих) ва мизи корӣ ҳамчун Соҳиби муқаррарӣ кушода мешавад — нархҳо, зиёфатҳо, минтақаҳо, кормандон ва танзимот боқӣ мемонанд. Схема ва конфигуратсия нест карда намешаванд. Танҳо дар ҳолате истифода баред, ки шумо маҷбур ҳастед, ки қулфро кушоед. Холӣ гузоред ва барои хомӯш кардани он захира кунед. Ҳеҷ гоҳ ба PIN-и касе монанд нест.
+duress_pin_ph	PIN-и фавқулодда (4–12 рақам)
+duress_confirm_ph	Боз нависед, то тасдиқ шавад
+save_duress_pin	Захираи PIN-и фавқулодда
+clear_duress_pin	Хомӯш кардани PIN-и фавқулодда
+duress_on	PIN-и кушодани фавқулодда фаъол аст
+duress_off	PIN-и кушодани фавқулодда хомӯш аст
+duress_saved	PIN-и кушодани фавқулодда захира шуд
+duress_cleared	PIN-и кушодани фавқулодда хомӯш шуд
+vehicle_ph	Мошин
+void	Бекор
+write_off_ap	Аз ҳисоб баровардани AP
+write_off_nil	Аз ҳисоб баровардан / боқимондаи сифр
+zone_ph	Минтақа (ном аз нархҳо)
+caption_today	ИМРӮЗ
+caption_bookings	БОНХО
+caption_payments_today	ПАРДОХТИ ИМРӮЗ
+caption_outstanding	БОҚИМОНДА
+caption_bank	БОНК
+paid_by	Пардохткунанда
+second_way	Роҳи дуюм
+weight_in	Вазн дар
+size_in	Андоза дар
+goods_received	Моли расида
+expense_heading	Хароҷот
+notes_attach_sale	Ёддоштҳо ва замимаҳо (фурӯши интихобшуда)
+notes_attach_party	Ёддоштҳо ва замимаҳо (тарафи интихобшуда)
+attachments_last_expense	Замимаҳо (хароҷоти охирин)
+credit_limit_heading	Ҳадди қарз (тарафи интихобшуда / номбаршуда)
+pay_selected_heading	Пардохти интихобшуда (қарзро пӯшед / пешпардохт гиред)
+write_off_heading	Аз ҳисоб баровардан (пок бе пардохт)
+pay_ap_heading	Пардохти он чи ба онҳо қарздорем (AP)
+country_tax	Кишвар ва андоз
+extra_tills_heading	Қуттиҳои иловагӣ
+other_devices_help_heading	Танзими дастгоҳҳои дигар
+other_devices_help	Дар ин дастгоҳ (Сервер): Дастгоҳҳои дигар → Иҷозат додани майдонҳои иловагӣ. Рамзи ҷуфтшавӣ ва суроғаи Wi‑Fi-ро қайд кунед. Агар пайдо шавад, Иҷозат додан ба дастгоҳҳои дигарро ламс кунед. Дар компютер, Оғозро бо ин компютер пахш кунед. Дар дастгоҳи дигар: барномаро насб кунед, Ҳолати мизоҷро интихоб кунед, Сервери мағозаро ёбед (ё суроғаро нависед), рамзи ҷуфткуниро ворид кунед, Ҳоло ҷуфт кунед. Фармоишҳо дар дастгоҳ интизор мешаванд, агар Wi‑Fi қатъ шавад ва вақте ки Сервер дубора ҷавоб медиҳад, меравад.
+your_brand	Нишони шумо (дар барнома)
+units_heading	Воҳидҳо
+booking_measures	Тадбирҳои фармоиш
+drawer_count	Шумораи қуттӣ (ихтиёрӣ)
+spreadsheet_csv	Ҷадвал (CSV)
+bank_reconciliation	Мутобиқати бонк (бо изҳороти бонки худ муқоиса кунед)
+book_add_product	Китоб - илова кардани маҳсулот / нарх
+book_opening_credit	Дафтар — қарзи оғоз
+account_kind	Навъи ҳисоб (якеро зер кунед)
+active_ledger	Феҳристи фаъол
+actual_total_cap	ҶАМЪИ ВОҚЕӢ
+amend_help	Фурӯшеро интихоб кунед, то ислоҳ, бекор ё баргашт кунед. Ислоҳ таърихи пурраро нигоҳ медорад. Ҷамъи мудаввар аз Татбиқшуда оғоз мешавад — танҳо барои мудаввар кардан тағйир диҳед. Бекор ва баргашт метавонанд PIN-и Соҳиб ё Мудирро талаб кунанд (дар боло навишта мешавад; бо номи шумо сабт мешавад).
+applied_total_cap	ҶАМЪИ ТАТБИҚШУДА
+bank_balance	Боқимондаи бонк
+bank_net_today	Софи бонк имрӯз
+branch_export_help	Экспорт як акси рӯзонаро ба ҷузвдони нусхабардорӣ менависад ва онро ба буфер нусхабардорӣ мекунад. Барои ворид кардани рӯзи дигари фурӯшгоҳ, файли онро ҳамчун import_branch_snapshot.json дар он ҷузвдон захира кунед ва пас Воридотро клик кунед.
+brand_shown_help	Дар экранҳои дохили барнома нишон дода мешавад. Номи барномаи насбшуда ва нишонаш дар ин дастгоҳ ҳамчун рӯйхати платформа мемонанд.
+app_icon	Нишони барнома
+logo_help	Нишони ихтиёрии дӯкон дар экранҳои барнома.
+onboard_layout	Он чи мегиред
+item_photo_help	Ихтиёрӣ. Бе акс ҳарфҳои аввали номи молро нишон медиҳем.
+cash_in_hand	Нақд дар даст (қуттӣ)
+change_my_pin_heading	ПИН-коди маро иваз кунед (танҳо аз они шумо)
+connect_to_server	Пайваст ба Server
+counter_locked	Мизи 01 · Пӯшида
+country_pack_help	Бастаи кишвар номи андоз ва ҳисобаш, роҳи пардохти фаврӣ ва шиносномаи тиҷорати чопшаванда дар ҳисобҳоро муайян мекунад. Kumkaj дар ҳеҷ ҷо андоз намесупорад ва ҳисобномаи электронии давлатӣ намедиҳад.
+currency_use_help	Ғелонед ва барои ҳар асъори дастгирӣшаванда Истифодаро зер кунед.
+day_close_help	Сабти пӯшидани рӯз ин хулосаро (ва фарқи қуттӣ, агар шумурда шуда бошад) ба сабти санҷиш мегузорад. Фурӯшро намеистад.
+expenses_word	Хароҷот
+feature_access_help	Дастрасии хусусият барои кормандони интихобшуда (пас аз илова клик кунед)
+footer_local	SQLite-и маҳаллӣ · Ҳамеша ройгон · Бе абр
+fresh_book_moklanjo	Fresh = каталоги холӣ (баъдтар ашё илова кунед). Китоб = саҳмияҳои кушодаро нависед ва дар зер кӣ аз шумо қарздор аст.
+fresh_selected	Нав интихоб шуд — феҳрист холӣ мемонад. Вақте омодаед, Тайёрро зер кунед.
+gross_word	Нохолис
+how_start	Чӣ гуна оғоз кардан мехоҳед?
+later_country_pack	Баъдтар: Танзимот → бастаи кишвари худро барои нишонҳои андоз ва пардохт татбиқ кунед.
+local_badge	МАҲАЛЛӢ
+measures_help_moklanjo	Чӣ тавр посылкаҳо дар мизи фармоиш чен карда мешаванд. Андозаҳо ва вазнро дар воҳидҳое, ки шумо истифода мебаред, нависед — стандартӣ (см, м, дюйм, фут · кг, г, фунт, унс) ё воҳиди шахсии шумо, ки ба см/кг дар боло (бевосита ё тавассути воҳидҳои дигар) алоқаманд аст. Китобхо хамеша кг сабт мекунанд. Майдонро холӣ гузоред, то онро нигоҳ доред.
+mix_type_hint_moklanjo	Дар ҳар кадоме чанд пулро нависед (нақд / UPI / корт / кредит). Бояд ба ҳисоб илова карда шавад. Кредит ба муштарии боло ниёз дорад.
+money_in_sales	Пули ворид (фурӯш)
+more_help_moklanjo	Каталог, фурӯш, кредит, даста, нусхабардорӣ - иловаи саҳҳомӣ ва дар ҳолати зарурӣ.
+net_word	Соф
+offline_badge	БЕ ШАБАКА
+optional_login_help	Воридшавии ихтиёрӣ (шиноснома + парол). Соҳиб як бор мегузорад; танҳо корбар баъдтар паролро иваз мекунад.
+or_unlock_login	Ё бо шиносномаи воридшавӣ + парол кушоед
+permission_preset	Вазифа (экранҳо ва ҳуқуқҳоро муқаррар мекунад)
+preset_help_moklanjo	Хазинадор: фурӯш. Мудир: фурӯш + молҳо + бекор/ислоҳ.
+product_locked_moklanjo	Мокланжо
+product_only_moklanjo	Ин барнома танҳо Moklanjo аст - китобҳо + мизи фармоишӣ. Дигар намудҳои тиҷорат баъдтар ҳамчун маҳсулоти алоҳида фиристода мешаванд.
+purchases_cogs	Харидҳо (COGS)
+qty_cap	МИҚДОР
+restore_help	Барқарор: нусхаеро интихоб кунед. Дафтарҳо ҳамон тавре, ки он вақт буданд, кушода мешаванд; дафтарҳои ҳозира аввал захира мешаванд, бинобар ин инро бекор кардан мумкин аст.
+wipe_data_heading	Нест кардани маълумоти маҳаллӣ
+wipe_data_help	Танҳо соҳиби - ҳамон интихобҳо бо нест кардани Windows. Сабтҳои тиҷорӣ таърихи савдоро тоза мекунанд, аммо нархҳо ва танзимотро нигоҳ медоранд (ба монанди PIN кушодани ҳолати фавқулодда). Танзимоти мағоза базаи китобҳоро нест мекунад. Танзимоти экран тиреза/забонро тоза мекунад. Бо PIN Соҳиб тасдиқ кунед. PIN-и қулфи фавқулодда дар Team алоҳида аст (тозакунии пинҳонӣ ҳангоми кушодан).
+wipe_trading	Сабтҳои тиҷорат
+wipe_schema	Танзими дӯкон
+wipe_ui	Афзалиятҳои экран
+wipe_owner_pin_ph	PIN-и Соҳиб барои нест кардан
+wipe_delete_selected	Нест кардани интихобшуда
+wipe_owner_only	Танҳо Соҳиб метавонад маълумоти маҳаллиро нест кунад.
+restore_owner_only	Танҳо Соҳиб метавонад нусхаро барқарор кунад.
+wipe_owner_pin_needed	PIN-и Соҳибро ворид кунед, то маълумоти маҳаллӣ нест шавад.
+wipe_nothing_selected	Аввал интихоб кунед, ки чӣ нест шавад.
+wipe_done	Маълумоти маҳаллии интихобшуда нест шуд.
+wipe_schema_done	Танзими дӯкон нест шуд — барои давом Server ё Мизоҷро интихоб кунед.
+rounded_total	Ҷамъи мудаввар
+setup_app_moklanjo	Мокланҷоро насб кунед
+shop_logo_optional	Нишони дӯкон (ихтиёрӣ)
+stock_type_help	Номи молро нависед (қисмаш кифоя аст), миқдор, сипас танзим кунед. Молҳое, ки ҳанӯз ҳисоб намешаванд, як бор Оғози ҳисобро мехоҳанд.
+team_owner_help	Иҷора: кор интихоб кунед (Касир / Менеҷер), ном + PIN-и ибтидоӣ, пас Илова кунед. Танҳо агар ин шахс фарқ кунад: экранҳо ва ҳуқуқҳоро дар зер кушоед, пас танзимоти корро захира кунед. Ҳар кас PIN-и худро дар поён иваз мекунад - Соҳиб наметавонад PIN-и ягон каси дигарро иваз кунад.
+they_owe_us	Онҳо ба мо қарздоранд
+unit_at_cap	Воҳид @
+units_help	Рамзҳо барои нишонҳои мол (кг, дона, халта). Ҳар воҳид бояд — мустақим ё тавассути воҳидҳои дигар — ба меъёр (кг · см · мл · дона) пайваст шавад, мисол 1 сандуқ = 2 қуттӣ ва 1 қуттӣ = 20 см. Табдил: 1 аз = зарб ба. Асъорҳо ҳеҷ гоҳ воҳид нестанд.
+we_owe_them	Мо ба онҳо қарздорем
+who_unlocking	Кӣ мекушояд?
+locked_word	Пӯшида
+show_pin	Нишон додани PIN
+hide_pin	Пинҳон кардани PIN
+set_owner_pin	ГУЗОШТАНИ PIN-И СОҲИБ
+enter_owner_passcode	ВОРИДИ РАМЗИ СОҲИБ
+enter_staff_passcode	ВОРИДИ РАМЗИ КОРМАНД
+pin_count_zero	0 / 12 рақам · ҳадди ақал 4, сипас OK
+pin_count_need	{} / 12 рақам · боз {} лозим
+pin_count_full	12 / 12 рақам · OK-ро зер кунед
+pin_count_ready	{} / 12 рақам · вақте омодаед OK-ро зер кунед
+pin_hint_choose	4–12 рақам интихоб кунед · Ворид ё Кушодан барои захира
+pin_hint_new	PIN-и нави Соҳиб 4–12 рақам · Ворид ё Кушодан
+pin_hint_shop_code	Дастгоҳи дӯкон · рамзи ҷуфт {}
+pin_hint_books	Ин дастгоҳ дафтарҳоро нигоҳ медорад
+pin_hint_paired	Қуттии иловагӣ ҷуфт шуд — барои фурӯш кушоед
+pin_hint_pair_first	Қуттии иловагӣ — аввал ба дастгоҳи дӯкон ҷуфт кунед
+unlock_to_continue	Барои давом кушоед
+no_staff_yet	Ҳанӯз корманд нест — ҳамчун Соҳиб кушоед, сипас Даста
+status_server_set_pin	Ҳолати Server — PIN-и Соҳибро гузоред
+status_server_tills	Ҳолати Server — қуттиҳои иловагӣ ҳамроҳ шуда метавонанд. Кушоед
+status_server_unlock	Ҳолати Server — ҳамчун Соҳиб кушоед
+status_client_unlock	Ҳолати Мизоҷ — барои фурӯш кушоед
+icon_new_selected	Нишон: файли нав интихоб шуд — Захираи нишонро зер кунед
+icon_custom	Нишон: нишони махсуси ҷой
+icon_default	Нишон: нишони Kumkaj (пешфарз) — якеи махсус интихоб кунед
+logo_yours	Нишон: нишони дӯкони шумо — дар экранҳо ва расидҳо нишон дода мешавад
+logo_default	Нишон: нишони Kumkaj (пешфарз) — агар дошта бошед, худро интихоб кунед
+tmpl_current	Ҳозира: {} — {}
+tmpl_selected	Интихобшуда: {} — {}
+setup_complete	Танзим анҷом ёфт
+onboard_fresh_tmpl	Нав · {} — феҳрист холӣ оғоз мешавад; молҳоро дар Молҳо илова кунед, сипас Тайёр.
+onboard_book_tmpl	Дафтар · {} — молҳо ва қарзи оғозро илова кунед, сипас Тайёр.
+onboard_template_tmpl	Агар хоҳед, ҷойро ном гузоред, сипас чӣ гуна оғозро интихоб кунед.
+tmpl_blurb	Китобҳои хаткашон ва мизи фармоиш: борфиристонандагон, интиқолдиҳандагон, китоби рӯзона, AWB.
+tmpl_how	Бастаҳои китобро дар сари миз; Китоби рӯзона барои имрӯз; ҷадвалбандиҳоро барои Қурбҳои, ҳизбҳои, ҳисоботҳо.
+trk_booked	Зан карда шуд
+trk_picked_up	Бардоштан
+trk_in_transit	Дар фарогузар
+trk_delivered	Супурд
+trk_rto	Бозгашт ба ирсолкунанда
+lane_to_dispatch	Барои фиристодан
+lane_with_carrier	Бо интиқолдиҳанда
+lane_failed	Муваффақ шуд
+lane_done_today	Имрӯз анҷом дода шуд
+ops_board_help	Посилкаҳо аз рӯи он ки онҳо дар кори имрӯза ҳастанд. Посилкаҳоро ламс кунед (ё онҳоро скан кунед) барои интихоб кардани онҳо ва сипас дар як вақт ба ҳама интихобшуда амал кунед - ҳар як хат танҳо ҳаракатҳоеро пешниҳод мекунад, ки ба он мувофиқанд.
+lane_empty	Дар ин ҷо ҳоло ҳеҷ чиз нест.
+picked_fmt	{n} интихоб шуд
+pick_all	Ҳамаро интихоб кунед
+bag_for_carrier	Даст ба интиқолдиҳанда
+send_with_rider	Бо савора фиристед
+out_again	Боз берун
+return_to_sender	Бозгашт ба ирсолкунанда
+runs_bags_heading	Давраи охирин ва сумкаҳо
+print_word	Чоп кардан
+bag_word	Халтаи интиқолдиҳанда
+run_word	Давидани савора
+parcels_fmt	бастаҳои {n}
+parcel_history	Таърих
+attempt_fmt	Кӯшиш {n}
+pieces_short_fmt	{n} дона
+note_reason_ph	Эзоҳ ё сабаб
+ops_pick_first	Аввал посылкаҳоро интихоб кунед - онҳоро клик кунед ё скан кунед
+cod_to_collect	Интиқол - COD барои ҷамъоварӣ
+cod_on_road	COD ҳанӯз дар роҳ аст
+cod_owed_consignors	Ҷамъоварӣ - барои пардохти молфиристон
+cod_rto_fees	Пардохти RTO барои ҷамъоварӣ
+cod_to_hand_in	COD барои супурдан
+parcel_one_fmt	бастаи {n}
+facet_bank_title	Ҳисобот
+facet_bank_help	Дафтарҳои рӯз, синну соли тарафҳо, сабтҳои бонк ва Ф&З-и давра.
+facet_ops_title	Интиқол ва интиқол
+facet_ops_help	Скан кунед ё нависед AWB → Ҷустуҷӯ, сипас пешравӣ / чопи тамға / COD. Ба ронанда ё интиқолдиҳанда ирсол кунед.
+facet_cod_title	Феҳристи COD
+facet_cod_help	Ҳангоми интиқол ҷамъоварӣ кунед ва сипас ба борфиристед.
+facet_riders_title	Савораҳо (парки худӣ)
+facet_riders_help	Савораҳо илова кунед ва сипас AWB-ҳои фармоишшударо аз Ops фиристед.
+against_bill_ph	Муқобили ҳисоби # боло (ихтиёрӣ)
+aliases_ph	Номҳои дигар — номҳои дигар, бо вергул ҷудо
+amount_blank_full_ph	Маблағ (холӣ = тамоми боқимонда)
+amount_owed_ph	Маблағи қарз
+amount_ph	Маблағ
+amount_received_ph	Маблағи гирифташуда
+amount_we_pay_ph	Маблағе, ки мо мепардозем
+awb_scan_ph	AWB / скан штрих-код
+bulk_csv_ph	CSV оммавӣ — макони таъинот, қабулкунанда, кг, cod_paise, қайд
+business_name_ph	Номи тиҷорат
+category_new_ph	Гурӯҳ (ихтиёрӣ, агар нав бошад сохта мешавад)
+cod_amount_ph	Маблағи COD
+code_bag_ph	Рамз (халта)
+conv_factor_ph	Зарб (25 = 1 халта → 25 кг)
+country_code_ph	Рамзи кишвар мисол IN, GB, US, AE, BR
+credit_khata_amount_ph	Маблағи қарз / хата
+credit_limit_ph	Ҳадди қарз (0 = нест)
+dim_unit_code_ph	Рамзи воҳиди андоза (см)
+divisor_ph	Тақсимкунандаи ҳаҷмӣ (5000)
+extra_per_kg_ph	Иловагӣ / кг
+first_amount_ph	Маблағи аввал
+first_kg_ph	Якум кг (плита)
+from_code_ph	Рамзи сарчашма (халта)
+item_name_lang_ph	Номи мол — бо забони худ нависед
+login_id_opt_ph	Номи корбар (лозим, ягона)
+manager_pin_ph	PIN-и Мудир барои тасдиқ (танҳо агар бекор карда натавонед)
+new_branch_name_ph	Номи шохаи нав
+new_password_ph	Пароли нав (ихтиёрӣ)
+new_pin_ph	PIN-и нав (4–12 рақам)
+note_bank_ph	Ёддошт (гузоштан, гирифтан, …)
+note_buy_expense_ph	Ёддошт (сӯзишворӣ, иҷора, …)
+note_expense_ph	Ёддошт (сӯзишворӣ, идора, …)
+notify_phone_ph	Телефонро огоҳ кунед (қалмоқчаи WhatsApp/SMS)
+options_moklanjo_ph	Имконот (ихтиёрӣ) — Калон=20, Бастаи тӯҳфа=10
+part_second_way_ph	Қисм бо роҳи дуюм (ихтиёрӣ)
+phone_ph	Телефон
+address_ph	Суроға
+party_custom_fields_heading	Майдонҳои фармоишӣ (тарафи интихобшуда)
+party_custom_help	Ҳама гуна нишона ва арзишро ба ин тараф илова кунед - WhatsApp, GSTIN, рамзи масир, ...
+party_custom_key_ph	Номи майдон (масалан, WhatsApp)
+party_custom_value_ph	Арзиш
+party_custom_add	Илова кардани майдон
+party_custom_remove	Майдонро хориҷ кунед
+party_custom_empty	Ҳанӯз майдонҳои фармоишӣ нест
+party_custom_pick_first	Барои илова кардани майдонҳои фармоишӣ ҳизберо интихоб кунед
+place_name_ph	Номи ин ҷой
+price_ph	Нарх
+qty_example_ph	Миқдор (мисол 1.5 барои кг)
+quantity_ph	Миқдор
+reason_required_ph	Сабаб (лозим)
+role_title_ph	Унвони нақш (мисол Бариста)
+service_pct_ph	Хизмат % ихтиёрӣ 0/10/12
+short_code_ph	Рамзи кӯтоҳ (MG02)
+slab_kg_ph	Плитаи пулакӣ дар кг (0,5)
+staff_name_ph	Номи кормандон / ID
+starting_password_ph	Пароли оғоз (ихтиёрӣ)
+starting_pin_ph	PIN-и оғоз (4–12 рақам)
+tax_rate_ph	Номи меъёри андоз ё % — Оддӣ, Кам, 0, 5, 12, 18, 20
+to_code_ph	Рамзи мақсад (кг)
+uncleared_no_ph	Покнашудаи # боло
+unit_cost_ph	Арзиши воҳид
+unit_kg_blank_ph	Воҳиди (кг ё холӣ)
+unit_name_bag_ph	Ном (Халта)
+weight_unit_code_ph	Рамзи воҳиди вазн (кг)
+zone_name_ph	Номи минтақа
+pay_credit	Қарз
+book_kind_today	Дафтарҳои имрӯз
+book_kind_month	Дафтарҳои ин моҳ
+book_kind_aging	Боқимонда / қарз-қарз
+book_kind_balance	Варақаи тавозун
+ops_desk_help	AWB-ро бо сканери штрих-коди USB скан кунед (ё онро нависед) → Ҷустуҷӯ. Пас, пешравӣ кунед, тамғакоғазро чоп кунед ё COD-ро ҷамъ кунед. Тамғакоғазҳо рамзи 128-ро чоп мекунанд.
+role_help_consignor	Нақш: Ирсолкунанда — AR (онҳо аз мо қарздоранд). Ҳамин ширкат метавонад интиқолдиҳанда бошад.
+role_help_carrier	Нақш: Интиқолдиҳанда - AP (мо аз онҳо қарздорем). Худи ҳамон фирма метавонад интиқолдиҳанда бошад.
+role_help_both	Нақшҳо: Интиқолдиҳанда + Интиқолдиҳанда - як тараф, китобҳои AR ва AP, соф дар Ҳисоботҳо.
+role_help_supplier	Нақш: Таъминкунанда - AP барои харид.
+lane_declared_label	Бронкунии ҳисоб
+lane_owner_label	Бронкунии пули нақд
+money_lane_bill	Ҳисоб: {lane}

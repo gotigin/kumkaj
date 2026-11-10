@@ -1,0 +1,835 @@
+# Turkmen — Türkmençe (tk). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	Kurýer-agentlik kitaplary + bron stoly. Oflayn mugt.
+unlock	Gulpy aç
+pin_hint	PIN eýesi 0000-den başlaýar
+sell	Zakaz bermek
+buy	Töleg
+books	Gün ýazgysy
+books_help	Şu günki ýagdaý. Zakaz bermek = posylkalar. Töleg = daşaýjy tölegleri we çykdajylary. Taraplar = iberijiler we daşaýjylar.
+buy_help	Çykdajy talonlary we daşaýjy tölegleri (pul gutarýar). Hasapda partiýa ýazgysynda galýar.
+sell_money_in	Bölüm bron et
+buy_money_out	Çykdajy / daşaýjy hasaby
+record_purchase	Satyn alyň
+add_expense	Çykdajylaryň kwitansiýasy
+bank_book	Bank ýazgysy
+credit_help	Partiýa idi üýtgeşik (atlar gaýtalanyp biler). Rollar: Iberiji (AR), Daşaýjy (AP) ýa-da ikisinde-de. Karz berijiler aýry galýarlar; hasabatlar net görkezýär.
+party_kind_ph	Omörite rol (islege görä) - ýa-da ýokardaky çipe basyň
+parties_list_heading	Tygşytlanan taraplar
+reports_help	Gün ýazgysy, bergidarlar we karz berijiler, bank ýazgysy, çykdajy girdejileri, girdeji we ýitgi.
+reports_today	Gün ýazgysy (şu gün)
+reports_month	Girdeji we ýitgi (aý)
+reports_aging	Görnükli / debet-karz
+reports_balance_sheet	Balans
+reports	Bank ýazgysy & P&L
+refresh	Täzele
+undo	Yza gaýtar
+start_tracking	Gözläp başlaň
+stock_minus	- Bir Stocka
+stock_plus	+ Bir Stocka
+settle_cash	Nagt hasaplaň
+settle_card	Kart kartoçkasy
+items	Bahalar we hyzmatlar
+nav_items	Nyrhlar
+more	Has köp
+your_items	Nyrhlaryňyz
+items_help	Her hatar nyrhdyr (meselem, ýerüsti zona). Bölüm adatça kg. Redaktirlemek üçin basyň.
+add_item	Nyrh goşuň
+new_item	Täze nyrh
+adding_item	Täze nyrh goşmak
+editing_item	Redaktirlemek
+save	Saklaň
+remove	Aýyr
+empty_catalog	Entek nyrh ýok. Bahalary we hyzmatlary açyň, birini goşuň (ady + bahasy, birligi kg), soňra bolsa bron ediň.
+counter_sale	Hasap bron etmek
+total	Jemi
+cash	Nagt
+upi	UPI
+card	Kart
+credit	Müşderiler we üpjün edijiler
+clear	Arassala
+ready_to_sell	Kitap ýazgysyna taýýar
+today_prefix	Bu gün
+today_mid	Bu gün
+owed	görnükli
+round_word	tegelek
+back	Yzyna
+sold_out	Elýeterli däl
+restock	Täzeden doldur
+not_tracked	Yzarlanok
+in_stock	ätiýaçda
+marked_sold_out	Elýeterli däl
+add_upper	Goşuň
+na	N / A.
+qty	Wt / Qty
+unit_at	Baha @
+actual	Hakyky
+applied	Ulanylýar
+note_ph	Bellik (islege görä)
+rounded	TERJIME EDILDI
+split	Bölün
+counter	Kassir
+parcel	Bölüm
+order	Restoran zakazy
+sales	Zakazlar
+sales_refunds	Zakazlar we tölegler
+day_close	Gün ýakyn
+reports_expenses	Bank ýazgysy & P&L
+nav_reports	Hasabat
+nav_settings	Sazlamalar
+nav_lock	Gulp
+sidebar_settings	Gapdal paneli sazlamalary
+sidebar_settings_help	Gapdal demir ýaly nyşanlar. Tertibe salmak üçin hatar süýräň. Görkezmek ýa-da gizlemek üçin wyklýuçateli süýşüriň. Sazlamalar we gulp elmydama barda galýar.
+sidebar_always_on_short	Elmydama işlediň
+sidebar_back_settings	Yzyna
+sidebar_shown	Görkezildi
+sidebar_hidden	Gizlenen
+sidebar_always_on	Elmydama barda
+sidebar_shown_hint	Gapdal demir / aşaky belliklerde görkezilýär
+sidebar_hidden_hint	Bardan gizlenen
+sidebar_menu_items	Menýu we menýu menýu elementleri
+sidebar_enable_all	Hemmesini işlet
+sidebar_disable_all	Hemmesini öçüriň
+sidebar_order_saved	Gapdal paneli tertibi saklandy
+sidebar_visibility_saved	Gapdal paneli görünýär
+amounts_hide	Gizle
+amounts_show	Görkez
+no_sale_yet	Entek satuw ýok
+favorites	Halanýanlar
+favorites_help	Oftenygy-ýygydan satýan menýu menýu elementleri, girişiňiz üçin saklanýar. Hasaba birini goşuň ýa-da aşakdaky menýu elementlerinden sanawyňyzy guruň.
+your_favorites	Halaýanlaryňyz
+all_items	Menýu elementleriniň hemmesi
+no_favorites	Entek halanýanlar ýok - aşakdaky sanawdan menýu elementlerini goşuň.
+add_to_bill	Hasaba goşuň
+added	Goşuldy
+owes_word	bergileri bar
+selected_word	Saýlandy
+chip_clear_credit	düşnükli - Karz beriň ýa-da öňünden alyň
+chip_missing_customer	Saýlanan müşderi ýitirim - täzeden saýlaň
+chip_no_customer	Entek müşderi ýok - at ýazyň, soňra Kredit düwmesine basyň
+credit_summary_fmt	{} müşderiler · açyk karz {} · öňe gidişlikler {}
+recent_label	Soňky:
+inventory	Öwsele
+inventory_stock	Inwentar we aksiýa
+branches	Şahamçalar
+branches_org	Filiallar we org
+credit_customers	Taraplar (bergidarlar we karz berijiler)
+customer_name_ph	Müşderiniň ýa-da üpjün edijiniň ady
+new_customer_ph	Täze müşderiniň ýa-da üpjün edijiniň ady
+item_name_ph	Bahanyň ady (meselem, ýerüsti zona)
+item_price_ph	Her kg / birinji plita
+start_template	Haryt
+next_booking	Indiki bron etmek
+destination_ph	Niýetlenen şäher / zona
+consignee_ph	Alyjynyň ady
+consignee_phone_ph	Kabul ediji telefon
+consignee_address_ph	Eltip beriş salgysy
+origin_name_ph	Iberijiniň ady
+origin_phone_ph	Telefon iberiji
+origin_address_ph	Almak / gelip çykyş salgysy
+booking_consignor_heading	Iberiji (müşderi / iberiji)
+booking_consignee_heading	Alyjy (kabul ediji)
+booking_consignor_hint	Doldurmak üçin oturylyşyk saýlaň ýa-da gezelenç üçin boş goýuň. Öý almak we RTO üçin zerur.
+booking_consignee_hint	Bölümi alyjy Hasapdan çykmak üçin boş goýuň.
+weight_kg_ph	Hakyky kg
+length_cm_ph	L sm
+breadth_cm_ph	B sm
+height_cm_ph	H sm
+chargeable_kg	Zarýad berilýän kg
+awb_label	AWB
+booking_help	Iberiji + alyjy (boş OK) → barmaly ýer → agramy → saýlama nyrhy → Hasap / Nagt → tölemek. AWB kwitansiýada çap edýär. Indiki bron etmek stoly arassalaýar. Tegelek “Applied” -e deň başlaýar - diňe hasaby tegeleklemek üçin redaktirläň.
+cart_empty_hint	Stol boş - iberiji / iberiji islege bagly, barjak ýerini we agramyny kesgitläň, nyrh boýunça ADD-e basyň, soň töläň.
+team	Topar
+team_pins	Topar & PINs
+my_pin_settings	PIN
+settings_hub_help_my_pin	Bu enjamda giren adam üçin PIN gulpuny üýtgediň.
+team_self_help	Diňe gulpy açmak PIN-i üýtgedip bilersiňiz (we goşmaça giriş paroly). Dürli ekranlar ýa-da hukuklar gerek bolsa, eýesinden soraň.
+backup_settings	Uptiýaçlyk we sazlamalar
+lock_app	Programmany gulplamak
+pick	Saýlaň
+select	Saýlaň
+advance	Awans
+owner	Eýesi
+staff	Işgärler
+photo	Surat
+auto	Awto
+prev	Öňki
+next	Indiki
+ok	Bolýar
+this_shop	Serwer tertibi
+extra_till	Müşderi tertibi
+off	Öçürilen
+server	Serwer tertibi
+client	Müşderi tertibi
+language_currency	Dil we walýuta
+language	Dil
+choose_language	Diliňizi saýlaň
+language_setup_hint	Bu enjamyň diline eýeriň ýa-da birini saýlaň.
+lang_follow_platform	Enjam dili
+lang_pick_user	Dil saýlaň
+lang_platform_now	Enjam dili
+selected_language	Saýlandy
+continue	Dowam et
+this_device	BU GURLUŞ
+device_use_q	Bu enjam nähili ulanylar?
+last_server_mode	Serwerdi - dowam etmek üçin basyň
+last_client_mode	Müşderi boldy - dowam etmek üçin basyň
+choose_server	Serwer saýlaň
+choose_server_hint	Bar bolan serweri açyň ýa-da başga bir iş üçin birini dörediň.
+create_new_server	Täze serwer dörediň
+open_server	Aç
+new_server_name_ph	Täze serweriň ady (islege görä)
+server_remove_pin_ph	Serweri aýyrmak üçin eýesi PIN
+only_owner_remove_server	Serwerden diňe eýesi aýryp biler
+owner_pin_remove_server	Bu serweri aýyrmak üçin eýesi PIN talap edilýär
+device_setup_help	Serwer bu ýerde ýazgy ýazgylaryny saklaýar. Müşderi Serwere jübüt.
+currency	Walýuta
+backup	Uptiýaçlyk
+settings_sec_diag	Diagnostika
+settings_hub_help	Bir gezekde bir meýdany açyň - az aýlamak, has düşnükli saýlaw.
+settings_sec_devices	Beýleki enjamlar
+settings_sec_alerts	Duýduryşlar
+alerts_help	Status habarlary siziň üçin ekranda näçe wagt galar (bu giriş).
+snack_secs_ph	Sekuntlar (3–60, deslapky 10)
+snack_secs_save	Duýduryş wagtyny tygşytlaň
+snack_secs_saved	Duýduryş wagty tygşytlandy - {n} sekunt
+snack_secs_bad	San hökmünde sanlary giriziň (3–60)
+cancelled	Atyryldy
+cancel	Elatyr
+opening_client	Müşderi açmak…
+preparing_desk	Stol taýýarlamak…
+opening_server	Serweriň açylmagy…
+creating_server	Serwer döretmek…
+diag_privacy_help	Bu enjamda surnallar galýar. Gizlinler (PIN, parollar) hiç wagt saklanmaýar. Enjamdan bukjany paýlaşmak her gezek aç-açan tassyklamagyňyzy talap edýär - hiç haçan satylmaýar ýa-da üçünji taraplara berilmeýär.
+diag_level	Jikme-jiklik derejesi
+diag_level_error	Rorsalňyşlyklar
+diag_level_warn	Duýduryş
+diag_level_info	Maglumat
+diag_level_debug	Düzediş
+diag_support_start	30 minutlyk goldaw sessiýasyna başlaň
+diag_support_stop	Goldaw sessiýasyny tamamlaň
+diag_support_started	Goldaw sessiýasy - 30 minutlyk jikme-jiklikleri düzüň
+diag_support_ended	Goldaw sessiýasy tamamlandy
+diag_export_local	Coperli nusgasyny eksport ediň
+diag_export_local_done	{path}-da taýýar ýerli diagnostika - göçürmäni nirede saklamalydygyny saýlaň
+diag_approve_send	Bu enjamdan paýlaşmagy tassyklaň
+diag_send_heading	Bu enjamy paýlaşyň
+diag_send_help	Makullamak bir paket, soň bolsa möhleti gutarýar. Wagtlaýyn - diňe önümi düzetmek ýa-da gowulaşdyrmak üçin ulanylýar. Üçünji taraplar bilen paýlaşylmaýar. Linux, Windows, macOS we Android üstünde işleýär.
+optional_login_heading	Goşmaça giriş
+rights_heading	Hukuklar
+booking_scope_heading	Içerki / halkara
+diag_send_approved	Bir paket üçin tassyklanan paýlaşma (ýakyn wagtda gutarýar)
+diag_export_send	Paýlaşma bukjasyny dörediň (tassyklamaga mätäç)
+diag_export_send_done	{path}-da taýýar bukjany paýlaşyň - nirede saklamalydygyny saýlaň, soňra diňe Kumkaj goldawyna iberiň
+diag_save_bundle	Diagnostika göçürmesini ýazdyryň
+diag_bundle_saved	Diagnostika göçürmesi {path}
+diag_bundle_failed	Diagnostika göçürmesini saklap bolmady - gaýtadan synanyşyň
+diag_clear	Kesel anyklaýyş surnallaryny arassalaň
+diag_cleared	Diagnostiki ýazgylar arassalandy
+use	Ulany
+add_branch	Şaha goşuň
+add_conversion	Öwürmek goşuň
+add_item_plain	Menýu elementini goşuň
+add_note	Bellik goşuň
+add_opening_balance	Açylyş balansyny goşuň
+add_rider	At mün
+add_staff	Işgär goşuň
+add_unit	Bölüm goşuň
+add_use_name	Bu ady goşuň / ulanyň
+allow_extra_tills	Goşmaça töleglere rugsat beriň
+amend	Düzediş
+apply_country_pack	Packurt paketini ulanyň
+datetime_appearance	Sene we wagt görnüşi
+datetime_appearance_help	Kitaplar ýylyň içinde RFC3339-ny saklaýar. Bular diňe seneleriň we sagatlaryň girdejilere, belliklere, hasabatlara we ekrana nähili seredýändigini üýtgedýär.
+datetime_example	Mysal üçin: {ex}
+date_order	Sene tertibi
+date_order_dmy	D/M/Y
+date_order_mdy	M/D/Y
+date_order_ymd	Y-M-D
+time_format	Sagat
+time_format_24h	24 sagat
+time_format_12h	12 sagat
+attach_bill_photo	Hasap suratyny dakyň
+attach_pdf	PDF dakyň
+attach_photo	Suraty dakyň
+bank	Bank
+bank_in	Bank
+bank_out	Bankdan nagt
+bank_to_till	Bank → çenli
+till_to_bank	→ banka çenli
+mark_cleared	Mark arassalandy
+unmark	Bellik
+role_both	Ikisem
+role_carrier	Daşaýjy
+role_cashier	Kassir
+role_consignor	Iberiji
+role_manager	Dolandyryjy
+role_supplier	Üpjün ediji
+branch_name_sell_ph	Satmak üçin şahamçanyň ady
+bring_my_book	Kitap ýazgymy getir
+business_tax_id_ph	Iş salgyt belgisi
+card_amount_ph	Kartyň mukdary
+cash_amount_ph	Nagt pul mukdary
+upi_amount_ph	UPI mukdary
+carrier_cost_ph	Daşaýjynyň bahasy
+carrier_party_ph	Daşaýjy partiýa
+choose_icon	Nyşan saýlaň
+choose_logo	Logotip saýlaň
+choose_receipt_stamp	Kwitansiýa möhürini saýlaň
+choose_payment_qr	Töleg QR saýlaň
+clear_icon	Nyşan arassala
+clear_logo	Logotipi arassala
+clear_photo	Suraty arassalaň
+clear_stamp	Markany arassala
+clear_payment_qr	Töleg QR-ny arassalaň
+print_faces	Facesüzleri çap etmek (kwitansiýa / döwür tölegi)
+print_faces_help	Kitap tölegleri we döwür tölegleri barada logotipiňiziň ýanynda goşmaça möhür we töleg QR.
+awb_pools_heading	Daşaýjy AWB belgili howuzlar
+add_awb_pool	AWB howuzyny goşuň
+awb_pool_carrier_ph	Daşaýjy partiýanyň ady
+awb_pool_start_ph	Nook.
+awb_pool_end_ph	Ahyr
+awb_pool_prefix_ph	Prefiks (islege görä)
+awb_pool_label_ph	Bellik (islege görä)
+pieces_ph	Bölekler (boş = 1) - ýük / köp bölek üçin giňelýär
+bulk_awbs_ph	Köp AWB-ler - bir statusyň öňünden köp (täze setir ýa-da vergi) goýuň
+tds_cut_ph	TDS kesildi (islege görä)
+discount_ph	Arzanladyş (islege görä)
+cheque_no_ph	Barlamak belgisi (islege görä)
+bill_reminder_chase	Hasaby ýatlatmak kowalama sanawy
+month_mix_report	Aý garyşyk hasabaty
+copy_month_gst_csv	GST CSV aýyny göçüriň
+domestic	Içerki
+international	Halkara
+pick_logo	Logotip saýlaň
+booking_scope_hint_domestic	Volumetriki ÷ 5000 (içerki) - 000 6000 howa üçin Halkara basyň
+booking_scope_hint_intl	Volumetrik ÷ 6000 (halkara howa) - 5000 funt sterling üçin Içerki kran
+cod_register	Kod sanawy
+collect_cod	KOD ýygna (AWB)
+consignments_dispatch	Iberişler we iberiş
+consignor_party_ph	Iberiji / partiýanyň ady
+copy_day_book_csv	Gün ýazgysyny CSV göçüriň
+copy_day_close	Güni ýakyn wagtda göçüriň
+copy_items_csv	Menýu elementlerini CSV göçüriň
+copy_outstanding_csv	Ajaýyp CSV göçüriň
+copy_parties_csv	Müşderileri we üpjün edijileri göçüriň CSV
+copy_party_ledger_csv	Müşderi ýazgysyny CSV göçüriň
+copy_receipt	Kwitansiýany göçüriň
+copy_report	Hasabaty göçüriň
+counted_cash_ph	Çyzgyda nagt hasaplandy
+counter_agency_ph	Hasapçy / edara ady (islege görä)
+create_backup	Uptiýaçlyk dörediň
+day_close_summary	Günüň gysgaça mazmuny
+delete_party	Saýlanan müşderini ýa-da üpjün edijini pozuň
+dispatch_to_rider	Dispetçer bron edilen → çapyksuwar
+docket_charge_ph	Nokat zarýady
+declared_value_ph	Deklarasiýa edilen baha
+contents_ph	Mazmuny
+eway_ph	Elektron ýol belgisi
+insurance_label	Insurancetiýaçlandyryş
+yes_label	Hawa
+no_label	.Ok
+print_route_label	Çap etme ugry
+new_party_kind_label	Täze partiýa görnüşi
+done_open_books	Oneerine ýetirildi - açyk ýazgylar
+export_day	Eksport güni
+extra_note_expense_ph	Soňky çykdajylar barada goşmaça bellik
+extra_note_awb_ph	Bu AWB / satuwda goşmaça bellik
+failed_delivery	Gowşurylmady
+find_scan_awb	AWB-ni tap / skaner
+forget_shop	Bu dükany ýatdan çykaryň
+fuel_ph	Uelangyç
+handover_carrier	El bilen bron edilen → daşaýjy
+import_day	Import güni
+import_items_csv	Harytlary / bahalary import ediň CSV…
+import_parties_csv	Müşderileri we üpjün edijileri import ediň CSV…
+import_pincodes_csv	Pinkodlary CSV import ediň…
+import_carrier_bill_csv	Daşaýjy töleg CSV…
+copy_carrier_bill_report	Daşaýjynyň soňky hasabatyny göçüriň
+use_carrier_cost	Daşaýjynyň bahasyny ulanyň
+rate_carrier_ph	Daşaýjy (boş = satuw nyrhymyz)
+rate_party_ph	Partiýa (boş = ähli müşderiler)
+carrier_pick_ph	Bahasy üçin daşaýjy (deňeşdirmekden)
+item_name	Menýu menýusynyň ady
+load_bulk_row	Köp hatar stol
+login_id_ph	Ulanyjy ady
+mark_delivered	Bellik gowşuryldy
+manifest_cod_total	Jemi kod
+manifest_received_by	Aldy
+manifest_sign	Gol çekiň
+ndr_address_wrong	Salgy nädogry
+ndr_customer_unavailable	Elýeterli däl
+ndr_door_locked	Gapy gulplandy
+ndr_other	Beýlekiler
+ndr_refused	Ret edildi
+out_for_delivery	Getirmek üçin
+print_drs	DRS çap et
+print_run_sheet	Iş sahypasyny çap et
+reattempt	Gaýtadan synanyşmak
+rider_cod_handed_ph	Kod gowşuryldy
+settle_rider_cod	At çapýan COD
+mode_desk	Stol
+mode_rider	Atly
+waiting_office	ofisine ýetmek üçin garaşýarlar
+capture_signature	Gol çekmek
+incoming_manifest	Gelýän aç-açan
+pickup_request	Almak haýyşy
+pickup_run	Upüklemek
+auto_assign_area	Awto-bellemek meýdany
+reorder_stops	Düzediş saklanýar
+settle_rider_pay	At çapýanlaryň tölegini kesgitläň
+vehicle_inspect	Ulag barlagy
+print_docket	Çap et
+franchise_statement	Franşiza beýany
+tally_export	Talli talon eksporty
+open_whatsapp	WhatsApp açyň
+copy_sms	SMS tekstini göçüriň
+pick_barcode_image	Gözlemek üçin suraty saýlaň
+share_receipt_whatsapp	Kwitany WhatsApp-da paýlaşyň
+delivery_feedback	Eltip bermek
+lan_self_book	LAN öz-özüni bronlamak
+new_party_clear	Täze müşderi ýa-da üpjün ediji (anyk görnüş)
+new_party_kind_ph	Täze partiýa görnüşi (üpjün ediji / daşaýjy)
+next_country	Indiki ýurt
+prev_country	Öňki ýurt
+note_gstin_ph	Bellik / GSTIN / şertnamany ýatlatma
+note_pod_ph	Bellik / POD (islege görä)
+on_account_ap	Hasapda (AP)
+org_optional_ph	Gurama (islege görä)
+paid_now	Tölegli
+pairing_code_ph	Jübüt kody
+pair_now	Jübütläň
+party_name_selected_ph	Müşderiniň ýa-da üpjün edijiniň ady (ýa-da saýlanan ulanyň)
+password_ph	Parol
+pay_ap_card	AP kartoçkasyny töläň
+pay_ap_cash	AP nagt töläň
+pay_ap_upi	AP UPI töle
+period_bill	Döwür hasaby
+period_bill_party	Döwür hasaby (partiýa)
+pick_pod_photo	POD suratyny saýlaň
+print_awb_label	AWB belligini çap et
+print_open	Çap et / aç
+reason_amend_ph	Düzediş / ýatyrmak / yzyna gaýtarmagyň sebäbi
+reason_note_ph	Sebäp / bellik (isrip, sanamak,…)
+record_day_close	Güni ýakyn saklaň
+refresh_from_shop	Dükandan täzelen
+refund	Yzyna gaýtaryp bermek
+remit_cod	Kody öçüriň
+remove_selected	Saýlananlary aýyryň
+restore_backup	Uptiýaçlyk nusgasyny dikelt
+rider_name_ph	Atyň ady
+rider_phone_ph	Atly telefon
+riders	Atlylar
+riders_own_fleet	Atlylar (öz floty)
+rollup	Gysgaça mazmun
+save_booking_measures	Sargyt çärelerini ýazdyryň
+save_brand	Markany ýazdyryň
+save_business_id	Iş belgisini ýazdyryň
+save_business_name	Iş adyny ýazdyryň
+save_features	Iş sazlamasyny ýazdyryň
+save_names	Atlary ýazdyryň
+server_ip_ph	Serwer IP (meselem 192.168.1.10)
+set_credit_limit	Müşderi ýa-da üpjün ediji üçin çäklendirmäni ulanyň
+set_login_selected	Saýlananlara giriň
+set_login_named	Giriş {name}
+shop	Dükan
+start_fresh	Täze başlaň
+stop_extra_tills	Goşmaça tölegleri bes ediň
+backup_auto	Her gün awtomatiki ätiýaçlandyrylýar · soňky {when} · soňky 14 gün {dir}-de saklanýar.
+backup_auto_none	Her gün awtomatiki ätiýaçlandyrylýar - birinjisi bir salymda işleýär.
+backup_copy_to	Göçürmeler {dir}-a gidýär.
+backup_copy_btn	Şeýle hem ätiýaçlyk nusgalaryny bukja göçüriň ...
+autostart_off	Bu kompýuterden başlaň
+autostart_on	Bu kompýuterden başlaýar ✓ - durmak üçin basyň
+autostart_done_on	Bu kompýuter indi programmany işe başlanda açýar - dükanyň serweri elektrik togy kesilenden soň gaýdyp gelýär.
+autostart_done_off	Bu kompýuter işe başlanda indi programma açmaýar.
+right_allowed	Rugsat
+right_with_approval	Makullamak bilen
+right_denied	Rugsat berilmeýär
+editing_staff	Hukuklary
+team_pick_ph	Redaktirlemek üçin işgärler - ady, ulanyjy ady ýa-da saýlamak
+select_staff	Bu işgärleri saýlaň
+rights_help	Hukuklar - üýtgetmek üçin basyň: Rugsat berilýär approval Rugsat bilen (şol wagt dolandyryjynyň PIN-i) → Rugsat berilmeýär.
+right_void_refund	Sargydy boşadyň ýa-da yzyna gaýtaryň
+right_amend_sale	Recordazga alnan bron etmegi düzediň
+find_server	Dükanyň serwerini tapyň
+finding_server	Bu Wi‑Fi-da dükanyň serwerini gözleýärsiňiz…
+no_server_found	Hiç kim tapylmady Serwerde: Sazlamalar → Beýleki enjamlar extra Goşmaça işlemäge rugsat beriň (şol bir Wi‑Fi). Ora-da şol ýerde görkezilen IP ýazyň.
+servers_found_pick	Birikmek isleýän dükanyňyza degiň.
+server_host_selected	{host} ulanyp - jübütleme koduny giriziň, soňra jübütläň.
+device_forgotten	Dükan bu enjamy ýatdan çykardy - ony dükanyň häzirki kody bilen täzeden jübütläň. Oňa garaşýan sargytlar saklanýar.
+forget_device	Forgetatdan çykar
+last_seen	göründi
+new_pair_code	Täze jübüt kody
+lan_offline	Dükana serwer elýeterli däl
+lan_offline_waiting	Dükana serwer elýeterli däl · {n} garaşýar
+lan_connecting	Dükana birikmek…
+pair_finishing	Jübüt gutarmak ... ofis kitaplaryny ulanmak
+pair_opening	Ofisi açmak…
+lan_live	Göni
+lan_sending	{n} ibermek
+lan_sign_in_to_send	{n} ibermek üçin gaýtadan giriň
+lan_pair_again	Bu enjamy täzeden jübütläň
+lan_update_app	Programmany täzeläň - bu enjamyň we ofis serweriniň dürli wersiýalary bar
+allow_firewall	Beýleki enjamlaryň birikmegine rugsat beriň
+firewall_blocked	Bu kompýuteriň gorag diwary beýleki enjamlary bloklaýar - Beýleki enjamlaryň birikmegine rugsat beriň.
+firewall_waiting	Admin soragyna garaşmak…
+lan_join_help	Beýleki enjamda: Müşderi tertibi shop Dükanyň serwerini tapyň (ýa-da {addr} ýazyň) → jübüt kody {code}.
+lan_pair_status	Wi‑Fi {addr}
+lan_join_help_no_addr	Salgy üçin bu enjamy Wi‑Fi birikdiriň.
+lan_no_address	Entek Wi‑Fi salgy ýok - Wi‑Fi dükanyna birikdiriň.
+lan_not_listening	Enjamlary kabul etmezlik (port {port} meşgul). Programmany täzeden açyň.
+lan_tills_off	Goşmaça tölegler öçürildi. Başga enjamyň birleşmegine rugsat beriň.
+paired_with	Jübütlenen · {url}
+not_paired	Jübüt däl
+choose_device_use	Serwer ýa-da Müşderi saýlaň.
+paired_note	Jübüt. Satmak üçin açyň ýa-da iň soňkusy üçin täzeläň.
+last_update_at	Iň soňky täzelenme: {time}.
+pair_intro	Serweri tapyň ýa-da onuň salgysyny we jübüt koduny ýazyň.
+queue_waiting	Dükana ýetmek üçin garaşmak ({n}):
+queue_tries	{n} gezek synanyşdy · soňky jogap: {e}
+save_backup_copy	Uptiýaçlyk nusgasyny ýazdyryň ...
+backup_copy_saved	Backtiýaçlyk nusgasy saklandy - ony bu enjamdan (USB taýagy ýa-da başga bir enjam) saklaň
+backup_copy_overdue	Bu enjamy {n} günüň dowamynda ätiýaçlyk nusgasy galdyrmady - Sazlamalar → uptiýaçlyk
+backup_copy_failed	Backtiýaçlyk nusgasyny ol ýerde saklap bolmady - başga bir ýeri saýlaň
+clock_off	Bu enjamyň sagady dükanyň serwerinden {min} minut uzaklykda - bu enjamda gerekli wagty belläň
+printers_heading	Bu enjamdaky printerler
+printers_help	Hakyky printerleri tapyň, soňra resept ýa-da AWB belligini saýlaň. Her işiň öz giňligi, portreti ýa-da peýza .y we baýtlaryň iberilişi bar. Bellik ştrih koduny çap edýär. Boş ýer = çap etme.
+job_width	Mazmunyň ini (mm)
+job_width_ph	Ora-da 40–210 mm ini ýazyň
+job_layout	Salgy
+job_delivery	Iş nädip iberilýär
+job_size	Şriftiň ululygy
+job_size_ph	meselem 18, 20, 26…
+save_receipt_format	Giriş formatyny ýazdyryň
+save_label_format	Bellik formatyny ýazdyryň
+test_receipt_format	Synag kwitansiýasy
+test_label_format	Synag belligi
+test_receipt_sent	Iberilen nusga
+test_label_sent	Iberilen nusga belligi
+test_print_no_printer	Bu iş üçin printer ýok - şu ýeriň aşagyna birini goşuň
+printers_host_only	Printerler dükan enjamynda (Serwer) gurnalan. Bu ýerde iş iberýänçä - Serwerde galmagy tapyň / goşuň / belläň. Synag sahypasy Serwere gidýär.
+printers_pool_heading	Çap edijiler
+printers_routes_heading	Nirede zatlar çap edilýär
+printer_label_ph	Ady (meselem, stol)
+printer_target_ph	alyp baryjy: 9100 · bt: MAC · usb: VID: PID · ulgamyň ady
+printer_mode_heading	Täze netijeler üçin profil
+printer_mode_standard	Standart portret
+printer_mode_landscape	Standart peýza ..
+printer_mode_thermal	Malylylyk
+printer_mode_standard_short	Portret
+printer_mode_landscape_short	Peýzacape
+printer_mode_thermal_short	Malylylyk
+printer_format_custom	Täze ýöriteleşdirilen profil
+printer_format_custom_label	Omörite
+printer_format_custom_added	Bu ýer üçin ýörite profil goşuldy
+add_printer	Printer goşuň
+remove_printer	Iň soňky aýyryň
+route_pick_ph	kwitansiýa ýa-da bellik
+route_add_printer_ph	Bu ýere printer goşuň
+route_receipt	Kwitansiýa
+route_label	AWB belligi
+route_dont_print	Hiç hili printer berilmedi
+route_add	Placeerine goş
+route_up	Upokarda
+route_down	Aşakda
+route_remove	Iň soňky aýyryň
+route_clear	Bu ýer üçin printerleri arassalaň
+save_printers	Printerleri ýazdyryň
+print_test_page	Synag sahypasyny çap ediň
+printers_saved	Bu enjam üçin printerler saklandy
+test_page_sent	Iberilen synag sahypasy - printeri barlaň
+printers_found	Bu enjamda tapyldy: {list}
+find_printers	Printerleri tapyň
+printers_looking	Bu enjamda printerleri we Wi - Fi…
+printers_tap_find	Bu Wi - Fi-da işleri we torlaýyn giriş printerlerini kabul edýän nobatlar üçin printerleri tapyň (aýrylmaýar ýa-da awtonom däl).
+printers_none_found	Hiç hili printer tapylmady - ulgam printeriniň adyny ýa-da tor salgysyny ýazyň (meselem 192.168.1.50).
+receipt_printer_ph	Giriş üçin printer
+queue_refused	Dükan ({n}) tarapyndan kabul edilmeýär - hersini hasapda barlaň:
+clear_not_accepted	Barlanyldy - bu sanawy arassalaň
+device_name_ph	Bu enjamyň ady
+lan_last_update	soňky täzelenme {time}
+lan_not_accepted	{n} kabul edilmedi
+connected_now	Indi birikdirildi
+backup_failed	Iň soňky awtomatiki ätiýaçlyk şowsuz boldy: {e}
+backup_overdue	{n} gün ätiýaçlyk ýok - programmany ätiýaçlyk edip bilmek üçin bu enjamda açyk saklaň.
+disk_low	Bu enjamda diňe {mb} MB mugt - ätiýaçlyk nusgalary ýakyn wagtda şowsuz bolar. Biraz boş ýer boşadyň.
+last_seen_devices	Iň soňky gezek: {time}
+sync_interval	Her {secs}s sinhronlaň
+connection_to_shop	Dükana birikmek
+supplier_name_ph	Üpjün edijiniň ady (ýa-da müşderi)
+supplier_ph	Üpjün ediji
+switch_device	Bu enjamy çalyşyň
+take_payment	Töleg alyň
+tax_added_till	{tax} aýratyn
+tax_inside_price	{tax} öz içine alýar
+today_books	Şu gün ýazgylar
+unlock_after_pairing	PIN giriziň
+unlock_with_login	Giriş bilen açyň
+update_my_password	Parolymy täzeläň
+update_my_pin	PIN-i täzeläň
+duress_heading	Gyssagly gulpy açmak PIN (Diňe eýesi)
+duress_help	Meýletin. Bu PIN seniň deregiňe gulp bilen ýazylsa, ähli kitap ýazgylary süpürilýär (bronlamalar, ýazgylar, taryh) we stoluň eýesi adaty görünýän ýaly açylýar - nyrhlar, oturylyşyklar, zonalar, işgärler we sazlamalar. Shema we konfigurasiýa pozulmaýar. Diňe gulpy açmaga mejbur bolsaňyz ulanyň. Boş goýuň we öçürmek üçin tygşytlaň. Hiç haçan hiç kimiň PIN-i bilen deň bolmaz.
+duress_pin_ph	Gyssagly PIN (4–12 san)
+duress_confirm_ph	Tassyklamak üçin gaýtadan ýazyň
+save_duress_pin	Gyssagly kömek PIN
+clear_duress_pin	Gyssagly PIN öçüriň
+duress_on	Gyssagly gulpy PIN açyk
+duress_off	Gyssagly gulpy PIN öçürildi
+duress_saved	Gyssagly gulpy açmak PIN ýatda saklandy
+duress_cleared	Gyssagly gulpy PIN öçürdi
+vehicle_ph	Ulag
+void	Satuw boş
+write_off_ap	AP ýazyň
+write_off_nil	Balansy ýazyň
+zone_ph	Zona (Nyrhlardan ady)
+caption_today	BU GÜN
+caption_bookings	Kitaplar
+caption_payments_today	Şu gün tölegler
+caption_outstanding	GÖRNÜŞ
+caption_bank	BANK
+paid_by	Töledi
+second_way	Ikinji ýol
+weight_in	Agramy
+size_in	Ölçegi
+goods_received	Harytlar
+expense_heading	Çykdajylar
+notes_attach_sale	Bellikler we goşundylar (saýlanan satuw)
+notes_attach_party	Bellikler we goşundylar (saýlanan müşderi ýa-da üpjün ediji)
+attachments_last_expense	Goşundylar (soňky çykdajy)
+credit_limit_heading	Karz çäkleri (saýlanan müşderi ýa-da üpjün ediji)
+pay_selected_heading	Saýlanan tölegi (karzy üzüň / öňünden alyň)
+write_off_heading	Hasaplaň (tölegsiz aýdyň)
+pay_ap_heading	Biziň bergimizi töläň (AP)
+country_tax	& Urt we salgyt
+extra_tills_heading	Goşmaça tölegler
+other_devices_help_heading	Beýleki enjamlary guruň
+other_devices_help	Bu enjamda (Serwer): Beýleki enjamlar extra Goşmaça işlemäge rugsat beriň. Jübütleme kody we Wi - Fi adresine üns beriň. Görkezilse, beýleki enjamlaryň birikmegine rugsat beriň. Kompýuterde, Bu kompýuterden Başlamak düwmesine basyň. Birek-birege enjamda: programmany guruň, Müşderi reodeimini saýlaň, dükanyň serwerini tapyň (ýa-da adresi ýazyň), jübütleme koduny giriziň, Indi jübütläň. Serwer täzeden jogap bereninde Wi - Fi düşse we buýruklar enjamda garaşýar.
+your_brand	Siziň markaňyz (programmada)
+units_heading	Bölümler
+booking_measures	Zakaz bermek çäreleri
+drawer_count	Çyzgy sanamak (islege görä)
+spreadsheet_csv	Elektron tablisasy (CSV)
+bank_reconciliation	Bank ylalaşygy (bank hasabatyna garşy çykyň)
+book_add_product	Kitap - önüm / nyrh goşuň
+book_opening_credit	Karz - açyk karz
+account_kind	Hasap görnüşi (birine basyň)
+active_ledger	Işjeň ýazgy
+actual_total_cap	AKTUAL JEMLE .JI
+amend_help	Düzediş, ýatyrmak ýa-da yzyna gaýtarmak üçin satuw saýlaň. Düzedişler doly taryhy saklaýar. Tegelek jemi “Applied” -e deň başlaýar - diňe tegelek görnüşde redaktirläň. Boş we yzyna gaýtarmak eýesi ýa-da dolandyryjy PIN gerek bolup biler (ýokarda ýazylan; adyňyz bilen ýazylan).
+applied_total_cap	JEMLE .JI JEMLE .JI
+bank_balance	Bank balansy
+bank_net_today	Şu gün bank arassa
+branch_export_help	Eksport ätiýaçlyk bukjasyna bir günlük surat ýazýar we bufer paneline göçürýär. Başga bir söwda gününi import etmek üçin faýlyny şol bukjada import_branch_snapshot.json görnüşinde saklaň, soňra bolsa Import düwmesine basyň.
+brand_shown_help	Programmanyň içindäki ekranlarda görkezilýär. Bu enjamda gurnalan programma ady we nyşany platforma sanawy hökmünde galýar.
+app_icon	Programma nyşany
+logo_help	Programmadaky ekranlarda goşmaça dükan belligi.
+onboard_layout	Näme alýarsyň
+item_photo_help	Meýletin. Suratsyz menýu elementiniň adyndan baş harplary görkezýäris.
+cash_in_hand	Elindäki nagt pul (çenli)
+change_my_pin_heading	PIN-i üýtgediň (diňe siziňki)
+connect_to_server	Serwere birikdiriň
+counter_locked	Hasaplaýjy 01 · Gulply
+country_pack_help	Packurt paketinde salgyt ady we matematika, derrew tölenýän demir ýol we hasaplaşyk kagyzlarynda çap edilen iş belgisi bar. Kumkaj hiç ýerde salgyt tölemeýär ýa-da hökümet elektron hasap-fakturalaryny bermeýär.
+currency_use_help	Islendik goldanýan walýuta üçin aýlaň we basyň.
+day_close_help	Bir gün ýakynlygy ýazga almak, bu gysgaça mazmuny (we sanalsa çekiş görnüşi) audit gündeligine ýazdyrýar. Satmagy bes etmeýär.
+expenses_word	Çykdajylar
+feature_access_help	Saýlanan işgärler üçin aýratynlyk (goşanyňyzdan soň basyň)
+footer_local	Localerli SQLite · Mugt baky · Nol bulut
+fresh_book_moklanjo	Taze = boş katalog (soňundan zatlar goşuň). Kitap = açylyş aksiýasyny ýazyň we aşakda kimiň bergisi bar.
+fresh_selected	Täze saýlanan - katalog boş galýar. Taýýar bolanyňyzda ýerine ýetiriň.
+gross_word	Jemi
+how_start	Nädip başlamak isleýärsiňiz?
+later_country_pack	Soňrak: Sazlamalar country ýurt paketini salgyt we töleg bellikleri üçin ulanyň.
+local_badge	OCerli
+measures_help_moklanjo	Bölümleri bronlamak stolunda nädip ölçelýär. Ulanylýan birlikleriň ölçeglerini we agramyny ýazyň - standart (sm, m, in, ft · kg, g, fb, oz) ýa-da ýokarda cm / kg bilen baglanyşdyrylan öz bölümiňiz (göni ýa-da beýleki bölümleriň üsti bilen). Kitaplar elmydama kg ýazýarlar. Saklamak üçin bir meýdan boş goýuň.
+mix_type_hint_moklanjo	Hersinde näçeräk ýazyň (nagt / UPI / kart / karz). Hasaby tölemeli. Karz ýokarda bir müşderä mätäç.
+money_in_sales	Pul (satuw)
+more_help_moklanjo	Katalog, satuw, karz, topar, ätiýaçlyk - goşmaça aksiýa we zerur bolanda goşmaça tölegler.
+net_word	Arassa
+offline_badge	LINÝASYZ
+optional_login_help	Goşmaça giriş (id + parol) Eýesi bir gezek goýýar; diňe ulanyjy soň paroly üýtgedip biler.
+or_unlock_login	Ora-da giriş id + paroly bilen açyň
+permission_preset	Iş (ekranlary we hukuklary düzýär)
+preset_help_moklanjo	Kassir: sat. Dolandyryjy: satmak + menýu elementleri + boş / üýtgetmek.
+product_locked_moklanjo	Moklanjo
+product_only_moklanjo	Bu programma diňe Moklanjo - kitaplar + bron stoly. Beýleki söwda ýüzleri soňra aýratyn önüm hökmünde iberilýär.
+purchases_cogs	Satyn almalar (COGS)
+qty_cap	MUKDAR
+restore_help	Dikelt: ätiýaçlyk nusgasyny saýla. Kitap ýazgylary şol wagtky ýaly açylýar; ýazgylar, edil häzir bolşy ýaly halas edilýär, şonuň üçin bu yzyna gaýtarylyp bilner.
+wipe_data_heading	Localerli maglumatlary pozuň
+wipe_data_help	Diňe eýesi - Windows aýyrmak ýaly saýlawlar. Iş ýazgylary söwda taryhyny arassalaýar, ýöne nyrhlary we sazlamalary saklaýar (gyssagly gulpy açmak PIN ýaly). Dükany gurnamak kitaplar bazasyny aýyrýar. Ekranyň ileri tutmalary penjire / dili arassalaýar. Eýesiniň PIN-i bilen tassyklaň. Topardaky gyssagly gulpy açmak PIN aýratyn (gulpy açanda gizlin süpüriň).
+wipe_trading	Iş ýazgylary
+wipe_schema	Dükan gurmak
+wipe_ui	Ekranyň ileri tutmalary
+wipe_owner_pin_ph	Öçürmek üçin eýesi PIN
+wipe_delete_selected	Saýlananlary poz
+wipe_owner_only	Diňe eýesi ýerli maglumatlary pozup biler.
+restore_owner_only	Diňe eýesi ätiýaçlyk nusgasyny dikeldip biler.
+wipe_owner_pin_needed	Localerli maglumatlary pozmak üçin PIN eýesini giriziň.
+wipe_nothing_selected	Ilki näme pozmalydygyny saýlaň.
+wipe_done	Saýlanan ýerli maglumatlar öçürildi.
+wipe_schema_done	Dükany gurnamak süpürildi - Dowam etmek üçin Serwer ýa-da Müşderi saýlaň.
+rounded_total	Jemi jemlenen
+setup_app_moklanjo	Moklanjo guruň
+shop_logo_optional	Dükanyň nyşany (islege görä)
+stock_type_help	Menýu elementiniň adyny (onuň bir bölegi ýeterlik), mukdaryny ýazyň, soňra sazlaň. Entek sanalmadyk menýu menýu elementleri bir gezek yzarlamaga başlamaly.
+team_owner_help	Işe alyň: iş saýlaň (Kassir / Dolandyryjy), ady + PIN-i başlaň, soňra Goşuň. Diňe bu adam tapawutlanýan bolsa: aşakdaky ekranlary we hukuklary açyň, iş ýerini ýazdyryň. Her kim aşaky böleginde öz PIN-i üýtgedýär - eýesi başga biriniňkini üýtgedip bilmez.
+they_owe_us	Olar bize bergili
+unit_at_cap	Bölüm @
+units_help	Menýu elementleriniň bellikleri üçin kodlar (kg, bölek, sumka). Her bölüm, gönüden-göni ýa-da beýleki bölümleriň üsti bilen - standart (kg · cm · ml · pc) bilen baglanyşmalydyr. 1 sandyk = 2 guty we 1 guty = 20 sm. Öwrülişler: 1-den = faktor. Walýutalar hiç haçan birlik däl.
+we_owe_them	Biz olara bergimiz bar
+who_unlocking	Kim gulpuny açýar?
+locked_word	Gulply
+show_pin	PIN görkez
+hide_pin	PIN gizläň
+set_owner_pin	OWNER PIN düzüň
+enter_owner_passcode	OWNER PASSKODYNY GIRI ..
+enter_staff_passcode	GÖRNÜŞ GÖRNÜŞI
+pin_count_zero	0/12 san · azyndan 4, soň bolsa bolýar
+pin_count_need	{} / 12 sanlar · zerur {} has köp
+pin_count_full	12/12 san · OK basyň
+pin_count_ready	{} / 12 san · taýýar bolanda OK basyň
+pin_hint_choose	4–12 sanlary saýlaň · Saklamak üçin giriň ýa-da açyň
+pin_hint_new	Täze 4–12 sanly eýesi PIN · Enter ýa-da açmak
+pin_hint_shop_code	Dükan enjamy · jübüt kody {}
+pin_hint_books	Bu enjam ýazgy ýazgylaryny saklaýar
+pin_hint_paired	Jübütlenýänçä goşmaça - satmak üçin açyň
+pin_hint_pair_first	Goşmaça - ilki dükan enjamyna jübütläň
+unlock_to_continue	Dowam etmek üçin açyň
+no_staff_yet	Entek işgär ýok - eýesi hökmünde açyň, soňra topar
+status_server_set_pin	Serwer tertibi - eýesini PIN düzüň
+status_server_tills	Serwer tertibi - goşmaça goşmaçalar goşulyp biler. Gulpy aç
+status_server_unlock	Serwer tertibi - eýesi hökmünde açyň
+status_client_unlock	Müşderi tertibi - satmak üçin açmak
+icon_new_selected	Nyşan: täze saýlanan faýl - Saklamak markasyna basyň
+icon_custom	Nyşan: ýörite ýer belligi
+icon_default	Nyşan: Kumkaj belligi (deslapky) - adaty birini saýlaň
+logo_yours	Logotip: dükanyňyzyň nyşany - ekranlarda we kwitansiýalarda görkezilýär
+logo_default	Logotip: Kumkaj belligi (deslapky) - bar bolsa özüňizi saýlaň
+tmpl_current	Häzirki: {} - {}
+tmpl_selected	Saýlanan: {} - {}
+setup_complete	Gurnama tamamlandy
+onboard_fresh_tmpl	Taze · {} - katalog boş başlaýar; menýu menýu elementlerine menýu elementlerini goşuň, soňra ýerine ýetirildi.
+onboard_book_tmpl	Ledger · {} - menýu elementlerini goşuň we karz açyň, soňra ýerine ýetirildi.
+onboard_template_tmpl	Isleseňiz ýeriň adyny aýdyň, soň nädip başlamalydygyny saýlaň.
+tmpl_blurb	Kurýer kitaplary we bron ediş stoly: iberijiler, daşaýjylar, gündelik kitap, AWB.
+tmpl_how	Stolda kitap bukjalary; Şu gün üçin gündelik kitap; nyrhlar, partiýalar, hasabatlar üçin bellikler.
+trk_booked	Zakaz edildi
+trk_picked_up	Aldy
+trk_in_transit	Tranzitde
+trk_delivered	Gowşuryldy
+trk_rto	Iberijä gaýdyp barmak
+lane_to_dispatch	Ibermek
+lane_with_carrier	Daşaýjy bilen
+lane_failed	Şowsuz
+lane_done_today	Şu gün edildi
+ops_board_help	Şu günki işimizdäki ýerler. Olary saýlamak üçin posylkalara basyň (ýa-da skanirläň), soňra saýlananlaryň hemmesine hereket ediň - her bir zolak diňe özüne laýyk hereketleri hödürleýär.
+lane_empty	Häzirki wagtda hiç zat ýok.
+picked_fmt	{n} saýlandy
+pick_all	Hemmesini saýlaň
+bag_for_carrier	Daşaýja el
+send_with_rider	Atly bilen iber
+out_again	Againene çyk
+return_to_sender	Iberijä gaýdyp geliň
+runs_bags_heading	Soňky ylgawlar we sumkalar
+print_word	Çap et
+bag_word	Daşaýjy sumka
+run_word	Atly ylga
+parcels_fmt	{n} posylkalary
+parcel_history	Taryh
+attempt_fmt	{n} synanyşyň
+pieces_short_fmt	{n} kompýuterler
+note_reason_ph	Bellik ýa-da sebäp
+ops_pick_first	Ilki bilen posylkalary saýlaň - basyň ýa-da skanirläň
+cod_to_collect	Getirildi - ýygnamak üçin KOD
+cod_on_road	Kod henizem ýolda
+cod_owed_consignors	Ectedygnalan - iberijilere tölemek
+cod_rto_fees	Oygnamak üçin RTO tölegleri
+cod_to_hand_in	Kod bermek
+parcel_one_fmt	{n} bukjasy
+facet_bank_title	Hasabat
+facet_bank_help	Gündelik ýazgylar, müşderi ýa-da üpjün edijiniň garramagy, bank ýazgylary we döwür P&L.
+facet_ops_title	Iberişler we iberiş
+facet_ops_help	AWB skanirläň ýa-da ýazyň → Tapyň, soňra belligi / COD-ny öňe sürüň / çap ediň. At münmäge ýa-da daşaýja iber.
+facet_cod_title	Kod sanawy
+facet_cod_help	Getirmekde ýygnaň, soňra iberijä iberiň.
+facet_riders_title	Atlylar (öz floty)
+facet_riders_help	Atlylary goşuň, soňra Ops-dan bron edilen AWB-leri iberiň.
+against_bill_ph	Aboveokardaky # kanun taslamasyna garşy (islege görä)
+aliases_ph	Lakamlar - beýleki atlar, vergul aýrylýar
+amount_blank_full_ph	Mukdary (boş = doly balans)
+amount_owed_ph	Bergisi
+amount_ph	Mukdary
+amount_received_ph	Alnan mukdar
+amount_we_pay_ph	Töleýän mukdarymyz
+awb_scan_ph	AWB / ştrih-kod skaner
+bulk_csv_ph	Köp CSV - barmaly ýer, iberiji, kg, cod_paise, bellik
+business_name_ph	Iş ady
+category_new_ph	Kategoriýa (islege görä, täze bolsa döredilen)
+cod_amount_ph	Kod mukdary
+code_bag_ph	Kod (sumka)
+conv_factor_ph	Faktor (25 = 1 halta → 25 kg)
+country_code_ph	Codeurt kody IN, GB, ABŞ, AE, BR
+credit_khata_amount_ph	Karz / karz pul mukdary
+credit_limit_ph	Karz çäkleri (0 = ýok)
+dim_unit_code_ph	Ölçeg birligi kody (sm)
+divisor_ph	Volumetriki bölüji (5000)
+extra_per_kg_ph	Goşmaça / kg
+first_amount_ph	Birinji mukdar
+first_kg_ph	Ilkinji kg (plita)
+from_code_ph	Koddan (sumka)
+item_name_lang_ph	Menýu menýusynyň ady - ony öz diliňizde ýazyň
+login_id_opt_ph	Ulanyjy ady (zerur, üýtgeşik)
+manager_pin_ph	Dolandyryjy PIN tassyklamak (diňe boşadyp bilmeýän bolsaňyz)
+new_branch_name_ph	Täze şahanyň ady
+new_password_ph	Täze parol (islege görä)
+new_pin_ph	Täze PIN (4–12 san)
+note_bank_ph	Bellik (goýum, çykarmak,…)
+note_buy_expense_ph	Bellik (ýangyç, kärende,…)
+note_expense_ph	Bellik (ýangyç, ofis,…)
+notify_phone_ph	Telefona habar beriň (WhatsApp / SMS çeňňegi)
+options_moklanjo_ph	Görnüşler (islege görä) - Uly = 20, Sowgat dolanyşygy = 10
+part_second_way_ph	Ikinji ýol bilen bölek (islege görä)
+phone_ph	Telefon
+address_ph	Salgysy
+party_custom_fields_heading	Hususy meýdanlar (saýlanan tarap)
+party_custom_help	Bu tarapa islendik bellik we baha goşuň - WhatsApp, GSTIN, ugur kody,…
+party_custom_key_ph	Meýdanyň ady (meselem, WhatsApp)
+party_custom_value_ph	Gymmatlyk
+party_custom_add	Meýdan goşuň
+party_custom_remove	Meýdany aýyryň
+party_custom_empty	Entek ýörite meýdan ýok
+party_custom_pick_first	Customörite meýdanlary goşmak üçin oturylyşyk saýlaň
+place_name_ph	Bu ýeriň ady
+price_ph	Bahasy
+qty_example_ph	Qty (meselem, kg üçin 1,5)
+quantity_ph	Mukdar
+reason_required_ph	Sebäp (zerur)
+role_title_ph	Rol ady (meselem, Barista)
+service_pct_ph	Hyzmat% islege bagly 0/10/12
+short_code_ph	Gysga kod (MG02)
+slab_kg_ph	Kg-da zarýad berilýän plita (0,5)
+staff_name_ph	Işgärleriň ady / id
+starting_password_ph	Paroly başlamak (islege görä)
+starting_pin_ph	PIN başlamak (4–12 san)
+tax_rate_ph	Salgyt stawkasynyň ady ýa-da% - Standart, azaldylan, 0, 5, 12, 18, 20
+to_code_ph	Kodlamak (kg)
+uncleared_no_ph	Aboveokardaky düşündirilmedik #
+unit_cost_ph	Bölümiň bahasy
+unit_kg_blank_ph	Bölüm (kg ýa-da boş)
+unit_name_bag_ph	Ady (sumka)
+weight_unit_code_ph	Agram birligi kody (kg)
+zone_name_ph	Zonanyň ady
+pay_credit	Hasapda
+book_kind_today	Şu gün ýazgylar
+book_kind_month	Bu aý ýazgylar
+book_kind_aging	Görnükli / debet-karz
+book_kind_balance	Balans
+ops_desk_help	AWB-ni USB ştrih-kod skaneri bilen skanirläň (ýa-da ýazyň) → Gözläň. Soňra öňe sürüň, belligi çap ediň ýa-da COD ýygnaň. Bellikler 128-nji çap kody.
+role_help_consignor	Rol: Iberiji - AR (olar bize bergili). Şol bir firma Daşaýjy hem bolup biler.
+role_help_carrier	Rol: Daşaýjy - AP (biz olara bergimiz bar). Şol bir firma hem iberiji bolup biler.
+role_help_both	Rollar: Iberiji + Daşaýjy - bir tarap, AR we AP ýazgylary, Hasabatda tor.
+role_help_supplier	Rol: Üpjün ediji - Satyn almak üçin AP.
+lane_declared_label	Hasap bronlamak
+lane_owner_label	Nagt bronlamak
+money_lane_bill	Hasap: {lane}

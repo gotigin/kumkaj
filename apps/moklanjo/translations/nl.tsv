@@ -1,0 +1,835 @@
+# Dutch — Nederlands (nl). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	Koeriersboeken + verzendbalie. Gratis offline.
+unlock	Ontgrendelen
+pin_hint	Eigenaar-PIN begint met 0000
+sell	Boeking
+buy	Uitbetaling
+books	Dagboek
+books_help	Stand van vandaag. Boeking = pakketten in. Uitbetaling = vervoerdersfacturen & kosten. Partijen = afzenders & vervoerders.
+buy_help	Onkostenbonnen en vervoerdersfacturen (geld eruit). Op rekening blijft in het partijenboek.
+sell_money_in	Pakket boeken
+buy_money_out	Kosten / vervoerdersfactuur
+record_purchase	Inkoop boeken
+add_expense	Onkostenbon
+bank_book	Bankboek
+credit_help	Partij-id is uniek (namen mogen herhalen). Rollen: afzender (AR), vervoerder (AP), of beide op dat id. Boeken blijven apart; rapporten tonen netto.
+party_kind_ph	Eigen rol (optioneel) — of tik een chip hierboven
+parties_list_heading	Opgeslagen partijen
+reports_help	Dagboek, debiteuren & crediteuren, bankboek, onkostenbonnen, winst & verlies.
+reports_today	Dagboek (vandaag)
+reports_month	Winst & verlies (maand)
+reports_aging	Openstaand / Dr-Cr
+reports_balance_sheet	Balans
+reports	Rapporten
+refresh	Vernieuwen
+undo	Ongedaan
+start_tracking	Telling starten
+stock_minus	− Voorraad
+stock_plus	+ Voorraad
+settle_cash	Contant afrekenen
+settle_card	Met kaart afrekenen
+items	Tarieven & diensten
+nav_items	Tarieven
+more	Meer
+your_items	Jouw tarieven
+items_help	Elke rij is een tarief (bijv. Surface Zone A). Eenheid is meestal kg. Tik om te bewerken.
+add_item	Tarief toevoegen
+new_item	Nieuw tarief
+adding_item	Nieuw tarief toevoegen
+editing_item	Bewerken
+save	Opslaan
+remove	Verwijderen
+empty_catalog	Nog geen tarieven. Open Tarieven & diensten, voeg er een toe (naam + prijs, eenheid kg), dan Boeking.
+counter_sale	Balieboeking
+total	Totaal
+cash	Contant
+upi	UPI
+card	Kaart
+credit	Partijen
+clear	Wissen
+ready_to_sell	Klaar om te boeken
+today_prefix	Vandaag
+today_mid	vandaag
+owed	openstaand
+round_word	afronding
+back	Terug
+sold_out	Uitverkocht
+restock	Aanvullen
+not_tracked	Niet geteld
+in_stock	op voorraad
+marked_sold_out	Gemarkeerd uitverkocht
+add_upper	Toevoegen
+na	n.v.t.
+qty	Aantal
+unit_at	Prijs
+actual	Werkelijk
+applied	Toegepast
+note_ph	Notitie (optioneel)
+rounded	Afgerond
+split	Splitsen
+counter	Balie
+parcel	Pakket
+order	Bestelling
+sales	Boekingen
+sales_refunds	Boekingen en terugbetalingen
+day_close	Dagsafsluiting
+reports_expenses	Rapporten en kosten
+nav_reports	Rapporten
+nav_settings	Instellingen
+nav_lock	Vergrendelen
+sidebar_settings	Zijbalkinstellingen
+sidebar_settings_help	Dezelfde iconen als de zijrail. Sleep een rij om te herschikken. Schakel de schakelaar in om te tonen of verbergen. Instellingen en Slot blijven altijd op de balk staan.
+sidebar_always_on_short	Altijd aan
+sidebar_back_settings	Terug
+sidebar_shown	Getoond
+sidebar_hidden	Verborgen
+sidebar_always_on	Altijd aan de bar
+sidebar_shown_hint	Getoond in de zijbalk / onderste tabs
+sidebar_hidden_hint	Verborgen van de bar
+sidebar_menu_items	Menu & Artikelen
+sidebar_enable_all	Allemaal inschakelen
+sidebar_disable_all	Allemaal uitschakelen
+sidebar_order_saved	Zijbalk bestelling opgeslagen
+sidebar_visibility_saved	Zichtbaarheid zijbalk opgeslagen
+amounts_hide	Verbergen
+amounts_show	Tonen
+no_sale_yet	Nog geen verkoop
+favorites	Favorieten
+favorites_help	Artikelen die je vaak verkoopt, opgeslagen voor jouw login. Voeg er een toe aan de rekening of maak je lijst uit alle artikelen hieronder.
+your_favorites	Jouw favorieten
+all_items	Alle artikelen
+no_favorites	Nog geen favorieten — voeg artikelen toe uit de lijst hieronder.
+add_to_bill	Op rekening
+added	Toegevoegd
+owes_word	is schuldig
+selected_word	Geselecteerd
+chip_clear_credit	vereffend – geef krediet of neem een voorschot
+chip_missing_customer	Gekozen klant ontbreekt – kies opnieuw
+chip_no_customer	Nog geen klant – typ een naam en tik op Krediet
+credit_summary_fmt	{} klanten · open krediet {} · voorschotten {}
+recent_label	Recent:
+inventory	Voorraad
+inventory_stock	Voorraad en telling
+branches	Vestigingen
+branches_org	Vestigingen en organisatie
+credit_customers	Partijen (debiteuren en crediteuren)
+customer_name_ph	Partijnaam
+new_customer_ph	Naam nieuwe partij
+item_name_ph	Tariefnaam (bijv. Surface Zone A)
+item_price_ph	Per kg / eerste schijf
+start_template	Product
+next_booking	Volgende boeking
+destination_ph	Bestemmingsstad / zone
+consignee_ph	Ontvanger
+consignee_phone_ph	Telefoon ontvanger
+consignee_address_ph	Afleveradres
+origin_name_ph	Naam afzender
+origin_phone_ph	Telefoon afzender
+origin_address_ph	Ophaal- / herkomstadres
+booking_consignor_heading	Afzender (klant)
+booking_consignee_heading	Ontvanger
+booking_consignor_hint	Kies een partij om in te vullen, of laat leeg voor een losse klant. Nodig voor ophalen aan huis en RTO.
+booking_consignee_hint	Ontvanger van het pakket. Leeg laten bij afgifte direct aan de balie.
+weight_kg_ph	Werkelijke kg
+length_cm_ph	Lengte cm
+breadth_cm_ph	Breedte cm
+height_cm_ph	Hoogte cm
+chargeable_kg	Te betalen kg
+awb_label	AWB
+booking_help	Binnenlopen: bestemming → wegen → tarief kiezen → op rekening/contant → betalen. AWB wordt op de bon gedrukt. Volgende boeking leegt de balie.
+cart_empty_hint	Balie leeg – zet bestemming & gewicht, tik ADD bij een tarief en betaal.
+team	Team
+team_pins	Team en PIN
+my_pin_settings	Mijn PIN
+settings_hub_help_my_pin	Wijzig de ontgrendel-PIN van de persoon die op dit apparaat is aangemeld.
+team_self_help	Alleen u kunt uw ontgrendel-PIN (en optioneel het aanmeldwachtwoord) wijzigen. Vraag de eigenaar als u andere schermen of rechten nodig hebt.
+backup_settings	Back-up en instellingen
+lock_app	Vergrendelen
+pick	Kies
+select	Selecteren
+advance	Verder
+owner	Eigenaar
+staff	Personeel
+photo	Foto
+auto	Auto
+prev	Vorige
+next	Volgende
+ok	OK
+this_shop	Servermodus
+extra_till	Clientmodus
+off	Uit
+server	Server
+client	Client
+language_currency	Taal en valuta
+language	Taal
+choose_language	Kies je taal
+language_setup_hint	Volg de taal van dit apparaat of kies er zelf een.
+lang_follow_platform	Apparaattaal gebruiken
+lang_pick_user	Gekozen taal gebruiken
+lang_platform_now	Huidige apparaattaal
+selected_language	Geselecteerd
+continue	Doorgaan
+this_device	DIT APPARAAT
+device_use_q	Hoe wordt dit apparaat gebruikt?
+last_server_mode	Was server — tik om verder te gaan
+last_client_mode	Was client — tik om verder te gaan
+choose_server	Kies een server
+choose_server_hint	Dit apparaat heeft al servers. Open er een of maak een nieuwe server voor een ander bedrijf.
+create_new_server	Nieuwe server maken
+open_server	Openen
+new_server_name_ph	Naam nieuwe server (optioneel)
+server_remove_pin_ph	Owner-PIN om te verwijderen
+only_owner_remove_server	Alleen de Owner mag een server verwijderen
+owner_pin_remove_server	Owner-PIN vereist om deze server te verwijderen
+device_setup_help	De server bewaart hier de boeken. Een client koppelt met een server.
+currency	Valuta
+backup	Back-up
+settings_sec_diag	Diagnose
+settings_hub_help	Open één onderdeel tegelijk — minder scrollen, duidelijkere keuzes.
+settings_sec_devices	Extra kassa's en filialen
+settings_sec_alerts	Meldingen
+alerts_help	Hoe lang statusberichten voor jou op het scherm blijven (deze login).
+snack_secs_ph	Seconden (3–60, standaard 10)
+snack_secs_save	Meldingstijd opslaan
+snack_secs_saved	Meldingstijd opgeslagen — {n} seconden
+snack_secs_bad	Voer seconden in als getal (3–60)
+cancelled	Geannuleerd
+cancel	Annuleren
+opening_client	Client openen…
+preparing_desk	Bureau voorbereiden…
+opening_server	Bediende openen…
+creating_server	Bediende aanmaken…
+diag_privacy_help	Logs blijven op dit apparaat. Geheimen (PIN, wachtwoorden) worden nooit opgeslagen. Het delen van een pakket vanaf het apparaat vereist elke keer uw expliciete goedkeuring — nooit verkocht of gegeven aan derden.
+diag_level	Detailniveau
+diag_level_error	Fouten
+diag_level_warn	Waarschuwingen
+diag_level_info	Informatie
+diag_level_debug	Debug
+diag_support_start	Start 30-minuten support sessie
+diag_support_stop	Beëindig support sessie
+diag_support_started	Support sessie aan — Debug-detail gedurende 30 minuten
+diag_support_ended	Support sessie beëindigd
+diag_export_local	Lokale kopie exporteren
+diag_export_local_done	Lokale diagnoseklaar bij {path} — kies waar u een kopie opslaat
+diag_approve_send	Goedkeuring delen vanaf dit apparaat
+diag_send_heading	Delen buiten dit apparaat
+diag_send_help	Goedkeuring is één pakket, vervalt daarna. Tijdelijk — gebruikt alleen om het product te repareren of te verbeteren. Niet gedeeld met derden. Werkt op Linux, Windows, macOS en Android.
+optional_login_heading	Optioneel inloggen
+rights_heading	Rechten
+booking_scope_heading	Binnenland / Buitenland
+diag_send_approved	Delen goedgekeurd voor één pakket (vervalt binnenkort)
+diag_export_send	Maak deelpakket (vereist goedkeuring)
+diag_export_send_done	Deelpakket klaar bij {path} — kies waar u het opslaat, stuur daarna alleen naar Kumkaj support
+diag_save_bundle	Sla diagnosekopie op
+diag_bundle_saved	Diagnosekopie opgeslagen in {path}
+diag_bundle_failed	Kon de diagnosekopie niet opslaan — probeer opnieuw
+diag_clear	Verwijder debug logs
+diag_cleared	Debug logs verwijderd
+use	Gebruiken
+add_branch	Vestiging toevoegen
+add_conversion	Conversie toevoegen
+add_item_plain	Artikel toevoegen
+add_note	Notitie toevoegen
+add_opening_balance	Beginsaldo toevoegen
+add_rider	Bezorger toevoegen
+add_staff	Personeel toevoegen
+add_unit	Eenheid toevoegen
+add_use_name	Deze naam toevoegen / gebruiken
+allow_extra_tills	Extra kassa's toestaan
+amend	Wijzigen
+apply_country_pack	Landpakket toepassen
+datetime_appearance	Uiterlijk datum en tijd
+datetime_appearance_help	De boeken bewaren intern jaar-eerst als RFC3339. Dit verandert alleen hoe datums en klokken eruitzien op kwitanties, labels, rapporten en het scherm.
+datetime_example	Voorbeeld nu: {ex}
+date_order	Datumvolgorde
+date_order_dmy	D/M/J
+date_order_mdy	M/D/J
+date_order_ymd	J-M-D
+time_format	Klok
+time_format_24h	24-uurs
+time_format_12h	12-uurs
+attach_bill_photo	Factuurfoto bijvoegen
+attach_pdf	PDF bijvoegen
+attach_photo	Foto bijvoegen
+bank	Bank
+bank_in	Bankstorting
+bank_out	Bankopname
+bank_to_till	Bank → kassa
+till_to_bank	Kassa → bank
+mark_cleared	Als verrekend markeren
+unmark	Markering verwijderen
+role_both	Beide
+role_carrier	Vervoerder
+role_cashier	Kassier
+role_consignor	Afzender
+role_manager	Manager
+role_supplier	Leverancier
+branch_name_sell_ph	Naam van vestiging om uit te verkopen
+bring_my_book	Breng mijn boek
+business_tax_id_ph	Belasting-id bedrijf
+card_amount_ph	Kaartbedrag
+cash_amount_ph	Contant bedrag
+upi_amount_ph	UPI-bedrag
+carrier_cost_ph	Vervoerderskosten
+carrier_party_ph	Vervoerderspartij
+choose_icon	Pictogram kiezen
+choose_logo	Logo kiezen
+choose_receipt_stamp	Kies bonstempel
+choose_payment_qr	Kies betaal-QR
+clear_icon	Pictogram wissen
+clear_logo	Logo wissen
+clear_photo	Foto wissen
+clear_stamp	Stempel wissen
+clear_payment_qr	Betaal-QR wissen
+print_faces	Afdrukweergave (bon / periodefactuur)
+print_faces_help	Optionele stempel en betaal-QR naast uw logo op verzendbonnen en periodefacturen.
+awb_pools_heading	AWB-nummerreeksen van vervoerders
+add_awb_pool	AWB-reeks toevoegen
+awb_pool_carrier_ph	Naam vervoerder
+awb_pool_start_ph	Startnr.
+awb_pool_end_ph	Eindnr.
+awb_pool_prefix_ph	Voorvoegsel (optioneel)
+awb_pool_label_ph	Label (optioneel)
+pieces_ph	Stuks (leeg = 1) — uitklappen voor vracht / meerdere stuks
+bulk_awbs_ph	AWB's in bulk — plak er meerdere (nieuwe regel of komma) om de status in één keer door te zetten
+tds_cut_ph	TDS-inhouding (optioneel)
+discount_ph	Korting (optioneel)
+cheque_no_ph	Chequenummer (optioneel)
+bill_reminder_chase	Factuur-herinneringslijst
+month_mix_report	Maandmix-rapport
+copy_month_gst_csv	Kopieer maand-GST-CSV
+domestic	Binnenlands
+international	Internationaal
+pick_logo	Logo kiezen
+booking_scope_hint_domestic	Volume ÷5000 (binnenlands) — internationaal ÷6000
+booking_scope_hint_intl	Volume ÷6000 (internationaal) — binnenlands ÷5000
+cod_register	COD-register
+collect_cod	COD innen (AWB)
+consignments_dispatch	Zendingen & verzending
+consignor_party_ph	Afzender / partijnaam
+copy_day_book_csv	Dagboek-CSV kopiëren
+copy_day_close	Dagsluiting kopiëren
+copy_items_csv	Artikelen-CSV kopiëren
+copy_outstanding_csv	Openstaande CSV kopiëren
+copy_parties_csv	Partijen-CSV kopiëren
+copy_party_ledger_csv	Partijboek-CSV kopiëren
+copy_receipt	Bon kopiëren
+copy_report	Rapport kopiëren
+counted_cash_ph	Geteld contant geld in lade
+counter_agency_ph	Naam balie / agentschap (optioneel)
+create_backup	Back-up maken
+day_close_summary	Dagsluiting overzicht
+delete_party	Geselecteerde partij verwijderen
+dispatch_to_rider	Geboekt → naar bezorger
+docket_charge_ph	Vrachtbriefkosten
+declared_value_ph	Aangegeven waarde
+contents_ph	Inhoud
+eway_ph	E-waybillnr.
+insurance_label	Verzekering (ja/nee)
+yes_label	Ja
+no_label	Nee
+print_route_label	Afdrukroute
+new_party_kind_label	Soort nieuwe partij
+done_open_books	Klaar — boeken openen
+export_day	Dag exporteren
+extra_note_expense_ph	Extra notitie bij laatste kosten
+extra_note_awb_ph	Extra notitie bij deze AWB / verkoop
+failed_delivery	Mislukte bezorging
+find_scan_awb	AWB zoeken / scannen
+forget_shop	Deze winkel vergeten
+fuel_ph	Brandstof
+handover_carrier	Geboekt → naar vervoerder
+import_day	Dag importeren
+import_items_csv	Artikelen-/tarieven-CSV importeren…
+import_parties_csv	Partijen-CSV importeren…
+import_pincodes_csv	Postcode-CSV importeren…
+import_carrier_bill_csv	Vervoerdersfactuur-CSV importeren…
+copy_carrier_bill_report	Laatste vervoerdersfactuurrapport kopiëren
+use_carrier_cost	Vervoerderskosten gebruiken
+rate_carrier_ph	Vervoerder (leeg = ons verkooptarief)
+rate_party_ph	Partij (leeg = alle klanten)
+carrier_pick_ph	Vervoerder voor kosten (uit vergelijking)
+item_name	Artikelnaam
+load_bulk_row	Bulkrij laden → balie
+login_id_ph	Login-id
+mark_delivered	Als bezorgd markeren
+manifest_cod_total	COD-totaal
+manifest_received_by	Ontvangen door
+manifest_sign	Handtekening
+ndr_address_wrong	Verkeerd adres
+ndr_customer_unavailable	Klant niet beschikbaar
+ndr_door_locked	Deur op slot
+ndr_other	Overig
+ndr_refused	Geweigerd
+out_for_delivery	Onderweg voor bezorging
+print_drs	DRS printen
+print_run_sheet	Rittenblad printen
+reattempt	Opnieuw proberen
+rider_cod_handed_ph	Door bezorger ingeleverd COD
+settle_rider_cod	Bezorgers-COD afrekenen
+mode_desk	Balie
+mode_rider	Bezorger
+waiting_office	wachten op kantoor
+capture_signature	Handtekening vastleggen
+incoming_manifest	Inkomend manifest
+pickup_request	Ophaalverzoek
+pickup_run	Ophaalronde
+auto_assign_area	Gebied auto toewijzen
+reorder_stops	Stops herordenen
+settle_rider_pay	Bezoldiging bezorger
+vehicle_inspect	Voertuigcontrole
+print_docket	Docket printen
+franchise_statement	Franchise-afschrift
+tally_export	Tally-bonnen exporteren
+open_whatsapp	WhatsApp openen
+copy_sms	SMS-tekst kopiëren
+pick_barcode_image	Kies afbeelding om te scannen
+share_receipt_whatsapp	Bon delen via WhatsApp
+delivery_feedback	Bezorgfeedback
+lan_self_book	LAN-zelfboeking
+new_party_clear	Nieuwe partij (formulier wissen)
+new_party_kind_ph	Soort nieuwe partij (leverancier / vervoerder)
+next_country	Volgend land
+prev_country	Vorig land
+note_gstin_ph	Notitie / GSTIN / overeenkomstherinnering
+note_pod_ph	Notitie / POD (optioneel)
+on_account_ap	Op rekening (AP)
+org_optional_ph	Organisatie (optioneel)
+paid_now	Nu betaald
+pairing_code_ph	Koppelcode
+pair_now	Nu koppelen
+party_name_selected_ph	Partijnaam (of gebruik geselecteerde)
+password_ph	Wachtwoord
+pay_ap_card	AP met kaart betalen
+pay_ap_cash	AP contant betalen
+pay_ap_upi	AP met UPI betalen
+period_bill	Periodefactuur
+period_bill_party	Periodefactuur (partij)
+pick_pod_photo	POD-foto kiezen
+print_awb_label	AWB-label printen
+print_open	Printen / openen
+reason_amend_ph	Reden voor wijzigen / annuleren / terugbetaling
+reason_note_ph	Reden / notitie (derving, telling, …)
+record_day_close	Dagsluiting boeken
+refresh_from_shop	Vernieuwen uit winkel
+refund	Terugbetaling
+remit_cod	COD afdragen (partij)
+remove_selected	Geselecteerde verwijderen
+restore_backup	Back-up herstellen
+rider_name_ph	Naam bezorger
+rider_phone_ph	Telefoon bezorger
+riders	Bezorgers
+riders_own_fleet	Bezorgers (eigen vloot)
+rollup	Samenvatting
+save_booking_measures	Boekingsmaten opslaan
+save_brand	Merk opslaan
+save_business_id	Belasting-id en service-% opslaan
+save_business_name	Bedrijfsnaam opslaan
+save_features	Functie-instelling opslaan
+save_names	Namen opslaan
+server_ip_ph	Server-IP (bijv. 192.168.1.10)
+set_credit_limit	Kredietlimiet instellen
+set_login_selected	Login instellen voor geselecteerde
+set_login_named	Login toepassen op {name}
+shop	Winkel
+start_fresh	Opnieuw beginnen
+stop_extra_tills	Extra kassa's stoppen
+backup_auto	Elke dag automatisch een back-up · laatste {when} · de laatste 14 dagen staan in {dir}.
+backup_auto_none	Elke dag automatisch een back-up — de eerste volgt zo.
+backup_copy_to	Kopieën gaan ook naar {dir}.
+backup_copy_btn	Back-ups ook naar een map kopiëren…
+autostart_off	Starten met deze computer
+autostart_on	Start met deze computer ✓ — tik om te stoppen
+autostart_done_on	De app opent nu bij het opstarten van deze computer — de server is terug na een stroomstoring.
+autostart_done_off	De computer opent de app niet meer bij het opstarten.
+right_allowed	Toegestaan
+right_with_approval	Met goedkeuring
+right_denied	Niet toegestaan
+editing_staff	Rechten voor
+team_pick_ph	Naam van medewerker
+select_staff	Deze medewerker kiezen
+rights_help	Rechten — tik om te wisselen: Toegestaan → Met goedkeuring (PIN van een leidinggevende op dat moment) → Niet toegestaan.
+right_void_refund	Zending annuleren of terugbetalen
+right_amend_sale	Geregistreerde zending wijzigen
+find_server	Server van de zaak zoeken
+finding_server	Server van de zaak zoeken op deze wifi…
+no_server_found	Geen server gevonden. Controleer of het apparaat van de zaak op dezelfde wifi zit met extra kassa's toegestaan, of typ het IP-adres.
+servers_found_pick	Tik op de zaak waarmee u wilt verbinden.
+server_host_selected	Gebruikt {host} — voer de koppelcode in en tik Nu koppelen.
+device_forgotten	De winkel is dit apparaat vergeten — koppel het opnieuw met de huidige code. Wachtende bestellingen blijven bewaard.
+forget_device	Vergeten
+last_seen	gezien
+new_pair_code	Nieuwe koppelcode
+lan_offline	Offline
+lan_offline_waiting	Offline · {n} wachtend
+lan_connecting	Verbinden met de zaak…
+pair_finishing	Koppelen afronden… de boeken van het kantoor worden toegepast
+pair_opening	Kantoor wordt geopend…
+lan_live	Live
+lan_sending	{n} wordt verzonden
+lan_sign_in_to_send	Meld opnieuw aan om {n} te verzenden
+lan_pair_again	Koppel dit apparaat opnieuw
+lan_update_app	Werk de app bij — dit apparaat en de server van het kantoor hebben verschillende versies
+allow_firewall	Andere apparaten laten verbinden
+firewall_blocked	De firewall van deze computer blokkeert andere apparaten — tik op ‘Andere apparaten laten verbinden’.
+firewall_waiting	Wachten op de beheerdersvraag…
+lan_join_help	Andere apparaten kunnen met dit apparaat verbinden — koppelcode {code}. Kies op het andere apparaat Clientmodus en dan Server van de zaak zoeken, of typ dit adres: {addr}
+lan_pair_status	wifi {addr}
+lan_join_help_no_addr	Verbind dit apparaat met Wi‑Fi voor een adres.
+lan_no_address	Dit apparaat heeft nog geen wifi-adres — verbind het met de wifi van de zaak.
+lan_not_listening	Neemt nu geen apparaten aan — misschien gebruikt een ander programma poort {port}. Start de app opnieuw.
+lan_tills_off	Extra kassa's staan uit. De boeken van dit kantoor blijven op dit apparaat. Sta extra kassa's toe als een ander apparaat ook zendingen moet boeken of afrekenen.
+paired_with	Gekoppeld aan de zaak op {url}
+not_paired	Niet gekoppeld — verbind met de server van de zaak.
+choose_device_use	Kies hoe dit apparaat wordt gebruikt.
+paired_note	Gekoppeld. Ontgrendel om te verkopen, of Vernieuwen voor het laatste van de zaak.
+last_update_at	Laatste update van de zaak: {time}.
+pair_intro	Zoek de server, of typ het adres en de koppelcode.
+queue_waiting	Wacht op verzending naar de zaak ({n}):
+queue_tries	{n} pogingen · laatste antwoord: {e}
+save_backup_copy	Back-upkopie opslaan…
+backup_copy_saved	Back-upkopie opgeslagen — bewaar die buiten dit apparaat (USB-stick of ander apparaat)
+backup_copy_overdue	Al {n} dagen heeft geen back-upkopie dit apparaat verlaten — Instellingen → Back-up
+backup_copy_failed	De back-upkopie kon daar niet worden opgeslagen — kies een andere plek
+clock_off	De klok van dit apparaat wijkt {min} min af van de server van de zaak — zet de juiste tijd op dit apparaat
+printers_heading	Printers op dit apparaat
+printers_help	Voeg elke printer één keer toe en kies waar bonnen en AWB-labels afdrukken — de eerste in de lijst wordt eerst geprobeerd; bij falen de volgende. Lege route = die functie niet afdrukken. Doel leeg (standaard), systeemnaam of netwerkadres (bijv. 192.168.1.50). Elk apparaat houdt zijn eigen printers.
+job_width	Inhoudsbreedte (mm)
+job_width_ph	Of typ een breedte, 40–210 mm
+job_layout	Indeling
+job_delivery	Hoe de taak wordt verzonden
+job_size	Lettergrootte
+job_size_ph	bijv. 18, 20, 26…
+save_receipt_format	Kwitantieformaat opslaan
+save_label_format	Labelformaat opslaan
+test_receipt_format	Testkwitantie
+test_label_format	Testlabel
+test_receipt_sent	Voorbeeldkwitantie verzonden
+test_label_sent	Voorbeeldlabel verzonden
+test_print_no_printer	Geen printer voor die taak — voeg er een toe onder deze plek
+printers_host_only	Printers worden ingesteld op het apparaat van de zaak (Server). Deze kassa stuurt taken daarheen — Zoeken / toevoegen / toewijzen blijven op de Server. De testpagina gaat naar de Server.
+printers_pool_heading	Printers
+printers_routes_heading	Waar afdrukken
+printer_label_ph	Naam (bijv. loket)
+printer_target_ph	host:9100 · bt:MAC · usb:VID:PID · systeemnaam
+printer_mode_heading	Opmaak voor de gekozen route
+printer_mode_standard	Standaard staand
+printer_mode_landscape	Standaard liggend
+printer_mode_thermal	Thermisch
+printer_mode_standard_short	Staand
+printer_mode_landscape_short	Liggend
+printer_mode_thermal_short	Thermisch
+printer_format_custom	Nieuwe aangepaste opmaak
+printer_format_custom_label	Aangepast
+printer_format_custom_added	Aangepaste opmaak toegevoegd voor deze route
+add_printer	Printer toevoegen
+remove_printer	Laatste verwijderen
+route_pick_ph	receipt of label
+route_add_printer_ph	Printer aan deze route
+route_receipt	Bon
+route_label	AWB-label
+route_dont_print	Geen printer toegewezen
+route_add	Aan route
+route_up	Omhoog
+route_down	Omlaag
+route_remove	Laatste verwijderen
+route_clear	Printers voor deze plek wissen
+save_printers	Printers opslaan
+print_test_page	Testpagina afdrukken
+printers_saved	Printers voor dit apparaat opgeslagen
+test_page_sent	Testpagina verstuurd — kijk bij de printer
+printers_found	Gevonden op dit apparaat: {list}
+find_printers	Printers zoeken
+printers_looking	Printers zoeken op dit apparaat en via Wi‑Fi…
+printers_tap_find	Tik Printers zoeken voor wachtrijen die taken aannemen en netwerkbonprinters op dit Wi‑Fi (niet verwijderde of offline).
+printers_none_found	Geen printers gevonden — typ een systeemprinternaam of een netwerkadres (bijv. 192.168.1.50).
+receipt_printer_ph	Printer voor bonnen
+queue_refused	Niet aangenomen door de zaak ({n}) — controleer elk aan de kassa:
+clear_not_accepted	Gecontroleerd — lijst wissen
+device_name_ph	Naam van dit apparaat
+lan_last_update	laatst bijgewerkt {time}
+lan_not_accepted	{n} niet aangenomen
+connected_now	nu verbonden
+backup_failed	De laatste automatische back-up is mislukt: {e}
+backup_overdue	Al {n} dagen geen back-up — laat de app op dit apparaat open zodat die een back-up kan maken.
+disk_low	Nog maar {mb} MB vrij op dit apparaat — back-ups mislukken binnenkort. Maak ruimte vrij.
+last_seen_devices	Laatst gezien: {time}
+sync_interval	Synchroniseer elke {secs} seconden
+connection_to_shop	Verbinding met de zaak
+supplier_name_ph	Leveranciersnaam (of partij)
+supplier_ph	Leverancier
+switch_device	Dit apparaat wisselen
+take_payment	Betaling aannemen
+tax_added_till	{tax} exclusief
+tax_inside_price	{tax} inclusief
+today_books	Boeken van vandaag
+unlock_after_pairing	Voer PIN in
+unlock_with_login	Ontgrendelen met login
+update_my_password	Mijn wachtwoord wijzigen
+update_my_pin	Mijn PIN wijzigen
+duress_heading	Nood-ontgrendelings-PIN (alleen eigenaar)
+duress_help	Optioneel. Als deze PIN bij het ontgrendelen wordt getypt in plaats van die van u, worden alle boekregels gewist (boekingen, boeken, geschiedenis) en opent het loket als eigenaar, ogenschijnlijk normaal — tarieven, partijen, zones, personeel en instellingen blijven. Schema en configuratie worden niet verwijderd. Gebruik dit alleen als u gedwongen wordt te ontgrendelen. Laat leeg en sla op om uit te zetten. Nooit dezelfde PIN als die van iemand.
+duress_pin_ph	Nood-PIN (4–12 cijfers)
+duress_confirm_ph	Typ opnieuw ter bevestiging
+save_duress_pin	Nood-PIN opslaan
+clear_duress_pin	Nood-PIN uitzetten
+duress_on	Nood-ontgrendelings-PIN staat aan
+duress_off	Nood-ontgrendelings-PIN staat uit
+duress_saved	Nood-ontgrendelings-PIN opgeslagen
+duress_cleared	Nood-ontgrendelings-PIN uitgeschakeld
+vehicle_ph	Voertuig
+void	Annuleren
+write_off_ap	AP afschrijven
+write_off_nil	Afschrijven / saldo nul
+zone_ph	Zone (naam uit Tarieven)
+caption_today	VANDAAG
+caption_bookings	BOEKINGEN
+caption_payments_today	BETALINGEN VANDAAG
+caption_outstanding	OPENSTAAND
+caption_bank	BANK
+paid_by	Betaald per
+second_way	Tweede manier
+weight_in	Gewicht in
+size_in	Maat in
+goods_received	Goederen ontvangen
+expense_heading	Kosten
+notes_attach_sale	Notities & bijlagen (gekozen verkoop)
+notes_attach_party	Notities & bijlagen (gekozen partij)
+attachments_last_expense	Bijlagen (laatste kosten)
+credit_limit_heading	Kredietlimiet (gekozen / genoemde partij)
+pay_selected_heading	Geselecteerde betalen (schuld aflossen / voorschot)
+write_off_heading	Afschrijven (vereffenen zonder betaling)
+pay_ap_heading	Betalen wat wij hen schuldig zijn (AP)
+country_tax	Land & belasting
+extra_tills_heading	Extra kassa's
+other_devices_help_heading	Andere apparaten instellen
+other_devices_help	Op dit apparaat (Server): Andere apparaten → Extra kassa's toestaan. Noteer de koppelcode en het Wi‑Fi-adres. Tik Andere apparaten laten verbinden als dat verschijnt. Op een computer: tik Starten met deze computer. Op elk ander apparaat: installeer de app, kies Clientmodus, Zoek de server van de winkel (of typ het adres), voer de koppelcode in, Nu koppelen. Orders wachten op het apparaat als Wi‑Fi wegvalt en gaan verder als de Server weer antwoordt.
+your_brand	Jouw merk (in de app)
+units_heading	Eenheden
+booking_measures	Boekingsmaten
+drawer_count	Ladetelling (optioneel)
+spreadsheet_csv	Spreadsheet (CSV)
+bank_reconciliation	Bankafstemming (afvinken tegen afschrift)
+book_add_product	Boeking — product / tarief toevoegen
+book_opening_credit	Boeking — openingskrediet
+account_kind	Rekeningsoort (tik er een)
+active_ledger	Actief boek
+actual_total_cap	WERKELIJK TOTAAL
+amend_help	Selecteer een verkoop om te wijzigen, annuleren of terug te betalen. Wijzigingen bewaren de volledige geschiedenis.
+applied_total_cap	TOEGEPAST TOTAAL
+bank_balance	Banksaldo
+bank_net_today	Bank netto vandaag
+branch_export_help	Export schrijft een momentopname van de dag in de back-upmap en kopieert die naar het klembord. Om de dag van een andere vestiging te importeren, sla het bestand daar op als import_branch_snapshot.json en tik daarna op Importeren.
+brand_shown_help	Wordt getoond op schermen in de app. De naam en het pictogram van de geïnstalleerde app op dit apparaat blijven zoals in de store.
+app_icon	App-icoon
+logo_help	Optioneel winkellogo op schermen in de app.
+onboard_layout	Wat u krijgt
+item_photo_help	Optioneel. Zonder foto tonen we initialen van de itemnaam.
+cash_in_hand	Contant in kas (lade)
+change_my_pin_heading	Mijn PIN wijzigen (alleen die van jou)
+connect_to_server	Verbinden met server
+counter_locked	Balie 01 · Vergrendeld
+country_pack_help	Een landpakket stelt de belastingnaam en -berekening, de instant-betaalrail en het belasting-id op facturen in. Kumkaj doet nergens belastingaangifte en geeft geen overheids-e-facturen uit.
+currency_use_help	Scroll en tik Gebruiken voor elke ondersteunde valuta.
+day_close_help	Een dagsluiting boeken bewaart dit overzicht (en ladeverschil indien geteld) in het auditlog. Het stopt de verkoop niet.
+expenses_word	Kosten
+feature_access_help	Functietoegang voor gekozen personeel (tik na het toevoegen)
+footer_local	Lokale SQLite · Voor altijd gratis · Geen cloud
+fresh_book_moklanjo	Printers
+fresh_selected	Fresh gekozen – catalogus blijft leeg. Tik op Done als je klaar bent.
+gross_word	Bruto
+how_start	Hoe wilt u beginnen?
+later_country_pack	Printers
+local_badge	LOKAAL
+measures_help_moklanjo	Hoe pakketten aan de balie worden gemeten. Typ afmetingen en gewicht in de eenheden die je gebruikt – standaard (cm, m, in, ft · kg, g, lb, oz) of je eigen eenheid gekoppeld aan cm / kg hierboven (direct of via andere eenheden). Boeken registreren altijd kg. Laat een veld leeg om het te behouden.
+mix_type_hint_moklanjo	Typ hoeveel in elk (contant / UPI / kaart / krediet). Moet gelijk zijn aan de factuur. Voor krediet is hierboven een klant nodig.
+money_in_sales	Geld in (verkopen)
+more_help_moklanjo	Catalogus, verkopen, krediet, team, back-up – plus voorraad en extra kassa's indien nodig.
+net_word	Netto
+offline_badge	OFFLINE
+optional_login_help	Optionele login (id + wachtwoord). De eigenaar stelt het een keer in; daarna kan alleen de gebruiker het wachtwoord wijzigen.
+or_unlock_login	Of ontgrendelen met login-id + wachtwoord
+permission_preset	Functie (bepaalt schermen en rechten)
+preset_help_moklanjo	Kassier: verkopen. Manager: verkopen + artikelen + annuleren/wijzigen.
+product_locked_moklanjo	Moklanjo
+product_only_moklanjo	Deze app is alleen Moklanjo — boeken en verzendbalie. Andere vakken krijgen later eigen producten.
+purchases_cogs	Inkopen (COGS)
+qty_cap	AANTAL
+restore_help	Herstellen: kies een back-up. De boeken openen zoals ze toen waren; de huidige worden eerst bewaard, dus het is terug te draaien.
+wipe_data_heading	Lokale gegevens wissen
+wipe_data_help	Alleen eigenaar —zelfde keuzes als Windows-deïnstallatie. Handelsgegevens wissen geschiedenis en houden tarieven/instellingen. Winkelinstellingen verwijderen de boeken. Schermvoorkeuren: venster/taal. Bevestig met eigenaar-PIN.
+wipe_trading	Handelsgegevens
+wipe_schema	Winkelinstellingen
+wipe_ui	Scherm­voorkeuren
+wipe_owner_pin_ph	Eigenaar-PIN om te wissen
+wipe_delete_selected	Selectie wissen
+wipe_owner_only	Alleen de eigenaar kan lokale gegevens wissen.
+restore_owner_only	Alleen de eigenaar kan een back-up herstellen.
+wipe_owner_pin_needed	Voer de eigenaar-PIN in om lokale gegevens te wissen.
+wipe_nothing_selected	Kies eerst wat u wilt wissen.
+wipe_done	Geselecteerde lokale gegevens gewist.
+wipe_schema_done	Winkelinstellingen gewist — kies Server of Client om verder te gaan.
+rounded_total	Afgerond totaal
+setup_app_moklanjo	Moklanjo instellen
+shop_logo_optional	Winkellogo (optioneel)
+stock_type_help	Typ de artikelnaam (een deel is genoeg), een aantal, en pas aan. Artikelen die nog niet geteld zijn, hebben een keer Telling starten nodig.
+team_owner_help	Aannemen: kies een functie (Kassier / Leiding), naam + start-PIN, daarna Toevoegen. Alleen als deze persoon afwijkt: open schermen en rechten hieronder, daarna Functie-instelling opslaan. Iedereen wijzigt de eigen PIN onderaan — de eigenaar kan die van een ander niet wijzigen.
+they_owe_us	Zij zijn ons schuldig
+unit_at_cap	Stukprijs
+units_help	Codes voor artikelabi-labels (kg, piece, bag). Elke eenheid moet – direct of via andere eenheden – koppelen aan een standaard (kg · cm · ml · pc), bijv. 1 crate = 2 box en 1 box = 20 cm. Conversies: 1 from = factor to. Valuta's zijn nooit eenheden.
+we_owe_them	Wij zijn hen schuldig
+who_unlocking	Wie ontgrendelt?
+locked_word	Vergrendeld
+show_pin	PIN tonen
+hide_pin	PIN verbergen
+set_owner_pin	EIGENAAR-PIN INSTELLEN
+enter_owner_passcode	EIGENAARSCODE INVOEREN
+enter_staff_passcode	PERSONEELSCODE INVOEREN
+pin_count_zero	0 / 12 cijfers · minimaal 4, dan OK
+pin_count_need	{} / 12 cijfers · nog {} nodig
+pin_count_full	12 / 12 cijfers · tik OK
+pin_count_ready	{} / 12 cijfers · tik OK als je klaar bent
+pin_hint_choose	Kies 4–12 cijfers (toetsenbord of pad) · Enter/OK om op te slaan
+pin_hint_new	Nieuwe eigenaar-PIN van 4–12 cijfers (toetsenbord of pad) · Enter/OK
+pin_hint_shop_code	Winkelapparaat · koppelcode {}
+pin_hint_books	Dit apparaat bewaart de boeken
+pin_hint_paired	Extra kassa gekoppeld – ontgrendelen om te verkopen
+pin_hint_pair_first	Extra kassa – eerst koppelen met winkelapparaat
+unlock_to_continue	Ontgrendelen om door te gaan
+no_staff_yet	Nog geen personeel – ontgrendelen als Eigenaar, dan Team
+status_server_set_pin	Servermodus — eigenaar-PIN instellen
+status_server_tills	Servermodus — extra kassa's kunnen meedoen. Ontgrendelen
+status_server_unlock	Servermodus — ontgrendelen als Eigenaar
+status_client_unlock	Clientmodus – ontgrendelen om te verkopen
+icon_new_selected	Pictogram: nieuw bestand gekozen — tik op Merk opslaan
+icon_custom	Pictogram: eigen winkelmerk
+icon_default	Pictogram: Kumkaj-merk (standaard) — kies je eigen
+logo_yours	Logo: dat van je winkel — getoond op schermen en bonnen
+logo_default	Logo: Kumkaj-merk (standaard) — kies je eigen als je er een hebt
+tmpl_current	Huidig: {} — {}
+tmpl_selected	Geselecteerd: {} — {}
+setup_complete	Installatie voltooid
+onboard_fresh_tmpl	Nieuw · {} — catalogus begint leeg; voeg artikelen toe bij Artikelen en tik op Gereed.
+onboard_book_tmpl	Boek · {} — voeg artikelen en beginkrediet toe en tik op Gereed.
+onboard_template_tmpl	Geef de zaak een naam als u wilt en kies hoe u begint.
+tmpl_blurb	Koeriersboeken en verzendbalie: afzenders, vervoerders, dagboek, AWB.
+tmpl_how	Boek pakketten aan de balie; dagboek voor vandaag; tabbladen voor tarieven, partijen, rapporten.
+trk_booked	Aangenomen
+trk_picked_up	Opgehaald
+trk_in_transit	Onderweg
+trk_delivered	Bezorgd
+trk_rto	Retour naar afzender
+lane_to_dispatch	Te verzenden
+lane_with_carrier	Bij de vervoerder
+lane_failed	Mislukt
+lane_done_today	Vandaag klaar
+ops_board_help	Zendingen naar waar ze staan in het werk van vandaag. Tik zendingen aan (of scan ze) om ze te kiezen en handel daarna alle gekozen tegelijk af — elke baan biedt alleen de stappen die erbij passen.
+lane_empty	Hier is nu niets.
+picked_fmt	{n} gekozen
+pick_all	Alles kiezen
+bag_for_carrier	Overdragen aan vervoerder
+send_with_rider	Meegeven aan bezorger
+out_again	Opnieuw bezorgen
+return_to_sender	Terug naar afzender
+runs_bags_heading	Recente rondes en zakken
+print_word	Printen
+bag_word	Zak voor vervoerder
+run_word	Bezorgronde
+parcels_fmt	{n} zendingen
+parcel_history	Geschiedenis
+attempt_fmt	Poging {n}
+pieces_short_fmt	{n} colli
+note_reason_ph	Notitie of reden
+ops_pick_first	Kies eerst zendingen — tik of scan ze
+cod_to_collect	Bezorgd — COD te innen
+cod_on_road	COD nog onderweg
+cod_owed_consignors	Geïnd — uit te betalen aan afzenders
+cod_rto_fees	RTO-kosten te innen
+cod_to_hand_in	Af te dragen COD
+parcel_one_fmt	{n} zending
+facet_bank_title	Rapporten
+facet_bank_help	Dagboeken, ouderdom van partijen, bankboekingen en W en V van de periode.
+facet_ops_title	Zendingen & verzending
+facet_ops_help	Scan of typ AWB → Zoeken, dan doorzetten / label printen / COD. Verstuur naar bezorger of vervoerder.
+facet_cod_title	COD-register
+facet_cod_help	Incasseer bij levering en maak daarna over aan de afzender.
+facet_riders_title	Bezorgers (eigen vloot)
+facet_riders_help	Voeg bezorgers toe en verstuur geboekte AWB's vanuit Ops.
+against_bill_ph	Tegen factuur # hierboven (optioneel)
+aliases_ph	Aliassen — andere namen, gescheiden door komma's
+amount_blank_full_ph	Bedrag (leeg = volledig saldo)
+amount_owed_ph	Verschuldigd bedrag
+amount_ph	Bedrag
+amount_received_ph	Ontvangen bedrag
+amount_we_pay_ph	Bedrag dat wij betalen
+awb_scan_ph	AWB / barcode scannen
+bulk_csv_ph	Bulk-CSV — destination,consignee,kg,cod_paise,note
+business_name_ph	Bedrijfsnaam
+category_new_ph	Categorie (optioneel, wordt aangemaakt indien nieuw)
+cod_amount_ph	COD-bedrag
+code_bag_ph	Code (bag)
+conv_factor_ph	Factor (25 = 1 bag → 25 kg)
+country_code_ph	Landcode bijv. IN, GB, US, AE, BR
+credit_khata_amount_ph	Krediet- / rekeningbedrag
+credit_limit_ph	Kredietlimiet (0 = geen)
+dim_unit_code_ph	Code dimensie-eenheid (cm)
+divisor_ph	Volumedeler (5000)
+extra_per_kg_ph	Extra / kg
+first_amount_ph	Eerste bedrag
+first_kg_ph	Eerste kg (staffel)
+from_code_ph	Van code (bag)
+item_name_lang_ph	Artikelnaam — typ in je eigen taal
+login_id_opt_ph	Login-id (optioneel)
+manager_pin_ph	Manager-PIN (alleen als je niet kunt annuleren)
+new_branch_name_ph	Naam nieuwe vestiging
+new_password_ph	Nieuw wachtwoord (optioneel)
+new_pin_ph	Nieuwe PIN (4–12 cijfers)
+note_bank_ph	Notitie (storting, opname, …)
+note_buy_expense_ph	Notitie (brandstof, huur, …)
+note_expense_ph	Notitie (brandstof, kantoor, …)
+notify_phone_ph	Meldingstelefoon (WhatsApp/SMS-hook)
+options_moklanjo_ph	Opties (optioneel) — Large=20, Gift wrap=10
+part_second_way_ph	Deel via een tweede manier (optioneel)
+phone_ph	Telefoon
+address_ph	Adres
+party_custom_fields_heading	Eigen velden (gekozen partij)
+party_custom_help	Voeg elk label en waarde toe op deze partij — WhatsApp, GSTIN, routecode…
+party_custom_key_ph	Veldnaam (bijv. WhatsApp)
+party_custom_value_ph	Waarde
+party_custom_add	Veld toevoegen / bijwerken
+party_custom_remove	Veld verwijderen
+party_custom_empty	Nog geen eigen velden
+party_custom_pick_first	Kies een partij voor eigen velden
+place_name_ph	Naam van deze plek
+price_ph	Prijs
+qty_example_ph	Aantal (bijv. 1,5 voor kg)
+quantity_ph	Aantal
+reason_required_ph	Reden (verplicht)
+role_title_ph	Functietitel (bijv. Barista)
+service_pct_ph	Service % optioneel 0/10/12
+short_code_ph	Korte code (MG02)
+slab_kg_ph	Factureerbare staffel in kg (0,5)
+staff_name_ph	Naam / nr. personeel
+starting_password_ph	Startwachtwoord (optioneel)
+starting_pin_ph	Start-PIN (4–12 cijfers)
+tax_rate_ph	Belastingtariefnaam of % — Standard, Reduced, 0, 5, 12, 18, 20
+to_code_ph	Naar code (kg)
+uncleared_no_ph	Niet-verrekend nr. hierboven
+unit_cost_ph	Kosten per eenheid
+unit_kg_blank_ph	Eenheid (kg of leeg)
+unit_name_bag_ph	Naam (Bag)
+weight_unit_code_ph	Code gewichtseenheid (kg)
+zone_name_ph	Zonenaam
+pay_credit	Krediet
+book_kind_today	Boek van vandaag
+book_kind_month	Boek van deze maand
+book_kind_aging	Openstaand / debet-credit
+book_kind_balance	Balans
+ops_desk_help	Scan AWB met een USB-barcodescanner (of typ) → Zoeken. Daarna doorzetten, label printen of COD incasseren. Labels worden in Code 128 geprint.
+role_help_consignor	Rol: Afzender — AR (zij zijn ons schuldig). Hetzelfde bedrijf kan ook vervoerder zijn.
+role_help_carrier	Rol: Vervoerder — AP (wij zijn hen schuldig). Hetzelfde bedrijf kan ook afzender zijn.
+role_help_both	Rollen: Afzender + Vervoerder — één partij, AR- en AP-boeken, netto in Rapporten.
+role_help_supplier	Rol: Leverancier — crediteuren voor inkopen.
+lane_declared_label	Rekeningboeking
+lane_owner_label	Contante boeking
+money_lane_bill	Factuur: {lane}

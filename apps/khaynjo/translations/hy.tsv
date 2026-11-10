@@ -1,0 +1,1351 @@
+# Armenian — Հայերեն (hy). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	Ռեստորանի պատվերներ, խոհանոց և մատյաններ։ Անվճար, առանց ցանցի։
+unlock	Ապակողպել
+pin_hint	Սեփականատիրոջ PIN-ը սկսվում է 0000-ով
+sell	Պատվեր
+buy	Գնում
+books	Օրվա մատյան
+books_help	Այսօրվա վիճակը։ Պատվեր = մտնող պատվերներ։ Գնում = գնումներ և ծախսեր։ Գործընկերներ = պարտքով հաճախորդներ և մատակարարներ։
+buy_help	Ծախսի օրդերներ և մատակարարների հաշիվներ (գումար դուրս)։ Հաշվին մնում է գործընկերոջ մատյանում։
+sell_money_in	Ընդունել պատվեր
+buy_money_out	Ծախս / մատակարարի հաշիվ
+record_purchase	Գրանցել գնումը
+add_expense	Ծախսի օրդեր
+bank_book	Բանկային մատյան
+credit_help	Գործընկերոջ id-ն եզակի է (անունները կարող են կրկնվել)։ Հաճախորդը վարում է պարտքի հաշիվ (պարտք է մեզ)։ Մատակարարը մեզ ապրանք է վաճառում (մենք ենք պարտք)։ Երկուսն էլ կարելի է։ Մատյանները առանձին են մնում. հաշվետվությունները ցույց են տալիս զուտը։
+party_kind_ph	Դերեր՝ Հաճախորդ, Մատակարար, երկուսն էլ…
+reports_help	Օրվա մատյան, պարտապաններ և պարտատերեր, բանկային մատյան, ծախսի օրդերներ, շահույթ և վնաս։
+reports_today	Օրվա մատյան (այսօր)
+reports_month	Շահույթ և վնաս (ամիս)
+reports_aging	Չմարված / Դտ-Կտ
+reports_balance_sheet	Հաշվեկշիռ
+reports	Բանկային մատյան և շահույթ/վնաս
+refresh	Թարմացնել
+undo	Հետարկել
+start_tracking	Սկսել հաշվառումը
+stock_minus	− Պաշար
+stock_plus	+ Պաշար
+settle_cash	Կանխիկը փակել
+settle_card	Քարտով փակել
+items	Մենյու և ապրանքներ
+nav_items	Մենյու
+more	Ավելին
+your_items	Ձեր մենյուն
+items_help	Հպեք ապրանքին՝ խմբագրելու համար։ Նոր ապրանքը մաքրում է ձևը։ Որոնեք մեր ուտեստները կամ մուտքագրեք ձեր անունն ու լուսանկարը, դրեք գին (0-ն նորմալ է), ապա Ավելացնել։ Արդեն գրանցված վաճառքները պահում են այն անունը, որով գանձվել են։
+add_item	Ավելացնել ապրանք
+new_item	Նոր ապրանք
+adding_item	Նոր ապրանք է ավելացվում
+editing_item	Խմբագրում
+save	Պահել
+remove	Հեռացնել
+removed_items	Հեռացված ապրանքներ
+removed_help	Վերականգնելը ապրանքը վերադարձնում է մենյու ճիշտ այնպես, ինչպես էր — գին, լուսանկար և կատեգորիա։ Մեր ուտեստների դարակը երբեք չի հեռացվում, ուստի ուտեստը միշտ կարելի է նորից ավելացնել։
+restore_item	Վերականգնել
+empty_catalog	Դեռ ուտեստներ չկան։ Բացեք Մենյուն, ավելացրեք ուտեստ (անուն + գին), ապա ընդունեք պատվեր։
+total	Ընդամենը
+cash	Կանխիկ
+upi	UPI
+card	Քարտ
+credit	Գործընկերներ
+clear	Մաքրել
+ready_to_sell	Գրանցելուն պատրաստ
+today_prefix	Այսօր
+today_mid	այսօր
+owed	չմարված
+round_word	կլորացում
+back	Հետ
+sold_out	Առկա չէ
+restock	Վերալիցքավորել
+not_tracked	Չի հաշվառվում
+in_stock	պաշարում
+marked_sold_out	Նշված է որպես առկա չէ
+add_upper	ԱՎԵԼԱՑՆԵԼ
+na	չկա
+qty	Քաշ/Քանակ
+unit_at	Դրույք @
+actual	Փաստացի
+applied	Կիրառված
+note_ph	Նշում (ըստ ցանկության)
+rounded	ԿԼՈՐԱՑՎԱԾ
+split	Բաժանել
+send_kot	Ուղարկել KOT
+send_kot_to	Ուղարկել → {kitchens}
+send_kot_again	Ավելացնել ուտեստներ հաջորդ KOT-ի համար
+send_kot_held	Պահված ուտեստներ — ուղարկելու համար հանեք պահումը
+reprint_kot	Ընտրվածը նորից տպել
+reprint_kot_ok	Կրկին տպվել է {n} ուտեստ · {slips} թերթիկ → {kitchens}
+reprint_kot_needed	Նախ ուղարկեք KOT — ապա ներառեք ուտեստները և նորից տպեք ընտրվածը
+reprint_kot_none_selected	Յուրաքանչյուր ուղարկված ուտեստ բաց է թողնված — հպեք Տպագրության մեջ վերատպելու ուտեստներին
+reprint_kot_client	Կրկնակի տպում ({n}) {place}-ի համար ուղարկվել է — խոհանոցը տպում է Սերվերում
+print_cancelled_kot	Տպել բոլոր չեղարկվածները
+print_cancelled_kot_ok	Տպվել է {n} չեղարկված ուտեստ · {slips} թերթիկ → {kitchens}
+print_cancelled_kot_needed	Նախ բացեք սեղան չեղարկված ուտեստներով
+print_cancelled_kot_none	Այս պատվերում չեղարկված ուտեստներ չկան
+print_cancelled_kot_client	Չեղարկվածների տպում ({n}) {place}-ի համար ուղարկվել է — խոհանոցը տպում է Սերվերում
+kot_banner	Տեսակի ժապավեն
+kot_banner_ph	Ժապավեն (դատարկ = ոչինչ)
+kot_item_prefix	Ապրանքի նախածանց
+kot_item_prefix_ph	օր. [ՉԵՂԱՐԿՎԱԾ]
+kot_strike	Գծել ուտեստի անունը
+kot_strike_note	Գծել ուտեստի նշումը
+kot_strike_on	Միաց.
+kot_strike_off	Անջ.
+bill_item_layout	Ապրանքների դասավորություն
+bill_item_layout_columns	Սյունակներ
+bill_item_layout_stacked	Տողերով
+bill_item_header	Սյունակների վերնագրեր
+bill_item_hdr_item	Ապրանքի վերնագիր
+bill_item_hdr_qty	Քանակի վերնագիր
+bill_item_hdr_price	Գնի վերնագիր
+bill_item_hdr_amount	Գումարի վերնագիր
+bill_item_name	Ուտեստի անուն
+bill_item_qty	Քանակ
+bill_item_price	Գին
+bill_item_amount	Գումար
+bill_item_note	Ուտեստի նշում
+bill_item_col_gap	Սյունակների բացատ
+bill_item_col_order	Սյունակների կարգ
+bill_item_col_sep	Սյունակների գծեր
+bill_item_gap_tight	Խիտ
+bill_item_gap_comfort	Հարմար
+bill_item_gap_wide	Լայն
+bill_item_num_width	Թվային սյունակներ
+bill_item_num_compact	Կոմպակտ
+bill_item_num_comfort	Հարմար
+bill_item_num_wide	Լայն
+bill_item_num_align	Թվերի հավասարեցում
+bill_item_gap_em	Բացատ (em)
+bill_item_qty_min	Նվազ. քանակ (em)
+bill_item_price_min	Նվազ. գին (em)
+bill_item_amount_min	Նվազ. գումար (em)
+kot_item_qty_width	Քանակի սյունակ
+kot_item_num_align	Քանակի հավասարեցում
+bill_total_qty_label	Ընդհանուր քանակի պիտակ
+bill_total_subtotal_label	Ենթագումարի պիտակ
+bill_total_grand_label	Վերջնական գումարի պիտակ
+bill_total_paid_label	Վճարվածի պիտակ
+bill_meta_pair	Տողը կիսել հետ
+bill_pair_alone	Միայնակ
+bill_item_piece_on	Միաց.
+bill_item_piece_off	Անջ.
+bill_total_qty	Ընդհանուր քանակ
+bill_total_subtotal	Ենթագումար
+bill_total_grand	Վերջնական գումար
+reprint_incl	Տպագրության մեջ
+reprint_skip	Բաց թողնել
+reprint_skip_meta	Բաց թողնել վերականգնող տպումը
+kot_dest_hint	Տպում է {kitchens}-ին կցված տպիչներով՝ Կարգավորումներ → Տպիչներ
+kot_sent_hint	Վերջին KOT-ը գնաց {kitchens}։ Հպեք՝ հաջորդ թերթիկի համար ուտեստ ավելացնելու, կամ նույն KOT-ը նորից տպեք։
+kot_sent_printing	KOT-ը ուղարկվել է {kitchens} — տպվում է
+kot_sent_not_printed	KOT-ը ուղարկվել է {kitchens}, բայց ՉԻ տպվել՝ {why}։ Ասեք խոհանոցին, ապա ուղղեք տպիչը և նորից տպեք։
+kot_sent_screen	KOT-ը ուղարկվել է {kitchens}
+kot_queued_shop	{place} → {kitchens} KOT-ը պահվել է. խանութի սարքը կտպի այն
+kot_job_label	KOT {place} → {kitchens}
+kot_job_reached	{place}-ի KOT-ը հասավ {kitchens}
+kot_unassigned	Խոհանոց (առանց կայանի)
+kot_unassigned_held	Պահվել է {n} ուտեստ առանց կայանի — ուղարկելու համար հանեք պահումը տողից
+kot_station_ph	Խոհանոց
+kot_station_dd	Խոհանոց
+kot_station_dd_n	Խոհանոց · {stations}
+kot_set_station	Օգտագործել այս կայանը
+kot_station_applied	Կայանը դրված է {n} ուտեստի վրա՝ {station}
+kot_station_cleared	Կայանը հանվել է {n} ուտեստից՝ {station}
+kot_station_needed	Նախ ընտրեք խոհանոցի կայան
+kot_station_not_allowed	Թույլ չի տրվում օգտագործել խոհանոցը՝ {station}
+kot_station_none	Դեռ խոհանոցի կայաններ չկան — ավելացրեք Խոհանոցում կամ Կարգավորումներ → Գոտիներ · կայաններ
+pos_tab_items	Ավելացված ապրանքներ
+pos_tab_payment	Վճարում
+hold_send	Պահել
+hold_send_on	Պահված
+hold_send_meta	Պահված է — ոչ այս KOT-ում
+station_remove	Հեռացնել կայանը
+station_remove_ph	Հպեք ցանկի կայանին՝ այն հեռացնելու համար
+station_removed	Կայանը հեռացվել է՝ {name}
+settings_hub_title	Կարգավորումներ
+settings_hub_help	Բացեք մեկ բաժին միանգամից — ավելի քիչ ոլորում, ավելի պարզ ընտրություն։
+settings_back	Հետ
+settings_sec_language	Լեզու և արժույթ
+settings_sec_country	Երկիր և հարկ
+settings_sec_tills	Այլ սարքեր
+settings_sec_brand	Ձեր ապրանքանիշը
+settings_sec_units	Միավորներ և փոխարկումներ
+settings_sec_pickers	Գոտիներ · կայաններ · հարկի դրույքներ
+settings_sec_printers	Տպիչներ
+settings_sec_bill	Հաշվի և KOT ձևաչափ
+settings_sec_selling	Սխեմաներ և վաճառք
+bill_kot_tab_bill	Հաշիվ
+bill_kot_tab_kot	KOT
+settings_sec_alerts	Ծանուցումներ
+alerts_help	Որքան ժամանակ կարգավիճակի հաղորդագրությունները մնում են էկրանին ձեզ համար (այս մուտքը)։
+snack_secs_ph	Վայրկյան (3–60, լռելյայն 10)
+snack_secs_save	Պահել ծանուցման ժամանակը
+snack_secs_saved	Ծանուցման ժամանակը պահվել է — {n} վայրկյան
+settings_sec_backup	Պահուստ և վերականգնում
+settings_sec_diag	Ախտորոշում
+diag_privacy_help	Մատյանները մնում են այս սարքում։ Գաղտնիքները (PIN, գաղտնաբառեր) երբեք չեն պահվում։ Սարքից դուրս փաթեթ կիսելը ամեն անգամ պահանջում է ձեր բացահայտ հաստատումը — երբեք չի վաճառվում և չի տրվում երրորդ կողմերին։
+diag_level	Մանրամասնության մակարդակ
+diag_level_error	Սխալներ
+diag_level_warn	Զգուշացումներ
+diag_level_info	Տեղեկություն
+diag_level_debug	Վրիպազերծում
+diag_support_start	Սկսել 30 րոպե աջակցության սեанс
+diag_support_stop	Ավարտել աջակցության սեանսը
+diag_support_started	Աջակցության սեանսը միացված է — Վրիպազերծման մանրամասն 30 րոպե
+diag_support_ended	Աջակցության սեանսն ավարտվեց
+diag_export_local	Արտահանել տեղական պատճեն
+diag_export_local_done	Տեղական ախտորոշումը պատրաստ է {path}-ում — ընտրեք որտեղ պահել պատճենը
+diag_approve_send	Հաստատել սարքից դուրս կիսելը
+diag_send_help	Հաստատումը մեկ փաթեթի համար է, ապա սպառվում է։ Ժամանակավոր — միայն արտադրանքը ուղղելու կամ բարելավելու համար։ Երրորդ կողմերին չի տրվում։ Աշխատում է Linux, Windows, macOS և Android-ում։
+diag_send_approved	Կիսելը հաստատված է մեկ փաթեթի համար (շուտով կսպառվի)
+diag_export_send	Ստեղծել կիսվող փաթեթ (պետք է հաստատում)
+diag_export_send_done	Կիսվող փաթեթը պատրաստ է {path}-ում — ընտրեք որտեղ պահել, ապա ուղարկեք միայն Kumkaj-ի աջակցությանը
+diag_save_bundle	Պահել ախտորոշման պատճենը
+diag_bundle_saved	Ախտորոշման պատճենը պահվել է {path}-ում
+diag_bundle_failed	Ախտորոշման պատճենը այնտեղ չպահվեց — փորձեք նորից
+diag_clear	Մաքրել ախտորոշման մատյանները
+diag_cleared	Ախտորոշման մատյանները մաքրվել են
+sidebar_settings	Կողային վահանակ
+sidebar_settings_help	Նույն պատկերակները, ինչ կողային ռելսում։ Քաշեք տողը՝ վերադասավորելու համար։ Անջատիչով ցույց տվեք կամ թաքցրեք։ Կարգավորումներն ու Կողպումը միշտ մնում են վահանակում։
+sidebar_always_on_short	Միշտ միաց.
+sidebar_back_settings	Հետ
+sidebar_shown	Ցուցադրված
+sidebar_hidden	Թաքնված
+sidebar_always_on	Միշտ վահանակում
+sidebar_shown_hint	Ցուցադրված է կողային ռելսում / ներքևի ներդիրներում
+sidebar_hidden_hint	Թաքնված է վահանակից
+sidebar_menu_items	Մենյու և ապրանքներ
+sidebar_enable_all	Միացնել բոլորը
+sidebar_disable_all	Անջատել բոլորը
+sidebar_order_saved	Կողային վահանակի կարգը պահվել է
+sidebar_visibility_saved	Կողային վահանակի տեսանելիությունը պահվել է
+amounts_hide	Թաքցնել
+amounts_show	Ցույց տալ
+printers_none_hint	Նախ պահեք տպիչ այս սարքում, ապա ավելացրեք այն Հաշվին կամ խոհանոցին
+counter	Վաճառասեղան
+dine_in	Տեղում
+takeaway	Տանելու
+order	Պատվեր
+tables	Սեղաններ
+kitchen	Խոհանոց
+sales	Վաճառք
+sales_refunds	Վաճառք և վերադարձ
+day_close	Օրվա փակում
+reports_expenses	Բանկային մատյան և շահույթ/վնաս
+nav_reports	Հաշվետվություններ
+nav_settings	Կարգավորումներ
+nav_lock	Կողպել
+no_sale_yet	Դեռ վաճառք չկա
+favorites	Սիրվածներ
+favorites_help	Հաճախ վաճառվող ապրանքներ՝ պահված ձեր մուտքի համար։ Ավելացրեք հաշվին կամ կազմեք ցանկը ներքևի բոլոր ապրանքներից։
+your_favorites	Ձեր սիրվածները
+all_items	Բոլոր ապրանքները
+frequent	Հաճախակի
+added_items	Ավելացված ապրանք(ներ)
+added_items_empty	Այս պատվերում դեռ ոչինչ չկա — ավելացրեք ուտեստ Բոլոր ապրանքներից կամ կատեգորիայից։
+frequent_config_help	Ավարտված հաշիվների ամենաշատ վաճառված ուտեստները։ Նշեք քանի օր նայել և քանի ուտեստ ցույց տալ։
+frequent_days_ph	Օրեր (1)
+frequent_limit_ph	Ապրանքներ (24)
+frequent_apply	Կիրառել
+frequent_saved	Հաճախակի՝ վերջին {d} օր, լավագույն {n} — {c} ուտեստ
+frequent_empty	Այս ժամանակահատվածում դեռ ավարտված վաճառքներ չկան — փակեք հաշիվ (₹0 թույլատրվում է, եթե Կարգավորումներն այդպես են ասում) և կհայտնվեն այստեղ։
+zero_sales	Զրոյական վաճառքներ
+zero_sales_help	Թույլ է տալիս ₹0 գնով ուտեստներ և ₹0-ով փակված հաշիվներ (հյուրասիրություն / սեփականատիրոջ ցանկություն)։ Լռելյայն միացված է, որպեսզի անվճար սեղանադրումները երևան Հաճախակիում և օրական մատյաններում։
+zero_sales_on	Թույլատրել ₹0
+zero_sales_off	Պահանջել գին
+zero_sales_saved_on	Զրոյական վաճառքները թույլատրված են
+zero_sales_saved_off	Վաճառքները պետք է ունենան ₹0-ից բարձր գին
+floor_areas_help	Գոտիները սրահի սենյակներ կամ մասեր են (Տեղում, Տանելու, Օդորակիչ …)։ Նախ ավելացրեք գոտի, ապա դրեք սեղաններ դրա մեջ — յուրաքանչյուր գոտի առանձին խումբ է սրահում։
+area_new_ph	Նոր գոտի / սրահ (օր. Օդորակիչ, Այգի)
+add_area	Ավելացնել գոտի
+area_added	„{name}“ գոտին պատրաստ է — ավելացրեք սեղաններ դրա մեջ
+no_favorites	Դեռ սիրվածներ չկան — ավելացրեք ապրանքներ ներքևի ցանկից։
+add_to_bill	Ավելացնել հաշվին
+added	Ավելացված
+owes_word	պարտք է
+selected_word	Ընտրված
+chip_clear_credit	մաքրել — Վարկ կամ վերցրու կանխավճար
+chip_missing_customer	Ընտրված հաճախորդը չկա — ընտրեք նորից
+chip_no_customer	Դեռ հաճախորդ չկա — մուտքագրեք անուն, ապա հպեք Վարկ
+credit_summary_fmt	{} հաճախորդ · բաց վարկ {} · պահված կանխավճարներ {}
+recent_label	Վերջինները՝
+kot_new_waiting	ՆՈՐ — սպասում է
+kot_preparing	ՊԱՏՐԱՍՏՎՈՒՄ Է
+kot_ready_serve	ՊԱՏՐԱՍՏ Է — մատուցիր
+kot_done_cap	ԱՐՎԱԾ
+kot_cancelled	ՉԵՂԱՐԿՎԱԾ
+kot_start_btn	Սկսել
+kot_mark_ready	Նշել պատրաստ
+kot_done_btn	Արված
+table_free	Ազատ է — հպեք պատվեր սկսելու համար
+start_order	Սկսել պատվեր
+open_bill	Բացել հաշիվը
+collect_payment	Հավաքել վճարումը
+table_running	Ընթացքի մեջ
+payment_pending	Վճարումը սպասում է
+collect_at_counter	հավաքիր վաճառասեղանին
+inventory	Պաշար
+inventory_stock	Պաշար և մնացորդ
+branches	Մասնաճյուղեր
+branches_org	Մասնաճյուղեր և կազմակերպություն
+credit_customers	Գործընկերներ (պարտք և մատակարարներ)
+customer_name_ph	Գործընկերոջ անուն
+new_customer_ph	Նոր գործընկերոջ անուն
+item_name_ph	Ապրանքի անուն (օր. Masala Dosa)
+item_price_ph	Գին
+start_template	Արտադրանք
+team	Թիմ
+team_pins	Թիմ և PIN
+my_pin_settings	Իմ PIN-ը
+settings_hub_help_my_pin	Փոխեք այս սարքում մտած անձի ապակողպման PIN-ը։
+team_self_help	Մեկ մուտք՝ նոր PIN, նոր գաղտնաբառ կամ երկուսն էլ։ Թողեք դաշտը դատարկ՝ ունեցածը պահելու համար։ Հարցրեք Սեփականատիրոջը, եթե այլ էկրաններ կամ իրավունքներ են պետք։
+backup_settings	Պահուստ և կարգավորումներ
+lock_app	Կողպել հավելվածը
+pick	Ընտրել
+select	Ընտրել
+advance	Կանխավճար
+owner	Սեփականատեր
+staff	Անձնակազմ
+photo	Լուսանկար
+auto	Ավտո
+prev	Նախորդ
+next	Հաջորդ
+ok	OK
+this_shop	Սերվեր
+extra_till	Կլիենտ
+off	Անջ.
+tables_kitchen	Սեղաններ և խոհանոց
+server	Սերվեր
+client	Կլիենտ
+language_currency	Լեզու և արժույթ
+language	Լեզու
+choose_language	Ընտրեք ձեր լեզուն
+language_setup_hint	Հետևեք այս սարքի լեզվին կամ ընտրեք ինքներդ։
+lang_follow_platform	Սարքի լեզու
+lang_pick_user	Ընտրել լեզու
+lang_platform_now	Սարքի լեզուն այժմ
+selected_language	Ընտրված
+continue	Շարունակել
+this_device	ԱՅՍ ՍԱՐՔԸ
+device_use_q	Ինչպե՞ս կօգտագործվի այս սարքը։
+last_server_mode	Սերվեր էր — հպեք շարունակելու համար
+last_client_mode	Կլիենտ էր — հպեք շարունակելու համար
+choose_server	Ընտրեք սերվեր
+choose_server_hint	Բացեք առկա սերվեր կամ ստեղծեք մեկը այլ բիզնեսի համար։
+create_new_server	Ստեղծել նոր սերվեր
+open_server	Բացել
+new_server_name_ph	Նոր սերվերի անուն (ըստ ցանկության)
+server_remove_pin_ph	Սեփականատիրոջ PIN՝ սերվեր հեռացնելու համար
+only_owner_remove_server	Միայն Սեփականատերը կարող է հեռացնել սերվեր
+owner_pin_remove_server	Այս սերվերը հեռացնելու համար պետք է սեփականատիրոջ PIN-ը
+device_setup_help	Սերվերը մատյանները պահում է այստեղ։ Կլիենտը զուգակցվում է Սերվերի հետ։
+app_template_heading	Rajdhani հավելվածի ձևանմուշ
+app_template_blurb	Բեռնում է Rajdhani մենյուն. Սեփականատեր Zahir (zahir), Ադմին Asif (asif, PIN 1111), Մատուցող Nawaz (nawaz, PIN 0000). FOH կողային վահանակ. պատմությունը մաքրվում է 4 ժամ հետո (և Մաքրել հիմա Պահուստում). Այսօր շերտն անջատված է. կոմպակտ KOT + ստանդարտ լուսանցքներ նեղ սկուտեղների համար. Վահանակի հարևանները կարելի է նորից միացնել Կարգավորումներում։
+app_template_apply	Rajdhani հավելվածի ձևանմուշ
+app_template_skip	Առայժմ բաց թողնել
+app_template_status	Սերվերը պատրաստ է — կիրառեք Rajdhani ձևանմուշը կամ բաց թողեք
+app_template_importing	Կիրառվում է {title}…
+currency	Արժույթ
+backup	Պահուստ
+use	Օգտագործել
+dont_use	Չօգտագործել
+add_branch	Ավելացնել մասնաճյուղ
+add_conversion	Ավելացնել փոխարկում
+add_dishes_items	Ավելացնել ուտեստներ և ապրանքներ
+add_item_plain	Ավելացնել ապրանք
+add_note	Ավելացնել նշում
+add_opening_balance	Ավելացնել սկզբնական մնացորդ
+add_staff	Ավելացնել անձնակազմ
+add_station	Ավելացնել կայան
+add_table	Ավելացնել սեղան
+add_unit	Ավելացնել միավոր
+add_use_name	Ավելացնել / օգտագործել այս անունը
+allow_extra_tills	Թույլատրել լրացուցիչ դրամարկղներ
+amend	Ուղղել
+apply_country_pack	Կիրառել երկրի փաթեթը
+datetime_appearance	Ամսաթվի և ժամի տեսք
+datetime_appearance_help	Մատյանները ներսում պահում են տարին առաջ RFC3339։ Սրանք փոխում են միայն ամսաթվերի և ժամացույցների տեսքը հաշիվներում, KOT-ում, հաշվետվություններում և էկրանին։
+datetime_example	Օրինակ հիմա՝ {ex}
+date_order	Ամսաթվի կարգ
+date_order_dmy	D/M/Y
+date_order_mdy	M/D/Y
+date_order_ymd	Y-M-D
+time_format	Ժամացույց
+time_format_24h	24 ժամ
+time_format_12h	12 ժամ
+attach_bill_photo	Կցել հաշվի լուսանկար
+attach_pdf	Կցել PDF
+attach_photo	Կցել լուսանկար
+attachments_last_expense	Կցորդներ (վերջին ծախս)
+bank	Բանկ
+bank_in	Բանկ մուտք
+bank_out	Բանկից ելք
+bank_reconciliation	Բանկային համաձայնեցում (նշեք բանկային քաղվածքի դիմաց)
+bank_to_till	Բանկ → դրամարկղ
+book_add_dish	Մատյան — ավելացնել ուտեստ / ապրանք
+book_opening_credit	Մատյան — սկզբնական վարկ
+branch_name_sell_ph	Մասնաճյուղի անունը, որից վաճառում եք
+bring_my_book	Բեր իմ մատյանը
+business_tax_id_ph	Բիզնեսի հարկային համար
+caption_bank	ԲԱՆԿ
+caption_bills	ՀԱՇԻՎՆԵՐ
+caption_outstanding	ՉՄԱՐՎԱԾ
+caption_payments_today	ՎՃԱՐՈՒՄՆԵՐ ԱՅՍՕՐ
+caption_today	ԱՅՍՕՐ
+card_amount_ph	Գումար քարտով
+cash_amount_ph	Գումար կանխիկ
+cash_memo	Կանխիկ հուշագիր
+choose_icon	Ընտրել պատկերակ
+choose_logo	Ընտրել լոգո
+clear_icon	Մաքրել պատկերակը
+clear_photo	Մաքրել լուսանկարը
+copy_day_book_csv	Պատճենել օրվա մատյանը CSV
+copy_day_close	Պատճենել օրվա փակումը
+copy_items_csv	Պատճենել ապրանքները CSV
+copy_outstanding_csv	Պատճենել չմարվածը CSV
+copy_parties_csv	Պատճենել գործընկերներին CSV
+copy_party_ledger_csv	Պատճենել գործընկերոջ մատյանը CSV
+copy_receipt	Պատճենել կտրոնը
+share_whatsapp	Կիսել WhatsApp
+lan_pages_heading	Հյուրերի էջեր Wi‑Fi-ում
+lan_pages_help	Այս խանութի Wi‑Fi-ում հյուրերի էջերն աշխատում են ցուցատախտակի, համարների, էքսպոյի, կրպակի, սեղանի QR-ի և կարծիքի համար։ Բջջային ինտերնետով հյուրերին հետո Cloud կպետքանա։ Քարտի տերմինալը / վճարման հղումը կամընտիր է, երբ ինտերնետ կա — երբեք չի կանգնեցնում վաճառասեղանը։
+diag_send_heading	Կիսել սարքից դուրս
+kot_dest_heading	Խոհանոցի կայան
+optional_login_heading	Ըստ ցանկության մուտք
+rights_heading	Իրավունքներ
+ops_panel	Տեղական գործողություններ
+crm_heading	Հյուրեր և հաղորդագրություններ
+crm_help	Ծննդյան օր, հավատարմություն, ոչ ակտիվ և լավագույն հյուրեր — հերթ SMS կամ WhatsApp։ Հաղորդագրության մեջ օգտագործեք {name} և {points}։ Սեփականատերը սեղմում է ուղարկել. ոչինչ ինքնուրույն չի գնում։
+crm_queue_sms	Հերթ դնել SMS
+crm_queue_wa	Հերթ դնել WhatsApp
+crm_seg_bday_week	Ծննդյան շաբաթ
+crm_seg_bday_month	Ծննդյան ամիս
+crm_seg_phone	Հեռախոսով
+crm_seg_loyalty	Հավատարմություն
+crm_seg_inactive	Ոչ ակտիվ
+crm_seg_top	Ամենաշատ ծախսողներ
+birthday_ph	Ծննդյան օր (MM-DD կամ YYYY-MM-DD)
+crm_message_ph	Ծնունդդ շնորհավոր, {name}։ Ունեք {points} միավոր։
+till_apply_redeem	Կիրառել հաշվին
+till_clear_redeem	Մաքրել օգտագործումը
+till_wallet_topup	Լիցքավորել դրամապանակը
+till_issue_voucher	Տալ վաուչեր
+till_points_ph	Միավորներ օգտագործելու համար
+till_wallet_ph	Գումար դրամապանակից ծախսելու
+till_voucher_code_ph	Վաուչերի կոդ
+till_voucher_amt_ph	Վաուչերի գումար (դատարկ = ամբողջը)
+till_wallet_topup_ph	Դրամապանակի լիցքավորման գումար
+till_voucher_issue_amt_ph	Տրվող վաուչերի գումար
+till_voucher_issue_code_ph	Նոր վաուչերի կոդ
+split_evenly	Հավասար բաժանել
+waitlist	Սպասման ցուցակ
+fire_course	Ուղարկել ուտեստը
+hold_item	Պահել
+waiter_call	Кանչել մատուցողին
+waitlist_add	Ավելացնել սպասման ցուցակ
+floor_view_grid	Ցանց
+floor_view_layout	Դասավորություն
+floor_layout_x	X
+floor_layout_y	Y
+floor_layout_w	W
+floor_layout_h	H
+floor_layout_save	Պահել դասավորությունը
+floor_layout_open	Բացել սեղանը
+floor_layout_edit	Խմբագրել դասավորությունը
+floor_layout_pick	Հպեք սեղանին՝ դասավորությունը խմբագրելու համար
+floor_layout_saved	Սեղանների դասավորությունը պահվել է
+floor_layout_nudge_left	← 20
+floor_layout_nudge_right	→ 20
+floor_layout_nudge_up	↑ 20
+floor_layout_nudge_down	↓ 20
+sibling_pickers_help	Հպեք Միաց./Անջ. ինչպես միավորներում — թաքցրեք գոտիները, կայաններն ու հարկի դրույքները ամենօրյա ընտրիչներից. փաթեթի լռելյայնները մնում են։
+bulk_price_apply	Կիրառել ընդհանուր գին
+card_terminal_optional	Քարտի տերմինալ / վճարման հղում (կամընտիր, երբ ինտերնետ կա)
+copy_report	Պատճենել հաշվետվությունը
+counted_cash_ph	Հաշված կանխիկը դարակում
+country_tax	Երկիր և հարկ
+tax_chrome	Հարկի պիտակներ դրամարկղում
+tax_chrome_help	Անջատված ժամանակ պատվերի սեղանը թաքցնում է GST/հարկի գնահատման տողերը և գնի մեջ հարկի տեղերը։ Հարկի դրույքներն ու Երկիր և հարկ կարգավորումները մնում են — պիտակները ցանկացած պահի կարելի է նորից միացնել։ Rajdhani ձևանմուշը սկսում է սա անջատված։
+tax_chrome_on	Ցույց տալ
+tax_chrome_off	Թաքցնել
+tax_chrome_saved_on	Հարկի պիտակները դրամարկղում են
+tax_chrome_saved_off	Հարկի պիտակները թաքնված են դրամարկղում
+tax_invoice_till	Հարկային հաշիվ դրամարկղում
+tax_invoice_help	Անջատված ժամանակ հաշիվները միայն Կանխիկ հուշագիր են, և Հարկային հաշիվ / Կանխիկ հուշագիր չիպերը թաքնված են պատվերի սեղանին։ Rajdhani ձևանմուշը սկսում է սա անջատված — ցանկացած պահ միացրեք Ցույց տալ՝ նորից Հարկային հաշիվ ընտրելու համար։
+tax_invoice_on	Ցույց տալ
+tax_invoice_off	Թաքցնել
+tax_invoice_saved_on	Հարկային հաշիվը դրամարկղում է
+tax_invoice_saved_off	Հարկային հաշիվը թաքնված է — միայն Կանխիկ հուշագիր
+pay_methods	Վճարման եղանակներ
+pay_methods_help	Որ չիպերն են երևում Վերցրու վճարումը ժամանակ։ Կանխիկը միշտ մնում է։ Rajdhani ձևանմուշը սկսում է միայն Կանխիկով — այստեղ նորից միացրեք UPI / Քարտ / Վարկ / Բաժանել։
+create_backup	Ստեղծել պահուստ
+credit_limit_heading	Վարկի սահման (ընտրված / անվանված գործընկեր)
+day_close_summary	Օրվա փակման ամփոփում
+delete_party	Ջնջել ընտրված գործընկերոջը
+delivery	Առաքում
+done_open_books	Արված է — բացիր մատյանները
+drawer_count	Դարակի հաշվարկ (ըստ ցանկության)
+expense_heading	Ծախս
+export_day	Արտահանել օրը
+extra_note_bill_ph	Լրացուցիչ նշում այս հաշվի / վաճառքի վրա
+extra_note_expense_ph	Լրացուցիչ նշում վերջին ծախսի վրա
+extra_tills_heading	Լրացուցիչ դրամարկղներ
+other_devices_help_heading	Կարգավորել այլ սարքեր
+other_devices_help	Այս սարքում (Սերվեր)՝ Այլ սարքեր → Թույլատրել լրացուցիչ դրամարկղներ։ Գրեք զուգակցման կոդը և Wi‑Fi հասցեն։ Հպեք Թույլ տուր այլ սարքերին միանալ, եթե հայտնվի։ Համակարգչում հպեք Սկսիր այս համակարգչով։ Յուրաքանչյուր այլ սարքում՝ տեղադրեք հավելվածը, ընտրեք Կլիենտի ռեժիմ, Գտիր խանութի սերվերը (կամ մուտքագրեք հասցեն), մուտքագրեք զուգակցման կոդը, Զուգակցիր հիմա։ Պատվերները սպասում են սարքում, եթե Wi‑Fi-ն ընկնի, և գնում են, երբ Սերվերը նորից պատասխանի։ Խոհանոցի տպիչները դրվում են Սերվերում (Կարգավորումներ → Տպիչներ) — լրացուցիչ դրամարկղերը KOT-ը ուղարկում են այնտեղ։
+forget_shop	Մոռացիր այս խանութը
+goods_received	Ստացված ապրանք
+import_day	Ներմուծել օրը
+import_items_csv_plain	Ներմուծել ապրանքներ CSV…
+import_parties_csv	Ներմուծել գործընկերներ CSV…
+item_name	Ապրանքի անուն
+kitchen_printing	Տպիչներ
+login_id_ph	Օգտանուն
+mark_cleared	Նշել մաքրված
+new_party_clear	Նոր գործընկեր (մաքրել ձևը)
+new_party_kind_supplier_ph	Նոր գործընկերոջ տեսակ (Մատակարար)
+next_country	Հաջորդ երկիր
+next_order	Հաջորդ պատվեր (մաքրել սեղանը)
+note_gstin_ph	Նշում / GSTIN / պայմանագրի հիշեցում
+notes_attach_party	Նշումներ և կցորդներ (ընտրված գործընկեր)
+notes_attach_sale	Նշումներ և կցորդներ (ընտրված վաճառք)
+on_account_ap	Հաշվին (AP)
+org_optional_ph	Կազմակերպություն (ըստ ցանկության)
+paid_by	Վճարել է
+paid_now	Հիմա վճարված
+pair_now	Զուգակցիր հիմա
+pairing_code_ph	Զուգակցման կոդ
+party_name_selected_ph	Գործընկերոջ անուն (կամ օգտագործիր ընտրվածը)
+password_ph	Գաղտնաբառ
+pay_ap_card	Վճարիր AP քարտով
+pay_ap_cash	Վճարիր AP կանխիկ
+pay_ap_heading	Վճարիր ինչ պարտք ենք նրանց (AP)
+pay_ap_upi	Վճարիր AP UPI-ով
+pay_selected_heading	Վճարիր ընտրվածը (մարիր պարտքը / վերցրու կանխավճար)
+pick_from_items	Ընտրիր մեր ապրանքներից
+prev_country	Նախորդ երկիր
+print_open	Տպել / բացել
+reason_amend_ph	Պատճառ ուղղման / չեղարկման / վերադարձի
+reason_note_ph	Պատճառ / նշում (կորուստ, հաշվարկ, …)
+record_day_close	Գրանցել օրվա փակումը
+refresh_from_shop	Թարմացնել խանութից
+refund	Վերադարձ
+remove_selected	Հեռացնել ընտրվածը
+request_bill	Խնդրել հաշիվ
+restaurant_name_ph	Ռեստորանի անուն (ըստ ցանկության)
+restore_backup	Վերականգնել պահուստից
+role_both	Երկուսն էլ
+role_admin	Ադմին
+role_cashier	Գանձապահ
+role_customer	Հաճախորդ
+role_manager	Կառավարիչ
+history_retention	Առևտրի պատմություն
+history_retention_help	Հին վաճառքներն ու KOT-երը ավտոմատ մաքրվում են։ Մենյուն, անձնակազմը և կարգավորումները մնում են։ Մաքրել հիմա ջնջում է բոլոր առևտրի տողերը և պահում կարգավորումը։
+history_off	Պահել
+history_day_close	Օրվա փակման ժամանակ
+history_after_hours	Ժամեր հետո
+history_hours_ph	Ժամեր (1–168, լռելյայն 4)
+history_hours_save	Պահել ժամերը
+history_clear_now	Մաքրել պատմությունը հիմա
+history_cleared	Առևտրի պատմությունը մաքրվել է — կարգավորումը պահված է
+history_retention_saved	Պատմության մաքրումը պահվել է
+history_hours_saved	Պատմության ժամերը պահվել են
+history_owner_only	Միայն Սեփականատերը կամ Ադմինը կարող է մաքրել պատմությունը
+rollup	Ամփոփում
+save_brand	Պահել ապրանքանիշը
+save_business_id	Պահել բիզնեսի համարը
+save_business_name	Պահել բիզնեսի անունը
+save_features	Պահել
+save_features_named	Պահել {name}
+save_features_ok	{name}-ի կարգավորումը պահվել է
+save_names	Պահել անունները
+second_way	Երկրորդ եղանակ
+server_ip_ph	Սերվերի IP (օր. 192.168.1.10)
+set_credit_limit	Կիրառել սահմանը գործընկերոջը
+set_login_selected	Կիրառել մուտքը ընտրվածին
+set_login_named	Կիրառել մուտքը {name}-ին
+shop	Խանութ
+show	Ցույց տալ
+spreadsheet_csv	Աղյուսակ (CSV)
+start_fresh	Սկսել մաքուր
+stop_extra_tills	Կանգնեցնել լրացուցիչ դրամարկղները
+floor_cols_ph	Սյունակներ
+floor_cols_fit	Տեղավորիր էկրանին
+floor_cols_fit_sub	{n} տեղավորվում է այստեղ
+floor_cols_fits	տեղավորվում է
+floor_cols_scroll	կողք է ոլորվում
+floor_cols_min	Սյունակներ՝ առնվազն 1 — կամ թողեք դատարկ՝ էկրանին տեղավորելու համար
+floor_zoom_auto	Ավտո
+floor_zoom_out	Հեռացնել
+floor_zoom_in	Մոտեցնել
+backup_auto	Ամեն օր ավտոմատ պահուստ · վերջինը {when} · վերջին 14 օրերը պահվում են {dir}-ում։
+backup_auto_none	Ամեն օր ավտոմատ պահուստ — առաջինը մի պահից կսկսվի։
+backup_copy_to	Պատճենը գնում է նաև {dir}։
+backup_copy_btn	Պահուստները պատճենել նաև թղթապանակ…
+autostart_off	Սկսիր այս համակարգչով
+autostart_on	Սկսվում է այս համակարգչով ✓ — հպեք կանգնեցնելու համար
+autostart_done_on	Այս համակարգիչն այժմ բացում է հավելվածը մեկնարկելիս — խանութի սերվերը վերադառնում է հոսանքի անջատումից հետո։
+autostart_done_off	Այս համակարգիչն այլևս չի բացում հավելվածը մեկնարկելիս։
+device_forgotten	Խանութը մոռացավ այս սարքը — նորից զուգակցեք խանութի ընթացիկ կոդով։ Սպասող պատվերները պահվում են։
+lan_offline	Խանութի սերվերն անհասանելի է
+forget_device	Մոռացիր
+last_seen	տեսնվել է
+copy_pair_code	Պատճենել զուգակցման կոդը
+new_pair_code	Նոր զուգակցման կոդ
+pair_finishing	Զուգակցումն ավարտվում է… կիրառվում են խանութի մատյանները
+pair_opening	Դրամարկղը բացվում է…
+pair_copied	Զուգակցման կոդը պատճենվել է
+kot_waiting	Սպասում է ուղարկման
+lan_offline_waiting	Սերվերն անհասանելի է · {n} սպասում են
+lan_connecting	Կապ խանութի հետ…
+lan_live	Կենդանի
+lan_sending	{n} ուղարկվում է
+lan_sign_in_to_send	Նորից մտեք՝ {n} ուղարկելու համար
+lan_pair_again	Այս սարքը նորից զուգակցեք
+lan_update_app	Թարմացրեք հավելվածը — այս սարքը և խանութի սերվերը տարբեր տարբերակներ ունեն
+allow_firewall	Թույլ տուր այլ սարքերին միանալ
+firewall_blocked	Այս համակարգչի firewall-ը արգելափակում է այլ սարքեր — հպեք Թույլ տուր այլ սարքերին միանալ։
+firewall_waiting	Սպասում է ադմինի հարցմանը…
+lan_join_help	Մյուս սարքում՝ Կլիենտի ռեժիմ → Գտիր խանութի սերվերը (կամ մուտքագրիր {addr}) → զուգակցման կոդ {code}։
+lan_pair_status	Wi‑Fi {addr}
+lan_join_help_no_addr	Այս սարքը միացրեք Wi‑Fi-ին՝ հասցե ունենալու համար։
+lan_no_address	Դեռ Wi‑Fi հասցե չկա — միացեք խանութի Wi‑Fi-ին։
+lan_not_listening	Սարքեր չի ընդունում ({port} պորտը զբաղված է)։ Վերագործարկեք հավելվածը։
+lan_tills_off	Լրացուցիչ դրամարկղներն անջատված են։ Թույլատրեք, որ այլ սարք միանա։
+paired_with	Զուգակցված է · {url}
+not_paired	Զուգակցված չէ
+choose_device_use	Ընտրեք Սերվեր կամ Կլիենտ։
+paired_note	Զուգակցված է։ Ապակողպեք վաճառելու համար կամ Թարմացրեք վերջինի համար։
+last_update_at	Վերջին թարմացում՝ {time}։
+pair_intro	Գտեք սերվերը կամ մուտքագրեք հասցեն և զուգակցման կոդը։
+queue_waiting	Սպասում է խանութին հասնելու ({n})՝
+queue_tries	Փորձվել է {n} անգամ · վերջին պատասխան՝ {e}
+save_backup_copy	Պահել պահուստային պատճեն…
+backup_copy_saved	Պահուստը պահվել է — պահեք այն այս սարքից դուրս (USB կամ այլ սարք)
+backup_copy_overdue	{n} օր է պահուստ չի դուրս եկել այս սարքից — Կարգավորումներ → Պահուստ
+backup_copy_failed	Պահուստը այնտեղ չպահվեց — ընտրեք այլ տեղ
+clock_off	Այս սարքի ժամացույցը {min} րոպե շեղված է խանութի սերվերից — դրեք ճիշտ ժամը
+printers_heading	Տպիչներ
+printers_help	Գտեք տպիչներ, հպեք մեկին՝ ընտրելու, ապա Տպել փորձնական էջ միայն այդ սարքում։ Հաշվի տպիչներ՝ Հաշվի և KOT ձևաչափ → Հաշիվ։ Խոհանոցի տպիչներ՝ Խոհանոց → Խոհանոցի կայաններ (նախ ավելացրեք կայան — Որոնումը կայան չի ստեղծում)։
+printers_host_only	Տպիչները դրվում են խանութի սարքում (Սերվեր)։ Այս դրամարկղը հաշիվներն ու KOT-երը ուղարկում է այնտեղ — Որոնում / ավելացում / նշանակում մնում են Սերվերում։ Փորձնական էջը և տպման չափը գնում են Սերվեր։
+printers_find_heading	Գտնել տպիչներ
+printers_find_tip	Որոնումը սկանավորում է այս սարքը և ցանկը թարմ է պահում։
+printers_pool_heading	Տպիչներ
+printers_pool_tip	Որոնումը սկանավորում է այս սարքը և այս ցանկը թարմ է պահում։
+printers_pool_empty	(դեռ չկա — հպեք Որոնում)
+printers_routes_help	Գտեք տպիչները, որոնք օպերացիոն համակարգն արդեն ճանաչում է։ Նշանակեք դրանք հաշվին և յուրաքանչյուր խոհանոցի Հաշվի և KOT ձևաչափում։
+printer_assign_dd	Իրական տպիչ՝ {place}
+printer_assign_pick	Ընտրել իրական տպիչ
+printer_profile_heading	Դասավորություն
+printer_send_heading	Առաքում
+vp_delivery_heading	Առաքում
+vp_delivery_help	Ինչպես է այս վիրտուալ տպիչն ուղարկում աշխատանքները — ՕՀ փաստաթուղթ, հում բայթեր կամ ESC/POS։ Թերթիկի բովանդակությունը (տառաչափ, փաթաթում, լուսանցքներ) որոշում է հաշվի / KOT ձևաչափը, ոչ այստեղ։
+vp_type_size_heading	Տառաչափ
+vp_wrap_heading	Փաթաթման լայնություն
+vp_margin_heading	Լուսանցքներ
+vp_delivery_spooler	ՕՀ փաստաթուղթ (համակարգային սպուլեր)
+vp_delivery_raw	Հում բայթեր դեպի սարք
+vp_delivery_escpos	ESC/POS ջերմային հրամաններ
+virtual_printer_new	Նոր վիրտուալ տպիչ
+virtual_printer_selected	Խմբագրում է «{name}» — փոխելու համար հպեք ցանկի մեկ ուրիշին
+virtual_printer_tap_list	Հպեք ցանկի վիրտուալ տպիչին՝ խմբագրելու համար
+config_layout_portrait	Դիմանկար
+config_layout_landscape	Լանդշաֆտ
+config_send_os	Համակարգային սպուլեր
+config_send_escpos	ESC/POS
+profiles_heading	Դասավորություններ
+profiles_empty	(դեռ դասավորություններ չկան)
+profile_builtin	ներկառուցված
+profile_custom	հատուկ
+profile_name_ph	Դասավորության անուն
+profile_new	Նոր դասավորություն
+profile_delete	Ջնջել դասավորությունը
+profile_created	Դասավորությունը ստեղծվել է
+profile_deleted	Դասավորությունը ջնջվել է
+profile_builtin_keep	Ներկառուցված դասավորությունները չեն ջնջվում
+config_saved	Թարմացված
+config_selected	Ընտրված է «{name}»
+printer_output_heading	Վիրտուալ տպիչներ
+virtual_printers_heading	Վիրտուալ տպիչներ
+virtual_printers_empty	Դեռ վիրտուալ տպիչներ չկան — ներքևում դրեք արժեքները, ապա Պահել։ Երբ ունենաք, հպեք ցանկի մեկին՝ խմբագրելու։
+virtual_printer_name_ph	Վիրտուալ տպիչի անուն (ըստ ցանկության)
+virtual_printer_create	Ստեղծել վիրտուալ տպիչ
+virtual_printer_save	Պահել վիրտուալ տպիչը
+virtual_printer_delete	Ջնջել վիրտուալ տպիչը
+virtual_printer_created	Վիրտուալ տպիչ «{name}» ստեղծվել է
+virtual_printer_deleted	Ջնջվել է վիրտուալ տպիչ «{name}»
+virtual_printer_updated	Վիրտուալ տպիչը թարմացվել է
+virtual_printer_updated_named	Վիրտուալ տպիչ «{name}» թարմացվել է
+virtual_draft_layout	Արժեքներ հաջորդ վիրտուալ տպիչի համար
+virtual_draft_send	Արժեք հաջորդ վիրտուալ տպիչի համար
+virtual_need_real	Նախ ընտրեք իրական տպիչ
+virtual_need_select	Ընտրեք վիրտուալ տպիչ ջնջելու համար
+real_printer_selected	Ընտրված է՝ {name}
+station_group_heading	Վիրտուալ տպիչներ
+station_group_apply	Ջնջել վիրտուալ տպիչը
+station_group_applied	Ջնջված
+station_group_empty	Ընտրեք վիրտուալ տպիչ
+station_group_name_ph	Վիրտուալ տպիչի անուն (ըստ ցանկության)
+station_group_save	Ստեղծել վիրտուալ տպիչ
+station_group_saved	Վիրտուալ տպիչը պահվել է
+station_manage_heading	Ավելացնել կամ հեռացնել խոհանոցի կայան
+printers_routes_heading	Որտեղ է տպվում
+route_pick_heading	Տեղ
+route_editing	Խմբագրում՝ {name}
+route_assigned	Ավելացվել է {printer}՝ {place}
+route_already_assigned	Արդեն այս տեղում է՝ {printer}
+route_removed	Հեռացվել է {printer}՝ {place}-ից
+route_cleared	Մաքրվել է {name}
+route_assigned_empty	Այս տեղում չկա
+route_tap_remove	հպեք հեռացնելու համար
+route_tap_select	հպեք ընտրելու համար
+route_tap_selected	ընտրված
+route_pick_printer_first	Նախ հպեք տպիչին
+route_assigned_heading	Տպիչներ
+route_add_heading	Նշանակել
+printer_label_ph	Անուն (օր. Խոհանոց)
+printer_target_ph	Համակարգային տպիչի անուն կամ host:9100
+printer_target_default	այս համակարգչի սովորական տպիչը (դատարկ հասցե)
+printer_wire_heading	Պրոֆիլ
+printer_wire_escpos	ESC/POS
+printer_wire_os	Դիմանկար
+printer_wire_os_portrait	Դիմանկար
+printer_wire_os_landscape	Լանդշաֆտ
+printer_wire_escpos_short	ESC/POS
+printer_wire_os_short	Դիմանկար
+printer_wire_os_landscape_short	Լանդշաֆտ
+printer_format_custom	Նոր հատուկ պրոֆիլ
+printer_format_custom_label	Հատուկ
+printer_format_custom_added	Այս տեղի համար հատուկ պրոֆիլ է ավելացվել
+add_printer	Ավելացնել տպիչ
+remove_printer	Հեռացնել
+route_pick_ph	Հաշիվ կամ խոհանոցի կայան
+route_bill	Հաշիվ
+route_default_kitchen	Կայան չկա (չնշանակված ուտեստներ)
+route_kot_station	Խոհանոց
+route_dont_print	Տպիչ չկա
+stations_heading	Խոհանոցի կայաններ
+stations_help	Ավելացրեք խոհանոցի կայաններ ուտեստների և KOT-ի համար։ Յուրաքանչյուր կայանում կցեք տպիչները (Կարգավորումներ → Տպիչներ), դրեք առաջնությունը և ընտրեք Առաջինը, որ աշխատում է կամ Տպել բոլորում։ Փոփոխությունները պահվում են անմիջապես — Պահել կոճակ չկա։
+station_print_heading	Տպիչներ այս կայանի համար
+station_print_help	Ընտրեք կայան, ապա կցեք մեկ կամ ավելի տպիչ։ ↑↓ փորձի կարգն է։ Առաջինը, որ աշխատում է կանգնում է առաջին հաջողությունից հետո; Տպել բոլորում ուղարկում է յուրաքանչյուր կցված տպիչ։ Ամեն փոփոխություն անմիջապես պահվում է։
+station_print_pick_ph	Կայան՝ տպիչներ դնելու համար
+station_print_pick_first	Նախ ընտրեք խոհանոցի կայան
+station_print_editing	«{name}»-ի տպիչների խմբագրում
+station_vps_dd	Տպիչներ այս կայանի համար
+station_vps_dd_n	{n} տպիչ · հպեք փոխելու համար
+station_vps_empty	Դեռ տպիչներ չկան — գտեք Կարգավորումներ → Տպիչներ
+bill_printers_dd	Տպիչներ հաշվի համար
+bill_printers_dd_n	{n} տպիչ հաշվի համար · հպեք փոխելու համար
+job_layout	Դասավորություն
+job_delivery	Ինչպես է ուղարկվում աշխատանքը
+job_delivery_help	ՕՀ փաստաթուղթ, հում բայթեր կամ ESC/POS։ Հաշիվն ու խոհանոցի թերթիկը յուրաքանչյուրը պահում է իրենը։ Աշխատանքը կարող է գնալ Որոնման պահած ցանկացած տպիչ։
+station_vp_attached	Տպիչը կցվել է
+station_vp_detached	Տպիչը հեռացվել է կայանից
+station_print_summary	{mode} · {n} տպիչ
+station_print_summary_none	Այս կայանում դեռ տպիչ չկա — չի տպի
+stations_none	Դեռ կայաններ չկան — ավելացրեք մեկը ներքևում։ Մենյուի ապրանքները կարող են կայան օգտագործել, որ KOT-ը այնտեղ տպվի։
+route_up	Վեր
+route_down	Վար
+route_remove	Հեռացնել
+route_clear	Մաքրել
+save_printers	Պահել տպիչները
+print_test_page	Տպել փորձնական էջ
+no_printer_assigned	Տպիչ չկա
+test_page_no_printer	{place} համար տպիչ չկա — կցեք տպիչ, ապա նորից փորձեք
+test_page_pick_first	Նախ ընտրեք տպիչ(ներ) փորձնական էջի համար — ապա Տպել փորձնական էջ
+test_printers_dd	Տպիչներ փորձնական էջի համար
+test_printers_dd_n	{n} տպիչ փորձնական էջի համար · հպեք փոխելու համար
+kot_test_printers_dd	Տպիչներ փորձնական KOT-ի համար
+kot_test_printers_dd_n	{n} տպիչ փորձնական KOT-ի համար · հպեք փոխելու համար
+test_printer_picked	Փորձ՝ {name}
+test_printer_cleared	Փորձ չկա՝ {name}
+test_page_sent_n	Փորձնական էջն ուղարկվել է {n} տպիչի
+test_kot_pick_first	Նախ ընտրեք տպիչ(ներ) փորձնական KOT-ի համար — ապա Փորձնական KOT
+test_kot_sent_n	Փորձնական KOT ուղարկվել է {n} տպիչի
+cancel_pick	Նշել
+cancel_pick_on	Նշված
+cancel_pick_meta	Նշված է չեղարկման համար
+batch_cancel	Չեղարկել նշվածները
+batch_cancel_n	Չեղարկել նշվածները ({n})
+batch_cancel_none	Նախ նշեք մեկ կամ ավելի ուղարկված ուտեստ — ապա Չեղարկել նշվածները
+batch_cancel_title	Նշված ուտեստների չեղարկում — մեկ պատճառ, մեկ չեղարկման թերթիկ յուրաքանչյուր խոհանոցի
+batch_cancel_ok	{n} ուտեստ չեղարկվել է · {slips} չեղարկման թերթիկ → {kitchens}
+batch_cancel_ok_noprint	{n} ուտեստ չեղարկվել է — KOT ավտոտպումը անջատված է, ուստի չեղարկման թերթիկ չկա
+no_printer_kitchen_station	Այդ խոհանոցի կայանի համար տպիչ չկա — Խոհանոց → Խոհանոցի կայաններ → Տպիչներ այս կայանի համար
+printers_saved	Պահված
+test_page_sent	Փորձնական էջն ուղարկվել է — ստուգեք տպիչը
+test_page_sent_one	Փորձնական էջն ուղարկվել է {name} — ստուգեք այդ տպիչը
+printers_found	Գտնվել է {n}՝ {list}
+printers_find_synced	Գտնվել է {n} — {new} նոր
+printer_on_device	պահված
+printer_already_added	արդեն ավելացված է
+printer_already_saved	Արդեն պահված է՝ {name}
+find_printers	Գտնել տպիչներ
+printers_looking	Որոնում…
+saving_printer	Տպիչի ավելացում…
+cancelled	Չեղարկված
+printers_tap_find	Հպեք Որոնում՝ այս սարքի օգտագործելի տպիչների ցանկի համար։
+printers_none_found	Ոչինչ չի գտնվել — մուտքագրեք համակարգային տպիչի անուն կամ IP (օր. 192.168.1.50)։
+printer_from_find	Ավելացվել է {name}
+kot_printer_ph	Տպիչ KOT-երի համար
+bill_printer_ph	Տպիչ հաշիվների համար
+kot_print_on	Խոհանոցի թերթիկների ավտոտպում՝ Միաց.
+kot_print_off	Խոհանոցի թերթիկների ավտոտպում՝ Անջ.
+queue_refused	Խանութը չի ընդունել ({n}) — ստուգեք յուրաքանչյուրը դրամարկղում՝
+clear_not_accepted	Ստուգված է — մաքրեք այս ցանկը
+device_name_ph	Այս սարքի անունը
+lan_last_update	վերջին թարմացում {time}
+lan_not_accepted	{n} չի ընդունվել
+connected_now	հիմա կապված է
+backup_failed	Վերջին ավտոմատ պահուստը չհաջողվեց՝ {e}
+backup_overdue	{n} օր պահուստ չկա — պահեք հավելվածը բաց այս սարքում, որ կարողանա պահուստել։
+disk_low	Այս սարքում ազատ է միայն {mb} MB — պահուստները շուտով կձախողվեն։ Ազատեք տեղ։
+last_seen_devices	Վերջին անգամ երևացել է՝ {time}
+sync_interval	Համաժամեցում ամեն {secs} վ
+connection_to_shop	Կապ խանութի հետ
+supplier_name_ph	Մատակարարի անուն (կամ գործընկեր)
+supplier_ph	Մատակարար
+switch_device	Փոխել այս սարքը
+take_payment	Ընդունել վճարում
+tax_added_till	{tax} առանձին
+tax_inside_price	{tax} ներառված
+tax_invoice	Հարկային հաշիվ
+till_to_bank	Դրամարկղ → բանկ
+units_heading	Միավորներ
+unlock_after_pairing	Մուտքագրեք PIN
+unlock_with_login	Ապակողպել մուտքով
+unmark	Հանել նշումը
+update_my_password	Թարմացնել իմ գաղտնաբառը
+update_my_pin	Թարմացնել իմ մուտքը
+duress_heading	Արտակարգ ապակողպման PIN (միայն Սեփականատեր)
+duress_help	Ըստ ցանկության։ Եթե ապակողպելիս ձեր PIN-ի փոխարեն մուտքագրվի այս PIN-ը, գրքերի բոլոր գրառումները ջնջվում են (վաճառք, մատյաններ, պատմություն) և դրամարկղը բացվում է որպես Սեփականատեր՝ նորմալ տեսքով — մենյուն, գները, սեղանները, անձնակազմը և կարգավորումները մնում են։ Սխեման և կոնֆիգը չեն ջնջվում։ Օգտագործեք միայն եթե ստիպված եք ապակողպել։ Անջատելու համար թողեք դատարկ և պահեք։ Երբեք ոչ մեկի PIN-ի նման։
+duress_pin_ph	Արտակարգ PIN (4–12 թվանշան)
+duress_confirm_ph	Կրկին մուտքագրեք հաստատելու համար
+save_duress_pin	Պահել արտակարգ PIN-ը
+clear_duress_pin	Անջատել արտակարգ PIN-ը
+duress_on	Արտակարգ ապակողպման PIN-ը միացված է
+duress_off	Արտակարգ ապակողպման PIN-ը անջատված է
+duress_saved	Արտակարգ ապակողպման PIN-ը պահվել է
+duress_cleared	Արտակարգ ապակողպման PIN-ը անջատվել է
+upi_amount_ph	UPI գումար
+void	Չեղյալ անել
+write_off_ap	Դուրս գրել AP
+write_off_heading	Դուրս գրում (մաքրել առանց վճարման)
+write_off_nil	Դուրս գրում / զրոյական մնացորդ
+your_brand	Ձեր ապրանքանիշը (հավելվածում)
+your_categories	Ձեր կատեգորիաները
+account_kind	Հաշվի տեսակ (հպեք մեկին)
+actual_total_cap	ՓԱՍՏԱՑԻ ԸՆԴՀԱՆՈՒՐ
+amend_help	Ընտրեք վաճառք ուղղելու, չեղյալ անելու կամ վերադարձնելու համար։ Ուղղումները պահում են ամբողջ պատմությունը։ Կլորացված Ընդհանուրը սկսում է հավասար Կիրառվածին — խմբագրեք միայն կլորացնելու համար։ Չեղյալն ու վերադարձը կարող են պահանջել Սեփականատիրոջ կամ Կառավարչի PIN (մուտքագրված վերևում; գրանցվում է ձեր անունով)։
+applied_total_cap	ԿԻՐԱՌՎԱԾ ԸՆԴՀԱՆՈՒՐ
+bank_balance	Բանկային մնացորդ
+bank_net_today	Բանկի զուտ այսօր
+branch_export_help	Արտահանումը գրում է branch_snapshot_CODE_DATE.json պահուստների պանակում և պատճենում է սեղմատախտակ։ Այլ կետի օրը ներմուծելու համար պահեք ֆայլը որպես import_branch_snapshot.json նույն պանակում, ապա հպեք Ներմուծել։
+brand_shown_help	Ցուցադրվում է հավելվածի ներսի էկրաններում։ Այս սարքում տեղադրված հավելվածի անունն ու պատկերակը մնում են հարթակի ցանկի տեսքով։
+app_icon	Հավելվածի պատկերակ
+logo_help	Ըստ ցանկության խանութի նշան հավելվածի էկրաններում։
+onboard_layout	Ինչ եք ստանում
+item_photo_help	Ըստ ցանկության։ Առանց լուսանկարի ցույց ենք տալիս ապրանքի անվան սկզբնատառերը։
+stamp_heading	Կնիք
+stamp_image_help	Ըստ ցանկության կնիքի պատկեր տպված հաշիվների և հյուրի էկրանի վրա։
+payment_qr_heading	Վճարման QR
+payment_qr_image_help	Ստատիկ QR հաշիվների և հյուրի էկրանի վրա; այլապես վճարումն օգտագործում է վերևի VPA-ի դինամիկ UPI QR։
+cash_in_hand	Կանխիկ դրամարկղում
+change_my_pin_heading	Իմ մուտքը
+connect_to_server	Միանալ Սերվերին
+counter_locked	Դրամարկղ 01 · Կողպված
+country_pack_help	Երկրի փաթեթը դնում է հարկի անունն ու հաշվարկը, ակնթարթային վճարման ուղին և հաշիվների վրա տպվող բիզնեսի նույնացուցիչը։ Kumkaj-ը ոչ մի տեղ հարկ չի ներկայացնում և պետական էլեկտրոնային հաշիվ չի տալիս։
+currency_use_help	Ոլորեք և հպեք Օգտագործել ցանկացած աջակցվող արժույթի համար։
+day_close_help	Օրվա փակումը գրանցելը այս ամփոփումը (և դարակի տարբերությունը, եթե հաշվել եք) պահում է աուդիտի մատյանում։ Այն չի դադարեցնում վաճառքը։
+expenses_word	Ծախսեր
+feature_access_help	Ինչ կարող են բացել — ըստ ցանկության; վերևի աշխատանքն արդեն լռելյայն է դնում
+footer_local	Տեղական SQLite · Անվճար ընդմիշտ · Առանց ամպի
+fresh_book_khaynjo	Fresh = դատարկ մենյու (ուտեստները հետո ավելացրեք Մենյուում)։ Book = ներքևում գրեք սկզբնական ապրանքները և ով է ձեզ պարտք։
+fresh_selected	Ընտրված է Fresh — կատալոգը դատարկ է մնում։ Պատրաստ լինելիս հպեք Պատրաստ է։
+gross_word	Համախառն
+how_start	Ինչպե՞ս եք ուզում սկսել։
+kot_print_help_khaynjo	Միացված լինելիս յուրաքանչյուր խոհանոց տպում է իր KOT թուղթը հենց որ սեղմեք Ուղարկել։
+later_country_pack	Հետո՝ Կարգավորումներ → կիրառեք երկրի փաթեթը հարկի և վճարման պիտակների համար։
+local_badge	ՏԵՂԱԿԱՆ
+mix_type_hint_khaynjo	Անհրաժեշտության դեպքում բաժանեք կանխիկ / UPI / քարտ / կրեդիտ։ Կրեդիտի համար վերևում հաճախորդ է պետք։
+money_in_sales	Գումար ներս (վաճառք)
+net_word	Զուտ
+offline_badge	ԱՆՑԱՆՑ
+optional_login_help	Ըստ ցանկության մուտք (id + գաղտնաբառ)։ Սեփականատերը դնում է մեկ անգամ; հետո գաղտնաբառը կարող է փոխել միայն օգտատերը։
+or_unlock_login	Կամ ապակողպեք մուտքի id + գաղտնաբառով
+permission_preset	Աշխատանք (էկրաններ և գումարի գործողություններ)
+preset_help_khaynjo	Գանձապահ՝ վաճառում է։ Կառավարիչ՝ վաճառք + ապրանքներ + չեղյալ/ուղղում։
+product_locked_khaynjo	Khaynjo
+product_only_khaynjo	Այս հավելվածը միայն Khaynjo է — ռեստորանի օպերացիոն համակարգ։ Այլ առևտրի դեմքերը գալիս են որպես առանձին Kumkaj արտադրանք։
+purchases_cogs	Գնումներ (ապրանքի ինքնարժեք)
+qty_cap	ՔԱՆ
+restore_help	Վերականգնել՝ ընտրեք պահուստ։ Գրքերը բացվում են այնպես, ինչպես այն ժամանակ էին. ներկա գրքերը նախ պահվում են, այնպես որ սա կարելի է հետարկել։
+wipe_data_heading	Ջնջել տեղական տվյալները
+wipe_data_help	Միայն Սեփականատեր — նույն ընտրությունները, ինչ Windows-ի հեռացումը։ Բիզնես գրառումները մաքրում են առևտրի պատմությունը, բայց պահում են մենյուն և կարգավորումը (ինչպես արտակարգ PIN-ը)։ Խանութի կարգավորումը հեռացնում է գրքերի բազան։ Էկրանի նախապատվությունները մաքրում են պատուհան/լեզու։ Հաստատեք Սեփականատիրոջ PIN-ով։ Թիմի արտակարգ PIN-ը առանձին է (թաքնված ջնջում ապակողպելիս)։
+wipe_trading	Բիզնես գրառումներ
+wipe_schema	Խանութի կարգավորում
+wipe_ui	Էկրանի նախապատվություններ
+wipe_owner_pin_ph	Սեփականատիրոջ PIN ջնջելու համար
+wipe_delete_selected	Ջնջել ընտրվածը
+wipe_owner_only	Տեղական տվյալները կարող է ջնջել միայն Սեփականատերը։
+restore_owner_only	Պահուստը կարող է վերականգնել միայն Սեփականատերը։
+wipe_owner_pin_needed	Մուտքագրեք Սեփականատիրոջ PIN-ը տեղական տվյալները ջնջելու համար։
+wipe_nothing_selected	Նախ ընտրեք ինչ ջնջել։
+wipe_done	Ընտրված տեղական տվյալները ջնջվել են։
+wipe_schema_done	Խանութի կարգավորումը ջնջվել է — շարունակելու համար ընտրեք Սերվեր կամ Կլիենտ։
+rounded_total	Կլորացված ընդհանուր
+setup_app_khaynjo	Կարգավորեք Khaynjo
+shop_logo_optional	Խանութի լոգո (ըստ ցանկության)
+stock_type_help	Մուտքագրեք ապրանքի անունը (մի մասը բավարար է), քանակ, ապա ճշտեք։ Դեռ չհաշվվող ապրանքներին մեկ անգամ պետք է Սկսել հետևել։
+team_owner_help	Մարդուն թողեք դատարկ՝ մեկին ավելացնելու համար. անուն, աշխատանք, օգտանուն, PIN և ըստ ցանկության գաղտնաբառ, ապա Ավելացնել։ Ընտրեք մարդ՝ նույն տեսակի ձևը խմբագրելու — անուն, օգտանուն, գաղտնաբառ, էկրաններ և իրավունքներ — ապա Պահել։ Ձեր PIN-ն ու գաղտնաբառը մեկ մուտք են ներքևում։ Սեփականատերը ուրիշի PIN չի փոխում։
+staff_name_ph	Անձնակազմի անուն
+staff_copy_hire_ph	Պատճենել կարգավորումը (ըստ ցանկության)
+staff_copy_hire	Օգտագործել այս մարդու կարգավորումը
+staff_edit_name_ph	Ցուցադրվող անուն
+staff_rename	Պահել անունը
+staff_copy_edit_ph	Պատճենել կարգավորումը մեկ այլ մարդուց
+staff_copy_edit	Պատճենել նրանց կարգավորումը ընտրվածի վրա
+staff_copy_edit_onto	Պատճենել նրանց կարգավորումը {name}-ի վրա
+staff_deactivate_named	Հեռացնել {name}
+staff_renamed	Անունը պահվել է
+staff_setup_copied_hire	Կարգավորումը պատճենվել է {name}-ից — դրեք նոր անուն և PIN, ապա Ավելացնել անձնակազմ
+staff_setup_copied_edit	{from}-ի կարգավորումը պատճենվել է {to}-ի վրա
+staff_copy_need_selected	Նախ ընտրեք ում խմբագրել
+staff_copy_need_source	Ընտրեք ում կարգավորումը պատճենել
+staff_copy_same	Նույն մարդն է — ընտրեք մեկ ուրիշին
+staff_rename_need_selected	Նախ ընտրեք ում վերանվանել
+team_pick_hint	Ընտրեք ում խմբագրել — էկրանները, գումարի իրավունքները և խոհանոցի կայանները երևում են միայն այդ մարդու համար։
+team_stations_help	Խոհանոցի կայաններ, որոնք կարող են օգտագործել
+team_stations_changed	Խոհանոցի կայանները փոխվել են — Պահել այս մարդու կարգավորումը
+team_features_changed	Էկրանները փոխվել են — Պահել այս մարդու կարգավորումը
+team_rights_changed	Իրավունքները փոխվել են — Պահել այս մարդու կարգավորումը
+they_owe_us	Նրանք մեզ պարտք են
+unit_at_cap	Միավոր @
+units_help	Կոդեր ապրանքի պիտակների համար (kg, հատ, տոպրակ)։ Ամեն միավոր պետք է կապվի — ուղղակի կամ այլ միավորներով — ստանդարտի (kg · cm · ml · pc), օր. 1 արկղ = 2 տուփ և 1 տուփ = 20 cm։ Փոխարկումներ՝ 1 ից = գործակից դեպի։ Արժույթները երբեք միավոր չեն։
+units_picker_help	Հպեք Միաց/Անջ, որ միավորը երևա Գնում և Մենյու ընտրիչներում։ Անջատված միավորները դեռ փոխարկվում են։
+unit_picker_on	Միաց
+unit_picker_off	Անջ
+we_owe_them	Մենք նրանց պարտք ենք
+who_unlocking	Ո՞վ է ապակողպում։
+locked_word	Կողպված
+show_pin	Ցույց տալ PIN
+hide_pin	Թաքցնել PIN
+set_owner_pin	ԴՐԵՔ ՍԵՓԱԿԱՆԱՏԻՐՈՋ PIN
+enter_owner_passcode	ՄՈՒՏՔԱԳՐԵՔ ՍԵՓԱԿԱՆԱՏԻՐՈՋ ԿՈԴԸ
+enter_staff_passcode	ՄՈՒՏՔԱԳՐԵՔ ԱՆՁՆԱԿԱԶՄԻ ԿՈԴԸ
+pin_count_zero	0 / 12 թվանշան · առնվազն 4, ապա OK
+pin_count_need	{} / 12 թվանշան · պետք է ևս {}
+pin_count_full	12 / 12 թվանշան · սեղմեք OK
+pin_count_ready	{} / 12 թվանշան · պատրաստ լինելիս սեղմեք OK
+pin_hint_choose	Ընտրեք 4–12 թվանշան · Enter կամ Ապակողպել՝ պահելու համար
+pin_hint_new	Նոր 4–12 թվանշան Սեփականատիրոջ PIN · Enter կամ Ապակողպել
+pin_hint_shop_code	Խանութի սարք · զուգակցման կոդ {}
+pin_hint_books	Այս սարքը պահում է գրքերը
+pin_hint_paired	Լրացուցիչ դրամարկղը զուգակցված է — ապակողպեք վաճառելու համար
+pin_hint_pair_first	Լրացուցիչ դրամարկղ — նախ զուգակցեք խանութի սարքի հետ
+unlock_to_continue	Ապակողպեք շարունակելու համար
+no_staff_yet	Դեռ անձնակազմ չկա — ապակողպեք որպես Սեփականատեր, ապա Թիմ
+status_server_set_pin	Սերվեր ռեժիմ — դրեք Սեփականատիրոջ PIN
+status_server_tills	Սերվեր ռեժիմ — լրացուցիչ դրամարկղները կարող են միանալ։ Ապակողպեք
+status_server_unlock	Սերվեր ռեժիմ — ապակողպեք որպես Սեփականատեր
+status_client_unlock	Կլիենտ ռեժիմ — ապակողպեք վաճառելու համար
+icon_new_selected	Պատկերակ՝ ընտրված է նոր ֆայլ — հպեք Պահել ապրանքանիշը
+icon_custom	Պատկերակ՝ սեփական նշան
+icon_default	Պատկերակ՝ Kumkaj նշան (լռելյայն) — ընտրեք հատուկ
+logo_yours	Լոգո՝ ձեր խանութի լոգոն — երևում է էկրաններում և անդորրագրերում
+logo_default	Լոգո՝ Kumkaj նշան (լռելյայն) — եթե ունեք, ընտրեք ձերը
+tmpl_current	Ընթացիկ՝ {} — {}
+tmpl_selected	Ընտրված՝ {} — {}
+setup_complete	Կարգավորումն ավարտված է
+onboard_fresh_tmpl	Fresh · {} — կատալոգը սկսում է դատարկ. ապրանքները ավելացրեք Ապրանքներում, ապա Պատրաստ է։
+onboard_book_tmpl	Book · {} — ավելացրեք ապրանքներ և սկզբնական կրեդիտ, ապա Պատրաստ է։
+onboard_template_tmpl	Ցանկության դեպքում անվանեք տեղը, ապա ընտրեք ինչպես սկսել։
+tmpl_blurb	Սեղաններ, պատվերներ, խոհանոցի թերթիկներ, հաշիվներ և գրքեր։
+tmpl_how	Վաճառեք դրամարկղում. Սրահ սեղանների և KOT-ի համար. Գրքեր օրվա մատյանի համար։
+reports_facet_title	Հաշվետվություններ
+reports_facet_help	Օրվա մատյաններ, գործընկերների ծերացում, բանկային գրառումներ և ժամանակաշրջանի շահույթ ու վնաս։
+against_bill_ph	Վերևի հաշիվ №-ի դիմաց (ըստ ցանկության)
+aliases_ph	Այլանուններ — այլ անուններ, ստորակետով
+amount_blank_full_ph	Գումար (դատարկ = ամբողջ մնացորդը)
+amount_owed_ph	Պարտք գումար
+amount_ph	Գումար
+amount_received_ph	Ստացված գումար
+amount_we_pay_ph	Գումար, որ վճարում ենք
+business_name_ph	Բիզնեսի անուն
+category_new_ph	Կատեգորիա (ըստ ցանկության, ստեղծվում է եթե նոր է)
+code_bag_ph	Կոդ (տոպրակ)
+conv_factor_ph	Գործակից (25 = 1 տոպրակ → 25 kg)
+country_code_ph	Երկրի կոդ օր. IN, GB, US, AE, BR
+credit_khata_amount_ph	Կրեդիտ / հաշվի գումար
+credit_limit_ph	Կրեդիտի սահման (0 = չկա)
+from_code_ph	Ից կոդ (տոպրակ)
+item_name_lang_ph	Ապրանքի անուն — գրեք ձեր լեզվով
+login_id_opt_ph	Օգտանուն (պարտադիր, եզակի)
+manager_pin_ph	Կառավարչի PIN հաստատման համար (միայն եթե չեք կարող չեղյալ անել)
+new_branch_name_ph	Նոր մասնաճյուղի անուն
+new_password_ph	Նոր գաղտնաբառ (ըստ ցանկության)
+new_pin_ph	Նոր PIN (4–12 թվանշան)
+note_bank_ph	Նշում (մուտք, դուրսբերում, …)
+note_buy_expense_ph	Նշում (վառելիք, վարձ, …)
+note_expense_ph	Նշում (վառելիք, գրասենյակ, …)
+options_khaynjo_ph	Ընտրանքներ — Չափ*: Փոքր=199, Մեծ=399 | Հավելումներ+3՝ Պանիր=40, Ձիթապտուղ=30 | Լրացուցիչ պանիր=40
+part_second_way_ph	Մաս երկրորդ ձևով (ըստ ցանկության)
+phone_ph	Հեռախոս
+place_name_ph	Այս տեղի անունը
+qty_example_ph	Քանակ (օր. 1.5 kg-ի համար)
+quantity_ph	Քանակ
+reason_required_ph	Պատճառ (պարտադիր)
+role_title_ph	Պաշտոն (օր. Բարիստա)
+service_pct_ph	Սպասարկում % ըստ ցանկության 0/10/12
+short_code_ph	Կարճ կոդ (MG02)
+starting_password_ph	Սկզբնական գաղտնաբառ (ըստ ցանկության)
+starting_pin_ph	Սկզբնական PIN (4–12 թվանշան)
+station_name_ph	Կայանի անուն (օր. Տանդուր, Տապակիչ, Սառը)
+station_new_ph	Խոհանոցի կայան (ըստ ցանկության, օր. Տանդուր — ստեղծվում է եթե նոր է)
+table_name_ph	Սեղանի անուն (օր. Բակ 1, Վաճառասեղան 2)
+tax_rate_ph	Հարկի դրույքի անուն կամ % — Ստանդարտ, Նվազեցված, 0, 5, 12, 18, 20
+to_code_ph	Դեպի կոդ (kg)
+uncleared_no_ph	Չմաքրված № վերևում
+unit_cost_ph	Միավորի արժեք
+unit_name_bag_ph	Անուն (Տոպրակ)
+unit_plate_ph	Միավոր (ափսե / pc — դատարկ = հատ)
+pay_credit	Կրեդիտ
+book_kind_today	Այսօրվա գրքեր
+book_kind_month	Այս ամսվա գրքեր
+book_kind_aging	Չմարված / դեբետ-կրեդիտ
+book_kind_balance	Հաշվեկշիռ
+order_help	Հպեք ապրանքին՝ ավելացնելու համար։
+floor_help	Հպեք սեղանին՝ պատվերը վերցնելու կամ փոխելու համար։ Գույները ցույց են տալիս ազատ → նստած → խոհանոց → պատրաստ → ուտում է → հաշիվ → վճարված։ Սպասացանկը, ամրագրումները և սեղան ավելացնելը ներքևի բաժիններում են։
+kitchen_help	Խոհանոցի թերթիկներ (KOT), նորերը վերջում։ Սկսել → Պատրաստ → Ավարտը թերթիկը առաջ է տանում։ Թերթիկները երբեք գներ չեն ցույց տալիս։
+kitchen_empty	Բաց թերթիկներ չկան։ Պատվերից կամ Սրահից ուղարկված KOT-ը երևում է այստեղ։
+add_a_table	Ավելացնել սեղան
+add_station_heading	Ավելացնել խոհանոցի կայան
+categories_help	Հպեք Օգտագործել՝ վերևի ապրանքը այդ կատեգորիայի տակ դնելու համար։ Լուսանկարը կատեգորիային նկար է տալիս. առանց դրա սկզբնատառերն են։
+dish_search_ph	Ապրանքի անուն — որոնեք մեր ուտեստները կամ գրեք ձերը
+tile_free	Ազատ
+tile_occupied	Զբաղված
+tile_food_ready	Ուտելիքը պատրաստ է
+tile_bill_printed	Հաշիվը տպված է
+tile_paid	Վճարված
+tile_bill_btn	Հաշիվ
+tile_occupy_btn	Նստեցնել հյուրեր
+tile_free_btn	Ազատել սեղանը
+tile_ready_btn	Ազատել սեղանը
+tile_undo_bill	Հետարկել հաշիվը
+summary_busy	զբաղված սեղան
+summary_to_collect	հավաքելու
+summary_on_floor	սրահում
+floor	Սրահ
+sizes_as_items_ph	Չափերը որպես առանձին ապրանք (ըստ ցանկության) — Կես=120, Լրիվ=200
+dish_group_ph	Ուտեստի խումբ (ըստ ցանկության) — օր. Paneer Tikka
+discount	Զեղչ
+remove_discount	Հեռացնել զեղչը
+apply_discount	Կիրառել զեղչ
+save_opening_cash	Պահել սկզբնական կանխիկը
+close_shift_print	Փակել հերթափոխը և տպել թերթիկ
+area_prices_ph	Գոտու գներ (ըստ ցանկության) — Օդորակիչ=220, Տուն=210
+discount_ph	10% կամ 50
+discount_reason_ph	Պատճառ (օր. մշտական հյուր, ուշ ուտելիք)
+opening_float_ph	Այս առավոտ դարակում դրված գումար
+shift_counted_ph	Հերթափոխ հանձնելիս հաշված գումար
+opening_float	Սկզբնական կանխիկ (ավանս)
+shift_handover	Հերթափոխի հանձնում
+shift_since	Այս հերթափոխը սկսած
+expected_in_drawer	Սպասվողը դարակում
+right_discount	Զեղչ տալ
+floor_in_kitchen	Խոհանոցում
+floor_eating	Մատուցված
+pick_category	Ընտրել կատեգորիա
+close_category_list	Փակել կատեգորիաների ցանկը
+new_category_row	Նոր կատեգորիա — ստեղծվում է ապրանքը պահելիս
+your_category	Ձեր կատեգորիան
+suggested_category	Առաջարկված — մեր ուտեստներից
+category_search_ph	Կատեգորիա — որոնեք ձերերը կամ գրեք նոր
+line_sent_state	Ուղարկված է խոհանոց
+line_nc_state	Հյուրասիրություն (NC) — չի գանձվում
+cancel_item_short	Չեղարկել
+nc_short	NC
+charge_again_short	Գանձել
+move_short	Տեղափոխել
+cancel_item_title	Չեղարկել այս ապրանքը — խոհանոցը չեղարկման թերթիկ է ստանում
+nc_item_title	Այս ապրանքը դարձնել հյուրասիրություն (NC)
+charge_again_title	Այս ապրանքը նորից գանձել
+move_item_title	Տեղափոխել այս ապրանքը այլ սեղան
+already_cooked	Արդեն եփված է (կորուստ)
+not_cooked_yet	Դեռ չի եփվել
+return_to_customer	Վերադարձնել հաճախորդին
+short_by	Պակաս
+tip_not_sale	Թեյավճար (անձնակազմի, վաճառք չէ)
+right_settle	Ընդունել վճարում
+right_cancel_sent	Չեղարկել ուղարկված ապրանք
+right_complimentary	Հյուրասիրություն (NC)
+right_move_table	Տեղափոխել / միավորել սեղաններ
+right_reprint	Հաշիվը նորից տպել
+right_allowed	Թույլատրված
+right_with_approval	Հաստատումով
+right_denied	Թույլատրված չէ
+editing_staff	Խմբագրում
+finding_server	Խանութի սերվերի որոնում այս Wi‑Fi-ում…
+no_server_found	Ոչինչ չի գտնվել։ Սերվերում՝ Կարգավորումներ → Այլ սարքեր → Թույլատրել լրացուցիչ դրամարկղներ (նույն Wi‑Fi)։ Կամ մուտքագրեք այնտեղ ցուցադրված IP-ն։
+servers_found_pick	Հպեք խանութին, որին ուզում եք միանալ։
+server_host_selected	Օգտագործվում է {host} — մուտքագրեք զուգակցման կոդը, ապա Զուգակցել հիմա։
+print_bill	Տպել հաշիվ
+table_actions	Սեղանի գործողություններ
+move_merge_table	Տեղափոխել / միավորել սեղան
+move_help	Այս սեղանի պատվերը տեղափոխեք ազատ սեղան կամ միավորեք աշխատողի մեջ։
+move_target_ph	Սեղանի անուն (օր. D5, P2)
+approval_pin_ph	Կառավարչի PIN (միայն եթե խնդրվի)
+move_here	Տեղափոխել այստեղ
+merge_into	Միավորել դրա մեջ
+line_reason_ph	Պատճառ (օր. հյուրը միտքը փոխեց, պաշար չկա)
+line_qty_ph	Քանի՞ը չեղարկել (դատարկ = բոլորը)
+line_target_ph	Տեղափոխել սեղան (օր. D5)
+confirm	Հաստատել
+menu_search_ph	Որոնել ապրանք կամ կարճ կոդ
+customer_paid_ph	Հաճախորդը վճարել է
+tip_ph	Թեյավճար
+table_area_ph	Գոտի (օր. Տեղում, Տուն, Օդորակիչ)
+table_range_ph	Շատ միանգամից՝ D1-D20
+add_these_tables	Ավելացնել այս սեղանները
+remove_these_tables	Հեռացնել այս սեղանները
+table_remove_ph	Հեռացնել՝ T1-T24 կամ մեկ սեղանի անուն
+find_server	Գտնել խանութի սերվերը
+bill_format	Հաշվի ձևաչափ
+bill_format_help	Տպվում է ռեստորանի անվան տակ ամեն հաշվի վրա։ Տողերը բաժանեք | նշանով (օր. MG Road, Rajkot | Հեռ 98250 00000)։
+bill_header_ph	Հասցե | հեռախոս
+fssai_ph	FSSAI լիցենզիայի № (Հնդկաստան)
+bill_footer_ph	Ստորագիր (օր. Շնորհակալություն, նորից այցելեք)
+save_bill_format	Պահել հաշվի ձևաչափը
+reset_bill_format	Վերականգնել լռելյայնը
+bill_format_reset	Հաշվի ձևաչափը վերականգնվել է լռելյայն
+reset_kot_format	Վերականգնել լռելյայնը
+kot_format_reset	KOT ձևաչափը վերականգնվել է լռելյայն
+kot_format	KOT ձևաչափ
+kot_format_help	Հպեք ցանկի դաշտին։ Ցույց տալ, տառաչափը և հաստությունը վերաբերում են այդ դաշտին վերևում ընտրված KOT տեսակի վրա։ Ամեն տեսակ պահում է իր չափերն ու հաստությունները։
+kot_format_fields	Դաշտեր
+kot_field_next	Հաջորդ դաշտ
+kot_field_show	Ցույց տալ
+kot_field_hide	Թաքցնել
+kot_field_on	ցույց
+kot_field_off	թաքցնել
+kot_field_size	Տառաչափ
+kot_field_size_ph	օր. 16, 20, 24, 28, 32…
+kot_weight_light	Բարակ
+bill_kot_panel_help	Հաշվի և խոհանոցի թերթիկի դասավորություն, յուրաքանչյուրն իր բովանդակության լայնությամբ։ Հաշվի գանձապահն է, ով հաշիվը տվել կամ փակել է. KOT մատուցողն է, ով այդ խոհանոցի թերթիկն է ուղարկել — պատվերի ամբողջ պատմությունը մնում է գրքերում։
+std_size_ph	օր. 18, 20, 26…
+kot_show_shop	Խանութի անուն
+kot_hide_shop	Թաքցնել խանութը
+kot_show_time	Ժամ
+kot_hide_time	Թաքցնել ժամը
+kot_show_waiter	Մատուցող
+kot_hide_waiter	Թաքցնել մատուցողին
+kot_show_station	Կայան
+kot_hide_station	Թաքցնել կայանը
+kot_show_table	Սեղան
+kot_hide_table	Թաքցնել սեղանը
+kot_show_kot_no	KOT №
+kot_hide_kot_no	Թաքցնել KOT №
+kot_width	Նախադիտման փաթաթում (բովանդակության լայնությունը KOT ներդիրում)
+kot_width_58	58 mm
+kot_width_80	80 mm
+kot_kind_heading	KOT տեսակ
+kot_kind_original	Բնօրինակ
+kot_kind_duplicate	Կրկնօրինակ
+kot_kind_modified	Փոփոխված
+kot_kind_cancelled	Չեղարկված
+kot_style_heading	Դաշտի չափ և հաստություն
+kot_style_title	Վերնագիր
+kot_style_item_qty	Ապրանք · Քանակ
+kot_style_field_pick	Ընտրել դաշտ
+kot_weight_regular	Սովորական
+kot_weight_bold	Թավ
+kot_align	Հավասարեցում
+kot_align_start	Սկիզբ
+kot_align_center	Կենտրոն
+kot_align_end	Վերջ
+content_width	Բովանդակության լայնություն (mm)
+content_width_bill	Հաշվի բովանդակության լայնություն (mm)
+content_width_kot	KOT բովանդակության լայնություն (mm)
+content_width_ph	Կամ մուտքագրեք բովանդակության լայնություն, 40–210 mm
+content_width_help	Որքան լայն է տպվում այս թերթիկը։ Հաշիվն ու KOT-ը յուրաքանչյուրը պահում է իր լայնությունը։
+content_width_bill_help	Որքան լայն է տպվում հյուրի հաշիվը։ Լռելյայն 210 mm (էջ)։ 58 mm նեղ թերթիկ, 80 mm լայն թերթիկ, 112 mm 4 դյույմ, 210 mm A4 լայնք։ Մուտքագրեք 40-ից 210 ցանկացած արժեք։ Խոհանոցի թերթիկներն իրենց լայնությունն ունեն KOT ներդիրում։
+content_width_kot_help	Որքան լայն է տպվում խոհանոցի թերթիկը։ Լռելյայն 80 mm։ 58 mm նեղ, 80 mm լայն, 112 mm 4 դյույմ, 210 mm էջ։ Մուտքագրեք 40-ից 210։ Հյուրի հաշիվներն իրենց լայնությունն ունեն Հաշիվ ներդիրում։
+vp_paper_width	Բովանդակության լայնություն (mm)
+vp_paper_width_ph	Կամ մուտքագրեք բովանդակության լայնություն, 40–210 mm
+vp_paper_width_help	Բովանդակության լայնությունը դրվում է Հաշվի և KOT ձևաչափում — առանձին հաշվի համար (լռելյայն 210 mm) և խոհանոցի թերթիկի (լռելյայն 80 mm)։
+kot_size	Տառաչափ
+kot_size_s	Փոքր
+kot_size_m	Նորմալ
+kot_size_l	Մեծ
+std_size	Տառաչափ
+kot_copies	Պատճեններ
+kot_copies_1	1
+kot_copies_2	2
+kot_copies_3	3
+kot_title_ph	Վերնագիր (դատարկ = KOT - KITCHEN ORDER)
+kot_footer_ph	Խոհանոցի նշում (ըստ ցանկության, առանց գների)
+kot_preview	Նախադիտում
+save_kot_format	Պահել KOT ձևաչափը
+test_kot_format	Փորձնական KOT
+test_kot_sent	Խոհանոցի թերթիկի նախադիտումն ուղարկվել է
+test_bill_format	Փորձնական հաշիվ
+test_bill_sent	Հաշվի նախադիտումն ուղարկվել է
+test_print_no_printer	Այդ աշխատանքի համար տպիչ չկա — այս էկրանում ընտրեք մեկը
+kot_format_saved	KOT ձևաչափը պահվել է
+std_print	Հաշվի տպման չափ
+std_print_help	Տառաչափ ստանդարտ դիմանկար և լանդշաֆտ հաշվի աշխատանքների համար ՕՀ / փաստաթղթային տպիչներում (մուտքագրեք կետեր — ոչ Փոքր/Նորմալ/Մեծ)։ Նույն չափը երկու կողմնորոշումներում։ Խոհանոցի թերթիկի չափերը KOT ներդիրում են։
+std_size_s	Փոքր
+std_size_m	Նորմալ
+std_size_l	Մեծ
+save_std_print	Պահել հաշվի տպման չափը
+std_print_saved	Հաշվի տպման չափը պահվել է
+print_brand_kit	Տպման ապրանքանիշի հավաքածու
+print_brand_kit_help	Ըստ ցանկության կնիք և վճարման QR հաշվի երեսին և LAN հյուրի էկրանին։ Վերևի VPA-ի դինամիկ UPI QR-ը աշխատում է, եթե վճարման QR պատկեր չկա։
+choose_stamp	Ընտրել կնիք
+clear_stamp	Մաքրել կնիքը
+stamp_set	Կնիք՝ ֆայլում — երևում է հյուրի էկրանին և անվանվում է տպված հաշիվներում
+stamp_none	Կնիք՝ չկա
+choose_payment_qr	Ընտրել վճարման QR
+clear_payment_qr	Մաքրել վճարման QR
+payment_qr_set	Վճարման QR՝ ֆայլում — երևում է հյուրի էկրանին (այնտեղ փոխարինում է գումարի UPI QR-ը)
+payment_qr_none	Վճարման QR՝ չկա — վճարելիս գումարի QR UPI ID-ից
+aggregator_import	Ագրեգատորի պատվերներ (ֆայլ)
+aggregator_import_help	Ըստ ցանկության տեղական ներմուծում. դրեք import_aggregator_orders.json պահուստների պանակում (զանգված կամ {"orders":[…]}) , ապա հպեք Ներմուծել։ Երբեք չի արգելափակում դրամարկղը. կենդանի Zomato/Swiggy-ն Cloud է։
+import_aggregator_file	Ներմուծել ագրեգատորի ֆայլ
+team_pick_ph	Խմբագրելու անձնակազմ — անուն, օգտանուն կամ ընտրություն
+select_staff	Ընտրել այս աշխատակցին
+rights_help	Այս մարդու գումարի և սրահի գործողությունները — հպեք փոխելու համար. Թույլատրված → Պետք է ղեկավարի PIN → Թույլատրված չէ։ Հաշիվը նորից տպելը միայն հաշիվների համար է. խոհանոցի կայանները ներքևի ցանկն են։
+dish_picker_help	Որոնեք կամ թերթեք մեր ուտեստները և հպեք մեկին՝ անունն ու լուսանկարը լրացնելու — կամ պահեք ձեր անունը։ Դրեք ձեր գինը (0-ն լավ է), ապա Ավելացնել ապրանք։
+close_dish_list	Փակել ուտեստների ցանկը
+own_item_name	Օգտագործել սա որպես ձեր ապրանքի անուն
+on_your_menu	Ձեր մենյուում
+edit	Խմբագրել
+schemes	Սխեմաներ / առաջարկներ
+schemes_help	BOGO, տոկոս զեղչ և ֆիքսված կոմբո։ Կոմբոները բացվում են խոհանոցի տողերի Ուղարկել KOT-ում. բաղադրիչները մնում են պահված, մինչև կոմբոն աշխատի։ Օրինակ՝ Գնիր 2 Thali ստացիր 1 Chaas
+scheme_bogo_ph	Գնիր 2 Thali ստացիր 1 Chaas
+add_scheme	Ավելացնել BOGO
+schedule_ph	Ժամեր / ուրախ ժամ — Երկ-Ուրբ 07:00-11:00 կամ HappyHour 17:00-19:00=150
+upi_vpa_ph	UPI նույնացուցիչ (VPA)
+upi_payee_ph	UPI ստացողի անուն (ըստ ցանկության)
+upi_qr	UPI QR
+show_upi_qr	Ցույց տալ UPI QR
+close_upi_qr	Փակել
+upi_qr_help	Հյուրը սկանավորում և վճարում է։ Վճարելուց հետո հպեք Ընդունել վճարում։ Երկրորդ էկրան՝ բացեք Սերվերի URL /display LAN-ում։
+kot_recall	Հետ կանչել
+recently_done	Վերջերս ավարտված
+recall_kot_ph	Հետ կանչելու KOT #
+role_help_customer	Դեր՝ Հաճախորդ — հաշիվ (նրանք մեզ պարտք են)։ Նույն գործընկերը կարող է նաև ապրանք մատակարարել։
+role_help_both	Դերեր՝ Հաճախորդ + Մատակարար — մեկ գործընկեր, հաշիվ և վճարման մատյաններ, զուտը Հաշվետվություններում։
+role_help_supplier	Դեր՝ Մատակարար — գնումների համար նրանց պարտք ենք։
+dine_in_pick_table	Տեղում — ընտրեք սեղան Սրահում
+choose_table	Ընտրել սեղան
+change_table	Փոխել սեղանը
+pick_table_banner	Ընտրեք սեղան այս պատվերի համար
+items_word	ապրանք
+items_section	Ապրանքներ
+back_to_order	Վերադառնալ պատվերին
+new_items_head	Դեռ չի ուղարկվել
+price_ph	Գին
+price_ph_gst_inside	Գին ({tax} ներառված)
+cancel_needs_table	Խոհանոցն ունենալուց հետո չեղարկելու համար բացեք այս պատվերը Սրահից (սեղան) — դրամարկղի KOT-երը մնում են թերթիկի վրա, մինչև վճարում ընդունեք
+tax_rates_missing_hint	Այս ուտեստներում {tax} դրույք չկա — Մենյուում դրեք Հարկի դրույք (գներն արդեն ներառում են {tax}՝ {tax} ներառված բաժնում)
+taxable_value	Հարկվող արժեք
+gst_inside_price_note	({tax} ներառված)
+start_with_template	Սկսել մեր մենյուի կաղապարով
+template_heading	Մեր մենյուի կաղապարը
+template_info	{c} կատեգորիա և {d} ուտեստ լուսանկարներով, ավելացնելու պատրաստ։ Գները սկսվում են ₹0-ից — հետո դրեք ձերը։
+template_import	Ներմուծել ամբողջ կաղապարը
+template_confirm	Ավելացնե՞լ {d} ուտեստ իրենց կատեգորիաներով։ Արդեն ունեցած ուտեստները մնում են ինչպես կան։
+template_yes	Այո, ներմուծել
+template_importing	Մենյուի ներմուծում…
+template_import_progress	Ներմուծում… {d}/{t}
+template_done	Մեր կաղապարի ամեն ուտեստ ձեր մենյուում է։
+template_imported	Ավելացվել է {d} ուտեստ և {c} կատեգորիա — գները դրեք այս էկրանում
+client_template_heading	Հաճախորդի մենյու
+client_template_info	{title}՝ {c} կատեգորիա, {d} ուտեստ գներով, լուսանկարներով և այլանուններով։ Միայն բացակայող ուտեստները — արդեն ունեցած անունները մնում են։
+client_template_import	Ներմուծել այս մենյուն
+client_template_confirm	Ավելացնե՞լ {d} ուտեստ {title}-ից։ Արդեն ունեցածները մնում են ինչպես կան։
+client_template_importing	{title} ներմուծում…
+client_template_done	{title}-ի ամեն ուտեստ ձեր մենյուում է։
+client_template_imported	Ավելացվել է {d} ուտեստ և {c} կատեգորիա {title}-ից
+resv_heading	Ամրագրումներ
+resv_name_ph	Հյուրի անուն
+resv_phone_ph	Հեռախոս (ըստ ցանկության)
+resv_guests_ph	Հյուրեր
+resv_when_ph	Երբ — 20:30, վաղը 13:00
+resv_table_ph	Սեղան (ըստ ցանկության)
+resv_add	Ամրագրել
+resv_seat	Նստած
+resv_none	Առաջիկա ամրագրումներ չկան։
+guests_word	հյուր
+delivery_by_ph	Առաքում (առաքիչի կամ անձնակազմի անուն)
+kitchen_all_day	Հիմա եփելու՝ {items}
+kitchen_all_day_head	Հիմա եփելու
+kitchen_tab_live	Կենդանի
+kitchen_tab_recall	Հետ կանչել
+kitchen_tab_stations	Կայաններ
+split_bill	Բաժանել հաշիվը
+split_go	Առանձին հաշիվ սարքել
+cancel	Չեղարկել
+opening_client	Կլիենտի բացում…
+preparing_desk	Սեղանի պատրաստում…
+opening_server	Սերվերի բացում…
+creating_server	Սերվերի ստեղծում…
+split_help	Հպեք ուտեստներին, որ վճարում է մեկ հյուր · ընտրված է {n}
+split_send_first	Նախ ուղարկեք KOT — առանձին հաշիվ կարող են գնալ միայն խոհանոցն ունեցած ուտեստները
+split_pick_some	Նախ հպեք առանձին հաշվի ուտեստներին
+split_done	Առանձին հաշիվը արված է — այն սրահում է այս սեղանի կողքին
+split_marked	առանձին հաշիվ
+order_empty_pick	Պատվերը դատարկ է — ուտեստ ընտրելու համար հպեք վերևի Ավելացնել ուտեստներ։
+add_dishes	Ավելացնել ուտեստներ
+order_so_far	Այս պատվերում՝ {n} · {total}
+no_dish_match	«{q}»-ին համընկնող ուտեստ չկա
+pick_dishes_help	Հպեք ուտեստին՝ ավելացնելու · կատեգորիա ընտրեք ցանկը նեղացնելու համար
+pick_done	Պատրաստ է
+pick_done_dd	Պատրաստ է · {label}
+printer_route_mode	Եթե այս տեղում մի քանի տպիչ կա
+printer_mode_first	Առաջինը, որ աշխատում է
+printer_mode_all	Տպել բոլորում
+kot_show_area	Գոտի
+kot_hide_area	Թաքցնել գոտին
+kot_show_item_hdr	Ապրանք · Քանակ
+kot_hide_item_hdr	Թաքցնել սյունակները
+kot_show_title	Վերնագրի տող
+kot_hide_title	Թաքցնել վերնագիրը
+kot_field_order	Տպման կարգ
+kot_field_up	Վեր տեղափոխել
+kot_field_down	Վար տեղափոխել
+kot_field_cycle	Ընտրել հաջորդը
+kot_field_select	Ընտրել հաջորդը
+kot_field_time	Ժամ
+kot_field_kot_no	KOT №
+kot_field_area	Գոտի
+kot_field_table	Սեղան
+kot_field_shop	Խանութի անուն
+kot_field_waiter	Անձնակազմ
+kot_field_station	Կայան
+app_template_blurb_extra	Նաև՝ Սեփականատեր Zahir, Ադմին Asif, Մատուցող Nawaz; FOH կողային վահանակ; պատմություն 4 ժամից հետո; Այսօր շերտը անջատված; կոմպակտ KOT։
+dishes_n	{n} ուտեստ
+recipe_ph	Բաղադրատոմս (ըստ ցանկության) — մեկ բաժինը օգտագործում է՝ Բրինձ=0.2, Պանիր=0.15
+reorder_ph	Գնել ավելին՝
+set_reorder	Դնել վերապատվերի մակարդակ
+low_stock_alert	Սպառվում է — շուտով գնեք՝ {items}
+unpriced_note	Ձեր մենյուի {n} ուտեստ դեռ գին չունի — գին դնելուց առաջ հաշիվը 0 է։
+show_unpriced	Ցույց տալ միայն առանց գնի ուտեստները
+show_all_dishes	Ցույց տալ բոլոր ուտեստները
+role_waiter	Մատուցող
+role_kitchen	Խոհանոց
+role_title_rest_ph	Պաշտոն (օր. Կապիտան, Գլխավոր խոհարար)
+preset_help_rest	Մատուցող՝ պատվերներ է վերցնում և սեղաններ է վարում։ Գանձապահ՝ նաև վճարում է ընդունում։ Խոհանոց՝ խոհանոցի էկրանը։ Կառավարիչ՝ նաև մենյու, չեղարկում և զեղչ։
+kind_raw	Հումք
+kind_resale	Գնված և վերավաճառված
+kind_dish	Մեր պատրաստած ուտեստ
+buy_unit_ph	Միավոր (kg, լիտր, հատ)
+add_another_way	+ Ավելացնել այլ ձև
+parts_status	Մուտքագրված է {a}՝ {b}-ից · մնացել է {c}
+save_expense	Պահել ծախսը
+rest_ph	Մնացորդ
+low_badge	Ցածր
+stock_empty	Դեռ պաշար չկա — Գնումում գրածը երևում է այստեղ։
+recent_changes	Վերջին փոփոխություններ
+lane_declared_label	Հարկային հաշիվ
+lane_owner_label	Կանխիկ հուշագիր
+money_lane_bill	Հաշիվ՝ {lane}

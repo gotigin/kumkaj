@@ -1,0 +1,835 @@
+# Armenian — Հայերեն (hy). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	Սուրհանդակային-գործակալական գրքեր + ամրագրման գրասեղան. Անվճար անցանց:
+unlock	Ապակողպել
+pin_hint	Սեփականատիրոջ PIN-ը սկսվում է 0000-ով
+sell	Ամրագրում
+buy	Վճարեք
+books	Օրվա մատյան
+books_help	Այսօրվա դիրքորոշումը. Ամրագրում = ծանրոցներ: Վճարում = փոխադրողի հաշիվներ և ծախսեր: Կողմեր ​​= առաքիչներ և փոխադրողներ:
+buy_help	Ծախսային վաուչերներ և փոխադրողի հաշիվներ (դրամից դուրս): Հաշվի վրա մնում է կուսակցության մատյանում:
+sell_money_in	Ամրագրեք ծանրոց
+buy_money_out	Ծախսեր / փոխադրողի հաշիվ
+record_purchase	Գրանցել գնումը
+add_expense	Ծախսի օրդեր
+bank_book	Բանկային մատյան
+credit_help	Կուսակցության ID-ն եզակի է (անունները կարող են կրկնվել): Դերեր՝ առաքող (AR), փոխադրող (AP) կամ երկուսն էլ այդ ID-ում: Լեդջերը մնում են առանձին; հաշվետվությունները ցույց են տալիս զուտ.
+party_kind_ph	Հատուկ դեր (ըստ ցանկության) — կամ հպեք վերևում գտնվող չիպի վրա
+parties_list_heading	Պահպանված երեկույթներ
+reports_help	Օրվա մատյան, պարտապաններ և պարտատերեր, բանկային մատյան, ծախսի օրդերներ, շահույթ և վնաս։
+reports_today	Օրվա մատյան (այսօր)
+reports_month	Շահույթ և վնաս (ամիս)
+reports_aging	Չմարված / Դտ-Կտ
+reports_balance_sheet	Հաշվեկշիռ
+reports	Բանկային մատյան և շահույթ/վնաս
+refresh	Թարմացնել
+undo	Հետարկել
+start_tracking	Սկսել հաշվառումը
+stock_minus	− Պաշար
+stock_plus	+ Պաշար
+settle_cash	Կանխիկը փակել
+settle_card	Քարտով փակել
+items	Գները և ծառայությունները
+nav_items	Գները
+more	Ավելին
+your_items	Ձեր դրույքաչափերը
+items_help	Յուրաքանչյուր տող մի դրույքաչափ է (օրինակ՝ մակերեսային գոտի A): Միավորը սովորաբար կգ է: Հպեք՝ խմբագրելու համար:
+add_item	Ավելացնել տոկոսադրույքը
+new_item	Նոր դրույքաչափ
+adding_item	Նոր դրույքաչափի ավելացում
+editing_item	Խմբագրում
+save	Պահել
+remove	Հեռացնել
+empty_catalog	Դեռ ոչ մի դրույքաչափ: Բացեք Գները և ծառայությունները, ավելացրեք մեկը (անուն + գին, միավոր կգ), ապա ամրագրում:
+counter_sale	Վաճառքի ամրագրում
+total	Ընդամենը
+cash	Կանխիկ
+upi	UPI
+card	Քարտ
+credit	Գործընկերներ
+clear	Մաքրել
+ready_to_sell	Գրանցելուն պատրաստ
+today_prefix	Այսօր
+today_mid	այսօր
+owed	չմարված
+round_word	կլորացում
+back	Հետ
+sold_out	Առկա չէ
+restock	Վերալիցքավորել
+not_tracked	Չի հաշվառվում
+in_stock	պաշարում
+marked_sold_out	Նշված է որպես առկա չէ
+add_upper	ԱՎԵԼԱՑՆԵԼ
+na	չկա
+qty	Քաշ/Քանակ
+unit_at	Դրույք @
+actual	Փաստացի
+applied	Կիրառված
+note_ph	Նշում (ըստ ցանկության)
+rounded	ԿԼՈՐԱՑՎԱԾ
+split	Բաժանել
+counter	Վաճառասեղան
+parcel	Ծանրոց
+order	Պատվեր
+sales	Ամրագրումներ
+sales_refunds	Ամրագրումներ և հետվճարումներ
+day_close	Օրվա փակում
+reports_expenses	Բանկային մատյան և շահույթ/վնաս
+nav_reports	Հաշվետվություններ
+nav_settings	Կարգավորումներ
+nav_lock	Կողպել
+sidebar_settings	Կողային վահանակի կարգավորումներ
+sidebar_settings_help	Նույն պատկերակները, ինչ կողային ռելսում։ Քաշեք տողը՝ վերադասավորելու համար։ Անջատիչով ցույց տվեք կամ թաքցրեք։ Կարգավորումներն ու Կողպումը միշտ մնում են վահանակում։
+sidebar_always_on_short	Միշտ միաց.
+sidebar_back_settings	Հետ
+sidebar_shown	Ցուցադրված
+sidebar_hidden	Թաքնված
+sidebar_always_on	Միշտ վահանակում
+sidebar_shown_hint	Ցուցադրված է կողային ռելսում / ներքևի ներդիրներում
+sidebar_hidden_hint	Թաքնված է վահանակից
+sidebar_menu_items	Մենյու և ապրանքներ
+sidebar_enable_all	Միացնել բոլորը
+sidebar_disable_all	Անջատել բոլորը
+sidebar_order_saved	Կողային վահանակի կարգը պահվել է
+sidebar_visibility_saved	Կողային վահանակի տեսանելիությունը պահվել է
+amounts_hide	Թաքցնել
+amounts_show	Ցույց տալ
+no_sale_yet	Դեռ վաճառք չկա
+favorites	Սիրվածներ
+favorites_help	Հաճախ վաճառվող ապրանքներ՝ պահված ձեր մուտքի համար։ Ավելացրեք հաշվին կամ կազմեք ցանկը ներքևի բոլոր ապրանքներից։
+your_favorites	Ձեր սիրվածները
+all_items	Բոլոր ապրանքները
+no_favorites	Դեռ սիրվածներ չկան — ավելացրեք ապրանքներ ներքևի ցանկից։
+add_to_bill	Ավելացնել հաշվին
+added	Ավելացված
+owes_word	պարտք է
+selected_word	Ընտրված
+chip_clear_credit	մաքրել — Վարկ կամ վերցրու կանխավճար
+chip_missing_customer	Ընտրված հաճախորդը չկա — ընտրեք նորից
+chip_no_customer	Դեռ հաճախորդ չկա — մուտքագրեք անուն, ապա հպեք Վարկ
+credit_summary_fmt	{} հաճախորդ · բաց վարկ {} · պահված կանխավճարներ {}
+recent_label	Վերջինները՝
+inventory	Պաշար
+inventory_stock	Պաշար և մնացորդ
+branches	Մասնաճյուղեր
+branches_org	Մասնաճյուղեր և կազմակերպություն
+credit_customers	Կողմեր ​​(պարտապաններ և պարտատերեր)
+customer_name_ph	Գործընկերոջ անուն
+new_customer_ph	Նոր գործընկերոջ անուն
+item_name_ph	Գնահատման անվանումը (օրինակ՝ մակերեսային գոտի A)
+item_price_ph	Մեկ կգ / առաջին սալաքար
+start_template	Արտադրանք
+next_booking	Հաջորդ ամրագրումը
+destination_ph	Նպատակային քաղաք / գոտի
+consignee_ph	Ստացողի անունը
+consignee_phone_ph	Ընդունիչ հեռախոս
+consignee_address_ph	Առաքման հասցե
+origin_name_ph	Ուղարկողի անունը
+origin_phone_ph	Ուղարկողի հեռախոս
+origin_address_ph	Վերցնելու / ծագման հասցե
+booking_consignor_heading	Առաքող (հաճախորդ / ուղարկող)
+booking_consignee_heading	Ստացող (ստացող)
+booking_consignor_hint	Ընտրեք խնջույք, որը պետք է լրացվի, կամ դատարկ թողեք ներս մտնելու համար: Պահանջվում է տան պիկապի և RTO-ի համար։
+booking_consignee_hint	Ծանրոց ստացող. Դատարկ թողեք վաճառասեղանին մուտքագրելու համար:
+weight_kg_ph	Իրական կգ
+length_cm_ph	L սմ
+breadth_cm_ph	B սմ
+height_cm_ph	H սմ
+chargeable_kg	Վճարովի կգ
+awb_label	AWB
+booking_help	Առաքող + ստացող (դատարկ Լավ) → նպատակակետ → կշռել → ընտրության դրույքաչափ → Հաշիվ/Կանխիկ → վճարել: AWB-ն տպում է անդորրագրի վրա: Հաջորդ ամրագրումը մաքրում է գրասեղանը: Rounded-ը սկսվում է հավասար է Կիրառվածի — խմբագրել միայն հաշիվը կլորացնելու համար:
+cart_empty_hint	Գրասեղանը դատարկ է. առաքողը/ստացողը կամընտիր է, սահմանեք նպատակակետը և քաշը, սեղմեք ԱՎԵԼԱՑՆԵԼ սակագնի վրա, այնուհետև վճարեք:
+team	Թիմ
+team_pins	Թիմ և PIN
+my_pin_settings	Իմ PIN-ը
+settings_hub_help_my_pin	Փոխեք այս սարքում մտած անձի ապակողպման PIN-ը։
+team_self_help	Միայն դուք կարող եք փոխել ձեր ապակողպման PIN-ը (և կամընտիր մուտքի գաղտնաբառը): Հարցրեք սեփականատիրոջը, արդյոք ձեզ տարբեր էկրաններ կամ իրավունքներ են պետք:
+backup_settings	Պահուստ և կարգավորումներ
+lock_app	Կողպել հավելվածը
+pick	Ընտրել
+select	Ընտրել
+advance	Կանխավճար
+owner	Սեփականատեր
+staff	Անձնակազմ
+photo	Լուսանկար
+auto	Ավտո
+prev	Նախորդ
+next	Հաջորդ
+ok	OK
+this_shop	Սերվեր
+extra_till	Կլիենտ
+off	Անջ.
+server	Սերվեր
+client	Կլիենտ
+language_currency	Լեզու և արժույթ
+language	Լեզու
+choose_language	Ընտրեք ձեր լեզուն
+language_setup_hint	Հետևեք այս սարքի լեզվին կամ ընտրեք ինքներդ։
+lang_follow_platform	Սարքի լեզու
+lang_pick_user	Ընտրել լեզու
+lang_platform_now	Սարքի լեզուն այժմ
+selected_language	Ընտրված
+continue	Շարունակել
+this_device	ԱՅՍ ՍԱՐՔԸ
+device_use_q	Ինչպե՞ս կօգտագործվի այս սարքը։
+last_server_mode	Սերվեր էր — հպեք շարունակելու համար
+last_client_mode	Կլիենտ էր — հպեք շարունակելու համար
+choose_server	Ընտրեք սերվեր
+choose_server_hint	Բացեք առկա սերվեր կամ ստեղծեք մեկը այլ բիզնեսի համար։
+create_new_server	Ստեղծել նոր սերվեր
+open_server	Բացել
+new_server_name_ph	Նոր սերվերի անուն (ըստ ցանկության)
+server_remove_pin_ph	Սեփականատիրոջ PIN՝ սերվեր հեռացնելու համար
+only_owner_remove_server	Միայն Սեփականատերը կարող է հեռացնել սերվեր
+owner_pin_remove_server	Այս սերվերը հեռացնելու համար պետք է սեփականատիրոջ PIN-ը
+device_setup_help	Սերվերը մատյանները պահում է այստեղ։ Կլիենտը զուգակցվում է Սերվերի հետ։
+currency	Արժույթ
+backup	Պահուստ
+settings_sec_diag	Ախտորոշում
+settings_hub_help	Բացեք մեկ բաժին միանգամից — ավելի քիչ ոլորում, ավելի պարզ ընտրություն։
+settings_sec_devices	Այլ սարքեր
+settings_sec_alerts	Ծանուցումներ
+alerts_help	Որքան ժամանակ կարգավիճակի հաղորդագրությունները մնում են էկրանին ձեզ համար (այս մուտքը)։
+snack_secs_ph	Վայրկյան (3–60, լռելյայն 10)
+snack_secs_save	Պահել ծանուցման ժամանակը
+snack_secs_saved	Ծանուցման ժամանակը պահվել է — {n} վայրկյան
+snack_secs_bad	Մուտքագրեք վայրկյանները որպես թիվ (3–60)
+cancelled	Չեղարկված
+cancel	Չեղարկել
+opening_client	Կլիենտի բացում…
+preparing_desk	Սեղանի պատրաստում…
+opening_server	Սերվերի բացում…
+creating_server	Սերվերի ստեղծում…
+diag_privacy_help	Մատյանները մնում են այս սարքում։ Գաղտնիքները (PIN, գաղտնաբառեր) երբեք չեն պահվում։ Սարքից դուրս փաթեթ կիսելը ամեն անգամ պահանջում է ձեր բացահայտ հաստատումը — երբեք չի վաճառվում և չի տրվում երրորդ կողմերին։
+diag_level	Մանրամասնության մակարդակ
+diag_level_error	Սխալներ
+diag_level_warn	Զգուշացումներ
+diag_level_info	Տեղեկություն
+diag_level_debug	Վրիպազերծում
+diag_support_start	Սկսել 30 րոպե աջակցության սեанс
+diag_support_stop	Ավարտել աջակցության սեանսը
+diag_support_started	Աջակցության սեանսը միացված է — Վրիպազերծման մանրամասն 30 րոպե
+diag_support_ended	Աջակցության սեանսն ավարտվեց
+diag_export_local	Արտահանել տեղական պատճեն
+diag_export_local_done	Տեղական ախտորոշումը պատրաստ է {path}-ում — ընտրեք որտեղ պահել պատճենը
+diag_approve_send	Հաստատել սարքից դուրս կիսելը
+diag_send_heading	Կիսել սարքից դուրս
+diag_send_help	Հաստատումը մեկ փաթեթի համար է, ապա սպառվում է։ Ժամանակավոր — միայն արտադրանքը ուղղելու կամ բարելավելու համար։ Երրորդ կողմերին չի տրվում։ Աշխատում է Linux, Windows, macOS և Android-ում։
+optional_login_heading	Ըստ ցանկության մուտք
+rights_heading	Իրավունքներ
+booking_scope_heading	Ներքին / Միջազգային
+diag_send_approved	Կիսելը հաստատված է մեկ փաթեթի համար (շուտով կսպառվի)
+diag_export_send	Ստեղծել կիսվող փաթեթ (պետք է հաստատում)
+diag_export_send_done	Կիսվող փաթեթը պատրաստ է {path}-ում — ընտրեք որտեղ պահել, ապա ուղարկեք միայն Kumkaj-ի աջակցությանը
+diag_save_bundle	Պահել ախտորոշման պատճենը
+diag_bundle_saved	Ախտորոշման պատճենը պահվել է {path}-ում
+diag_bundle_failed	Ախտորոշման պատճենը այնտեղ չպահվեց — փորձեք նորից
+diag_clear	Մաքրել ախտորոշման մատյանները
+diag_cleared	Ախտորոշման մատյանները մաքրվել են
+use	Օգտագործել
+add_branch	Ավելացնել մասնաճյուղ
+add_conversion	Ավելացնել փոխարկում
+add_item_plain	Ավելացնել ապրանք
+add_note	Ավելացնել նշում
+add_opening_balance	Ավելացնել սկզբնական մնացորդ
+add_rider	Ավելացնել հեծանվորդ
+add_staff	Ավելացնել անձնակազմ
+add_unit	Ավելացնել միավոր
+add_use_name	Ավելացնել / օգտագործել այս անունը
+allow_extra_tills	Թույլատրել լրացուցիչ դրամարկղներ
+amend	Ուղղել
+apply_country_pack	Կիրառել երկրի փաթեթը
+datetime_appearance	Ամսաթվի և ժամի տեսք
+datetime_appearance_help	Գրքերը պահում են տարվա առաջին RFC3339-ը: Սրանք միայն փոխում են ամսաթվերի և ժամացույցների տեսքը անդորրագրերի, պիտակների, հաշվետվությունների և էկրանի վրա:
+datetime_example	Օրինակ հիմա՝ {ex}
+date_order	Ամսաթվի կարգ
+date_order_dmy	D/M/Y
+date_order_mdy	M/D/Y
+date_order_ymd	Y-M-D
+time_format	Ժամացույց
+time_format_24h	24 ժամ
+time_format_12h	12 ժամ
+attach_bill_photo	Կցել հաշվի լուսանկար
+attach_pdf	Կցել PDF
+attach_photo	Կցել լուսանկար
+bank	Բանկ
+bank_in	Բանկ մուտք
+bank_out	Բանկից ելք
+bank_to_till	Բանկ → դրամարկղ
+till_to_bank	Դրամարկղ → բանկ
+mark_cleared	Նշել մաքրված
+unmark	Հանել նշումը
+role_both	Երկուսն էլ
+role_carrier	Փոխադրող
+role_cashier	Գանձապահ
+role_consignor	Առաքող
+role_manager	Կառավարիչ
+role_supplier	Մատակարար
+branch_name_sell_ph	Մասնաճյուղի անունը, որից վաճառում եք
+bring_my_book	Բեր իմ մատյանը
+business_tax_id_ph	Բիզնեսի հարկային համար
+card_amount_ph	Գումար քարտով
+cash_amount_ph	Գումար կանխիկ
+upi_amount_ph	UPI գումար
+carrier_cost_ph	Փոխադրողի արժեքը
+carrier_party_ph	Փոխադրող կուսակցություն
+choose_icon	Ընտրել պատկերակ
+choose_logo	Ընտրել լոգո
+choose_receipt_stamp	Ընտրեք անդորրագրի կնիքը
+choose_payment_qr	Ընտրել վճարման QR
+clear_icon	Մաքրել պատկերակը
+clear_logo	Մաքրել պատկերանշանը
+clear_photo	Մաքրել լուսանկարը
+clear_stamp	Մաքրել կնիքը
+clear_payment_qr	Մաքրել վճարման QR
+print_faces	Տպել դեմքեր (անդորրագիր / ժամանակաշրջանի հաշիվ)
+print_faces_help	Ընտրովի դրոշմակնիք և վճարման QR ձեր պատկերանշանի կողքին ամրագրման անդորրագրերի և ժամկետային օրինագծերի վրա:
+awb_pools_heading	Carrier AWB համարի լողավազաններ
+add_awb_pool	Ավելացնել AWB լողավազան
+awb_pool_carrier_ph	Փոխադրող կուսակցության անվանումը
+awb_pool_start_ph	Սկսել ոչ:
+awb_pool_end_ph	Վերջ ոչ.
+awb_pool_prefix_ph	Նախածանց (ըստ ցանկության)
+awb_pool_label_ph	Պիտակը (ըստ ցանկության)
+pieces_ph	Կտորներ (դատարկ = 1) - ընդլայնել բեռների / բազմաշերտ
+bulk_awbs_ph	Զանգվածային AWB-ներ — տեղադրեք շատերը (նոր տող կամ ստորակետ) մեկ կարգավիճակի առաջխաղացման համար
+tds_cut_ph	TDS կտրվածք (ըստ ցանկության)
+discount_ph	Զեղչ (ըստ ցանկության)
+cheque_no_ph	Ստուգեք համարը (ըստ ցանկության)
+bill_reminder_chase	Օրինագծի հիշեցումների հետապնդման ցուցակ
+month_mix_report	Ամսվա խառնուրդի հաշվետվություն
+copy_month_gst_csv	Պատճենել ամսվա GST CSV
+domestic	Ներքին
+international	Միջազգային
+pick_logo	Ընտրեք լոգոն
+booking_scope_hint_domestic	Ծավալային ÷5000 (կենցաղային) — հպեք Միջազգային ÷6000 օդի համար
+booking_scope_hint_intl	Ծավալային ÷6000 (միջազգային օդ) — թակել Կենցաղային խանութի համար ÷5000
+cod_register	COD գրանցամատյան
+collect_cod	Հավաքեք COD (AWB)
+consignments_dispatch	Բեռներ և առաքում
+consignor_party_ph	Առաքողի / կուսակցության անվանումը
+copy_day_book_csv	Պատճենել օրվա մատյանը CSV
+copy_day_close	Պատճենել օրվա փակումը
+copy_items_csv	Պատճենել ապրանքները CSV
+copy_outstanding_csv	Պատճենել չմարվածը CSV
+copy_parties_csv	Պատճենել գործընկերներին CSV
+copy_party_ledger_csv	Պատճենել գործընկերոջ մատյանը CSV
+copy_receipt	Պատճենել կտրոնը
+copy_report	Պատճենել հաշվետվությունը
+counted_cash_ph	Հաշված կանխիկը դարակում
+counter_agency_ph	Հաշվիչ / գործակալության անվանումը (ըստ ցանկության)
+create_backup	Ստեղծել պահուստ
+day_close_summary	Օրվա փակման ամփոփում
+delete_party	Ջնջել ընտրված գործընկերոջը
+dispatch_to_rider	Առաքում ամրագրված → հեծյալ
+docket_charge_ph	Docket վճար
+declared_value_ph	Հայտարարված արժեքը
+contents_ph	Բովանդակություն
+eway_ph	Էլեկտրոնային ճանապարհի թիվ
+insurance_label	Ապահովագրություն
+yes_label	Այո՛
+no_label	Ոչ
+print_route_label	Տպել երթուղին
+new_party_kind_label	Նոր կուսակցական տեսակ
+done_open_books	Արված է — բացիր մատյանները
+export_day	Արտահանել օրը
+extra_note_expense_ph	Լրացուցիչ նշում վերջին ծախսի վրա
+extra_note_awb_ph	Լրացուցիչ նշում այս AWB / վաճառքի վերաբերյալ
+failed_delivery	Չհաջողվեց առաքում
+find_scan_awb	Գտնել / սկանավորել AWB
+forget_shop	Մոռացիր այս խանութը
+fuel_ph	Վառելիք
+handover_carrier	Ձեռքով ամրագրված → փոխադրող
+import_day	Ներմուծել օրը
+import_items_csv	Ներմուծել ապրանքներ / գներ CSV…
+import_parties_csv	Ներմուծել գործընկերներ CSV…
+import_pincodes_csv	Ներմուծել CSV կոդերը…
+import_carrier_bill_csv	Ներմուծել օպերատորի հաշիվ CSV…
+copy_carrier_bill_report	Պատճենել վերջին օպերատորի օրինագծի հաշվետվությունը
+use_carrier_cost	Օգտագործեք կրիչի արժեքը
+rate_carrier_ph	Օպերատոր (դատարկ = մեր վաճառքի տոկոսադրույքը)
+rate_party_ph	Խնջույք (դատարկ = բոլոր հաճախորդները)
+carrier_pick_ph	Փոխադրող՝ արժեքի համար (համեմատությունից)
+item_name	Ապրանքի անուն
+load_bulk_row	Բեռնել զանգվածային շարք → գրասեղան
+login_id_ph	Օգտանուն
+mark_delivered	Մարկը մատուցեց
+manifest_cod_total	COD ընդհանուր
+manifest_received_by	Ստացել է
+manifest_sign	Ստորագրեք
+ndr_address_wrong	Հասցեն սխալ է
+ndr_customer_unavailable	Առկա չէ
+ndr_door_locked	Դուռը կողպված է
+ndr_other	Այլ
+ndr_refused	Հրաժարվել է
+out_for_delivery	Դուրս է առաքման
+print_drs	Տպել DRS
+print_run_sheet	Տպել գործարկման թերթիկը
+reattempt	Կրկին փորձ
+rider_cod_handed_ph	COD հանձնվեց
+settle_rider_cod	Կարգավորել հեծանվորդ COD
+mode_desk	Գրասեղան
+mode_rider	Հեծյալ
+waiting_office	սպասում է գրասենյակ հասնելուն
+capture_signature	Գրավել ստորագրությունը
+incoming_manifest	Մուտքային մանիֆեստ
+pickup_request	Վերցնելու հարցում
+pickup_run	Պիկապ վազք
+auto_assign_area	Ավտոմատ նշանակման տարածք
+reorder_stops	Վերադասավորումը դադարում է
+settle_rider_pay	Կարգավորեք հեծանվորդի վճարը
+vehicle_inspect	Տրանսպորտային միջոցների զննում
+print_docket	Տպել դոկտ
+franchise_statement	Ֆրանշայզի հայտարարություն
+tally_export	Tally վաուչերի արտահանում
+open_whatsapp	Բացեք WhatsApp-ը
+copy_sms	Պատճենել SMS տեքստը
+pick_barcode_image	Ընտրեք պատկեր սկանավորման համար
+share_receipt_whatsapp	Համօգտագործեք անդորրագիրը WhatsApp-ում
+delivery_feedback	Առաքման հետադարձ կապ
+lan_self_book	LAN ինքնուրույն ամրագրում
+new_party_clear	Նոր գործընկեր (մաքրել ձևը)
+new_party_kind_ph	Խնջույքի նոր տեսակ (մատակարար / փոխադրող)
+next_country	Հաջորդ երկիր
+prev_country	Նախորդ երկիր
+note_gstin_ph	Նշում / GSTIN / պայմանագրի հիշեցում
+note_pod_ph	Նշում / POD (ըստ ցանկության)
+on_account_ap	Հաշվին (AP)
+org_optional_ph	Կազմակերպություն (ըստ ցանկության)
+paid_now	Հիմա վճարված
+pairing_code_ph	Զուգակցման կոդ
+pair_now	Զուգակցիր հիմա
+party_name_selected_ph	Գործընկերոջ անուն (կամ օգտագործիր ընտրվածը)
+password_ph	Գաղտնաբառ
+pay_ap_card	Վճարիր AP քարտով
+pay_ap_cash	Վճարիր AP կանխիկ
+pay_ap_upi	Վճարիր AP UPI-ով
+period_bill	Ժամանակահատվածի հաշիվ
+period_bill_party	Ժամկետային հաշիվ (կուսակցություն)
+pick_pod_photo	Ընտրեք POD լուսանկարը
+print_awb_label	Տպել AWB պիտակը
+print_open	Տպել / բացել
+reason_amend_ph	Պատճառ ուղղման / չեղարկման / վերադարձի
+reason_note_ph	Պատճառ / նշում (կորուստ, հաշվարկ, …)
+record_day_close	Գրանցել օրվա փակումը
+refresh_from_shop	Թարմացնել խանութից
+refund	Վերադարձ
+remit_cod	Փոխանցել COD (կուսակցություն)
+remove_selected	Հեռացնել ընտրվածը
+restore_backup	Վերականգնել պահուստից
+rider_name_ph	Հեծյալի անունը
+rider_phone_ph	Rider հեռախոս
+riders	Հեծյալներ
+riders_own_fleet	Հեծյալներ (սեփական նավատորմ)
+rollup	Ամփոփում
+save_booking_measures	Պահպանեք ամրագրման միջոցառումները
+save_brand	Պահել ապրանքանիշը
+save_business_id	Պահել բիզնեսի համարը
+save_business_name	Պահել բիզնեսի անունը
+save_features	Պահպանեք աշխատանքի կարգավորումը
+save_names	Պահել անունները
+server_ip_ph	Սերվերի IP (օր. 192.168.1.10)
+set_credit_limit	Կիրառել սահմանը գործընկերոջը
+set_login_selected	Կիրառել մուտքը ընտրվածին
+set_login_named	Կիրառել մուտքը {name}-ին
+shop	Խանութ
+start_fresh	Սկսել մաքուր
+stop_extra_tills	Կանգնեցնել լրացուցիչ դրամարկղները
+backup_auto	Ամեն օր ավտոմատ պահուստ · վերջինը {when} · վերջին 14 օրերը պահվում են {dir}-ում։
+backup_auto_none	Ամեն օր ավտոմատ պահուստ — առաջինը մի պահից կսկսվի։
+backup_copy_to	Պատճենը գնում է նաև {dir}։
+backup_copy_btn	Պահուստները պատճենել նաև թղթապանակ…
+autostart_off	Սկսիր այս համակարգչով
+autostart_on	Սկսվում է այս համակարգչով ✓ — հպեք կանգնեցնելու համար
+autostart_done_on	Այս համակարգիչն այժմ բացում է հավելվածը մեկնարկելիս — խանութի սերվերը վերադառնում է հոսանքի անջատումից հետո։
+autostart_done_off	Այս համակարգիչն այլևս չի բացում հավելվածը մեկնարկելիս։
+right_allowed	Թույլատրված
+right_with_approval	Հաստատումով
+right_denied	Թույլատրված չէ
+editing_staff	Իրավունքներ համար
+team_pick_ph	Խմբագրելու անձնակազմ — անուն, օգտանուն կամ ընտրություն
+select_staff	Ընտրել այս աշխատակցին
+rights_help	Իրավունքներ — հպեք՝ փոխելու համար. Թույլատրված է → Հաստատմամբ (այդ պահին ղեկավարի PIN կոդը) → Չի թույլատրվում:
+right_void_refund	Չեղյալ համարել կամ վերադարձնել ամրագրման գումարը
+right_amend_sale	Փոփոխել գրանցված ամրագրումը
+find_server	Գտնել խանութի սերվերը
+finding_server	Խանութի սերվերի որոնում այս Wi‑Fi-ում…
+no_server_found	Ոչինչ չի գտնվել։ Սերվերում՝ Կարգավորումներ → Այլ սարքեր → Թույլատրել լրացուցիչ դրամարկղներ (նույն Wi‑Fi)։ Կամ մուտքագրեք այնտեղ ցուցադրված IP-ն։
+servers_found_pick	Հպեք խանութին, որին ուզում եք միանալ։
+server_host_selected	Օգտագործվում է {host} — մուտքագրեք զուգակցման կոդը, ապա Զուգակցել հիմա։
+device_forgotten	Խանութը մոռացավ այս սարքը — նորից զուգակցեք խանութի ընթացիկ կոդով։ Սպասող պատվերները պահվում են։
+forget_device	Մոռացիր
+last_seen	տեսնվել է
+new_pair_code	Նոր զուգակցման կոդ
+lan_offline	Խանութի սերվերն անհասանելի է
+lan_offline_waiting	Սերվերն անհասանելի է · {n} սպասում են
+lan_connecting	Կապ խանութի հետ…
+pair_finishing	Ավարտվող զույգ… կիրառելով գրասենյակային գրքերը
+pair_opening	Գրասենյակի բացում…
+lan_live	Կենդանի
+lan_sending	{n} ուղարկվում է
+lan_sign_in_to_send	Նորից մտեք՝ {n} ուղարկելու համար
+lan_pair_again	Այս սարքը նորից զուգակցեք
+lan_update_app	Թարմացրեք հավելվածը. այս սարքը և գրասենյակային սերվերը տարբեր տարբերակներ ունեն
+allow_firewall	Թույլ տուր այլ սարքերին միանալ
+firewall_blocked	Այս համակարգչի firewall-ը արգելափակում է այլ սարքեր — հպեք Թույլ տուր այլ սարքերին միանալ։
+firewall_waiting	Սպասում է ադմինի հարցմանը…
+lan_join_help	Մյուս սարքում՝ Կլիենտի ռեժիմ → Գտիր խանութի սերվերը (կամ մուտքագրիր {addr}) → զուգակցման կոդ {code}։
+lan_pair_status	Wi‑Fi {addr}
+lan_join_help_no_addr	Այս սարքը միացրեք Wi‑Fi-ին՝ հասցե ունենալու համար։
+lan_no_address	Դեռ Wi‑Fi հասցե չկա — միացեք խանութի Wi‑Fi-ին։
+lan_not_listening	Սարքեր չի ընդունում ({port} պորտը զբաղված է)։ Վերագործարկեք հավելվածը։
+lan_tills_off	Լրացուցիչ դրամարկղներն անջատված են։ Թույլատրեք, որ այլ սարք միանա։
+paired_with	Զուգակցված է · {url}
+not_paired	Զուգակցված չէ
+choose_device_use	Ընտրեք Սերվեր կամ Կլիենտ։
+paired_note	Զուգակցված է։ Ապակողպեք վաճառելու համար կամ Թարմացրեք վերջինի համար։
+last_update_at	Վերջին թարմացում՝ {time}։
+pair_intro	Գտեք սերվերը կամ մուտքագրեք հասցեն և զուգակցման կոդը։
+queue_waiting	Սպասում է խանութին հասնելու ({n})՝
+queue_tries	Փորձվել է {n} անգամ · վերջին պատասխան՝ {e}
+save_backup_copy	Պահել պահուստային պատճեն…
+backup_copy_saved	Պահուստը պահվել է — պահեք այն այս սարքից դուրս (USB կամ այլ սարք)
+backup_copy_overdue	{n} օր է պահուստ չի դուրս եկել այս սարքից — Կարգավորումներ → Պահուստ
+backup_copy_failed	Պահուստը այնտեղ չպահվեց — ընտրեք այլ տեղ
+clock_off	Այս սարքի ժամացույցը {min} րոպե շեղված է խանութի սերվերից — դրեք ճիշտ ժամը
+printers_heading	Տպիչներ այս սարքի վրա
+printers_help	Գտեք իրական տպիչներ, ապա ընտրեք ստացական կամ AWB պիտակը: Յուրաքանչյուր աշխատանք ունի իր լայնությունը, դիմանկարը կամ լանդշաֆտը, և ինչպես են ուղարկվում բայթերը: Պիտակը տպում է շտրիխ կոդը: Դատարկ տեղ = մի տպիր.
+job_width	Բովանդակության լայնություն (mm)
+job_width_ph	Կամ մուտքագրեք լայնությունը՝ 40–210 մմ
+job_layout	Դասավորություն
+job_delivery	Ինչպես է ուղարկվում աշխատանքը
+job_size	Տառաչափ
+job_size_ph	օր. 18, 20, 26…
+save_receipt_format	Պահպանել անդորրագրի ձևաչափը
+save_label_format	Պահպանել պիտակի ձևաչափը
+test_receipt_format	Փորձարկման անդորրագիր
+test_label_format	Փորձարկման պիտակ
+test_receipt_sent	Ուղարկվել է նմուշի անդորրագիր
+test_label_sent	Ուղարկվել է պիտակի նմուշ
+test_print_no_printer	Այդ աշխատանքի համար տպիչ չկա. ավելացրեք մեկը այս վայրի տակ
+printers_host_only	Տպիչները տեղադրված են խանութի սարքի վրա (Սերվեր): Սա մինչև աշխատանք կուղարկի այնտեղ — Գտեք / ավելացրեք / նշանակեք մնալ սերվերում: Փորձնական էջը գնում է սերվեր:
+printers_pool_heading	Տպիչներ
+printers_routes_heading	Որտեղ է տպվում
+printer_label_ph	Անունը (օրինակ՝ գրասեղան)
+printer_target_ph	host:9100 · bt:MAC · usb:VID:PID · համակարգի անունը
+printer_mode_heading	Պրոֆիլ նոր արդյունքների համար
+printer_mode_standard	Ստանդարտ դիմանկար
+printer_mode_landscape	Ստանդարտ լանդշաֆտ
+printer_mode_thermal	Ջերմային
+printer_mode_standard_short	Դիմանկար
+printer_mode_landscape_short	Լանդշաֆտ
+printer_mode_thermal_short	Ջերմային
+printer_format_custom	Նոր հատուկ պրոֆիլ
+printer_format_custom_label	Հատուկ
+printer_format_custom_added	Այս տեղի համար հատուկ պրոֆիլ է ավելացվել
+add_printer	Ավելացնել տպիչ
+remove_printer	Հեռացնել վերջինը
+route_pick_ph	անդորրագիր կամ պիտակ
+route_add_printer_ph	Ավելացրեք տպիչ այս վայրում
+route_receipt	Անդորրագիր
+route_label	AWB պիտակ
+route_dont_print	Ոչ մի տպիչ նշանակված չէ
+route_add	Ավելացնել տեղում
+route_up	Վեր
+route_down	Վար
+route_remove	Հեռացնել վերջինը
+route_clear	Մաքրել տպիչները այս վայրի համար
+save_printers	Պահել տպիչները
+print_test_page	Տպել փորձնական էջ
+printers_saved	Այս սարքի համար պահված տպիչներ
+test_page_sent	Փորձնական էջն ուղարկվել է — ստուգեք տպիչը
+printers_found	Գտնվել է այս սարքում՝ {list}
+find_printers	Գտնել տպիչներ
+printers_looking	Փնտրվում են տպիչներ այս սարքում և Wi‑Fi…
+printers_tap_find	Այս Wi‑Fi-ում (չհեռացված կամ անցանց) հպեք «Գտնել տպիչներ» հերթերի համար, որոնք ընդունում են աշխատանքներ և ցանցային անդորրագրերի տպիչներ:
+printers_none_found	Տպիչներ չեն գտնվել. մուտքագրեք համակարգի տպիչի անունը կամ ցանցի հասցեն (օրինակ՝ 192.168.1.50):
+receipt_printer_ph	Տպիչ անդորրագրերի համար
+queue_refused	Խանութը չի ընդունել ({n}) — ստուգեք յուրաքանչյուրը դրամարկղում՝
+clear_not_accepted	Ստուգված է — մաքրեք այս ցանկը
+device_name_ph	Այս սարքի անունը
+lan_last_update	վերջին թարմացում {time}
+lan_not_accepted	{n} չի ընդունվել
+connected_now	հիմա կապված է
+backup_failed	Վերջին ավտոմատ պահուստը չհաջողվեց՝ {e}
+backup_overdue	{n} օր պահուստ չկա — պահեք հավելվածը բաց այս սարքում, որ կարողանա պահուստել։
+disk_low	Այս սարքում ազատ է միայն {mb} MB — պահուստները շուտով կձախողվեն։ Ազատեք տեղ։
+last_seen_devices	Վերջին անգամ երևացել է՝ {time}
+sync_interval	Համաժամեցում ամեն {secs} վ
+connection_to_shop	Կապ խանութի հետ
+supplier_name_ph	Մատակարարի անուն (կամ գործընկեր)
+supplier_ph	Մատակարար
+switch_device	Փոխել այս սարքը
+take_payment	Ընդունել վճարում
+tax_added_till	{tax} առանձին
+tax_inside_price	{tax} ներառված
+today_books	Այսօրվա գրքեր
+unlock_after_pairing	Մուտքագրեք PIN
+unlock_with_login	Ապակողպել մուտքով
+update_my_password	Թարմացնել իմ գաղտնաբառը
+update_my_pin	Թարմացրեք իմ PIN կոդը
+duress_heading	Արտակարգ ապակողպման PIN (միայն Սեփականատեր)
+duress_help	Ընտրովի: Եթե ​​այս PIN-ը մուտքագրված է ապակողպման ժամանակ՝ ձերի փոխարեն, գրքերի բոլոր գրառումները կջնջվեն (ամրագրումներ, մատյաններ, պատմություն) և գրասեղանը բացվում է որպես Սեփականատիրոջ տեսքը. գները, երեկույթները, գոտիները, անձնակազմը և կարգավորումները մնում են: Սխեման և կազմաձևերը չեն ջնջվում: Օգտագործեք միայն այն դեպքում, եթե ստիպված եք ապակողպել: Թողեք դատարկ և պահպանեք՝ անջատելու համար: Երբեք նույնը, ինչ որևէ մեկի PIN-ը:
+duress_pin_ph	Արտակարգ PIN (4–12 թվանշան)
+duress_confirm_ph	Կրկին մուտքագրեք հաստատելու համար
+save_duress_pin	Պահել արտակարգ PIN-ը
+clear_duress_pin	Անջատել արտակարգ PIN-ը
+duress_on	Արտակարգ ապակողպման PIN-ը միացված է
+duress_off	Արտակարգ ապակողպման PIN-ը անջատված է
+duress_saved	Արտակարգ ապակողպման PIN-ը պահվել է
+duress_cleared	Արտակարգ ապակողպման PIN-ը անջատվել է
+vehicle_ph	Տրանսպորտ
+void	Չեղյալ անել
+write_off_ap	Դուրս գրել AP
+write_off_nil	Դուրս գրում / զրոյական մնացորդ
+zone_ph	Գոտի (անունը գներից)
+caption_today	ԱՅՍՕՐ
+caption_bookings	ԱՄՐԱԳՐԵՐ
+caption_payments_today	ՎՃԱՐՈՒՄՆԵՐ ԱՅՍՕՐ
+caption_outstanding	ՉՄԱՐՎԱԾ
+caption_bank	ԲԱՆԿ
+paid_by	Վճարել է
+second_way	Երկրորդ եղանակ
+weight_in	Քաշը մեջ
+size_in	Չափս
+goods_received	Ստացված ապրանք
+expense_heading	Ծախս
+notes_attach_sale	Նշումներ և կցորդներ (ընտրված վաճառք)
+notes_attach_party	Նշումներ և կցորդներ (ընտրված գործընկեր)
+attachments_last_expense	Կցորդներ (վերջին ծախս)
+credit_limit_heading	Վարկի սահման (ընտրված / անվանված գործընկեր)
+pay_selected_heading	Վճարիր ընտրվածը (մարիր պարտքը / վերցրու կանխավճար)
+write_off_heading	Դուրս գրում (մաքրել առանց վճարման)
+pay_ap_heading	Վճարիր ինչ պարտք ենք նրանց (AP)
+country_tax	Երկիր և հարկ
+extra_tills_heading	Լրացուցիչ դրամարկղներ
+other_devices_help_heading	Կարգավորել այլ սարքեր
+other_devices_help	Այս սարքի վրա (Սերվեր). Այլ սարքեր → Թույլատրել հավելյալ գումարներ: Նշեք զուգավորման կոդը և Wi‑Fi հասցեն: Կտտացրեք «Թույլատրել այլ սարքերին միանալ», եթե այն հայտնվի: Համակարգչում հպեք Սկսել այս համակարգչից: Տեղադրեք հավելվածը, ընտրեք Client Mode, Գտեք խանութի սերվերը (կամ մուտքագրեք հասցեն), մուտքագրեք զուգավորման կոդը, Զուգավորեք հիմա: Պատվերները սպասում են սարքին, եթե Wi‑Fi-ն անջատվի, և գնում են, երբ սերվերը նորից պատասխանի:
+your_brand	Ձեր ապրանքանիշը (հավելվածում)
+units_heading	Միավորներ
+booking_measures	Ամրագրման միջոցառումներ
+drawer_count	Դարակի հաշվարկ (ըստ ցանկության)
+spreadsheet_csv	Աղյուսակ (CSV)
+bank_reconciliation	Բանկային համաձայնեցում (նշեք բանկային քաղվածքի դիմաց)
+book_add_product	Գիրք — ավելացրեք ապրանք / տոկոսադրույք
+book_opening_credit	Մատյան — սկզբնական վարկ
+account_kind	Հաշվի տեսակ (հպեք մեկին)
+active_ledger	Ակտիվ մատյան
+actual_total_cap	ՓԱՍՏԱՑԻ ԸՆԴՀԱՆՈՒՐ
+amend_help	Ընտրեք վաճառք ուղղելու, չեղյալ անելու կամ վերադարձնելու համար։ Ուղղումները պահում են ամբողջ պատմությունը։ Կլորացված Ընդհանուրը սկսում է հավասար Կիրառվածին — խմբագրեք միայն կլորացնելու համար։ Չեղյալն ու վերադարձը կարող են պահանջել Սեփականատիրոջ կամ Կառավարչի PIN (մուտքագրված վերևում; գրանցվում է ձեր անունով)։
+applied_total_cap	ԿԻՐԱՌՎԱԾ ԸՆԴՀԱՆՈՒՐ
+bank_balance	Բանկային մնացորդ
+bank_net_today	Բանկի զուտ այսօր
+branch_export_help	Export-ը գրում է օրվա նկարը պահուստային թղթապանակում և պատճենում այն ​​clipboard-ում: Մեկ այլ կետի օր ներմուծելու համար պահեք դրա ֆայլը որպես import_branch_snapshot.json այդ թղթապանակում, ապա հպեք Ներմուծում:
+brand_shown_help	Ցուցադրվում է հավելվածի ներսի էկրաններում։ Այս սարքում տեղադրված հավելվածի անունն ու պատկերակը մնում են հարթակի ցանկի տեսքով։
+app_icon	Հավելվածի պատկերակ
+logo_help	Ըստ ցանկության խանութի նշան հավելվածի էկրաններում։
+onboard_layout	Ինչ եք ստանում
+item_photo_help	Ըստ ցանկության։ Առանց լուսանկարի ցույց ենք տալիս ապրանքի անվան սկզբնատառերը։
+cash_in_hand	Կանխիկ դրամարկղում
+change_my_pin_heading	Փոխել իմ PIN-ը (միայն քոնը)
+connect_to_server	Միանալ Սերվերին
+counter_locked	Դրամարկղ 01 · Կողպված
+country_pack_help	Երկրի փաթեթը դնում է հարկի անունն ու հաշվարկը, ակնթարթային վճարման ուղին և հաշիվների վրա տպվող բիզնեսի նույնացուցիչը։ Kumkaj-ը ոչ մի տեղ հարկ չի ներկայացնում և պետական էլեկտրոնային հաշիվ չի տալիս։
+currency_use_help	Ոլորեք և հպեք Օգտագործել ցանկացած աջակցվող արժույթի համար։
+day_close_help	Օրվա փակումը գրանցելը այս ամփոփումը (և դարակի տարբերությունը, եթե հաշվել եք) պահում է աուդիտի մատյանում։ Այն չի դադարեցնում վաճառքը։
+expenses_word	Ծախսեր
+feature_access_help	Հատկությունների հասանելիություն ընտրված անձնակազմի համար (հպեք ավելացնելուց հետո)
+footer_local	Տեղական SQLite · Անվճար ընդմիշտ · Առանց ամպի
+fresh_book_moklanjo	Թարմ = դատարկ կատալոգ (ավելացրեք տարրեր ավելի ուշ): Գիրք = մուտքագրեք բացման բաժնետոմս և ով է ձեզ պարտական ​​ստորև:
+fresh_selected	Ընտրված է Fresh — կատալոգը դատարկ է մնում։ Պատրաստ լինելիս հպեք Պատրաստ է։
+gross_word	Համախառն
+how_start	Ինչպե՞ս եք ուզում սկսել։
+later_country_pack	Հետո՝ Կարգավորումներ → կիրառեք երկրի փաթեթը հարկի և վճարման պիտակների համար։
+local_badge	ՏԵՂԱԿԱՆ
+measures_help_moklanjo	Ինչպես են ծանրոցները չափվում ամրագրման գրասեղանում: Մուտքագրեք չափերը և քաշը ձեր օգտագործած միավորներում՝ ստանդարտ (սմ, մ, դյույմ, ֆտ · կգ, գ, լբ, ունցիա) կամ ձեր սեփական միավորը՝ կապված վերևում գտնվող սմ/կգ-ի հետ (ուղղակիորեն կամ այլ միավորների միջոցով): Գրքերը միշտ կգ են արձանագրում: Դատարկ թողեք այն պահելու համար:
+mix_type_hint_moklanjo	Մուտքագրեք, թե որքան է յուրաքանչյուրում (կանխիկ / UPI / քարտ / վարկ): Պետք է ավելացնել մինչև օրինագիծը: Վարկի կարիք ունի հաճախորդ վերևում:
+money_in_sales	Գումար ներս (վաճառք)
+more_help_moklanjo	Կատալոգ, վաճառք, վարկ, թիմ, կրկնօրինակում — գումարած բաժնետոմսեր և անհրաժեշտության դեպքում լրացուցիչ վճարումներ:
+net_word	Զուտ
+offline_badge	ԱՆՑԱՆՑ
+optional_login_help	Ըստ ցանկության մուտք (id + գաղտնաբառ)։ Սեփականատերը դնում է մեկ անգամ; հետո գաղտնաբառը կարող է փոխել միայն օգտատերը։
+or_unlock_login	Կամ ապակողպեք մուտքի id + գաղտնաբառով
+permission_preset	Աշխատանք (սահմանում է էկրաններ և իրավունքներ)
+preset_help_moklanjo	Գանձապահ՝ վաճառում է։ Կառավարիչ՝ վաճառք + ապրանքներ + չեղյալ/ուղղում։
+product_locked_moklanjo	Մոկլանջո
+product_only_moklanjo	Այս հավելվածը միայն Moklanjo-ն է՝ գրքեր + ամրագրման գրասեղան: Այլ առևտրային դեմքեր առաքվում են որպես առանձին ապրանքներ ավելի ուշ:
+purchases_cogs	Գնումներ (ապրանքի ինքնարժեք)
+qty_cap	ՔԱՆ
+restore_help	Վերականգնել՝ ընտրեք պահուստ։ Գրքերը բացվում են այնպես, ինչպես այն ժամանակ էին. ներկա գրքերը նախ պահվում են, այնպես որ սա կարելի է հետարկել։
+wipe_data_heading	Ջնջել տեղական տվյալները
+wipe_data_help	Միայն սեփականատերը. նույն ընտրանքները, ինչ Windows-ի տեղահանումը: Բիզնես գրառումները մաքրում են առևտրի պատմությունը, բայց պահպանում են դրույքաչափերը և կարգավորումները (օրինակ՝ շտապ ապակողպման PIN-ը): Խանութի կարգավորումը հեռացնում է գրքերի տվյալների բազան: Էկրանի նախապատվությունները մաքրում են պատուհանը/լեզուն: Հաստատեք սեփականատիրոջ PIN-ով: Թիմի շտապ ապակողպման PIN-ը առանձին է (գաղտնի սրբել ապակողպման ժամանակ):
+wipe_trading	Բիզնես գրառումներ
+wipe_schema	Խանութի կարգավորում
+wipe_ui	Էկրանի նախապատվություններ
+wipe_owner_pin_ph	Սեփականատիրոջ PIN ջնջելու համար
+wipe_delete_selected	Ջնջել ընտրվածը
+wipe_owner_only	Տեղական տվյալները կարող է ջնջել միայն Սեփականատերը։
+restore_owner_only	Պահուստը կարող է վերականգնել միայն Սեփականատերը։
+wipe_owner_pin_needed	Մուտքագրեք Սեփականատիրոջ PIN-ը տեղական տվյալները ջնջելու համար։
+wipe_nothing_selected	Նախ ընտրեք ինչ ջնջել։
+wipe_done	Ընտրված տեղական տվյալները ջնջվել են։
+wipe_schema_done	Խանութի կարգավորումը ջնջվել է — շարունակելու համար ընտրեք Սերվեր կամ Կլիենտ։
+rounded_total	Կլորացված ընդհանուր
+setup_app_moklanjo	Տեղադրեք Moklanjo-ը
+shop_logo_optional	Խանութի լոգո (ըստ ցանկության)
+stock_type_help	Մուտքագրեք ապրանքի անունը (մի մասը բավարար է), քանակ, ապա ճշտեք։ Դեռ չհաշվվող ապրանքներին մեկ անգամ պետք է Սկսել հետևել։
+team_owner_help	Վարձել. ընտրել աշխատանք (Գանձապահ/մենեջեր), անուն + մեկնարկային PIN, ապա Ավելացնել: Միայն եթե այս անձը տարբերվում է՝ բացեք էկրանները և ստորև ներկայացված իրավունքները, ապա Պահպանեք աշխատանքի կարգավորումը: Յուրաքանչյուր ոք փոխում է իր սեփական PIN-ը ներքևում. Սեփականատերը չի կարող փոխել որևէ մեկին:
+they_owe_us	Նրանք մեզ պարտք են
+unit_at_cap	Միավոր @
+units_help	Կոդեր ապրանքի պիտակների համար (kg, հատ, տոպրակ)։ Ամեն միավոր պետք է կապվի — ուղղակի կամ այլ միավորներով — ստանդարտի (kg · cm · ml · pc), օր. 1 արկղ = 2 տուփ և 1 տուփ = 20 cm։ Փոխարկումներ՝ 1 ից = գործակից դեպի։ Արժույթները երբեք միավոր չեն։
+we_owe_them	Մենք նրանց պարտք ենք
+who_unlocking	Ո՞վ է ապակողպում։
+locked_word	Կողպված
+show_pin	Ցույց տալ PIN
+hide_pin	Թաքցնել PIN
+set_owner_pin	ԴՐԵՔ ՍԵՓԱԿԱՆԱՏԻՐՈՋ PIN
+enter_owner_passcode	ՄՈՒՏՔԱԳՐԵՔ ՍԵՓԱԿԱՆԱՏԻՐՈՋ ԿՈԴԸ
+enter_staff_passcode	ՄՈՒՏՔԱԳՐԵՔ ԱՆՁՆԱԿԱԶՄԻ ԿՈԴԸ
+pin_count_zero	0 / 12 թվանշան · առնվազն 4, ապա OK
+pin_count_need	{} / 12 թվանշան · պետք է ևս {}
+pin_count_full	12 / 12 թվանշան · սեղմեք OK
+pin_count_ready	{} / 12 թվանշան · պատրաստ լինելիս սեղմեք OK
+pin_hint_choose	Ընտրեք 4–12 թվանշան · Enter կամ Ապակողպել՝ պահելու համար
+pin_hint_new	Նոր 4–12 թվանշան Սեփականատիրոջ PIN · Enter կամ Ապակողպել
+pin_hint_shop_code	Խանութի սարք · զուգակցման կոդ {}
+pin_hint_books	Այս սարքը պահում է գրքերը
+pin_hint_paired	Լրացուցիչ դրամարկղը զուգակցված է — ապակողպեք վաճառելու համար
+pin_hint_pair_first	Լրացուցիչ դրամարկղ — նախ զուգակցեք խանութի սարքի հետ
+unlock_to_continue	Ապակողպեք շարունակելու համար
+no_staff_yet	Դեռ անձնակազմ չկա — ապակողպեք որպես Սեփականատեր, ապա Թիմ
+status_server_set_pin	Սերվեր ռեժիմ — դրեք Սեփականատիրոջ PIN
+status_server_tills	Սերվեր ռեժիմ — լրացուցիչ դրամարկղները կարող են միանալ։ Ապակողպեք
+status_server_unlock	Սերվեր ռեժիմ — ապակողպեք որպես Սեփականատեր
+status_client_unlock	Կլիենտ ռեժիմ — ապակողպեք վաճառելու համար
+icon_new_selected	Պատկերակ՝ ընտրված է նոր ֆայլ — հպեք Պահել ապրանքանիշը
+icon_custom	Պատկերակ՝ սեփական նշան
+icon_default	Պատկերակ՝ Kumkaj նշան (լռելյայն) — ընտրեք հատուկ
+logo_yours	Լոգո՝ ձեր խանութի լոգոն — երևում է էկրաններում և անդորրագրերում
+logo_default	Լոգո՝ Kumkaj նշան (լռելյայն) — եթե ունեք, ընտրեք ձերը
+tmpl_current	Ընթացիկ՝ {} — {}
+tmpl_selected	Ընտրված՝ {} — {}
+setup_complete	Կարգավորումն ավարտված է
+onboard_fresh_tmpl	Fresh · {} — կատալոգը սկսում է դատարկ. ապրանքները ավելացրեք Ապրանքներում, ապա Պատրաստ է։
+onboard_book_tmpl	Book · {} — ավելացրեք ապրանքներ և սկզբնական կրեդիտ, ապա Պատրաստ է։
+onboard_template_tmpl	Ցանկության դեպքում անվանեք տեղը, ապա ընտրեք ինչպես սկսել։
+tmpl_blurb	Սուրհանդակային գրքեր և ամրագրման գրասեղան՝ առաքիչներ, փոխադրողներ, օրվա գիրք, AWB:
+tmpl_how	Գրանցեք ծանրոցներ գրասեղանի վրա; Օրվա գիրք այսօրվա համար; ներդիրներ դրույքաչափերի, կուսակցությունների, հաշվետվությունների համար:
+trk_booked	Ամրագրված
+trk_picked_up	Վերցրեց
+trk_in_transit	Տրանզիտում
+trk_delivered	Հանձնվել է
+trk_rto	Վերադառնալով ուղարկողին
+lane_to_dispatch	Ուղարկելու համար
+lane_with_carrier	Փոխադրողի հետ
+lane_failed	Չհաջողվեց
+lane_done_today	Կատարված է այսօր
+ops_board_help	Ծանրոցներն ըստ իրենց գտնվելու վայրի այսօրվա աշխատանքում: Հպեք ծանրոցներին (կամ սկանավորեք դրանք) դրանք ընտրելու համար, այնուհետև գործեք բոլոր ընտրվածների վրա միանգամից. յուրաքանչյուր գոտի առաջարկում է միայն այն շարժումները, որոնք համապատասխանում են իրեն:
+lane_empty	Այս պահին այստեղ ոչինչ չկա:
+picked_fmt	Ընտրվել է {n}
+pick_all	Ընտրեք բոլորը
+bag_for_carrier	Ձեռք կրողին
+send_with_rider	Ուղարկեք հեծյալի հետ
+out_again	Նորից դուրս
+return_to_sender	Վերադարձ դեպի ուղարկող
+runs_bags_heading	Վերջին վազքերը և պայուսակները
+print_word	Տպել
+bag_word	Փոխադրող պայուսակ
+run_word	Rider վազում
+parcels_fmt	{n} ծանրոցներ
+parcel_history	Պատմություն
+attempt_fmt	Փորձ {n}
+pieces_short_fmt	{n} հատ
+note_reason_ph	Նշում կամ պատճառաբանություն
+ops_pick_first	Նախ ընտրեք ծանրոցներ. հպեք դրանց կամ սկանավորեք դրանք
+cod_to_collect	Առաքված — COD հավաքելու համար
+cod_on_road	COD դեռ ճանապարհին
+cod_owed_consignors	Հավաքված — վճարել առաքողներին
+cod_rto_fees	RTO վճարներ հավաքելու համար
+cod_to_hand_in	COD հանձնելու համար
+parcel_one_fmt	{n} ծանրոց
+facet_bank_title	Հաշվետվություններ
+facet_bank_help	Օրվա մատյաններ, գործընկերների ծերացում, բանկային գրառումներ և ժամանակաշրջանի շահույթ ու վնաս։
+facet_ops_title	Բեռներ և առաքում
+facet_ops_help	Սկանավորեք կամ մուտքագրեք AWB → Գտեք, ապա առաջ քաշեք / տպեք պիտակը / COD: Ուղարկել հեծանվորդին կամ փոխադրողին:
+facet_cod_title	COD գրանցամատյան
+facet_cod_help	Հավաքեք առաքման ժամանակ, այնուհետև փոխանցեք առաքողին:
+facet_riders_title	Հեծյալներ (սեփական նավատորմ)
+facet_riders_help	Ավելացրեք հեծանվորդներ, ապա ուղարկեք ամրագրված AWB-ներ Ops-ից:
+against_bill_ph	Վերևի հաշիվ №-ի դիմաց (ըստ ցանկության)
+aliases_ph	Այլանուններ — այլ անուններ, ստորակետով
+amount_blank_full_ph	Գումար (դատարկ = ամբողջ մնացորդը)
+amount_owed_ph	Պարտք գումար
+amount_ph	Գումար
+amount_received_ph	Ստացված գումար
+amount_we_pay_ph	Գումար, որ վճարում ենք
+awb_scan_ph	AWB / սկանավորեք շտրիխ կոդը
+bulk_csv_ph	Զանգվածային CSV — նպատակակետ, բեռն ստացող, կգ, cod_paise, նշում
+business_name_ph	Բիզնեսի անուն
+category_new_ph	Կատեգորիա (ըստ ցանկության, ստեղծվում է եթե նոր է)
+cod_amount_ph	COD գումարը
+code_bag_ph	Կոդ (տոպրակ)
+conv_factor_ph	Գործակից (25 = 1 տոպրակ → 25 kg)
+country_code_ph	Երկրի կոդ օր. IN, GB, US, AE, BR
+credit_khata_amount_ph	Կրեդիտ / հաշվի գումար
+credit_limit_ph	Կրեդիտի սահման (0 = չկա)
+dim_unit_code_ph	Չափի միավորի կոդը (սմ)
+divisor_ph	Ծավալային բաժանարար (5000)
+extra_per_kg_ph	Լրացուցիչ / կգ
+first_amount_ph	Առաջին գումարը
+first_kg_ph	Առաջին կգ (սալաքար)
+from_code_ph	Ից կոդ (տոպրակ)
+item_name_lang_ph	Ապրանքի անուն — գրեք ձեր լեզվով
+login_id_opt_ph	Օգտանուն (պարտադիր, եզակի)
+manager_pin_ph	Կառավարչի PIN հաստատման համար (միայն եթե չեք կարող չեղյալ անել)
+new_branch_name_ph	Նոր մասնաճյուղի անուն
+new_password_ph	Նոր գաղտնաբառ (ըստ ցանկության)
+new_pin_ph	Նոր PIN (4–12 թվանշան)
+note_bank_ph	Նշում (մուտք, դուրսբերում, …)
+note_buy_expense_ph	Նշում (վառելիք, վարձ, …)
+note_expense_ph	Նշում (վառելիք, գրասենյակ, …)
+notify_phone_ph	Տեղեկացնել հեռախոսին (WhatsApp/SMS կեռիկ)
+options_moklanjo_ph	Ընտրանքներ (ըստ ցանկության) — Մեծ=20, Նվերների փաթեթ=10
+part_second_way_ph	Մաս երկրորդ ձևով (ըստ ցանկության)
+phone_ph	Հեռախոս
+address_ph	Հասցե
+party_custom_fields_heading	Հատուկ դաշտեր (ընտրված կողմ)
+party_custom_help	Ավելացրեք ցանկացած պիտակ և արժեք այս կուսակցության վրա՝ WhatsApp, GSTIN, երթուղու կոդ,…
+party_custom_key_ph	Դաշտի անվանումը (օրինակ՝ WhatsApp)
+party_custom_value_ph	Արժեք
+party_custom_add	Ավելացնել դաշտ
+party_custom_remove	Հեռացնել դաշտը
+party_custom_empty	Հատուկ դաշտեր դեռ չկան
+party_custom_pick_first	Ընտրեք կողմ՝ հատուկ դաշտեր ավելացնելու համար
+place_name_ph	Այս տեղի անունը
+price_ph	Գին
+qty_example_ph	Քանակ (օր. 1.5 kg-ի համար)
+quantity_ph	Քանակ
+reason_required_ph	Պատճառ (պարտադիր)
+role_title_ph	Պաշտոն (օր. Բարիստա)
+service_pct_ph	Սպասարկում % ըստ ցանկության 0/10/12
+short_code_ph	Կարճ կոդ (MG02)
+slab_kg_ph	Լիցքավորվող սալաքար կգ-ով (0,5)
+staff_name_ph	Աշխատակազմի անվանումը / ID
+starting_password_ph	Սկզբնական գաղտնաբառ (ըստ ցանկության)
+starting_pin_ph	Սկզբնական PIN (4–12 թվանշան)
+tax_rate_ph	Հարկի դրույքի անուն կամ % — Ստանդարտ, Նվազեցված, 0, 5, 12, 18, 20
+to_code_ph	Դեպի կոդ (kg)
+uncleared_no_ph	Չմաքրված № վերևում
+unit_cost_ph	Միավորի արժեք
+unit_kg_blank_ph	Միավոր (կգ կամ դատարկ)
+unit_name_bag_ph	Անուն (Տոպրակ)
+weight_unit_code_ph	Քաշի միավորի կոդը (կգ)
+zone_name_ph	Գոտու անվանումը
+pay_credit	Կրեդիտ
+book_kind_today	Այսօրվա գրքեր
+book_kind_month	Այս ամսվա գրքեր
+book_kind_aging	Չմարված / դեբետ-կրեդիտ
+book_kind_balance	Հաշվեկշիռ
+ops_desk_help	Սկանավորեք AWB-ը USB շտրիխ կոդով սկաներով (կամ մուտքագրեք այն) → Գտեք: Այնուհետև առաջ տանեք, տպեք պիտակը կամ հավաքեք COD: Labels print Կոդ 128.
+role_help_consignor	Դեր՝ առաքիչ — Ա.Ռ. (մեզ պարտական ​​են): Նույն ընկերությունը կարող է լինել նաև Carrier:
+role_help_carrier	Դերը՝ փոխադրող — AP (մենք նրանց պարտք ենք): Նույն ընկերությունը կարող է լինել նաև առաքիչ:
+role_help_both	Դերեր՝ առաքող + փոխադրող — մեկ կողմ, AR և AP մատյաններ, զուտ հաշվետվություններում:
+role_help_supplier	Դերը՝ Մատակարար — Գնումների համար ԳԾ:
+lane_declared_label	Հաշվի ամրագրում
+lane_owner_label	Կանխիկ ամրագրում
+money_lane_bill	Հաշիվ՝ {lane}

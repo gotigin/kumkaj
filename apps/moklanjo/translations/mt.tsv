@@ -1,0 +1,835 @@
+# Maltese — Malti (mt). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	Kotba tal-kurrier-aġenzija + booking desk. B'xejn offline.
+unlock	Iftaħ
+pin_hint	Il-PIN tas-sid jibda b'0000
+sell	Booking
+buy	Ħlas
+books	Ktieb tal-ġurnata
+books_help	Il-pożizzjoni tal-lum. Booking = pakketti pulzieri Ħlas = kontijiet tat-trasportatur u spejjeż. Partijiet = konsenjaturi u trasportaturi.
+buy_help	Vawċers tal-ispejjeż u kambjali tal-ġarr (money out). Soġġorni fuq il-kont fuq ir-reġistru tal-partit.
+sell_money_in	Ibbukkja pakkett
+buy_money_out	Spejjeż / kont tat-trasportatur
+record_purchase	Irreġistra x-xiri
+add_expense	Vawċer tal-ispejjeż
+bank_book	Ktieb tal-bank
+credit_help	L-id tal-parti hija unika (l-ismijiet jistgħu jirrepetu). Rwoli: Konsenjatur (AR), Trasportatur (AP), jew it-tnejn fuq dik id. Ledgers jibqgħu separati; rapporti juru nett.
+party_kind_ph	Rwol personalizzat (mhux obbligatorju) — jew tektek ċippa hawn fuq
+parties_list_heading	Partijiet salvati
+reports_help	Ktieb tal-ġurnata, debituri u kredituri, ktieb tal-bank, vawċers tal-ispejjeż, qligħ u telf.
+reports_today	Ktieb tal-ġurnata (illum)
+reports_month	Qligħ u telf (xahar)
+reports_aging	Pendenti / Dr-Cr
+reports_balance_sheet	Karta tal-bilanċ
+reports	Ktieb tal-bank u qligħ/telf
+refresh	Aġġorna
+undo	Erġa' lura
+start_tracking	Ibda ssegwi
+stock_minus	− Stokk
+stock_plus	+ Stokk
+settle_cash	Ħallas kontanti
+settle_card	Ħallas bil-kard
+items	Rati u servizzi
+nav_items	Rati
+more	Aktar
+your_items	Ir-rati tiegħek
+items_help	Kull ringiela hija rata (eż. Żona tal-wiċċ A). L-unità hija ġeneralment kg. Tektek biex teditja.
+add_item	Żid ir-rata
+new_item	Rata ġdida
+adding_item	Żieda ta' rata ġdida
+editing_item	Editjar
+save	Salva
+remove	Neħħi
+empty_catalog	Għadu l-ebda rati. Miftuħa Rati u servizzi, żid waħda (isem + prezz, unità kg), imbagħad Booking.
+counter_sale	Counter booking
+total	Totali
+cash	Kontanti
+upi	UPI
+card	Kard
+credit	Partijiet
+clear	Naddaf
+ready_to_sell	Lest biex tibbukkja
+today_prefix	Illum
+today_mid	illum
+owed	pendenti
+round_word	arrotonda
+back	Lura
+sold_out	Mhux disponibbli
+restock	Erġa' imla
+not_tracked	Mhux segwit
+in_stock	fl-istokk
+marked_sold_out	Immarkat mhux disponibbli
+add_upper	ŻID
+na	M/A
+qty	Piż/Kwantità
+unit_at	Rata @
+actual	Attwali
+applied	Applikat
+note_ph	Nota (mhux obbligatorja)
+rounded	ARROTONDAT
+split	Aqsam
+counter	Kontatur
+parcel	Pakkett
+order	Ordni
+sales	Prenotazzjonijiet
+sales_refunds	Prenotazzjonijiet u rifużjonijiet
+day_close	Għeluq tal-ġurnata
+reports_expenses	Ktieb tal-bank u qligħ/telf
+nav_reports	Rapporti
+nav_settings	Għażliet
+nav_lock	Ħażna
+sidebar_settings	Issettjar tal-sidebar
+sidebar_settings_help	L-istess ikoni bħall-poġġaman tal-ġenb. Iddreggja ringiela biex terġa' tordna. Aqleb is-swiċċ biex turi jew taħbi. Għażliet u Lock dejjem jibqgħu fuq il-bar.
+sidebar_always_on_short	Dejjem mixgħula
+sidebar_back_settings	Lura
+sidebar_shown	murija
+sidebar_hidden	Moħbija
+sidebar_always_on	Dejjem fuq il-bar
+sidebar_shown_hint	Muri fuq il-binarji tal-ġenb/tal-qiegħ
+sidebar_hidden_hint	Moħbi mill-bar
+sidebar_menu_items	Menu u Oġġetti
+sidebar_enable_all	Ippermetti Kollha
+sidebar_disable_all	Itfi Kollha
+sidebar_order_saved	Ordni tal-Istrixxa tal-ġenb salvata
+sidebar_visibility_saved	Viżibilità tal-istrixxa tal-ġenb salvata
+amounts_hide	Aħbi
+amounts_show	Uri
+no_sale_yet	Għadu l-ebda bejgħ
+favorites	Favoriti
+favorites_help	Oġġetti li tbigħ spiss, salvati għall-login tiegħek. Żid waħda mal-kont, jew ibni l-lista tiegħek mill-oġġetti kollha hawn taħt.
+your_favorites	Il-favoriti tiegħek
+all_items	L-oġġetti kollha
+no_favorites	Għadu l-ebda favoriti — żid oġġetti mil-lista hawn taħt.
+add_to_bill	Żid mal-kont
+added	Miżjud
+owes_word	jaf
+selected_word	Magħżula
+chip_clear_credit	ċara — Ikkredita jew tieħu bil-quddiem
+chip_missing_customer	Klijent magħżul nieqes — agħżel mill-ġdid
+chip_no_customer	Għadu l-ebda klijent — ikteb isem, imbagħad tektek Kreditu
+credit_summary_fmt	{} klijenti · kreditu miftuħ {} · avvanzi miżmuma {}
+recent_label	Riċenti:
+inventory	Inventarju
+inventory_stock	Inventarju u stokk
+branches	Fergħat
+branches_org	Fergħat & org
+credit_customers	Partijiet (debituri u kredituri)
+customer_name_ph	Isem il-partit
+new_customer_ph	Isem ġdid tal-partit
+item_name_ph	Isem tar-rata (eż. Żona tal-wiċċ A)
+item_price_ph	Għal kull kg / l-ewwel ċangatura
+start_template	Prodott
+next_booking	Il-prenotazzjoni li jmiss
+destination_ph	Belt/żona tad-destinazzjoni
+consignee_ph	Isem tar-riċevitur
+consignee_phone_ph	Telefon tar-riċevitur
+consignee_address_ph	Indirizz tal-kunsinna
+origin_name_ph	Isem il-mittent
+origin_phone_ph	Telefon tal-mittent
+origin_address_ph	Pickup/indirizz tal-oriġini
+booking_consignor_heading	Konsenjatur (klijent/mittent)
+booking_consignee_heading	Destinatarju (riċevitur)
+booking_consignor_hint	Agħżel parti biex timla, jew ħalli vojta għal walk-in. Meħtieġa għal pickup fid-dar u RTO.
+booking_consignee_hint	Riċevitur tal-pakkett. Ħalli vojt għal walk-in counter drop-offs.
+weight_kg_ph	kg attwali
+length_cm_ph	L ċm
+breadth_cm_ph	B ċm
+height_cm_ph	H ċm
+chargeable_kg	kg taxxabbli
+awb_label	AWB
+booking_help	Konsenjatur + destinatarju (vojt OK) → destinazzjoni → iżen → rata tal-ġbir → Kont/Flus → tħallas. AWB jistampa fuq l-irċevuta. Il-prenotazzjoni li jmiss tikklerja l-iskrivanija. Jibda arrotondat ugwali għal Applikat — editja biss biex idawwar il-kont.
+cart_empty_hint	Desk vojta — il-kunsinnatarju/destinatarju mhux obbligatorju, issettja d-destinazzjoni u l-piż, tektek ADD fuq rata, imbagħad tħallas.
+team	Tim
+team_pins	Tim u PINs
+my_pin_settings	PIN tiegħi
+settings_hub_help_my_pin	Ibdel il-PIN tal-unlock għall-persuna li tkun iffirmat fuq dan it-tagħmir.
+team_self_help	Int biss tista' tibdel il-PIN tal-ftuħ tiegħek (u l-password tal-login fakultattiva). Staqsi lis-Sid jekk għandekx bżonn skrins jew drittijiet differenti.
+backup_settings	Backup u għażliet
+lock_app	App Lock
+pick	Agħżel
+select	Agħżel
+advance	Bil-quddiem
+owner	Sid
+staff	Persunal
+photo	Ritratt
+auto	Karozza
+prev	Preċedenti
+next	Li jmiss
+ok	OK
+this_shop	Server
+extra_till	Klijent
+off	Mitfi
+server	Server
+client	Klijent
+language_currency	Lingwa u munita
+language	Lingwa
+choose_language	Agħżel il-lingwa tiegħek
+language_setup_hint	Segwi l-lingwa ta’ dan l-apparat, jew agħżel waħda lilek innifsek.
+lang_follow_platform	Lingwa tal-apparat
+lang_pick_user	Agħżel il-lingwa
+lang_platform_now	Lingwa tal-apparat issa
+selected_language	Magħżula
+continue	Kompli
+this_device	DAN IL-MEZZ
+device_use_q	Kif se jintuża dan l-apparat?
+last_server_mode	Was Server — tektek biex tkompli
+last_client_mode	Was Client — tektek biex tkompli
+choose_server	Agħżel server
+choose_server_hint	Iftaħ server eżistenti, jew oħloq wieħed għal negozju ieħor.
+create_new_server	Oħloq server ġdid
+open_server	Miftuħa
+new_server_name_ph	Isem ġdid tas-server (mhux obbligatorju)
+server_remove_pin_ph	PIN tas-sid biex tneħħi server
+only_owner_remove_server	Is-Sid biss jista' jneħħi server
+owner_pin_remove_server	PIN tas-sid meħtieġ biex jitneħħa dan is-server
+device_setup_help	Server iżomm il-kotba hawn. Klijent pairs għal Server.
+currency	Munita
+backup	Backup
+settings_sec_diag	Dijanjostiċi
+settings_hub_help	Iftaħ qasam wieħed kull darba — inqas scrolling, għażliet aktar ċari.
+settings_sec_devices	Apparati oħra
+settings_sec_alerts	Twissijiet
+alerts_help	Kemm jibqgħu l-messaġġi tal-istatus fuq l-iskrin għalik (din id-dħul).
+snack_secs_ph	Sekondi (3–60, standard 10)
+snack_secs_save	Salva l-ħin tat-twissija
+snack_secs_saved	Ħin tat-twissija salvat — {n} sekondi
+snack_secs_bad	Daħħal is-sekondi bħala numru (3–60)
+cancelled	Ikkanċellat
+cancel	Ikkanċella
+opening_client	Qed niftħu l-klijent…
+preparing_desk	Qed nipprepara d-desk…
+opening_server	Qed infetaħ is-server…
+creating_server	Qed noħolqu server…
+diag_privacy_help	Zkuk jibqgħu fuq dan l-apparat. Sigrieti (PIN, passwords) qatt ma jinħażnu. Il-qsim ta' pakkett mill-apparat jeħtieġ l-approvazzjoni espliċita tiegħek kull darba — qatt ma jinbiegħ jew jingħata lil partijiet terzi.
+diag_level	Livell tad-dettall
+diag_level_error	Żbalji
+diag_level_warn	Twissijiet
+diag_level_info	Informazzjoni
+diag_level_debug	Diżbaggjar
+diag_support_start	Ibda sessjoni ta' appoġġ ta' 30 minuta
+diag_support_stop	Tmiem is-sessjoni ta' appoġġ
+diag_support_started	Sessjoni ta' appoġġ fuq — Debug dettall għal 30 minuta
+diag_support_ended	Sessjoni ta' appoġġ intemmet
+diag_export_local	Esportazzjoni kopja lokali
+diag_export_local_done	Dijanjostiċi lokali lesti fi {path} — agħżel fejn issalva kopja
+diag_approve_send	Approva sehem minn dan l-apparat
+diag_send_heading	Aqsam minn dan l-apparat
+diag_send_help	L-approvazzjoni hija pakkett wieħed, imbagħad jiskadi. Temporanju — użat biss biex jiffissa jew itejjeb il-prodott. Mhux kondiviż ma' partijiet terzi. Jaħdem fuq Linux, Windows, macOS, u Android.
+optional_login_heading	Login fakultattiv
+rights_heading	Drittijiet
+booking_scope_heading	Domestiku / Internazzjonali
+diag_send_approved	Sehem approvat għal pakkett wieħed (jiskadi dalwaqt)
+diag_export_send	Oħloq pakkett ta' ishma (jeħtieġ l-approvazzjoni)
+diag_export_send_done	Aqsam il-pakkett lest fi {path} — agħżel fejn issalva, imbagħad ibgħat biss lill-appoġġ ta' Kumkaj
+diag_save_bundle	Issejvja kopja tad-dijanjostika
+diag_bundle_saved	Kopja tad-dijanjostika ssejvjata fi {path}
+diag_bundle_failed	Ma setgħetx issalva l-kopja tad-dijanjostika — erġa' pprova
+diag_clear	Zkuk dijanjostiċi ċari
+diag_cleared	Zkuk dijanjostiċi mneħħija
+use	Użu
+add_branch	Żid fergħa
+add_conversion	Żid il-konverżjoni
+add_item_plain	Żid oġġett
+add_note	Żid nota
+add_opening_balance	Żid il-bilanċ tal-ftuħ
+add_rider	Żid rikkieb
+add_staff	Żid persunal
+add_unit	Żid l-unità
+add_use_name	Żid / uża dan l-isem
+allow_extra_tills	Ħalli tills żejda
+amend	Emenda
+apply_country_pack	Applika pakkett tal-pajjiż
+datetime_appearance	Id-dehra tad-data u l-ħin
+datetime_appearance_help	Kotba jżommu l-ewwel sena RFC3339 ġewwa. Dawn ibiddlu biss kif id-dati u l-arloġġi jidhru fuq l-irċevuti, it-tikketti, ir-rapporti, u l-iskrin.
+datetime_example	Eżempju issa: {ex}
+date_order	Ordni tad-data
+date_order_dmy	D/M/Y
+date_order_mdy	M/D/Y
+date_order_ymd	Y-M-D
+time_format	Arloġġ
+time_format_24h	24 siegħa
+time_format_12h	12-il siegħa
+attach_bill_photo	Ehmeż ritratt tal-kont
+attach_pdf	Ehmeż PDF
+attach_photo	Ehmeż ritratt
+bank	Bank
+bank_in	Bank ġewwa
+bank_out	Bank barra
+bank_to_till	Bank → biex
+till_to_bank	Lil → bank
+mark_cleared	Mark ikklerja
+unmark	Neħħi l-marka
+role_both	It-tnejn
+role_carrier	Trasportatur
+role_cashier	Kaxxier
+role_consignor	Konsenjatur
+role_manager	Maniġer
+role_supplier	Fornitur
+branch_name_sell_ph	Isem tal-fergħa minn fejn tbigħ
+bring_my_book	Ġib il-ktieb tiegħi
+business_tax_id_ph	Id-taxxa tan-negozju
+card_amount_ph	Ammont tal-karta
+cash_amount_ph	Ammont fi flus
+upi_amount_ph	Ammont UPI
+carrier_cost_ph	Spiża tat-trasportatur
+carrier_party_ph	Parti trasportatur
+choose_icon	Agħżel l-ikona
+choose_logo	Agħżel il-logo
+choose_receipt_stamp	Agħżel timbru tal-irċevuta
+choose_payment_qr	Agħżel QR ta' ħlas
+clear_icon	Ikona ċara
+clear_logo	Logo ċar
+clear_photo	Ritratt ċar
+clear_stamp	Ċempel ċar
+clear_payment_qr	QR ta' ħlas ċar
+print_faces	Stampa uċuħ (irċevuta / kont tal-perjodu)
+print_faces_help	Timbru fakultattiv u QR tal-ħlas ħdejn il-logo tiegħek fuq ir-riċevuti tal-prenotazzjoni u l-kontijiet tal-perjodu.
+awb_pools_heading	Gruppi ta' numri tat-trasportaturi AWB
+add_awb_pool	Żid pool AWB
+awb_pool_carrier_ph	Isem il-parti tat-trasportatur
+awb_pool_start_ph	Ibda nru.
+awb_pool_end_ph	Tmiem nru.
+awb_pool_prefix_ph	Prefiss (mhux obbligatorju)
+awb_pool_label_ph	Tikketta (mhux obbligatorja)
+pieces_ph	Biċċiet (vojta = 1) — jespandu għall-merkanzija / b'ħafna biċċiet
+bulk_awbs_ph	Bulk AWBs — paste ħafna (newline jew virgola) għal status wieħed bil-quddiem
+tds_cut_ph	Qtugħ TDS (mhux obbligatorju)
+discount_ph	Roħs (mhux obbligatorju)
+cheque_no_ph	Iċċekkja n-numru (mhux obbligatorju)
+bill_reminder_chase	Lista tal-ġiri għat-tfakkira tal-kontijiet
+month_mix_report	Rapport tat-taħlita tax-xahar
+copy_month_gst_csv	Ikkopja xahar GST CSV
+domestic	Domestiku
+international	Internazzjonali
+pick_logo	Agħżel il-logo
+booking_scope_hint_domestic	Volumetriku ÷5000 (domestiku) — tektek Internazzjonali għal ÷6000 arja
+booking_scope_hint_intl	Volumetriku ÷6000 (arja internazzjonali) — tektek Domestiku għal ħanut ÷5000
+cod_register	Reġistru COD
+collect_cod	Iġbor COD (AWB)
+consignments_dispatch	Kunsinni u dispaċċ
+consignor_party_ph	Isem il-konsenjatur/parti
+copy_day_book_csv	Ktieb ta' jum tal-kopja CSV
+copy_day_close	Ikkopja l-għeluq tal-ġurnata
+copy_items_csv	Ikkopja oġġetti CSV
+copy_outstanding_csv	Ikkopja CSV pendenti
+copy_parties_csv	Ikkopja partijiet CSV
+copy_party_ledger_csv	Ikkopja r-reġistru tal-parti CSV
+copy_receipt	Kopja tal-irċevuta
+copy_report	Ikkopja rapport
+counted_cash_ph	Flus magħduda fil-kexxun
+counter_agency_ph	Isem tal-bank/aġenzija (mhux obbligatorju)
+create_backup	Oħloq backup
+day_close_summary	Sommarju tal-għeluq tal-ġurnata
+delete_party	Ħassar il-parti magħżula
+dispatch_to_rider	Dispaċċ ibbukkjat → rikkieb
+docket_charge_ph	Docket charge
+declared_value_ph	Valur iddikjarat
+contents_ph	Kontenut
+eway_ph	E-way kont Nru.
+insurance_label	Assigurazzjoni
+yes_label	Iva
+no_label	Nru
+print_route_label	Stampa rotta
+new_party_kind_label	Tip ta 'partit ġdid
+done_open_books	Magħmul — kotba miftuħa
+export_day	Jum l-esportazzjoni
+extra_note_expense_ph	Nota żejda dwar l-aħħar spiża
+extra_note_awb_ph	Nota żejda dwar dan l-AWB / bejgħ
+failed_delivery	Konsenja falluta
+find_scan_awb	Sib / Skennja AWB
+forget_shop	Tinsa dan il-ħanut
+fuel_ph	Fjuwil
+handover_carrier	Ibbukkjat bl-idejn → trasportatur
+import_day	Jum l-importazzjoni
+import_items_csv	Importa oġġetti/rati CSV...
+import_parties_csv	Importa partijiet CSV...
+import_pincodes_csv	Importa kodiċijiet pin CSV...
+import_carrier_bill_csv	Importa kont tat-trasportatur CSV...
+copy_carrier_bill_report	Ikkopja l-aħħar rapport tal-kont tat-trasportatur
+use_carrier_cost	Uża l-ispiża tat-trasportatur
+rate_carrier_ph	Trasportatur (vojt = ir-rata tal-bejgħ tagħna)
+rate_party_ph	Parti (vojta = il-klijenti kollha)
+carrier_pick_ph	Trasportatur għall-ispiża (minn tqabbel)
+item_name	Isem tal-oġġett
+load_bulk_row	Tagħbija ringiela bl-ingrossa → skrivanija
+login_id_ph	Isem tal-utent
+mark_delivered	Mark mogħtija
+manifest_cod_total	COD totali
+manifest_received_by	Riċevut minn
+manifest_sign	Iffirma
+ndr_address_wrong	Indirizz ħażin
+ndr_customer_unavailable	Mhux disponibbli
+ndr_door_locked	Bieb imsakkar
+ndr_other	Oħrajn
+ndr_refused	Irrifjutat
+out_for_delivery	Out għall-kunsinna
+print_drs	Stampa DRS
+print_run_sheet	Print run sheet
+reattempt	Ipprova mill-ġdid
+rider_cod_handed_ph	COD mgħoddi
+settle_rider_cod	Issolvi rikkieb COD
+mode_desk	Desk
+mode_rider	Rikkieb
+waiting_office	stennija biex tasal fl-uffiċċju
+capture_signature	Qbid firma
+incoming_manifest	Manifest deħlin
+pickup_request	Talba għall-ġbir
+pickup_run	Pickup run
+auto_assign_area	Awto-assenja żona
+reorder_stops	Ordna mill-ġdid waqfiet
+settle_rider_pay	Issolvi l-paga tar-rikkieb
+vehicle_inspect	Spezzjoni tal-vettura
+print_docket	Stampa dokument
+franchise_statement	Dikjarazzjoni ta' franchise
+tally_export	Esportazzjoni tal-voucher tal-kont
+open_whatsapp	Iftaħ WhatsApp
+copy_sms	Ikkopja t-test tal-SMS
+pick_barcode_image	Agħżel immaġni biex tiskennja
+share_receipt_whatsapp	Aqsam irċevuta fuq WhatsApp
+delivery_feedback	Feedback dwar il-kunsinna
+lan_self_book	LAN awto-prenotazzjoni
+new_party_clear	Partit ġdid (forma ċara)
+new_party_kind_ph	Tip ta' parti ġdida (Fornitur/Trasportatur)
+next_country	Pajjiż li jmiss
+prev_country	Pajjiż preċedenti
+note_gstin_ph	Nota / GSTIN / tfakkira tal-ftehim
+note_pod_ph	Nota / POD (mhux obbligatorju)
+on_account_ap	Akkont (AP)
+org_optional_ph	Organizzazzjoni (mhux obbligatorju)
+paid_now	Imħallas issa
+pairing_code_ph	Kodiċi tat-tqabbil
+pair_now	Par issa
+party_name_selected_ph	Isem il-parti (jew użu magħżul)
+password_ph	Password
+pay_ap_card	Ħlas karta AP
+pay_ap_cash	Ħlas AP flus kontanti
+pay_ap_upi	Ħlas AP UPI
+period_bill	Kont tal-perjodu
+period_bill_party	Kont tal-perjodu (parti)
+pick_pod_photo	Agħżel ritratt tal-POD
+print_awb_label	Stampa tikketta AWB
+print_open	Stampa / tiftaħ
+reason_amend_ph	Raġuni għall-emenda / null / rifużjoni
+reason_note_ph	Raġuni / nota (ħela, għadd, ...)
+record_day_close	Irreġistra l-għeluq tal-ġurnata
+refresh_from_shop	Aġġorna mill-ħanut
+refund	Rifużjoni
+remit_cod	Remit COD (parti)
+remove_selected	Neħħi magħżula
+restore_backup	Irrestawra l-backup
+rider_name_ph	Isem ir-rikkieb
+rider_phone_ph	Telefon rikkieb
+riders	Riders
+riders_own_fleet	Riders (flotta proprja)
+rollup	Arja mtellgħa
+save_booking_measures	Ħlief miżuri ta 'prenotazzjoni
+save_brand	Salva marka
+save_business_id	Issejvja l-id tan-negozju
+save_business_name	Salva isem tan-negozju
+save_features	Issejvja s-setup tax-xogħol
+save_names	Issejvja l-ismijiet
+server_ip_ph	IP tas-server (eż. 192.168.1.10)
+set_credit_limit	Applika limitu għall-parti
+set_login_selected	Applika login għal magħżula
+set_login_named	Applika login għal {name}
+shop	Ħanut
+start_fresh	Ibda frisk
+stop_extra_tills	Waqqaf tills żejda
+backup_auto	Backup awtomatikament kuljum · l-aħħar {when} · l-aħħar 14-il jum jinżammu fi {dir}.
+backup_auto_none	Backup awtomatikament kuljum - l-ewwel waħda taħdem f'mument.
+backup_copy_to	Kopji jmorru wkoll għal {dir}.
+backup_copy_btn	Ikkopja wkoll backups f'folder...
+autostart_off	Ibda b'dan il-kompjuter
+autostart_on	Jibda b'dan il-kompjuter ✓ — tektek biex tieqaf
+autostart_done_on	Dan il-kompjuter issa jiftaħ l-app meta tibda — is-server tal-ħanut huwa lura wara qtugħ tad-dawl.
+autostart_done_off	Dan il-kompjuter m'għadux jiftaħ l-app meta jibda.
+right_allowed	Permess
+right_with_approval	Bl-approvazzjoni
+right_denied	Mhux permess
+editing_staff	Drittijiet għal
+team_pick_ph	Staff biex jeditja — isim, username, jew agħżel
+select_staff	Agħżel dan il-persunal
+rights_help	Drittijiet — tektek biex tbiddel: Permess → B'approvazzjoni (PIN ta' maniġer f'dak il-mument) → Mhux permess.
+right_void_refund	Invalida jew tirrifondi prenotazzjoni
+right_amend_sale	Emenda prenotazzjoni rreġistrata
+find_server	Sib is-server tal-ħanut
+finding_server	Qed tfittex is-server tal-ħanut fuq dan il-Wi-Fi...
+no_server_found	Xejn misjub. Fuq is-Server: Għażliet → Apparat ieħor → Ħalli tills żejda (l-istess Wi‑Fi). Jew ittajpja l-IP muri hemmhekk.
+servers_found_pick	Tektek il-ħanut li trid tikkonnettja miegħu.
+server_host_selected	Bl-użu ta' {host} — daħħal il-kodiċi tat-tqabbil, imbagħad Pair issa.
+device_forgotten	Il-ħanut nesa dan l-apparat — erġa għaqqad mal-kodiċi attwali tal-ħanut. L-ordnijiet li qed jistennewha jinżammu.
+forget_device	Tinsa
+last_seen	jidher
+new_pair_code	Kodiċi ta 'tqabbil ġdid
+lan_offline	Server tal-ħanut ma jistax jintlaħaq
+lan_offline_waiting	Server tal-ħanut ma jistax jintlaħaq · {n} qed jistenna
+lan_connecting	Konnessjoni mal-ħanut...
+pair_finishing	Jirfinaw par... billi tapplika l-kotba tal-uffiċċju
+pair_opening	Niftaħ l-uffiċċju...
+lan_live	Ħaj
+lan_sending	{n} tibgħat
+lan_sign_in_to_send	Erġa' idħol biex tibgħat {n}
+lan_pair_again	Erġa' għaqqad dan l-apparat
+lan_update_app	Aġġorna l-app — dan l-apparat u s-server tal-uffiċċju għandhom verżjonijiet differenti
+allow_firewall	Ħalli tagħmir ieħor jikkonnettja
+firewall_blocked	Il-firewall ta' dan il-kompjuter qed jimblokka tagħmir ieħor — tektek Ħalli tagħmir ieħor jikkonnettja.
+firewall_waiting	Nistennew il-pront tal-amministratur...
+lan_join_help	Fuq l-apparat l-ieħor: Modalità tal-Klijent → Sib is-server tal-ħanut (jew ittajpja {addr}) → kodiċi ta’ pairing {code}.
+lan_pair_status	Wi-Fi {addr}
+lan_join_help_no_addr	Qabbad dan it-tagħmir ma' Wi-Fi għal indirizz.
+lan_no_address	Għadu l-ebda indirizz Wi‑Fi — ikkonnettja mal-ħanut Wi‑Fi.
+lan_not_listening	Ma jaċċettax apparat (port {port} okkupat). Ibda mill-ġdid l-app.
+lan_tills_off	Tills żejda huma mitfija. Ħallihom iħallu apparat ieħor jingħaqad.
+paired_with	Imqabbad · {url}
+not_paired	Mhux paired
+choose_device_use	Agħżel Server jew Klijent.
+paired_note	Imqabbad. Iftaħ biex tbigħ, jew Aġġorna għall-aħħar.
+last_update_at	L-aħħar aġġornament: {time}.
+pair_intro	Sib is-server, jew ittajpja l-indirizz u l-kodiċi tat-tqabbil tiegħu.
+queue_waiting	Stennija biex tilħaq il-ħanut ({n}):
+queue_tries	Ippruvajt {n} darbiet · l-aħħar tweġiba: {e}
+save_backup_copy	Issejvja kopja ta' backup...
+backup_copy_saved	Kopja ta' backup ssejvjata — żommha off dan l-apparat (USB stick jew apparat ieħor)
+backup_copy_overdue	L-ebda kopja ta' backup ma ħalliet dan l-apparat għal {n} ijiem — Għażliet → Backup
+backup_copy_failed	Il-kopja tal-backup ma setgħetx tiġi ssejvjata hemmhekk — agħżel post ieħor
+clock_off	L-arloġġ ta' dan l-apparat huwa {min} min barra mis-server tal-ħanut — issettja l-ħin it-tajjeb fuq dan l-apparat
+printers_heading	Printers fuq dan l-apparat
+printers_help	Sib printers reali, imbagħad agħżel Irċevuta jew tikketta AWB. Kull xogħol għandu l-wisa ', ritratt jew pajsaġġ tiegħu, u kif jintbagħtu l-bytes. Tikketta tipprintja l-barcode. Post vojt = tistampax.
+job_width	Wisa' tal-kontenut (mm)
+job_width_ph	Jew ittajpja wisa ', 40-210 mm
+job_layout	Tqassim
+job_delivery	Kif jintbagħat ix-xogħol
+job_size	Daqs tat-tipa
+job_size_ph	eż. 18, 20, 26...
+save_receipt_format	Issejvja l-format tal-irċevuta
+save_label_format	Issejvja l-format tat-tikketta
+test_receipt_format	Irċevuta tat-test
+test_label_format	Tikketta tat-test
+test_receipt_sent	Irċevuta tal-kampjun mibgħuta
+test_label_sent	Tikketta tal-kampjun mibgħuta
+test_print_no_printer	L-ebda printer għal dak ix-xogħol — żid wieħed taħt dan il-post
+printers_host_only	Printers huma ssettjati fuq l-apparat tal-ħanut (Server). Dan till jibgħat impjiegi hemmhekk — Sib / żid / jassenja waqfa fuq is-Server. Il-paġna tat-test tmur għas-Server.
+printers_pool_heading	Stampaturi
+printers_routes_heading	Fejn l-affarijiet jistampaw
+printer_label_ph	Isem (eż. Desk)
+printer_target_ph	host:9100 · bt:MAC · usb:VID:PID · isem tas-sistema
+printer_mode_heading	Profil għal outputs ġodda
+printer_mode_standard	Ritratt Standard
+printer_mode_landscape	Pajsaġġ Standard
+printer_mode_thermal	Termali
+printer_mode_standard_short	Ritratt
+printer_mode_landscape_short	Pajsaġġ
+printer_mode_thermal_short	Termali
+printer_format_custom	Profil personalizzat ġdid
+printer_format_custom_label	Adattat
+printer_format_custom_added	Profil personalizzat miżjud għal dan il-post
+add_printer	Żid stampatur
+remove_printer	Neħħi l-aħħar
+route_pick_ph	irċevuta jew tikketta
+route_add_printer_ph	Żid printer ma' dan il-post
+route_receipt	Irċevuta
+route_label	Tikketta AWB
+route_dont_print	Ebda printer assenjat
+route_add	Żid mal-post
+route_up	Il fuq
+route_down	Isfel
+route_remove	Neħħi l-aħħar
+route_clear	Printers ċari għal dan il-post
+save_printers	Salva stampaturi
+print_test_page	Stampa paġna tat-test
+printers_saved	Printers salvati għal dan l-apparat
+test_page_sent	Paġna tat-test mibgħuta — iċċekkja l-istampatur
+printers_found	Jinstab fuq dan l-apparat: {list}
+find_printers	Sib stampaturi
+printers_looking	Qed tfittex printers fuq dan l-apparat u Wi-Fi...
+printers_tap_find	Tektek Sib printers għal kjuwijiet li jaċċettaw impjiegi u printers tal-irċevuti tan-netwerk fuq din il-Wi-Fi (mhux imneħħija jew dawk offline).
+printers_none_found	Ma nstab l-ebda printers — ittajpja isem tal-printer tas-sistema, jew indirizz tan-netwerk (eż. 192.168.1.50).
+receipt_printer_ph	Printer għall-irċevuti
+queue_refused	Mhux aċċettat mill-ħanut ({n}) — iċċekkja kull wieħed fil-bank:
+clear_not_accepted	Iċċekkjat — ċar din il-lista
+device_name_ph	Isem dan l-apparat
+lan_last_update	l-aħħar aġġornament {time}
+lan_not_accepted	{n} mhux aċċettat
+connected_now	konnessi issa
+backup_failed	L-aħħar backup awtomatiku falla: {e}
+backup_overdue	Ebda backup għal {n} ijiem — żomm l-app miftuħa fuq dan l-apparat sabiex tkun tista’ tagħmel backup.
+disk_low	{mb} MB biss b'xejn fuq dan l-apparat — il-backups dalwaqt ifallu. Eħles ftit spazju.
+last_seen_devices	Dehru l-aħħar: {time}
+sync_interval	Issinkronizza kull {secs}s
+connection_to_shop	Konnessjoni mal-ħanut
+supplier_name_ph	Isem tal-fornitur (jew parti)
+supplier_ph	Fornitur
+switch_device	Aqleb dan l-apparat
+take_payment	Ħu ħlas
+tax_added_till	{tax} esklussiva
+tax_inside_price	{tax} inklużiv
+today_books	Illum kotba
+unlock_after_pairing	Daħħal il-PIN
+unlock_with_login	Iftaħ bil-login
+update_my_password	Aġġorna l-password tiegħi
+update_my_pin	Aġġorna l-PIN tiegħi
+duress_heading	PIN ta' sblokk ta' emerġenza (Sid biss)
+duress_help	Fakultattiv. Jekk dan il-PIN jiġi ttajpjat waqt il-ftuħ minflok tiegħek, l-entrati kollha tal-kotba jintmesħu (prenotazzjonijiet, kotba, storja) u l-iskrivanija tiftaħ bħala Sid li tidher normali — rati, partijiet, żoni, persunal u settings jibqgħu. L-iskema u l-konfigurazzjoni mhumiex imħassra. Uża biss jekk tkun sfurzat li tiftaħ. Ħalli vojt u ħlief biex titfi. Qatt l-istess bħall-PIN ta 'ħadd.
+duress_pin_ph	PIN ta' Emerġenza (4–12-il ċifra)
+duress_confirm_ph	Erġa' ittajpja biex tikkonferma
+save_duress_pin	Issejvja PIN ta' emerġenza
+clear_duress_pin	Itfi l-PIN ta' emerġenza
+duress_on	Il-PIN tal-isblokk ta' emerġenza huwa mixgħul
+duress_off	Il-PIN tal-isblokk ta' emerġenza huwa mitfi
+duress_saved	PIN ta' sblokk ta' emerġenza salvat
+duress_cleared	PIN ta' sblokk ta' emerġenza mitfi
+vehicle_ph	Vettura
+void	Annulla
+write_off_ap	Ikteb lil AP
+write_off_nil	Write off / nil bilanċ
+zone_ph	Żona (isem mir-Rati)
+caption_today	ILLUM
+caption_bookings	BOOKINGS
+caption_payments_today	ĦLASIJIET ILLUM
+caption_outstanding	PENDENTI
+caption_bank	BANK
+paid_by	Imħallas minn
+second_way	It-tieni mod
+weight_in	Piż fi
+size_in	Daqs fi
+goods_received	Oġġetti riċevuti
+expense_heading	Spejjeż
+notes_attach_sale	Noti u aċċessorji (bejgħ magħżul)
+notes_attach_party	Noti u annessi (parti magħżula)
+attachments_last_expense	Attachments (l-aħħar spiża)
+credit_limit_heading	Limitu ta' kreditu (parti magħżula/imsemmija)
+pay_selected_heading	Ħlas magħżula (issolvi d-dejn / tieħu bil-quddiem)
+write_off_heading	Tħassir (ċar mingħajr ħlas)
+pay_ap_heading	Ħlas dak li nirrispettawhom (AP)
+country_tax	Pajjiż u taxxa
+extra_tills_heading	Extra sakemm
+other_devices_help_heading	Waħħal apparati oħra
+other_devices_help	Fuq dan l-apparat (Server): Apparat ieħor → Ħalli tills żejda. Innota l-kodiċi tat-tqabbil u l-indirizz tal-Wi-Fi. Tektek Ħalli tagħmir ieħor jikkonnettja jekk jidher. Fuq kompjuter, tektek Ibda b'dan il-kompjuter. Fuq kull mezz ieħor: installa l-app, agħżel Modalità Klijent, Sib is-server tal-ħanut (jew ittajpja l-indirizz), daħħal il-kodiċi ta 'tqabbil, Pair issa. L-ordnijiet jistennew fuq it-tagħmir jekk il-Wi-Fi tinżel u jmorru meta s-Server jerġa' jwieġeb.
+your_brand	Il-marka tiegħek (fl-app)
+units_heading	Unitajiet
+booking_measures	Miżuri tal-booking
+drawer_count	Għadd tal-kxaxen (mhux obbligatorju)
+spreadsheet_csv	Folja tad-Dejta (CSV)
+bank_reconciliation	Rikonċiljazzjoni bankarja (immarka mar-rendikont bankarju tiegħek)
+book_add_product	Ktieb — żid prodott / rata
+book_opening_credit	Ktieb — kreditu tal-ftuħ
+account_kind	Tip ta' kont (tektek wieħed)
+active_ledger	Reġistru attiv
+actual_total_cap	TOTAL ATTWALI
+amend_help	Agħżel bejgħ biex temenda, tħassar jew tirrifondi. L-emendi jżommu l-istorja sħiħa. It-Total Arrotondat jibda ugwali għal Applikat — editja biss għat-tond. Null u rifużjoni jistgħu jeħtieġu PIN tas-Sid jew tal-Maniġer (ittajpjat hawn fuq; irreġistrat b'ismek).
+applied_total_cap	TOTAL APPLIKAT
+bank_balance	Bilanċ bankarju
+bank_net_today	Nett tal-bank illum
+branch_export_help	L-esportazzjoni tikteb stampa ta 'ġurnata fil-folder tal-backups u tikkopjaha fil-clipboard. Biex timporta jum ta’ ħanut ieħor, issejvja l-fajl tiegħu bħala import_branch_snapshot.json f’dak il-folder, imbagħad tektek Importa.
+brand_shown_help	Jintwera fuq l-iskrins ġewwa l-app. L-isem tal-app installata u l-ikona fuq dan it-tagħmir jibqgħu bħala l-elenkar tal-pjattaforma.
+app_icon	Ikona tal-app
+logo_help	Marka tal-ħanut fakultattiva fuq l-iskrins fl-app.
+onboard_layout	Dak li tikseb
+item_photo_help	Fakultattiv. Mingħajr ritratt nuru l-inizjali mill-isem tal-oġġett.
+cash_in_hand	Flus fl-idejn (till)
+change_my_pin_heading	Ibdel il-PIN tiegħi (tiegħek biss)
+connect_to_server	Qabbad mas-Server
+counter_locked	Counter 01 · Imsakkar
+country_pack_help	Pakkett tal-pajjiż jistabbilixxi l-isem tat-taxxa u l-matematika, il-ferrovija instant-pay, u l-id tan-negozju stampat fuq il-kontijiet. Kumkaj ma jippreżenta taxxi jew joħroġ fatturi elettroniċi tal-gvern imkien.
+currency_use_help	Skrollja u tektek Uża għal kwalunkwe munita appoġġjata.
+day_close_help	Ir-reġistrazzjoni ta' għeluq ta' ġurnata tiffranka dan is-sommarju (u l-varjanza tal-kexxun jekk tingħadd) fir-reġistru tal-verifika. Ma tieqafx tbigħ.
+expenses_word	Spejjeż
+feature_access_help	Aċċess għall-karatteristiċi għall-persunal magħżul (tektek wara li żżid)
+footer_local	SQLite Lokali · Ħieles Għal Dejjem · Żero Cloud
+fresh_book_moklanjo	Frisk = katalogu vojt (żid l-oġġetti aktar tard). Ktieb = tip opening stock u min jagħtik hawn taħt.
+fresh_selected	Frisk magħżula — il-katalgu jibqa’ vojt. Tektek Magħmul meta tkun lesta.
+gross_word	Gross
+how_start	Kif trid tibda?
+later_country_pack	Aktar tard: Għażliet → applika l-pakkett tal-pajjiż tiegħek għat-tikketti tat-taxxa u l-paga.
+local_badge	LOKALI
+measures_help_moklanjo	Kif jitkejlu l-pakketti fid-desk tal-prenotazzjoni. Id-dimensjonijiet tat-tip u l-piż fl-unitajiet li tuża — standard (cm, m, in, ft · kg, g, lb, oz) jew l-unità tiegħek stess marbuta ma’ cm / kg hawn fuq (direttament jew permezz ta’ unitajiet oħra). Kotba dejjem jirreġistraw kg. Ħalli għalqa vojta biex iżżommha.
+mix_type_hint_moklanjo	Ittajpja kemm f'kull wieħed (flus kontanti / UPI / karta / kreditu). Għandhom jammontaw għall-kont. Il-kreditu jeħtieġ klijent hawn fuq.
+money_in_sales	Flus fi (bejgħ)
+more_help_moklanjo	Katalgu, bejgħ, kreditu, tim, backup — flimkien ma 'stokk u tills żejda meta meħtieġ.
+net_word	Nett
+offline_badge	OFFLINE
+optional_login_help	Login fakultattiv (id + password). Sid issettja darba; l-utent biss jista' jibdel il-password aktar tard.
+or_unlock_login	Jew iftaħ bl-id tal-login + password
+permission_preset	Xogħol (jissettja l-iskrins u d-drittijiet)
+preset_help_moklanjo	Kaxxier: ibiegħ. Maniġer: bejgħ + oġġetti + null/emenda.
+product_locked_moklanjo	Moklanjo
+product_only_moklanjo	Din l-app hija Moklanjo biss — kotba + booking desk. Kummerċ ieħor jiffaċċja vapur bħala prodotti separati aktar tard.
+purchases_cogs	Xiri (COGS)
+qty_cap	QTY
+restore_help	Restore: agħżel backup. Il-kotba jiftħu kif kienu dakinhar; il-kotba kif inhuma issa jiġu salvati l-ewwel, u għalhekk dan jista 'jitneħħa.
+wipe_data_heading	Ħassar id-dejta lokali
+wipe_data_help	Sid biss — istess għażliet bħal Windows uninstall. Ir-rekords tan-negozju jikklerjaw l-istorja tal-kummerċ iżda jżommu r-rati u s-setup (bħall-PIN tal-isblokk ta' emerġenza). Is-setup tal-ħanut tneħħi d-database tal-kotba. Il-preferenzi tal-iskrin jikklerjaw it-tieqa/lingwa. Ikkonferma bil-PIN tas-Sid. Il-PIN tal-ftuħ ta' emerġenza fuq it-Tim huwa separat (imsaħ moħbi waqt il-ftuħ).
+wipe_trading	Rekords tan-negozju
+wipe_schema	Setup tal-ħanut
+wipe_ui	Preferenzi tal-iskrin
+wipe_owner_pin_ph	PIN tas-sid biex tħassar
+wipe_delete_selected	Ħassar magħżula
+wipe_owner_only	Is-Sid biss jista' jħassar id-dejta lokali.
+restore_owner_only	Is-Sid biss jista' jirrestawra backup.
+wipe_owner_pin_needed	Daħħal il-PIN tas-Sid biex tħassar id-dejta lokali.
+wipe_nothing_selected	Agħżel dak li tħassar l-ewwel.
+wipe_done	Data lokali magħżula mħassra.
+wipe_schema_done	Is-setup tal-ħanut jintmesaħ — agħżel Server jew Klijent biex tkompli.
+rounded_total	Total arrotondat
+setup_app_moklanjo	Twaqqaf Moklanjo
+shop_logo_optional	Logo tal-ħanut (mhux obbligatorju)
+stock_type_help	Ittajpja l-isem tal-oġġett (parti minnu hija biżżejjed), kwantità, imbagħad aġġusta. Oġġetti li għadhom mhumiex magħduda jeħtieġu Ibda traċċar darba.
+team_owner_help	Kiri: agħżel xogħol (Kaxxier / Maniġer), isem + PIN tal-bidu, imbagħad Żid. Biss jekk din il-persuna tkun differenti: tiftaħ l-iskrins u d-drittijiet hawn taħt, imbagħad Issejvja s-setup tax-xogħol. Kulħadd jibdel il-PIN tiegħu stess fil-qiegħ — Is-sid ma jistax ibiddel lil ħaddieħor.
+they_owe_us	Huma għandhom lilna
+unit_at_cap	Unità @
+units_help	Kodiċi għat-tikketti tal-oġġetti (kg, biċċa, borża). Kull unità għandha torbot — direttament jew permezz ta’ unitajiet oħra — ma’ standard (kg · ċm · ml · pc), eż. 1 ċestun = 2 kaxxa u 1 kaxxa = 20 ċm. Konverżjonijiet: 1 minn = fattur għal. Muniti qatt ma huma unitajiet.
+we_owe_them	Aħna nirrispettawhom
+who_unlocking	Min qed jinfetaħ?
+locked_word	Imsakkar
+show_pin	Uri PIN
+hide_pin	Aħbi PIN
+set_owner_pin	ISSETT IL-PIN SID
+enter_owner_passcode	Daħħal PASSCODE TAS-SID
+enter_staff_passcode	Daħħal PASSCODE TA' L-ISTAFF
+pin_count_zero	0 / 12-il ċifra · mill-inqas 4, imbagħad OK
+pin_count_need	{} / 12-il ċifra · jeħtieġ {} aktar
+pin_count_full	12 / 12-il ċifra · agħfas OK
+pin_count_ready	{} / 12-il ċifra · agħfas OK meta tkun lesta
+pin_hint_choose	Agħżel 4–12-il ċifra · Daħħal jew Nisfrutta biex issalva
+pin_hint_new	PIN ġdid tas-Sid b'4–12-il ċifra · Daħħal jew Nisfrutta
+pin_hint_shop_code	Apparat tal-ħanut · kodiċi ta' pairing {}
+pin_hint_books	Dan l-apparat iżomm il-kotba
+pin_hint_paired	Till żejjed imqabbad — iftaħ biex tbigħ
+pin_hint_pair_first	Extra till — l-ewwel koppja mal-apparat tal-ħanut
+unlock_to_continue	Iftaħ biex tkompli
+no_staff_yet	Għadu l-ebda persunal — nisfrutta bħala Sid, imbagħad Tim
+status_server_set_pin	Modalità Server — issettja l-PIN tas-Sid
+status_server_tills	Mod Server — tills żejda jistgħu jingħaqdu. Iftaħ
+status_server_unlock	Modalità Server — nisfrutta bħala Sid
+status_client_unlock	Mod Klijent — iftaħ biex tbigħ
+icon_new_selected	Ikona: fajl ġdid magħżul — tektek Issejvja l-marka
+icon_custom	Ikona: marka tal-post tad-dwana
+icon_default	Ikona: Kumkaj mark (default) — agħżel waħda apposta
+logo_yours	Logo: il-logo tal-ħanut tiegħek — muri fuq l-iskrins u l-irċevuti
+logo_default	Logo: Kumkaj mark (default) — agħżel tiegħek jekk għandek waħda
+tmpl_current	Kurrent: {} — {}
+tmpl_selected	Magħżula: {} — {}
+setup_complete	Setup komplut
+onboard_fresh_tmpl	Frisk · {} — il-katalgu jibda vojt; żid oġġetti fl-Oġġetti, imbagħad Magħmul.
+onboard_book_tmpl	Ktieb · {} — żid oġġetti u kreditu tal-ftuħ, imbagħad Magħmul.
+onboard_template_tmpl	Semmi l-post jekk trid, imbagħad agħżel kif tibda.
+tmpl_blurb	Kotba tal-kurrier u skrivanija tal-prenotazzjoni: konsenjaturi, trasportaturi, ktieb tal-ġurnata, AWB.
+tmpl_how	Ibbukkja pakketti fuq l-iskrivanija; Ktieb ta’ jum għal-lum; tabs għal rati, partijiet, rapporti.
+trk_booked	Ibbukkjat
+trk_picked_up	Ġabar
+trk_in_transit	Fi transitu
+trk_delivered	Mogħtija
+trk_rto	Jirritorna lill-mittent
+lane_to_dispatch	Biex tibgħat
+lane_with_carrier	Bil-trasportatur
+lane_failed	Falliet
+lane_done_today	Magħmul illum
+ops_board_help	Pakketti minn fejn ikunu fix-xogħol tal-lum. Tektek il-pakketti (jew skennjahom) biex tiġborhom, imbagħad aġixxi fuq il-pakketti kollha f'daqqa — kull korsija toffri biss iċ-ċaqliq li jaqblu magħha.
+lane_empty	Xejn hawn bħalissa.
+picked_fmt	{n} qabad
+pick_all	Agħżel kollha
+bag_for_carrier	Idejn għat-trasportatur
+send_with_rider	Ibgħat mar-rikkieb
+out_again	Mill-ġdid
+return_to_sender	Ritorn lill-mittent
+runs_bags_heading	Runs reċenti u basktijiet
+print_word	Stampa
+bag_word	Borża tal-ġarr
+run_word	Rider run
+parcels_fmt	Pakketti {n}
+parcel_history	Storja
+attempt_fmt	Ipprova {n}
+pieces_short_fmt	{n} pcs
+note_reason_ph	Nota jew raġuni
+ops_pick_first	Agħżel pakketti l-ewwel — tektekhom jew skennjawhom
+cod_to_collect	Mogħtija — COD biex tinġabar
+cod_on_road	COD għadu fit-triq
+cod_owed_consignors	Miġbura — biex tħallas lill-konsenjaturi
+cod_rto_fees	Miżati RTO biex jinġabru
+cod_to_hand_in	COD biex tgħaddi
+parcel_one_fmt	pakkett {n}
+facet_bank_title	Rapporti
+facet_bank_help	Kotba ta' jum, anzjanità tal-partiti, karigi bankarji, u P&L tal-perjodu.
+facet_ops_title	Kunsinni u dispaċċ
+facet_ops_help	Skennja jew ittajpja AWB → Sib, imbagħad avvanza / ipprintja tikketta / COD. Dispaċċ lil rikkieb jew trasportatur.
+facet_cod_title	Reġistru COD
+facet_cod_help	Iġbor mal-kunsinna, imbagħad ibgħat lill-konsenjatur.
+facet_riders_title	Riders (flotta proprja)
+facet_riders_help	Żid rikkieba, imbagħad ibgħat AWBs ibbukkjati minn Ops.
+against_bill_ph	Kontra l-kont # ta' fuq (mhux obbligatorju)
+aliases_ph	Aliases — ismijiet oħra, separati bil-virgola
+amount_blank_full_ph	Ammont (vojt = bilanċ sħiħ)
+amount_owed_ph	Ammont dovut
+amount_ph	Ammont
+amount_received_ph	Ammont riċevut
+amount_we_pay_ph	Ammont li nħallsu
+awb_scan_ph	AWB / scan barcode
+bulk_csv_ph	Bulk CSV — destinazzjoni,destinatarju,kg,cod_paise,nota
+business_name_ph	Isem tan-negozju
+category_new_ph	Kategorija (mhux obbligatorja, maħluqa jekk ġdida)
+cod_amount_ph	Ammont COD
+code_bag_ph	Kodiċi (borża)
+conv_factor_ph	Fattur (25 = borża 1 → 25 kg)
+country_code_ph	Kodiċi tal-pajjiż eż. FI, GB, US, AE, BR
+credit_khata_amount_ph	Ammont ta' kreditu / khata
+credit_limit_ph	Limitu tal-kreditu (0 = xejn)
+dim_unit_code_ph	Kodiċi tal-unità tad-dimensjoni (ċm)
+divisor_ph	Diviżur volumetriku (5000)
+extra_per_kg_ph	Extra / kg
+first_amount_ph	L-ewwel ammont
+first_kg_ph	L-ewwel kg (ċangatura)
+from_code_ph	Mill-kodiċi (borża)
+item_name_lang_ph	Isem tal-oġġett — ittajpjah bil-lingwa tiegħek
+login_id_opt_ph	Username (meħtieġa, uniku)
+manager_pin_ph	PIN tal-maniġer li għandu japprova (biss jekk ma tistax tħassar)
+new_branch_name_ph	Isem il-fergħa ġdida
+new_password_ph	Password ġdida (mhux obbligatorja)
+new_pin_ph	PIN ġdid (4–12-il ċifra)
+note_bank_ph	Nota (depożitu, irtirar, …)
+note_buy_expense_ph	Nota (karburant, kera, …)
+note_expense_ph	Nota (karburant, uffiċċju, …)
+notify_phone_ph	Notifika telefon (WhatsApp/SMS ganċ)
+options_moklanjo_ph	Għażliet (mhux obbligatorju) — Kbir=20, Wrap Gift=10
+part_second_way_ph	Parti bit-tieni mod (mhux obbligatorju)
+phone_ph	Telefon
+address_ph	Indirizz
+party_custom_fields_heading	Oqsma tad-dwana (parti magħżula)
+party_custom_help	Żid kwalunkwe tikketta u valur fuq din il-parti — WhatsApp, GSTIN, kodiċi tar-rotta, ...
+party_custom_key_ph	Isem tal-qasam (eż. WhatsApp)
+party_custom_value_ph	Valur
+party_custom_add	Żid qasam
+party_custom_remove	Neħħi l-qasam
+party_custom_empty	Għadu l-ebda oqsma tad-dwana
+party_custom_pick_first	Agħżel parti biex iżżid oqsma tad-dwana
+place_name_ph	Isem dan il-post
+price_ph	Prezz
+qty_example_ph	Qty (eż. 1.5 għal kg)
+quantity_ph	Kwantità
+reason_required_ph	Raġuni (meħtieġa)
+role_title_ph	Titolu tar-rwol (eż. Barista)
+service_pct_ph	Servizz % mhux obbligatorju 0/10/12
+short_code_ph	Kodiċi qasir (MG02)
+slab_kg_ph	Ċangatura li tista' titħallas f'kg (0.5)
+staff_name_ph	Isem tal-persunal / id
+starting_password_ph	Password tal-bidu (mhux obbligatorju)
+starting_pin_ph	PIN tal-bidu (4–12-il ċifra)
+tax_rate_ph	Isem tar-rata tat-taxxa jew % — Standard, Mnaqqsa, 0, 5, 12, 18, 20
+to_code_ph	Biex tikkodifika (kg)
+uncleared_no_ph	Mhux ikklerjat # hawn fuq
+unit_cost_ph	Kost unitarju
+unit_kg_blank_ph	Unità (kg jew vojta)
+unit_name_bag_ph	Isem (Borża)
+weight_unit_code_ph	Kodiċi tal-unità tal-piż (kg)
+zone_name_ph	Isem taż-żona
+pay_credit	Kreditu
+book_kind_today	Illum kotba
+book_kind_month	Dan ix-xahar kotba
+book_kind_aging	Pendenti / debitu-kreditu
+book_kind_balance	Karta tal-bilanċ
+ops_desk_help	Skennja AWB bi skaner tal-barcode USB (jew ittajpjah) → Sib. Imbagħad bil-quddiem, ipprintja tikketta, jew iġbor COD. It-tikketti jistampaw il-Kodiċi 128.
+role_help_consignor	Rwol: Konsenjatur — AR (jirrispettawna). L-istess ditta tista' tkun ukoll Carrier.
+role_help_carrier	Rwol: Trasportatur — AP (aħna nirrispettawhom). L-istess ditta tista' tkun ukoll Konsenjatur.
+role_help_both	Rwoli: Konsenjatur + Trasportatur — parti waħda, kotba AR u AP, nett fir-Rapporti.
+role_help_supplier	Rwol: Fornitur — AP għax-xiri.
+lane_declared_label	Prenotazzjoni tal-kont
+lane_owner_label	Prenotazzjoni ta' flus kontanti
+money_lane_bill	Kont: {lane}

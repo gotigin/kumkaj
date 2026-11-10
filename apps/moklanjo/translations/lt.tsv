@@ -1,0 +1,835 @@
+# Lithuanian — Lietuvių (lt). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	Kurjerių agentūros knygos + rezervavimo stalas. Nemokamai neprisijungus.
+unlock	Atrakinti
+pin_hint	Savininko PIN prasideda 0000
+sell	Užsakymas
+buy	Išmokėkite
+books	Dienos knyga
+books_help	Šios dienos pozicija. Užsakymas = siuntiniai. Išmokėkite = vežėjo sąskaitos ir išlaidos. Šalys = siuntėjai ir vežėjai.
+buy_help	Išlaidų kuponai ir vežėjo sąskaitos (pinigai išvesti). Sąskaita lieka partijos knygoje.
+sell_money_in	Užsisakykite siuntinį
+buy_money_out	Išlaidos / vežėjo sąskaita
+record_purchase	Įrašyti pirkimą
+add_expense	Išlaidų orderis
+bank_book	Banko knyga
+credit_help	Šalies ID yra unikalus (pavadinimai gali kartotis). Vaidmenys: siuntėjas (AR), vežėjas (AP) arba abu tuo ID. Knygos lieka atskirai; ataskaitos rodo net.
+party_kind_ph	Pasirinktinis vaidmuo (pasirenkamas) arba bakstelėkite lustą aukščiau
+parties_list_heading	Išsaugoti vakarėliai
+reports_help	Dienos knyga, skolininkai ir kreditoriai, banko knyga, išlaidų orderiai, pelnas ir nuostolis.
+reports_today	Dienos knyga (šiandien)
+reports_month	Pelnas ir nuostolis (mėnuo)
+reports_aging	Neapmokėta / Dr-Cr
+reports_balance_sheet	Balansas
+reports	Banko knyga ir P/N
+refresh	Atnaujinti
+undo	Anuliuoti
+start_tracking	Pradėti sekimą
+stock_minus	− Atsargos
+stock_plus	+ Atsargos
+settle_cash	Uždaryti grynais
+settle_card	Uždaryti kortele
+items	Kainos ir paslaugos
+nav_items	Kainos
+more	Daugiau
+your_items	Jūsų įkainiai
+items_help	Kiekviena eilutė yra norma (pvz., A paviršiaus zona). Vienetas paprastai yra kg. Palieskite norėdami redaguoti.
+add_item	Pridėti kursą
+new_item	Nauja norma
+adding_item	Pridedamas naujas kursas
+editing_item	Redagavimas
+save	Išsaugoti
+remove	Pašalinti
+empty_catalog	Įkainių dar nėra. Atidarykite Kainos ir paslaugos, pridėkite vieną (pavadinimas + kaina, vnt. kg), tada Užsakymas.
+counter_sale	Prekių užsakymas
+total	Iš viso
+cash	Grynais
+upi	UPI
+card	Kortelė
+credit	Šalys
+clear	Išvalyti
+ready_to_sell	Paruošta įrašyti
+today_prefix	Šiandien
+today_mid	šiandien
+owed	neapmokėta
+round_word	apvalinimas
+back	Atgal
+sold_out	Nėra
+restock	Papildyti
+not_tracked	Nesekama
+in_stock	sandėlyje
+marked_sold_out	Pažymėta kaip nėra
+add_upper	PRIDĖTI
+na	nėra
+qty	Svoris/Kiekis
+unit_at	Įkainis @
+actual	Faktinis
+applied	Pritaikyta
+note_ph	Pastaba (nebūtina)
+rounded	APVALINTA
+split	Dalinti
+counter	Kasa
+parcel	Siuntinys
+order	Užsakymas
+sales	Užsakymai
+sales_refunds	Užsakymai ir pinigų grąžinimas
+day_close	Dienos uždarymas
+reports_expenses	Banko knyga ir P/N
+nav_reports	Ataskaitos
+nav_settings	Nustatymai
+nav_lock	Užrakinti
+sidebar_settings	Šoninės juostos nustatymai
+sidebar_settings_help	Tos pačios piktogramos kaip šoniniame bėgelyje. Vilkite eilutę, kad pertvarkytumėte. Perjunkite, kad rodytumėte ar slėptumėte. Nustatymai ir Užraktas visada lieka juostoje.
+sidebar_always_on_short	Visada įjungta
+sidebar_back_settings	Atgal
+sidebar_shown	Rodoma
+sidebar_hidden	Paslėpta
+sidebar_always_on	Visada juostoje
+sidebar_shown_hint	Rodoma šoniniame bėgelyje / apatinėse kortelėse
+sidebar_hidden_hint	Paslėpta nuo juostos
+sidebar_menu_items	Meniu ir prekės
+sidebar_enable_all	Įjungti visus
+sidebar_disable_all	Išjungti visus
+sidebar_order_saved	Šoninės juostos tvarka išsaugota
+sidebar_visibility_saved	Šoninės juostos matomumas išsaugotas
+amounts_hide	Slėpti
+amounts_show	Rodyti
+no_sale_yet	Pardavimo dar nėra
+favorites	Mėgstamiausi
+favorites_help	Prekės, kurias dažnai parduodate, išsaugotos šiam prisijungimui. Pridėkite prie sąskaitos arba sudarykite sąrašą iš visų prekių žemiau.
+your_favorites	Jūsų mėgstamiausi
+all_items	Visos prekės
+no_favorites	Mėgstamiausių dar nėra — pridėkite prekių iš sąrašo žemiau.
+add_to_bill	Pridėti prie sąskaitos
+added	Pridėta
+owes_word	skolingas
+selected_word	Pasirinkta
+chip_clear_credit	išvalyti — Kreditas arba imti avansą
+chip_missing_customer	Pasirinkto kliento nėra — rinkitės dar kartą
+chip_no_customer	Kliento dar nėra — įveskite vardą, tada bakstelėkite Kreditas
+credit_summary_fmt	{} klientų · atviras kreditas {} · laikomi avansai {}
+recent_label	Naujausi:
+inventory	Atsargos
+inventory_stock	Atsargos ir likučiai
+branches	Filialai
+branches_org	Filialai ir organizacija
+credit_customers	Šalys (skolininkai ir kreditoriai)
+customer_name_ph	Šalies pavadinimas
+new_customer_ph	Naujas šalies pavadinimas
+item_name_ph	Įvertinimo pavadinimas (pvz., paviršiaus zona A)
+item_price_ph	Už kg / pirmą plokštę
+start_template	Produktas
+next_booking	Kitas užsakymas
+destination_ph	Paskirties miestas / zona
+consignee_ph	Gavėjo vardas
+consignee_phone_ph	Imtuvo telefonas
+consignee_address_ph	Pristatymo adresas
+origin_name_ph	Siuntėjo vardas
+origin_phone_ph	Siuntėjo telefonas
+origin_address_ph	Paėmimo / kilmės adresas
+booking_consignor_heading	Siuntėjas (užsakovas / siuntėjas)
+booking_consignee_heading	Gavėjas (gavėjas)
+booking_consignor_hint	Pasirinkite vakarėlį, kurį norite užpildyti, arba palikite tuščią, kad įeitumėte. Reikalingas paėmimui į namus ir RTO.
+booking_consignee_hint	Siuntos gavėjas. Palikite tuščią, jei norite, kad būtų išduodami.
+weight_kg_ph	Tikrasis kg
+length_cm_ph	L cm
+breadth_cm_ph	B cm
+height_cm_ph	H cm
+chargeable_kg	Apmokestinami kg
+awb_label	AWB
+booking_help	Siuntėjas + gavėjas (tuščia Gerai) → paskirties vieta → svėrimas → paėmimo tarifas → Sąskaita / grynieji pinigai → sumokėti. AWB spausdina ant kvito. Kitas užsakymas išvalys stalą. Suapvalintos pradžios lygis Taikomas – redaguokite tik norėdami apvalinti sąskaitą.
+cart_empty_hint	Stalas tuščias – siuntėjas / gavėjas pasirinktinai, nustatykite paskirties vietą ir svorį, bakstelėkite PRIDĖTI prie tarifo, tada mokėkite.
+team	Komanda
+team_pins	Komanda ir PIN
+my_pin_settings	Mano PIN
+settings_hub_help_my_pin	Pakeiskite šiame įrenginyje prisijungusio asmens atrakinimo PIN.
+team_self_help	Tik jūs galite pakeisti atrakinimo PIN kodą (ir pasirenkamą prisijungimo slaptažodį). Paklauskite savininko, ar jums reikia kitokių ekranų ar teisių.
+backup_settings	Atsarginė kopija ir nustatymai
+lock_app	Užrakinti programą
+pick	Rinktis
+select	Pasirinkti
+advance	Avansas
+owner	Savininkas
+staff	Personalas
+photo	Nuotrauka
+auto	Automatiškai
+prev	Ankstesnis
+next	Kitas
+ok	OK
+this_shop	Serveris
+extra_till	Klientas
+off	Išjungta
+server	Serveris
+client	Klientas
+language_currency	Kalba ir valiuta
+language	Kalba
+choose_language	Pasirinkite savo kalbą
+language_setup_hint	Sekite šio įrenginio kalba arba pasirinkite patys.
+lang_follow_platform	Įrenginio kalba
+lang_pick_user	Rinktis kalbą
+lang_platform_now	Įrenginio kalba dabar
+selected_language	Pasirinkta
+continue	Tęsti
+this_device	ŠIS ĮRENGINYS
+device_use_q	Kaip bus naudojamas šis įrenginys?
+last_server_mode	Buvo Serveris — bakstelėkite, kad tęstumėte
+last_client_mode	Buvo Klientas — bakstelėkite, kad tęstumėte
+choose_server	Pasirinkite serverį
+choose_server_hint	Atidarykite esamą serverį arba sukurkite kitam verslui.
+create_new_server	Sukurti naują serverį
+open_server	Atidaryti
+new_server_name_ph	Naujo serverio pavadinimas (nebūtina)
+server_remove_pin_ph	Savininko PIN serveriui pašalinti
+only_owner_remove_server	Tik Savininkas gali pašalinti serverį
+owner_pin_remove_server	Šiam serveriui pašalinti reikia savininko PIN
+device_setup_help	Serveris knygas laiko čia. Klientas susiporuoja su Serveriu.
+currency	Valiuta
+backup	Atsarginė kopija
+settings_sec_diag	Diagnostika
+settings_hub_help	Atidarykite po vieną sritį — mažiau slinkimo, aiškesni pasirinkimai.
+settings_sec_devices	Kiti įrenginiai
+settings_sec_alerts	Įspėjimai
+alerts_help	Kiek laiko būsenos pranešimai lieka ekrane jums (šis prisijungimas).
+snack_secs_ph	Sekundės (3–60, numatyta 10)
+snack_secs_save	Išsaugoti įspėjimo laiką
+snack_secs_saved	Įspėjimo laikas išsaugotas — {n} sekundės
+snack_secs_bad	Įveskite sekundes kaip skaičių (3–60)
+cancelled	Atšaukta
+cancel	Atšaukti
+opening_client	Atidaromas klientas…
+preparing_desk	Ruošiamas stalas…
+opening_server	Atidaromas serveris…
+creating_server	Kuriamas serveris…
+diag_privacy_help	Žurnalai lieka šiame įrenginyje. Paslaptys (PIN, slaptažodžiai) niekada nesaugomos. Paketo bendrinimas už įrenginio ribų kiekvieną kartą reikalauja jūsų aiškaus sutikimo — niekada neparduodama ir neteikiama trečiosioms šalims.
+diag_level	Išsamumo lygis
+diag_level_error	Klaidos
+diag_level_warn	Įspėjimai
+diag_level_info	Informacija
+diag_level_debug	Derinimas
+diag_support_start	Pradėti 30 min. pagalbos seansą
+diag_support_stop	Baigti pagalbos seansą
+diag_support_started	Pagalbos seansas įjungtas — Derinimo detalės 30 minučių
+diag_support_ended	Pagalbos seansas baigtas
+diag_export_local	Eksportuoti vietinę kopiją
+diag_export_local_done	Vietinė diagnostika paruošta {path} — pasirinkite, kur išsaugoti kopiją
+diag_approve_send	Patvirtinti bendrinimą už įrenginio
+diag_send_heading	Bendrinti už įrenginio
+diag_send_help	Sutikimas vienam paketui, paskui baigiasi. Laikina — tik produktui taisyti ar gerinti. Nesidalijama su trečiosiomis šalimis. Veikia Linux, Windows, macOS ir Android.
+optional_login_heading	Neprivalomas prisijungimas
+rights_heading	Teisės
+booking_scope_heading	Vidaus / tarptautinis
+diag_send_approved	Bendrinimas patvirtintas vienam paketui (greit baigsis)
+diag_export_send	Sukurti bendrinimo paketą (reikia sutikimo)
+diag_export_send_done	Bendrinimo paketas paruoštas {path} — pasirinkite, kur išsaugoti, tada siųskite tik Kumkaj pagalbai
+diag_save_bundle	Išsaugoti diagnostikos kopiją
+diag_bundle_saved	Diagnostikos kopija išsaugota {path}
+diag_bundle_failed	Diagnostikos kopijos ten išsaugoti nepavyko — bandykite dar kartą
+diag_clear	Išvalyti diagnostikos žurnalus
+diag_cleared	Diagnostikos žurnalai išvalyti
+use	Naudoti
+add_branch	Pridėti filialą
+add_conversion	Pridėti perskaičiavimą
+add_item_plain	Pridėti prekę
+add_note	Pridėti pastabą
+add_opening_balance	Pridėti pradinį likutį
+add_rider	Pridėti motociklininką
+add_staff	Pridėti personalą
+add_unit	Pridėti vienetą
+add_use_name	Pridėti / naudoti šį vardą
+allow_extra_tills	Leisti papildomas kasas
+amend	Taisyti
+apply_country_pack	Taikyti šalies paketą
+datetime_appearance	Datos ir laiko išvaizda
+datetime_appearance_help	Knygos viduje laiko RFC3339 pirmuosius metus. Tai tik keičia tai, kaip datos ir laikrodžiai atrodo kvituose, etiketėse, ataskaitose ir ekrane.
+datetime_example	Pavyzdys dabar: {ex}
+date_order	Datos tvarka
+date_order_dmy	D/M/Y
+date_order_mdy	M/D/Y
+date_order_ymd	Y-M-D
+time_format	Laikrodis
+time_format_24h	24 valandos
+time_format_12h	12 valandų
+attach_bill_photo	Pridėti sąskaitos nuotrauką
+attach_pdf	Pridėti PDF
+attach_photo	Pridėti nuotrauką
+bank	Bankas
+bank_in	Į banką
+bank_out	Iš banko
+bank_to_till	Bankas → kasa
+till_to_bank	Kasa → bankas
+mark_cleared	Pažymėti išvalyta
+unmark	Nuimti žymą
+role_both	Abu
+role_carrier	Vežėjas
+role_cashier	Kasininkas
+role_consignor	Siuntėjas
+role_manager	Vadybininkas
+role_supplier	Tiekėjas
+branch_name_sell_ph	Filialo, iš kurio parduodama, pavadinimas
+bring_my_book	Atnešti mano knygą
+business_tax_id_ph	Verslo mokesčio id
+card_amount_ph	Suma kortele
+cash_amount_ph	Suma grynais
+upi_amount_ph	UPI suma
+carrier_cost_ph	Vežėjo kaina
+carrier_party_ph	Vežėjų vakarėlis
+choose_icon	Rinktis piktogramą
+choose_logo	Rinktis logotipą
+choose_receipt_stamp	Pasirinkite kvito antspaudą
+choose_payment_qr	Rinktis mokėjimo QR
+clear_icon	Išvalyti piktogramą
+clear_logo	Aiškus logotipas
+clear_photo	Išvalyti nuotrauką
+clear_stamp	Išvalyti antspaudą
+clear_payment_qr	Išvalyti mokėjimo QR
+print_faces	Spausdinti veidus (kvitas / laikotarpio sąskaita)
+print_faces_help	Neprivalomas antspaudas ir mokėjimo QR kodas šalia jūsų logotipo užsakymo kvituose ir laikotarpio sąskaitose.
+awb_pools_heading	Vežėjo AWB numerių telkiniai
+add_awb_pool	Pridėti AWB baseiną
+awb_pool_carrier_ph	Vežėjo šalies pavadinimas
+awb_pool_start_ph	Pradžia Nr.
+awb_pool_end_ph	Pabaiga Nr.
+awb_pool_prefix_ph	Priešdėlis (neprivaloma)
+awb_pool_label_ph	Etiketė (neprivaloma)
+pieces_ph	Vienetai (tuščia = 1) - išplėsti kroviniui / kelių dalių
+bulk_awbs_ph	Masiniai AWB – įklijuokite daug (naują eilutę arba kablelį), kad pakeistumėte vieną būseną
+tds_cut_ph	TDS išpjova (neprivaloma)
+discount_ph	Nuolaida (neprivaloma)
+cheque_no_ph	Čekio numeris (neprivaloma)
+bill_reminder_chase	Sąskaitų priminimo persekiojimo sąrašas
+month_mix_report	Mėnesio mišinio ataskaita
+copy_month_gst_csv	Kopijuoti mėnesio GST CSV
+domestic	Buitiniai
+international	Tarptautinė
+pick_logo	Pasirinkite logotipą
+booking_scope_hint_domestic	Tūrinis ÷5000 (vidaus) – bakstelėkite Tarptautinis, jei norite ÷6000 oro
+booking_scope_hint_intl	Tūrinis ÷6000 (tarptautinis oras) – čiaupas Vidinis parduotuvei ÷5000
+cod_register	COD registras
+collect_cod	Surinkti COD (AWB)
+consignments_dispatch	Siuntos ir išsiuntimas
+consignor_party_ph	Siuntėjo / partijos pavadinimas
+copy_day_book_csv	Kopijuoti dienos knygą CSV
+copy_day_close	Kopijuoti dienos uždarymą
+copy_items_csv	Kopijuoti prekes CSV
+copy_outstanding_csv	Kopijuoti neapmokėtą CSV
+copy_parties_csv	Kopijuoti šalis CSV
+copy_party_ledger_csv	Kopijuoti šalies knygą CSV
+copy_receipt	Kopijuoti kvitą
+copy_report	Kopijuoti ataskaitą
+counted_cash_ph	Suskaičiuoti grynieji stalčiuje
+counter_agency_ph	Prekystalio / agentūros pavadinimas (neprivaloma)
+create_backup	Sukurti atsarginę kopiją
+day_close_summary	Dienos uždarymo suvestinė
+delete_party	Ištrinti pasirinktą šalį
+dispatch_to_rider	Siuntimas užsakytas → raitelis
+docket_charge_ph	Docket mokestis
+declared_value_ph	Deklaruojama vertė
+contents_ph	Turinys
+eway_ph	El. važtaraščio Nr.
+insurance_label	Draudimas
+yes_label	Taip
+no_label	Nr
+print_route_label	Spausdinti maršrutą
+new_party_kind_label	Naujas vakarėlio tipas
+done_open_books	Atlikta — atidaryti knygas
+export_day	Eksportuoti dieną
+extra_note_expense_ph	Papildoma pastaba paskutinei išlaidai
+extra_note_awb_ph	Papildoma pastaba apie šį AWB / išpardavimą
+failed_delivery	Nepavyko pristatyti
+find_scan_awb	Rasti / nuskaityti AWB
+forget_shop	Pamiršti šią parduotuvę
+fuel_ph	Kuro
+handover_carrier	Užsakyta ranka → vežėjas
+import_day	Importuoti dieną
+import_items_csv	Importuoti elementus / įkainius CSV…
+import_parties_csv	Importuoti šalis CSV…
+import_pincodes_csv	Importuoti PIN kodus CSV…
+import_carrier_bill_csv	Importuoti operatoriaus sąskaitą CSV…
+copy_carrier_bill_report	Nukopijuokite paskutinę operatoriaus sąskaitos ataskaitą
+use_carrier_cost	Naudokite operatoriaus mokestį
+rate_carrier_ph	Vežėjas (tuščia = mūsų pardavimo kursas)
+rate_party_ph	Vakarėlis (tuščia = visi klientai)
+carrier_pick_ph	Vežėjas už kainą (iš palyginimo)
+item_name	Prekės pavadinimas
+load_bulk_row	Įkelti masinę eilutę → stalas
+login_id_ph	Naudotojo vardas
+mark_delivered	Ženklas pristatytas
+manifest_cod_total	COD bendras
+manifest_received_by	Gavo
+manifest_sign	Pasirašyti
+ndr_address_wrong	Adresas neteisingas
+ndr_customer_unavailable	Nėra
+ndr_door_locked	Durys užrakintos
+ndr_other	Kita
+ndr_refused	Atsisakė
+out_for_delivery	Išvesta pristatymui
+print_drs	Spausdinti DRS
+print_run_sheet	Spausdinimo lapas
+reattempt	Bandymas iš naujo
+rider_cod_handed_ph	COD įteiktas
+settle_rider_cod	Atsiskaityti motociklininko COD
+mode_desk	Rašomasis stalas
+mode_rider	Raitelis
+waiting_office	laukia, kol pasieks biurą
+capture_signature	Užfiksuoti parašą
+incoming_manifest	Gaunamas manifestas
+pickup_request	Prašymas pasiimti
+pickup_run	Paėmimo bėgimas
+auto_assign_area	Automatiškai priskirti sritį
+reorder_stops	Pertvarkymas sustoja
+settle_rider_pay	Sureguliuokite motociklininko atlyginimą
+vehicle_inspect	Transporto priemonės apžiūra
+print_docket	Spausdinti dokumentą
+franchise_statement	Franšizės pareiškimas
+tally_export	Tally kupono eksportas
+open_whatsapp	Atidarykite „WhatsApp“.
+copy_sms	Nukopijuokite SMS tekstą
+pick_barcode_image	Pasirinkite nuskaitytą vaizdą
+share_receipt_whatsapp	Bendrinkite kvitą „WhatsApp“.
+delivery_feedback	Atsiliepimai apie pristatymą
+lan_self_book	LAN savarankiškas užsakymas
+new_party_clear	Nauja šalis (išvalyti formą)
+new_party_kind_ph	Naujas vakarėlio tipas (tiekėjas / vežėjas)
+next_country	Kita šalis
+prev_country	Ankstesnė šalis
+note_gstin_ph	Pastaba / GSTIN / sutarties priminimas
+note_pod_ph	Užrašas / POD (pasirenkama)
+on_account_ap	Į sąskaitą (AP)
+org_optional_ph	Organizacija (nebūtina)
+paid_now	Sumokėta dabar
+pairing_code_ph	Susiejimo kodas
+pair_now	Susieti dabar
+party_name_selected_ph	Šalies pavadinimas (arba naudoti pasirinktą)
+password_ph	Slaptažodis
+pay_ap_card	Mokėti AP kortele
+pay_ap_cash	Mokėti AP grynais
+pay_ap_upi	Mokėti AP per UPI
+period_bill	Laikotarpio sąskaita
+period_bill_party	Laikotarpio sąskaita (vakarėlis)
+pick_pod_photo	Pasirinkite POD nuotrauką
+print_awb_label	Spausdinkite AWB etiketę
+print_open	Spausdinti / atidaryti
+reason_amend_ph	Priežastis taisyti / anuliuoti / grąžinti
+reason_note_ph	Priežastis / pastaba (nuostolis, skaičiavimas, …)
+record_day_close	Įrašyti dienos uždarymą
+refresh_from_shop	Atnaujinti iš parduotuvės
+refund	Grąžinimas
+remit_cod	Pervesti COD (šalis)
+remove_selected	Pašalinti pasirinktą
+restore_backup	Atkurti iš atsarginės kopijos
+rider_name_ph	Raitelio vardas
+rider_phone_ph	Raitelio telefonas
+riders	Raiteliai
+riders_own_fleet	Raiteliai (nuosavas laivynas)
+rollup	Suvestinė
+save_booking_measures	Išsaugokite rezervavimo priemones
+save_brand	Išsaugoti prekės ženklą
+save_business_id	Išsaugoti verslo id
+save_business_name	Išsaugoti verslo pavadinimą
+save_features	Išsaugokite darbo sąranką
+save_names	Išsaugoti vardus
+server_ip_ph	Serverio IP (pvz. 192.168.1.10)
+set_credit_limit	Taikyti ribą šaliai
+set_login_selected	Taikyti prisijungimą pasirinktam
+set_login_named	Taikyti prisijungimą {name}
+shop	Parduotuvė
+start_fresh	Pradėti iš naujo
+stop_extra_tills	Sustabdyti papildomas kasas
+backup_auto	Automatinė atsarginė kopija kasdien · paskutinė {when} · paskutinės 14 dienų laikomos {dir}.
+backup_auto_none	Automatinė atsarginė kopija kasdien — pirmoji netrukus paleis.
+backup_copy_to	Kopijos taip pat eina į {dir}.
+backup_copy_btn	Atsargines kopijas kopijuoti ir į aplanką…
+autostart_off	Pradėti su šiuo kompiuteriu
+autostart_on	Paleidžiama su šiuo kompiuteriu ✓ — bakstelėkite, kad sustabdytumėte
+autostart_done_on	Šis kompiuteris dabar atidaro programą paleidžiant — parduotuvės serveris grįžta po elektros dingimo.
+autostart_done_off	Šis kompiuteris paleidžiant programos nebeatidaro.
+right_allowed	Leidžiama
+right_with_approval	Su patvirtinimu
+right_denied	Neleidžiama
+editing_staff	Teisės už
+team_pick_ph	Redaguojamas darbuotojas — vardas, naudotojo vardas arba pasirinkimas
+select_staff	Pasirinkti šį darbuotoją
+rights_help	Teisės – palieskite, kad pakeistumėte: Leidžiama → Su patvirtinimu (tuo metu valdytojo PIN kodas) → Neleidžiama.
+right_void_refund	Anuliuoti užsakymą arba grąžinti pinigus
+right_amend_sale	Pataisyti įrašytą užsakymą
+find_server	Rasti parduotuvės serverį
+finding_server	Ieškoma parduotuvės serverio šiame Wi‑Fi…
+no_server_found	Nieko nerasta. Serveryje: Nustatymai → Kiti įrenginiai → Leisti papildomas kasas (tas pats Wi‑Fi). Arba įveskite ten rodomą IP.
+servers_found_pick	Bakstelėkite parduotuvę, prie kurios norite jungtis.
+server_host_selected	Naudojama {host} — įveskite susiejimo kodą, tada Susieti dabar.
+device_forgotten	Parduotuvė pamiršo šį įrenginį — susiekite iš naujo su dabartiniu parduotuvės kodu. Jame laukiantys užsakymai išlieka.
+forget_device	Pamiršti
+last_seen	matyta
+new_pair_code	Naujas susiejimo kodas
+lan_offline	Parduotuvės serveris nepasiekiamas
+lan_offline_waiting	Serveris nepasiekiamas · {n} laukia
+lan_connecting	Jungiamasi prie parduotuvės…
+pair_finishing	Baigiamas poravimas... biuro knygų taikymas
+pair_opening	Atidaromas biuras…
+lan_live	Tiesiogiai
+lan_sending	{n} siunčiama
+lan_sign_in_to_send	Prisijunkite dar kartą, kad išsiųstumėte {n}
+lan_pair_again	Susiekite šį įrenginį dar kartą
+lan_update_app	Atnaujinkite programą – šio įrenginio ir biuro serverio versijos skiriasi
+allow_firewall	Leisti kitiems įrenginiams jungtis
+firewall_blocked	Šio kompiuterio užkarda blokuoja kitus įrenginius — bakstelėkite Leisti kitiems įrenginiams jungtis.
+firewall_waiting	Laukiama administratoriaus užklausos…
+lan_join_help	Kitame įrenginyje: Kliento režimas → Raskite parduotuvės serverį (arba įveskite {addr}) → susiejimo kodas {code}.
+lan_pair_status	Wi‑Fi {addr}
+lan_join_help_no_addr	Prijunkite šį įrenginį prie Wi‑Fi, kad turėtų adresą.
+lan_no_address	Wi‑Fi adreso dar nėra — junkitės prie parduotuvės Wi‑Fi.
+lan_not_listening	Nepriima įrenginių (prievadas {port} užimtas). Paleiskite programą iš naujo.
+lan_tills_off	Papildomos kasos išjungtos. Leiskite, kad kitas įrenginys prisijungtų.
+paired_with	Susieta · {url}
+not_paired	Nesusieta
+choose_device_use	Pasirinkite Serverį arba Klientą.
+paired_note	Susieta. Atrakinkite, kad parduotumėte, arba Atnaujinkite naujausiam.
+last_update_at	Paskutinis atnaujinimas: {time}.
+pair_intro	Raskite serverį arba įveskite adresą ir susiejimo kodą.
+queue_waiting	Laukia, kol pasieks parduotuvę ({n}):
+queue_tries	Bandyta {n} kartų · paskutinis atsakymas: {e}
+save_backup_copy	Išsaugoti atsarginę kopiją…
+backup_copy_saved	Atsarginė kopija išsaugota — laikykite ją ne šiame įrenginyje (USB arba kitas įrenginys)
+backup_copy_overdue	{n} dienų atsarginė kopija nepaliko šio įrenginio — Nustatymai → Atsarginė kopija
+backup_copy_failed	Atsarginės kopijos ten išsaugoti nepavyko — rinkitės kitą vietą
+clock_off	Šio įrenginio laikrodis {min} min skiriasi nuo parduotuvės serverio — nustatykite teisingą laiką
+printers_heading	Šio įrenginio spausdintuvai
+printers_help	Raskite tikrus spausdintuvus, tada pasirinkite Kvitas arba AWB etiketė. Kiekvienas darbas turi savo plotį, stačias ar gulsčias ir kaip siunčiami baitai. Etiketė atspausdina brūkšninį kodą. Tuščia vieta = nespausdinti.
+job_width	Turinio plotis (mm)
+job_width_ph	Arba įveskite 40–210 mm plotį
+job_layout	Išdėstymas
+job_delivery	Kaip siunčiamas darbas
+job_size	Šrifto dydis
+job_size_ph	pvz. 18, 20, 26…
+save_receipt_format	Išsaugoti kvito formatą
+save_label_format	Išsaugoti etiketės formatą
+test_receipt_format	Bandymo kvitas
+test_label_format	Bandymo etiketė
+test_receipt_sent	Kvito pavyzdys išsiųstas
+test_label_sent	Etiketės pavyzdys išsiųstas
+test_print_no_printer	Nėra spausdintuvo šiam darbui – pridėkite vieną po šia vieta
+printers_host_only	Spausdintuvai nustatyti parduotuvės įrenginyje (serveryje). Ši kasa siunčia darbus ten – Rasti / pridėti / priskirti pasilikti serveryje. Bandomasis puslapis patenka į serverį.
+printers_pool_heading	Spausdintuvai
+printers_routes_heading	Kur spausdinama
+printer_label_ph	Vardas (pvz., stalas)
+printer_target_ph	host:9100 · bt:MAC · usb:VID:PID · sistemos pavadinimas
+printer_mode_heading	Naujų išėjimų profilis
+printer_mode_standard	Standartinis portretas
+printer_mode_landscape	Standartinis kraštovaizdis
+printer_mode_thermal	Šiluminis
+printer_mode_standard_short	Stačias
+printer_mode_landscape_short	Gulsčias
+printer_mode_thermal_short	Šiluminis
+printer_format_custom	Naujas pasirinktinis profilis
+printer_format_custom_label	Pasirinktinis
+printer_format_custom_added	Šiai vietai pridėtas pasirinktinis profilis
+add_printer	Pridėti spausdintuvą
+remove_printer	Pašalinti paskutinį
+route_pick_ph	kvitas arba etiketė
+route_add_printer_ph	Pridėkite spausdintuvą prie šios vietos
+route_receipt	Kvitas
+route_label	AWB etiketė
+route_dont_print	Spausdintuvas nepriskirtas
+route_add	Pridėti į vietą
+route_up	Aukštyn
+route_down	Žemyn
+route_remove	Pašalinti paskutinį
+route_clear	Išvalykite šios vietos spausdintuvus
+save_printers	Išsaugoti spausdintuvus
+print_test_page	Spausdinti bandomąjį puslapį
+printers_saved	Šiam įrenginiui išsaugoti spausdintuvai
+test_page_sent	Bandomasis puslapis išsiųstas — patikrinkite spausdintuvą
+printers_found	Rasta šiame įrenginyje: {list}
+find_printers	Rasti spausdintuvus
+printers_looking	Ieškoma spausdintuvų šiame įrenginyje ir „Wi‑Fi“…
+printers_tap_find	Palieskite Rasti spausdintuvus eilėms, kurios priima užduotis, ir tinklo kvitų spausdintuvus šiame „Wi-Fi“ tinkle (nepašalintus arba neprisijungus).
+printers_none_found	Spausdintuvų nerasta – įveskite sistemos spausdintuvo pavadinimą arba tinklo adresą (pvz., 192.168.1.50).
+receipt_printer_ph	Spausdintuvas kvitams
+queue_refused	Parduotuvė nepriėmė ({n}) — patikrinkite kiekvieną kasoje:
+clear_not_accepted	Patikrinta — išvalykite šį sąrašą
+device_name_ph	Šio įrenginio pavadinimas
+lan_last_update	paskutinis atnaujinimas {time}
+lan_not_accepted	{n} nepriimta
+connected_now	dabar prisijungęs
+backup_failed	Paskutinė automatinė atsarginė kopija nepavyko: {e}
+backup_overdue	{n} dienų nėra atsarginės kopijos — laikykite programą atidarytą šiame įrenginyje, kad galėtų kopijuoti.
+disk_low	Šiame įrenginyje laisva tik {mb} MB — atsarginės kopijos greitai nepavyks. Atlaisvinkite vietos.
+last_seen_devices	Paskutinį kartą matyta: {time}
+sync_interval	Sinchronizuoti kas {secs} s
+connection_to_shop	Ryšys su parduotuve
+supplier_name_ph	Tiekėjo pavadinimas (arba šalis)
+supplier_ph	Tiekėjas
+switch_device	Perjungti šį įrenginį
+take_payment	Priimti mokėjimą
+tax_added_till	{tax} neįskaičiuota
+tax_inside_price	{tax} įskaičiuota
+today_books	Šiandienos knygos
+unlock_after_pairing	Įveskite PIN
+unlock_with_login	Atrakinti prisijungimu
+update_my_password	Atnaujinti mano slaptažodį
+update_my_pin	Atnaujinti mano PIN kodą
+duress_heading	Avarinis atrakinimo PIN (tik Savininkas)
+duress_help	Neprivaloma. Jei atrakinant įvedamas šis PIN kodas, o ne jūsų, visi knygų įrašai bus ištrinti (užsakymai, knygos, istorija), o stalas atidaromas kaip savininkas, atrodantis įprastai – įkainiai, vakarėliai, zonos, darbuotojai ir nustatymai išlieka. Schema ir konfigūracija neištrinamos. Naudokite tik tada, kai esate priversti atrakinti. Palikite tuščią ir išsaugokite, kad išjungtumėte. Niekada nesutampa su kieno nors PIN.
+duress_pin_ph	Avarinis PIN (4–12 skaitmenų)
+duress_confirm_ph	Įveskite dar kartą patvirtinimui
+save_duress_pin	Išsaugoti avarinį PIN
+clear_duress_pin	Išjungti avarinį PIN
+duress_on	Avarinis atrakinimo PIN įjungtas
+duress_off	Avarinis atrakinimo PIN išjungtas
+duress_saved	Avarinis atrakinimo PIN išsaugotas
+duress_cleared	Avarinis atrakinimo PIN išjungtas
+vehicle_ph	Transporto priemonė
+void	Anuliuoti
+write_off_ap	Nurašyti AP
+write_off_nil	Nurašymas / nulinis likutis
+zone_ph	Zona (pavadinimas iš tarifų)
+caption_today	ŠIANDIEN
+caption_bookings	UŽSAKYMAI
+caption_payments_today	MOKĖJIMAI ŠIANDIEN
+caption_outstanding	NEAPMOKĖTA
+caption_bank	BANKAS
+paid_by	Sumokėjo
+second_way	Antras būdas
+weight_in	Svoris į
+size_in	Dydis į
+goods_received	Gautos prekės
+expense_heading	Išlaida
+notes_attach_sale	Pastabos ir priedai (pasirinktas pardavimas)
+notes_attach_party	Pastabos ir priedai (pasirinkta šalis)
+attachments_last_expense	Priedai (paskutinė išlaida)
+credit_limit_heading	Kredito riba (pasirinkta / įvardyta šalis)
+pay_selected_heading	Mokėti pasirinktą (padengti skolą / imti avansą)
+write_off_heading	Nurašymas (išvalyti be mokėjimo)
+pay_ap_heading	Mokėti, ką jiems skolingi (AP)
+country_tax	Šalis ir mokestis
+extra_tills_heading	Papildomos kasos
+other_devices_help_heading	Nustatyti kitus įrenginius
+other_devices_help	Šiame įrenginyje (serveryje): Kiti įrenginiai → Leisti papildomas kasas. Atkreipkite dėmesį į susiejimo kodą ir „Wi-Fi“ adresą. Bakstelėkite Leisti kitiems įrenginiams prisijungti, jei jis pasirodo. Kompiuteryje bakstelėkite Pradėti naudojant šį kompiuterį. Kiekviename kitame įrenginyje: įdiekite programėlę, pasirinkite Kliento režimas, Raskite parduotuvės serverį (arba įveskite adresą), įveskite susiejimo kodą, Susieti dabar. Užsakymai laukia įrenginyje, jei „Wi-Fi“ nutrūksta, ir eina, kai serveris vėl atsiliepia.
+your_brand	Jūsų prekės ženklas (programoje)
+units_heading	Vienetai
+booking_measures	Užsakymo priemonės
+drawer_count	Stalčiaus skaičiavimas (nebūtina)
+spreadsheet_csv	Skaičiuoklė (CSV)
+bank_reconciliation	Banko suderinimas (pažymėkite pagal banko išrašą)
+book_add_product	Užsakyti – pridėkite produktą / įvertinkite
+book_opening_credit	Knyga — pradinis kreditas
+account_kind	Sąskaitos rūšis (bakstelėkite vieną)
+active_ledger	Aktyvi knyga
+actual_total_cap	FAKTINĖ SUMA
+amend_help	Pasirinkite pardavimą taisyti, anuliuoti arba grąžinti. Pataisymai saugo visą istoriją. Suapvalinta Suma prasideda lygi Pritaikytai — redaguokite tik apvalinimui. Anuliavimui ir grąžinimui gali reikėti Savininko arba Vadovo PIN (įvestas aukščiau; įrašomas su jūsų vardu).
+applied_total_cap	PRITAIKYTA SUMA
+bank_balance	Banko likutis
+bank_net_today	Banko grynasis šiandien
+branch_export_help	Eksportas įrašo dienos momentinę nuotrauką į atsarginių kopijų aplanką ir nukopijuoja ją į mainų sritį. Norėdami importuoti kitą prekybos vietą, išsaugokite failą kaip import_branch_snapshot.json tame aplanke, tada bakstelėkite Importuoti.
+brand_shown_help	Rodoma programos vidaus ekranuose. Šiame įrenginyje įdiegtos programos pavadinimas ir piktograma lieka tokie, kaip platformos sąraše.
+app_icon	Programos piktograma
+logo_help	Neprivalomas parduotuvės ženklas programos ekranuose.
+onboard_layout	Ką gaunate
+item_photo_help	Nebūtina. Be nuotraukos rodome prekės pavadinimo inicialus.
+cash_in_hand	Grynieji kasoje
+change_my_pin_heading	Keisti mano PIN kodą (tik tavo)
+connect_to_server	Prisijungti prie Serverio
+counter_locked	Kasa 01 · Užrakinta
+country_pack_help	Šalies paketas nustato mokesčio pavadinimą ir skaičiavimą, momentinio mokėjimo kanalą ir sąskaitose spausdinamą verslo identifikatorių. Kumkaj niekur neteikia mokesčių ir neišduoda valstybinių e. sąskaitų.
+currency_use_help	Slinkite ir bakstelėkite Naudoti bet kuriai palaikomai valiutai.
+day_close_help	Dienos uždarymo įrašymas išsaugo šią suvestinę (ir stalčiaus skirtumą, jei skaičiuota) audito žurnale. Tai nestabdo pardavimo.
+expenses_word	Išlaidos
+feature_access_help	Prieiga prie funkcijų pasirinktam personalui (pridėję bakstelėkite)
+footer_local	Vietinis SQLite · Nemokamai visam laikui · Be debesies
+fresh_book_moklanjo	Šviežia = tuščias katalogas (pridėkite elementus vėliau). Knyga = žemiau įveskite atidarymo akcijas ir kas jums skolingas.
+fresh_selected	Pasirinkta Fresh — katalogas lieka tuščias. Kai būsite pasiruošę, bakstelėkite Atlikta.
+gross_word	Bendras
+how_start	Kaip norite pradėti?
+later_country_pack	Vėliau: Nustatymai → pritaikykite šalies paketą mokesčio ir mokėjimo etiketėms.
+local_badge	VIETINIS
+measures_help_moklanjo	Kaip siuntiniai matuojami užsakymo lange. Įveskite matmenis ir svorį naudojamais vienetais – standartiniais (cm, m, in, ft · kg, g, lb, oz) arba savo vienetu, susietu su cm / kg aukščiau (tiesiogiai arba per kitus vienetus). Knygos visada įrašo kg. Palikite lauką tuščią, kad jis liktų.
+mix_type_hint_moklanjo	Įveskite, kiek kiekvienoje (grynieji / UPI / kortelė / kreditas). Reikia pridėti prie sąskaitos. Kreditui reikia aukščiau esančio kliento.
+money_in_sales	Pinigai į vidų (pardavimai)
+more_help_moklanjo	Katalogas, pardavimas, kreditas, komanda, atsarginė kopija – prireikus atsargos ir papildomos kasos.
+net_word	Grynasis
+offline_badge	NEPRISIJUNGĘS
+optional_login_help	Nebūtinas prisijungimas (id + slaptažodis). Savininkas nustato vieną kartą; vėliau slaptažodį gali keisti tik naudotojas.
+or_unlock_login	Arba atrakinkite prisijungimo id + slaptažodžiu
+permission_preset	Darbas (nustato ekranus ir teises)
+preset_help_moklanjo	Kasininkas: parduoda. Vadovas: pardavimas + prekės + anuliavimas/taisymas.
+product_locked_moklanjo	Moklanjo
+product_only_moklanjo	Ši programa skirta tik „Moklanjo“ – knygos ir užsakymo stalas. Kiti prekybos veidai vėliau pristatomi kaip atskiri produktai.
+purchases_cogs	Pirkimai (parduotų prekių savikaina)
+qty_cap	KIEKIS
+restore_help	Atkurti: pasirinkite atsarginę kopiją. Knygos atsidaro tokios, kokios buvo tada; dabartinės knygos pirmiausia išsaugomos, todėl tai galima atšaukti.
+wipe_data_heading	Ištrinti vietinius duomenis
+wipe_data_help	Tik savininkas – tokie patys pasirinkimai kaip ir „Windows“ pašalinimas. Verslo įrašai išvalo prekybos istoriją, bet išsaugo įkainius ir sąranką (pvz., avarinio atrakinimo PIN kodą). Parduotuvės sąranka pašalina knygų duomenų bazę. Ekrano nuostatos išvalo langą / kalbą. Patvirtinkite naudodami savininko PIN kodą. Avarinio atrakinimo PIN kodas komandoje yra atskiras (atrakinant nuvalomas slaptas valymas).
+wipe_trading	Verslo įrašai
+wipe_schema	Parduotuvės sąranka
+wipe_ui	Ekrano nuostatos
+wipe_owner_pin_ph	Savininko PIN ištrynimui
+wipe_delete_selected	Ištrinti pasirinktą
+wipe_owner_only	Vietinius duomenis gali ištrinti tik Savininkas.
+restore_owner_only	Atsarginę kopiją gali atkurti tik Savininkas.
+wipe_owner_pin_needed	Įveskite Savininko PIN, kad ištrintumėte vietinius duomenis.
+wipe_nothing_selected	Pirmiausia pasirinkite, ką ištrinti.
+wipe_done	Pasirinkti vietiniai duomenys ištrinti.
+wipe_schema_done	Parduotuvės sąranka ištrinta — tęskite pasirinkę Serverį arba Klientą.
+rounded_total	Suapvalinta suma
+setup_app_moklanjo	Nustatykite Moklanjo
+shop_logo_optional	Parduotuvės logotipas (nebūtina)
+stock_type_help	Įveskite prekės pavadinimą (pakanka dalies), kiekį, tada koreguokite. Dar neskaičiuojamoms prekėms vieną kartą reikia Pradėti sekimą.
+team_owner_help	Nuoma: pasirinkite darbą (kasininkas / vadybininkas), vardą ir pradinį PIN kodą, tada Pridėti. Tik jei šis asmuo skiriasi: atidarykite toliau pateiktus ekranus ir teises, tada Išsaugokite darbo sąranką. Kiekvienas keičia savo PIN kodą apačioje – savininkas negali pakeisti niekieno kito.
+they_owe_us	Jie mums skolingi
+unit_at_cap	Vienetas @
+units_help	Kodai prekių etiketėms (kg, vnt., maišas). Kiekvienas vienetas turi sietis — tiesiogiai arba per kitus vienetus — su standartu (kg · cm · ml · pc), pvz. 1 dėžė = 2 dėžutės ir 1 dėžutė = 20 cm. Perskaičiavimai: 1 iš = koeficientas į. Valiutos niekada nėra vienetai.
+we_owe_them	Mes jiems skolingi
+who_unlocking	Kas atrakinėja?
+locked_word	Užrakinta
+show_pin	Rodyti PIN
+hide_pin	Slėpti PIN
+set_owner_pin	NUSTATYTI SAVININKO PIN
+enter_owner_passcode	ĮVESKITE SAVININKO KODĄ
+enter_staff_passcode	ĮVESKITE PERSONALO KODĄ
+pin_count_zero	0 / 12 skaitmenų · bent 4, tada OK
+pin_count_need	{} / 12 skaitmenų · reikia dar {}
+pin_count_full	12 / 12 skaitmenų · paspauskite OK
+pin_count_ready	{} / 12 skaitmenų · paspauskite OK, kai būsite pasiruošę
+pin_hint_choose	Pasirinkite 4–12 skaitmenų · Enter arba Atrakinti, kad išsaugotumėte
+pin_hint_new	Naujas 4–12 skaitmenų Savininko PIN · Enter arba Atrakinti
+pin_hint_shop_code	Parduotuvės įrenginys · susiejimo kodas {}
+pin_hint_books	Šis įrenginys laiko knygas
+pin_hint_paired	Papildoma kasa susieta — atrakinkite, kad parduotumėte
+pin_hint_pair_first	Papildoma kasa — pirmiausia susiekite su parduotuvės įrenginiu
+unlock_to_continue	Atrakinkite, kad tęstumėte
+no_staff_yet	Darbuotojų dar nėra — atrakinkite kaip Savininkas, tada Komanda
+status_server_set_pin	Serverio režimas — nustatykite Savininko PIN
+status_server_tills	Serverio režimas — papildomos kasos gali prisijungti. Atrakinkite
+status_server_unlock	Serverio režimas — atrakinkite kaip Savininkas
+status_client_unlock	Kliento režimas — atrakinkite, kad parduotumėte
+icon_new_selected	Piktograma: pasirinktas naujas failas — bakstelėkite Išsaugoti prekės ženklą
+icon_custom	Piktograma: pasirinktinis vietos ženklas
+icon_default	Piktograma: Kumkaj ženklas (numatytasis) — pasirinkite savo
+logo_yours	Logotipas: jūsų parduotuvės logotipas — rodomas ekranuose ir kvituose
+logo_default	Logotipas: Kumkaj ženklas (numatytasis) — jei turite, pasirinkite savo
+tmpl_current	Dabartinis: {} — {}
+tmpl_selected	Pasirinkta: {} — {}
+setup_complete	Sąranka baigta
+onboard_fresh_tmpl	Fresh · {} — katalogas prasideda tuščias; pridėkite prekes Prekėse, tada Atlikta.
+onboard_book_tmpl	Book · {} — pridėkite prekes ir pradinį kreditą, tada Atlikta.
+onboard_template_tmpl	Jei norite, pavadinkite vietą, tada pasirinkite, kaip pradėti.
+tmpl_blurb	Kurjerių knygos ir rezervavimo stalas: siuntėjai, vežėjai, dienos knyga, AWB.
+tmpl_how	Užsakyti siuntinius prie rašomojo stalo; Dienos knyga šiandienai; tarifų, vakarėlių, ataskaitų skirtukai.
+trk_booked	Užsakyta
+trk_picked_up	Paėmė
+trk_in_transit	Tranzitu
+trk_delivered	Pristatyta
+trk_rto	Grąžinama siuntėjui
+lane_to_dispatch	Siuntimui
+lane_with_carrier	Su nešikliu
+lane_failed	Nepavyko
+lane_done_today	Padaryta šiandien
+ops_board_help	Siuntiniai pagal jų buvimo vietą šiandieniniame darbe. Palieskite siuntinius (arba nuskaitykite juos), kad juos pasirinktumėte, tada imkitės visų paimtų iš karto – kiekvienoje juostoje pateikiami tik jai tinkami judesiai.
+lane_empty	Šiuo metu čia nieko.
+picked_fmt	Pasirinktas {n}
+pick_all	Rinkis visus
+bag_for_carrier	Ranka nešikliui
+send_with_rider	Siųsti su raiteliu
+out_again	Vėl lauke
+return_to_sender	Grąžinti siuntėjui
+runs_bags_heading	Naujausi bėgimai ir krepšiai
+print_word	Spausdinti
+bag_word	Nešiojamas krepšys
+run_word	Raitelio bėgimas
+parcels_fmt	{n} siuntiniai
+parcel_history	Istorija
+attempt_fmt	Bandymas {n}
+pieces_short_fmt	{n} vnt
+note_reason_ph	Pastaba arba priežastis
+ops_pick_first	Pirmiausia išsirinkite siuntinius – palieskite juos arba nuskaitykite
+cod_to_collect	Pristatomas - COD pasiimti
+cod_on_road	COD vis dar kelyje
+cod_owed_consignors	Surinkta — atsiskaityti siuntėjams
+cod_rto_fees	RTO mokesčiai rinkti
+cod_to_hand_in	COD atiduoti
+parcel_one_fmt	{n} siuntinys
+facet_bank_title	Ataskaitos
+facet_bank_help	Dienos knygos, šalių senėjimas, banko įrašai ir laikotarpio pelnas bei nuostolis.
+facet_ops_title	Siuntos ir išsiuntimas
+facet_ops_help	Nuskaitykite arba įveskite AWB → Rasti, tada pirmyn / spausdinkite etiketę / COD. Siuntimas motociklininkui arba vežėjui.
+facet_cod_title	COD registras
+facet_cod_help	Paimkite pristatymo metu, tada perduokite siuntėjui.
+facet_riders_title	Raiteliai (nuosavas laivynas)
+facet_riders_help	Pridėkite vairuotojus, tada išsiųskite užsakytus AWB iš „Ops“.
+against_bill_ph	Prie sąskaitos Nr. aukščiau (nebūtina)
+aliases_ph	Slapyvardžiai — kiti vardai, atskirti kableliu
+amount_blank_full_ph	Suma (tuščia = visas likutis)
+amount_owed_ph	Skolinga suma
+amount_ph	Suma
+amount_received_ph	Gauta suma
+amount_we_pay_ph	Suma, kurią mokame
+awb_scan_ph	AWB / nuskaityti brūkšninį kodą
+bulk_csv_ph	Masinis CSV – paskirties vieta, gavėjas, kg, cod_paise, pastaba
+business_name_ph	Verslo pavadinimas
+category_new_ph	Kategorija (nebūtina, sukuriama jei nauja)
+cod_amount_ph	COD kiekis
+code_bag_ph	Kodas (maišas)
+conv_factor_ph	Koeficientas (25 = 1 maišas → 25 kg)
+country_code_ph	Šalies kodas pvz. IN, GB, US, AE, BR
+credit_khata_amount_ph	Kreditas / sąskaitos suma
+credit_limit_ph	Kredito limitas (0 = nėra)
+dim_unit_code_ph	Matmenų vieneto kodas (cm)
+divisor_ph	Tūrinis daliklis (5000)
+extra_per_kg_ph	Papildomai / kg
+first_amount_ph	Pirma suma
+first_kg_ph	Pirmas kg (plokštė)
+from_code_ph	Iš kodo (maišas)
+item_name_lang_ph	Prekės pavadinimas — rašykite savo kalba
+login_id_opt_ph	Naudotojo vardas (privalomas, unikalus)
+manager_pin_ph	Vadovo PIN patvirtinimui (tik jei negalite anuliuoti)
+new_branch_name_ph	Naujo padalinio pavadinimas
+new_password_ph	Naujas slaptažodis (nebūtinas)
+new_pin_ph	Naujas PIN (4–12 skaitmenų)
+note_bank_ph	Pastaba (įnašas, išėmimas, …)
+note_buy_expense_ph	Pastaba (degalai, nuoma, …)
+note_expense_ph	Pastaba (degalai, biuras, …)
+notify_phone_ph	Pranešti telefonu (WhatsApp / SMS kabliukas)
+options_moklanjo_ph	Parinktys (neprivaloma) – Didelis = 20, Dovanų įpakavimas = 10
+part_second_way_ph	Dalis antru būdu (nebūtina)
+phone_ph	Telefonas
+address_ph	Adresas
+party_custom_fields_heading	Priskirti laukai (pasirinkta šalis)
+party_custom_help	Prie šios vakarėlio pridėkite bet kokią etiketę ir vertę – „WhatsApp“, GSTIN, maršruto kodą,…
+party_custom_key_ph	Lauko pavadinimas (pvz., WhatsApp)
+party_custom_value_ph	Vertė
+party_custom_add	Pridėti lauką
+party_custom_remove	Pašalinti lauką
+party_custom_empty	Dar nėra tinkintų laukų
+party_custom_pick_first	Pasirinkite vakarėlį, kad pridėtumėte tinkintus laukus
+place_name_ph	Šios vietos pavadinimas
+price_ph	Kaina
+qty_example_ph	Kiekis (pvz. 1.5 už kg)
+quantity_ph	Kiekis
+reason_required_ph	Priežastis (privaloma)
+role_title_ph	Pareigų pavadinimas (pvz. Barista)
+service_pct_ph	Aptarnavimas % nebūtinas 0/10/12
+short_code_ph	Trumpas kodas (MG02)
+slab_kg_ph	Įkraunama plokštė kg (0,5)
+staff_name_ph	Darbuotojo pavardė / ID
+starting_password_ph	Pradinis slaptažodis (nebūtinas)
+starting_pin_ph	Pradinis PIN (4–12 skaitmenų)
+tax_rate_ph	Mokesčio tarifo pavadinimas arba % — Standartinis, Sumažintas, 0, 5, 12, 18, 20
+to_code_ph	Į kodą (kg)
+uncleared_no_ph	Neišvalytas Nr. aukščiau
+unit_cost_ph	Vieneto savikaina
+unit_kg_blank_ph	Vienetas (kg arba tuščias)
+unit_name_bag_ph	Pavadinimas (Maišas)
+weight_unit_code_ph	Svorio vieneto kodas (kg)
+zone_name_ph	Zonos pavadinimas
+pay_credit	Kreditas
+book_kind_today	Šiandienos knygos
+book_kind_month	Šio mėnesio knygos
+book_kind_aging	Neapmokėta / debetas-kreditas
+book_kind_balance	Balansas
+ops_desk_help	Nuskaitykite AWB naudodami USB brūkšninio kodo skaitytuvą (arba įveskite) → Rasti. Tada pirmyn, atspausdinkite etiketę arba surinkite COD. Etikečių spausdinimas kodas 128.
+role_help_consignor	Vaidmuo: siuntėjas – AR (jie mums skolingi). Ta pati įmonė taip pat gali būti vežėja.
+role_help_carrier	Vaidmuo: Vežėjas – AP (mes jiems skolingi). Ta pati įmonė gali būti ir siuntėja.
+role_help_both	Vaidmenys: siuntėjas + vežėjas – viena šalis, AR ir AP knygos, grynosios ataskaitose.
+role_help_supplier	Vaidmuo: Tiekėjas – AP pirkiniams.
+lane_declared_label	Sąskaitos užsakymas
+lane_owner_label	Užsakymas grynaisiais
+money_lane_bill	Sąskaita: {lane}

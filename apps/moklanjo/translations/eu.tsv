@@ -1,0 +1,835 @@
+# Basque — Euskara (eu). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	Mezularitza-agentzia liburuak + erreserba mahaia. Lineaz kanpo doan.
+unlock	Desblokeatu
+pin_hint	Jabearen PINa hasieran 0000 da
+sell	Erreserba
+buy	Ordaindu
+books	Eguneko liburua
+books_help	Gaurko jarrera. Erreserba = paketeak sartu. Ordaindu = garraiolariaren fakturak eta gastuak. Alderdiak = bidaltzaileak eta garraiolariak.
+buy_help	Gastuen bonoak eta garraiolariaren fakturak (dirua ateratzea). Konturako egonaldiak alderdien liburuan.
+sell_money_in	Erreserbatu pakete bat
+buy_money_out	Gastua / garraiolariaren faktura
+record_purchase	Erosketa erregistratu
+add_expense	Gastu-ordaina
+bank_book	Banku-liburua
+credit_help	Alderdiaren ID bakarra da (izenak errepika daitezke). Rolak: bidaltzailea (AR), garraiolaria (AP) edo biak id horretan. Liburuak bereizita geratzen dira; txostenek garbi erakusten dute.
+party_kind_ph	Rol pertsonalizatua (aukerakoa) edo sakatu goiko txip bat
+parties_list_heading	Alderdi gordeak
+reports_help	Eguneko liburua, zordunak eta hartzekodunak, banku-liburua, gastu-ordeinak, irabazi-galera.
+reports_today	Eguneko liburua (gaur)
+reports_month	Irabazi-galera (hilabetea)
+reports_aging	Ordaindu gabe / Dr-Cr
+reports_balance_sheet	Balantzea
+reports	Banku-liburua eta irabazi-galera
+refresh	Freskatu
+undo	Desegin
+start_tracking	Jarraipena hasi
+stock_minus	− Stocka
+stock_plus	+ Stocka
+settle_cash	Eskudirua kitatu
+settle_card	Txartela kitatu
+items	Tarifak eta zerbitzuak
+nav_items	Tarifak
+more	Gehiago
+your_items	Zure tarifak
+items_help	Errenkada bakoitza tasa bat da (adibidez, Azaleko Zona A). Unitatea kg izan ohi da. Ukitu editatzeko.
+add_item	Gehitu tarifa
+new_item	Tarifa berria
+adding_item	Tarifa berria gehitzea
+editing_item	Editatzen
+save	Gorde
+remove	Kendu
+empty_catalog	Oraindik ez dago tarifarik. Ireki Tarifak eta zerbitzuak, gehitu bat (izena + prezioa, kg unitatea), ondoren Erreserba.
+counter_sale	Kontrako erreserba
+total	Guztira
+cash	Eskudirua
+upi	UPI
+card	Txartela
+credit	Alderdiak
+clear	Garbitu
+ready_to_sell	Libururatzeko prest
+today_prefix	Gaur
+today_mid	gaur
+owed	ordaindu gabe
+round_word	biribiltzea
+back	Atzera
+sold_out	Ez dago
+restock	Berriz hornitu
+not_tracked	Jarraipenik gabe
+in_stock	stockean
+marked_sold_out	Ez dagoela markatuta
+add_upper	GEHITU
+na	E/A
+qty	Pisua/Kop.
+unit_at	Tarifa @
+actual	Benetakoa
+applied	Aplikatua
+note_ph	Oharra (aukerakoa)
+rounded	BIRIBILDUTA
+split	Zatitu
+counter	Kutxatila
+parcel	Partzela
+order	Eskaera
+sales	Erreserbak
+sales_refunds	Erreserbak eta itzulketak
+day_close	Egunaren itxiera
+reports_expenses	Banku-liburua eta irabazi-galera
+nav_reports	Txostenak
+nav_settings	Ezarpenak
+nav_lock	Blokeatu
+sidebar_settings	Alboko barraren ezarpenak
+sidebar_settings_help	Alboko erraileko ikono berak. Arrastatu errenkada bat berrordenatzeko. Etengailua irauli erakusteko edo ezkutatzeko. Ezarpenak eta Blokeoa beti barran geratzen dira.
+sidebar_always_on_short	Beti piztuta
+sidebar_back_settings	Atzera
+sidebar_shown	Erakutsita
+sidebar_hidden	Ezkutatuta
+sidebar_always_on	Beti barran
+sidebar_shown_hint	Alboko errailean / beheko fitxetan erakutsita
+sidebar_hidden_hint	Barretik ezkutatuta
+sidebar_menu_items	Menua eta artikuluak
+sidebar_enable_all	Gaitu guztiak
+sidebar_disable_all	Desgaitu guztiak
+sidebar_order_saved	Alboko barraren ordena gordeta
+sidebar_visibility_saved	Alboko barraren ikusgaitasuna gordeta
+amounts_hide	Ezkutatu
+amounts_show	Erakutsi
+no_sale_yet	Oraindik salmentarik ez
+favorites	Gogokoak
+favorites_help	Maiz saltzen dituzun artikuluak, zure saio honetarako gordeta. Gehitu bat kontuari, edo osatu zerrenda beheko artikulu guztietatik.
+your_favorites	Zure gogokoak
+all_items	Artikulu guztiak
+no_favorites	Oraindik gogokorik ez — gehitu artikuluak beheko zerrendatik.
+add_to_bill	Gehitu kontuari
+added	Gehituta
+owes_word	zor du
+selected_word	Hautatuta
+chip_clear_credit	garbitu — Kreditua edo aurrerakina hartu
+chip_missing_customer	Hautatutako bezeroa falta da — aukeratu berriro
+chip_no_customer	Oraindik bezerorik ez — idatzi izen bat, gero sakatu Kreditua
+credit_summary_fmt	{} bezero · kreditu irekia {} · eutsitako aurrerakinak {}
+recent_label	Azkenak:
+inventory	Inbentarioa
+inventory_stock	Inbentarioa eta stocka
+branches	Sukurtsalak
+branches_org	Sukurtsalak eta erakundea
+credit_customers	Alderdiak (zordunak eta hartzekodunak)
+customer_name_ph	Alderdiaren izena
+new_customer_ph	Alderdi-izen berria
+item_name_ph	Tarifaren izena (adibidez, Azaleko eremua)
+item_price_ph	Kg bakoitzeko / lehen lauza
+start_template	Produktua
+next_booking	Hurrengo erreserba
+destination_ph	Helmuga hiria/zona
+consignee_ph	Hartzailearen izena
+consignee_phone_ph	Telefono hargailua
+consignee_address_ph	Bidalketa helbidea
+origin_name_ph	Bidaltzailearen izena
+origin_phone_ph	Igorlearen telefonoa
+origin_address_ph	Jatorrizko helbidea
+booking_consignor_heading	Bidaltzailea (bezeroa / bidaltzailea)
+booking_consignee_heading	Hartzailea (hartzailea)
+booking_consignor_hint	Aukeratu festa bat betetzeko, edo utzi hutsik ibiltzeko. Etxean jasotzeko eta RTO behar da.
+booking_consignee_hint	Fardelaren hartzailea. Utzi hutsik mostradoreak uzteko.
+weight_kg_ph	Benetako kg
+length_cm_ph	L cm
+breadth_cm_ph	B cm
+height_cm_ph	H cm
+chargeable_kg	Kargatzeko kg
+awb_label	AWB
+booking_help	Bidaltzailea + hartzailea (hutsik Ados) → helmuga → pisatu → hautaketa-tasa → Kontua/Dirua → ordaindu. AWB-k ordainagirian inprimatzen du. Hurrengo erreserbak mahaia garbitzen du. Hasiera biribilduak Aplikatuaren berdinak dira — editatu faktura biribiltzeko soilik.
+cart_empty_hint	Mahaia hutsik: bidaltzailea/hartzailea aukerakoa da, ezarri helmuga eta pisua, sakatu GEHITU tarifa bat, eta gero ordaindu.
+team	Taldea
+team_pins	Taldea eta PINak
+my_pin_settings	Nire PINa
+settings_hub_help_my_pin	Aldatu gailu honetan saioa hasi duenaren desblokeo PINa.
+team_self_help	Zuk bakarrik alda dezakezu desblokeatzeko PINa (eta aukerako saioa hasteko pasahitza). Galdetu jabeari pantaila edo eskubide desberdinak behar dituzun.
+backup_settings	Babeskopia eta ezarpenak
+lock_app	Blokeatu aplikazioa
+pick	Aukeratu
+select	Hautatu
+advance	Aurrerakina
+owner	Jabea
+staff	Langileak
+photo	Argazkia
+auto	Automatikoa
+prev	Aurrekoa
+next	Hurrengoa
+ok	OK
+this_shop	Zerbitzaria
+extra_till	Bezeroa
+off	Itzalita
+server	Zerbitzaria
+client	Bezeroa
+language_currency	Hizkuntza eta moneta
+language	Hizkuntza
+choose_language	Aukeratu zure hizkuntza
+language_setup_hint	Jarraitu gailu honen hizkuntza, edo aukeratu zeuk.
+lang_follow_platform	Gailuaren hizkuntza
+lang_pick_user	Aukeratu hizkuntza
+lang_platform_now	Gailuaren hizkuntza orain
+selected_language	Hautatuta
+continue	Jarraitu
+this_device	GAILU HAU
+device_use_q	Nola erabiliko da gailu hau?
+last_server_mode	Zerbitzaria zen — sakatu jarraitzeko
+last_client_mode	Bezeroa zen — sakatu jarraitzeko
+choose_server	Aukeratu zerbitzari bat
+choose_server_hint	Ireki dagoen zerbitzari bat, edo sortu bat beste negozio baterako.
+create_new_server	Sortu zerbitzari berria
+open_server	Ireki
+new_server_name_ph	Zerbitzari berriaren izena (aukerakoa)
+server_remove_pin_ph	Jabearen PINa zerbitzari bat kentzeko
+only_owner_remove_server	Jabeak soilik ken dezake zerbitzari bat
+owner_pin_remove_server	Jabearen PINa behar da zerbitzari hau kentzeko
+device_setup_help	Zerbitzariak liburuak hemen gordetzen ditu. Bezeroa Zerbitzari batekin parekatzen da.
+currency	Moneta
+backup	Babeskopia
+settings_sec_diag	Diagnostikoak
+settings_hub_help	Ireki eremu bat aldi bakoitzean — gutxiago korritu, aukera argiagoak.
+settings_sec_devices	Beste gailuak
+settings_sec_alerts	Abisuak
+alerts_help	Zenbat denboran geratzen diren egoera-mezuak pantailan zuretzat (saio hasiera hau).
+snack_secs_ph	Segundoak (3–60, lehenetsia 10)
+snack_secs_save	Gorde abisu-denbora
+snack_secs_saved	Abisu-denbora gordeta — {n} segundo
+snack_secs_bad	Idatzi segundoak zenbaki gisa (3-60)
+cancelled	Ezeztatuta
+cancel	Ezeztatu
+opening_client	Bezeroa irekitzen…
+preparing_desk	Mahaia prestatzen…
+opening_server	Zerbitzaria irekitzen…
+creating_server	Zerbitzaria sortzen…
+diag_privacy_help	Egunkariak gailu honetan geratzen dira. Sekretuak (PIN, pasahitzak) ez dira inoiz gordetzen. Gailutik kanpo pakete bat partekatzeak zure onespen argia behar du aldi bakoitzean — inoiz ez da saltzen edo hirugarrenei ematen.
+diag_level	Xehetasun maila
+diag_level_error	Erroreak
+diag_level_warn	Abisuak
+diag_level_info	Informazioa
+diag_level_debug	Arazketa
+diag_support_start	Hasi 30 min-ko laguntza-saioa
+diag_support_stop	Amaitu laguntza-saioa
+diag_support_started	Laguntza-saioa piztuta — Arazketa xehetasuna 30 minutuz
+diag_support_ended	Laguntza-saioa amaitu da
+diag_export_local	Esportatu kopia lokala
+diag_export_local_done	Diagnostiko lokala prest {path}-(e)n — aukeratu kopia non gorde
+diag_approve_send	Onartu gailutik kanpoko partekatzea
+diag_send_heading	Partekatu gailutik kanpo
+diag_send_help	Onespena pakete baterako da, gero iraungitzen da. Behin-behinekoa — produktua konpontzeko edo hobetzeko soilik. Ez da hirugarrenekin partekatzen. Linux, Windows, macOS eta Androiden dabil.
+optional_login_heading	Aukerako saio-hasiera
+rights_heading	Eskubideak
+booking_scope_heading	Etxekoa / Nazioartekoa
+diag_send_approved	Partekatzea onartuta pakete baterako (laster iraungitzen da)
+diag_export_send	Sortu partekatze-paketea (onespena behar du)
+diag_export_send_done	Partekatze-paketea prest {path}-(e)n — aukeratu non gorde, gero Kumkaj laguntzari soilik bidali
+diag_save_bundle	Gorde diagnostiko-kopia
+diag_bundle_saved	Diagnostiko-kopia gordeta {path}-(e)n
+diag_bundle_failed	Ezin izan da diagnostiko-kopia han gorde — saiatu berriro
+diag_clear	Garbitu diagnostiko-egunkariak
+diag_cleared	Diagnostiko-egunkariak garbituta
+use	Erabili
+add_branch	Gehitu sukurtsala
+add_conversion	Gehitu bihurketa
+add_item_plain	Gehitu artikulua
+add_note	Gehitu oharra
+add_opening_balance	Gehitu hasierako saldoa
+add_rider	Gehitu txirrindularia
+add_staff	Gehitu langilea
+add_unit	Gehitu unitatea
+add_use_name	Gehitu / erabili izen hau
+allow_extra_tills	Baimendu kutxa gehigarriak
+amend	Zuzendu
+apply_country_pack	Aplikatu herrialde-paketea
+datetime_appearance	Data eta orduaren itxura
+datetime_appearance_help	Liburuek urteko lehen RFC3339 barruan gordetzen dute. Hauek datak eta erlojuak ordainagirietan, etiketetan, txostenetan eta pantailan nola ikusten diren aldatzen dute.
+datetime_example	Adibidea orain: {ex}
+date_order	Data-ordena
+date_order_dmy	D/M/Y
+date_order_mdy	M/D/Y
+date_order_ymd	Y-M-D
+time_format	Erlojua
+time_format_24h	24 ordu
+time_format_12h	12 ordu
+attach_bill_photo	Erantsi kontu-argazkia
+attach_pdf	Erantsi PDFa
+attach_photo	Erantsi argazkia
+bank	Bankua
+bank_in	Bankura sartu
+bank_out	Bankutik irten
+bank_to_till	Bankua → kutxa
+till_to_bank	Kutxa → bankua
+mark_cleared	Markatu garbituta
+unmark	Desmarkatu
+role_both	Biak
+role_carrier	Garraiolari
+role_cashier	Kutxazaina
+role_consignor	Bidaltzailea
+role_manager	Kudeatzailea
+role_supplier	Hornitzailea
+branch_name_sell_ph	Saltzeko sukurtsalaren izena
+bring_my_book	Ekarri nire liburua
+business_tax_id_ph	Negozioaren zerga-identifikatzailea
+card_amount_ph	Txartel-zenbatekoa
+cash_amount_ph	Eskudiru-zenbatekoa
+upi_amount_ph	UPI zenbatekoa
+carrier_cost_ph	Garraiolari kostua
+carrier_party_ph	Garraiolari festa
+choose_icon	Aukeratu ikonoa
+choose_logo	Aukeratu logotipoa
+choose_receipt_stamp	Aukeratu ordainagiria zigilua
+choose_payment_qr	Aukeratu ordainketa QR
+clear_icon	Garbitu ikonoa
+clear_logo	Garbitu logotipoa
+clear_photo	Garbitu argazkia
+clear_stamp	Garbitu zigilua
+clear_payment_qr	Garbitu ordainketa QR
+print_faces	Aurpegiak inprimatu (ordainagiria / epearen faktura)
+print_faces_help	Aukerako zigilua eta ordainketa QR zure logotipoaren ondoan erreserba-ordainagirietan eta aldiko fakturan.
+awb_pools_heading	Eramailearen AWB zenbaki multzoak
+add_awb_pool	Gehitu AWB igerilekua
+awb_pool_carrier_ph	Garraiolariaren alderdiaren izena
+awb_pool_start_ph	Hasi zk.
+awb_pool_end_ph	Amaiera ez.
+awb_pool_prefix_ph	Aurrizkia (aukerakoa)
+awb_pool_label_ph	Etiketa (aukerakoa)
+pieces_ph	Piezas (hutsik = 1) - karga / pieza anitzeko zabaltzea
+bulk_awbs_ph	Bulk AWBs — itsatsi asko (lerro berriak edo koma) egoera aurrerapen baterako
+tds_cut_ph	TDS mozketa (aukerakoa)
+discount_ph	Deskontua (aukerakoa)
+cheque_no_ph	Egiaztatu zenbakia (aukerakoa)
+bill_reminder_chase	Fakturaren abisuaren jazarpenen zerrenda
+month_mix_report	Hilabeteko nahasketa txostena
+copy_month_gst_csv	Kopiatu hilabeteko GST CSV
+domestic	Etxekoak
+international	Nazioartekoa
+pick_logo	Aukeratu logotipoa
+booking_scope_hint_domestic	Bolumetrikoa ÷5000 (etxekoa) — sakatu Nazioarteko ÷6000 airerako
+booking_scope_hint_intl	Bolumetrikoa ÷6000 (nazioarteko airea) — sakatu Etxekoa dendarako ÷5000
+cod_register	COD erregistroa
+collect_cod	Bildu COD (AWB)
+consignments_dispatch	Bidalketak eta bidalketak
+consignor_party_ph	Bidaltzailea / alderdiaren izena
+copy_day_book_csv	Kopiatu eguneko liburua CSV
+copy_day_close	Kopiatu egunaren itxiera
+copy_items_csv	Kopiatu artikuluak CSV
+copy_outstanding_csv	Kopiatu ordaindu gabea CSV
+copy_parties_csv	Kopiatu alderdiak CSV
+copy_party_ledger_csv	Kopiatu alderdiaren liburua CSV
+copy_receipt	Kopiatu ordainagiria
+copy_report	Kopiatu txostena
+counted_cash_ph	Kutxan zenbatutako eskudirua
+counter_agency_ph	Kontratagailua / agentziaren izena (aukerakoa)
+create_backup	Sortu babeskopia
+day_close_summary	Egun-itxieraren laburpena
+delete_party	Ezabatu hautatutako alderdia
+dispatch_to_rider	Bidalketa erreserbatua → txirrindularia
+docket_charge_ph	Espedientea kobratzea
+declared_value_ph	Adierazitako balioa
+contents_ph	Edukiak
+eway_ph	Bide elektronikoaren faktura zk.
+insurance_label	Aseguruak
+yes_label	Bai
+no_label	Ez
+print_route_label	Inprimatu ibilbidea
+new_party_kind_label	Festa mota berria
+done_open_books	Egina — ireki liburuak
+export_day	Esportatu eguna
+extra_note_expense_ph	Ohar gehigarria azken gastuan
+extra_note_awb_ph	AWB / salmenta honi buruzko ohar gehigarria
+failed_delivery	Ezin izan da entregatu
+find_scan_awb	Bilatu / Eskaneatu AWB
+forget_shop	Ahaztu denda hau
+fuel_ph	Erregaia
+handover_carrier	Eskuz erreserbatu → garraiolaria
+import_day	Inportatu eguna
+import_items_csv	Inportatu elementuak/tasak CSV…
+import_parties_csv	Inportatu alderdiak CSV…
+import_pincodes_csv	Inportatu pinkodeak CSV...
+import_carrier_bill_csv	Inportatu operadorearen faktura CSV...
+copy_carrier_bill_report	Kopiatu garraiolariaren azken fakturaren txostena
+use_carrier_cost	Erabili garraiolariaren kostua
+rate_carrier_ph	Garraiolaria (hutsik = gure salmenta-tasa)
+rate_party_ph	Festa (hutsik = bezero guztiak)
+carrier_pick_ph	Garraiolari kostua (konparaziotik)
+item_name	Artikuluaren izena
+load_bulk_row	Kargatu multzoko errenkada → mahaia
+login_id_ph	Erabiltzaile-izena
+mark_delivered	Mark entregatu
+manifest_cod_total	COD guztira
+manifest_received_by	Honek jasoa
+manifest_sign	Sinatu
+ndr_address_wrong	Helbide okerra
+ndr_customer_unavailable	Ez dago
+ndr_door_locked	Atea itxita
+ndr_other	Bestela
+ndr_refused	Ezezkoa
+out_for_delivery	Irteera entregatzeko
+print_drs	DRS inprimatu
+print_run_sheet	Inprimatu exekuzio orria
+reattempt	Berriro saiatu
+rider_cod_handed_ph	COD entregatu
+settle_rider_cod	Kitatu pilotua COD
+mode_desk	Mahaia
+mode_rider	Txirrindularia
+waiting_office	bulegora iristeko zain
+capture_signature	Harrapatu sinadura
+incoming_manifest	Sarrerako manifestua
+pickup_request	Bilketa eskaera
+pickup_run	Bilketa korrika
+auto_assign_area	Automatikoki esleitu eremua
+reorder_stops	Berrantolatu geldialdiak
+settle_rider_pay	Kitatu txirrindularien soldata
+vehicle_inspect	Ibilgailuen ikuskapena
+print_docket	Inprimatu espedientea
+franchise_statement	Frankizia-adierazpena
+tally_export	Tally bonoen esportazioa
+open_whatsapp	Ireki WhatsApp
+copy_sms	Kopiatu SMS testua
+pick_barcode_image	Aukeratu irudia eskaneatzeko
+share_receipt_whatsapp	Partekatu ordainagiria WhatsApp-en
+delivery_feedback	Bidalketaren iritzia
+lan_self_book	LAN autoerreserba
+new_party_clear	Alderdi berria (garbitu formularioa)
+new_party_kind_ph	Alderdi mota berria (hornitzailea / garraiolaria)
+next_country	Hurrengo herrialdea
+prev_country	Aurreko herrialdea
+note_gstin_ph	Oharra / GSTIN / hitzarmen-oroigarria
+note_pod_ph	Oharra / POD (aukerakoa)
+on_account_ap	Kontuan (AP)
+org_optional_ph	Erakundea (aukerakoa)
+paid_now	Orain ordainduta
+pairing_code_ph	Parekatze-kodea
+pair_now	Parekatu orain
+party_name_selected_ph	Alderdiaren izena (edo erabili hautatua)
+password_ph	Pasahitza
+pay_ap_card	Ordaindu AP txartelaz
+pay_ap_cash	Ordaindu AP eskudiruz
+pay_ap_upi	Ordaindu AP UPI
+period_bill	Aldiko faktura
+period_bill_party	Aldiko faktura (festa)
+pick_pod_photo	Aukeratu POD argazkia
+print_awb_label	Inprimatu AWB etiketa
+print_open	Inprimatu / ireki
+reason_amend_ph	Zuzendu / baliogabetu / itzultzeko arrazoia
+reason_note_ph	Arrazoia / oharra (galera, zenbaketa, …)
+record_day_close	Erregistratu egunaren itxiera
+refresh_from_shop	Freskatu dendatik
+refund	Itzuli
+remit_cod	Bidali COD (festa)
+remove_selected	Kendu hautatua
+restore_backup	Leheneratu babeskopiatik
+rider_name_ph	Txirrindulariaren izena
+rider_phone_ph	Rider telefonoa
+riders	Txirrindulariak
+riders_own_fleet	Txirrindulariak (flota propioa)
+rollup	Laburpena
+save_booking_measures	Gorde erreserba neurriak
+save_brand	Gorde marka
+save_business_id	Gorde negozio-identifikatzailea
+save_business_name	Gorde negozioaren izena
+save_features	Gorde lanaren konfigurazioa
+save_names	Gorde izenak
+server_ip_ph	Zerbitzariaren IPa (adib. 192.168.1.10)
+set_credit_limit	Aplikatu muga alderdiari
+set_login_selected	Aplikatu saio-hasiera hautatuari
+set_login_named	Aplikatu saio-hasiera {name}-(r)i
+shop	Denda
+start_fresh	Hasi hutsetik
+stop_extra_tills	Gelditu kutxa gehigarriak
+backup_auto	Egunero automatikoki babeskopia · azkena {when} · azken 14 egunak {dir}-(e)n gordetzen dira.
+backup_auto_none	Egunero automatikoki babeskopia — lehena berehala hasiko da.
+backup_copy_to	Kopia ere {dir}-(e)ra doa.
+backup_copy_btn	Babeskopiak karpeta batera ere kopiatu…
+autostart_off	Hasi ordenagailu honekin
+autostart_on	Ordenagailu honekin hasten da ✓ — sakatu gelditzeko
+autostart_done_on	Ordenagailu honek aplikazioa irekitzen du abiatzean — dendaren zerbitzaria itzultzen da argia joan ondoren.
+autostart_done_off	Ordenagailu honek jada ez du aplikazioa irekitzen abiatzean.
+right_allowed	Baimenduta
+right_with_approval	Onarpenarekin
+right_denied	Ez baimenduta
+editing_staff	Eskubideak
+team_pick_ph	Editatzeko langilea — izena, erabiltzaile-izena edo hautatu
+select_staff	Hautatu langile hau
+rights_help	Eskubideak — sakatu aldatzeko: Baimenduta → Onarpenarekin (une horretan kudeatzaile baten PINa) → Ez da onartzen.
+right_void_refund	Erreserba baliogabetu edo itzuli
+right_amend_sale	Aldatu grabatutako erreserba bat
+find_server	Aurkitu dendaren zerbitzaria
+finding_server	Dendaren zerbitzaria Wi‑Fi honetan bilatzen…
+no_server_found	Ez da ezer aurkitu. Zerbitzarian: Ezarpenak → Beste gailuak → Baimendu kutxa gehigarriak (Wi‑Fi bera). Edo idatzi han agertzen den IPa.
+servers_found_pick	Sakatu konektatu nahi duzun denda.
+server_host_selected	{host} erabiltzen — sartu parekatze-kodea, gero Parekatu orain.
+device_forgotten	Dendak gailu hau ahaztu du — parekatu berriro dendaren uneko kodearekin. Bertan itxaroten duten eskaerak gordetzen dira.
+forget_device	Ahaztu
+last_seen	ikusita
+new_pair_code	Parekatze-kode berria
+lan_offline	Dendako zerbitzaria eskuraezina
+lan_offline_waiting	Zerbitzaria eskuraezina · {n} zain
+lan_connecting	Dendarekin konektatzen…
+pair_finishing	Bikotea amaitzen... bulegoko liburuak aplikatzen
+pair_opening	Bulegoa irekitzen...
+lan_live	Zuzenean
+lan_sending	{n} bidaltzen
+lan_sign_in_to_send	Hasi saioa berriro {n} bidaltzeko
+lan_pair_again	Parekatu gailu hau berriro
+lan_update_app	Eguneratu aplikazioa: gailu honek eta bulegoko zerbitzariak bertsio desberdinak dituzte
+allow_firewall	Utzi beste gailuei konektatzen
+firewall_blocked	Ordenagailu honen suebakiak beste gailuak blokeatzen ditu — sakatu Utzi beste gailuei konektatzen.
+firewall_waiting	Administratzailearen gonbita zain…
+lan_join_help	Beste gailuan: Bezero modua → Aurkitu dendaren zerbitzaria (edo idatzi {addr}) → parekatze-kodea {code}.
+lan_pair_status	Wi‑Fi {addr}
+lan_join_help_no_addr	Konektatu gailu hau Wi‑Fi-ra helbide bat izateko.
+lan_no_address	Oraindik ez dago Wi‑Fi helbiderik — konektatu dendako Wi‑Fi-ra.
+lan_not_listening	Ez ditu gailuak onartzen ({port} ataka okupatuta). Berrabiarazi aplikazioa.
+lan_tills_off	Kutxa gehigarriak itzalita daude. Baimendu beste gailu bat elkartzeko.
+paired_with	Parekatuta · {url}
+not_paired	Parekatugabe
+choose_device_use	Aukeratu Zerbitzaria edo Bezeroa.
+paired_note	Parekatuta. Desblokeatu saltzeko, edo Freskatu azkena lortzeko.
+last_update_at	Azken eguneratzea: {time}.
+pair_intro	Aurkitu zerbitzaria, edo idatzi helbidea eta parekatze-kodea.
+queue_waiting	Dendara iristeko zain ({n}):
+queue_tries	{n} aldiz saiatuta · azken erantzuna: {e}
+save_backup_copy	Gorde babeskopia bat…
+backup_copy_saved	Babeskopia gordeta — eduki gailu honetatik kanpo (USB bat edo beste gailu bat)
+backup_copy_overdue	{n} egunez ez da babeskopiarik irten gailu honetatik — Ezarpenak → Babeskopia
+backup_copy_failed	Ezin izan da babeskopia han gorde — aukeratu beste leku bat
+clock_off	Gailu honen erlojua {min} min desberdina da dendako zerbitzariarekiko — ezarri ordu zuzena
+printers_heading	Gailu honetako inprimagailuak
+printers_help	Bilatu benetako inprimagailuak, eta, ondoren, aukeratu Erreziboa edo AWB etiketa. Lan bakoitzak bere zabalera, erretratua edo horizontala du, eta byteak nola bidaltzen diren. Etiketa batek barra-kodea inprimatzen du. Leku hutsa = ez inprimatu.
+job_width	Eduki-zabalera (mm)
+job_width_ph	Edo idatzi zabalera bat, 40-210 mm
+job_layout	Antolamendua
+job_delivery	Lana nola bidaltzen den
+job_size	Letra-neurria
+job_size_ph	adib. 18, 20, 26…
+save_receipt_format	Gorde ordainagiria formatua
+save_label_format	Gorde etiketa formatua
+test_receipt_format	Proba ordainagiria
+test_label_format	Proba-etiketa
+test_receipt_sent	Bidalitako ordainagiria lagina
+test_label_sent	Bidali da etiketa lagina
+test_print_no_printer	Ez dago inprimagailurik lan horretarako — gehitu bat toki honen azpian
+printers_host_only	Inprimagailuak dendako gailuan (Zerbitzaria) ezartzen dira. Honek hara bidaltzen ditu lanak — Bilatu / gehitu / esleitu egonaldia Zerbitzarian. Proba orria zerbitzarira doa.
+printers_pool_heading	Inprimagailuak
+printers_routes_heading	Non inprimatzen den
+printer_label_ph	Izena (adibidez, mahaia)
+printer_target_ph	host:9100 · bt:MAC · usb:VID:PID · sistemaren izena
+printer_mode_heading	Irteera berrien profila
+printer_mode_standard	Erretratu estandarra
+printer_mode_landscape	Paisaia estandarra
+printer_mode_thermal	Termikoak
+printer_mode_standard_short	Bertikal
+printer_mode_landscape_short	Horizontala
+printer_mode_thermal_short	Termikoak
+printer_format_custom	Profil pertsonalizatu berria
+printer_format_custom_label	Pertsonalizatua
+printer_format_custom_added	Profil pertsonalizatua gehituta leku honetarako
+add_printer	Gehitu inprimagailua
+remove_printer	Kendu azkena
+route_pick_ph	ordainagiria edo etiketa
+route_add_printer_ph	Gehitu inprimagailua toki honetan
+route_receipt	Ordainagiria
+route_label	AWB etiketa
+route_dont_print	Ez dago inprimagailurik esleitu
+route_add	Gehitu lekuari
+route_up	Gora
+route_down	Behera
+route_remove	Kendu azkena
+route_clear	Garbitu inprimagailuak toki honetarako
+save_printers	Gorde inprimagailuak
+print_test_page	Inprimatu proba-orri bat
+printers_saved	Gailu honetarako gordetako inprimagailuak
+test_page_sent	Proba-orria bidalita — egiaztatu inprimagailua
+printers_found	Gailu honetan aurkitu da: {list}
+find_printers	Aurkitu inprimagailuak
+printers_looking	Gailu honetan eta Wi-Fi inprimagailuen bila…
+printers_tap_find	Sakatu Bilatu inprimagailuak Wi-Fi honetan lanak eta sareko ordainagirien inprimagailuak onartzen dituzten ilaretarako (ez direnak kendu edo lineaz kanpo daudenak).
+printers_none_found	Ez da inprimagailurik aurkitu: idatzi sistemako inprimagailuaren izena edo sareko helbide bat (adibidez, 192.168.1.50).
+receipt_printer_ph	Ordainagirietarako inprimagailua
+queue_refused	Dendak ez du onartu ({n}) — egiaztatu bakoitza kutxan:
+clear_not_accepted	Egiaztatuta — garbitu zerrenda hau
+device_name_ph	Gailu honen izena
+lan_last_update	azken eguneratzea {time}
+lan_not_accepted	{n} onartu gabe
+connected_now	konektatuta orain
+backup_failed	Azken babeskopia automatikoak huts egin du: {e}
+backup_overdue	{n} egunez babeskopiarik ez — eduki aplikazioa irekita gailu honetan babeskopia egin ahal izateko.
+disk_low	{mb} MB soilik libre gailu honetan — babeskopiek laster huts egingo dute. Egin toki pixka bat.
+last_seen_devices	Azkenekoz ikusita: {time}
+sync_interval	Sinkronizatu {secs} s-tik behin
+connection_to_shop	Dendarekiko konexioa
+supplier_name_ph	Hornitzailearen izena (edo alderdia)
+supplier_ph	Hornitzailea
+switch_device	Aldatu gailu hau
+take_payment	Kobratu
+tax_added_till	{tax} kanpo
+tax_inside_price	{tax} barne
+today_books	Gaurko liburuak
+unlock_after_pairing	Sartu PINa
+unlock_with_login	Desblokeatu saio-hasierarekin
+update_my_password	Eguneratu nire pasahitza
+update_my_pin	Eguneratu nire PINa
+duress_heading	Larrialdi-desblokeo PINa (Jabea soilik)
+duress_help	Aukerakoa. PIN hau desblokeatzeko orduan idazten bada zurea ordez, liburu-sarrera guztiak ezabatzen dira (erreserbak, liburu-liburuak, historia) eta mahaia Jabe gisa irekiko da normal itxurarekin: tarifak, festak, zonak, langileak eta ezarpenak geratzen dira. Eskema eta konfigurazioa ez dira ezabatzen. Erabili soilik desblokeatzera behartuta zaudenean. Utzi hutsik eta gorde itzaltzeko. Inoiz ez da inoren PINaren berdina.
+duress_pin_ph	Larrialdi PINa (4–12 digitu)
+duress_confirm_ph	Idatzi berriro berresteko
+save_duress_pin	Gorde larrialdi PINa
+clear_duress_pin	Itzali larrialdi PINa
+duress_on	Larrialdi-desblokeo PINa piztuta dago
+duress_off	Larrialdi-desblokeo PINa itzalita dago
+duress_saved	Larrialdi-desblokeo PINa gordeta
+duress_cleared	Larrialdi-desblokeo PINa itzalita
+vehicle_ph	Ibilgailua
+void	Baliogabetu
+write_off_ap	Ezabatu AP
+write_off_nil	Ezabatzea / saldo hutsa
+zone_ph	Zona (izena Tarifak)
+caption_today	GAUR
+caption_bookings	ERRESERBAK
+caption_payments_today	ORDAINKETAK GAUR
+caption_outstanding	ORDAINDU GABE
+caption_bank	BANKUA
+paid_by	Ordainduta
+second_way	Bigarren modua
+weight_in	Pisua barne
+size_in	Tamaina barruan
+goods_received	Jasotako salgaiak
+expense_heading	Gastua
+notes_attach_sale	Oharrak eta eranskinak (hautatutako salmenta)
+notes_attach_party	Oharrak eta eranskinak (hautatutako alderdia)
+attachments_last_expense	Eranskinak (azken gastua)
+credit_limit_heading	Kreditu-muga (hautatutako / izendatutako alderdia)
+pay_selected_heading	Ordaindu hautatua (zorrea kitatu / aurrerakina hartu)
+write_off_heading	Ezabatzea (ordaindu gabe garbitzea)
+pay_ap_heading	Ordaindu haiei zor dieguna (AP)
+country_tax	Herrialdea eta zerga
+extra_tills_heading	Kutxa gehigarriak
+other_devices_help_heading	Konfiguratu beste gailuak
+other_devices_help	Gailu honetan (Zerbitzaria): Beste gailu batzuk → Onartu kutxa gehigarriak. Kontuan izan parekatzeko kodea eta Wi-Fi helbidea. Sakatu Baimendu beste gailu batzuei konektatzea agertzen bada. Ordenagailu batean, sakatu Hasi ordenagailu honekin. Gailu bakoitzean: instalatu aplikazioa, aukeratu Bezero modua, Bilatu dendaren zerbitzaria (edo idatzi helbidea), idatzi parekatzeko kodea, Parekatu orain. Eskaerak gailuan itxarongo dira Wi-Fia jaisten bada eta zerbitzariak berriro erantzuten duenean joaten dira.
+your_brand	Zure marka (aplikazioan)
+units_heading	Unitateak
+booking_measures	Erreserba neurriak
+drawer_count	Kutxa-zenbaketa (aukerakoa)
+spreadsheet_csv	Kalkulu-orria (CSV)
+bank_reconciliation	Banku-adiskidetzea (markatu banku-laburpenaren aurka)
+book_add_product	Erreserbatu — gehitu produktua / tarifa
+book_opening_credit	Liburua — hasierako kreditua
+account_kind	Kontu mota (sakatu bat)
+active_ledger	Liburu aktiboak
+actual_total_cap	BENETAKO GUZTIRA
+amend_help	Hautatu salmenta bat zuzentzeko, baliogabetzeko edo itzultzeko. Zuzenketek historia osoa gordetzen dute. Biribildutako Guztira Aplikatuaren berdina hasten da — editatu biribiltzeko soilik. Baliogabetzeak eta itzulketak Jabe edo Kudeatzaile PIN bat eska dezakete (goian idatzita; zure izenarekin erregistratzen da).
+applied_total_cap	APLIKATUTAKO GUZTIRA
+bank_balance	Bankuko saldoa
+bank_net_today	Banku garbia gaur
+branch_export_help	Esportatuek eguneko argazki bat idazten du babeskopien karpetan eta arbelean kopiatzen du. Beste saltoki baten eguna inportatzeko, gorde fitxategia import_branch_snapshot.json gisa karpeta horretan, eta sakatu Inportatu.
+brand_shown_help	Aplikazio barruko pantailetan agertzen da. Gailu honetan instalatutako aplikazioaren izena eta ikonoa plataformaren zerrendan dauden bezala geratzen dira.
+app_icon	Aplikazio-ikonoa
+logo_help	Aukerako dendaren marka aplikazio barruko pantailetan.
+onboard_layout	Zer lortzen duzun
+item_photo_help	Aukerakoa. Argazkirik gabe artikuluaren izeneko inizialak erakusten ditugu.
+cash_in_hand	Eskudirua kutxan
+change_my_pin_heading	Aldatu nire PINa (zurea bakarrik)
+connect_to_server	Konektatu Zerbitzarira
+counter_locked	Kutxa 01 · Blokeatuta
+country_pack_help	Herrialde-pakete batek zergaren izena eta kalkulua, berehalako ordainketa-erraila eta kontuetan inprimatutako negozio-identifikazioa ezartzen ditu. Kumkajek ez du inon zergarik aurkezten edo gobernuaren faktura elektronikorik ematen.
+currency_use_help	Korritu eta sakatu Erabili onartutako edozein moneta.
+day_close_help	Egun-itxiera erregistratzeak laburpen hau (eta tiraderaren aldea, zenbatuta badago) auditoretza-egunkarian gordetzen du. Ez du saltzea gelditzen.
+expenses_word	Gastuak
+feature_access_help	Hautatutako langileentzako eginbideetarako sarbidea (sakatu gehitu ondoren)
+footer_local	SQLite lokala · Dohain betiko · Hoderik gabe
+fresh_book_moklanjo	Freskoa = katalogo hutsa (gehitu elementuak geroago). Liburua = hasierako akzio mota eta behean nork zor dizun.
+fresh_selected	Fresh hautatuta — katalogoa hutsik geratzen da. Sakatu Eginda prest zaudenean.
+gross_word	Gordina
+how_start	Nola hasi nahi duzu?
+later_country_pack	Geroago: Ezarpenak → aplikatu herrialde-paketea zerga eta ordainketa etiketetarako.
+local_badge	LOKALA
+measures_help_moklanjo	Nola neurtzen diren paketeak erreserba mahaian. Idatzi neurriak eta pisua erabiltzen dituzun unitateetan — estandarra (cm, m, in, ft · kg, g, lb, oz) edo goiko cm/kg-ekin lotutako zure unitatea (zuzenean edo beste unitate batzuen bidez). Liburuek beti kg erregistratzen dituzte. Utzi eremu bat hutsik gordetzeko.
+mix_type_hint_moklanjo	Idatzi zenbat bakoitzean (esdirutan / UPI / txartela / kreditu). fakturari gehitu behar zaio. Kredituak bezero bat behar du goian.
+money_in_sales	Dirua sartu (salmentak)
+more_help_moklanjo	Katalogoa, salmentak, kreditua, taldea, babeskopia — gehi stockak eta kutxa gehigarriak behar direnean.
+net_word	Garbia
+offline_badge	LINEAZ KANPO
+optional_login_help	Aukerako saio-hasiera (id + pasahitza). Jabeak behin ezartzen du; erabiltzaileak soilik alda dezake pasahitza gero.
+or_unlock_login	Edo desblokeatu saio-id + pasahitzarekin
+permission_preset	Lana (pantailak eta eskubideak ezartzen ditu)
+preset_help_moklanjo	Kutxazaina: saldu. Kudeatzailea: saldu + artikuluak + baliogabetu/zuzendu.
+product_locked_moklanjo	Moklanjo
+product_only_moklanjo	Aplikazio hau Moklanjo bakarrik da: liburuak + erreserba mahaia. Beste merkataritza-aurpegi batzuk produktu bereizi gisa bidaltzen dira geroago.
+purchases_cogs	Erosketak (salgaien kostua)
+qty_cap	KOP
+restore_help	Leheneratu: aukeratu babeskopia bat. Liburuak orduan zeuden bezala irekitzen dira; orain dauden liburuak lehenik gordetzen dira, beraz hau desegin daiteke.
+wipe_data_heading	Ezabatu datu lokalak
+wipe_data_help	Jabea bakarrik - Windows desinstalatzeko aukera berdinak. Negozioen erregistroek merkataritza-historia garbitzen dute, baina tarifak eta konfigurazioa mantentzen dituzte (larrialdietarako desblokeatzeko PINa, esaterako). Denda konfiguratzeak liburuen datu-basea kentzen du. Pantailaren hobespenek leihoa/hizkuntza garbitzen dute. Berretsi jabearen PINarekin. Taldeko larrialdietarako desblokeatzeko PINa bereizita dago (ezkutuan garbitu desblokeatzean).
+wipe_trading	Negozio-erregistroak
+wipe_schema	Dendaren konfigurazioa
+wipe_ui	Pantaila-hobespenak
+wipe_owner_pin_ph	Jabearen PINa ezabatzeko
+wipe_delete_selected	Ezabatu hautatua
+wipe_owner_only	Jabeak soilik ezaba ditzake datu lokalak.
+restore_owner_only	Jabeak soilik leheneratu dezake babeskopia.
+wipe_owner_pin_needed	Sartu Jabearen PINa datu lokalak ezabatzeko.
+wipe_nothing_selected	Aukeratu zer ezabatu lehenik.
+wipe_done	Hautatutako datu lokalak ezabatuta.
+wipe_schema_done	Dendaren konfigurazioa ezabatuta — aukeratu Zerbitzaria edo Bezeroa jarraitzeko.
+rounded_total	Guztira biribildua
+setup_app_moklanjo	Konfiguratu Moklanjo
+shop_logo_optional	Dendaren logotipoa (aukerakoa)
+stock_type_help	Idatzi artikuluaren izena (zati bat nahikoa da), kopuru bat, gero doitu. Oraindik zenbatzen ez diren artikuluek Hasi jarraipena behin behar dute.
+team_owner_help	Kontratatu: aukeratu lan bat (Kutxazaina / Kudeatzailea), izena + hasierako PINa, eta gero Gehitu. Pertsona hau desberdina bada bakarrik: ireki pantailak eta eskubideak behean eta, ondoren, Gorde lana konfigurazioa. Bakoitzak bere PINa aldatzen du behealdean — Jabeak ezin du beste inorena aldatu.
+they_owe_us	Haiek zor digute
+unit_at_cap	Unitatea @
+units_help	Kodeak artikulu-etiketetarako (kg, pieza, poltsa). Unitate bakoitzak estandar batera lotu behar du — zuzenean edo beste unitate batzuen bidez — (kg · cm · ml · pc), adib. 1 kaxa = 2 kaxa txiki eta 1 kaxa txiki = 20 cm. Bihurketak: 1 hemendik = faktorea hona. Monetak ez dira inoiz unitateak.
+we_owe_them	Gu zor diegu
+who_unlocking	Nor ari da desblokeatzen?
+locked_word	Blokeatuta
+show_pin	Erakutsi PINa
+hide_pin	Ezkutatu PINa
+set_owner_pin	EZARRI JABEAREN PINa
+enter_owner_passcode	SARTU JABEAREN KODEA
+enter_staff_passcode	SARTU LANGILEAREN KODEA
+pin_count_zero	0 / 12 digitu · gutxienez 4, gero OK
+pin_count_need	{} / 12 digitu · {} gehiago behar
+pin_count_full	12 / 12 digitu · sakatu OK
+pin_count_ready	{} / 12 digitu · sakatu OK prest zaudenean
+pin_hint_choose	Aukeratu 4–12 digitu · Enter edo Desblokeatu gordetzeko
+pin_hint_new	Jabearen PIN berria 4–12 digitu · Enter edo Desblokeatu
+pin_hint_shop_code	Dendako gailua · parekatze-kodea {}
+pin_hint_books	Gailu honek liburuak gordetzen ditu
+pin_hint_paired	Kutxa gehigarria parekatuta — desblokeatu saltzeko
+pin_hint_pair_first	Kutxa gehigarria — lehenik parekatu dendako gailuarekin
+unlock_to_continue	Desblokeatu jarraitzeko
+no_staff_yet	Oraindik langilerik ez — desblokeatu Jabe gisa, gero Taldea
+status_server_set_pin	Zerbitzari modua — ezarri Jabearen PINa
+status_server_tills	Zerbitzari modua — kutxa gehigarriak elkartu daitezke. Desblokeatu
+status_server_unlock	Zerbitzari modua — desblokeatu Jabe gisa
+status_client_unlock	Bezero modua — desblokeatu saltzeko
+icon_new_selected	Ikonoa: fitxategi berria hautatuta — sakatu Gorde marka
+icon_custom	Ikonoa: lokalen marka pertsonalizatua
+icon_default	Ikonoa: Kumkaj marka (lehenetsia) — aukeratu pertsonalizatu bat
+logo_yours	Logotipoa: zure dendaren logotipoa — pantailetan eta ordainagirietan agertzen da
+logo_default	Logotipoa: Kumkaj marka (lehenetsia) — aukeratu zurea baduzu
+tmpl_current	Unekoa: {} — {}
+tmpl_selected	Hautatuta: {} — {}
+setup_complete	Konfigurazioa osatuta
+onboard_fresh_tmpl	Fresh · {} — katalogoa hutsik hasten da; gehitu artikuluak Artikuluetan, gero Eginda.
+onboard_book_tmpl	Book · {} — gehitu artikuluak eta hasierako kreditua, gero Eginda.
+onboard_template_tmpl	Izena eman lekuari nahi baduzu, gero aukeratu nola hasi.
+tmpl_blurb	Mezularitza liburuak eta erreserba mahaia: bidaltzaileak, garraiolariak, eguneko liburua, AWB.
+tmpl_how	Erreserbatu paketeak mahaian; Gaurko eguneko liburua; tasak, festak, txostenak egiteko fitxak.
+trk_booked	Erreserbatua
+trk_picked_up	Jasotakoa
+trk_in_transit	Garraioan
+trk_delivered	Entregatua
+trk_rto	Igorlearengana itzultzen
+lane_to_dispatch	Bidaltzeko
+lane_with_carrier	Garraiolariarekin
+lane_failed	Huts egin du
+lane_done_today	Gaur eginda
+ops_board_help	Partzelak non dauden gaurko lanean. Ukitu lursailak (edo eskaneatu) haiek hautatzeko, eta jardun aldi berean jasotako guztiak: errei bakoitzak hari egokitzen zaizkion mugimenduak baino ez ditu eskaintzen.
+lane_empty	Hemen ez dago ezer.
+picked_fmt	{n} hautatua
+pick_all	Aukeratu guztiak
+bag_for_carrier	Eskua eramaileari
+send_with_rider	Bidali txirrindulariarekin
+out_again	Berriro atera
+return_to_sender	Itzuli igorleari
+runs_bags_heading	Azken lasterketak eta poltsak
+print_word	Inprimatu
+bag_word	Garraio-poltsa
+run_word	Txirrindulari korrika
+parcels_fmt	{n} paketeak
+parcel_history	Historia
+attempt_fmt	Saiatu {n}
+pieces_short_fmt	{n} pcs
+note_reason_ph	Oharra edo arrazoia
+ops_pick_first	Aukeratu paketeak lehenik: sakatu edo eskaneatu
+cod_to_collect	Entregatua — kobratzeko
+cod_on_road	BAKALAOA oraindik errepidean
+cod_owed_consignors	Bildu — bidaltzaileak ordaintzeko
+cod_rto_fees	Kobratzeko RTO tasak
+cod_to_hand_in	COD entregatzeko
+parcel_one_fmt	{n} paketea
+facet_bank_title	Txostenak
+facet_bank_help	Eguneko liburuak, alderdien zahartzea, banku-idazpenak eta aldiaren irabazi-galera.
+facet_ops_title	Bidalketak eta bidalketak
+facet_ops_help	Eskaneatu edo idatzi AWB → Bilatu, gero aurreratu / inprimatu etiketa / COD. Bidal ezazu txirrindulariari edo garraiolariari.
+facet_cod_title	COD erregistroa
+facet_cod_help	Bidaltzean jaso, gero bidaltzaileari bidali.
+facet_riders_title	Txirrindulariak (flota propioa)
+facet_riders_help	Gehitu txirrindulariak, eta bidali Ops-etik erreserbatutako AWBak.
+against_bill_ph	Goiko kontu #aren aurka (aukerakoa)
+aliases_ph	Aliasak — beste izenak, komaz bereizita
+amount_blank_full_ph	Zenbatekoa (hutsa = saldo osoa)
+amount_owed_ph	Zor den zenbatekoa
+amount_ph	Zenbatekoa
+amount_received_ph	Jasotako zenbatekoa
+amount_we_pay_ph	Ordaintzen dugun zenbatekoa
+awb_scan_ph	AWB / eskaneatu barra-kodea
+bulk_csv_ph	CSV masiboa — helmuga, hartzailea, kg, cod_paise, oharra
+business_name_ph	Negozioaren izena
+category_new_ph	Kategoria (aukerakoa, sortzen da berria bada)
+cod_amount_ph	COD zenbatekoa
+code_bag_ph	Kodea (poltsa)
+conv_factor_ph	Faktorea (25 = 1 poltsa → 25 kg)
+country_code_ph	Herrialde-kodea adib. IN, GB, US, AE, BR
+credit_khata_amount_ph	Kreditua / kontu-zenbatekoa
+credit_limit_ph	Kreditu-muga (0 = bat ere ez)
+dim_unit_code_ph	Tamaina-unitatearen kodea (cm)
+divisor_ph	Zatitzaile bolumetrikoa (5000)
+extra_per_kg_ph	Gehigarria / kg
+first_amount_ph	Lehenengo zenbatekoa
+first_kg_ph	Lehenengo kg (lauza)
+from_code_ph	Hemengo kodea (poltsa)
+item_name_lang_ph	Artikuluaren izena — idatzi zure hizkuntzan
+login_id_opt_ph	Erabiltzaile-izena (beharrezkoa, bakarra)
+manager_pin_ph	Kudeatzailearen PINa onartzeko (baliogabetu ezin baduzu soilik)
+new_branch_name_ph	Sukur berriaren izena
+new_password_ph	Pasahitz berria (aukerakoa)
+new_pin_ph	PIN berria (4–12 digitu)
+note_bank_ph	Oharra (gordailua, ateratzea, …)
+note_buy_expense_ph	Oharra (erregaia, alokairua, …)
+note_expense_ph	Oharra (erregaia, bulegoa, …)
+notify_phone_ph	Jakinarazi telefonoari (WhatsApp/SMS kako)
+options_moklanjo_ph	Aukerak (aukerakoa) — Handia=20, Opari-papera=10
+part_second_way_ph	Zatia bigarren modu batean (aukerakoa)
+phone_ph	Telefonoa
+address_ph	Helbidea
+party_custom_fields_heading	Eremu pertsonalizatuak (hautatutako alderdia)
+party_custom_help	Gehitu edozein etiketa eta balio festa honetan: WhatsApp, GSTIN, ibilbide-kodea,...
+party_custom_key_ph	Eremuaren izena (adibidez, WhatsApp)
+party_custom_value_ph	Balioa
+party_custom_add	Gehitu eremua
+party_custom_remove	Kendu eremua
+party_custom_empty	Oraindik ez dago eremu pertsonalizaturik
+party_custom_pick_first	Aukeratu alderdi bat eremu pertsonalizatuak gehitzeko
+place_name_ph	Leku honen izena
+price_ph	Prezioa
+qty_example_ph	Kopurua (adib. 1.5 kg-rako)
+quantity_ph	Kopurua
+reason_required_ph	Arrazoia (beharrezkoa)
+role_title_ph	Lanaren izena (adib. Barista)
+service_pct_ph	Zerbitzua % aukerakoa 0/10/12
+short_code_ph	Kode laburra (MG02)
+slab_kg_ph	Lauza kargagarria kg-tan (0,5)
+staff_name_ph	Langilearen izena / id
+starting_password_ph	Hasierako pasahitza (aukerakoa)
+starting_pin_ph	Hasierako PINa (4–12 digitu)
+tax_rate_ph	Zerga-tasa izena edo % — Estandarra, Murriztua, 0, 5, 12, 18, 20
+to_code_ph	Hona kodea (kg)
+uncleared_no_ph	Garbitu gabeko # goian
+unit_cost_ph	Unitate-kostua
+unit_kg_blank_ph	Unitatea (kg edo hutsik)
+unit_name_bag_ph	Izena (Poltsa)
+weight_unit_code_ph	Pisu-unitatearen kodea (kg)
+zone_name_ph	Zonaren izena
+pay_credit	Kreditua
+book_kind_today	Gaurko liburuak
+book_kind_month	Hilabete honetako liburuak
+book_kind_aging	Ordaindu gabe / zordun-hartzekodun
+book_kind_balance	Balantzea
+ops_desk_help	Eskaneatu AWB USB barra-kode eskaner batekin (edo idatzi) → Bilatu. Ondoren, aurreratu, inprimatu etiketa edo bildu COD. Etiketak inprimatu 128 kodea.
+role_help_consignor	Rola: Bidaltzailea — AR (zor gaituzte). Enpresa bera Carrier ere izan daiteke.
+role_help_carrier	Rola: Carrier — AP (zor diegu). Enpresa bera Bidaltzailea ere izan daiteke.
+role_help_both	Rolak: Bidaltzailea + Garraiolaria — alderdi bakarra, AR eta AP liburuak, Txostenetan garbia.
+role_help_supplier	Rola: hornitzailea — erosketetarako AP.
+lane_declared_label	Kontuaren erreserba
+lane_owner_label	Eskudirutan erreserba
+money_lane_bill	Kontua: {lane}

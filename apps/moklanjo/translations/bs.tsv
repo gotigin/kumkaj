@@ -1,0 +1,835 @@
+# Bosnian — Bosanski (bs). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	Knjige kurirske agencije + šalter za rezervacije. Besplatno offline.
+unlock	Otključaj
+pin_hint	PIN vlasnika na početku je 0000
+sell	Rezervacija
+buy	Isplata
+books	Dnevna knjiga
+books_help	Današnje stanje. Bukiranje = pošiljke unutra. Isplata = računi prevoznika i troškovi. Stranke = pošiljaoci i prevoznici.
+buy_help	Potvrde o troškovima i računi prijevoznika (novac van). Na računu ostaje u knjizi stranke.
+sell_money_in	Rezervirajte paket
+buy_money_out	Trošak / račun prijevoznika
+record_purchase	Upiši kupovinu
+add_expense	Troškovni nalog
+bank_book	Bankovna knjiga
+credit_help	ID stranke je jedinstven (imena se mogu ponavljati). Uloge: pošiljalac (AR), prevoznik (AP), ili oboje na tom ID-u. Knjige ostaju odvojene; izvještaji pokazuju neto.
+party_kind_ph	Prilagođena uloga (opcionalno) — ili dodirnite čip iznad
+parties_list_heading	Sačuvane stranke
+reports_help	Dnevna knjiga, dužnici i povjerioci, bankovna knjiga, troškovni nalozi, dobitak i gubitak.
+reports_today	Dnevna knjiga (danas)
+reports_month	Dobitak i gubitak (mjesec)
+reports_aging	Otvoreno / dug-potr
+reports_balance_sheet	Bilans
+reports	Bankovna knjiga i D/G
+refresh	Osvježi
+undo	Poništi
+start_tracking	Počni pratiti
+stock_minus	− Zaliha
+stock_plus	+ Zaliha
+settle_cash	Naplati gotovinom
+settle_card	Naplati karticom
+items	Tarife i usluge
+nav_items	Tarife
+more	Više
+your_items	Vaše tarife
+items_help	Svaki red je tarifa (npr. Površinska zona A). Jedinica je obično kg. Dodirnite za uređivanje.
+add_item	Dodaj ocjenu
+new_item	Nova tarifa
+adding_item	Dodavanje nove tarife
+editing_item	Uređivanje
+save	Sačuvaj
+remove	Ukloni
+empty_catalog	Još nema tarifa. Otvorite Tarife i usluge, dodajte jednu (ime + cijena, jedinica kg), zatim Rezervacija.
+counter_sale	Rezervacija na šalteru
+total	Ukupno
+cash	Gotovina
+upi	UPI
+card	Kartica
+credit	Stranke
+clear	Očisti
+ready_to_sell	Spremno za narudžbu
+today_prefix	Danas
+today_mid	danas
+owed	otvoreno
+round_word	zaokruži
+back	Nazad
+sold_out	Nedostupno
+restock	Dopuni
+not_tracked	Ne prati se
+in_stock	na zalihi
+marked_sold_out	Označeno nedostupnim
+add_upper	DODAJ
+na	N/D
+qty	Tež/Kol
+unit_at	Cijena @
+actual	Stvarno
+applied	Primijenjeno
+note_ph	Napomena (nije obavezna)
+rounded	ZAOKRUŽENO
+split	Podijeli
+counter	Šank
+parcel	Pošiljka
+order	Narudžba
+sales	Rezervacije
+sales_refunds	Rezervacije i povrati
+day_close	Zaključenje dana
+reports_expenses	Bankovna knjiga i D/G
+nav_reports	Izvještaji
+nav_settings	Podešavanja
+nav_lock	Zaključaj
+sidebar_settings	Postavke bočne trake
+sidebar_settings_help	Iste ikone kao bočna letvica. Povucite red da promijenite redoslijed. Prekidačem pokažite ili sakrijte. Podešavanja i Zaključavanje uvijek ostaju na traci.
+sidebar_always_on_short	Uvijek uključeno
+sidebar_back_settings	Nazad
+sidebar_shown	Prikazano
+sidebar_hidden	Skriveno
+sidebar_always_on	Uvijek na traci
+sidebar_shown_hint	Prikazano na bočnoj letvici / donjim karticama
+sidebar_hidden_hint	Skriveno sa trake
+sidebar_menu_items	Meni i stavke
+sidebar_enable_all	Uključi sve
+sidebar_disable_all	Isključi sve
+sidebar_order_saved	Redoslijed bočne trake sačuvan
+sidebar_visibility_saved	Vidljivost bočne trake sačuvana
+amounts_hide	Sakrij
+amounts_show	Prikaži
+no_sale_yet	Još nema prodaje
+favorites	Omiljeno
+favorites_help	Stavke koje često prodajete, sačuvane za vašu prijavu. Dodajte jednu na račun ili složite spisak iz svih stavki ispod.
+your_favorites	Vaše omiljeno
+all_items	Sve stavke
+no_favorites	Još nema omiljenih — dodajte stavke sa spiska ispod.
+add_to_bill	Dodaj na račun
+added	Dodato
+owes_word	duguje
+selected_word	Odabrano
+chip_clear_credit	očisti — Dug ili uzmi avans
+chip_missing_customer	Odabrana mušterija nedostaje — odaberite ponovo
+chip_no_customer	Još nema mušterije — upišite ime, pa dodirnite Stranke
+credit_summary_fmt	{} mušterija · otvoreni dug {} · zadržani avansi {}
+recent_label	Nedavno:
+inventory	Zalihe
+inventory_stock	Zalihe i stanje
+branches	Poslovnice
+branches_org	Poslovnice i organizacija
+credit_customers	Stranke (dužnici i povjerioci)
+customer_name_ph	Ime stranke
+new_customer_ph	Ime nove stranke
+item_name_ph	Naziv tarife (npr. Površinska zona A)
+item_price_ph	Po kg / prvi razred
+start_template	Proizvod
+next_booking	Sljedeća rezervacija
+destination_ph	Grad / zona odredišta
+consignee_ph	Ime primaoca
+consignee_phone_ph	Telefon primaoca
+consignee_address_ph	Adresa dostave
+origin_name_ph	Ime pošiljaoca
+origin_phone_ph	Telefon pošiljaoca
+origin_address_ph	Adresa preuzimanja / polaska
+booking_consignor_heading	Pošiljalac (kupac / pošiljalac)
+booking_consignee_heading	Primatelj (primalac)
+booking_consignor_hint	Odaberite stranku za popunu, ili ostavite prazno za šalter bez najave. Potrebno za preuzimanje kod kuće i RTO.
+booking_consignee_hint	Primalac pošiljke. Ostavite prazno za predaju na šalteru bez najave.
+weight_kg_ph	Stvarna kg
+length_cm_ph	L cm
+breadth_cm_ph	B cm
+height_cm_ph	H cm
+chargeable_kg	Teretni kg
+awb_label	AWB
+booking_help	Pošiljalac + primalac (prazno je OK) → odredište → vaganje → izbor tarife → Konto/Kasa → plaćanje. AWB se štampa na računu. Sljedeća rezervacija oslobađa sto. Zaokruženo počinje jednako kao Primijenjeno — uređujte samo da biste zaokružili račun.
+cart_empty_hint	Stol je prazan — pošiljalac/primaoc opcionalno, postavite odredište i težinu, dodirnite DODAJ na tarifi, zatim platite.
+team	Tim
+team_pins	Tim i PIN-ovi
+my_pin_settings	Moj PIN
+settings_hub_help_my_pin	Promijenite PIN za otključavanje osobe prijavljene na ovom uređaju.
+team_self_help	Samo vi možete promijeniti svoj PIN za otključavanje (i opcionalnu lozinku za prijavu). Pitajte Vlasnika ako vam trebaju drugi ekrani ili prava.
+backup_settings	Rezervna kopija i podešavanja
+lock_app	Zaključaj aplikaciju
+pick	Odaberi
+select	Odaberi
+advance	Avans
+owner	Vlasnik
+staff	Osoblje
+photo	Fotografija
+auto	Auto
+prev	Pret
+next	Dalje
+ok	U redu
+this_shop	Server
+extra_till	Klijent
+off	Isključeno
+server	Server
+client	Klijent
+language_currency	Jezik i valuta
+language	Jezik
+choose_language	Odaberite jezik
+language_setup_hint	Pratite jezik ovog uređaja ili sami odaberite.
+lang_follow_platform	Jezik uređaja
+lang_pick_user	Odaberi jezik
+lang_platform_now	Jezik uređaja sada
+selected_language	Odabrano
+continue	Nastavi
+this_device	OVAJ UREĐAJ
+device_use_q	Kako će se ovaj uređaj koristiti?
+last_server_mode	Bio je Server — dodirnite za nastavak
+last_client_mode	Bio je Klijent — dodirnite za nastavak
+choose_server	Odaberite Server
+choose_server_hint	Otvorite postojeći Server ili napravite jedan za drugi posao.
+create_new_server	Napravi novi Server
+open_server	Otvori
+new_server_name_ph	Ime novog Servera (nije obavezno)
+server_remove_pin_ph	PIN vlasnika za uklanjanje Servera
+only_owner_remove_server	Samo Vlasnik može ukloniti Server
+owner_pin_remove_server	Za uklanjanje ovog Servera potreban je PIN vlasnika
+device_setup_help	Server drži knjige ovdje. Klijent se uparuje sa Serverom.
+currency	Valuta
+backup	Rezervna kopija
+settings_sec_diag	Dijagnostika
+settings_hub_help	Otvorite jedno područje odjednom — manje listanja, jasniji izbor.
+settings_sec_devices	Drugi uređaji
+settings_sec_alerts	Upozorenja
+alerts_help	Koliko dugo poruke statusa ostaju na ekranu za vas (ova prijava).
+snack_secs_ph	Sekunde (3–60, zadato 10)
+snack_secs_save	Sačuvaj trajanje upozorenja
+snack_secs_saved	Trajanje upozorenja sačuvano — {n} sekundi
+snack_secs_bad	Unesite sekunde kao broj (3–60)
+cancelled	Otkazano
+cancel	Otkaži
+opening_client	Otvaram klijenta…
+preparing_desk	Pripremam pult…
+opening_server	Otvaram server…
+creating_server	Pravim server…
+diag_privacy_help	Zapisnici ostaju na ovom uređaju. Tajne (PIN, lozinke) se nikad ne čuvaju. Dijeljenje paketa van uređaja svaki put treba vaše izričito odobrenje — nikad se ne prodaje ni ne daje trećima.
+diag_level	Nivo detalja
+diag_level_error	Greške
+diag_level_warn	Upozorenja
+diag_level_info	Info
+diag_level_debug	Debug
+diag_support_start	Započni 30-min sesiju podrške
+diag_support_stop	Završi sesiju podrške
+diag_support_started	Sesija podrške uključena — Debug detalji 30 minuta
+diag_support_ended	Sesija podrške završena
+diag_export_local	Izvezi lokalnu kopiju
+diag_export_local_done	Lokalna dijagnostika spremna na {path} — odaberite gdje sačuvati kopiju
+diag_approve_send	Odobri dijeljenje van ovog uređaja
+diag_send_heading	Dijeljenje van ovog uređaja
+diag_send_help	Odobrenje vrijedi za jedan paket, zatim ističe. Privremeno — samo da se proizvod popravi ili poboljša. Ne dijeli se s trećima. Radi na Linuxu, Windowsu, macOS-u i Androidu.
+optional_login_heading	Neobavezna prijava
+rights_heading	Prava
+booking_scope_heading	Domaći / Međunarodni
+diag_send_approved	Dijeljenje odobreno za jedan paket (uskoro ističe)
+diag_export_send	Napravi paket za dijeljenje (treba odobrenje)
+diag_export_send_done	Paket za dijeljenje spreman na {path} — odaberite gdje sačuvati, pa pošaljite samo podršci Kumkaj
+diag_save_bundle	Sačuvaj kopiju dijagnostike
+diag_bundle_saved	Kopija dijagnostike sačuvana u {path}
+diag_bundle_failed	Kopiju dijagnostike nije bilo moguće sačuvati — pokušajte ponovo
+diag_clear	Očisti dijagnostičke zapisnike
+diag_cleared	Dijagnostički zapisnici očišćeni
+use	Koristi
+add_branch	Dodaj poslovnicu
+add_conversion	Dodaj konverziju
+add_item_plain	Dodaj stavku
+add_note	Dodaj napomenu
+add_opening_balance	Dodaj početno stanje
+add_rider	Dodaj vozača
+add_staff	Dodaj osoblje
+add_unit	Dodaj jedinicu
+add_use_name	Dodaj / koristi ovo ime
+allow_extra_tills	Dozvoli dodatne kase
+amend	Ispravi
+apply_country_pack	Primijeni paket države
+datetime_appearance	Izgled datuma i vremena
+datetime_appearance_help	Knjige čuvaju RFC3339 sa godinom-prvo unutra. Ovo samo mijenja kako datumi i sati izgledaju na računima, etiketama, izvještajima i ekranu.
+datetime_example	Primjer sada: {ex}
+date_order	Redoslijed datuma
+date_order_dmy	D/M/Y
+date_order_mdy	M/D/Y
+date_order_ymd	Y-M-D
+time_format	Sat
+time_format_24h	24 sata
+time_format_12h	12 sati
+attach_bill_photo	Priloži fotografiju računa
+attach_pdf	Priloži PDF
+attach_photo	Priloži fotografiju
+bank	Banka
+bank_in	Uplati u banku
+bank_out	Isplati iz banke
+bank_to_till	Banka → kasa
+till_to_bank	Kasa → banka
+mark_cleared	Označi usklađenim
+unmark	Makni oznaku
+role_both	Oboje
+role_carrier	Dostavljač
+role_cashier	Blagajnik
+role_consignor	Pošiljalac
+role_manager	Menadžer
+role_supplier	Dobavljač
+branch_name_sell_ph	Ime poslovnice s koje se prodaje
+bring_my_book	Donesi moju knjigu
+business_tax_id_ph	Porezni id poslovanja
+card_amount_ph	Iznos karticom
+cash_amount_ph	Iznos gotovine
+upi_amount_ph	Iznos UPI
+carrier_cost_ph	Trošak prevoznika
+carrier_party_ph	Prevozničko lice
+choose_icon	Odaberi ikonu
+choose_logo	Odaberi logotip
+choose_receipt_stamp	Odaberite pečat potvrde
+choose_payment_qr	Odaberi QR plaćanja
+clear_icon	Ukloni ikonu
+clear_logo	Očistite logo
+clear_photo	Ukloni fotografiju
+clear_stamp	Ukloni pečat
+clear_payment_qr	Ukloni QR plaćanja
+print_faces	Izgledi štampe (priznanica / periodični račun)
+print_faces_help	Opcionalni pečat i QR za plaćanje pored logotipa na priznanicama bukiranja i periodičnim računima.
+awb_pools_heading	Carrier AWB brojevi po bazama
+add_awb_pool	Dodaj AWB grupu
+awb_pool_carrier_ph	Ime prevozničkog lica
+awb_pool_start_ph	Početni broj
+awb_pool_end_ph	Kraj br.
+awb_pool_prefix_ph	Prefiks (opcionalno)
+awb_pool_label_ph	Oznaka (opciono)
+pieces_ph	Komada (prazno = 1) — proširite za teret / više komada
+bulk_awbs_ph	Masovni AWB-ovi — zalijepite mnogo (novi red ili zarez) za jedno napredovanje statusa
+tds_cut_ph	Odbitak TDS (opcionalno)
+discount_ph	Popust (opcionalno)
+cheque_no_ph	Broj čeka (opcionalno)
+bill_reminder_chase	Lista podsjetnika za naplatu računa
+month_mix_report	Mješoviti mjesečni izvještaj
+copy_month_gst_csv	Kopiraj mjesečni GST CSV
+domestic	Domaći
+international	Međunarodno
+pick_logo	Odaberi logo
+booking_scope_hint_domestic	Volumetrijski ÷5000 (domaći) — dodirnite Međunarodni za zračni ÷6000
+booking_scope_hint_intl	Volumetrijski ÷6000 (međunarodni zrak) — dodirnite Domaći za radnju ÷5000
+cod_register	COD registar
+collect_cod	Prikupite COD (AWB)
+consignments_dispatch	Pošiljke i otprema
+consignor_party_ph	Pošiljalac / naziv stranke
+copy_day_book_csv	Kopiraj CSV dnevne knjige
+copy_day_close	Kopiraj zaključenje dana
+copy_items_csv	Kopiraj CSV stavki
+copy_outstanding_csv	Kopiraj CSV otvorenog
+copy_parties_csv	Kopiraj CSV stranaka
+copy_party_ledger_csv	Kopiraj CSV knjige stranke
+copy_receipt	Kopiraj potvrdu
+copy_report	Kopiraj izvještaj
+counted_cash_ph	Prebrojana gotovina u ladici
+counter_agency_ph	Naziv šaltera / agencije (opcionalno)
+create_backup	Napravi rezervnu kopiju
+day_close_summary	Sažetak zaključenja dana
+delete_party	Obriši odabranu stranku
+dispatch_to_rider	Otpremu rezervisano → dostavljač
+docket_charge_ph	Trošak naloga
+declared_value_ph	Deklarisana vrijednost
+contents_ph	Sadržaj
+eway_ph	Broj e-računa
+insurance_label	Osiguranje
+yes_label	Da
+no_label	Ne
+print_route_label	Štampaj rutu
+new_party_kind_label	Nova vrsta grupe
+done_open_books	Gotovo — otvori knjige
+export_day	Izvezi dan
+extra_note_expense_ph	Dodatna napomena na zadnjem trošku
+extra_note_awb_ph	Dodatna napomena na ovom AWB / prodaji
+failed_delivery	Neuspjela dostava
+find_scan_awb	Pronađi / skeniraj AWB
+forget_shop	Zaboravi ovaj lokal
+fuel_ph	Gorivo
+handover_carrier	Ručna rezervacija → dostavljač
+import_day	Uvezi dan
+import_items_csv	Uvezi CSV stavki / tarifa…
+import_parties_csv	Uvezi CSV stranaka…
+import_pincodes_csv	Uvezi CSV poštanskih brojeva…
+import_carrier_bill_csv	Uvezi CSV računa prevoznika…
+copy_carrier_bill_report	Kopiraj posljednji izvještaj o računu prijevoznika
+use_carrier_cost	Koristi trošak prevoznika
+rate_carrier_ph	Dostavljač (prazno = naša prodajna cijena)
+rate_party_ph	Stranka (prazno = sve mušterije)
+carrier_pick_ph	Prevoznik za trošak (iz usporedbe)
+item_name	Ime stavke
+load_bulk_row	Učitaj red u paketu → stol
+login_id_ph	Korisničko ime
+mark_delivered	Označeno kao isporučeno
+manifest_cod_total	COD ukupno
+manifest_received_by	Primio
+manifest_sign	Potpis
+ndr_address_wrong	Pogrešna adresa
+ndr_customer_unavailable	Nedostupno
+ndr_door_locked	Vrata zaključana
+ndr_other	Ostalo
+ndr_refused	Odbijeno
+out_for_delivery	Na isporuci
+print_drs	Štampaj DRS
+print_run_sheet	Štampaj listu ture
+reattempt	Pokušaj ponovo
+rider_cod_handed_ph	COD predano
+settle_rider_cod	Skini COD dostavljača
+mode_desk	Stol
+mode_rider	Dostavljač
+waiting_office	čeka da stigne u kancelariju
+capture_signature	Zabilježiti potpis
+incoming_manifest	Dolazni manifest
+pickup_request	Zahtjev za preuzimanje
+pickup_run	Tura preuzimanja
+auto_assign_area	Automatski dodijeli područje
+reorder_stops	Promijeni red stanica
+settle_rider_pay	Skini isplatu dostavljača
+vehicle_inspect	Pregled vozila
+print_docket	Štampaj tovarni list
+franchise_statement	Izjava franšize
+tally_export	Izvoz Tally naloga
+open_whatsapp	Otvori WhatsApp
+copy_sms	Kopiraj SMS tekst
+pick_barcode_image	Odaberi sliku za skeniranje
+share_receipt_whatsapp	Podijeli priznanicu na WhatsApp
+delivery_feedback	Povratna informacija o dostavi
+lan_self_book	LAN samostalno knjigovodstvo
+new_party_clear	Nova stranka (očisti obrazac)
+new_party_kind_ph	Nova vrsta grupe (Dobavljač / Nosilac)
+next_country	Sljedeća država
+prev_country	Prethodna država
+note_gstin_ph	Napomena / GSTIN / podsjetnik na dogovor
+note_pod_ph	Napomena / POD (opcionalno)
+on_account_ap	Na račun (AP)
+org_optional_ph	Organizacija (nije obavezno)
+paid_now	Plaćeno sada
+pairing_code_ph	Kod uparivanja
+pair_now	Upari sada
+party_name_selected_ph	Ime stranke (ili odabrana)
+password_ph	Lozinka
+pay_ap_card	Plati AP karticom
+pay_ap_cash	Plati AP gotovinom
+pay_ap_upi	Plati AP preko UPI
+period_bill	Periodični račun
+period_bill_party	Periodični račun (stranka)
+pick_pod_photo	Odaberi POD fotografiju
+print_awb_label	Štampaj AWB naljepnicu
+print_open	Odštampaj / otvori
+reason_amend_ph	Razlog ispravka / storna / povrata
+reason_note_ph	Razlog / napomena (kalo, brojanje, …)
+record_day_close	Upiši zaključenje dana
+refresh_from_shop	Osvježi s lokala
+refund	Povrat
+remit_cod	Proslijedi COD (stranka)
+remove_selected	Ukloni odabrano
+restore_backup	Vrati rezervnu kopiju
+rider_name_ph	Ime dostavljača
+rider_phone_ph	Telefon dostavljača
+riders	Dostavljači
+riders_own_fleet	Dostavljači (vlastita flota)
+rollup	Sažetak
+save_booking_measures	Sačuvaj mjere bukiranja
+save_brand	Sačuvaj brend
+save_business_id	Sačuvaj id poslovanja
+save_business_name	Sačuvaj ime poslovanja
+save_features	Sačuvaj postavku posla
+save_names	Sačuvaj imena
+server_ip_ph	IP Servera (npr. 192.168.1.10)
+set_credit_limit	Primijeni limit na stranku
+set_login_selected	Primijeni prijavu na odabranog
+set_login_named	Primijeni prijavu na {name}
+shop	Lokal
+start_fresh	Počni iznova
+stop_extra_tills	Zaustavi dodatne kase
+backup_auto	Rezervna kopija svaki dan · zadnja {when} · zadnjih 14 dana čuva se u {dir}.
+backup_auto_none	Rezervna kopija svaki dan — prva kreće za trenutak.
+backup_copy_to	Kopije idu i u {dir}.
+backup_copy_btn	Kopiraj rezervne kopije i u fasciklu…
+autostart_off	Pokreni s ovim računarom
+autostart_on	Pokreće se s ovim računarom ✓ — dodirnite da zaustavite
+autostart_done_on	Ovaj računar sada otvara aplikaciju kad se uključi — server lokala se vraća nakon nestanka struje.
+autostart_done_off	Ovaj računar više ne otvara aplikaciju kad se uključi.
+right_allowed	Dozvoljeno
+right_with_approval	Uz odobrenje
+right_denied	Nije dozvoljeno
+editing_staff	Prava za
+team_pick_ph	Osoblje za uređivanje — ime, korisničko ime ili odabir
+select_staff	Odaberi ovo osoblje
+rights_help	Prava — dodirnite za promjenu: Dozvoljeno → Uz odobrenje (PIN menadžera u tom trenutku) → Nije dozvoljeno.
+right_void_refund	Storniraj ili vrati bukiranje
+right_amend_sale	Ispraviti zabilježenu rezervaciju
+find_server	Pronađi server lokala
+finding_server	Tražim server lokala na ovom Wi‑Fi…
+no_server_found	Ništa nije pronađeno. Na Serveru: Podešavanja → Drugi uređaji → Dozvoli dodatne kase (isti Wi‑Fi). Ili upišite IP koji je tamo prikazan.
+servers_found_pick	Dodirnite lokal na koji se želite spojiti.
+server_host_selected	Koristi se {host} — unesite kod uparivanja, pa Upari sada.
+device_forgotten	Lokal je zaboravio ovaj uređaj — uparite ga opet trenutnim kodom lokala. Narudžbe koje čekaju na njemu ostaju.
+forget_device	Zaboravi
+last_seen	viđen
+new_pair_code	Novi kod uparivanja
+lan_offline	Server lokala nedostupan
+lan_offline_waiting	Server lokala nedostupan · {n} čeka
+lan_connecting	Spajanje na lokal…
+pair_finishing	Završni par... primjena kancelarijskih knjiga
+pair_opening	Otvaram kancelariju…
+lan_live	Uživo
+lan_sending	{n} se šalje
+lan_sign_in_to_send	Prijavite se opet da pošaljete {n}
+lan_pair_again	Uparite ovaj uređaj opet
+lan_update_app	Ažurirajte aplikaciju — ovaj uređaj i server kancelarije imaju različite verzije
+allow_firewall	Dozvoli drugim uređajima da se spoje
+firewall_blocked	Vatrozid ovog računara blokira druge uređaje — dodirnite Dozvoli drugim uređajima da se spoje.
+firewall_waiting	Čeka se upit administratora…
+lan_join_help	Na drugom uređaju: način Klijent → pronađite server lokala (ili upišite {addr}) → kod uparivanja {code}.
+lan_pair_status	Wi‑Fi {addr}
+lan_join_help_no_addr	Spojite ovaj uređaj na Wi‑Fi da dobije adresu.
+lan_no_address	Još nema Wi‑Fi adrese — spojite se na Wi‑Fi lokala.
+lan_not_listening	Ne prima uređaje (port {port} zauzet). Ponovo pokrenite aplikaciju.
+lan_tills_off	Dodatne kase su isključene. Dozvolite ih da se drugi uređaj može pridružiti.
+paired_with	Upareno · {url}
+not_paired	Nije upareno
+choose_device_use	Odaberite Server ili Klijent.
+paired_note	Upareno. Otključajte za prodaju ili Osvježi za najnovije.
+last_update_at	Zadnje ažuriranje: {time}.
+pair_intro	Pronađite server ili upišite adresu i kod uparivanja.
+queue_waiting	Čeka da stigne do lokala ({n}):
+queue_tries	Pokušano {n} puta · zadnji odgovor: {e}
+save_backup_copy	Sačuvaj kopiju rezervne kopije…
+backup_copy_saved	Kopija sačuvana — držite je van ovog uređaja (USB stick ili drugi uređaj)
+backup_copy_overdue	Nijedna kopija nije napustila ovaj uređaj {n} dana — Podešavanja → Rezervna kopija
+backup_copy_failed	Kopiju nije bilo moguće sačuvati tamo — odaberite drugo mjesto
+clock_off	Sat ovog uređaja kasni ili žuri {min} min u odnosu na server lokala — postavite tačno vrijeme
+printers_heading	Štampači na ovom uređaju
+printers_help	Pronađi stvarne štampače, zatim odaberi Kviz ili AWB naljepnicu. Svaki zadatak ima vlastitu širinu, portret ili pejzaž, i način na koji se bajti šalju. Naljepnica stampa barkod. Prazno mjesto = ne štampaj.
+job_width	Širina sadržaja (mm)
+job_width_ph	Ili upišite širinu, 40–210 mm
+job_layout	Raspored
+job_delivery	Kako se posao šalje
+job_size	Veličina slova
+job_size_ph	npr. 18, 20, 26…
+save_receipt_format	Sačuvaj format priznanice
+save_label_format	Sačuvaj format naljepnice
+test_receipt_format	Probna priznanica
+test_label_format	Probna naljepnica
+test_receipt_sent	Uzorak priznanice poslan
+test_label_sent	Uzorak naljepnice poslan
+test_print_no_printer	Nema štampača za taj posao — dodajte jedan ispod ovog mjesta
+printers_host_only	Štampači se postavljaju na uređaju radnje (Server). Ova kasa šalje poslove tamo — Pronađi / dodaj / dodijeli ostaju na Serveru. Probna stranica ide na Server.
+printers_pool_heading	Štampači
+printers_routes_heading	Gdje se što štampa
+printer_label_ph	Ime (npr. Stol)
+printer_target_ph	host:9100 · bt:MAC · usb:VID:PID · naziv sistema
+printer_mode_heading	Profil za nove izlaze
+printer_mode_standard	Standard uspravno
+printer_mode_landscape	Standard položeno
+printer_mode_thermal	Termalni
+printer_mode_standard_short	Uspravno
+printer_mode_landscape_short	Položeno
+printer_mode_thermal_short	Termalni
+printer_format_custom	Novi prilagođeni profil
+printer_format_custom_label	Prilagođeno
+printer_format_custom_added	Prilagođeni profil dodan za ovo mjesto
+add_printer	Dodaj štampač
+remove_printer	Ukloni zadnji
+route_pick_ph	priznanica ili naljepnica
+route_add_printer_ph	Dodaj štampač na ovo mjesto
+route_receipt	Priznanica
+route_label	AWB oznaka
+route_dont_print	Nije dodan printer
+route_add	Dodaj na mjesto
+route_up	Gore
+route_down	Dolje
+route_remove	Ukloni zadnji
+route_clear	Očistite pisače za ovo mjesto
+save_printers	Sačuvaj štampače
+print_test_page	Odštampaj probnu stranicu
+printers_saved	Štampači sačuvani za ovaj uređaj
+test_page_sent	Probna stranica poslata — provjerite štampač
+printers_found	Pronađeno na ovom uređaju: {list}
+find_printers	Pronađi štampače
+printers_looking	Traženje štampača na ovom uređaju i Wi‐Fi...
+printers_tap_find	Dodirnite Pronađi štampače za redove koji primaju poslove i mrežne štampače priznanica na ovom Wi‑Fi (ne uklonjene ni one van mreže).
+printers_none_found	Nema pronađenih štampača — unesite ime sistemskog štampača ili mrežnu adresu (npr. 192.168.1.50).
+receipt_printer_ph	Štampač za priznanice
+queue_refused	Lokal nije prihvatio ({n}) — provjerite svaki na šanku:
+clear_not_accepted	Provjereno — očisti ovaj spisak
+device_name_ph	Ime ovog uređaja
+lan_last_update	zadnje ažuriranje {time}
+lan_not_accepted	{n} nije prihvaćeno
+connected_now	spojeno sada
+backup_failed	Zadnja automatska rezervna kopija nije uspjela: {e}
+backup_overdue	Nema rezervne kopije {n} dana — držite aplikaciju otvorenu na ovom uređaju da može kopirati.
+disk_low	Samo {mb} MB slobodno na ovom uređaju — rezervne kopije će uskoro pasti. Oslobodite prostor.
+last_seen_devices	Zadnje viđeno: {time}
+sync_interval	Usklađivanje svakih {secs} s
+connection_to_shop	Veza s lokalom
+supplier_name_ph	Ime dobavljača (ili stranka)
+supplier_ph	Dobavljač
+switch_device	Prebaci ovaj uređaj
+take_payment	Naplati
+tax_added_till	{tax} izvan cijene
+tax_inside_price	{tax} u cijeni
+today_books	Današnje knjige
+unlock_after_pairing	Unesite PIN
+unlock_with_login	Otključaj prijavom
+update_my_password	Ažuriraj moju lozinku
+update_my_pin	Ažuriraj moj PIN
+duress_heading	PIN za hitno otključavanje (samo Vlasnik)
+duress_help	Opcionalno. Ako se ovaj PIN upiše pri otključavanju umjesto vašeg, brišu se svi unosi knjiga (bukiranja, knjige, historija) i šalter se otvara kao Vlasnik, prividno normalno — tarife, stranke, zone, osoblje i podešavanja ostaju. Šema i konfiguracija se ne brišu. Koristite samo ako ste prisiljeni da otključate. Ostavite prazno i sačuvajte da isključite. Nikad isti kao bilo čiji PIN.
+duress_pin_ph	Hitni PIN (4–12 cifara)
+duress_confirm_ph	Upišite opet za potvrdu
+save_duress_pin	Sačuvaj hitni PIN
+clear_duress_pin	Isključi hitni PIN
+duress_on	PIN za hitno otključavanje je uključen
+duress_off	PIN za hitno otključavanje je isključen
+duress_saved	PIN za hitno otključavanje sačuvan
+duress_cleared	PIN za hitno otključavanje isključen
+vehicle_ph	Vozilo
+void	Storno
+write_off_ap	Otpiši AP
+write_off_nil	Otpis / saldo nula
+zone_ph	Zona (naziv iz Tarifa)
+caption_today	DANAS
+caption_bookings	REZERVACIJE
+caption_payments_today	PLAĆANJA DANAS
+caption_outstanding	OTVORENO
+caption_bank	BANKA
+paid_by	Platio
+second_way	Drugi način
+weight_in	Težina u
+size_in	Veličina u
+goods_received	Roba primljena
+expense_heading	Trošak
+notes_attach_sale	Napomene i prilozi (odabrana prodaja)
+notes_attach_party	Napomene i prilozi (odabrana stranka)
+attachments_last_expense	Prilozi (zadnji trošak)
+credit_limit_heading	Limit duga (odabrana / imenovana stranka)
+pay_selected_heading	Plati odabrano (zatvori dug / uzmi avans)
+write_off_heading	Otpis (očisti bez plaćanja)
+pay_ap_heading	Plati što im dugujemo (AP)
+country_tax	Država i porez
+extra_tills_heading	Dodatne kase
+other_devices_help_heading	Podesite druge uređaje
+other_devices_help	Na ovom uređaju (Server): Drugi uređaji → Dozvoli dodatne kase. Zabilježite kod uparivanja i Wi‑Fi adresu. Dodirnite Dozvoli drugim uređajima da se povežu ako se pojavi. Na računaru dodirnite Pokreni s ovim računarom. Na svakom drugom uređaju: instalirajte aplikaciju, odaberite Način Klijent, pronađite server radnje (ili upišite adresu), unesite kod uparivanja, Upari sada. Narudžbe čekaju na uređaju ako Wi‑Fi padne i odlaze kad Server opet odgovori.
+your_brand	Vaš brend (u aplikaciji)
+units_heading	Jedinice
+booking_measures	Mjere rezervacije
+drawer_count	Brojanje ladice (nije obavezno)
+spreadsheet_csv	Tabela (CSV)
+bank_reconciliation	Usklađenje banke (označite prema bankovnom izvodu)
+book_add_product	Rezervacija — dodaj proizvod / cijenu
+book_opening_credit	Knjiga — početni dug
+account_kind	Vrsta računa (dodirnite jednu)
+active_ledger	Aktivni registar
+actual_total_cap	STVARNI UKUPNO
+amend_help	Odaberite prodaju za ispravak, storno ili povrat. Ispravci čuvaju punu historiju. Zaokruženi ukupno počinje jednak Primijenjenom — mijenjajte samo za zaokruživanje. Storno i povrat mogu trebati PIN Vlasnika ili Menadžera (upišite gore; bilježi se s vašim imenom).
+applied_total_cap	PRIMIJENJENI UKUPNO
+bank_balance	Stanje banke
+bank_net_today	Neto banke danas
+branch_export_help	Izvoz zapisuje dnevni prikaz u folder rezervnih kopija i kopira ga u međuspremnik. Za uvoz dana druge prodavnice, sačuvajte njegovu datoteku kao import_branch_snapshot.json u taj folder, zatim dodirnite Uvoz.
+brand_shown_help	Vidi se na ekranima u aplikaciji. Ime i ikona instalirane aplikacije na ovom uređaju ostaju kako ih vodi trgovina platforme.
+app_icon	Ikona aplikacije
+logo_help	Nije obavezno. Znak lokala na ekranima u aplikaciji.
+onboard_layout	Šta dobijate
+item_photo_help	Nije obavezno. Bez fotografije pokazujemo inicijale imena stavke.
+cash_in_hand	Gotovina u ruci (kasa)
+change_my_pin_heading	Promijeni moj PIN (samo tvoj)
+connect_to_server	Spoji se na Server
+counter_locked	Šank 01 · Zaključano
+country_pack_help	Paket države postavlja ime poreza i račun, kanal trenutnog plaćanja i id poslovanja koji se štampa na računima. Kumkaj nigdje ne predaje porez niti izdaje državne e-račune.
+currency_use_help	Listajte i dodirnite Koristi za bilo koju podržanu valutu.
+day_close_help	Upis zaključenja dana čuva ovaj sažetak (i razliku ladice ako je prebrojana) u revizijski zapis. Ne zaustavlja prodaju.
+expenses_word	Troškovi
+feature_access_help	Pristup funkcijama za odabrano osoblje (dodirnite nakon dodavanja)
+footer_local	Lokalni SQLite · Zauvijek besplatno · Bez oblaka
+fresh_book_moklanjo	Svježe = prazan katalog (dodajte artikle kasnije). Knjiga = unesite početno stanje zaliha i ko vam dugujebelow.
+fresh_selected	Odabrano iznova — katalog ostaje prazan. Dodirnite Gotovo kad ste spremni.
+gross_word	Bruto
+how_start	Kako želite početi?
+later_country_pack	Kasnije: Podešavanja → primijenite paket države za nazive poreza i plaćanja.
+local_badge	LOKALNO
+measures_help_moklanjo	Kako se pošiljke mjere na šalteru za bukiranje. Unesite dimenzije i težinu u jedinicama koje koristite — standardne (cm, m, in, ft · kg, g, lb, oz) ili vlastitu jedinicu vezanu za cm / kg iznad (direktno ili preko drugih jedinica). Knjige uvijek bilježe kg. Ostavite polje prazno da ostane.
+mix_type_hint_moklanjo	Upišite koliko u svako (gotovina / UPI / kartica / na račun). Mora se sabrati do računa. Na račun traži mušteriju iznad.
+money_in_sales	Novac unutra (prodaja)
+more_help_moklanjo	Katalog, prodaja, kredit, tim, rezervna opcija — plus zalihe i dodatni registri po potrebi.
+net_word	Neto
+offline_badge	BEZ MREŽE
+optional_login_help	Neobavezna prijava (id + lozinka). Vlasnik postavlja jednom; lozinku kasnije mijenja samo korisnik.
+or_unlock_login	Ili otključajte id-em prijave + lozinkom
+permission_preset	Posao (postavlja ekrane i prava)
+preset_help_moklanjo	Blagajnik: prodaja. Menadžer: prodaja + stavke + storno/ispravak.
+product_locked_moklanjo	Moklanjo
+product_only_moklanjo	Ova aplikacija je samo Moklanjo — knjige + šalter za bukiranje. Ostali izgledi za druge djelatnosti dolaze kao zasebni proizvodi.
+purchases_cogs	Nabavke (COGS)
+qty_cap	KOL
+restore_help	Povrat: odaberite rezervnu kopiju. Knjige se otvaraju kakve su tada bile; knjige kakve su sada prvo se sačuvaju, pa se ovo može poništiti.
+wipe_data_heading	Obriši lokalne podatke
+wipe_data_help	Samo Vlasnik — isti izbori kao pri uklanjanju na Windowsu. Poslovni zapisi brišu historiju prometa, a tarife i postavku čuvaju (kao PIN za hitno otključavanje). Postava lokala uklanja bazu knjiga. Postavke ekrana brišu prozor/jezik. Potvrdite PIN-om Vlasnika. PIN za hitno otključavanje na Timu je zaseban (skriveno brisanje pri otključavanju).
+wipe_trading	Poslovni zapisi
+wipe_schema	Postava lokala
+wipe_ui	Postavke ekrana
+wipe_owner_pin_ph	PIN vlasnika za brisanje
+wipe_delete_selected	Obriši odabrano
+wipe_owner_only	Samo Vlasnik može obrisati lokalne podatke.
+restore_owner_only	Samo Vlasnik može vratiti rezervnu kopiju.
+wipe_owner_pin_needed	Unesite PIN Vlasnika da obrišete lokalne podatke.
+wipe_nothing_selected	Prvo odaberite šta brisati.
+wipe_done	Odabrani lokalni podaci obrisani.
+wipe_schema_done	Postava lokala obrisana — odaberite Server ili Klijent za nastavak.
+rounded_total	Zaokruženi ukupno
+setup_app_moklanjo	Postavi Moklanjo
+shop_logo_optional	Logotip lokala (nije obavezno)
+stock_type_help	Upišite ime stavke (dovoljan je dio), količinu, pa prilagodite. Stavke koje se još ne broje trebaju jednom Počni pratiti.
+team_owner_help	Iznajmljivanje: odaberite posao (Blagajnik / Menadžer), ime + početni PIN, zatim Dodaj. Samo ako je ta osoba drugačija: otvorite ekrane i prava ispod, zatim Sačuvaj postavke posla. Svi mijenjaju vlastiti PIN na dnu — Vlasnik ne može mijenjati tuđi PIN.
+they_owe_us	Oni duguju nama
+unit_at_cap	Jedinica @
+units_help	Kodovi za oznake stavki (kg, komad, vreća). Svaka jedinica mora se vezati — direktno ili preko drugih — na standard (kg · cm · ml · pc), npr. 1 gajba = 2 kutije i 1 kutija = 20 cm. Konverzije: 1 iz = faktor u. Valute nikad nisu jedinice.
+we_owe_them	Mi dugujemo njima
+who_unlocking	Ko otključava?
+locked_word	Zaključano
+show_pin	Prikaži PIN
+hide_pin	Sakrij PIN
+set_owner_pin	POSTAVI PIN VLASNIKA
+enter_owner_passcode	UNESITE ŠIFRU VLASNIKA
+enter_staff_passcode	UNESITE ŠIFRU OSOBLJA
+pin_count_zero	0 / 12 cifara · najmanje 4, pa U redu
+pin_count_need	{} / 12 cifara · treba još {}
+pin_count_full	12 / 12 cifara · pritisnite U redu
+pin_count_ready	{} / 12 cifara · pritisnite U redu kad ste spremni
+pin_hint_choose	Odaberite 4–12 cifara · Enter ili Otključaj za čuvanje
+pin_hint_new	Novi PIN vlasnika od 4–12 cifara · Enter ili Otključaj
+pin_hint_shop_code	Uređaj lokala · kod uparivanja {}
+pin_hint_books	Ovaj uređaj drži knjige
+pin_hint_paired	Dodatna kasa uparena — otključajte za prodaju
+pin_hint_pair_first	Dodatna kasa — prvo je uparite s uređajem lokala
+unlock_to_continue	Otključajte za nastavak
+no_staff_yet	Još nema osoblja — otključajte kao Vlasnik, pa Tim
+status_server_set_pin	Način Server — postavite PIN Vlasnika
+status_server_tills	Način Server — dodatne kase se mogu pridružiti. Otključaj
+status_server_unlock	Način Server — otključajte kao Vlasnik
+status_client_unlock	Način Klijent — otključajte za prodaju
+icon_new_selected	Ikona: odabran novi fajl — dodirnite Sačuvaj brend
+icon_custom	Ikona: vlastiti znak lokala
+icon_default	Ikona: znak Kumkaj (zadato) — odaberite vlastiti
+logo_yours	Logotip: vaš logotip lokala — vidi se na ekranima i potvrdama
+logo_default	Logotip: znak Kumkaj (zadato) — odaberite svoj ako ga imate
+tmpl_current	Trenutno: {} — {}
+tmpl_selected	Odabrano: {} — {}
+setup_complete	Postava gotova
+onboard_fresh_tmpl	Iznova · {} — katalog počinje prazan; dodajte stavke u Stavkama, pa Gotovo.
+onboard_book_tmpl	Knjiga · {} — dodajte stavke i početni dug, pa Gotovo.
+onboard_template_tmpl	Imenujte mjesto ako želite, pa odaberite kako početi.
+tmpl_blurb	Knjige kurira i šalter za rezervacije: pošiljaoci, prijevoznici, dnevnik, AWB.
+tmpl_how	Rezervirajte pakete na šalteru; Dnevnik za danas; kartice za cijene, stranke, izvještaje.
+trk_booked	Rezervirano
+trk_picked_up	Preuzeto
+trk_in_transit	U tranzitu
+trk_delivered	Dostavljeno
+trk_rto	Vraća se pošiljaocu
+lane_to_dispatch	Za otpremu
+lane_with_carrier	Kod prevoznika
+lane_failed	Neuspjelo
+lane_done_today	Završeno danas
+ops_board_help	Pošiljke prema tome gdje su u današnjem radu. Dodirnite pošiljke (ili ih skenirajte) da ih odaberete, zatim djelujte na sve odabrane odjednom — svaka traka nudi samo poteze koji joj odgovaraju.
+lane_empty	Trenutno ovdje nema ništa.
+picked_fmt	{n} odabrano
+pick_all	Odaberi sve
+bag_for_carrier	Ručno dostavljaču
+send_with_rider	Pošalji s dostavljačem
+out_again	Ponovo van
+return_to_sender	Vrati pošiljaocu
+runs_bags_heading	Nedavne ture i vreće
+print_word	Štampaj
+bag_word	Carrier torba
+run_word	Tura dostavljača
+parcels_fmt	{n} pošiljki
+parcel_history	Historija
+attempt_fmt	Pokušaj {n}
+pieces_short_fmt	{n} kom
+note_reason_ph	Napomena ili razlog
+ops_pick_first	Prvo odaberite pošiljke — dodirnite ih ili skenirajte
+cod_to_collect	Dostavljeno — plaćanje pouzećem
+cod_on_road	COD još uvek na putu
+cod_owed_consignors	Prikupljeno — platiti pošiljaocima
+cod_rto_fees	RTO naknade za naplatu
+cod_to_hand_in	COD za predaju
+parcel_one_fmt	{n} pošiljka
+facet_bank_title	Izvještaji
+facet_bank_help	Dnevne knjige, starost dugova stranaka, knjiženja banke i D/G perioda.
+facet_ops_title	Pošiljke i otprema
+facet_ops_help	Skenirajte ili upišite AWB → Pronađi, zatim pomak / naljepnica / COD. Otprema dostavljaču ili prevozniku.
+facet_cod_title	COD registar
+facet_cod_help	Prikupite pri dostavi, zatim uplatite pošiljaocu.
+facet_riders_title	Dostavljači (vlastita flota)
+facet_riders_help	Dodaj vozače, zatim rasporedi rezervisane AWB-ove iz Opreme.
+against_bill_ph	Na račun # iznad (nije obavezno)
+aliases_ph	Druga imena — odvojena zarezom
+amount_blank_full_ph	Iznos (prazno = cijelo stanje)
+amount_owed_ph	Dugovani iznos
+amount_ph	Iznos
+amount_received_ph	Primljeni iznos
+amount_we_pay_ph	Iznos koji plaćamo
+awb_scan_ph	AWB / skeniraj barkod
+bulk_csv_ph	Masovni CSV — odredište, primatelj, kg, cod_paise, napomena
+business_name_ph	Ime poslovanja
+category_new_ph	Kategorija (nije obavezno, pravi se ako je nova)
+cod_amount_ph	Iznos COD
+code_bag_ph	Kod (vreća)
+conv_factor_ph	Faktor (25 = 1 vreća → 25 kg)
+country_code_ph	Kod države npr. IN, GB, US, AE, BR
+credit_khata_amount_ph	Iznos duga / khata
+credit_limit_ph	Limit duga (0 = nema)
+dim_unit_code_ph	Jedinica dimenzija (cm)
+divisor_ph	Volumetrijski djelilac (5000)
+extra_per_kg_ph	Dodatno / kg
+first_amount_ph	Prvi iznos
+first_kg_ph	Prvi kg (ploča)
+from_code_ph	Iz koda (vreća)
+item_name_lang_ph	Ime stavke — upišite na svom jeziku
+login_id_opt_ph	Korisničko ime (obavezno, jedinstveno)
+manager_pin_ph	PIN menadžera za odobrenje (samo ako ne možete stornirati)
+new_branch_name_ph	Ime nove poslovnice
+new_password_ph	Nova lozinka (nije obavezno)
+new_pin_ph	Novi PIN (4–12 cifara)
+note_bank_ph	Napomena (uplata, isplata, …)
+note_buy_expense_ph	Napomena (gorivo, kirija, …)
+note_expense_ph	Napomena (gorivo, kancelarija, …)
+notify_phone_ph	Telefon za obavijest (WhatsApp/SMS veza)
+options_moklanjo_ph	Opcije (opcionalno) — Veliko=20, umot poklona=10
+part_second_way_ph	Dio drugim načinom (nije obavezno)
+phone_ph	Telefon
+address_ph	Adresa
+party_custom_fields_heading	Prilagođena polja (odabrana strana)
+party_custom_help	Dodaj bilo koju oznaku i vrijednost na ovoj strani — WhatsApp, GSTIN, kod rute, ...
+party_custom_key_ph	Naziv polja (npr. WhatsApp)
+party_custom_value_ph	Vrijednost
+party_custom_add	Dodaj polje
+party_custom_remove	Ukloni polje
+party_custom_empty	Još nema prilagođenih polja
+party_custom_pick_first	Odaberite stranku da dodate prilagođena polja
+place_name_ph	Ime ovog mjesta
+price_ph	Cijena
+qty_example_ph	Kol. (npr. 1.5 za kg)
+quantity_ph	Količina
+reason_required_ph	Razlog (obavezno)
+role_title_ph	Naziv uloge (npr. Barista)
+service_pct_ph	Usluga % nije obavezno 0/10/12
+short_code_ph	Kratki kod (MG02)
+slab_kg_ph	Teretni nivo u kg (0,5)
+staff_name_ph	Ime / id osoblja
+starting_password_ph	Početna lozinka (nije obavezno)
+starting_pin_ph	Početni PIN (4–12 cifara)
+tax_rate_ph	Ime ili % poreske stope — Standardna, Snižena, 0, 5, 12, 18, 20
+to_code_ph	U kod (kg)
+uncleared_no_ph	Neusklađeni # iznad
+unit_cost_ph	Cijena jedinice
+unit_kg_blank_ph	Jedinica (kg ili prazno)
+unit_name_bag_ph	Ime (vreća)
+weight_unit_code_ph	Šifra jedinice težine (kg)
+zone_name_ph	Naziv zone
+pay_credit	Stranke
+book_kind_today	Današnje knjige
+book_kind_month	Knjige ovog mjeseca
+book_kind_aging	Otvoreno / dug-potraživanje
+book_kind_balance	Bilans
+ops_desk_help	Skenirajte AWB USB barkod čitačem (ili ga upišite) → Pronađi. Zatim pomaknite, odštampajte naljepnicu ili naplatite COD. Naljepnice štampaju Code 128.
+role_help_consignor	Uloga: pošiljalac — AR (duguju nam). Ista firma može biti i prevoznik.
+role_help_carrier	Uloga: prevoznik — AP (mi dugujemo njima). Ista firma može biti i pošiljalac.
+role_help_both	Uloge: pošiljalac + prevoznik — jedna stranka, knjige AR i AP, neto u Izvještajima.
+role_help_supplier	Uloga: dobavljač — AP za nabavke.
+lane_declared_label	Rezervacija računa
+lane_owner_label	Gotovinsko rezervisanje
+money_lane_bill	Račun: {lane}

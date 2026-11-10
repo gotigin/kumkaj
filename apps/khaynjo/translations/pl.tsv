@@ -1,0 +1,1351 @@
+# Polish — Polski (pl). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	Zamówienia restauracji, kuchnia i księgi. Bezpłatnie, offline.
+unlock	Odblokuj
+pin_hint	PIN właściciela na starcie to 0000
+sell	Zamówienie
+buy	Zakup
+books	Dziennik dnia
+books_help	Dzisiejsze podsumowanie konta. Zamówienia = zamówienia przychodzące. Kup = zakupy i wydatki. Klienci i dostawcy = klienci kredytowi i dostawcy.
+buy_help	Bony na wydatki i rachunki od dostawców (wypłata pieniędzy). Rachunki pozostają w księdze odbiorcy lub dostawcy.
+sell_money_in	Przyjmij zamówienie
+buy_money_out	Rachunek wydatków/dostawcy
+record_purchase	Zapisz zakup
+add_expense	Dowód wydatku
+bank_book	Księga bankowa
+credit_help	Identyfikator klienta lub dostawcy jest unikalny (nazwy mogą się powtarzać). Klient prowadzi księgę kredytową (jest nam winien); Dostawca sprzedaje nam zapasy (jesteśmy im winni); oba są w porządku. Księgi pozostają oddzielne; raporty pokazują netto.
+party_kind_ph	Role: Klient, Dostawca, oba…
+reports_help	Księga dzienna, dłużnicy i wierzyciele, księga bankowa, bony wydatków, zyski i straty.
+reports_today	Dziennik dnia (dziś)
+reports_month	Zysk i strata (miesiąc)
+reports_aging	Należności / Wn-Ma
+reports_balance_sheet	Bilans
+reports	Księga bankowa i RZiS
+refresh	Odśwież
+undo	Cofnij
+start_tracking	Rozpocznij śledzenie
+stock_minus	− Zapas
+stock_plus	+ Magazyn
+settle_cash	Rozlicz gotówkę
+settle_card	Rozlicz kartę
+items	Menu i pozycje
+nav_items	Menu
+more	Więcej
+your_items	Twoje menu
+items_help	Kliknij pozycję, aby go edytować. Nowa pozycja czyści formularz. Przeszukaj nasze dania lub wpisz własne imię i zdjęcie, ustal cenę (0 jest w porządku), a następnie Dodaj. Sprzedaż już zarejestrowana zachowuje nazwisko, za które została obciążona.
+add_item	Dodaj pozycję
+new_item	Nowy przedmiot
+adding_item	Dodawanie nowej pozycji
+editing_item	Edytowanie
+save	Zapisz
+remove	Usuń
+removed_items	Usunięte pozycje
+removed_help	Przywróć umieszcza pozycję z powrotem w menu dokładnie tak, jak była — cena, zdjęcie i kategoria. Nasza półka z naczyniami nigdy nie jest usuwana, więc zawsze można dołożyć nowe danie.
+restore_item	Przywróć
+empty_catalog	Nie ma jeszcze naczyń. Otwórz Menu, dodaj danie (nazwa + cena), a następnie złóż zamówienie.
+total	Razem
+cash	Gotówka
+upi	UPI
+card	Karta
+credit	Kontrahenci
+clear	Jasne
+ready_to_sell	Gotowy do rezerwacji
+today_prefix	Dzisiaj
+today_mid	dzisiaj
+owed	wybitny
+round_word	okrągły
+back	Powrót
+sold_out	Niedostępne
+restock	Uzupełnij zapasy
+not_tracked	Nie śledzone
+in_stock	w magazynie
+marked_sold_out	Oznaczono jako niedostępny
+add_upper	DODAJ
+na	Nie dotyczy
+qty	Masa/ilość
+unit_at	Oceń @
+actual	Rzeczywisty
+applied	Zastosowano
+note_ph	Uwaga (opcjonalnie)
+rounded	ZAOKRĄGLONE
+split	Podziel
+send_kot	Wyślij KOT
+send_kot_to	Wyślij → {kitchens}
+send_kot_again	Dodaj dania na następne KOT
+send_kot_held	Wstrzymane dania — wstrzymaj, aby wysłać
+reprint_kot	Drukuj ponownie wybrany
+reprint_kot_ok	Wydrukowano ponownie {n} naczyń · {slips} kartek → {kitchens}
+reprint_kot_needed	Najpierw wyślij KOT, następnie dołącz dania i wydrukuj wybrane ponownie
+reprint_kot_none_selected	Każde wysłane danie jest pomijane — dotknij w druku tych, które chcesz wydrukować ponownie
+reprint_kot_client	Wydrukuj ponownie ({n}) za {place} wysłane — wydruki kuchenne na serwerze
+print_cancelled_kot	Drukuj wszystko anulowane
+print_cancelled_kot_ok	Wydrukowano {n} anulowane dania · {slips} odcinki → {kitchens}
+print_cancelled_kot_needed	Najpierw otwórz stół jadalny z anulowanymi daniami
+print_cancelled_kot_none	Brak anulowanych dań w tym zamówieniu
+print_cancelled_kot_client	Druk anulowany ({n}) za {place} wysłany — wydruki kuchenne na serwerze
+kot_banner	Miły baner
+kot_banner_ph	Baner (pusty = brak)
+kot_item_prefix	Przedrostek przedmiotu
+kot_item_prefix_ph	np. [ANULOWANY]
+kot_strike	Zapisz nazwę dania
+kot_strike_note	Uwaga dotycząca uderzenia w danie
+kot_strike_on	Włączone
+kot_strike_off	Wyłączone
+bill_item_layout	Układ przedmiotu
+bill_item_layout_columns	Kolumny
+bill_item_layout_stacked	Ułożone
+bill_item_header	Nagłówki kolumn
+bill_item_hdr_item	Nagłówek pozycji
+bill_item_hdr_qty	Nagłówek ilościowy
+bill_item_hdr_price	Nagłówek ceny
+bill_item_hdr_amount	Nagłówek kwoty
+bill_item_name	Nazwa dania
+bill_item_qty	Ilość
+bill_item_price	Cena
+bill_item_amount	Kwota
+bill_item_note	Uwaga dotycząca dania
+bill_item_col_gap	Szczelina kolumny
+bill_item_col_order	Kolejność kolumn
+bill_item_col_sep	Reguły kolumnowe
+bill_item_gap_tight	Ciasno
+bill_item_gap_comfort	Wygodne
+bill_item_gap_wide	Szeroki
+bill_item_num_width	Kolumny liczbowe
+bill_item_num_compact	Kompaktowy
+bill_item_num_comfort	Wygodne
+bill_item_num_wide	Szeroki
+bill_item_num_align	Liczby się zgadzają
+bill_item_gap_em	Luka (em)
+bill_item_qty_min	Ilość min (em)
+bill_item_price_min	Cena min. (em)
+bill_item_amount_min	Kwota min (em)
+kot_item_qty_width	Kolumna Ilość
+kot_item_num_align	Ilość wyrównana
+bill_total_qty_label	Etykieta z całkowitą ilością
+bill_total_subtotal_label	Etykieta sumy częściowej
+bill_total_grand_label	Wielka suma etykieta
+bill_total_paid_label	Płatna etykieta ogółem
+bill_meta_pair	Udostępnij linię z
+bill_pair_alone	Sam
+bill_item_piece_on	Włączone
+bill_item_piece_off	Wyłączone
+bill_total_qty	Całkowita ilość
+bill_total_subtotal	Suma podrzędna
+bill_total_grand	Wielka suma
+reprint_incl	W druku
+reprint_skip	Pomiń
+reprint_skip_meta	Pomiń wydruk odzyskiwania
+kot_dest_hint	Drukuje na drukarkach przypisanych do {kitchens} w Ustawieniach → Drukarki
+kot_sent_hint	Ostatnie KOT przypadło {kitchens}. Stuknij, aby dodać dania do następnego biletu — lub Wydrukuj ponownie KOT dla tego samego.
+kot_sent_printing	KOT wysłane do {kitchens} — drukowanie
+kot_sent_not_printed	KOT wysłane do {kitchens}, ale NIE wydrukowane: {why}. Powiedz kuchni, a potem napraw drukarkę i wydrukuj jeszcze raz.
+kot_sent_screen	KOT wysłane do {kitchens}
+kot_queued_shop	KOT dla {place} → {kitchens} zapisane; urządzenie sklepowe je wydrukuje
+kot_job_label	KOT dla {place} → {kitchens}
+kot_job_reached	KOT dla {place} osiągnęło {kitchens}
+kot_unassigned	Kuchnia (bez stacji)
+kot_unassigned_held	Trzymano {n} dań bez stacji — wznów linię, aby wysłać
+kot_station_ph	Kuchnia
+kot_station_dd	Kuchnia
+kot_station_dd_n	Kuchnia · {stations}
+kot_set_station	Skorzystaj z tej stacji
+kot_station_applied	Stacja ustawiona na naczyniach {n}: {station}
+kot_station_cleared	Stacja wyczyszczona z {n} naczyń: {station}
+kot_station_needed	Najpierw wybierz stację kuchenną
+kot_station_not_allowed	Zakaz korzystania z kuchni: {station}
+kot_station_none	Nie ma jeszcze stacji kuchennych — dodaj je w obszarze Kuchnia lub Ustawienia → Obszary · stacje
+pos_tab_items	Dodane pozycje
+pos_tab_payment	Płatność
+hold_send	Wstrzymaj
+hold_send_on	Trzymane
+hold_send_meta	Trzymane — nie to KOT
+station_remove	Usuń stację
+station_remove_ph	Stuknij stację na liście, aby ją usunąć
+station_removed	Stacja usunięta: {name}
+settings_hub_title	Ustawienia
+settings_hub_help	Otwieraj jeden obszar na raz — mniej przewijania, wyraźniejsze wybory.
+settings_back	Powrót
+settings_sec_language	Język i waluta
+settings_sec_country	Kraj i podatek
+settings_sec_tills	Inne urządzenia
+settings_sec_brand	Twoja marka
+settings_sec_units	Jednostki i konwersje
+settings_sec_pickers	Obszary · stacje · stawki podatkowe
+settings_sec_printers	Drukarki
+settings_sec_bill	Bill i format KOT
+settings_sec_selling	Schematy i sprzedaż
+bill_kot_tab_bill	Rachunek
+bill_kot_tab_kot	KOT
+settings_sec_alerts	Alerty
+alerts_help	Jak długo komunikaty o statusie pozostają na ekranie (w tym logowaniu).
+snack_secs_ph	Sekundy (3–60, domyślnie 10)
+snack_secs_save	Oszczędź czas alertu
+snack_secs_saved	Zapisano czas alertu — {n} sekund
+settings_sec_backup	Kopia zapasowa i przywracanie
+settings_sec_diag	Diagnostyka
+diag_privacy_help	Dzienniki pozostają na tym urządzeniu. Sekrety (PIN, hasła) nigdy nie są przechowywane. Udostępnienie pakietu poza urządzeniem wymaga za każdym razem Twojej wyraźnej zgody — nigdy nie jest sprzedawane ani przekazywane osobom trzecim.
+diag_level	Poziom szczegółowości
+diag_level_error	Błędy
+diag_level_warn	Ostrzeżenia
+diag_level_info	Informacje
+diag_level_debug	Debuguj
+diag_support_start	Rozpocznij 30-minutową sesję wsparcia
+diag_support_stop	Zakończ sesję wsparcia
+diag_support_started	Sesja pomocy technicznej włączona — Szczegóły debugowania przez 30 minut
+diag_support_ended	Sesja wsparcia zakończyła się
+diag_export_local	Eksportuj kopię lokalną
+diag_export_local_done	Lokalna diagnostyka gotowa o {path} — wybierz, gdzie zapisać kopię
+diag_approve_send	Zatwierdź udostępnianie na tym urządzeniu
+diag_send_help	Zatwierdzenie dotyczy jednego pakietu, po czym wygasa. Tymczasowe — używane wyłącznie w celu naprawy lub ulepszenia produktu. Nie udostępniane osobom trzecim. Działa na Linux, Windows, macOS i Android.
+diag_send_approved	Udział zatwierdzony dla jednego pakietu (wkrótce wygasa)
+diag_export_send	Utwórz pakiet udostępnień (wymaga zatwierdzenia)
+diag_export_send_done	Udostępnij pakiet gotowy o {path} — wybierz, gdzie zapisać, a następnie wyślij tylko do wsparcia Kumkaj
+diag_save_bundle	Zapisz kopię diagnostyczną
+diag_bundle_saved	Kopia diagnostyczna zapisana w {path}
+diag_bundle_failed	Nie można zapisać kopii diagnostycznej — spróbuj ponownie
+diag_clear	Wyczyść dzienniki diagnostyczne
+diag_cleared	Dzienniki diagnostyczne zostały usunięte
+sidebar_settings	Pasek boczny
+sidebar_settings_help	Ikony takie same jak na poręczy bocznej. Przeciągnij wiersz, aby zmienić jego kolejność. Przesuń przełącznik, aby pokazać lub ukryć. Ustawienia i Blokada zawsze pozostają na pasku.
+sidebar_always_on_short	Zawsze włączone
+sidebar_back_settings	Powrót
+sidebar_shown	Pokazano
+sidebar_hidden	Ukryty
+sidebar_always_on	Zawsze na pasku
+sidebar_shown_hint	Pokazane na szynie bocznej / dolnych zakładkach
+sidebar_hidden_hint	Ukryty przed barem
+sidebar_menu_items	Menu i pozycje
+sidebar_enable_all	Włącz wszystko
+sidebar_disable_all	Wyłącz wszystko
+sidebar_order_saved	Zapisano zamówienie na pasku bocznym
+sidebar_visibility_saved	Zapisano widoczność paska bocznego
+amounts_hide	Ukryj
+amounts_show	Pokaż
+printers_none_hint	Najpierw zapisz drukarkę na tym urządzeniu, a następnie dodaj ją do Billa lub kuchni
+counter	Licznik
+dine_in	Zjedz obiad
+takeaway	Na wynos
+order	Zamówienie
+tables	Stoły do jadalni
+kitchen	Kuchnia
+sales	Sprzedaż
+sales_refunds	Sprzedaż i zwroty pieniędzy
+day_close	Dzień blisko
+reports_expenses	Księga bankowa i zyski
+nav_reports	Raporty
+nav_settings	Ustawienia
+nav_lock	Blokada
+no_sale_yet	Nie ma jeszcze sprzedaży
+favorites	Ulubione
+favorites_help	Przedmioty, które często sprzedajesz, zapisane dla Twojego loginu. Dodaj jeden do rachunku lub utwórz listę ze wszystkich pozycji poniżej.
+your_favorites	Twoje ulubione
+all_items	Wszystkie przedmioty
+frequent	Częste
+added_items	Dodane pozycje
+added_items_empty	Jeszcze nie ma nic w tym zamówieniu — dodaj danie ze wszystkich pozycji lub kategorii.
+frequent_config_help	Najczęściej sprzedawane dania z zrealizowanych rachunków. Ustaw, ile dni chcesz przeglądać i ile potraw wyświetlać.
+frequent_days_ph	Dni (1)
+frequent_limit_ph	Artykuły (24)
+frequent_apply	Zastosuj
+frequent_saved	Często: ostatnie {d} dni, najlepsze {n} — {c} dania
+frequent_empty	Nie zrealizowano jeszcze sprzedaży w tym okresie — ureguluj rachunek (dopuszczalne 0 GBP, jeśli tak mówią Ustawienia), a wyświetli się tutaj.
+zero_sales	Sprzedaż o zerowej wartości
+zero_sales_help	Zezwalaj na dania w cenie 0 ₹ i rachunki rozliczane w 0 ₹ (bezpłatnie / na życzenie właściciela). Domyślnie włączone, więc bezpłatne okładki nadal pojawiają się w księgach codziennych i codziennych.
+zero_sales_on	Zezwól na 0 INR
+zero_sales_off	Wymagaj ceny
+zero_sales_saved_on	Dozwolona sprzedaż o wartości zerowej
+zero_sales_saved_off	Sprzedaż musi mieć cenę wyższą niż 0 INR
+floor_areas_help	Obszary to pomieszczenia lub strefy w jadalni (Dine In, Parcel, AC…). Najpierw dodaj obszar, a następnie umieść w nim stoły – każdy obszar stanowi osobną grupę w jadalni.
+area_new_ph	Nowa powierzchnia/pokój (np. klimatyzacja, ogród)
+add_area	Dodaj obszar
+area_added	Obszar „{name}” gotowy — dodaj do niego stoły jadalne
+no_favorites	Nie ma jeszcze ulubionych — dodaj pozycje z poniższej listy.
+add_to_bill	Dodaj do rachunku
+added	Dodano
+owes_word	jest winien
+selected_word	Wybrane
+chip_clear_credit	clear — Kredyt lub pobranie zaliczki
+chip_missing_customer	Brak wybranego klienta — wybierz ponownie
+chip_no_customer	Nie masz jeszcze klienta — wpisz nazwę, a następnie stuknij opcję Kredyt
+credit_summary_fmt	{} klienci · otwarty kredyt {} · posiadane zaliczki {}
+recent_label	Najnowsze:
+kot_new_waiting	NOWOŚĆ — czekam
+kot_preparing	PRZYGOTOWANIE
+kot_ready_serve	GOTOWE — podawaj
+kot_done_cap	GOTOWE
+kot_cancelled	ODWOŁANY
+kot_start_btn	Zacznij
+kot_mark_ready	Oznacz gotowe
+kot_done_btn	Gotowe
+table_free	Wolne — kliknij, aby rozpocząć składanie zamówienia
+start_order	Rozpocznij zamówienie
+open_bill	Otwórz rachunek
+collect_payment	Zbierz płatność
+table_running	Bieganie
+payment_pending	Płatność oczekująca
+collect_at_counter	zbieraj przy ladzie
+inventory	Zapasy
+inventory_stock	Zapasy i zapasy
+branches	Gałęzie
+branches_org	Oddziały i organizacje
+credit_customers	Klienci i dostawcy (rachunki kredytowe)
+customer_name_ph	Nazwa klienta lub dostawcy
+new_customer_ph	Nowa nazwa klienta lub dostawcy
+item_name_ph	Nazwa przedmiotu (np. Masala Dosa)
+item_price_ph	Cena
+start_template	Produkt
+team	Zespół
+team_pins	Zespół & PINs
+my_pin_settings	Mój PIN
+settings_hub_help_my_pin	Zmień odblokowanie PIN dla osoby zalogowanej na tym urządzeniu.
+team_self_help	Jedno logowanie: nowe PIN, nowe hasło lub jedno i drugie. Pozostaw puste pole, aby zachować to, co masz. Zapytaj właściciela, czy potrzebujesz innych ekranów lub uprawnień.
+backup_settings	Kopia zapasowa i ustawienia
+lock_app	Zablokuj aplikację
+pick	Wybierz
+select	Wybierz
+advance	Postęp
+owner	Właściciel
+staff	Personel
+photo	Zdjęcie
+auto	Automat
+prev	Poprzednia
+next	Następny
+ok	OK
+this_shop	Tryb serwera
+extra_till	Tryb klienta
+off	Wyłączone
+tables_kitchen	Stoły do jadalni i kuchni
+server	Urządzenie serwerowe
+client	Urządzenie klienckie
+language_currency	Język i waluta
+language	Język
+choose_language	Wybierz swój język
+language_setup_hint	Postępuj zgodnie z językiem tego urządzenia lub wybierz sam.
+lang_follow_platform	Język urządzenia
+lang_pick_user	Wybierz język
+lang_platform_now	Język urządzenia teraz
+selected_language	Wybrane
+continue	Kontynuuj
+this_device	TO URZĄDZENIE
+device_use_q	Jak będzie używane to urządzenie?
+last_server_mode	Był serwer — kliknij, aby kontynuować
+last_client_mode	Był klientem — dotknij, aby kontynuować
+choose_server	Wybierz serwer
+choose_server_hint	Otwórz istniejący serwer lub utwórz go dla innej firmy.
+create_new_server	Utwórz nowy serwer
+open_server	Otwórz
+new_server_name_ph	Nowa nazwa serwera (opcjonalnie)
+server_remove_pin_ph	Właściciel PIN, aby usunąć serwer
+only_owner_remove_server	Tylko właściciel może usunąć serwer
+owner_pin_remove_server	Właściciel PIN wymagany do usunięcia tego serwera
+device_setup_help	Serwer prowadzi tutaj księgi. Klient łączy się z serwerem.
+app_template_heading	Rajdhani Szablon aplikacji
+app_template_blurb	Ładuje menu Rajdhani; Właściciel Zahir (zahir), Admin Asif (asif, PIN 1111), Kelner Nawaz (nawaz, PIN 0000); FOH pasek boczny; historia zostanie wyczyszczona po 4 godzinach (i wyczyszczona teraz w kopii zapasowej); Dzisiaj się rozbierz; kompaktowy KOT + Marginesy standardowe dla wąskich tac. Pozycje równorzędne na pasku bocznym można ponownie włączyć w Ustawieniach.
+app_template_apply	Rajdhani Szablon aplikacji
+app_template_skip	Pomiń na razie
+app_template_status	Serwer gotowy — zastosuj szablon aplikacji Rajdhani lub pomiń
+app_template_importing	Stosowanie {title}…
+currency	Waluta
+backup	Kopia zapasowa
+use	Użyj
+dont_use	Nie używaj
+add_branch	Dodaj gałąź
+add_conversion	Dodaj konwersję
+add_dishes_items	Dodaj dania i przedmioty
+add_item_plain	Dodaj pozycję
+add_note	Dodaj notatkę
+add_opening_balance	Dodaj saldo otwarcia
+add_staff	Dodaj personel
+add_station	Dodaj stację
+add_table	Dodaj stół jadalny
+add_unit	Dodaj jednostkę
+add_use_name	Dodaj/użyj tej nazwy
+allow_extra_tills	Zezwalaj na dodatkowe kasy
+amend	Popraw
+apply_country_pack	Zastosuj pakiet krajowy
+datetime_appearance	Wygląd daty i godziny
+datetime_appearance_help	W księgach znajduje się pierwszy rok RFC3339. Zmieniają one jedynie wygląd dat i zegarów na rachunkach, KOT, raportach i ekranie.
+datetime_example	Przykład teraz: {ex}
+date_order	Zamówienie daty
+date_order_dmy	D/M/Y
+date_order_mdy	M/D/Y
+date_order_ymd	Y-M-D
+time_format	Zegar
+time_format_24h	24-godzinne
+time_format_12h	12-godzinne
+attach_bill_photo	Załącz zdjęcie rachunku
+attach_pdf	Dołącz PDF
+attach_photo	Dołącz zdjęcie
+attachments_last_expense	Załączniki (ostatni wydatek)
+bank	Banku
+bank_in	Bank w
+bank_out	Z banku
+bank_reconciliation	Uzgodnienie konta bankowego (zaznaczyć na wyciągu bankowym)
+bank_to_till	Bank → kasa
+book_add_dish	Zarezerwuj — dodaj danie/przedmiot
+book_opening_credit	Księga — kredyt początkowy
+branch_name_sell_ph	Nazwa oddziału, z którego można sprzedawać
+bring_my_book	Przynieś moją księgę
+business_tax_id_ph	Identyfikator podatkowy firmy
+caption_bank	BANK
+caption_bills	RACHUNKI
+caption_outstanding	WYJĄTKOWY
+caption_payments_today	PŁATNOŚCI DZIŚ
+caption_today	DZIŚ
+card_amount_ph	Kwota karty
+cash_amount_ph	Kwota gotówkowa
+cash_memo	Notatka gotówkowa
+choose_icon	Wybierz ikonę
+choose_logo	Wybierz logo
+clear_icon	Wyczyść ikonę
+clear_photo	Wyczyść zdjęcie
+copy_day_book_csv	Kopiuj dzienniczek CSV
+copy_day_close	Skopiuj dzień zamknięcia
+copy_items_csv	Skopiuj pozycje CSV
+copy_outstanding_csv	Kopia zaległa CSV
+copy_parties_csv	Kopiuj klientów i dostawców CSV
+copy_party_ledger_csv	Skopiuj księgę klienta CSV
+copy_receipt	Kopiuj paragon
+share_whatsapp	Udostępnij WhatsApp
+lan_pages_heading	Strony gościnne na Wi‑Fi
+lan_pages_help	W Wi‑Fi tego sklepu strony gości obsługują tablicę wystawową, żetony, wystawę, kiosk, QR stół jadalny i opinie. Goście korzystający z mobilnej transmisji danych będą potrzebować chmury później. Terminal kartowy/link płatniczy jest opcjonalny, gdy internet jest aktywny — nigdy nie blokuje kasy.
+diag_send_heading	Udostępnij to urządzenie
+kot_dest_heading	Stacja kuchenna
+optional_login_heading	Opcjonalne logowanie
+rights_heading	Prawa
+ops_panel	Lokalne operacje
+crm_heading	Goście i wiadomości
+crm_help	Goście urodzinowi, lojalnościowi, nieaktywni i najlepsi — kolejka SMS lub WhatsApp intencje. Użyj {name} i {points} w wiadomości. Właściciel klika wysyłanie; nic nie wybucha samo.
+crm_queue_sms	Kolejka SMS
+crm_queue_wa	Kolejka WhatsApp
+crm_seg_bday_week	Urodzinowy tydzień
+crm_seg_bday_month	Miesiąc urodzin
+crm_seg_phone	Z telefonem
+crm_seg_loyalty	Lojalność
+crm_seg_inactive	Nieaktywny
+crm_seg_top	Osoby wydające najwięcej
+birthday_ph	Urodziny (MM-DD lub RRRR-MM-DD)
+crm_message_ph	Wszystkiego najlepszego {name}! Masz {points} punktów.
+till_apply_redeem	Zastosuj do rachunku
+till_clear_redeem	Wyczyść odkup
+till_wallet_topup	Doładuj portfel
+till_issue_voucher	Wydaj kupon
+till_points_ph	Punkty do wykorzystania
+till_wallet_ph	Kwota portfela do wydania
+till_voucher_code_ph	Kod kuponu
+till_voucher_amt_ph	Kwota kuponu (puste = wszystkie)
+till_wallet_topup_ph	Doładuj kwotę portfela
+till_voucher_issue_amt_ph	Wydaj kwotę kuponu
+till_voucher_issue_code_ph	Nowy kod kuponu
+split_evenly	Podziel równomiernie
+waitlist	Lista oczekujących
+fire_course	Wyślij danie do kuchni
+hold_item	Wstrzymaj
+waiter_call	Zadzwoń do kelnera
+waitlist_add	Dodaj do listy oczekujących
+floor_view_grid	Siatka
+floor_view_layout	Układ
+floor_layout_x	X
+floor_layout_y	Y
+floor_layout_w	W
+floor_layout_h	H
+floor_layout_save	Zapisz układ
+floor_layout_open	Otwarty stół jadalny
+floor_layout_edit	Edytuj układ
+floor_layout_pick	Kliknij stół, aby edytować jego układ
+floor_layout_saved	Zapisano układ stołu w jadalni
+floor_layout_nudge_left	← 20
+floor_layout_nudge_right	→ 20
+floor_layout_nudge_up	↑ 20
+floor_layout_nudge_down	↓ 20
+sibling_pickers_help	Kliknij opcję Włącz/Wyłącz podobne jednostki — ukryj obszary, stacje i stawki podatkowe przed codziennymi zbieraczami; domyślne ustawienia pakietu pozostają.
+bulk_price_apply	Zastosuj cenę zbiorczą
+card_terminal_optional	Terminal do kart / łącze płatnicze (opcjonalnie, jeśli dostępny jest internet)
+copy_report	Skopiuj raport
+counted_cash_ph	Przeliczona gotówka w szufladzie
+country_tax	Kraj i podatek
+tax_chrome	Etykiety podatkowe na kasie
+tax_chrome_help	Kiedy jest wyłączone, panel zamówień ukrywa wiersze szacunkowe GST/podatek i symbole zastępcze GST-w cenie. Stawki podatków oraz ustawienia kraju i podatków pozostają bez zmian — w każdej chwili możesz ponownie włączyć etykiety. Rajdhani Szablon aplikacji zaczyna się od tej opcji.
+tax_chrome_on	Pokaż
+tax_chrome_off	Ukryj
+tax_chrome_saved_on	Etykiety podatkowe na kasie
+tax_chrome_saved_off	Etykiety podatkowe ukryte na kasie
+tax_invoice_till	Faktura VAT na kasie
+tax_invoice_help	Gdy opcja ta jest wyłączona, rachunki są tylko notatką gotówkową, a faktura podatkowa/żetony notatek gotówkowych są ukryte na biurku zamówień. Rajdhani Szablon aplikacji zaczyna się od tej opcji — w dowolnym momencie włącz opcję Pokaż ponownie, aby ponownie wybrać Fakturę VAT.
+tax_invoice_on	Pokaż
+tax_invoice_off	Ukryj
+tax_invoice_saved_on	Faktura VAT na kasie
+tax_invoice_saved_off	Ukryta faktura VAT — tylko notatka kasowa
+pay_methods	Metody płatności
+pay_methods_help	Które żetony pojawiają się przy przyjęciu płatności. Gotówka zawsze zostaje. Szablon aplikacji Rajdhani zaczyna się od Tylko gotówka — włącz ponownie UPI / Karta / Kredyt / Podział.
+create_backup	Utwórz kopię zapasową
+credit_limit_heading	Limit kredytowy (wybrany klient lub dostawca)
+day_close_summary	Podsumowanie dnia
+delete_party	Usuń wybranego klienta lub dostawcę
+delivery	Dostawa
+done_open_books	Gotowe — otwórz księgi
+drawer_count	Liczba szuflad (opcjonalnie)
+expense_heading	Wydatek
+export_day	Dzień eksportu
+extra_note_bill_ph	Dodatkowa uwaga do tego rachunku/sprzedaży
+extra_note_expense_ph	Dodatkowa notatka na temat ostatniego wydatku
+extra_tills_heading	Dodatkowe kasy
+other_devices_help_heading	Skonfiguruj inne urządzenia
+other_devices_help	Na tym urządzeniu (serwerze): Inne urządzenia → Zezwól na dodatkowe kasy. Zanotuj kod parowania i adres Wi‑Fi. Stuknij Zezwalaj innym urządzeniom na łączenie się, jeśli się pojawi. Na komputerze kliknij opcję Uruchom na tym komputerze. Na każdym urządzeniu: zainstaluj aplikację, wybierz Tryb Klienta, Znajdź serwer sklepu (lub wpisz adres), wprowadź kod parowania, Połącz teraz. Zamówienia oczekują na urządzeniu, jeśli Wi‑Fi spadnie i znikają, gdy Serwer ponownie odpowie. Drukarki kuchenne są ustawione na Serwerze (Ustawienia → Drukarki) — dodatkowe kasy wysyłają tam KOT.
+forget_shop	Zapomnij o tym sklepie
+goods_received	Towar otrzymany
+import_day	Dzień importu
+import_items_csv_plain	Importuj pozycje CSV…
+import_parties_csv	Importuj klientów i dostawców CSV…
+item_name	Nazwa przedmiotu
+kitchen_printing	Drukarki
+login_id_ph	Nazwa użytkownika
+mark_cleared	Marek oczyścił
+new_party_clear	Nowy klient lub dostawca (czytelny formularz)
+new_party_kind_supplier_ph	Nowy rodzaj klienta lub dostawcy (Dostawca)
+next_country	Następny kraj
+next_order	Następne zamówienie (posprzątane biurko)
+note_gstin_ph	Uwaga / GSTIN / przypomnienie o umowie
+notes_attach_party	Notatki i załączniki (wybrany klient lub dostawca)
+notes_attach_sale	Notatki i załączniki (wybrana sprzedaż)
+on_account_ap	Na koncie (AP)
+org_optional_ph	Organizacja (opcjonalnie)
+paid_by	Zapłacone przez
+paid_now	Zapłacono teraz
+pair_now	Sparuj teraz
+pairing_code_ph	Kod parowania
+party_name_selected_ph	Nazwa klienta lub dostawcy (lub wybrane użycie)
+password_ph	Hasło
+pay_ap_card	Zapłać kartą AP
+pay_ap_cash	Zapłać gotówką AP
+pay_ap_heading	Zapłać to, co jesteśmy im winni (AP)
+pay_ap_upi	Zapłać AP UPI
+pay_selected_heading	Wybrano płatność (uregulowaj dług / pobierz zaliczkę)
+pick_from_items	Wybierz spośród naszych produktów
+prev_country	Poprzedni kraj
+print_open	Wydrukuj / otwórz
+reason_amend_ph	Powód zmiany / unieważnienia / zwrotu pieniędzy
+reason_note_ph	Powód/uwaga (marnotrawstwo, liczba,…)
+record_day_close	Zapisz zamknięcie dnia
+refresh_from_shop	Odśwież ze sklepu
+refund	Zwrot pieniędzy
+remove_selected	Usuń wybrane
+request_bill	Poproś o rachunek
+restaurant_name_ph	Nazwa restauracji (opcjonalnie)
+restore_backup	Przywróć kopię zapasową
+role_both	Obydwa
+role_admin	Administrator
+role_cashier	Kasjer
+role_customer	Klient
+role_manager	Menedżer
+history_retention	Historia handlu
+history_retention_help	Automatycznie usuwaj stare sprzedaże i KOTs. Menu, personel i ustawienia pozostają. Wyczyść teraz usuwa wszystkie wiersze transakcji i utrzymuje konfigurację.
+history_off	Zachowaj
+history_day_close	W dzień zamknięty
+history_after_hours	Po godzinach
+history_hours_ph	Godziny (1–168, domyślnie 4)
+history_hours_save	Oszczędzaj godziny
+history_clear_now	Wyczyść historię teraz
+history_cleared	Historia transakcji wyczyszczona – konfiguracja zachowana
+history_retention_saved	Czyszczenie historii zostało zapisane
+history_hours_saved	Zapisano godziny historii
+history_owner_only	Tylko właściciel lub administrator może wyczyścić historię
+rollup	Zestawienie
+save_brand	Zapisz markę
+save_business_id	Zapisz identyfikator firmy
+save_business_name	Zapisz nazwę firmy
+save_features	Zapisz
+save_features_named	Zapisz {name}
+save_features_ok	Zapisano konfigurację dla {name}
+save_names	Zapisz nazwy
+second_way	Drugi sposób
+server_ip_ph	Adres IP serwera (np. 192.168.1.10)
+set_credit_limit	Zastosuj limit do klienta lub dostawcy
+set_login_selected	Zastosuj login do wybranych
+set_login_named	Zastosuj login do {name}
+shop	Sklep
+show	Pokaż
+spreadsheet_csv	Arkusz kalkulacyjny (CSV)
+start_fresh	Zacznij od nowa
+stop_extra_tills	Zatrzymaj dodatkowe kasy
+floor_cols_ph	Kolumny
+floor_cols_fit	Dopasuj ekran
+floor_cols_fit_sub	{n} pasuje tutaj
+floor_cols_fits	pasuje
+floor_cols_scroll	przewija się na boki
+floor_cols_min	Kolumny: co najmniej 1 — lub pozostaw puste, aby zmieściły się na ekranie
+floor_zoom_auto	Automat
+floor_zoom_out	Pomniejsz
+floor_zoom_in	Powiększ
+backup_auto	Kopia zapasowa wykonywana automatycznie codziennie · ostatnie {when} · ostatnie 14 dni są przechowywane w {dir}.
+backup_auto_none	Kopia zapasowa tworzona automatycznie każdego dnia — pierwsza zostanie uruchomiona za chwilę.
+backup_copy_to	Kopie trafiają również do {dir}.
+backup_copy_btn	Kopiuj także kopie zapasowe do folderu…
+autostart_off	Zacznij od tego komputera
+autostart_on	Uruchamia się na tym komputerze ✓ — dotknij, aby zatrzymać
+autostart_done_on	Ten komputer otwiera teraz aplikację po uruchomieniu — serwer sklepu powrócił po przerwie w dostawie prądu.
+autostart_done_off	Ten komputer nie otwiera już aplikacji podczas jej uruchamiania.
+device_forgotten	Sklep zapomniał tego urządzenia — sparuj je ponownie z aktualnym kodem sklepu. Zamówienia oczekujące na nią są zachowywane.
+lan_offline	Serwer sklepu jest nieosiągalny
+forget_device	Zapomnij
+last_seen	widziałem
+copy_pair_code	Skopiuj kod parowania
+new_pair_code	Nowy kod parowania
+pair_finishing	Kończąca para… stosowanie ksiąg sklepowych
+pair_opening	Otwieranie kasy…
+pair_copied	Kod parowania został skopiowany
+kot_waiting	Czekam na wysłanie
+lan_offline_waiting	Serwer sklepu nieosiągalny · {n} czeka
+lan_connecting	Łączę ze sklepem…
+lan_live	Na żywo
+lan_sending	{n} wysyłanie
+lan_sign_in_to_send	Zaloguj się ponownie, aby wysłać {n}
+lan_pair_again	Sparuj to urządzenie ponownie
+lan_update_app	Zaktualizuj aplikację — to urządzenie i serwer sklepu mają różne wersje
+allow_firewall	Zezwól innym urządzeniom na łączenie się
+firewall_blocked	Zapora sieciowa tego komputera blokuje inne urządzenia — kliknij Zezwalaj na łączenie się innych urządzeń.
+firewall_waiting	Oczekiwanie na monit administratora…
+lan_join_help	Na drugim urządzeniu: Tryb Klienta → Znajdź serwer sklepu (lub wpisz {addr}) → kod parowania {code}.
+lan_pair_status	Wi‑Fi {addr}
+lan_join_help_no_addr	Podłącz to urządzenie do Wi‑Fi, aby uzyskać adres.
+lan_no_address	Nie ma jeszcze adresu Wi‑Fi — połącz się ze sklepem Wi‑Fi.
+lan_not_listening	Nie akceptuje urządzeń (port {port} zajęty). Uruchom ponownie aplikację.
+lan_tills_off	Dodatkowe kasy są wyłączone. Zezwól im na dołączenie innego urządzenia.
+paired_with	Sparowany · {url}
+not_paired	Nie sparowane
+choose_device_use	Wybierz serwer lub klienta.
+paired_note	Sparowane. Odblokuj, aby sprzedać lub odśwież, aby uzyskać najnowsze informacje.
+last_update_at	Ostatnia aktualizacja: {time}.
+pair_intro	Znajdź serwer lub wpisz jego adres i kod parowania.
+queue_waiting	Oczekiwanie na dotarcie do sklepu ({n}):
+queue_tries	Próbowałem {n} razy · ostatnia odpowiedź: {e}
+save_backup_copy	Zapisz kopię zapasową…
+backup_copy_saved	Kopia zapasowa została zapisana — trzymaj ją poza tym urządzeniem (pamięcią USB lub innym urządzeniem)
+backup_copy_overdue	Żadna kopia zapasowa nie opuściła tego urządzenia przez {n} dni — Ustawienia → Kopia zapasowa
+backup_copy_failed	Nie można tam zapisać kopii zapasowej — wybierz inne miejsce
+clock_off	Zegar tego urządzenia jest {min} min poza serwerem sklepu — ustaw właściwy czas na tym urządzeniu
+printers_heading	Drukarki
+printers_help	Znajdź drukarki, dotknij jednej, aby ją wybrać, a następnie Wydrukuj stronę testową tylko na tym urządzeniu. Drukarki rachunków: format rachunków i KOT → Bill. Drukarki kuchenne: Kuchnia → Stacje kuchenne (najpierw dodaj stację — Znajdź nie tworzy stacji).
+printers_host_only	Drukarki są ustawione na urządzeniu sklepowym (Serwerze). Ta kasa wysyła rachunki i tam KOT — Znajdź/dodaj/przypisz pobyt na serwerze. Strona testowa i rozmiar wydruku rachunku trafiają na Serwer.
+printers_find_heading	Znajdź drukarki
+printers_find_tip	Znajdź skanuje to urządzenie i aktualizuje listę.
+printers_pool_heading	Drukarki
+printers_pool_tip	Funkcja Znajdź skanuje to urządzenie i aktualizuje tę listę.
+printers_pool_empty	(jeszcze żaden — kliknij Znajdź)
+printers_routes_help	Znajdź drukarki, które system operacyjny już zna. Przypisz je do rachunku i do każdej kuchni w formacie Bill & KOT.
+printer_assign_dd	Prawdziwa drukarka: {place}
+printer_assign_pick	Wybierz prawdziwą drukarkę
+printer_profile_heading	Układ
+printer_send_heading	Dostawa
+vp_delivery_heading	Dostawa
+vp_delivery_help	Jak ta wirtualna drukarka wysyła zadania — dokument systemu operacyjnego, nieprzetworzone bajty lub ESC/POS. O zawartości ulotki (rozmiar czcionki, zawinięcie, marginesy) decyduje format rachunku/KOT, a nie tutaj.
+vp_type_size_heading	Wpisz rozmiar
+vp_wrap_heading	Szerokość owinięcia
+vp_margin_heading	Marginesy
+vp_delivery_spooler	Dokument systemu operacyjnego (bufor systemowy)
+vp_delivery_raw	Surowe bajty do urządzenia
+vp_delivery_escpos	ESC/POS polecenia termiczne
+virtual_printer_new	Nowa wirtualna drukarka
+virtual_printer_selected	Edycja „{name}” — dotknij innego na liście, aby przełączyć
+virtual_printer_tap_list	Kliknij drukarkę wirtualną na liście, aby ją edytować
+config_layout_portrait	Portret
+config_layout_landscape	Krajobraz
+config_send_os	Bufor systemowy
+config_send_escpos	ESC/POS
+profiles_heading	Układy
+profiles_empty	(jeszcze brak układów)
+profile_builtin	wbudowany
+profile_custom	niestandardowe
+profile_name_ph	Nazwa układu
+profile_new	Nowy układ
+profile_delete	Usuń układ
+profile_created	Układ został utworzony
+profile_deleted	Układ usunięty
+profile_builtin_keep	Wbudowanych układów nie można usunąć
+config_saved	Zaktualizowano
+config_selected	Wybrano „{name}”
+printer_output_heading	Drukarki wirtualne
+virtual_printers_heading	Drukarki wirtualne
+virtual_printers_empty	Nie ma jeszcze drukarek wirtualnych — ustaw wartości poniżej, a następnie Zapisz. Gdy już będziesz mieć kilka, dotknij jednego z listy, aby je edytować.
+virtual_printer_name_ph	Nazwa drukarki wirtualnej (opcjonalnie)
+virtual_printer_create	Utwórz wirtualną drukarkę
+virtual_printer_save	Zapisz wirtualną drukarkę
+virtual_printer_delete	Usuń drukarkę wirtualną
+virtual_printer_created	Utworzono wirtualną drukarkę „{name}”.
+virtual_printer_deleted	Usunięto drukarkę wirtualną „{name}”
+virtual_printer_updated	Zaktualizowano drukarkę wirtualną
+virtual_printer_updated_named	Zaktualizowano drukarkę wirtualną „{name}”.
+virtual_draft_layout	Wartości ustawione dla następnej drukarki wirtualnej
+virtual_draft_send	Wartość ustawiona dla następnej drukarki wirtualnej
+virtual_need_real	Najpierw wybierz prawdziwą drukarkę
+virtual_need_select	Wybierz drukarkę wirtualną do usunięcia
+real_printer_selected	Wybrane: {name}
+station_group_heading	Drukarki wirtualne
+station_group_apply	Usuń drukarkę wirtualną
+station_group_applied	Usunięto
+station_group_empty	Wybierz drukarkę wirtualną
+station_group_name_ph	Nazwa drukarki wirtualnej (opcjonalnie)
+station_group_save	Utwórz wirtualną drukarkę
+station_group_saved	Drukarka wirtualna została zapisana
+station_manage_heading	Dodaj lub usuń stację kuchenną
+printers_routes_heading	Gdzie wszystko się drukuje
+route_pick_heading	Miejsce
+route_editing	Edycja: {name}
+route_assigned	Dodano {printer} do {place}
+route_already_assigned	Już w tym miejscu: {printer}
+route_removed	Usunięto {printer} z {place}
+route_cleared	Wyczyszczono {name}
+route_assigned_empty	Żadnego w tym miejscu
+route_tap_remove	dotknij, aby usunąć
+route_tap_select	dotknij, aby wybrać
+route_tap_selected	wybrane
+route_pick_printer_first	Najpierw dotknij drukarki
+route_assigned_heading	Drukarki
+route_add_heading	Przypisz
+printer_label_ph	Nazwa (np. kuchnia)
+printer_target_ph	Nazwa drukarki systemowej lub host: 9100
+printer_target_default	zwykła drukarka tego komputera (pusty adres)
+printer_wire_heading	Profil
+printer_wire_escpos	ESC/POS
+printer_wire_os	Portret
+printer_wire_os_portrait	Portret
+printer_wire_os_landscape	Krajobraz
+printer_wire_escpos_short	ESC/POS
+printer_wire_os_short	Portret
+printer_wire_os_landscape_short	Krajobraz
+printer_format_custom	Nowy profil niestandardowy
+printer_format_custom_label	Niestandardowe
+printer_format_custom_added	Dodano niestandardowy profil dla tego miejsca
+add_printer	Dodaj drukarkę
+remove_printer	Usuń
+route_pick_ph	Bill lub stanowisko kuchenne
+route_bill	Rachunek
+route_default_kitchen	Brak stacji (nieprzypisane dania)
+route_kot_station	Kuchnia
+route_dont_print	Brak drukarki
+stations_heading	Stacje kuchenne
+stations_help	Dodaj stanowiska kuchenne do naczyń i KOT. Na każdej stacji podłącz jej drukarki (znajdziesz je w Ustawieniach → Drukarki), ustaw priorytet i wybierz Pierwsza, która działa lub Drukuj na wszystkich. Zmiany są zapisywane na bieżąco — bez przycisku Zapisz.
+station_print_heading	Drukarki dla tej stacji
+station_print_help	Wybierz stację, a następnie podłącz jedną lub więcej drukarek. ↑↓ ustala kolejność prób. Pierwsze, co działa, kończy się po pierwszym sukcesie; Drukuj na wszystkich wysyłkach do każdej podłączonej drukarki. Każda zmiana zostaje natychmiast zapisana.
+station_print_pick_ph	Stanowisko do ustawiania drukarek
+station_print_pick_first	Najpierw wybierz stację kuchenną
+station_print_editing	Edycja drukarek dla „{name}”
+station_vps_dd	Drukarki dla tej stacji
+station_vps_dd_n	{n} drukarki · dotknij, aby zmienić
+station_vps_empty	Nie ma jeszcze drukarek — znajdź je w Ustawieniach → Drukarki
+bill_printers_dd	Drukarki za rachunek
+bill_printers_dd_n	{n} drukarki do rachunku · dotknij, aby zmienić
+job_layout	Układ
+job_delivery	Jak praca jest wysyłana
+job_delivery_help	Dokument systemu operacyjnego, surowe bajty lub ESC/POS. Rachunek i bilet do kuchni zachowują swoje własne. Każde zadanie może zostać przesłane do dowolnej drukarki zapisanej przez Find.
+station_vp_attached	Drukarka podłączona
+station_vp_detached	Drukarka usunięta ze stacji
+station_print_summary	{mode} · {n} drukarki
+station_print_summary_none	Na tej stacji nie ma jeszcze drukarek — nie będzie drukować
+stations_none	Nie ma jeszcze stacji — dodaj jedną poniżej. Pozycje menu mogą korzystać ze stacji, więc zostanie tam wydrukowane ich KOT.
+route_up	W górę
+route_down	W dół
+route_remove	Usuń
+route_clear	Jasne
+save_printers	Oszczędzaj drukarki
+print_test_page	Wydrukuj stronę testową
+no_printer_assigned	Brak drukarki
+test_page_no_printer	Brak drukarki przez {place} — podłącz do niej drukarkę i spróbuj ponownie
+test_page_pick_first	Najpierw wybierz drukarki do strony testowej, a następnie Wydrukuj stronę testową
+test_printers_dd	Drukarki do strony testowej
+test_printers_dd_n	{n} drukarek dla strony testowej · dotknij, aby zmienić
+kot_test_printers_dd	Drukarki do testu KOT
+kot_test_printers_dd_n	{n} drukarki do testu KOT · dotknij, aby zmienić
+test_printer_picked	Testuj na: {name}
+test_printer_cleared	Nie testuję na: {name}
+test_page_sent_n	Strona testowa wysłana do {n} drukarek
+test_kot_pick_first	Najpierw wybierz drukarki do testu KOT, a następnie testu KOT
+test_kot_sent_n	Test KOT wysłany do {n} drukarek
+cancel_pick	Marek
+cancel_pick_on	Oznaczone
+cancel_pick_meta	Oznaczono do anulowania
+batch_cancel	Anuluj zaznaczone
+batch_cancel_n	Anuluj zaznaczone ({n})
+batch_cancel_none	Najpierw zaznacz jedno lub więcej wysłanych dań, a następnie zaznacz opcję Anuluj
+batch_cancel_title	Anuluj oznaczone dania — jeden powód, jeden kupon anulowania na kuchnię
+batch_cancel_ok	{n} dania odwołane · {slips} anulowanie kuponów → {kitchens}
+batch_cancel_ok_noprint	{n} dania anulowane — KOT automatyczny wydruk jest wyłączony, więc nie ma potwierdzenia anulowania
+no_printer_kitchen_station	Brak drukarki dla tej stacji kuchennej — Kuchnia → Stacje kuchenne → Drukarki dla tej stacji
+printers_saved	Zapisano
+test_page_sent	Wysłano stronę testową — sprawdź drukarkę
+test_page_sent_one	Strona testowa wysłana do {name} — sprawdź tę drukarkę
+printers_found	Znaleziono {n}: {list}
+printers_find_synced	Znaleziono {n} — {new} nowy
+printer_on_device	zapisane
+printer_already_added	już dodane
+printer_already_saved	Już zapisane: {name}
+find_printers	Znajdź drukarki
+printers_looking	Szukam…
+saving_printer	Dodawanie drukarki…
+cancelled	Anulowano
+printers_tap_find	Kliknij Znajdź, aby wyświetlić listę drukarek, z których może korzystać to urządzenie.
+printers_none_found	Nie znaleziono żadnej — wpisz nazwę drukarki systemowej lub adres IP (np. 192.168.1.50).
+printer_from_find	Dodano {name}
+kot_printer_ph	Drukarka przez KOTs
+bill_printer_ph	Drukarka do rachunków
+kot_print_on	Automatyczne drukowanie biletów do kuchni: włączone
+kot_print_off	Automatyczne drukowanie biletów do kuchni: wyłączone
+queue_refused	Sklep nie przyjął ({n}) — każdą sprawdź przy kasie:
+clear_not_accepted	Zaznaczone — wyczyść tę listę
+device_name_ph	Nazwa tego urządzenia
+lan_last_update	ostatnia aktualizacja {time}
+lan_not_accepted	{n} nie zaakceptowane
+connected_now	podłączony teraz
+backup_failed	Ostatnia automatyczna kopia zapasowa nie powiodła się: {e}
+backup_overdue	Brak kopii zapasowej przez {n} dni — pozostaw aplikację otwartą na tym urządzeniu, aby móc wykonać kopię zapasową.
+disk_low	Tylko {mb} MB wolnego miejsca na tym urządzeniu — tworzenie kopii zapasowych wkrótce nie powiedzie się. Zwolnij trochę miejsca.
+last_seen_devices	Ostatnio widziany: {time}
+sync_interval	Synchronizuj co {secs} s
+connection_to_shop	Połączenie ze sklepem
+supplier_name_ph	Nazwa dostawcy (lub klienta)
+supplier_ph	Dostawca
+switch_device	Przełącz to urządzenie
+take_payment	Przyjmij płatność
+tax_added_till	{tax} wyłączne
+tax_inside_price	{tax} włącznie
+tax_invoice	Faktura VAT
+till_to_bank	Kasa → bank
+units_heading	Jednostki
+unlock_after_pairing	Wpisz PIN
+unlock_with_login	Odblokuj za pomocą loginu
+unmark	Odznacz
+update_my_password	Zaktualizuj moje hasło
+update_my_pin	Zaktualizuj moje dane logowania
+duress_heading	Odblokowanie awaryjne PIN (tylko właściciel)
+duress_help	Opcjonalne. Jeśli przy odblokowaniu zostanie wpisane PIN zamiast Twojego, wszystkie wpisy w księgach zostaną usunięte (sprzedaż, księgi rachunkowe, historia), a kasa otworzy się jako Właściciel wygląda normalnie — menu, ceny, stoły, personel i ustawienia pozostaną. Schemat i konfiguracja nie są usuwane. Używaj tylko wtedy, gdy jesteś zmuszony do odblokowania. Pozostaw puste i zapisz, aby wyłączyć. Nigdy nie taki sam jak czyjeś PIN.
+duress_pin_ph	Alarmowy PIN (4–12 cyfr)
+duress_confirm_ph	Wpisz ponownie, aby potwierdzić
+save_duress_pin	Zapisz awaryjne PIN
+clear_duress_pin	Wyłącz alarm PIN
+duress_on	Odblokowanie awaryjne PIN jest włączone
+duress_off	Odblokowanie awaryjne PIN jest wyłączone
+duress_saved	Odblokowanie awaryjne PIN zapisane
+duress_cleared	Odblokowanie awaryjne PIN wyłączone
+upi_amount_ph	UPI ilość
+void	Nieważna sprzedaż
+write_off_ap	Odpisz AP
+write_off_heading	Odpisz (wyczyść bez płatności)
+write_off_nil	Odpisz / saldo zerowe
+your_brand	Twoja marka (w aplikacji)
+your_categories	Twoje kategorie
+account_kind	Rodzaj konta (dotknij jednego)
+actual_total_cap	RZECZYWISTA OGÓŁEM
+amend_help	Wybierz sprzedaż, którą chcesz zmienić, unieważnić lub zwrócić. Poprawki zachowują pełną historię. Zaokrąglona suma zaczyna się od wartości Zastosowane — edycja tylko w celu zaokrąglenia. Unieważnienie i zwrot pieniędzy mogą wymagać właściciela lub menedżera PIN (wpisane powyżej; zapisane z Twoim imieniem i nazwiskiem).
+applied_total_cap	ŁĄCZNIE ZASTOSOWANE
+bank_balance	Saldo bankowe
+bank_net_today	Netto bankowe dzisiaj
+branch_export_help	Eksport zapisuje plik Branch_snapshot_CODE_DATE.json do folderu kopii zapasowych i kopiuje go do schowka. Aby zaimportować dzień z innego outletu, zapisz jego plik jako import_branch_snapshot.json w tym samym folderze, a następnie kliknij Importuj.
+brand_shown_help	Wyświetlane na ekranach w aplikacji. Nazwa i ikona zainstalowanej aplikacji na tym urządzeniu pozostają na liście platformy.
+app_icon	Ikona aplikacji
+logo_help	Opcjonalny znak sklepu na ekranach w aplikacji.
+onboard_layout	Co dostajesz
+item_photo_help	Opcjonalne. Bez zdjęcia podajemy inicjały nazwy przedmiotu.
+stamp_heading	Pieczęć
+stamp_image_help	Opcjonalny obraz znaczka na drukowanych rachunkach i wystawie dla gości.
+payment_qr_heading	Płatność QR
+payment_qr_image_help	Statyczny kod QR na rachunkach i wyświetlaczu dla gości; w przeciwnym razie płatność wykorzystuje dynamiczny kod QR UPI z VPA powyżej.
+cash_in_hand	Gotówka w kasie (do)
+change_my_pin_heading	Moje logowanie
+connect_to_server	Połącz się z serwerem
+counter_locked	Licznik 01 · Zablokowany
+country_pack_help	Pakiet krajowy zawiera nazwę podatku i obliczenia, szynę płatności natychmiastowych oraz identyfikator firmy wydrukowany na rachunkach. Kumkaj nigdzie nie składa podatków ani nie wystawia rządowych e-faktur.
+currency_use_help	Przewiń i dotknij opcji Użyj dla dowolnej obsługiwanej waluty.
+day_close_help	Rejestracja zamknięcia dnia zapisuje to podsumowanie (i wariancję szuflady, jeśli została zliczona) w dzienniku audytu. Nie przestaje sprzedawać.
+expenses_word	Wydatki
+feature_access_help	Co mogą otworzyć — opcjonalne; powyższe zadanie już ustawia wartość domyślną
+footer_local	Lokalny SQLite · Bezpłatnie na zawsze · Zero Cloud
+fresh_book_khaynjo	Nowe = puste menu (dania dodasz później w Menu). Księga = wpisz poniżej pozycje początkowe i kto jest Ci winien.
+fresh_selected	Świeżo wybrane — katalog pozostaje pusty. Kliknij Gotowe, gdy będziesz gotowy.
+gross_word	Brutto
+how_start	Jak chcesz zacząć?
+kot_print_help_khaynjo	Kiedy opcja jest włączona, każda kuchnia drukuje swój własny papier KOT zaraz po wysłaniu.
+later_country_pack	Później: Ustawienia → zastosuj pakiet krajowy dla etykiet podatków i płatności.
+local_badge	LOKALNE
+mix_type_hint_khaynjo	W razie potrzeby podziel na gotówkę / UPI / kartę / kredyt. Kredyt potrzebuje klienta powyżej.
+money_in_sales	Pieniądze w (sprzedaży)
+net_word	Netto
+offline_badge	W trybie offline
+optional_login_help	Opcjonalny login (id + hasło). Właściciel ustawia raz; tylko użytkownik może później zmienić hasło.
+or_unlock_login	Lub odblokuj za pomocą identyfikatora logowania + hasła
+permission_preset	Praca (ustawia ekrany i akcje pieniężne)
+preset_help_khaynjo	Kasjer: sprzedaj. Menedżer: sprzedaj + przedmioty + unieważnij/zmień.
+product_locked_khaynjo	Khaynjo
+product_only_khaynjo	Ta aplikacja jest dostępna tylko w wersji Khaynjo — system operacyjny dla restauracji. Inne twarze handlowe są dostarczane jako oddzielne Kumkaj produkty.
+purchases_cogs	Zakupy (COGS)
+qty_cap	ILOŚĆ
+restore_help	Przywróć: wybierz kopię zapasową. Księgi otwierają się tak, jak wtedy; księgi w obecnym stanie są zapisywane jako pierwsze, więc można to cofnąć.
+wipe_data_heading	Usuń dane lokalne
+wipe_data_help	Tylko właściciel — te same opcje, co w przypadku Windows dezinstalacji. Rejestry biznesowe usuwają historię transakcji, ale zachowują menu i konfigurację (np. odblokowanie awaryjne PIN). Konfiguracja sklepu usuwa bazę danych ksiąg. Preferencje ekranu czyści okno/język. Potwierdź u właściciela PIN. Odblokowanie awaryjne PIN w Teamie jest oddzielne (ukryte czyszczenie przy odblokowaniu).
+wipe_trading	Dokumentacja biznesowa
+wipe_schema	Konfiguracja sklepu
+wipe_ui	Preferencje ekranu
+wipe_owner_pin_ph	Właściciel PIN do usunięcia
+wipe_delete_selected	Usuń wybrane
+wipe_owner_only	Tylko Właściciel może usunąć dane lokalne.
+restore_owner_only	Tylko właściciel może przywrócić kopię zapasową.
+wipe_owner_pin_needed	Wprowadź właściciela PIN, aby usunąć dane lokalne.
+wipe_nothing_selected	Wybierz, co chcesz najpierw usunąć.
+wipe_done	Wybrane dane lokalne zostały usunięte.
+wipe_schema_done	Konfiguracja sklepu została wyczyszczona — wybierz Serwer lub Klient, aby kontynuować.
+rounded_total	Zaokrąglona suma
+setup_app_khaynjo	Skonfiguruj Khaynjo
+shop_logo_optional	Logo sklepu (opcjonalnie)
+stock_type_help	Wpisz nazwę przedmiotu (wystarczy jej część), ilość, a następnie dostosuj. Przedmioty, które nie zostały jeszcze zliczone, wymagają jednorazowego rozpoczęcia śledzenia.
+team_owner_help	Aby dodać osobę, pozostaw ją pustą: imię i nazwisko, stanowisko, nazwę użytkownika, PIN i opcjonalne hasło, a następnie Dodaj. Wybierz osobę, która ma edytować ten sam rodzaj formularza — imię i nazwisko, nazwę użytkownika, hasło, ekrany i uprawnienia — a następnie Zapisz. Twoje własne PIN i hasło to jeden login na dole. Właściciel nie zmienia PIN nikogo innego.
+staff_name_ph	Imię i nazwisko personelu
+staff_copy_hire_ph	Skopiuj konfigurację z (opcjonalnie)
+staff_copy_hire	Użyj konfiguracji tej osoby
+staff_edit_name_ph	Nazwa wyświetlana
+staff_rename	Zapisz nazwę
+staff_copy_edit_ph	Skopiuj konfigurację od innej osoby
+staff_copy_edit	Skopiuj ich konfigurację do wybranych
+staff_copy_edit_onto	Skopiuj ich konfigurację na {name}
+staff_deactivate_named	Usuń {name}
+staff_renamed	Nazwa została zapisana
+staff_setup_copied_hire	Konfiguracja skopiowana z {name} — ustaw nową nazwę i PIN, a następnie Dodaj laskę
+staff_setup_copied_edit	Skopiowano konfigurację {from} na {to}
+staff_copy_need_selected	Wybierz, kogo chcesz edytować jako pierwszego
+staff_copy_need_source	Wybierz, czyją konfigurację chcesz skopiować
+staff_copy_same	To ta sama osoba — wybierz kogoś innego
+staff_rename_need_selected	Wybierz, kogo najpierw zmienić nazwę
+team_pick_hint	Wybierz, kogo chcesz edytować — ekrany, prawa do pieniędzy i stanowiska kuchenne będą wyświetlane tylko dla tej osoby.
+team_stations_help	Stanowiska kuchenne, z których mogą korzystać
+team_stations_changed	Zmieniono stanowiska kuchenne — Zapisz konfigurację dla tej osoby
+team_features_changed	Zmieniono ekrany — Zapisz konfigurację dla tej osoby
+team_rights_changed	Zmieniono uprawnienia — Zapisz konfigurację dla tej osoby
+they_owe_us	Są nam winni
+unit_at_cap	Jednostka @
+units_help	Kody etykiet artykułów (kg, sztuka, worek). Każda jednostka musi być powiązana – bezpośrednio lub za pośrednictwem innych jednostek – z normą (kg · cm · ml · szt.), np. 1 skrzynia = 2 pudełka i 1 pudełko = 20 cm. Konwersje: 1 od = współczynnik do. Waluty nigdy nie są jednostkami.
+units_picker_help	Stuknij opcję Włącz/Wyłącz, aby wyświetlić jednostkę w selektorach zakupów i menu. Wyłączone jednostki nadal się konwertują.
+unit_picker_on	Włączone
+unit_picker_off	Wyłączone
+we_owe_them	Jesteśmy im to winni
+who_unlocking	Kto odblokowuje?
+locked_word	Zablokowane
+show_pin	Pokaż PIN
+hide_pin	Ukryj PIN
+set_owner_pin	WŁAŚCICIEL ZESTAWU PIN
+enter_owner_passcode	WPROWADŹ HASŁO WŁAŚCICIELA
+enter_staff_passcode	WPROWADŹ KOD PRACOWNIKA
+pin_count_zero	0/12 cyfr · co najmniej 4, następnie OK
+pin_count_need	{} / 12 cyfr · potrzeba jeszcze {}
+pin_count_full	12 / 12 cyfr · naciśnij OK
+pin_count_ready	{} / 12 cyfr · naciśnij OK, gdy będziesz gotowy
+pin_hint_choose	Wybierz 4–12 cyfr · Wprowadź lub Odblokuj, aby zapisać
+pin_hint_new	Nowy 4–12-cyfrowy właściciel PIN · Wprowadź lub odblokuj
+pin_hint_shop_code	Kup urządzenie · kod parowania {}
+pin_hint_books	To urządzenie trzyma księgi
+pin_hint_paired	Dodatkowe do sparowania — odblokuj, aby sprzedać
+pin_hint_pair_first	Dodatkowa kasa — najpierw sparuj z urządzeniem sklepowym
+unlock_to_continue	Odblokuj, aby kontynuować
+no_staff_yet	Nie ma jeszcze personelu — odblokuj jako właściciel, a następnie jako zespół
+status_server_set_pin	Tryb serwera — ustaw właściciela PIN
+status_server_tills	Tryb serwera — można dołączyć dodatkowe kasy. Odblokuj
+status_server_unlock	Tryb serwera — odblokuj jako właściciel
+status_client_unlock	Tryb Klienta — odblokuj, aby sprzedawać
+icon_new_selected	Ikona: wybrany nowy plik — kliknij Zapisz markę
+icon_custom	Ikona: niestandardowy znak miejsca
+icon_default	Ikona: znak Kumkaj (domyślny) — wybierz niestandardową
+logo_yours	Logo: logo Twojego sklepu — wyświetlane na ekranach i paragonach
+logo_default	Logo: znak Kumkaj (domyślnie) — wybierz własne, jeśli je posiadasz
+tmpl_current	Aktualne: {} — {}
+tmpl_selected	Wybrane: {} — {}
+setup_complete	Konfiguracja ukończona
+onboard_fresh_tmpl	Świeże · {} – katalog zaczyna się pusty; dodaj pozycje w obszarze Pozycje, a następnie Gotowe.
+onboard_book_tmpl	Zarezerwuj · {} — dodaj pozycje i napisy początkowe, a następnie Gotowe.
+onboard_template_tmpl	Jeśli chcesz, nazwij miejsce i wybierz, od czego zacząć.
+tmpl_blurb	Stoły do ​​jadalni, zamawianie, bilety kuchenne, fakturowanie i księgi.
+tmpl_how	Sprzedawaj w kasie; Jadalnia na stoły & KOT; Księgi na co dzień.
+reports_facet_title	Raporty
+reports_facet_help	Księgi dzienne, wiek klientów lub dostawców, wpisy bankowe i okresowe zyski i straty.
+against_bill_ph	Na podstawie rachunku nr powyżej (opcjonalnie)
+aliases_ph	Aliasy — inne nazwy oddzielone przecinkami
+amount_blank_full_ph	Kwota (puste = pełne saldo)
+amount_owed_ph	Kwota należna
+amount_ph	Kwota
+amount_received_ph	Otrzymana kwota
+amount_we_pay_ph	Kwota, którą płacimy
+business_name_ph	Nazwa firmy
+category_new_ph	Kategoria (opcjonalna, utworzona, jeśli jest nowa)
+code_bag_ph	Kod (torba)
+conv_factor_ph	Współczynnik (25 = 1 worek → 25 kg)
+country_code_ph	Kod kraju, np. W, GB, USA, AE, BR
+credit_khata_amount_ph	Kwota kredytu/księgi kredytowej
+credit_limit_ph	Limit kredytowy (0 = brak)
+from_code_ph	Z kodu (torba)
+item_name_lang_ph	Nazwa pozycji — wpisz ją w swoim języku
+login_id_opt_ph	Nazwa użytkownika (wymagana, unikalna)
+manager_pin_ph	Menedżer PIN do zatwierdzenia (tylko jeśli nie możesz unieważnić)
+new_branch_name_ph	Nowa nazwa oddziału
+new_password_ph	Nowe hasło (opcjonalnie)
+new_pin_ph	Nowy PIN (4–12 cyfr)
+note_bank_ph	Uwaga (wpłata, wypłata,…)
+note_buy_expense_ph	Uwaga (paliwo, czynsz,…)
+note_expense_ph	Uwaga (paliwo, biuro,…)
+options_khaynjo_ph	Opcje — Rozmiar*: Mały=199, Duży=399 | Dodatki+3: Ser=40, Oliwka=30 | Dodatkowy ser = 40
+part_second_way_ph	Część drugim sposobem (opcjonalnie)
+phone_ph	Telefon
+place_name_ph	Nazwa tego miejsca
+qty_example_ph	Ilość (np. 1,5 na kg)
+quantity_ph	Ilość
+reason_required_ph	Powód (wymagany)
+role_title_ph	Stanowisko (np. Barista)
+service_pct_ph	Usługa % opcjonalna 0/10/12
+short_code_ph	Krótki kod (MG02)
+starting_password_ph	Hasło startowe (opcjonalnie)
+starting_pin_ph	Zaczynając od PIN (4–12 cyfr)
+station_name_ph	Nazwa stacji (np. Tandoor, Fryer, Cold)
+station_new_ph	Stacja kuchenna (opcjonalna, np. Tandoor — utworzona, jeśli nowa)
+table_name_ph	Nazwa stołu w jadalni (np. Patio 1, Blat 2)
+tax_rate_ph	Nazwa stawki podatku lub % — Standardowa, Obniżona, 0, 5, 12, 18, 20
+to_code_ph	Do kodu (kg)
+uncleared_no_ph	Niewyjaśniony # powyżej
+unit_cost_ph	Koszt jednostkowy
+unit_name_bag_ph	Imię (torba)
+unit_plate_ph	Jednostka (płyta / szt. — puste = każda)
+pay_credit	Na konto
+book_kind_today	Księgi na dziś
+book_kind_month	Księgi tego miesiąca
+book_kind_aging	Zaległość / kredyt debetowy
+book_kind_balance	Bilans
+order_help	Kliknij pozycję, aby go dodać.
+floor_help	Kliknij stół, aby przyjąć lub zmienić kolejność. Kolory pokazują wolne → siedzące → kuchnia → gotowe → jedzenie → rachunek → zapłacony. Lista oczekujących, rezerwacje i dodatkowe stoły znajdują się w poniższych sekcjach.
+kitchen_help	Bilety kuchenne (KOT), najnowsze na końcu. Start → Gotowe → Gotowe przesuwa bilet dalej. Bilety nigdy nie pokazują cen.
+kitchen_empty	Brak otwartych biletów. Tutaj pojawia się KOT wysłany z sali zamówień lub jadalni.
+add_a_table	Dodaj stół jadalny
+add_station_heading	Dodaj stację kuchenną
+categories_help	Kliknij Użyj, aby umieścić powyższy pozycję w tej kategorii. Zdjęcie nadaje kategorii obraz; bez jednego pokazuje swoje inicjały.
+dish_search_ph	Nazwa pozycji — przeszukaj nasze dania lub wpisz własną
+tile_free	Puste
+tile_occupied	Zajęty
+tile_food_ready	Jedzenie gotowe
+tile_bill_printed	Wydrukowano rachunek
+tile_paid	Płatny
+tile_bill_btn	Rachunek
+tile_occupy_btn	Usiądź gości
+tile_free_btn	Opuść stół jadalny
+tile_ready_btn	Opuść stół jadalny
+tile_undo_bill	Cofnij rachunek
+summary_busy	stoły w jadalni są zajęte
+summary_to_collect	zbierać
+summary_on_floor	w jadalni
+floor	Sala
+sizes_as_items_ph	Rozmiary jako osobne pozycje (opcjonalnie) — połowa = 120, pełna = 200
+dish_group_ph	Grupa dań (opcjonalnie) — np. Paneer Tikka
+discount	Rabat
+remove_discount	Usuń rabat
+apply_discount	Zastosuj zniżkę
+save_opening_cash	Zaoszczędź gotówkę na otwarcie
+close_shift_print	Zamknij zmianę i wydrukuj odcinek
+area_prices_ph	Ceny obszarowe (opcjonalnie) — AC=220, Paczka=210
+discount_ph	10% lub 50
+discount_reason_ph	Powód (np. stały gość, późne jedzenie)
+opening_float_ph	Gotówka włożona do szuflady dziś rano
+shift_counted_ph	Gotówka liczona przy przekazaniu
+opening_float	Otwarcie gotówki (pływak)
+shift_handover	Przekazanie zmiany
+shift_since	Ta zmiana od
+expected_in_drawer	Oczekiwane w szufladzie
+right_discount	Daj zniżkę
+floor_in_kitchen	W kuchni
+floor_eating	Podawane
+pick_category	Wybierz kategorię
+close_category_list	Zamknij listę kategorii
+new_category_row	Nowa kategoria — utworzona po zapisaniu pozycji
+your_category	Twoja kategoria
+suggested_category	Sugerowane — z naszych dań
+category_search_ph	Kategoria — wyszukaj swoją lub wpisz nową
+line_sent_state	Wysłano do kuchni
+line_nc_state	Bezpłatnie (NC) — nie jest pobierana opłata
+cancel_item_short	Anuluj
+nc_short	Gratis
+charge_again_short	Ładuj
+move_short	Rusz się
+cancel_item_title	Anuluj tę pozycję — kuchnia otrzyma dokument anulowania
+nc_item_title	Spraw, aby ten przedmiot był bezpłatny (NC)
+charge_again_title	Naładuj ten przedmiot ponownie
+move_item_title	Przenieś ten przedmiot na inny stół w jadalni
+already_cooked	Już ugotowane (marnotrawstwo)
+not_cooked_yet	Jeszcze nie ugotowane
+return_to_customer	Wróć do klienta
+short_by	Krótko
+tip_not_sale	Napiwek (dla personelu, nie na sprzedaż)
+right_settle	Przyjmij płatność
+right_cancel_sent	Anuluj wysłany przedmiot
+right_complimentary	Bezpłatne (NC)
+right_move_table	Przenoszenie/łączenie stołów do jadalni
+right_reprint	Wydrukuj rachunek ponownie
+right_allowed	Dozwolone
+right_with_approval	Z aprobatą
+right_denied	Niedozwolone
+editing_staff	Edytowanie
+finding_server	Szukam serwera sklepu na tym Wi‑Fi…
+no_server_found	Nie znaleziono żadnych. Na serwerze: Ustawienia → Inne urządzenia → Zezwól na dodatkowe kasy (to samo Wi‑Fi). Lub wpisz pokazany tam adres IP.
+servers_found_pick	Kliknij sklep, z którym chcesz się połączyć.
+server_host_selected	Używając {host} — wprowadź kod parowania, a następnie Połącz teraz.
+print_bill	Wydrukuj rachunek
+table_actions	Działania przy stole
+move_merge_table	Przenieś / połącz stół jadalny
+move_help	Przenieś zamówienie tego stołu do bezpłatnego stołu jadalnego lub połącz go z działającym stołem.
+move_target_ph	Nazwa stołu do jadalni (np. D5, P2)
+approval_pin_ph	Menedżer PIN (tylko jeśli zostaniesz o to poproszony)
+move_here	Przenieś się tutaj
+merge_into	Wtapiaj się w to
+line_reason_ph	Powód (np. gość zmienił zdanie, brak w magazynie)
+line_qty_ph	Ile anulować (puste = wszystkie)
+line_target_ph	Przejdź do stołu jadalnego (np. D5)
+confirm	Potwierdź
+menu_search_ph	Wyszukaj przedmiot lub krótki kod
+customer_paid_ph	Klient zapłacił
+tip_ph	Wskazówka
+table_area_ph	Obszar (np. Dine In, Parcel, AC)
+table_range_ph	Wiele na raz: D1-D20
+add_these_tables	Dodaj te stoły do jadalni
+remove_these_tables	Usuń te stoły do jadalni
+table_remove_ph	Usuń: T1-T24 lub nazwę jednego stołu jadalnego
+find_server	Znajdź serwer sklepu
+bill_format	Format rachunku
+bill_format_help	Drukowane pod nazwą Twojej restauracji na każdym rachunku. Oddziel linie znakiem | (np. MG Road, Rajkot | Ph 98250 00000).
+bill_header_ph	Adres | telefon
+fssai_ph	Licencja FSSAI nr. (Indie)
+bill_footer_ph	Stopka (np. Dziękuję, odwiedź ponownie)
+save_bill_format	Zapisz format rachunku
+reset_bill_format	Przywróć ustawienia domyślne
+bill_format_reset	Format rachunku przywrócony do wartości domyślnych
+reset_kot_format	Przywróć ustawienia domyślne
+kot_format_reset	Format KOT przywrócony do ustawień domyślnych
+kot_format	formacie KOT
+kot_format_help	Kliknij pole na liście. Pokaż, rozmiar czcionki i grubość mają zastosowanie do tego pola w rodzaju KOT wybranym powyżej. Każdy rodzaj zachowuje swoje własne rozmiary i wagę.
+kot_format_fields	Pola
+kot_field_next	Następne pole
+kot_field_show	Pokaż
+kot_field_hide	Ukryj
+kot_field_on	pokaż
+kot_field_off	ukryć
+kot_field_size	Rozmiar czcionki
+kot_field_size_ph	np. 16, 20, 24, 28, 32…
+kot_weight_light	Światło
+bill_kot_panel_help	Układ rachunków i kartek kuchennych, każdy z własną szerokością treści. Bill Cashier to osoba wystawiająca lub rozliczająca rachunek; KOT Kelner wysłał ten bilet do kuchni — pełna historia zamówienia pozostaje w księgach.
+std_size_ph	np. 18, 20, 26…
+kot_show_shop	Nazwa sklepu
+kot_hide_shop	Ukryj sklep
+kot_show_time	Czas
+kot_hide_time	Ukryj czas
+kot_show_waiter	Kelner
+kot_hide_waiter	Ukryj kelnera
+kot_show_station	Stacja
+kot_hide_station	Ukryj stację
+kot_show_table	Stół jadalny
+kot_hide_table	Ukryj stół jadalny
+kot_show_kot_no	KOT Nie
+kot_hide_kot_no	Ukryj KOT Nie
+kot_width	Zawijanie podglądu (ustaw szerokość treści na zakładce KOT)
+kot_width_58	58 mm
+kot_width_80	80 mm
+kot_kind_heading	KOT miły
+kot_kind_original	Oryginał
+kot_kind_duplicate	Duplikat
+kot_kind_modified	Zmodyfikowany
+kot_kind_cancelled	Anulowano
+kot_style_heading	Rozmiar i waga typu pola
+kot_style_title	Tytuł
+kot_style_item_qty	Pozycja · Ilość
+kot_style_field_pick	Wybierz pole
+kot_weight_regular	Regularne
+kot_weight_bold	Odważne
+kot_align	Wyrównaj
+kot_align_start	Zacznij
+kot_align_center	Centrum
+kot_align_end	Koniec
+content_width	Szerokość zawartości (mm)
+content_width_bill	Szerokość zawartości banknotów (mm)
+content_width_kot	KOT szerokość zawartości (mm)
+content_width_ph	Możesz też wpisać szerokość treści 40–210 mm
+content_width_help	Jak szeroki jest wydruk tego poślizgu. Bill i KOT zachowują swoją szerokość.
+content_width_bill_help	Szerokość wydruku rachunku gościa. Domyślnie 210 mm (strona). Wąska kartka 58 mm, szerokość 80 mm, 112 mm 4 cale, szerokość A4 210 mm. Wpisz dowolną wartość od 40 do 210. Bilety kuchenne mają własną szerokość na zakładce KOT.
+content_width_kot_help	Szerokość wydruku kwitu kuchennego. Domyślnie 80 mm. Pasek wąski 58 mm, pasek szeroki 80 mm, 112 mm 4 cale, strona 210 mm. Wpisz dowolną wartość od 40 do 210. Rachunki gości mają swoją własną szerokość na karcie Rachunek.
+vp_paper_width	Szerokość zawartości (mm)
+vp_paper_width_ph	Możesz też wpisać szerokość treści 40–210 mm
+vp_paper_width_help	Szerokość treści ustawiana jest w formacie Bill & KOT — osobno dla rachunku (domyślnie 210 mm) i kwitu kuchennego (domyślnie 80 mm).
+kot_size	Rozmiar czcionki
+kot_size_s	Mały
+kot_size_m	Normalne
+kot_size_l	Duży
+std_size	Rozmiar czcionki
+kot_copies	Kopie
+kot_copies_1	1
+kot_copies_2	2
+kot_copies_3	3
+kot_title_ph	Tytuł (puste = KOT - ZAMÓWIENIE KUCHNI)
+kot_footer_ph	Notatka kuchenna (opcjonalnie, bez cen)
+kot_preview	Podgląd
+save_kot_format	Zapisz format KOT
+test_kot_format	Próbny KOT
+test_kot_sent	Wysłano podgląd biletu kuchennego
+test_bill_format	Rachunek testowy
+test_bill_sent	Wysłano podgląd rachunku
+test_print_no_printer	Brak drukarki dla tego zadania — wybierz ją na tym ekranie
+kot_format_saved	Zapisano format KOT
+std_print	Rozmiar wydruku rachunku
+std_print_help	Rozmiar czcionki dla standardowych zadań rachunków w orientacji pionowej i poziomej na drukarkach z systemem operacyjnym/dokumentów (wprowadź punkty — nie Mały/Normalny/Duży). Ten sam rozmiar w obu orientacjach. Rozmiary pasków kuchennych znajdują się w zakładce KOT.
+std_size_s	Mały
+std_size_m	Normalne
+std_size_l	Duży
+save_std_print	Zapisz rozmiar wydruku rachunku
+std_print_saved	Rozmiar wydruku rachunku został zapisany
+print_brand_kit	Wydrukuj zestaw marki
+print_brand_kit_help	Opcjonalne obrazy QR pieczęci i płatności na awersach rachunków i wyświetlaczu dla gości sieci LAN. Dynamiczny UPI QR z VPA powyżej nadal działa, gdy nie ustawiono żadnego obrazu QR płatności.
+choose_stamp	Wybierz znaczek
+clear_stamp	Wyczyść pieczęć
+stamp_set	Znaczek: w aktach — pokazywany na wystawie gości i nazwany na drukowanych rachunkach
+stamp_none	Znaczek: brak
+choose_payment_qr	Wybierz płatność QR
+clear_payment_qr	Wyczyść płatność QR
+payment_qr_set	QR płatności: w pliku — wyświetlany na wyświetlaczu gościa (zastępuje tam kwotę UPI QR)
+payment_qr_none	QR płatności: brak — kwota QR z UPI ID przy płatności
+aggregator_import	Zamówienia agregatora (plik)
+aggregator_import_help	Opcjonalny import lokalny: umieść plik import_aggregator_orders.json w folderze kopii zapasowych (tablica lub {"orders":[…]}), a następnie kliknij Importuj. Nigdy nie blokuje licznika; na żywo Zomato/Swiggy is Cloud.
+import_aggregator_file	Importuj plik agregatora
+team_pick_ph	Personel do edycji — imię i nazwisko, nazwa użytkownika lub wybór
+select_staff	Wybierz tę laskę
+rights_help	Działania związane z pieniędzmi i jadalnią dla tej osoby — dotknij, aby włączyć: Dozwolone → Potrzebuje szefa PIN → Niedozwolone. Drukuj rachunek ponownie to tylko rachunki; stacje kuchenne znajdują się na poniższej liście kontrolnej.
+dish_picker_help	Wyszukaj lub przeglądaj nasze dania i dotknij jednego, aby wpisać jego nazwę i zdjęcie — lub zachowaj własne imię i nazwisko. Ustaw cenę (0 jest w porządku), a następnie Dodaj przedmiot.
+close_dish_list	Zamknij listę dań
+own_item_name	Użyj tego jako własnej nazwy przedmiotu
+on_your_menu	W Twoim menu
+edit	Edytuj
+schemes	Schematy / oferty
+schemes_help	BOGO, procent zniżki i stałe kombinacje. Kombinacje rozszerzają się na linie kuchenne po wysłaniu KOT; komponenty pozostają utrzymane do momentu uruchomienia kombinacji. Przykład: Kup 2 Thali, a otrzymasz 1 Chaas
+scheme_bogo_ph	Buy 2 Thali get 1 Chaas
+add_scheme	Dodaj BOGO
+schedule_ph	Godziny / happy hour — pon.-pt. 07:00-11:00 lub HappyHour 17:00-19:00=150
+upi_vpa_ph	UPI ID (VPA)
+upi_payee_ph	UPI nazwa odbiorcy płatności (opcjonalnie)
+upi_qr	UPI QR
+show_upi_qr	Pokaż UPI QR
+close_upi_qr	Zamknij
+upi_qr_help	Gość skanuje i płaci. Kliknij Przyjmij płatność po zapłaceniu. Drugi ekran: otwórz adres URL serwera/wyświetl w sieci LAN.
+kot_recall	Przypomnij sobie
+recently_done	Niedawno zrobione
+recall_kot_ph	KOT #, aby przypomnieć
+role_help_customer	Rola: Klient — księga kredytowa (jest nam winien). Ten sam klient lub dostawca może również dostarczać zapasy.
+role_help_both	Role: Klient + Dostawca — jeden klient lub dostawca, księga kredytowa i księga zobowiązań, netto w Raportach.
+role_help_supplier	Rola: Dostawca — jesteśmy im winni zakupy.
+dine_in_pick_table	Posiłek — wybierz stół jadalny na ekranie Jadalnia
+choose_table	Wybierz stół do jadalni
+change_table	Zmień stół jadalny
+pick_table_banner	Wybierz stół do jadalni dla tego zamówienia
+items_word	przedmioty
+items_section	Przedmioty
+back_to_order	Powrót do porządku
+new_items_head	Jeszcze nie wysłane
+price_ph	Cena
+price_ph_gst_inside	Cena ({tax} włącznie)
+cancel_needs_table	Otwórz to zamówienie na ekranie Jadalnia (stół jadalny), aby anulować je po przyjęciu go przez kuchnię — licznik KOT pozostaje na bilecie do czasu przyjęcia płatności
+tax_rates_missing_hint	Brak stawki {tax} na te dania — na zestaw menu Stawka podatku (ceny zawierają już {tax} poniżej {tax} włącznie)
+taxable_value	Wartość podlegająca opodatkowaniu
+gst_inside_price_note	({tax} włącznie)
+start_with_template	Zacznij od naszego szablonu menu
+template_heading	Nasz szablon menu
+template_info	{c} kategorii i {d} dań ze zdjęciami, gotowe do dodania. Ceny zaczynają się od 0 INR — ustaw swoje później.
+template_import	Importuj cały szablon
+template_confirm	Dodać {d} potraw wraz z ich kategoriami? Naczynia, które już masz, pozostają takie, jakie są.
+template_yes	Tak, importuj
+template_importing	Importuję menu…
+template_import_progress	Importowanie… {d}/{t}
+template_done	Każde danie z naszego szablonu znajdzie się w Twoim menu.
+template_imported	Dodano {d} dań i {c} kategorii — ustaw ich ceny na tym ekranie
+client_template_heading	Menu klienta
+client_template_info	{title}: {c} kategorie, {d} dania z cenami, zdjęciami i pseudonimami. Tylko brakujące dania — nazwy, które już masz, pozostają.
+client_template_import	Zaimportuj to menu
+client_template_confirm	Dodać {d} dań z {title}? Naczynia, które już masz, pozostają takie, jakie są.
+client_template_importing	Importowanie {title}…
+client_template_done	Każde danie od {title} jest w Twoim menu.
+client_template_imported	Dodano {d} dań i {c} kategorii z {title}
+resv_heading	Rezerwacje
+resv_name_ph	Imię gościa
+resv_phone_ph	Telefon (opcjonalnie)
+resv_guests_ph	Goście
+resv_when_ph	Kiedy — 20:30, jutro 13:00
+resv_table_ph	Stół do jadalni (opcjonalnie)
+resv_add	Rezerwuj
+resv_seat	Siedzący
+resv_none	Nie nadchodzą żadne rezerwacje.
+guests_word	goście
+delivery_by_ph	Dostawa przez (nazwisko pasażera lub pracownika)
+kitchen_all_day	Gotować teraz: {items}
+kitchen_all_day_head	Gotować teraz
+kitchen_tab_live	Na żywo
+kitchen_tab_recall	Przypomnij sobie
+kitchen_tab_stations	Stacje
+split_bill	Podzielony rachunek
+split_go	Zrób oddzielny rachunek
+cancel	Anuluj
+opening_client	Otwieram klienta…
+preparing_desk	Przygotowanie biurka…
+opening_server	Otwieram serwer…
+creating_server	Tworzę serwer…
+split_help	Kliknij dania, za które płaci jeden gość · {n} wybrane
+split_send_first	Najpierw wyślij KOT – tylko dania, którymi dysponuje kuchnia, mogą zostać wykazane na osobnym rachunku
+split_pick_some	Najpierw dotknij naczyń, aby otrzymać oddzielny rachunek
+split_done	Rachunek wystawiony osobno – jest w jadalni obok tego stołu
+split_marked	odrębny rachunek
+order_empty_pick	Zamów puste — dotknij Dodaj dania powyżej, aby wybrać dania.
+add_dishes	Dodaj dania
+order_so_far	W tej kolejności: {n} · {total}
+no_dish_match	Żadne danie nie pasuje do „{q}”
+pick_dishes_help	Stuknij danie, aby je dodać · wybierz kategorię, aby zawęzić listę
+pick_done	Gotowe
+pick_done_dd	Gotowe · {label}
+printer_route_mode	Jeśli w tym miejscu jest kilka drukarek
+printer_mode_first	Po pierwsze, to działa
+printer_mode_all	Drukuj na wszystkim
+kot_show_area	Obszar
+kot_hide_area	Ukryj obszar
+kot_show_item_hdr	Pozycja · Ilość
+kot_hide_item_hdr	Ukryj kolumny
+kot_show_title	Linia tytułowa
+kot_hide_title	Ukryj tytuł
+kot_field_order	Zamówienie wydruku
+kot_field_up	Przesuń się w górę
+kot_field_down	Przesuń w dół
+kot_field_cycle	Wybierz dalej
+kot_field_select	Wybierz dalej
+kot_field_time	Czas
+kot_field_kot_no	KOT Nie
+kot_field_area	Obszar
+kot_field_table	Stół jadalny
+kot_field_shop	Nazwa sklepu
+kot_field_waiter	Personel
+kot_field_station	Stacja
+app_template_blurb_extra	Ponadto: Właściciel Zahir, Administrator Asif, Kelner Nawaz; FOH pasek boczny; historia po 4 godzinach; Dzisiaj się rozbierz; kompaktowy KOT.
+dishes_n	{n} potraw
+recipe_ph	Przepis (opcjonalnie) – w jednej porcji wykorzystano: Ryż=0,2, Paneer=0,15
+reorder_ph	Kup więcej na
+set_reorder	Ustaw poziom ponownego zamówienia
+low_stock_alert	Kończy się — kup wkrótce: {items}
+unpriced_note	{n} dania w Twoim menu nie mają jeszcze ceny — naliczana jest stawka 0, dopóki jej nie ustalisz.
+show_unpriced	Pokaż tylko dania bez ceny
+show_all_dishes	Pokaż wszystkie dania
+role_waiter	Kelner
+role_kitchen	Kuchnia
+role_title_rest_ph	Stanowisko (np. kapitan, główny kucharz)
+preset_help_rest	Kelner: przyjmuje zamówienia i obsługuje stoły. Kasjer: przyjmuje również płatność. Kuchnia: parawan kuchenny. Menedżer: także menu, anulacje i rabaty.
+kind_raw	Surowiec
+kind_resale	Kupiony i odsprzedany
+kind_dish	Danie, które robimy
+buy_unit_ph	Jednostka (kg, litr, szt.)
+add_another_way	+ Dodaj inny sposób
+parts_status	Wprowadzono {a} z {b} · {c} pozostało
+save_expense	Oszczędzaj wydatki
+rest_ph	Odpocznij
+low_badge	Niski
+stock_empty	Nie ma jeszcze żadnych zapasów — tutaj pojawia się to, co nagrasz w opcji Kup.
+recent_changes	Ostatnie zmiany
+lane_declared_label	Faktura VAT
+lane_owner_label	Notatka gotówkowa
+money_lane_bill	Rachunek: {lane}

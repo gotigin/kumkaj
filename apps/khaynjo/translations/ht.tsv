@@ -1,0 +1,1351 @@
+# Haitian Creole — Kreyòl ayisyen (ht). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	Kòmand restoran, kwizin ak liv. Gratis san entènèt.
+unlock	Debloke
+pin_hint	PIN pwopriyetè a kòmanse ak 0000
+sell	Kòmand
+buy	Acha
+books	Liv jounen
+books_help	Pozisyon jodi a. Kòmand = kòmand ki antre. Acha = acha ak depans. Pati = kliyan kredi ak founisè.
+buy_help	Bòdwo depans ak bòdwo founisè (lajan ki soti). Sa ki sou kont rete nan liv pati a.
+sell_money_in	Pran yon kòmand
+buy_money_out	Depans / bòdwo founisè
+record_purchase	Anrejistre acha
+add_expense	Bòdwo depans
+bank_book	Liv labank
+credit_help	Id pati a inik (non yo ka repete). Yon Kliyan gen yon khata (yo dwe nou); yon Founisè vann nou stòk (nou dwe yo); tou de posib. Liv yo rete apa; rapò yo montre nèt.
+party_kind_ph	Wòl: Kliyan, Founisè, tou de…
+reports_help	Liv jounen, debitè ak kreditè, liv labank, bòdwo depans, pwofi ak pèt.
+reports_today	Liv jounen (jodi a)
+reports_month	Pwofi ak pèt (mwa)
+reports_aging	Ki rete / Debi-Kredi
+reports_balance_sheet	Bilan
+reports	Liv labank ak P&P
+refresh	Rafrechi
+undo	Defè
+start_tracking	Kòmanse swiv
+stock_minus	− Stòk
+stock_plus	+ Stòk
+settle_cash	Regle ak kach
+settle_card	Regle ak kat
+items	Meni ak atik
+nav_items	Meni
+more	Plis
+your_items	Meni ou
+items_help	Peze yon atik pou modifye l. Nouvo atik efase fòm lan. Chèche plat nou yo oswa ekri pwòp non ou ak foto, mete yon pri (0 bon), epi Ajoute. Vant ki deja anrejistre kenbe non yo te chaje a.
+add_item	Ajoute atik
+new_item	Nouvo atik
+adding_item	Y ap ajoute yon nouvo atik
+editing_item	Modifikasyon
+save	Anrejistre
+remove	Retire
+removed_items	Atik ki retire
+removed_help	Remete mete atik la tounen nan meni a jan li te ye — pri, foto ak kategori. Etajè plat nou yo pa janm retire, kidonk yon plat ka toujou ajoute ankò.
+restore_item	Remete
+empty_catalog	Pa gen plat ankò. Louvri Meni, ajoute yon plat (non + pri), epi pran yon kòmand.
+total	Total
+cash	Kach
+upi	UPI
+card	Kat
+credit	Pati
+clear	Efase
+ready_to_sell	Pare pou anrejistre
+today_prefix	Jodi a
+today_mid	jodi a
+owed	ki rete
+round_word	awondi
+back	Retou
+sold_out	Pa disponib
+restock	Ranpli stòk
+not_tracked	Pa swiv
+in_stock	nan stòk
+marked_sold_out	Make pa disponib
+add_upper	AJOUTE
+na	Pa gen
+qty	Pwa/Kant.
+unit_at	Tarif @
+actual	Reyèl
+applied	Aplike
+note_ph	Nòt (opsyonèl)
+rounded	AWONDI
+split	Separe
+send_kot	Voye KOT
+send_kot_to	Voye → {kitchens}
+send_kot_again	Ajoute plat pou pwochen KOT
+send_kot_held	Plat kenbe — lage yo pou voye
+reprint_kot	Enprime sa ki chwazi ankò
+reprint_kot_ok	Enprime {n} plat ankò · {slips} fich → {kitchens}
+reprint_kot_needed	Voye yon KOT anvan — epi mete plat yo epi enprime sa ki chwazi ankò
+reprint_kot_none_selected	Tout plat ki voye yo sote — peze Nan enpresyon sou sa pou reenprime
+reprint_kot_client	Enprime ankò ({n}) pou {place} voye — kwizin nan enprime sou Sèvè a
+print_cancelled_kot	Enprime tout sa ki anile
+print_cancelled_kot_ok	Enprime {n} plat anile · {slips} fich → {kitchens}
+print_cancelled_kot_needed	Louvri yon tab ki gen plat anile anvan
+print_cancelled_kot_none	Pa gen plat anile nan kòmand sa a
+print_cancelled_kot_client	Enprime anile ({n}) pou {place} voye — kwizin nan enprime sou Sèvè a
+kot_banner	Bann kalite
+kot_banner_ph	Bann (vid = pa gen)
+kot_item_prefix	Prefiks atik
+kot_item_prefix_ph	pa egzanp [ANILE]
+kot_strike	Baye non plat la
+kot_strike_note	Baye nòt plat la
+kot_strike_on	Limen
+kot_strike_off	Eten
+bill_item_layout	Miz an paj atik
+bill_item_layout_columns	Kolòn
+bill_item_layout_stacked	An pile
+bill_item_header	Tèt kolòn
+bill_item_hdr_item	Tèt atik
+bill_item_hdr_qty	Tèt kantite
+bill_item_hdr_price	Tèt pri
+bill_item_hdr_amount	Tèt montan
+bill_item_name	Non plat
+bill_item_qty	Kant.
+bill_item_price	Pri
+bill_item_amount	Montan
+bill_item_note	Nòt plat
+bill_item_col_gap	Espas kolòn
+bill_item_col_order	Lòd kolòn
+bill_item_col_sep	Liy kolòn
+bill_item_gap_tight	Sere
+bill_item_gap_comfort	Alèz
+bill_item_gap_wide	Laj
+bill_item_num_width	Kolòn chif
+bill_item_num_compact	Kontra
+bill_item_num_comfort	Alèz
+bill_item_num_wide	Laj
+bill_item_num_align	Aliyeman chif
+bill_item_gap_em	Espas (em)
+bill_item_qty_min	Kant. min (em)
+bill_item_price_min	Pri min (em)
+bill_item_amount_min	Montan min (em)
+kot_item_qty_width	Kolòn kantite
+kot_item_num_align	Aliyeman kantite
+bill_total_qty_label	Etikèt kantite total
+bill_total_subtotal_label	Etikèt soutotal
+bill_total_grand_label	Etikèt gran total
+bill_total_paid_label	Etikèt total peye
+bill_meta_pair	Pataje liy ak
+bill_pair_alone	Pou kont li
+bill_item_piece_on	Limen
+bill_item_piece_off	Eten
+bill_total_qty	Kantite total
+bill_total_subtotal	Soutotal
+bill_total_grand	Gran total
+reprint_incl	Nan enpresyon
+reprint_skip	Sote
+reprint_skip_meta	Sote reenpresyon
+kot_dest_hint	Enprime sou enprimant ou asiyen pou {kitchens} nan Paramèt → Enprimant
+kot_sent_hint	Dènye KOT la ale nan {kitchens}. Peze pou ajoute plat pou pwochen fich la — oswa Enprime KOT ankò pou menm lan.
+kot_sent_printing	KOT voye nan {kitchens} — y ap enprime
+kot_sent_not_printed	KOT voye nan {kitchens} men PA enprime: {why}. Di kwizin nan, epi korije enprimant lan epi enprime l ankò.
+kot_sent_screen	KOT voye nan {kitchens}
+kot_queued_shop	KOT pou {place} → {kitchens} anrejistre; aparèy boutik la enprime l
+kot_job_label	KOT pou {place} → {kitchens}
+kot_job_reached	KOT pou {place} rive nan {kitchens}
+kot_unassigned	Kwizin (pa gen estasyon)
+kot_unassigned_held	Kenbe {n} plat san estasyon — lage yo sou liy lan pou voye
+kot_station_ph	Kwizin
+kot_station_dd	Kwizin
+kot_station_dd_n	Kwizin · {stations}
+kot_set_station	Sèvi ak estasyon sa a
+kot_station_applied	Estasyon mete sou {n} plat: {station}
+kot_station_cleared	Estasyon retire sou {n} plat: {station}
+kot_station_needed	Chwazi yon estasyon kwizin anvan
+kot_station_not_allowed	Pa gen dwa sèvi ak kwizin: {station}
+kot_station_none	Pa gen estasyon kwizin ankò — ajoute youn anba Kwizin oswa Paramèt → Zòn · estasyon
+pos_tab_items	Atik ajoute
+pos_tab_payment	Peman
+hold_send	Kenbe
+hold_send_on	Kenbe
+hold_send_meta	Kenbe — pa KOT sa a
+station_remove	Retire estasyon
+station_remove_ph	Peze yon estasyon nan lis la pou retire l
+station_removed	Estasyon retire: {name}
+settings_hub_title	Paramèt
+settings_hub_help	Louvri yon zòn alafwa — mwens defile, chwa pi klè.
+settings_back	Retou
+settings_sec_language	Lang ak lajan
+settings_sec_country	Peyi ak taks
+settings_sec_tills	Lòt aparèy
+settings_sec_brand	Mak ou
+settings_sec_units	Inite ak konvèsyon
+settings_sec_pickers	Zòn · estasyon · to taks
+settings_sec_printers	Enprimant
+settings_sec_bill	Fòma kont ak KOT
+settings_sec_selling	Pwomosyon ak vant
+bill_kot_tab_bill	Kont
+bill_kot_tab_kot	KOT
+settings_sec_alerts	Alèt
+alerts_help	Konbyen tan mesaj eta yo rete sou ekran pou ou (antre sa a).
+snack_secs_ph	Segond (3–60, default 10)
+snack_secs_save	Anrejistre tan alèt
+snack_secs_saved	Tan alèt anrejistre — {n} segond
+settings_sec_backup	Sovgad ak retabli
+settings_sec_diag	Dyagnostik
+diag_privacy_help	Jounal yo rete sou aparèy sa a. Sekrè (PIN, modpas) pa janm estoke. Pataje yon pake deyò aparèy la bezwen apwobasyon klè ou chak fwa — pa janm vann ni bay twazyèm moun.
+diag_level	Nivo detay
+diag_level_error	Erè
+diag_level_warn	Avètisman
+diag_level_info	Enfo
+diag_level_debug	Debogaj
+diag_support_start	Kòmanse sesyon sipò 30 minit
+diag_support_stop	Fini sesyon sipò
+diag_support_started	Sesyon sipò limen — detay Debogaj pou 30 minit
+diag_support_ended	Sesyon sipò fini
+diag_export_local	Ekspòte kopi lokal
+diag_export_local_done	Dyagnostik lokal pare nan {path} — chwazi kote pou sove yon kopi
+diag_approve_send	Apwouve pataj deyò aparèy sa a
+diag_send_help	Apwobasyon an se yon sèl pake, epi li ekspire. Tanporè — sèlman pou korije oswa amelyore pwodwi a. Pa pataje ak twazyèm moun. Mache sou Linux, Windows, macOS, ak Android.
+diag_send_approved	Pataj apwouve pou yon pake (ekspire byento)
+diag_export_send	Kreye pake pataj (bezwen apwobasyon)
+diag_export_send_done	Pake pataj pare nan {path} — chwazi kote pou sove, epi voye l sèlman bay sipò Kumkaj
+diag_save_bundle	Sove kopi dyagnostik
+diag_bundle_saved	Kopi dyagnostik sove nan {path}
+diag_bundle_failed	Pa t kapab sove kopi dyagnostik la — eseye ankò
+diag_clear	Efase jounal dyagnostik
+diag_cleared	Jounal dyagnostik efase
+sidebar_settings	Bò kote
+sidebar_settings_help	Menm ikòn ak ray bò a. Trennen yon ranje pou chanje lòd. Vire switch la pou montre oswa kache. Paramèt ak Kadna toujou rete sou ba a.
+sidebar_always_on_short	Toujou limen
+sidebar_back_settings	Retou
+sidebar_shown	Montre
+sidebar_hidden	Kache
+sidebar_always_on	Toujou sou ba a
+sidebar_shown_hint	Montre sou ray bò a / onglet anba yo
+sidebar_hidden_hint	Kache sou ba a
+sidebar_menu_items	Meni ak atik
+sidebar_enable_all	Limen tout
+sidebar_disable_all	Eten tout
+sidebar_order_saved	Lòd bò kote a anrejistre
+sidebar_visibility_saved	Vizibilite bò kote a anrejistre
+amounts_hide	Kache
+amounts_show	Montre
+printers_none_hint	Anrejistre yon enprimant sou aparèy sa a anvan, epi ajoute l nan Kont oswa yon kwizin
+counter	Kontwa
+dine_in	Nan sal
+takeaway	Pou pote
+order	Kòmand
+tables	Tab
+kitchen	Kwizin
+sales	Vant
+sales_refunds	Vant ak ranbousman
+day_close	Fèmti jounen
+reports_expenses	Liv labank ak P&P
+nav_reports	Rapò
+nav_settings	Paramèt
+nav_lock	Kadna
+no_sale_yet	Pa gen vant ankò
+favorites	Favori
+favorites_help	Atik ou vann souvan, sove pou antre ou. Ajoute youn nan kont lan, oswa bati lis ou nan tout atik anba a.
+your_favorites	Favori ou
+all_items	Tout atik
+frequent	Souvan
+added_items	Atik ajoute
+added_items_empty	Pa gen anyen nan kòmand sa a ankò — ajoute yon plat nan Tout atik oswa yon kategori.
+frequent_config_help	Plat ki pi vann nan kont ki fini. Mete konbyen jou pou gade ak konbyen plat pou montre.
+frequent_days_ph	Jou (1)
+frequent_limit_ph	Atik (24)
+frequent_apply	Aplike
+frequent_saved	Souvan: dènye {d} jou, tèt {n} — {c} plat
+frequent_empty	Pa gen vant fini nan peryòd sa a ankò — regle yon kont (₹0 pèmèt lè Paramèt di sa) epi yo parèt isit.
+zero_sales	Vant ak valè zewo
+zero_sales_help	Pèmèt plat a ₹0 ak kont ki regle a ₹0 (koutwazi / volonte pwopriyetè). Limen pa default pou kouvè gratis toujou parèt nan Souvan ak liv jounen.
+zero_sales_on	Pèmèt ₹0
+zero_sales_off	Mande pri
+zero_sales_saved_on	Vant ak valè zewo pèmèt
+zero_sales_saved_off	Vant dwe gen yon pri pi wo pase ₹0
+floor_areas_help	Zòn se chanm oswa pati nan sal la (Nan sal, Pou pote, AC…). Ajoute yon zòn anvan, epi mete tab ladan l — chak zòn se yon gwoup apa nan sal la.
+area_new_ph	Nouvo zòn / chanm (pa egzanp AC, Garden)
+add_area	Ajoute zòn
+area_added	Zòn «{name}» pare — ajoute tab ladan l
+no_favorites	Pa gen favori ankò — ajoute atik nan lis anba a.
+add_to_bill	Ajoute nan kont
+added	Ajoute
+owes_word	dwe
+selected_word	Chwazi
+chip_clear_credit	efase — Kredi oswa pran avans
+chip_missing_customer	Kliyan chwazi a pa la — chwazi ankò
+chip_no_customer	Pa gen kliyan ankò — ekri yon non, epi peze Kredi
+credit_summary_fmt	{} kliyan · kredi ouvè {} · avans kenbe {}
+recent_label	Resan:
+kot_new_waiting	NOUVO — ap tann
+kot_preparing	Y AP PREPARE
+kot_ready_serve	PARE — sèvi l
+kot_done_cap	FINI
+kot_cancelled	ANILE
+kot_start_btn	Kòmanse
+kot_mark_ready	Make pare
+kot_done_btn	Fini
+table_free	Lib — peze pou kòmanse yon kòmand
+start_order	Kòmanse kòmand
+open_bill	Louvri kont
+collect_payment	Resevwa peman
+table_running	An kou
+payment_pending	Peman an atant
+collect_at_counter	resevwa nan kontwa
+inventory	Envantè
+inventory_stock	Envantè ak stòk
+branches	Siksinal
+branches_org	Siksinal ak òganizasyon
+credit_customers	Pati (khata ak founisè)
+customer_name_ph	Non pati
+new_customer_ph	Non nouvo pati
+item_name_ph	Non atik (pa egzanp Masala Dosa)
+item_price_ph	Pri
+start_template	Pwodwi
+team	Ekip
+team_pins	Ekip ak PIN
+my_pin_settings	PIN mwen
+settings_hub_help_my_pin	Chanje PIN debloke pou moun ki konekte sou aparèy sa a.
+team_self_help	Yon sèl antre: yon nouvo PIN, yon nouvo modpas, oswa tou de. Kite yon kaz vid pou kenbe sa ou genyen. Mande Pwopriyetè a si ou bezwen lòt ekran oswa dwa.
+backup_settings	Sovgad ak paramèt
+lock_app	Kadna aplikasyon an
+pick	Chwazi
+select	Seleksyone
+advance	Avans
+owner	Pwopriyetè
+staff	Anplwaye
+photo	Foto
+auto	Oto
+prev	Anvan
+next	Apre
+ok	OK
+this_shop	Sèvè
+extra_till	Kliyan
+off	Eten
+tables_kitchen	Tab ak kwizin
+server	Sèvè
+client	Kliyan
+language_currency	Lang ak lajan
+language	Lang
+choose_language	Chwazi lang ou
+language_setup_hint	Swiv lang aparèy sa a, oswa chwazi youn ou menm.
+lang_follow_platform	Lang aparèy la
+lang_pick_user	Chwazi lang
+lang_platform_now	Lang aparèy la kounye a
+selected_language	Chwazi
+continue	Kontinye
+this_device	APARÈY SA A
+device_use_q	Kijan aparèy sa a pral sèvi?
+last_server_mode	Te Sèvè — peze pou kontinye
+last_client_mode	Te Kliyan — peze pou kontinye
+choose_server	Chwazi yon sèvè
+choose_server_hint	Louvri yon sèvè ki egziste, oswa kreye youn pou yon lòt biznis.
+create_new_server	Kreye nouvo sèvè
+open_server	Louvri
+new_server_name_ph	Non nouvo sèvè (opsyonèl)
+server_remove_pin_ph	PIN pwopriyetè pou retire yon sèvè
+only_owner_remove_server	Se sèl Pwopriyetè a ki ka retire yon sèvè
+owner_pin_remove_server	PIN pwopriyetè obligatwa pou retire sèvè sa a
+device_setup_help	Sèvè a kenbe liv yo isit. Kliyan an makonnen ak yon Sèvè.
+app_template_heading	Rajdhani App Template
+app_template_blurb	Chaje meni Rajdhani; Pwopriyetè Zahir (zahir), Admin Asif (asif, PIN 1111), Sèvitè Nawaz (nawaz, PIN 0000); bò kote FOH; istwa efase apre 4 èdtan (ak Efase kounye a nan Sovgad); bann Jodi a eten; KOT kontra + maj estanda pou plato etwat. Vwazen bò kote yo ka relimen nan Paramèt.
+app_template_apply	Rajdhani App Template
+app_template_skip	Sote pou kounye a
+app_template_status	Sèvè pare — aplike Rajdhani App Template, oswa sote
+app_template_importing	Y ap aplike {title}…
+currency	Lajan
+backup	Sovgad
+use	Sèvi
+dont_use	Pa sèvi
+add_branch	Ajoute siksinal
+add_conversion	Ajoute konvèsyon
+add_dishes_items	Ajoute plat ak atik
+add_item_plain	Ajoute atik
+add_note	Ajoute nòt
+add_opening_balance	Ajoute sold ouvèti
+add_staff	Ajoute anplwaye
+add_station	Ajoute estasyon
+add_table	Ajoute tab
+add_unit	Ajoute inite
+add_use_name	Ajoute / sèvi ak non sa a
+allow_extra_tills	Pèmèt lòt kes
+amend	Korije
+apply_country_pack	Aplike pake peyi
+datetime_appearance	Aparans dat ak lè
+datetime_appearance_help	Liv yo kenbe RFC3339 ak ane an premye anndan. Sa a sèlman chanje kijan dat ak revèy parèt sou kont, KOT, rapò, ak ekran an.
+datetime_example	Egzanp kounye a: {ex}
+date_order	Lòd dat
+date_order_dmy	J/M/A
+date_order_mdy	M/J/A
+date_order_ymd	A-M-J
+time_format	Revèy
+time_format_24h	24 èdtan
+time_format_12h	12 èdtan
+attach_bill_photo	Tache foto kont
+attach_pdf	Tache PDF
+attach_photo	Tache foto
+attachments_last_expense	Atachman (dènye depans)
+bank	Labank
+bank_in	Antre nan labank
+bank_out	Soti nan labank
+bank_reconciliation	Rekonsilyasyon labank (make kont ekstrè ou)
+bank_to_till	Labank → kes
+book_add_dish	Liv — ajoute plat / atik
+book_opening_credit	Liv — kredi ouvèti
+branch_name_sell_ph	Non siksinal pou vann ladan l
+bring_my_book	Pote liv mwen
+business_tax_id_ph	Id taks biznis
+caption_bank	LABANK
+caption_bills	KONT
+caption_outstanding	KI RETE
+caption_payments_today	PEMAN JODI A
+caption_today	JODI A
+card_amount_ph	Montan kat
+cash_amount_ph	Montan kach
+cash_memo	Nòt kach
+choose_icon	Chwazi ikòn
+choose_logo	Chwazi logo
+clear_icon	Retire ikòn
+clear_photo	Retire foto
+copy_day_book_csv	Kopye liv jounen CSV
+copy_day_close	Kopye fèmti jounen
+copy_items_csv	Kopye atik CSV
+copy_outstanding_csv	Kopye sa ki rete CSV
+copy_parties_csv	Kopye pati CSV
+copy_party_ledger_csv	Kopye liv pati CSV
+copy_receipt	Kopye resi
+share_whatsapp	Pataje sou WhatsApp
+lan_pages_heading	Paj envite sou Wi‑Fi
+lan_pages_help	Sou Wi‑Fi boutik sa a, paj envite yo mache pou tablo, jeton, expo, kyòs, QR tab, ak kòmantè. Envite sou done mobil bezwen Cloud pita. Tèminal kat / lyen peman opsyonèl lè entènèt la mache — li pa janm bloke kontwa a.
+diag_send_heading	Pataj deyò aparèy sa a
+kot_dest_heading	Estasyon kwizin
+optional_login_heading	Antre opsyonèl
+rights_heading	Dwa
+ops_panel	Operasyon lokal
+crm_heading	Envite ak mesaj
+crm_help	Anivèsè, fidelite, envite inaktif ak pi gwo yo — mete entansyon SMS oswa WhatsApp nan fil. Sèvi ak {name} ak {points} nan mesaj la. Pwopriyetè a peze voye; anyen pa voye pou kont li.
+crm_queue_sms	Mete SMS nan fil
+crm_queue_wa	Mete WhatsApp nan fil
+crm_seg_bday_week	Semèn anivèsè
+crm_seg_bday_month	Mwa anivèsè
+crm_seg_phone	Ak telefòn
+crm_seg_loyalty	Fidelite
+crm_seg_inactive	Inaktif
+crm_seg_top	Pi gwo depans
+birthday_ph	Anivèsè (MM-DD oswa YYYY-MM-DD)
+crm_message_ph	Bòn fèt {name}! Ou gen {points} pwen.
+till_apply_redeem	Aplike sou kont
+till_clear_redeem	Efase echanj
+till_wallet_topup	Ranpli bous
+till_issue_voucher	Bay bon
+till_points_ph	Pwen pou echanje
+till_wallet_ph	Montan bous pou depanse
+till_voucher_code_ph	Kòd bon
+till_voucher_amt_ph	Montan bon (vid = tout)
+till_wallet_topup_ph	Montan pou ranpli bous la
+till_voucher_issue_amt_ph	Montan bon pou bay
+till_voucher_issue_code_ph	Kòd nouvo bon
+split_evenly	Separe egal
+waitlist	Lis datant
+fire_course	Voye pwochen sèvis
+hold_item	Kenbe
+waiter_call	Rele sèvitè
+waitlist_add	Ajoute nan lis datant
+floor_view_grid	Kadriyaj
+floor_view_layout	Dispozisyon
+floor_layout_x	X
+floor_layout_y	Y
+floor_layout_w	W
+floor_layout_h	H
+floor_layout_save	Anrejistre dispozisyon
+floor_layout_open	Louvri tab
+floor_layout_edit	Modifye dispozisyon
+floor_layout_pick	Peze yon tab pou modifye dispozisyon li
+floor_layout_saved	Dispozisyon tab yo anrejistre
+floor_layout_nudge_left	← 20
+floor_layout_nudge_right	→ 20
+floor_layout_nudge_up	↑ 20
+floor_layout_nudge_down	↓ 20
+sibling_pickers_help	Peze Limen/Eten tankou inite — kache zòn, estasyon, ak to taks nan lis chak jou; default pake a rete.
+bulk_price_apply	Aplike pri an mas
+card_terminal_optional	Tèminal kat / lyen peman (opsyonèl lè gen entènèt)
+copy_report	Kopye rapò
+counted_cash_ph	Kach konte nan tiro a
+country_tax	Peyi ak taks
+tax_chrome	Etikèt taks sou kes
+tax_chrome_help	Lè eten, biwo kòmand lan kache liy estimasyon GST/taks ak plas GST nan pri. To taks ak paramèt Peyi ak taks rete — relimen etikèt yo nenpòt lè. Rajdhani App Template kòmanse ak sa eten.
+tax_chrome_on	Montre
+tax_chrome_off	Kache
+tax_chrome_saved_on	Etikèt taks sou kes
+tax_chrome_saved_off	Etikèt taks kache sou kes
+tax_invoice_till	Fakti taks sou kes
+tax_invoice_help	Lè eten, kont yo se Nòt kach sèlman epi chip Fakti taks / Nòt kach kache sou biwo kòmand lan. Rajdhani App Template kòmanse ak sa eten — relimen Montre nenpòt lè pou chwazi Fakti taks ankò.
+tax_invoice_on	Montre
+tax_invoice_off	Kache
+tax_invoice_saved_on	Fakti taks sou kes
+tax_invoice_saved_off	Fakti taks kache — Nòt kach sèlman
+pay_methods	Metòd peman
+pay_methods_help	Ki chip ki parèt sou Pran peman. Kach toujou rete. Rajdhani App Template kòmanse ak Kach sèlman — relimen UPI / Kat / Kredi / Separe isit.
+create_backup	Kreye sovgad
+credit_limit_heading	Limit kredi (pati chwazi / nonmen)
+day_close_summary	Rezime fèmti jounen
+delete_party	Efase pati chwazi a
+delivery	Livrezon
+done_open_books	Fini — louvri liv yo
+drawer_count	Konte tiro (opsyonèl)
+expense_heading	Depans
+export_day	Ekspòte jounen
+extra_note_bill_ph	Nòt siplemantè sou kont / vant sa a
+extra_note_expense_ph	Nòt siplemantè sou dènye depans
+extra_tills_heading	Lòt kes
+other_devices_help_heading	Pare lòt aparèy
+other_devices_help	Sou aparèy sa a (Sèvè): Lòt aparèy → Pèmèt lòt kes. Note kòd makonnen an ak adrès Wi‑Fi a. Peze Pèmèt lòt aparèy konekte si li parèt. Sou yon òdinatè, peze Kòmanse ak òdinatè sa a. Sou chak lòt aparèy: enstale aplikasyon an, chwazi Mòd kliyan, Chèche sèvè boutik la (oswa ekri adrès la), antre kòd makonnen an, Makonnen kounye a. Kòmand yo tann sou aparèy la si Wi‑Fi tonbe epi yo ale lè Sèvè a reponn ankò. Enprimant kwizin yo mete sou Sèvè a (Paramèt → Enprimant) — lòt kes voye KOT la.
+forget_shop	Bliye boutik sa a
+goods_received	Machandiz resevwa
+import_day	Enpòte jounen
+import_items_csv_plain	Enpòte atik CSV…
+import_parties_csv	Enpòte pati CSV…
+item_name	Non atik
+kitchen_printing	Enprimant
+login_id_ph	Non itilizatè
+mark_cleared	Make regle
+new_party_clear	Nouvo pati (efase fòm)
+new_party_kind_supplier_ph	Kalite nouvo pati (Founisè)
+next_country	Pwochen peyi
+next_order	Pwochen kòmand (efase biwo)
+note_gstin_ph	Nòt / GSTIN / rapèl akò
+notes_attach_party	Nòt ak atachman (pati chwazi)
+notes_attach_sale	Nòt ak atachman (vant chwazi)
+on_account_ap	Sou kont (AP)
+org_optional_ph	Òganizasyon (opsyonèl)
+paid_by	Peye pa
+paid_now	Peye kounye a
+pair_now	Makonnen kounye a
+pairing_code_ph	Kòd makonnen
+party_name_selected_ph	Non pati (oswa sèvi ak sa ki chwazi)
+password_ph	Modpas
+pay_ap_card	Peye AP ak kat
+pay_ap_cash	Peye AP ak kach
+pay_ap_heading	Peye sa nou dwe yo (AP)
+pay_ap_upi	Peye AP ak UPI
+pay_selected_heading	Peye sa ki chwazi (regle dèt / pran avans)
+pick_from_items	Chwazi nan atik nou yo
+prev_country	Peyi anvan
+print_open	Enprime / louvri
+reason_amend_ph	Rezon pou korije / anile / ranbouse
+reason_note_ph	Rezon / nòt (pèt, konte, …)
+record_day_close	Anrejistre fèmti jounen
+refresh_from_shop	Rafrechi depi boutik
+refund	Ranbousman
+remove_selected	Retire sa ki chwazi
+request_bill	Mande kont
+restaurant_name_ph	Non restoran (opsyonèl)
+restore_backup	Retabli sovgad
+role_both	Tou de
+role_admin	Admin
+role_cashier	Kesye
+role_customer	Kliyan
+role_manager	Manadjè
+history_retention	Istwa komès
+history_retention_help	Efase otomatikman ansyen vant ak KOT. Meni, anplwaye, ak paramèt rete. Efase kounye a siye tout ranje komès epi kenbe paramèt la.
+history_off	Kenbe
+history_day_close	Nan fèmti jounen
+history_after_hours	Apre kèk èdtan
+history_hours_ph	Èdtan (1–168, default 4)
+history_hours_save	Anrejistre èdtan
+history_clear_now	Efase istwa kounye a
+history_cleared	Istwa komès efase — paramèt kenbe
+history_retention_saved	Efase istwa anrejistre
+history_hours_saved	Èdtan istwa anrejistre
+history_owner_only	Se sèl Pwopriyetè oswa Admin ki ka efase istwa
+rollup	Rezime
+save_brand	Anrejistre mak
+save_business_id	Anrejistre id biznis
+save_business_name	Anrejistre non biznis
+save_features	Anrejistre
+save_features_named	Anrejistre {name}
+save_features_ok	Paramèt anrejistre pou {name}
+save_names	Anrejistre non
+second_way	Dezyèm fason
+server_ip_ph	IP sèvè (pa egzanp 192.168.1.10)
+set_credit_limit	Aplike limit sou pati
+set_login_selected	Aplike antre sou sa ki chwazi
+set_login_named	Aplike antre sou {name}
+shop	Boutik
+show	Montre
+spreadsheet_csv	Fèy kalkil (CSV)
+start_fresh	Kòmanse de zewo
+stop_extra_tills	Sispann lòt kes
+floor_cols_ph	Kolòn
+floor_cols_fit	Adapte ekran
+floor_cols_fit_sub	{n} anfòm isit
+floor_cols_fits	anfòm
+floor_cols_scroll	defile sou kote
+floor_cols_min	Kolòn: omwen 1 — oswa kite l vid pou adapte ekran an
+floor_zoom_auto	Oto
+floor_zoom_out	Diminye
+floor_zoom_in	Agrandi
+backup_auto	Sovgad otomatik chak jou · dènye {when} · 14 dènye jou yo kenbe nan {dir}.
+backup_auto_none	Sovgad otomatik chak jou — premye a ap fèt nan yon moman.
+backup_copy_to	Kopi yo ale tou nan {dir}.
+backup_copy_btn	Kopye sovgad nan yon dosye tou…
+autostart_off	Kòmanse ak òdinatè sa a
+autostart_on	Kòmanse ak òdinatè sa a ✓ — peze pou sispann
+autostart_done_on	Òdinatè sa a louvri aplikasyon an lè li kòmanse — sèvè boutik la tounen apre yon koupay kouran.
+autostart_done_off	Òdinatè sa a pa louvri aplikasyon an ankò lè li kòmanse.
+device_forgotten	Boutik la bliye aparèy sa a — makonnen l ankò ak kòd aktyèl boutik la. Kòmand k ap tann sou li kenbe.
+lan_offline	Sèvè boutik la pa ka jwenn
+forget_device	Bliye
+last_seen	wè
+copy_pair_code	Kopye kòd makonnen
+new_pair_code	Nouvo kòd makonnen
+pair_finishing	Fini makonnen… y ap aplike liv boutik la
+pair_opening	Y ap louvri kes la…
+pair_copied	Kòd makonnen kopye
+kot_waiting	Ap tann pou voye
+lan_offline_waiting	Sèvè boutik la pa ka jwenn · {n} ap tann
+lan_connecting	Y ap konekte ak boutik la…
+lan_live	An dirèk
+lan_sending	{n} ap voye
+lan_sign_in_to_send	Antre ankò pou voye {n}
+lan_pair_again	Makonnen aparèy sa a ankò
+lan_update_app	Mete aplikasyon an ajou — aparèy sa a ak sèvè boutik la gen vèsyon diferan
+allow_firewall	Pèmèt lòt aparèy konekte
+firewall_blocked	Parefeu òdinatè sa a ap bloke lòt aparèy — peze Pèmèt lòt aparèy konekte.
+firewall_waiting	Ap tann demann admin nan…
+lan_join_help	Sou lòt aparèy la: Mòd kliyan → Chèche sèvè boutik la (oswa ekri {addr}) → kòd makonnen {code}.
+lan_pair_status	Wi‑Fi {addr}
+lan_join_help_no_addr	Konekte aparèy sa a ak Wi‑Fi pou yon adrès.
+lan_no_address	Pa gen adrès Wi‑Fi ankò — konekte ak Wi‑Fi boutik la.
+lan_not_listening	Pa ap aksepte aparèy (pò {port} okipe). Relanse aplikasyon an.
+lan_tills_off	Lòt kes yo eten. Pèmèt yo pou yon lòt aparèy rantre.
+paired_with	Makonnen · {url}
+not_paired	Pa makonnen
+choose_device_use	Chwazi Sèvè oswa Kliyan.
+paired_note	Makonnen. Debloke pou vann, oswa Rafrechi pou dènye a.
+last_update_at	Dènye aktyalizasyon: {time}.
+pair_intro	Chèche sèvè a, oswa ekri adrès li ak kòd makonnen an.
+queue_waiting	Ap tann rive nan boutik la ({n}):
+queue_tries	Eseye {n} fwa · dènye repons: {e}
+save_backup_copy	Sove yon kopi sovgad…
+backup_copy_saved	Kopi sovgad sove — kenbe l deyò aparèy sa a (yon kle USB oswa yon lòt aparèy)
+backup_copy_overdue	Okenn kopi sovgad pa kite aparèy sa a depi {n} jou — Paramèt → Sovgad
+backup_copy_failed	Kopi sovgad la pa t kapab sove la — chwazi yon lòt kote
+clock_off	Revèy aparèy sa a dekale {min} minit ak sèvè boutik la — mete bon lè a sou aparèy sa a
+printers_heading	Enprimant
+printers_help	Chèche enprimant, peze youn pou chwazi l, epi Enprime yon paj tès sou aparèy sa a sèlman. Enprimant kont: Fòma kont ak KOT → Kont. Enprimant kwizin: Kwizin → Estasyon kwizin (ajoute yon estasyon anvan — Chèche pa kreye estasyon).
+printers_host_only	Enprimant yo mete sou aparèy boutik la (Sèvè). Kes sa a voye kont ak KOT la — Chèche / ajoute / asiyen rete sou Sèvè a. Paj tès ak gwosè enprime kont ale sou Sèvè a.
+printers_find_heading	Chèche enprimant
+printers_find_tip	Chèche eskane aparèy sa a epi kenbe lis la ajou.
+printers_pool_heading	Enprimant
+printers_pool_tip	Chèche eskane aparèy sa a epi kenbe lis sa a ajou.
+printers_pool_empty	(pa gen ankò — peze Chèche)
+printers_routes_help	Chèche enprimant sistèm operasyon an deja konnen. Asiye yo nan kont lan ak chak kwizin anba Fòma kont ak KOT.
+printer_assign_dd	Vre enprimant: {place}
+printer_assign_pick	Chwazi vre enprimant
+printer_profile_heading	Miz an paj
+printer_send_heading	Voye
+vp_delivery_heading	Voye
+vp_delivery_help	Kijan enprimant vityèl sa a voye travay — dokiman OS, byte kri, oswa ESC/POS. Kontni fich la (gwosè lèt, pli, maj) deside pa fòma kont / KOT, pa isit.
+vp_type_size_heading	Gwosè lèt
+vp_wrap_heading	Lajè pli
+vp_margin_heading	Maj
+vp_delivery_spooler	Dokiman OS (fil sistèm)
+vp_delivery_raw	Byte kri sou aparèy
+vp_delivery_escpos	Kòmand tèmik ESC/POS
+virtual_printer_new	Nouvo enprimant vityèl
+virtual_printer_selected	Modifikasyon «{name}» — peze yon lòt nan lis la pou chanje
+virtual_printer_tap_list	Peze yon enprimant vityèl nan lis la pou modifye l
+config_layout_portrait	Pòtre
+config_layout_landscape	Peyizaj
+config_send_os	Fil sistèm
+config_send_escpos	ESC/POS
+profiles_heading	Miz an paj
+profiles_empty	(pa gen miz an paj ankò)
+profile_builtin	entegre
+profile_custom	pèsonalize
+profile_name_ph	Non miz an paj
+profile_new	Nouvo miz an paj
+profile_delete	Efase miz an paj
+profile_created	Miz an paj kreye
+profile_deleted	Miz an paj efase
+profile_builtin_keep	Miz an paj entegre pa ka efase
+config_saved	Mete ajou
+config_selected	Chwazi «{name}»
+printer_output_heading	Enprimant vityèl
+virtual_printers_heading	Enprimant vityèl
+virtual_printers_empty	Pa gen enprimant vityèl ankò — mete valè anba a, epi Anrejistre. Lè ou gen kèk, peze youn nan lis la pou modifye.
+virtual_printer_name_ph	Non enprimant vityèl (opsyonèl)
+virtual_printer_create	Kreye enprimant vityèl
+virtual_printer_save	Anrejistre enprimant vityèl
+virtual_printer_delete	Efase enprimant vityèl
+virtual_printer_created	Enprimant vityèl «{name}» kreye
+virtual_printer_deleted	Efase enprimant vityèl «{name}»
+virtual_printer_updated	Enprimant vityèl mete ajou
+virtual_printer_updated_named	Enprimant vityèl «{name}» mete ajou
+virtual_draft_layout	Valè mete pou pwochen enprimant vityèl
+virtual_draft_send	Valè mete pou pwochen enprimant vityèl
+virtual_need_real	Chwazi yon vre enprimant anvan
+virtual_need_select	Chwazi yon enprimant vityèl pou efase
+real_printer_selected	Chwazi: {name}
+station_group_heading	Enprimant vityèl
+station_group_apply	Efase enprimant vityèl
+station_group_applied	Efase
+station_group_empty	Chwazi yon enprimant vityèl
+station_group_name_ph	Non enprimant vityèl (opsyonèl)
+station_group_save	Kreye enprimant vityèl
+station_group_saved	Enprimant vityèl anrejistre
+station_manage_heading	Ajoute oswa retire yon estasyon kwizin
+printers_routes_heading	Kote bagay yo enprime
+route_pick_heading	Kote
+route_editing	Modifikasyon: {name}
+route_assigned	Ajoute {printer} nan {place}
+route_already_assigned	Deja sou kote sa a: {printer}
+route_removed	Retire {printer} nan {place}
+route_cleared	Efase {name}
+route_assigned_empty	Pa gen anyen sou kote sa a
+route_tap_remove	peze pou retire
+route_tap_select	peze pou chwazi
+route_tap_selected	chwazi
+route_pick_printer_first	Peze yon enprimant anvan
+route_assigned_heading	Enprimant
+route_add_heading	Asiyen
+printer_label_ph	Non (pa egzanp Kitchen)
+printer_target_ph	Non enprimant sistèm oswa host:9100
+printer_target_default	enprimant abitye òdinatè sa a (adrès vid)
+printer_wire_heading	Pwofil
+printer_wire_escpos	ESC/POS
+printer_wire_os	Pòtre
+printer_wire_os_portrait	Pòtre
+printer_wire_os_landscape	Peyizaj
+printer_wire_escpos_short	ESC/POS
+printer_wire_os_short	Pòtre
+printer_wire_os_landscape_short	Peyizaj
+printer_format_custom	Nouvo pwofil pèsonalize
+printer_format_custom_label	Pèsonalize
+printer_format_custom_added	Pwofil pèsonalize ajoute pou kote sa a
+add_printer	Ajoute enprimant
+remove_printer	Retire
+route_pick_ph	Kont oswa yon estasyon kwizin
+route_bill	Kont
+route_default_kitchen	Pa gen estasyon (plat pa asiyen)
+route_kot_station	Kwizin
+route_dont_print	Pa gen enprimant
+stations_heading	Estasyon kwizin
+stations_help	Ajoute estasyon kwizin pou plat ak KOT. Sou chak estasyon, tache enprimant li yo (jwenn anba Paramèt → Enprimant), mete priyorite, epi chwazi Premye ki mache oswa Enprime sou tout. Chanjman yo anrejistre pandan w ap fè yo — pa gen bouton Anrejistre.
+station_print_heading	Enprimant pou estasyon sa a
+station_print_help	Chwazi yon estasyon, epi tache youn oswa plizyè enprimant. ↑↓ mete lòd eseye. Premye ki mache sispann apre premye siksè a; Enprime sou tout voye sou chak enprimant tache. Chak chanjman anrejistre touswit.
+station_print_pick_ph	Estasyon pou mete enprimant
+station_print_pick_first	Chwazi yon estasyon kwizin anvan
+station_print_editing	Modifikasyon enprimant pou «{name}»
+station_vps_dd	Enprimant pou estasyon sa a
+station_vps_dd_n	{n} enprimant · peze pou chanje
+station_vps_empty	Pa gen enprimant ankò — Chèche yo anba Paramèt → Enprimant
+bill_printers_dd	Enprimant pou kont lan
+bill_printers_dd_n	{n} enprimant pou kont lan · peze pou chanje
+job_layout	Miz an paj
+job_delivery	Kijan travay la voye
+job_delivery_help	Dokiman OS, byte kri, oswa ESC/POS. Kont lan ak fich kwizin nan kenbe chak pa yo. Nenpòt travay ka ale sou nenpòt enprimant Chèche te sove.
+station_vp_attached	Enprimant tache
+station_vp_detached	Enprimant retire nan estasyon
+station_print_summary	{mode} · {n} enprimant
+station_print_summary_none	Pa gen enprimant sou estasyon sa a ankò — li pap enprime
+stations_none	Pa gen estasyon ankò — ajoute youn anba a. Atik meni yo ka sèvi ak yon estasyon pou KOT yo enprime la.
+route_up	Monte
+route_down	Desann
+route_remove	Retire
+route_clear	Efase
+save_printers	Anrejistre enprimant
+print_test_page	Enprime yon paj tès
+no_printer_assigned	Pa gen enprimant
+test_page_no_printer	Pa gen enprimant pou {place} — tache yon enprimant sou li, epi eseye ankò
+test_page_pick_first	Chwazi enprimant pou yon paj tès anvan — epi Enprime yon paj tès
+test_printers_dd	Enprimant pou yon paj tès
+test_printers_dd_n	{n} enprimant pou yon paj tès · peze pou chanje
+kot_test_printers_dd	Enprimant pou KOT tès
+kot_test_printers_dd_n	{n} enprimant pou KOT tès · peze pou chanje
+test_printer_picked	Tès sou: {name}
+test_printer_cleared	Pa teste sou: {name}
+test_page_sent_n	Paj tès voye sou {n} enprimant
+test_kot_pick_first	Chwazi enprimant pou KOT tès anvan — epi KOT tès
+test_kot_sent_n	KOT tès voye sou {n} enprimant
+cancel_pick	Make
+cancel_pick_on	Make
+cancel_pick_meta	Make pou anile
+batch_cancel	Anile sa ki make
+batch_cancel_n	Anile sa ki make ({n})
+batch_cancel_none	Make youn oswa plizyè plat ki voye anvan — epi Anile sa ki make
+batch_cancel_title	Anile plat ki make yo — yon rezon, yon fich anilasyon pa kwizin
+batch_cancel_ok	{n} plat anile · {slips} fich anilasyon → {kitchens}
+batch_cancel_ok_noprint	{n} plat anile — enprime oto KOT eten, kidonk pa gen fich anilasyon
+no_printer_kitchen_station	Pa gen enprimant pou estasyon kwizin sa a — Kwizin → Estasyon kwizin → Enprimant pou estasyon sa a
+printers_saved	Anrejistre
+test_page_sent	Paj tès voye — verifye enprimant lan
+test_page_sent_one	Paj tès voye sou {name} — verifye enprimant sa a
+printers_found	Jwenn {n}: {list}
+printers_find_synced	Jwenn {n} — {new} nouvo
+printer_on_device	sove
+printer_already_added	deja ajoute
+printer_already_saved	Deja sove: {name}
+find_printers	Chèche enprimant
+printers_looking	Ap chèche…
+saving_printer	Ap ajoute enprimant…
+cancelled	Anile
+printers_tap_find	Peze Chèche pou montre enprimant aparèy sa a ka sèvi.
+printers_none_found	Pa jwenn anyen — ekri non yon enprimant sistèm oswa yon IP (pa egzanp 192.168.1.50).
+printer_from_find	Ajoute {name}
+kot_printer_ph	Enprimant pou KOT
+bill_printer_ph	Enprimant pou kont
+kot_print_on	Enprime oto fich kwizin: Limen
+kot_print_off	Enprime oto fich kwizin: Eten
+queue_refused	Boutik la pa aksepte ({n}) — verifye chak youn nan kontwa a:
+clear_not_accepted	Verifye — efase lis sa a
+device_name_ph	Non aparèy sa a
+lan_last_update	dènye aktyalizasyon {time}
+lan_not_accepted	{n} pa aksepte
+connected_now	konekte kounye a
+backup_failed	Dènye sovgad otomatik la echwe: {e}
+backup_overdue	Pa gen sovgad depi {n} jou — kite aplikasyon an ouvè sou aparèy sa a pou li ka fè sovgad.
+disk_low	Sèlman {mb} MB lib sou aparèy sa a — sovgad yo ap echwe byento. Libere kèk espas.
+last_seen_devices	Dènye fwa wè: {time}
+sync_interval	Senkwonize chak {secs}s
+connection_to_shop	Koneksyon ak boutik la
+supplier_name_ph	Non founisè (oswa pati)
+supplier_ph	Founisè
+switch_device	Chanje aparèy sa a
+take_payment	Pran peman
+tax_added_till	{tax} anplis
+tax_inside_price	{tax} ladan pri
+tax_invoice	Fakti taks
+till_to_bank	Kes → labank
+units_heading	Inite
+unlock_after_pairing	Antre PIN
+unlock_with_login	Debloke ak antre
+unmark	Retire mak
+update_my_password	Mete modpas mwen ajou
+update_my_pin	Mete antre mwen ajou
+duress_heading	PIN debloke ijans (Pwopriyetè sèlman)
+duress_help	Opsyonèl. Si PIN sa a tape nan debloke olye pa w, tout antre liv yo efase (vant, liv, istwa) epi kes la ouvri kòm Pwopriyetè san parèt etranj — meni, pri, tab, anplwaye ak paramèt rete. Chema ak konfig pa efase. Sèvi ak li sèlman si yo fòse w debloke. Kite vid epi anrejistre pou eten. Pa janm menm ak PIN pèsonn.
+duress_pin_ph	PIN ijans (4–12 chif)
+duress_confirm_ph	Tape ankò pou konfime
+save_duress_pin	Anrejistre PIN ijans
+clear_duress_pin	Eten PIN ijans
+duress_on	PIN debloke ijans limen
+duress_off	PIN debloke ijans eten
+duress_saved	PIN debloke ijans anrejistre
+duress_cleared	PIN debloke ijans eten
+upi_amount_ph	Montan UPI
+void	Anile
+write_off_ap	Pase AP pèt
+write_off_heading	Pase pèt (efase san peman)
+write_off_nil	Pase pèt / sold zewo
+your_brand	Mak ou (nan aplikasyon an)
+your_categories	Kategori ou
+account_kind	Kalite kont (peze youn)
+actual_total_cap	TOTAL REYÈL
+amend_help	Chwazi yon vant pou korije, anile, oswa ranbouse. Koreksyon kenbe tout istwa. Total awondi kòmanse egal ak Aplike — modifye sèlman pou awondi. Anile ak ranbousman ka bezwen PIN Pwopriyetè oswa Manadjè (tape anwo; anrejistre ak non ou).
+applied_total_cap	TOTAL APLIKE
+bank_balance	Sold labank
+bank_net_today	Nèt labank jodi a
+branch_export_help	Ekspòtasyon ekri branch_snapshot_CODE_DATE.json nan dosye sovgad yo epi kopye l nan clipboard. Pou enpòte jounen yon lòt pwen, sove fichye li kòm import_branch_snapshot.json nan menm dosye a, epi peze Enpòte.
+brand_shown_help	Montre sou ekran anndan aplikasyon an. Non ak ikòn aplikasyon enstale a sou aparèy sa a rete jan lis platfòm lan ye.
+app_icon	Ikòn aplikasyon
+logo_help	Mak boutik opsyonèl sou ekran nan aplikasyon an.
+onboard_layout	Sa ou jwenn
+item_photo_help	Opsyonèl. San foto nou montre inisyal non atik la.
+stamp_heading	Tenm
+stamp_image_help	Imaj tenm opsyonèl sou kont enprime ak ekran envite.
+payment_qr_heading	QR peman
+payment_qr_image_help	QR estatik sou kont ak ekran envite; sinon peman sèvi ak yon QR UPI dinamik depi VPA anwo a.
+cash_in_hand	Kach nan men (kes)
+change_my_pin_heading	Antre mwen
+connect_to_server	Konekte ak Sèvè a
+counter_locked	Kontwa 01 · Kadna
+country_pack_help	Yon pake peyi mete non taks la ak kalkil, ray peman rapid, ak id biznis ki enprime sou kont. Kumkaj pa deklare taks ni bay e-fakti leta okenn kote.
+currency_use_help	Defile epi peze Sèvi pou nenpòt lajan ki sipòte.
+day_close_help	Anrejistre yon fèmti jounen sove rezime sa a (ak diferans tiro a si li konte) nan jounal odit la. Li pa sispann vann.
+expenses_word	Depans
+feature_access_help	Sa yo ka ouvri — opsyonèl; travay anwo a deja mete yon default
+footer_local	SQLite lokal · Gratis pou tout tan · Zewo Cloud
+fresh_book_khaynjo	De zewo = meni vid (ajoute plat pita nan Meni). Liv = ekri anba a atik ouvèti ak kilès ki dwe ou.
+fresh_selected	De zewo chwazi — katalòg la rete vid. Peze Fini lè ou pare.
+gross_word	Brit
+how_start	Kijan ou vle kòmanse?
+kot_print_help_khaynjo	Lè Limen, chak kwizin enprime pwòp papye KOT li le w peze Voye.
+later_country_pack	Pita: Paramèt → aplike pake peyi ou pou etikèt taks ak peman.
+local_badge	LOKAL
+mix_type_hint_khaynjo	Separe ant kach / UPI / kat / kredi si bezwen. Kredi bezwen yon kliyan anwo.
+money_in_sales	Lajan ki antre (vant)
+net_word	Nèt
+offline_badge	OFLAYN
+optional_login_help	Antre opsyonèl (id + modpas). Pwopriyetè a mete l yon fwa; se sèl itilizatè a ki ka chanje modpas pita.
+or_unlock_login	Oswa debloke ak id antre + modpas
+permission_preset	Travay (mete ekran ak aksyon lajan)
+preset_help_khaynjo	Kesye: vann. Manadjè: vann + atik + anile/korije.
+product_locked_khaynjo	Khaynjo
+product_only_khaynjo	Aplikasyon sa a se Khaynjo sèlman — sistèm operasyon restoran. Lòt komès soti kòm pwodwi Kumkaj apa.
+purchases_cogs	Acha (COGS)
+qty_cap	KANT.
+restore_help	Retabli: chwazi yon sovgad. Liv yo ouvri jan yo te ye lè sa a; liv yo jan yo ye kounye a sove anvan, kidonk sa ka defèt.
+wipe_data_heading	Efase done lokal
+wipe_data_help	Pwopriyetè sèlman — menm chwa ak dezenstalasyon Windows. Dosye biznis efase istwa komès men kenbe meni ak paramèt (tankou PIN debloke ijans). Paramèt boutik retire baz done liv yo. Preferans ekran efase fenèt/lang. Konfime ak PIN Pwopriyetè a. PIN debloke ijans nan Ekip la apa (efase kache nan debloke).
+wipe_trading	Dosye biznis
+wipe_schema	Paramèt boutik
+wipe_ui	Preferans ekran
+wipe_owner_pin_ph	PIN pwopriyetè pou efase
+wipe_delete_selected	Efase sa ki chwazi
+wipe_owner_only	Se sèl Pwopriyetè a ki ka efase done lokal.
+restore_owner_only	Se sèl Pwopriyetè a ki ka retabli yon sovgad.
+wipe_owner_pin_needed	Antre PIN Pwopriyetè a pou efase done lokal.
+wipe_nothing_selected	Chwazi sa pou efase anvan.
+wipe_done	Done lokal chwazi yo efase.
+wipe_schema_done	Paramèt boutik efase — chwazi Sèvè oswa Kliyan pou kontinye.
+rounded_total	Total awondi
+setup_app_khaynjo	Pare Khaynjo
+shop_logo_optional	Logo boutik (opsyonèl)
+stock_type_help	Ekri non atik la (yon pati ase), yon kantite, epi ajiste. Atik ki poko konte bezwen Kòmanse swiv yon fwa.
+team_owner_help	Kite moun nan vid pou ajoute yon moun: non, travay, non itilizatè, PIN, ak yon modpas opsyonèl, epi Ajoute. Chwazi yon moun pou modifye menm kalite fòm — non, non itilizatè, modpas, ekran, ak dwa — epi Anrejistre. PIN ak modpas pa w se yon sèl antre anba a. Pwopriyetè a pa chanje PIN lòt moun.
+staff_name_ph	Non anplwaye
+staff_copy_hire_ph	Kopye paramèt de (opsyonèl)
+staff_copy_hire	Sèvi ak paramèt moun sa a
+staff_edit_name_ph	Non pou montre
+staff_rename	Anrejistre non
+staff_copy_edit_ph	Kopye paramèt de yon lòt moun
+staff_copy_edit	Kopye paramèt yo sou sa ki chwazi
+staff_copy_edit_onto	Kopye paramèt yo sou {name}
+staff_deactivate_named	Retire {name}
+staff_renamed	Non anrejistre
+staff_setup_copied_hire	Paramèt kopye de {name} — mete yon nouvo non ak PIN, epi Ajoute anplwaye
+staff_setup_copied_edit	Kopye paramèt {from} sou {to}
+staff_copy_need_selected	Chwazi kilès pou modifye anvan
+staff_copy_need_source	Chwazi paramèt kilès pou kopye
+staff_copy_same	Se menm moun nan — chwazi yon lòt
+staff_rename_need_selected	Chwazi kilès pou chanje non anvan
+team_pick_hint	Chwazi kilès pou modifye — ekran, dwa lajan, ak estasyon kwizin parèt pou moun sa a sèlman.
+team_stations_help	Estasyon kwizin yo ka sèvi
+team_stations_changed	Estasyon kwizin chanje — Anrejistre paramèt pou moun sa a
+team_features_changed	Ekran chanje — Anrejistre paramèt pou moun sa a
+team_rights_changed	Dwa chanje — Anrejistre paramèt pou moun sa a
+they_owe_us	Yo dwe nou
+unit_at_cap	Tarif @
+units_help	Kòd pou etikèt atik (kg, piece, bag). Chak inite dwe lye — dirèk oswa atravè lòt inite — ak yon estanda (kg · cm · ml · pc), pa egzanp 1 kaye = 2 bwat epi 1 bwat = 20 cm. Konvèsyon: 1 de = faktè a. Lajan pa janm inite.
+units_picker_help	Peze Limen/Eten pou montre yon inite nan lis Acha ak Meni. Inite eten toujou konvèti.
+unit_picker_on	Limen
+unit_picker_off	Eten
+we_owe_them	Nou dwe yo
+who_unlocking	Kilès k ap debloke?
+locked_word	Kadna
+show_pin	Montre PIN
+hide_pin	Kache PIN
+set_owner_pin	METE PIN PWOPRIYETÈ
+enter_owner_passcode	ANTRE KÒD PWOPRIYETÈ
+enter_staff_passcode	ANTRE KÒD ANPLWAYE
+pin_count_zero	0 / 12 chif · omwen 4, epi OK
+pin_count_need	{} / 12 chif · bezwen {} ankò
+pin_count_full	12 / 12 chif · peze OK
+pin_count_ready	{} / 12 chif · peze OK lè pare
+pin_hint_choose	Chwazi 4–12 chif · Enter oswa Debloke pou sove
+pin_hint_new	Nouvo PIN pwopriyetè 4–12 chif · Enter oswa Debloke
+pin_hint_shop_code	Aparèy boutik · kòd makonnen {}
+pin_hint_books	Aparèy sa a kenbe liv yo
+pin_hint_paired	Lòt kes makonnen — debloke pou vann
+pin_hint_pair_first	Lòt kes — makonnen ak aparèy boutik la anvan
+unlock_to_continue	Debloke pou kontinye
+no_staff_yet	Pa gen anplwaye ankò — debloke kòm Pwopriyetè, epi Ekip
+status_server_set_pin	Mòd sèvè — mete PIN pwopriyetè
+status_server_tills	Mòd sèvè — lòt kes ka rantre. Debloke
+status_server_unlock	Mòd sèvè — debloke kòm Pwopriyetè
+status_client_unlock	Mòd kliyan — debloke pou vann
+icon_new_selected	Ikòn: nouvo fichye chwazi — peze Anrejistre mak
+icon_custom	Ikòn: mak lokal pèsonalize
+icon_default	Ikòn: mak Kumkaj (default) — chwazi youn pèsonalize
+logo_yours	Logo: logo boutik ou — montre sou ekran ak resi
+logo_default	Logo: mak Kumkaj (default) — chwazi pa w si ou gen youn
+tmpl_current	Aktyèl: {} — {}
+tmpl_selected	Chwazi: {} — {}
+setup_complete	Paramèt fini
+onboard_fresh_tmpl	De zewo · {} — katalòg la kòmanse vid; ajoute atik nan Meni, epi Fini.
+onboard_book_tmpl	Liv · {} — ajoute atik ak kredi ouvèti, epi Fini.
+onboard_template_tmpl	Bay kote a yon non si ou vle, epi chwazi kijan pou kòmanse.
+tmpl_blurb	Tab, kòmand, fich kwizin, kont, ak liv.
+tmpl_how	Vann nan kontwa; Sal pou tab ak KOT; Liv jounen pou liv la.
+reports_facet_title	Rapò
+reports_facet_help	Liv jounen, laj pati, ekriti labank, ak P&P peryòd.
+against_bill_ph	Kont kont # anwo a (opsyonèl)
+aliases_ph	Alyas — lòt non, separe ak vigil
+amount_blank_full_ph	Montan (vid = tout sold)
+amount_owed_ph	Montan dwe
+amount_ph	Montan
+amount_received_ph	Montan resevwa
+amount_we_pay_ph	Montan nou peye
+business_name_ph	Non biznis
+category_new_ph	Kategori (opsyonèl, kreye si nouvo)
+code_bag_ph	Kòd (bag)
+conv_factor_ph	Faktè (25 = 1 bag → 25 kg)
+country_code_ph	Kòd peyi pa egzanp IN, GB, US, AE, BR
+credit_khata_amount_ph	Montan kredi / khata
+credit_limit_ph	Limit kredi (0 = pa gen)
+from_code_ph	Kòd sous (bag)
+item_name_lang_ph	Non atik — ekri l nan lang ou
+login_id_opt_ph	Non itilizatè (obligatwa, inik)
+manager_pin_ph	PIN manadjè pou apwouve (sèlman si ou pa ka anile)
+new_branch_name_ph	Non nouvo siksinal
+new_password_ph	Nouvo modpas (opsyonèl)
+new_pin_ph	Nouvo PIN (4–12 chif)
+note_bank_ph	Nòt (depo, retrè, …)
+note_buy_expense_ph	Nòt (gaz, lwaye, …)
+note_expense_ph	Nòt (gaz, biwo, …)
+options_khaynjo_ph	Opsyon — Size*: Small=199, Large=399 | Toppings+3: Cheese=40, Olive=30 | Extra cheese=40
+part_second_way_ph	Yon pati yon dezyèm fason (opsyonèl)
+phone_ph	Telefòn
+place_name_ph	Non kote sa a
+qty_example_ph	Kant. (pa egzanp 1.5 pou kg)
+quantity_ph	Kantite
+reason_required_ph	Rezon (obligatwa)
+role_title_ph	Tit wòl (pa egzanp Barista)
+service_pct_ph	Sèvis % opsyonèl 0/10/12
+short_code_ph	Kòd kout (MG02)
+starting_password_ph	Modpas kòmansman (opsyonèl)
+starting_pin_ph	PIN kòmansman (4–12 chif)
+station_name_ph	Non estasyon (pa egzanp Tandoor, Fryer, Cold)
+station_new_ph	Estasyon kwizin (opsyonèl, pa egzanp Tandoor — kreye si nouvo)
+table_name_ph	Non tab (pa egzanp Patio 1, Counter 2)
+tax_rate_ph	Non to taks oswa % — Estanda, Redwi, 0, 5, 12, 18, 20
+to_code_ph	Kòd destinasyon (kg)
+uncleared_no_ph	Nimewo ki poko regle anwo
+unit_cost_ph	Pri inite
+unit_name_bag_ph	Non (Bag)
+unit_plate_ph	Inite (plate / pc — vid = chak)
+pay_credit	Kredi
+book_kind_today	Liv jodi a
+book_kind_month	Liv mwa sa a
+book_kind_aging	Ki rete / debi-kredi
+book_kind_balance	Bilan
+order_help	Peze yon atik pou ajoute l.
+floor_help	Peze yon tab pou pran oswa chanje kòmand lan. Koulè yo montre lib → chita → kwizin → pare → ap manje → kont → peye. Lis datant, rezèvasyon, ak ajoute tab yo nan seksyon anba a.
+kitchen_help	Fich kwizin (KOT), pi nouvo a anba. Kòmanse → Pare → Fini fè fich la avanse. Fich yo pa janm montre pri.
+kitchen_empty	Pa gen fich ouvè. Yon KOT voye depi Kòmand oswa Sal parèt isit.
+add_a_table	Ajoute yon tab
+add_station_heading	Ajoute yon estasyon kwizin
+categories_help	Peze Sèvi pou klase atik anwo a anba kategori sa a. Foto bay kategori a yon imaj; san li, li montre inisyal li.
+dish_search_ph	Non atik — chèche plat nou yo oswa ekri pa w
+tile_free	Lib
+tile_occupied	Okipe
+tile_food_ready	Manje pare
+tile_bill_printed	Kont enprime
+tile_paid	Peye
+tile_bill_btn	Kont
+tile_occupy_btn	Chita envite
+tile_free_btn	Libere tab
+tile_ready_btn	Libere tab
+tile_undo_bill	Defè kont
+summary_busy	tab okipe
+summary_to_collect	pou resevwa
+summary_on_floor	nan sal la
+floor	Sal
+sizes_as_items_ph	Gwosè kòm atik apa (opsyonèl) — Half=120, Full=200
+dish_group_ph	Gwoup plat (opsyonèl) — pa egzanp Paneer Tikka
+discount	Rabè
+remove_discount	Retire rabè
+apply_discount	Aplike rabè
+save_opening_cash	Anrejistre kach ouvèti
+close_shift_print	Fèmen pòs la epi enprime fich la
+area_prices_ph	Pri pa zòn (opsyonèl) — AC=220, Parcel=210
+discount_ph	10% oswa 50
+discount_reason_ph	Rezon (pa egzanp envite abitye, manje an reta)
+opening_float_ph	Kach mete nan tiro a maten sa a
+shift_counted_ph	Kach konte nan pasasyon
+opening_float	Kach ouvèti (fon)
+shift_handover	Pasasyon pòs
+shift_since	Pòs sa a depi
+expected_in_drawer	Espere nan tiro a
+right_discount	Bay yon rabè
+floor_in_kitchen	Nan kwizin
+floor_eating	Sèvi
+pick_category	Chwazi yon kategori
+close_category_list	Fèmen lis kategori
+new_category_row	Nouvo kategori — kreye lè ou anrejistre atik la
+your_category	Kategori ou
+suggested_category	Sijere — depi plat nou yo
+category_search_ph	Kategori — chèche pa w oswa ekri yon nouvo
+line_sent_state	Voye nan kwizin
+line_nc_state	Koutwazi (NC) — pa chaje
+cancel_item_short	Anile
+nc_short	NC
+charge_again_short	Chaje
+move_short	Deplase
+cancel_item_title	Anile atik sa a — kwizin nan resevwa yon fich anilasyon
+nc_item_title	Fè atik sa a koutwazi (NC)
+charge_again_title	Chaje atik sa a ankò
+move_item_title	Deplase atik sa a sou yon lòt tab
+already_cooked	Deja kwit (pèt)
+not_cooked_yet	Poko kwit
+return_to_customer	Retounen bay kliyan
+short_by	Manke
+tip_not_sale	Poubwa (anplwaye a, pa yon vant)
+right_settle	Pran peman
+right_cancel_sent	Anile yon atik ki voye
+right_complimentary	Koutwazi (NC)
+right_move_table	Deplase / mete tab ansanm
+right_reprint	Enprime kont ankò
+right_allowed	Pèmèt
+right_with_approval	Ak apwobasyon
+right_denied	Pa pèmèt
+editing_staff	Modifikasyon
+finding_server	Ap chèche sèvè boutik la sou Wi‑Fi sa a…
+no_server_found	Pa jwenn anyen. Sou Sèvè a: Paramèt → Lòt aparèy → Pèmèt lòt kes (menm Wi‑Fi). Oswa ekri IP ki montre la a.
+servers_found_pick	Peze boutik ou vle konekte a.
+server_host_selected	Y ap sèvi ak {host} — antre kòd makonnen an, epi Makonnen kounye a.
+print_bill	Enprime kont
+table_actions	Aksyon tab
+move_merge_table	Deplase / mete tab ansanm
+move_help	Deplase kòmand tab sa a sou yon tab lib, oswa mete l ansanm ak youn k ap mache.
+move_target_ph	Non tab (pa egzanp D5, P2)
+approval_pin_ph	PIN manadjè (sèlman si yo mande)
+move_here	Deplase isit
+merge_into	Mete ansanm ladan l
+line_reason_ph	Rezon (pa egzanp envite chanje lide, pa gen stòk)
+line_qty_ph	Konbyen pou anile (vid = tout)
+line_target_ph	Deplase sou tab (pa egzanp D5)
+confirm	Konfime
+menu_search_ph	Chèche atik oswa kòd kout
+customer_paid_ph	Kliyan peye
+tip_ph	Poubwa
+table_area_ph	Zòn (pa egzanp Nan sal, Pou pote, AC)
+table_range_ph	Anpil an menm tan: D1-D20
+add_these_tables	Ajoute tab sa yo
+remove_these_tables	Retire tab sa yo
+table_remove_ph	Retire: T1-T24, oswa non yon tab
+find_server	Chèche sèvè boutik la
+bill_format	Fòma kont
+bill_format_help	Enprime anba non restoran ou sou chak kont. Separe liy ak | (pa egzanp MG Road, Rajkot | Ph 98250 00000).
+bill_header_ph	Adrès | telefòn
+fssai_ph	Nimewo lisans FSSAI (End)
+bill_footer_ph	Pye (pa egzanp Mèsi, tounen ankò)
+save_bill_format	Anrejistre fòma kont
+reset_bill_format	Retounen default
+bill_format_reset	Fòma kont retounen default
+reset_kot_format	Retounen default
+kot_format_reset	Fòma KOT retounen default
+kot_format	Fòma KOT
+kot_format_help	Peze yon chan nan lis la. Montre, gwosè lèt, ak pwa aplike sou chan sa a pou kalite KOT chwazi anwo a. Chak kalite kenbe pwòp gwosè ak pwa li.
+kot_format_fields	Chan
+kot_field_next	Pwochen chan
+kot_field_show	Montre
+kot_field_hide	Kache
+kot_field_on	montre
+kot_field_off	kache
+kot_field_size	Gwosè lèt
+kot_field_size_ph	pa egzanp 16, 20, 24, 28, 32…
+kot_weight_light	Lejè
+bill_kot_panel_help	Miz an paj kont ak fich kwizin, chak ak pwòp lajè kontni li. Kesye kont lan se moun ki te fè oswa regle kont lan; Sèvitè KOT la se moun ki te voye fich kwizin sa a — tout istwa kòmand lan rete nan liv yo.
+std_size_ph	pa egzanp 18, 20, 26…
+kot_show_shop	Non boutik
+kot_hide_shop	Kache boutik
+kot_show_time	Lè
+kot_hide_time	Kache lè
+kot_show_waiter	Sèvitè
+kot_hide_waiter	Kache sèvitè
+kot_show_station	Estasyon
+kot_hide_station	Kache estasyon
+kot_show_table	Tab
+kot_hide_table	Kache tab
+kot_show_kot_no	Nimewo KOT
+kot_hide_kot_no	Kache nimewo KOT
+kot_width	Pli aperçu (mete lajè kontni sou onglet KOT)
+kot_width_58	58 mm
+kot_width_80	80 mm
+kot_kind_heading	Kalite KOT
+kot_kind_original	Orijinal
+kot_kind_duplicate	Doublon
+kot_kind_modified	Modifye
+kot_kind_cancelled	Anile
+kot_style_heading	Gwosè lèt ak pwa chan
+kot_style_title	Tit
+kot_style_item_qty	Atik · Kant.
+kot_style_field_pick	Chwazi chan
+kot_weight_regular	Nòmal
+kot_weight_bold	Gra
+kot_align	Aliye
+kot_align_start	Kòmansman
+kot_align_center	Sant
+kot_align_end	Fen
+content_width	Lajè kontni (mm)
+content_width_bill	Lajè kontni kont (mm)
+content_width_kot	Lajè kontni KOT (mm)
+content_width_ph	Oswa ekri yon lajè kontni, 40–210 mm
+content_width_help	Konbyen laj fich sa a enprime. Kont ak KOT kenbe chak pwòp lajè yo.
+content_width_bill_help	Konbyen laj kont envite a enprime. Default 210 mm (paj). 58 mm fich etwat, 80 mm fich laj, 112 mm 4 pous, 210 mm lajè A4. Ekri nenpòt valè de 40 a 210. Fich kwizin gen pwòp lajè yo sou onglet KOT.
+content_width_kot_help	Konbyen laj fich kwizin nan enprime. Default 80 mm. 58 mm fich etwat, 80 mm fich laj, 112 mm 4 pous, 210 mm paj. Ekri nenpòt valè de 40 a 210. Kont envite gen pwòp lajè yo sou onglet Kont.
+vp_paper_width	Lajè kontni (mm)
+vp_paper_width_ph	Oswa ekri yon lajè kontni, 40–210 mm
+vp_paper_width_help	Lajè kontni mete anba Fòma kont ak KOT — apa pou kont lan (default 210 mm) ak fich kwizin nan (default 80 mm).
+kot_size	Gwosè lèt
+kot_size_s	Piti
+kot_size_m	Nòmal
+kot_size_l	Gwo
+std_size	Gwosè lèt
+kot_copies	Kopi
+kot_copies_1	1
+kot_copies_2	2
+kot_copies_3	3
+kot_title_ph	Tit (vid = KOT - KITCHEN ORDER)
+kot_footer_ph	Nòt kwizin (opsyonèl, san pri)
+kot_preview	Aperçu
+save_kot_format	Anrejistre fòma KOT
+test_kot_format	KOT tès
+test_kot_sent	Aperçu fich kwizin voye
+test_bill_format	Kont tès
+test_bill_sent	Aperçu kont voye
+test_print_no_printer	Pa gen enprimant pou travay sa a — chwazi youn sou ekran sa a
+kot_format_saved	Fòma KOT anrejistre
+std_print	Gwosè enprime kont
+std_print_help	Gwosè lèt pou travay kont Pòtre ak Peyizaj estanda sou enprimant OS / dokiman (ekri pwen — pa Piti/Nòmal/Gwo). Menm gwosè sou tou de oryantasyon. Gwosè fich kwizin yo sou onglet KOT.
+std_size_s	Piti
+std_size_m	Nòmal
+std_size_l	Gwo
+save_std_print	Anrejistre gwosè enprime kont
+std_print_saved	Gwosè enprime kont anrejistre
+print_brand_kit	Enprime twous mak
+print_brand_kit_help	Imaj tenm ak QR peman opsyonèl sou fas kont ak ekran envite LAN. QR UPI dinamik depi VPA anwo a toujou mache lè pa gen imaj QR peman.
+choose_stamp	Chwazi tenm
+clear_stamp	Retire tenm
+stamp_set	Tenm: nan fichye — montre sou ekran envite epi nonmen sou kont enprime
+stamp_none	Tenm: pa gen
+choose_payment_qr	Chwazi QR peman
+clear_payment_qr	Retire QR peman
+payment_qr_set	QR peman: nan fichye — montre sou ekran envite (ranplase QR UPI montan la)
+payment_qr_none	QR peman: pa gen — QR montan depi ID UPI lè y ap peye
+aggregator_import	Kòmand agregatè (fichye)
+aggregator_import_help	Enpòtasyon lokal opsyonèl: mete import_aggregator_orders.json nan dosye sovgad yo (yon lis oswa {"orders":[…]}), epi peze Enpòte. Pa janm bloke kontwa a; Zomato/Swiggy an dirèk se Cloud.
+import_aggregator_file	Enpòte fichye agregatè
+team_pick_ph	Anplwaye pou modifye — non, non itilizatè, oswa chwazi
+select_staff	Chwazi anplwaye sa a
+rights_help	Aksyon lajan ak sal pou moun sa a — peze pou fè sik la: Pèmèt → Bezwen PIN chèf → Pa pèmèt. Enprime kont ankò se kont sèlman; estasyon kwizin se lis anba a.
+dish_picker_help	Chèche oswa gade plat nou yo epi peze youn pou ranpli non ak foto — oswa kenbe pwòp non ou. Mete pri ou (0 bon), epi Ajoute atik.
+close_dish_list	Fèmen lis plat
+own_item_name	Sèvi ak sa kòm pwòp non atik ou
+on_your_menu	Nan meni ou
+edit	Modifye
+schemes	Pwomosyon / òf
+schemes_help	BOGO, rabè pousantaj, ak konbo fiks. Konbo yo ouvri an liy kwizin lè Voye KOT; pati yo rete kenbe jiskaske konbo a deklanche. Egzanp: Buy 2 Thali get 1 Chaas
+scheme_bogo_ph	Buy 2 Thali get 1 Chaas
+add_scheme	Ajoute BOGO
+schedule_ph	Lè / èdtan kè kontan — Mon-Fri 07:00-11:00 oswa HappyHour 17:00-19:00=150
+upi_vpa_ph	UPI ID (VPA)
+upi_payee_ph	Non benefisyè UPI (opsyonèl)
+upi_qr	UPI QR
+show_upi_qr	Montre QR UPI
+close_upi_qr	Fèmen
+upi_qr_help	Envite a eskane epi peye. Peze Pran peman apre yo fin peye. Dezyèm ekran: louvri URL Sèvè a /display sou LAN.
+kot_recall	Raple
+recently_done	Fini dènyèman
+recall_kot_ph	Nimewo KOT pou raple
+role_help_customer	Wòl: Kliyan — khata (yo dwe nou). Menm pati a ka bay stòk tou.
+role_help_both	Wòl: Kliyan + Founisè — yon pati, liv khata ak pou peye, nèt nan Rapò.
+role_help_supplier	Wòl: Founisè — nou dwe yo pou acha.
+dine_in_pick_table	Nan sal — chwazi yon tab nan Sal
+choose_table	Chwazi yon tab
+change_table	Chanje tab
+pick_table_banner	Chwazi yon tab pou kòmand sa a
+items_word	atik
+items_section	Atik
+back_to_order	Retou nan kòmand
+new_items_head	Poko voye
+price_ph	Pri
+price_ph_gst_inside	Pri ({tax} ladan pri)
+cancel_needs_table	Louvri kòmand sa a depi Sal (yon tab) pou anile apre kwizin nan gen li — KOT kontwa rete sou fich la jiskaske ou pran peman
+tax_rates_missing_hint	Pa gen to {tax} sou plat sa yo — nan Meni mete to taks (pri yo deja gen {tax} anba {tax} ladan pri)
+taxable_value	Valè taksab
+gst_inside_price_note	({tax} ladan pri)
+start_with_template	Kòmanse ak modèl meni nou an
+template_heading	Modèl meni nou an
+template_info	{c} kategori ak {d} plat ak foto, pare pou ajoute. Pri kòmanse a ₹0 — mete pa w apre.
+template_import	Enpòte modèl konplè
+template_confirm	Ajoute {d} plat ak kategori yo? Plat ou deja genyen rete jan yo ye.
+template_yes	Wi, enpòte
+template_importing	Ap enpòte meni…
+template_import_progress	Ap enpòte… {d}/{t}
+template_done	Tout plat modèl nou an nan meni ou.
+template_imported	Ajoute {d} plat ak {c} kategori — mete pri yo sou ekran sa a
+client_template_heading	Meni kliyan
+client_template_info	{title}: {c} kategori, {d} plat ak pri, foto, ak alyas. Plat ki manke sèlman — non ou deja genyen rete.
+client_template_import	Enpòte meni sa a
+client_template_confirm	Ajoute {d} plat de {title}? Plat ou deja genyen rete jan yo ye.
+client_template_importing	Ap enpòte {title}…
+client_template_done	Tout plat {title} nan meni ou.
+client_template_imported	Ajoute {d} plat ak {c} kategori de {title}
+resv_heading	Rezèvasyon
+resv_name_ph	Non envite
+resv_phone_ph	Telefòn (opsyonèl)
+resv_guests_ph	Envite
+resv_when_ph	Kilè — 20:30, demen 13:00
+resv_table_ph	Tab (opsyonèl)
+resv_add	Rezève
+resv_seat	Chita
+resv_none	Pa gen rezèvasyon k ap vini.
+guests_word	envite
+delivery_by_ph	Livrezon pa (non kourye oswa anplwaye)
+kitchen_all_day	Pou kwit kounye a: {items}
+kitchen_all_day_head	Pou kwit kounye a
+kitchen_tab_live	An dirèk
+kitchen_tab_recall	Raple
+kitchen_tab_stations	Estasyon
+split_bill	Separe kont
+split_go	Fè yon kont apa
+cancel	Anile
+opening_client	Ap louvri kliyan…
+preparing_desk	Ap pare kontwa…
+opening_server	Ap louvri sèvè…
+creating_server	Ap kreye sèvè…
+split_help	Peze plat yon envite ap peye · {n} chwazi
+split_send_first	Voye KOT anvan — sèlman plat kwizin nan deja genyen ka ale sou yon kont apa
+split_pick_some	Peze plat pou kont apa a anvan
+split_done	Kont apa fèt — li nan sal la bò kote tab sa a
+split_marked	kont apa
+order_empty_pick	Kòmand vid — peze Ajoute plat anwo a pou chwazi plat.
+add_dishes	Ajoute plat
+order_so_far	Nan kòmand sa a: {n} · {total}
+no_dish_match	Okenn plat pa koresponn ak «{q}»
+pick_dishes_help	Peze yon plat pou ajoute l · chwazi yon kategori pou diminye lis la
+pick_done	Fini
+pick_done_dd	Fini · {label}
+printer_route_mode	Si gen plizyè enprimant sou kote sa a
+printer_mode_first	Premye ki mache
+printer_mode_all	Enprime sou tout
+kot_show_area	Zòn
+kot_hide_area	Kache zòn
+kot_show_item_hdr	Atik · Kant.
+kot_hide_item_hdr	Kache kolòn
+kot_show_title	Liy tit
+kot_hide_title	Kache tit
+kot_field_order	Lòd enprime
+kot_field_up	Monte
+kot_field_down	Desann
+kot_field_cycle	Chwazi pwochen
+kot_field_select	Chwazi pwochen
+kot_field_time	Lè
+kot_field_kot_no	Nimewo KOT
+kot_field_area	Zòn
+kot_field_table	Tab
+kot_field_shop	Non boutik
+kot_field_waiter	Anplwaye
+kot_field_station	Estasyon
+app_template_blurb_extra	Tou: Pwopriyetè Zahir, Admin Asif, Sèvitè Nawaz; bò kote FOH; istwa apre 4 èdtan; bann Jodi a eten; KOT kontra.
+dishes_n	{n} plat
+recipe_ph	Resèt (opsyonèl) — yon pòsyon sèvi: Rice=0.2, Paneer=0.15
+reorder_ph	Achte plis nan
+set_reorder	Mete nivo rekòmand
+low_stock_alert	Ap fini — achte byento: {items}
+unpriced_note	{n} plat nan meni ou poko gen pri — yo chaje a 0 jiskaske ou mete youn.
+show_unpriced	Montre sèlman plat san pri
+show_all_dishes	Montre tout plat
+role_waiter	Sèvitè
+role_kitchen	Kwizin
+role_title_rest_ph	Tit wòl (pa egzanp Kapitèn, Chèf kwizin)
+preset_help_rest	Sèvitè: pran kòmand epi mennen tab. Kesye: pran peman tou. Kwizin: ekran kwizin nan. Manadjè: meni, anilasyon ak rabè tou.
+kind_raw	Matyè premyè
+kind_resale	Achte epi revann
+kind_dish	Plat nou fè
+buy_unit_ph	Inite (kg, litre, pcs)
+add_another_way	+ Ajoute yon lòt fason
+parts_status	Antre {a} sou {b} · rete {c}
+save_expense	Anrejistre depans
+rest_ph	Rès
+low_badge	Ba
+stock_empty	Pa gen anyen nan stòk ankò — sa ou anrejistre nan Acha parèt isit.
+recent_changes	Chanjman resan
+lane_declared_label	Fakti taks
+lane_owner_label	Nòt kach
+money_lane_bill	Kont: {lane}

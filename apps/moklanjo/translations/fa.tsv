@@ -1,0 +1,835 @@
+# Persian — فارسی (fa). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	کتاب های پیک آژانس + میز رزرو. آفلاین رایگان.
+unlock	باز کردن قفل
+pin_hint	PIN مالک از 0000 شروع می‌شود
+sell	رزرو
+buy	پرداخت کنید
+books	دفتر روز
+books_help	موقعیت امروز رزرو = بسته ها. پرداخت = قبوض و هزینه های حامل. احزاب = فرستنده و حامل.
+buy_help	کوپن هزینه و قبوض حامل (پول خارج شده). در حساب در دفتر حزب باقی می ماند.
+sell_money_in	بسته رزرو کنید
+buy_money_out	هزینه / قبض حامل
+record_purchase	ثبت خرید
+add_expense	برگه هزینه
+bank_book	دفتر بانک
+credit_help	شناسه حزب منحصر به فرد است (اسامی ممکن است تکرار شوند). نقش ها: فرستنده (AR)، حامل (AP)، یا هر دو در آن شناسه. دفتر کل جدا می ماند. گزارش ها نت را نشان می دهند.
+party_kind_ph	نقش سفارشی (اختیاری) - یا روی یک تراشه در بالا ضربه بزنید
+parties_list_heading	مهمانی های ذخیره شده
+reports_help	دفتر روز، بدهکاران و بستانکاران، دفتر بانک، برگه‌های هزینه، سود و زیان.
+reports_today	دفتر روز (امروز)
+reports_month	سود و زیان (ماه)
+reports_aging	مانده / بدهکار-بستانکار
+reports_balance_sheet	ترازنامه
+reports	دفتر بانک و سود و زیان
+refresh	تازه‌سازی
+undo	واگرد
+start_tracking	شروع شمارش
+stock_minus	− موجودی
+stock_plus	+ موجودی
+settle_cash	تسویه نقد
+settle_card	تسویه کارت
+items	نرخ ها و خدمات
+nav_items	نرخ ها
+more	بیشتر
+your_items	نرخ های شما
+items_help	هر ردیف یک نرخ است (به عنوان مثال منطقه سطح A). واحد معمولا کیلوگرم است. برای ویرایش ضربه بزنید.
+add_item	نرخ اضافه کنید
+new_item	نرخ جدید
+adding_item	اضافه کردن نرخ جدید
+editing_item	ویرایش
+save	ذخیره
+remove	برداشتن
+empty_catalog	هنوز نرخی وجود ندارد. نرخ‌ها و خدمات را باز کنید، یکی (نام + قیمت، واحد کیلوگرم) اضافه کنید، سپس رزرو کنید.
+counter_sale	رزرو پیشخوان
+total	جمع
+cash	نقد
+upi	UPI
+card	کارت
+credit	طرف‌ها
+clear	پاک کردن
+ready_to_sell	آماده ثبت
+today_prefix	امروز
+today_mid	امروز
+owed	مانده
+round_word	گرد کردن
+back	بازگشت
+sold_out	ناموجود
+restock	تأمین دوباره
+not_tracked	شمارش نمی‌شود
+in_stock	موجود
+marked_sold_out	ناموجود شد
+add_upper	افزودن
+na	—
+qty	وزن/تعداد
+unit_at	نرخ @
+actual	واقعی
+applied	اعمال‌شده
+note_ph	یادداشت (اختیاری)
+rounded	گردشده
+split	تقسیم
+counter	پیشخوان
+parcel	بسته
+order	سفارش
+sales	رزروها
+sales_refunds	رزرو و بازپرداخت
+day_close	بستن روز
+reports_expenses	دفتر بانک و سود و زیان
+nav_reports	گزارش‌ها
+nav_settings	تنظیمات
+nav_lock	قفل
+sidebar_settings	تنظیمات نوار کناری
+sidebar_settings_help	همان نمادهای ریل کناری. یک ردیف را بکشید تا ترتیب عوض شود. کلید را بزنید تا دیده شود یا پنهان. تنظیمات و قفل همیشه روی نوار می‌مانند.
+sidebar_always_on_short	همیشه روشن
+sidebar_back_settings	بازگشت
+sidebar_shown	نمایان
+sidebar_hidden	پنهان
+sidebar_always_on	همیشه روی نوار
+sidebar_shown_hint	روی ریل کناری / زبانه‌های پایین دیده می‌شود
+sidebar_hidden_hint	از نوار پنهان است
+sidebar_menu_items	منو و کالاها
+sidebar_enable_all	روشن کردن همه
+sidebar_disable_all	خاموش کردن همه
+sidebar_order_saved	ترتیب نوار کناری ذخیره شد
+sidebar_visibility_saved	نمای نوار کناری ذخیره شد
+amounts_hide	پنهان
+amounts_show	نمایان
+no_sale_yet	هنوز فروشی نیست
+favorites	علاقه‌مندی‌ها
+favorites_help	کالاهایی که اغلب می‌فروشید، برای ورود شما ذخیره شده. یکی را به صورتحساب بیفزایید، یا فهرست را از همه کالاهای پایین بسازید.
+your_favorites	علاقه‌مندی‌های شما
+all_items	همه کالاها
+no_favorites	هنوز علاقه‌مندی نیست — از فهرست پایین کالا بیفزایید.
+add_to_bill	افزودن به صورتحساب
+added	افزوده شد
+owes_word	بدهکار است
+selected_word	انتخاب‌شده
+chip_clear_credit	پاک — نسیه یا گرفتن پیش‌پرداخت
+chip_missing_customer	مشتری انتخاب‌شده نیست — دوباره انتخاب کنید
+chip_no_customer	هنوز مشتری نیست — نامی بنویسید، سپس نسیه را بزنید
+credit_summary_fmt	{} مشتری · نسیه باز {} · پیش‌پرداخت نگه‌داشته {}
+recent_label	اخیر:
+inventory	انبار
+inventory_stock	انبار و موجودی
+branches	شعبه‌ها
+branches_org	شعبه‌ها و سازمان
+credit_customers	طرفین (بدهکاران و طلبکاران)
+customer_name_ph	نام طرف
+new_customer_ph	نام طرف تازه
+item_name_ph	نام امتیاز (مثلاً سطح منطقه A)
+item_price_ph	هر کیلوگرم / دال اول
+start_template	محصول
+next_booking	رزرو بعدی
+destination_ph	شهر / منطقه مقصد
+consignee_ph	نام گیرنده
+consignee_phone_ph	تلفن گیرنده
+consignee_address_ph	آدرس تحویل
+origin_name_ph	نام فرستنده
+origin_phone_ph	تلفن فرستنده
+origin_address_ph	آدرس وانت / مبدا
+booking_consignor_heading	فرستنده (مشتری / فرستنده)
+booking_consignee_heading	گیرنده (گیرنده)
+booking_consignor_hint	یک مهمانی را برای پر کردن انتخاب کنید، یا آن را خالی بگذارید. برای پیکاپ خانگی و RTO مورد نیاز است.
+booking_consignee_hint	گیرنده بسته. خالی بگذارید.
+weight_kg_ph	کیلوگرم واقعی
+length_cm_ph	L سانتی متر
+breadth_cm_ph	B سانتی متر
+height_cm_ph	H سانتی متر
+chargeable_kg	کیلوگرم قابل شارژ
+awb_label	AWB
+booking_help	فرستنده + گیرنده (سفارش OK) → مقصد → وزن → نرخ انتخاب → حساب/نقد → پرداخت. AWB روی رسید چاپ می کند. رزرو بعدی میز را پاک می کند. Rounded برابر با Applied شروع می شود - ویرایش را فقط برای گرد کردن صورت حساب.
+cart_empty_hint	میز خالی - فرستنده/گیرنده اختیاری است، مقصد و وزن را تنظیم کنید، روی ADD روی نرخ ضربه بزنید، سپس پرداخت کنید.
+team	تیم
+team_pins	تیم و PIN
+my_pin_settings	PIN من
+settings_hub_help_my_pin	PIN باز کردن قفل را برای کسی که روی این دستگاه وارد شده عوض کنید.
+team_self_help	فقط شما می توانید پین قفل (و رمز ورود اختیاری) را تغییر دهید. از مالک بپرسید که آیا به صفحات یا حقوق متفاوتی نیاز دارید.
+backup_settings	پشتیبان و تنظیمات
+lock_app	قفل برنامه
+pick	انتخاب
+select	گزینش
+advance	پیش‌پرداخت
+owner	مالک
+staff	کارکنان
+photo	عکس
+auto	خودکار
+prev	قبلی
+next	بعدی
+ok	تأیید
+this_shop	سرور
+extra_till	کلاینت
+off	خاموش
+server	سرور
+client	کلاینت
+language_currency	زبان و واحد پول
+language	زبان
+choose_language	زبان خود را انتخاب کنید
+language_setup_hint	زبان این دستگاه را دنبال کنید، یا خودتان یکی انتخاب کنید.
+lang_follow_platform	زبان دستگاه
+lang_pick_user	انتخاب زبان
+lang_platform_now	زبان دستگاه اکنون
+selected_language	انتخاب‌شده
+continue	ادامه
+this_device	این دستگاه
+device_use_q	این دستگاه چگونه استفاده شود؟
+last_server_mode	سرور بود — برای ادامه بزنید
+last_client_mode	کلاینت بود — برای ادامه بزنید
+choose_server	یک سرور انتخاب کنید
+choose_server_hint	یک سرور موجود را باز کنید، یا برای کسب‌وکار دیگری یکی بسازید.
+create_new_server	ساخت سرور تازه
+open_server	باز کردن
+new_server_name_ph	نام سرور تازه (اختیاری)
+server_remove_pin_ph	PIN مالک برای برداشتن سرور
+only_owner_remove_server	فقط مالک می‌تواند سرور را بردارد
+owner_pin_remove_server	برای برداشتن این سرور PIN مالک لازم است
+device_setup_help	سرور دفترها را اینجا نگه می‌دارد. کلاینت به یک سرور جفت می‌شود.
+currency	واحد پول
+backup	پشتیبان
+settings_sec_diag	عیب‌یابی
+settings_hub_help	هر بار یک بخش را باز کنید — پیمایش کمتر، انتخاب روشن‌تر.
+settings_sec_devices	دستگاه‌های دیگر
+settings_sec_alerts	هشدارها
+alerts_help	پیام وضعیت چقدر روی صفحه برای شما بماند (این ورود).
+snack_secs_ph	ثانیه (۳–۶۰، پیش‌فرض ۱۰)
+snack_secs_save	ذخیره زمان هشدار
+snack_secs_saved	زمان هشدار ذخیره شد — {n} ثانیه
+snack_secs_bad	ثانیه ها را به عنوان یک عدد وارد کنید (3-60)
+cancelled	لغو شد
+cancel	لغو
+opening_client	در حال باز کردن کلاینت…
+preparing_desk	در حال آماده کردن میز…
+opening_server	در حال باز کردن سرور…
+creating_server	در حال ساخت سرور…
+diag_privacy_help	گزارش‌ها روی همین دستگاه می‌مانند. رازها (PIN، گذرواژه) هرگز ذخیره نمی‌شوند. بردن یک بسته از دستگاه هر بار به تأیید صریح شما نیاز دارد — هرگز فروخته یا به دیگران داده نمی‌شود.
+diag_level	سطح جزئیات
+diag_level_error	خطاها
+diag_level_warn	هشدارها
+diag_level_info	اطلاعات
+diag_level_debug	اشکال‌زدایی
+diag_support_start	شروع نشست پشتیبانی ۳۰ دقیقه‌ای
+diag_support_stop	پایان نشست پشتیبانی
+diag_support_started	نشست پشتیبانی روشن — جزئیات اشکال‌زدایی برای ۳۰ دقیقه
+diag_support_ended	نشست پشتیبانی پایان یافت
+diag_export_local	برون‌برد نسخه محلی
+diag_export_local_done	عیب‌یابی محلی در {path} آماده است — جایی برای ذخیره نسخه انتخاب کنید
+diag_approve_send	تأیید بردن از این دستگاه
+diag_send_heading	بردن از این دستگاه
+diag_send_help	تأیید برای یک بسته است و بعد منقضی می‌شود. موقتی — فقط برای رفع یا بهتر کردن محصول. با دیگران به اشتراک گذاشته نمی‌شود. روی لینوکس، ویندوز، macOS و اندروید کار می‌کند.
+optional_login_heading	ورود اختیاری
+rights_heading	حقوق
+booking_scope_heading	داخلی / بین المللی
+diag_send_approved	بردن برای یک بسته تأیید شد (به‌زودی منقضی می‌شود)
+diag_export_send	ساخت بسته اشتراک (نیاز به تأیید)
+diag_export_send_done	بسته اشتراک در {path} آماده است — جایی برای ذخیره انتخاب کنید و فقط برای پشتیبانی Kumkaj بفرستید
+diag_save_bundle	ذخیره نسخه عیب‌یابی
+diag_bundle_saved	نسخه عیب‌یابی در {path} ذخیره شد
+diag_bundle_failed	نسخه عیب‌یابی آنجا ذخیره نشد — دوباره تلاش کنید
+diag_clear	پاک کردن گزارش عیب‌یابی
+diag_cleared	گزارش عیب‌یابی پاک شد
+use	استفاده
+add_branch	افزودن شعبه
+add_conversion	افزودن تبدیل
+add_item_plain	افزودن کالا
+add_note	افزودن یادداشت
+add_opening_balance	افزودن مانده آغازین
+add_rider	سوار را اضافه کنید
+add_staff	افزودن کارمند
+add_unit	افزودن واحد
+add_use_name	افزودن / استفاده از این نام
+allow_extra_tills	اجازه صندوق‌های اضافه
+amend	اصلاح
+apply_country_pack	اعمال بسته کشور
+datetime_appearance	نمای تاریخ و ساعت
+datetime_appearance_help	کتاب ها RFC3339 سال اول را در داخل نگه می دارند. این‌ها فقط نحوه نمایش تاریخ‌ها و ساعت‌ها را در رسیدها، برچسب‌ها، گزارش‌ها و صفحه نمایش تغییر می‌دهند.
+datetime_example	نمونه اکنون: {ex}
+date_order	ترتیب تاریخ
+date_order_dmy	ر/م/س
+date_order_mdy	م/ر/س
+date_order_ymd	س-م-ر
+time_format	ساعت
+time_format_24h	۲۴ساعته
+time_format_12h	۱۲ساعته
+attach_bill_photo	پیوست عکس صورتحساب
+attach_pdf	پیوست PDF
+attach_photo	پیوست عکس
+bank	بانک
+bank_in	واریز بانک
+bank_out	برداشت بانک
+bank_to_till	بانک → صندوق
+till_to_bank	صندوق → بانک
+mark_cleared	علامت تسویه‌شده
+unmark	برداشتن علامت
+role_both	هر دو
+role_carrier	حامل
+role_cashier	صندوقدار
+role_consignor	فرستنده
+role_manager	مدیر
+role_supplier	تأمین‌کننده
+branch_name_sell_ph	نام شعبه‌ای که از آن فروخته می‌شود
+bring_my_book	آوردن دفتر من
+business_tax_id_ph	شناسه مالیاتی کسب‌وکار
+card_amount_ph	مبلغ کارت
+cash_amount_ph	مبلغ نقد
+upi_amount_ph	مبلغ UPI
+carrier_cost_ph	هزینه حامل
+carrier_party_ph	مهمانی حامل
+choose_icon	انتخاب نماد
+choose_logo	انتخاب نشان
+choose_receipt_stamp	مهر رسید را انتخاب کنید
+choose_payment_qr	انتخاب QR پرداخت
+clear_icon	پاک کردن نماد
+clear_logo	پاک کردن لوگو
+clear_photo	پاک کردن عکس
+clear_stamp	پاک کردن مهر
+clear_payment_qr	پاک کردن QR پرداخت
+print_faces	چاپ چهره (رسید / قبض دوره)
+print_faces_help	مهر اختیاری و QR پرداخت در کنار لوگوی شما در رسیدهای رزرو و قبوض دوره.
+awb_pools_heading	استخرهای شماره حامل AWB
+add_awb_pool	اضافه کردن استخر AWB
+awb_pool_carrier_ph	نام حزب حامل
+awb_pool_start_ph	نه شروع
+awb_pool_end_ph	انتهای شماره
+awb_pool_prefix_ph	پیشوند (اختیاری)
+awb_pool_label_ph	برچسب (اختیاری)
+pieces_ph	قطعات (خالی = 1) - برای محموله / چند تکه گسترش دهید
+bulk_awbs_ph	AWB های انبوه - تعداد زیادی (خط جدید یا کاما) را برای یک پیشرفت وضعیت جایگذاری کنید
+tds_cut_ph	برش TDS (اختیاری)
+discount_ph	تخفیف (اختیاری)
+cheque_no_ph	شماره بررسی (اختیاری)
+bill_reminder_chase	لیست تعقیب و گریز یادآوری قبض
+month_mix_report	گزارش ترکیبی ماه
+copy_month_gst_csv	کپی ماه GST CSV
+domestic	داخلی
+international	بین المللی
+pick_logo	لوگو را انتخاب کنید
+booking_scope_hint_domestic	حجمی ÷5000 (داخلی) — برای هوای ÷6000 بین المللی ضربه بزنید
+booking_scope_hint_intl	حجمی ÷6000 (هوای بین المللی) — روی Domestic برای فروشگاه ÷5000 ضربه بزنید
+cod_register	ثبت COD
+collect_cod	جمع آوری COD (AWB)
+consignments_dispatch	محموله و ارسال
+consignor_party_ph	نام فرستنده / طرف
+copy_day_book_csv	رونوشت دفتر روز CSV
+copy_day_close	رونوشت بستن روز
+copy_items_csv	رونوشت کالاها CSV
+copy_outstanding_csv	رونوشت مانده CSV
+copy_parties_csv	رونوشت طرف‌ها CSV
+copy_party_ledger_csv	رونوشت دفتر طرف CSV
+copy_receipt	رونوشت رسید
+copy_report	رونوشت گزارش
+counted_cash_ph	نقد شمرده‌شده در کشو
+counter_agency_ph	پیشخوان / نام آژانس (اختیاری)
+create_backup	ساخت پشتیبان
+day_close_summary	خلاصه بستن روز
+delete_party	حذف طرف انتخاب‌شده
+dispatch_to_rider	اعزام رزرو شده → سوار
+docket_charge_ph	شارژ داکت
+declared_value_ph	ارزش اعلام شده
+contents_ph	مطالب
+eway_ph	قبض راه الکترونیکی شماره
+insurance_label	بیمه
+yes_label	بله
+no_label	خیر
+print_route_label	مسیر چاپ
+new_party_kind_label	نوع حزب جدید
+done_open_books	انجام شد — باز کردن دفترها
+export_day	برون‌برد روز
+extra_note_expense_ph	یادداشت اضافه روی آخرین هزینه
+extra_note_awb_ph	یادداشت اضافی در مورد این AWB / فروش
+failed_delivery	تحویل ناموفق
+find_scan_awb	پیدا کردن / اسکن AWB
+forget_shop	فراموش کردن این فروشگاه
+fuel_ph	سوخت
+handover_carrier	رزرو دستی → حامل
+import_day	درون‌برد روز
+import_items_csv	واردات اقلام / نرخ‌های CSV…
+import_parties_csv	درون‌برد طرف‌ها از CSV…
+import_pincodes_csv	وارد کردن کدهای پین CSV…
+import_carrier_bill_csv	وارد کردن قبض شرکت مخابراتی CSV…
+copy_carrier_bill_report	آخرین گزارش قبض شرکت مخابراتی را کپی کنید
+use_carrier_cost	استفاده از هزینه حامل
+rate_carrier_ph	حامل (خالی = نرخ فروش ما)
+rate_party_ph	مهمانی (خالی = همه مشتریان)
+carrier_pick_ph	حامل برای هزینه (از مقایسه)
+item_name	نام کالا
+load_bulk_row	بارگذاری ردیف عمده → میز
+login_id_ph	نام کاربری
+mark_delivered	علامت تحویل داده شد
+manifest_cod_total	کل COD
+manifest_received_by	دریافت شده توسط
+manifest_sign	امضا کنید
+ndr_address_wrong	آدرس اشتباه است
+ndr_customer_unavailable	ناموجود
+ndr_door_locked	در قفل شده
+ndr_other	دیگر
+ndr_refused	امتناع کرد
+out_for_delivery	برای تحویل
+print_drs	چاپ DRS
+print_run_sheet	برگه اجرا را چاپ کنید
+reattempt	تلاش مجدد
+rider_cod_handed_ph	COD تحویل داده شد
+settle_rider_cod	تسویه COD سوار
+mode_desk	میز
+mode_rider	سوار
+waiting_office	منتظر رسیدن به دفتر
+capture_signature	گرفتن امضا
+incoming_manifest	مانیفست ورودی
+pickup_request	درخواست وانت
+pickup_run	اجرا وانت
+auto_assign_area	تخصیص خودکار منطقه
+reorder_stops	سفارش مجدد متوقف می شود
+settle_rider_pay	تسویه دستمزد سوارکار
+vehicle_inspect	بازرسی خودرو
+print_docket	دفترچه چاپ
+franchise_statement	بیانیه حق رای دادن
+tally_export	صادرات کوپن Tally
+open_whatsapp	واتس اپ را باز کنید
+copy_sms	متن پیامک را کپی کنید
+pick_barcode_image	تصویر را برای اسکن انتخاب کنید
+share_receipt_whatsapp	رسید را در واتس اپ به اشتراک بگذارید
+delivery_feedback	بازخورد تحویل
+lan_self_book	LAN خود رزرو
+new_party_clear	طرف تازه (پاک کردن فرم)
+new_party_kind_ph	نوع مهمانی جدید (تامین کننده / حامل)
+next_country	کشور بعد
+prev_country	کشور قبل
+note_gstin_ph	یادداشت / GSTIN / یادآور توافق
+note_pod_ph	توجه / POD (اختیاری)
+on_account_ap	نسیه (AP)
+org_optional_ph	سازمان (اختیاری)
+paid_now	اکنون پرداخت شد
+pairing_code_ph	کد جفت‌سازی
+pair_now	اکنون جفت شود
+party_name_selected_ph	نام طرف (یا از انتخاب‌شده)
+password_ph	گذرواژه
+pay_ap_card	پرداخت AP با کارت
+pay_ap_cash	پرداخت AP نقد
+pay_ap_upi	پرداخت AP با UPI
+period_bill	صورت حساب دوره
+period_bill_party	قبض دوره (پارتی)
+pick_pod_photo	عکس POD را انتخاب کنید
+print_awb_label	چاپ برچسب AWB
+print_open	چاپ / باز کردن
+reason_amend_ph	دلیل اصلاح / ابطال / بازپرداخت
+reason_note_ph	دلیل / یادداشت (ضایعات، شمارش، …)
+record_day_close	ثبت بستن روز
+refresh_from_shop	تازه‌سازی از فروشگاه
+refund	بازپرداخت
+remit_cod	ارسال COD (پارتی)
+remove_selected	برداشتن انتخاب‌شده
+restore_backup	بازیابی پشتیبان
+rider_name_ph	نام سوار
+rider_phone_ph	تلفن سوار
+riders	سواران
+riders_own_fleet	سواران (ناوگان شخصی)
+rollup	جمع‌بندی
+save_booking_measures	اقدامات رزرو را ذخیره کنید
+save_brand	ذخیره نشان
+save_business_id	ذخیره شناسه کسب‌وکار
+save_business_name	ذخیره نام کسب‌وکار
+save_features	ذخیره تنظیمات کار
+save_names	ذخیره نام‌ها
+server_ip_ph	IP سرور (مثلاً 192.168.1.10)
+set_credit_limit	اعمال سقف روی طرف
+set_login_selected	اعمال ورود روی انتخاب‌شده
+set_login_named	اعمال ورود روی {name}
+shop	فروشگاه
+start_fresh	شروع از نو
+stop_extra_tills	توقف صندوق‌های اضافه
+backup_auto	هر روز خودکار پشتیبان می‌شود · آخرین {when} · ۱۴ روز اخیر در {dir} می‌ماند.
+backup_auto_none	هر روز خودکار پشتیبان می‌شود — نخستین بار چند لحظه دیگر اجرا می‌شود.
+backup_copy_to	رونوشت‌ها هم به {dir} می‌روند.
+backup_copy_btn	رونوشت پشتیبان در یک پوشه هم…
+autostart_off	شروع با این رایانه
+autostart_on	با این رایانه شروع می‌شود ✓ — برای توقف بزنید
+autostart_done_on	این رایانه اکنون هنگام روشن شدن برنامه را باز می‌کند — سرور فروشگاه پس از قطع برق برمی‌گردد.
+autostart_done_off	این رایانه دیگر هنگام روشن شدن برنامه را باز نمی‌کند.
+right_allowed	مجاز
+right_with_approval	با تأیید
+right_denied	مجاز نیست
+editing_staff	حقوق برای
+team_pick_ph	کارمند برای ویرایش — نام، نام کاربری، یا انتخاب
+select_staff	انتخاب این کارمند
+rights_help	حقوق — برای تغییر ضربه بزنید: مجاز → با تأیید (پین یک مدیر در آن لحظه) → مجاز نیست.
+right_void_refund	رزرو را لغو یا بازپرداخت کنید
+right_amend_sale	اصلاح رزرو ثبت شده
+find_server	پیدا کردن سرور فروشگاه
+finding_server	در حال جستجوی سرور فروشگاه روی این وای‌فای…
+no_server_found	چیزی پیدا نشد. روی سرور: تنظیمات → دستگاه‌های دیگر → اجازه صندوق‌های اضافه (همان وای‌فای). یا IP نشان‌داده‌شده آنجا را بنویسید.
+servers_found_pick	روی فروشگاهی که می‌خواهید وصل شوید بزنید.
+server_host_selected	از {host} استفاده می‌شود — کد جفت‌سازی را وارد کنید، سپس اکنون جفت شود.
+device_forgotten	فروشگاه این دستگاه را فراموش کرد — دوباره با کد فعلی فروشگاه جفت کنید. سفارش‌های منتظر روی آن می‌مانند.
+forget_device	فراموش
+last_seen	دیده شد
+new_pair_code	کد جفت‌سازی تازه
+lan_offline	سرور فروشگاه در دسترس نیست
+lan_offline_waiting	سرور فروشگاه در دسترس نیست · {n} در انتظار
+lan_connecting	در حال اتصال به فروشگاه…
+pair_finishing	جفت پایان... استفاده از کتاب های اداری
+pair_opening	افتتاح دفتر…
+lan_live	زنده
+lan_sending	{n} در حال فرستادن
+lan_sign_in_to_send	برای فرستادن {n} دوباره وارد شوید
+lan_pair_again	این دستگاه را دوباره جفت کنید
+lan_update_app	به روز رسانی برنامه — این دستگاه و سرور اداری نسخه های متفاوتی دارند
+allow_firewall	اجازه اتصال دستگاه‌های دیگر
+firewall_blocked	دیوار آتش این رایانه دستگاه‌های دیگر را می‌بندد — اجازه اتصال دستگاه‌های دیگر را بزنید.
+firewall_waiting	در انتظار پنجره مدیر…
+lan_join_help	روی دستگاه دیگر: حالت کلاینت → پیدا کردن سرور فروشگاه (یا نوشتن {addr}) → کد جفت‌سازی {code}.
+lan_pair_status	وای‌فای {addr}
+lan_join_help_no_addr	این دستگاه را به وای‌فای وصل کنید تا نشانی داشته باشد.
+lan_no_address	هنوز نشانی وای‌فای نیست — به وای‌فای فروشگاه وصل شوید.
+lan_not_listening	دستگاه نمی‌پذیرد (درگاه {port} اشغال است). برنامه را دوباره باز کنید.
+lan_tills_off	صندوق‌های اضافه خاموش‌اند. اجازه دهید تا دستگاه دیگری بپیوندد.
+paired_with	جفت‌شده · {url}
+not_paired	جفت نشده
+choose_device_use	سرور یا کلاینت را انتخاب کنید.
+paired_note	جفت شد. برای فروش قفل را باز کنید، یا برای تازه‌ترین حالت تازه‌سازی کنید.
+last_update_at	آخرین به‌روزرسانی: {time}.
+pair_intro	سرور را پیدا کنید، یا نشانی و کد جفت‌سازی‌اش را بنویسید.
+queue_waiting	در انتظار رسیدن به فروشگاه ({n}):
+queue_tries	{n} بار تلاش شد · آخرین پاسخ: {e}
+save_backup_copy	ذخیره یک رونوشت پشتیبان…
+backup_copy_saved	رونوشت پشتیبان ذخیره شد — آن را بیرون این دستگاه نگه دارید (فلش یا دستگاه دیگر)
+backup_copy_overdue	{n} روز است هیچ رونوشت پشتیبانی از این دستگاه بیرون نرفته — تنظیمات → پشتیبان
+backup_copy_failed	رونوشت پشتیبان آنجا ذخیره نشد — جای دیگری انتخاب کنید
+clock_off	ساعت این دستگاه {min} دقیقه با سرور فروشگاه فرق دارد — ساعت درست را روی این دستگاه بگذارید
+printers_heading	چاپگرهای این دستگاه
+printers_help	چاپگرهای واقعی را پیدا کنید، سپس رسید یا برچسب AWB را انتخاب کنید. هر کار دارای عرض، عمودی یا منظره و نحوه ارسال بایت ها است. یک برچسب بارکد را چاپ می کند. جای خالی = چاپ نکن.
+job_width	پهنای محتوا (mm)
+job_width_ph	یا عرض 40-210 میلی متر را تایپ کنید
+job_layout	چیدمان
+job_delivery	کار چگونه فرستاده می‌شود
+job_size	اندازه حروف
+job_size_ph	مثلاً ۱۸، ۲۰، ۲۶…
+save_receipt_format	ذخیره فرمت رسید
+save_label_format	ذخیره قالب برچسب
+test_receipt_format	رسید آزمون
+test_label_format	برچسب تست
+test_receipt_sent	نمونه رسید ارسال شد
+test_label_sent	نمونه برچسب ارسال شد
+test_print_no_printer	هیچ چاپگری برای آن کار وجود ندارد - یکی را در این مکان اضافه کنید
+printers_host_only	چاپگرها بر روی دستگاه فروشگاه (سرور) تنظیم می شوند. این تا کارها را به آنجا ارسال می کند - یافتن / اضافه کردن / اختصاص دادن اقامت در سرور. صفحه تست به سرور می رود.
+printers_pool_heading	چاپگرها
+printers_routes_heading	کجا چاپ می‌شود
+printer_label_ph	نام (به عنوان مثال میز)
+printer_target_ph	میزبان:9100 · bt:MAC · usb:VID:PID · نام سیستم
+printer_mode_heading	نمایه خروجی های جدید
+printer_mode_standard	پرتره استاندارد
+printer_mode_landscape	منظره استاندارد
+printer_mode_thermal	حرارتی
+printer_mode_standard_short	عمودی
+printer_mode_landscape_short	افقی
+printer_mode_thermal_short	حرارتی
+printer_format_custom	نمایه سفارشی تازه
+printer_format_custom_label	سفارشی
+printer_format_custom_added	نمایه سفارشی برای این جا افزوده شد
+add_printer	افزودن چاپگر
+remove_printer	آخرین را حذف کنید
+route_pick_ph	رسید یا برچسب
+route_add_printer_ph	چاپگر را به این مکان اضافه کنید
+route_receipt	رسید
+route_label	برچسب AWB
+route_dont_print	هیچ چاپگری اختصاص داده نشده است
+route_add	به مکان اضافه کنید
+route_up	بالا
+route_down	پایین
+route_remove	آخرین را حذف کنید
+route_clear	چاپگرهای این مکان را پاک کنید
+save_printers	ذخیره چاپگرها
+print_test_page	چاپ صفحه آزمایش
+printers_saved	چاپگرهای ذخیره شده برای این دستگاه
+test_page_sent	صفحه آزمایش فرستاده شد — چاپگر را ببینید
+printers_found	در این دستگاه یافت شد: {list}
+find_printers	پیدا کردن چاپگرها
+printers_looking	در حال جستجوی چاپگر در این دستگاه و Wi-Fi…
+printers_tap_find	روی یافتن چاپگرها برای صف هایی که کارها و چاپگرهای رسید شبکه را در این Wi-Fi می پذیرند (چاپگرهای حذف نشده یا آفلاین) ضربه بزنید.
+printers_none_found	هیچ چاپگری یافت نشد - نام چاپگر سیستم یا آدرس شبکه (به عنوان مثال 192.168.1.50) را تایپ کنید.
+receipt_printer_ph	چاپگر برای رسید
+queue_refused	فروشگاه نپذیرفت ({n}) — هر کدام را در پیشخوان بررسی کنید:
+clear_not_accepted	بررسی شد — این فهرست پاک شود
+device_name_ph	نام این دستگاه
+lan_last_update	آخرین به‌روزرسانی {time}
+lan_not_accepted	{n} پذیرفته نشد
+connected_now	اکنون وصل است
+backup_failed	آخرین پشتیبان خودکار شکست خورد: {e}
+backup_overdue	{n} روز پشتیبان نیست — برنامه را روی این دستگاه باز نگه دارید تا بتواند پشتیبان بگیرد.
+disk_low	فقط {mb} مگابایت روی این دستگاه آزاد است — پشتیبان به‌زودی شکست می‌خورد. جا خالی کنید.
+last_seen_devices	آخرین دیده‌شدن: {time}
+sync_interval	همگام هر {secs} ثانیه
+connection_to_shop	اتصال به فروشگاه
+supplier_name_ph	نام تأمین‌کننده (یا طرف)
+supplier_ph	تأمین‌کننده
+switch_device	عوض کردن این دستگاه
+take_payment	گرفتن پرداخت
+tax_added_till	{tax} جدا
+tax_inside_price	{tax} داخل قیمت
+today_books	دفترهای امروز
+unlock_after_pairing	PIN را وارد کنید
+unlock_with_login	باز کردن قفل با ورود
+update_my_password	به‌روزرسانی گذرواژه من
+update_my_pin	پین من را به روز کنید
+duress_heading	PIN باز کردن اضطراری (فقط مالک)
+duress_help	اختیاری. اگر این پین به جای شما در زمان باز کردن قفل تایپ شود، همه ورودی‌های کتاب (رزروها، دفتر کل، تاریخچه) پاک می‌شوند و میز به‌صورت عادی باز می‌شود - نرخ‌ها، مهمانی‌ها، مناطق، کارکنان و تنظیمات باقی می‌مانند. طرحواره و پیکربندی حذف نمی شوند. فقط در صورتی استفاده کنید که مجبور به باز کردن قفل هستید. خالی بگذارید و ذخیره کنید تا خاموش شود. هرگز مانند پین کسی نیست.
+duress_pin_ph	PIN اضطراری (۴–۱۲ رقم)
+duress_confirm_ph	برای تأیید دوباره بنویسید
+save_duress_pin	ذخیره PIN اضطراری
+clear_duress_pin	خاموش کردن PIN اضطراری
+duress_on	PIN باز کردن اضطراری روشن است
+duress_off	PIN باز کردن اضطراری خاموش است
+duress_saved	PIN باز کردن اضطراری ذخیره شد
+duress_cleared	PIN باز کردن اضطراری خاموش شد
+vehicle_ph	وسیله نقلیه
+void	ابطال
+write_off_ap	سوخت AP
+write_off_nil	سوخت / مانده صفر
+zone_ph	منطقه (نام از نرخ ها)
+caption_today	امروز
+caption_bookings	رزرو
+caption_payments_today	پرداخت‌های امروز
+caption_outstanding	مانده
+caption_bank	بانک
+paid_by	پرداخت‌کننده
+second_way	راه دوم
+weight_in	وزن در
+size_in	اندازه در
+goods_received	کالای دریافت‌شده
+expense_heading	هزینه
+notes_attach_sale	یادداشت و پیوست (فروش انتخاب‌شده)
+notes_attach_party	یادداشت و پیوست (طرف انتخاب‌شده)
+attachments_last_expense	پیوست‌ها (آخرین هزینه)
+credit_limit_heading	سقف نسیه (طرف انتخاب‌شده / نام‌دار)
+pay_selected_heading	پرداخت انتخاب‌شده (تسویه بدهی / گرفتن پیش‌پرداخت)
+write_off_heading	سوخت کردن (تسویه بدون پرداخت)
+pay_ap_heading	پرداخت آنچه به آن‌ها بدهکاریم (AP)
+country_tax	کشور و مالیات
+extra_tills_heading	صندوق‌های اضافه
+other_devices_help_heading	راه‌اندازی دستگاه‌های دیگر
+other_devices_help	در این دستگاه (سرور): دستگاه‌های دیگر ← اجازه هزینه اضافی. به کد جفت‌سازی و آدرس Wi‑Fi توجه کنید. اگر ظاهر شد روی Allow other devices to connect ضربه بزنید. در رایانه، روی Start with this computer ضربه بزنید. در هر دستگاه دیگری: برنامه را نصب کنید، حالت مشتری را انتخاب کنید، سرور فروشگاه را پیدا کنید (یا آدرس را تایپ کنید)، کد جفت شدن را وارد کنید، اکنون جفت شود. اگر Wi-Fi قطع شد، سفارش‌ها روی دستگاه منتظر می‌مانند و وقتی سرور دوباره پاسخ داد، می‌روند.
+your_brand	نشان شما (درون برنامه)
+units_heading	واحدها
+booking_measures	اقدامات رزرو
+drawer_count	شمارش کشو (اختیاری)
+spreadsheet_csv	صفحه گسترده (CSV)
+bank_reconciliation	تطبیق بانک (با صورتحساب بانک تیک بزنید)
+book_add_product	کتاب - اضافه کردن محصول / نرخ
+book_opening_credit	دفتر — نسیه آغازین
+account_kind	نوع حساب (یکی را بزنید)
+active_ledger	دفتر کل
+actual_total_cap	جمع واقعی
+amend_help	یک فروش را برای اصلاح، ابطال یا بازپرداخت انتخاب کنید. اصلاح همه تاریخچه را نگه می‌دارد. جمع گردشده برابر جمع اعمال‌شده شروع می‌شود — فقط برای گرد کردن عوض کنید. ابطال و بازپرداخت ممکن است PIN مالک یا مدیر بخواهد (بالا نوشته می‌شود؛ با نام شما ثبت می‌شود).
+applied_total_cap	جمع اعمال‌شده
+bank_balance	مانده بانک
+bank_net_today	خالص بانک امروز
+branch_export_help	Export یک عکس فوری روز را در پوشه پشتیبان می نویسد و آن را در کلیپ بورد کپی می کند. برای وارد کردن روز یک خروجی دیگر، فایل آن را به عنوان import_branch_snapshot.json در آن پوشه ذخیره کنید، سپس روی Import ضربه بزنید.
+brand_shown_help	روی صفحه‌های درون برنامه دیده می‌شود. نام و نماد نصب‌شده برنامه روی این دستگاه همان فهرست سکو می‌ماند.
+app_icon	نماد برنامه
+logo_help	نشان اختیاری فروشگاه روی صفحه‌های برنامه.
+onboard_layout	آنچه می‌گیرید
+item_photo_help	اختیاری. بدون عکس، حرف‌های اول نام کالا را نشان می‌دهیم.
+cash_in_hand	نقد در صندوق
+change_my_pin_heading	پین من را تغییر دهید (فقط مال شما)
+connect_to_server	اتصال به سرور
+counter_locked	پیشخوان ۰۱ · قفل
+country_pack_help	بسته کشور نام و محاسبه مالیات، مسیر پرداخت فوری، و شناسه کسب‌وکار روی صورتحساب را می‌گذارد. Kumkaj هیچ‌جا مالیات اظهار نمی‌کند و فاکتور الکترونیکی دولتی صادر نمی‌کند.
+currency_use_help	بگردید و برای هر واحد پول پشتیبانی‌شده استفاده را بزنید.
+day_close_help	ثبت بستن روز این خلاصه (و اختلاف کشو اگر شمرده شده) را در گزارش حسابرسی ذخیره می‌کند. فروش را متوقف نمی‌کند.
+expenses_word	هزینه‌ها
+feature_access_help	دسترسی به ویژگی برای کارکنان انتخاب شده (بعد از اضافه کردن ضربه بزنید)
+footer_local	SQLite محلی · همیشه رایگان · بدون ابر
+fresh_book_moklanjo	تازه = کاتالوگ خالی (بعدا موارد را اضافه کنید). کتاب = نوع سهام افتتاحیه و چه کسی به شما بدهکار است.
+fresh_selected	از نو انتخاب شد — فهرست خالی می‌ماند. وقتی آماده بودید انجام شد را بزنید.
+gross_word	ناخالص
+how_start	چگونه می‌خواهید شروع کنید؟
+later_country_pack	بعداً: تنظیمات → بسته کشور را برای برچسب مالیات و پرداخت اعمال کنید.
+local_badge	محلی
+measures_help_moklanjo	چگونه بسته ها در میز رزرو اندازه گیری می شوند. ابعاد و وزن را در واحدهایی که استفاده می کنید تایپ کنید - استاندارد (سانتی متر، متر، اینچ، فوت · کیلوگرم، گرم، پوند، اونس) یا واحد خودتان که به سانتی متر بر کیلوگرم در بالا (مستقیما یا از طریق واحدهای دیگر) مرتبط است. کتاب ها همیشه کیلوگرم را ثبت می کنند. یک فیلد را برای حفظ آن خالی بگذارید.
+mix_type_hint_moklanjo	مقدار در هر کدام را تایپ کنید (نقد / UPI / کارت / اعتبار). باید به صورت حساب اضافه شود. اعتبار به مشتری فوق نیاز دارد.
+money_in_sales	پول ورودی (فروش)
+more_help_moklanjo	کاتالوگ، فروش، اعتبار، تیم، پشتیبان - به علاوه سهام و هزینه اضافی در صورت نیاز.
+net_word	خالص
+offline_badge	آفلاین
+optional_login_help	ورود اختیاری (شناسه + گذرواژه). مالک یک بار می‌گذارد؛ بعد فقط خود کاربر گذرواژه را عوض می‌کند.
+or_unlock_login	یا با شناسه ورود + گذرواژه قفل را باز کنید
+permission_preset	شغل (تنظیم صفحه نمایش و حقوق)
+preset_help_moklanjo	صندوقدار: فروش. مدیر: فروش + کالا + ابطال/اصلاح.
+product_locked_moklanjo	موکلانجو
+product_only_moklanjo	این برنامه فقط Moklanjo است - کتاب + میز رزرو. دیگر چهره های تجاری به عنوان محصولات جداگانه بعدا ارسال می شوند.
+purchases_cogs	خرید (بهای تمام‌شده)
+qty_cap	تعداد
+restore_help	بازیابی: یک پشتیبان انتخاب کنید. دفترها همان‌گونه که آن زمان بودند باز می‌شوند؛ دفترهای اکنون اول ذخیره می‌شوند، پس این کار واگرد می‌شود.
+wipe_data_heading	حذف داده محلی
+wipe_data_help	فقط مالک - گزینه‌های مشابه حذف نصب ویندوز. سوابق تجاری تاریخچه معاملات را پاک می کند اما نرخ ها و تنظیمات را حفظ می کند (مانند پین باز کردن قفل اضطراری). راه اندازی فروشگاه پایگاه داده کتاب ها را حذف می کند. تنظیمات برگزیده صفحه پنجره/زبان را پاک می کند. با پین مالک تأیید کنید. پین باز کردن قفل اضطراری در تیم جداگانه است (پاک کردن مخفی هنگام باز کردن قفل).
+wipe_trading	سابقه کسب‌وکار
+wipe_schema	راه‌اندازی فروشگاه
+wipe_ui	ترجیح صفحه
+wipe_owner_pin_ph	PIN مالک برای حذف
+wipe_delete_selected	حذف انتخاب‌شده
+wipe_owner_only	فقط مالک می‌تواند داده محلی را حذف کند.
+restore_owner_only	فقط مالک می‌تواند پشتیبان را بازیابی کند.
+wipe_owner_pin_needed	برای حذف داده محلی PIN مالک را وارد کنید.
+wipe_nothing_selected	اول انتخاب کنید چه چیزی حذف شود.
+wipe_done	داده محلی انتخاب‌شده حذف شد.
+wipe_schema_done	راه‌اندازی فروشگاه پاک شد — برای ادامه سرور یا کلاینت را انتخاب کنید.
+rounded_total	جمع گردشده
+setup_app_moklanjo	Moklanjo را راه اندازی کنید
+shop_logo_optional	نشان فروشگاه (اختیاری)
+stock_type_help	نام کالا را بنویسید (بخشی کافی است)، یک تعداد، سپس اصلاح کنید. کالاهایی که هنوز شمرده نمی‌شوند یک بار به شروع شمارش نیاز دارند.
+team_owner_help	استخدام: یک شغل (صندوق / مدیر)، نام + پین شروع و سپس افزودن انتخاب کنید. فقط در صورتی که این شخص متفاوت باشد: صفحه‌ها و حقوق زیر را باز کنید، سپس تنظیمات کار را ذخیره کنید. هر کس پین خود را در پایین تغییر می دهد - مالک نمی تواند پین شخص دیگری را تغییر دهد.
+they_owe_us	آن‌ها به ما بدهکارند
+unit_at_cap	واحد @
+units_help	کد برچسب کالا (kg، دانه، کیسه). هر واحد باید — مستقیم یا از راه واحدهای دیگر — به یک استاندارد وصل شود (kg · cm · ml · دانه)، مثلاً ۱ صندوق = ۲ جعبه و ۱ جعبه = ۲۰ cm. تبدیل: ۱ از = ضریب به. واحد پول هرگز واحد نیست.
+we_owe_them	ما به آن‌ها بدهکاریم
+who_unlocking	چه کسی قفل را باز می‌کند؟
+locked_word	قفل
+show_pin	نمایش PIN
+hide_pin	پنهان کردن PIN
+set_owner_pin	گذاشتن PIN مالک
+enter_owner_passcode	ورود رمز مالک
+enter_staff_passcode	ورود رمز کارکنان
+pin_count_zero	۰ / ۱۲ رقم · دست‌کم ۴، سپس تأیید
+pin_count_need	{} / ۱۲ رقم · {} تا دیگر لازم است
+pin_count_full	۱۲ / ۱۲ رقم · تأیید را بزنید
+pin_count_ready	{} / ۱۲ رقم · وقتی آماده بودید تأیید را بزنید
+pin_hint_choose	۴–۱۲ رقم انتخاب کنید · Enter یا باز کردن قفل برای ذخیره
+pin_hint_new	PIN تازه مالک ۴–۱۲ رقم · Enter یا باز کردن قفل
+pin_hint_shop_code	دستگاه فروشگاه · کد جفت‌سازی {}
+pin_hint_books	این دستگاه دفترها را نگه می‌دارد
+pin_hint_paired	صندوق اضافه جفت شد — برای فروش قفل را باز کنید
+pin_hint_pair_first	صندوق اضافه — اول با دستگاه فروشگاه جفت شود
+unlock_to_continue	برای ادامه قفل را باز کنید
+no_staff_yet	هنوز کارمندی نیست — به‌عنوان مالک قفل را باز کنید، سپس تیم
+status_server_set_pin	حالت سرور — PIN مالک را بگذارید
+status_server_tills	حالت سرور — صندوق اضافه می‌تواند بپیوندد. قفل را باز کنید
+status_server_unlock	حالت سرور — به‌عنوان مالک قفل را باز کنید
+status_client_unlock	حالت کلاینت — برای فروش قفل را باز کنید
+icon_new_selected	نماد: فایل تازه انتخاب شد — ذخیره نشان را بزنید
+icon_custom	نماد: نشان سفارشی محل
+icon_default	نماد: نشان Kumkaj (پیش‌فرض) — یکی سفارشی انتخاب کنید
+logo_yours	نشان: نشان فروشگاه شما — روی صفحه و رسید دیده می‌شود
+logo_default	نشان: نشان Kumkaj (پیش‌فرض) — اگر دارید مال خودتان را انتخاب کنید
+tmpl_current	فعلی: {} — {}
+tmpl_selected	انتخاب‌شده: {} — {}
+setup_complete	راه‌اندازی تمام شد
+onboard_fresh_tmpl	از نو · {} — فهرست خالی شروع می‌شود؛ کالا را در کالاها بیفزایید، سپس انجام شد.
+onboard_book_tmpl	دفتر · {} — کالا و نسیه آغازین را بیفزایید، سپس انجام شد.
+onboard_template_tmpl	اگر خواستید به محل نام بدهید، سپس نحوه شروع را انتخاب کنید.
+tmpl_blurb	کتاب پیک و میز رزرو: فرستنده، حامل، کتاب روز، AWB.
+tmpl_how	بسته ها را روی میز رزرو کنید. کتاب روز برای امروز؛ زبانه ها برای نرخ ها، مهمانی ها، گزارش ها.
+trk_booked	رزرو شده است
+trk_picked_up	برداشت
+trk_in_transit	در حال حمل و نقل
+trk_delivered	تحویل داده شد
+trk_rto	بازگشت به فرستنده
+lane_to_dispatch	برای اعزام
+lane_with_carrier	با حامل
+lane_failed	شکست خورد
+lane_done_today	امروز انجام شد
+ops_board_help	بسته ها بر اساس جایی که در کار امروزی هستند. برای انتخاب بسته‌ها (یا اسکن آنها) ضربه بزنید، سپس روی همه انتخاب‌شده‌ها به یکباره عمل کنید - هر خط فقط حرکات متناسب با آن را ارائه می‌دهد.
+lane_empty	فعلا اینجا چیزی نیست
+picked_fmt	{n} انتخاب شد
+pick_all	همه را انتخاب کنید
+bag_for_carrier	دست به حامل
+send_with_rider	ارسال با سوار
+out_again	دوباره بیرون
+return_to_sender	بازگشت به فرستنده
+runs_bags_heading	اجراها و کیف های اخیر
+print_word	چاپ کنید
+bag_word	کیف حمل
+run_word	دویدن سوار
+parcels_fmt	بسته های {n}
+parcel_history	تاریخچه
+attempt_fmt	{n} را امتحان کنید
+pieces_short_fmt	عدد {n}
+note_reason_ph	یادداشت یا دلیل
+ops_pick_first	ابتدا بسته ها را انتخاب کنید - روی آنها ضربه بزنید یا آنها را اسکن کنید
+cod_to_collect	تحویل داده شده - COD برای جمع آوری
+cod_on_road	COD هنوز در جاده است
+cod_owed_consignors	جمع آوری شده - پرداخت به فرستنده
+cod_rto_fees	هزینه های RTO برای جمع آوری
+cod_to_hand_in	COD برای تحویل دادن
+parcel_one_fmt	بسته {n}
+facet_bank_title	گزارش‌ها
+facet_bank_help	دفتر روز، سن مانده طرف، ثبت بانک و سود و زیان دوره.
+facet_ops_title	محموله و ارسال
+facet_ops_help	AWB ← یافتن را اسکن یا تایپ کنید، سپس پیش ببرید / برچسب / COD را چاپ کنید. ارسال به سوار یا حامل.
+facet_cod_title	ثبت COD
+facet_cod_help	هنگام تحویل جمع آوری کنید، سپس به فرستنده حواله کنید.
+facet_riders_title	سواران (ناوگان شخصی)
+facet_riders_help	سواران را اضافه کنید، سپس AWB های رزرو شده را از Ops ارسال کنید.
+against_bill_ph	در برابر شماره صورتحساب بالا (اختیاری)
+aliases_ph	نام‌های دیگر — با ویرگول جدا
+amount_blank_full_ph	مبلغ (خالی = همه مانده)
+amount_owed_ph	مبلغ بدهی
+amount_ph	مبلغ
+amount_received_ph	مبلغ دریافت‌شده
+amount_we_pay_ph	مبلغی که می‌پردازیم
+awb_scan_ph	AWB / اسکن بارکد
+bulk_csv_ph	CSV انبوه - مقصد، گیرنده، کیلوگرم، cod_paise، یادداشت
+business_name_ph	نام کسب‌وکار
+category_new_ph	دسته (اختیاری، اگر تازه باشد ساخته می‌شود)
+cod_amount_ph	مقدار COD
+code_bag_ph	کد (کیسه)
+conv_factor_ph	ضریب (۲۵ = ۱ کیسه → ۲۵ kg)
+country_code_ph	کد کشور مثلاً IN, GB, US, AE, BR
+credit_khata_amount_ph	مبلغ نسیه / خاتا
+credit_limit_ph	سقف نسیه (۰ = هیچ)
+dim_unit_code_ph	کد واحد ابعاد (سانتی متر)
+divisor_ph	مقسوم علیه حجمی (5000)
+extra_per_kg_ph	اضافی / کیلوگرم
+first_amount_ph	مقدار اول
+first_kg_ph	کیلوگرم اول (دال)
+from_code_ph	از کد (کیسه)
+item_name_lang_ph	نام کالا — به زبان خودتان بنویسید
+login_id_opt_ph	نام کاربری (لازم، یکتا)
+manager_pin_ph	PIN مدیر برای تأیید (فقط اگر نمی‌توانید ابطال کنید)
+new_branch_name_ph	نام شعبه تازه
+new_password_ph	گذرواژه تازه (اختیاری)
+new_pin_ph	PIN تازه (۴–۱۲ رقم)
+note_bank_ph	یادداشت (واریز، برداشت، …)
+note_buy_expense_ph	یادداشت (سوخت، اجاره، …)
+note_expense_ph	یادداشت (سوخت، دفتر، …)
+notify_phone_ph	تلفن اطلاع رسانی (واتس اپ/اس ام اس هوک)
+options_moklanjo_ph	گزینه ها (اختیاری) - بزرگ = 20، بسته بندی هدیه = 10
+part_second_way_ph	بخش با راه دوم (اختیاری)
+phone_ph	تلفن
+address_ph	آدرس
+party_custom_fields_heading	فیلدهای سفارشی (طرف انتخابی)
+party_custom_help	هر برچسب و ارزشی را به این مهمانی اضافه کنید - WhatsApp، GSTIN، کد مسیر، …
+party_custom_key_ph	نام فیلد (به عنوان مثال WhatsApp)
+party_custom_value_ph	ارزش
+party_custom_add	فیلد اضافه کنید
+party_custom_remove	حذف فیلد
+party_custom_empty	هنوز هیچ فیلد سفارشی وجود ندارد
+party_custom_pick_first	یک طرف را برای افزودن فیلدهای سفارشی انتخاب کنید
+place_name_ph	نام این محل
+price_ph	قیمت
+qty_example_ph	تعداد (مثلاً ۱٫۵ برای kg)
+quantity_ph	مقدار
+reason_required_ph	دلیل (لازم)
+role_title_ph	عنوان نقش (مثلاً باریستا)
+service_pct_ph	درصد سرویس اختیاری ۰/۱۰/۱۲
+short_code_ph	کد کوتاه (MG02)
+slab_kg_ph	دال قابل شارژ در کیلوگرم (0.5)
+staff_name_ph	نام / شناسه کارمند
+starting_password_ph	گذرواژه آغازین (اختیاری)
+starting_pin_ph	PIN آغازین (۴–۱۲ رقم)
+tax_rate_ph	نام یا درصد نرخ مالیات — استاندارد، کاهش‌یافته، ۰، ۵، ۱۲، ۱۸، ۲۰
+to_code_ph	به کد (kg)
+uncleared_no_ph	شماره تطبیق‌نشده بالا
+unit_cost_ph	بهای واحد
+unit_kg_blank_ph	واحد (کیلوگرم یا خالی)
+unit_name_bag_ph	نام (کیسه)
+weight_unit_code_ph	کد واحد وزن (کیلوگرم)
+zone_name_ph	نام منطقه
+pay_credit	نسیه
+book_kind_today	دفترهای امروز
+book_kind_month	دفترهای این ماه
+book_kind_aging	مانده / بدهکار-بستانکار
+book_kind_balance	ترازنامه
+ops_desk_help	AWB را با اسکنر بارکد USB اسکن کنید (یا تایپ کنید) → Find. سپس پیش بروید، برچسب چاپ کنید، یا COD را جمع آوری کنید. چاپ لیبل کد 128.
+role_help_consignor	نقش: فرستنده - AR (آنها به ما مدیون هستند). همین شرکت می تواند کریر نیز باشد.
+role_help_carrier	نقش: حامل - AP (ما مدیون آنها هستیم). همان شرکت می تواند فرستنده نیز باشد.
+role_help_both	نقش ها: فرستنده + حامل - یک طرف، دفتر کل AR و AP، خالص در گزارش ها.
+role_help_supplier	نقش: تامین کننده - AP برای خرید.
+lane_declared_label	رزرو حساب
+lane_owner_label	رزرو نقدی
+money_lane_bill	صورتحساب: {lane}

@@ -1,0 +1,835 @@
+# Thai — ไทย (th). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	บัญชีขนส่ง + โต๊ะรับส่ง ฟรีออฟไลน์
+unlock	ปลดล็อก
+pin_hint	PIN เจ้าของเริ่มต้นที่ 0000
+sell	การจอง
+buy	จ่ายออก
+books	สมุดรายวัน
+books_help	สถานะวันนี้ การจอง = พัสดุเข้า การจ่ายออก = บิลผู้ขนส่งและค่าใช้จ่าย คู่ค้า = ผู้ส่งและผู้ขนส่ง
+buy_help	ใบค่าใช้จ่ายและบิลผู้ขนส่ง (เงินออก) รายการลงบัญชีคงอยู่ในบัญชีคู่ค้า
+sell_money_in	จองพัสดุ
+buy_money_out	ค่าใช้จ่าย / บิลผู้ขนส่ง
+record_purchase	บันทึกซื้อ
+add_expense	ใบค่าใช้จ่าย
+bank_book	สมุดธนาคาร
+credit_help	รหัสคู่ค้าไม่ซ้ำ (ชื่อซ้ำได้) บทบาท: ผู้ส่ง (AR), ผู้ขนส่ง (AP), หรือทั้งสองในรหัสเดียว บัญชีแยกกัน รายงานแสดงยอดสุทธิ
+party_kind_ph	บทบาทกำหนดเอง (ไม่บังคับ) — หรือแตะชิปด้านบน
+parties_list_heading	คู่ค้าที่บันทึก
+reports_help	สมุดรายวัน ลูกหนี้และเจ้าหนี้ สมุดธนาคาร ใบค่าใช้จ่าย กำไรและขาดทุน
+reports_today	สมุดรายวัน (วันนี้)
+reports_month	กำไรและขาดทุน (เดือน)
+reports_aging	ค้างชำระ / Dr-Cr
+reports_balance_sheet	งบดุล
+reports	รายงาน
+refresh	รีเฟรช
+undo	เลิกทำ
+start_tracking	เริ่มนับ
+stock_minus	− สต็อก
+stock_plus	+ สต็อก
+settle_cash	ชำระเงินสด
+settle_card	ชำระบัตร
+items	อัตราและบริการ
+nav_items	อัตรา
+more	เพิ่มเติม
+your_items	อัตราของคุณ
+items_help	แต่ละแถวคืออัตรา (เช่น Surface Zone A) หน่วยโดยทั่วไปคือ kg แตะเพื่อแก้ไข
+add_item	เพิ่มอัตรา
+new_item	อัตราใหม่
+adding_item	กำลังเพิ่มอัตราใหม่
+editing_item	กำลังแก้ไข
+save	บันทึก
+remove	ลบออก
+empty_catalog	ยังไม่มีอัตรา เปิดอัตราและบริการ เพิ่มหนึ่งรายการ (ชื่อ + ราคา หน่วย kg) แล้วจอง
+counter_sale	จองที่เคาน์เตอร์
+total	รวม
+cash	เงินสด
+upi	UPI
+card	บัตร
+credit	คู่ค้า
+clear	ล้าง
+ready_to_sell	พร้อมจอง
+today_prefix	วันนี้
+today_mid	วันนี้
+owed	ค้าง
+round_word	ปัดเศษ
+back	กลับ
+sold_out	หมด
+restock	เติม
+not_tracked	ไม่นับ
+in_stock	ในสต็อก
+marked_sold_out	ทำเครื่องหมายหมด
+add_upper	เพิ่ม
+na	ไม่มี
+qty	จำนวน
+unit_at	ราคา
+actual	จริง
+applied	ที่ใช้
+note_ph	หมายเหตุ (ไม่บังคับ)
+rounded	ปัดแล้ว
+split	แบ่ง
+counter	เคาน์เตอร์
+parcel	พัสดุ
+order	ออเดอร์
+sales	การจอง
+sales_refunds	การจองและการคืนเงิน
+day_close	ปิดวัน
+reports_expenses	รายงานและค่าใช้จ่าย
+nav_reports	รายงาน
+nav_settings	การตั้งค่า
+nav_lock	ล็อก
+sidebar_settings	การตั้งค่าแถบด้านข้าง
+sidebar_settings_help	ไอคอนเหมือนกับแถบด้านข้าง ลากแถวเพื่อจัดลำดับใหม่ เปิดหรือปิดสวิตช์เพื่อแสดงหรือซ่อน การตั้งค่าและล็อคจะอยู่บนแถบเสมอ
+sidebar_always_on_short	เปิดใช้งานเสมอ
+sidebar_back_settings	กลับ
+sidebar_shown	แสดงออก
+sidebar_hidden	ซ่อน
+sidebar_always_on	เสมอที่บาร์
+sidebar_shown_hint	แสดงที่แถบด้านข้าง / แท็บด้านล่าง
+sidebar_hidden_hint	ซ่อนจากบาร์
+sidebar_menu_items	เมนูและรายการ
+sidebar_enable_all	เปิดใช้งานทั้งหมด
+sidebar_disable_all	ปิดใช้งานทั้งหมด
+sidebar_order_saved	คำสั่งซื้อในแถบด้านข้างบันทึกแล้ว
+sidebar_visibility_saved	ความโปร่งใสของแถบด้านข้างบันทึกแล้ว
+amounts_hide	ซ่อน
+amounts_show	แสดง
+no_sale_yet	ยังไม่มีการขาย
+favorites	รายการโปรด
+favorites_help	สินค้าที่คุณขายบ่อย บันทึกไว้สำหรับบัญชีของคุณ เพิ่มหนึ่งรายการลงบิล หรือสร้างรายการจากสินค้าทั้งหมดด้านล่าง
+your_favorites	รายการโปรดของคุณ
+all_items	สินค้าทั้งหมด
+no_favorites	ยังไม่มีรายการโปรด — เพิ่มสินค้าจากรายการด้านล่าง
+add_to_bill	เพิ่มลงบิล
+added	เพิ่มแล้ว
+owes_word	เป็นหนี้
+selected_word	เลือกแล้ว
+chip_clear_credit	เคลียร์ — ให้เครดิตหรือรับเงินล่วงหน้า
+chip_missing_customer	ไม่พบลูกค้าที่เลือก — เลือกอีกครั้ง
+chip_no_customer	ยังไม่มีลูกค้า — เขียนชื่อ แล้วแตะเครดิต
+credit_summary_fmt	{} ลูกค้า · เครดิตเปิด {} · เงินล่วงหน้าที่เก็บ {}
+recent_label	ล่าสุด:
+inventory	สต็อก
+inventory_stock	สต็อกและการนับ
+branches	สาขา
+branches_org	สาขาและองค์กร
+credit_customers	คู่ค้า (ลูกหนี้และเจ้าหนี้)
+customer_name_ph	ชื่อคู่ค้า
+new_customer_ph	ชื่อคู่ค้าใหม่
+item_name_ph	ชื่ออัตรา (เช่น Surface Zone A)
+item_price_ph	ต่อ kg / ช่วงแรก
+start_template	สินค้า
+next_booking	การจองถัดไป
+destination_ph	เมือง / โซนปลายทาง
+consignee_ph	ผู้รับ
+consignee_phone_ph	โทรศัพท์ผู้รับ
+consignee_address_ph	ที่อยู่จัดส่ง
+origin_name_ph	ชื่อผู้ส่ง
+origin_phone_ph	โทรศัพท์ผู้ส่ง
+origin_address_ph	ที่อยู่รับของ / ต้นทาง
+booking_consignor_heading	ผู้ส่ง (ลูกค้า)
+booking_consignee_heading	ผู้รับ
+booking_consignor_hint	เลือกคู่ค้าเพื่อเติมข้อมูล หรือเว้นว่างสำหรับลูกค้าหน้าร้าน จำเป็นสำหรับรับพัสดุถึงบ้านและ RTO
+booking_consignee_hint	ผู้รับพัสดุ เว้นว่างไว้สำหรับพัสดุที่ลูกค้านำมาส่งที่เคาน์เตอร์เอง
+weight_kg_ph	กก. จริง
+length_cm_ph	ยาว cm
+breadth_cm_ph	กว้าง cm
+height_cm_ph	สูง cm
+chargeable_kg	กก. คิดเงิน
+awb_label	AWB
+booking_help	วอล์กอิน: ปลายทาง → ชั่งน้ำหนัก → เลือกอัตรา → ลงบัญชี/เงินสด → ชำระ หมายเลข AWB พิมพ์บนใบเสร็จ การจองถัดไปจะล้างโต๊ะ
+cart_empty_hint	โต๊ะว่าง — ตั้งปลายทางและน้ำหนัก แตะ ADD ที่อัตรา แล้วชำระเงิน
+team	ทีม
+team_pins	ทีมและ PIN
+my_pin_settings	PIN ของฉัน
+settings_hub_help_my_pin	เปลี่ยน PIN ปลดล็อกของคนที่ลงชื่อเข้าใช้บนอุปกรณ์นี้
+team_self_help	มีเพียงคุณที่เปลี่ยน PIN ปลดล็อกของตัวเองได้ (และรหัสผ่านเข้าใช้ถ้ามี) ถามเจ้าของถ้าต้องการหน้าจอหรือสิทธิ์อื่น
+backup_settings	สำรองและการตั้งค่า
+lock_app	ล็อก
+pick	เลือก
+select	เลือก
+advance	ถัดไป
+owner	เจ้าของ
+staff	พนักงาน
+photo	รูป
+auto	อัตโนมัติ
+prev	ก่อนหน้า
+next	ถัดไป
+ok	ตกลง
+this_shop	โหมดเซิร์ฟเวอร์
+extra_till	โหมดไคลเอนต์
+off	ปิด
+server	เซิร์ฟเวอร์
+client	ไคลเอนต์
+language_currency	ภาษาและสกุลเงิน
+language	ภาษา
+choose_language	เลือกภาษาของคุณ
+language_setup_hint	ใช้ภาษาของอุปกรณ์นี้ หรือเลือกเอง
+lang_follow_platform	ใช้ภาษาของอุปกรณ์
+lang_pick_user	ใช้ภาษาที่เลือก
+lang_platform_now	ภาษาอุปกรณ์ตอนนี้
+selected_language	ที่เลือก
+continue	ดำเนินการต่อ
+this_device	อุปกรณ์นี้
+device_use_q	อุปกรณ์นี้จะใช้อย่างไร
+last_server_mode	เคยเป็นเซิร์ฟเวอร์ — แตะเพื่อดำเนินการต่อ
+last_client_mode	เคยเป็นไคลเอนต์ — แตะเพื่อดำเนินการต่อ
+choose_server	เลือกเซิร์ฟเวอร์
+choose_server_hint	อุปกรณ์นี้มีเซิร์ฟเวอร์อยู่แล้ว เปิดหนึ่งเครื่อง หรือสร้างเซิร์ฟเวอร์ใหม่สำหรับธุรกิจอื่น
+create_new_server	สร้างเซิร์ฟเวอร์ใหม่
+open_server	เปิด
+new_server_name_ph	ชื่อเซิร์ฟเวอร์ใหม่ (ไม่บังคับ)
+server_remove_pin_ph	Owner PIN เพื่อลบเซิร์ฟเวอร์
+only_owner_remove_server	เฉพาะ Owner เท่านั้นที่ลบเซิร์ฟเวอร์ได้
+owner_pin_remove_server	ต้องใช้ Owner PIN เพื่อลบเซิร์ฟเวอร์นี้
+device_setup_help	เซิร์ฟเวอร์เก็บบัญชีไว้ที่นี่ ไคลเอนต์จับคู่กับเซิร์ฟเวอร์
+currency	สกุลเงิน
+backup	สำรองข้อมูล
+settings_sec_diag	การวินิจฉัย
+settings_hub_help	เปิดทีละส่วน — เลื่อนน้อยลง ตัวเลือกชัดขึ้น
+settings_sec_devices	เคาน์เตอร์เสริมและสาขา
+settings_sec_alerts	การแจ้งเตือน
+alerts_help	ข้อความสถานะจะแสดงบนจอนานเท่าใดสำหรับคุณ (การเข้าสู่ระบบนี้)
+snack_secs_ph	วินาที (3–60 ค่าเริ่มต้น 10)
+snack_secs_save	บันทึกเวลาแจ้งเตือน
+snack_secs_saved	บันทึกเวลาแจ้งเตือนแล้ว — {n} วินาที
+snack_secs_bad	ใส่วินาทีเป็นตัวเลข (3–60)
+cancelled	ยกเลิกแล้ว
+cancel	ยกเลิก
+opening_client	เปิดลูกค้า…
+preparing_desk	เตรียมโต๊ะ…
+opening_server	เปิดพนักงานเสิร์ฟ…
+creating_server	สร้างพนักงานเสิร์ฟ…
+diag_privacy_help	บันทึกจะอยู่บนอุปกรณ์นี้เท่านั้น ข้อมูลลับ (รหัสผ่าน, รหัสผ่าน) จะไม่ถูกเก็บไว้ การแบ่งปันแพ็กเกจออกจากอุปกรณ์ต้องการการอนุมัติของคุณทุกครั้ง — ไม่เคยขายหรือมอบให้บุคคลที่สาม
+diag_level	ระดับรายละเอียด
+diag_level_error	ข้อผิดพลาด
+diag_level_warn	คำเตือน
+diag_level_info	ข้อมูล
+diag_level_debug	แก้ไขข้อบกพร่อง
+diag_support_start	เริ่มเซสชันสนับสนุน 30 นาที
+diag_support_stop	จบเซสชันสนับสนุน
+diag_support_started	เปิดใช้งานเซสชันสนับสนุน — รายละเอียดการแก้ไขข้อบกพร่องเป็นเวลา 30 นาที
+diag_support_ended	เซสชันสนับสนุนสิ้นสุดลง
+diag_export_local	ส่งสำเนาไปยังที่เก็บข้อมูลท้องถิ่น
+diag_export_local_done	สำรองข้อมูลพร้อมใช้งานที่ {path} — เลือกตำแหน่งที่จะบันทึกสำเนา
+diag_approve_send	อนุมัติการแบ่งปันออกจากอุปกรณ์นี้
+diag_send_heading	แชร์ออกจากอุปกรณ์นี้
+diag_send_help	การอนุมัติเป็นหนึ่งแพ็กเกจแล้วจะหมดอายุชั่วคราว ใช้เฉพาะเพื่อแก้ไขปัญหาหรือปรับปรุงผลิตภัณฑ์ ไม่ถูกแบ่งปันกับบุคคลที่สาม ทำงานบน Linux, Windows, macOS และ Android
+optional_login_heading	เข้าสู่ระบบแบบเลือกได้
+rights_heading	สิทธิ์
+booking_scope_heading	ในประเทศ / ระหว่างประเทศ
+diag_send_approved	แบ่งปันได้รับการอนุมัติสำหรับหนึ่งแพ็กเกจ (ใกล้หมดอายุ)
+diag_export_send	สร้างแพ็กเกจแบ่งปัน (ต้องการการอนุมัติ)
+diag_export_send_done	แพ็กเกจแบ่งปันพร้อมใช้งานที่ {path} — เลือกตำแหน่งที่จะบันทึก แล้วส่งเฉพาะไปยังทีมสนับสนุน Kumkaj
+diag_save_bundle	บันทึกสำเนาสำรองข้อมูล
+diag_bundle_saved	บันทึกสำเนาสำรองข้อมูลไปที่ {path}
+diag_bundle_failed	ไม่สามารถบันทึกสำเนาสำรองข้อมูลได้ — ลองอีกครั้ง
+diag_clear	ลบบันทึกการวินิจฉัย
+diag_cleared	ลบบันทึกการวินิจฉัยแล้ว
+use	ใช้
+add_branch	เพิ่มสาขา
+add_conversion	เพิ่มการแปลง
+add_item_plain	เพิ่มรายการ
+add_note	เพิ่มหมายเหตุ
+add_opening_balance	เพิ่มยอดยกมา
+add_rider	เพิ่มไรเดอร์
+add_staff	เพิ่มพนักงาน
+add_unit	เพิ่มหน่วย
+add_use_name	เพิ่ม / ใช้ชื่อนี้
+allow_extra_tills	อนุญาตเคาน์เตอร์เสริม
+amend	แก้ไข
+apply_country_pack	ใช้แพ็กประเทศ
+datetime_appearance	การปรากฏของวันที่และเวลา
+datetime_appearance_help	สมุดเก็บวันที่แบบปีนำหน้า RFC3339 ไว้ภายใน สิ่งนี้เปลี่ยนเพียงวิธีที่วันและนาฬิกาแสดงบนใบเสร็จ ฉลาก รายงาน และหน้าจอ
+datetime_example	ตัวอย่างตอนนี้: {ex}
+date_order	ลำดับวันที่
+date_order_dmy	D/M/Y
+date_order_mdy	M/D/Y
+date_order_ymd	Y-M-D
+time_format	นาฬิกา
+time_format_24h	24 ชั่วโมง
+time_format_12h	12 ชั่วโมง
+attach_bill_photo	แนบรูปบิล
+attach_pdf	แนบ PDF
+attach_photo	แนบรูป
+bank	ธนาคาร
+bank_in	เข้าธนาคาร
+bank_out	ออกจากธนาคาร
+bank_to_till	ธนาคาร → เคาน์เตอร์
+till_to_bank	เคาน์เตอร์ → ธนาคาร
+mark_cleared	ทำเครื่องหมายเคลียร์
+unmark	ยกเลิกเครื่องหมาย
+role_both	ทั้งสอง
+role_carrier	ผู้ขนส่ง
+role_cashier	แคชเชียร์
+role_consignor	ผู้ส่ง
+role_manager	ผู้จัดการ
+role_supplier	ผู้จัดหา
+branch_name_sell_ph	ชื่อสาขาที่จะขาย
+bring_my_book	นำสมุดของฉันมา
+business_tax_id_ph	เลขภาษีธุรกิจ
+card_amount_ph	ยอดบัตร
+cash_amount_ph	ยอดเงินสด
+upi_amount_ph	ยอด UPI
+carrier_cost_ph	ต้นทุนผู้ขนส่ง
+carrier_party_ph	คู่ค้าผู้ขนส่ง
+choose_icon	เลือกไอคอน
+choose_logo	เลือกโลโก้
+choose_receipt_stamp	เลือกตราประทับใบเสร็จ
+choose_payment_qr	เลือก QR ชำระเงิน
+clear_icon	ลบไอคอน
+clear_logo	ลบโลโก้
+clear_photo	ลบรูป
+clear_stamp	ล้างตราประทับ
+clear_payment_qr	ล้าง QR ชำระเงิน
+print_faces	รูปแบบพิมพ์ (ใบเสร็จ / บิลตามรอบ)
+print_faces_help	ตราประทับและ QR ชำระเงิน (ไม่บังคับ) ข้างโลโก้บนใบรับฝากและบิลตามรอบ
+awb_pools_heading	ชุดเลข AWB ของผู้ขนส่ง
+add_awb_pool	เพิ่มชุดเลข AWB
+awb_pool_carrier_ph	ชื่อผู้ขนส่ง
+awb_pool_start_ph	เลขเริ่มต้น
+awb_pool_end_ph	เลขสุดท้าย
+awb_pool_prefix_ph	คำนำหน้า (ไม่บังคับ)
+awb_pool_label_ph	ป้ายชื่อ (ไม่บังคับ)
+pieces_ph	จำนวนชิ้น (ว่าง = 1) — ขยายสำหรับสินค้า / หลายชิ้น
+bulk_awbs_ph	AWB หลายรายการ — วางหลายเลข (ขึ้นบรรทัดใหม่หรือจุลภาค) เพื่อเลื่อนสถานะพร้อมกัน
+tds_cut_ph	หัก TDS (ไม่บังคับ)
+discount_ph	ส่วนลด (ไม่บังคับ)
+cheque_no_ph	เลขที่เช็ค (ไม่บังคับ)
+bill_reminder_chase	รายการทวงบิล
+month_mix_report	รายงานส่วนผสมเดือน
+copy_month_gst_csv	คัดลอก CSV GST เดือน
+domestic	ในประเทศ
+international	ระหว่างประเทศ
+pick_logo	เลือกโลโก้
+booking_scope_hint_domestic	ปริมาตร ÷5000 (ในประเทศ) — ระหว่างประเทศ ÷6000
+booking_scope_hint_intl	ปริมาตร ÷6000 (ระหว่างประเทศ) — ในประเทศ ÷5000
+cod_register	ทะเบียน COD
+collect_cod	เก็บ COD (AWB)
+consignments_dispatch	พัสดุและการจัดส่ง
+consignor_party_ph	ผู้ส่ง / ชื่อคู่ค้า
+copy_day_book_csv	คัดลอก CSV สมุดรายวัน
+copy_day_close	คัดลอกปิดวัน
+copy_items_csv	คัดลอก CSV รายการ
+copy_outstanding_csv	คัดลอก CSV ค้างชำระ
+copy_parties_csv	คัดลอก CSV คู่ค้า
+copy_party_ledger_csv	คัดลอก CSV บัญชีคู่ค้า
+copy_receipt	คัดลอกใบเสร็จ
+copy_report	คัดลอกรายงาน
+counted_cash_ph	เงินสดที่นับในลิ้นชัก
+counter_agency_ph	ชื่อเคาน์เตอร์ / ตัวแทน (ไม่บังคับ)
+create_backup	สร้างข้อมูลสำรอง
+day_close_summary	สรุปปิดวัน
+delete_party	ลบคู่ค้าที่เลือก
+dispatch_to_rider	จองแล้ว → ให้ไรเดอร์
+docket_charge_ph	ค่าธรรมเนียมใบส่ง
+declared_value_ph	มูลค่าที่แจ้ง
+contents_ph	เนื้อหา
+eway_ph	เลข e-way bill
+insurance_label	ประกัน (ใช่/ไม่)
+yes_label	ใช่
+no_label	ไม่
+print_route_label	เส้นทางพิมพ์
+new_party_kind_label	ประเภทคู่ค้าใหม่
+done_open_books	เสร็จ — เปิดบัญชี
+export_day	ส่งออกวัน
+extra_note_expense_ph	หมายเหตุเพิ่มในค่าใช้จ่ายล่าสุด
+extra_note_awb_ph	หมายเหตุเพิ่มใน AWB / การขายนี้
+failed_delivery	ส่งไม่สำเร็จ
+find_scan_awb	ค้นหา / สแกน AWB
+forget_shop	ลืมร้านนี้
+fuel_ph	เชื้อเพลิง
+handover_carrier	จองแล้ว → ให้ผู้ขนส่ง
+import_day	นำเข้าวัน
+import_items_csv	นำเข้า CSV รายการ / อัตรา…
+import_parties_csv	นำเข้า CSV คู่ค้า…
+import_pincodes_csv	นำเข้า CSV รหัสไปรษณีย์…
+import_carrier_bill_csv	นำเข้า CSV บิลผู้ขนส่ง…
+copy_carrier_bill_report	คัดลอกรายงานบิลผู้ขนส่งล่าสุด
+use_carrier_cost	ใช้ต้นทุนผู้ขนส่ง
+rate_carrier_ph	ผู้ขนส่ง (ว่าง = อัตราขายของเรา)
+rate_party_ph	คู่ค้า (ว่าง = ลูกค้าทั้งหมด)
+carrier_pick_ph	ผู้ขนส่งสำหรับต้นทุน (จากเปรียบเทียบ)
+item_name	ชื่อรายการ
+load_bulk_row	โหลดแถวจำนวนมาก → โต๊ะ
+login_id_ph	รหัสเข้าสู่ระบบ
+mark_delivered	ทำเครื่องหมายส่งแล้ว
+manifest_cod_total	ยอด COD
+manifest_received_by	ผู้รับ
+manifest_sign	ลายเซ็น
+ndr_address_wrong	ที่อยู่ผิด
+ndr_customer_unavailable	ลูกค้าไม่อยู่
+ndr_door_locked	ประตูล็อก
+ndr_other	อื่น ๆ
+ndr_refused	ปฏิเสธ
+out_for_delivery	ออกส่งแล้ว
+print_drs	พิมพ์ DRS
+print_run_sheet	พิมพ์ใบจัดส่ง
+reattempt	พยายามอีก
+rider_cod_handed_ph	COD ที่ไรเดอร์ส่ง
+settle_rider_cod	เคลียร์ COD ไรเดอร์
+mode_desk	โต๊ะ
+mode_rider	ไรเดอร์
+waiting_office	รอถึงสำนักงาน
+capture_signature	เก็บลายเซ็น
+incoming_manifest	ใบรายการเข้า
+pickup_request	คำขอรับพัสดุ
+pickup_run	รอบรับพัสดุ
+auto_assign_area	มอบหมายพื้นที่อัตโนมัติ
+reorder_stops	เรียงจุดแวะใหม่
+settle_rider_pay	เคลียร์ค่าแรงไรเดอร์
+vehicle_inspect	ตรวจรถ
+print_docket	พิมพ์ดocket
+franchise_statement	รายการแฟรนไชส์
+tally_export	ส่งออกใบ Tally
+open_whatsapp	เปิด WhatsApp
+copy_sms	คัดลอกข้อความ SMS
+pick_barcode_image	เลือกรูปเพื่อสแกน
+share_receipt_whatsapp	แชร์ใบเสร็จทาง WhatsApp
+delivery_feedback	ความคิดเห็นการส่ง
+lan_self_book	จองเองบน LAN
+new_party_clear	คู่ค้าใหม่ (ล้างฟอร์ม)
+new_party_kind_ph	ประเภทคู่ค้าใหม่ (ผู้จัดหา / ผู้ขนส่ง)
+next_country	ประเทศถัดไป
+prev_country	ประเทศก่อนหน้า
+note_gstin_ph	หมายเหตุ / GSTIN / เตือนข้อตกลง
+note_pod_ph	หมายเหตุ / POD (ไม่บังคับ)
+on_account_ap	ลงบัญชี (AP)
+org_optional_ph	องค์กร (ไม่บังคับ)
+paid_now	จ่ายแล้วตอนนี้
+pairing_code_ph	รหัสจับคู่
+pair_now	จับคู่ตอนนี้
+party_name_selected_ph	ชื่อคู่ค้า (หรือใช้ที่เลือก)
+password_ph	รหัสผ่าน
+pay_ap_card	จ่าย AP ด้วยบัตร
+pay_ap_cash	จ่าย AP เงินสด
+pay_ap_upi	จ่าย AP ด้วย UPI
+period_bill	บิลตามรอบ
+period_bill_party	บิลตามรอบ (คู่ค้า)
+pick_pod_photo	เลือกรูป POD
+print_awb_label	พิมพ์ฉลาก AWB
+print_open	พิมพ์ / เปิด
+reason_amend_ph	เหตุผลแก้ / ยกเลิก / คืนเงิน
+reason_note_ph	เหตุผล / หมายเหตุ (เสียหาย นับ ฯลฯ)
+record_day_close	บันทึกปิดวัน
+refresh_from_shop	รีเฟรชจากร้าน
+refund	คืนเงิน
+remit_cod	ส่ง COD (คู่ค้า)
+remove_selected	ลบที่เลือก
+restore_backup	กู้คืนข้อมูลสำรอง
+rider_name_ph	ชื่อไรเดอร์
+rider_phone_ph	โทรศัพท์ไรเดอร์
+riders	ไรเดอร์
+riders_own_fleet	ไรเดอร์ (กองรถของเรา)
+rollup	รวมยอด
+save_booking_measures	บันทึกขนาดการจอง
+save_brand	บันทึกแบรนด์
+save_business_id	บันทึกเลขภาษีและ % บริการ
+save_business_name	บันทึกชื่อธุรกิจ
+save_features	บันทึกการตั้งค่างาน
+save_names	บันทึกชื่อ
+server_ip_ph	IP เซิร์ฟเวอร์ (เช่น 192.168.1.10)
+set_credit_limit	ตั้งวงเงินเครดิต
+set_login_selected	ตั้งค่าล็อกอินให้ที่เลือก
+set_login_named	ใช้ล็อกอินกับ {name}
+shop	ร้าน
+start_fresh	เริ่มใหม่
+stop_extra_tills	หยุดเคาน์เตอร์เสริม
+backup_auto	สำรองอัตโนมัติทุกวัน · ล่าสุด {when} · เก็บ 14 วันล่าสุดไว้ใน {dir}
+backup_auto_none	สำรองอัตโนมัติทุกวัน — ครั้งแรกจะเริ่มในไม่ช้า
+backup_copy_to	สำเนาจะไปที่ {dir} ด้วย
+backup_copy_btn	คัดลอกข้อมูลสำรองไปยังโฟลเดอร์ด้วย…
+autostart_off	เริ่มพร้อมคอมพิวเตอร์เครื่องนี้
+autostart_on	เริ่มพร้อมคอมพิวเตอร์ ✓ — แตะเพื่อหยุด
+autostart_done_on	ตอนนี้แอปจะเปิดเมื่อคอมพิวเตอร์เปิด — เซิร์ฟเวอร์กลับมาหลังไฟดับ
+autostart_done_off	คอมพิวเตอร์จะไม่เปิดแอปเมื่อเปิดเครื่องอีกต่อไป
+right_allowed	อนุญาต
+right_with_approval	ต้องอนุมัติ
+right_denied	ไม่อนุญาต
+editing_staff	สิทธิ์สำหรับ
+team_pick_ph	ชื่อพนักงานที่จะแก้ไข
+select_staff	เลือกพนักงานนี้
+rights_help	สิทธิ์ — แตะเพื่อเปลี่ยน: อนุญาต → ต้องอนุมัติ (PIN ผู้จัดการในขณะนั้น) → ไม่อนุญาต
+right_void_refund	ยกเลิกหรือคืนเงินการจอง
+right_amend_sale	แก้ไขการจองที่บันทึกแล้ว
+find_server	ค้นหาเซิร์ฟเวอร์ของร้าน
+finding_server	กำลังค้นหาเซิร์ฟเวอร์ของร้านใน Wi‑Fi นี้…
+no_server_found	ไม่พบเซิร์ฟเวอร์ ตรวจว่าเครื่องของร้านอยู่ Wi‑Fi เดียวกันและอนุญาตเครื่องเพิ่มแล้ว หรือพิมพ์ IP
+servers_found_pick	แตะร้านที่ต้องการเชื่อมต่อ
+server_host_selected	กำลังใช้ {host} — ใส่รหัสจับคู่ แล้วแตะจับคู่เลย
+device_forgotten	ร้านลบอุปกรณ์นี้แล้ว — จับคู่ใหม่ด้วยรหัสปัจจุบันของร้าน คำสั่งที่รออยู่ยังเก็บไว้
+forget_device	ลืม
+last_seen	ล่าสุด
+new_pair_code	รหัสจับคู่ใหม่
+lan_offline	ออฟไลน์
+lan_offline_waiting	ออฟไลน์ · รอ {n} รายการ
+lan_connecting	กำลังเชื่อมต่อกับร้าน…
+pair_finishing	กำลังจับคู่ให้เสร็จ… กำลังใช้สมุดของสำนักงาน
+pair_opening	กำลังเปิดสำนักงาน…
+lan_live	สด
+lan_sending	กำลังส่ง {n} รายการ
+lan_sign_in_to_send	ลงชื่อเข้าใช้อีกครั้งเพื่อส่ง {n}
+lan_pair_again	จับคู่อุปกรณ์นี้อีกครั้ง
+lan_update_app	อัปเดตแอป — อุปกรณ์นี้กับเซิร์ฟเวอร์ของสำนักงานคนละเวอร์ชัน
+allow_firewall	อนุญาตให้อุปกรณ์อื่นเชื่อมต่อ
+firewall_blocked	ไฟร์วอลล์ของคอมพิวเตอร์นี้กำลังบล็อกอุปกรณ์อื่น — แตะ “อนุญาตให้อุปกรณ์อื่นเชื่อมต่อ”
+firewall_waiting	กำลังรอการยืนยันจากผู้ดูแล…
+lan_join_help	อุปกรณ์อื่นเชื่อมต่อกับเครื่องนี้ได้ — รหัสจับคู่ {code} บนอุปกรณ์อีกเครื่องให้เลือกโหมดไคลเอนต์ แล้วแตะค้นหาเซิร์ฟเวอร์ของร้าน หรือพิมพ์ที่อยู่นี้: {addr}
+lan_pair_status	ไวไฟ {addr}
+lan_join_help_no_addr	เชื่อมต่ออุปกรณ์นี้กับ Wi‑Fi เพื่อรับที่อยู่
+lan_no_address	เครื่องนี้ยังไม่มีที่อยู่ Wi‑Fi — เชื่อมต่อกับ Wi‑Fi ของร้าน
+lan_not_listening	ตอนนี้ยังรับอุปกรณ์ไม่ได้ — อาจมีโปรแกรมอื่นใช้พอร์ต {port} อยู่ ให้เปิดแอปใหม่
+lan_tills_off	เคาน์เตอร์เสริมปิดอยู่ บัญชีของสำนักงานอยู่ในเครื่องนี้ อนุญาตเคาน์เตอร์เสริมหากอุปกรณ์อื่นต้องรับฝากพัสดุหรือรับเงินด้วย
+paired_with	จับคู่กับร้านที่ {url} แล้ว
+not_paired	ยังไม่ได้จับคู่ — เชื่อมต่อกับเซิร์ฟเวอร์ของร้าน
+choose_device_use	เลือกวิธีใช้อุปกรณ์นี้
+paired_note	จับคู่แล้ว ปลดล็อกเพื่อขาย หรือรีเฟรชเพื่อดึงข้อมูลล่าสุดจากร้าน
+last_update_at	อัปเดตล่าสุดจากร้าน: {time}
+pair_intro	ค้นหาเซิร์ฟเวอร์ หรือพิมพ์ที่อยู่และรหัสจับคู่
+queue_waiting	รอส่งถึงร้าน ({n}):
+queue_tries	ลอง {n} ครั้ง · คำตอบล่าสุด: {e}
+save_backup_copy	บันทึกสำเนาข้อมูลสำรอง…
+backup_copy_saved	บันทึกสำเนาข้อมูลสำรองแล้ว — เก็บไว้นอกอุปกรณ์นี้ (USB หรืออุปกรณ์อื่น)
+backup_copy_overdue	ไม่มีสำเนาข้อมูลสำรองออกจากอุปกรณ์นี้มา {n} วัน — การตั้งค่า → สำรองข้อมูล
+backup_copy_failed	บันทึกสำเนาข้อมูลสำรองที่นั่นไม่ได้ — เลือกที่อื่น
+clock_off	นาฬิกาของอุปกรณ์นี้ต่างจากเซิร์ฟเวอร์ของร้าน {min} นาที — ตั้งเวลาให้ถูกต้องบนอุปกรณ์นี้
+printers_heading	เครื่องพิมพ์บนอุปกรณ์นี้
+printers_help	เพิ่มเครื่องพิมพ์ทีละเครื่อง แล้วเลือกที่พิมพ์ใบเสร็จและป้าย AWB — ตัวแรกในรายการลองก่อน ล้มเหลวแล้วตัวถัดไป เส้นทางว่าง = ไม่พิมพ์ฟีเจอร์นั้น ปลายทางว่าง (ค่าเริ่มต้น) ชื่อระบบ หรือที่อยู่เครือข่าย (เช่น 192.168.1.50) แต่ละอุปกรณ์เก็บเครื่องพิมพ์ของตัวเอง
+job_width	ความกว้างเนื้อหา (มม.)
+job_width_ph	หรือพิมพ์ความกว้าง 40–210 mm
+job_layout	เลย์เอาต์
+job_delivery	วิธีการส่งงาน
+job_size	ขนาดฟอนต์
+job_size_ph	เช่น 18, 20, 26…
+save_receipt_format	บันทึกรูปแบบใบเสร็จ
+save_label_format	บันทึกรูปแบบฉลาก
+test_receipt_format	ทดสอบใบเสร็จ
+test_label_format	ทดสอบฉลาก
+test_receipt_sent	ส่งใบเสร็จตัวอย่างแล้ว
+test_label_sent	ส่งฉลากตัวอย่างแล้ว
+test_print_no_printer	ไม่มีเครื่องพิมพ์สำหรับงานนั้น — เพิ่มใต้ที่นี้
+printers_host_only	เครื่องพิมพ์ตั้งบนอุปกรณ์ร้าน (Server) เครื่องเก็บเงินนี้ส่งงานไปที่นั่น — ค้นหา / เพิ่ม / มอบหมายอยู่ที่ Server หน้าทดสอบไปที่ Server
+printers_pool_heading	เครื่องพิมพ์
+printers_routes_heading	พิมพ์ที่ไหน
+printer_label_ph	ชื่อ (เช่น เคาน์เตอร์)
+printer_target_ph	host:9100 · bt:MAC · usb:VID:PID · ชื่อในระบบ
+printer_mode_heading	รูปแบบสำหรับเส้นทางที่เลือก
+printer_mode_standard	มาตรฐานแนวตั้ง
+printer_mode_landscape	มาตรฐานแนวนอน
+printer_mode_thermal	ความร้อน
+printer_mode_standard_short	แนวตั้ง
+printer_mode_landscape_short	แนวนอน
+printer_mode_thermal_short	ความร้อน
+printer_format_custom	รูปแบบกำหนดเองใหม่
+printer_format_custom_label	กำหนดเอง
+printer_format_custom_added	เพิ่มรูปแบบกำหนดเองให้เส้นทางนี้แล้ว
+add_printer	เพิ่มเครื่องพิมพ์
+remove_printer	ลบรายการล่าสุด
+route_pick_ph	receipt หรือ label
+route_add_printer_ph	เพิ่มเครื่องพิมพ์ในเส้นทางนี้
+route_receipt	ใบเสร็จ
+route_label	ป้าย AWB
+route_dont_print	ไม่มีเครื่องพิมพ์ที่กำหนด
+route_add	เพิ่มในเส้นทาง
+route_up	ขึ้น
+route_down	ลง
+route_remove	ลบรายการล่าสุด
+route_clear	ล้างเครื่องพิมพ์ของที่นี้
+save_printers	บันทึกเครื่องพิมพ์
+print_test_page	พิมพ์หน้าทดสอบ
+printers_saved	บันทึกเครื่องพิมพ์ของอุปกรณ์นี้แล้ว
+test_page_sent	ส่งหน้าทดสอบแล้ว — ตรวจดูเครื่องพิมพ์
+printers_found	พบในอุปกรณ์นี้: {list}
+find_printers	ค้นหาเครื่องพิมพ์
+printers_looking	กำลังหาเครื่องพิมพ์บนอุปกรณ์นี้และ Wi‑Fi…
+printers_tap_find	แตะหาเครื่องพิมพ์สำหรับคิวที่รับงานและเครื่องพิมพ์ใบเสร็จในเครือข่ายบน Wi‑Fi นี้ (ไม่นับที่ถอดหรือออฟไลน์)
+printers_none_found	ไม่พบเครื่องพิมพ์ — พิมพ์ชื่อเครื่องพิมพ์ของระบบ หรือที่อยู่เครือข่าย (เช่น 192.168.1.50)
+receipt_printer_ph	เครื่องพิมพ์ใบเสร็จ
+queue_refused	ร้านไม่รับ ({n}) — ตรวจทีละรายการที่เคาน์เตอร์:
+clear_not_accepted	ตรวจแล้ว — ล้างรายการนี้
+device_name_ph	ชื่ออุปกรณ์นี้
+lan_last_update	อัปเดตล่าสุด {time}
+lan_not_accepted	ไม่รับ {n} รายการ
+connected_now	เชื่อมต่ออยู่
+backup_failed	การสำรองข้อมูลอัตโนมัติครั้งล่าสุดล้มเหลว: {e}
+backup_overdue	ไม่ได้สำรองข้อมูลมา {n} วัน — เปิดแอปค้างไว้ในเครื่องนี้เพื่อให้สำรองข้อมูลได้
+disk_low	เครื่องนี้เหลือพื้นที่ว่างเพียง {mb} MB — อีกไม่นานจะสำรองข้อมูลไม่ได้ ช่วยเคลียร์พื้นที่
+last_seen_devices	ครั้งล่าสุดที่เห็น: {time}
+sync_interval	ซิงค์ทุก {secs} วินาที
+connection_to_shop	การเชื่อมต่อกับร้าน
+supplier_name_ph	ชื่อผู้จัดหา (หรือคู่ค้า)
+supplier_ph	ผู้จัดหา
+switch_device	สลับอุปกรณ์นี้
+take_payment	รับชำระเงิน
+tax_added_till	{tax} ไม่รวม
+tax_inside_price	{tax} รวม
+today_books	บัญชีวันนี้
+unlock_after_pairing	ใส่รหัส PIN
+unlock_with_login	ปลดล็อกด้วยการเข้าสู่ระบบ
+update_my_password	เปลี่ยนรหัสผ่านของฉัน
+update_my_pin	เปลี่ยน PIN ของฉัน
+duress_heading	PIN ปลดล็อกฉุกเฉิน (เจ้าของเท่านั้น)
+duress_help	ไม่บังคับ ถ้าพิมพ์ PIN นี้ตอนปลดล็อกแทน PIN ของคุณ รายการในสมุดทั้งหมดจะถูกลบ (การจอง สมุด ประวัติ) และเคาน์เตอร์เปิดเป็นเจ้าของดูปกติ — อัตรา คู่ค้า โซน พนักงาน และการตั้งค่าคงอยู่ สคีมาและการกำหนดค่าไม่ถูกลบ ใช้เฉพาะเมื่อถูกบังคับให้ปลดล็อก เว้นว่างแล้วบันทึกเพื่อปิด ห้ามซ้ำกับ PIN ของใคร
+duress_pin_ph	PIN ฉุกเฉิน (4–12 หลัก)
+duress_confirm_ph	พิมพ์อีกครั้งเพื่อยืนยัน
+save_duress_pin	บันทึก PIN ฉุกเฉิน
+clear_duress_pin	ปิด PIN ฉุกเฉิน
+duress_on	PIN ปลดล็อกฉุกเฉินเปิดอยู่
+duress_off	PIN ปลดล็อกฉุกเฉินปิดอยู่
+duress_saved	บันทึก PIN ปลดล็อกฉุกเฉินแล้ว
+duress_cleared	ปิด PIN ปลดล็อกฉุกเฉินแล้ว
+vehicle_ph	ยานพาหนะ
+void	ยกเลิก
+write_off_ap	ตัด AP
+write_off_nil	ตัดหนี้ / ยอดเป็นศูนย์
+zone_ph	โซน (ชื่อจากอัตรา)
+caption_today	วันนี้
+caption_bookings	การจอง
+caption_payments_today	การชำระวันนี้
+caption_outstanding	ค้างชำระ
+caption_bank	ธนาคาร
+paid_by	จ่ายโดย
+second_way	วิธีที่สอง
+weight_in	น้ำหนักในหน่วย
+size_in	ขนาดในหน่วย
+goods_received	รับสินค้าแล้ว
+expense_heading	ค่าใช้จ่าย
+notes_attach_sale	หมายเหตุและไฟล์แนบ (การขายที่เลือก)
+notes_attach_party	หมายเหตุและไฟล์แนบ (คู่ค้าที่เลือก)
+attachments_last_expense	ไฟล์แนบ (ค่าใช้จ่ายล่าสุด)
+credit_limit_heading	วงเงินเครดิต (คู่ค้าที่เลือก / ระบุชื่อ)
+pay_selected_heading	จ่ายที่เลือก (ชำระหนี้ / รับล่วงหน้า)
+write_off_heading	ตัดหนี้ (เคลียร์โดยไม่จ่าย)
+pay_ap_heading	จ่ายที่เราติดหนี้เขา (AP)
+country_tax	ประเทศและภาษี
+extra_tills_heading	เคาน์เตอร์เสริม
+other_devices_help_heading	ตั้งค่าอุปกรณ์อื่น
+other_devices_help	บนอุปกรณ์นี้ (เซิร์ฟเวอร์): อุปกรณ์อื่น → อนุญาตเครื่องคิดเงินเพิ่ม จดรหัสจับคู่และที่อยู่ Wi‑Fi แตะอนุญาตให้อุปกรณ์อื่นเชื่อมต่อถ้าปรากฏ บนคอมพิวเตอร์แตะเริ่มด้วยคอมพิวเตอร์นี้ บนอุปกรณ์อื่นแต่ละเครื่อง: ติดตั้งแอป เลือกโหมดไคลเอนต์ หาเซิร์ฟเวอร์ของร้าน (หรือพิมพ์ที่อยู่) ใส่รหัสจับคู่ จับคู่ตอนนี้ ออเดอร์รอในอุปกรณ์ถ้า Wi‑Fi หลุด และไปต่อเมื่อเซิร์ฟเวอร์ตอบอีกครั้ง
+your_brand	แบรนด์ของคุณ (ในแอป)
+units_heading	หน่วย
+booking_measures	ขนาดการจอง
+drawer_count	นับลิ้นชัก (ไม่บังคับ)
+spreadsheet_csv	สเปรดชีต (CSV)
+bank_reconciliation	กระทบยอดธนาคาร (ติ๊กตามสเตทเมนต์)
+book_add_product	จอง — เพิ่มสินค้า / อัตรา
+book_opening_credit	จอง — เครดิตเริ่มต้น
+account_kind	ประเภทบัญชี (แตะหนึ่ง)
+active_ledger	บัญชีที่ใช้งาน
+actual_total_cap	ยอดจริง
+amend_help	เลือกการขายเพื่อแก้ไข ยกเลิก หรือคืนเงิน การแก้ไขเก็บประวัติทั้งหมด
+applied_total_cap	ยอดที่ใช้
+bank_balance	ยอดธนาคาร
+bank_net_today	ยอดธนาคารสุทธิวันนี้
+branch_export_help	ส่งออกเขียนภาพรวมของวันลงโฟลเดอร์สำรองและคัดลอกไปคลิปบอร์ด หากจะนำเข้าวันของสาขาอื่น ให้บันทึกไฟล์เป็น import_branch_snapshot.json ในโฟลเดอร์นั้น แล้วแตะนำเข้า
+brand_shown_help	แสดงบนหน้าจอภายในแอป ชื่อและไอคอนของแอปที่ติดตั้งบนอุปกรณ์นี้คงเดิมตามรายการแพลตฟอร์ม
+app_icon	ไอคอนแอป
+logo_help	โลโก้ร้านค้าแบบเลือกได้บนหน้าจอในแอป
+onboard_layout	สิ่งที่คุณได้รับ
+item_photo_help	เลือกได้ หากไม่มีรูปภาพ เราจะแสดงตัวอักษรย่อจากชื่อรายการ
+cash_in_hand	เงินสดในมือ (เคาน์เตอร์)
+change_my_pin_heading	เปลี่ยน PIN ของฉัน (เฉพาะของคุณ)
+connect_to_server	เชื่อมต่อเซิร์ฟเวอร์
+counter_locked	เคาน์เตอร์ 01 · ล็อก
+country_pack_help	แพ็กประเทศกำหนดชื่อภาษีและการคำนวณ ช่องทางชำระเงินทันที และเลขภาษีที่พิมพ์บนบิล Kumkaj ไม่ยื่นภาษีหรือออกใบกำกับภาษีอิเล็กทรอนิกส์ของรัฐที่ใด
+currency_use_help	เลื่อนและแตะใช้สำหรับสกุลเงินที่รองรับ
+day_close_help	การบันทึกปิดวันจะบันทึกสรุปนี้ (และส่วนต่างลิ้นชักหากนับ) ลงบันทึกการตรวจสอบ ไม่หยุดการขาย
+expenses_word	ค่าใช้จ่าย
+feature_access_help	สิทธิ์ใช้ฟีเจอร์ของพนักงานที่เลือก (แตะหลังเพิ่ม)
+footer_local	SQLite ท้องถิ่น · ฟรีตลอดไป · ไม่มีคลาวด์
+fresh_book_moklanjo	เครื่องพิมพ์
+fresh_selected	เลือก Fresh — แคตตาล็อกจะว่าง แตะ Done เมื่อพร้อม
+gross_word	รวมยอด
+how_start	คุณต้องการเริ่มต้นอย่างไร
+later_country_pack	เครื่องพิมพ์
+local_badge	ท้องถิ่น
+measures_help_moklanjo	วิธีวัดพัสดุที่โต๊ะ พิมพ์ขนาดและน้ำหนักในหน่วยที่คุณใช้ — มาตรฐาน (cm, m, in, ft · kg, g, lb, oz) หรือหน่วยของคุณเองที่เชื่อมกับ cm / kg ด้านบน (โดยตรงหรือผ่านหน่วยอื่น) บัญชีบันทึกเป็น kg เสมอ เว้นช่องว่างเพื่อคงไว้
+mix_type_hint_moklanjo	พิมพ์จำนวนในแต่ละช่อง (เงินสด / UPI / บัตร / เครดิต) ต้องเท่ากับบิล เครดิตต้องมีลูกค้าด้านบน
+money_in_sales	เงินเข้า (ยอดขาย)
+more_help_moklanjo	แคตตาล็อก ยอดขาย เครดิต ทีม สำรอง — รวมถึงสต็อกและเคาน์เตอร์เสริมเมื่อจำเป็น
+net_word	สุทธิ
+offline_badge	ออฟไลน์
+optional_login_help	เข้าสู่ระบบเสริม (รหัส + รหัสผ่าน) เจ้าของตั้งครั้งเดียว หลังจากนั้นเฉพาะผู้ใช้เท่านั้นที่เปลี่ยนรหัสผ่านได้
+or_unlock_login	หรือปลดล็อกด้วยรหัสเข้าสู่ระบบ + รหัสผ่าน
+permission_preset	ตำแหน่ง (กำหนดหน้าจอและสิทธิ์)
+preset_help_moklanjo	แคชเชียร์: ขาย ผู้จัดการ: ขาย + รายการ + ยกเลิก/แก้ไข
+product_locked_moklanjo	Moklanjo
+product_only_moklanjo	แอปนี้เป็น Moklanjo เท่านั้น — บัญชีและเคาน์เตอร์รับฝาก ธุรกิจอื่นจะมีผลิตภัณฑ์แยกในภายหลัง
+purchases_cogs	ซื้อ (COGS)
+qty_cap	จำนวน
+restore_help	กู้คืน: เลือกไฟล์สำรอง สมุดบัญชีจะเปิดตามตอนนั้น สมุดปัจจุบันจะถูกบันทึกไว้ก่อน จึงย้อนกลับได้
+wipe_data_heading	ลบข้อมูลในเครื่อง
+wipe_data_help	เจ้าของเท่านั้น — ตัวเลือกเหมือนถอน Windows บันทึกธุรกิจล้างประวัติและเก็บอัตรา/ตั้งค่า ตั้งค่าร้านลบสมุด ค่ากำหนดหน้าจอ: หน้าต่าง/ภาษา ยืนยันด้วย PIN เจ้าของ
+wipe_trading	บันทึกธุรกิจ
+wipe_schema	ตั้งค่าร้าน
+wipe_ui	ค่ากำหนดหน้าจอ
+wipe_owner_pin_ph	PIN เจ้าของเพื่อลบ
+wipe_delete_selected	ลบที่เลือก
+wipe_owner_only	มีแค่เจ้าของที่ลบข้อมูลในเครื่องได้
+restore_owner_only	มีแค่เจ้าของที่กู้คืนข้อมูลสำรองได้
+wipe_owner_pin_needed	ใส่ PIN เจ้าของเพื่อลบข้อมูลในเครื่อง
+wipe_nothing_selected	เลือกว่าจะลบอะไรก่อน
+wipe_done	ลบข้อมูลในเครื่องที่เลือกแล้ว
+wipe_schema_done	ล้างการตั้งค่าร้านแล้ว — เลือก Server หรือ Client เพื่อไปต่อ
+rounded_total	ยอดปัดเศษ
+setup_app_moklanjo	ตั้งค่า Moklanjo
+shop_logo_optional	โลโก้ร้าน (ไม่บังคับ)
+stock_type_help	พิมพ์ชื่อรายการ (บางส่วนก็พอ) จำนวน แล้วปรับ รายการที่ยังไม่ได้นับต้องเริ่มนับหนึ่งครั้ง
+team_owner_help	จ้าง: เลือกตำแหน่ง (แคชเชียร์ / ผู้จัดการ) ชื่อ + PIN เริ่มต้น แล้วเพิ่ม เฉพาะเมื่อคนนี้ต่างออกไป: เปิดหน้าจอและสิทธิ์ด้านล่าง แล้วบันทึกการตั้งค่างาน ทุกคนเปลี่ยน PIN ของตัวเองด้านล่าง — เจ้าของเปลี่ยน PIN ของคนอื่นไม่ได้
+they_owe_us	พวกเขาติดหนี้เรา
+unit_at_cap	ราคาต่อหน่วย
+units_help	รหัสสำหรับฉลากรายการ (kg, piece, bag) ทุกหน่วยต้องเชื่อม — โดยตรงหรือผ่านหน่วยอื่น — กับมาตรฐาน (kg · cm · ml · pc) เช่น 1 crate = 2 box และ 1 box = 20 cm การแปลง: 1 from = factor to สกุลเงินไม่เคยเป็นหน่วย
+we_owe_them	เราติดหนี้เขา
+who_unlocking	ใครกำลังปลดล็อก
+locked_word	ล็อก
+show_pin	แสดง PIN
+hide_pin	ซ่อน PIN
+set_owner_pin	ตั้ง PIN เจ้าของ
+enter_owner_passcode	ใส่รหัสเจ้าของ
+enter_staff_passcode	ใส่รหัสพนักงาน
+pin_count_zero	0 / 12 หลัก · อย่างน้อย 4 แล้วตกลง
+pin_count_need	{} / 12 หลัก · ต้องอีก {}
+pin_count_full	12 / 12 หลัก · กดตกลง
+pin_count_ready	{} / 12 หลัก · กดตกลงเมื่อพร้อม
+pin_hint_choose	เลือก 4–12 หลัก (แป้นพิมพ์หรือแผ่น) · Enter/ตกลง เพื่อบันทึก
+pin_hint_new	PIN เจ้าของใหม่ 4–12 หลัก (แป้นพิมพ์หรือแผ่น) · Enter/ตกลง
+pin_hint_shop_code	อุปกรณ์ร้าน · รหัสจับคู่ {}
+pin_hint_books	อุปกรณ์นี้เก็บบัญชี
+pin_hint_paired	เคาน์เตอร์เสริมจับคู่แล้ว — ปลดล็อกเพื่อขาย
+pin_hint_pair_first	เคาน์เตอร์เสริม — จับคู่กับอุปกรณ์ร้านก่อน
+unlock_to_continue	ปลดล็อกเพื่อดำเนินการต่อ
+no_staff_yet	ยังไม่มีพนักงาน — ปลดล็อกในฐานะเจ้าของ แล้วทีม
+status_server_set_pin	โหมดเซิร์ฟเวอร์ — ตั้ง PIN เจ้าของ
+status_server_tills	โหมดเซิร์ฟเวอร์ — เคาน์เตอร์เสริมเข้าร่วมได้ ปลดล็อก
+status_server_unlock	โหมดเซิร์ฟเวอร์ — ปลดล็อกในฐานะเจ้าของ
+status_client_unlock	โหมดไคลเอนต์ — ปลดล็อกเพื่อขาย
+icon_new_selected	ไอคอน: เลือกไฟล์ใหม่แล้ว — แตะบันทึกแบรนด์
+icon_custom	ไอคอน: เครื่องหมายร้านของคุณเอง
+icon_default	ไอคอน: เครื่องหมาย Kumkaj (ค่าเริ่มต้น) — เลือกของคุณเอง
+logo_yours	โลโก้: โลโก้ร้านของคุณ — แสดงบนหน้าจอและใบเสร็จ
+logo_default	โลโก้: เครื่องหมาย Kumkaj (ค่าเริ่มต้น) — เลือกของคุณเองถ้ามี
+tmpl_current	ปัจจุบัน: {} — {}
+tmpl_selected	ที่เลือก: {} — {}
+setup_complete	ตั้งค่าเสร็จสมบูรณ์
+onboard_fresh_tmpl	ใหม่ · {} — แคตตาล็อกเริ่มว่างเปล่า; เพิ่มสินค้าในสินค้า แล้วแตะเสร็จสิ้น
+onboard_book_tmpl	สมุด · {} — เพิ่มสินค้าและเครดิตเริ่มต้น แล้วแตะเสร็จสิ้น
+onboard_template_tmpl	ตั้งชื่อร้านได้ถ้าต้องการ แล้วเลือกวิธีเริ่มต้น
+tmpl_blurb	บัญชีขนส่งพัสดุและเคาน์เตอร์รับฝาก: ผู้ส่ง ผู้ขนส่ง สมุดรายวัน AWB
+tmpl_how	รับฝากพัสดุที่เคาน์เตอร์ สมุดรายวันสำหรับวันนี้ แท็บสำหรับอัตรา คู่ค้า รายงาน
+trk_booked	รับฝากแล้ว
+trk_picked_up	รับพัสดุแล้ว
+trk_in_transit	ระหว่างขนส่ง
+trk_delivered	ส่งถึงแล้ว
+trk_rto	กำลังตีกลับผู้ส่ง
+lane_to_dispatch	รอส่งออก
+lane_with_carrier	อยู่กับผู้ขนส่ง
+lane_failed	ไม่สำเร็จ
+lane_done_today	เสร็จวันนี้
+ops_board_help	พัสดุแบ่งตามขั้นตอนของงานวันนี้ แตะพัสดุ (หรือสแกน) เพื่อเลือก แล้วดำเนินการกับทุกชิ้นที่เลือกพร้อมกัน — แต่ละช่องมีเฉพาะขั้นตอนที่เหมาะกับช่องนั้น
+lane_empty	ตอนนี้ยังไม่มีอะไร
+picked_fmt	เลือก {n}
+pick_all	เลือกทั้งหมด
+bag_for_carrier	ส่งมอบให้ผู้ขนส่ง
+send_with_rider	ส่งไปกับไรเดอร์
+out_again	ออกส่งอีกครั้ง
+return_to_sender	ตีกลับผู้ส่ง
+runs_bags_heading	รอบส่งและถุงล่าสุด
+print_word	พิมพ์
+bag_word	ถุงส่งผู้ขนส่ง
+run_word	รอบส่งของไรเดอร์
+parcels_fmt	{n} ชิ้น
+parcel_history	ประวัติ
+attempt_fmt	ครั้งที่ {n}
+pieces_short_fmt	{n} ชิ้น
+note_reason_ph	หมายเหตุหรือเหตุผล
+ops_pick_first	เลือกพัสดุก่อน — แตะหรือสแกน
+cod_to_collect	ส่งแล้ว — COD ที่ต้องเก็บ
+cod_on_road	COD ยังอยู่ระหว่างทาง
+cod_owed_consignors	เก็บแล้ว — ต้องจ่ายให้ผู้ส่ง
+cod_rto_fees	ค่าธรรมเนียม RTO ที่ต้องเก็บ
+cod_to_hand_in	COD ที่ต้องส่งคืน
+parcel_one_fmt	{n} ชิ้น
+facet_bank_title	รายงาน
+facet_bank_help	สมุดรายวัน อายุหนี้คู่ค้า รายการธนาคาร และกำไรขาดทุนงวด
+facet_ops_title	การจัดส่งและนำจ่าย
+facet_ops_help	สแกนหรือพิมพ์ AWB → ค้นหา แล้วดำเนินการต่อ / พิมพ์ฉลาก / COD ส่งให้ไรเดอร์หรือผู้ขนส่ง
+facet_cod_title	ทะเบียน COD
+facet_cod_help	เก็บเงินปลายทาง แล้วส่งคืนผู้ส่ง
+facet_riders_title	ไรเดอร์ (ทีมของตนเอง)
+facet_riders_help	เพิ่มไรเดอร์ แล้วส่ง AWB ที่จองไว้จาก Ops
+against_bill_ph	สำหรับใบเรียกเก็บ # ด้านบน (ไม่บังคับ)
+aliases_ph	ชื่ออื่น — คั่นด้วยเครื่องหมายจุลภาค
+amount_blank_full_ph	จำนวนเงิน (ว่าง = ยอดคงเหลือทั้งหมด)
+amount_owed_ph	จำนวนเงินที่ค้าง
+amount_ph	จำนวนเงิน
+amount_received_ph	จำนวนเงินที่ได้รับ
+amount_we_pay_ph	จำนวนเงินที่เราจ่าย
+awb_scan_ph	AWB / สแกนบาร์โค้ด
+bulk_csv_ph	CSV จำนวนมาก — destination,consignee,kg,cod_paise,note
+business_name_ph	ชื่อธุรกิจ
+category_new_ph	หมวดหมู่ (ไม่บังคับ สร้างใหม่หากยังไม่มี)
+cod_amount_ph	จำนวนเงิน COD
+code_bag_ph	รหัส (bag)
+conv_factor_ph	ตัวประกอบ (25 = 1 bag → 25 kg)
+country_code_ph	รหัสประเทศ เช่น IN, GB, US, AE, BR
+credit_khata_amount_ph	จำนวนเครดิต / บัญชี
+credit_limit_ph	วงเงินเครดิต (0 = ไม่มี)
+dim_unit_code_ph	รหัสหน่วยมิติ (ซม.)
+divisor_ph	ตัวหารปริมาตร (5000)
+extra_per_kg_ph	พิเศษ / กก.
+first_amount_ph	จำนวนเงินแรก
+first_kg_ph	กก. แรก (ขั้น)
+from_code_ph	รหัสจาก (bag)
+item_name_lang_ph	ชื่อสินค้า — พิมพ์ในภาษาของคุณ
+login_id_opt_ph	รหัสเข้าสู่ระบบ (ไม่บังคับ)
+manager_pin_ph	PIN ผู้จัดการ (เฉพาะเมื่อคุณไม่สามารถยกเลิกได้)
+new_branch_name_ph	ชื่อสาขาใหม่
+new_password_ph	รหัสผ่านใหม่ (ไม่บังคับ)
+new_pin_ph	PIN ใหม่ (4–12 หลัก)
+note_bank_ph	หมายเหตุ (ฝาก ถอน …)
+note_buy_expense_ph	หมายเหตุ (เชื้อเพลิง ค่าเช่า …)
+note_expense_ph	หมายเหตุ (เชื้อเพลิง สำนักงาน …)
+notify_phone_ph	โทรศัพท์แจ้งเตือน (ฮุก WhatsApp/SMS)
+options_moklanjo_ph	ตัวเลือก (ไม่บังคับ) — Large=20, Gift wrap=10
+part_second_way_ph	ส่วนด้วยวิธีที่สอง (ไม่บังคับ)
+phone_ph	โทรศัพท์
+address_ph	ที่อยู่
+party_custom_fields_heading	ฟิลด์กำหนดเอง (คู่ค้าที่เลือก)
+party_custom_help	เพิ่มป้ายและค่าใดก็ได้บนคู่ค้ารายนี้ — WhatsApp, GSTIN, รหัสเส้นทาง…
+party_custom_key_ph	ชื่อฟิลด์ (เช่น WhatsApp)
+party_custom_value_ph	ค่า
+party_custom_add	เพิ่ม/อัปเดตฟิลด์
+party_custom_remove	ลบฟิลด์
+party_custom_empty	ยังไม่มีฟิลด์กำหนดเอง
+party_custom_pick_first	เลือกคู่ค้าเพื่อเพิ่มฟิลด์กำหนดเอง
+place_name_ph	ชื่อสถานที่นี้
+price_ph	ราคา
+qty_example_ph	ปริมาณ (เช่น 1.5 สำหรับกก.)
+quantity_ph	ปริมาณ
+reason_required_ph	เหตุผล (จำเป็น)
+role_title_ph	ตำแหน่งงาน (เช่น Barista)
+service_pct_ph	บริการ % ไม่บังคับ 0/10/12
+short_code_ph	รหัสสั้น (MG02)
+slab_kg_ph	ขั้นที่คิดค่าบริการเป็น กก. (0.5)
+staff_name_ph	ชื่อ / รหัสพนักงาน
+starting_password_ph	รหัสผ่านเริ่มต้น (ไม่บังคับ)
+starting_pin_ph	PIN เริ่มต้น (4–12 หลัก)
+tax_rate_ph	ชื่ออัตราภาษีหรือ % — Standard, Reduced, 0, 5, 12, 18, 20
+to_code_ph	รหัสถึง (kg)
+uncleared_no_ph	หมายเลขที่ยังไม่เคลียร์ด้านบน
+unit_cost_ph	ต้นทุนต่อหน่วย
+unit_kg_blank_ph	หน่วย (กก. หรือว่าง)
+unit_name_bag_ph	ชื่อ (Bag)
+weight_unit_code_ph	รหัสหน่วยน้ำหนัก (กก.)
+zone_name_ph	ชื่อโซน
+pay_credit	เครดิต
+book_kind_today	สมุดวันนี้
+book_kind_month	สมุดเดือนนี้
+book_kind_aging	ค้างชำระ / เดบิต-เครดิต
+book_kind_balance	งบดุล
+ops_desk_help	สแกน AWB ด้วยเครื่องสแกนบาร์โค้ด USB (หรือพิมพ์) → ค้นหา จากนั้นดำเนินการต่อ พิมพ์ฉลาก หรือเก็บ COD ฉลากพิมพ์เป็น Code 128
+role_help_consignor	บทบาท: ผู้ส่ง — AR (พวกเขาเป็นหนี้เรา) บริษัทเดียวกันเป็นผู้ขนส่งด้วยก็ได้
+role_help_carrier	บทบาท: ผู้ขนส่ง — AP (เราเป็นหนี้พวกเขา) บริษัทเดียวกันเป็นผู้ส่งด้วยก็ได้
+role_help_both	บทบาท: ผู้ฝากส่ง + ผู้ขนส่ง — คู่ค้าเดียว บัญชี AR และ AP ยอดสุทธิในรายงาน
+role_help_supplier	บทบาท: ผู้จัดส่ง — เจ้าหนี้สำหรับการซื้อ
+lane_declared_label	จองเข้าบัญชี
+lane_owner_label	จองเงินสด
+money_lane_bill	ใบแจ้งหนี้: {lane}

@@ -1,0 +1,835 @@
+# Filipino — Filipino (fil). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	Mga aklat ng courier-agency + booking desk. Libreng offline.
+unlock	I-unlock
+pin_hint	Ang may-ari PIN ay nagsisimula bilang 0000
+sell	Pagbu-book
+buy	Magbayad
+books	Day ledger
+books_help	Posisyon ngayon. Pagbu-book = papasok na mga parsela. Magbayad = mga bayarin at gastos sa carrier. Mga partido = consignors at carrier.
+buy_help	Expense voucher at carrier bill (nalabas ang pera). Ang on-account ay nananatili sa party ledger.
+sell_money_in	Mag-book ng parcel
+buy_money_out	Gastos / singil sa carrier
+record_purchase	I-save ang binili
+add_expense	Resibo ng gastos
+bank_book	Bank ledger
+credit_help	Ang id ng partido ay natatangi (maaaring umulit ang mga pangalan). Mga Tungkulin: Consignor (AR), Carrier (AP), o pareho sa id na iyon. Ang mga ledger ay mananatiling hiwalay; ang mga ulat ay nagpapakita ng net.
+party_kind_ph	Custom na tungkulin (opsyonal) — o mag-tap ng chip sa itaas
+parties_list_heading	Mga naka-save na partido
+reports_help	Day ledger, mga may utang at nagpapautang, bank ledger, mga resibo ng gastos, kita at pagkawala.
+reports_today	Day ledger (ngayon)
+reports_month	Kita at pagkalugi (buwan)
+reports_aging	Natitirang / debit-credit
+reports_balance_sheet	Balanse sheet
+reports	Bank ledger at P&L
+refresh	I-refresh
+undo	I-undo
+start_tracking	Simulan ang pagsubaybay
+stock_minus	− Imbentaryo
+stock_plus	+ Imbentaryo
+settle_cash	Bayaran ng cash
+settle_card	Bayaran ng kard
+items	Mga rate at serbisyo
+nav_items	Mga rate
+more	Higit pa
+your_items	Ang iyong mga rate
+items_help	Ang bawat row ay isang rate (hal. Surface Zone A). Ang yunit ay karaniwang kg. I-tap para i-edit.
+add_item	Magdagdag ng rate
+new_item	Bagong rate
+adding_item	Pagdaragdag ng bagong rate
+editing_item	Pag-edit
+save	I-save
+remove	Alisin
+empty_catalog	Wala pang rates. Buksan ang Mga Rate at serbisyo, magdagdag ng isa (pangalan + presyo, unit kg), pagkatapos ay Pag-book.
+counter_sale	Counter booking
+total	Kabuuan
+cash	Cash
+upi	UPI
+card	Kard
+credit	Mga customer at supplier
+clear	Maaliwalas
+ready_to_sell	Handa na sa ledger
+today_prefix	Ngayong araw
+today_mid	ngayon
+owed	natitirang
+round_word	bilog
+back	Bumalik
+sold_out	Hindi available
+restock	Punuin muli
+not_tracked	Hindi sinusubaybayan
+in_stock	nasa stock
+marked_sold_out	Minarkahan na hindi available
+add_upper	DAGDAG
+na	N/A
+qty	Timbang/Dami
+unit_at	Presyo @
+actual	Aktwal
+applied	Inilapat
+note_ph	Tandaan (opsyonal)
+rounded	BILOG
+split	Hatiin
+counter	Kontra
+parcel	Parcel
+order	Order ng restaurant
+sales	Mga booking
+sales_refunds	Mga booking at refund
+day_close	Malapit na araw
+reports_expenses	Bank ledger at P&L
+nav_reports	Mga ulat
+nav_settings	Mga setting
+nav_lock	I-lock
+sidebar_settings	Mga setting ng sidebar
+sidebar_settings_help	Parehong mga icon tulad ng side rail. Mag-drag ng row para muling ayusin. I-flip ang switch para ipakita o itago. Palaging nananatili sa bar ang Mga Setting at Lock.
+sidebar_always_on_short	Laging naka-on
+sidebar_back_settings	Bumalik
+sidebar_shown	Ipinakita
+sidebar_hidden	Nakatago
+sidebar_always_on	Laging nasa bar
+sidebar_shown_hint	Ipinapakita sa gilid ng riles / ilalim na mga tab
+sidebar_hidden_hint	Nakatago sa bar
+sidebar_menu_items	Mga item sa menu ng Menu at Menu
+sidebar_enable_all	Paganahin ang Lahat
+sidebar_disable_all	Huwag paganahin ang Lahat
+sidebar_order_saved	Na-save ang order sa sidebar
+sidebar_visibility_saved	Na-save ang visibility ng sidebar
+amounts_hide	Magtago
+amounts_show	Ipakita
+no_sale_yet	Wala pang benta
+favorites	Mga paborito
+favorites_help	Mga item sa menu ng menu na madalas mong ibinebenta, na na-save para sa iyong pag-login. Magdagdag ng isa sa bill, o buuin ang iyong listahan mula sa lahat ng mga item sa menu sa ibaba.
+your_favorites	Mga paborito mo
+all_items	Lahat ng mga item sa menu
+no_favorites	Wala pang mga paborito — magdagdag ng mga item sa menu mula sa listahan sa ibaba.
+add_to_bill	Idagdag sa bill
+added	Idinagdag
+owes_word	may utang
+selected_word	Napili
+chip_clear_credit	malinaw - Credit o kumuha ng advance
+chip_missing_customer	Nawawala ang napiling customer — pumili muli
+chip_no_customer	Wala pang customer — mag-type ng pangalan, pagkatapos ay i-tap ang Credit
+credit_summary_fmt	{} mga customer · bukas na credit {} · mga advance na gaganapin {}
+recent_label	Kamakailan:
+inventory	Imbentaryo
+inventory_stock	Imbentaryo at stock
+branches	Mga sanga
+branches_org	Mga sangay at org
+credit_customers	Mga Partido (mga may utang at nagpapautang)
+customer_name_ph	Pangalan ng customer o supplier
+new_customer_ph	Bagong customer o pangalan ng supplier
+item_name_ph	Pangalan ng rate (hal. Surface Zone A)
+item_price_ph	Bawat kg / unang slab
+start_template	produkto
+next_booking	Susunod na booking
+destination_ph	Destinasyon na lungsod / sona
+consignee_ph	Pangalan ng tatanggap
+consignee_phone_ph	Telepono ng tatanggap
+consignee_address_ph	Delivery address
+origin_name_ph	Pangalan ng nagpadala
+origin_phone_ph	Telepono ng nagpadala
+origin_address_ph	Address ng pickup / pinanggalingan
+booking_consignor_heading	Consignor (customer / sender)
+booking_consignee_heading	Consignee (receiver)
+booking_consignor_hint	Pumili ng party na pupunuan, o iwanang blangko para sa walk-in. Kailangan para sa home pickup at RTO.
+booking_consignee_hint	Tagatanggap ng parsela. Iwanang blangko para sa mga walk-in counter drop-off.
+weight_kg_ph	Aktwal na kg
+length_cm_ph	L cm
+breadth_cm_ph	B cm
+height_cm_ph	H cm
+chargeable_kg	Sisingilin kg
+awb_label	AWB
+booking_help	Consignor + consignee (blangko OK) → destinasyon → timbangin → pick rate → Account/Cash → bayaran. AWB prints sa resibo. Inalis ng susunod na booking ang desk. Ang rounded na simula ay katumbas ng Applied — i-edit lang para bilugan ang bill.
+cart_empty_hint	Walang laman ang mesa — opsyonal ang consignor/consignee, itakda ang patutunguhan at timbang, i-tap ang ADD sa isang rate, pagkatapos ay magbayad.
+team	Koponan
+team_pins	Koponan at PINs
+my_pin_settings	Aking PIN
+settings_hub_help_my_pin	Baguhin ang pag-unlock PIN para sa taong naka-sign in sa device na ito.
+team_self_help	Ikaw lang ang makakapagpalit ng iyong PIN sa pag-unlock (at opsyonal na password sa pag-log in). Tanungin ang May-ari kung kailangan mo ng iba't ibang screen o karapatan.
+backup_settings	Pag-backup at mga setting
+lock_app	I-lock ang app
+pick	Pumili
+select	Pumili
+advance	Paunang bayad
+owner	May-ari
+staff	Mga tauhan
+photo	Larawan
+auto	Awtomatiko
+prev	Nakaraan
+next	Susunod
+ok	OK
+this_shop	Server mode
+extra_till	Client mode
+off	Naka-off
+server	Server mode
+client	Client mode
+language_currency	Wika at pera
+language	Wika
+choose_language	Piliin ang iyong wika
+language_setup_hint	Sundin ang wika ng device na ito, o pumili ng isa.
+lang_follow_platform	Wika ng device
+lang_pick_user	Pumili ng wika
+lang_platform_now	Wika ng device ngayon
+selected_language	Napili
+continue	Magpatuloy
+this_device	ANG DEVICE NA ITO
+device_use_q	Paano gagamitin ang device na ito?
+last_server_mode	Was Server — i-tap para magpatuloy
+last_client_mode	Was Client — i-tap para magpatuloy
+choose_server	Pumili ng server
+choose_server_hint	Magbukas ng kasalukuyang server, o lumikha ng isa para sa isa pang negosyo.
+create_new_server	Gumawa ng bagong server
+open_server	Bukas
+new_server_name_ph	Bagong pangalan ng server (opsyonal)
+server_remove_pin_ph	May-ari PIN para mag-alis ng server
+only_owner_remove_server	Ang May-ari lang ang makakapag-alis ng server
+owner_pin_remove_server	Kinakailangan ng may-ari PIN na alisin ang server na ito
+device_setup_help	Pinapanatili ng server ang mga ledger dito. Nagpares ang kliyente sa isang Server.
+currency	Pera
+backup	Reserbang kopya
+settings_sec_diag	Mga diagnostic
+settings_hub_help	Buksan ang isang lugar sa isang pagkakataon — mas kaunting pag-scroll, mas malinaw na mga pagpipilian.
+settings_sec_devices	Iba pang mga device
+settings_sec_alerts	Mga alerto
+alerts_help	Gaano katagal nananatili ang mga status message sa screen para sa iyo (pag-login na ito).
+snack_secs_ph	Segundo (3–60, default 10)
+snack_secs_save	I-save ang oras ng alerto
+snack_secs_saved	Na-save ang oras ng alerto — {n} segundo
+snack_secs_bad	Maglagay ng mga segundo bilang numero (3–60)
+cancelled	Kinansela
+cancel	Kanselahin
+opening_client	Binubuksan ang kliyente…
+preparing_desk	Inihahanda ang desk…
+opening_server	Binubuksan ang server…
+creating_server	Gumagawa ng server…
+diag_privacy_help	Nananatili ang mga log sa device na ito. Ang mga lihim (PIN, mga password) ay hindi kailanman iniimbak. Ang pagbabahagi ng package mula sa device ay nangangailangan ng iyong tahasang pag-apruba sa bawat pagkakataon — hindi kailanman ibinebenta o ibinigay sa mga third party.
+diag_level	Antas ng detalye
+diag_level_error	Mga pagkakamali
+diag_level_warn	Mga babala
+diag_level_info	Impormasyon
+diag_level_debug	I-debug
+diag_support_start	Magsimula ng 30-min na sesyon ng suporta
+diag_support_stop	Tapusin ang session ng suporta
+diag_support_started	Naka-on ang session ng suporta — Detalye ng pag-debug sa loob ng 30 minuto
+diag_support_ended	Natapos ang session ng suporta
+diag_export_local	I-export ang lokal na kopya
+diag_export_local_done	Handa ang mga lokal na diagnostic sa {path} — piliin kung saan magse-save ng kopya
+diag_approve_send	Aprubahan ang pagbabahagi sa device na ito
+diag_send_heading	Ibahagi ang device na ito
+diag_send_help	Ang pag-apruba ay isang pakete, pagkatapos ay mag-e-expire. Pansamantala — ginagamit lang para ayusin o pagandahin ang produkto. Hindi ibinahagi sa mga third party. Gumagana sa Linux, Windows, macOS, at Android.
+optional_login_heading	Opsyonal na pag-login
+rights_heading	Mga karapatan
+booking_scope_heading	Domestic / International
+diag_send_approved	Naaprubahan ang pagbabahagi para sa isang pakete (malapit nang mag-expire)
+diag_export_send	Gumawa ng share package (kailangan ng pag-apruba)
+diag_export_send_done	Ibahagi ang package na handa na sa {path} — piliin kung saan magse-save, pagkatapos ay ipadala lamang sa Kumkaj na suporta
+diag_save_bundle	I-save ang diagnostics copy
+diag_bundle_saved	Na-save ang kopya ng diagnostic sa {path}
+diag_bundle_failed	Hindi ma-save ang diagnostics copy — subukang muli
+diag_clear	I-clear ang mga diagnostic log
+diag_cleared	Na-clear ang mga diagnostic log
+use	Gamitin
+add_branch	Magdagdag ng sangay
+add_conversion	Magdagdag ng conversion
+add_item_plain	Magdagdag ng item sa menu
+add_note	Magdagdag ng tala
+add_opening_balance	Magdagdag ng pambungad na balanse
+add_rider	Magdagdag ng rider
+add_staff	Magdagdag ng mga tauhan
+add_unit	Magdagdag ng unit
+add_use_name	Idagdag / gamitin ang pangalang ito
+allow_extra_tills	Payagan ang mga dagdag na tills
+amend	Baguhin
+apply_country_pack	Ilapat ang country pack
+datetime_appearance	Petsa at oras na hitsura
+datetime_appearance_help	Pinapanatili ng mga aklat ang unang taon na RFC3339 sa loob. Binabago lang nito ang hitsura ng mga petsa at orasan sa mga resibo, label, ulat, at screen.
+datetime_example	Halimbawa ngayon: {ex}
+date_order	Order ng petsa
+date_order_dmy	D/M/Y
+date_order_mdy	M/D/Y
+date_order_ymd	Y-M-D
+time_format	orasan
+time_format_24h	24 na oras
+time_format_12h	12-oras
+attach_bill_photo	Maglakip ng larawan ng bill
+attach_pdf	Ilakip ang PDF
+attach_photo	Maglakip ng larawan
+bank	Bangko
+bank_in	Pasok sa bangko
+bank_out	Cash out sa bangko
+bank_to_till	Bangko → hanggang
+till_to_bank	Hanggang → bangko
+mark_cleared	Nag-clear si Mark
+unmark	Alisin ang marka
+role_both	pareho
+role_carrier	Tagapagdala
+role_cashier	Kahera
+role_consignor	Consignor
+role_manager	Tagapamahala
+role_supplier	Tagatustos
+branch_name_sell_ph	Pangalan ng branch kung saan ibebenta
+bring_my_book	Dalhin mo ang ledger ko
+business_tax_id_ph	ID ng buwis ng negosyo
+card_amount_ph	Ang halaga ng card
+cash_amount_ph	Halaga ng pera
+upi_amount_ph	UPI halaga
+carrier_cost_ph	Gastos ng carrier
+carrier_party_ph	Party ng carrier
+choose_icon	Pumili ng icon
+choose_logo	Pumili ng logo
+choose_receipt_stamp	Pumili ng selyo ng resibo
+choose_payment_qr	Pumili ng QR ng pagbabayad
+clear_icon	I-clear ang icon
+clear_logo	Maaliwalas na logo
+clear_photo	Maaliwalas na larawan
+clear_stamp	Maaliwalas na selyo
+clear_payment_qr	I-clear ang QR ng pagbabayad
+print_faces	Mga print face (resibo / period bill)
+print_faces_help	Opsyonal na selyo at QR ng pagbabayad sa tabi ng iyong logo sa mga resibo sa pag-book at mga bayarin sa panahon.
+awb_pools_heading	Mga pool ng numero ng carrier ng AWB
+add_awb_pool	Magdagdag ng AWB pool
+awb_pool_carrier_ph	Pangalan ng partido ng carrier
+awb_pool_start_ph	Simula no.
+awb_pool_end_ph	End no.
+awb_pool_prefix_ph	Prefix (opsyonal)
+awb_pool_label_ph	Label (opsyonal)
+pieces_ph	Mga piraso (blangko = 1) — palawakin para sa kargamento / maraming piraso
+bulk_awbs_ph	Bulk AWBs — i-paste ang marami (newline o kuwit) para sa isang status advance
+tds_cut_ph	TDS cut (opsyonal)
+discount_ph	Diskwento (opsyonal)
+cheque_no_ph	Suriin ang numero (opsyonal)
+bill_reminder_chase	Listahan ng paghabol ng paalala sa bill
+month_mix_report	Ulat ng paghahalo ng buwan
+copy_month_gst_csv	Kopyahin ang buwang GST CSV
+domestic	Domestic
+international	Internasyonal
+pick_logo	Pumili ng logo
+booking_scope_hint_domestic	Volumetric ÷5000 (domestic) — i-tap ang International para sa ÷6000 air
+booking_scope_hint_intl	Volumetric ÷6000 (international air) — i-tap ang Domestic para sa shop ÷5000
+cod_register	Pagrehistro ng COD
+collect_cod	Kolektahin ang COD (AWB)
+consignments_dispatch	Mga padala at pagpapadala
+consignor_party_ph	Consignor / pangalan ng partido
+copy_day_book_csv	Kopyahin ang ledger ng araw CSV
+copy_day_close	Pagsara ng araw ng kopya
+copy_items_csv	Kopyahin ang mga item sa menu CSV
+copy_outstanding_csv	Kopyahin ang natitirang CSV
+copy_parties_csv	Kopyahin ang mga customer at supplier CSV
+copy_party_ledger_csv	Kopyahin ang ledger ng customer CSV
+copy_receipt	Kopyahin ang resibo
+copy_report	Kopyahin ang ulat
+counted_cash_ph	Nagbilang ng cash sa drawer
+counter_agency_ph	Counter / pangalan ng ahensya (opsyonal)
+create_backup	Gumawa ng backup
+day_close_summary	Buod ng malapit na araw
+delete_party	Tanggalin ang napiling customer o supplier
+dispatch_to_rider	Naka-book ang dispatch → rider
+docket_charge_ph	singilin sa docket
+declared_value_ph	Ipinahayag na halaga
+contents_ph	Mga nilalaman
+eway_ph	E-way bill no.
+insurance_label	Insurance
+yes_label	Oo
+no_label	Hindi
+print_route_label	I-print ang ruta
+new_party_kind_label	Bagong klase ng party
+done_open_books	Tapos na — buksan ang mga ledger
+export_day	Araw ng pag-export
+extra_note_expense_ph	Dagdag na tala sa huling gastos
+extra_note_awb_ph	Karagdagang tala sa AWB / sale na ito
+failed_delivery	Nabigong paghahatid
+find_scan_awb	Hanapin / I-scan ang AWB
+forget_shop	Kalimutan ang tindahang ito
+fuel_ph	panggatong
+handover_carrier	Handbooked → carrier
+import_day	Araw ng pag-import
+import_items_csv	Mag-import ng mga item / rate ng CSV...
+import_parties_csv	Mag-import ng mga customer at supplier CSV…
+import_pincodes_csv	Mag-import ng mga pincode na CSV...
+import_carrier_bill_csv	Mag-import ng CSV ng bill ng carrier…
+copy_carrier_bill_report	Kopyahin ang huling ulat ng bill ng carrier
+use_carrier_cost	Gamitin ang gastos ng carrier
+rate_carrier_ph	Carrier (blangko = aming sell rate)
+rate_party_ph	Party (blangko = lahat ng customer)
+carrier_pick_ph	Carrier para sa gastos (mula sa paghahambing)
+item_name	Pangalan ng item sa menu ng menu
+load_bulk_row	Mag-load ng maramihang hilera → desk
+login_id_ph	Pangalan ng gumagamit
+mark_delivered	Hinatid ni Mark
+manifest_cod_total	Kabuuan ng COD
+manifest_received_by	Natanggap ni
+manifest_sign	Lagda
+ndr_address_wrong	Mali ang address
+ndr_customer_unavailable	Hindi available
+ndr_door_locked	Naka-lock ang pinto
+ndr_other	Iba pa
+ndr_refused	Tinanggihan
+out_for_delivery	Out para sa paghahatid
+print_drs	I-print ang DRS
+print_run_sheet	I-print ang run sheet
+reattempt	Muling pagtatangka
+rider_cod_handed_ph	Ipinasa ang COD
+settle_rider_cod	Settle rider COD
+mode_desk	mesa
+mode_rider	sakay
+waiting_office	naghihintay na makarating sa opisina
+capture_signature	Kunin ang lagda
+incoming_manifest	Papasok na manifest
+pickup_request	Kahilingan ng pickup
+pickup_run	Pickup run
+auto_assign_area	Awtomatikong italaga ang lugar
+reorder_stops	Huminto ang muling pag-aayos
+settle_rider_pay	Settle rider pay
+vehicle_inspect	Inspeksyon ng sasakyan
+print_docket	I-print ang docket
+franchise_statement	Pahayag ng franchise
+tally_export	Tally voucher export
+open_whatsapp	Buksan ang WhatsApp
+copy_sms	Kopyahin ang text ng SMS
+pick_barcode_image	Pumili ng larawan upang i-scan
+share_receipt_whatsapp	Ibahagi ang resibo sa WhatsApp
+delivery_feedback	Feedback sa paghahatid
+lan_self_book	Self-booking sa LAN
+new_party_clear	Bagong customer o supplier (malinaw na form)
+new_party_kind_ph	Bagong uri ng party (Supplier / Carrier)
+next_country	Susunod na bansa
+prev_country	Nakaraang bansa
+note_gstin_ph	Tandaan / GSTIN / paalala ng kasunduan
+note_pod_ph	Tandaan / POD (opsyonal)
+on_account_ap	Sa account (AP)
+org_optional_ph	Organisasyon (opsyonal)
+paid_now	Bayad na ngayon
+pairing_code_ph	Code ng pagpapares
+pair_now	Ipares ngayon
+party_name_selected_ph	Pangalan ng customer o supplier (o napiling gamitin)
+password_ph	Kontrasenyas
+pay_ap_card	Magbayad ng AP card
+pay_ap_cash	Magbayad ng AP cash
+pay_ap_upi	Magbayad ng AP UPI
+period_bill	Period bill
+period_bill_party	Period bill (party)
+pick_pod_photo	Pumili ng POD na larawan
+print_awb_label	I-print ang label ng AWB
+print_open	I-print / buksan
+reason_amend_ph	Dahilan para baguhin / walang bisa / refund
+reason_note_ph	Dahilan / tala (pag-aaksaya, bilang,…)
+record_day_close	I-save ang araw malapit
+refresh_from_shop	I-refresh mula sa tindahan
+refund	Ibalik ang bayad
+remit_cod	Mag-remit ng COD (party)
+remove_selected	Alisin ang napili
+restore_backup	Ibalik ang backup
+rider_name_ph	Pangalan ng rider
+rider_phone_ph	Telepono ng rider
+riders	Mga Rider
+riders_own_fleet	Mga Rider (sariling fleet)
+rollup	Rollup ng buod
+save_booking_measures	I-save ang mga hakbang sa pag-book
+save_brand	I-save ang tatak
+save_business_id	I-save ang business id
+save_business_name	I-save ang pangalan ng negosyo
+save_features	I-save ang setup ng trabaho
+save_names	I-save ang mga pangalan
+server_ip_ph	IP ng server (hal. 192.168.1.10)
+set_credit_limit	Ilapat ang limitasyon sa customer o supplier
+set_login_selected	Ilapat ang pag-login sa napili
+set_login_named	Ilapat ang pag-login sa {name}
+shop	Mamili
+start_fresh	Magsimula ng bago
+stop_extra_tills	Itigil ang mga extra tills
+backup_auto	Awtomatikong bina-back up araw-araw · huling {when} · ang huling 14 na araw ay pinananatili sa {dir}.
+backup_auto_none	Awtomatikong bina-back up araw-araw — tatakbo ang una sa ilang sandali.
+backup_copy_to	Mapupunta rin ang mga kopya sa {dir}.
+backup_copy_btn	Kopyahin din ang mga backup sa isang folder...
+autostart_off	Magsimula sa computer na ito
+autostart_on	Nagsisimula sa computer na ito ✓ — i-tap para huminto
+autostart_done_on	Binubuksan na ngayon ng computer na ito ang app kapag nagsimula ito — bumalik ang server ng shop pagkatapos maputol ang kuryente.
+autostart_done_off	Hindi na binubuksan ng computer na ito ang app kapag nagsimula ito.
+right_allowed	Pinayagan
+right_with_approval	Nang may pagsang-ayon
+right_denied	Hindi pinapayagan
+editing_staff	Mga karapatan para sa
+team_pick_ph	Mga tauhan na ie-edit — pangalan, username, o pipiliin
+select_staff	Piliin ang tauhan na ito
+rights_help	Mga Karapatan — i-tap para baguhin: Pinapayagan → May pag-apruba (PIN ng manager sa sandaling iyon) → Hindi pinapayagan.
+right_void_refund	Walang bisa o i-refund ang isang booking
+right_amend_sale	Ayusin ang isang naitalang booking
+find_server	Hanapin ang server ng shop
+finding_server	Naghahanap ng server ng shop dito Wi‑Fi…
+no_server_found	Walang nahanap. Sa Server: Mga Setting → Iba pang mga device → Payagan ang mga dagdag na tills (pareho Wi‑Fi). O i-type ang IP na ipinapakita doon.
+servers_found_pick	I-tap ang shop na gusto mong kumonekta.
+server_host_selected	Gamit ang {host} — ilagay ang code ng pagpapares, pagkatapos ay Ipares ngayon.
+device_forgotten	Nakalimutan ng shop ang device na ito — ipares itong muli sa kasalukuyang code ng shop. Ang mga order na naghihintay dito ay itinatago.
+forget_device	Kalimutan
+last_seen	nakita
+new_pair_code	Bagong code ng pagpapares
+lan_offline	Hindi maabot ang server ng tindahan
+lan_offline_waiting	Hindi maabot ang server ng tindahan · {n} naghihintay
+lan_connecting	Kumokonekta sa shop…
+pair_finishing	Tinatapos ang pares... paglalapat ng mga aklat sa opisina
+pair_opening	Pagbubukas ng opisina…
+lan_live	Mabuhay
+lan_sending	{n} nagpapadala
+lan_sign_in_to_send	Mag-sign in muli para ipadala ang {n}
+lan_pair_again	Ipares muli ang device na ito
+lan_update_app	I-update ang app — ang device na ito at ang server ng opisina ay may magkaibang bersyon
+allow_firewall	Payagan ang ibang mga device na kumonekta
+firewall_blocked	Bina-block ng firewall ng computer na ito ang iba pang mga device — i-tap ang Payagan ang ibang mga device na kumonekta.
+firewall_waiting	Naghihintay para sa prompt ng admin…
+lan_join_help	Sa kabilang device: Client Mode → Hanapin ang server ng shop (o i-type ang {addr}) → pairing code {code}.
+lan_pair_status	Wi‑Fi {addr}
+lan_join_help_no_addr	Ikonekta ang device na ito sa Wi‑Fi para sa isang address.
+lan_no_address	Wala pang Wi‑Fi address — kumonekta sa shop Wi‑Fi.
+lan_not_listening	Hindi tumatanggap ng mga device (port {port} busy). I-restart ang app.
+lan_tills_off	Naka-off ang mga extra tills. Payagan silang payagan ang isa pang device na sumali.
+paired_with	Ipinares · {url}
+not_paired	Hindi ipinares
+choose_device_use	Piliin ang Server o Kliyente.
+paired_note	Ipinares. I-unlock para ibenta, o I-refresh para sa pinakabago.
+last_update_at	Huling update: {time}.
+pair_intro	Hanapin ang server, o i-type ang address at code ng pagpapares nito.
+queue_waiting	Naghihintay na makarating sa tindahan ({n}):
+queue_tries	Sinubukan {n} beses · huling sagot: {e}
+save_backup_copy	Mag-save ng backup na kopya...
+backup_copy_saved	Naka-save ang backup na kopya — itago ito sa device na ito (isang USB stick o ibang device)
+backup_copy_overdue	Walang naiwang backup na kopya sa device na ito sa loob ng {n} araw — Mga Setting → Backup
+backup_copy_failed	Hindi ma-save doon ang backup na kopya — pumili ng ibang lugar
+clock_off	Ang orasan ng device na ito ay {min} min sa server ng shop — itakda ang tamang oras sa device na ito
+printers_heading	Mga printer sa device na ito
+printers_help	Maghanap ng mga tunay na printer, pagkatapos ay piliin ang Receipt o AWB label. Ang bawat trabaho ay may sariling lapad, portrait o landscape, at kung paano ipinapadala ang mga byte. Isang label ang nagpi-print ng barcode. Bakanteng lugar = huwag mag-print.
+job_width	Lapad ng nilalaman (mm)
+job_width_ph	O mag-type ng lapad, 40–210 mm
+job_layout	Ayos
+job_delivery	Paano ipinadala ang trabaho
+job_size	Laki ng font
+job_size_ph	hal. 18, 20, 26…
+save_receipt_format	I-save ang format ng resibo
+save_label_format	I-save ang format ng label
+test_receipt_format	Pagsubok na resibo
+test_label_format	Test label
+test_receipt_sent	Ipinadala ang sample na resibo
+test_label_sent	Ipinadala ang sample na label
+test_print_no_printer	Walang printer para sa trabahong iyon — magdagdag ng isa sa ilalim ng lugar na ito
+printers_host_only	Ang mga printer ay nakatakda sa shop device (Server). Ito hanggang magpapadala ng mga trabaho doon — Maghanap / magdagdag / magtalaga ng pananatili sa Server. Ang pahina ng pagsubok ay mapupunta sa Server.
+printers_pool_heading	Mga Printer
+printers_routes_heading	Kung saan naka-print ang mga bagay
+printer_label_ph	Pangalan (hal. Mesa)
+printer_target_ph	host:9100 · bt:MAC · usb:VID:PID · pangalan ng system
+printer_mode_heading	Profile para sa mga bagong output
+printer_mode_standard	Karaniwang Portrait
+printer_mode_landscape	Karaniwang Landscape
+printer_mode_thermal	Thermal
+printer_mode_standard_short	Larawan
+printer_mode_landscape_short	Pahiga
+printer_mode_thermal_short	Thermal
+printer_format_custom	Bagong custom na profile
+printer_format_custom_label	Pasadya
+printer_format_custom_added	Idinagdag ang custom na profile para sa lugar na ito
+add_printer	Magdagdag ng printer
+remove_printer	Alisin ang huli
+route_pick_ph	resibo o label
+route_add_printer_ph	Magdagdag ng printer sa lugar na ito
+route_receipt	Resibo
+route_label	Label ng AWB
+route_dont_print	Walang nakatalagang printer
+route_add	Idagdag sa lugar
+route_up	pataas
+route_down	Pababa
+route_remove	Alisin ang huli
+route_clear	I-clear ang mga printer para sa lugar na ito
+save_printers	I-save ang mga printer
+print_test_page	Mag-print ng test page
+printers_saved	Mga printer na na-save para sa device na ito
+test_page_sent	Naipadala ang test page — tingnan ang printer
+printers_found	Natagpuan sa device na ito: {list}
+find_printers	Maghanap ng mga printer
+printers_looking	Naghahanap ng mga printer sa device na ito at Wi‑Fi…
+printers_tap_find	I-tap ang Maghanap ng mga printer para sa mga pila na tumatanggap ng mga trabaho at mga printer ng resibo ng network sa Wi‑Fi na ito (hindi inalis o offline).
+printers_none_found	Walang nakitang mga printer — mag-type ng pangalan ng system printer, o isang address ng network (hal. 192.168.1.50).
+receipt_printer_ph	Printer para sa mga resibo
+queue_refused	Hindi tinatanggap ng tindahan ({n}) — tingnan ang bawat isa sa counter:
+clear_not_accepted	May check — i-clear ang listahang ito
+device_name_ph	Pangalan ng device na ito
+lan_last_update	huling update {time}
+lan_not_accepted	{n} hindi tinatanggap
+connected_now	konektado ngayon
+backup_failed	Nabigo ang huling awtomatikong pag-backup: {e}
+backup_overdue	Walang backup sa loob ng {n} araw — panatilihing bukas ang app sa device na ito para makapag-back up ito.
+disk_low	{mb} MB lang ang libre sa device na ito — malapit nang mabigo ang mga backup. Magbakante ng ilang espasyo.
+last_seen_devices	Huling nakita: {time}
+sync_interval	I-sync bawat {secs}s
+connection_to_shop	Koneksyon sa tindahan
+supplier_name_ph	Pangalan ng supplier (o customer)
+supplier_ph	Tagatustos
+switch_device	Ilipat ang device na ito
+take_payment	Kunin ang bayad
+tax_added_till	{tax} eksklusibo
+tax_inside_price	{tax} kasama
+today_books	Mga ledger ngayon
+unlock_after_pairing	Ilagay ang PIN
+unlock_with_login	I-unlock gamit ang pag-login
+update_my_password	I-update ang aking password
+update_my_pin	I-update ang aking PIN
+duress_heading	Emergency unlock PIN (May-ari lang)
+duress_help	Opsyonal. Kung ang PIN na ito ay nai-type sa pag-unlock sa halip na sa iyo, ang lahat ng mga entry sa aklat ay mapupunas (mga booking, ledger, history) at magbubukas ang desk bilang May-ari na mukhang normal — ang mga rate, party, zone, staff at setting ay mananatili. Ang schema at config ay hindi tinatanggal. Gamitin lang kung napipilitan kang mag-unlock. Iwanang blangko at i-save para i-off. Hindi kailanman katulad ng PIN ng sinuman.
+duress_pin_ph	Emergency PIN (4–12 digit)
+duress_confirm_ph	Mag-type muli para kumpirmahin
+save_duress_pin	I-save ang emergency PIN
+clear_duress_pin	I-off ang emergency PIN
+duress_on	Naka-on ang emergency unlock PIN
+duress_off	Naka-off ang emergency unlock PIN
+duress_saved	Na-save ang emergency unlock PIN
+duress_cleared	Naka-off ang emergency unlock PIN
+vehicle_ph	Sasakyan
+void	Walang bisa sa pagbebenta
+write_off_ap	Isulat ang AP
+write_off_nil	Isulat / walang balanse
+zone_ph	Zone (pangalan mula sa Rates)
+caption_today	NGAYONG ARAW
+caption_bookings	MGA BOOKING
+caption_payments_today	MGA BAYAD NGAYON
+caption_outstanding	NATITIRA
+caption_bank	BANK
+paid_by	Binayaran ni
+second_way	Pangalawang paraan
+weight_in	Timbang sa
+size_in	Sukat sa
+goods_received	Natanggap ang mga kalakal
+expense_heading	Gastos
+notes_attach_sale	Mga tala at attachment (piniling sale)
+notes_attach_party	Mga tala at attachment (piling customer o supplier)
+attachments_last_expense	Mga Attachment (huling gastos)
+credit_limit_heading	Limitasyon sa kredito (piling customer o supplier)
+pay_selected_heading	Pinili ang pagbabayad (bayaran ang utang / kumuha ng advance)
+write_off_heading	I-write off (i-clear nang walang bayad)
+pay_ap_heading	Bayaran ang utang natin sa kanila (AP)
+country_tax	Bansa at buwis
+extra_tills_heading	Mga dagdag na tills
+other_devices_help_heading	Mag-set up ng iba pang device
+other_devices_help	Sa device na ito (Server): Iba pang mga device → Pahintulutan ang mga karagdagang tills. Tandaan ang code ng pagpapares at Wi‑Fi address. I-tap ang Payagan ang ibang mga device na kumonekta kung lalabas ito. Sa isang computer, i-tap ang Magsimula sa computer na ito. Sa bawat isa na device: i-install ang app, piliin ang Client Mode, Hanapin ang server ng shop (o i-type ang address), ilagay ang code ng pagpapares, Ipares ngayon. Naghihintay ang mga order sa device kung bumaba ang Wi‑Fi at umalis kapag sumagot muli ang Server.
+your_brand	Ang iyong brand (in-app)
+units_heading	Mga yunit
+booking_measures	Mga hakbang sa pag-book
+drawer_count	Bilang ng drawer (opsyonal)
+spreadsheet_csv	Talaan (CSV)
+bank_reconciliation	Bank reconciliation (lagyan ng check ang iyong bank statement)
+book_add_product	Book — magdagdag ng produkto / rate
+book_opening_credit	Ledger — pagbubukas ng kredito
+account_kind	Uri ng account (i-tap ang isa)
+active_ledger	Aktibong ledger
+actual_total_cap	TUNAY NA KABUUAN
+amend_help	Pumili ng isang benta upang susugan, mawawalan ng bisa, o i-refund. Pinapanatili ng mga pagbabago ang buong kasaysayan. Ang Rounded Total ay nagsisimula katumbas ng Applied — i-edit lang sa round. Maaaring kailanganin ng walang bisa at refund ang isang May-ari o Tagapamahala PIN (naka-type sa itaas; naitala gamit ang iyong pangalan).
+applied_total_cap	NILAPAT NA KABUUAN
+bank_balance	Balanse sa bangko
+bank_net_today	Bank net ngayon
+branch_export_help	Ang pag-export ay nagsusulat ng isang araw na snapshot sa folder ng mga backup at kinokopya ito sa clipboard. Para mag-import ng isa pang araw ng outlet, i-save ang file nito bilang import_branch_snapshot.json sa folder na iyon, pagkatapos ay i-tap ang Import.
+brand_shown_help	Ipinapakita sa mga screen sa loob ng app. Ang naka-install na pangalan at icon ng app sa device na ito ay nananatiling listahan ng platform.
+app_icon	Icon ng app
+logo_help	Opsyonal na marka ng tindahan sa mga screen sa app.
+onboard_layout	Kung ano ang makukuha mo
+item_photo_help	Opsyonal. Kung walang larawan, ipinapakita namin ang mga inisyal mula sa pangalan ng item sa menu.
+cash_in_hand	Cash sa kamay (hanggang)
+change_my_pin_heading	Baguhin ang aking PIN (sa iyo lamang)
+connect_to_server	Kumonekta sa Server
+counter_locked	Counter 01 · Naka-lock
+country_pack_help	Itinatakda ng country pack ang pangalan ng buwis at matematika, ang instant-pay na tren, at ang business id na naka-print sa mga bill. Ang Kumkaj ay hindi naghahain ng buwis o nag-iisyu ng mga e-invoice ng gobyerno kahit saan.
+currency_use_help	Mag-scroll at i-tap ang Gamitin para sa anumang sinusuportahang pera.
+day_close_help	Ang pagre-record ng isang araw na pagsasara ay nagse-save sa buod na ito (at drawer variance kung binibilang) sa audit log. Hindi ito tumitigil sa pagbebenta.
+expenses_word	Mga gastos
+feature_access_help	Access sa tampok para sa mga napiling kawani (i-tap pagkatapos magdagdag)
+footer_local	Lokal na SQLite · Libre Magpakailanman · Zero Cloud
+fresh_book_moklanjo	Fresh = walang laman na catalog (magdagdag ng mga item sa ibang pagkakataon). Book = uri ng pagbubukas ng stock at kung sino ang may utang sa iyo sa ibaba.
+fresh_selected	Bagong napili — mananatiling walang laman ang katalogo. I-tap ang Tapos na kapag handa na.
+gross_word	Kabuuan
+how_start	Paano mo gustong magsimula?
+later_country_pack	Mamaya: Mga Setting → ilapat ang iyong country pack para sa mga label ng buwis at pagbabayad.
+local_badge	LOKAL
+measures_help_moklanjo	Paano sinusukat ang mga parsela sa booking desk. I-type ang mga sukat at timbang sa mga unit na iyong ginagamit — standard (cm, m, in, ft · kg, g, lb, oz) o ang iyong sariling unit na naka-link sa cm / kg sa itaas (direkta o sa pamamagitan ng iba pang mga unit). Ang mga libro ay palaging nagtatala ng kg. Mag-iwan ng field na walang laman upang mapanatili ito.
+mix_type_hint_moklanjo	I-type kung magkano sa bawat isa (cash / UPI / card / credit). Dapat magdagdag ng hanggang sa kuwenta. Kailangan ng credit ang isang customer sa itaas.
+money_in_sales	Pera sa (benta)
+more_help_moklanjo	Catalogue, benta, credit, team, backup — kasama ang stock at dagdag na tills kapag kailangan.
+net_word	Neto
+offline_badge	WALANG LINYA
+optional_login_help	Opsyonal na pag-login (id + password). Nagtatakda ang may-ari nang isang beses; ang user lang ang makakapagpalit ng password sa ibang pagkakataon.
+or_unlock_login	O i-unlock gamit ang login id + password
+permission_preset	Trabaho (nagtatakda ng mga screen at karapatan)
+preset_help_moklanjo	Cashier: ibenta. Manager: ibenta + menu item + void/amend.
+product_locked_moklanjo	Moklanjo
+product_only_moklanjo	Ang app na ito ay Moklanjo lamang — mga aklat + booking desk. Ang ibang kalakalan ay nahaharap sa barko bilang hiwalay na mga produkto sa ibang pagkakataon.
+purchases_cogs	Mga Pagbili (COGS)
+qty_cap	DAMI
+restore_help	I-restore: pumili ng backup. Bukas ang mga ledger tulad ng dati; ang mga ledger tulad ng mga ito ngayon ay nai-save muna, kaya maaari itong i-undo.
+wipe_data_heading	Tanggalin ang lokal na data
+wipe_data_help	May-ari lang — parehong mga pagpipilian sa pag-uninstall ng Windows. Ang mga talaan ng negosyo ay nag-clear ng kasaysayan ng kalakalan ngunit nagpapanatili ng mga rate at setup (tulad ng emergency unlock PIN). Inaalis ng setup ng shop ang database ng mga aklat. Nililinis ng mga kagustuhan sa screen ang window/wika. Kumpirmahin gamit ang PIN ng May-ari. Ang PIN ng emergency sa pag-unlock sa Team ay hiwalay (tagong punasan sa pag-unlock).
+wipe_trading	Mga tala ng negosyo
+wipe_schema	Setup ng tindahan
+wipe_ui	Mga kagustuhan sa screen
+wipe_owner_pin_ph	May-ari PIN tanggalin
+wipe_delete_selected	Tanggalin ang napili
+wipe_owner_only	Ang May-ari lang ang makakapagtanggal ng lokal na data.
+restore_owner_only	Ang May-ari lang ang makakapag-restore ng backup.
+wipe_owner_pin_needed	Ilagay ang May-ari PIN para tanggalin ang lokal na data.
+wipe_nothing_selected	Piliin kung ano ang unang tatanggalin.
+wipe_done	Na-delete ang napiling lokal na data.
+wipe_schema_done	Na-wipe ang setup ng shop — piliin ang Server o Client para magpatuloy.
+rounded_total	Bilugan Kabuuan
+setup_app_moklanjo	I-set up ang Moklanjo
+shop_logo_optional	Logo ng tindahan (opsyonal)
+stock_type_help	I-type ang pangalan ng item sa menu (sapat na ang bahagi nito), isang dami, pagkatapos ay ayusin. Ang mga item sa menu ng menu na hindi pa binibilang ay nangangailangan ng Simulan ang pagsubaybay nang isang beses.
+team_owner_help	Hire: pumili ng trabaho (Cashier / Manager), pangalan + panimulang PIN, pagkatapos ay Magdagdag. Kung iba lang ang taong ito: buksan ang mga screen at mga karapatan sa ibaba, pagkatapos ay I-save ang setup ng trabaho. Ang bawat tao'y nagbabago ng kanilang sariling PIN sa ibaba — Hindi maaaring baguhin ng may-ari ang sinumang iba.
+they_owe_us	May utang sila sa amin
+unit_at_cap	Yunit @
+units_help	Mga code para sa mga label ng item sa menu (kg, piraso, bag). Ang bawat unit ay dapat mag-link — direkta o sa pamamagitan ng iba pang mga unit — sa isang pamantayan (kg · cm · ml · pc), hal. 1 crate = 2 box at 1 box = 20 cm. Mga Conversion: 1 mula sa = salik sa. Ang mga pera ay hindi kailanman mga yunit.
+we_owe_them	May utang tayo sa kanila
+who_unlocking	Sino ang nag-a-unlock?
+locked_word	Naka-lock
+show_pin	Ipakita ang PIN
+hide_pin	Itago ang PIN
+set_owner_pin	Itakda ang MAY-ARI PIN
+enter_owner_passcode	ENTER PASSCODE NG MAY-ARI
+enter_staff_passcode	Ipasok ang STAFF PASSCODE
+pin_count_zero	0 / 12 digit · hindi bababa sa 4, pagkatapos ay OK
+pin_count_need	{} / 12 digit · kailangan ng {} pa
+pin_count_full	12 / 12 digit · pindutin ang OK
+pin_count_ready	{} / 12 digit · pindutin ang OK kapag handa na
+pin_hint_choose	Pumili ng 4–12 digit · Ipasok o I-unlock para i-save
+pin_hint_new	Bagong 4–12 digit na May-ari PIN · Enter o I-unlock
+pin_hint_shop_code	Mamili ng device · code ng pagpapares {}
+pin_hint_books	Hawak ng device na ito ang mga ledger
+pin_hint_paired	Extra hanggang paired — i-unlock para ibenta
+pin_hint_pair_first	Extra till — ipares muna sa shop device
+unlock_to_continue	I-unlock upang magpatuloy
+no_staff_yet	Wala pang staff — i-unlock bilang May-ari, pagkatapos ay Team
+status_server_set_pin	Server Mode — itakda ang May-ari PIN
+status_server_tills	Server Mode — maaaring sumali ang mga dagdag na till. I-unlock
+status_server_unlock	Server Mode — i-unlock bilang May-ari
+status_client_unlock	Client Mode — i-unlock para magbenta
+icon_new_selected	Icon: bagong file ang napili — i-tap ang I-save ang brand
+icon_custom	Icon: custom na marka ng lugar
+icon_default	Icon: Kumkaj mark (default) — pumili ng custom
+logo_yours	Logo: logo ng iyong tindahan — ipinapakita sa mga screen at resibo
+logo_default	Logo: Kumkaj markahan (default) — piliin ang sarili mo kung mayroon ka
+tmpl_current	Kasalukuyan: {} — {}
+tmpl_selected	Napili: {} — {}
+setup_complete	Kumpleto na ang setup
+onboard_fresh_tmpl	Bago · {} — ang catalog ay nagsisimulang walang laman; magdagdag ng mga item sa menu sa mga item sa menu ng Menu, pagkatapos ay Tapos na.
+onboard_book_tmpl	Ledger · {} — magdagdag ng mga item sa menu at pambungad na credit, pagkatapos ay Tapos na.
+onboard_template_tmpl	Pangalanan ang lugar kung gusto mo, pagkatapos ay piliin kung paano magsisimula.
+tmpl_blurb	Mga courier book at booking desk: mga consignor, carrier, day book, AWB.
+tmpl_how	Book parcels sa desk; Day book para sa araw na ito; mga tab para sa mga rate, party, ulat.
+trk_booked	Naka-book
+trk_picked_up	Pinulot
+trk_in_transit	Nasa transit
+trk_delivered	Naihatid
+trk_rto	Bumabalik sa nagpadala
+lane_to_dispatch	Upang ipadala
+lane_with_carrier	Sa carrier
+lane_failed	Nabigo
+lane_done_today	Tapos ngayon
+ops_board_help	Parcels sa pamamagitan ng kung saan sila ay nasa trabaho ngayon. I-tap ang mga parcels (o i-scan ang mga ito) upang piliin ang mga ito, pagkatapos ay kumilos sa lahat ng napili nang sabay-sabay — ang bawat lane ay nag-aalok lamang ng mga galaw na akma dito.
+lane_empty	Wala dito ngayon.
+picked_fmt	Pinili ang {n}
+pick_all	Piliin lahat
+bag_for_carrier	Kamay sa carrier
+send_with_rider	Ipadala kasama ang rider
+out_again	Labas na naman
+return_to_sender	Bumalik sa nagpadala
+runs_bags_heading	Mga kamakailang pagtakbo at bag
+print_word	Print
+bag_word	Carrier bag
+run_word	Tumatakbo ang rider
+parcels_fmt	{n} na mga parcel
+parcel_history	Kasaysayan
+attempt_fmt	Subukan ang {n}
+pieces_short_fmt	{n} na mga PC
+note_reason_ph	Tandaan o dahilan
+ops_pick_first	Pumili muna ng mga parcels — i-tap ang mga ito o i-scan ang mga ito
+cod_to_collect	Naihatid — COD para mangolekta
+cod_on_road	COD pa sa kalsada
+cod_owed_consignors	Nakolekta — para magbayad ng mga consignor
+cod_rto_fees	Mga bayarin sa RTO para mangolekta
+cod_to_hand_in	COD para ibigay
+parcel_one_fmt	{n} parcel
+facet_bank_title	Mga ulat
+facet_bank_help	Mga day ledger, customer o supplier na tumatanda, mga post sa bangko, at period P&L.
+facet_ops_title	Mga padala at pagpapadala
+facet_ops_help	I-scan o i-type ang AWB → Hanapin, pagkatapos ay i-advance / i-print ang label / COD. Ipadala sa rider o carrier.
+facet_cod_title	Pagrehistro ng COD
+facet_cod_help	Kolektahin sa paghahatid, pagkatapos ay ipadala sa consignor.
+facet_riders_title	Mga Rider (sariling fleet)
+facet_riders_help	Magdagdag ng mga sakay, pagkatapos ay magpadala ng mga naka-book na AWB mula sa Ops.
+against_bill_ph	Laban sa bill # sa itaas (opsyonal)
+aliases_ph	Mga alyas — ibang pangalan, pinaghihiwalay ng kuwit
+amount_blank_full_ph	Halaga (blangko = buong balanse)
+amount_owed_ph	Halaga ng utang
+amount_ph	Halaga
+amount_received_ph	Halagang natanggap
+amount_we_pay_ph	Ang halaga ng binabayaran namin
+awb_scan_ph	AWB / i-scan ang barcode
+bulk_csv_ph	Bulk CSV — destinasyon, consignee, kg, cod_paise, note
+business_name_ph	Pangalan ng negosyo
+category_new_ph	Kategorya (opsyonal, ginawa kung bago)
+cod_amount_ph	halaga ng COD
+code_bag_ph	Kodigo (supot)
+conv_factor_ph	Salik (25 = 1 bag → 25 kg)
+country_code_ph	Country code hal. SA, GB, US, AE, BR
+credit_khata_amount_ph	Halaga ng credit / credit ledger
+credit_limit_ph	Limitasyon sa kredito (0 = wala)
+dim_unit_code_ph	Code ng unit ng dimensyon (cm)
+divisor_ph	Volumetric divisor (5000)
+extra_per_kg_ph	Dagdag / kg
+first_amount_ph	Unang halaga
+first_kg_ph	Unang kg (slab)
+from_code_ph	Mula sa code (bag)
+item_name_lang_ph	Pangalan ng item sa menu ng menu — i-type ito sa iyong wika
+login_id_opt_ph	Username (kinakailangan, natatangi)
+manager_pin_ph	Manager PIN para aprubahan (kung hindi mo mapapawalang-bisa)
+new_branch_name_ph	Bagong pangalan ng sangay
+new_password_ph	Bagong password (opsyonal)
+new_pin_ph	Bago PIN (4–12 digit)
+note_bank_ph	Paalala (deposito, withdrawal,…)
+note_buy_expense_ph	Tala (gasolina, upa,…)
+note_expense_ph	Tala (gasolina, opisina,…)
+notify_phone_ph	I-notify ang telepono (WhatsApp/SMS hook)
+options_moklanjo_ph	Mga Opsyon (opsyonal) — Malaki=20, Gift wrap=10
+part_second_way_ph	Bahagi sa pangalawang paraan (opsyonal)
+phone_ph	Telepono
+address_ph	Address
+party_custom_fields_heading	Mga custom na field (napiling partido)
+party_custom_help	Magdagdag ng anumang label at value sa party na ito — WhatsApp, GSTIN, route code, …
+party_custom_key_ph	Pangalan ng field (hal. WhatsApp)
+party_custom_value_ph	Halaga
+party_custom_add	Magdagdag ng field
+party_custom_remove	Alisin ang field
+party_custom_empty	Wala pang custom na field
+party_custom_pick_first	Pumili ng isang partido upang magdagdag ng mga custom na field
+place_name_ph	Pangalan ng lugar na ito
+price_ph	Presyo
+qty_example_ph	Dami (hal. 1.5 para sa kg)
+quantity_ph	Dami
+reason_required_ph	Dahilan (kinakailangan)
+role_title_ph	Pamagat ng tungkulin (hal. Barista)
+service_pct_ph	Serbisyo % opsyonal 0/10/12
+short_code_ph	Maikling code (MG02)
+slab_kg_ph	Sisingilin na slab sa kg (0.5)
+staff_name_ph	Pangalan / id ng tauhan
+starting_password_ph	Panimulang password (opsyonal)
+starting_pin_ph	Simula PIN (4–12 digit)
+tax_rate_ph	Pangalan ng rate ng buwis o % — Karaniwan, Binawasan, 0, 5, 12, 18, 20
+to_code_ph	Sa code (kg)
+uncleared_no_ph	Hindi na-clear ang # sa itaas
+unit_cost_ph	Gastos ng yunit
+unit_kg_blank_ph	Yunit (kg o blangko)
+unit_name_bag_ph	Pangalan (Bag)
+weight_unit_code_ph	Code ng unit ng timbang (kg)
+zone_name_ph	Pangalan ng zone
+pay_credit	Sa account
+book_kind_today	Mga ledger ngayon
+book_kind_month	Mga ledger sa buwang ito
+book_kind_aging	Natitirang / debit-credit
+book_kind_balance	Balanse sheet
+ops_desk_help	I-scan ang AWB gamit ang USB barcode scanner (o i-type ito) → Hanapin. Pagkatapos ay mag-advance, mag-print ng label, o mangolekta ng COD. Code ng pag-print ng mga label 128.
+role_help_consignor	Role: Consignor — AR (may utang sila sa amin). Ang parehong kumpanya ay maaari ding maging Carrier.
+role_help_carrier	Tungkulin: Tagapagdala — AP (utang namin sa kanila). Ang parehong kumpanya ay maaari ding maging Consignor.
+role_help_both	Mga Tungkulin: Consignor + Carrier — isang partido, AR at AP ledger, net sa Mga Ulat.
+role_help_supplier	Tungkulin: Supplier — AP para sa mga pagbili.
+lane_declared_label	Pagbu-book ng account
+lane_owner_label	Cash booking
+money_lane_bill	Resibo: {lane}

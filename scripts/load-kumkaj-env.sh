@@ -37,6 +37,7 @@ load_kumkaj_env() {
   export KUMKAJ_ENV="$name"
   echo "Kumkaj env: $name (APP_ID=${KUMKAJ_APP_ID:-?} LABEL=${KUMKAJ_APP_LABEL:-?})"
   kumkaj_lock_guard_gate
+  kumkaj_translation_gate
 }
 
 # Every dev run and every package (Linux, Android, Windows folder → MSI/MSIX)
@@ -59,5 +60,32 @@ kumkaj_lock_guard_gate() {
   fi
   echo "Build stopped: the call(s) flagged above lock app_state() under a live guard and freeze the app." >&2
   echo "Move each after drop(st) / out of the guard's block. See docs/DEV.md 7a." >&2
+  return 1
+}
+
+# Every catalogue language must translate every en() key (translations/<code>.tsv).
+# Adding a UI string: put it in en(), then
+#   ./scripts/scaffold-ui-translations.sh --app <app> --standin-english
+#   # translate stand-ins in apps/<app>/translations/*.tsv
+#   ./scripts/check-ui-translations.sh --app <app>
+# (or cargo test -p <crate> --lib every_catalogue_language_translates_every_key).
+# Bash only — no Python gate. KUMKAJ_ALLOW_TRANSLATION_GAPS=1 skips the stop
+# while a bulk fill is still running — never for a release package.
+kumkaj_translation_gate() {
+  local root checker app
+  root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+  checker="$root/scripts/check-ui-translations.sh"
+  [[ -x "$checker" || -f "$checker" ]] || return 0
+  app="$(basename "${KUMKAJ_APP_DIR:-}")"
+  [[ -n "$app" && -d "$root/apps/$app/translations" ]] || return 0
+  if bash "$checker" --app "$app"; then
+    return 0
+  fi
+  if [[ "${KUMKAJ_ALLOW_TRANSLATION_GAPS:-}" == "1" ]]; then
+    echo "WARNING: translation gaps above ignored (KUMKAJ_ALLOW_TRANSLATION_GAPS=1)." >&2
+    return 0
+  fi
+  echo "Build stopped: UI strings missing in translations/*.tsv for $app." >&2
+  echo "Add the key to en(), scaffold packs, translate, re-check. See docs/DEV.md § Languages." >&2
   return 1
 }

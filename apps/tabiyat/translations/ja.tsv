@@ -1,0 +1,1341 @@
+# Japanese — 日本語 (ja). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	薬局カウンター: 薬、バッチ、カタ、書籍。オフラインでは無料。
+barcode_ph	バーコード/EAN
+composition_ph	塩・成分（検索可能）
+schedule_h_off	スケジュール H — オフ (所有者フラグ)
+schedule_h_on	スケジュールH — オン（オーナーフラグ）
+rx_expected_off	Rx が期待されています — オフ (所有者フラグ)
+rx_expected_on	Rx が期待されています — オン (所有者フラグ)
+rx_note_ph	処方箋（オプション - あなたの言葉遣い）
+batch_ph	バッチ番号
+expiry_ph	有効期限 (YYYY-MM-DD)
+expiry_alerts	有効期限切れアラート (今後 7 日間)
+expiry_none	今後 7 日間に期限切れになるバッチはありません。
+rx_nudge	所有者フラグ付き Rx / スケジュール H — 必要に応じてメモを追加します。
+unlock	ロック解除
+pin_hint	オーナーPINは0000から始まります
+sell	販売
+buy	仕入
+books	日次帳簿
+books_help	今日のポジション。売る = お金が入る。買う = 購入と経費。当事者 = クレジット顧客とサプライヤー。
+buy_help	経費伝票と仕入先請求（支出）。掛けは取引先台帳に残ります。
+sell_money_in	医薬品を販売する
+buy_money_out	経費／仕入先請求
+record_purchase	仕入を記録
+add_expense	経費伝票
+bank_book	銀行帳簿
+credit_help	取引先IDは一意です（名前は重複可）。顧客は掛け口座（当社への未払い）、仕入先は当社へ販売（当社の買掛け）、両方も可。台帳は分離；レポートは純額表示。
+party_kind_ph	役割：顧客、仕入先、両方…
+reports_help	日次帳簿、売掛と買掛、銀行帳簿、経費伝票、損益。
+reports_today	日次帳簿（今日）
+reports_month	損益（月）
+reports_aging	未収／Dr-Cr
+reports_balance_sheet	貸借対照表
+reports	レポート
+refresh	更新
+undo	元に戻す
+start_tracking	在庫管理開始
+stock_minus	− 在庫
+stock_plus	+ 在庫
+settle_cash	現金で精算
+settle_card	カードで精算
+items	薬品
+nav_items	薬品
+more	その他
+your_items	あなたの薬品
+items_help	項目をタップして編集します。新しいアイテムはフォームをクリアします。名前またはショートコードで検索し、価格を設定して (0 で問題ありません)、追加します。すでに記録されている売上には、請求された名前がそのまま残ります。
+add_item	品目を追加
+new_item	新しい品目
+adding_item	新しい品目を追加中
+editing_item	編集中
+save	保存
+remove	削除
+removed_items	削除した品目
+removed_help	復元では、価格、写真、カテゴリなど、アイテムを元の状態に正確に戻します。
+restore_item	復元
+empty_catalog	まだ薬品がありません。薬品を開き、名前・バーコード・成分を入れて販売します。
+total	合計
+cash	現金
+upi	UPI
+card	カード
+credit	取引先
+clear	クリア
+ready_to_sell	受付準備OK
+today_prefix	今日
+today_mid	今日
+owed	未収
+round_word	端数
+back	戻る
+sold_out	売切
+restock	再入荷
+not_tracked	未管理
+in_stock	在庫
+marked_sold_out	売切表示
+add_upper	追加
+na	なし
+qty	数量
+unit_at	単価
+actual	実際
+applied	適用
+note_ph	メモ（任意）
+rounded	端数後
+split	分割
+send_kot	スリップを送る
+send_kot_to	送信 → {kitchens}
+send_kot_again	次の伝票に項目を追加する
+send_kot_held	保留中のアイテム — 保留を解除して送信します
+reprint_kot	選択を再印刷
+reprint_kot_ok	{n} 項目を再度印刷 · {slips} 伝票 → {kitchens}
+reprint_kot_needed	最初に伝票を送信し、次に医薬品を含めて、選択したものを再度印刷します
+reprint_kot_none_selected	送信されたすべてのアイテムはスキップされます。再印刷するアイテムで「印刷中」をタップします
+reprint_kot_client	送信された {place} に対して再度印刷 ({n}) - ショップのデバイスがそれを印刷します
+print_cancelled_kot	取消をすべて印刷
+print_cancelled_kot_ok	印刷された {n} キャンセル項目 · {slips} 伝票 → {kitchens}
+print_cancelled_kot_needed	最初にキャンセルされたアイテムを含むテーブルを開きます
+print_cancelled_kot_none	この注文にはキャンセルされた商品はありません
+print_cancelled_kot_client	送信された {place} に対して印刷がキャンセルされました ({n}) — ショップのデバイスが印刷します
+kot_banner	バナー
+kot_banner_ph	バナー（空=なし）
+kot_item_prefix	品目前置き
+kot_item_prefix_ph	例: [CANCELLED] 
+kot_strike	ストライクアイテム名
+kot_strike_note	ストライクアイテムメモ
+kot_strike_on	オン
+kot_strike_off	オフ
+bill_item_layout	品目レイアウト
+bill_item_layout_columns	列
+bill_item_layout_stacked	縦並び
+bill_item_header	列見出し
+bill_item_hdr_item	品目見出し
+bill_item_hdr_qty	数量見出し
+bill_item_hdr_price	単価見出し
+bill_item_hdr_amount	金額見出し
+bill_item_name	薬名
+bill_item_qty	数量
+bill_item_price	単価
+bill_item_amount	金額
+bill_item_note	受信/販売メモ
+bill_item_col_gap	列の間隔
+bill_item_col_order	列の順
+bill_item_col_sep	列の罫線
+bill_item_gap_tight	狭い
+bill_item_gap_comfort	ゆったり
+bill_item_gap_wide	広い
+bill_item_num_width	数値列
+bill_item_num_compact	詰めて
+bill_item_num_comfort	ゆったり
+bill_item_num_wide	広い
+bill_item_num_align	数値の揃え
+bill_item_gap_em	間隔 (em)
+bill_item_qty_min	数量の最小 (em)
+bill_item_price_min	単価の最小 (em)
+bill_item_amount_min	金額の最小 (em)
+kot_item_qty_width	数量列
+kot_item_num_align	数量の揃え
+bill_total_qty_label	合計数量ラベル
+bill_total_subtotal_label	小計ラベル
+bill_total_grand_label	合計ラベル
+bill_total_paid_label	支払済ラベル
+bill_meta_pair	同じ行に
+bill_pair_alone	単独
+bill_item_piece_on	オン
+bill_item_piece_off	オフ
+bill_total_qty	合計数量
+bill_total_subtotal	小計
+bill_total_grand	合計
+reprint_incl	印刷に含める
+reprint_skip	除外
+reprint_skip_meta	再印刷しない
+kot_dest_hint	セットアップ → プリンター で {kitchens} に割り当てたプリンターに印刷されます
+kot_sent_hint	最後の送信は {kitchens} に送られました。タップして次の請求書の項目を追加するか、同じ請求書の伝票を再度印刷します。
+kot_sent_printing	{kitchens} にスリップ送信 — 印刷中
+kot_sent_not_printed	伝票は {kitchens} に送信されましたが、印刷されませんでした: {why}。販売店に連絡し、プリンターを修理して再度印刷してください。
+kot_sent_screen	{kitchens} に送信された伝票
+kot_queued_shop	{place} → {kitchens} のスリップが保存されました。ショップのデバイスがそれを印刷します
+kot_job_label	{place}→{kitchens}用スリップ
+kot_job_reached	{place} のスリップが {kitchens} に達しました
+kot_unassigned	未割り当て
+kot_unassigned_held	ステーションなしで保留された {n} アイテム — 送信する回線で保留を解除します
+kot_station_ph	ステーション
+kot_station_dd	ステーション
+kot_station_dd_n	ステーション・{stations}
+kot_set_station	このステーションを使用
+kot_station_applied	{n} アイテムのステーション セット: {station}
+kot_station_cleared	{n} アイテムからクリアされたステーション: {station}
+kot_station_needed	まず調剤セクションを選択してください
+kot_station_not_allowed	セクションの使用は許可されていません: {station}
+kot_station_none	まだステーションはありません — カウンターショップでは未使用です (必要に応じて [設定] → [エリア])
+pos_tab_items	追加済み
+pos_tab_payment	支払い
+hold_send	ホールド
+hold_send_on	保留中
+hold_send_meta	開催 — この伝票には載っていない
+station_remove	ステーションを削除
+station_remove_ph	リスト内のステーションをタップして削除します
+station_removed	ステーションが削除されました：{name}
+settings_hub_title	設定
+settings_hub_help	一度に一つの項目を開きます — スクロールが減り、選びやすくなります。
+settings_back	戻る
+settings_sec_language	言語と通貨
+settings_sec_country	国と税
+settings_sec_tills	追加レジと支店
+settings_sec_brand	あなたのブランド
+settings_sec_units	ユニットと換算
+settings_sec_pickers	領域 · ステーション · 税率
+settings_sec_printers	プリンター
+settings_sec_bill	請求とスリップの形式
+settings_sec_selling	シームと販売
+bill_kot_tab_bill	伝票
+bill_kot_tab_kot	スリップ
+settings_sec_alerts	お知らせ
+alerts_help	状態メッセージを画面に表示しておく時間（このログイン）。
+snack_secs_ph	秒（3–60、既定 10）
+snack_secs_save	表示時間を保存
+snack_secs_saved	表示時間を保存しました — {n} 秒
+settings_sec_backup	バックアップとリストア
+settings_sec_diag	診断
+diag_privacy_help	ログはこのデバイス上に保持されます。機密情報（PIN、パスワード）は決して保存されません。パッケージをデバイスから共有する場合は、毎回明示的な承認が必要です — 第三者に販売または提供されることはありません
+diag_level	詳細レベル
+diag_level_error	エラー
+diag_level_warn	警告
+diag_level_info	情報
+diag_level_debug	デバッグ
+diag_support_start	サポートセッションを 30 分開始
+diag_support_stop	サポートセッションを終了
+diag_support_started	— デバッグ詳細のサポートセッションを開始（30 分）
+diag_support_ended	サポートセッションが終了しました
+diag_export_local	ローカルコピーをエクスポート
+diag_export_local_done	ローカル診断データが準備できました {path} — 保存先を選択してください
+diag_approve_send	このデバイスからの共有を承認する
+diag_send_help	承認はパッケージ単位で有効となり、期限があります。一時的なものであり、製品の問題の修正や改善にのみ使用されます。第三者とは共有されません。Linux、Windows、macOS、Android で動作します。
+diag_send_approved	共有が承認されました（パッケージ単位）（期限が近いです）
+diag_export_send	共有パッケージを作成する（承認が必要です）
+diag_export_send_done	共有パッケージが準備できました {path} — 保存先を選択し、その後 Kumkaj サポートにのみ送信してください
+diag_save_bundle	診断データのコピーを保存
+diag_bundle_saved	診断データのコピーを {path} に保存しました
+diag_bundle_failed	診断データのコピーの保存に失敗しました — もう一度お試しください
+diag_clear	デバッグログをクリア
+diag_cleared	デバッグログがクリアされました
+sidebar_settings	サイドバー
+sidebar_settings_help	サイドレールと同じアイコン。行をドラッグして順序を変更します。スイッチを切り替えて表示または非表示にします。設定とロックは常にバーに表示されます。
+sidebar_always_on_short	常時表示
+sidebar_back_settings	戻る
+sidebar_shown	表示中
+sidebar_hidden	非表示
+sidebar_always_on	バー常時表示
+sidebar_shown_hint	サイドレールまたは下部タブに表示
+sidebar_hidden_hint	バーから非表示
+sidebar_menu_items	品目
+sidebar_enable_all	すべて有効化
+sidebar_disable_all	すべて無効化
+sidebar_order_saved	サイドバーの注文が保存されました
+sidebar_visibility_saved	サイドバーの表示設定が保存されました
+amounts_hide	非表示
+amounts_show	表示
+printers_none_hint	まずプリンターをこのデバイスに保存してから、請求書またはセクションに追加します
+counter	カウンター
+dine_in	カウンター
+takeaway	テイクアウト
+order	注文
+tables	カウンター
+kitchen	区画
+sales	売上
+sales_refunds	売上と返金
+day_close	日次締め
+reports_expenses	レポートと経費
+nav_reports	レポート
+nav_settings	設定
+nav_lock	ロック
+no_sale_yet	まだ売上なし
+favorites	お気に入り
+favorites_help	よく売るアイテムを、あなたのログイン用に保存。一つを請求に追加するか、下の全アイテムからリストを作成してください。
+your_favorites	あなたのお気に入り
+all_items	すべてのアイテム
+frequent	よく出す
+added_items	追加済み
+added_items_empty	この請求書にはまだ何もありません。すべてのアイテムまたはカテゴリからアイテムを追加してください。
+frequent_config_help	完成した請求書から最も売れたアイテム。表示する日数と表示する項目の数を設定します。
+frequent_days_ph	日数 (1)
+frequent_limit_ph	件数 (24)
+frequent_apply	適用
+frequent_saved	頻繁: 過去 {d} 日、上位 {n} ～ {c} アイテム
+frequent_empty	この期間に完了した売上はまだありません。会計を済ませると（設定で₹0可）ここに出ます。
+zero_sales	ゼロ円売上
+zero_sales_help	₹0 の価格のアイテムと ₹0 で決済される請求書を許可します (無料 / 所有者の希望)。デフォルトでオンになっているため、フリークエントブックやデイリーブックには無料のカバーが引き続き表示されます。
+zero_sales_on	ゼロ売上: オン
+zero_sales_off	ゼロ売上: オフ
+zero_sales_saved_on	ゼロ売上許可を保存しました（オン）
+zero_sales_saved_off	ゼロ売上許可を保存しました（オフ）
+floor_areas_help	エリアとは、フロア上の部屋またはゾーン (ダイニング、パーセル、エアコンなど) です。最初にエリアを追加してから、そのエリアにカウンターを配置します。各エリアはフロア上の個別のグループです。
+area_new_ph	新しいエリア/部屋（例: AC, Garden）
+add_area	エリアを追加
+area_added	エリア「{name}」の準備完了 — そこにカウンターを追加
+no_favorites	お気に入りはまだありません — 下のリストからアイテムを追加してください。
+add_to_bill	請求に追加
+added	追加済み
+owes_word	未払い
+selected_word	選択済み
+chip_clear_credit	精算済み — 掛けにするか前払いを受ける
+chip_missing_customer	選択した顧客が見つかりません — 選び直してください
+chip_no_customer	顧客はまだいません — 名前を入力して「掛け」をタップ
+credit_summary_fmt	{} 顧客 · 未精算 {} · 前払い {}
+recent_label	最近:
+kot_new_waiting	新規 — 待機中
+kot_preparing	準備中
+kot_ready_serve	準備完了 — 提供してください
+kot_done_cap	完了
+kot_cancelled	キャンセル
+kot_start_btn	開始
+kot_mark_ready	準備完了にする
+kot_done_btn	完了
+table_free	空席 — タップして注文を開始
+start_order	注文を開始
+open_bill	請求を開く
+collect_payment	支払いを受け取る
+table_running	進行中
+payment_pending	支払い待ち
+collect_at_counter	カウンターで受け取る
+inventory	在庫
+inventory_stock	在庫と棚卸
+branches	店舗
+branches_org	店舗と組織
+credit_customers	掛売客
+customer_name_ph	取引先名
+new_customer_ph	新規取引先名
+item_name_ph	品目名（例：Masala Dosa）
+item_price_ph	価格
+start_template	商品
+team	チーム
+team_pins	チームとPIN
+my_pin_settings	自分のPIN
+settings_hub_help_my_pin	この端末にサインイン中の人の解除PINを変更します。
+team_self_help	解除PIN（と任意のログインパスワード）は本人だけが変更できます。別の画面や権限が必要ならオーナーに頼んでください。
+backup_settings	バックアップと設定
+lock_app	ロック
+pick	選ぶ
+select	選択
+advance	進める
+owner	オーナー
+staff	スタッフ
+photo	写真
+auto	自動
+prev	前へ
+next	次へ
+ok	OK
+this_shop	サーバーモード
+extra_till	クライアントモード
+off	オフ
+tables_kitchen	店内レイアウト
+server	サーバー
+client	クライアント
+language_currency	言語と通貨
+language	言語
+choose_language	言語を選んでください
+language_setup_hint	この端末の言語に従うか、自分で選んでください。
+lang_follow_platform	端末の言語を使う
+lang_pick_user	選んだ言語を使う
+lang_platform_now	現在の端末の言語
+selected_language	選択中
+continue	続ける
+this_device	この端末
+device_use_q	この端末はどう使いますか？
+last_server_mode	前回はサーバー — タップして続行
+last_client_mode	前回はクライアント — タップして続行
+choose_server	サーバーを選ぶ
+choose_server_hint	この端末にはサーバーがあります。1つ開くか、別の事業用に新規作成してください。
+create_new_server	新規サーバー作成
+open_server	開く
+new_server_name_ph	新規サーバー名（任意）
+server_remove_pin_ph	削除する Owner PIN
+only_owner_remove_server	サーバーを削除できるのは Owner のみ
+owner_pin_remove_server	このサーバーを削除するには Owner PIN が必要です
+device_setup_help	サーバーはここに帳簿を保存します。クライアントはサーバーとペアリングします。
+app_template_heading	スターターカタログ（オプション）
+app_template_blurb	サンプルカタログをロードします。所有者 Zahir (zahir)、管理者 Asif (asif、PIN 1111)、レジ担当者 Nawaz (nawaz、PIN 0000)。税金/GST オフ。フロントサイドバー;履歴は 4 時間後に消去されます (バックアップでは今すぐ消去されます)。今日は脱いでください。コンパクトな紙幣 + 狭いトレイ用の標準マージン。税金とサイドバーのピアは、[設定] で再度オンにできます。
+app_template_apply	スターターカタログを適用する
+app_template_skip	後ほどスキップします
+app_template_status	サーバー準備完了 — スターター カタログを適用するか、スキップします
+app_template_importing	{title} を適用中…
+currency	通貨
+backup	バックアップ
+use	使う
+dont_use	使わない
+add_branch	店舗を追加
+add_conversion	換算を追加
+add_dishes_items	アイテムの追加
+add_item_plain	品目を追加
+add_note	メモを追加
+add_opening_balance	期首残高を追加
+add_staff	スタッフを追加
+add_station	ステーションを追加
+add_table	テーブルを追加
+add_unit	単位を追加
+add_use_name	この名前を追加／使う
+allow_extra_tills	追加レジを許可
+amend	修正
+apply_country_pack	国パックを適用
+datetime_appearance	日付と時刻の表示形式
+datetime_appearance_help	本には年初の RFC3339 が収められています。これらは、請求書、レポート、画面上での日付と時計の見え方のみを変更します。
+datetime_example	現在の例：{ex}
+date_order	日付順序
+date_order_dmy	D/M/Y
+date_order_mdy	M/D/Y
+date_order_ymd	Y-M-D
+time_format	クロック
+time_format_24h	24 時間制
+time_format_12h	12 時間制
+attach_bill_photo	請求書の写真を添付
+attach_pdf	PDFを添付
+attach_photo	写真を添付
+attachments_last_expense	添付（前回の経費）
+bank	銀行
+bank_in	銀行へ入金
+bank_out	銀行から出金
+bank_reconciliation	銀行照合（明細とチェック）
+bank_to_till	銀行→レジ
+book_add_dish	ブック — アイテム/アイテムを追加
+book_opening_credit	受付 — 期首の掛け
+branch_name_sell_ph	販売する店舗名
+bring_my_book	自分の帳簿を持ってくる
+business_tax_id_ph	事業者の税ID
+caption_bank	銀行
+caption_bills	請求書
+caption_outstanding	未収
+caption_payments_today	本日の支払い
+caption_today	今日
+card_amount_ph	カード金額
+cash_amount_ph	現金金額
+cash_memo	現金メモ
+choose_icon	アイコンを選ぶ
+choose_logo	ロゴを選ぶ
+clear_icon	アイコンを消す
+clear_photo	写真を消す
+copy_day_book_csv	日次帳簿CSVをコピー
+copy_day_close	日次締めをコピー
+copy_items_csv	品目CSVをコピー
+copy_outstanding_csv	未収CSVをコピー
+copy_parties_csv	取引先CSVをコピー
+copy_party_ledger_csv	取引先台帳CSVをコピー
+copy_receipt	レシートをコピー
+share_whatsapp	WhatsAppで共有
+lan_pages_heading	Wi‑Fi 上の顧客ページ
+lan_pages_help	このショップの Wi-Fi では、顧客ページが表示ボードとフィードバックとして機能します。モバイル データを使用している人は、後でクラウドが必要になります。カード端末または支払いリンクはオプションであり、カウンターをブロックすることはありません。
+diag_send_heading	この端末の外へ共有
+kot_dest_heading	ステーション
+optional_login_heading	任意のログイン
+rights_heading	権限
+ops_panel	ローカル業務
+crm_heading	お客様とメッセージ
+crm_help	誕生日・ポイント。SMS/WhatsApp待ち。{name}・{points}。店主が送信。
+crm_queue_sms	SMSをキュー
+crm_queue_wa	WhatsAppをキュー
+crm_seg_bday_week	今週の誕生日
+crm_seg_bday_month	今月の誕生日
+crm_seg_phone	電話あり
+crm_seg_loyalty	ポイント
+crm_seg_inactive	非アクティブ
+crm_seg_top	上位顧客
+birthday_ph	誕生日（MM-DD または YYYY-MM-DD）
+crm_message_ph	誕生日おめでとう {name}さん！ポイントは {points} です。
+till_apply_redeem	会計に適用
+till_clear_redeem	交換をクリア
+till_wallet_topup	ウォレット入金
+till_issue_voucher	バウチャー発行
+till_points_ph	交換するポイント
+till_wallet_ph	ウォレット利用額
+till_voucher_code_ph	バウチャーコード
+till_voucher_amt_ph	バウチャー金額（空=全額）
+till_wallet_topup_ph	ウォレット入金額
+till_voucher_issue_amt_ph	新規バウチャー金額
+till_voucher_issue_code_ph	新規バウチャーコード
+split_evenly	均等に分割
+waitlist	ウェイティングリスト
+fire_course	次のステップ
+hold_item	ホールド
+waiter_call	レジに電話する
+waitlist_add	ウェイティングに追加
+floor_view_grid	グリッド
+floor_view_layout	レイアウト
+floor_layout_x	X
+floor_layout_y	Y
+floor_layout_w	W
+floor_layout_h	H
+floor_layout_save	レイアウトを保存
+floor_layout_open	テーブルを開く
+floor_layout_edit	レイアウト編集
+floor_layout_pick	テーブルをタップしてレイアウトを編集
+floor_layout_saved	レイアウトが保存されました
+floor_layout_nudge_left	← 20
+floor_layout_nudge_right	→ 20
+floor_layout_nudge_up	↑ 20
+floor_layout_nudge_down	↓ 20
+sibling_pickers_help	単位と同じ On/Off — エリア・ステーション・税率を日常ピッカーから隠す。パック既定は残る。
+bulk_price_apply	一括価格を適用
+card_terminal_optional	カード端末／支払いリンク（ネットがあれば任意）
+copy_report	レポートをコピー
+counted_cash_ph	レジ内の実査現金
+country_tax	国と税
+create_backup	バックアップ作成
+credit_limit_heading	与信限度（選択／指定の取引先）
+day_close_summary	日次締め概要
+delete_party	選択した取引先を削除
+delivery	デリバリー
+done_open_books	完了 — 帳簿を開く
+drawer_count	レジ実査（任意）
+expense_heading	経費
+export_day	当日分をエクスポート
+extra_note_bill_ph	この請求／売上への追加メモ
+extra_note_expense_ph	前回の経費への追加メモ
+extra_tills_heading	追加レジ
+other_devices_help_heading	他のデバイスを設定
+other_devices_help	このデバイス (サーバー) 上: 他のデバイス → 追加のレジを許可します。ペアリング コードと Wi-Fi アドレスをメモします。表示された場合は、「他のデバイスの接続を許可」をタップします。コンピューターで、「このコンピューターで開始」をタップします。他の各デバイスで: アプリをインストールし、クライアント モードを選択し、ショップのサーバーを検索 (またはアドレスを入力) し、ペアリング コードを入力し、今すぐペアリングします。 Wi-Fi が切断された場合、注文はデバイス上で待機し、サーバーが再び応答すると注文は開始されます。追加のプリンターはサーバー上に設定されます ([設定] → [プリンター])。追加のレジはそこに請求書を送信します。
+forget_shop	この店舗を忘れる
+goods_received	入荷
+import_day	当日分をインポート
+import_items_csv_plain	品目CSVをインポート…
+import_parties_csv	取引先CSVをインポート…
+item_name	品目名
+kitchen_printing	キッチン印刷
+login_id_ph	ログインID
+mark_cleared	クリア済みにする
+new_party_clear	新規取引先（フォームをクリア）
+new_party_kind_supplier_ph	新規取引先の種類（仕入先）
+next_country	次の国
+next_order	次の注文（受付をクリア）
+note_gstin_ph	メモ／GSTIN／契約リマインダー
+notes_attach_party	メモと添付（選択した取引先）
+notes_attach_sale	メモと添付（選択した売上）
+on_account_ap	掛け（AP）
+org_optional_ph	組織（任意）
+paid_by	支払方法
+paid_now	支払済み
+pair_now	今すぐペアリング
+pairing_code_ph	ペアリングコード
+party_name_selected_ph	取引先名（または選択中を使う）
+password_ph	パスワード
+pay_ap_card	APをカードで払う
+pay_ap_cash	APを現金で払う
+pay_ap_heading	当社が支払う分（AP）
+pay_ap_upi	APをUPIで払う
+pay_selected_heading	選択分を支払い（債務精算／前受）
+pick_from_items	当店の品目から選ぶ
+prev_country	前の国
+print_open	印刷／開く
+reason_amend_ph	修正／取消／返金の理由
+reason_note_ph	理由／メモ（廃棄、棚卸…）
+record_day_close	日次締めを記録
+refresh_from_shop	店舗から更新
+refund	返金
+remove_selected	選択を削除
+request_bill	会計をリクエスト
+restaurant_name_ph	店名（任意）
+restore_backup	バックアップを復元
+role_both	両方
+role_admin	管理者
+role_cashier	レジ係
+role_customer	顧客
+role_manager	マネージャー
+history_retention	取引履歴
+history_retention_help	古い販売と古いチケットを自動消去します。医薬品、スタッフ、施設はそのまま残ります。 Clear はすべての取引行をワイプし、セットアップを維持するようになりました。
+history_off	保持
+history_day_close	日次終了時
+history_after_hours	営業時間後
+history_hours_ph	時間数（1–168、デフォルト 4）
+history_hours_save	時間を保存
+history_clear_now	今すぐ履歴をクリア
+history_cleared	取引履歴がクリアされました — セットアップは保持されています
+history_retention_saved	履歴のクリア設定が保存されました
+history_hours_saved	履歴時間の設定が保存されました
+history_owner_only	履歴をクリアするには所有者または管理者のみが許可されます
+rollup	集計
+save_brand	ブランドを保存
+save_business_id	事業者IDとサービス%を保存
+save_business_name	事業者名を保存
+save_features	選択したスタッフの機能を保存
+save_features_named	{name} を保存
+save_features_ok	{name} の設定を保存しました
+save_names	名前を保存
+second_way	2つ目の方法
+server_ip_ph	サーバーIP（例：192.168.1.10）
+set_credit_limit	与信限度を設定
+set_login_selected	選択中にログインを設定
+set_login_named	{name} にログインを適用
+shop	店舗
+show	表示
+spreadsheet_csv	スプレッドシート（CSV）
+start_fresh	最初から始める
+stop_extra_tills	追加レジを停止
+floor_cols_ph	列数
+floor_cols_fit	画面に合わせる
+floor_cols_fit_sub	{n}個入る
+floor_cols_fits	収まる
+floor_cols_scroll	横スクロール
+floor_cols_min	列数：1以上 — 空欄なら画面に合わせます
+floor_zoom_auto	自動
+floor_zoom_out	縮小
+floor_zoom_in	拡大
+backup_auto	毎日自動バックアップ · 前回 {when} · 直近14日分を {dir} に保存。
+backup_auto_none	毎日自動バックアップ — 最初の分はまもなく行います。
+backup_copy_to	コピーは {dir} にも保存します。
+backup_copy_btn	バックアップをフォルダーにもコピー…
+autostart_off	このパソコンと一緒に起動
+autostart_on	パソコンと一緒に起動 ✓ — タップで解除
+autostart_done_on	このパソコンの起動時にアプリが開きます — 停電後もサーバーが戻ります。
+autostart_done_off	パソコン起動時にアプリを開かなくなりました。
+device_forgotten	店舗がこのデバイスを削除しました — 現在のコードで再ペアリングしてください。待機中の注文は保持されます。
+lan_offline	オフライン
+forget_device	削除
+last_seen	最終
+copy_pair_code	ペアリングコードをコピー
+new_pair_code	新しいペアリングコード
+pair_finishing	ペアリング完了中… 店舗の帳簿を適用しています
+pair_opening	レジを開いています…
+pair_copied	ペアリングコードをコピーしました
+kot_waiting	送信待ち
+lan_offline_waiting	オフライン · {n} 件待機中
+lan_connecting	店に接続中…
+lan_live	ライブ
+lan_sending	{n} 件送信中
+lan_sign_in_to_send	{n} 件を送るには再サインイン
+lan_pair_again	このデバイスを再ペアリング
+lan_update_app	アプリを更新してください — この端末と店のサーバーのバージョンが違います
+allow_firewall	ほかの端末の接続を許可
+firewall_blocked	このコンピューターのファイアウォールがほかの端末を遮断しています — 「ほかの端末の接続を許可」をタップしてください。
+firewall_waiting	管理者の確認を待っています…
+lan_join_help	ほかのデバイスをこの端末につなげられます — ペアリングコード {code}。もう一方のデバイスでクライアントモードを選び、「店のサーバーを探す」を押すか、このアドレスを入力: {addr}
+lan_pair_status	Wi‑Fi {addr}
+lan_join_help_no_addr	アドレスを設定するには、このデバイスを Wi‑Fi に接続してください
+lan_no_address	このデバイスにはまだ Wi‑Fi アドレスがありません — 店の Wi‑Fi に接続してください。
+lan_not_listening	現在デバイスを受け付けていません — 別のプログラムがポート {port} を使っている可能性があります。アプリを再起動してください。
+lan_tills_off	追加レジはオフです。この店の帳簿はこのデバイスにあります。別のデバイスでも注文や会計をするなら、追加レジを許可してください。
+paired_with	{url} の店とペアリング済み
+not_paired	未ペアリング — 店のサーバーに接続してください。
+choose_device_use	このデバイスの使い方を選んでください。
+paired_note	ペアリング済み。ロック解除して販売するか、更新で店の最新情報を取得します。
+last_update_at	店からの最終更新: {time}。
+pair_intro	サーバーを探すか、アドレスとペアリングコードを入力してください。
+queue_waiting	店への送信待ち（{n}）:
+queue_tries	{n} 回試行 · 最後の応答：{e}
+save_backup_copy	バックアップのコピーを保存…
+backup_copy_saved	バックアップのコピーを保存しました — この端末の外に保管してください（USB メモリや別の端末）
+backup_copy_overdue	{n} 日間、バックアップのコピーがこの端末の外に出ていません — 設定 → バックアップ
+backup_copy_failed	そこにはバックアップのコピーを保存できませんでした — 別の場所を選んでください
+clock_off	この端末の時計は店のサーバーと {min} 分ずれています — この端末で正しい時刻を設定してください
+printers_heading	この端末のプリンター
+printers_help	プリンターを検索し、プリンターをタップして選択し、そのデバイスでのみテスト ページを印刷します。請求書プリンター: 請求書と伝票形式 → 請求書。
+printers_host_only	プリンターは店舗端末（サーバー）に設置されます。これにより、請求書と古いチケットがそこに送信されるまで、サーバー上で検索/追加/割り当てが行われます。テスト ページと請求書の印刷サイズはサーバーに送信されます。
+printers_find_heading	プリンター
+printers_find_tip	検索はこの端末をスキャンして一覧を更新します。システムプリンターが先；ネットワークスキャンはバックグラウンドで続くことがあります。
+printers_pool_heading	1. お使いのプリンター
+printers_pool_tip	検索はこの端末をスキャンして一覧を更新します。
+printers_pool_empty	(まだありません — 下で追加)
+printers_routes_help	オペレーティング システムがすでに認識しているプリンターを検索します。請求書と伝票形式で請求書と各セクションに割り当てます。
+printer_assign_dd	{place} のプリンターを選ぶ
+printer_assign_pick	実プリンターを選択
+printer_profile_heading	レイアウト
+printer_send_heading	配信
+vp_delivery_heading	配信
+vp_delivery_help	この仮想プリンターがジョブを送信する方法 (OS ドキュメント、生バイト、または ESC/POS)。伝票内容（活字サイズ、折り返し、余白）は、ここではなく請求書・伝票フォーマットにより決定されます。
+vp_type_size_heading	文字サイズ
+vp_wrap_heading	折り返し幅
+vp_margin_heading	余白
+vp_delivery_spooler	OS文書（システムスプーラー）
+vp_delivery_raw	デバイスへ生バイト
+vp_delivery_escpos	ESC/POSサーマルコマンド
+virtual_printer_new	新しい仮想プリンター
+virtual_printer_selected	「{name}」を編集中 — 一覧の別項目をタップして切替
+virtual_printer_tap_list	一覧の仮想プリンターをタップして編集
+config_layout_portrait	縦
+config_layout_landscape	横
+config_send_os	システムスプーラー
+config_send_escpos	ESC/POS
+profiles_heading	プリンター
+profiles_empty	プリンター
+profile_builtin	内蔵
+profile_custom	カスタム
+profile_name_ph	プリンター
+profile_new	プリンター
+profile_delete	プリンター
+profile_created	プリンター
+profile_deleted	プリンター
+profile_builtin_keep	プリンター
+config_saved	更新しました
+config_selected	「{name}」を選択
+printer_output_heading	仮想プリンター
+virtual_printers_heading	仮想プリンター
+virtual_printers_empty	仮想プリンターはまだありません — 下で値を設定して保存。いくつかできたら一覧をタップして編集。
+virtual_printer_name_ph	仮想プリンター名（任意）
+virtual_printer_create	仮想プリンターを作成
+virtual_printer_save	仮想プリンターを保存
+virtual_printer_delete	仮想プリンターを削除
+virtual_printer_created	仮想プリンター「{name}」を作成しました
+virtual_printer_deleted	仮想プリンター「{name}」を削除しました
+virtual_printer_updated	仮想プリンターを更新しました
+virtual_printer_updated_named	仮想プリンター「{name}」を更新しました
+virtual_draft_layout	次の仮想プリンター用の値を設定しました
+virtual_draft_send	次の仮想プリンター用の値を設定しました
+virtual_need_real	先に実プリンターを選択してください
+virtual_need_select	削除する仮想プリンターを選択してください
+real_printer_selected	実プリンター: {name}
+station_group_heading	仮想プリンター
+station_group_apply	仮想プリンターを削除
+station_group_applied	削除しました
+station_group_empty	仮想プリンターを選択してください
+station_group_name_ph	仮想プリンター名（任意）
+station_group_save	仮想プリンターを作成
+station_group_saved	仮想プリンターを保存しました
+station_manage_heading	調剤セクションを追加または削除する
+printers_routes_heading	2. 印刷先
+route_pick_heading	場所
+route_editing	編集：{name}
+route_assigned	{printer} を {place} に追加しました
+route_already_assigned	この場所に既に: {printer}
+route_removed	{printer} を {place} から削除しました
+route_cleared	{name} をクリアしました
+route_assigned_empty	この場所にはありません
+route_tap_remove	タップして削除
+route_tap_select	タップして選択
+route_tap_selected	選択済み
+route_pick_printer_first	先にプリンターをタップ
+route_assigned_heading	プリンター
+route_add_heading	割り当て
+printer_label_ph	名前 (例: カウンタープリンター)
+printer_target_ph	アドレスまたはシステム名
+printer_target_default	默认プリンター
+printer_wire_heading	形式
+printer_wire_escpos	KOT
+printer_wire_os	標準縦
+printer_wire_os_portrait	標準縦
+printer_wire_os_landscape	標準横
+printer_wire_escpos_short	KOT
+printer_wire_os_short	縦
+printer_wire_os_landscape_short	横
+printer_format_custom	新しいカスタム形式
+printer_format_custom_label	カスタム
+printer_format_custom_added	このルートにカスタム形式を追加しました
+add_printer	プリンターを追加
+remove_printer	末尾を削除
+route_pick_ph	請求書または調剤セクション
+route_bill	伝票
+route_default_kitchen	ステーションなし（未割り当てアイテム）
+route_kot_station	ステーション
+route_dont_print	印刷しない
+stations_heading	ステーション
+stations_help	調剤セクションでは、店内のその部分の医薬品とプリンターがグループ化されています。 「設定」→「プリンター」からプリンターを接続し、試行順序を設定してから、機能するものを最初に表示するか、すべてに印刷します。変更はそのまま保存されます。
+station_print_heading	このステーションのプリンター
+station_print_help	ステーションを選択し、1 つ以上のプリンタを接続します。 ↑↓は試行順序を設定します。まず、最初の成功後に動作が停止します。接続されているすべてのプリンターにすべての送信時に印刷します。
+station_print_pick_ph	プリンターを設定するステーション
+station_print_pick_first	まず調剤セクションを選択してください
+station_print_editing	「{name}」のプリンターを編集中
+station_vps_dd	このステーションのプリンター
+station_vps_dd_n	{n} 台のプリンター · タップして変更
+station_vps_empty	まだプリンターがありません — 設定 → プリンターで探してください
+bill_printers_dd	請求書のプリンター
+bill_printers_dd_n	請求書用の {n} プリンター · タップして変更
+job_layout	レイアウト
+job_delivery	作業の送信方法
+job_delivery_help	OS ドキュメント、生のバイト、または ESC/POS。請求書とチケットはそれぞれ独自のものを保管します。どちらのジョブも、Find が保存した任意のプリンタに送信できます。
+station_vp_attached	プリンターを付けました
+station_vp_detached	ステーションからプリンターを外しました
+station_print_summary	{mode} · プリンター {n} 台
+station_print_summary_none	このステーションにまだプリンターがありません — 印刷しません
+stations_none	まだステーションがありません。下にステーションを追加してください。カウンターショップではステーションは使用されていません - 空のままにしておきます。
+route_up	上へ
+route_down	下へ
+route_remove	末尾を削除
+route_clear	印刷しない
+save_printers	プリンターを保存
+print_test_page	テストページを印刷
+no_printer_assigned	プリンターなし
+test_page_no_printer	{place} にプリンターがありません — 上で割り当てて再試行してください
+test_page_pick_first	まずテスト用プリンターを選んでからテストページを印刷してください
+test_printers_dd	テストページ用プリンター
+test_printers_dd_n	テスト用プリンター {n} 台 · タップで変更
+kot_test_printers_dd	テストプリント用プリンター
+kot_test_printers_dd_n	テスト印刷用の {n} プリンタ · タップして変更します
+test_printer_picked	テスト先: {name}
+test_printer_cleared	テストしない: {name}
+test_page_sent_n	テストページを {n} 台のプリンターに送信しました
+test_kot_pick_first	最初にテスト印刷するプリンターを選択し、次にテスト印刷を選択します
+test_kot_sent_n	テスト印刷を {n} プリンタに送信
+cancel_pick	マーク
+cancel_pick_on	マーク済み
+cancel_pick_meta	取消用にマーク
+batch_cancel	マークをキャンセル
+batch_cancel_n	マークをキャンセル ({n})
+batch_cancel_none	最初に 1 つ以上の送信済みアイテムにマークを付けてから、「キャンセル」にマークを付けます
+batch_cancel_title	印を付けた薬品を取消 — 理由は一つ、区画ごとにスリップ1枚
+batch_cancel_ok	{n} 品目キャンセル · {slips} キャンセル伝票 → {kitchens}
+batch_cancel_ok_noprint	{n} アイテムがキャンセルされました - 自動印刷がオフになっているため、キャンセル伝票はありません
+no_printer_kitchen_station	そのステーションにはプリンターがありません
+printers_saved	この端末のプリンターを保存しました
+test_page_sent	テストページを送信しました — プリンターを確認してください
+test_page_sent_one	{name} にテストページを送信しました — そのプリンターを確認してください
+printers_found	見つかりました：{n}: {list}
+printers_find_synced	{n} 台見つかりました — 新規 {new}
+printer_on_device	保存済み
+printer_already_added	追加済み
+printer_already_saved	既に保存済み：{name}
+find_printers	プリンターを探す
+printers_looking	この端末とWi‑Fiでプリンターを検索中…
+saving_printer	プリンターの追加中…
+cancelled	取消
+printers_tap_find	「プリンターを探す」をタップ — システムプリンターとこのWi‑Fiのネットワークレシートプリンターが一覧表示されます。
+printers_none_found	プリンターが見つかりません — システム名またはネットワークアドレスを入力（例: 192.168.1.50）。
+printer_from_find	{name} を追加しました
+kot_printer_ph	スリップ用プリンター
+bill_printer_ph	会計伝票のプリンター
+kot_print_on	チケットの自動印刷: オン
+kot_print_off	自動印刷チケット: オフ
+queue_refused	店で受け付けられなかったもの（{n}）— レジで一件ずつ確認してください:
+clear_not_accepted	確認済み — この一覧を消す
+device_name_ph	このデバイスの名前
+lan_last_update	最終更新 {time}
+lan_not_accepted	{n} 件 受付不可
+connected_now	接続中
+backup_failed	前回の自動バックアップに失敗しました: {e}
+backup_overdue	{n} 日間バックアップがありません — バックアップのため、このデバイスでアプリを開いたままにしてください。
+disk_low	このデバイスの空き容量は {mb} MB だけです — まもなくバックアップできなくなります。空き容量を増やしてください。
+last_seen_devices	最終確認時刻：{time}
+sync_interval	各 {secs} 秒ごとに同期
+connection_to_shop	店との接続
+supplier_name_ph	仕入先名（または取引先）
+supplier_ph	仕入先
+switch_device	この端末を切り替え
+take_payment	支払いを受ける
+tax_added_till	{tax}別
+tax_inside_price	{tax}込
+tax_invoice	税金請求書
+till_to_bank	レジ→銀行
+units_heading	単位
+unlock_after_pairing	PINを入力
+unlock_with_login	ログインでロック解除
+unmark	マークを外す
+update_my_password	パスワードを変更
+update_my_pin	PINを変更
+duress_heading	緊急ロック解除PIN（オーナーのみ）
+duress_help	オプション。ロック解除時に自分の PIN ではなくこの PIN を入力すると、帳簿のすべてのエントリ (売上、元帳、履歴) が消去され、レジは所有者が正常に見える状態で開きます。薬、価格、カウンター、スタッフ、設定はそのまま残ります。スキーマと構成は削除されません。強制的にロックを解除する必要がある場合にのみ使用してください。オフにするには空白のままにして保存します。誰かの PIN と同じになることはありません。
+duress_pin_ph	緊急PIN（4〜12桁）
+duress_confirm_ph	確認のため再入力
+save_duress_pin	緊急PINを保存
+clear_duress_pin	緊急PINをオフ
+duress_on	緊急ロック解除PINはオン
+duress_off	緊急ロック解除PINはオフ
+duress_saved	緊急ロック解除PINを保存しました
+duress_cleared	緊急ロック解除PINをオフにしました
+upi_amount_ph	UPI金額
+void	取消
+write_off_ap	APを償却
+write_off_heading	償却（支払なしで精算）
+write_off_nil	償却／残高ゼロ
+your_brand	あなたのブランド（アプリ内）
+your_categories	あなたのカテゴリ
+account_kind	口座の種類（1つタップ）
+actual_total_cap	実合計
+amend_help	修正・取消・返金する売上を選んでください。修正は全履歴を保持します。
+applied_total_cap	適用合計
+bank_balance	銀行残高
+bank_net_today	本日の銀行純額
+branch_export_help	エクスポートは branch_snapshot_CODE_DATE.json をバックアップフォルダに書き込み、クリップボードにコピーします。他店舗の1日分を取り込むには、そのファイルを同じフォルダに import_branch_snapshot.json として保存し、インポートをタップしてください。
+brand_shown_help	アプリ内の画面に表示されます。この端末にインストールされたアプリ名とアイコンはストア掲載のままです。
+app_icon	アプリアイコン
+logo_help	アプリ内の画面に表示するオプションの店舗マーク
+onboard_layout	ご提供内容
+item_photo_help	オプションです。写真がない場合、項目名から頭文字を表示します
+stamp_heading	スタンプ
+stamp_image_help	印刷された請求書および顧客ディスプレイ上のオプションのスタンプ画像。
+payment_qr_heading	支払い QR コード
+payment_qr_image_help	請求書と顧客ディスプレイ上の静的 QR。それ以外の場合、支払いには上記の VPA からの動的な UPI QR が使用されます。
+cash_in_hand	手元現金（レジ）
+change_my_pin_heading	PINを変更（あなたの分のみ）
+connect_to_server	サーバーに接続
+counter_locked	カウンター01・ロック中
+country_pack_help	国パックは税名と計算、即時決済レール、請求書に印刷される事業者IDを設定します。Kumkajは税務申告や政府の電子請求書の発行は一切行いません。
+currency_use_help	スクロールして、対応通貨の「使う」をタップしてください。
+day_close_help	日次締めを記録すると、この概要（実査した場合はレジ差異も）が監査ログに保存されます。販売は止まりません。
+expenses_word	経費
+feature_access_help	選択したスタッフの機能アクセス（追加後にタップ）
+footer_local	ローカルSQLite・永久無料・クラウドなし
+fresh_book_tabiyat	プリンター
+fresh_selected	Freshを選択中 — カタログは空のままです。準備ができたらDoneをタップ。
+gross_word	粗利益
+how_start	どのように始めますか？
+kot_print_help_tabiyat	KOTが送信されると — カウンターでもウェイターの端末でも — キッチンの紙がここで自動的に印刷されます。
+later_country_pack	プリンター
+local_badge	ローカル
+mix_type_hint_tabiyat	必要に応じて現金／UPI／カード／掛けに分割してください。掛けには上の顧客が必要です。
+money_in_sales	入金（売上）
+net_word	純額
+offline_badge	オフライン
+optional_login_help	任意ログイン（ID＋パスワード）。オーナーが一度設定し、その後はユーザー本人だけがパスワードを変更できます。
+or_unlock_login	またはログインID＋パスワードで解除
+permission_preset	権限プリセット（アクセス範囲）
+preset_help_tabiyat	レジ係：販売。マネージャー：販売＋品目＋取消／修正。
+product_locked_tabiyat	Tabiyat
+product_only_tabiyat	このアプリは Tabiyat 専用（飲食店向けシステム）です。他の業種には別の Kumkaj 製品があります。
+purchases_cogs	仕入（COGS）
+qty_cap	数量
+restore_help	復元：バックアップを選びます。帳簿はその時点の状態で開きます。今の帳簿は先に保存されるので元に戻せます。
+wipe_data_heading	ローカルデータを削除
+wipe_data_help	所有者のみ - Windows のアンインストールと同じ選択肢。ビジネス記録は取引履歴を消去しますが、アイテムと設定 (緊急ロック解除 PIN など) は保持します。ショップのセットアップにより書籍データベースが削除されます。画面設定によりウィンドウ/言語がクリアされます。所有者の PIN で確認します。チームの緊急ロック解除 PIN は別のものです (ロック解除時に秘密裏にワイプ)。
+wipe_trading	取引記録
+wipe_schema	店舗セットアップ
+wipe_ui	画面の設定
+wipe_owner_pin_ph	削除用オーナーPIN
+wipe_delete_selected	選択を削除
+wipe_owner_only	オーナーだけがローカルデータを削除できます。
+restore_owner_only	オーナーだけがバックアップを復元できます。
+wipe_owner_pin_needed	ローカルデータを削除するにはオーナーPINを入力。
+wipe_nothing_selected	先に削除する項目を選んでください。
+wipe_done	選択したローカルデータを削除しました。
+wipe_schema_done	店舗セットアップを消去 — 続けるには Server か Client を選んでください。
+rounded_total	端数後合計
+setup_app_tabiyat	Tabiyatをセットアップ
+shop_logo_optional	店舗ロゴ（任意）
+stock_type_help	品目名を入力（一部でOK）、数量を入力して調整してください。まだ数えていない品目は一度「在庫管理開始」が必要です。
+team_owner_help	オーナーは各スタッフを名前、役割タイトル、権限プリセット、初期PINで作成します。オーナーは後から誰のPINも変更できません — 本人だけが自分のPINを更新できます。
+staff_name_ph	スタッフ名 / ID
+staff_copy_hire_ph	（オプション）設定をコピー元
+staff_copy_hire	この人の設定を使用
+staff_edit_name_ph	表示名
+staff_rename	名前を保存
+staff_copy_edit_ph	他の人の設定をコピー
+staff_copy_edit	その設定を選択したものにコピーします
+staff_copy_edit_onto	その設定を {name} にコピーします
+staff_deactivate_named	{name} を削除
+staff_renamed	名前を保存しました
+staff_setup_copied_hire	{name} の設定をコピーしました — 新しい名前と PIN を設定し、その後「スタッフを追加」してください
+staff_setup_copied_edit	{from} の設定を {to} にコピーしました
+staff_copy_need_selected	まず編集する人を選択してください
+staff_copy_need_source	コピーする設定を持つ人物を選択してください
+staff_copy_same	同じ人物です — 他の人を選択してください
+staff_rename_need_selected	まず名前を変更する人物を選択してください
+team_pick_hint	編集する人を選択します - 画面、金銭権、およびステーションはその人にのみ表示されます。
+team_stations_help	使用できる駅
+team_stations_changed	ステーションが変更されました — この人の設定を保存します
+team_features_changed	スクリーンが変更されました — この人の設定を保存します
+team_rights_changed	権限が変更されました — この人の設定を保存します
+they_owe_us	当社への未払い
+unit_at_cap	単価
+units_help	品目ラベル用コード（kg、piece、bag）。各単位は直接または他の単位経由で標準（kg・cm・ml・pc）にリンクする必要があります。例：1 crate = 2 box、1 box = 20 cm。換算：1 from = factor to。通貨は決して単位ではありません。
+units_picker_help	「オン/オフ」をタップして、購入ピッカーとアイテムピッカーにユニットを表示します。オフのユニットでも変換されます。
+unit_picker_on	オン
+unit_picker_off	オフ
+we_owe_them	当社の買掛け
+who_unlocking	誰がロック解除していますか？
+locked_word	ロック中
+show_pin	PINを表示
+hide_pin	PINを隠す
+set_owner_pin	オーナーPINを設定
+enter_owner_passcode	オーナーのパスコードを入力
+enter_staff_passcode	スタッフのパスコードを入力
+pin_count_zero	0/12桁・最低4桁、その後OK
+pin_count_need	{} / 12桁・あと{}桁必要
+pin_count_full	12/12桁・OKを押してください
+pin_count_ready	{} / 12桁・準備ができたらOKを押してください
+pin_hint_choose	4〜12桁を選んでください（キーボードまたはパッド）・Enter/OKで保存
+pin_hint_new	新しい4〜12桁のオーナーPIN（キーボードまたはパッド）・Enter/OK
+pin_hint_shop_code	店舗端末・ペアリングコード {}
+pin_hint_books	この端末が帳簿を保持します
+pin_hint_paired	追加レジがペアリング済み — 販売するにはロック解除
+pin_hint_pair_first	追加レジ — まず店舗端末とペアリング
+unlock_to_continue	続けるにはロック解除
+no_staff_yet	スタッフがまだいません — オーナーとして解除し、次にチームへ
+status_server_set_pin	サーバーモード — オーナーPINを設定
+status_server_tills	サーバーモード — 追加レジが参加できます。ロック解除
+status_server_unlock	サーバーモード — オーナーとしてロック解除
+status_client_unlock	クライアントモード — 販売するにはロック解除
+icon_new_selected	アイコン：新しいファイルを選択 — ブランドを保存をタップ
+icon_custom	アイコン：自店のマーク
+icon_default	アイコン：Kumkaj マーク（既定）— 独自のものを選択
+logo_yours	ロゴ：自店のロゴ — 画面とレシートに表示されます
+logo_default	ロゴ：Kumkaj マーク（既定）— 独自のものがあれば選択
+tmpl_current	現在：{} — {}
+tmpl_selected	選択中：{} — {}
+setup_complete	セットアップ完了
+onboard_fresh_tmpl	新規 · {} — カタログは空から開始；アイテムで追加し、完了をタップ。
+onboard_book_tmpl	帳簿 · {} — アイテムと開始残高を追加し、完了をタップ。
+onboard_template_tmpl	必要なら店名を付けて、始め方を選んでください。
+tmpl_blurb	薬局カウンター: 医薬品、バッチ/有効期限、カタ、書籍。
+tmpl_how	カウンターで販売します。ストック用に購入します。その日の本のための本。
+reports_facet_title	レポート
+reports_facet_help	日次帳簿、取引先エイジング、銀行記録、期間損益。
+against_bill_ph	上の請求書番号に対して（任意）
+aliases_ph	エイリアス、短縮名 — カンマ区切り
+amount_blank_full_ph	金額（空欄 = 残高全額）
+amount_owed_ph	未払い金額
+amount_ph	金額
+amount_received_ph	受領金額
+amount_we_pay_ph	当方が支払う金額
+business_name_ph	事業名
+category_new_ph	カテゴリ（任意、新規なら作成）
+code_bag_ph	コード（bag）
+conv_factor_ph	係数（25 = 1 bag → 25 kg）
+country_code_ph	国コード 例：IN, GB, US, AE, BR
+credit_khata_amount_ph	掛け / 口座金額
+credit_limit_ph	与信限度（0 = なし）
+from_code_ph	変換元コード（bag）
+item_name_lang_ph	アイテム名 — 自分の言語で入力
+login_id_opt_ph	ログインID（任意）
+manager_pin_ph	マネージャーPIN（取消できない場合のみ）
+new_branch_name_ph	新しい支店名
+new_password_ph	新しいパスワード（任意）
+new_pin_ph	新しいPIN（4–12桁）
+note_bank_ph	メモ（入金、出金、…）
+note_buy_expense_ph	メモ（燃料、家賃、…）
+note_expense_ph	メモ（燃料、事務所、…）
+options_tabiyat_ph	オプション（任意）— Extra cheese=40, Large=80
+part_second_way_ph	2つ目の方法での分担（任意）
+phone_ph	電話
+place_name_ph	この場所の名前
+qty_example_ph	数量（例：kg は 1.5）
+quantity_ph	数量
+reason_required_ph	理由（必須）
+role_title_ph	役職名（例：Barista）
+service_pct_ph	サービス % 任意 0/10/12
+short_code_ph	短いコード（MG02）
+starting_password_ph	開始パスワード（任意）
+starting_pin_ph	開始PIN（4–12桁）
+station_name_ph	駅名（任意）
+station_new_ph	セクション (オプション)
+table_name_ph	カウンター/ベイ名
+tax_rate_ph	税率名または % — Standard, Reduced, 0, 5, 12, 18, 20
+to_code_ph	変換先コード（kg）
+uncleared_no_ph	上の未清算番号
+unit_cost_ph	単価
+unit_name_bag_ph	名前（Bag）
+unit_plate_ph	単位（皿 / 個 — 空欄 = 各）
+pay_credit	掛け
+book_kind_today	今日の帳簿
+book_kind_month	今月の帳簿
+book_kind_aging	未精算 / 借方・貸方
+book_kind_balance	貸借対照表
+order_help	開いている注文を選ぶか、テーブルを選んで新規開始。準備中のアイテムをタップし、KOT を送信、1つ以上のアイテムを請求、会計を分割して支払いを完了。
+floor_help	このお店はカウンターで販売しています。テーブルとダイニング フロアは Tabiyat の一部ではありません。
+kitchen_help	KOTが送信されると — カウンターでもウェイターの端末でも — キッチンの紙がここで自動的に印刷されます。
+kitchen_empty	オープンチケットはありません（カウンターショップは通常、この画面を未使用のままにしておきます）。
+add_a_table	テーブルを追加
+add_station_heading	区画を追加 · 例：OTC、冷蔵、カウンター
+categories_help	カテゴリは料理がメニューのどの部分に属するかを示します — 例：スナック、メインコース、ビリヤニ。カテゴリは自由に作成できます：提案した名前を選ぶ、名前を変更する、独自のものを追加する。
+dish_search_ph	名前、塩、バーコードを検索…
+tile_free	空席
+tile_occupied	着席
+tile_food_ready	料理完成
+tile_bill_printed	伝票印刷済
+tile_paid	支払済
+tile_bill_btn	会計
+tile_occupy_btn	着席させる
+tile_free_btn	空ける
+tile_ready_btn	準備完了
+tile_undo_bill	伝票取消
+summary_busy	卓使用中
+summary_to_collect	会計待ち
+summary_on_floor	フロア上
+floor	店
+sizes_as_items_ph	サイズを別品目に（任意）— ハーフ=120, フル=200
+dish_group_ph	強度 / パック グループ (オプション) — 例: 500mgストリップ
+discount	割引
+remove_discount	割引を外す
+apply_discount	割引を適用
+save_opening_cash	釣銭準備金を保存
+close_shift_print	シフト締め・伝票印刷
+area_prices_ph	エリア価格（任意）— AC=220, 持帰=210
+discount_ph	10% または 50
+discount_reason_ph	理由（例：常連、提供遅れ）
+opening_float_ph	今朝レジに入れた現金
+shift_counted_ph	引き継ぎ時の現金
+opening_float	釣銭準備金
+shift_handover	シフト引き継ぎ
+shift_since	このシフト開始
+expected_in_drawer	レジ内の想定額
+right_discount	割引する
+floor_in_kitchen	進行中
+floor_eating	食事中
+pick_category	カテゴリを選ぶ
+close_category_list	カテゴリ一覧を閉じる
+new_category_row	新しいカテゴリ — 品目の保存時に作成
+your_category	あなたのカテゴリ
+suggested_category	提案 — 当社のアイテムから
+category_search_ph	カテゴリ — 検索、または新しく入力
+line_sent_state	送信済
+line_nc_state	サービス (NC) — 請求なし
+cancel_item_short	取消
+nc_short	サービス
+charge_again_short	請求
+move_short	移動
+cancel_item_title	このアイテムをキャンセルします — バックオフィスがキャンセル伝票を受け取ります
+nc_item_title	この品目をサービスにする (NC)
+charge_again_title	この品目を再び請求する
+move_item_title	この品目を別のテーブルへ移動
+already_cooked	調理済み（ロス）
+not_cooked_yet	未調理
+return_to_customer	お釣り
+short_by	不足
+tip_not_sale	チップ（スタッフ分・売上外）
+right_settle	会計
+right_cancel_sent	送信済み品目の取消
+right_complimentary	サービス提供 (NC)
+right_move_table	カウンターの移動/マージ
+right_reprint	伝票を再印刷
+right_allowed	許可
+right_with_approval	承認が必要
+right_denied	不可
+editing_staff	権限:
+finding_server	この Wi‑Fi で店のサーバーを探しています…
+no_server_found	サーバーが見つかりません。店の端末が同じ Wi‑Fi にあり追加レジが許可されているか確認するか、IP を入力してください。
+servers_found_pick	接続したい店をタップしてください。
+server_host_selected	{host} を使用中 — ペアリングコードを入力し、「今すぐペア」をタップ。
+print_bill	伝票を印刷
+table_actions	カウンターアクション
+move_merge_table	テーブル移動・結合
+move_help	このカウンターの注文を空きテーブルに移動するか、実行中のテーブルにマージします。
+move_target_ph	カウンター名
+approval_pin_ph	店長 PIN（求められた時のみ）
+move_here	ここへ移動
+merge_into	そこへ結合
+line_reason_ph	理由 (例: 顧客の気が変わった、在庫切れ)
+line_qty_ph	取消数（空欄 = 全部）
+line_target_ph	移動先の卓（例 D5）
+confirm	確認
+menu_search_ph	品目・ショートコードで検索
+customer_paid_ph	お預かり
+tip_ph	チップ
+table_area_ph	エリア（例：店内、持ち帰り、AC）
+table_range_ph	まとめて：D1-D20
+add_these_tables	これらのカウンターを追加します
+remove_these_tables	これらのカウンターを削除します
+table_remove_ph	削除：T1-T24、またはテーブル名
+find_server	店のサーバーを探す
+bill_format	伝票の書式
+bill_format_help	すべての請求書にお店の名前の下に印刷されます。 | で行を区切る(例: MG Road、ラージコート | Ph 98250 00000)。
+bill_header_ph	住所 | 電話
+fssai_ph	医薬品販売許可番号(オプション - あなたの言葉遣い)
+bill_footer_ph	フッター（例：ありがとうございました）
+save_bill_format	伝票の書式を保存
+kot_format	スリップ形式
+kot_format_help	リスト内のフィールドをタップします。表示、フォント サイズ、太さは、上で選択した伝票の種類のフィールドに適用されます。それぞれの種類は独自のサイズと重量を維持します。
+kot_format_fields	項目
+kot_field_next	次の項目
+kot_field_show	表示
+kot_field_hide	非表示
+kot_field_on	表示
+kot_field_off	非表示
+kot_field_size	フォントサイズ
+kot_field_size_ph	例: 16, 20, 24, 28, 32…
+kot_weight_light	細
+bill_kot_panel_help	請求書のレイアウトとコンテンツの幅。レジ担当者は、請求書を発行または決済した人です。販売の全容は帳簿に残ります。
+std_size_ph	例: 18, 20, 26…
+kot_show_shop	店名
+kot_hide_shop	店名を隠す
+kot_show_time	時刻
+kot_hide_time	時刻を隠す
+kot_show_waiter	レジ係
+kot_hide_waiter	レジ係を隠す
+kot_show_station	ステーション
+kot_hide_station	ステーションを隠す
+kot_show_table	カウンター
+kot_hide_table	テーブルを隠す
+kot_show_kot_no	スリップ番号
+kot_hide_kot_no	チケット番号を非表示にする
+kot_width	折り返しのプレビュー (スリップタブでコンテンツの幅を設定)
+kot_width_58	58 mm
+kot_width_80	80 mm
+kot_kind_heading	チケット種類
+kot_kind_original	原本
+kot_kind_duplicate	複製
+kot_kind_modified	変更
+kot_kind_cancelled	取消
+kot_style_heading	項目のサイズと太さ
+kot_style_title	タイトル
+kot_style_item_qty	品目 · 数量
+kot_style_field_pick	項目を選択
+kot_weight_regular	標準
+kot_weight_bold	太字
+kot_align	揃える
+kot_align_start	開始
+kot_align_center	中央揃え
+kot_align_end	末尾
+content_width	内容幅（mm）
+content_width_bill	請求書コンテンツの幅（mm）
+content_width_kot	チケット内容幅(mm)
+content_width_ph	または内容幅を入力、40–210 mm
+content_width_help	この伝票の印刷幅。ビルは独自の幅を維持します。
+content_width_bill_help	顧客の請求書を印刷する幅。デフォルトは 210 mm (ページ)。細幅伝票58mm、幅80mm伝票、4インチ112mm、A4幅210mm。 40 ～ 210 の任意の値を入力します。チケットの伝票タブには独自の幅があります。
+content_width_kot_help	チケットの印刷幅。デフォルトは 80 mm。 58 mm幅のスリップ、80 mm幅のスリップ、112 mm 4インチ、210 mmページ。 40 ～ 210 の任意の値を入力します。顧客の請求書には、[請求書] タブで独自の幅があります。
+vp_paper_width	内容幅（mm）
+vp_paper_width_ph	または内容幅を入力、40–210 mm
+vp_paper_width_help	コンテンツの幅は、請求書と伝票形式で、請求書 (デフォルト 210 mm) とチケット (デフォルト 80 mm) に分けて設定されます。
+kot_size	文字サイズ
+kot_size_s	小
+kot_size_m	標準
+kot_size_l	大
+std_size	文字サイズ
+kot_copies	部数
+kot_copies_1	1
+kot_copies_2	2
+kot_copies_3	3
+kot_title_ph	タイトル (空白 = チケット)
+kot_footer_ph	バックオフィスメモ (オプション)
+kot_preview	プレビュー
+save_kot_format	伝票フォーマットの保存
+test_kot_format	テストプリント
+test_kot_sent	チケットのプレビューを送信しました
+test_bill_format	請求書テスト
+test_bill_sent	請求書のプレビューが送信されました
+test_print_no_printer	そのジョブ用のプリンターがありません — この画面で一つ選択してください
+kot_format_saved	伝票フォーマットが保存されました
+std_print	伝票の文字サイズ
+std_print_help	OS/ドキュメント プリンタでの標準の縦向きおよび横向きの請求書ジョブのフォント サイズ (小/標準/大ではなく、ポイントを入力します)。どちらの方向でも同じサイズです。
+std_size_s	小
+std_size_m	標準
+std_size_l	大
+save_std_print	伝票サイズを保存
+std_print_saved	伝票サイズを保存しました
+print_brand_kit	印刷ブランドキット
+print_brand_kit_help	オプションのスタンプと支払い QR 画像を請求書表面と LAN カスタマー ディスプレイに表示します。上記の VPA からの動的 UPI QR は、支払い QR 画像が設定されていない場合でも機能します。
+choose_stamp	スタンプを選ぶ
+clear_stamp	スタンプを消す
+stamp_set	スタンプ: ファイル上 — 顧客のディスプレイに表示され、印刷された請求書に名前が付けられます
+stamp_none	スタンプ：なし
+choose_payment_qr	支払いQRを選ぶ
+clear_payment_qr	支払いQRを消す
+payment_qr_set	支払い QR: ファイル上 - 顧客ディスプレイに表示 (金額 UPI QR が表示されます)
+payment_qr_none	支払いQR：なし — 支払い時にUPIから金額QR
+aggregator_import	アグリゲーター注文（ファイル）
+aggregator_import_help	任意Local：backupsにimport_aggregator_orders.jsonを置きImport。カウンターは止まらない。ライブZomato/SwiggyはCloud。
+import_aggregator_file	アグリゲーターファイルを取込
+team_pick_ph	編集するスタッフ名
+select_staff	このスタッフを選択
+rights_help	この人のマネーアクション — タップして循環: 許可 → 上司の PIN が必要 → 許可されません。再度請求書を印刷するのは請求書のみです。セクションは以下のチェックリストです。
+dish_picker_help	アイテムを検索または参照し、アイテムをタップして名前と写真を入力します。または、自分の名前を保持します。価格を設定し（0でも問題ありません）、商品を追加します。
+close_dish_list	アイテムリストを閉じる
+own_item_name	自分の品名として使う
+on_your_menu	薬品リスト内
+edit	編集
+schemes	キャンペーン
+schemes_help	1つ買うと1つ、割引、セット。例：パラセタモール2でビタミン1。
+scheme_bogo_ph	パラセタモール2、ビタミン1
+add_scheme	BOGOを追加
+schedule_ph	Hours — Mon-Fri 07:00-11:00 or Evening 17:00-19:00=150
+upi_vpa_ph	UPI ID (VPA)
+upi_payee_ph	UPI受取人名（任意）
+upi_qr	UPI QR
+show_upi_qr	UPI QRを表示
+close_upi_qr	閉じる
+upi_qr_help	顧客はスキャンして支払います。支払い後に「支払いを受ける」をタップします。 2 番目の画面: LAN 上のサーバー URL /表示を開きます。
+kot_recall	戻す
+recently_done	最近完了
+recall_kot_ph	リコールするチケット番号
+role_help_customer	役割：顧客 — AR（当方への未払い）。同じ会社が仕入先にもなれます。
+role_help_both	役割：荷送人 + 運送業者 — 1つの取引先、AR と AP の帳簿、レポートでネット。
+role_help_supplier	役割：仕入先 — 仕入れの AP。
+dine_in_pick_table	カウンターショップでは使用されません
+choose_table	カウンターを選択してください
+change_table	テーブルを変更
+pick_table_banner	この注文のテーブルを選択
+items_word	品
+items_section	品目
+back_to_order	注文に戻る
+new_items_head	未送信
+price_ph	価格
+price_ph_gst_inside	価格（{tax}込み）
+cancel_needs_table	カウンター販売は支払いを受けるまでチケットに残ります
+tax_rates_missing_hint	これらの商品には {tax} 税率はありません - 税率が設定されている商品に適用されます (価格には {tax} の下に既に {tax} が含まれています)
+taxable_value	課税対象額
+gst_inside_price_note	（{tax}込み）
+start_with_template	アイテムテンプレートから始めましょう
+template_heading	スターターアイテム
+template_info	写真付きの {c} カテゴリと {d} アイテムをすぐに追加できます。価格は ₹0 から始まります。後で設定してください。
+template_import	テンプレートを全部取り込む
+template_confirm	{d} 項目をそのカテゴリとともに追加しますか?すでにお持ちのアイテムはそのまま残ります。
+template_yes	はい、取り込む
+template_importing	薬品を取り込んでいます…
+template_import_progress	取り込み中… {d}/{t}
+template_done	私たちのテンプレートのすべての項目はあなたの項目にあります。
+template_imported	{d} アイテムと {c} カテゴリを追加しました - この画面で価格を設定します
+client_template_heading	輸入カタログ
+client_template_info	{title}: {c} カテゴリ、価格、写真、別名を含む {d} アイテム。不足しているアイテムのみ - すでに持っている名前は残ります。
+client_template_import	これらの薬品を取り込む
+client_template_confirm	{title} から {d} 項目を追加しますか?すでにお持ちのアイテムはそのまま残ります。
+client_template_importing	{title} を取り込み中…
+client_template_done	{title} のすべてのアイテムはあなたのアイテムにあります。
+client_template_imported	{title} から {d} アイテムと {c} カテゴリを追加
+resv_heading	予約
+resv_name_ph	顧客名
+resv_phone_ph	電話（任意）
+resv_guests_ph	人々
+resv_when_ph	日時 — 20:30、tomorrow 13:00
+resv_table_ph	カウンター（オプション）
+resv_add	予約する
+resv_seat	着席
+resv_none	今後の予約はありません。
+guests_word	名
+delivery_by_ph	配達担当（配達員またはスタッフ）
+kitchen_all_day	今作るもの: {items}
+split_bill	会計を分ける
+split_go	別会計にする
+cancel	キャンセル
+opening_client	クライアントを開いています…
+preparing_desk	デスクを準備しています…
+opening_server	サーバーを開いています…
+creating_server	サーバーを作成しています…
+split_help	顧客が支払った商品をタップします · {n} が選択されました
+split_send_first	最初に伝票を送信 — バックオフィスが所有する品目のみを別の請求書に送信できます
+split_pick_some	まずは別請求の項目をタップ
+split_done	別途請求書が作成されました - このカウンターの隣の階にあります
+split_marked	別会計
+order_empty_pick	空の注文 — 上の「項目を追加」をタップして項目を選択します。
+add_dishes	薬を追加する
+order_so_far	この注文：{n} · {total}
+no_dish_match	「{q}」に一致する項目はありません
+pick_dishes_help	項目をタップして追加します。カテゴリを選択してリストを絞り込みます
+pick_done	完了
+pick_done_dd	完了 · {label}
+printer_route_mode	この場所に複数のプリンターがある場合
+printer_mode_first	最初に動作するもの
+printer_mode_all	すべてで印刷
+kot_show_area	エリア
+kot_hide_area	エリアを非表示
+kot_show_item_hdr	品目 · 数量
+kot_hide_item_hdr	カラムを非表示
+kot_show_title	タイトル行
+kot_hide_title	タイトルを非表示
+kot_field_order	オーダーを印刷
+kot_field_up	上に移動
+kot_field_down	下に移動
+kot_field_cycle	次の項目を選択
+kot_field_select	次の項目を選択
+kot_field_time	時刻
+kot_field_kot_no	スリップ番号
+kot_field_area	エリア
+kot_field_table	カウンター
+kot_field_shop	店名
+kot_field_waiter	スタッフ
+kot_field_station	ステーション
+app_template_blurb_extra	また: オーナー Zahir、管理者 Asif、レジ係 Nawaz。フロントサイドバー; 4時間後の履歴。今日は脱いでください。コンパクトなお札。
+dishes_n	{n} アイテム
+recipe_ph	レシピ (オプション - カウンターショップでは未使用)
+reorder_ph	この数で補充
+set_reorder	発注点を設定
+low_stock_alert	残りわずか — 早めに補充: {items}
+unpriced_note	アイテムの {n} アイテムにはまだ価格がありません。価格を設定するまでは 0 で請求されます。
+show_unpriced	価格のない商品のみを表示
+show_all_dishes	すべてのアイテムを表示
+role_waiter	レジ係
+role_kitchen	店舗係
+role_title_rest_ph	役職（例: キャプテン、料理長）
+preset_help_rest	レジ係：販売。マネージャー：販売＋品目＋取消／修正。
+kind_raw	複利株式
+kind_resale	薬を買った
+kind_dish	未管理
+buy_unit_ph	単位（kg・L・個）
+add_another_way	+ 別の方法
+parts_status	入力 {a} / {b} · 残り {c}
+save_expense	経費を保存
+rest_ph	残り
+low_badge	少
+stock_empty	まだ在庫はありません。仕入れで記録したものがここに出ます。
+recent_changes	最近の変更
+lane_declared_label	税金請求書
+lane_owner_label	現金メモ
+money_lane_bill	請求書：{lane}

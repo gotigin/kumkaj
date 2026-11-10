@@ -1,0 +1,835 @@
+# Tamil — தமிழ் (ta). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	கூரியர் கணக்கு + முன்பதிவு மேசை. இலவச ஆஃப்லைன்.
+unlock	திற
+pin_hint	உரிமையாளர் PIN 0000 இல் தொடங்கும்
+sell	முன்பதிவு
+buy	செலுத்து
+books	நாள் புத்தகம்
+books_help	இன்றைய நிலை. முன்பதிவு = பார்சல்கள் வந்தன. செலுத்து = கேரியர் பில் & செலவு. தரப்புகள் = அனுப்புநர் & கேரியர்.
+buy_help	செலவு வவுச்சர்கள் மற்றும் கேரியர் பில்கள் (பணம் வெளியே). கணக்கில் உள்ளது தரப்பு கணக்கில் இருக்கும்.
+sell_money_in	பார்சல் முன்பதிவு செய்
+buy_money_out	செலவு / கேரியர் பில்
+record_purchase	கொள்முதல் பதிவு
+add_expense	செலவு வவுச்சர்
+bank_book	வங்கி புத்தகம்
+credit_help	தரப்பு ஐடி தனித்துவமானது (பெயர்கள் மீண்டும் வரலாம்). பாத்திரங்கள்: அனுப்புநர் (AR), கேரியர் (AP), அல்லது அதே ஐடியில் இருவரும். கணக்குகள் தனித்தனியாக இருக்கும்; அறிக்கை நிகரத்தைக் காட்டும்.
+party_kind_ph	தனிப்பயன் பாத்திரம் (விரும்பினால்) — அல்லது மேலே சிப்
+parties_list_heading	சேமித்த தரப்புகள்
+reports_help	நாள் புத்தகம், கடனாளிகள் & கடன் தருவோர், வங்கி புத்தகம், செலவு வவுச்சர்கள், லாப & நஷ்டம்.
+reports_today	நாள் புத்தகம் (இன்று)
+reports_month	லாபம் & நஷ்டம் (மாதம்)
+reports_aging	நிலுவை / Dr-Cr
+reports_balance_sheet	இருப்புநிலை
+reports	அறிக்கை
+refresh	புதுப்பி
+undo	செயல்தவிர்
+start_tracking	எண்ணத் தொடங்கு
+stock_minus	− கையிருப்பு
+stock_plus	+ கையிருப்பு
+settle_cash	ரொக்கம் செலுத்து
+settle_card	அட்டையால் செலுத்து
+items	கட்டணங்கள் மற்றும் சேவைகள்
+nav_items	கட்டணங்கள்
+more	மேலும்
+your_items	உங்கள் கட்டணங்கள்
+items_help	ஒவ்வொரு வரிசையும் ஒரு கட்டணம் (எ.கா. Surface Zone A). அலகு பொதுவாக kg. திருத்த தட்டவும்.
+add_item	கட்டணம் சேர்
+new_item	புதிய கட்டணம்
+adding_item	புதிய கட்டணம் சேர்க்கிறது
+editing_item	திருத்துகிறது
+save	சேமி
+remove	அகற்று
+empty_catalog	இன்னும் கட்டணங்கள் இல்லை. கட்டணங்கள் & சேவைகளைத் திறந்து, ஒன்றைச் சேர்க்கவும் (பெயர் + விலை, அலகு kg), பின் முன்பதிவு.
+counter_sale	கவுண்டர் முன்பதிவு
+total	மொத்தம்
+cash	ரொக்கம்
+upi	यूपीआई
+card	அட்டை
+credit	தரப்புகள்
+clear	அழி
+ready_to_sell	முன்பதிவுக்குத் தயார்
+today_prefix	இன்று
+today_mid	இன்று
+owed	பாக்கி
+round_word	வட்டம்
+back	பின்செல்
+sold_out	விற்றுவிட்டது
+restock	மீண்டும் வை
+not_tracked	எண்ணப்படவில்லை
+in_stock	கையிருப்பில்
+marked_sold_out	விற்றுவிட்டது என குறி
+add_upper	சேர்
+na	இல்லை
+qty	எண்ணிக்கை
+unit_at	விலை
+actual	உண்மை
+applied	பயன்படுத்திய
+note_ph	குறிப்பு (விருப்பம்)
+rounded	வட்டம்
+split	பிரி
+counter	கவுண்டர்
+parcel	பார்சல்
+order	ஆர்டர்
+sales	முன்பதிவுகள்
+sales_refunds	முன்பதிவுகள் & திருப்பிச் செலுத்தல்
+day_close	நாள் முடிவு
+reports_expenses	அறிக்கை மற்றும் செலவு
+nav_reports	அறிக்கைகள்
+nav_settings	அமைப்புகள்
+nav_lock	பூட்டு
+sidebar_settings	பக்கப்பட்டி அமைப்புகள்
+sidebar_settings_help	பக்கப் பட்டையில் உள்ள அதே ஐகான்கள். வரிசையை மாற்ற ஒரு வரியை இழுக்கவும். காட்ட அல்லது மறைக்க சுவிட்சை மாற்றவும். அமைப்புகளும் பூட்டும் எப்போதும் பட்டையில் இருக்கும்.
+sidebar_always_on_short	எப்போதும் இயக்கத்தில்
+sidebar_back_settings	பின்செல்
+sidebar_shown	காட்டப்படுகிறது
+sidebar_hidden	மறைக்கப்பட்டது
+sidebar_always_on	எப்போதும் பட்டையில்
+sidebar_shown_hint	பக்கப் பட்டை / கீழ் தாவல்களில் காட்டப்படும்
+sidebar_hidden_hint	பட்டையிலிருந்து மறைக்கப்பட்டது
+sidebar_menu_items	மெனு & பொருட்கள்
+sidebar_enable_all	அனைத்தையும் இயக்கு
+sidebar_disable_all	அனைத்தையும் முடக்கு
+sidebar_order_saved	பக்கப்பட்டி வரிசை சேமிக்கப்பட்டது
+sidebar_visibility_saved	பக்கப்பட்டி தெரிவுநிலை சேமிக்கப்பட்டது
+amounts_hide	மறை
+amounts_show	காட்டு
+no_sale_yet	இன்னும் விற்பனை இல்லை
+favorites	பிடித்தவை
+favorites_help	நீங்கள் அடிக்கடி விற்கும் பொருட்கள், உங்கள் உள்நுழைவுக்காக சேமிக்கப்பட்டவை. ஒன்றை பில்லில் சேர்க்கவும் அல்லது கீழே உள்ள அனைத்து பொருட்களிலிருந்தும் உங்கள் பட்டியலை உருவாக்கவும்.
+your_favorites	உங்கள் பிடித்தவை
+all_items	அனைத்து பொருட்களும்
+no_favorites	இன்னும் பிடித்தவை இல்லை — கீழே உள்ள பட்டியலிலிருந்து பொருட்களைச் சேர்க்கவும்.
+add_to_bill	பில்லில் சேர்
+added	சேர்க்கப்பட்டது
+owes_word	கடன்பட்டுள்ளார்
+selected_word	தேர்ந்தெடுக்கப்பட்டது
+chip_clear_credit	தெளிவு — கடன் கொடுக்கவும் அல்லது முன்பணம் எடுக்கவும்
+chip_missing_customer	தேர்ந்த வாடிக்கையாளர் இல்லை — மீண்டும் தேர்ந்தெடுக்கவும்
+chip_no_customer	இன்னும் வாடிக்கையாளர் இல்லை — பெயரை எழுதி, பின் Credit ஐத் தட்டவும்
+credit_summary_fmt	{} வாடிக்கையாளர்கள் · திறந்த கடன் {} · முன்பணம் {}
+recent_label	சமீபத்தியவை:
+inventory	கையிருப்பு
+inventory_stock	கையிருப்பு மற்றும் எண்ணிக்கை
+branches	கிளைகள்
+branches_org	கிளை மற்றும் அமைப்பு
+credit_customers	தரப்புகள் (கடனாளிகள் & கடன் கொடுத்தோர்)
+customer_name_ph	தரப்பின் பெயர்
+new_customer_ph	புதிய தரப்பின் பெயர்
+item_name_ph	கட்டணத்தின் பெயர் (எ.கா. Surface Zone A)
+item_price_ph	kg க்கு / முதல் ஸ்லாப்
+start_template	பொருள்
+next_booking	அடுத்த முன்பதிவு
+destination_ph	இலக்கு நகரம் / மண்டலம்
+consignee_ph	பெறுநர்
+consignee_phone_ph	பெறுநர் தொலைபேசி
+consignee_address_ph	விநியோக முகவரி
+origin_name_ph	அனுப்புநர் பெயர்
+origin_phone_ph	அனுப்புநர் தொலைபேசி
+origin_address_ph	எடுப்பு / தோற்ற முகவரி
+booking_consignor_heading	அனுப்புநர் (வாடிக்கையாளர் / அனுப்புபவர்)
+booking_consignee_heading	பெறுநர் (ரிசீவர்)
+booking_consignor_hint	நிரப்ப ஒரு தரப்பைத் தேர்ந்தெடுக்கவும், அல்லது நேரடி வாடிக்கையாளருக்கு காலியாக விடவும். வீட்டில் எடுத்தல் மற்றும் RTO-க்கு தேவை.
+booking_consignee_hint	பார்சலைப் பெறுபவர். கவுண்டரில் நேரடியாக விடப்படும் பார்சலுக்கு காலியாக விடவும்.
+weight_kg_ph	உண்மை kg
+length_cm_ph	நீளம் cm
+breadth_cm_ph	அகலம் cm
+height_cm_ph	உயரம் cm
+chargeable_kg	கட்டண kg
+awb_label	AWB
+booking_help	நேரடி: இலக்கு → எடை → கட்டணம் தேர்வு → கணக்கு/ரொக்க முன்பதிவு → கட்டணம். ரசீதில் AWB அச்சாகும். அடுத்த முன்பதிவு மேசையை காலி செய்யும்.
+cart_empty_hint	மேசை காலி — இலக்கு & எடையை அமைத்து, கட்டணத்தில் ADD தட்டி, பின் செலுத்தவும்.
+team	குழு
+team_pins	குழு மற்றும் பின்
+my_pin_settings	என் PIN
+settings_hub_help_my_pin	இந்த சாதனத்தில் உள்நுழைந்தவரின் திறப்பு PIN ஐ மாற்றுக.
+team_self_help	உங்கள் திறப்பு PIN-ஐ (மற்றும் விருப்ப உள்நுழைவுக் கடவுச்சொல்லை) நீங்கள் மட்டுமே மாற்ற முடியும். வேறு திரைகள் அல்லது உரிமைகள் தேவையெனில் உரிமையாளரிடம் கேளுங்கள்.
+backup_settings	காப்பு மற்றும் அமைப்பு
+lock_app	பூட்டு
+pick	தேர்வு
+select	தேர்ந்தெடு
+advance	அடுத்து
+owner	உரிமையாளர்
+staff	ஊழியர்
+photo	புகைப்படம்
+auto	தானாக
+prev	முந்தைய
+next	அடுத்து
+ok	சரி
+this_shop	சேவையக முறை
+extra_till	கிளையன்ட் முறை
+off	முடக்கு
+server	சேவையகம்
+client	கிளையன்ட்
+language_currency	மொழி மற்றும் நாணயம்
+language	மொழி
+choose_language	உங்கள் மொழியைத் தேர்ந்தெடுக்கவும்
+language_setup_hint	இந்த சாதனத்தின் மொழியைப் பின்பற்றவும், அல்லது நீங்களே ஒன்றைத் தேர்ந்தெடுக்கவும்.
+lang_follow_platform	சாதன மொழியைப் பயன்படுத்து
+lang_pick_user	தேர்ந்த மொழியைப் பயன்படுத்து
+lang_platform_now	தற்போதைய சாதன மொழி
+selected_language	தேர்ந்தது
+continue	தொடரவும்
+this_device	இந்த சாதனம்
+device_use_q	இந்த சாதனம் எப்படி பயன்படுத்தப்படும்?
+last_server_mode	முன்பு சர்வர் — தொடர தட்டவும்
+last_client_mode	முன்பு கிளையன்ட் — தொடர தட்டவும்
+choose_server	சேவையகத்தைத் தேர்வு
+choose_server_hint	இந்த சாதனத்தில் ஏற்கனவே சேவையகங்கள் உள்ளன. ஒன்றைத் திறக்கவும், அல்லது மற்றொரு வணிகத்திற்கு புதிய சேவையகத்தை உருவாக்கவும்.
+create_new_server	புதிய சேவையகம் உருவாக்கு
+open_server	திற
+new_server_name_ph	புதிய சேவையகத்தின் பெயர் (விருப்பம்)
+server_remove_pin_ph	சேவையகத்தை நீக்க Owner PIN
+only_owner_remove_server	சேவையகத்தை Owner மட்டுமே நீக்கலாம்
+owner_pin_remove_server	சேவையகத்தை நீக்க Owner PIN வேண்டும்
+device_setup_help	சர்வர் கணக்குகளை இங்கே வைத்திருக்கும். கிளையன்ட் ஒரு சர்வருடன் இணையும்.
+currency	நாணயம்
+backup	காப்புப்பிரதி
+settings_sec_diag	கண்டறிதல்
+settings_hub_help	ஒரு நேரத்தில் ஒரு பகுதியைத் திறக்கவும் — குறைந்த உருட்டல், தெளிவான தேர்வுகள்.
+settings_sec_devices	கூடுதல் கவுண்டர்கள் & கிளைகள்
+settings_sec_alerts	அறிவிப்புகள்
+alerts_help	நிலைச் செய்திகள் உங்களுக்குத் திரையில் எவ்வளவு நேரம் இருக்க வேண்டும் (இந்த உள்நுழைவுக்கு).
+snack_secs_ph	விநாடிகள் (3–60, இயல்பு 10)
+snack_secs_save	அறிவிப்பு நேரத்தைச் சேமி
+snack_secs_saved	அறிவிப்பு நேரம் சேமிக்கப்பட்டது — {n} விநாடிகள்
+snack_secs_bad	விநாடிகளை எண்ணாக உள்ளிடவும் (3–60)
+cancelled	ரத்து செய்யப்பட்டது
+cancel	ரத்து
+opening_client	கிளையன்ட் திறக்கப்படுகிறது…
+preparing_desk	மேசை தயாராகிறது…
+opening_server	சேவையகம் திறக்கப்படுகிறது…
+creating_server	சேவையகம் உருவாக்கப்படுகிறது…
+diag_privacy_help	பதிவுகள் இந்த சாதனத்திலேயே இருக்கும். ரகசியங்கள் (PIN, கடவுச்சொற்கள்) ஒருபோதும் சேமிக்கப்படாது. சாதனத்துக்கு வெளியே தொகுப்பை அனுப்ப ஒவ்வொரு முறையும் உங்கள் தெளிவான ஒப்புதல் தேவை — ஒருபோதும் விற்கப்படாது அல்லது மூன்றாம் தரப்புக்குக் கொடுக்கப்படாது.
+diag_level	விவர நிலை
+diag_level_error	பிழைகள்
+diag_level_warn	எச்சரிக்கைகள்
+diag_level_info	தகவல்
+diag_level_debug	பிழைத்திருத்தம்
+diag_support_start	30 நிமிட உதவி அமர்வைத் தொடங்கு
+diag_support_stop	உதவி அமர்வை முடி
+diag_support_started	உதவி அமர்வு இயக்கத்தில் — 30 நிமிடம் பிழைத்திருத்த விவரம்
+diag_support_ended	உதவி அமர்வு முடிந்தது
+diag_export_local	உள்ளூர் நகலை ஏற்றுமதி செய்
+diag_export_local_done	உள்ளூர் கண்டறிதல் {path}-இல் தயார் — நகலை எங்கே சேமிப்பது எனத் தேர்வுசெய்யவும்
+diag_approve_send	சாதனத்துக்கு வெளியே பகிர ஒப்புதல் அளி
+diag_send_heading	இந்தச் சாதனத்திலிருந்து பகிர்
+diag_send_help	ஒப்புதல் ஒரு தொகுப்புக்கு மட்டும், பிறகு காலாவதியாகும். தற்காலிகம் — தயாரிப்பைச் சரிசெய்ய அல்லது மேம்படுத்த மட்டுமே. மூன்றாம் தரப்புடன் பகிரப்படாது. Linux, Windows, macOS மற்றும் Android-இல் வேலை செய்யும்.
+optional_login_heading	விருப்ப உள்நுழைவு
+rights_heading	உரிமைகள்
+booking_scope_heading	உள்நாட்டு / சர்வதேச
+diag_send_approved	ஒரு தொகுப்பைப் பகிர ஒப்புதல் கிடைத்தது (விரைவில் காலாவதியாகும்)
+diag_export_send	பகிர்வுத் தொகுப்பை உருவாக்கு (ஒப்புதல் தேவை)
+diag_export_send_done	பகிர்வுத் தொகுப்பு {path}-இல் தயார் — எங்கே சேமிப்பது எனத் தேர்வுசெய்து, Kumkaj உதவிக்கு மட்டும் அனுப்பவும்
+diag_save_bundle	கண்டறிதல் நகலைச் சேமி
+diag_bundle_saved	கண்டறிதல் நகல் {path}-இல் சேமிக்கப்பட்டது
+diag_bundle_failed	கண்டறிதல் நகலைச் சேமிக்க முடியவில்லை — மீண்டும் முயலவும்
+diag_clear	கண்டறிதல் பதிவுகளை அழி
+diag_cleared	கண்டறிதல் பதிவுகள் அழிக்கப்பட்டன
+use	பயன்படுத்து
+add_branch	கிளை சேர்
+add_conversion	மாற்றம் சேர்
+add_item_plain	பொருள் சேர்
+add_note	குறிப்பு சேர்
+add_opening_balance	தொடக்க இருப்பு சேர்
+add_rider	ரைடர் சேர்
+add_staff	ஊழியர் சேர்
+add_unit	அலகு சேர்
+add_use_name	இந்தப் பெயரைச் சேர் / பயன்படுத்து
+allow_extra_tills	கூடுதல் கவுண்டர்களை அனுமதி
+amend	திருத்தம்
+apply_country_pack	நாட்டு தொகுப்பைப் பயன்படுத்து
+datetime_appearance	தேதி & நேரத் தோற்றம்
+datetime_appearance_help	புத்தகங்கள் உள்ளே ஆண்டு-முதல் RFC3339 வைத்திருக்கும். இவை ரசீதுகள், லேபிள்கள், அறிக்கைகள் மற்றும் திரையில் தேதி, கடிகாரம் எப்படித் தோன்றும் என்பதை மட்டுமே மாற்றும்.
+datetime_example	இப்போதைய எடுத்துக்காட்டு: {ex}
+date_order	தேதி வரிசை
+date_order_dmy	நா/மா/ஆ
+date_order_mdy	மா/நா/ஆ
+date_order_ymd	ஆ-மா-நா
+time_format	கடிகாரம்
+time_format_24h	24 மணி நேரம்
+time_format_12h	12 மணி நேரம்
+attach_bill_photo	பில் புகைப்படம் இணை
+attach_pdf	PDF இணை
+attach_photo	புகைப்படம் இணை
+bank	வங்கி
+bank_in	வங்கியில் போடு
+bank_out	வங்கியிலிருந்து எடு
+bank_to_till	வங்கி → கவுண்டர்
+till_to_bank	கவுண்டர் → வங்கி
+mark_cleared	தீர்ந்ததாகக் குறி
+unmark	குறியை நீக்கு
+role_both	இருவரும்
+role_carrier	கேரியர்
+role_cashier	காசாளர்
+role_consignor	அனுப்புநர்
+role_manager	மேலாளர்
+role_supplier	சப்ளையர்
+branch_name_sell_ph	விற்க வேண்டிய கிளையின் பெயர்
+bring_my_book	என் புத்தகத்தைக் கொண்டு வா
+business_tax_id_ph	வணிக வரி ஐடி
+card_amount_ph	அட்டை தொகை
+cash_amount_ph	ரொக்க தொகை
+upi_amount_ph	UPI தொகை
+carrier_cost_ph	கேரியர் செலவு
+carrier_party_ph	கேரியர் தரப்பு
+choose_icon	ஐகானைத் தேர்வு
+choose_logo	லோகோவைத் தேர்வு
+choose_receipt_stamp	ரசீது முத்திரை தேர்வு
+choose_payment_qr	பேமெண்ட் QR தேர்வு
+clear_icon	ஐகானை அகற்று
+clear_logo	லோகோவை அகற்று
+clear_photo	புகைப்படத்தை அகற்று
+clear_stamp	முத்திரையை அழி
+clear_payment_qr	பேமெண்ட் QR அழி
+print_faces	அச்சு முகப்பு (ரசீது / கால பில்)
+print_faces_help	முன்பதிவு ரசீதுகளிலும் கால பில்களிலும் உங்கள் லோகோ அருகே விருப்ப முத்திரையும் கட்டண QR-உம்.
+awb_pools_heading	கேரியர் AWB எண் தொகுப்புகள்
+add_awb_pool	AWB தொகுப்பு சேர்
+awb_pool_carrier_ph	கேரியர் தரப்பின் பெயர்
+awb_pool_start_ph	தொடக்க எண்
+awb_pool_end_ph	இறுதி எண்
+awb_pool_prefix_ph	முன்னொட்டு (விருப்பம்)
+awb_pool_label_ph	லேபிள் (விருப்பம்)
+pieces_ph	எண்ணிக்கை (காலி = 1) — சரக்கு / பல பொதிகளுக்கு விரிக்கவும்
+bulk_awbs_ph	பல AWB — ஒரே நேரத்தில் நிலையை முன்னேற்ற பலவற்றை ஒட்டவும் (புதிய வரி அல்லது காற்புள்ளி)
+tds_cut_ph	TDS பிடித்தம் (விருப்பம்)
+discount_ph	தள்ளுபடி (விருப்பம்)
+cheque_no_ph	காசோலை எண் (விருப்பம்)
+bill_reminder_chase	பில் நினைவூட்டல் பட்டியல்
+month_mix_report	மாத கலவை அறிக்கை
+copy_month_gst_csv	மாத GST CSV நகல்
+domestic	உள்நாட்டு
+international	சர்வதேச
+pick_logo	லோகோவைத் தேர்வு
+booking_scope_hint_domestic	கன அளவு ÷5000 (உள்நாடு) — சர்வதேசத்திற்கு ÷6000
+booking_scope_hint_intl	கன அளவு ÷6000 (சர்வதேச) — உள்நாட்டிற்கு ÷5000
+cod_register	COD பதிவேடு
+collect_cod	COD வசூல் (AWB)
+consignments_dispatch	சரக்கு & அனுப்புதல்
+consignor_party_ph	அனுப்புநர் / தரப்பின் பெயர்
+copy_day_book_csv	நாள் புத்தக CSV நகல்
+copy_day_close	நாள் முடிவை நகல்
+copy_items_csv	பொருட்கள் CSV நகல்
+copy_outstanding_csv	நிலுவை CSV நகல்
+copy_parties_csv	தரப்புகள் CSV நகல்
+copy_party_ledger_csv	தரப்பு கணக்கு CSV நகல்
+copy_receipt	ரசீதை நகல்
+copy_report	அறிக்கையை நகல்
+counted_cash_ph	டிராயரில் எண்ணிய ரொக்கம்
+counter_agency_ph	கவுண்டர் / ஏஜென்சி பெயர் (விருப்பம்)
+create_backup	காப்புப்பிரதி உருவாக்கு
+day_close_summary	நாள் முடிவு சுருக்கம்
+delete_party	தேர்ந்த தரப்பை நீக்கு
+dispatch_to_rider	முன்பதிவு → ரைடரிடம்
+docket_charge_ph	டாக்கெட் கட்டணம்
+declared_value_ph	அறிவிக்கப்பட்ட மதிப்பு
+contents_ph	உள்ளடக்கம்
+eway_ph	இ-வே பில் எண்
+insurance_label	காப்பீடு (ஆம்/இல்லை)
+yes_label	ஆம்
+no_label	இல்லை
+print_route_label	அச்சு வழி
+new_party_kind_label	புதிய தரப்பு வகை
+done_open_books	முடிந்தது — புத்தகங்களைத் திற
+export_day	நாளை ஏற்றுமதி செய்
+extra_note_expense_ph	கடைசி செலவில் கூடுதல் குறிப்பு
+extra_note_awb_ph	இந்த AWB / விற்பனையில் கூடுதல் குறிப்பு
+failed_delivery	டெலிவரி தோல்வி
+find_scan_awb	AWB கண்டுபிடி / ஸ்கேன்
+forget_shop	இந்தக் கடையை மற
+fuel_ph	எரிபொருள்
+handover_carrier	முன்பதிவு → கேரியரிடம்
+import_day	நாளை இறக்குமதி செய்
+import_items_csv	பொருட்கள் / கட்டண CSV இறக்குமதி…
+import_parties_csv	தரப்புகள் CSV இறக்குமதி…
+import_pincodes_csv	பின்கோட் CSV இறக்குமதி…
+import_carrier_bill_csv	கேரியர் பில் CSV இறக்குமதி…
+copy_carrier_bill_report	கடைசி கேரியர் பில் அறிக்கையை நகலெடு
+use_carrier_cost	கேரியர் செலவைப் பயன்படுத்து
+rate_carrier_ph	கேரியர் (காலி = எங்கள் விற்பனை கட்டணம்)
+rate_party_ph	தரப்பு (காலி = அனைத்து வாடிக்கையாளர்)
+carrier_pick_ph	செலவுக்கான கேரியர் (ஒப்பீட்டிலிருந்து)
+item_name	பொருளின் பெயர்
+load_bulk_row	மொத்த வரிசை ஏற்று → மேசை
+login_id_ph	உள்நுழைவு ஐடி
+mark_delivered	டெலிவர் எனக் குறி
+manifest_cod_total	COD மொத்தம்
+manifest_received_by	பெற்றவர்
+manifest_sign	கையொப்பம்
+ndr_address_wrong	முகவரி தவறு
+ndr_customer_unavailable	வாடிக்கையாளர் இல்லை
+ndr_door_locked	கதவு பூட்டியது
+ndr_other	மற்றவை
+ndr_refused	மறுக்கப்பட்டது
+out_for_delivery	டெலிவரிக்கு வெளியே
+print_drs	DRS அச்சிடு
+print_run_sheet	ரன் ஷீட் அச்சிடு
+reattempt	மீண்டும் முயற்சி
+rider_cod_handed_ph	ரைடர் ஒப்படைத்த COD
+settle_rider_cod	ரைடர் COD தீர்வு
+mode_desk	மேசை
+mode_rider	ரைடர்
+waiting_office	அலுவலகம் செல்ல காத்திருப்பு
+capture_signature	கையொப்பம் எடு
+incoming_manifest	உள்வரும் மேனிஃபெஸ்ட்
+pickup_request	பிக்அப் கோரிக்கை
+pickup_run	பிக்அப் ரன்
+auto_assign_area	பகுதியை தானியங்கி ஒதுக்கு
+reorder_stops	நிறுத்தங்களை மறுவரிசை
+settle_rider_pay	ரைடர் ஊதியம் தீர்வு
+vehicle_inspect	வாகன பரிசோதனை
+print_docket	சி-நோட் அச்சிடு
+franchise_statement	பிராஞ்சைஸ் அறிக்கை
+tally_export	டாலி வவுச்சர் ஏற்றுமதி
+open_whatsapp	வாட்ஸ்அப் திற
+copy_sms	SMS உரை நகல்
+pick_barcode_image	ஸ்கேன் செய்ய படம் தேர்வு
+share_receipt_whatsapp	ரசீதை வாட்ஸ்அப்பில் பகிர்
+delivery_feedback	டெலிவரி கருத்து
+lan_self_book	LAN சுய முன்பதிவு
+new_party_clear	புதிய தரப்பு (படிவத்தை அழி)
+new_party_kind_ph	புதிய தரப்பின் வகை (சப்ளையர் / கேரியர்)
+next_country	அடுத்த நாடு
+prev_country	முந்தைய நாடு
+note_gstin_ph	குறிப்பு / GSTIN / ஒப்பந்த நினைவூட்டல்
+note_pod_ph	குறிப்பு / POD (விருப்பம்)
+on_account_ap	கணக்கில் (AP)
+org_optional_ph	அமைப்பு (விருப்பம்)
+paid_now	இப்போது செலுத்தியது
+pairing_code_ph	இணைப்பு குறியீடு
+pair_now	இப்போது இணை
+party_name_selected_ph	தரப்பின் பெயர் (அல்லது தேர்ந்ததைப் பயன்படுத்து)
+password_ph	கடவுச்சொல்
+pay_ap_card	AP அட்டையால் செலுத்து
+pay_ap_cash	AP ரொக்கம் செலுத்து
+pay_ap_upi	AP UPI செலுத்து
+period_bill	கால பில்
+period_bill_party	கால பில் (தரப்பு)
+pick_pod_photo	POD புகைப்படம் தேர்வு
+print_awb_label	AWB லேபிள் அச்சிடு
+print_open	அச்சிடு / திற
+reason_amend_ph	திருத்தம் / ரத்து / திரும்ப காரணம்
+reason_note_ph	காரணம் / குறிப்பு (சேதம், எண்ணிக்கை, …)
+record_day_close	நாள் முடிவைப் பதிவு செய்
+refresh_from_shop	கடையிலிருந்து புதுப்பி
+refund	திரும்ப
+remit_cod	COD செலுத்து (தரப்பு)
+remove_selected	தேர்ந்ததை அகற்று
+restore_backup	காப்புப்பிரதியை மீட்டமை
+rider_name_ph	ரைடரின் பெயர்
+rider_phone_ph	ரைடரின் தொலைபேசி
+riders	ரைடர்கள்
+riders_own_fleet	ரைடர்கள் (சொந்த குழு)
+rollup	ரோல்-அப்
+save_booking_measures	முன்பதிவு அளவுகளைச் சேமி
+save_brand	பிராண்டைச் சேமி
+save_business_id	வணிக ஐடி & சேவை % சேமி
+save_business_name	வணிகப் பெயரைச் சேமி
+save_features	பணி அமைப்பைச் சேமி
+save_names	பெயர்களைச் சேமி
+server_ip_ph	சேவையக IP (எ.கா. 192.168.1.10)
+set_credit_limit	கடன் வரம்பை அமை
+set_login_selected	தேர்ந்ததில் உள்நுழைவை அமை
+set_login_named	{name}க்கு உள்நுழைவை அமை
+shop	கடை
+start_fresh	புதிதாகத் தொடங்கு
+stop_extra_tills	கூடுதல் கவுண்டர்களை நிறுத்து
+backup_auto	ஒவ்வொரு நாளும் தானாக காப்புப்பிரதி · கடைசி {when} · கடைசி 14 நாட்கள் {dir} இல் வைக்கப்படுகின்றன.
+backup_auto_none	ஒவ்வொரு நாளும் தானாக காப்புப்பிரதி — முதலாவது விரைவில் இயங்கும்.
+backup_copy_to	நகல்கள் {dir} க்கும் செல்கின்றன.
+backup_copy_btn	காப்புப்பிரதிகளை ஒரு கோப்புறைக்கும் நகலெடு…
+autostart_off	இந்தக் கணினியுடன் தொடங்கு
+autostart_on	இந்தக் கணினியுடன் தொடங்கும் ✓ — நிறுத்த அழுத்தவும்
+autostart_done_on	இனி இந்தக் கணினி தொடங்கும்போது ஆப் திறக்கும் — மின்வெட்டுக்குப் பின் கடை சர்வர் மீண்டும் இயங்கும்.
+autostart_done_off	இனி கணினி தொடங்கும்போது ஆப் திறக்காது.
+right_allowed	அனுமதி உண்டு
+right_with_approval	ஒப்புதலுடன்
+right_denied	அனுமதி இல்லை
+editing_staff	இவரின் உரிமைகள்
+team_pick_ph	திருத்த வேண்டிய ஊழியர் பெயர்
+select_staff	இந்த ஊழியரைத் தேர்ந்தெடு
+rights_help	உரிமைகள் — மாற்றத் தட்டவும்: அனுமதி → ஒப்புதலுடன் (அந்நேரம் மேலாளர் PIN) → அனுமதி இல்லை.
+right_void_refund	முன்பதிவை ரத்து அல்லது பணம் திருப்புதல்
+right_amend_sale	பதிவான முன்பதிவைத் திருத்துதல்
+find_server	கடையின் சர்வரைக் கண்டுபிடி
+finding_server	இந்த Wi‑Fi-இல் கடையின் சர்வரைத் தேடுகிறது…
+no_server_found	சர்வர் கிடைக்கவில்லை. கடைச் சாதனம் அதே Wi‑Fi-இல் கூடுதல் டில் அனுமதியுடன் உள்ளதா எனப் பாருங்கள், அல்லது அதன் IP-ஐ எழுதுங்கள்.
+servers_found_pick	நீங்கள் இணைக்க விரும்பும் கடையைத் தட்டவும்.
+server_host_selected	{host} பயன்படுகிறது — இணைப்புக் குறியீட்டை உள்ளிட்டு, இப்போது இணை என்பதைத் தட்டவும்.
+device_forgotten	கடை இந்தச் சாதனத்தை நீக்கியது — கடையின் தற்போதைய குறியீட்டுடன் மீண்டும் இணைக்கவும். காத்திருக்கும் ஆர்டர்கள் வைக்கப்பட்டுள்ளன.
+forget_device	மறந்துவிடு
+last_seen	கடைசியாக
+new_pair_code	புதிய இணைப்புக் குறியீடு
+lan_offline	ஆஃப்லைன்
+lan_offline_waiting	ஆஃப்லைன் · {n} காத்திருக்கின்றன
+lan_connecting	கடையுடன் இணைக்கிறது…
+pair_finishing	இணைப்பு முடிகிறது… அலுவலகப் புத்தகங்கள் பயன்படுத்தப்படுகின்றன
+pair_opening	அலுவலகம் திறக்கப்படுகிறது…
+lan_live	நேரலை
+lan_sending	{n} அனுப்பப்படுகின்றன
+lan_sign_in_to_send	{n} அனுப்ப மீண்டும் உள்நுழையவும்
+lan_pair_again	இந்தச் சாதனத்தை மீண்டும் இணைக்கவும்
+lan_update_app	செயலியைப் புதுப்பிக்கவும் — இந்தச் சாதனமும் அலுவலக சர்வரும் வெவ்வேறு பதிப்புகள்
+allow_firewall	பிற சாதனங்களை இணைய அனுமதி
+firewall_blocked	இந்தக் கணினியின் ஃபயர்வால் பிற சாதனங்களைத் தடுக்கிறது — “பிற சாதனங்களை இணைய அனுமதி” தட்டவும்.
+firewall_waiting	நிர்வாகி அனுமதிக்குக் காத்திருக்கிறது…
+lan_join_help	பிற சாதனங்கள் இதனுடன் இணையலாம் — இணைப்புக் குறியீடு {code}. மற்ற சாதனத்தில் கிளையன்ட் முறையைத் தேர்ந்தெடுத்து, கடையின் சர்வரைக் கண்டுபிடி அழுத்தவும், அல்லது இந்த முகவரியை உள்ளிடவும்: {addr}
+lan_pair_status	வைஃபை {addr}
+lan_join_help_no_addr	முகவரி பெற இந்த சாதனத்தை Wi‑Fi-உடன் இணைக்கவும்.
+lan_no_address	இந்தச் சாதனத்துக்கு இன்னும் Wi‑Fi முகவரி இல்லை — கடையின் Wi‑Fi உடன் இணைக்கவும்.
+lan_not_listening	இப்போது சாதனங்களை ஏற்கவில்லை — வேறொரு நிரல் போர்ட் {port}-ஐப் பயன்படுத்தக்கூடும். செயலியை மீண்டும் தொடங்கவும்.
+lan_tills_off	கூடுதல் கவுண்டர்கள் முடக்கத்தில் உள்ளன. இந்த அலுவலகத்தின் கணக்குகள் இந்தச் சாதனத்திலேயே இருக்கும். வேறொரு சாதனமும் பார்சல் பதிவு செய்ய அல்லது பணம் பெற வேண்டுமெனில் கூடுதல் கவுண்டர்களை அனுமதிக்கவும்.
+paired_with	{url} இல் உள்ள கடையுடன் இணைக்கப்பட்டது
+not_paired	இணைக்கப்படவில்லை — கடையின் சர்வருடன் இணைக்கவும்.
+choose_device_use	இந்தச் சாதனம் எப்படிப் பயன்படும் என்பதைத் தேர்ந்தெடுக்கவும்.
+paired_note	இணைக்கப்பட்டது. விற்க திறக்கவும், அல்லது கடையிலிருந்து சமீபத்தியதைப் பெற புதுப்பிக்கவும்.
+last_update_at	கடையிலிருந்து கடைசி புதுப்பிப்பு: {time}.
+pair_intro	சர்வரைக் கண்டுபிடிக்கவும், அல்லது அதன் முகவரியும் இணைப்பு குறியீடும் தட்டச்சு செய்யவும்.
+queue_waiting	கடையை அடையக் காத்திருக்கிறது ({n}):
+queue_tries	{n} முறை முயற்சி · கடைசி பதில்: {e}
+save_backup_copy	காப்புப்பிரதியின் நகலைச் சேமி…
+backup_copy_saved	காப்புப்பிரதி நகல் சேமிக்கப்பட்டது — இந்தச் சாதனத்துக்கு வெளியே வைக்கவும் (USB அல்லது வேறு சாதனம்)
+backup_copy_overdue	{n} நாட்களாக எந்தக் காப்புப்பிரதி நகலும் இந்தச் சாதனத்தை விட்டு வெளியே செல்லவில்லை — அமைப்புகள் → காப்புப்பிரதி
+backup_copy_failed	காப்புப்பிரதி நகலை அங்கே சேமிக்க முடியவில்லை — வேறு இடத்தைத் தேர்ந்தெடுக்கவும்
+clock_off	இந்தச் சாதனத்தின் கடிகாரம் கடையின் சர்வரிலிருந்து {min} நிமிடம் மாறுபடுகிறது — இந்தச் சாதனத்தில் சரியான நேரத்தை அமைக்கவும்
+printers_heading	இந்த சாதனத்தின் அச்சுப்பொறிகள்
+printers_help	ஒவ்வொரு அச்சுப்பொறியையும் ஒருமுறை சேர்த்து, ரசீது மற்றும் AWB லேபிள் எங்கு அச்சிடப்படும் என்பதைத் தேர்வு செய்யுங்கள் — பட்டியலில் முதல் முதலில் முயற்சிக்கப்படும்; தோல்வியுற்றால் அடுத்தது. வழியை காலி செய்தால் அந்த அம்சம் அச்சிடாது. இலக்கு காலி (இயல்பு), கணினி பெயர், அல்லது பிணைய முகவரி (எ.கா. 192.168.1.50). ஒவ்வொரு சாதனமும் தன் அச்சுப்பொறிகளை வைத்திருக்கும்.
+job_width	உள்ளடக்க அகலம் (மிமீ)
+job_width_ph	அல்லது அகலத்தைத் தட்டச்சு செய், 40–210 mm
+job_layout	லேஅவுட்
+job_delivery	வேலை எப்படி அனுப்பப்படுகிறது
+job_size	எழுத்துரு அளவு
+job_size_ph	எ.கா. 18, 20, 26…
+save_receipt_format	ரசீது வடிவத்தைச் சேமி
+save_label_format	லேபிள் வடிவத்தைச் சேமி
+test_receipt_format	சோதனை ரசீது
+test_label_format	சோதனை லேபிள்
+test_receipt_sent	மாதிரி ரசீது அனுப்பப்பட்டது
+test_label_sent	மாதிரி லேபிள் அனுப்பப்பட்டது
+test_print_no_printer	அந்த வேலைக்கு அச்சுப்பொறி இல்லை — இந்த இடத்தின் கீழ் ஒன்று சேர்க்கவும்
+printers_host_only	அச்சுப்பொறிகள் கடை சாதனத்தில் (Server) அமைக்கப்படும். இந்த டில் அங்கு வேலைகளை அனுப்பும் — கண்டுபிடி / சேர் / ஒதுக்கு Server-இலேயே இருக்கும். சோதனைப் பக்கம் Server-க்குச் செல்லும்.
+printers_pool_heading	அச்சுப்பொறிகள்
+printers_routes_heading	எங்கே அச்சிட
+printer_label_ph	பெயர் (எ.கா. மேசை)
+printer_target_ph	host:9100 · bt:MAC · usb:VID:PID · கணினிப் பெயர்
+printer_mode_heading	தேர்ந்த வழிக்கான வடிவம்
+printer_mode_standard	நிலையான செங்குத்து
+printer_mode_landscape	நிலையான கிடைமட்டம்
+printer_mode_thermal	தெர்மல்
+printer_mode_standard_short	செங்குத்து
+printer_mode_landscape_short	கிடைமட்டம்
+printer_mode_thermal_short	தெர்மல்
+printer_format_custom	புதிய தனிப்பயன் வடிவம்
+printer_format_custom_label	தனிப்பயன்
+printer_format_custom_added	இந்த வழிக்குத் தனிப்பயன் வடிவம் சேர்க்கப்பட்டது
+add_printer	அச்சுப்பொறி சேர்
+remove_printer	கடைசியை நீக்கு
+route_pick_ph	receipt அல்லது label
+route_add_printer_ph	இந்த வழியில் அச்சுப்பொறி சேர்
+route_receipt	ரசீது
+route_label	AWB லேபிள்
+route_dont_print	அச்சுப்பொறி ஒதுக்கப்படவில்லை
+route_add	வழியில் சேர்
+route_up	மேலே
+route_down	கீழே
+route_remove	கடைசியை நீக்கு
+route_clear	இந்த இடத்தின் அச்சுப்பொறிகளை அழி
+save_printers	அச்சுப்பொறிகளைச் சேமி
+print_test_page	சோதனைப் பக்கம் அச்சிடு
+printers_saved	இந்த சாதனத்தின் அச்சுப்பொறிகள் சேமிக்கப்பட்டன
+test_page_sent	சோதனைப் பக்கம் அனுப்பப்பட்டது — அச்சுப்பொறியைப் பாருங்கள்
+printers_found	இந்த சாதனத்தில் கிடைத்தவை: {list}
+find_printers	அச்சுப்பொறிகளைக் கண்டுபிடி
+printers_looking	இந்த சாதனத்திலும் Wi‑Fi-இலும் அச்சுப்பொறிகளைத் தேடுகிறது…
+printers_tap_find	வேலைகளை ஏற்கும் வரிசைகள் மற்றும் இந்த Wi‑Fi-இல் உள்ள பிணைய ரசீது அச்சுப்பொறிகளுக்கு அச்சுப்பொறிகளைத் தேடு தட்டவும் (நீக்கப்பட்டவை அல்லது ஆஃப்லைனில் உள்ளவை அல்ல).
+printers_none_found	அச்சுப்பொறிகள் கிடைக்கவில்லை — கணினி அச்சுப்பொறிப் பெயர், அல்லது பிணைய முகவரியைத் தட்டச்சு செய்யவும் (எ.கா. 192.168.1.50).
+receipt_printer_ph	ரசீது அச்சுப்பொறி
+queue_refused	கடை ஏற்கவில்லை ({n}) — ஒவ்வொன்றையும் கவுண்டரில் சரிபார்க்கவும்:
+clear_not_accepted	சரிபார்த்தேன் — இந்தப் பட்டியலை அழி
+device_name_ph	இந்தச் சாதனத்தின் பெயர்
+lan_last_update	கடைசி புதுப்பிப்பு {time}
+lan_not_accepted	{n} ஏற்கப்படவில்லை
+connected_now	இப்போது இணைப்பில்
+backup_failed	கடைசி தானியங்கு காப்புப்பிரதி தோல்வியடைந்தது: {e}
+backup_overdue	{n} நாட்களாகக் காப்புப்பிரதி இல்லை — காப்புப்பிரதி எடுக்க இந்தச் சாதனத்தில் செயலியைத் திறந்து வைக்கவும்.
+disk_low	இந்தச் சாதனத்தில் {mb} MB மட்டுமே காலியாக உள்ளது — விரைவில் காப்புப்பிரதிகள் தோல்வியடையும். கொஞ்சம் இடத்தைக் காலி செய்யவும்.
+last_seen_devices	கடைசியாகக் காணப்பட்டது: {time}
+sync_interval	ஒவ்வொரு {secs} விநாடிக்கும் ஒத்திசைவு
+connection_to_shop	கடையுடன் இணைப்பு
+supplier_name_ph	சப்ளையர் பெயர் (அல்லது தரப்பு)
+supplier_ph	சப்ளையர்
+switch_device	இந்த சாதனத்தை மாற்று
+take_payment	கட்டணம் வாங்கு
+tax_added_till	{tax} தவிர
+tax_inside_price	{tax} உட்பட
+today_books	இன்றைய புத்தகங்கள்
+unlock_after_pairing	PIN உள்ளிடு
+unlock_with_login	உள்நுழைவுடன் திற
+update_my_password	என் கடவுச்சொல்லை மாற்று
+update_my_pin	என் PIN-ஐப் புதுப்பி
+duress_heading	அவசர திறப்பு PIN (உரிமையாளர் மட்டும்)
+duress_help	விருப்பம். திறக்கும்போது உங்கள் PIN-க்குப் பதில் இந்த PIN உள்ளிட்டால், புத்தகப் பதிவுகள் அனைத்தும் அழியும் (முன்பதிவுகள், பேரேடுகள், வரலாறு), மேசை சாதாரணமாகத் தோன்றி உரிமையாளராகத் திறக்கும் — கட்டணங்கள், தரப்புகள், மண்டலங்கள், ஊழியர்கள், அமைப்புகள் இருக்கும். கட்டமைப்பும் கட்டமைவும் அழிக்கப்படாது. வலுக்கட்டாயமாகத் திறக்க வைக்கப்பட்டால் மட்டுமே பயன்படுத்தவும். முடக்க காலியாக விட்டுச் சேமிக்கவும். யாருடைய PIN-ஆகவும் இருக்கக்கூடாது.
+duress_pin_ph	அவசர PIN (4–12 இலக்கம்)
+duress_confirm_ph	மீண்டும் தட்டச்சு
+save_duress_pin	அவசர PIN சேமி
+clear_duress_pin	அவசர PIN அணை
+duress_on	அவசர திறப்பு PIN இயக்கத்தில்
+duress_off	அவசர திறப்பு PIN அணைக்கப்பட்டுள்ளது
+duress_saved	அவசர திறப்பு PIN சேமிக்கப்பட்டது
+duress_cleared	அவசர திறப்பு PIN அணைக்கப்பட்டது
+vehicle_ph	வாகனம்
+void	ரத்து செய்
+write_off_ap	AP தள்ளுபடி
+write_off_nil	தள்ளுபடி / மீதி பூஜ்ஜியம்
+zone_ph	மண்டலம் (கட்டணங்களிலிருந்து பெயர்)
+caption_today	இன்று
+caption_bookings	முன்பதிவுகள்
+caption_payments_today	இன்றைய கட்டணங்கள்
+caption_outstanding	நிலுவை
+caption_bank	வங்கி
+paid_by	செலுத்தியது
+second_way	இரண்டாவது வழி
+weight_in	எடை அலகு
+size_in	அளவு அலகு
+goods_received	பொருட்கள் பெறப்பட்டது
+expense_heading	செலவு
+notes_attach_sale	குறிப்புகள் & இணைப்புகள் (தேர்ந்த விற்பனை)
+notes_attach_party	குறிப்புகள் & இணைப்புகள் (தேர்ந்த தரப்பு)
+attachments_last_expense	இணைப்புகள் (கடைசி செலவு)
+credit_limit_heading	கடன் வரம்பு (தேர்ந்த / பெயரிட்ட தரப்பு)
+pay_selected_heading	தேர்ந்ததைச் செலுத்து (கடனைத் தீர் / முன்பணம்)
+write_off_heading	தள்ளுபடி (கட்டணம் இல்லாமல் தீர்)
+pay_ap_heading	நாம் அவர்களுக்குத் தர வேண்டியது (AP)
+country_tax	நாடு & வரி
+extra_tills_heading	கூடுதல் கவுண்டர்கள்
+other_devices_help_heading	பிற சாதனங்களை அமை
+other_devices_help	இந்த சாதனத்தில் (சேவையகம்): மற்ற சாதனங்கள் → கூடுதல் கவுண்டர்களை அனுமதி. இணைப்புக் குறியீடு மற்றும் Wi‑Fi முகவரியைக் குறித்துக்கொள்ளவும். தோன்றினால் மற்ற சாதனங்களை இணைய அனுமதி என்பதைத் தட்டவும். கணினியில், இந்தக் கணினியுடன் தொடங்கு என்பதைத் தட்டவும். ஒவ்வொரு மற்ற சாதனத்திலும்: ஆப்பை நிறுவி, கிளையன்ட் முறையைத் தேர்வுசெய்து, கடையின் சேவையகத்தைத் தேடி (அல்லது முகவரியைத் தட்டச்சு செய்து), இணைப்புக் குறியீட்டை உள்ளிட்டு, இப்போது இணை. Wi‑Fi துண்டிக்கப்பட்டால் ஆர்டர்கள் சாதனத்தில் காத்திருந்து சேவையகம் மீண்டும் பதிலளிக்கும்போது செல்லும்.
+your_brand	உங்கள் பிராண்ட் (செயலியில்)
+units_heading	அலகுகள்
+booking_measures	முன்பதிவு அளவுகள்
+drawer_count	டிராயர் எண்ணிக்கை (விருப்பம்)
+spreadsheet_csv	விரிதாள் (CSV)
+bank_reconciliation	வங்கி சரிபார்ப்பு (உங்கள் வங்கி அறிக்கையுடன் டிக் செய்யவும்)
+book_add_product	முன்பதிவு — பொருள் / கட்டணம் சேர்
+book_opening_credit	முன்பதிவு — தொடக்க கடன்
+account_kind	கணக்கு வகை (ஒன்றைத் தட்டவும்)
+active_ledger	செயலில் உள்ள கணக்கு
+actual_total_cap	உண்மை மொத்தம்
+amend_help	திருத்த, ரத்து அல்லது திரும்ப ஒரு விற்பனையைத் தேர்ந்தெடுக்கவும். திருத்தங்கள் முழு வரலாற்றையும் வைத்திருக்கும்.
+applied_total_cap	பயன்படுத்திய மொத்தம்
+bank_balance	வங்கி இருப்பு
+bank_net_today	இன்றைய வங்கி நிகரம்
+branch_export_help	ஏற்றுமதி ஒரு நாள் நிலைப்படத்தைக் காப்புப்பிரதி கோப்புறையில் எழுதி இடைநிலைப் பலகைக்கு நகலெடுக்கும். மற்றொரு கிளையின் நாளை இறக்குமதி செய்ய அதன் கோப்பை அந்தக் கோப்புறையில் import_branch_snapshot.json எனச் சேமித்து, இறக்குமதி தட்டவும்.
+brand_shown_help	செயலிக்குள் உள்ள திரைகளில் காட்டப்படும். இந்த சாதனத்தில் நிறுவிய செயலியின் பெயர் மற்றும் ஐகான் தளப் பட்டியல்படியே இருக்கும்.
+app_icon	ஆப் ஐகான்
+logo_help	ஆப் திரைகளில் கடையின் விருப்பக் குறி.
+onboard_layout	உங்களுக்கு என்ன கிடைக்கும்
+item_photo_help	விருப்பம். புகைப்படம் இல்லையெனில் பொருள் பெயரின் முதலெழுத்துகளைக் காட்டுவோம்.
+cash_in_hand	கையில் ரொக்கம் (கவுண்டர்)
+change_my_pin_heading	என் PIN-ஐ மாற்று (உங்களுடையது மட்டும்)
+connect_to_server	சேவையகத்துடன் இணை
+counter_locked	கவுண்டர் 01 · பூட்டப்பட்டது
+country_pack_help	நாட்டு தொகுப்பு வரியின் பெயர் மற்றும் கணக்கு, உடனடி கட்டண வழி, மற்றும் பில்களில் அச்சிடப்படும் வணிக ஐடியை அமைக்கும். Kumkaj எங்கும் வரி தாக்கல் செய்யாது அல்லது அரசு மின்-விலைப்பட்டியல் வழங்காது.
+currency_use_help	ஸ்க்ரோல் செய்து ஆதரிக்கப்படும் எந்த நாணயத்திற்கும் Use ஐத் தட்டவும்.
+day_close_help	நாள் முடிவைப் பதிவு செய்வது இந்த சுருக்கத்தை (எண்ணியிருந்தால் டிராயர் வித்தியாசத்துடன்) தணிக்கை பதிவில் சேமிக்கும். இது விற்பனையை நிறுத்தாது.
+expenses_word	செலவுகள்
+feature_access_help	தேர்ந்த ஊழியருக்கான வசதி அணுகல் (சேர்த்த பின் தட்டவும்)
+footer_local	உள்ளூர் SQLite · எப்போதும் இலவசம் · கிளவுட் இல்லை
+fresh_book_moklanjo	அச்சுப்பொறிகள்
+fresh_selected	Fresh தேர்ந்தது — பட்டியல் காலியாக இருக்கும். தயாரானதும் Done ஐத் தட்டவும்.
+gross_word	மொத்த விற்பனை
+how_start	எப்படித் தொடங்க விரும்புகிறீர்கள்?
+later_country_pack	அச்சுப்பொறிகள்
+local_badge	உள்ளூர்
+measures_help_moklanjo	முன்பதிவு மேசையில் பார்சல்கள் எப்படி அளக்கப்படுகின்றன. நீங்கள் பயன்படுத்தும் அலகுகளில் அளவுகளையும் எடையையும் எழுதவும் — நிலையான (cm, m, in, ft · kg, g, lb, oz) அல்லது மேலே cm / kg உடன் இணைக்கப்பட்ட உங்கள் சொந்த அலகு (நேரடியாக அல்லது பிற அலகுகள் வழியாக). புத்தகங்கள் எப்போதும் kg ஐப் பதிவு செய்யும். ஒரு புலத்தை காலியாக விட்டால் அது அப்படியே இருக்கும்.
+mix_type_hint_moklanjo	ஒவ்வொன்றிலும் எவ்வளவு என எழுதவும் (ரொக்கம் / UPI / அட்டை / கடன்). பில் தொகைக்கு சமமாக இருக்க வேண்டும். கடனுக்கு மேலே வாடிக்கையாளர் தேவை.
+money_in_sales	பணம் வந்தது (விற்பனை)
+more_help_moklanjo	பட்டியல், விற்பனை, கடன், குழு, காப்பு — தேவைப்படும்போது கையிருப்பு மற்றும் கூடுதல் கவுண்டர்கள்.
+net_word	நிகரம்
+offline_badge	ஆஃப்லைன்
+optional_login_help	விருப்ப உள்நுழைவு (ஐடி + கடவுச்சொல்). உரிமையாளர் ஒருமுறை அமைப்பார்; பின்னர் பயனர் மட்டுமே கடவுச்சொல்லை மாற்ற முடியும்.
+or_unlock_login	அல்லது உள்நுழைவு ஐடி + கடவுச்சொல்லால் திறக்கவும்
+permission_preset	பணி (திரைகளையும் உரிமைகளையும் அமைக்கும்)
+preset_help_moklanjo	காசாளர்: விற்கவும். மேலாளர்: விற்க + பொருட்கள் + ரத்து/திருத்தம்.
+product_locked_moklanjo	Moklanjo
+product_only_moklanjo	இந்த செயலி Moklanjo மட்டும் — கணக்குகள் + முன்பதிவு மேசை. பிற தொழில்களுக்கான தயாரிப்புகள் பின்னர் தனியாக வரும்.
+purchases_cogs	கொள்முதல் (COGS)
+qty_cap	அளவு
+restore_help	Restore: ஒரு காப்புப்பிரதியைத் தேர்ந்தெடுக்கவும். கணக்குகள் அப்போது இருந்தபடி திறக்கும்; இப்போதைய கணக்குகள் முதலில் சேமிக்கப்படும், எனவே இதைத் திரும்பப் பெறலாம்.
+wipe_data_heading	உள்ளூர் தரவை நீக்கு
+wipe_data_help	Owner மட்டும் — Windows நீக்கல் போன்ற தேர்வுகள். வர்த்தக பதிவுகள் வரலாற்றை அழிக்கும், கட்டணங்கள்/அமைப்பை வைக்கும். கடை அமைப்பு புத்தகங்களை நீக்கும். திரை விருப்பங்கள் சாளரம்/மொழி. Owner PIN உறுதி.
+wipe_trading	வர்த்தக பதிவுகள்
+wipe_schema	கடை அமைப்பு
+wipe_ui	திரை விருப்பங்கள்
+wipe_owner_pin_ph	நீக்க Owner PIN
+wipe_delete_selected	தேர்ந்ததை நீக்கு
+wipe_owner_only	Owner மட்டுமே உள்ளூர் தரவை நீக்கலாம்.
+restore_owner_only	Owner மட்டுமே காப்பு மீட்டமைக்கலாம்.
+wipe_owner_pin_needed	உள்ளூர் தரவை நீக்க Owner PIN உள்ளிடவும்.
+wipe_nothing_selected	முதலில் எதை நீக்க வேண்டும் எனத் தேர்ந்தெடுக்கவும்.
+wipe_done	தேர்ந்த உள்ளூர் தரவு நீக்கப்பட்டது.
+wipe_schema_done	கடை அமைப்பு அழிந்தது — தொடர Server அல்லது Client தேர்ந்தெடுக்கவும்.
+rounded_total	வட்ட மொத்தம்
+setup_app_moklanjo	Moklanjo ஐ அமைக்கவும்
+shop_logo_optional	கடை லோகோ (விருப்பம்)
+stock_type_help	பொருளின் பெயரை எழுதவும் (அதன் ஒரு பகுதி போதும்), அளவை எழுதி, பின் சரிசெய்யவும். இன்னும் எண்ணப்படாத பொருட்களுக்கு ஒருமுறை Start tracking தேவை.
+team_owner_help	பணியமர்த்து: ஒரு பணியைத் தேர்வுசெய்து (காசாளர் / மேலாளர்), பெயர் + தொடக்க PIN, பிறகு சேர். இந்த நபர் வேறுபட்டால் மட்டும்: கீழே திரைகளையும் உரிமைகளையும் திறந்து, பணி அமைப்பைச் சேமி. ஒவ்வொருவரும் கீழே தங்கள் PIN-ஐத் தாங்களே மாற்றுவர் — உரிமையாளர் வேறு யாருடையதையும் மாற்ற முடியாது.
+they_owe_us	அவர்கள் எங்களுக்குத் தர வேண்டியது
+unit_at_cap	அலகு விலை
+units_help	பொருள் லேபிள்களுக்கான குறியீடுகள் (kg, piece, bag). ஒவ்வொரு அலகும் — நேரடியாக அல்லது பிற அலகுகள் வழியாக — ஒரு நிலையானதுடன் (kg · cm · ml · pc) இணைக்க வேண்டும், எ.கா. 1 crate = 2 box மற்றும் 1 box = 20 cm. மாற்றங்கள்: 1 from = factor to. நாணயங்கள் ஒருபோதும் அலகுகள் அல்ல.
+we_owe_them	நாங்கள் அவர்களுக்குத் தர வேண்டியது
+who_unlocking	யார் திறக்கிறார்கள்?
+locked_word	பூட்டப்பட்டது
+show_pin	PIN ஐக் காட்டு
+hide_pin	PIN ஐ மறை
+set_owner_pin	உரிமையாளர் PIN ஐ அமைக்கவும்
+enter_owner_passcode	உரிமையாளர் கடவுக்குறியை உள்ளிடவும்
+enter_staff_passcode	ஊழியர் கடவுக்குறியை உள்ளிடவும்
+pin_count_zero	0 / 12 இலக்கங்கள் · குறைந்தது 4, பின் OK
+pin_count_need	{} / 12 இலக்கங்கள் · இன்னும் {} தேவை
+pin_count_full	12 / 12 இலக்கங்கள் · OK ஐத் தட்டவும்
+pin_count_ready	{} / 12 இலக்கங்கள் · தயாரானதும் OK ஐத் தட்டவும்
+pin_hint_choose	4–12 இலக்கங்களைத் தேர்ந்தெடுக்கவும் (விசைப்பலகை அல்லது பேட்) · சேமிக்க Enter/OK
+pin_hint_new	புதிய 4–12 இலக்க உரிமையாளர் PIN (விசைப்பலகை அல்லது பேட்) · Enter/OK
+pin_hint_shop_code	கடை சாதனம் · இணைப்பு குறியீடு {}
+pin_hint_books	இந்த சாதனம் கணக்குகளை வைத்திருக்கும்
+pin_hint_paired	கூடுதல் கவுண்டர் இணைக்கப்பட்டது — விற்க திறக்கவும்
+pin_hint_pair_first	கூடுதல் கவுண்டர் — முதலில் கடை சாதனத்துடன் இணைக்கவும்
+unlock_to_continue	தொடர திறக்கவும்
+no_staff_yet	இன்னும் ஊழியர் இல்லை — உரிமையாளராகத் திறந்து, பின் Team
+status_server_set_pin	சேவையக முறை — உரிமையாளர் PIN ஐ அமைக்கவும்
+status_server_tills	சேவையக முறை — கூடுதல் கவுண்டர்கள் சேரலாம். திறக்கவும்
+status_server_unlock	சேவையக முறை — உரிமையாளராகத் திறக்கவும்
+status_client_unlock	கிளையன்ட் முறை — விற்க திறக்கவும்
+icon_new_selected	சின்னம்: புதிய கோப்பு தேர்ந்தெடுக்கப்பட்டது — பிராண்டைச் சேமி என்பதைத் தட்டவும்
+icon_custom	சின்னம்: உங்கள் கடையின் சின்னம்
+icon_default	சின்னம்: Kumkaj சின்னம் (இயல்புநிலை) — உங்களுடையதைத் தேர்ந்தெடுக்கவும்
+logo_yours	லோகோ: உங்கள் கடை லோகோ — திரைகளிலும் ரசீதுகளிலும் காட்டப்படும்
+logo_default	லோகோ: Kumkaj சின்னம் (இயல்புநிலை) — உங்களுடையது இருந்தால் தேர்ந்தெடுக்கவும்
+tmpl_current	தற்போதைய: {} — {}
+tmpl_selected	தேர்ந்தெடுக்கப்பட்டது: {} — {}
+setup_complete	அமைப்பு முடிந்தது
+onboard_fresh_tmpl	புதியது · {} — பட்டியல் காலியாகத் தொடங்கும்; பொருட்களில் சேர்த்து, பிறகு Done அழுத்தவும்.
+onboard_book_tmpl	புத்தகம் · {} — பொருட்களையும் தொடக்க கடனையும் சேர்த்து, பிறகு Done அழுத்தவும்.
+onboard_template_tmpl	விரும்பினால் இடத்திற்குப் பெயரிடுங்கள், பின் எப்படித் தொடங்குவது எனத் தேர்வு செய்யுங்கள்.
+tmpl_blurb	கூரியர் கணக்குகள் மற்றும் முன்பதிவு மேசை: அனுப்புநர்கள், கேரியர்கள், நாள் கணக்கு, AWB.
+tmpl_how	மேசையில் பார்சல் முன்பதிவு; இன்றைக்கு நாள் கணக்கு; கட்டணங்கள், தரப்புகள், அறிக்கைகளுக்கு தாவல்கள்.
+trk_booked	பதிவானது
+trk_picked_up	சேகரிக்கப்பட்டது
+trk_in_transit	வழியில்
+trk_delivered	ஒப்படைக்கப்பட்டது
+trk_rto	அனுப்பியவருக்குத் திரும்புகிறது
+lane_to_dispatch	அனுப்ப வேண்டியவை
+lane_with_carrier	கேரியரிடம்
+lane_failed	தோல்வி
+lane_done_today	இன்று முடிந்தவை
+ops_board_help	இன்றைய வேலையில் பார்சல்கள் எங்கு உள்ளன என்பதன்படி. பார்சல்களைத் தொட்டு (அல்லது ஸ்கேன் செய்து) தேர்ந்தெடுங்கள், பிறகு தேர்ந்தெடுத்த அனைத்திலும் ஒரே நேரத்தில் செயல்படுங்கள் — ஒவ்வொரு பிரிவும் அதற்குப் பொருந்தும் செயல்களை மட்டுமே காட்டும்.
+lane_empty	இப்போது இங்கு எதுவும் இல்லை.
+picked_fmt	{n} தேர்வு
+pick_all	அனைத்தும் தேர்வு
+bag_for_carrier	கேரியரிடம் ஒப்படை
+send_with_rider	ரைடருடன் அனுப்பு
+out_again	மீண்டும் அனுப்பு
+return_to_sender	அனுப்பியவருக்குத் திருப்பு
+runs_bags_heading	சமீபத்திய சுற்றுகள் & பைகள்
+print_word	அச்சிடு
+bag_word	கேரியர் பை
+run_word	ரைடர் சுற்று
+parcels_fmt	{n} பார்சல்கள்
+parcel_history	வரலாறு
+attempt_fmt	முயற்சி {n}
+pieces_short_fmt	{n} துண்டுகள்
+note_reason_ph	குறிப்பு அல்லது காரணம்
+ops_pick_first	முதலில் பார்சல்களைத் தேர்ந்தெடுங்கள் — தொடுங்கள் அல்லது ஸ்கேன் செய்யுங்கள்
+cod_to_collect	டெலிவரி ஆனது — COD வசூலிக்க வேண்டும்
+cod_on_road	COD இன்னும் வழியில்
+cod_owed_consignors	வசூலானது — அனுப்புநர்களுக்குச் செலுத்த வேண்டியது
+cod_rto_fees	வசூலிக்க வேண்டிய RTO கட்டணங்கள்
+cod_to_hand_in	ஒப்படைக்க வேண்டிய COD
+parcel_one_fmt	{n} பார்சல்
+facet_bank_title	அறிக்கைகள்
+facet_bank_help	நாள் புத்தகங்கள், தரப்பு ஏஜிங், வங்கி பதிவுகள் மற்றும் கால லாப-நட்டம்.
+facet_ops_title	சரக்கு & அனுப்புதல்
+facet_ops_help	AWB ஐ ஸ்கேன் செய்யவும் அல்லது தட்டச்சு செய்யவும் → கண்டுபிடி, பின் முன்னேற்று / லேபிள் அச்சு / COD. ரைடர் அல்லது கேரியரிடம் அனுப்பவும்.
+facet_cod_title	COD பதிவேடு
+facet_cod_help	டெலிவரியின்போது பணம் வசூலித்து, பிறகு அனுப்புநரிடம் ஒப்படைக்கவும்.
+facet_riders_title	ரைடர்கள் (சொந்த குழு)
+facet_riders_help	ரைடர்களைச் சேர்த்து, பிறகு Ops இலிருந்து முன்பதிவு AWB களை அனுப்பவும்.
+against_bill_ph	மேலே உள்ள பில் # க்கு எதிராக (விருப்பம்)
+aliases_ph	மாற்றுப் பெயர்கள் — பிற பெயர்கள், காற்புள்ளியால் பிரிக்கவும்
+amount_blank_full_ph	தொகை (வெறுமை = முழு நிலுவை)
+amount_owed_ph	செலுத்த வேண்டிய தொகை
+amount_ph	தொகை
+amount_received_ph	பெறப்பட்ட தொகை
+amount_we_pay_ph	நாங்கள் செலுத்தும் தொகை
+awb_scan_ph	AWB / பார்கோடு ஸ்கேன்
+bulk_csv_ph	மொத்த CSV — destination,consignee,kg,cod_paise,note
+business_name_ph	வணிகப் பெயர்
+category_new_ph	வகை (விருப்பம், புதியதெனில் உருவாக்கப்படும்)
+cod_amount_ph	COD தொகை
+code_bag_ph	குறியீடு (bag)
+conv_factor_ph	காரணி (25 = 1 bag → 25 kg)
+country_code_ph	நாட்டுக் குறியீடு எ.கா. IN, GB, US, AE, BR
+credit_khata_amount_ph	கடன் / காதா தொகை
+credit_limit_ph	கடன் வரம்பு (0 = இல்லை)
+dim_unit_code_ph	பரிமாண அலகு குறியீடு (cm)
+divisor_ph	கனஅளவு வகுப்பான் (5000)
+extra_per_kg_ph	கூடுதல் / kg
+first_amount_ph	முதல் தொகை
+first_kg_ph	முதல் kg (ஸ்லாப்)
+from_code_ph	இருந்து குறியீடு (bag)
+item_name_lang_ph	பொருளின் பெயர் — உங்கள் மொழியில் தட்டச்சு செய்யவும்
+login_id_opt_ph	உள்நுழைவு ஐடி (விருப்பம்)
+manager_pin_ph	மேலாளர் PIN (ரத்து செய்ய முடியாவிட்டால் மட்டும்)
+new_branch_name_ph	புதிய கிளையின் பெயர்
+new_password_ph	புதிய கடவுச்சொல் (விருப்பம்)
+new_pin_ph	புதிய PIN (4–12 இலக்கங்கள்)
+note_bank_ph	குறிப்பு (வைப்பு, எடுப்பு, …)
+note_buy_expense_ph	குறிப்பு (எரிபொருள், வாடகை, …)
+note_expense_ph	குறிப்பு (எரிபொருள், அலுவலகம், …)
+notify_phone_ph	அறிவிப்பு தொலைபேசி (WhatsApp/SMS ஹூக்)
+options_moklanjo_ph	விருப்பங்கள் (விருப்பம்) — Large=20, Gift wrap=10
+part_second_way_ph	இரண்டாவது வழியில் பகுதி (விருப்பம்)
+phone_ph	தொலைபேசி
+address_ph	முகவரி
+party_custom_fields_heading	தனிப்பயன் புலங்கள் (தேர்ந்த தரப்பு)
+party_custom_help	இந்தத் தரப்பில் எந்த லேபிளும் மதிப்பும் சேருங்கள் — WhatsApp, GSTIN, வழிக் குறியீடு, …
+party_custom_key_ph	புலப் பெயர் (எ.கா. WhatsApp)
+party_custom_value_ph	மதிப்பு
+party_custom_add	புலம் சேர் / புதுப்பி
+party_custom_remove	புலத்தை நீக்கு
+party_custom_empty	இன்னும் தனிப்பயன் புலங்கள் இல்லை
+party_custom_pick_first	தனிப்பயன் புலங்களுக்கு ஒரு தரப்பைத் தேர்ந்தெடுங்கள்
+place_name_ph	இந்த இடத்தின் பெயர்
+price_ph	விலை
+qty_example_ph	அளவு (எ.கா. கிலோவுக்கு 1.5)
+quantity_ph	அளவு
+reason_required_ph	காரணம் (தேவை)
+role_title_ph	பணித் தலைப்பு (எ.கா. Barista)
+service_pct_ph	சேவை % விருப்பம் 0/10/12
+short_code_ph	குறுகிய குறியீடு (MG02)
+slab_kg_ph	kg இல் கட்டண ஸ்லாப் (0.5)
+staff_name_ph	ஊழியர் பெயர் / id
+starting_password_ph	தொடக்க கடவுச்சொல் (விருப்பம்)
+starting_pin_ph	தொடக்க PIN (4–12 இலக்கங்கள்)
+tax_rate_ph	வரி விகிதப் பெயர் அல்லது % — Standard, Reduced, 0, 5, 12, 18, 20
+to_code_ph	க்கு குறியீடு (kg)
+uncleared_no_ph	மேலே உள்ள தீர்க்கப்படாத #
+unit_cost_ph	அலகு விலை
+unit_kg_blank_ph	அலகு (kg அல்லது வெறுமை)
+unit_name_bag_ph	பெயர் (Bag)
+weight_unit_code_ph	எடை அலகு குறியீடு (kg)
+zone_name_ph	மண்டலப் பெயர்
+pay_credit	கடன்
+book_kind_today	இன்றைய புத்தகம்
+book_kind_month	இந்த மாத புத்தகம்
+book_kind_aging	நிலுவை / பற்று-வரவு
+book_kind_balance	இருப்புநிலைக் குறிப்பு
+ops_desk_help	USB பார்கோடு ஸ்கேனரால் AWB ஐ ஸ்கேன் செய்யவும் (அல்லது தட்டச்சு செய்யவும்) → கண்டுபிடி. பின் முன்னேற்றவும், லேபிள் அச்சிடவும் அல்லது COD வசூலிக்கவும். லேபிள்கள் Code 128 இல் அச்சாகும்.
+role_help_consignor	பாத்திரம்: அனுப்புநர் — AR (அவர்கள் நமக்குக் கடன்). அதே நிறுவனம் கேரியராகவும் இருக்கலாம்.
+role_help_carrier	பாத்திரம்: கேரியர் — AP (நாம் அவர்களுக்குக் கடன்). அதே நிறுவனம் அனுப்புநராகவும் இருக்கலாம்.
+role_help_both	பாத்திரங்கள்: அனுப்புநர் + சரக்கு ஏற்றுநர் — ஒரு தரப்பு, AR மற்றும் AP பேரேடுகள், அறிக்கைகளில் நிகரம்.
+role_help_supplier	பாத்திரம்: சப்ளையர் — கொள்முதலுக்கு AP.
+lane_declared_label	கணக்கு முன்பதிவு
+lane_owner_label	ரொக்க முன்பதிவு
+money_lane_bill	பில்: {lane}

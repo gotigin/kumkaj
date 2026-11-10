@@ -144,10 +144,11 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             let st = app_state().lock().unwrap();
             let declared = st.lane_declared_label();
             let owner = st.lane_owner_label();
-            let lane_body = match st.money_lane {
-                MoneyLane::Declared => format!("Bill: {declared}"),
-                MoneyLane::Owner => format!("Bill: {owner}"),
+            let lane = match st.money_lane {
+                MoneyLane::Declared => &declared,
+                MoneyLane::Owner => &owner,
             };
+            let lane_body = st.t("money_lane_bill").replace("{lane}", lane);
             self.ui
                 .widget(cx, ids!(money_lane_label))
                 .set_text(cx, &plain_display_text(&lane_body));

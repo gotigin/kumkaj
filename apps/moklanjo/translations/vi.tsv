@@ -1,0 +1,835 @@
+# Vietnamese — Tiếng Việt (vi). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	Sổ chuyển phát + quầy gửi hàng. Miễn phí ngoại tuyến.
+unlock	Mở khóa
+pin_hint	PIN chủ bắt đầu bằng 0000
+sell	Gửi hàng
+buy	Chi ra
+books	Sổ ngày
+books_help	Tình hình hôm nay. Gửi hàng = bưu kiện vào. Chi ra = hóa đơn nhà vận chuyển & chi phí. Đối tác = người gửi & nhà vận chuyển.
+buy_help	Phiếu chi và hóa đơn nhà vận chuyển (tiền ra). Ghi sổ ở lại sổ đối tác.
+sell_money_in	Gửi một bưu kiện
+buy_money_out	Chi phí / hóa đơn vận chuyển
+record_purchase	Ghi mua hàng
+add_expense	Phiếu chi
+bank_book	Sổ ngân hàng
+credit_help	Mã đối tác là duy nhất (tên có thể trùng). Vai trò: người gửi (AR), nhà vận chuyển (AP), hoặc cả hai trên cùng mã. Sổ riêng; báo cáo hiện số ròng.
+party_kind_ph	Vai trò tùy chỉnh (tuỳ chọn) — hoặc chạm chip trên
+parties_list_heading	Đối tác đã lưu
+reports_help	Sổ ngày, bên nợ & bên có, sổ ngân hàng, phiếu chi, lãi lỗ.
+reports_today	Sổ ngày (hôm nay)
+reports_month	Lãi lỗ (tháng)
+reports_aging	Công nợ / Dr-Cr
+reports_balance_sheet	Bảng cân đối
+reports	Báo cáo
+refresh	Làm mới
+undo	Hoàn tác
+start_tracking	Bắt đầu đếm
+stock_minus	− Kho
+stock_plus	+ Kho
+settle_cash	Thu tiền mặt
+settle_card	Thu thẻ
+items	Cước & dịch vụ
+nav_items	Giá
+more	Thêm
+your_items	Cước của bạn
+items_help	Mỗi hàng là một cước (vd Surface Zone A). Đơn vị thường là kg. Chạm để sửa.
+add_item	Thêm cước
+new_item	Cước mới
+adding_item	Đang thêm cước mới
+editing_item	Đang sửa
+save	Lưu
+remove	Xóa
+empty_catalog	Chưa có cước. Mở Cước & dịch vụ, thêm một cái (tên + giá, đơn vị kg), rồi Gửi hàng.
+counter_sale	Gửi tại quầy
+total	Tổng
+cash	Tiền mặt
+upi	UPI
+card	Thẻ
+credit	Đối tác
+clear	Xóa
+ready_to_sell	Sẵn sàng gửi
+today_prefix	Hôm nay
+today_mid	hôm nay
+owed	nợ
+round_word	làm tròn
+back	Quay lại
+sold_out	Hết hàng
+restock	Nhập lại
+not_tracked	Không đếm
+in_stock	trong kho
+marked_sold_out	Đánh dấu hết
+add_upper	Thêm
+na	Không
+qty	SL
+unit_at	Đơn giá
+actual	Thực
+applied	Áp dụng
+note_ph	Ghi chú (tùy chọn)
+rounded	Đã làm tròn
+split	Chia
+counter	Quầy
+parcel	Kiện
+order	Đơn
+sales	Đặt chỗ
+sales_refunds	Đặt chỗ và hoàn tiền
+day_close	Chốt ngày
+reports_expenses	Báo cáo và chi
+nav_reports	Báo cáo
+nav_settings	Cài đặt
+nav_lock	Khóa
+sidebar_settings	Cài đặt thanh bên
+sidebar_settings_help	Các biểu tượng giống thanh bên. Kéo một hàng để sắp xếp lại. Đảo công tắc để hiển thị hoặc ẩn. Cài đặt và Khóa luôn nằm trên thanh.
+sidebar_always_on_short	Luôn bật
+sidebar_back_settings	Quay lại
+sidebar_shown	Đã hiển thị
+sidebar_hidden	Đã ẩn
+sidebar_always_on	Luôn hiển thị trên quầy bar
+sidebar_shown_hint	Hiển thị trên thanh bên / tab dưới cùng
+sidebar_hidden_hint	Ẩn khỏi quầy bar
+sidebar_menu_items	Menu & Món ăn
+sidebar_enable_all	Bật tất cả
+sidebar_disable_all	Tắt tất cả
+sidebar_order_saved	Đơn hàng trên thanh bên đã được lưu
+sidebar_visibility_saved	Độ hiển thị của thanh bên đã được lưu
+amounts_hide	Ẩn
+amounts_show	Hiện
+no_sale_yet	Chưa có bán hàng
+favorites	Yêu thích
+favorites_help	Các mặt hàng bạn thường bán, đã lưu cho tài khoản của bạn. Thêm một món vào hóa đơn, hoặc tạo danh sách từ tất cả các mặt hàng bên dưới.
+your_favorites	Mục yêu thích của bạn
+all_items	Tất cả mặt hàng
+no_favorites	Chưa có mục yêu thích — thêm mặt hàng từ danh sách bên dưới.
+add_to_bill	Thêm vào hóa đơn
+added	Đã thêm
+owes_word	nợ
+selected_word	Đã chọn
+chip_clear_credit	đã xong — cho ghi nợ hoặc nhận tạm ứng
+chip_missing_customer	Không thấy khách đã chọn — chọn lại
+chip_no_customer	Chưa có khách — viết tên, rồi chạm Ghi nợ
+credit_summary_fmt	{} khách · ghi nợ mở {} · tạm ứng giữ {}
+recent_label	Gần đây:
+inventory	Kho
+inventory_stock	Kho và đếm
+branches	Chi nhánh
+branches_org	Chi nhánh và tổ chức
+credit_customers	Các bên (con nợ và chủ nợ)
+customer_name_ph	Tên đối tác
+new_customer_ph	Tên đối tác mới
+item_name_ph	Tên cước (vd Surface Zone A)
+item_price_ph	Mỗi kg / mức đầu
+start_template	Sản phẩm
+next_booking	Đơn tiếp theo
+destination_ph	Thành phố / khu vực đến
+consignee_ph	Người nhận
+consignee_phone_ph	Điện thoại nhận
+consignee_address_ph	Địa chỉ giao hàng
+origin_name_ph	Tên người gửi
+origin_phone_ph	Điện thoại người gửi
+origin_address_ph	Địa chỉ nhận hàng/điểm đi
+booking_consignor_heading	Người gửi (khách hàng)
+booking_consignee_heading	Người nhận
+booking_consignor_hint	Chọn đối tác để điền, hoặc để trống với khách vãng lai. Cần cho lấy hàng tận nơi và RTO.
+booking_consignee_hint	Người nhận bưu kiện. Để trống nếu khách gửi trực tiếp tại quầy.
+weight_kg_ph	Kg thực
+length_cm_ph	Dài cm
+breadth_cm_ph	Rộng cm
+height_cm_ph	Cao cm
+chargeable_kg	Kg tính cước
+awb_label	AWB
+booking_help	Khách vãng lai: nơi đến → cân → chọn cước → ghi sổ/tiền mặt → trả tiền. AWB in trên biên lai. Đơn tiếp theo xóa quầy.
+cart_empty_hint	Quầy trống — nhập nơi đến & cân nặng, chạm ADD ở cước, rồi thanh toán.
+team	Nhóm
+team_pins	Nhóm và PIN
+my_pin_settings	PIN của tôi
+settings_hub_help_my_pin	Đổi PIN mở khóa của người đang đăng nhập trên thiết bị này.
+team_self_help	Chỉ bạn mới có thể thay đổi mã PIN mở khóa (và mật khẩu đăng nhập tùy chọn). Hãy hỏi Chủ sở hữu xem bạn có cần các màn hình hoặc quyền khác không.
+backup_settings	Sao lưu và cài đặt
+lock_app	Khóa
+pick	Chọn
+select	Chọn
+advance	Tiếp
+owner	Chủ
+staff	Nhân viên
+photo	Ảnh
+auto	Tự động
+prev	Trước
+next	Sau
+ok	OK
+this_shop	Chế độ máy chủ
+extra_till	Chế độ máy khách
+off	Tắt
+server	Máy chủ
+client	Máy khách
+language_currency	Ngôn ngữ và tiền tệ
+language	Ngôn ngữ
+choose_language	Chọn ngôn ngữ
+language_setup_hint	Theo ngôn ngữ của thiết bị này, hoặc tự chọn một ngôn ngữ.
+lang_follow_platform	Dùng ngôn ngữ thiết bị
+lang_pick_user	Dùng ngôn ngữ đã chọn
+lang_platform_now	Ngôn ngữ thiết bị hiện tại
+selected_language	Đã chọn
+continue	Tiếp tục
+this_device	THIẾT BỊ NÀY
+device_use_q	Thiết bị này sẽ được dùng thế nào?
+last_server_mode	Trước là máy chủ — chạm để tiếp tục
+last_client_mode	Trước là máy khách — chạm để tiếp tục
+choose_server	Chọn máy chủ
+choose_server_hint	Thiết bị này đã có máy chủ. Mở một cái, hoặc tạo máy chủ mới cho doanh nghiệp khác.
+create_new_server	Tạo máy chủ mới
+open_server	Mở
+new_server_name_ph	Tên máy chủ mới (tùy chọn)
+server_remove_pin_ph	Owner PIN để xóa máy chủ
+only_owner_remove_server	Chỉ Owner mới được xóa máy chủ
+owner_pin_remove_server	Cần Owner PIN để xóa máy chủ này
+device_setup_help	Máy chủ giữ sổ sách ở đây. Máy khách ghép đôi với máy chủ.
+currency	Tiền tệ
+backup	Sao lưu
+settings_sec_diag	Chẩn đoán
+settings_hub_help	Mở từng mục một — ít cuộn hơn, lựa chọn rõ hơn.
+settings_sec_devices	Quầy phụ & chi nhánh
+settings_sec_alerts	Thông báo
+alerts_help	Thông báo trạng thái hiển thị bao lâu cho bạn (lần đăng nhập này).
+snack_secs_ph	Giây (3–60, mặc định 10)
+snack_secs_save	Lưu thời gian thông báo
+snack_secs_saved	Đã lưu thời gian thông báo — {n} giây
+snack_secs_bad	Nhập số giây bằng chữ số (3–60)
+cancelled	Đã hủy
+cancel	Hủy
+opening_client	Đang mở khách hàng…
+preparing_desk	Đang chuẩn bị bàn…
+opening_server	Đang mở nhân viên phục vụ…
+creating_server	Đang tạo nhân viên phục vụ…
+diag_privacy_help	Nhật ký vẫn nằm trên thiết bị này. Thông tin bí mật (PIN, mật khẩu) không bao giờ được lưu trữ. Chia sẻ gói ngoài thiết bị cần sự phê duyệt rõ ràng của bạn mỗi lần — không bao giờ được bán hoặc cung cấp cho bên thứ ba.
+diag_level	Mức độ chi tiết
+diag_level_error	Lỗi
+diag_level_warn	Cảnh báo
+diag_level_info	Thông tin
+diag_level_debug	Gỡ lỗi
+diag_support_start	Bắt đầu phiên hỗ trợ 30 phút
+diag_support_stop	Kết thúc phiên hỗ trợ
+diag_support_started	Phiên hỗ trợ đang bật — Chi tiết gỡ lỗi trong 30 phút
+diag_support_ended	Phiên hỗ trợ đã kết thúc
+diag_export_local	Xuất bản sao địa phương
+diag_export_local_done	Bản chẩn đoán địa phương sẵn sàng tại {path} — chọn nơi lưu bản sao
+diag_approve_send	Phê duyệt chia sẻ ngoài thiết bị này
+diag_send_heading	Chia sẻ ra khỏi thiết bị này
+diag_send_help	Phê duyệt là một gói, sau đó hết hạn. Tạm thời — chỉ dùng để sửa hoặc cải thiện sản phẩm. Không được chia sẻ với bên thứ ba. Hoạt động trên Linux, Windows, macOS và Android.
+optional_login_heading	Đăng nhập tùy chọn
+rights_heading	Quyền
+booking_scope_heading	Trong nước / Quốc tế
+diag_send_approved	Đã phê duyệt chia sẻ cho một gói (hết hạn sớm)
+diag_export_send	Tạo gói chia sẻ (cần phê duyệt)
+diag_export_send_done	Gói chia sẻ sẵn sàng tại {path} — chọn nơi lưu, sau đó chỉ gửi cho hỗ trợ Kumkaj
+diag_save_bundle	Lưu bản sao chẩn đoán
+diag_bundle_saved	Bản sao chẩn đoán đã lưu vào {path}
+diag_bundle_failed	Không thể lưu bản sao chẩn đoán — thử lại
+diag_clear	Xóa nhật ký chẩn đoán
+diag_cleared	Nhật ký chẩn đoán đã được xóa
+use	Dùng
+add_branch	Thêm chi nhánh
+add_conversion	Thêm quy đổi
+add_item_plain	Thêm mục
+add_note	Thêm ghi chú
+add_opening_balance	Thêm số dư đầu
+add_rider	Thêm tài xế
+add_staff	Thêm nhân viên
+add_unit	Thêm đơn vị
+add_use_name	Thêm / dùng tên này
+allow_extra_tills	Cho phép quầy phụ
+amend	Sửa lại
+apply_country_pack	Áp dụng gói quốc gia
+datetime_appearance	Định dạng ngày và giờ
+datetime_appearance_help	Sách giữ RFC3339 đầu năm bên trong. Những điều này chỉ thay đổi cách ngày và giờ hiển thị trên biên lai, nhãn, báo cáo và màn hình.
+datetime_example	Ví dụ hiện tại: {ex}
+date_order	Thứ tự ngày
+date_order_dmy	D/M/N
+date_order_mdy	N/D/Y
+date_order_ymd	N-M-D
+time_format	Đồng hồ
+time_format_24h	24 giờ
+time_format_12h	12 giờ
+attach_bill_photo	Đính kèm ảnh hóa đơn
+attach_pdf	Đính kèm PDF
+attach_photo	Đính kèm ảnh
+bank	Ngân hàng
+bank_in	Gửi ngân hàng
+bank_out	Rút ngân hàng
+bank_to_till	Ngân hàng → quầy
+till_to_bank	Quầy → ngân hàng
+mark_cleared	Đánh dấu đã đối soát
+unmark	Bỏ đánh dấu
+role_both	Cả hai
+role_carrier	Nhà vận chuyển
+role_cashier	Thu ngân
+role_consignor	Người gửi
+role_manager	Quản lý
+role_supplier	Nhà cung cấp
+branch_name_sell_ph	Tên chi nhánh để bán
+bring_my_book	Mang sổ của tôi
+business_tax_id_ph	Mã số thuế doanh nghiệp
+card_amount_ph	Số tiền thẻ
+cash_amount_ph	Số tiền mặt
+upi_amount_ph	Số tiền UPI
+carrier_cost_ph	Chi phí nhà vận chuyển
+carrier_party_ph	Đối tác vận chuyển
+choose_icon	Chọn biểu tượng
+choose_logo	Chọn logo
+choose_receipt_stamp	Chọn dấu biên lai
+choose_payment_qr	Chọn QR thanh toán
+clear_icon	Xóa biểu tượng
+clear_logo	Xóa logo
+clear_photo	Xóa ảnh
+clear_stamp	Xóa dấu
+clear_payment_qr	Xóa QR thanh toán
+print_faces	Mẫu in (biên nhận / hóa đơn kỳ)
+print_faces_help	Con dấu và mã QR thanh toán tùy chọn cạnh logo trên biên nhận gửi hàng và hóa đơn kỳ.
+awb_pools_heading	Dải số AWB của nhà vận chuyển
+add_awb_pool	Thêm dải AWB
+awb_pool_carrier_ph	Tên nhà vận chuyển
+awb_pool_start_ph	Số đầu
+awb_pool_end_ph	Số cuối
+awb_pool_prefix_ph	Tiền tố (tùy chọn)
+awb_pool_label_ph	Nhãn (tùy chọn)
+pieces_ph	Số kiện (trống = 1) — mở rộng cho hàng hóa / nhiều kiện
+bulk_awbs_ph	AWB hàng loạt — dán nhiều số (xuống dòng hoặc dấu phẩy) để chuyển trạng thái một lần
+tds_cut_ph	Khấu trừ TDS (tùy chọn)
+discount_ph	Giảm giá (tùy chọn)
+cheque_no_ph	Số séc (tùy chọn)
+bill_reminder_chase	Danh sách nhắc hóa đơn
+month_mix_report	Báo cáo cơ cấu tháng
+copy_month_gst_csv	Sao chép CSV GST tháng
+domestic	Nội địa
+international	Quốc tế
+pick_logo	Chọn logo
+booking_scope_hint_domestic	Thể tích ÷5000 (nội địa) — quốc tế ÷6000
+booking_scope_hint_intl	Thể tích ÷6000 (quốc tế) — nội địa ÷5000
+cod_register	Sổ COD
+collect_cod	Thu COD (AWB)
+consignments_dispatch	Lô hàng & điều phối
+consignor_party_ph	Người gửi / tên đối tác
+copy_day_book_csv	Sao chép CSV sổ ngày
+copy_day_close	Sao chép chốt ngày
+copy_items_csv	Sao chép CSV mục
+copy_outstanding_csv	Sao chép CSV công nợ
+copy_parties_csv	Sao chép CSV đối tác
+copy_party_ledger_csv	Sao chép CSV sổ đối tác
+copy_receipt	Sao chép biên lai
+copy_report	Sao chép báo cáo
+counted_cash_ph	Tiền mặt đã đếm trong ngăn
+counter_agency_ph	Tên quầy / đại lý (tùy chọn)
+create_backup	Tạo sao lưu
+day_close_summary	Tóm tắt chốt ngày
+delete_party	Xóa đối tác đã chọn
+dispatch_to_rider	Đã đặt → cho tài xế
+docket_charge_ph	Phí vận đơn
+declared_value_ph	Giá trị khai báo
+contents_ph	Nội dung
+eway_ph	Số e-way bill
+insurance_label	Bảo hiểm (có/không)
+yes_label	Có
+no_label	Không
+print_route_label	Tuyến in
+new_party_kind_label	Loại đối tác mới
+done_open_books	Xong — mở sổ
+export_day	Xuất ngày
+extra_note_expense_ph	Ghi chú thêm cho chi phí cuối
+extra_note_awb_ph	Ghi chú thêm cho AWB / đơn này
+failed_delivery	Giao thất bại
+find_scan_awb	Tìm / quét AWB
+forget_shop	Quên cửa hàng này
+fuel_ph	Nhiên liệu
+handover_carrier	Đã đặt → cho nhà vận chuyển
+import_day	Nhập ngày
+import_items_csv	Nhập CSV mục / cước…
+import_parties_csv	Nhập CSV đối tác…
+import_pincodes_csv	Nhập CSV mã bưu chính…
+import_carrier_bill_csv	Nhập CSV hóa đơn vận chuyển…
+copy_carrier_bill_report	Sao chép báo cáo hóa đơn gần nhất
+use_carrier_cost	Dùng chi phí vận chuyển
+rate_carrier_ph	Nhà vận chuyển (trống = cước bán của ta)
+rate_party_ph	Đối tác (trống = mọi khách)
+carrier_pick_ph	Nhà vận chuyển cho chi phí (từ so sánh)
+item_name	Tên mục
+load_bulk_row	Tải hàng loạt → quầy
+login_id_ph	Mã đăng nhập
+mark_delivered	Đánh dấu đã giao
+manifest_cod_total	Tổng COD
+manifest_received_by	Người nhận
+manifest_sign	Chữ ký
+ndr_address_wrong	Sai địa chỉ
+ndr_customer_unavailable	Khách không có
+ndr_door_locked	Cửa khóa
+ndr_other	Khác
+ndr_refused	Từ chối
+out_for_delivery	Đang giao hàng
+print_drs	In DRS
+print_run_sheet	In phiếu giao
+reattempt	Thử lại
+rider_cod_handed_ph	COD tài xế nộp
+settle_rider_cod	Quyết toán COD tài xế
+mode_desk	Quầy
+mode_rider	Tài xế
+waiting_office	đang chờ về văn phòng
+capture_signature	Lấy chữ ký
+incoming_manifest	Manifest đến
+pickup_request	Yêu cầu lấy hàng
+pickup_run	Chuyến lấy hàng
+auto_assign_area	Tự gán khu vực
+reorder_stops	Đổi thứ tự điểm dừng
+settle_rider_pay	Quyết toán lương tài xế
+vehicle_inspect	Kiểm tra xe
+print_docket	In docket
+franchise_statement	Sao kê nhượng quyền
+tally_export	Xuất phiếu Tally
+open_whatsapp	Mở WhatsApp
+copy_sms	Sao chép SMS
+pick_barcode_image	Chọn ảnh để quét
+share_receipt_whatsapp	Chia sẻ biên lai WhatsApp
+delivery_feedback	Phản hồi giao hàng
+lan_self_book	Tự đặt hàng LAN
+new_party_clear	Đối tác mới (xóa biểu mẫu)
+new_party_kind_ph	Loại đối tác mới (nhà cung cấp / vận chuyển)
+next_country	Quốc gia tiếp
+prev_country	Quốc gia trước
+note_gstin_ph	Ghi chú / GSTIN / nhắc thỏa thuận
+note_pod_ph	Ghi chú / POD (tùy chọn)
+on_account_ap	Ghi sổ (AP)
+org_optional_ph	Tổ chức (tùy chọn)
+paid_now	Đã trả ngay
+pairing_code_ph	Mã ghép đôi
+pair_now	Ghép đôi ngay
+party_name_selected_ph	Tên đối tác (hoặc dùng đã chọn)
+password_ph	Mật khẩu
+pay_ap_card	Trả AP bằng thẻ
+pay_ap_cash	Trả AP tiền mặt
+pay_ap_upi	Trả AP bằng UPI
+period_bill	Hóa đơn kỳ
+period_bill_party	Hóa đơn kỳ (đối tác)
+pick_pod_photo	Chọn ảnh POD
+print_awb_label	In nhãn AWB
+print_open	In / mở
+reason_amend_ph	Lý do sửa / hủy / hoàn tiền
+reason_note_ph	Lý do / ghi chú (hao hụt, đếm, …)
+record_day_close	Ghi chốt ngày
+refresh_from_shop	Làm mới từ cửa hàng
+refund	Hoàn tiền
+remit_cod	Nộp COD (đối tác)
+remove_selected	Xóa đã chọn
+restore_backup	Khôi phục sao lưu
+rider_name_ph	Tên tài xế
+rider_phone_ph	Điện thoại tài xế
+riders	Tài xế
+riders_own_fleet	Tài xế (đội riêng)
+rollup	Tổng hợp
+save_booking_measures	Lưu kích thước đơn
+save_brand	Lưu thương hiệu
+save_business_id	Lưu mã thuế & % dịch vụ
+save_business_name	Lưu tên doanh nghiệp
+save_features	Lưu thiết lập công việc
+save_names	Lưu tên
+server_ip_ph	IP máy chủ (vd 192.168.1.10)
+set_credit_limit	Đặt hạn mức tín dụng
+set_login_selected	Đặt đăng nhập cho đã chọn
+set_login_named	Áp dụng đăng nhập cho {name}
+shop	Cửa hàng
+start_fresh	Bắt đầu mới
+stop_extra_tills	Dừng quầy phụ
+backup_auto	Tự động sao lưu mỗi ngày · lần cuối {when} · giữ 14 ngày gần nhất trong {dir}.
+backup_auto_none	Tự động sao lưu mỗi ngày — lần đầu sẽ chạy ngay.
+backup_copy_to	Bản sao cũng được lưu vào {dir}.
+backup_copy_btn	Sao chép bản sao lưu vào thư mục…
+autostart_off	Khởi động cùng máy tính này
+autostart_on	Khởi động cùng máy tính ✓ — chạm để tắt
+autostart_done_on	Ứng dụng giờ sẽ mở khi máy tính khởi động — máy chủ hoạt động lại sau khi mất điện.
+autostart_done_off	Máy tính sẽ không mở ứng dụng khi khởi động nữa.
+right_allowed	Được phép
+right_with_approval	Cần duyệt
+right_denied	Không được phép
+editing_staff	Quyền cho
+team_pick_ph	Tên nhân viên cần sửa
+select_staff	Chọn nhân viên này
+rights_help	Quyền — nhấn để thay đổi: Được phép → Có phê duyệt (mã PIN của người quản lý tại thời điểm đó) → Không được phép.
+right_void_refund	Hủy hoặc hoàn tiền đơn gửi
+right_amend_sale	Sửa đơn gửi đã ghi
+find_server	Tìm máy chủ của quán
+finding_server	Đang tìm máy chủ của quán trên Wi‑Fi này…
+no_server_found	Không tìm thấy máy chủ. Kiểm tra thiết bị của quán cùng Wi‑Fi và đã cho phép quầy phụ, hoặc nhập IP.
+servers_found_pick	Chạm vào cửa hàng bạn muốn kết nối.
+server_host_selected	Đang dùng {host} — nhập mã ghép, rồi Ghép ngay.
+device_forgotten	Cửa hàng đã quên thiết bị này — hãy ghép nối lại bằng mã hiện tại. Các đơn đang chờ vẫn được giữ.
+forget_device	Quên
+last_seen	lần cuối
+new_pair_code	Mã ghép nối mới
+lan_offline	Ngoại tuyến
+lan_offline_waiting	Ngoại tuyến · {n} đang chờ
+lan_connecting	Đang kết nối với cửa hàng…
+pair_finishing	Hoàn thiện cặp… áp dụng sách văn phòng
+pair_opening	Khai trương văn phòng…
+lan_live	Trực tiếp
+lan_sending	Đang gửi {n}
+lan_sign_in_to_send	Đăng nhập lại để gửi {n}
+lan_pair_again	Ghép nối lại thiết bị này
+lan_update_app	Cập nhật ứng dụng — thiết bị này và máy chủ văn phòng khác phiên bản
+allow_firewall	Cho phép thiết bị khác kết nối
+firewall_blocked	Tường lửa của máy tính này đang chặn thiết bị khác — chạm “Cho phép thiết bị khác kết nối”.
+firewall_waiting	Đang chờ xác nhận quản trị…
+lan_join_help	Các thiết bị khác có thể kết nối với máy này — mã ghép nối {code}. Trên thiết bị kia chọn Chế độ máy khách, rồi Tìm máy chủ của quán, hoặc nhập địa chỉ này: {addr}
+lan_pair_status	Wi‑Fi {addr}
+lan_join_help_no_addr	Kết nối thiết bị này với Wi‑Fi để có địa chỉ.
+lan_no_address	Thiết bị này chưa có địa chỉ Wi‑Fi — hãy kết nối nó với Wi‑Fi của quán.
+lan_not_listening	Hiện không nhận thiết bị — có thể chương trình khác đang dùng cổng {port}. Hãy khởi động lại ứng dụng.
+lan_tills_off	Quầy phụ đang tắt. Sổ sách của văn phòng nằm trên thiết bị này. Hãy cho phép quầy phụ nếu một thiết bị khác cũng cần nhận gửi hàng hoặc thu tiền.
+paired_with	Đã ghép nối với quán tại {url}
+not_paired	Chưa ghép nối — hãy kết nối với máy chủ của quán.
+choose_device_use	Chọn cách dùng thiết bị này.
+paired_note	Đã ghép nối. Mở khóa để bán, hoặc Làm mới để lấy dữ liệu mới nhất từ quán.
+last_update_at	Cập nhật cuối từ quán: {time}.
+pair_intro	Tìm máy chủ, hoặc nhập địa chỉ và mã ghép đôi.
+queue_waiting	Đang chờ gửi tới quán ({n}):
+queue_tries	Đã thử {n} lần · trả lời cuối: {e}
+save_backup_copy	Lưu bản sao lưu…
+backup_copy_saved	Đã lưu bản sao lưu — hãy giữ bên ngoài thiết bị này (USB hoặc thiết bị khác)
+backup_copy_overdue	Đã {n} ngày không có bản sao lưu nào rời khỏi thiết bị này — Cài đặt → Sao lưu
+backup_copy_failed	Không lưu được bản sao lưu ở đó — hãy chọn chỗ khác
+clock_off	Đồng hồ thiết bị này lệch {min} phút so với máy chủ của quán — hãy chỉnh giờ đúng trên thiết bị này
+printers_heading	Máy in trên thiết bị này
+printers_help	Thêm từng máy in một lần, rồi chọn nơi in biên nhận và nhãn AWB — máy đầu danh sách được thử trước; nếu lỗi thì máy tiếp. Tuyến trống = không in tính năng đó. Đích trống (mặc định), tên hệ thống, hoặc địa chỉ mạng (vd. 192.168.1.50). Mỗi thiết bị giữ máy in riêng.
+job_width	Khổ nội dung (mm)
+job_width_ph	Hoặc gõ chiều rộng, 40–210 mm
+job_layout	Bố cục
+job_delivery	Cách công việc được gửi đi
+job_size	Cỡ chữ
+job_size_ph	vd. 18, 20, 26…
+save_receipt_format	Lưu định dạng biên nhận
+save_label_format	Lưu định dạng nhãn
+test_receipt_format	Biên nhận kiểm tra
+test_label_format	Nhãn kiểm tra
+test_receipt_sent	Đã gửi biên nhận mẫu
+test_label_sent	Nhãn mẫu đã được gửi
+test_print_no_printer	Không có máy in cho công việc đó - thêm một máy in vào vị trí này
+printers_host_only	Máy in được đặt trên thiết bị cửa hàng (Server). Quầy này gửi lệnh in tới đó — Tìm / thêm / gán vẫn ở Server. Trang thử gửi tới Server.
+printers_pool_heading	Máy in
+printers_routes_heading	In ở đâu
+printer_label_ph	Tên (ví dụ: Bàn)
+printer_target_ph	máy chủ:9100 · bt:MAC · usb:VID:PID · tên hệ thống
+printer_mode_heading	Định dạng cho tuyến đã chọn
+printer_mode_standard	Tiêu chuẩn dọc
+printer_mode_landscape	Tiêu chuẩn ngang
+printer_mode_thermal	In nhiệt
+printer_mode_standard_short	Dọc
+printer_mode_landscape_short	Ngang
+printer_mode_thermal_short	In nhiệt
+printer_format_custom	Định dạng tùy chỉnh mới
+printer_format_custom_label	Tùy chỉnh
+printer_format_custom_added	Đã thêm định dạng tùy chỉnh cho tuyến này
+add_printer	Thêm máy in
+remove_printer	Xóa cuối cùng
+route_pick_ph	receipt hoặc label
+route_add_printer_ph	Thêm máy in vào tuyến này
+route_receipt	Biên nhận
+route_label	Nhãn AWB
+route_dont_print	Không có máy in nào được chỉ định
+route_add	Thêm vào tuyến
+route_up	Lên
+route_down	Xuống
+route_remove	Xóa cuối cùng
+route_clear	Xóa máy in cho địa điểm này
+save_printers	Lưu máy in
+print_test_page	In trang thử
+printers_saved	Đã lưu máy in cho thiết bị này
+test_page_sent	Đã gửi trang thử — hãy xem máy in
+printers_found	Tìm thấy trên thiết bị này: {list}
+find_printers	Tìm máy in
+printers_looking	Đang tìm kiếm máy in trên thiết bị này và Wi‑Fi…
+printers_tap_find	Nhấn vào Tìm máy in để biết hàng đợi chấp nhận công việc và máy in biên lai mạng trên Wi‑Fi này (không bị xóa hoặc ngoại tuyến).
+printers_none_found	Không tìm thấy máy in — nhập tên máy in hệ thống hoặc địa chỉ mạng (ví dụ: 192.168.1.50).
+receipt_printer_ph	Máy in biên nhận
+queue_refused	Quán không nhận ({n}) — hãy kiểm tra từng mục tại quầy:
+clear_not_accepted	Đã kiểm tra — xóa danh sách này
+device_name_ph	Tên thiết bị này
+lan_last_update	cập nhật lúc {time}
+lan_not_accepted	{n} không được nhận
+connected_now	đang kết nối
+backup_failed	Lần sao lưu tự động gần nhất bị lỗi: {e}
+backup_overdue	Đã {n} ngày không sao lưu — hãy để ứng dụng mở trên thiết bị này để nó sao lưu.
+disk_low	Thiết bị này chỉ còn {mb} MB trống — việc sao lưu sắp thất bại. Hãy giải phóng dung lượng.
+last_seen_devices	Lần cuối thấy: {time}
+sync_interval	Đồng bộ mỗi {secs} giây
+connection_to_shop	Kết nối với quán
+supplier_name_ph	Tên nhà cung cấp (hoặc đối tác)
+supplier_ph	Nhà cung cấp
+switch_device	Đổi thiết bị này
+take_payment	Nhận thanh toán
+tax_added_till	{tax} chưa gồm
+tax_inside_price	{tax} gồm
+today_books	Sổ hôm nay
+unlock_after_pairing	Nhập mã PIN
+unlock_with_login	Mở khóa bằng đăng nhập
+update_my_password	Đổi mật khẩu của tôi
+update_my_pin	Cập nhật mã PIN của tôi
+duress_heading	PIN mở khóa khẩn (chỉ chủ)
+duress_help	Không bắt buộc. Nếu mã PIN này được nhập khi mở khóa thay vì của bạn, tất cả các mục nhập sách sẽ bị xóa (đặt chỗ, sổ cái, lịch sử) và bảng sẽ mở ra với tư cách Chủ sở hữu trông bình thường — giá, các bữa tiệc, khu vực, nhân viên và cài đặt vẫn giữ nguyên. Lược đồ và cấu hình không bị xóa. Chỉ sử dụng nếu bạn buộc phải mở khóa. Để trống và lưu để tắt. Không bao giờ giống mã PIN của bất kỳ ai.
+duress_pin_ph	PIN khẩn (4–12 chữ số)
+duress_confirm_ph	Gõ lại để xác nhận
+save_duress_pin	Lưu PIN khẩn
+clear_duress_pin	Tắt PIN khẩn
+duress_on	PIN mở khóa khẩn đang bật
+duress_off	PIN mở khóa khẩn đang tắt
+duress_saved	Đã lưu PIN mở khóa khẩn
+duress_cleared	Đã tắt PIN mở khóa khẩn
+vehicle_ph	Phương tiện
+void	Hủy bỏ
+write_off_ap	Xóa AP
+write_off_nil	Xóa / số dư 0
+zone_ph	Khu vực (tên từ Cước)
+caption_today	HÔM NAY
+caption_bookings	ĐƠN HÀNG
+caption_payments_today	THANH TOÁN HÔM NAY
+caption_outstanding	CÔNG NỢ
+caption_bank	NGÂN HÀNG
+paid_by	Trả bằng
+second_way	Cách thứ hai
+weight_in	Cân nặng theo
+size_in	Kích thước theo
+goods_received	Hàng đã nhận
+expense_heading	Chi phí
+notes_attach_sale	Ghi chú & đính kèm (đơn đã chọn)
+notes_attach_party	Ghi chú & đính kèm (đối tác đã chọn)
+attachments_last_expense	Đính kèm (chi phí cuối)
+credit_limit_heading	Hạn mức tín dụng (đối tác đã chọn / đã nêu)
+pay_selected_heading	Trả đã chọn (thanh toán nợ / ứng trước)
+write_off_heading	Xóa nợ (thanh toán không tiền)
+pay_ap_heading	Trả khoản ta nợ họ (AP)
+country_tax	Quốc gia & thuế
+extra_tills_heading	Quầy phụ
+other_devices_help_heading	Thiết lập thiết bị khác
+other_devices_help	Trên thiết bị này (Máy chủ): Các thiết bị khác → Cho phép tính thêm tiền. Lưu ý mã ghép nối và địa chỉ Wi‑Fi. Nhấn vào Cho phép các thiết bị khác kết nối nếu nó xuất hiện. Trên máy tính, nhấn Bắt đầu với máy tính này. Trên các thiết bị khác: cài đặt ứng dụng, chọn Chế độ máy khách, Tìm máy chủ của cửa hàng (hoặc nhập địa chỉ), nhập mã ghép nối, Ghép nối ngay. Các đơn đặt hàng sẽ chờ trên thiết bị nếu Wi‑Fi bị rớt và sẽ biến mất khi Máy chủ trả lời lại.
+your_brand	Thương hiệu của bạn (trong app)
+units_heading	Đơn vị
+booking_measures	Kích thước đơn
+drawer_count	Đếm ngăn tiền (tùy chọn)
+spreadsheet_csv	Bảng tính (CSV)
+bank_reconciliation	Đối chiếu ngân hàng (đánh dấu theo sao kê)
+book_add_product	Gửi — thêm sản phẩm / cước
+book_opening_credit	Gửi — nợ đầu kỳ
+account_kind	Loại tài khoản (chạm một)
+active_ledger	Sổ đang dùng
+actual_total_cap	TỔNG THỰC
+amend_help	Chọn một đơn để sửa, hủy hoặc hoàn tiền. Sửa đổi giữ toàn bộ lịch sử.
+applied_total_cap	TỔNG ÁP DỤNG
+bank_balance	Số dư ngân hàng
+bank_net_today	Ròng ngân hàng hôm nay
+branch_export_help	Xuất ghi ảnh chụp nhanh trong ngày vào thư mục sao lưu và sao chép nó vào khay nhớ tạm. Để nhập ngày của cửa hàng khác, hãy lưu tệp của cửa hàng đó dưới dạng import_branch_snapshot.json trong thư mục đó, sau đó nhấn vào Nhập.
+brand_shown_help	Hiển thị trên các màn hình trong app. Tên và biểu tượng app đã cài trên thiết bị này giữ nguyên như trên nền tảng.
+app_icon	Biểu tượng ứng dụng
+logo_help	Dấu hiệu cửa hàng tùy chọn trên màn hình trong ứng dụng.
+onboard_layout	Bạn nhận được gì
+item_photo_help	Tùy chọn. Không có ảnh, chúng tôi hiển thị chữ cái đầu từ tên món.
+cash_in_hand	Tiền mặt trong tay (quầy)
+change_my_pin_heading	Thay đổi mã PIN của tôi (chỉ của bạn)
+connect_to_server	Kết nối máy chủ
+counter_locked	Quầy 01 · Đã khóa
+country_pack_help	Gói quốc gia đặt tên thuế và cách tính, kênh thanh toán tức thì và mã số thuế in trên hóa đơn. Kumkaj không nộp thuế hay phát hành hóa đơn điện tử chính phủ ở bất cứ đâu.
+currency_use_help	Cuộn và chạm Dùng cho bất kỳ tiền tệ nào được hỗ trợ.
+day_close_help	Ghi chốt ngày lưu tóm tắt này (và chênh lệch ngăn tiền nếu đã đếm) vào nhật ký kiểm toán. Không dừng bán hàng.
+expenses_word	Chi phí
+feature_access_help	Quyền truy cập tính năng cho nhân viên đã chọn (nhấn sau khi thêm)
+footer_local	SQLite cục bộ · Miễn phí mãi mãi · Không đám mây
+fresh_book_moklanjo	Máy in
+fresh_selected	Đã chọn Fresh — danh mục trống. Chạm Done khi sẵn sàng.
+gross_word	Gộp
+how_start	Bạn muốn bắt đầu thế nào?
+later_country_pack	Máy in
+local_badge	CỤC BỘ
+measures_help_moklanjo	Cách đo bưu kiện tại quầy. Ghi kích thước và cân nặng theo đơn vị bạn dùng — chuẩn (cm, m, in, ft · kg, g, lb, oz) hoặc đơn vị riêng liên kết với cm / kg ở trên (trực tiếp hoặc qua đơn vị khác). Sổ luôn ghi kg. Để trống một trường để giữ nguyên.
+mix_type_hint_moklanjo	Ghi bao nhiêu ở mỗi loại (tiền mặt / UPI / thẻ / ghi nợ). Phải bằng hóa đơn. Ghi nợ cần khách hàng ở trên.
+money_in_sales	Tiền vào (bán hàng)
+more_help_moklanjo	Danh mục, bán hàng, ghi nợ, nhóm, sao lưu — cộng kho và quầy phụ khi cần.
+net_word	Ròng
+offline_badge	NGOẠI TUYẾN
+optional_login_help	Đăng nhập tùy chọn (mã + mật khẩu). Chủ đặt một lần; sau đó chỉ người dùng mới đổi được mật khẩu.
+or_unlock_login	Hoặc mở khóa bằng mã đăng nhập + mật khẩu
+permission_preset	Công việc (đặt màn hình và quyền)
+preset_help_moklanjo	Thu ngân: bán. Quản lý: bán + mục + hủy/sửa.
+product_locked_moklanjo	Moklanjo
+product_only_moklanjo	Ứng dụng này chỉ là Moklanjo — sổ sách + quầy gửi hàng. Các ngành khác sẽ có sản phẩm riêng sau.
+purchases_cogs	Mua hàng (COGS)
+qty_cap	SL
+restore_help	Khôi phục: chọn một bản sao lưu. Sổ sách mở như lúc đó; sổ hiện tại được lưu trước nên có thể hoàn tác.
+wipe_data_heading	Xóa dữ liệu cục bộ
+wipe_data_help	Chỉ chủ — cùng lựa chọn như gỡ Windows. Hồ sơ kinh doanh xóa lịch sử, giữ cước/thiết lập. Thiết lập cửa hàng gỡ sổ. Tuỳ chọn màn hình: cửa sổ/ngôn ngữ. Xác nhận bằng PIN chủ.
+wipe_trading	Hồ sơ kinh doanh
+wipe_schema	Thiết lập cửa hàng
+wipe_ui	Tuỳ chọn màn hình
+wipe_owner_pin_ph	PIN chủ để xóa
+wipe_delete_selected	Xóa mục đã chọn
+wipe_owner_only	Chỉ chủ mới xóa được dữ liệu cục bộ.
+restore_owner_only	Chỉ chủ mới khôi phục được bản sao lưu.
+wipe_owner_pin_needed	Nhập PIN chủ để xóa dữ liệu cục bộ.
+wipe_nothing_selected	Hãy chọn nội dung cần xóa trước.
+wipe_done	Đã xóa dữ liệu cục bộ đã chọn.
+wipe_schema_done	Thiết lập cửa hàng đã xóa — chọn Server hoặc Client để tiếp tục.
+rounded_total	Tổng đã làm tròn
+setup_app_moklanjo	Thiết lập Moklanjo
+shop_logo_optional	Logo cửa hàng (tùy chọn)
+stock_type_help	Gõ tên mục (một phần là đủ), số lượng, rồi điều chỉnh. Mục chưa đếm cần Bắt đầu đếm một lần.
+team_owner_help	Thuê: chọn công việc (Thu ngân/Quản lý), tên + mã PIN bắt đầu, sau đó Thêm. Chỉ khi người này khác: mở màn hình và quyền bên dưới, sau đó Lưu thiết lập công việc. Mọi người đều thay đổi mã PIN của chính mình ở phía dưới — Chủ sở hữu không thể thay đổi mã PIN của bất kỳ ai khác.
+they_owe_us	Họ nợ chúng ta
+unit_at_cap	Đơn giá
+units_help	Mã cho nhãn mục (kg, piece, bag). Mỗi đơn vị phải liên kết — trực tiếp hoặc qua đơn vị khác — với một chuẩn (kg · cm · ml · pc), vd 1 crate = 2 box và 1 box = 20 cm. Quy đổi: 1 from = factor to. Tiền tệ không bao giờ là đơn vị.
+we_owe_them	Ta nợ họ
+who_unlocking	Ai đang mở khóa?
+locked_word	Đã khóa
+show_pin	Hiện PIN
+hide_pin	Ẩn PIN
+set_owner_pin	ĐẶT PIN CHỦ
+enter_owner_passcode	NHẬP MÃ CHỦ
+enter_staff_passcode	NHẬP MÃ NHÂN VIÊN
+pin_count_zero	0 / 12 chữ số · ít nhất 4, rồi OK
+pin_count_need	{} / 12 chữ số · cần thêm {}
+pin_count_full	12 / 12 chữ số · nhấn OK
+pin_count_ready	{} / 12 chữ số · nhấn OK khi sẵn sàng
+pin_hint_choose	Chọn 4–12 chữ số (bàn phím hoặc bàn số) · Enter/OK để lưu
+pin_hint_new	PIN chủ mới 4–12 chữ số (bàn phím hoặc bàn số) · Enter/OK
+pin_hint_shop_code	Thiết bị cửa hàng · mã ghép {}
+pin_hint_books	Thiết bị này giữ sổ sách
+pin_hint_paired	Quầy phụ đã ghép — mở khóa để bán
+pin_hint_pair_first	Quầy phụ — ghép với thiết bị cửa hàng trước
+unlock_to_continue	Mở khóa để tiếp tục
+no_staff_yet	Chưa có nhân viên — mở khóa với tư cách Chủ, rồi Nhóm
+status_server_set_pin	Chế độ máy chủ — đặt PIN chủ
+status_server_tills	Chế độ máy chủ — quầy phụ có thể tham gia. Mở khóa
+status_server_unlock	Chế độ máy chủ — mở khóa với tư cách Chủ
+status_client_unlock	Chế độ máy khách — mở khóa để bán
+icon_new_selected	Biểu tượng: đã chọn tệp mới — chạm Lưu thương hiệu
+icon_custom	Biểu tượng: dấu hiệu cửa hàng của bạn
+icon_default	Biểu tượng: dấu Kumkaj (mặc định) — chọn của bạn
+logo_yours	Logo: logo cửa hàng của bạn — hiển thị trên màn hình và hóa đơn
+logo_default	Logo: dấu Kumkaj (mặc định) — chọn của bạn nếu có
+tmpl_current	Hiện tại: {} — {}
+tmpl_selected	Đã chọn: {} — {}
+setup_complete	Thiết lập hoàn tất
+onboard_fresh_tmpl	Mới · {} — danh mục bắt đầu trống; thêm mặt hàng trong Mặt hàng, rồi chạm Xong.
+onboard_book_tmpl	Sổ · {} — thêm mặt hàng và nợ đầu kỳ, rồi chạm Xong.
+onboard_template_tmpl	Đặt tên quán nếu muốn, rồi chọn cách bắt đầu.
+tmpl_blurb	Sổ sách chuyển phát và quầy gửi hàng: người gửi, nhà vận chuyển, sổ ngày, AWB.
+tmpl_how	Nhận gửi tại quầy; sổ ngày cho hôm nay; các tab cho giá cước, đối tác, báo cáo.
+trk_booked	Đã nhận gửi
+trk_picked_up	Đã lấy hàng
+trk_in_transit	Đang vận chuyển
+trk_delivered	Đã giao
+trk_rto	Đang hoàn về người gửi
+lane_to_dispatch	Chờ gửi đi
+lane_with_carrier	Ở nhà vận chuyển
+lane_failed	Thất bại
+lane_done_today	Xong hôm nay
+ops_board_help	Bưu kiện theo vị trí trong công việc hôm nay. Chạm (hoặc quét) bưu kiện để chọn, rồi xử lý tất cả bưu kiện đã chọn cùng lúc — mỗi cột chỉ có các bước phù hợp với nó.
+lane_empty	Hiện chưa có gì ở đây.
+picked_fmt	Đã chọn {n}
+pick_all	Chọn tất cả
+bag_for_carrier	Giao cho nhà vận chuyển
+send_with_rider	Gửi cùng tài xế
+out_again	Giao lại
+return_to_sender	Hoàn về người gửi
+runs_bags_heading	Chuyến và bao gần đây
+print_word	In
+bag_word	Bao giao nhà vận chuyển
+run_word	Chuyến của tài xế
+parcels_fmt	{n} bưu kiện
+parcel_history	Lịch sử
+attempt_fmt	Lần {n}
+pieces_short_fmt	{n} kiện
+note_reason_ph	Ghi chú hoặc lý do
+ops_pick_first	Hãy chọn bưu kiện trước — chạm hoặc quét
+cod_to_collect	Đã giao — COD cần thu
+cod_on_road	COD còn trên đường
+cod_owed_consignors	Đã thu — cần trả người gửi
+cod_rto_fees	Phí RTO cần thu
+cod_to_hand_in	COD cần nộp
+parcel_one_fmt	{n} bưu kiện
+facet_bank_title	Báo cáo
+facet_bank_help	Sổ ngày, tuổi nợ đối tác, bút toán ngân hàng và lãi lỗ kỳ.
+facet_ops_title	Lô hàng & điều phối
+facet_ops_help	Quét hoặc nhập AWB → Tìm, rồi tiến hành / in nhãn / COD. Điều phối cho người giao hoặc hãng vận chuyển.
+facet_cod_title	Sổ COD
+facet_cod_help	Thu khi giao hàng, rồi chuyển cho người gửi.
+facet_riders_title	Người giao (đội riêng)
+facet_riders_help	Thêm người giao, rồi điều phối các AWB đã đặt từ Ops.
+against_bill_ph	Cho hóa đơn số ở trên (tùy chọn)
+aliases_ph	Tên khác — phân cách bằng dấu phẩy
+amount_blank_full_ph	Số tiền (trống = toàn bộ số dư)
+amount_owed_ph	Số tiền nợ
+amount_ph	Số tiền
+amount_received_ph	Số tiền đã nhận
+amount_we_pay_ph	Số tiền chúng ta trả
+awb_scan_ph	AWB / quét mã vạch
+bulk_csv_ph	CSV hàng loạt — destination,consignee,kg,cod_paise,note
+business_name_ph	Tên doanh nghiệp
+category_new_ph	Danh mục (tùy chọn, sẽ tạo nếu mới)
+cod_amount_ph	Số tiền COD
+code_bag_ph	Mã (bag)
+conv_factor_ph	Hệ số (25 = 1 bag → 25 kg)
+country_code_ph	Mã quốc gia ví dụ IN, GB, US, AE, BR
+credit_khata_amount_ph	Số tiền ghi nợ / tài khoản
+credit_limit_ph	Hạn mức nợ (0 = không)
+dim_unit_code_ph	Mã đơn vị kích thước (cm)
+divisor_ph	Số chia thể tích (5000)
+extra_per_kg_ph	Thêm / kg
+first_amount_ph	Số tiền đầu tiên
+first_kg_ph	Kg đầu tiên (bậc)
+from_code_ph	Mã từ (bag)
+item_name_lang_ph	Tên mặt hàng — nhập bằng ngôn ngữ của bạn
+login_id_opt_ph	ID đăng nhập (tùy chọn)
+manager_pin_ph	PIN quản lý (chỉ khi bạn không thể hủy)
+new_branch_name_ph	Tên chi nhánh mới
+new_password_ph	Mật khẩu mới (tùy chọn)
+new_pin_ph	PIN mới (4–12 chữ số)
+note_bank_ph	Ghi chú (gửi tiền, rút tiền, …)
+note_buy_expense_ph	Ghi chú (nhiên liệu, thuê, …)
+note_expense_ph	Ghi chú (nhiên liệu, văn phòng, …)
+notify_phone_ph	Điện thoại thông báo (hook WhatsApp/SMS)
+options_moklanjo_ph	Tùy chọn (tùy chọn) — Large=20, Gift wrap=10
+part_second_way_ph	Phần bằng cách thứ hai (tùy chọn)
+phone_ph	Điện thoại
+address_ph	Địa chỉ
+party_custom_fields_heading	Trường tùy chỉnh (đối tác đã chọn)
+party_custom_help	Thêm nhãn và giá trị bất kỳ cho đối tác này — WhatsApp, GSTIN, mã tuyến…
+party_custom_key_ph	Tên trường (vd. WhatsApp)
+party_custom_value_ph	Giá trị
+party_custom_add	Thêm / cập nhật trường
+party_custom_remove	Xóa trường
+party_custom_empty	Chưa có trường tùy chỉnh
+party_custom_pick_first	Chọn đối tác để thêm trường tùy chỉnh
+place_name_ph	Tên của nơi này
+price_ph	Giá
+qty_example_ph	Số lượng (ví dụ 1,5 cho kg)
+quantity_ph	Số lượng
+reason_required_ph	Lý do (bắt buộc)
+role_title_ph	Chức danh (ví dụ Barista)
+service_pct_ph	Dịch vụ % tùy chọn 0/10/12
+short_code_ph	Mã ngắn (MG02)
+slab_kg_ph	Bậc tính phí theo kg (0,5)
+staff_name_ph	Tên/id nhân viên
+starting_password_ph	Mật khẩu ban đầu (tùy chọn)
+starting_pin_ph	PIN ban đầu (4–12 chữ số)
+tax_rate_ph	Tên thuế suất hoặc % — Standard, Reduced, 0, 5, 12, 18, 20
+to_code_ph	Mã đến (kg)
+uncleared_no_ph	Số chưa quyết toán ở trên
+unit_cost_ph	Chi phí đơn vị
+unit_kg_blank_ph	Đơn vị (kg hoặc trống)
+unit_name_bag_ph	Tên (Bag)
+weight_unit_code_ph	Mã đơn vị trọng lượng (kg)
+zone_name_ph	Tên khu vực
+pay_credit	Ghi nợ
+book_kind_today	Sổ hôm nay
+book_kind_month	Sổ tháng này
+book_kind_aging	Nợ tồn / ghi nợ-có
+book_kind_balance	Bảng cân đối
+ops_desk_help	Quét AWB bằng máy quét mã vạch USB (hoặc nhập) → Tìm. Rồi tiến hành, in nhãn hoặc thu COD. Nhãn in bằng Code 128.
+role_help_consignor	Vai trò: Người gửi — AR (họ nợ chúng ta). Cùng một công ty cũng có thể là hãng vận chuyển.
+role_help_carrier	Vai trò: Hãng vận chuyển — AP (chúng ta nợ họ). Cùng một công ty cũng có thể là người gửi.
+role_help_both	Vai trò: Người gửi hàng + Nhà cung cấp — một bên, sổ cái AR và AP, có trong Báo cáo.
+role_help_supplier	Vai trò: Nhà cung cấp - AP để mua hàng.
+lane_declared_label	Đặt tài khoản
+lane_owner_label	Đặt phòng bằng tiền mặt
+money_lane_bill	Bill: {lane}

@@ -1,0 +1,1351 @@
+# Azerbaijani — Azərbaycan (az). One key<TAB>text per line, in en() order; keep {placeholders}.
+app_tagline	Restoran sifarişləri, mətbəx və kitablar. Pulsuz, oflayn.
+unlock	Kilidi aç
+pin_hint	Sahibin PIN-i 0000-dan başlayır
+sell	Sifariş
+buy	Alış
+books	Günün kitabı
+books_help	Bu günün vəziyyəti. Sifariş = daxil olan sifarişlər. Alış = alışlar və xərclər. Tərəflər = kredit müştərilər və təchizatçılar.
+buy_help	Xərc vauçerləri və təchizatçı fakturaları (pul çıxışı). Hesaba yazılanlar tərəfin dəftərində qalır.
+sell_money_in	Sifariş qəbul et
+buy_money_out	Xərc / təchizatçı fakturası
+record_purchase	Alışı qeyd et
+add_expense	Xərc vauçeri
+bank_book	Bank kitabı
+credit_help	Tərəf id-si unikaldır (adlar təkrarlana bilər). Müştəri khata hesabı aparır (bizə borcludur); təchizatçı bizə mal satır (biz ona borcluyuq); hər ikisi olar. Dəftərlər ayrı qalır; hesabatlar xalis məbləği göstərir.
+party_kind_ph	Rollar: Müştəri, Təchizatçı, hər ikisi…
+reports_help	Günün kitabı, debitorlar və kreditorlar, bank kitabı, xərc vauçerləri, mənfəət və zərər.
+reports_today	Günün kitabı (bu gün)
+reports_month	Mənfəət və zərər (ay)
+reports_aging	Ödənilməmiş / Dt-Kt
+reports_balance_sheet	Balans hesabatı
+reports	Bank kitabı və M/Z
+refresh	Yenilə
+undo	Geri al
+start_tracking	İzləməyə başla
+stock_minus	− Stok
+stock_plus	+ Stok
+settle_cash	Nağdı bağla
+settle_card	Kartı bağla
+items	Menyu və məhsullar
+nav_items	Menyu
+more	Daha çox
+your_items	Sizin menyu
+items_help	Redaktə üçün məhsula toxunun. Yeni məhsul formanı təmizləyir. Bizim yeməkləri axtarın və ya öz adınızı və şəklinizi yazın, qiymət qoyun (0 olar), sonra Əlavə et. Artıq yazılmış satışlar hesablandığı adı saxlayır.
+add_item	Məhsul əlavə et
+new_item	Yeni məhsul
+adding_item	Yeni məhsul əlavə olunur
+editing_item	Redaktə
+save	Saxla
+remove	Sil
+removed_items	Silinmiş məhsullar
+removed_help	Bərpa məhsulu menyuya olduğu kimi qaytarır — qiymət, şəkil və kateqoriya. Yemək rəfimiz heç vaxt silinmir, ona görə yeməyi həmişə yenidən əlavə etmək olar.
+restore_item	Bərpa et
+empty_catalog	Hələ yemək yoxdur. Menyunu açın, yemək əlavə edin (ad + qiymət), sonra sifariş qəbul edin.
+total	Cəmi
+cash	Nağd
+upi	UPI
+card	Kart
+credit	Tərəflər
+clear	Təmizlə
+ready_to_sell	Sifarişə hazır
+today_prefix	Bu gün
+today_mid	bu gün
+owed	ödənilməmiş
+round_word	yuvarlaqlaşdırma
+back	Geri
+sold_out	Mövcud deyil
+restock	Stoku doldur
+not_tracked	İzlənmir
+in_stock	stokda
+marked_sold_out	Mövcud deyil işarələndi
+add_upper	ƏLAVƏ ET
+na	Yoxdur
+qty	Çəki/Say
+unit_at	Tarif @
+actual	Faktiki
+applied	Tətbiq olunub
+note_ph	Qeyd (istəyə bağlı)
+rounded	YUVARLAQ
+split	Böl
+send_kot	KOT göndər
+send_kot_to	Göndər → {kitchens}
+send_kot_again	Növbəti KOT üçün yemək əlavə et
+send_kot_held	Gözlədilən yeməklər — göndərmək üçün gözlətməni götür
+reprint_kot	Seçilənləri yenidən çap et
+reprint_kot_ok	{n} yemək yenidən çap olundu · {slips} slip → {kitchens}
+reprint_kot_needed	Əvvəlcə KOT göndərin — sonra yeməkləri daxil edib seçilənləri yenidən çap edin
+reprint_kot_none_selected	Göndərilmiş hər yemək keçilir — yenidən çap üçün olanlarda Çapda düyməsinə toxunun
+reprint_kot_client	{place} üçün yenidən çap ({n}) göndərildi — mətbəx Serverdə çap edir
+print_cancelled_kot	Ləğv olunanların hamısını çap et
+print_cancelled_kot_ok	{n} ləğv olunmuş yemək çap olundu · {slips} slip → {kitchens}
+print_cancelled_kot_needed	Əvvəlcə ləğv olunmuş yeməkləri olan masanı açın
+print_cancelled_kot_none	Bu sifarişdə ləğv olunmuş yemək yoxdur
+print_cancelled_kot_client	{place} üçün ləğv olunanlar ({n}) göndərildi — mətbəx Serverdə çap edir
+kot_banner	Növ banneri
+kot_banner_ph	Banner (boş = yoxdur)
+kot_item_prefix	Məhsul prefiksi
+kot_item_prefix_ph	məs. [LƏĞV]
+kot_strike	Yemək adının üstündən xətt
+kot_strike_note	Yemək qeydinin üstündən xətt
+kot_strike_on	Açıq
+kot_strike_off	Bağlı
+bill_item_layout	Məhsul düzümü
+bill_item_layout_columns	Sütunlar
+bill_item_layout_stacked	Üst-üstə
+bill_item_header	Sütun başlıqları
+bill_item_hdr_item	Məhsul başlığı
+bill_item_hdr_qty	Say başlığı
+bill_item_hdr_price	Qiymət başlığı
+bill_item_hdr_amount	Məbləğ başlığı
+bill_item_name	Yemək adı
+bill_item_qty	Say
+bill_item_price	Qiymət
+bill_item_amount	Məbləğ
+bill_item_note	Yemək qeydi
+bill_item_col_gap	Sütun aralığı
+bill_item_col_order	Sütun sırası
+bill_item_col_sep	Sütun xətləri
+bill_item_gap_tight	Sıx
+bill_item_gap_comfort	Rahat
+bill_item_gap_wide	Geniş
+bill_item_num_width	Rəqəm sütunları
+bill_item_num_compact	Yığcam
+bill_item_num_comfort	Rahat
+bill_item_num_wide	Geniş
+bill_item_num_align	Rəqəmlərin düzümü
+bill_item_gap_em	Aralıq (em)
+bill_item_qty_min	Say min (em)
+bill_item_price_min	Qiymət min (em)
+bill_item_amount_min	Məbləğ min (em)
+kot_item_qty_width	Say sütunu
+kot_item_num_align	Sayın düzümü
+bill_total_qty_label	Ümumi say etiketi
+bill_total_subtotal_label	Ara cəm etiketi
+bill_total_grand_label	Yekun etiketi
+bill_total_paid_label	Ödənilən etiketi
+bill_meta_pair	Sətri bununla paylaş
+bill_pair_alone	Tək
+bill_item_piece_on	Açıq
+bill_item_piece_off	Bağlı
+bill_total_qty	Ümumi say
+bill_total_subtotal	Ara cəm
+bill_total_grand	Yekun
+reprint_incl	Çapda
+reprint_skip	Keç
+reprint_skip_meta	Bərpa çapını keç
+kot_dest_hint	Ayarlar → Printerlər bölməsində {kitchens} üçün təyin etdiyiniz printerlərdə çap olunur
+kot_sent_hint	Son KOT {kitchens} ünvanına getdi. Növbəti bilet üçün yemək əlavə etmək üçün toxunun — və ya eyni bilet üçün KOT-u yenidən çap edin.
+kot_sent_printing	KOT {kitchens} ünvanına göndərildi — çap olunur
+kot_sent_not_printed	KOT {kitchens} ünvanına göndərildi, lakin ÇAP OLUNMADI: {why}. Mətbəxə deyin, sonra printeri düzəldib yenidən çap edin.
+kot_sent_screen	KOT {kitchens} ünvanına göndərildi
+kot_queued_shop	{place} üçün KOT → {kitchens} saxlandı; mağaza cihazı onu çap edir
+kot_job_label	{place} üçün KOT → {kitchens}
+kot_job_reached	{place} üçün KOT {kitchens} ünvanına çatdı
+kot_unassigned	Mətbəx (postsuz)
+kot_unassigned_held	Postu olmayan {n} yemək gözlədildi — göndərmək üçün sətirdə gözlətməni götürün
+kot_station_ph	Mətbəx
+kot_station_dd	Mətbəx
+kot_station_dd_n	Mətbəx · {stations}
+kot_set_station	Bu postu istifadə et
+kot_station_applied	{n} yeməyə post qoyuldu: {station}
+kot_station_cleared	{n} yeməkdən post silindi: {station}
+kot_station_needed	Əvvəlcə mətbəx postu seçin
+kot_station_not_allowed	Bu mətbəxdən istifadəyə icazə yoxdur: {station}
+kot_station_none	Hələ mətbəx postu yoxdur — Mətbəx və ya Ayarlar → Zonalar · postlar altında əlavə edin
+pos_tab_items	Əlavə olunmuş məhsullar
+pos_tab_payment	Ödəniş
+hold_send	Gözlət
+hold_send_on	Gözlədilir
+hold_send_meta	Gözlədilir — bu KOT-da deyil
+station_remove	Postu sil
+station_remove_ph	Silmək üçün siyahıdakı posta toxunun
+station_removed	Post silindi: {name}
+settings_hub_title	Ayarlar
+settings_hub_help	Bir sahəni bir dəfəyə açın — daha az sürüşdürmə, daha aydın seçimlər.
+settings_back	Geri
+settings_sec_language	Dil və valyuta
+settings_sec_country	Ölkə və vergi
+settings_sec_tills	Digər cihazlar
+settings_sec_brand	Sizin brend
+settings_sec_units	Vahidlər və çevrilmələr
+settings_sec_pickers	Zonalar · postlar · vergi dərəcələri
+settings_sec_printers	Printerlər
+settings_sec_bill	Hesab və KOT formatı
+settings_sec_selling	Sxemlər və satışlar
+bill_kot_tab_bill	Hesab
+bill_kot_tab_kot	KOT
+settings_sec_alerts	Xəbərdarlıqlar
+alerts_help	Status mesajları ekranda sizin üçün (bu girişdə) nə qədər qalır.
+snack_secs_ph	Saniyə (3–60, susmaya görə 10)
+snack_secs_save	Xəbərdarlıq vaxtını saxla
+snack_secs_saved	Xəbərdarlıq vaxtı saxlandı — {n} saniyə
+settings_sec_backup	Ehtiyat nüsxə və bərpa
+settings_sec_diag	Diaqnostika
+diag_privacy_help	Jurnallar bu cihazda qalır. Sirlər (PIN, parollar) heç vaxt saxlanılmır. Paketi cihazdan kənara paylaşmaq hər dəfə sizin açıq təsdiqinizi tələb edir — heç vaxt satılmır və üçüncü tərəflərə verilmir.
+diag_level	Ətraflılıq
+diag_level_error	Xətalar
+diag_level_warn	Xəbərdarlıqlar
+diag_level_info	Məlumat
+diag_level_debug	Sazlama
+diag_support_start	30 dəqiqəlik dəstək seansı başlat
+diag_support_stop	Dəstək seansını bitir
+diag_support_started	Dəstək seansı açıqdır — 30 dəqiqə Sazlama ətraflılığı
+diag_support_ended	Dəstək seansı bitdi
+diag_export_local	Yerli nüsxəni ixrac et
+diag_export_local_done	Yerli diaqnostika {path} yolunda hazırdır — nüsxəni saxlamaq üçün yer seçin
+diag_approve_send	Bu cihazdan kənara paylaşmanı təsdiqlə
+diag_send_help	Təsdiq bir paket üçündür, sonra bitir. Müvəqqəti — yalnız məhsulu düzəltmək və ya yaxşılaşdırmaq üçün. Üçüncü tərəflərlə paylaşılmır. Linux, Windows, macOS və Android-də işləyir.
+diag_send_approved	Bir paket üçün paylaşım təsdiqləndi (tezliklə bitir)
+diag_export_send	Paylaşım paketi yarat (təsdiq lazımdır)
+diag_export_send_done	Paylaşım paketi {path} yolunda hazırdır — saxlamaq üçün yer seçin, sonra yalnız Kumkaj dəstəyinə göndərin
+diag_save_bundle	Diaqnostika nüsxəsini saxla
+diag_bundle_saved	Diaqnostika nüsxəsi {path} yoluna saxlandı
+diag_bundle_failed	Diaqnostika nüsxəsi saxlanılmadı — yenidən cəhd edin
+diag_clear	Diaqnostika jurnallarını təmizlə
+diag_cleared	Diaqnostika jurnalları təmizləndi
+sidebar_settings	Yan panel
+sidebar_settings_help	Yan relslə eyni nişanlar. Sıranı dəyişmək üçün sətri sürükləyin. Göstərmək və ya gizlətmək üçün açarı çevirin. Ayarlar və Kilid həmişə paneldə qalır.
+sidebar_always_on_short	Həmişə açıq
+sidebar_back_settings	Geri
+sidebar_shown	Göstərilir
+sidebar_hidden	Gizli
+sidebar_always_on	Həmişə paneldə
+sidebar_shown_hint	Yan relsdə / alt tablarda göstərilir
+sidebar_hidden_hint	Paneldən gizli
+sidebar_menu_items	Menyu və məhsullar
+sidebar_enable_all	Hamısını aç
+sidebar_disable_all	Hamısını bağla
+sidebar_order_saved	Yan panel sırası saxlandı
+sidebar_visibility_saved	Yan panel görünüşü saxlandı
+amounts_hide	Gizlət
+amounts_show	Göstər
+printers_none_hint	Əvvəlcə bu cihazda printer saxlayın, sonra onu Hesaba və ya mətbəxə əlavə edin
+counter	Kassa
+dine_in	Salonda
+takeaway	Paket
+order	Sifariş
+tables	Masalar
+kitchen	Mətbəx
+sales	Satışlar
+sales_refunds	Satışlar və qaytarmalar
+day_close	Günün bağlanışı
+reports_expenses	Bank kitabı və M/Z
+nav_reports	Hesabatlar
+nav_settings	Ayarlar
+nav_lock	Kilid
+no_sale_yet	Hələ satış yoxdur
+favorites	Sevimlilər
+favorites_help	Tez-tez satdığınız məhsullar, sizin girişiniz üçün saxlanılıb. Birini hesaba əlavə edin və ya siyahınızı aşağıdakı bütün məhsullardan qurun.
+your_favorites	Sizin sevimlilər
+all_items	Bütün məhsullar
+frequent	Tez-tez
+added_items	Əlavə olunmuş məhsul(lar)
+added_items_empty	Bu sifarişdə hələ heç nə yoxdur — Bütün məhsullardan və ya kateqoriyadan yemək əlavə edin.
+frequent_config_help	Bağlanmış hesablardan ən çox satılan yeməklər. Neçə günə baxılacağını və neçə yemək göstəriləcəyini təyin edin.
+frequent_days_ph	Gün (1)
+frequent_limit_ph	Məhsul (24)
+frequent_apply	Tətbiq et
+frequent_saved	Tez-tez: son {d} gün, ilk {n} — {c} yemək
+frequent_empty	Bu dövrdə hələ bağlanmış satış yoxdur — hesabı bağlayın (Ayarlar icazə verəndə ₹0 olar) və burada görünəcəklər.
+zero_sales	Sıfır məbləğli satışlar
+zero_sales_help	Qiyməti ₹0 olan yeməklərə və ₹0 bağlanan hesablara icazə verin (kompliment / sahibin istəyi). Susmaya görə açıqdır ki, pulsuz qonaqlar Tez-tez siyahısında və gün kitablarında görünsün.
+zero_sales_on	₹0-a icazə
+zero_sales_off	Qiymət tələb et
+zero_sales_saved_on	Sıfır məbləğli satışlara icazə verildi
+zero_sales_saved_off	Satışların qiyməti ₹0-dan yuxarı olmalıdır
+floor_areas_help	Zonalar zaldakı otaqlar və ya sahələrdir (Salon, Paket, Kondisioner …). Əvvəlcə zona əlavə edin, sonra masaları ora qoyun — hər zona zaldakı ayrı qrupdur.
+area_new_ph	Yeni zona / otaq (məs. Kondisioner, Bağ)
+add_area	Zona əlavə et
+area_added	«{name}» zonası hazırdır — masaları ora əlavə edin
+no_favorites	Hələ sevimli yoxdur — aşağıdakı siyahıdan məhsul əlavə edin.
+add_to_bill	Hesaba əlavə et
+added	Əlavə olundu
+owes_word	borcludur
+selected_word	Seçilib
+chip_clear_credit	təmizlə — Kredit və ya avans al
+chip_missing_customer	Seçilmiş müştəri yoxdur — yenidən seçin
+chip_no_customer	Hələ müştəri yoxdur — ad yazın, sonra Kreditə toxunun
+credit_summary_fmt	{} müştəri · açıq kredit {} · saxlanılan avanslar {}
+recent_label	Son:
+kot_new_waiting	YENİ — gözləyir
+kot_preparing	HAZIRLANIR
+kot_ready_serve	HAZIR — verin
+kot_done_cap	BİTDİ
+kot_cancelled	LƏĞV
+kot_start_btn	Başla
+kot_mark_ready	Hazır işarələ
+kot_done_btn	Bitdi
+table_free	Boş — sifarişə başlamaq üçün toxunun
+start_order	Sifarişə başla
+open_bill	Hesabı aç
+collect_payment	Ödənişi al
+table_running	Gedir
+payment_pending	Ödəniş gözləyir
+collect_at_counter	kassada al
+inventory	Anbar
+inventory_stock	Anbar və stok
+branches	Filiallar
+branches_org	Filiallar və təşkilat
+credit_customers	Tərəflər (khata və təchizatçılar)
+customer_name_ph	Tərəfin adı
+new_customer_ph	Yeni tərəfin adı
+item_name_ph	Məhsul adı (məs. Masala Dosa)
+item_price_ph	Qiymət
+start_template	Məhsul
+team	Heyət
+team_pins	Heyət və PIN-lər
+my_pin_settings	Mənim PIN-im
+settings_hub_help_my_pin	Bu cihazda daxil olmuş şəxsin kilid PIN-ini dəyişin.
+team_self_help	Bir giriş: yeni PIN, yeni parol və ya hər ikisi. Saxlamaq istədiyinizi boş buraxın. Başqa ekranlar və ya hüquqlar lazımdırsa, Sahibdən soruşun.
+backup_settings	Ehtiyat nüsxə və ayarlar
+lock_app	Tətbiqi kilidlə
+pick	Seç
+select	İşarələ
+advance	Avans
+owner	Sahib
+staff	Heyət
+photo	Şəkil
+auto	Avto
+prev	Əvvəl
+next	Növbəti
+ok	OK
+this_shop	Server
+extra_till	Klient
+off	Bağlı
+tables_kitchen	Masalar və mətbəx
+server	Server
+client	Klient
+language_currency	Dil və valyuta
+language	Dil
+choose_language	Dilinizi seçin
+language_setup_hint	Bu cihazın dilinə uyun və ya özünüz seçin.
+lang_follow_platform	Cihazın dili
+lang_pick_user	Dil seçin
+lang_platform_now	İndi cihazın dili
+selected_language	Seçilib
+continue	Davam et
+this_device	BU CİHAZ
+device_use_q	Bu cihaz necə istifadə olunacaq?
+last_server_mode	Server idi — davam etmək üçün toxunun
+last_client_mode	Klient idi — davam etmək üçün toxunun
+choose_server	Server seçin
+choose_server_hint	Mövcud serveri açın və ya başqa biznes üçün yenisini yaradın.
+create_new_server	Yeni server yarat
+open_server	Aç
+new_server_name_ph	Yeni server adı (istəyə bağlı)
+server_remove_pin_ph	Serveri silmək üçün Sahib PIN-i
+only_owner_remove_server	Serveri yalnız Sahib silə bilər
+owner_pin_remove_server	Bu serveri silmək üçün Sahib PIN-i lazımdır
+device_setup_help	Server kitabları burada saxlayır. Klient Serverə qoşulur.
+app_template_heading	Rajdhani App Template
+app_template_blurb	Rajdhani menyusunu yükləyir; Sahib Zahir (zahir), Admin Asif (asif, PIN 1111), Ofisiant Nawaz (nawaz, PIN 0000); FOH yan paneli; tarixçə 4 saatdan sonra təmizlənir (və Ehtiyat nüsxədə İndi təmizlə); Bu gün zolağı bağlı; dar altlıqlar üçün yığcam KOT + Standart kənarlar. Yan panel yoldaşları Ayarlarda yenidən açıla bilər.
+app_template_apply	Rajdhani App Template
+app_template_skip	Hələlik keç
+app_template_status	Server hazırdır — Rajdhani App Template tətbiq edin və ya keçin
+app_template_importing	{title} tətbiq olunur…
+currency	Valyuta
+backup	Ehtiyat nüsxə
+use	İstifadə et
+dont_use	İstifadə etmə
+add_branch	Filial əlavə et
+add_conversion	Çevrilmə əlavə et
+add_dishes_items	Yemək və məhsul əlavə et
+add_item_plain	Məhsul əlavə et
+add_note	Qeyd əlavə et
+add_opening_balance	Açılış qalığı əlavə et
+add_staff	Heyət əlavə et
+add_station	Post əlavə et
+add_table	Masa əlavə et
+add_unit	Vahid əlavə et
+add_use_name	Bu adı əlavə et / istifadə et
+allow_extra_tills	Əlavə kassalara icazə ver
+amend	Düzəliş et
+apply_country_pack	Ölkə paketini tətbiq et
+datetime_appearance	Tarix və saat görünüşü
+datetime_appearance_help	Kitablar daxildə ili əvvəl yazılan RFC3339 saxlayır. Bunlar yalnız hesab, KOT, hesabat və ekranda tarix və saatın necə göründüyünü dəyişir.
+datetime_example	İndi nümunə: {ex}
+date_order	Tarix sırası
+date_order_dmy	G/A/İ
+date_order_mdy	A/G/İ
+date_order_ymd	İ-A-G
+time_format	Saat
+time_format_24h	24 saat
+time_format_12h	12 saat
+attach_bill_photo	Hesab şəkli əlavə et
+attach_pdf	PDF əlavə et
+attach_photo	Şəkil əlavə et
+attachments_last_expense	Əlavələr (son xərc)
+bank	Bank
+bank_in	Banka giriş
+bank_out	Bankdan çıxış
+bank_reconciliation	Bank üzləşdirməsi (bank çıxarışınızla işarələyin)
+bank_to_till	Bank → kassa
+book_add_dish	Kitab — yemək / məhsul əlavə et
+book_opening_credit	Kitab — açılış krediti
+branch_name_sell_ph	Satış ediləcək filialın adı
+bring_my_book	Kitabımı gətir
+business_tax_id_ph	Biznes vergi id-si
+caption_bank	BANK
+caption_bills	HESABLAR
+caption_outstanding	ÖDƏNİLMƏMİŞ
+caption_payments_today	BU GÜNÜN ÖDƏNİŞLƏRİ
+caption_today	BU GÜN
+card_amount_ph	Kart məbləği
+cash_amount_ph	Nağd məbləğ
+cash_memo	Nağd qəbz
+choose_icon	Nişan seç
+choose_logo	Loqo seç
+clear_icon	Nişanı sil
+clear_photo	Şəkli sil
+copy_day_book_csv	Günün kitabını CSV köçür
+copy_day_close	Günün bağlanışını köçür
+copy_items_csv	Məhsulları CSV köçür
+copy_outstanding_csv	Ödənilməmişləri CSV köçür
+copy_parties_csv	Tərəfləri CSV köçür
+copy_party_ledger_csv	Tərəf dəftərini CSV köçür
+copy_receipt	Qəbzi köçür
+share_whatsapp	WhatsApp ilə paylaş
+lan_pages_heading	Wi‑Fi-də qonaq səhifələri
+lan_pages_help	Bu mağazanın Wi‑Fi şəbəkəsində qonaq səhifələri lövhə, tokenlər, expo, kiosk, masa QR və rəy üçün işləyir. Mobil internetdəki qonaqlara sonra Cloud lazımdır. Kart terminalı / ödəniş keçidi internet olanda istəyə bağlıdır — kassanı heç vaxt dayandırmır.
+diag_send_heading	Bu cihazdan kənara paylaş
+kot_dest_heading	Mətbəx postu
+optional_login_heading	İstəyə bağlı giriş
+rights_heading	Hüquqlar
+ops_panel	Yerli əməliyyatlar
+crm_heading	Qonaqlar və mesajlar
+crm_help	Ad günü, loyallıq, fəaliyyətsiz və ən yaxşı qonaqlar — SMS və ya WhatsApp niyyətlərini növbəyə qoyun. Mesajda {name} və {points} istifadə edin. Sahib göndərir; heç nə özü yayılmır.
+crm_queue_sms	SMS növbəyə qoy
+crm_queue_wa	WhatsApp növbəyə qoy
+crm_seg_bday_week	Ad günü həftəsi
+crm_seg_bday_month	Ad günü ayı
+crm_seg_phone	Telefonu olanlar
+crm_seg_loyalty	Loyallıq
+crm_seg_inactive	Fəaliyyətsiz
+crm_seg_top	Ən çox xərcləyənlər
+birthday_ph	Ad günü (AA-GG və ya İİİİ-AA-GG)
+crm_message_ph	Ad günün mübarək, {name}! Sənin {points} xalın var.
+till_apply_redeem	Hesaba tətbiq et
+till_clear_redeem	İstifadəni təmizlə
+till_wallet_topup	Pulqabını artır
+till_issue_voucher	Vauçer ver
+till_points_ph	İstifadə olunacaq xallar
+till_wallet_ph	Xərclənəcək pulqabı məbləği
+till_voucher_code_ph	Vauçer kodu
+till_voucher_amt_ph	Vauçer məbləği (boş = hamısı)
+till_wallet_topup_ph	Pulqabına əlavə məbləğ
+till_voucher_issue_amt_ph	Veriləcək vauçer məbləği
+till_voucher_issue_code_ph	Yeni vauçer kodu
+split_evenly	Bərabər böl
+waitlist	Gözləmə siyahısı
+fire_course	Kursu göndər
+hold_item	Gözlət
+waiter_call	Ofisiantı çağır
+waitlist_add	Gözləmə siyahısına əlavə et
+floor_view_grid	Tor
+floor_view_layout	Düzüm
+floor_layout_x	X
+floor_layout_y	Y
+floor_layout_w	W
+floor_layout_h	H
+floor_layout_save	Düzümü saxla
+floor_layout_open	Masanı aç
+floor_layout_edit	Düzümü redaktə et
+floor_layout_pick	Düzümünü redaktə etmək üçün masaya toxunun
+floor_layout_saved	Masa düzümü saxlandı
+floor_layout_nudge_left	← 20
+floor_layout_nudge_right	→ 20
+floor_layout_nudge_up	↑ 20
+floor_layout_nudge_down	↓ 20
+sibling_pickers_help	Vahidlər kimi Açıq/Bağlı toxunun — zonaları, postları və vergi dərəcələrini gündəlik seçicilərdən gizlədin; paket susmaları qalır.
+bulk_price_apply	Toplu qiyməti tətbiq et
+card_terminal_optional	Kart terminalı / ödəniş keçidi (internet olanda istəyə bağlı)
+copy_report	Hesabatı köçür
+counted_cash_ph	Siyirmədə sayılan nağd
+country_tax	Ölkə və vergi
+tax_chrome	Kassada vergi etiketləri
+tax_chrome_help	Bağlı olanda sifariş masası GST/vergi təxmini sətirlərini və qiymətdə GST yerlərini gizlədir. Vergi dərəcələri və Ölkə və vergi ayarları qalır — etiketləri istənilən vaxt yenidən açın. Rajdhani App Template bunu bağlı başladır.
+tax_chrome_on	Göstər
+tax_chrome_off	Gizlət
+tax_chrome_saved_on	Kassada vergi etiketləri
+tax_chrome_saved_off	Kassada vergi etiketləri gizlidir
+tax_invoice_till	Kassada vergi fakturası
+tax_invoice_help	Bağlı olanda hesablar yalnız Nağd qəbzdir və Vergi fakturası / Nağd qəbz çipləri sifariş masasından gizlənir. Rajdhani App Template bunu bağlı başladır — Vergi fakturasını yenidən seçmək üçün istənilən vaxt Göstəri açın.
+tax_invoice_on	Göstər
+tax_invoice_off	Gizlət
+tax_invoice_saved_on	Kassada vergi fakturası
+tax_invoice_saved_off	Vergi fakturası gizlidir — yalnız Nağd qəbz
+pay_methods	Ödəniş üsulları
+pay_methods_help	Ödəniş al ekranında hansı çiplər görünür. Nağd həmişə qalır. Rajdhani App Template yalnız Nağd ilə başlayır — UPI / Kart / Kredit / Böl burada yenidən açın.
+create_backup	Ehtiyat nüsxə yarat
+credit_limit_heading	Kredit limiti (seçilmiş / adlı tərəf)
+day_close_summary	Günün bağlanışı xülasəsi
+delete_party	Seçilmiş tərəfi sil
+delivery	Çatdırılma
+done_open_books	Bitdi — kitabları aç
+drawer_count	Siyirmə sayımı (istəyə bağlı)
+expense_heading	Xərc
+export_day	Günü ixrac et
+extra_note_bill_ph	Bu hesab / satış üçün əlavə qeyd
+extra_note_expense_ph	Son xərc üçün əlavə qeyd
+extra_tills_heading	Əlavə kassalar
+other_devices_help_heading	Digər cihazları quraşdır
+other_devices_help	Bu cihazda (Server): Digər cihazlar → Əlavə kassalara icazə ver. Qoşulma kodunu və Wi‑Fi ünvanını qeyd edin. Görünürsə, Digər cihazların qoşulmasına icazə ver düyməsinə toxunun. Kompüterdə Bu kompüterlə başla düyməsinə toxunun. Hər digər cihazda: tətbiqi quraşdırın, Klient rejimini seçin, Mağazanın serverini tapın (və ya ünvanı yazın), qoşulma kodunu daxil edin, İndi qoşul. Wi‑Fi kəsiləndə sifarişlər cihazda gözləyir və Server cavab verəndə gedir. Mətbəx printerləri Serverdə qurulur (Ayarlar → Printerlər) — əlavə kassalar KOT-ları ora göndərir.
+forget_shop	Bu mağazanı unut
+goods_received	Mal qəbul olundu
+import_day	Günü idxal et
+import_items_csv_plain	Məhsulları CSV idxal et…
+import_parties_csv	Tərəfləri CSV idxal et…
+item_name	Məhsul adı
+kitchen_printing	Printerlər
+login_id_ph	İstifadəçi adı
+mark_cleared	Üzləşdi işarələ
+new_party_clear	Yeni tərəf (formanı təmizlə)
+new_party_kind_supplier_ph	Yeni tərəfin növü (Təchizatçı)
+next_country	Növbəti ölkə
+next_order	Növbəti sifariş (masanı təmizlə)
+note_gstin_ph	Qeyd / GSTIN / müqavilə xatırlatması
+notes_attach_party	Qeydlər və əlavələr (seçilmiş tərəf)
+notes_attach_sale	Qeydlər və əlavələr (seçilmiş satış)
+on_account_ap	Hesaba (AP)
+org_optional_ph	Təşkilat (istəyə bağlı)
+paid_by	Ödəyən
+paid_now	İndi ödənildi
+pair_now	İndi qoşul
+pairing_code_ph	Qoşulma kodu
+party_name_selected_ph	Tərəfin adı (və ya seçilmişi istifadə et)
+password_ph	Parol
+pay_ap_card	AP-ni kartla ödə
+pay_ap_cash	AP-ni nağd ödə
+pay_ap_heading	Onlara borcumuzu ödə (AP)
+pay_ap_upi	AP-ni UPI ilə ödə
+pay_selected_heading	Seçilmişi ödə (borcu bağla / avans al)
+pick_from_items	Bizim məhsullardan seç
+prev_country	Əvvəlki ölkə
+print_open	Çap et / aç
+reason_amend_ph	Düzəliş / ləğv / qaytarma səbəbi
+reason_note_ph	Səbəb / qeyd (itki, sayım, …)
+record_day_close	Günün bağlanışını yaz
+refresh_from_shop	Mağazadan yenilə
+refund	Qaytarma
+remove_selected	Seçilmişi sil
+request_bill	Hesab istə
+restaurant_name_ph	Restoran adı (istəyə bağlı)
+restore_backup	Ehtiyat nüsxəni bərpa et
+role_both	Hər ikisi
+role_admin	Admin
+role_cashier	Kassir
+role_customer	Müştəri
+role_manager	Menecer
+history_retention	Ticarət tarixçəsi
+history_retention_help	Köhnə satışları və KOT-ları avtomatik təmizlə. Menyu, heyət və ayarlar qalır. İndi təmizlə bütün ticarət sətirlərini silir və quraşdırmanı saxlayır.
+history_off	Saxla
+history_day_close	Günün bağlanışında
+history_after_hours	Saatlardan sonra
+history_hours_ph	Saat (1–168, susmaya görə 4)
+history_hours_save	Saatları saxla
+history_clear_now	Tarixçəni indi təmizlə
+history_cleared	Ticarət tarixçəsi təmizləndi — quraşdırma saxlandı
+history_retention_saved	Tarixçənin təmizlənməsi saxlandı
+history_hours_saved	Tarixçə saatları saxlandı
+history_owner_only	Tarixçəni yalnız Sahib və ya Admin təmizləyə bilər
+rollup	Cəmləmə
+save_brand	Brendi saxla
+save_business_id	Biznes id-ni saxla
+save_business_name	Biznes adını saxla
+save_features	Saxla
+save_features_named	{name} üçün saxla
+save_features_ok	{name} üçün quraşdırma saxlandı
+save_names	Adları saxla
+second_way	İkinci üsul
+server_ip_ph	Server IP (məs. 192.168.1.10)
+set_credit_limit	Limiti tərəfə tətbiq et
+set_login_selected	Girişi seçilmişə tətbiq et
+set_login_named	Girişi {name} üçün tətbiq et
+shop	Mağaza
+show	Göstər
+spreadsheet_csv	Cədvəl (CSV)
+start_fresh	Sıfırdan başla
+stop_extra_tills	Əlavə kassaları dayandır
+floor_cols_ph	Sütunlar
+floor_cols_fit	Ekrana sığdır
+floor_cols_fit_sub	{n} bura sığır
+floor_cols_fits	sığır
+floor_cols_scroll	yana sürüşür
+floor_cols_min	Sütunlar: ən azı 1 — və ya ekrana sığdırmaq üçün boş buraxın
+floor_zoom_auto	Avto
+floor_zoom_out	Uzaqlaşdır
+floor_zoom_in	Yaxınlaşdır
+backup_auto	Hər gün avtomatik ehtiyat nüsxə · sonuncu {when} · son 14 gün {dir} qovluğunda saxlanır.
+backup_auto_none	Hər gün avtomatik ehtiyat nüsxə — birincisi bir azdan işləyəcək.
+backup_copy_to	Nüsxələr həm də {dir} qovluğuna gedir.
+backup_copy_btn	Ehtiyat nüsxələri qovluğa da köçür…
+autostart_off	Bu kompüterlə başla
+autostart_on	Bu kompüterlə başlayır ✓ — dayandırmaq üçün toxunun
+autostart_done_on	Bu kompüter indi işə düşəndə tətbiqi açır — elektrik kəsiləndən sonra mağazanın serveri geri qayıdır.
+autostart_done_off	Bu kompüter artıq işə düşəndə tətbiqi açmır.
+device_forgotten	Mağaza bu cihazı unutdu — onu mağazanın cari kodu ilə yenidən qoşun. Üzərində gözləyən sifarişlər saxlanır.
+lan_offline	Mağaza serverinə çatılmır
+forget_device	Unut
+last_seen	görülüb
+copy_pair_code	Qoşulma kodunu köçür
+new_pair_code	Yeni qoşulma kodu
+pair_finishing	Qoşulma bitir… mağazanın kitabları tətbiq olunur
+pair_opening	Kassa açılır…
+pair_copied	Qoşulma kodu köçürüldü
+kot_waiting	Göndərilməyi gözləyir
+lan_offline_waiting	Mağaza serverinə çatılmır · {n} gözləyir
+lan_connecting	Mağazaya qoşulur…
+lan_live	Canlı
+lan_sending	{n} göndərilir
+lan_sign_in_to_send	{n} göndərmək üçün yenidən daxil olun
+lan_pair_again	Bu cihazı yenidən qoşun
+lan_update_app	Tətbiqi yeniləyin — bu cihaz və mağazanın serveri fərqli versiyalardadır
+allow_firewall	Digər cihazların qoşulmasına icazə ver
+firewall_blocked	Bu kompüterin təhlükəsizlik divarı digər cihazları əngəlləyir — Digər cihazların qoşulmasına icazə ver düyməsinə toxunun.
+firewall_waiting	Admin sorğusu gözlənilir…
+lan_join_help	Digər cihazda: Klient rejimi → Mağazanın serverini tapın (və ya {addr} yazın) → qoşulma kodu {code}.
+lan_pair_status	Wi‑Fi {addr}
+lan_join_help_no_addr	Ünvan almaq üçün bu cihazı Wi‑Fi-yə qoşun.
+lan_no_address	Hələ Wi‑Fi ünvanı yoxdur — mağaza Wi‑Fi-sinə qoşulun.
+lan_not_listening	Cihazlar qəbul olunmur (port {port} məşğuldur). Tətbiqi yenidən başladın.
+lan_tills_off	Əlavə kassalar bağlıdır. Başqa cihazın qoşulması üçün onlara icazə verin.
+paired_with	Qoşulub · {url}
+not_paired	Qoşulmayıb
+choose_device_use	Server və ya Klient seçin.
+paired_note	Qoşulub. Satış üçün kilidi açın və ya ən sonu almaq üçün Yenilə.
+last_update_at	Son yeniləmə: {time}.
+pair_intro	Serveri tapın və ya onun ünvanını və qoşulma kodunu yazın.
+queue_waiting	Mağazaya çatmağı gözləyir ({n}):
+queue_tries	{n} dəfə cəhd olundu · son cavab: {e}
+save_backup_copy	Ehtiyat nüsxə saxla…
+backup_copy_saved	Ehtiyat nüsxə saxlandı — onu bu cihazdan kənarda saxlayın (USB yaddaş və ya başqa cihaz)
+backup_copy_overdue	{n} gündür bu cihazdan ehtiyat nüsxə çıxmayıb — Ayarlar → Ehtiyat nüsxə
+backup_copy_failed	Ehtiyat nüsxə ora saxlanılmadı — başqa yer seçin
+clock_off	Bu cihazın saatı mağaza serverindən {min} dəq kənardadır — bu cihazda düzgün vaxtı qoyun
+printers_heading	Printerlər
+printers_help	Printerləri tapın, seçmək üçün birinə toxunun, sonra yalnız həmin cihazda sınaq səhifəsi çap edin. Hesab printerləri: Hesab və KOT formatı → Hesab. Mətbəx printerləri: Mətbəx → Mətbəx postları (əvvəlcə post əlavə edin — Tap post yaratmır).
+printers_host_only	Printerlər mağaza cihazında (Server) qurulur. Bu kassa hesabları və KOT-ları ora göndərir — Tap / əlavə et / təyin et Serverdə qalır. Sınaq səhifəsi və hesab çap ölçüsü Serverə gedir.
+printers_find_heading	Printerləri tap
+printers_find_tip	Tap bu cihazı skan edir və siyahını yeniləyir.
+printers_pool_heading	Printerlər
+printers_pool_tip	Tap bu cihazı skan edir və bu siyahını yeniləyir.
+printers_pool_empty	(hələ yoxdur — Tap düyməsinə toxunun)
+printers_routes_help	Əməliyyat sisteminin artıq tanıdığı printerləri tapın. Onları hesaba və Hesab və KOT formatı altındakı hər mətbəxə təyin edin.
+printer_assign_dd	Həqiqi printer: {place}
+printer_assign_pick	Həqiqi printer seçin
+printer_profile_heading	Maket
+printer_send_heading	Çatdırılma
+vp_delivery_heading	Çatdırılma
+vp_delivery_help	Bu virtual printer işləri necə göndərir — ƏS sənədi, xam baytlar və ya ESC/POS. Slip məzmunu (şrift ölçüsü, büküm, kənarlar) hesab / KOT formatı ilə müəyyən olunur, burada yox.
+vp_type_size_heading	Şrift ölçüsü
+vp_wrap_heading	Büküm eni
+vp_margin_heading	Kənarlar
+vp_delivery_spooler	ƏS sənədi (sistem növbəsi)
+vp_delivery_raw	Cihaza xam baytlar
+vp_delivery_escpos	ESC/POS termal əmrləri
+virtual_printer_new	Yeni virtual printer
+virtual_printer_selected	«{name}» redaktə olunur — keçmək üçün siyahıda başqasına toxunun
+virtual_printer_tap_list	Redaktə etmək üçün siyahıdakı virtual printerə toxunun
+config_layout_portrait	Şaquli
+config_layout_landscape	Üfüqi
+config_send_os	Sistem növbəsi
+config_send_escpos	ESC/POS
+profiles_heading	Maketlər
+profiles_empty	(hələ maket yoxdur)
+profile_builtin	daxili
+profile_custom	xüsusi
+profile_name_ph	Maket adı
+profile_new	Yeni maket
+profile_delete	Maketi sil
+profile_created	Maket yaradıldı
+profile_deleted	Maket silindi
+profile_builtin_keep	Daxili maketləri silmək olmaz
+config_saved	Yeniləndi
+config_selected	«{name}» seçildi
+printer_output_heading	Virtual printerlər
+virtual_printers_heading	Virtual printerlər
+virtual_printers_empty	Hələ virtual printer yoxdur — aşağıda dəyərləri qoyun, sonra Saxla. Bir neçəsi olandan sonra redaktə üçün siyahıda birinə toxunun.
+virtual_printer_name_ph	Virtual printer adı (istəyə bağlı)
+virtual_printer_create	Virtual printer yarat
+virtual_printer_save	Virtual printeri saxla
+virtual_printer_delete	Virtual printeri sil
+virtual_printer_created	Virtual printer «{name}» yaradıldı
+virtual_printer_deleted	Virtual printer «{name}» silindi
+virtual_printer_updated	Virtual printer yeniləndi
+virtual_printer_updated_named	Virtual printer «{name}» yeniləndi
+virtual_draft_layout	Növbəti virtual printer üçün dəyərlər qoyuldu
+virtual_draft_send	Növbəti virtual printer üçün dəyər qoyuldu
+virtual_need_real	Əvvəlcə həqiqi printer seçin
+virtual_need_select	Silmək üçün virtual printer seçin
+real_printer_selected	Seçildi: {name}
+station_group_heading	Virtual printerlər
+station_group_apply	Virtual printeri sil
+station_group_applied	Silindi
+station_group_empty	Virtual printer seçin
+station_group_name_ph	Virtual printer adı (istəyə bağlı)
+station_group_save	Virtual printer yarat
+station_group_saved	Virtual printer saxlandı
+station_manage_heading	Mətbəx postu əlavə et və ya sil
+printers_routes_heading	Nələr harada çap olunur
+route_pick_heading	Yer
+route_editing	Redaktə: {name}
+route_assigned	{printer} {place} yerinə əlavə olundu
+route_already_assigned	Artıq bu yerdədir: {printer}
+route_removed	{printer} {place} yerindən silindi
+route_cleared	{name} təmizləndi
+route_assigned_empty	Bu yerdə heç nə yoxdur
+route_tap_remove	silmək üçün toxunun
+route_tap_select	seçmək üçün toxunun
+route_tap_selected	seçilib
+route_pick_printer_first	Əvvəlcə printerə toxunun
+route_assigned_heading	Printerlər
+route_add_heading	Təyin et
+printer_label_ph	Ad (məs. Mətbəx)
+printer_target_ph	Sistem printerinin adı və ya host:9100
+printer_target_default	bu kompüterin adi printeri (ünvan boş)
+printer_wire_heading	Profil
+printer_wire_escpos	ESC/POS
+printer_wire_os	Şaquli
+printer_wire_os_portrait	Şaquli
+printer_wire_os_landscape	Üfüqi
+printer_wire_escpos_short	ESC/POS
+printer_wire_os_short	Şaquli
+printer_wire_os_landscape_short	Üfüqi
+printer_format_custom	Yeni xüsusi profil
+printer_format_custom_label	Xüsusi
+printer_format_custom_added	Bu yer üçün xüsusi profil əlavə olundu
+add_printer	Printer əlavə et
+remove_printer	Sil
+route_pick_ph	Hesab və ya mətbəx postu
+route_bill	Hesab
+route_default_kitchen	Post yoxdur (təyin olunmamış yeməklər)
+route_kot_station	Mətbəx
+route_dont_print	Printer yoxdur
+stations_heading	Mətbəx postları
+stations_help	Yeməklər və KOT üçün mətbəx postları əlavə edin. Hər postda printerlərini qoşun (Ayarlar → Printerlər altında tapılanlar), üstünlüyü qoyun və Birinci işləyən və ya Hamısına çap et seçin. Dəyişikliklər gedişatda saxlanır — Saxla düyməsi yoxdur.
+station_print_heading	Bu postun printerləri
+station_print_help	Post seçin, sonra bir və ya bir neçə printer qoşun. ↑↓ cəhd sırasını qoyur. Birinci işləyən ilk uğurdan sonra dayanır; Hamısına çap et qoşulmuş hər printerə göndərir. Hər dəyişiklik dərhal saxlanır.
+station_print_pick_ph	Printerləri qoyulacaq post
+station_print_pick_first	Əvvəlcə mətbəx postu seçin
+station_print_editing	«{name}» üçün printerlər redaktə olunur
+station_vps_dd	Bu postun printerləri
+station_vps_dd_n	{n} printer · dəyişmək üçün toxunun
+station_vps_empty	Hələ printer yoxdur — Ayarlar → Printerlər altında tapın
+bill_printers_dd	Hesabın printerləri
+bill_printers_dd_n	Hesab üçün {n} printer · dəyişmək üçün toxunun
+job_layout	Maket
+job_delivery	İş necə göndərilir
+job_delivery_help	ƏS sənədi, xam baytlar və ya ESC/POS. Hesab və mətbəx bileti hər biri özünkünü saxlayır. Hər iş Tap-ın saxladığı istənilən printerə gedə bilər.
+station_vp_attached	Printer qoşuldu
+station_vp_detached	Printer postdan silindi
+station_print_summary	{mode} · {n} printer
+station_print_summary_none	Bu postda hələ printer yoxdur — çap etməyəcək
+stations_none	Hələ post yoxdur — aşağıda əlavə edin. Menyu məhsulları KOT-un orada çap olunması üçün post istifadə edə bilər.
+route_up	Yuxarı
+route_down	Aşağı
+route_remove	Sil
+route_clear	Təmizlə
+save_printers	Printerləri saxla
+print_test_page	Sınaq səhifəsi çap et
+no_printer_assigned	Printer yoxdur
+test_page_no_printer	{place} üçün printer yoxdur — ona printer qoşun, sonra yenidən cəhd edin
+test_page_pick_first	Əvvəlcə sınaq səhifəsi üçün printer(lər) seçin — sonra Sınaq səhifəsi çap et
+test_printers_dd	Sınaq səhifəsi üçün printerlər
+test_printers_dd_n	Sınaq səhifəsi üçün {n} printer · dəyişmək üçün toxunun
+kot_test_printers_dd	Sınaq KOT üçün printerlər
+kot_test_printers_dd_n	Sınaq KOT üçün {n} printer · dəyişmək üçün toxunun
+test_printer_picked	Sınaq: {name}
+test_printer_cleared	Sınaq deyil: {name}
+test_page_sent_n	Sınaq səhifəsi {n} printerə göndərildi
+test_kot_pick_first	Əvvəlcə Sınaq KOT üçün printer(lər) seçin — sonra Sınaq KOT
+test_kot_sent_n	Sınaq KOT {n} printerə göndərildi
+cancel_pick	İşarələ
+cancel_pick_on	İşarələnib
+cancel_pick_meta	Ləğv üçün işarələnib
+batch_cancel	İşarələnənləri ləğv et
+batch_cancel_n	İşarələnənləri ləğv et ({n})
+batch_cancel_none	Əvvəlcə göndərilmiş bir və ya bir neçə yeməyi işarələyin — sonra İşarələnənləri ləğv et
+batch_cancel_title	İşarələnmiş yeməkləri ləğv et — bir səbəb, hər mətbəxə bir ləğv slipi
+batch_cancel_ok	{n} yemək ləğv olundu · {slips} ləğv slipi → {kitchens}
+batch_cancel_ok_noprint	{n} yemək ləğv olundu — KOT avto-çapı bağlıdır, ona görə ləğv slipi yoxdur
+no_printer_kitchen_station	O mətbəx postu üçün printer yoxdur — Mətbəx → Mətbəx postları → Bu postun printerləri
+printers_saved	Saxlandı
+test_page_sent	Sınaq səhifəsi göndərildi — printeri yoxlayın
+test_page_sent_one	Sınaq səhifəsi {name} ünvanına göndərildi — həmin printeri yoxlayın
+printers_found	{n} tapıldı: {list}
+printers_find_synced	{n} tapıldı — {new} yeni
+printer_on_device	saxlandı
+printer_already_added	artıq əlavə olunub
+printer_already_saved	Artıq saxlanılıb: {name}
+find_printers	Printerləri tap
+printers_looking	Axtarılır…
+saving_printer	Printer əlavə olunur…
+cancelled	Ləğv olundu
+printers_tap_find	Bu cihazın istifadə edə biləcəyi printerləri göstərmək üçün Tap düyməsinə toxunun.
+printers_none_found	Heç nə tapılmadı — sistem printerinin adını və ya IP yazın (məs. 192.168.1.50).
+printer_from_find	{name} əlavə olundu
+kot_printer_ph	KOT-lar üçün printer
+bill_printer_ph	Hesablar üçün printer
+kot_print_on	Mətbəx biletlərinin avto-çapı: Açıq
+kot_print_off	Mətbəx biletlərinin avto-çapı: Bağlı
+queue_refused	Mağaza qəbul etmədi ({n}) — hər birini kassada yoxlayın:
+clear_not_accepted	Yoxlandı — bu siyahını təmizlə
+device_name_ph	Bu cihazın adı
+lan_last_update	son yeniləmə {time}
+lan_not_accepted	{n} qəbul olunmadı
+connected_now	indi qoşulub
+backup_failed	Son avtomatik ehtiyat nüsxə alınmadı: {e}
+backup_overdue	{n} gündür ehtiyat nüsxə yoxdur — ehtiyat nüsxə ala bilsin deyə tətbiqi bu cihazda açıq saxlayın.
+disk_low	Bu cihazda yalnız {mb} MB boşdur — ehtiyat nüsxələr tezliklə alınmayacaq. Bir az yer boşaldın.
+last_seen_devices	Son görülmə: {time}
+sync_interval	Hər {secs} saniyədən bir sinxron
+connection_to_shop	Mağaza ilə əlaqə
+supplier_name_ph	Təchizatçı adı (və ya tərəf)
+supplier_ph	Təchizatçı
+switch_device	Bu cihazı dəyiş
+take_payment	Ödəniş al
+tax_added_till	{tax} xaric
+tax_inside_price	{tax} daxil
+tax_invoice	Vergi fakturası
+till_to_bank	Kassa → bank
+units_heading	Vahidlər
+unlock_after_pairing	PIN daxil edin
+unlock_with_login	Girişlə kilidi aç
+unmark	İşarəni götür
+update_my_password	Parolumu yenilə
+update_my_pin	Girişimi yenilə
+duress_heading	Fövqəladə kilid PIN-i (yalnız Sahib)
+duress_help	İstəyə bağlı. Açılışda sizin PIN əvəzinə bu PIN yazılsa, bütün kitab yazıları silinir (satışlar, dəftərlər, tarixçə) və kassa normal görünən Sahib kimi açılır — menyu, qiymətlər, masalar, heyət və ayarlar qalır. Sxem və konfiqurasiya silinmir. Yalnız kilidi açmağa məcbur olanda istifadə edin. Söndürmək üçün boş buraxıb saxlayın. Heç kimin PIN-i ilə eyni olmasın.
+duress_pin_ph	Fövqəladə PIN (4–12 rəqəm)
+duress_confirm_ph	Təsdiq üçün yenidən yazın
+save_duress_pin	Fövqəladə PIN-i saxla
+clear_duress_pin	Fövqəladə PIN-i söndür
+duress_on	Fövqəladə kilid PIN-i açıqdır
+duress_off	Fövqəladə kilid PIN-i bağlıdır
+duress_saved	Fövqəladə kilid PIN-i saxlandı
+duress_cleared	Fövqəladə kilid PIN-i söndürüldü
+upi_amount_ph	UPI məbləği
+void	Etibarsız et
+write_off_ap	AP-ni hesabdan sil
+write_off_heading	Hesabdan sil (ödənişsiz təmizlə)
+write_off_nil	Hesabdan sil / sıfır qalıq
+your_brand	Sizin brend (tətbiqdə)
+your_categories	Sizin kateqoriyalar
+account_kind	Hesab növü (birinə toxunun)
+actual_total_cap	FAKTİKİ CƏM
+amend_help	Düzəliş, etibarsız etmə və ya qaytarma üçün satış seçin. Düzəlişlər tam tarixçəni saxlayır. Yuvarlaq cəm Tətbiq olunana bərabər başlayır — yalnız yuvarlaqlaşdırmaq üçün dəyişin. Etibarsız etmə və qaytarma Sahib və ya Menecer PIN-i tələb edə bilər (yuxarıda yazılır; adınızla qeyd olunur).
+applied_total_cap	TƏTBİQ OLUNAN CƏM
+bank_balance	Bank qalığı
+bank_net_today	Bu gün bank xalisi
+branch_export_help	İxrac branch_snapshot_CODE_DATE.json faylını ehtiyat nüsxə qovluğuna yazır və onu buferə köçürür. Başqa satış nöqtəsinin gününü idxal etmək üçün onun faylını eyni qovluqda import_branch_snapshot.json adı ilə saxlayın, sonra İdxal düyməsinə toxunun.
+brand_shown_help	Tətbiqin içindəki ekranlarda göstərilir. Bu cihazda quraşdırılmış tətbiqin adı və nişanı platforma siyahısındakı kimi qalır.
+app_icon	Tətbiq nişanı
+logo_help	Tətbiqdəki ekranlarda istəyə bağlı mağaza işarəsi.
+onboard_layout	Nə alırsınız
+item_photo_help	İstəyə bağlı. Şəkil olmayanda məhsul adının baş hərflərini göstəririk.
+stamp_heading	Möhür
+stamp_image_help	Çap olunan hesablarda və qonaq ekranında istəyə bağlı möhür şəkli.
+payment_qr_heading	Ödəniş QR
+payment_qr_image_help	Hesablarda və qonaq ekranında sabit QR; əks halda ödəniş yuxarıdakı VPA-dan dinamik UPI QR istifadə edir.
+cash_in_hand	Əldə nağd (kassa)
+change_my_pin_heading	Mənim girişim
+connect_to_server	Serverə qoşul
+counter_locked	Kassa 01 · Kilidlidir
+country_pack_help	Ölkə paketi vergi adını və hesabını, ani ödəniş xəttini və hesablarda çap olunan biznes id-ni qoyur. Kumkaj heç yerdə vergi bəyannaməsi vermir və dövlət e-fakturası buraxmır.
+currency_use_help	Dəstəklənən istənilən valyuta üçün sürüşdürün və İstifadə et düyməsinə toxunun.
+day_close_help	Günün bağlanışını yazmaq bu xülasəni (və sayılsa siyirmə fərqini) audit jurnalına saxlayır. Satışı dayandırmır.
+expenses_word	Xərclər
+feature_access_help	Nə aça bilərlər — istəyə bağlı; yuxarıdakı vəzifə artıq susma qoyur
+footer_local	Yerli SQLite · Həmişə pulsuz · Sıfır Cloud
+fresh_book_khaynjo	Təzə = boş menyu (yeməkləri sonra Menyuda əlavə edin). Kitab = aşağıda açılış məhsullarını və sizə kimin borclu olduğunu yazın.
+fresh_selected	Təzə seçildi — kataloq boş qalır. Hazır olanda Bitdi düyməsinə toxunun.
+gross_word	Brutto
+how_start	Necə başlamaq istəyirsiniz?
+kot_print_help_khaynjo	Açıq olanda hər mətbəx Göndər düyməsinə basan kimi öz KOT kağızını çap edir.
+later_country_pack	Sonra: Ayarlar → vergi və ödəniş etiketləri üçün ölkə paketinizi tətbiq edin.
+local_badge	YERLİ
+mix_type_hint_khaynjo	Lazım olsa nağd / UPI / kart / kredit arasında bölün. Kredit üçün yuxarıda müştəri lazımdır.
+money_in_sales	Pul girişi (satışlar)
+net_word	Xalis
+offline_badge	OFLAYN
+optional_login_help	İstəyə bağlı giriş (id + parol). Sahib bir dəfə qoyur; parolu sonra yalnız istifadəçi dəyişə bilər.
+or_unlock_login	Və ya giriş id-si + parol ilə kilidi açın
+permission_preset	Vəzifə (ekranları və pul əməllərini qoyur)
+preset_help_khaynjo	Kassir: satış. Menecer: satış + məhsullar + etibarsız etmə/düzəliş.
+product_locked_khaynjo	Khaynjo
+product_only_khaynjo	Bu tətbiq yalnız Khaynjo-dur — restoran əməliyyat sistemi. Digər ticarət üzləri ayrı Kumkaj məhsulları kimi çıxır.
+purchases_cogs	Alışlar (COGS)
+qty_cap	SAY
+restore_help	Bərpa: ehtiyat nüsxə seçin. Kitablar o vaxtkı kimi açılır; indiki kitablar əvvəlcə saxlanır, ona görə bunu geri almaq olar.
+wipe_data_heading	Yerli məlumatı sil
+wipe_data_help	Yalnız Sahib — Windows silinməsi ilə eyni seçimlər. Biznes qeydləri ticarət tarixçəsini təmizləyir, menyu və quraşdırmanı saxlayır (fövqəladə kilid PIN-i kimi). Mağaza quraşdırması kitablar verilənlər bazasını silir. Ekran seçimləri pəncərə/dili təmizləyir. Sahib PIN-i ilə təsdiqləyin. Heyətdəki fövqəladə kilid PIN-i ayrıdır (açılışda gizli silmə).
+wipe_trading	Biznes qeydləri
+wipe_schema	Mağaza quraşdırması
+wipe_ui	Ekran seçimləri
+wipe_owner_pin_ph	Silmək üçün Sahib PIN-i
+wipe_delete_selected	Seçilmişi sil
+wipe_owner_only	Yerli məlumatı yalnız Sahib silə bilər.
+restore_owner_only	Ehtiyat nüsxəni yalnız Sahib bərpa edə bilər.
+wipe_owner_pin_needed	Yerli məlumatı silmək üçün Sahib PIN-ini daxil edin.
+wipe_nothing_selected	Əvvəlcə nəyin silinəcəyini seçin.
+wipe_done	Seçilmiş yerli məlumat silindi.
+wipe_schema_done	Mağaza quraşdırması silindi — davam etmək üçün Server və ya Klient seçin.
+rounded_total	Yuvarlaq cəm
+setup_app_khaynjo	Khaynjo-nu quraşdır
+shop_logo_optional	Mağaza loqosu (istəyə bağlı)
+stock_type_help	Məhsul adını yazın (bir hissəsi kifayətdir), say, sonra düzəldin. Hələ sayılmayan məhsullara bir dəfə İzləməyə başla lazımdır.
+team_owner_help	Kimisə əlavə etmək üçün şəxsi boş buraxın: ad, vəzifə, istifadəçi adı, PIN və istəyə bağlı parol, sonra Əlavə et. Həmin formanı redaktə etmək üçün şəxs seçin — ad, istifadəçi adı, parol, ekranlar və hüquqlar — sonra Saxla. Öz PIN və parolunuz aşağıda bir girişdir. Sahib başqasının PIN-ini dəyişmir.
+staff_name_ph	Heyət üzvünün adı
+staff_copy_hire_ph	Quraşdırmanı buradan köçür (istəyə bağlı)
+staff_copy_hire	Bu şəxsin quraşdırmasını istifadə et
+staff_edit_name_ph	Görünən ad
+staff_rename	Adı saxla
+staff_copy_edit_ph	Quraşdırmanı başqa şəxsdən köçür
+staff_copy_edit	Onların quraşdırmasını seçilmişə köçür
+staff_copy_edit_onto	Onların quraşdırmasını {name} üzərinə köçür
+staff_deactivate_named	{name} sil
+staff_renamed	Ad saxlandı
+staff_setup_copied_hire	Quraşdırma {name} şəxsindən köçürüldü — yeni ad və PIN qoyun, sonra Heyət əlavə et
+staff_setup_copied_edit	{from} quraşdırması {to} üzərinə köçürüldü
+staff_copy_need_selected	Əvvəlcə kimi redaktə edəcəyinizi seçin
+staff_copy_need_source	Kimin quraşdırmasının köçürüləcəyini seçin
+staff_copy_same	Bu eyni şəxsdir — başqasını seçin
+staff_rename_need_selected	Əvvəlcə adını dəyişəcəyinizi seçin
+team_pick_hint	Kimi redaktə edəcəyinizi seçin — ekranlar, pul hüquqları və mətbəx postları yalnız həmin şəxs üçün görünür.
+team_stations_help	İstifadə edə biləcəkləri mətbəx postları
+team_stations_changed	Mətbəx postları dəyişdi — bu şəxs üçün quraşdırmanı Saxla
+team_features_changed	Ekranlar dəyişdi — bu şəxs üçün quraşdırmanı Saxla
+team_rights_changed	Hüquqlar dəyişdi — bu şəxs üçün quraşdırmanı Saxla
+they_owe_us	Onlar bizə borcludur
+unit_at_cap	Vahid @
+units_help	Məhsul etiketləri üçün kodlar (kg, ədəd, kisə). Hər vahid — birbaşa və ya başqa vahidlər vasitəsilə — standarta bağlanmalıdır (kg · cm · ml · pc), məs. 1 yeşik = 2 qutu və 1 qutu = 20 cm. Çevrilmələr: 1 haradan = əmsal hara. Valyutalar heç vaxt vahid deyil.
+units_picker_help	Vahidi Alış və Menyu seçicilərində göstərmək üçün Açıq/Bağlı toxunun. Bağlı vahidlər yenə də çevrilir.
+unit_picker_on	Açıq
+unit_picker_off	Bağlı
+we_owe_them	Biz onlara borcluyuq
+who_unlocking	Kim kilidi açır?
+locked_word	Kilidlidir
+show_pin	PIN-i göstər
+hide_pin	PIN-i gizlət
+set_owner_pin	SAHİB PIN-İNİ QOY
+enter_owner_passcode	SAHİB KODUNU DAXİL EDİN
+enter_staff_passcode	HEYƏT KODUNU DAXİL EDİN
+pin_count_zero	0 / 12 rəqəm · ən azı 4, sonra OK
+pin_count_need	{} / 12 rəqəm · daha {} lazımdır
+pin_count_full	12 / 12 rəqəm · OK basın
+pin_count_ready	{} / 12 rəqəm · hazır olanda OK basın
+pin_hint_choose	4–12 rəqəm seçin · saxlamaq üçün Enter və ya Kilidi aç
+pin_hint_new	Yeni 4–12 rəqəmli Sahib PIN-i · Enter və ya Kilidi aç
+pin_hint_shop_code	Mağaza cihazı · qoşulma kodu {}
+pin_hint_books	Bu cihaz kitabları saxlayır
+pin_hint_paired	Əlavə kassa qoşulub — satış üçün kilidi açın
+pin_hint_pair_first	Əlavə kassa — əvvəlcə mağaza cihazına qoşulun
+unlock_to_continue	Davam etmək üçün kilidi açın
+no_staff_yet	Hələ heyət yoxdur — Sahib kimi kilidi açın, sonra Heyət
+status_server_set_pin	Server rejimi — Sahib PIN-ini qoyun
+status_server_tills	Server rejimi — əlavə kassalar qoşula bilər. Kilidi açın
+status_server_unlock	Server rejimi — Sahib kimi kilidi açın
+status_client_unlock	Klient rejimi — satış üçün kilidi açın
+icon_new_selected	Nişan: yeni fayl seçildi — Brendi saxla düyməsinə toxunun
+icon_custom	Nişan: xüsusi məkan işarəsi
+icon_default	Nişan: Kumkaj işarəsi (susma) — xüsusi birini seçin
+logo_yours	Loqo: sizin mağaza loqonuz — ekranlarda və qəbzlərdə göstərilir
+logo_default	Loqo: Kumkaj işarəsi (susma) — varsa, özünüzünkünü seçin
+tmpl_current	Cari: {} — {}
+tmpl_selected	Seçilib: {} — {}
+setup_complete	Quraşdırma bitdi
+onboard_fresh_tmpl	Təzə · {} — kataloq boş başlayır; məhsulları Məhsullarda əlavə edin, sonra Bitdi.
+onboard_book_tmpl	Kitab · {} — məhsullar və açılış krediti əlavə edin, sonra Bitdi.
+onboard_template_tmpl	İstəsəniz yerin adını yazın, sonra necə başlayacağınızı seçin.
+tmpl_blurb	Masalar, sifariş, mətbəx biletləri, hesab və kitablar.
+tmpl_how	Kassada satın; masalar və KOT üçün Zal; günün kitabı üçün Kitablar.
+reports_facet_title	Hesabatlar
+reports_facet_help	Gün kitabları, tərəf yaşlanması, bank yazıları və dövr M/Z.
+against_bill_ph	Yuxarıdakı hesab № qarşısında (istəyə bağlı)
+aliases_ph	Ləqəblər — digər adlar, vergüllə
+amount_blank_full_ph	Məbləğ (boş = tam qalıq)
+amount_owed_ph	Borc məbləği
+amount_ph	Məbləğ
+amount_received_ph	Alınan məbləğ
+amount_we_pay_ph	Ödədiyimiz məbləğ
+business_name_ph	Biznes adı
+category_new_ph	Kateqoriya (istəyə bağlı, yenidirsə yaradılır)
+code_bag_ph	Kod (bag)
+conv_factor_ph	Əmsal (25 = 1 bag → 25 kg)
+country_code_ph	Ölkə kodu, məs. IN, GB, US, AE, BR
+credit_khata_amount_ph	Kredit / khata məbləği
+credit_limit_ph	Kredit limiti (0 = yoxdur)
+from_code_ph	Haradan kodu (bag)
+item_name_lang_ph	Məhsul adı — öz dilinizdə yazın
+login_id_opt_ph	İstifadəçi adı (mütləq, unikal)
+manager_pin_ph	Təsdiq üçün Menecer PIN-i (yalnız etibarsız edə bilmirsinizsə)
+new_branch_name_ph	Yeni filial adı
+new_password_ph	Yeni parol (istəyə bağlı)
+new_pin_ph	Yeni PIN (4–12 rəqəm)
+note_bank_ph	Qeyd (mədaxil, məxaric, …)
+note_buy_expense_ph	Qeyd (yanacaq, icarə, …)
+note_expense_ph	Qeyd (yanacaq, ofis, …)
+options_khaynjo_ph	Seçimlər — Size*: Small=199, Large=399 | Toppings+3: Cheese=40, Olive=30 | Extra cheese=40
+part_second_way_ph	İkinci üsulla hissə (istəyə bağlı)
+phone_ph	Telefon
+place_name_ph	Bu yerin adı
+qty_example_ph	Say (məs. kg üçün 1.5)
+quantity_ph	Say
+reason_required_ph	Səbəb (mütləq)
+role_title_ph	Vəzifə adı (məs. Barista)
+service_pct_ph	Xidmət % istəyə bağlı 0/10/12
+short_code_ph	Qısa kod (MG02)
+starting_password_ph	Başlanğıc parol (istəyə bağlı)
+starting_pin_ph	Başlanğıc PIN (4–12 rəqəm)
+station_name_ph	Post adı (məs. Tandoor, Fryer, Cold)
+station_new_ph	Mətbəx postu (istəyə bağlı, məs. Tandoor — yenidirsə yaradılır)
+table_name_ph	Masa adı (məs. Patio 1, Kassa 2)
+tax_rate_ph	Vergi dərəcəsinin adı və ya % — Standart, Azaldılmış, 0, 5, 12, 18, 20
+to_code_ph	Hara kodu (kg)
+uncleared_no_ph	Yuxarıdakı üzləşməmiş №
+unit_cost_ph	Vahid mayası
+unit_name_bag_ph	Ad (Bag)
+unit_plate_ph	Vahid (plate / pc — boş = ədəd)
+pay_credit	Kredit
+book_kind_today	Bu günün kitabları
+book_kind_month	Bu ayın kitabları
+book_kind_aging	Ödənilməmiş / debet-kredit
+book_kind_balance	Balans hesabatı
+order_help	Əlavə etmək üçün məhsula toxunun.
+floor_help	Sifariş almaq və ya dəyişmək üçün masaya toxunun. Rənglər göstərir: boş → oturdulub → mətbəx → hazır → yeyilir → hesab → ödənilib. Gözləmə siyahısı, rezervasiyalar və masa əlavəsi aşağıdakı bölmələrdədir.
+kitchen_help	Mətbəx biletləri (KOT), ən yeni sonda. Başla → Hazır → Bitdi bileti irəli aparır. Biletlərdə qiymət göstərilmir.
+kitchen_empty	Açıq bilet yoxdur. Sifariş və ya Zaldan göndərilən KOT burada görünür.
+add_a_table	Masa əlavə et
+add_station_heading	Mətbəx postu əlavə et
+categories_help	Yuxarıdakı məhsulu həmin kateqoriyaya salmaq üçün İstifadə et düyməsinə toxunun. Şəkil kateqoriyaya şəkil verir; olmayanda baş hərflərini göstərir.
+dish_search_ph	Məhsul adı — bizim yeməkləri axtarın və ya özünüzünkünü yazın
+tile_free	Boş
+tile_occupied	Tutulub
+tile_food_ready	Yemək hazırdır
+tile_bill_printed	Hesab çap olundu
+tile_paid	Ödənilib
+tile_bill_btn	Hesab
+tile_occupy_btn	Qonaqları oturt
+tile_free_btn	Masanı boşalt
+tile_ready_btn	Masanı boşalt
+tile_undo_bill	Hesabı geri al
+summary_busy	məşğul masa
+summary_to_collect	yığılacaq
+summary_on_floor	zalda
+floor	Zal
+sizes_as_items_ph	Ölçülər ayrı məhsul kimi (istəyə bağlı) — Half=120, Full=200
+dish_group_ph	Yemək qrupu (istəyə bağlı) — məs. Paneer Tikka
+discount	Endirim
+remove_discount	Endirimi sil
+apply_discount	Endirimi tətbiq et
+save_opening_cash	Açılış nağdını saxla
+close_shift_print	Növbəni bağla və slip çap et
+area_prices_ph	Zona qiymətləri (istəyə bağlı) — AC=220, Parcel=210
+discount_ph	10% və ya 50
+discount_reason_ph	Səbəb (məs. daimi qonaq, gecikən yemək)
+opening_float_ph	Bu səhər siyirməyə qoyulan nağd
+shift_counted_ph	Təhvildə sayılan nağd
+opening_float	Açılış nağdı (siyirmə qalığı)
+shift_handover	Növbə təhvili
+shift_since	Bu növbə buradan
+expected_in_drawer	Siyirmədə gözlənilən
+right_discount	Endirim ver
+floor_in_kitchen	Mətbəxdə
+floor_eating	Verilib
+pick_category	Kateqoriya seçin
+close_category_list	Kateqoriya siyahısını bağla
+new_category_row	Yeni kateqoriya — məhsulu saxlayanda yaranır
+your_category	Sizin kateqoriya
+suggested_category	Təklif — bizim yeməklərdən
+category_search_ph	Kateqoriya — özünüzünkünü axtarın və ya yenisini yazın
+line_sent_state	Mətbəxə göndərildi
+line_nc_state	Kompliment (NC) — hesaba yazılmır
+cancel_item_short	Ləğv
+nc_short	NC
+charge_again_short	Hesabla
+move_short	Köçür
+cancel_item_title	Bu məhsulu ləğv et — mətbəx ləğv slipi alır
+nc_item_title	Bu məhsulu kompliment et (NC)
+charge_again_title	Bu məhsulu yenidən hesabla
+move_item_title	Bu məhsulu başqa masaya köçür
+already_cooked	Artıq bişib (itki)
+not_cooked_yet	Hələ bişməyib
+return_to_customer	Müştəriyə qaytar
+short_by	Çatışmayan
+tip_not_sale	Çaypulu (heyətindir, satış deyil)
+right_settle	Ödəniş al
+right_cancel_sent	Göndərilmiş məhsulu ləğv et
+right_complimentary	Kompliment (NC)
+right_move_table	Masaları köçür / birləşdir
+right_reprint	Hesabı yenidən çap et
+right_allowed	İcazə var
+right_with_approval	Təsdiqlə
+right_denied	İcazə yoxdur
+editing_staff	Redaktə
+finding_server	Bu Wi‑Fi-də mağazanın serveri axtarılır…
+no_server_found	Heç nə tapılmadı. Serverdə: Ayarlar → Digər cihazlar → Əlavə kassalara icazə ver (eyni Wi‑Fi). Və ya orada göstərilən IP-ni yazın.
+servers_found_pick	Qoşulmaq istədiyiniz mağazaya toxunun.
+server_host_selected	{host} istifadə olunur — qoşulma kodunu daxil edin, sonra İndi qoşul.
+print_bill	Hesabı çap et
+table_actions	Masa əməlləri
+move_merge_table	Masanı köçür / birləşdir
+move_help	Bu masanın sifarişini boş masaya köçürün və ya gedən masaya birləşdirin.
+move_target_ph	Masa adı (məs. D5, P2)
+approval_pin_ph	Menecer PIN-i (yalnız soruşulsa)
+move_here	Bura köçür
+merge_into	Bunun içinə birləşdir
+line_reason_ph	Səbəb (məs. qonaq fikrini dəyişdi, stok bitdi)
+line_qty_ph	Neçəsini ləğv etmək (boş = hamısı)
+line_target_ph	Masaya köçür (məs. D5)
+confirm	Təsdiq et
+menu_search_ph	Məhsul və ya qısa kod axtar
+customer_paid_ph	Müştəri ödədi
+tip_ph	Çaypulu
+table_area_ph	Zona (məs. Salon, Paket, Kondisioner)
+table_range_ph	Birdən çox: D1-D20
+add_these_tables	Bu masaları əlavə et
+remove_these_tables	Bu masaları sil
+table_remove_ph	Sil: T1-T24 və ya bir masanın adı
+find_server	Mağazanın serverini tap
+bill_format	Hesab formatı
+bill_format_help	Hər hesabda restoranınızın adının altında çap olunur. Sətirləri | ilə ayırın (məs. MG Road, Rajkot | Tel 98250 00000).
+bill_header_ph	Ünvan | telefon
+fssai_ph	FSSAI lisenziya № (Hindistan)
+bill_footer_ph	Altlıq (məs. Təşəkkür edirik, yenə gəlin)
+save_bill_format	Hesab formatını saxla
+reset_bill_format	Susmaya qaytar
+bill_format_reset	Hesab formatı susmaya qaytarıldı
+reset_kot_format	Susmaya qaytar
+kot_format_reset	KOT formatı susmaya qaytarıldı
+kot_format	KOT formatı
+kot_format_help	Siyahıdakı sahəyə toxunun. Göstər, şrift ölçüsü və qalınlıq yuxarıda seçilmiş KOT növündə həmin sahəyə tətbiq olunur. Hər növ öz ölçü və qalınlığını saxlayır.
+kot_format_fields	Sahələr
+kot_field_next	Növbəti sahə
+kot_field_show	Göstər
+kot_field_hide	Gizlət
+kot_field_on	göstər
+kot_field_off	gizlət
+kot_field_size	Şrift ölçüsü
+kot_field_size_ph	məs. 16, 20, 24, 28, 32…
+kot_weight_light	Yüngül
+bill_kot_panel_help	Hesab və mətbəx slipinin düzümü, hər birinin öz məzmun eni var. Hesab Kassiri hesabı verən və ya bağlayandır; KOT Ofisiantı həmin mətbəx biletini göndərəndir — sifarişin tam hekayəsi kitablarda qalır.
+std_size_ph	məs. 18, 20, 26…
+kot_show_shop	Mağaza adı
+kot_hide_shop	Mağazanı gizlət
+kot_show_time	Vaxt
+kot_hide_time	Vaxtı gizlət
+kot_show_waiter	Ofisiant
+kot_hide_waiter	Ofisiantı gizlət
+kot_show_station	Post
+kot_hide_station	Postu gizlət
+kot_show_table	Masa
+kot_hide_table	Masanı gizlət
+kot_show_kot_no	KOT №
+kot_hide_kot_no	KOT № gizlət
+kot_width	Önizləmə bükümü (məzmun enini KOT vərəqində qoyun)
+kot_width_58	58 mm
+kot_width_80	80 mm
+kot_kind_heading	KOT növü
+kot_kind_original	Əsl
+kot_kind_duplicate	Dublikat
+kot_kind_modified	Dəyişdirilmiş
+kot_kind_cancelled	Ləğv olunmuş
+kot_style_heading	Sahənin şrift ölçüsü və qalınlığı
+kot_style_title	Başlıq
+kot_style_item_qty	Məhsul · Say
+kot_style_field_pick	Sahə seçin
+kot_weight_regular	Adi
+kot_weight_bold	Qalın
+kot_align	Düzüm
+kot_align_start	Başlanğıc
+kot_align_center	Mərkəz
+kot_align_end	Son
+content_width	Məzmun eni (mm)
+content_width_bill	Hesabın məzmun eni (mm)
+content_width_kot	KOT-un məzmun eni (mm)
+content_width_ph	Və ya məzmun eni yazın, 40–210 mm
+content_width_help	Bu slip nə qədər enində çap olunur. Hesab və KOT hər biri öz enini saxlayır.
+content_width_bill_help	Qonaq hesabı nə qədər enində çap olunur. Susma 210 mm (səhifə). 58 mm dar slip, 80 mm enli slip, 112 mm 4 düym, 210 mm A4 eni. 40-dan 210-a qədər istənilən dəyəri yazın. Mətbəx biletlərinin öz eni KOT vərəqindədir.
+content_width_kot_help	Mətbəx bileti nə qədər enində çap olunur. Susma 80 mm. 58 mm dar slip, 80 mm enli slip, 112 mm 4 düym, 210 mm səhifə. 40-dan 210-a qədər istənilən dəyəri yazın. Qonaq hesablarının öz eni Hesab vərəqindədir.
+vp_paper_width	Məzmun eni (mm)
+vp_paper_width_ph	Və ya məzmun eni yazın, 40–210 mm
+vp_paper_width_help	Məzmun eni Hesab və KOT formatı altında qoyulur — hesab üçün ayrı (susma 210 mm) və mətbəx bileti üçün ayrı (susma 80 mm).
+kot_size	Şrift ölçüsü
+kot_size_s	Kiçik
+kot_size_m	Normal
+kot_size_l	Böyük
+std_size	Şrift ölçüsü
+kot_copies	Nüsxələr
+kot_copies_1	1
+kot_copies_2	2
+kot_copies_3	3
+kot_title_ph	Başlıq (boş = KOT - KITCHEN ORDER)
+kot_footer_ph	Mətbəx qeydi (istəyə bağlı, qiymətsiz)
+kot_preview	Önizləmə
+save_kot_format	KOT formatını saxla
+test_kot_format	Sınaq KOT
+test_kot_sent	Mətbəx bileti önizləməsi göndərildi
+test_bill_format	Sınaq hesab
+test_bill_sent	Hesab önizləməsi göndərildi
+test_print_no_printer	Bu iş üçün printer yoxdur — bu ekranda birini seçin
+kot_format_saved	KOT formatı saxlandı
+std_print	Hesab çap ölçüsü
+std_print_help	ƏS / sənəd printerlərində Standart Şaquli və Üfüqi hesab işləri üçün şrift ölçüsü (punkt yazın — Kiçik/Normal/Böyük yox). Hər iki istiqamətdə eyni ölçü. Mətbəx slipinin ölçüləri KOT vərəqindədir.
+std_size_s	Kiçik
+std_size_m	Normal
+std_size_l	Böyük
+save_std_print	Hesab çap ölçüsünü saxla
+std_print_saved	Hesab çap ölçüsü saxlandı
+print_brand_kit	Brend dəstini çap et
+print_brand_kit_help	Hesab üzlərində və LAN qonaq ekranında istəyə bağlı möhür və ödəniş QR şəkilləri. Ödəniş QR şəkli qoyulmayanda yuxarıdakı VPA-dan dinamik UPI QR yenə işləyir.
+choose_stamp	Möhür seç
+clear_stamp	Möhürü sil
+stamp_set	Möhür: faylda — qonaq ekranında göstərilir və çap olunan hesablarda adı yazılır
+stamp_none	Möhür: yoxdur
+choose_payment_qr	Ödəniş QR seç
+clear_payment_qr	Ödəniş QR-i sil
+payment_qr_set	Ödəniş QR: faylda — qonaq ekranında göstərilir (oradakı məbləğ UPI QR-ini əvəz edir)
+payment_qr_none	Ödəniş QR: yoxdur — ödəyəndə UPI ID-dən məbləğ QR-i
+aggregator_import	Aqreqator sifarişləri (fayl)
+aggregator_import_help	İstəyə bağlı yerli idxal: ehtiyat nüsxə qovluğuna import_aggregator_orders.json qoyun (massiv və ya {"orders":[…]}), sonra İdxal düyməsinə toxunun. Kassanı heç vaxt dayandırmır; canlı Zomato/Swiggy Cloud-dadır.
+import_aggregator_file	Aqreqator faylını idxal et
+team_pick_ph	Redaktə ediləcək heyət — ad, istifadəçi adı və ya seçin
+select_staff	Bu heyət üzvünü seç
+rights_help	Bu şəxs üçün pul və zal əməlləri — dövrə vurmaq üçün toxunun: İcazə var → Rəhbər PIN-i lazımdır → İcazə yoxdur. Hesabı yenidən çap et yalnız hesablardır; mətbəx postları aşağıdakı siyahıdır.
+dish_picker_help	Bizim yeməkləri axtarın və ya gözdən keçirin və adını və şəklini doldurmaq üçün birinə toxunun — və ya öz adınızı saxlayın. Qiymətinizi qoyun (0 olar), sonra Məhsul əlavə et.
+close_dish_list	Yemək siyahısını bağla
+own_item_name	Bunu öz məhsul adınız kimi istifadə edin
+on_your_menu	Menyunuzda
+edit	Redaktə et
+schemes	Sxemlər / təkliflər
+schemes_help	BOGO, faiz endirimi və sabit kombolar. Kombolar KOT göndərəndə mətbəx sətirlərinə açılır; hissələr kombo işə düşənə qədər gözlədilir. Nümunə: Buy 2 Thali get 1 Chaas
+scheme_bogo_ph	Buy 2 Thali get 1 Chaas
+add_scheme	BOGO əlavə et
+schedule_ph	Saatlar / xoş saat — Mon-Fri 07:00-11:00 və ya HappyHour 17:00-19:00=150
+upi_vpa_ph	UPI ID (VPA)
+upi_payee_ph	UPI alanın adı (istəyə bağlı)
+upi_qr	UPI QR
+show_upi_qr	UPI QR göstər
+close_upi_qr	Bağla
+upi_qr_help	Qonaq skan edir və ödəyir. Ödəyəndən sonra Ödəniş al düyməsinə toxunun. İkinci ekran: LAN-da Server URL /display açın.
+kot_recall	Geri çağır
+recently_done	Bu yaxın bitənlər
+recall_kot_ph	Geri çağırılacaq KOT №
+role_help_customer	Rol: Müştəri — khata (onlar bizə borcludur). Eyni tərəf stok da verə bilər.
+role_help_both	Rollar: Müştəri + Təchizatçı — bir tərəf, khata və ödəniləcək dəftərlər, Hesabatlarda xalis.
+role_help_supplier	Rol: Təchizatçı — alışlara görə biz onlara borcluyuq.
+dine_in_pick_table	Salonda — Zaldan masa seçin
+choose_table	Masa seçin
+change_table	Masanı dəyiş
+pick_table_banner	Bu sifariş üçün masa seçin
+items_word	məhsul
+items_section	Məhsullar
+back_to_order	Sifarişə qayıt
+new_items_head	Hələ göndərilməyib
+price_ph	Qiymət
+price_ph_gst_inside	Qiymət ({tax} daxil)
+cancel_needs_table	Mətbəx aldıqdan sonra ləğv etmək üçün bu sifarişi Zaldan (masadan) açın — kassa KOT-ları ödəniş alınana qədər biletdə qalır
+tax_rates_missing_hint	Bu yeməklərdə {tax} dərəcəsi yoxdur — Menyuda Vergi dərəcəsini qoyun (qiymətlər {tax} daxil altında artıq {tax} ehtiva edir)
+taxable_value	Vergiyə cəlbedilən dəyər
+gst_inside_price_note	({tax} daxil)
+start_with_template	Menyumuzun şablonu ilə başla
+template_heading	Menyumuzun şablonu
+template_info	{c} kateqoriya və şəkilli {d} yemək, əlavə etməyə hazır. Qiymətlər ₹0-dan başlayır — sonra özünüzünkünü qoyun.
+template_import	Tam şablonu idxal et
+template_confirm	{d} yeməyi kateqoriyaları ilə əlavə edilsin? Artıq sizdə olan yeməklər olduğu kimi qalır.
+template_yes	Bəli, idxal et
+template_importing	Menyu idxal olunur…
+template_import_progress	İdxal olunur… {d}/{t}
+template_done	Şablonumuzdakı hər yemək menyunuzdadır.
+template_imported	{d} yemək və {c} kateqoriya əlavə olundu — qiymətlərini bu ekranda qoyun
+client_template_heading	Klient menyusu
+client_template_info	{title}: {c} kateqoriya, qiymətli, şəkilli və ləqəbli {d} yemək. Yalnız çatışmayan yeməklər — artıq olan adlar qalır.
+client_template_import	Bu menyunu idxal et
+client_template_confirm	{title} menyusundan {d} yemək əlavə edilsin? Artıq sizdə olan yeməklər olduğu kimi qalır.
+client_template_importing	{title} idxal olunur…
+client_template_done	{title} menyusundakı hər yemək menyunuzdadır.
+client_template_imported	{title} menyusundan {d} yemək və {c} kateqoriya əlavə olundu
+resv_heading	Rezervasiyalar
+resv_name_ph	Qonağın adı
+resv_phone_ph	Telefon (istəyə bağlı)
+resv_guests_ph	Qonaqlar
+resv_when_ph	Nə vaxt — 20:30, sabah 13:00
+resv_table_ph	Masa (istəyə bağlı)
+resv_add	Bron et
+resv_seat	Oturduldu
+resv_none	Yaxınlaşan bron yoxdur.
+guests_word	qonaq
+delivery_by_ph	Çatdıran (kuryer və ya heyət adı)
+kitchen_all_day	İndi bişiriləcək: {items}
+kitchen_all_day_head	İndi bişiriləcək
+kitchen_tab_live	Canlı
+kitchen_tab_recall	Geri çağır
+kitchen_tab_stations	Postlar
+split_bill	Hesabı böl
+split_go	Ayrı hesab yarat
+cancel	Ləğv et
+opening_client	Klient açılır…
+preparing_desk	Masa hazırlanır…
+opening_server	Server açılır…
+creating_server	Server yaradılır…
+split_help	Bir qonağın ödədiyi yeməklərə toxunun · {n} seçildi
+split_send_first	Əvvəlcə KOT göndərin — ayrı hesaba yalnız mətbəxin aldığı yeməklər gedə bilər
+split_pick_some	Əvvəlcə ayrı hesab üçün yeməklərə toxunun
+split_done	Ayrı hesab yaradıldı — bu masanın yanında zalda
+split_marked	ayrı hesab
+order_empty_pick	Sifariş boşdur — yemək seçmək üçün yuxarıda Yemək əlavə et düyməsinə toxunun.
+add_dishes	Yemək əlavə et
+order_so_far	Bu sifarişdə: {n} · {total}
+no_dish_match	«{q}» ilə uyğun yemək yoxdur
+pick_dishes_help	Əlavə etmək üçün yeməyə toxunun · siyahını daraltmaq üçün kateqoriya seçin
+pick_done	Bitdi
+pick_done_dd	Bitdi · {label}
+printer_route_mode	Bu yerdə bir neçə printer olsa
+printer_mode_first	Birinci işləyən
+printer_mode_all	Hamısına çap et
+kot_show_area	Zona
+kot_hide_area	Zonanı gizlət
+kot_show_item_hdr	Məhsul · Say
+kot_hide_item_hdr	Sütunları gizlət
+kot_show_title	Başlıq sətri
+kot_hide_title	Başlığı gizlət
+kot_field_order	Çap sırası
+kot_field_up	Yuxarı köçür
+kot_field_down	Aşağı köçür
+kot_field_cycle	Növbətini seç
+kot_field_select	Növbətini seç
+kot_field_time	Vaxt
+kot_field_kot_no	KOT №
+kot_field_area	Zona
+kot_field_table	Masa
+kot_field_shop	Mağaza adı
+kot_field_waiter	Heyət
+kot_field_station	Post
+app_template_blurb_extra	Həmçinin: Sahib Zahir, Admin Asif, Ofisiant Nawaz; FOH yan paneli; 4 saatdan sonra tarixçə; Bu gün zolağı bağlı; yığcam KOT.
+dishes_n	{n} yemək
+recipe_ph	Resept (istəyə bağlı) — bir porsiya işlədir: Rice=0.2, Paneer=0.15
+reorder_ph	Bu səviyyədə yenidən al
+set_reorder	Yenidən alma səviyyəsini qoy
+low_stock_alert	Azalır — tezliklə alın: {items}
+unpriced_note	Menyunuzda {n} yeməyin hələ qiyməti yoxdur — qoyana qədər 0 ilə hesablanır.
+show_unpriced	Yalnız qiyməti olmayan yeməkləri göstər
+show_all_dishes	Bütün yeməkləri göstər
+role_waiter	Ofisiant
+role_kitchen	Mətbəx
+role_title_rest_ph	Vəzifə adı (məs. Kapitan, Baş aşpaz)
+preset_help_rest	Ofisiant: sifariş alır və masaları aparır. Kassir: həm də ödəniş alır. Mətbəx: mətbəx ekranı. Menecer: həm də menyu, ləğvlər və endirimlər.
+kind_raw	Xammal
+kind_resale	Alınıb yenidən satılan
+kind_dish	Hazırladığımız yemək
+buy_unit_ph	Vahid (kg, litre, pcs)
+add_another_way	+ Başqa üsul əlavə et
+parts_status	{b}-dən {a} daxil edildi · {c} qaldı
+save_expense	Xərci saxla
+rest_ph	Qalıq
+low_badge	Az
+stock_empty	Hələ stokda heç nə yoxdur — Alışda yazdıqlarınız burada görünür.
+recent_changes	Son dəyişikliklər
+lane_declared_label	Vergi fakturası
+lane_owner_label	Nağd qəbz
+money_lane_bill	Hesab: {lane}
