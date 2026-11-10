@@ -226,6 +226,67 @@ mod info_help_layout_tests {
         );
     }
 
+    /// Word buttons must grow with ink — fixed 34/40px faces clip Gujarati / phone.
+    #[test]
+    fn text_chip_and_seg_buttons_use_fit_height() {
+        let ui = include_str!("../ui_script.rs");
+        let chip = ui
+            .split("let ChipBtn = Button{")
+            .nth(1)
+            .and_then(|s| s.split("let ChipBtnActive").next())
+            .unwrap_or("");
+        assert!(
+            chip.contains("height: Fit"),
+            "ChipBtn must use Fit height"
+        );
+        assert!(
+            !chip.contains("height: 34"),
+            "ChipBtn must not pin height 34"
+        );
+        let seg = ui
+            .split("let SegBtn = Button{")
+            .nth(1)
+            .and_then(|s| s.split("let KotRowBtn").next())
+            .unwrap_or("");
+        assert!(
+            seg.contains("flow: Right{wrap: true}"),
+            "SegBtn must wrap labels when squeezed"
+        );
+        assert!(
+            !ui.contains("height: 40 flow: Overlay"),
+            "never clip SegBtn/ChipBtn in height:40 overlay shells"
+        );
+    }
+
+    /// Cart line Hold / In print / Mark: fixed 34px height clipped labels on phone.
+    #[test]
+    fn ticket_hold_btn_is_fit_height() {
+        let ui = include_str!("../ui_script.rs");
+        let block = ui
+            .split("let TicketHoldBtn = Button{")
+            .nth(1)
+            .and_then(|s| s.split("let CartRow").next())
+            .unwrap_or("");
+        assert!(
+            block.contains("height: Fit"),
+            "TicketHoldBtn must be Fit height, not fixed 34"
+        );
+        assert!(
+            !block.lines().any(|l| l.trim() == "width: Fit height: 34"),
+            "TicketHoldBtn must not pin height: 34"
+        );
+        let cart = ui
+            .split("let CartRow = RoundedView{")
+            .nth(1)
+            .and_then(|s| s.split("details :=").next())
+            .unwrap_or("");
+        assert!(
+            cart.contains("width: Fill height: Fit")
+                && cart.contains("hold_send_btn := TicketHoldBtn"),
+            "cart action chip row must Fill-wrap inside the line column"
+        );
+    }
+
     /// Lock tip rows (DEV.md InfoHelp): Fit caption + tip-only InfoHelp.
     /// Fill caption parks/crops ℹ at the far edge. 12pt + short PIN copy so
     /// tip-only Fit ℹ still hugs on 375 (15pt PASSCODE overflowed).

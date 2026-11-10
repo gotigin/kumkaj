@@ -1196,10 +1196,14 @@ script_mod! {
     let SegBtn = Button{
         width: Fill height: Fit
         margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
-        padding: Inset{left: 8. right: 8. top: 10. bottom: 10.}
+        padding: Inset{left: 8. right: 8. top: 11. bottom: 11.}
         align: Align{x: 0.5 y: 0.5}
-        flow: Right
-        label_walk: Walk{width: Fit height: Fit}
+        flow: Right{wrap: true}
+        label_walk: Walk{
+            width: Fit
+            height: Fit
+            margin: Inset{left: 2. right: 2.}
+        }
         icon_walk: Walk{width: 0. height: 0.}
         draw_bg +: {
             color: #xFFFFFF
@@ -1374,10 +1378,11 @@ script_mod! {
     // names). Soft tag, not DeskTab / SegBtn. Never cap/ellipsis — full label.
     // NEVER use for multi-word CTAs — ActionStack + StackPrimary/Secondary.
     let ChipBtn = Button{
-        width: Fit height: 34
+        width: Fit height: Fit
         margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
-        padding: Inset{left: 12. right: 12. top: 6. bottom: 6.}
-        align: Center
+        padding: Inset{left: 12. right: 12. top: 8. bottom: 8.}
+        align: Align{x: 0.5 y: 0.5}
+        flow: Right{wrap: true}
         label_walk: Walk{
             width: Fit
             height: Fit
@@ -1403,15 +1408,15 @@ script_mod! {
             color_down: #x023637
             color_focus: #x074D3E
             ink_centered: true
-            max_lines: 1
             text_style +: {font_size: 12.}
         }
     }
     let ChipBtnActive = Button{
-        width: Fit height: 34
+        width: Fit height: Fit
         margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
-        padding: Inset{left: 12. right: 12. top: 6. bottom: 6.}
-        align: Center
+        padding: Inset{left: 12. right: 12. top: 8. bottom: 8.}
+        align: Align{x: 0.5 y: 0.5}
+        flow: Right{wrap: true}
         label_walk: Walk{
             width: Fit
             height: Fit
@@ -1437,7 +1442,6 @@ script_mod! {
             color_down: #xffffff
             color_focus: #xffffff
             ink_centered: true
-            max_lines: 1
             text_style +: {font_size: 12.}
         }
     }
@@ -2808,13 +2812,15 @@ script_mod! {
             }
         }
     }
-    // Word action on the ticket (Hold / Held): Fit width — never reuse
-    // TicketStepBtn's 34×34 square.
+    // Word action on the ticket (Hold / Held / In print): Fit face — never
+    // reuse TicketStepBtn's 34×34 square. Fixed height:34 clipped ink on
+    // phone / Gujarati (2026-11).
     let TicketHoldBtn = Button{
-        width: Fit height: 34
-        margin: Inset{left: 4. right: 0. top: 0. bottom: 0.}
-        padding: Inset{left: 12. right: 12. top: 6. bottom: 6.}
+        width: Fit height: Fit
+        margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+        padding: Inset{left: 12. right: 12. top: 8. bottom: 8.}
         align: Align{x: 0.5 y: 0.5}
+        flow: Right{wrap: true}
         label_walk: Walk{
             width: Fit
             height: Fit
@@ -2863,7 +2869,7 @@ script_mod! {
             flow: Right spacing: 10
             // Thumb + name/meta | (− qty + above amount) — both columns
             // share the row's vertical centre; amount keeps its right edge.
-            align: Align{y: 0.5}
+            align: Align{y: 0.0}
             // The dish's photo (or initials), so a busy ticket reads at a glance.
             ThumbAvatar{
                 width: 44 height: 44
@@ -2888,7 +2894,7 @@ script_mod! {
                 // Cancel sits here too — buried under tap-to-expand made "can't
                 // cancel after KOT" feel broken (2026-11).
                 View{
-                    width: Fit height: Fit
+                    width: Fill height: Fit
                     flow: Right{wrap: true}
                     spacing: 6
                     hold_send_btn := TicketHoldBtn{text: "Hold"}
@@ -5512,7 +5518,7 @@ script_mod! {
                                         flow: Overlay
                                         tabs := ChipStrip{
                                             ChipStripRow{
-                                                View{width: Fit height: 40 flow: Overlay
+                                                View{width: Fit height: Fit flow: Overlay
                                                     role_owner := ChipBtn{
                                                         text: "Owner"
                                                         padding: Inset{left: 18. right: 18.}
@@ -5523,7 +5529,7 @@ script_mod! {
                                                         padding: Inset{left: 18. right: 18.}
                                                     }
                                                 }
-                                                View{width: Fit height: 40 flow: Overlay
+                                                View{width: Fit height: Fit flow: Overlay
                                                     role_staff := ChipBtn{
                                                         text: "Staff"
                                                         visible: false
@@ -7029,99 +7035,99 @@ script_mod! {
                                     visible: false
                                     tabs := ChipStrip{
                                         ChipStripRow{
-                                            View{width: Fit height: 40 flow: Overlay
+                                            View{width: Fit height: Fit flow: Overlay
                                                 floor_area_0 := ChipBtn{text: " "}
                                                 floor_area_0_on := ChipBtnActive{text: " " visible: false}
                                             }
-                                            View{width: Fit height: 40 flow: Overlay
+                                            View{width: Fit height: Fit flow: Overlay
                                                 floor_area_1 := ChipBtn{text: " "}
                                                 floor_area_1_on := ChipBtnActive{text: " " visible: false}
                                             }
-                                            View{width: Fit height: 40 flow: Overlay
+                                            View{width: Fit height: Fit flow: Overlay
                                                 floor_area_2 := ChipBtn{text: " "}
                                                 floor_area_2_on := ChipBtnActive{text: " " visible: false}
                                             }
-                                            View{width: Fit height: 40 flow: Overlay
+                                            View{width: Fit height: Fit flow: Overlay
                                                 floor_area_3 := ChipBtn{text: " "}
                                                 floor_area_3_on := ChipBtnActive{text: " " visible: false}
                                             }
-                                            View{width: Fit height: 40 flow: Overlay
+                                            View{width: Fit height: Fit flow: Overlay
                                                 floor_area_4 := ChipBtn{text: " "}
                                                 floor_area_4_on := ChipBtnActive{text: " " visible: false}
                                             }
-                                            View{width: Fit height: 40 flow: Overlay
+                                            View{width: Fit height: Fit flow: Overlay
                                                 floor_area_5 := ChipBtn{text: " "}
                                                 floor_area_5_on := ChipBtnActive{text: " " visible: false}
                                             }
-                                            View{width: Fit height: 40 flow: Overlay
+                                            View{width: Fit height: Fit flow: Overlay
                                                 floor_area_6 := ChipBtn{text: " "}
                                                 floor_area_6_on := ChipBtnActive{text: " " visible: false}
                                             }
-                                            View{width: Fit height: 40 flow: Overlay
+                                            View{width: Fit height: Fit flow: Overlay
                                                 floor_area_7 := ChipBtn{text: " "}
                                                 floor_area_7_on := ChipBtnActive{text: " " visible: false}
                                             }
-                                            View{width: Fit height: 40 flow: Overlay
+                                            View{width: Fit height: Fit flow: Overlay
                                                 floor_area_8 := ChipBtn{text: " "}
                                                 floor_area_8_on := ChipBtnActive{text: " " visible: false}
                                             }
-                                            View{width: Fit height: 40 flow: Overlay
+                                            View{width: Fit height: Fit flow: Overlay
                                                 floor_area_9 := ChipBtn{text: " "}
                                                 floor_area_9_on := ChipBtnActive{text: " " visible: false}
                                             }
-                                            View{width: Fit height: 40 flow: Overlay
+                                            View{width: Fit height: Fit flow: Overlay
                                                 floor_area_10 := ChipBtn{text: " "}
                                                 floor_area_10_on := ChipBtnActive{text: " " visible: false}
                                             }
-                                            View{width: Fit height: 40 flow: Overlay
+                                            View{width: Fit height: Fit flow: Overlay
                                                 floor_area_11 := ChipBtn{text: " "}
                                                 floor_area_11_on := ChipBtnActive{text: " " visible: false}
                                             }
-                                            View{width: Fit height: 40 flow: Overlay
+                                            View{width: Fit height: Fit flow: Overlay
                                                 floor_area_12 := ChipBtn{text: " "}
                                                 floor_area_12_on := ChipBtnActive{text: " " visible: false}
                                             }
-                                            View{width: Fit height: 40 flow: Overlay
+                                            View{width: Fit height: Fit flow: Overlay
                                                 floor_area_13 := ChipBtn{text: " "}
                                                 floor_area_13_on := ChipBtnActive{text: " " visible: false}
                                             }
-                                            View{width: Fit height: 40 flow: Overlay
+                                            View{width: Fit height: Fit flow: Overlay
                                                 floor_area_14 := ChipBtn{text: " "}
                                                 floor_area_14_on := ChipBtnActive{text: " " visible: false}
                                             }
-                                            View{width: Fit height: 40 flow: Overlay
+                                            View{width: Fit height: Fit flow: Overlay
                                                 floor_area_15 := ChipBtn{text: " "}
                                                 floor_area_15_on := ChipBtnActive{text: " " visible: false}
                                             }
-                                            View{width: Fit height: 40 flow: Overlay
+                                            View{width: Fit height: Fit flow: Overlay
                                                 floor_area_16 := ChipBtn{text: " "}
                                                 floor_area_16_on := ChipBtnActive{text: " " visible: false}
                                             }
-                                            View{width: Fit height: 40 flow: Overlay
+                                            View{width: Fit height: Fit flow: Overlay
                                                 floor_area_17 := ChipBtn{text: " "}
                                                 floor_area_17_on := ChipBtnActive{text: " " visible: false}
                                             }
-                                            View{width: Fit height: 40 flow: Overlay
+                                            View{width: Fit height: Fit flow: Overlay
                                                 floor_area_18 := ChipBtn{text: " "}
                                                 floor_area_18_on := ChipBtnActive{text: " " visible: false}
                                             }
-                                            View{width: Fit height: 40 flow: Overlay
+                                            View{width: Fit height: Fit flow: Overlay
                                                 floor_area_19 := ChipBtn{text: " "}
                                                 floor_area_19_on := ChipBtnActive{text: " " visible: false}
                                             }
-                                            View{width: Fit height: 40 flow: Overlay
+                                            View{width: Fit height: Fit flow: Overlay
                                                 floor_area_20 := ChipBtn{text: " "}
                                                 floor_area_20_on := ChipBtnActive{text: " " visible: false}
                                             }
-                                            View{width: Fit height: 40 flow: Overlay
+                                            View{width: Fit height: Fit flow: Overlay
                                                 floor_area_21 := ChipBtn{text: " "}
                                                 floor_area_21_on := ChipBtnActive{text: " " visible: false}
                                             }
-                                            View{width: Fit height: 40 flow: Overlay
+                                            View{width: Fit height: Fit flow: Overlay
                                                 floor_area_22 := ChipBtn{text: " "}
                                                 floor_area_22_on := ChipBtnActive{text: " " visible: false}
                                             }
-                                            View{width: Fit height: 40 flow: Overlay
+                                            View{width: Fit height: Fit flow: Overlay
                                                 floor_area_23 := ChipBtn{text: " "}
                                                 floor_area_23_on := ChipBtnActive{text: " " visible: false}
                                             }
@@ -8260,43 +8266,43 @@ script_mod! {
                                     flow: Overlay
                                     tabs := ChipStrip{
                                         ChipStripRow{
-                                            View{width: Fit height: 40 flow: Overlay
+                                            View{width: Fit height: Fit flow: Overlay
                                                 feat_sell := ChipBtn{text: "Sell"}
                                                 feat_sell_on := ChipBtnActive{text: "Sell" visible: false}
                                             }
-                                            View{width: Fit height: 40 flow: Overlay
+                                            View{width: Fit height: Fit flow: Overlay
                                                 feat_items := ChipBtn{text: "Items"}
                                                 feat_items_on := ChipBtnActive{text: "Items" visible: false}
                                             }
-                                            View{width: Fit height: 40 flow: Overlay
+                                            View{width: Fit height: Fit flow: Overlay
                                                 feat_sales := ChipBtn{text: "Sales"}
                                                 feat_sales_on := ChipBtnActive{text: "Sales" visible: false}
                                             }
-                                            View{width: Fit height: 40 flow: Overlay
+                                            View{width: Fit height: Fit flow: Overlay
                                                 feat_credit := ChipBtn{text: "Credit"}
                                                 feat_credit_on := ChipBtnActive{text: "Credit" visible: false}
                                             }
-                                            View{width: Fit height: 40 flow: Overlay
+                                            View{width: Fit height: Fit flow: Overlay
                                                 feat_floor := ChipBtn{text: "Shop"}
                                                 feat_floor_on := ChipBtnActive{text: "Shop" visible: false}
                                             }
-                                            View{width: Fit height: 40 flow: Overlay
+                                            View{width: Fit height: Fit flow: Overlay
                                                 feat_kitchen := ChipBtn{text: "Sections"}
                                                 feat_kitchen_on := ChipBtnActive{text: "Sections" visible: false}
                                             }
-                                            View{width: Fit height: 40 flow: Overlay
+                                            View{width: Fit height: Fit flow: Overlay
                                                 feat_team := ChipBtn{text: "Team"}
                                                 feat_team_on := ChipBtnActive{text: "Team" visible: false}
                                             }
-                                            View{width: Fit height: 40 flow: Overlay
+                                            View{width: Fit height: Fit flow: Overlay
                                                 feat_backup := ChipBtn{text: "Backup"}
                                                 feat_backup_on := ChipBtnActive{text: "Backup" visible: false}
                                             }
-                                            View{width: Fit height: 40 flow: Overlay
+                                            View{width: Fit height: Fit flow: Overlay
                                                 feat_inventory := ChipBtn{text: "Inventory"}
                                                 feat_inventory_on := ChipBtnActive{text: "Inventory" visible: false}
                                             }
-                                            View{width: Fit height: 40 flow: Overlay
+                                            View{width: Fit height: Fit flow: Overlay
                                                 feat_branches := ChipBtn{text: "Branches"}
                                                 feat_branches_on := ChipBtnActive{text: "Branches" visible: false}
                                             }
@@ -11402,111 +11408,111 @@ h_backup := WrapLabel{body: "Backup" font_color: #x023637 font_size: 20.}
                                     flow: Overlay
                                     tabs := ChipStrip{
                                         ChipStripRow{
-                                            View{width: Fit height: 40 flow: Overlay
+                                            View{width: Fit height: Fit flow: Overlay
                                                 cat_all := ChipBtn{text: "All items"}
                                                 cat_all_on := ChipBtnActive{text: "All items" visible: false}
                                             }
-                                            View{width: Fit height: 40 flow: Overlay
+                                            View{width: Fit height: Fit flow: Overlay
                                                 cat_frequent := ChipBtn{text: "Frequent"}
                                                 cat_frequent_on := ChipBtnActive{text: "Frequent" visible: false}
                                             }
-                                            View{width: Fit height: 40 flow: Overlay
+                                            View{width: Fit height: Fit flow: Overlay
                                                 cat_added := ChipBtn{text: "Added Item(s)"}
                                                 cat_added_on := ChipBtnActive{text: "Added Item(s)" visible: false}
                                             }
-                                            View{width: Fit height: 40 flow: Overlay
+                                            View{width: Fit height: Fit flow: Overlay
                                                 cat_0 := ChipBtn{text: " "}
                                                 cat_0_on := ChipBtnActive{text: " " visible: false}
                                             }
-                                            View{width: Fit height: 40 flow: Overlay
+                                            View{width: Fit height: Fit flow: Overlay
                                                 cat_1 := ChipBtn{text: " "}
                                                 cat_1_on := ChipBtnActive{text: " " visible: false}
                                             }
-                                            View{width: Fit height: 40 flow: Overlay
+                                            View{width: Fit height: Fit flow: Overlay
                                                 cat_2 := ChipBtn{text: " "}
                                                 cat_2_on := ChipBtnActive{text: " " visible: false}
                                             }
-                                            View{width: Fit height: 40 flow: Overlay
+                                            View{width: Fit height: Fit flow: Overlay
                                                 cat_3 := ChipBtn{text: " "}
                                                 cat_3_on := ChipBtnActive{text: " " visible: false}
                                             }
-                                            View{width: Fit height: 40 flow: Overlay
+                                            View{width: Fit height: Fit flow: Overlay
                                                 cat_4 := ChipBtn{text: " "}
                                                 cat_4_on := ChipBtnActive{text: " " visible: false}
                                             }
-                                            View{width: Fit height: 40 flow: Overlay
+                                            View{width: Fit height: Fit flow: Overlay
                                                 cat_5 := ChipBtn{text: " "}
                                                 cat_5_on := ChipBtnActive{text: " " visible: false}
                                             }
-                                            View{width: Fit height: 40 flow: Overlay
+                                            View{width: Fit height: Fit flow: Overlay
                                                 cat_6 := ChipBtn{text: " "}
                                                 cat_6_on := ChipBtnActive{text: " " visible: false}
                                             }
-                                            View{width: Fit height: 40 flow: Overlay
+                                            View{width: Fit height: Fit flow: Overlay
                                                 cat_7 := ChipBtn{text: " "}
                                                 cat_7_on := ChipBtnActive{text: " " visible: false}
                                             }
-                                            View{width: Fit height: 40 flow: Overlay
+                                            View{width: Fit height: Fit flow: Overlay
                                                 cat_8 := ChipBtn{text: " "}
                                                 cat_8_on := ChipBtnActive{text: " " visible: false}
                                             }
-                                            View{width: Fit height: 40 flow: Overlay
+                                            View{width: Fit height: Fit flow: Overlay
                                                 cat_9 := ChipBtn{text: " "}
                                                 cat_9_on := ChipBtnActive{text: " " visible: false}
                                             }
-                                            View{width: Fit height: 40 flow: Overlay
+                                            View{width: Fit height: Fit flow: Overlay
                                                 cat_10 := ChipBtn{text: " "}
                                                 cat_10_on := ChipBtnActive{text: " " visible: false}
                                             }
-                                            View{width: Fit height: 40 flow: Overlay
+                                            View{width: Fit height: Fit flow: Overlay
                                                 cat_11 := ChipBtn{text: " "}
                                                 cat_11_on := ChipBtnActive{text: " " visible: false}
                                             }
-                                            View{width: Fit height: 40 flow: Overlay
+                                            View{width: Fit height: Fit flow: Overlay
                                                 cat_12 := ChipBtn{text: " "}
                                                 cat_12_on := ChipBtnActive{text: " " visible: false}
                                             }
-                                            View{width: Fit height: 40 flow: Overlay
+                                            View{width: Fit height: Fit flow: Overlay
                                                 cat_13 := ChipBtn{text: " "}
                                                 cat_13_on := ChipBtnActive{text: " " visible: false}
                                             }
-                                            View{width: Fit height: 40 flow: Overlay
+                                            View{width: Fit height: Fit flow: Overlay
                                                 cat_14 := ChipBtn{text: " "}
                                                 cat_14_on := ChipBtnActive{text: " " visible: false}
                                             }
-                                            View{width: Fit height: 40 flow: Overlay
+                                            View{width: Fit height: Fit flow: Overlay
                                                 cat_15 := ChipBtn{text: " "}
                                                 cat_15_on := ChipBtnActive{text: " " visible: false}
                                             }
-                                            View{width: Fit height: 40 flow: Overlay
+                                            View{width: Fit height: Fit flow: Overlay
                                                 cat_16 := ChipBtn{text: " "}
                                                 cat_16_on := ChipBtnActive{text: " " visible: false}
                                             }
-                                            View{width: Fit height: 40 flow: Overlay
+                                            View{width: Fit height: Fit flow: Overlay
                                                 cat_17 := ChipBtn{text: " "}
                                                 cat_17_on := ChipBtnActive{text: " " visible: false}
                                             }
-                                            View{width: Fit height: 40 flow: Overlay
+                                            View{width: Fit height: Fit flow: Overlay
                                                 cat_18 := ChipBtn{text: " "}
                                                 cat_18_on := ChipBtnActive{text: " " visible: false}
                                             }
-                                            View{width: Fit height: 40 flow: Overlay
+                                            View{width: Fit height: Fit flow: Overlay
                                                 cat_19 := ChipBtn{text: " "}
                                                 cat_19_on := ChipBtnActive{text: " " visible: false}
                                             }
-                                            View{width: Fit height: 40 flow: Overlay
+                                            View{width: Fit height: Fit flow: Overlay
                                                 cat_20 := ChipBtn{text: " "}
                                                 cat_20_on := ChipBtnActive{text: " " visible: false}
                                             }
-                                            View{width: Fit height: 40 flow: Overlay
+                                            View{width: Fit height: Fit flow: Overlay
                                                 cat_21 := ChipBtn{text: " "}
                                                 cat_21_on := ChipBtnActive{text: " " visible: false}
                                             }
-                                            View{width: Fit height: 40 flow: Overlay
+                                            View{width: Fit height: Fit flow: Overlay
                                                 cat_22 := ChipBtn{text: " "}
                                                 cat_22_on := ChipBtnActive{text: " " visible: false}
                                             }
-                                            View{width: Fit height: 40 flow: Overlay
+                                            View{width: Fit height: Fit flow: Overlay
                                                 cat_23 := ChipBtn{text: " "}
                                                 cat_23_on := ChipBtnActive{text: " " visible: false}
                                             }
