@@ -1,97 +1,89 @@
 # Publish Khaynjo on the Arch User Repository (AUR)
 
-Package name (suggested): **`khaynjo-bin`** (binary of the official Linux build)  
+Package name: **`khaynjo`**. It is a source package. `makepkg` fetches
+Makepad, applies `patches/makepad/`, and compiles `kumkaj-khaynjo` on the
+machine that installs it. Do not publish a `-bin` package or a prebuilt
+Linux tarball.
+
 Product version: Cargo `version` → AUR `pkgver` (same as Play / Windows).  
 Data dir: `~/.local/share/com.khaynjo/`  
 Compat: [`DATA_COMPAT.md`](DATA_COMPAT.md). Release index: [`RELEASE_1_0_0.md`](RELEASE_1_0_0.md).
 
-Local install **without** the AUR (workspace `package-linux.sh` / `install.sh`): [`AUR_LINUX.md`](AUR_LINUX.md) § A.
+Local install from this workspace (no AUR): [`AUR_LINUX.md`](AUR_LINUX.md).
 
 ## Prerequisites
 
-- Arch (or Arch-based) host to build the Linux package
-- AUR account + SSH key on that account; `aur.archlinux.org` in `known_hosts`
-- A **public HTTPS** place to host the release tarball (AUR build machines download without login)
-- Workspace deps as in [`AUR_LINUX.md`](AUR_LINUX.md) (Rust, X11/GL libs, Python/Pillow, zstd, Makepad tree)
+- Arch host with the usual build tools (`base-devel`, `git`, `cargo`, `rust`, `rsync`, `clang`)
+- AUR account + SSH key; `aur.archlinux.org` in `known_hosts`
+- Public git tag **`v<pkgver>`** on the commit whose `apps/khaynjo/Cargo.toml` `version` is that `pkgver`. `vendor/makepad` is gitignored; the PKGBUILD runs `scripts/setup-makepad.sh` (pinned Makepad commit + patches).
 
-## 1. Build the Linux tree and tarball
-
-```bash
-cd /path/to/kumkaj-workspace
-./apps/khaynjo/scripts/package-linux.sh
-./apps/khaynjo/scripts/aur-release-tarball.sh
-```
-
-Artifacts:
-
-| File | Role |
-|------|------|
-| `dist/khaynjo-linux/` | Installed layout (bin, resources, helpers) |
-| `dist/khaynjo-linux-<ver>-x86_64.tar.zst` | AUR `source` |
-| `dist/khaynjo-linux-<ver>-x86_64.tar.zst.sha256` | Hash for `sha256sums` |
-
-## 2. Host the tarball
-
-Upload the `.tar.zst` to a stable URL (GitHub/GitLab release asset, CDN, project downloads).  
-Note the final HTTPS URL and the SHA-256 from the `.sha256` file.
-
-## 3. Fill the PKGBUILD
+## 1. Check the PKGBUILD
 
 Template: [`../packaging/aur/PKGBUILD`](../packaging/aur/PKGBUILD)
 
-- `# Maintainer:` — your AUR account / contact
-- `pkgver` — must match Cargo `version`
-- `pkgrel` — `1` for a new product version; bump only for packaging-only republishes of the same `pkgver`
-- `source=(...)` — public URL of the tarball
-- `sha256sums=(...)` — real hash (do not leave `SKIP` on the AUR)
+```bash
+./apps/khaynjo/scripts/aur-check.sh
+```
 
-## 4. Local makepkg check (recommended)
+`pkgver` must match Cargo `version`. `pkgrel` stays `1` for a new product version; bump it only when republishing the same `pkgver` for a packaging-only fix.
+
+## 2. Tag the source
+
+```bash
+git tag v1.0.5
+git push origin v1.0.5
+```
+
+The tag name is `v` plus `pkgver`. The AUR `source=` line clones that tag.
+
+## 3. Local makepkg check
 
 ```bash
 mkdir -p /tmp/khaynjo-aur && cd /tmp/khaynjo-aur
 cp /path/to/kumkaj-workspace/apps/khaynjo/packaging/aur/PKGBUILD .
-# edit source= and sha256sums=
 makepkg -si
 ```
 
-Confirms install under `/usr/lib/khaynjo/` with `/usr/bin/khaynjo` and `/usr/bin/kumkaj-khaynjo`.
+This compiles. It installs under `/usr/lib/khaynjo/` with `/usr/bin/khaynjo` (a wrapper that cds into that directory, then runs the binary).
 
-## 5. Push to the AUR
+## 4. Push to the AUR
 
 ```bash
-# Once per machine, if needed:
-ssh-keyscan aur.archlinux.org >> ~/.ssh/known_hosts
+ssh-keyscan aur.archlinux.org >> ~/.ssh/known_hosts   # once per machine
 
-git clone ssh://aur@aur.archlinux.org/khaynjo-bin.git
-cd khaynjo-bin
+git clone ssh://aur@aur.archlinux.org/khaynjo.git
+cd khaynjo
 cp /path/to/kumkaj-workspace/apps/khaynjo/packaging/aur/PKGBUILD .
 makepkg --printsrcinfo > .SRCINFO
 git add PKGBUILD .SRCINFO
-git commit -m "khaynjo-bin <pkgver>-<pkgrel>"
+git commit -m "khaynjo <pkgver>-<pkgrel>"
 git push origin master
 ```
 
-Claim a new package name via the AUR website / docs if the empty repo does not exist yet.
+Claim the name `khaynjo` on the AUR site first if that repo does not exist yet. `replaces=('khaynjo-bin')` drops the old binary package name if it was ever published.
 
-## 6. End-user install
+## 5. End-user install
 
 ```bash
-yay -S khaynjo-bin
-# or: paru -S khaynjo-bin
+yay -S khaynjo
+# or: paru -S khaynjo
 ```
+
+The user's machine compiles it. Books stay in `~/.local/share/com.khaynjo/`. Removing the package with pacman does not delete those books.
 
 ## Versioning
 
 | Field | Role |
 |-------|------|
-| `pkgver` | Product version — same as Play `version_name` / Windows |
-| `pkgrel` | Packaging-only bump |
+| `pkgver` | Product version — same as Play `version_name` / Windows. Git tag `v<pkgver>`. |
+| `pkgrel` | Packaging-only bump of the same source |
 
 Do not ship a different marketing version on Arch than on Play or Windows for the same release.
 
 ## Related
 
 - Local Arch build (no AUR): [`AUR_LINUX.md`](AUR_LINUX.md)
-- Scripts: [`../scripts/package-linux.sh`](../scripts/package-linux.sh), [`../scripts/aur-release-tarball.sh`](../scripts/aur-release-tarball.sh)
+- PKGBUILD: [`../packaging/aur/PKGBUILD`](../packaging/aur/PKGBUILD)
+- Check: [`../scripts/aur-check.sh`](../scripts/aur-check.sh)
 - Play Store: [`PUBLISH_PLAY_STORE.md`](PUBLISH_PLAY_STORE.md)
 - Windows Store: [`PUBLISH_WINDOWS_STORE.md`](PUBLISH_WINDOWS_STORE.md)

@@ -1544,6 +1544,7 @@ KUMKAJ_SITE_DIR=apps/khaynjo/web ./scripts/build-site.sh        # khaynjo.com �
 ./apps/khaynjo/scripts/windows-prod.sh # Khaynjo prod → dist/khaynjo-windows/
 ./apps/khaynjo/scripts/package-linux.sh       # Khaynjo prod → dist/khaynjo-linux/ (+ install.sh / uninstall.sh)
 ./apps/khaynjo/scripts/package-linux-dev.sh   # Khaynjo debug → dist/khaynjo-linux-dev/
+# AUR is a source package (khaynjo, not khaynjo-bin): tag v<pkgver>, PKGBUILD runs setup-makepad.sh + cargo. See apps/khaynjo/docs/PUBLISH_AUR.md.
 ./apps/khaynjo/scripts/msi.sh [prod|dev]
 ./apps/khaynjo/scripts/package-android.sh
 ./scripts/package-apple-scaffold.sh apps/<app>   # iOS/macOS deferred until Mac host

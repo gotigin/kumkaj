@@ -23,7 +23,7 @@ Local Arch install without publishing: [`AUR_LINUX.md`](AUR_LINUX.md).
 - [ ] Play: upload `native-debug-symbols.zip` + `mapping.txt` with the AAB (same folder; clears both Console crash warnings)
 - [ ] Play: `$HOME/khaynjo-release.jks` + `$HOME/khaynjo-release.jks.password`
 - [ ] Windows: Partner Center Publisher CN + signing `.pfx`
-- [ ] AUR: public HTTPS host for the Linux tarball
+- [ ] AUR: tag `v<pkgver>` (Cargo version) and push the source PKGBUILD — it compiles on install; no binary tarball ([`PUBLISH_AUR.md`](PUBLISH_AUR.md))
 
 ## After all three are live
 

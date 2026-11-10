@@ -34,7 +34,7 @@ cargo khaynjo-windows-dev              # Windows dev package → dist/khaynjo-wi
 ./apps/khaynjo/scripts/msi.sh [prod|dev] # MSI (per-user, own upgrade codes) → dist/Khaynjo-<ver>.msi
 ./apps/khaynjo/scripts/msix.sh [prod|dev] # MSIX (Store) → dist/Khaynjo-<ver>.msix
 ./apps/khaynjo/scripts/package-linux.sh   # Linux prod → dist/khaynjo-linux/
-./apps/khaynjo/scripts/aur-release-tarball.sh  # AUR asset from that Linux package
+./apps/khaynjo/scripts/aur-check.sh      # AUR source PKGBUILD (compiles on install)
 ./apps/khaynjo/scripts/dev.sh          # desktop, without the cargo alias
 ./apps/khaynjo/scripts/package-android.sh   # Play AAB/APK → dist/khaynjo-android/
 ./apps/khaynjo/scripts/uninstall-android-dev.sh  # adb uninstall (…-prod.sh for com.khaynjo)

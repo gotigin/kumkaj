@@ -1,7 +1,7 @@
 # Khaynjo on Arch Linux (local build, no AUR required)
 
 Run or install from this workspace on an Arch host.  
-**Publishing** the binary to the AUR is a separate guide: [`PUBLISH_AUR.md`](PUBLISH_AUR.md).
+**Publishing** to the AUR is a separate guide: [`PUBLISH_AUR.md`](PUBLISH_AUR.md). The AUR package compiles from the git tag on the user's machine. It is not a prebuilt binary.
 
 Product version: [`../Cargo.toml`](../Cargo.toml) (`version`).  
 Data dir: `~/.local/share/com.khaynjo/`  
