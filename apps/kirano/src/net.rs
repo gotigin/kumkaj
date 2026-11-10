@@ -3590,13 +3590,20 @@ mod tests {
     /// printed after the books committed it, and no paper complaint.
     #[test]
     fn a_tablets_cancel_prints_its_slip_once_the_books_have_it() {
+        let (path, store, guard) = lan_shop();
+        // Named station + route: empty "Kitchen (no station)" never prints
+        // once the shop has kitchens.
+        let hot = store.add_station("Hot").unwrap();
         let mut printers = crate::print_share::DevicePrinters::default();
         let kitchen = printers.add_printer("Kitchen", "192.168.1.50");
-        *printers.route_mut(crate::print_share::RouteKey::Kot { station_id: "" }) = vec![kitchen];
+        *printers.route_mut(crate::print_share::RouteKey::Kot {
+            station_id: &hot.id,
+        }) = vec![kitchen];
         crate::print_share::with_test_printers(printers, || {
-            let (path, store, guard) = lan_shop();
             let (device, session) = paired_phone(&path, &store, &guard, "Wasim", "2222");
-            let thali = store.list_products(false).unwrap().remove(0);
+            let mut thali = store.list_products(false).unwrap().remove(0);
+            thali.station_id = hot.id.clone();
+            store.upsert_product(&thali).unwrap();
             let mut cart = Cart::default();
             cart.add_or_bump(&thali);
             let kot = serde_json::to_string(&RemoteKotRequest {

@@ -140,13 +140,13 @@ kot_sent_printing	ᱥᱞᱤᱯ ᱫᱚ {kitchens} ᱛᱮ ᱠᱩᱞ ᱟᱠᱟᱱ�
 kot_sent_not_printed	ᱥᱞᱤᱯ ᱫᱚ {kitchens} ᱛᱮ ᱠᱩᱞ ᱟᱠᱟᱱᱟ ᱢᱮᱱᱠᱷᱟᱱ ᱵᱟᱝ ᱪᱷᱟᱯᱟ ᱟᱠᱟᱱᱟ: {why}᱾ ᱫᱚᱠᱟᱱ ᱢᱮᱛᱟᱭ ᱢᱮ, ᱚᱱᱟ ᱛᱟᱭᱚᱢ ᱯᱨᱤᱱᱴᱟᱨ ᱴᱷᱤᱠ ᱢᱮ ᱟᱨ ᱫᱚᱦᱲᱟ ᱯᱨᱤᱱᱴ ᱢᱮ ᱾
 kot_sent_screen	ᱥᱞᱤᱯ ᱫᱚ {kitchens} ᱨᱮ ᱠᱩᱞ ᱟᱠᱟᱱᱟ
 kot_queued_shop	{place} ᱞᱟᱹᱜᱤᱫ ᱥᱞᱤᱯ → {kitchens} ᱥᱟᱧᱪᱟᱣ ᱟᱠᱟᱱᱟ; ᱫᱚᱠᱟᱱ ᱨᱮᱱᱟᱜ ᱥᱟᱫᱷᱚᱱ ᱱᱚᱣᱟᱭ ᱪᱷᱟᱯᱟᱭᱟ
-kot_job_label	ᱥᱞᱤᱯ ᱞᱟᱹᱜᱤᱫ ⟦᱐⟧ → ⟦᱑⟧ {kitchens} {place}
+kot_job_label	KOT ᱞᱟᱹᱜᱤᱫ {place} → {kitchens}
 kot_job_reached	{place} ᱞᱟᱹᱜᱤᱫ ᱥᱞᱤᱯ {kitchens} ᱨᱮ ᱥᱮᱴᱮᱨ ᱮᱱᱟ
 kot_unassigned	ᱵᱤᱱ ᱮᱢ ᱟᱠᱟᱱ
 kot_unassigned_held	ᱵᱮᱜᱚᱨ ᱥᱴᱮᱥᱚᱱ ᱛᱮ {n} ᱡᱤᱱᱤᱥ ᱫᱚᱦᱚᱭ ᱢᱮ — ᱵᱷᱮᱡᱟ ᱞᱟᱹᱜᱤᱫ ᱞᱟᱭᱤᱱ ᱨᱮ ᱵᱟᱝ ᱫᱚᱦᱚᱭ ᱢᱮ
 kot_station_ph	ᱥᱴᱮᱥᱚᱱ
 kot_station_dd	ᱥᱴᱮᱥᱚᱱ
-kot_station_dd_n	ᱥᱴᱮᱥᱚᱱ · ⟦᱐⟧ {stations}
+kot_station_dd_n	ᱫᱟᱠᱟ ᱚᱲᱟᱜ · {stations}
 kot_set_station	ᱱᱚᱶᱟ ᱥᱴᱮᱥᱚᱱ ᱵᱮᱵᱷᱟᱨ ᱢᱮ
 kot_station_applied	ᱥᱴᱮᱥᱚᱱ ᱫᱚ {n} ᱡᱤᱱᱤᱥ ᱠᱚ ᱨᱮ ᱥᱮᱴ ᱟᱠᱟᱱᱟ: {station}
 kot_station_cleared	ᱥᱴᱮᱥᱚᱱ ᱫᱚ {n} ᱡᱤᱱᱤᱥ ᱠᱷᱚᱱ ᱯᱷᱟᱨᱪᱟ ᱮᱱᱟ: {station}

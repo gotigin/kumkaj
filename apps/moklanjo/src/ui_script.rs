@@ -1184,7 +1184,7 @@ script_mod! {
         margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
         padding: Inset{left: 8. right: 8. top: 10. bottom: 10.}
         align: Align{x: 0.5 y: 0.5}
-        flow: Right{wrap: true}
+        flow: Right
         label_walk: Walk{width: Fit height: Fit}
         icon_walk: Walk{width: 0. height: 0.}
         draw_bg +: {
@@ -7334,7 +7334,10 @@ script_mod! {
                                     show_scroll_x: true show_scroll_y: false
                                     scroll_bar_x: mod.widgets.ScrollBar{
                                         drag_scrolling: true
+                                        mouse_capture_overload: true
                                         axis_lock: true
+                                        bounce_at_start: false
+                                        bounce_at_end: false
                                         bar_size: 4.
                                         draw_bg +: {
                                             size: 3.
