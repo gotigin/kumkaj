@@ -1305,6 +1305,7 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
     }
 
     fn paint_static_texts(&mut self, cx: &mut Cx) {
+        let _span = stall_span("paint_static_texts");
         let (lang, country_code) = {
             let st = app_state().lock().unwrap();
             (

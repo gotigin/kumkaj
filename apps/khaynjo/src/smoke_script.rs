@@ -115,6 +115,7 @@ fn smoke_peer_tour() -> Vec<Screen> {
 impl App {
     /// Schedule / advance the in-app smoke script. Call from Signal + NextFrame.
     fn tick_smoke_script(&mut self, cx: &mut Cx) {
+        let _span = stall_span("tick_smoke_script");
         let Some(mode) = smoke_parse_mode() else {
             return;
         };

@@ -1,0 +1,285 @@
+--- a/widgets/src/widget_tree.rs
++++ b/widgets/src/widget_tree.rs
+@@ -122,6 +122,23 @@
+     /// nothing invalidated underneath it — otherwise the walk's own graph
+     /// discoveries could persist a stale "not found" forever.
+     path_cache_epoch: u64,
++    /// Single-answer lookups (`find_within`) that resolved before, kept
++    /// across path-cache invalidations and re-checked on use (see
++    /// `sticky_find`). Discovering an unrelated subtree — a list's first
++    /// rows, a panel drawn for the first time — wipes `path_cache` for every
++    /// ancestor; with ~1,400 lookups per app event that turned each one into
++    /// a whole-tree walk (1.8 M nodes, seconds on a tablet, the first tap
++    /// after a screen change felt dead). A remembered answer that is still
++    /// alive, still under the root and still matches the path is the
++    /// answer the walk would give for the uniquely named widgets apps look up.
++    sticky: HashMap<(WidgetUid, u64), (Vec<LiveId>, WidgetUid)>,
++    /// Graph nodes by name — a hint for `index_find`, so a cold lookup of a
++    /// uniquely named widget checks its few namesakes instead of walking the
++    /// whole tree. Entries are added where the graph learns a node's name and
++    /// are never trusted blindly: every candidate is re-validated against the
++    /// graph, so stale entries are harmless and a missing one only means the
++    /// lookup walks as it always did.
++    name_index: HashMap<LiveId, Vec<WidgetUid>>,
+     stats: WidgetTreeStats,
+     dirty: HashSet<WidgetUid>,
+     // Only set when tree topology changes (nodes added/removed, parent changes).
+@@ -388,6 +405,9 @@
+                 node_is_new = true;
+             }
+         }
++        if node_is_new || name_changed {
++            Self::index_name(&mut inner, name, uid);
++        }
+ 
+         // Structural change: new node or parent changed → full rebuild needed
+         if node_is_new || parent_changed {
+@@ -557,6 +577,9 @@
+                 child_is_new = true;
+             }
+         }
++        if child_is_new || name_changed {
++            Self::index_name(&mut inner, name, child_uid);
++        }
+ 
+         // Structural: new node or parent changed
+         if child_is_new || parent_changed {
+@@ -1526,6 +1549,9 @@
+                     }
+                 }
+             }
++            if child_is_new || child_name_changed {
++                Self::index_name(inner, child_name, child_uid);
++            }
+ 
+             // Structural: new node or parent changed
+             if child_parent_changed {
+@@ -1852,10 +1878,215 @@
+ 
+     /// Find a widget within the subtree of `root_uid` by matching a path of LiveIds.
+     /// Returns the shallowest (first) match in the tree.
++    ///
++    /// Fast paths before the walk, both exact for the uniquely named widgets
++    /// apps look up (each answer is re-validated against an up-to-date graph):
++    /// a remembered answer (`sticky_find`), then the widget's namesakes from
++    /// the name index (`index_find`). Several valid namesakes, or none, fall
++    /// back to the walk, so ambiguous names keep the walk's first-match rule.
+     pub fn find_within(&self, root_uid: WidgetUid, path: &[LiveId]) -> WidgetRef {
+         let mut inner = self.inner.borrow_mut();
++        if let Some(widget) = Self::sticky_find(&mut inner, root_uid, path) {
++            return widget;
++        }
++        if let Some(widget) = Self::index_find(&mut inner, root_uid, path) {
++            if tree_verify_enabled() {
++                // Proof mode: the walk must agree with every index answer.
++                let walked = Self::find_all_within_cached_graph(&mut inner, root_uid, path)
++                    .into_iter()
++                    .next();
++                let same = walked
++                    .as_ref()
++                    .map(|w| w.try_widget_uid() == widget.try_widget_uid())
++                    .unwrap_or(false);
++                if !same {
++                    crate::makepad_platform::log!(
++                        "WIDGET-TREE-VERIFY mismatch path={:?} index={:?} walk={:?}",
++                        path,
++                        widget.try_widget_uid(),
++                        walked.as_ref().and_then(|w| w.try_widget_uid())
++                    );
++                    if let Some(walked) = walked {
++                        return walked;
++                    }
++                }
++            }
++            Self::sticky_store(&mut inner, root_uid, path, &widget);
++            return widget;
++        }
+         let results = Self::find_all_within_cached_graph(&mut inner, root_uid, path);
+-        results.into_iter().next().unwrap_or_else(WidgetRef::empty)
++        let first = results.into_iter().next();
++        if let Some(widget) = &first {
++            Self::sticky_store(&mut inner, root_uid, path, widget);
++        }
++        first.unwrap_or_else(WidgetRef::empty)
++    }
++
++    fn sticky_key(root_uid: WidgetUid, path: &[LiveId]) -> (WidgetUid, u64) {
++        // Order-sensitive (FNV-style), unlike `path_hash`: [a, b] ≠ [b, a].
++        let mut hash = 0xcbf2_9ce4_8422_2325u64;
++        for segment in path {
++            hash = (hash ^ segment.0).wrapping_mul(0x0000_0100_0000_01b3);
++        }
++        (root_uid, hash)
++    }
++
++    fn sticky_store(
++        inner: &mut WidgetTreeInner,
++        root_uid: WidgetUid,
++        path: &[LiveId],
++        widget: &WidgetRef,
++    ) {
++        let Some(uid) = widget.try_widget_uid() else {
++            return;
++        };
++        if uid == WidgetUid(0) || root_uid == WidgetUid(0) {
++            return;
++        }
++        // Bounded: roots include recycled list rows that come and go.
++        if inner.sticky.len() > 16_384 {
++            inner.sticky.clear();
++        }
++        inner
++            .sticky
++            .insert(Self::sticky_key(root_uid, path), (path.to_vec(), uid));
++    }
++
++    /// Record that `uid` is called `name` (hint for `index_find`).
++    fn index_name(inner: &mut WidgetTreeInner, name: LiveId, uid: WidgetUid) {
++        if name == LiveId(0) || uid == WidgetUid(0) {
++            return;
++        }
++        let graph = &inner.graph;
++        let entry = inner.name_index.entry(name).or_default();
++        if entry.contains(&uid) {
++            return;
++        }
++        if entry.len() >= 64 {
++            // Recycled rows leave dead entries behind: keep the live ones.
++            entry.retain(|u| graph.get(u).is_some_and(|n| n.name == name));
++        }
++        entry.push(uid);
++    }
++
++    /// `uid` is what a walk from `root_uid` would find for `path`, judged
++    /// from the graph: alive, named like the last segment, under the root
++    /// with no skip-search node between (a walk does not descend into one),
++    /// and the earlier segments are its ancestors in order.
++    fn validate_path_candidate(
++        inner: &mut WidgetTreeInner,
++        root_uid: WidgetUid,
++        path: &[LiveId],
++        uid: WidgetUid,
++    ) -> Option<WidgetRef> {
++        if uid == root_uid || uid == WidgetUid(0) {
++            return None;
++        }
++        let node = inner.graph.get(&uid)?;
++        if node.placeholder || node.name != path[path.len() - 1] {
++            return None;
++        }
++        let widget = node.widget.upgrade()?;
++        let parent = node.parent;
++        let mut cur = parent;
++        let mut steps = 0usize;
++        loop {
++            let up = cur?;
++            if up == root_uid {
++                break;
++            }
++            let up_node = inner.graph.get(&up)?;
++            if up_node.skip_search {
++                return None;
++            }
++            cur = up_node.parent;
++            steps += 1;
++            if steps > 4096 {
++                return None;
++            }
++        }
++        if path.len() > 1
++            && !Self::verify_path_graph(inner, &path[..path.len() - 1], parent, root_uid)
++        {
++            return None;
++        }
++        Some(widget)
++    }
++
++    /// Bring the graph up to date before trusting it (the same bounded flush
++    /// every lookup does) and make sure the root itself is known.
++    fn settle_for_lookup(inner: &mut WidgetTreeInner, root_uid: WidgetUid) -> bool {
++        if root_uid == WidgetUid(0) || !inner.graph.contains_key(&root_uid) {
++            return false;
++        }
++        if !inner.dirty.is_empty() {
++            Self::flush_dirty(inner, false);
++        }
++        Self::ensure_node_cached(inner, root_uid)
++    }
++
++    /// The remembered answer for `(root_uid, path)`, if it would still be found.
++    fn sticky_find(
++        inner: &mut WidgetTreeInner,
++        root_uid: WidgetUid,
++        path: &[LiveId],
++    ) -> Option<WidgetRef> {
++        if path.is_empty() || root_uid == WidgetUid(0) || inner.sticky.is_empty() {
++            return None;
++        }
++        let key = Self::sticky_key(root_uid, path);
++        let uid = match inner.sticky.get(&key) {
++            Some((stored, uid)) if stored.as_slice() == path => *uid,
++            _ => return None,
++        };
++        let found = if Self::settle_for_lookup(inner, root_uid) {
++            Self::validate_path_candidate(inner, root_uid, path, uid)
++        } else {
++            None
++        };
++        match found {
++            Some(widget) => {
++                inner.stats.lookups += 1;
++                Some(widget)
++            }
++            None => {
++                inner.sticky.remove(&key);
++                None
++            }
++        }
++    }
++
++    /// A cold lookup answered from the name index: exactly one valid
++    /// namesake under the root is the answer; anything else walks.
++    fn index_find(
++        inner: &mut WidgetTreeInner,
++        root_uid: WidgetUid,
++        path: &[LiveId],
++    ) -> Option<WidgetRef> {
++        if path.is_empty() || root_uid == WidgetUid(0) {
++            return None;
++        }
++        let target = path[path.len() - 1];
++        if target == LiveId(0) || !inner.name_index.contains_key(&target) {
++            return None;
++        }
++        if !Self::settle_for_lookup(inner, root_uid) {
++            return None;
++        }
++        let candidates = inner.name_index.get(&target)?.clone();
++        let mut found = None;
++        for uid in candidates {
++            if let Some(widget) = Self::validate_path_candidate(inner, root_uid, path, uid) {
++                if found.is_some() {
++                    return None;
++                }
++                found = Some(widget);
++            }
++        }
++        if found.is_some() {
++            inner.stats.lookups += 1;
++        }
++        found
+     }
+ 
+     /// Find all widgets matching path within the subtree of `root_uid`.
+@@ -4669,3 +4900,11 @@
+         );
+     }
+ }
++
++/// `MAKEPAD_TREE_VERIFY=1`: cross-check every name-index answer against the
++/// full walk and log any disagreement (`WIDGET-TREE-VERIFY mismatch`). For
++/// smoke runs; off by default (it brings back the walk cost).
++fn tree_verify_enabled() -> bool {
++    static ON: std::sync::OnceLock<bool> = std::sync::OnceLock::new();
++    *ON.get_or_init(|| std::env::var("MAKEPAD_TREE_VERIFY").is_ok_and(|v| v == "1"))
++}

@@ -194,6 +194,7 @@ impl AppState {
     }
 
     fn reload_all(&mut self) -> Result<(), String> {
+        let _span = stall_span("reload_all");
         let store = self.store.as_ref().ok_or("No store")?;
         if self.device_role.is_host() {
             self.lan_devices = store.list_lan_devices().unwrap_or_default();

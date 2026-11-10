@@ -1,0 +1,55 @@
+--- a/platform/src/os/linux/android/android_jni.rs
++++ b/platform/src/os/linux/android/android_jni.rs
+@@ -473,12 +473,50 @@
+     }
+ }
+ 
++/// Detaches, at thread exit, a native thread that `attach_jni_env` attached.
++/// ART aborts the whole app when an attached native thread exits ("Native
++/// thread exited without calling DetachCurrentThread") — a short-lived worker
++/// that touched JNI once (Find printers listing Bluetooth / USB, a backup
++/// copy written through a content:// URI) killed the till when it finished.
++/// Thread-local destructors run before ART's own pthread-key check.
++struct JniDetachOnExit(std::cell::Cell<bool>);
++
++impl Drop for JniDetachOnExit {
++    fn drop(&mut self) {
++        if self.0.get() {
++            unsafe {
++                let vm = get_java_vm();
++                if !vm.is_null() {
++                    if let Some(detach) = (**vm).DetachCurrentThread {
++                        detach(vm);
++                    }
++                }
++            }
++        }
++    }
++}
++
++thread_local! {
++    static JNI_DETACH_ON_EXIT: JniDetachOnExit = const { JniDetachOnExit(std::cell::Cell::new(false)) };
++}
++
+ pub unsafe fn attach_jni_env() -> *mut jni_sys::JNIEnv {
++    let vm = get_java_vm();
+     let mut env: *mut jni_sys::JNIEnv = std::ptr::null_mut();
+-    let attach_current_thread = (**get_java_vm()).AttachCurrentThread.unwrap();
++    // Already attached (a Java thread, or attached earlier): use it as is and
++    // never detach it — detaching a Java-owned thread would break it.
++    if let Some(get_env) = (**vm).GetEnv {
++        let mut probe: *mut std::ffi::c_void = std::ptr::null_mut();
++        if get_env(vm, &mut probe, jni_sys::JNI_VERSION_1_6) == 0 && !probe.is_null() {
++            return probe as *mut jni_sys::JNIEnv;
++        }
++    }
++    let attach_current_thread = (**vm).AttachCurrentThread.unwrap();
+ 
+-    let res = attach_current_thread(get_java_vm(), &mut env, std::ptr::null_mut());
++    let res = attach_current_thread(vm, &mut env, std::ptr::null_mut());
+     assert!(res == 0);
++    // This call attached the thread: detach it when the thread ends.
++    let _ = JNI_DETACH_ON_EXIT.try_with(|guard| guard.0.set(true));
+ 
+     env
+ }

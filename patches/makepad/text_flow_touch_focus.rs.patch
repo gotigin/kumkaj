@@ -1,0 +1,47 @@
+--- a/widgets/src/text_flow.rs
++++ b/widgets/src/text_flow.rs
+@@ -1260,7 +1260,13 @@
+                 cx.set_cursor(MouseCursor::Default);
+             }
+             Hit::FingerDown(fe) if fe.is_primary_hit() => {
+-                cx.set_key_focus(self.area);
++                // Touch: focus on a tap (FingerUp) or a long-press select, not
++                // on the press — a swipe that starts on copy must scroll the
++                // page without taking focus from the field being typed in
++                // (that hid the soft keyboard mid-scroll and the page jumped).
++                if !fe.device.is_touch() {
++                    cx.set_key_focus(self.area);
++                }
+                 if fe.device.is_touch() {
+                     cx.hide_clipboard_actions();
+                 }
+@@ -1283,6 +1289,8 @@
+                 // vertical swipe over copy steals the page ScrollYView.
+                 if self.is_selecting && !self.selection_committed {
+                     self.selection_committed = true;
++                    // Copy goes to the key-focused area.
++                    cx.set_key_focus(self.area);
+                     cx.block_scrolling_except_within(Area::Empty);
+                     let _ = cx.promote_finger_capture_over(self.area);
+                     if let Some(idx) = self.selection_tracker.point_to_index(cx, lp.abs) {
+@@ -1330,7 +1338,20 @@
+                     }
+                 }
+             }
++            Hit::FingerCancel(_) => {
++                // A scroll took the swipe that started on this copy.
++                if self.is_selecting && !self.selection_committed {
++                    self.is_selecting = false;
++                    self.selection_cursor = self.selection_anchor;
++                    self.redraw(cx);
++                }
++            }
+             Hit::FingerUp(fe) => {
++                if fe.device.is_touch() && fe.is_over && fe.was_tap() && !self.selection_committed {
++                    // A tap on copy behaves as it always did: focus here
++                    // (blurs a field, so the soft keyboard goes away).
++                    cx.set_key_focus(self.area);
++                }
+                 let was_committed = self.selection_committed;
+                 self.is_selecting = false;
+                 self.selection_committed = false;

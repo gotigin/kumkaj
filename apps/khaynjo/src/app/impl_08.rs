@@ -542,30 +542,35 @@ fn add_menu_item(&mut self, cx: &mut Cx) {
         }
     }
 
-    /// The owner picked where the backup copy goes: write it there.
+    /// The owner picked where the backup copy goes: write it there — on a
+    /// worker (`backup_copy_write_job`) with the same Progress + Cancel as
+    /// the VACUUM half. Writing a whole books file here froze the till for
+    /// seconds right after the save dialog (DEV.md 7b).
     fn write_backup_copy(&mut self, cx: &mut Cx, target: &std::path::Path) {
         let Some(file) = app_state().lock().unwrap().pending_backup_copy.take() else {
             return;
         };
-        let target_text = target.display().to_string();
-        let written = match std::fs::read(&file) {
-            Ok(bytes) if target_text.starts_with("content://") => cx.write_content_uri(&target_text, &bytes),
-            Ok(_) => std::fs::copy(&file, target).is_ok(),
-            Err(_) => false,
-        };
-        let _ = std::fs::remove_file(&file);
+        backup_copy_write_job(file, target.display().to_string());
+        self.paint_submit_busy_chrome(cx);
+    }
+
+    /// The backup copy write finished (Signal): say how it went.
+    fn finish_backup_copy_write(&mut self, cx: &mut Cx, result: Result<(), String>) {
         let msg = {
             let st = app_state().lock().unwrap();
-            if written {
-                if let Some(store) = st.store.as_ref() {
-                    let _ = store.note_backup_copy_saved();
+            match &result {
+                Ok(()) => {
+                    if let Some(store) = st.store.as_ref() {
+                        let _ = store.note_backup_copy_saved();
+                    }
+                    st.t("backup_copy_saved")
                 }
-                st.t("backup_copy_saved")
-            } else {
-                st.t("backup_copy_failed")
+                Err(e) if e == "Cancelled" => st.t("cancelled"),
+                Err(_) => st.t("backup_copy_failed"),
             }
         };
         self.set_status(cx, msg);
+        self.paint_submit_busy_chrome(cx);
         self.sync_chrome(cx);
     }
 

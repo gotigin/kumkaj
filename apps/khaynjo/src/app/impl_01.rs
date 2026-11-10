@@ -40,6 +40,39 @@ fn set_status(&mut self, cx: &mut Cx, msg: impl Into<String>) {
             .set_text(cx, &plain_display_text(&ticket_status_line(msg)));
     }
 
+    /// A worker's progress line ("Preparing desk…", "Importing… 3/12") on the
+    /// status line. No snack: a toast per progress tick only flickered. The
+    /// text is remembered so `clear_stale_work_status` takes it down when the
+    /// job ends without a result message of its own.
+    fn show_work_status(&mut self, cx: &mut Cx, msg: impl Into<String>) {
+        let msg = msg.into();
+        *work_status_shown().lock().unwrap() = Some(msg.clone());
+        self.set_status_line_only(cx, &msg);
+    }
+
+    /// The job is over (no work status any more) but the status line still
+    /// shows its progress text: clear it. A result the finish code wrote
+    /// ("Backup created", an error) differs from the progress text and stays.
+    /// Never waits on `app_state` — a long open may still hold it.
+    fn clear_stale_work_status(&mut self, cx: &mut Cx) {
+        if books_work_status().lock().unwrap().is_some() {
+            return;
+        }
+        let Some(shown) = work_status_shown().lock().unwrap().take() else {
+            return;
+        };
+        let stale = match app_state().try_lock() {
+            Ok(st) => st.status == shown,
+            Err(_) => {
+                *work_status_shown().lock().unwrap() = Some(shown);
+                return;
+            }
+        };
+        if stale {
+            self.set_status_line_only(cx, "");
+        }
+    }
+
     /// Ephemeral chrome snack (info / success / warn / error). Undo snack stays separate.
     fn show_snack(&mut self, cx: &mut Cx, kind: SnackKind, msg: impl Into<String>) {
         let msg = msg.into();
@@ -133,6 +166,7 @@ fn set_status(&mut self, cx: &mut Cx, msg: impl Into<String>) {
     /// `dirs::data_dir` is often None on Android (no $HOME), which left
     /// `store = None` so Owner PIN OK could never unlock.
     fn ensure_store(&mut self, cx: &mut Cx) {
+        let _span = stall_span("ensure_store");
         {
             let st = app_state().lock().unwrap();
             if st.store.is_some() {

@@ -124,6 +124,7 @@ fn smoke_peer_tour() -> Vec<Screen> {
 impl App {
     /// Schedule / advance the in-app smoke script. Call from Signal + NextFrame.
     fn tick_smoke_script(&mut self, cx: &mut Cx) {
+        let _span = stall_span("tick_smoke_script");
         let Some(mode) = smoke_parse_mode() else {
             return;
         };
@@ -415,8 +416,10 @@ impl App {
                     let products = store.list_products(false)?;
                     let p = products
                         .into_iter()
-                        .find(|p| p.name.contains("Chaas") || p.name.contains("Chai"))
-                        .ok_or("no drink product")?;
+                        // A shop staple from the Kirano visual seed (untracked stock,
+                        // always sellable) — the restaurant copy looked for Chai.
+                        .find(|p| p.name.contains("Rice"))
+                        .ok_or("no Rice product in the seed")?;
                     let mut cart = Cart::default();
                     cart.add_or_bump(&p);
                     let draft = cart.to_sale_draft()?;

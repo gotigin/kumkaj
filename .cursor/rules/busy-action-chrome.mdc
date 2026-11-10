@@ -43,3 +43,12 @@ Duplicate the pattern per app (`apps/moklanjo`, `apps/khaynjo`,
 `apps/kirano`, `apps/tabiyat`, future) — no shared Kumkaj core. Same UX
 contract in every product. Cart −/+ uses row `stepper_busy`
 (Removing…/Updating… + Cancel) deferred so Progress can paint.
+
+## Progress text and the stall meter (2026-11-10)
+
+- Worker progress goes on the status line with `show_work_status` (no
+  snack); `clear_stale_work_status` takes it down when the job ends without
+  a result line. Never `set_status(books_work_status…)` — "Preparing desk…"
+  stayed on DeviceSetup / Lock after the desk opened.
+- Find what still blocks: every app logs `Kumkaj stall:` for any event
+  ≥ 250 ms with a `stall_span` breakdown (`.cursor/rules/press-touch.mdc`).
