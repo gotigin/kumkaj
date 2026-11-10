@@ -1425,7 +1425,6 @@ fn en(key: &str) -> String {
         "offline_badge" => "OFFLINE",
         "optional_login_help" => "Optional login (id + password). Owner sets once; only the user can change password later.",
         "or_unlock_login" => "Or unlock with login",
-        "or_unlock_login_help" => "Optional: unlock with login id and password instead of PIN.",
         "permission_preset" => "Job (sets screens and money actions)",
         "preset_help_khaynjo" => "Cashier: sell. Manager: sell + items + void/amend.",
         "product_locked_khaynjo" => "Khaynjo",

@@ -318,7 +318,8 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             let help = self.ui.widget(cx, ids!(lock_login_help)).as_info_help();
             help.set_title(cx, "");
             // Tip for unlock-with-login (not Team's "optional login" essay).
-            help.set_tip(&plain_display_text(&s("or_unlock_login_help")));
+            // Reuse or_unlock_login — no new en() key (translation gate).
+            help.set_tip(&plain_display_text(&s("or_unlock_login")));
         }
         self.ui
             .button(cx, ids!(server_create_new))
