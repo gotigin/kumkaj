@@ -26,11 +26,14 @@ Other Kumkaj apps: `$HOME/<app>-release.jks` + `.password` (e.g. `moklanjo-relea
 - Rust + Makepad Android toolchain (see root [`docs/DEV.md`](../../../docs/DEV.md) § Android)
 - `$HOME/khaynjo-release.jks` + `$HOME/khaynjo-release.jks.password` present
 - Play Console listing for `com.khaynjo` (title, screenshots, privacy policy URL, content rating, etc.)
-- **Product cert green** before upload (blocks launch-crash / sidebar regressions that caused the
-  version_code 2 “Broken Functionality” reject):
+- **Product cert green** before upload (blocks launch-crash / hang / sidebar regressions that
+  caused “Broken Functionality” rejects). Store tier **requires** a device/emulator Android
+  launch smoke (pid death, FATAL/ANR logcat, or pid-alive-without-UI all fail). Skip only with
+  `CERT_ALLOW_ANDROID_SKIP=1` — do not use that for a real Play upload:
 
 ```bash
 ./scripts/product-cert.sh --tier=store khaynjo
+# Needs adb + a device + dist/khaynjo-android/*.apk from package-android.sh
 ```
 
 ## Build the Play bundle

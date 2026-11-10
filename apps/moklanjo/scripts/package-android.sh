@@ -112,6 +112,7 @@ if [[ $STATUS -eq 0 && -n "${APK:-}" && -f "$APK" ]]; then
     if [[ $STATUS -eq 0 && -n "$AAB" ]]; then
       cp -f "$AAB" "$STAGE/kumkaj-moklanjo.aab"
       echo "Play bundle → $OUT/kumkaj-moklanjo.aab"
+      android_assert_aab_launch_bg "$STAGE/kumkaj-moklanjo.aab"
       AAB_LIBS="$TARGET_DIR/android/makepad-android-aab/kumkaj_moklanjo/lib"
       android_write_play_crash_files "$AAB_LIBS" "$STAGE/kumkaj-moklanjo.aab" "$STAGE"
     fi

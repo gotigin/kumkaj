@@ -1550,10 +1550,21 @@ non-poison `Mutex`, `catch_unwind` on `handle_event`, and `rail_expand_btn` in
 `HEADER_CONTROLS`.
 
 Also covered when artifacts/device exist: Linux packaged-binary Xvfb launch
-(`dist/<app>-linux`, or `CERT_BUILD_LINUX=1`), Android `adb` install+launch
-(skips cleanly with no device unless `CERT_REQUIRE_ADB=1`), ImageMagick golden
-baselines under `apps/<app>/cert/baselines/`, and AnchoredPopup / popup
-oracles (Khaynjo, Kirano, Tabiyat — Floor Columns floats with the field).
+(`dist/<app>-linux`, or `CERT_BUILD_LINUX=1`), Android `adb` install+launch,
+ImageMagick golden baselines under `apps/<app>/cert/baselines/`, and
+AnchoredPopup / popup oracles (Khaynjo, Kirano, Tabiyat — Floor Columns
+floats with the field).
+
+**Launch smoke must catch hangs, not only missing pids (2026-11-10).** A
+startup `app_state` deadlock keeps the process alive with no usable UI —
+`pidof` stayed green while Play reviewers saw open-then-“keeps stopping”.
+Android device smoke now: clear logcat → launch → poll 10s → **fail** if the
+pid dies, if logcat shows FATAL/ANR/`Process … has died` for the package, or
+if the pid is alive but nothing is resumed/focused. Linux packaged smoke:
+alive **and** an X client/window on the Xvfb display. **Store tier** fails
+when Android smoke was skipped (no adb/device/APK) unless
+`CERT_ALLOW_ANDROID_SKIP=1` — do not claim Play-ready without a device proof.
+`CERT_REQUIRE_ADB=1` still forces a hard fail on skip for any tier.
 
 Honesty: does not replace Console / Partner Center human review, full OCR of
 every language, or a real-device GPU farm. Apple stays scaffold-only until

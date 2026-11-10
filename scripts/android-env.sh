@@ -267,9 +267,10 @@ android_write_play_crash_files() {
   fi
   mkdir -p "$out_dir"
 
-  local zip_out="$out_dir/native-debug-symbols.zip"
-  local map_out="$out_dir/mapping.txt"
-  local stage
+  # Absolute paths: the zip runs after `cd "$stage/symbols"`.
+  local zip_out map_out stage
+  zip_out="$(cd "$out_dir" && pwd)/native-debug-symbols.zip"
+  map_out="$(cd "$out_dir" && pwd)/mapping.txt"
   stage="$(mktemp -d "${TMPDIR:-/tmp}/kumkaj-play-symbols.XXXXXX")"
 
   # --- native debug symbols ---
@@ -325,4 +326,45 @@ android_write_play_crash_files() {
     echo "Play mapping.txt stub only (dexdump/dex missing); native symbols still written" >&2
   fi
   rm -rf "$stage"
+}
+
+# Fail packaging if the Play AAB still bakes R.drawable.makepad_launch_background
+# into dex. aapt2 / bundletool remaps that constant onto id/menu_copy and kills
+# onCreate on API 26 (Play "keeps stopping"). MakepadLaunchBg lookups by name.
+# Usage: android_assert_aab_launch_bg <aab>
+android_assert_aab_launch_bg() {
+  local aab="$1"
+  if [[ -z "$aab" || ! -f "$aab" ]]; then
+    echo "android_assert_aab_launch_bg: AAB missing: ${aab:-}" >&2
+    return 1
+  fi
+  local stage dex
+  stage="$(mktemp -d "${TMPDIR:-/tmp}/kumkaj-aab-launchbg.XXXXXX")"
+  unzip -q -o "$aab" "base/dex/*.dex" -d "$stage" 2>/dev/null || true
+  dex="$(find "$stage" -name 'classes*.dex' | sort | head -1 || true)"
+  if [[ -z "$dex" || ! -f "$dex" ]]; then
+    echo "android_assert_aab_launch_bg: no classes.dex in $aab" >&2
+    rm -rf "$stage"
+    return 1
+  fi
+  # Do not use `grep -q` under `set -o pipefail`: grep exits early on match,
+  # `strings` then gets SIGPIPE (141) and the pipeline looks like a miss.
+  local launch_hits bad_hits
+  launch_hits="$(strings "$dex" | grep -cF 'MakepadLaunchBg' || true)"
+  if [[ "${launch_hits:-0}" -lt 1 ]]; then
+    echo "android_assert_aab_launch_bg: $aab dex lacks MakepadLaunchBg (API-26 Play crash regress)" >&2
+    rm -rf "$stage"
+    return 1
+  fi
+  # Bare R.drawable constant path: ResizingLayout still doing setBackgroundResource
+  # with a baked 0x7f02xxxx is the known killer. Presence of MakepadLaunchBg.apply
+  # is the gate; also refuse the old string if somehow left as a field name only.
+  bad_hits="$(strings "$dex" | grep -cF 'setBackgroundResource(R.drawable.makepad_launch_background)' || true)"
+  if [[ "${bad_hits:-0}" -gt 0 ]]; then
+    echo "android_assert_aab_launch_bg: $aab still references R.drawable.makepad_launch_background" >&2
+    rm -rf "$stage"
+    return 1
+  fi
+  rm -rf "$stage"
+  echo "AAB launch-bg OK (MakepadLaunchBg present): $(basename "$aab")"
 }

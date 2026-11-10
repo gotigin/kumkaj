@@ -1,6 +1,6 @@
 [package]
 name = "kumkaj-khaynjo"
-version = "1.0.6"
+version = "1.0.7"
 edition = "2024"
 description = "Khaynjo — local-first restaurant operating system (tables, KOT, billing, books)"
 license = "MIT OR Apache-2.0"
@@ -14,8 +14,8 @@ product_name = "Khaynjo"
 [package.metadata.makepad.android]
 # Play integer: start at 1; bump +1 per Play upload (manual; never YYYYMMDDHH auto).
 # See docs/DEV.md / .cursor/rules/play-version-code.mdc.
-version_code = 4
-version_name = "1.0.6"
+version_code = 5
+version_name = "1.0.7"
 min_sdk_version = 26
 
 [dependencies]

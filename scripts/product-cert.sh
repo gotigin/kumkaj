@@ -376,7 +376,7 @@ run_linux_pkg() {
       "$exe" >"$log" 2>&1
   ) &
   app_pid=$!
-  sleep 4
+  sleep 5
   if ! kill -0 "$app_pid" 2>/dev/null; then
     wait "$app_pid" 2>/dev/null || true
     kill "$xvfb_pid" 2>/dev/null || true
@@ -392,6 +392,37 @@ run_linux_pkg() {
     pass_tier "$app" linux
     return 0
   fi
+  # Alive is not enough: startup deadlock keeps a pid with no window
+  # (Play "keeps stopping" / desktop Not Responding). Prefer xlsclients;
+  # fall back to the root tree. No display clients → treat as hang.
+  local win_ok=0 win_dump=""
+  if have_cmd xlsclients; then
+    win_dump="$(DISPLAY="$disp" xlsclients 2>/dev/null || true)"
+    if printf '%s\n' "$win_dump" | grep -qiE "$bin_name|${app}|makepad"; then
+      win_ok=1
+    elif [[ -n "$(printf '%s\n' "$win_dump" | tr -d '[:space:]')" ]]; then
+      # Some builds register an opaque client name — any client on this
+      # fresh Xvfb besides the server means a window mapped.
+      win_ok=1
+    fi
+  elif have_cmd xwininfo; then
+    win_dump="$(DISPLAY="$disp" xwininfo -root -tree 2>/dev/null || true)"
+    if printf '%s\n' "$win_dump" | grep -qiE "$bin_name|${app}|Makepad|0x[0-9a-f]+.*: \(.*\)  [1-9]"; then
+      win_ok=1
+    fi
+  else
+    win_ok=1 # no probe tools — cannot prove a hang; pid check only
+    echo "CERT NOTE [$app/linux]: install xlsclients/xwininfo to catch no-window hangs" | tee -a "$SUMMARY"
+  fi
+  if [[ "$win_ok" -ne 1 ]]; then
+    kill -9 "$app_pid" 2>/dev/null || true
+    wait "$app_pid" 2>/dev/null || true
+    kill "$xvfb_pid" 2>/dev/null || true
+    wait "$xvfb_pid" 2>/dev/null || true
+    printf '%s\n' "$win_dump" >"$out/windows.txt"
+    fail_tier "$app" linux "packaged binary alive but no window (hang?) — $log"
+    return 1
+  fi
   kill "$app_pid" 2>/dev/null || true
   wait "$app_pid" 2>/dev/null || true
   kill "$xvfb_pid" 2>/dev/null || true
@@ -400,13 +431,34 @@ run_linux_pkg() {
     fail_tier "$app" linux "panic/[E] in packaged launch log"
     return 1
   fi
-  echo "packaged launch stayed up 4s" >"$out/log.txt"
+  echo "packaged launch stayed up 5s with a window" >"$out/log.txt"
   pass_tier "$app" linux
 }
 
+# Store / Play must not go green when Android launch was never proven.
+android_skip() {
+  local app="$1" reason="$2" out="$3"
+  echo "CERT SKIP [$app/android]: $reason" | tee -a "$SUMMARY"
+  echo skipped >"$out/SKIP"
+  if [[ "${CERT_REQUIRE_ADB:-0}" == "1" ]]; then
+    fail_tier "$app" android "required: $reason"
+    return 1
+  fi
+  if [[ "${want_store:-0}" -eq 1 && "${CERT_ALLOW_ANDROID_SKIP:-0}" != "1" ]]; then
+    fail_tier "$app" android \
+      "store tier needs device launch smoke ($reason). Plug a device or set CERT_ALLOW_ANDROID_SKIP=1"
+    return 1
+  fi
+  return 0
+}
+
 # ---------- Android device/emulator launch smoke ----------
+# Alive pid alone used to pass — a startup deadlock keeps the process and
+# Play still sees "keeps stopping" after the hang. Fail on crash, ANR, or
+# process-without-resumed-UI.
 run_android_device() {
-  local app="$1" out apk pkg adb_bin serial
+  local app="$1" out apk pkg adb_bin serial pid i logcat_dump focused resumed
+  local aab="" apks_zip="" bt_jar="" sdk abi
   out="$OUT/android"
   mkdir -p "$out"
   pkg="$(pkg_id_for "$app")"
@@ -415,41 +467,101 @@ run_android_device() {
     adb_bin="$ANDROID_HOME/platform-tools/adb"
   fi
   if [[ -z "$adb_bin" ]]; then
-    echo "CERT SKIP [$app/android]: adb not on PATH" | tee -a "$SUMMARY"
-    echo skipped >"$out/SKIP"
-    [[ "${CERT_REQUIRE_ADB:-0}" == "1" ]] && { fail_tier "$app" android "adb required"; return 1; }
+    android_skip "$app" "adb not on PATH" "$out" || return 1
     return 0
   fi
-  serial="$("$adb_bin" devices 2>/dev/null | awk '/\tdevice$/{print $1; exit}')"
+  # Prefer a real USB device over an emulator — Play ships the AAB's arm64
+  # split; the local makepad APK is often x86_64-only and hides AAB R-id bugs.
+  serial="$("$adb_bin" devices 2>/dev/null | awk '/\tdevice$/{if ($1 !~ /^emulator-/) {print $1; exit}}')"
   if [[ -z "$serial" ]]; then
-    echo "CERT SKIP [$app/android]: no device/emulator (adb devices empty)" | tee -a "$SUMMARY"
-    echo skipped >"$out/SKIP"
-    [[ "${CERT_REQUIRE_ADB:-0}" == "1" ]] && { fail_tier "$app" android "device required"; return 1; }
+    serial="$("$adb_bin" devices 2>/dev/null | awk '/\tdevice$/{print $1; exit}')"
+  fi
+  if [[ -z "$serial" ]]; then
+    android_skip "$app" "no device/emulator (adb devices empty)" "$out" || return 1
     return 0
   fi
   shopt -s nullglob
+  local aabs=("$ROOT/dist/${app}-android"/*.aab)
   local apks=("$ROOT/dist/${app}-android"/*.apk)
   shopt -u nullglob
-  if [[ ${#apks[@]} -eq 0 ]]; then
-    echo "CERT SKIP [$app/android]: no APK under dist/${app}-android" | tee -a "$SUMMARY"
-    echo skipped >"$out/SKIP"
-    [[ "${CERT_REQUIRE_ADB:-0}" == "1" ]] && { fail_tier "$app" android "APK required"; return 1; }
+  apk=""
+  if [[ ${#aabs[@]} -gt 0 ]]; then
+    aab="${aabs[0]}"
+    # shellcheck source=android-env.sh
+    source "$ROOT/scripts/android-env.sh"
+    android_assert_aab_launch_bg "$aab" || {
+      fail_tier "$app" android "AAB launch-bg assert failed — $aab"
+      return 1
+    }
+    sdk="${ANDROID_HOME:-${ANDROID_SDK_ROOT:-$HOME/Android/Sdk}}"
+    bt_jar=""
+    for cand in \
+      "$sdk/bundletool/bundletool.jar" \
+      "$sdk/sources/bundletool-all-1.18.1.jar" \
+      "$HOME/.cache/ghal-bol/makepad-android_33_linux_x64/bundletool/bundletool.jar"; do
+      [[ -f "$cand" ]] && bt_jar="$cand" && break
+    done
+    if [[ -n "$bt_jar" ]]; then
+      apks_zip="$out/from-aab.apks"
+      rm -f "$apks_zip"
+      java -jar "$bt_jar" build-apks --bundle="$aab" --output="$apks_zip" --mode=universal >/dev/null
+      rm -rf "$out/from-aab" && mkdir -p "$out/from-aab"
+      unzip -qo "$apks_zip" -d "$out/from-aab"
+      if [[ -f "$out/from-aab/universal.apk" ]]; then
+        apk="$out/from-aab/universal.apk"
+      fi
+    fi
+  fi
+  if [[ -z "$apk" && ${#apks[@]} -gt 0 ]]; then
+    apk="${apks[0]}"
+  fi
+  if [[ -z "$apk" || ! -f "$apk" ]]; then
+    android_skip "$app" "no APK/AAB under dist/${app}-android" "$out" || return 1
     return 0
   fi
-  apk="${apks[0]}"
+  if [[ "${want_store:-0}" -eq 1 && -z "$aab" ]]; then
+    fail_tier "$app" android "store tier needs dist/${app}-android/*.aab (Play path), not only the local APK"
+    return 1
+  fi
+  abi="$("$adb_bin" -s "$serial" shell getprop ro.product.cpu.abi | tr -d '\r')"
   {
-    echo "serial=$serial apk=$apk pkg=$pkg"
+    echo "serial=$serial apk=$apk pkg=$pkg abi=$abi aab=${aab:-none}"
+    "$adb_bin" -s "$serial" logcat -c || true
     "$adb_bin" -s "$serial" install -r "$apk"
     "$adb_bin" -s "$serial" shell am force-stop "$pkg" || true
-    "$adb_bin" -s "$serial" shell monkey -p "$pkg" -c android.intent.category.LAUNCHER 1
-    sleep 5
-    # Still running?
-    if ! "$adb_bin" -s "$serial" shell pidof "$pkg" | grep -q '[0-9]'; then
-      echo "FAIL: $pkg not running after launch" >&2
-      "$adb_bin" -s "$serial" logcat -d -t 80 '*:E' || true
+    "$adb_bin" -s "$serial" shell monkey -p "$pkg" -c android.intent.category.LAUNCHER 1 >/dev/null
+    # Warm launch: poll — crash drops the pid; hang keeps it without UI.
+    pid=""
+    for i in 1 2 3 4 5 6 7 8 9 10; do
+      sleep 1
+      pid="$("$adb_bin" -s "$serial" shell pidof "$pkg" 2>/dev/null | tr -d '\r' | awk '{print $1}')"
+      if [[ -z "$pid" ]]; then
+        echo "FAIL: $pkg died after ${i}s (crash / keeps stopping)" >&2
+        "$adb_bin" -s "$serial" logcat -d -t 120 '*:E' AndroidRuntime:E ActivityManager:E || true
+        exit 1
+      fi
+    done
+    echo "pid=$pid after 10s"
+    logcat_dump="$("$adb_bin" -s "$serial" logcat -d -t 400 2>/dev/null || true)"
+    printf '%s\n' "$logcat_dump" >"$out/logcat.txt"
+    if printf '%s\n' "$logcat_dump" | grep -qiE \
+      "FATAL EXCEPTION.*${pkg}|AndroidRuntime.*${pkg}|Process ${pkg} has died|Force finishing activity.*${pkg}|ANR in ${pkg}|Application Not Responding.*${pkg}|${pkg}.*(keeps stopping|has stopped)"; then
+      echo "FAIL: crash/ANR for $pkg in logcat" >&2
+      printf '%s\n' "$logcat_dump" | grep -iE "FATAL|ANR|AndroidRuntime|${pkg}" | tail -40 >&2 || true
       exit 1
     fi
-    echo "pid=$("$adb_bin" -s "$serial" shell pidof "$pkg")"
+    # Process without a resumed / focused activity = open-then-hang.
+    resumed="$("$adb_bin" -s "$serial" shell dumpsys activity activities 2>/dev/null | tr -d '\r' || true)"
+    focused="$("$adb_bin" -s "$serial" shell dumpsys window 2>/dev/null | tr -d '\r' || true)"
+    if ! printf '%s\n' "$resumed" | grep -qE "mResumedActivity.*${pkg}|topResumedActivity.*${pkg}"; then
+      if ! printf '%s\n' "$focused" | grep -qE "mCurrentFocus.*${pkg}|mFocusedApp.*${pkg}"; then
+        echo "FAIL: $pkg pid alive but no resumed/focused UI (hang / black launch)" >&2
+        printf '%s\n' "$resumed" | grep -E 'mResumedActivity|topResumedActivity' | head -5 >&2 || true
+        printf '%s\n' "$focused" | grep -E 'mCurrentFocus|mFocusedApp' | head -5 >&2 || true
+        exit 1
+      fi
+    fi
+    echo "resumed_or_focused=ok"
     "$adb_bin" -s "$serial" shell am force-stop "$pkg" || true
   } >"$out/log.txt" 2>&1 || {
     fail_tier "$app" android "device launch failed — $out/log.txt"
@@ -481,6 +593,12 @@ run_store() {
       if [[ ${#aabs[@]} -gt 0 ]]; then
         aab_found=1
         echo "AAB: ${aabs[*]}"
+        # shellcheck source=android-env.sh
+        source "$ROOT/scripts/android-env.sh"
+        local aab
+        for aab in "${aabs[@]}"; do
+          android_assert_aab_launch_bg "$aab"
+        done
       fi
       [[ -f "$aab_dir/native-debug-symbols.zip" ]] && sym_found=1
       [[ -f "$aab_dir/mapping.txt" ]] && map_found=1

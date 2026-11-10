@@ -81,6 +81,7 @@ if android_release_keystore_set; then
   fi
   cp -f "$AAB" "$STAGE/kirano.aab"
   echo "Play bundle → $OUT/kirano.aab"
+  android_assert_aab_launch_bg "$STAGE/kirano.aab"
 fi
 cat > "$STAGE/README.txt" <<EOF
 Kirano for Android phones and tablets

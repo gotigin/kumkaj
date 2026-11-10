@@ -75,13 +75,14 @@ if android_release_keystore_set; then
   android_aab_sign_opts
   cargo run --manifest-path "$MAKEPAD_ROOT/tools/cargo_makepad/Cargo.toml" --release -- \
     android "${ANDROID_PKG_OPTS[@]}" "${ANDROID_AAB_SIGN_OPTS[@]}" build-aab -p kumkaj-khaynjo --release 2>&1 | tee -a "$LOG"
-  AAB="$(find "$TARGET_DIR/android/makepad-android-aab/kumkaj_khaynjo" -maxdepth 1 -name '*.aab' 2>/dev/null | head -1 || true)"
+  AAB="$(find "$TARGET_DIR/android/makepad-android-aab/kumkaj_khaynjo" -maxdepth 1 -name '*.aab' -printf '%T@ %p\n' 2>/dev/null | sort -nr | head -1 | cut -d' ' -f2- || true)"
   if [[ -z "$AAB" ]]; then
     echo "Play bundle build did not complete. See $LOG" >&2
     exit 1
   fi
   cp -f "$AAB" "$STAGE/khaynjo.aab"
   echo "Play bundle → $OUT/khaynjo.aab"
+  android_assert_aab_launch_bg "$STAGE/khaynjo.aab"
   # Crash symbolication for Play Console (native .so + identity Java mapping).
   AAB_LIBS="$TARGET_DIR/android/makepad-android-aab/kumkaj_khaynjo/lib"
   android_write_play_crash_files "$AAB_LIBS" "$STAGE/khaynjo.aab" "$STAGE"

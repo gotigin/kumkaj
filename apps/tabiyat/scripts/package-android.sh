@@ -81,6 +81,7 @@ if android_release_keystore_set; then
   fi
   cp -f "$AAB" "$STAGE/tabiyat.aab"
   echo "Play bundle → $OUT/tabiyat.aab"
+  android_assert_aab_launch_bg "$STAGE/tabiyat.aab"
 fi
 cat > "$STAGE/README.txt" <<EOF
 Tabiyat for Android phones and tablets

@@ -226,6 +226,100 @@ else
   echo "cargo-makepad already compiles ImeInsetsAnimationHelper.java."
 fi
 
+# AAB aapt2 / bundletool remaps resource IDs vs legacy `aapt package` R.java.
+# Baking R.drawable.makepad_launch_background into dex crashed onCreate on API 26
+# (Play "keeps stopping") when that constant landed on id/menu_copy. Resolve by name.
+if grep -qF 'class MakepadLaunchBg' "$JAVA" && ! grep -qF 'setBackgroundResource(R.drawable.makepad_launch_background)' "$JAVA"; then
+  echo "MakepadLaunchBg runtime drawable lookup already present."
+else
+  python3 - "$JAVA" <<'PY'
+from pathlib import Path
+import sys
+path = Path(sys.argv[1])
+text = path.read_text()
+helper = '''
+/**
+ * Launch / surface backdrop. Look up the drawable by name at runtime.
+ *
+ * AAB packaging links resources with aapt2 --proto-format (and bundletool may
+ * inject split XML), which assigns different type/entry IDs than the legacy
+ * `aapt package` R.java used to compile classes.dex. Baking
+ * {@code R.drawable.makepad_launch_background} into dex then crashes onCreate
+ * on API 26+ when that constant lands on an {@code id/} entry (Play:
+ * "keeps stopping"). Name lookup always matches the installed resource table.
+ */
+final class MakepadLaunchBg {
+    static final int FALLBACK_COLOR = 0xFFF5F7FA;
+
+    static void apply(View view) {
+        try {
+            Context ctx = view.getContext();
+            int id = ctx.getResources().getIdentifier(
+                "makepad_launch_background", "drawable", ctx.getPackageName());
+            if (id != 0) {
+                view.setBackgroundResource(id);
+                return;
+            }
+        } catch (RuntimeException ignored) {
+        }
+        view.setBackgroundColor(FALLBACK_COLOR);
+    }
+
+    static int styleId(Context ctx, String name) {
+        try {
+            return ctx.getResources().getIdentifier(name, "style", ctx.getPackageName());
+        } catch (RuntimeException ignored) {
+            return 0;
+        }
+    }
+}
+
+'''
+if 'class MakepadLaunchBg' not in text:
+    anchor = 'class ResizingLayout'
+    if anchor not in text:
+        raise SystemExit(f"ResizingLayout class not found in {path}")
+    text = text.replace(anchor, helper + anchor, 1)
+# Exact statement replacements only — never strip a receiver into `.MakepadLaunchBg`.
+for old, new in [
+    (
+        '        setBackgroundResource(R.drawable.makepad_launch_background);',
+        '        MakepadLaunchBg.apply(this);',
+    ),
+    (
+        '        surfaceContentLayout.setBackgroundResource(R.drawable.makepad_launch_background);',
+        '        MakepadLaunchBg.apply(surfaceContentLayout);',
+    ),
+    (
+        '        mSurfaceSnapshotBackdrop.setBackgroundResource(R.drawable.makepad_launch_background);',
+        '        MakepadLaunchBg.apply(mSurfaceSnapshotBackdrop);',
+    ),
+    (
+        '        mSurfaceCoverOverlay.setBackgroundResource(R.drawable.makepad_launch_background);',
+        '        MakepadLaunchBg.apply(mSurfaceCoverOverlay);',
+    ),
+    (
+        '        mSurfaceSnapshotOverlay.setBackgroundResource(R.drawable.makepad_launch_background);',
+        '        MakepadLaunchBg.apply(mSurfaceSnapshotOverlay);',
+    ),
+]:
+    text = text.replace(old, new)
+old_theme = '            setTheme(R.style.MakepadAppTheme);'
+new_theme = '''            int themeId = MakepadLaunchBg.styleId(this, "MakepadAppTheme");
+            if (themeId != 0) {
+                setTheme(themeId);
+            }'''
+if old_theme in text:
+    text = text.replace(old_theme, new_theme, 1)
+if 'setBackgroundResource(R.drawable.makepad_launch_background)' in text:
+    raise SystemExit(f"leftover R.drawable.makepad_launch_background in {path}")
+if 'R.style.MakepadAppTheme' in text:
+    raise SystemExit(f"leftover R.style.MakepadAppTheme in {path}")
+path.write_text(text)
+print(f"Patched MakepadLaunchBg runtime resource lookup in {path}")
+PY
+fi
+
 # Inline WindowInsetsAnimation.Callback in ResizingLayout ClassNotFound's on API 26–29.
 if grep -qF 'ImeInsetsAnimationHelper' "$JAVA" && grep -qF 'Class.forName("dev.makepad.android.ImeInsetsAnimationHelper")' "$JAVA"; then
   echo "Android API-26 IME helper reflection attach already present."
@@ -245,7 +339,7 @@ pat = re.compile(
 )
 repl = r'''\1// Keep a stable non-black fallback behind the SurfaceView for task snapshots
         // and system transition frames that cannot capture the separate surface layer.
-        setBackgroundResource(R.drawable.makepad_launch_background);
+        MakepadLaunchBg.apply(this);
         setOnApplyWindowInsetsListener(this);
 
         // IME animation API is API 30+. Load the helper by name so API 26–29

@@ -25,4 +25,6 @@ classes of failure **block ship**.
 
 - Upload Play AAB / MSIX / MSI / AUR without a green cert for that app
 - Skip launch-to-stable or sidebar smoke when changing chrome / Android insets / panic handling
+- Treat “process still has a pid” as a launch pass — Android smoke must also fail on ANR/FATAL and on pid-alive-without-resumed-UI; store tier must not skip device smoke without `CERT_ALLOW_ANDROID_SKIP=1`
+- Cert Android against the **local makepad APK only** — Play ships the **AAB**. Store/android smoke must install an AAB-derived universal/device APK (bundletool) and prefer a USB arm device over an x86 emulator. `android_assert_aab_launch_bg` must see `MakepadLaunchBg` in the AAB dex (aapt vs aapt2 R-id drift otherwise crashes onCreate on API 26 as `id/menu_copy`)
 - Use Python for new cert tooling (bash only)
