@@ -26,6 +26,12 @@ Other Kumkaj apps: `$HOME/<app>-release.jks` + `.password` (e.g. `moklanjo-relea
 - Rust + Makepad Android toolchain (see root [`docs/DEV.md`](../../../docs/DEV.md) § Android)
 - `$HOME/khaynjo-release.jks` + `$HOME/khaynjo-release.jks.password` present
 - Play Console listing for `com.khaynjo` (title, screenshots, privacy policy URL, content rating, etc.)
+- **Product cert green** before upload (blocks launch-crash / sidebar regressions that caused the
+  version_code 2 “Broken Functionality” reject):
+
+```bash
+./scripts/product-cert.sh --tier=store khaynjo
+```
 
 ## Build the Play bundle
 

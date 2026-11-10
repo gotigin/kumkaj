@@ -11,6 +11,8 @@ enum SmokeMode {
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 enum SmokePhase {
     WaitUnlock,
+    /// Collapse then expand the side rail (Play/sidebar regression).
+    Sidebar,
     Peers,
     Actions,
     SoakLoop,
@@ -196,8 +198,45 @@ impl App {
                 self.smoke_mark(cx, "000_unlocked");
                 let mut st = smoke_state().lock().unwrap();
                 let s = st.as_mut().unwrap();
-                s.phase = SmokePhase::Peers;
+                s.phase = SmokePhase::Sidebar;
                 s.step_i = 0;
+            }
+            SmokePhase::Sidebar => {
+                match step_i {
+                    0 => {
+                        let from = app_state().lock().unwrap().rail_width;
+                        app_state().lock().unwrap().rail_collapsed = true;
+                        self.start_rail_width_anim(cx, from, 0.0);
+                        self.apply_shell_layout(cx, true);
+                        self.sync_chrome(cx);
+                        if !app_state().lock().unwrap().rail_collapsed {
+                            self.smoke_note_fail("sidebar: rail_collapsed still false".into());
+                        }
+                        self.smoke_mark(cx, "000a_rail_collapsed");
+                        smoke_state().lock().unwrap().as_mut().unwrap().step_i = 1;
+                    }
+                    1 => {
+                        let to = app_state().lock().unwrap().rail_width.max(RAIL_WIDTH_MIN);
+                        app_state().lock().unwrap().rail_collapsed = false;
+                        self.start_rail_width_anim(cx, 0.0, to);
+                        self.apply_shell_layout(cx, true);
+                        self.sync_chrome(cx);
+                        if app_state().lock().unwrap().rail_collapsed {
+                            self.smoke_note_fail("sidebar: rail still collapsed after expand".into());
+                        }
+                        self.smoke_mark(cx, "000b_rail_expanded");
+                        let mut st = smoke_state().lock().unwrap();
+                        let s = st.as_mut().unwrap();
+                        s.phase = SmokePhase::Peers;
+                        s.step_i = 0;
+                    }
+                    _ => {
+                        let mut st = smoke_state().lock().unwrap();
+                        let s = st.as_mut().unwrap();
+                        s.phase = SmokePhase::Peers;
+                        s.step_i = 0;
+                    }
+                }
             }
             SmokePhase::Peers => {
                 let tab = {

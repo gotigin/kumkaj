@@ -1527,6 +1527,32 @@ Makepad visual traps found this way (do not reintroduce):
 
 
 
+## Product Certification Kit
+
+WACK-class gate before claiming a UI/layout fix is done, or before Linux /
+Play / Microsoft Store / AUR ship. One entrypoint:
+
+```bash
+./scripts/product-cert.sh --tier=fast          # lock-guards, i18n, never-print, cargo, journeys
+./scripts/product-cert.sh --tier=full <app>    # + Xvfb peers/full/soak + multi-size
+./scripts/product-cert.sh --tier=store <app>   # + Play AAB/symbols + MSIX/font asserts
+./scripts/linux-app-cert.sh                   # alias → product-cert.sh
+```
+
+Reports: `local/product-cert/<app>/<stamp>/`. Exit 0 only when every selected
+tier passes. Cursor rule: `.cursor/rules/product-cert.mdc`.
+
+**Play lesson:** Khaynjo `version_code` 2 was rejected for Broken Functionality
+(opens then crashes). Cert UI tier requires cold launch + sidebar
+collapse/expand + peers; store tier refuses a green Play claim without AAB +
+`native-debug-symbols.zip` and a green UI tier. Source gate also checks
+non-poison `Mutex`, `catch_unwind` on `handle_event`, and `rail_expand_btn` in
+`HEADER_CONTROLS`.
+
+Honesty: does not replace Console / Partner Center human review, full OCR of
+every language, or a real-device GPU farm. Apple stays scaffold-only until
+Makepad iOS packaging is product-ready.
+
 ## Smoke tests
 
 ```bash

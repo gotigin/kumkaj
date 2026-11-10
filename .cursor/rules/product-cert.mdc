@@ -1,0 +1,28 @@
+---
+description: Run Product Certification Kit before claiming UI/layout/store-ready
+globs: apps/*/src/**,apps/*/scripts/package-*.sh,scripts/product-cert.sh,scripts/linux-app-cert.sh
+---
+
+# Product Certification Kit
+
+Canonical: `docs/DEV.md` § Product Certification Kit; runner `scripts/product-cert.sh`.
+
+## Why
+
+Play rejected Khaynjo for **Broken Functionality** (opens then crashes). Sidebar
+and silent background errors also made the UI glitchy. Cert exists so those
+classes of failure **block ship**.
+
+## Do
+
+```bash
+./scripts/product-cert.sh --tier=fast          # before claiming a UI/layout fix
+./scripts/product-cert.sh --tier=full <app>    # before Linux package
+./scripts/product-cert.sh --tier=store <app>   # before Play / MSIX / MSI upload
+```
+
+## Do not
+
+- Upload Play AAB / MSIX / MSI / AUR without a green cert for that app
+- Skip launch-to-stable or sidebar smoke when changing chrome / Android insets / panic handling
+- Use Python for new cert tooling (bash only)

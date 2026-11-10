@@ -7,7 +7,7 @@
 #
 # shellcheck disable=SC2034
 pkgname=khaynjo
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="Khaynjo — local-first restaurant operating system (tables, KOT, billing, books)"
 arch=('x86_64')

@@ -13,6 +13,8 @@ enum SmokeMode {
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 enum SmokePhase {
     WaitUnlock,
+    /// Collapse then expand the side rail (Play/sidebar regression).
+    Sidebar,
     Peers,
     Actions,
     SoakLoop,
@@ -193,8 +195,49 @@ impl App {
                 self.smoke_mark(cx, "000_unlocked");
                 let mut st = smoke_state().lock().unwrap();
                 let s = st.as_mut().unwrap();
-                s.phase = SmokePhase::Peers;
+                s.phase = SmokePhase::Sidebar;
                 s.step_i = 0;
+            }
+            SmokePhase::Sidebar => {
+                // Launch-to-stable already passed (we unlocked). Exercise the
+                // side rail the same way chrome taps do: collapse → expand.
+                match step_i {
+                    0 => {
+                        let from = app_state().lock().unwrap().rail_width;
+                        app_state().lock().unwrap().rail_collapsed = true;
+                        self.start_rail_width_anim(cx, from, 0.0);
+                        self.apply_shell_layout(cx, true);
+                        self.sync_chrome(cx);
+                        let collapsed = app_state().lock().unwrap().rail_collapsed;
+                        if !collapsed {
+                            self.smoke_note_fail("sidebar: rail_collapsed still false".into());
+                        }
+                        self.smoke_mark(cx, "000a_rail_collapsed");
+                        smoke_state().lock().unwrap().as_mut().unwrap().step_i = 1;
+                    }
+                    1 => {
+                        let to = app_state().lock().unwrap().rail_width.max(RAIL_WIDTH_MIN);
+                        app_state().lock().unwrap().rail_collapsed = false;
+                        self.start_rail_width_anim(cx, 0.0, to);
+                        self.apply_shell_layout(cx, true);
+                        self.sync_chrome(cx);
+                        let collapsed = app_state().lock().unwrap().rail_collapsed;
+                        if collapsed {
+                            self.smoke_note_fail("sidebar: rail still collapsed after expand".into());
+                        }
+                        self.smoke_mark(cx, "000b_rail_expanded");
+                        let mut st = smoke_state().lock().unwrap();
+                        let s = st.as_mut().unwrap();
+                        s.phase = SmokePhase::Peers;
+                        s.step_i = 0;
+                    }
+                    _ => {
+                        let mut st = smoke_state().lock().unwrap();
+                        let s = st.as_mut().unwrap();
+                        s.phase = SmokePhase::Peers;
+                        s.step_i = 0;
+                    }
+                }
             }
             SmokePhase::Peers => {
                 let peer = {
@@ -543,8 +586,38 @@ impl App {
                 self.smoke_mark(cx, "106_nav_back");
                 false
             }
+            10 => {
+                // Benign error path: empty-cart pay must not crash or leave chrome stuck.
+                self.go_peer(cx, Screen::Pos);
+                {
+                    let mut st = app_state().lock().unwrap();
+                    st.cart = Cart::default();
+                }
+                self.sync_chrome(cx);
+                // Attempt pay with nothing — UI should refuse cleanly.
+                let before = app_state().lock().unwrap().screen;
+                let _ = self.try_pay_cash_smoke(cx);
+                self.sync_chrome(cx);
+                let after = app_state().lock().unwrap().screen;
+                if after != before && after != Screen::Pos {
+                    self.smoke_note_fail(format!(
+                        "empty-cart pay left unexpected screen {after:?}"
+                    ));
+                }
+                self.smoke_mark(cx, "107_empty_cart_pay");
+                false
+            }
             _ => true,
         }
+    }
+
+    /// Smoke-only: surface the empty-cart refusal the Pay button uses.
+    fn try_pay_cash_smoke(&mut self, cx: &mut Cx) {
+        let n = app_state().lock().unwrap().cart.lines.len();
+        if n != 0 {
+            return;
+        }
+        self.set_status(cx, "Nothing to charge — add items first");
     }
 
     fn smoke_mark(&mut self, cx: &mut Cx, name: &str) {
