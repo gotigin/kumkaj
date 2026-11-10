@@ -3426,6 +3426,58 @@ script_mod! {
         }
     }
 
+    mod.widgets.MenuPickPagerBase = #(MenuPickPager::register_widget(vm))
+    // Add dishes: one category per horizontal page; swipes move the strip
+    // and update the category chips (search collapses to a single page).
+    mod.widgets.MenuPickPager = set_type_default() do mod.widgets.MenuPickPagerBase{
+        width: Fill height: Fill
+        pick_scroll := ScrollXView{
+            width: Fill height: Fill
+            scroll_bars: mod.widgets.ScrollBars {
+                show_scroll_x: true show_scroll_y: false
+                scroll_bar_x: mod.widgets.ScrollBar{
+                    drag_scrolling: true
+                    mouse_capture_overload: true
+                    axis_lock: true
+                    bounce_at_start: false
+                    bounce_at_end: false
+                    bar_size: 0.
+                }
+            }
+            pick_strip := View{
+                width: Fit height: Fill
+                flow: Right
+                pick_grid_0 := mod.widgets.ProductList{width: Fill height: Fill}
+                pick_grid_1 := mod.widgets.ProductList{width: Fill height: Fill}
+                pick_grid_2 := mod.widgets.ProductList{width: Fill height: Fill}
+                pick_grid_3 := mod.widgets.ProductList{width: Fill height: Fill}
+                pick_grid_4 := mod.widgets.ProductList{width: Fill height: Fill}
+                pick_grid_5 := mod.widgets.ProductList{width: Fill height: Fill}
+                pick_grid_6 := mod.widgets.ProductList{width: Fill height: Fill}
+                pick_grid_7 := mod.widgets.ProductList{width: Fill height: Fill}
+                pick_grid_8 := mod.widgets.ProductList{width: Fill height: Fill}
+                pick_grid_9 := mod.widgets.ProductList{width: Fill height: Fill}
+                pick_grid_10 := mod.widgets.ProductList{width: Fill height: Fill}
+                pick_grid_11 := mod.widgets.ProductList{width: Fill height: Fill}
+                pick_grid_12 := mod.widgets.ProductList{width: Fill height: Fill}
+                pick_grid_13 := mod.widgets.ProductList{width: Fill height: Fill}
+                pick_grid_14 := mod.widgets.ProductList{width: Fill height: Fill}
+                pick_grid_15 := mod.widgets.ProductList{width: Fill height: Fill}
+                pick_grid_16 := mod.widgets.ProductList{width: Fill height: Fill}
+                pick_grid_17 := mod.widgets.ProductList{width: Fill height: Fill}
+                pick_grid_18 := mod.widgets.ProductList{width: Fill height: Fill}
+                pick_grid_19 := mod.widgets.ProductList{width: Fill height: Fill}
+                pick_grid_20 := mod.widgets.ProductList{width: Fill height: Fill}
+                pick_grid_21 := mod.widgets.ProductList{width: Fill height: Fill}
+                pick_grid_22 := mod.widgets.ProductList{width: Fill height: Fill}
+                pick_grid_23 := mod.widgets.ProductList{width: Fill height: Fill}
+                pick_grid_24 := mod.widgets.ProductList{width: Fill height: Fill}
+                pick_grid_25 := mod.widgets.ProductList{width: Fill height: Fill}
+                pick_grid_26 := mod.widgets.ProductList{width: Fill height: Fill}
+            }
+        }
+    }
+
     // One tile row inside an area's sideways scroller.
     // `width: Fit` — never Fill. Fill collapses to the ScrollX viewport
     // (~2×280 on a phone), so Columns=3 clipped the third tile with no
@@ -4545,37 +4597,57 @@ script_mod! {
             scroll_bar: ScrollBar{bar_size: 0.}
             Item := View{
                 width: Fill height: Fit
-                flow: Right spacing: 8
-                align: Align{y: 0.5}
+                flow: Down spacing: 6
                 texture_caching: false
-                View{
-                    width: Fill height: Fit
-                    flow: Right spacing: 4
-                    View{width: Fill height: Fit flow: Overlay
-                        part_cash := SegBtn{text: "Cash"}
-                        part_cash_on := SegBtnOn{text: "Cash" visible: false}
+                part_methods_scroll := FormScrollX{
+                    scroll_bars: mod.widgets.ScrollBars {
+                        show_scroll_x: true show_scroll_y: false
+                        scroll_bar_x: mod.widgets.ScrollBar{
+                            drag_scrolling: true
+                            mouse_capture_overload: true
+                            axis_lock: true
+                            bounce_at_start: false
+                            bounce_at_end: false
+                            bar_size: 6.
+                            min_handle_size: 24.
+                            draw_bg +: {
+                                size: 4. border_radius: 2.
+                                color: #xC9AFA2
+                                color_hover: #x9A0E10
+                                color_drag: #x69090C
+                            }
+                        }
                     }
-                    View{width: Fill height: Fit flow: Overlay
-                        part_upi := SegBtn{text: "UPI"}
-                        part_upi_on := SegBtnOn{text: "UPI" visible: false}
-                    }
-                    View{width: Fill height: Fit flow: Overlay
-                        part_card := SegBtn{text: "Card"}
-                        part_card_on := SegBtnOn{text: "Card" visible: false}
-                    }
-                    View{width: Fill height: Fit flow: Overlay
-                        part_bank := SegBtn{text: "Bank"}
-                        part_bank_on := SegBtnOn{text: "Bank" visible: false}
+                    part_chip_strip := View{
+                        width: Fit height: Fit
+                        flow: Right spacing: 4
+                        View{width: Fixed(76.) height: Fit flow: Overlay
+                            part_cash := SegBtn{text: "Cash"}
+                            part_cash_on := SegBtnOn{text: "Cash" visible: false}
+                        }
+                        View{width: Fixed(76.) height: Fit flow: Overlay
+                            part_upi := SegBtn{text: "UPI"}
+                            part_upi_on := SegBtnOn{text: "UPI" visible: false}
+                        }
+                        View{width: Fixed(76.) height: Fit flow: Overlay
+                            part_card := SegBtn{text: "Card"}
+                            part_card_on := SegBtnOn{text: "Card" visible: false}
+                        }
+                        View{width: Fixed(76.) height: Fit flow: Overlay
+                            part_bank := SegBtn{text: "Bank"}
+                            part_bank_on := SegBtnOn{text: "Bank" visible: false}
+                        }
                     }
                 }
                 View{
-                    width: 130 height: Fit
+                    width: Fill height: Fit
+                    flow: Right spacing: 8
+                    align: Align{y: 0.5}
                     part_amount := FieldInput{
                         empty_text: "Rest"
                         float_caption: false
                     }
-                }
-                part_remove := CloseIconBtn{
+                    part_remove := CloseIconBtn{
                     width: 40 height: 40
                     draw_bg +: {
                         mark_color: #x025B60
@@ -4590,6 +4662,7 @@ script_mod! {
                         border_color: #xD8BBA6
                         border_radius: 10.
                         border_size: 1.
+                    }
                     }
                 }
             }
@@ -7660,17 +7733,37 @@ script_mod! {
                                         buy_expiry_input := FieldInput{empty_text: "Expiry YYYY-MM-DD (optional)"}
                                     }
                                     buy_note_input := FieldInput{empty_text: "Note (optional)"}
-                                    View{
-                                        width: Fill height: Fit
-                                        flow: Right spacing: 6
-                                            View{width: Fill height: Fit flow: Overlay
+                                    buy_pay_mode_scroll := FormScrollX{
+                                        scroll_bars: mod.widgets.ScrollBars {
+                                            show_scroll_x: true show_scroll_y: false
+                                            scroll_bar_x: mod.widgets.ScrollBar{
+                                                drag_scrolling: true
+                                                mouse_capture_overload: true
+                                                axis_lock: true
+                                                bounce_at_start: false
+                                                bounce_at_end: false
+                                                bar_size: 6.
+                                                min_handle_size: 24.
+                                                draw_bg +: {
+                                                    size: 4. border_radius: 2.
+                                                    color: #xC9AFA2
+                                                    color_hover: #x9A0E10
+                                                    color_drag: #x69090C
+                                                }
+                                            }
+                                        }
+                                        View{
+                                            width: Fit height: Fit
+                                            flow: Right spacing: 6
+                                            View{width: Fixed(120.) height: Fit flow: Overlay
                                                 buy_paid := SegBtn{text: "Paid now"}
                                                 buy_paid_on := SegBtnOn{text: "Paid now" visible: false}
                                             }
-                                            View{width: Fill height: Fit flow: Overlay
+                                            View{width: Fixed(168.) height: Fit flow: Overlay
                                                 buy_on_account := SegBtn{text: "On account (AP)"}
                                                 buy_on_account_on := SegBtnOn{text: "On account (AP)" visible: false}
                                             }
+                                        }
                                     }
                                     ActionStack{
                                         buy_purchase := StackPrimaryBtn{text: "Record purchase"}
@@ -7678,10 +7771,8 @@ script_mod! {
                                 }
                                 FormCard{
                                     h_buy_expense := WrapLabel{body: "Expense" font_color: #x023637 font_size: 17.}
-                                    FormFieldRow{
-                                        buy_expense_amount := FieldInput{empty_text: "Amount"}
-                                        buy_expense_note := FieldInput{empty_text: "Note (fuel, rent, …)"}
-                                    }
+                                    buy_expense_amount := FieldInput{empty_text: "Amount"}
+                                    buy_expense_note := FieldInput{empty_text: "Note (fuel, rent, …)"}
                                     // Paid in as many ways as it was: one row per way; a
                                     // blank amount takes what is left.
                                     buy_parts := mod.widgets.PartsList{}
@@ -7724,7 +7815,7 @@ script_mod! {
                                     // Note above — no second note field).
                                     View{
                                         width: Fill height: Fit
-                                        flow: Right spacing: 8
+                                        flow: Down spacing: 8
                                         expense_attach_photo := StackLightBtn{text: "Attach bill photo"}
                                         expense_attach_pdf := StackLightBtn{text: "Attach PDF"}
                                     }
@@ -11469,7 +11560,7 @@ h_backup := WrapLabel{body: "Backup" font_color: #x023637 font_size: 20.}
                                     draw_text.color: #x074D3E
                                     draw_text.text_style.font_size: 14.
                                 }
-                                product_list := mod.widgets.ProductList{height: Fill}
+                                product_list := mod.widgets.MenuPickPager{height: Fill}
                             }
                         }
                     }

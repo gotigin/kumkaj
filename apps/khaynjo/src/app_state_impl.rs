@@ -616,6 +616,13 @@ impl AppState {
     /// (a waiter's KOT, a payment from a tablet just landed). Today's
     /// figures follow in `sync_chrome`, which reads them itself.
     fn refresh_live_lists(&mut self) {
+        self.refresh_live_lists_inner(true);
+    }
+
+    /// Floor grid + kitchen list from the books. `sync_printer_formats` is
+    /// false on Send KOT — slip metrics did not change; skipping the overlay
+    /// keeps the till responsive.
+    fn refresh_live_lists_inner(&mut self, sync_printer_formats: bool) {
         self.today_cache.replace(None);
         let Some(store) = self.store.as_ref() else {
             return;
@@ -626,6 +633,9 @@ impl AppState {
         self.tables = tables;
         self.open_kots = kots;
         self.kitchen_counts_line = counts;
+        if !sync_printer_formats {
+            return;
+        }
         // Client SetStandardEm / SetKotFormat updates Server printers.json +
         // meta. Always push that onto live printers so jobs match. While the
         // Owner is on Settings, leave kot_slip_draft / printer_draft alone —
@@ -633,6 +643,26 @@ impl AppState {
         let update_drafts = self.screen != Screen::Settings;
         self.apply_standard_print_em_to_draft_and_live(update_drafts);
         self.apply_kot_slip_format_to_draft_and_live(update_drafts);
+    }
+
+    /// After Send KOT on the Server — refresh the open order and floor/kitchen
+    /// lists without `reload_all` or a snapshot build on the UI thread.
+    fn refresh_after_running_order(&mut self, table_id: Option<&str>) -> Result<(), String> {
+        let store = self.store.as_ref().ok_or("No store")?;
+        let db_path = store.db_path().to_path_buf();
+        std::thread::Builder::new()
+            .name("khaynjo-publish".into())
+            .spawn(move || {
+                if let Ok(s) = crate::store::Store::open_path(&db_path) {
+                    net::publish_books(&s);
+                }
+            })
+            .ok();
+        self.refresh_live_lists_inner(false);
+        if let Some(tid) = table_id {
+            self.load_table_cart(tid)?;
+        }
+        Ok(())
     }
 
     /// Reload `printers.json` into the draft, then overlay the shop Standard
@@ -1006,6 +1036,10 @@ impl AppState {
             )?;
             return Ok(Acted::Sent);
         }
+        let bill_table = match &action {
+            net::RunningAction::PrintBill { table_id } => Some(table_id.clone()),
+            _ => None,
+        };
         let skip_reload = net::running_action_skips_full_reload(&action);
         let store = self.store.as_ref().ok_or("No store")?;
         let pin = Some(approval_pin).filter(|p| !p.trim().is_empty());
@@ -1032,6 +1066,11 @@ impl AppState {
                 })
                 .ok();
             self.refresh_live_lists();
+            if let Some(tid) = bill_table {
+                if self.selected_table_id.as_deref() == Some(tid.as_str()) {
+                    let _ = self.load_table_cart(&tid);
+                }
+            }
             return Ok(Acted::Here(text));
         }
         // Other devices on `/wait` see the bump / seat / cancel at once.
@@ -1690,9 +1729,14 @@ impl AppState {
     /// Each size is an item of its own, so each is its own tile.
     /// Frequent ranks by recent completed sales (see Frequent config).
     fn visible_products(&self) -> Vec<Product> {
+        self.visible_products_for(self.menu_category.as_deref())
+    }
+
+    /// Dish tiles for one menu category tab (or search across tabs when `q` is set).
+    fn visible_products_for(&self, category: Option<&str>) -> Vec<Product> {
         let q = self.menu_filter.trim();
         let now = chrono::Local::now();
-        if self.menu_category.as_deref() == Some(MENU_FREQUENT) {
+        if category == Some(MENU_FREQUENT) {
             let by_id: std::collections::HashMap<&str, &Product> =
                 self.products.iter().map(|p| (p.id.as_str(), p)).collect();
             let mut out: Vec<Product> = self
@@ -1719,7 +1763,7 @@ impl AppState {
             return out;
         }
         // Added Item(s): dishes on this ticket (qty > 0), in cart order.
-        if self.menu_category.as_deref() == Some(MENU_ADDED) {
+        if category == Some(MENU_ADDED) {
             let by_id: std::collections::HashMap<&str, &Product> =
                 self.products.iter().map(|p| (p.id.as_str(), p)).collect();
             let mut seen = std::collections::HashSet::new();
@@ -1749,7 +1793,7 @@ impl AppState {
             }
             return out;
         }
-        let in_category = |p: &&Product| match &self.menu_category {
+        let in_category = |p: &&Product| match category {
             Some(cat) => &p.category_id == cat,
             None => true,
         };

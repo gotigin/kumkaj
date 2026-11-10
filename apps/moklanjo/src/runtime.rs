@@ -1076,6 +1076,13 @@ fn accordion_frame() -> &'static Mutex<Option<NextFrame>> {
     FRAME.get_or_init(|| Mutex::new(None))
 }
 
+/// After DeviceSetup role open: paint ClientPair on this frame, run full
+/// `sync_chrome` on the next so Cancel stays live during the transition.
+fn deferred_role_open_sync_frame() -> &'static Mutex<Option<NextFrame>> {
+    static F: OnceLock<Mutex<Option<NextFrame>>> = OnceLock::new();
+    F.get_or_init(|| Mutex::new(None))
+}
+
 /// Side rail collapse/expand width tween (same duration as accordion).
 struct RailWidthAnim {
     from: f64,

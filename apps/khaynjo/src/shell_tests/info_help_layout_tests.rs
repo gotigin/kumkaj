@@ -216,6 +216,14 @@ mod info_help_layout_tests {
             ui.contains("pay_m_scroll := FormScrollX{"),
             "payment methods must use FormScrollX (not cramped Fill SegBtns)"
         );
+        assert!(
+            ui.contains("part_methods_scroll := FormScrollX{"),
+            "PartsList expense chips must scroll (not Fill-share SegBtns)"
+        );
+        assert!(
+            ui.contains("till_pay_scroll := FormScrollX{"),
+            "Take payment chips must scroll on phone widths"
+        );
     }
 
     /// Lock tip rows (DEV.md InfoHelp): Fit caption + tip-only InfoHelp.

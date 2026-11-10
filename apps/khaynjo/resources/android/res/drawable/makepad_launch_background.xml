@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Matches Khaynjo shell pass.clear_color (#F9F4F0) while the GL surface starts. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#FFF9F4F0"/>
+</shape>

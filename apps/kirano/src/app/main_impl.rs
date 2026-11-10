@@ -53,19 +53,29 @@ impl AppMain for App {
 
 impl App {
     fn handle_event_unguarded(&mut self, cx: &mut Cx, event: &Event) {
-        // Opening the till holds app_state for the whole shop load. Do not
-        // wait on that lock — Cancel and the progress line must keep painting.
-        if client_pair_busy().load(std::sync::atomic::Ordering::SeqCst)
-            && app_state().try_lock().is_err()
-        {
-            if let Event::Actions(actions) = event {
-                if self.ui.button(cx, ids!(client_pair_cancel)).clicked(actions) {
-                    self.abandon_client_pair(cx);
+        // Opening the till or finishing DeviceSetup role open holds app_state
+        // for a long time. Do not wait on that lock — Cancel must keep working.
+        if app_state().try_lock().is_err() {
+            if client_pair_busy().load(std::sync::atomic::Ordering::SeqCst) {
+                if let Event::Actions(actions) = event {
+                    if self.ui.button(cx, ids!(client_pair_cancel)).clicked(actions) {
+                        self.abandon_client_pair(cx);
+                    }
                 }
+                self.ui.handle_event(cx, event, &mut Scope::empty());
+                self.paint_pair_busy_chrome(cx);
+                return;
             }
-            self.ui.handle_event(cx, event, &mut Scope::empty());
-            self.paint_pair_busy_chrome(cx);
-            return;
+            if role_open_busy().load(std::sync::atomic::Ordering::SeqCst) {
+                if let Event::Actions(actions) = event {
+                    if self.ui.button(cx, ids!(device_role_cancel)).clicked(actions) {
+                        request_role_open_cancel();
+                    }
+                }
+                self.ui.handle_event(cx, event, &mut Scope::empty());
+                self.paint_role_open_busy_chrome(cx);
+                return;
+            }
         }
         self.sync_tab_chevrons(cx);
         {
@@ -126,6 +136,9 @@ impl App {
             // Targeted redraw only. Full-tree `ui.redraw` while a FingerDown is
             // in flight drops the first ProductList / MenuList / dish-picker
             // tap after photos start landing (open menu → tap → nothing).
+            for path in MENU_PICK_GRIDS {
+                self.ui.widget(cx, path).redraw(cx);
+            }
             for path in [
                 ids!(product_list),
                 ids!(product_list_menu),
@@ -439,7 +452,14 @@ impl App {
             if let Some(result) = role_open_once().lock().unwrap().take() {
                 match result {
                     Ok(RoleOpenReady::Client(store)) => {
-                        self.finish_client_mode_opened(cx, store)
+                        if role_cancelled() {
+                            drop_store_off_ui(Some(store));
+                            end_role_open_busy();
+                            self.set_status(cx, app_t("cancelled"));
+                            self.paint_role_open_busy_chrome(cx);
+                        } else {
+                            self.finish_client_mode_opened(cx, store);
+                        }
                     }
                     Ok(RoleOpenReady::ServerNew(store)) => {
                         self.finish_server_new_opened(cx, store)
@@ -451,12 +471,11 @@ impl App {
                     Err(e) if e == "Cancelled" => {
                         self.set_status(cx, app_t("cancelled"));
                         self.paint_role_open_busy_chrome(cx);
-                        self.sync_chrome(cx);
                     }
                     Err(e) => {
                         self.set_status(cx, e);
                         self.paint_role_open_busy_chrome(cx);
-                        self.sync_chrome(cx);
+                        *deferred_role_open_sync_frame().lock().unwrap() = Some(cx.new_next_frame());
                     }
                 }
             } else if role_open_busy().load(std::sync::atomic::Ordering::SeqCst) {
@@ -483,6 +502,7 @@ impl App {
                 self.persist_window_geom(cx);
             }
         }
+        self.apply_pending_menu_pick_tab(cx);
         self.match_event(cx, event);
         if let Event::NextFrame(e) = event {
             let floor_ours = floor_area_autoscroll_frame()
@@ -500,6 +520,23 @@ impl App {
                 .unwrap_or(false);
             if accordion_ours {
                 self.tick_ui_state_anims(cx);
+            }
+            let menu_pick_ours = menu_pick_scroll_anim_frame()
+                .lock()
+                .unwrap()
+                .map(|frame| e.set.contains(&frame))
+                .unwrap_or(false);
+            if menu_pick_ours {
+                self.tick_menu_pick_scroll_anim(cx);
+            }
+            let role_sync_ours = deferred_role_open_sync_frame()
+                .lock()
+                .unwrap()
+                .map(|frame| e.set.contains(&frame))
+                .unwrap_or(false);
+            if role_sync_ours {
+                *deferred_role_open_sync_frame().lock().unwrap() = None;
+                self.sync_chrome(cx);
             }
             self.tick_smoke_script(cx);
         }

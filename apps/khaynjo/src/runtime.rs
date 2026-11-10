@@ -1058,6 +1058,103 @@ fn floor_area_autoscroll_frame() -> &'static Mutex<Option<NextFrame>> {
     FRAME.get_or_init(|| Mutex::new(None))
 }
 
+fn menu_pick_viewport_w() -> &'static Mutex<f64> {
+    static W: OnceLock<Mutex<f64>> = OnceLock::new();
+    W.get_or_init(|| Mutex::new(0.0))
+}
+
+fn pending_menu_pick_tab() -> &'static Mutex<Option<usize>> {
+    static P: OnceLock<Mutex<Option<usize>>> = OnceLock::new();
+    P.get_or_init(|| Mutex::new(None))
+}
+
+fn menu_pick_scroll_watch_frame() -> &'static Mutex<Option<NextFrame>> {
+    static F: OnceLock<Mutex<Option<NextFrame>>> = OnceLock::new();
+    F.get_or_init(|| Mutex::new(None))
+}
+
+fn menu_pick_last_scroll_x() -> &'static Mutex<Option<f64>> {
+    static X: OnceLock<Mutex<Option<f64>>> = OnceLock::new();
+    X.get_or_init(|| Mutex::new(None))
+}
+
+/// Horizontal pager stepped scroll (one “page” per category jump).
+struct MenuPickScrollAnim {
+    step_x: Vec<f64>,
+    step_i: usize,
+    step_start: std::time::Instant,
+    step_duration: f64,
+}
+
+fn menu_pick_scroll_anim() -> &'static Mutex<Option<MenuPickScrollAnim>> {
+    static A: OnceLock<Mutex<Option<MenuPickScrollAnim>>> = OnceLock::new();
+    A.get_or_init(|| Mutex::new(None))
+}
+
+fn menu_pick_scroll_anim_frame() -> &'static Mutex<Option<NextFrame>> {
+    static F: OnceLock<Mutex<Option<NextFrame>>> = OnceLock::new();
+    F.get_or_init(|| Mutex::new(None))
+}
+
+/// Android: open the books on the first NextFrame so the GL surface can present
+/// `pass.clear_color` before `ensure_store` + `reload_all` run on the UI thread.
+fn android_deferred_store_frame() -> &'static Mutex<Option<NextFrame>> {
+    static F: OnceLock<Mutex<Option<NextFrame>>> = OnceLock::new();
+    F.get_or_init(|| Mutex::new(None))
+}
+
+/// After DeviceSetup role open: paint ClientPair on this frame, run full
+/// `sync_chrome` on the next so Cancel stays live during the transition.
+fn deferred_role_open_sync_frame() -> &'static Mutex<Option<NextFrame>> {
+    static F: OnceLock<Mutex<Option<NextFrame>>> = OnceLock::new();
+    F.get_or_init(|| Mutex::new(None))
+}
+
+/// Print bill / Send KOT: status and paper queue on this frame; full chrome next.
+fn deferred_till_sync_frame() -> &'static Mutex<Option<NextFrame>> {
+    static F: OnceLock<Mutex<Option<NextFrame>>> = OnceLock::new();
+    F.get_or_init(|| Mutex::new(None))
+}
+
+fn menu_pick_scroll_programmatic() -> bool {
+    menu_pick_scroll_anim().lock().unwrap().is_some()
+}
+
+fn menu_pick_tab_keys(st: &AppState) -> Vec<Option<String>> {
+    let cats = st.menu_categories();
+    let mut keys = vec![
+        None,
+        Some(MENU_FREQUENT.to_string()),
+        Some(MENU_ADDED.to_string()),
+    ];
+    keys.extend(cats.into_iter().map(|c| Some(c.id.clone())));
+    keys
+}
+
+fn menu_pick_tab_index(keys: &[Option<String>], category: &Option<String>) -> usize {
+    keys.iter().position(|k| k == category).unwrap_or(0)
+}
+
+fn queue_menu_pick_tab_from_scroll(idx: usize) {
+    if menu_pick_scroll_programmatic() {
+        return;
+    }
+    let st = app_state().lock().unwrap();
+    if !st.menu_pick_open || !st.menu_filter.trim().is_empty() {
+        return;
+    }
+    let keys = menu_pick_tab_keys(&st);
+    if idx >= keys.len() {
+        return;
+    }
+    let cat = keys.get(idx).cloned().flatten();
+    if st.menu_category == cat {
+        return;
+    }
+    drop(st);
+    *pending_menu_pick_tab().lock().unwrap() = Some(idx);
+}
+
 /// Settings → Sidebar list reordered (↑↓); App syncs chrome when taken.
 fn sidebar_order_dirty() -> &'static Mutex<bool> {
     static FLAG: OnceLock<Mutex<bool>> = OnceLock::new();

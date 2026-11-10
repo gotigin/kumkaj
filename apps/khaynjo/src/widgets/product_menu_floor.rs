@@ -6,6 +6,17 @@ struct ProductList {
     /// new search, the window opened again) scrolls back to the top.
     #[rust]
     drawn_rev: u64,
+    /// When set (Add dishes horizontal pages), draw this tab instead of `menu_category`.
+    #[rust]
+    page_category: Option<String>,
+}
+
+#[derive(Script, ScriptHook, Widget)]
+struct MenuPickPager {
+    #[deref]
+    view: View,
+    #[rust]
+    last_scroll_x: f64,
 }
 
 /// How much of each dish the open order already has (milli-units), for the
@@ -23,9 +34,13 @@ impl Widget for ProductList {
     fn draw_walk(&mut self, cx: &mut Cx2d, scope: &mut Scope, walk: Walk) -> DrawStep {
         let (products, area, currency, fiscal, lang, in_cart, rev) = {
             let st = app_state().lock().unwrap();
+            let cat = self
+                .page_category
+                .as_deref()
+                .or(st.menu_category.as_deref());
             (
                 // Taps map through the same list (`add_product_to_cart`).
-                st.visible_products(),
+                st.visible_products_for(cat),
                 st.current_area(),
                 st.locale.currency.clone(),
                 st.fiscal.clone(),
@@ -127,6 +142,125 @@ impl Widget for ProductList {
         // The grid lives in the menu window, which holds the page behind it
         // still: the wheel and swipes scroll the grid alone.
         self.view.handle_event(cx, event, scope);
+    }
+}
+
+impl MenuPickPager {
+    fn page_count(&self) -> usize {
+        let st = app_state().lock().unwrap();
+        if !st.menu_filter.trim().is_empty() {
+            return 1;
+        }
+        menu_pick_tab_keys(&st).len().min(MENU_PICK_PAGE_MAX)
+    }
+
+    fn snap_scroll_and_sync_tab(&mut self, cx: &mut Cx) {
+        if menu_pick_scroll_programmatic() {
+            return;
+        }
+        let searching = !app_state().lock().unwrap().menu_filter.trim().is_empty();
+        if searching {
+            return;
+        }
+        let vp_w = *menu_pick_viewport_w().lock().unwrap();
+        if vp_w < 8.0 {
+            return;
+        }
+        let scroll = self.view.view(cx, ids!(pick_scroll));
+        let n = self.page_count().max(1);
+        let x = scroll.get_scroll_pos().x;
+        let idx = ((x / vp_w).round() as usize).min(n - 1);
+        let snap_x = idx as f64 * vp_w;
+        if (snap_x - x).abs() > 0.5 {
+            scroll.set_scroll_pos(cx, dvec2(snap_x, 0.0));
+        }
+        queue_menu_pick_tab_from_scroll(idx);
+        self.view.redraw(cx);
+    }
+}
+
+impl Widget for MenuPickPager {
+    fn draw_walk(&mut self, cx: &mut Cx2d, scope: &mut Scope, walk: Walk) -> DrawStep {
+        let (keys, searching, sel_idx, rev) = {
+            let st = app_state().lock().unwrap();
+            let keys = menu_pick_tab_keys(&st);
+            let searching = !st.menu_filter.trim().is_empty();
+            let sel_idx = menu_pick_tab_index(&keys, &st.menu_category);
+            (keys, searching, sel_idx, st.menu_pick_rev)
+        };
+        let n = if searching {
+            1
+        } else {
+            keys.len().min(MENU_PICK_PAGE_MAX)
+        };
+        let vp_w = cx.turtle().next_walk_width(walk.width, walk.margin);
+        if vp_w.is_finite() && vp_w > 8.0 {
+            *menu_pick_viewport_w().lock().unwrap() = vp_w;
+        }
+        let scroll = self.view.view(cx, ids!(pick_scroll));
+        let strip = scroll.view(cx, ids!(pick_strip));
+        if searching {
+            scroll.set_visible(cx, false);
+        } else {
+            scroll.set_visible(cx, n > 1);
+        }
+        if let Some(mut strip_v) = strip.borrow_mut() {
+            strip_v.walk.width = Size::Fixed(vp_w * n as f64);
+        }
+        for i in 0..MENU_PICK_PAGE_MAX {
+            let grid = strip.widget(cx, MENU_PICK_GRIDS[i]);
+            let show = i < n;
+            grid.set_visible(cx, show);
+            if let Some(mut pl) = grid.borrow_mut::<ProductList>() {
+                pl.walk.width = Size::Fixed(vp_w.max(1.0));
+                let key = keys.get(i).cloned().flatten();
+                pl.page_category = if searching {
+                    None
+                } else {
+                    key.clone()
+                };
+                if pl.drawn_rev != rev {
+                    pl.drawn_rev = 0;
+                }
+            }
+        }
+        if !searching && !menu_pick_scroll_programmatic() {
+            let want_x = sel_idx as f64 * vp_w;
+            let cur = scroll.get_scroll_pos().x;
+            if (cur - want_x).abs() > 1.0
+                && menu_pick_scroll_anim().lock().unwrap().is_none()
+            {
+                scroll.set_scroll_pos(cx, dvec2(want_x, 0.0));
+                self.last_scroll_x = want_x;
+            }
+        }
+        while let Some(step) = self.view.draw_walk(cx, scope, walk).step() {
+            let _ = step;
+        }
+        DrawStep::done()
+    }
+
+    fn handle_event(&mut self, cx: &mut Cx, event: &Event, scope: &mut Scope) {
+        let scroll = self.view.view(cx, ids!(pick_scroll));
+        let before = scroll.get_scroll_pos().x;
+        self.view.handle_event(cx, event, scope);
+        let after = scroll.get_scroll_pos().x;
+        if matches!(event, Event::Scroll(_)) {
+            apply_hstrip_wheel(cx, &scroll, event);
+        }
+        if (after - before).abs() > 0.5 && !menu_pick_scroll_programmatic() {
+            let vp_w = *menu_pick_viewport_w().lock().unwrap();
+            if vp_w > 8.0 {
+                let idx = ((after / vp_w).round() as usize).min(self.page_count().saturating_sub(1));
+                queue_menu_pick_tab_from_scroll(idx);
+            }
+        }
+        if let Event::Actions(actions) = event {
+            if scroll.finger_up(actions).is_some() {
+                self.last_scroll_x = after;
+                self.snap_scroll_and_sync_tab(cx);
+            }
+        }
     }
 }
 

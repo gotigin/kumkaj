@@ -247,15 +247,23 @@ impl App {
     /// Skip full `reload_all` — on Android that froze the UI (Cancel dead)
     /// after the worker finished; ClientPair only needs paired + language.
     fn finish_client_mode_opened(&mut self, cx: &mut Cx, store: Store) {
+        if role_cancelled() {
+            drop_store_off_ui(Some(store));
+            end_role_open_busy();
+            self.paint_role_open_busy_chrome(cx);
+            self.set_status(cx, app_t("cancelled"));
+            return;
+        }
         // Busy chrome still on ("Preparing desk…") from role_open_finish.
         self.paint_role_open_busy_chrome(cx);
-        let old = {
+        let client_paired = store_client_paired(Some(&store));
+        let status_msg = {
             let mut st = app_state().lock().unwrap();
             let old = st.store.take();
             st.store = Some(store);
             st.picking_server = false;
             let chosen = (st.language_follow_platform, st.locale.language.clone());
-            st.client_paired = store_client_paired(st.store.as_ref());
+            st.client_paired = client_paired;
             st.language_follow_platform = chosen.0;
             st.locale.language = chosen.1;
             Self::persist_setup_language(&mut st);
@@ -276,17 +284,21 @@ impl App {
             // and trap the till on a previous pairing (multi-server Wi‑Fi).
             st.nav_back.push(Screen::DeviceSetup);
             st.screen = Screen::ClientPair;
-            st.status = if st.client_paired {
+            let msg = if client_paired {
                 locale::t(&st.locale.language, "status_client_unlock")
             } else {
                 "Client Mode — find the Server, tap the shop you want, then Pair".into()
             };
-            old
+            st.status = msg.clone();
+            (old, msg)
         };
-        drop_store_off_ui(old);
-        self.sync_chrome(cx);
+        drop_store_off_ui(status_msg.0);
         end_role_open_busy();
         self.paint_role_open_busy_chrome(cx);
+        self.show_screen(cx, Screen::ClientPair);
+        self.paint_header_back_chrome(cx);
+        self.set_status(cx, status_msg.1);
+        *deferred_role_open_sync_frame().lock().unwrap() = Some(cx.new_next_frame());
     }
 
     fn paint_role_open_busy_chrome(&mut self, cx: &mut Cx) {

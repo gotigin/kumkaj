@@ -1063,8 +1063,7 @@ impl MatchEvent for App {
             self.begin_client_mode(cx);
         }
         if self.ui.button(cx, ids!(device_role_cancel)).clicked(actions) {
-            role_open_cancel().store(true, std::sync::atomic::Ordering::SeqCst);
-            self.set_status(cx, app_t("cancelled"));
+            request_role_open_cancel();
             self.paint_role_open_busy_chrome(cx);
         }
         if self.ui.button(cx, ids!(server_create_new)).clicked(actions) {
@@ -2782,15 +2781,22 @@ impl MatchEvent for App {
             }
             if let Some(cat) = picked {
                 self.dismiss_soft_keyboard(cx);
-                let fill_frequent = {
+                let (from_idx, to_idx, fill_frequent) = {
                     let mut st = app_state().lock().unwrap();
+                    let keys = menu_pick_tab_keys(&st);
+                    let from_idx = menu_pick_tab_index(&keys, &st.menu_category);
                     st.menu_category = cat;
-                    if st.menu_category.as_deref() == Some(MENU_FREQUENT) {
+                    let to_idx = menu_pick_tab_index(&keys, &st.menu_category);
+                    let fill = if st.menu_category.as_deref() == Some(MENU_FREQUENT) {
                         st.refresh_frequent_cache();
                         Some((st.frequent_days, st.frequent_limit))
                     } else {
                         None
+                    };
+                    if from_idx == to_idx {
+                        st.menu_pick_rev = st.menu_pick_rev.wrapping_add(1);
                     }
+                    (from_idx, to_idx, fill)
                 };
                 if let Some((days, limit)) = fill_frequent {
                     self.ui
@@ -2800,9 +2806,11 @@ impl MatchEvent for App {
                         .text_input(cx, ids!(frequent_limit_input))
                         .set_text(cx, &limit.to_string());
                 }
-                {
-                    let mut st = app_state().lock().unwrap();
-                    st.menu_pick_rev = st.menu_pick_rev.wrapping_add(1);
+                let searching = !app_state().lock().unwrap().menu_filter.trim().is_empty();
+                if searching || from_idx == to_idx {
+                    self.snap_menu_pick_scroll_to_category(cx);
+                } else {
+                    self.start_menu_pick_scroll_anim(cx, from_idx, to_idx);
                 }
                 self.sync_chrome(cx);
             }
@@ -4605,34 +4613,48 @@ impl MatchEvent for App {
         // anywhere on a card adds one, the same as its +; − takes one back.
         // A tap on − or + is that button's alone, never also the card's.
         {
-            let widget = self.ui.widget(cx, ids!(product_list));
-            let list = widget.portal_list(cx, ids!(list));
+            let searching = !app_state().lock().unwrap().menu_filter.trim().is_empty();
+            let page_count = if searching {
+                1
+            } else {
+                let st = app_state().lock().unwrap();
+                menu_pick_tab_keys(&st).len().min(MENU_PICK_PAGE_MAX)
+            };
             let cols = *product_grid_cols().lock().unwrap();
             let slots: [&[LiveId]; 6] = [ids!(c0), ids!(c1), ids!(c2), ids!(c3), ids!(c4), ids!(c5)];
             enum CardTap {
                 Add(usize),
                 Minus(usize),
             }
-            let mut tapped = None;
-            for (row_id, item) in list.items_with_actions(actions) {
-                for (col, path) in slots.iter().enumerate().take(cols) {
-                    let index = row_id * cols + col;
-                    let tile = item.widget(cx, *path).view(cx, ids!(tile));
-                    if tile.button(cx, ids!(minus)).clicked(actions) {
-                        tapped = Some(CardTap::Minus(index));
-                    } else if tile.button(cx, ids!(plus)).clicked(actions)
-                        || tile.finger_up(actions).is_some_and(finger_up_is_tap)
-                    {
-                        // Same tap rule as Floor tiles — was_tap() dies under
-                        // ProductList capture_overload + axis_lock (8px wait vs
-                        // was_tap's 5px), so the first dish tap after open looked dead.
-                        tapped = Some(CardTap::Add(index));
+            let mut tapped: Option<(usize, CardTap)> = None;
+            'pages: for pi in 0..page_count {
+                let widget = self.ui.widget(cx, MENU_PICK_GRIDS[pi]);
+                let list = widget.portal_list(cx, ids!(list));
+                for (row_id, item) in list.items_with_actions(actions) {
+                    for (col, path) in slots.iter().enumerate().take(cols) {
+                        let index = row_id * cols + col;
+                        let tile = item.widget(cx, *path).view(cx, ids!(tile));
+                        if tile.button(cx, ids!(minus)).clicked(actions) {
+                            tapped = Some((pi, CardTap::Minus(index)));
+                            break 'pages;
+                        } else if tile.button(cx, ids!(plus)).clicked(actions)
+                            || tile.finger_up(actions).is_some_and(finger_up_is_tap)
+                        {
+                            tapped = Some((pi, CardTap::Add(index)));
+                            break 'pages;
+                        }
                     }
                 }
             }
             match tapped {
-                Some(CardTap::Add(index)) => self.add_product_to_cart(cx, index),
-                Some(CardTap::Minus(index)) => self.remove_product_from_cart(cx, index),
+                Some((pi, CardTap::Add(index))) => {
+                    self.align_menu_pick_cart_page(cx, pi);
+                    self.add_product_to_cart(cx, index);
+                }
+                Some((pi, CardTap::Minus(index))) => {
+                    self.align_menu_pick_cart_page(cx, pi);
+                    self.remove_product_from_cart(cx, index);
+                }
                 None => {}
             }
         }

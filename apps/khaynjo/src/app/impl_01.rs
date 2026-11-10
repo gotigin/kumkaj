@@ -241,4 +241,22 @@ fn set_status(&mut self, cx: &mut Cx, msg: impl Into<String>) {
             }
         }
     }
+
+    /// Open books (+ optional autostart server) and repaint chrome once storage is ready.
+    fn bootstrap_store_and_server(&mut self, cx: &mut Cx) {
+        self.ensure_store(cx);
+        if startup::launched_at_boot() {
+            let st = app_state().lock().unwrap();
+            if let Some(store) = st.store.as_ref()
+                && store.device_role().ok().flatten().as_deref() == Some("server")
+            {
+                let path = store.db_path().to_path_buf();
+                if store.extra_tills_allowed().unwrap_or(false) && net::ensure_server(path.clone()).is_ok() {
+                    firewall_job(|| Ok(net::firewall_allows_phones()));
+                }
+                start_auto_backups(path);
+            }
+        }
+        self.sync_chrome(cx);
+    }
 }

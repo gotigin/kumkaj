@@ -6523,7 +6523,7 @@ fn print_network_bytes(addr: &str, bytes: &[u8]) -> Result<(), String> {
 /// later. A printer that never answers fails after two tries.
 fn connect_printer(sock: &std::net::SocketAddr) -> Result<std::net::TcpStream, String> {
     use std::io::ErrorKind;
-    let busy_until = std::time::Instant::now() + Duration::from_secs(15);
+    let busy_until = std::time::Instant::now() + Duration::from_secs(6);
     let mut silent_tries = 0;
     loop {
         match std::net::TcpStream::connect_timeout(sock, Duration::from_secs(4)) {

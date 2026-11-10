@@ -445,6 +445,14 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
         self.set_report_rows(cx, ids!(audit_label), audit);
     }
 
+    /// Send KOT on the Server: cart + status on this frame; full chrome next.
+    fn schedule_deferred_till_sync(&mut self, cx: &mut Cx) {
+        self.paint_till_focus_chrome(cx);
+        self.paint_header_back_chrome(cx);
+        self.ui.widget(cx, ids!(floor_list)).redraw(cx);
+        *deferred_till_sync_frame().lock().unwrap() = Some(cx.new_next_frame());
+    }
+
     fn sync_chrome(&mut self, cx: &mut Cx) {
         let _span = stall_span("sync_chrome");
         // While other devices depend on this one, its screen stays on:

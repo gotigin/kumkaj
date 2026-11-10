@@ -232,6 +232,8 @@ pub fn running_action_skips_full_reload(action: &RunningAction) -> bool {
             | RunningAction::SetLineStation { .. }
             | RunningAction::BumpPending { .. }
             | RunningAction::HoldLine { .. }
+            // Print bill only bumps table state + running lines — not the whole menu.
+            | RunningAction::PrintBill { .. }
     )
 }
 
@@ -259,6 +261,9 @@ mod running_action_reload_tests {
         assert!(running_action_skips_full_reload(&RunningAction::SetLineStation {
             line_id: "l".into(),
             station_id: String::new(),
+        }));
+        assert!(running_action_skips_full_reload(&RunningAction::PrintBill {
+            table_id: "t1".into(),
         }));
         assert!(!running_action_skips_full_reload(&RunningAction::Cancel {
             line_id: "l".into(),
@@ -2112,7 +2117,9 @@ pub const NO_BILL_PRINTER: &str =
 /// second; a dead one takes ~8 s to give up, so past this the device hears
 /// "still printing" (a warning) instead of holding the waiter's next KOT
 /// behind it. The device's own wait is 15 s.
-const PAPER_WAIT: Duration = Duration::from_secs(5);
+/// After the books commit: long enough for a healthy LAN printer to answer,
+/// short enough that a waiter is not stuck ~20s on Print bill / Send KOT.
+const PAPER_WAIT: Duration = Duration::from_secs(2);
 
 /// Add what did not print to a device's reply, so the waiter's screen says
 /// "not printed" instead of "reached the kitchen".

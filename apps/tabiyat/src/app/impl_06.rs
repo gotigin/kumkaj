@@ -667,16 +667,29 @@ impl App {
     }
 
     /// Apply a Store opened on the client-mode worker (Signal handler).
+    ///
+    /// Do **not** call full `reload_all` here — on Android that was a second
+    /// multi-second UI-thread freeze (Cancel dead) after the worker already
+    /// finished. ClientPair only needs locale + paired flag; the Server
+    /// snapshot fills the rest after Pair.
     fn finish_client_mode_opened(&mut self, cx: &mut Cx, store: Store) {
+        if role_cancelled() {
+            drop_store_off_ui(Some(store));
+            end_role_open_busy();
+            self.paint_role_open_busy_chrome(cx);
+            self.set_status(cx, app_t("cancelled"));
+            return;
+        }
         // Busy chrome still on ("Preparing desk…") from role_open_finish.
         self.paint_role_open_busy_chrome(cx);
-        let old = {
+        let client_paired = store_client_paired(Some(&store));
+        let status_msg = {
             let mut st = app_state().lock().unwrap();
             let old = st.store.take();
             st.store = Some(store);
             st.picking_server = false;
             let chosen = (st.language_follow_platform, st.locale.language.clone());
-            let _ = st.reload_all();
+            st.client_paired = client_paired;
             st.language_follow_platform = chosen.0;
             st.locale.language = chosen.1;
             Self::persist_setup_language(&mut st);
@@ -688,23 +701,26 @@ impl App {
             st.pin_buffer.clear();
             st.nav_back.clear();
             st.nav_forward.clear();
-            st.client_paired = store_client_paired(st.store.as_ref());
             st.apply_lock_role_selection();
             // Always ClientPair — Find / tap a shop / Pair. Never skip to Lock
             // and trap the till on a previous pairing (multi-server Wi‑Fi).
             st.nav_back.push(Screen::DeviceSetup);
             st.screen = Screen::ClientPair;
-            st.status = if st.client_paired {
+            let msg = if client_paired {
                 locale::t(&st.locale.language, "status_client_unlock")
             } else {
                 "Client Mode — find the Server, tap the shop you want, then Pair".into()
             };
-            old
+            st.status = msg.clone();
+            (old, msg)
         };
-        drop_store_off_ui(old);
-        self.sync_chrome(cx);
+        drop_store_off_ui(status_msg.0);
         end_role_open_busy();
         self.paint_role_open_busy_chrome(cx);
+        self.show_screen(cx, Screen::ClientPair);
+        self.paint_header_back_chrome(cx);
+        self.set_status(cx, status_msg.1);
+        *deferred_role_open_sync_frame().lock().unwrap() = Some(cx.new_next_frame());
     }
 
     /// Isolated UI smoke (`scripts/run-ui-smoke-isolated.sh`): when
@@ -789,7 +805,10 @@ impl App {
             .unwrap()
             .clone()
             .unwrap_or_else(|| app_t("opening_client"));
-        let awaiting_tmpl = app_state().lock().unwrap().awaiting_app_template;
+        let awaiting_tmpl = app_state()
+            .try_lock()
+            .map(|st| st.awaiting_app_template)
+            .unwrap_or(false);
         // Offline LAN: no multi-server pick UI (cloud-only later).
         let show_pick = false;
         // Hide Server/Client while creating/opening or while App Template is offered.
@@ -1847,6 +1866,136 @@ impl App {
         }
     }
 
+    fn align_menu_pick_cart_page(&mut self, cx: &mut Cx, page: usize) {
+        let cat = {
+            let st = app_state().lock().unwrap();
+            menu_pick_tab_keys(&st)
+                .get(page)
+                .cloned()
+                .flatten()
+        };
+        let mut st = app_state().lock().unwrap();
+        if st.menu_category != cat {
+            st.menu_category = cat;
+            st.menu_pick_rev = st.menu_pick_rev.wrapping_add(1);
+        }
+        drop(st);
+        self.sync_chrome(cx);
+        let _ = cx;
+    }
+
+    fn apply_pending_menu_pick_tab(&mut self, cx: &mut Cx) {
+        let Some(idx) = pending_menu_pick_tab().lock().unwrap().take() else {
+            return;
+        };
+        let fill_frequent = {
+            let mut st = app_state().lock().unwrap();
+            let keys = menu_pick_tab_keys(&st);
+            if idx >= keys.len() {
+                return;
+            }
+            st.menu_category = keys.get(idx).cloned().flatten();
+            let fill = if st.menu_category.as_deref() == Some(MENU_FREQUENT) {
+                st.refresh_frequent_cache();
+                Some((st.frequent_days, st.frequent_limit))
+            } else {
+                None
+            };
+            st.menu_pick_rev = st.menu_pick_rev.wrapping_add(1);
+            fill
+        };
+        if let Some((days, limit)) = fill_frequent {
+            self.ui
+                .text_input(cx, ids!(frequent_days_input))
+                .set_text(cx, &days.to_string());
+            self.ui
+                .text_input(cx, ids!(frequent_limit_input))
+                .set_text(cx, &limit.to_string());
+        }
+        self.sync_chrome(cx);
+        self.ui.widget(cx, ids!(product_list)).redraw(cx);
+    }
+
+  fn snap_menu_pick_scroll_to_category(&mut self, cx: &mut Cx) {
+        let vp_w = *menu_pick_viewport_w().lock().unwrap();
+        if vp_w < 8.0 {
+            return;
+        }
+        let idx = {
+            let st = app_state().lock().unwrap();
+            let keys = menu_pick_tab_keys(&st);
+            menu_pick_tab_index(&keys, &st.menu_category)
+        };
+        let scroll = self.ui.view(cx, ids!(pick_scroll));
+        scroll.set_scroll_pos(cx, dvec2(idx as f64 * vp_w, 0.0));
+    }
+
+    /// Step the horizontal pager one page at a time when a distant category chip is tapped.
+    fn start_menu_pick_scroll_anim(&mut self, cx: &mut Cx, from_idx: usize, to_idx: usize) {
+        if from_idx == to_idx {
+            self.snap_menu_pick_scroll_to_category(cx);
+            return;
+        }
+        let vp_w = *menu_pick_viewport_w().lock().unwrap();
+        if vp_w < 8.0 {
+            self.snap_menu_pick_scroll_to_category(cx);
+            return;
+        }
+        let step = if to_idx > from_idx { 1i32 } else { -1 };
+        let mut step_x = Vec::new();
+        let mut i = from_idx as i32;
+        loop {
+            i += step;
+            step_x.push(i as f64 * vp_w);
+            if i as usize == to_idx {
+                break;
+            }
+        }
+        *menu_pick_scroll_anim().lock().unwrap() = Some(MenuPickScrollAnim {
+            step_x,
+            step_i: 0,
+            step_start: std::time::Instant::now(),
+            step_duration: 0.11,
+        });
+        *menu_pick_scroll_anim_frame().lock().unwrap() = Some(cx.new_next_frame());
+    }
+
+    fn tick_menu_pick_scroll_anim(&mut self, cx: &mut Cx) {
+        let mut guard = menu_pick_scroll_anim().lock().unwrap();
+        let Some(anim) = guard.as_mut() else {
+            return;
+        };
+        let scroll = self.ui.view(cx, ids!(pick_scroll));
+        let dt = anim.step_start.elapsed().as_secs_f64();
+        if dt >= anim.step_duration {
+            if let Some(&x) = anim.step_x.get(anim.step_i) {
+                scroll.set_scroll_pos(cx, dvec2(x, 0.0));
+                let idx = (x / *menu_pick_viewport_w().lock().unwrap()).round() as usize;
+                {
+                    let mut st = app_state().lock().unwrap();
+                    let keys = menu_pick_tab_keys(&st);
+                    let cat = keys.get(idx).cloned().flatten();
+                    if st.menu_category != cat {
+                        st.menu_category = cat;
+                        st.menu_pick_rev = st.menu_pick_rev.wrapping_add(1);
+                    }
+                }
+                anim.step_i += 1;
+                anim.step_start = std::time::Instant::now();
+                if anim.step_i >= anim.step_x.len() {
+                    *guard = None;
+                    drop(guard);
+                    self.sync_chrome(cx);
+                    self.ui.widget(cx, ids!(product_list)).redraw(cx);
+                    return;
+                }
+            } else {
+                *guard = None;
+            }
+        }
+        *menu_pick_scroll_anim_frame().lock().unwrap() = Some(cx.new_next_frame());
+    }
+
     fn open_menu_window(&mut self, cx: &mut Cx) {
         {
             let mut st = app_state().lock().unwrap();
@@ -1855,6 +2004,7 @@ impl App {
             st.menu_category = None;
             st.menu_pick_rev = st.menu_pick_rev.wrapping_add(1);
         }
+        *menu_pick_scroll_anim().lock().unwrap() = None;
         let search = self.ui.text_input(cx, ids!(menu_search_input));
         search.set_text(cx, "");
         self.ui.modal(cx, ids!(menu_modal)).open(cx);
@@ -1862,6 +2012,7 @@ impl App {
         // first contact as a tap; focusing here steals it and the Done
         // button misses. Tap the field to type.
         let _ = search;
+        self.snap_menu_pick_scroll_to_category(cx);
         self.sync_chrome(cx);
     }
 
@@ -2006,6 +2157,7 @@ impl App {
             self.ui.label(cx, ids!(menu_no_match)).set_text(cx, &empty_msg);
         }
         self.ui.widget(cx, ids!(product_list)).redraw(cx);
+        self.snap_menu_pick_scroll_to_category(cx);
         self.repair_focused_carets(cx);
     }
 

@@ -523,6 +523,40 @@ const ROUTE_PLACE_BTNS: [(&[LiveId], &[LiveId]); 8] = [
 const MENU_FREQUENT: &str = "__frequent__";
 /// Sentinel for the Added Item(s) chip — dishes currently on this order.
 const MENU_ADDED: &str = "__added__";
+/// Max category pages in Add dishes (All, Frequent, Added, + 24 category slots).
+const MENU_PICK_PAGE_MAX: usize = 27;
+
+/// One `ProductList` per horizontal page in the Add dishes pager (`pick_grid_*`).
+const MENU_PICK_GRIDS: [&[LiveId]; MENU_PICK_PAGE_MAX] = [
+    ids!(pick_grid_0),
+    ids!(pick_grid_1),
+    ids!(pick_grid_2),
+    ids!(pick_grid_3),
+    ids!(pick_grid_4),
+    ids!(pick_grid_5),
+    ids!(pick_grid_6),
+    ids!(pick_grid_7),
+    ids!(pick_grid_8),
+    ids!(pick_grid_9),
+    ids!(pick_grid_10),
+    ids!(pick_grid_11),
+    ids!(pick_grid_12),
+    ids!(pick_grid_13),
+    ids!(pick_grid_14),
+    ids!(pick_grid_15),
+    ids!(pick_grid_16),
+    ids!(pick_grid_17),
+    ids!(pick_grid_18),
+    ids!(pick_grid_19),
+    ids!(pick_grid_20),
+    ids!(pick_grid_21),
+    ids!(pick_grid_22),
+    ids!(pick_grid_23),
+    ids!(pick_grid_24),
+    ids!(pick_grid_25),
+    ids!(pick_grid_26),
+];
+
 
 /// Order desk category chip slots in DSL order (`cat_0`…`cat_23`).
 const CATEGORY_CHIPS: [(&[LiveId], &[LiveId]); 24] = [

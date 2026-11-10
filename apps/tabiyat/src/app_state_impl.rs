@@ -1564,9 +1564,14 @@ impl AppState {
     /// Each size is an item of its own, so each is its own tile.
     /// Frequent ranks by recent completed sales (see Frequent config).
     fn visible_products(&self) -> Vec<Product> {
+        self.visible_products_for(self.menu_category.as_deref())
+    }
+
+    /// Dish tiles for one menu category tab (or search across tabs when `q` is set).
+    fn visible_products_for(&self, category: Option<&str>) -> Vec<Product> {
         let q = self.menu_filter.trim();
         let now = chrono::Local::now();
-        if self.menu_category.as_deref() == Some(MENU_FREQUENT) {
+        if category == Some(MENU_FREQUENT) {
             let by_id: std::collections::HashMap<&str, &Product> =
                 self.products.iter().map(|p| (p.id.as_str(), p)).collect();
             let mut out: Vec<Product> = self
@@ -1593,7 +1598,7 @@ impl AppState {
             return out;
         }
         // Added Item(s): dishes on this ticket (qty > 0), in cart order.
-        if self.menu_category.as_deref() == Some(MENU_ADDED) {
+        if category == Some(MENU_ADDED) {
             let by_id: std::collections::HashMap<&str, &Product> =
                 self.products.iter().map(|p| (p.id.as_str(), p)).collect();
             let mut seen = std::collections::HashSet::new();
@@ -1623,7 +1628,7 @@ impl AppState {
             }
             return out;
         }
-        let in_category = |p: &&Product| match &self.menu_category {
+        let in_category = |p: &&Product| match category {
             Some(cat) => &p.category_id == cat,
             None => true,
         };
