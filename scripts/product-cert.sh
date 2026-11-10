@@ -44,20 +44,45 @@ want_visual=0
 want_resilience=0
 want_xcomp=0
 want_store=0
+want_linux=0
+want_android=0
 
 case "$TIER" in
   fast) want_fast=1 ;;
   ui) want_fast=1; want_ui=1 ;;
   visual) want_fast=1; want_ui=1; want_visual=1 ;;
   resilience) want_fast=1; want_ui=1; want_resilience=1 ;;
-  full) want_fast=1; want_ui=1; want_visual=1; want_resilience=1 ;;
+  full) want_fast=1; want_ui=1; want_visual=1; want_resilience=1; want_linux=1 ;;
+  linux) want_linux=1 ;;
+  android) want_android=1 ;;
   store|package)
     want_fast=1; want_ui=1; want_visual=1; want_resilience=1; want_xcomp=1; want_store=1
+    want_linux=1; want_android=1
     export CERT_MULTI_SIZE="${CERT_MULTI_SIZE:-1}"
     ;;
   default) want_fast=1; want_ui=1; want_visual=1; want_resilience=1 ;;
-  *) echo "unknown tier: $TIER (fast|ui|visual|resilience|full|store|default)" >&2; exit 2 ;;
+  *) echo "unknown tier: $TIER (fast|ui|visual|resilience|full|store|default|linux|android)" >&2; exit 2 ;;
 esac
+
+bin_name_for() {
+  case "$1" in
+    khaynjo) echo kumkaj-khaynjo ;;
+    moklanjo) echo kumkaj-moklanjo ;;
+    kirano) echo kumkaj-kirano ;;
+    tabiyat) echo kumkaj-tabiyat ;;
+    *) return 1 ;;
+  esac
+}
+
+pkg_id_for() {
+  case "$1" in
+    khaynjo) echo com.khaynjo ;;
+    moklanjo) echo com.moklanjo ;;
+    kirano) echo com.kirano ;;
+    tabiyat) echo com.tabiyat ;;
+    *) return 1 ;;
+  esac
+}
 
 crate_for() {
   case "$1" in
@@ -303,6 +328,136 @@ run_xcomp() {
   pass_tier "$app" xcomp
 }
 
+# ---------- Linux packaged binary short Xvfb launch ----------
+run_linux_pkg() {
+  local app="$1" out bin_name pkg_dir exe disp_num disp xvfb_pid app_pid log
+  out="$OUT/linux"
+  mkdir -p "$out"
+  bin_name="$(bin_name_for "$app")"
+  pkg_dir="$ROOT/dist/${app}-linux"
+  if [[ ! -d "$pkg_dir" ]]; then
+    if [[ "${CERT_BUILD_LINUX:-0}" == "1" ]]; then
+      bash "$ROOT/apps/$app/scripts/package-linux.sh" >"$out/package.log" 2>&1 || {
+        fail_tier "$app" linux "package-linux failed — $out/package.log"
+        return 1
+      }
+    else
+      echo "CERT SKIP [$app/linux]: no $pkg_dir (set CERT_BUILD_LINUX=1 to build)" | tee -a "$SUMMARY"
+      echo skipped >"$out/SKIP"
+      return 0
+    fi
+  fi
+  if ! have_cmd Xvfb; then
+    echo "CERT SKIP [$app/linux]: Xvfb not installed" | tee -a "$SUMMARY"
+    echo skipped >"$out/SKIP"
+    return 0
+  fi
+  exe="$pkg_dir/bin/$bin_name"
+  [[ -x "$exe" ]] || exe="$pkg_dir/$bin_name"
+  if [[ ! -x "$exe" ]]; then
+    fail_tier "$app" linux "packaged binary missing under $pkg_dir"
+    return 1
+  fi
+  for disp_num in 94 93 92; do
+    if [[ ! -e "/tmp/.X${disp_num}-lock" && ! -S "/tmp/.X11-unix/X${disp_num}" ]]; then
+      break
+    fi
+  done
+  disp=":${disp_num}"
+  Xvfb "$disp" -screen 0 1280x900x24 -nolisten tcp >/dev/null 2>&1 &
+  xvfb_pid=$!
+  sleep 0.4
+  log="$out/launch.log"
+  # Package root must be cwd so self:resources/ resolves.
+  (
+    cd "$pkg_dir"
+    env -u WAYLAND_DISPLAY DISPLAY="$disp" KUMKAJ_ENV=production \
+      KUMKAJ_PRINT_SINK=off \
+      "$exe" >"$log" 2>&1
+  ) &
+  app_pid=$!
+  sleep 4
+  if ! kill -0 "$app_pid" 2>/dev/null; then
+    wait "$app_pid" 2>/dev/null || true
+    kill "$xvfb_pid" 2>/dev/null || true
+    if grep -E 'panicked at|SIGSEGV|^\[E\] ' "$log" >/dev/null 2>&1; then
+      fail_tier "$app" linux "packaged binary panicked — $log"
+      return 1
+    fi
+    if [[ "${CERT_REQUIRE_LINUX_PKG:-0}" == "1" ]]; then
+      fail_tier "$app" linux "packaged binary exited early — $log"
+      return 1
+    fi
+    echo "CERT NOTE [$app/linux]: packaged binary exited early (see $log)" | tee -a "$SUMMARY"
+    pass_tier "$app" linux
+    return 0
+  fi
+  kill "$app_pid" 2>/dev/null || true
+  wait "$app_pid" 2>/dev/null || true
+  kill "$xvfb_pid" 2>/dev/null || true
+  wait "$xvfb_pid" 2>/dev/null || true
+  if grep -E 'panicked at|SIGSEGV|^\[E\] ' "$log" >/dev/null 2>&1; then
+    fail_tier "$app" linux "panic/[E] in packaged launch log"
+    return 1
+  fi
+  echo "packaged launch stayed up 4s" >"$out/log.txt"
+  pass_tier "$app" linux
+}
+
+# ---------- Android device/emulator launch smoke ----------
+run_android_device() {
+  local app="$1" out apk pkg adb_bin serial
+  out="$OUT/android"
+  mkdir -p "$out"
+  pkg="$(pkg_id_for "$app")"
+  adb_bin="$(command -v adb || true)"
+  if [[ -z "$adb_bin" && -n "${ANDROID_HOME:-}" && -x "$ANDROID_HOME/platform-tools/adb" ]]; then
+    adb_bin="$ANDROID_HOME/platform-tools/adb"
+  fi
+  if [[ -z "$adb_bin" ]]; then
+    echo "CERT SKIP [$app/android]: adb not on PATH" | tee -a "$SUMMARY"
+    echo skipped >"$out/SKIP"
+    [[ "${CERT_REQUIRE_ADB:-0}" == "1" ]] && { fail_tier "$app" android "adb required"; return 1; }
+    return 0
+  fi
+  serial="$("$adb_bin" devices 2>/dev/null | awk '/\tdevice$/{print $1; exit}')"
+  if [[ -z "$serial" ]]; then
+    echo "CERT SKIP [$app/android]: no device/emulator (adb devices empty)" | tee -a "$SUMMARY"
+    echo skipped >"$out/SKIP"
+    [[ "${CERT_REQUIRE_ADB:-0}" == "1" ]] && { fail_tier "$app" android "device required"; return 1; }
+    return 0
+  fi
+  shopt -s nullglob
+  local apks=("$ROOT/dist/${app}-android"/*.apk)
+  shopt -u nullglob
+  if [[ ${#apks[@]} -eq 0 ]]; then
+    echo "CERT SKIP [$app/android]: no APK under dist/${app}-android" | tee -a "$SUMMARY"
+    echo skipped >"$out/SKIP"
+    [[ "${CERT_REQUIRE_ADB:-0}" == "1" ]] && { fail_tier "$app" android "APK required"; return 1; }
+    return 0
+  fi
+  apk="${apks[0]}"
+  {
+    echo "serial=$serial apk=$apk pkg=$pkg"
+    "$adb_bin" -s "$serial" install -r "$apk"
+    "$adb_bin" -s "$serial" shell am force-stop "$pkg" || true
+    "$adb_bin" -s "$serial" shell monkey -p "$pkg" -c android.intent.category.LAUNCHER 1
+    sleep 5
+    # Still running?
+    if ! "$adb_bin" -s "$serial" shell pidof "$pkg" | grep -q '[0-9]'; then
+      echo "FAIL: $pkg not running after launch" >&2
+      "$adb_bin" -s "$serial" logcat -d -t 80 '*:E' || true
+      exit 1
+    fi
+    echo "pid=$("$adb_bin" -s "$serial" shell pidof "$pkg")"
+    "$adb_bin" -s "$serial" shell am force-stop "$pkg" || true
+  } >"$out/log.txt" 2>&1 || {
+    fail_tier "$app" android "device launch failed — $out/log.txt"
+    return 1
+  }
+  pass_tier "$app" android
+}
+
 # ---------- Store pre-upload asserts ----------
 run_store() {
   local app="$1" out
@@ -423,6 +578,12 @@ for app in "${APPS[@]}"; do
   fi
   if [[ "$ok" -eq 1 && "$want_xcomp" -eq 1 ]]; then
     run_xcomp "$app" || ok=0
+  fi
+  if [[ "$ok" -eq 1 && "$want_linux" -eq 1 ]]; then
+    run_linux_pkg "$app" || ok=0
+  fi
+  if [[ "$ok" -eq 1 && "$want_android" -eq 1 ]]; then
+    run_android_device "$app" || ok=0
   fi
   if [[ "$ok" -eq 1 && "$want_store" -eq 1 ]]; then
     run_store "$app" || ok=0

@@ -4228,6 +4228,30 @@ script_mod! {
         prio_up := StationPrioBtn{text: "\u{2191}"}
         prio_down := StationPrioBtn{text: "\u{2193}"}
     }
+    // Floating dropdown (popup.rs): PopupAnchor marks the field (last child
+    // of its flow: Overlay box, Fill × Fill); AnchoredPopup at the window
+    // root draws `content` under it every frame while the app state has
+    // that list open. Never a Modal: no focus juggling, no backdrop that
+    // outlives the state, and it follows the field when the page scrolls.
+    mod.widgets.PopupAnchorBase = #(PopupAnchor::register_widget(vm))
+    mod.widgets.PopupAnchor = set_type_default() do mod.widgets.PopupAnchorBase{
+        width: Fill height: Fill
+    }
+    mod.widgets.AnchoredPopupBase = #(AnchoredPopup::register_widget(vm))
+    // `content` is Fill×Fill inside a Fixed walk from AnchoredPopup::draw_walk
+    // so draw_bg paints a solid opaque card over the page (Fit left the Floor
+    // showing through between SuggestList rows).
+    mod.widgets.AnchoredPopup = set_type_default() do mod.widgets.AnchoredPopupBase{
+        content := RoundedView{
+            width: Fill height: Fill
+            padding: Inset{left: 6. right: 6. top: 6. bottom: 6.}
+            flow: Down
+            draw_bg.color: #xFFF8F3
+            draw_bg.border_radius: 12.
+            draw_bg.border_size: 1.
+            draw_bg.border_color: #xE3D3C8
+        }
+    }
     mod.widgets.StationCheckListBase = #(StationCheckList::register_widget(vm))
     mod.widgets.StationCheckList = set_type_default() do mod.widgets.StationCheckListBase{
         width: Fill height: Fit
@@ -7050,12 +7074,10 @@ script_mod! {
                                     width: Fill height: Fit
                                     flow: Down spacing: 0
                                     // Columns + zoom (− / + / Auto) for this area (this device).
-                                    // The pick list lives in floor_cols_dd_modal (not here)
-                                    // so opening it cannot stretch this row or shove the grid.
-                                    // Start side of the body (physical left). Window
-                                    // chrome is not mirrored for RTL (DEV.md); only
-                                    // the field's text + chevron trailing edge flip
-                                    // in paint_floor_cols_field_dir.
+                                    // Pick-only dropdown (no FieldInput / soft keyboard):
+                                    // every value is already in the list. The list floats
+                                    // in floor_cols_popup (window root, anchored here) so
+                                    // opening it cannot stretch this row or shove the grid.
                                     floor_cols_row := View{
                                         width: Fill height: Fit
                                         flow: Right spacing: 8
@@ -7065,27 +7087,23 @@ script_mod! {
                                             width: Fixed(176.) height: Fit
                                             flow: Overlay
                                             align: Align{x: 0.0 y: 0.5}
-                                            floor_cols_input := FieldInput{
-                                                margin: Inset{left: 0. right: 0. top: 2. bottom: 2.}
-                                                // Symmetric side pad so the chevron
-                                                // (trailing edge: right LTR / left RTL)
-                                                // never sits on the placeholder.
-                                                padding: Inset{left: 36. right: 36. top: 11. bottom: 11.}
-                                                empty_text: "Columns"
-                                                is_numeric_only: true
-                                            }
-                                            floor_cols_chev_row := View{
-                                                width: Fill height: Fit
+                                            floor_cols_dd := StackSecondaryBtn{
+                                                text: "Columns"
                                                 flow: Right
-                                                align: Align{x: 1.0 y: 0.5}
-                                                floor_cols_chev := Label{
-                                                    width: Fit
-                                                    margin: Inset{right: 14.}
-                                                    text: "\u{f078}"
-                                                    draw_text.color: #x1C460E
-                                                    draw_text.text_style.font_size: 11.
+                                            }
+                                            // FieldInput has no `visible`. Keep the legacy
+                                            // id collapsed so SuggestField::input() still
+                                            // resolves without opening an IME.
+                                            View{width: Fill height: Fit visible: false
+                                                floor_cols_input := FieldInput{
+                                                    height: 0.
+                                                    margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+                                                    padding: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+                                                    empty_text: "Columns"
                                                 }
                                             }
+                                            // Last, Fill: takes the button's height.
+                                            mod.widgets.PopupAnchor{key: "floor_cols"}
                                         }
                                         View{
                                             width: Fixed(44.) height: Fit
@@ -11065,31 +11083,20 @@ h_backup := WrapLabel{body: "Backup" font_color: #x031303 font_size: 20.}
                     // backdrop is overridden transparent and its content
                     // fills the window, so the ghost's abs_pos is in window
                     // coordinates and nothing else is visible.
-                    // Floor Columns pick list — Modal overlay draw list so the
-                    // open menu cannot stretch floor_cols_row / shove tables.
-                    // Transparent dim; panel is positioned under the field in Rust.
-                    floor_cols_dd_modal := Modal{
-                        can_dismiss: true
-                        bg_view +: {
-                            draw_bg +: {color: #x00000000}
-                        }
+                    // Floor Columns pick list: floats under floor_cols_box
+                    // (PopupAnchor "floor_cols") so the open menu never
+                    // stretches floor_cols_row or shoves the tables, and
+                    // follows the field while the Floor scrolls (popup.rs).
+                    floor_cols_popup := mod.widgets.AnchoredPopup{
+                        key: "floor_cols"
+                        min_width: 176.
                         content +: {
-                            width: Fill height: Fill
-                            flow: Overlay
-                            floor_cols_dd_panel := RoundedView{
-                                visible: false
-                                width: Fixed(176.) height: Fit
-                                padding: Inset{left: 6. right: 6. top: 6. bottom: 6.}
-                                flow: Down
-                                draw_bg.color: #xFFF8F3
-                                draw_bg.border_radius: 12.
-                                draw_bg.border_size: 1.
-                                draw_bg.border_color: #xE3D3C8
-                                floor_cols_suggest := mod.widgets.SuggestList{
-                                    field: "floor_cols"
-                                    width: Fill
-                                    height: Fit
-                                }
+                            // Fill the opaque card; list height is capped in
+                            // SuggestList via popup_draw_limit (popup.rs).
+                            floor_cols_suggest := mod.widgets.SuggestList{
+                                field: "floor_cols"
+                                width: Fill
+                                height: Fill
                             }
                         }
                     }

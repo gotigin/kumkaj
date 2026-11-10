@@ -14,8 +14,10 @@
 | **visual** | optional multi-size (`CERT_MULTI_SIZE=1`); golden PNGs in `apps/<app>/cert/baselines/` when present |
 | **resilience** | soak peer thrash; fail on panic / `[E]` |
 | **xcomp** | Play `version_code` rules; package scripts present |
-| **store** | AAB+symbols (Khaynjo), fonts, MSIX identity docs, UI tier must be green |
+| **linux** | Short Xvfb launch of `dist/<app>-linux` binary (`CERT_BUILD_LINUX=1` to package) |
+| **android** | `adb` install+launch when a device/emulator is present (`CERT_REQUIRE_ADB=1` to require) |
+| **store** | AAB+symbols (Khaynjo), fonts, MSIX identity docs, UI tier must be green; runs linux+android |
 
 Reports: `local/product-cert/`. Docs: `docs/DEV.md` § Product Certification Kit.
 
-**Not automated:** Play Console / Partner Center human review, full OCR of every language, real-device GPU farm, full Apple App Store binary pipeline.
+**Not automated:** Play Console / Partner Center human review, full OCR of every language, GPU farm, full Apple binary pipeline.

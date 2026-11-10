@@ -3700,27 +3700,18 @@ impl MatchEvent for App {
                 }
             }
         }
-        // Floor columns typed: Enter (or Done on a phone) or leaving the field
-        // applies it. A pick from the list applies above.
-        {
-            let input = self.ui.text_input(cx, ids!(floor_cols_input));
-            if let Some((text, _)) = input.returned(actions) {
-                app_state().lock().unwrap().suggest_open = None;
-                self.place_floor_cols_suggest(cx);
-                self.apply_floor_columns(cx, &text);
-            } else if input.key_focus_lost(actions) {
-                let text = input.text();
-                self.apply_floor_columns(cx, &text);
+        // Floor columns: pick-only dropdown (no soft keyboard). List pick
+        // applies above; the button toggles the floating list.
+        if self.ui.button(cx, ids!(floor_cols_dd)).clicked(actions) {
+            {
+                let mut st = app_state().lock().unwrap();
+                if st.suggest_open == Some(SuggestField::FloorColumns) {
+                    st.suggest_open = None;
+                } else {
+                    st.open_suggest(SuggestField::FloorColumns, "");
+                }
             }
-        }
-        // Tap outside the Columns modal panel dismisses the pick list.
-        if self
-            .ui
-            .modal(cx, ids!(floor_cols_dd_modal))
-            .dismissed(actions)
-        {
-            app_state().lock().unwrap().suggest_open = None;
-            self.place_floor_cols_suggest(cx);
+            self.sync_chrome(cx);
         }
         // Floor zoom − / + (turns Auto off) and Auto fill-width.
         if self.ui.button(cx, ids!(floor_zoom_out)).clicked(actions) {
@@ -4065,45 +4056,30 @@ impl MatchEvent for App {
             }
         }
         self.handle_diag_actions(cx, actions);
-        // "Type or pick" fields (suggest.rs): focus opens the list (empty =
-        // everything the shop has), typing narrows it, a tap fills the field,
-        // Escape or focusing another field closes it. Losing focus alone does
-        // not close it: tapping a row takes focus off the field first.
+        // "Type or pick" fields (suggest.rs, rules in popup.rs): a tap on the
+        // field opens the list (`route_popup_input`), typing narrows it, a
+        // tap on a row fills the field, Escape / Back / an outside press /
+        // focusing another field closes it. Focus alone opens nothing — a
+        // modal closing hands focus back to its field and reopened the list.
         {
             let open = app_state().lock().unwrap().suggest_open;
-            let mut changed = false;
+            // Typing only narrows the open list — never full sync_chrome (IME /
+            // Settings SQL freeze). Picks, Escape, and focus-elsewhere still
+            // need chrome paint.
+            let mut typed = false;
+            let mut needs_chrome = false;
             let mut picked: Option<(SuggestField, String)> = None;
             for field in SuggestField::ALL {
                 // Kitchen / place / printer-assign / team stations open via
                 // chrome (dd or always-open), not type-in.
-                if field != SuggestField::KotStation
-                    && field != SuggestField::PrinterPlace
-                    && field != SuggestField::PrinterAssign
-                    && field != SuggestField::StationVps
-                    && field != SuggestField::BillPrinters
-                    && field != SuggestField::TestPrinters
-                    && field != SuggestField::KotTestPrinters
-                    && field != SuggestField::TeamKotStations
-                {
+                if !field.opens_by_chrome() {
                     let input = self.ui.text_input(cx, field.input());
-                    let uid = input.widget_uid();
-                    let focused = actions
-                        .filter_widget_actions_cast::<TextInputAction>(uid)
-                        .any(|a| matches!(a, TextInputAction::KeyFocus));
-                    let typed = input.changed(actions);
-                    if focused || typed.is_some() {
-                        // A dropdown opens on every choice, not filtered by
-                        // the value already showing (Floor columns).
-                        let text = match typed {
-                            Some(t) => t,
-                            None if field == SuggestField::FloorColumns => String::new(),
-                            None => input.text(),
-                        };
+                    if let Some(text) = input.changed(actions) {
                         app_state().lock().unwrap().open_suggest(field, &text);
-                        changed = true;
+                        typed = true;
                     } else if input.escaped(actions) && open == Some(field) {
                         app_state().lock().unwrap().suggest_open = None;
-                        changed = true;
+                        needs_chrome = true;
                     }
                 }
                 if open == Some(field) {
@@ -4129,7 +4105,7 @@ impl MatchEvent for App {
                                 };
                                 if let Some(to) = to {
                                     self.reorder_kot_station_priority(cx, item_id, to);
-                                    changed = true;
+                                    needs_chrome = true;
                                 }
                                 continue;
                             }
@@ -4146,7 +4122,7 @@ impl MatchEvent for App {
                                 };
                                 if let Some(to) = to {
                                     self.reorder_kot_station_priority(cx, item_id, to);
-                                    changed = true;
+                                    needs_chrome = true;
                                 }
                                 continue;
                             }
@@ -4249,7 +4225,8 @@ impl MatchEvent for App {
             }
             // Another (ordinary) field took focus: the open list is done.
             if let Some(field) = open
-                && !changed
+                && !typed
+                && !needs_chrome
             {
                 let mine = self.ui.text_input(cx, field.input()).widget_uid();
                 let elsewhere = actions.iter().filter_map(|a| a.as_widget_action()).any(|wa| {
@@ -4258,18 +4235,11 @@ impl MatchEvent for App {
                 });
                 if elsewhere {
                     app_state().lock().unwrap().suggest_open = None;
-                    changed = true;
+                    needs_chrome = true;
                 }
             }
             if let Some((field, value)) = picked {
-                if field != SuggestField::KotStation
-                    && field != SuggestField::PrinterPlace
-                    && field != SuggestField::PrinterAssign
-                    && field != SuggestField::StationVps
-                    && field != SuggestField::BillPrinters
-                    && field != SuggestField::TestPrinters
-                    && field != SuggestField::KotTestPrinters
-                {
+                if field.opener().is_none() {
                     self.ui.text_input(cx, field.input()).set_text(cx, &value);
                 }
                 if field == SuggestField::FloorColumns {
@@ -4327,7 +4297,7 @@ impl MatchEvent for App {
                         st.status = format!("Credit customer: {name}");
                     }
                 }
-                changed = true;
+                needs_chrome = true;
                 // Pick = do the thing. No second Confirm/Use/Remove/Switch button.
                 let kot_clear = if field == SuggestField::KotStation {
                     st.suggest_rows
@@ -4445,7 +4415,7 @@ impl MatchEvent for App {
                         self.ui
                             .widget(cx, ids!(printer_assign_suggest))
                             .redraw(cx);
-                        changed = false;
+                        needs_chrome = false;
                     }
                     SuggestField::StationPrint => {
                         let msg = {
@@ -4487,7 +4457,7 @@ impl MatchEvent for App {
                         self.paint_station_print_attach(cx);
                         self.sync_job_drive_ui(cx);
                         self.ui.widget(cx, field.list()).redraw(cx);
-                        changed = false;
+                        needs_chrome = false;
                     }
                     SuggestField::TestPrinters | SuggestField::KotTestPrinters => {
                         let msg = {
@@ -4510,17 +4480,17 @@ impl MatchEvent for App {
                         self.paint_printers_panel(cx);
                         self.sync_kot_format_ui(cx);
                         self.ui.widget(cx, field.list()).redraw(cx);
-                        changed = false;
+                        needs_chrome = false;
                     }
                     _ => {}
                 }
             }
-            if changed {
+            if needs_chrome {
                 self.sync_chrome(cx);
-                self.place_floor_cols_suggest(cx);
-                for field in SuggestField::ALL {
-                    self.ui.widget(cx, field.list()).redraw(cx);
-                }
+                self.redraw_suggest_lists(cx);
+            } else if typed {
+                // Narrow-only: list rows update without rebuilding the shell.
+                self.redraw_suggest_lists(cx);
             }
         }
         // Category field: same picker behaviour as the item name — opens on

@@ -53,10 +53,12 @@ impl Widget for SuggestList {
         } else {
             list_content_height(n, row_h, 6.0).min(SUGGEST_MAX_HEIGHT)
         };
-        // Floor Columns lives in a Modal panel — show full height immediately.
-        let (height, should_draw) = if self.field == "floor_cols" {
+        // Inside an AnchoredPopup (popup.rs): full height at once (the list
+        // floats, nothing below it moves), capped to the room the popup has
+        // between the field and the window edge — the rest scrolls.
+        let (height, should_draw) = if let Some(limit) = popup_draw_limit() {
             if logic_open {
-                (full_h, true)
+                (full_h.min(limit), true)
             } else {
                 (0.0, false)
             }

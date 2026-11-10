@@ -2527,80 +2527,37 @@ fn nav_drag_autoscroll(&mut self, cx: &mut Cx) {
     }
 
     /// Put this area's columns into the Floor field, unless the person is
-    /// typing in it (`force` after applying / switching tabs).
-    fn sync_floor_columns_field(&mut self, cx: &mut Cx, force: bool) {
-        let input = self.ui.text_input(cx, ids!(floor_cols_input));
-        if !force && cx.has_key_focus(input.area()) {
-            return;
+    /// Put this area's columns on the Floor dropdown face (`force` kept for
+    /// call sites after apply / tab switch; there is no type-in focus path).
+    fn sync_floor_columns_field(&mut self, cx: &mut Cx, _force: bool) {
+        let (cols, face) = {
+            let st = app_state().lock().unwrap();
+            let cols = st.floor_columns;
+            let face = if cols == 0 {
+                st.t("floor_cols_ph")
+            } else {
+                cols.to_string()
+            };
+            (cols, face)
+        };
+        let btn = self.ui.button(cx, ids!(floor_cols_dd));
+        if btn.text() != face {
+            btn.set_text(cx, &face);
         }
-        let cols = app_state().lock().unwrap().floor_columns;
-        let want = if cols == 0 { String::new() } else { cols.to_string() };
+        // Keep the collapsed legacy input in sync for SuggestField::input().
+        let input = self.ui.text_input(cx, ids!(floor_cols_input));
+        let want = if cols == 0 {
+            String::new()
+        } else {
+            cols.to_string()
+        };
         if input.text() != want {
             input.set_text(cx, &want);
         }
         self.paint_floor_zoom_chrome(cx);
-        self.paint_floor_cols_field_dir(cx);
-        self.place_floor_cols_suggest(cx);
-    }
-
-    /// Columns field: row stays on the physical start (left) of the body —
-    /// window chrome is not mirrored for RTL (DEV.md). Text alignment comes
-    /// from `apply_text_alignment`; the chevron sits on the trailing edge
-    /// (right in LTR, left in RTL). Field padding is symmetric in DSL so
-    /// either side clears the glyph (TextInput.layout is private).
-    fn paint_floor_cols_field_dir(&mut self, cx: &mut Cx) {
-        let rtl = locale::is_rtl(&app_state().lock().unwrap().locale.language);
-        if let Some(mut row) = self.ui.view(cx, ids!(floor_cols_chev_row)).borrow_mut() {
-            row.layout.align.x = if rtl { 0.0 } else { 1.0 };
-        }
-        if let Some(mut chev) = self.ui.label(cx, ids!(floor_cols_chev)).borrow_mut() {
-            chev.walk.margin = if rtl {
-                Inset {
-                    left: 14.0,
-                    right: 0.0,
-                    top: 0.0,
-                    bottom: 0.0,
-                }
-            } else {
-                Inset {
-                    left: 0.0,
-                    right: 14.0,
-                    top: 0.0,
-                    bottom: 0.0,
-                }
-            };
-        }
-    }
-
-    /// Show / hide the Floor Columns pick modal under `floor_cols_box`.
-    /// Lives in a Modal (overlay draw list) so the open menu never stretches
-    /// the cols row or shoves the table grid.
-    fn place_floor_cols_suggest(&mut self, cx: &mut Cx) {
-        let open = app_state().lock().unwrap().suggest_open == Some(SuggestField::FloorColumns);
-        let panel = self.ui.view(cx, ids!(floor_cols_dd_panel));
-        let modal = self.ui.modal(cx, ids!(floor_cols_dd_modal));
-        if !open {
-            panel.set_visible(cx, false);
-            modal.close(cx);
-            return;
-        }
-        let box_r = self.ui.view(cx, ids!(floor_cols_box)).area().rect(cx);
-        if box_r.size.x < 1.0 || box_r.size.y < 1.0 {
-            return;
-        }
-        let pos = DVec2 {
-            x: box_r.pos.x,
-            y: box_r.pos.y + box_r.size.y + 4.0,
-        };
-        if let Some(mut v) = panel.borrow_mut() {
-            v.walk.abs_pos = Some(pos);
-            v.walk.width = Size::Fixed(box_r.size.x.max(176.0));
-            v.walk.height = Size::fit();
-        }
-        panel.set_visible(cx, true);
-        modal.open(cx);
-        self.ui.widget(cx, ids!(floor_cols_suggest)).redraw(cx);
-        panel.redraw(cx);
+        // The Columns list floats under the button (AnchoredPopup): repaint
+        // it with the new value ticked, or gone when the state closed it.
+        self.redraw_popups(cx);
     }
 
     /// Auto on/off face next to Columns; −/+ stay as SegBtn.

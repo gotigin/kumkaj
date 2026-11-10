@@ -57,88 +57,6 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
         }
     }
 
-    /// Close an open type-or-pick list when the press lands outside its
-    /// field + list (and the kitchen dropdown button). Focus-loss alone
-    /// cannot close it: tapping a row steals focus before the pick lands.
-    fn dismiss_suggest_on_outside_press(&mut self, cx: &mut Cx, event: &Event) {
-        let abs = match event {
-            Event::MouseDown(e) if e.button.is_primary() => e.abs,
-            Event::TouchUpdate(e) => {
-                match e
-                    .touches
-                    .iter()
-                    .find(|t| matches!(t.state, TouchState::Start))
-                {
-                    Some(t) => t.abs,
-                    None => return,
-                }
-            }
-            _ => return,
-        };
-        let Some(field) = app_state().lock().unwrap().suggest_open else {
-            return;
-        };
-        // Team station checklist stays open while a person is selected
-        // (sync_chrome re-opens it; outside tap must not clear it).
-        if field == SuggestField::TeamKotStations {
-            return;
-        }
-        let inside = if field == SuggestField::FloorColumns {
-            // Field + modal panel (list is not inside floor_cols_box).
-            let box_r = self.ui.view(cx, ids!(floor_cols_box)).area().rect(cx);
-            let panel_r = self.ui.view(cx, ids!(floor_cols_dd_panel)).area().rect(cx);
-            let in_box = box_r.size.x > 0.0 && box_r.size.y > 0.0 && box_r.contains(abs);
-            let in_panel = panel_r.size.x > 0.0 && panel_r.size.y > 0.0 && panel_r.contains(abs);
-            in_box || in_panel
-        } else {
-            let input = self.ui.text_input(cx, field.input()).area().rect(cx);
-            let list = self.ui.widget(cx, field.list()).area().rect(cx);
-            let in_input = input.size.x > 0.0 && input.contains(abs);
-            let in_list = list.size.x > 0.0 && list.size.y > 0.0 && list.contains(abs);
-            // Done · face is the same dd button that toggles open/close. If
-            // outside-dismiss treats that tap as "outside", it clears open
-            // first and the dd handler then opens again — Done reopens.
-            let in_extra = if field == SuggestField::KotStation {
-                let r = self.ui.button(cx, ids!(kot_station_dd)).area().rect(cx);
-                r.size.x > 0.0 && r.contains(abs)
-            } else if field == SuggestField::PrinterPlace {
-                let r = self.ui.button(cx, ids!(printer_place_dd)).area().rect(cx);
-                r.size.x > 0.0 && r.contains(abs)
-            } else if field == SuggestField::PrinterAssign {
-                let r = self.ui.button(cx, ids!(printer_assign_dd)).area().rect(cx);
-                r.size.x > 0.0 && r.contains(abs)
-            } else if field == SuggestField::StationVps {
-                let r = self.ui.button(cx, ids!(station_vps_dd)).area().rect(cx);
-                r.size.x > 0.0 && r.contains(abs)
-            } else if field == SuggestField::BillPrinters {
-                let r = self.ui.button(cx, ids!(bill_printers_dd)).area().rect(cx);
-                r.size.x > 0.0 && r.contains(abs)
-            } else if field == SuggestField::TestPrinters {
-                let r = self.ui.button(cx, ids!(printers_test_dd)).area().rect(cx);
-                r.size.x > 0.0 && r.contains(abs)
-            } else if field == SuggestField::KotTestPrinters {
-                let r = self.ui.button(cx, ids!(kot_test_printers_dd)).area().rect(cx);
-                r.size.x > 0.0 && r.contains(abs)
-            } else {
-                false
-            };
-            in_input || in_list || in_extra
-        };
-        if inside {
-            return;
-        }
-        app_state().lock().unwrap().suggest_open = None;
-        if field == SuggestField::FloorColumns {
-            // The Columns list lives in a full-window Modal with a clear
-            // backdrop. Clearing the state alone left that modal open and
-            // swallowing every press on the Floor until the next repaint;
-            // close it now so this same press reaches the tile under it.
-            self.place_floor_cols_suggest(cx);
-        }
-        self.ui.widget(cx, field.list()).redraw(cx);
-        self.ui.redraw(cx);
-    }
-
     /// True when a seller text field (not a button) holds key focus / soft keyboard.
     fn text_field_has_focus(&mut self, cx: &mut Cx) -> bool {
         let top_level = [
@@ -274,14 +192,15 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
             let _ = auth;
         }
         // In-screen layers before screen history (native / mouse / Android back).
+        // Suggest lists, Floor Columns floater, Menu dish/category pickers —
+        // dismiss first (including Team station checklists that stay open on
+        // an outside press).
+        if self.dismiss_open_list_for_nav(cx) {
+            self.sync_chrome(cx);
+            return true;
+        }
         {
             let mut st = app_state().lock().unwrap();
-            if st.suggest_open.is_some() {
-                st.suggest_open = None;
-                drop(st);
-                self.sync_chrome(cx);
-                return true;
-            }
             if st.picking_server {
                 st.picking_server = false;
                 drop(st);
@@ -972,8 +891,6 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
         }
         if list_height_anims_live() {
             any_live = true;
-            // Keep Columns suggest pinned under the field while it tweens.
-            self.place_floor_cols_suggest(cx);
         }
         if any_live {
             schedule_ui_tween_frame(cx);

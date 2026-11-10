@@ -71,7 +71,7 @@ mod nav_order_tests {
     /// gesture bars on an edge-to-edge phone; an anchored one must stay out.
     #[test]
     fn every_modal_is_an_inset_sheet_or_anchored() {
-        const ANCHORED: &[&str] = &["nav_drag_modal", "floor_cols_dd_modal"];
+        const ANCHORED: &[&str] = &["nav_drag_modal", "floor_cols_popup"];
         let ui = include_str!("../ui_script.rs");
         let modals: Vec<&str> = ui
             .lines()

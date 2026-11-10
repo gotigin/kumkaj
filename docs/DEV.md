@@ -1549,6 +1549,12 @@ collapse/expand + peers; store tier refuses a green Play claim without AAB +
 non-poison `Mutex`, `catch_unwind` on `handle_event`, and `rail_expand_btn` in
 `HEADER_CONTROLS`.
 
+Also covered when artifacts/device exist: Linux packaged-binary Xvfb launch
+(`dist/<app>-linux`, or `CERT_BUILD_LINUX=1`), Android `adb` install+launch
+(skips cleanly with no device unless `CERT_REQUIRE_ADB=1`), ImageMagick golden
+baselines under `apps/<app>/cert/baselines/`, and AnchoredPopup / popup
+oracles (Khaynjo, Kirano, Tabiyat — Floor Columns floats with the field).
+
 Honesty: does not replace Console / Partner Center human review, full OCR of
 every language, or a real-device GPU farm. Apple stays scaffold-only until
 Makepad iOS packaging is product-ready.

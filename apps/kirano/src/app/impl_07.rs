@@ -1591,4 +1591,59 @@ fn confirm_line_action(&mut self, cx: &mut Cx) {
         let _ = cx;
         Ok(msg)
     }
+
+    /// Kitchen dropdown face: `Kitchen`, `Kitchen · Tandoor`, or
+    /// `Done · …` while the checklist is open. Uses unsent line stations
+    /// when present, else the remembered multi-check / default so the face
+    /// still names the kitchen after Send (empty unsent) and before the
+    /// next dish is added.
+    fn paint_kot_station_dd(&mut self, cx: &mut Cx) {
+        let face = {
+            let st = app_state().lock().unwrap();
+            let station_name = |sid: &str| -> Option<String> {
+                if sid.is_empty() {
+                    return None;
+                }
+                st.stations
+                    .iter()
+                    .find(|s| s.id == sid)
+                    .map(|s| s.name.clone())
+            };
+            let mut names: Vec<String> = Vec::new();
+            for line in st.cart.lines.iter().filter(|l| !l.is_sent() && !l.hold_send) {
+                if let Some(name) = station_name(line.kitchen_station_id(&st.products)) {
+                    if !names.iter().any(|n| n == &name) {
+                        names.push(name);
+                    }
+                }
+            }
+            if names.is_empty() {
+                for sid in &st.kot_stations_selected {
+                    if let Some(name) = station_name(sid) {
+                        if !names.iter().any(|n| n == &name) {
+                            names.push(name);
+                        }
+                    }
+                }
+            }
+            if names.is_empty() {
+                if let Some(name) = station_name(st.kot_station_default.trim()) {
+                    names.push(name);
+                }
+            }
+            let open = st.suggest_open == Some(SuggestField::KotStation);
+            let label = if names.is_empty() {
+                st.t("kot_station_dd")
+            } else {
+                st.t("kot_station_dd_n")
+                    .replace("{stations}", &names.join(", "))
+            };
+            if open {
+                st.t("pick_done_dd").replace("{label}", &label)
+            } else {
+                label
+            }
+        };
+        self.ui.button(cx, ids!(kot_station_dd)).set_text(cx, &face);
+    }
 }
