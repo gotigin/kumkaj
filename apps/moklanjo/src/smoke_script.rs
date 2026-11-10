@@ -111,6 +111,7 @@ fn smoke_peer_tabs() -> Vec<NavTab> {
 
 impl App {
     fn tick_smoke_script(&mut self, cx: &mut Cx) {
+        let _span = stall_span("tick_smoke_script");
         let Some(mode) = smoke_parse_mode() else {
             return;
         };

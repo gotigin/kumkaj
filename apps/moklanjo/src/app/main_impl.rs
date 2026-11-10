@@ -19,6 +19,8 @@ impl AppMain for App {
     /// to diagnostics (with a backtrace); the frame is dropped and the next
     /// tap works.
     fn handle_event(&mut self, cx: &mut Cx, event: &Event) {
+        let started = Instant::now();
+        let tree_before = cx.widget_tree().stats();
         let outcome = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
             self.handle_event_unguarded(cx, event)
         }));
@@ -27,6 +29,25 @@ impl AppMain for App {
             // again from AppState.
             cx.redraw_all();
         }
+        // A job that ended without its own result line must not leave its
+        // progress text behind ("Preparing desk…" on Lock, DEV.md 7b).
+        if matches!(event, Event::Signal | Event::Actions(_) | Event::Timer(_)) {
+            let _ = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+                self.clear_stale_work_status(cx)
+            }));
+        }
+        let tree_after = cx.widget_tree().stats();
+        note_ui_stall(
+            event,
+            started.elapsed(),
+            (
+                tree_after.lookups.saturating_sub(tree_before.lookups),
+                tree_after.cache_misses.saturating_sub(tree_before.cache_misses),
+                tree_after.walk_nodes.saturating_sub(tree_before.walk_nodes),
+                tree_after.invalidations.saturating_sub(tree_before.invalidations),
+                tree_after.stores_skipped.saturating_sub(tree_before.stores_skipped),
+            ),
+        );
     }
 }
 
@@ -63,6 +84,8 @@ impl App {
                 makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal()
             });
             print_share::set_notify(|| makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal());
+            // Windows answers "start with this computer" on a worker (reg.exe).
+            startup::set_notify(|| makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal());
             // Printer Find is Settings → Find printers only (never at startup).
             net::set_books_changed_hook(|| {
                 BOOKS_CHANGED.store(true, std::sync::atomic::Ordering::SeqCst);
@@ -112,8 +135,9 @@ impl App {
                 || print_share::is_finding_printers()
                 || client_find_busy().load(std::sync::atomic::Ordering::SeqCst)
             {
-                if let Some(msg) = books_work_status().lock().unwrap().clone() {
-                    self.set_status(cx, msg);
+                let work = books_work_status().lock().unwrap().clone();
+                if let Some(msg) = work {
+                    self.show_work_status(cx, msg);
                 }
                 self.paint_submit_busy_chrome(cx);
             }
@@ -167,6 +191,10 @@ impl App {
                         self.paint_submit_busy_chrome(cx);
                     }
                 }
+            }
+            let copy_written = backup_copy_write_once().lock().unwrap().take();
+            if let Some(result) = copy_written {
+                self.finish_backup_copy_write(cx, result);
             }
             if let Some(result) = backup_copy_once().lock().unwrap().take() {
                 match result {

@@ -256,6 +256,7 @@ impl AppState {
     }
 
     fn reload_all(&mut self) -> Result<(), String> {
+        let _span = stall_span("reload_all");
         if self.store.is_none() {
             return Err("No store".into());
         }

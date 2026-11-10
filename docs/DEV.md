@@ -211,6 +211,106 @@ then pick a row, tap outside, tap the field again, scroll the page while it is
 open, drag the list with the button held (no wheel), leave the screen while it
 is open and tap something on the next screen.
 
+## Press, touch and a responsive UI thread (every app — do not regress)
+
+Shared Makepad patches (`patches/makepad/`, so all four apps get them) plus
+each app's own stall meter. Cursor rule: `.cursor/rules/press-touch.mdc`.
+They hold for a finger, a mouse with or without a wheel and a trackpad on
+every OS — never gate one on the device.
+
+1. **A pressed face follows the finger, and only the finger**
+   (`button_press_lifecycle`). `Button` keeps a press state of its own: the
+   pressed face shows while a press holds it over the face and drops the
+   moment the press ends *any* way — release, a scrolling parent taking the
+   gesture (`Hit::FingerCancel`), the finger dragged off the face (back on →
+   pressed again), the button hidden or disabled mid-press, a release the
+   button never heard. Anything left "down" with nothing capturing it heals
+   on its next draw. Before this, a swipe that began on a button left it
+   painted pressed (a touch has no hover-out to reset it) — the "glitchy",
+   "stuck" press on Android and touch laptops.
+2. **Touch waits 80 ms before painting pressed** (Android's tap timeout).
+   A swipe that starts on a button scrolls without flashing it; a quick tap
+   that lifts sooner still flashes the pressed face on release, so every tap
+   is visibly taken. The click itself is never delayed. Mouse: instant.
+3. **A scroll takes a gesture only past the touch slop**
+   (`touch_scroll_slop`: `TOUCH_SCROLL_SLOP` = 8 px, the same slop
+   `axis_lock` always used). Scroll views without `axis_lock` used to take the
+   finger after 2 px and PortalList after 5 px — a tap's ordinary jitter, so
+   taps on buttons inside sideways strips and lists were cancelled ("the
+   button did nothing"). Inside the slop nothing scrolls and a lift is a tap.
+4. **A cancelled press is never a click** (`press_capture_cancel`). When a
+   scroll view promotes its capture over a child, the child is owed one
+   `Hit::FingerCancel` on the next move or release of that finger (never on
+   a press, so it always sees its own `FingerDown`). Button / View (`down`
+   animator) / TextInput / TextFlow drop their press state on it; everything
+   else ignores it exactly as before. App row/card taps keep using
+   `finger_up_is_tap` (bug **7h**) — a cancel is not a `FingerUp`.
+5. **Copy takes focus on a tap or a long-press, not on the press**
+   (`text_flow_touch_focus`). A swipe that starts on a selectable WrapLabel
+   no longer pulls key focus off the field being typed in (that dropped the
+   soft keyboard mid-scroll and the page jumped). A tap on copy still focuses
+   it (so it still blurs a field); mouse is unchanged.
+6. **Widget lookups never walk the whole tree per call**
+   (`widget_tree_name_index`). Every `self.ui.button(cx, ids!(x))` is a path
+   lookup; the cache is wiped whenever a list or panel is discovered for the
+   first time, and each cold lookup then walked every node — 1.8 M node
+   visits (2.6 s in a dev build) for the first tap after unlock, 4.5 M for
+   startup, with stale icons and black boxes on screen meanwhile. Cold
+   lookups are now answered from a name index (exactly one valid namesake
+   under the root, re-checked against the graph) and remembered answers are
+   re-validated instead of re-walked; ambiguous names still walk, so the
+   first-match rule is unchanged. `MAKEPAD_TREE_VERIFY=1` cross-checks every
+   index answer against the walk and logs `WIDGET-TREE-VERIFY mismatch` —
+   run the smokes with it after touching `widget_tree.rs`. Keep looked-up
+   ids unique (they already must be: `ids!(x)` finds the first `x`).
+7. **The stall meter names anything that holds the UI thread** (each app's
+   `runtime.rs`: `note_ui_stall`, `stall_span`). Any event that takes
+   ≥ 250 ms logs `Kumkaj stall: <Event> took N ms on <Screen> — sync_chrome 2×
+   840 ms, … [lookups … walked … invalidations …]` and writes `ui_stall` to
+   local diagnostics (≥ 1 s as a warning). `let _span = stall_span("name");`
+   at the top of a heavy function puts it in the breakdown (today:
+   `sync_chrome`, `reload_all`, `ensure_store`, `show_screen`,
+   `handle_actions`, `paint_static_texts`, `tick_smoke_script`). After a UI
+   change, run the smoke and grep the app log for `Kumkaj stall`; anything
+   ≥ 1 s in a release build moves to a worker with Progress + Cancel (bug
+   **7b**). On Android the same lines are in `adb logcat` under `Makepad`.
+8. **Progress text never outlives its job.** A worker's progress line goes
+   on the status line through `show_work_status` (no snack — a toast per
+   tick only flickered); when the job ends without a result line of its own,
+   `clear_stale_work_status` (run after every Signal / Actions / Timer)
+   takes it down. "Preparing desk…" used to stay on DeviceSetup and Lock
+   forever after the desk had opened.
+9. **No subprocess on a paint path.** Windows "Start with this computer"
+   (`startup::is_on`) ran `reg query` on every `sync_chrome`; it now asks once
+   on a worker and caches (`set` updates the cache). A paint/sync function
+   may read memory only — never spawn, open a socket, or touch a slow file.
+10. **A tapped button never keeps a focus outline** (focus-visible, in
+    `button_press_lifecycle`). A press still takes key focus (a field blurs,
+    Enter/Space act on the button next), but the focus face shows only when
+    focus arrives from the keyboard. Faces that leave `border_color_focus`
+    at the theme default kept a dark outline after every tap — on a touch
+    screen the last button touched looked stuck. Selection is never a focus
+    face anyway (§ Makepad 2 UI faces): paint it from app state.
+11. **JNI from a worker never kills the app** (`android_jni_detach_on_exit`).
+    `attach_jni_env` attached any thread and never detached it; ART aborts
+    the process when an attached native thread exits. The Find-printers
+    worker (Bluetooth / USB listing) and any other short-lived worker that
+    touched JNI ended the till when it finished. Now a thread the call
+    attached is detached at thread exit; Java-owned threads are left alone.
+12. **Save a backup copy writes on a worker** (`backup_copy_write_job`, each
+    app). The VACUUM half was already off the UI thread; the second half —
+    reading the whole copy and writing it to the place the owner picked (a
+    content:// URI through JNI on Android, `fs::copy` elsewhere) — ran on
+    the UI thread right after the save dialog and froze the till for seconds
+    on a busy shop. It now shows the same "Making backup copy…" + Cancel.
+
+Manual check (finger *and* mouse): swipe a list starting on a button (no
+pressed flash, no click), tap a small button with a little jitter (clicks),
+press a button and drag off it (face drops, release does nothing), drag back
+on (pressed again), tap fast (pressed flash), start typing in a field and
+swipe the page from a label (keyboard stays up), open a busy job and let it
+finish (progress line clears).
+
 ## Desktop window size & maximize
 
 Expected floating-window behaviour on **desktop** Linux, Windows, and macOS
@@ -328,7 +428,7 @@ So “this tab is active” **cannot** be expressed by leaving a Button focused 
 5. **Item / rate photos** — Moklanjo has no built-in food-menu art pack. Thumbnails are name initials or a user-picked custom photo under the store’s item-images dir (not a packaged `resources/menu/` catalogue).
 6. **Whole app frozen by list photos** — A `PortalList` given its full content height (the page-scroll rule) draws *every* row, and each row decoded its full-size photo synchronously in `draw_walk`. A ~100-dish list took tens of seconds per frame in a dev build (≈250 ms per 470×1024 WebP unoptimised), so every screen showing item photos “hung” (Khaynjo, 2026-10-23). Rule for every app: never call `load_image_file_by_path` on an original photo from a list’s draw — show a small thumb made off the UI thread (initials until it lands; Khaynjo’s `src/thumbs.rs`), and give long lists their own capped, self-scrolling viewport so only visible rows draw. Image codec crates are `opt-level = 3` in the workspace dev profile so photo work stays fast in `*-dev` builds.
 6c. **Floor (and other heavy expand-to-content grids) freeze Android** — Same full-height PortalList rule as (6): Khaynjo Floor with ~44 tables drew every `FloorTile` (Overlay + 7 bg faces + icons) every frame, so the phone could not scroll (2026-11). **Rule:** fixed-pitch expand-to-content lists that are expensive per row use `page_window` / `floor_page_window` + `top_gap`/`list_box` (see `MenuList` / `FloorList`) so only on-screen rows draw; redraw on `Event::Scroll`. Also never put `Label{width: Fill, flow: Right{wrap: true}}` on those tiles (bug 7). Books/Inventory/Reports facet SQL must not re-run on every `sync_chrome` Signal — gate with `FACET_DIRTY` / empty text.
-6b. **Android 8.0 (API 26) boot crash / black SurfaceView** — (1) `InputDevice.isEnabled()` is API 27+ → `NoSuchMethodError` (guard `SDK_INT >= 27`). (2) Inline `WindowInsetsAnimation.Callback` in `ResizingLayout` makes old ART fail class verify (`ClassNotFoundException`) and leave a black GL surface — keep the callback in `ImeInsetsAnimationHelper.java` and attach only via `Class.forName` when `SDK_INT >= 30` (`scripts/apply-android-activity-bridge.sh`). (3) Cargo plain `dev` on phone is too slow for first paint; use `cargo *-android-dev` (`android-dev` profile). That profile must stay **opt-level 3** with only `debug = "line-tables-only"` — full DWARF (`debug = true`) made a ~400MB `libmakepad.so` whose load alone left a black SurfaceView for many seconds on Mali-T830. (4) First drawable can precede layout settling — Makepad does a few follow-up `redraw_all`s (`android_post_layout_redraw` patch) so DeviceSetup is not stuck on `pass.clear_color`. (5) On some Huawei API 26 devices `adb exec-out screencap` captures only the window background and **misses the Makepad SurfaceView** — use a system screenshot (`adb shell input keyevent 120`) to verify paint.
+6b. **Android 8.0 (API 26) boot crash / black SurfaceView** — (1) `InputDevice.isEnabled()` is API 27+ → `NoSuchMethodError` (guard `SDK_INT >= 27`). (2) Inline `WindowInsetsAnimation.Callback` in `ResizingLayout` makes old ART fail class verify (`ClassNotFoundException`) and leave a black GL surface — keep the callback in `ImeInsetsAnimationHelper.java` and attach only via `Class.forName` when `SDK_INT >= 30` (`scripts/apply-android-activity-bridge.sh`). (3) Cargo plain `dev` on phone is too slow for first paint; use `cargo *-android-dev` (`android-dev` profile). That profile must stay **opt-level 3** with only `debug = "line-tables-only"` — full DWARF (`debug = true`) made a ~400MB `libmakepad.so` whose load alone left a black SurfaceView for many seconds on Mali-T830. (4) First drawable can precede layout settling — Makepad does a few follow-up `redraw_all`s (`android_post_layout_redraw` patch) so DeviceSetup is not stuck on `pass.clear_color`. (5) On some Huawei API 26 devices `adb exec-out screencap` captures only the window background and **misses the Makepad SurfaceView** — use a system screenshot (`adb shell input keyevent 120`) to verify paint. Worse, that "background" is Makepad's **snapshot backdrop** (`mSurfaceSnapshotBackdrop`, the last PixelCopy of the surface): it looks exactly like the app, only stale — an old screen, a finished job's progress line, a missing header (AGS2, 2026-11-10). Never diagnose a "stuck" or "glitchy" screen from screencap there; `dumpsys activity <pkg>/.MakepadApp` shows whether the cover / snapshot overlays are actually VISIBLE.
 6d. **Android soft keyboard ▾ hide bounces back / retap silent** — Two related Makepad IME bugs (patches `android_ime_dismiss` + `android_ime_retap_show`; Java `SHOW_FORCED` / InsetsController via `apply-android-activity-bridge.sh`). **(▾ bounce)** System hide left the `TextInput` focused; a `ShowTextIME` already in `platform_ops` (or the next draw) called `showKeyboard` again after `last_ime_config` was cleared. Fix: on `ResizeTextIME` DidHide (no physical keyboard) call `text_ime_was_dismissed()` only (mirror iOS); skip `ShowTextIME` while `text_ime_dismissed`; never re-arm the dismiss latch in `CxKeyboard::set_key_focus` when the new area is `Empty`. **Do not** `set_key_focus(Empty)` inside DidHide — that fires KeyFocusLost → `hide_text_ime` (clears the latch) and mid-gesture focus loss wrecks Android touch-scroll (ScrollY + ScrollX / `axis_lock` / `capture_overload`). App Back / outside tap still clears focus via `dismiss_soft_keyboard`. Do **not** “fix” bounce by dropping `ime_show_requested` / retap redraw — that regresses retap. **(Retap silent)** Config-only dedupe of `ShowTextIME` left retaps no-ops when OEM dismiss kept `last_ime_config` set. Fix: `request_ime_show()` on KeyFocus / FingerDown + redraw; `ShowTextIME` calls `showKeyboard` when config changed **or** `ime_show_requested`. Never treat `!last_ime_visible` alone as show-again.
 6e. **Do not regress Android / desk touch-scroll when fixing IME** — Load-bearing Makepad patches: `scroll_axis_lock`, `drag_scroll_touch_only`, `scroll_touch_over_buttons`, `scroll_touch_orphan_unblock`, `text_flow_touch_scroll`, `text_input_touch_scroll`, `text_flow_selection`. Page `ScrollYView` and Floor `area_scroll` keep `mouse_capture_overload: true` + `axis_lock: true`. **Never** clear key focus from `ResizeTextIME` DidHide / keyboard-height callbacks (bug **6d**). **Never** “simplify” capture_overload off, drop axis_lock, or re-enable TextFlow / TextInput select-drag on touch FingerMove (that steals vertical swipe — Lock PIN and ClientPair fields need `text_input_touch_scroll`). **`WrapLabel` default is `selectable: true`** (both apps — [`DESIGN.md`](DESIGN.md) § Text selection & copy). Set `selectable: false` **only** inside tap targets (Kitchen KotCard, cart lines, floor tiles, snack bars, button faces, InfoHelp titles) — select-drag there steals the press / can freeze page swipe until FingerUp. Touch select starts on long-press (`text_flow_touch_scroll`); vertical swipe still scrolls. KitchenList (and other heavy expand-to-content lists) use `page_window` + `top_gap`/`list_box` so touch-move redraw does not draw every card (bug **6c**). When adding whitespace above a sideways Area strip (Floor Columns↔tables gap), put the pad **inside** that `ScrollXView` — parent `spacing` between Columns and `FloorList` is a dead zone for Area pan.
 6f. **Android soft-keyboard field lift (focus above the IME)** — When a text

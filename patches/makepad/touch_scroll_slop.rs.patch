@@ -1,0 +1,54 @@
+--- a/widgets/src/scroll_bar.rs
++++ b/widgets/src/scroll_bar.rs
+@@ -1004,6 +1004,30 @@
+                     }
+                     return;
+                 }
++                // Same slop without axis_lock: a tap jitters a few px, and
++                // taking the gesture at 2 px (the old first-move promote)
++                // cancelled taps on buttons inside sideways strips and lists —
++                // "the button did nothing". Nothing scrolls inside the slop;
++                // past it this bar owns the finger from where it is now.
++                if !self.axis_lock
++                    && self.drag_lock == DragLock::Pending
++                    && matches!(self.scroll_state, ScrollState::Drag { .. })
++                {
++                    let d = e.abs - self.drag_origin;
++                    if d.x.abs().max(d.y.abs()) < AXIS_LOCK_SLOP {
++                        return;
++                    }
++                    self.drag_lock = DragLock::Mine;
++                    let _ = cx.promote_finger_capture_over(scroll_area);
++                    let abs = match self.axis {
++                        ScrollAxis::Horizontal => e.abs.x,
++                        ScrollAxis::Vertical => e.abs.y,
++                    };
++                    self.scroll_state = ScrollState::Drag {
++                        samples: vec![ScrollSample { abs, time: e.time }],
++                    };
++                    return;
++                }
+                 match &mut self.scroll_state {
+                 ScrollState::Drag { samples } => {
+                     let new_abs = match self.axis {
+--- a/widgets/src/portal_list.rs
++++ b/widgets/src/portal_list.rs
+@@ -3189,9 +3189,16 @@
+                         {
+                             let new_abs = e.abs.index(vi);
+ 
+-                            // Check if the drag threshold has been exceeded.
++                            // Check if the drag threshold has been exceeded. A finger
++                            // jitters more than a mouse: below the touch slop a lift
++                            // is still a tap on the row's button, not a scroll.
++                            let threshold = if e.device.is_touch() {
++                                self.drag_scroll_threshold.max(TOUCH_SCROLL_SLOP)
++                            } else {
++                                self.drag_scroll_threshold
++                            };
+                             if !*committed {
+-                                if (new_abs - *initial_abs).abs() >= self.drag_scroll_threshold {
++                                if (new_abs - *initial_abs).abs() >= threshold {
+                                     *committed = true;
+                                     self.suppress_child_events = true;
+                                     // Threshold (5px) is before page axis_lock (8px):

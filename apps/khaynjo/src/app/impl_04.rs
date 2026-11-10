@@ -513,6 +513,7 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
     }
 
     fn show_screen(&mut self, cx: &mut Cx, screen: Screen) {
+        let _span = stall_span("show_screen");
         let pairs = [
             (ids!(device_setup_screen), screen == Screen::DeviceSetup),
             (ids!(lock_screen), screen == Screen::Lock),

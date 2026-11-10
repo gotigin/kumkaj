@@ -22,18 +22,68 @@ pub fn supported() -> bool {
     cfg!(any(windows, target_os = "linux", target_os = "macos"))
 }
 
-/// The app starts with this computer now.
+/// Windows: the Run-key answer, found by a worker. 0 = not asked yet,
+/// 1 = asking, 2 = off, 3 = on.
+#[cfg(windows)]
+static WIN_STATE: std::sync::atomic::AtomicU8 = std::sync::atomic::AtomicU8::new(0);
+#[cfg(windows)]
+static WIN_NOTIFY: std::sync::OnceLock<fn()> = std::sync::OnceLock::new();
+
+/// Wake the UI when the Windows answer lands so Settings repaints the label.
+pub fn set_notify(f: fn()) {
+    #[cfg(windows)]
+    {
+        let _ = WIN_NOTIFY.set(f);
+    }
+    #[cfg(not(windows))]
+    {
+        let _ = f;
+    }
+}
+
+#[cfg(windows)]
+fn query_windows_run_key() -> bool {
+    use std::os::windows::process::CommandExt;
+    const CREATE_NO_WINDOW: u32 = 0x0800_0000;
+    std::process::Command::new("reg")
+        .args(["query", RUN_KEY, "/v", ENTRY])
+        .creation_flags(CREATE_NO_WINDOW)
+        .output()
+        .map(|o| o.status.success())
+        .unwrap_or(false)
+}
+
+/// The app starts with this computer now. Never blocks: Settings paints this
+/// on every chrome sync, and on Windows the answer needs a `reg` process —
+/// spawned on the UI thread that froze every sync (worse under antivirus).
+/// Windows asks once on a worker and says "off" until the answer lands.
 pub fn is_on() -> bool {
     #[cfg(windows)]
     {
-        use std::os::windows::process::CommandExt;
-        const CREATE_NO_WINDOW: u32 = 0x0800_0000;
-        std::process::Command::new("reg")
-            .args(["query", RUN_KEY, "/v", ENTRY])
-            .creation_flags(CREATE_NO_WINDOW)
-            .output()
-            .map(|o| o.status.success())
-            .unwrap_or(false)
+        use std::sync::atomic::Ordering;
+        match WIN_STATE.load(Ordering::Acquire) {
+            3 => return true,
+            1 | 2 => return false,
+            _ => {}
+        }
+        if WIN_STATE
+            .compare_exchange(0, 1, Ordering::AcqRel, Ordering::Acquire)
+            .is_ok()
+        {
+            let spawned = std::thread::Builder::new()
+                .name("startup-query".into())
+                .spawn(|| {
+                    let on = query_windows_run_key();
+                    WIN_STATE.store(if on { 3 } else { 2 }, Ordering::Release);
+                    if let Some(notify) = WIN_NOTIFY.get() {
+                        notify();
+                    }
+                });
+            if spawned.is_err() {
+                WIN_STATE.store(0, Ordering::Release);
+            }
+        }
+        false
     }
     #[cfg(target_os = "linux")]
     {
@@ -70,6 +120,7 @@ pub fn set(on: bool) -> Result<(), String> {
         if !out.status.success() && on {
             return Err(String::from_utf8_lossy(&out.stderr).trim().to_string());
         }
+        WIN_STATE.store(if on { 3 } else { 2 }, std::sync::atomic::Ordering::Release);
         Ok(())
     }
     #[cfg(target_os = "linux")]

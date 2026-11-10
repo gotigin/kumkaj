@@ -1,0 +1,263 @@
+--- a/platform/src/event/finger.rs
++++ b/platform/src/event/finger.rs
+@@ -286,6 +286,10 @@
+ /// does not take the gesture until 8px, so a 6px touch was neither a tap
+ /// nor a scroll — the control looked dead.
+ pub const TOUCH_TAP_DISTANCE: f64 = 24.0;
++/// How far a finger travels before a scroll view takes the gesture from the
++/// control under it (Android's touch slop, 8 dp). Shorter and a tap's jitter
++/// became a scroll that cancelled the tap.
++pub const TOUCH_SCROLL_SLOP: f64 = 8.0;
+ 
+ #[derive(Clone, Debug, Default, Eq, Hash, Copy, PartialEq, FromLiveId)]
+ pub struct DigitId(pub LiveId);
+@@ -307,6 +311,19 @@
+     pub pinned: bool,
+ }
+ 
++/// A press that lost its capture to a container (`promote_capture_over`):
++/// the scroll view took the gesture, so the widget that had the press must be
++/// told it ended without a click. Without this the widget never heard
++/// anything again — a Button stayed in its pressed face, a TextInput stayed
++/// armed — because a touch has no hover-out to reset it.
++#[derive(Clone, Debug)]
++pub(crate) struct CxDigitCancel {
++    pub digit_id: DigitId,
++    pub area: Area,
++    pub abs_start: Vec2d,
++    pub time: f64,
++}
++
+ #[derive(Default, Clone)]
+ pub struct CxDigitTap {
+     digit_id: DigitId,
+@@ -326,6 +343,8 @@
+ pub struct CxFingers {
+     pub first_mouse_button: Option<(MouseButton, WindowId)>,
+     captures: Vec<CxDigitCapture>,
++    /// Presses taken over by a container, waiting to hear `Hit::FingerCancel`.
++    cancelled: Vec<CxDigitCancel>,
+     tap: CxDigitTap,
+     hovers: Vec<CxDigitHover>,
+     xr_poke_locks: Vec<DigitId>,
+@@ -376,6 +395,11 @@
+                 capture.sweep_area = new_area;
+             }
+         }
++        for cancel in &mut self.cancelled {
++            if cancel.area == old_area {
++                cancel.area = new_area;
++            }
++        }
+         if self.sweep_lock == Some(old_area) {
+             self.sweep_lock = Some(new_area);
+         }
+@@ -426,6 +450,10 @@
+             capture.abs_start = abs_start;
+         }
+         else {*/
++        // A new press supersedes any cancel still owed to this widget or for
++        // this finger — delivering it now would end the NEW press.
++        self.cancelled
++            .retain(|c| c.area != area && c.digit_id != digit_id);
+         self.captures.push(CxDigitCapture {
+             sweep_area,
+             digit_id,
+@@ -483,11 +511,35 @@
+             return false;
+         };
+         let before = self.captures.len();
++        for v in &self.captures {
++            if v.digit_id == digit && v.area != over && !v.area.is_empty() {
++                self.cancelled.push(CxDigitCancel {
++                    digit_id: digit,
++                    area: v.area,
++                    abs_start: v.abs_start,
++                    time: v.time,
++                });
++            }
++        }
+         self.captures
+             .retain(|v| v.digit_id != digit || v.area == over);
+         self.captures.len() != before
+     }
+ 
++    /// True while some widget is still owed a `Hit::FingerCancel`.
++    pub fn has_cancelled_captures(&self) -> bool {
++        !self.cancelled.is_empty()
++    }
++
++    pub(crate) fn find_cancelled_capture(&self, area: Area) -> Option<&CxDigitCancel> {
++        self.cancelled.iter().find(|c| c.area == area)
++    }
++
++    pub(crate) fn take_cancelled_capture(&mut self, area: Area) -> Option<CxDigitCancel> {
++        let i = self.cancelled.iter().position(|c| c.area == area)?;
++        Some(self.cancelled.swap_remove(i))
++    }
++
+     pub fn is_area_captured(&self, area: Area) -> bool {
+         self.captures.iter().find(|v| v.area == area).is_some()
+     }
+@@ -504,6 +556,10 @@
+     }
+ 
+     pub(crate) fn release_digit(&mut self, digit_id: DigitId) {
++        // The release was dispatched before this runs; a widget that was not
++        // reached by it (hidden, scrolled out of a windowed list) heals itself
++        // from its draw instead (Button: no capture → not pressed).
++        self.cancelled.retain(|c| c.digit_id != digit_id);
+         while let Some(index) = self
+             .captures
+             .iter_mut()
+@@ -841,6 +897,29 @@
+     }
+ }
+ 
++/// The press that began on this widget was taken over by a container (a
++/// scroll view started scrolling, a list started a drag). It ended without a
++/// click: drop the pressed look and any armed press state. Never a tap.
++#[derive(Clone, Debug)]
++pub struct FingerCancelEvent {
++    pub window_id: WindowId,
++    /// Where the finger is now.
++    pub abs: Vec2d,
++    /// Where the press began.
++    pub abs_start: Vec2d,
++    /// When the press began.
++    pub capture_time: f64,
++    pub time: f64,
++    pub digit_id: DigitId,
++    pub device: DigitDevice,
++}
++impl Deref for FingerCancelEvent {
++    type Target = DigitDevice;
++    fn deref(&self) -> &DigitDevice {
++        &self.device
++    }
++}
++
+ #[derive(Clone, Debug)]
+ pub struct FingerLongPressEvent {
+     pub window_id: WindowId,
+@@ -951,6 +1030,51 @@
+ }
+ 
+ impl Event {
++    /// Deliver a pending `Hit::FingerCancel` to `area` on the next pointer
++    /// event of the same finger (move / release). Never on an event that
++    /// starts a press, so a widget always sees its own FingerDown.
++    fn take_finger_cancel(&self, cx: &mut Cx, area: Area) -> Option<Hit> {
++        let pending = cx.fingers.find_cancelled_capture(area)?;
++        let digit_id = pending.digit_id;
++        let (window_id, abs, time, device) = match self {
++            Event::TouchUpdate(e) => {
++                if e.touches.iter().any(|t| t.state == TouchState::Start) {
++                    return None;
++                }
++                let t = e
++                    .touches
++                    .iter()
++                    .find(|t| DigitId::from(live_id_num!(touch, t.uid)) == digit_id)?;
++                (e.window_id, t.abs, e.time, DigitDevice::Touch { uid: t.uid })
++            }
++            Event::MouseMove(e) if digit_id == live_id!(mouse).into() => (
++                e.window_id,
++                e.abs,
++                e.time,
++                DigitDevice::Mouse {
++                    button: MouseButton::PRIMARY,
++                },
++            ),
++            Event::MouseUp(e) if digit_id == live_id!(mouse).into() => (
++                e.window_id,
++                e.abs,
++                e.time,
++                DigitDevice::Mouse { button: e.button },
++            ),
++            _ => return None,
++        };
++        let c = cx.fingers.take_cancelled_capture(area)?;
++        Some(Hit::FingerCancel(FingerCancelEvent {
++            window_id,
++            abs,
++            abs_start: c.abs_start,
++            capture_time: c.time,
++            time,
++            digit_id,
++            device,
++        }))
++    }
++
+     pub fn unhandle(&self, cx: &mut Cx, area: &Area) {
+         match self {
+             Event::TouchUpdate(e) => {
+@@ -1037,6 +1161,11 @@
+         if !area.is_valid(cx) {
+             return Hit::Nothing;
+         }
++        if cx.fingers.has_cancelled_captures() {
++            if let Some(hit) = self.take_finger_cancel(cx, area) {
++                return hit;
++            }
++        }
+         match self {
+             Event::KeyFocus(kf) => {
+                 if area == kf.prev {
+--- a/platform/src/event/event.rs
++++ b/platform/src/event/event.rs
+@@ -531,6 +531,9 @@
+     FingerHoverOver(FingerHoverEvent),
+     FingerHoverOut(FingerHoverEvent),
+     FingerUp(FingerUpEvent),
++    /// A press on this area was taken over by a container (scroll / drag):
++    /// it ends here without a click. See `FingerCancelEvent`.
++    FingerCancel(FingerCancelEvent),
+     FingerLongPress(FingerLongPressEvent),
+     SelectionHandleDrag(SelectionHandleDragEvent),
+ 
+--- a/platform/src/lib.rs
++++ b/platform/src/lib.rs
+@@ -149,6 +149,9 @@
+             FingerMoveEvent,
+             FingerScrollEvent,
+             FingerUpEvent,
++            FingerCancelEvent,
++            TOUCH_TAP_DISTANCE,
++            TOUCH_SCROLL_SLOP,
+             FullTextState,
+             GameInputState,
+             Hit,
+--- a/widgets/src/view.rs
++++ b/widgets/src/view.rs
+@@ -924,6 +924,12 @@
+                         self.animator_play(cx, ids!(down.off));
+                     }
+                 }
++                Hit::FingerCancel(_) => {
++                    // A scrolling parent took this press: drop the pressed look.
++                    if self.animator.is_defined {
++                        self.animator_play(cx, ids!(down.off));
++                    }
++                }
+                 Hit::FingerHoverIn(e) => {
+                     cx.widget_action(uid, ViewAction::FingerHoverIn(e));
+                     if let Some(cursor) = &self.cursor {
+--- a/widgets/src/text_input.rs
++++ b/widgets/src/text_input.rs
+@@ -2630,6 +2630,15 @@
+ 
+                 self.animator_play(cx, ids!(hover.down));
+             }
++            Hit::FingerCancel(_) => {
++                // The page took this swipe: it was never a tap on the field,
++                // so no focus / IME and no pressed face left behind.
++                self.ignore_next_move = false;
++                self.touch_select_armed = false;
++                self.touch_focus_pending = false;
++                self.preserved_selection_cursor = None;
++                self.animator_play(cx, ids!(hover.off));
++            }
+             Hit::FingerUp(fe) => {
+                 self.ignore_next_move = false;
+                 self.touch_select_armed = false;

@@ -115,6 +115,14 @@ PATCHES=(
   slides_view_story_axis            # sites: SlidesView axis Vertical, tap/swipe/wheel flips, presenter keys (PgDn/PgUp/Space/Home/End), goal_slide/slide_count
   web_init_window_order             # sites (wasm): Startup creates window 0 before the init geom is applied (else IdPool panic, stuck on Loading)
   web_aux_buttons_stay              # wasm: mouse side buttons do not navigate the browser away from the app
+  d3d11_warp_fallback               # Windows: no usable adapter 0 (VMs, broken DXGI) → CPU WARP device instead of a panic
+  # Press / touch / UI-thread doctrine (docs/DEV.md § Press, touch and a responsive UI thread).
+  press_capture_cancel              # a press a scroll view takes over gets Hit::FingerCancel (never a click); TOUCH_SCROLL_SLOP
+  button_press_lifecycle            # pressed face follows the finger: 80 ms touch delay, drag-off, cancel, heal when orphaned
+  text_flow_touch_focus             # copy takes focus on tap / long-press, not on press (swipe keeps the soft keyboard)
+  touch_scroll_slop                 # scroll views + PortalList take a finger only past 8 px (2 px / 5 px cancelled taps)
+  widget_tree_name_index            # cold path lookups via a name index; remembered answers re-validated (no tree walk per lookup)
+  android_jni_detach_on_exit        # Android: a native thread attach_jni_env attached detaches at exit (ART aborted on worker exit)
 )
 for name in "${PATCHES[@]}"; do
   patch -p1 --forward --no-backup-if-mismatch --quiet -d "$VENDOR" \

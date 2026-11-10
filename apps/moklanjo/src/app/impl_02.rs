@@ -74,8 +74,9 @@ fn sync_chrome(&mut self, cx: &mut Cx) {
         self.paint_pair_busy_chrome(cx);
         if heavy_job {
             self.paint_role_open_busy_chrome(cx);
-            if let Some(msg) = books_work_status().lock().unwrap().clone() {
-                self.set_status(cx, msg);
+            let work = books_work_status().lock().unwrap().clone();
+            if let Some(msg) = work {
+                self.show_work_status(cx, msg);
             }
             let screen = app_state().lock().unwrap().screen;
             self.show_screen(cx, screen);

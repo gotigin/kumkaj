@@ -1,0 +1,93 @@
+--- a/platform/src/os/windows/d3d11.rs
++++ b/platform/src/os/windows/d3d11.rs
+@@ -35,7 +35,7 @@
+             Graphics::{
+                 Direct3D::{
+                     Fxc::D3DCompile, D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST,
+-                    D3D_DRIVER_TYPE_UNKNOWN, D3D_FEATURE_LEVEL_11_0,
++                    D3D_DRIVER_TYPE, D3D_DRIVER_TYPE_UNKNOWN, D3D_FEATURE_LEVEL_11_0,
+                     D3D_SRV_DIMENSION_TEXTURECUBE,
+                 },
+                 Direct3D11::{
+@@ -2107,7 +2107,6 @@
+             // before a hybrid-GPU transition or a driver reinstall keeps handing back the
+             // adapter that went away. Recovery always starts from a fresh factory.
+             let factory: IDXGIFactory2 = CreateDXGIFactory2(DXGI_CREATE_FACTORY_FLAGS(0))?;
+-            let adapter = factory.EnumAdapters(0)?;
+             let feature_levels = [D3D_FEATURE_LEVEL_11_0];
+             // 0x800 = VIDEO_SUPPORT, 0x20 = BGRA_SUPPORT. VIDEO_SUPPORT is optional for
+             // UI; requiring it returns DXGI_ERROR_UNSUPPORTED (0x887A0004) on many
+@@ -2120,26 +2119,56 @@
+             let mut device: Option<ID3D11Device> = None;
+             let mut context: Option<ID3D11DeviceContext> = None;
+             let mut last_err = None;
+-            for &flags in &flag_sets {
+-                match D3D11CreateDevice(
+-                    &adapter,
+-                    D3D_DRIVER_TYPE_UNKNOWN,
+-                    HMODULE(std::ptr::null_mut()),
+-                    flags,
+-                    Some(&feature_levels),
+-                    D3D11_SDK_VERSION,
+-                    Some(&mut device),
+-                    None,
+-                    Some(&mut context),
+-                ) {
+-                    Ok(()) => break,
+-                    Err(e) => {
+-                        device = None;
+-                        context = None;
+-                        last_err = Some(e);
++
++            // Hardware adapter 0 first (normal desktops / laptops).
++            if let Ok(adapter) = factory.EnumAdapters(0) {
++                for &flags in &flag_sets {
++                    match D3D11CreateDevice(
++                        &adapter,
++                        D3D_DRIVER_TYPE_UNKNOWN,
++                        HMODULE(std::ptr::null_mut()),
++                        flags,
++                        Some(&feature_levels),
++                        D3D11_SDK_VERSION,
++                        Some(&mut device),
++                        None,
++                        Some(&mut context),
++                    ) {
++                        Ok(()) => break,
++                        Err(e) => {
++                            device = None;
++                            context = None;
++                            last_err = Some(e);
++                        }
+                     }
+                 }
+             }
++
++            // QEMU/VMs and machines with a broken DXGI adapter: CPU WARP so the
++            // window still opens instead of dying in expect("D3D11…").
++            if device.is_none() {
++                for &flags in &flag_sets {
++                    match D3D11CreateDevice(
++                        None,
++                        D3D_DRIVER_TYPE(5i32), // WARP (CPU) — not re-exported by vendored windows-rs
++                        HMODULE(std::ptr::null_mut()),
++                        flags,
++                        Some(&feature_levels),
++                        D3D11_SDK_VERSION,
++                        Some(&mut device),
++                        None,
++                        Some(&mut context),
++                    ) {
++                        Ok(()) => break,
++                        Err(e) => {
++                            device = None;
++                            context = None;
++                            last_err = Some(e);
++                        }
++                    }
++                }
++            }
++
+             if device.is_none() {
+                 return Err(last_err.unwrap());
+             }

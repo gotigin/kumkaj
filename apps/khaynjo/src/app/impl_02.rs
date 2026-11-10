@@ -13,11 +13,8 @@ fn paint_import_progress_chrome(&mut self, cx: &mut Cx) {
         } else {
             app_state().lock().unwrap().t("template_importing")
         };
-        if let Some(msg) = books_work_status().lock().unwrap().clone() {
-            self.set_status(cx, msg);
-        } else {
-            self.set_status(cx, progress.clone());
-        }
+        let work = books_work_status().lock().unwrap().clone();
+        self.show_work_status(cx, work.unwrap_or_else(|| progress.clone()));
         let kind = menu_import_running().lock().unwrap().clone();
         match kind {
             Some(MenuImportKind::Shelf) => {
@@ -449,6 +446,7 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
     }
 
     fn sync_chrome(&mut self, cx: &mut Cx) {
+        let _span = stall_span("sync_chrome");
         // While other devices depend on this one, its screen stays on:
         // Android dozes a dark device and drops them (desktops hold the
         // system awake in `net::KeepAwake`).

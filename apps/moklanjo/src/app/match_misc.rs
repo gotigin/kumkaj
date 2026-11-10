@@ -108,6 +108,7 @@ impl MatchEvent for App {
     }
 
     fn handle_actions(&mut self, cx: &mut Cx, actions: &Actions) {
+        let _span = stall_span("handle_actions");
         self.refresh_form_tab_anchor(cx);
         let _ = self.handle_form_field_returned(cx, actions);
         self.tab_chevron_clicks(cx, actions);

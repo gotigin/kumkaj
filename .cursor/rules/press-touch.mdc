@@ -1,0 +1,52 @@
+---
+description: Press / touch lifecycle, touch slop, widget lookups and the UI stall meter (every app)
+alwaysApply: true
+---
+
+# Press, touch and a responsive UI thread
+
+Canonical: `docs/DEV.md` § Press, touch and a responsive UI thread.
+Shared Makepad patches (all four apps): `press_capture_cancel`,
+`button_press_lifecycle`, `text_flow_touch_focus`, `touch_scroll_slop`,
+`widget_tree_name_index`, `android_jni_detach_on_exit`.
+
+## Facts
+
+- `Button` owns its press: pressed face only while a press holds it over
+  the face; it drops on release, `Hit::FingerCancel`, drag-off, hide /
+  disable mid-press, or a lost capture (heals on draw). Touch waits 80 ms
+  before painting pressed; a quicker tap flashes on release.
+- A scroll view / PortalList takes the finger only past
+  `TOUCH_SCROLL_SLOP` (8 px). Inside it a lift is still a tap.
+- A press taken over by a scroll gets one `Hit::FingerCancel` — never a
+  click. Row / card taps keep `finger_up_is_tap`.
+- A press takes key focus but shows no focus face (focus-visible): only a
+  keyboard arrival paints `focus`. Never use the focus face as "selected".
+- WrapLabel copy takes key focus on a tap or long-press, not on press.
+- Path lookups use a name index + re-validated remembered answers; the walk
+  only runs for ambiguous or unknown names.
+- Every app logs `Kumkaj stall:` (≥ 250 ms per event, with `stall_span`
+  breakdown and widget-tree counters) and `ui_stall` in diagnostics.
+
+## Do not
+
+- Re-add a first-move (2 px) or 5 px touch promote, or promote a scroll over
+  a child before the slop.
+- Treat `Hit::FingerCancel` as a click, or emit `Clicked` without `is_over`.
+- Leave a widget's pressed / armed state to "the next FingerUp" — it may
+  never come (promotion, hidden mid-press). Heal from draw or the cancel.
+- Call `cx.set_key_focus` on a touch FingerDown for copy / labels.
+- Call JNI from a thread without the detach guard (`attach_jni_env` now
+  arms it) — ART aborts when an attached native thread exits.
+- Spawn a process, open a socket, run heavy SQL or walk files from a paint
+  or `sync_chrome` path (Windows `reg query` ran on every sync).
+- Put worker progress on the status line with `set_status` — use
+  `show_work_status` so `clear_stale_work_status` can take it down.
+- Change `widget_tree.rs` without a smoke run under `MAKEPAD_TREE_VERIFY=1`
+  (no `WIDGET-TREE-VERIFY mismatch` lines allowed).
+
+## Check
+
+`./scripts/run-ui-smoke-isolated.sh <app>` then
+`grep "Kumkaj stall" <out>/<app>.log` — a release-build stall ≥ 1 s is a
+bug: move it to a worker with Progress + Cancel (`busy-action-chrome.mdc`).

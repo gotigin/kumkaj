@@ -1,0 +1,213 @@
+--- a/widgets/src/button.rs
++++ b/widgets/src/button.rs
+@@ -536,6 +536,79 @@
+     #[action_data]
+     #[rust]
+     action_data: WidgetActionData,
++
++    /// Press lifecycle — see `begin_press` / `end_press`. The pressed face
++    /// follows the finger exactly: shown while held over the button, dropped
++    /// the moment the press ends any way at all (release, cancel by a
++    /// scrolling parent, finger dragged off, hidden or disabled mid-press,
++    /// capture lost). A face left "down" with nothing holding it was the
++    /// stuck/glitchy press seen on every touch screen.
++    #[rust]
++    pressed: bool,
++    /// The pressed face is currently painted for `pressed`.
++    #[rust]
++    down_shown: bool,
++    /// The finger is still on the face (within touch slop).
++    #[rust]
++    press_on_face: bool,
++    /// Touch: the pressed face waits ~80 ms (Android's tap timeout idea) so a
++    /// swipe that starts on a button scrolls without flashing it pressed.
++    #[rust]
++    press_timer: Timer,
++    /// The next key focus comes from a press, not the keyboard.
++    #[rust]
++    focus_by_pointer: bool,
++}
++
++/// How long a finger must rest on a button before it paints pressed. A tap
++/// that lifts sooner still flashes the pressed face on release.
++const TOUCH_PRESS_FACE_DELAY: f64 = 0.08;
++
++impl Button {
++    fn begin_press(&mut self, cx: &mut Cx, touch: bool) {
++        self.pressed = true;
++        self.press_on_face = true;
++        cx.stop_timer(self.press_timer);
++        if touch {
++            self.down_shown = false;
++            self.press_timer = cx.start_timeout(TOUCH_PRESS_FACE_DELAY);
++        } else {
++            self.down_shown = true;
++            self.animator_play(cx, ids!(hover.down));
++        }
++    }
++
++    /// End the press. `hover_after`: the pointer still hovers the face (a
++    /// mouse released over it). `cut_off`: snap to idle (a click on a
++    /// `reset_hover_on_click` face). `acknowledge`: a tap released before
++    /// the delayed touch face showed flashes it so the tap is visibly taken.
++    fn end_press(&mut self, cx: &mut Cx, hover_after: bool, cut_off: bool, acknowledge: bool) {
++        cx.stop_timer(self.press_timer);
++        self.press_timer = Timer::default();
++        let flash = acknowledge && self.pressed && !self.down_shown;
++        self.pressed = false;
++        self.down_shown = false;
++        if flash {
++            self.animator_cut(cx, ids!(hover.down));
++            self.animator_play(cx, ids!(hover.off));
++        } else if cut_off {
++            self.animator_cut(cx, ids!(hover.off));
++        } else if hover_after {
++            self.animator_play(cx, ids!(hover.on));
++        } else {
++            self.animator_play(cx, ids!(hover.off));
++        }
++    }
++
++    /// The press ended somewhere this button never heard about (hidden or
++    /// disabled mid-press, a release outside the window, a list that drew
++    /// it again for another row): nothing captures the face any more, so it
++    /// must not stay painted pressed.
++    fn heal_orphan_press(&mut self, cx: &mut Cx) {
++        if self.pressed && !cx.fingers.is_area_captured(self.draw_bg.area()) {
++            self.end_press(cx, false, true, false);
++        }
++    }
+ }
+ 
+ impl Widget for Button {
+@@ -606,6 +679,23 @@
+ 
+         if let Event::ClearHover = event {
+             self.animator_cut(cx, ids!(hover.off));
++            self.pressed = false;
++            self.down_shown = false;
++        }
++
++        // Touch press held long enough to be a press, not the start of a swipe.
++        if self.press_timer.is_event(event).is_some() {
++            self.press_timer = Timer::default();
++            if self.pressed && !self.down_shown {
++                if !self.press_on_face {
++                    // Finger already off the face: stay idle.
++                } else if cx.fingers.is_area_captured(self.draw_bg.area()) {
++                    self.down_shown = true;
++                    self.animator_play(cx, ids!(hover.down));
++                } else {
++                    self.pressed = false;
++                }
++            }
+         }
+ 
+         // The button only handles hits when it's visible and enabled.
+@@ -613,9 +703,14 @@
+         // the NotAllowed mouse cursor upon hover instead of the Hand cursor.
+         match event.hits(cx, self.draw_bg.area()) {
+             Hit::KeyFocus(_) => {
+-                self.animator_play(cx, ids!(focus.on));
++                if std::mem::take(&mut self.focus_by_pointer) {
++                    // Arrived by a press: no focus face (see FingerDown).
++                } else {
++                    self.animator_play(cx, ids!(focus.on));
++                }
+             }
+             Hit::KeyFocusLost(_) => {
++                self.focus_by_pointer = false;
+                 self.animator_play(cx, ids!(focus.off));
+                 self.draw_bg.redraw(cx);
+             }
+@@ -625,6 +720,16 @@
+                 // the search field, the button moved, and the finger-up never
+                 // counted as a click.
+                 if self.grab_key_focus {
++                    // Focus-visible: a press still takes key focus (a field
++                    // blurs, Enter/Space act here next) but the focus face is
++                    // for keyboard arrivals only. A tapped / clicked button
++                    // kept a dark focus outline until something else took
++                    // focus — on a touch screen that read as "still pressed".
++                    if cx.has_key_focus(self.draw_bg.area()) {
++                        self.animator_play(cx, ids!(focus.off));
++                    } else {
++                        self.focus_by_pointer = true;
++                    }
+                     cx.set_key_focus(self.draw_bg.area());
+                     self.set_key_focus(cx);
+                 }
+@@ -643,7 +748,34 @@
+                         &[],
+                     );
+                 }
+-                self.animator_play(cx, ids!(hover.down));
++                self.begin_press(cx, fe.device.is_touch());
++            }
++            Hit::FingerMove(fe) if self.pressed => {
++                // Follow the finger: dragged off the face → not pressed any
++                // more (release there will not click); back on → pressed.
++                // A touch keeps the same slop the click test allows.
++                let on_face = fe.is_over
++                    || (fe.device.is_touch()
++                        && (fe.abs - fe.abs_start).length() < TOUCH_TAP_DISTANCE);
++                self.press_on_face = on_face;
++                if on_face && !self.down_shown && self.press_timer.0 == 0 {
++                    self.down_shown = true;
++                    self.animator_play(cx, ids!(hover.down));
++                } else if !on_face && self.down_shown {
++                    self.down_shown = false;
++                    self.animator_play(cx, ids!(hover.off));
++                }
++            }
++            Hit::FingerCancel(_) => {
++                // A scrolling parent took the gesture: no click, no pressed face.
++                if self.pressed {
++                    self.end_press(cx, false, false, false);
++                    cx.widget_action_with_data(
++                        &self.action_data,
++                        uid,
++                        ButtonAction::Released(KeyModifiers::default()),
++                    );
++                }
+             }
+             Hit::FingerHoverIn(_) => {
+                 if self.enabled {
+@@ -689,20 +821,21 @@
+                             &[],
+                         );
+                     }
+-                    if self.reset_hover_on_click {
+-                        self.animator_cut(cx, ids!(hover.off));
+-                    } else if fe.has_hovers() {
+-                        self.animator_play(cx, ids!(hover.on));
+-                    } else {
+-                        self.animator_play(cx, ids!(hover.off));
+-                    }
++                    let cut = self.reset_hover_on_click;
++                    self.end_press(cx, !cut && fe.has_hovers(), cut, true);
+                 } else {
+                     cx.widget_action_with_data(
+                         &self.action_data,
+                         uid,
+                         ButtonAction::Released(fe.modifiers),
+                     );
+-                    self.animator_play(cx, ids!(hover.off));
++                    self.end_press(cx, false, false, false);
++                }
++            }
++            Hit::FingerUp(_) => {
++                // Disabled (or a secondary button) mid-press: still drop the face.
++                if self.pressed {
++                    self.end_press(cx, false, false, false);
+                 }
+             }
+             _ => (),
+@@ -713,6 +846,7 @@
+         if !self.visible {
+             return DrawStep::done();
+         }
++        self.heal_orphan_press(cx);
+ 
+         let label = self.text.as_ref().to_string();
+         self.draw_face(cx, walk, &label);

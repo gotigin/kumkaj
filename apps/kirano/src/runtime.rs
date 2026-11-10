@@ -197,6 +197,17 @@ fn set_books_work_status(msg: &str) {
 
 fn clear_books_work_status() {
     *books_work_status().lock().unwrap() = None;
+    // Wake the UI so a progress line still on screen is taken down now
+    // (`App::clear_stale_work_status`), not on some later event.
+    makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal();
+}
+
+/// The job progress text last painted on the status line (`App::show_work_status`).
+/// When the job ends without a result message the line still showed it — the
+/// "Preparing desk…" that stayed on DeviceSetup / Lock long after the desk opened.
+fn work_status_shown() -> &'static Mutex<Option<String>> {
+    static SLOT: OnceLock<Mutex<Option<String>>> = OnceLock::new();
+    SLOT.get_or_init(|| Mutex::new(None))
 }
 
 fn restore_busy() -> &'static std::sync::atomic::AtomicBool {
@@ -287,6 +298,78 @@ fn backup_copy_job(db_path: PathBuf, dest: PathBuf, suggested_name: String) {
             clear_books_work_status();
             makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal();
         });
+}
+
+/// Result of writing the backup copy where the owner picked
+/// (`backup_copy_write_job`): `Err("Cancelled")` when Cancel was tapped.
+fn backup_copy_write_once() -> &'static Mutex<Option<Result<(), String>>> {
+    static SLOT: OnceLock<Mutex<Option<Result<(), String>>>> = OnceLock::new();
+    SLOT.get_or_init(|| Mutex::new(None))
+}
+
+/// "Save a backup copy", second half: copy the finished file to the picked
+/// place — a content:// URI on Android (the whole file through JNI, safe on a
+/// worker since `android_jni_detach_on_exit`) or a plain path — off the UI
+/// thread. Same busy flag, so the same Progress + Cancel chrome shows.
+fn backup_copy_write_job(file: PathBuf, target: String) {
+    if backup_copy_busy().swap(true, std::sync::atomic::Ordering::SeqCst) {
+        let _ = std::fs::remove_file(&file);
+        *backup_copy_write_once().lock().unwrap() = Some(Err("Busy".into()));
+        makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal();
+        return;
+    }
+    backup_copy_cancel().store(false, std::sync::atomic::Ordering::SeqCst);
+    set_books_work_status("Making backup copy…");
+    let spawned = std::thread::Builder::new()
+        .name("backup-copy-save".into())
+        .spawn(move || {
+            let cancelled = || backup_copy_cancel().load(std::sync::atomic::Ordering::SeqCst);
+            let result = if cancelled() {
+                Err("Cancelled".to_string())
+            } else {
+                match copy_file_to_picked_target(&file, &target) {
+                    Ok(()) if cancelled() => Err("Cancelled".to_string()),
+                    other => other,
+                }
+            };
+            let _ = std::fs::remove_file(&file);
+            *backup_copy_write_once().lock().unwrap() = Some(result);
+            backup_copy_busy().store(false, std::sync::atomic::Ordering::SeqCst);
+            clear_books_work_status();
+            makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal();
+        });
+    if spawned.is_err() {
+        backup_copy_busy().store(false, std::sync::atomic::Ordering::SeqCst);
+        clear_books_work_status();
+        *backup_copy_write_once().lock().unwrap() = Some(Err("Could not start the copy".into()));
+        makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal();
+    }
+}
+
+/// Copy `file` to what a save dialog returned: a content:// URI (Android
+/// picker) or a filesystem path. Runs on a worker.
+fn copy_file_to_picked_target(file: &std::path::Path, target: &str) -> Result<(), String> {
+    if target.starts_with("content://") {
+        let bytes = std::fs::read(file).map_err(|e| e.to_string())?;
+        #[cfg(target_os = "android")]
+        {
+            let ok = unsafe {
+                makepad_widgets::makepad_platform::os::linux::android::android_jni::to_java_write_content_uri(
+                    target.to_owned(),
+                    &bytes,
+                )
+            };
+            return if ok { Ok(()) } else { Err("content:// write failed".into()) };
+        }
+        #[cfg(not(target_os = "android"))]
+        {
+            let _ = bytes;
+            return Err("content:// targets exist on Android only".into());
+        }
+    }
+    std::fs::copy(file, target)
+        .map(|_| ())
+        .map_err(|e| e.to_string())
 }
 
 fn csv_import_busy() -> &'static std::sync::atomic::AtomicBool {
@@ -1237,4 +1320,99 @@ fn store_client_paired(store: Option<&Store>) -> bool {
 fn ime_suppress_refocus() -> &'static Mutex<bool> {
     static FLAG: OnceLock<Mutex<bool>> = OnceLock::new();
     FLAG.get_or_init(|| Mutex::new(false))
+}
+
+/// UI-thread stall meter (every app has its own copy). One event that takes
+/// this long froze the window for that long: taps queue up, a Cancel cannot
+/// paint, Android may show "isn't responding". Each one is logged with the
+/// event and the screen (`Kumkaj stall:` in the log, `ui_stall` in local
+/// diagnostics) so the slow path can be moved off the UI thread with
+/// Progress + Cancel (DEV.md 7b). Long ones (≥ 1 s) are warnings.
+const UI_STALL_LOG_MS: f64 = 250.0;
+
+fn note_ui_stall(event: &Event, took: Duration, tree: (u64, u64, u64, u64, u64)) {
+    let ms = took.as_secs_f64() * 1000.0;
+    let parts = take_stall_spans();
+    if ms < UI_STALL_LOG_MS {
+        return;
+    }
+    // Never wait on app_state here: a stall is often a long holder of it.
+    let screen = app_state()
+        .try_lock()
+        .map(|st| format!("{:?}", st.screen))
+        .unwrap_or_else(|_| "busy".into());
+    let msg = if parts.is_empty() {
+        format!("{} took {:.0} ms on {}", event.name(), ms, screen)
+    } else {
+        format!("{} took {:.0} ms on {} — {parts}", event.name(), ms, screen)
+    };
+    // Widget lookups: a cold path cache walks every node per lookup.
+    let msg = if tree.2 > 0 {
+        format!(
+            "{msg} [lookups {} misses {} walked {} invalidations {} unstored {}]",
+            tree.0, tree.1, tree.2, tree.3, tree.4
+        )
+    } else {
+        msg
+    };
+    makepad_widgets::log!("Kumkaj stall: {msg}");
+    if ms >= 1000.0 {
+        diag::warn(diag::Cat::Ui, "ui_stall", &msg);
+    } else {
+        diag::info(diag::Cat::Ui, "ui_stall", &msg);
+    }
+}
+
+thread_local! {
+    /// Named slow parts of the event being handled (`stall_span`), read by
+    /// `note_ui_stall` so a stall line says *what* was slow, not just which
+    /// event. Cleared after every event.
+    static STALL_SPANS: std::cell::RefCell<Vec<(&'static str, f64)>> =
+        const { std::cell::RefCell::new(Vec::new()) };
+}
+
+/// Times one heavy part of the UI thread's work (`let _span = stall_span("sync_chrome");`).
+/// Only parts ≥ 20 ms are kept; nested spans each report their own time.
+struct StallSpan {
+    name: &'static str,
+    started: Instant,
+}
+
+impl Drop for StallSpan {
+    fn drop(&mut self) {
+        let ms = self.started.elapsed().as_secs_f64() * 1000.0;
+        if ms >= 20.0 {
+            STALL_SPANS.with(|s| s.borrow_mut().push((self.name, ms)));
+        }
+    }
+}
+
+fn stall_span(name: &'static str) -> StallSpan {
+    StallSpan {
+        name,
+        started: Instant::now(),
+    }
+}
+
+/// "sync_chrome 3× 840 ms, reload_all 1× 410 ms" — the slow parts of the
+/// event just handled, largest first. Empties the list for the next event.
+fn take_stall_spans() -> String {
+    let spans = STALL_SPANS.with(|s| std::mem::take(&mut *s.borrow_mut()));
+    let mut by_name: Vec<(&'static str, usize, f64)> = Vec::new();
+    for (name, ms) in spans {
+        match by_name.iter_mut().find(|(n, _, _)| *n == name) {
+            Some(e) => {
+                e.1 += 1;
+                e.2 += ms;
+            }
+            None => by_name.push((name, 1, ms)),
+        }
+    }
+    by_name.sort_by(|a, b| b.2.total_cmp(&a.2));
+    by_name
+        .iter()
+        .take(6)
+        .map(|(n, c, ms)| format!("{n} {c}× {ms:.0} ms"))
+        .collect::<Vec<_>>()
+        .join(", ")
 }
