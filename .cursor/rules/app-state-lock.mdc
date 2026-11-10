@@ -34,3 +34,11 @@ self.set_status(cx, msg);
 `app_t` is in each app’s `runtime.rs`. Duplicate the same fix per app — no shared core.
 
 Before claiming a Settings hang is wrap/Fill: dump stacks (`futex` + `app_state::STATE` vs turtle/draw).
+
+## Named guards and repaint helpers (Khaynjo 1.0.0–1.0.4, 2026-11-10)
+
+`sync_chrome` called `self.paint_frequent_config(cx)` while its `let st = app_state().lock()…` guard was live. That helper locks `app_state` itself, and it runs from `handle_startup`, so every launch froze before the first window on Windows, Linux and Android: no crash, no panic, ~0.4 s CPU, one more frozen process per icon click. On Windows it looked like a "dead icon" and cost five MSI rebuilds chasing shortcuts / stack size / installer repair. Proof: minidump of the hung PE (`Mutex::lock_contended` ← `paint_frequent_config` ← `sync_chrome`) and gdb on Linux (same frames, `match_event.rs` `handle_startup`).
+
+- Call any `self.paint_*` / `self.sync_*` / `self.show_*` / `set_status` / `go` only after `drop(st)` or outside the guard's block (`paint_choice_pair` is the one exempt helper — it never locks).
+- Each app's `scripts/check-lock-guards.sh` flags this, and `load_kumkaj_env` (every dev run and package, incl. `msi.sh`) now runs it and **stops the build** on a flag. `KUMKAJ_ALLOW_LOCK_GUARD_FLAGS=1` is for a confirmed false positive only.
+- A windowless app that stays running after a launch is a hang, not a crash: capture the main thread's stack before changing installers.
