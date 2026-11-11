@@ -182,6 +182,7 @@ snack_secs_save	Hifadhi muda wa arifa
 snack_secs_saved	Muda wa arifa umehifadhiwa — sekunde {n}
 settings_sec_backup	Backup na kurudisha tena
 settings_sec_diag	Uchunguzi
+settings_sec_privacy	Privacy
 diag_privacy_help	Rekodi zilizopo zinabaki kwenye kifaa hiki. Rahisishi (PIN, nywila) hazitajwa kabisa. Kushirika paketi nje ya kifaa kinahitaji idhini yako wazi kila wakati — hakuna uuzaji au kupeleka kwa wadau wa tatu.
 diag_level	Kiwango cha maelezo
 diag_level_error	Makosa
@@ -344,6 +345,15 @@ app_template_apply	Mfumo wa Rajdhani App Template
 app_template_skip	Piga hapo sasa
 app_template_status	Mwenyeji tayari — tumia Mfumo wa Rajdhani App Template, au piga hapo
 app_template_importing	Inapokea {title}…
+app_template_downloading	Downloading template…
+app_template_public_hdr	Public templates
+app_template_private_hdr	Private template
+app_template_public_hint	Open this section to load the public list (needs internet once).
+app_template_code_not_found	Code not found
+app_template_need_internet	Need internet to download templates
+app_template_import_selected	Import selected
+app_template_check_code	Check code
+app_template_import	Import
 currency	Sarafu
 backup	Hifadhi nakala
 use	Tumia
@@ -782,6 +792,11 @@ find_printers	Tafuta printa
 printers_looking	Inatafuta printa kwenye kifaa hiki na Wi‑Fi…
 saving_printer	Inaongeza kifaa cha kuvunja…
 cancelled	Imefutwa
+cancelling	Cancellingâ¦
+removing	Removing…
+removed	Removed
+updating_order	Updating…
+order_updated	Order updated
 printers_tap_find	Gusa Tafuta ili kuorodhesha printa ambazo kifaa hiki kinaweza kutumia.
 printers_none_found	Hakuna printa zilizopatikana — andika jina la mfumo au anwani ya mtandao (k.m. 192.168.1.50).
 printer_from_find	Iliongezwa {name}
@@ -1349,10 +1364,3 @@ recent_changes	Mabadiliko ya karibuni
 lane_declared_label	Ankara ya kodi
 lane_owner_label	Memo ya taslimu
 money_lane_bill	Bilio: {lane}
-
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
-
-cancelling	Cancellingâ¦

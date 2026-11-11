@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "id": "khaynjo-starter",
+  "title": "Khaynjo starter menu",
+  "blurb": "World cuisines from the public Khaynjo shelf \u2014 edit prices after import.",
+  "kind": "app_template",
+  "visibility": "public",
+  "applies_shop_defaults": false,
+  "shop_defaults_id": "",
+  "template": "template.json",
+  "bytes": 4126
+}

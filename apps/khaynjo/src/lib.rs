@@ -17,12 +17,14 @@ pub mod locale;
 pub mod local_servers;
 pub mod lan_images;
 pub mod media;
+pub mod catalogue_remote;
 pub mod menu_images;
 pub mod menu_templates;
 pub mod lan_ws;
 pub mod net;
 pub mod notify;
 pub mod phone;
+pub mod privacy_policy;
 pub mod precise;
 pub mod print_share;
 #[cfg(target_os = "android")]

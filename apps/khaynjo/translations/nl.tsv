@@ -182,6 +182,7 @@ snack_secs_save	Meldingstijd opslaan
 snack_secs_saved	Meldingstijd opgeslagen — {n} seconden
 settings_sec_backup	Back-up en herstellen
 settings_sec_diag	Diagnose
+settings_sec_privacy	Privacy
 diag_privacy_help	Logs blijven op dit apparaat. Geheimen (PIN, wachtwoorden) worden nooit opgeslagen. Het delen van een pakket vanaf het apparaat vereist elke keer uw expliciete goedkeuring — nooit verkocht of gegeven aan derden.
 diag_level	Detailniveau
 diag_level_error	Fouten
@@ -344,6 +345,15 @@ app_template_apply	Rajdhani App Sjabloon
 app_template_skip	Voorlopig overslaan
 app_template_status	Bediende klaar — pas Rajdhani App Sjabloon toe, of slaan over
 app_template_importing	Toepassen van {title}…
+app_template_downloading	Downloading template…
+app_template_public_hdr	Public templates
+app_template_private_hdr	Private template
+app_template_public_hint	Open this section to load the public list (needs internet once).
+app_template_code_not_found	Code not found
+app_template_need_internet	Need internet to download templates
+app_template_import_selected	Import selected
+app_template_check_code	Check code
+app_template_import	Import
 currency	Valuta
 backup	Back-up
 use	Gebruiken
@@ -782,6 +792,11 @@ find_printers	Printers zoeken
 printers_looking	Printers zoeken op dit apparaat en Wi‑Fi…
 saving_printer	Voeg printer toe…
 cancelled	Geannuleerd
+cancelling	Cancellingâ¦
+removing	Removing…
+removed	Removed
+updating_order	Updating…
+order_updated	Order updated
 printers_tap_find	Tik op Zoeken om de printers te tonen die dit apparaat kan gebruiken.
 printers_none_found	Geen printers gevonden — typ een systeemnaam of netwerkadres (bijv. 192.168.1.50).
 printer_from_find	Toegevoegd {name}
@@ -1349,10 +1364,3 @@ recent_changes	Recente wijzigingen
 lane_declared_label	Belastingfactuur
 lane_owner_label	Kassabon
 money_lane_bill	Factuur: {lane}
-
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
-
-cancelling	Cancellingâ¦

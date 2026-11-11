@@ -182,6 +182,7 @@ snack_secs_save	Захаваць час апавяшчэння
 snack_secs_saved	Час апавяшчэння захаваны — {n} секунд
 settings_sec_backup	Рэзервовая копія і аднаўленне
 settings_sec_diag	Дыягностыка
+settings_sec_privacy	Privacy
 diag_privacy_help	Журналы застаюцца на гэтай прыладзе. Сакрэты (PIN, паролі) ніколі не захоўваюцца. Абагульванне пакета з прылады кожны раз патрабуе вашага відавочнага адабрэння — ніколі не прадаецца і не перадаецца трэцім асобам.
 diag_level	Узровень дэталізацыі
 diag_level_error	Памылкі
@@ -344,6 +345,15 @@ app_template_apply	Rajdhani Шаблон прыкладання
 app_template_skip	Прапусціць пакуль
 app_template_status	Сервер гатовы — прымяніце шаблон праграмы Rajdhani або прапусціце
 app_template_importing	Прымяняецца {title}…
+app_template_downloading	Downloading template…
+app_template_public_hdr	Public templates
+app_template_private_hdr	Private template
+app_template_public_hint	Open this section to load the public list (needs internet once).
+app_template_code_not_found	Code not found
+app_template_need_internet	Need internet to download templates
+app_template_import_selected	Import selected
+app_template_check_code	Check code
+app_template_import	Import
 currency	Валюта
 backup	Рэзервовае капіраванне
 use	Выкарыстоўвайце
@@ -782,6 +792,11 @@ find_printers	Знайдзіце прынтэры
 printers_looking	Шукаю...
 saving_printer	Даданне прынтара…
 cancelled	Адменена
+cancelling	Cancellingâ¦
+removing	Removing…
+removed	Removed
+updating_order	Updating…
+order_updated	Order updated
 printers_tap_find	Націсніце «Знайсці», каб пералічыць прынтары, якія можа выкарыстоўваць гэта прылада.
 printers_none_found	Нічога не знойдзена — увядзіце імя сістэмнага прынтара або IP (напрыклад, 192.168.1.50).
 printer_from_find	Дададзена {name}
@@ -1349,10 +1364,3 @@ recent_changes	Апошнія змены
 lane_declared_label	Падатковая накладная
 lane_owner_label	Касавая нататка
 money_lane_bill	Рахунак: {lane}
-
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
-
-cancelling	Cancellingâ¦

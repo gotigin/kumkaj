@@ -265,7 +265,7 @@ impl App {
     /// here (orange), the rest are ahead — like a docket's tracking line.
     fn paint_chrome(&mut self, cx: &mut Cx, chapter: usize) {
         self.chapter = chapter;
-        self.ui.label(cx, ids!(step_name)).set_text(
+        self.ui.widget(cx, ids!(step_name)).set_text(
             cx,
             &format!("{} / {} · {}", chapter + 1, CHAPTERS.len(), CHAPTERS[chapter].1),
         );
@@ -280,7 +280,7 @@ impl App {
     fn paint_weight(&mut self, cx: &mut Cx) {
         let p = self.parcel();
         let set = |cx: &mut Cx, ui: &WidgetRef, path: &[LiveId], text: &str| {
-            ui.label(cx, path).set_text(cx, text);
+            ui.widget(cx, path).set_text(cx, text);
         };
         set(cx, &self.ui, ids!(weigh.len.value), &format!("{} cm", p.length_cm));
         set(cx, &self.ui, ids!(weigh.bre.value), &format!("{} cm", p.breadth_cm));
@@ -363,7 +363,7 @@ impl App {
 
     fn set_cta_notes(&mut self, cx: &mut Cx, text: &str) {
         for path in [ids!(walkin.hero_cta.note), ids!(start.close_cta.note)] {
-            self.ui.label(cx, path).set_text(cx, text);
+            self.ui.widget(cx, path).set_text(cx, text);
         }
         self.ui.redraw(cx);
     }
@@ -540,6 +540,8 @@ fn collect_label_sizes(widget: &WidgetRef, out: &mut Vec<f32>) {
     widget.children(&mut |_, child| {
         if let Some(label) = child.borrow::<Label>() {
             out.push(label.draw_text.text_style.font_size);
+        } else if let Some(md) = child.borrow::<Markdown>() {
+            out.push(md.draw_text.text_style.font_size);
         }
         collect_label_sizes(&child, out);
     });
@@ -550,6 +552,17 @@ fn scale_labels(widget: &WidgetRef, tier: Tier, desk: &[f32], next: &mut usize) 
         if let Some(mut label) = child.borrow_mut::<Label>() {
             if let Some(&base) = desk.get(*next) {
                 label.draw_text.text_style.font_size = base * tier.type_scale(base);
+            }
+            *next += 1;
+        } else if let Some(mut md) = child.borrow_mut::<Markdown>() {
+            if let Some(&base) = desk.get(*next) {
+                let scaled = base * tier.type_scale(base);
+                md.font_size = scaled;
+                md.draw_text.text_style.font_size = scaled;
+                md.text_style_normal.font_size = scaled;
+                md.text_style_bold.font_size = scaled;
+                md.text_style_italic.font_size = scaled;
+                md.text_style_bold_italic.font_size = scaled;
             }
             *next += 1;
         }

@@ -1,0 +1,45 @@
+{
+  "id": "cafe-starter",
+  "title": "Café starter",
+  "blurb": "Tea, coffee, and a few snacks — edit prices after import.",
+  "categories": [
+    {
+      "name": "Hot drinks",
+      "aliases": ["Tea / Coffee"],
+      "image": "",
+      "items": [
+        {
+          "name": "Chai",
+          "aliases": ["Tea"],
+          "price": 20,
+          "image": ""
+        },
+        {
+          "name": "Coffee",
+          "aliases": ["Filter coffee"],
+          "price": 40,
+          "image": ""
+        }
+      ]
+    },
+    {
+      "name": "Snacks",
+      "aliases": [],
+      "image": "",
+      "items": [
+        {
+          "name": "Samosa",
+          "aliases": [],
+          "price": 25,
+          "image": ""
+        },
+        {
+          "name": "Pakora",
+          "aliases": ["Bhajiya"],
+          "price": 30,
+          "image": ""
+        }
+      ]
+    }
+  ]
+}

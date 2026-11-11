@@ -7,8 +7,14 @@
 > through its visit), and Download / WhatsApp CTAs behind owner switches
 > (WhatsApp number: **TODO owner**). Run
 > `./sites/khaynjo/scripts/run-web.sh` → http://127.0.0.1:8012 (native:
-> `run-desktop.sh`). Not deployed; the 3D room and real app captures are
-> Phase 2 ([`docs/WEBSITES.md`](../../../docs/WEBSITES.md) §7).
+> `run-desktop.sh`). **Hosting:** Firebase Hosting for **khaynjo.com** —
+> one deploy of the Makepad wasm package plus static shell
+> (`/privacy`, `/terms`, `/v1/catalogue/`, Analytics) via
+> `./sites/khaynjo/scripts/deploy-firebase.sh`. **Media now:** public dish
+> shelf + app screenshots on the CDN / site chapters. Full Makepad **3D
+> room** (PBR / glTF) remains Phase 2
+> ([`docs/WEBSITES.md`](../../../docs/WEBSITES.md) §7). Optional AI
+> atmosphere video slots under `sites/khaynjo/static/media/` when authored.
 > **Scope:** Khaynjo's instantiation of
 > [`docs/WEBSITES.md`](../../../docs/WEBSITES.md) (Makepad 2 fullpage).
 > This file holds audience, story chapters, tools and claim sources.
@@ -20,9 +26,11 @@
 ## 1. Who it is for, and the promise
 
 **Visitors:** owners and managers of dine-in restaurants, QSRs, cafés,
-counter shops and bakeries in India first; captains/waiters and
-kitchen leads who will use it; owners already on a cloud POS who want
-the same daily mechanics with no internet and more control
+counter shops and bakeries **anywhere** — Khaynjo is built in India and
+ships India-first features (₹, UPI, Indic scripts) as the first wave,
+not as a world-excluding product. Also captains/waiters and kitchen
+leads; owners already on a cloud POS who want the same daily mechanics
+with no internet and more control
 ([`RESTAURANT_MARKET_RESEARCH.md`](RESTAURANT_MARKET_RESEARCH.md) §1).
 
 **Promise (headline candidates, English):**
@@ -30,9 +38,11 @@ the same daily mechanics with no internet and more control
 - "Lunch rush. No internet. No problem."
 - "From table to kitchen to bill — on your own devices."
 
-**Main actions:** **Download free** (Android · Windows · Linux) and
+**Main actions:** **Get it on Google Play**
+(https://play.google.com/store/apps/details?id=com.khaynjo — live) and
 **WhatsApp for a demo** (prefilled: "Khaynjo demo — restaurant type,
-tables, city").
+tables, city"; number still TODO). Windows / Linux packages follow on
+`/download` when those installers ship.
 
 **What these visitors check first** (from the client's own service
 video, research §3): does a table show time and amount at a glance;
@@ -87,7 +97,7 @@ it.
 | 5 | **Service changes** | Guests move: the table's order slides to another table, two tables merge; an item cancelled after the KOT prints a cancel slip in the kitchen with a reason; a complimentary dish stays on the bill at ₹0 | "Move, merge, cancel or comp — never silently. Who, when and why is kept." | `move-merge`, `kot-cancel`, `nc` |
 | 6 | **Settle** | Bill printed (table turns Bill printed). Split by seat into two bills; one pays cash + UPI (QR with the amount baked in), change to return shown, tip kept apart; the other goes on the customer's khata as Due. Only then the table turns Free | "Cash, UPI, part, Due, tip — and the table frees only when it's paid." | `split`, `settle`, `upi-qr`, `due-khata`, `free-on-pay` |
 | 7 | **Close the day** | The drawer counts against float + cash taken + cash tips − cash paid out; short/over named; shift slip prints; the day report opens by staff, hour and dish | "Day end you can trust: expected, counted, and the difference named." | `shift-close`, `day-report` |
-| 8 | **Your menu, your way** | Menu cards fan out with Gujarati names and English aliases; a short code typed brings a dish first; the AC room bills a dearer price; a happy-hour price switches on at five | "Your menu in your words — with short codes, area prices and timed prices." | `aliases-short-codes`, `area-prices`, `menu-timings`, `languages` |
+| 8 | **Your menu, your way** | World shelf: country + famous dish cards (Japan ramen, Mexico birria, India butter chicken, Italy margherita, …) from the public catalogue; script strip (Gujarati / Urdu / Tamil); short codes, area prices, timed prices | "Every country at your counter — your words, your codes, your prices." | `aliases-short-codes`, `area-prices`, `menu-timings`, `languages` |
 | 9 | **Internet down? Service goes on.** | The router turns red; the counter, captains' tablets and kitchen screen keep working together on the shop Wi-Fi | "No internet needed. Your tablets and kitchen screens work on your own Wi-Fi." | `offline-lan` |
 | 10 | **Close** | The room at rest, cloche on the pass | "Free forever on your devices." → Download · WhatsApp | `free-local` |
 
@@ -184,13 +194,14 @@ enforces it.
 ## 6. Do not say / do not show (until the source changes)
 
 - **The client's name, menu, prices, staff names or photos** (the
-  Rajdhani template and Rajdhani App Template are a client's private
-  setup) — only with written consent, and never staff names or PINs.
-- **Dish photos from the app's shelf** (`assets/items/`) on the site
-  until their licence for web publishing is confirmed (owner).
+  Rajdhani template and Rajdhani App Template are a client's **private**
+  pack) — never on the public site or in `public/index.json`; only with
+  written consent, and never staff names or PINs.
+- **Private catalogue codes** — do not publish guessable private paths.
 - **A drawn floor-plan editor** — removed from Floor; the face is a
-  colour grid by area. The 3D room is illustration, the screens show
-  the grid.
+  colour grid by area. The 3D room is illustration; screens show the
+  grid / real captures.
+
 - **Live delivery-aggregator integration** — today a file import;
   live SaaS skipped (needs Cloud). Never name aggregators.
 - **Guest QR ordering over mobile data** — QR, kiosk and token pages

@@ -182,6 +182,7 @@ snack_secs_save	حفظ مدة التنبيه
 snack_secs_saved	حُفظت مدة التنبيه — {n} ثانية
 settings_sec_backup	النسخ الاحتياطي واستعادة البيانات
 settings_sec_diag	التشخيص
+settings_sec_privacy	Privacy
 diag_privacy_help	تظل السجلات على هذا الجهاز. لا يتم تخزين الأسرار (كلمة المرور، كلمات المرور). يتطلب مشاركة حزمة خارج الجهاز موافقتك الصريحة في كل مرة — ولا تُباع أو تُعطى لأطراف ثالثة.
 diag_level	مستوى التفاصيل
 diag_level_error	أخطاء
@@ -344,6 +345,15 @@ app_template_apply	قالب تطبيق Rajdhani
 app_template_skip	انتظر قليلاً
 app_template_status	خادم جاهز — قم بتطبيق قالب تطبيق Rajdhani، أو تخطي
 app_template_importing	يتم تطبيق {title}…
+app_template_downloading	Downloading template…
+app_template_public_hdr	Public templates
+app_template_private_hdr	Private template
+app_template_public_hint	Open this section to load the public list (needs internet once).
+app_template_code_not_found	Code not found
+app_template_need_internet	Need internet to download templates
+app_template_import_selected	Import selected
+app_template_check_code	Check code
+app_template_import	Import
 currency	العملة
 backup	نسخة احتياطية
 use	استخدم
@@ -782,6 +792,11 @@ find_printers	ابحث عن الطابعات
 printers_looking	جارٍ البحث عن الطابعات على هذا الجهاز وWi‑Fi…
 saving_printer	إضافة الطابعة…
 cancelled	ملغى
+cancelling	Cancellingâ¦
+removing	Removing…
+removed	Removed
+updating_order	Updating…
+order_updated	Order updated
 printers_tap_find	اضغط «بحث» لعرض الطابعات التي يستطيع هذا الجهاز استخدامها.
 printers_none_found	لم يُعثر على طابعات — اكتب اسم طابعة النظام أو عنوان شبكة (مثل 192.168.1.50)。
 printer_from_find	تمت إضافة {name}
@@ -1349,10 +1364,3 @@ recent_changes	التغييرات الأخيرة
 lane_declared_label	فاتورة ضريبية
 lane_owner_label	مذكرة نقدية
 money_lane_bill	الفاتورة: {lane}
-
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
-
-cancelling	Cancellingâ¦

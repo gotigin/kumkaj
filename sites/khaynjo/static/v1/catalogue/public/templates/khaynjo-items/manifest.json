@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "id": "khaynjo-items",
+  "title": "Khaynjo Items Template",
+  "blurb": "Full public dish photo shelf (~1459 dishes) for Import complete template.",
+  "kind": "shelf",
+  "visibility": "public",
+  "applies_shop_defaults": false,
+  "shop_defaults_id": "",
+  "template": "",
+  "items_index": "../../items/index.json",
+  "bytes": 134302948
+}

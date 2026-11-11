@@ -57,3 +57,20 @@ Thumbs.db
 .vscode/settings.json
 .vscode/launch.json
 .vscode/extensions.json
+
+# Firebase Hosting local cache
+.firebase/
+**-debug.log
+
+# Site npm trees (Firebase Analytics client) — bundle into static/js/
+apps/*/web/node_modules/
+sites/*/node_modules/
+
+# Firebase Hosting staged public/ (Makepad wasm + static shell)
+sites/*/public/
+apps/khaynjo/web/public/
+
+# Private catalogue packs (12-digit code paths) — publish locally, do not commit
+sites/*/static/v1/catalogue/private/
+# Synced from apps/*/assets/items by publish-catalogue.sh (do not duplicate in git)
+sites/*/static/v1/catalogue/public/items/

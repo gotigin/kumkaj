@@ -182,6 +182,7 @@ snack_secs_save	સૂચના સમય સાચવો
 snack_secs_saved	સૂચના સમય સાચવ્યો — {n} સેકન્ડ
 settings_sec_backup	બેકઅપ અને પુનઃસ્થાપન
 settings_sec_diag	નિદાન
+settings_sec_privacy	Privacy
 diag_privacy_help	લોગ આ જ ઉપકરણ પર રહે છે. ગુપ્ત માહિતી (PIN, પાસવર્ડ) ક્યારેય સાચવાતી નથી. ઉપકરણની બહાર પેકેજ મોકલવા દર વખતે તમારી સ્પષ્ટ મંજૂરી જોઈએ — ક્યારેય વેચાતું નથી કે ત્રીજા પક્ષને અપાતું નથી.
 diag_level	વિગતનું સ્તર
 diag_level_error	ભૂલો
@@ -344,6 +345,15 @@ app_template_apply	રાજધાની એપ ટેમ્પ્લેટ
 app_template_skip	હમણાં છોડો
 app_template_status	સર્વર તૈયાર — રાજધાની એપ ટેમ્પ્લેટ લાગુ કરો, અથવા છોડો
 app_template_importing	{title} લાગુ કરી રહ્યાં છીએ…
+app_template_downloading	Downloading template…
+app_template_public_hdr	Public templates
+app_template_private_hdr	Private template
+app_template_public_hint	Open this section to load the public list (needs internet once).
+app_template_code_not_found	Code not found
+app_template_need_internet	Need internet to download templates
+app_template_import_selected	Import selected
+app_template_check_code	Check code
+app_template_import	Import
 currency	ચલણ
 backup	બૅકઅપ
 use	વાપરો
@@ -782,6 +792,11 @@ find_printers	પ્રિન્ટર શોધો
 printers_looking	આ ડિવાઇસ અને Wi‑Fi પર પ્રિન્ટર શોધી રહ્યા છે…
 saving_printer	પ્રિન્ટર ઉમેરી રહ્યાં છીએ…
 cancelled	રદ
+cancelling	Cancellingâ¦
+removing	Removing…
+removed	Removed
+updating_order	Updating…
+order_updated	Order updated
 printers_tap_find	આ ડિવાઇસ વાપરી શકે તેવા પ્રિન્ટરની યાદી માટે શોધો દબાવો.
 printers_none_found	કોઈ પ્રિન્ટર મળ્યું નહીં — સિસ્ટમ પ્રિન્ટરનું નામ અથવા નેટવર્ક સરનામું લખો (દા.ત. 192.168.1.50).
 printer_from_find	{name} ઉમેર્યું
@@ -1349,10 +1364,3 @@ recent_changes	તાજેતરના ફેરફારો
 lane_declared_label	કર ઇન્વૉઇસ
 lane_owner_label	કેશ મેમો
 money_lane_bill	બિલ: {lane}
-
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
-
-cancelling	Cancellingâ¦

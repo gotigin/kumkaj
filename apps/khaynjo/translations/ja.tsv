@@ -182,6 +182,7 @@ snack_secs_save	表示時間を保存
 snack_secs_saved	表示時間を保存しました — {n} 秒
 settings_sec_backup	バックアップとリストア
 settings_sec_diag	診断
+settings_sec_privacy	Privacy
 diag_privacy_help	ログはこのデバイス上に保持されます。機密情報（PIN、パスワード）は決して保存されません。パッケージをデバイスから共有する場合は、毎回明示的な承認が必要です — 第三者に販売または提供されることはありません
 diag_level	詳細レベル
 diag_level_error	エラー
@@ -344,6 +345,15 @@ app_template_apply	Rajdhani アプリテンプレート
 app_template_skip	後ほどスキップします
 app_template_status	サーバー準備完了 — Rajdhani アプリテンプレートを適用するか、スキップしてください
 app_template_importing	{title} を適用中…
+app_template_downloading	Downloading template…
+app_template_public_hdr	Public templates
+app_template_private_hdr	Private template
+app_template_public_hint	Open this section to load the public list (needs internet once).
+app_template_code_not_found	Code not found
+app_template_need_internet	Need internet to download templates
+app_template_import_selected	Import selected
+app_template_check_code	Check code
+app_template_import	Import
 currency	通貨
 backup	バックアップ
 use	使う
@@ -782,6 +792,11 @@ find_printers	プリンターを探す
 printers_looking	この端末とWi‑Fiでプリンターを検索中…
 saving_printer	プリンターの追加中…
 cancelled	取消
+cancelling	Cancellingâ¦
+removing	Removing…
+removed	Removed
+updating_order	Updating…
+order_updated	Order updated
 printers_tap_find	この端末で使えるプリンターを表示するには「探す」をタップします。
 printers_none_found	プリンターが見つかりません — システム名またはネットワークアドレスを入力（例: 192.168.1.50）。
 printer_from_find	{name} を追加しました
@@ -1349,10 +1364,3 @@ recent_changes	最近の変更
 lane_declared_label	税金請求書
 lane_owner_label	現金メモ
 money_lane_bill	請求書：{lane}
-
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
-
-cancelling	Cancellingâ¦

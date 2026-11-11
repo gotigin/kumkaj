@@ -142,9 +142,36 @@ pub(crate) fn packaged_assets_dir(rel: &str, env_key: &str) -> Option<PathBuf> {
 /// the compile-time manifest dir; packaged builds ship `assets/items`
 /// next to the executable (Windows MSI / portable, Linux package root) or
 /// extract them into the Android files dir from the APK.
-/// `KHAYNJO_CATALOGUE_DIR` overrides.
+///
+/// Overrides (first match wins):
+/// - `KHAYNJO_ITEMS_DIR` — items root directly
+/// - `KHAYNJO_CATALOGUE_DIR/public/items` — CDN mirror layout
+/// - `{data}/catalogue/public/items` — after a DeviceSetup shelf download
+/// - else packaged / cargo `assets/items`
 pub fn catalogue_root() -> Option<PathBuf> {
-    packaged_assets_dir("assets/items", "KHAYNJO_CATALOGUE_DIR")
+    if let Ok(dir) = std::env::var("KHAYNJO_ITEMS_DIR") {
+        let p = PathBuf::from(dir);
+        if p.is_dir() {
+            return Some(p);
+        }
+    }
+    if let Ok(dir) = std::env::var("KHAYNJO_CATALOGUE_DIR") {
+        let items = PathBuf::from(&dir).join("public").join("items");
+        if items.is_dir() {
+            return Some(items);
+        }
+    }
+    if let Ok(base) = crate::store::data_dir() {
+        let cached = base.join("catalogue").join("public").join("items");
+        if cached.is_dir() {
+            return Some(cached);
+        }
+        let assets = base.join("assets").join("items");
+        if assets.is_dir() {
+            return Some(assets);
+        }
+    }
+    packaged_assets_dir("assets/items", "KHAYNJO_ITEMS_DIR")
 }
 
 /// Bump when the shipped shelf/templates change without a Cargo version bump.

@@ -253,10 +253,10 @@ impl App {
     fn paint_chrome(&mut self, cx: &mut Cx, chapter: usize) {
         self.chapter = chapter;
         self.ui
-            .label(cx, ids!(chapter_name))
+            .widget(cx, ids!(chapter_name))
             .set_text(cx, CHAPTERS[chapter].1);
         self.ui
-            .label(cx, ids!(counter))
+            .widget(cx, ids!(counter))
             .set_text(cx, &format!("{} / {}", chapter + 1, CHAPTERS.len()));
         for (i, [_, idle, on]) in DOTS.iter().enumerate() {
             self.ui.view(cx, idle).set_visible(cx, i != chapter);
@@ -274,12 +274,16 @@ impl App {
                 "Cut the internet"
             },
         );
-        let state = self.ui.label(cx, ids!(offline.net_state));
+        let state = self.ui.widget(cx, ids!(offline.net_state));
         state.set_text(cx, if cut { "Internet: off" } else { "Internet: on" });
-        if let Some(mut label) = state.borrow_mut() {
-            label.draw_text.color = Vec4f::from_u32(if cut { 0xF2846FFF } else { 0x6CCB94FF });
+        let color = Vec4f::from_u32(if cut { 0xF2846FFF } else { 0x6CCB94FF });
+        if let Some(mut md) = state.borrow_mut::<Markdown>() {
+            md.font_color = color;
+            md.draw_text.color = color;
+        } else if let Some(mut label) = state.borrow_mut::<Label>() {
+            label.draw_text.color = color;
         }
-        self.ui.label(cx, ids!(offline.verdict)).set_text(
+        self.ui.widget(cx, ids!(offline.verdict)).set_text(
             cx,
             if cut {
                 "Internet off — and nothing on the counter changed."
@@ -377,7 +381,7 @@ impl App {
             .find(|(path, _)| *path == ids!(gotigin.map))
             .is_some_and(|(_, min_w)| content_w >= *min_w);
         for path in [ids!(gotigin.arrow_1), ids!(gotigin.arrow_2)] {
-            self.ui.label(cx, path).set_text(cx, if map_across { "→" } else { "↓" });
+            self.ui.widget(cx, path).set_text(cx, if map_across { "→" } else { "↓" });
         }
         self.paint_details(cx, tier, size.y < SHORT_BELOW && size.x < SHORT_NARROWER_THAN);
         for path in SLIDES {
@@ -451,22 +455,35 @@ impl App {
     }
 }
 
-/// Every label's DSL (desk) font size under `widget`, in tree order.
+/// Every label/Markdown DSL (desk) font size under `widget`, in tree order.
 fn collect_label_sizes(widget: &WidgetRef, out: &mut Vec<f32>) {
     widget.children(&mut |_, child| {
         if let Some(label) = child.borrow::<Label>() {
             out.push(label.draw_text.text_style.font_size);
+        } else if let Some(md) = child.borrow::<Markdown>() {
+            out.push(md.draw_text.text_style.font_size);
         }
         collect_label_sizes(&child, out);
     });
 }
 
-/// Size every label under `widget` for the tier from its desk size.
+/// Size every label/Markdown under `widget` for the tier from its desk size.
 fn scale_labels(widget: &WidgetRef, tier: Tier, desk: &[f32], next: &mut usize) {
     widget.children(&mut |_, child| {
         if let Some(mut label) = child.borrow_mut::<Label>() {
             if let Some(&base) = desk.get(*next) {
                 label.draw_text.text_style.font_size = base * tier.type_scale(base);
+            }
+            *next += 1;
+        } else if let Some(mut md) = child.borrow_mut::<Markdown>() {
+            if let Some(&base) = desk.get(*next) {
+                let scaled = base * tier.type_scale(base);
+                md.font_size = scaled;
+                md.draw_text.text_style.font_size = scaled;
+                md.text_style_normal.font_size = scaled;
+                md.text_style_bold.font_size = scaled;
+                md.text_style_italic.font_size = scaled;
+                md.text_style_bold_italic.font_size = scaled;
             }
             *next += 1;
         }

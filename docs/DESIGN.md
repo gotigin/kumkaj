@@ -127,21 +127,26 @@ controls past the right edge, no “designed for one width” grids.
   not nest a cart/list fling on those lists. See `docs/DEV.md` §13 /
   bug 8.
 
-## Text selection & copy (every app)
+## Text selection & copy (every app **and** every Makepad website)
 
-**Default: on-screen text is selectable and copyable.** Use
-`WrapLabel` (`selectable: true`) / selectable `ReportText` rows for
-display copy — totals, reports, Local ops, headings, session line,
-today bar, area labels, empty states.
+**Default: on-screen text is selectable and copyable** wherever that is
+possible and useful — apps (`apps/*/`) and product sites (`sites/*/`).
+Prefer `WrapLabel` / `Markdown` with `selectable: true` (or selectable
+`ReportText` rows) for display copy: headings, body, totals, reports,
+session line, empty states, legal/help prose, site chapter text.
 
 **Exceptions only** (set `selectable: false` or keep plain `Label`):
 
 - Text **inside a tap target** (whole-card rows, floor tiles, cart
-  lines, nav chips) — a selectable `TextFlow` steals the press.
+  lines, nav chips, site chapter nav tiles) — a selectable `TextFlow`
+  steals the press.
 - Button faces and chrome marks that are not meant to be copied.
 
 Do not ship new display paragraphs as non-selectable `Label` without
-a documented exception. Ctrl/Cmd+C uses the system clipboard
+a documented exception — including Makepad sites (use `Markdown` /
+site typography aliases with `body:` + `selectable: true`). Site DSL
+overrides for that copy use `body:` / `child.body:` — not Label’s
+`text:` (Markdown draws `body`). Ctrl/Cmd+C uses the system clipboard
 (`Cx::copy_to_clipboard` — see [`DEV.md`](DEV.md)).
 
 ## Work-surface layout & interaction (lessons for every app)

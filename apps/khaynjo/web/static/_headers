@@ -18,3 +18,17 @@
   Content-Type: application/wasm
   Cache-Control: public, max-age=31536000, immutable
 */
+
+# Catalogue packs (templates + images) — long cache; bump path/version to refresh.
+/v1/catalogue/public/templates/*
+  Cache-Control: public, max-age=31536000, immutable
+*/
+
+/v1/catalogue/private/*
+  Cache-Control: public, max-age=31536000, immutable
+*/
+
+# Public listing — short cache so new starters appear without a hard refresh.
+/v1/catalogue/public/index.json
+  Cache-Control: public, max-age=300, must-revalidate
+*/

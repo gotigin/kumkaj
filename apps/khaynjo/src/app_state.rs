@@ -45,8 +45,20 @@ struct AppState {
     language_follow_platform: bool,
     /// Legacy flag; offline LAN never shows multi-server pick (kept false).
     picking_server: bool,
-    /// True while a brand-new server offers Rajdhani App Template (before Owner PIN).
+    /// True while a brand-new server offers remote catalogue templates (before Owner PIN).
     awaiting_app_template: bool,
+    /// Cached public catalogue rows for the DeviceSetup accordion.
+    catalogue_public: Vec<(String, String, String)>, // id, title, blurb
+    /// Last public-index fetch error (empty when ok / idle).
+    catalogue_public_error: String,
+    /// Private code last successfully peeked (12 digits).
+    catalogue_private_code: String,
+    /// Title from private manifest peek (empty until code resolves).
+    catalogue_private_title: String,
+    /// Optional shop-defaults id from private/public manifest (`rajdhani`, …).
+    catalogue_pending_defaults: String,
+    /// Selected public template id (chip), if any.
+    catalogue_selected_public_id: Option<String>,
     /// Registry rows (offline: at most one active shop server).
     local_servers: Vec<LocalServerInfo>,
     /// Settings → Backup wipe checkboxes (Owner; same categories as Windows uninstall).
@@ -195,7 +207,7 @@ struct AppState {
     bill_field_edit_idx: usize,
     /// Which item column (name/qty/price/amount) is selected for reorder.
     bill_item_col_edit_idx: usize,
-    /// DeviceSetup accordions (`language`, `role`). Default opens `role`.
+    /// DeviceSetup accordions (`language`, `role`, `public_templates`, `private_template`).
     device_setup_sections_open: Vec<String>,
     /// Pending custom icon path from picker (before Save brand).
     draft_venue_icon_path: Option<PathBuf>,

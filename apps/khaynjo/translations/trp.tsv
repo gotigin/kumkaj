@@ -182,6 +182,7 @@ snack_secs_save	আলেরত জরা মুথাংদি
 snack_secs_saved	আলেরত জরা মুথাংজাক খা — {n} সেকন
 settings_sec_backup	বাচকুপ তেই কিফিলুই তুবুদি
 settings_sec_diag	বেমার সাইমানমানি
+settings_sec_privacy	Privacy
 diag_privacy_help	লগস রক ও দেভিচে ও তংনাই. সিরিজাক ককরক (PIN, ককথাইরক) উঙুই তংনাই. দেভিচে নি ফাতারনি পাচকাগে শারে খলাইনানি বাগুই নিনি সুকাংনি সুমাই তাংমানি নাংনাই জরা জরা — তেই কাইসা ফান ফালজাকয়া এবা খরকসা সুকন রুজাকয়া.
 diag_level	কুথার লেভেল
 diag_level_error	চবা
@@ -344,6 +345,15 @@ app_template_apply	Rajdhani আপ নি মুং
 app_template_skip	তাবুকনি বাগুই সকিপ খাইদি
 app_template_status	Server তিয়ার — Rajdhani আপ নি সুমাই তাংদি, এবা য়াকার দি
 app_template_importing	সামুং খলাইও {title}...
+app_template_downloading	Downloading template…
+app_template_public_hdr	Public templates
+app_template_private_hdr	Private template
+app_template_public_hint	Open this section to load the public list (needs internet once).
+app_template_code_not_found	Code not found
+app_template_need_internet	Need internet to download templates
+app_template_import_selected	Import selected
+app_template_check_code	Check code
+app_template_import	Import
 currency	রাং
 backup	বাচকুপ
 use	বেবহার
@@ -782,6 +792,11 @@ find_printers	পরিনতের নাইদি
 printers_looking	নাইউই তংমানি...
 saving_printer	পরিনতের তুবুই তঙ...
 cancelled	চানচেল উংখা
+cancelling	Cancellingâ¦
+removing	Removing…
+removed	Removed
+updating_order	Updating…
+order_updated	Order updated
 printers_tap_find	ও দেভিচে বাই সুনামজাক পরিনতের লিসত উংনা বাগুই ফিনদ ন তাপ খাই দি.
 printers_none_found	খরকসা ফান মানলিয়া — সয়সতেম নি পরিনতের নি মুং এবা ইপ (এ.গ. 192.168.1.50) সুইদি.
 printer_from_find	কুথার উংখা {name}
@@ -1349,10 +1364,3 @@ recent_changes	তাবুকনি সুলাইজাকমা
 lane_declared_label	তাক্ষ নি রাং
 lane_owner_label	রাং নি মেম
 money_lane_bill	বিল: {lane}
-
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
-
-cancelling	Cancellingâ¦

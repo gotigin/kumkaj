@@ -182,6 +182,7 @@ snack_secs_save	የማንቂያ ጊዜ አስቀምጥ
 snack_secs_saved	የማንቂያ ጊዜ ተቀምጧል — {n} ሰከንድ
 settings_sec_backup	ምትኬ እና መመለስ
 settings_sec_diag	ምርመራ
+settings_sec_privacy	Privacy
 diag_privacy_help	መዝገቦች በዚህ መሣሪያ ላይ ይቆያሉ። ሚስጥሮች (ፒን፣ የይለፍ ቃላት) በፍጹም አይቀመጡም። ጥቅልን ከመሣሪያው ውጭ ማጋራት በእያንዳንዱ ጊዜ የእርስዎን ግልጽ ፈቃድ ይፈልጋል — ለሶስተኛ ወገን አይሸጥም ወይም አይሰጥም።
 diag_level	የዝርዝር ደረጃ
 diag_level_error	ስህተቶች
@@ -344,6 +345,15 @@ app_template_apply	Rajdhani የመተግበሪያ ንድፍ
 app_template_skip	ለአሁን ዝለል
 app_template_status	ሰርቨር ዝግጁ ነው — Rajdhani የመተግበሪያ ንድፍ ይተግብሩ፣ ወይም ይዝለሉ
 app_template_importing	{title} በመተግበር ላይ…
+app_template_downloading	Downloading template…
+app_template_public_hdr	Public templates
+app_template_private_hdr	Private template
+app_template_public_hint	Open this section to load the public list (needs internet once).
+app_template_code_not_found	Code not found
+app_template_need_internet	Need internet to download templates
+app_template_import_selected	Import selected
+app_template_check_code	Check code
+app_template_import	Import
 currency	ገንዘብ
 backup	ምትኬ
 use	ተጠቀም
@@ -782,6 +792,11 @@ find_printers	ማተሚያዎችን ፈልግ
 printers_looking	በመፈለግ ላይ…
 saving_printer	ማተሚያ በመጨመር ላይ…
 cancelled	ተሰርዟል
+cancelling	Cancellingâ¦
+removing	Removing…
+removed	Removed
+updating_order	Updating…
+order_updated	Order updated
 printers_tap_find	ይህ መሣሪያ ሊጠቀምባቸው የሚችላቸውን ማተሚያዎች ለመዘርዘር ፈልግን ይንኩ።
 printers_none_found	ምንም አልተገኘም — የስርዓት ማተሚያ ስም ወይም IP ይጻፉ (ለምሳሌ 192.168.1.50)።
 printer_from_find	{name} ተጨምሯል
@@ -1349,10 +1364,3 @@ recent_changes	የቅርብ ለውጦች
 lane_declared_label	የግብር ደረሰኝ
 lane_owner_label	የጥሬ ገንዘብ ማስታወሻ
 money_lane_bill	ሂሳብ፦ {lane}
-
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
-
-cancelling	Cancellingâ¦

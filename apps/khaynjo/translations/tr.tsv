@@ -182,6 +182,7 @@ snack_secs_save	Uyarı süresini kaydet
 snack_secs_saved	Uyarı süresi kaydedildi — {n} saniye
 settings_sec_backup	Yedekleme ve geri yükleme
 settings_sec_diag	Tanılama
+settings_sec_privacy	Privacy
 diag_privacy_help	Günlükler bu cihazda kalır. Gizli bilgiler (PIN, şifreler) asla saklanmaz. Cihazdan paket paylaşımı her zaman açıkça onayınızı gerektirir — üçüncü taraflara satılmaz veya vermez.
 diag_level	Detay seviyesi
 diag_level_error	Hatalar
@@ -344,6 +345,15 @@ app_template_apply	Rajdhani Uygulama Şablonu
 app_template_skip	Şimdilik atla
 app_template_status	Sunucu hazır — Rajdhani Uygulama Şablonunu uygula veya atla
 app_template_importing	{title} uygulanıyor…
+app_template_downloading	Downloading template…
+app_template_public_hdr	Public templates
+app_template_private_hdr	Private template
+app_template_public_hint	Open this section to load the public list (needs internet once).
+app_template_code_not_found	Code not found
+app_template_need_internet	Need internet to download templates
+app_template_import_selected	Import selected
+app_template_check_code	Check code
+app_template_import	Import
 currency	Para birimi
 backup	Yedek
 use	Kullan
@@ -782,6 +792,11 @@ find_printers	Yazıcıları bul
 printers_looking	Bu cihaz ve Wi‑Fi'de yazıcılar aranıyor…
 saving_printer	Yazıcı ekleniyor…
 cancelled	İptal
+cancelling	Cancellingâ¦
+removing	Removing…
+removed	Removed
+updating_order	Updating…
+order_updated	Order updated
 printers_tap_find	Bu cihazın kullanabileceği yazıcıları listelemek için Yazıcıları bul öğesine dokunun.
 printers_none_found	Yazıcı bulunamadı — sistem adı veya ağ adresi yazın (örn. 192.168.1.50).
 printer_from_find	{name} eklendi
@@ -1349,10 +1364,3 @@ recent_changes	Son değişiklikler
 lane_declared_label	Vergi faturası
 lane_owner_label	Nakit fiş
 money_lane_bill	Fatura: {lane}
-
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
-
-cancelling	Cancellingâ¦

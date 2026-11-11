@@ -182,6 +182,7 @@ snack_secs_save	Ruaj kohën e njoftimit
 snack_secs_saved	Koha e njoftimit u ruajt — {n} sekonda
 settings_sec_backup	Kopje rezervë dhe rikthim
 settings_sec_diag	Diagnostika
+settings_sec_privacy	Privacy
 diag_privacy_help	Regjistrat qëndrojnë në këtë pajisje. Sekretet (PIN, fjalëkalimet) nuk ruhen kurrë. Ndarja e një pakete jashtë pajisjes kërkon miratimin tuaj të qartë çdo herë — nuk shiten dhe nuk u jepen palëve të treta.
 diag_level	Niveli i detajeve
 diag_level_error	Gabime
@@ -344,6 +345,15 @@ app_template_apply	Shablloni i aplikacionit Rajdhani
 app_template_skip	Anashkalo për tani
 app_template_status	Serveri gati — zbato Shabllonin e aplikacionit Rajdhani, ose anashkalo
 app_template_importing	Po zbatohet {title}…
+app_template_downloading	Downloading template…
+app_template_public_hdr	Public templates
+app_template_private_hdr	Private template
+app_template_public_hint	Open this section to load the public list (needs internet once).
+app_template_code_not_found	Code not found
+app_template_need_internet	Need internet to download templates
+app_template_import_selected	Import selected
+app_template_check_code	Check code
+app_template_import	Import
 currency	Monedha
 backup	Kopje rezervë
 use	Përdor
@@ -782,6 +792,11 @@ find_printers	Gjej printerët
 printers_looking	Po kërkon…
 saving_printer	Po shtohet printeri…
 cancelled	E anuluar
+cancelling	Cancellingâ¦
+removing	Removing…
+removed	Removed
+updating_order	Updating…
+order_updated	Order updated
 printers_tap_find	Prekni Gjej për të listuar printerët që kjo pajisje mund të përdorë.
 printers_none_found	Nuk u gjet asnjë — shkruani emrin e printerit të sistemit ose një IP (p.sh. 192.168.1.50).
 printer_from_find	U shtua {name}
@@ -1349,10 +1364,3 @@ recent_changes	Ndryshimet e fundit
 lane_declared_label	Fatura tatimore
 lane_owner_label	Dëftesë me para
 money_lane_bill	Fatura: {lane}
-
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
-
-cancelling	Cancellingâ¦

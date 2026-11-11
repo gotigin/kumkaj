@@ -663,6 +663,10 @@ impl MatchEvent for App {
             (ids!(setup_lang_hdr_ext), "language"),
             (ids!(setup_role_hdr), "role"),
             (ids!(setup_role_hdr_ext), "role"),
+            (ids!(setup_public_tmpl_hdr), "public_templates"),
+            (ids!(setup_public_tmpl_hdr_ext), "public_templates"),
+            (ids!(setup_private_tmpl_hdr), "private_template"),
+            (ids!(setup_private_tmpl_hdr_ext), "private_template"),
         ] {
             if self.ui.button(cx, hdr).clicked(actions) {
                 self.toggle_device_setup_section(cx, key);
@@ -1077,49 +1081,143 @@ impl MatchEvent for App {
             app_state().lock().unwrap().picking_server = false;
             self.sync_chrome(cx);
         }
-        // Rajdhani App Template — Submit → status + Cancel; Skip → Owner PIN.
-        if self.ui.button(cx, ids!(app_template_apply)).clicked(actions) {
-            if menu_import_busy().load(std::sync::atomic::Ordering::SeqCst) {
+        // Catalogue offer — public chips / private code / Skip → Owner PIN.
+        {
+            let chips = [
+                (ids!(public_tmpl_0), ids!(public_tmpl_0_on), 0usize),
+                (ids!(public_tmpl_1), ids!(public_tmpl_1_on), 1),
+                (ids!(public_tmpl_2), ids!(public_tmpl_2_on), 2),
+                (ids!(public_tmpl_3), ids!(public_tmpl_3_on), 3),
+                (ids!(public_tmpl_4), ids!(public_tmpl_4_on), 4),
+            ];
+            for (idle, active, idx) in chips {
+                if self.ui.button(cx, idle).clicked(actions)
+                    || self.ui.button(cx, active).clicked(actions)
+                {
+                    let mut st = app_state().lock().unwrap();
+                    if let Some((id, _, _)) = st.catalogue_public.get(idx).cloned() {
+                        st.catalogue_selected_public_id = Some(id);
+                        st.catalogue_private_title.clear();
+                        st.catalogue_private_code.clear();
+                        st.catalogue_pending_defaults.clear();
+                    }
+                    drop(st);
+                    self.paint_app_template_chrome(cx, true);
+                }
+            }
+        }
+        if self.ui.button(cx, ids!(public_tmpl_import)).clicked(actions) {
+            if menu_import_busy().load(std::sync::atomic::Ordering::SeqCst)
+                || catalogue_fetch_busy().load(std::sync::atomic::Ordering::SeqCst)
+            {
                 // Ignore while busy.
             } else {
-                let job = (|| -> Result<(PathBuf, String, String), String> {
+                let job = (|| -> Result<(PathBuf, String), String> {
                     let st = app_state().lock().unwrap();
                     if !st.awaiting_app_template {
                         return Err("App template is not offered now".into());
                     }
-                    let tmpl = menu_templates::find("rajdhani")
-                        .ok_or_else(|| "Rajdhani menu template missing".to_string())?;
-                    let db = st
-                        .store
-                        .as_ref()
-                        .ok_or_else(|| "No store".to_string())?
-                        .db_path()
-                        .to_path_buf();
-                    Ok((db, tmpl.id.clone(), tmpl.title.clone()))
+                    let id = st
+                        .catalogue_selected_public_id
+                        .clone()
+                        .ok_or_else(|| "Pick a public template".to_string())?;
+                    let base = st
+                        .data_base
+                        .clone()
+                        .or_else(|| store::data_dir().ok())
+                        .ok_or_else(|| "No data directory".to_string())?;
+                    Ok((base, id))
                 })();
                 match job {
-                    Ok((db, id, title)) => {
-                        menu_import_job(
-                            db,
-                            MenuImportKind::AppTemplate { id, title },
-                        );
-                        self.paint_import_progress_chrome(cx);
+                    Ok((base, id)) => {
+                        catalogue_fetch_job(CatalogueFetchKind::DownloadPublic { id }, base);
+                        self.paint_app_template_chrome(cx, true);
+                    }
+                    Err(e) => self.set_status(cx, e),
+                }
+            }
+        }
+        if self.ui.button(cx, ids!(private_tmpl_check)).clicked(actions) {
+            if catalogue_fetch_busy().load(std::sync::atomic::Ordering::SeqCst) {
+                // Ignore while busy.
+            } else {
+                let code = self.ui.text_input(cx, ids!(private_tmpl_code)).text();
+                match catalogue_remote::normalize_private_code(&code) {
+                    Ok(code) => {
+                        let base = app_state()
+                            .lock()
+                            .unwrap()
+                            .data_base
+                            .clone()
+                            .or_else(|| store::data_dir().ok());
+                        if let Some(base) = base {
+                            {
+                                let mut st = app_state().lock().unwrap();
+                                st.catalogue_private_title.clear();
+                                st.catalogue_private_code.clear();
+                                st.catalogue_selected_public_id = None;
+                            }
+                            catalogue_fetch_job(
+                                CatalogueFetchKind::PrivatePeek { code },
+                                base,
+                            );
+                            self.paint_app_template_chrome(cx, true);
+                        } else {
+                            self.set_status(cx, "No data directory");
+                        }
+                    }
+                    Err(e) => self.set_status(cx, e),
+                }
+            }
+        }
+        if self.ui.button(cx, ids!(private_tmpl_import)).clicked(actions) {
+            if menu_import_busy().load(std::sync::atomic::Ordering::SeqCst)
+                || catalogue_fetch_busy().load(std::sync::atomic::Ordering::SeqCst)
+            {
+                // Ignore while busy.
+            } else {
+                let job = (|| -> Result<(PathBuf, String), String> {
+                    let st = app_state().lock().unwrap();
+                    if !st.awaiting_app_template {
+                        return Err("App template is not offered now".into());
+                    }
+                    if st.catalogue_private_code.is_empty() || st.catalogue_private_title.is_empty()
+                    {
+                        return Err("Check a private code first".into());
+                    }
+                    let code = st.catalogue_private_code.clone();
+                    let base = st
+                        .data_base
+                        .clone()
+                        .or_else(|| store::data_dir().ok())
+                        .ok_or_else(|| "No data directory".to_string())?;
+                    Ok((base, code))
+                })();
+                match job {
+                    Ok((base, code)) => {
+                        catalogue_fetch_job(CatalogueFetchKind::DownloadPrivate { code }, base);
+                        self.paint_app_template_chrome(cx, true);
                     }
                     Err(e) => self.set_status(cx, e),
                 }
             }
         }
         if self.ui.button(cx, ids!(app_template_cancel)).clicked(actions) {
-            if menu_import_busy().load(std::sync::atomic::Ordering::SeqCst) {
+            if menu_import_busy().load(std::sync::atomic::Ordering::SeqCst)
+                || catalogue_fetch_busy().load(std::sync::atomic::Ordering::SeqCst)
+            {
                 request_books_job_cancel();
                 self.paint_import_progress_chrome(cx);
+                self.paint_app_template_chrome(cx, true);
             }
         }
         if self.ui.button(cx, ids!(app_template_status)).clicked(actions) {
             // Progress face — ignore re-taps while importing.
         }
         if self.ui.button(cx, ids!(app_template_skip)).clicked(actions) {
-            if menu_import_busy().load(std::sync::atomic::Ordering::SeqCst) {
+            if menu_import_busy().load(std::sync::atomic::Ordering::SeqCst)
+                || catalogue_fetch_busy().load(std::sync::atomic::Ordering::SeqCst)
+            {
                 // Skip hidden while busy.
             } else if app_state().lock().unwrap().awaiting_app_template {
                 // Skip does not mark the template done — unfinished shops re-offer.
@@ -4046,6 +4144,7 @@ impl MatchEvent for App {
                 (ids!(settings_hub_alerts), "alerts"),
                 (ids!(settings_hub_backup), "backup"),
                 (ids!(settings_hub_diag), "diag"),
+                (ids!(settings_hub_privacy), "privacy"),
             ];
             let mut opened: Option<&'static str> = None;
             for (id, key) in hub_clicks {

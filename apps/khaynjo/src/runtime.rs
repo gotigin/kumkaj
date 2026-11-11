@@ -494,9 +494,39 @@ fn shelf_materialize_job(db_path: PathBuf) {
 #[derive(Clone, Debug)]
 enum MenuImportKind {
     Shelf,
+    /// Import the photo shelf scanned from a downloaded `catalogue/public/items` tree.
+    ShelfFromDir { root: PathBuf, title: String },
     Client { id: String, title: String },
-    /// Post-create DeviceSetup offer — same menu import as Client, different chrome.
-    AppTemplate { id: String, title: String },
+    /// Post-create DeviceSetup offer — import from a downloaded/cached pack dir.
+    AppTemplate {
+        id: String,
+        title: String,
+        pack_dir: PathBuf,
+        shop_defaults_id: Option<String>,
+    },
+}
+
+#[derive(Clone, Debug)]
+enum CatalogueFetchKind {
+    PublicIndex,
+    PrivatePeek { code: String },
+    DownloadPublic { id: String },
+    DownloadPrivate { code: String },
+}
+
+struct CatalogueFetchOutcome {
+    kind: CatalogueFetchKind,
+    result: Result<CatalogueFetchOk, String>,
+}
+
+#[derive(Clone, Debug)]
+enum CatalogueFetchOk {
+    PublicIndex(crate::catalogue_remote::PublicIndex),
+    PrivatePeek(crate::catalogue_remote::CatalogueManifest),
+    Downloaded {
+        pack_dir: PathBuf,
+        manifest: crate::catalogue_remote::CatalogueManifest,
+    },
 }
 
 struct MenuImportOutcome {
@@ -554,17 +584,25 @@ fn menu_import_job(db_path: PathBuf, kind: MenuImportKind) {
     // on the same click frame (not after the first encode).
     let known_total = match &kind {
         MenuImportKind::Shelf => menu_images::shelf().len().max(1),
-        MenuImportKind::Client { id, .. } | MenuImportKind::AppTemplate { id, .. } => {
-            menu_templates::find(id)
-                .map(|t| {
-                    t.categories
-                        .iter()
-                        .map(|c| c.items.len().saturating_add(1))
-                        .sum::<usize>()
-                        .max(1)
-                })
-                .unwrap_or(1)
-        }
+        MenuImportKind::ShelfFromDir { root, .. } => menu_images::load_shelf(root).len().max(1),
+        MenuImportKind::Client { id, .. } => menu_templates::find(id)
+            .map(|t| {
+                t.categories
+                    .iter()
+                    .map(|c| c.items.len().saturating_add(1))
+                    .sum::<usize>()
+                    .max(1)
+            })
+            .unwrap_or(1),
+        MenuImportKind::AppTemplate { pack_dir, .. } => menu_templates::load_from_dir(pack_dir)
+            .map(|t| {
+                t.categories
+                    .iter()
+                    .map(|c| c.items.len().saturating_add(1))
+                    .sum::<usize>()
+                    .max(1)
+            })
+            .unwrap_or(1),
     };
     *menu_import_progress().lock().unwrap() = (0, known_total);
     *menu_import_once().lock().unwrap() = None;
@@ -582,12 +620,26 @@ fn menu_import_job(db_path: PathBuf, kind: MenuImportKind) {
                 let store = Store::open_path(&db_path)?;
                 match &kind {
                     MenuImportKind::Shelf => store.import_catalogue(menu_images::shelf()),
+                    MenuImportKind::ShelfFromDir { root, .. } => {
+                        let dishes = menu_images::load_shelf(root);
+                        if dishes.is_empty() {
+                            return Err("Downloaded shelf is empty".into());
+                        }
+                        store.import_catalogue(&dishes)
+                    }
                     MenuImportKind::Client { id, .. } => {
                         let tmpl = menu_templates::find(id)
                             .ok_or_else(|| format!("Unknown menu template '{id}'"))?;
                         store.import_menu_template(tmpl)
                     }
-                    MenuImportKind::AppTemplate { .. } => store.apply_rajdhani_app_template(),
+                    MenuImportKind::AppTemplate {
+                        pack_dir,
+                        shop_defaults_id,
+                        ..
+                    } => store.apply_app_template_pack(
+                        pack_dir,
+                        shop_defaults_id.as_deref(),
+                    ),
                 }
             })();
             store::set_import_progress_notify(None);
@@ -600,8 +652,85 @@ fn menu_import_job(db_path: PathBuf, kind: MenuImportKind) {
         });
 }
 
+fn catalogue_fetch_busy() -> &'static std::sync::atomic::AtomicBool {
+    static BUSY: std::sync::atomic::AtomicBool = std::sync::atomic::AtomicBool::new(false);
+    &BUSY
+}
+
+fn catalogue_fetch_cancel() -> &'static std::sync::atomic::AtomicBool {
+    static CANCEL: std::sync::atomic::AtomicBool = std::sync::atomic::AtomicBool::new(false);
+    &CANCEL
+}
+
+fn catalogue_fetch_once() -> &'static Mutex<Option<CatalogueFetchOutcome>> {
+    static SLOT: OnceLock<Mutex<Option<CatalogueFetchOutcome>>> = OnceLock::new();
+    SLOT.get_or_init(|| Mutex::new(None))
+}
+
+fn catalogue_fetch_running() -> &'static Mutex<Option<CatalogueFetchKind>> {
+    static SLOT: OnceLock<Mutex<Option<CatalogueFetchKind>>> = OnceLock::new();
+    SLOT.get_or_init(|| Mutex::new(None))
+}
+
+fn catalogue_fetch_job(kind: CatalogueFetchKind, data_base: PathBuf) {
+    if catalogue_fetch_busy().swap(true, std::sync::atomic::Ordering::SeqCst) {
+        return;
+    }
+    catalogue_fetch_cancel().store(false, std::sync::atomic::Ordering::SeqCst);
+    *catalogue_fetch_once().lock().unwrap() = None;
+    *catalogue_fetch_running().lock().unwrap() = Some(kind.clone());
+    let status = match &kind {
+        CatalogueFetchKind::PublicIndex => "Loading public templates…",
+        CatalogueFetchKind::PrivatePeek { .. } => "Checking private code…",
+        CatalogueFetchKind::DownloadPublic { .. }
+        | CatalogueFetchKind::DownloadPrivate { .. } => "Downloading template…",
+    };
+    set_books_work_status(status);
+    let _ = std::thread::Builder::new()
+        .name("khaynjo-catalogue".into())
+        .spawn(move || {
+            let cancel = || catalogue_fetch_cancel().load(std::sync::atomic::Ordering::SeqCst);
+            let result = (|| -> Result<CatalogueFetchOk, String> {
+                match &kind {
+                    CatalogueFetchKind::PublicIndex => Ok(CatalogueFetchOk::PublicIndex(
+                        crate::catalogue_remote::fetch_public_index()?,
+                    )),
+                    CatalogueFetchKind::PrivatePeek { code } => Ok(CatalogueFetchOk::PrivatePeek(
+                        crate::catalogue_remote::fetch_private_manifest(code)?,
+                    )),
+                    CatalogueFetchKind::DownloadPublic { id } => {
+                        let (pack_dir, manifest, _) = crate::catalogue_remote::download_pack(
+                            &data_base,
+                            crate::catalogue_remote::CatalogueVisibility::Public,
+                            id,
+                            &cancel,
+                        )?;
+                        Ok(CatalogueFetchOk::Downloaded { pack_dir, manifest })
+                    }
+                    CatalogueFetchKind::DownloadPrivate { code } => {
+                        let (pack_dir, manifest, _) = crate::catalogue_remote::download_pack(
+                            &data_base,
+                            crate::catalogue_remote::CatalogueVisibility::Private,
+                            code,
+                            &cancel,
+                        )?;
+                        Ok(CatalogueFetchOk::Downloaded { pack_dir, manifest })
+                    }
+                }
+            })();
+            *catalogue_fetch_once().lock().unwrap() = Some(CatalogueFetchOutcome { kind, result });
+            *catalogue_fetch_running().lock().unwrap() = None;
+            catalogue_fetch_busy().store(false, std::sync::atomic::Ordering::SeqCst);
+            clear_books_work_status();
+            makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal();
+        });
+}
+
 /// Cancel whichever books / import job is currently busy (best-effort for VACUUM).
 fn request_books_job_cancel() {
+    if catalogue_fetch_busy().load(std::sync::atomic::Ordering::SeqCst) {
+        catalogue_fetch_cancel().store(true, std::sync::atomic::Ordering::SeqCst);
+    }
     if menu_import_busy().load(std::sync::atomic::Ordering::SeqCst) {
         menu_import_cancel().store(true, std::sync::atomic::Ordering::SeqCst);
     }
@@ -1345,6 +1474,8 @@ fn accordion_estimate_h(key: &str) -> f64 {
         "table_actions" => 120.0,
         "language" => 220.0,
         "role" => 160.0,
+        "public_templates" => 220.0,
+        "private_template" => 200.0,
         _ => 100.0,
     }
 }

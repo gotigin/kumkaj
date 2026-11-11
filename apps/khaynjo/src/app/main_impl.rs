@@ -161,6 +161,7 @@ impl App {
                 }
             }
             if menu_import_busy().load(std::sync::atomic::Ordering::SeqCst)
+                || catalogue_fetch_busy().load(std::sync::atomic::Ordering::SeqCst)
                 || restore_busy().load(std::sync::atomic::Ordering::SeqCst)
                 || csv_import_busy().load(std::sync::atomic::Ordering::SeqCst)
                 || shelf_mat_busy().load(std::sync::atomic::Ordering::SeqCst)
@@ -170,6 +171,20 @@ impl App {
                 || diag_export_busy().load(std::sync::atomic::Ordering::SeqCst)
             {
                 self.paint_import_progress_chrome(cx);
+                if catalogue_fetch_busy().load(std::sync::atomic::Ordering::SeqCst)
+                    || matches!(
+                        menu_import_running().lock().unwrap().as_ref(),
+                        Some(
+                            MenuImportKind::AppTemplate { .. }
+                                | MenuImportKind::ShelfFromDir { .. }
+                        )
+                    )
+                {
+                    let awaiting = app_state().lock().unwrap().awaiting_app_template;
+                    if awaiting {
+                        self.paint_app_template_chrome(cx, true);
+                    }
+                }
             } else if print_share::is_finding_printers()
                 || printer_add_busy().load(std::sync::atomic::Ordering::SeqCst)
                 || client_find_busy().load(std::sync::atomic::Ordering::SeqCst)
@@ -295,10 +310,113 @@ impl App {
                     Err(e) => self.set_status(cx, e),
                 }
             }
+            // Catalogue fetch (public index / private peek / pack download).
+            if let Some(outcome) = catalogue_fetch_once().lock().unwrap().take() {
+                match outcome.result {
+                    Ok(CatalogueFetchOk::PublicIndex(index)) => {
+                        {
+                            let mut st = app_state().lock().unwrap();
+                            st.catalogue_public = index
+                                .templates
+                                .into_iter()
+                                .map(|e| (e.id, e.title, e.blurb))
+                                .collect();
+                            st.catalogue_public_error.clear();
+                        }
+                        self.paint_app_template_chrome(cx, true);
+                    }
+                    Ok(CatalogueFetchOk::PrivatePeek(man)) => {
+                        {
+                            let mut st = app_state().lock().unwrap();
+                            if let CatalogueFetchKind::PrivatePeek { code } = &outcome.kind {
+                                st.catalogue_private_code = code.clone();
+                            }
+                            st.catalogue_private_title = man.title.clone();
+                            st.catalogue_pending_defaults = if man.applies_shop_defaults {
+                                man.shop_defaults_id.clone()
+                            } else {
+                                String::new()
+                            };
+                            st.catalogue_selected_public_id = None;
+                        }
+                        self.set_status(cx, man.title);
+                        self.paint_app_template_chrome(cx, true);
+                    }
+                    Ok(CatalogueFetchOk::Downloaded { pack_dir, manifest }) => {
+                        let job = (|| -> Result<(PathBuf, MenuImportKind), String> {
+                            let st = app_state().lock().unwrap();
+                            let db = st
+                                .store
+                                .as_ref()
+                                .ok_or_else(|| "No store".to_string())?
+                                .db_path()
+                                .to_path_buf();
+                            if matches!(
+                                manifest.kind,
+                                crate::catalogue_remote::CatalogueKind::Shelf
+                            ) {
+                                return Ok((
+                                    db,
+                                    MenuImportKind::ShelfFromDir {
+                                        root: pack_dir,
+                                        title: manifest.title.clone(),
+                                    },
+                                ));
+                            }
+                            let defaults = if manifest.applies_shop_defaults {
+                                let id = manifest.shop_defaults_id.trim();
+                                if id.is_empty() {
+                                    None
+                                } else {
+                                    Some(id.to_string())
+                                }
+                            } else {
+                                None
+                            };
+                            Ok((
+                                db,
+                                MenuImportKind::AppTemplate {
+                                    id: manifest.id.clone(),
+                                    title: manifest.title.clone(),
+                                    pack_dir,
+                                    shop_defaults_id: defaults,
+                                },
+                            ))
+                        })();
+                        match job {
+                            Ok((db, kind)) => {
+                                menu_import_job(db, kind);
+                                self.paint_import_progress_chrome(cx);
+                                self.paint_app_template_chrome(cx, true);
+                            }
+                            Err(e) => {
+                                self.set_status(cx, e);
+                                self.paint_app_template_chrome(cx, true);
+                            }
+                        }
+                    }
+                    Err(e) => {
+                        let msg = if e == "Not found" {
+                            app_t("app_template_code_not_found")
+                        } else if e.starts_with("Network:") {
+                            app_t("app_template_need_internet")
+                        } else {
+                            e
+                        };
+                        if matches!(outcome.kind, CatalogueFetchKind::PublicIndex) {
+                            app_state().lock().unwrap().catalogue_public_error = msg.clone();
+                        }
+                        self.set_status(cx, msg);
+                        self.paint_app_template_chrome(cx, true);
+                    }
+                }
+            }
             // Menu import completion (progress is painted above while busy).
             if let Some(outcome) = menu_import_once().lock().unwrap().take() {
-                let was_app_template =
-                    matches!(&outcome.kind, MenuImportKind::AppTemplate { .. });
+                let was_app_template = matches!(
+                    &outcome.kind,
+                    MenuImportKind::AppTemplate { .. } | MenuImportKind::ShelfFromDir { .. }
+                );
                 let msg = match outcome.result {
                     Ok(done) => {
                         let reload = app_state().lock().unwrap().reload_all();
@@ -311,7 +429,8 @@ impl App {
                                     .t("template_imported")
                                     .replace("{d}", &done.items_added.to_string())
                                     .replace("{c}", &done.categories_added.to_string()),
-                                MenuImportKind::Client { title, .. }
+                                MenuImportKind::ShelfFromDir { title, .. }
+                                | MenuImportKind::Client { title, .. }
                                 | MenuImportKind::AppTemplate { title, .. } => st
                                     .t("client_template_imported")
                                     .replace("{d}", &done.items_added.to_string())

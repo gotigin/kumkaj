@@ -1,0 +1,3 @@
+# Marker: do not stage assets/items or assets/templates into install packages.
+# Templates download from https://khaynjo.com/v1/catalogue after Server onboard.
+# See apps/khaynjo/docs/CATALOGUE_URLS.md.

@@ -52,7 +52,11 @@ We do not sell shop data or use it for advertising.
 
 ## This policy and the website
 
-[khaynjo.com](https://khaynjo.com) is a product site. Brand-level notes:
+This file (`apps/khaynjo/docs/PRIVACY.md`) is the **one** privacy policy for
+the Khaynjo app and [khaynjo.com](https://khaynjo.com). Both present it as
+**formatted Markdown** (headings, lists, links — not a source dump): the site
+at [khaynjo.com/privacy](https://khaynjo.com/privacy), the app under
+Settings → Privacy. Brand-level notes:
 [kumkaj.com/privacy](https://kumkaj.com/privacy).
 
 ## Children

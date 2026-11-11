@@ -54,7 +54,12 @@ script_mod! {
     mod.widgets.Label.draw_text.sdf_luma_bias = 0.0
     mod.widgets.Button.draw_text.sdf_luma_bias = 0.0
 
-    let Eyebrow = Label{
+    let Eyebrow = Markdown{
+        selectable: true
+        height: Fit
+        paragraph_spacing: 0.
+        pre_code_spacing: 0.
+        draw_block +: { selection_color: #x2E5BADFF }
         width: Fill
         padding: 0.
         draw_text +: {
@@ -62,7 +67,12 @@ script_mod! {
             text_style: theme.font_bold{font_family: StrongFont font_size: 13. line_spacing: 1.2}
         }
     }
-    let Headline = Label{
+    let Headline = Markdown{
+        selectable: true
+        height: Fit
+        paragraph_spacing: 0.
+        pre_code_spacing: 0.
+        draw_block +: { selection_color: #x2E5BADFF }
         width: Fill
         padding: 0.
         draw_text +: {
@@ -70,7 +80,12 @@ script_mod! {
             text_style: theme.font_bold{font_family: DisplayFont font_size: 50. line_spacing: 0.95}
         }
     }
-    let Lede = Label{
+    let Lede = Markdown{
+        selectable: true
+        height: Fit
+        paragraph_spacing: 0.
+        pre_code_spacing: 0.
+        draw_block +: { selection_color: #x2E5BADFF }
         width: Fill
         padding: 0.
         draw_text +: {
@@ -78,7 +93,12 @@ script_mod! {
             text_style: theme.font_regular{font_family: TextFont font_size: 19. line_spacing: 1.45}
         }
     }
-    let Body = Label{
+    let Body = Markdown{
+        selectable: true
+        height: Fit
+        paragraph_spacing: 0.
+        pre_code_spacing: 0.
+        draw_block +: { selection_color: #x2E5BADFF }
         width: Fill
         padding: 0.
         draw_text +: {
@@ -86,7 +106,12 @@ script_mod! {
             text_style: theme.font_regular{font_family: TextFont font_size: 15.5 line_spacing: 1.45}
         }
     }
-    let Strong = Label{
+    let Strong = Markdown{
+        selectable: true
+        height: Fit
+        paragraph_spacing: 0.
+        pre_code_spacing: 0.
+        draw_block +: { selection_color: #x2E5BADFF }
         width: Fill
         padding: 0.
         draw_text +: {
@@ -94,7 +119,12 @@ script_mod! {
             text_style: theme.font_bold{font_family: StrongFont font_size: 17. line_spacing: 1.2}
         }
     }
-    let Small = Label{
+    let Small = Markdown{
+        selectable: true
+        height: Fit
+        paragraph_spacing: 0.
+        pre_code_spacing: 0.
+        draw_block +: { selection_color: #x2E5BADFF }
         width: Fill
         padding: 0.
         draw_text +: {
@@ -102,7 +132,12 @@ script_mod! {
             text_style: theme.font_regular{font_family: TextFont font_size: 13. line_spacing: 1.4}
         }
     }
-    let Mono = Label{
+    let Mono = Markdown{
+        selectable: true
+        height: Fit
+        paragraph_spacing: 0.
+        pre_code_spacing: 0.
+        draw_block +: { selection_color: #x2E5BADFF }
         width: Fit
         padding: 0.
         draw_text +: {
@@ -281,7 +316,7 @@ script_mod! {
         }
     }
     // A key fact: orange bar (painted), bold line, plain line. `head` and
-    // `line` are direct children so `Fact{head.text: … line.text: …}` works.
+    // `line` are direct children so `Fact{head.body: … line.body: …}` works.
     let Fact = View{
         width: Fill height: Fit
         flow: Down
@@ -296,17 +331,24 @@ script_mod! {
                 return vec4(self.bar.xyz * on, on)
             }
         }
-        head := Strong{text: "Fact"}
-        line := Body{text: "Detail"}
+        head := Strong{body: "Fact"}
+        line := Body{body: "Detail"}
     }
     let ExampleTag = RoundedView{
         width: Fit height: Fit
         padding: Inset{left: 10. right: 10. top: 4. bottom: 5.}
         draw_bg +: {color: WellSoft border_color: WellLine border_size: 1. border_radius: 10.}
-        Label{
+        Markdown{
+            selectable: true
+            height: Fit
+            paragraph_spacing: 0.
+            pre_code_spacing: 0.
+            draw_block +: { selection_color: #x2E5BADFF }
+
             padding: 0.
-            text: "Example"
+            body: "Example"
             draw_text +: {color: Hint text_style: theme.font_regular{font_family: TextFont font_size: 12.}}
+        
         }
     }
 
@@ -316,19 +358,31 @@ script_mod! {
         flow: Right
         spacing: 10
         align: Align{y: 0.5}
-        name := Label{
+        name := Markdown{
+            selectable: true
+            height: Fit
+            paragraph_spacing: 0.
+            pre_code_spacing: 0.
+            draw_block +: { selection_color: #x2E5BADFF }
             width: Fill
             padding: 0.
             draw_text +: {color: Muted text_style: theme.font_regular{font_family: TextFont font_size: 15.}}
-            text: "Length"
+            body: "Length"
         }
         minus := StepBtn{text: "−"}
-        value := Label{
+        value := Markdown{
+            selectable: true
+            height: Fit
+            paragraph_spacing: 0.
+            pre_code_spacing: 0.
+            draw_block +: { selection_color: #x2E5BADFF }
+
             width: 92
             padding: 0.
             align: Align{x: 0.5}
             draw_text +: {color: Ink text_style: theme.font_regular{font_family: MonoFont font_size: 17.}}
-            text: "30 cm"
+            body: "30 cm"
+        
         }
         plus := StepBtn{text: "+"}
     }
@@ -361,7 +415,16 @@ script_mod! {
         spacing: 6
         align: Align{x: 0.5}
         dot := RoundedView{width: 18 height: 18 draw_bg +: {color: Navy border_radius: 9.}}
-        word := Label{padding: 0. draw_text +: {color: Ink text_style: theme.font_bold{font_family: StrongFont font_size: 14.}} text: "Step"}
+        word := Markdown{
+            selectable: true
+            height: Fit
+            paragraph_spacing: 0.
+            pre_code_spacing: 0.
+            draw_block +: { selection_color: #x2E5BADFF }
+            padding: 0.
+            draw_text +: {color: Ink text_style: theme.font_bold{font_family: StrongFont font_size: 14.}}
+            body: "Step"
+        }
     }
     let TrackLine = RoundedView{width: Fill height: 3 margin: Inset{top: 8. bottom: 0. left: 0. right: 0.} draw_bg +: {color: Navy border_radius: 1.5}}
 
@@ -405,7 +468,7 @@ script_mod! {
             download := PrimaryBtn{text: "Download free"}
             whatsapp := SecondaryBtn{text: "WhatsApp for a demo"}
         }
-        note := Small{text: "Free on Android, Windows and Linux."}
+        note := Small{body: "Free on Android, Windows and Linux."}
     }
 
     startup() do #(App::script_component(vm)){
@@ -431,22 +494,43 @@ script_mod! {
                             spacing: 12
                             align: Align{y: 0.5}
                             padding: Inset{left: 24. right: 24. top: 0. bottom: 0.}
-                            Label{
+                            Markdown{
+            selectable: true
+            height: Fit
+            paragraph_spacing: 0.
+            pre_code_spacing: 0.
+            draw_block +: { selection_color: #x2E5BADFF }
+
                                 padding: 0.
-                                text: "Moklanjo"
+                                body: "Moklanjo"
                                 draw_text +: {color: #xFFFFFF text_style: theme.font_bold{font_family: DisplayFont font_size: 22.}}
-                            }
-                            tagline := Label{
+                            
+        }
+                            tagline := Markdown{
+            selectable: true
+            height: Fit
+            paragraph_spacing: 0.
+            pre_code_spacing: 0.
+            draw_block +: { selection_color: #x2E5BADFF }
+
                                 padding: 0.
-                                text: "the courier desk"
+                                body: "the courier desk"
                                 draw_text +: {color: Yellow text_style: theme.font_regular{font_family: TextFont font_size: 13.}}
-                            }
+                            
+        }
                             View{width: Fill height: 1}
-                            step_name := Label{
+                            step_name := Markdown{
+            selectable: true
+            height: Fit
+            paragraph_spacing: 0.
+            pre_code_spacing: 0.
+            draw_block +: { selection_color: #x2E5BADFF }
+
                                 padding: 0.
-                                text: "1 / 9 · Walk-in"
+                                body: "1 / 9 · Walk-in"
                                 draw_text +: {color: RailInk text_style: theme.font_regular{font_family: TextFont font_size: 13.}}
-                            }
+                            
+        }
                         }
                         // The parcel's tracking line is the chapter rail: one
                         // continuous track under evenly spaced beads.
@@ -500,27 +584,27 @@ script_mod! {
                                     width: Fill height: Fit
                                     flow: Down
                                     spacing: 20
-                                    Eyebrow{text: "MOKLANJO · A COURIER DESK, NOT A CASH REGISTER"}
-                                    Headline{text: "Book a parcel before the next customer reaches the counter."}
-                                    Lede{text: "Book, label, hand over, track and settle — one desk on your own devices, internet or not."}
+                                    Eyebrow{body: "MOKLANJO · A COURIER DESK, NOT A CASH REGISTER"}
+                                    Headline{body: "Book a parcel before the next customer reaches the counter."}
+                                    Lede{body: "Book, label, hand over, track and settle — one desk on your own devices, internet or not."}
                                     hero_cta := CtaPair{}
                                 }
                                 loop_card := WellCard{
                                     width: 340
                                     spacing: 14
-                                    Small{text: "THE WALK-IN LOOP"}
-                                    Fact{head.text: "Weigh" line.text: "Actual and volumetric, side by side."}
-                                    Fact{head.text: "Charge" line.text: "Your rate card, cash or account."}
-                                    Fact{head.text: "Next booking" line.text: "One tap clears the desk for the next person."}
+                                    Small{body: "THE WALK-IN LOOP"}
+                                    Fact{head.body: "Weigh" line.body: "Actual and volumetric, side by side."}
+                                    Fact{head.body: "Charge" line.body: "Your rate card, cash or account."}
+                                    Fact{head.body: "Next booking" line.body: "One tap clears the desk for the next person."}
                                 }
                             }
-                            Small{text: "Scroll, swipe up, or press ↓ — the rail above follows your parcel."}
+                            Small{body: "Scroll, swipe up, or press ↓ — the rail above follows your parcel."}
                         }
 
                         // 2 — Weigh it right (chargeable-weight, units)
                         weigh := Chapter{
-                            Eyebrow{text: "2 · WEIGH IT RIGHT"}
-                            weigh_head := Headline{text: "Actual or volumetric — whichever is higher, rounded your way."}
+                            Eyebrow{body: "2 · WEIGH IT RIGHT"}
+                            weigh_head := Headline{body: "Actual or volumetric — whichever is higher, rounded your way."}
                             weigh_row := View{
                                 width: Fill height: Fit
                                 flow: Right
@@ -532,62 +616,104 @@ script_mod! {
                                         flow: Right
                                         spacing: 10
                                         align: Align{y: 0.5}
-                                        toy_title := Strong{width: Fill text: "Try a box"}
+                                        toy_title := Strong{width: Fill body: "Try a box"}
                                         dom := Choice{off.txt.text: "Domestic" on.txt.text: "Domestic"}
                                         intl := Choice{off.txt.text: "International" on.txt.text: "International"}
                                     }
-                                    len := Stepper{name.text: "Length"}
-                                    bre := Stepper{name.text: "Breadth"}
-                                    hei := Stepper{name.text: "Height"}
-                                    act := Stepper{name.text: "Weight on the scale"}
+                                    len := Stepper{name.body: "Length"}
+                                    bre := Stepper{name.body: "Breadth"}
+                                    hei := Stepper{name.body: "Height"}
+                                    act := Stepper{name.body: "Weight on the scale"}
                                 }
                                 WellCard{
                                     spacing: 10
                                     draw_bg.color: Navy
                                     draw_bg.border_color: Navy
-                                    Label{
+                                    Markdown{
+            selectable: true
+            height: Fit
+            paragraph_spacing: 0.
+            pre_code_spacing: 0.
+            draw_block +: { selection_color: #x2E5BADFF }
+
                                         padding: 0.
-                                        text: "CHARGEABLE WEIGHT"
+                                        body: "CHARGEABLE WEIGHT"
                                         draw_text +: {color: Yellow text_style: theme.font_bold{font_family: StrongFont font_size: 13.}}
-                                    }
-                                    charge := Label{
+                                    
+        }
+                                    charge := Markdown{
+            selectable: true
+            height: Fit
+            paragraph_spacing: 0.
+            pre_code_spacing: 0.
+            draw_block +: { selection_color: #x2E5BADFF }
+
                                         padding: 0.
-                                        text: "2.0 kg"
+                                        body: "2.0 kg"
                                         draw_text +: {color: #xFFFFFF text_style: theme.font_bold{font_family: DisplayFont font_size: 56.}}
-                                    }
-                                    winner := Label{
+                                    
+        }
+                                    winner := Markdown{
+            selectable: true
+            height: Fit
+            paragraph_spacing: 0.
+            pre_code_spacing: 0.
+            draw_block +: { selection_color: #x2E5BADFF }
+
                                         width: Fill
                                         padding: 0.
-                                        text: "The box's size sets the charge."
+                                        body: "The box's size sets the charge."
                                         draw_text +: {color: #xFFFFFF text_style: theme.font_bold{font_family: StrongFont font_size: 16.}}
-                                    }
-                                    working := Label{
+                                    
+        }
+                                    working := Markdown{
+            selectable: true
+            height: Fit
+            paragraph_spacing: 0.
+            pre_code_spacing: 0.
+            draw_block +: { selection_color: #x2E5BADFF }
+
                                         width: Fill
                                         padding: 0.
-                                        text: "30 × 20 × 15 ÷ 5000 = 1.8 kg"
+                                        body: "30 × 20 × 15 ÷ 5000 = 1.8 kg"
                                         draw_text +: {color: RailInk text_style: theme.font_regular{font_family: MonoFont font_size: 15.}}
-                                    }
-                                    actual := Label{
+                                    
+        }
+                                    actual := Markdown{
+            selectable: true
+            height: Fit
+            paragraph_spacing: 0.
+            pre_code_spacing: 0.
+            draw_block +: { selection_color: #x2E5BADFF }
+
                                         width: Fill
                                         padding: 0.
-                                        text: "On the scale: 1.2 kg"
+                                        body: "On the scale: 1.2 kg"
                                         draw_text +: {color: RailInk text_style: theme.font_regular{font_family: MonoFont font_size: 15.}}
-                                    }
-                                    rule := Label{
+                                    
+        }
+                                    rule := Markdown{
+            selectable: true
+            height: Fit
+            paragraph_spacing: 0.
+            pre_code_spacing: 0.
+            draw_block +: { selection_color: #x2E5BADFF }
+
                                         width: Fill
                                         padding: 0.
-                                        text: "Higher of the two, rounded up to the next 0.5 kg."
+                                        body: "Higher of the two, rounded up to the next 0.5 kg."
                                         draw_text +: {color: RailInk text_style: theme.font_regular{font_family: TextFont font_size: 14. line_spacing: 1.4}}
-                                    }
+                                    
+        }
                                 }
                             }
-                            weigh_note := Small{text: "In the app the divisor, the rounding step and your units (cm or inches, kg or lb) are the shop's to set. The International chip switches ÷6000 for one booking without touching Settings."}
+                            weigh_note := Small{body: "In the app the divisor, the rounding step and your units (cm or inches, kg or lb) are the shop's to set. The International chip switches ÷6000 for one booking without touching Settings."}
                         }
 
                         // 3 — Price it (rate-master, party-rates, carrier-compare)
                         price := Chapter{
-                            Eyebrow{text: "3 · PRICE IT"}
-                            Headline{text: "Your rate cards, your party rates — and your margin on every docket."}
+                            Eyebrow{body: "3 · PRICE IT"}
+                            Headline{body: "Your rate cards, your party rates — and your margin on every docket."}
                             price_row := View{
                                 width: Fill height: Fit
                                 flow: Right
@@ -598,58 +724,58 @@ script_mod! {
                                         width: Fill height: Fit
                                         flow: Right
                                         align: Align{y: 0.5}
-                                        Strong{width: Fill text: "Rate card"}
+                                        Strong{width: Fill body: "Rate card"}
                                         ExampleTag{}
                                     }
                                     View{
                                         width: Fill height: Fit
                                         flow: Right
                                         spacing: 8
-                                        Small{width: Fill text: "Zone · service"}
-                                        Small{width: 96 text: "First 0.5 kg"}
-                                        Small{width: 100 text: "Each 0.5 kg"}
+                                        Small{width: Fill body: "Zone · service"}
+                                        Small{width: 96 body: "First 0.5 kg"}
+                                        Small{width: 100 body: "Each 0.5 kg"}
                                     }
                                     RoundedView{width: Fill height: 1 draw_bg +: {color: WellLine border_radius: 0.}}
                                     View{
                                         width: Fill height: Fit
                                         flow: Right
                                         spacing: 8
-                                        Body{width: Fill text: "Local · Surface"}
-                                        Mono{width: 96 text: "₹ 40"}
-                                        Mono{width: 100 text: "₹ 20"}
+                                        Body{width: Fill body: "Local · Surface"}
+                                        Mono{width: 96 body: "₹ 40"}
+                                        Mono{width: 100 body: "₹ 20"}
                                     }
                                     View{
                                         width: Fill height: Fit
                                         flow: Right
                                         spacing: 8
-                                        Body{width: Fill text: "Within state · Express"}
-                                        Mono{width: 96 text: "₹ 60"}
-                                        Mono{width: 100 text: "₹ 35"}
+                                        Body{width: Fill body: "Within state · Express"}
+                                        Mono{width: 96 body: "₹ 60"}
+                                        Mono{width: 100 body: "₹ 35"}
                                     }
                                     View{
                                         width: Fill height: Fit
                                         flow: Right
                                         spacing: 8
-                                        Body{width: Fill text: "Metro · Air"}
-                                        Mono{width: 96 text: "₹ 95"}
-                                        Mono{width: 100 text: "₹ 60"}
+                                        Body{width: Fill body: "Metro · Air"}
+                                        Mono{width: 96 body: "₹ 95"}
+                                        Mono{width: 100 body: "₹ 60"}
                                     }
                                 }
                                 price_facts := View{
                                     width: Fill height: Fit
                                     flow: Down
                                     spacing: 16
-                                    Fact{head.text: "Zone × service × weight slab" line.text: "First slab and each extra slab, per zone and service."}
-                                    Fact{head.text: "A consignor's own card" line.text: "Regular senders get their rates; the default card covers everyone else."}
-                                    Fact{head.text: "Margin at the desk" line.text: "Your sell price against the carrier's price, on every docket."}
+                                    Fact{head.body: "Zone × service × weight slab" line.body: "First slab and each extra slab, per zone and service."}
+                                    Fact{head.body: "A consignor's own card" line.body: "Regular senders get their rates; the default card covers everyone else."}
+                                    Fact{head.body: "Margin at the desk" line.body: "Your sell price against the carrier's price, on every docket."}
                                 }
                             }
                         }
 
                         // 4 — Label it (awb-pools, label-scan)
                         labels := Chapter{
-                            Eyebrow{text: "4 · LABEL IT"}
-                            Headline{text: "AWB from your own number pools. Label, scan, find."}
+                            Eyebrow{body: "4 · LABEL IT"}
+                            Headline{body: "AWB from your own number pools. Label, scan, find."}
                             label_row := View{
                                 width: Fill height: Fit
                                 flow: Right
@@ -665,12 +791,19 @@ script_mod! {
                                         width: Fill height: Fit
                                         flow: Right
                                         align: Align{y: 0.5}
-                                        Label{
+                                        Markdown{
+            selectable: true
+            height: Fit
+            paragraph_spacing: 0.
+            pre_code_spacing: 0.
+            draw_block +: { selection_color: #x2E5BADFF }
+
                                             width: Fill
                                             padding: 0.
-                                            text: "AWB"
+                                            body: "AWB"
                                             draw_text +: {color: Ink text_style: theme.font_bold{font_family: StrongFont font_size: 15.}}
-                                        }
+                                        
+        }
                                         ExampleTag{}
                                     }
                                     // Code 128-style bars, drawn (illustration, not a scannable code).
@@ -688,31 +821,38 @@ script_mod! {
                                             }
                                         }
                                     }
-                                    Label{
+                                    Markdown{
+            selectable: true
+            height: Fit
+            paragraph_spacing: 0.
+            pre_code_spacing: 0.
+            draw_block +: { selection_color: #x2E5BADFF }
+
                                         width: Fill
                                         padding: 0.
                                         align: Align{x: 0.5}
-                                        text: "7004 1182 35"
+                                        body: "7004 1182 35"
                                         draw_text +: {color: Ink text_style: theme.font_regular{font_family: MonoFont font_size: 20.}}
-                                    }
+                                    
+        }
                                     RoundedView{width: Fill height: 1 draw_bg +: {color: WellLine border_radius: 0.}}
-                                    Small{text: "TO  Pune 411001  ·  1 piece  ·  2.0 kg chargeable"}
+                                    Small{body: "TO  Pune 411001  ·  1 piece  ·  2.0 kg chargeable"}
                                 }
                                 label_facts := View{
                                     width: Fill height: Fit
                                     flow: Down
                                     spacing: 16
-                                    Fact{head.text: "Number pools per carrier" line.text: "Enter each carrier's start–end series once; every booking takes the next number."}
-                                    Fact{head.text: "Code 128 labels" line.text: "The AWB goes on the box as a barcode and in plain digits."}
-                                    Fact{head.text: "Scan to find" line.text: "Scan a label to open its docket and act on it."}
+                                    Fact{head.body: "Number pools per carrier" line.body: "Enter each carrier's start–end series once; every booking takes the next number."}
+                                    Fact{head.body: "Code 128 labels" line.body: "The AWB goes on the box as a barcode and in plain digits."}
+                                    Fact{head.body: "Scan to find" line.body: "Scan a label to open its docket and act on it."}
                                 }
                             }
                         }
 
                         // 5 — Two roads (manifest, rider-runs)
                         roads := Chapter{
-                            Eyebrow{text: "5 · HAND OVER"}
-                            Headline{text: "Hand it to a carrier, or send your own rider. Same desk."}
+                            Eyebrow{body: "5 · HAND OVER"}
+                            Headline{body: "Hand it to a carrier, or send your own rider. Same desk."}
                             roads_row := View{
                                 width: Fill height: Fit
                                 flow: Right
@@ -720,38 +860,38 @@ script_mod! {
                                 WellCard{
                                     spacing: 12
                                     RoundedView{width: 44 height: 5 draw_bg +: {color: OrangeLogo border_radius: 2.5}}
-                                    Strong{text: "Into a carrier bag"}
-                                    Body{text: "The manifest holds exactly the parcels you picked — all of them or none. A parcel booked with another carrier cannot slip into this bag."}
+                                    Strong{body: "Into a carrier bag"}
+                                    Body{body: "The manifest holds exactly the parcels you picked — all of them or none. A parcel booked with another carrier cannot slip into this bag."}
                                 }
                                 WellCard{
                                     spacing: 12
                                     RoundedView{width: 44 height: 5 draw_bg +: {color: Navy border_radius: 2.5}}
-                                    Strong{text: "Onto your own rider's run"}
-                                    Body{text: "Pick the parcels, print the run sheet, and the rider works from the same app in rider mode — proof of delivery included."}
+                                    Strong{body: "Onto your own rider's run"}
+                                    Body{body: "Pick the parcels, print the run sheet, and the rider works from the same app in rider mode — proof of delivery included."}
                                 }
                             }
                         }
 
                         // 6 — Track and prove (tracking-rules, pod, ndr-rto)
                         track := Chapter{
-                            Eyebrow{text: "6 · TRACK AND PROVE"}
-                            Headline{text: "Every move recorded — and only moves that make sense."}
+                            Eyebrow{body: "6 · TRACK AND PROVE"}
+                            Headline{body: "Every move recorded — and only moves that make sense."}
                             timeline := WellCard{
                                 spacing: 16
                                 track_line := View{
                                     width: Fill height: Fit
                                     flow: Right
                                     align: Align{y: 0.0}
-                                    TrackStep{word.text: "Booked"}
+                                    TrackStep{word.body: "Booked"}
                                     TrackLine{}
-                                    TrackStep{word.text: "With carrier"}
+                                    TrackStep{word.body: "With carrier"}
                                     TrackLine{}
-                                    TrackStep{word.text: "Out for delivery"}
+                                    TrackStep{word.body: "Out for delivery"}
                                     TrackLine{}
-                                    TrackStep{dot.draw_bg.color: GoodInk word.text: "Delivered"}
+                                    TrackStep{dot.draw_bg.color: GoodInk word.body: "Delivered"}
                                 }
                                 // Phones: the four steps as one line (no room for beads).
-                                track_compact := Strong{visible: false text: "Booked → With carrier → Out for delivery → Delivered"}
+                                track_compact := Strong{visible: false body: "Booked → With carrier → Out for delivery → Delivered"}
                                 RoundedView{width: Fill height: 1 draw_bg +: {color: WellLine border_radius: 0.}}
                                 branch := View{
                                     width: Fill height: Fit
@@ -759,24 +899,24 @@ script_mod! {
                                     spacing: 10
                                     align: Align{y: 0.5}
                                     RoundedView{width: 12 height: 12 draw_bg +: {color: BadInk border_radius: 6.}}
-                                    Strong{width: Fit text: "Failed"}
-                                    Body{width: Fill text: "→ reason → out again, or return to sender."}
+                                    Strong{width: Fit body: "Failed"}
+                                    Body{width: Fill body: "→ reason → out again, or return to sender."}
                                 }
                             }
                             track_facts := View{
                                 width: Fill height: Fit
                                 flow: Right
                                 spacing: 20
-                                Fact{head.text: "Impossible moves refused" line.text: "Delivered, returned and cancelled are final."}
-                                Fact{head.text: "Proof of delivery" line.text: "A photo and the receiver's signature on the docket."}
-                                Fact{head.text: "Failed deliveries" line.text: "Reasons, attempts, out again, or back to the sender."}
+                                Fact{head.body: "Impossible moves refused" line.body: "Delivered, returned and cancelled are final."}
+                                Fact{head.body: "Proof of delivery" line.body: "A photo and the receiver's signature on the docket."}
+                                Fact{head.body: "Failed deliveries" line.body: "Reasons, attempts, out again, or back to the sender."}
                             }
                         }
 
                         // 7 — Money comes home (cod-register, rider-settle, day-book, period-bill, gst-csv)
                         cod := Chapter{
-                            Eyebrow{text: "7 · MONEY COMES HOME"}
-                            Headline{text: "COD you can see: expected, handed in, owed to each consignor."}
+                            Eyebrow{body: "7 · MONEY COMES HOME"}
+                            Headline{body: "COD you can see: expected, handed in, owed to each consignor."}
                             cod_row := View{
                                 width: Fill height: Fit
                                 flow: Right
@@ -787,52 +927,52 @@ script_mod! {
                                         width: Fill height: Fit
                                         flow: Right
                                         align: Align{y: 0.5}
-                                        Strong{width: Fill text: "Rider cash, end of run"}
+                                        Strong{width: Fill body: "Rider cash, end of run"}
                                         ExampleTag{}
                                     }
                                     View{
                                         width: Fill height: Fit
                                         flow: Right
                                         spacing: 8
-                                        Small{width: Fill text: "Rider"}
-                                        Small{width: 96 text: "Expected"}
-                                        Small{width: 96 text: "Handed in"}
+                                        Small{width: Fill body: "Rider"}
+                                        Small{width: 96 body: "Expected"}
+                                        Small{width: 96 body: "Handed in"}
                                     }
                                     RoundedView{width: Fill height: 1 draw_bg +: {color: WellLine border_radius: 0.}}
                                     View{
                                         width: Fill height: Fit
                                         flow: Right
                                         spacing: 8
-                                        Body{width: Fill text: "Rider A · 14 drops"}
-                                        Mono{width: 96 text: "₹ 4,250"}
-                                        Mono{width: 96 text: "₹ 4,250"}
+                                        Body{width: Fill body: "Rider A · 14 drops"}
+                                        Mono{width: 96 body: "₹ 4,250"}
+                                        Mono{width: 96 body: "₹ 4,250"}
                                     }
                                     View{
                                         width: Fill height: Fit
                                         flow: Right
                                         spacing: 8
-                                        Body{width: Fill text: "Rider B · 9 drops"}
-                                        Mono{width: 96 text: "₹ 3,100"}
-                                        Mono{width: 96 draw_text.color: BadInk text: "₹ 2,900"}
+                                        Body{width: Fill body: "Rider B · 9 drops"}
+                                        Mono{width: 96 body: "₹ 3,100"}
+                                        Mono{width: 96 draw_text.color: BadInk body: "₹ 2,900"}
                                     }
-                                    Small{text: "Short ₹ 200 on Rider B — named, not lost in a total."}
+                                    Small{body: "Short ₹ 200 on Rider B — named, not lost in a total."}
                                 }
                                 cod_facts := View{
                                     width: Fill height: Fit
                                     flow: Down
                                     spacing: 16
-                                    Fact{head.text: "COD register" line.text: "Collected against paid out, per consignor, with remittance batches."}
-                                    Fact{head.text: "Rider settlement" line.text: "Expected against handed in, and the commission slip."}
-                                    Fact{head.text: "Books that close" line.text: "Day book, month bill per account, and a GST summary CSV for your accountant."}
+                                    Fact{head.body: "COD register" line.body: "Collected against paid out, per consignor, with remittance batches."}
+                                    Fact{head.body: "Rider settlement" line.body: "Expected against handed in, and the commission slip."}
+                                    Fact{head.body: "Books that close" line.body: "Day book, month bill per account, and a GST summary CSV for your accountant."}
                                 }
                             }
                         }
 
                         // 8 — Internet down (offline-lan; the multi-device half is gated)
                         offline := Chapter{
-                            Eyebrow{text: "8 · INTERNET DOWN?"}
-                            Headline{text: "Keep booking."}
-                            Lede{text: "Booking, labels, scanning, COD and the books all run on the desk itself. When the internet drops, nothing at the counter waits for it."}
+                            Eyebrow{body: "8 · INTERNET DOWN?"}
+                            Headline{body: "Keep booking."}
+                            Lede{body: "Booking, labels, scanning, COD and the books all run on the desk itself. When the internet drops, nothing at the counter waits for it."}
                             offline_row := View{
                                 width: Fill height: Fit
                                 flow: Right
@@ -845,7 +985,7 @@ script_mod! {
                                         spacing: 10
                                         align: Align{y: 0.5}
                                         RoundedView{width: 12 height: 12 draw_bg +: {color: BadInk border_radius: 6.}}
-                                        Strong{width: Fill text: "Office router: no internet"}
+                                        Strong{width: Fill body: "Office router: no internet"}
                                     }
                                     View{
                                         width: Fill height: Fit
@@ -853,7 +993,7 @@ script_mod! {
                                         spacing: 10
                                         align: Align{y: 0.5}
                                         RoundedView{width: 12 height: 12 draw_bg +: {color: GoodInk border_radius: 6.}}
-                                        Strong{width: Fill text: "Desk: still booking"}
+                                        Strong{width: Fill body: "Desk: still booking"}
                                     }
                                     // Shown only after the owner's real-hardware LAN pilot passes.
                                     offline_lan := View{
@@ -863,18 +1003,18 @@ script_mod! {
                                         spacing: 10
                                         align: Align{y: 0.5}
                                         RoundedView{width: 12 height: 12 draw_bg +: {color: GoodInk border_radius: 6.}}
-                                        Strong{width: Fill text: "Second counter and rider phone: joined over the office Wi‑Fi"}
+                                        Strong{width: Fill body: "Second counter and rider phone: joined over the office Wi‑Fi"}
                                     }
                                 }
-                                Fact{head.text: "Free forever on your devices" line.text: "Nothing is counted per rider, user or parcel. No subscription."}
+                                Fact{head.body: "Free forever on your devices" line.body: "Nothing is counted per rider, user or parcel. No subscription."}
                             }
                         }
 
                         // 9 — Start (free-local)
                         start := Chapter{
-                            Eyebrow{text: "9 · START"}
-                            Headline{text: "One desk. Your parcels. Your books."}
-                            Lede{text: "Moklanjo runs on Android, Windows and Linux. A rider uses the same app in rider mode."}
+                            Eyebrow{body: "9 · START"}
+                            Headline{body: "One desk. Your parcels. Your books."}
+                            Lede{body: "Moklanjo runs on Android, Windows and Linux. A rider uses the same app in rider mode."}
                             close_cta := CtaPair{}
                             RoundedView{width: Fill height: 1 draw_bg +: {color: WellLine border_radius: 0.}}
                             footer := View{
@@ -882,7 +1022,7 @@ script_mod! {
                                 flow: Right
                                 spacing: 12
                                 align: Align{y: 0.5}
-                                Small{width: Fill text: "Moklanjo is a Kumkaj product by Gotigin."}
+                                Small{width: Fill body: "Moklanjo is a Kumkaj product by Gotigin."}
                                 to_kumkaj := SecondaryBtn{text: "kumkaj.com  →"}
                             }
                         }

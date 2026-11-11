@@ -182,6 +182,7 @@ snack_secs_save	Cadw amser rhybudd
 snack_secs_saved	Amser rhybudd wedi'i gadw — {n} eiliad
 settings_sec_backup	Copi wrth gefn ac adfer
 settings_sec_diag	Diagnosteg
+settings_sec_privacy	Privacy
 diag_privacy_help	Mae logiau'n aros ar y ddyfais hon. Nid yw cyfrinachau (PIN, cyfrineiriau) byth yn cael eu storio. Mae rhannu pecyn oddi ar y ddyfais angen eich cymeradwyaeth benodol bob tro — ni chaiff ei werthu na'i roi i drydydd partïon.
 diag_level	Lefel manylder
 diag_level_error	Gwallau
@@ -344,6 +345,15 @@ app_template_apply	Templed Ap Rajdhani
 app_template_skip	Hepgor am y tro
 app_template_status	Gweinydd yn barod — cymhwyswch Dempled Ap Rajdhani, neu hepgorwch
 app_template_importing	Yn cymhwyso {title}…
+app_template_downloading	Downloading template…
+app_template_public_hdr	Public templates
+app_template_private_hdr	Private template
+app_template_public_hint	Open this section to load the public list (needs internet once).
+app_template_code_not_found	Code not found
+app_template_need_internet	Need internet to download templates
+app_template_import_selected	Import selected
+app_template_check_code	Check code
+app_template_import	Import
 currency	Arian cyfred
 backup	Copi wrth gefn
 use	Defnyddio
@@ -782,6 +792,11 @@ find_printers	Dewch o hyd i argraffwyr
 printers_looking	Yn chwilio…
 saving_printer	Yn ychwanegu argraffydd…
 cancelled	Wedi'i ganslo
+cancelling	Cancellingâ¦
+removing	Removing…
+removed	Removed
+updating_order	Updating…
+order_updated	Order updated
 printers_tap_find	Tapiwch Chwilio i restru argraffwyr y gall y ddyfais hon eu defnyddio.
 printers_none_found	Dim wedi'u canfod — teipiwch enw argraffydd system neu IP (e.e. 192.168.1.50).
 printer_from_find	Wedi ychwanegu {name}
@@ -1349,10 +1364,3 @@ recent_changes	Newidiadau diweddar
 lane_declared_label	Anfoneb dreth
 lane_owner_label	Memo arian
 money_lane_bill	Bil: {lane}
-
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
-
-cancelling	Cancellingâ¦

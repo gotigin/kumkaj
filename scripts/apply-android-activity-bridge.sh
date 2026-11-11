@@ -743,22 +743,25 @@ apk_insert = '''    add_font_assets_dir_to_apk(
     )?;
 
     // Menu shelf + named templates (parity with desktop package staging).
-    add_assets_dir_to_apk(
-        &build_paths.out_dir,
-        &mut assets_to_add,
-        build_crate,
-        &build_crate_dir.join("assets/items"),
-        "assets/items",
-        config,
-    )?;
-    add_assets_dir_to_apk(
-        &build_paths.out_dir,
-        &mut assets_to_add,
-        build_crate,
-        &build_crate_dir.join("assets/templates"),
-        "assets/templates",
-        config,
-    )?;
+    // Skip when assets/CATALOGUE_REMOTE — remote catalogue (Khaynjo).
+    if !build_crate_dir.join("assets/CATALOGUE_REMOTE").is_file() {
+        add_assets_dir_to_apk(
+            &build_paths.out_dir,
+            &mut assets_to_add,
+            build_crate,
+            &build_crate_dir.join("assets/items"),
+            "assets/items",
+            config,
+        )?;
+        add_assets_dir_to_apk(
+            &build_paths.out_dir,
+            &mut assets_to_add,
+            build_crate,
+            &build_crate_dir.join("assets/templates"),
+            "assets/templates",
+            config,
+        )?;
+    }
 
     let deps = get_crate_dep_dirs(build_crate, &build_dir, &android_targets[0].toolchain());
 '''
@@ -787,20 +790,23 @@ aab_insert = '''    stage_makepad_font_subdir(
     )?;
 
     // Menu shelf + named templates (parity with desktop package staging).
-    stage_makepad_assets_subdir(
-        assets_root,
-        build_crate,
-        &build_crate_dir.join("assets/items"),
-        "assets/items",
-        config,
-    )?;
-    stage_makepad_assets_subdir(
-        assets_root,
-        build_crate,
-        &build_crate_dir.join("assets/templates"),
-        "assets/templates",
-        config,
-    )?;
+    // Skip when assets/CATALOGUE_REMOTE — remote catalogue (Khaynjo).
+    if !build_crate_dir.join("assets/CATALOGUE_REMOTE").is_file() {
+        stage_makepad_assets_subdir(
+            assets_root,
+            build_crate,
+            &build_crate_dir.join("assets/items"),
+            "assets/items",
+            config,
+        )?;
+        stage_makepad_assets_subdir(
+            assets_root,
+            build_crate,
+            &build_crate_dir.join("assets/templates"),
+            "assets/templates",
+            config,
+        )?;
+    }
 
     let deps = get_crate_dep_dirs(build_crate, build_dir, &android_targets[0].toolchain());
 '''

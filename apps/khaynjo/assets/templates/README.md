@@ -1,18 +1,24 @@
 # Client menu templates (Khaynjo)
 
-Each folder under `assets/templates/<id>/` is a **named menu template** a
-restaurant can import in one tap (categories, dishes, prices, aliases,
-photos). Today: `rajdhani/` — display title **Rajdhani Menu Template**.
-Tomorrow: add another folder the same way — the app discovers every
-`template.json` automatically.
+**Runtime:** install packages no longer ship this folder or `assets/items`
+(`assets/CATALOGUE_REMOTE`). DeviceSetup downloads from
+`https://khaynjo.com/v1/catalogue/` — served from the Makepad site static
+tree [`sites/khaynjo/static/v1/catalogue/`](../../../sites/khaynjo/static/v1/catalogue/).
+See [`docs/CATALOGUE_URLS.md`](../docs/CATALOGUE_URLS.md). Source trees here
+remain for publish / `cargo test` / `KHAYNJO_TEMPLATES_DIR`.
+
+Each folder under `assets/templates/<id>/` is a **named menu template**
+(categories, dishes, prices, aliases, photos). Today: `rajdhani/` —
+display title **Rajdhani Menu Template** (publish as a **private** pack
+with a 12-digit code).
 
 This is separate from:
 
-- the big photo shelf (`assets/items/`) / “Import complete template”
-  (whole shelf at ₹0 on Menu), and
-- **Rajdhani App Template** — whole-shop offer once on DeviceSetup right
-  after Create new server (before Owner PIN); applies this menu, names the
-  Owner **Asif**, and turns tax/GST off by default.
+- the big photo shelf (`assets/items/`) — optional future public
+  `/v1/catalogue/public/items/…`, and
+- **App template offer** — DeviceSetup after Server (before Owner PIN);
+  public list + private code; Rajdhani shop defaults when the manifest
+  sets `shop_defaults_id: "rajdhani"`.
 
 ## How to add a new client template
 
@@ -45,10 +51,10 @@ This is separate from:
    ```  
    Import path is covered by store tests that load `rajdhani`.
 
-5. **In the app**  
-   Menu → **Client menu** — the new `title` appears (as a chip when more
-   than one template ships) → Import → confirm.  
-   Existing dishes with the same name (ignoring case) are left alone;
+5. **Publish + DeviceSetup**  
+   Stage with `publish-catalogue.sh` (public starter in-repo; Rajdhani via
+   `--private-rajdhani --code=…`). On Server first-run, Public / Private
+   accordions download and import. Existing dish names are left alone;
    importing twice adds nothing new.
 
 6. **UI chips**  
@@ -65,14 +71,12 @@ assets/templates/<id>/
 ```
 
 Override discovery root with `KHAYNJO_TEMPLATES_DIR` (tests / packaging).
-Dev reads `CARGO_MANIFEST_DIR/assets/templates`. **Every desktop package**
-(Windows MSI / portable folder, Linux) stages `assets/templates` and
-`assets/items` next to the app (see `copy_app_menu_assets_if_present` in
-`scripts/windows-env.sh`). Runtime also accepts the Linux `bin/` layout
-(package-root `assets/`) and `MAKEPAD_PACKAGE_DIR`. **Android APK/AAB** packs
-the same two folders and extracts them into the app files dir on Server open
-(same paths as desktop). Clients can still pull photos over LAN from any
-Server.
+Dev reads `CARGO_MANIFEST_DIR/assets/templates`. **Install packages skip**
+`assets/templates` and `assets/items` when `assets/CATALOGUE_REMOTE` is
+present (`copy_app_menu_assets_if_present` / Android file list). Publish
+packs with `./apps/khaynjo/scripts/publish-catalogue.sh`; DeviceSetup
+downloads them. Menu → **Client menu** / **Import complete template** cards
+hide when those local trees are absent (remote Menu follow-up later).
 
 ## `template.json` schema
 

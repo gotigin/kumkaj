@@ -7,11 +7,11 @@
 
 use std::path::{Path, PathBuf};
 
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 
 use crate::menu_images::{self, SHELF_KEY_PREFIX};
 
-#[derive(Clone, Debug, Deserialize)]
+#[derive(Clone, Debug, Serialize, Deserialize)]
 pub struct MenuTemplate {
     pub id: String,
     pub title: String,
@@ -21,7 +21,7 @@ pub struct MenuTemplate {
     pub categories: Vec<TemplateCategory>,
 }
 
-#[derive(Clone, Debug, Deserialize)]
+#[derive(Clone, Debug, Serialize, Deserialize)]
 pub struct TemplateCategory {
     pub name: String,
     #[serde(default)]
@@ -33,7 +33,7 @@ pub struct TemplateCategory {
     pub items: Vec<TemplateItem>,
 }
 
-#[derive(Clone, Debug, Deserialize)]
+#[derive(Clone, Debug, Serialize, Deserialize)]
 pub struct TemplateItem {
     pub name: String,
     #[serde(default)]
@@ -58,6 +58,11 @@ impl MenuTemplate {
     pub fn resolve_image(&self, image: &str) -> Option<PathBuf> {
         resolve_template_image(&self.id, image)
     }
+
+    /// Resolve images relative to a downloaded/cached pack directory.
+    pub fn resolve_image_in(&self, pack_dir: &Path, image: &str) -> Option<PathBuf> {
+        resolve_template_image_in(pack_dir, &self.id, image)
+    }
 }
 
 /// Where named templates live (dev: crate `assets/templates`; packaged:
@@ -68,6 +73,11 @@ pub fn templates_root() -> Option<PathBuf> {
 }
 
 fn load_one(dir: &Path) -> Option<MenuTemplate> {
+    load_from_dir(dir)
+}
+
+/// Load one `template.json` from a pack folder (bundled, cached, or fixture).
+pub fn load_from_dir(dir: &Path) -> Option<MenuTemplate> {
     let path = dir.join("template.json");
     let raw = std::fs::read_to_string(&path).ok()?;
     let mut tmpl: MenuTemplate = serde_json::from_str(&raw).ok()?;
@@ -123,22 +133,32 @@ pub fn find(id: &str) -> Option<&'static MenuTemplate> {
     all().iter().find(|t| t.id == id)
 }
 
-/// Turn an image field into a readable file path.
+/// Turn an image field into a readable file path (bundled templates root).
 pub fn resolve_template_image(template_id: &str, image: &str) -> Option<PathBuf> {
+    let root = templates_root()?.join(template_id);
+    resolve_template_image_in(&root, template_id, image)
+}
+
+/// Resolve `shelf:…` against the photo shelf, else `images/…` under `pack_dir`.
+pub fn resolve_template_image_in(pack_dir: &Path, _template_id: &str, image: &str) -> Option<PathBuf> {
     let image = image.trim();
     if image.is_empty() {
         return None;
     }
     if let Some(rel) = image.strip_prefix(SHELF_KEY_PREFIX) {
+        // Prefer images already copied into the pack (self-contained remote packs).
+        let local = pack_dir.join("items").join(rel);
+        if local.is_file() {
+            return Some(local);
+        }
         let root = menu_images::catalogue_root()?;
         let path = root.join(rel);
         return path.is_file().then_some(path);
     }
-    let root = templates_root()?.join(template_id);
     let path = if Path::new(image).is_absolute() {
         PathBuf::from(image)
     } else {
-        root.join(image)
+        pack_dir.join(image)
     };
     path.is_file().then_some(path)
 }

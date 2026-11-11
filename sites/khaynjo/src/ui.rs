@@ -43,20 +43,37 @@ script_mod! {
     let PaidLine = #x8C7B72
 
     // ---- Type: Baloo 2 (rounded, like the logo), IBM Plex, Liberation Mono
+    // Plus Noto / WenKai so Indic, Arabic, Thai and CJK marketing copy paints.
     let DisplayFont = FontFamily{
         latin := FontMember{res: crate_resource("self:resources/fonts/Baloo2-Variable.ttf") asc: 0.0 desc: 0.0 weight: 720.0}
         ui := FontMember{res: crate_resource("self:resources/fonts/IBMPlexSans-SemiBold.ttf") asc: -0.1 desc: 0.0}
         gujarati := FontMember{res: crate_resource("self:resources/fonts/NotoSansGujarati-Bold.ttf") asc: 0.0 desc: 0.0}
+        devanagari := FontMember{res: crate_resource("self:resources/fonts/NotoSansDevanagari-Regular.ttf") asc: 0.0 desc: 0.0}
+        tamil := FontMember{res: crate_resource("self:resources/fonts/NotoSansTamil-Regular.ttf") asc: 0.0 desc: 0.0}
+        bengali := FontMember{res: crate_resource("self:resources/fonts/NotoSansBengali-Regular.ttf") asc: 0.0 desc: 0.0}
+        arabic := FontMember{res: crate_resource("self:resources/fonts/NotoSansArabic-Regular.ttf") asc: 0.0 desc: 0.0}
+        hebrew := FontMember{res: crate_resource("self:resources/fonts/NotoSansHebrew-Regular.ttf") asc: 0.0 desc: 0.0}
+        thai := FontMember{res: crate_resource("self:resources/fonts/NotoSansThai-Regular.ttf") asc: 0.0 desc: 0.0}
     }
     let StrongFont = FontFamily{
         latin := FontMember{res: crate_resource("self:resources/fonts/IBMPlexSans-SemiBold.ttf") asc: -0.1 desc: 0.0}
         gujarati := FontMember{res: crate_resource("self:resources/fonts/NotoSansGujarati-Bold.ttf") asc: 0.0 desc: 0.0}
         devanagari := FontMember{res: crate_resource("self:resources/fonts/NotoSansDevanagari-Regular.ttf") asc: 0.0 desc: 0.0}
+        tamil := FontMember{res: crate_resource("self:resources/fonts/NotoSansTamil-Regular.ttf") asc: 0.0 desc: 0.0}
+        bengali := FontMember{res: crate_resource("self:resources/fonts/NotoSansBengali-Regular.ttf") asc: 0.0 desc: 0.0}
+        arabic := FontMember{res: crate_resource("self:resources/fonts/NotoSansArabic-Regular.ttf") asc: 0.0 desc: 0.0}
+        hebrew := FontMember{res: crate_resource("self:resources/fonts/NotoSansHebrew-Regular.ttf") asc: 0.0 desc: 0.0}
+        thai := FontMember{res: crate_resource("self:resources/fonts/NotoSansThai-Regular.ttf") asc: 0.0 desc: 0.0}
     }
     let TextFont = FontFamily{
         latin := FontMember{res: crate_resource("self:resources/fonts/IBMPlexSans-Text.ttf") asc: -0.1 desc: 0.0}
         gujarati := FontMember{res: crate_resource("self:resources/fonts/NotoSansGujarati-Regular.ttf") asc: 0.0 desc: 0.0}
         devanagari := FontMember{res: crate_resource("self:resources/fonts/NotoSansDevanagari-Regular.ttf") asc: 0.0 desc: 0.0}
+        tamil := FontMember{res: crate_resource("self:resources/fonts/NotoSansTamil-Regular.ttf") asc: 0.0 desc: 0.0}
+        bengali := FontMember{res: crate_resource("self:resources/fonts/NotoSansBengali-Regular.ttf") asc: 0.0 desc: 0.0}
+        arabic := FontMember{res: crate_resource("self:resources/fonts/NotoSansArabic-Regular.ttf") asc: 0.0 desc: 0.0}
+        hebrew := FontMember{res: crate_resource("self:resources/fonts/NotoSansHebrew-Regular.ttf") asc: 0.0 desc: 0.0}
+        thai := FontMember{res: crate_resource("self:resources/fonts/NotoSansThai-Regular.ttf") asc: 0.0 desc: 0.0}
     }
     let TicketFont = FontFamily{
         latin := FontMember{res: crate_resource("self:resources/fonts/LiberationMono-Regular.ttf") asc: 0.0 desc: 0.0}
@@ -67,50 +84,88 @@ script_mod! {
     // bias so it never paints glyph boxes (vendor shader untouched).
     mod.widgets.Label.draw_text.sdf_luma_bias = 0.0
     mod.widgets.Button.draw_text.sdf_luma_bias = 0.0
+    mod.widgets.Markdown.draw_text.sdf_luma_bias = 0.0
 
-    let Eyebrow = Label{
+    // TextFlow paints from `font_color` (not only draw_text.color) — set both.
+    let Eyebrow = Markdown{
+        selectable: true
+        height: Fit
+        paragraph_spacing: 0.
+        pre_code_spacing: 0.
+        draw_block +: { selection_color: #xF69D2CFF }
         width: Fill
         padding: 0.
+        font_color: Accent
         draw_text +: {
             color: Accent
             text_style: theme.font_bold{font_family: StrongFont font_size: 13. line_spacing: 1.2}
         }
     }
-    let Headline = Label{
+    let Headline = Markdown{
+        selectable: true
+        height: Fit
+        paragraph_spacing: 0.
+        pre_code_spacing: 0.
+        draw_block +: { selection_color: #xF69D2CFF }
         width: Fill
         padding: 0.
+        font_color: Maroon
         draw_text +: {
             color: Maroon
             text_style: theme.font_bold{font_family: DisplayFont font_size: 48. line_spacing: 0.72}
         }
     }
-    let Lede = Label{
+    let Lede = Markdown{
+        selectable: true
+        height: Fit
+        paragraph_spacing: 0.
+        pre_code_spacing: 0.
+        draw_block +: { selection_color: #xF69D2CFF }
         width: Fill
         padding: 0.
+        font_color: Muted
         draw_text +: {
             color: Muted
             text_style: theme.font_regular{font_family: TextFont font_size: 19. line_spacing: 1.45}
         }
     }
-    let Body = Label{
+    let Body = Markdown{
+        selectable: true
+        height: Fit
+        paragraph_spacing: 0.
+        pre_code_spacing: 0.
+        draw_block +: { selection_color: #xF69D2CFF }
         width: Fill
         padding: 0.
+        font_color: Muted
         draw_text +: {
             color: Muted
             text_style: theme.font_regular{font_family: TextFont font_size: 15.5 line_spacing: 1.45}
         }
     }
-    let Strong = Label{
+    let Strong = Markdown{
+        selectable: true
+        height: Fit
+        paragraph_spacing: 0.
+        pre_code_spacing: 0.
+        draw_block +: { selection_color: #xF69D2CFF }
         width: Fill
         padding: 0.
+        font_color: Ink
         draw_text +: {
             color: Ink
             text_style: theme.font_bold{font_family: StrongFont font_size: 16. line_spacing: 1.25}
         }
     }
-    let Small = Label{
+    let Small = Markdown{
+        selectable: true
+        height: Fit
+        paragraph_spacing: 0.
+        pre_code_spacing: 0.
+        draw_block +: { selection_color: #xF69D2CFF }
         width: Fill
         padding: 0.
+        font_color: Hint
         draw_text +: {
             color: Hint
             text_style: theme.font_regular{font_family: TextFont font_size: 13. line_spacing: 1.4}
@@ -130,9 +185,15 @@ script_mod! {
             }
         }
     }
-    let Ticket = Label{
+    let Ticket = Markdown{
+        selectable: true
+        height: Fit
+        paragraph_spacing: 0.
+        pre_code_spacing: 0.
+        draw_block +: { selection_color: #xF69D2CFF }
         width: Fill
         padding: 0.
+        font_color: Ink
         draw_text +: {
             color: Ink
             text_style: theme.font_regular{font_family: TicketFont font_size: 14. line_spacing: 1.35}
@@ -268,12 +329,31 @@ script_mod! {
         width: Fit height: Fit
         padding: Inset{left: 10. right: 10. top: 4. bottom: 5.}
         draw_bg +: {color: WellWarm border_radius: 10.}
-        Label{
+        Markdown{
             padding: 0.
-            text: "Example"
+            selectable: true
+            height: Fit
+            paragraph_spacing: 0.
+            pre_code_spacing: 0.
+            body: "Example"
+            font_color: Muted
             draw_text +: {color: Muted text_style: theme.font_regular{font_family: TextFont font_size: 12.}}
+            draw_block +: { selection_color: #xF69D2CFF }
         }
     }
+    // Country + famous dish — marketing shelf card (photo · country · dish).
+    let WorldDish = WarmCard{
+        width: Fill
+        spacing: 6
+        photo := Image{
+            width: Fill height: 84
+            fit: ImageFit.CropToFill
+            src: crate_resource("self:resources/dishes/japan-ramen.webp")
+        }
+        country := Strong{body: "Country"}
+        dish := Body{body: "Famous dish"}
+    }
+
     // A point: gold dot, bold line, plain line (direct children for overrides).
     let Point = View{
         width: Fill height: Fit
@@ -289,8 +369,8 @@ script_mod! {
                 return vec4(vec3(0.965, 0.616, 0.173) * a, a)
             }
         }
-        head := Strong{text: "Point"}
-        line := Body{text: "Detail"}
+        head := Strong{body: "Point"}
+        line := Body{body: "Detail"}
     }
 
     // Floor toy tile: the app's seven visit layers, name / word / meta, hit.
@@ -323,8 +403,8 @@ script_mod! {
         spacing: 2
         padding: Inset{left: 12. right: 12. top: 10. bottom: 10.}
         draw_bg +: {color: Well border_color: WellLine border_size: 1. border_radius: 12.}
-        head := Label{padding: 0. draw_text +: {color: Ink text_style: theme.font_bold{font_family: StrongFont font_size: 14.}} text: "KOT"}
-        line := Label{width: Fill padding: 0. draw_text +: {color: Muted text_style: theme.font_regular{font_family: TextFont font_size: 13.}} text: "Items"}
+        head := Markdown{padding: 0. selectable: true height: Fit paragraph_spacing: 0. pre_code_spacing: 0. body: "KOT" font_color: Ink draw_text +: {color: Ink text_style: theme.font_bold{font_family: StrongFont font_size: 14.}} draw_block +: { selection_color: #xF69D2CFF }}
+        line := Markdown{width: Fill padding: 0. selectable: true height: Fit paragraph_spacing: 0. pre_code_spacing: 0. body: "Items" font_color: Muted draw_text +: {color: Muted text_style: theme.font_regular{font_family: TextFont font_size: 13.}} draw_block +: { selection_color: #xF69D2CFF }}
     }
     let KdsColumn = RoundedView{
         width: Fill height: Fit
@@ -332,7 +412,7 @@ script_mod! {
         spacing: 8
         padding: Inset{left: 10. right: 10. top: 10. bottom: 12.}
         draw_bg +: {color: WellWarm border_radius: 14.}
-        title := Label{padding: 0. draw_text +: {color: Maroon text_style: theme.font_bold{font_family: DisplayFont font_size: 18.}} text: "Column"}
+        title := Markdown{padding: 0. selectable: true height: Fit paragraph_spacing: 0. pre_code_spacing: 0. body: "Column" font_color: Maroon draw_text +: {color: Maroon text_style: theme.font_bold{font_family: DisplayFont font_size: 18.}} draw_block +: { selection_color: #xF69D2CFF }}
     }
 
     // Top-bar chapter tile: a small table in that chapter's visit colour.
@@ -353,10 +433,10 @@ script_mod! {
             width: Fill height: Fit
             flow: Right
             spacing: 12
-            download := PrimaryBtn{text: "Download free"}
+            download := PrimaryBtn{text: "Get it on Google Play"}
             whatsapp := SecondaryBtn{text: "WhatsApp for a demo"}
         }
-        note := Small{text: "Free on Android, Windows and Linux."}
+        note := Small{body: "Free on Google Play · Windows and Linux packages coming."}
     }
 
     startup() do #(App::script_component(vm)){
@@ -378,21 +458,44 @@ script_mod! {
                         align: Align{y: 0.5}
                         padding: Inset{left: 24. right: 20. top: 0. bottom: 0.}
                         draw_bg +: {color: Red border_radius: 0.}
-                        Label{
-                            padding: 0.
-                            text: "Khaynjo"
-                            draw_text +: {color: Cream text_style: theme.font_bold{font_family: DisplayFont font_size: 25.}}
+                        brand_icon := Image{
+                            width: 36 height: 36
+                            fit: ImageFit.Stretch
+                            src: crate_resource("self:resources/media/app-icon.webp")
                         }
-                        tagline := Label{
+                        Markdown{
                             padding: 0.
-                            text: "the restaurant system"
+                            selectable: true
+                            height: Fit
+                            paragraph_spacing: 0.
+                            pre_code_spacing: 0.
+                            body: "Khaynjo"
+                            font_color: Cream
+                            draw_text +: {color: Cream text_style: theme.font_bold{font_family: DisplayFont font_size: 25.}}
+                            draw_block +: { selection_color: #xF69D2CFF }
+                        }
+                        tagline := Markdown{
+                            padding: 0.
+                            selectable: true
+                            height: Fit
+                            paragraph_spacing: 0.
+                            pre_code_spacing: 0.
+                            body: "the restaurant system"
+                            font_color: GoldSoft
                             draw_text +: {color: GoldSoft text_style: theme.font_regular{font_family: TextFont font_size: 13.}}
+                            draw_block +: { selection_color: #xF69D2CFF }
                         }
                         View{width: Fill height: 1}
-                        chapter_name := Label{
+                        chapter_name := Markdown{
                             padding: 0.
-                            text: "Lunch rush"
+                            selectable: true
+                            height: Fit
+                            paragraph_spacing: 0.
+                            pre_code_spacing: 0.
+                            body: "Lunch rush"
+                            font_color: #xF2D9C9
                             draw_text +: {color: #xF2D9C9 text_style: theme.font_regular{font_family: TextFont font_size: 13.}}
+                            draw_block +: { selection_color: #xF69D2CFF }
                         }
                         nav := View{
                             width: Fit height: Fit
@@ -410,10 +513,16 @@ script_mod! {
                             n8 := NavTile{}
                             n9 := NavTile{}
                         }
-                        counter := Label{
+                        counter := Markdown{
                             padding: 0.
-                            text: "1 / 10"
+                            selectable: true
+                            height: Fit
+                            paragraph_spacing: 0.
+                            pre_code_spacing: 0.
+                            body: "1 / 10"
+                            font_color: #xF2D9C9
                             draw_text +: {color: #xF2D9C9 text_style: theme.font_bold{font_family: StrongFont font_size: 12.5}}
+                            draw_block +: { selection_color: #xF69D2CFF }
                         }
                     }
 
@@ -425,18 +534,23 @@ script_mod! {
 
                         // 1 — Lunch rush (floor-states, table-cards)
                         rush := Chapter{
+                            rush_banner := Image{
+                                width: Fill height: 160
+                                fit: ImageFit.CropToFill
+                                src: crate_resource("self:resources/media/banner-1.webp")
+                            }
                             rush_row := View{
                                 width: Fill height: Fit
                                 flow: Right
                                 spacing: 24
-                                align: Align{y: 0.5}
+                                align: Align{y: 0.0}
                                 View{
                                     width: Fill height: Fit
                                     flow: Down
                                     spacing: 18
-                                    Eyebrow{text: "KHAYNJO · THE RESTAURANT SYSTEM"}
-                                    Headline{text: "Lunch rush. No internet. No problem."}
-                                    rush_lede := Lede{text: "From table to kitchen to bill, on your own devices. Every table shows its minutes and its running bill at a glance."}
+                                    Eyebrow{body: "KHAYNJO · THE RESTAURANT SYSTEM"}
+                                    Headline{body: "Lunch rush. No internet. No problem."}
+                                    rush_lede := Lede{body: "From table to kitchen to bill, on your own devices — cafés, QSRs, diners and cloud kitchens from Tokyo to Mexico City, Mumbai to Madrid. Every table shows its minutes and its running bill at a glance."}
                                     rush_cta := CtaPair{}
                                 }
                                 floor_card := WarmCard{
@@ -446,7 +560,7 @@ script_mod! {
                                         width: Fill height: Fit
                                         flow: Right
                                         align: Align{y: 0.5}
-                                        Strong{width: Fill text: "Tap a table to walk it through a visit"}
+                                        Strong{width: Fill body: "Tap a table to walk it through a visit"}
                                         ExampleTag{}
                                     }
                                     // Two fixed rows (a wrap row mis-sizes overlay tiles).
@@ -471,15 +585,15 @@ script_mod! {
                                             t6 := TableTile{}
                                         }
                                     }
-                                    floor_note := Small{text: "Same colours and words as Khaynjo's floor. Bill printed → Paid → Free: a table frees only once it is paid."}
+                                    floor_note := Small{body: "Same colours and words as Khaynjo's floor. Bill printed → Paid → Free: a table frees only once it is paid."}
                                 }
                             }
                         }
 
                         // 2 — Seated, order taken (seated, variations)
                         order := Chapter{
-                            Eyebrow{text: "2 · SEATED, ORDER TAKEN"}
-                            Headline{text: "Take the order at the table. Sizes, add-ons and notes, right there."}
+                            Eyebrow{body: "2 · SEATED, ORDER TAKEN"}
+                            Headline{body: "Take the order at the table. Sizes, add-ons and notes, right there."}
                             order_row := View{
                                 width: Fill height: Fit
                                 flow: Right
@@ -495,32 +609,32 @@ script_mod! {
                                             width: Fit height: Fit
                                             padding: Inset{left: 10. right: 10. top: 4. bottom: 5.}
                                             draw_bg +: {color: SeatFill border_color: SeatLine border_size: 1.5 border_radius: 8.}
-                                            Label{padding: 0. text: "T4 · Occupied" draw_text +: {color: Ink text_style: theme.font_bold{font_family: StrongFont font_size: 13.}}}
+                                            Markdown{padding: 0. selectable: true height: Fit paragraph_spacing: 0. pre_code_spacing: 0. body: "T4 · Occupied" font_color: Ink draw_text +: {color: Ink text_style: theme.font_bold{font_family: StrongFont font_size: 13.}} draw_block +: { selection_color: #xF69D2CFF }}
                                         }
                                         View{width: Fill height: 1}
                                         ExampleTag{}
                                     }
-                                    Strong{text: "Paneer tikka — Full"}
-                                    Body{text: "+ extra mint chutney"}
-                                    Strong{text: "Masala chaas × 2"}
-                                    Body{text: "Note: less salt"}
-                                    Strong{text: "Butter naan × 4"}
+                                    Strong{body: "Paneer tikka — Full"}
+                                    Body{body: "+ extra mint chutney"}
+                                    Strong{body: "Masala chaas × 2"}
+                                    Body{body: "Note: less salt"}
+                                    Strong{body: "Butter naan × 4"}
                                 }
                                 order_points := View{
                                     width: Fill height: Fit
                                     flow: Down
                                     spacing: 16
-                                    Point{head.text: "Seat first" line.text: "Mark a table Occupied the moment guests sit — before any dish is ordered."}
-                                    Point{head.text: "Sizes and add-ons" line.text: "Pick one size; add optional extras up to the limit you set."}
-                                    Point{head.text: "A note per dish" line.text: "“Less spicy” goes to the kitchen with the dish it belongs to."}
+                                    Point{head.body: "Seat first" line.body: "Mark a table Occupied the moment guests sit — before any dish is ordered."}
+                                    Point{head.body: "Sizes and add-ons" line.body: "Pick one size; add optional extras up to the limit you set."}
+                                    Point{head.body: "A note per dish" line.body: "“Less spicy” goes to the kitchen with the dish it belongs to."}
                                 }
                             }
                         }
 
                         // 3 — The KOT (kot-station, kot-no-prices; kot-autoprint gated)
                         kot := Chapter{
-                            Eyebrow{text: "3 · THE KOT"}
-                            Headline{text: "One ticket per kitchen station. Never a price on it."}
+                            Eyebrow{body: "3 · THE KOT"}
+                            Headline{body: "One ticket per kitchen station. Never a price on it."}
                             kot_row := View{
                                 width: Fill height: Fit
                                 flow: Right
@@ -532,96 +646,96 @@ script_mod! {
                                     spacing: 4
                                     padding: Inset{left: 20. right: 20. top: 18. bottom: 20.}
                                     draw_bg +: {color: Paper border_color: #xD9CBBE border_size: 1. border_radius: 4.}
-                                    Ticket{text: "KOT 27 · HOT KITCHEN"}
-                                    Ticket{text: "Table T4 · by Captain 1"}
-                                    Ticket{text: "12:42"}
+                                    Ticket{body: "KOT 27 · HOT KITCHEN"}
+                                    Ticket{body: "Table T4 · by Captain 1"}
+                                    Ticket{body: "12:42"}
                                     TicketRule{}
-                                    Ticket{text: "1  Paneer tikka (Full)"}
-                                    Ticket{text: "   + extra mint chutney"}
-                                    Ticket{text: "2  Masala chaas"}
-                                    Ticket{text: "   note: less salt"}
-                                    Ticket{text: "4  Butter naan"}
+                                    Ticket{body: "1  Paneer tikka (Full)"}
+                                    Ticket{body: "   + extra mint chutney"}
+                                    Ticket{body: "2  Masala chaas"}
+                                    Ticket{body: "   note: less salt"}
+                                    Ticket{body: "4  Butter naan"}
                                     TicketRule{}
-                                    Small{text: "Example ticket"}
+                                    Small{body: "Example ticket"}
                                 }
                                 kot_points := View{
                                     width: Fill height: Fit
                                     flow: Down
                                     spacing: 16
-                                    Point{head.text: "Split by station" line.text: "Hot kitchen, cold counter, bar — each gets only its own dishes, numbered per day."}
-                                    Point{head.text: "Who, which table, what notes" line.text: "The ticket carries the waiter's name, the table and every note."}
-                                    Point{head.text: "No prices" line.text: "The kitchen cooks; the bill is the counter's business."}
+                                    Point{head.body: "Split by station" line.body: "Hot kitchen, cold counter, bar — each gets only its own dishes, numbered per day."}
+                                    Point{head.body: "Who, which table, what notes" line.body: "The ticket carries the waiter's name, the table and every note."}
+                                    Point{head.body: "No prices" line.body: "The kitchen cooks; the bill is the counter's business."}
                                     // Shown only after the owner's real-hardware LAN pilot passes.
-                                    kot_lan := Point{visible: false head.text: "Prints itself" line.text: "Send, and the ticket prints at the right station — nobody carries it."}
+                                    kot_lan := Point{visible: false head.body: "Prints itself" line.body: "Send, and the ticket prints at the right station — nobody carries it."}
                                 }
                             }
                         }
 
                         // 4 — Kitchen in step (kds, all-day-counts, coursing)
                         kitchen := Chapter{
-                            Eyebrow{text: "4 · KITCHEN IN STEP"}
-                            Headline{text: "The kitchen sees what to cook now — and what can wait."}
+                            Eyebrow{body: "4 · KITCHEN IN STEP"}
+                            Headline{body: "The kitchen sees what to cook now — and what can wait."}
                             kds := View{
                                 width: Fill height: Fit
                                 flow: Right
                                 spacing: 12
                                 KdsColumn{
-                                    title.text: "New"
-                                    KdsCard{head.text: "KOT 31 · T6 · 1 min" line.text: "2 Veg biryani · 1 Raita"}
-                                    KdsCard{head.text: "KOT 30 · T2 · 3 min" line.text: "3 Masala dosa"}
+                                    title.body: "New"
+                                    KdsCard{head.body: "KOT 31 · T6 · 1 min" line.body: "2 Veg biryani · 1 Raita"}
+                                    KdsCard{head.body: "KOT 30 · T2 · 3 min" line.body: "3 Masala dosa"}
                                 }
                                 KdsColumn{
-                                    title.text: "Preparing"
-                                    KdsCard{draw_bg.color: #xFFF4CC head.text: "KOT 27 · T4 · 9 min" line.text: "1 Paneer tikka · 4 Butter naan"}
-                                    KdsCard{draw_bg.color: #xFFC48A head.text: "KOT 24 · T1 · 17 min" line.text: "2 Dal makhani — mains held"}
+                                    title.body: "Preparing"
+                                    KdsCard{draw_bg.color: #xFFF4CC head.body: "KOT 27 · T4 · 9 min" line.body: "1 Paneer tikka · 4 Butter naan"}
+                                    KdsCard{draw_bg.color: #xFFC48A head.body: "KOT 24 · T1 · 17 min" line.body: "2 Dal makhani — mains held"}
                                 }
                                 KdsColumn{
-                                    title.text: "Ready"
-                                    KdsCard{draw_bg.color: #xBFEBC8 head.text: "KOT 22 · T3 · 21 min" line.text: "2 Gulab jamun"}
+                                    title.body: "Ready"
+                                    KdsCard{draw_bg.color: #xBFEBC8 head.body: "KOT 22 · T3 · 21 min" line.body: "2 Gulab jamun"}
                                 }
                             }
                             kds_points := View{
                                 width: Fill height: Fit
                                 flow: Right
                                 spacing: 20
-                                Point{head.text: "New → Preparing → Ready" line.text: "One tap on a ticket moves it on; older tickets warm in colour."}
-                                Point{head.text: "To cook now" line.text: "All-day counts: how many of each dish are waiting."}
-                                Point{head.text: "Hold and fire" line.text: "Mains wait until the starters go; recall a ticket bumped too soon."}
+                                Point{head.body: "New → Preparing → Ready" line.body: "One tap on a ticket moves it on; older tickets warm in colour."}
+                                Point{head.body: "To cook now" line.body: "All-day counts: how many of each dish are waiting."}
+                                Point{head.body: "Hold and fire" line.body: "Mains wait until the starters go; recall a ticket bumped too soon."}
                             }
                         }
 
                         // 5 — Service changes (move-merge, kot-cancel, nc)
                         changes := Chapter{
-                            Eyebrow{text: "5 · SERVICE CHANGES"}
-                            Headline{text: "Move, merge, cancel or comp — never silently."}
+                            Eyebrow{body: "5 · SERVICE CHANGES"}
+                            Headline{body: "Move, merge, cancel or comp — never silently."}
                             changes_grid := View{
                                 width: Fill height: Fit
                                 flow: Right
                                 spacing: 16
                                 WarmCard{
-                                    Strong{text: "Move"}
-                                    Body{text: "Guests change tables; the order and its minutes go with them."}
+                                    Strong{body: "Move"}
+                                    Body{body: "Guests change tables; the order and its minutes go with them."}
                                 }
                                 WarmCard{
-                                    Strong{text: "Merge"}
-                                    Body{text: "Two tables, one bill."}
+                                    Strong{body: "Merge"}
+                                    Body{body: "Two tables, one bill."}
                                 }
                                 WarmCard{
-                                    Strong{text: "Cancel after the KOT"}
-                                    Body{text: "With a reason, cooked or not, and who approved it. The kitchen gets a cancel slip."}
+                                    Strong{body: "Cancel after the KOT"}
+                                    Body{body: "With a reason, cooked or not, and who approved it. The kitchen gets a cancel slip."}
                                 }
                                 WarmCard{
-                                    Strong{text: "Complimentary"}
-                                    Body{text: "The dish stays on the bill at ₹ 0, with the reason and the approver."}
+                                    Strong{body: "Complimentary"}
+                                    Body{body: "The dish stays on the bill at ₹ 0, with the reason and the approver."}
                                 }
                             }
-                            changes_note := Small{text: "Who, when and why is kept for every change — the day report lists cancels and comps."}
+                            changes_note := Small{body: "Who, when and why is kept for every change — the day report lists cancels and comps."}
                         }
 
                         // 6 — Settle (split, settle, upi-qr, due-khata, free-on-pay)
                         settle := Chapter{
-                            Eyebrow{text: "6 · SETTLE"}
-                            Headline{text: "Cash, UPI, part, Due, tip — and the table frees only when it's paid."}
+                            Eyebrow{body: "6 · SETTLE"}
+                            Headline{body: "Cash, UPI, part, Due, tip — and the table frees only when it's paid."}
                             settle_row := View{
                                 width: Fill height: Fit
                                 flow: Right
@@ -637,7 +751,7 @@ script_mod! {
                                             width: Fit height: Fit
                                             padding: Inset{left: 10. right: 10. top: 4. bottom: 5.}
                                             draw_bg +: {color: BillFill border_color: BillLine border_size: 1.5 border_radius: 8.}
-                                            Label{padding: 0. text: "T4 · Bill printed" draw_text +: {color: Ink text_style: theme.font_bold{font_family: StrongFont font_size: 13.}}}
+                                            Markdown{padding: 0. selectable: true height: Fit paragraph_spacing: 0. pre_code_spacing: 0. body: "T4 · Bill printed" font_color: Ink draw_text +: {color: Ink text_style: theme.font_bold{font_family: StrongFont font_size: 13.}} draw_block +: { selection_color: #xF69D2CFF }}
                                         }
                                         View{width: Fill height: 1}
                                         ExampleTag{}
@@ -645,41 +759,41 @@ script_mod! {
                                     View{
                                         width: Fill height: Fit
                                         flow: Right
-                                        Body{width: Fill text: "Bill"}
-                                        Ticket{width: Fit text: "₹ 1,240"}
+                                        Body{width: Fill body: "Bill"}
+                                        Ticket{width: Fit body: "₹ 1,240"}
                                     }
                                     View{
                                         width: Fill height: Fit
                                         flow: Right
-                                        Body{width: Fill text: "Customer paid (cash)"}
-                                        Ticket{width: Fit text: "₹ 1,500"}
+                                        Body{width: Fill body: "Customer paid (cash)"}
+                                        Ticket{width: Fit body: "₹ 1,500"}
                                     }
                                     View{
                                         width: Fill height: Fit
                                         flow: Right
-                                        Strong{width: Fill text: "Return to customer"}
-                                        Ticket{width: Fit text: "₹ 260"}
+                                        Strong{width: Fill body: "Return to customer"}
+                                        Ticket{width: Fit body: "₹ 260"}
                                     }
                                     RoundedView{width: Fill height: 1 draw_bg +: {color: WellLine border_radius: 0.}}
-                                    Small{text: "A tip is recorded apart from sales, never mixed into the bill."}
+                                    Small{body: "A tip is recorded apart from sales, never mixed into the bill."}
                                 }
                                 settle_points := View{
                                     width: Fill height: Fit
                                     flow: Down
                                     spacing: 14
-                                    Point{head.text: "Split the bill" line.text: "By item, by seat, or evenly — each part settles on its own."}
-                                    Point{head.text: "UPI QR with the amount" line.text: "The customer scans; the amount is already in it."}
-                                    Point{head.text: "Part payment and Due" line.text: "What's left goes on the customer's khata in Parties."}
+                                    Point{head.body: "Split the bill" line.body: "By item, by seat, or evenly — each part settles on its own."}
+                                    Point{head.body: "UPI QR with the amount" line.body: "The customer scans; the amount is already in it."}
+                                    Point{head.body: "Part payment and Due" line.body: "What's left goes on the customer's khata in Parties."}
                                     // The headline says it too; short windows drop this one.
-                                    settle_free := Point{head.text: "Free on pay" line.text: "A table with money still due cannot be freed."}
+                                    settle_free := Point{head.body: "Free on pay" line.body: "A table with money still due cannot be freed."}
                                 }
                             }
                         }
 
                         // 7 — Close the day (shift-close, day-report)
                         dayclose := Chapter{
-                            Eyebrow{text: "7 · CLOSE THE DAY"}
-                            Headline{text: "Day end you can trust: expected, counted, and the difference named."}
+                            Eyebrow{body: "7 · CLOSE THE DAY"}
+                            Headline{body: "Day end you can trust: expected, counted, and the difference named."}
                             close_row := View{
                                 width: Fill height: Fit
                                 flow: Right
@@ -690,63 +804,182 @@ script_mod! {
                                         width: Fill height: Fit
                                         flow: Right
                                         align: Align{y: 0.5}
-                                        Strong{width: Fill text: "Cash drawer, shift close"}
+                                        Strong{width: Fill body: "Cash drawer, shift close"}
                                         ExampleTag{}
                                     }
-                                    View{width: Fill height: Fit flow: Right Body{width: Fill text: "Opening float"} Ticket{width: Fit text: "  2,000"}}
-                                    View{width: Fill height: Fit flow: Right Body{width: Fill text: "+ cash taken"} Ticket{width: Fit text: " 18,450"}}
-                                    View{width: Fill height: Fit flow: Right Body{width: Fill text: "+ cash tips"} Ticket{width: Fit text: "    300"}}
-                                    View{width: Fill height: Fit flow: Right Body{width: Fill text: "− cash paid out"} Ticket{width: Fit text: "    600"}}
+                                    View{width: Fill height: Fit flow: Right Body{width: Fill body: "Opening float"} Ticket{width: Fit body: "  2,000"}}
+                                    View{width: Fill height: Fit flow: Right Body{width: Fill body: "+ cash taken"} Ticket{width: Fit body: " 18,450"}}
+                                    View{width: Fill height: Fit flow: Right Body{width: Fill body: "+ cash tips"} Ticket{width: Fit body: "    300"}}
+                                    View{width: Fill height: Fit flow: Right Body{width: Fill body: "− cash paid out"} Ticket{width: Fit body: "    600"}}
                                     RoundedView{width: Fill height: 1 draw_bg +: {color: WellLine border_radius: 0.}}
-                                    View{width: Fill height: Fit flow: Right Strong{width: Fill text: "Expected in the drawer"} Ticket{width: Fit text: "₹ 20,150"}}
-                                    View{width: Fill height: Fit flow: Right Strong{width: Fill text: "Counted"} Ticket{width: Fit text: "₹ 20,050"}}
-                                    View{width: Fill height: Fit flow: Right Strong{width: Fill draw_text.color: Red text: "Short"} Ticket{width: Fit draw_text.color: Red text: "₹ 100"}}
+                                    View{width: Fill height: Fit flow: Right Strong{width: Fill body: "Expected in the drawer"} Ticket{width: Fit body: "₹ 20,150"}}
+                                    View{width: Fill height: Fit flow: Right Strong{width: Fill body: "Counted"} Ticket{width: Fit body: "₹ 20,050"}}
+                                    View{width: Fill height: Fit flow: Right Strong{width: Fill draw_text.color: Red body: "Short"} Ticket{width: Fit draw_text.color: Red body: "₹ 100"}}
                                 }
                                 close_points := View{
                                     width: Fill height: Fit
                                     flow: Down
                                     spacing: 14
-                                    Point{head.text: "Shift handover slip" line.text: "Close one shift, print the slip, and the next one starts clean."}
-                                    Point{head.text: "The day report" line.text: "By staff, by order type, by hour and by dish — with cancels, comps and tips."}
+                                    Point{head.body: "Shift handover slip" line.body: "Close one shift, print the slip, and the next one starts clean."}
+                                    Point{head.body: "The day report" line.body: "By staff, by order type, by hour and by dish — with cancels, comps and tips."}
                                 }
                             }
                         }
 
                         // 8 — Your menu (aliases-short-codes, area-prices, menu-timings, languages)
                         menu := Chapter{
-                            Eyebrow{text: "8 · YOUR MENU, YOUR WAY"}
-                            Headline{text: "Your menu in your words — with short codes, area prices and timed prices."}
-                            menu_row := View{
+                            Eyebrow{body: "8 · YOUR MENU, YOUR WAY"}
+                            Headline{body: "Every country at your counter — your words, your codes, your prices."}
+                            Lede{body: "Khaynjo is for restaurant people everywhere: Japanese ramen bars, Mexican taquerías, Indian thalis, Italian trattorias, Thai kitchens, café counters. Put the dish name staff already say — in their script — and a short code brings it first."}
+                            menu_banner := Image{
+                                width: Fill height: 120
+                                fit: ImageFit.CropToFill
+                                src: crate_resource("self:resources/media/banner-3.webp")
+                            }
+                            // World shelf: country · famous dish (marketing; public catalogue photos).
+                            menu_world := View{
                                 width: Fill height: Fit
-                                flow: Right
-                                spacing: 16
-                                WarmCard{
-                                    spacing: 4
-                                    Label{padding: 0. text: "પનીર ટિક્કા" draw_text +: {color: Maroon text_style: theme.font_bold{font_family: DisplayFont font_size: 26.}}}
-                                    Strong{text: "Paneer tikka · code PT"}
-                                    Body{text: "AC room ₹ 220 · everywhere else ₹ 200"}
+                                flow: Down
+                                spacing: 12
+                                menu_row := View{
+                                    width: Fill height: Fit
+                                    flow: Right
+                                    spacing: 12
+                                    WorldDish{
+                                        photo.src: crate_resource("self:resources/dishes/japan-ramen.webp")
+                                        country.body: "Japan"
+                                        dish.body: "Ramen"
+                                    }
+                                    WorldDish{
+                                        photo.src: crate_resource("self:resources/dishes/korea-bibimbap.webp")
+                                        country.body: "Korea"
+                                        dish.body: "Bibimbap"
+                                    }
+                                    WorldDish{
+                                        photo.src: crate_resource("self:resources/dishes/china-peking-duck.webp")
+                                        country.body: "China"
+                                        dish.body: "Peking duck"
+                                    }
+                                    WorldDish{
+                                        photo.src: crate_resource("self:resources/dishes/thailand-pad-thai.webp")
+                                        country.body: "Thailand"
+                                        dish.body: "Pad Thai"
+                                    }
                                 }
-                                WarmCard{
-                                    spacing: 4
-                                    Label{padding: 0. text: "મસાલા છાશ" draw_text +: {color: Maroon text_style: theme.font_bold{font_family: DisplayFont font_size: 26.}}}
-                                    Strong{text: "Masala chaas · code MC"}
-                                    Body{text: "Happy hour 17:00–19:00 ₹ 40 · otherwise ₹ 60"}
+                                menu_row_b := View{
+                                    width: Fill height: Fit
+                                    flow: Right
+                                    spacing: 12
+                                    WorldDish{
+                                        photo.src: crate_resource("self:resources/dishes/vietnam-banh-mi.webp")
+                                        country.body: "Vietnam"
+                                        dish.body: "Bánh mì"
+                                    }
+                                    WorldDish{
+                                        photo.src: crate_resource("self:resources/dishes/indonesia-rendang.webp")
+                                        country.body: "Indonesia"
+                                        dish.body: "Beef rendang"
+                                    }
+                                    WorldDish{
+                                        photo.src: crate_resource("self:resources/dishes/india-butter-chicken.webp")
+                                        country.body: "India"
+                                        dish.body: "Butter chicken"
+                                    }
+                                    WorldDish{
+                                        photo.src: crate_resource("self:resources/dishes/india-masala-dosa.webp")
+                                        country.body: "India"
+                                        dish.body: "Masala dosa"
+                                    }
                                 }
-                                WarmCard{
-                                    spacing: 4
-                                    Label{padding: 0. text: "पोहा" draw_text +: {color: Maroon text_style: theme.font_bold{font_family: DisplayFont font_size: 26.}}}
-                                    Strong{text: "Poha · code PO"}
-                                    Body{text: "On the menu Mon–Fri, 07:00–11:00"}
+                                menu_row_c := View{
+                                    width: Fill height: Fit
+                                    flow: Right
+                                    spacing: 12
+                                    WorldDish{
+                                        photo.src: crate_resource("self:resources/dishes/turkey-adana-kebab.webp")
+                                        country.body: "Turkey"
+                                        dish.body: "Adana kebab"
+                                    }
+                                    WorldDish{
+                                        photo.src: crate_resource("self:resources/dishes/lebanon-shawarma.webp")
+                                        country.body: "Lebanon"
+                                        dish.body: "Shawarma"
+                                    }
+                                    WorldDish{
+                                        photo.src: crate_resource("self:resources/dishes/morocco-tagine.webp")
+                                        country.body: "Morocco"
+                                        dish.body: "Chicken tagine"
+                                    }
+                                    WorldDish{
+                                        photo.src: crate_resource("self:resources/dishes/italy-margherita.webp")
+                                        country.body: "Italy"
+                                        dish.body: "Margherita pizza"
+                                    }
+                                }
+                                menu_row_d := View{
+                                    width: Fill height: Fit
+                                    flow: Right
+                                    spacing: 12
+                                    WorldDish{
+                                        photo.src: crate_resource("self:resources/dishes/france-croissant.webp")
+                                        country.body: "France"
+                                        dish.body: "Croissant"
+                                    }
+                                    WorldDish{
+                                        photo.src: crate_resource("self:resources/dishes/spain-paella.webp")
+                                        country.body: "Spain"
+                                        dish.body: "Paella"
+                                    }
+                                    WorldDish{
+                                        photo.src: crate_resource("self:resources/dishes/greece-moussaka.webp")
+                                        country.body: "Greece"
+                                        dish.body: "Moussaka"
+                                    }
+                                    WorldDish{
+                                        photo.src: crate_resource("self:resources/dishes/mexico-birria.webp")
+                                        country.body: "Mexico"
+                                        dish.body: "Birria tacos"
+                                    }
+                                }
+                                menu_row_e := View{
+                                    width: Fill height: Fit
+                                    flow: Right
+                                    spacing: 12
+                                    WorldDish{
+                                        photo.src: crate_resource("self:resources/dishes/uk-bangers.webp")
+                                        country.body: "United Kingdom"
+                                        dish.body: "Bangers and mash"
+                                    }
+                                    WorldDish{
+                                        photo.src: crate_resource("self:resources/dishes/austria-schnitzel.webp")
+                                        country.body: "Austria"
+                                        dish.body: "Wiener schnitzel"
+                                    }
+                                    WorldDish{
+                                        photo.src: crate_resource("self:resources/dishes/japan-sushi.webp")
+                                        country.body: "Japan"
+                                        dish.body: "Sushi"
+                                    }
+                                    WorldDish{
+                                        photo.src: crate_resource("self:resources/dishes/china-xiaolongbao.webp")
+                                        country.body: "China"
+                                        dish.body: "Xiaolongbao"
+                                    }
                                 }
                             }
-                            menu_note := Small{text: "Type a short code or any name — Gujarati, Hindi or English — and the dish comes first. Example menu; 29 languages on screen."}
+                            menu_script := WarmCard{
+                                spacing: 8
+                                Markdown{padding: 0. selectable: true height: Fit paragraph_spacing: 0. pre_code_spacing: 0. body: "પનીર ટિક્કા · پنیر تکہ · பன்னீர் டிக்கா" font_color: Maroon draw_text +: {color: Maroon text_style: theme.font_bold{font_family: DisplayFont font_size: 16.}} draw_block +: { selection_color: #xF69D2CFF }}
+                                Body{body: "Same dish, the names your captains already type — Gujarati, Urdu, Tamil, or English. Short codes and area prices still apply."}
+                            }
+                            menu_note := Small{body: "Twenty countries on this shelf — samples from the public Khaynjo catalogue. Your real menu can be any cuisine, any script; 29 languages on screen."}
                         }
 
                         // 9 — Internet down (offline-lan; the multi-device half is gated)
                         offline := Chapter{
-                            Eyebrow{text: "9 · INTERNET DOWN?"}
-                            Headline{text: "Service goes on."}
-                            Lede{text: "Orders, bills and the day book live on your own devices. When the internet drops in the middle of lunch, nothing in the restaurant waits for it."}
+                            Eyebrow{body: "9 · INTERNET DOWN?"}
+                            Headline{body: "Service goes on."}
+                            Lede{body: "Orders, bills and the day book live on your own devices. When the internet drops in the middle of lunch, nothing in the restaurant waits for it."}
                             offline_card := WarmCard{
                                 spacing: 12
                                 View{
@@ -755,7 +988,7 @@ script_mod! {
                                     spacing: 10
                                     align: Align{y: 0.5}
                                     RoundedView{width: 12 height: 12 draw_bg +: {color: Red border_radius: 6.}}
-                                    Strong{width: Fill text: "Router: no internet"}
+                                    Strong{width: Fill body: "Router: no internet"}
                                 }
                                 View{
                                     width: Fill height: Fit
@@ -763,7 +996,7 @@ script_mod! {
                                     spacing: 10
                                     align: Align{y: 0.5}
                                     RoundedView{width: 12 height: 12 draw_bg +: {color: BillLine border_radius: 6.}}
-                                    Strong{width: Fill text: "Counter: taking orders and settling bills"}
+                                    Strong{width: Fill body: "Counter: taking orders and settling bills"}
                                 }
                                 // Shown only after the owner's real-hardware LAN pilot passes.
                                 offline_lan := View{
@@ -773,24 +1006,62 @@ script_mod! {
                                     spacing: 10
                                     align: Align{y: 0.5}
                                     RoundedView{width: 12 height: 12 draw_bg +: {color: BillLine border_radius: 6.}}
-                                    Strong{width: Fill text: "Captains' tablets and the kitchen screen: working together on your own Wi‑Fi"}
+                                    Strong{width: Fill body: "Captains' tablets and the kitchen screen: working together on your own Wi‑Fi"}
                                 }
                             }
                         }
 
                         // 10 — Start (free-local)
                         start := Chapter{
-                            Eyebrow{text: "10 · START"}
-                            Headline{text: "Free forever on your devices."}
-                            Lede{text: "No charge per table, waiter, order or device. Khaynjo runs on Android, Windows and Linux."}
+                            Eyebrow{body: "10 · START"}
+                            Headline{body: "Free forever on your devices."}
+                            Lede{body: "No charge per table, waiter, order or device. On Google Play now — Windows and Linux packages follow. Built in India, ready for restaurants anywhere."}
+                            start_banner := Image{
+                                width: Fill height: 180
+                                fit: ImageFit.CropToFill
+                                src: crate_resource("self:resources/media/banner-2.webp")
+                            }
+                            View{
+                                width: Fill height: Fit
+                                flow: Right
+                                spacing: 16
+                                align: Align{y: 0.5}
+                                start_icon := Image{
+                                    width: 72 height: 72
+                                    fit: ImageFit.Stretch
+                                    src: crate_resource("self:resources/media/app-icon.webp")
+                                }
+                                View{
+                                    width: Fill height: Fit
+                                    flow: Down
+                                    spacing: 6
+                                    Strong{body: "Khaynjo on Google Play"}
+                                    Small{body: "com.khaynjo · free · no account required for day-to-day service"}
+                                }
+                            }
                             close_cta := CtaPair{}
+                            start_shots := View{
+                                width: Fill height: Fit
+                                flow: Right
+                                spacing: 12
+                                Image{
+                                    width: Fill height: 140
+                                    fit: ImageFit.CropToFill
+                                    src: crate_resource("self:resources/media/screenshot-desktop.png")
+                                }
+                                Image{
+                                    width: 100 height: 140
+                                    fit: ImageFit.CropToFill
+                                    src: crate_resource("self:resources/media/screenshot-mobile.png")
+                                }
+                            }
                             RoundedView{width: Fill height: 1 draw_bg +: {color: WellLine border_radius: 0.}}
                             footer := View{
                                 width: Fill height: Fit
                                 flow: Right
                                 spacing: 12
                                 align: Align{y: 0.5}
-                                Small{width: Fill text: "Khaynjo is a Kumkaj product by Gotigin."}
+                                Small{width: Fill body: "Khaynjo is a Kumkaj product by Gotigin."}
                                 to_kumkaj := SecondaryBtn{text: "kumkaj.com  →"}
                             }
                         }

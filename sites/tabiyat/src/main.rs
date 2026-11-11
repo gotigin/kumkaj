@@ -232,10 +232,10 @@ impl App {
     fn paint_chrome(&mut self, cx: &mut Cx, chapter: usize) {
         self.chapter = chapter;
         self.ui
-            .label(cx, ids!(chapter_name))
+            .widget(cx, ids!(chapter_name))
             .set_text(cx, CHAPTERS[chapter].1);
         self.ui
-            .label(cx, ids!(counter))
+            .widget(cx, ids!(counter))
             .set_text(cx, &format!("{} / {}", chapter + 1, CHAPTERS.len()));
         for (i, [_, idle, here]) in NAV.iter().enumerate() {
             self.ui.view(cx, idle).set_visible(cx, i != chapter);
@@ -248,15 +248,15 @@ impl App {
         let step = self.bill.unwrap_or(BillStep::Ready);
         let shown = step.lines_shown();
         self.ui
-            .label(cx, ids!(bill.status))
+            .widget(cx, ids!(bill.status))
             .set_text(cx, step.word());
         for (i, (path, name, amount)) in BILL_LINES.iter().enumerate() {
             let visible = i < shown;
             let row = self.ui.widget(cx, path);
             row.set_visible(cx, visible);
             if visible {
-                row.label(cx, ids!(name)).set_text(cx, name);
-                row.label(cx, ids!(amt))
+                row.widget(cx, ids!(name)).set_text(cx, name);
+                row.widget(cx, ids!(amt))
                     .set_text(cx, &format!("₹ {}", counter::rupees(*amount)));
             }
         }
@@ -266,10 +266,10 @@ impl App {
             .widget(cx, ids!(bill.total_row))
             .set_visible(cx, total_visible);
         self.ui
-            .label(cx, ids!(bill.total_amt))
+            .widget(cx, ids!(bill.total_amt))
             .set_text(cx, &format!("₹ {}", counter::rupees(total)));
         self.ui
-            .label(cx, ids!(bill.tender))
+            .widget(cx, ids!(bill.tender))
             .set_text(cx, step.tender_line());
         self.ui.redraw(cx);
     }
@@ -284,7 +284,7 @@ impl App {
 
     fn set_cta_notes(&mut self, cx: &mut Cx, text: &str) {
         for path in [ids!(brand.brand_cta.note), ids!(start.close_cta.note)] {
-            self.ui.label(cx, path).set_text(cx, text);
+            self.ui.widget(cx, path).set_text(cx, text);
         }
         self.ui.redraw(cx);
     }
@@ -458,6 +458,8 @@ fn collect_label_sizes(widget: &WidgetRef, out: &mut Vec<f32>) {
     widget.children(&mut |_, child| {
         if let Some(label) = child.borrow::<Label>() {
             out.push(label.draw_text.text_style.font_size);
+        } else if let Some(md) = child.borrow::<Markdown>() {
+            out.push(md.draw_text.text_style.font_size);
         }
         collect_label_sizes(&child, out);
     });
@@ -468,6 +470,17 @@ fn scale_labels(widget: &WidgetRef, tier: Tier, desk: &[f32], next: &mut usize) 
         if let Some(mut label) = child.borrow_mut::<Label>() {
             if let Some(&base) = desk.get(*next) {
                 label.draw_text.text_style.font_size = base * tier.type_scale(base);
+            }
+            *next += 1;
+        } else if let Some(mut md) = child.borrow_mut::<Markdown>() {
+            if let Some(&base) = desk.get(*next) {
+                let scaled = base * tier.type_scale(base);
+                md.font_size = scaled;
+                md.draw_text.text_style.font_size = scaled;
+                md.text_style_normal.font_size = scaled;
+                md.text_style_bold.font_size = scaled;
+                md.text_style_italic.font_size = scaled;
+                md.text_style_bold_italic.font_size = scaled;
             }
             *next += 1;
         }

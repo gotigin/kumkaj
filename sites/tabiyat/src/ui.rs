@@ -50,7 +50,12 @@ script_mod! {
     mod.widgets.Label.draw_text.sdf_luma_bias = 0.0
     mod.widgets.Button.draw_text.sdf_luma_bias = 0.0
 
-    let Eyebrow = Label{
+    let Eyebrow = Markdown{
+        selectable: true
+        height: Fit
+        paragraph_spacing: 0.
+        pre_code_spacing: 0.
+        draw_block +: { selection_color: #x37BE28FF }
         width: Fill
         padding: 0.
         draw_text +: {
@@ -58,7 +63,12 @@ script_mod! {
             text_style: theme.font_bold{font_family: StrongFont font_size: 13. line_spacing: 1.2}
         }
     }
-    let Headline = Label{
+    let Headline = Markdown{
+        selectable: true
+        height: Fit
+        paragraph_spacing: 0.
+        pre_code_spacing: 0.
+        draw_block +: { selection_color: #x37BE28FF }
         width: Fill
         padding: 0.
         draw_text +: {
@@ -66,7 +76,12 @@ script_mod! {
             text_style: theme.font_bold{font_family: DisplayFont font_size: 48. line_spacing: 0.72}
         }
     }
-    let Lede = Label{
+    let Lede = Markdown{
+        selectable: true
+        height: Fit
+        paragraph_spacing: 0.
+        pre_code_spacing: 0.
+        draw_block +: { selection_color: #x37BE28FF }
         width: Fill
         padding: 0.
         draw_text +: {
@@ -74,7 +89,12 @@ script_mod! {
             text_style: theme.font_regular{font_family: TextFont font_size: 19. line_spacing: 1.45}
         }
     }
-    let Body = Label{
+    let Body = Markdown{
+        selectable: true
+        height: Fit
+        paragraph_spacing: 0.
+        pre_code_spacing: 0.
+        draw_block +: { selection_color: #x37BE28FF }
         width: Fill
         padding: 0.
         draw_text +: {
@@ -82,7 +102,12 @@ script_mod! {
             text_style: theme.font_regular{font_family: TextFont font_size: 15.5 line_spacing: 1.45}
         }
     }
-    let Strong = Label{
+    let Strong = Markdown{
+        selectable: true
+        height: Fit
+        paragraph_spacing: 0.
+        pre_code_spacing: 0.
+        draw_block +: { selection_color: #x37BE28FF }
         width: Fill
         padding: 0.
         draw_text +: {
@@ -90,7 +115,12 @@ script_mod! {
             text_style: theme.font_bold{font_family: StrongFont font_size: 16. line_spacing: 1.25}
         }
     }
-    let Small = Label{
+    let Small = Markdown{
+        selectable: true
+        height: Fit
+        paragraph_spacing: 0.
+        pre_code_spacing: 0.
+        draw_block +: { selection_color: #x37BE28FF }
         width: Fill
         padding: 0.
         draw_text +: {
@@ -112,7 +142,12 @@ script_mod! {
             }
         }
     }
-    let Ticket = Label{
+    let Ticket = Markdown{
+        selectable: true
+        height: Fit
+        paragraph_spacing: 0.
+        pre_code_spacing: 0.
+        draw_block +: { selection_color: #x37BE28FF }
         width: Fill
         padding: 0.
         draw_text +: {
@@ -247,10 +282,17 @@ script_mod! {
         width: Fit height: Fit
         padding: Inset{left: 10. right: 10. top: 4. bottom: 5.}
         draw_bg +: {color: WellWarm border_radius: 10.}
-        Label{
+        Markdown{
+            selectable: true
+            height: Fit
+            paragraph_spacing: 0.
+            pre_code_spacing: 0.
+            draw_block +: { selection_color: #x37BE28FF }
+
             padding: 0.
-            text: "Example"
+            body: "Example"
             draw_text +: {color: Hint text_style: theme.font_regular{font_family: TextFont font_size: 12.}}
+        
         }
     }
     let Point = View{
@@ -267,16 +309,16 @@ script_mod! {
                 return vec4(vec3(0.216, 0.745, 0.157) * a, a)
             }
         }
-        head := Strong{text: "Point"}
-        line := Body{text: "Detail"}
+        head := Strong{body: "Point"}
+        line := Body{body: "Detail"}
     }
 
     let BillLine = View{
         width: Fill height: Fit
         flow: Right
         spacing: 8
-        name := Body{width: Fill text: "Item"}
-        amt := Ticket{width: Fit text: "₹ 0"}
+        name := Body{width: Fill body: "Item"}
+        amt := Ticket{width: Fit body: "₹ 0"}
     }
 
     let NavTile = View{
@@ -299,7 +341,7 @@ script_mod! {
             download := PrimaryBtn{text: "Download free"}
             whatsapp := SecondaryBtn{text: "WhatsApp for a demo"}
         }
-        note := Small{text: "Free on Android, Windows and Linux."}
+        note := Small{body: "Free on Android, Windows and Linux."}
     }
 
     startup() do #(App::script_component(vm)){
@@ -320,22 +362,43 @@ script_mod! {
                         align: Align{y: 0.5}
                         padding: Inset{left: 24. right: 20. top: 0. bottom: 0.}
                         draw_bg +: {color: Teal border_radius: 0.}
-                        Label{
+                        Markdown{
+            selectable: true
+            height: Fit
+            paragraph_spacing: 0.
+            pre_code_spacing: 0.
+            draw_block +: { selection_color: #x37BE28FF }
+
                             padding: 0.
-                            text: "Tabiyat"
+                            body: "Tabiyat"
                             draw_text +: {color: Cream text_style: theme.font_bold{font_family: DisplayFont font_size: 25.}}
-                        }
-                        tagline := Label{
+                        
+        }
+                        tagline := Markdown{
+            selectable: true
+            height: Fit
+            paragraph_spacing: 0.
+            pre_code_spacing: 0.
+            draw_block +: { selection_color: #x37BE28FF }
+
                             padding: 0.
-                            text: "the pharmacy counter"
+                            body: "the pharmacy counter"
                             draw_text +: {color: Lime text_style: theme.font_regular{font_family: TextFont font_size: 13.}}
-                        }
+                        
+        }
                         View{width: Fill height: 1}
-                        chapter_name := Label{
+                        chapter_name := Markdown{
+            selectable: true
+            height: Fit
+            paragraph_spacing: 0.
+            pre_code_spacing: 0.
+            draw_block +: { selection_color: #x37BE28FF }
+
                             padding: 0.
-                            text: "Pharmacy counter"
+                            body: "Pharmacy counter"
                             draw_text +: {color: #xB8E4E6 text_style: theme.font_regular{font_family: TextFont font_size: 13.}}
-                        }
+                        
+        }
                         nav := View{
                             width: Fit height: Fit
                             flow: Right
@@ -350,11 +413,18 @@ script_mod! {
                             n6 := NavTile{}
                             n7 := NavTile{}
                         }
-                        counter := Label{
+                        counter := Markdown{
+            selectable: true
+            height: Fit
+            paragraph_spacing: 0.
+            pre_code_spacing: 0.
+            draw_block +: { selection_color: #x37BE28FF }
+
                             padding: 0.
-                            text: "1 / 8"
+                            body: "1 / 8"
                             draw_text +: {color: #xB8E4E6 text_style: theme.font_bold{font_family: StrongFont font_size: 12.5}}
-                        }
+                        
+        }
                     }
 
                     slides := SlidesView{
@@ -374,9 +444,9 @@ script_mod! {
                                     width: Fill height: Fit
                                     flow: Down
                                     spacing: 18
-                                    Eyebrow{text: "TABIYAT · THE PHARMACY COUNTER"}
-                                    Headline{text: "Pharmacy counter. Offline. Your books."}
-                                    brand_lede := Lede{text: "Medicines, barcode and salt search, batch and expiry for your own books — on your devices. Owner flags only; never fake Drugs Act compliance."}
+                                    Eyebrow{body: "TABIYAT · THE PHARMACY COUNTER"}
+                                    Headline{body: "Pharmacy counter. Offline. Your books."}
+                                    brand_lede := Lede{body: "Medicines, barcode and salt search, batch and expiry for your own books — on your devices. Owner flags only; never fake Drugs Act compliance."}
                                     brand_cta := CtaPair{}
                                 }
                                 bill_card := WarmCard{
@@ -386,7 +456,7 @@ script_mod! {
                                         width: Fill height: Fit
                                         flow: Right
                                         align: Align{y: 0.5}
-                                        Strong{width: Fill text: "Tap the bill to walk a counter sale"}
+                                        Strong{width: Fill body: "Tap the bill to walk a counter sale"}
                                         ExampleTag{}
                                     }
                                     bill := View{
@@ -402,12 +472,12 @@ script_mod! {
                                                 width: Fill height: Fit
                                                 flow: Right
                                                 align: Align{y: 0.5}
-                                                Strong{width: Fill text: "Cash memo"}
+                                                Strong{width: Fill body: "Cash memo"}
                                                 RoundedView{
                                                     width: Fit height: Fit
                                                     padding: Inset{left: 8. right: 8. top: 3. bottom: 4.}
                                                     draw_bg +: {color: BillFill border_color: BillLine border_size: 1. border_radius: 8.}
-                                                    status := Label{padding: 0. text: "Ready" draw_text +: {color: Ink text_style: theme.font_bold{font_family: StrongFont font_size: 12.}}}
+                                                    status := Markdown{padding: 0. selectable: true height: Fit paragraph_spacing: 0. pre_code_spacing: 0. body: "Ready" font_color: Ink draw_text +: {color: Ink text_style: theme.font_bold{font_family: StrongFont font_size: 12.}} draw_block +: { selection_color: #x37BE28FF }}
                                                 }
                                             }
                                             line1 := BillLine{visible: false}
@@ -422,23 +492,23 @@ script_mod! {
                                                 View{
                                                     width: Fill height: Fit
                                                     flow: Right
-                                                    Strong{width: Fill text: "Total"}
-                                                    total_amt := Ticket{width: Fit text: "₹ 0"}
+                                                    Strong{width: Fill body: "Total"}
+                                                    total_amt := Ticket{width: Fit body: "₹ 0"}
                                                 }
                                             }
-                                            tender := Small{text: "Tap to add the first medicine"}
+                                            tender := Small{body: "Tap to add the first medicine"}
                                         }
                                         hit := HitBtn{}
                                     }
-                                    bill_note := Small{text: "Example pharmacy lines — not a live till. Sell → settle → day book."}
+                                    bill_note := Small{body: "Example pharmacy lines — not a live till. Sell → settle → day book."}
                                 }
                             }
                         }
 
                         // 2 — Three-tap sell
                         sell := Chapter{
-                            Eyebrow{text: "2 · COUNTER SELL"}
-                            Headline{text: "Medicine, quantity, pay — three taps."}
+                            Eyebrow{body: "2 · COUNTER SELL"}
+                            Headline{body: "Medicine, quantity, pay — three taps."}
                             sell_row := View{
                                 width: Fill height: Fit
                                 flow: Right
@@ -450,33 +520,33 @@ script_mod! {
                                     spacing: 4
                                     padding: Inset{left: 20. right: 20. top: 18. bottom: 20.}
                                     draw_bg +: {color: Paper border_color: WellLine border_size: 1. border_radius: 4.}
-                                    Ticket{text: "SELL · COUNTER"}
-                                    Ticket{text: "Cash memo · 12:42"}
+                                    Ticket{body: "SELL · COUNTER"}
+                                    Ticket{body: "Cash memo · 12:42"}
                                     TicketRule{}
-                                    Ticket{text: "1  Paracetamol 500     28"}
-                                    Ticket{text: "1  Amoxicillin 250     86"}
-                                    Ticket{text: "4  ORS sachets         48"}
+                                    Ticket{body: "1  Paracetamol 500     28"}
+                                    Ticket{body: "1  Amoxicillin 250     86"}
+                                    Ticket{body: "4  ORS sachets         48"}
                                     TicketRule{}
-                                    Ticket{text: "Total               162"}
-                                    Ticket{text: "UPI QR ready"}
+                                    Ticket{body: "Total               162"}
+                                    Ticket{body: "UPI QR ready"}
                                     TicketRule{}
-                                    Small{text: "Example bill"}
+                                    Small{body: "Example bill"}
                                 }
                                 sell_points := View{
                                     width: Fill height: Fit
                                     flow: Down
                                     spacing: 16
-                                    Point{head.text: "Fast counter billing" line.text: "Add the line, set the qty, settle — cash, UPI or split."}
-                                    Point{head.text: "GST Tax invoice or cash memo" line.text: "The bill lane you need for the sale."}
-                                    Point{head.text: "Day book follows" line.text: "Every tender lands in Books when you close the sale."}
+                                    Point{head.body: "Fast counter billing" line.body: "Add the line, set the qty, settle — cash, UPI or split."}
+                                    Point{head.body: "GST Tax invoice or cash memo" line.body: "The bill lane you need for the sale."}
+                                    Point{head.body: "Day book follows" line.body: "Every tender lands in Books when you close the sale."}
                                 }
                             }
                         }
 
                         // 3 — Barcode / salt search
                         search := Chapter{
-                            Eyebrow{text: "3 · BARCODE & SALT"}
-                            Headline{text: "Scan the barcode — or find it by salt."}
+                            Eyebrow{body: "3 · BARCODE & SALT"}
+                            Headline{body: "Scan the barcode — or find it by salt."}
                             search_row := View{
                                 width: Fill height: Fit
                                 flow: Right
@@ -487,31 +557,31 @@ script_mod! {
                                         width: Fill height: Fit
                                         flow: Right
                                         align: Align{y: 0.5}
-                                        Strong{width: Fill text: "Search"}
+                                        Strong{width: Fill body: "Search"}
                                         ExampleTag{}
                                     }
-                                    Strong{text: "8901030… · Paracetamol 500 mg"}
-                                    Body{text: "Composition: Paracetamol · strip of 10"}
-                                    Strong{text: "Salt: amoxicillin"}
-                                    Body{text: "Ranks barcode, name and composition together."}
+                                    Strong{body: "8901030… · Paracetamol 500 mg"}
+                                    Body{body: "Composition: Paracetamol · strip of 10"}
+                                    Strong{body: "Salt: amoxicillin"}
+                                    Body{body: "Ranks barcode, name and composition together."}
                                     RoundedView{width: Fill height: 1 draw_bg +: {color: WellLine border_radius: 0.}}
-                                    Small{text: "Wedge scanner or type Enter — the line lands on the bill."}
+                                    Small{body: "Wedge scanner or type Enter — the line lands on the bill."}
                                 }
                                 search_points := View{
                                     width: Fill height: Fit
                                     flow: Down
                                     spacing: 16
-                                    Point{head.text: "Barcode first" line.text: "Scan or paste the code; the catalogue match comes up."}
-                                    Point{head.text: "Salt / composition" line.text: "Type the salt when the brand name is not what the customer said."}
-                                    Point{head.text: "Owner Rx / Schedule H flags" line.text: "Reminders you set — not a statutory register, not medical advice."}
+                                    Point{head.body: "Barcode first" line.body: "Scan or paste the code; the catalogue match comes up."}
+                                    Point{head.body: "Salt / composition" line.body: "Type the salt when the brand name is not what the customer said."}
+                                    Point{head.body: "Owner Rx / Schedule H flags" line.body: "Reminders you set — not a statutory register, not medical advice."}
                                 }
                             }
                         }
 
                         // 4 — Batch & expiry
                         batch := Chapter{
-                            Eyebrow{text: "4 · BATCH & EXPIRY"}
-                            Headline{text: "Batch and expiry on your books — alerts for the owner."}
+                            Eyebrow{body: "4 · BATCH & EXPIRY"}
+                            Headline{body: "Batch and expiry on your books — alerts for the owner."}
                             batch_row := View{
                                 width: Fill height: Fit
                                 flow: Right
@@ -522,31 +592,31 @@ script_mod! {
                                         width: Fill height: Fit
                                         flow: Right
                                         align: Align{y: 0.5}
-                                        Strong{width: Fill text: "Buy · batch A12"}
+                                        Strong{width: Fill body: "Buy · batch A12"}
                                         ExampleTag{}
                                     }
-                                    Strong{text: "Amoxicillin 250 mg · 10 × 10"}
-                                    Body{text: "Expires 2027-03 · alert in 7 days"}
-                                    Strong{text: "ORS sachets · batch B04"}
-                                    Body{text: "Expires 2026-11 · near-expiry strip on Books"}
+                                    Strong{body: "Amoxicillin 250 mg · 10 × 10"}
+                                    Body{body: "Expires 2027-03 · alert in 7 days"}
+                                    Strong{body: "ORS sachets · batch B04"}
+                                    Body{body: "Expires 2026-11 · near-expiry strip on Books"}
                                     RoundedView{width: Fill height: 1 draw_bg +: {color: WellLine border_radius: 0.}}
-                                    Small{text: "Shop bookkeeping only — not Drugs Act compliance."}
+                                    Small{body: "Shop bookkeeping only — not Drugs Act compliance."}
                                 }
                                 batch_points := View{
                                     width: Fill height: Fit
                                     flow: Down
                                     spacing: 16
-                                    Point{head.text: "Batch on buy" line.text: "Record batch and expiry when stock comes in."}
-                                    Point{head.text: "Near-expiry alerts" line.text: "Books and Sell can hint before the date passes."}
-                                    batch_extra := Point{head.text: "Owner practice" line.text: "FEFO hints and Rx notes are yours to follow — Tabiyat records what you enter."}
+                                    Point{head.body: "Batch on buy" line.body: "Record batch and expiry when stock comes in."}
+                                    Point{head.body: "Near-expiry alerts" line.body: "Books and Sell can hint before the date passes."}
+                                    batch_extra := Point{head.body: "Owner practice" line.body: "FEFO hints and Rx notes are yours to follow — Tabiyat records what you enter."}
                                 }
                             }
                         }
 
                         // 5 — Khata
                         khata := Chapter{
-                            Eyebrow{text: "5 · KHATA"}
-                            Headline{text: "Customer credit and supplier dues in one party book."}
+                            Eyebrow{body: "5 · KHATA"}
+                            Headline{body: "Customer credit and supplier dues in one party book."}
                             khata_row := View{
                                 width: Fill height: Fit
                                 flow: Right
@@ -557,30 +627,30 @@ script_mod! {
                                         width: Fill height: Fit
                                         flow: Right
                                         align: Align{y: 0.5}
-                                        Strong{width: Fill text: "Mehta Clinic · Customer"}
+                                        Strong{width: Fill body: "Mehta Clinic · Customer"}
                                         ExampleTag{}
                                     }
-                                    View{width: Fill height: Fit flow: Right Body{width: Fill text: "Due from earlier"} Ticket{width: Fit text: "₹ 2,480"}}
-                                    View{width: Fill height: Fit flow: Right Body{width: Fill text: "+ today's sale (Due)"} Ticket{width: Fit text: "₹ 162"}}
+                                    View{width: Fill height: Fit flow: Right Body{width: Fill body: "Due from earlier"} Ticket{width: Fit body: "₹ 2,480"}}
+                                    View{width: Fill height: Fit flow: Right Body{width: Fill body: "+ today's sale (Due)"} Ticket{width: Fit body: "₹ 162"}}
                                     RoundedView{width: Fill height: 1 draw_bg +: {color: WellLine border_radius: 0.}}
-                                    View{width: Fill height: Fit flow: Right Strong{width: Fill text: "Balance"} Ticket{width: Fit text: "₹ 2,642"}}
-                                    khata_note := Small{text: "Settle later — part cash, part UPI. Supplier AP shares the same Parties screen."}
+                                    View{width: Fill height: Fit flow: Right Strong{width: Fill body: "Balance"} Ticket{width: Fit body: "₹ 2,642"}}
+                                    khata_note := Small{body: "Settle later — part cash, part UPI. Supplier AP shares the same Parties screen."}
                                 }
                                 View{
                                     width: Fill height: Fit
                                     flow: Down
                                     spacing: 16
-                                    Point{head.text: "Due on the bill" line.text: "Leave a balance on khata without a separate ledger app."}
-                                    Point{head.text: "Supplier buys too" line.text: "Who you owe updates when stock arrives."}
-                                    Point{head.text: "Auditable" line.text: "Who, when and how much stays in the day book."}
+                                    Point{head.body: "Due on the bill" line.body: "Leave a balance on khata without a separate ledger app."}
+                                    Point{head.body: "Supplier buys too" line.body: "Who you owe updates when stock arrives."}
+                                    Point{head.body: "Auditable" line.body: "Who, when and how much stays in the day book."}
                                 }
                             }
                         }
 
                         // 6 — Extra till / offline
                         lan := Chapter{
-                            Eyebrow{text: "6 · EXTRA TILL"}
-                            Headline{text: "Another till on the shop Wi‑Fi."}
+                            Eyebrow{body: "6 · EXTRA TILL"}
+                            Headline{body: "Another till on the shop Wi‑Fi."}
                             lan_row := View{
                                 width: Fill height: Fit
                                 flow: Right
@@ -593,7 +663,7 @@ script_mod! {
                                         spacing: 10
                                         align: Align{y: 0.5}
                                         RoundedView{width: 12 height: 12 draw_bg +: {color: TealBright border_radius: 6.}}
-                                        Strong{width: Fill text: "Router: no internet"}
+                                        Strong{width: Fill body: "Router: no internet"}
                                     }
                                     View{
                                         width: Fill height: Fit
@@ -601,7 +671,7 @@ script_mod! {
                                         spacing: 10
                                         align: Align{y: 0.5}
                                         RoundedView{width: 12 height: 12 draw_bg +: {color: Lime border_radius: 6.}}
-                                        Strong{width: Fill text: "Main counter: selling and settling"}
+                                        Strong{width: Fill body: "Main counter: selling and settling"}
                                     }
                                     lan_devices := View{
                                         visible: false
@@ -610,39 +680,39 @@ script_mod! {
                                         spacing: 10
                                         align: Align{y: 0.5}
                                         RoundedView{width: 12 height: 12 draw_bg +: {color: Lime border_radius: 6.}}
-                                        Strong{width: Fill text: "Second till: joined on your own Wi‑Fi"}
+                                        Strong{width: Fill body: "Second till: joined on your own Wi‑Fi"}
                                     }
                                 }
                                 View{
                                     width: Fill height: Fit
                                     flow: Down
                                     spacing: 14
-                                    Point{head.text: "Books live on the shop devices" line.text: "When the internet drops, nothing at the pharmacy counter waits for it."}
-                                    lan_extra := Point{visible: false head.text: "One Server, LAN Clients" line.text: "Extra tills share the same books over the shop network."}
-                                    lan_note := Small{text: "Multi-device lines show after the owner's LAN pilot."}
+                                    Point{head.body: "Books live on the shop devices" line.body: "When the internet drops, nothing at the pharmacy counter waits for it."}
+                                    lan_extra := Point{visible: false head.body: "One Server, LAN Clients" line.body: "Extra tills share the same books over the shop network."}
+                                    lan_note := Small{body: "Multi-device lines show after the owner's LAN pilot."}
                                 }
                             }
                         }
 
                         // 7 — Free forever
                         free := Chapter{
-                            Eyebrow{text: "7 · FREE FOREVER LOCALLY"}
-                            Headline{text: "Free forever on your devices."}
+                            Eyebrow{body: "7 · FREE FOREVER LOCALLY"}
+                            Headline{body: "Free forever on your devices."}
                             free_row := View{
                                 width: Fill height: Fit
                                 flow: Right
                                 spacing: 20
-                                Point{head.text: "No per-bill charge" line.text: "No fee per sale, medicine, till or staff PIN on the local install."}
-                                Point{head.text: "Android, Windows, Linux" line.text: "The same Tabiyat on the phone and the desktop till."}
-                                Point{head.text: "Cloud later, by usage" line.text: "Optional Kumkaj Cloud when you want it — billed for what you use."}
+                                Point{head.body: "No per-bill charge" line.body: "No fee per sale, medicine, till or staff PIN on the local install."}
+                                Point{head.body: "Android, Windows, Linux" line.body: "The same Tabiyat on the phone and the desktop till."}
+                                Point{head.body: "Cloud later, by usage" line.body: "Optional Kumkaj Cloud when you want it — billed for what you use."}
                             }
                         }
 
                         // 8 — Start
                         start := Chapter{
-                            Eyebrow{text: "8 · START"}
-                            Headline{text: "Put Tabiyat on the counter."}
-                            Lede{text: "Download free, or WhatsApp for a walk-through with your pharmacy and city."}
+                            Eyebrow{body: "8 · START"}
+                            Headline{body: "Put Tabiyat on the counter."}
+                            Lede{body: "Download free, or WhatsApp for a walk-through with your pharmacy and city."}
                             close_cta := CtaPair{}
                             RoundedView{width: Fill height: 1 draw_bg +: {color: WellLine border_radius: 0.}}
                             footer := View{
@@ -650,7 +720,7 @@ script_mod! {
                                 flow: Right
                                 spacing: 12
                                 align: Align{y: 0.5}
-                                Small{width: Fill text: "Tabiyat is a Kumkaj product by Gotigin. · tabiyat.shop"}
+                                Small{width: Fill body: "Tabiyat is a Kumkaj product by Gotigin. · tabiyat.shop"}
                                 to_kumkaj := SecondaryBtn{text: "kumkaj.com  →"}
                             }
                         }

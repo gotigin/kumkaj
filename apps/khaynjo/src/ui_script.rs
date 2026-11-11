@@ -5355,6 +5355,12 @@ script_mod! {
                                 flow: Down spacing: 16
                                 padding: Inset{left: 22. right: 22. top: 16. bottom: 120.}
 
+                                setup_hero_banner := Image{
+                                    width: Fill height: 96
+                                    fit: ImageFit.CropToFill
+                                    src: crate_resource("self:resources/brand/hero-banner.webp")
+                                }
+
                                 RoundedView{
                                     width: Fill height: Fit
                                     padding: Inset{left: 12. right: 12. top: 8. bottom: 8.}
@@ -5399,7 +5405,7 @@ script_mod! {
                                             setup_brand_mark := Image{
                                                 // No DSL src — async bundled mark used to overwrite the shop logo after sync.
                                 // sync_venue_brand loads the shop mark (or default) inline.
-                                                width: 48 height: 48
+                                                width: 64 height: 64
                                                 fit: ImageFit.Stretch
                                                             }
                                             View{
@@ -5539,23 +5545,94 @@ script_mod! {
                                                 setup_server_list := mod.widgets.ServerList{}
                                                 server_pick_cancel := BackBtn{text: "Back"}
                                             }
-                                            // One-shot after new server create — before Owner PIN.
-                                            // Apply: Submit → status + Cancel (same shape as Menu import).
+                                            // One-shot after Server open — before Owner PIN.
+                                            // Public accordion + private 12-digit code; Skip → Owner PIN.
                                             app_template_section := View{
                                                 width: Fill height: Fit
                                                 flow: Down spacing: 12
                                                 visible: false
                                                 app_template_heading := WrapLabel{
-                                                    body: "Rajdhani App Template"
+                                                    body: "Shop templates"
                                                     font_color: #x260B08
                                                     font_size: 17.
                                                 }
                                                 app_template_blurb := WrapLabel{
-                                                    body: "Loads the Rajdhani menu; Owner Zahir, Admin Asif, Waiter Nawaz."
+                                                    body: "Import a public starter, or enter a private 12-digit code."
                                                     font_color: #x6B4A3F
                                                     font_size: 13.
                                                 }
-                                                app_template_apply := NavBtn{text: "Rajdhani App Template"}
+                                                RoundedView{
+                                                    width: Fill height: Fit
+                                                    padding: Inset{left: 10. right: 10. top: 8. bottom: 8.}
+                                                    flow: Down spacing: 8
+                                                    draw_bg.color: #xffffff
+                                                    draw_bg.border_radius: 12.
+                                                    View{
+                                                        width: Fill height: Fit
+                                                        flow: Right spacing: 0
+                                                        align: Align{y: 0.5}
+                                                        setup_public_tmpl_hdr := AccordionHdrHitBtn{width: Fit text: "PUBLIC TEMPLATES"}
+                                                        setup_public_tmpl_help := InfoHelp{
+                                                            tip: "Starter menus anyone can download. Needs internet once."
+                                                        }
+                                                        setup_public_tmpl_hdr_ext := AccordionHdrHitBtn{text: ""}
+                                                    }
+                                                    setup_public_tmpl_body := View{
+                                                        width: Fill height: Fit
+                                                        flow: Down spacing: 8
+                                                        visible: false
+                                                        setup_public_tmpl_status := WrapLabel{
+                                                            body: ""
+                                                            font_color: #x6B4A3F
+                                                            font_size: 12.
+                                                        }
+                                                        View{
+                                                            width: Fill height: Fit
+                                                            flow: Right{wrap: true} spacing: 8
+                                                            public_tmpl_0 := ChipBtn{text: " " visible: false}
+                                                            public_tmpl_0_on := ChipBtnActive{text: " " visible: false}
+                                                            public_tmpl_1 := ChipBtn{text: " " visible: false}
+                                                            public_tmpl_1_on := ChipBtnActive{text: " " visible: false}
+                                                            public_tmpl_2 := ChipBtn{text: " " visible: false}
+                                                            public_tmpl_2_on := ChipBtnActive{text: " " visible: false}
+                                                            public_tmpl_3 := ChipBtn{text: " " visible: false}
+                                                            public_tmpl_3_on := ChipBtnActive{text: " " visible: false}
+                                                            public_tmpl_4 := ChipBtn{text: " " visible: false}
+                                                            public_tmpl_4_on := ChipBtnActive{text: " " visible: false}
+                                                        }
+                                                        public_tmpl_import := NavBtn{text: "Import selected" visible: false}
+                                                    }
+                                                }
+                                                RoundedView{
+                                                    width: Fill height: Fit
+                                                    padding: Inset{left: 10. right: 10. top: 8. bottom: 8.}
+                                                    flow: Down spacing: 8
+                                                    draw_bg.color: #xffffff
+                                                    draw_bg.border_radius: 12.
+                                                    View{
+                                                        width: Fill height: Fit
+                                                        flow: Right spacing: 0
+                                                        align: Align{y: 0.5}
+                                                        setup_private_tmpl_hdr := AccordionHdrHitBtn{width: Fit text: "PRIVATE TEMPLATE"}
+                                                        setup_private_tmpl_help := InfoHelp{
+                                                            tip: "Client menus gated by a 12-digit code from your Khaynjo contact."
+                                                        }
+                                                        setup_private_tmpl_hdr_ext := AccordionHdrHitBtn{text: ""}
+                                                    }
+                                                    setup_private_tmpl_body := View{
+                                                        width: Fill height: Fit
+                                                        flow: Down spacing: 8
+                                                        visible: false
+                                                        private_tmpl_code := FieldInput{empty_text: "12-digit code"}
+                                                        private_tmpl_check := NavBtn{text: "Check code"}
+                                                        private_tmpl_title := WrapLabel{
+                                                            body: ""
+                                                            font_color: #x260B08
+                                                            font_size: 14.
+                                                        }
+                                                        private_tmpl_import := NavBtn{text: "Import" visible: false}
+                                                    }
+                                                }
                                                 app_template_busy := View{
                                                     width: Fill height: Fit
                                                     visible: false
@@ -5631,7 +5708,7 @@ script_mod! {
                                             lock_brand_mark := Image{
                                                 // No DSL src — async bundled mark used to overwrite the shop logo after sync.
                                 // sync_venue_brand loads the shop mark (or default) inline.
-                                                width: 48 height: 48
+                                                width: 64 height: 64
                                                 fit: ImageFit.Stretch
                                                             }
                                             View{
@@ -5838,7 +5915,7 @@ script_mod! {
                                     onboard_brand_mark := Image{
                                         // No DSL src — async bundled mark used to overwrite the shop logo after sync.
                                 // sync_venue_brand loads the shop mark (or default) inline.
-                                        width: 48 height: 48
+                                        width: 64 height: 64
                                         fit: ImageFit.Stretch
                                             }
                                     View{
@@ -8766,6 +8843,7 @@ script_mod! {
                                     settings_hub_alerts := StackSecondaryBtn{text: "Alerts"}
                                     settings_hub_backup := StackSecondaryBtn{text: "Backup & restore"}
                                     settings_hub_diag := StackSecondaryBtn{text: "Diagnostics"}
+                                    settings_hub_privacy := StackSecondaryBtn{text: "Privacy"}
                                     settings_hub_sidebar := StackSecondaryBtn{text: "Sidebar"}
                                 }
                                 settings_detail_back := StackLightBtn{text: "Back" visible: false}
@@ -10882,6 +10960,33 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 16.}
                                         diag_export_send_progress := WrapLabel{visible: false body: "" font_color: #x260B08 font_size: 15.}
                                     }
                                     diag_clear := NavBtn{text: "Clear diagnostic logs"}
+                                }
+                                settings_panel_privacy := View{
+                                    width: Fill height: Fit
+                                    flow: Down spacing: 12
+                                    visible: false
+                                    View{
+                                        width: Fill height: Fit
+                                        flow: Right spacing: 0
+                                        align: Align{y: 0.5}
+                                        h_privacy := WrapLabel{
+                                            width: Fit
+                                            body: "Privacy"
+                                            font_color: #x260B08
+                                            font_size: 16.
+                                        }
+                                        privacy_help := InfoHelp{
+                                            tip: "Formatted from the same PRIVACY.md as https://khaynjo.com/privacy — not a separate copy."
+                                        }
+                                    }
+                                    // WrapLabel is Makepad Markdown (pulldown-cmark) — headings,
+                                    // lists, links, emphasis render like a preview, not source.
+                                    privacy_body := WrapLabel{
+                                        width: Fill
+                                        body: ""
+                                        font_color: #x260B08
+                                        font_size: 14.
+                                    }
                                 }
                             }
                         }

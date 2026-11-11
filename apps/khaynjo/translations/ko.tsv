@@ -182,6 +182,7 @@ snack_secs_save	알림 시간 저장
 snack_secs_saved	알림 시간 저장됨 — {n}초
 settings_sec_backup	백업 및 복원
 settings_sec_diag	진단
+settings_sec_privacy	Privacy
 diag_privacy_help	로그는 이 장치에 유지됩니다. 비밀 정보 (PIN, 비밀번호) 는 절대 저장되지 않습니다. 장치를 벗어나 패키지를 공유할 때는 매번 명시적인 승인이 필요합니다 — 절대 판매되거나 제 3 자에게 제공되지 않습니다.
 diag_level	상세 수준
 diag_level_error	오류
@@ -344,6 +345,15 @@ app_template_apply	Rajdhani 앱 템플릿
 app_template_skip	나중에 건너뛰기
 app_template_status	서버 준비됨 — Rajdhani 앱 템플릿을 적용하거나 건너뛰세요
 app_template_importing	{title} 적용 중…
+app_template_downloading	Downloading template…
+app_template_public_hdr	Public templates
+app_template_private_hdr	Private template
+app_template_public_hint	Open this section to load the public list (needs internet once).
+app_template_code_not_found	Code not found
+app_template_need_internet	Need internet to download templates
+app_template_import_selected	Import selected
+app_template_check_code	Check code
+app_template_import	Import
 currency	통화
 backup	백업
 use	사용
@@ -782,6 +792,11 @@ find_printers	프린터 찾기
 printers_looking	이 기기와 Wi‑Fi에서 프린터를 찾는 중…
 saving_printer	프린터 추가 중…
 cancelled	취소됨
+cancelling	Cancellingâ¦
+removing	Removing…
+removed	Removed
+updating_order	Updating…
+order_updated	Order updated
 printers_tap_find	찾기를 눌러 이 기기에서 쓸 수 있는 프린터를 표시하세요.
 printers_none_found	프린터를 찾지 못함 — 시스템 이름 또는 네트워크 주소를 입력하세요(예: 192.168.1.50).
 printer_from_find	{name} 추가됨
@@ -1349,10 +1364,3 @@ recent_changes	최근 변경
 lane_declared_label	세금 계산서
 lane_owner_label	현금 메모
 money_lane_bill	영수증: {lane}
-
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
-
-cancelling	Cancellingâ¦

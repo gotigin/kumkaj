@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "id": "cafe-starter",
+  "title": "Caf\u00e9 starter",
+  "blurb": "Tea, coffee, and a few snacks \u2014 edit prices after import.",
+  "kind": "app_template",
+  "visibility": "public",
+  "applies_shop_defaults": false,
+  "shop_defaults_id": "",
+  "template": "template.json",
+  "bytes": 874
+}

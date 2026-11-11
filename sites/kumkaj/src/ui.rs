@@ -57,7 +57,12 @@ script_mod! {
     mod.widgets.Label.draw_text.sdf_luma_bias = 0.0
     mod.widgets.Button.draw_text.sdf_luma_bias = 0.0
 
-    let Eyebrow = Label{
+    let Eyebrow = Markdown{
+        selectable: true
+        height: Fit
+        paragraph_spacing: 0.
+        pre_code_spacing: 0.
+        draw_block +: { selection_color: #x2E5BADFF }
         width: Fill
         padding: 0.
         draw_text +: {
@@ -65,7 +70,12 @@ script_mod! {
             text_style: theme.font_bold{font_family: StrongFont font_size: 12.5 line_spacing: 1.3}
         }
     }
-    let Headline = Label{
+    let Headline = Markdown{
+        selectable: true
+        height: Fit
+        paragraph_spacing: 0.
+        pre_code_spacing: 0.
+        draw_block +: { selection_color: #x2E5BADFF }
         width: Fill
         padding: 0.
         draw_text +: {
@@ -73,7 +83,12 @@ script_mod! {
             text_style: theme.font_bold{font_family: DisplayFont font_size: 52. line_spacing: 0.94}
         }
     }
-    let Lede = Label{
+    let Lede = Markdown{
+        selectable: true
+        height: Fit
+        paragraph_spacing: 0.
+        pre_code_spacing: 0.
+        draw_block +: { selection_color: #x2E5BADFF }
         width: Fill
         padding: 0.
         draw_text +: {
@@ -81,7 +96,12 @@ script_mod! {
             text_style: theme.font_regular{font_family: TextFont font_size: 20. line_spacing: 1.45}
         }
     }
-    let Body = Label{
+    let Body = Markdown{
+        selectable: true
+        height: Fit
+        paragraph_spacing: 0.
+        pre_code_spacing: 0.
+        draw_block +: { selection_color: #x2E5BADFF }
         width: Fill
         padding: 0.
         draw_text +: {
@@ -89,7 +109,12 @@ script_mod! {
             text_style: theme.font_regular{font_family: TextFont font_size: 16. line_spacing: 1.45}
         }
     }
-    let Strong = Label{
+    let Strong = Markdown{
+        selectable: true
+        height: Fit
+        paragraph_spacing: 0.
+        pre_code_spacing: 0.
+        draw_block +: { selection_color: #x2E5BADFF }
         width: Fill
         padding: 0.
         draw_text +: {
@@ -97,7 +122,12 @@ script_mod! {
             text_style: theme.font_bold{font_family: StrongFont font_size: 16. line_spacing: 1.3}
         }
     }
-    let Small = Label{
+    let Small = Markdown{
+        selectable: true
+        height: Fit
+        paragraph_spacing: 0.
+        pre_code_spacing: 0.
+        draw_block +: { selection_color: #x2E5BADFF }
         width: Fill
         padding: 0.
         draw_text +: {
@@ -105,7 +135,12 @@ script_mod! {
             text_style: theme.font_regular{font_family: TextFont font_size: 13. line_spacing: 1.4}
         }
     }
-    let CardName = Label{
+    let CardName = Markdown{
+        selectable: true
+        height: Fit
+        paragraph_spacing: 0.
+        pre_code_spacing: 0.
+        draw_block +: { selection_color: #x2E5BADFF }
         width: Fill
         padding: 0.
         draw_text +: {
@@ -252,17 +287,31 @@ script_mod! {
         spacing: 12
         align: Align{y: 0.5}
         dot := RoundedView{width: 10 height: 10 draw_bg +: {color: Good border_radius: 5.}}
-        what := Label{
+        what := Markdown{
+            selectable: true
+            height: Fit
+            paragraph_spacing: 0.
+            pre_code_spacing: 0.
+            draw_block +: { selection_color: #x2E5BADFF }
+
             width: Fill
             padding: 0.
             draw_text +: {color: Ink text_style: theme.font_regular{font_family: TextFont font_size: 15.}}
-            text: "Row"
+            body: "Row"
+        
         }
-        state := Label{
+        state := Markdown{
+            selectable: true
+            height: Fit
+            paragraph_spacing: 0.
+            pre_code_spacing: 0.
+            draw_block +: { selection_color: #x2E5BADFF }
+
             width: Fit
             padding: 0.
             draw_text +: {color: Good text_style: theme.font_bold{font_family: StrongFont font_size: 14.}}
-            text: "Working"
+            body: "Working"
+        
         }
     }
 
@@ -271,17 +320,31 @@ script_mod! {
         flow: Right
         spacing: 10
         align: Align{y: 0.0}
-        tick := Label{
+        tick := Markdown{
+            selectable: true
+            height: Fit
+            paragraph_spacing: 0.
+            pre_code_spacing: 0.
+            draw_block +: { selection_color: #x2E5BADFF }
+
             width: Fit
             padding: Inset{top: 1. bottom: 0. left: 0. right: 0.}
             draw_text +: {color: Clay text_style: theme.font_bold{font_family: StrongFont font_size: 14.}}
-            text: "—"
+            body: "—"
+        
         }
-        line := Label{
+        line := Markdown{
+            selectable: true
+            height: Fit
+            paragraph_spacing: 0.
+            pre_code_spacing: 0.
+            draw_block +: { selection_color: #x2E5BADFF }
+
             width: Fill
             padding: 0.
             draw_text +: {color: Muted text_style: theme.font_regular{font_family: TextFont font_size: 15. line_spacing: 1.35}}
-            text: "Bullet"
+            body: "Bullet"
+        
         }
     }
 
@@ -292,17 +355,29 @@ script_mod! {
         spacing: 4
         padding: Inset{left: 18. right: 18. top: 12. bottom: 14.}
         draw_bg +: {color: Panel border_color: Rule border_size: 1. border_radius: 12.}
-        lang := Label{
+        lang := Markdown{
+            selectable: true
+            height: Fit
+            paragraph_spacing: 0.
+            pre_code_spacing: 0.
+            draw_block +: { selection_color: #x2E5BADFF }
+
             width: Fit
             padding: 0.
             draw_text +: {color: Faint text_style: theme.font_regular{font_family: TextFont font_size: 13.}}
-            text: "Language"
+            body: "Language"
+        
         }
-        word := Label{
+        word := Markdown{
+            selectable: true
+            height: Fit
+            paragraph_spacing: 0.
+            pre_code_spacing: 0.
+            draw_block +: { selection_color: #x2E5BADFF }
             width: Fit
             padding: 0.
             draw_text +: {color: Ink text_style: theme.font_bold{font_family: StrongFont font_size: 24.}}
-            text: "Word"
+            body: "Word"
         }
     }
 
@@ -314,24 +389,41 @@ script_mod! {
         // Tight sides: four nodes and two arrows share 900 px at 1024 wide.
         padding: Inset{left: 14. right: 12. top: 14. bottom: 16.}
         draw_bg +: {color: Panel border_color: Rule border_size: 1. border_radius: 12.}
-        role := Label{
+        role := Markdown{
+            selectable: true
+            height: Fit
+            paragraph_spacing: 0.
+            pre_code_spacing: 0.
+            draw_block +: { selection_color: #x2E5BADFF }
+
             width: Fill
             padding: 0.
             draw_text +: {color: Faint text_style: theme.font_bold{font_family: StrongFont font_size: 12.}}
-            text: "ROLE"
+            body: "ROLE"
+        
         }
-        name := Label{
+        name := Markdown{
+            selectable: true
+            height: Fit
+            paragraph_spacing: 0.
+            pre_code_spacing: 0.
+            draw_block +: { selection_color: #x2E5BADFF }
             width: Fill
             padding: 0.
             draw_text +: {color: Ink text_style: theme.font_bold{font_family: DisplayFont font_size: 24.}}
-            text: "Name"
+            body: "Name"
         }
     }
-    let MapArrow = Label{
+    let MapArrow = Markdown{
+        selectable: true
+        height: Fit
+        paragraph_spacing: 0.
+        pre_code_spacing: 0.
+        draw_block +: { selection_color: #x2E5BADFF }
         width: Fit
         padding: Inset{left: 2. right: 2. top: 0. bottom: 0.}
         draw_text +: {color: Clay text_style: theme.font_bold{font_family: StrongFont font_size: 22.}}
-        text: "→"
+        body: "→"
     }
 
     // Chapter dot in the top bar: idle dot, active pill, invisible hit.
@@ -368,23 +460,44 @@ script_mod! {
                             flow: Right
                             spacing: 10
                             align: Align{y: 0.6}
-                            Label{
+                            Markdown{
+            selectable: true
+            height: Fit
+            paragraph_spacing: 0.
+            pre_code_spacing: 0.
+            draw_block +: { selection_color: #x2E5BADFF }
+
                                 padding: 0.
-                                text: "Kumkaj"
+                                body: "Kumkaj"
                                 draw_text +: {color: Ink text_style: theme.font_bold{font_family: DisplayFont font_size: 21.}}
-                            }
-                            byline := Label{
+                            
+        }
+                            byline := Markdown{
+            selectable: true
+            height: Fit
+            paragraph_spacing: 0.
+            pre_code_spacing: 0.
+            draw_block +: { selection_color: #x2E5BADFF }
+
                                 padding: 0.
-                                text: "by Gotigin"
+                                body: "by Gotigin"
                                 draw_text +: {color: Faint text_style: theme.font_regular{font_family: TextFont font_size: 12.5}}
-                            }
+                            
+        }
                         }
                         View{width: Fill height: 1}
-                        chapter_name := Label{
+                        chapter_name := Markdown{
+            selectable: true
+            height: Fit
+            paragraph_spacing: 0.
+            pre_code_spacing: 0.
+            draw_block +: { selection_color: #x2E5BADFF }
+
                             padding: 0.
-                            text: "The promise"
+                            body: "The promise"
                             draw_text +: {color: Muted text_style: theme.font_regular{font_family: TextFont font_size: 13.5}}
-                        }
+                        
+        }
                         dots := View{
                             width: Fit height: Fit
                             flow: Right
@@ -398,11 +511,18 @@ script_mod! {
                             d5 := Dot{}
                             d6 := Dot{}
                         }
-                        counter := Label{
+                        counter := Markdown{
+            selectable: true
+            height: Fit
+            paragraph_spacing: 0.
+            pre_code_spacing: 0.
+            draw_block +: { selection_color: #x2E5BADFF }
+
                             padding: 0.
-                            text: "1 / 7"
+                            body: "1 / 7"
                             draw_text +: {color: Faint text_style: theme.font_bold{font_family: StrongFont font_size: 12.5}}
-                        }
+                        
+        }
                     }
 
                     slides := SlidesView{
@@ -422,9 +542,9 @@ script_mod! {
                                     width: Fill height: Fit
                                     flow: Down
                                     spacing: 22
-                                    Eyebrow{text: "KUMKAJ · SOFTWARE FOR THE SHOP COUNTER"}
-                                    Headline{text: "The internet went down.\nThe counter didn't."}
-                                    Lede{text: "Kumkaj makes business software that runs on your own devices — courier, restaurant, grocery and pharmacy counters, each built for its trade."}
+                                    Eyebrow{body: "KUMKAJ · SOFTWARE FOR THE SHOP COUNTER"}
+                                    Headline{body: "The internet went down.\nThe counter didn't."}
+                                    Lede{body: "Kumkaj makes business software that runs on your own devices — courier, restaurant, grocery and pharmacy counters, each built for its trade."}
                                     hero_ctas := View{
                                         width: Fill height: Fit
                                         flow: Right
@@ -437,30 +557,30 @@ script_mod! {
                                 status_card := Card{
                                     width: 360
                                     spacing: 16
-                                    Small{text: "THIS COUNTER, RIGHT NOW"}
+                                    Small{body: "THIS COUNTER, RIGHT NOW"}
                                     net_row := StatusRow{
                                         dot.draw_bg.color: Bad
-                                        what.text: "Internet"
-                                        state.text: "Down"
+                                        what.body: "Internet"
+                                        state.body: "Down"
                                         state.draw_text.color: Bad
                                     }
-                                    StatusRow{what.text: "Taking orders" state.text: "Yes"}
-                                    StatusRow{what.text: "Bills and dockets" state.text: "Saving"}
-                                    StatusRow{what.text: "Day book" state.text: "Adding up"}
-                                    Small{text: "Nothing on this counter waits for the cloud."}
+                                    StatusRow{what.body: "Taking orders" state.body: "Yes"}
+                                    StatusRow{what.body: "Bills and dockets" state.body: "Saving"}
+                                    StatusRow{what.body: "Day book" state.body: "Adding up"}
+                                    Small{body: "Nothing on this counter waits for the cloud."}
                                 }
                             }
-                            hint := Small{text: "Scroll, swipe up, or press ↓ to read on."}
+                            hint := Small{body: "Scroll, swipe up, or press ↓ to read on."}
                         }
 
                         // 02 — choose your trade
                         trade := Chapter{
-                            Eyebrow{text: "02 · BUILT FOR YOUR TRADE"}
+                            Eyebrow{body: "02 · BUILT FOR YOUR TRADE"}
                             Headline{
                                 draw_text.text_style.font_size: 42.
-                                text: "A desk for each trade.\nNot one app with a switch."
+                                body: "A desk for each trade.\nNot one app with a switch."
                             }
-                            trade_lede := Lede{text: "Not one app with a trade switch. Each product is designed around one kind of counter, in that trade's own words."}
+                            trade_lede := Lede{body: "Not one app with a trade switch. Each product is designed around one kind of counter, in that trade's own words."}
                             cards := View{
                                 width: Fill height: Fit
                                 flow: Down
@@ -472,32 +592,32 @@ script_mod! {
                                     mok := Card{
                                         draw_bg.border_color: #x2A4F9A
                                         RoundedView{width: 44 height: 5 draw_bg +: {color: MokOrange border_radius: 2.5}}
-                                        mok_kicker := Small{text: "COURIER OFFICES · FRANCHISE COUNTERS · OWN RIDERS"}
-                                        CardName{text: "Moklanjo"}
-                                        Strong{text: "Book → label → hand over → track → settle."}
+                                        mok_kicker := Small{body: "COURIER OFFICES · FRANCHISE COUNTERS · OWN RIDERS"}
+                                        CardName{body: "Moklanjo"}
+                                        Strong{body: "Book → label → hand over → track → settle."}
                                         mok_points := View{
                                             width: Fill height: Fit
                                             flow: Down
                                             spacing: 6
-                                            Bullet{line.text: "Next booking in one tap"}
-                                            Bullet{line.text: "Actual or volumetric weight, rounded your way"}
-                                            Bullet{line.text: "Rider cash on delivery: expected against handed in"}
+                                            Bullet{line.body: "Next booking in one tap"}
+                                            Bullet{line.body: "Actual or volumetric weight, rounded your way"}
+                                            Bullet{line.body: "Rider cash on delivery: expected against handed in"}
                                         }
                                         to_moklanjo := GhostBtn{text: "Visit moklanjo.com  →"}
                                     }
                                     kha := Card{
                                         draw_bg.border_color: #x7A2A2A
                                         RoundedView{width: 44 height: 5 draw_bg +: {color: KhaGold border_radius: 2.5}}
-                                        kha_kicker := Small{text: "RESTAURANTS · CAFÉS · QUICK SERVICE · BAKERIES"}
-                                        CardName{text: "Khaynjo"}
-                                        Strong{text: "Table → kitchen → bill → day close."}
+                                        kha_kicker := Small{body: "RESTAURANTS · CAFÉS · QUICK SERVICE · BAKERIES"}
+                                        CardName{body: "Khaynjo"}
+                                        Strong{body: "Table → kitchen → bill → day close."}
                                         kha_points := View{
                                             width: Fill height: Fit
                                             flow: Down
                                             spacing: 6
-                                            Bullet{line.text: "Every table's minutes and bill at a glance"}
-                                            Bullet{line.text: "One KOT per kitchen station — never prices"}
-                                            Bullet{line.text: "Cash, UPI, part payment, Due and tip"}
+                                            Bullet{line.body: "Every table's minutes and bill at a glance"}
+                                            Bullet{line.body: "One KOT per kitchen station — never prices"}
+                                            Bullet{line.body: "Cash, UPI, part payment, Due and tip"}
                                         }
                                         to_khaynjo := GhostBtn{text: "Visit khaynjo.com  →"}
                                     }
@@ -509,32 +629,32 @@ script_mod! {
                                     kir := Card{
                                         draw_bg.border_color: #xCD380E
                                         RoundedView{width: 44 height: 5 draw_bg +: {color: #xF96303 border_radius: 2.5}}
-                                        Small{text: "KIRANA · GROCERY · NEIGHBOURHOOD SHOPS"}
-                                        CardName{text: "Kirano"}
-                                        Strong{text: "Sell → khata → stock → day book."}
+                                        Small{body: "KIRANA · GROCERY · NEIGHBOURHOOD SHOPS"}
+                                        CardName{body: "Kirano"}
+                                        Strong{body: "Sell → khata → stock → day book."}
                                         View{
                                             width: Fill height: Fit
                                             flow: Down
                                             spacing: 6
-                                            Bullet{line.text: "Fast counter sell with short codes"}
-                                            Bullet{line.text: "Customer credit and supplier dues"}
-                                            Bullet{line.text: "Buy into stock — offline forever"}
+                                            Bullet{line.body: "Fast counter sell with short codes"}
+                                            Bullet{line.body: "Customer credit and supplier dues"}
+                                            Bullet{line.body: "Buy into stock — offline forever"}
                                         }
                                         to_kirano := GhostBtn{text: "Visit kirano.shop  →"}
                                     }
                                     tab := Card{
                                         draw_bg.border_color: #x023637
                                         RoundedView{width: 44 height: 5 draw_bg +: {color: #x37BE28 border_radius: 2.5}}
-                                        Small{text: "CHEMISTS · PHARMACY COUNTERS"}
-                                        CardName{text: "Tabiyat"}
-                                        Strong{text: "Medicine → batch → bill → day close."}
+                                        Small{body: "CHEMISTS · PHARMACY COUNTERS"}
+                                        CardName{body: "Tabiyat"}
+                                        Strong{body: "Medicine → batch → bill → day close."}
                                         View{
                                             width: Fill height: Fit
                                             flow: Down
                                             spacing: 6
-                                            Bullet{line.text: "Barcode and salt / composition search"}
-                                            Bullet{line.text: "Batch and expiry alerts on purchases"}
-                                            Bullet{line.text: "Owner Schedule H / Rx notes — not fake compliance"}
+                                            Bullet{line.body: "Barcode and salt / composition search"}
+                                            Bullet{line.body: "Batch and expiry alerts on purchases"}
+                                            Bullet{line.body: "Owner Schedule H / Rx notes — not fake compliance"}
                                         }
                                         to_tabiyat := GhostBtn{text: "Visit tabiyat.shop  →"}
                                     }
@@ -544,35 +664,35 @@ script_mod! {
 
                         // 03 — your books stay with you
                         books := Chapter{
-                            Eyebrow{text: "03 · YOUR BOOKS STAY WITH YOU"}
-                            Headline{text: "Your books live in your shop."}
-                            books_lede := Lede{text: "Sales, parties and the day book are written on the device at your counter — not on a server you rent."}
+                            Eyebrow{body: "03 · YOUR BOOKS STAY WITH YOU"}
+                            Headline{body: "Your books live in your shop."}
+                            books_lede := Lede{body: "Sales, parties and the day book are written on the device at your counter — not on a server you rent."}
                             tiles := View{
                                 width: Fill height: Fit
                                 flow: Right
                                 spacing: 18
                                 Card{
-                                    Strong{text: "On your device"}
-                                    Body{text: "Every sale, payment and docket is saved on the computer or tablet you own."}
+                                    Strong{body: "On your device"}
+                                    Body{body: "Every sale, payment and docket is saved on the computer or tablet you own."}
                                 }
                                 Card{
-                                    Strong{text: "No account with us"}
-                                    Body{text: "Install it and start. No sign-up, no card on file."}
+                                    Strong{body: "No account with us"}
+                                    Body{body: "Install it and start. No sign-up, no card on file."}
                                 }
                                 Card{
-                                    Strong{text: "Copies you keep"}
-                                    Body{text: "Save a backup copy whenever you like. It is a file, and it is yours."}
+                                    Strong{body: "Copies you keep"}
+                                    Body{body: "Save a backup copy whenever you like. It is a file, and it is yours."}
                                 }
                             }
                             // Shown only after the owner's real-hardware LAN pilot passes (main.rs LAN_PILOT_PASSED).
-                            books_lan := Body{visible: false text: "Extra counters and tablets join over your own Wi‑Fi — with no internet in between."}
+                            books_lan := Body{visible: false body: "Extra counters and tablets join over your own Wi‑Fi — with no internet in between."}
                         }
 
                         // 04 — the toy: cut the internet
                         offline := Chapter{
-                            Eyebrow{text: "04 · TRY IT"}
-                            Headline{text: "Pull the plug on the internet."}
-                            offline_lede := Lede{text: "Kumkaj apps don't phone home to work. Cut the internet and watch what changes at the counter."}
+                            Eyebrow{body: "04 · TRY IT"}
+                            Headline{body: "Pull the plug on the internet."}
+                            offline_lede := Lede{body: "Kumkaj apps don't phone home to work. Cut the internet and watch what changes at the counter."}
                             toy := Card{
                                 width: Fill
                                 spacing: 14
@@ -582,22 +702,22 @@ script_mod! {
                                     spacing: 14
                                     align: Align{y: 0.5}
                                     toggle := PrimaryBtn{text: "Cut the internet"}
-                                    net_state := Strong{width: Fill text: "Internet: on"}
+                                    net_state := Strong{width: Fill body: "Internet: on"}
                                 }
-                                StatusRow{what.text: "Book a parcel or take an order" state.text: "Working"}
-                                StatusRow{what.text: "Save the bill or docket" state.text: "Working"}
-                                StatusRow{what.text: "Day book totals" state.text: "Working"}
-                                StatusRow{what.text: "Find an old sale" state.text: "Working"}
-                                verdict := Strong{text: "The internet is on — and the counter isn't using it."}
+                                StatusRow{what.body: "Book a parcel or take an order" state.body: "Working"}
+                                StatusRow{what.body: "Save the bill or docket" state.body: "Working"}
+                                StatusRow{what.body: "Day book totals" state.body: "Working"}
+                                StatusRow{what.body: "Find an old sale" state.body: "Working"}
+                                verdict := Strong{body: "The internet is on — and the counter isn't using it."}
                             }
-                            offline_note := Small{text: "Things that leave the shop, like a WhatsApp receipt, still need the internet to arrive."}
+                            offline_note := Small{body: "Things that leave the shop, like a WhatsApp receipt, still need the internet to arrive."}
                         }
 
                         // 05 — price
                         free := Chapter{
-                            Eyebrow{text: "05 · PRICE"}
-                            Headline{text: "Free forever on your devices."}
-                            Lede{text: "No charge per seat, user, table, rider, parcel or local device. Not a trial."}
+                            Eyebrow{body: "05 · PRICE"}
+                            Headline{body: "Free forever on your devices."}
+                            Lede{body: "No charge per seat, user, table, rider, parcel or local device. Not a trial."}
                             prices := Card{
                                 width: Fill
                                 spacing: 16
@@ -606,12 +726,19 @@ script_mod! {
                                     flow: Right
                                     spacing: 16
                                     align: Align{y: 0.5}
-                                    Strong{width: Fill text: "On your own devices"}
-                                    Label{
+                                    Strong{width: Fill body: "On your own devices"}
+                                    Markdown{
+            selectable: true
+            height: Fit
+            paragraph_spacing: 0.
+            pre_code_spacing: 0.
+            draw_block +: { selection_color: #x2E5BADFF }
+
                                         padding: 0.
-                                        text: "₹0, forever"
+                                        body: "₹0, forever"
                                         draw_text +: {color: Good text_style: theme.font_bold{font_family: DisplayFont font_size: 26.}}
-                                    }
+                                    
+        }
                                 }
                                 RoundedView{width: Fill height: 1 draw_bg +: {color: Rule border_radius: 0.}}
                                 View{
@@ -623,66 +750,73 @@ script_mod! {
                                         width: Fill height: Fit
                                         flow: Down
                                         spacing: 4
-                                        Strong{text: "Kumkaj Cloud"}
-                                        Body{text: "Pay only for what you use — the same rates for everyone."}
+                                        Strong{body: "Kumkaj Cloud"}
+                                        Body{body: "Pay only for what you use — the same rates for everyone."}
                                     }
                                     RoundedView{
                                         width: Fit height: Fit
                                         padding: Inset{left: 12. right: 12. top: 6. bottom: 7.}
                                         draw_bg +: {color: #x00000000 border_color: Clay border_size: 1.2 border_radius: 12.}
-                                        Label{
+                                        Markdown{
+            selectable: true
+            height: Fit
+            paragraph_spacing: 0.
+            pre_code_spacing: 0.
+            draw_block +: { selection_color: #x2E5BADFF }
+
                                             padding: 0.
-                                            text: "Planned"
+                                            body: "Planned"
                                             draw_text +: {color: Clay text_style: theme.font_bold{font_family: StrongFont font_size: 13.}}
-                                        }
+                                        
+        }
                                     }
                                 }
                             }
-                            Small{text: "Cloud is planned and optional. The counter works without it."}
+                            Small{body: "Cloud is planned and optional. The counter works without it."}
                         }
 
                         // 06 — languages (real Khaynjo floor words, locale_chrome tile_food_ready)
                         languages := Chapter{
-                            Eyebrow{text: "06 · LANGUAGES"}
-                            Headline{text: "Speaks your staff's language."}
-                            Lede{text: "29 languages on screen, with Arabic and Urdu right to left. One floor word — “Food ready” — as Khaynjo shows it:"}
+                            Eyebrow{body: "06 · LANGUAGES"}
+                            Headline{body: "Speaks your staff's language."}
+                            Lede{body: "29 languages on screen, with Arabic and Urdu right to left. One floor word — “Food ready” — as Khaynjo shows it:"}
                             words := View{
                                 width: Fill height: Fit
                                 flow: Right{wrap: true}
                                 spacing: 12
-                                WordChip{lang.text: "हिन्दी" word.text: "खाना तैयार"}
-                                WordChip{lang.text: "ગુજરાતી" word.text: "જમવાનું તૈયાર"}
-                                WordChip{lang.text: "தமிழ்" word.text: "உணவு தயார்"}
-                                WordChip{lang.text: "বাংলা" word.text: "খাবার তৈরি"}
-                                WordChip{lang.text: "اردو" word.text: "کھانا تیار"}
-                                WordChip{lang.text: "English" word.text: "Food ready"}
+                                WordChip{lang.body: "हिन्दी" word.body: "खाना तैयार"}
+                                WordChip{lang.body: "ગુજરાતી" word.body: "જમવાનું તૈયાર"}
+                                WordChip{lang.body: "தமிழ்" word.body: "உணவு தயார்"}
+                                WordChip{lang.body: "বাংলা" word.body: "খাবার তৈরি"}
+                                WordChip{lang.body: "اردو" word.body: "کھانا تیار"}
+                                WordChip{lang.body: "English" word.body: "Food ready"}
                             }
-                            Small{text: "Same shaping engine as the apps, so joined letters and right-to-left lines come out right."}
+                            Small{body: "Same shaping engine as the apps, so joined letters and right-to-left lines come out right."}
                         }
 
                         // 07 — who makes it, and the choice again
                         gotigin := Chapter{
-                            Eyebrow{text: "07 · WHO MAKES IT"}
-                            Headline{text: "Made by Gotigin."}
-                            gotigin_lede := Lede{text: "Gotigin is the company. Kumkaj is its family of business software. Moklanjo and Khaynjo are the products you install."}
+                            Eyebrow{body: "07 · WHO MAKES IT"}
+                            Headline{body: "Made by Gotigin."}
+                            gotigin_lede := Lede{body: "Gotigin is the company. Kumkaj is its family of business software. Moklanjo and Khaynjo are the products you install."}
                             map := View{
                                 width: Fill height: Fit
                                 flow: Right
                                 spacing: 10
                                 align: Align{y: 0.5}
-                                MapNode{role.text: "COMPANY" name.text: "Gotigin"}
+                                MapNode{role.body: "COMPANY" name.body: "Gotigin"}
                                 arrow_1 := MapArrow{}
-                                MapNode{role.text: "THE BRAND" name.text: "Kumkaj"}
+                                MapNode{role.body: "THE BRAND" name.body: "Kumkaj"}
                                 arrow_2 := MapArrow{}
                                 MapNode{
                                     draw_bg.border_color: #x2A4F9A
-                                    role.text: "FOR COURIER OFFICES"
-                                    name.text: "Moklanjo"
+                                    role.body: "FOR COURIER OFFICES"
+                                    name.body: "Moklanjo"
                                 }
                                 MapNode{
                                     draw_bg.border_color: #x7A2A2A
-                                    role.text: "FOR RESTAURANTS"
-                                    name.text: "Khaynjo"
+                                    role.body: "FOR RESTAURANTS"
+                                    name.body: "Khaynjo"
                                 }
                             }
                             close_ctas := View{
@@ -694,7 +828,7 @@ script_mod! {
                                 close_kirano := PrimaryBtn{text: "Kirano — grocery counter  →"}
                                 close_tabiyat := PrimaryBtn{text: "Tabiyat — pharmacy counter  →"}
                             }
-                            Small{text: "Moklanjo and Khaynjo are Kumkaj products by Gotigin."}
+                            Small{body: "Moklanjo and Khaynjo are Kumkaj products by Gotigin."}
                         }
                     }
                 }

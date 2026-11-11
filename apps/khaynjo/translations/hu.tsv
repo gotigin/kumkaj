@@ -182,6 +182,7 @@ snack_secs_save	Takarítson meg riasztási időt
 snack_secs_saved	Mentett riasztási idő — {n} másodperc
 settings_sec_backup	Biztonsági mentés és visszaállítás
 settings_sec_diag	Diagnosztika
+settings_sec_privacy	Privacy
 diag_privacy_help	A naplók ezen az eszközön maradnak. A titkok (PIN, jelszavak) soha nem tárolódnak. Egy csomagnak az eszközön kívüli megosztásához minden alkalommal az Ön kifejezett jóváhagyása szükséges – soha nem adják el vagy adják harmadik félnek.
 diag_level	Részletes szint
 diag_level_error	Hibák
@@ -344,6 +345,15 @@ app_template_apply	Rajdhani Alkalmazássablon
 app_template_skip	Most hagyd ki
 app_template_status	A szerver készen áll – alkalmazza a Rajdhani alkalmazássablont, vagy hagyja ki
 app_template_importing	{title} alkalmazása…
+app_template_downloading	Downloading template…
+app_template_public_hdr	Public templates
+app_template_private_hdr	Private template
+app_template_public_hint	Open this section to load the public list (needs internet once).
+app_template_code_not_found	Code not found
+app_template_need_internet	Need internet to download templates
+app_template_import_selected	Import selected
+app_template_check_code	Check code
+app_template_import	Import
 currency	Pénznem
 backup	Biztonsági mentés
 use	Használja
@@ -782,6 +792,11 @@ find_printers	Keressen nyomtatókat
 printers_looking	Keresi…
 saving_printer	Nyomtató hozzáadása…
 cancelled	Törölve
+cancelling	Cancellingâ¦
+removing	Removing…
+removed	Removed
+updating_order	Updating…
+order_updated	Order updated
 printers_tap_find	Érintse meg a Keresés lehetőséget az eszköz által használható nyomtatók listájához.
 printers_none_found	Nem található – írja be a rendszernyomtató nevét vagy IP-címét (pl. 192.168.1.50).
 printer_from_find	Hozzáadva {name}
@@ -1349,10 +1364,3 @@ recent_changes	Legutóbbi változások
 lane_declared_label	Adószámla
 lane_owner_label	Készpénzes feljegyzés
 money_lane_bill	Számla: {lane}
-
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
-
-cancelling	Cancellingâ¦

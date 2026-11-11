@@ -114,6 +114,12 @@ copy_app_menu_assets_if_present() {
   local out="${1:?}"
   local items="${KUMKAJ_APP_DIR:?}/assets/items"
   local templates="${KUMKAJ_APP_DIR}/assets/templates"
+  # Remote catalogue apps (Khaynjo): keep source trees for publish/tests, do not
+  # ship ~100MB+ shelf into MSI / portable / Linux packages.
+  if [[ -f "${KUMKAJ_APP_DIR}/assets/CATALOGUE_REMOTE" ]]; then
+    echo "Skipping menu asset staging (CATALOGUE_REMOTE) for ${KUMKAJ_APP_DIR}"
+    return 0
+  fi
   if [[ ! -d "$items" ]]; then
     return 0
   fi

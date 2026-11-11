@@ -1318,16 +1318,35 @@ impl Store {
             .unwrap_or(true))
     }
 
-    /// One-shot post-create offer (Rajdhani App Template) before Owner PIN.
-    pub fn rajdhani_app_template_done(&self) -> Result<bool, String> {
+    /// One-shot DeviceSetup catalogue offer before Owner PIN.
+    /// Reads `app_template_offer_done`, falling back to legacy `rajdhani_app_template_done`.
+    pub fn app_template_offer_done(&self) -> Result<bool, String> {
+        if self
+            .meta_get("app_template_offer_done")?
+            .map(|v| v.trim() == "1")
+            .unwrap_or(false)
+        {
+            return Ok(true);
+        }
         Ok(self
             .meta_get("rajdhani_app_template_done")?
             .map(|v| v.trim() == "1")
             .unwrap_or(false))
     }
 
-    pub fn set_rajdhani_app_template_done(&self) -> Result<(), String> {
+    pub fn set_app_template_offer_done(&self) -> Result<(), String> {
+        self.meta_set("app_template_offer_done", "1")?;
+        // Keep legacy key so older builds / migrations still see "done".
         self.meta_set("rajdhani_app_template_done", "1")
+    }
+
+    /// Legacy alias — prefer [`Self::app_template_offer_done`].
+    pub fn rajdhani_app_template_done(&self) -> Result<bool, String> {
+        self.app_template_offer_done()
+    }
+
+    pub fn set_rajdhani_app_template_done(&self) -> Result<(), String> {
+        self.set_app_template_offer_done()
     }
 
     /// Shops that already applied Rajdhani before till-chrome prefs existed get
@@ -1464,13 +1483,33 @@ impl Store {
         Ok(())
     }
 
-    /// Full Rajdhani App Template: menu import + shop defaults.
+    /// Full Rajdhani App Template: menu import + shop defaults (bundled path).
     pub fn apply_rajdhani_app_template(&self) -> Result<CatalogueImport, String> {
         self.assert_server_writer("Apply Rajdhani App Template")?;
         let tmpl = crate::menu_templates::find("rajdhani")
             .ok_or_else(|| "Rajdhani menu template missing".to_string())?;
         let summary = self.import_menu_template(tmpl)?;
         self.apply_rajdhani_shop_defaults()?;
+        Ok(summary)
+    }
+
+    /// Apply a downloaded catalogue pack: menu import + optional shop defaults.
+    pub fn apply_app_template_pack(
+        &self,
+        pack_dir: &std::path::Path,
+        shop_defaults_id: Option<&str>,
+    ) -> Result<CatalogueImport, String> {
+        self.assert_server_writer("Apply app template")?;
+        let tmpl = crate::menu_templates::load_from_dir(pack_dir)
+            .ok_or_else(|| format!("No template.json in {}", pack_dir.display()))?;
+        let summary = self.import_menu_template_in(&tmpl, Some(pack_dir))?;
+        match shop_defaults_id.map(str::trim).filter(|s| !s.is_empty()) {
+            Some("rajdhani") => self.apply_rajdhani_shop_defaults()?,
+            Some(other) => {
+                return Err(format!("Unknown shop defaults id '{other}'"));
+            }
+            None => {}
+        }
         Ok(summary)
     }
 
@@ -6725,7 +6764,23 @@ impl Store {
         &self,
         tmpl: &crate::menu_templates::MenuTemplate,
     ) -> Result<CatalogueImport, String> {
+        self.import_menu_template_in(tmpl, None)
+    }
+
+    /// Like [`Self::import_menu_template`], resolving images from `pack_dir` when set
+    /// (remote catalogue cache).
+    pub fn import_menu_template_in(
+        &self,
+        tmpl: &crate::menu_templates::MenuTemplate,
+        pack_dir: Option<&std::path::Path>,
+    ) -> Result<CatalogueImport, String> {
         self.assert_server_writer("Import a menu template")?;
+        let resolve = |image: &str| -> Option<std::path::PathBuf> {
+            match pack_dir {
+                Some(dir) => tmpl.resolve_image_in(dir, image),
+                None => tmpl.resolve_image(image),
+            }
+        };
         let mut summary = CatalogueImport::default();
         let total = tmpl
             .categories
@@ -6756,7 +6811,7 @@ impl Store {
                 Some(c) => {
                     let _ = self.set_category_aliases_if_empty(&c.id, &cat_spec.aliases);
                     if c.image_key.is_empty() {
-                        if let Some(path) = tmpl.resolve_image(&cat_spec.image) {
+                        if let Some(path) = resolve(&cat_spec.image) {
                             let _ = self.set_category_photo_if_missing(&c.id, &path);
                         }
                     }
@@ -6765,7 +6820,7 @@ impl Store {
                 None => {
                     let mut c = self.add_category(cat_name)?;
                     let _ = self.set_category_aliases_if_empty(&c.id, &cat_spec.aliases);
-                    if let Some(path) = tmpl.resolve_image(&cat_spec.image) {
+                    if let Some(path) = resolve(&cat_spec.image) {
                         if let Ok(key) = self.import_category_image(&c.id, &path) {
                             self.set_category_image(&c.id, &key)?;
                             c.image_key = key;
@@ -6801,7 +6856,7 @@ impl Store {
                 if !item.aliases.is_empty() {
                     p.set_aliases(&item.aliases);
                 }
-                if let Some(path) = tmpl.resolve_image(&item.image) {
+                if let Some(path) = resolve(&item.image) {
                     if let Ok(key) = self.import_item_image(&p.id, &path) {
                         p.image_key = Some(key);
                     }
@@ -15744,6 +15799,21 @@ mod tests {
         assert!(store.authenticate_owner_pin("1357").unwrap().is_some());
         assert!(store.authenticate_owner_pin("0000").unwrap().is_none());
         assert!(store.complete_owner_setup("9999").is_err());
+        let _ = std::fs::remove_file(path);
+    }
+
+    #[test]
+    fn app_template_offer_done_falls_back_to_legacy_rajdhani_meta() {
+        let path = temp_db();
+        let store = Store::open_path(&path).unwrap();
+        assert!(!store.app_template_offer_done().unwrap());
+        store.meta_set("rajdhani_app_template_done", "1").unwrap();
+        assert!(store.app_template_offer_done().unwrap());
+        store.set_app_template_offer_done().unwrap();
+        assert_eq!(
+            store.meta_get("app_template_offer_done").unwrap().as_deref(),
+            Some("1")
+        );
         let _ = std::fs::remove_file(path);
     }
 

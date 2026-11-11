@@ -1403,6 +1403,7 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             (ids!(settings_panel_alerts), "alerts"),
             (ids!(settings_panel_backup), "backup"),
             (ids!(settings_panel_diag), "diag"),
+            (ids!(settings_panel_privacy), "privacy"),
         ];
         for (id, key) in panels {
             self.ui
@@ -1451,6 +1452,7 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
                 (ids!(settings_hub_alerts), "settings_sec_alerts"),
                 (ids!(settings_hub_backup), "settings_sec_backup"),
                 (ids!(settings_hub_diag), "settings_sec_diag"),
+                (ids!(settings_hub_privacy), "settings_sec_privacy"),
                 (ids!(settings_hub_sidebar), "sidebar_settings"),
             ] {
                 self.ui.button(cx, id).set_text(cx, &s(key));
@@ -1506,8 +1508,24 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         if panel == Some("diag") {
             self.sync_diag_panel(cx);
         }
+        if panel == Some("privacy") {
+            self.paint_privacy_panel(cx);
+        }
         // Hub ↔ section: always refresh ‹ (do not rely on a later full sync_chrome).
         self.paint_header_back_chrome(cx);
+    }
+
+    /// Settings → Privacy: same `PRIVACY.md` as the website, rendered as Markdown
+    /// (WrapLabel → Makepad Markdown / pulldown-cmark), not raw source.
+    fn paint_privacy_panel(&mut self, cx: &mut Cx) {
+        let title = app_state().lock().unwrap().t("settings_sec_privacy");
+        self.ui
+            .widget(cx, ids!(h_privacy))
+            .set_text(cx, &plain_display_text(&title));
+        // Feed Markdown source; the widget presents headings/lists/links.
+        self.ui
+            .widget(cx, ids!(privacy_body))
+            .set_text(cx, privacy_policy::PRIVACY_MD);
     }
 
     /// Show one Settings section (or the hub with `None`). Lightweight — no
@@ -1540,6 +1558,9 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         }
         if panel == Some("backup") {
             self.paint_backup_status(cx);
+        }
+        if panel == Some("privacy") {
+            self.paint_privacy_panel(cx);
         }
         if panel == Some("units") {
             let units_rows = {

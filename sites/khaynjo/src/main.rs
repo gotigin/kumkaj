@@ -32,11 +32,12 @@ include!("ui.rs");
 /// §3; KHAYNJO_WEBSITE.md §5 "Gate").
 const LAN_PILOT_PASSED: bool = false;
 
-/// Download links go live only after the installers pass a clean-machine
-/// install. Until then the button says so instead of linking.
-const DOWNLOADS_LIVE: bool = false;
-/// Where "Download free" goes once `DOWNLOADS_LIVE` is true.
-const DOWNLOAD_URL: &str = "https://khaynjo.com/download";
+/// Play listing is live (`com.khaynjo`). Desktop installers still land on
+/// the download page when we publish MSI/AUR packages there.
+const DOWNLOADS_LIVE: bool = true;
+/// "Download free" → Google Play (Android). Desktop packages stay on
+/// khaynjo.com/download when that page ships installers.
+const DOWNLOAD_URL: &str = "https://play.google.com/store/apps/details?id=com.khaynjo";
 
 /// TODO(owner): Khaynjo's WhatsApp Business number — digits only, with the
 /// country code (no "+", no spaces). Agents must not invent one. Until it
@@ -118,7 +119,7 @@ const TILE_LAYERS: [LiveId; 7] = [
 /// this wide (px), and stack otherwise — width-based, not tier-based: a
 /// fixed prop beside a headline needs its own width plus a readable text
 /// column whatever the device.
-const ROWS: [(&[LiveId], f64); 12] = [
+const ROWS: [(&[LiveId], f64); 16] = [
     (ids!(rush.rush_row), 1024.0),
     (ids!(rush.rush_cta.buttons), 420.0),
     (ids!(order.order_row), 760.0),
@@ -129,6 +130,10 @@ const ROWS: [(&[LiveId], f64); 12] = [
     (ids!(settle.settle_row), 800.0),
     (ids!(dayclose.close_row), 760.0),
     (ids!(menu.menu_row), 760.0),
+    (ids!(menu.menu_row_b), 760.0),
+    (ids!(menu.menu_row_c), 760.0),
+    (ids!(menu.menu_row_d), 760.0),
+    (ids!(menu.menu_row_e), 760.0),
     (ids!(start.close_cta.buttons), 420.0),
     (ids!(start.footer), 480.0),
 ];
@@ -144,7 +149,7 @@ const DETAIL_WHEN_STACKED: [&[LiveId]; 4] = [
     ids!(settle.settle_points),
     ids!(dayclose.close_points),
 ];
-const DETAIL_ON_PHONE: [&[LiveId]; 6] = [
+const DETAIL_ON_PHONE: [&[LiveId]; 9] = [
     ids!(changes.changes_note),
     // A phone floor shows four tables (two by two).
     ids!(floor.t3),
@@ -152,12 +157,18 @@ const DETAIL_ON_PHONE: [&[LiveId]; 6] = [
     ids!(kot.kot_points),
     ids!(menu.menu_note),
     ids!(rush.floor_note),
+    ids!(rush.rush_banner),
+    ids!(start.start_banner),
+    ids!(start.start_shots),
 ];
 /// Detail a short, not-wide window (under 860 px tall and 1200 px wide,
 /// e.g. a 1024 × 768 laptop) drops so the chapter's buttons stay on
 /// screen. Wider short windows (1280 × 720, 1366 × 768) fit everything.
-const DETAIL_WHEN_SHORT: [&[LiveId]; 1] = [
+const DETAIL_WHEN_SHORT: [&[LiveId]; 4] = [
     ids!(settle.settle_free),
+    ids!(rush.rush_banner),
+    ids!(start.start_banner),
+    ids!(start.start_shots),
 ];
 const SHORT_BELOW: f64 = 860.0;
 const SHORT_NARROWER_THAN: f64 = 1200.0;
@@ -285,10 +296,10 @@ impl App {
     fn paint_chrome(&mut self, cx: &mut Cx, chapter: usize) {
         self.chapter = chapter;
         self.ui
-            .label(cx, ids!(chapter_name))
+            .widget(cx, ids!(chapter_name))
             .set_text(cx, CHAPTERS[chapter].1);
         self.ui
-            .label(cx, ids!(counter))
+            .widget(cx, ids!(counter))
             .set_text(cx, &format!("{} / {}", chapter + 1, CHAPTERS.len()));
         for (i, [_, idle, here]) in NAV.iter().enumerate() {
             self.ui.view(cx, idle).set_visible(cx, i != chapter);
@@ -330,7 +341,7 @@ impl App {
 
     fn set_cta_notes(&mut self, cx: &mut Cx, text: &str) {
         for path in [ids!(rush.rush_cta.note), ids!(start.close_cta.note)] {
-            self.ui.label(cx, path).set_text(cx, text);
+            self.ui.widget(cx, path).set_text(cx, text);
         }
         self.ui.redraw(cx);
     }
@@ -508,6 +519,8 @@ fn collect_label_sizes(widget: &WidgetRef, out: &mut Vec<f32>) {
     widget.children(&mut |_, child| {
         if let Some(label) = child.borrow::<Label>() {
             out.push(label.draw_text.text_style.font_size);
+        } else if let Some(md) = child.borrow::<Markdown>() {
+            out.push(md.draw_text.text_style.font_size);
         }
         collect_label_sizes(&child, out);
     });
@@ -518,6 +531,17 @@ fn scale_labels(widget: &WidgetRef, tier: Tier, desk: &[f32], next: &mut usize) 
         if let Some(mut label) = child.borrow_mut::<Label>() {
             if let Some(&base) = desk.get(*next) {
                 label.draw_text.text_style.font_size = base * tier.type_scale(base);
+            }
+            *next += 1;
+        } else if let Some(mut md) = child.borrow_mut::<Markdown>() {
+            if let Some(&base) = desk.get(*next) {
+                let scaled = base * tier.type_scale(base);
+                md.font_size = scaled;
+                md.draw_text.text_style.font_size = scaled;
+                md.text_style_normal.font_size = scaled;
+                md.text_style_bold.font_size = scaled;
+                md.text_style_italic.font_size = scaled;
+                md.text_style_bold_italic.font_size = scaled;
             }
             *next += 1;
         }
@@ -667,9 +691,10 @@ mod tests {
     }
 
     #[test]
-    fn owner_switches_ship_closed() {
+    fn owner_switches_match_shipped_state() {
         assert!(WHATSAPP_NUMBER.is_none());
-        assert!(!DOWNLOADS_LIVE);
+        assert!(DOWNLOADS_LIVE);
+        assert!(DOWNLOAD_URL.contains("play.google.com/store/apps/details?id=com.khaynjo"));
         assert!(!LAN_PILOT_PASSED);
     }
 

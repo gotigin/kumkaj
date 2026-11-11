@@ -2,8 +2,10 @@
 
 Application id: `com.khaynjo`  
 Website: https://khaynjo.com  
-Privacy: https://github.com/gotigin/kumkaj/blob/main/apps/khaynjo/docs/PRIVACY.md  
-(Replace with https://khaynjo.com/privacy when the site page is live.)
+Privacy: https://khaynjo.com/privacy
+(Source of truth: `apps/khaynjo/docs/PRIVACY.md` — formatted Markdown
+presentation on the site and in Settings → Privacy; raw source also at
+`/privacy.md` if needed.)
 
 Paste the Short and Full blocks into Play Console. Do **not** publish default
 PINs or demo staff passwords on the public listing.

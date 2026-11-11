@@ -1123,6 +1123,8 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
             "table_actions" => Some(ids!(table_actions_body)),
             "language" => Some(ids!(setup_lang_body)),
             "role" => Some(ids!(setup_role_body)),
+            "public_templates" => Some(ids!(setup_public_tmpl_body)),
+            "private_template" => Some(ids!(setup_private_tmpl_body)),
             _ => None,
         }
     }
@@ -1461,8 +1463,34 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
                 ids!(setup_role_body),
                 "this_device",
             ),
+            (
+                "public_templates",
+                ids!(setup_public_tmpl_hdr),
+                ids!(setup_public_tmpl_body),
+                "app_template_public_hdr",
+            ),
+            (
+                "private_template",
+                ids!(setup_private_tmpl_hdr),
+                ids!(setup_private_tmpl_body),
+                "app_template_private_hdr",
+            ),
         ];
+        let awaiting = app_state()
+            .lock()
+            .unwrap()
+            .awaiting_app_template;
         for (key, hdr, body, caption_key) in sections {
+            // Catalogue accordions only while the post-Server offer is up.
+            let catalogue = *key == "public_templates" || *key == "private_template";
+            if catalogue && !awaiting {
+                self.ui.button(cx, hdr).set_visible(cx, false);
+                self.ui.view(cx, body).set_visible(cx, false);
+                continue;
+            }
+            if catalogue {
+                self.ui.button(cx, hdr).set_visible(cx, true);
+            }
             let open = is_open(key);
             let mark = if open {
                 ACCORDION_MARK_OPEN
@@ -1498,6 +1526,26 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
         self.sync_device_setup_sections(cx);
         // Language accordion is a nested setup layer — show/hide header ‹.
         self.paint_header_back_chrome(cx);
+        if will_open && key == "public_templates" {
+            let need_fetch = {
+                let st = app_state().lock().unwrap();
+                st.awaiting_app_template
+                    && st.catalogue_public.is_empty()
+                    && st.catalogue_public_error.is_empty()
+            };
+            if need_fetch && !catalogue_fetch_busy().load(std::sync::atomic::Ordering::SeqCst) {
+                let base = app_state()
+                    .lock()
+                    .unwrap()
+                    .data_base
+                    .clone()
+                    .or_else(|| store::data_dir().ok());
+                if let Some(base) = base {
+                    catalogue_fetch_job(CatalogueFetchKind::PublicIndex, base);
+                    self.paint_app_template_chrome(cx, true);
+                }
+            }
+        }
     }
 
     /// Docs / debug / LOCAL badges stay out of the day-to-day work surface.

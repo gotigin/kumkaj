@@ -182,6 +182,7 @@ snack_secs_save	د خبرتیا وخت خوندي کړئ
 snack_secs_saved	د خبرتیا وخت خوندي شوی — {n} ثانیې
 settings_sec_backup	بیک اپ او بیا رغونه
 settings_sec_diag	تشخیص
+settings_sec_privacy	Privacy
 diag_privacy_help	څرګند تصویب ته اړتیا لري - هیڅکله نه پلورل کیږي یا دریمې ډلې ته نه ورکول کیږي.
 diag_level	د تفصیل کچه
 diag_level_error	تېروتنې
@@ -344,6 +345,15 @@ app_template_apply	د راجدھاني ایپ ټیمپلیټ
 app_template_skip	د اوس لپاره پریږدئ
 app_template_status	سرور چمتو دی - د راجدھاني ایپ ټیمپلیټ پلي کړئ ، یا پریږدئ
 app_template_importing	درخواست کول {title}...
+app_template_downloading	Downloading template…
+app_template_public_hdr	Public templates
+app_template_private_hdr	Private template
+app_template_public_hint	Open this section to load the public list (needs internet once).
+app_template_code_not_found	Code not found
+app_template_need_internet	Need internet to download templates
+app_template_import_selected	Import selected
+app_template_check_code	Check code
+app_template_import	Import
 currency	اسعارو
 backup	بیک اپ
 use	کارول
@@ -782,6 +792,11 @@ find_printers	چاپګر ومومئ
 printers_looking	په لټه...
 saving_printer	پرنټر اضافه کول...
 cancelled	لغوه شو
+cancelling	Cancellingâ¦
+removing	Removing…
+removed	Removed
+updating_order	Updating…
+order_updated	Order updated
 printers_tap_find	د پرنټرونو لیست کولو لپاره ومومئ ټایپ کړئ چې دا وسیله یې کارولی شي.
 printers_none_found	ونه موندل شو - د سیسټم پرنټر نوم یا IP ټایپ کړئ (د مثال په توګه 50.1.168.192).
 printer_from_find	اضافه شوی {name}
@@ -1349,10 +1364,3 @@ recent_changes	وروستي بدلونونه
 lane_declared_label	د مالیې رسید
 lane_owner_label	نغدي یادداشت
 money_lane_bill	بیل: {lane}
-
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
-
-cancelling	Cancellingâ¦

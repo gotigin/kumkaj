@@ -182,6 +182,7 @@ snack_secs_save	Alerta tiempota waqaychay
 snack_secs_saved	Alerta pacha waqaychasqa — {n} segundos
 settings_sec_backup	Copia de seguridad & kutichiy
 settings_sec_diag	Diagnósticos nisqakuna
+settings_sec_privacy	Privacy
 diag_privacy_help	Logs kay dispositivopi qhipakunku. Pakasqakuna (PIN, contraseñakuna) mana hayk'aqpas waqaychasqachu. Dispositivomanta huk paqueteta rakiyqa sapa kuti sut'i aprobacionniyki necesitan — mana hayk'aqpas ranqhasqachu utaq kimsa kaqkunaman qusqachu.
 diag_level	Nivel de detalle
 diag_level_error	Pantasqakuna
@@ -344,6 +345,15 @@ app_template_apply	Rajdhani App Template
 app_template_skip	Kunankamaqa saltay
 app_template_status	Servidor listo — Rajdhani App Template churay, utaq saltay
 app_template_importing	Aplicaspa {title}...
+app_template_downloading	Downloading template…
+app_template_public_hdr	Public templates
+app_template_private_hdr	Private template
+app_template_public_hint	Open this section to load the public list (needs internet once).
+app_template_code_not_found	Code not found
+app_template_need_internet	Need internet to download templates
+app_template_import_selected	Import selected
+app_template_check_code	Check code
+app_template_import	Import
 currency	Qullqi
 backup	Copia de seguridad
 use	Utilizar
@@ -782,6 +792,11 @@ find_printers	Impresorakunata maskay
 printers_looking	Qhawaspa...
 saving_printer	Impresora yapaspa...
 cancelled	Cancelado
+cancelling	Cancellingâ¦
+removing	Removing…
+removed	Removed
+updating_order	Updating…
+order_updated	Order updated
 printers_tap_find	Maskay ñit’iy kay dispositivo llamk’achiyta atin impresorakunata listanaykipaq.
 printers_none_found	Mana mayqinpas tarisqachu — huk llamkana impresora sutita utaq huk IP qillqay (e.g. 192.168.1.50).
 printer_from_find	Yapachisqa {name}
@@ -1349,10 +1364,3 @@ recent_changes	Kunan pacha tikrakuykuna
 lane_declared_label	Impuesto nisqamanta factura
 lane_owner_label	Memo de efectivo nisqa
 money_lane_bill	Invitado invitado qullqi: {lane}
-
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
-
-cancelling	Cancellingâ¦

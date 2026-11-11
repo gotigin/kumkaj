@@ -182,6 +182,7 @@ snack_secs_save	सूचना वेळ जतन करा
 snack_secs_saved	सूचना वेळ जतन झाली — {n} सेकंद
 settings_sec_backup	बॅकअप व पुनर्स्थापना
 settings_sec_diag	निदान
+settings_sec_privacy	Privacy
 diag_privacy_help	लॉग याच डिव्हाइसवर राहतात. गुपिते (PIN, पासवर्ड) कधीच साठवली जात नाहीत. डिव्हाइसबाहेर पॅकेज पाठवायला प्रत्येक वेळी तुमची स्पष्ट मंजुरी लागते — कधीही विकले किंवा तिसऱ्या पक्षाला दिले जात नाही.
 diag_level	तपशिलाचा स्तर
 diag_level_error	त्रुटी
@@ -344,6 +345,15 @@ app_template_apply	राजधानी ॲप टेम्पलेट
 app_template_skip	आत्ता वगळा
 app_template_status	सर्व्हर तयार — राजधानी ॲप टेम्पलेट लावा, किंवा वगळा
 app_template_importing	{title} लावत आहे…
+app_template_downloading	Downloading template…
+app_template_public_hdr	Public templates
+app_template_private_hdr	Private template
+app_template_public_hint	Open this section to load the public list (needs internet once).
+app_template_code_not_found	Code not found
+app_template_need_internet	Need internet to download templates
+app_template_import_selected	Import selected
+app_template_check_code	Check code
+app_template_import	Import
 currency	चलन
 backup	बॅकअप
 use	वापरा
@@ -782,6 +792,11 @@ find_printers	प्रिंटर शोधा
 printers_looking	या डिव्हाइस आणि Wi‑Fi वर प्रिंटर शोधत आहे…
 saving_printer	प्रिंटर जोडत आहे…
 cancelled	रद्द
+cancelling	Cancellingâ¦
+removing	Removing…
+removed	Removed
+updating_order	Updating…
+order_updated	Order updated
 printers_tap_find	हे डिव्हाइस वापरू शकणारे प्रिंटर पाहण्यासाठी शोधा वर टॅप करा.
 printers_none_found	प्रिंटर सापडले नाहीत — सिस्टम प्रिंटरचे नाव किंवा नेटवर्क पत्ता लिहा (उदा. 192.168.1.50).
 printer_from_find	{name} जोडला
@@ -1349,10 +1364,3 @@ recent_changes	अलीकडील बदल
 lane_declared_label	कर चलन
 lane_owner_label	कॅश मेमो
 money_lane_bill	बिल: {lane}
-
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
-
-cancelling	Cancellingâ¦

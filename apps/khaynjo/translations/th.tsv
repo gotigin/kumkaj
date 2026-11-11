@@ -182,6 +182,7 @@ snack_secs_save	บันทึกเวลาแจ้งเตือน
 snack_secs_saved	บันทึกเวลาแจ้งเตือนแล้ว — {n} วินาที
 settings_sec_backup	สำรองข้อมูลและกู้คืน
 settings_sec_diag	การวินิจฉัย
+settings_sec_privacy	Privacy
 diag_privacy_help	บันทึกจะอยู่บนอุปกรณ์นี้เท่านั้น ข้อมูลลับ (รหัสผ่าน, รหัสผ่าน) จะไม่ถูกเก็บไว้ การแบ่งปันแพ็กเกจออกจากอุปกรณ์ต้องการการอนุมัติของคุณทุกครั้ง — ไม่เคยขายหรือมอบให้บุคคลที่สาม
 diag_level	ระดับรายละเอียด
 diag_level_error	ข้อผิดพลาด
@@ -344,6 +345,15 @@ app_template_apply	แม่แบบแอป Rajdhani
 app_template_skip	ข้ามไปก่อน
 app_template_status	พนักงานเสิร์ฟพร้อมแล้ว — ใช้แม่แบบแอป Rajdhani หรือข้าม
 app_template_importing	กำลังใช้ {title}…
+app_template_downloading	Downloading template…
+app_template_public_hdr	Public templates
+app_template_private_hdr	Private template
+app_template_public_hint	Open this section to load the public list (needs internet once).
+app_template_code_not_found	Code not found
+app_template_need_internet	Need internet to download templates
+app_template_import_selected	Import selected
+app_template_check_code	Check code
+app_template_import	Import
 currency	สกุลเงิน
 backup	สำรองข้อมูล
 use	ใช้
@@ -782,6 +792,11 @@ find_printers	ค้นหาเครื่องพิมพ์
 printers_looking	กำลังค้นหาเครื่องพิมพ์บนอุปกรณ์นี้และ Wi‑Fi…
 saving_printer	กำลังเพิ่มเครื่องพิมพ์…
 cancelled	ยกเลิก
+cancelling	Cancellingâ¦
+removing	Removing…
+removed	Removed
+updating_order	Updating…
+order_updated	Order updated
 printers_tap_find	แตะค้นหาเพื่อแสดงเครื่องพิมพ์ที่อุปกรณ์นี้ใช้ได้
 printers_none_found	ไม่พบเครื่องพิมพ์ — พิมพ์ชื่อระบบหรือที่อยู่เครือข่าย (เช่น 192.168.1.50)
 printer_from_find	เพิ่ม {name} แล้ว
@@ -1349,10 +1364,3 @@ recent_changes	การเปลี่ยนแปลงล่าสุด
 lane_declared_label	ใบกำกับภาษี
 lane_owner_label	เมโมเงินสด
 money_lane_bill	ใบแจ้งหนี้: {lane}
-
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
-
-cancelling	Cancellingâ¦

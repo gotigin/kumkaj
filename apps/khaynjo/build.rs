@@ -129,9 +129,16 @@ fn bake_translations(manifest_dir: &PathBuf) {
 
 /// Paths under `assets/items` + `assets/templates` for Android first-run extract
 /// from the APK (desktop already stages those folders beside the exe).
+/// Empty when `assets/CATALOGUE_REMOTE` is present (downloadable catalogue).
 fn write_android_menu_assets_file_list(manifest_dir: &PathBuf) {
     let out_dir = PathBuf::from(env::var("OUT_DIR").unwrap());
     let list_path = out_dir.join("menu_assets_file_list.txt");
+    let remote = manifest_dir.join("assets").join("CATALOGUE_REMOTE");
+    println!("cargo:rerun-if-changed={}", remote.display());
+    if remote.is_file() {
+        fs::write(&list_path, "").expect("write empty menu_assets_file_list.txt");
+        return;
+    }
     let mut lines: Vec<String> = Vec::new();
     for sub in ["items", "templates"] {
         let root = manifest_dir.join("assets").join(sub);

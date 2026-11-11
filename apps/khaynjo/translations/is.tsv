@@ -182,6 +182,7 @@ snack_secs_save	Sparaðu viðvörunartíma
 snack_secs_saved	Viðvörunartími vistaður — {n} sekúndur
 settings_sec_backup	Afrita og endurheimta
 settings_sec_diag	Greining
+settings_sec_privacy	Privacy
 diag_privacy_help	Skrár verða áfram á þessu tæki. Leyndarmál (PIN, lykilorð) eru aldrei geymd. Til að deila pakka utan tækisins þarf skýrt samþykki þitt í hvert skipti - aldrei selt eða gefið þriðja aðila.
 diag_level	Smáatriði stig
 diag_level_error	Villur
@@ -344,6 +345,15 @@ app_template_apply	Rajdhani Sniðmát fyrir forrit
 app_template_skip	Slepptu í bili
 app_template_status	Server tilbúinn - notaðu Rajdhani forritasniðmát eða slepptu því
 app_template_importing	Er að sækja um {title}…
+app_template_downloading	Downloading template…
+app_template_public_hdr	Public templates
+app_template_private_hdr	Private template
+app_template_public_hint	Open this section to load the public list (needs internet once).
+app_template_code_not_found	Code not found
+app_template_need_internet	Need internet to download templates
+app_template_import_selected	Import selected
+app_template_check_code	Check code
+app_template_import	Import
 currency	Gjaldmiðill
 backup	Afritun
 use	Notaðu
@@ -782,6 +792,11 @@ find_printers	Finndu prentara
 printers_looking	Er að skoða…
 saving_printer	Bætir prentara við...
 cancelled	Hætt við
+cancelling	Cancellingâ¦
+removing	Removing…
+removed	Removed
+updating_order	Updating…
+order_updated	Order updated
 printers_tap_find	Pikkaðu á Finna til að skrá prentara sem þetta tæki getur notað.
 printers_none_found	Ekkert fannst — sláðu inn heiti kerfisprentara eða IP (t.d. 192.168.1.50).
 printer_from_find	Bætt við {name}
@@ -1349,10 +1364,3 @@ recent_changes	Nýlegar breytingar
 lane_declared_label	Skattreikningur
 lane_owner_label	Peningabréf
 money_lane_bill	Reikningur: {lane}
-
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
-
-cancelling	Cancellingâ¦

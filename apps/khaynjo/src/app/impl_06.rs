@@ -390,14 +390,21 @@ impl App {
         self.maybe_smoke_auto_unlock(cx);
     }
 
-    /// Brand-new Server before Owner PIN, and the Rajdhani menu template ships.
+    /// Brand-new Server before Owner PIN — remote catalogue offer.
     fn should_offer_app_template(st: &AppState) -> bool {
+        // Isolated UI smoke jumps straight to Owner PIN / unlock.
+        if matches!(
+            std::env::var("KUMKAJ_SMOKE_AUTO_SERVER").ok().as_deref(),
+            Some("1" | "true" | "yes" | "on")
+        ) || std::env::var("KUMKAJ_SMOKE_AUTO_UNLOCK").is_ok()
+        {
+            return false;
+        }
         !st.owner_setup_complete
-            && menu_templates::find("rajdhani").is_some()
             && !st
                 .store
                 .as_ref()
-                .and_then(|s| s.rajdhani_app_template_done().ok())
+                .and_then(|s| s.app_template_offer_done().ok())
                 .unwrap_or(false)
     }
 
@@ -407,6 +414,13 @@ impl App {
         st.must_confirm_device_role = false;
         st.picking_server = false;
         st.awaiting_app_template = true;
+        st.catalogue_public.clear();
+        st.catalogue_public_error.clear();
+        st.catalogue_private_code.clear();
+        st.catalogue_private_title.clear();
+        st.catalogue_pending_defaults.clear();
+        st.catalogue_selected_public_id = None;
+        st.device_setup_sections_open = vec!["public_templates".into()];
         st.pin_buffer.clear();
         st.nav_back.clear();
         st.nav_forward.clear();
@@ -441,9 +455,8 @@ impl App {
             st.awaiting_app_template = false;
             let (staff, fiscal) = if let Some(store) = st.store.as_ref() {
                 if mark_done {
-                    let _ = store.set_rajdhani_app_template_done();
+                    let _ = store.set_app_template_offer_done();
                 }
-                // After Apply: Owner Zahir / Admin Asif / Waiter Nawaz, tax off.
                 (store.list_staff().ok(), store.fiscal_settings().ok())
             } else {
                 (None, None)
@@ -460,7 +473,7 @@ impl App {
         self.sync_chrome(cx);
     }
 
-    /// Idle: Submit + Skip. Busy: Submit replaced by status + Cancel.
+    /// Idle: Public / Private accordions + Skip. Busy: status + Cancel.
     fn paint_app_template_chrome(&mut self, cx: &mut Cx, visible: bool) {
         self.ui
             .view(cx, ids!(app_template_section))
@@ -470,37 +483,58 @@ impl App {
         }
         let app_busy = matches!(
             menu_import_running().lock().unwrap().as_ref(),
-            Some(MenuImportKind::AppTemplate { .. })
-        );
-        let (heading, blurb, apply, skip, cancel, progress) = {
+            Some(MenuImportKind::AppTemplate { .. } | MenuImportKind::ShelfFromDir { .. })
+        ) || catalogue_fetch_busy().load(std::sync::atomic::Ordering::SeqCst);
+        let (
+            heading,
+            blurb,
+            skip,
+            cancel,
+            progress,
+            pub_status,
+            priv_title,
+            sel_id,
+            entries,
+            has_private,
+        ) = {
             let st = app_state().lock().unwrap();
-            let title = menu_templates::find("rajdhani")
-                .map(|t| t.title.clone())
-                .unwrap_or_else(|| "Rajdhani Menu Template".into());
             let progress = if app_busy {
                 let (done, total) = *menu_import_progress().lock().unwrap();
-                if total > 0 {
+                if total > 0 && menu_import_busy().load(std::sync::atomic::Ordering::SeqCst) {
                     st.t("template_import_progress")
                         .replace("{d}", &done.to_string())
                         .replace("{t}", &total.to_string())
+                } else if catalogue_fetch_busy().load(std::sync::atomic::Ordering::SeqCst) {
+                    st.t("app_template_downloading")
                 } else {
-                    st.t("app_template_importing").replace("{title}", &title)
+                    st.t("app_template_importing").replace("{title}", "…")
                 }
             } else {
                 String::new()
             };
             let blurb = if app_busy {
-                st.t("app_template_importing").replace("{title}", &title)
+                progress.clone()
             } else {
                 st.t("app_template_blurb")
+            };
+            let pub_status = if !st.catalogue_public_error.is_empty() {
+                st.catalogue_public_error.clone()
+            } else if st.catalogue_public.is_empty() {
+                st.t("app_template_public_hint")
+            } else {
+                String::new()
             };
             (
                 st.t("app_template_heading"),
                 blurb,
-                st.t("app_template_apply"),
                 st.t("app_template_skip"),
                 st.t("cancel"),
                 progress,
+                pub_status,
+                st.catalogue_private_title.clone(),
+                st.catalogue_selected_public_id.clone(),
+                st.catalogue_public.clone(),
+                !st.catalogue_private_title.is_empty(),
             )
         };
         self.ui
@@ -510,11 +544,36 @@ impl App {
             .widget(cx, ids!(app_template_blurb))
             .set_text(cx, &plain_display_text(&blurb));
         self.ui
-            .button(cx, ids!(app_template_apply))
-            .set_text(cx, &apply);
+            .widget(cx, ids!(setup_public_tmpl_status))
+            .set_text(cx, &plain_display_text(&pub_status));
         self.ui
-            .button(cx, ids!(app_template_apply))
-            .set_visible(cx, !app_busy);
+            .widget(cx, ids!(private_tmpl_title))
+            .set_text(cx, &plain_display_text(&priv_title));
+        self.ui
+            .button(cx, ids!(private_tmpl_import))
+            .set_visible(cx, has_private && !app_busy);
+        self.ui
+            .button(cx, ids!(public_tmpl_import))
+            .set_visible(cx, sel_id.is_some() && !app_busy);
+        let chips = [
+            (ids!(public_tmpl_0), ids!(public_tmpl_0_on)),
+            (ids!(public_tmpl_1), ids!(public_tmpl_1_on)),
+            (ids!(public_tmpl_2), ids!(public_tmpl_2_on)),
+            (ids!(public_tmpl_3), ids!(public_tmpl_3_on)),
+            (ids!(public_tmpl_4), ids!(public_tmpl_4_on)),
+        ];
+        for (i, (idle, active)) in chips.iter().enumerate() {
+            if let Some((id, title, _)) = entries.get(i) {
+                let on = sel_id.as_ref() == Some(id);
+                self.ui.button(cx, *idle).set_text(cx, title);
+                self.ui.button(cx, *active).set_text(cx, title);
+                self.ui.button(cx, *idle).set_visible(cx, !on && !app_busy);
+                self.ui.button(cx, *active).set_visible(cx, on && !app_busy);
+            } else {
+                self.ui.button(cx, *idle).set_visible(cx, false);
+                self.ui.button(cx, *active).set_visible(cx, false);
+            }
+        }
         self.ui
             .view(cx, ids!(app_template_busy))
             .set_visible(cx, app_busy);
@@ -532,6 +591,10 @@ impl App {
         self.ui
             .button(cx, ids!(app_template_skip))
             .set_visible(cx, !app_busy);
+        self.ui
+            .button(cx, ids!(private_tmpl_check))
+            .set_visible(cx, !app_busy);
+        self.sync_device_setup_sections(cx);
     }
 
     /// Wipe a local server from this device. Owner PIN of **that** shop

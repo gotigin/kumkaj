@@ -74,6 +74,7 @@ PATCHES=(
   text_flow_paragraph_align         # RTL prose alignment
   text_input_label_align_pub        # RTL input alignment
   text_flow_selection               # selectable text: opaque band, owns the drag
+  markdown_selectable_interactive  # Markdown is_interactive when selectable (sites + WrapLabel hits)
   text_flow_touch_scroll            # Android/touch: swipe scrolls; long-press selects (WrapLabel)
   text_input_touch_scroll           # Android/touch: swipe over fields scrolls page; long-press selects (PIN / pair)
   text_input_caret_and_placeholder  # caret blinks and is visible; wrapped placeholder not clipped

@@ -52,10 +52,18 @@ fn paint_import_progress_chrome(&mut self, cx: &mut Cx) {
                         .replace("{title}", &title),
                 );
             }
-            Some(MenuImportKind::AppTemplate { title, .. }) => {
-                // Submit replaced by status + Cancel on DeviceSetup.
+            Some(MenuImportKind::ShelfFromDir { title, .. })
+            | Some(MenuImportKind::AppTemplate { title, .. }) => {
+                // Import UI replaced by status + Cancel on DeviceSetup.
+                let _ = &title;
                 self.ui
-                    .button(cx, ids!(app_template_apply))
+                    .button(cx, ids!(public_tmpl_import))
+                    .set_visible(cx, false);
+                self.ui
+                    .button(cx, ids!(private_tmpl_import))
+                    .set_visible(cx, false);
+                self.ui
+                    .button(cx, ids!(private_tmpl_check))
                     .set_visible(cx, false);
                 self.ui
                     .view(cx, ids!(app_template_busy))

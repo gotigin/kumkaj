@@ -182,6 +182,7 @@ snack_secs_save	सूचना समय सहेजू
 snack_secs_saved	सूचना समय सहेजल — {n} सेकेंड
 settings_sec_backup	बैकअप आ बहाली
 settings_sec_diag	निदान
+settings_sec_privacy	Privacy
 diag_privacy_help	लॉग एही डिवाइसपर रहैत अछि। गुप्त बात (PIN, पासवर्ड) कहियो नहि सहेजल जाइत अछि। डिवाइससँ बाहर पैकेज पठेबाक लेल प्रत्येक बेर अहाँक स्पष्ट मंजूरी चाही — कहियो नहि बेचल जाइत अछि आ ने तेसर पक्षकेँ देल जाइत अछि।
 diag_level	विवरणक स्तर
 diag_level_error	त्रुटि
@@ -344,6 +345,15 @@ app_template_apply	राजधानी ऐप टेम्पलेट
 app_template_skip	एखन छोड़ू
 app_template_status	सर्वर तैयार — राजधानी ऐप टेम्पलेट लगाउ, वा छोड़ू
 app_template_importing	{title} लगा रहल छी…
+app_template_downloading	Downloading template…
+app_template_public_hdr	Public templates
+app_template_private_hdr	Private template
+app_template_public_hint	Open this section to load the public list (needs internet once).
+app_template_code_not_found	Code not found
+app_template_need_internet	Need internet to download templates
+app_template_import_selected	Import selected
+app_template_check_code	Check code
+app_template_import	Import
 currency	मुद्रा
 backup	बैकअप
 use	उपयोग करू
@@ -782,6 +792,11 @@ find_printers	प्रिंटर खोजू
 printers_looking	खोजि रहल छी…
 saving_printer	प्रिंटर जोड़ि रहल छी…
 cancelled	रद्द भेल
+cancelling	Cancellingâ¦
+removing	Removing…
+removed	Removed
+updating_order	Updating…
+order_updated	Order updated
 printers_tap_find	एहि डिवाइसपर चलएवला प्रिंटरक सूची लेल प्रिंटर खोजू दबाउ।
 printers_none_found	किछु नहि भेटल — सिस्टम प्रिंटरक नाम वा IP लिखू (जेना 192.168.1.50)।
 printer_from_find	{name} जोड़ल
@@ -1349,10 +1364,3 @@ recent_changes	हालिया बदलाव
 lane_declared_label	कर चालान
 lane_owner_label	कैश मेमो
 money_lane_bill	बिल: {lane}
-
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
-
-cancelling	Cancellingâ¦

@@ -182,6 +182,7 @@ snack_secs_save	Salva durata avvisi
 snack_secs_saved	Durata avvisi salvata — {n} secondi
 settings_sec_backup	Backup e ripristino
 settings_sec_diag	Diagnostica
+settings_sec_privacy	Privacy
 diag_privacy_help	I log rimangono su questo dispositivo. I segreti (PIN, password) non sono mai archiviati. La condivisione di un pacchetto fuori dal dispositivo richiede la tua approvazione esplicita ogni volta — mai venduto o fornito a terze parti.
 diag_level	Livello di dettaglio
 diag_level_error	Errori
@@ -344,6 +345,15 @@ app_template_apply	Modello di app Rajdhani
 app_template_skip	Salta per ora
 app_template_status	Server pronto — applica il modello di app Rajdhani o salta
 app_template_importing	Applicazione di {title}…
+app_template_downloading	Downloading template…
+app_template_public_hdr	Public templates
+app_template_private_hdr	Private template
+app_template_public_hint	Open this section to load the public list (needs internet once).
+app_template_code_not_found	Code not found
+app_template_need_internet	Need internet to download templates
+app_template_import_selected	Import selected
+app_template_check_code	Check code
+app_template_import	Import
 currency	Valuta
 backup	Backup
 use	Usa
@@ -782,6 +792,11 @@ find_printers	Trova stampanti
 printers_looking	Ricerca stampanti su questo dispositivo e Wi‑Fi…
 saving_printer	Aggiunta stampante…
 cancelled	Annullato
+cancelling	Cancellingâ¦
+removing	Removing…
+removed	Removed
+updating_order	Updating…
+order_updated	Order updated
 printers_tap_find	Tocca Trova stampanti per elencare le stampanti utilizzabili su questo dispositivo.
 printers_none_found	Nessuna stampante trovata — digita un nome di sistema o un indirizzo di rete (es. 192.168.1.50).
 printer_from_find	Aggiunto {name}
@@ -1349,10 +1364,3 @@ recent_changes	Modifiche recenti
 lane_declared_label	Fattura fiscale
 lane_owner_label	Scontrino
 money_lane_bill	Fattura: {lane}
-
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
-
-cancelling	Cancellingâ¦

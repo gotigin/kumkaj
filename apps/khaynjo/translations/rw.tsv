@@ -182,6 +182,7 @@ snack_secs_save	Bika igihe cy'imenyesha
 snack_secs_saved	Igihe cy'imenyesha cyabitswe — amasegonda {n}
 settings_sec_backup	Kopi y'inyuma no kugarura
 settings_sec_diag	Isuzuma
+settings_sec_privacy	Privacy
 diag_privacy_help	Inyandiko ziguma kuri iki gikoresho. Ibanga (PIN, ijambo ry'ibanga) ntiribikwa. Gusangira ipaki hanze y'igikoresho bisaba uruhushya rwawe rwihariye buri gihe — ntirigurishwa cyangwa ngo hatangwe abandi.
 diag_level	Urwego rw'amakuru
 diag_level_error	Amakosa
@@ -344,6 +345,15 @@ app_template_apply	Inyandiko ya porogaramu ya Rajdhani
 app_template_skip	Simbuka ubu
 app_template_status	Seriveri yiteguye — shyira inyandiko ya porogaramu ya Rajdhani, cyangwa simbuka
 app_template_importing	Irimo gushyira {title}…
+app_template_downloading	Downloading template…
+app_template_public_hdr	Public templates
+app_template_private_hdr	Private template
+app_template_public_hint	Open this section to load the public list (needs internet once).
+app_template_code_not_found	Code not found
+app_template_need_internet	Need internet to download templates
+app_template_import_selected	Import selected
+app_template_check_code	Check code
+app_template_import	Import
 currency	Ifaranga
 backup	Kopi y'inyuma
 use	Koresha
@@ -782,6 +792,11 @@ find_printers	Shaka amacapyi
 printers_looking	Irimo gushaka…
 saving_printer	Irimo kongeraho mucapyi…
 cancelled	Byahagaritswe
+cancelling	Cancellingâ¦
+removing	Removing…
+removed	Removed
+updating_order	Updating…
+order_updated	Order updated
 printers_tap_find	Kanda Shaka kugira ngo ubone amacapyi iki gikoresho gishobora gukoresha.
 printers_none_found	Nta na kimwe cyabonetse — andika izina rya mucapyi wa sisitemu cyangwa IP (urugero 192.168.1.50).
 printer_from_find	Wongeyeho {name}
@@ -1349,10 +1364,3 @@ recent_changes	Impinduka ziheruka
 lane_declared_label	Inyemezabuguzi y'umusoro
 lane_owner_label	Inyandiko y'amafaranga mu ntoki
 money_lane_bill	Inyemezabuguzi: {lane}
-
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
-
-cancelling	Cancellingâ¦

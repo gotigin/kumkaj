@@ -221,7 +221,12 @@ deep chrome (navy / deep red), never grey-on-grey.
 6. **Props in code first.** Cards, labels, tickets and floor tiles are
    widgets and small shaders; 3D props (CSG / glTF) come in Phase 2;
    device screens show real app captures, never mock UI.
-7. **Claims check.** Before publishing, re-read each cited row; gated
+7. **Selectable copy.** Site chapter text (headlines, ledes, body,
+   tickets, points) uses selectable `Markdown` typography — same rule as
+   apps ([`DESIGN.md`](DESIGN.md) § Text selection & copy). Set copy with
+   `body:` (and `child.body:` on composites). Plain `Label` only inside
+   tap targets (floor tiles, nav chips, choice faces, button faces).
+8. **Claims check.** Before publishing, re-read each cited row; gated
    sentences stay behind the owner switch.
 
 ------------------------------------------------------------------------
@@ -240,6 +245,9 @@ From the workspace root:
 ./sites/kumkaj/scripts/run-web.sh      # http://127.0.0.1:8010
 ./sites/moklanjo/scripts/run-web.sh    # http://127.0.0.1:8011
 ./sites/khaynjo/scripts/run-web.sh     # http://127.0.0.1:8012
+
+# Khaynjo: production-shaped release wasm (same tree deploy stages) before Firebase
+./sites/khaynjo/scripts/preview-web.sh # http://127.0.0.1:8012
 ```
 
 Scroll, swipe up, tap, or press ↓ / → / PgDn / Space for the next
@@ -279,6 +287,13 @@ rustup component add rust-src --toolchain nightly
 LAN-pilot claims only after the real-hardware pilot. Both are code
 switches today (§8).
 
+**Catalogue on the product site** (shop templates as static files on the
+**same** Firebase deploy as the Makepad wasm site):
+`https://{product}/v1/catalogue/`. Khaynjo:
+`sites/khaynjo/static/v1/catalogue/` +
+`./sites/khaynjo/scripts/deploy-firebase.sh` (wasm + shell + catalogue).
+Contract: [`apps/khaynjo/docs/CATALOGUE_URLS.md`](../apps/khaynjo/docs/CATALOGUE_URLS.md).
+
 ------------------------------------------------------------------------
 
 ## 8. Owner inputs (not agent work)
@@ -289,12 +304,12 @@ switches today (§8).
 | 2 | Gotigin legal / contact / grievance details | Footers, Phase 3 legal pages |
 | 3 | Domains and where the wasm builds are published | Hosting; `product_url` / `kumkaj_url` already point at the public domains |
 | 4 | WhatsApp Business number per product | `WHATSAPP_NUMBER` in `sites/moklanjo/src/main.rs`, `sites/khaynjo/src/main.rs` (ship `None`, marked TODO) |
-| 5 | Installers pass a clean-machine install | `DOWNLOADS_LIVE` + `DOWNLOAD_URL` in both product sites (ship `false`) |
+| 5 | Installers / store listing | Khaynjo: `DOWNLOADS_LIVE` + Play URL live (`com.khaynjo`). Moklanjo: still `false` until its listing/installers ship |
 | 6 | Real-hardware LAN pilot passes | `LAN_PILOT_PASSED` in all three sites (ships `false`; shows the multi-device sentences) |
 | 7 | Windows code-signing; Play developer account | Packaging |
 | 8 | Native-speaker review for Hindi / Gujarati copy | Phase 4 |
 | 9 | Real shop photos / testimonials with consent — or none | Never invented |
-| 10 | Licence to publish the apps' dish photos on the web | Until then Khaynjo's site shows none |
+| 10 | Dish photos on the product site | Khaynjo: public shelf under `/v1/catalogue/public/items/` + curated chapter media (owner OK). Private client packs stay off the public index. |
 
 ------------------------------------------------------------------------
 
