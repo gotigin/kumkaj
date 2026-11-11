@@ -48,6 +48,7 @@ if [[ "$DO_BUILD" -eq 1 ]]; then
   mkdir -p "$OUT"
   rsync -a --delete "$WASM_PKG/" "$OUT/"
   rsync -a "$SITE/static/" "$OUT/"
+  "$SITE/scripts/patch-web-shell.sh" "$OUT/index.html"
 
   BUILD_ID="preview-$(date -u +%Y%m%d%H%M%S)"
   INDEX="$OUT/index.html"

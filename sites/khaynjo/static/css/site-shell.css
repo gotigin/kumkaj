@@ -1,0 +1,32 @@
+/* Khaynjo site shell — min layout width 375px.
+   When the device is narrower, the page scrolls horizontally instead of
+   crushing the Makepad canvas. Overrides cargo-makepad full_canvas.css. */
+html {
+  min-width: 375px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  height: 100%;
+  background-color: #f9f4f0;
+}
+body {
+  margin: 0;
+  position: relative;
+  min-width: 375px;
+  width: 100%;
+  min-height: 100%;
+  height: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  background-color: #f9f4f0;
+}
+canvas.full_canvas,
+canvas {
+  display: block;
+  min-width: 375px;
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+}
+.canvas_loader {
+  min-width: 375px;
+}

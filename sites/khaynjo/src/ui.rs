@@ -42,8 +42,9 @@ script_mod! {
     let PaidFill = #xE3DCD7
     let PaidLine = #x8C7B72
 
-    // ---- Type: Baloo 2 (rounded, like the logo), IBM Plex, Liberation Mono
-    // Plus Noto / WenKai so Indic, Arabic, Thai and CJK marketing copy paints.
+    // ---- Type: Baloo 2 (display Latin), IBM Plex + Noto for scripts
+    // Script members must be listed so the shaper can fall through — Baloo alone
+    // paints .notdef boxes for Devanagari/Thai. Native dish lines use TextFont.
     let DisplayFont = FontFamily{
         latin := FontMember{res: crate_resource("self:resources/fonts/Baloo2-Variable.ttf") asc: 0.0 desc: 0.0 weight: 720.0}
         ui := FontMember{res: crate_resource("self:resources/fonts/IBMPlexSans-SemiBold.ttf") asc: -0.1 desc: 0.0}
@@ -86,6 +87,19 @@ script_mod! {
     mod.widgets.Button.draw_text.sdf_luma_bias = 0.0
     mod.widgets.Markdown.draw_text.sdf_luma_bias = 0.0
 
+    // Markdown/TextFlow paint from text_style_* (not draw_text.text_style).
+    // Same pin as apps/khaynjo — without it Indic/Thai become .notdef boxes.
+    mod.widgets.Label.draw_text.text_style.font_family = TextFont
+    mod.widgets.Button.draw_text.text_style.font_family = TextFont
+    mod.widgets.Markdown.text_style_normal.font_family = TextFont
+    mod.widgets.Markdown.text_style_italic.font_family = TextFont
+    mod.widgets.Markdown.text_style_bold.font_family = StrongFont
+    mod.widgets.Markdown.text_style_bold_italic.font_family = StrongFont
+    mod.widgets.TextFlow.text_style_normal.font_family = TextFont
+    mod.widgets.TextFlow.text_style_italic.font_family = TextFont
+    mod.widgets.TextFlow.text_style_bold.font_family = StrongFont
+    mod.widgets.TextFlow.text_style_bold_italic.font_family = StrongFont
+
     // TextFlow paints from `font_color` (not only draw_text.color) — set both.
     let Eyebrow = Markdown{
         selectable: true
@@ -96,6 +110,9 @@ script_mod! {
         width: Fill
         padding: 0.
         font_color: Accent
+        font_size: 13.
+        text_style_normal: theme.font_bold{font_family: StrongFont font_size: 13. line_spacing: 1.2}
+        text_style_bold: theme.font_bold{font_family: StrongFont font_size: 13. line_spacing: 1.2}
         draw_text +: {
             color: Accent
             text_style: theme.font_bold{font_family: StrongFont font_size: 13. line_spacing: 1.2}
@@ -110,6 +127,9 @@ script_mod! {
         width: Fill
         padding: 0.
         font_color: Maroon
+        font_size: 48.
+        text_style_normal: theme.font_bold{font_family: DisplayFont font_size: 48. line_spacing: 0.72}
+        text_style_bold: theme.font_bold{font_family: DisplayFont font_size: 48. line_spacing: 0.72}
         draw_text +: {
             color: Maroon
             text_style: theme.font_bold{font_family: DisplayFont font_size: 48. line_spacing: 0.72}
@@ -124,6 +144,8 @@ script_mod! {
         width: Fill
         padding: 0.
         font_color: Muted
+        font_size: 19.
+        text_style_normal: theme.font_regular{font_family: TextFont font_size: 19. line_spacing: 1.45}
         draw_text +: {
             color: Muted
             text_style: theme.font_regular{font_family: TextFont font_size: 19. line_spacing: 1.45}
@@ -138,6 +160,8 @@ script_mod! {
         width: Fill
         padding: 0.
         font_color: Muted
+        font_size: 15.5
+        text_style_normal: theme.font_regular{font_family: TextFont font_size: 15.5 line_spacing: 1.45}
         draw_text +: {
             color: Muted
             text_style: theme.font_regular{font_family: TextFont font_size: 15.5 line_spacing: 1.45}
@@ -152,6 +176,9 @@ script_mod! {
         width: Fill
         padding: 0.
         font_color: Ink
+        font_size: 16.
+        text_style_normal: theme.font_bold{font_family: StrongFont font_size: 16. line_spacing: 1.25}
+        text_style_bold: theme.font_bold{font_family: StrongFont font_size: 16. line_spacing: 1.25}
         draw_text +: {
             color: Ink
             text_style: theme.font_bold{font_family: StrongFont font_size: 16. line_spacing: 1.25}
@@ -166,6 +193,8 @@ script_mod! {
         width: Fill
         padding: 0.
         font_color: Hint
+        font_size: 13.
+        text_style_normal: theme.font_regular{font_family: TextFont font_size: 13. line_spacing: 1.4}
         draw_text +: {
             color: Hint
             text_style: theme.font_regular{font_family: TextFont font_size: 13. line_spacing: 1.4}
@@ -194,6 +223,10 @@ script_mod! {
         width: Fill
         padding: 0.
         font_color: Ink
+        font_size: 14.
+        // TextFlow paints text_style_normal (not only draw_text) — same pin as Body/Strong.
+        text_style_normal: theme.font_regular{font_family: TicketFont font_size: 14. line_spacing: 1.35}
+        text_style_bold: theme.font_bold{font_family: TicketFont font_size: 14. line_spacing: 1.35}
         draw_text +: {
             color: Ink
             text_style: theme.font_regular{font_family: TicketFont font_size: 14. line_spacing: 1.35}
@@ -341,17 +374,81 @@ script_mod! {
             draw_block +: { selection_color: #xF69D2CFF }
         }
     }
-    // Country + famous dish — marketing shelf card (photo · country · dish).
+    // Country shelf card: photo · English country · local-script · English dish.
     let WorldDish = WarmCard{
         width: Fill
-        spacing: 6
+        spacing: 4
+        padding: Inset{left: 10. right: 10. top: 10. bottom: 12.}
         photo := Image{
-            width: Fill height: 84
+            width: Fill height: 72
             fit: ImageFit.CropToFill
             src: crate_resource("self:resources/dishes/japan-ramen.webp")
         }
         country := Strong{body: "Country"}
+        // TextFlow paints text_style_normal (not draw_text.text_style) — pin both.
+        native := Markdown{
+            selectable: true
+            height: Fit
+            paragraph_spacing: 0.
+            pre_code_spacing: 0.
+            draw_block +: { selection_color: #xF69D2CFF }
+            width: Fill
+            padding: 0.
+            font_color: Maroon
+            font_size: 14.
+            text_style_normal: theme.font_regular{font_family: TextFont font_size: 14. line_spacing: 1.25}
+            text_style_bold: theme.font_bold{font_family: StrongFont font_size: 14. line_spacing: 1.25}
+            draw_text +: {
+                color: Maroon
+                text_style: theme.font_regular{font_family: TextFont font_size: 14. line_spacing: 1.25}
+            }
+            body: "Local name"
+        }
         dish := Body{body: "Famous dish"}
+    }
+
+    // Dense row for the country list (no photo) — fits many lines on one slide.
+    let WorldLine = View{
+        width: Fill height: Fit
+        flow: Right
+        spacing: 8
+        align: Align{y: 0.5}
+        padding: Inset{left: 10. right: 10. top: 5. bottom: 5.}
+        show_bg: true
+        draw_bg +: {color: Well border_radius: 8.}
+        country := Strong{width: 96 font_size: 14. text_style_normal: theme.font_bold{font_family: StrongFont font_size: 14. line_spacing: 1.2} text_style_bold: theme.font_bold{font_family: StrongFont font_size: 14. line_spacing: 1.2} draw_text +: {text_style: theme.font_bold{font_family: StrongFont font_size: 14. line_spacing: 1.2}} body: "Country"}
+        native := Markdown{
+            selectable: true
+            height: Fit
+            paragraph_spacing: 0.
+            pre_code_spacing: 0.
+            draw_block +: { selection_color: #xF69D2CFF }
+            width: Fill
+            padding: 0.
+            font_color: Maroon
+            font_size: 13.
+            text_style_normal: theme.font_regular{font_family: TextFont font_size: 13. line_spacing: 1.2}
+            draw_text +: {
+                color: Maroon
+                text_style: theme.font_regular{font_family: TextFont font_size: 13. line_spacing: 1.2}
+            }
+            body: "Local · dish"
+        }
+        dish := Body{
+            width: Fit
+            font_size: 13.
+            text_style_normal: theme.font_regular{font_family: TextFont font_size: 13. line_spacing: 1.2}
+            draw_text +: {text_style: theme.font_regular{font_family: TextFont font_size: 13. line_spacing: 1.2}}
+            body: "English dish"
+        }
+    }
+
+    // Marketing banner — capped height so one chapter still fits a phone/laptop.
+    let SiteBanner = Image{
+        width: Fill
+        height: 148
+        fit: ImageFit.CropToFill
+        src: crate_resource("self:resources/media/banner-1.webp")
     }
 
     // A point: gold dot, bold line, plain line (direct children for overrides).
@@ -532,30 +629,76 @@ script_mod! {
                         anim_speed: 0.86
                         axis: Vertical
 
-                        // 1 — Lunch rush (floor-states, table-cards)
+                        // 1 — Lunch rush (floor-states, table-cards) + world shelf on the first screen
                         rush := Chapter{
-                            rush_banner := Image{
-                                width: Fill height: 160
-                                fit: ImageFit.CropToFill
-                                src: crate_resource("self:resources/media/banner-1.webp")
+                            Eyebrow{body: "KHAYNJO · THE RESTAURANT SYSTEM"}
+                            Headline{body: "Lunch rush. No internet. No problem."}
+                            rush_lede := Lede{body: "From table to kitchen to bill, on your own devices — cafés, QSRs, diners and cloud kitchens from Tokyo to Mexico City, Mumbai to Madrid. Every table shows its minutes and its running bill at a glance."}
+                            Small{body: "Drag to select · Ctrl+C / ⌘C to copy"}
+                            // Country · local-script · English dish — first screen, not below the fold.
+                            Strong{body: "Country · local name · famous dish"}
+                            rush_world := View{
+                                width: Fill height: Fit
+                                flow: Down
+                                spacing: 8
+                                rush_world_a := View{
+                                    width: Fill height: Fit
+                                    flow: Right
+                                    spacing: 10
+                                    WorldDish{
+                                        photo.src: crate_resource("self:resources/dishes/india-butter-chicken.webp")
+                                        country.body: "India"
+                                        native.body: "भारत · बटर चिकन"
+                                        dish.body: "Butter chicken"
+                                    }
+                                    WorldDish{
+                                        photo.src: crate_resource("self:resources/dishes/mexico-birria.webp")
+                                        country.body: "Mexico"
+                                        native.body: "México · Tacos de birria"
+                                        dish.body: "Birria tacos"
+                                    }
+                                }
+                                rush_world_b := View{
+                                    width: Fill height: Fit
+                                    flow: Right
+                                    spacing: 10
+                                    WorldDish{
+                                        photo.src: crate_resource("self:resources/dishes/italy-margherita.webp")
+                                        country.body: "Italy"
+                                        native.body: "Italia · Pizza Margherita"
+                                        dish.body: "Margherita pizza"
+                                    }
+                                    WorldDish{
+                                        photo.src: crate_resource("self:resources/dishes/thailand-pad-thai.webp")
+                                        country.body: "Thailand"
+                                        native.body: "ประเทศไทย · ผัดไทย"
+                                        dish.body: "Pad Thai"
+                                    }
+                                }
                             }
+                            rush_scripts := Markdown{
+                                padding: 0. selectable: true height: Fit paragraph_spacing: 0. pre_code_spacing: 0.
+                                body: "પનીર ટિક્કા · پنیر تکہ · பன்னீர் டிக்கா · পনির টিক্কা · ประเทศไทย · ผัดไทย"
+                                font_color: Maroon font_size: 14.
+                                text_style_normal: theme.font_regular{font_family: TextFont font_size: 14.}
+                                draw_text +: {color: Maroon text_style: theme.font_regular{font_family: TextFont font_size: 14.}}
+                                draw_block +: { selection_color: #xF69D2CFF }
+                            }
+                            Small{body: "Sixteen countries on chapter 8 — same catalogue words captains already type."}
                             rush_row := View{
                                 width: Fill height: Fit
                                 flow: Right
-                                spacing: 24
+                                spacing: 20
                                 align: Align{y: 0.0}
                                 View{
                                     width: Fill height: Fit
                                     flow: Down
-                                    spacing: 18
-                                    Eyebrow{body: "KHAYNJO · THE RESTAURANT SYSTEM"}
-                                    Headline{body: "Lunch rush. No internet. No problem."}
-                                    rush_lede := Lede{body: "From table to kitchen to bill, on your own devices — cafés, QSRs, diners and cloud kitchens from Tokyo to Mexico City, Mumbai to Madrid. Every table shows its minutes and its running bill at a glance."}
+                                    spacing: 12
                                     rush_cta := CtaPair{}
                                 }
                                 floor_card := WarmCard{
                                     width: 560
-                                    spacing: 12
+                                    spacing: 10
                                     View{
                                         width: Fill height: Fit
                                         flow: Right
@@ -563,15 +706,14 @@ script_mod! {
                                         Strong{width: Fill body: "Tap a table to walk it through a visit"}
                                         ExampleTag{}
                                     }
-                                    // Two fixed rows (a wrap row mis-sizes overlay tiles).
                                     floor := View{
                                         width: Fill height: Fit
                                         flow: Down
-                                        spacing: 10
+                                        spacing: 8
                                         View{
                                             width: Fill height: Fit
                                             flow: Right
-                                            spacing: 10
+                                            spacing: 8
                                             t1 := TableTile{}
                                             t2 := TableTile{}
                                             t3 := TableTile{}
@@ -579,14 +721,17 @@ script_mod! {
                                         View{
                                             width: Fill height: Fit
                                             flow: Right
-                                            spacing: 10
+                                            spacing: 8
                                             t4 := TableTile{}
                                             t5 := TableTile{}
                                             t6 := TableTile{}
                                         }
                                     }
-                                    floor_note := Small{body: "Same colours and words as Khaynjo's floor. Bill printed → Paid → Free: a table frees only once it is paid."}
+                                    floor_note := Small{body: "Same colours as Khaynjo's floor. Bill printed → Paid → Free."}
                                 }
+                            }
+                            rush_banner := SiteBanner{
+                                src: crate_resource("self:resources/media/banner-1.webp")
                             }
                         }
 
@@ -598,8 +743,11 @@ script_mod! {
                                 width: Fill height: Fit
                                 flow: Right
                                 spacing: 20
-                                WarmCard{
-                                    spacing: 8
+                                align: Align{y: 0.0}
+                                // Dense top-packed card (same idea as the KOT ticket) — no stretch hole.
+                                order_card := WarmCard{
+                                    width: 360
+                                    spacing: 6
                                     View{
                                         width: Fill height: Fit
                                         flow: Right
@@ -609,9 +757,9 @@ script_mod! {
                                             width: Fit height: Fit
                                             padding: Inset{left: 10. right: 10. top: 4. bottom: 5.}
                                             draw_bg +: {color: SeatFill border_color: SeatLine border_size: 1.5 border_radius: 8.}
-                                            Markdown{padding: 0. selectable: true height: Fit paragraph_spacing: 0. pre_code_spacing: 0. body: "T4 · Occupied" font_color: Ink draw_text +: {color: Ink text_style: theme.font_bold{font_family: StrongFont font_size: 13.}} draw_block +: { selection_color: #xF69D2CFF }}
+                                            Markdown{padding: 0. selectable: true height: Fit paragraph_spacing: 0. pre_code_spacing: 0. body: "T4 · Occupied" font_color: Ink font_size: 13. text_style_normal: theme.font_bold{font_family: StrongFont font_size: 13.} draw_text +: {color: Ink text_style: theme.font_bold{font_family: StrongFont font_size: 13.}} draw_block +: { selection_color: #xF69D2CFF }}
                                         }
-                                        View{width: Fill height: 1}
+                                        View{width: Fill height: Fit}
                                         ExampleTag{}
                                     }
                                     Strong{body: "Paneer tikka — Full"}
@@ -740,8 +888,10 @@ script_mod! {
                                 width: Fill height: Fit
                                 flow: Right
                                 spacing: 20
+                                align: Align{y: 0.0}
                                 bill := WarmCard{
-                                    spacing: 8
+                                    width: 360
+                                    spacing: 6
                                     View{
                                         width: Fill height: Fit
                                         flow: Right
@@ -751,9 +901,9 @@ script_mod! {
                                             width: Fit height: Fit
                                             padding: Inset{left: 10. right: 10. top: 4. bottom: 5.}
                                             draw_bg +: {color: BillFill border_color: BillLine border_size: 1.5 border_radius: 8.}
-                                            Markdown{padding: 0. selectable: true height: Fit paragraph_spacing: 0. pre_code_spacing: 0. body: "T4 · Bill printed" font_color: Ink draw_text +: {color: Ink text_style: theme.font_bold{font_family: StrongFont font_size: 13.}} draw_block +: { selection_color: #xF69D2CFF }}
+                                            Markdown{padding: 0. selectable: true height: Fit paragraph_spacing: 0. pre_code_spacing: 0. body: "T4 · Bill printed" font_color: Ink font_size: 13. text_style_normal: theme.font_bold{font_family: StrongFont font_size: 13.} draw_text +: {color: Ink text_style: theme.font_bold{font_family: StrongFont font_size: 13.}} draw_block +: { selection_color: #xF69D2CFF }}
                                         }
-                                        View{width: Fill height: 1}
+                                        View{width: Fill height: Fit}
                                         ExampleTag{}
                                     }
                                     View{
@@ -826,153 +976,85 @@ script_mod! {
                             }
                         }
 
-                        // 8 — Your menu (aliases-short-codes, area-prices, menu-timings, languages)
+                        // 8 — Your menu: full country list (English · local script · English dish)
                         menu := Chapter{
                             Eyebrow{body: "8 · YOUR MENU, YOUR WAY"}
                             Headline{body: "Every country at your counter — your words, your codes, your prices."}
-                            Lede{body: "Khaynjo is for restaurant people everywhere: Japanese ramen bars, Mexican taquerías, Indian thalis, Italian trattorias, Thai kitchens, café counters. Put the dish name staff already say — in their script — and a short code brings it first."}
-                            menu_banner := Image{
-                                width: Fill height: 120
-                                fit: ImageFit.CropToFill
-                                src: crate_resource("self:resources/media/banner-3.webp")
-                            }
-                            // World shelf: country · famous dish (marketing; public catalogue photos).
-                            menu_world := View{
+                            Lede{body: "English country · name in their script · famous dish in English. Put those words on the menu — short codes and area prices still apply."}
+                            // Two columns of 8 on wide screens; one stacked column when narrow.
+                            menu_list := View{
                                 width: Fill height: Fit
-                                flow: Down
-                                spacing: 12
-                                menu_row := View{
+                                flow: Right
+                                spacing: 8
+                                menu_col_a := View{
                                     width: Fill height: Fit
-                                    flow: Right
-                                    spacing: 12
-                                    WorldDish{
-                                        photo.src: crate_resource("self:resources/dishes/japan-ramen.webp")
-                                        country.body: "Japan"
-                                        dish.body: "Ramen"
-                                    }
-                                    WorldDish{
-                                        photo.src: crate_resource("self:resources/dishes/korea-bibimbap.webp")
-                                        country.body: "Korea"
-                                        dish.body: "Bibimbap"
-                                    }
-                                    WorldDish{
-                                        photo.src: crate_resource("self:resources/dishes/china-peking-duck.webp")
-                                        country.body: "China"
-                                        dish.body: "Peking duck"
-                                    }
-                                    WorldDish{
-                                        photo.src: crate_resource("self:resources/dishes/thailand-pad-thai.webp")
-                                        country.body: "Thailand"
-                                        dish.body: "Pad Thai"
-                                    }
+                                    flow: Down
+                                    spacing: 3
+                                    WorldLine{country.body: "Japan" native.body: "日本 · ラーメン" dish.body: "Ramen"}
+                                    WorldLine{country.body: "Korea" native.body: "한국 · 비빔밥" dish.body: "Bibimbap"}
+                                    WorldLine{country.body: "China" native.body: "中国 · 北京烤鸭" dish.body: "Peking duck"}
+                                    WorldLine{country.body: "Thailand" native.body: "ประเทศไทย · ผัดไทย" dish.body: "Pad Thai"}
+                                    WorldLine{country.body: "Vietnam" native.body: "Việt Nam · Bánh mì" dish.body: "Bánh mì"}
+                                    WorldLine{country.body: "Indonesia" native.body: "Indonesia · Rendang" dish.body: "Beef rendang"}
+                                    WorldLine{country.body: "India" native.body: "भारत · बटर चिकन" dish.body: "Butter chicken"}
+                                    WorldLine{country.body: "India" native.body: "இந்தியா · மசாலா தோசை" dish.body: "Masala dosa"}
                                 }
-                                menu_row_b := View{
+                                menu_col_b := View{
                                     width: Fill height: Fit
-                                    flow: Right
-                                    spacing: 12
-                                    WorldDish{
-                                        photo.src: crate_resource("self:resources/dishes/vietnam-banh-mi.webp")
-                                        country.body: "Vietnam"
-                                        dish.body: "Bánh mì"
-                                    }
-                                    WorldDish{
-                                        photo.src: crate_resource("self:resources/dishes/indonesia-rendang.webp")
-                                        country.body: "Indonesia"
-                                        dish.body: "Beef rendang"
-                                    }
-                                    WorldDish{
-                                        photo.src: crate_resource("self:resources/dishes/india-butter-chicken.webp")
-                                        country.body: "India"
-                                        dish.body: "Butter chicken"
-                                    }
-                                    WorldDish{
-                                        photo.src: crate_resource("self:resources/dishes/india-masala-dosa.webp")
-                                        country.body: "India"
-                                        dish.body: "Masala dosa"
-                                    }
+                                    flow: Down
+                                    spacing: 3
+                                    WorldLine{country.body: "Turkey" native.body: "Türkiye · Adana kebap" dish.body: "Adana kebab"}
+                                    WorldLine{country.body: "Lebanon" native.body: "لبنان · شاورما" dish.body: "Shawarma"}
+                                    WorldLine{country.body: "Morocco" native.body: "المغرب · طاجين" dish.body: "Chicken tagine"}
+                                    WorldLine{country.body: "Italy" native.body: "Italia · Pizza Margherita" dish.body: "Margherita pizza"}
+                                    WorldLine{country.body: "France" native.body: "France · Croissant" dish.body: "Croissant"}
+                                    WorldLine{country.body: "Spain" native.body: "España · Paella" dish.body: "Paella"}
+                                    WorldLine{country.body: "Greece" native.body: "Ελλάδα · Μουσακάς" dish.body: "Moussaka"}
+                                    WorldLine{country.body: "Mexico" native.body: "México · Tacos de birria" dish.body: "Birria tacos"}
                                 }
-                                menu_row_c := View{
-                                    width: Fill height: Fit
-                                    flow: Right
-                                    spacing: 12
-                                    WorldDish{
-                                        photo.src: crate_resource("self:resources/dishes/turkey-adana-kebab.webp")
-                                        country.body: "Turkey"
-                                        dish.body: "Adana kebab"
-                                    }
-                                    WorldDish{
-                                        photo.src: crate_resource("self:resources/dishes/lebanon-shawarma.webp")
-                                        country.body: "Lebanon"
-                                        dish.body: "Shawarma"
-                                    }
-                                    WorldDish{
-                                        photo.src: crate_resource("self:resources/dishes/morocco-tagine.webp")
-                                        country.body: "Morocco"
-                                        dish.body: "Chicken tagine"
-                                    }
-                                    WorldDish{
-                                        photo.src: crate_resource("self:resources/dishes/italy-margherita.webp")
-                                        country.body: "Italy"
-                                        dish.body: "Margherita pizza"
-                                    }
+                            }
+                            menu_photos := View{
+                                width: Fill height: Fit
+                                flow: Right
+                                spacing: 8
+                                WorldDish{
+                                    photo.src: crate_resource("self:resources/dishes/india-butter-chicken.webp")
+                                    country.body: "India"
+                                    native.body: "भारत · बटर चिकन"
+                                    dish.body: "Butter chicken"
                                 }
-                                menu_row_d := View{
-                                    width: Fill height: Fit
-                                    flow: Right
-                                    spacing: 12
-                                    WorldDish{
-                                        photo.src: crate_resource("self:resources/dishes/france-croissant.webp")
-                                        country.body: "France"
-                                        dish.body: "Croissant"
-                                    }
-                                    WorldDish{
-                                        photo.src: crate_resource("self:resources/dishes/spain-paella.webp")
-                                        country.body: "Spain"
-                                        dish.body: "Paella"
-                                    }
-                                    WorldDish{
-                                        photo.src: crate_resource("self:resources/dishes/greece-moussaka.webp")
-                                        country.body: "Greece"
-                                        dish.body: "Moussaka"
-                                    }
-                                    WorldDish{
-                                        photo.src: crate_resource("self:resources/dishes/mexico-birria.webp")
-                                        country.body: "Mexico"
-                                        dish.body: "Birria tacos"
-                                    }
+                                WorldDish{
+                                    photo.src: crate_resource("self:resources/dishes/thailand-pad-thai.webp")
+                                    country.body: "Thailand"
+                                    native.body: "ประเทศไทย · ผัดไทย"
+                                    dish.body: "Pad Thai"
                                 }
-                                menu_row_e := View{
-                                    width: Fill height: Fit
-                                    flow: Right
-                                    spacing: 12
-                                    WorldDish{
-                                        photo.src: crate_resource("self:resources/dishes/uk-bangers.webp")
-                                        country.body: "United Kingdom"
-                                        dish.body: "Bangers and mash"
-                                    }
-                                    WorldDish{
-                                        photo.src: crate_resource("self:resources/dishes/austria-schnitzel.webp")
-                                        country.body: "Austria"
-                                        dish.body: "Wiener schnitzel"
-                                    }
-                                    WorldDish{
-                                        photo.src: crate_resource("self:resources/dishes/japan-sushi.webp")
-                                        country.body: "Japan"
-                                        dish.body: "Sushi"
-                                    }
-                                    WorldDish{
-                                        photo.src: crate_resource("self:resources/dishes/china-xiaolongbao.webp")
-                                        country.body: "China"
-                                        dish.body: "Xiaolongbao"
-                                    }
+                                WorldDish{
+                                    photo.src: crate_resource("self:resources/dishes/lebanon-shawarma.webp")
+                                    country.body: "Lebanon"
+                                    native.body: "لبنان · شاورما"
+                                    dish.body: "Shawarma"
+                                }
+                                WorldDish{
+                                    photo.src: crate_resource("self:resources/dishes/mexico-birria.webp")
+                                    country.body: "Mexico"
+                                    native.body: "México · Tacos de birria"
+                                    dish.body: "Birria tacos"
                                 }
                             }
                             menu_script := WarmCard{
-                                spacing: 8
-                                Markdown{padding: 0. selectable: true height: Fit paragraph_spacing: 0. pre_code_spacing: 0. body: "પનીર ટિક્કા · پنیر تکہ · பன்னீர் டிக்கா" font_color: Maroon draw_text +: {color: Maroon text_style: theme.font_bold{font_family: DisplayFont font_size: 16.}} draw_block +: { selection_color: #xF69D2CFF }}
-                                Body{body: "Same dish, the names your captains already type — Gujarati, Urdu, Tamil, or English. Short codes and area prices still apply."}
+                                spacing: 6
+                                Markdown{
+                                    padding: 0. selectable: true height: Fit paragraph_spacing: 0. pre_code_spacing: 0.
+                                    body: "પનીર ટિક્કા · پنیر تکہ · பன்னீர் டிக்கா · পনির টিক্কা"
+                                    font_color: Maroon font_size: 15.
+                                    text_style_normal: theme.font_regular{font_family: TextFont font_size: 15.}
+                                    draw_text +: {color: Maroon text_style: theme.font_regular{font_family: TextFont font_size: 15.}}
+                                    draw_block +: { selection_color: #xF69D2CFF }
+                                }
+                                Body{body: "Same dish, the names your captains already type — Gujarati, Urdu, Tamil, Bengali, or English."}
                             }
-                            menu_note := Small{body: "Twenty countries on this shelf — samples from the public Khaynjo catalogue. Your real menu can be any cuisine, any script; 29 languages on screen."}
+                            menu_note := Small{body: "Samples from the public Khaynjo catalogue · 29 languages on screen in the app."}
                         }
 
                         // 9 — Internet down (offline-lan; the multi-device half is gated)
@@ -1011,50 +1093,60 @@ script_mod! {
                             }
                         }
 
-                        // 10 — Start (free-local)
+                        // 10 — Start (free-local): one CTA screen, no banner stack.
                         start := Chapter{
                             Eyebrow{body: "10 · START"}
                             Headline{body: "Free forever on your devices."}
                             Lede{body: "No charge per table, waiter, order or device. On Google Play now — Windows and Linux packages follow. Built in India, ready for restaurants anywhere."}
-                            start_banner := Image{
-                                width: Fill height: 180
-                                fit: ImageFit.CropToFill
-                                src: crate_resource("self:resources/media/banner-2.webp")
+                            start_world := View{
+                                width: Fill height: Fit
+                                flow: Right
+                                spacing: 10
+                                WorldDish{
+                                    photo.src: crate_resource("self:resources/dishes/india-butter-chicken.webp")
+                                    country.body: "India"
+                                    native.body: "भारत · बटर चिकन"
+                                    dish.body: "Butter chicken"
+                                }
+                                WorldDish{
+                                    photo.src: crate_resource("self:resources/dishes/thailand-pad-thai.webp")
+                                    country.body: "Thailand"
+                                    native.body: "ประเทศไทย · ผัดไทย"
+                                    dish.body: "Pad Thai"
+                                }
+                                WorldDish{
+                                    photo.src: crate_resource("self:resources/dishes/lebanon-shawarma.webp")
+                                    country.body: "Lebanon"
+                                    native.body: "لبنان · شاورما"
+                                    dish.body: "Shawarma"
+                                }
+                                WorldDish{
+                                    photo.src: crate_resource("self:resources/dishes/mexico-birria.webp")
+                                    country.body: "Mexico"
+                                    native.body: "México · Tacos de birria"
+                                    dish.body: "Birria tacos"
+                                }
                             }
+                            Small{body: "Country · local-script name · English dish — full list on chapter 8."}
                             View{
                                 width: Fill height: Fit
                                 flow: Right
-                                spacing: 16
+                                spacing: 14
                                 align: Align{y: 0.5}
                                 start_icon := Image{
-                                    width: 72 height: 72
+                                    width: 56 height: 56
                                     fit: ImageFit.Stretch
                                     src: crate_resource("self:resources/media/app-icon.webp")
                                 }
                                 View{
                                     width: Fill height: Fit
                                     flow: Down
-                                    spacing: 6
+                                    spacing: 4
                                     Strong{body: "Khaynjo on Google Play"}
                                     Small{body: "com.khaynjo · free · no account required for day-to-day service"}
                                 }
                             }
                             close_cta := CtaPair{}
-                            start_shots := View{
-                                width: Fill height: Fit
-                                flow: Right
-                                spacing: 12
-                                Image{
-                                    width: Fill height: 140
-                                    fit: ImageFit.CropToFill
-                                    src: crate_resource("self:resources/media/screenshot-desktop.png")
-                                }
-                                Image{
-                                    width: 100 height: 140
-                                    fit: ImageFit.CropToFill
-                                    src: crate_resource("self:resources/media/screenshot-mobile.png")
-                                }
-                            }
                             RoundedView{width: Fill height: 1 draw_bg +: {color: WellLine border_radius: 0.}}
                             footer := View{
                                 width: Fill height: Fit

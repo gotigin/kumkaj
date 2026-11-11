@@ -69,8 +69,9 @@ rm -rf "$OUT"
 mkdir -p "$OUT"
 # Makepad package (index.html, wasm, makepad_platform/, resources/, …)
 rsync -a --delete "$WASM_PKG/" "$OUT/"
-# Site static shell overlays (catalogue, terms, js, media)
+# Site static shell overlays (catalogue, terms, js, media, css)
 rsync -a "$SITE/static/" "$OUT/"
+"$SITE/scripts/patch-web-shell.sh" "$OUT/index.html"
 
 # Same PRIVACY.md the app embeds — formatted presentation (not source view).
 PRIVACY_MD="$ROOT/apps/khaynjo/docs/PRIVACY.md"

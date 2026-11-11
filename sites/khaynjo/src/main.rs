@@ -115,6 +115,10 @@ const TILE_LAYERS: [LiveId; 7] = [
     live_id!(bg_paid),
 ];
 
+/// App layout floor: design for ≥375 CSS px. Narrower viewports scroll
+/// horizontally (web shell CSS); native still lays out at this width.
+const MIN_WIDTH: f64 = 375.0;
+
 /// Rows that sit side by side only when the content column is at least
 /// this wide (px), and stack otherwise — width-based, not tier-based: a
 /// fixed prop beside a headline needs its own width plus a readable text
@@ -122,6 +126,8 @@ const TILE_LAYERS: [LiveId; 7] = [
 const ROWS: [(&[LiveId], f64); 16] = [
     (ids!(rush.rush_row), 1024.0),
     (ids!(rush.rush_cta.buttons), 420.0),
+    (ids!(rush.rush_world_a), 520.0),
+    (ids!(rush.rush_world_b), 520.0),
     (ids!(order.order_row), 760.0),
     (ids!(kot.kot_row), 758.0),
     (ids!(kitchen.kds), 700.0),
@@ -129,19 +135,20 @@ const ROWS: [(&[LiveId], f64); 16] = [
     (ids!(changes.changes_grid), 880.0),
     (ids!(settle.settle_row), 800.0),
     (ids!(dayclose.close_row), 760.0),
-    (ids!(menu.menu_row), 760.0),
-    (ids!(menu.menu_row_b), 760.0),
-    (ids!(menu.menu_row_c), 760.0),
-    (ids!(menu.menu_row_d), 760.0),
-    (ids!(menu.menu_row_e), 760.0),
+    // Two equal columns of 8 world lines when wide enough; else stack.
+    (ids!(menu.menu_list), 720.0),
+    (ids!(menu.menu_photos), 700.0),
+    (ids!(start.start_world), 700.0),
     (ids!(start.close_cta.buttons), 420.0),
     (ids!(start.footer), 480.0),
 ];
 /// Fixed-width props: (path, desk width, the min width of their row).
 /// When the row stacks, the prop goes full width.
-const PROPS: [(&[LiveId], f64, f64); 2] = [
+const PROPS: [(&[LiveId], f64, f64); 4] = [
     (ids!(rush.floor_card), 560.0, 1024.0),
     (ids!(kot.ticket), 330.0, 758.0),
+    (ids!(order.order_card), 360.0, 760.0),
+    (ids!(settle.bill), 360.0, 800.0),
 ];
 const DETAIL_WHEN_STACKED: [&[LiveId]; 4] = [
     ids!(order.order_points),
@@ -156,19 +163,20 @@ const DETAIL_ON_PHONE: [&[LiveId]; 9] = [
     ids!(floor.t6),
     ids!(kot.kot_points),
     ids!(menu.menu_note),
+    ids!(menu.menu_photos),
     ids!(rush.floor_note),
     ids!(rush.rush_banner),
-    ids!(start.start_banner),
-    ids!(start.start_shots),
+    ids!(start.start_world),
 ];
 /// Detail a short, not-wide window (under 860 px tall and 1200 px wide,
 /// e.g. a 1024 × 768 laptop) drops so the chapter's buttons stay on
 /// screen. Wider short windows (1280 × 720, 1366 × 768) fit everything.
-const DETAIL_WHEN_SHORT: [&[LiveId]; 4] = [
+const DETAIL_WHEN_SHORT: [&[LiveId]; 5] = [
     ids!(settle.settle_free),
     ids!(rush.rush_banner),
-    ids!(start.start_banner),
-    ids!(start.start_shots),
+    ids!(menu.menu_photos),
+    ids!(menu.menu_script),
+    ids!(rush.floor_note),
 ];
 const SHORT_BELOW: f64 = 860.0;
 const SHORT_NARROWER_THAN: f64 = 1200.0;
@@ -417,8 +425,11 @@ impl App {
         if size.x < 1.0 || size.y < 1.0 {
             return;
         }
-        let tier = Tier::from_size(size.x, size.y);
-        let key = (tier, size.x.round() as i64, size.y.round() as i64);
+        // Layout math never goes below MIN_WIDTH; web shell scrolls when the
+        // device is narrower (see static/css/site-shell.css).
+        let layout_w = size.x.max(MIN_WIDTH);
+        let tier = Tier::from_size(layout_w, size.y);
+        let key = (tier, layout_w.round() as i64, size.y.round() as i64);
         if self.laid_out == Some(key) {
             return;
         }
@@ -426,8 +437,8 @@ impl App {
         self.laid_out = Some(key);
 
         let (min_side, pad_v, spacing) = tier.spacing();
-        let side = min_side.max((size.x - tier.max_content()) / 2.0);
-        let content_w = size.x - 2.0 * side;
+        let side = min_side.max((layout_w - tier.max_content()) / 2.0);
+        let content_w = layout_w - 2.0 * side;
         for (path, min_w) in ROWS {
             if let Some(mut view) = self.ui.view(cx, path).borrow_mut() {
                 view.layout.flow = if content_w >= min_w { Flow::right() } else { Flow::Down };
@@ -438,16 +449,12 @@ impl App {
                 view.walk.width = if content_w >= row_min_w { Size::Fixed(desk_w) } else { Size::fill() };
             }
         }
-        // The hero's lede gives way to the floor toy when the floor card sits
-        // under the text on a short screen (1024 × 768 laptops, phones).
-        let rush_across = ROWS
-            .iter()
-            .find(|(path, _)| *path == ids!(rush.rush_row))
-            .is_some_and(|(_, min_w)| content_w >= *min_w);
+        // Keep the world shelf + CTA; drop the long lede only when stacked and short.
+        let short = size.y < SHORT_BELOW && layout_w < SHORT_NARROWER_THAN;
         self.ui
             .widget(cx, ids!(rush.rush_lede))
-            .set_visible(cx, rush_across || (size.y >= 900.0 && !tier.stacked()));
-        self.paint_details(cx, tier, size.y < SHORT_BELOW && size.x < SHORT_NARROWER_THAN);
+            .set_visible(cx, !(tier.stacked() && short));
+        self.paint_details(cx, tier, short);
         for path in SLIDES {
             if let Some(mut view) = self.ui.view(cx, path).borrow_mut() {
                 view.layout.padding = Inset {
@@ -458,6 +465,16 @@ impl App {
                 };
                 view.layout.spacing = spacing;
             }
+        }
+        // Top bar: tighter padding on phone so nav tiles stay on-screen.
+        if let Some(mut bar) = self.ui.view(cx, ids!(top_bar)).borrow_mut() {
+            let pad = if tier == Tier::Phone { 10.0 } else { 24.0 };
+            bar.layout.padding = Inset {
+                left: pad,
+                right: pad.min(20.0),
+                top: 0.0,
+                bottom: 0.0,
+            };
         }
         if tier_changed {
             let stacked = tier.stacked();
@@ -696,6 +713,12 @@ mod tests {
         assert!(DOWNLOADS_LIVE);
         assert!(DOWNLOAD_URL.contains("play.google.com/store/apps/details?id=com.khaynjo"));
         assert!(!LAN_PILOT_PASSED);
+    }
+
+    #[test]
+    fn layout_floor_is_phone_width() {
+        assert_eq!(MIN_WIDTH, 375.0);
+        assert!(Tier::from_size(MIN_WIDTH, 800.0) == Tier::Phone);
     }
 
     #[test]
