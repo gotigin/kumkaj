@@ -346,6 +346,8 @@ app_template_skip	Tsallake yanzu
 app_template_status	Sabar a shirye — shigo da samfuri, ko tsallake
 app_template_importing	Ana amfani da {title}…
 app_template_downloading	Ana saukar da samfuri…
+app_template_download_progress	Ana saukewa… {p}% ({d} / {t})
+app_template_download_paused	Sake shigo da shi don ci gaba — ana ajiye fayilolin da suka kammala
 app_template_public_hdr	Samfuran jama'a
 app_template_private_hdr	Samfurin sirri
 app_template_public_hint	Buɗe wannan sashe don loda jerin jama'a (ana buƙatar intanet sau ɗaya).
@@ -626,6 +628,7 @@ choose_device_use	Zaɓi Server ko Abokin haɗi.
 paired_note	An haɗa. Buɗe don sayarwa, ko Sabunta don sabo.
 last_update_at	Sabuntawa ta ƙarshe: {time}.
 pair_intro	Nemo server, ko rubuta adireshi da lambar haɗinsa.
+pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
 queue_waiting	Yana jiran isa shago ({n}):
 queue_tries	An gwada sau {n} · amsar ƙarshe: {e}
 save_backup_copy	Ajiye kwafin ajiyar madadin…
@@ -1266,6 +1269,8 @@ taxable_value	Adadin da ake caje haraji
 gst_inside_price_note	({tax} a ciki)
 start_with_template	Fara da samfurin menu namu
 template_heading	Samfurin menu namu
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf
 template_info	Rukuni {c} da abinci {d} masu hoto, a shirye don ƙarawa. Farashi yana farawa da ₹0 — sa naka daga baya.
 template_import	Shigar da duka samfurin
 template_confirm	A ƙara abinci {d} tare da rukuninsu? Abincin da kake da shi yana nan kamar yadda yake.
@@ -1363,7 +1368,3 @@ recent_changes	Canje-canje na baya-bayan nan
 lane_declared_label	Lissafin haraji
 lane_owner_label	Takardar tsabar kuɗi
 money_lane_bill	Lissafi: {lane}
-app_template_download_progress	Ana saukewa… {p}% ({d} / {t})
-app_template_download_paused	Sake shigo da shi don ci gaba — ana ajiye fayilolin da suka kammala
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf

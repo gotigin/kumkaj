@@ -1,0 +1,16 @@
+--- a/widgets/src/button.rs
++++ b/widgets/src/button.rs
+@@ -468,8 +468,10 @@
+     #[redraw]
+     #[live]
+     draw_bg: DrawQuad,
+     #[live]
+-    draw_text: DrawText,
++    /// Public so a host can recolour the label (e.g. sticky nav active state)
++    /// without a full live re-apply.
++    pub draw_text: DrawText,
+     #[live]
+     /// Public so a host can recolour the mark directly. Going through a
+     /// script apply instead re-applies the whole object and drops the loaded
+     /// document, which renders the icon as a white silhouette.
+     pub draw_icon: DrawSvg,

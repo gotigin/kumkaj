@@ -346,6 +346,8 @@ app_template_skip	Laktawan sa ngayon
 app_template_status	Handa na ang server — mag-import ng template, o laktawan
 app_template_importing	Nag-a-apply {title}…
 app_template_downloading	Dina-download ang template…
+app_template_download_progress	Nagda-download… {p}% ({d} / {t})
+app_template_download_paused	Mag-import ulit para ituloy — naiingatan ang mga tapos nang file
 app_template_public_hdr	Mga pampublikong template
 app_template_private_hdr	Pribadong template
 app_template_public_hint	Buksan ang seksyong ito para i-load ang pampublikong listahan (kailangan ng internet nang isang beses).
@@ -626,6 +628,7 @@ choose_device_use	Piliin ang Server o Kliyente.
 paired_note	Ipinares. I-unlock para ibenta, o I-refresh para sa pinakabago.
 last_update_at	Huling update: {time}.
 pair_intro	Hanapin ang server, o i-type ang address at code ng pagpapares nito.
+pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
 queue_waiting	Naghihintay na makarating sa tindahan ({n}):
 queue_tries	Sinubukan {n} beses · huling sagot: {e}
 save_backup_copy	Mag-save ng backup na kopya...
@@ -1266,6 +1269,8 @@ taxable_value	Nabubuwisan na halaga
 gst_inside_price_note	({tax} kasama)
 start_with_template	Magsimula sa aming template ng menu
 template_heading	Ang aming template ng menu
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf
 template_info	{c} kategorya at {d} dish na may mga larawan, handa nang idagdag. Magsisimula ang mga presyo sa ₹0 — itakda ang sa iyo pagkatapos.
 template_import	Mag-import ng kumpletong template
 template_confirm	Magdagdag ng {d} dish sa kanilang mga kategorya? Ang mga pagkaing mayroon ka nang manatili sa kung ano sila.
@@ -1363,7 +1368,3 @@ recent_changes	Mga kamakailang pagbabago
 lane_declared_label	Invoice ng buwis
 lane_owner_label	Resibo ng cash
 money_lane_bill	Resibo: {lane}
-app_template_download_progress	Nagda-download… {p}% ({d} / {t})
-app_template_download_paused	Mag-import ulit para ituloy — naiingatan ang mga tapos nang file
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf

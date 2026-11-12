@@ -1695,6 +1695,28 @@ impl Store {
             .unwrap_or(false))
     }
 
+    /// True when this Client cache can skip Find + pairing code and go to Lock.
+    /// Half-paired rows (flag set but URL/token missing) are healed to unpaired
+    /// so DeviceSetup never traps the till on a broken resume.
+    pub fn client_resume_ok(&self) -> Result<bool, String> {
+        if !self.client_paired()? {
+            return Ok(false);
+        }
+        let url_ok = self
+            .server_url()?
+            .map(|u| !u.trim().is_empty())
+            .unwrap_or(false);
+        let token_ok = self
+            .client_device_token()?
+            .map(|t| !t.trim().is_empty())
+            .unwrap_or(false);
+        if url_ok && token_ok {
+            return Ok(true);
+        }
+        let _ = self.clear_client_pairing();
+        Ok(false)
+    }
+
     pub fn server_url(&self) -> Result<Option<String>, String> {
         Ok(self
             .meta_get("server_url")?
@@ -16333,6 +16355,33 @@ mod tests {
         assert!(store
             .finalize_sale(&draft, PayMethod::Cash, None, None, &owner)
             .is_ok());
+        let _ = std::fs::remove_file(path);
+    }
+
+    #[test]
+    fn client_resume_ok_needs_url_and_token() {
+        let path = temp_db();
+        let store = Store::open_path(&path).unwrap();
+        store.set_device_role("client").unwrap();
+        assert!(!store.client_resume_ok().unwrap());
+        // Half-paired: flag on, credentials missing — resume heals to unpaired.
+        store
+            .conn
+            .execute(
+                "INSERT INTO meta(key, value) VALUES('client_paired', '1')
+                 ON CONFLICT(key) DO UPDATE SET value = excluded.value",
+                [],
+            )
+            .unwrap();
+        assert!(
+            !store.client_resume_ok().unwrap(),
+            "half-paired must heal to unpaired"
+        );
+        assert!(!store.client_paired().unwrap());
+        store
+            .set_client_device_pairing("http://127.0.0.1:7847", "device-token")
+            .unwrap();
+        assert!(store.client_resume_ok().unwrap());
         let _ = std::fs::remove_file(path);
     }
 

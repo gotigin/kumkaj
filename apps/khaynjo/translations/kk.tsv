@@ -346,6 +346,8 @@ app_template_skip	Әзірге өткізу
 app_template_status	Сервер дайын — үлгі импорттаңыз немесе өткізіп жіберіңіз
 app_template_importing	{title} қолданылуда…
 app_template_downloading	Үлгі жүктелуде…
+app_template_download_progress	Жүктелуде… {p}% ({d} / {t})
+app_template_download_paused	Жалғастыру үшін қайта импорттаңыз — дайын файлдар сақталады
 app_template_public_hdr	Жалпы үлгілер
 app_template_private_hdr	Жеке үлгі
 app_template_public_hint	Жалпы тізімді жүктеу үшін осы бөлімді ашыңыз (бір рет интернет қажет).
@@ -626,6 +628,7 @@ choose_device_use	Сервер немесе Клиент таңдаңыз.
 paired_note	Жұпталған. Сату үшін құлыпты ашыңыз немесе соңғысын Жаңартыңыз.
 last_update_at	Соңғы жаңарту: {time}.
 pair_intro	Серверді табыңыз немесе мекенжай мен жұптау кодын жазыңыз.
+pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
 queue_waiting	Дүкенге жетуді күтуде ({n}):
 queue_tries	{n} рет қайталанды · соңғы жауап: {e}
 save_backup_copy	Сақтық көшірме сақтау…
@@ -1266,6 +1269,8 @@ taxable_value	Салық салынатын құн
 gst_inside_price_note	({tax} ішінде)
 start_with_template	Біздің мәзір үлгісімен бастау
 template_heading	Біздің мәзір үлгісі
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf
 template_info	{c} санат және {d} тағам фотосымен, қосуға дайын. Бағалар ₹0-ден басталады — содан өзіңіздікін қойыңыз.
 template_import	Толық үлгіні импорттау
 template_confirm	{d} тағамды санаттарымен қосу керек пе? Бар тағамдар сол қалпында қалады.
@@ -1363,7 +1368,3 @@ recent_changes	Соңғы өзгерістер
 lane_declared_label	Салық шот-фактурасы
 lane_owner_label	Кассалық жазба
 money_lane_bill	Шот: {lane}
-app_template_download_progress	Жүктелуде… {p}% ({d} / {t})
-app_template_download_paused	Жалғастыру үшін қайта импорттаңыз — дайын файлдар сақталады
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf

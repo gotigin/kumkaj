@@ -346,6 +346,8 @@ app_template_skip	Saltatu oraingoz
 app_template_status	Zerbitzaria prest — inportatu txantiloi bat edo saltatu
 app_template_importing	{title} aplikatzen…
 app_template_downloading	Txantiloia deskargatzen…
+app_template_download_progress	Deskargatzen… {p}% ({d} / {t})
+app_template_download_paused	Inportatu berriro jarraitzeko — amaitutako fitxategiak gordetzen dira
 app_template_public_hdr	Txantiloi publikoak
 app_template_private_hdr	Txantiloi pribatua
 app_template_public_hint	Ireki atal hau zerrenda publikoa kargatzeko (behin interneta behar da).
@@ -626,6 +628,7 @@ choose_device_use	Aukeratu Zerbitzaria edo Bezeroa.
 paired_note	Parekatuta. Desblokeatu saltzeko, edo Freskatu azkena lortzeko.
 last_update_at	Azken eguneratzea: {time}.
 pair_intro	Aurkitu zerbitzaria, edo idatzi helbidea eta parekatze-kodea.
+pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
 queue_waiting	Dendara iristeko zain ({n}):
 queue_tries	{n} aldiz saiatuta · azken erantzuna: {e}
 save_backup_copy	Gorde babeskopia bat…
@@ -1266,6 +1269,8 @@ taxable_value	Zerga-oinarria
 gst_inside_price_note	({tax} barne)
 start_with_template	Hasi gure menu-txantiloiarekin
 template_heading	Gure menu-txantiloia
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf
 template_info	{c} kategoria eta {d} plater argazkiekin, gehitzeko prest. Prezioak ₹0-n hasten dira — gero ezarri zureak.
 template_import	Inportatu txantiloi osoa
 template_confirm	Gehitu {d} plater beren kategoriekin? Dagoeneko dituzun platerak dauden bezala geratzen dira.
@@ -1363,7 +1368,3 @@ recent_changes	Azken aldaketak
 lane_declared_label	Zerga-faktura
 lane_owner_label	Diru-oharra
 money_lane_bill	Kontua: {lane}
-app_template_download_progress	Deskargatzen… {p}% ({d} / {t})
-app_template_download_paused	Inportatu berriro jarraitzeko — amaitutako fitxategiak gordetzen dira
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf

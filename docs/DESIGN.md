@@ -147,7 +147,28 @@ a documented exception — including Makepad sites (use `Markdown` /
 site typography aliases with `body:` + `selectable: true`). Site DSL
 overrides for that copy use `body:` / `child.body:` — not Label’s
 `text:` (Markdown draws `body`). Ctrl/Cmd+C uses the system clipboard
-(`Cx::copy_to_clipboard` — see [`DEV.md`](DEV.md)).
+(`Cx::copy_to_clipboard` — see [`DEV.md`](DEV.md)). On the web canvas,
+mouse drag selects in any direction (including along a line). Right-click
+opens a small **Copy / Select all** menu (the native canvas menu is only
+“Save image as…” and is suppressed). Copy uses the same path as
+Ctrl/Cmd+C. Selection highlight uses `draw_selection.color` (not
+`draw_block.selection_color`); pin a **light** band under dark ink (e.g.
+Khaynjo `ServedFill` `#CFE3FF`), never Accent/maroon on maroon headlines.
+**Khaynjo.com (and sibling sites) — canvas text selection is OFF
+(2026-11-12).** Several approaches were tried (ScrollYView document-host
+leaf stitching / column lock / Select-all sticky refill; then per-Markdown
+`selection_gestures`). Each left some cards selectable and neighbors
+dead (feature grid, KOT lines, right-column cards). Uneven select is
+worse than none, so every site Markdown/TextFlow ships
+`selectable: false` until a single approach works on **every** visible
+card the same way — no per-widget exceptions. Makepad patches for
+document chrome may still exist under `patches/makepad/`; do not wire
+them back on sites without that uniform proof. Apps may still use
+selectable WrapLabel / PortalList where hit-testing is proven.
+
+**Open (khaynjo.com):** (1) re-enable site text selection properly;
+(2) fill the 14 world-shelf “Photo coming” countries — see
+[`sites/khaynjo/README.md`](../sites/khaynjo/README.md) § Remaining.
 
 ## Work-surface layout & interaction (lessons for every app)
 
@@ -274,7 +295,7 @@ lightness mid-hover.
 | On-surface | `#260B08` | Body ink on light faces |
 | Muted | `#6B4A3F` / `#8A6A5C` | Hints, placeholders (dark on **white** wells) |
 | Deep red | `#9A0E10` / `#69090C` / `#B43A12` | Chrome, tabs, primary actions (logo reds; darkest → down, darkest-red → hover) |
-| Selection | `#F69D2C` | Text selection band (dark ink stays readable) |
+| Selection | `#CFE3FF` | Text selection band (ServedFill / light blue; dark ink stays readable) |
 | Accent | `#B43A12` | Accents, price ink, warning fills (logo red-orange, darkened so white ink on it stays ≥ 5.9:1) |
 | Gold | `#F69D2C` / `#F7B043` | Status marks on deep-red chrome (logo gold) |
 

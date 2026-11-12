@@ -346,6 +346,8 @@ app_template_skip	Tsiba okwangoku
 app_template_status	Iseva ilungile — ngenisa itemplate, okanye utsibe
 app_template_importing	Ifaka {title}…
 app_template_downloading	Itemplate iyakhutshelwa…
+app_template_download_progress	Iyakhuphela… {p}% ({d} / {t})
+app_template_download_paused	Ngenisa kwakhona ukuze uqhubeke — iifayile ezigqityiweyo ziyagcinwa
 app_template_public_hdr	Iitemplate zoluntu
 app_template_private_hdr	Itemplate yabucala
 app_template_public_hint	Vula eli candelo ukuze ulayishe uluhlu loluntu (kufuneka i-intanethi kanye).
@@ -626,6 +628,7 @@ choose_device_use	Khetha iSeva okanye iKlayenti.
 paired_note	Kudityanisiwe. Vula ukuze uthengise, okanye Hlaziya okutsha.
 last_update_at	Uhlaziyo lokugqibela: {time}.
 pair_intro	Fumana iseva, okanye chwetheza idilesi yayo ngekhowudi yokudibanisa.
+pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
 queue_waiting	Kulindwe ukufikelela evenkileni ({n}):
 queue_tries	Kuzanywe amaxesha {n} · impendulo yokugqibela: {e}
 save_backup_copy	Gcina ikopi yogcino lwasemva…
@@ -1266,6 +1269,8 @@ taxable_value	Ixabiso elirhafiswayo
 gst_inside_price_note	({tax} ngaphakathi)
 start_with_template	Qala ngitemplate yoluhlu lwethu
 template_heading	Itemplate yoluhlu lwethu
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf
 template_info	Iindidi {c} nokutya {d} okuneefoto, kulungele ukongeza. Amaxabiso aqala kwi-₹0 — misa awakho emva koko.
 template_import	Ngenisa itemplate epheleleyo
 template_confirm	Yongeza ukutya {d} neendidi zako? Ukutya oselenakho kuhlala kunjalo.
@@ -1363,7 +1368,3 @@ recent_changes	Utshintsho lwakutshanje
 lane_declared_label	I-invoyisi yerhafu
 lane_owner_label	Imemo yemali ephathekayo
 money_lane_bill	Ityala: {lane}
-app_template_download_progress	Iyakhuphela… {p}% ({d} / {t})
-app_template_download_paused	Ngenisa kwakhona ukuze uqhubeke — iifayile ezigqityiweyo ziyagcinwa
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf

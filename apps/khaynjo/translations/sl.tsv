@@ -346,6 +346,8 @@ app_template_skip	Preskoči za zdaj
 app_template_status	Strežnik je pripravljen — uvozite predlogo ali preskočite
 app_template_importing	Uporablja se {title}…
 app_template_downloading	Prenašanje predloge…
+app_template_download_progress	Prenašanje… {p}% ({d} / {t})
+app_template_download_paused	Za nadaljevanje znova uvozite — dokončane datoteke ostanejo
 app_template_public_hdr	Javne predloge
 app_template_private_hdr	Zasebna predloga
 app_template_public_hint	Odprite ta razdelek, da naložite javni seznam (internet je potreben enkrat).
@@ -626,6 +628,7 @@ choose_device_use	Izberite Strežnik ali Odjemalec.
 paired_note	Povezano. Odklenite za prodajo ali Osvežite za najnovejše.
 last_update_at	Zadnja osvežitev: {time}.
 pair_intro	Poiščite strežnik ali vnesite naslov in kodo za povezavo.
+pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
 queue_waiting	Čaka, da doseže lokal ({n}):
 queue_tries	Poskusov {n} · zadnji odgovor: {e}
 save_backup_copy	Shrani varnostno kopijo…
@@ -1266,6 +1269,8 @@ taxable_value	Davčna osnova
 gst_inside_price_note	({tax} vključeno)
 start_with_template	Začni z našo predlogo menija
 template_heading	Naša predloga menija
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf
 template_info	{c} kategorij in {d} jedi s fotografijami, pripravljene za dodajanje. Cene se začnejo pri ₹0 — nato nastavite svoje.
 template_import	Uvozi celotno predlogo
 template_confirm	Dodam {d} jedi z njihovimi kategorijami? Jedi, ki jih že imate, ostanejo take, kot so.
@@ -1363,7 +1368,3 @@ recent_changes	Nedavne spremembe
 lane_declared_label	Davčni račun
 lane_owner_label	Blagajniški zapis
 money_lane_bill	Račun: {lane}
-app_template_download_progress	Prenašanje… {p}% ({d} / {t})
-app_template_download_paused	Za nadaljevanje znova uvozite — dokončane datoteke ostanejo
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf

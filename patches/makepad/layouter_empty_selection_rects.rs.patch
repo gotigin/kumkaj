@@ -1,0 +1,22 @@
+--- a/draw/src/text/layouter.rs
++++ b/draw/src/text/layouter.rs
+@@ -1160,6 +1160,9 @@
+     }
+ 
+     fn cursor_to_row_index(&self, cursor: Cursor) -> usize {
++        if self.rows.is_empty() {
++            return 0;
++        }
+         for (row_index, row) in self.rows.iter().enumerate() {
+             if cursor.index < row.text.end_in_parent() {
+                 return row_index;
+@@ -1206,6 +1209,9 @@
+     }
+ 
+     pub fn selection_rects(&self, selection: Selection) -> Vec<SelectionRect> {
++        if self.rows.is_empty() {
++            return Vec::new();
++        }
+         let CursorPosition {
+             row_index: start_row_index,
+             x_in_lpxs: start_x_in_lpxs,

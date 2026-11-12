@@ -346,6 +346,8 @@ app_template_skip	ഇപ്പോൾ ഒഴിവാക്കുക
 app_template_status	സെർവർ തയ്യാർ — ഒരു ടെംപ്ലേറ്റ് ഇമ്പോർട്ട് ചെയ്യുക, അല്ലെങ്കിൽ ഒഴിവാക്കുക
 app_template_importing	{title} പ്രയോഗിക്കുന്നു…
 app_template_downloading	ടെംപ്ലേറ്റ് ഡൗൺലോഡ് ചെയ്യുന്നു…
+app_template_download_progress	ഡൗൺലോഡ് ചെയ്യുന്നു… {p}% ({d} / {t})
+app_template_download_paused	തുടരാൻ വീണ്ടും ഇമ്പോർട്ട് ചെയ്യുക — പൂർത്തിയായ ഫയലുകൾ സൂക്ഷിക്കും
 app_template_public_hdr	പൊതു ടെംപ്ലേറ്റുകൾ
 app_template_private_hdr	സ്വകാര്യ ടെംപ്ലേറ്റ്
 app_template_public_hint	പൊതു പട്ടിക ലോഡ് ചെയ്യാൻ ഈ വിഭാഗം തുറക്കുക (ഒരിക്കൽ ഇന്റർനെറ്റ് വേണം).
@@ -626,6 +628,7 @@ choose_device_use	ഈ ഉപകരണം എങ്ങനെ ഉപയോഗി�
 paired_note	ജോടിയാക്കി. വിൽക്കാൻ അൺലോക്ക് ചെയ്യുക, അല്ലെങ്കിൽ കടയിൽ നിന്ന് പുതിയത് എടുക്കാൻ പുതുക്കുക.
 last_update_at	കടയിൽ നിന്നുള്ള അവസാന അപ്‌ഡേറ്റ്: {time}.
 pair_intro	സെർവർ കണ്ടെത്തുക, അല്ലെങ്കിൽ അതിന്റെ വിലാസവും പെയറിംഗ് കോഡും ടൈപ്പ് ചെയ്യുക.
+pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
 queue_waiting	കടയിലെത്താൻ കാത്തിരിക്കുന്നു ({n}):
 queue_tries	{n} തവണ ശ്രമിച്ചു · അവസാന മറുപടി: {e}
 save_backup_copy	ബാക്കപ്പ് പകർപ്പ് സംരക്ഷിക്കുക…
@@ -1266,6 +1269,8 @@ taxable_value	നികുതി മൂല്യം
 gst_inside_price_note	({tax} ഉൾപ്പെടെ)
 start_with_template	ഞങ്ങളുടെ മെനു ടെംപ്ലേറ്റോടെ തുടങ്ങുക
 template_heading	ഞങ്ങളുടെ മെനു ടെംപ്ലേറ്റ്
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf
 template_info	{c} വിഭാഗങ്ങളും {d} വിഭവങ്ങളും ഫോട്ടോ സഹിതം തയ്യാർ. വില ₹0 — പിന്നീട് നിങ്ങളുടെ വില നൽകുക.
 template_import	മുഴുവൻ ടെംപ്ലേറ്റ് ഇറക്കുക
 template_confirm	{d} വിഭവങ്ങൾ വിഭാഗങ്ങളോടെ ചേർക്കണോ? നിലവിലുള്ളവ അങ്ങനെതന്നെ തുടരും.
@@ -1363,7 +1368,3 @@ recent_changes	സമീപകാല മാറ്റങ്ങൾ
 lane_declared_label	നികുതി ഇൻവോയ്‌സ്
 lane_owner_label	ക്യാഷ് മെമ്മോ
 money_lane_bill	ബിൽ: {lane}
-app_template_download_progress	ഡൗൺലോഡ് ചെയ്യുന്നു… {p}% ({d} / {t})
-app_template_download_paused	തുടരാൻ വീണ്ടും ഇമ്പോർട്ട് ചെയ്യുക — പൂർത്തിയായ ഫയലുകൾ സൂക്ഷിക്കും
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf

@@ -346,6 +346,8 @@ app_template_skip	Hoppa över nu
 app_template_status	Servern är redo — importera en mall eller hoppa över
 app_template_importing	Ansöker {title}...
 app_template_downloading	Hämtar mall…
+app_template_download_progress	Hämtar… {p}% ({d} / {t})
+app_template_download_paused	Importera igen för att fortsätta — färdiga filer sparas
 app_template_public_hdr	Offentliga mallar
 app_template_private_hdr	Privat mall
 app_template_public_hint	Öppna det här avsnittet för att läsa in den offentliga listan (internet behövs en gång).
@@ -626,6 +628,7 @@ choose_device_use	Välj Server eller Klient.
 paired_note	Parat. Lås upp för att sälja, eller uppdatera för det senaste.
 last_update_at	Senaste uppdatering: {time}.
 pair_intro	Hitta servern eller skriv in dess adress och kopplingskod.
+pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
 queue_waiting	Väntar på att nå butiken ({n}):
 queue_tries	Försökt {n} gånger · senaste svar: {e}
 save_backup_copy	Spara en säkerhetskopia...
@@ -1266,6 +1269,8 @@ taxable_value	Skattepliktigt värde
 gst_inside_price_note	({tax} inklusive)
 start_with_template	Börja med vår menymall
 template_heading	Vår menymall
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf
 template_info	{c} kategorier och {d} rätter med foton, redo att läggas till. Priserna börjar på 0 INR – ställ in ditt efter.
 template_import	Importera komplett mall
 template_confirm	Lägg till {d} rätter med deras kategorier? Rätter du redan har stannar som de är.
@@ -1363,7 +1368,3 @@ recent_changes	Senaste ändringarna
 lane_declared_label	Skattefaktura
 lane_owner_label	Kontantmemo
 money_lane_bill	Nota: {lane}
-app_template_download_progress	Hämtar… {p}% ({d} / {t})
-app_template_download_paused	Importera igen för att fortsätta — färdiga filer sparas
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf

@@ -127,13 +127,25 @@ script_mod! {
     mod.widgets.TextFlow.text_style_bold.font_family = StrongFont
     mod.widgets.TextFlow.text_style_bold_italic.font_family = StrongFont
 
+    // Selection band under ink: light ServedFill (T5) so maroon/ink stay readable.
+    // draw_selection.color is what TextFlow paints (not draw_block.selection_color).
+    mod.widgets.TextFlow.draw_selection.color = #xCFE3FFFF
+    mod.widgets.Markdown.draw_selection.color = #xCFE3FFFF
+    // Site text selection is OFF. Makepad document-host select and per-Markdown
+    // gestures both left some cards selectable and neighbors dead (feature grid
+    // right column / KOT). Uneven select is worse than none — do not re-enable
+    // until every visible Markdown selects the same way with no exceptions.
+    mod.widgets.TextFlow.selectable = false
+    mod.widgets.Markdown.selectable = false
+
     // TextFlow paints from `font_color` (not only draw_text.color) — set both.
     let Eyebrow = Markdown{
-        selectable: true
+        selectable: false
         height: Fit
         paragraph_spacing: 0.
         pre_code_spacing: 0.
-        draw_block +: { selection_color: #xF69D2CFF }
+        draw_selection +: { color: #xCFE3FFFF }
+        draw_block +: { selection_color: #xCFE3FFFF }
         width: Fill
         padding: 0.
         font_color: Accent
@@ -146,11 +158,12 @@ script_mod! {
         }
     }
     let Headline = Markdown{
-        selectable: true
+        selectable: false
         height: Fit
         paragraph_spacing: 0.
         pre_code_spacing: 0.
-        draw_block +: { selection_color: #xF69D2CFF }
+        draw_selection +: { color: #xCFE3FFFF }
+        draw_block +: { selection_color: #xCFE3FFFF }
         width: Fill
         padding: 0.
         font_color: Maroon
@@ -163,11 +176,12 @@ script_mod! {
         }
     }
     let Lede = Markdown{
-        selectable: true
+        selectable: false
         height: Fit
         paragraph_spacing: 0.
         pre_code_spacing: 0.
-        draw_block +: { selection_color: #xF69D2CFF }
+        draw_selection +: { color: #xCFE3FFFF }
+        draw_block +: { selection_color: #xCFE3FFFF }
         width: Fill
         padding: 0.
         font_color: Muted
@@ -179,11 +193,12 @@ script_mod! {
         }
     }
     let Body = Markdown{
-        selectable: true
+        selectable: false
         height: Fit
         paragraph_spacing: 0.
         pre_code_spacing: 0.
-        draw_block +: { selection_color: #xF69D2CFF }
+        draw_selection +: { color: #xCFE3FFFF }
+        draw_block +: { selection_color: #xCFE3FFFF }
         width: Fill
         padding: 0.
         font_color: Muted
@@ -195,11 +210,12 @@ script_mod! {
         }
     }
     let Strong = Markdown{
-        selectable: true
+        selectable: false
         height: Fit
         paragraph_spacing: 0.
         pre_code_spacing: 0.
-        draw_block +: { selection_color: #xF69D2CFF }
+        draw_selection +: { color: #xCFE3FFFF }
+        draw_block +: { selection_color: #xCFE3FFFF }
         width: Fill
         padding: 0.
         font_color: Ink
@@ -212,11 +228,12 @@ script_mod! {
         }
     }
     let Small = Markdown{
-        selectable: true
+        selectable: false
         height: Fit
         paragraph_spacing: 0.
         pre_code_spacing: 0.
-        draw_block +: { selection_color: #xF69D2CFF }
+        draw_selection +: { color: #xCFE3FFFF }
+        draw_block +: { selection_color: #xCFE3FFFF }
         width: Fill
         padding: 0.
         font_color: Hint
@@ -242,11 +259,12 @@ script_mod! {
         }
     }
     let Ticket = Markdown{
-        selectable: true
+        selectable: false
         height: Fit
         paragraph_spacing: 0.
         pre_code_spacing: 0.
-        draw_block +: { selection_color: #xF69D2CFF }
+        draw_selection +: { color: #xCFE3FFFF }
+        draw_block +: { selection_color: #xCFE3FFFF }
         width: Fill
         padding: 0.
         font_color: Ink
@@ -263,11 +281,12 @@ script_mod! {
     // ---- Section type ---------------------------------------------------
     // Section titles (H2) and card titles (H3) — Baloo, maroon on cream.
     let H2 = Markdown{
-        selectable: true
+        selectable: false
         height: Fit
         paragraph_spacing: 0.
         pre_code_spacing: 0.
-        draw_block +: { selection_color: #xF69D2CFF }
+        draw_selection +: { color: #xCFE3FFFF }
+        draw_block +: { selection_color: #xCFE3FFFF }
         width: Fill
         padding: 0.
         font_color: Maroon
@@ -280,11 +299,12 @@ script_mod! {
         }
     }
     let H3 = Markdown{
-        selectable: true
+        selectable: false
         height: Fit
         paragraph_spacing: 0.
         pre_code_spacing: 0.
-        draw_block +: { selection_color: #xF69D2CFF }
+        draw_selection +: { color: #xCFE3FFFF }
+        draw_block +: { selection_color: #xCFE3FFFF }
         width: Fill
         padding: 0.
         font_color: Maroon
@@ -385,7 +405,9 @@ script_mod! {
         }
     }
     // Gold CTA for the deep-red bands (white-on-red primary would vanish).
+    // grab_key_focus false: avoid stealing focus from page scroll / copy.
     let GoldBtn = PrimaryBtn{
+        grab_key_focus: false
         draw_bg +: {
             color: Gold
             color_hover: GoldSoft
@@ -551,9 +573,20 @@ script_mod! {
         width: Fit height: Fit
         padding: Inset{left: 12. right: 12. top: 6. bottom: 7.}
         draw_bg +: {color: WellWarm border_color: #xEBCDB6 border_size: 1. border_radius: 14.}
-        label := Label{
-            text: "Pill"
+        label := Markdown{
+            selectable: false
+            width: Fit height: Fit
+            padding: 0.
+            paragraph_spacing: 0.
+            pre_code_spacing: 0.
+            body: "Pill"
+            font_color: Maroon
+            font_size: 13.
+            text_style_normal: theme.font_bold{font_family: StrongFont font_size: 13.}
+            text_style_bold: theme.font_bold{font_family: StrongFont font_size: 13.}
             draw_text +: {color: Maroon text_style: theme.font_bold{font_family: StrongFont font_size: 13.}}
+            draw_selection +: { color: #xCFE3FFFF }
+            draw_block +: { selection_color: #xCFE3FFFF }
         }
     }
     // Trust line: a green check dot + short claim.
@@ -563,18 +596,39 @@ script_mod! {
         spacing: 8
         align: Align{y: 0.5}
         RoundedView{width: 10 height: 10 draw_bg +: {color: BillLine border_radius: 5.}}
-        label := Label{
-            text: "Claim"
+        label := Markdown{
+            selectable: false
+            width: Fit height: Fit
+            padding: 0.
+            paragraph_spacing: 0.
+            pre_code_spacing: 0.
+            body: "Claim"
+            font_color: Ink
+            font_size: 14.
+            text_style_normal: theme.font_bold{font_family: StrongFont font_size: 14.}
+            text_style_bold: theme.font_bold{font_family: StrongFont font_size: 14.}
             draw_text +: {color: Ink text_style: theme.font_bold{font_family: StrongFont font_size: 14.}}
+            draw_selection +: { color: #xCFE3FFFF }
+            draw_block +: { selection_color: #xCFE3FFFF }
         }
     }
     let ExampleTag = RoundedView{
         width: Fit height: Fit
         padding: Inset{left: 10. right: 10. top: 4. bottom: 5.}
         draw_bg +: {color: WellWarm border_radius: 10.}
-        Label{
-            text: "Example"
+        Markdown{
+            selectable: false
+            width: Fit height: Fit
+            padding: 0.
+            paragraph_spacing: 0.
+            pre_code_spacing: 0.
+            body: "Example"
+            font_color: Muted
+            font_size: 12.
+            text_style_normal: theme.font_regular{font_family: TextFont font_size: 12.}
             draw_text +: {color: Muted text_style: theme.font_regular{font_family: TextFont font_size: 12.}}
+            draw_selection +: { color: #xCFE3FFFF }
+            draw_block +: { selection_color: #xCFE3FFFF }
         }
     }
     // Step number disc for the service story.
@@ -582,9 +636,20 @@ script_mod! {
         width: 34 height: 34
         align: Align{x: 0.5 y: 0.5}
         draw_bg +: {color: Red border_radius: 17.}
-        num := Label{
-            text: "1"
+        num := Markdown{
+            selectable: false
+            width: Fit height: Fit
+            padding: 0.
+            paragraph_spacing: 0.
+            pre_code_spacing: 0.
+            body: "1"
+            font_color: #xFFFFFF
+            font_size: 15.
+            text_style_normal: theme.font_bold{font_family: StrongFont font_size: 15.}
+            text_style_bold: theme.font_bold{font_family: StrongFont font_size: 15.}
             draw_text +: {color: #xFFFFFF text_style: theme.font_bold{font_family: StrongFont font_size: 15.}}
+            draw_selection +: { color: #xCFE3FFFF }
+            draw_block +: { selection_color: #xCFE3FFFF }
         }
     }
     // A point: gold dot, bold line, plain line (direct children for overrides).
@@ -623,11 +688,12 @@ script_mod! {
     }
     // Price card numbers.
     let BigPrice = Markdown{
-        selectable: true
+        selectable: false
         height: Fit
         paragraph_spacing: 0.
         pre_code_spacing: 0.
-        draw_block +: { selection_color: #xF69D2CFF }
+        draw_selection +: { color: #xCFE3FFFF }
+        draw_block +: { selection_color: #xCFE3FFFF }
         width: Fill
         padding: 0.
         font_color: Red
@@ -655,9 +721,52 @@ script_mod! {
             flow: Down
             spacing: 2
             padding: Inset{left: 12. right: 8. top: 8. bottom: 8.}
-            name := Label{padding: 0. draw_text +: {color: Ink text_style: theme.font_bold{font_family: DisplayFont font_size: 20. line_spacing: 0.7}} text: "T1"}
-            word := Label{padding: 0. draw_text +: {color: Ink text_style: theme.font_bold{font_family: StrongFont font_size: 14.}} text: "Free"}
-            meta := Label{padding: 0. draw_text +: {color: Muted text_style: theme.font_regular{font_family: TextFont font_size: 13.}} text: ""}
+            // Markdown (not Label): Ctrl+A / document select must include tiles;
+            // HitBtn on top still owns the tap.
+            name := Markdown{
+                selectable: false
+                width: Fit height: Fit
+                padding: 0.
+                paragraph_spacing: 0.
+                pre_code_spacing: 0.
+                body: "T1"
+                font_color: Ink
+                font_size: 20.
+                text_style_normal: theme.font_bold{font_family: DisplayFont font_size: 20. line_spacing: 0.7}
+                text_style_bold: theme.font_bold{font_family: DisplayFont font_size: 20. line_spacing: 0.7}
+                draw_text +: {color: Ink text_style: theme.font_bold{font_family: DisplayFont font_size: 20. line_spacing: 0.7}}
+                draw_selection +: { color: #xCFE3FFFF }
+                draw_block +: { selection_color: #xCFE3FFFF }
+            }
+            word := Markdown{
+                selectable: false
+                width: Fit height: Fit
+                padding: 0.
+                paragraph_spacing: 0.
+                pre_code_spacing: 0.
+                body: "Free"
+                font_color: Ink
+                font_size: 14.
+                text_style_normal: theme.font_bold{font_family: StrongFont font_size: 14.}
+                text_style_bold: theme.font_bold{font_family: StrongFont font_size: 14.}
+                draw_text +: {color: Ink text_style: theme.font_bold{font_family: StrongFont font_size: 14.}}
+                draw_selection +: { color: #xCFE3FFFF }
+                draw_block +: { selection_color: #xCFE3FFFF }
+            }
+            meta := Markdown{
+                selectable: false
+                width: Fit height: Fit
+                padding: 0.
+                paragraph_spacing: 0.
+                pre_code_spacing: 0.
+                body: ""
+                font_color: Muted
+                font_size: 13.
+                text_style_normal: theme.font_regular{font_family: TextFont font_size: 13.}
+                draw_text +: {color: Muted text_style: theme.font_regular{font_family: TextFont font_size: 13.}}
+                draw_selection +: { color: #xCFE3FFFF }
+                draw_block +: { selection_color: #xCFE3FFFF }
+            }
         }
         hit := HitBtn{}
     }
@@ -668,9 +777,19 @@ script_mod! {
         spacing: 6
         align: Align{y: 0.5}
         dot := RoundedView{width: 12 height: 12 draw_bg +: {color: FreeFill border_color: FreeLine border_size: 1.5 border_radius: 6.}}
-        word := Label{
-            text: "Free"
+        word := Markdown{
+            selectable: false
+            width: Fit height: Fit
+            padding: 0.
+            paragraph_spacing: 0.
+            pre_code_spacing: 0.
+            body: "Free"
+            font_color: Muted
+            font_size: 12.5
+            text_style_normal: theme.font_regular{font_family: TextFont font_size: 12.5}
             draw_text +: {color: Muted text_style: theme.font_regular{font_family: TextFont font_size: 12.5}}
+            draw_selection +: { color: #xCFE3FFFF }
+            draw_block +: { selection_color: #xCFE3FFFF }
         }
     }
     // Kitchen column card (static): KOT, table, items, age.
@@ -680,8 +799,10 @@ script_mod! {
         spacing: 2
         padding: Inset{left: 12. right: 12. top: 10. bottom: 10.}
         draw_bg +: {color: Well border_color: WellLine border_size: 1. border_radius: 12.}
-        head := Markdown{padding: 0. selectable: true height: Fit paragraph_spacing: 0. pre_code_spacing: 0. body: "KOT" font_color: Ink draw_text +: {color: Ink text_style: theme.font_bold{font_family: StrongFont font_size: 14.}} draw_block +: { selection_color: #xF69D2CFF }}
-        line := Markdown{width: Fill padding: 0. selectable: true height: Fit paragraph_spacing: 0. pre_code_spacing: 0. body: "Items" font_color: Muted draw_text +: {color: Muted text_style: theme.font_regular{font_family: TextFont font_size: 13.}} draw_block +: { selection_color: #xF69D2CFF }}
+        head := Markdown{padding: 0. selectable: false height: Fit paragraph_spacing: 0. pre_code_spacing: 0. body: "KOT" font_color: Ink draw_text +: {color: Ink text_style: theme.font_bold{font_family: StrongFont font_size: 14.}} draw_selection +: { color: #xCFE3FFFF }
+        draw_block +: { selection_color: #xCFE3FFFF }}
+        line := Markdown{width: Fill padding: 0. selectable: false height: Fit paragraph_spacing: 0. pre_code_spacing: 0. body: "Items" font_color: Muted draw_text +: {color: Muted text_style: theme.font_regular{font_family: TextFont font_size: 13.}} draw_selection +: { color: #xCFE3FFFF }
+        draw_block +: { selection_color: #xCFE3FFFF }}
     }
     let KdsColumn = RoundedView{
         width: Fill height: Fit
@@ -689,7 +810,8 @@ script_mod! {
         spacing: 8
         padding: Inset{left: 10. right: 10. top: 10. bottom: 12.}
         draw_bg +: {color: WellWarm border_radius: 14.}
-        title := Markdown{padding: 0. selectable: true height: Fit paragraph_spacing: 0. pre_code_spacing: 0. body: "Column" font_color: Maroon draw_text +: {color: Maroon text_style: theme.font_bold{font_family: DisplayFont font_size: 18.}} draw_block +: { selection_color: #xF69D2CFF }}
+        title := Markdown{padding: 0. selectable: false height: Fit paragraph_spacing: 0. pre_code_spacing: 0. body: "Column" font_color: Maroon draw_text +: {color: Maroon text_style: theme.font_bold{font_family: DisplayFont font_size: 18.}} draw_selection +: { color: #xCFE3FFFF }
+        draw_block +: { selection_color: #xCFE3FFFF }}
     }
     // Row: label left, amount right (bill, drawer).
     let AmountRow = View{
@@ -729,12 +851,12 @@ script_mod! {
                     border_size: 0.
                     border_radius: 10.
                 }
-                Label{
-                    text: "Photo coming"
-                    draw_text +: {
-                        color: Hint
-                        text_style: theme.font_regular{font_family: TextFont font_size: 11.}
-                    }
+                Small{
+                    width: Fit
+                    body: "Photo coming"
+                    font_size: 11.
+                    text_style_normal: theme.font_regular{font_family: TextFont font_size: 11.}
+                    draw_text +: {text_style: theme.font_regular{font_family: TextFont font_size: 11.}}
                 }
             }
         }
@@ -744,11 +866,12 @@ script_mod! {
         native_wrap := View{
         width: Fill height: Fit
         native := Markdown{
-            selectable: true
+            selectable: false
             height: Fit
             paragraph_spacing: 0.
             pre_code_spacing: 0.
-            draw_block +: { selection_color: #xF69D2CFF }
+            draw_selection +: { color: #xCFE3FFFF }
+        draw_block +: { selection_color: #xCFE3FFFF }
             width: Fill
             padding: 0.
             font_color: Maroon
@@ -844,6 +967,8 @@ script_mod! {
                     }
 
                     page := ScrollYView{
+                        // Site canvas select is OFF (see README § Remaining / DESIGN.md).
+                        selectable: false
                         width: Fill
                         height: Fill
                         flow: Down
@@ -856,12 +981,15 @@ script_mod! {
                                     width: Fill height: Fit
                                     flow: Right
                                     spacing: 44
-                                    align: Align{y: 0.5}
+                                    // Top-align: y:0.5 left a dead band under the
+                                    // shorter copy column beside the tall floor card
+                                    // and broke drag-select into the next section.
+                                    align: Align{y: 0.0}
                                     hero_copy := View{
                                         width: Fill height: Fit
                                         flow: Down
                                         spacing: 20
-                                        Pill{label.text: "Restaurant POS · free forever"}
+                                        Pill{label.body: "Restaurant POS · free forever"}
                                         HeroTitle{body: "Lunch rush. No internet. No problem."}
                                         Lede{body: "Khaynjo runs your floor, kitchen and counter on devices you already own — from table to kitchen to bill, with or without the internet."}
                                         hero_cta := CtaRow{}
@@ -871,9 +999,9 @@ script_mod! {
                                             flow: Down
                                             spacing: 10
                                             padding: Inset{top: 6.}
-                                            Trust{label.text: "Works with no internet"}
-                                            Trust{label.text: "Your books stay on your devices"}
-                                            trust_langs := Trust{label.text: "115 languages on screen"}
+                                            Trust{label.body: "Works with no internet"}
+                                            Trust{label.body: "Your books stay on your devices"}
+                                            trust_langs := Trust{label.body: "115 languages on screen"}
                                         }
                                     }
                                     // The product's own mechanics as the hero visual.
@@ -930,9 +1058,9 @@ script_mod! {
                                         flow: Right
                                         spacing: 14
                                         padding: Inset{top: 6.}
-                                        key_r0 := View{width: Fit height: Fit flow: Right spacing: 14 KeyChip{} KeyChip{dot.draw_bg.color: SeatFill dot.draw_bg.border_color: SeatLine word.text: "Occupied"} KeyChip{dot.draw_bg.color: KitchenFill dot.draw_bg.border_color: KitchenLine word.text: "In kitchen"}}
-                                        key_r1 := View{width: Fit height: Fit flow: Right spacing: 14 KeyChip{dot.draw_bg.color: ReadyFill dot.draw_bg.border_color: ReadyLine word.text: "Food ready"} KeyChip{dot.draw_bg.color: ServedFill dot.draw_bg.border_color: ServedLine word.text: "Served"}}
-                                        key_r2 := View{width: Fit height: Fit flow: Right spacing: 14 KeyChip{dot.draw_bg.color: BillFill dot.draw_bg.border_color: BillLine word.text: "Bill printed"} KeyChip{dot.draw_bg.color: PaidFill dot.draw_bg.border_color: PaidLine word.text: "Paid"}}
+                                        key_r0 := View{width: Fit height: Fit flow: Right spacing: 14 KeyChip{} KeyChip{dot.draw_bg.color: SeatFill dot.draw_bg.border_color: SeatLine word.body: "Occupied"} KeyChip{dot.draw_bg.color: KitchenFill dot.draw_bg.border_color: KitchenLine word.body: "In kitchen"}}
+                                        key_r1 := View{width: Fit height: Fit flow: Right spacing: 14 KeyChip{dot.draw_bg.color: ReadyFill dot.draw_bg.border_color: ReadyLine word.body: "Food ready"} KeyChip{dot.draw_bg.color: ServedFill dot.draw_bg.border_color: ServedLine word.body: "Served"}}
+                                        key_r2 := View{width: Fit height: Fit flow: Right spacing: 14 KeyChip{dot.draw_bg.color: BillFill dot.draw_bg.border_color: BillLine word.body: "Bill printed"} KeyChip{dot.draw_bg.color: PaidFill dot.draw_bg.border_color: PaidLine word.body: "Paid"}}
                                     }
                                 }
 
@@ -941,12 +1069,14 @@ script_mod! {
                                     width: Fill height: Fit
                                     flow: Right
                                     spacing: 48
-                                    align: Align{y: 0.5}
+                                    // Top-align: y:0.5 left a dead band above “1” that
+                                    // broke drag-select from the section head into step 1.
+                                    align: Align{y: 0.0}
                                     View{
                                         width: Fill height: Fit
                                         flow: Down
                                         spacing: 14
-                                        StepDisc{num.text: "1"}
+                                        StepDisc{num.body: "1"}
                                         H3{body: "Seat the table, take the order"}
                                         Body{body: "Mark the table Occupied the moment guests sit. Add dishes, pick a size, add extras, and type a note for the kitchen — right at the table."}
                                         View{
@@ -975,12 +1105,12 @@ script_mod! {
                                     width: Fill height: Fit
                                     flow: Right
                                     spacing: 48
-                                    align: Align{y: 0.5}
+                                    align: Align{y: 0.0}
                                     View{
                                         width: Fill height: Fit
                                         flow: Down
                                         spacing: 14
-                                        StepDisc{num.text: "2"}
+                                        StepDisc{num.body: "2"}
                                         H3{body: "One ticket per kitchen station"}
                                         Body{body: "Send the order and each station gets only its own dishes — numbered per day, with the table, the waiter and every note. Never a price: the kitchen cooks, the counter bills."}
                                         // Shown only after the owner's real-hardware LAN pilot passes.
@@ -1019,7 +1149,7 @@ script_mod! {
                                             width: Fill height: Fit
                                             flow: Down
                                             spacing: 14
-                                            StepDisc{num.text: "3"}
+                                            StepDisc{num.body: "3"}
                                             H3{body: "The kitchen sees what to cook now"}
                                             Body{body: "On the kitchen screen tickets move New → Preparing → Ready with one tap. Older tickets warm in colour, “To cook now” counts every dish waiting, and mains can hold until the starters go."}
                                         }
@@ -1052,12 +1182,12 @@ script_mod! {
                                     width: Fill height: Fit
                                     flow: Right
                                     spacing: 48
-                                    align: Align{y: 0.5}
+                                    align: Align{y: 0.0}
                                     View{
                                         width: Fill height: Fit
                                         flow: Down
                                         spacing: 14
-                                        StepDisc{num.text: "4"}
+                                        StepDisc{num.body: "4"}
                                         H3{body: "Settle any way the guest pays"}
                                         Body{body: "Cash with change to return, UPI with the amount already in the QR, part payment, or Due on the customer's khata. Split by item, by seat or evenly. The table frees only when its bill is paid."}
                                         Point{head.body: "Tips stay apart" line.body: "A tip is recorded on its own — never mixed into sales."}
@@ -1079,12 +1209,12 @@ script_mod! {
                                     width: Fill height: Fit
                                     flow: Right
                                     spacing: 48
-                                    align: Align{y: 0.5}
+                                    align: Align{y: 0.0}
                                     View{
                                         width: Fill height: Fit
                                         flow: Down
                                         spacing: 14
-                                        StepDisc{num.text: "5"}
+                                        StepDisc{num.body: "5"}
                                         H3{body: "Close the day you can trust"}
                                         Body{body: "Count the drawer against the float, cash taken, tips and cash paid out — short or over is named. Print the shift slip, then open the day report by staff, order type, hour and dish, with cancels, comps and tips."}
                                     }
@@ -1169,21 +1299,21 @@ script_mod! {
                                     spacing: 16
                                     tmpl_starter := WarmCard{
                                         spacing: 8
-                                        Pill{label.text: "Starter menu"}
+                                        Pill{label.body: "Starter menu"}
                                         H3{body: "Khaynjo starter menu"}
                                         Body{body: "World cuisines — Japanese, Mexican, Italian, Indian, Thai and more — each dish with its photo."}
                                         Small{body: "14 dishes · 11 categories"}
                                     }
                                     tmpl_cafe := WarmCard{
                                         spacing: 8
-                                        Pill{label.text: "Starter menu"}
+                                        Pill{label.body: "Starter menu"}
                                         H3{body: "Café starter"}
                                         Body{body: "Tea, coffee, cold drinks, bakery and snacks — ready for a counter café."}
                                         Small{body: "22 dishes · 4 categories"}
                                     }
                                     tmpl_items := WarmCard{
                                         spacing: 8
-                                        Pill{label.text: "Photo shelf"}
+                                        Pill{label.body: "Photo shelf"}
                                         H3{body: "Khaynjo dish photos"}
                                         Body{body: "The full public photo shelf — pick the picture for any dish you add."}
                                         Small{body: "1,459 dish photos · 25 kinds of kitchen"}
@@ -1210,14 +1340,23 @@ script_mod! {
                                         spacing: 8
                                         align: Align{y: 0.5}
                                         shelf_prev := PagerBtn{text: "‹ Prev"}
-                                        shelf_page := Label{
-                                            width: Fit
-                                            text: "1 / 1"
+                                        shelf_page := Markdown{
+                                            selectable: false
+                                            width: Fit height: Fit
+                                            padding: 0.
+                                            paragraph_spacing: 0.
+                                            pre_code_spacing: 0.
+                                            body: "1 / 1"
+                                            font_color: Muted
+                                            font_size: 14.
+                                            text_style_normal: theme.font_bold{font_family: StrongFont font_size: 14.}
+                                            text_style_bold: theme.font_bold{font_family: StrongFont font_size: 14.}
                                             draw_text +: {color: Muted text_style: theme.font_bold{font_family: StrongFont font_size: 14.}}
+                                            draw_selection +: { color: #xCFE3FFFF }
+                                            draw_block +: { selection_color: #xCFE3FFFF }
                                         }
                                         shelf_next := PagerBtn{text: "Next ›"}
                                     }
-                                    shelf_toggle := PagerBtn{text: "Show all countries"}
                                 }
                                 shelf_grid := View{
                                     width: Fill height: Fit
@@ -1249,7 +1388,9 @@ script_mod! {
                                     width: Fill height: Fit
                                     flow: Right
                                     spacing: 48
-                                    align: Align{y: 0.5}
+                                    // Top-align with the status card (same dead-band
+                                    // issue as hero / how-service step rows).
+                                    align: Align{y: 0.0}
                                     View{
                                         width: Fill height: Fit
                                         flow: Down
@@ -1317,7 +1458,7 @@ script_mod! {
                                     WarmCard{
                                         spacing: 12
                                         draw_bg +: {border_color: Red border_size: 2.}
-                                        Pill{label.text: "Khaynjo on your devices"}
+                                        Pill{label.body: "Khaynjo on your devices"}
                                         BigPrice{body: "₹0"}
                                         Small{body: "forever"}
                                         Rule{}
@@ -1328,7 +1469,7 @@ script_mod! {
                                     WarmCard{
                                         spacing: 12
                                         draw_bg +: {color: #xFBF4EE}
-                                        Pill{label.text: "Kumkaj Cloud · planned"}
+                                        Pill{label.body: "Kumkaj Cloud · planned"}
                                         H3{body: "Pay only for the cloud you use"}
                                         Body{body: "When Kumkaj Cloud arrives it is optional: you pay for the cloud resources you actually consume. Same rates for everyone — a single café and a chain see the same price sheet."}
                                         Small{body: "Your local Khaynjo keeps working with or without it."}
@@ -1414,7 +1555,21 @@ script_mod! {
                                             width: Fill height: Fit
                                             flow: Down
                                             spacing: 2
-                                            Label{text: "Khaynjo" draw_text +: {color: Cream text_style: theme.font_bold{font_family: DisplayFont font_size: 22.}}}
+                                            Markdown{
+                                                selectable: false
+                                                width: Fit height: Fit
+                                                padding: 0.
+                                                paragraph_spacing: 0.
+                                                pre_code_spacing: 0.
+                                                body: "Khaynjo"
+                                                font_color: Cream
+                                                font_size: 22.
+                                                text_style_normal: theme.font_bold{font_family: DisplayFont font_size: 22.}
+                                                text_style_bold: theme.font_bold{font_family: DisplayFont font_size: 22.}
+                                                draw_text +: {color: Cream text_style: theme.font_bold{font_family: DisplayFont font_size: 22.}}
+                                                draw_selection +: { color: #xCFE3FFFF }
+                                                draw_block +: { selection_color: #xCFE3FFFF }
+                                            }
                                             OnRedBody{body: "Khaynjo is a Kumkaj product by Gotigin."}
                                         }
                                     }

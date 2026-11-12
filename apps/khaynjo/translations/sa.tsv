@@ -346,6 +346,8 @@ app_template_skip	इदानीं कृते त्यजन्तु
 app_template_status	सेवकः सज्जः — प्रारूपम् आयातयतु, अथवा त्यजतु
 app_template_importing	आवेदन करते हुए {title}...
 app_template_downloading	प्रारूपम् अवतार्यते…
+app_template_download_progress	अवतार्यते… {p}% ({d} / {t})
+app_template_download_paused	पुनः आरब्धुं पुनः आयातं कुरु — समाप्ताः सञ्चिकाः रक्ष्यन्ते
 app_template_public_hdr	सार्वजनिकप्रारूपाणि
 app_template_private_hdr	निजप्रारूपम्
 app_template_public_hint	सार्वजनिकसूचीं भारयितुं विभागम् इमम् उद्घाटयतु (एकवारम् अन्तर्जालम् आवश्यकम्)।
@@ -626,6 +628,7 @@ choose_device_use	Server अथवा Client इति चिनोतु ।
 paired_note	युग्मितम् । विक्रयणार्थं अनलॉक् कुर्वन्तु, अथवा नवीनतमस्य कृते ताजगीं कुर्वन्तु।
 last_update_at	अन्तिम अद्यतनः {time}।
 pair_intro	सर्वरं अन्वेष्टुम्, अथवा तस्य पतां युग्मनसङ्केतं च टङ्कयन्तु ।
+pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
 queue_waiting	दुकानं प्राप्तुं प्रतीक्षमाणः ({n}):
 queue_tries	{n} वारं प्रयतितम् · अन्तिमम् उत्तरम् : {e}
 save_backup_copy	एकं बैकअप प्रतिलिपिं रक्षन्तु...
@@ -1266,6 +1269,8 @@ taxable_value	करयोग्य मूल्य
 gst_inside_price_note	({tax} समावेशी) २.
 start_with_template	अस्माकं मेनू टेम्पलेट् इत्यनेन आरभत
 template_heading	अस्माकं मेनू टेम्पलेट्
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf
 template_info	{c} श्रेणयः तथा {d} व्यञ्जनानि फोटोभिः सह, योजयितुं सज्जाः। मूल्यानि ₹0 तः आरभ्यन्ते — पश्चात् स्वस्य सेट् कुर्वन्तु।
 template_import	सम्पूर्ण टेम्पलेट आयात करें
 template_confirm	{d} व्यञ्जनानि तेषां श्रेणीभिः सह योजयन्तु? भवतः पूर्वमेव ये व्यञ्जनानि सन्ति ते यथावत् तिष्ठन्ति।
@@ -1363,7 +1368,3 @@ recent_changes	अद्यतनपरिवर्तनानि
 lane_declared_label	कर चालान
 lane_owner_label	नगद ज्ञापन
 money_lane_bill	विधेयकः {lane} .
-app_template_download_progress	अवतार्यते… {p}% ({d} / {t})
-app_template_download_paused	पुनः आरब्धुं पुनः आयातं कुरु — समाप्ताः सञ्चिकाः रक्ष्यन्ते
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf

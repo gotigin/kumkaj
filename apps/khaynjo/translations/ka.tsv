@@ -346,6 +346,8 @@ app_template_skip	ახლა გამოტოვეთ
 app_template_status	სერვერი მზადაა — შემოიტანეთ შაბლონი ან გამოტოვეთ
 app_template_importing	მიმართვა {title}…
 app_template_downloading	შაბლონი იტვირთება…
+app_template_download_progress	იტვირთება… {p}% ({d} / {t})
+app_template_download_paused	გასაგრძელებლად ხელახლა შემოიტანეთ — დასრულებული ფაილები ინახება
 app_template_public_hdr	საჯარო შაბლონები
 app_template_private_hdr	პირადი შაბლონი
 app_template_public_hint	გახსენით ეს განყოფილება საჯარო სიის ჩასატვირთად (ინტერნეტი ერთხელ არის საჭირო).
@@ -626,6 +628,7 @@ choose_device_use	აირჩიეთ სერვერი ან კლი�
 paired_note	დაწყვილებული. განბლოკეთ გასაყიდად, ან განაახლეთ უახლესი.
 last_update_at	ბოლო განახლება: {time}.
 pair_intro	იპოვეთ სერვერი, ან ჩაწერეთ მისი მისამართი და დაწყვილების კოდი.
+pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
 queue_waiting	ელოდება მაღაზიამდე მისვლას ({n}):
 queue_tries	ვცადე {n} ჯერ · ბოლო პასუხი: {e}
 save_backup_copy	სარეზერვო ასლის შენახვა…
@@ -1266,6 +1269,8 @@ taxable_value	დასაბეგრი ღირებულება
 gst_inside_price_note	({tax} ჩათვლით)
 start_with_template	დაიწყეთ ჩვენი მენიუს შაბლონით
 template_heading	ჩვენი მენიუს შაბლონი
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf
 template_info	{c} კატეგორიები და {d} კერძები ფოტოებით, მზადაა დასამატებლად. ფასები იწყება 0 ₹-დან — დააყენეთ თქვენი შემდეგ.
 template_import	სრული შაბლონის იმპორტი
 template_confirm	დაამატეთ {d} კერძები თავიანთი კატეგორიებით? კერძები, რომლებიც უკვე გაქვთ, რჩება ისეთი, როგორიც არის.
@@ -1363,7 +1368,3 @@ recent_changes	ბოლო ცვლილებები
 lane_declared_label	საგადასახადო ინვოისი
 lane_owner_label	ფულადი მემორანდუმი
 money_lane_bill	სტუმრის ანგარიში: {lane}
-app_template_download_progress	იტვირთება… {p}% ({d} / {t})
-app_template_download_paused	გასაგრძელებლად ხელახლა შემოიტანეთ — დასრულებული ფაილები ინახება
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf

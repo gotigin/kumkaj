@@ -346,6 +346,8 @@ app_template_skip	Пропустить пока
 app_template_status	Сервер готов — импортируйте шаблон или пропустите
 app_template_importing	Применяется {title}…
 app_template_downloading	Загрузка шаблона…
+app_template_download_progress	Загрузка… {p}% ({d} / {t})
+app_template_download_paused	Импортируйте снова, чтобы продолжить — готовые файлы сохраняются
 app_template_public_hdr	Общие шаблоны
 app_template_private_hdr	Личный шаблон
 app_template_public_hint	Откройте этот раздел, чтобы загрузить общий список (интернет нужен один раз).
@@ -626,6 +628,7 @@ choose_device_use	Выберите, как используется это ус�
 paired_note	Подключено. Разблокируйте для продаж или нажмите «Обновить», чтобы получить свежие данные.
 last_update_at	Последнее обновление от заведения: {time}.
 pair_intro	Найдите сервер или введите его адрес и код подключения.
+pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
 queue_waiting	Ждут отправки в заведение ({n}):
 queue_tries	Попыток: {n} · последний ответ: {e}
 save_backup_copy	Сохранить резервную копию…
@@ -1266,6 +1269,8 @@ taxable_value	Налогооблагаемая база
 gst_inside_price_note	({tax} включён)
 start_with_template	Начать с нашего шаблона меню
 template_heading	Наш шаблон меню
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf
 template_info	{c} категорий и {d} блюд с фото готовы к добавлению. Цена ₹0 — укажите свою позже.
 template_import	Импортировать весь шаблон
 template_confirm	Добавить {d} блюд с категориями? Ваши блюда останутся как есть.
@@ -1363,7 +1368,3 @@ recent_changes	Последние изменения
 lane_declared_label	Налоговый счёт
 lane_owner_label	Кассовый чек
 money_lane_bill	Билл: {lane}
-app_template_download_progress	Загрузка… {p}% ({d} / {t})
-app_template_download_paused	Импортируйте снова, чтобы продолжить — готовые файлы сохраняются
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf

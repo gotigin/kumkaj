@@ -346,6 +346,8 @@ app_template_skip	Прапусціць пакуль
 app_template_status	Сервер гатовы — імпартуйце шаблон або прапусціце
 app_template_importing	Прымяняецца {title}…
 app_template_downloading	Спампоўка шаблону…
+app_template_download_progress	Спампоўка… {p}% ({d} / {t})
+app_template_download_paused	Імпартуйце зноў, каб працягнуць — гатовыя файлы захоўваюцца
 app_template_public_hdr	Агульныя шаблоны
 app_template_private_hdr	Прыватны шаблон
 app_template_public_hint	Адкрыйце гэты раздзел, каб загрузіць агульны спіс (адзін раз патрэбны інтэрнэт).
@@ -626,6 +628,7 @@ choose_device_use	Выберыце сервер або кліент.
 paired_note	Парныя. Разблакіруйце, каб прадаць, або абнавіце, каб атрымаць апошняе.
 last_update_at	Апошняе абнаўленне: {time}.
 pair_intro	Знайдзіце сервер або ўвядзіце яго адрас і код спалучэння.
+pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
 queue_waiting	У чаканні, каб дабрацца да крамы ({n}):
 queue_tries	Спрабаваў {n} разоў · апошні адказ: {e}
 save_backup_copy	Захаваць рэзервовую копію…
@@ -1266,6 +1269,8 @@ taxable_value	Падаткаабкладаемы кошт
 gst_inside_price_note	({tax} уключна)
 start_with_template	Пачніце з нашага шаблону меню
 template_heading	Наш шаблон меню
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf
 template_info	{c} катэгорый і {d} страў з фотаздымкамі, гатовых да дадання. Цэны пачынаюцца ад ₹0 - выбірайце пасля.
 template_import	Імпартаваць поўны шаблон
 template_confirm	Дадаць {d} страў з іх катэгорыямі? Стравы, якія ў вас ужо ёсць, застаюцца такімі, якія ёсць.
@@ -1363,7 +1368,3 @@ recent_changes	Апошнія змены
 lane_declared_label	Падатковая накладная
 lane_owner_label	Касавая нататка
 money_lane_bill	Рахунак: {lane}
-app_template_download_progress	Спампоўка… {p}% ({d} / {t})
-app_template_download_paused	Імпартуйце зноў, каб працягнуць — гатовыя файлы захоўваюцца
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf

@@ -346,6 +346,8 @@ app_template_skip	फिलहाल छोड़ दे
 app_template_status	सर्वर त्यार ऐ — टेम्पलेट आयात करो, जां छोड़ी देओ
 app_template_importing	{title} लागू करदे होई...
 app_template_downloading	टेम्पलेट डाउनलोड होआ करदा…
+app_template_download_progress	डाउनलोड होआ करदा… {p}% ({d} / {t})
+app_template_download_paused	फ्ही शुरू करने लेई फ्ही आयात करो — पूरियां फाइलां रक्खियां जंदियां न
 app_template_public_hdr	सार्वजनक टेम्पलेट
 app_template_private_hdr	निजी टेम्पलेट
 app_template_public_hint	सार्वजनक लिस्ट लोड करने लेई एह् हिस्सा खोलो (इक बारी इंटरनेट चाहिदा)।
@@ -626,6 +628,7 @@ choose_device_use	सर्वर जां क्लाइंट चुनो�
 paired_note	जोड़ी बना दी। बेचने लेई अनलॉक करो, जां नवीनतम लेई ताज़ा करो।
 last_update_at	आखिरी अपडेट: {time} ऐ।
 pair_intro	सर्वर गी ढूंढो, जां उंदा पता ते जोड़ी कोड टाइप करो.
+pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
 queue_waiting	दुकान पर पहुंचने दा इंतजार ({n}):
 queue_tries	कोशिश कीती {n} बार · आखिरी जवाब: {e}
 save_backup_copy	इक बैकअप कॉपी बचाओ...
@@ -1266,6 +1269,8 @@ taxable_value	कर योग्य मूल्य
 gst_inside_price_note	({tax} समेत) ऐ।
 start_with_template	साढ़े मेनू टेम्पलेट कन्नै शुरू करो
 template_heading	साडा मेनू टेम्पलेट
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf
 template_info	{c} श्रेणियां ते {d} व्यंजन फोटो कन्नै, जोड़ने लेई तैयार। कीमतें ₹0 थमां शुरू होंदी ऐ — बाद च अपना सेट करो।
 template_import	पूरा टेम्पलेट आयात करो
 template_confirm	{d} व्यंजन अपनी श्रेणी दे कन्नै जोड़ो? व्यंजन तुहाडे कोल पहले तों ही ओ जिवें हन उवें ही रहंदे ने।
@@ -1363,7 +1368,3 @@ recent_changes	हाल दे बदलाव
 lane_declared_label	कर चालान दा
 lane_owner_label	नकद ज्ञापन
 money_lane_bill	बिल: {lane} ऐ।
-app_template_download_progress	डाउनलोड होआ करदा… {p}% ({d} / {t})
-app_template_download_paused	फ्ही शुरू करने लेई फ्ही आयात करो — पूरियां फाइलां रक्खियां जंदियां न
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf

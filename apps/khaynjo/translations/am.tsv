@@ -346,6 +346,8 @@ app_template_skip	ለአሁን ዝለል
 app_template_status	አገልጋዩ ዝግጁ ነው — አብነት ያስገቡ ወይም ይዝለሉ
 app_template_importing	{title} በመተግበር ላይ…
 app_template_downloading	አብነት በማውረድ ላይ…
+app_template_download_progress	በማውረድ ላይ… {p}% ({d} / {t})
+app_template_download_paused	ለመቀጠል እንደገና ያስገቡ — የተጠናቀቁ ፋይሎች ይቀመጣሉ
 app_template_public_hdr	ይፋዊ አብነቶች
 app_template_private_hdr	የግል አብነት
 app_template_public_hint	ይፋዊ ዝርዝሩን ለመጫን ይህን ክፍል ይክፈቱ (አንድ ጊዜ ኢንተርኔት ያስፈልጋል)።
@@ -626,6 +628,7 @@ choose_device_use	ሰርቨር ወይም ክላየንት ይምረጡ።
 paired_note	ተጣምሯል። ለመሸጥ ይክፈቱ፣ ወይም የቅርቡን ለማግኘት ያድሱ።
 last_update_at	የመጨረሻ ዝማኔ፦ {time}።
 pair_intro	ሰርቨሩን ያግኙ፣ ወይም አድራሻውን እና የማጣመሪያ ኮዱን ይጻፉ።
+pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
 queue_waiting	ሱቁን ለመድረስ በመጠባበቅ ({n})፦
 queue_tries	{n} ጊዜ ተሞክሯል · የመጨረሻ መልስ፦ {e}
 save_backup_copy	የምትኬ ቅጂ አስቀምጥ…
@@ -1266,6 +1269,8 @@ taxable_value	የሚታክስ ዋጋ
 gst_inside_price_note	({tax} በውስጥ)
 start_with_template	በሜኑ ንድፋችን ይጀምሩ
 template_heading	የሜኑ ንድፋችን
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf
 template_info	{c} ምድቦች እና {d} ምግቦች ከፎቶ ጋር፣ ለመጨመር ዝግጁ። ዋጋዎች ከ ₹0 ይጀምራሉ — የእርስዎን በኋላ ያስቀምጡ።
 template_import	ሙሉ ንድፍ አስመጣ
 template_confirm	{d} ምግቦች ከምድቦቻቸው ጋር ይጨመሩ? አስቀድመው ያሉዎት ምግቦች እንዳሉ ይቆያሉ።
@@ -1363,7 +1368,3 @@ recent_changes	የቅርብ ለውጦች
 lane_declared_label	የግብር ደረሰኝ
 lane_owner_label	የጥሬ ገንዘብ ማስታወሻ
 money_lane_bill	ሂሳብ፦ {lane}
-app_template_download_progress	በማውረድ ላይ… {p}% ({d} / {t})
-app_template_download_paused	ለመቀጠል እንደገና ያስገቡ — የተጠናቀቁ ፋይሎች ይቀመጣሉ
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf

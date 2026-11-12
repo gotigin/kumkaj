@@ -346,6 +346,8 @@ app_template_skip	Simbuka ubu
 app_template_status	Seriveri yiteguye — injiza inyandikorugero, cyangwa usimbuke
 app_template_importing	Irimo gushyira {title}…
 app_template_downloading	Inyandikorugero iri gukururwa…
+app_template_download_progress	Birimo gukururwa… {p}% ({d} / {t})
+app_template_download_paused	Ongera winjize kugira ngo ukomeze — amadosiye yarangiye arabikwa
 app_template_public_hdr	Inyandikorugero rusange
 app_template_private_hdr	Inyandikorugero yihariye
 app_template_public_hint	Fungura iki gice kugira ngo ushyiremo urutonde rusange (hakenewe interineti rimwe).
@@ -626,6 +628,7 @@ choose_device_use	Hitamo Seriveri cyangwa Kiliya.
 paired_note	Byahujwe. Fungura kugira ngo ugurishe, cyangwa Vugurura ibiheruka.
 last_update_at	Ivugurura rya nyuma: {time}.
 pair_intro	Shaka seriveri, cyangwa wandike aderesi yayo na kode yo guhuza.
+pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
 queue_waiting	Itegereje kugera ku iduka ({n}):
 queue_tries	Byageragejwe inshuro {n} · igisubizo cya nyuma: {e}
 save_backup_copy	Bika kopi y'inyuma…
@@ -1266,6 +1269,8 @@ taxable_value	Agaciro gashyirwaho umusoro
 gst_inside_price_note	({tax} iri mu giciro)
 start_with_template	Tangira n'inyandiko ya menu yacu
 template_heading	Inyandiko ya menu yacu
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf
 template_info	Ibyiciro {c} n'ibiryo {d} bifite amafoto, biteguye kongerwaho. Ibiciro bitangira kuri ₹0 — shyira ibyawe nyuma.
 template_import	Injiza inyandiko yuzuye
 template_confirm	Ongeraho ibiryo {d} n'ibyiciro byabyo? Ibiryo usanzwe ufite biguma uko ari.
@@ -1363,7 +1368,3 @@ recent_changes	Impinduka ziheruka
 lane_declared_label	Inyemezabuguzi y'umusoro
 lane_owner_label	Inyandiko y'amafaranga mu ntoki
 money_lane_bill	Inyemezabuguzi: {lane}
-app_template_download_progress	Birimo gukururwa… {p}% ({d} / {t})
-app_template_download_paused	Ongera winjize kugira ngo ukomeze — amadosiye yarangiye arabikwa
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf

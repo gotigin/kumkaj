@@ -346,6 +346,8 @@ app_template_skip	Засега прескокнете
 app_template_status	Серверот е подготвен — увезете шаблон или прескокнете
 app_template_importing	Се применува {title}…
 app_template_downloading	Се презема шаблонот…
+app_template_download_progress	Се презема… {p}% ({d} / {t})
+app_template_download_paused	Увезете повторно за да продолжите — завршените датотеки се чуваат
 app_template_public_hdr	Јавни шаблони
 app_template_private_hdr	Приватен шаблон
 app_template_public_hint	Отворете го овој дел за да го вчитате јавниот список (потребен е интернет еднаш).
@@ -626,6 +628,7 @@ choose_device_use	Изберете Сервер или клиент.
 paired_note	Спарени. Отклучете за да го продадете или освежете го за најновото.
 last_update_at	Последно ажурирање: {time}.
 pair_intro	Најдете го серверот или напишете ја неговата адреса и кодот за спарување.
+pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
 queue_waiting	Се чека да стигне до продавницата ({n}):
 queue_tries	Пробано {n} пати · последен одговор: {e}
 save_backup_copy	Зачувајте резервна копија…
@@ -1266,6 +1269,8 @@ taxable_value	Оданочена вредност
 gst_inside_price_note	(вклучувајќи {tax})
 start_with_template	Започнете со нашиот шаблон за мени
 template_heading	Нашиот шаблон за мени
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf
 template_info	{c} категории и {d} јадења со фотографии, подготвени за додавање. Цените започнуваат од 0 ₹ - поставете го вашиот.
 template_import	Увезете комплетен шаблон
 template_confirm	Додадете {d} јадења со нивните категории? Јадењата што веќе ги имате остануваат такви какви што се.
@@ -1363,7 +1368,3 @@ recent_changes	Неодамнешни промени
 lane_declared_label	Даночна фактура
 lane_owner_label	Меморандум за готовина
 money_lane_bill	Гостинска сметка за гости: {lane}
-app_template_download_progress	Се презема… {p}% ({d} / {t})
-app_template_download_paused	Увезете повторно за да продолжите — завршените датотеки се чуваат
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf

@@ -346,6 +346,8 @@ app_template_skip	وُنکینَس کٔرِو سِکِپ
 app_template_status	سرور تیار — ٹیمپلیٹ درآمد کٔرِو، یا ترٲوِو
 app_template_importing	لاگو کَرُن {title}...
 app_template_downloading	ٹیمپلیٹ ڈاؤن لوڈ گژھان…
+app_template_download_progress	ڈاؤن لوڈ گژھان… {p}% ({d} / {t})
+app_template_download_paused	دوبارہ شروٗع کرنہٕ خٲطرٕ دوبارہ درآمد کٔرِو — مکمل فائل رٹنہٕ یِوان
 app_template_public_hdr	عوٲمی ٹیمپلیٹ
 app_template_private_hdr	ذٲتی ٹیمپلیٹ
 app_template_public_hint	عوٲمی لِسٹ لوڈ کرنہٕ خٲطرٕ یہ حِصہٕ کھولِو (اکہِ لٹہِ انٹرنیٹ ضروٗری)۔
@@ -626,6 +628,7 @@ choose_device_use	Server یا Client ژٲرِو۔
 paired_note	جورۍ۔ کٕننہٕ خٲطرٕ کٔرِو ان لاک یا تازٕ ترین خٲطرٕ ریفریش۔
 last_update_at	آخری اپ ڈیٹ: {time}۔
 pair_intro	سرور ژھانٛڑِو، یا کٔرِو اَمیُک پتہ تہٕ پیئرِنٛگ کوڈ ٹایپ ۔
+pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
 queue_waiting	دُکانس تام واتنُک انتظار ({n}):
 queue_tries	کوٗشِش کٔرِتھ {n} لٹہِ · ٲخری جواب: {e}
 save_backup_copy	بیک اپ کاپی کٔرِو محفوظ...
@@ -1266,6 +1269,8 @@ taxable_value	قٲبل ٹیکس ویلیو
 gst_inside_price_note	({tax} شمولیت)
 start_with_template	سٲنِس مینو ٹیمپلیٹ سۭتۍ کٔرِو شروٗع
 template_heading	سون مینو ٹیمپلیٹ
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf
 template_info	{c} زمرٕ تہٕ {d} فوٹو سۭتۍ پکوان، شٲمل کرنہٕ خٲطرٕ تیار۔ قۭمتھ چھِ ₹0 پٮ۪ٹھٕ شروع گژھان — پَنُن کٔرِو پتہٕ سیٹ۔
 template_import	مُکمل ٹیمپلیٹ کٔرِو اَمَلَد ک
 template_confirm	{d} ڈِش کٔرِو تِمن ہٕندِس زٲژ سٍتۍ شٲمِل؟ پکوان یِم تۄہہِ گۄڈَے روزان چھِو۔
@@ -1363,7 +1368,3 @@ recent_changes	حالٕے تبدیلیہٕ
 lane_declared_label	ٹیکس انوائس
 lane_owner_label	کیش میمو
 money_lane_bill	بل: {lane}
-app_template_download_progress	ڈاؤن لوڈ گژھان… {p}% ({d} / {t})
-app_template_download_paused	دوبارہ شروٗع کرنہٕ خٲطرٕ دوبارہ درآمد کٔرِو — مکمل فائل رٹنہٕ یِوان
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf

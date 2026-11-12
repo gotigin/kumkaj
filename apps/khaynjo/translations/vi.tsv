@@ -346,6 +346,8 @@ app_template_skip	Bỏ qua trước
 app_template_status	Máy chủ đã sẵn sàng — nhập một mẫu, hoặc bỏ qua
 app_template_importing	Đang áp dụng {title}…
 app_template_downloading	Đang tải mẫu xuống…
+app_template_download_progress	Đang tải xuống… {p}% ({d} / {t})
+app_template_download_paused	Nhập lại để tiếp tục — các tệp đã xong được giữ lại
 app_template_public_hdr	Mẫu công khai
 app_template_private_hdr	Mẫu riêng
 app_template_public_hint	Mở mục này để tải danh sách công khai (cần internet một lần).
@@ -626,6 +628,7 @@ choose_device_use	Chọn cách dùng thiết bị này.
 paired_note	Đã ghép nối. Mở khóa để bán, hoặc Làm mới để lấy dữ liệu mới nhất từ quán.
 last_update_at	Cập nhật cuối từ quán: {time}.
 pair_intro	Tìm máy chủ, hoặc nhập địa chỉ và mã ghép đôi.
+pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
 queue_waiting	Đang chờ gửi tới quán ({n}):
 queue_tries	Đã thử {n} lần · trả lời cuối: {e}
 save_backup_copy	Lưu bản sao lưu…
@@ -1266,6 +1269,8 @@ taxable_value	Giá trị chịu thuế
 gst_inside_price_note	(gồm {tax})
 start_with_template	Bắt đầu với mẫu thực đơn
 template_heading	Mẫu thực đơn của chúng tôi
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf
 template_info	{c} danh mục và {d} món có ảnh, sẵn sàng thêm. Giá ₹0 — đặt giá của bạn sau.
 template_import	Nhập toàn bộ mẫu
 template_confirm	Thêm {d} món kèm danh mục? Món bạn đã có giữ nguyên.
@@ -1363,7 +1368,3 @@ recent_changes	Thay đổi gần đây
 lane_declared_label	Hóa đơn thuế
 lane_owner_label	Phiếu tiền mặt
 money_lane_bill	Bill: {lane}
-app_template_download_progress	Đang tải xuống… {p}% ({d} / {t})
-app_template_download_paused	Nhập lại để tiếp tục — các tệp đã xong được giữ lại
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf

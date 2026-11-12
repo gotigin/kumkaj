@@ -346,6 +346,8 @@ app_template_skip	अबहीं छोड़ेऽ
 app_template_status	सर्वर तैयार हे — टेम्पलेट आयात करऽ, या छोड़ दऽ
 app_template_importing	{title} लगा रहल हथ…
 app_template_downloading	टेम्पलेट डाउनलोड हो रहल हे…
+app_template_download_progress	डाउनलोड हो रहल हे… {p}% ({d} / {t})
+app_template_download_paused	फिर से चालू करे ला दोबारा आयात करऽ — पूरा फाइल रखल जा हे
 app_template_public_hdr	सार्वजनिक टेम्पलेट
 app_template_private_hdr	निजी टेम्पलेट
 app_template_public_hint	सार्वजनिक सूची लोड करे ला ई हिस्सा खोलऽ (एक बेर इंटरनेट चाही)।
@@ -626,6 +628,7 @@ choose_device_use	चुनऽ कि ई डिवाइस कइसे उप
 paired_note	जुड़ गया। बेचने खातिर खोलऽ, भा दुकान से ताज़ा करऽ दबाकर नवीनतम लें।
 last_update_at	दुकान से आख़िरी अपडेट: {time}।
 pair_intro	सर्वर खोजऽ, भा ओकर पता आउर पेयरिंग कोड लिखें।
+pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
 queue_waiting	दुकान तक पहुँचने के प्रतीक्षा में ({n}):
 queue_tries	{n} बार कोशिश · आख़िरी जवाब: {e}
 save_backup_copy	बैकअप के कॉपी सहेजऽ…
@@ -1266,6 +1269,8 @@ taxable_value	करयोग्य मूल्य
 gst_inside_price_note	({tax} शामिल)
 start_with_template	हमर मेनू टेम्पलेट से शुरू करऽ
 template_heading	हमर मेनू टेम्पलेट
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf
 template_info	{c} श्रेणियाँ आउर {d} व्यंजन फोटो सहित, जोड़ने के तैयार। कीमत ₹0 से — बाद में अपनी कीमत रखें।
 template_import	पूरा टेम्पलेट जोड़ऽ
 template_confirm	{d} व्यंजन उनकी श्रेणियों सहित जोड़ऽ? अपन मौजूदा व्यंजन जैसे हथ वैसे रहेंगे।
@@ -1363,7 +1368,3 @@ recent_changes	हाल के बदलाव
 lane_declared_label	कर चालान
 lane_owner_label	कैश मेमो
 money_lane_bill	बिल: {lane}
-app_template_download_progress	डाउनलोड हो रहल हे… {p}% ({d} / {t})
-app_template_download_paused	फिर से चालू करे ला दोबारा आयात करऽ — पूरा फाइल रखल जा हे
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf

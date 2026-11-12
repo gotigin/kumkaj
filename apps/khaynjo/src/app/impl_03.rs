@@ -660,6 +660,7 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
         };
         self.show_found_printers(cx);
         self.set_report_rows(cx, ids!(printers_pool_label), pool_rows);
+        self.ui.widget(cx, ids!(printers_delivery_list)).redraw(cx);
         let (test_n, test_open) = {
             let st = app_state().lock().unwrap();
             (
@@ -1735,8 +1736,14 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
         self.ui.button(cx, ids!(change_my_pin)).set_text(cx, &s("update_my_pin"));
         self.ui.text_input(cx, ids!(client_code_input)).set_empty_text(cx, s("pairing_code_ph"));
         self.ui.text_input(cx, ids!(client_host_input)).set_empty_text(cx, s("server_ip_ph"));
+        let client_paired = app_state()
+            .try_lock()
+            .map(|st| st.client_paired)
+            .unwrap_or(false);
         if !client_pair_busy().load(std::sync::atomic::Ordering::SeqCst) {
-            self.ui.button(cx, ids!(client_pair_btn)).set_visible(cx, true);
+            self.ui
+                .button(cx, ids!(client_pair_btn))
+                .set_visible(cx, !client_paired);
             self.ui.button(cx, ids!(client_pair_btn)).set_text(cx, &s("pair_now"));
             self.ui
                 .widget(cx, ids!(client_pair_progress))
@@ -1754,6 +1761,28 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
             let field = self.ui.text_input(cx, ids!(client_name_input));
             if field.text().is_empty() && !cx.has_key_focus(field.area()) {
                 field.set_text(cx, &device_name());
+            }
+        }
+        // Remembered shop address when managing an existing pairing.
+        if client_paired {
+            let url = app_state()
+                .try_lock()
+                .ok()
+                .and_then(|st| {
+                    st.store
+                        .as_ref()
+                        .and_then(|s| s.server_url().ok())
+                        .flatten()
+                })
+                .unwrap_or_default();
+            let host = url
+                .trim()
+                .trim_start_matches("http://")
+                .trim_start_matches("https://")
+                .trim_end_matches('/');
+            let field = self.ui.text_input(cx, ids!(client_host_input));
+            if !host.is_empty() && !cx.has_key_focus(field.area()) && field.text().is_empty() {
+                field.set_text(cx, host);
             }
         }
         self.ui.button(cx, ids!(client_clear_refused)).set_text(cx, &s("clear_not_accepted"));

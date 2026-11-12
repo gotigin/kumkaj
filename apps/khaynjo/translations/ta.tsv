@@ -346,6 +346,8 @@ app_template_skip	இப்போதைக்குத் தவிர்
 app_template_status	சர்வர் தயார் — ஒரு வார்ப்புருவை இறக்குமதி செய்யவும், அல்லது தவிர்க்கவும்
 app_template_importing	{title} பயன்படுத்தப்படுகிறது…
 app_template_downloading	வார்ப்புரு பதிவிறக்கப்படுகிறது…
+app_template_download_progress	பதிவிறக்குகிறது… {p}% ({d} / {t})
+app_template_download_paused	தொடர மீண்டும் இறக்குமதி செய்யவும் — முடிந்த கோப்புகள் வைக்கப்படும்
 app_template_public_hdr	பொது வார்ப்புருக்கள்
 app_template_private_hdr	தனிப்பட்ட வார்ப்புரு
 app_template_public_hint	பொதுப் பட்டியலை ஏற்ற இந்தப் பகுதியைத் திறக்கவும் (ஒருமுறை இணையம் தேவை).
@@ -626,6 +628,7 @@ choose_device_use	இந்தச் சாதனம் எப்படிப்
 paired_note	இணைக்கப்பட்டது. விற்க திறக்கவும், அல்லது கடையிலிருந்து சமீபத்தியதைப் பெற புதுப்பிக்கவும்.
 last_update_at	கடையிலிருந்து கடைசி புதுப்பிப்பு: {time}.
 pair_intro	சர்வரைக் கண்டுபிடிக்கவும், அல்லது அதன் முகவரியும் இணைப்பு குறியீடும் தட்டச்சு செய்யவும்.
+pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
 queue_waiting	கடையை அடையக் காத்திருக்கிறது ({n}):
 queue_tries	{n} முறை முயற்சி · கடைசி பதில்: {e}
 save_backup_copy	காப்புப்பிரதியின் நகலைச் சேமி…
@@ -1266,6 +1269,8 @@ taxable_value	வரி விதிப்பு மதிப்பு
 gst_inside_price_note	({tax} உட்பட)
 start_with_template	எங்கள் மெனு வார்ப்புருவுடன் தொடங்கு
 template_heading	எங்கள் மெனு வார்ப்புரு
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf
 template_info	{c} வகைகள், {d} உணவுகள் படங்களுடன் சேர்க்கத் தயார். விலை ₹0 — பிறகு உங்கள் விலையை அமைக்கவும்.
 template_import	முழு வார்ப்புருவை இறக்கு
 template_confirm	{d} உணவுகளை வகைகளுடன் சேர்க்கவா? உங்களிடம் உள்ளவை அப்படியே இருக்கும்.
@@ -1363,7 +1368,3 @@ recent_changes	சமீபத்திய மாற்றங்கள்
 lane_declared_label	வரி விலைப்பட்டியல்
 lane_owner_label	ரொக்க மெமோ
 money_lane_bill	பில்: {lane}
-app_template_download_progress	பதிவிறக்குகிறது… {p}% ({d} / {t})
-app_template_download_paused	தொடர மீண்டும் இறக்குமதி செய்யவும் — முடிந்த கோப்புகள் வைக்கப்படும்
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf

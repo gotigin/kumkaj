@@ -4433,7 +4433,7 @@ impl PrinterMode {
     }
 }
 
-/// One named printer in this device's pool (destination only).
+/// One named printer in this device's pool (destination + how bytes are sent).
 #[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
 pub struct NamedPrinter {
     pub id: String,
@@ -4441,9 +4441,51 @@ pub struct NamedPrinter {
     /// Blank = system default; name = system printer; `ip` / `ip:port` = network;
     /// `bt:MAC`, `usb:VID:PID`, `android-print:`.
     pub target: String,
+    /// How this device is sent jobs — see `DELIVERY_*`. Independent of whether
+    /// the job is a bill or a kitchen ticket (format owns the look only).
+    #[serde(default)]
+    pub delivery: String,
     /// Ignored on load (legacy); printers no longer store a mode.
     #[serde(default, alias = "wire", alias = "mode", skip_serializing)]
     pub _legacy_mode: Option<String>,
+}
+
+impl NamedPrinter {
+    /// Normalize a stored delivery only. Never invent one from the printer
+    /// target — send approach is user/config (place format, or an explicit
+    /// per-printer override). Empty stays empty → follow the format at send.
+    pub fn with_resolved_delivery(mut self) -> Self {
+        if !self.delivery.trim().is_empty() {
+            self.delivery = normalize_delivery(&self.delivery);
+        }
+        self
+    }
+
+    /// Stored delivery, or `""` when unset (caller must use the place format).
+    pub fn delivery_id(&self) -> &str {
+        self.delivery.trim()
+    }
+}
+
+/// Resolve how to send: printer override if set, else the place format.
+/// The app does not pick an approach from printer brand or target kind.
+pub fn delivery_for_printer(printer_delivery: &str, format: &PrintFormat) -> String {
+    let d = printer_delivery.trim();
+    if d.is_empty() {
+        normalize_delivery(format.delivery_id())
+    } else {
+        normalize_delivery(d)
+    }
+}
+
+pub fn normalize_delivery(raw: &str) -> String {
+    match raw.trim() {
+        "" => DELIVERY_ESCPOS.into(),
+        DELIVERY_SYSTEM_SPOOLER | "os" | "document" | "spooler" => DELIVERY_SYSTEM_SPOOLER.into(),
+        DELIVERY_RAW_DEVICE | "raw" => DELIVERY_RAW_DEVICE.into(),
+        DELIVERY_ESCPOS | "esc_pos" | "esc-pos" | "thermal" => DELIVERY_ESCPOS.into(),
+        other => other.to_string(),
+    }
 }
 
 /// How a place's ordered printer list is tried.
@@ -4526,6 +4568,10 @@ pub struct DevicePrinters {
     /// Legacy; discarded on load (station grouping removed).
     #[serde(default, skip_serializing)]
     pub station_groups: Vec<StationGroup>,
+    /// One-shot: invented target-kind deliveries were cleared. After this,
+    /// an explicit per-printer approach the owner set is kept on reload.
+    #[serde(default, skip_serializing_if = "std::ops::Not::not")]
+    pub cleared_invented_deliveries: bool,
 }
 
 impl Default for DevicePrinters {
@@ -4540,6 +4586,8 @@ impl Default for DevicePrinters {
             virtual_printers: Vec::new(),
             routes: PrintRoutes::default(),
             station_groups: Vec::new(),
+            // New in-memory configs never had target-kind stamps.
+            cleared_invented_deliveries: true,
         }
     }
 }
@@ -4560,6 +4608,8 @@ fn device_printers_from_value(value: serde_json::Value) -> DevicePrinters {
             label: String,
             #[serde(default)]
             target: String,
+            #[serde(default)]
+            delivery: String,
         }
         #[derive(Deserialize)]
         struct New {
@@ -4573,6 +4623,8 @@ fn device_printers_from_value(value: serde_json::Value) -> DevicePrinters {
             routes: PrintRoutes,
             #[serde(default)]
             station_groups: Vec<StationGroup>,
+            #[serde(default)]
+            cleared_invented_deliveries: bool,
         }
         let parsed: New = serde_json::from_value(value).unwrap_or_else(|_| New {
             printers: Vec::new(),
@@ -4580,24 +4632,55 @@ fn device_printers_from_value(value: serde_json::Value) -> DevicePrinters {
             virtual_printers: Vec::new(),
             routes: PrintRoutes::default(),
             station_groups: Vec::new(),
+            cleared_invented_deliveries: false,
         });
         let mut formats = parsed.formats;
         PrintFormat::ensure_builtins(&mut formats);
+        let heal = !parsed.cleared_invented_deliveries;
         let mut out = DevicePrinters {
             printers: parsed
                 .printers
                 .into_iter()
-                .map(|r| NamedPrinter {
-                    id: r.id,
-                    label: r.label,
-                    target: r.target,
-                    _legacy_mode: None,
+                .map(|r| {
+                    // One-shot undo of target-kind delivery invention
+                    // (Named→OS document, USB/BT/net→ESC/POS). After the flag
+                    // is set, an explicit approach the owner picks is kept.
+                    let mut delivery = r.delivery;
+                    let target = r.target;
+                    if heal {
+                        let norm = if delivery.trim().is_empty() {
+                            String::new()
+                        } else {
+                            normalize_delivery(&delivery)
+                        };
+                        let invented = match parse_target(&target) {
+                            PrinterTarget::Named(_) | PrinterTarget::Default => {
+                                norm == DELIVERY_SYSTEM_SPOOLER
+                            }
+                            PrinterTarget::Usb(_)
+                            | PrinterTarget::Bluetooth(_)
+                            | PrinterTarget::Network(_) => norm == DELIVERY_ESCPOS,
+                            _ => false,
+                        };
+                        if invented {
+                            delivery.clear();
+                        }
+                    }
+                    NamedPrinter {
+                        id: r.id,
+                        label: r.label,
+                        target,
+                        delivery,
+                        _legacy_mode: None,
+                    }
+                    .with_resolved_delivery()
                 })
                 .collect(),
             formats,
             virtual_printers: parsed.virtual_printers,
             routes: parsed.routes,
             station_groups: Vec::new(), // discarded
+            cleared_invented_deliveries: true,
         };
         let _ = parsed.station_groups;
         scrub_fake_default_printers(&mut out);
@@ -4656,12 +4739,16 @@ pub fn migrate_legacy(kot: &str, bill: &str) -> DevicePrinters {
             return Some(existing.id.clone());
         }
         let id = uuid::Uuid::new_v4().to_string();
-        printers.push(NamedPrinter {
-            id: id.clone(),
-            label: label.into(),
-            target: t.to_string(),
-            _legacy_mode: None,
-        });
+        printers.push(
+            NamedPrinter {
+                id: id.clone(),
+                label: label.into(),
+                target: t.to_string(),
+                delivery: String::new(),
+                _legacy_mode: None,
+            }
+            .with_resolved_delivery(),
+        );
         Some(id)
     };
     let bill_ids = push(bill, "Bill printer").into_iter().collect();
@@ -4692,6 +4779,7 @@ pub fn migrate_legacy(kot: &str, bill: &str) -> DevicePrinters {
         },
         virtual_printers: Vec::new(),
         station_groups: Vec::new(),
+        cleared_invented_deliveries: true,
     }
 }
 
@@ -5222,7 +5310,8 @@ impl DevicePrinters {
     }
 
     /// Resolve route slots to a real printer plus the Bill or KOT format.
-    /// Layout, delivery, type size, and content width come from that format.
+    /// Layout / type size / content width come from that format. How the job
+    /// is sent comes from the **printer** (any printer may print bill or KOT).
     /// A leftover virtual-printer id still finds its real printer.
     pub fn destinations_for(&self, key: RouteKey<'_>) -> Vec<PrintDest> {
         let place_default = self.format_for(key);
@@ -5239,12 +5328,28 @@ impl DevicePrinters {
                     decode_route_slot(raw).0
                 };
                 let p = self.printers.iter().find(|p| p.id == pid)?;
+                // Approach = user config. Printer override if set; else format.
+                // Never infer from target kind (Named / USB / Brother / …).
+                let delivery = delivery_for_printer(&p.delivery, &place_default);
                 Some(PrintDest {
                     target: parse_target(&p.target),
                     format: place_default.clone(),
+                    delivery,
                 })
             })
             .collect()
+    }
+
+    /// Set how one pool printer is sent (ESC/POS / raw / OS document).
+    pub fn set_printer_delivery(&mut self, printer_id: &str, delivery: &str) -> bool {
+        let id = printer_id.trim();
+        let delivery = normalize_delivery(delivery);
+        if let Some(p) = self.printers.iter_mut().find(|p| p.id == id) {
+            p.delivery = delivery;
+            true
+        } else {
+            false
+        }
     }
 
     pub fn printer_by_id(&self, id: &str) -> Option<&NamedPrinter> {
@@ -5484,12 +5589,16 @@ impl DevicePrinters {
             return (p.id.clone(), false);
         }
         let id = uuid::Uuid::new_v4().to_string();
-        self.printers.push(NamedPrinter {
-            id: id.clone(),
-            label,
-            target: tgt,
-            _legacy_mode: None,
-        });
+        self.printers.push(
+            NamedPrinter {
+                id: id.clone(),
+                label,
+                target: tgt,
+                delivery: String::new(),
+                _legacy_mode: None,
+            }
+            .with_resolved_delivery(),
+        );
         (id, true)
     }
 
@@ -5687,11 +5796,14 @@ pub enum PrinterTarget {
     AndroidPrint,
 }
 
-/// One place to send a job: address/name plus the owner's mode.
+/// One place to send a job: address/name, slip look (format), and this
+/// printer's delivery (how bytes are handed over).
 #[derive(Clone, Debug, PartialEq)]
 pub struct PrintDest {
     pub target: PrinterTarget,
     pub format: PrintFormat,
+    /// `DELIVERY_*` from the named printer (not from the Bill/KOT format).
+    pub delivery: String,
 }
 
 /// Whether this format may use OS / Android document print.
@@ -5736,14 +5848,28 @@ pub fn parse_target(typed: &str) -> PrinterTarget {
     PrinterTarget::Named(t.to_string())
 }
 
-/// Whether this device can auto-print to `target` for the given mode.
+/// Whether this device can auto-print to `target` for the given format
+/// (legacy — prefer [`can_print_delivery`] with the printer's delivery).
 pub fn can_print_format(target: &PrinterTarget, format: &PrintFormat) -> bool {
+    can_print_delivery(target, format.delivery_id())
+}
+
+/// Whether this device can send to `target` with the chosen delivery.
+pub fn can_print_delivery(target: &PrinterTarget, delivery: &str) -> bool {
+    let delivery = normalize_delivery(delivery);
     match target {
-        PrinterTarget::Network(_) | PrinterTarget::Bluetooth(_) | PrinterTarget::Usb(_) => true,
-        PrinterTarget::AndroidPrint => format.document && cfg!(target_os = "android"),
+        PrinterTarget::Network(_) | PrinterTarget::Bluetooth(_) | PrinterTarget::Usb(_) => {
+            // Direct devices always take ESC/POS / raw bytes. OS document is
+            // not a spooler path here — the worker falls back to ESC/POS.
+            true
+        }
+        PrinterTarget::AndroidPrint => {
+            cfg!(target_os = "android")
+                && (delivery == DELIVERY_SYSTEM_SPOOLER || delivery == DELIVERY_ESCPOS)
+        }
         PrinterTarget::Default | PrinterTarget::Named(_) => {
             if cfg!(target_os = "android") {
-                format.document
+                delivery == DELIVERY_SYSTEM_SPOOLER
             } else {
                 true
             }
@@ -5753,8 +5879,8 @@ pub fn can_print_format(target: &PrinterTarget, format: &PrintFormat) -> bool {
 
 /// Whether this device can print to `target` with some built-in format.
 pub fn can_print(target: &PrinterTarget) -> bool {
-    can_print_format(target, &PrintFormat::standard())
-        || can_print_format(target, &PrintFormat::kot())
+    can_print_delivery(target, DELIVERY_ESCPOS)
+        || can_print_delivery(target, DELIVERY_SYSTEM_SPOOLER)
 }
 
 pub fn can_print_mode(target: &PrinterTarget, mode: PrinterMode) -> bool {
@@ -5782,7 +5908,7 @@ pub fn prints_route(key: RouteKey<'_>) -> bool {
     printers()
         .destinations_for(key)
         .iter()
-        .any(|d| can_print_format(&d.target, &d.format))
+        .any(|d| can_print_delivery(&d.target, &d.delivery))
 }
 
 static PRINTERS: Mutex<Option<DevicePrinters>> = Mutex::new(None);
@@ -5998,13 +6124,15 @@ pub fn print_one_printer(
         });
     };
     let format = cfg.format_for(RouteKey::Bill);
+    let delivery = delivery_for_printer(&p.delivery, &format);
     let dest = PrintDest {
         target: parse_target(&p.target),
         format,
+        delivery,
     };
     let opened = match sink() {
         PrintSink::Os => {
-            if !can_print_format(&dest.target, &dest.format) {
+            if !can_print_delivery(&dest.target, &dest.delivery) {
                 false
             } else {
                 match queue(Job {
@@ -6087,7 +6215,7 @@ pub fn print_route_using(
             let dests: Vec<PrintDest> = cfg
                 .destinations_for(route)
                 .into_iter()
-                .filter(|d| can_print_format(&d.target, &d.format))
+                .filter(|d| can_print_delivery(&d.target, &d.delivery))
                 .collect();
             if dests.is_empty() {
                 if kind == PrintKind::Kot {
@@ -6290,6 +6418,7 @@ fn queue(job: Job) -> Result<(), String> {
                                 match send_to_printer(
                                     &dest.format,
                                     &dest.target,
+                                    &dest.delivery,
                                     &job.path,
                                     &job.text,
                                     copies,
@@ -6312,6 +6441,7 @@ fn queue(job: Job) -> Result<(), String> {
                                 if let Err(e) = send_to_printer(
                                     &dest.format,
                                     &dest.target,
+                                    &dest.delivery,
                                     &job.path,
                                     &job.text,
                                     copies,
@@ -6371,38 +6501,55 @@ pub fn describe(target: &PrinterTarget) -> String {
 fn send_to_printer(
     format: &PrintFormat,
     target: &PrinterTarget,
+    delivery: &str,
     path: &Path,
     text: &str,
     copies: u32,
 ) -> Result<(), String> {
     let copies = copies.max(1);
-    // Delivery is the format's own flag. Bill text and kitchen text use the
-    // same sender; neither one is tied to a page printer or a thermal head.
-    let as_page = format.document;
+    // Delivery is the **printer's** choice. Format owns look (width, type,
+    // fields). Bill and KOT may both use any printer.
+    let delivery = normalize_delivery(delivery);
     let thermal = || replicate_escpos_copies(&escpos_job_format(format, text), copies);
+    let as_os_document = delivery == DELIVERY_SYSTEM_SPOOLER;
+
+    // Direct thermal transports: always write ESC/POS / raw job bytes.
+    // "OS document" on these falls back to ESC/POS (same picture the preview
+    // uses) so assigning a Brother to KOT or a USB head to Bill still works.
+    let write_direct = |bytes: &[u8]| -> Result<(), String> {
+        match target {
+            PrinterTarget::Network(addr) => print_network_bytes(addr, bytes),
+            PrinterTarget::Bluetooth(mac) => crate::print_bt::write_bytes(mac, bytes),
+            PrinterTarget::Usb(id) => crate::print_usb::write_bytes(id, bytes),
+            _ => Err("not a direct device".into()),
+        }
+    };
+
     match target {
-        PrinterTarget::Network(addr) => print_network_bytes(addr, &thermal()),
-        PrinterTarget::Bluetooth(mac) => crate::print_bt::write_bytes(mac, &thermal()),
-        PrinterTarget::Usb(id) => crate::print_usb::write_bytes(id, &thermal()),
+        PrinterTarget::Network(_) | PrinterTarget::Bluetooth(_) | PrinterTarget::Usb(_) => {
+            write_direct(&thermal())
+        }
         PrinterTarget::AndroidPrint => {
-            if !as_page {
+            // Same gate as before: Android print service is the OS document path.
+            if !as_os_document {
                 return Err(format!(
-                    "format \"{}\" needs Network, Bluetooth, or USB — Android print is for document formats",
+                    "\"{}\" needs Network, Bluetooth, or USB — Android print is for OS document",
                     format.label
                 ));
             }
-            // Document path: OS copies count when available; else repeat.
             for _ in 0..copies {
                 print_android_document(text, format, format.landscape)?;
             }
             Ok(())
         }
         PrinterTarget::Default => {
-            if as_page {
+            // ESC/POS / Raw → raw thermal bytes (identical to the old
+            // `document == false` path). OS document → PNG via spooler.
+            if as_os_document {
                 print_system_standard(None, path, text, format, format.landscape, copies)
             } else if cfg!(target_os = "android") {
                 Err(format!(
-                    "format \"{}\" on Android needs Network, Bluetooth, or USB — not the system print service",
+                    "\"{}\" on Android needs OS document, or Network / Bluetooth / USB",
                     format.label
                 ))
             } else {
@@ -6410,11 +6557,13 @@ fn send_to_printer(
             }
         }
         PrinterTarget::Named(name) => {
-            if as_page {
+            // Do not change the ESC/POS raw path — this is what worked for
+            // CUPS-named thermal heads (80Series2, etc.).
+            if as_os_document {
                 print_system_standard(Some(name), path, text, format, format.landscape, copies)
             } else if cfg!(target_os = "android") {
                 Err(format!(
-                    "format \"{}\" on Android needs Network, Bluetooth, or USB — not a system printer name",
+                    "\"{}\" on Android needs OS document, or Network / Bluetooth / USB",
                     format.label
                 ))
             } else {
@@ -7973,6 +8122,57 @@ mod tests {
     }
 
     #[test]
+    fn send_approach_follows_format_not_printer_kind() {
+        let mut cfg = DevicePrinters::default();
+        let named = cfg.add_printer("80Series2", "80Series2");
+        let usb = cfg.add_printer("USB", "usb:0fe6:811e:abc");
+        let office = cfg.add_printer("Brother", "Brother_DCP-L2640DW");
+        for id in [&named, &usb, &office] {
+            assert!(
+                cfg.printer_by_id(id).unwrap().delivery.trim().is_empty(),
+                "must not invent delivery from target kind"
+            );
+        }
+        cfg.set_job_drive(true, false, DELIVERY_ESCPOS);
+        cfg.routes.bill = vec![named.clone(), usb.clone(), office.clone()];
+        let bill = cfg.destinations_for(RouteKey::Bill);
+        assert!(bill.iter().all(|d| d.delivery == DELIVERY_ESCPOS));
+        // Format OS document → every unset printer follows that.
+        cfg.set_job_drive(true, true, DELIVERY_SYSTEM_SPOOLER);
+        let bill = cfg.destinations_for(RouteKey::Bill);
+        assert!(bill.iter().all(|d| d.delivery == DELIVERY_SYSTEM_SPOOLER));
+        // Explicit per-printer override only — still not from target kind.
+        assert!(cfg.set_printer_delivery(&office, DELIVERY_ESCPOS));
+        let bill = cfg.destinations_for(RouteKey::Bill);
+        assert_eq!(bill[0].delivery, DELIVERY_SYSTEM_SPOOLER);
+        assert_eq!(bill[1].delivery, DELIVERY_SYSTEM_SPOOLER);
+        assert_eq!(bill[2].delivery, DELIVERY_ESCPOS);
+    }
+
+    #[test]
+    fn load_clears_wrong_named_os_document_stamp() {
+        let raw = serde_json::json!({
+            "printers": [{
+                "id": "p1",
+                "label": "80Series2",
+                "target": "80Series2",
+                "delivery": "system_spooler"
+            }],
+            "routes": { "bill": ["p1"] }
+        });
+        let mut cfg = device_printers_from_value(raw);
+        assert!(
+            cfg.printer_by_id("p1").unwrap().delivery.trim().is_empty(),
+            "heal Named OS stamp so format approach works again"
+        );
+        cfg.set_job_drive(true, false, DELIVERY_ESCPOS);
+        assert_eq!(
+            cfg.destinations_for(RouteKey::Bill)[0].delivery,
+            DELIVERY_ESCPOS
+        );
+    }
+
+    #[test]
     fn collapse_and_place_profile_keep_one_output_per_printer() {
         let mut cfg = DevicePrinters::default();
         let a = cfg.add_printer("Brother", "Brother_QL");
@@ -8123,7 +8323,11 @@ mod tests {
             side: 4.0,
         };
         let job = |addr: String| Job {
-            dests: vec![PrintDest { target: PrinterTarget::Network(addr), format: kot.clone() }],
+            dests: vec![PrintDest {
+                target: PrinterTarget::Network(addr),
+                format: kot.clone(),
+                delivery: DELIVERY_ESCPOS.into(),
+            }],
             mode: RoutePrintMode::First,
             path: PathBuf::new(),
             text: "KOT 1\n1 x Chaas".into(),
@@ -8535,12 +8739,16 @@ mod tests {
         assert_eq!(a, b);
         assert_eq!(cfg.printers.len(), 1);
         // Pre-existing duplicates collapse on dedupe.
-        cfg.printers.push(NamedPrinter {
-            id: "dup".into(),
-            label: "80Series2".into(),
-            target: "80Series2".into(),
-            _legacy_mode: None,
-        });
+        cfg.printers.push(
+            NamedPrinter {
+                id: "dup".into(),
+                label: "80Series2".into(),
+                target: "80Series2".into(),
+                delivery: String::new(),
+                _legacy_mode: None,
+            }
+            .with_resolved_delivery(),
+        );
         *cfg.route_mut(RouteKey::Bill) = vec![a.clone(), "dup".into()];
         cfg.dedupe_printers();
         assert_eq!(cfg.printers.len(), 1);

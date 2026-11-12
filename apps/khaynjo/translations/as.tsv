@@ -346,6 +346,8 @@ app_template_skip	এতিয়া এৰক
 app_template_status	ছাৰ্ভাৰ সাজু — এটা টেমপ্লেট আমদানি কৰক, বা এৰি দিয়ক
 app_template_importing	{title} প্ৰয়োগ কৰা হৈছে…
 app_template_downloading	টেমপ্লেট ডাউনল'ড হৈ আছে…
+app_template_download_progress	ডাউনল’ড হৈ আছে… {p}% ({d} / {t})
+app_template_download_paused	পুনৰ আৰম্ভ কৰিবলৈ আকৌ আমদানি কৰক — সম্পূৰ্ণ ফাইলবোৰ ৰখা হয়
 app_template_public_hdr	ৰাজহুৱা টেমপ্লেট
 app_template_private_hdr	ব্যক্তিগত টেমপ্লেট
 app_template_public_hint	ৰাজহুৱা তালিকা ল'ড কৰিবলৈ এই অংশটো খোলক (এবাৰ ইণ্টাৰনেট লাগে)।
@@ -626,6 +628,7 @@ choose_device_use	এই ডিভাইচ কেনেকৈ ব্যৱহ�
 paired_note	সংযুক্ত হ'ল। বিক্ৰী কৰিবলৈ খোলক, নাইবা দোকানৰ পৰা শেহতীয়া আনিবলৈ সতেজ কৰক।
 last_update_at	দোকানৰ পৰা শেষ আপডেট: {time}।
 pair_intro	চাৰ্ভাৰ বিচাৰক, নহয় ইয়াৰ ঠিকনা আৰু যোৰ কোড লিখক।
+pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
 queue_waiting	দোকানত পাবলৈ অপেক্ষাত ({n}):
 queue_tries	{n} বাৰ চেষ্টা · শেষ উত্তৰ: {e}
 save_backup_copy	বেকআপৰ কপি সংৰক্ষণ কৰক…
@@ -1266,6 +1269,8 @@ taxable_value	কৰযোগ্য মূল্য
 gst_inside_price_note	({tax} সৈতে)
 start_with_template	আমাৰ মেনু টেমপ্লেটেৰে আৰম্ভ
 template_heading	আমাৰ মেনু টেমপ্লেট
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf
 template_info	{c}টা শ্ৰেণী আৰু {d}টা ব্যঞ্জন ফটোসহ সাজু। দাম ₹0 — পিছত নিজৰ দাম দিয়ক।
 template_import	সম্পূৰ্ণ টেমপ্লেট আনক
 template_confirm	{d}টা ব্যঞ্জন শ্ৰেণীসহ যোগ কৰিব নেকি? আপোনাৰ আগৰবোৰ তেনেকৈয়ে থাকিব।
@@ -1363,7 +1368,3 @@ recent_changes	শেহতীয়া সলনি
 lane_declared_label	কৰ চালান
 lane_owner_label	কেশ মেমো
 money_lane_bill	বিল: {lane}
-app_template_download_progress	ডাউনল’ড হৈ আছে… {p}% ({d} / {t})
-app_template_download_paused	পুনৰ আৰম্ভ কৰিবলৈ আকৌ আমদানি কৰক — সম্পূৰ্ণ ফাইলবোৰ ৰখা হয়
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf

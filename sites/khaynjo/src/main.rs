@@ -201,13 +201,14 @@ const SHELF_CARDS: [&[LiveId]; 8] = [
 ];
 
 /// Countries on the shelf that have a photo.
+#[cfg(test)]
 fn world_photo_count() -> usize {
     WORLD.iter().filter(|d| d.photo.is_some()).count()
 }
 
-/// The shelf list for the current filter (photos only, or every country).
-fn shelf_entries(all: bool) -> Vec<&'static WorldDish> {
-    WORLD.iter().filter(|d| all || d.photo.is_some()).collect()
+/// Every country on the shelf (photos optional — cards show “Photo coming”).
+fn shelf_entries() -> Vec<&'static WorldDish> {
+    WORLD.iter().collect()
 }
 
 /// (never repeat the English dish twice).
@@ -356,13 +357,14 @@ pub struct App {
     #[rust]
     pending_stable: u8,
     /// World shelf: index of the first card on the page (kept across
-    /// resizes so the same countries stay in view), filter, page size.
+    /// resizes so the same countries stay in view), page size.
     #[rust]
     shelf_first: usize,
     #[rust]
-    shelf_all: bool,
-    #[rust]
     shelf_per_page: usize,
+    /// Top-bar nav section currently in view (scroll spy).
+    #[rust]
+    nav_active: PendingSection,
     /// World photo bytes by file (fetched once, decoded on demand) and the
     /// HTTP requests still in flight (wasm).
     #[rust]
@@ -396,6 +398,7 @@ impl App {
         }
         let y = (target.pos.y - top.pos.y).max(0.0);
         page.set_scroll_pos(cx, dvec2(0.0, y));
+        self.paint_nav_active(cx);
         self.ui.redraw(cx);
         y
     }
@@ -406,12 +409,12 @@ impl App {
         let tables = self.tables.unwrap_or(OPENING_FLOOR);
         for (i, ((path, amount), visit)) in TABLES.iter().zip(tables).enumerate() {
             let tile = self.ui.widget(cx, path);
-            tile.label(cx, ids!(name)).set_text(cx, &format!("T{}", i + 1));
+            tile.widget(cx, ids!(name)).set_text(cx, &format!("T{}", i + 1));
             for (i, layer) in TILE_LAYERS.iter().enumerate() {
                 tile.view(cx, &[*layer]).set_visible(cx, i == visit.index());
             }
-            tile.label(cx, ids!(word)).set_text(cx, visit.word());
-            tile.label(cx, ids!(meta)).set_text(cx, &floor::meta(visit, *amount));
+            tile.widget(cx, ids!(word)).set_text(cx, visit.word());
+            tile.widget(cx, ids!(meta)).set_text(cx, &floor::meta(visit, *amount));
         }
         self.ui.redraw(cx);
     }
@@ -603,20 +606,60 @@ impl App {
         }
     }
 
+    /// Which content section owns the viewport (just under the sticky bar).
+    fn active_nav_section(&self, cx: &Cx) -> Option<&'static str> {
+        let page = self.ui.view(cx, ids!(page));
+        if !page.area().is_valid(cx) {
+            return None;
+        }
+        let bar = self.ui.view(cx, ids!(top_bar));
+        let mark = if bar.area().is_valid(cx) {
+            bar.area().rect(cx).pos.y + bar.area().rect(cx).size.y + 12.0
+        } else {
+            page.area().rect(cx).pos.y + 72.0
+        };
+        let mut active: Option<&'static str> = None;
+        for (id, path) in SECTIONS {
+            let w = self.ui.widget(cx, path);
+            if !w.area().is_valid(cx) {
+                continue;
+            }
+            let top = w.area().rect(cx).pos.y;
+            if top <= mark {
+                active = Some(id);
+            }
+        }
+        active
+    }
+
+    /// Highlight the top-bar link for the section on screen.
+    fn paint_nav_active(&mut self, cx: &mut Cx) {
+        let active = self.active_nav_section(cx);
+        let changed = active != self.nav_active;
+        self.nav_active = active;
+        // Quiet peach idle; white when that section is under the bar.
+        // Re-apply every call — hover animator can leave resting ink stale.
+        let idle = vec4(0.965, 0.863, 0.796, 1.0); // #F6DCCB
+        let on = vec4(1.0, 1.0, 1.0, 1.0);
+        for (path, section) in NAV_LINKS {
+            let color = if active == Some(section) { on } else { idle };
+            if let Some(mut btn) = self.ui.button(cx, path).borrow_mut() {
+                btn.draw_text.color = color;
+            }
+        }
+        if changed {
+            self.ui.view(cx, ids!(nav_links)).redraw(cx);
+        }
+    }
+
     fn paint_shelf(&mut self, cx: &mut Cx) {
-        let list = shelf_entries(self.shelf_all);
+        let list = shelf_entries();
         let per = self.shelf_per_page.clamp(1, SHELF_CARDS.len());
         let (page, pages) = shelf_page_of(self.shelf_first, per, list.len());
         self.shelf_first = page * per;
         self.ui
-            .label(cx, ids!(menus.shelf_page))
+            .widget(cx, ids!(menus.shelf_page))
             .set_text(cx, &format!("{} / {}", page + 1, pages));
-        let toggle = if self.shelf_all {
-            format!("Only the {} with photos", world_photo_count())
-        } else {
-            format!("Show all {} countries", WORLD.len())
-        };
-        self.ui.button(cx, ids!(menus.shelf_toggle)).set_text(cx, &toggle);
         for (i, path) in SHELF_CARDS.iter().enumerate() {
             let entry = (i < per).then(|| list.get(self.shelf_first + i)).flatten();
             let card = self.ui.widget(cx, path);
@@ -717,7 +760,7 @@ impl App {
     }
 
     fn shelf_step(&mut self, cx: &mut Cx, forward: bool) {
-        let len = shelf_entries(self.shelf_all).len();
+        let len = shelf_entries().len();
         let per = self.shelf_per_page.max(1);
         let (page, pages) = shelf_page_of(self.shelf_first, per, len);
         // Wraps at both ends — the shelf is a carousel, not a dead end.
@@ -731,17 +774,6 @@ impl App {
     }
 
 
-    /// Counts in the copy come from the data, never hand-typed.
-    fn paint_world_counts(&mut self, cx: &mut Cx) {
-        let n = WORLD.len();
-        let photos = world_photo_count();
-        self.ui.widget(cx, ids!(menus.menu_note_text)).set_text(
-            cx,
-            &format!(
-                "{n} countries · {photos} public-domain / CC0 photos · \u{201C}Photo coming\u{201D} where we have none yet."
-            ),
-        );
-    }
 }
 
 fn collect_label_sizes(widget: &WidgetRef, out: &mut Vec<f32>) {
@@ -831,7 +863,9 @@ impl MatchEvent for App {
     fn handle_startup(&mut self, cx: &mut Cx) {
         self.apply_gates(cx);
         self.paint_floor(cx);
-        self.paint_world_counts(cx);
+        self.paint_nav_active(cx);
+        // Document chrome: PageUp/Ctrl+A reach the page without a prior click.
+        self.ui.view(cx, ids!(page)).set_key_focus(cx);
         self.pending_section = self.section_from_page(cx);
         self.pending_frames = 120;
         self.pending_stable = 0;
@@ -854,11 +888,6 @@ impl MatchEvent for App {
         }
         if self.ui.button(cx, ids!(menus.shelf_next)).clicked(actions) {
             self.shelf_step(cx, true);
-        }
-        if self.ui.button(cx, ids!(menus.shelf_toggle)).clicked(actions) {
-            self.shelf_all = !self.shelf_all;
-            self.shelf_first = 0;
-            self.paint_shelf(cx);
         }
         let download = self.ui.button(cx, ids!(bar_cta)).clicked(actions)
             || self.ui.button(cx, ids!(hero_cta.download)).clicked(actions)
@@ -901,10 +930,14 @@ impl AppMain for App {
         self.ui.handle_event(cx, event, &mut Scope::empty());
         match event {
             Event::Startup | Event::WindowGeomChange(_) => self.apply_responsive(cx),
+            Event::Scroll(_) => {
+                self.paint_nav_active(cx);
+            }
             Event::Draw(_) | Event::NextFrame(_) => {
                 if self.laid_out.is_none() {
                     self.apply_responsive(cx);
                 }
+                self.paint_nav_active(cx);
                 // Deep link (#menus) once the page has drawn and has a size.
                 if let Some(section) = self.pending_section {
                     let page_h = self.ui.view(cx, ids!(page)).area().rect(cx).size.y;
@@ -1066,18 +1099,17 @@ mod tests {
 
     #[test]
     fn shelf_pages_cover_every_country_once() {
-        for all in [false, true] {
-            let list = shelf_entries(all);
-            for per in [4, 8] {
-                let (_, pages) = shelf_page_of(0, per, list.len());
-                let mut shown = 0;
-                for p in 0..pages {
-                    let first = p * per;
-                    assert_eq!(shelf_page_of(first, per, list.len()).0, p);
-                    shown += list.len().saturating_sub(first).min(per);
-                }
-                assert_eq!(shown, list.len());
+        let list = shelf_entries();
+        assert_eq!(list.len(), WORLD.len());
+        for per in [4, 8] {
+            let (_, pages) = shelf_page_of(0, per, list.len());
+            let mut shown = 0;
+            for p in 0..pages {
+                let first = p * per;
+                assert_eq!(shelf_page_of(first, per, list.len()).0, p);
+                shown += list.len().saturating_sub(first).min(per);
             }
+            assert_eq!(shown, list.len());
         }
         assert_eq!(shelf_page_of(10_000, 8, 199), (24, 25));
     }

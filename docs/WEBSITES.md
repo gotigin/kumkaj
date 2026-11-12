@@ -125,7 +125,17 @@ have vanished on the next setup):
 |---|---|
 | `slides_view_story_axis` | `SlidesView` `axis: Vertical`; tap / swipe / wheel flip one chapter (OS momentum ignored); presenter keys ↓ → PgDn Space, ↑ ← PgUp, Home / End; `goal_slide()` / `slide_count()` |
 | `web_init_window_order` | wasm `ToWasmInit` runs `Event::Startup` (which creates window 0) **before** applying the window geometry — without it the canvas sticks on "Loading.." with an IdPool panic |
-| `web_aux_buttons_stay` | mouse side buttons do not navigate the browser away from the app |
+| `web_aux_buttons_stay` | mouse side buttons stay in-app; canvas context menu is Copy / Select all; PageUp–arrows/Space not stolen by the shell |
+| `widget_steals_document_selection` | only Button / TextInput / HtmlLink block document select (Labels/Images do not) |
+| `view_document_selection` | View document-host select (experimental; **not wired on sites**) |
+| `view_document_chrome` | PageUp/Home/End + doc key focus (pairs with document select) |
+
+**Site canvas text selection is OFF (2026-11-12).** Document-host select
+and per-Markdown gestures both left some cards live and neighbors dead
+(feature grid / KOT). Keep site Markdown `selectable: false` until one
+approach works everywhere — see [`DESIGN.md`](DESIGN.md) § Text selection
+and [`sites/khaynjo/README.md`](../sites/khaynjo/README.md) § Remaining
+(also: 14 world-shelf photos still “Photo coming”).
 
 Two vendor behaviours the sites work around in their own DSL (vendor
 untouched, apps unaffected):
@@ -230,9 +240,10 @@ deep chrome (navy / deep red), never grey-on-grey.
 6. **Props in code first.** Cards, labels, tickets and floor tiles are
    widgets and small shaders; 3D props (CSG / glTF) come in Phase 2;
    device screens show real app captures, never mock UI.
-7. **Selectable copy.** Site chapter text (headlines, ledes, body,
-   tickets, points) uses selectable `Markdown` typography — same rule as
-   apps ([`DESIGN.md`](DESIGN.md) § Text selection & copy). Set copy with
+7. **Selectable copy.** Goal remains browser-like selectable Markdown
+   ([`DESIGN.md`](DESIGN.md) § Text selection & copy). **khaynjo.com
+   currently ships `selectable: false`** after incomplete document-host
+   / per-card approaches — open: README § Remaining. Set copy with
    `body:` (and `child.body:` on composites). Plain `Label` only inside
    tap targets (floor tiles, nav chips, choice faces, button faces).
 8. **Claims check.** Before publishing, re-read each cited row; gated

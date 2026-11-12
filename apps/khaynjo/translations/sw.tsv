@@ -346,6 +346,8 @@ app_template_skip	Piga hapo sasa
 app_template_status	Seva iko tayari — leta kiolezo, au ruka
 app_template_importing	Inapokea {title}…
 app_template_downloading	Inapakua kiolezo…
+app_template_download_progress	Inapakua… {p}% ({d} / {t})
+app_template_download_paused	Leta tena ili kuendelea — faili zilizokamilika zinahifadhiwa
 app_template_public_hdr	Violezo vya umma
 app_template_private_hdr	Kiolezo binafsi
 app_template_public_hint	Fungua sehemu hii kupakia orodha ya umma (intaneti inahitajika mara moja).
@@ -626,6 +628,7 @@ choose_device_use	Chagua jinsi kifaa hiki kinavyotumika.
 paired_note	Imeoanishwa. Fungua ili kuuza, au Onyesha upya kupata taarifa mpya kutoka dukani.
 last_update_at	Sasisho la mwisho kutoka dukani: {time}.
 pair_intro	Tafuta seva, au andika anwani yake na msimbo wa kuoanisha.
+pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
 queue_waiting	Zinasubiri kufika dukani ({n}):
 queue_tries	Majaribio {n} · jibu la mwisho: {e}
 save_backup_copy	Hifadhi nakala ya akiba…
@@ -1266,6 +1269,8 @@ taxable_value	Thamani inayotozwa kodi
 gst_inside_price_note	({tax} imejumuishwa)
 start_with_template	Anza na kiolezo chetu cha menyu
 template_heading	Kiolezo chetu cha menyu
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf
 template_info	Aina {c} na vyakula {d} vyenye picha, tayari kuongezwa. Bei ₹0 — weka bei zako baadaye.
 template_import	Leta kiolezo chote
 template_confirm	Ongeza vyakula {d} pamoja na aina zake? Vilivyopo vitabaki kama vilivyo.
@@ -1363,7 +1368,3 @@ recent_changes	Mabadiliko ya karibuni
 lane_declared_label	Ankara ya kodi
 lane_owner_label	Memo ya taslimu
 money_lane_bill	Bilio: {lane}
-app_template_download_progress	Inapakua… {p}% ({d} / {t})
-app_template_download_paused	Leta tena ili kuendelea — faili zilizokamilika zinahifadhiwa
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf

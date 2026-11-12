@@ -346,6 +346,8 @@ app_template_skip	Omet de moment
 app_template_status	Servidor a punt — importeu una plantilla o ometeu
 app_template_importing	S'aplica {title}…
 app_template_downloading	S'està baixant la plantilla…
+app_template_download_progress	S'està baixant… {p}% ({d} / {t})
+app_template_download_paused	Torneu a importar per reprendre — els fitxers acabats es conserven
 app_template_public_hdr	Plantilles públiques
 app_template_private_hdr	Plantilla privada
 app_template_public_hint	Obriu aquesta secció per carregar la llista pública (cal internet un cop).
@@ -626,6 +628,7 @@ choose_device_use	Trieu Servidor o Client.
 paired_note	Aparellat. Desbloquegeu per vendre, o Actualitza per tenir l'últim.
 last_update_at	Darrera actualització: {time}.
 pair_intro	Trobeu el servidor, o escriviu-ne l'adreça i el codi d'aparellament.
+pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
 queue_waiting	En espera d'arribar a la botiga ({n}):
 queue_tries	Intentat {n} vegades · darrera resposta: {e}
 save_backup_copy	Desa una còpia de seguretat…
@@ -1266,6 +1269,8 @@ taxable_value	Base imposable
 gst_inside_price_note	({tax} inclòs)
 start_with_template	Comença amb la nostra plantilla de menú
 template_heading	La nostra plantilla de menú
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf
 template_info	{c} categories i {d} plats amb fotos, a punt per afegir. Els preus comencen a ₹0 — poseu els vostres després.
 template_import	Importa la plantilla completa
 template_confirm	Afegir {d} plats amb les seves categories? Els plats que ja teniu es queden com són.
@@ -1363,7 +1368,3 @@ recent_changes	Canvis recents
 lane_declared_label	Factura fiscal
 lane_owner_label	Nota d'efectiu
 money_lane_bill	Compte: {lane}
-app_template_download_progress	S'està baixant… {p}% ({d} / {t})
-app_template_download_paused	Torneu a importar per reprendre — els fitxers acabats es conserven
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf

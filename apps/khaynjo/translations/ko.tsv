@@ -346,6 +346,8 @@ app_template_skip	나중에 건너뛰기
 app_template_status	서버 준비 완료 — 템플릿을 가져오거나 건너뛰세요
 app_template_importing	{title} 적용 중…
 app_template_downloading	템플릿 다운로드 중…
+app_template_download_progress	다운로드 중… {p}% ({d} / {t})
+app_template_download_paused	다시 가져오면 이어서 받습니다 — 완료된 파일은 유지됩니다
 app_template_public_hdr	공개 템플릿
 app_template_private_hdr	비공개 템플릿
 app_template_public_hint	공개 목록을 불러오려면 이 섹션을 여세요(처음 한 번 인터넷 필요).
@@ -626,6 +628,7 @@ choose_device_use	이 기기를 어떻게 쓸지 고르세요.
 paired_note	페어링됨. 잠금을 풀어 판매하거나, 새로고침으로 매장의 최신 내용을 받으세요.
 last_update_at	매장에서 마지막 업데이트: {time}.
 pair_intro	서버를 찾거나 주소와 페어링 코드를 입력하세요.
+pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
 queue_waiting	매장으로 전송 대기 ({n}):
 queue_tries	{n}번 시도 · 마지막 응답: {e}
 save_backup_copy	백업 사본 저장…
@@ -1266,6 +1269,8 @@ taxable_value	과세 금액
 gst_inside_price_note	({tax} 포함)
 start_with_template	메뉴 템플릿으로 시작
 template_heading	메뉴 템플릿
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf
 template_info	{c}개 분류와 사진 있는 요리 {d}개를 추가할 수 있습니다. 가격은 ₹0 — 나중에 설정하세요.
 template_import	전체 템플릿 가져오기
 template_confirm	요리 {d}개를 분류와 함께 추가할까요? 기존 요리는 그대로 둡니다.
@@ -1363,7 +1368,3 @@ recent_changes	최근 변경
 lane_declared_label	세금 계산서
 lane_owner_label	현금 메모
 money_lane_bill	영수증: {lane}
-app_template_download_progress	다운로드 중… {p}% ({d} / {t})
-app_template_download_paused	다시 가져오면 이어서 받습니다 — 완료된 파일은 유지됩니다
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf

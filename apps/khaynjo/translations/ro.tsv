@@ -346,6 +346,8 @@ app_template_skip	Sari deocamdată
 app_template_status	Server pregătit — importați un șablon sau săriți peste
 app_template_importing	Se aplică {title}…
 app_template_downloading	Se descarcă șablonul…
+app_template_download_progress	Se descarcă… {p}% ({d} / {t})
+app_template_download_paused	Importați din nou pentru a relua — fișierele terminate se păstrează
 app_template_public_hdr	Șabloane publice
 app_template_private_hdr	Șablon privat
 app_template_public_hint	Deschideți această secțiune pentru a încărca lista publică (e nevoie de internet o dată).
@@ -626,6 +628,7 @@ choose_device_use	Alege Server sau Client.
 paired_note	Împerecheat. Deblochează ca să vinzi, sau Reîmprospătează pentru ultimele.
 last_update_at	Ultima actualizare: {time}.
 pair_intro	Găsește serverul sau tastează adresa și codul de împerechere.
+pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
 queue_waiting	Așteaptă să ajungă la local ({n}):
 queue_tries	Încercat de {n} ori · ultimul răspuns: {e}
 save_backup_copy	Salvează o copie de rezervă…
@@ -1266,6 +1269,8 @@ taxable_value	Valoare impozabilă
 gst_inside_price_note	({tax} inclus)
 start_with_template	Începe cu șablonul nostru de meniu
 template_heading	Șablonul nostru de meniu
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf
 template_info	{c} categorii și {d} feluri cu poze, gata de adăugat. Prețurile încep de la ₹0 — setează-le pe ale tale după.
 template_import	Importă șablonul complet
 template_confirm	Adaugi {d} feluri cu categoriile lor? Felurile pe care le ai rămân cum sunt.
@@ -1363,7 +1368,3 @@ recent_changes	Modificări recente
 lane_declared_label	Factură fiscală
 lane_owner_label	Notă de casă
 money_lane_bill	Notă: {lane}
-app_template_download_progress	Se descarcă… {p}% ({d} / {t})
-app_template_download_paused	Importați din nou pentru a relua — fișierele terminate se păstrează
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf

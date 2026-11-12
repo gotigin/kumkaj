@@ -346,6 +346,8 @@ app_template_skip	Kunankamaqa saltay
 app_template_status	Servidor listoña — plantillata apamuy, utaq saltay
 app_template_importing	Aplicaspa {title}...
 app_template_downloading	Plantilla uraykachichkan…
+app_template_download_progress	Uraykachichkan… {p}% ({d} / {t})
+app_template_download_paused	Hukmanta apamuy qatipanaykipaq — tukusqa willañiqikunaqa waqaychasqa kanku
 app_template_public_hdr	Llapanpaq plantillakuna
 app_template_private_hdr	Sapan plantilla
 app_template_public_hint	Llapanpaq listata cargananpaq kay rakita kichay (huk kutilla internet necesitakun).
@@ -626,6 +628,7 @@ choose_device_use	Servidor utaq Cliente nisqapi akllay.
 paired_note	Iskay iskaymanta. Vendenapaq kichay, utaq Refresh qhipa kaqpaq.
 last_update_at	Qhipa kaq musuqyachiy: {time}.
 pair_intro	Servidorta maskay, utaq direccionninta chaymanta tupachiy códigonta qillqay.
+pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
 queue_waiting	Tiendaman chayanata suyaspa ({n}):
 queue_tries	{n} kuti kallpachakusqa · qhipa kutichiy: {e}
 save_backup_copy	Huk copia de seguridadta waqaychay...
@@ -1266,6 +1269,8 @@ taxable_value	Valor imponible nisqa
 gst_inside_price_note	({tax} llapanpi)
 start_with_template	Qallarina plantilla de menú nisqaykuwan
 template_heading	Nuestra plantilla de menú
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf
 template_info	{c} categoríakuna hinallataq {d} platokuna fotokunawan, listo yapanapaq. Preciokuna ₹0manta qallarinku — qampaq kaqta churay qhipaman.
 template_import	Hunt'a plantillata yaykuchiy
 template_confirm	{d} mikhuykunata categorías nisqawan yapay? Ña kapuq platokuna kasqanman hina qhepakunku.
@@ -1363,7 +1368,3 @@ recent_changes	Kunan pacha tikrakuykuna
 lane_declared_label	Impuesto nisqamanta factura
 lane_owner_label	Memo de efectivo nisqa
 money_lane_bill	Invitado invitado qullqi: {lane}
-app_template_download_progress	Uraykachichkan… {p}% ({d} / {t})
-app_template_download_paused	Hukmanta apamuy qatipanaykipaq — tukusqa willañiqikunaqa waqaychasqa kanku
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf

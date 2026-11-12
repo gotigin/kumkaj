@@ -346,6 +346,8 @@ app_template_skip	હમણાં છોડો
 app_template_status	સર્વર તૈયાર — ટેમ્પ્લેટ આયાત કરો, અથવા છોડો
 app_template_importing	{title} લાગુ કરી રહ્યાં છીએ…
 app_template_downloading	ટેમ્પ્લેટ ડાઉનલોડ થાય છે…
+app_template_download_progress	ડાઉનલોડ થાય છે… {p}% ({d} / {t})
+app_template_download_paused	ફરી શરૂ કરવા ફરીથી આયાત કરો — પૂરી થયેલી ફાઇલો રહે છે
 app_template_public_hdr	જાહેર ટેમ્પ્લેટ
 app_template_private_hdr	ખાનગી ટેમ્પ્લેટ
 app_template_public_hint	જાહેર યાદી લોડ કરવા આ વિભાગ ખોલો (એક વાર ઇન્ટરનેટ જોઈએ).
@@ -626,6 +628,7 @@ choose_device_use	આ ડિવાઇસનો ઉપયોગ કેવી ર�
 paired_note	જોડાઈ ગયું. વેચવા માટે ખોલો, અથવા દુકાનમાંથી તાજી માહિતી લેવા તાજું કરો.
 last_update_at	દુકાનમાંથી છેલ્લું અપડેટ: {time}.
 pair_intro	સર્વર શોધો, અથવા તેનું સરનામું અને પેરિંગ કોડ લખો.
+pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
 queue_waiting	દુકાન સુધી પહોંચવાની રાહમાં ({n}):
 queue_tries	{n} વાર પ્રયાસ · છેલ્લો જવાબ: {e}
 save_backup_copy	બેકઅપની નકલ સાચવો…
@@ -1266,6 +1269,8 @@ taxable_value	કરપાત્ર મૂલ્ય
 gst_inside_price_note	({tax} સહિત)
 start_with_template	અમારા મેનુ ટેમ્પલેટથી શરૂ કરો
 template_heading	અમારું મેનુ ટેમ્પલેટ
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf
 template_info	{c} શ્રેણીઓ અને {d} વાનગીઓ ફોટો સાથે તૈયાર. કિંમત ₹0 — પછી તમારી કિંમત રાખો.
 template_import	આખું ટેમ્પલેટ ઉમેરો
 template_confirm	{d} વાનગીઓ તેમની શ્રેણીઓ સાથે ઉમેરવી? તમારી હાલની વાનગીઓ એમ જ રહેશે.
@@ -1363,7 +1368,3 @@ recent_changes	તાજેતરના ફેરફારો
 lane_declared_label	કર ઇન્વૉઇસ
 lane_owner_label	કેશ મેમો
 money_lane_bill	બિલ: {lane}
-app_template_download_progress	ડાઉનલોડ થાય છે… {p}% ({d} / {t})
-app_template_download_paused	ફરી શરૂ કરવા ફરીથી આયાત કરો — પૂરી થયેલી ફાઇલો રહે છે
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf

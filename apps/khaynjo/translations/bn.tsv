@@ -346,6 +346,8 @@ app_template_skip	এখন বাদ দিন
 app_template_status	সার্ভার প্রস্তুত — একটি টেমপ্লেট ইমপোর্ট করুন, অথবা এড়িয়ে যান
 app_template_importing	{title} লাগানো হচ্ছে…
 app_template_downloading	টেমপ্লেট ডাউনলোড হচ্ছে…
+app_template_download_progress	ডাউনলোড হচ্ছে… {p}% ({d} / {t})
+app_template_download_paused	আবার শুরু করতে আবার ইমপোর্ট করুন — সম্পূর্ণ ফাইলগুলো রাখা থাকে
 app_template_public_hdr	পাবলিক টেমপ্লেট
 app_template_private_hdr	ব্যক্তিগত টেমপ্লেট
 app_template_public_hint	পাবলিক তালিকা লোড করতে এই অংশটি খুলুন (একবার ইন্টারনেট লাগবে)।
@@ -626,6 +628,7 @@ choose_device_use	এই ডিভাইস কীভাবে ব্যবহ�
 paired_note	যুক্ত হয়েছে। বিক্রি করতে খুলুন, অথবা দোকান থেকে সর্বশেষ আনতে রিফ্রেশ করুন।
 last_update_at	দোকান থেকে শেষ হালনাগাদ: {time}।
 pair_intro	সার্ভার খুঁজুন, অথবা তার ঠিকানা ও পেয়ারিং কোড লিখুন।
+pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
 queue_waiting	দোকানে পৌঁছানোর অপেক্ষায় ({n}):
 queue_tries	{n} বার চেষ্টা · শেষ উত্তর: {e}
 save_backup_copy	ব্যাকআপের কপি সংরক্ষণ…
@@ -1266,6 +1269,8 @@ taxable_value	করযোগ্য মূল্য
 gst_inside_price_note	({tax} সহ)
 start_with_template	আমাদের মেনু টেমপ্লেট দিয়ে শুরু
 template_heading	আমাদের মেনু টেমপ্লেট
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf
 template_info	{c}টি বিভাগ ও {d}টি পদ ছবিসহ যোগের জন্য প্রস্তুত। দাম ₹0 থেকে — পরে নিজের দাম দিন।
 template_import	পুরো টেমপ্লেট আনুন
 template_confirm	{d}টি পদ বিভাগসহ যোগ করবেন? আপনার আগের পদ যেমন আছে তেমনই থাকবে।
@@ -1363,7 +1368,3 @@ recent_changes	সাম্প্রতিক পরিবর্তন
 lane_declared_label	কর চালান
 lane_owner_label	ক্যাশ মেমো
 money_lane_bill	বিল: {lane}
-app_template_download_progress	ডাউনলোড হচ্ছে… {p}% ({d} / {t})
-app_template_download_paused	আবার শুরু করতে আবার ইমপোর্ট করুন — সম্পূর্ণ ফাইলগুলো রাখা থাকে
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf

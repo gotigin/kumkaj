@@ -346,6 +346,8 @@ app_template_skip	Atsaharo aloha
 app_template_status	Vonona ny mpizara — ampidiro modely, na dingano
 app_template_importing	Manaova {title}…
 app_template_downloading	Maka ny modely…
+app_template_download_progress	Maka… {p}% ({d} / {t})
+app_template_download_paused	Ampidiro indray mba hanohizana — voatahiry ireo rakitra vita
 app_template_public_hdr	Modely ho an'ny besinimaro
 app_template_private_hdr	Modely manokana
 app_template_public_hint	Sokafy ity fizarana ity hampidirana ny lisitra ho an'ny besinimaro (ilaina indray mandeha ny aterineto).
@@ -626,6 +628,7 @@ choose_device_use	Fidio Server na Client.
 paired_note	Nifandray. Sokafy mba hivarotra, na havaozy ho an'ny vaovao farany.
 last_update_at	Fanavaozam-baovao farany: {time}.
 pair_intro	Tadiavo ny mpizara, na soraty ny adiresy sy ny kaody fifandirana.
+pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
 queue_waiting	Miandry hahatratra ny fivarotana ({n}):
 queue_tries	Niezaka {n} fotoana · valiny farany: {e}
 save_backup_copy	Tehirizo ny dika mifandimby…
@@ -1266,6 +1269,8 @@ taxable_value	Sandan'ny hetra azo alaina
 gst_inside_price_note	({tax} tafiditra)
 start_with_template	Manomboha amin'ny maodelim-menu anay
 template_heading	Ny maodelim-menu anay
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf
 template_info	Sokajy {c} ary lovia {d} misy sary, vonona hampiana. Manomboka amin'ny vidiny ₹0 — apetraho aorian'izay ny anao.
 template_import	Importo ny maodely manontolo
 template_confirm	Ampio lovia {d} miaraka amin'ny sokajiny ve? Ny lovia efa anananao dia hijanona araka ny tokony ho izy.
@@ -1363,7 +1368,3 @@ recent_changes	Fanovana farany
 lane_declared_label	Faktioran-ketra
 lane_owner_label	Faktiora amin'ny vola
 money_lane_bill	Paositra: {lane}
-app_template_download_progress	Maka… {p}% ({d} / {t})
-app_template_download_paused	Ampidiro indray mba hanohizana — voatahiry ireo rakitra vita
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf

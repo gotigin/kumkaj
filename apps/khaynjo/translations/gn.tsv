@@ -346,6 +346,8 @@ app_template_skip	Ojesalta ko’áĝa ĝuarã
 app_template_status	Servidor oĩma — egueru peteĩ ñemboguatarã, térã ehasa
 app_template_importing	Ojeporu {title}...
 app_template_downloading	Oñemboguejy ñemboguatarã…
+app_template_download_progress	Oñemboguejy… {p}% ({d} / {t})
+app_template_download_paused	Egueru jey eñepyrũ jey hag̃ua — umi marandurenda opáva oñeñongatu
 app_template_public_hdr	Ñemboguatarã opavavépe guarã
 app_template_private_hdr	Ñemboguatarã ñemi
 app_template_public_hint	Embojuruja ko vore emyanyhẽ hag̃ua pe lista opavavépe guarã (oñeikotevẽ internet peteĩ jey).
@@ -626,6 +628,7 @@ choose_device_use	Eiporavo Servidor térã Cliente.
 paired_note	Oñembojoajúva. Emboguejy evende hag̃ua, térã Embopyahu ipyahuvévape g̃uarã.
 last_update_at	Ñembopyahu paha: {time}.
 pair_intro	Eheka pe servidor, térã ehai idirección ha código de emparejamiento.
+pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
 queue_waiting	Oha’arõvo oñeguahẽ tenda ({n}):
 queue_tries	Oñeha'ã {n} jey · ñembohovái paha: {e}
 save_backup_copy	Eñongatu peteĩ copia de seguridad...
@@ -1266,6 +1269,8 @@ taxable_value	Valor imponible rehegua
 gst_inside_price_note	({tax} oikehápe)
 start_with_template	Eñepyrũ ore plantilla menú rehegua reheve
 template_heading	Ore plantilla menú rehegua
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf
 template_info	{c} categoría ha {d} tembi’u ta’anga reheve, oĩmava oñembojoapy haguã. Umi precio oñepyrũ ₹0 — emoĩ nde mba’éva upe rire.
 template_import	Importa plantilla completa rehegua
 template_confirm	Oñemoĩve {d} tembi’u icategoríakuéra ndive? Umi tembi’u reguerekómava opyta oĩháicha.
@@ -1363,7 +1368,3 @@ recent_changes	Umi ñemoambue nda’aréi ojejapóva
 lane_declared_label	Factura tributaria rehegua
 lane_owner_label	Memo efectivo rehegua
 money_lane_bill	Proyecto de ley: {lane} .
-app_template_download_progress	Oñemboguejy… {p}% ({d} / {t})
-app_template_download_paused	Egueru jey eñepyrũ jey hag̃ua — umi marandurenda opáva oñeñongatu
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf

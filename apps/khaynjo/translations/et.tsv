@@ -346,6 +346,8 @@ app_template_skip	Jäta praegu vahele
 app_template_status	Server valmis — impordi mall või jäta vahele
 app_template_importing	{title} rakendamine…
 app_template_downloading	Malli allalaadimine…
+app_template_download_progress	Allalaadimine… {p}% ({d} / {t})
+app_template_download_paused	Jätkamiseks impordi uuesti — valmis failid jäävad alles
 app_template_public_hdr	Avalikud mallid
 app_template_private_hdr	Privaatne mall
 app_template_public_hint	Ava see jaotis avaliku loendi laadimiseks (internetti on vaja üks kord).
@@ -626,6 +628,7 @@ choose_device_use	Valige Server või Klient.
 paired_note	Paaritud. Avage müümiseks või värskendage uusima teabe saamiseks.
 last_update_at	Viimane värskendus: {time}.
 pair_intro	Otsige üles server või tippige selle aadress ja sidumiskood.
+pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
 queue_waiting	Poodi jõudmise ootel ({n}):
 queue_tries	Proovitud {n} korda · viimane vastus: {e}
 save_backup_copy	Salvesta varukoopia…
@@ -1266,6 +1269,8 @@ taxable_value	Maksustatav väärtus
 gst_inside_price_note	({tax} kaasa arvatud)
 start_with_template	Alustage meie menüümalliga
 template_heading	Meie menüü mall
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf
 template_info	{c} kategooriad ja {d} toidud koos fotodega, lisamiseks valmis. Hinnad algavad 0 ₹ - määrake oma hind pärast seda.
 template_import	Impordi täielik mall
 template_confirm	Kas lisada {d} rooga nende kategooriatega? Juba olemasolevad toidud jäävad selliseks, nagu nad on.
@@ -1363,7 +1368,3 @@ recent_changes	Viimased muudatused
 lane_declared_label	Maksuarve
 lane_owner_label	Sularaha memo
 money_lane_bill	Arve: {lane}
-app_template_download_progress	Allalaadimine… {p}% ({d} / {t})
-app_template_download_paused	Jätkamiseks impordi uuesti — valmis failid jäävad alles
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf

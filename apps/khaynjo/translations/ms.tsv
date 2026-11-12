@@ -346,6 +346,8 @@ app_template_skip	Langkau buat masa ini
 app_template_status	Pelayan sedia — import templat, atau langkau
 app_template_importing	Memohon {title}…
 app_template_downloading	Memuat turun templat…
+app_template_download_progress	Memuat turun… {p}% ({d} / {t})
+app_template_download_paused	Import semula untuk menyambung — fail yang siap disimpan
 app_template_public_hdr	Templat awam
 app_template_private_hdr	Templat peribadi
 app_template_public_hint	Buka bahagian ini untuk memuatkan senarai awam (perlukan internet sekali).
@@ -626,6 +628,7 @@ choose_device_use	Pilih Pelayan atau Pelanggan.
 paired_note	Berpasangan. Buka kunci untuk menjual, atau Muat semula untuk yang terkini.
 last_update_at	Kemas kini terakhir: {time}.
 pair_intro	Cari pelayan, atau taip alamat dan kod pasangannya.
+pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
 queue_waiting	Menunggu untuk sampai ke kedai ({n}):
 queue_tries	Mencuba {n} kali · jawapan terakhir: {e}
 save_backup_copy	Simpan salinan sandaran…
@@ -1266,6 +1269,8 @@ taxable_value	Nilai bercukai
 gst_inside_price_note	({tax} termasuk)
 start_with_template	Mulakan dengan templat menu kami
 template_heading	Templat menu kami
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf
 template_info	{c} kategori dan {d} hidangan dengan foto, sedia untuk ditambah. Harga bermula pada ₹0 — tetapkan harga anda selepas itu.
 template_import	Import templat lengkap
 template_confirm	Tambahkan {d} hidangan dengan kategorinya? Hidangan yang telah anda miliki kekal seperti sedia ada.
@@ -1363,7 +1368,3 @@ recent_changes	Perubahan terkini
 lane_declared_label	Invois cukai
 lane_owner_label	Memo tunai
 money_lane_bill	Bil: {lane}
-app_template_download_progress	Memuat turun… {p}% ({d} / {t})
-app_template_download_paused	Import semula untuk menyambung — fail yang siap disimpan
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf

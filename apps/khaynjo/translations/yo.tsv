@@ -346,6 +346,8 @@ app_template_skip	Rekọja fun bayi
 app_template_status	Olùpèsè ti ṣetán — gbé àdàkọ kan wọlé, tàbí fò ó
 app_template_importing	Nbere {title}…
 app_template_downloading	Ń gba àdàkọ sílẹ̀…
+app_template_download_progress	Ń gbà sílẹ̀… {p}% ({d} / {t})
+app_template_download_paused	Gbé wọlé lẹ́ẹ̀kan sí i láti tẹ̀síwájú — a máa tọ́jú àwọn fáìlì tó ti parí
 app_template_public_hdr	Àwọn àdàkọ gbogbo ènìyàn
 app_template_private_hdr	Àdàkọ àdáni
 app_template_public_hint	Ṣí apá yìí láti gbé àtòjọ gbogbo ènìyàn sókè (a nílò íńtánẹ́ẹ̀tì lẹ́ẹ̀kan).
@@ -626,6 +628,7 @@ choose_device_use	Yan Olupin tabi Onibara.
 paired_note	So pọ. Ṣii silẹ lati ta, tabi Tuntun fun tuntun.
 last_update_at	Imudojuiwọn to kẹhin: {time}.
 pair_intro	Wa olupin naa, tabi tẹ adirẹsi rẹ ati koodu sisọ pọ.
+pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
 queue_waiting	Nduro lati de ile itaja ({n}):
 queue_tries	Gbiyanju {n} igba · idahun to kẹhin: {e}
 save_backup_copy	Ṣafipamọ ẹda afẹyinti…
@@ -1266,6 +1269,8 @@ taxable_value	Iye owo-ori
 gst_inside_price_note	({tax} ifisi)
 start_with_template	Bẹrẹ pẹlu awoṣe akojọ aṣayan wa
 template_heading	Awoṣe akojọ aṣayan wa
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf
 template_info	Awọn ẹka {c} ati awọn ounjẹ {d} pẹlu awọn fọto, ṣetan lati ṣafikun. Awọn idiyele bẹrẹ ni Rs 0 - ṣeto tirẹ lẹhin.
 template_import	Wọle pipe awoṣe
 template_confirm	Ṣafikun awọn ounjẹ {d} pẹlu awọn ẹka wọn? Awọn ounjẹ ti o ti duro tẹlẹ bi wọn ṣe jẹ.
@@ -1363,7 +1368,3 @@ recent_changes	Awọn ayipada to ṣẹṣẹ
 lane_declared_label	risiti owo-ori
 lane_owner_label	Akọsilẹ owo
 money_lane_bill	Iwe owo: {lane}
-app_template_download_progress	Ń gbà sílẹ̀… {p}% ({d} / {t})
-app_template_download_paused	Gbé wọlé lẹ́ẹ̀kan sí i láti tẹ̀síwájú — a máa tọ́jú àwọn fáìlì tó ti parí
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf

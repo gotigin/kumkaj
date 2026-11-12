@@ -346,6 +346,8 @@ app_template_skip	Jetzt überspringen
 app_template_status	Server bereit — Vorlage importieren oder überspringen
 app_template_importing	Wende {title} an…
 app_template_downloading	Vorlage wird heruntergeladen…
+app_template_download_progress	Wird heruntergeladen… {p}% ({d} / {t})
+app_template_download_paused	Erneut importieren, um fortzusetzen — fertige Dateien bleiben erhalten
 app_template_public_hdr	Öffentliche Vorlagen
 app_template_private_hdr	Private Vorlage
 app_template_public_hint	Öffnen Sie diesen Bereich, um die öffentliche Liste zu laden (einmalig Internet nötig).
@@ -626,6 +628,7 @@ choose_device_use	Wählen Sie, wie dieses Gerät genutzt wird.
 paired_note	Gekoppelt. Entsperren zum Verkaufen, oder Aktualisieren für den neuesten Stand des Lokals.
 last_update_at	Letzte Aktualisierung vom Lokal: {time}.
 pair_intro	Server suchen oder seine Adresse und den Kopplungscode eingeben.
+pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
 queue_waiting	Wartet auf das Lokal ({n}):
 queue_tries	{n} Versuche · letzte Antwort: {e}
 save_backup_copy	Sicherungskopie speichern…
@@ -1266,6 +1269,8 @@ taxable_value	Steuerbemessungsgrundlage
 gst_inside_price_note	({tax} inklusive)
 start_with_template	Mit unserer Menüvorlage starten
 template_heading	Unsere Menüvorlage
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf
 template_info	{c} Kategorien und {d} Gerichte mit Fotos, bereit zum Hinzufügen. Preise ab ₹0 — danach eigene setzen.
 template_import	Ganze Vorlage importieren
 template_confirm	{d} Gerichte mit Kategorien hinzufügen? Vorhandene Gerichte bleiben, wie sie sind.
@@ -1363,7 +1368,3 @@ recent_changes	Letzte Änderungen
 lane_declared_label	Steuerrechnung
 lane_owner_label	Kassenbon
 money_lane_bill	Rechnung: {lane}
-app_template_download_progress	Wird heruntergeladen… {p}% ({d} / {t})
-app_template_download_paused	Erneut importieren, um fortzusetzen — fertige Dateien bleiben erhalten
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf

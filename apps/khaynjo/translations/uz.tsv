@@ -346,6 +346,8 @@ app_template_skip	Hozircha oʻtkazib yuborish
 app_template_status	Server tayyor — shablon import qiling yoki o'tkazib yuboring
 app_template_importing	{title} qoʻllanilmoqda…
 app_template_downloading	Shablon yuklab olinmoqda…
+app_template_download_progress	Yuklab olinmoqda… {p}% ({d} / {t})
+app_template_download_paused	Davom ettirish uchun qayta import qiling — tayyor fayllar saqlanadi
 app_template_public_hdr	Ommaviy shablonlar
 app_template_private_hdr	Shaxsiy shablon
 app_template_public_hint	Ommaviy ro'yxatni yuklash uchun ushbu bo'limni oching (bir marta internet kerak).
@@ -626,6 +628,7 @@ choose_device_use	Server yoki Mijozni tanlang.
 paired_note	Juftlangan. Sotish uchun qulfni oching yoki oxirgisi uchun Yangilang.
 last_update_at	Oxirgi yangilanish: {time}.
 pair_intro	Serverni toping yoki manzil va juftlash kodini yozing.
+pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
 queue_waiting	Doʻkonga yetishni kutmoqda ({n}):
 queue_tries	{n} marta urinib koʻrildi · oxirgi javob: {e}
 save_backup_copy	Zaxira nusxa saqlash…
@@ -1266,6 +1269,8 @@ taxable_value	Soliqqa tortiladigan qiymat
 gst_inside_price_note	({tax} ichida)
 start_with_template	Bizning menyu andozamiz bilan boshlash
 template_heading	Bizning menyu andozamiz
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf
 template_info	{c} toifa va {d} taom surat bilan, qoʻshishga tayyor. Narxlar ₹0 dan boshlanadi — keyin oʻzingiznikini qoʻying.
 template_import	Toʻliq andozani import qilish
 template_confirm	{d} taomni toifalari bilan qoʻshilsinmi? Bor taomlar oʻz holicha qoladi.
@@ -1363,7 +1368,3 @@ recent_changes	Soʻnggi oʻzgarishlar
 lane_declared_label	Soliq hisob-fakturasi
 lane_owner_label	Naqd yozuv
 money_lane_bill	Hisob: {lane}
-app_template_download_progress	Yuklab olinmoqda… {p}% ({d} / {t})
-app_template_download_paused	Davom ettirish uchun qayta import qiling — tayyor fayllar saqlanadi
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf

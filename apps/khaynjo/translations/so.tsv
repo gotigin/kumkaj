@@ -346,6 +346,8 @@ app_template_skip	Hadda ka bood
 app_template_status	Server-ku waa diyaar — soo deji qaab, ama ka bood
 app_template_importing	Waxaa la dabaqayaa {title}…
 app_template_downloading	Qaabka waa la soo dejinayaa…
+app_template_download_progress	Waa la soo dejinayaa… {p}% ({d} / {t})
+app_template_download_paused	Mar kale soo deji si aad u sii wadato — faylasha dhammaaday waa la hayaa
 app_template_public_hdr	Qaabab dadweyne
 app_template_private_hdr	Qaab gaar ah
 app_template_public_hint	Fur qaybtan si aad u soo geliso liiska dadweynaha (internet hal mar ayaa loo baahan yahay).
@@ -626,6 +628,7 @@ choose_device_use	Dooro Server ama Macaamiil.
 paired_note	Waa la isku xiray. Fur si aad u iibiso, ama Cusbooneysii kan ugu dambeeyay.
 last_update_at	Cusbooneysiinta u dambeysay: {time}.
 pair_intro	Raadi server-ka, ama qor cinwaankiisa iyo koodhka isku-xirka.
+pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
 queue_waiting	Waxay sugayaan inay gaaraan dukaanka ({n}):
 queue_tries	Waxaa la isku dayay {n} jeer · jawaabtii u dambeysay: {e}
 save_backup_copy	Kaydi nuqul kayd…
@@ -1266,6 +1269,8 @@ taxable_value	Qiimaha canshuurta lagu xisaabinayo
 gst_inside_price_note	({tax} waa ku jira)
 start_with_template	Ku bilow qaabka menu-geenna
 template_heading	Qaabka menu-geenna
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf
 template_info	qayb {c} iyo cunto {d} oo sawir leh, diyaar in lagu daro. Qiimayaashu waxay ka bilaabmaan ₹0 — ka dib deji kuwaaga.
 template_import	Soo deji qaabka oo dhan
 template_confirm	Ku dar cunto {d} iyo qaybahooda? Cuntooyinka aad haysato way sii ahaanayaan sidii ay ahaayeen.
@@ -1363,7 +1368,3 @@ recent_changes	Isbeddelladii dhawaa
 lane_declared_label	Faaturo canshuur
 lane_owner_label	Warqadda lacagta caddaanka
 money_lane_bill	Biil: {lane}
-app_template_download_progress	Waa la soo dejinayaa… {p}% ({d} / {t})
-app_template_download_paused	Mar kale soo deji si aad u sii wadato — faylasha dhammaaday waa la hayaa
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf

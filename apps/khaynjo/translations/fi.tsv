@@ -346,6 +346,8 @@ app_template_skip	Ohita toistaiseksi
 app_template_status	Palvelin valmis — tuo pohja tai ohita
 app_template_importing	Käytetään {title}…
 app_template_downloading	Ladataan pohjaa…
+app_template_download_progress	Ladataan… {p}% ({d} / {t})
+app_template_download_paused	Tuo uudelleen jatkaaksesi — valmiit tiedostot säilyvät
 app_template_public_hdr	Julkiset pohjat
 app_template_private_hdr	Yksityinen pohja
 app_template_public_hint	Avaa tämä osio ladataksesi julkisen luettelon (internet tarvitaan kerran).
@@ -626,6 +628,7 @@ choose_device_use	Valitse palvelin tai pääte.
 paired_note	Paritettu. Avaa lukitus myydäksesi tai päivitä saadaksesi uusimman.
 last_update_at	Viimeisin päivitys: {time}.
 pair_intro	Etsi palvelin tai kirjoita sen osoite ja parituskoodi.
+pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
 queue_waiting	Odottaa pääsyä liikkeeseen ({n}):
 queue_tries	Yritetty {n} kertaa · viimeisin vastaus: {e}
 save_backup_copy	Tallenna varmuuskopion kopio…
@@ -1266,6 +1269,8 @@ taxable_value	Verotettava arvo
 gst_inside_price_note	({tax} sisältyy)
 start_with_template	Aloita ruokalistamallillamme
 template_heading	Ruokalistamallimme
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf
 template_info	{c} luokkaa ja {d} annosta kuvineen, valmiina lisättäväksi. Hinnat alkavat ₹0 — aseta omasi sen jälkeen.
 template_import	Tuo koko malli
 template_confirm	Lisätäänkö {d} annosta luokkineen? Annokset, jotka sinulla jo on, pysyvät ennallaan.
@@ -1363,7 +1368,3 @@ recent_changes	Viimeisimmät muutokset
 lane_declared_label	Verolasku
 lane_owner_label	Käteiskuitti
 money_lane_bill	Lasku: {lane}
-app_template_download_progress	Ladataan… {p}% ({d} / {t})
-app_template_download_paused	Tuo uudelleen jatkaaksesi — valmiit tiedostot säilyvät
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf

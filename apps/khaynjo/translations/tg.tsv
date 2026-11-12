@@ -346,6 +346,8 @@ app_template_skip	Ҳоло гузарон
 app_template_status	Сервер омода аст — қолиб ворид кунед ё гузаред
 app_template_importing	{title} татбиқ мешавад…
 app_template_downloading	Қолиб боргирӣ мешавад…
+app_template_download_progress	Боргирӣ… {p}% ({d} / {t})
+app_template_download_paused	Барои идома боз ворид кунед — файлҳои тайёр нигоҳ дошта мешаванд
 app_template_public_hdr	Қолибҳои оммавӣ
 app_template_private_hdr	Қолиби хусусӣ
 app_template_public_hint	Барои бор кардани рӯйхати оммавӣ ин бахшро кушоед (як бор интернет лозим).
@@ -626,6 +628,7 @@ choose_device_use	Server ё Мизоҷро интихоб кунед.
 paired_note	Ҷуфт шуд. Барои фурӯш кушоед, ё барои охирин Навсозӣ кунед.
 last_update_at	Навсозии охирин: {time}.
 pair_intro	Server-ро ёбед, ё суроға ва рамзи ҷуфташро нависед.
+pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
 queue_waiting	Интизори расидан ба дӯкон ({n}):
 queue_tries	{n} бор кӯшиш шуд · ҷавоби охирин: {e}
 save_backup_copy	Захираи нусхаи эҳтиётӣ…
@@ -1266,6 +1269,8 @@ taxable_value	Арзиши андозбандӣ
 gst_inside_price_note	({tax} дар нарх)
 start_with_template	Бо қолаби менюи мо оғоз кунед
 template_heading	Қолаби менюи мо
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf
 template_info	{c} гурӯҳ ва {d} таом бо акс, омода барои илова. Нархҳо аз ₹0 оғоз мешаванд — баъд нархҳои худро гузоред.
 template_import	Воридоти қолаби пурра
 template_confirm	{d} таомро бо гурӯҳҳояшон илова кунед? Таомҳое, ки аллакай доред, ҳамон тавр мемонанд.
@@ -1363,7 +1368,3 @@ recent_changes	Тағйироти охир
 lane_declared_label	Ҳисобномаи андоз
 lane_owner_label	Ёддошти нақд
 money_lane_bill	Ҳисоб: {lane}
-app_template_download_progress	Боргирӣ… {p}% ({d} / {t})
-app_template_download_paused	Барои идома боз ворид кунед — файлҳои тайёр нигоҳ дошта мешаванд
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf

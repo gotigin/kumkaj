@@ -346,6 +346,8 @@ app_template_skip	अबहीं छोड़ौ
 app_template_status	सर्वर तैयार — टेम्पलेट आयात करौ, या छोड़ि देव
 app_template_importing	{title} लगावत हन…
 app_template_downloading	टेम्पलेट डाउनलोड होत बा…
+app_template_download_progress	डाउनलोड होत बा… {p}% ({d} / {t})
+app_template_download_paused	फिर से चालू करै खातिर दोबारा आयात करौ — पूरी फाइलन रखी जात हैं
 app_template_public_hdr	सार्वजनिक टेम्पलेट
 app_template_private_hdr	निजी टेम्पलेट
 app_template_public_hint	सार्वजनिक सूची लोड करै खातिर ई हिस्सा खोलौ (एक बार इंटरनेट चाही)।
@@ -626,6 +628,7 @@ choose_device_use	सर्वर या क्लाइंट चुनौ।
 paired_note	जुड़ा। बेचै खातिर अनलॉक करौ, या नवा खातिर ताजा करौ।
 last_update_at	पिछला अपडेट: {time}।
 pair_intro	सर्वर खोजौ, या ओकर पता अउर पेयरिंग कोड लिखौ।
+pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
 queue_waiting	दुकान तक पहुँचै कै इंतजार ({n}):
 queue_tries	{n} बार कोसिस · पिछला जवाब: {e}
 save_backup_copy	बैकअप कॉपी सहेजौ…
@@ -1266,6 +1269,8 @@ taxable_value	कर लगै वाला मूल्य
 gst_inside_price_note	({tax} सहित)
 start_with_template	हमार मेनू टेम्पलेट से सुरू करौ
 template_heading	हमार मेनू टेम्पलेट
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf
 template_info	{c} श्रेणी अउर फोटो के साथ {d} बेंजन, जोड़ै खातिर तैयार। दाम ₹0 से सुरू — बाद मा आपन रखौ।
 template_import	पूरा टेम्पलेट आयात करौ
 template_confirm	{d} बेंजन ओनकी श्रेणी के साथ जोड़ौ? जउन बेंजन पहिले से हैं ऊ वइसेन रहिहैं।
@@ -1363,7 +1368,3 @@ recent_changes	हाल कै बदलाव
 lane_declared_label	कर चालान
 lane_owner_label	कैस मेमो
 money_lane_bill	बिल: {lane}
-app_template_download_progress	डाउनलोड होत बा… {p}% ({d} / {t})
-app_template_download_paused	फिर से चालू करै खातिर दोबारा आयात करौ — पूरी फाइलन रखी जात हैं
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf

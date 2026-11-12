@@ -346,6 +346,8 @@ app_template_skip	Skip na ka bynta mynta
 app_template_status	Ka server ka la khreh — import ia ka template, ne iehnoh
 app_template_importing	Ka jingpyndonkam {title}...
 app_template_downloading	Dang download ia ka template…
+app_template_download_progress	Dang download… {p}% ({d} / {t})
+app_template_download_paused	Import biang ban bteng pat — ki file ba la dep la sah
 app_template_public_hdr	Ki template paidbah
 app_template_private_hdr	Template shimet
 app_template_public_hint	Plie ia kane ka bynta ban load ia ka list paidbah (donkam internet shisien).
@@ -626,6 +628,7 @@ choose_device_use	Jied Server lane Client.
 paired_note	Ka jingpyniadei. Plie ban die, lane Refresh na ka bynta kaba thymmai.
 last_update_at	Ka jingpynkylla kaba khatduh: {time}.
 pair_intro	Peit ia u server, lane type ia ka address bad pairing code jong u.
+pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
 queue_waiting	Ka jingap ban poi ha ka dukan ({n}):
 queue_tries	La pyrshang {n} sien · ka jubab ba khatduh: {e}
 save_backup_copy	Save ia ka kopi ba la buh...
@@ -1266,6 +1269,8 @@ taxable_value	Ka dor ba lah ban siew khajna
 gst_inside_price_note	({tax} kynthup lang)
 start_with_template	Sdang da ka rukom menu jong ngi
 template_heading	Ka rukom menu jong ngi
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf
 template_info	{c} ki jait bad {d} ki jingbam ryngkat bad ki dur, ba la pynkhreh ban pyndap. Ki dor ki sdang naduh ₹0 — buh ia ka jong phi hadien.
 template_import	Pynrung ia ka template ba pura
 template_confirm	Pyndap {d} ki jingbam ryngkat bad ki kyrdan jong ki? Ki jingbam kiba phi la don lypa ki sah kumjuh.
@@ -1363,7 +1368,3 @@ recent_changes	Ki jingkylla ba dang shen
 lane_declared_label	Ka jingkhein khajna
 lane_owner_label	Ka jingkynmaw pisa
 money_lane_bill	Ka jingsiew: {lane}
-app_template_download_progress	Dang download… {p}% ({d} / {t})
-app_template_download_paused	Import biang ban bteng pat — ki file ba la dep la sah
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf

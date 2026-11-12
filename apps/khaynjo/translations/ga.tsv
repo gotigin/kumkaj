@@ -346,6 +346,8 @@ app_template_skip	Sicíl anois
 app_template_status	Freastalaí réidh — iompórtáil teimpléad, nó scipeáil
 app_template_importing	Ag cur i bhfeidhm {title}…
 app_template_downloading	Teimpléad á íoslódáil…
+app_template_download_progress	Á íoslódáil… {p}% ({d} / {t})
+app_template_download_paused	Iompórtáil arís chun leanúint ar aghaidh — coinnítear na comhaid chríochnaithe
 app_template_public_hdr	Teimpléid phoiblí
 app_template_private_hdr	Teimpléad príobháideach
 app_template_public_hint	Oscail an chuid seo chun an liosta poiblí a lódáil (teastaíonn idirlíon uair amháin).
@@ -626,6 +628,7 @@ choose_device_use	Roghnaigh "Server" nó "Client".
 paired_note	Péireáilte. Díscríobh chun díol, nó Athnuaigh don ceann is déanaí.
 last_update_at	Nuashonrú deireanach: {time}.
 pair_intro	Faigh an freastalaí, nó clóscríobh a sheoladh agus a chód péireála.
+pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
 queue_waiting	Ag fanacht le teacht chuig an siopa ({n}):
 queue_tries	Iarracht {n} uair · freagra deireanach: {e}
 save_backup_copy	Sábháil cóip chúltaca…
@@ -1266,6 +1269,8 @@ taxable_value	Luach inchomhdaithe
 gst_inside_price_note	({tax} san áireamh)
 start_with_template	Tosaigh lenár teimpléad roghchláir
 template_heading	Teimpléad ár mbiachláir
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf
 template_info	{c} catagóirí agus {d} miasa le grianghraif, réidh le cur leis. Tosaíonn praghsanna ag ₹0 — socraigh do chuid féin ina dhiaidh sin.
 template_import	Allmhairigh teimpléad iomlán
 template_confirm	Cuir {d} miasa leis na catagóirí atá acu? Fanann na miasa atá agat cheana mar atá siad.
@@ -1363,7 +1368,3 @@ recent_changes	Athruithe le déanaí
 lane_declared_label	Sonras cánach
 lane_owner_label	Míoicíní airgid
 money_lane_bill	Billi: {lane}
-app_template_download_progress	Á íoslódáil… {p}% ({d} / {t})
-app_template_download_paused	Iompórtáil arís chun leanúint ar aghaidh — coinnítear na comhaid chríochnaithe
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf

@@ -1,23 +1,38 @@
 # Printers and Bill & KOT format (Khaynjo)
 
-Two separate things. A **printer** is a real device the operating system
-already knows. **Bill & KOT format** is how a bill or a kitchen ticket is
-drawn and how those bytes are handed to that device. The printer does not
+Two separate things. A **printer** is a real device (and **how** jobs are
+sent to it). **Bill & KOT format** is how a bill or a kitchen ticket is
+**drawn** (width, type, fields, portrait/landscape). The printer does not
 decide the layout. The format does not name the device.
+
+Any found printer may print bills, kitchen tickets, or both. A standard
+office queue may print KOTs; a thermal head may print bills. That is the
+owner’s choice.
 
 ## Printer
 
-Settings → **Printers** is only the device list.
+Settings → **Printers** is the device list **and** each device’s send method.
 
 - **Find printers** reads the OS list (system queues, then network, USB, and
   Bluetooth) and saves it to this shop’s `printers.json` and the running app.
-- Each row keeps the name the OS already gave it. There is no manual rename
-  and no virtual printer to create.
-- Tap one row to **select** it, then **Print a test page** sends only to that
-  device — never every printer at once. Find does **not** create a kitchen
-  station; add stations under Kitchen → Kitchen stations, then attach printers
-  there.
-- The app does not guess inkjet, laser, or thermal from the name.
+- Under **each** printer name, choose how that device is sent jobs:
+  - **OS document (system spooler)** — PNG of the slip (same picture as the
+    preview), given to CUPS / Windows / Android print. Best for inkjet/laser
+    queues.
+  - **Raw bytes to device** — thermal ESC/POS payload written as a raw job
+    (no page reflow). Same payload as ESC/POS; use when the queue must not
+    treat the slip as a document.
+  - **ESC/POS thermal commands** — thermal raster/commands. Default for USB,
+    Bluetooth, and `host:9100`. This is the path that matches the on-screen
+    preview for thermal heads.
+- Defaults when Find adds a printer: USB / BT / network → ESC/POS; named
+  system queues / Android print → OS document. The owner may change any
+  printer later without changing Bill or KOT format.
+- **Printers for a test page** + **Print a test page** send only to the
+  checked device(s), using **that printer’s** send method and the Bill
+  format’s look.
+- Find does **not** create a kitchen station; add stations under Kitchen →
+  Kitchen stations, then attach printers there.
 
 A kitchen station, and the bill, each pick one or more of these printers.
 **First that works** stops after the first success. **Print on all** sends
@@ -25,45 +40,48 @@ the same job to every printer on that place. Order on the list is the try
 order.
 
 Old `printers.json` files may still contain virtual-printer rows. Load
-rewrites those route slots to the real printer they pointed at. The product
-screen does not edit them.
+rewrites those route slots to the real printer they pointed at. Missing
+`delivery` on a printer is filled from the target kind (see defaults above).
 
 ## Bill & KOT format
 
-Settings → **Bill & KOT format** decides the job. The physical paper stays
-the printer’s. **Content width** is how wide the drawn bill and the drawn
-kitchen ticket are. It is one millimetre value for both, above the Bill and
-KOT tabs: 58 (narrow slip), 80 (wide), 112 (4 inch), 210 (page), or a typed
-value from 40 to 210. It is not a paper-width lock on the printer, and it
-is not only 58 or 80.
+Settings → **Bill & KOT format** decides the **look**. The physical paper
+stays the printer’s. **Content width** is how wide the drawn bill and the
+drawn kitchen ticket are. It is one millimetre value for both, above the
+Bill and KOT tabs: 58 (narrow slip), 80 (wide), 112 (4 inch), 210 (page),
+or a typed value from 40 to 210. It is not a paper-width lock on the
+printer, and it is not only 58 or 80.
 
-Portrait / landscape, and how the job is sent, are chosen **separately** on
-the Bill tab and on the KOT tab. Either job can go to any printer Find has
-saved.
+The on-screen preview uses that content width with a **proportional fit**
+so 56 mm and 210 mm both stay readable — preview does not care which
+physical printer will print; it only mirrors the drawn slip.
 
-### How the job is sent
+Portrait / landscape are chosen **separately** on the Bill tab and on the
+KOT tab. **How the job is sent** on those tabs is a **fallback** for
+printers that still have no `delivery` set; prefer Settings → Printers for
+per-device send methods. Either job can go to any printer Find has saved.
 
-Three ways. They cover a bill and a kitchen ticket. A further command
-language (ZPL, TSPL, StarPRNT, CPCL) is for label printers and is not part
-of this screen.
+### How the job is sent (per printer)
 
 | Choice | What the device receives |
 |---|---|
-| **OS document** | A picture of the slip (bundled fonts), given to the system spooler. Inkjet, laser, and any queue that prints a page. On Android, the print service. |
+| **OS document** | A picture of the slip (bundled fonts), given to the system spooler. Inkjet, laser, and any queue that prints a page. On Android, the print service. Sized to the content width so it matches the preview. |
 | **ESC/POS** | Thermal commands (plain text when the head has the letters, otherwise a raster picture). Network port 9100, USB, and Bluetooth always take these bytes. A named desktop queue takes them as a raw spool. |
-| **Raw bytes** | The same job bytes, written straight to the device or the raw queue so the OS does not treat them as a document. |
+| **Raw bytes** | The same thermal job bytes, written straight to the device or the raw queue so the OS does not treat them as a document. |
 
-OS document is `document` on the format. ESC/POS and Raw are not: the
-worker does not ask the spooler to reflow the page. Kitchen-ticket style
-marks (size, weight, Start / Center / End) are drawn in that picture for
-both the OS document and the ESC/POS raster. Do not strip the marks and
-then left-align the plain text.
+Kitchen-ticket style marks (size, weight, Start / Center / End) are drawn
+in that picture for both the OS document and the ESC/POS raster. Do not
+strip the marks and then left-align the plain text.
+
+USB / Bluetooth / `:9100` always write thermal bytes (ESC/POS path). If the
+owner picks OS document on those targets, the worker still sends the ESC/POS
+picture so the job is not refused.
 
 ### Bill tab
 
 - Content width (shared with the kitchen ticket).
 - Portrait or landscape.
-- How the job is sent.
+- Fallback how-the-job-is-sent (prefer per-printer on Settings → Printers).
 - Which real printers may print the bill.
 - One editor per bill line: show or hide, point size, weight, and
   alignment (Start / Center / End), plus typed text where the line has it
@@ -84,7 +102,7 @@ hardcoded template of one shop's paper.
 
 ### KOT tab
 
-- Its own portrait or landscape, and its own how-the-job-is-sent.
+- Its own portrait or landscape, and its own fallback how-the-job-is-sent.
 - Which fields show, in what order, and how many copies (1–3). Copies are
   one queued job, not a pause between each copy.
 - One editor per field: show or hide, point size (12–48), weight (Light /
@@ -126,7 +144,7 @@ Save KOT format writes that slip. The printed ticket reads the saved slip,
 not an unsaved edit still sitting in the form. **Test KOT**, under that
 save button, prints the preview on a kitchen printer. **Test bill**, under
 Save bill format, prints a sample bill with the header, footer, size,
-content width, layout, and delivery currently on the Bill tab.
+content width, layout, and the printers’ send methods.
 
 ## Paper for a waiter's device (LAN)
 

@@ -346,6 +346,8 @@ app_template_skip	Hepgor am y tro
 app_template_status	Gweinydd yn barod — mewnforiwch dempled, neu hepgor
 app_template_importing	Yn cymhwyso {title}…
 app_template_downloading	Wrthi'n llwytho'r templed i lawr…
+app_template_download_progress	Wrthi'n llwytho i lawr… {p}% ({d} / {t})
+app_template_download_paused	Mewnforiwch eto i ailddechrau — cedwir y ffeiliau gorffenedig
 app_template_public_hdr	Templedi cyhoeddus
 app_template_private_hdr	Templed preifat
 app_template_public_hint	Agorwch yr adran hon i lwytho'r rhestr gyhoeddus (angen rhyngrwyd unwaith).
@@ -626,6 +628,7 @@ choose_device_use	Dewiswch Weinydd neu Gleient.
 paired_note	Wedi'i baru. Datgloi i werthu, neu Adnewyddu ar gyfer y diweddaraf.
 last_update_at	Diweddariad olaf: {time}.
 pair_intro	Dewch o hyd i'r gweinydd, neu teipiwch ei gyfeiriad a'r cod paru.
+pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
 queue_waiting	Yn aros i gyrraedd y siop ({n}):
 queue_tries	Wedi ceisio {n} gwaith · ateb olaf: {e}
 save_backup_copy	Cadw copi wrth gefn…
@@ -1266,6 +1269,8 @@ taxable_value	Gwerth trethadwy
 gst_inside_price_note	({tax} wedi'i gynnwys)
 start_with_template	Dechrau gyda'n templed dewislen
 template_heading	Ein templed dewislen
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf
 template_info	{c} categori a {d} pryd gyda lluniau, yn barod i'w hychwanegu. Mae prisiau'n dechrau ar ₹0 — gosodwch eich rhai chi wedyn.
 template_import	Mewnforio templed cyflawn
 template_confirm	Ychwanegu {d} pryd gyda'u categorïau? Mae prydau sydd gennych eisoes yn aros fel y maent.
@@ -1363,7 +1368,3 @@ recent_changes	Newidiadau diweddar
 lane_declared_label	Anfoneb dreth
 lane_owner_label	Memo arian
 money_lane_bill	Bil: {lane}
-app_template_download_progress	Wrthi'n llwytho i lawr… {p}% ({d} / {t})
-app_template_download_paused	Mewnforiwch eto i ailddechrau — cedwir y ffeiliau gorffenedig
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf

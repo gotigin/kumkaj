@@ -346,6 +346,8 @@ app_template_skip	දැනට මග හරින්න
 app_template_status	සේවාදායකය සූදානම් — සැකිල්ලක් ආයාත කරන්න, නැතහොත් මඟ හරින්න
 app_template_importing	{title} අයදුම් කරමින්...
 app_template_downloading	සැකිල්ල බාගත වෙමින්…
+app_template_download_progress	බාගත වෙමින්… {p}% ({d} / {t})
+app_template_download_paused	නැවත ආරම්භ කිරීමට නැවත ආයාත කරන්න — සම්පූර්ණ ගොනු තබා ගනී
 app_template_public_hdr	පොදු සැකිලි
 app_template_private_hdr	පුද්ගලික සැකිල්ල
 app_template_public_hint	පොදු ලැයිස්තුව පූරණය කිරීමට මෙම කොටස විවෘත කරන්න (එක් වරක් අන්තර්ජාලය අවශ්‍යයි).
@@ -626,6 +628,7 @@ choose_device_use	සේවාදායකය හෝ සේවාලාභිය
 paired_note	යුගල කර ඇත. විකිණීමට අගුලු හරින්න, නැතහොත් නවතම දේ සඳහා නැවුම් කරන්න.
 last_update_at	අවසාන යාවත්කාලීනය: {time}.
 pair_intro	සේවාදායකය සොයන්න, නැතහොත් එහි ලිපිනය සහ යුගල කිරීමේ කේතය ටයිප් කරන්න.
+pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
 queue_waiting	සාප්පුව වෙත ළඟා වීමට රැඳී සිටීම ({n}):
 queue_tries	{n} වරක් උත්සාහ කළා · අවසාන පිළිතුර: {e}
 save_backup_copy	උපස්ථ පිටපතක් සුරකින්න...
@@ -1266,6 +1269,8 @@ taxable_value	බදු ගෙවිය හැකි වටිනාකම
 gst_inside_price_note	({tax} ඇතුළුව)
 start_with_template	අපගේ මෙනු ආකෘතියෙන් ආරම්භ කරන්න
 template_heading	අපගේ මෙනු ආකෘතිය
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf
 template_info	{c} ප්‍රවර්ග සහ ඡායාරූප සහිත {d} කෑම වර්ග, එකතු කිරීමට සූදානම්. මිල ගණන් රුපියල් 0 කින් ආරම්භ වේ — පසුව ඔබට සකසන්න.
 template_import	සම්පූර්ණ අච්චුව ආයාත කරන්න
 template_confirm	ඒවායේ ප්‍රවර්ග සමඟ {d} කෑම එකතු කරන්නද? ඔබට දැනටමත් තිබෙන කෑම වර්ග එලෙසම පවතී.
@@ -1363,7 +1368,3 @@ recent_changes	මෑත වෙනස්කම්
 lane_declared_label	බදු ඉන්වොයිසිය
 lane_owner_label	මුදල් සංදේශය
 money_lane_bill	ආරාධිත අමුත්තන්ගේ බිල්පත: {lane}
-app_template_download_progress	බාගත වෙමින්… {p}% ({d} / {t})
-app_template_download_paused	නැවත ආරම්භ කිරීමට නැවත ආයාත කරන්න — සම්පූර්ණ ගොනු තබා ගනී
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf

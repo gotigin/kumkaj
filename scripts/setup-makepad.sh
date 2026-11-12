@@ -74,6 +74,8 @@ PATCHES=(
   text_flow_paragraph_align         # RTL prose alignment
   text_input_label_align_pub        # RTL input alignment
   text_flow_selection               # selectable text: opaque band, owns the drag
+  text_flow_selection_utf8_range    # get_text_for_range clamps to UTF-8 char boundaries
+  text_flow_selection_gestures      # leaf can defer gestures to document-selectable View
   markdown_selectable_interactive  # Markdown is_interactive when selectable (sites + WrapLabel hits)
   text_flow_touch_scroll            # Android/touch: swipe scrolls; long-press selects (WrapLabel)
   text_input_touch_scroll           # Android/touch: swipe over fields scrolls page; long-press selects (PIN / pair)
@@ -124,6 +126,16 @@ PATCHES=(
   touch_scroll_slop                 # scroll views + PortalList take a finger only past 8 px (2 px / 5 px cancelled taps)
   widget_tree_name_index            # cold path lookups via a name index; remembered answers re-validated (no tree walk per lookup)
   android_jni_detach_on_exit        # Android: a native thread attach_jni_env attached detaches at exit (ART aborted on worker exit)
+  widget_steals_document_selection  # Button/TextInput/HtmlLink block page select; Labels/Images do not
+  # After every other view.rs patch (press_capture_cancel, mouse_cursor_state, …).
+  view_document_selection           # ScrollYView selectable: continuous select across Markdown islands
+  view_document_chrome              # PageUp/Down/Home/End/Space + context-menu focus; Button-only select steal
+  view_document_column_lock         # Drag-select locks to the start leaf's x-band (side cards / section bands)
+  view_document_column_lock_narrow_only # Column-lock only narrow side props — not feature/FAQ grid cards
+  view_document_select_all_leaves   # Select all: Markdown own-text leaves (not View-delegated card roots)
+  view_document_wheel_during_select # Mouse drag-select: Empty blocks page-drag; wheel applied manually
+  text_flow_selection_all_sticky    # Select all sticks across redraw (tracker refill in end())
+  button_pub_draw_text              # Button.draw_text public for host recolour (sticky nav active)
 )
 for name in "${PATCHES[@]}"; do
   patch -p1 --forward --no-backup-if-mismatch --quiet -d "$VENDOR" \

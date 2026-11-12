@@ -1,0 +1,41 @@
+--- a/widgets/src/view.rs
++++ b/widgets/src/view.rs
+@@ -1428,31 +1428,16 @@
+         rect.pos.x < x1 + slop && rect.pos.x + rect.size.x > x0 - slop
+     }
+ 
+-    /// Lock drag-select to a reading column. Full-bleed headings (Fill across
+-    /// the Wrap) must not lock the whole page width — that pulls side cards
+-    /// (order / KOT / floor) into the same column and makes “How a service
+-    /// runs” → step 1 feel unselectable.
++    /// Column lock disabled. Any x-band heuristic made identical feature/FAQ
++    /// cards and neighbor copy inconsistently selectable — unacceptable for
++    /// document chrome. Reading-order DFS alone; side-by-side props select in
++    /// tree order rather than skipping whole cards.
+     fn lock_selection_column_at(&mut self, cx: &Cx, abs: DVec2, leaf: &WidgetRef) {
+-        let Some(rect) = Self::leaf_rect(cx, leaf) else {
+-            self.selection_column = None;
+-            return;
+-        };
+-        let view_w = if self.area.is_valid(cx) {
+-            self.area.rect(cx).size.x
+-        } else {
+-            rect.size.x
+-        };
+-        if rect.size.x > (view_w * 0.55).max(1.0) {
+-            let band = (rect.size.x * 0.42).clamp(260.0, 560.0);
+-            let mut x0 = abs.x - band * 0.5;
+-            let mut x1 = abs.x + band * 0.5;
+-            x0 = x0.clamp(rect.pos.x, rect.pos.x + rect.size.x);
+-            x1 = x1.clamp(rect.pos.x, rect.pos.x + rect.size.x);
+-            if x1 - x0 < 120.0 {
+-                x0 = rect.pos.x;
+-                x1 = (rect.pos.x + band).min(rect.pos.x + rect.size.x);
+-            }
+-            self.selection_column = Some((x0, x1));
+-        } else {
+-            self.selection_column = Some((rect.pos.x, rect.pos.x + rect.size.x));
+-        }
++        let _ = (cx, abs, leaf);
++        self.selection_column = None;
+     }

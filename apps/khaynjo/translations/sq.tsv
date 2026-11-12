@@ -346,6 +346,8 @@ app_template_skip	Anashkalo për tani
 app_template_status	Serveri është gati — importoni një shabllon ose kaloni
 app_template_importing	Po zbatohet {title}…
 app_template_downloading	Po shkarkohet shablloni…
+app_template_download_progress	Po shkarkohet… {p}% ({d} / {t})
+app_template_download_paused	Importo përsëri për të vazhduar — skedarët e përfunduar ruhen
 app_template_public_hdr	Shabllone publike
 app_template_private_hdr	Shabllon privat
 app_template_public_hint	Hapni këtë seksion për të ngarkuar listën publike (duhet internet një herë).
@@ -626,6 +628,7 @@ choose_device_use	Zgjidhni Server ose Terminal.
 paired_note	I çiftuar. Zhbllokoni për të shitur, ose Rifresko për të fundit.
 last_update_at	Përditësimi i fundit: {time}.
 pair_intro	Gjeni serverin, ose shkruani adresën dhe kodin e çiftimit.
+pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
 queue_waiting	Në pritje për të arritur dyqanin ({n}):
 queue_tries	U provua {n} herë · përgjigjja e fundit: {e}
 save_backup_copy	Ruaj një kopje rezervë…
@@ -1266,6 +1269,8 @@ taxable_value	Vlera e tatueshme
 gst_inside_price_note	({tax} i përfshirë)
 start_with_template	Fillo me shabllonin tonë të menusë
 template_heading	Shablloni ynë i menusë
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf
 template_info	{c} kategori dhe {d} pjata me foto, gati për t’u shtuar. Çmimet fillojnë nga ₹0 — vendosni tuajat pastaj.
 template_import	Importo shabllonin e plotë
 template_confirm	Të shtohen {d} pjata me kategoritë e tyre? Pjatat që i keni tashmë qëndrojnë siç janë.
@@ -1363,7 +1368,3 @@ recent_changes	Ndryshimet e fundit
 lane_declared_label	Fatura tatimore
 lane_owner_label	Dëftesë me para
 money_lane_bill	Fatura: {lane}
-app_template_download_progress	Po shkarkohet… {p}% ({d} / {t})
-app_template_download_paused	Importo përsëri për të vazhduar — skedarët e përfunduar ruhen
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf

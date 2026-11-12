@@ -346,6 +346,8 @@ app_template_skip	後ほどスキップします
 app_template_status	サーバーの準備完了 — テンプレートを取り込むか、スキップしてください
 app_template_importing	{title} を適用中…
 app_template_downloading	テンプレートをダウンロード中…
+app_template_download_progress	ダウンロード中… {p}% ({d} / {t})
+app_template_download_paused	もう一度インポートすると再開します — 完了したファイルは保持されます
 app_template_public_hdr	公開テンプレート
 app_template_private_hdr	プライベートテンプレート
 app_template_public_hint	公開一覧を読み込むには、このセクションを開いてください（初回のみインターネットが必要）。
@@ -626,6 +628,7 @@ choose_device_use	このデバイスの使い方を選んでください。
 paired_note	ペアリング済み。ロック解除して販売するか、更新で店の最新情報を取得します。
 last_update_at	店からの最終更新: {time}。
 pair_intro	サーバーを探すか、アドレスとペアリングコードを入力してください。
+pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
 queue_waiting	店への送信待ち（{n}）:
 queue_tries	{n} 回試行 · 最後の応答：{e}
 save_backup_copy	バックアップのコピーを保存…
@@ -1266,6 +1269,8 @@ taxable_value	課税対象額
 gst_inside_price_note	（{tax}込み）
 start_with_template	メニューのテンプレートで始める
 template_heading	メニューのテンプレート
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf
 template_info	{c} カテゴリーと写真付き {d} 品を追加できます。価格は ₹0 から、後で設定。
 template_import	テンプレートを全部取り込む
 template_confirm	{d} 品をカテゴリーごと追加しますか？既存の料理はそのままです。
@@ -1363,7 +1368,3 @@ recent_changes	最近の変更
 lane_declared_label	税金請求書
 lane_owner_label	現金メモ
 money_lane_bill	請求書：{lane}
-app_template_download_progress	ダウンロード中… {p}% ({d} / {t})
-app_template_download_paused	もう一度インポートすると再開します — 完了したファイルは保持されます
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf

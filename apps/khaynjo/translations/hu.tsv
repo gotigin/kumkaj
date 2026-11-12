@@ -346,6 +346,8 @@ app_template_skip	Most hagyd ki
 app_template_status	A szerver kész — importáljon sablont, vagy hagyja ki
 app_template_importing	{title} alkalmazása…
 app_template_downloading	Sablon letöltése…
+app_template_download_progress	Letöltés… {p}% ({d} / {t})
+app_template_download_paused	A folytatáshoz importáljon újra — a kész fájlok megmaradnak
 app_template_public_hdr	Nyilvános sablonok
 app_template_private_hdr	Privát sablon
 app_template_public_hint	Nyissa meg ezt a részt a nyilvános lista betöltéséhez (egyszer internet kell).
@@ -626,6 +628,7 @@ choose_device_use	Válassza a Szerver vagy a Kliens lehetőséget.
 paired_note	Párosítva. Oldja fel az eladáshoz, vagy frissítse a legújabbat.
 last_update_at	Utolsó frissítés: {time}.
 pair_intro	Keresse meg a szervert, vagy írja be a címét és a párosítási kódot.
+pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
 queue_waiting	Várakozás az üzletbe ({n}):
 queue_tries	{n} alkalommal próbálva · utolsó válasz: {e}
 save_backup_copy	Biztonsági másolat mentése…
@@ -1266,6 +1269,8 @@ taxable_value	Adóköteles érték
 gst_inside_price_note	({tax} beleértve)
 start_with_template	Kezdje menüsablonunkkal
 template_heading	Menüsablonunk
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf
 template_info	{c} kategóriák és {d} ételek fotókkal, készen a hozzáadásra. Az árak 0 ₹-tól kezdődnek – állítsa be később.
 template_import	Teljes sablon importálása
 template_confirm	Hozzáad {d} ételeket a kategóriáikkal? A már elkészített ételek olyanok maradnak, amilyenek.
@@ -1363,7 +1368,3 @@ recent_changes	Legutóbbi változások
 lane_declared_label	Adószámla
 lane_owner_label	Készpénzes feljegyzés
 money_lane_bill	Számla: {lane}
-app_template_download_progress	Letöltés… {p}% ({d} / {t})
-app_template_download_paused	A folytatáshoz importáljon újra — a kész fájlok megmaradnak
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf

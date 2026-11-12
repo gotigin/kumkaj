@@ -346,6 +346,8 @@ app_template_skip	Hopp over nå
 app_template_status	Server klar — importer en mal, eller hopp over
 app_template_importing	Bruker {title}…
 app_template_downloading	Laster ned mal…
+app_template_download_progress	Laster ned… {p}% ({d} / {t})
+app_template_download_paused	Importer på nytt for å fortsette — ferdige filer beholdes
 app_template_public_hdr	Offentlige maler
 app_template_private_hdr	Privat mal
 app_template_public_hint	Åpne denne delen for å laste inn den offentlige listen (trenger internett én gang).
@@ -626,6 +628,7 @@ choose_device_use	Velg Server eller Klient.
 paired_note	Paret. Lås opp for å selge, eller Oppdater for det siste.
 last_update_at	Siste oppdatering: {time}.
 pair_intro	Finn serveren, eller skriv adressen og paringskoden.
+pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
 queue_waiting	Venter på å nå butikken ({n}):
 queue_tries	Prøvd {n} ganger · siste svar: {e}
 save_backup_copy	Lagre en sikkerhetskopi…
@@ -1266,6 +1269,8 @@ taxable_value	Avgiftspliktig verdi
 gst_inside_price_note	({tax} inkludert)
 start_with_template	Start med menymalven vår
 template_heading	Menymalven vår
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf
 template_info	{c} kategorier og {d} retter med bilder, klare til å legge til. Prisene starter på ₹0 — sett dine etterpå.
 template_import	Importer hele malen
 template_confirm	Legge til {d} retter med kategoriene sine? Retter du allerede har blir som de er.
@@ -1363,7 +1368,3 @@ recent_changes	Nylige endringer
 lane_declared_label	Mva-faktura
 lane_owner_label	Kontantnota
 money_lane_bill	Regning: {lane}
-app_template_download_progress	Laster ned… {p}% ({d} / {t})
-app_template_download_paused	Importer på nytt for å fortsette — ferdige filer beholdes
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf

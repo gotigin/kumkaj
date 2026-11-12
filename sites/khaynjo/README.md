@@ -78,6 +78,36 @@ cargo test -p khaynjo-site                      # 199 rows, photos exist, no orp
 
 Photos load per page; reviewed rejects and sources are in
 `resources/dishes/world/SOURCES.md`. Details: `apps/khaynjo/docs/KHAYNJO_WEBSITE.md` §7.
+**185 / 199** countries have a WebP; the other **14** show “Photo coming”
+(list under § Remaining).
+
+## Remaining (do next)
+
+1. **Site text selection** — disabled on purpose. Document-host select
+   across Markdown islands and per-card `selection_gestures` both
+   selected some cards and skipped neighbors (feature grid / KOT).
+   Keep `selectable: false` in `src/ui.rs` until one approach works on
+   every visible card. Canonical note: `docs/DESIGN.md` § Text selection.
+2. **14 world-shelf photos** — need a free-license *plated* dish (not
+   people / plants / wrong cuisine). Then update research metadata and
+   re-run `build-world-shelf.sh`:
+
+   | Country | Dish |
+   |---|---|
+   | Antigua and Barbuda | Fungee and pepperpot |
+   | Barbados | Cou-cou and flying fish |
+   | Djibouti | Skoudehkaris |
+   | Dominica | Mountain chicken |
+   | Marshall Islands | Māāj |
+   | Micronesia | Kon |
+   | Niue | Takihi |
+   | Oman | Shuwa |
+   | Palau | Demok |
+   | Saint Kitts and Nevis | Stewed saltfish |
+   | Saint Lucia | Green fig and saltfish |
+   | Samoa | Panipopo |
+   | Seychelles | Octopus curry |
+   | Tuvalu | Pulaka |
 
 **Markdown hides nothing:** vendored Makepad `Markdown` ignores `set_visible`.
 Any `Small` / `Body` / `Lede` that a layout rule hides sits inside a

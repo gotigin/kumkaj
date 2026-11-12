@@ -346,6 +346,8 @@ app_template_skip	Yeqa okwamanje
 app_template_status	Iseva ilungile — ngenisa isifanekiso, noma weqe
 app_template_importing	Ifaka {title}…
 app_template_downloading	Isifanekiso siyalandwa…
+app_template_download_progress	Iyalanda… {p}% ({d} / {t})
+app_template_download_paused	Ngenisa futhi ukuze uqhubeke — amafayela aqediwe ayagcinwa
 app_template_public_hdr	Izifanekiso zomphakathi
 app_template_private_hdr	Isifanekiso sangasese
 app_template_public_hint	Vula lesi sigaba ukuze ulayishe uhlu lomphakathi (kudingeka i-inthanethi kanye).
@@ -626,6 +628,7 @@ choose_device_use	Khetha Iseva noma Iklayenti.
 paired_note	Kubhanqiwe. Vula ukuze udayise, noma Vuselela ukuze uthole okwakamuva.
 last_update_at	Isibuyekezo sokugcina: {time}.
 pair_intro	Thola iseva, noma thayipha ikheli layo kanye nekhodi yokumatanisa.
+pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
 queue_waiting	Ilinde ukufinyelela esitolo ({n}):
 queue_tries	Izanywe izikhathi {n} · impendulo yokugcina: {e}
 save_backup_copy	Londoloza ikhophi eyisipele...
@@ -1266,6 +1269,8 @@ taxable_value	Inani elikhokhiswa intela
 gst_inside_price_note	({tax} kuhlanganisiwe)
 start_with_template	Qala ngesifanekiso sethu semenyu
 template_heading	Isifanekiso sethu semenyu
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf
 template_info	{c} izigaba kanye {d} izitsha ezinezithombe, ezilungele ukungezwa. Izintengo ziqala ku- ₹0 — setha eyakho ngemva kwalokho.
 template_import	Ngenisa isifanekiso esiphelele
 template_confirm	Engeza {d} izitsha ngezigaba zazo? Izitsha osuvele unazo hlala njengoba zinjalo.
@@ -1363,7 +1368,3 @@ recent_changes	Izinguquko zakamuva
 lane_declared_label	I-invoyisi yentela
 lane_owner_label	Imemo yemali
 money_lane_bill	Ibhili yesivakashi sesivakashi: {lane}
-app_template_download_progress	Iyalanda… {p}% ({d} / {t})
-app_template_download_paused	Ngenisa futhi ukuze uqhubeke — amafayela aqediwe ayagcinwa
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf

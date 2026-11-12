@@ -346,6 +346,8 @@ app_template_skip	Şimdilik atla
 app_template_status	Sunucu hazır — bir şablon içe aktarın veya atlayın
 app_template_importing	{title} uygulanıyor…
 app_template_downloading	Şablon indiriliyor…
+app_template_download_progress	İndiriliyor… {p}% ({d} / {t})
+app_template_download_paused	Devam etmek için yeniden içe aktarın — tamamlanan dosyalar saklanır
 app_template_public_hdr	Herkese açık şablonlar
 app_template_private_hdr	Özel şablon
 app_template_public_hint	Herkese açık listeyi yüklemek için bu bölümü açın (bir kez internet gerekir).
@@ -626,6 +628,7 @@ choose_device_use	Bu cihazın nasıl kullanılacağını seçin.
 paired_note	Eşleşti. Satış için kilidi açın ya da dükkândan en güncel hâli almak için Yenile'ye dokunun.
 last_update_at	Dükkândan son güncelleme: {time}.
 pair_intro	Sunucuyu bulun ya da adresini ve eşleştirme kodunu yazın.
+pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
 queue_waiting	Dükkâna ulaşmayı bekleyenler ({n}):
 queue_tries	{n} deneme · son yanıt: {e}
 save_backup_copy	Yedek kopyasını kaydet…
@@ -1266,6 +1269,8 @@ taxable_value	Vergiye tabi tutar
 gst_inside_price_note	({tax} dahil)
 start_with_template	Menü şablonumuzla başla
 template_heading	Menü şablonumuz
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf
 template_info	{c} kategori ve fotoğraflı {d} yemek eklenmeye hazır. Fiyat ₹0 — sonra kendi fiyatınızı girin.
 template_import	Şablonun tamamını içe aktar
 template_confirm	{d} yemek kategorileriyle eklensin mi? Mevcut yemekleriniz olduğu gibi kalır.
@@ -1363,7 +1368,3 @@ recent_changes	Son değişiklikler
 lane_declared_label	Vergi faturası
 lane_owner_label	Nakit fiş
 money_lane_bill	Fatura: {lane}
-app_template_download_progress	İndiriliyor… {p}% ({d} / {t})
-app_template_download_paused	Devam etmek için yeniden içe aktarın — tamamlanan dosyalar saklanır
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf

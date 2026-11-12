@@ -4046,6 +4046,48 @@ script_mod! {
         }
     }
 
+    // Settings → Printers: name + per-printer how-the-job-is-sent (Down SegBtns).
+    mod.widgets.PrinterDeliveryListBase = #(PrinterDeliveryList::register_widget(vm))
+    mod.widgets.PrinterDeliveryList = set_type_default() do mod.widgets.PrinterDeliveryListBase{
+        width: Fill height: Fit
+        margin: Inset{top: 4. bottom: 4.}
+        list := PortalList{
+            width: Fill height: Fill
+            spacing: 12
+            drag_scrolling: false
+            bounce_at_start: false
+            bounce_at_end: false
+            capture_overload: false
+            scroll_bar: ScrollBar{bar_size: 0.}
+            Item := View{
+                width: Fill height: Fit
+                flow: Down spacing: 6
+                padding: Inset{bottom: 10.}
+                texture_caching: false
+                name := WrapLabel{
+                    width: Fill
+                    body: " "
+                    font_color: #x260B08
+                    font_size: 14.
+                }
+                View{width: Fill height: Fit flow: Down spacing: 6
+                    View{width: Fill height: Fit flow: Overlay
+                        deliv_os := SegBtn{text: "OS document (system spooler)"}
+                        deliv_os_on := SegBtnOn{text: "OS document (system spooler)" visible: false}
+                    }
+                    View{width: Fill height: Fit flow: Overlay
+                        deliv_raw := SegBtn{text: "Raw bytes to device"}
+                        deliv_raw_on := SegBtnOn{text: "Raw bytes to device" visible: false}
+                    }
+                    View{width: Fill height: Fit flow: Overlay
+                        deliv_escpos := SegBtn{text: "ESC/POS thermal commands"}
+                        deliv_escpos_on := SegBtnOn{text: "ESC/POS thermal commands" visible: false}
+                    }
+                }
+            }
+        }
+    }
+
     mod.widgets.CurrencyListBase = #(CurrencyList::register_widget(vm))
     mod.widgets.CurrencyList = set_type_default() do mod.widgets.CurrencyListBase{
         width: Fill height: Fit
@@ -6076,33 +6118,39 @@ script_mod! {
                                     font_color: #x6B4A3F
                                     font_size: 13.
                                 }
-                                // No typing IPs: the shop's server answers on this Wi‑Fi.
-                                ActionStack{
-                                    client_find_btn := StackPrimaryBtn{text: "Find the shop's server"}
-                                    client_find_cancel := StackLightBtn{text: "Cancel" visible: false}
+                                // First pair / re-pair after Forget. Hidden while already
+                                // paired (FieldInput ignores set_visible — wrap the block).
+                                client_pair_new_block := View{
+                                    width: Fill height: Fit
+                                    flow: Down spacing: 12
+                                    // No typing IPs: the shop's server answers on this Wi‑Fi.
+                                    ActionStack{
+                                        client_find_btn := StackPrimaryBtn{text: "Find the shop's server"}
+                                        client_find_cancel := StackLightBtn{text: "Cancel" visible: false}
+                                    }
+                                    client_found_label := WrapLabel{
+                                        body: " "
+                                        font_color: #x6B4A3F
+                                        font_size: 13.
+                                    }
+                                    client_found_list := mod.widgets.FoundServerList{}
+                                    client_host_input := FieldInput{empty_text: "Server IP (e.g. 192.168.1.10)"}
+                                    // 6-digit shop code — numeric pad on Android (same idea as Lock PIN).
+                                    client_code_input := FieldInput{
+                                        empty_text: "Pairing code"
+                                        is_numeric_only: true
+                                    }
+                                    // How the shop's server lists this device (Forget picks it by this).
+                                    client_name_input := FieldInput{empty_text: "This device's name"}
+                                    client_pair_btn := PinOkKey{text: "Pair now"}
+                                    client_pair_progress := WrapLabel{
+                                        visible: false
+                                        body: "Connecting…"
+                                        font_color: #x260B08
+                                        font_size: 15.
+                                    }
+                                    client_pair_cancel := QuietFitBtn{text: "Cancel" visible: false}
                                 }
-                                client_found_label := WrapLabel{
-                                    body: " "
-                                    font_color: #x6B4A3F
-                                    font_size: 13.
-                                }
-                                client_found_list := mod.widgets.FoundServerList{}
-                                client_host_input := FieldInput{empty_text: "Server IP (e.g. 192.168.1.10)"}
-                                // 6-digit shop code — numeric pad on Android (same idea as Lock PIN).
-                                client_code_input := FieldInput{
-                                    empty_text: "Pairing code"
-                                    is_numeric_only: true
-                                }
-                                // How the shop's server lists this device (Forget picks it by this).
-                                client_name_input := FieldInput{empty_text: "This device's name"}
-                                client_pair_btn := PinOkKey{text: "Pair now"}
-                                client_pair_progress := WrapLabel{
-                                    visible: false
-                                    body: "Connecting…"
-                                    font_color: #x260B08
-                                    font_size: 15.
-                                }
-                                client_pair_cancel := QuietFitBtn{text: "Cancel" visible: false}
                                 client_sync_btn := NavBtn{text: "Refresh from shop"}
                                 client_queue_label := mod.widgets.ReportText{}
                                 client_clear_refused := NavBtn{text: "Checked — clear this list" visible: false}
@@ -9381,7 +9429,7 @@ sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font
                                     visible: false
                                     FormCard{
                                     printers_panel_help := InfoHelp{
-                                        tip: "Find printers, then open Printers for a test page and check the device(s) to try. Print a test page goes only to those. Assign bill printers under Bill & KOT format → Bill. Assign kitchen printers under Kitchen → Kitchen stations (add a station first — Find does not create stations)."
+                                        tip: "Find printers. Under each name pick how that device is sent jobs (OS document, raw bytes, or ESC/POS) — bill and kitchen tickets may use any printer. Then open Printers for a test page and Print a test page. Assign bill printers under Bill & KOT format → Bill; kitchen under Kitchen → Kitchen stations."
                                     }
                                     View{width: Fit height: Fit flow: Overlay visible: false
                                         kot_print_off := ChipBtn{text: "Auto-print kitchen tickets: Off"}
@@ -9402,7 +9450,10 @@ sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font
                                         font_color: #x6B4A3F
                                         font_size: 12.
                                     }
-                                    printers_pool_label := mod.widgets.ReportText{}
+                                    // Legacy name list — replaced by PrinterDeliveryList
+                                    // (each printer shows how the job is sent).
+                                    printers_pool_label := mod.widgets.ReportText{visible: false}
+                                    printers_delivery_list := mod.widgets.PrinterDeliveryList{}
                                     // Legacy — Find used to mirror the pool in a second list.
                                     printers_found_list := mod.widgets.ReportText{visible: false}
                                     printers_pool_help := InfoHelp{tip: " " visible: false}
@@ -9773,7 +9824,7 @@ sibling_pickers_heading := WrapLabel{body: "Areas · stations · tax rates" font
                                 }
                                 View{width: Fill height: Fit flow: Right spacing: 0 align: Align{y: 0.5}
                                     h_bill_delivery := WrapLabel{width: Fit body: "How the job is sent" font_color: #x260B08 font_size: 14.}
-                                    bill_delivery_help := InfoHelp{tip: "OS document, raw bytes, or ESC/POS for the bill. The kitchen ticket has its own. Either can go to any printer Find has saved."}
+                                    bill_delivery_help := InfoHelp{tip: "Fallback for printers that have no send method yet. Prefer Settings → Printers — each device has its own. Bill and kitchen tickets may use any printer."}
                                 }
                                 View{width: Fill height: Fit flow: Down spacing: 6
                                     View{width: Fill height: Fit flow: Overlay
@@ -10317,7 +10368,7 @@ View{width: Fill height: Fit flow: Right spacing: 8 align: Align{y: 0.5}
                                 }
                                 View{width: Fill height: Fit flow: Right spacing: 0 align: Align{y: 0.5}
                                     h_kot_delivery := WrapLabel{width: Fit body: "How the job is sent" font_color: #x260B08 font_size: 14.}
-                                    kot_delivery_help := InfoHelp{tip: "OS document, raw bytes, or ESC/POS for the kitchen ticket. The bill has its own. Either can go to any printer Find has saved."}
+                                    kot_delivery_help := InfoHelp{tip: "Fallback for printers that have no send method yet. Prefer Settings → Printers — each device has its own. Bill and kitchen tickets may use any printer."}
                                 }
                                 View{width: Fill height: Fit flow: Down spacing: 6
                                     View{width: Fill height: Fit flow: Overlay

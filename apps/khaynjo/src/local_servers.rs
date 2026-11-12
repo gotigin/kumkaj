@@ -83,6 +83,44 @@ pub fn save_app_language(base: &Path, follow_platform: bool, language: &str) -> 
     fs::write(app_language_path(base), raw).map_err(|e| e.to_string())
 }
 
+/// Soft hint only: which mode this install used last (`server` / `client`).
+/// Lives beside `app_language.json` — not inside either books file — so opening
+/// Server never implies Client pairing is gone, and opening Client never implies
+/// local Server books are gone. Both slots stay on disk independently.
+#[derive(Clone, Debug, Serialize, Deserialize)]
+struct LastSessionModePref {
+    mode: String,
+}
+
+fn last_session_mode_path(base: &Path) -> PathBuf {
+    base.join("last_session_mode.json")
+}
+
+/// Last Server/Client *session* on this install, if any.
+pub fn load_last_session_mode(base: &Path) -> Option<String> {
+    let raw = fs::read_to_string(last_session_mode_path(base)).ok()?;
+    let pref: LastSessionModePref = serde_json::from_str(&raw).ok()?;
+    match pref.mode.trim() {
+        "server" | "client" => Some(pref.mode.trim().to_string()),
+        _ => None,
+    }
+}
+
+/// Remember which mode was opened (hint for DeviceSetup status — both modes
+/// stay available; this does not lock the device to one role).
+pub fn save_last_session_mode(base: &Path, mode: &str) -> Result<(), String> {
+    let mode = match mode.trim() {
+        "server" | "client" => mode.trim(),
+        _ => return Err("last session mode must be server or client".into()),
+    };
+    fs::create_dir_all(base).map_err(|e| e.to_string())?;
+    let pref = LastSessionModePref {
+        mode: mode.into(),
+    };
+    let raw = serde_json::to_string_pretty(&pref).map_err(|e| e.to_string())?;
+    fs::write(last_session_mode_path(base), raw).map_err(|e| e.to_string())
+}
+
 fn load_registry(base: &Path) -> Result<RegistryFile, String> {
     let path = registry_path(base);
     if !path.exists() {
@@ -366,6 +404,51 @@ mod tests {
         // Corrupt file reads as "no choice" instead of failing boot.
         fs::write(app_language_path(&base), "not json").unwrap();
         assert!(load_app_language(&base).is_none());
+        let _ = fs::remove_dir_all(base);
+    }
+
+    #[test]
+    fn last_session_mode_is_soft_hint_not_a_lock() {
+        let base = temp_base();
+        assert!(load_last_session_mode(&base).is_none());
+        save_last_session_mode(&base, "client").unwrap();
+        assert_eq!(load_last_session_mode(&base).as_deref(), Some("client"));
+        save_last_session_mode(&base, "server").unwrap();
+        assert_eq!(load_last_session_mode(&base).as_deref(), Some("server"));
+        assert!(save_last_session_mode(&base, "owner").is_err());
+        fs::write(last_session_mode_path(&base), "not json").unwrap();
+        assert!(load_last_session_mode(&base).is_none());
+        let _ = fs::remove_dir_all(base);
+    }
+
+    #[test]
+    fn server_and_client_slots_coexist_on_one_install() {
+        let base = temp_base();
+        let (info, server) = create_local_server(&base, "Desk").unwrap();
+        server
+            .set_device_role("server")
+            .unwrap();
+        drop(server);
+        let client = open_client_store(&base).unwrap();
+        client.prepare_as_client_terminal().unwrap();
+        client.set_device_role("client").unwrap();
+        client
+            .set_client_device_pairing("http://192.168.1.10:7847", "tok-1")
+            .unwrap();
+        client.set_paired_server_id("shop-a").unwrap();
+        assert!(client.client_resume_ok().unwrap());
+        drop(client);
+        // Re-open Server books: Client pairing must still be on disk.
+        let server = open_server(&base, &info.id).unwrap();
+        assert_eq!(server.device_role().unwrap().as_deref(), Some("server"));
+        drop(server);
+        let client = open_client_store(&base).unwrap();
+        assert!(client.client_resume_ok().unwrap());
+        assert_eq!(
+            client.server_url().unwrap().as_deref(),
+            Some("http://192.168.1.10:7847")
+        );
+        assert_eq!(client.paired_server_id().unwrap().as_deref(), Some("shop-a"));
         let _ = fs::remove_dir_all(base);
     }
 

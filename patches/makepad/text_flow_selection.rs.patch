@@ -75,9 +75,9 @@
                      self.is_selecting = true;
 +                    self.selection_committed = false;
 +                    self.select_down_abs = fe.abs;
-+                    // Do not block / promote yet: a sideways drag should pan an
-+                    // ancestor ScrollX (desk panes). Vertical / text-direction
-+                    // drags commit selection on the first meaningful move.
++                    // Do not block / promote yet. Mouse commits on the first
++                    // meaningful move in any direction (horizontal is how you
++                    // select along a line on sites and display copy).
                      self.redraw(cx);
                  }
              }
@@ -87,13 +87,8 @@
 +                    if delta.x.abs() <= 6.0 && delta.y.abs() <= 6.0 {
 +                        return;
 +                    }
-+                    // Sideways pan wins — leave scrolling to ancestor ScrollX.
-+                    if delta.x.abs() > delta.y.abs() {
-+                        self.is_selecting = false;
-+                        self.selection_cursor = self.selection_anchor;
-+                        self.redraw(cx);
-+                        return;
-+                    }
++                    // Mouse: any direction past slop selects (including along
++                    // the line). Desk ScrollX pans from whitespace / scrollbar.
 +                    self.selection_committed = true;
 +                }
 +                // Own the gesture: block page drag-scroll and take capture
@@ -148,3 +143,28 @@
      /// Selection anchor rect for clipboard/action popups.
      fn selection_clipboard_rect(&self, cx: &Cx) -> Rect {
          let start = self.selection_anchor.min(self.selection_cursor);
+@@ -1402,6 +1402,11 @@
+         cx.begin_turtle(walk, self.layout);
+         self.draw_state.set(DrawState::Drawing);
+         self.draw_block.append_to_draw_call(cx);
++        // Seed selection behind glyphs (same pattern as TextInput). Without
++        // this, end()'s draw_selection_rects appends after the text flush and
++        // an opaque band covers the ink.
++        self.draw_selection.append_to_draw_call(cx);
+         self.draw_text.begin_deferred_slug_flush();
+         self.clear_stacks();
+         self.lines_drawn = 0;
+@@ -1502,9 +1507,10 @@
+         self.font_sizes.push(self.font_size * (scale as f32));
+     }
+ 
+     pub fn end(&mut self, cx: &mut Cx2d) {
+-        self.draw_text.end_deferred_slug_flush(cx);
+-
+-        // Draw selection highlight before finishing the turtle
++        // Band first, then flush glyphs — keeps opaque selection under ink
++        // even if the seeded draw-call batch does not win the append.
+         self.draw_selection_rects(cx);
++        self.draw_text.end_deferred_slug_flush(cx);
+ 
+         cx.end_turtle_with_area(&mut self.area);

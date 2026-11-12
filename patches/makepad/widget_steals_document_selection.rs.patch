@@ -1,0 +1,71 @@
+--- a/widgets/src/widget.rs
++++ b/widgets/src/widget.rs
+@@ -251,6 +251,14 @@
+         true
+     }
+ 
++    /// When true, a parent `View { selectable: true }` will not start document
++    /// text selection on a press over this widget. Default false — Labels and
++    /// Images stay `is_interactive` for hit search but must not block page
++    /// select. Buttons, text fields, and links override to true.
++    fn steals_document_selection(&self) -> bool {
++        false
++    }
++
+     fn widget(&self, cx: &Cx, path: &[LiveId]) -> WidgetRef {
+         let tree = cx.widget_tree();
+         let uid = self.widget_uid();
+@@ -927,6 +935,14 @@
+         } else {
+             false
+         }
++    }
++
++    pub fn steals_document_selection(&self) -> bool {
++        if let Some(inner) = self.0.borrow().as_ref() {
++            inner.widget.steals_document_selection()
++        } else {
++            false
++        }
+     }
+ 
+     pub fn selection_text_len(&self) -> usize {
+--- a/widgets/src/button.rs
++++ b/widgets/src/button.rs
+@@ -612,6 +612,10 @@
+ }
+ 
+ impl Widget for Button {
++    fn steals_document_selection(&self) -> bool {
++        true
++    }
++
+     fn script_call(
+         &mut self,
+         vm: &mut ScriptVm,
+--- a/widgets/src/text_input.rs
++++ b/widgets/src/text_input.rs
+@@ -2227,6 +2227,10 @@
+ }
+ 
+ impl Widget for TextInput {
++    fn steals_document_selection(&self) -> bool {
++        true
++    }
++
+     fn script_call(
+         &mut self,
+         vm: &mut ScriptVm,
+--- a/widgets/src/html.rs
++++ b/widgets/src/html.rs
+@@ -1112,6 +1112,10 @@
+ }
+ 
+ impl Widget for HtmlLink {
++    fn steals_document_selection(&self) -> bool {
++        true
++    }
++
+     fn handle_event(&mut self, cx: &mut Cx, event: &Event, scope: &mut Scope) {
+         if let Event::ClearHover = event {
+             self.animator_cut(cx, ids!(hover.off));

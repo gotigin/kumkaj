@@ -346,6 +346,8 @@ app_template_skip	ข้ามไปก่อน
 app_template_status	เซิร์ฟเวอร์พร้อมแล้ว — นำเข้าเทมเพลต หรือข้าม
 app_template_importing	กำลังใช้ {title}…
 app_template_downloading	กำลังดาวน์โหลดเทมเพลต…
+app_template_download_progress	กำลังดาวน์โหลด… {p}% ({d} / {t})
+app_template_download_paused	นำเข้าอีกครั้งเพื่อทำต่อ — ไฟล์ที่เสร็จแล้วจะถูกเก็บไว้
 app_template_public_hdr	เทมเพลตสาธารณะ
 app_template_private_hdr	เทมเพลตส่วนตัว
 app_template_public_hint	เปิดส่วนนี้เพื่อโหลดรายการสาธารณะ (ใช้อินเทอร์เน็ตครั้งเดียว)
@@ -626,6 +628,7 @@ choose_device_use	เลือกวิธีใช้อุปกรณ์น�
 paired_note	จับคู่แล้ว ปลดล็อกเพื่อขาย หรือรีเฟรชเพื่อดึงข้อมูลล่าสุดจากร้าน
 last_update_at	อัปเดตล่าสุดจากร้าน: {time}
 pair_intro	ค้นหาเซิร์ฟเวอร์ หรือพิมพ์ที่อยู่และรหัสจับคู่
+pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
 queue_waiting	รอส่งถึงร้าน ({n}):
 queue_tries	ลอง {n} ครั้ง · คำตอบล่าสุด: {e}
 save_backup_copy	บันทึกสำเนาข้อมูลสำรอง…
@@ -1266,6 +1269,8 @@ taxable_value	มูลค่าที่ต้องเสียภาษี
 gst_inside_price_note	(รวม{tax})
 start_with_template	เริ่มด้วยเทมเพลตเมนูของเรา
 template_heading	เทมเพลตเมนูของเรา
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf
 template_info	{c} หมวด และ {d} เมนูพร้อมรูป พร้อมเพิ่ม ราคาเริ่ม ₹0 — ตั้งราคาเองภายหลัง
 template_import	นำเข้าเทมเพลตทั้งหมด
 template_confirm	เพิ่ม {d} เมนูพร้อมหมวด? เมนูที่มีอยู่จะคงเดิม
@@ -1363,7 +1368,3 @@ recent_changes	การเปลี่ยนแปลงล่าสุด
 lane_declared_label	ใบกำกับภาษี
 lane_owner_label	เมโมเงินสด
 money_lane_bill	ใบแจ้งหนี้: {lane}
-app_template_download_progress	กำลังดาวน์โหลด… {p}% ({d} / {t})
-app_template_download_paused	นำเข้าอีกครั้งเพื่อทำต่อ — ไฟล์ที่เสร็จแล้วจะถูกเก็บไว้
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf

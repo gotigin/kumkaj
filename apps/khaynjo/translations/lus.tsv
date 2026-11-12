@@ -346,6 +346,8 @@ app_template_skip	Tunah kaltlang
 app_template_status	Server a inpeih — template import rawh, a nih loh pawhin kal pel rawh
 app_template_importing	{title} hman mek…
 app_template_downloading	Template download mek…
+app_template_download_progress	Download mek mek… {p}% ({d} / {t})
+app_template_download_paused	Chhunzawm leh turin import leh rawh — file zo tawh te chu vawn tlat a ni
 app_template_public_hdr	Mipui template-te
 app_template_private_hdr	Template inthup
 app_template_public_hint	Mipui list load nan he hmun hi hawng rawh (vawi khat internet a ngai).
@@ -626,6 +628,7 @@ choose_device_use	Server emaw Dawr dang thlang.
 paired_note	Pair a ni. Hawng la, zuar turin, emaw Thar leh, tawp ber atan.
 last_update_at	Thar leh tawp: {time}.
 pair_intro	Server zawng, emaw a address leh pair code ziak.
+pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
 queue_waiting	Dawr thlen nghak ({n}):
 queue_tries	Vawi {n} tih tawh · chhanna tawp: {e}
 save_backup_copy	Backup copy dah tha…
@@ -1266,6 +1269,8 @@ taxable_value	Chhiah man
 gst_inside_price_note	({tax} chhung)
 start_with_template	Kan menu template in tan
 template_heading	Kan menu template
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf
 template_info	Pawl {c} leh chaw {d} thlalak tel, telh turin inpe. Man chu ₹0 atangin a tan — nakinah i ta dah.
 template_import	Template kim lut
 template_confirm	Chaw {d} an pawl nen telh? I neih tawh chaw chu an nih dan a awm.
@@ -1363,7 +1368,3 @@ recent_changes	Thlak hnai
 lane_declared_label	Chhiah bill
 lane_owner_label	Sum lehkha
 money_lane_bill	Bill: {lane}
-app_template_download_progress	Download mek mek… {p}% ({d} / {t})
-app_template_download_paused	Chhunzawm leh turin import leh rawh — file zo tawh te chu vawn tlat a ni
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf

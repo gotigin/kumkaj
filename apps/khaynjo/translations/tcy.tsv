@@ -346,6 +346,8 @@ app_template_skip	ಇತ್ತೆ ಬುಡ್ಲೆ
 app_template_status	ಸರ್ವರ್ ತಯಾರ್ — ಒಂಜಿ ಟೆಂಪ್ಲೇಟ್ ಆಮದು ಮಲ್ಪುಲೆ, ಅತ್ತ್ಂಡ ಬುಡ್ಲೆ
 app_template_importing	{title} ಅನ್ವಯಿಸೊಂದುಲ್ಲೆ...
 app_template_downloading	ಟೆಂಪ್ಲೇಟ್ ಡೌನ್‌ಲೋಡ್ ಆವೊಂದುಂಡು…
+app_template_download_progress	ಡೌನ್‌ಲೋಡ್ ಆವೊಂದುಂಡು… {p}% ({d} / {t})
+app_template_download_paused	ಕೊರಿಯರೆ ಕುಡ ಆಮದು ಮಲ್ಪುಲೆ — ಮುಗಿನ ಫೈಲ್‌ಲು ಒರಿಪುಂಡು
 app_template_public_hdr	ಸಾರ್ವಜನಿಕ ಟೆಂಪ್ಲೇಟ್‌ಲು
 app_template_private_hdr	ಖಾಸಗಿ ಟೆಂಪ್ಲೇಟ್
 app_template_public_hint	ಸಾರ್ವಜನಿಕ ಪಟ್ಟಿನ್ ಲೋಡ್ ಮಲ್ಪೆರೆ ಈ ವಿಭಾಗೊನು ತೆರೆಲೆ (ಒರೊ ಇಂಟರ್ನೆಟ್ ಬೋಡು).
@@ -626,6 +628,7 @@ choose_device_use	ಸರ್ವರ್ ಅತ್ತ್ಂಡ ಕ್ಲೈಂಟ್
 paired_note	ಜೋಡಿಯಾದ್. ಮಾರಾಟ ಮಲ್ಪೆರೆ ಅನ್ಲಾಕ್ ಮಲ್ಪುಲೆ, ಅತ್ತ್ಂಡ ಇತ್ತೆದ ಮಾಹಿತಿಗ್ ರಿಫ್ರೆಶ್ ಮಲ್ಪುಲೆ.
 last_update_at	ಕಡೆತ ಅಪ್ಡೇಟ್: {time}.
 pair_intro	ಸರ್ವರ್ ನ್ ತೂಲೆ, ಅತ್ತ್ಂಡ ಅಯಿತ ವಿಳಾಸ ಬೊಕ್ಕ ಜೋಡಿ ಕೋಡ್ ನ್ ಟೈಪ್ ಮಲ್ಪುಲೆ.
+pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
 queue_waiting	ಅಂಗಡಿಗ್ ಪೋಯೆರೆ ಕಾತೊಂದುಲ್ಲೆ ({n}):
 queue_tries	{n} ಸರ್ತಿ ಪ್ರಯತ್ನ ಮಲ್ತುವ · ಕಡೆತ ಉತ್ತರ: {e}
 save_backup_copy	ಒಂಜಿ ಬ್ಯಾಕಪ್ ಪ್ರತಿನ್ ಉಳಿತಾಯ ಮಲ್ಪುಲೆ...
@@ -1266,6 +1269,8 @@ taxable_value	ತೆರಿಗೆ ಪಾಡುನ ಮೌಲ್ಯ
 gst_inside_price_note	({tax} ಸೇರ್ದ್)
 start_with_template	ಎಂಕಲ್ನ ಮೆನು ಟೆಂಪ್ಲೇಟ್ ಡ್ದ್ ಸುರು ಮಲ್ಪುಲೆ
 template_heading	ಎಂಕಲೆನ ಮೆನು ಟೆಂಪ್ಲೇಟ್
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf
 template_info	{c} ವಿಭಾಗೊಲು ಬೊಕ್ಕ {d} ಭಕ್ಷ್ಯೊಲು ಫೋಟೋಲೆನೊಟ್ಟುಗು, ಸೇರಾವರೆ ತಯಾರ್. ಬೆಲೆಲು ₹0 ಡ್ದ್ ಸುರು ಆಪುಂಡು — ನಿಕ್ಲೆನವು ನನ ದುಂಬು ಸೆಟ್ ಮಲ್ಪುಲೆ.
 template_import	ಸಂಪೂರ್ಣ ಟೆಂಪ್ಲೇಟ್ ನ್ ಆಮದು ಮಲ್ಪುಲೆ
 template_confirm	ಅಯಿಕ್ಲೆನ ವಿಭಾಗೊಲೆನೊಟ್ಟುಗು {d} ಖಾದ್ಯೊಲೆನ್ ಸೇರಾವೊಡು? ನಿಕ್ಲೆಗ್ ದುಂಬೇ ಉಪ್ಪುನ ಖಾದ್ಯೊಲು ಅವು ಇತ್ತಿಲೆಕನೆ ಉಪ್ಪುಂಡು.
@@ -1363,7 +1368,3 @@ recent_changes	ಇತ್ತೆದ ಬದಲಾವಣೆಲು
 lane_declared_label	ತೆರಿಗೆ ಬಿಲೆಪತ್ರ
 lane_owner_label	ನಗದು ಮೆಮೊ
 money_lane_bill	ಬಿಲ್: {lane}
-app_template_download_progress	ಡೌನ್‌ಲೋಡ್ ಆವೊಂದುಂಡು… {p}% ({d} / {t})
-app_template_download_paused	ಕೊರಿಯರೆ ಕುಡ ಆಮದು ಮಲ್ಪುಲೆ — ಮುಗಿನ ಫೈಲ್‌ಲು ಒರಿಪುಂಡು
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf

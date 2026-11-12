@@ -346,6 +346,8 @@ app_template_skip	Preskoči zasada
 app_template_status	Poslužitelj spreman — uvezite predložak ili preskočite
 app_template_importing	Primjena {title}…
 app_template_downloading	Preuzimanje predloška…
+app_template_download_progress	Preuzimanje… {p}% ({d} / {t})
+app_template_download_paused	Ponovno uvezite za nastavak — dovršene datoteke se čuvaju
 app_template_public_hdr	Javni predlošci
 app_template_private_hdr	Privatni predložak
 app_template_public_hint	Otvorite ovaj odjeljak za učitavanje javnog popisa (jednom je potreban internet).
@@ -626,6 +628,7 @@ choose_device_use	Odaberite Server ili Klijent.
 paired_note	Upareno. Otključajte za prodaju ili Osvježi za najnovije.
 last_update_at	Zadnje ažuriranje: {time}.
 pair_intro	Pronađite server ili upišite adresu i kod uparivanja.
+pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
 queue_waiting	Čeka da stigne do lokala ({n}):
 queue_tries	Pokušano {n} puta · zadnji odgovor: {e}
 save_backup_copy	Spremi kopiju sigurnosne kopije…
@@ -1266,6 +1269,8 @@ taxable_value	Oporeziva vrijednost
 gst_inside_price_note	({tax} u cijeni)
 start_with_template	Krenite s našim predloškom jelovnika
 template_heading	Naš predložak jelovnika
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf
 template_info	{c} kategorija i {d} jela s fotografijama, spremno za dodavanje. Cijene počinju od ₹0 — postavite svoje poslije.
 template_import	Uvezi cijeli predložak
 template_confirm	Dodati {d} jela s njihovim kategorijama? Jela koja već imate ostaju kakva jesu.
@@ -1363,7 +1368,3 @@ recent_changes	Nedavne promjene
 lane_declared_label	Porezni račun
 lane_owner_label	Gotovinski listić
 money_lane_bill	Račun: {lane}
-app_template_download_progress	Preuzimanje… {p}% ({d} / {t})
-app_template_download_paused	Ponovno uvezite za nastavak — dovršene datoteke se čuvaju
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf

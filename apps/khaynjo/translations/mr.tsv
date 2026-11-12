@@ -346,6 +346,8 @@ app_template_skip	आत्ता वगळा
 app_template_status	सर्व्हर तयार — टेम्पलेट आयात करा, किंवा वगळा
 app_template_importing	{title} लावत आहे…
 app_template_downloading	टेम्पलेट डाउनलोड होत आहे…
+app_template_download_progress	डाउनलोड होत आहे… {p}% ({d} / {t})
+app_template_download_paused	पुन्हा सुरू करण्यासाठी पुन्हा आयात करा — पूर्ण झालेल्या फाइल्स राहतात
 app_template_public_hdr	सार्वजनिक टेम्पलेट
 app_template_private_hdr	खाजगी टेम्पलेट
 app_template_public_hint	सार्वजनिक यादी लोड करण्यासाठी हा विभाग उघडा (एकदा इंटरनेट हवे).
@@ -626,6 +628,7 @@ choose_device_use	हे डिव्हाइस कसे वापराय�
 paired_note	जोडले. विक्रीसाठी उघडा, किंवा दुकानातून ताजी माहिती घेण्यासाठी ताजे करा.
 last_update_at	दुकानाकडून शेवटचे अपडेट: {time}.
 pair_intro	सर्व्हर शोधा, किंवा त्याचा पत्ता आणि जोडणी कोड टाइप करा.
+pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
 queue_waiting	दुकानापर्यंत पोहोचण्याच्या प्रतीक्षेत ({n}):
 queue_tries	{n} वेळा प्रयत्न · शेवटचे उत्तर: {e}
 save_backup_copy	बॅकअपची प्रत जतन करा…
@@ -1266,6 +1269,8 @@ taxable_value	करपात्र मूल्य
 gst_inside_price_note	({tax} अंतर्भूत)
 start_with_template	आमच्या मेनू साच्याने सुरुवात
 template_heading	आमचा मेनू साचा
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf
 template_info	{c} वर्ग आणि {d} पदार्थ फोटोसह तयार. किंमत ₹0 — नंतर तुमची किंमत ठेवा.
 template_import	संपूर्ण साचा आयात करा
 template_confirm	{d} पदार्थ त्यांच्या वर्गांसह जोडायचे? तुमचे आधीचे पदार्थ तसेच राहतील.
@@ -1363,7 +1368,3 @@ recent_changes	अलीकडील बदल
 lane_declared_label	कर चलन
 lane_owner_label	कॅश मेमो
 money_lane_bill	बिल: {lane}
-app_template_download_progress	डाउनलोड होत आहे… {p}% ({d} / {t})
-app_template_download_paused	पुन्हा सुरू करण्यासाठी पुन्हा आयात करा — पूर्ण झालेल्या फाइल्स राहतात
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf

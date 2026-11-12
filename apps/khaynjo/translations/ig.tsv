@@ -346,6 +346,8 @@ app_template_skip	Gafee ugbu a
 app_template_status	Sava dị njikere — bubata ụdị, ma ọ bụ wụfee
 app_template_importing	Na-etinye {title}…
 app_template_downloading	Na-ebudata ụdị…
+app_template_download_progress	Na-ebudata… {p}% ({d} / {t})
+app_template_download_paused	Bubata ọzọ ka ịga n'ihu — a na-edebe faịlụ ndị gwụchara
 app_template_public_hdr	Ụdị ọha
 app_template_private_hdr	Ụdị nzuzo
 app_template_public_hint	Mepee akụkụ a iji bulite ndepụta ọha (ịntanetị dị mkpa otu ugboro).
@@ -626,6 +628,7 @@ choose_device_use	Họrọ Sava ma ọ bụ Ngwa njedebe.
 paired_note	Ejikọrọ. Mepee ka ị ree, ma ọ bụ Mee ọhụrụ maka nke kacha ọhụrụ.
 last_update_at	Mmelite ikpeazụ: {time}.
 pair_intro	Chọta sava, ma ọ bụ dee adreesị ya na koodu njikọ.
+pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
 queue_waiting	Na-eche iru ụlọ ahịa ({n}):
 queue_tries	Nwalere ugboro {n} · azịza ikpeazụ: {e}
 save_backup_copy	Chekwaa oyiri nchekwa…
@@ -1266,6 +1269,8 @@ taxable_value	Uru a na-atụ ụtụ
 gst_inside_price_note	({tax} nọ n'ime)
 start_with_template	Malite site na ndebere ndepụta nri anyị
 template_heading	Ndebere ndepụta nri anyị
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf
 template_info	Ụdị {c} na nri {d} nwere foto, dị njikere itinye. Ọnụahịa na-amalite na ₹0 — tinye nke gị mgbe e mesịrị.
 template_import	Bubata ndebere zuru ezu
 template_confirm	Tinye nri {d} na ụdị ha? Nri ị nweelarị na-anọ otú ha dị.
@@ -1363,7 +1368,3 @@ recent_changes	Mgbanwe nso nso a
 lane_declared_label	Ụgwọ ụtụ
 lane_owner_label	Akwụkwọ ego aka
 money_lane_bill	Ụgwọ: {lane}
-app_template_download_progress	Na-ebudata… {p}% ({d} / {t})
-app_template_download_paused	Bubata ọzọ ka ịga n'ihu — a na-edebe faịlụ ndị gwụchara
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf

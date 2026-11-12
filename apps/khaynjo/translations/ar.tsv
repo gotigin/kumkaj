@@ -346,6 +346,8 @@ app_template_skip	انتظر قليلاً
 app_template_status	الخادم جاهز — استورد قالبًا أو تخطَّ
 app_template_importing	يتم تطبيق {title}…
 app_template_downloading	جارٍ تنزيل القالب…
+app_template_download_progress	جارٍ التنزيل… {p}% ({d} / {t})
+app_template_download_paused	استورد مرة أخرى للاستئناف — يُحتفظ بالملفات المكتملة
 app_template_public_hdr	قوالب عامة
 app_template_private_hdr	قالب خاص
 app_template_public_hint	افتح هذا القسم لتحميل القائمة العامة (يحتاج إلى الإنترنت مرة واحدة).
@@ -626,6 +628,7 @@ choose_device_use	اختر طريقة استخدام هذا الجهاز.
 paired_note	تم الاقتران. افتح القفل للبيع، أو حدّث لجلب أحدث بيانات المطعم.
 last_update_at	آخر تحديث من المطعم: {time}.
 pair_intro	ابحث عن الخادم، أو اكتب عنوانه ورمز الاقتران.
+pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
 queue_waiting	بانتظار الوصول إلى المطعم ({n}):
 queue_tries	{n} محاولات · آخر رد: {e}
 save_backup_copy	حفظ نسخة احتياطية…
@@ -1266,6 +1269,8 @@ taxable_value	القيمة الخاضعة
 gst_inside_price_note	({tax} شامل)
 start_with_template	ابدأ بقالب قائمتنا
 template_heading	قالب قائمتنا
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf
 template_info	{c} فئات و{d} طبقًا بالصور جاهزة للإضافة. السعر يبدأ من ₹0 — حدّد أسعارك لاحقًا.
 template_import	استيراد القالب كاملًا
 template_confirm	إضافة {d} طبقًا مع فئاتها؟ أطباقك الحالية تبقى كما هي.
@@ -1363,7 +1368,3 @@ recent_changes	التغييرات الأخيرة
 lane_declared_label	فاتورة ضريبية
 lane_owner_label	مذكرة نقدية
 money_lane_bill	الفاتورة: {lane}
-app_template_download_progress	جارٍ التنزيل… {p}% ({d} / {t})
-app_template_download_paused	استورد مرة أخرى للاستئناف — يُحتفظ بالملفات المكتملة
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf

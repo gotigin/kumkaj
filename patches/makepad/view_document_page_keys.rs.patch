@@ -1,0 +1,123 @@
+--- a/widgets/src/view.rs
++++ b/widgets/src/view.rs
+@@ -6,6 +6,7 @@
+         makepad_draw::*,
+         makepad_script::ScriptFnRef,
+         scroll_bars::ScrollBars,
++        text_input::TextInput,
+         widget::*,
+         widget_async::{
+             CxWidgetToScriptCallExt, ScriptAsyncCalls, ScriptAsyncId, ScriptAsyncResult,
+@@ -1487,11 +1488,11 @@
+             let top = rect.pos.y;
+             let bottom = top + rect.size.y;
+             if bottom <= abs.y {
+-                if above.is_none() || bottom > above.unwrap().1 {
++                if above.map_or(true, |(_, b)| bottom > b) {
+                     above = Some((i, bottom));
+                 }
+             } else if top >= abs.y {
+-                if below.is_none() || top < below.unwrap().1 {
++                if below.map_or(true, |(_, b)| top < b) {
+                     below = Some((i, top));
+                 }
+             }
+@@ -1672,12 +1673,73 @@
+         }
+     }
+ 
++    /// True when a TextInput under this view owns key focus (caret keys /
++    /// Space must stay with the field). Buttons that kept focus after a click
++    /// must not block document PageUp/Ctrl+A — browser chrome scrolls the page.
++    fn doc_text_field_owns_keys(&self, cx: &Cx) -> bool {
++        if cx.get_ime_area_rect().size.y > 0.0 {
++            return true;
++        }
++        let mut owns = false;
++        fn visit(w: &WidgetRef, cx: &Cx, owns: &mut bool) {
++            if *owns {
++                return;
++            }
++            if w.borrow::<TextInput>().is_some() && w.key_focus(cx) {
++                *owns = true;
++                return;
++            }
++            w.children(&mut |_, child| visit(&child, cx, owns));
++        }
++        for (_id, child) in &self.children {
++            visit(child, cx, &mut owns);
++        }
++        owns
++    }
++
++    fn doc_scroll_kind_for_key(ke: &KeyEvent) -> Option<DocScrollKind> {
++        match ke.key_code {
++            KeyCode::PageUp => Some(DocScrollKind::PageUp),
++            KeyCode::PageDown => Some(DocScrollKind::PageDown),
++            KeyCode::Home => Some(DocScrollKind::Home),
++            KeyCode::End => Some(DocScrollKind::End),
++            KeyCode::ArrowUp if !ke.modifiers.shift => Some(DocScrollKind::LineUp),
++            KeyCode::ArrowDown if !ke.modifiers.shift => Some(DocScrollKind::LineDown),
++            KeyCode::Space if !ke.modifiers.shift && !ke.modifiers.is_primary() => {
++                Some(DocScrollKind::PageDown)
++            }
++            KeyCode::Space if ke.modifiers.shift => Some(DocScrollKind::PageUp),
++            _ => None,
++        }
++    }
++
+     fn handle_doc_selection(&mut self, cx: &mut Cx, event: &Event) {
+         if !self.selectable || !self.visible {
+             return;
+         }
+ 
+         match event {
++            // Browser document keys when focus is empty or stuck on a button
++            // after a click — Hit::KeyDown only reaches the focused widget.
++            Event::KeyDown(ke) if !cx.has_key_focus(self.area) => {
++                if !self.doc_text_field_owns_keys(cx) {
++                    let ctrl_a =
++                        matches!(ke.key_code, KeyCode::KeyA) && ke.modifiers.is_primary();
++                    let kind = Self::doc_scroll_kind_for_key(&ke);
++                    if ctrl_a || kind.is_some() {
++                        cx.set_key_focus(self.area);
++                        if ctrl_a {
++                            self.select_all_doc_leaves(cx);
++                        }
++                        if let Some(kind) = kind {
++                            self.scroll_doc_viewport(cx, kind);
++                        }
++                    }
++                }
++            }
++            // Secondary press does not always become Hit::FingerDown (Makepad
++            // hit routing prefers the primary button). Still take doc focus so
++            // the web context menu's Select all / Ctrl+A reach this host.
+             Event::MouseDown(me) if me.button.is_secondary() => {
+                 if self.area.is_valid(cx) && self.area.clipped_rect(cx).contains(me.abs) {
+                     if !self.point_hits_selection_blocker(cx, me.abs) {
+@@ -1871,22 +1933,8 @@
+                 self.select_all_doc_leaves(cx);
+             }
+             Hit::KeyDown(ke) => {
+-                // Browser document keys — canvas has no native page chrome.
+-                let kind = match ke.key_code {
+-                    KeyCode::PageUp => Some(DocScrollKind::PageUp),
+-                    KeyCode::PageDown => Some(DocScrollKind::PageDown),
+-                    KeyCode::Home => Some(DocScrollKind::Home),
+-                    KeyCode::End => Some(DocScrollKind::End),
+-                    KeyCode::ArrowUp if !ke.modifiers.shift => Some(DocScrollKind::LineUp),
+-                    KeyCode::ArrowDown if !ke.modifiers.shift => Some(DocScrollKind::LineDown),
+-                    // Space = page down when not typing in a field (we have focus).
+-                    KeyCode::Space if !ke.modifiers.shift && !ke.modifiers.is_primary() => {
+-                        Some(DocScrollKind::PageDown)
+-                    }
+-                    KeyCode::Space if ke.modifiers.shift => Some(DocScrollKind::PageUp),
+-                    _ => None,
+-                };
+-                if let Some(kind) = kind {
++                // Focused document host — same keys as Event::KeyDown above.
++                if let Some(kind) = Self::doc_scroll_kind_for_key(&ke) {
+                     self.scroll_doc_viewport(cx, kind);
+                 }
+             }

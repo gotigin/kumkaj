@@ -346,6 +346,8 @@ app_template_skip	Aqbeż għalissa
 app_template_status	Is-server lest — importa mudell, jew aqbeż
 app_template_importing	Qed tapplika {title}...
 app_template_downloading	Qed jitniżżel il-mudell…
+app_template_download_progress	Qed iniżżel… {p}% ({d} / {t})
+app_template_download_paused	Erġa' importa biex tkompli — il-fajls lesti jinżammu
 app_template_public_hdr	Mudelli pubbliċi
 app_template_private_hdr	Mudell privat
 app_template_public_hint	Iftaħ din it-taqsima biex titgħabba l-lista pubblika (hemm bżonn l-internet darba).
@@ -626,6 +628,7 @@ choose_device_use	Agħżel Server jew Klijent.
 paired_note	Imqabbad. Iftaħ biex tbigħ, jew Aġġorna għall-aħħar.
 last_update_at	L-aħħar aġġornament: {time}.
 pair_intro	Sib is-server, jew ittajpja l-indirizz u l-kodiċi tat-tqabbil tiegħu.
+pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
 queue_waiting	Stennija biex tilħaq il-ħanut ({n}):
 queue_tries	Ippruvajt {n} darbiet · l-aħħar tweġiba: {e}
 save_backup_copy	Issejvja kopja ta' backup...
@@ -1266,6 +1269,8 @@ taxable_value	Valur tat-taxxa
 gst_inside_price_note	({tax} inklużiv)
 start_with_template	Ibda bl- mudell tal-menu tagħna
 template_heading	It-tema tal-menu tagħna
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf
 template_info	{c} kategorie u {d} platti b’ritratti, lesti biex iżżid. Il-prezzijiet jibdew minn ₹0 — issettlejhom tiegħek wara.
 template_import	Importa mudell sħiħ
 template_confirm	Żid {d} platti mal-kategoriji tagħhom? Il-platti li diġà għandek jibqgħu kif inhuma.
@@ -1363,7 +1368,3 @@ recent_changes	Bidliet riċenti
 lane_declared_label	Fattura tat-taxxa
 lane_owner_label	Memo ta' flus
 money_lane_bill	Kont: {lane}
-app_template_download_progress	Qed iniżżel… {p}% ({d} / {t})
-app_template_download_paused	Erġa' importa biex tkompli — il-fajls lesti jinżammu
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf

@@ -346,6 +346,8 @@ app_template_skip	Slepptu í bili
 app_template_status	Þjónn tilbúinn — flyttu inn sniðmát, eða slepptu
 app_template_importing	Er að sækja um {title}…
 app_template_downloading	Sæki sniðmát…
+app_template_download_progress	Sækir… {p}% ({d} / {t})
+app_template_download_paused	Flyttu inn aftur til að halda áfram — tilbúnar skrár eru geymdar
 app_template_public_hdr	Opinber sniðmát
 app_template_private_hdr	Einkasniðmát
 app_template_public_hint	Opnaðu þennan hluta til að hlaða opinbera listanum (netið þarf einu sinni).
@@ -626,6 +628,7 @@ choose_device_use	Veldu Server eða Client.
 paired_note	Pöruð. Opnaðu til að selja, eða endurnýjaðu til að fá það nýjasta.
 last_update_at	Síðasta uppfærsla: {time}.
 pair_intro	Finndu netþjóninn eða sláðu inn heimilisfang hans og pörunarkóða.
+pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
 queue_waiting	Bíður eftir að komast í búðina ({n}):
 queue_tries	Reyndi {n} sinnum · síðasta svar: {e}
 save_backup_copy	Vista öryggisafrit...
@@ -1266,6 +1269,8 @@ taxable_value	Skattskyld verðmæti
 gst_inside_price_note	({tax} innifalið)
 start_with_template	Byrjaðu á valmyndarsniðmátinu okkar
 template_heading	Valmyndarsniðmátið okkar
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf
 template_info	{c} flokkar og {d} réttir með myndum, tilbúnir til að bæta við. Verð byrja á ₹ 0 - stilltu þitt eftir.
 template_import	Flytja inn heill sniðmát
 template_confirm	Bæta við {d} réttum með sínum flokkum? Réttir sem þú átt nú þegar haldast eins og þeir eru.
@@ -1363,7 +1368,3 @@ recent_changes	Nýlegar breytingar
 lane_declared_label	Skattreikningur
 lane_owner_label	Peningabréf
 money_lane_bill	Reikningur: {lane}
-app_template_download_progress	Sækir… {p}% ({d} / {t})
-app_template_download_paused	Flyttu inn aftur til að halda áfram — tilbúnar skrár eru geymdar
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf

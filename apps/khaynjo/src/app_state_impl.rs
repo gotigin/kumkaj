@@ -222,16 +222,24 @@ impl AppState {
             }
             Err(e) => {
                 // No local server yet is normal — DeviceSetup will create/pick.
-                state.status = if e.contains("No local server") {
-                    String::new()
-                } else {
-                    format!("Storage: {e}")
-                };
                 state.session = None;
                 state.must_confirm_device_role = true;
                 state.apply_platform_language_preview();
                 state.screen = Screen::DeviceSetup;
                 state.pin_buffer.clear();
+                let last = state
+                    .data_base
+                    .as_ref()
+                    .and_then(|b| local_servers::load_last_session_mode(b));
+                state.status = if !e.contains("No local server") {
+                    format!("Storage: {e}")
+                } else {
+                    match last.as_deref() {
+                        Some("server") => state.t("last_server_mode"),
+                        Some("client") => state.t("last_client_mode"),
+                        _ => String::new(),
+                    }
+                };
             }
         }
         state
@@ -445,16 +453,28 @@ impl AppState {
     /// Every process start: language + Server/Client on one screen.
     /// UI opens in the platform language so non-English users can read it;
     /// changing language updates this screen immediately.
+    ///
+    /// Both modes stay available. Status may soft-hint the last *session*
+    /// (install-level); it does not lock the device to one role or erase the
+    /// other slot (`servers/` vs `client/`).
     fn route_after_stored_role(&mut self) {
         self.must_confirm_device_role = true;
         self.picking_server = false;
         let _ = self.refresh_local_servers();
         self.apply_platform_language_preview();
         self.screen = Screen::DeviceSetup;
-        self.status = match self.device_role {
-            DeviceRole::Server => self.t("last_server_mode"),
-            DeviceRole::Client => self.t("last_client_mode"),
-            DeviceRole::Unset => self.t("device_use_q"),
+        let last = self
+            .data_base
+            .as_ref()
+            .and_then(|b| local_servers::load_last_session_mode(b));
+        self.status = match last.as_deref() {
+            Some("server") => self.t("last_server_mode"),
+            Some("client") => self.t("last_client_mode"),
+            _ => match self.device_role {
+                DeviceRole::Server => self.t("last_server_mode"),
+                DeviceRole::Client => self.t("last_client_mode"),
+                DeviceRole::Unset => self.t("device_use_q"),
+            },
         };
         // Warm LAN only after they confirm Server + extra tills on Lock path.
         // Do not start the server while the chooser is open.

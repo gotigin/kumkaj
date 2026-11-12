@@ -346,6 +346,8 @@ app_template_skip	Pomiń na razie
 app_template_status	Serwer gotowy — zaimportuj szablon lub pomiń
 app_template_importing	Stosowanie {title}…
 app_template_downloading	Pobieranie szablonu…
+app_template_download_progress	Pobieranie… {p}% ({d} / {t})
+app_template_download_paused	Zaimportuj ponownie, aby wznowić — ukończone pliki zostają
 app_template_public_hdr	Publiczne szablony
 app_template_private_hdr	Prywatny szablon
 app_template_public_hint	Otwórz tę sekcję, aby wczytać publiczną listę (internet potrzebny raz).
@@ -626,6 +628,7 @@ choose_device_use	Wybierz serwer lub klienta.
 paired_note	Sparowane. Odblokuj, aby sprzedać lub odśwież, aby uzyskać najnowsze informacje.
 last_update_at	Ostatnia aktualizacja: {time}.
 pair_intro	Znajdź serwer lub wpisz jego adres i kod parowania.
+pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
 queue_waiting	Oczekiwanie na dotarcie do sklepu ({n}):
 queue_tries	Próbowałem {n} razy · ostatnia odpowiedź: {e}
 save_backup_copy	Zapisz kopię zapasową…
@@ -1266,6 +1269,8 @@ taxable_value	Wartość podlegająca opodatkowaniu
 gst_inside_price_note	({tax} włącznie)
 start_with_template	Zacznij od naszego szablonu menu
 template_heading	Nasz szablon menu
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf
 template_info	{c} kategorii i {d} dań ze zdjęciami, gotowe do dodania. Ceny zaczynają się od 0 INR — ustaw swoje później.
 template_import	Importuj cały szablon
 template_confirm	Dodać {d} potraw wraz z ich kategoriami? Naczynia, które już masz, pozostają takie, jakie są.
@@ -1363,7 +1368,3 @@ recent_changes	Ostatnie zmiany
 lane_declared_label	Faktura VAT
 lane_owner_label	Notatka gotówkowa
 money_lane_bill	Rachunek: {lane}
-app_template_download_progress	Pobieranie… {p}% ({d} / {t})
-app_template_download_paused	Zaimportuj ponownie, aby wznowić — ukończone pliki zostają
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf

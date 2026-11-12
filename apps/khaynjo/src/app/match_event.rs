@@ -9438,8 +9438,71 @@ impl MatchEvent for App {
                 self.paint_printers_panel(cx);
             }
         }
-        // Settings → Printers pool: tap a row to select one printer for
-        // test page / Remove. Never "print on every device or none".
+        // Settings → Printers: per-printer how-the-job-is-sent (OS / raw / ESC/POS).
+        {
+            let widget = self.ui.widget(cx, ids!(printers_delivery_list));
+            let list = widget.portal_list(cx, ids!(list));
+            let mut pick: Option<(usize, &'static str)> = None;
+            for (item_id, item) in list.items_with_actions(actions) {
+                for (idle, on, delivery) in [
+                    (
+                        ids!(deliv_os),
+                        ids!(deliv_os_on),
+                        print_share::DELIVERY_SYSTEM_SPOOLER,
+                    ),
+                    (
+                        ids!(deliv_raw),
+                        ids!(deliv_raw_on),
+                        print_share::DELIVERY_RAW_DEVICE,
+                    ),
+                    (
+                        ids!(deliv_escpos),
+                        ids!(deliv_escpos_on),
+                        print_share::DELIVERY_ESCPOS,
+                    ),
+                ] {
+                    if item.button(cx, idle).clicked(actions)
+                        || item.button(cx, on).clicked(actions)
+                    {
+                        pick = Some((item_id, delivery));
+                        break;
+                    }
+                }
+                if pick.is_some() {
+                    break;
+                }
+            }
+            if let Some((item_id, delivery)) = pick {
+                let result = (|| -> Result<String, String> {
+                    let mut st = app_state().lock().unwrap();
+                    if st.device_role == DeviceRole::Client {
+                        return Err(st.t("printers_host_only"));
+                    }
+                    let Some(p) = st.printer_draft.printers.get(item_id).cloned() else {
+                        return Err(st.t("printers_pool_empty"));
+                    };
+                    if !st.printer_draft.set_printer_delivery(&p.id, delivery) {
+                        return Err(st.t("printers_pool_empty"));
+                    }
+                    st.printer_selected_id = Some(p.id.clone());
+                    st.save_printer_draft()?;
+                    let name = printer_display_name(&p, |k| st.t(k));
+                    let how = match delivery {
+                        print_share::DELIVERY_SYSTEM_SPOOLER => st.t("vp_delivery_spooler"),
+                        print_share::DELIVERY_RAW_DEVICE => st.t("vp_delivery_raw"),
+                        _ => st.t("vp_delivery_escpos"),
+                    };
+                    Ok(format!("{name} — {how}"))
+                })();
+                match result {
+                    Ok(msg) => self.set_status(cx, msg),
+                    Err(e) => self.set_status(cx, e),
+                }
+                self.paint_printers_panel(cx);
+                self.ui.widget(cx, ids!(printers_delivery_list)).redraw(cx);
+            }
+        }
+        // Legacy pool ReportText (hidden) — keep id for hot-reload.
         {
             let widget = self.ui.widget(cx, ids!(printers_pool_label));
             let list = widget.portal_list(cx, ids!(list));
@@ -9456,17 +9519,10 @@ impl MatchEvent for App {
             if let Some(item_id) = tapped {
                 let mut st = app_state().lock().unwrap();
                 if st.device_role != DeviceRole::Client {
-                    let rows = printers_pool_rows(
-                        &st.printer_draft,
-                        st.printer_selected_id.as_deref(),
-                        |k| st.t(k),
-                    );
-                    if matches!(rows.get(item_id), Some(ReportRow::Kv(_, _))) {
-                        if let Some(p) = st.printer_draft.printers.get(item_id).cloned() {
-                            st.printer_selected_id = Some(p.id.clone());
-                            let name = printer_display_name(&p, |k| st.t(k));
-                            st.status = st.t("real_printer_selected").replace("{name}", &name);
-                        }
+                    if let Some(p) = st.printer_draft.printers.get(item_id).cloned() {
+                        st.printer_selected_id = Some(p.id.clone());
+                        let name = printer_display_name(&p, |k| st.t(k));
+                        st.status = st.t("real_printer_selected").replace("{name}", &name);
                     }
                 }
                 drop(st);

@@ -422,3 +422,123 @@ impl Widget for PairedList {
         claim_list_nested_scroll(cx, &self.view, event);
     }
 }
+
+/// Settings → Printers: each saved device with its own how-the-job-is-sent
+/// choice (OS document / raw / ESC/POS). Format owns look; this owns send.
+#[derive(Script, ScriptHook, Widget)]
+struct PrinterDeliveryList {
+    #[deref]
+    view: View,
+}
+
+impl Widget for PrinterDeliveryList {
+    fn draw_walk(&mut self, cx: &mut Cx2d, scope: &mut Scope, walk: Walk) -> DrawStep {
+        let (printers, os_l, raw_l, esc_l, empty) = {
+            let st = app_state().lock().unwrap();
+            (
+                st.printer_draft.printers.clone(),
+                st.t("vp_delivery_spooler"),
+                st.t("vp_delivery_raw"),
+                st.t("vp_delivery_escpos"),
+                st.t("printers_pool_empty"),
+            )
+        };
+        let row = (*locale_row_height().lock().unwrap()).max(120.0);
+        let n = printers.len().max(1);
+        let walk = Walk {
+            height: Size::Fixed(list_content_height(n, row, 0.0)),
+            ..walk
+        };
+        let mut measured_row = 0.0;
+        while let Some(step) = self.view.draw_walk(cx, scope, walk).step() {
+            if let Some(mut list) = step.as_portal_list().borrow_mut() {
+                if printers.is_empty() {
+                    list.set_item_range(cx, 0, 1);
+                    if let Some(item_id) = list.next_visible_item(cx) {
+                        let item = list.item(cx, item_id, id!(Item));
+                        item.widget(cx, ids!(name))
+                            .set_text(cx, &plain_display_text(&empty));
+                        for (idle, on) in [
+                            (ids!(deliv_os), ids!(deliv_os_on)),
+                            (ids!(deliv_raw), ids!(deliv_raw_on)),
+                            (ids!(deliv_escpos), ids!(deliv_escpos_on)),
+                        ] {
+                            item.button(cx, idle).set_visible(cx, false);
+                            item.button(cx, on).set_visible(cx, false);
+                        }
+                        item.draw_all_unscoped(cx);
+                    }
+                } else {
+                    list.set_item_range(cx, 0, printers.len());
+                    let mut drew = 0usize;
+                    while let Some(item_id) = list.next_visible_item(cx) {
+                        let Some(p) = printers.get(item_id) else {
+                            continue;
+                        };
+                        let item = list.item(cx, item_id, id!(Item));
+                        // Empty → unset (follows place format). Never invent
+                        // a send approach from the printer target.
+                        let delivery = if p.delivery.trim().is_empty() {
+                            None
+                        } else {
+                            Some(print_share::normalize_delivery(&p.delivery))
+                        };
+                        let line = if p.label.trim().is_empty() {
+                            p.target.trim().to_string()
+                        } else if p.target.trim().is_empty() || p.target.trim() == p.label.trim() {
+                            p.label.trim().to_string()
+                        } else {
+                            format!("{} · {}", p.label.trim(), p.target.trim())
+                        };
+                        item.widget(cx, ids!(name))
+                            .set_text(cx, &plain_display_text(&line));
+                        item.button(cx, ids!(deliv_os)).set_text(cx, &os_l);
+                        item.button(cx, ids!(deliv_os_on)).set_text(cx, &os_l);
+                        item.button(cx, ids!(deliv_raw)).set_text(cx, &raw_l);
+                        item.button(cx, ids!(deliv_raw_on)).set_text(cx, &raw_l);
+                        item.button(cx, ids!(deliv_escpos)).set_text(cx, &esc_l);
+                        item.button(cx, ids!(deliv_escpos_on)).set_text(cx, &esc_l);
+                        let pairs = [
+                            (
+                                ids!(deliv_os),
+                                ids!(deliv_os_on),
+                                delivery.as_deref() == Some(print_share::DELIVERY_SYSTEM_SPOOLER),
+                            ),
+                            (
+                                ids!(deliv_raw),
+                                ids!(deliv_raw_on),
+                                delivery.as_deref() == Some(print_share::DELIVERY_RAW_DEVICE),
+                            ),
+                            (
+                                ids!(deliv_escpos),
+                                ids!(deliv_escpos_on),
+                                delivery.as_deref() == Some(print_share::DELIVERY_ESCPOS),
+                            ),
+                        ];
+                        for (idle, on, active) in pairs {
+                            item.button(cx, idle).set_visible(cx, !active);
+                            item.button(cx, on).set_visible(cx, active);
+                        }
+                        item.draw_all_unscoped(cx);
+                        drew += 1;
+                    }
+                    if drew > 0 {
+                        let extent = list.drawn_range_extent();
+                        if extent > 1.0 {
+                            measured_row = extent / drew as f64;
+                        }
+                    }
+                }
+            }
+        }
+        remember_content_row(cx, &mut self.view, locale_row_height(), row, measured_row);
+        DrawStep::done()
+    }
+
+    fn handle_event(&mut self, cx: &mut Cx, event: &Event, scope: &mut Scope) {
+        if page_owns_scroll(event) {
+            return;
+        }
+        self.view.handle_event(cx, event, scope);
+    }
+}

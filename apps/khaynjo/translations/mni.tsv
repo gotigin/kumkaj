@@ -346,6 +346,8 @@ app_template_skip	ꯍꯧꯖꯤꯛ ꯀꯣꯏꯗꯣꯛꯎ
 app_template_status	ꯁꯔꯚꯔ ꯁꯦꯝ ꯁꯥꯔꯦ — ꯇꯦꯝꯄ꯭ꯂꯦꯠ ꯑꯃꯥ ꯏꯝꯄꯣꯔꯠ ꯇꯧꯕꯤꯌꯨ, ꯅꯠꯇ꯭ꯔꯒꯥ ꯊꯥꯗꯣꯛꯄꯤꯌꯨ
 app_template_importing	{title} ꯁꯤꯖꯤꯟꯅꯔꯤ…
 app_template_downloading	ꯇꯦꯝꯄ꯭ꯂꯦꯠ ꯗꯥꯎꯟꯂꯣꯗ ꯇꯧꯔꯤ…
+app_template_download_progress	ꯗꯥꯎꯟꯂꯣꯗ ꯇꯧꯔꯤ… {p}% ({d} / {t})
+app_template_download_paused	ꯃꯈꯥ ꯆꯥꯡꯅꯕꯥ ꯑꯃꯨꯛ ꯍꯟꯅꯥ ꯏꯝꯄꯣꯔꯠ ꯇꯧꯕꯤꯌꯨ — ꯂꯣꯏꯔꯕꯥ ꯐꯥꯏꯜꯁꯤꯡ ꯊꯝꯂꯤ
 app_template_public_hdr	ꯃꯤꯌꯥꯝꯒꯤ ꯇꯦꯝꯄ꯭ꯂꯦꯠꯁꯤꯡ
 app_template_private_hdr	ꯃꯁꯥꯒꯤ ꯇꯦꯝꯄ꯭ꯂꯦꯠ
 app_template_public_hint	ꯃꯤꯌꯥꯝꯒꯤ ꯂꯤꯁ꯭ꯠ ꯂꯣꯗ ꯇꯧꯅꯕꯥ ꯁꯦꯛꯁꯟ ꯑꯁꯤ ꯍꯥꯡꯗꯣꯛꯄꯤꯌꯨ (ꯑꯃꯨꯛ ꯏꯟꯇꯔꯅꯦꯠ ꯃꯊꯧ ꯇꯥꯏ)꯫
@@ -626,6 +628,7 @@ choose_device_use	Server ꯅꯠꯇ꯭ꯔꯒ ꯈꯣꯡꯖꯦꯜ ꯈꯟꯕꯤꯌ�
 paired_note	ꯄꯦꯌꯔ ꯇꯧꯔꯦ. ꯍꯥꯡꯗꯣꯛꯎ, ꯌꯣꯟꯅꯕ, ꯅꯠꯇ꯭ꯔꯒ ꯑꯔꯣꯏꯕꯒꯤꯗꯃꯛ ꯑꯅꯧ ꯇꯧꯕꯤꯌꯨ.
 last_update_at	ꯑꯅꯧ ꯇꯧꯕ ꯑꯔꯣꯏꯕ: {time}.
 pair_intro	server ꯊꯤꯕꯤꯌꯨ, ꯅꯠꯇ꯭ꯔꯒ ꯃꯁꯤꯒꯤ ꯑꯦꯗ꯭ꯔꯦꯁ ꯑꯃꯁꯨꯡ ꯄꯦꯌꯔ ꯀꯣꯗ ꯏꯕꯤꯌꯨ.
+pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
 queue_waiting	ꯀꯦꯟꯐꯝ ꯌꯧꯅꯕ ꯉꯥꯏꯔꯤ ({n}):
 queue_tries	ꯃꯇꯝ {n} ꯍꯣꯠꯅꯈꯤ · ꯄꯥꯎꯈꯨꯝ ꯑꯔꯣꯏꯕ: {e}
 save_backup_copy	ꯀꯣꯄꯤ ꯊꯝꯕꯤꯌꯨ…
@@ -1266,6 +1269,8 @@ taxable_value	ꯀꯔ ꯄꯤꯅꯕ ꯃꯃꯜ
 gst_inside_price_note	({tax} ꯌꯥꯎꯔꯦ)
 start_with_template	ꯑꯩꯈꯣꯌꯒꯤ ꯃꯦꯅꯨ ꯃꯤꯡꯗꯒꯤ ꯍꯧꯕꯤꯌꯨ
 template_heading	ꯑꯩꯈꯣꯌꯒꯤ ꯃꯦꯅꯨ ꯃꯤꯡ
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf
 template_info	ꯐꯨꯡ {c} ꯑꯃꯁꯨꯡ ꯆꯥꯛ {d}, ꯁꯛꯇꯝ ꯂꯣꯏꯅ, ꯍꯥꯞꯆꯤꯟꯅꯕ ꯁꯦꯝꯃꯤ. ꯃꯃꯜ ₹0 ꯗꯒꯤ ꯍꯧꯏ — ꯅꯍꯥꯛꯀꯤ ꯃꯇꯨꯡꯗ ꯊꯝꯕꯤꯌꯨ.
 template_import	ꯃꯤꯡ ꯄꯨꯝꯅꯃꯛ ꯆꯪꯍꯟꯕꯤꯌꯨ
 template_confirm	ꯆꯥꯛ {d} ꯐꯨꯡ ꯂꯣꯏꯅ ꯍꯥꯞꯆꯤꯟꯕꯤꯌꯨ? ꯅꯍꯥꯛꯅ ꯍꯧꯖꯤꯛ ꯂꯩꯔꯤꯕ ꯆꯥꯛ ꯃꯗꯨ ꯑꯣꯏꯅ ꯂꯩꯔꯣꯝꯃꯤ.
@@ -1363,7 +1368,3 @@ recent_changes	ꯍꯧꯖꯤꯛꯀꯤ ꯍꯣꯡꯗꯣꯛꯄ
 lane_declared_label	ꯀꯔꯒꯤ ꯕꯤꯜ
 lane_owner_label	ꯁꯦꯟꯒꯤ ꯋꯥꯍꯩ
 money_lane_bill	ꯕꯤꯜ: {lane}
-app_template_download_progress	ꯗꯥꯎꯟꯂꯣꯗ ꯇꯧꯔꯤ… {p}% ({d} / {t})
-app_template_download_paused	ꯃꯈꯥ ꯆꯥꯡꯅꯕꯥ ꯑꯃꯨꯛ ꯍꯟꯅꯥ ꯏꯝꯄꯣꯔꯠ ꯇꯧꯕꯤꯌꯨ — ꯂꯣꯏꯔꯕꯥ ꯐꯥꯏꯜꯁꯤꯡ ꯊꯝꯂꯤ
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf

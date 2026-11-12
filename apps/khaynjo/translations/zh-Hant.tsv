@@ -346,6 +346,8 @@ app_template_skip	暫時跳過
 app_template_status	伺服器已就緒 — 匯入範本，或略過
 app_template_importing	正在應用 {title}…
 app_template_downloading	正在下載範本…
+app_template_download_progress	下載中… {p}% ({d} / {t})
+app_template_download_paused	再次匯入即可續傳 — 已完成的檔案會保留
 app_template_public_hdr	公開範本
 app_template_private_hdr	私人範本
 app_template_public_hint	開啟此區段以載入公開清單（首次需要網路）。
@@ -626,6 +628,7 @@ choose_device_use	選擇本設備的用途。
 paired_note	已配對。解鎖即可收款，或點刷新獲取店裡的最新數據。
 last_update_at	最後一次從店裡更新：{time}。
 pair_intro	查找服務器，或輸入其地址和配對碼。
+pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
 queue_waiting	等待發送到店裡（{n}）：
 queue_tries	已嘗試 {n} 次 · 最後回覆：{e}
 save_backup_copy	保存備份副本…
@@ -1266,6 +1269,8 @@ taxable_value	應稅金額
 gst_inside_price_note	（含{tax}）
 start_with_template	從我們的菜單模板開始
 template_heading	我們的菜單模板
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf
 template_info	{c} 個分類、{d} 道帶圖菜品可直接添加。價格為 ₹0，之後再設置。
 template_import	導入完整模板
 template_confirm	添加 {d} 道菜及其分類？已有菜品保持不變。
@@ -1363,7 +1368,3 @@ recent_changes	最近變動
 lane_declared_label	稅務發票
 lane_owner_label	現金小票
 money_lane_bill	帳單：{lane}
-app_template_download_progress	下載中… {p}% ({d} / {t})
-app_template_download_paused	再次匯入即可續傳 — 已完成的檔案會保留
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf

@@ -1,23 +1,21 @@
 --- a/widgets/src/text_flow.rs
 +++ b/widgets/src/text_flow.rs
-@@ -1271,8 +1271,26 @@
-                     self.selection_committed = false;
-                     self.select_down_abs = fe.abs;
-                     // Do not block / promote yet: a sideways drag should pan an
--                    // ancestor ScrollX (desk panes). Vertical / text-direction
--                    // drags commit selection on the first meaningful move.
-+                    // ancestor ScrollX (desk panes). Mouse vertical drag commits
-+                    // selection on the first meaningful move; touch waits for
-+                    // long-press so a swipe can still scroll the page
-+                    // (selectable WrapLabels cover most of DeviceSetup / help).
-+                    self.redraw(cx);
-+                }
-+            }
+@@ -1275,9 +1275,30 @@
+                     // Do not block / promote yet. Mouse commits on the first
+                     // meaningful move in any direction (horizontal is how you
+                     // select along a line on sites and display copy).
++                    // Touch waits for long-press so a swipe can still scroll the
++                    // page (selectable WrapLabels cover most of DeviceSetup / help).
+                     self.redraw(cx);
+                 }
+             }
 +            Hit::FingerLongPress(lp) => {
 +                // Touch select-drag starts on long-press only — otherwise every
 +                // vertical swipe over copy steals the page ScrollYView.
 +                if self.is_selecting && !self.selection_committed {
 +                    self.selection_committed = true;
++                    // Copy goes to the key-focused area.
++                    cx.set_key_focus(self.area);
 +                    cx.block_scrolling_except_within(Area::Empty);
 +                    let _ = cx.promote_finger_capture_over(self.area);
 +                    if let Some(idx) = self.selection_tracker.point_to_index(cx, lp.abs) {
@@ -26,21 +24,28 @@
 +                            self.propagate_selection_to_children();
 +                        }
 +                    }
-                     self.redraw(cx);
-                 }
-             }
-@@ -1287,6 +1305,14 @@
-                         self.is_selecting = false;
-                         self.selection_cursor = self.selection_anchor;
-                         self.redraw(cx);
-+                        return;
-+                    }
-+                    // Touch: vertical swipe scrolls the page. Long-press (above)
-+                    // is what commits touch selection. Mouse keeps drag-select.
++                    self.redraw(cx);
++                }
++            }
+             Hit::FingerMove(fe) if self.is_selecting => {
+                 let delta = fe.abs - self.select_down_abs;
+                 if !self.selection_committed {
+@@ -1285,8 +1306,16 @@
+                     if delta.x.abs() <= 6.0 && delta.y.abs() <= 6.0 {
+                         return;
+                     }
+-                    // Mouse: any direction past slop selects (including along
+-                    // the line). Desk ScrollX pans from whitespace / scrollbar.
++                    // Touch: swipe scrolls the page. Long-press (above) is what
++                    // commits touch selection. Mouse: any direction past slop
++                    // selects — including along the line. Desk ScrollX pans from
++                    // whitespace / the scrollbar, not from selectable copy.
 +                    if fe.device.is_touch() {
 +                        self.is_selecting = false;
 +                        self.selection_cursor = self.selection_anchor;
 +                        self.redraw(cx);
-                         return;
-                     }
++                        return;
++                    }
                      self.selection_committed = true;
+                 }
+                 // Own the gesture: block page drag-scroll and take capture

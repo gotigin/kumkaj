@@ -346,6 +346,8 @@ app_template_skip	ຂ້າມໄປດຽວນີ້
 app_template_status	ເຊີບເວີພ້ອມແລ້ວ — ນຳເຂົ້າແມ່ແບບ ຫຼື ຂ້າມ
 app_template_importing	ກຳລັງນຳໃຊ້ {title}…
 app_template_downloading	ກຳລັງດາວໂຫຼດແມ່ແບບ…
+app_template_download_progress	ກຳລັງດາວໂຫຼດ… {p}% ({d} / {t})
+app_template_download_paused	ນຳເຂົ້າອີກຄັ້ງເພື່ອສືບຕໍ່ — ໄຟລ໌ທີ່ສຳເລັດແລ້ວຈະຖືກເກັບໄວ້
 app_template_public_hdr	ແມ່ແບບສາທາລະນະ
 app_template_private_hdr	ແມ່ແບບສ່ວນຕົວ
 app_template_public_hint	ເປີດພາກນີ້ເພື່ອໂຫຼດລາຍການສາທາລະນະ (ຕ້ອງການອິນເຕີເນັດຄັ້ງດຽວ).
@@ -626,6 +628,7 @@ choose_device_use	ເລືອກເຊີບເວີຫຼືລູກຄ້�
 paired_note	ຈັບຄູ່. ປົດລັອກເພື່ອຂາຍ, ຫຼືໂຫຼດຂໍ້ມູນໃໝ່ຫຼ້າສຸດ.
 last_update_at	ອັບເດດຫຼ້າສຸດ: {time}.
 pair_intro	ຊອກຫາເຊີບເວີ, ຫຼືພິມທີ່ຢູ່ຂອງມັນ ແລະລະຫັດການຈັບຄູ່.
+pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
 queue_waiting	ລໍຖ້າຮອດຮ້ານ ({n}):
 queue_tries	ລອງ {n} ເທື່ອ · ຄຳຕອບສຸດທ້າຍ: {e}
 save_backup_copy	ບັນທຶກສຳເນົາສຳຮອງ...
@@ -1266,6 +1269,8 @@ taxable_value	ມູນຄ່າພາສີ
 gst_inside_price_note	({tax}ລວມ)
 start_with_template	ເລີ່ມຕົ້ນດ້ວຍແມ່ແບບເມນູຂອງພວກເຮົາ
 template_heading	ແມ່ແບບເມນູຂອງພວກເຮົາ
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf
 template_info	ໝວດໝູ່ {c} ແລະ {d} ຈານພ້ອມຮູບ, ພ້ອມເພີ່ມ. ລາຄາເລີ່ມຕົ້ນທີ່ ₹0 — ຕັ້ງຄ່າຕາມຫຼັງ.
 template_import	ນຳເຂົ້າແມ່ແບບທີ່ສົມບູນ
 template_confirm	ເພີ່ມອາຫານ {d} ດ້ວຍໝວດໝູ່ຂອງເຂົາເຈົ້າບໍ? ອາຫານທີ່ທ່ານມີຢູ່ແລ້ວຕາມທີ່ເຂົາເຈົ້າເປັນ.
@@ -1363,7 +1368,3 @@ recent_changes	ການປ່ຽນແປງທີ່ຜ່ານມາ
 lane_declared_label	ໃບເກັບພາສີ
 lane_owner_label	ບັນທຶກເງິນສົດ
 money_lane_bill	ໃບບິນ: {lane}
-app_template_download_progress	ກຳລັງດາວໂຫຼດ… {p}% ({d} / {t})
-app_template_download_paused	ນຳເຂົ້າອີກຄັ້ງເພື່ອສືບຕໍ່ — ໄຟລ໌ທີ່ສຳເລັດແລ້ວຈະຖືກເກັບໄວ້
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf

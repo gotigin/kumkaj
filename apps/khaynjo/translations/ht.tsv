@@ -346,6 +346,8 @@ app_template_skip	Sote pou kounye a
 app_template_status	Sèvè a pare — enpòte yon modèl, oswa sote
 app_template_importing	Y ap aplike {title}…
 app_template_downloading	Ap telechaje modèl…
+app_template_download_progress	Ap telechaje… {p}% ({d} / {t})
+app_template_download_paused	Enpòte ankò pou kontinye — fichye ki fini yo rete
 app_template_public_hdr	Modèl piblik
 app_template_private_hdr	Modèl prive
 app_template_public_hint	Louvri seksyon sa a pou chaje lis piblik la (bezwen entènèt yon fwa).
@@ -626,6 +628,7 @@ choose_device_use	Chwazi Sèvè oswa Kliyan.
 paired_note	Makonnen. Debloke pou vann, oswa Rafrechi pou dènye a.
 last_update_at	Dènye aktyalizasyon: {time}.
 pair_intro	Chèche sèvè a, oswa ekri adrès li ak kòd makonnen an.
+pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
 queue_waiting	Ap tann rive nan boutik la ({n}):
 queue_tries	Eseye {n} fwa · dènye repons: {e}
 save_backup_copy	Sove yon kopi sovgad…
@@ -1266,6 +1269,8 @@ taxable_value	Valè taksab
 gst_inside_price_note	({tax} ladan pri)
 start_with_template	Kòmanse ak modèl meni nou an
 template_heading	Modèl meni nou an
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf
 template_info	{c} kategori ak {d} plat ak foto, pare pou ajoute. Pri kòmanse a ₹0 — mete pa w apre.
 template_import	Enpòte modèl konplè
 template_confirm	Ajoute {d} plat ak kategori yo? Plat ou deja genyen rete jan yo ye.
@@ -1363,7 +1368,3 @@ recent_changes	Chanjman resan
 lane_declared_label	Fakti taks
 lane_owner_label	Nòt kach
 money_lane_bill	Kont: {lane}
-app_template_download_progress	Ap telechaje… {p}% ({d} / {t})
-app_template_download_paused	Enpòte ankò pou kontinye — fichye ki fini yo rete
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf

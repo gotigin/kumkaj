@@ -346,6 +346,8 @@ app_template_skip	דלג לעכשיו
 app_template_status	השרת מוכן — ייבאו תבנית או דלגו
 app_template_importing	מחילים את {title}…
 app_template_downloading	מוריד תבנית…
+app_template_download_progress	מוריד… {p}% ({d} / {t})
+app_template_download_paused	ייבאו שוב כדי להמשיך — קבצים שהושלמו נשמרים
 app_template_public_hdr	תבניות ציבוריות
 app_template_private_hdr	תבנית פרטית
 app_template_public_hint	פתחו את החלק הזה כדי לטעון את הרשימה הציבורית (נדרש אינטרנט פעם אחת).
@@ -626,6 +628,7 @@ choose_device_use	בחרו שרת או מסוף.
 paired_note	מזווג. פתחו כדי למכור, או רעננו לעדכני.
 last_update_at	עדכון אחרון: {time}.
 pair_intro	מצאו את השרת, או הקלידו את הכתובת ואת קוד הזיווג.
+pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
 queue_waiting	ממתין להגיע לחנות ({n}):
 queue_tries	נוסה {n} פעמים · תשובה אחרונה: {e}
 save_backup_copy	שמור עותק גיבוי…
@@ -1266,6 +1269,8 @@ taxable_value	ערך חייב במס
 gst_inside_price_note	({tax} כלול)
 start_with_template	התחילו עם תבנית התפריט שלנו
 template_heading	תבנית התפריט שלנו
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf
 template_info	{c} קטגוריות ו־{d} מנות עם תמונות, מוכנות להוספה. המחירים מתחילים מ־₹0 — קבעו את שלכם אחר כך.
 template_import	ייבא תבנית מלאה
 template_confirm	להוסיף {d} מנות עם הקטגוריות שלהן? מנות שכבר יש לכם נשארות כפי שהן.
@@ -1363,7 +1368,3 @@ recent_changes	שינויים אחרונים
 lane_declared_label	חשבונית מס
 lane_owner_label	תזכיר מזומן
 money_lane_bill	חשבון: {lane}
-app_template_download_progress	מוריד… {p}% ({d} / {t})
-app_template_download_paused	ייבאו שוב כדי להמשיך — קבצים שהושלמו נשמרים
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf

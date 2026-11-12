@@ -346,6 +346,8 @@ app_template_skip	ابھی چھوڑیں
 app_template_status	سرور تیار ہے — ٹیمپلیٹ درآمد کریں، یا چھوڑ دیں
 app_template_importing	{title} لگا رہے ہیں…
 app_template_downloading	ٹیمپلیٹ ڈاؤن لوڈ ہو رہا ہے…
+app_template_download_progress	ڈاؤن لوڈ ہو رہا ہے… {p}% ({d} / {t})
+app_template_download_paused	دوبارہ شروع کرنے کے لیے پھر سے درآمد کریں — مکمل فائلیں محفوظ رہتی ہیں
 app_template_public_hdr	عوامی ٹیمپلیٹ
 app_template_private_hdr	نجی ٹیمپلیٹ
 app_template_public_hint	عوامی فہرست لوڈ کرنے کے لیے یہ حصہ کھولیں (ایک بار انٹرنیٹ درکار ہے)۔
@@ -626,6 +628,7 @@ choose_device_use	منتخب کریں کہ یہ ڈیوائس کیسے استعم
 paired_note	جڑ گیا۔ بیچنے کے لیے کھولیں، یا دکان سے تازہ ترین لینے کے لیے تازہ کریں۔
 last_update_at	دکان سے آخری اپ ڈیٹ: {time}۔
 pair_intro	سرور تلاش کریں، یا اس کا پتا اور پیئرنگ کوڈ لکھیں۔
+pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
 queue_waiting	دکان تک پہنچنے کے انتظار میں ({n}):
 queue_tries	{n} بار کوشش · آخری جواب: {e}
 save_backup_copy	بیک اپ کی کاپی محفوظ کریں…
@@ -1266,6 +1269,8 @@ taxable_value	قابلِ ٹیکس قیمت
 gst_inside_price_note	({tax} شامل)
 start_with_template	ہمارے مینو ٹیمپلیٹ سے شروع کریں
 template_heading	ہمارا مینو ٹیمپلیٹ
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf
 template_info	{c} زمرے اور {d} ڈشیں تصاویر کے ساتھ تیار۔ قیمت ₹0 — بعد میں اپنی قیمت رکھیں۔
 template_import	مکمل ٹیمپلیٹ شامل کریں
 template_confirm	{d} ڈشیں ان کے زمروں سمیت شامل کریں؟ آپ کی موجودہ ڈشیں ویسی ہی رہیں گی۔
@@ -1363,7 +1368,3 @@ recent_changes	حالیہ تبدیلیاں
 lane_declared_label	ٹیکس انوائس
 lane_owner_label	کیش میمو
 money_lane_bill	بل: {lane}
-app_template_download_progress	ڈاؤن لوڈ ہو رہا ہے… {p}% ({d} / {t})
-app_template_download_paused	دوبارہ شروع کرنے کے لیے پھر سے درآمد کریں — مکمل فائلیں محفوظ رہتی ہیں
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf

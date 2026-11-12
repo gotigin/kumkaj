@@ -24,20 +24,19 @@ W=600
 H=400
 Q=80
 
-# Reviewed 2026-11-11: research photos that do not show the plated dish
-# (people, shop fronts, signs, landscapes, packaging, clip-art, raw flour).
+# Reviewed 2026-11-12: research photos that do not show the plated dish
+# (people, shop fronts, signs, landscapes, packaging, clip-art, wrong cuisine).
 # These countries keep their names and show the "photo coming" card.
+# Cleared after re-check: Ethiopia (Injera and doro wat), Hungary (Gulyásleves),
+# Suriname (Pom gerecht), Fiji (Ota ika ≈ kokoda).
 declare -A REJECT=(
-  # Still no safe plated-dish photo on Commons under free licenses.
-  [Dominica]="frog / restaurant branding, not plated mountain chicken"
-  [Ethiopia]="no safe doro wat hit (jazz band / wrong images)"
-  [Fiji]="kokoda trail / landscape, not the dish"
-  [Haiti]="museum / portrait, not griot"
-  [Hungary]="person named Gulyás, not the stew"
-  [Micronesia]="person named Kon, not the dish"
-  [Oman]="dance photo, not shuwa"
-  [Suriname]="cheerleader pompoms, not pom"
-  [Tuvalu]="pulaka pit (agriculture), not the dish"
+  [Dominica]="no plated mountain chicken under free license"
+  [Marshall_Islands]="Filipino ginataan, not Māāj"
+  [Micronesia]="people carrying food, not Kon"
+  [Palau]="dried leaves, not demok"
+  [Niue]="medical diagram (kidney), not takihi"
+  [Oman]="no plated shuwa under free license"
+  [Tuvalu]="pulaka plant field, not the dish"
 )
 # Sources narrower than this are upscaled thumbnails — too soft for a card.
 MIN_SRC_W=280
@@ -56,7 +55,8 @@ mkdir -p "$OUT_IMG"
 TMP_RS="$(mktemp)"
 TMP_SRC="$(mktemp)"
 TMP_REJ="$(mktemp)"
-trap 'rm -f "$TMP_RS" "$TMP_SRC" "$TMP_REJ"' EXIT
+TMP_MISS="$(mktemp)"
+trap 'rm -f "$TMP_RS" "$TMP_SRC" "$TMP_REJ" "$TMP_MISS"' EXIT
 declare -A KEEP=()
 n=0
 photos=0
@@ -99,6 +99,7 @@ while IFS= read -r folder; do
   fi
   if [[ -n "$why" ]]; then
     printf "| %s | %s | — | not shown: %s |\n" "$country" "$(jq -r .dish_en "$meta")" "$why" >> "$TMP_REJ"
+    printf "| %s | %s | — | %s |\n" "$country" "$(jq -r .dish_en "$meta")" "$why" >> "$TMP_MISS"
   elif [[ -n "$image" && -f "$PACK/$folder/$image" ]]; then
     file="$slug.webp"
     dest="$OUT_IMG/$file"
@@ -114,6 +115,9 @@ while IFS= read -r folder; do
     jq -r --arg file "$file" \
       '"| \(.country_en) | \(.dish_en) | \($file) | \((.image_source // "") | gsub("\\|"; "/")) |"' \
       "$meta" >> "$TMP_SRC"
+  else
+    printf "| %s | %s | — | no free plated photo in research pack yet |\n" \
+      "$country" "$(jq -r .dish_en "$meta")" >> "$TMP_MISS"
   fi
   # @json strings are valid Rust literals here (non-ASCII stays raw); refuse
   # \u escapes, which Rust spells differently.
@@ -142,8 +146,13 @@ if [[ -s "$TMP_REJ" ]]; then
   printf '\n## Research photos not shown\n\n| Country | Dish | File | Reason |\n|---|---|---|---|\n' >> "$TMP_SRC"
   cat "$TMP_REJ" >> "$TMP_SRC"
 fi
+if [[ -s "$TMP_MISS" ]]; then
+  miss_n="$(wc -l < "$TMP_MISS" | tr -d ' ')"
+  printf '\n## Photo coming (%s countries)\n\nCards keep names and show “Photo coming” until a free-license plated\ndish is in the research pack. Open work: `sites/khaynjo/README.md` § Remaining.\n\n| Country | Dish | File | Reason |\n|---|---|---|---|\n' "$miss_n" >> "$TMP_SRC"
+  cat "$TMP_MISS" >> "$TMP_SRC"
+fi
 mv "$TMP_SRC" "$OUT_IMG/SOURCES.md"
-rm -f "$TMP_REJ"
+rm -f "$TMP_REJ" "$TMP_MISS"
 trap - EXIT
 echo "world shelf: $n countries, $photos photos → $OUT_IMG ($(du -sh "$OUT_IMG" | cut -f1)), $OUT_RS"
 

@@ -144,13 +144,18 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
 
         // Find-server progress stays on `client_found_label`. Hide the Find
         // face for the whole scan — never set_text on that Fill+wrap Stack*.
+        // Also hide Find while already paired (new-pair block is off).
         let client_busy = client_find_busy().load(std::sync::atomic::Ordering::SeqCst);
+        let client_paired = app_state()
+            .try_lock()
+            .map(|st| st.client_paired)
+            .unwrap_or(false);
         self.ui
             .button(cx, ids!(client_find_btn))
-            .set_visible(cx, !client_busy);
+            .set_visible(cx, !client_busy && !client_paired);
         self.ui
             .button(cx, ids!(client_find_cancel))
-            .set_visible(cx, client_busy);
+            .set_visible(cx, client_busy && !client_paired);
 
         // DeviceSetup Client open (migrate) — WrapLabel + QuietFitBtn Cancel.
         self.paint_role_open_busy_chrome(cx);
@@ -3351,11 +3356,16 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
                         st.pair_note.clone()
                     } else if st.client_paired {
                         let updated = phone::link_state().updated_at;
-                        if updated.is_empty() {
-                            st.t("paired_note")
+                        let base = if updated.is_empty() {
+                            st.t("pair_resume_hint")
                         } else {
-                            format!("{} {}", st.t("paired_note"), st.t("last_update_at").replace("{time}", &updated))
-                        }
+                            format!(
+                                "{} {}",
+                                st.t("pair_resume_hint"),
+                                st.t("last_update_at").replace("{time}", &updated)
+                            )
+                        };
+                        base
                     } else {
                         st.t("pair_intro")
                     }
@@ -3468,19 +3478,35 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
                     .set_text(cx, &plain_display_text(&status));
             }
             {
-                let (paired, on_lock) = {
+                let (paired, on_lock, on_pair) = {
                     let st = app_state().lock().unwrap();
-                    (st.client_paired, st.screen == Screen::Lock)
+                    (
+                        st.client_paired,
+                        st.screen == Screen::Lock,
+                        st.screen == Screen::ClientPair,
+                    )
                 };
                 self.ui.button(cx, ids!(client_connection_btn)).set_visible(cx, is_client && paired);
-                // Client Lock: Find / pick among Servers without unlocking first.
+                // Client Lock: open connection manager without unlocking first.
                 self.ui
                     .button(cx, ids!(lock_client_connection))
                     .set_visible(cx, is_client && on_lock);
-                // Only after Pair now — opens the PIN screen (not a second unlock action).
+                // Enter PIN after Pair, or when managing an existing pairing.
                 self.ui
                     .button(cx, ids!(client_skip_lock))
                     .set_visible(cx, is_client && paired);
+                // First-pair block (Find / host / code). Hidden while already paired —
+                // FieldInputs ignore set_visible, so the whole View is toggled.
+                let pair_busy = client_pair_busy().load(std::sync::atomic::Ordering::SeqCst);
+                self.ui
+                    .view(cx, ids!(client_pair_new_block))
+                    .set_visible(cx, on_pair && (!paired || pair_busy));
+                self.ui
+                    .button(cx, ids!(client_sync_btn))
+                    .set_visible(cx, is_client && paired && on_pair);
+                self.ui
+                    .button(cx, ids!(client_unpair))
+                    .set_visible(cx, is_client && paired && on_pair);
             }
             let screen = app_state().lock().unwrap().screen;
             self.paint_nav_tabs(cx, screen);

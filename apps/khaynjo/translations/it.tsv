@@ -346,6 +346,8 @@ app_template_skip	Salta per ora
 app_template_status	Server pronto — importa un modello o salta
 app_template_importing	Applicazione di {title}…
 app_template_downloading	Download del modello…
+app_template_download_progress	Download in corso… {p}% ({d} / {t})
+app_template_download_paused	Importa di nuovo per riprendere — i file completati restano
 app_template_public_hdr	Modelli pubblici
 app_template_private_hdr	Modello privato
 app_template_public_hint	Apri questa sezione per caricare l'elenco pubblico (serve internet una volta).
@@ -626,6 +628,7 @@ choose_device_use	Scegli come usare questo dispositivo.
 paired_note	Abbinato. Sblocca per vendere, oppure Aggiorna per avere gli ultimi dati del locale.
 last_update_at	Ultimo aggiornamento dal locale: {time}.
 pair_intro	Trova il server, oppure scrivi il suo indirizzo e il codice di abbinamento.
+pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
 queue_waiting	In attesa di arrivare al locale ({n}):
 queue_tries	{n} tentativi · ultima risposta: {e}
 save_backup_copy	Salva una copia di backup…
@@ -1266,6 +1269,8 @@ taxable_value	Imponibile
 gst_inside_price_note	({tax} incluso)
 start_with_template	Inizia con il nostro modello di menu
 template_heading	Il nostro modello di menu
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf
 template_info	{c} categorie e {d} piatti con foto, pronti da aggiungere. Prezzo ₹0 — imposta il tuo dopo.
 template_import	Importa tutto il modello
 template_confirm	Aggiungere {d} piatti con le loro categorie? Quelli che hai restano come sono.
@@ -1363,7 +1368,3 @@ recent_changes	Modifiche recenti
 lane_declared_label	Fattura fiscale
 lane_owner_label	Scontrino
 money_lane_bill	Fattura: {lane}
-app_template_download_progress	Download in corso… {p}% ({d} / {t})
-app_template_download_paused	Importa di nuovo per riprendere — i file completati restano
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf

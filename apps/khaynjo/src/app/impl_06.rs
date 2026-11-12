@@ -446,6 +446,10 @@ impl App {
                 }
             }
         }
+        // Soft hint only — does not clear `client/` pairing on this install.
+        if let Some(base) = st.data_base.as_ref() {
+            let _ = local_servers::save_last_session_mode(base, "server");
+        }
         st.screen = Screen::DeviceSetup;
         st.status = locale::t(&st.locale.language, "app_template_status");
     }
@@ -694,6 +698,10 @@ impl App {
         st.nav_forward.clear();
         // Parent of Lock so mouse/Android Back returns to Server/Client pick.
         st.nav_back.push(Screen::DeviceSetup);
+        // Soft hint only — does not clear `client/` pairing on this install.
+        if let Some(base) = st.data_base.as_ref() {
+            let _ = local_servers::save_last_session_mode(base, "server");
+        }
         if let Some(store) = st.store.as_ref() {
             let _ = store.set_device_role(DeviceRole::Server.as_str());
             if switching_in {
@@ -749,8 +757,10 @@ impl App {
     ///
     /// Do **not** call full `reload_all` here — on Android that was a second
     /// multi-second UI-thread freeze (Cancel dead) after the worker already
-    /// finished. ClientPair only needs locale + paired flag; the Server
-    /// snapshot fills the rest after Pair.
+    /// finished. Unpaired ClientPair only needs locale + paired flag; the
+    /// Server snapshot fills the rest after Pair. Already-paired resume loads
+    /// Lock basics (staff / venue) from the client cache only — never auto-picks
+    /// a Find result (multi-server Wi‑Fi).
     fn finish_client_mode_opened(&mut self, cx: &mut Cx, store: Store) {
         if role_cancelled() {
             drop_store_off_ui(Some(store));
@@ -761,14 +771,14 @@ impl App {
         }
         // Busy chrome still on ("Preparing desk…") from role_open_finish.
         self.paint_role_open_busy_chrome(cx);
-        let client_paired = store_client_paired(Some(&store));
-        let status_msg = {
+        let resume = store.client_resume_ok().unwrap_or(false);
+        let phone_path = resume.then(|| store.db_path().to_path_buf());
+        let (old, msg, screen) = {
             let mut st = app_state().lock().unwrap();
             let old = st.store.take();
             st.store = Some(store);
             st.picking_server = false;
             let chosen = (st.language_follow_platform, st.locale.language.clone());
-            st.client_paired = client_paired;
             // Keep the language the user just picked on DeviceSetup — do not
             // reload books locale over it (and skip full reload_all on Android).
             st.language_follow_platform = chosen.0;
@@ -782,32 +792,66 @@ impl App {
             st.pin_buffer.clear();
             st.nav_back.clear();
             st.nav_forward.clear();
-            st.products.clear();
-            st.tables.clear();
-            st.staff.clear();
-            st.categories.clear();
-            st.stations.clear();
-            st.recent_sales.clear();
             st.found_servers.clear();
-            st.apply_lock_role_selection();
-            // Always ClientPair — Find / tap a shop / Pair. Never skip to Lock
-            // and trap the till on a previous pairing (multi-server Wi‑Fi).
             st.nav_back.push(Screen::DeviceSetup);
-            st.screen = Screen::ClientPair;
-            let msg = if client_paired {
-                locale::t(&st.locale.language, "status_client_unlock")
+            if let Some(base) = st.data_base.as_ref() {
+                let _ = local_servers::save_last_session_mode(base, "client");
+            }
+            let (screen, msg) = if resume {
+                // Resume remembered pairing — Lock, not Find + code.
+                // Light hydrate for PIN / staff chip; phone worker refreshes books.
+                st.products.clear();
+                st.tables.clear();
+                st.categories.clear();
+                st.stations.clear();
+                st.recent_sales.clear();
+                st.client_paired = true;
+                let (staff, title, icon) = st
+                    .store
+                    .as_ref()
+                    .map(|store| {
+                        (
+                            store.list_staff().unwrap_or_default(),
+                            store.venue_title().unwrap_or_default(),
+                            store.venue_icon_key().unwrap_or_default(),
+                        )
+                    })
+                    .unwrap_or_default();
+                st.staff = staff;
+                st.venue_title = title;
+                st.venue_icon_key = icon;
+                st.pair_note.clear();
+                st.apply_lock_role_selection();
+                st.screen = Screen::Lock;
+                let msg = locale::t(&st.locale.language, "status_client_unlock");
+                st.status = msg.clone();
+                (Screen::Lock, msg)
             } else {
-                "Client Mode — find the Server, tap the shop you want, then Pair".into()
+                st.client_paired = false;
+                st.products.clear();
+                st.tables.clear();
+                st.staff.clear();
+                st.categories.clear();
+                st.stations.clear();
+                st.recent_sales.clear();
+                st.apply_lock_role_selection();
+                st.screen = Screen::ClientPair;
+                let msg: String =
+                    "Client Mode — find the Server, tap the shop you want, then Pair".into();
+                st.status = msg.clone();
+                (Screen::ClientPair, msg)
             };
-            st.status = msg.clone();
-            (old, msg)
+            (old, msg, screen)
         };
-        drop_store_off_ui(status_msg.0);
+        drop_store_off_ui(old);
+        if let Some(path) = phone_path {
+            phone::start(path);
+        }
         end_role_open_busy();
         self.paint_role_open_busy_chrome(cx);
-        self.show_screen(cx, Screen::ClientPair);
+        self.show_screen(cx, screen);
         self.paint_header_back_chrome(cx);
-        self.set_status(cx, status_msg.1);
+        self.set_status(cx, msg);
         *deferred_role_open_sync_frame().lock().unwrap() = Some(cx.new_next_frame());
     }
 

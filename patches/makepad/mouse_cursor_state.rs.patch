@@ -76,6 +76,8 @@
 +                }
              }
              Hit::FingerHoverOut(_) => {
++                // Clear Hand so the next widget (or page Default) is not stuck.
++                cx.set_cursor(MouseCursor::Default);
                  self.animator_play(cx, ids!(hover.off));
 --- a/widgets/src/text_input.rs
 +++ b/widgets/src/text_input.rs

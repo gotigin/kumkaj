@@ -346,6 +346,8 @@ app_template_skip	Pagaidām izlaist
 app_template_status	Serveris gatavs — importējiet veidni vai izlaidiet
 app_template_importing	Lieto {title}…
 app_template_downloading	Lejupielādē veidni…
+app_template_download_progress	Lejupielādē… {p}% ({d} / {t})
+app_template_download_paused	Importējiet vēlreiz, lai turpinātu — pabeigtie faili tiek saglabāti
 app_template_public_hdr	Publiskās veidnes
 app_template_private_hdr	Privāta veidne
 app_template_public_hint	Atveriet šo sadaļu, lai ielādētu publisko sarakstu (internets nepieciešams vienreiz).
@@ -626,6 +628,7 @@ choose_device_use	Izvēlieties serveri vai termināli.
 paired_note	Savienots pārī. Atbloķējiet, lai pārdotu, vai atsvaidziniet jaunāko.
 last_update_at	Pēdējais atjauninājums: {time}.
 pair_intro	Atrodiet serveri vai ierakstiet tā adresi un pāra kodu.
+pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
 queue_waiting	Gaida, lai sasniegtu veikalu ({n}):
 queue_tries	Mēģināts {n} reizes · pēdējā atbilde: {e}
 save_backup_copy	Saglabāt dublējuma kopiju…
@@ -1266,6 +1269,8 @@ taxable_value	Ar nodokli apliekamā vērtība
 gst_inside_price_note	({tax} iekļauts)
 start_with_template	Sākt ar mūsu ēdienkartes veidni
 template_heading	Mūsu ēdienkartes veidne
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf
 template_info	{c} kategorijas un {d} ēdieni ar foto, gatavi pievienošanai. Cenas sākas no ₹0 — iestatiet savas pēc tam.
 template_import	Importēt pilnu veidni
 template_confirm	Pievienot {d} ēdienus ar to kategorijām? Ēdieni, kas jums jau ir, paliek kā ir.
@@ -1363,7 +1368,3 @@ recent_changes	Nesenās izmaiņas
 lane_declared_label	Nodokļa rēķins
 lane_owner_label	Skaidrās naudas kvīts
 money_lane_bill	Rēķins: {lane}
-app_template_download_progress	Lejupielādē… {p}% ({d} / {t})
-app_template_download_paused	Importējiet vēlreiz, lai turpinātu — pabeigtie faili tiek saglabāti
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf

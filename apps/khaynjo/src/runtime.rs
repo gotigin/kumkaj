@@ -1649,13 +1649,6 @@ fn lan_key(member: &StaffMember) -> String {
     if member.is_owner() { "owner".into() } else { member.id.clone() }
 }
 
-fn store_client_paired(store: Option<&Store>) -> bool {
-    store
-        .and_then(|s| s.client_paired().ok())
-        .unwrap_or(false)
-}
-
-
 /// UI-thread stall meter (every app has its own copy). One event that takes
 /// this long froze the window for that long: taps queue up, a Cancel cannot
 /// paint, Android may show "isn't responding". Each one is logged with the

@@ -346,6 +346,8 @@ app_template_skip	د اوس لپاره پریږدئ
 app_template_status	سرور چمتو دی — يوه کينډۍ راوړئ، يا يې پرېږدئ
 app_template_importing	درخواست کول {title}...
 app_template_downloading	کينډۍ ډاونلوډېږي…
+app_template_download_progress	ډاونلوډ کېږي… {p}% ({d} / {t})
+app_template_download_paused	د دوام لپاره بیا وارد کړئ — بشپړ شوي فایلونه ساتل کېږي
 app_template_public_hdr	عامه کينډۍ
 app_template_private_hdr	شخصي کينډۍ
 app_template_public_hint	د عامه لېست د پورته کولو لپاره دا برخه پرانيزئ (يو ځل انټرنېټ پکار دی).
@@ -626,6 +628,7 @@ choose_device_use	سرور یا کلاینټ غوره کړئ.
 paired_note	جوړه شوې. د پلور لپاره خلاص کړئ، یا د وروستي لپاره تازه کړئ.
 last_update_at	وروستی تازه: {time}.
 pair_intro	سرور ومومئ، یا د هغې پته او جوړه کوډ ټایپ کړئ.
+pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
 queue_waiting	هټۍ ته د رسیدو انتظار ({n}):
 queue_tries	{n} ځله هڅه شوې · وروستی ځواب: {e}
 save_backup_copy	یو بیک اپ کاپي خوندي کړئ ...
@@ -1266,6 +1269,8 @@ taxable_value	د مالیې وړ ارزښت
 gst_inside_price_note	({tax} ټول شموله)
 start_with_template	زموږ د مینو ټیمپلیټ سره پیل کړئ
 template_heading	زموږ د مینو ټیمپلیټ
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf
 template_info	{d} {c} ره خواړه، اضافه کولو ته چمتو دي. نرخونه له ₹0 پیل کیږي - وروسته خپل ترتیب کړئ.
 template_import	بشپړ ټیمپلیټ وارد کړئ
 template_confirm	{d} د دوی کټګوریو سره اضافه کړئ؟ هغه لوښي چې تاسو یې دمخه لرئ لکه څنګه چې دوی دي.
@@ -1363,7 +1368,3 @@ recent_changes	وروستي بدلونونه
 lane_declared_label	د مالیې رسید
 lane_owner_label	نغدي یادداشت
 money_lane_bill	بیل: {lane}
-app_template_download_progress	ډاونلوډ کېږي… {p}% ({d} / {t})
-app_template_download_paused	د دوام لپاره بیا وارد کړئ — بشپړ شوي فایلونه ساتل کېږي
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf

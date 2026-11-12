@@ -346,6 +346,8 @@ app_template_skip	Häzirlikçe geçiň
 app_template_status	Serwer taýýar — şablon import ediň ýa-da geçiň
 app_template_importing	{title}…
 app_template_downloading	Şablon ýüklenýär…
+app_template_download_progress	Ýüklenýär… {p}% ({d} / {t})
+app_template_download_paused	Dowam etmek üçin täzeden import ediň — tamamlanan faýllar saklanýar
 app_template_public_hdr	Umumy şablonlar
 app_template_private_hdr	Şahsy şablon
 app_template_public_hint	Umumy sanawy ýüklemek üçin bu bölümi açyň (bir gezek internet gerek).
@@ -626,6 +628,7 @@ choose_device_use	Serwer ýa-da Müşderi saýlaň.
 paired_note	Jübüt. Satmak üçin açyň ýa-da iň soňkusy üçin täzeläň.
 last_update_at	Iň soňky täzelenme: {time}.
 pair_intro	Serweri tapyň ýa-da onuň salgysyny we jübüt koduny ýazyň.
+pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
 queue_waiting	Dükana ýetmek üçin garaşmak ({n}):
 queue_tries	{n} gezek synanyşdy · soňky jogap: {e}
 save_backup_copy	Uptiýaçlyk nusgasyny ýazdyryň ...
@@ -1266,6 +1269,8 @@ taxable_value	Salgyt salynýan baha
 gst_inside_price_note	({tax} öz içine alýar)
 start_with_template	Menýu şablonymyzdan başlaň
 template_heading	Menýu şablony
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf
 template_info	Suratlar bilen {c} kategoriýalary we {d} tagamlary, goşmaga taýyn. Bahalar ₹ 0-dan başlaýar - soňundan düzüň.
 template_import	Doly şablony import ediň
 template_confirm	Kategoriýalary bilen {d} tagamlary goşuň? Naharlar öňküsi ýaly galýar.
@@ -1363,7 +1368,3 @@ recent_changes	Soňky üýtgeşmeler
 lane_declared_label	Salgyt-faktura
 lane_owner_label	Nagt ýatlama
 money_lane_bill	Hasap: {lane}
-app_template_download_progress	Ýüklenýär… {p}% ({d} / {t})
-app_template_download_paused	Dowam etmek üçin täzeden import ediň — tamamlanan faýllar saklanýar
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf

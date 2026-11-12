@@ -1,12 +1,13 @@
 --- a/widgets/src/markdown.rs
 +++ b/widgets/src/markdown.rs
-@@ -234,7 +234,8 @@
+@@ -234,7 +234,9 @@
      }
  
      fn is_interactive(&self) -> bool {
 -        false
 +        // Selectable Markdown must participate in hit-testing (sites + WrapLabel).
-+        self.text_flow.selectable
++        // `selection_gestures: false` defers to a document-selectable parent View.
++        self.text_flow.selectable && self.text_flow.selection_gestures
      }
  
      fn handle_event(&mut self, cx: &mut Cx, event: &Event, scope: &mut Scope) {

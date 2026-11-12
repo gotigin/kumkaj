@@ -346,6 +346,8 @@ app_template_skip	រំលងឥឡូវ
 app_template_status	ម៉ាស៊ីនមេរួចរាល់ — នាំចូលគំរូ ឬរំលង
 app_template_importing	កំពុងអនុវត្ត {title}…
 app_template_downloading	កំពុងទាញយកគំរូ…
+app_template_download_progress	កំពុងទាញយក… {p}% ({d} / {t})
+app_template_download_paused	នាំចូលម្ដងទៀតដើម្បីបន្ត — ឯកសារដែលរួចហើយត្រូវបានរក្សាទុក
 app_template_public_hdr	គំរូសាធារណៈ
 app_template_private_hdr	គំរូឯកជន
 app_template_public_hint	បើកផ្នែកនេះដើម្បីផ្ទុកបញ្ជីសាធារណៈ (ត្រូវការអ៊ីនធឺណិតម្ដង)។
@@ -626,6 +628,7 @@ choose_device_use	ជ្រើស Server ឬម៉ាស៊ីនភ្ញៀវ
 paired_note	បានផ្គូផ្គង។ ដោះសោដើម្បីលក់ ឬធ្វើឱ្យស្រស់សម្រាប់ថ្មីបំផុត។
 last_update_at	ធ្វើបច្ចុប្បន្នភាពចុងក្រោយ៖ {time}។
 pair_intro	ស្វែងរក server ឬវាយអាសយដ្ឋាន និងកូដផ្គូផ្គងរបស់វា។
+pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
 queue_waiting	កំពុងរង់ចាំដល់ហាង ({n})៖
 queue_tries	បានសាក {n} ដង · ចម្លើយចុងក្រោយ៖ {e}
 save_backup_copy	រក្សាទុកច្បាប់ចម្លង…
@@ -1266,6 +1269,8 @@ taxable_value	តម្លៃជាប់ពន្ធ
 gst_inside_price_note	({tax} ក្នុងតម្លៃ)
 start_with_template	ចាប់ផ្ដើមដោយគំរូម៉ឺនុយរបស់យើង
 template_heading	គំរូម៉ឺនុយរបស់យើង
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf
 template_info	ប្រភេទ {c} និងម្ហូប {d} មានរូប រួចរាល់ដើម្បីបន្ថែម។ តម្លៃចាប់ផ្ដើមពី ₹0 — កំណត់របស់អ្នកក្រោយ។
 template_import	នាំចូលគំរូពេញ
 template_confirm	បន្ថែមម្ហូប {d} ជាមួយប្រភេទរបស់វា? ម្ហូបដែលអ្នកមានរួចនៅដដែល។
@@ -1363,7 +1368,3 @@ recent_changes	ការផ្លាស់ប្ដូរថ្មីៗ
 lane_declared_label	វិក្កយបត្រពន្ធ
 lane_owner_label	កំណត់ចំណាំសាច់ប្រាក់
 money_lane_bill	វិក្កយបត្រ៖ {lane}
-app_template_download_progress	កំពុងទាញយក… {p}% ({d} / {t})
-app_template_download_paused	នាំចូលម្ដងទៀតដើម្បីបន្ត — ឯកសារដែលរួចហើយត្រូវបានរក្សាទុក
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf

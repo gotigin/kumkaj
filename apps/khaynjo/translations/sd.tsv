@@ -346,6 +346,8 @@ app_template_skip	هاڻي لاءِ ڇڏي ڏيو
 app_template_status	سرور تيار — ٽيمپليٽ درآمد ڪريو، يا ڇڏي ڏيو
 app_template_importing	{title} لاڳو ٿي رهيو آهي...
 app_template_downloading	ٽيمپليٽ ڊائونلوڊ ٿي رهيو آهي…
+app_template_download_progress	ڊائونلوڊ ٿي رهيو آهي… {p}% ({d} / {t})
+app_template_download_paused	ٻيهر شروع ڪرڻ لاءِ ٻيهر درآمد ڪريو — مڪمل فائلون رکيون وڃن ٿيون
 app_template_public_hdr	عوامي ٽيمپليٽ
 app_template_private_hdr	ذاتي ٽيمپليٽ
 app_template_public_hint	عوامي فهرست لوڊ ڪرڻ لاءِ هي حصو کوليو (هڪ ڀيرو انٽرنيٽ گهرجي).
@@ -626,6 +628,7 @@ choose_device_use	Server يا Client چونڊيو.
 paired_note	جوڙو ٿيل. وڪرو ڪرڻ لاءِ آنلاڪ ڪريو، يا تازو ڪرڻ لاءِ ريفريش ڪريو.
 last_update_at	آخري تازه ڪاري: {time}.
 pair_intro	سرور ڳوليو، يا انجو پتو ۽ پئيرنگ ڪوڊ لکو.
+pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
 queue_waiting	دوڪان تائين پهچڻ جو انتظار ({n}):
 queue_tries	ڪوشش ڪئي {n} ڀيرا · آخري جواب: {e}
 save_backup_copy	بيڪ اپ ڪاپي محفوظ ڪريو...
@@ -1266,6 +1269,8 @@ taxable_value	ٽيڪس لائق قيمت
 gst_inside_price_note	({tax} سميت)
 start_with_template	اسان جي مينيو ٽيمپليٽ سان شروع ڪريو
 template_heading	اسان جو مينيو ٽيمپليٽ
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf
 template_info	{c} ڪيٽيگريون ۽ {d} ڊشون فوٽوز سان، شامل ڪرڻ لاءِ تيار. قيمتون ₹0 کان شروع ٿين ٿيون — پنهنجي قيمت پوءِ مقرر ڪريو.
 template_import	مڪمل ٽيمپليٽ درآمد ڪريو
 template_confirm	{d} ڊشز انهن جي قسمن سان شامل ڪريو؟ جيڪي ڊشز توهان وٽ اڳ ۾ آهن، اهي جيئن آهن تيئن رهنديون.
@@ -1363,7 +1368,3 @@ recent_changes	تازيون تبديليون
 lane_declared_label	ٽيڪس انوائس
 lane_owner_label	نقد ميمو
 money_lane_bill	بل: {lane}
-app_template_download_progress	ڊائونلوڊ ٿي رهيو آهي… {p}% ({d} / {t})
-app_template_download_paused	ٻيهر شروع ڪرڻ لاءِ ٻيهر درآمد ڪريو — مڪمل فائلون رکيون وڃن ٿيون
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf

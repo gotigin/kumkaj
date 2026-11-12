@@ -1,0 +1,375 @@
+--- a/widgets/src/view.rs
++++ b/widgets/src/view.rs
+@@ -174,6 +174,12 @@
+     selection_committed: bool,
+     #[rust]
+     select_down_abs: DVec2,
++    /// When set, drag-select stays in this x-band so a tall side card (floor /
++    /// order / ticket) cannot steal the y-band or appear in the middle fill
++    /// while the pointer is still in the copy column — including across
++    /// section background bands.
++    #[rust]
++    selection_column: Option<(f64, f64)>,
+ 
+     #[apply_default]
+     animator: Animator,
+@@ -1262,12 +1268,13 @@
+         let has_child = Self::widget_has_selectable_descendant(w);
+         // Tracker length after draw; `text()` covers Markdown `body` even if
+         // the selection tracker was cleared mid-frame.
++        // Include leaves even before they have a laid-out area — requiring a
++        // rect made Ctrl+A only select the focused / on-screen band, and those
++        // highlights stuck after scroll while off-screen chapters stayed out.
+         let len = Self::widget_selectable_text_len(w);
+         if len > 0 && !has_child {
+-            if Self::leaf_rect(cx, w).is_some() {
+-                out.push(w.clone());
+-                return;
+-            }
++            out.push(w.clone());
++            return;
+         }
+         w.children(&mut |_id, child| {
+             Self::collect_selectable_leaves_into(&child, cx, out);
+@@ -1396,6 +1403,54 @@
+         }
+     }
+ 
++    fn leaf_in_selection_column(&self, cx: &Cx, leaf: &WidgetRef) -> bool {
++        let Some((x0, x1)) = self.selection_column else {
++            return true;
++        };
++        let Some(rect) = Self::leaf_rect(cx, leaf) else {
++            return false;
++        };
++        // Small slop so a short Fit label still matches the wider Body under it.
++        let slop = 24.0;
++        rect.pos.x < x1 + slop && rect.pos.x + rect.size.x > x0 - slop
++    }
++
++    /// Lock drag-select to a reading column. Full-bleed headings (Fill across
++    /// the Wrap) must not lock the whole page width — that pulls side cards
++    /// (order / KOT / floor) into the same column and makes “How a service
++    /// runs” → step 1 feel unselectable.
++    fn lock_selection_column_at(&mut self, cx: &Cx, abs: DVec2, leaf: &WidgetRef) {
++        let Some(rect) = Self::leaf_rect(cx, leaf) else {
++            self.selection_column = None;
++            return;
++        };
++        let view_w = if self.area.is_valid(cx) {
++            self.area.rect(cx).size.x
++        } else {
++            rect.size.x
++        };
++        if rect.size.x > (view_w * 0.55).max(1.0) {
++            let band = (rect.size.x * 0.42).clamp(260.0, 560.0);
++            let mut x0 = abs.x - band * 0.5;
++            let mut x1 = abs.x + band * 0.5;
++            x0 = x0.clamp(rect.pos.x, rect.pos.x + rect.size.x);
++            x1 = x1.clamp(rect.pos.x, rect.pos.x + rect.size.x);
++            if x1 - x0 < 120.0 {
++                x0 = rect.pos.x;
++                x1 = (rect.pos.x + band).min(rect.pos.x + rect.size.x);
++            }
++            self.selection_column = Some((x0, x1));
++        } else {
++            self.selection_column = Some((rect.pos.x, rect.pos.x + rect.size.x));
++        }
++    }
++
++    fn column_leaf_idxs(&self, cx: &Cx, leaves: &[WidgetRef]) -> Vec<usize> {
++        (0..leaves.len())
++            .filter(|&i| self.leaf_in_selection_column(cx, &leaves[i]))
++            .collect()
++    }
++
+     fn hit_test_doc_selection(
+         &self,
+         cx: &Cx,
+@@ -1415,19 +1470,25 @@
+         if leaves.is_empty() {
+             return None;
+         }
++        // While drag-selecting in a copy column, ignore side-card leaves that
++        // share the pointer's y-band (hero floor card, order/ticket cards).
++        let pool = self.column_leaf_idxs(cx, leaves);
++        if pool.is_empty() {
++            return None;
++        }
+         let view_rect = self.area.rect(cx);
+         if abs.y < view_rect.pos.y {
+-            return Some((0, 0));
++            return Some((pool[0], 0));
+         }
+         if abs.y > view_rect.pos.y + view_rect.size.y {
+-            let last = leaves.len() - 1;
++            let last = *pool.last().unwrap();
+             return Some((last, leaves[last].selection_text_len()));
+         }
+ 
+         // 1. Direct hits (may be several when columns overlap in y).
+         let mut hit_idxs: Vec<usize> = Vec::new();
+-        for (i, leaf) in leaves.iter().enumerate() {
+-            if let Some(rect) = Self::leaf_rect(cx, leaf) {
++        for &i in &pool {
++            if let Some(rect) = Self::leaf_rect(cx, &leaves[i]) {
+                 if rect.contains(abs) {
+                     hit_idxs.push(i);
+                 }
+@@ -1441,8 +1502,8 @@
+ 
+         // 2. Same vertical band — pick by column (x), then snap to edge.
+         let mut band_idxs: Vec<usize> = Vec::new();
+-        for (i, leaf) in leaves.iter().enumerate() {
+-            if let Some(rect) = Self::leaf_rect(cx, leaf) {
++        for &i in &pool {
++            if let Some(rect) = Self::leaf_rect(cx, &leaves[i]) {
+                 if abs.y >= rect.pos.y && abs.y <= rect.pos.y + rect.size.y {
+                     band_idxs.push(i);
+                 }
+@@ -1454,29 +1515,28 @@
+             }
+         }
+ 
+-        // 3. Gap: only consider leaves in the pointer's column (horizontally
+-        // near). Stops the floor card from owning gaps in the left copy.
++        // 3. Gap: among column-filtered leaves, prefer those horizontally near
++        // the pointer (then above/below by y).
+         let mut col_idxs: Vec<usize> = Vec::new();
+         let mut best_dx = f64::MAX;
+-        for (i, leaf) in leaves.iter().enumerate() {
+-            if let Some(rect) = Self::leaf_rect(cx, leaf) {
++        for &i in &pool {
++            if let Some(rect) = Self::leaf_rect(cx, &leaves[i]) {
+                 let dx = Self::horiz_dist_to_rect(abs, rect);
+                 if dx < best_dx {
+                     best_dx = dx;
+                 }
+-                let _ = i;
+             }
+         }
+         let col_slop = (best_dx + 48.0).max(48.0);
+-        for (i, leaf) in leaves.iter().enumerate() {
+-            if let Some(rect) = Self::leaf_rect(cx, leaf) {
++        for &i in &pool {
++            if let Some(rect) = Self::leaf_rect(cx, &leaves[i]) {
+                 if Self::horiz_dist_to_rect(abs, rect) <= col_slop {
+                     col_idxs.push(i);
+                 }
+             }
+         }
+         if col_idxs.is_empty() {
+-            col_idxs.extend(0..leaves.len());
++            col_idxs = pool.clone();
+         }
+ 
+         let mut above: Option<(usize, f64)> = None;
+@@ -1499,6 +1559,28 @@
+         }
+         match (above, below) {
+             (Some((ai, ab)), Some((bi, bb))) => {
++                // Section bands have large padding. Midpoint snap made drag-select
++                // stick on the last leaf of a band until the pointer crossed half
++                // the gap — felt like selection "stopped" when the background
++                // changed. Once the pointer clears the leaf by a few px toward
++                // the next column leaf, take that leaf (browser-like).
++                const CLEAR: f64 = 10.0;
++                if let Some(p) = prefer_near {
++                    if p == ai && abs.y > ab + CLEAR {
++                        return Some((bi, 0));
++                    }
++                    if p == bi && abs.y < bb - CLEAR {
++                        return Some((ai, leaves[ai].selection_text_len()));
++                    }
++                    // Dragging down through a chain: prefer_near may already be
++                    // between ai and bi in document order — still advance by y.
++                    if p < bi && abs.y > ab + CLEAR {
++                        return Some((bi, 0));
++                    }
++                    if p > ai && abs.y < bb - CLEAR {
++                        return Some((ai, leaves[ai].selection_text_len()));
++                    }
++                }
+                 if (abs.y - ab) <= (bb - abs.y) {
+                     Some((ai, leaves[ai].selection_text_len()))
+                 } else {
+@@ -1508,20 +1590,23 @@
+             (Some((i, _)), None) => Some((i, leaves[i].selection_text_len())),
+             (None, Some((i, _))) => Some((i, 0)),
+             (None, None) => {
+-                // Document-order step from the active end using pointer y.
+-                let from = prefer_near.unwrap_or(0).min(leaves.len().saturating_sub(1));
++                // Step in column order (not raw DFS — skip side-card indices).
++                let from = prefer_near
++                    .filter(|p| pool.contains(p))
++                    .unwrap_or(pool[0]);
++                let pos = pool.iter().position(|&i| i == from).unwrap_or(0);
+                 if let Some(rect) = Self::leaf_rect(cx, &leaves[from]) {
+                     if abs.y >= rect.pos.y + rect.size.y {
+-                        let next = (from + 1).min(leaves.len() - 1);
+-                        return Some(if next > from {
++                        let next = pool.get(pos + 1).copied().unwrap_or(from);
++                        return Some(if next != from {
+                             (next, 0)
+                         } else {
+                             (from, leaves[from].selection_text_len())
+                         });
+                     }
+                     if abs.y < rect.pos.y {
+-                        let prev = from.saturating_sub(1);
+-                        return Some(if prev < from {
++                        let prev = if pos > 0 { pool[pos - 1] } else { from };
++                        return Some(if prev != from {
+                             (prev, leaves[prev].selection_text_len())
+                         } else {
+                             (from, 0)
+@@ -1571,7 +1656,10 @@
+             return;
+         };
+         for (i, leaf) in leaves.iter().enumerate() {
+-            if i < start.0 || i > end.0 {
++            let in_col = self.leaf_in_selection_column(cx, leaf);
++            if !in_col || i < start.0 || i > end.0 {
++                // Side-card leaves stay unselected while the drag is locked to
++                // the copy column (even when they sit between start/end in DFS).
+                 leaf.selection_clear();
+             } else if i == start.0 && i == end.0 {
+                 leaf.selection_set(start.1, end.1);
+@@ -1588,7 +1676,7 @@
+         self.area.redraw(cx);
+     }
+ 
+-    fn get_doc_selected_text(&self, leaves: &[WidgetRef]) -> String {
++    fn get_doc_selected_text(&self, cx: &Cx, leaves: &[WidgetRef]) -> String {
+         let Some((start, end)) = self.doc_selection_range() else {
+             return String::new();
+         };
+@@ -1597,6 +1685,9 @@
+             let Some(leaf) = leaves.get(i) else {
+                 continue;
+             };
++            if !self.leaf_in_selection_column(cx, leaf) {
++                continue;
++            }
+             let text = if i == start.0 && i == end.0 {
+                 leaf.selection_get_text_for_range(start.1, end.1)
+             } else if i == start.0 {
+@@ -1618,6 +1709,7 @@
+         let leaves = self.collect_selectable_leaves(cx);
+         self.selection_anchor = None;
+         self.selection_cursor = None;
++        self.selection_column = None;
+         self.is_selecting = false;
+         if self.selection_committed {
+             cx.unblock_scrolling();
+@@ -1635,6 +1727,8 @@
+         if leaves.is_empty() {
+             return;
+         }
++        // Full-document select — no column lock.
++        self.selection_column = None;
+         let last = leaves.len() - 1;
+         self.selection_anchor = Some((0, 0));
+         self.selection_cursor = Some((last, leaves[last].selection_text_len()));
+@@ -1670,6 +1764,10 @@
+         if (new_y - pos.y).abs() > 0.5 {
+             scroll_bars.set_scroll_pos(cx, dvec2(pos.x, new_y));
+             self.area.redraw(cx);
++            if self.doc_selection_range().is_some() {
++                let leaves = self.collect_selectable_leaves(cx);
++                self.update_doc_leaf_selections(cx, &leaves);
++            }
+         }
+     }
+ 
+@@ -1765,17 +1863,30 @@
+                 }
+             }
+             Event::Scroll(se) => {
+-                if self.selection_committed {
+-                    cx.unblock_scrolling();
+-                }
+-                if self.is_selecting || self.selection_committed {
+-                    self.is_selecting = false;
+-                    self.selection_committed = false;
+-                }
+-                // Wheel over the page: take key focus so PageUp/Ctrl+A work
+-                // without a prior text click (browser document chrome).
+-                if self.area.is_valid(cx) && self.area.clipped_rect(cx).contains(se.abs) {
+-                    cx.set_key_focus(self.area);
++                // While drag-selecting, swallow wheel/trackpad so it cannot
++                // fight the drag (flicker / inverted scroll). Scroll again
++                // after mouse-up. Do not re-paint the whole doc selection on
++                // every wheel tick either — that flashed the page up/down.
++                if self.is_selecting && self.selection_committed {
++                    if self.area.is_valid(cx)
++                        && self.area.clipped_rect(cx).contains(se.abs)
++                    {
++                        se.handled_x.set(true);
++                        se.handled_y.set(true);
++                    }
++                } else {
++                    if self.selection_committed {
++                        cx.unblock_scrolling();
++                    }
++                    if self.is_selecting || self.selection_committed {
++                        self.is_selecting = false;
++                        self.selection_committed = false;
++                    }
++                    // Wheel over the page: take key focus so PageUp/Ctrl+A work
++                    // without a prior text click (browser document chrome).
++                    if self.area.is_valid(cx) && self.area.clipped_rect(cx).contains(se.abs) {
++                        cx.set_key_focus(self.area);
++                    }
+                 }
+             }
+             _ => {}
+@@ -1826,12 +1937,20 @@
+                 if !fe.device.is_touch() {
+                     cx.set_key_focus(self.area);
+                 }
++                // New press: unlock column so the first hit can be any column,
++                // then lock to that leaf's x-band for the rest of the drag.
++                self.selection_column = None;
+                 let leaves = self.collect_selectable_leaves(cx);
+                 let Some(hit) = self.hit_test_doc_selection(cx, fe.abs, &leaves) else {
+-                    // Whitespace / gaps: leave the press for page drag-scroll.
++                    // Whitespace / gaps: clear like a browser, then leave the
++                    // press for page drag-scroll.
++                    if self.doc_selection_range().is_some() {
++                        self.clear_doc_selection(cx);
++                    }
+                     event.unhandle(cx, &self.area);
+                     return;
+                 };
++                self.lock_selection_column_at(cx, fe.abs, &leaves[hit.0]);
+                 if fe.device.is_touch() {
+                     cx.hide_clipboard_actions();
+                 }
+@@ -1842,6 +1961,8 @@
+                 self.select_down_abs = fe.abs;
+                 // Mouse: own the press immediately so scroll bars cannot steal
+                 // the drag (touch still waits for long-press / move cancel).
++                // Block scrolling for the hold so wheel/trackpad cannot fight
++                // the drag (flicker / inverted scroll). Wheel works again on up.
+                 if !fe.device.is_touch() {
+                     self.selection_committed = true;
+                     cx.block_scrolling_except_within(Area::Empty);
+@@ -1906,7 +2027,7 @@
+                 }
+                 if fe.device.is_touch() {
+                     let leaves = self.collect_selectable_leaves(cx);
+-                    let text = self.get_doc_selected_text(&leaves);
++                    let text = self.get_doc_selected_text(cx, &leaves);
+                     if !text.is_empty() {
+                         cx.show_clipboard_actions(true, self.area.rect(cx), cx.keyboard_shift);
+                     } else {
+@@ -1920,7 +2041,7 @@
+             }
+             Hit::TextCopy(event) | Hit::TextCut(event) => {
+                 let leaves = self.collect_selectable_leaves(cx);
+-                let text = self.get_doc_selected_text(&leaves);
++                let text = self.get_doc_selected_text(cx, &leaves);
+                 if !text.is_empty() {
+                     *event.response.borrow_mut() = Some(text);
+                 }

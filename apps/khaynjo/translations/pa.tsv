@@ -346,6 +346,8 @@ app_template_skip	ਹੁਣ ਛੱਡੋ
 app_template_status	ਸਰਵਰ ਤਿਆਰ — ਟੈਂਪਲੇਟ ਆਯਾਤ ਕਰੋ, ਜਾਂ ਛੱਡੋ
 app_template_importing	{title} ਲਾ ਰਹੇ ਹਾਂ…
 app_template_downloading	ਟੈਂਪਲੇਟ ਡਾਊਨਲੋਡ ਹੋ ਰਿਹਾ ਹੈ…
+app_template_download_progress	ਡਾਊਨਲੋਡ ਹੋ ਰਿਹਾ ਹੈ… {p}% ({d} / {t})
+app_template_download_paused	ਮੁੜ ਸ਼ੁਰੂ ਕਰਨ ਲਈ ਦੁਬਾਰਾ ਆਯਾਤ ਕਰੋ — ਪੂਰੀਆਂ ਫ਼ਾਈਲਾਂ ਰੱਖੀਆਂ ਜਾਂਦੀਆਂ ਹਨ
 app_template_public_hdr	ਜਨਤਕ ਟੈਂਪਲੇਟ
 app_template_private_hdr	ਨਿੱਜੀ ਟੈਂਪਲੇਟ
 app_template_public_hint	ਜਨਤਕ ਸੂਚੀ ਲੋਡ ਕਰਨ ਲਈ ਇਹ ਭਾਗ ਖੋਲ੍ਹੋ (ਇੱਕ ਵਾਰ ਇੰਟਰਨੈੱਟ ਚਾਹੀਦਾ ਹੈ)।
@@ -626,6 +628,7 @@ choose_device_use	ਚੁਣੋ ਕਿ ਇਹ ਡਿਵਾਈਸ ਕਿਵੇਂ 
 paired_note	ਜੁੜ ਗਿਆ। ਵੇਚਣ ਲਈ ਖੋਲ੍ਹੋ, ਜਾਂ ਦੁਕਾਨ ਤੋਂ ਤਾਜ਼ਾ ਜਾਣਕਾਰੀ ਲਈ ਤਾਜ਼ਾ ਕਰੋ।
 last_update_at	ਦੁਕਾਨ ਤੋਂ ਆਖ਼ਰੀ ਅੱਪਡੇਟ: {time}।
 pair_intro	ਸਰਵਰ ਲੱਭੋ, ਜਾਂ ਉਸ ਦਾ ਪਤਾ ਅਤੇ ਜੋੜੀ ਕੋਡ ਲਿਖੋ।
+pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
 queue_waiting	ਦੁਕਾਨ ਤੱਕ ਪਹੁੰਚਣ ਦੀ ਉਡੀਕ ਵਿੱਚ ({n}):
 queue_tries	{n} ਵਾਰ ਕੋਸ਼ਿਸ਼ · ਆਖਰੀ ਜਵਾਬ: {e}
 save_backup_copy	ਬੈਕਅੱਪ ਦੀ ਕਾਪੀ ਸੰਭਾਲੋ…
@@ -1266,6 +1269,8 @@ taxable_value	ਟੈਕਸਯੋਗ ਮੁੱਲ
 gst_inside_price_note	({tax} ਸਮੇਤ)
 start_with_template	ਸਾਡੇ ਮੀਨੂ ਟੈਂਪਲੇਟ ਨਾਲ ਸ਼ੁਰੂ ਕਰੋ
 template_heading	ਸਾਡਾ ਮੀਨੂ ਟੈਂਪਲੇਟ
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf
 template_info	{c} ਸ਼੍ਰੇਣੀਆਂ ਅਤੇ {d} ਪਕਵਾਨ ਫੋਟੋਆਂ ਸਮੇਤ ਤਿਆਰ। ਕੀਮਤ ₹0 — ਬਾਅਦ ਵਿੱਚ ਆਪਣੀ ਕੀਮਤ ਰੱਖੋ।
 template_import	ਪੂਰਾ ਟੈਂਪਲੇਟ ਜੋੜੋ
 template_confirm	{d} ਪਕਵਾਨ ਸ਼੍ਰੇਣੀਆਂ ਸਮੇਤ ਜੋੜਨੇ ਹਨ? ਤੁਹਾਡੇ ਮੌਜੂਦਾ ਪਕਵਾਨ ਉਵੇਂ ਹੀ ਰਹਿਣਗੇ।
@@ -1363,7 +1368,3 @@ recent_changes	ਤਾਜ਼ਾ ਬਦਲਾਅ
 lane_declared_label	ਟੈਕਸ ਇਨਵੌਇਸ
 lane_owner_label	ਕੈਸ਼ ਮੀਮੋ
 money_lane_bill	ਬਿੱਲ: {lane}
-app_template_download_progress	ਡਾਊਨਲੋਡ ਹੋ ਰਿਹਾ ਹੈ… {p}% ({d} / {t})
-app_template_download_paused	ਮੁੜ ਸ਼ੁਰੂ ਕਰਨ ਲਈ ਦੁਬਾਰਾ ਆਯਾਤ ਕਰੋ — ਪੂਰੀਆਂ ਫ਼ਾਈਲਾਂ ਰੱਖੀਆਂ ਜਾਂਦੀਆਂ ਹਨ
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf

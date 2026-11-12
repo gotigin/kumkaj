@@ -346,6 +346,8 @@ app_template_skip	Παράλειψη προς το παρόν
 app_template_status	Ο διακομιστής είναι έτοιμος — εισαγάγετε πρότυπο ή παραλείψτε
 app_template_importing	Εφαρμογή {title}…
 app_template_downloading	Λήψη προτύπου…
+app_template_download_progress	Λήψη… {p}% ({d} / {t})
+app_template_download_paused	Εισαγάγετε ξανά για συνέχεια — τα ολοκληρωμένα αρχεία διατηρούνται
 app_template_public_hdr	Δημόσια πρότυπα
 app_template_private_hdr	Ιδιωτικό πρότυπο
 app_template_public_hint	Ανοίξτε αυτή την ενότητα για να φορτώσετε τη δημόσια λίστα (χρειάζεται διαδίκτυο μία φορά).
@@ -626,6 +628,7 @@ choose_device_use	Διαλέξτε Server ή Client.
 paired_note	Ζευγαρώθηκε. Ξεκλειδώστε για πώληση ή Ανανέωση για τα νεότερα.
 last_update_at	Τελευταία ενημέρωση: {time}.
 pair_intro	Βρείτε τον server ή γράψτε τη διεύθυνση και τον κωδικό ζευγαρώματος.
+pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
 queue_waiting	Αναμονή να φτάσει στο μαγαζί ({n}):
 queue_tries	Δοκιμές {n} φορές · τελευταία απάντηση: {e}
 save_backup_copy	Αποθήκευση αντιγράφου ασφαλείας…
@@ -1266,6 +1269,8 @@ taxable_value	Φορολογητέα αξία
 gst_inside_price_note	({tax} μέσα στην τιμή)
 start_with_template	Ξεκινήστε με το πρότυπο μενού μας
 template_heading	Το πρότυπο μενού μας
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf
 template_info	{c} κατηγορίες και {d} πιάτα με φωτογραφίες, έτοιμα για προσθήκη. Οι τιμές ξεκινούν από ₹0 — βάλτε τις δικές σας μετά.
 template_import	Εισαγωγή πλήρους προτύπου
 template_confirm	Να προστεθούν {d} πιάτα με τις κατηγορίες τους; Τα πιάτα που ήδη έχετε μένουν ως έχουν.
@@ -1363,7 +1368,3 @@ recent_changes	Πρόσφατες αλλαγές
 lane_declared_label	Φορολογικό τιμολόγιο
 lane_owner_label	Απόδειξη μετρητών
 money_lane_bill	Λογαριασμός: {lane}
-app_template_download_progress	Λήψη… {p}% ({d} / {t})
-app_template_download_paused	Εισαγάγετε ξανά για συνέχεια — τα ολοκληρωμένα αρχεία διατηρούνται
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf

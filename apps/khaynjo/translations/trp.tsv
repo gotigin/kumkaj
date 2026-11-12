@@ -346,6 +346,8 @@ app_template_skip	তাবুকনি বাগুই সকিপ খাই�
 app_template_status	সার্ভার তৈয়ার — কাইসা টেম্পলেট তুবুই, তংমা নাইদি
 app_template_importing	সামুং খলাইও {title}...
 app_template_downloading	টেম্পলেট ডাউনলোড তঙ…
+app_template_download_progress	ডাউনলোড তঙ... {p}% ({d} / {t})
+app_template_download_paused	আবার সুরু খায়নানি বাগই কপুইদি ফাইমানি খাদি — সাবুক ফাইলরগ রাখা তঙ
 app_template_public_hdr	সাধারণ টেম্পলেটরগ
 app_template_private_hdr	নিজবাই টেম্পলেট
 app_template_public_hint	সাধারণ তালিকা লোড খায়নানি বাগই অ ভাগ খুলুই (খেপ কাইসা ইন্টারনেট নাংগো)।
@@ -626,6 +628,7 @@ choose_device_use	Server এবা Client ন চংদি.
 paired_note	জরা উংখা. ফালনা বাগুই উনলচক খাইদি, এবা কুতাল উংনা বাগুই রেফরেশ খাইদি.
 last_update_at	পইত খলাইমানি: {time}.
 pair_intro	সেরভের ন নাইদি, এবা বিনি আদরেস তেই পাইরিং চদে ন সুইদি.
+pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
 queue_waiting	দুকান সোক ফাইনা বাগুই নাইসিঙুই তংমানি ({n}):
 queue_tries	{n} জরা তরয় খাইখা · পাইথাগ আনসুএর: {e}
 save_backup_copy	কাইসা বাচকুপ চপয় নারুকদি...
@@ -1266,6 +1269,8 @@ taxable_value	তাক্ষ উংনাই মানুই
 gst_inside_price_note	({tax} উঙুই)
 start_with_template	চিনি মেনু নি তেমপলাতে বাই চেংদি
 template_heading	চিনি মেনু নি তেমপলাতে
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf
 template_info	{c} উংখা তেই {d} উংখা মাংপিলি বাই, চাপনা বাগুই তিয়ার. পরিচে ₹0 নি সিমি চেংজাক — নিনি রাং ন সেত খাই দি.
 template_import	পুইলা তেমপলাতে তুবুদি
 template_confirm	বহরকনি জাত বাই {d} চামুংরক চাপদি? দিশেস নরক সুকাংনি সিমি তংমানি আব হাই খেন তঙুই মান.
@@ -1363,7 +1368,3 @@ recent_changes	তাবুকনি সুলাইজাকমা
 lane_declared_label	তাক্ষ নি রাং
 lane_owner_label	রাং নি মেম
 money_lane_bill	বিল: {lane}
-app_template_download_progress	ডাউনলোড তঙ... {p}% ({d} / {t})
-app_template_download_paused	আবার সুরু খায়নানি বাগই কপুইদি ফাইমানি খাদি — সাবুক ফাইলরগ রাখা তঙ
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf

@@ -346,6 +346,8 @@ app_template_skip	ယခုအချိန်တွင် ကျော်ပါ
 app_template_status	ဆာဗာ အဆင်သင့် — ပုံစံတစ်ခု တင်သွင်းပါ၊ သို့မဟုတ် ကျော်ပါ
 app_template_importing	{title} ဖြင့် သက်ရောက်မှု လုပ်ဆောင်နေသည်…
 app_template_downloading	ပုံစံကို ဒေါင်းလုဒ်လုပ်နေသည်…
+app_template_download_progress	ဒေါင်းလုဒ်လုပ်နေသည်… {p}% ({d} / {t})
+app_template_download_paused	ဆက်လုပ်ရန် ထပ်မံတင်သွင်းပါ — ပြီးဆုံးသောဖိုင်များ ထိန်းသိမ်းထားသည်
 app_template_public_hdr	အများသုံးပုံစံများ
 app_template_private_hdr	ကိုယ်ပိုင်ပုံစံ
 app_template_public_hint	အများသုံးစာရင်းကို ဖွင့်ရန် ဤအပိုင်းကို ဖွင့်ပါ (အင်တာနက် တစ်ကြိမ်လိုသည်)။
@@ -626,6 +628,7 @@ choose_device_use	Server သို့မဟုတ် Client ကိုရွေ�
 paired_note	စုံညီပြီးပါပြီ။ ရောင်းရန် ဖြေ unlock လုပ်ပါ၊ သို့မဟုတ် နောက်ဆုံးအချက်အလက်အတွက် Refresh လုပ်ပါ။
 last_update_at	နောက်ဆုံး update: {time}။
 pair_intro	ဆာဗာကို ရှာပါ၊ သို့မဟုတ် ၎င်း၏လိပ်စာနှင့် စုံညီကုဒ်ကို ရိုက်ထည့်ပါ။
+pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
 queue_waiting	ဆိုင်ထိ ရောက်ရန် စောင့်နေခြင်း ({n}):
 queue_tries	{n} ကြိမ် ကြိုးစားခဲ့ပြီး · နောက်ဆုံးတုံ့ပြန်ချက်: {e}
 save_backup_copy	Backup မိတ္တူကို သိမ်းဆည်းပါ…
@@ -1266,6 +1269,8 @@ taxable_value	အခွန်ဝင်စျေး
 gst_inside_price_note	({tax} ပါဝင်ပြီး)
 start_with_template	ကျွန်ုပ်တို့ရဲ့ မီနူးသိမ်းဆည်းပုံစံနှင့် စတင်ပါ
 template_heading	ကျွန်ုပ်တို့ရဲ့ မီနူးသိမ်းဆည်းပုံစံ
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf
 template_info	ဓာတ်ပုံပါအမျိုးအစား {c} ခုနှင့် အစားအစာ {d} ခုများ၊ ထည့်ရန်အသင့်ဖြစ်သည်။ စျေးနှုန်းများသည် ₹0 မှစတင်ပြီး — သင့်တစ်ယောက်အတွက် သတ်မှတ်ပါ။
 template_import	အပြီးသွင်းပြီး template
 template_confirm	{d} မှန်ကန်ချက်အမျိုးအစားများဖြင့် ဟင်းကြော်များ ထည့်သွင်းမလား? သင်မှာရှိပြီးသား ဟင်းများကို အနေအထားအတိုင်း ထားပါ။
@@ -1363,7 +1368,3 @@ recent_changes	မကြာသေးမီပြောင်းလဲမှု�
 lane_declared_label	အခွန်ငွေတောင်းခံလွှာ
 lane_owner_label	ငွေသားလက်မှတ်
 money_lane_bill	ဘီးလ်: {lane}
-app_template_download_progress	ဒေါင်းလုဒ်လုပ်နေသည်… {p}% ({d} / {t})
-app_template_download_paused	ဆက်လုပ်ရန် ထပ်မံတင်သွင်းပါ — ပြီးဆုံးသောဖိုင်များ ထိန်းသိမ်းထားသည်
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf

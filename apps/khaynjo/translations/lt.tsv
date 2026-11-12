@@ -346,6 +346,8 @@ app_template_skip	Kol kas praleisti
 app_template_status	Serveris paruoštas — importuokite šabloną arba praleiskite
 app_template_importing	Taikoma {title}…
 app_template_downloading	Atsisiunčiamas šablonas…
+app_template_download_progress	Atsisiunčiama… {p}% ({d} / {t})
+app_template_download_paused	Importuokite dar kartą, kad tęstumėte — baigti failai išsaugomi
 app_template_public_hdr	Vieši šablonai
 app_template_private_hdr	Privatus šablonas
 app_template_public_hint	Atidarykite šį skyrių, kad įkeltumėte viešą sąrašą (internetas reikalingas vieną kartą).
@@ -626,6 +628,7 @@ choose_device_use	Pasirinkite Serverį arba Klientą.
 paired_note	Susieta. Atrakinkite, kad parduotumėte, arba Atnaujinkite naujausiam.
 last_update_at	Paskutinis atnaujinimas: {time}.
 pair_intro	Raskite serverį arba įveskite adresą ir susiejimo kodą.
+pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
 queue_waiting	Laukia, kol pasieks parduotuvę ({n}):
 queue_tries	Bandyta {n} kartų · paskutinis atsakymas: {e}
 save_backup_copy	Išsaugoti atsarginę kopiją…
@@ -1266,6 +1269,8 @@ taxable_value	Apmokestinamoji vertė
 gst_inside_price_note	({tax} įskaičiuota)
 start_with_template	Pradėti nuo mūsų meniu šablono
 template_heading	Mūsų meniu šablonas
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf
 template_info	{c} kategorijos ir {d} patiekalai su nuotraukomis, paruošti pridėti. Kainos prasideda nuo ₹0 — tada nustatykite savas.
 template_import	Importuoti visą šabloną
 template_confirm	Pridėti {d} patiekalų su jų kategorijomis? Jau turimi patiekalai lieka kaip yra.
@@ -1363,7 +1368,3 @@ recent_changes	Naujausi pakeitimai
 lane_declared_label	Mokesčių sąskaita faktūra
 lane_owner_label	Kasos memorandumas
 money_lane_bill	Sąskaita: {lane}
-app_template_download_progress	Atsisiunčiama… {p}% ({d} / {t})
-app_template_download_paused	Importuokite dar kartą, kad tęstumėte — baigti failai išsaugomi
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf

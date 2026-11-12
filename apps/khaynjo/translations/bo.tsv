@@ -346,6 +346,8 @@ app_template_skip	ད་ལྟ་མཆོང་།
 app_template_status	ཞབས་ཞུ་འཕྲུལ་ཆས་གྲ་སྒྲིག་ཡིན། — དཔེ་གཞི་ཞིག་ནང་འདྲེན་གནང་། ཡང་ན་མཆོང་།
 app_template_importing	{title}...
 app_template_downloading	དཔེ་གཞི་ཕབ་ལེན་བྱེད་བཞིན་ཡོད།…
+app_template_download_progress	ཕབ་ལེན་བྱེད་བཞིན་ཡོད། {p}% ({d} / {t})
+app_template_download_paused	མུ་མཐུད་པར་ཡང་བསྐྱར་ནང་འདྲེན་གནང་། — གྲུབ་ཟིན་པའི་ཡིག་ཆ་ཉར་ཡོད།
 app_template_public_hdr	སྤྱི་སྤྱོད་དཔེ་གཞི།
 app_template_private_hdr	སྒེར་གྱི་དཔེ་གཞི།
 app_template_public_hint	སྤྱི་སྤྱོད་ཐོ་གཞུང་འཇུག་པར་སྡེ་ཚན་འདི་ཁ་ཕྱེ་རོགས། (དྲ་རྒྱ་ཐེངས་གཅིག་དགོས།)
@@ -626,6 +628,7 @@ choose_device_use	སར་བར་ཡང་ན་ཚོང་ཤག་འད�
 paired_note	ཆ་སྒྲིག བཙོངས་ཆེད་དུ་ལྡེ་མིག་ཕྱེ་བའམ་ཡང་ན་གསར་ཤོས་ལ་གསར་བརྗེ་བྱེད་དགོས།
 last_update_at	མཐའ་མའི་གསར་བརྗེ། {time}
 pair_intro	སར་བར་འཚོལ་བའམ་ཡང་ན་དེའི་ཁ་བྱང་དང་ཆ་སྒྲིག་ཨང་རྟགས་ཡིག་འཇུག་བྱོས།
+pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
 queue_waiting	ཚོང་ཁང་ལ་སླེབས་པར་སྒུག་བཞིན་ཡོད། ({n}):
 queue_tries	{n} ཚོད་ལྟ་བྱས་ཟིན། · ལན་མཐའ་མ། {e}
 save_backup_copy	རྒྱབ་ལྗོངས་འདྲ་བཤུས་ཉར་ཚགས་བྱས།
@@ -1266,6 +1269,8 @@ taxable_value	ཁྲལ་འཇལ་བའི་རིན་ཐང་།
 gst_inside_price_note	({tax} བཅས)
 start_with_template	ང་ཚོའི་རེའུ་མིག་དཔེ་སྒྲོམ་ནས་འགོ་བཙུགས།
 template_heading	ང་ཚོའི་དཀར་ཆག་དཔེ་སྒྲོམ།
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf
 template_info	{c} སྡེ་ཚན་དང་{d} སྡེར་མ་པར་རིས་དང་མཉམ་དུ་ཁ་སྣོན་བྱེད་པར་གྲ་སྒྲིག་ཡོད། རིན་གོང་₹0ནས་འགོ་འཛུགས། དེ་རྗེས་ཁྱེད་རང་གི་རིན་གོང་སྒྲིག་དགོས།
 template_import	དཔེ་སྒྲོམ་ཆ་ཚང་ནང་འདྲེན་བྱེད་པ།
 template_confirm	དེའི་སྡེ་ཚན་དང་མཉམ་དུ་སྡེར་མ་{d}ཁ་སྣོན་བྱེད་དགོས་སམ། ཁྱེད་ལ་ཡོད་པའི་སྡེར་མ་རྣམས་དེ་ལྟར་གནས་དགོས།
@@ -1363,7 +1368,3 @@ recent_changes	ཉེ་ཆར་གྱི་འགྱུར་བ།
 lane_declared_label	དཔྱ་ཁྲལ་འཛིན་བྱང་།
 lane_owner_label	དངུལ་འཛིན་དྲན་ཐོ།
 money_lane_bill	བིལ་: {lane}
-app_template_download_progress	ཕབ་ལེན་བྱེད་བཞིན་ཡོད། {p}% ({d} / {t})
-app_template_download_paused	མུ་མཐུད་པར་ཡང་བསྐྱར་ནང་འདྲེན་གནང་། — གྲུབ་ཟིན་པའི་ཡིག་ཆ་ཉར་ཡོད།
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf

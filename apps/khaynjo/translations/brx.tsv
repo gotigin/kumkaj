@@ -346,6 +346,8 @@ app_template_skip	दा बार
 app_template_status	सार्भार थियारि — मोनसे टेम्प्लेट लाबो, नाथाय नागार
 app_template_importing	{title} बाहाय गासिनो…
 app_template_downloading	टेम्प्लेट डाउनल'ड जागासिनो…
+app_template_download_progress	डाउनल'ड जागासिनो… {p}% ({d} / {t})
+app_template_download_paused	फिन जागायनो थाखाय फिन लाबो — जोबनाय फाइलफोरखौ दोनथानाय जायो
 app_template_public_hdr	सार्बजनिक टेम्प्लेटफोर
 app_template_private_hdr	गुबुन टेम्प्लेट
 app_template_public_hint	सार्बजनिक लिस्टिखौ ल'ड खालामनो बे बाहागोखौ खेव (मोनसेबार इन्टारनेट नांगौ)।
@@ -626,6 +628,7 @@ choose_device_use	सर्वर एबा क्लाइन्ट साय�
 paired_note	जोरजाय। बायनायनो खुलि हो, एबा गोदानखौ मोननो फिन नुजा।
 last_update_at	जोबथा आपडेट: {time}।
 pair_intro	सर्वर नागिर, एबा बेनि थं आरो जोराना कोड लिर।
+pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
 queue_waiting	दोकान सिम सौहैनो नेथ' ({n}):
 queue_tries	{n} खेब नाजाबाय · जोबथा फिनहोनाय: {e}
 save_backup_copy	ब्याकआपनि कपि थिना दोन…
@@ -1266,6 +1269,8 @@ taxable_value	कर लागानाय मान
 gst_inside_price_note	({tax} सिं)
 start_with_template	जोंनि मेनु टेम्पलेटजों जागाय
 template_heading	जोंनि मेनु टेम्पलेट
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf
 template_info	सावगारिजों {c} थाखो आरो {d} जामु, दाजाबनो गनांथि। बेसेन ₹0 निफ्राय जागायो — उन नोंनि साजाय।
 template_import	गासै टेम्पलेट लाबो
 template_confirm	बेफोरनि थाखोजों {d} जामु दाजाब? नोंहा दंनाय जामु महरै थायो।
@@ -1363,7 +1368,3 @@ recent_changes	दाबाव सोलायनाय
 lane_declared_label	कर इनभइस
 lane_owner_label	नगद मेमो
 money_lane_bill	बिल: {lane}
-app_template_download_progress	डाउनल'ड जागासिनो… {p}% ({d} / {t})
-app_template_download_paused	फिन जागायनो थाखाय फिन लाबो — जोबनाय फाइलफोरखौ दोनथानाय जायो
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf

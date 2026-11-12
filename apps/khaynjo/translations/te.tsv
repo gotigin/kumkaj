@@ -346,6 +346,8 @@ app_template_skip	ప్రస్తుతానికి దాటవేయి
 app_template_status	సర్వర్ సిద్ధం — టెంప్లేట్ దిగుమతి చేయండి, లేదా దాటవేయండి
 app_template_importing	{title} వర్తింపజేస్తోంది…
 app_template_downloading	టెంప్లేట్ డౌన్‌లోడ్ అవుతోంది…
+app_template_download_progress	డౌన్‌లోడ్ అవుతోంది… {p}% ({d} / {t})
+app_template_download_paused	కొనసాగించడానికి మళ్లీ దిగుమతి చేయండి — పూర్తైన ఫైళ్లు ఉంచబడతాయి
 app_template_public_hdr	పబ్లిక్ టెంప్లేట్‌లు
 app_template_private_hdr	ప్రైవేట్ టెంప్లేట్
 app_template_public_hint	పబ్లిక్ జాబితాను లోడ్ చేయడానికి ఈ విభాగాన్ని తెరవండి (ఒక్కసారి ఇంటర్నెట్ అవసరం).
@@ -626,6 +628,7 @@ choose_device_use	ఈ పరికరాన్ని ఎలా వాడాల�
 paired_note	జత అయింది. అమ్మడానికి అన్‌లాక్ చేయండి, లేదా షాప్ నుండి తాజా వివరాలకు రిఫ్రెష్ చేయండి.
 last_update_at	షాప్ నుండి చివరి అప్‌డేట్: {time}.
 pair_intro	సర్వర్‌ను కనుగొనండి, లేదా దాని చిరునామా, జత కోడ్ టైప్ చేయండి.
+pair_resume_hint	Already paired — enter your shop PIN, or Forget this shop to pair another.
 queue_waiting	షాప్‌కు చేరడానికి వేచి ఉన్నాయి ({n}):
 queue_tries	{n} సార్లు ప్రయత్నం · చివరి జవాబు: {e}
 save_backup_copy	బ్యాకప్ కాపీ సేవ్ చేయి…
@@ -1266,6 +1269,8 @@ taxable_value	పన్ను విలువ
 gst_inside_price_note	({tax} లోపల)
 start_with_template	మా మెనూ టెంప్లేట్‌తో ప్రారంభించండి
 template_heading	మా మెనూ టెంప్లేట్
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf
 template_info	{c} వర్గాలు, {d} వంటకాలు ఫోటోలతో సిద్ధం. ధర ₹0 — తర్వాత మీ ధర పెట్టండి.
 template_import	పూర్తి టెంప్లేట్ దిగుమతి
 template_confirm	{d} వంటకాలను వాటి వర్గాలతో చేర్చాలా? మీ దగ్గర ఉన్నవి అలాగే ఉంటాయి.
@@ -1363,7 +1368,3 @@ recent_changes	ఇటీవలి మార్పులు
 lane_declared_label	పన్ను ఇన్‌వాయిస్
 lane_owner_label	క్యాష్ మెమో
 money_lane_bill	బిల్లు: {lane}
-app_template_download_progress	డౌన్‌లోడ్ అవుతోంది… {p}% ({d} / {t})
-app_template_download_paused	కొనసాగించడానికి మళ్లీ దిగుమతి చేయండి — పూర్తైన ఫైళ్లు ఉంచబడతాయి
-template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
-template_download_shelf	Download photo shelf
