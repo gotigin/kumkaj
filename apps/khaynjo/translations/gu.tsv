@@ -182,7 +182,7 @@ snack_secs_save	સૂચના સમય સાચવો
 snack_secs_saved	સૂચના સમય સાચવ્યો — {n} સેકન્ડ
 settings_sec_backup	બેકઅપ અને પુનઃસ્થાપન
 settings_sec_diag	નિદાન
-settings_sec_privacy	Privacy
+settings_sec_privacy	ગોપનીયતા
 diag_privacy_help	લોગ આ જ ઉપકરણ પર રહે છે. ગુપ્ત માહિતી (PIN, પાસવર્ડ) ક્યારેય સાચવાતી નથી. ઉપકરણની બહાર પેકેજ મોકલવા દર વખતે તમારી સ્પષ્ટ મંજૂરી જોઈએ — ક્યારેય વેચાતું નથી કે ત્રીજા પક્ષને અપાતું નથી.
 diag_level	વિગતનું સ્તર
 diag_level_error	ભૂલો
@@ -339,21 +339,21 @@ server_remove_pin_ph	સર્વર દૂર કરવા Owner PIN
 only_owner_remove_server	ફક્ત Owner સર્વર દૂર કરી શકે
 owner_pin_remove_server	સર્વર દૂર કરવા Owner PIN જોઈએ
 device_setup_help	સર્વર ચોપડા અહીં જ રાખે છે. ક્લાયન્ટ કોઈ સર્વર સાથે જોડાય છે.
-app_template_heading	રાજધાની એપ ટેમ્પ્લેટ
-app_template_blurb	રાજધાની મેનૂ લોડ કરે છે; માલિક ઝહીર (zahir), એડમિન આસિફ (asif, PIN 1111), વેઈટર નવાઝ (nawaz, PIN 0000); FOH સાઇડબાર; ઇતિહાસ 4 કલાક પછી સાફ થાય છે (અને બેકઅપમાં હમણાં સાફ કરો); આજની પટ્ટી બંધ; સાંકડી ટ્રે માટે નાનો KOT + સામાન્ય માર્જિન. સાઇડબારના બાકીના સેટિંગ્સમાં ફરી ચાલુ કરી શકાય.
-app_template_apply	રાજધાની એપ ટેમ્પ્લેટ
+app_template_heading	દુકાન ટેમ્પ્લેટ
+app_template_blurb	જાહેર શરૂઆતનું મેનૂ આયાત કરો, અથવા તમારા Khaynjo સંપર્ક પાસેથી મળેલો 12 અંકનો ખાનગી કોડ દાખલ કરો.
+app_template_apply	ટેમ્પ્લેટ આયાત કરો
 app_template_skip	હમણાં છોડો
-app_template_status	સર્વર તૈયાર — રાજધાની એપ ટેમ્પ્લેટ લાગુ કરો, અથવા છોડો
+app_template_status	સર્વર તૈયાર — ટેમ્પ્લેટ આયાત કરો, અથવા છોડો
 app_template_importing	{title} લાગુ કરી રહ્યાં છીએ…
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	ટેમ્પ્લેટ ડાઉનલોડ થાય છે…
+app_template_public_hdr	જાહેર ટેમ્પ્લેટ
+app_template_private_hdr	ખાનગી ટેમ્પ્લેટ
+app_template_public_hint	જાહેર યાદી લોડ કરવા આ વિભાગ ખોલો (એક વાર ઇન્ટરનેટ જોઈએ).
+app_template_code_not_found	કોડ મળ્યો નથી
+app_template_need_internet	ટેમ્પ્લેટ ડાઉનલોડ કરવા ઇન્ટરનેટ જોઈએ
+app_template_import_selected	પસંદ કરેલું આયાત કરો
+app_template_check_code	કોડ તપાસો
+app_template_import	આયાત કરો
 currency	ચલણ
 backup	બૅકઅપ
 use	વાપરો
@@ -474,19 +474,19 @@ copy_report	અહેવાલ કૉપી કરો
 counted_cash_ph	ડ્રોઅરમાં ગણેલી રોકડ
 country_tax	દેશ અને કર
 tax_chrome	ટિલ પર કર લેબલ
-tax_chrome_help	બંધ હોય ત્યારે ઓર્ડર ડેસ્ક GST/કર અંદાજની પંક્તિઓ અને કિંમતમાં-GST સંકેત છુપાવે છે. કર દર અને દેશ અને કર સેટિંગ્સ રહે છે — લેબલ ક્યારેય પણ ફરી ચાલુ કરો. રાજધાની એપ ટેમ્પ્લેટ આને બંધ રાખીને શરૂ થાય છે.
+tax_chrome_help	બંધ હોય ત્યારે, ઓર્ડર ડેસ્ક GST/ટેક્સ અંદાજની લાઇનો અને કિંમતમાં-GST પ્લેસહોલ્ડર છુપાવે છે. ટેક્સ દરો અને દેશ અને ટેક્સ સેટિંગ્સ રહે છે — લેબલ ગમે ત્યારે ફરી ચાલુ કરો. કેટલાક દુકાન ટેમ્પ્લેટ આ બંધ રાખીને શરૂ થાય છે.
 tax_chrome_on	બતાવો
 tax_chrome_off	છુપાવો
 tax_chrome_saved_on	ટિલ પર કર લેબલ
 tax_chrome_saved_off	ટિલ પર કર લેબલ છુપાયા
 tax_invoice_till	ટિલ પર કર ઇન્વૉઇસ
-tax_invoice_help	બંધ હોય ત્યારે બિલ ફક્ત કેશ મેમો હોય છે અને ઓર્ડર ડેસ્ક પર કર ઇન્વૉઇસ / કેશ મેમો ચિપ છુપાય છે. રાજધાની એપ ટેમ્પ્લેટ આને બંધ રાખીને શરૂ થાય છે — કર ઇન્વૉઇસ ફરી પસંદ કરવા ક્યારેય પણ બતાવો ચાલુ કરો.
+tax_invoice_help	બંધ હોય ત્યારે, બિલ ફક્ત કેશ મેમો હોય છે અને ઓર્ડર ડેસ્ક પર ટેક્સ ઇન્વૉઇસ / કેશ મેમો ચિપ છુપાયેલી રહે છે. કેટલાક દુકાન ટેમ્પ્લેટ આ બંધ રાખીને શરૂ થાય છે — ટેક્સ ઇન્વૉઇસ ફરી પસંદ કરવા બતાવો ગમે ત્યારે ચાલુ કરો.
 tax_invoice_on	બતાવો
 tax_invoice_off	છુપાવો
 tax_invoice_saved_on	ટિલ પર કર ઇન્વૉઇસ
 tax_invoice_saved_off	કર ઇન્વૉઇસ છુપાયું — ફક્ત કેશ મેમો
 pay_methods	ચુકવણીની રીતો
-pay_methods_help	ચુકવણી લો પર કઈ ચિપ દેખાય. રોકડ હંમેશા રહે છે. રાજધાની એપ ટેમ્પ્લેટ ફક્ત રોકડથી શરૂ થાય છે — UPI / કાર્ડ / ઉધાર / વહેંચણી અહીં ફરી ચાલુ કરો.
+pay_methods_help	પેમેન્ટ લો પર કઈ ચિપ દેખાય. રોકડ હંમેશાં રહે છે. કેટલાક દુકાન ટેમ્પ્લેટ ફક્ત રોકડથી શરૂ થાય છે — UPI / કાર્ડ / ઉધાર / વિભાજન અહીં ફરી ચાલુ કરો.
 create_backup	બૅકઅપ બનાવો
 credit_limit_heading	ઉધાર મર્યાદા (પસંદ કરેલ / નામવાળી પાર્ટી)
 day_close_summary	દિવસ બંધ સારાંશ
@@ -793,10 +793,10 @@ printers_looking	આ ડિવાઇસ અને Wi‑Fi પર પ્રિન
 saving_printer	પ્રિન્ટર ઉમેરી રહ્યાં છીએ…
 cancelled	રદ
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	દૂર કરી રહ્યાં છીએ…
+removed	દૂર કર્યું
+updating_order	અપડેટ થઈ રહ્યું છે…
+order_updated	ઓર્ડર અપડેટ થયો
 printers_tap_find	આ ડિવાઇસ વાપરી શકે તેવા પ્રિન્ટરની યાદી માટે શોધો દબાવો.
 printers_none_found	કોઈ પ્રિન્ટર મળ્યું નહીં — સિસ્ટમ પ્રિન્ટરનું નામ અથવા નેટવર્ક સરનામું લખો (દા.ત. 192.168.1.50).
 printer_from_find	{name} ઉમેર્યું
@@ -1337,7 +1337,6 @@ kot_field_table	ટેબલ
 kot_field_shop	દુકાનનું નામ
 kot_field_waiter	કર્મચારી
 kot_field_station	સ્ટેશન
-app_template_blurb_extra	સાથે: માલિક ઝહીર, એડમિન આસિફ, વેઈટર નવાઝ; FOH સાઇડબાર; 4 કલાક પછી ઇતિહાસ; આજની પટ્ટી બંધ; નાનો KOT.
 dishes_n	{n} વાનગીઓ
 recipe_ph	રેસીપી (વૈકલ્પિક) — એક પ્લેટમાં વપરાય: Rice=0.2, Paneer=0.15
 reorder_ph	આટલે પહોંચે ત્યારે વધુ ખરીદો
@@ -1364,3 +1363,7 @@ recent_changes	તાજેતરના ફેરફારો
 lane_declared_label	કર ઇન્વૉઇસ
 lane_owner_label	કેશ મેમો
 money_lane_bill	બિલ: {lane}
+app_template_download_progress	ડાઉનલોડ થાય છે… {p}% ({d} / {t})
+app_template_download_paused	ફરી શરૂ કરવા ફરીથી આયાત કરો — પૂરી થયેલી ફાઇલો રહે છે
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

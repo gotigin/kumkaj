@@ -182,7 +182,7 @@ snack_secs_save	Saglabāt paziņojuma laiku
 snack_secs_saved	Paziņojuma laiks saglabāts — {n} sekundes
 settings_sec_backup	Dublējums un atjaunošana
 settings_sec_diag	Diagnostika
-settings_sec_privacy	Privacy
+settings_sec_privacy	Privātums
 diag_privacy_help	Žurnāli paliek šajā ierīcē. Noslēpumi (PIN, paroles) nekad netiek glabāti. Pakas kopīgošanai ārpus ierīces katru reizi vajag jūsu skaidru piekrišanu — nekad netiek pārdots vai dots trešajām personām.
 diag_level	Detalizācijas līmenis
 diag_level_error	Kļūdas
@@ -339,21 +339,21 @@ server_remove_pin_ph	Īpašnieka PIN, lai noņemtu serveri
 only_owner_remove_server	Tikai īpašnieks var noņemt serveri
 owner_pin_remove_server	Lai noņemtu šo serveri, vajag īpašnieka PIN
 device_setup_help	Serveris glabā grāmatas šeit. Terminālis savienojas pārī ar serveri.
-app_template_heading	Rajdhani lietotnes veidne
-app_template_blurb	Ielādē Rajdhani ēdienkarti; īpašnieks Zahir (zahir), administrators Asif (asif, PIN 1111), viesmīlis Nawaz (nawaz, PIN 0000); zāles sānu josla; vēsture notīrās pēc 4 stundām (un Notīrīt tagad dublējumā); Šodienas josla izslēgta; kompakts KOT + standarta malas šaurām paplātēm. Sānu joslas vienumus var ieslēgt atpakaļ iestatījumos.
-app_template_apply	Rajdhani lietotnes veidne
+app_template_heading	Veikala veidnes
+app_template_blurb	Importējiet publisku sākuma ēdienkarti vai ievadiet privātu 12 ciparu kodu no sava Khaynjo kontakta.
+app_template_apply	Importēt veidni
 app_template_skip	Pagaidām izlaist
-app_template_status	Serveris gatavs — lietojiet Rajdhani lietotnes veidni vai izlaidiet
+app_template_status	Serveris gatavs — importējiet veidni vai izlaidiet
 app_template_importing	Lieto {title}…
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	Lejupielādē veidni…
+app_template_public_hdr	Publiskās veidnes
+app_template_private_hdr	Privāta veidne
+app_template_public_hint	Atveriet šo sadaļu, lai ielādētu publisko sarakstu (internets nepieciešams vienreiz).
+app_template_code_not_found	Kods nav atrasts
+app_template_need_internet	Veidņu lejupielādei nepieciešams internets
+app_template_import_selected	Importēt atlasīto
+app_template_check_code	Pārbaudīt kodu
+app_template_import	Importēt
 currency	Valūta
 backup	Dublējums
 use	Lietot
@@ -474,19 +474,19 @@ copy_report	Kopēt pārskatu
 counted_cash_ph	Saskaitītā skaidrā nauda atvilktnē
 country_tax	Valsts un nodoklis
 tax_chrome	Nodokļa etiķetes kasē
-tax_chrome_help	Kad izslēgts, pasūtījumu galds slēpj GST/nodokļa aplēses un cenā iekļautā GST vietturus. Nodokļu likmes un Valsts un nodoklis iestatījumi paliek — etiķetes var ieslēgt jebkurā laikā. Rajdhani lietotnes veidne sākas ar šo izslēgtu.
+tax_chrome_help	Kad izslēgts, pasūtījumu galds slēpj GST/nodokļu aplēses rindas un „GST cenā“ vietturus. Nodokļu likmes un valsts un nodokļu iestatījumi paliek — iezīmes jebkurā laikā ieslēdziet atkal. Dažas veikala veidnes sākas ar šo izslēgtu.
 tax_chrome_on	Rādīt
 tax_chrome_off	Slēpt
 tax_chrome_saved_on	Nodokļa etiķetes kasē
 tax_chrome_saved_off	Nodokļa etiķetes kasē paslēptas
 tax_invoice_till	Nodokļa rēķins kasē
-tax_invoice_help	Kad izslēgts, rēķini ir tikai skaidrās naudas kvītis un Nodokļa rēķins / Skaidrās naudas kvīts izvēles ir paslēptas pasūtījumu galdā. Rajdhani lietotnes veidne sākas ar šo izslēgtu — ieslēdziet Rādīt jebkurā laikā, lai atkal izvēlētos nodokļa rēķinu.
+tax_invoice_help	Kad izslēgts, rēķini ir tikai skaidras naudas kvītis, un pogas Nodokļu rēķins / Skaidras naudas kvīts pasūtījumu galdā ir paslēptas. Dažas veikala veidnes sākas ar šo izslēgtu — jebkurā laikā ieslēdziet Rādīt, lai atkal izvēlētos Nodokļu rēķinu.
 tax_invoice_on	Rādīt
 tax_invoice_off	Slēpt
 tax_invoice_saved_on	Nodokļa rēķins kasē
 tax_invoice_saved_off	Nodokļa rēķins paslēpts — tikai skaidrās naudas kvīts
 pay_methods	Maksājuma veidi
-pay_methods_help	Kuras izvēles parādās pie Ņemt maksājumu. Skaidrā nauda vienmēr paliek. Rajdhani lietotnes veidne sākas tikai ar skaidro naudu — ieslēdziet UPI / karti / kredītu / dalīšanu šeit.
+pay_methods_help	Kuras pogas redzamas sadaļā Pieņemt maksājumu. Skaidra nauda paliek vienmēr. Dažas veikala veidnes sākas tikai ar Skaidru naudu — šeit atkal ieslēdziet UPI / Karte / Kredīts / Sadalīt.
 create_backup	Izveidot dublējumu
 credit_limit_heading	Kredīta limits (atlasītā / nosauktā puse)
 day_close_summary	Dienas slēgšanas kopsavilkums
@@ -793,10 +793,10 @@ printers_looking	Meklē…
 saving_printer	Pievieno printeri…
 cancelled	Atcelts
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Noņem…
+removed	Noņemts
+updating_order	Atjaunina…
+order_updated	Pasūtījums atjaunināts
 printers_tap_find	Pieskarieties Atrast, lai uzskaitītu printerus, ko šī ierīce var lietot.
 printers_none_found	Nekas nav atrasts — ierakstiet sistēmas printera nosaukumu vai IP (piem. 192.168.1.50).
 printer_from_find	Pievienots {name}
@@ -1337,7 +1337,6 @@ kot_field_table	Galds
 kot_field_shop	Veikala nosaukums
 kot_field_waiter	Personāls
 kot_field_station	Stacija
-app_template_blurb_extra	Arī: īpašnieks Zahir, administrators Asif, viesmīlis Nawaz; zāles sānu josla; vēsture pēc 4 stundām; Šodienas josla izslēgta; kompakts KOT.
 dishes_n	{n} ēdieni
 recipe_ph	Recepte (nav obligāta) — viena porcija lieto: Rīsi=0.2, Paneer=0.15
 reorder_ph	Pirkt vairāk pie
@@ -1364,3 +1363,7 @@ recent_changes	Nesenās izmaiņas
 lane_declared_label	Nodokļa rēķins
 lane_owner_label	Skaidrās naudas kvīts
 money_lane_bill	Rēķins: {lane}
+app_template_download_progress	Lejupielādē… {p}% ({d} / {t})
+app_template_download_paused	Importējiet vēlreiz, lai turpinātu — pabeigtie faili tiek saglabāti
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

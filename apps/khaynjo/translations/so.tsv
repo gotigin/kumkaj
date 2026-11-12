@@ -182,7 +182,7 @@ snack_secs_save	Kaydi waqtiga digniinta
 snack_secs_saved	Waqtiga digniinta waa la kaydiyay — ilbiriqsiyo {n}
 settings_sec_backup	Kaydka iyo soo celinta
 settings_sec_diag	Baaritaanka ciladda
-settings_sec_privacy	Privacy
+settings_sec_privacy	Asturnaanta
 diag_privacy_help	Diiwaannadu waxay ku sii jiraan qalabkan. Sirta (PIN, furaha sirta) waligeed lama kaydiyo. In xirmo laga saaro qalabka waxay u baahan tahay oggolaanshahaaga cad mar kasta — waligeed lama iibiyo ama lama siiyo cid kale.
 diag_level	Heerka faahfaahinta
 diag_level_error	Khaladaad
@@ -339,21 +339,21 @@ server_remove_pin_ph	PIN-ka milkiilaha si loo saaro server
 only_owner_remove_server	Milkiilaha kaliya ayaa server ka saari kara
 owner_pin_remove_server	PIN-ka milkiilaha ayaa loo baahan yahay si loo saaro serverkan
 device_setup_help	Server-ku buugaagta halkan ayuu ku hayaa. Macaamiilku wuxuu la midaysmaa Server.
-app_template_heading	Qaabka app-ka Rajdhani
-app_template_blurb	Wuxuu soo raro menu-ga Rajdhani; Milkiile Zahir (zahir), Admin Asif (asif, PIN 1111), Adeege Nawaz (nawaz, PIN 0000); dhinaca sagxadda; taariikhdu way nadiifmaysaa 4 saacadood ka dib (iyo Nadiifi hadda ee Kaydka); xariiqda Maanta waa dansan; KOT is-qabsan + daraf caadi ah oo loogu talagalay saxan cidhiidhi ah. Saaxiibbada dhinaca waxaa dib looga daari karaa Dejinta.
-app_template_apply	Qaabka app-ka Rajdhani
+app_template_heading	Qaababka dukaanka
+app_template_blurb	Soo deji menu bilow ah oo dadweyne, ama geli koodh gaar ah oo 12 god ah oo aad ka heshay xiriirkaaga Khaynjo.
+app_template_apply	Soo deji qaab
 app_template_skip	Hadda ka bood
-app_template_status	Server waa diyaar — dabaq qaabka Rajdhani, ama ka bood
+app_template_status	Server-ku waa diyaar — soo deji qaab, ama ka bood
 app_template_importing	Waxaa la dabaqayaa {title}…
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	Qaabka waa la soo dejinayaa…
+app_template_public_hdr	Qaabab dadweyne
+app_template_private_hdr	Qaab gaar ah
+app_template_public_hint	Fur qaybtan si aad u soo geliso liiska dadweynaha (internet hal mar ayaa loo baahan yahay).
+app_template_code_not_found	Koodhka lama helin
+app_template_need_internet	Internet ayaa loo baahan yahay si loo soo dejiyo qaabab
+app_template_import_selected	Soo deji kan la doortay
+app_template_check_code	Hubi koodhka
+app_template_import	Soo deji
 currency	Lacag
 backup	Kayd
 use	Isticmaal
@@ -474,19 +474,19 @@ copy_report	Nuqul ka qaad warbixinta
 counted_cash_ph	Lacagta caddaanka ee la tiriyay sanduuqa
 country_tax	Dalka iyo canshuurta
 tax_chrome	Calaamadaha canshuurta sanduuqa
-tax_chrome_help	Marka la damiyo, miiska dalabku wuxuu qariyaa khadadka qiyaasta GST/canshuurta iyo meelaha GST-ku ku jiro qiimaha. Heerarka canshuurta iyo dejinta Dalka iyo canshuurta way sii jiraan — calaamadaha mar kasta dib u shid. Qaabka app-ka Rajdhani wuxuu ka bilaabmaa dami.
+tax_chrome_help	Marka la damiyo, miiska dalabka wuxuu qariyaa xariiqyada qiyaasta GST/canshuurta iyo meelaha GST-ku-jira-qiimaha. Heerarka canshuurta iyo dejinta Waddanka iyo canshuurta way sii jiraan — dib u shid calaamadaha wakhti kasta. Qaababka dukaanka qaarkood waxay ku bilaabmaan iyadoo tan la damiyay.
 tax_chrome_on	Muuji
 tax_chrome_off	Qari
 tax_chrome_saved_on	Calaamadaha canshuurta waa sanduuqa
 tax_chrome_saved_off	Calaamadaha canshuurta waa laga qariyay sanduuqa
 tax_invoice_till	Faaturo canshuur sanduuqa
-tax_invoice_help	Marka la damiyo, biilalku waa Warqadda lacagta caddaanka oo keliya, calaamadaha Faaturo canshuur / Warqadda lacagta caddaanka waa laga qariyaa miiska dalabka. Qaabka app-ka Rajdhani wuxuu ka bilaabmaa dami — mar kasta dib u dooro Muuji si aad u qaadato Faaturo canshuur.
+tax_invoice_help	Marka la damiyo, biilasha waa rasiidh lacag caddaan ah oo keliya, badhamada Qaansheeg canshuur / Rasiidh lacag caddaan ah waa lagu qariyaa miiska dalabka. Qaababka dukaanka qaarkood waxay ku bilaabmaan iyadoo tan la damiyay — shid Muuji wakhti kasta si aad mar kale u doorato Qaansheeg canshuur.
 tax_invoice_on	Muuji
 tax_invoice_off	Qari
 tax_invoice_saved_on	Faaturo canshuur waa sanduuqa
 tax_invoice_saved_off	Faaturo canshuur waa la qariyay — Warqadda lacagta caddaanka oo keliya
 pay_methods	Hababka bixinta
-pay_methods_help	Calaamadaha ka muuqda Qaado bixinta. Lacagta caddaanku mar walba way sii jirtaa. Qaabka app-ka Rajdhani wuxuu ka bilaabmaa Lacag caddaan oo keliya — halkan dib u shid UPI / Kaar / Deyn / Qaybi.
+pay_methods_help	Badhamada ka muuqda Qaado lacag-bixinta. Lacagta caddaanka ah had iyo jeer way joogtaa. Qaababka dukaanka qaarkood waxay ku bilaabmaan Lacag caddaan ah oo keliya — dib u shid UPI / Kaar / Dayn / Qaybi halkan.
 create_backup	Samee kayd
 credit_limit_heading	Xadka deynta (dhinaca la doortay / la magacaabay)
 day_close_summary	Kooban xiritaanka maalinta
@@ -793,10 +793,10 @@ printers_looking	Waa la raadinayaa…
 saving_printer	Daabacaha ayaa lagu darayaa…
 cancelled	Waa la joojiyay
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Waa laga saarayaa…
+removed	Waa laga saaray
+updating_order	Waa la cusboonaysiinayaa…
+order_updated	Dalabka waa la cusboonaysiiyay
 printers_tap_find	Taabo Raadi si aad u aragto daabacayaasha qalabkani isticmaali karo.
 printers_none_found	Midna lama helin — qor magaca daabacaha nidaamka ama IP (tusaale 192.168.1.50).
 printer_from_find	{name} ayaa lagu daray
@@ -1337,7 +1337,6 @@ kot_field_table	Miis
 kot_field_shop	Magaca dukaanka
 kot_field_waiter	Shaqaale
 kot_field_station	Saldhig
-app_template_blurb_extra	Sidoo kale: Milkiile Zahir, Maamul Asif, Adeege Nawaz; birta hore; taariikh 4 saacadood ka dib; xariiqda Maanta dansan; KOT cidhiidhi ah.
 dishes_n	cunto {n}
 recipe_ph	Cunto-karis (ikhtiyaari) — qayb keliya waxay isticmaashaa: Bariis=0.2, Paneer=0.15
 reorder_ph	Mar kale iibso marka
@@ -1364,3 +1363,7 @@ recent_changes	Isbeddelladii dhawaa
 lane_declared_label	Faaturo canshuur
 lane_owner_label	Warqadda lacagta caddaanka
 money_lane_bill	Biil: {lane}
+app_template_download_progress	Waa la soo dejinayaa… {p}% ({d} / {t})
+app_template_download_paused	Mar kale soo deji si aad u sii wadato — faylasha dhammaaday waa la hayaa
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

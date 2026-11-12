@@ -182,7 +182,7 @@ snack_secs_save	Londoloza isikhathi sokuxwayisa
 snack_secs_saved	Isikhathi sesexwayiso silondoloziwe — {n} imizuzwana
 settings_sec_backup	Gcina futhi ubuyisele
 settings_sec_diag	Ukuxilonga
-settings_sec_privacy	Privacy
+settings_sec_privacy	Ubumfihlo
 diag_privacy_help	Amalogi ahlala kule divayisi. Izimfihlo (PIN, amagama ayimfihlo) azilokothi zigcinwe. Ukwabelana ngephakheji ocingweni kudinga imvume yakho ecacile njalo - akukaze kuthengiswe noma kunikezwe izinkampani zangaphandle.
 diag_level	Ileveli yemininingwane
 diag_level_error	Amaphutha
@@ -339,21 +339,21 @@ server_remove_pin_ph	Umnikazi PIN ukususa iseva
 only_owner_remove_server	Umnikazi kuphela ongasusa iseva
 owner_pin_remove_server	Umnikazi PIN uyadingeka ukuze kukhishwe le seva
 device_setup_help	Iseva igcina amaleja lapha. Iklayenti libhangqa kuseva.
-app_template_heading	Rajdhani App Template
-app_template_blurb	Ilayisha imenyu Rajdhani; Umnikazi Zahir (zahir), Admin Asif (asif, PIN 1111), Uweta Nawaz (nawaz, PIN 0000); FOH ibha eseceleni; umlando uphela ngemva kwamahora angu-4 (futhi Sula manje kokuthi Ukwenza Ikhophi Yasenqolobaneni); Namuhla khumula; kuhlangene KOT + Amamajini ajwayelekile amathileyi amancane. Ontanga bebha eseceleni bangavulwa futhi kokuthi Izilungiselelo.
-app_template_apply	Rajdhani App Template
+app_template_heading	Izifanekiso zesitolo
+app_template_blurb	Ngenisa imenyu yokuqala yomphakathi, noma ufake ikhodi yangasese yezinombolo eziyi-12 ovela kumxhumanisi wakho weKhaynjo.
+app_template_apply	Ngenisa isifanekiso
 app_template_skip	Yeqa okwamanje
-app_template_status	Iseva isilungile — sebenzisa Rajdhani App Template, noma yeqa
+app_template_status	Iseva ilungile — ngenisa isifanekiso, noma weqe
 app_template_importing	Ifaka {title}…
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	Isifanekiso siyalandwa…
+app_template_public_hdr	Izifanekiso zomphakathi
+app_template_private_hdr	Isifanekiso sangasese
+app_template_public_hint	Vula lesi sigaba ukuze ulayishe uhlu lomphakathi (kudingeka i-inthanethi kanye).
+app_template_code_not_found	Ikhodi ayitholakalanga
+app_template_need_internet	Kudingeka i-inthanethi ukulanda izifanekiso
+app_template_import_selected	Ngenisa okukhethiwe
+app_template_check_code	Hlola ikhodi
+app_template_import	Ngenisa
 currency	Imali
 backup	Yenza ikhophi yasenqolobaneni
 use	Sebenzisa
@@ -474,19 +474,19 @@ copy_report	Kopisha umbiko
 counted_cash_ph	Kubalwa ukheshi ekhabetheni
 country_tax	Izwe nentela
 tax_chrome	Amalebula entela kurejista yemali
-tax_chrome_help	Uma ivaliwe, ideski le-oda lifihla GST/imigqa yesilinganiso sentela kanye nezimeli GST-zamanani entengo. Izilinganiso zentela kanye nezilungiselelo zezwe nezentela zihlala — vula amalebula futhi noma nini. Rajdhani App Template iqala ngokuthi lokhu kuvaliwe.
+tax_chrome_help	Uma kuvaliwe, ideski yama-oda ifihla imigqa yesilinganiso se-GST/intela nezindawo ze-GST-entengweni. Amazinga entela nezilungiselelo Zezwe nentela ziyahlala — vula amalebula futhi noma nini. Ezinye izifanekiso zesitolo ziqala lokhu kuvaliwe.
 tax_chrome_on	Bonisa
 tax_chrome_off	Fihla
 tax_chrome_saved_on	Amalebula entela kurejista yemali
 tax_chrome_saved_off	Amalebula entela afihlwe kurejista yemali
 tax_invoice_till	I-invoyisi yentela kurejista yemali
-tax_invoice_help	Uma zivaliwe, izikweletu zesivakashi ziyi-Cash memo kuphela futhi i-invoyisi Yentela / Imemo yemali chips afihlwa etafuleni loku-oda. Rajdhani App Template iqala ngalokhu icishiwe — vula okuthi Bonisa futhi noma kunini ukuze ukhethe i-invoyisi Yentela futhi.
+tax_invoice_help	Uma kuvaliwe, izikweletu ziyimemo yemali kuphela futhi izinkinobho ze-Invoyisi yentela / Imemo yemali zifihlwe edeskini yama-oda. Ezinye izifanekiso zesitolo ziqala lokhu kuvaliwe — vula u-Bonisa noma nini ukuze ukhethe i-Invoyisi yentela futhi.
 tax_invoice_on	Bonisa
 tax_invoice_off	Fihla
 tax_invoice_saved_on	I-invoyisi yentela kurejista yemali
 tax_invoice_saved_off	I-invoyisi yentela ifihliwe — Imemo yemali kuphela
 pay_methods	Izindlela zokukhokha
-pay_methods_help	Imaphi ama-chip avela kokuthi Thatha inkokhelo. Imali ihlala njalo. Rajdhani App Template iqala ngokheshi kuphela — vula UPI / Ikhadi / Isikweletu / Hlukanisa futhi lapha.
+pay_methods_help	Yiziphi izinkinobho ezivela ku-Thatha inkokhelo. Imali ihlala ikhona njalo. Ezinye izifanekiso zesitolo ziqala ngeMali kuphela — vula futhi i-UPI / Ikhadi / Isikweletu / Hlukanisa lapha.
 create_backup	Dala ikhophi yasenqolobaneni
 credit_limit_heading	Umkhawulo wesikweletu (ikhasimende elikhethiwe noma umphakeli)
 day_close_summary	Isifinyezo sokuvala usuku
@@ -793,10 +793,10 @@ printers_looking	Iyabheka...
 saving_printer	Yengeza iphrinta...
 cancelled	Kukhanseliwe
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Kuyasuswa…
+removed	Kususiwe
+updating_order	Kuyabuyekezwa…
+order_updated	I-oda libuyekeziwe
 printers_tap_find	Thepha okuthi Thola ukuze ufake kuhlu amaphrinta le divayisi engawasebenzisa.
 printers_none_found	Akukho okutholakele — thayipha igama lephrinta yesistimu noma i-IP (isb. 192.168.1.50).
 printer_from_find	Kwengezwe {name}
@@ -1337,7 +1337,6 @@ kot_field_table	Itafula lokudlela
 kot_field_shop	Igama lesitolo
 kot_field_waiter	Abasebenzi
 kot_field_station	Isiteshi
-app_template_blurb_extra	Futhi: Umnikazi Zahir, Umphathi Asif, Uweta Nawaz; FOH ibha eseceleni; umlando ngemva kwamahora angu-4; Namuhla khumula; kuhlangene KOT.
 dishes_n	{n} izitsha
 recipe_ph	Iresiphi (uyazikhethela) — ingxenye eyodwa isebenzisa: Rice=0.2, Paneer=0.15
 reorder_ph	Thenga okuningi ku-
@@ -1364,3 +1363,7 @@ recent_changes	Izinguquko zakamuva
 lane_declared_label	I-invoyisi yentela
 lane_owner_label	Imemo yemali
 money_lane_bill	Ibhili yesivakashi sesivakashi: {lane}
+app_template_download_progress	Iyalanda… {p}% ({d} / {t})
+app_template_download_paused	Ngenisa futhi ukuze uqhubeke — amafayela aqediwe ayagcinwa
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

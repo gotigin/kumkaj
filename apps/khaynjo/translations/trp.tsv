@@ -182,7 +182,7 @@ snack_secs_save	আলেরত জরা মুথাংদি
 snack_secs_saved	আলেরত জরা মুথাংজাক খা — {n} সেকন
 settings_sec_backup	বাচকুপ তেই কিফিলুই তুবুদি
 settings_sec_diag	বেমার সাইমানমানি
-settings_sec_privacy	Privacy
+settings_sec_privacy	গোপনীয়তা
 diag_privacy_help	লগস রক ও দেভিচে ও তংনাই. সিরিজাক ককরক (PIN, ককথাইরক) উঙুই তংনাই. দেভিচে নি ফাতারনি পাচকাগে শারে খলাইনানি বাগুই নিনি সুকাংনি সুমাই তাংমানি নাংনাই জরা জরা — তেই কাইসা ফান ফালজাকয়া এবা খরকসা সুকন রুজাকয়া.
 diag_level	কুথার লেভেল
 diag_level_error	চবা
@@ -339,21 +339,21 @@ server_remove_pin_ph	মালিক PIN কাইসা সেরভের ন 
 only_owner_remove_server	নকফাং সিমি সে সেরভের ন সুকাকুই মান
 owner_pin_remove_server	ও সেরভের ন সুকাকনা বাগুই মালিক PIN নাংনাই
 device_setup_help	Server বওক রক ন আর তনুই তঙ. Client জরা উঙুই Server উংনাই.
-app_template_heading	Rajdhani আপ নি মুং
-app_template_blurb	Rajdhani নি মেনু ন লআদ খাই দি; মালিক Zahir (জাহির), Admin Asif (আসিফ, PIN 1111), সামুং তাংনাই Nawaz (নাউআজ, PIN 0000); FOH বুখাকনি; হউরস নি উল হিসতরয় উংনাই (তেই বাচকুপ ও তাবুক সুকাং উংনাই); তিনি সতরিপ খলাই দি; কুচাক KOT + কুচাক তরায় নি বাগুই কাহাম মারগিন. সিদেবার নি পেএর রক সেতিংস ওহ তেইসা ওন খাই মান নাই.
-app_template_apply	Rajdhani আপ নি মুং
+app_template_heading	দোকানি টেম্পলেটরগ
+app_template_blurb	কাইসা সাধারণ সুরু খায়নানি মেনু তুবুই, তংমা নিনি Khaynjo সম্পর্ক বিসিনি মানখে 12 সংখ্যাতি নিজবাই কোড ফুনুক।
+app_template_apply	টেম্পলেট তুবুই
 app_template_skip	তাবুকনি বাগুই সকিপ খাইদি
-app_template_status	Server তিয়ার — Rajdhani আপ নি সুমাই তাংদি, এবা য়াকার দি
+app_template_status	সার্ভার তৈয়ার — কাইসা টেম্পলেট তুবুই, তংমা নাইদি
 app_template_importing	সামুং খলাইও {title}...
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	টেম্পলেট ডাউনলোড তঙ…
+app_template_public_hdr	সাধারণ টেম্পলেটরগ
+app_template_private_hdr	নিজবাই টেম্পলেট
+app_template_public_hint	সাধারণ তালিকা লোড খায়নানি বাগই অ ভাগ খুলুই (খেপ কাইসা ইন্টারনেট নাংগো)।
+app_template_code_not_found	কোড মানয়া
+app_template_need_internet	টেম্পলেট ডাউনলোড খায়নানি বাগই ইন্টারনেট নাংগো
+app_template_import_selected	বাসাগনাই তুবুই
+app_template_check_code	কোড নাইদি
+app_template_import	তুবুই
 currency	রাং
 backup	বাচকুপ
 use	বেবহার
@@ -474,19 +474,19 @@ copy_report	রিপরত চপয় খাইদি
 counted_cash_ph	দরাউএর ও রাং লেখাজাক
 country_tax	হাসতে & তাক্ষ
 tax_chrome	2019 জরা তাক্ষ নি লেবেল.
-tax_chrome_help	ওফ উংফুরু, ওরদের দেসক GST/তাক্ষ রাংনি লিনে তেই GST-নি-রাংনি জাগারকন রুখা. তাক্ষ নি রাং তেই হাসতে & তাক্ষ নি রাংরক তঙুই — জেফুরু ফান লাবেল ন কিফিলুই রুদি. Rajdhani আপ নি তেমপলাতে ন ওফ খাইউই চেংনাই.
+tax_chrome_help	বন্ধ থাংখে, অর্ডার ডেস্ক GST/খাজনা আন্দাজনি লাইন বো দাম-ও-GST জায়গারগ খুকুই তঙ। খাজনা দর বো দেশ বো খাজনা সেটিংরগ থাংগো — লেবেলরগ জেবরা সময় আবার চালু খাদি। দোকানি টেম্পলেট বেসেক অ বন্ধ রাখা সুরু জাগো।
 tax_chrome_on	পুইলা
 tax_chrome_off	হুকদি
 tax_chrome_saved_on	2019 জরা তাক্ষ নি লেবেল.
 tax_chrome_saved_off	তাক্ষ নি মুংরক 2019 জরা চুকজাক.
 tax_invoice_till	তাক্ষ নি বিল 2019 জরা.
-tax_invoice_help	ওফ উংফুরু, বিল রক রাং নি সুইমুং সিমি সে উংনাই তেই রাং নি সুইমুং নি চিপস রক ওরদের দেসক ও রুজাক. Rajdhani আপ নি তেমপলাতে ও ওফ বাই সুকাং উংনাই — তাক্ষ নি রাং ন তেই উআইসা তুবুনা বাগুই জেফুরু ফান ফুনুক দি.
+tax_invoice_help	বন্ধ থাংখে, বিলরগ নগদ মেমো সাবুক অংগো বো অর্ডার ডেস্ক-ও খাজনা ইনভয়েস / নগদ মেমো চিপরগ খুকুইয়ো। দোকানি টেম্পলেট বেসেক অ বন্ধ রাখা সুরু জাগো — খাজনা ইনভয়েস আবার বাসাগনানি বাগই নুকজাগ জেবরা সময় চালু খাদি।
 tax_invoice_on	পুইলা
 tax_invoice_off	হুকদি
 tax_invoice_saved_on	তাক্ষ নি বিল 2019 জরা.
 tax_invoice_saved_off	তাক্ষ নি বিচে খুমজাক — রাং নি মেম সিমি সে
 pay_methods	রাং রুমানি লামা
-pay_methods_help	তাকে রাং রুমানি সাকাও চিপস নুকজাকনাই. চাশ জরা জরা তংনাই. Rajdhani আপ নি তেমপলাতে রাং বাই সিমি সে চেংজাক — UPI / কারদ / করেদিত / সপলিত ন আর কিফিলুই রুদি.
+pay_methods_help	পেমেন্ট লা-ও বো চিপরগ নুকজাগো। নগদ সব সময় থাংগো। দোকানি টেম্পলেট বেসেক নগদ সাবুক বো সুরু জাগো — UPI / কার্ড / ধার / ভাগ অ'ও আবার চালু খাদি।
 create_backup	বাচকুপ সুনামদি
 credit_limit_heading	করেদিত নি সিমি (চংজাক / মুং রুজাক বরক)
 day_close_summary	সালনি কুচাক কুফুর
@@ -793,10 +793,10 @@ printers_looking	নাইউই তংমানি...
 saving_printer	পরিনতের তুবুই তঙ...
 cancelled	চানচেল উংখা
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	সিং তঙ…
+removed	সিংখা
+updating_order	আপডেট তঙ…
+order_updated	অর্ডার আপডেট জাকখা
 printers_tap_find	ও দেভিচে বাই সুনামজাক পরিনতের লিসত উংনা বাগুই ফিনদ ন তাপ খাই দি.
 printers_none_found	খরকসা ফান মানলিয়া — সয়সতেম নি পরিনতের নি মুং এবা ইপ (এ.গ. 192.168.1.50) সুইদি.
 printer_from_find	কুথার উংখা {name}
@@ -1337,7 +1337,6 @@ kot_field_table	মেজা
 kot_field_shop	দুকান নি মুং
 kot_field_waiter	কামবরক
 kot_field_station	সতাতিওন
-app_template_blurb_extra	তেই: মালখুংনি Zahir, Admin Asif, সামুং তাংনাই Nawaz; FOH বুখাকনি; হউরস নি উল হিসতরয়; তিনি সতরিপ খলাই দি; কুচাক KOT.
 dishes_n	{n} থালা
 recipe_ph	চামুংনি মুং (চাজাকয়া) — কাইসা উঙুই সুনামনাই: চানা=0.2, পানেএর=0.15
 reorder_ph	তেইব পাই দি
@@ -1364,3 +1363,7 @@ recent_changes	তাবুকনি সুলাইজাকমা
 lane_declared_label	তাক্ষ নি রাং
 lane_owner_label	রাং নি মেম
 money_lane_bill	বিল: {lane}
+app_template_download_progress	ডাউনলোড তঙ... {p}% ({d} / {t})
+app_template_download_paused	আবার সুরু খায়নানি বাগই কপুইদি ফাইমানি খাদি — সাবুক ফাইলরগ রাখা তঙ
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

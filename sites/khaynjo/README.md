@@ -55,15 +55,33 @@ Settings → Privacy. Firebase project: `khaynjo-2b2a2` (`.firebaserc`).
 The small table tiles in the top bar are the chapter nav, each in the
 visit colour of its chapter. `#kot` (or `#3`) in the URL opens a chapter.
 
-## Story (10 chapters — "one table, one service")
+## Page (one scroll, 2026-11-12 redesign)
 
-**Lunch rush** (floor toy) → Order taken → The KOT → Kitchen in step →
-Service changes → Settle → Close the day → Your menu → Internet down →
-Start.
+Sticky top bar (section links ≥ 1000 px, gold **Get it free**) over bands:
+**hero** (CTAs, trust lines, floor toy) → **how** (seat → KOT → kitchen →
+settle → day close, Example props) → **features** → **menus** (catalogue
+templates + 199-country world shelf) → **offline** → **pricing** → **faq** →
+**closing** + footer. Deep links `#how` … `#faq`, `#start`; old chapter
+links (`#kot`, `#3`) still land. `SITE_PREVIEW=390x844:menus` previews a
+section natively.
 
 The floor toy uses Khaynjo's own visit words and tile colours, copied into
 `src/floor.rs` (Free → Occupied → In kitchen → Food ready → Served → Bill
 printed → Paid → Free). As in the app, a table frees only once it is paid.
+
+## World shelf (chapter 8)
+
+```bash
+./sites/khaynjo/scripts/build-world-shelf.sh   # from local/khaynjo/world-food-research
+cargo test -p khaynjo-site                      # 199 rows, photos exist, no orphans
+```
+
+Photos load per page; reviewed rejects and sources are in
+`resources/dishes/world/SOURCES.md`. Details: `apps/khaynjo/docs/KHAYNJO_WEBSITE.md` §7.
+
+**Markdown hides nothing:** vendored Makepad `Markdown` ignores `set_visible`.
+Any `Small` / `Body` / `Lede` that a layout rule hides sits inside a
+`View` carrying the id (`paint_details` logs a Markdown hide target).
 
 ## Owner switches (`src/main.rs`)
 
@@ -80,7 +98,10 @@ printed → Paid → Free). As in the app, a table frees only once it is paid.
 | `src/ui.rs` | Page DSL: tokens, Baloo / Plex / Mono type, components, chapters |
 | `src/main.rs` | Nav tiles, floor toy, CTAs, responsive tiers, tests |
 | `src/floor.rs` | Visit order, tile words, meta line (copied + tests) |
-| `resources/fonts/` | Baloo 2 (display), IBM Plex Sans, Liberation Mono, Noto Gujarati / Devanagari — SIL OFL |
+| `src/world_shelf.rs` | **Generated** world shelf table (199 countries) — do not edit; run `scripts/build-world-shelf.sh` |
+| `resources/icons/` | The app's own sidebar icons (copied from `apps/khaynjo/resources/nav/`) for the feature cards |
+| `resources/dishes/world/` | Generated 600 × 400 WebP per country with a usable PD / CC0 photo + `SOURCES.md` |
+| `resources/fonts/` | Baloo 2 (display), IBM Plex Sans, Liberation Mono, Noto (Gujarati, Devanagari, Tamil, Bengali, Arabic, Hebrew, Thai; chapter-8 WorldFont: Armenian, Ethiopic, Georgian, Khmer, Lao, Myanmar, Sinhala, Thaana, Tibetan, 12 KB CJK subset) — SIL OFL (`OFL-*.txt`) |
 
 The order card, KOT, kitchen columns, bill and drawer are illustrations
 marked **Example** — not app screens; no client names, menus or staff.

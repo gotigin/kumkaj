@@ -1211,9 +1211,6 @@ impl MatchEvent for App {
                 self.paint_app_template_chrome(cx, true);
             }
         }
-        if self.ui.button(cx, ids!(app_template_status)).clicked(actions) {
-            // Progress face — ignore re-taps while importing.
-        }
         if self.ui.button(cx, ids!(app_template_skip)).clicked(actions) {
             if menu_import_busy().load(std::sync::atomic::Ordering::SeqCst)
                 || catalogue_fetch_busy().load(std::sync::atomic::Ordering::SeqCst)
@@ -2685,10 +2682,16 @@ impl MatchEvent for App {
                 st.template_confirm = true;
                 st.client_template_confirm = None;
             }
-            self.sync_chrome(cx);
+            if menu_images::shelf().is_empty() && menu_images::install_expects_remote_catalogue() {
+                self.paint_import_progress_chrome(cx);
+            } else {
+                self.sync_chrome(cx);
+            }
         }
         if self.ui.button(cx, ids!(template_no)).clicked(actions) {
-            if menu_import_busy().load(std::sync::atomic::Ordering::SeqCst) {
+            if menu_import_busy().load(std::sync::atomic::Ordering::SeqCst)
+                || catalogue_fetch_busy().load(std::sync::atomic::Ordering::SeqCst)
+            {
                 request_books_job_cancel();
                 self.paint_import_progress_chrome(cx);
             } else {
@@ -2699,6 +2702,8 @@ impl MatchEvent for App {
         if self.ui.button(cx, ids!(template_yes)).clicked(actions) {
             if menu_import_busy().load(std::sync::atomic::Ordering::SeqCst) {
                 // Progress button — ignore re-taps while the worker runs.
+            } else if catalogue_fetch_busy().load(std::sync::atomic::Ordering::SeqCst) {
+                // Shelf download in flight — Cancel is on template_no.
             } else {
                 let job = (|| -> Result<Option<PathBuf>, String> {
                     let mut st = app_state().lock().unwrap();
@@ -2725,6 +2730,28 @@ impl MatchEvent for App {
                         self.sync_chrome(cx);
                     }
                     Ok(Some(db)) => {
+                        if menu_images::shelf().is_empty()
+                            && menu_images::install_expects_remote_catalogue()
+                        {
+                            match crate::store::data_dir() {
+                                Ok(base) => {
+                                    app_state().lock().unwrap().template_confirm = true;
+                                    catalogue_fetch_job(
+                                        CatalogueFetchKind::DownloadPublic {
+                                            id: "khaynjo-items".into(),
+                                        },
+                                        base,
+                                    );
+                                    self.paint_import_progress_chrome(cx);
+                                }
+                                Err(e) => {
+                                    app_state().lock().unwrap().template_confirm = false;
+                                    self.set_status(cx, e.to_string());
+                                    self.sync_chrome(cx);
+                                }
+                            }
+                            return;
+                        }
                         app_state().lock().unwrap().template_confirm = true;
                         menu_import_job(db, MenuImportKind::Shelf);
                         // Progress only — full sync_chrome would hit SQLite while the worker writes.

@@ -182,7 +182,7 @@ snack_secs_save	Anrejistre tan alèt
 snack_secs_saved	Tan alèt anrejistre — {n} segond
 settings_sec_backup	Sovgad ak retabli
 settings_sec_diag	Dyagnostik
-settings_sec_privacy	Privacy
+settings_sec_privacy	Vi prive
 diag_privacy_help	Jounal yo rete sou aparèy sa a. Sekrè (PIN, modpas) pa janm estoke. Pataje yon pake deyò aparèy la bezwen apwobasyon klè ou chak fwa — pa janm vann ni bay twazyèm moun.
 diag_level	Nivo detay
 diag_level_error	Erè
@@ -339,21 +339,21 @@ server_remove_pin_ph	PIN pwopriyetè pou retire yon sèvè
 only_owner_remove_server	Se sèl Pwopriyetè a ki ka retire yon sèvè
 owner_pin_remove_server	PIN pwopriyetè obligatwa pou retire sèvè sa a
 device_setup_help	Sèvè a kenbe liv yo isit. Kliyan an makonnen ak yon Sèvè.
-app_template_heading	Rajdhani App Template
-app_template_blurb	Chaje meni Rajdhani; Pwopriyetè Zahir (zahir), Admin Asif (asif, PIN 1111), Sèvitè Nawaz (nawaz, PIN 0000); bò kote FOH; istwa efase apre 4 èdtan (ak Efase kounye a nan Sovgad); bann Jodi a eten; KOT kontra + maj estanda pou plato etwat. Vwazen bò kote yo ka relimen nan Paramèt.
-app_template_apply	Rajdhani App Template
+app_template_heading	Modèl boutik
+app_template_blurb	Enpòte yon meni kòmansman piblik, oswa antre yon kòd prive 12 chif ou resevwa nan men kontak Khaynjo ou.
+app_template_apply	Enpòte modèl
 app_template_skip	Sote pou kounye a
-app_template_status	Sèvè pare — aplike Rajdhani App Template, oswa sote
+app_template_status	Sèvè a pare — enpòte yon modèl, oswa sote
 app_template_importing	Y ap aplike {title}…
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	Ap telechaje modèl…
+app_template_public_hdr	Modèl piblik
+app_template_private_hdr	Modèl prive
+app_template_public_hint	Louvri seksyon sa a pou chaje lis piblik la (bezwen entènèt yon fwa).
+app_template_code_not_found	Kòd la pa jwenn
+app_template_need_internet	Bezwen entènèt pou telechaje modèl
+app_template_import_selected	Enpòte sa ki chwazi a
+app_template_check_code	Tcheke kòd
+app_template_import	Enpòte
 currency	Lajan
 backup	Sovgad
 use	Sèvi
@@ -474,19 +474,19 @@ copy_report	Kopye rapò
 counted_cash_ph	Kach konte nan tiro a
 country_tax	Peyi ak taks
 tax_chrome	Etikèt taks sou kes
-tax_chrome_help	Lè eten, biwo kòmand lan kache liy estimasyon GST/taks ak plas GST nan pri. To taks ak paramèt Peyi ak taks rete — relimen etikèt yo nenpòt lè. Rajdhani App Template kòmanse ak sa eten.
+tax_chrome_help	Lè l fèmen, biwo kòmand lan kache liy estimasyon GST/taks ak plas GST-nan-pri yo. To taks yo ak paramèt Peyi ak taks rete — limen etikèt yo ankò nenpòt ki lè. Kèk modèl boutik kòmanse ak sa fèmen.
 tax_chrome_on	Montre
 tax_chrome_off	Kache
 tax_chrome_saved_on	Etikèt taks sou kes
 tax_chrome_saved_off	Etikèt taks kache sou kes
 tax_invoice_till	Fakti taks sou kes
-tax_invoice_help	Lè eten, kont yo se Nòt kach sèlman epi chip Fakti taks / Nòt kach kache sou biwo kòmand lan. Rajdhani App Template kòmanse ak sa eten — relimen Montre nenpòt lè pou chwazi Fakti taks ankò.
+tax_invoice_help	Lè l fèmen, fakti yo se sèlman resi kach epi bouton Fakti taks / Resi kach yo kache sou biwo kòmand lan. Kèk modèl boutik kòmanse ak sa fèmen — limen Montre nenpòt ki lè pou chwazi Fakti taks ankò.
 tax_invoice_on	Montre
 tax_invoice_off	Kache
 tax_invoice_saved_on	Fakti taks sou kes
 tax_invoice_saved_off	Fakti taks kache — Nòt kach sèlman
 pay_methods	Metòd peman
-pay_methods_help	Ki chip ki parèt sou Pran peman. Kach toujou rete. Rajdhani App Template kòmanse ak Kach sèlman — relimen UPI / Kat / Kredi / Separe isit.
+pay_methods_help	Ki bouton ki parèt sou Pran peman. Kach toujou rete. Kèk modèl boutik kòmanse ak Kach sèlman — limen UPI / Kat / Kredi / Separe ankò isit la.
 create_backup	Kreye sovgad
 credit_limit_heading	Limit kredi (pati chwazi / nonmen)
 day_close_summary	Rezime fèmti jounen
@@ -793,10 +793,10 @@ printers_looking	Ap chèche…
 saving_printer	Ap ajoute enprimant…
 cancelled	Anile
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Ap retire…
+removed	Retire
+updating_order	Ap mete ajou…
+order_updated	Kòmand mete ajou
 printers_tap_find	Peze Chèche pou montre enprimant aparèy sa a ka sèvi.
 printers_none_found	Pa jwenn anyen — ekri non yon enprimant sistèm oswa yon IP (pa egzanp 192.168.1.50).
 printer_from_find	Ajoute {name}
@@ -1337,7 +1337,6 @@ kot_field_table	Tab
 kot_field_shop	Non boutik
 kot_field_waiter	Anplwaye
 kot_field_station	Estasyon
-app_template_blurb_extra	Tou: Pwopriyetè Zahir, Admin Asif, Sèvitè Nawaz; bò kote FOH; istwa apre 4 èdtan; bann Jodi a eten; KOT kontra.
 dishes_n	{n} plat
 recipe_ph	Resèt (opsyonèl) — yon pòsyon sèvi: Rice=0.2, Paneer=0.15
 reorder_ph	Achte plis nan
@@ -1364,3 +1363,7 @@ recent_changes	Chanjman resan
 lane_declared_label	Fakti taks
 lane_owner_label	Nòt kach
 money_lane_bill	Kont: {lane}
+app_template_download_progress	Ap telechaje… {p}% ({d} / {t})
+app_template_download_paused	Enpòte ankò pou kontinye — fichye ki fini yo rete
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

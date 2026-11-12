@@ -182,7 +182,7 @@ snack_secs_save	ꯄꯥꯎꯖꯦꯜꯒꯤ ꯃꯇꯝ ꯊꯝꯕꯤꯌꯨ
 snack_secs_saved	ꯄꯥꯎꯖꯦꯜꯒꯤ ꯃꯇꯝ ꯊꯝꯂꯦ — ꯁꯦꯀꯦꯟ {n}
 settings_sec_backup	ꯀꯣꯄꯤ ꯑꯃꯁꯨꯡ ꯍꯟꯕꯤꯔꯛꯄ
 settings_sec_diag	ꯑꯔꯥꯟꯕ ꯌꯦꯡꯕ
-settings_sec_privacy	Privacy
+settings_sec_privacy	ꯃꯁꯥꯒꯤ ꯑꯣꯏꯕꯥ
 diag_privacy_help	ꯂꯥꯏꯔꯤꯛ ꯃꯁꯤꯟ ꯑꯁꯤꯗ ꯂꯩ. ꯂꯣꯟꯁꯤꯟꯕ (PIN, ꯄꯥꯁꯋꯥꯔꯗ) ꯏꯗꯦ. ꯄꯦꯛ ꯃꯁꯤꯟꯗꯒꯤ ꯊꯣꯔꯛꯄꯅ ꯅꯍꯥꯛꯀꯤ ꯃꯦꯟꯅ ꯌꯥꯕ ꯃꯈꯨꯗꯤꯡ ꯃꯇꯝ ꯃꯇꯝꯗ ꯃꯊꯧ ꯇꯥꯏ — ꯌꯣꯟꯗꯦ, ꯃꯤꯑꯣꯏ ꯑꯇꯣꯞꯄꯗ ꯄꯤꯗꯦ.
 diag_level	ꯋꯥꯔꯣꯜꯒꯤ ꯆꯥꯡ
 diag_level_error	ꯑꯔꯥꯟꯕ
@@ -339,21 +339,21 @@ server_remove_pin_ph	ꯃꯄꯨꯒꯤ PIN, server ꯂꯣꯠꯅꯕ
 only_owner_remove_server	ꯃꯄꯨꯅꯈꯛꯇ server ꯂꯣꯠꯄ ꯌꯥꯏ
 owner_pin_remove_server	server ꯑꯁꯤ ꯂꯣꯠꯅꯕ ꯃꯄꯨꯒꯤ PIN ꯃꯊꯧ ꯇꯥꯏ
 device_setup_help	Serverꯅ ꯂꯥꯏꯔꯤꯛ ꯃꯐꯝ ꯑꯁꯤꯗ ꯊꯝꯏ. ꯈꯣꯡꯖꯦꯜ Serverꯒ ꯆꯨꯝꯅꯏ.
-app_template_heading	Rajdhani ꯑꯦꯞ ꯇꯦꯝꯄ꯭ꯂꯦꯠ
-app_template_blurb	Rajdhani ꯃꯦꯅꯨ ꯄꯨꯔꯛꯏ; ꯃꯄꯨ Zahir (zahir), ꯑꯦꯗꯃꯤꯟ Asif (asif, PIN 1111), ꯁꯔꯕꯤꯁ Nawaz (nawaz, PIN 0000); ꯂꯝꯒꯤ ꯃꯄꯥꯟ; ꯄꯨꯌꯥ ꯄꯨꯡ 4ꯒꯤ ꯃꯇꯨꯡꯗ ꯁꯦꯡꯗꯣꯛꯏ (ꯑꯃꯁꯨꯡ ꯀꯣꯄꯤꯒꯤ ꯍꯧꯖꯤꯛ ꯁꯦꯡꯗꯣꯛꯎ); ꯉꯁꯤꯒꯤ ꯂꯥꯏꯟ ꯊꯤꯡꯏ; KOT ꯑꯄꯤꯛꯄ + ꯂꯥꯏꯔꯤꯛ ꯑꯄꯤꯛꯄꯒꯤꯗꯃꯛ ꯃꯔꯨ ꯃꯄꯥꯟ. ꯃꯄꯥꯟꯒꯤ ꯃꯇꯦꯡ ꯁꯦꯝꯐꯝꯗꯒꯤ ꯍꯟꯅ ꯍꯥꯡꯗꯣꯛꯄ ꯌꯥꯏ.
-app_template_apply	Rajdhani ꯑꯦꯞ ꯇꯦꯝꯄ꯭ꯂꯦꯠ
+app_template_heading	ꯗꯨꯀꯥꯟꯒꯤ ꯇꯦꯝꯄ꯭ꯂꯦꯠꯁꯤꯡ
+app_template_blurb	ꯃꯤꯌꯥꯝꯒꯤ ꯍꯧꯔꯛꯐꯝ ꯃꯦꯅꯨ ꯑꯃꯥ ꯏꯝꯄꯣꯔꯠ ꯇꯧꯕꯤꯌꯨ, ꯅꯠꯇ꯭ꯔꯒꯥ ꯅꯍꯥꯛꯀꯤ Khaynjo ꯀꯟꯇꯦꯛꯇꯇꯒꯤ ꯐꯪꯂꯕꯥ ꯃꯁꯤꯡ 12 ꯂꯩꯕꯥ ꯃꯁꯥꯒꯤ ꯀꯣꯗ ꯊꯥꯖꯤꯟꯕꯤꯌꯨ꯫
+app_template_apply	ꯇꯦꯝꯄ꯭ꯂꯦꯠ ꯏꯝꯄꯣꯔꯠ ꯇꯧꯕꯤꯌꯨ
 app_template_skip	ꯍꯧꯖꯤꯛ ꯀꯣꯏꯗꯣꯛꯎ
-app_template_status	Server ꯁꯦꯝꯃꯤ — Rajdhani ꯇꯦꯝꯄ꯭ꯂꯦꯠ ꯁꯤꯖꯤꯟꯅꯕꯤꯌꯨ, ꯅꯠꯇ꯭ꯔꯒ ꯀꯣꯏꯗꯣꯛꯎ
+app_template_status	ꯁꯔꯚꯔ ꯁꯦꯝ ꯁꯥꯔꯦ — ꯇꯦꯝꯄ꯭ꯂꯦꯠ ꯑꯃꯥ ꯏꯝꯄꯣꯔꯠ ꯇꯧꯕꯤꯌꯨ, ꯅꯠꯇ꯭ꯔꯒꯥ ꯊꯥꯗꯣꯛꯄꯤꯌꯨ
 app_template_importing	{title} ꯁꯤꯖꯤꯟꯅꯔꯤ…
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	ꯇꯦꯝꯄ꯭ꯂꯦꯠ ꯗꯥꯎꯟꯂꯣꯗ ꯇꯧꯔꯤ…
+app_template_public_hdr	ꯃꯤꯌꯥꯝꯒꯤ ꯇꯦꯝꯄ꯭ꯂꯦꯠꯁꯤꯡ
+app_template_private_hdr	ꯃꯁꯥꯒꯤ ꯇꯦꯝꯄ꯭ꯂꯦꯠ
+app_template_public_hint	ꯃꯤꯌꯥꯝꯒꯤ ꯂꯤꯁ꯭ꯠ ꯂꯣꯗ ꯇꯧꯅꯕꯥ ꯁꯦꯛꯁꯟ ꯑꯁꯤ ꯍꯥꯡꯗꯣꯛꯄꯤꯌꯨ (ꯑꯃꯨꯛ ꯏꯟꯇꯔꯅꯦꯠ ꯃꯊꯧ ꯇꯥꯏ)꯫
+app_template_code_not_found	ꯀꯣꯗ ꯐꯪꯗꯦ
+app_template_need_internet	ꯇꯦꯝꯄ꯭ꯂꯦꯠ ꯗꯥꯎꯟꯂꯣꯗ ꯇꯧꯅꯕꯥ ꯏꯟꯇꯔꯅꯦꯠ ꯃꯊꯧ ꯇꯥꯏ
+app_template_import_selected	ꯈꯅꯕꯥ ꯑꯗꯨ ꯏꯝꯄꯣꯔꯠ ꯇꯧꯕꯤꯌꯨ
+app_template_check_code	ꯀꯣꯗ ꯌꯦꯡꯕꯤꯌꯨ
+app_template_import	ꯏꯝꯄꯣꯔꯠ ꯇꯧꯕꯤꯌꯨ
 currency	ꯁꯦꯟꯒꯤ ꯃꯃꯤꯡ
 backup	ꯀꯣꯄꯤ
 use	ꯁꯤꯖꯤꯟꯅꯕꯤꯌꯨ
@@ -474,19 +474,19 @@ copy_report	ꯔꯤꯄꯣꯔꯇ ꯀꯣꯄꯤ
 counted_cash_ph	ꯕꯣꯛꯁꯇ ꯂꯤꯁꯤꯡ ꯇꯧꯔꯕ ꯁꯦꯟ
 country_tax	ꯂꯩꯄꯥꯛ ꯑꯃꯁꯨꯡ ꯀꯔ
 tax_chrome	ꯐꯝꯗ ꯀꯔꯒꯤ ꯃꯤꯡ
-tax_chrome_help	ꯊꯤꯡꯕ ꯑꯣꯏꯔꯕꯗꯤ ꯌꯥꯕꯒꯤ ꯐꯝꯅ GST/ꯀꯔ ꯂꯧꯁꯤꯟꯕ ꯂꯥꯏꯟ ꯑꯃꯁꯨꯡ ꯃꯃꯜꯒꯤ ꯃꯅꯨꯡꯒꯤ GST ꯐꯝ ꯂꯥꯞꯏ. ꯀꯔꯒꯤ ꯆꯥꯡ ꯑꯃꯁꯨꯡ ꯂꯩꯄꯥꯛ ꯑꯃꯁꯨꯡ ꯀꯔ ꯁꯦꯝꯐꯝ ꯂꯩꯔꯣꯝꯃꯤ — ꯃꯤꯡ ꯃꯇꯝ ꯈꯨꯗꯤꯡꯃꯛꯇ ꯍꯟꯅ ꯍꯥꯡꯗꯣꯛꯄ ꯌꯥꯏ. Rajdhani ꯑꯦꯞ ꯇꯦꯝꯄ꯭ꯂꯦꯠ ꯊꯤꯡꯕꯗꯒꯤ ꯍꯧꯏ.
+tax_chrome_help	ꯑꯣꯐ ꯇꯧꯔꯕꯥ ꯃꯇꯃꯗꯥ, ꯑꯣꯔꯗꯔ ꯗꯦꯁ꯭ꯀꯅꯥ GST/ꯇꯦꯛꯁꯀꯤ ꯑꯟꯗꯥꯖꯒꯤ ꯂꯥꯏꯅꯁꯤꯡ ꯑꯃꯁꯨꯡ ꯃꯃꯜꯗꯥ-GST ꯃꯐꯝꯁꯤꯡ ꯂꯣꯠꯊꯣꯀꯏ꯫ ꯇꯦꯛꯁꯀꯤ ꯔꯦꯠꯁꯤꯡ ꯑꯃꯁꯨꯡ ꯂꯩꯕꯥꯛ ꯑꯃꯁꯨꯡ ꯇꯦꯛꯁꯀꯤ ꯁꯦꯇꯤꯡꯁꯤꯡ ꯂꯩꯔꯤ — ꯂꯦꯕꯦꯂꯁꯤꯡ ꯀꯔꯤꯒꯨꯝꯕꯥ ꯃꯇꯃꯗꯥ ꯑꯃꯨꯛ ꯍꯟꯅꯥ ꯑꯣꯟ ꯇꯧꯕꯤꯌꯨ꯫ ꯗꯨꯀꯥꯟꯒꯤ ꯇꯦꯝꯄ꯭ꯂꯦꯠ ꯈꯔꯅꯥ ꯃꯁꯤ ꯑꯣꯐ ꯇꯧꯗꯨꯅꯥ ꯍꯧꯏ꯫
 tax_chrome_on	ꯎꯠꯂꯨ
 tax_chrome_off	ꯂꯥꯞꯄꯤꯌꯨ
 tax_chrome_saved_on	ꯀꯔꯒꯤ ꯃꯤꯡ ꯐꯝꯗ
 tax_chrome_saved_off	ꯀꯔꯒꯤ ꯃꯤꯡ ꯐꯝꯗ ꯂꯥꯞꯈꯤ
 tax_invoice_till	ꯀꯔꯒꯤ ꯕꯤꯜ ꯐꯝꯗ
-tax_invoice_help	ꯊꯤꯡꯕ ꯑꯣꯏꯔꯕꯗꯤ ꯕꯤꯜ ꯁꯦꯟꯒꯤ ꯋꯥꯍꯩꯈꯛꯇꯅꯤ, ꯀꯔꯒꯤ ꯕꯤꯜ / ꯁꯦꯟꯒꯤ ꯋꯥꯍꯩ ꯆꯤꯞ ꯌꯥꯕꯒꯤ ꯐꯝꯗ ꯂꯥꯞꯏ. Rajdhani ꯑꯦꯞ ꯇꯦꯝꯄ꯭ꯂꯦꯠ ꯊꯤꯡꯕꯗꯒꯤ ꯍꯧꯏ — ꯎꯠꯂꯨ ꯍꯟꯅ ꯍꯥꯡꯗꯣꯛꯎ, ꯀꯔꯒꯤ ꯕꯤꯜ ꯍꯟꯅ ꯈꯟꯅꯕ.
+tax_invoice_help	ꯑꯣꯐ ꯇꯧꯔꯕꯥ ꯃꯇꯃꯗꯥ, ꯕꯤꯂꯁꯤꯡ ꯑꯁꯤ ꯀꯦꯁ ꯃꯦꯃꯣ ꯈꯛꯇꯅꯤ ꯑꯃꯁꯨꯡ ꯑꯣꯔꯗꯔ ꯗꯦꯁ꯭ꯀꯇꯥ ꯇꯦꯛꯁ ꯏꯅꯚꯣꯏꯁ / ꯀꯦꯁ ꯃꯦꯃꯣ ꯆꯤꯞꯁꯤꯡ ꯂꯣꯠꯂꯤ꯫ ꯗꯨꯀꯥꯟꯒꯤ ꯇꯦꯝꯄ꯭ꯂꯦꯠ ꯈꯔꯅꯥ ꯃꯁꯤ ꯑꯣꯐ ꯇꯧꯗꯨꯅꯥ ꯍꯧꯏ — ꯇꯦꯛꯁ ꯏꯅꯚꯣꯏꯁ ꯑꯃꯨꯛ ꯍꯟꯅꯥ ꯈꯅꯅꯕꯥ ꯎꯠꯄꯤꯌꯨ ꯀꯔꯤꯒꯨꯝꯕꯥ ꯃꯇꯃꯗꯥ ꯑꯣꯟ ꯇꯧꯕꯤꯌꯨ꯫
 tax_invoice_on	ꯎꯠꯂꯨ
 tax_invoice_off	ꯂꯥꯞꯄꯤꯌꯨ
 tax_invoice_saved_on	ꯀꯔꯒꯤ ꯕꯤꯜ ꯐꯝꯗ
 tax_invoice_saved_off	ꯀꯔꯒꯤ ꯕꯤꯜ ꯂꯥꯞꯈꯤ — ꯁꯦꯟꯒꯤ ꯋꯥꯍꯩꯈꯛꯇ
 pay_methods	ꯄꯤꯕꯒꯤ ꯂꯝ
-pay_methods_help	ꯄꯤꯕ ꯂꯧꯕꯤꯌꯨꯗ ꯆꯤꯞ ꯀꯔꯝꯅ ꯎꯏ. ꯁꯦꯟ ꯂꯩꯔꯣꯝꯃꯤ. Rajdhani ꯑꯦꯞ ꯇꯦꯝꯄ꯭ꯂꯦꯠ ꯁꯦꯟꯈꯛꯇꯅ ꯍꯧꯏ — UPI / ꯀꯥꯔꯗ / ꯂꯦꯟꯕ / ꯈꯥꯏꯗꯣꯛꯄ ꯃꯐꯝ ꯑꯁꯤꯗ ꯍꯟꯅ ꯍꯥꯡꯗꯣꯛꯎ.
+pay_methods_help	ꯄꯦꯃꯦꯟꯇ ꯂꯧꯕꯗꯥ ꯀꯔꯝꯕꯥ ꯆꯤꯞꯁꯤꯡ ꯎꯕꯥ ꯐꯪꯒꯅꯤ꯫ ꯀꯦꯁ ꯃꯇꯝ ꯄꯨꯝꯕꯗꯥ ꯂꯩꯔꯤ꯫ ꯗꯨꯀꯥꯟꯒꯤ ꯇꯦꯝꯄ꯭ꯂꯦꯠ ꯈꯔꯅꯥ ꯀꯦꯁ ꯈꯛꯇꯒꯥ ꯍꯧꯏ — UPI / ꯀꯥꯔꯗ / ꯀ꯭ꯔꯦꯗꯤꯠ / ꯈꯥꯌꯗꯣꯛꯄꯥ ꯃꯐꯝ ꯑꯁꯤꯗꯥ ꯑꯃꯨꯛ ꯍꯟꯅꯥ ꯑꯣꯟ ꯇꯧꯕꯤꯌꯨ꯫
 create_backup	ꯀꯣꯄꯤ ꯁꯥꯕꯤꯌꯨ
 credit_limit_heading	ꯂꯦꯟꯕꯒꯤ ꯆꯥꯡ (ꯈꯟꯈꯤꯕ / ꯃꯤꯡ ꯄꯤꯔꯕ ꯃꯤ)
 day_close_summary	ꯅꯨꯃꯤꯠ ꯊꯤꯡꯕꯒꯤ ꯋꯥꯔꯣꯜ
@@ -793,10 +793,10 @@ printers_looking	ꯊꯤꯔꯤ…
 saving_printer	ꯄ꯭ꯔꯤꯟꯇꯔ ꯍꯥꯞꯆꯤꯟꯂꯤ…
 cancelled	ꯇꯣꯛꯈꯤ
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	ꯂꯧꯊꯣꯛꯂꯤ…
+removed	ꯂꯧꯊꯣꯛꯂꯦ
+updating_order	ꯑꯄꯗꯦꯠ ꯇꯧꯔꯤ…
+order_updated	ꯑꯣꯔꯗꯔ ꯑꯄꯗꯦꯠ ꯇꯧꯔꯦ
 printers_tap_find	ꯊꯤꯕꯤꯌꯨ ꯅꯝꯃꯨ, ꯃꯁꯤꯟ ꯑꯁꯤꯅ ꯁꯤꯖꯤꯟꯅꯕ ꯌꯥꯕ ꯄ꯭ꯔꯤꯟꯇꯔ ꯂꯤꯁ꯭ꯇ ꯎꯠꯅꯕ.
 printers_none_found	ꯐꯪꯗꯦ — ꯁꯤꯁ꯭ꯇꯦꯝ ꯄ꯭ꯔꯤꯟꯇꯔꯒꯤ ꯃꯤꯡ ꯅꯠꯇ꯭ꯔꯒ IP ꯏꯕꯤꯌꯨ (ꯈꯨꯗꯝ 192.168.1.50).
 printer_from_find	{name} ꯍꯥꯞꯆꯤꯟꯈꯤ
@@ -1337,7 +1337,6 @@ kot_field_table	ꯐꯝ
 kot_field_shop	ꯀꯦꯟꯐꯝꯒꯤ ꯃꯤꯡ
 kot_field_waiter	ꯊꯕꯛꯇꯧꯕ
 kot_field_station	ꯐꯝꯂꯝ
-app_template_blurb_extra	ꯍꯦꯟꯕ: ꯃꯄꯨ Zahir, Admin Asif, ꯁꯔꯕꯤꯁ Nawaz; FOH ꯁꯥꯏꯗꯕꯥꯔ; ꯄꯨꯡ 4 ꯒꯤ ꯃꯇꯨꯡꯗ ꯋꯥꯔꯤ; ꯉꯁꯤ ꯂꯥꯏꯔꯤꯛ ꯊꯤꯡꯕ; KOT ꯇꯦꯟꯕ.
 dishes_n	ꯆꯥꯛ {n}
 recipe_ph	ꯔꯦꯁꯤꯄꯤ (ꯌꯥꯕ ꯑꯣꯏꯔꯕꯗꯤ) — ꯁꯔꯨꯛ ꯑꯃꯅ ꯁꯤꯖꯤꯟꯅꯏ: Rice=0.2, Paneer=0.15
 reorder_ph	ꯍꯦꯟꯕ ꯂꯩꯕ ꯆꯥꯡ
@@ -1364,3 +1363,7 @@ recent_changes	ꯍꯧꯖꯤꯛꯀꯤ ꯍꯣꯡꯗꯣꯛꯄ
 lane_declared_label	ꯀꯔꯒꯤ ꯕꯤꯜ
 lane_owner_label	ꯁꯦꯟꯒꯤ ꯋꯥꯍꯩ
 money_lane_bill	ꯕꯤꯜ: {lane}
+app_template_download_progress	ꯗꯥꯎꯟꯂꯣꯗ ꯇꯧꯔꯤ… {p}% ({d} / {t})
+app_template_download_paused	ꯃꯈꯥ ꯆꯥꯡꯅꯕꯥ ꯑꯃꯨꯛ ꯍꯟꯅꯥ ꯏꯝꯄꯣꯔꯠ ꯇꯧꯕꯤꯌꯨ — ꯂꯣꯏꯔꯕꯥ ꯐꯥꯏꯜꯁꯤꯡ ꯊꯝꯂꯤ
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

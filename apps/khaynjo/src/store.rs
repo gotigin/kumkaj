@@ -17872,3 +17872,142 @@ mod tests {
         let _ = std::fs::remove_file(path);
     }
 }
+
+#[cfg(test)]
+mod staged_catalogue_tests {
+    //! Download + import from the in-repo CDN tree
+    //! (`sites/khaynjo/static/v1/catalogue`, written by `publish-catalogue.sh`)
+    //! — the same `catalogue_remote` path Windows, Linux and Android take.
+    use super::*;
+    use crate::catalogue_remote::{self, CatalogueKind, CatalogueVisibility, FsSource};
+    use std::time::{SystemTime, UNIX_EPOCH};
+
+    fn staged_cdn() -> Option<PathBuf> {
+        let cdn = PathBuf::from(env!("CARGO_MANIFEST_DIR"))
+            .join("../../sites/khaynjo/static/v1/catalogue");
+        cdn.join("public/index.json").is_file().then_some(cdn)
+    }
+
+    fn scratch(tag: &str) -> PathBuf {
+        let n = SystemTime::now()
+            .duration_since(UNIX_EPOCH)
+            .unwrap()
+            .as_nanos();
+        let dir = std::env::temp_dir().join(format!("khaynjo-staged-{tag}-{n}-{}", new_id()));
+        std::fs::create_dir_all(&dir).unwrap();
+        dir
+    }
+
+    fn import_pack(cdn: &Path, vis: CatalogueVisibility, key: &str) -> (Store, CatalogueImport, usize) {
+        let data = scratch(key);
+        let (dir, man, tmpl) = catalogue_remote::download_pack_from(
+            &FsSource::new(cdn),
+            &data,
+            vis,
+            key,
+            &|| false,
+            &|_| {},
+        )
+        .unwrap_or_else(|e| panic!("{key}: download: {e}"));
+        let store = Store::open_path(&data.join("books.sqlite3")).unwrap();
+        let defaults = man
+            .applies_shop_defaults
+            .then(|| man.shop_defaults_id.clone());
+        let done = store
+            .apply_app_template_pack(&dir, defaults.as_deref())
+            .unwrap_or_else(|e| panic!("{key}: import: {e}"));
+        (store, done, tmpl.item_count())
+    }
+
+    #[test]
+    fn staged_public_app_templates_download_and_import() {
+        let Some(cdn) = staged_cdn() else {
+            return;
+        };
+        let index = catalogue_remote::parse_public_index(
+            &std::fs::read_to_string(cdn.join("public/index.json")).unwrap(),
+        )
+        .unwrap();
+        let mut seen = 0;
+        for entry in index.templates.iter().filter(|e| e.kind == CatalogueKind::AppTemplate) {
+            let (store, done, items) = import_pack(&cdn, CatalogueVisibility::Public, &entry.id);
+            assert!(items > 0, "{}: template has dishes", entry.id);
+            assert_eq!(done.items_added + done.items_kept, items, "{}", entry.id);
+            let products = store.list_products(false).unwrap();
+            let with_photo = products.iter().filter(|p| p.image_key.is_some()).count();
+            assert_eq!(with_photo, products.len(), "{}: every dish has its photo", entry.id);
+            seen += 1;
+        }
+        assert!(seen >= 2, "khaynjo-starter + cafe-starter listed");
+    }
+
+    #[test]
+    fn staged_private_packs_import_with_shop_defaults() {
+        let Some(cdn) = staged_cdn() else {
+            return;
+        };
+        let Ok(rd) = std::fs::read_dir(cdn.join("private")) else {
+            return; // private packs are gitignored — only staged on publish machines
+        };
+        for e in rd.flatten() {
+            let code = e.file_name().to_string_lossy().into_owned();
+            if catalogue_remote::normalize_private_code(&code).is_err() {
+                continue;
+            }
+            let (store, done, items) = import_pack(&cdn, CatalogueVisibility::Private, &code);
+            assert_eq!(done.items_added + done.items_kept, items);
+            let man = catalogue_remote::load_pack_dir(&cdn.join("private").join(&code))
+                .unwrap()
+                .0;
+            if man.shop_defaults_id == "rajdhani" {
+                let owner = store
+                    .list_staff()
+                    .unwrap()
+                    .into_iter()
+                    .find(|s| s.is_owner())
+                    .unwrap();
+                assert_eq!(owner.name, "Zahir");
+            }
+        }
+    }
+
+    /// Full 1,459-photo shelf: download, interrupt, resume, scan. Heavy
+    /// (~130 MB copy) — run with `--ignored` before a catalogue deploy.
+    #[test]
+    #[ignore]
+    fn staged_shelf_downloads_resumes_and_scans() {
+        let Some(cdn) = staged_cdn() else {
+            return;
+        };
+        let data = scratch("shelf");
+        let src = FsSource::new(&cdn);
+        let n = std::sync::atomic::AtomicUsize::new(0);
+        let err = catalogue_remote::download_pack_from(
+            &src,
+            &data,
+            CatalogueVisibility::Public,
+            "khaynjo-items",
+            &|| n.fetch_add(1, std::sync::atomic::Ordering::SeqCst) >= 500,
+            &|_| {},
+        )
+        .unwrap_err();
+        assert_eq!(err, "Cancelled");
+        let last = std::sync::Mutex::new(catalogue_remote::DownloadProgress::default());
+        let (dir, man, _) = catalogue_remote::download_pack_from(
+            &src,
+            &data,
+            CatalogueVisibility::Public,
+            "khaynjo-items",
+            &|| false,
+            &|p| *last.lock().unwrap() = p,
+        )
+        .unwrap();
+        let p = *last.lock().unwrap();
+        assert_eq!(man.kind, CatalogueKind::Shelf);
+        assert!(p.resumed_files >= 400, "resumed {} files", p.resumed_files);
+        assert_eq!(p.bytes_done, man.bytes);
+        let dishes = crate::menu_images::load_shelf(&dir);
+        assert_eq!(dishes.len(), p.files_total);
+        let _ = std::fs::remove_dir_all(data);
+    }
+}

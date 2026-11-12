@@ -182,7 +182,7 @@ snack_secs_save	የማንቂያ ጊዜ አስቀምጥ
 snack_secs_saved	የማንቂያ ጊዜ ተቀምጧል — {n} ሰከንድ
 settings_sec_backup	ምትኬ እና መመለስ
 settings_sec_diag	ምርመራ
-settings_sec_privacy	Privacy
+settings_sec_privacy	ግላዊነት
 diag_privacy_help	መዝገቦች በዚህ መሣሪያ ላይ ይቆያሉ። ሚስጥሮች (ፒን፣ የይለፍ ቃላት) በፍጹም አይቀመጡም። ጥቅልን ከመሣሪያው ውጭ ማጋራት በእያንዳንዱ ጊዜ የእርስዎን ግልጽ ፈቃድ ይፈልጋል — ለሶስተኛ ወገን አይሸጥም ወይም አይሰጥም።
 diag_level	የዝርዝር ደረጃ
 diag_level_error	ስህተቶች
@@ -339,21 +339,21 @@ server_remove_pin_ph	ሰርቨር ለማስወገድ የባለቤት ፒን
 only_owner_remove_server	ሰርቨርን ማስወገድ የሚችለው ባለቤት ብቻ ነው
 owner_pin_remove_server	ይህን ሰርቨር ለማስወገድ የባለቤት ፒን ያስፈልጋል
 device_setup_help	ሰርቨር መዝገቦቹን እዚህ ይይዛል። ክላየንት ከሰርቨር ጋር ይጣመራል።
-app_template_heading	Rajdhani የመተግበሪያ ንድፍ
-app_template_blurb	የ Rajdhani ሜኑ ይጭናል፤ ባለቤት Zahir (zahir)፣ አስተዳዳሪ Asif (asif፣ ፒን 1111)፣ አስተናጋጅ Nawaz (nawaz፣ ፒን 0000)፤ የፊት አዳራሽ ጎን አሞሌ፤ ታሪክ ከ4 ሰዓት በኋላ ይጸዳል (እና በምትኬ ውስጥ አሁን አጽዳ)፤ የዛሬ ማሳያ ጠፍቷል፤ ጠባብ ትሪዎች ላይ የታመቀ KOT + መደበኛ ህዳሶች። የጎን አቻዎች በቅንብሮች እንደገና ሊበሩ ይችላሉ።
-app_template_apply	Rajdhani የመተግበሪያ ንድፍ
+app_template_heading	የሱቅ አብነቶች
+app_template_blurb	ይፋዊ የመጀመሪያ ምናሌ ያስገቡ፣ ወይም ከKhaynjo አድራሻዎ የተቀበሉትን ባለ 12 አሃዝ የግል ኮድ ያስገቡ።
+app_template_apply	አብነት አስገባ
 app_template_skip	ለአሁን ዝለል
-app_template_status	ሰርቨር ዝግጁ ነው — Rajdhani የመተግበሪያ ንድፍ ይተግብሩ፣ ወይም ይዝለሉ
+app_template_status	አገልጋዩ ዝግጁ ነው — አብነት ያስገቡ ወይም ይዝለሉ
 app_template_importing	{title} በመተግበር ላይ…
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	አብነት በማውረድ ላይ…
+app_template_public_hdr	ይፋዊ አብነቶች
+app_template_private_hdr	የግል አብነት
+app_template_public_hint	ይፋዊ ዝርዝሩን ለመጫን ይህን ክፍል ይክፈቱ (አንድ ጊዜ ኢንተርኔት ያስፈልጋል)።
+app_template_code_not_found	ኮዱ አልተገኘም
+app_template_need_internet	አብነቶችን ለማውረድ ኢንተርኔት ያስፈልጋል
+app_template_import_selected	የተመረጠውን አስገባ
+app_template_check_code	ኮድ አረጋግጥ
+app_template_import	አስገባ
 currency	ገንዘብ
 backup	ምትኬ
 use	ተጠቀም
@@ -474,19 +474,19 @@ copy_report	ሪፖርት ቅዳ
 counted_cash_ph	በመሳቢያው ውስጥ የተቆጠረ ጥሬ ገንዘብ
 country_tax	ሀገር እና ግብር
 tax_chrome	በቆጣሪ ላይ የግብር መለያዎች
-tax_chrome_help	ሲጠፋ፣ የትዕዛዝ ጠረጴዛው የ GST/ግብር ግምት መስመሮችን እና በዋጋ ውስጥ ያለ GST ቦታ ያዢዎችን ይደብቃል። የግብር ተመኖች እና የሀገር እና ግብር ቅንብሮች ይቆያሉ — መለያዎችን በማንኛውም ጊዜ መልሰው ያብሩ። Rajdhani የመተግበሪያ ንድፍ ይህን ጠፍቶ ይጀምራል።
+tax_chrome_help	ሲጠፋ፣ የትዕዛዝ ዴስኩ የGST/ግብር ግምት መስመሮችን እና የGST-በዋጋ ውስጥ ቦታ ያዢዎችን ይደብቃል። የግብር ተመኖች እና የሀገር እና ግብር ቅንብሮች ይቆያሉ — መለያዎችን በማንኛውም ጊዜ መልሰው ያብሩ። አንዳንድ የሱቅ አብነቶች ይህ ጠፍቶ ይጀምራሉ።
 tax_chrome_on	አሳይ
 tax_chrome_off	ደብቅ
 tax_chrome_saved_on	የግብር መለያዎች በቆጣሪ ላይ
 tax_chrome_saved_off	የግብር መለያዎች በቆጣሪ ላይ ተደብቀዋል
 tax_invoice_till	የግብር ደረሰኝ በቆጣሪ ላይ
-tax_invoice_help	ሲጠፋ፣ ሂሳቦች የጥሬ ገንዘብ ማስታወሻ ብቻ ናቸው እና የግብር ደረሰኝ / የጥሬ ገንዘብ ማስታወሻ ቺፖች በትዕዛዝ ጠረጴዛው ላይ ይደበቃሉ። Rajdhani የመተግበሪያ ንድፍ ይህን ጠፍቶ ይጀምራል — የግብር ደረሰኝ እንደገና ለመምረጥ አሳይን በማንኛውም ጊዜ ያብሩ።
+tax_invoice_help	ሲጠፋ፣ ሂሳቦች የጥሬ ገንዘብ ማስታወሻ ብቻ ናቸው እና የግብር ደረሰኝ / የጥሬ ገንዘብ ማስታወሻ ቁልፎች በትዕዛዝ ዴስኩ ላይ ይደበቃሉ። አንዳንድ የሱቅ አብነቶች ይህ ጠፍቶ ይጀምራሉ — የግብር ደረሰኝን እንደገና ለመምረጥ አሳይን በማንኛውም ጊዜ ያብሩ።
 tax_invoice_on	አሳይ
 tax_invoice_off	ደብቅ
 tax_invoice_saved_on	የግብር ደረሰኝ በቆጣሪ ላይ
 tax_invoice_saved_off	የግብር ደረሰኝ ተደብቋል — የጥሬ ገንዘብ ማስታወሻ ብቻ
 pay_methods	የክፍያ ዘዴዎች
-pay_methods_help	በክፍያ ውሰድ ላይ የትኞቹ ቺፖች እንደሚታዩ። ጥሬ ገንዘብ ሁልጊዜ ይቆያል። Rajdhani የመተግበሪያ ንድፍ በጥሬ ገንዘብ ብቻ ይጀምራል — UPI / ካርድ / ብድር / ክፍፍልን እዚህ መልሰው ያብሩ።
+pay_methods_help	በክፍያ ተቀበል ላይ የሚታዩ ቁልፎች። ጥሬ ገንዘብ ሁልጊዜ ይቆያል። አንዳንድ የሱቅ አብነቶች በጥሬ ገንዘብ ብቻ ይጀምራሉ — UPI / ካርድ / ብድር / ክፍፍልን እዚህ መልሰው ያብሩ።
 create_backup	ምትኬ ፍጠር
 credit_limit_heading	የብድር ገደብ (የተመረጠ / የተሰየመ ተዋዋይ)
 day_close_summary	የቀን መዝጊያ ማጠቃለያ
@@ -793,10 +793,10 @@ printers_looking	በመፈለግ ላይ…
 saving_printer	ማተሚያ በመጨመር ላይ…
 cancelled	ተሰርዟል
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	በማስወገድ ላይ…
+removed	ተወግዷል
+updating_order	በማዘመን ላይ…
+order_updated	ትዕዛዙ ተዘምኗል
 printers_tap_find	ይህ መሣሪያ ሊጠቀምባቸው የሚችላቸውን ማተሚያዎች ለመዘርዘር ፈልግን ይንኩ።
 printers_none_found	ምንም አልተገኘም — የስርዓት ማተሚያ ስም ወይም IP ይጻፉ (ለምሳሌ 192.168.1.50)።
 printer_from_find	{name} ተጨምሯል
@@ -1337,7 +1337,6 @@ kot_field_table	ጠረጴዛ
 kot_field_shop	የሱቅ ስም
 kot_field_waiter	ሰራተኛ
 kot_field_station	ጣቢያ
-app_template_blurb_extra	እንዲሁ፦ ባለቤት Zahir፣ አስተዳዳሪ Asif፣ አስተናጋጅ Nawaz፤ የፊት አዳራሽ ጎን አሞሌ፤ ታሪክ ከ4 ሰዓት በኋላ፤ የዛሬ ማሳያ ጠፍቷል፤ የታመቀ KOT።
 dishes_n	{n} ምግቦች
 recipe_ph	የምግብ አሰራር (አማራጭ) — አንድ ድርሻ ይጠቀማል፦ ሩዝ=0.2፣ ፓኒር=0.15
 reorder_ph	ተጨማሪ ግዛ በ
@@ -1364,3 +1363,7 @@ recent_changes	የቅርብ ለውጦች
 lane_declared_label	የግብር ደረሰኝ
 lane_owner_label	የጥሬ ገንዘብ ማስታወሻ
 money_lane_bill	ሂሳብ፦ {lane}
+app_template_download_progress	በማውረድ ላይ… {p}% ({d} / {t})
+app_template_download_paused	ለመቀጠል እንደገና ያስገቡ — የተጠናቀቁ ፋይሎች ይቀመጣሉ
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

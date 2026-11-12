@@ -182,7 +182,7 @@ snack_secs_save	Simpan waktu peringatan
 snack_secs_saved	Waktu peringatan disimpan — {n} detik
 settings_sec_backup	Cadangan & pulihkan
 settings_sec_diag	Diagnostik
-settings_sec_privacy	Privacy
+settings_sec_privacy	Privasi
 diag_privacy_help	Log tetap pada perangkat ini. Rahasia (PIN, kata sandi) tidak pernah disimpan. Berbagi paket dari perangkat memerlukan persetujuan eksplisit Anda setiap kali — tidak pernah dijual atau diberikan kepada pihak ketiga.
 diag_level	Tingkat detail
 diag_level_error	Error
@@ -339,21 +339,21 @@ server_remove_pin_ph	PIN Owner untuk hapus
 only_owner_remove_server	Hanya Owner yang boleh hapus server
 owner_pin_remove_server	PIN Owner wajib untuk menghapus server ini
 device_setup_help	Server menyimpan pembukuan di sini. Klien dipasangkan ke server.
-app_template_heading	Template Aplikasi Rajdhani
-app_template_blurb	Memuat menu Rajdhani; Pemilik Zahir (zahir), Admin Asif (asif, PIN 1111), Pelayan Nawaz (nawaz, PIN 0000); sidebar FOH; riwayat dibersihkan setelah 4 jam (dan Clear sekarang di Backup); strip Hari ini dimatikan; margin KOT ringkas + Standar untuk nampan sempit. Teman sidebar dapat dinyalakan kembali di Pengaturan.
-app_template_apply	Template Aplikasi Rajdhani
+app_template_heading	Templat toko
+app_template_blurb	Impor menu awal publik, atau masukkan kode pribadi 12 digit dari kontak Khaynjo Anda.
+app_template_apply	Impor templat
 app_template_skip	Lewati untuk saat ini
-app_template_status	Server siap — terapkan Template Aplikasi Rajdhani, atau lewati
+app_template_status	Server siap — impor templat, atau lewati
 app_template_importing	Menerapkan {title}…
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	Mengunduh templat…
+app_template_public_hdr	Templat publik
+app_template_private_hdr	Templat pribadi
+app_template_public_hint	Buka bagian ini untuk memuat daftar publik (perlu internet sekali).
+app_template_code_not_found	Kode tidak ditemukan
+app_template_need_internet	Perlu internet untuk mengunduh templat
+app_template_import_selected	Impor yang dipilih
+app_template_check_code	Periksa kode
+app_template_import	Impor
 currency	Mata uang
 backup	Cadangan
 use	Gunakan
@@ -474,19 +474,19 @@ copy_report	Salin laporan
 counted_cash_ph	Tunai terhitung di laci
 country_tax	Negara & pajak
 tax_chrome	Label pajak di kasir
-tax_chrome_help	Saat dimatikan, baris estimasi GST/pajak dan placeholder harga-masuk-GST disembunyikan di meja pesanan. Pengaturan tarif pajak dan Negara & pajak tetap aktif — nyalakan label kembali kapan saja. Template Aplikasi Rajdhani dimulai dengan ini dalam keadaan mati.
+tax_chrome_help	Saat nonaktif, meja pesanan menyembunyikan baris perkiraan GST/pajak dan penanda GST-dalam-harga. Tarif pajak serta pengaturan Negara & pajak tetap ada — aktifkan kembali label kapan saja. Beberapa templat toko dimulai dengan opsi ini nonaktif.
 tax_chrome_on	Tampilkan
 tax_chrome_off	Sembunyikan
 tax_chrome_saved_on	Label pajak di kasir
 tax_chrome_saved_off	Label pajak disembunyikan di kasir
 tax_invoice_till	Faktur pajak di kasir
-tax_invoice_help	Saat dimatikan, tagihan hanya berupa memo tunai dan chip Faktur pajak / Memo tunai disembunyikan di meja pesanan. Template Aplikasi Rajdhani dimulai dengan ini dalam keadaan mati — nyalakan Tampilkan kembali kapan saja untuk memilih Faktur pajak lagi.
+tax_invoice_help	Saat nonaktif, tagihan hanya berupa nota tunai dan tombol Faktur pajak / Nota tunai disembunyikan di meja pesanan. Beberapa templat toko dimulai dengan opsi ini nonaktif — aktifkan Tampilkan kapan saja untuk memilih Faktur pajak lagi.
 tax_invoice_on	Tampilkan
 tax_invoice_off	Sembunyikan
 tax_invoice_saved_on	Faktur pajak di kasir
 tax_invoice_saved_off	Faktur pajak disembunyikan — hanya memo tunai
 pay_methods	Metode pembayaran
-pay_methods_help	Chip mana yang muncul di Ambil pembayaran. Tunai selalu tetap. Template Aplikasi Rajdhani dimulai dengan Tunai saja — nyalakan UPI / Kartu / Kredit / Bagi kembali di sini.
+pay_methods_help	Tombol mana yang muncul di Terima pembayaran. Tunai selalu ada. Beberapa templat toko dimulai hanya dengan Tunai — aktifkan kembali UPI / Kartu / Kredit / Bagi di sini.
 create_backup	Buat cadangan
 credit_limit_heading	Batas kredit (pihak terpilih / bernama)
 day_close_summary	Ringkasan tutup hari
@@ -793,10 +793,10 @@ printers_looking	Mencari printer di perangkat ini dan Wi‑Fi…
 saving_printer	Menambahkan printer…
 cancelled	Dibatalkan
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Menghapus…
+removed	Dihapus
+updating_order	Memperbarui…
+order_updated	Pesanan diperbarui
 printers_tap_find	Ketuk Cari untuk menampilkan printer yang dapat dipakai perangkat ini.
 printers_none_found	Tidak ada printer — ketik nama sistem atau alamat jaringan (mis. 192.168.1.50).
 printer_from_find	Ditambahkan {name}
@@ -1337,7 +1337,6 @@ kot_field_table	Meja
 kot_field_shop	Nama toko
 kot_field_waiter	Staf
 kot_field_station	Stasiun
-app_template_blurb_extra	Juga: Pemilik Zahir, Admin Asif, Pelayan Nawaz; sidebar FOH; riwayat setelah 4 jam; strip hari ini dimatikan; KOT ringkas.
 dishes_n	{n} hidangan
 recipe_ph	Resep (opsional) — satu porsi memakai: Rice=0.2, Paneer=0.15
 reorder_ph	Beli lagi saat
@@ -1364,3 +1363,7 @@ recent_changes	Perubahan terbaru
 lane_declared_label	Faktur pajak
 lane_owner_label	Memo tunai
 money_lane_bill	Tagihan: {lane}
+app_template_download_progress	Mengunduh… {p}% ({d} / {t})
+app_template_download_paused	Impor lagi untuk melanjutkan — file yang selesai tetap disimpan
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

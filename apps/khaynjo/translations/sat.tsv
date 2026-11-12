@@ -182,7 +182,7 @@ snack_secs_save	ᱮᱞᱟᱨᱴ ᱚᱠᱛᱚ ᱵᱟᱧᱪᱟᱣ ᱢᱮ
 snack_secs_saved	ᱮᱞᱟᱨᱴ ᱚᱠᱛᱚ ᱵᱟᱧᱪᱟᱣ ᱮᱱᱟ — {n} ᱥᱮᱠᱮᱱᱰ
 settings_sec_backup	ᱵᱮᱠᱟᱯ ᱟᱨ ᱨᱤᱥᱴᱚᱨ
 settings_sec_diag	ᱰᱟᱭᱜᱽᱱᱚᱥᱴᱤᱠᱥ
-settings_sec_privacy	Privacy
+settings_sec_privacy	ᱫᱟᱱᱟᱝ
 diag_privacy_help	ᱞᱚᱜᱽ ᱠᱚ ᱱᱚᱣᱟ ᱰᱤᱵᱷᱟᱭᱤᱥ ᱨᱮ ᱛᱟᱦᱮᱱᱟ ᱾ ᱩᱠᱩ ᱠᱟᱛᱷᱟ (ᱯᱤᱱ, ᱯᱟᱥᱣᱟᱨᱰ) ᱛᱤᱥ ᱦᱚᱸ ᱵᱟᱝ ᱡᱟᱣᱨᱟ ᱛᱟᱦᱮᱱᱟ ᱾ ᱰᱤᱵᱷᱟᱭᱤᱥ ᱠᱷᱚᱱ ᱢᱤᱫ ᱯᱮᱠᱮᱡᱽ ᱦᱟᱹᱴᱤᱧ ᱞᱟᱹᱜᱤᱫ ᱥᱟᱱᱟᱢ ᱚᱠᱛᱚ ᱟᱢᱟᱜ ᱯᱩᱥᱴᱟᱹᱣ ᱥᱚᱫᱚᱨ ᱞᱟᱹᱠᱛᱤᱜ ᱠᱟᱱᱟ — ᱛᱤᱥ ᱦᱚᱸ ᱛᱮᱥᱟᱨ ᱯᱟᱨᱴᱤ ᱵᱟᱝ ᱟᱠᱨᱤᱧ ᱟᱨ ᱵᱟᱝ ᱮᱢ ᱦᱩᱭᱩᱜ-ᱟ᱾
 diag_level	ᱵᱤᱵᱨᱚᱬ ᱞᱮᱵᱮᱞ
 diag_level_error	ᱦᱤᱲᱤᱡ ᱠᱚ
@@ -339,21 +339,21 @@ server_remove_pin_ph	ᱥᱮᱨᱵᱷᱟᱨ ᱚᱪᱚᱜ ᱞᱟᱹᱜᱤᱫ ᱢ�
 only_owner_remove_server	ᱥᱩᱢᱩᱝ ᱢᱟᱞᱤᱠ ᱜᱮ ᱥᱮᱨᱵᱷᱟᱨ ᱚᱪᱚᱜ ᱫᱟᱲᱮᱭᱟᱜᱼᱟᱭ
 owner_pin_remove_server	ᱱᱚᱣᱟ ᱥᱮᱨᱵᱷᱟᱨ ᱚᱪᱚᱜ ᱞᱟᱹᱜᱤᱫ ᱢᱟᱞᱤᱠ ᱯᱤᱱ ᱞᱟᱹᱠᱛᱤᱜ ᱠᱟᱱᱟ
 device_setup_help	ᱥᱮᱨᱵᱷᱟᱨ ᱯᱚᱛᱚᱵ ᱠᱚ ᱱᱚᱸᱰᱮ ᱫᱚᱦᱚ ᱟᱠᱟᱫᱟᱭ ᱾ ᱠᱞᱟᱭᱮᱱᱴ ᱫᱚ ᱥᱮᱨᱵᱷᱟᱨ ᱥᱟᱶ ᱡᱚᱲ ᱮᱫᱟᱭ ᱾
-app_template_heading	ᱨᱟᱡᱷᱟᱱᱤ ᱮᱯ ᱴᱮᱢᱯᱞᱮᱴ
-app_template_blurb	ᱨᱟᱡᱷᱟᱱᱤ ᱢᱮᱱᱩ ᱞᱳᱰ ᱢᱮ; ᱢᱟᱞᱤᱠ ᱡᱟᱦᱤᱨ (ᱡᱟᱦᱤᱨ), ᱮᱰᱢᱤᱱ ᱟᱥᱤᱯ (ᱟᱥᱤᱯ, ᱯᱤᱱ 1111), ᱣᱮᱴᱟᱨ ᱱᱟᱣᱟᱡᱽ (ᱱᱟᱣᱟᱡᱽ, ᱯᱤᱱ 000); FOH ᱥᱟᱭᱤᱰᱵᱟᱨ; ᱱᱟᱜᱟᱢ 4 ᱴᱟᱲᱟᱝ ᱛᱟᱭᱚᱢ ᱥᱟᱯᱷᱟᱜᱼᱟ (ᱟᱨ ᱵᱮᱠᱟᱯ ᱨᱮ ᱱᱤᱛᱚᱜ ᱥᱟᱯᱷᱟᱭ ᱢᱮ); ᱛᱮᱦᱮᱧ ᱥᱴᱨᱤᱯ ᱚᱯᱷ; ᱠᱚᱢᱯᱮᱠᱴ ᱠᱮ ᱚ ᱴᱤ + ᱥᱟᱠᱲᱟ ᱴᱨᱮ ᱠᱚ ᱞᱟᱹᱜᱤᱫ ᱥᱴᱮᱱᱰᱟᱨ ᱢᱟᱨᱡᱤᱱ ᱠᱚ ᱾ ᱥᱟᱭᱤᱰᱵᱟᱨ ᱯᱤᱭᱟᱨ ᱠᱚ ᱥᱮᱴᱤᱝ ᱨᱮ ᱫᱚᱦᱲᱟ ᱪᱟᱹᱞᱩ ᱫᱟᱲᱮᱭᱟᱜᱼᱟ ᱠᱚ ᱾
-app_template_apply	ᱨᱟᱡᱷᱟᱱᱤ ᱮᱯ ᱴᱮᱢᱯᱞᱮᱴ
+app_template_heading	ᱫᱚᱠᱟᱱ ᱴᱮᱢᱯᱞᱮᱴ
+app_template_blurb	ᱢᱤᱫᱴᱟᱹᱝ ᱥᱟᱱᱟᱢᱟᱜ ᱮᱦᱚᱵ ᱢᱮᱱᱩ ᱟᱹᱜᱩ ᱢᱮ, ᱟᱨᱵᱟᱝ ᱟᱢᱟᱜ Khaynjo ᱥᱚᱢᱯᱚᱨᱠ ᱠᱷᱚᱱ ᱧᱟᱢ 12 ᱮᱞ ᱨᱮᱭᱟᱜ ᱱᱤᱡᱮᱨᱟᱜ ᱠᱳᱰ ᱟᱫᱮᱨ ᱢᱮ᱾
+app_template_apply	ᱴᱮᱢᱯᱞᱮᱴ ᱟᱹᱜᱩ ᱢᱮ
 app_template_skip	ᱱᱤᱛᱚᱜ ᱞᱟᱹᱜᱤᱫ ᱵᱟᱹᱜᱤᱭᱟᱜ ᱢᱮ
-app_template_status	ᱥᱮᱨᱵᱷᱟᱨ ᱥᱟᱯᱲᱟᱣ ᱜᱮᱭᱟ — ᱨᱟᱡᱷᱟᱱᱤ ᱮᱯ ᱴᱮᱢᱯᱞᱮᱴ ᱞᱟᱹᱜᱩᱭ ᱢᱮ, ᱟᱨᱵᱟᱝ ᱵᱟᱹᱜᱤᱭᱟᱜ ᱢᱮ
+app_template_status	ᱥᱟᱨᱵᱷᱟᱨ ᱛᱭᱟᱨ — ᱢᱤᱫᱴᱟᱹᱝ ᱴᱮᱢᱯᱞᱮᱴ ᱟᱹᱜᱩ ᱢᱮ, ᱟᱨᱵᱟᱝ ᱟᱲᱟᱜ ᱢᱮ
 app_template_importing	ᱟᱯᱞᱟᱭᱚᱜ ᱠᱟᱱᱟ {title}...
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	ᱴᱮᱢᱯᱞᱮᱴ ᱰᱟᱣᱩᱱᱞᱚᱰ ᱦᱩᱭ ᱠᱟᱱᱟ…
+app_template_public_hdr	ᱥᱟᱱᱟᱢᱟᱜ ᱴᱮᱢᱯᱞᱮᱴ
+app_template_private_hdr	ᱱᱤᱡᱮᱨᱟᱜ ᱴᱮᱢᱯᱞᱮᱴ
+app_template_public_hint	ᱥᱟᱱᱟᱢᱟᱜ ᱞᱤᱥᱴᱤ ᱞᱚᱰ ᱞᱟᱹᱜᱤᱫ ᱱᱚᱶᱟ ᱦᱟᱹᱴᱤᱧ ᱡᱷᱤᱡᱽ ᱢᱮ (ᱢᱤᱫ ᱫᱷᱟᱣ ᱤᱱᱴᱟᱨᱱᱮᱴ ᱞᱟᱹᱠᱛᱤ)᱾
+app_template_code_not_found	ᱠᱳᱰ ᱵᱟᱝ ᱧᱟᱢ ᱮᱱᱟ
+app_template_need_internet	ᱴᱮᱢᱯᱞᱮᱴ ᱰᱟᱣᱩᱱᱞᱚᱰ ᱞᱟᱹᱜᱤᱫ ᱤᱱᱴᱟᱨᱱᱮᱴ ᱞᱟᱹᱠᱛᱤ
+app_template_import_selected	ᱵᱟᱪᱷᱟᱣ ᱟᱠᱟᱱ ᱟᱹᱜᱩ ᱢᱮ
+app_template_check_code	ᱠᱳᱰ ᱧᱮᱞ ᱢᱮ
+app_template_import	ᱟᱹᱜᱩ ᱢᱮ
 currency	ᱠᱟᱨᱟᱱᱥᱤ
 backup	ᱵᱮᱠᱚᱯ
 use	ᱵᱮᱵᱷᱟᱨ ᱢᱮ
@@ -474,19 +474,19 @@ copy_report	ᱨᱤᱯᱳᱨᱴ ᱱᱚᱠᱚᱞ ᱢᱮ
 counted_cash_ph	ᱰᱨᱚᱭᱟᱨ ᱨᱮ ᱴᱟᱠᱟ ᱞᱮᱠᱷᱟ
 country_tax	ᱫᱤᱥᱚᱢ ᱟᱨ ᱴᱮᱠᱥ
 tax_chrome	ᱦᱟᱹᱵᱤᱡ ᱴᱮᱠᱥ ᱞᱮᱵᱮᱞ
-tax_chrome_help	ᱵᱚᱱᱫᱚ ᱡᱷᱚᱜ, ᱚᱰᱟᱨ ᱰᱮᱥᱠ ᱫᱚ ᱡᱤ ᱮᱥ ᱴᱤ/ᱴᱮᱠᱥ ᱮᱥᱴᱤᱢᱮᱴ ᱞᱟᱭᱤᱱ ᱟᱨ ᱡᱤ ᱮᱥ ᱴᱤ-ᱤᱱ-ᱯᱨᱟᱭᱤᱥ ᱯᱞᱮᱥᱦᱚᱞᱰᱟᱨ ᱠᱚᱭ ᱩᱠᱩᱭᱟ ᱾ ᱴᱮᱠᱥ ᱫᱚᱨ ᱟᱨ ᱫᱤᱥᱚᱢ ᱟᱨ ᱴᱮᱠᱥ ᱥᱮᱴᱤᱝ ᱛᱟᱦᱮᱱ ᱢᱮ — ᱡᱟᱦᱟᱸ ᱚᱠᱛᱚ ᱨᱮ ᱞᱮᱵᱮᱞ ᱨᱩᱣᱟᱹᱲ ᱢᱮ ᱾ ᱨᱟᱡᱷᱟᱱᱤ ᱮᱯ ᱴᱮᱢᱯᱞᱮᱴ ᱱᱚᱣᱟ ᱚᱯᱷ ᱥᱟᱶ ᱮᱦᱚᱵᱚᱜᱼᱟ ᱾
+tax_chrome_help	ᱵᱚᱸᱫ ᱠᱷᱟᱱ, ᱚᱨᱰᱚᱨ ᱰᱮᱥᱠ GST/ᱠᱟᱨ ᱟᱸᱫᱟᱡᱽ ᱛᱷᱟᱨ ᱟᱨ ᱜᱚᱱᱚᱝ-ᱨᱮ-GST ᱡᱟᱭᱜᱟ ᱩᱠᱩᱭᱟ᱾ ᱠᱟᱨ ᱫᱚᱨ ᱟᱨ ᱫᱤᱥᱚᱢ ᱟᱨ ᱠᱟᱨ ᱥᱮᱴᱤᱝ ᱛᱟᱦᱮᱸᱱᱟ — ᱞᱮᱵᱮᱞ ᱡᱟᱦᱟᱸ ᱚᱠᱛᱚ ᱫᱚᱦᱲᱟ ᱪᱟᱹᱞᱩ ᱢᱮ᱾ ᱛᱤᱱᱟᱹᱜ ᱫᱚᱠᱟᱱ ᱴᱮᱢᱯᱞᱮᱴ ᱱᱚᱣᱟ ᱵᱚᱸᱫ ᱫᱚᱦᱚᱭ ᱛᱮ ᱮᱦᱚᱵᱚᱜ ᱠᱟᱱᱟ᱾
 tax_chrome_on	ᱩᱫᱩᱜ ᱢᱮ
 tax_chrome_off	ᱩᱠᱩᱭ ᱢᱮ
 tax_chrome_saved_on	ᱦᱟᱹᱵᱤᱡ ᱴᱮᱠᱥ ᱞᱮᱵᱮᱞ
 tax_chrome_saved_off	ᱴᱮᱠᱥ ᱞᱮᱵᱮᱞ ᱠᱚ ᱩᱠᱩ ᱟᱠᱟᱱᱟ
 tax_invoice_till	ᱦᱟᱹᱵᱤᱡ ᱴᱮᱠᱥ ᱪᱟᱞᱟᱱ
-tax_invoice_help	ᱵᱚᱱᱫᱚ ᱚᱠᱛᱚ, ᱵᱤᱞ ᱠᱚ ᱫᱚ ᱥᱩᱢᱩᱝ ᱴᱟᱠᱟ ᱢᱮᱢᱳ ᱛᱟᱦᱮᱱᱟ ᱟᱨ ᱴᱮᱠᱥ ᱪᱟᱞᱟᱱ/ᱴᱟᱠᱟ ᱢᱮᱢᱳ ᱪᱤᱯᱥ ᱫᱚ ᱚᱰᱟᱨ ᱰᱮᱥᱠ ᱨᱮ ᱩᱠᱩ ᱛᱟᱦᱮᱱᱟ ᱾ ᱨᱟᱡᱷᱟᱱᱤ ᱮᱯ ᱴᱮᱢᱯᱞᱮᱴ ᱫᱚ ᱱᱚᱣᱟ ᱵᱚᱱᱫᱚ ᱛᱮ ᱮᱦᱚᱵᱚᱜᱼᱟ — ᱴᱮᱠᱥ ᱪᱟᱞᱟᱱ ᱫᱚᱦᱚ ᱞᱟᱹᱜᱤᱫ ᱡᱟᱦᱟᱸ ᱚᱠᱛᱚ ᱨᱮ ᱥᱚᱣ ᱨᱩᱣᱟᱹᱲ ᱪᱟᱹᱞᱩᱭ ᱢᱮ ᱾
+tax_invoice_help	ᱵᱚᱸᱫ ᱠᱷᱟᱱ, ᱵᱤᱞ ᱫᱚ ᱮᱠᱮᱱ ᱠᱮᱥ ᱢᱮᱢᱳ ᱦᱩᱭᱩᱜ ᱠᱟᱱᱟ ᱟᱨ ᱚᱨᱰᱚᱨ ᱰᱮᱥᱠ ᱨᱮ ᱴᱮᱠᱥ ᱤᱱᱵᱷᱚᱭᱮᱥ / ᱠᱮᱥ ᱢᱮᱢᱳ ᱪᱤᱯ ᱩᱠᱩᱜ ᱠᱟᱱᱟ᱾ ᱛᱤᱱᱟᱹᱜ ᱫᱚᱠᱟᱱ ᱴᱮᱢᱯᱞᱮᱴ ᱱᱚᱣᱟ ᱵᱚᱸᱫ ᱫᱚᱦᱚᱭ ᱛᱮ ᱮᱦᱚᱵᱚᱜ ᱠᱟᱱᱟ — ᱴᱮᱠᱥ ᱤᱱᱵᱷᱚᱭᱮᱥ ᱫᱚᱦᱲᱟ ᱵᱟᱪᱷᱟᱣ ᱞᱟᱹᱜᱤᱫ ᱩᱫᱩᱜ ᱢᱮ ᱡᱟᱦᱟᱸ ᱚᱠᱛᱚ ᱪᱟᱹᱞᱩ ᱢᱮ᱾
 tax_invoice_on	ᱩᱫᱩᱜ ᱢᱮ
 tax_invoice_off	ᱩᱠᱩᱭ ᱢᱮ
 tax_invoice_saved_on	ᱦᱟᱹᱵᱤᱡ ᱴᱮᱠᱥ ᱪᱟᱞᱟᱱ
 tax_invoice_saved_off	ᱴᱮᱠᱥ ᱪᱟᱞᱟᱱ ᱩᱠᱩ ᱟᱠᱟᱱᱟ — ᱥᱩᱢᱩᱝ ᱴᱟᱠᱟ ᱢᱮᱢᱳ
 pay_methods	ᱯᱮᱢᱮᱱᱴ ᱦᱚᱨᱟ
-pay_methods_help	ᱯᱮᱢᱮᱱᱴ ᱦᱟᱛᱟᱣ ᱨᱮ ᱚᱠᱟ ᱪᱤᱯᱥ ᱧᱮᱞᱚᱜᱼᱟ ᱾ ᱴᱟᱠᱟ ᱥᱟᱨᱟ ᱜᱷᱟᱹᱲᱤᱡ ᱛᱟᱦᱮᱱᱟ᱾ ᱨᱟᱡᱷᱟᱱᱤ ᱮᱯ ᱴᱮᱢᱯᱞᱮᱴ ᱫᱚ ᱥᱩᱢᱩᱝ ᱴᱟᱠᱟ ᱛᱮ ᱮᱦᱚᱵᱚᱜᱼᱟ — ᱱᱚᱸᱰᱮ ᱭᱩᱯᱤᱟᱭᱤ/ᱠᱟᱨᱰ/ᱠᱨᱮᱰᱤᱴ/ᱥᱯᱞᱤᱴ ᱨᱩᱣᱟᱹᱲ ᱢᱮ ᱾
+pay_methods_help	ᱯᱮᱢᱮᱱᱴ ᱦᱟᱛᱟᱣ ᱨᱮ ᱡᱟᱦᱟᱸ ᱪᱤᱯ ᱧᱮᱞᱚᱜ ᱠᱟᱱᱟ᱾ ᱱᱚᱜᱚᱫ ᱡᱟᱣᱽᱜᱮ ᱛᱟᱦᱮᱸᱱᱟ᱾ ᱛᱤᱱᱟᱹᱜ ᱫᱚᱠᱟᱱ ᱴᱮᱢᱯᱞᱮᱴ ᱮᱠᱮᱱ ᱱᱚᱜᱚᱫ ᱛᱮ ᱮᱦᱚᱵᱚᱜ ᱠᱟᱱᱟ — UPI / ᱠᱟᱨᱰ / ᱫᱷᱟᱨ / ᱦᱟᱹᱴᱤᱧ ᱱᱚᱸᱰᱮ ᱫᱚᱦᱲᱟ ᱪᱟᱹᱞᱩ ᱢᱮ᱾
 create_backup	ᱵᱮᱠᱟᱯ ᱵᱮᱱᱟᱣ ᱢᱮ
 credit_limit_heading	ᱠᱨᱮᱰᱤᱴ ᱥᱤᱢᱟᱹ (ᱵᱟᱪᱷᱟᱣ/ᱧᱩᱛᱩᱢ ᱯᱟᱨᱴᱤ)
 day_close_summary	ᱢᱟᱦᱟᱸ ᱢᱩᱪᱟᱹᱫ ᱥᱟᱨᱠᱟᱛᱷᱟ
@@ -793,10 +793,10 @@ printers_looking	ᱠᱚᱭᱚᱜ...
 saving_printer	ᱯᱨᱤᱱᱴᱟᱨ ᱥᱮᱞᱮᱫᱚᱜ ᱠᱟᱱᱟ...
 cancelled	ᱵᱟᱝ ᱦᱩᱭ ᱟᱠᱟᱱᱟ
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	ᱚᱪᱚᱜ ᱠᱟᱱᱟ…
+removed	ᱚᱪᱚᱜ ᱮᱱᱟ
+updating_order	ᱟᱯᱰᱮᱴ ᱦᱩᱭ ᱠᱟᱱᱟ…
+order_updated	ᱚᱨᱰᱚᱨ ᱟᱯᱰᱮᱴ ᱮᱱᱟ
 printers_tap_find	ᱱᱚᱶᱟ ᱥᱟᱫᱷᱚᱱ ᱵᱮᱵᱷᱟᱨ ᱫᱟᱲᱮᱭᱟᱜ ᱯᱨᱤᱱᱴᱟᱨ ᱛᱟᱞᱠᱟ ᱞᱟᱹᱜᱤᱫ ᱯᱟᱱᱛᱮ ᱨᱮ ᱞᱤᱱ ᱢᱮ ᱾
 printers_none_found	ᱚᱠᱚᱭ ᱦᱚᱸ ᱵᱟᱝ ᱧᱟᱢ ᱞᱮᱱᱟ — ᱥᱤᱥᱴᱚᱢ ᱯᱨᱤᱱᱴᱟᱨ ᱧᱩᱛᱩᱢ ᱥᱮ ᱟᱭᱤ ᱯᱤ ᱴᱟᱭᱤᱯ ᱢᱮ (ᱡᱮᱞᱠᱟ 192.168.1.50)᱾
 printer_from_find	ᱥᱮᱞᱮᱫ ᱮᱱᱟ {name}
@@ -1337,7 +1337,6 @@ kot_field_table	ᱴᱮᱵᱩᱞ
 kot_field_shop	ᱫᱚᱠᱟᱱ ᱧᱩᱛᱩᱢ
 kot_field_waiter	ᱠᱟᱹᱢᱤᱭᱟᱹ
 kot_field_station	ᱥᱴᱮᱥᱚᱱ
-app_template_blurb_extra	ᱟᱨᱦᱚᱸ: ᱢᱟᱞᱤᱠ ᱡᱟᱦᱤᱨ, ᱮᱰᱢᱤᱱ ᱟᱥᱤᱯ, ᱣᱮᱴᱟᱨ ᱱᱟᱣᱟᱡᱽ; FOH ᱥᱟᱭᱤᱰᱵᱟᱨ; 4 ᱴᱟᱲᱟᱝ ᱛᱟᱭᱚᱢ ᱱᱟᱜᱟᱢ; ᱛᱮᱦᱮᱧ ᱥᱴᱨᱤᱯ ᱚᱯᱷ; ᱠᱚᱢᱯᱮᱠᱴ ᱠᱮ ᱚ ᱴᱤ᱾
 dishes_n	{n} ᱰᱤᱥ ᱠᱚ
 recipe_ph	ᱡᱚᱢᱟᱜ ᱥᱟᱠᱟᱢ (ᱚᱯᱥᱚᱱᱟᱞ) — ᱢᱤᱫ ᱦᱟᱹᱴᱤᱧ ᱵᱮᱵᱷᱟᱨ: ᱫᱟᱠᱟ=0.2, ᱯᱟᱱᱤᱨ=0.15
 reorder_ph	ᱟᱨᱦᱚᱸ ᱠᱤᱨᱤᱧ ᱢᱮ
@@ -1364,3 +1363,7 @@ recent_changes	ᱱᱮᱛᱟᱨ ᱨᱮᱱᱟᱜ ᱵᱚᱫᱚᱞ ᱠᱚ
 lane_declared_label	ᱴᱮᱠᱥ ᱪᱟᱞᱟᱱ
 lane_owner_label	ᱴᱟᱠᱟ ᱢᱮᱢᱳ
 money_lane_bill	ᱵᱤᱞ: {lane}
+app_template_download_progress	ᱰᱟᱣᱩᱱᱞᱚᱰ ᱦᱩᱭ ᱠᱟᱱᱟ… {p}% ({d} / {t})
+app_template_download_paused	ᱫᱚᱦᱲᱟ ᱮᱦᱚᱵ ᱞᱟᱹᱜᱤᱫ ᱫᱚᱦᱲᱟ ᱟᱹᱜᱩ ᱢᱮ — ᱯᱩᱨᱟᱹ ᱦᱩᱭ ᱟᱠᱟᱱ ᱯᱷᱟᱭᱤᱞ ᱫᱚ ᱫᱚᱦᱚ ᱜᱮᱭᱟ
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

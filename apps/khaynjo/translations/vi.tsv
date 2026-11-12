@@ -182,7 +182,7 @@ snack_secs_save	Lưu thời gian thông báo
 snack_secs_saved	Đã lưu thời gian thông báo — {n} giây
 settings_sec_backup	Sao lưu & khôi phục
 settings_sec_diag	Chẩn đoán
-settings_sec_privacy	Privacy
+settings_sec_privacy	Quyền riêng tư
 diag_privacy_help	Nhật ký vẫn nằm trên thiết bị này. Thông tin bí mật (PIN, mật khẩu) không bao giờ được lưu trữ. Chia sẻ gói ngoài thiết bị cần sự phê duyệt rõ ràng của bạn mỗi lần — không bao giờ được bán hoặc cung cấp cho bên thứ ba.
 diag_level	Mức độ chi tiết
 diag_level_error	Lỗi
@@ -339,21 +339,21 @@ server_remove_pin_ph	Owner PIN để xóa máy chủ
 only_owner_remove_server	Chỉ Owner mới được xóa máy chủ
 owner_pin_remove_server	Cần Owner PIN để xóa máy chủ này
 device_setup_help	Máy chủ giữ sổ sách ở đây. Máy khách ghép đôi với máy chủ.
-app_template_heading	Mẫu ứng dụng Rajdhani
-app_template_blurb	Tải menu Rajdhani; Chủ sở hữu Zahir (zahir), Quản trị viên Asif (asif, mã PIN 1111), Phục vụ Nawaz (nawaz, mã PIN 0000); Thanh bên FOH; lịch sử được xóa sau 4 giờ (và Xóa ngay trong Sao lưu); Dải ngày hôm nay bị tắt; KOT gọn gàng + biên độ tiêu chuẩn cho khay hẹp. Các đồng nghiệp trên thanh bên có thể bật lại trong Cài đặt.
-app_template_apply	Mẫu ứng dụng Rajdhani
+app_template_heading	Mẫu cửa hàng
+app_template_blurb	Nhập một thực đơn khởi đầu công khai, hoặc nhập mã riêng 12 chữ số từ người liên hệ Khaynjo của bạn.
+app_template_apply	Nhập mẫu
 app_template_skip	Bỏ qua trước
-app_template_status	Nhân viên đã sẵn sàng — áp dụng mẫu ứng dụng Rajdhani hoặc bỏ qua
+app_template_status	Máy chủ đã sẵn sàng — nhập một mẫu, hoặc bỏ qua
 app_template_importing	Đang áp dụng {title}…
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	Đang tải mẫu xuống…
+app_template_public_hdr	Mẫu công khai
+app_template_private_hdr	Mẫu riêng
+app_template_public_hint	Mở mục này để tải danh sách công khai (cần internet một lần).
+app_template_code_not_found	Không tìm thấy mã
+app_template_need_internet	Cần internet để tải mẫu xuống
+app_template_import_selected	Nhập mục đã chọn
+app_template_check_code	Kiểm tra mã
+app_template_import	Nhập
 currency	Tiền tệ
 backup	Sao lưu
 use	Dùng
@@ -474,19 +474,19 @@ copy_report	Sao chép báo cáo
 counted_cash_ph	Tiền mặt đã đếm trong ngăn
 country_tax	Quốc gia & thuế
 tax_chrome	Nhãn thuế trên quầy thu ngân
-tax_chrome_help	Khi tắt, bàn đặt hàng sẽ ẩn các dòng ước tính GST/thuế và vị trí giữ chỗ GST trong giá. Các tỷ lệ thuế và cài đặt Quốc gia & thuế vẫn được giữ — bật lại nhãn thuế bất cứ lúc nào. Mẫu ứng dụng Rajdhani bắt đầu với tùy chọn này bị tắt.
+tax_chrome_help	Khi tắt, quầy gọi món ẩn các dòng ước tính GST/thuế và chỗ giữ GST trong giá. Thuế suất và cài đặt Quốc gia và thuế vẫn giữ — bật lại nhãn bất cứ lúc nào. Một số mẫu cửa hàng bắt đầu với tùy chọn này tắt.
 tax_chrome_on	Hiện
 tax_chrome_off	Ẩn
 tax_chrome_saved_on	Nhãn thuế trên quầy thu ngân
 tax_chrome_saved_off	Nhãn thuế ẩn trên quầy thu ngân
 tax_invoice_till	Hóa đơn thuế trên quầy thu ngân
-tax_invoice_help	Khi tắt, hóa đơn chỉ là Phiếu tiền mặt và các chip Hóa đơn thuế / Phiếu tiền mặt sẽ bị ẩn trên bàn đặt hàng. Mẫu ứng dụng Rajdhani bắt đầu với tùy chọn này bị tắt — bật lại Hiển thị bất cứ lúc nào để chọn lại Hóa đơn thuế.
+tax_invoice_help	Khi tắt, hóa đơn chỉ là phiếu tiền mặt và các nút Hóa đơn thuế / Phiếu tiền mặt bị ẩn trên quầy gọi món. Một số mẫu cửa hàng bắt đầu với tùy chọn này tắt — bật Hiển thị bất cứ lúc nào để chọn lại Hóa đơn thuế.
 tax_invoice_on	Hiện
 tax_invoice_off	Ẩn
 tax_invoice_saved_on	Hóa đơn thuế trên quầy thu ngân
 tax_invoice_saved_off	Hóa đơn thuế ẩn — chỉ Phiếu tiền mặt
 pay_methods	Phương thức thanh toán
-pay_methods_help	Các chip nào xuất hiện trên Thanh toán. Tiền mặt luôn được giữ. Mẫu ứng dụng Rajdhani bắt đầu với chỉ Tiền mặt — bật lại UPI / Thẻ / Tín dụng / Chia sẻ tại đây.
+pay_methods_help	Những nút nào hiện ở Nhận thanh toán. Tiền mặt luôn có. Một số mẫu cửa hàng bắt đầu chỉ với Tiền mặt — bật lại UPI / Thẻ / Ghi nợ / Chia tại đây.
 create_backup	Tạo sao lưu
 credit_limit_heading	Hạn mức tín dụng (đối tác đã chọn / đã nêu)
 day_close_summary	Tóm tắt chốt ngày
@@ -793,10 +793,10 @@ printers_looking	Đang tìm máy in trên thiết bị này và Wi‑Fi…
 saving_printer	Đang thêm máy in…
 cancelled	Đã hủy
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Đang xóa…
+removed	Đã xóa
+updating_order	Đang cập nhật…
+order_updated	Đã cập nhật đơn
 printers_tap_find	Chạm Tìm để liệt kê máy in mà thiết bị này dùng được.
 printers_none_found	Không tìm thấy máy in — nhập tên hệ thống hoặc địa chỉ mạng (vd. 192.168.1.50).
 printer_from_find	Đã thêm {name}
@@ -1337,7 +1337,6 @@ kot_field_table	Bàn
 kot_field_shop	Tên cửa hàng
 kot_field_waiter	Nhân viên
 kot_field_station	Trạm
-app_template_blurb_extra	Ngoài ra: Chủ sở hữu Zahir, Quản trị viên Asif, Phục vụ Nawaz; Thanh bên FOH; lịch sử sau 4 giờ; thanh Today bị xóa; KOT gọn gàng.
 dishes_n	{n} món
 recipe_ph	Công thức (tùy chọn) — một suất dùng: Rice=0.2, Paneer=0.15
 reorder_ph	Mua thêm khi còn
@@ -1364,3 +1363,7 @@ recent_changes	Thay đổi gần đây
 lane_declared_label	Hóa đơn thuế
 lane_owner_label	Phiếu tiền mặt
 money_lane_bill	Bill: {lane}
+app_template_download_progress	Đang tải xuống… {p}% ({d} / {t})
+app_template_download_paused	Nhập lại để tiếp tục — các tệp đã xong được giữ lại
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

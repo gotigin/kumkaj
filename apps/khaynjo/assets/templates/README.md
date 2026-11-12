@@ -8,14 +8,18 @@ See [`docs/CATALOGUE_URLS.md`](../docs/CATALOGUE_URLS.md). Source trees here
 remain for publish / `cargo test` / `KHAYNJO_TEMPLATES_DIR`.
 
 Each folder under `assets/templates/<id>/` is a **named menu template**
-(categories, dishes, prices, aliases, photos). Today: `rajdhani/` —
-display title **Rajdhani Menu Template** (publish as a **private** pack
-with a 12-digit code).
+(categories, dishes, prices, aliases, photos). Today:
+
+- `khaynjo-starter/` — public world-cuisine starter (DeviceSetup list).
+- `cafe-starter/` — public café starter (tea, coffee, cold drinks, bakery,
+  snacks).
+- `rajdhani/` — **Rajdhani Menu Template**, published as a **private** pack
+  with a 12-digit code (never listed publicly).
 
 This is separate from:
 
-- the big photo shelf (`assets/items/`) — optional future public
-  `/v1/catalogue/public/items/…`, and
+- the big photo shelf (`assets/items/`) — published as the public
+  **khaynjo-items** shelf at `/v1/catalogue/public/items/…`, and
 - **App template offer** — DeviceSetup after Server (before Owner PIN);
   public list + private code; Rajdhani shop defaults when the manifest
   sets `shop_defaults_id: "rajdhani"`.
@@ -52,7 +56,7 @@ This is separate from:
    Import path is covered by store tests that load `rajdhani`.
 
 5. **Publish + DeviceSetup**  
-   Stage with `publish-catalogue.sh` (public starter in-repo; Rajdhani via
+   Stage with `publish-catalogue.sh` (public starters in-repo; Rajdhani via
    `--private-rajdhani --code=…`). On Server first-run, Public / Private
    accordions download and import. Existing dish names are left alone;
    importing twice adds nothing new.

@@ -182,7 +182,7 @@ snack_secs_save	Сохранить время уведомлений
 snack_secs_saved	Время уведомлений сохранено — {n} с
 settings_sec_backup	Резервное копирование и восстановление
 settings_sec_diag	Диагностика
-settings_sec_privacy	Privacy
+settings_sec_privacy	Конфиденциальность
 diag_privacy_help	Логи остаются на этом устройстве. Секреты (PIN, пароли) никогда не хранятся. Передача пакета с устройства требует вашего явного подтверждения каждый раз — никогда не продается или не передается третьим лицам.
 diag_level	Уровень детализации
 diag_level_error	Ошибки
@@ -339,21 +339,21 @@ server_remove_pin_ph	PIN владельца для удаления
 only_owner_remove_server	Удалить сервер может только владелец
 owner_pin_remove_server	Чтобы удалить этот сервер, нужен PIN владельца
 device_setup_help	Сервер хранит учёт здесь. Клиент подключается к серверу.
-app_template_heading	Шаблон приложения Rajdhani
-app_template_blurb	Загружает меню Rajdhani; Владелец Zahir (zahir), Админ Asif (asif, PIN 1111), Официант Nawaz (nawaz, PIN 0000); боковая панель FOH; история очищается через 4 часа (и кнопка Очистить сейчас в Резервное копирование); сегодня снимается; компактный KOT + стандартные отступы для узлых подносов. Партнёры боковой панели можно снова включить в Настройках.
-app_template_apply	Шаблон приложения Rajdhani
+app_template_heading	Шаблоны магазина
+app_template_blurb	Импортируйте общедоступное стартовое меню или введите личный 12-значный код от вашего контакта в Khaynjo.
+app_template_apply	Импортировать шаблон
 app_template_skip	Пропустить пока
-app_template_status	Официант готов — применить шаблон приложения Rajdhani или пропустить
+app_template_status	Сервер готов — импортируйте шаблон или пропустите
 app_template_importing	Применяется {title}…
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	Загрузка шаблона…
+app_template_public_hdr	Общие шаблоны
+app_template_private_hdr	Личный шаблон
+app_template_public_hint	Откройте этот раздел, чтобы загрузить общий список (интернет нужен один раз).
+app_template_code_not_found	Код не найден
+app_template_need_internet	Для загрузки шаблонов нужен интернет
+app_template_import_selected	Импортировать выбранное
+app_template_check_code	Проверить код
+app_template_import	Импортировать
 currency	Валюта
 backup	Резервная копия
 use	Использовать
@@ -474,19 +474,19 @@ copy_report	Копировать отчёт
 counted_cash_ph	Пересчитанные наличные в кассе
 country_tax	Страна и налоги
 tax_chrome	Надписи о налоге на кассе
-tax_chrome_help	Когда выключено, стол заказов скрывает строки оценки НДС/налога и заглушки цены с НДС. Ставки налогов и настройки страны и налога остаются — включайте надписи обратно в любое время. Шаблон приложения Rajdhani начинается с этого выключенным.
+tax_chrome_help	Когда выключено, стол заказов скрывает строки оценки GST/налога и заполнители «GST в цене». Налоговые ставки и настройки страны и налога сохраняются — включайте подписи снова в любое время. Некоторые шаблоны магазина начинают с этим выключенным.
 tax_chrome_on	Показать
 tax_chrome_off	Скрыть
 tax_chrome_saved_on	Надписи о налоге на кассе
 tax_chrome_saved_off	Надписи о налоге скрыты на кассе
 tax_invoice_till	Налоговый чек на кассе
-tax_invoice_help	Когда выключено, чеки только как Квитанция о кассовых операциях, а чипы Налоговый чек / Квитанция о кассовых операциях скрыты на столе заказов. Шаблон приложения Rajdhani начинается с этого выключенным — включите Показать обратно в любое время, чтобы снова выбрать Налоговый чек.
+tax_invoice_help	Когда выключено, счета — только кассовые чеки, а кнопки Налоговый счёт / Кассовый чек на столе заказов скрыты. Некоторые шаблоны магазина начинают с этим выключенным — включите Показывать в любое время, чтобы снова выбрать Налоговый счёт.
 tax_invoice_on	Показать
 tax_invoice_off	Скрыть
 tax_invoice_saved_on	Налоговый чек на кассе
 tax_invoice_saved_off	Налоговый чек скрыт — только Квитанция о кассовых операциях
 pay_methods	Способы оплаты
-pay_methods_help	Какие чипы появляются при Приёме платежа. Наличные всегда остаются. Шаблон приложения Rajdhani начинается только с Наличных — включите UPI / Карточку / Кредит / Разделение обратно здесь.
+pay_methods_help	Какие кнопки видны в «Принять оплату». Наличные остаются всегда. Некоторые шаблоны магазина начинают только с Наличных — включите UPI / Карта / Кредит / Разделить здесь снова.
 create_backup	Создать резервную копию
 credit_limit_heading	Лимит кредита (выбранная / указанная сторона)
 day_close_summary	Сводка закрытия дня
@@ -793,10 +793,10 @@ printers_looking	Поиск принтеров на этом устройств�
 saving_printer	Добавление принтера…
 cancelled	Отменён
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Удаление…
+removed	Удалено
+updating_order	Обновление…
+order_updated	Заказ обновлён
 printers_tap_find	Нажмите «Найти», чтобы показать принтеры, которые может использовать это устройство.
 printers_none_found	Принтеры не найдены — введите имя в системе или сетевой адрес (напр. 192.168.1.50).
 printer_from_find	Добавлено {name}
@@ -1337,7 +1337,6 @@ kot_field_table	Стол
 kot_field_shop	Название магазина
 kot_field_waiter	Персонал
 kot_field_station	Станция
-app_template_blurb_extra	Также: Владелец Захир, Админ Асиф, Официант Наваз; боковая панель FOH; история после 4 часов; сегодня сбрасывается; компактный KOT.
 dishes_n	Блюд: {n}
 recipe_ph	Рецепт (необязательно) — на порцию: Rice=0.2, Paneer=0.15
 reorder_ph	Докупить при
@@ -1364,3 +1363,7 @@ recent_changes	Последние изменения
 lane_declared_label	Налоговый счёт
 lane_owner_label	Кассовый чек
 money_lane_bill	Билл: {lane}
+app_template_download_progress	Загрузка… {p}% ({d} / {t})
+app_template_download_paused	Импортируйте снова, чтобы продолжить — готовые файлы сохраняются
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

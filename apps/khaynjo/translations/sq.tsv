@@ -182,7 +182,7 @@ snack_secs_save	Ruaj kohën e njoftimit
 snack_secs_saved	Koha e njoftimit u ruajt — {n} sekonda
 settings_sec_backup	Kopje rezervë dhe rikthim
 settings_sec_diag	Diagnostika
-settings_sec_privacy	Privacy
+settings_sec_privacy	Privatësia
 diag_privacy_help	Regjistrat qëndrojnë në këtë pajisje. Sekretet (PIN, fjalëkalimet) nuk ruhen kurrë. Ndarja e një pakete jashtë pajisjes kërkon miratimin tuaj të qartë çdo herë — nuk shiten dhe nuk u jepen palëve të treta.
 diag_level	Niveli i detajeve
 diag_level_error	Gabime
@@ -339,21 +339,21 @@ server_remove_pin_ph	PIN-i i pronarit për të hequr një server
 only_owner_remove_server	Vetëm Pronari mund të heqë një server
 owner_pin_remove_server	PIN-i i pronarit kërkohet për të hequr këtë server
 device_setup_help	Serveri i mban librat këtu. Terminali çiftohet me një Server.
-app_template_heading	Shablloni i aplikacionit Rajdhani
-app_template_blurb	Ngarkon menunë Rajdhani; Pronari Zahir (zahir), Administratori Asif (asif, PIN 1111), Kamarieri Nawaz (nawaz, PIN 0000); shiriti anësor i sallës; historia pastrohet pas 4 orësh (dhe Pastro tani te Kopja rezervë); shiriti Sot fikur; KOT kompakt + margjina Standard për tabaka të ngushta. Shokët e shiritit anësor mund të ndizen përsëri te Cilësimet.
-app_template_apply	Shablloni i aplikacionit Rajdhani
+app_template_heading	Shabllone dyqani
+app_template_blurb	Importoni një meny fillestare publike, ose shkruani një kod privat 12-shifror nga kontakti juaj Khaynjo.
+app_template_apply	Importo shabllonin
 app_template_skip	Anashkalo për tani
-app_template_status	Serveri gati — zbato Shabllonin e aplikacionit Rajdhani, ose anashkalo
+app_template_status	Serveri është gati — importoni një shabllon ose kaloni
 app_template_importing	Po zbatohet {title}…
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	Po shkarkohet shablloni…
+app_template_public_hdr	Shabllone publike
+app_template_private_hdr	Shabllon privat
+app_template_public_hint	Hapni këtë seksion për të ngarkuar listën publike (duhet internet një herë).
+app_template_code_not_found	Kodi nuk u gjet
+app_template_need_internet	Duhet internet për të shkarkuar shabllone
+app_template_import_selected	Importo të zgjedhurin
+app_template_check_code	Kontrollo kodin
+app_template_import	Importo
 currency	Monedha
 backup	Kopje rezervë
 use	Përdor
@@ -474,19 +474,19 @@ copy_report	Kopjo raportin
 counted_cash_ph	Para të numëruara në sirtar
 country_tax	Vendi dhe tatimi
 tax_chrome	Etiketat e tatimit te kasa
-tax_chrome_help	Kur është fikur, tavolina e porosisë fsheh rreshtat e vlerësimit GST/tatim dhe vendmbajtësit e GST-it në çmim. Normat e tatimit dhe cilësimet Vendi dhe tatimi qëndrojnë — ndizni etiketat përsëri kur të doni. Shablloni i aplikacionit Rajdhani fillon me këtë të fikur.
+tax_chrome_help	Kur është i fikur, banaku i porosive fsheh rreshtat e vlerësimit të GST/taksës dhe shënjuesit GST-në-çmim. Normat e taksave dhe cilësimet Vendi dhe taksa mbeten — ndizni etiketat përsëri kurdo. Disa shabllone dyqani nisin me këtë të fikur.
 tax_chrome_on	Shfaq
 tax_chrome_off	Fshih
 tax_chrome_saved_on	Etiketat e tatimit te kasa
 tax_chrome_saved_off	Etiketat e tatimit të fshehura te kasa
 tax_invoice_till	Fatura tatimore te kasa
-tax_invoice_help	Kur është fikur, faturat janë vetëm Dëftesë me para dhe çipat Fatura tatimore / Dëftesë me para fshihen te tavolina e porosisë. Shablloni i aplikacionit Rajdhani fillon me këtë të fikur — ndizni Shfaq përsëri kur të doni për të zgjedhur Faturën tatimore.
+tax_invoice_help	Kur është i fikur, faturat janë vetëm kupona parash dhe butonat Faturë tatimore / Kupon parash fshihen në banakun e porosive. Disa shabllone dyqani nisin me këtë të fikur — ndizni Shfaq kurdo për të zgjedhur përsëri Faturë tatimore.
 tax_invoice_on	Shfaq
 tax_invoice_off	Fshih
 tax_invoice_saved_on	Fatura tatimore te kasa
 tax_invoice_saved_off	Fatura tatimore e fshehur — vetëm Dëftesë me para
 pay_methods	Mënyrat e pagesës
-pay_methods_help	Cilët çipa shfaqen te Merr pagesën. Paratë në dorë qëndrojnë gjithmonë. Shablloni i aplikacionit Rajdhani fillon vetëm me Para në dorë — ndizni përsëri UPI / Kartë / Kredi / Ndaj këtu.
+pay_methods_help	Cilat butona shfaqen te Merr pagesën. Paratë në dorë mbeten gjithmonë. Disa shabllone dyqani nisin vetëm me Para në dorë — ndizni përsëri UPI / Kartë / Kredi / Ndaj këtu.
 create_backup	Krijo kopje rezervë
 credit_limit_heading	Kufiri i kredisë (pala e zgjedhur / e emërtuar)
 day_close_summary	Përmbledhja e mbylljes së ditës
@@ -793,10 +793,10 @@ printers_looking	Po kërkon…
 saving_printer	Po shtohet printeri…
 cancelled	E anuluar
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Po hiqet…
+removed	U hoq
+updating_order	Po përditësohet…
+order_updated	Porosia u përditësua
 printers_tap_find	Prekni Gjej për të listuar printerët që kjo pajisje mund të përdorë.
 printers_none_found	Nuk u gjet asnjë — shkruani emrin e printerit të sistemit ose një IP (p.sh. 192.168.1.50).
 printer_from_find	U shtua {name}
@@ -1337,7 +1337,6 @@ kot_field_table	Tavolina
 kot_field_shop	Emri i dyqanit
 kot_field_waiter	Stafi
 kot_field_station	Stacioni
-app_template_blurb_extra	Gjithashtu: Pronari Zahir, Administratori Asif, Kamarieri Nawaz; shiriti anësor i sallës; historia pas 4 orësh; shiriti Sot i fikur; KOT kompakt.
 dishes_n	{n} pjata
 recipe_ph	Receta (opsionale) — një porcion përdor: Oriz=0.2, Paneer=0.15
 reorder_ph	Bli më shumë te
@@ -1364,3 +1363,7 @@ recent_changes	Ndryshimet e fundit
 lane_declared_label	Fatura tatimore
 lane_owner_label	Dëftesë me para
 money_lane_bill	Fatura: {lane}
+app_template_download_progress	Po shkarkohet… {p}% ({d} / {t})
+app_template_download_paused	Importo përsëri për të vazhduar — skedarët e përfunduar ruhen
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

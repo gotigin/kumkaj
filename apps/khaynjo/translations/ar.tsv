@@ -182,7 +182,7 @@ snack_secs_save	حفظ مدة التنبيه
 snack_secs_saved	حُفظت مدة التنبيه — {n} ثانية
 settings_sec_backup	النسخ الاحتياطي واستعادة البيانات
 settings_sec_diag	التشخيص
-settings_sec_privacy	Privacy
+settings_sec_privacy	الخصوصية
 diag_privacy_help	تظل السجلات على هذا الجهاز. لا يتم تخزين الأسرار (كلمة المرور، كلمات المرور). يتطلب مشاركة حزمة خارج الجهاز موافقتك الصريحة في كل مرة — ولا تُباع أو تُعطى لأطراف ثالثة.
 diag_level	مستوى التفاصيل
 diag_level_error	أخطاء
@@ -339,21 +339,21 @@ server_remove_pin_ph	رمز المالك للإزالة
 only_owner_remove_server	المالك وحده يمكنه إزالة خادم
 owner_pin_remove_server	يلزم رمز المالك لإزالة هذا الخادم
 device_setup_help	الخادم يحفظ الدفاتر هنا. العميل يقترن بخادم.
-app_template_heading	قالب تطبيق Rajdhani
-app_template_blurb	يقوم بتحميل قائمة Rajdhani؛ المالك زاهر (zahir)، المدير أسيف (asif، الرمز 1111)، خادم نواز (nawaz، الرمز 0000)؛ شريط جانبي لواجهة العملاء؛ يتم مسح السجل بعد 4 ساعات (مع خيار مسح الآن في النسخ الاحتياطي)؛ شريط اليوم يُزال؛ تذاكر المطبخ المضغوطة + هوامش قياسية للصفائح الضيقة. يمكن إعادة تشغيل أقران الشريط الجانبي من الإعدادات.
-app_template_apply	قالب تطبيق Rajdhani
+app_template_heading	قوالب المتجر
+app_template_blurb	استورد قائمة بداية عامة، أو أدخل رمزًا خاصًا من 12 رقمًا من جهة اتصالك في Khaynjo.
+app_template_apply	استيراد القالب
 app_template_skip	انتظر قليلاً
-app_template_status	خادم جاهز — قم بتطبيق قالب تطبيق Rajdhani، أو تخطي
+app_template_status	الخادم جاهز — استورد قالبًا أو تخطَّ
 app_template_importing	يتم تطبيق {title}…
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	جارٍ تنزيل القالب…
+app_template_public_hdr	قوالب عامة
+app_template_private_hdr	قالب خاص
+app_template_public_hint	افتح هذا القسم لتحميل القائمة العامة (يحتاج إلى الإنترنت مرة واحدة).
+app_template_code_not_found	الرمز غير موجود
+app_template_need_internet	يلزم الإنترنت لتنزيل القوالب
+app_template_import_selected	استيراد المحدد
+app_template_check_code	تحقق من الرمز
+app_template_import	استيراد
 currency	العملة
 backup	نسخة احتياطية
 use	استخدم
@@ -474,19 +474,19 @@ copy_report	انسخ التقرير
 counted_cash_ph	النقد المعدود في الدرج
 country_tax	البلد والضريبة
 tax_chrome	ملصقات الضريبة على الصندوق
-tax_chrome_help	عند إيقافها، تختفي أسطر تقدير ضريبة المبيعات/الضريبة على الوعاء في مكتب الطلب وأسعار الضريبة داخل السعر. تظل معدلات الضريبة وإعدادات الدولة والضريبة — أعد تشغيل ملصقات الضريبة في أي وقت. يبدأ قالب تطبيق Rajdhani بهذه الخاصية معطلة.
+tax_chrome_help	عند الإيقاف، يُخفي مكتب الطلبات أسطر تقدير ضريبة السلع والخدمات/الضريبة وعناصر الضريبة ضمن السعر. تبقى نسب الضريبة وإعدادات البلد والضريبة — أعد تشغيل التسميات في أي وقت. تبدأ بعض قوالب المتجر وهذا الخيار متوقف.
 tax_chrome_on	إظهار
 tax_chrome_off	إخفاء
 tax_chrome_saved_on	ملصقات الضريبة على الصندوق
 tax_chrome_saved_off	ملصقات الضريبة مخفية على الصندوق
 tax_invoice_till	فاتورة ضريبية على الصندوق
-tax_invoice_help	عند إيقافها، تكون الفواتير فقط كشطب نقدي وتختفي شريحة فاتورة ضريبية / كشطب نقدي في مكتب الطلب. يبدأ قالب تطبيق Rajdhani بهذه الخاصية معطلة — أعد تشغيل إظهار أي وقت لاختيار فاتورة ضريبية مرة أخرى.
+tax_invoice_help	عند الإيقاف، تكون الفواتير مذكرات نقدية فقط وتُخفى أزرار الفاتورة الضريبية / المذكرة النقدية في مكتب الطلبات. تبدأ بعض قوالب المتجر وهذا الخيار متوقف — أعد تشغيل «إظهار» في أي وقت لاختيار الفاتورة الضريبية مجددًا.
 tax_invoice_on	إظهار
 tax_invoice_off	إخفاء
 tax_invoice_saved_on	فاتورة ضريبية على الصندوق
 tax_invoice_saved_off	فاتورة ضريبية مخفية - فقط كشطب نقدي
 pay_methods	طرق الدفع
-pay_methods_help	ما هي الشرائح التي تظهر في أخذ الدفع. يبقى النقد دائماً. يبدأ قالب تطبيق Rajdhani بالنقد فقط — أعد تشغيل UPI / بطاقة / ائتماني / تقسيم هنا.
+pay_methods_help	الأزرار التي تظهر في «استلام الدفع». يبقى النقد دائمًا. تبدأ بعض قوالب المتجر بالنقد فقط — أعد تشغيل UPI / البطاقة / الآجل / التقسيم من هنا.
 create_backup	أنشئ نسخة احتياطية
 credit_limit_heading	حد الائتمان (الطرف المحدد / المسمى)
 day_close_summary	ملخص إقفال اليوم
@@ -793,10 +793,10 @@ printers_looking	جارٍ البحث عن الطابعات على هذا الج�
 saving_printer	إضافة الطابعة…
 cancelled	ملغى
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	جارٍ الإزالة…
+removed	تمت الإزالة
+updating_order	جارٍ التحديث…
+order_updated	تم تحديث الطلب
 printers_tap_find	اضغط «بحث» لعرض الطابعات التي يستطيع هذا الجهاز استخدامها.
 printers_none_found	لم يُعثر على طابعات — اكتب اسم طابعة النظام أو عنوان شبكة (مثل 192.168.1.50)。
 printer_from_find	تمت إضافة {name}
@@ -1337,7 +1337,6 @@ kot_field_table	الطاولة
 kot_field_shop	اسم المحل
 kot_field_waiter	الموظفون
 kot_field_station	المحطة
-app_template_blurb_extra	أيضًا: المالك زاهر، المدير أسيف، خادم نواز؛ شريط واجهة المحور الأمامي؛ السجل بعد 4 ساعات؛ إزالة الشريط اليوم؛ KOT مضغوط.
 dishes_n	{n} أطباق
 recipe_ph	الوصفة (اختياري) — الحصة الواحدة تستخدم: Rice=0.2, Paneer=0.15
 reorder_ph	اشترِ المزيد عند
@@ -1364,3 +1363,7 @@ recent_changes	التغييرات الأخيرة
 lane_declared_label	فاتورة ضريبية
 lane_owner_label	مذكرة نقدية
 money_lane_bill	الفاتورة: {lane}
+app_template_download_progress	جارٍ التنزيل… {p}% ({d} / {t})
+app_template_download_paused	استورد مرة أخرى للاستئناف — يُحتفظ بالملفات المكتملة
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

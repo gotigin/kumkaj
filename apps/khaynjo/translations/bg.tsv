@@ -182,7 +182,7 @@ snack_secs_save	Запази времето за известие
 snack_secs_saved	Времето за известие е запазено — {n} секунди
 settings_sec_backup	Резервно копие и възстановяване
 settings_sec_diag	Диагностика
-settings_sec_privacy	Privacy
+settings_sec_privacy	Поверителност
 diag_privacy_help	Дневниците остават на това устройство. Тайни (PIN, пароли) никога не се записват. Споделянето на пакет извън устройството всеки път иска вашето изрично одобрение — никога не се продава и не се дава на трети страни.
 diag_level	Ниво на подробност
 diag_level_error	Грешки
@@ -339,21 +339,21 @@ server_remove_pin_ph	PIN на собственика за премахване �
 only_owner_remove_server	Само Собственикът може да премахне сървър
 owner_pin_remove_server	Нужен е PIN на собственика, за да се премахне този сървър
 device_setup_help	Сървърът държи книгите тук. Клиентът се свързва със Сървър.
-app_template_heading	Шаблон на приложение Rajdhani
-app_template_blurb	Зарежда менюто Rajdhani; Собственик Zahir (zahir), Админ Asif (asif, PIN 1111), Сервитьор Nawaz (nawaz, PIN 0000); странична лента FOH; историята се изчиства след 4 часа (и Изчисти сега в Резервно копие); лентата Днес е изключена; компактен KOT + стандартни полета за тесни тави. Връстниците в лентата могат да се включат отново в Настройки.
-app_template_apply	Шаблон на приложение Rajdhani
+app_template_heading	Шаблони за магазин
+app_template_blurb	Импортирайте публично начално меню или въведете личен 12-цифрен код от вашия контакт в Khaynjo.
+app_template_apply	Импортиране на шаблон
 app_template_skip	Пропусни засега
-app_template_status	Сървърът е готов — приложете шаблона Rajdhani или пропуснете
+app_template_status	Сървърът е готов — импортирайте шаблон или пропуснете
 app_template_importing	Прилага се {title}…
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	Изтегляне на шаблона…
+app_template_public_hdr	Публични шаблони
+app_template_private_hdr	Личен шаблон
+app_template_public_hint	Отворете този раздел, за да заредите публичния списък (нужен е интернет веднъж).
+app_template_code_not_found	Кодът не е намерен
+app_template_need_internet	Нужен е интернет за изтегляне на шаблони
+app_template_import_selected	Импортиране на избраното
+app_template_check_code	Проверка на кода
+app_template_import	Импортиране
 currency	Валута
 backup	Резервно копие
 use	Ползвай
@@ -474,19 +474,19 @@ copy_report	Копирай отчета
 counted_cash_ph	Преброени пари в чекмеджето
 country_tax	Държава и данък
 tax_chrome	Данъчни етикети на касата
-tax_chrome_help	Когато е изключено, касата скрива редовете за оценка на GST/данък и местата за данък в цената. Данъчните ставки и настройките Държава и данък остават — етикетите могат да се включат отново по всяко време. Шаблонът Rajdhani започва с това изключено.
+tax_chrome_help	Когато е изключено, бюрото за поръчки скрива редовете с прогноза за GST/данък и полетата „GST в цената“. Данъчните ставки и настройките за държава и данък остават — включете етикетите отново по всяко време. Някои шаблони за магазин започват с изключена опция.
 tax_chrome_on	Покажи
 tax_chrome_off	Скрий
 tax_chrome_saved_on	Данъчните етикети са на касата
 tax_chrome_saved_off	Данъчните етикети са скрити на касата
 tax_invoice_till	Данъчна фактура на касата
-tax_invoice_help	Когато е изключено, сметките са само Касов бон и чиповете Данъчна фактура / Касов бон са скрити на касата. Шаблонът Rajdhani започва с това изключено — включете Покажи по всяко време, за да изберете отново Данъчна фактура.
+tax_invoice_help	Когато е изключено, сметките са само касови бележки, а бутоните Данъчна фактура / Касова бележка на бюрото за поръчки са скрити. Някои шаблони за магазин започват с изключена опция — включете Показване по всяко време, за да изберете отново Данъчна фактура.
 tax_invoice_on	Покажи
 tax_invoice_off	Скрий
 tax_invoice_saved_on	Данъчната фактура е на касата
 tax_invoice_saved_off	Данъчната фактура е скрита — само Касов бон
 pay_methods	Начини на плащане
-pay_methods_help	Кои чипове се виждат при Приеми плащане. В брой винаги остава. Шаблонът Rajdhani започва само с В брой — тук включете отново UPI / Карта / Кредит / Раздели.
+pay_methods_help	Кои бутони се показват в „Приемане на плащане“. В брой остава винаги. Някои шаблони за магазин започват само с В брой — включете UPI / Карта / Кредит / Разделяне отново тук.
 create_backup	Създай резервно копие
 credit_limit_heading	Кредитен лимит (избран / наименуван контрагент)
 day_close_summary	Обобщение на приключването
@@ -793,10 +793,10 @@ printers_looking	Търсене…
 saving_printer	Добавяне на принтер…
 cancelled	Отказано
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Премахване…
+removed	Премахнато
+updating_order	Обновяване…
+order_updated	Поръчката е обновена
 printers_tap_find	Докоснете Търсене, за да видите принтерите, които това устройство може да ползва.
 printers_none_found	Нищо не е намерено — въведете име на системен принтер или IP (напр. 192.168.1.50).
 printer_from_find	Добавен {name}
@@ -1337,7 +1337,6 @@ kot_field_table	Маса
 kot_field_shop	Име на заведението
 kot_field_waiter	Персонал
 kot_field_station	Станция
-app_template_blurb_extra	Също: Собственик Zahir, Админ Asif, Сервитьор Nawaz; странична лента FOH; история след 4 часа; лентата Днес изключена; компактен KOT.
 dishes_n	{n} ястия
 recipe_ph	Рецепта (по избор) — една порция ползва: Ориз=0.2, Панир=0.15
 reorder_ph	Купи още при
@@ -1364,3 +1363,7 @@ recent_changes	Последни промени
 lane_declared_label	Данъчна фактура
 lane_owner_label	Касов бон
 money_lane_bill	Сметка: {lane}
+app_template_download_progress	Изтегляне… {p}% ({d} / {t})
+app_template_download_paused	Импортирайте отново, за да продължите — готовите файлове се пазят
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

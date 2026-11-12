@@ -182,7 +182,7 @@ snack_secs_save	שמור זמן התראה
 snack_secs_saved	זמן ההתראה נשמר — {n} שניות
 settings_sec_backup	גיבוי ושחזור
 settings_sec_diag	אבחון
-settings_sec_privacy	Privacy
+settings_sec_privacy	פרטיות
 diag_privacy_help	היומנים נשארים במכשיר הזה. סודות (PIN, סיסמאות) לא נשמרים אף פעם. שיתוף חבילה מחוץ למכשיר דורש את האישור המפורש שלכם בכל פעם — לא נמכר ולא ניתן לצדדים שלישיים.
 diag_level	רמת פירוט
 diag_level_error	שגיאות
@@ -339,21 +339,21 @@ server_remove_pin_ph	PIN הבעלים להסרת שרת
 only_owner_remove_server	רק הבעלים יכול להסיר שרת
 owner_pin_remove_server	נדרש PIN הבעלים כדי להסיר את השרת הזה
 device_setup_help	השרת שומר את הספרים כאן. המסוף מזווג לשרת.
-app_template_heading	תבנית היישום Rajdhani
-app_template_blurb	טוען את תפריט Rajdhani; בעלים Zahir (zahir), מנהל Asif (asif, PIN 1111), מלצר Nawaz (nawaz, PIN 0000); סרגל צד של האולם; ההיסטוריה מתנקה אחרי 4 שעות (וגם נקה עכשיו בגיבוי); פס היום כבוי; KOT קומפקטי + שוליים Standard למגשים צרים. עמיתי סרגל הצד אפשר להדליק שוב בהגדרות.
-app_template_apply	תבנית היישום Rajdhani
+app_template_heading	תבניות חנות
+app_template_blurb	ייבאו תפריט התחלה ציבורי, או הזינו קוד פרטי בן 12 ספרות מאיש הקשר שלכם ב-Khaynjo.
+app_template_apply	ייבוא תבנית
 app_template_skip	דלג לעכשיו
-app_template_status	השרת מוכן — החילו את תבנית היישום Rajdhani, או דלגו
+app_template_status	השרת מוכן — ייבאו תבנית או דלגו
 app_template_importing	מחילים את {title}…
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	מוריד תבנית…
+app_template_public_hdr	תבניות ציבוריות
+app_template_private_hdr	תבנית פרטית
+app_template_public_hint	פתחו את החלק הזה כדי לטעון את הרשימה הציבורית (נדרש אינטרנט פעם אחת).
+app_template_code_not_found	הקוד לא נמצא
+app_template_need_internet	נדרש אינטרנט להורדת תבניות
+app_template_import_selected	ייבוא הנבחר
+app_template_check_code	בדיקת קוד
+app_template_import	ייבוא
 currency	מטבע
 backup	גיבוי
 use	השתמש
@@ -474,19 +474,19 @@ copy_report	העתק דוח
 counted_cash_ph	מזומן שנספר במגירה
 country_tax	מדינה ומס
 tax_chrome	תוויות מס בקופה
-tax_chrome_help	כשכבוי, שולחן ההזמנה מסתיר שורות אומדן GST/מס ומצייני GST במחיר. שערי המס וההגדרות מדינה ומס נשארים — הדליקו תוויות מחדש בכל עת. תבנית היישום Rajdhani מתחילה עם זה כבוי.
+tax_chrome_help	כשכבוי, דלפק ההזמנות מסתיר את שורות הערכת GST/מס ואת מצייני GST בתוך המחיר. שיעורי המס והגדרות המדינה והמס נשארים — אפשר להפעיל מחדש את התוויות בכל עת. חלק מתבניות החנות מתחילות כשזה כבוי.
 tax_chrome_on	הצג
 tax_chrome_off	הסתר
 tax_chrome_saved_on	תוויות מס בקופה
 tax_chrome_saved_off	תוויות המס מוסתרות בקופה
 tax_invoice_till	חשבונית מס בקופה
-tax_invoice_help	כשכבוי, החשבונות הם רק תזכיר מזומן ושבבי חשבונית מס / תזכיר מזומן מוסתרים בשולחן ההזמנה. תבנית היישום Rajdhani מתחילה עם זה כבוי — הדליקו הצג מחדש בכל עת כדי לבחור שוב חשבונית מס.
+tax_invoice_help	כשכבוי, החשבונות הם קבלות מזומן בלבד, וכפתורי חשבונית מס / קבלת מזומן מוסתרים בדלפק ההזמנות. חלק מתבניות החנות מתחילות כשזה כבוי — הפעילו את הצג בכל עת כדי לבחור שוב חשבונית מס.
 tax_invoice_on	הצג
 tax_invoice_off	הסתר
 tax_invoice_saved_on	חשבונית מס בקופה
 tax_invoice_saved_off	חשבונית המס מוסתרת — רק תזכיר מזומן
 pay_methods	אמצעי תשלום
-pay_methods_help	אילו שבבים מופיעים בגבה תשלום. מזומן נשאר תמיד. תבנית היישום Rajdhani מתחילה רק עם מזומן — הדליקו שוב UPI / כרטיס / אשראי / פצל כאן.
+pay_methods_help	אילו כפתורים מופיעים בקבלת תשלום. מזומן נשאר תמיד. חלק מתבניות החנות מתחילות עם מזומן בלבד — הפעילו כאן שוב UPI / כרטיס / אשראי / פיצול.
 create_backup	צור גיבוי
 credit_limit_heading	תקרת אשראי (הצד שנבחר / שנקרא בשם)
 day_close_summary	סיכום סגירת יום
@@ -793,10 +793,10 @@ printers_looking	מחפש…
 saving_printer	מוסיף מדפסת…
 cancelled	בוטל
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	מסיר…
+removed	הוסר
+updating_order	מעדכן…
+order_updated	ההזמנה עודכנה
 printers_tap_find	הקישו מצא כדי לרשום מדפסות שהמכשיר הזה יכול להשתמש בהן.
 printers_none_found	לא נמצא כלום — הקלידו שם מדפסת מערכת או IP (למשל 192.168.1.50).
 printer_from_find	נוסף {name}
@@ -1337,7 +1337,6 @@ kot_field_table	שולחן
 kot_field_shop	שם החנות
 kot_field_waiter	צוות
 kot_field_station	עמדה
-app_template_blurb_extra	גם: בעלים Zahir, מנהל Asif, מלצר Nawaz; סרגל צד של האולם; היסטוריה אחרי 4 שעות; פס היום כבוי; KOT קומפקטי.
 dishes_n	{n} מנות
 recipe_ph	מתכון (לא חובה) — מנה אחת משתמשת: אורז=0.2, Paneer=0.15
 reorder_ph	קנו עוד ב־
@@ -1364,3 +1363,7 @@ recent_changes	שינויים אחרונים
 lane_declared_label	חשבונית מס
 lane_owner_label	תזכיר מזומן
 money_lane_bill	חשבון: {lane}
+app_template_download_progress	מוריד… {p}% ({d} / {t})
+app_template_download_paused	ייבאו שוב כדי להמשיך — קבצים שהושלמו נשמרים
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

@@ -182,7 +182,7 @@ snack_secs_save	ཉེན་བརྡའི་དུས་ཚོད་སྲུ�
 snack_secs_saved	ཉེན་བརྡའི་དུས་ཚོད་ཉར་ཚགས་བྱས། {n}སྐར་ཆ།
 settings_sec_backup	རྒྱབ་སྣོན་དང་སླར་གསོ།
 settings_sec_diag	ནད་རྟགས་བརྟག་དཔྱད།
-settings_sec_privacy	Privacy
+settings_sec_privacy	སྒེར་གྱི་གསང་བ།
 diag_privacy_help	དྲན་ཐོ་རྣམས་འཕྲུལ་ཆས་འདིའི་སྟེང་དུ་བསྡད་ཡོད། གསང་བ་(PIN, གསང་གྲངས་)ནམ་ཡང་གསོག་འཇོག་བྱེད་ཀྱི་མེད། ཐབས་འཕྲུལ་ནས་ཐུམ་སྒྲིལ་མཉམ་སྤྱོད་བྱེད་པར་དུས་རྒྱུན་ཁྱེད་ཀྱི་ཆོག་མཆན་གསལ་པོ་དགོས།
 diag_level	ཞིབ་ཕྲའི་རིམ་པ།
 diag_level_error	ནོར་འཁྲུལ།
@@ -339,21 +339,21 @@ server_remove_pin_ph	བདག་པོ་PINསར་བར་ཞིག་མ�
 only_owner_remove_server	བདག་པོ་ཁོ་ནས་སར་བར་ཞིག་མེད་པར་བཟོ་ཐུབ།
 owner_pin_remove_server	བདག་པོ་PIN སར་བར་འདི་མེད་པར་བཟོ་དགོས།
 device_setup_help	སར་བར་གྱིས་རྩིས་ཁྲ་འདིར་ཉར་གྱི་ཡོད། མཁོ་སྤྲོད་པ་ཞབས་ཞུ་འཕྲུལ་ཆས་ལ་ཆ་སྒྲིག་བྱེད།
-app_template_heading	Rajdhani མཉེན་ཆས་དཔེ་སྒྲོམ།
-app_template_blurb	Rajdhani དཀར་ཆག་མངོན་འཆར་བྱེད། བདག་པོ་Zahir (ཟ་ཧིར) འཛིན་སྐྱོང་པ་Asif (ཨ་སིཕ། PIN ༡༡༡༡) ཟ་ཁང་གི་ཞབས་ཞུ་བ་Nawaz (ནཝ་ཛི། PIN ༠༠༠) དང་། FOH ཟུར་ཐོ།; ལོ་རྒྱུས་ཆུ་ཚོད་ ༤ རྗེས་སུ་བསལ་ཐུབ། (དང་ད་ལྟ་རྒྱབ་ལྗོངས་ནང་བསལ་དགོས།) དེ་རིང་གྱོན་ཆས་གྱོན། ཆུང་ཆུང་KOT + ཕོར་པ་དོག་པོའི་ཆེད་དུ་ཚད་ལྡན་གྱི་མཐའ་མཚམས། ཟུར་ཐོའི་མཉམ་འབྲེལ་དེ་སྒྲིག་སྟངས་ནང་ལ་སླར་ཡང་ཁ་ཕྱེ་ཐུབ།
-app_template_apply	Rajdhani མཉེན་ཆས་དཔེ་སྒྲོམ།
+app_template_heading	ཚོང་ཁང་གི་དཔེ་གཞི།
+app_template_blurb	སྤྱི་སྤྱོད་ཀྱི་འགོ་འཛུགས་ཟས་ཐོ་ནང་འདྲེན་གནང་། ཡང་ན་ཁྱེད་ཀྱི་Khaynjo འབྲེལ་བ་ནས་ཐོབ་པའི་ཨང་གྲངས་ ༡༢ ཡོད་པའི་སྒེར་གྱི་ཚབ་རྟགས་འཇུག་རོགས།
+app_template_apply	དཔེ་གཞི་ནང་འདྲེན།
 app_template_skip	ད་ལྟ་མཆོང་།
-app_template_status	གསབ་ལེན་གྲ་སྒྲིག — Rajdhani མཉེན་ཆས་དཔེ་སྒྲོམ་འཇུག་སྤྱོད་བྱེད་པའམ་ཡང་ན་མཆོང་།
+app_template_status	ཞབས་ཞུ་འཕྲུལ་ཆས་གྲ་སྒྲིག་ཡིན། — དཔེ་གཞི་ཞིག་ནང་འདྲེན་གནང་། ཡང་ན་མཆོང་།
 app_template_importing	{title}...
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	དཔེ་གཞི་ཕབ་ལེན་བྱེད་བཞིན་ཡོད།…
+app_template_public_hdr	སྤྱི་སྤྱོད་དཔེ་གཞི།
+app_template_private_hdr	སྒེར་གྱི་དཔེ་གཞི།
+app_template_public_hint	སྤྱི་སྤྱོད་ཐོ་གཞུང་འཇུག་པར་སྡེ་ཚན་འདི་ཁ་ཕྱེ་རོགས། (དྲ་རྒྱ་ཐེངས་གཅིག་དགོས།)
+app_template_code_not_found	ཚབ་རྟགས་མ་རྙེད།
+app_template_need_internet	དཔེ་གཞི་ཕབ་ལེན་ལ་དྲ་རྒྱ་དགོས།
+app_template_import_selected	འདེམས་པ་ནང་འདྲེན།
+app_template_check_code	ཚབ་རྟགས་ཞིབ་བཤེར།
+app_template_import	ནང་འདྲེན།
 currency	དངུལ་ལོར།
 backup	རྒྱབ་སྣོན།
 use	བེད་སྤྱོད།
@@ -474,19 +474,19 @@ copy_report	སྙན་ཞུའི་འདྲ་བཤུས།
 counted_cash_ph	ཤུད་སྒམ་ནང་དུ་དངུལ་རྩིས་བརྒྱབ་ཡོད།
 country_tax	རྒྱལ་ཁབ་དང་དཔྱ་ཁྲལ།
 tax_chrome	2019 བར་ཁྲལ་བྱང་།
-tax_chrome_help	བཀག་པའི་སྐབས་མངགས་ཉོའི་ལས་ཁུངས་ཀྱིས་GST/ཁྲལ་ཚོད་དཔག་གྲལ་ཐིག་དང་GST-ནང་རིན་གོང་གནས་ཡུལ་འཛིན་མཁན་སྦས་ཡོད། ཁྲལ་གྱི་ཚད་གཞི་དང་རྒྱལ་ཁབ་དང་ཁྲལ་གྱི་སྒྲིག་སྟངས་གནས་ཡོད། Rajdhani མཉེན་ཆས་ཀྱི་ཚད་གཞི་འདི་ཁ་བརྒྱབ་ནས་འགོ་འཛུགས།
+tax_chrome_help	བཀག་ཡོད་སྐབས། བཀའ་ཐོའི་ཅོག་ཙེས་GST/ཁྲལ་གྱི་ཚོད་དཔག་ཐིག་ཕྲེང་དང་གོང་ཚད་ནང་GSTཡི་ས་ཚབ་སྦས་ཡོད། ཁྲལ་ཚད་དང་རྒྱལ་ཁབ་དང་ཁྲལ་གྱི་སྒྲིག་འགོད་ལུས་ཡོད། — ནམ་ཡིན་རུང་མཚོན་བྱང་སླར་ཡང་ཁ་ཕྱེ་ཆོག ཚོང་ཁང་གི་དཔེ་གཞི་ཁག་ཅིག་འདི་བཀག་སྟེ་འགོ་འཛུགས།
 tax_chrome_on	སྟོན་པ།
 tax_chrome_off	གསང་བ།
 tax_chrome_saved_on	2019 བར་ཁྲལ་བྱང་།
 tax_chrome_saved_off	2019 བར་ཁྲལ་བྱང་སྦས་ཡོད།
 tax_invoice_till	ཕྱི་ལོ་ ༢༠༡༡ བར་གྱི་དཔྱ་ཁྲལ་འཛིན་བྱང་།
-tax_invoice_help	བཀག་པའི་སྐབས་དངུལ་འཛིན་དེ་དངུལ་གྱི་དྲན་ཐོ་ཁོ་ན་ཡིན་པ་དང་། ཁྲལ་གྱི་བྱུང་འཛིན་དང་དངུལ་གྱི་དྲན་ཐོའི་ཤོག་བུ་དེ་ཚོ་མངགས་ཉོ་བྱེད་སའི་སྟེགས་བུའི་སྟེང་ལ་སྦས་ཡོད། Rajdhani མཉེན་ཆས་ཀྱི་ཚད་གཞི་འདི་ཁ་བརྒྱབ་ནས་འགོ་འཛུགས། ཁྲལ་གྱི་བྱུང་འཛིན་ཡང་བསྐྱར་འདེམས་ཆེད་དུ་དུས་ནམ་ཡང་སྟོན་པ་དེ་ཁ་ཕྱེ་དགོས།
+tax_invoice_help	བཀག་ཡོད་སྐབས། རྩིས་ཁྲ་དངུལ་ལག་དྲན་ཐོ་ཁོ་ན་ཡིན་ལ་བཀའ་ཐོའི་ཅོག་ཙེའི་ཐོག་ཁྲལ་གྱི་རྩིས་ཁྲ། / དངུལ་ལག་དྲན་ཐོའི་མཐེབ་གནོན་སྦས་ཡོད། ཚོང་ཁང་གི་དཔེ་གཞི་ཁག་ཅིག་འདི་བཀག་སྟེ་འགོ་འཛུགས། — ཁྲལ་གྱི་རྩིས་ཁྲ་སླར་འདེམས་པར་སྟོན་པ་ནམ་ཡིན་རུང་ཁ་ཕྱེ་རོགས།
 tax_invoice_on	སྟོན་པ།
 tax_invoice_off	གསང་བ།
 tax_invoice_saved_on	ཕྱི་ལོ་ ༢༠༡༡ བར་གྱི་དཔྱ་ཁྲལ་འཛིན་བྱང་།
 tax_invoice_saved_off	ཁྲལ་འབབ་ཀྱི་བྱུང་འཛིན་གསང་བ། དངུལ་གྱི་དྲན་ཐོ་ཁོ་ན།
 pay_methods	དངུལ་སྤྲོད་ཐབས།
-pay_methods_help	དངུལ་སྤྲོད་སྐབས་ཤོག་བུ་གང་ཞིག་འཆར་གྱི་ཡོད་དམ། དངུལ་ག་དུས་ཡིན་ཡང་བསྡད་ཡོད། Rajdhani མཉེན་ཆས་ཀྱི་ཚད་གཞི་དེ་དངུལ་ཁོ་ན་ནས་འགོ་འཛུགས་དགོས།
+pay_methods_help	དངུལ་སྤྲོད་ལེན་པའི་ཐོག་མཐེབ་གནོན་གང་དག་མངོན། དངུལ་ལག་རྟག་ཏུ་ལུས། ཚོང་ཁང་གི་དཔེ་གཞི་ཁག་ཅིག་དངུལ་ལག་ཁོ་ནས་འགོ་འཛུགས། — UPI / ཁཱཌ། / བུ་ལོན། / བགོ་བཤའ་འདིར་སླར་ཡང་ཁ་ཕྱེ་རོགས།
 create_backup	རྒྱབ་ལྗོངས་གསར་བཟོ།
 credit_limit_heading	བུ་ལོན་ཚད་གཞི། (འདེམས་སྒྲུག་བྱས་པའི་ཚོང་ཤག་ཡང་ན་མཁོ་སྤྲོད་བྱེད་མཁན།)
 day_close_summary	ཉིན་མཇུག་བསྡུས་པ།
@@ -793,10 +793,10 @@ printers_looking	ལྟ་བཞིན་ཡོད།
 saving_printer	པར་འཕྲུལ་ཁ་སྣོན་བྱེད་བཞིན་ཡོད།
 cancelled	ཕྱིར་འཐེན་བྱས།
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	སུབ་བཞིན་ཡོད།…
+removed	བསུབས་ཟིན།
+updating_order	གསར་བསྒྱུར་བྱེད་བཞིན་ཡོད།…
+order_updated	བཀའ་ཐོ་གསར་བསྒྱུར་བྱས་ཟིན།
 printers_tap_find	ཐབས་འཕྲུལ་འདིས་བེད་སྤྱོད་གཏོང་ཐུབ་པའི་པར་འཕྲུལ་ཐོ་འགོད་བྱེད་པར་འཚོལ་ཞིབ་ལ་ཨེབ་གཏང་བྱོས།
 printers_none_found	གཅིག་ཀྱང་མ་རྙེད་པ་ — མ་ལག་པར་སྐྲུན་འཕྲུལ་ཆས་ཀྱི་མིང་ཡང་ན་IP ཡིག་འཇུག་བྱོས། (དཔེར་ན། 192.168.1.50)
 printer_from_find	{name} ཁ་སྣོན་བྱས།
@@ -1337,7 +1337,6 @@ kot_field_table	ཟ་ཁང་གི་ཅོག་ཙེ།
 kot_field_shop	ཚོང་ཁང་གི་མིང་།
 kot_field_waiter	ལས་བྱེད་པ།
 kot_field_station	ས་ཚིགས།
-app_template_blurb_extra	ད་དུང་: བདག་པོ་Zahir འཛིན་སྐྱོང་པ་Asif ཟ་ཁང་གི་ཞབས་ཞུ་བ་Nawaz; FOH ཟུར་ཐོ།; ཆུ་ཚོད་4རྗེས་ཀྱི་ལོ་རྒྱུས་དང་། དེ་རིང་གྱོན་ཆས་གྱོན། ཆུང་ཆུང་KOT.
 dishes_n	{n} སྡེར་མ།
 recipe_ph	བཟོ་སྟངས། (འདམ་ཀ) — ཆ་ཤས་གཅིག་བེད་སྤྱོད་བྱེད། ཆུམ་=0.2, པ་ནིར་=0.15
 reorder_ph	མང་ཙམ་ཉོས།
@@ -1364,3 +1363,7 @@ recent_changes	ཉེ་ཆར་གྱི་འགྱུར་བ།
 lane_declared_label	དཔྱ་ཁྲལ་འཛིན་བྱང་།
 lane_owner_label	དངུལ་འཛིན་དྲན་ཐོ།
 money_lane_bill	བིལ་: {lane}
+app_template_download_progress	ཕབ་ལེན་བྱེད་བཞིན་ཡོད། {p}% ({d} / {t})
+app_template_download_paused	མུ་མཐུད་པར་ཡང་བསྐྱར་ནང་འདྲེན་གནང་། — གྲུབ་ཟིན་པའི་ཡིག་ཆ་ཉར་ཡོད།
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

@@ -182,7 +182,7 @@ snack_secs_save	Gardar o tempo de aviso
 snack_secs_saved	Tempo de aviso gardado — {n} segundos
 settings_sec_backup	Copia e restauración
 settings_sec_diag	Diagnóstico
-settings_sec_privacy	Privacy
+settings_sec_privacy	Privacidade
 diag_privacy_help	Os rexistros fican neste dispositivo. Os segredos (PIN, contrasinais) nunca se gardan. Compartir un paquete fóra do dispositivo pide a súa aprobación explícita cada vez — nunca se vende nin se dá a terceiros.
 diag_level	Nivel de detalle
 diag_level_error	Erros
@@ -339,21 +339,21 @@ server_remove_pin_ph	PIN do dono para quitar un servidor
 only_owner_remove_server	Só o Dono pode quitar un servidor
 owner_pin_remove_server	Cómpre o PIN do dono para quitar este servidor
 device_setup_help	O Servidor garda os libros aquí. O Cliente emparéllase cun Servidor.
-app_template_heading	Rajdhani App Template
-app_template_blurb	Carga o menú Rajdhani; Dono Zahir (zahir), Admin Asif (asif, PIN 1111), Camareiro Nawaz (nawaz, PIN 0000); barra lateral FOH; o historial bórrase ás 4 horas (e Limpar agora en Copia); faixa de Hoxe desactivada; KOT compacto + marxes Estándar para bandexas estreitas. Os compañeiros da barra lateral pódense volver activar en Axustes.
-app_template_apply	Rajdhani App Template
+app_template_heading	Modelos da tenda
+app_template_blurb	Importa un menú inicial público, ou introduce un código privado de 12 díxitos do teu contacto de Khaynjo.
+app_template_apply	Importar modelo
 app_template_skip	Omitir de momento
-app_template_status	Servidor listo — aplique Rajdhani App Template ou omita
+app_template_status	Servidor listo — importa un modelo ou omite
 app_template_importing	Aplicando {title}…
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	Descargando o modelo…
+app_template_public_hdr	Modelos públicos
+app_template_private_hdr	Modelo privado
+app_template_public_hint	Abre esta sección para cargar a lista pública (precisa internet unha vez).
+app_template_code_not_found	Non se atopou o código
+app_template_need_internet	Precísase internet para descargar modelos
+app_template_import_selected	Importar o seleccionado
+app_template_check_code	Comprobar código
+app_template_import	Importar
 currency	Moeda
 backup	Copia
 use	Usar
@@ -474,19 +474,19 @@ copy_report	Copiar o informe
 counted_cash_ph	Efectivo contado no caixón
 country_tax	País e imposto
 tax_chrome	Etiquetas de imposto na caixa
-tax_chrome_help	Cando está desactivado, o mostrador de pedidos agocha as liñas de estimación GST/imposto e os marcadores de GST dentro do prezo. Os tipos e os axustes de País e imposto fican — volva activar as etiquetas cando queira. Rajdhani App Template comeza con isto desactivado.
+tax_chrome_help	Cando está desactivado, o mostrador de pedidos agocha as liñas de estimación de GST/impostos e os marcadores de GST incluído no prezo. As taxas de impostos e a configuración de País e impostos mantéñense — volve activar as etiquetas cando queiras. Algúns modelos da tenda comezan con isto desactivado.
 tax_chrome_on	Mostrar
 tax_chrome_off	Agochar
 tax_chrome_saved_on	Etiquetas de imposto na caixa
 tax_chrome_saved_off	Etiquetas de imposto agochadas na caixa
 tax_invoice_till	Factura fiscal na caixa
-tax_invoice_help	Cando está desactivado, as contas son só Nota de efectivo e as fichas Factura fiscal / Nota de efectivo agóchanse no mostrador. Rajdhani App Template comeza con isto desactivado — volva activar Mostrar cando queira para escoller Factura fiscal.
+tax_invoice_help	Cando está desactivado, as contas son só notas de efectivo e os botóns Factura fiscal / Nota de efectivo agóchanse no mostrador de pedidos. Algúns modelos da tenda comezan con isto desactivado — activa Mostrar cando queiras para escoller de novo Factura fiscal.
 tax_invoice_on	Mostrar
 tax_invoice_off	Agochar
 tax_invoice_saved_on	Factura fiscal na caixa
 tax_invoice_saved_off	Factura fiscal agochada — só Nota de efectivo
 pay_methods	Formas de pagamento
-pay_methods_help	Que fichas saen en Cobrar. O efectivo sempre está. Rajdhani App Template comeza só con Efectivo — volva activar aquí UPI / Tarxeta / Crédito / Dividir.
+pay_methods_help	Que botóns aparecen en Cobrar. O efectivo queda sempre. Algúns modelos da tenda comezan só con Efectivo — volve activar UPI / Tarxeta / Crédito / Dividir aquí.
 create_backup	Crear unha copia
 credit_limit_heading	Límite de crédito (parte seleccionada / con nome)
 day_close_summary	Resumo do peche do día
@@ -793,10 +793,10 @@ printers_looking	Buscando…
 saving_printer	Engadindo a impresora…
 cancelled	Anulado
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Eliminando…
+removed	Eliminado
+updating_order	Actualizando…
+order_updated	Pedido actualizado
 printers_tap_find	Prema Atopar para listar as impresoras que este dispositivo pode usar.
 printers_none_found	Non se atopou ningunha — escriba un nome de impresora do sistema ou unha IP (p. ex. 192.168.1.50).
 printer_from_find	Engadida {name}
@@ -1337,7 +1337,6 @@ kot_field_table	Mesa
 kot_field_shop	Nome da tenda
 kot_field_waiter	Persoal
 kot_field_station	Estación
-app_template_blurb_extra	Tamén: Dono Zahir, Admin Asif, Camareiro Nawaz; barra lateral FOH; historial ás 4 horas; faixa de Hoxe desactivada; KOT compacto.
 dishes_n	{n} pratos
 recipe_ph	Receita (opcional) — unha ración usa: Rice=0.2, Paneer=0.15
 reorder_ph	Volver mercar en
@@ -1364,3 +1363,7 @@ recent_changes	Cambios recentes
 lane_declared_label	Factura fiscal
 lane_owner_label	Nota de efectivo
 money_lane_bill	Conta: {lane}
+app_template_download_progress	Descargando… {p}% ({d} / {t})
+app_template_download_paused	Importa de novo para continuar — consérvanse os ficheiros rematados
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

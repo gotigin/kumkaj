@@ -182,7 +182,7 @@ snack_secs_save	Desa el temps d'avís
 snack_secs_saved	Temps d'avís desat — {n} segons
 settings_sec_backup	Còpia i restauració
 settings_sec_diag	Diagnòstic
-settings_sec_privacy	Privacy
+settings_sec_privacy	Privadesa
 diag_privacy_help	Els registres queden en aquest dispositiu. Els secrets (PIN, contrasenyes) no s'emmagatzemen mai. Compartir un paquet fora del dispositiu demana la vostra aprovació explícita cada vegada — no es ven ni es dona a tercers.
 diag_level	Nivell de detall
 diag_level_error	Errors
@@ -339,21 +339,21 @@ server_remove_pin_ph	PIN del propietari per treure un servidor
 only_owner_remove_server	Només el Propietari pot treure un servidor
 owner_pin_remove_server	Cal el PIN del propietari per treure aquest servidor
 device_setup_help	El Servidor guarda els llibres aquí. El Client s'aparella amb un Servidor.
-app_template_heading	Rajdhani App Template
-app_template_blurb	Carrega el menú Rajdhani; Propietari Zahir (zahir), Admin Asif (asif, PIN 1111), Cambrer Nawaz (nawaz, PIN 0000); barra lateral FOH; l'historial s'esborra al cap de 4 hores (i Neteja ara a Còpia); franja d'Avui desactivada; KOT compacte + marges Estàndard per a safates estretes. Els companys de la barra lateral es poden tornar a activar a Ajustos.
-app_template_apply	Rajdhani App Template
+app_template_heading	Plantilles de botiga
+app_template_blurb	Importeu un menú inicial públic, o introduïu un codi privat de 12 xifres del vostre contacte de Khaynjo.
+app_template_apply	Importa la plantilla
 app_template_skip	Omet de moment
-app_template_status	Servidor a punt — apliqueu Rajdhani App Template o ometeu
+app_template_status	Servidor a punt — importeu una plantilla o ometeu
 app_template_importing	S'aplica {title}…
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	S'està baixant la plantilla…
+app_template_public_hdr	Plantilles públiques
+app_template_private_hdr	Plantilla privada
+app_template_public_hint	Obriu aquesta secció per carregar la llista pública (cal internet un cop).
+app_template_code_not_found	No s'ha trobat el codi
+app_template_need_internet	Cal internet per baixar plantilles
+app_template_import_selected	Importa la seleccionada
+app_template_check_code	Comprova el codi
+app_template_import	Importa
 currency	Moneda
 backup	Còpia
 use	Fes servir
@@ -474,19 +474,19 @@ copy_report	Copia l'informe
 counted_cash_ph	Efectiu comptat al calaix
 country_tax	País i impost
 tax_chrome	Etiquetes d'impost al caixa
-tax_chrome_help	Quan està desactivat, el taulell de comandes amaga les línies d'estimació GST/impost i els marcadors de GST dins el preu. Els tipus i els ajustos de País i impost es queden — torneu a activar les etiquetes quan vulgueu. Rajdhani App Template comença amb això desactivat.
+tax_chrome_help	Quan està desactivat, el taulell de comandes amaga les línies d'estimació de GST/impostos i els marcadors de GST inclòs al preu. Els tipus impositius i la configuració de país i impostos es mantenen — torneu a activar les etiquetes quan vulgueu. Algunes plantilles de botiga comencen amb això desactivat.
 tax_chrome_on	Mostra
 tax_chrome_off	Amaga
 tax_chrome_saved_on	Etiquetes d'impost al caixa
 tax_chrome_saved_off	Etiquetes d'impost amagades al caixa
 tax_invoice_till	Factura fiscal al caixa
-tax_invoice_help	Quan està desactivat, els comptes són només Nota d'efectiu i les fitxes Factura fiscal / Nota d'efectiu s'amaguen al taulell. Rajdhani App Template comença amb això desactivat — torneu a activar Mostra quan vulgueu per triar Factura fiscal.
+tax_invoice_help	Quan està desactivat, els tiquets són només notes d'efectiu i els botons Factura fiscal / Nota d'efectiu s'amaguen al taulell de comandes. Algunes plantilles de botiga comencen amb això desactivat — activeu Mostra quan vulgueu per tornar a triar Factura fiscal.
 tax_invoice_on	Mostra
 tax_invoice_off	Amaga
 tax_invoice_saved_on	Factura fiscal al caixa
 tax_invoice_saved_off	Factura fiscal amagada — només Nota d'efectiu
 pay_methods	Formes de pagament
-pay_methods_help	Quines fitxes surten a Cobra. L'efectiu sempre hi és. Rajdhani App Template comença només amb Efectiu — torneu a activar aquí UPI / Targeta / Crèdit / Divideix.
+pay_methods_help	Quins botons apareixen a Cobra. L'efectiu sempre hi és. Algunes plantilles de botiga comencen només amb Efectiu — torneu a activar UPI / Targeta / Crèdit / Dividir aquí.
 create_backup	Crea una còpia
 credit_limit_heading	Límit de crèdit (part seleccionada / amb nom)
 day_close_summary	Resum del tancament del dia
@@ -793,10 +793,10 @@ printers_looking	S'està cercant…
 saving_printer	S'afegeix la impressora…
 cancelled	Anul·lat
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	S'està eliminant…
+removed	Eliminat
+updating_order	S'està actualitzant…
+order_updated	Comanda actualitzada
 printers_tap_find	Toqueu Troba per llistar les impressores que aquest dispositiu pot fer servir.
 printers_none_found	No se n'ha trobat cap — escriviu un nom d'impressora del sistema o una IP (p. ex. 192.168.1.50).
 printer_from_find	Afegida {name}
@@ -1337,7 +1337,6 @@ kot_field_table	Taula
 kot_field_shop	Nom de la botiga
 kot_field_waiter	Personal
 kot_field_station	Estació
-app_template_blurb_extra	També: Propietari Zahir, Admin Asif, Cambrer Nawaz; barra lateral FOH; historial al cap de 4 hores; franja d'Avui desactivada; KOT compacte.
 dishes_n	{n} plats
 recipe_ph	Recepta (opcional) — una ració fa servir: Rice=0.2, Paneer=0.15
 reorder_ph	Torna a comprar a
@@ -1364,3 +1363,7 @@ recent_changes	Canvis recents
 lane_declared_label	Factura fiscal
 lane_owner_label	Nota d'efectiu
 money_lane_bill	Compte: {lane}
+app_template_download_progress	S'està baixant… {p}% ({d} / {t})
+app_template_download_paused	Torneu a importar per reprendre — els fitxers acabats es conserven
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

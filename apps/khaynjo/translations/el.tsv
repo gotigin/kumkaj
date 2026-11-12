@@ -182,7 +182,7 @@ snack_secs_save	Αποθήκευση διάρκειας ειδοποίησης
 snack_secs_saved	Η διάρκεια ειδοποίησης αποθηκεύτηκε — {n} δευτερόλεπτα
 settings_sec_backup	Αντίγραφο ασφαλείας και επαναφορά
 settings_sec_diag	Διαγνωστικά
-settings_sec_privacy	Privacy
+settings_sec_privacy	Απόρρητο
 diag_privacy_help	Τα αρχεία μένουν σε αυτή τη συσκευή. Μυστικά (PIN, κωδικοί) δεν αποθηκεύονται ποτέ. Η κοινοποίηση πακέτου εκτός συσκευής χρειάζεται κάθε φορά ρητή έγκρισή σας — δεν πωλείται ούτε δίνεται σε τρίτους.
 diag_level	Επίπεδο λεπτομέρειας
 diag_level_error	Σφάλματα
@@ -339,21 +339,21 @@ server_remove_pin_ph	PIN ιδιοκτήτη για αφαίρεση Server
 only_owner_remove_server	Μόνο ο Ιδιοκτήτης μπορεί να αφαιρέσει Server
 owner_pin_remove_server	Για την αφαίρεση αυτού του Server απαιτείται PIN ιδιοκτήτη
 device_setup_help	Ο Server κρατά τα βιβλία εδώ. Ο Client ζευγαρώνει με έναν Server.
-app_template_heading	Πρότυπο εφαρμογής Rajdhani
-app_template_blurb	Φορτώνει το μενού Rajdhani· Ιδιοκτήτης Zahir (zahir), Admin Asif (asif, PIN 1111), Σερβιτόρος Nawaz (nawaz, PIN 0000)· πλευρική στήλη FOH· το ιστορικό σβήνεται μετά από 4 ώρες (και Καθαρισμός τώρα στο Αντίγραφο)· η λωρίδα Σήμερα σβηστή· συμπαγές KOT + Standard περιθώρια για στενούς δίσκους. Οι γείτονες της πλευρικής στήλης ξανανοίγουν από τις Ρυθμίσεις.
-app_template_apply	Πρότυπο εφαρμογής Rajdhani
+app_template_heading	Πρότυπα καταστήματος
+app_template_blurb	Εισαγάγετε ένα δημόσιο αρχικό μενού ή πληκτρολογήστε έναν ιδιωτικό 12ψήφιο κωδικό από την επαφή σας στο Khaynjo.
+app_template_apply	Εισαγωγή προτύπου
 app_template_skip	Παράλειψη προς το παρόν
-app_template_status	Ο Server είναι έτοιμος — εφαρμόστε το πρότυπο Rajdhani ή παραλείψτε
+app_template_status	Ο διακομιστής είναι έτοιμος — εισαγάγετε πρότυπο ή παραλείψτε
 app_template_importing	Εφαρμογή {title}…
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	Λήψη προτύπου…
+app_template_public_hdr	Δημόσια πρότυπα
+app_template_private_hdr	Ιδιωτικό πρότυπο
+app_template_public_hint	Ανοίξτε αυτή την ενότητα για να φορτώσετε τη δημόσια λίστα (χρειάζεται διαδίκτυο μία φορά).
+app_template_code_not_found	Ο κωδικός δεν βρέθηκε
+app_template_need_internet	Χρειάζεται διαδίκτυο για λήψη προτύπων
+app_template_import_selected	Εισαγωγή επιλεγμένου
+app_template_check_code	Έλεγχος κωδικού
+app_template_import	Εισαγωγή
 currency	Νόμισμα
 backup	Αντίγραφο ασφαλείας
 use	Χρήση
@@ -474,19 +474,19 @@ copy_report	Αντιγραφή αναφοράς
 counted_cash_ph	Μετρημένα μετρητά στο συρτάρι
 country_tax	Χώρα και φόρος
 tax_chrome	Ετικέτες φόρου στο ταμείο
-tax_chrome_help	Όταν είναι ανενεργό, το γραφείο παραγγελιών κρύβει τις γραμμές εκτίμησης GST/φόρου και τα σύμβολα GST στην τιμή. Οι συντελεστές και οι ρυθμίσεις Χώρα και φόρος μένουν — ξανανοίξτε τις ετικέτες όποτε θέλετε. Το πρότυπο Rajdhani ξεκινά με αυτό ανενεργό.
+tax_chrome_help	Όταν είναι απενεργοποιημένο, ο πάγκος παραγγελιών κρύβει τις γραμμές εκτίμησης GST/φόρου και τα σύμβολα «GST στην τιμή». Οι φορολογικοί συντελεστές και οι ρυθμίσεις χώρας και φόρου παραμένουν — ενεργοποιήστε ξανά τις ετικέτες οποτεδήποτε. Ορισμένα πρότυπα καταστήματος ξεκινούν με αυτό απενεργοποιημένο.
 tax_chrome_on	Εμφάνιση
 tax_chrome_off	Απόκρυψη
 tax_chrome_saved_on	Ετικέτες φόρου στο ταμείο
 tax_chrome_saved_off	Οι ετικέτες φόρου είναι κρυφές στο ταμείο
 tax_invoice_till	Φορολογικό τιμολόγιο στο ταμείο
-tax_invoice_help	Όταν είναι ανενεργό, οι λογαριασμοί είναι μόνο απόδειξη μετρητών και τα τσιπ Φορολογικό τιμολόγιο / Απόδειξη μετρητών κρύβονται. Το πρότυπο Rajdhani ξεκινά με αυτό ανενεργό — πατήστε Εμφάνιση όποτε θέλετε για να ξαναδιαλέξετε Φορολογικό τιμολόγιο.
+tax_invoice_help	Όταν είναι απενεργοποιημένο, οι λογαριασμοί είναι μόνο αποδείξεις μετρητών και τα κουμπιά Φορολογικό τιμολόγιο / Απόδειξη μετρητών κρύβονται στον πάγκο παραγγελιών. Ορισμένα πρότυπα καταστήματος ξεκινούν με αυτό απενεργοποιημένο — ενεργοποιήστε την Εμφάνιση οποτεδήποτε για να επιλέξετε ξανά Φορολογικό τιμολόγιο.
 tax_invoice_on	Εμφάνιση
 tax_invoice_off	Απόκρυψη
 tax_invoice_saved_on	Φορολογικό τιμολόγιο στο ταμείο
 tax_invoice_saved_off	Το φορολογικό τιμολόγιο είναι κρυφό — μόνο απόδειξη μετρητών
 pay_methods	Τρόποι πληρωμής
-pay_methods_help	Ποια τσιπ φαίνονται στην Είσπραξη. Τα μετρητά μένουν πάντα. Το πρότυπο Rajdhani ξεκινά μόνο με μετρητά — ξανανοίξτε εδώ UPI / Κάρτα / Συναλλασσόμενοι / Διαχωρισμός.
+pay_methods_help	Ποια κουμπιά εμφανίζονται στη Λήψη πληρωμής. Τα μετρητά μένουν πάντα. Ορισμένα πρότυπα καταστήματος ξεκινούν μόνο με Μετρητά — ενεργοποιήστε ξανά εδώ UPI / Κάρτα / Πίστωση / Διαχωρισμός.
 create_backup	Δημιουργία αντιγράφου ασφαλείας
 credit_limit_heading	Όριο πίστωσης (επιλεγμένος / ονομασμένος συναλλασσόμενος)
 day_close_summary	Σύνοψη κλεισίματος ημέρας
@@ -793,10 +793,10 @@ printers_looking	Αναζήτηση…
 saving_printer	Προσθήκη εκτυπωτή…
 cancelled	Ακυρώθηκε
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Αφαίρεση…
+removed	Αφαιρέθηκε
+updating_order	Ενημέρωση…
+order_updated	Η παραγγελία ενημερώθηκε
 printers_tap_find	Πατήστε Εύρεση για να δείτε τους εκτυπωτές που μπορεί να χρησιμοποιήσει αυτή η συσκευή.
 printers_none_found	Δεν βρέθηκε τίποτα — γράψτε όνομα εκτυπωτή συστήματος ή IP (π.χ. 192.168.1.50).
 printer_from_find	Προστέθηκε {name}
@@ -1337,7 +1337,6 @@ kot_field_table	Τραπέζι
 kot_field_shop	Όνομα μαγαζιού
 kot_field_waiter	Προσωπικό
 kot_field_station	Σταθμός
-app_template_blurb_extra	Επίσης: Ιδιοκτήτης Zahir, Admin Asif, Σερβιτόρος Nawaz· πλευρική στήλη FOH· ιστορικό μετά από 4 ώρες· λωρίδα Σήμερα σβηστή· συμπαγές KOT.
 dishes_n	{n} πιάτα
 recipe_ph	Συνταγή (προαιρετική) — μία μερίδα χρησιμοποιεί: Rice=0.2, Paneer=0.15
 reorder_ph	Παράγγειλε κι άλλο στο
@@ -1364,3 +1363,7 @@ recent_changes	Πρόσφατες αλλαγές
 lane_declared_label	Φορολογικό τιμολόγιο
 lane_owner_label	Απόδειξη μετρητών
 money_lane_bill	Λογαριασμός: {lane}
+app_template_download_progress	Λήψη… {p}% ({d} / {t})
+app_template_download_paused	Εισαγάγετε ξανά για συνέχεια — τα ολοκληρωμένα αρχεία διατηρούνται
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

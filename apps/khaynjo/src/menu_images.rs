@@ -148,6 +148,16 @@ pub(crate) fn packaged_assets_dir(rel: &str, env_key: &str) -> Option<PathBuf> {
 /// - `KHAYNJO_CATALOGUE_DIR/public/items` — CDN mirror layout
 /// - `{data}/catalogue/public/items` — after a DeviceSetup shelf download
 /// - else packaged / cargo `assets/items`
+/// Install packages with `assets/CATALOGUE_REMOTE` ship no bundled menu shelf;
+/// dishes download from `https://khaynjo.com/v1/catalogue/` after onboard.
+pub fn install_expects_remote_catalogue() -> bool {
+    std::path::Path::new(concat!(
+        env!("CARGO_MANIFEST_DIR"),
+        "/assets/CATALOGUE_REMOTE"
+    ))
+    .is_file()
+}
+
 pub fn catalogue_root() -> Option<PathBuf> {
     if let Ok(dir) = std::env::var("KHAYNJO_ITEMS_DIR") {
         let p = PathBuf::from(dir);
@@ -323,9 +333,8 @@ pub fn title_from_kebab(s: &str) -> String {
 /// Every dish on the shelf, sorted by folder then name. Scanned once per run
 /// once the pack is on disk (Android may extract from the APK first).
 pub fn shelf() -> &'static [ShelfDish] {
-    static SHELF: std::sync::OnceLock<Vec<ShelfDish>> = std::sync::OnceLock::new();
-    if let Some(v) = SHELF.get() {
-        return v.as_slice();
+    if let Some(v) = *shelf_slot().read().unwrap_or_else(|e| e.into_inner()) {
+        return v;
     }
     let loaded = catalogue_root()
         .map(|r| load_shelf(&r))
@@ -334,7 +343,26 @@ pub fn shelf() -> &'static [ShelfDish] {
     if loaded.is_empty() && !menu_assets_ready() {
         return &[];
     }
-    SHELF.get_or_init(|| loaded).as_slice()
+    let mut slot = shelf_slot().write().unwrap_or_else(|e| e.into_inner());
+    if let Some(v) = *slot {
+        return v;
+    }
+    // Leaked so callers keep `&'static`; a refresh leaks one old scan
+    // (~200 KB, once per shelf download) instead of dangling it.
+    let leaked: &'static [ShelfDish] = Box::leak(loaded.into_boxed_slice());
+    *slot = Some(leaked);
+    leaked
+}
+
+fn shelf_slot() -> &'static std::sync::RwLock<Option<&'static [ShelfDish]>> {
+    static SLOT: std::sync::RwLock<Option<&'static [ShelfDish]>> = std::sync::RwLock::new(None);
+    &SLOT
+}
+
+/// Forget the cached scan so the next [`shelf`] call rescans — after a
+/// catalogue shelf download lands in `{data}/catalogue/public/items`.
+pub fn refresh_shelf() {
+    *shelf_slot().write().unwrap_or_else(|e| e.into_inner()) = None;
 }
 
 /// Scan `root/<folder>/<dish>.webp`.

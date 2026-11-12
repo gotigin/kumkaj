@@ -182,7 +182,7 @@ snack_secs_save	सूचना वेळ जतन करा
 snack_secs_saved	सूचना वेळ जतन झाली — {n} सेकंद
 settings_sec_backup	बॅकअप व पुनर्स्थापना
 settings_sec_diag	निदान
-settings_sec_privacy	Privacy
+settings_sec_privacy	गोपनीयता
 diag_privacy_help	लॉग याच डिव्हाइसवर राहतात. गुपिते (PIN, पासवर्ड) कधीच साठवली जात नाहीत. डिव्हाइसबाहेर पॅकेज पाठवायला प्रत्येक वेळी तुमची स्पष्ट मंजुरी लागते — कधीही विकले किंवा तिसऱ्या पक्षाला दिले जात नाही.
 diag_level	तपशिलाचा स्तर
 diag_level_error	त्रुटी
@@ -339,21 +339,21 @@ server_remove_pin_ph	सर्व्हर काढण्यासाठी Own
 only_owner_remove_server	फक्त Owner सर्व्हर काढू शकतो
 owner_pin_remove_server	सर्व्हर काढण्यासाठी Owner PIN हवा
 device_setup_help	सर्व्हर वह्या इथेच ठेवतो. क्लायंट एखाद्या सर्व्हरशी जोडला जातो.
-app_template_heading	राजधानी ॲप टेम्पलेट
-app_template_blurb	राजधानी मेनू लोड करते; मालक झहीर (zahir), ॲडमिन आसिफ (asif, PIN 1111), वेटर नवाझ (nawaz, PIN 0000); FOH साइडबार; इतिहास 4 तासांनी पुसला जातो (आणि बॅकअपमध्ये आता पुसा); आजची पट्टी बंद; अरुंद ट्रेसाठी छोटा KOT + सामान्य समास. साइडबारचे बाकीचे सेटिंग्जमध्ये पुन्हा चालू करता येतात.
-app_template_apply	राजधानी ॲप टेम्पलेट
+app_template_heading	दुकान टेम्पलेट
+app_template_blurb	सार्वजनिक सुरुवातीचा मेनू आयात करा, किंवा तुमच्या Khaynjo संपर्काकडून मिळालेला 12 अंकी खाजगी कोड टाका.
+app_template_apply	टेम्पलेट आयात करा
 app_template_skip	आत्ता वगळा
-app_template_status	सर्व्हर तयार — राजधानी ॲप टेम्पलेट लावा, किंवा वगळा
+app_template_status	सर्व्हर तयार — टेम्पलेट आयात करा, किंवा वगळा
 app_template_importing	{title} लावत आहे…
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	टेम्पलेट डाउनलोड होत आहे…
+app_template_public_hdr	सार्वजनिक टेम्पलेट
+app_template_private_hdr	खाजगी टेम्पलेट
+app_template_public_hint	सार्वजनिक यादी लोड करण्यासाठी हा विभाग उघडा (एकदा इंटरनेट हवे).
+app_template_code_not_found	कोड सापडला नाही
+app_template_need_internet	टेम्पलेट डाउनलोड करण्यासाठी इंटरनेट हवे
+app_template_import_selected	निवडलेले आयात करा
+app_template_check_code	कोड तपासा
+app_template_import	आयात करा
 currency	चलन
 backup	बॅकअप
 use	वापरा
@@ -474,19 +474,19 @@ copy_report	अहवाल कॉपी करा
 counted_cash_ph	ड्रॉवरमध्ये मोजलेली रोख
 country_tax	देश व कर
 tax_chrome	टिलवर कर लेबले
-tax_chrome_help	बंद असताना ऑर्डर डेस्क GST/कर अंदाजाच्या ओळी आणि किमतीत-GST संकेत लपवतो. कर दर आणि देश व कर सेटिंग्ज राहतात — लेबले कधीही पुन्हा चालू करा. राजधानी ॲप टेम्पलेट हे बंद ठेवून सुरू होते.
+tax_chrome_help	बंद असताना, ऑर्डर डेस्क GST/कर अंदाजाच्या ओळी आणि किमतीत-GST प्लेसहोल्डर लपवतो. कर दर आणि देश व कर सेटिंग्ज राहतात — लेबल कधीही पुन्हा चालू करा. काही दुकान टेम्पलेट हे बंद ठेवून सुरू होतात.
 tax_chrome_on	दाखवा
 tax_chrome_off	लपवा
 tax_chrome_saved_on	टिलवर कर लेबले
 tax_chrome_saved_off	टिलवर कर लेबले लपवली
 tax_invoice_till	टिलवर कर चलन
-tax_invoice_help	बंद असताना बिले फक्त कॅश मेमो असतात आणि ऑर्डर डेस्कवर कर चलन / कॅश मेमो चिप लपतात. राजधानी ॲप टेम्पलेट हे बंद ठेवून सुरू होते — कर चलन पुन्हा निवडायला कधीही दाखवा चालू करा.
+tax_invoice_help	बंद असताना, बिले फक्त कॅश मेमो असतात आणि ऑर्डर डेस्कवरील टॅक्स इनव्हॉइस / कॅश मेमो चिप लपतात. काही दुकान टेम्पलेट हे बंद ठेवून सुरू होतात — टॅक्स इनव्हॉइस पुन्हा निवडण्यासाठी दाखवा कधीही चालू करा.
 tax_invoice_on	दाखवा
 tax_invoice_off	लपवा
 tax_invoice_saved_on	टिलवर कर चलन
 tax_invoice_saved_off	कर चलन लपवले — फक्त कॅश मेमो
 pay_methods	पेमेंटच्या पद्धती
-pay_methods_help	पेमेंट घ्या वर कोणत्या चिप दिसतील. रोख नेहमी राहते. राजधानी ॲप टेम्पलेट फक्त रोखने सुरू होते — UPI / कार्ड / उधार / विभागणी इथे पुन्हा चालू करा.
+pay_methods_help	पेमेंट घ्या वर कोणते चिप दिसतात. रोख नेहमी राहते. काही दुकान टेम्पलेट फक्त रोखीने सुरू होतात — UPI / कार्ड / उधार / विभाजन येथे पुन्हा चालू करा.
 create_backup	बॅकअप बनवा
 credit_limit_heading	उधार मर्यादा (निवडलेली / नावाची पार्टी)
 day_close_summary	दिवस बंद सारांश
@@ -793,10 +793,10 @@ printers_looking	या डिव्हाइस आणि Wi‑Fi वर प्
 saving_printer	प्रिंटर जोडत आहे…
 cancelled	रद्द
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	काढत आहे…
+removed	काढले
+updating_order	अपडेट होत आहे…
+order_updated	ऑर्डर अपडेट झाली
 printers_tap_find	हे डिव्हाइस वापरू शकणारे प्रिंटर पाहण्यासाठी शोधा वर टॅप करा.
 printers_none_found	प्रिंटर सापडले नाहीत — सिस्टम प्रिंटरचे नाव किंवा नेटवर्क पत्ता लिहा (उदा. 192.168.1.50).
 printer_from_find	{name} जोडला
@@ -1337,7 +1337,6 @@ kot_field_table	टेबल
 kot_field_shop	दुकानाचे नाव
 kot_field_waiter	कर्मचारी
 kot_field_station	स्टेशन
-app_template_blurb_extra	तसेच: मालक झहीर, ॲडमिन आसिफ, वेटर नवाझ; FOH साइडबार; 4 तासांनी इतिहास; आजची पट्टी बंद; छोटा KOT.
 dishes_n	{n} पदार्थ
 recipe_ph	रेसिपी (ऐच्छिक) — एका प्लेटला लागते: Rice=0.2, Paneer=0.15
 reorder_ph	इतके झाल्यावर आणखी घ्या
@@ -1364,3 +1363,7 @@ recent_changes	अलीकडील बदल
 lane_declared_label	कर चलन
 lane_owner_label	कॅश मेमो
 money_lane_bill	बिल: {lane}
+app_template_download_progress	डाउनलोड होत आहे… {p}% ({d} / {t})
+app_template_download_paused	पुन्हा सुरू करण्यासाठी पुन्हा आयात करा — पूर्ण झालेल्या फाइल्स राहतात
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

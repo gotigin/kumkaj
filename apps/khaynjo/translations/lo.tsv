@@ -182,7 +182,7 @@ snack_secs_save	ປະຢັດເວລາເຕືອນ
 snack_secs_saved	ບັນທຶກເວລາແຈ້ງເຕືອນ — {n} ວິນາທີ
 settings_sec_backup	ສຳຮອງຂໍ້ມູນ & ຟື້ນຟູ
 settings_sec_diag	ການວິນິດໄສ
-settings_sec_privacy	Privacy
+settings_sec_privacy	ຄວາມເປັນສ່ວນຕົວ
 diag_privacy_help	ບັນທຶກຢູ່ໃນອຸປະກອນນີ້. ຄວາມລັບ (PIN, ລະຫັດຜ່ານ) ບໍ່ເຄີຍຖືກເກັບໄວ້. ການແບ່ງປັນແພັກເກດອອກຈາກອຸປະກອນຕ້ອງການການອະນຸມັດຢ່າງຈະແຈ້ງຂອງທ່ານໃນແຕ່ລະຄັ້ງ — ບໍ່ເຄີຍຂາຍ ຫຼືມອບໃຫ້ພາກສ່ວນທີສາມ
 diag_level	ລະດັບລາຍລະອຽດ
 diag_level_error	ຄວາມຜິດພາດ
@@ -339,21 +339,21 @@ server_remove_pin_ph	ເຈົ້າຂອງ PIN ເພື່ອເອົາເ
 only_owner_remove_server	ພຽງແຕ່ເຈົ້າຂອງສາມາດເອົາເຄື່ອງແມ່ຂ່າຍອອກໄດ້
 owner_pin_remove_server	ເຈົ້າຂອງ PIN ຕ້ອງການເພື່ອເອົາເຊີບເວີນີ້ອອກ
 device_setup_help	ເຊີບເວີເກັບປື້ມໄວ້ທີ່ນີ້. ລູກຄ້າຈັບຄູ່ກັບເຊີບເວີ.
-app_template_heading	Rajdhani ແມ່ແບບແອັບ
-app_template_blurb	ໂຫຼດເມນູ Rajdhani; ເຈົ້າຂອງ Zahir (zahir), Admin Asif (asif, PIN 1111), Waiter Nawaz (nawaz, PIN 0000); FOH ແຖບດ້ານຂ້າງ; ປະຫວັດການລຶບລ້າງຫຼັງຈາກ 4 ຊົ່ວໂມງ (ແລະລຶບລ້າງຕອນນີ້ຢູ່ໃນການສຳຮອງຂໍ້ມູນ); ມື້ນີ້ຖອດອອກ; ກະທັດຮັດ KOT + ຂອບມາດຕະຖານສຳລັບຖາດແຄບ. ແຖບດ້ານຂ້າງສາມາດເປີດຄືນໄດ້ໃນການຕັ້ງຄ່າ.
-app_template_apply	Rajdhani ແມ່ແບບແອັບ
+app_template_heading	ແມ່ແບບຮ້ານ
+app_template_blurb	ນຳເຂົ້າເມນູເລີ່ມຕົ້ນສາທາລະນະ ຫຼື ໃສ່ລະຫັດສ່ວນຕົວ 12 ຕົວເລກຈາກຜູ້ຕິດຕໍ່ Khaynjo ຂອງທ່ານ.
+app_template_apply	ນຳເຂົ້າແມ່ແບບ
 app_template_skip	ຂ້າມໄປດຽວນີ້
-app_template_status	ເຊີບເວີພ້ອມແລ້ວ — ນຳໃຊ້ Rajdhani App Template, ຫຼືຂ້າມໄປ
+app_template_status	ເຊີບເວີພ້ອມແລ້ວ — ນຳເຂົ້າແມ່ແບບ ຫຼື ຂ້າມ
 app_template_importing	ກຳລັງນຳໃຊ້ {title}…
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	ກຳລັງດາວໂຫຼດແມ່ແບບ…
+app_template_public_hdr	ແມ່ແບບສາທາລະນະ
+app_template_private_hdr	ແມ່ແບບສ່ວນຕົວ
+app_template_public_hint	ເປີດພາກນີ້ເພື່ອໂຫຼດລາຍການສາທາລະນະ (ຕ້ອງການອິນເຕີເນັດຄັ້ງດຽວ).
+app_template_code_not_found	ບໍ່ພົບລະຫັດ
+app_template_need_internet	ຕ້ອງການອິນເຕີເນັດເພື່ອດາວໂຫຼດແມ່ແບບ
+app_template_import_selected	ນຳເຂົ້າອັນທີ່ເລືອກ
+app_template_check_code	ກວດລະຫັດ
+app_template_import	ນຳເຂົ້າ
 currency	ສະກຸນເງິນ
 backup	ສຳຮອງ
 use	ໃຊ້
@@ -474,19 +474,19 @@ copy_report	ສຳເນົາບົດລາຍງານ
 counted_cash_ph	ນັບເງິນສົດໃນລິ້ນຊັກ
 country_tax	ປະເທດ & ພາສີ
 tax_chrome	ປ້າຍພາສີ till
-tax_chrome_help	ເມື່ອປິດ, ໂຕະຄຳສັ່ງຊື້ຈະເຊື່ອງ GST/ແຖວການປະເມີນພາສີ ແລະ ຕົວຍຶດລາຄາ GST. ອັດຕາພາສີ ແລະປະເທດ & ການຕັ້ງຄ່າອາກອນຍັງຄົງຢູ່ — ເປີດປ້າຍກຳກັບຄືນໄດ້ທຸກເວລາ. Rajdhani App Template ເລີ່ມຕົ້ນດ້ວຍອັນນີ້.
+tax_chrome_help	ເມື່ອປິດ, ໂຕະສັ່ງອາຫານຈະເຊື່ອງແຖວປະມານ GST/ພາສີ ແລະ ບ່ອນໃສ່ GST-ໃນລາຄາ. ອັດຕາພາສີ ແລະ ການຕັ້ງຄ່າປະເທດ ແລະ ພາສີຍັງຢູ່ — ເປີດປ້າຍຄືນໄດ້ທຸກເວລາ. ແມ່ແບບຮ້ານບາງອັນເລີ່ມໂດຍປິດອັນນີ້ໄວ້.
 tax_chrome_on	ສະແດງ
 tax_chrome_off	ເຊື່ອງ
 tax_chrome_saved_on	ປ້າຍພາສີ till
 tax_chrome_saved_off	ປ້າຍພາສີທີ່ເຊື່ອງໄວ້ໃນ till
 tax_invoice_till	ໃບເກັບພາສີ till
-tax_invoice_help	ເມື່ອປິດ, ໃບບິນແມ່ນເປັນ Cash memo ເທົ່ານັ້ນ ແລະ ໃບເກັບເງິນພາສີ/ Cash memo chips ຈະຖືກເຊື່ອງໄວ້ຢູ່ໃນໂຕະສັ່ງ. Rajdhani App Template ເລີ່ມຕົ້ນດ້ວຍການປິດອັນນີ້ — ເປີດສະແດງຄືນໄດ້ທຸກເວລາເພື່ອເລືອກໃບເກັບພາສີອີກຄັ້ງ.
+tax_invoice_help	ເມື່ອປິດ, ໃບບິນເປັນພຽງໃບບັນທຶກເງິນສົດ ແລະ ປຸ່ມ ໃບແຈ້ງໜີ້ພາສີ / ໃບບັນທຶກເງິນສົດ ຖືກເຊື່ອງໄວ້ໃນໂຕະສັ່ງອາຫານ. ແມ່ແບບຮ້ານບາງອັນເລີ່ມໂດຍປິດອັນນີ້ໄວ້ — ເປີດ ສະແດງ ໄດ້ທຸກເວລາເພື່ອເລືອກໃບແຈ້ງໜີ້ພາສີອີກ.
 tax_invoice_on	ສະແດງ
 tax_invoice_off	ເຊື່ອງ
 tax_invoice_saved_on	ໃບເກັບພາສີ till
 tax_invoice_saved_off	ໃບເກັບພາສີຖືກເຊື່ອງໄວ້ — ບັນທຶກເງິນສົດເທົ່ານັ້ນ
 pay_methods	ວິທີການຈ່າຍເງິນ
-pay_methods_help	ຊິບໃດທີ່ປາກົດຢູ່ໃນ Take payment. ເງິນສົດຢູ່ສະເຫມີ. Rajdhani App Template ເລີ່ມຕົ້ນດ້ວຍເງິນສົດເທົ່ານັ້ນ — ເປີດ UPI / ບັດ / ເຄຣດິດ / Split ກັບຄືນໄປບ່ອນທີ່ນີ້.
+pay_methods_help	ປຸ່ມໃດສະແດງໃນ ຮັບການຊຳລະ. ເງິນສົດຢູ່ສະເໝີ. ແມ່ແບບຮ້ານບາງອັນເລີ່ມດ້ວຍເງິນສົດເທົ່ານັ້ນ — ເປີດ UPI / ບັດ / ຕິດໜີ້ / ແບ່ງ ຄືນທີ່ນີ້.
 create_backup	ສ້າງສໍາຮອງຂໍ້ມູນ
 credit_limit_heading	ວົງເງິນສິນເຊື່ອ (ລູກຄ້າເລືອກ ຫຼືຜູ້ສະໜອງ)
 day_close_summary	ສະຫຼຸບມື້ປິດ
@@ -793,10 +793,10 @@ printers_looking	ກຳລັງຊອກຫາ...
 saving_printer	ກຳລັງເພີ່ມເຄື່ອງພິມ...
 cancelled	ຍົກເລີກ
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	ກຳລັງລຶບອອກ…
+removed	ລຶບອອກແລ້ວ
+updating_order	ກຳລັງອັບເດດ…
+order_updated	ອັບເດດອໍເດີແລ້ວ
 printers_tap_find	ແຕະຊອກຫາເພື່ອເຮັດລາຍການເຄື່ອງພິມທີ່ອຸປະກອນນີ້ສາມາດໃຊ້.
 printers_none_found	ບໍ່ພົບ - ພິມຊື່ເຄື່ອງພິມລະບົບ ຫຼື IP (ເຊັ່ນ: 192.168.1.50).
 printer_from_find	ເພີ່ມແລ້ວ {name}
@@ -1337,7 +1337,6 @@ kot_field_table	ໂຕະກິນເຂົ້າ
 kot_field_shop	ຊື່ຮ້ານ
 kot_field_waiter	ພະນັກງານ
 kot_field_station	ສະຖານີ
-app_template_blurb_extra	ນອກຈາກນີ້: ເຈົ້າຂອງZahir, Admin Asif, Waiter Nawaz; FOH ແຖບດ້ານຂ້າງ; ປະຫວັດສາດຫຼັງຈາກ 4 ຊົ່ວໂມງ; ມື້ນີ້ຖອດອອກ; ກະທັດຮັດ KOT.
 dishes_n	{n}ອາຫານ
 recipe_ph	ສູດ (ເລືອກໄດ້) — ຫນຶ່ງສ່ວນທີ່ໃຊ້: ເຂົ້າ = 0.2, Paneer = 0.15
 reorder_ph	ຊື້ເພີ່ມເຕີມໄດ້ທີ່
@@ -1364,3 +1363,7 @@ recent_changes	ການປ່ຽນແປງທີ່ຜ່ານມາ
 lane_declared_label	ໃບເກັບພາສີ
 lane_owner_label	ບັນທຶກເງິນສົດ
 money_lane_bill	ໃບບິນ: {lane}
+app_template_download_progress	ກຳລັງດາວໂຫຼດ… {p}% ({d} / {t})
+app_template_download_paused	ນຳເຂົ້າອີກຄັ້ງເພື່ອສືບຕໍ່ — ໄຟລ໌ທີ່ສຳເລັດແລ້ວຈະຖືກເກັບໄວ້
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

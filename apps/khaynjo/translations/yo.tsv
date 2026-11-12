@@ -182,7 +182,7 @@ snack_secs_save	Fi akoko gbigbọn pamọ
 snack_secs_saved	Akoko itaniji ti fipamọ - {n} iṣẹju-aaya
 settings_sec_backup	Afẹyinti & mu pada
 settings_sec_diag	Awọn iwadii aisan
-settings_sec_privacy	Privacy
+settings_sec_privacy	Àṣírí
 diag_privacy_help	Awọn akọọlẹ duro lori ẹrọ yii. Awọn aṣiri (PIN, awọn ọrọ igbaniwọle) ko ni ipamọ rara. Pinpin package kan kuro ninu ẹrọ naa nilo ifọwọsi ti o han gbangba ni igba kọọkan - ko ta tabi fi fun awọn ẹgbẹ kẹta.
 diag_level	Ipele alaye
 diag_level_error	Awọn aṣiṣe
@@ -339,21 +339,21 @@ server_remove_pin_ph	Olohun PIN lati yọ olupin kuro
 only_owner_remove_server	Olohun nikan ni o le yọ olupin kuro
 owner_pin_remove_server	Olohun PIN nilo lati yọ olupin yii kuro
 device_setup_help	Olupin ntọju awọn akọọlẹ nibi. Awọn orisii alabara si olupin kan.
-app_template_heading	Rajdhani App Àdàkọ
-app_template_blurb	Awọn ẹru akojọ aṣayan Rajdhani; Olohun Zahir (zahir), Admin Asif (asif, PIN 1111), Oluduro Nawaz (nawaz, PIN 0000); FOH ẹgbe ẹgbe; itan ko lẹhin awọn wakati 4 (ati Ko o ni bayi ni Afẹyinti); Loni yọ kuro; iwapọ KOT + Standard ala fun dín Trays. Awọn ẹlẹgbẹ ẹgbẹ le jẹ titan pada ni Eto.
-app_template_apply	Rajdhani App Àdàkọ
+app_template_heading	Àwọn àdàkọ ilé ìtajà
+app_template_blurb	Gbé àtòjọ oúnjẹ ìbẹ̀rẹ̀ gbogbo ènìyàn wọlé, tàbí tẹ kóòdù àdáni oní-nọ́ńbà 12 tí o gbà lọ́wọ́ olùbásọ̀rọ̀ Khaynjo rẹ.
+app_template_apply	Gbé àdàkọ wọlé
 app_template_skip	Rekọja fun bayi
-app_template_status	Olupin ti ṣetan — lo Rajdhani Awoṣe App, tabi fo
+app_template_status	Olùpèsè ti ṣetán — gbé àdàkọ kan wọlé, tàbí fò ó
 app_template_importing	Nbere {title}…
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	Ń gba àdàkọ sílẹ̀…
+app_template_public_hdr	Àwọn àdàkọ gbogbo ènìyàn
+app_template_private_hdr	Àdàkọ àdáni
+app_template_public_hint	Ṣí apá yìí láti gbé àtòjọ gbogbo ènìyàn sókè (a nílò íńtánẹ́ẹ̀tì lẹ́ẹ̀kan).
+app_template_code_not_found	A kò rí kóòdù
+app_template_need_internet	A nílò íńtánẹ́ẹ̀tì láti gba àwọn àdàkọ sílẹ̀
+app_template_import_selected	Gbé èyí tí a yàn wọlé
+app_template_check_code	Ṣàyẹ̀wò kóòdù
+app_template_import	Gbé wọlé
 currency	Owo owo
 backup	Afẹyinti
 use	Lo
@@ -474,19 +474,19 @@ copy_report	Daakọ iroyin
 counted_cash_ph	Ti a kà owo ni duroa
 country_tax	Orilẹ-ede & owo-ori
 tax_chrome	Awọn aami-ori lori till
-tax_chrome_help	Nigbati o ba wa ni pipa, tabili aṣẹ tọju GST/ awọn laini iṣiro owo-ori ati GST-ni iye owo. Awọn oṣuwọn owo-ori ati Orilẹ-ede & awọn eto owo-ori duro - yi awọn aami pada si nigbakugba. Rajdhani Awoṣe App bẹrẹ pẹlu pipa yii.
+tax_chrome_help	Nígbà tí ó bá pa, tábìlì àṣẹ yóò fi àwọn ìlà ìṣirò GST/owó-orí àti àwọn àyè GST-nínú-iye pamọ́. Àwọn ìwọ̀n owó-orí àti ètò Orílẹ̀-èdè àti owó-orí yóò wà — tan àwọn àmì padà nígbàkúgbà. Àwọn àdàkọ ilé ìtajà kan bẹ̀rẹ̀ pẹ̀lú èyí ní pípa.
 tax_chrome_on	Fihan
 tax_chrome_off	Tọju
 tax_chrome_saved_on	Awọn aami-ori lori till
 tax_chrome_saved_off	Awọn aami-ori ti o pamọ titi di
 tax_invoice_till	risiti ori lori till
-tax_invoice_help	Nigbati o ba wa ni pipa, awọn owo-owo jẹ akọsilẹ Owo nikan ati risiti owo-ori / awọn eerun akọsilẹ owo ti wa ni pamọ sori tabili aṣẹ. Rajdhani Awoṣe App bẹrẹ pẹlu pipaa - tan Fihan pada ni eyikeyi akoko lati tun mu risiti owo-ori lẹẹkansi.
+tax_invoice_help	Nígbà tí ó bá pa, àwọn ìwé owó jẹ́ ìwé owó-ọwọ́ nìkan, a sì fi àwọn bọ́tìnnì Ìwé owó-orí / Ìwé owó-ọwọ́ pamọ́ lórí tábìlì àṣẹ. Àwọn àdàkọ ilé ìtajà kan bẹ̀rẹ̀ pẹ̀lú èyí ní pípa — tan Fihàn nígbàkúgbà láti yan Ìwé owó-orí lẹ́ẹ̀kan sí i.
 tax_invoice_on	Fihan
 tax_invoice_off	Tọju
 tax_invoice_saved_on	risiti ori lori till
 tax_invoice_saved_off	Iwe-owo owo-ori pamọ - Akọsilẹ owo nikan
 pay_methods	Awọn ọna isanwo
-pay_methods_help	Eyi ti awọn eerun han lori Ya owo. Owo nigbagbogbo duro. Rajdhani Awoṣe App bẹrẹ pẹlu Owo nikan - tan UPI / Kaadi / Kirẹditi / Pin pada si ibi.
+pay_methods_help	Àwọn bọ́tìnnì wo ló ń hàn lórí Gba ìsanwó. Owó-ọwọ́ máa ń wà nígbà gbogbo. Àwọn àdàkọ ilé ìtajà kan bẹ̀rẹ̀ pẹ̀lú Owó-ọwọ́ nìkan — tan UPI / Káàdì / Gbèsè / Pín padà níbí.
 create_backup	Ṣẹda afẹyinti
 credit_limit_heading	Iwọn kirẹditi (alabara ti a yan tabi olupese)
 day_close_summary	Day sunmọ Lakotan
@@ -793,10 +793,10 @@ printers_looking	Nwa…
 saving_printer	Ṣafikun itẹwe…
 cancelled	fagilee
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Ń yọ ọ́…
+removed	A ti yọ ọ́
+updating_order	Ń ṣe àtúnṣe…
+order_updated	A ti ṣe àtúnṣe àṣẹ
 printers_tap_find	Tẹ Wa lati ṣe atokọ awọn atẹwe ẹrọ yi le lo.
 printers_none_found	Ko si ọkan ti a rii - tẹ orukọ itẹwe eto tabi IP kan (fun apẹẹrẹ 192.168.1.50).
 printer_from_find	Ti ṣe afikun {name}
@@ -1337,7 +1337,6 @@ kot_field_table	Ile ijeun tabili
 kot_field_shop	Orukọ itaja
 kot_field_waiter	Oṣiṣẹ
 kot_field_station	Ibusọ
-app_template_blurb_extra	Bakannaa: Olohun Zahir, Abojuto Asif, Oluduro Nawaz; FOH ẹgbe ẹgbe; itan lẹhin awọn wakati 4; Loni yọ kuro; iwapọ KOT.
 dishes_n	Ounjẹ {n}
 recipe_ph	Ohunelo (iyan) - apakan kan nlo: Rice=0.2, Paneer=0.15
 reorder_ph	Ra diẹ sii ni
@@ -1364,3 +1363,7 @@ recent_changes	Awọn ayipada to ṣẹṣẹ
 lane_declared_label	risiti owo-ori
 lane_owner_label	Akọsilẹ owo
 money_lane_bill	Iwe owo: {lane}
+app_template_download_progress	Ń gbà sílẹ̀… {p}% ({d} / {t})
+app_template_download_paused	Gbé wọlé lẹ́ẹ̀kan sí i láti tẹ̀síwájú — a máa tọ́jú àwọn fáìlì tó ti parí
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

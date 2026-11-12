@@ -182,7 +182,7 @@ snack_secs_save	Захираи вақти огоҳӣ
 snack_secs_saved	Вақти огоҳӣ захира шуд — {n} сония
 settings_sec_backup	Нусха ва барқарор
 settings_sec_diag	Ташхиси хато
-settings_sec_privacy	Privacy
+settings_sec_privacy	Махфият
 diag_privacy_help	Сабтҳо дар ҳамин дастгоҳ мемонанд. Сирҳо (PIN, парол) ҳеҷ гоҳ сабт намешаванд. Баровардани баста аз дастгоҳ ҳар бор иҷозати равшани шуморо мехоҳад — ҳеҷ гоҳ фурӯхта намешавад ва ба каси дигар дода намешавад.
 diag_level	Сатҳи ҷузъиёт
 diag_level_error	Хатоҳо
@@ -339,21 +339,21 @@ server_remove_pin_ph	PIN-и соҳиб барои хориҷи server
 only_owner_remove_server	Танҳо соҳиб метавонад server-ро хориҷ кунад
 owner_pin_remove_server	Барои хориҷи ин server PIN-и соҳиб лозим аст
 device_setup_help	Server дафтарҳоро ин ҷо нигоҳ медорад. Мизоҷ бо Server ҳамоҳанг мешавад.
-app_template_heading	Қолаби барномаи Rajdhani
-app_template_blurb	Менюи Rajdhani-ро меорад; Соҳиб Zahir (zahir), Маъмур Asif (asif, PIN 1111), Пешхизмат Nawaz (nawaz, PIN 0000); канори зал; таърих пас аз 4 соат пок мешавад (ва Ҳозир пок дар Нусха); навори Имрӯз хомӯш; KOT худҷабз + канори оддӣ барои варақаи танг. Ёриҳои канорро аз Танзимот дубора фаъол кардан мумкин аст.
-app_template_apply	Қолаби барномаи Rajdhani
+app_template_heading	Қолибҳои мағоза
+app_template_blurb	Менюи ибтидоии оммавиро ворид кунед ё рамзи хусусии 12-рақамаро, ки аз тамоси Khaynjo-и худ гирифтед, ворид намоед.
+app_template_apply	Ворид кардани қолиб
 app_template_skip	Ҳоло гузарон
-app_template_status	Server омода аст — қолаби Rajdhani-ро татбиқ кунед, ё гузаронед
+app_template_status	Сервер омода аст — қолиб ворид кунед ё гузаред
 app_template_importing	{title} татбиқ мешавад…
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	Қолиб боргирӣ мешавад…
+app_template_public_hdr	Қолибҳои оммавӣ
+app_template_private_hdr	Қолиби хусусӣ
+app_template_public_hint	Барои бор кардани рӯйхати оммавӣ ин бахшро кушоед (як бор интернет лозим).
+app_template_code_not_found	Рамз ёфт нашуд
+app_template_need_internet	Барои боргирии қолибҳо интернет лозим аст
+app_template_import_selected	Ворид кардани интихобшуда
+app_template_check_code	Санҷиши рамз
+app_template_import	Ворид кардан
 currency	Асъор
 backup	Нусха
 use	Истифода
@@ -474,19 +474,19 @@ copy_report	Нусхаи ҳисобот
 counted_cash_ph	Нақди шумурдашуда дар қуттӣ
 country_tax	Кишвар ва андоз
 tax_chrome	Нишонҳои андоз дар қуттӣ
-tax_chrome_help	Вақте хомӯш аст, мизи фармоиш сатрҳои тахмини GST/андоз ва ҷойҳои GST дар нархро пинҳон мекунад. Меъёрҳои андоз ва танзими Кишвар ва андоз мемонанд — нишонҳоро ҳар вақт боз фаъол кунед. Қолаби барномаи Rajdhani аз хомӯш оғоз мешавад.
+tax_chrome_help	Ҳангоми хомӯш будан мизи фармоиш сатрҳои тахмини GST/андоз ва ҷойнигоҳдорҳои «GST дар нарх»-ро пинҳон мекунад. Меъёрҳои андоз ва танзимоти Кишвар ва андоз боқӣ мемонанд — тамғаҳоро дилхоҳ вақт боз фаъол кунед. Баъзе қолибҳои мағоза бо ин хомӯш оғоз мешаванд.
 tax_chrome_on	Нишон
 tax_chrome_off	Пинҳон
 tax_chrome_saved_on	Нишонҳои андоз дар қуттӣ
 tax_chrome_saved_off	Нишонҳои андоз дар қуттӣ пинҳон шуданд
 tax_invoice_till	Ҳисобномаи андоз дар қуттӣ
-tax_invoice_help	Вақте хомӯш аст, ҳисобҳо танҳо Ёддошти нақд мебошанд ва нишонҳои Ҳисобномаи андоз / Ёддошти нақд дар мизи фармоиш пинҳон мешаванд. Қолаби барномаи Rajdhani аз хомӯш оғоз мешавад — ҳар вақт Нишонро боз кунед, то Ҳисобномаи андозро интихоб кунед.
+tax_invoice_help	Ҳангоми хомӯш будан ҳисобҳо танҳо квитансияи нақд мебошанд ва тугмаҳои Ҳисобнома-фактураи андоз / Квитансияи нақд дар мизи фармоиш пинҳон мешаванд. Баъзе қолибҳои мағоза бо ин хомӯш оғоз мешаванд — барои дубора интихоб кардани Ҳисобнома-фактураи андоз Намоишро дилхоҳ вақт фаъол кунед.
 tax_invoice_on	Нишон
 tax_invoice_off	Пинҳон
 tax_invoice_saved_on	Ҳисобномаи андоз дар қуттӣ
 tax_invoice_saved_off	Ҳисобномаи андоз пинҳон — танҳо Ёддошти нақд
 pay_methods	Усулҳои пардохт
-pay_methods_help	Кадом нишонҳо дар Гирифтани пардохт пайдо мешаванд. Нақд ҳамеша мемонад. Қолаби барномаи Rajdhani танҳо бо Нақд оғоз мешавад — UPI / Корт / Қарз / Тақсимро ин ҷо боз фаъол кунед.
+pay_methods_help	Кадом тугмаҳо дар Қабули пардохт намоён мешаванд. Нақд ҳамеша боқӣ мемонад. Баъзе қолибҳои мағоза танҳо бо Нақд оғоз мешаванд — UPI / Корт / Қарз / Тақсимро дар ин ҷо боз фаъол кунед.
 create_backup	Сохтани нусха
 credit_limit_heading	Ҳадди қарз (тарафи интихобшуда / номбаршуда)
 day_close_summary	Хулосаи пӯшидани рӯз
@@ -793,10 +793,10 @@ printers_looking	Ҷустуҷӯ…
 saving_printer	Чопгар илова мешавад…
 cancelled	Бекор шуд
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Хориҷ мешавад…
+removed	Хориҷ шуд
+updating_order	Навсозӣ мешавад…
+order_updated	Фармоиш навсозӣ шуд
 printers_tap_find	Ҷустуҷӯро зер кунед, то чопгарҳое, ки ин дастгоҳ истифода мебарад, рӯйхат шаванд.
 printers_none_found	Ҳеҷ ёфт нашуд — номи чопгари система ё IP нависед (мисол 192.168.1.50).
 printer_from_find	{name} илова шуд
@@ -1337,7 +1337,6 @@ kot_field_table	Миз
 kot_field_shop	Номи дӯкон
 kot_field_waiter	Корманд
 kot_field_station	Истгоҳ
-app_template_blurb_extra	Инчунин: Соҳиб Zahir, Маъмур Asif, Пешхизмат Nawaz; навори пеш; таърих пас аз 4 соат; навори Имрӯз хомӯш; KOT-и танг.
 dishes_n	{n} таом
 recipe_ph	Рецепт (ихтиёрӣ) — як ҳисса истифода мебарад: Биринҷ=0.2, Paneer=0.15
 reorder_ph	Боз харед вақте
@@ -1364,3 +1363,7 @@ recent_changes	Тағйироти охир
 lane_declared_label	Ҳисобномаи андоз
 lane_owner_label	Ёддошти нақд
 money_lane_bill	Ҳисоб: {lane}
+app_template_download_progress	Боргирӣ… {p}% ({d} / {t})
+app_template_download_paused	Барои идома боз ворид кунед — файлҳои тайёр нигоҳ дошта мешаванд
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

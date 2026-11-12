@@ -182,7 +182,7 @@ snack_secs_save	الرٹ ٹایِم بچٲوِو
 snack_secs_saved	الرٹ ٹایِم محفوظ — {n} سیکنڈ
 settings_sec_backup	بیک اپ اینڈ ریسٹور کٔرِو
 settings_sec_diag	تشخیصی
-settings_sec_privacy	Privacy
+settings_sec_privacy	رازداری
 diag_privacy_help	لاگ چھِ یَتھ ڈیوایسَس پیٹھ روزان۔ راز (PIN، پاس وأرڈ) چِھ نہٕ زانہہ محفوظ یوان کرنہٕ۔ ڈیوایسہٕ پٮ۪ٹھٕ اکھ پیکج شیئر کرنہٕ خٲطرٕ چھِ پرٮ۪تھ لٹہِ تُہٕنٛز واضح منظوٗری ضروٗرت آسان - زانہہ تہِ کٕننہٕ یا ترٛیٚیِم جمٲژ دِنہٕ۔
 diag_level	تفصیل لیول
 diag_level_error	غلطیہٕ
@@ -339,21 +339,21 @@ server_remove_pin_ph	مٲلِک PIN سْروَر ہٹاونہٕ خٲطرٕ
 only_owner_remove_server	صرف مٲلک ہیکہِ سرور ہٹٲوِتھ
 owner_pin_remove_server	مٲلِک PIN چھُ یہِ سٕروَر ہٹاونُک ضوروٗرَتھ
 device_setup_help	Server کتابہٕ چھِ یَتہِ تھاوان۔ Client چُھ Server سٕتۍ جوڑان۔
-app_template_heading	Rajdhani ایپ ٹیمپلیٹ
-app_template_blurb	Rajdhani مینیو لوڈ کران؛ مالک Zahir (ظہیر)، Admin Asif (آصف PIN 1111)، ویتر Nawaz (نواز، PIN 0000)؛ FOH سائیڈبار؛ تٲریخ چِھ 4 گھنٹہٕ پتہٕ صاف گژھان (تہٕ وۄنۍ چُھ بیک اپس منٛز صاف گژان)؛ از کٔرِو کُنہِ کُنہِ کُنہِ کُ کمپیکٹ KOT + تنگ ٹرے خٲطرٕ معیاری حاشیہ۔ سایڈ بار پیر ہیکو سیٹنگس منز واپس آن کٔرِتھ۔
-app_template_apply	Rajdhani ایپ ٹیمپلیٹ
+app_template_heading	دُکانُک ٹیمپلیٹ
+app_template_blurb	اکھ عوٲمی شروٗعاتی مینیو درآمد کٔرِو، یا پنٕنہِ Khaynjo رابطہٕ پیٹھ میلمُت 12 ہِندسن ہُند ذٲتی کوڈ دِیو۔
+app_template_apply	ٹیمپلیٹ درآمد کٔرِو
 app_template_skip	وُنکینَس کٔرِو سِکِپ
-app_template_status	Server تیار — لاگو Rajdhani ایپ ٹیمپلیٹ یا سِکِپ
+app_template_status	سرور تیار — ٹیمپلیٹ درآمد کٔرِو، یا ترٲوِو
 app_template_importing	لاگو کَرُن {title}...
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	ٹیمپلیٹ ڈاؤن لوڈ گژھان…
+app_template_public_hdr	عوٲمی ٹیمپلیٹ
+app_template_private_hdr	ذٲتی ٹیمپلیٹ
+app_template_public_hint	عوٲمی لِسٹ لوڈ کرنہٕ خٲطرٕ یہ حِصہٕ کھولِو (اکہِ لٹہِ انٹرنیٹ ضروٗری)۔
+app_template_code_not_found	کوڈ آو نہٕ لبنہٕ
+app_template_need_internet	ٹیمپلیٹ ڈاؤن لوڈ کرنہٕ خٲطرٕ چھُ انٹرنیٹ ضروٗری
+app_template_import_selected	ژارمُت درآمد کٔرِو
+app_template_check_code	کوڈ جانچِو
+app_template_import	درآمد کٔرِو
 currency	کرنسی
 backup	بیک اپ
 use	استعمال کٔرِو
@@ -474,19 +474,19 @@ copy_report	رپورٹ کاپی کٔرِو
 counted_cash_ph	دراز منٛز گٔنزۍ نقد رقم
 country_tax	ملک تہٕ ٹیکس
 tax_chrome	کَش کاؤنٹرَس پیٹھ ٹیکس لیبل
-tax_chrome_help	ییٚلہِ بند چھُ، آرڈر ڈیسک چھُ GST/ٹیکسُک تخمینہٕ لٲنہٕ تہٕ GST اِن پرائس پلیس ہولڈرَن ہُنٛد ہٲوِتھ۔ ٹیکسٕچ شرح تہٕ مُلکی تہٕ ٹیکسٕچ ترتیبہٕ چھِ باقٕے — تُہۍ ہیکِو کُنہِ تہِ وِزِ لیبل واپس آن کٔرِتھ۔ Rajdhani ایپ ٹیمپلیٹ چھُ یَتھ بند کَرنہٕ سٕتی شروع گَژھان۔
+tax_chrome_help	بند آسنس پیٹھ چھُ آرڈر ڈیسک GST/ٹیکسُک اندازُک لاینہٕ تہٕ قیمتس منٛز-GST جاے کھٹان۔ ٹیکس ریٹ تہٕ مُلک تہٕ ٹیکس سیٹنگ رٕوزان — لیبل کٔرِو یُتھ وَقت تہٕ دوبارٕ چالوٗ۔ کینٛہہ دُکانُک ٹیمپلیٹ چھِ یہ بند تھٲوِتھ شروٗع گژھان۔
 tax_chrome_on	ہاوُن
 tax_chrome_off	چھُپاوُن
 tax_chrome_saved_on	کَش کاؤنٹرَس پیٹھ ٹیکس لیبل
 tax_chrome_saved_off	کَش کاؤنٹرَس پیٹھ چھُپاونہٕ آمٕتۍ ٹیکس لیبل
 tax_invoice_till	کَش کاؤنٹرَس پیٹھ ٹیکس انوائس
-tax_invoice_help	ییٚلہِ بند چھِ آسان، بِلہٕ چھِ صرف کیش میمو آسان تہٕ ٹیکس انوائس / کیش میمو چِپس چھِ آرڈر ڈیسکَس پیٹھ ژوٗرِ آسان۔ Rajdhani ایپ ٹیمپلیٹ چھُ شروع گژھان یَتھ آف کَرنہٕ باپَتھ — کُنہِ تہِ وِزِ کٔرِو ٹیکس انوائس ژارنہٕ باپَتھ کُنہِ تہِ وِزِ آن کَرُن۔
+tax_invoice_help	بند آسنس پیٹھ چھِ بِل صرف کیش میمو آسان تہٕ آرڈر ڈیسکس پیٹھ چھِ ٹیکس انوائس / کیش میمو چِپ کھٹان۔ کینٛہہ دُکانُک ٹیمپلیٹ چھِ یہ بند تھٲوِتھ شروٗع گژھان — ٹیکس انوائس دوبارٕ ژارنہٕ خٲطرٕ کٔرِو ہاوِو یُتھ وَقت تہٕ چالوٗ۔
 tax_invoice_on	ہاوُن
 tax_invoice_off	چھُپاوُن
 tax_invoice_saved_on	کَش کاؤنٹرَس پیٹھ ٹیکس انوائس
 tax_invoice_saved_off	ٹیکس انوائس چھُ پوشیدٕ — صرف نقد میمو
 pay_methods	ادٲیگی ہُنٛد طٔریٖقہٕ
-pay_methods_help	کُس چِپس چھُ ٹیک پیمنٹَس پیٹھ ظٲہِر گژھان۔ نقد رقم چھُ ہمیشہٕ روزان۔ Rajdhani ایپ ٹیمپلیٹ چھُ صرف نقد رقمَس پیٹھ شروع گژھان — ٹرن UPI / کارڈ / کریڈِٹ / کٔرِو واپس یَتھ پیٹھ۔
+pay_methods_help	پیمنٹ نِیو پیٹھ کَم چِپ چھِ بوزان۔ نقد چھُ ہمیشہ رٕوزان۔ کینٛہہ دُکانُک ٹیمپلیٹ چھِ صرف نقدٕ سٟتۍ شروٗع گژھان — UPI / کارڈ / اُدھار / بٲگرٕ کٔرِو یتہِ دوبارٕ چالوٗ۔
 create_backup	بیک اپ بناو
 credit_limit_heading	کریڈِٹُک حد (ژارنہٕ آمُت / ناو دِنہٕ آمٕژ پارٹی)
 day_close_summary	دۄہ بند خُلاصہٕ
@@ -793,10 +793,10 @@ printers_looking	وچھان...
 saving_printer	پرنٹر شٲمل کَرُن...
 cancelled	منسوخ کرنہٕ آمُت
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	ہٹاونہٕ یِوان…
+removed	ہٹاونہٕ آو
+updating_order	اپڈیٹ گژھان…
+order_updated	آرڈر آو اپڈیٹ کرنہٕ
 printers_tap_find	تِم پرنٹر لسٹ کرنہٕ خٲطرٕ دبٲیِو فایِنڈ یِم یہِ ڈیوائس ہیکہِ استعمال کٔرِتھ۔
 printers_none_found	کانٛہہ تہِ لوٚب نہٕ — ٹایپ کٔرِو اکھ سسٹم پرنٹر ناو یا اکھ IP (مثلاً 192.168.1.50)۔
 printer_from_find	اؠڈِٹ کَرنہٕ آمُت {name}
@@ -1337,7 +1337,6 @@ kot_field_table	میز
 kot_field_shop	دُکانُک ناو
 kot_field_waiter	مُلازِم
 kot_field_station	سٹیشن
-app_template_blurb_extra	بییہِ: مٲلک Zahir، Admin Asif، ویٹر Nawaz؛ FOH سائیڈبار؛ 4 گھنٹہٕ پتہٕ تٲریخ؛ از کٔرِو کُنہِ کُنہِ کُنہِ کُ کمپیکٹ KOT۔
 dishes_n	{n} ڈِش
 recipe_ph	ریسپی (اختیاری) — اکھ حصہٕ چھُ استعمال کران: توٚمل=0.2، پٔنیر=0.15
 reorder_ph	مٔزیٖد ہیٚیِو
@@ -1364,3 +1363,7 @@ recent_changes	حالٕے تبدیلیہٕ
 lane_declared_label	ٹیکس انوائس
 lane_owner_label	کیش میمو
 money_lane_bill	بل: {lane}
+app_template_download_progress	ڈاؤن لوڈ گژھان… {p}% ({d} / {t})
+app_template_download_paused	دوبارہ شروٗع کرنہٕ خٲطرٕ دوبارہ درآمد کٔرِو — مکمل فائل رٹنہٕ یِوان
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

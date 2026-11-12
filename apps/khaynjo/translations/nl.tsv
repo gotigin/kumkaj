@@ -339,21 +339,21 @@ server_remove_pin_ph	Owner-PIN om te verwijderen
 only_owner_remove_server	Alleen de Owner mag een server verwijderen
 owner_pin_remove_server	Owner-PIN vereist om deze server te verwijderen
 device_setup_help	De server bewaart hier de boeken. Een client koppelt met een server.
-app_template_heading	Rajdhani App Sjabloon
-app_template_blurb	Laadt het Rajdhani-menu; Eigenaar Zahir (zahir), Admin Asif (asif, PIN 1111), Waiter Nawaz (nawaz, PIN 0000); FOH zijbalk; geschiedenis wordt na 4 uur leeggehaald (en nu wissen in Back-up); Vandaag strip af; compacte KOT + standaard marges voor smalle dienbladen. Zijbalk peers kunnen weer worden ingeschakeld in Instellingen.
-app_template_apply	Rajdhani App Sjabloon
+app_template_heading	Winkelsjablonen
+app_template_blurb	Importeer een openbaar startmenu, of voer een privé 12-cijferige code van je Khaynjo-contactpersoon in.
+app_template_apply	Sjabloon importeren
 app_template_skip	Voorlopig overslaan
-app_template_status	Bediende klaar — pas Rajdhani App Sjabloon toe, of slaan over
+app_template_status	Server klaar — importeer een sjabloon, of sla over
 app_template_importing	Toepassen van {title}…
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	Sjabloon downloaden…
+app_template_public_hdr	Openbare sjablonen
+app_template_private_hdr	Privésjabloon
+app_template_public_hint	Open dit gedeelte om de openbare lijst te laden (eenmalig internet nodig).
+app_template_code_not_found	Code niet gevonden
+app_template_need_internet	Internet nodig om sjablonen te downloaden
+app_template_import_selected	Selectie importeren
+app_template_check_code	Code controleren
+app_template_import	Importeren
 currency	Valuta
 backup	Back-up
 use	Gebruiken
@@ -474,19 +474,19 @@ copy_report	Rapport kopiëren
 counted_cash_ph	Geteld contant geld in lade
 country_tax	Land & belasting
 tax_chrome	Belastinglabels op kassa
-tax_chrome_help	Wanneer uit, verbergt de bestellingstafel GST/belasting schatting lijnen en GST-in-prijs placeholders. Belastingtarieven en Land & belasting instellingen blijven — zet labels weer aan wanneer je wilt. Rajdhani App Sjabloon begint hiermee uit.
+tax_chrome_help	Indien uit verbergt de bestelbalie de regels met GST-/belastingschatting en de tijdelijke aanduidingen voor GST in de prijs. Belastingtarieven en de instellingen voor Land en belasting blijven — zet labels op elk moment weer aan. Sommige winkelsjablonen starten met dit uit.
 tax_chrome_on	Tonen
 tax_chrome_off	Verbergen
 tax_chrome_saved_on	Belastinglabels op kassa
 tax_chrome_saved_off	Belastinglabels verborgen op kassa
 tax_invoice_till	Belastingfactuur op kassa
-tax_invoice_help	Wanneer uit, zijn rekeningen alleen contant memo en zijn de Belastingfactuur / Contant memo chips verborgen op de bestellingstafel. Rajdhani App Sjabloon begint hiermee uit — zet Toon weer aan wanneer je wilt om Belastingfactuur opnieuw te kiezen.
+tax_invoice_help	Indien uit zijn rekeningen alleen kassabonnen en zijn de knoppen Belastingfactuur / Kassabon verborgen op de bestelbalie. Sommige winkelsjablonen starten met dit uit — zet Tonen op elk moment weer aan om opnieuw Belastingfactuur te kiezen.
 tax_invoice_on	Tonen
 tax_invoice_off	Verbergen
 tax_invoice_saved_on	Belastingfactuur op kassa
 tax_invoice_saved_off	Belastingfactuur verborgen — alleen contant memo
 pay_methods	Betalingsmethoden
-pay_methods_help	Welke chips verschijnen bij Betaling aannemen. Contant blijft altijd staan. Rajdhani App Sjabloon begint met alleen Contant — zet UPI / Kaart / Credit / Split hier weer aan.
+pay_methods_help	Welke knoppen verschijnen bij Betaling ontvangen. Contant blijft altijd. Sommige winkelsjablonen starten met alleen Contant — zet UPI / Kaart / Krediet / Splitsen hier weer aan.
 create_backup	Back-up maken
 credit_limit_heading	Kredietlimiet (gekozen / genoemde partij)
 day_close_summary	Dagsluiting overzicht
@@ -793,10 +793,10 @@ printers_looking	Printers zoeken op dit apparaat en Wi‑Fi…
 saving_printer	Voeg printer toe…
 cancelled	Geannuleerd
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Verwijderen…
+removed	Verwijderd
+updating_order	Bijwerken…
+order_updated	Bestelling bijgewerkt
 printers_tap_find	Tik op Zoeken om de printers te tonen die dit apparaat kan gebruiken.
 printers_none_found	Geen printers gevonden — typ een systeemnaam of netwerkadres (bijv. 192.168.1.50).
 printer_from_find	Toegevoegd {name}
@@ -1337,7 +1337,6 @@ kot_field_table	Tafel
 kot_field_shop	Naam zaak
 kot_field_waiter	Personeel
 kot_field_station	Station
-app_template_blurb_extra	Ook: Eigenaar Zahir, Admin Asif, Waiter Nawaz; FOH zijbalk; geschiedenis na 4 uur; Vandaag strip af; compacte KOT.
 dishes_n	{n} gerechten
 recipe_ph	Recept (optioneel) — één portie gebruikt: Rice=0.2, Paneer=0.15
 reorder_ph	Bijkopen bij
@@ -1364,3 +1363,7 @@ recent_changes	Recente wijzigingen
 lane_declared_label	Belastingfactuur
 lane_owner_label	Kassabon
 money_lane_bill	Factuur: {lane}
+app_template_download_progress	Downloaden… {p}% ({d} / {t})
+app_template_download_paused	Importeer opnieuw om verder te gaan — voltooide bestanden blijven bewaard
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

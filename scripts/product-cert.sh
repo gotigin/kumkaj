@@ -152,14 +152,20 @@ run_fast() {
     fi
     echo "== UX glitch oracles (SegBtn / footer lane) =="
     if [[ -f "$ROOT/apps/$app/src/ui_script.rs" ]]; then
-      # SegBtn wrap:true → irregular stadium ovals when cells squeeze (Reports phone).
-      if awk '
+      # SegBtn labels must never clip (Gujarati / phone): either no wrap
+      # (Moklanjo) or wrap with a Fit-height face (Khaynjo / Kirano /
+      # Tabiyat since 25fcce2). A fixed 40-px Overlay shell clips either way.
+      seg_block="$(awk '
         /let SegBtn = Button\{/ {inseg=1; next}
         inseg && /let [A-Za-z]+ = / {exit}
-        inseg && /wrap: true/ {found=1; exit}
-        END {exit found?0:1}
-      ' "$ROOT/apps/$app/src/ui_script.rs"; then
-        echo "SegBtn still has wrap:true — irregular phone pills" >&2
+        inseg {print}
+      ' "$ROOT/apps/$app/src/ui_script.rs")"
+      if grep -q 'wrap: true' <<<"$seg_block" && ! grep -q 'height: Fit' <<<"$seg_block"; then
+        echo "SegBtn wraps on a fixed-height face — wrapped labels will clip" >&2
+        exit 1
+      fi
+      if grep -q 'height: 40 flow: Overlay' "$ROOT/apps/$app/src/ui_script.rs"; then
+        echo "height: 40 Overlay shell clips SegBtn/ChipBtn labels" >&2
         exit 1
       fi
       if grep -q 'bottom_nav_scroll := ScrollXView{' "$ROOT/apps/$app/src/ui_script.rs"; then
@@ -176,7 +182,7 @@ run_fast() {
       fi
       # Expense/split pay chips: must not regress to 2×2 Fill (uneven Cash vs UPI).
       if grep -q 'part_cash := SegBtn' "$ROOT/apps/$app/src/ui_script.rs"; then
-        grep -q 'part_methods_scroll := ScrollXView{' "$ROOT/apps/$app/src/ui_script.rs" \
+        grep -qE 'part_methods_scroll := (ScrollXView|FormScrollX)\{' "$ROOT/apps/$app/src/ui_script.rs" \
           || { echo "PartsList methods missing part_methods_scroll (2×2 Fill regress)" >&2; exit 1; }
       fi
       # FieldInput wrap:true → placeholder wraps past Fixed height and crushes the next field.
@@ -193,7 +199,7 @@ run_fast() {
           /let FieldInput = TextInput\{/ {inf=1; next}
           inf && /let [A-Za-z]+ = / {exit}
           inf && /text_style \+: \{font_size: ([0-9.]+)/ {
-            if ($0 ~ /font_size: 1[5-9]\.|font_size: [2-9][0-9]/ found=1
+            if ($0 ~ /font_size: 1[5-9]\.|font_size: [2-9][0-9]/) found=1
           }
           END {exit found?0:1}
         ' "$ROOT/apps/$app/src/ui_script.rs" \

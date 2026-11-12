@@ -182,7 +182,7 @@ snack_secs_save	Gcina ixesha lesilumkiso
 snack_secs_saved	Ixesha lesilumkiso ligciniwe — imizuzwana {n}
 settings_sec_backup	Ugcino lwasemva nokubuyisela
 settings_sec_diag	Uvavanyo
-settings_sec_privacy	Privacy
+settings_sec_privacy	Ubumfihlo
 diag_privacy_help	Iilogi zihlala kwesi sixhobo. Iimfihlo (i-PIN, amagama okugqitha) azigcinwa. Ukwabelana ngephakheji ngaphandle kwesixhobo kufuna imvume yakho ecacileyo ngexesha ngalinye — azithengiswa okanye zinikwe abanye.
 diag_level	Inqanaba lenkcukacha
 diag_level_error	Iimpazamo
@@ -339,21 +339,21 @@ server_remove_pin_ph	I-PIN yomnini yokususa iseva
 only_owner_remove_server	Umnini kuphela onokususa iseva
 owner_pin_remove_server	I-PIN yomnini iyafuneka ukususa le seva
 device_setup_help	Iseva igcina iincwadi apha. Iklayenti idityaniswa neSeva.
-app_template_heading	Itemplate ye-App yeRajdhani
-app_template_blurb	Ilayisha uluhlu lweRajdhani; uMnini uZahir (zahir), uMlawuli uAsif (asif, i-PIN 1111), uMphakeli uNawaz (nawaz, i-PIN 0000); icala le-FOH; imbali icinywa emva kweeyure ezi-4 (noCima ngoku kugcino lwasemva); umgca kaNamhlanje ucinyiwe; i-KOT encinci + imida yeStandard kwiitreyi ezimxinwa. Abanye becala banokuvulwa kwakhona kuSeto.
-app_template_apply	Itemplate ye-App yeRajdhani
+app_template_heading	Iitemplate zevenkile
+app_template_blurb	Ngenisa imenyu yokuqala yoluntu, okanye ufake ikhowudi yabucala yamanani ali-12 evela kumntu wakho woqhagamshelwano weKhaynjo.
+app_template_apply	Ngenisa itemplate
 app_template_skip	Tsiba okwangoku
-app_template_status	Iseva ilungile — faka itemplate ye-App yeRajdhani, okanye tsiba
+app_template_status	Iseva ilungile — ngenisa itemplate, okanye utsibe
 app_template_importing	Ifaka {title}…
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	Itemplate iyakhutshelwa…
+app_template_public_hdr	Iitemplate zoluntu
+app_template_private_hdr	Itemplate yabucala
+app_template_public_hint	Vula eli candelo ukuze ulayishe uluhlu loluntu (kufuneka i-intanethi kanye).
+app_template_code_not_found	Ikhowudi ayifumanekanga
+app_template_need_internet	Kufuneka i-intanethi ukukhuphela iitemplate
+app_template_import_selected	Ngenisa okukhethiweyo
+app_template_check_code	Khangela ikhowudi
+app_template_import	Ngenisa
 currency	Imali
 backup	Ugcino lwasemva
 use	Sebenzisa
@@ -474,19 +474,19 @@ copy_report	Kopisha ingxelo
 counted_cash_ph	Imali ephathekayo ebalwe kwidrowa
 country_tax	Ilizwe nerhafu
 tax_chrome	Iileyibhile zerhafu kwikhawuntara
-tax_chrome_help	Xa icinyiwe, ideski yeodolo ifihla imigca yoqikelelo lwe-GST/rhafu kunye neendawo ze-GST-kwixabiso. Amaxabiso erhafu noseto lweLizwe nerhafu kuhlala — vula iileyibhile kwakhona nanini. Itemplate ye-App yeRajdhani iqala oku kucinyiwe.
+tax_chrome_help	Xa icinyiwe, idesika yee-odolo ifihla imigca yoqikelelo lwe-GST/irhafu kunye neendawo ze-GST-kwixabiso. Amazinga erhafu kunye nezicwangciso zeLizwe nerhafu ziyahlala — vula iileyibhile kwakhona nanini na. Ezinye iitemplate zevenkile ziqala kucinyiwe oku.
 tax_chrome_on	Bonisa
 tax_chrome_off	Fihla
 tax_chrome_saved_on	Iileyibhile zerhafu kwikhawuntara
 tax_chrome_saved_off	Iileyibhile zerhafu zifihlwe kwikhawuntara
 tax_invoice_till	I-invoyisi yerhafu kwikhawuntara
-tax_invoice_help	Xa icinyiwe, amatyala yimemo yemali ephathekayo kuphela kwaye iitshiphu ze-invoyisi yerhafu / imemo yemali ephathekayo zifihlwe kwideski yeodolo. Itemplate ye-App yeRajdhani iqala oku kucinyiwe — vula Bonisa kwakhona nanini ukuze ukhethe i-invoyisi yerhafu kwakhona.
+tax_invoice_help	Xa icinyiwe, iibhili zingamanqaku emali kuphela kwaye amaqhosha i-Invoyisi yerhafu / Inqaku lemali afihliwe kwidesika yee-odolo. Ezinye iitemplate zevenkile ziqala kucinyiwe oku — vula u-Bonisa nanini na ukuze ukhethe kwakhona i-Invoyisi yerhafu.
 tax_invoice_on	Bonisa
 tax_invoice_off	Fihla
 tax_invoice_saved_on	I-invoyisi yerhafu kwikhawuntara
 tax_invoice_saved_off	I-invoyisi yerhafu ifihlwe — imemo yemali ephathekayo kuphela
 pay_methods	Iindlela zentlawulo
-pay_methods_help	Iitshiphu ezibonakala kuQokelela intlawulo. Imali ephathekayo ihlala. Itemplate ye-App yeRajdhani iqala ngemali ephathekayo kuphela — vula i-UPI / Ikhadi / Ikhredithi / Yahlula kwakhona apha.
+pay_methods_help	Ngawaphi amaqhosha abonakala kwi-Thatha intlawulo. Imali ihlala ikhona. Ezinye iitemplate zevenkile ziqala ngeMali kuphela — vula kwakhona i-UPI / Ikhadi / Ityala / Yahlula apha.
 create_backup	Yenza ugcino lwasemva
 credit_limit_heading	Umda wekhredithi (iqela elikhethiweyo / elinegama)
 day_close_summary	Isishwankathelo sokuvala usuku
@@ -793,10 +793,10 @@ printers_looking	Iyakhangela…
 saving_printer	Iyongeza umshicileli…
 cancelled	Kurhoxisiwe
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Iyasuswa…
+removed	Isusiwe
+updating_order	Iyahlaziywa…
+order_updated	Iodolo ihlaziyiwe
 printers_tap_find	Cofa Fumana ukuze ubone abashicileli esi sixhobo sinokubasebenzisa.
 printers_none_found	Akukho kufunyenweyo — chwetheza igama lomshicileli wenkqubo okanye i-IP (umz. 192.168.1.50).
 printer_from_find	Kongezwe {name}
@@ -1337,7 +1337,6 @@ kot_field_table	Itafile
 kot_field_shop	Igama levenkile
 kot_field_waiter	Abasebenzi
 kot_field_station	Isikhululo
-app_template_blurb_extra	Kananjalo: uMnini uZahir, uMlawuli uAsif, uMphakeli uNawaz; icala le-FOH; imbali emva kweeyure ezi-4; umgca kaNamhlanje ucinyiwe; i-KOT encinci.
 dishes_n	ukutya {n}
 recipe_ph	Iresiphi (akuyomfuneko) — isiqingatha esinye sisebenzisa: iRice=0.2, iPaneer=0.15
 reorder_ph	Thenga ngakumbi ku
@@ -1364,3 +1363,7 @@ recent_changes	Utshintsho lwakutshanje
 lane_declared_label	I-invoyisi yerhafu
 lane_owner_label	Imemo yemali ephathekayo
 money_lane_bill	Ityala: {lane}
+app_template_download_progress	Iyakhuphela… {p}% ({d} / {t})
+app_template_download_paused	Ngenisa kwakhona ukuze uqhubeke — iifayile ezigqityiweyo ziyagcinwa
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

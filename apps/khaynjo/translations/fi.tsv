@@ -182,7 +182,7 @@ snack_secs_save	Tallenna ilmoitusaika
 snack_secs_saved	Ilmoitusaika tallennettu — {n} sekuntia
 settings_sec_backup	Varmuuskopio ja palautus
 settings_sec_diag	Diagnostiikka
-settings_sec_privacy	Privacy
+settings_sec_privacy	Yksityisyys
 diag_privacy_help	Lokit pysyvät tällä laitteella. Salaisuuksia (PIN, salasanat) ei koskaan tallenneta. Paketin jakaminen laitteen ulkopuolelle vaatii joka kerta nimenomaisen hyväksyntäsi — ei myydä eikä luovuteta kolmansille.
 diag_level	Yksityiskohtataso
 diag_level_error	Virheet
@@ -339,21 +339,21 @@ server_remove_pin_ph	Omistajan PIN palvelimen poistoon
 only_owner_remove_server	Vain omistaja voi poistaa palvelimen
 owner_pin_remove_server	Tämän palvelimen poistoon tarvitaan omistajan PIN
 device_setup_help	Palvelin pitää kirjat täällä. Pääte paritetaan palvelimeen.
-app_template_heading	Rajdhani-sovellusmalli
-app_template_blurb	Lataa Rajdhanin ruokalistan; omistaja Zahir (zahir), ylläpitäjä Asif (asif, PIN 1111), tarjoilija Nawaz (nawaz, PIN 0000); salin sivupalkki; historia tyhjenee 4 tunnin jälkeen (ja Tyhjennä nyt varmuuskopiossa); Tämän päivän nauha pois; tiivis KOT + vakiomarginaalit kapeille alustoille. Sivupalkin kohteet voi ottaa takaisin käyttöön asetuksissa.
-app_template_apply	Rajdhani-sovellusmalli
+app_template_heading	Myymäläpohjat
+app_template_blurb	Tuo julkinen aloitusmenu tai syötä Khaynjo-yhteyshenkilöltäsi saatu yksityinen 12-numeroinen koodi.
+app_template_apply	Tuo pohja
 app_template_skip	Ohita toistaiseksi
-app_template_status	Palvelin valmis — käytä Rajdhani-sovellusmallia tai ohita
+app_template_status	Palvelin valmis — tuo pohja tai ohita
 app_template_importing	Käytetään {title}…
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	Ladataan pohjaa…
+app_template_public_hdr	Julkiset pohjat
+app_template_private_hdr	Yksityinen pohja
+app_template_public_hint	Avaa tämä osio ladataksesi julkisen luettelon (internet tarvitaan kerran).
+app_template_code_not_found	Koodia ei löytynyt
+app_template_need_internet	Pohjien lataamiseen tarvitaan internet
+app_template_import_selected	Tuo valittu
+app_template_check_code	Tarkista koodi
+app_template_import	Tuo
 currency	Valuutta
 backup	Varmuuskopio
 use	Käytä
@@ -474,19 +474,19 @@ copy_report	Kopioi raportti
 counted_cash_ph	Laskettu käteinen laatikossa
 country_tax	Maa ja vero
 tax_chrome	Veromerkinnät kassalla
-tax_chrome_help	Kun pois päältä, tilauspiste piilottaa GST-/veroarviot ja hintaan sisältyvän GST:n paikkamerkit. Verokannat sekä Maa ja vero -asetukset säilyvät — merkit voi ottaa takaisin milloin tahansa. Rajdhani-sovellusmalli alkaa tämän ollessa pois.
+tax_chrome_help	Kun pois päältä, tilauspöytä piilottaa GST-/veroarviorivit ja ”GST hinnassa” -paikkamerkit. Verokannat sekä Maa ja vero -asetukset säilyvät — ota tunnisteet takaisin käyttöön milloin tahansa. Jotkin myymäläpohjat alkavat tämä pois päältä.
 tax_chrome_on	Näytä
 tax_chrome_off	Piilota
 tax_chrome_saved_on	Veromerkinnät kassalla
 tax_chrome_saved_off	Veromerkinnät piilotettu kassalla
 tax_invoice_till	Verolasku kassalla
-tax_invoice_help	Kun pois päältä, laskut ovat vain käteiskuitteja ja Verolasku / Käteiskuitti -valinnat piilotetaan tilauspisteeltä. Rajdhani-sovellusmalli alkaa tämän ollessa pois — ota Näytä takaisin milloin tahansa valitaksesi verolaskun uudelleen.
+tax_invoice_help	Kun pois päältä, laskut ovat vain käteiskuitteja ja Verolasku / Käteiskuitti -painikkeet piilotetaan tilauspöydältä. Jotkin myymäläpohjat alkavat tämä pois päältä — ota Näytä käyttöön milloin tahansa valitaksesi Verolaskun uudelleen.
 tax_invoice_on	Näytä
 tax_invoice_off	Piilota
 tax_invoice_saved_on	Verolasku kassalla
 tax_invoice_saved_off	Verolasku piilotettu — vain käteiskuitti
 pay_methods	Maksutavat
-pay_methods_help	Mitkä valinnat näkyvät kohdassa Ota maksu. Käteinen pysyy aina. Rajdhani-sovellusmalli alkaa vain käteisellä — ota UPI / kortti / luotto / jako takaisin käyttöön tässä.
+pay_methods_help	Mitkä painikkeet näkyvät kohdassa Vastaanota maksu. Käteinen pysyy aina. Jotkin myymäläpohjat alkavat pelkällä Käteisellä — ota UPI / Kortti / Luotto / Jaa takaisin käyttöön tästä.
 create_backup	Luo varmuuskopio
 credit_limit_heading	Luottoraja (valittu / nimetty osapuoli)
 day_close_summary	Päivän sulun yhteenveto
@@ -793,10 +793,10 @@ printers_looking	Etsitään…
 saving_printer	Lisätään tulostinta…
 cancelled	Peruttu
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Poistetaan…
+removed	Poistettu
+updating_order	Päivitetään…
+order_updated	Tilaus päivitetty
 printers_tap_find	Napauta Etsi listataksesi tulostimet, joita tämä laite voi käyttää.
 printers_none_found	Ei löytynyt — kirjoita järjestelmätulostimen nimi tai IP (esim. 192.168.1.50).
 printer_from_find	Lisätty {name}
@@ -1337,7 +1337,6 @@ kot_field_table	Pöytä
 kot_field_shop	Liikkeen nimi
 kot_field_waiter	Henkilöstö
 kot_field_station	Asema
-app_template_blurb_extra	Myös: omistaja Zahir, ylläpitäjä Asif, tarjoilija Nawaz; salin sivupalkki; historia 4 tunnin jälkeen; Tämän päivän nauha pois; tiivis KOT.
 dishes_n	{n} annosta
 recipe_ph	Resepti (valinnainen) — yksi annos käyttää: Riisi=0.2, Paneer=0.15
 reorder_ph	Tilaa lisää kun
@@ -1364,3 +1363,7 @@ recent_changes	Viimeisimmät muutokset
 lane_declared_label	Verolasku
 lane_owner_label	Käteiskuitti
 money_lane_bill	Lasku: {lane}
+app_template_download_progress	Ladataan… {p}% ({d} / {t})
+app_template_download_paused	Tuo uudelleen jatkaaksesi — valmiit tiedostot säilyvät
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

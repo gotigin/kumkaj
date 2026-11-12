@@ -182,7 +182,7 @@ snack_secs_save	హెచ్చరిక సమయం సేవ్ చేయి
 snack_secs_saved	హెచ్చరిక సమయం సేవ్ అయింది — {n} సెకన్లు
 settings_sec_backup	బ్యాకప్ & పునరుద్ధరణ
 settings_sec_diag	డయాగ్నస్టిక్స్
-settings_sec_privacy	Privacy
+settings_sec_privacy	గోప్యత
 diag_privacy_help	లాగ్‌లు ఈ పరికరంలోనే ఉంటాయి. రహస్యాలు (PIN, పాస్‌వర్డ్‌లు) ఎప్పుడూ నిల్వ చేయబడవు. పరికరం బయటకు ప్యాకేజీ పంపడానికి ప్రతిసారి మీ స్పష్టమైన ఆమోదం కావాలి — ఎప్పుడూ అమ్మబడదు, మూడో పక్షాలకు ఇవ్వబడదు.
 diag_level	వివరాల స్థాయి
 diag_level_error	లోపాలు
@@ -339,21 +339,21 @@ server_remove_pin_ph	సర్వర్ తొలగించడానికి 
 only_owner_remove_server	సర్వర్‌ను Owner మాత్రమే తొలగించగలరు
 owner_pin_remove_server	సర్వర్ తొలగించడానికి Owner PIN అవసరం
 device_setup_help	సర్వర్ ఖాతాలను ఇక్కడే ఉంచుతుంది. క్లయింట్ ఒక సర్వర్‌తో జత అవుతుంది.
-app_template_heading	రాజధాని యాప్ టెంప్లేట్
-app_template_blurb	రాజధాని మెనూ లోడ్ చేస్తుంది; యజమాని జహీర్ (zahir), అడ్మిన్ ఆసిఫ్ (asif, PIN 1111), వెయిటర్ నవాజ్ (nawaz, PIN 0000); FOH సైడ్‌బార్; చరిత్ర 4 గంటల తర్వాత తుడుస్తుంది (బ్యాకప్‌లో ఇప్పుడే తుడువు కూడా); ఈరోజు పట్టీ ఆఫ్; ఇరుకైన ట్రేల కోసం చిన్న KOT + సాధారణ మార్జిన్లు. సైడ్‌బార్ మిగతావి సెట్టింగ్‌లలో మళ్లీ ఆన్ చేయవచ్చు.
-app_template_apply	రాజధాని యాప్ టెంప్లేట్
+app_template_heading	దుకాణ టెంప్లేట్‌లు
+app_template_blurb	పబ్లిక్ స్టార్టర్ మెనూను దిగుమతి చేయండి, లేదా మీ Khaynjo పరిచయం నుండి పొందిన 12 అంకెల ప్రైవేట్ కోడ్‌ను నమోదు చేయండి.
+app_template_apply	టెంప్లేట్ దిగుమతి చేయండి
 app_template_skip	ప్రస్తుతానికి దాటవేయి
-app_template_status	సర్వర్ సిద్ధం — రాజధాని యాప్ టెంప్లేట్ వర్తింపజేయండి, లేదా దాటవేయండి
+app_template_status	సర్వర్ సిద్ధం — టెంప్లేట్ దిగుమతి చేయండి, లేదా దాటవేయండి
 app_template_importing	{title} వర్తింపజేస్తోంది…
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	టెంప్లేట్ డౌన్‌లోడ్ అవుతోంది…
+app_template_public_hdr	పబ్లిక్ టెంప్లేట్‌లు
+app_template_private_hdr	ప్రైవేట్ టెంప్లేట్
+app_template_public_hint	పబ్లిక్ జాబితాను లోడ్ చేయడానికి ఈ విభాగాన్ని తెరవండి (ఒక్కసారి ఇంటర్నెట్ అవసరం).
+app_template_code_not_found	కోడ్ కనుగొనబడలేదు
+app_template_need_internet	టెంప్లేట్‌లను డౌన్‌లోడ్ చేయడానికి ఇంటర్నెట్ అవసరం
+app_template_import_selected	ఎంచుకున్నదాన్ని దిగుమతి చేయండి
+app_template_check_code	కోడ్ తనిఖీ చేయండి
+app_template_import	దిగుమతి చేయండి
 currency	కరెన్సీ
 backup	బ్యాకప్
 use	ఉపయోగించు
@@ -474,19 +474,19 @@ copy_report	నివేదిక కాపీ
 counted_cash_ph	డ్రాయర్‌లో లెక్కించిన నగదు
 country_tax	దేశం & పన్ను
 tax_chrome	టిల్‌పై పన్ను లేబుళ్లు
-tax_chrome_help	ఆఫ్ అయితే ఆర్డర్ డెస్క్ GST/పన్ను అంచనా వరుసలు, ధరలో-GST సూచనలు దాస్తుంది. పన్ను రేట్లు, దేశం & పన్ను సెట్టింగ్‌లు అలాగే ఉంటాయి — లేబుళ్లు ఎప్పుడైనా మళ్లీ ఆన్ చేయండి. రాజధాని యాప్ టెంప్లేట్ దీన్ని ఆఫ్‌తో ప్రారంభిస్తుంది.
+tax_chrome_help	ఆఫ్‌లో ఉన్నప్పుడు, ఆర్డర్ డెస్క్ GST/పన్ను అంచనా లైన్‌లు మరియు ధరలో-GST ప్లేస్‌హోల్డర్‌లను దాచిపెడుతుంది. పన్ను రేట్లు మరియు దేశం & పన్ను సెట్టింగ్‌లు అలాగే ఉంటాయి — లేబుల్‌లను ఎప్పుడైనా మళ్లీ ఆన్ చేయండి. కొన్ని దుకాణ టెంప్లేట్‌లు దీన్ని ఆఫ్‌లో ఉంచి ప్రారంభమవుతాయి.
 tax_chrome_on	చూపు
 tax_chrome_off	దాచు
 tax_chrome_saved_on	టిల్‌పై పన్ను లేబుళ్లు
 tax_chrome_saved_off	టిల్‌పై పన్ను లేబుళ్లు దాచబడ్డాయి
 tax_invoice_till	టిల్‌పై పన్ను ఇన్‌వాయిస్
-tax_invoice_help	ఆఫ్ అయితే బిల్లులు క్యాష్ మెమో మాత్రమే, ఆర్డర్ డెస్క్‌పై పన్ను ఇన్‌వాయిస్ / క్యాష్ మెమో చిప్‌లు దాగుంటాయి. రాజధాని యాప్ టెంప్లేట్ దీన్ని ఆఫ్‌తో ప్రారంభిస్తుంది — పన్ను ఇన్‌వాయిస్ మళ్లీ ఎంచుకోవడానికి ఎప్పుడైనా చూపు ఆన్ చేయండి.
+tax_invoice_help	ఆఫ్‌లో ఉన్నప్పుడు, బిల్లులు నగదు మెమో మాత్రమే మరియు ఆర్డర్ డెస్క్‌లో పన్ను ఇన్‌వాయిస్ / నగదు మెమో చిప్‌లు దాచబడతాయి. కొన్ని దుకాణ టెంప్లేట్‌లు దీన్ని ఆఫ్‌లో ఉంచి ప్రారంభమవుతాయి — పన్ను ఇన్‌వాయిస్‌ను మళ్లీ ఎంచుకోవడానికి చూపించు ఎప్పుడైనా ఆన్ చేయండి.
 tax_invoice_on	చూపు
 tax_invoice_off	దాచు
 tax_invoice_saved_on	టిల్‌పై పన్ను ఇన్‌వాయిస్
 tax_invoice_saved_off	పన్ను ఇన్‌వాయిస్ దాచబడింది — క్యాష్ మెమో మాత్రమే
 pay_methods	చెల్లింపు పద్ధతులు
-pay_methods_help	చెల్లింపు తీసుకోలో ఏ చిప్‌లు కనిపించాలి. నగదు ఎప్పుడూ ఉంటుంది. రాజధాని యాప్ టెంప్లేట్ నగదుతో మాత్రమే ప్రారంభిస్తుంది — UPI / కార్డ్ / అప్పు / విభజన ఇక్కడ మళ్లీ ఆన్ చేయండి.
+pay_methods_help	చెల్లింపు తీసుకోండిలో ఏ చిప్‌లు కనిపిస్తాయి. నగదు ఎల్లప్పుడూ ఉంటుంది. కొన్ని దుకాణ టెంప్లేట్‌లు నగదుతో మాత్రమే ప్రారంభమవుతాయి — UPI / కార్డ్ / అప్పు / విభజన ఇక్కడ మళ్లీ ఆన్ చేయండి.
 create_backup	బ్యాకప్ సృష్టించు
 credit_limit_heading	క్రెడిట్ పరిమితి (ఎంచుకున్న / పేరున్న పార్టీ)
 day_close_summary	రోజు ముగింపు సారాంశం
@@ -793,10 +793,10 @@ printers_looking	ఈ పరికరం మరియు Wi‑Fiలో ప్ర�
 saving_printer	ప్రింటర్ జోడిస్తోంది…
 cancelled	రద్దు
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	తీసివేస్తోంది…
+removed	తీసివేయబడింది
+updating_order	నవీకరిస్తోంది…
+order_updated	ఆర్డర్ నవీకరించబడింది
 printers_tap_find	ఈ పరికరం వాడగల ప్రింటర్ల జాబితా కోసం ఫైండ్ నొక్కండి.
 printers_none_found	ప్రింటర్లు కనబడలేదు — సిస్టమ్ ప్రింటర్ పేరు లేదా నెట్‌వర్క్ చిరునామా టైప్ చేయండి (ఉదా. 192.168.1.50).
 printer_from_find	{name} జోడించారు
@@ -1337,7 +1337,6 @@ kot_field_table	టేబుల్
 kot_field_shop	షాప్ పేరు
 kot_field_waiter	సిబ్బంది
 kot_field_station	స్టేషన్
-app_template_blurb_extra	అదనంగా: యజమాని జహీర్, అడ్మిన్ ఆసిఫ్, వెయిటర్ నవాజ్; FOH సైడ్‌బార్; 4 గంటల తర్వాత చరిత్ర; ఈరోజు పట్టీ ఆఫ్; చిన్న KOT.
 dishes_n	{n} వంటకాలు
 recipe_ph	రెసిపీ (ఐచ్ఛికం) — ఒక ప్లేట్‌కు: Rice=0.2, Paneer=0.15
 reorder_ph	ఇంత వద్ద మరింత కొనండి
@@ -1364,3 +1363,7 @@ recent_changes	ఇటీవలి మార్పులు
 lane_declared_label	పన్ను ఇన్‌వాయిస్
 lane_owner_label	క్యాష్ మెమో
 money_lane_bill	బిల్లు: {lane}
+app_template_download_progress	డౌన్‌లోడ్ అవుతోంది… {p}% ({d} / {t})
+app_template_download_paused	కొనసాగించడానికి మళ్లీ దిగుమతి చేయండి — పూర్తైన ఫైళ్లు ఉంచబడతాయి
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

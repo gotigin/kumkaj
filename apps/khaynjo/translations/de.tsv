@@ -182,7 +182,7 @@ snack_secs_save	Hinweisdauer speichern
 snack_secs_saved	Hinweisdauer gespeichert — {n} Sekunden
 settings_sec_backup	Sicherung & Wiederherstellung
 settings_sec_diag	Diagnose
-settings_sec_privacy	Privacy
+settings_sec_privacy	Datenschutz
 diag_privacy_help	Verbleiben Protokolle auf diesem Gerät. Geheimnisse (PIN, Passwörter) werden niemals gespeichert. Das Teilen eines Pakets vom Gerät erfordert Ihre ausdrückliche Genehmigung jedes Mal — niemals an Dritte verkauft oder übergeben.
 diag_level	Detailstufe
 diag_level_error	Fehler
@@ -339,21 +339,21 @@ server_remove_pin_ph	Owner-PIN zum Entfernen
 only_owner_remove_server	Nur der Owner darf einen Server entfernen
 owner_pin_remove_server	Owner-PIN nötig, um diesen Server zu entfernen
 device_setup_help	Der Server führt die Bücher hier. Ein Client koppelt sich mit einem Server.
-app_template_heading	Rajdhani App-Vorlage
-app_template_blurb	Lädt das Rajdhani-Menü; Besitzer Zahir (zahir), Administrator Asif (asif, PIN 1111), Kellner Nawaz (nawaz, PIN 0000); FOH-Seitenleiste; Verlauf wird nach 4 Stunden geleert (und „Jetzt leeren" in Sicherung); Heute-Strip entfernt; kompakte KOT + Standard-Margen für schmale Tabletts. Begleitende Seitenleisten können in den Einstellungen wieder aktiviert werden.
-app_template_apply	Rajdhani App-Vorlage
+app_template_heading	Geschäftsvorlagen
+app_template_blurb	Importieren Sie ein öffentliches Startmenü oder geben Sie einen privaten 12-stelligen Code von Ihrem Khaynjo-Kontakt ein.
+app_template_apply	Vorlage importieren
 app_template_skip	Jetzt überspringen
-app_template_status	Server bereit — Rajdhani App-Vorlage anwenden oder überspringen
+app_template_status	Server bereit — Vorlage importieren oder überspringen
 app_template_importing	Wende {title} an…
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	Vorlage wird heruntergeladen…
+app_template_public_hdr	Öffentliche Vorlagen
+app_template_private_hdr	Private Vorlage
+app_template_public_hint	Öffnen Sie diesen Bereich, um die öffentliche Liste zu laden (einmalig Internet nötig).
+app_template_code_not_found	Code nicht gefunden
+app_template_need_internet	Zum Herunterladen von Vorlagen ist Internet nötig
+app_template_import_selected	Auswahl importieren
+app_template_check_code	Code prüfen
+app_template_import	Importieren
 currency	Währung
 backup	Sicherung
 use	Verwenden
@@ -474,19 +474,19 @@ copy_report	Bericht kopieren
 counted_cash_ph	Gezähltes Bargeld in der Lade
 country_tax	Land & Steuern
 tax_chrome	Steueretiketten auf der Kasse
-tax_chrome_help	Wenn deaktiviert, werden die GST-/Steuer-Schätzzeilen und Platzhalter für Steuern im Preis am Bestellschalter ausgeblendet. Steuersätze und Länder-/Steuer-Einstellungen bleiben erhalten – schalten Sie die Etiketten jederzeit wieder ein. Das Rajdhani App-Template startet damit aus.
+tax_chrome_help	Wenn aus, blendet der Bestellplatz GST-/Steuerschätzzeilen und Platzhalter für GST im Preis aus. Steuersätze und die Einstellungen für Land & Steuer bleiben — Beschriftungen jederzeit wieder einschalten. Manche Geschäftsvorlagen starten damit ausgeschaltet.
 tax_chrome_on	Anzeigen
 tax_chrome_off	Ausblenden
 tax_chrome_saved_on	Steueretiketten auf der Kasse
 tax_chrome_saved_off	Steueretiketten auf der Kasse ausgeblendet
 tax_invoice_till	Steuerrechnung auf der Kasse
-tax_invoice_help	Wenn deaktiviert, sind Rechnungen nur als Cash-Memo verfügbar und die Chips für Steuerrechnung/Cash-Memo am Bestellschalter ausgeblendet. Das Rajdhani App-Template startet damit aus – schalten Sie „Anzeigen" jederzeit wieder ein, um die Steuerrechnung erneut auszuwählen.
+tax_invoice_help	Wenn aus, sind Rechnungen nur Barbelege, und die Schaltflächen Steuerrechnung / Barbeleg sind am Bestellplatz ausgeblendet. Manche Geschäftsvorlagen starten damit ausgeschaltet — schalten Sie Anzeigen jederzeit wieder ein, um erneut Steuerrechnung zu wählen.
 tax_invoice_on	Anzeigen
 tax_invoice_off	Ausblenden
 tax_invoice_saved_on	Steuerrechnung auf der Kasse
 tax_invoice_saved_off	Steuerrechnung ausgeblendet – nur Cash-Memo
 pay_methods	Zahlungsmethoden
-pay_methods_help	Welche Chips erscheinen bei „Zahlung aufnehmen". Bargeld bleibt immer erhalten. Das Rajdhani App-Template startet mit nur Bargeld – schalten Sie hier UPI/Karte/Kredit/Aufteilung wieder ein.
+pay_methods_help	Welche Schaltflächen bei Zahlung annehmen erscheinen. Bar bleibt immer. Manche Geschäftsvorlagen starten nur mit Bar — schalten Sie UPI / Karte / Kredit / Aufteilen hier wieder ein.
 create_backup	Sicherung erstellen
 credit_limit_heading	Kreditlimit (gewählte / benannte Partei)
 day_close_summary	Tagesabschluss-Übersicht
@@ -793,10 +793,10 @@ printers_looking	Suche Drucker auf diesem Gerät und im Wi‑Fi…
 saving_printer	Druckgerät hinzufügen…
 cancelled	Storniert
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Wird entfernt…
+removed	Entfernt
+updating_order	Wird aktualisiert…
+order_updated	Bestellung aktualisiert
 printers_tap_find	Tippen Sie auf Suchen, um die Drucker aufzulisten, die dieses Gerät nutzen kann.
 printers_none_found	Keine Drucker gefunden — geben Sie einen Systemnamen oder eine Netzwerkadresse ein (z. B. 192.168.1.50).
 printer_from_find	{name} hinzugefügt
@@ -1337,7 +1337,6 @@ kot_field_table	Tisch
 kot_field_shop	Geschäftsname
 kot_field_waiter	Personal
 kot_field_station	Station
-app_template_blurb_extra	Auch: Eigentümer Zahir, Administrator Asif, Kellner Nawaz; FOH-Seitenleiste; Verlauf nach 4 Stunden; Heute streifen entfernen; kompakter KOT.
 dishes_n	{n} Gerichte
 recipe_ph	Rezept (optional) — eine Portion braucht: Rice=0.2, Paneer=0.15
 reorder_ph	Nachkaufen bei
@@ -1364,3 +1363,7 @@ recent_changes	Letzte Änderungen
 lane_declared_label	Steuerrechnung
 lane_owner_label	Kassenbon
 money_lane_bill	Rechnung: {lane}
+app_template_download_progress	Wird heruntergeladen… {p}% ({d} / {t})
+app_template_download_paused	Erneut importieren, um fortzusetzen — fertige Dateien bleiben erhalten
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

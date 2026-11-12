@@ -182,7 +182,7 @@ snack_secs_save	Guardar tempo dos avisos
 snack_secs_saved	Tempo dos avisos guardado — {n} segundos
 settings_sec_backup	Backup e restauração
 settings_sec_diag	Diagnóstico
-settings_sec_privacy	Privacy
+settings_sec_privacy	Privacidade
 diag_privacy_help	Os logs permanecem neste dispositivo. Segredos (PIN, senhas) nunca são armazenados. O compartilhamento de um pacote fora do dispositivo requer sua aprovação explícita cada vez — nunca vendido ou entregue a terceiros.
 diag_level	Nível de detalhe
 diag_level_error	Erros
@@ -339,21 +339,21 @@ server_remove_pin_ph	PIN do dono para remover
 only_owner_remove_server	Só o dono pode remover um servidor
 owner_pin_remove_server	PIN do dono necessário para remover este servidor
 device_setup_help	O servidor guarda os livros aqui. O cliente emparelha com um servidor.
-app_template_heading	Modelo de Aplicativo Rajdhani
-app_template_blurb	Carrega o menu Rajdhani; Proprietário Zahir (zahir), Administrador Asif (asif, PIN 1111), Garçom Nawaz (nawaz, PIN 0000); barra lateral FOH; histórico limpa após 4 horas (e Limpar agora em Backup); faixa de hoje removida; KOT compacto + margens padrão para bandejas estreitas. Pares da barra lateral podem ser reativados nas Configurações.
-app_template_apply	Modelo de Aplicativo Rajdhani
+app_template_heading	Modelos de loja
+app_template_blurb	Importe um menu inicial público ou introduza um código privado de 12 dígitos do seu contacto Khaynjo.
+app_template_apply	Importar modelo
 app_template_skip	Ignorar por enquanto
-app_template_status	Servidor pronto — aplique o modelo de aplicativo Rajdhani ou ignore
+app_template_status	Servidor pronto — importe um modelo ou ignore
 app_template_importing	Aplicando {title}…
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	A transferir o modelo…
+app_template_public_hdr	Modelos públicos
+app_template_private_hdr	Modelo privado
+app_template_public_hint	Abra esta secção para carregar a lista pública (precisa de internet uma vez).
+app_template_code_not_found	Código não encontrado
+app_template_need_internet	É necessária internet para transferir modelos
+app_template_import_selected	Importar selecionado
+app_template_check_code	Verificar código
+app_template_import	Importar
 currency	Moeda
 backup	Cópia de segurança
 use	Usar
@@ -474,19 +474,19 @@ copy_report	Copiar relatório
 counted_cash_ph	Dinheiro contado na gaveta
 country_tax	País e impostos
 tax_chrome	Rótulos de imposto no caixa
-tax_chrome_help	Quando desligado, o balcão de pedidos oculta linhas de estimativa de GST/imposto e placeholders de preço com GST incluído. As taxas de imposto e configurações de País & imposto permanecem — reative os rótulos a qualquer momento. O modelo de aplicativo Rajdhani começa com isso desligado.
+tax_chrome_help	Quando desligado, o balcão de pedidos oculta as linhas de estimativa de GST/imposto e os marcadores de GST incluído no preço. As taxas de imposto e as definições de País e imposto mantêm-se — volte a ligar as etiquetas quando quiser. Alguns modelos de loja começam com isto desligado.
 tax_chrome_on	Mostrar
 tax_chrome_off	Ocultar
 tax_chrome_saved_on	Rótulos de imposto no caixa
 tax_chrome_saved_off	Rótulos de imposto ocultos no caixa
 tax_invoice_till	Fatura fiscal no caixa
-tax_invoice_help	Quando desligado, as faturas são apenas recibos de pagamento em dinheiro e os chips de Fatura fiscal / Recibo de pagamento em dinheiro estão ocultos no balcão de pedidos. O modelo de aplicativo Rajdhani começa com isso desligado — reative Mostrar a qualquer momento para escolher Fatura fiscal novamente.
+tax_invoice_help	Quando desligado, as contas são apenas notas de numerário e os botões Fatura fiscal / Nota de numerário ficam ocultos no balcão de pedidos. Alguns modelos de loja começam com isto desligado — ligue Mostrar quando quiser para voltar a escolher Fatura fiscal.
 tax_invoice_on	Mostrar
 tax_invoice_off	Ocultar
 tax_invoice_saved_on	Fatura fiscal no caixa
 tax_invoice_saved_off	Fatura fiscal oculta — apenas recibo de pagamento em dinheiro
 pay_methods	Métodos de pagamento
-pay_methods_help	Quais chips aparecem em Pagar. Dinheiro sempre permanece. O modelo de aplicativo Rajdhani começa com apenas Dinheiro — reative UPI / Cartão / Crédito / Dividir aqui.
+pay_methods_help	Que botões aparecem em Receber pagamento. O numerário fica sempre. Alguns modelos de loja começam só com Numerário — volte a ligar UPI / Cartão / Crédito / Dividir aqui.
 create_backup	Criar cópia de segurança
 credit_limit_heading	Limite de crédito (parte selecionada / nomeada)
 day_close_summary	Resumo do fecho do dia
@@ -793,10 +793,10 @@ printers_looking	A procurar impressoras neste dispositivo e Wi‑Fi…
 saving_printer	Adicionando impressora…
 cancelled	Cancelado
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	A remover…
+removed	Removido
+updating_order	A atualizar…
+order_updated	Pedido atualizado
 printers_tap_find	Toque em Procurar para listar as impressoras que este dispositivo pode usar.
 printers_none_found	Nenhuma impressora encontrada — escreva um nome do sistema ou um endereço de rede (ex. 192.168.1.50).
 printer_from_find	Adicionado {name}
@@ -1337,7 +1337,6 @@ kot_field_table	Mesa
 kot_field_shop	Nome da loja
 kot_field_waiter	Equipa
 kot_field_station	Estação
-app_template_blurb_extra	Também: Proprietário Zahir, Admin Asif, Garçom Nawaz; barra lateral FOH; histórico após 4 horas; faixa de hoje removida; KOT compacto.
 dishes_n	{n} pratos
 recipe_ph	Receita (opcional) — uma dose usa: Rice=0.2, Paneer=0.15
 reorder_ph	Comprar mais em
@@ -1364,3 +1363,7 @@ recent_changes	Alterações recentes
 lane_declared_label	Fatura fiscal
 lane_owner_label	Nota de caixa
 money_lane_bill	Conta: {lane}
+app_template_download_progress	A transferir… {p}% ({d} / {t})
+app_template_download_paused	Importe novamente para retomar — os ficheiros concluídos são mantidos
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

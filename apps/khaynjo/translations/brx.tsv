@@ -182,7 +182,7 @@ snack_secs_save	सांग्रांथिनि सम थिना दो�
 snack_secs_saved	सांग्रांथिनि सम थिना दोनबाय — {n} सेकेन्ड
 settings_sec_backup	ब्याकआप आरो लाबोफिन
 settings_sec_diag	डायग्नोस्टिक
-settings_sec_privacy	Privacy
+settings_sec_privacy	गुमुरनाय
 diag_privacy_help	लग आ बे मेसिनआव थायो। गुप्त (PIN, पासवार्ड) जेब्लाबो दोननाय नङा। मेसिननि बायजो प्याकेज राननो मोनफ्रोम खेब नोंनि गोबां गनायथि नांगौ — गुबुन मानसिनो फाननाय एबा होनाय नङा।
 diag_level	गुवारनि थाखो
 diag_level_error	गोरोन्थि
@@ -339,21 +339,21 @@ server_remove_pin_ph	सर्वर बोखारनो गिबिनि PI
 only_owner_remove_server	खोथिया गिबिआ सर्वर बोखारनो हायो
 owner_pin_remove_server	बे सर्वर बोखारनो गिबिनि PIN नांगौ
 device_setup_help	सर्वरआ बहीखौ बेयाव दोनो। क्लाइन्ट आ सर्वरजों जोरा।
-app_template_heading	Rajdhani एप टेम्प्लेट
-app_template_blurb	Rajdhani मेनु ल'दो; गिबि Zahir (zahir), एडमिन Asif (asif, PIN 1111), वेटर Nawaz (nawaz, PIN 0000); FOH साइडबार; 4 घन्टा उन हिस्ट'री खोमायो (आरो ब्याकआपआव दा खोमा); दिनैनि स्ट्रिप अफ; खिन्था KOT + खिन्था ट्रेनि थाखाय स्टेन्डार्ड मार्जिन। साइडबारनि लोगोफोरखौ सेटिंआव फिन अन खालामनो हायो।
-app_template_apply	Rajdhani एप टेम्प्लेट
+app_template_heading	दोकानि टेम्प्लेटफोर
+app_template_blurb	मोनसे सार्बजनिक जागायनाय मेनु लाबो, नाथाय नोंथांनि Khaynjo सोमोन्दोनिफ्राय मोननाय 12 अंकनि गुबुन कोड हो।
+app_template_apply	टेम्प्लेट लाबो
 app_template_skip	दा बार
-app_template_status	सर्वर गथ' — Rajdhani एप टेम्प्लेट बाहाय, एबा बार
+app_template_status	सार्भार थियारि — मोनसे टेम्प्लेट लाबो, नाथाय नागार
 app_template_importing	{title} बाहाय गासिनो…
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	टेम्प्लेट डाउनल'ड जागासिनो…
+app_template_public_hdr	सार्बजनिक टेम्प्लेटफोर
+app_template_private_hdr	गुबुन टेम्प्लेट
+app_template_public_hint	सार्बजनिक लिस्टिखौ ल'ड खालामनो बे बाहागोखौ खेव (मोनसेबार इन्टारनेट नांगौ)।
+app_template_code_not_found	कोड मोनाखै
+app_template_need_internet	टेम्प्लेट डाउनल'ड खालामनो इन्टारनेट नांगौ
+app_template_import_selected	सायखनायखौ लाबो
+app_template_check_code	कोड नायबिजिर
+app_template_import	लाबो
 currency	रांनि रोखोम
 backup	ब्याकआप
 use	बाहाय
@@ -474,19 +474,19 @@ copy_report	रिपर्ट कपि खालाम
 counted_cash_ph	दराजआव सानजानाय नगद
 country_tax	हादोर आरो कर
 tax_chrome	टिलआव करनि लेबेल
-tax_chrome_help	अफ थायोब्ला अर्डर डेस्कआ GST/करनि अन्दाज सारि आरो बेसेनाव GST नि थाखिथिंखौ दोनखोमायो। करनि हार आरो हादोर आरो कर सेटिं थाथारो — जाय समावबो लेबेल फिन अन खालाम। Rajdhani एप टेम्प्लेट आ बेखौ अफ जों जागायो।
+tax_chrome_help	बन्द थायोब्ला, अर्डार डेस्काव GST/खाजानानि आन्दाजारि सारि आरो बेसेनाव-GST जायगाखौ दिनथियाखै। खाजाना रेट आरो हादर आरो खाजाना सेटिंफोर थायो — लेबेलखौ जेबो समाव फिन खेवनो हायो। खायसे दोकानि टेम्प्लेट बेखौ बन्द दोननानै जागायो।
 tax_chrome_on	दिन्थिफुं
 tax_chrome_off	दोनखोमा
 tax_chrome_saved_on	टिलआव करनि लेबेल अन
 tax_chrome_saved_off	टिलआव करनि लेबेल दोनखोमाबाय
 tax_invoice_till	टिलआव कर बिल
-tax_invoice_help	अफ थायोब्ला बिल आ खोथिया नगद मेमो, आरो अर्डर डेस्कआव कर बिल / नगद मेमो चिप दोनखोमायो। Rajdhani एप टेम्प्लेट आ बेखौ अफ जों जागायो — कर बिल फिन सायखनो जाय समावबो दिन्थिफुंखौ अन खालाम।
+tax_invoice_help	बन्द थायोब्ला, बिलफोरा सिर्फ नगद मेम' जायो आरो अर्डार डेस्काव खाजाना इनभइस / नगद मेम' चिप दिनथियाखै। खायसे दोकानि टेम्प्लेट बेखौ बन्द दोननानै जागायो — खाजाना इनभइसखौ फिन सायखनो जेबो समाव दिन्थि खेव।
 tax_invoice_on	दिन्थिफुं
 tax_invoice_off	दोनखोमा
 tax_invoice_saved_on	टिलआव कर बिल अन
 tax_invoice_saved_off	कर बिल दोनखोमाबाय — खोथिया नगद मेमो
 pay_methods	होनायनि राहा
-pay_methods_help	रां लानायआव मा चिप नुजागोन। नगद आ जेब्लाबो थायो। Rajdhani एप टेम्प्लेट आ खोथिया नगद जों जागायो — UPI / कार्ड / उधारि / रानखौ बेयाव फिन अन खालाम।
+pay_methods_help	बेसेन ला-आव माबे चिपफोर दिन्थियो। नगदा सायावबो थायो। खायसे दोकानि टेम्प्लेट सिर्फ नगदजों जागायो — UPI / कार्ड / धार / राननाय बेयाव फिन खेव।
 create_backup	ब्याकआप बानाय
 credit_limit_heading	उधारिनि सिमा (सायखजानाय / मुं गोनां पार्टी)
 day_close_summary	सान बन्द'नि सारांश
@@ -793,10 +793,10 @@ printers_looking	नागिर गासिनो…
 saving_printer	प्रिन्टार दाजाब गासिनो…
 cancelled	केन्सेल जाबाय
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	बोखारगासिनो…
+removed	बोखारनाय जाबाय
+updating_order	आपडेट जागासिनो…
+order_updated	अर्डार आपडेट जाबाय
 printers_tap_find	बे मेसिनआ बाहायनो हानाय प्रिन्टारनि लिस्टनि थाखाय नागिर सुदुं।
 printers_none_found	मोनो हायाखै — सिस्टम प्रिन्टारनि मुं एबा IP लिर (बिदिं 192.168.1.50)।
 printer_from_find	{name} दाजाबबाय
@@ -1337,7 +1337,6 @@ kot_field_table	टेबुल
 kot_field_shop	दोकाननि मुं
 kot_field_waiter	मावुरि
 kot_field_station	स्टेसन
-app_template_blurb_extra	आरो: गिबि Zahir, एडमिन Asif, वेटर Nawaz; FOH साइडबार; 4 घन्टा उन हिस्ट्री; दिनै स्ट्रिप अफ; गुसुं KOT।
 dishes_n	{n} जामु
 recipe_ph	रेसिपि (नांगौब्ला) — मोनसे पर्सन बाहायो: दान=0.2, पनीर=0.15
 reorder_ph	आरो बाय
@@ -1364,3 +1363,7 @@ recent_changes	दाबाव सोलायनाय
 lane_declared_label	कर इनभइस
 lane_owner_label	नगद मेमो
 money_lane_bill	बिल: {lane}
+app_template_download_progress	डाउनल'ड जागासिनो… {p}% ({d} / {t})
+app_template_download_paused	फिन जागायनो थाखाय फिन लाबो — जोबनाय फाइलफोरखौ दोनथानाय जायो
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

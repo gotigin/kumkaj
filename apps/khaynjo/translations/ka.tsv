@@ -182,7 +182,7 @@ snack_secs_save	შეტყობინების დროის შენ�
 snack_secs_saved	შეტყობინების დრო შენახულია — {n} წამი
 settings_sec_backup	სარეზერვო ასლი და აღდგენა
 settings_sec_diag	დიაგნოსტიკა
-settings_sec_privacy	Privacy
+settings_sec_privacy	კონფიდენციალურობა
 diag_privacy_help	ჟურნალები რჩება ამ მოწყობილობაზე. საიდუმლოებები (PIN, პაროლები) არასოდეს ინახება. პაკეტის გაზიარება მოწყობილობის გარეთ ყოველ ჯერზე თქვენს აშკარა ნებართვას მოითხოვს — არასოდეს იყიდება და არ გადაეცემა მესამე მხარეს.
 diag_level	დეტალების დონე
 diag_level_error	შეცდომები
@@ -339,21 +339,21 @@ server_remove_pin_ph	მფლობელი PIN სერვერის წ�
 only_owner_remove_server	მხოლოდ მფლობელს შეუძლია სერვერის წაშლა
 owner_pin_remove_server	ამ სერვერის წასაშლელად საჭიროა მფლობელი PIN
 device_setup_help	სერვერი აქ ინახავს ჩანაწერებს. კლიენტი წყვილდება სერვერზე.
-app_template_heading	Rajdhani App Template
-app_template_blurb	იტვირთება Rajdhani მენიუ; მფლობელი Zahir (ზაჰირი), ადმინი Asif (ასიფი, PIN 1111), მიმტანი Nawaz (ნავაზი, PIN 0000); FOH გვერდითი ზოლი; ისტორია იშლება 4 საათის შემდეგ (და გასუფთავება ახლა სარეზერვო ასლიდან); დღეს გაშიშვლება; კომპაქტური KOT + სტანდარტული მინდვრები ვიწრო უჯრებისთვის. გვერდითი ზოლის თანატოლების ჩართვა შესაძლებელია პარამეტრებში.
-app_template_apply	Rajdhani App Template
+app_template_heading	მაღაზიის შაბლონები
+app_template_blurb	შემოიტანეთ საჯარო საწყისი მენიუ, ან შეიყვანეთ Khaynjo-ის თქვენი კონტაქტისგან მიღებული 12-ციფრიანი პირადი კოდი.
+app_template_apply	შაბლონის შემოტანა
 app_template_skip	ახლა გამოტოვეთ
-app_template_status	სერვერი მზად არის — გამოიყენეთ Rajdhani App Template ან გამოტოვეთ
+app_template_status	სერვერი მზადაა — შემოიტანეთ შაბლონი ან გამოტოვეთ
 app_template_importing	მიმართვა {title}…
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	შაბლონი იტვირთება…
+app_template_public_hdr	საჯარო შაბლონები
+app_template_private_hdr	პირადი შაბლონი
+app_template_public_hint	გახსენით ეს განყოფილება საჯარო სიის ჩასატვირთად (ინტერნეტი ერთხელ არის საჭირო).
+app_template_code_not_found	კოდი ვერ მოიძებნა
+app_template_need_internet	შაბლონების ჩამოსატვირთად საჭიროა ინტერნეტი
+app_template_import_selected	არჩეულის შემოტანა
+app_template_check_code	კოდის შემოწმება
+app_template_import	შემოტანა
 currency	ვალუტა
 backup	სარეზერვო
 use	გამოყენება
@@ -474,19 +474,19 @@ copy_report	ანგარიშის კოპირება
 counted_cash_ph	დათვლილი ნაღდი ფული უჯრაში
 country_tax	ქვეყანა და გადასახადი
 tax_chrome	საგადასახადო ეტიკეტები სალარო აპარატზე
-tax_chrome_help	როდესაც გამორთულია, შეკვეთის მაგიდა მალავს GST/საგადასახადო შეფასების ხაზებს და GST-ის ფასში ჩანაცვლების ველებს. საგადასახადო განაკვეთები და ქვეყნის და საგადასახადო პარამეტრები რჩება — ჩართეთ ეტიკეტები ნებისმიერ დროს. Rajdhani App Template იწყება ამ გამორთულით.
+tax_chrome_help	გამორთვისას შეკვეთების მაგიდა მალავს GST/გადასახადის შეფასების ხაზებს და „GST ფასში“ ჩანაცვლებებს. გადასახადის განაკვეთები და ქვეყნისა და გადასახადის პარამეტრები რჩება — წარწერები ნებისმიერ დროს ხელახლა ჩართეთ. მაღაზიის ზოგიერთი შაბლონი ამის გამორთვით იწყება.
 tax_chrome_on	ჩვენება
 tax_chrome_off	დამალვა
 tax_chrome_saved_on	საგადასახადო ეტიკეტები სალარო აპარატზე
 tax_chrome_saved_off	სალაროზე დამალული საგადასახადო ეტიკეტები
 tax_invoice_till	საგადასახადო ანგარიშ-ფაქტურა სალარო აპარატზე
-tax_invoice_help	როდესაც გამორთულია, სტუმრის გადასახადები მხოლოდ ნაღდი ფულის მემორანდუმია და საგადასახადო ინვოისი/ნაღდი ფულის შენიშვნების ჩიპები დამალულია შეკვეთის მაგიდაზე. Rajdhani App Template იწყება ამით გამორთვა — ჩართეთ ხელახლა ჩვენება ნებისმიერ დროს, რათა ხელახლა აირჩიოთ საგადასახადო ინვოისი.
+tax_invoice_help	გამორთვისას ანგარიშები მხოლოდ ნაღდი ფულის ქვითრებია, ხოლო ღილაკები საგადასახადო ანგარიში / ნაღდი ფულის ქვითარი დამალულია შეკვეთების მაგიდაზე. მაღაზიის ზოგიერთი შაბლონი ამის გამორთვით იწყება — საგადასახადო ანგარიშის ხელახლა ასარჩევად ნებისმიერ დროს ჩართეთ „ჩვენება“.
 tax_invoice_on	ჩვენება
 tax_invoice_off	დამალვა
 tax_invoice_saved_on	საგადასახადო ანგარიშ-ფაქტურა სალარო აპარატზე
 tax_invoice_saved_off	საგადასახადო ინვოისი დამალულია - მხოლოდ ნაღდი ფულის ჩანაწერი
 pay_methods	გადახდის მეთოდები
-pay_methods_help	რომელი ჩიპები გამოჩნდება Take Pay-ზე. ნაღდი ფული ყოველთვის რჩება. Rajdhani App Template იწყება მხოლოდ ნაღდი ფულით — ჩართეთ UPI / ბარათი / კრედიტი / გაყოფა აქ.
+pay_methods_help	რომელი ღილაკები ჩანს გადახდის მიღებაზე. ნაღდი ყოველთვის რჩება. მაღაზიის ზოგიერთი შაბლონი მხოლოდ ნაღდით იწყება — აქ ხელახლა ჩართეთ UPI / ბარათი / კრედიტი / გაყოფა.
 create_backup	შექმენით სარეზერვო საშუალება
 credit_limit_heading	საკრედიტო ლიმიტი (არჩეული მომხმარებელი ან მომწოდებელი)
 day_close_summary	დღის დახურვის შეჯამება
@@ -793,10 +793,10 @@ printers_looking	ეძებს…
 saving_printer	პრინტერის დამატება…
 cancelled	გაუქმდა
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	იშლება…
+removed	წაიშალა
+updating_order	ახლდება…
+order_updated	შეკვეთა განახლდა
 printers_tap_find	შეეხეთ პოვნას პრინტერების სიაში, რომელთა გამოყენებაც ამ მოწყობილობამ შეიძლება.
 printers_none_found	ვერ მოიძებნა — ჩაწერეთ სისტემის პრინტერის სახელი ან IP (მაგ. 192.168.1.50).
 printer_from_find	დამატებულია {name}
@@ -1337,7 +1337,6 @@ kot_field_table	სასადილო მაგიდა
 kot_field_shop	მაღაზიის სახელი
 kot_field_waiter	პერსონალი
 kot_field_station	სადგური
-app_template_blurb_extra	ასევე: მფლობელი Zahir, ადმინი Asif, მიმტანი Nawaz; FOH გვერდითი ზოლი; ისტორია 4 საათის შემდეგ; დღეს გაშიშვლება; კომპაქტური KOT.
 dishes_n	{n} კერძები
 recipe_ph	რეცეპტი (სურვილისამებრ) - ერთი პორცია იყენებს: Rice=0.2, Paneer=0.15
 reorder_ph	შეიძინეთ მეტი აქ
@@ -1364,3 +1363,7 @@ recent_changes	ბოლო ცვლილებები
 lane_declared_label	საგადასახადო ინვოისი
 lane_owner_label	ფულადი მემორანდუმი
 money_lane_bill	სტუმრის ანგარიში: {lane}
+app_template_download_progress	იტვირთება… {p}% ({d} / {t})
+app_template_download_paused	გასაგრძელებლად ხელახლა შემოიტანეთ — დასრულებული ფაილები ინახება
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

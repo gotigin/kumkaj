@@ -182,7 +182,7 @@ snack_secs_save	Pynsah ia ka por jingpynbna
 snack_secs_saved	Ka por pyntip ba la pynduna — {n} sekhon .
 settings_sec_backup	Ka jingpynkylla bad pynphai biang
 settings_sec_diag	Ka jingpeit bniah
-settings_sec_privacy	Privacy
+settings_sec_privacy	Ka jingshimet
 diag_privacy_help	Ki log ki sah ha kane ka tiar. Ki jingmaham (PIN, ki kyntien rieh) kim ju buh. Ka jingsam ia ka package na ka tiar ka donkam ia ka jingmynjur ba shai jong phi man ka por — ym ju die ne ai sha kiwei pat ki briew.
 diag_level	Ka kyrdan ba bniah
 diag_level_error	Ki jingbakla
@@ -339,20 +339,20 @@ server_remove_pin_ph	U trai PIN ban pynduh ia ka server .
 only_owner_remove_server	Tang u Trai uba lah ban pynduh ia ka server .
 owner_pin_remove_server	U trai PIN donkam ban weng ia kane ka server
 device_setup_help	U Server u buh ia ki kot hangne. Ka klient ka pyniasoh ia u Server.
-app_template_heading	Rajdhani Ka rukom treikam jong ka app
-app_template_blurb	Ka jingpynrung ia ka menu Rajdhani; U trai Zahir (zahir), u nongpyniaid Asif (asif, PIN 1111), u nongshakri Nawaz (nawaz, PIN 0000); FOH ka liang; ka history ka pynkhuid hadien 4 kynta (bad Pynkhuid mynta ha ka Backup); Mynta ka sngi strip noh; ka rit KOT + Ki tduh ba la buh ryntih na ka bynta ki tray kiba rit. Lah ban pynphai biang ia ki Sidebar peers ha ki Settings.
-app_template_apply	Rajdhani Ka rukom treikam jong ka app
+app_template_heading	Ki template dukan
+app_template_blurb	Import ia ka menu ban sdang ba paidbah, ne thep ia ka code shimet ba don 12 tylli ba ïa ka code na u nongiadei jong me ha Khaynjo.
+app_template_apply	Import template
 app_template_skip	Skip na ka bynta mynta
-app_template_status	Ka jingshakri ka la pynkhreh — pyntreikam Rajdhani App Template, lane lyndet .
+app_template_status	Ka server ka la khreh — import ia ka template, ne iehnoh
 app_template_importing	Ka jingpyndonkam {title}...
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
+app_template_downloading	Dang download ia ka template…
+app_template_public_hdr	Ki template paidbah
+app_template_private_hdr	Template shimet
+app_template_public_hint	Plie ia kane ka bynta ban load ia ka list paidbah (donkam internet shisien).
+app_template_code_not_found	Ym shem ia ka code
+app_template_need_internet	Donkam internet ban download ia ki template
+app_template_import_selected	Import ia kaba la jied
+app_template_check_code	Peit ia ka code
 app_template_import	Import
 currency	Ka pisa
 backup	Ka jingpynneh
@@ -474,19 +474,19 @@ copy_report	Kopi ia ka kaiphod
 counted_cash_ph	La khein ia ka pisa ha ka drawer
 country_tax	Ka ri bad ka khajna
 tax_chrome	Ki jingbuh khajna haduh ka 10.00.2019.
-tax_chrome_help	Haba off, ka miej buh jingbthah ka buhrieh ia ki lain GST/jingkhein khajna bad ki jaka buh jaka GST-ha ka dor. Ki dor khajna bad ki jingpynbeit jong ka Ri & khajna ki sah — pynphai biang ia ki jingthoh ha kano kano ka por. Rajdhani Ka App Template ka sdang da kane ka off.
+tax_chrome_help	Haba ka la pyniap, ka desk order ka buh rieh ia ki lain jingkhein GST/khajna bad ki jaka GST-ha-ka-dor. Ki rate khajna bad ki setting Ri bad khajna ki sah — pyndon biang ia ki label ha kano kano ka por. Katto katne ki template dukan ki sdang da kane ka la pyniap.
 tax_chrome_on	Pyni
 tax_chrome_off	Burieh
 tax_chrome_saved_on	Ki jingbuh khajna haduh ka 10.00.2019.
 tax_chrome_saved_off	Ki jingthoh khajna ba la buhrieh ha ka 10.00.2019.
 tax_invoice_till	Ka jingkhein khajna haduh ka 10.00.2019.
-tax_invoice_help	Haba la khang, ki bill ki long tang ki jingthoh pisa bad ki chip jong ki jingthoh khajna / jingthoh pisa la buhrieh ha ka miej buh jingbthah. Rajdhani Ka App Template ka sdang da kane ka off — pynphai biang ia ka Show ha kano kano ka por ban shim biang ia ka invoice khajna.
+tax_invoice_help	Haba ka la pyniap, ki bill ki long tang ki cash memo bad ki buttom Tax invoice / Cash memo ki dang rieh ha ka desk order. Katto katne ki template dukan ki sdang da kane ka la pyniap — pyndon ia Pyni ha kano kano ka por ban jied biang ia ka Tax invoice.
 tax_invoice_on	Pyni
 tax_invoice_off	Burieh
 tax_invoice_saved_on	Ka jingkhein khajna haduh ka 10.00.2019.
 tax_invoice_saved_off	Ka jingkhein khajna ba la buhrieh — Tang ka memo pisa .
 pay_methods	Ki rukom siew
-pay_methods_help	Ki chip ki paw ha ka jingsiew Take. Ka pisa ka sah beit. Rajdhani App Template ka sdang da ka Cash tang — pynphai UPI / Card / Credit / Split biang hangne.
+pay_methods_help	Kiei ki buttom ki paw ha Shim ka jingsiew. Ka cash ka sah junom. Katto katne ki template dukan ki sdang tang da ka Cash — pyndon biang hangne ia ka UPI / Card / Credit / Pynbiang.
 create_backup	Pynlong ia ka backup
 credit_limit_heading	Ka jingthew jong ka ram (u nongthied ne nongsam ba la jied)
 day_close_summary	Ka jingpynkut ia ka sngi
@@ -793,10 +793,10 @@ printers_looking	Ka jingpeit...
 saving_printer	Ka jingpynrung ia ka kor shon...
 cancelled	La weng noh
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Dang weng…
+removed	La weng
+updating_order	Dang pynthymmai…
+order_updated	La pynthymmai ia ka order
 printers_tap_find	Nion Find ban list ia ki printer kiba kane ka tiar ka lah ban pyndonkam.
 printers_none_found	Ym shym la lap — thoh ia ka kyrteng jong ka system printer lane ia ka IP (e.g. 192.168.1.50).
 printer_from_find	La pyndap {name}
@@ -1337,7 +1337,6 @@ kot_field_table	Miej bam
 kot_field_shop	Kyrteng dukan
 kot_field_waiter	Ki nongtrei
 kot_field_station	Steshon
-app_template_blurb_extra	Kumjuh ruh: U trai Zahir, U Admin Asif, U nongshakri Nawaz; FOH ka liang; ka histori hadien 4 kynta; Mynta ka sngi strip noh; ka jingkhlain KOT.
 dishes_n	{n} ki jingbam
 recipe_ph	Ka rukom shet (da jied) — kawei ka bynta ka pyndonkam: U khaw=0.2, u phan=0.15
 reorder_ph	Thied shuh shuh ha
@@ -1364,3 +1363,7 @@ recent_changes	Ki jingkylla ba dang shen
 lane_declared_label	Ka jingkhein khajna
 lane_owner_label	Ka jingkynmaw pisa
 money_lane_bill	Ka jingsiew: {lane}
+app_template_download_progress	Dang download… {p}% ({d} / {t})
+app_template_download_paused	Import biang ban bteng pat — ki file ba la dep la sah
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

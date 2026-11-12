@@ -182,7 +182,7 @@ snack_secs_save	د خبرتیا وخت خوندي کړئ
 snack_secs_saved	د خبرتیا وخت خوندي شوی — {n} ثانیې
 settings_sec_backup	بیک اپ او بیا رغونه
 settings_sec_diag	تشخیص
-settings_sec_privacy	Privacy
+settings_sec_privacy	محرميت
 diag_privacy_help	څرګند تصویب ته اړتیا لري - هیڅکله نه پلورل کیږي یا دریمې ډلې ته نه ورکول کیږي.
 diag_level	د تفصیل کچه
 diag_level_error	تېروتنې
@@ -339,21 +339,21 @@ server_remove_pin_ph	د سرور لرې کولو لپاره د مالک PIN
 only_owner_remove_server	یوازې مالک کولی شي سرور لرې کړي
 owner_pin_remove_server	د دې سرور لرې کولو لپاره د مالک PIN اړین دی
 device_setup_help	سرور کتابونه دلته ساتي. کلاینټ له سرور سره جوړه کېږي.
-app_template_heading	د راجدھاني ایپ ټیمپلیټ
-app_template_blurb	ټریونو لپاره معیاري حاشیه. د سایډ بار ملګري په ترتیباتو کې بیرته فعال کیدی شي.
-app_template_apply	د راجدھاني ایپ ټیمپلیټ
+app_template_heading	د هټۍ کينډۍ
+app_template_blurb	يو عامه پيل مېنو راوړئ، يا هغه ۱۲ عددي شخصي کوډ وليکئ چې ستاسو د Khaynjo اړيکې درکړی.
+app_template_apply	کينډۍ راوړئ
 app_template_skip	د اوس لپاره پریږدئ
-app_template_status	سرور چمتو دی - د راجدھاني ایپ ټیمپلیټ پلي کړئ ، یا پریږدئ
+app_template_status	سرور چمتو دی — يوه کينډۍ راوړئ، يا يې پرېږدئ
 app_template_importing	درخواست کول {title}...
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	کينډۍ ډاونلوډېږي…
+app_template_public_hdr	عامه کينډۍ
+app_template_private_hdr	شخصي کينډۍ
+app_template_public_hint	د عامه لېست د پورته کولو لپاره دا برخه پرانيزئ (يو ځل انټرنېټ پکار دی).
+app_template_code_not_found	کوډ ونه موندل شو
+app_template_need_internet	د کينډيو د ډاونلوډ لپاره انټرنېټ ته اړتيا ده
+app_template_import_selected	ټاکل شوې راوړئ
+app_template_check_code	کوډ وګورئ
+app_template_import	راوړئ
 currency	اسعارو
 backup	بیک اپ
 use	کارول
@@ -474,19 +474,19 @@ copy_report	راپور کاپي
 counted_cash_ph	په دراز کې نغدې شمیرل شوي
 country_tax	هیواد او مالیه
 tax_chrome	د مالیې لیبل تر دې پورې
-tax_chrome_help	دي - لیبلونه هر وخت بیرته وګرځوئ. د راجداني ایپ ټیمپلیټ د دې بند سره پیل کیږي.
+tax_chrome_help	کله چې بند وي، د امر مېز د GST/مالیې اټکل کرښې او په بیه کې د GST ځایونه پټوي. د مالیې نرخونه او د هېواد او مالیې تنظیمات پاتې کېږي — لیبلونه هر وخت بیا چالان کړئ. ځینې د هټۍ کينډۍ دا بند پیلوي.
 tax_chrome_on	ښودل
 tax_chrome_off	پټول
 tax_chrome_saved_on	د مالیې لیبل تر دې پورې
 tax_chrome_saved_off	د مالیاتو لیبلونه تر دې پورې پټ شوي
 tax_invoice_till	د مالیې رسید تر هغه پورې
-tax_invoice_help	سره پیل کیږي - د مالیې رسید بیا غوره کولو لپاره هر وخت بیرته ښکاره کول وګرځوئ.
+tax_invoice_help	کله چې بند وي، بلونه یوازې نغدي رسیدونه وي او د امر پر مېز د مالیې بل / نغدي رسید تڼۍ پټې وي. ځینې د هټۍ کينډۍ دا بند پیلوي — د مالیې بل د بیا ټاکلو لپاره ښودل هر وخت چالان کړئ.
 tax_invoice_on	ښودل
 tax_invoice_off	پټول
 tax_invoice_saved_on	د مالیې رسید تر هغه پورې
 tax_invoice_saved_off	د مالیې رسید پټ - یوازې د نغدو میمو
 pay_methods	د تادیاتو طریقې
-pay_methods_help	زې د نغدو پیسو سره پیل کیږي - UPI / کارت / کریډیټ / سپلیټ بیرته دلته فعال کړئ.
+pay_methods_help	د تادیې اخیستلو کې کومې تڼۍ ښکاري. نغدې تل پاتې کېږي. ځینې د هټۍ کينډۍ یوازې په نغدو پیلېږي — UPI / کارت / پور / وېش دلته بیا چالان کړئ.
 create_backup	بیک اپ جوړ کړئ
 credit_limit_heading	د کریډیټ حد (ټاکل شوی / نومول شوی ګوند)
 day_close_summary	د ورځې پای لنډیز
@@ -793,10 +793,10 @@ printers_looking	په لټه...
 saving_printer	پرنټر اضافه کول...
 cancelled	لغوه شو
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	لرې کېږي…
+removed	لرې شو
+updating_order	تازه کېږي…
+order_updated	امر تازه شو
 printers_tap_find	د پرنټرونو لیست کولو لپاره ومومئ ټایپ کړئ چې دا وسیله یې کارولی شي.
 printers_none_found	ونه موندل شو - د سیسټم پرنټر نوم یا IP ټایپ کړئ (د مثال په توګه 50.1.168.192).
 printer_from_find	اضافه شوی {name}
@@ -1337,7 +1337,6 @@ kot_field_table	میز
 kot_field_shop	د هټۍ نوم
 kot_field_waiter	کارکوونکي
 kot_field_station	سټیشن
-app_template_blurb_extra	صف، انتظار نواز؛ د FOH اړخ پټۍ؛ د 4 ساعتونو وروسته تاریخ؛ نن وتړئ؛ کمپیکٹ KOT.
 dishes_n	{n} لوښي
 recipe_ph	ترکیب (اختیاري) - یوه برخه کاروي: وريجې = 2.0، پنیر = 15.0
 reorder_ph	نور په کې واخلئ
@@ -1364,3 +1363,7 @@ recent_changes	وروستي بدلونونه
 lane_declared_label	د مالیې رسید
 lane_owner_label	نغدي یادداشت
 money_lane_bill	بیل: {lane}
+app_template_download_progress	ډاونلوډ کېږي… {p}% ({d} / {t})
+app_template_download_paused	د دوام لپاره بیا وارد کړئ — بشپړ شوي فایلونه ساتل کېږي
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

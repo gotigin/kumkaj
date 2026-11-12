@@ -182,7 +182,7 @@ snack_secs_save	Išsaugoti įspėjimo laiką
 snack_secs_saved	Įspėjimo laikas išsaugotas — {n} sekundės
 settings_sec_backup	Atsarginė kopija ir atkūrimas
 settings_sec_diag	Diagnostika
-settings_sec_privacy	Privacy
+settings_sec_privacy	Privatumas
 diag_privacy_help	Žurnalai lieka šiame įrenginyje. Paslaptys (PIN, slaptažodžiai) niekada nesaugomos. Paketo bendrinimas už įrenginio ribų kiekvieną kartą reikalauja jūsų aiškaus sutikimo — niekada neparduodama ir neteikiama trečiosioms šalims.
 diag_level	Išsamumo lygis
 diag_level_error	Klaidos
@@ -339,21 +339,21 @@ server_remove_pin_ph	Savininko PIN serveriui pašalinti
 only_owner_remove_server	Tik Savininkas gali pašalinti serverį
 owner_pin_remove_server	Šiam serveriui pašalinti reikia savininko PIN
 device_setup_help	Serveris knygas laiko čia. Klientas susiporuoja su Serveriu.
-app_template_heading	Rajdhani programos šablonas
-app_template_blurb	Įkelia Rajdhani meniu; Savininkas Zahir (zahir), Administratorius Asif (asif, PIN 1111), Padavėjas Nawaz (nawaz, PIN 0000); FOH šoninė juosta; istorija išsivalo po 4 valandų (ir Išvalyti dabar Atsarginėje kopijoje); Šiandien juosta išjungta; kompaktiškas KOT + standartinės paraštės siauriems padėklams. Šoninės juostos bendraamžius vėl galima įjungti Nustatymuose.
-app_template_apply	Rajdhani programos šablonas
+app_template_heading	Parduotuvės šablonai
+app_template_blurb	Importuokite viešą pradinį meniu arba įveskite privatų 12 skaitmenų kodą, gautą iš savo Khaynjo kontakto.
+app_template_apply	Importuoti šabloną
 app_template_skip	Kol kas praleisti
-app_template_status	Serveris paruoštas — taikykite Rajdhani šabloną arba praleiskite
+app_template_status	Serveris paruoštas — importuokite šabloną arba praleiskite
 app_template_importing	Taikoma {title}…
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	Atsisiunčiamas šablonas…
+app_template_public_hdr	Vieši šablonai
+app_template_private_hdr	Privatus šablonas
+app_template_public_hint	Atidarykite šį skyrių, kad įkeltumėte viešą sąrašą (internetas reikalingas vieną kartą).
+app_template_code_not_found	Kodas nerastas
+app_template_need_internet	Šablonams atsisiųsti reikia interneto
+app_template_import_selected	Importuoti pasirinktą
+app_template_check_code	Tikrinti kodą
+app_template_import	Importuoti
 currency	Valiuta
 backup	Atsarginė kopija
 use	Naudoti
@@ -474,19 +474,19 @@ copy_report	Kopijuoti ataskaitą
 counted_cash_ph	Suskaičiuoti grynieji stalčiuje
 country_tax	Šalis ir mokestis
 tax_chrome	Mokesčių etiketės kasoje
-tax_chrome_help	Išjungus užsakymų stalas slepia GST/mokesčio įvertinimo eilutes ir mokesčio kainoje vietas. Mokesčių tarifai ir Šalis ir mokestis nustatymai lieka — etiketes bet kada galima vėl įjungti. Rajdhani šablonas prasideda su tuo išjungtu.
+tax_chrome_help	Kai išjungta, užsakymų stalas slepia GST/mokesčių įverčio eilutes ir „GST kainoje“ vietos rezervavimo ženklus. Mokesčių tarifai ir Šalies bei mokesčių nustatymai lieka — etiketes bet kada vėl įjunkite. Kai kurie parduotuvės šablonai prasideda šiuo išjungtu.
 tax_chrome_on	Rodyti
 tax_chrome_off	Slėpti
 tax_chrome_saved_on	Mokesčių etiketės kasoje
 tax_chrome_saved_off	Mokesčių etiketės paslėptos kasoje
 tax_invoice_till	Mokesčio sąskaita faktūra kasoje
-tax_invoice_help	Išjungus sąskaitos yra tik Kasos memorandumas, o Mokesčio sąskaita faktūra / Kasos memorandumas lustai paslėpti užsakymų stale. Rajdhani šablonas prasideda su tuo išjungtu — bet kada įjunkite Rodyti, kad vėl rinktumėtės mokesčio sąskaitą.
+tax_invoice_help	Kai išjungta, sąskaitos yra tik grynųjų kvitai, o mygtukai Mokesčių sąskaita / Grynųjų kvitas užsakymų stale paslėpti. Kai kurie parduotuvės šablonai prasideda šiuo išjungtu — bet kada įjunkite Rodyti, kad vėl pasirinktumėte Mokesčių sąskaitą.
 tax_invoice_on	Rodyti
 tax_invoice_off	Slėpti
 tax_invoice_saved_on	Mokesčio sąskaita faktūra kasoje
 tax_invoice_saved_off	Mokesčio sąskaita faktūra paslėpta — tik Kasos memorandumas
 pay_methods	Mokėjimo būdai
-pay_methods_help	Kurie lustai rodomi Imti mokėjimą. Grynieji visada lieka. Rajdhani šablonas prasideda tik Grynais — čia vėl įjunkite UPI / Kortelė / Kreditas / Dalinti.
+pay_methods_help	Kurie mygtukai rodomi lange Priimti mokėjimą. Grynieji lieka visada. Kai kurie parduotuvės šablonai prasideda tik su Grynaisiais — čia vėl įjunkite UPI / Kortelė / Kreditas / Dalyti.
 create_backup	Sukurti atsarginę kopiją
 credit_limit_heading	Kredito riba (pasirinkta / įvardyta šalis)
 day_close_summary	Dienos uždarymo suvestinė
@@ -793,10 +793,10 @@ printers_looking	Ieškoma…
 saving_printer	Pridedamas spausdintuvas…
 cancelled	Atšaukta
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Šalinama…
+removed	Pašalinta
+updating_order	Atnaujinama…
+order_updated	Užsakymas atnaujintas
 printers_tap_find	Bakstelėkite Paieška, kad pamatytumėte spausdintuvus, kuriuos šis įrenginys gali naudoti.
 printers_none_found	Nieko nerasta — įveskite sistemos spausdintuvo pavadinimą arba IP (pvz. 192.168.1.50).
 printer_from_find	Pridėta {name}
@@ -1337,7 +1337,6 @@ kot_field_table	Stalas
 kot_field_shop	Parduotuvės pavadinimas
 kot_field_waiter	Personalas
 kot_field_station	Stotis
-app_template_blurb_extra	Taip pat: Savininkas Zahir, Administratorius Asif, Padavėjas Nawaz; FOH šoninė juosta; istorija po 4 valandų; Šiandien juosta išjungta; kompaktiškas KOT.
 dishes_n	{n} patiekalai
 recipe_ph	Receptas (nebūtina) — viena porcija naudoja: Ryžiai=0.2, Paneer=0.15
 reorder_ph	Pirkti daugiau nuo
@@ -1364,3 +1363,7 @@ recent_changes	Naujausi pakeitimai
 lane_declared_label	Mokesčių sąskaita faktūra
 lane_owner_label	Kasos memorandumas
 money_lane_bill	Sąskaita: {lane}
+app_template_download_progress	Atsisiunčiama… {p}% ({d} / {t})
+app_template_download_paused	Importuokite dar kartą, kad tęstumėte — baigti failai išsaugomi
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

@@ -182,7 +182,7 @@ snack_secs_save	ಎಚ್ಚರಿಕೆದ ಸಮಯೊನು ಉಳಿತಾ�
 snack_secs_saved	ಎಚ್ಚರಿಕೆದ ಸಮಯ ಉಳಿತಾಯ ಆತ್ಂಡ್ — {n} ಸೆಕೆಂಡ್ ಲು
 settings_sec_backup	ಬ್ಯಾಕಪ್ ಬೊಕ್ಕ ಪುನಃಸ್ಥಾಪನೆ
 settings_sec_diag	ರೋಗನಿರ್ಣಯ
-settings_sec_privacy	Privacy
+settings_sec_privacy	ಗೌಪ್ಯತೆ
 diag_privacy_help	ಲಾಗ್ ಲು ಈ ಸಾಧನೊಡು ಉಪ್ಪುಂಡು. ರಹಸ್ಯೊಲು (PIN, ಗುಪ್ತಪದೊಲು) ಏಪಲಾ ಸಂಗ್ರಹ ಆಪುಜಿ. ಸಾಧನೊಡ್ದ್ ಒಂಜಿ ಪ್ಯಾಕೇಜ್ ನ್ ಪಾಡುನಗ ಪ್ರತಿ ಸರ್ತಿಲಾ ನಿಕ್ಲೆನ ಸ್ಪಷ್ಟ ಅನುಮೋದನೆ ಬೋಡಾಪುಂಡು - ಏಪಲಾ ಮಾರಾಟ ಮಲ್ಪುಜಿ ಅತ್ತಂದೆ ಮೂಜನೆ ವ್ಯಕ್ತಿಲೆಗ್ ಕೊರ್ಪುಜಿ.
 diag_level	ವಿವರ ಮಟ್ಟ
 diag_level_error	ದೋಷೊಲು
@@ -339,21 +339,21 @@ server_remove_pin_ph	ಒಂಜಿ ಸರ್ವರ್ ನ್ ತೆಗೆಯೆ�
 only_owner_remove_server	ಒಂಜಿ ಸರ್ವರ್ ನ್ ಮಾಲೀಕೆರ್ ಮಾತ್ರ ತೆಗೆಯೊಲಿ
 owner_pin_remove_server	ಈ ಸರ್ವರ್ ನ್ ತೆಗೆಯೆರೆ ಒನರ್ PIN ಬೋಡು
 device_setup_help	ಸರ್ವರ್ ಪುಸ್ತಕೊಲೆನ್ ಮುಲ್ಪ ದೀವೊಂದುಂಡು. ಕ್ಲೈಂಟ್ ಒಂಜಿ ಸರ್ವರ್ ಗ್ ಜೋಡಿ ಆಪುಂಡು.
-app_template_heading	Rajdhani ಅಪ್ಲಿಕೇಶನ್ ಟೆಂಪ್ಲೇಟ್
-app_template_blurb	Rajdhani ಮೆನುನ್ ಲೋಡ್ ಮಲ್ಪುಂಡು; ಮಾಲೀಕೆರ್ Zahir (ಜಾಹಿರ್), ಆಡ್ಮಿನ್ Asif (ಆಸಿಫ್, PIN 1111), ವೇಟರ್ Nawaz (ನವಾಜ್, PIN 0000); FOH ಸೈಡ್ಬಾರ್; ಇತಿಹಾಸ 4 ಗಂಟೆಡ್ದ್ ಬೊಕ್ಕ ತೆರಿಪಾವುಂಡು (ಬೊಕ್ಕ ಇತ್ತೆ ಬ್ಯಾಕಪ್ ಡ್ ತೆರಿಪಾಲೆ); ಇನಿ ಸ್ಟ್ರಿಪ್ ಆಫ್ ಮಲ್ಪುಲೆ; ಕಾಂಪ್ಯಾಕ್ಟ್ KOT + ಕಿರಿದಾದ ಟ್ರೇಲೆಗ್ ಪ್ರಮಾಣಿತ ಅಂಚುಲು. ಸೈಡ್ಬಾರ್ ಪೀರ್ಸ್ ನ್ ಸೆಟ್ಟಿಂಗ್ಸ್ ಡ್ ಪಿರ ಆನ್ ಮಲ್ಪೊಲಿ.
-app_template_apply	Rajdhani ಅಪ್ಲಿಕೇಶನ್ ಟೆಂಪ್ಲೇಟ್
+app_template_heading	ಅಂಗಡಿದ ಟೆಂಪ್ಲೇಟ್‌ಲು
+app_template_blurb	ಒಂಜಿ ಸಾರ್ವಜನಿಕ ಸುರುತ ಮೆನು ಆಮದು ಮಲ್ಪುಲೆ, ಅತ್ತ್ಂಡ ನಿಕ್ಲೆನ Khaynjo ಸಂಪರ್ಕೊಡ್ದು ತಿಕ್ಕಿನ 12 ಅಂಕೆದ ಖಾಸಗಿ ಕೋಡ್ ಪಾಡ್ಲೆ.
+app_template_apply	ಟೆಂಪ್ಲೇಟ್ ಆಮದು ಮಲ್ಪುಲೆ
 app_template_skip	ಇತ್ತೆ ಬುಡ್ಲೆ
-app_template_status	ಸರ್ವರ್ ರೆಡಿ — Rajdhani ಅಪ್ಲಿಕೇಶನ್ ಟೆಂಪ್ಲೇಟ್ ನ್ ಅನ್ವಯಿಸಲೆ, ಅತ್ತ್ಂಡ ಬುಡ್ಲೆ
+app_template_status	ಸರ್ವರ್ ತಯಾರ್ — ಒಂಜಿ ಟೆಂಪ್ಲೇಟ್ ಆಮದು ಮಲ್ಪುಲೆ, ಅತ್ತ್ಂಡ ಬುಡ್ಲೆ
 app_template_importing	{title} ಅನ್ವಯಿಸೊಂದುಲ್ಲೆ...
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	ಟೆಂಪ್ಲೇಟ್ ಡೌನ್‌ಲೋಡ್ ಆವೊಂದುಂಡು…
+app_template_public_hdr	ಸಾರ್ವಜನಿಕ ಟೆಂಪ್ಲೇಟ್‌ಲು
+app_template_private_hdr	ಖಾಸಗಿ ಟೆಂಪ್ಲೇಟ್
+app_template_public_hint	ಸಾರ್ವಜನಿಕ ಪಟ್ಟಿನ್ ಲೋಡ್ ಮಲ್ಪೆರೆ ಈ ವಿಭಾಗೊನು ತೆರೆಲೆ (ಒರೊ ಇಂಟರ್ನೆಟ್ ಬೋಡು).
+app_template_code_not_found	ಕೋಡ್ ತಿಕ್ಕಿಜಿ
+app_template_need_internet	ಟೆಂಪ್ಲೇಟ್ ಡೌನ್‌ಲೋಡ್ ಮಲ್ಪೆರೆ ಇಂಟರ್ನೆಟ್ ಬೋಡು
+app_template_import_selected	ಆಯ್ಕೆ ಮಲ್ತಿನವುನು ಆಮದು ಮಲ್ಪುಲೆ
+app_template_check_code	ಕೋಡ್ ತೂಲೆ
+app_template_import	ಆಮದು ಮಲ್ಪುಲೆ
 currency	ಕರೆನ್ಸಿ
 backup	ಬ್ಯಾಕಪ್
 use	ಬಳಕೆ ಮಲ್ಪುಲೆ
@@ -474,19 +474,19 @@ copy_report	ವರದಿನ್ ನಕಲ್ ಮಲ್ಪುಲೆ
 counted_cash_ph	ಡ್ರಾಯರ್ ಡ್ ಲೆಕ್ಕ ಮಲ್ತಿನ ನಗದು
 country_tax	ದೇಶ ಬೊಕ್ಕ ತೆರಿಗೆ
 tax_chrome	ಟಿಲ್ ಡ್ ತೆರಿಗೆ ಲೇಬಲ್ ಲು
-tax_chrome_help	ಆಫ್ ಆನಗ, ಆರ್ಡರ್ ಡೆಸ್ಕ್ GST/ತೆರಿಗೆ ಅಂದಾಜಿ ಸಾಲುಲೆನ್ ಬೊಕ್ಕ GST-ಇನ್-ಪ್ರೈಸ್ ಪ್ಲೇಸ್ಹೋಲ್ಡರ್ ಲೆನ್ ಮರೆಮಾಚುಂಡು. ತೆರಿಗೆ ದರೊಕುಲು ಬೊಕ್ಕ ದೇಶ ಬೊಕ್ಕ ತೆರಿಗೆ ಸೆಟ್ಟಿಂಗ್ ಲು ಉಪ್ಪುಂಡು - ಏತ್ ಸಮಯೊಡ್ಲಾ ಲೇಬಲ್ ಲೆನ್ ಪಿರ ಆನ್ ಮಲ್ಪುಲೆ. Rajdhani ಅಪ್ಲಿಕೇಶನ್ ಟೆಂಪ್ಲೇಟ್ ಈ ಆಫ್ ಡ್ ಸುರು ಆಪುಂಡು.
+tax_chrome_help	ಆಫ್ ಆದಿತ್ತ್ಂಡ, ಆರ್ಡರ್ ಡೆಸ್ಕ್ GST/ತೆರಿಗೆ ಅಂದಾಜಿನ ಸಾಲುಲೆನ್ ಬೊಕ್ಕ ಕ್ರಯೊಡು-GST ಜಾಗೆಲೆನ್ ದೆಂಗಾವುಂಡು. ತೆರಿಗೆ ದರೊಲು ಬೊಕ್ಕ ದೇಶ ಬೊಕ್ಕ ತೆರಿಗೆ ಸೆಟ್ಟಿಂಗ್‌ಲು ಉಪ್ಪುಂಡು — ಲೇಬಲ್‌ಲೆನ್ ಏಪ ಬೋಡಾಂಡಲಾ ಕುಡ ಆನ್ ಮಲ್ಪುಲೆ. ಕೆಲವು ಅಂಗಡಿದ ಟೆಂಪ್ಲೇಟ್‌ಲು ಉಂದೆನ್ ಆಫ್ ಮಲ್ತ್ ಸುರು ಆಪುಂಡು.
 tax_chrome_on	ತೋಜಾಲೆ
 tax_chrome_off	ಮುಚ್ಚಿಲೆ
 tax_chrome_saved_on	ಟಿಲ್ ಡ್ ತೆರಿಗೆ ಲೇಬಲ್ ಲು
 tax_chrome_saved_off	ತೆರಿಗೆ ಲೇಬಲ್ ಲೆನ್ ಮುಚ್ಚಿದ್ ದೀತೆರ್
 tax_invoice_till	ತೆರಿಗೆದ ಬಿಲೆಪತ್ರ
-tax_invoice_help	ಆಫ್ ಆನಗ, ಬಿಲ್ಲುಲು ನಗದು ಮೆಮೊ ಮಾತ್ರ ಉಪ್ಪುಂಡು ಬೊಕ್ಕ ತೆರಿಗೆ ಬಿಲೆಪತ್ರ / ನಗದು ಮೆಮೊ ಚಿಪ್ಸ್ ಆರ್ಡರ್ ಡೆಸ್ಕ್ ಡ್ ಮುಚ್ಚಿದ್ ಉಪ್ಪುಂಡು. Rajdhani ಅಪ್ಲಿಕೇಶನ್ ಟೆಂಪ್ಲೇಟ್ ಈ ಆಫ್ ಡ್ ಸುರು ಆಪುಂಡು — ತೆರಿಗೆ ಬಿಲೆಪತ್ರೊನು ಮತ್ತೆ ದೆತೊನುನಗ ಏತ್ ಸಮಯೊಡ್ಲಾ ಶೋ ಬ್ಯಾಕ್ ನ್ ಆನ್ ಮಲ್ಪುಲೆ.
+tax_invoice_help	ಆಫ್ ಆದಿತ್ತ್ಂಡ, ಬಿಲ್‌ಲು ನಗದು ಮೆಮೊ ಮಾತ್ರ ಆಪುಂಡು ಬೊಕ್ಕ ಆರ್ಡರ್ ಡೆಸ್ಕ್‌ಡ್ ತೆರಿಗೆ ಇನ್‌ವಾಯ್ಸ್ / ನಗದು ಮೆಮೊ ಚಿಪ್‌ಲು ದೆಂಗುಂಡು. ಕೆಲವು ಅಂಗಡಿದ ಟೆಂಪ್ಲೇಟ್‌ಲು ಉಂದೆನ್ ಆಫ್ ಮಲ್ತ್ ಸುರು ಆಪುಂಡು — ತೆರಿಗೆ ಇನ್‌ವಾಯ್ಸ್ ಕುಡ ಆಯ್ಕೆ ಮಲ್ಪೆರೆ ತೋಜಾಲೆನ್ ಏಪ ಬೋಡಾಂಡಲಾ ಆನ್ ಮಲ್ಪುಲೆ.
 tax_invoice_on	ತೋಜಾಲೆ
 tax_invoice_off	ಮುಚ್ಚಿಲೆ
 tax_invoice_saved_on	ತೆರಿಗೆದ ಬಿಲೆಪತ್ರ
 tax_invoice_saved_off	ತೆರಿಗೆ ಬಿಲೆಪತ್ರೊನು ಮುಚ್ಚಿದ್ ದೀತೆರ್ — ನಗದು ಮೆಮೊ ಮಾತ್ರ
 pay_methods	ಪಾವತಿ ವಿಧಾನೊಲು
-pay_methods_help	ಟೇಕ್ ಪೇಮೆಂಟ್ ಡ್ ದಾದ ಚಿಪ್ಸ್ ತೋಜುಂಡು. ನಗದು ಯಾಪಲ ಉಪ್ಪುಂಡು. Rajdhani ಅಪ್ಲಿಕೇಶನ್ ಟೆಂಪ್ಲೇಟ್ ನಗದುಡ್ದ್ ಮಾತ್ರ ಸುರು ಆಪುಂಡು — UPI / ಕಾರ್ಡ್ / ಕ್ರೆಡಿಟ್ / ಸ್ಪ್ಲಿಟ್ ನ್ ಪಿರ ಆನ್ ಮಲ್ಪುಲೆ.
+pay_methods_help	ಪಾವತಿ ದೆತೊನುಲೆ ಡ್ ಏರೆನ ಚಿಪ್‌ಲು ತೋಜುಂಡು. ನಗದು ಏಪಲಾ ಉಪ್ಪುಂಡು. ಕೆಲವು ಅಂಗಡಿದ ಟೆಂಪ್ಲೇಟ್‌ಲು ನಗದುಡು ಮಾತ್ರ ಸುರು ಆಪುಂಡು — UPI / ಕಾರ್ಡ್ / ಸಾಲ / ಪಾಲ್ ಮುಲ್ಪ ಕುಡ ಆನ್ ಮಲ್ಪುಲೆ.
 create_backup	ಬ್ಯಾಕಪ್ ರಚನೆ ಮಲ್ಪುಲೆ
 credit_limit_heading	ಕ್ರೆಡಿಟ್ ಮಿತಿ (ಆಯ್ಕೆ ಮಲ್ತಿನ ಗ್ರಾಹಕೆರ್ ಅತ್ತಂದೆ ಪೂರೈಕೆದಾರೆರ್)
 day_close_summary	ದಿನೊತ ಮುಗಿಪುದ ಸಾರಾಂಶ
@@ -793,10 +793,10 @@ printers_looking	ತೂವೊಂದುಲ್ಲೆ...
 saving_printer	ಮುದ್ರಕೊನು ಸೇರಾವೊಂದುಲ್ಲೆ...
 cancelled	ರದ್ದು ಮಲ್ತೆರ್
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	ದೆಪ್ಪೊಂದುಂಡು…
+removed	ದೆಪ್ಪಾಯಿನ
+updating_order	ಅಪ್‌ಡೇಟ್ ಆವೊಂದುಂಡು…
+order_updated	ಆರ್ಡರ್ ಅಪ್‌ಡೇಟ್ ಆಂಡ್
 printers_tap_find	ಈ ಸಾಧನೊಡು ಬಳಕೆ ಆಪಿನ ಮುದ್ರಕೊಲೆನ್ ಪಟ್ಟಿ ಮಲ್ಪರೆ ಫೈಂಡ್ ನ್ ಒತ್ತುಲೆ.
 printers_none_found	ಒವ್ವೆಲಾ ತೋಜಿಜಿ — ಒಂಜಿ ಸಿಸ್ಟಮ್ ಪ್ರಿಂಟರ್ ಪುದರ್ ಅತ್ತಂಡ ಒಂಜಿ ಐಪಿನ್ ಟೈಪ್ ಮಲ್ಪುಲೆ (ಉದಾ. 192.168.1.50).
 printer_from_find	ಸೇರ್ಸೊಂಡು {name}
@@ -1337,7 +1337,6 @@ kot_field_table	ಊಟದ ಮೇಜಿ
 kot_field_shop	ಅಂಗಡಿದ ಪುದರ್
 kot_field_waiter	ಸಿಬ್ಬಂದಿ
 kot_field_station	ನಿಲ್ದಾಣ
-app_template_blurb_extra	ಅಂಚನೆ: ಮಾಲೀಕೆರ್ Zahir, ನಿರ್ವಾಹಕೆರ್ Asif, ವೆಟರ್ Nawaz; FOH ಸೈಡ್ಬಾರ್; ಗಂಟೆದ ನಂತರದ ಇತಿಹಾಸ; ಇನಿ ಸ್ಟ್ರಿಪ್ ಆಫ್ ಮಲ್ಪುಲೆ; ಕಾಂಪ್ಯಾಕ್ಟ್ KOT.
 dishes_n	{n} ಭಕ್ಷ್ಯೊಲು
 recipe_ph	ಪಾಕವಿಧಾನ (ಐಚ್ಛಿಕ) — ಒಂಜಿ ಭಾಗೊಡು ಬಳಕೆ ಆಪುಂಡು: ಅರಿ=0.2, ಪನೀರ್=0.15
 reorder_ph	ಡ್ ಜಾಸ್ತಿ ಖರೀದಿ ಮಲ್ಪುಲೆ
@@ -1364,3 +1363,7 @@ recent_changes	ಇತ್ತೆದ ಬದಲಾವಣೆಲು
 lane_declared_label	ತೆರಿಗೆ ಬಿಲೆಪತ್ರ
 lane_owner_label	ನಗದು ಮೆಮೊ
 money_lane_bill	ಬಿಲ್: {lane}
+app_template_download_progress	ಡೌನ್‌ಲೋಡ್ ಆವೊಂದುಂಡು… {p}% ({d} / {t})
+app_template_download_paused	ಕೊರಿಯರೆ ಕುಡ ಆಮದು ಮಲ್ಪುಲೆ — ಮುಗಿನ ಫೈಲ್‌ಲು ಒರಿಪುಂಡು
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

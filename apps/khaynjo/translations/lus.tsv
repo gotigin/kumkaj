@@ -182,7 +182,7 @@ snack_secs_save	Hriattir hun dah tha
 snack_secs_saved	Hriattir hun dah tha a ni — second {n}
 settings_sec_backup	Backup leh kir leh
 settings_sec_diag	Harsatna en
-settings_sec_privacy	Privacy
+settings_sec_privacy	Thuruk
 diag_privacy_help	Lehkha te hi he device-ah a awm. Thup (PIN, password) chu ziak ngai lo. Bundle device atanga chhuah hi i phal chiang a ngai ve ve — zuar ngai lo, mi dang pek ngai lo.
 diag_level	Chi chiang zat
 diag_level_error	Dik lo
@@ -339,21 +339,21 @@ server_remove_pin_ph	Neitu PIN, server paih nan
 only_owner_remove_server	Neitu chauhvin server a paih thei
 owner_pin_remove_server	He server paih nan Neitu PIN a ngai
 device_setup_help	Server hian lehkha hetah a vawng. Dawr dang chu Server nen a inmil.
-app_template_heading	Rajdhani app template
-app_template_blurb	Rajdhani menu a rawn la; Neitu Zahir (zahir), Admin Asif (asif, PIN 1111), Rawih tu Nawaz (nawaz, PIN 0000); dawr chhung sir; history darkar 4 hnuah a thianghlim (leh Tunah thianghlim Backup-ah); Vawiin ri a tih; KOT tep + sir dan pangngai lehkha tep atan. Sir tanpuina Remkhawh atanga hawng leh theih a ni.
-app_template_apply	Rajdhani app template
+app_template_heading	Dawr template-te
+app_template_blurb	Mipui hman tur menu tirhna import rawh, a nih loh pawhin i Khaynjo inzawmpui hnen atanga code inthup 12 awmna chu chhu lut rawh.
+app_template_apply	Template import rawh
 app_template_skip	Tunah kaltlang
-app_template_status	Server a inpe — Rajdhani template hmang, emaw kaltlang
+app_template_status	Server a inpeih — template import rawh, a nih loh pawhin kal pel rawh
 app_template_importing	{title} hman mek…
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	Template download mek…
+app_template_public_hdr	Mipui template-te
+app_template_private_hdr	Template inthup
+app_template_public_hint	Mipui list load nan he hmun hi hawng rawh (vawi khat internet a ngai).
+app_template_code_not_found	Code hmuh a ni lo
+app_template_need_internet	Template download nan internet a ngai
+app_template_import_selected	Thlan chu import rawh
+app_template_check_code	Code en rawh
+app_template_import	Import rawh
 currency	Sum hming
 backup	Backup
 use	Hmang
@@ -474,19 +474,19 @@ copy_report	Report copy
 counted_cash_ph	Bawm chhung sum chhiar tawh
 country_tax	Ram leh chhiah
 tax_chrome	Dawhkan chhiah hming
-tax_chrome_help	Tih chuan order dawhkan hian GST/chhiah rin dan ri leh man chhung GST hmun a thup. Chhiah zat leh Ram leh chhiah remkhawh a awm reng — hming hawng leh theih reng. Rajdhani app template chu tih atangin a tan.
+tax_chrome_help	A tih thih chuan, order desk-in GST/chhiah chhutna tlar leh man-ah-GST hmunte a thup ang. Chhiah man leh Ram leh chhiah setting-te a awm reng — label-te engtik lai pawhin tih eng leh rawh. Dawr template thenkhat chu hei hi tih thih chungin an tan thin.
 tax_chrome_on	Lantir
 tax_chrome_off	Thup
 tax_chrome_saved_on	Chhiah hming dawhkan-ah
 tax_chrome_saved_off	Chhiah hming dawhkan-ah thup a ni
 tax_invoice_till	Chhiah bill dawhkan-ah
-tax_invoice_help	Tih chuan bill chu Sum lehkha chauh a ni, Chhiah bill / Sum lehkha chip chu order dawhkan-ah thup a ni. Rajdhani app template chu tih atangin a tan — Lantir hawng leh theih reng, Chhiah bill thlang leh nan.
+tax_invoice_help	A tih thih chuan, bill-te chu cash memo chauh an ni ang a, order desk-ah Tax invoice / Cash memo button-te an thup ang. Dawr template thenkhat chu hei hi tih thih chungin an tan thin — Tax invoice thlang leh turin Lantir chu engtik lai pawhin tih eng rawh.
 tax_invoice_on	Lantir
 tax_invoice_off	Thup
 tax_invoice_saved_on	Chhiah bill dawhkan-ah
 tax_invoice_saved_off	Chhiah bill thup — Sum lehkha chauh
 pay_methods	Pek dan
-pay_methods_help	Pek la-ah chip eng nge lang. Sum chu a awm reng. Rajdhani app template chu Sum chauh atangin a tan — UPI / Card / Ba / Then hetah hawng leh.
+pay_methods_help	Pawisa la-ah button eng te nge lang ang. Cash chu a awm reng. Dawr template thenkhat chu Cash chauhin an tan — UPI / Card / Batna / Then hetah tih eng leh rawh.
 create_backup	Backup siam
 credit_limit_heading	Ba tiam (mi thlan / hming dah)
 day_close_summary	Ni khar tlangpui
@@ -793,10 +793,10 @@ printers_looking	Zawng mek…
 saving_printer	Print na telh mek…
 cancelled	Tihbo
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Paih mek…
+removed	Paih a ni
+updating_order	Siam that mek…
+order_updated	Order siam that a ni
 printers_tap_find	Zawng khawih la, he device hman theih print na list turin.
 printers_none_found	Hmuh lo — system print na hming emaw IP ziak (entir 192.168.1.50).
 printer_from_find	{name} telh a ni
@@ -1337,7 +1337,6 @@ kot_field_table	Dawhkan
 kot_field_shop	Dawr hming
 kot_field_waiter	Hnathawk
 kot_field_station	Hmun
-app_template_blurb_extra	Tel ve: Neitu Zahir, Admin Asif, Rawih tu Nawaz; hma sir; history darkar 4 hnu; Vawiin ri tih; KOT tep.
 dishes_n	chaw {n}
 recipe_ph	Recipe (duh chuan) — then pakhat hman: Buh=0.2, Paneer=0.15
 reorder_ph	Lei leh hun
@@ -1364,3 +1363,7 @@ recent_changes	Thlak hnai
 lane_declared_label	Chhiah bill
 lane_owner_label	Sum lehkha
 money_lane_bill	Bill: {lane}
+app_template_download_progress	Download mek mek… {p}% ({d} / {t})
+app_template_download_paused	Chhunzawm leh turin import leh rawh — file zo tawh te chu vawn tlat a ni
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

@@ -182,7 +182,7 @@ snack_secs_save	保存提示時長
 snack_secs_saved	提示時長已保存——{n} 秒
 settings_sec_backup	備份與恢復
 settings_sec_diag	診斷
-settings_sec_privacy	Privacy
+settings_sec_privacy	隱私
 diag_privacy_help	日誌保留在此設備上。密鑰（PIN、密碼）從不存儲。每次共享設備外的包都需要您明確批准 — 絕不出售或提供給第三方
 diag_level	詳細級別
 diag_level_error	錯誤
@@ -339,21 +339,21 @@ server_remove_pin_ph	刪除服務器需 Owner PIN
 only_owner_remove_server	僅 Owner 可刪除服務器
 owner_pin_remove_server	刪除此服務器需要 Owner PIN
 device_setup_help	服務器在此保存帳簿。客戶端與服務器配對。
-app_template_heading	Rajdhani 應用模板
-app_template_blurb	加載 Rajdhani 菜單；所有者 Zahir (zahir)，管理員 Asif (asif, PIN 1111)，服務員 Nawaz (nawaz, PIN 0000)；前臺側邊欄；歷史數據在 4 小時後自動清除（備份中有“立即清除”選項）；今日條帶移除；緊湊式 KOT + 窄托盤標準邊距。可在設置中重新啟用側邊欄同伴功能。
-app_template_apply	Rajdhani 應用模板
+app_template_heading	店舖範本
+app_template_blurb	匯入公開的入門菜單，或輸入你的 Khaynjo 聯絡人提供的 12 位私人代碼。
+app_template_apply	匯入範本
 app_template_skip	暫時跳過
-app_template_status	服務員就緒——應用 Rajdhani 應用模板，或跳過
+app_template_status	伺服器已就緒 — 匯入範本，或略過
 app_template_importing	正在應用 {title}…
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	正在下載範本…
+app_template_public_hdr	公開範本
+app_template_private_hdr	私人範本
+app_template_public_hint	開啟此區段以載入公開清單（首次需要網路）。
+app_template_code_not_found	找不到代碼
+app_template_need_internet	下載範本需要網路
+app_template_import_selected	匯入所選
+app_template_check_code	檢查代碼
+app_template_import	匯入
 currency	貨幣
 backup	備份
 use	使用
@@ -474,19 +474,19 @@ copy_report	複製報表
 counted_cash_ph	抽屜裡點清的現金
 country_tax	國家與稅務
 tax_chrome	收銀臺稅標籤
-tax_chrome_help	關閉時，點餐檯將隱藏 GST/稅額估算行及含稅價格佔位符。稅率和國家稅務設置保持不變——可隨時重新開啟稅標籤。Rajdhani 應用模板默認關閉此功能。
+tax_chrome_help	關閉時，點餐台會隱藏 GST／稅額估算行與「價格含 GST」佔位文字。稅率及國家與稅務設定仍保留 — 隨時可重新開啟標籤。部分店舖範本預設為關閉。
 tax_chrome_on	顯示
 tax_chrome_off	隱藏
 tax_chrome_saved_on	收銀臺稅標籤
 tax_chrome_saved_off	收銀臺稅標籤已隱藏
 tax_invoice_till	收銀臺稅務發票
-tax_invoice_help	關閉時，帳單僅顯示現金收據，點餐檯上的“稅務發票/現金收據”芯片將隱藏。Rajdhani 應用模板默認關閉此功能——隨時開啟“顯示”即可重新選擇稅務發票。
+tax_invoice_help	關閉時，帳單只開現金單，點餐台上的「稅務發票／現金單」按鈕會隱藏。部分店舖範本預設為關閉 — 隨時開啟「顯示」即可再次選擇稅務發票。
 tax_invoice_on	顯示
 tax_invoice_off	隱藏
 tax_invoice_saved_on	收銀臺稅務發票
 tax_invoice_saved_off	稅務發票已隱藏——僅現金收據
 pay_methods	支付方式
-pay_methods_help	此處決定“收取支付”時顯示的芯片。現金始終保留。Rajdhani 應用模板默認僅顯示現金——在此處重新開啟 UPI/卡/信用卡/分帳等功能。
+pay_methods_help	「收款」中顯示哪些按鈕。現金一律保留。部分店舖範本只以現金開始 — 在此重新開啟 UPI／卡／賒帳／拆分。
 create_backup	創建備份
 credit_limit_heading	信用額度（所選/指定往來方）
 day_close_summary	日結匯總
@@ -793,10 +793,10 @@ printers_looking	正在本設備和 Wi‑Fi 上查找打印機…
 saving_printer	正在添加打印機…
 cancelled	已取消
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	正在移除…
+removed	已移除
+updating_order	正在更新…
+order_updated	訂單已更新
 printers_tap_find	點按「查找」，列出此設備可用的打印機。
 printers_none_found	未找到打印機——請輸入系統打印機名稱或網絡地址（如 192.168.1.50）。
 printer_from_find	已添加 {name}
@@ -1337,7 +1337,6 @@ kot_field_table	桌臺
 kot_field_shop	店名
 kot_field_waiter	員工
 kot_field_station	工位
-app_template_blurb_extra	此外：所有者 Zahir，管理員 Asif，服務員 Nawaz；前臺側邊欄；4 小時後的歷史記錄；今日條帶關閉；緊湊 KOT。
 dishes_n	{n} 道菜
 recipe_ph	配方（可選）— 每份用料：Rice=0.2, Paneer=0.15
 reorder_ph	低於此數補貨
@@ -1364,3 +1363,7 @@ recent_changes	最近變動
 lane_declared_label	稅務發票
 lane_owner_label	現金小票
 money_lane_bill	帳單：{lane}
+app_template_download_progress	下載中… {p}% ({d} / {t})
+app_template_download_paused	再次匯入即可續傳 — 已完成的檔案會保留
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

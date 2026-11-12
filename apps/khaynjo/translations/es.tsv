@@ -182,7 +182,7 @@ snack_secs_save	Guardar tiempo de aviso
 snack_secs_saved	Tiempo de aviso guardado — {n} segundos
 settings_sec_backup	Copia de seguridad y restauración
 settings_sec_diag	Diagnóstico
-settings_sec_privacy	Privacy
+settings_sec_privacy	Privacidad
 diag_privacy_help	Los registros permanecen en este dispositivo. Los secretos (PIN, contraseñas) nunca se almacenan. Compartir un paquete fuera del dispositivo requiere tu aprobación explícita cada vez — nunca vendido ni entregado a terceros.
 diag_level	Nivel de detalle
 diag_level_error	Errores
@@ -339,21 +339,21 @@ server_remove_pin_ph	PIN del propietario para quitar
 only_owner_remove_server	Solo el propietario puede quitar un servidor
 owner_pin_remove_server	Se requiere el PIN del propietario para quitar este servidor
 device_setup_help	El servidor guarda los libros aquí. El cliente se empareja con un servidor.
-app_template_heading	Plantilla de aplicación Rajdhani
-app_template_blurb	Carga el menú Rajdhani; Propietario Zahir (zahir), Administrador Asif (asif, PIN 1111), Camarero Nawaz (nawaz, PIN 0000); barra lateral FOH; historial se borra después de 4 horas (y Borrar ahora en Copia de seguridad); tira de hoy fuera; KOT compacto + márgenes estándar para bandejas estrechas. Los compañeros de la barra lateral pueden volver a activarse en Configuración.
-app_template_apply	Plantilla de aplicación Rajdhani
+app_template_heading	Plantillas de tienda
+app_template_blurb	Importa un menú inicial público o introduce un código privado de 12 dígitos de tu contacto de Khaynjo.
+app_template_apply	Importar plantilla
 app_template_skip	Saltar por ahora
-app_template_status	Servidor listo — aplique la plantilla de aplicación Rajdhani o salte
+app_template_status	Servidor listo — importa una plantilla u omite este paso
 app_template_importing	Aplicando {title}…
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	Descargando plantilla…
+app_template_public_hdr	Plantillas públicas
+app_template_private_hdr	Plantilla privada
+app_template_public_hint	Abre esta sección para cargar la lista pública (necesita internet una vez).
+app_template_code_not_found	Código no encontrado
+app_template_need_internet	Se necesita internet para descargar plantillas
+app_template_import_selected	Importar seleccionada
+app_template_check_code	Comprobar código
+app_template_import	Importar
 currency	Moneda
 backup	Copia de seguridad
 use	Usar
@@ -474,19 +474,19 @@ copy_report	Copiar informe
 counted_cash_ph	Efectivo contado en caja
 country_tax	País e impuestos
 tax_chrome	Etiquetas de impuestos en la caja
-tax_chrome_help	Cuando está apagado, el mostrador de pedidos oculta las líneas de estimación de GST/impuestos y los marcadores de posición de impuestos incluidos en el precio. Las tasas de impuestos y la configuración de País e impuestos permanecen activas; vuelva a encender las etiquetas en cualquier momento. La plantilla de la aplicación Rajdhani comienza con esto apagado.
+tax_chrome_help	Si está desactivado, el mostrador de pedidos oculta las líneas de estimación de GST/impuestos y los marcadores de GST incluido en el precio. Las tasas de impuestos y los ajustes de País e impuestos se mantienen — vuelve a activar las etiquetas cuando quieras. Algunas plantillas de tienda empiezan con esto desactivado.
 tax_chrome_on	Mostrar
 tax_chrome_off	Ocultar
 tax_chrome_saved_on	Etiquetas de impuestos en la caja
 tax_chrome_saved_off	Etiquetas de impuestos ocultas en la caja
 tax_invoice_till	Factura fiscal en la caja
-tax_invoice_help	Cuando está apagado, los recibos son solo memorias de efectivo y las tarjetas de Factura fiscal / Memoria de efectivo están ocultas en el mostrador de pedidos. La plantilla de la aplicación Rajdhani comienza con esto apagado; vuelva a encender Mostrar en cualquier momento para seleccionar Factura fiscal nuevamente.
+tax_invoice_help	Si está desactivado, las cuentas son solo notas de efectivo y los botones Factura fiscal / Nota de efectivo se ocultan en el mostrador de pedidos. Algunas plantillas de tienda empiezan con esto desactivado — activa Mostrar cuando quieras para volver a elegir Factura fiscal.
 tax_invoice_on	Mostrar
 tax_invoice_off	Ocultar
 tax_invoice_saved_on	Factura fiscal en la caja
 tax_invoice_saved_off	Factura fiscal oculta — solo memoria de efectivo
 pay_methods	Métodos de pago
-pay_methods_help	Qué tarjetas aparecen en Cobrar. El efectivo siempre permanece activo. La plantilla de la aplicación Rajdhani comienza con solo efectivo; vuelva a encender UPI / Tarjeta / Crédito / Dividir aquí.
+pay_methods_help	Qué botones aparecen en Cobrar. El efectivo siempre se queda. Algunas plantillas de tienda empiezan solo con Efectivo — vuelve a activar UPI / Tarjeta / Crédito / Dividir aquí.
 create_backup	Crear copia de seguridad
 credit_limit_heading	Límite de crédito (parte seleccionada / nombrada)
 day_close_summary	Resumen de cierre del día
@@ -793,10 +793,10 @@ printers_looking	Buscando impresoras en este dispositivo y Wi‑Fi…
 saving_printer	Agregando impresora…
 cancelled	Cancelado
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Eliminando…
+removed	Eliminado
+updating_order	Actualizando…
+order_updated	Pedido actualizado
 printers_tap_find	Toque Buscar para listar las impresoras que este dispositivo puede usar.
 printers_none_found	No se encontraron impresoras: escriba un nombre del sistema o una dirección de red (p. ej. 192.168.1.50).
 printer_from_find	Se agregó {name}
@@ -1337,7 +1337,6 @@ kot_field_table	Mesa
 kot_field_shop	Nombre del local
 kot_field_waiter	Personal
 kot_field_station	Estación
-app_template_blurb_extra	También: Propietario Zahir, Administrador Asif, Camarero Nawaz; barra lateral FOH; historial después de 4 horas; tira de hoy fuera; KOT compacto.
 dishes_n	{n} platos
 recipe_ph	Receta (opcional) — una ración usa: Rice=0.2, Paneer=0.15
 reorder_ph	Comprar más en
@@ -1364,3 +1363,7 @@ recent_changes	Cambios recientes
 lane_declared_label	Factura fiscal
 lane_owner_label	Nota de caja
 money_lane_bill	Factura: {lane}
+app_template_download_progress	Descargando… {p}% ({d} / {t})
+app_template_download_paused	Importa de nuevo para reanudar — los archivos terminados se conservan
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

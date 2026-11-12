@@ -1527,24 +1527,34 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
         // Language accordion is a nested setup layer — show/hide header ‹.
         self.paint_header_back_chrome(cx);
         if will_open && key == "public_templates" {
-            let need_fetch = {
-                let st = app_state().lock().unwrap();
+            // Re-opening after an error retries the list.
+            app_state().lock().unwrap().catalogue_public_error.clear();
+            self.kick_public_catalogue_fetch(cx);
+        }
+    }
+
+    /// Load the public template list when the offer shows it open and it is
+    /// still empty (offer entry opens the section without a toggle tap).
+    fn kick_public_catalogue_fetch(&mut self, cx: &mut Cx) {
+        let (need_fetch, base) = {
+            let st = app_state().lock().unwrap();
+            (
                 st.awaiting_app_template
+                    && st
+                        .device_setup_sections_open
+                        .iter()
+                        .any(|k| k == "public_templates")
                     && st.catalogue_public.is_empty()
-                    && st.catalogue_public_error.is_empty()
-            };
-            if need_fetch && !catalogue_fetch_busy().load(std::sync::atomic::Ordering::SeqCst) {
-                let base = app_state()
-                    .lock()
-                    .unwrap()
-                    .data_base
-                    .clone()
-                    .or_else(|| store::data_dir().ok());
-                if let Some(base) = base {
-                    catalogue_fetch_job(CatalogueFetchKind::PublicIndex, base);
-                    self.paint_app_template_chrome(cx, true);
-                }
-            }
+                    && st.catalogue_public_error.is_empty(),
+                st.data_base.clone(),
+            )
+        };
+        if !need_fetch || catalogue_fetch_busy().load(std::sync::atomic::Ordering::SeqCst) {
+            return;
+        }
+        if let Some(base) = base.or_else(|| store::data_dir().ok()) {
+            catalogue_fetch_job(CatalogueFetchKind::PublicIndex, base);
+            self.paint_app_template_chrome(cx, true);
         }
     }
 

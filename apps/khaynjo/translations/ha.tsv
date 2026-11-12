@@ -182,7 +182,7 @@ snack_secs_save	Ajiye lokacin sanarwa
 snack_secs_saved	An ajiye lokacin sanarwa — daƙiƙoƙi {n}
 settings_sec_backup	Ajiyar madadin da dawowa
 settings_sec_diag	Binciken matsala
-settings_sec_privacy	Privacy
+settings_sec_privacy	Sirri
 diag_privacy_help	Rajistoci suna kan wannan na'ura. Asirai (PIN, kalmomin sirri) ba a adana su ba. Fitar da fakiti daga na'ura yana buƙatar yardarka a bayyane kowane lokaci — ba a sayarwa ko bayarwa ga wasu ba.
 diag_level	Matsayin dalla-dalla
 diag_level_error	Kurakurai
@@ -339,21 +339,21 @@ server_remove_pin_ph	PIN na mamallaki don cire server
 only_owner_remove_server	Mamallaki kaɗai ne zai iya cire server
 owner_pin_remove_server	Ana buƙatar PIN na mamallaki don cire wannan server
 device_setup_help	Server yana riƙe da littattafai a nan. Abokin haɗi yana haɗuwa da Server.
-app_template_heading	Samfurin manhajar Rajdhani
-app_template_blurb	Yana loda menu na Rajdhani; Mamallaki Zahir (zahir), Admin Asif (asif, PIN 1111), Mai sabis Nawaz (nawaz, PIN 0000); gefen allo na falon; tarihi yana share bayan awa 4 (da Share yanzu a Ajiyar madadin); sandar Yau a kashe; KOT ƙanƙanta + gefuna na yau da kullum ga tre na kunkuntar. Ana iya sake kunna abokan gefen allo a Saituna.
-app_template_apply	Samfurin manhajar Rajdhani
+app_template_heading	Samfuran shago
+app_template_blurb	Shigo da menu na farawa na jama'a, ko shigar da lambar sirri mai lamba 12 daga wanda kuke hulɗa da shi a Khaynjo.
+app_template_apply	Shigo da samfuri
 app_template_skip	Tsallake yanzu
-app_template_status	Server ya shirya — yi amfani da samfurin Rajdhani, ko ka tsallake
+app_template_status	Sabar a shirye — shigo da samfuri, ko tsallake
 app_template_importing	Ana amfani da {title}…
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	Ana saukar da samfuri…
+app_template_public_hdr	Samfuran jama'a
+app_template_private_hdr	Samfurin sirri
+app_template_public_hint	Buɗe wannan sashe don loda jerin jama'a (ana buƙatar intanet sau ɗaya).
+app_template_code_not_found	Ba a sami lambar ba
+app_template_need_internet	Ana buƙatar intanet don saukar da samfura
+app_template_import_selected	Shigo da zaɓaɓɓe
+app_template_check_code	Duba lamba
+app_template_import	Shigo da
 currency	Kuɗi
 backup	Ajiyar madadin
 use	Yi amfani
@@ -474,19 +474,19 @@ copy_report	Kwafi rahoto
 counted_cash_ph	Tsabar kuɗin da aka ƙidaya a cikin akwati
 country_tax	Ƙasa da haraji
 tax_chrome	Alamomin haraji a akwatin kuɗi
-tax_chrome_help	Idan an kashe, teburin oda yana ɓoye layukan kimar haraji da wuraren rubutu na haraji a cikin farashi. Farashin haraji da saitunan Ƙasa da haraji suna nan — kunna alamomi a kowane lokaci. Samfurin Rajdhani yana farawa da wannan a kashe.
+tax_chrome_help	Idan a kashe, teburin oda yana ɓoye layukan kimanta GST/haraji da wuraren GST-a-cikin-farashi. Ƙimar haraji da saitunan Ƙasa da haraji suna nan — kunna lakabai kuma a kowane lokaci. Wasu samfuran shago suna farawa da wannan a kashe.
 tax_chrome_on	Nuna
 tax_chrome_off	Ɓoye
 tax_chrome_saved_on	Alamomin haraji a akwatin kuɗi
 tax_chrome_saved_off	An ɓoye alamomin haraji a akwatin kuɗi
 tax_invoice_till	Lissafin haraji a akwatin kuɗi
-tax_invoice_help	Idan an kashe, lissafi Takardar tsabar kuɗi kawai ne, kuma maɓallan Lissafin haraji / Takardar tsabar kuɗi sun ɓoye a teburin oda. Samfurin Rajdhani yana farawa da wannan a kashe — kunna Nuna a kowane lokaci don sake zaɓar Lissafin haraji.
+tax_invoice_help	Idan a kashe, kuɗin cin abinci takardar tsabar kuɗi ne kawai kuma maɓallan Takardar haraji / Takardar tsabar kuɗi suna ɓoye a teburin oda. Wasu samfuran shago suna farawa da wannan a kashe — kunna Nuna a kowane lokaci don sake zaɓar Takardar haraji.
 tax_invoice_on	Nuna
 tax_invoice_off	Ɓoye
 tax_invoice_saved_on	Lissafin haraji a akwatin kuɗi
 tax_invoice_saved_off	An ɓoye lissafin haraji — Takardar tsabar kuɗi kawai
 pay_methods	Hanyoyin biya
-pay_methods_help	Waɗanne maɓalla suke bayyana a Karɓi biya. Tsabar kuɗi koyaushe tana nan. Samfurin Rajdhani yana farawa da Tsabar kuɗi kawai — sake kunna UPI / Kati / Bashi / Raba a nan.
+pay_methods_help	Waɗanne maɓallai ke bayyana a Karɓi biya. Tsabar kuɗi tana nan koyaushe. Wasu samfuran shago suna farawa da Tsabar kuɗi kaɗai — kunna UPI / Kati / Bashi / Raba anan kuma.
 create_backup	Ƙirƙiri ajiyar madadin
 credit_limit_heading	Iyakar bashi (jam'in da aka zaɓa / mai suna)
 day_close_summary	Taƙaitaccen rufe yini
@@ -793,10 +793,10 @@ printers_looking	Ana nema…
 saving_printer	Ana ƙara firinta…
 cancelled	An soke
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Ana cirewa…
+removed	An cire
+updating_order	Ana sabuntawa…
+order_updated	An sabunta oda
 printers_tap_find	Taɓa Nemo don jera firintocin da wannan na'ura za ta iya amfani da su.
 printers_none_found	Ba a sami kowa ba — rubuta sunan firinta na tsarin ko IP (misali 192.168.1.50).
 printer_from_find	An ƙara {name}
@@ -1337,7 +1337,6 @@ kot_field_table	Tebur
 kot_field_shop	Sunan shago
 kot_field_waiter	Ma'aikaci
 kot_field_station	Tasha
-app_template_blurb_extra	Haka kuma: Mamallaki Zahir, Admin Asif, Mai sabis Nawaz; gefen allo na falon; tarihi bayan awa 4; sandar Yau a kashe; KOT ƙanƙanta.
 dishes_n	abinci {n}
 recipe_ph	Girke-girke (ba dole ba) — rabo ɗaya yana amfani: Shinkafa=0.2, Paneer=0.15
 reorder_ph	Sake saya a
@@ -1364,3 +1363,7 @@ recent_changes	Canje-canje na baya-bayan nan
 lane_declared_label	Lissafin haraji
 lane_owner_label	Takardar tsabar kuɗi
 money_lane_bill	Lissafi: {lane}
+app_template_download_progress	Ana saukewa… {p}% ({d} / {t})
+app_template_download_paused	Sake shigo da shi don ci gaba — ana ajiye fayilolin da suka kammala
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

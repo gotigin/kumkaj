@@ -182,7 +182,7 @@ snack_secs_save	अलर्ट टाइम बचाओ
 snack_secs_saved	अलर्ट समय बचाया — {n} सेकंड
 settings_sec_backup	बैकअप & रिस्टोर करना
 settings_sec_diag	निदान करना
-settings_sec_privacy	Privacy
+settings_sec_privacy	गोपनीयता
 diag_privacy_help	लॉग इस डिवाइस पर रौंह्दे न। राज (PIN, पासवर्ड) कदें बी संग्रहीत नेईं कीते जंदे न। डिवाइस थमां इक पैकेज साझा करने लेई हर बारी तुंदी स्पश्ट मंजूरी दी लोड़ होंदी ऐ — कदें बी नेईं बेची जां त्रीयें पार्टी गी नेईं दित्ती गेई।
 diag_level	विस्तार स्तर
 diag_level_error	त्रुटियां
@@ -339,21 +339,21 @@ server_remove_pin_ph	मालिक PIN किसी सर्वर गी ह
 only_owner_remove_server	सिर्फ मालिक गै इक सर्वर गी हटाई सकदा ऐ
 owner_pin_remove_server	इस सर्वर गी हटाने लेई मालिक PIN दी लोड़ ऐ
 device_setup_help	सर्वर इत्थे लेजर रखदा ऐ। क्लाइंट इक सर्वर कन्नै जोड़ी दिंदा ऐ।
-app_template_heading	Rajdhani ऐप टेम्पलेट
-app_template_blurb	Rajdhani मेनू लोड करदा ऐ; मालिक Zahir (जहिर), एडमिन Asif (असिफ, PIN 1111), वेटर Nawaz (नवाज, PIN 0000); FOH साइडबार दा; इतिहास 4 घैंटे दे बाद साफ होंदा ऐ (ते बैकअप च हून साफ ​​करो); आज पट्टी बंद कर दे; कॉम्पैक्ट KOT + संकीर्ण ट्रे लेई मानक हाशिए। साइडबार पीयर गी सेटिंग्स च वापस चालू कीता जाई सकदा ऐ।
-app_template_apply	Rajdhani ऐप टेम्पलेट
+app_template_heading	दुकान टेम्पलेट
+app_template_blurb	कोई सार्वजनक शुरुआती मेन्यू आयात करो, जां अपने Khaynjo संपर्क थमां मिले दा 12 अंकें दा निजी कोड पाओ।
+app_template_apply	टेम्पलेट आयात करो
 app_template_skip	फिलहाल छोड़ दे
-app_template_status	सर्वर तैयार — Rajdhani ऐप टेम्पलेट लागू करो, जां छोड़ो
+app_template_status	सर्वर त्यार ऐ — टेम्पलेट आयात करो, जां छोड़ी देओ
 app_template_importing	{title} लागू करदे होई...
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	टेम्पलेट डाउनलोड होआ करदा…
+app_template_public_hdr	सार्वजनक टेम्पलेट
+app_template_private_hdr	निजी टेम्पलेट
+app_template_public_hint	सार्वजनक लिस्ट लोड करने लेई एह् हिस्सा खोलो (इक बारी इंटरनेट चाहिदा)।
+app_template_code_not_found	कोड नेईं मिलेआ
+app_template_need_internet	टेम्पलेट डाउनलोड करने लेई इंटरनेट चाहिदा
+app_template_import_selected	चुनेआ दा आयात करो
+app_template_check_code	कोड जांचो
+app_template_import	आयात करो
 currency	मुद्रा
 backup	बैकअप लेना
 use	इस्तेमाल करो
@@ -474,19 +474,19 @@ copy_report	रिपोर्ट दी नकल करो
 counted_cash_ph	दराज में नकद गिनती
 country_tax	देश & कर
 tax_chrome	टिल्ल पर टैक्स लेबल
-tax_chrome_help	बंद होने पर, आर्डर डेस्क GST/कर अनुमान लाइनें ते GST-इन-प्राइज प्लेसहोल्डर गी छिपांदी ऐ। कर दरें ते देश & कर सेटिंग्स रौंह्दियां न — लेबल गी कुसै बी समें पर वापस चालू करो। Rajdhani ऐप टेम्पलेट इस बंद कन्नै शुरू होंदा ऐ।
+tax_chrome_help	बंद होने पर, ऑर्डर डेस्क GST/टैक्स अनुमान आह्लियां लाइनां ते कीमत-च-GST प्लेसहोल्डर छपाली दिंदा ऐ। टैक्स दरां ते देश ते टैक्स सेटिंगां रौंह्दियां न — लेबल कुसै बी बेल्लै फ्ही चालू करो। किश दुकान टेम्पलेट इसगी बंद रक्खियै शुरू होंदे न।
 tax_chrome_on	दिखाओ
 tax_chrome_off	छुपा दे
 tax_chrome_saved_on	टिल्ल पर टैक्स लेबल
 tax_chrome_saved_off	टिल्ल पर छिपे कर लेबल
 tax_invoice_till	टिल्ल पर कर चालान
-tax_invoice_help	बंद होने पर बिल सिर्फ कैश मेमो होंदे न ते टैक्स चालान / कैश मेमो चिप्स आर्डर डेस्क पर छिपे दे होंदे न। Rajdhani ऐप टेम्पलेट इस बंद कन्नै शुरू होंदा ऐ — कर चालान गी फिरी चुनने लेई कुसै बी समें वापस दिखाओ चालू करो।
+tax_invoice_help	बंद होने पर, बिल सिर्फ कैश मेमो होंदे न ते ऑर्डर डेस्क पर टैक्स इनवॉइस / कैश मेमो चिप छप्पी जंदे न। किश दुकान टेम्पलेट इसगी बंद रक्खियै शुरू होंदे न — टैक्स इनवॉइस फ्ही चुनने लेई दस्सो कुसै बी बेल्लै चालू करो।
 tax_invoice_on	दिखाओ
 tax_invoice_off	छुपा दे
 tax_invoice_saved_on	टिल्ल पर कर चालान
 tax_invoice_saved_off	कर चालान छिपा — नकद ज्ञापन ही
 pay_methods	भुगतान दे तरीके
-pay_methods_help	भुगतान लेओ पर कुन कुन चिप्स दिक्खे जंदे न। कैश सदा ही रहता है। Rajdhani ऐप टेम्पलेट सिर्फ नकद कन्नै शुरू होंदा ऐ — UPI / कार्ड / क्रेडिट / स्प्लिट वापस इत्थै चालू करो।
+pay_methods_help	भुगतान लैओ पर केह्ड़े चिप दिखदे न। कैश हमेशा रौंह्दा ऐ। किश दुकान टेम्पलेट सिर्फ कैश कन्नै शुरू होंदे न — UPI / कार्ड / उधार / बंड इत्थें फ्ही चालू करो।
 create_backup	बैकअप बनाओ
 credit_limit_heading	क्रेडिट सीमा (चयनित ग्राहक जां आपूर्तिकर्ता)
 day_close_summary	दिन बंद सारांश
@@ -793,10 +793,10 @@ printers_looking	देख रहा है...
 saving_printer	प्रिंटर जोड़ने दा...
 cancelled	रद्द कर दी गई
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	हटाया जा करदा…
+removed	हटाई दित्ता
+updating_order	अपडेट होआ करदा…
+order_updated	ऑर्डर अपडेट होई गेआ
 printers_tap_find	प्रिंटरें गी सूचीबद्ध करने लेई ढूँढो टैप करो जेह् ड़ा इस डिवाइस दा इस्तेमाल करी सकदा ऐ।
 printers_none_found	कोई बी नेईं लब्भा — सिस्टम प्रिंटर दा नांऽ जां आईपी (जियां 192.168.1.50) टाइप करो.
 printer_from_find	जोड़ा गया {name}
@@ -1337,7 +1337,6 @@ kot_field_table	डाइनिंग टेबल
 kot_field_shop	दुकान दा नाम
 kot_field_waiter	स्टाफ ने दी
 kot_field_station	स्टेशन
-app_template_blurb_extra	साथ ही: मालिक Zahir, एडमिन Asif, वेटर Nawaz; FOH साइडबार दा; 4 घंटे दे बाद इतिहास; आज पट्टी बंद कर दे; कॉम्पैक्ट KOT ऐ।
 dishes_n	{n} पकवान
 recipe_ph	नुस्खा (वैकल्पिक) — इक हिस्से च इस्तेमाल कीता जंदा ऐ: चावल = 0.2, पनीर = 0.15
 reorder_ph	पर और खरीदें
@@ -1364,3 +1363,7 @@ recent_changes	हाल दे बदलाव
 lane_declared_label	कर चालान दा
 lane_owner_label	नकद ज्ञापन
 money_lane_bill	बिल: {lane} ऐ।
+app_template_download_progress	डाउनलोड होआ करदा… {p}% ({d} / {t})
+app_template_download_paused	फ्ही शुरू करने लेई फ्ही आयात करो — पूरियां फाइलां रक्खियां जंदियां न
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

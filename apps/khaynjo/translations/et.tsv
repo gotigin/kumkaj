@@ -182,7 +182,7 @@ snack_secs_save	Säästke hoiatusaega
 snack_secs_saved	Hoiatuse aeg salvestatud — {n} sekundit
 settings_sec_backup	Varundamine ja taastamine
 settings_sec_diag	Diagnostika
-settings_sec_privacy	Privacy
+settings_sec_privacy	Privaatsus
 diag_privacy_help	Logid jäävad sellesse seadmesse. Saladusi (PIN, paroole) ei salvestata kunagi. Paketi jagamine seadmest väljas vajab iga kord teie selgesõnalist nõusolekut – seda ei müüda ega anta kolmandatele isikutele.
 diag_level	Detailide tase
 diag_level_error	Vead
@@ -339,21 +339,21 @@ server_remove_pin_ph	Omanik PIN serveri eemaldamiseks
 only_owner_remove_server	Ainult omanik saab serveri eemaldada
 owner_pin_remove_server	Selle serveri eemaldamiseks on vaja omanikku PIN
 device_setup_help	Server hoiab siin raamatuid. Klient ühendab serveriga.
-app_template_heading	Rajdhani Rakenduse mall
-app_template_blurb	Laadib menüü Rajdhani; Omanik Zahir (zahir), administraator Asif (asif, PIN 1111), kelner Nawaz (nawaz, PIN 0000); FOH külgriba; ajalugu kustutatakse 4 tunni pärast (ja varunduses Kustuta kohe); Täna eemaldage; kompaktne KOT + Standardsed veerised kitsastele salvedele. Külgriba partnerid saab seadetes uuesti sisse lülitada.
-app_template_apply	Rajdhani Rakenduse mall
+app_template_heading	Poe mallid
+app_template_blurb	Impordi avalik algmenüü või sisesta oma Khaynjo kontaktilt saadud privaatne 12-kohaline kood.
+app_template_apply	Impordi mall
 app_template_skip	Jäta praegu vahele
-app_template_status	Server on valmis – rakendage Rajdhani rakenduse malli või jätke vahele
+app_template_status	Server valmis — impordi mall või jäta vahele
 app_template_importing	{title} rakendamine…
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	Malli allalaadimine…
+app_template_public_hdr	Avalikud mallid
+app_template_private_hdr	Privaatne mall
+app_template_public_hint	Ava see jaotis avaliku loendi laadimiseks (internetti on vaja üks kord).
+app_template_code_not_found	Koodi ei leitud
+app_template_need_internet	Mallide allalaadimiseks on vaja internetti
+app_template_import_selected	Impordi valitud
+app_template_check_code	Kontrolli koodi
+app_template_import	Impordi
 currency	Valuuta
 backup	Varundamine
 use	Kasutage
@@ -474,19 +474,19 @@ copy_report	Kopeeri aruanne
 counted_cash_ph	Loetud sularaha sahtlis
 country_tax	Riik ja maks
 tax_chrome	Kassas maksusildid
-tax_chrome_help	Kui see on välja lülitatud, peidab tellimislaud GST/maksuprognoosi read ja GST-hinnas kohatäited. Maksumäärad ning riigi- ja maksuseaded jäävad alles – lülitage sildid igal ajal uuesti sisse. Rajdhani Rakenduse malli alguses on see välja lülitatud.
+tax_chrome_help	Kui väljas, peidab tellimuslaud GST/maksu hinnangu read ja „GST hinnas“ kohatäited. Maksumäärad ning riigi ja maksu seaded jäävad alles — lülita sildid igal ajal tagasi sisse. Mõned poe mallid alustavad sellega väljas.
 tax_chrome_on	Näita
 tax_chrome_off	Peida
 tax_chrome_saved_on	Kassas maksusildid
 tax_chrome_saved_off	Kassale peidetud maksusildid
 tax_invoice_till	Maksuarve kassas
-tax_invoice_help	Kui see on välja lülitatud, on arved ainult sularahaarve ja tellimuste lauale on peidetud maksuarve / sularaha memo kiibid. Rajdhani Rakenduse mall algab selle väljalülitamisega – maksuarve uuesti valimiseks lülitage suvand Näita uuesti igal ajal sisse.
+tax_invoice_help	Kui väljas, on arved ainult sularahatšekid ning Maksuarve / Sularahatšeki nupud on tellimuslaual peidetud. Mõned poe mallid alustavad sellega väljas — lülita Näita igal ajal sisse, et Maksuarve uuesti valida.
 tax_invoice_on	Näita
 tax_invoice_off	Peida
 tax_invoice_saved_on	Maksuarve kassas
 tax_invoice_saved_off	Maksuarve peidetud — ainult sularahaarve
 pay_methods	Makseviisid
-pay_methods_help	Millised kiibid kuvatakse valikul Võta makse. Sularaha jääb alati. Rajdhani Rakenduse mall algab ainult sularahaga – lülitage siin uuesti sisse UPI / Kaart / Krediit / Jagamine.
+pay_methods_help	Millised nupud ilmuvad vaates Võta makse. Sularaha jääb alati. Mõned poe mallid alustavad ainult Sularahaga — lülita UPI / Kaart / Krediit / Jaga siin uuesti sisse.
 create_backup	Loo varukoopia
 credit_limit_heading	Krediidilimiit (valitud klient või tarnija)
 day_close_summary	Päeva kokkuvõte
@@ -793,10 +793,10 @@ printers_looking	Vaadates…
 saving_printer	Printeri lisamine…
 cancelled	Tühistatud
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Eemaldamine…
+removed	Eemaldatud
+updating_order	Uuendamine…
+order_updated	Tellimus uuendatud
 printers_tap_find	Puudutage Otsi, et loetleda printerid, mida see seade saab kasutada.
 printers_none_found	Ühtegi ei leitud – sisestage süsteemiprinteri nimi või IP (nt 192.168.1.50).
 printer_from_find	Lisatud {name}
@@ -1337,7 +1337,6 @@ kot_field_table	Söögilaud
 kot_field_shop	Poe nimi
 kot_field_waiter	Personal
 kot_field_station	Jaam
-app_template_blurb_extra	Samuti: omanik Zahir, administraator Asif, kelner Nawaz; FOH külgriba; ajalugu 4 tunni pärast; Täna eemaldage; kompaktne KOT.
 dishes_n	{n} roogasid
 recipe_ph	Retsept (valikuline) – üks portsjon kasutab: riis = 0,2, paneer = 0,15
 reorder_ph	Osta rohkem aadressilt
@@ -1364,3 +1363,7 @@ recent_changes	Viimased muudatused
 lane_declared_label	Maksuarve
 lane_owner_label	Sularaha memo
 money_lane_bill	Arve: {lane}
+app_template_download_progress	Allalaadimine… {p}% ({d} / {t})
+app_template_download_paused	Jätkamiseks impordi uuesti — valmis failid jäävad alles
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

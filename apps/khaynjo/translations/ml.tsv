@@ -182,7 +182,7 @@ snack_secs_save	അറിയിപ്പ് സമയം സേവ് ചെയ�
 snack_secs_saved	അറിയിപ്പ് സമയം സേവ് ചെയ്തു — {n} സെക്കൻഡ്
 settings_sec_backup	ബാക്കപ്പും പുനഃസ്ഥാപനവും
 settings_sec_diag	ഡയഗ്നോസ്റ്റിക്സ്
-settings_sec_privacy	Privacy
+settings_sec_privacy	സ്വകാര്യത
 diag_privacy_help	ലോഗുകൾ ഈ ഉപകരണത്തിൽ തന്നെ നിൽക്കും. രഹസ്യങ്ങൾ (PIN, പാസ്‌വേഡുകൾ) ഒരിക്കലും സൂക്ഷിക്കില്ല. ഉപകരണത്തിന് പുറത്തേക്ക് പാക്കേജ് അയയ്ക്കാൻ ഓരോ തവണയും നിങ്ങളുടെ വ്യക്തമായ അനുമതി വേണം — ഒരിക്കലും വിൽക്കുകയോ മൂന്നാം കക്ഷിക്ക് നൽകുകയോ ഇല്ല.
 diag_level	വിശദാംശ നില
 diag_level_error	പിശകുകൾ
@@ -339,21 +339,21 @@ server_remove_pin_ph	സെർവർ നീക്കം ചെയ്യാൻ Ow
 only_owner_remove_server	Owner മാത്രമേ സെർവർ നീക്കം ചെയ്യാവൂ
 owner_pin_remove_server	സെർവർ നീക്കം ചെയ്യാൻ Owner PIN വേണം
 device_setup_help	സെർവർ കണക്കുകൾ ഇവിടെ സൂക്ഷിക്കുന്നു. ക്ലയന്റ് ഒരു സെർവറുമായി ജോടിയാകുന്നു.
-app_template_heading	രാജധാനി ആപ്പ് ടെംപ്ലേറ്റ്
-app_template_blurb	രാജധാനി മെനു ലോഡ് ചെയ്യുന്നു; ഉടമ സഹീർ (zahir), അഡ്മിൻ ആസിഫ് (asif, PIN 1111), വെയിറ്റർ നവാസ് (nawaz, PIN 0000); FOH സൈഡ്‌ബാർ; ചരിത്രം 4 മണിക്കൂറിന് ശേഷം മായും (ബാക്കപ്പിൽ ഇപ്പോൾ മായ്ക്കുക കൂടി); ഇന്നത്തെ സ്ട്രിപ്പ് ഓഫ്; ഇടുങ്ങിയ ട്രേകൾക്ക് ചെറിയ KOT + സാധാരണ മാർജിനുകൾ. സൈഡ്‌ബാറിലെ മറ്റുള്ളവ ക്രമീകരണങ്ങളിൽ വീണ്ടും ഓൺ ചെയ്യാം.
-app_template_apply	രാജധാനി ആപ്പ് ടെംപ്ലേറ്റ്
+app_template_heading	കട ടെംപ്ലേറ്റുകൾ
+app_template_blurb	ഒരു പൊതു സ്റ്റാർട്ടർ മെനു ഇമ്പോർട്ട് ചെയ്യുക, അല്ലെങ്കിൽ നിങ്ങളുടെ Khaynjo കോൺടാക്റ്റിൽ നിന്ന് ലഭിച്ച 12 അക്ക സ്വകാര്യ കോഡ് നൽകുക.
+app_template_apply	ടെംപ്ലേറ്റ് ഇമ്പോർട്ട് ചെയ്യുക
 app_template_skip	ഇപ്പോൾ ഒഴിവാക്കുക
-app_template_status	സെർവർ തയ്യാർ — രാജധാനി ആപ്പ് ടെംപ്ലേറ്റ് പ്രയോഗിക്കുക, അല്ലെങ്കിൽ ഒഴിവാക്കുക
+app_template_status	സെർവർ തയ്യാർ — ഒരു ടെംപ്ലേറ്റ് ഇമ്പോർട്ട് ചെയ്യുക, അല്ലെങ്കിൽ ഒഴിവാക്കുക
 app_template_importing	{title} പ്രയോഗിക്കുന്നു…
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	ടെംപ്ലേറ്റ് ഡൗൺലോഡ് ചെയ്യുന്നു…
+app_template_public_hdr	പൊതു ടെംപ്ലേറ്റുകൾ
+app_template_private_hdr	സ്വകാര്യ ടെംപ്ലേറ്റ്
+app_template_public_hint	പൊതു പട്ടിക ലോഡ് ചെയ്യാൻ ഈ വിഭാഗം തുറക്കുക (ഒരിക്കൽ ഇന്റർനെറ്റ് വേണം).
+app_template_code_not_found	കോഡ് കണ്ടെത്തിയില്ല
+app_template_need_internet	ടെംപ്ലേറ്റുകൾ ഡൗൺലോഡ് ചെയ്യാൻ ഇന്റർനെറ്റ് വേണം
+app_template_import_selected	തിരഞ്ഞെടുത്തത് ഇമ്പോർട്ട് ചെയ്യുക
+app_template_check_code	കോഡ് പരിശോധിക്കുക
+app_template_import	ഇമ്പോർട്ട് ചെയ്യുക
 currency	കറൻസി
 backup	ബാക്കപ്പ്
 use	ഉപയോഗിക്കുക
@@ -474,19 +474,19 @@ copy_report	റിപ്പോർട്ട് പകർത്തുക
 counted_cash_ph	ഡ്രോയറിൽ എണ്ണിയ പണം
 country_tax	രാജ്യവും നികുതിയും
 tax_chrome	ടില്ലിൽ നികുതി ലേബലുകൾ
-tax_chrome_help	ഓഫ് ആണെങ്കിൽ ഓർഡർ ഡെസ്ക് GST/നികുതി എസ്റ്റിമേറ്റ് വരികളും വിലയിൽ-GST സൂചനകളും മറയ്ക്കും. നികുതി നിരക്കുകളും രാജ്യം & നികുതി ക്രമീകരണങ്ങളും നിലനിൽക്കും — ലേബലുകൾ എപ്പോൾ വേണമെങ്കിലും വീണ്ടും ഓൺ ചെയ്യുക. രാജധാനി ആപ്പ് ടെംപ്ലേറ്റ് ഇത് ഓഫായി തുടങ്ങുന്നു.
+tax_chrome_help	ഓഫ് ആയിരിക്കുമ്പോൾ, ഓർഡർ ഡെസ്ക് GST/നികുതി എസ്റ്റിമേറ്റ് വരികളും വിലയിൽ-GST പ്ലേസ്‌ഹോൾഡറുകളും മറയ്ക്കുന്നു. നികുതി നിരക്കുകളും രാജ്യവും നികുതിയും ക്രമീകരണങ്ങളും നിലനിൽക്കും — ലേബലുകൾ എപ്പോൾ വേണമെങ്കിലും വീണ്ടും ഓണാക്കുക. ചില കട ടെംപ്ലേറ്റുകൾ ഇത് ഓഫാക്കി തുടങ്ങുന്നു.
 tax_chrome_on	കാണിക്കുക
 tax_chrome_off	മറയ്ക്കുക
 tax_chrome_saved_on	ടില്ലിൽ നികുതി ലേബലുകൾ
 tax_chrome_saved_off	ടില്ലിൽ നികുതി ലേബലുകൾ മറച്ചു
 tax_invoice_till	ടില്ലിൽ നികുതി ഇൻവോയ്‌സ്
-tax_invoice_help	ഓഫ് ആണെങ്കിൽ ബില്ലുകൾ ക്യാഷ് മെമ്മോ മാത്രം, ഓർഡർ ഡെസ്കിൽ നികുതി ഇൻവോയ്‌സ് / ക്യാഷ് മെമ്മോ ചിപ്പുകൾ മറയും. രാജധാനി ആപ്പ് ടെംപ്ലേറ്റ് ഇത് ഓഫായി തുടങ്ങുന്നു — നികുതി ഇൻവോയ്‌സ് വീണ്ടും തിരഞ്ഞെടുക്കാൻ എപ്പോൾ വേണമെങ്കിലും കാണിക്കുക ഓൺ ചെയ്യുക.
+tax_invoice_help	ഓഫ് ആയിരിക്കുമ്പോൾ, ബില്ലുകൾ ക്യാഷ് മെമോ മാത്രമാണ്, ഓർഡർ ഡെസ്കിലെ ടാക്സ് ഇൻവോയ്സ് / ക്യാഷ് മെമോ ചിപ്പുകൾ മറഞ്ഞിരിക്കും. ചില കട ടെംപ്ലേറ്റുകൾ ഇത് ഓഫാക്കി തുടങ്ങുന്നു — ടാക്സ് ഇൻവോയ്സ് വീണ്ടും തിരഞ്ഞെടുക്കാൻ കാണിക്കുക എപ്പോൾ വേണമെങ്കിലും ഓണാക്കുക.
 tax_invoice_on	കാണിക്കുക
 tax_invoice_off	മറയ്ക്കുക
 tax_invoice_saved_on	ടില്ലിൽ നികുതി ഇൻവോയ്‌സ്
 tax_invoice_saved_off	നികുതി ഇൻവോയ്‌സ് മറച്ചു — ക്യാഷ് മെമ്മോ മാത്രം
 pay_methods	പേയ്‌മെന്റ് രീതികൾ
-pay_methods_help	പേയ്‌മെന്റ് സ്വീകരിക്കുക-യിൽ ഏതൊക്കെ ചിപ്പുകൾ കാണണം. പണം എപ്പോഴും നിൽക്കും. രാജധാനി ആപ്പ് ടെംപ്ലേറ്റ് പണം മാത്രമായി തുടങ്ങുന്നു — UPI / കാർഡ് / കടം / വിഭജനം ഇവിടെ വീണ്ടും ഓൺ ചെയ്യുക.
+pay_methods_help	പേയ്‌മെന്റ് സ്വീകരിക്കുക-ൽ ഏതൊക്കെ ചിപ്പുകൾ കാണിക്കണം. പണം എപ്പോഴും നിലനിൽക്കും. ചില കട ടെംപ്ലേറ്റുകൾ പണം മാത്രം വെച്ച് തുടങ്ങുന്നു — UPI / കാർഡ് / കടം / വിഭജനം ഇവിടെ വീണ്ടും ഓണാക്കുക.
 create_backup	ബാക്കപ്പ് ഉണ്ടാക്കുക
 credit_limit_heading	ക്രെഡിറ്റ് പരിധി (തിരഞ്ഞെടുത്ത / പേരുള്ള പാർട്ടി)
 day_close_summary	ദിവസം അടയ്ക്കൽ സംഗ്രഹം
@@ -793,10 +793,10 @@ printers_looking	ഈ ഉപകരണത്തിലും Wi‑Fiയിലും
 saving_printer	പ്രിന്റർ ചേർക്കുന്നു…
 cancelled	റദ്ദാക്കിയത്
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	നീക്കം ചെയ്യുന്നു…
+removed	നീക്കം ചെയ്തു
+updating_order	പുതുക്കുന്നു…
+order_updated	ഓർഡർ പുതുക്കി
 printers_tap_find	ഈ ഉപകരണം ഉപയോഗിക്കാവുന്ന പ്രിന്ററുകൾ കാണാൻ കണ്ടെത്തുക അമർത്തുക.
 printers_none_found	പ്രിന്ററുകളൊന്നും കണ്ടെത്തിയില്ല — സിസ്റ്റം പ്രിന്റർ പേര് അല്ലെങ്കിൽ നെറ്റ്‌വർക്ക് വിലാസം ടൈപ്പ് ചെയ്യുക (ഉദാ. 192.168.1.50).
 printer_from_find	{name} ചേർത്തു
@@ -1337,7 +1337,6 @@ kot_field_table	മേശ
 kot_field_shop	കടയുടെ പേര്
 kot_field_waiter	ജീവനക്കാർ
 kot_field_station	സ്റ്റേഷൻ
-app_template_blurb_extra	കൂടാതെ: ഉടമ സഹീർ, അഡ്മിൻ ആസിഫ്, വെയിറ്റർ നവാസ്; FOH സൈഡ്‌ബാർ; 4 മണിക്കൂറിന് ശേഷം ചരിത്രം; ഇന്നത്തെ സ്ട്രിപ്പ് ഓഫ്; ചെറിയ KOT.
 dishes_n	{n} വിഭവങ്ങൾ
 recipe_ph	പാചകക്കുറിപ്പ് (ഐച്ഛികം) — ഒരു പ്ലേറ്റിന്: Rice=0.2, Paneer=0.15
 reorder_ph	ഇത്രയാകുമ്പോൾ കൂടുതൽ വാങ്ങുക
@@ -1364,3 +1363,7 @@ recent_changes	സമീപകാല മാറ്റങ്ങൾ
 lane_declared_label	നികുതി ഇൻവോയ്‌സ്
 lane_owner_label	ക്യാഷ് മെമ്മോ
 money_lane_bill	ബിൽ: {lane}
+app_template_download_progress	ഡൗൺലോഡ് ചെയ്യുന്നു… {p}% ({d} / {t})
+app_template_download_paused	തുടരാൻ വീണ്ടും ഇമ്പോർട്ട് ചെയ്യുക — പൂർത്തിയായ ഫയലുകൾ സൂക്ഷിക്കും
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

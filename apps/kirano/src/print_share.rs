@@ -5784,12 +5784,30 @@ static PRINTERS: Mutex<Option<DevicePrinters>> = Mutex::new(None);
 
 /// Use these printers for the jobs that follow.
 pub fn configure(printers: DevicePrinters) {
+    #[cfg(test)]
+    if TEST_PRINTERS_OVERRIDE.with(|o| o.borrow().is_some()) {
+        TEST_PRINTERS_OVERRIDE.with(|o| *o.borrow_mut() = Some(printers));
+        return;
+    }
     *PRINTERS.lock().unwrap() = Some(printers);
 }
 
 /// The printers in force on this device.
 pub fn printers() -> DevicePrinters {
+    #[cfg(test)]
+    if let Some(p) = TEST_PRINTERS_OVERRIDE.with(|o| o.borrow().clone()) {
+        return p;
+    }
     PRINTERS.lock().unwrap().clone().unwrap_or_default()
+}
+
+#[cfg(test)]
+thread_local! {
+    /// [`with_test_printers`] config for this thread only — other test
+    /// threads rewrite the global `PRINTERS` without the test lock
+    /// (`use_device_dir`, app-state reloads). Same fix as Khaynjo.
+    static TEST_PRINTERS_OVERRIDE: std::cell::RefCell<Option<DevicePrinters>> =
+        const { std::cell::RefCell::new(None) };
 }
 
 fn printers_path(base: &Path) -> PathBuf {
@@ -7730,9 +7748,9 @@ pub fn with_test_printers<R>(cfg: DevicePrinters, f: impl FnOnce() -> R) -> R {
     let _g = TEST_PRINTERS_LOCK
         .lock()
         .unwrap_or_else(|e| e.into_inner());
-    configure(cfg);
+    let prev = TEST_PRINTERS_OVERRIDE.with(|o| o.borrow_mut().replace(cfg));
     let out = std::panic::catch_unwind(std::panic::AssertUnwindSafe(f));
-    configure(DevicePrinters::default());
+    TEST_PRINTERS_OVERRIDE.with(|o| *o.borrow_mut() = prev);
     match out {
         Ok(v) => v,
         Err(payload) => std::panic::resume_unwind(payload),

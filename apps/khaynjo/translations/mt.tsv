@@ -182,7 +182,7 @@ snack_secs_save	Salva l-ħin tat-twissija
 snack_secs_saved	Ħin tat-twissija salvat — {n} sekondi
 settings_sec_backup	Backup u restawr
 settings_sec_diag	Dijanjostiċi
-settings_sec_privacy	Privacy
+settings_sec_privacy	Privatezza
 diag_privacy_help	Zkuk jibqgħu fuq dan l-apparat. Sigrieti (PIN, passwords) qatt ma jinħażnu. Il-qsim ta' pakkett mill-apparat jeħtieġ l-approvazzjoni espliċita tiegħek kull darba — qatt ma jinbiegħ jew jingħata lil partijiet terzi.
 diag_level	Livell tad-dettall
 diag_level_error	Żbalji
@@ -339,21 +339,21 @@ server_remove_pin_ph	PIN tas-sid biex tneħħi server
 only_owner_remove_server	Is-Sid biss jista' jneħħi server
 owner_pin_remove_server	PIN tas-sid meħtieġ biex jitneħħa dan is-server
 device_setup_help	Server iżomm il-kotba hawn. Klijent pairs għal Server.
-app_template_heading	Mudell tal-App Rajdhani
-app_template_blurb	Tagħbijiet il-menu Rajdhani; Sid Zahir (zahir), Admin Asif (asif, PIN 1111), Waiter Nawaz (nawaz, PIN 0000); FOH sidebar; l-istorja tikklerja wara 4 sigħat (u Ċara issa fil-Backup); Illum strip off; kompatt KOT + Marġini standard għal trejs dojoq. Peers tal-bar tal-ġenb jistgħu jerġgħu jinxtegħlu fis-Għażliet.
-app_template_apply	Mudell tal-App Rajdhani
+app_template_heading	Mudelli tal-ħanut
+app_template_blurb	Importa menu tal-bidu pubbliku, jew daħħal kodiċi privat ta' 12-il ċifra mill-kuntatt tiegħek ta' Khaynjo.
+app_template_apply	Importa mudell
 app_template_skip	Aqbeż għalissa
-app_template_status	Server lest — applika Rajdhani App Template, jew aqbeż
+app_template_status	Is-server lest — importa mudell, jew aqbeż
 app_template_importing	Qed tapplika {title}...
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	Qed jitniżżel il-mudell…
+app_template_public_hdr	Mudelli pubbliċi
+app_template_private_hdr	Mudell privat
+app_template_public_hint	Iftaħ din it-taqsima biex titgħabba l-lista pubblika (hemm bżonn l-internet darba).
+app_template_code_not_found	Il-kodiċi ma nstabx
+app_template_need_internet	Hemm bżonn l-internet biex jitniżżlu l-mudelli
+app_template_import_selected	Importa l-magħżul
+app_template_check_code	Iċċekkja l-kodiċi
+app_template_import	Importa
 currency	Munita
 backup	Backup
 use	Użu
@@ -474,19 +474,19 @@ copy_report	Ikkopja rapport
 counted_cash_ph	Flus magħduda fil-kexxun
 country_tax	Pajjiż u taxxa
 tax_chrome	Tikketti tat-taxxa fuq sall
-tax_chrome_help	Meta mitfi, id-desk tal-ordnijiet jaħbi l-linji tal-istimi tal-GST/taxxi u l-placeholders tal-GST fil-prezz. Ir-rati tat-taxxa u l-issettjar tal-Pajjiż u tat-taxxa jibqgħu — dawwar it-tikketti lura kwalunkwe ħin. Rajdhani App Template jibda b'dan off.
+tax_chrome_help	Meta mitfi, il-mejda tal-ordnijiet taħbi l-linji tal-istima tal-GST/taxxa u l-postijiet tal-GST fil-prezz. Ir-rati tat-taxxa u s-settings tal-Pajjiż u t-taxxa jibqgħu — erġa' ixgħel it-tikketti meta trid. Xi mudelli tal-ħanut jibdew b'dan mitfi.
 tax_chrome_on	Uri
 tax_chrome_off	Aħbi
 tax_chrome_saved_on	Tikketti tat-taxxa fuq sall
 tax_chrome_saved_off	Tikketti tat-taxxa moħbija fuq till
 tax_invoice_till	Fattura tat-taxxa fuq sall
-tax_invoice_help	Meta mitfi, il-kontijiet huma Cash memo biss u l-fattura tat-Taxxa / Cash memo chips huma moħbija fuq l-iskrivanija tal-ordnijiet. Rajdhani App Template jibda b'dan mitfi — dawwar Uri lura f'kull ħin biex terġa' tagħżel il-fattura tat-Taxxa.
+tax_invoice_help	Meta mitfi, il-kontijiet huma biss irċevuti tal-flus kontanti u l-buttuni Fattura tat-taxxa / Irċevuta tal-flus jinħbew fuq il-mejda tal-ordnijiet. Xi mudelli tal-ħanut jibdew b'dan mitfi — ixgħel Uri meta trid biex terġa' tagħżel Fattura tat-taxxa.
 tax_invoice_on	Uri
 tax_invoice_off	Aħbi
 tax_invoice_saved_on	Fattura tat-taxxa fuq sall
 tax_invoice_saved_off	Fattura tat-taxxa moħbija — Cash memo biss
 pay_methods	Metodi ta' ħlas
-pay_methods_help	Liema ċipep jidhru fuq Ħu ħlas. Il-flus kontanti dejjem jibqgħu. Rajdhani App Template jibda bi Flus biss — dawwar UPI / Card / Kreditu / Split lura hawn.
+pay_methods_help	Liema buttuni jidhru f'Ħu ħlas. Il-flus kontanti dejjem jibqgħu. Xi mudelli tal-ħanut jibdew bi Flus kontanti biss — erġa' ixgħel UPI / Karta / Kreditu / Aqsam hawn.
 create_backup	Oħloq backup
 credit_limit_heading	Limitu ta' kreditu (parti magħżula/imsemmija)
 day_close_summary	Sommarju tal-għeluq tal-ġurnata
@@ -793,10 +793,10 @@ printers_looking	Tfittex...
 saving_printer	Inżid l-istampatur...
 cancelled	Ikkanċellat
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Qed jitneħħa…
+removed	Imneħħi
+updating_order	Qed jiġi aġġornat…
+order_updated	L-ordni ġiet aġġornata
 printers_tap_find	Tektek Sib biex telenka l-stampaturi li dan it-tagħmir jista' juża.
 printers_none_found	Xejn misjub — ittajpja isem tal-stampatur tas-sistema jew IP (eż. 192.168.1.50).
 printer_from_find	Miżjud {name}
@@ -1337,7 +1337,6 @@ kot_field_table	Mejda
 kot_field_shop	Isem tal-maħżen
 kot_field_waiter	Staff
 kot_field_station	Stazzjon
-app_template_blurb_extra	Ukoll: Sid Zahir, Amministratur Asif, Wendler Nawaz; sidebar FOH; storja wara 4 sigħat; Illum tneħħi; KOT kompatt.
 dishes_n	{n} platti
 recipe_ph	Riċetta (għażla) — porzjon wieħed juża: Rizz=0.2, Paneer=0.15
 reorder_ph	Ixtri aktar f’
@@ -1364,3 +1363,7 @@ recent_changes	Bidliet riċenti
 lane_declared_label	Fattura tat-taxxa
 lane_owner_label	Memo ta' flus
 money_lane_bill	Kont: {lane}
+app_template_download_progress	Qed iniżżel… {p}% ({d} / {t})
+app_template_download_paused	Erġa' importa biex tkompli — il-fajls lesti jinżammu
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

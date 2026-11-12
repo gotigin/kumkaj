@@ -182,7 +182,7 @@ snack_secs_save	Takarítson meg riasztási időt
 snack_secs_saved	Mentett riasztási idő — {n} másodperc
 settings_sec_backup	Biztonsági mentés és visszaállítás
 settings_sec_diag	Diagnosztika
-settings_sec_privacy	Privacy
+settings_sec_privacy	Adatvédelem
 diag_privacy_help	A naplók ezen az eszközön maradnak. A titkok (PIN, jelszavak) soha nem tárolódnak. Egy csomagnak az eszközön kívüli megosztásához minden alkalommal az Ön kifejezett jóváhagyása szükséges – soha nem adják el vagy adják harmadik félnek.
 diag_level	Részletes szint
 diag_level_error	Hibák
@@ -339,21 +339,21 @@ server_remove_pin_ph	Tulajdonos PIN a szerver eltávolításához
 only_owner_remove_server	Csak a Tulajdonos távolíthat el egy szervert
 owner_pin_remove_server	A kiszolgáló eltávolításához PIN tulajdonos szükséges
 device_setup_help	A szerver itt tartja a könyveket. A kliens egy szerverhez párosul.
-app_template_heading	Rajdhani Alkalmazássablon
-app_template_blurb	Betölti a Rajdhani menüt; Tulajdonos Zahir (zahir), Adminisztrátor Asif (asif, PIN 1111), Pincér Nawaz (nawaz, PIN 0000); FOH oldalsáv; az előzmények 4 óra után törlődnek (és a Biztonsági mentésben a Törölje most lehetőség); Ma vetkőzz le; kompakt KOT + Szabványos margók keskeny tálcákhoz. Az oldalsáv társait a Beállításokban lehet újra bekapcsolni.
-app_template_apply	Rajdhani Alkalmazássablon
+app_template_heading	Üzletsablonok
+app_template_blurb	Importáljon egy nyilvános kezdő étlapot, vagy adja meg a Khaynjo-kapcsolattartójától kapott 12 jegyű privát kódot.
+app_template_apply	Sablon importálása
 app_template_skip	Most hagyd ki
-app_template_status	A szerver készen áll – alkalmazza a Rajdhani alkalmazássablont, vagy hagyja ki
+app_template_status	A szerver kész — importáljon sablont, vagy hagyja ki
 app_template_importing	{title} alkalmazása…
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	Sablon letöltése…
+app_template_public_hdr	Nyilvános sablonok
+app_template_private_hdr	Privát sablon
+app_template_public_hint	Nyissa meg ezt a részt a nyilvános lista betöltéséhez (egyszer internet kell).
+app_template_code_not_found	A kód nem található
+app_template_need_internet	A sablonok letöltéséhez internet kell
+app_template_import_selected	Kijelölt importálása
+app_template_check_code	Kód ellenőrzése
+app_template_import	Importálás
 currency	Pénznem
 backup	Biztonsági mentés
 use	Használja
@@ -474,19 +474,19 @@ copy_report	Jelentés másolása
 counted_cash_ph	Számolt készpénz a fiókban
 country_tax	Ország és adó
 tax_chrome	Adócímkék a kasszában
-tax_chrome_help	Ha ki van kapcsolva, a rendelési pult elrejti az GST/adóbecslési sorokat és a GST árban lévő helyőrzőket. Az adókulcsok és az ország- és adóbeállítások megmaradnak – bármikor visszakapcsolhatja a címkéket. Rajdhani Az alkalmazássablon ezzel kikapcsolva kezdődik.
+tax_chrome_help	Kikapcsolva a rendelési pult elrejti a GST/adóbecslés sorait és az „árban lévő GST” helyőrzőket. Az adókulcsok és az Ország és adó beállítások megmaradnak — a címkéket bármikor visszakapcsolhatja. Egyes üzletsablonok ezzel kikapcsolva indulnak.
 tax_chrome_on	Megjelenítés
 tax_chrome_off	Elrejtés
 tax_chrome_saved_on	Adócímkék a kasszában
 tax_chrome_saved_off	Adócímkék rejtve a kasszában
 tax_invoice_till	Adószámla pénztárig
-tax_invoice_help	Kikapcsolt állapotban a számlák csak készpénzes feljegyzések, és az adószámla / készpénzes emlékeztető chipek el vannak rejtve a megrendelőpulton. Rajdhani Az alkalmazássablon úgy kezdődik, hogy ki van kapcsolva – kapcsolja be a Megjelenítés bármikor, ha ismét kiválasztja az adószámlát.
+tax_invoice_help	Kikapcsolva a számlák csak készpénzes nyugták, és az Adószámla / Készpénzes nyugta gombok rejtve vannak a rendelési pulton. Egyes üzletsablonok ezzel kikapcsolva indulnak — kapcsolja be bármikor a Megjelenítést, hogy újra Adószámlát válasszon.
 tax_invoice_on	Megjelenítés
 tax_invoice_off	Elrejtés
 tax_invoice_saved_on	Adószámla pénztárig
 tax_invoice_saved_off	Adószámla rejtett — Csak készpénzes feljegyzés
 pay_methods	Fizetési módok
-pay_methods_help	Mely zsetonok jelennek meg a Vedd a fizetést. A készpénz mindig marad. Rajdhani Az alkalmazássablon csak készpénzzel kezdődik – itt kapcsolja vissza az UPI / Kártya / Credit / Split lehetőséget.
+pay_methods_help	Mely gombok jelennek meg a Fizetés fogadásánál. A készpénz mindig marad. Egyes üzletsablonok csak Készpénzzel indulnak — itt kapcsolja vissza az UPI / Kártya / Hitel / Megosztás gombot.
 create_backup	Készítsen biztonsági másolatot
 credit_limit_heading	Hitelkeret (kiválasztott ügyfél vagy szállító)
 day_close_summary	A nap záró összefoglalója
@@ -793,10 +793,10 @@ printers_looking	Keresi…
 saving_printer	Nyomtató hozzáadása…
 cancelled	Törölve
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Eltávolítás…
+removed	Eltávolítva
+updating_order	Frissítés…
+order_updated	Rendelés frissítve
 printers_tap_find	Érintse meg a Keresés lehetőséget az eszköz által használható nyomtatók listájához.
 printers_none_found	Nem található – írja be a rendszernyomtató nevét vagy IP-címét (pl. 192.168.1.50).
 printer_from_find	Hozzáadva {name}
@@ -1337,7 +1337,6 @@ kot_field_table	Étkezőasztal
 kot_field_shop	Bolt neve
 kot_field_waiter	Személyzet
 kot_field_station	Állomás
-app_template_blurb_extra	Továbbá: Tulajdonos Zahir, Adminisztrátor Asif, Pincér Nawaz; FOH oldalsáv; anamnézis 4 óra elteltével; Ma vetkőzz le; kompakt KOT.
 dishes_n	{n} ételek
 recipe_ph	Recept (opcionális) – egy adag felhasználása: rizs = 0,2, Paneer = 0,15
 reorder_ph	Vásároljon többet itt
@@ -1364,3 +1363,7 @@ recent_changes	Legutóbbi változások
 lane_declared_label	Adószámla
 lane_owner_label	Készpénzes feljegyzés
 money_lane_bill	Számla: {lane}
+app_template_download_progress	Letöltés… {p}% ({d} / {t})
+app_template_download_paused	A folytatáshoz importáljon újra — a kész fájlok megmaradnak
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

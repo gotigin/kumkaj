@@ -182,7 +182,7 @@ snack_secs_save	Lagre varseltid
 snack_secs_saved	Varseltid lagret — {n} sekunder
 settings_sec_backup	Sikkerhetskopi og gjenoppretting
 settings_sec_diag	Diagnostikk
-settings_sec_privacy	Privacy
+settings_sec_privacy	Personvern
 diag_privacy_help	Logger blir på denne enheten. Hemmeligheter (PIN, passord) lagres aldri. Deling av en pakke bort fra enheten krever ditt uttrykkelige samtykke hver gang — aldri solgt eller gitt til tredjeparter.
 diag_level	Detaljnivå
 diag_level_error	Feil
@@ -339,21 +339,21 @@ server_remove_pin_ph	Eier-PIN for å fjerne en server
 only_owner_remove_server	Bare Eieren kan fjerne en server
 owner_pin_remove_server	Eier-PIN kreves for å fjerne denne serveren
 device_setup_help	Serveren holder bøkene her. Klient pares med en Server.
-app_template_heading	Rajdhani-appmal
-app_template_blurb	Laster Rajdhani-menyen; Eier Zahir (zahir), Admin Asif (asif, PIN 1111), Servitør Nawaz (nawaz, PIN 0000); FOH-sidefelt; historikk tømmes etter 4 timer (og Tøm nå i Sikkerhetskopi); I dag-stripen av; kompakt KOT + standardmarger for smale brett. Sidefelt-naboer kan slås på igjen i Innstillinger.
-app_template_apply	Rajdhani-appmal
+app_template_heading	Butikkmaler
+app_template_blurb	Importer en offentlig startmeny, eller skriv inn en privat 12-sifret kode fra Khaynjo-kontakten din.
+app_template_apply	Importer mal
 app_template_skip	Hopp over nå
-app_template_status	Server klar — bruk Rajdhani-appmalen, eller hopp over
+app_template_status	Server klar — importer en mal, eller hopp over
 app_template_importing	Bruker {title}…
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	Laster ned mal…
+app_template_public_hdr	Offentlige maler
+app_template_private_hdr	Privat mal
+app_template_public_hint	Åpne denne delen for å laste inn den offentlige listen (trenger internett én gang).
+app_template_code_not_found	Fant ikke koden
+app_template_need_internet	Trenger internett for å laste ned maler
+app_template_import_selected	Importer valgte
+app_template_check_code	Sjekk koden
+app_template_import	Importer
 currency	Valuta
 backup	Sikkerhetskopi
 use	Bruk
@@ -474,19 +474,19 @@ copy_report	Kopier rapport
 counted_cash_ph	Telte kontanter i skuffen
 country_tax	Land og avgift
 tax_chrome	Avgiftsetiketter i kassen
-tax_chrome_help	Når av, skjuler bestillingsdisken GST/avgiftsestimatlinjer og plassholdere for avgift i prisen. Avgiftssatser og Land og avgift blir stående — slå etikettene på igjen når som helst. Rajdhani-appmalen starter med dette av.
+tax_chrome_help	Når av, skjuler bestillingsdisken linjer med GST-/skatteestimat og plassholdere for GST i prisen. Skattesatser og innstillinger for land og skatt blir — slå etiketter på igjen når som helst. Noen butikkmaler starter med dette av.
 tax_chrome_on	Vis
 tax_chrome_off	Skjul
 tax_chrome_saved_on	Avgiftsetiketter i kassen
 tax_chrome_saved_off	Avgiftsetiketter skjult i kassen
 tax_invoice_till	Mva-faktura i kassen
-tax_invoice_help	Når av, er regninger bare Kontantnota og brikkene Mva-faktura / Kontantnota er skjult på bestillingsdisken. Rajdhani-appmalen starter med dette av — slå på Vis når som helst for å velge Mva-faktura igjen.
+tax_invoice_help	Når av, er regninger bare kontantkvitteringer, og knappene Skattefaktura / Kontantkvittering er skjult på bestillingsdisken. Noen butikkmaler starter med dette av — slå på Vis når som helst for å velge Skattefaktura igjen.
 tax_invoice_on	Vis
 tax_invoice_off	Skjul
 tax_invoice_saved_on	Mva-faktura i kassen
 tax_invoice_saved_off	Mva-faktura skjult — bare Kontantnota
 pay_methods	Betalingsmåter
-pay_methods_help	Hvilke brikker som vises på Ta betaling. Kontant blir alltid stående. Rajdhani-appmalen starter med bare Kontant — slå på UPI / Kort / Kreditt / Del igjen her.
+pay_methods_help	Hvilke knapper som vises under Ta betaling. Kontant blir alltid. Noen butikkmaler starter med bare Kontant — slå UPI / Kort / Kreditt / Del på igjen her.
 create_backup	Opprett sikkerhetskopi
 credit_limit_heading	Kredittgrense (valgt / navngitt part)
 day_close_summary	Sammendrag av dagsavslutning
@@ -793,10 +793,10 @@ printers_looking	Ser…
 saving_printer	Legger til skriver…
 cancelled	Avbestilt
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Fjerner…
+removed	Fjernet
+updating_order	Oppdaterer…
+order_updated	Bestilling oppdatert
 printers_tap_find	Trykk Finn for å liste skrivere denne enheten kan bruke.
 printers_none_found	Ingen funnet — skriv et systemskrivernavn eller en IP (f.eks. 192.168.1.50).
 printer_from_find	La til {name}
@@ -1337,7 +1337,6 @@ kot_field_table	Bord
 kot_field_shop	Butikknavn
 kot_field_waiter	Ansatt
 kot_field_station	Stasjon
-app_template_blurb_extra	Også: Eier Zahir, Administrator Asif, Servitør Nawaz; FOH-sidelinje; historikk etter 4 timer; I dag-stripen av; kompakt KOT.
 dishes_n	{n} retter
 recipe_ph	Oppskrift (valgfritt) — en porsjon bruker: Ris=0.2, Paneer=0.15
 reorder_ph	Kjøp mer ved
@@ -1364,3 +1363,7 @@ recent_changes	Nylige endringer
 lane_declared_label	Mva-faktura
 lane_owner_label	Kontantnota
 money_lane_bill	Regning: {lane}
+app_template_download_progress	Laster ned… {p}% ({d} / {t})
+app_template_download_paused	Importer på nytt for å fortsette — ferdige filer beholdes
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

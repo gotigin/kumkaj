@@ -396,12 +396,31 @@ impl App {
                         }
                     }
                     Err(e) => {
-                        let msg = if e == "Not found" {
+                        // Pack downloads stage file by file: anything already
+                        // in stays for the next Import (resume, not restart).
+                        let is_download = matches!(
+                            outcome.kind,
+                            CatalogueFetchKind::DownloadPublic { .. }
+                                | CatalogueFetchKind::DownloadPrivate { .. }
+                        );
+                        let staged = is_download
+                            && catalogue_fetch_progress()
+                                .lock()
+                                .unwrap()
+                                .is_some_and(|p| p.files_done > 0);
+                        let base = if e == "Not found" {
                             app_t("app_template_code_not_found")
                         } else if e.starts_with("Network:") {
                             app_t("app_template_need_internet")
+                        } else if e == "Cancelled" {
+                            app_t("cancelled")
                         } else {
                             e
+                        };
+                        let msg = if staged {
+                            format!("{base} · {}", app_t("app_template_download_paused"))
+                        } else {
+                            base
                         };
                         if matches!(outcome.kind, CatalogueFetchKind::PublicIndex) {
                             app_state().lock().unwrap().catalogue_public_error = msg.clone();

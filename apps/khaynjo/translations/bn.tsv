@@ -182,7 +182,7 @@ snack_secs_save	সতর্কবার্তার সময় সংরক�
 snack_secs_saved	সতর্কবার্তার সময় সংরক্ষিত — {n} সেকেন্ড
 settings_sec_backup	ব্যাকআপ ও পুনরুদ্ধার
 settings_sec_diag	ডায়াগনস্টিক্স
-settings_sec_privacy	Privacy
+settings_sec_privacy	গোপনীয়তা
 diag_privacy_help	লগ এই ডিভাইসেই থাকে। গোপন তথ্য (PIN, পাসওয়ার্ড) কখনো রাখা হয় না। ডিভাইসের বাইরে প্যাকেজ পাঠাতে প্রতিবার আপনার স্পষ্ট অনুমতি লাগে — কখনো বিক্রি বা তৃতীয় পক্ষকে দেওয়া হয় না।
 diag_level	বিস্তারিতের স্তর
 diag_level_error	ত্রুটি
@@ -339,21 +339,21 @@ server_remove_pin_ph	সার্ভার সরাতে Owner PIN
 only_owner_remove_server	শুধু Owner সার্ভার সরাতে পারেন
 owner_pin_remove_server	সার্ভার সরাতে Owner PIN লাগবে
 device_setup_help	সার্ভার খাতা এখানেই রাখে। ক্লায়েন্ট একটি সার্ভারের সঙ্গে যুক্ত হয়।
-app_template_heading	রাজধানী অ্যাপ টেমপ্লেট
-app_template_blurb	রাজধানী মেনু লোড করে; মালিক জহির (zahir), অ্যাডমিন আসিফ (asif, PIN 1111), ওয়েটার নওয়াজ (nawaz, PIN 0000); FOH সাইডবার; ইতিহাস ৪ ঘণ্টা পরে মোছে (আর ব্যাকআপে এখনই মুছুন); আজকের পট্টি বন্ধ; সরু ট্রের জন্য ছোট KOT + সাধারণ মার্জিন। সাইডবারের বাকিগুলো সেটিংসে আবার চালু করা যায়।
-app_template_apply	রাজধানী অ্যাপ টেমপ্লেট
+app_template_heading	দোকানের টেমপ্লেট
+app_template_blurb	একটি পাবলিক স্টার্টার মেনু ইমপোর্ট করুন, অথবা আপনার Khaynjo যোগাযোগের দেওয়া ১২-সংখ্যার ব্যক্তিগত কোড দিন।
+app_template_apply	টেমপ্লেট ইমপোর্ট করুন
 app_template_skip	এখন বাদ দিন
-app_template_status	সার্ভার তৈরি — রাজধানী অ্যাপ টেমপ্লেট লাগান, বা বাদ দিন
+app_template_status	সার্ভার প্রস্তুত — একটি টেমপ্লেট ইমপোর্ট করুন, অথবা এড়িয়ে যান
 app_template_importing	{title} লাগানো হচ্ছে…
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	টেমপ্লেট ডাউনলোড হচ্ছে…
+app_template_public_hdr	পাবলিক টেমপ্লেট
+app_template_private_hdr	ব্যক্তিগত টেমপ্লেট
+app_template_public_hint	পাবলিক তালিকা লোড করতে এই অংশটি খুলুন (একবার ইন্টারনেট লাগবে)।
+app_template_code_not_found	কোড পাওয়া যায়নি
+app_template_need_internet	টেমপ্লেট ডাউনলোড করতে ইন্টারনেট দরকার
+app_template_import_selected	নির্বাচিতটি ইমপোর্ট করুন
+app_template_check_code	কোড যাচাই করুন
+app_template_import	ইমপোর্ট করুন
 currency	মুদ্রা
 backup	ব্যাকআপ
 use	ব্যবহার করুন
@@ -474,19 +474,19 @@ copy_report	রিপোর্ট কপি করুন
 counted_cash_ph	ড্রয়ারে গণনা করা নগদ
 country_tax	দেশ ও কর
 tax_chrome	টিলে করের লেবেল
-tax_chrome_help	বন্ধ থাকলে অর্ডার ডেস্ক GST/কর অনুমানের সারি ও দামে-GST ইঙ্গিত লুকায়। করের হার ও দেশ ও কর সেটিংস থেকে যায় — যখন খুশি লেবেল আবার চালু করুন। রাজধানী অ্যাপ টেমপ্লেট এটি বন্ধ রেখে শুরু হয়।
+tax_chrome_help	বন্ধ থাকলে, অর্ডার ডেস্ক GST/করের আনুমানিক লাইন এবং দামে-GST প্লেসহোল্ডার লুকিয়ে রাখে। করের হার এবং দেশ ও কর সেটিংস থাকে — যেকোনো সময় লেবেল আবার চালু করুন। কিছু দোকানের টেমপ্লেট এটি বন্ধ রেখে শুরু হয়।
 tax_chrome_on	দেখান
 tax_chrome_off	লুকান
 tax_chrome_saved_on	টিলে করের লেবেল
 tax_chrome_saved_off	টিলে করের লেবেল লুকানো
 tax_invoice_till	টিলে কর চালান
-tax_invoice_help	বন্ধ থাকলে বিল শুধু ক্যাশ মেমো হয় এবং অর্ডার ডেস্কে কর চালান / ক্যাশ মেমো চিপ লুকানো থাকে। রাজধানী অ্যাপ টেমপ্লেট এটি বন্ধ রেখে শুরু হয় — আবার কর চালান বাছতে যখন খুশি দেখান চালু করুন।
+tax_invoice_help	বন্ধ থাকলে, বিল শুধু ক্যাশ মেমো হয় এবং অর্ডার ডেস্কে ট্যাক্স ইনভয়েস / ক্যাশ মেমো চিপ লুকানো থাকে। কিছু দোকানের টেমপ্লেট এটি বন্ধ রেখে শুরু হয় — ট্যাক্স ইনভয়েস আবার বেছে নিতে যেকোনো সময় দেখান চালু করুন।
 tax_invoice_on	দেখান
 tax_invoice_off	লুকান
 tax_invoice_saved_on	টিলে কর চালান
 tax_invoice_saved_off	কর চালান লুকানো — শুধু ক্যাশ মেমো
 pay_methods	পেমেন্টের উপায়
-pay_methods_help	পেমেন্ট নিন-এ কোন চিপ দেখাবে। নগদ সবসময় থাকে। রাজধানী অ্যাপ টেমপ্লেট শুধু নগদ দিয়ে শুরু হয় — UPI / কার্ড / বাকি / ভাগ এখানে আবার চালু করুন।
+pay_methods_help	পেমেন্ট নিন-এ কোন চিপগুলো দেখা যায়। নগদ সবসময় থাকে। কিছু দোকানের টেমপ্লেট শুধু নগদ দিয়ে শুরু হয় — এখানে UPI / কার্ড / বাকি / ভাগ আবার চালু করুন।
 create_backup	ব্যাকআপ তৈরি করুন
 credit_limit_heading	ক্রেডিট সীমা (বাছাই করা / নামযুক্ত পার্টি)
 day_close_summary	দিন শেষের সারাংশ
@@ -793,10 +793,10 @@ printers_looking	এই ডিভাইস ও Wi‑Fi-এ প্রিন্ট
 saving_printer	প্রিন্টার যোগ হচ্ছে…
 cancelled	বাতিল
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	সরানো হচ্ছে…
+removed	সরানো হয়েছে
+updating_order	আপডেট হচ্ছে…
+order_updated	অর্ডার আপডেট হয়েছে
 printers_tap_find	এই ডিভাইস যে প্রিন্টার ব্যবহার করতে পারে তা দেখতে খুঁজুন-এ ট্যাপ করুন।
 printers_none_found	কোনো প্রিন্টার পাওয়া যায়নি — সিস্টেম প্রিন্টারের নাম বা নেটওয়ার্ক ঠিকানা লিখুন (যেমন 192.168.1.50)।
 printer_from_find	{name} যোগ হলো
@@ -1337,7 +1337,6 @@ kot_field_table	টেবিল
 kot_field_shop	দোকানের নাম
 kot_field_waiter	কর্মী
 kot_field_station	স্টেশন
-app_template_blurb_extra	সঙ্গে: মালিক জহির, অ্যাডমিন আসিফ, ওয়েটার নওয়াজ; FOH সাইডবার; ৪ ঘণ্টা পরে ইতিহাস; আজকের পট্টি বন্ধ; ছোট KOT।
 dishes_n	{n}টি পদ
 recipe_ph	রেসিপি (ঐচ্ছিক) — এক প্লেটে লাগে: Rice=0.2, Paneer=0.15
 reorder_ph	এতে পৌঁছালে আরও কিনুন
@@ -1364,3 +1363,7 @@ recent_changes	সাম্প্রতিক পরিবর্তন
 lane_declared_label	কর চালান
 lane_owner_label	ক্যাশ মেমো
 money_lane_bill	বিল: {lane}
+app_template_download_progress	ডাউনলোড হচ্ছে… {p}% ({d} / {t})
+app_template_download_paused	আবার শুরু করতে আবার ইমপোর্ট করুন — সম্পূর্ণ ফাইলগুলো রাখা থাকে
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

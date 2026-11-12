@@ -182,7 +182,7 @@ snack_secs_save	அறிவிப்பு நேரத்தைச் சே�
 snack_secs_saved	அறிவிப்பு நேரம் சேமிக்கப்பட்டது — {n} விநாடிகள்
 settings_sec_backup	காப்புப்பிரதி & மீட்பு
 settings_sec_diag	கண்டறிதல்
-settings_sec_privacy	Privacy
+settings_sec_privacy	தனியுரிமை
 diag_privacy_help	பதிவுகள் இந்த சாதனத்திலேயே இருக்கும். ரகசியங்கள் (PIN, கடவுச்சொற்கள்) ஒருபோதும் சேமிக்கப்படாது. சாதனத்துக்கு வெளியே தொகுப்பை அனுப்ப ஒவ்வொரு முறையும் உங்கள் தெளிவான ஒப்புதல் தேவை — ஒருபோதும் விற்கப்படாது அல்லது மூன்றாம் தரப்புக்குக் கொடுக்கப்படாது.
 diag_level	விவர நிலை
 diag_level_error	பிழைகள்
@@ -339,21 +339,21 @@ server_remove_pin_ph	சேவையகத்தை நீக்க Owner PIN
 only_owner_remove_server	சேவையகத்தை Owner மட்டுமே நீக்கலாம்
 owner_pin_remove_server	சேவையகத்தை நீக்க Owner PIN வேண்டும்
 device_setup_help	சர்வர் கணக்குகளை இங்கே வைத்திருக்கும். கிளையன்ட் ஒரு சர்வருடன் இணையும்.
-app_template_heading	ராஜதானி ஆப் டெம்ப்ளேட்
-app_template_blurb	ராஜதானி மெனுவை ஏற்றும்; உரிமையாளர் ஜாஹிர் (zahir), நிர்வாகி ஆசிப் (asif, PIN 1111), பணியாளர் நவாஸ் (nawaz, PIN 0000); FOH பக்கப்பட்டி; வரலாறு 4 மணி நேரத்துக்குப் பின் அழியும் (காப்புப்பிரதியில் இப்போது அழி கூட); இன்றைய பட்டை முடக்கம்; குறுகிய தட்டுகளுக்குச் சிறிய KOT + நிலையான ஓரங்கள். பக்கப்பட்டியின் மற்றவற்றை அமைப்புகளில் மீண்டும் இயக்கலாம்.
-app_template_apply	ராஜதானி ஆப் டெம்ப்ளேட்
+app_template_heading	கடை வார்ப்புருக்கள்
+app_template_blurb	ஒரு பொது தொடக்க மெனுவை இறக்குமதி செய்யவும், அல்லது உங்கள் Khaynjo தொடர்பிடமிருந்து பெற்ற 12 இலக்க தனிப்பட்ட குறியீட்டை உள்ளிடவும்.
+app_template_apply	வார்ப்புருவை இறக்குமதி செய்
 app_template_skip	இப்போதைக்குத் தவிர்
-app_template_status	சேவையகம் தயார் — ராஜதானி ஆப் டெம்ப்ளேட்டைப் பயன்படுத்தவும், அல்லது தவிர்க்கவும்
+app_template_status	சர்வர் தயார் — ஒரு வார்ப்புருவை இறக்குமதி செய்யவும், அல்லது தவிர்க்கவும்
 app_template_importing	{title} பயன்படுத்தப்படுகிறது…
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	வார்ப்புரு பதிவிறக்கப்படுகிறது…
+app_template_public_hdr	பொது வார்ப்புருக்கள்
+app_template_private_hdr	தனிப்பட்ட வார்ப்புரு
+app_template_public_hint	பொதுப் பட்டியலை ஏற்ற இந்தப் பகுதியைத் திறக்கவும் (ஒருமுறை இணையம் தேவை).
+app_template_code_not_found	குறியீடு கிடைக்கவில்லை
+app_template_need_internet	வார்ப்புருக்களைப் பதிவிறக்க இணையம் தேவை
+app_template_import_selected	தேர்ந்தெடுத்ததை இறக்குமதி செய்
+app_template_check_code	குறியீட்டைச் சரிபார்
+app_template_import	இறக்குமதி செய்
 currency	நாணயம்
 backup	காப்புப்பிரதி
 use	பயன்படுத்து
@@ -474,19 +474,19 @@ copy_report	அறிக்கையை நகல்
 counted_cash_ph	டிராயரில் எண்ணிய ரொக்கம்
 country_tax	நாடு & வரி
 tax_chrome	டில்லில் வரி லேபிள்கள்
-tax_chrome_help	முடக்கத்தில் இருந்தால், ஆர்டர் மேசை GST/வரி மதிப்பீட்டு வரிகளையும் விலையில்-GST குறிப்புகளையும் மறைக்கும். வரி விகிதங்களும் நாடு & வரி அமைப்புகளும் இருக்கும் — லேபிள்களை எப்போது வேண்டுமானாலும் மீண்டும் இயக்கவும். ராஜதானி ஆப் டெம்ப்ளேட் இதை முடக்கத்துடன் தொடங்கும்.
+tax_chrome_help	அணைக்கப்பட்டிருக்கும்போது, ஆர்டர் மேசை GST/வரி மதிப்பீட்டு வரிகளையும் விலையில்-GST இடப்பிடிகளையும் மறைக்கும். வரி விகிதங்களும் நாடு மற்றும் வரி அமைப்புகளும் இருக்கும் — எப்போது வேண்டுமானாலும் லேபிள்களை மீண்டும் இயக்கவும். சில கடை வார்ப்புருக்கள் இதை அணைத்தபடி தொடங்குகின்றன.
 tax_chrome_on	காட்டு
 tax_chrome_off	மறை
 tax_chrome_saved_on	டில்லில் வரி லேபிள்கள்
 tax_chrome_saved_off	டில்லில் வரி லேபிள்கள் மறைக்கப்பட்டன
 tax_invoice_till	டில்லில் வரி விலைப்பட்டியல்
-tax_invoice_help	முடக்கத்தில் இருந்தால் பில்கள் ரொக்க மெமோ மட்டுமே, ஆர்டர் மேசையில் வரி விலைப்பட்டியல் / ரொக்க மெமோ சில்லுகள் மறைக்கப்படும். ராஜதானி ஆப் டெம்ப்ளேட் இதை முடக்கத்துடன் தொடங்கும் — வரி விலைப்பட்டியலை மீண்டும் தேர்வுசெய்ய எப்போது வேண்டுமானாலும் காட்டு என்பதை இயக்கவும்.
+tax_invoice_help	அணைக்கப்பட்டிருக்கும்போது, பில்கள் பண மெமோ மட்டுமே, ஆர்டர் மேசையில் வரி விலைப்பட்டியல் / பண மெமோ பொத்தான்கள் மறைக்கப்படும். சில கடை வார்ப்புருக்கள் இதை அணைத்தபடி தொடங்குகின்றன — வரி விலைப்பட்டியலை மீண்டும் தேர்வு செய்ய காட்டு என்பதை எப்போது வேண்டுமானாலும் இயக்கவும்.
 tax_invoice_on	காட்டு
 tax_invoice_off	மறை
 tax_invoice_saved_on	டில்லில் வரி விலைப்பட்டியல்
 tax_invoice_saved_off	வரி விலைப்பட்டியல் மறைக்கப்பட்டது — ரொக்க மெமோ மட்டும்
 pay_methods	கட்டண முறைகள்
-pay_methods_help	கட்டணம் பெறு என்பதில் எந்தச் சில்லுகள் தோன்றும். ரொக்கம் எப்போதும் இருக்கும். ராஜதானி ஆப் டெம்ப்ளேட் ரொக்கம் மட்டுமுடன் தொடங்கும் — UPI / அட்டை / கடன் / பிரிப்பு இங்கே மீண்டும் இயக்கவும்.
+pay_methods_help	பணம் பெறு என்பதில் எந்தப் பொத்தான்கள் தெரியும். பணம் எப்போதும் இருக்கும். சில கடை வார்ப்புருக்கள் பணம் மட்டும் கொண்டு தொடங்குகின்றன — UPI / கார்டு / கடன் / பிரிப்பு ஆகியவற்றை இங்கே மீண்டும் இயக்கவும்.
 create_backup	காப்புப்பிரதி உருவாக்கு
 credit_limit_heading	கடன் வரம்பு (தேர்ந்த / பெயரிட்ட தரப்பு)
 day_close_summary	நாள் முடிவு சுருக்கம்
@@ -793,10 +793,10 @@ printers_looking	இந்தச் சாதனம் மற்றும் Wi�
 saving_printer	அச்சுப்பொறி சேர்க்கப்படுகிறது…
 cancelled	ரத்து
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	நீக்கப்படுகிறது…
+removed	நீக்கப்பட்டது
+updating_order	புதுப்பிக்கப்படுகிறது…
+order_updated	ஆர்டர் புதுப்பிக்கப்பட்டது
 printers_tap_find	இந்தச் சாதனம் பயன்படுத்தும் அச்சுப்பொறிகளைப் பட்டியலிட கண்டுபிடி என்பதைத் தட்டவும்.
 printers_none_found	அச்சுப்பொறிகள் இல்லை — கணினி அச்சுப்பொறி பெயர் அல்லது பிணைய முகவரி எழுதுங்கள் (எ.கா. 192.168.1.50).
 printer_from_find	{name} சேர்க்கப்பட்டது
@@ -1337,7 +1337,6 @@ kot_field_table	மேசை
 kot_field_shop	கடை பெயர்
 kot_field_waiter	ஊழியர்
 kot_field_station	நிலையம்
-app_template_blurb_extra	மேலும்: உரிமையாளர் ஜாஹிர், நிர்வாகி ஆசிப், பணியாளர் நவாஸ்; FOH பக்கப்பட்டி; 4 மணி நேரத்துக்குப் பின் வரலாறு; இன்றைய பட்டை முடக்கம்; சிறிய KOT.
 dishes_n	{n} உணவுகள்
 recipe_ph	செய்முறை (விருப்பம்) — ஒரு பரிமாறலுக்கு: Rice=0.2, Paneer=0.15
 reorder_ph	இந்த அளவில் மேலும் வாங்கு
@@ -1364,3 +1363,7 @@ recent_changes	சமீபத்திய மாற்றங்கள்
 lane_declared_label	வரி விலைப்பட்டியல்
 lane_owner_label	ரொக்க மெமோ
 money_lane_bill	பில்: {lane}
+app_template_download_progress	பதிவிறக்குகிறது… {p}% ({d} / {t})
+app_template_download_paused	தொடர மீண்டும் இறக்குமதி செய்யவும் — முடிந்த கோப்புகள் வைக்கப்படும்
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

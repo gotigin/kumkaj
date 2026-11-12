@@ -182,7 +182,7 @@ snack_secs_save	Spremi trajanje upozorenja
 snack_secs_saved	Trajanje upozorenja spremljeno — {n} sekundi
 settings_sec_backup	Sigurnosna kopija i povrat
 settings_sec_diag	Dijagnostika
-settings_sec_privacy	Privacy
+settings_sec_privacy	Privatnost
 diag_privacy_help	Zapisnici ostaju na ovom uređaju. Tajne (PIN, lozinke) se nikad ne spremaju. Dijeljenje paketa izvan uređaja svaki put treba vaše izričito odobrenje — nikad se ne prodaje ni ne daje trećima.
 diag_level	Razina pojedinosti
 diag_level_error	Pogreške
@@ -339,21 +339,21 @@ server_remove_pin_ph	PIN vlasnika za uklanjanje Servera
 only_owner_remove_server	Samo Vlasnik može ukloniti Server
 owner_pin_remove_server	Za uklanjanje ovog Servera potreban je PIN vlasnika
 device_setup_help	Server drži knjige ovdje. Klijent se uparuje sa Serverom.
-app_template_heading	Predložak aplikacije Rajdhani
-app_template_blurb	Učitava jelovnik Rajdhani; Vlasnik Zahir (zahir), Admin Asif (asif, PIN 1111), Konobar Nawaz (nawaz, PIN 0000); bočna traka FOH; povijest se briše nakon 4 sata (i Očisti sada u Sigurnosnoj kopiji); traka Danas isključena; zbijeni KOT + Standardne margine za uske ladice. Susjede na bočnoj traci možete ponovno uključiti u Postavkama.
-app_template_apply	Predložak aplikacije Rajdhani
+app_template_heading	Predlošci trgovine
+app_template_blurb	Uvezite javni početni jelovnik ili unesite privatni 12-znamenkasti kod od svog Khaynjo kontakta.
+app_template_apply	Uvezi predložak
 app_template_skip	Preskoči zasada
-app_template_status	Server spreman — primijenite predložak Rajdhani ili preskočite
+app_template_status	Poslužitelj spreman — uvezite predložak ili preskočite
 app_template_importing	Primjena {title}…
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	Preuzimanje predloška…
+app_template_public_hdr	Javni predlošci
+app_template_private_hdr	Privatni predložak
+app_template_public_hint	Otvorite ovaj odjeljak za učitavanje javnog popisa (jednom je potreban internet).
+app_template_code_not_found	Kod nije pronađen
+app_template_need_internet	Za preuzimanje predložaka potreban je internet
+app_template_import_selected	Uvezi odabrano
+app_template_check_code	Provjeri kod
+app_template_import	Uvezi
 currency	Valuta
 backup	Sigurnosna kopija
 use	Koristi
@@ -474,19 +474,19 @@ copy_report	Kopiraj izvješće
 counted_cash_ph	Prebrojana gotovina u ladici
 country_tax	Država i porez
 tax_chrome	Porezne oznake na blagajni
-tax_chrome_help	Kad je isključeno, pult narudžbi skriva retke procjene GST/poreza i držače GST u cijeni. Porezne stope i postavke Država i porez ostaju — oznake možete vratiti bilo kad. Predložak Rajdhani počinje s ovim isključenim.
+tax_chrome_help	Kad je isključeno, pult za narudžbe skriva retke procjene GST-a/poreza i oznake GST-a u cijeni. Porezne stope i postavke države i poreza ostaju — oznake ponovno uključite bilo kada. Neki predlošci trgovine počinju s ovim isključenim.
 tax_chrome_on	Prikaži
 tax_chrome_off	Sakrij
 tax_chrome_saved_on	Porezne oznake na blagajni
 tax_chrome_saved_off	Porezne oznake skrivene na blagajni
 tax_invoice_till	Porezni račun na blagajni
-tax_invoice_help	Kad je isključeno, računi su samo gotovinski listić i čipovi Porezni račun / Gotovinski listić su skriveni na pultu. Predložak Rajdhani počinje s ovim isključenim — Prikaži vratite bilo kad da opet birate Porezni račun.
+tax_invoice_help	Kad je isključeno, računi su samo gotovinski računi, a gumbi Porezni račun / Gotovinski račun skriveni su na pultu za narudžbe. Neki predlošci trgovine počinju s ovim isključenim — uključite Prikaži bilo kada da ponovno odaberete Porezni račun.
 tax_invoice_on	Prikaži
 tax_invoice_off	Sakrij
 tax_invoice_saved_on	Porezni račun na blagajni
 tax_invoice_saved_off	Porezni račun skriven — samo gotovinski listić
 pay_methods	Načini plaćanja
-pay_methods_help	Koji se čipovi vide na Naplati. Gotovina uvijek ostaje. Predložak Rajdhani počinje samo s gotovinom — UPI / Kartica / Stranke / Podijeli vratite ovdje.
+pay_methods_help	Koji se gumbi prikazuju na Primi plaćanje. Gotovina uvijek ostaje. Neki predlošci trgovine počinju samo s Gotovinom — ovdje ponovno uključite UPI / Kartica / Kredit / Podjela.
 create_backup	Napravi sigurnosnu kopiju
 credit_limit_heading	Limit duga (odabrana / imenovana stranka)
 day_close_summary	Sažetak zaključenja dana
@@ -793,10 +793,10 @@ printers_looking	Tražim…
 saving_printer	Dodajem pisač…
 cancelled	Otkazano
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Uklanjanje…
+removed	Uklonjeno
+updating_order	Ažuriranje…
+order_updated	Narudžba ažurirana
 printers_tap_find	Dodirnite Pronađi da vidite pisače koje ovaj uređaj može koristiti.
 printers_none_found	Ništa nije pronađeno — upišite ime sustavnog pisača ili IP (npr. 192.168.1.50).
 printer_from_find	Dodano {name}
@@ -1337,7 +1337,6 @@ kot_field_table	Stol
 kot_field_shop	Ime lokala
 kot_field_waiter	Osoblje
 kot_field_station	Stanica
-app_template_blurb_extra	Također: Vlasnik Zahir, Admin Asif, Konobar Nawaz; bočna traka FOH; povijest nakon 4 sata; traka Danas isključena; zbijeni KOT.
 dishes_n	{n} jela
 recipe_ph	Recept (nije obavezno) — jedna porcija troši: Rice=0.2, Paneer=0.15
 reorder_ph	Naruči još pri
@@ -1364,3 +1363,7 @@ recent_changes	Nedavne promjene
 lane_declared_label	Porezni račun
 lane_owner_label	Gotovinski listić
 money_lane_bill	Račun: {lane}
+app_template_download_progress	Preuzimanje… {p}% ({d} / {t})
+app_template_download_paused	Ponovno uvezite za nastavak — dovršene datoteke se čuvaju
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

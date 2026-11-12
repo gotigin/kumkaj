@@ -4,21 +4,21 @@
     {
       "id": "khaynjo-starter",
       "title": "Khaynjo starter menu",
-      "blurb": "World cuisines from the public shelf \u2014 edit prices after import.",
+      "blurb": "World cuisines from the public Khaynjo shelf — edit prices after import.",
       "kind": "app_template",
-      "bytes": 4126
+      "bytes": 1291230
     },
     {
       "id": "cafe-starter",
-      "title": "Caf\u00e9 starter",
-      "blurb": "Tea, coffee, and a few snacks \u2014 edit prices after import.",
+      "title": "Café starter",
+      "blurb": "Tea, coffee, cold drinks, bakery and a few snacks — edit prices after import.",
       "kind": "app_template",
-      "bytes": 874
+      "bytes": 1434945
     },
     {
       "id": "khaynjo-items",
       "title": "Khaynjo Items Template",
-      "blurb": "Full public dish photo shelf (~1459 dishes).",
+      "blurb": "Full public dish photo shelf (~1459 dishes) for Import complete template.",
       "kind": "shelf",
       "bytes": 134302948
     }

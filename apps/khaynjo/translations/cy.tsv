@@ -182,7 +182,7 @@ snack_secs_save	Cadw amser rhybudd
 snack_secs_saved	Amser rhybudd wedi'i gadw — {n} eiliad
 settings_sec_backup	Copi wrth gefn ac adfer
 settings_sec_diag	Diagnosteg
-settings_sec_privacy	Privacy
+settings_sec_privacy	Preifatrwydd
 diag_privacy_help	Mae logiau'n aros ar y ddyfais hon. Nid yw cyfrinachau (PIN, cyfrineiriau) byth yn cael eu storio. Mae rhannu pecyn oddi ar y ddyfais angen eich cymeradwyaeth benodol bob tro — ni chaiff ei werthu na'i roi i drydydd partïon.
 diag_level	Lefel manylder
 diag_level_error	Gwallau
@@ -339,21 +339,21 @@ server_remove_pin_ph	PIN y perchennog i dynnu gweinydd
 only_owner_remove_server	Dim ond y Perchennog all dynnu gweinydd
 owner_pin_remove_server	Mae angen PIN y Perchennog i dynnu'r gweinydd hwn
 device_setup_help	Mae'r Gweinydd yn cadw'r llyfrau yma. Mae Cleient yn paru â Gweinydd.
-app_template_heading	Templed Ap Rajdhani
-app_template_blurb	Yn llwytho dewislen Rajdhani; Perchennog Zahir (zahir), Gweinyddwr Asif (asif, PIN 1111), Gweinydd Nawaz (nawaz, PIN 0000); bar ochr FOH; mae hanes yn clirio ar ôl 4 awr (ac Clirio nawr yn Copi wrth gefn); stribed Heddiw i ffwrdd; KOT cryno + ymylon Safonol ar gyfer hambyrddau cul. Gellir troi cymheiriaid y bar ochr yn ôl ymlaen yn Gosodiadau.
-app_template_apply	Templed Ap Rajdhani
+app_template_heading	Templedi siop
+app_template_blurb	Mewnforiwch fwydlen gychwynnol gyhoeddus, neu rhowch god preifat 12 digid gan eich cyswllt Khaynjo.
+app_template_apply	Mewnforio templed
 app_template_skip	Hepgor am y tro
-app_template_status	Gweinydd yn barod — cymhwyswch Dempled Ap Rajdhani, neu hepgorwch
+app_template_status	Gweinydd yn barod — mewnforiwch dempled, neu hepgor
 app_template_importing	Yn cymhwyso {title}…
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	Wrthi'n llwytho'r templed i lawr…
+app_template_public_hdr	Templedi cyhoeddus
+app_template_private_hdr	Templed preifat
+app_template_public_hint	Agorwch yr adran hon i lwytho'r rhestr gyhoeddus (angen rhyngrwyd unwaith).
+app_template_code_not_found	Heb ddod o hyd i'r cod
+app_template_need_internet	Angen y rhyngrwyd i lwytho templedi i lawr
+app_template_import_selected	Mewnforio'r dewis
+app_template_check_code	Gwirio'r cod
+app_template_import	Mewnforio
 currency	Arian cyfred
 backup	Copi wrth gefn
 use	Defnyddio
@@ -474,19 +474,19 @@ copy_report	Copïo adroddiad
 counted_cash_ph	Arian parod a gyfrifwyd yn y drôr
 country_tax	Gwlad a threth
 tax_chrome	Labeli treth ar y til
-tax_chrome_help	Pan mae i ffwrdd, mae desg yr archeb yn cuddio llinellau amcangyfrif GST/treth a dalfannau treth-mewn-pris. Mae cyfraddau treth a gosodiadau Gwlad a threth yn aros — trowch labeli yn ôl ymlaen unrhyw bryd. Mae Templed Ap Rajdhani yn dechrau gyda hyn i ffwrdd.
+tax_chrome_help	Pan fydd i ffwrdd, mae'r ddesg archebion yn cuddio llinellau amcangyfrif GST/treth a deiliaid lle GST-yn-y-pris. Mae cyfraddau treth a gosodiadau Gwlad a threth yn aros — trowch labeli ymlaen eto unrhyw bryd. Mae rhai templedi siop yn dechrau gyda hyn i ffwrdd.
 tax_chrome_on	Dangos
 tax_chrome_off	Cuddio
 tax_chrome_saved_on	Labeli treth ar y til
 tax_chrome_saved_off	Labeli treth wedi'u cuddio ar y til
 tax_invoice_till	Anfoneb dreth ar y til
-tax_invoice_help	Pan mae i ffwrdd, biliau yw Memo arian yn unig ac mae sglodion Anfoneb dreth / Memo arian wedi'u cuddio ar ddesg yr archeb. Mae Templed Ap Rajdhani yn dechrau gyda hyn i ffwrdd — trowch Dangos yn ôl ymlaen unrhyw bryd i ddewis Anfoneb dreth eto.
+tax_invoice_help	Pan fydd i ffwrdd, memo arian parod yn unig yw biliau ac mae botymau Anfoneb treth / Memo arian parod wedi'u cuddio ar y ddesg archebion. Mae rhai templedi siop yn dechrau gyda hyn i ffwrdd — trowch Dangos ymlaen unrhyw bryd i ddewis Anfoneb treth eto.
 tax_invoice_on	Dangos
 tax_invoice_off	Cuddio
 tax_invoice_saved_on	Anfoneb dreth ar y til
 tax_invoice_saved_off	Anfoneb dreth wedi'i chuddio — Memo arian yn unig
 pay_methods	Dulliau talu
-pay_methods_help	Pa sglodion sy'n ymddangos ar Cymryd taliad. Mae Arian parod bob amser yn aros. Mae Templed Ap Rajdhani yn dechrau gydag Arian parod yn unig — trowch UPI / Cerdyn / Credyd / Rhannu yn ôl ymlaen yma.
+pay_methods_help	Pa fotymau sy'n ymddangos ar Cymryd taliad. Mae Arian parod yn aros bob amser. Mae rhai templedi siop yn dechrau gydag Arian parod yn unig — trowch UPI / Cerdyn / Credyd / Rhannu ymlaen eto yma.
 create_backup	Creu copi wrth gefn
 credit_limit_heading	Terfyn credyd (parti a ddewiswyd / a enwyd)
 day_close_summary	Crynodeb cau diwrnod
@@ -793,10 +793,10 @@ printers_looking	Yn chwilio…
 saving_printer	Yn ychwanegu argraffydd…
 cancelled	Wedi'i ganslo
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Wrthi'n tynnu…
+removed	Wedi'i dynnu
+updating_order	Wrthi'n diweddaru…
+order_updated	Archeb wedi'i diweddaru
 printers_tap_find	Tapiwch Chwilio i restru argraffwyr y gall y ddyfais hon eu defnyddio.
 printers_none_found	Dim wedi'u canfod — teipiwch enw argraffydd system neu IP (e.e. 192.168.1.50).
 printer_from_find	Wedi ychwanegu {name}
@@ -1337,7 +1337,6 @@ kot_field_table	Bwrdd
 kot_field_shop	Enw siop
 kot_field_waiter	Gweithwyr
 kot_field_station	Gorsaf
-app_template_blurb_extra	Hefyd: Perchennog Zahir, Gweinyddwr Asif, Gweinydd Nawaz; bar ochr FOH; hanes ar ôl 4 awr; stribed Heddiw i ffwrdd; KOT cryno.
 dishes_n	{n} pryd
 recipe_ph	Rysáit (dewisol) — mae un dogn yn defnyddio: Reis=0.2, Paneer=0.15
 reorder_ph	Prynu mwy ar
@@ -1364,3 +1363,7 @@ recent_changes	Newidiadau diweddar
 lane_declared_label	Anfoneb dreth
 lane_owner_label	Memo arian
 money_lane_bill	Bil: {lane}
+app_template_download_progress	Wrthi'n llwytho i lawr… {p}% ({d} / {t})
+app_template_download_paused	Mewnforiwch eto i ailddechrau — cedwir y ffeiliau gorffenedig
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

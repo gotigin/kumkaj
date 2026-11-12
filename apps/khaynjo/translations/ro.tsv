@@ -182,7 +182,7 @@ snack_secs_save	Salvează timpul alertei
 snack_secs_saved	Timpul alertei salvat — {n} secunde
 settings_sec_backup	Copie de rezervă și restaurare
 settings_sec_diag	Diagnostic
-settings_sec_privacy	Privacy
+settings_sec_privacy	Confidențialitate
 diag_privacy_help	Jurnalele rămân pe acest dispozitiv. Secretele (PIN, parole) nu sunt niciodată stocate. Partajarea unui pachet în afara dispozitivului cere de fiecare dată aprobarea ta explicită — nu se vinde și nu se dă terților.
 diag_level	Nivel de detaliu
 diag_level_error	Erori
@@ -339,21 +339,21 @@ server_remove_pin_ph	PIN proprietar pentru a elimina un server
 only_owner_remove_server	Doar Proprietarul poate elimina un server
 owner_pin_remove_server	PIN-ul proprietarului e necesar ca să elimini acest server
 device_setup_help	Serverul ține registrele aici. Clientul se împerechează cu un Server.
-app_template_heading	Șablon aplicație Rajdhani
-app_template_blurb	Încarcă meniul Rajdhani; Proprietar Zahir (zahir), Admin Asif (asif, PIN 1111), Ospătar Nawaz (nawaz, PIN 0000); bară laterală FOH; istoricul se golește după 4 ore (și Golește acum în Copie de rezervă); banda Azi oprită; KOT compact + margini Standard pentru tăvi înguste. Vecinii barei laterale se pot reporni în Setări.
-app_template_apply	Șablon aplicație Rajdhani
+app_template_heading	Șabloane de magazin
+app_template_blurb	Importați un meniu de pornire public sau introduceți un cod privat de 12 cifre de la contactul dvs. Khaynjo.
+app_template_apply	Importă șablonul
 app_template_skip	Sari deocamdată
-app_template_status	Serverul e gata — aplică șablonul Rajdhani sau sari
+app_template_status	Server pregătit — importați un șablon sau săriți peste
 app_template_importing	Se aplică {title}…
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	Se descarcă șablonul…
+app_template_public_hdr	Șabloane publice
+app_template_private_hdr	Șablon privat
+app_template_public_hint	Deschideți această secțiune pentru a încărca lista publică (e nevoie de internet o dată).
+app_template_code_not_found	Codul nu a fost găsit
+app_template_need_internet	E nevoie de internet pentru a descărca șabloane
+app_template_import_selected	Importă selecția
+app_template_check_code	Verifică codul
+app_template_import	Importă
 currency	Monedă
 backup	Copie de rezervă
 use	Folosește
@@ -474,19 +474,19 @@ copy_report	Copiază raportul
 counted_cash_ph	Numerar numărat în sertar
 country_tax	Țară și taxă
 tax_chrome	Etichete de taxă la casă
-tax_chrome_help	Când e oprit, tejgheaua ascunde liniile de estimare GST/taxă și locurile taxei în preț. Cotele și setările Țară și taxă rămân — etichetele se pot reporni oricând. Șablonul Rajdhani începe cu asta oprit.
+tax_chrome_help	Când este oprit, pupitrul de comenzi ascunde rândurile de estimare GST/taxe și marcajele GST inclus în preț. Cotele de taxe și setările Țară și taxe rămân — reporniți etichetele oricând. Unele șabloane de magazin pornesc cu această opțiune oprită.
 tax_chrome_on	Arată
 tax_chrome_off	Ascunde
 tax_chrome_saved_on	Etichete de taxă la casă
 tax_chrome_saved_off	Etichetele de taxă sunt ascunse la casă
 tax_invoice_till	Factură fiscală la casă
-tax_invoice_help	Când e oprit, notele sunt doar Notă de casă, iar chipurile Factură fiscală / Notă de casă sunt ascunse la tejghea. Șablonul Rajdhani începe cu asta oprit — pornește Arată oricând ca să alegi din nou Factură fiscală.
+tax_invoice_help	Când este oprit, notele sunt doar bonuri de numerar, iar butoanele Factură fiscală / Bon de numerar sunt ascunse pe pupitrul de comenzi. Unele șabloane de magazin pornesc cu această opțiune oprită — porniți Afișează oricând pentru a alege din nou Factură fiscală.
 tax_invoice_on	Arată
 tax_invoice_off	Ascunde
 tax_invoice_saved_on	Factură fiscală la casă
 tax_invoice_saved_off	Factură fiscală ascunsă — doar Notă de casă
 pay_methods	Metode de plată
-pay_methods_help	Ce chipuri apar la Încasează plata. Numerarul rămâne mereu. Șablonul Rajdhani începe doar cu Numerar — repornește aici UPI / Card / Credit / Împarte.
+pay_methods_help	Ce butoane apar la Încasează. Numerarul rămâne mereu. Unele șabloane de magazin pornesc doar cu Numerar — reporniți aici UPI / Card / Credit / Împarte.
 create_backup	Creează copie de rezervă
 credit_limit_heading	Limită de credit (partener selectat / numit)
 day_close_summary	Rezumatul închiderii de zi
@@ -793,10 +793,10 @@ printers_looking	Se caută…
 saving_printer	Se adaugă imprimanta…
 cancelled	Anulat
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Se elimină…
+removed	Eliminat
+updating_order	Se actualizează…
+order_updated	Comanda a fost actualizată
 printers_tap_find	Atinge Căutare ca să listezi imprimantele pe care le poate folosi acest dispozitiv.
 printers_none_found	Nimic găsit — tastează un nume de imprimantă de sistem sau un IP (ex. 192.168.1.50).
 printer_from_find	Adăugat {name}
@@ -1337,7 +1337,6 @@ kot_field_table	Masă
 kot_field_shop	Numele localului
 kot_field_waiter	Personal
 kot_field_station	Stație
-app_template_blurb_extra	De asemenea: Proprietar Zahir, Administrator Asif, Chelner Nawaz; bară laterală FOH; istoric după 4 ore; banda Azi oprită; KOT compact.
 dishes_n	{n} feluri
 recipe_ph	Rețetă (opțional) — o porție folosește: Orez=0.2, Paneer=0.15
 reorder_ph	Cumpără mai mult de la
@@ -1364,3 +1363,7 @@ recent_changes	Modificări recente
 lane_declared_label	Factură fiscală
 lane_owner_label	Notă de casă
 money_lane_bill	Notă: {lane}
+app_template_download_progress	Se descarcă… {p}% ({d} / {t})
+app_template_download_paused	Importați din nou pentru a relua — fișierele terminate se păstrează
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

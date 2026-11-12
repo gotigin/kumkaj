@@ -182,7 +182,7 @@ snack_secs_save	Պահել ծանուցման ժամանակը
 snack_secs_saved	Ծանուցման ժամանակը պահվել է — {n} վայրկյան
 settings_sec_backup	Պահուստ և վերականգնում
 settings_sec_diag	Ախտորոշում
-settings_sec_privacy	Privacy
+settings_sec_privacy	Գաղտնիություն
 diag_privacy_help	Մատյանները մնում են այս սարքում։ Գաղտնիքները (PIN, գաղտնաբառեր) երբեք չեն պահվում։ Սարքից դուրս փաթեթ կիսելը ամեն անգամ պահանջում է ձեր բացահայտ հաստատումը — երբեք չի վաճառվում և չի տրվում երրորդ կողմերին։
 diag_level	Մանրամասնության մակարդակ
 diag_level_error	Սխալներ
@@ -339,21 +339,21 @@ server_remove_pin_ph	Սեփականատիրոջ PIN՝ սերվեր հեռացն�
 only_owner_remove_server	Միայն Սեփականատերը կարող է հեռացնել սերվեր
 owner_pin_remove_server	Այս սերվերը հեռացնելու համար պետք է սեփականատիրոջ PIN-ը
 device_setup_help	Սերվերը մատյանները պահում է այստեղ։ Կլիենտը զուգակցվում է Սերվերի հետ։
-app_template_heading	Rajdhani հավելվածի ձևանմուշ
-app_template_blurb	Բեռնում է Rajdhani մենյուն. Սեփականատեր Zahir (zahir), Ադմին Asif (asif, PIN 1111), Մատուցող Nawaz (nawaz, PIN 0000). FOH կողային վահանակ. պատմությունը մաքրվում է 4 ժամ հետո (և Մաքրել հիմա Պահուստում). Այսօր շերտն անջատված է. կոմպակտ KOT + ստանդարտ լուսանցքներ նեղ սկուտեղների համար. Վահանակի հարևանները կարելի է նորից միացնել Կարգավորումներում։
-app_template_apply	Rajdhani հավելվածի ձևանմուշ
+app_template_heading	Խանութի ձևանմուշներ
+app_template_blurb	Ներմուծեք հանրային մեկնարկային ճաշացանկ կամ մուտքագրեք Khaynjo-ի ձեր կոնտակտից ստացված 12 նիշանոց մասնավոր կոդը։
+app_template_apply	Ներմուծել ձևանմուշը
 app_template_skip	Առայժմ բաց թողնել
-app_template_status	Սերվերը պատրաստ է — կիրառեք Rajdhani ձևանմուշը կամ բաց թողեք
+app_template_status	Սերվերը պատրաստ է — ներմուծեք ձևանմուշ կամ բաց թողեք
 app_template_importing	Կիրառվում է {title}…
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	Ձևանմուշի ներբեռնում…
+app_template_public_hdr	Հանրային ձևանմուշներ
+app_template_private_hdr	Մասնավոր ձևանմուշ
+app_template_public_hint	Բացեք այս բաժինը հանրային ցանկը բեռնելու համար (մեկ անգամ անհրաժեշտ է ինտերնետ)։
+app_template_code_not_found	Կոդը չի գտնվել
+app_template_need_internet	Ձևանմուշներ ներբեռնելու համար անհրաժեշտ է ինտերնետ
+app_template_import_selected	Ներմուծել ընտրվածը
+app_template_check_code	Ստուգել կոդը
+app_template_import	Ներմուծել
 currency	Արժույթ
 backup	Պահուստ
 use	Օգտագործել
@@ -474,19 +474,19 @@ copy_report	Պատճենել հաշվետվությունը
 counted_cash_ph	Հաշված կանխիկը դարակում
 country_tax	Երկիր և հարկ
 tax_chrome	Հարկի պիտակներ դրամարկղում
-tax_chrome_help	Անջատված ժամանակ պատվերի սեղանը թաքցնում է GST/հարկի գնահատման տողերը և գնի մեջ հարկի տեղերը։ Հարկի դրույքներն ու Երկիր և հարկ կարգավորումները մնում են — պիտակները ցանկացած պահի կարելի է նորից միացնել։ Rajdhani ձևանմուշը սկսում է սա անջատված։
+tax_chrome_help	Անջատված վիճակում պատվերների սեղանը թաքցնում է GST/հարկի գնահատման տողերը և «GST գնի մեջ» տեղապահները։ Հարկային դրույքաչափերը և Երկիր և հարկ կարգավորումները մնում են — պիտակները կարող եք ցանկացած պահի կրկին միացնել։ Խանութի որոշ ձևանմուշներ սկսվում են սա անջատված։
 tax_chrome_on	Ցույց տալ
 tax_chrome_off	Թաքցնել
 tax_chrome_saved_on	Հարկի պիտակները դրամարկղում են
 tax_chrome_saved_off	Հարկի պիտակները թաքնված են դրամարկղում
 tax_invoice_till	Հարկային հաշիվ դրամարկղում
-tax_invoice_help	Անջատված ժամանակ հաշիվները միայն Կանխիկ հուշագիր են, և Հարկային հաշիվ / Կանխիկ հուշագիր չիպերը թաքնված են պատվերի սեղանին։ Rajdhani ձևանմուշը սկսում է սա անջատված — ցանկացած պահ միացրեք Ցույց տալ՝ նորից Հարկային հաշիվ ընտրելու համար։
+tax_invoice_help	Անջատված վիճակում հաշիվները միայն կանխիկի կտրոններ են, իսկ Հարկային հաշիվ / Կանխիկի կտրոն կոճակները թաքցված են պատվերների սեղանին։ Խանութի որոշ ձևանմուշներ սկսվում են սա անջատված — ցանկացած պահի միացրեք Ցույց տալ՝ Հարկային հաշիվը կրկին ընտրելու համար։
 tax_invoice_on	Ցույց տալ
 tax_invoice_off	Թաքցնել
 tax_invoice_saved_on	Հարկային հաշիվը դրամարկղում է
 tax_invoice_saved_off	Հարկային հաշիվը թաքնված է — միայն Կանխիկ հուշագիր
 pay_methods	Վճարման եղանակներ
-pay_methods_help	Որ չիպերն են երևում Վերցրու վճարումը ժամանակ։ Կանխիկը միշտ մնում է։ Rajdhani ձևանմուշը սկսում է միայն Կանխիկով — այստեղ նորից միացրեք UPI / Քարտ / Վարկ / Բաժանել։
+pay_methods_help	Որ կոճակներն են երևում Ընդունել վճարումը էկրանին։ Կանխիկը միշտ մնում է։ Խանութի որոշ ձևանմուշներ սկսվում են միայն Կանխիկով — այստեղ կրկին միացրեք UPI / Քարտ / Վարկ / Բաժանում։
 create_backup	Ստեղծել պահուստ
 credit_limit_heading	Վարկի սահման (ընտրված / անվանված գործընկեր)
 day_close_summary	Օրվա փակման ամփոփում
@@ -793,10 +793,10 @@ printers_looking	Որոնում…
 saving_printer	Տպիչի ավելացում…
 cancelled	Չեղարկված
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Հեռացվում է…
+removed	Հեռացված է
+updating_order	Թարմացվում է…
+order_updated	Պատվերը թարմացվեց
 printers_tap_find	Հպեք Որոնում՝ այս սարքի օգտագործելի տպիչների ցանկի համար։
 printers_none_found	Ոչինչ չի գտնվել — մուտքագրեք համակարգային տպիչի անուն կամ IP (օր. 192.168.1.50)։
 printer_from_find	Ավելացվել է {name}
@@ -1337,7 +1337,6 @@ kot_field_table	Սեղան
 kot_field_shop	Խանութի անուն
 kot_field_waiter	Անձնակազմ
 kot_field_station	Կայան
-app_template_blurb_extra	Նաև՝ Սեփականատեր Zahir, Ադմին Asif, Մատուցող Nawaz; FOH կողային վահանակ; պատմություն 4 ժամից հետո; Այսօր շերտը անջատված; կոմպակտ KOT։
 dishes_n	{n} ուտեստ
 recipe_ph	Բաղադրատոմս (ըստ ցանկության) — մեկ բաժինը օգտագործում է՝ Բրինձ=0.2, Պանիր=0.15
 reorder_ph	Գնել ավելին՝
@@ -1364,3 +1363,7 @@ recent_changes	Վերջին փոփոխություններ
 lane_declared_label	Հարկային հաշիվ
 lane_owner_label	Կանխիկ հուշագիր
 money_lane_bill	Հաշիվ՝ {lane}
+app_template_download_progress	Ներբեռնում… {p}% ({d} / {t})
+app_template_download_paused	Կրկին ներմուծեք շարունակելու համար — ավարտված ֆայլերը պահպանվում են
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

@@ -182,7 +182,7 @@ snack_secs_save	Slaan waarskuwingstyd op
 snack_secs_saved	Waarskuwingstyd opgeslaan — {n} sekondes
 settings_sec_backup	Back-up en herstel
 settings_sec_diag	Diagnostiek
-settings_sec_privacy	Privacy
+settings_sec_privacy	Privaatheid
 diag_privacy_help	Logboeke bly op hierdie toestel. Geheime (PIN, wagwoorde) word nooit gestoor nie. Deel van 'n pakket buite die toestel vereis jou uitdruklike goedkeuring elke keer — nooit verkoop of gegee aan derdepartye nie.
 diag_level	Detailvlak
 diag_level_error	Foute
@@ -339,21 +339,21 @@ server_remove_pin_ph	Eienaar se PIN om 'n bediener te verwyder
 only_owner_remove_server	Slegs die Eienaar kan 'n bediener verwyder
 owner_pin_remove_server	Eienaar se PIN vereis om hierdie bediener te verwyder
 device_setup_help	Die bediener hou die boeke hier. Kliënt paar aan 'n Bediener.
-app_template_heading	Rajdhani App Sjabloon
-app_template_blurb	Laai die Rajdhani menu; Eienaar Zahir (zahir), Admin Asif (asif, PIN 1111), Waaiter Nawaz (nawaz, PIN 0000); FOH sybalk; geskiedenis word na 4 uur geleeg (en Clear nou in Back-up); Vandag strook af; kompakte KOT + Standaard marges vir smalle bakplaatjies. Sybalk-vriende kan weer aan die gang gemaak word in Instellings.
-app_template_apply	Rajdhani App Sjabloon
+app_template_heading	Winkelsjablone
+app_template_blurb	Voer 'n openbare beginspyskaart in, of tik 'n privaat 12-syferkode van jou Khaynjo-kontak in.
+app_template_apply	Voer sjabloon in
 app_template_skip	Oorslaan vir nou
-app_template_status	Bediener gereed – pas Rajdhani App Sjabloon toe, of slaan oor
+app_template_status	Bediener gereed — voer 'n sjabloon in, of slaan oor
 app_template_importing	Pas {title}… aan
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	Laai sjabloon af…
+app_template_public_hdr	Openbare sjablone
+app_template_private_hdr	Privaat sjabloon
+app_template_public_hint	Maak hierdie afdeling oop om die openbare lys te laai (een keer internet nodig).
+app_template_code_not_found	Kode nie gevind nie
+app_template_need_internet	Internet nodig om sjablone af te laai
+app_template_import_selected	Voer gekose in
+app_template_check_code	Kontroleer kode
+app_template_import	Voer in
 currency	Valuta
 backup	Back-up
 use	Gebruik
@@ -474,19 +474,19 @@ copy_report	Kopieer verslag
 counted_cash_ph	Getelde geld in laai
 country_tax	Land en belasting
 tax_chrome	Belastingetikette op kas
-tax_chrome_help	Wanneer af, verberg die bestellingsbalk GST/belasting skatlynne en GST-in-prys pleisters. Belastingkoerse en Land & belasting instellings bly – skakel etikette enige tyd weer aan. Rajdhani App Template begin hiermee af.
+tax_chrome_help	Wanneer af, versteek die bestellingslessenaar BTW/belasting-skattingsreëls en BTW-in-prys-plekhouers. Belastingkoerse en Land- en belastinginstellings bly — skakel etikette enige tyd weer aan. Sommige winkelsjablone begin met dit af.
 tax_chrome_on	Wys
 tax_chrome_off	Verberg
 tax_chrome_saved_on	Belastingfaktuur op kas
 tax_chrome_saved_off	Belastingetikette verberg op kas
 tax_invoice_till	Belastingfaktuur op kas
-tax_invoice_help	Wanneer af, is biljette slegs Kas memo en die Belastingfaktuur / Kas memo chips is verberg op die bestellingsbalk. Rajdhani App Template begin hiermee af – skakel Wys weer aan enige tyd om Belastingfaktuur weer te kies.
+tax_invoice_help	Wanneer af, is rekeninge net kontantmemo's en word die Belastingfaktuur / Kontantmemo-knoppies op die bestellingslessenaar versteek. Sommige winkelsjablone begin met dit af — skakel Wys enige tyd weer aan om Belastingfaktuur weer te kies.
 tax_invoice_on	Wys
 tax_invoice_off	Verberg
 tax_invoice_saved_on	Belastingfaktuur op kas
 tax_invoice_saved_off	Belastingfaktuur verberg – slegs Kas memo
 pay_methods	Betalingsmetodes
-pay_methods_help	Watter chips verskyn op Neem betaling. Geld bly altyd. Rajdhani App Template begin met Slegs Geld – skakel UPI / Kaart / Krediet / Verdeel weer hier aan.
+pay_methods_help	Watter knoppies op Neem betaling verskyn. Kontant bly altyd. Sommige winkelsjablone begin met net Kontant — skakel UPI / Kaart / Krediet / Verdeel hier weer aan.
 create_backup	Skep agterkopie
 credit_limit_heading	Kredietlimiet (geselekteerde / vernoemde party)
 day_close_summary	Dag se sluitopsomming
@@ -793,10 +793,10 @@ printers_looking	Soek…
 saving_printer	Voeg drukker by…
 cancelled	Gekanselleer
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Verwyder tans…
+removed	Verwyder
+updating_order	Werk by…
+order_updated	Bestelling bygewerk
 printers_tap_find	Tik Soek om drukkers te lys wat hierdie toestel kan gebruik.
 printers_none_found	Geen gevind – tik 'n stelseldrukker naam of 'n IP (bv. 192.168.1.50).
 printer_from_find	Bygevoeg {name}
@@ -1337,7 +1337,6 @@ kot_field_table	Tafel
 kot_field_shop	Winkelnawe
 kot_field_waiter	Personeel
 kot_field_station	Stasie
-app_template_blurb_extra	Ook: Eienaar Zahir, Admin Asif, Waaiter Nawaz; FOH-kantoor; geskiedenis na 4 uur; vandag se strook verwyder; kompakte KOT.
 dishes_n	{n} geregte
 recipe_ph	Resep (opsioneel) — een portie gebruik: Ryssel=0,2, Paneer=0,15
 reorder_ph	Koop meer by
@@ -1364,3 +1363,7 @@ recent_changes	Onlangse veranderinge
 lane_declared_label	Belastingfaktuur
 lane_owner_label	Kasnota
 money_lane_bill	Faktuur: {lane}
+app_template_download_progress	Laai af… {p}% ({d} / {t})
+app_template_download_paused	Voer weer in om voort te gaan — klaar lêers word gehou
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

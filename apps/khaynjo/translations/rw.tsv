@@ -182,7 +182,7 @@ snack_secs_save	Bika igihe cy'imenyesha
 snack_secs_saved	Igihe cy'imenyesha cyabitswe — amasegonda {n}
 settings_sec_backup	Kopi y'inyuma no kugarura
 settings_sec_diag	Isuzuma
-settings_sec_privacy	Privacy
+settings_sec_privacy	Ubuzima bwite
 diag_privacy_help	Inyandiko ziguma kuri iki gikoresho. Ibanga (PIN, ijambo ry'ibanga) ntiribikwa. Gusangira ipaki hanze y'igikoresho bisaba uruhushya rwawe rwihariye buri gihe — ntirigurishwa cyangwa ngo hatangwe abandi.
 diag_level	Urwego rw'amakuru
 diag_level_error	Amakosa
@@ -339,21 +339,21 @@ server_remove_pin_ph	PIN ya nyir'iduka yo gukuraho seriveri
 only_owner_remove_server	Nyir'iduka wenyine ashobora gukuraho seriveri
 owner_pin_remove_server	PIN ya nyir'iduka irakenewe gukuraho iyi seriveri
 device_setup_help	Seriveri ibika ibitabo hano. Kiliya ihujwa na Seriveri.
-app_template_heading	Inyandiko ya porogaramu ya Rajdhani
-app_template_blurb	Izana menu ya Rajdhani; Nyir'iduka Zahir (zahir), Umuyobozi Asif (asif, PIN 1111), Umukozi w'ameza Nawaz (nawaz, PIN 0000); urubavu rwa FOH; amateka asibwa nyuma y'amasaha 4 (na Siba ubu muri Kopi y'inyuma); akarongo k'Uyu munsi gafunze; KOT ntoya + intera za Standard ku bikoresho bigufi. Abandi bo ku rubavu bashobora kongera gukoreshwa muri Igenamiterere.
-app_template_apply	Inyandiko ya porogaramu ya Rajdhani
+app_template_heading	Inyandikorugero z'iduka
+app_template_blurb	Injiza menu yo gutangira rusange, cyangwa wandike kode yihariye y'imibare 12 wahawe n'umuhuza wawe wa Khaynjo.
+app_template_apply	Injiza inyandikorugero
 app_template_skip	Simbuka ubu
-app_template_status	Seriveri yiteguye — shyira inyandiko ya porogaramu ya Rajdhani, cyangwa simbuka
+app_template_status	Seriveri yiteguye — injiza inyandikorugero, cyangwa usimbuke
 app_template_importing	Irimo gushyira {title}…
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	Inyandikorugero iri gukururwa…
+app_template_public_hdr	Inyandikorugero rusange
+app_template_private_hdr	Inyandikorugero yihariye
+app_template_public_hint	Fungura iki gice kugira ngo ushyiremo urutonde rusange (hakenewe interineti rimwe).
+app_template_code_not_found	Kode ntiyabonetse
+app_template_need_internet	Hakenewe interineti kugira ngo ukurure inyandikorugero
+app_template_import_selected	Injiza icyatoranyijwe
+app_template_check_code	Genzura kode
+app_template_import	Injiza
 currency	Ifaranga
 backup	Kopi y'inyuma
 use	Koresha
@@ -474,19 +474,19 @@ copy_report	Kopi ya raporo
 counted_cash_ph	Amafaranga mu ntoki yabarwa mu kabatira
 country_tax	Igihugu n'umusoro
 tax_chrome	Amamenyetso y'umusoro kuri kontwari
-tax_chrome_help	Iyo kuzimye, ameza y'amakomande ahishe imirongo y'igereranya rya GST/umusoro n'ahantu GST iri mu giciro. Ibiciro by'umusoro n'igenamiterere ry'Igihugu n'umusoro biguma — ongera ukore amamenyetso igihe icyo aricyo cyose. Inyandiko ya porogaramu ya Rajdhani itangira ibi bikuzimye.
+tax_chrome_help	Iyo bizimye, ameza ya komande ahisha imirongo y'igereranya rya GST/umusoro n'aho GST-mu-giciro yandikwa. Ibipimo by'umusoro n'igenamiterere ry'Igihugu n'umusoro bigumaho — ongera ufungure ibirango igihe icyo ari cyo cyose. Inyandikorugero z'iduka zimwe zitangira ibi bizimye.
 tax_chrome_on	Erekana
 tax_chrome_off	Hisha
 tax_chrome_saved_on	Amamenyetso y'umusoro kuri kontwari
 tax_chrome_saved_off	Amamenyetso y'umusoro yahishe kuri kontwari
 tax_invoice_till	Inyemezabuguzi y'umusoro kuri kontwari
-tax_invoice_help	Iyo kuzimye, inyemezabuguzi ni inyandiko y'amafaranga mu ntoki gusa kandi udushushanyo twa Inyemezabuguzi y'umusoro / Inyandiko y'amafaranga mu ntoki duhishe ku meza y'amakomande. Inyandiko ya porogaramu ya Rajdhani itangira ibi bikuzimye — ongera ukore Erekana igihe icyo aricyo cyose kugira ngo uhitamo Inyemezabuguzi y'umusoro.
+tax_invoice_help	Iyo bizimye, inyemezabuguzi ziba inyandiko z'amafaranga gusa kandi buto za Fagitire y'umusoro / Inyandiko y'amafaranga zihishwa ku meza ya komande. Inyandikorugero z'iduka zimwe zitangira ibi bizimye — fungura Erekana igihe icyo ari cyo cyose kugira ngo wongere uhitemo Fagitire y'umusoro.
 tax_invoice_on	Erekana
 tax_invoice_off	Hisha
 tax_invoice_saved_on	Inyemezabuguzi y'umusoro kuri kontwari
 tax_invoice_saved_off	Inyemezabuguzi y'umusoro yahishe — inyandiko y'amafaranga mu ntoki gusa
 pay_methods	Uburyo bwo kwishyura
-pay_methods_help	Udushushanyo tugaragara kuri Kusanya amafaranga. Amafaranga mu ntoki aguma. Inyandiko ya porogaramu ya Rajdhani itangira amafaranga mu ntoki gusa — ongera ukore UPI / Ikarita / Inguzanyo / Gabanya hano.
+pay_methods_help	Buto zigaragara kuri Akira ubwishyu. Amafaranga ahora agumaho. Inyandikorugero z'iduka zimwe zitangira n'Amafaranga gusa — ongera ufungure UPI / Ikarita / Ideni / Gabanya hano.
 create_backup	Kora kopi y'inyuma
 credit_limit_heading	Umupaka w'inguzanyo (uwafatanyabikorwa wahiswemo / wizina)
 day_close_summary	Incamake yo gufunga umunsi
@@ -793,10 +793,10 @@ printers_looking	Irimo gushaka…
 saving_printer	Irimo kongeraho mucapyi…
 cancelled	Byahagaritswe
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Birimo gukurwaho…
+removed	Byakuweho
+updating_order	Birimo kuvugururwa…
+order_updated	Komande yavuguruwe
 printers_tap_find	Kanda Shaka kugira ngo ubone amacapyi iki gikoresho gishobora gukoresha.
 printers_none_found	Nta na kimwe cyabonetse — andika izina rya mucapyi wa sisitemu cyangwa IP (urugero 192.168.1.50).
 printer_from_find	Wongeyeho {name}
@@ -1337,7 +1337,6 @@ kot_field_table	Imeza
 kot_field_shop	Izina ry'iduka
 kot_field_waiter	Abakozi
 kot_field_station	Sitasiyo
-app_template_blurb_extra	Kandi: Nyir'iduka Zahir, Umuyobozi Asif, Umukozi w'ameza Nawaz; urubavu rwa FOH; amateka nyuma y'amasaha 4; akarongo k'Uyu munsi gafunze; KOT ntoya.
 dishes_n	ibiryo {n}
 recipe_ph	Inyandiko y'iteka (bitari ngombwa) — igice kimwe gikoresha: Rice=0.2, Paneer=0.15
 reorder_ph	Ongera ugure kuri
@@ -1364,3 +1363,7 @@ recent_changes	Impinduka ziheruka
 lane_declared_label	Inyemezabuguzi y'umusoro
 lane_owner_label	Inyandiko y'amafaranga mu ntoki
 money_lane_bill	Inyemezabuguzi: {lane}
+app_template_download_progress	Birimo gukururwa… {p}% ({d} / {t})
+app_template_download_paused	Ongera winjize kugira ngo ukomeze — amadosiye yarangiye arabikwa
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

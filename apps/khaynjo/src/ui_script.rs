@@ -2031,6 +2031,10 @@ script_mod! {
                         flow: Right
                         spacing: 8
                         align: Align{y: 0.5}
+                        // Reorder without drag (live nav drag is off): ↑ ↓ swap this
+                        // row with its neighbour. Own hit targets on top of the face.
+                        move_up := QuietFitBtn{text: "\u{2191}"}
+                        move_down := QuietFitBtn{text: "\u{2193}"}
                         always_label := Label{
                             width: Fit height: Fit
                             visible: false
@@ -2975,6 +2979,19 @@ script_mod! {
                         }
                     }
                     plus := TicketStepBtn{draw_bg.mark: 3.0}
+                }
+                stepper_busy := View{
+                    width: Fit height: Fit
+                    visible: false
+                    flow: Down spacing: 4
+                    align: Align{x: 1.0 y: 0.5}
+                    qty_busy_label := Label{
+                        width: Fit
+                        text: "Updating…"
+                        draw_text.color: #x6B4A3F
+                        draw_text.text_style.font_size: 11.
+                    }
+                    qty_busy_cancel := QuietFitBtn{text: "Cancel"}
                 }
                 line_amount := Label{
                     width: Fit
@@ -5633,12 +5650,18 @@ script_mod! {
                                                         private_tmpl_import := NavBtn{text: "Import" visible: false}
                                                     }
                                                 }
+                                                // Busy: progress (MB / files, updated often) + Cancel.
+                                                // WrapLabel, not a Stack* face (DEV.md 7 / 7b).
                                                 app_template_busy := View{
                                                     width: Fill height: Fit
                                                     visible: false
-                                                    flow: Right spacing: 8
-                                                    app_template_status := StackPrimaryBtn{text: "Importing…"}
-                                                    app_template_cancel := StackLightBtn{text: "Cancel"}
+                                                    flow: Down spacing: 6
+                                                    app_template_status := WrapLabel{
+                                                        body: "Importing…"
+                                                        font_color: #x260B08
+                                                        font_size: 15.
+                                                    }
+                                                    app_template_cancel := QuietFitBtn{text: "Cancel"}
                                                 }
                                                 app_template_skip := QuietFitBtn{text: "Skip for now"}
                                             }
@@ -8948,7 +8971,7 @@ script_mod! {
                                                 font_size: 15.
                                             }
                                             settings_tax_chrome_help := InfoHelp{
-                                                tip: "When off, the order desk hides GST/tax estimate lines and GST-in-price placeholders. Tax rates and Country & tax settings stay — turn labels back on any time. Rajdhani App Template starts with this off."
+                                                tip: "When off, the order desk hides GST/tax estimate lines and GST-in-price placeholders. Tax rates and Country & tax settings stay — turn labels back on any time. Some shop templates start with this off."
                                             }
                                         }
                                         View{
@@ -8974,7 +8997,7 @@ script_mod! {
                                                 font_size: 15.
                                             }
                                             settings_tax_invoice_help := InfoHelp{
-                                                tip: "When off, the order desk shows Cash memo only (no Tax invoice chip). Rajdhani App Template starts with this off — turn Show back on any time."
+                                                tip: "When off, the order desk shows Cash memo only (no Tax invoice chip). Some shop templates start with this off — turn Show back on any time."
                                             }
                                         }
                                         View{
@@ -9000,7 +9023,7 @@ script_mod! {
                                                 font_size: 15.
                                             }
                                             settings_pay_methods_help := InfoHelp{
-                                                tip: "Which chips appear on Take payment. Cash always stays. Rajdhani App Template starts with Cash only — turn UPI / Card / Credit / Split back on here."
+                                                tip: "Which chips appear on Take payment. Cash always stays. Some shop templates start with Cash only — turn UPI / Card / Credit / Split back on here."
                                             }
                                         }
                                         // Five chips > phone width — scroll, don't

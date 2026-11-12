@@ -1709,7 +1709,8 @@ script_mod! {
             color_empty: #x56575D
             color_empty_hover: #x56575D
             color_empty_focus: #x56575D
-            text_style +: {font_size: 16.}
+            // 14 max (was 16) — crowded phone wells (product-cert oracle).
+            text_style +: {font_size: 14.}
         }
         // Float caption uses draw_caption (not draw_text), and Makepad gives
         // draw_caption no style of its own: `text_style +:` only patched the
@@ -1895,6 +1896,10 @@ script_mod! {
                         flow: Right
                         spacing: 8
                         align: Align{y: 0.5}
+                        // Reorder without drag (live nav drag is off): ↑ ↓ swap this
+                        // row with its neighbour. Own hit targets on top of the face.
+                        move_up := QuietFitBtn{text: "\u{2191}"}
+                        move_down := QuietFitBtn{text: "\u{2193}"}
                         always_label := Label{
                             width: Fit height: Fit
                             visible: false
@@ -4175,7 +4180,7 @@ script_mod! {
                                         flow: Overlay
                                         tabs := ChipStrip{
                                             ChipStripRow{
-                                                View{width: Fit height: 40 flow: Overlay
+                                                View{width: Fit height: Fit flow: Overlay
                                                     role_owner := ChipBtn{
                                                         text: "Owner"
                                                         padding: Inset{left: 18. right: 18.}
@@ -4186,7 +4191,7 @@ script_mod! {
                                                         padding: Inset{left: 18. right: 18.}
                                                     }
                                                 }
-                                                View{width: Fit height: 40 flow: Overlay
+                                                View{width: Fit height: Fit flow: Overlay
                                                     role_staff := ChipBtn{
                                                         text: "Staff"
                                                         visible: false
@@ -4917,19 +4922,19 @@ script_mod! {
                                     flow: Right spacing: 6
                                     align: Align{y: 0.5}
                                     h_weight_in := Label{text: "Weight in" draw_text.color: #x3A4554 draw_text.text_style.font_size: 11.}
-                                    View{width: Fit height: 40 flow: Overlay
+                                    View{width: Fit height: Fit flow: Overlay
                                         wunit_kg := ChipBtn{text: "kg"}
                                         wunit_kg_on := ChipBtnActive{text: "kg" visible: false}
                                     }
-                                    View{width: Fit height: 40 flow: Overlay
+                                    View{width: Fit height: Fit flow: Overlay
                                         wunit_lb := ChipBtn{text: "lb"}
                                         wunit_lb_on := ChipBtnActive{text: "lb" visible: false}
                                     }
-                                    View{width: Fit height: 40 flow: Overlay
+                                    View{width: Fit height: Fit flow: Overlay
                                         wunit_g := ChipBtn{text: "g"}
                                         wunit_g_on := ChipBtnActive{text: "g" visible: false}
                                     }
-                                    View{width: Fit height: 40 flow: Overlay
+                                    View{width: Fit height: Fit flow: Overlay
                                         wunit_oz := ChipBtn{text: "oz"}
                                         wunit_oz_on := ChipBtnActive{text: "oz" visible: false}
                                     }
@@ -4958,19 +4963,19 @@ script_mod! {
                                     flow: Right spacing: 6
                                     align: Align{y: 0.5}
                                     h_size_in := Label{text: "Size in" draw_text.color: #x3A4554 draw_text.text_style.font_size: 11.}
-                                    View{width: Fit height: 40 flow: Overlay
+                                    View{width: Fit height: Fit flow: Overlay
                                         dunit_cm := ChipBtn{text: "cm"}
                                         dunit_cm_on := ChipBtnActive{text: "cm" visible: false}
                                     }
-                                    View{width: Fit height: 40 flow: Overlay
+                                    View{width: Fit height: Fit flow: Overlay
                                         dunit_in := ChipBtn{text: "in"}
                                         dunit_in_on := ChipBtnActive{text: "in" visible: false}
                                     }
-                                    View{width: Fit height: 40 flow: Overlay
+                                    View{width: Fit height: Fit flow: Overlay
                                         dunit_ft := ChipBtn{text: "ft"}
                                         dunit_ft_on := ChipBtnActive{text: "ft" visible: false}
                                     }
-                                    View{width: Fit height: 40 flow: Overlay
+                                    View{width: Fit height: Fit flow: Overlay
                                         dunit_m := ChipBtn{text: "m"}
                                         dunit_m_on := ChipBtnActive{text: "m" visible: false}
                                     }
@@ -5850,35 +5855,35 @@ script_mod! {
                                     flow: Overlay
                                     tabs := ChipStrip{
                                         ChipStripRow{
-                                            View{width: Fit height: 40 flow: Overlay
+                                            View{width: Fit height: Fit flow: Overlay
                                                 feat_sell := ChipBtn{text: "Sell"}
                                                 feat_sell_on := ChipBtnActive{text: "Sell" visible: false}
                                             }
-                                            View{width: Fit height: 40 flow: Overlay
+                                            View{width: Fit height: Fit flow: Overlay
                                                 feat_items := ChipBtn{text: "Items"}
                                                 feat_items_on := ChipBtnActive{text: "Items" visible: false}
                                             }
-                                            View{width: Fit height: 40 flow: Overlay
+                                            View{width: Fit height: Fit flow: Overlay
                                                 feat_sales := ChipBtn{text: "Sales"}
                                                 feat_sales_on := ChipBtnActive{text: "Sales" visible: false}
                                             }
-                                            View{width: Fit height: 40 flow: Overlay
+                                            View{width: Fit height: Fit flow: Overlay
                                                 feat_credit := ChipBtn{text: "Credit"}
                                                 feat_credit_on := ChipBtnActive{text: "Credit" visible: false}
                                             }
-                                            View{width: Fit height: 40 flow: Overlay
+                                            View{width: Fit height: Fit flow: Overlay
                                                 feat_team := ChipBtn{text: "Team"}
                                                 feat_team_on := ChipBtnActive{text: "Team" visible: false}
                                             }
-                                            View{width: Fit height: 40 flow: Overlay
+                                            View{width: Fit height: Fit flow: Overlay
                                                 feat_backup := ChipBtn{text: "Backup"}
                                                 feat_backup_on := ChipBtnActive{text: "Backup" visible: false}
                                             }
-                                            View{width: Fit height: 40 flow: Overlay
+                                            View{width: Fit height: Fit flow: Overlay
                                                 feat_inventory := ChipBtn{text: "Inventory"}
                                                 feat_inventory_on := ChipBtnActive{text: "Inventory" visible: false}
                                             }
-                                            View{width: Fit height: 40 flow: Overlay
+                                            View{width: Fit height: Fit flow: Overlay
                                                 feat_branches := ChipBtn{text: "Branches"}
                                                 feat_branches_on := ChipBtnActive{text: "Branches" visible: false}
                                             }

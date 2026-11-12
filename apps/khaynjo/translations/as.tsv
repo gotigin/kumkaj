@@ -182,7 +182,7 @@ snack_secs_save	সতৰ্কবাণীৰ সময় সাঁচক
 snack_secs_saved	সতৰ্কবাণীৰ সময় সাঁচা হ'ল — {n} ছেকেণ্ড
 settings_sec_backup	বেকআপ আৰু পুনৰুদ্ধাৰ
 settings_sec_diag	ডায়গনষ্টিক্স
-settings_sec_privacy	Privacy
+settings_sec_privacy	গোপনীয়তা
 diag_privacy_help	লগ এই ডিভাইচতে থাকে। গোপন তথ্য (PIN, পাছৱৰ্ড) কেতিয়াও সংৰক্ষণ কৰা নহয়। ডিভাইচৰ বাহিৰলৈ পেকেজ পঠিয়াবলৈ প্ৰতিবাৰ আপোনাৰ স্পষ্ট অনুমোদন লাগে — কেতিয়াও বিক্ৰী কৰা বা তৃতীয় পক্ষক দিয়া নহয়।
 diag_level	বিৱৰণৰ স্তৰ
 diag_level_error	ত্ৰুটি
@@ -339,21 +339,21 @@ server_remove_pin_ph	চাৰ্ভাৰ আঁতৰাবলৈ Owner PIN
 only_owner_remove_server	কেৱল Owner চাৰ্ভাৰ আঁতৰাব পাৰে
 owner_pin_remove_server	চাৰ্ভাৰ আঁতৰাবলৈ Owner PIN লাগে
 device_setup_help	চাৰ্ভাৰে বহী ইয়াতে ৰাখে। ক্লায়েণ্ট এটা চাৰ্ভাৰৰ সৈতে যোৰ হয়।
-app_template_heading	ৰাজধানী এপ টেমপ্লেট
-app_template_blurb	ৰাজধানী মেনু লোড কৰে; মালিক জহিৰ (zahir), এডমিন আছিফ (asif, PIN 1111), ৱেটাৰ নৱাজ (nawaz, PIN 0000); FOH ছাইডবাৰ; ইতিহাস 4 ঘণ্টাৰ পিছত মচা যায় (আৰু বেকআপত এতিয়াই মচক); আজিৰ পটি অফ; ঠেক ট্ৰেৰ বাবে সৰু KOT + সাধাৰণ মাৰ্জিন। ছাইডবাৰৰ বাকীবোৰ ছেটিংছত পুনৰ অন কৰিব পাৰি।
-app_template_apply	ৰাজধানী এপ টেমপ্লেট
+app_template_heading	দোকানৰ টেমপ্লেট
+app_template_blurb	এটা ৰাজহুৱা আৰম্ভণি মেনু আমদানি কৰক, বা আপোনাৰ Khaynjo যোগাযোগৰ পৰা পোৱা ১২-অংকৰ ব্যক্তিগত ক'ড দিয়ক।
+app_template_apply	টেমপ্লেট আমদানি কৰক
 app_template_skip	এতিয়া এৰক
-app_template_status	চাৰ্ভাৰ সাজু — ৰাজধানী এপ টেমপ্লেট প্ৰয়োগ কৰক, বা এৰক
+app_template_status	ছাৰ্ভাৰ সাজু — এটা টেমপ্লেট আমদানি কৰক, বা এৰি দিয়ক
 app_template_importing	{title} প্ৰয়োগ কৰা হৈছে…
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	টেমপ্লেট ডাউনল'ড হৈ আছে…
+app_template_public_hdr	ৰাজহুৱা টেমপ্লেট
+app_template_private_hdr	ব্যক্তিগত টেমপ্লেট
+app_template_public_hint	ৰাজহুৱা তালিকা ল'ড কৰিবলৈ এই অংশটো খোলক (এবাৰ ইণ্টাৰনেট লাগে)।
+app_template_code_not_found	ক'ড পোৱা নগ'ল
+app_template_need_internet	টেমপ্লেট ডাউনল'ড কৰিবলৈ ইণ্টাৰনেট লাগে
+app_template_import_selected	বাছনি কৰাটো আমদানি কৰক
+app_template_check_code	ক'ড পৰীক্ষা কৰক
+app_template_import	আমদানি কৰক
 currency	মুদ্ৰা
 backup	বেকআপ
 use	ব্যৱহাৰ কৰক
@@ -474,19 +474,19 @@ copy_report	প্ৰতিবেদন কপি কৰক
 counted_cash_ph	ড্ৰয়াৰত গণা নগদ
 country_tax	দেশ আৰু কৰ
 tax_chrome	টিলত কৰৰ লেবেল
-tax_chrome_help	অফ থাকিলে অৰ্ডাৰ ডেস্কে GST/কৰ অনুমানৰ শাৰী আৰু দামত-GST ইংগিত লুকুৱায়। কৰৰ হাৰ আৰু দেশ আৰু কৰ ছেটিংছ থাকে — লেবেল যিকোনো সময়ত পুনৰ অন কৰক। ৰাজধানী এপ টেমপ্লেট ইয়াক অফ ৰাখি আৰম্ভ হয়।
+tax_chrome_help	বন্ধ থাকিলে, অৰ্ডাৰ ডেস্কে GST/কৰৰ আনুমানিক শাৰী আৰু মূল্যত-GST প্লেচহ'ল্ডাৰ লুকুৱাই ৰাখে। কৰৰ হাৰ আৰু দেশ আৰু কৰ ছেটিং থাকে — যিকোনো সময়তে লেবেল পুনৰ অন কৰক। কিছুমান দোকানৰ টেমপ্লেট এইটো বন্ধ ৰাখি আৰম্ভ হয়।
 tax_chrome_on	দেখুৱাওক
 tax_chrome_off	লুকুৱাওক
 tax_chrome_saved_on	টিলত কৰৰ লেবেল
 tax_chrome_saved_off	টিলত কৰৰ লেবেল লুকুওৱা
 tax_invoice_till	টিলত কৰ চালান
-tax_invoice_help	অফ থাকিলে বিল কেৱল কেশ মেমো হয় আৰু অৰ্ডাৰ ডেস্কত কৰ চালান / কেশ মেমো চিপ লুকাই থাকে। ৰাজধানী এপ টেমপ্লেট ইয়াক অফ ৰাখি আৰম্ভ হয় — কৰ চালান পুনৰ বাছিবলৈ যিকোনো সময়ত দেখুৱাওক অন কৰক।
+tax_invoice_help	বন্ধ থাকিলে, বিলবোৰ কেৱল নগদ মেম' হয় আৰু অৰ্ডাৰ ডেস্কত কৰ চালান / নগদ মেম' চিপ লুকুৱাই ৰখা হয়। কিছুমান দোকানৰ টেমপ্লেট এইটো বন্ধ ৰাখি আৰম্ভ হয় — কৰ চালান পুনৰ বাছিবলৈ যিকোনো সময়তে দেখুৱাওক অন কৰক।
 tax_invoice_on	দেখুৱাওক
 tax_invoice_off	লুকুৱাওক
 tax_invoice_saved_on	টিলত কৰ চালান
 tax_invoice_saved_off	কৰ চালান লুকুওৱা — কেৱল কেশ মেমো
 pay_methods	পেমেণ্টৰ উপায়
-pay_methods_help	পেমেণ্ট লওক-ত কোনবোৰ চিপ দেখা যাব। নগদ সদায় থাকে। ৰাজধানী এপ টেমপ্লেট কেৱল নগদৰে আৰম্ভ হয় — UPI / কাৰ্ড / ধাৰ / ভাগ ইয়াত পুনৰ অন কৰক।
+pay_methods_help	পেমেণ্ট লওক-ত কোনবোৰ চিপ দেখা যায়। নগদ সদায় থাকে। কিছুমান দোকানৰ টেমপ্লেট কেৱল নগদেৰে আৰম্ভ হয় — ইয়াত UPI / কাৰ্ড / ধাৰ / বিভাজন পুনৰ অন কৰক।
 create_backup	বেকআপ বনাওক
 credit_limit_heading	ঋণ সীমা (বাছনি কৰা / নাম থকা পাৰ্টি)
 day_close_summary	দিন বন্ধ সাৰাংশ
@@ -793,10 +793,10 @@ printers_looking	এই ডিভাইচ আৰু Wi‑Fiত প্ৰিণ�
 saving_printer	প্ৰিণ্টাৰ যোগ কৰা হৈছে…
 cancelled	বাতিল
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	আঁতৰোৱা হৈছে…
+removed	আঁতৰোৱা হ'ল
+updating_order	আপডেট হৈ আছে…
+order_updated	অৰ্ডাৰ আপডেট হ'ল
 printers_tap_find	এই ডিভাইচে ব্যৱহাৰ কৰিব পৰা প্ৰিণ্টাৰৰ তালিকাৰ বাবে প্ৰিণ্টাৰ বিচাৰক টিপক।
 printers_none_found	কোনো প্ৰিণ্টাৰ পোৱা নগ’ল — ছিষ্টেম প্ৰিণ্টাৰৰ নাম বা নেটৱৰ্ক ঠিকনা লিখক (যেনে 192.168.1.50)।
 printer_from_find	{name} যোগ কৰা হ’ল
@@ -1337,7 +1337,6 @@ kot_field_table	মেজ
 kot_field_shop	দোকানৰ নাম
 kot_field_waiter	কৰ্মচাৰী
 kot_field_station	ষ্টেচন
-app_template_blurb_extra	লগতে: মালিক জহিৰ, এডমিন আছিফ, ৱেটাৰ নৱাজ; FOH ছাইডবাৰ; 4 ঘণ্টাৰ পিছত ইতিহাস; আজিৰ পটি অফ; সৰু KOT।
 dishes_n	{n}টা ব্যঞ্জন
 recipe_ph	ৰেচিপি (ঐচ্ছিক) — এখন প্লেটত লাগে: Rice=0.2, Paneer=0.15
 reorder_ph	ইমানত আৰু কিনক
@@ -1364,3 +1363,7 @@ recent_changes	শেহতীয়া সলনি
 lane_declared_label	কৰ চালান
 lane_owner_label	কেশ মেমো
 money_lane_bill	বিল: {lane}
+app_template_download_progress	ডাউনল’ড হৈ আছে… {p}% ({d} / {t})
+app_template_download_paused	পুনৰ আৰম্ভ কৰিবলৈ আকৌ আমদানি কৰক — সম্পূৰ্ণ ফাইলবোৰ ৰখা হয়
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

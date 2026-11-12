@@ -182,7 +182,7 @@ snack_secs_save	Gorde abisu-denbora
 snack_secs_saved	Abisu-denbora gordeta — {n} segundo
 settings_sec_backup	Babeskopia eta leheneratzea
 settings_sec_diag	Diagnostikoak
-settings_sec_privacy	Privacy
+settings_sec_privacy	Pribatutasuna
 diag_privacy_help	Egunkariak gailu honetan geratzen dira. Sekretuak (PIN, pasahitzak) ez dira inoiz gordetzen. Gailutik kanpo pakete bat partekatzeak zure onespen argia behar du aldi bakoitzean — inoiz ez da saltzen edo hirugarrenei ematen.
 diag_level	Xehetasun maila
 diag_level_error	Erroreak
@@ -339,21 +339,21 @@ server_remove_pin_ph	Jabearen PINa zerbitzari bat kentzeko
 only_owner_remove_server	Jabeak soilik ken dezake zerbitzari bat
 owner_pin_remove_server	Jabearen PINa behar da zerbitzari hau kentzeko
 device_setup_help	Zerbitzariak liburuak hemen gordetzen ditu. Bezeroa Zerbitzari batekin parekatzen da.
-app_template_heading	Rajdhani aplikazio-txantiloia
-app_template_blurb	Rajdhani menua kargatzen du; Jabea Zahir (zahir), Administratzailea Asif (asif, PIN 1111), Zerbitzaria Nawaz (nawaz, PIN 0000); FOH alboko barra; historia 4 ordu ondoren garbitzen da (eta Garbitu orain Babeskopian); Gaur zerrenda itzalita; KOT trinkoa + marjina Estandarrak erretilu estuetarako. Alboko barrako kideak berriro piztu daitezke Ezarpenetan.
-app_template_apply	Rajdhani aplikazio-txantiloia
+app_template_heading	Dendako txantiloiak
+app_template_blurb	Inportatu hasierako menu publiko bat, edo idatzi zure Khaynjo kontaktuaren 12 digituko kode pribatua.
+app_template_apply	Inportatu txantiloia
 app_template_skip	Saltatu oraingoz
-app_template_status	Zerbitzaria prest — aplikatu Rajdhani txantiloia, edo saltatu
+app_template_status	Zerbitzaria prest — inportatu txantiloi bat edo saltatu
 app_template_importing	{title} aplikatzen…
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	Txantiloia deskargatzen…
+app_template_public_hdr	Txantiloi publikoak
+app_template_private_hdr	Txantiloi pribatua
+app_template_public_hint	Ireki atal hau zerrenda publikoa kargatzeko (behin interneta behar da).
+app_template_code_not_found	Ez da kodea aurkitu
+app_template_need_internet	Interneta behar da txantiloiak deskargatzeko
+app_template_import_selected	Inportatu hautatutakoa
+app_template_check_code	Egiaztatu kodea
+app_template_import	Inportatu
 currency	Moneta
 backup	Babeskopia
 use	Erabili
@@ -474,19 +474,19 @@ copy_report	Kopiatu txostena
 counted_cash_ph	Kutxan zenbatutako eskudirua
 country_tax	Herrialdea eta zerga
 tax_chrome	Zerga-etiketak kutxan
-tax_chrome_help	Itzalita dagoenean, eskaera-mahaiak GST/zerga estimazio-lerroak eta prezioan zerga lekuak ezkutatzen ditu. Zerga-tasak eta Herrialdea eta zerga ezarpenak geratzen dira — etiketak edozein unetan piztu daitezke berriro. Rajdhani txantiloia honekin itzalita hasten da.
+tax_chrome_help	Desaktibatuta dagoenean, eskaera-mahaiak GST/zergen estimazio-lerroak eta prezioan-GST leku-markak ezkutatzen ditu. Zerga-tasak eta Herrialdea eta zerga ezarpenak geratzen dira — aktibatu etiketak berriro edonoiz. Dendako txantiloi batzuk hau desaktibatuta hasten dira.
 tax_chrome_on	Erakutsi
 tax_chrome_off	Ezkutatu
 tax_chrome_saved_on	Zerga-etiketak kutxan
 tax_chrome_saved_off	Zerga-etiketak ezkutatuta kutxan
 tax_invoice_till	Zerga-faktura kutxan
-tax_invoice_help	Itzalita dagoenean, kontuak Diru-oharra soilik dira eta Zerga-faktura / Diru-oharra txipak ezkutatuta daude eskaera-mahaian. Rajdhani txantiloia honekin itzalita hasten da — piztu Erakutsi edozein unetan Zerga-faktura berriro aukeratzeko.
+tax_invoice_help	Desaktibatuta dagoenean, fakturak eskudiru-ohar soilak dira eta Zerga-faktura / Eskudiru-oharra botoiak ezkutatuta daude eskaera-mahaian. Dendako txantiloi batzuk hau desaktibatuta hasten dira — aktibatu Erakutsi edonoiz Zerga-faktura berriro aukeratzeko.
 tax_invoice_on	Erakutsi
 tax_invoice_off	Ezkutatu
 tax_invoice_saved_on	Zerga-faktura kutxan
 tax_invoice_saved_off	Zerga-faktura ezkutatuta — Diru-oharra soilik
 pay_methods	Ordaintzeko moduak
-pay_methods_help	Hartu ordainketan zein txip agertzen diren. Eskudirua beti geratzen da. Rajdhani txantiloia Eskudiruarekin soilik hasten da — hemen piztu berriro UPI / Txartela / Kreditua / Zatitu.
+pay_methods_help	Zein botoi agertzen diren Kobratu atalean. Eskudirua beti geratzen da. Dendako txantiloi batzuk Eskudiruarekin bakarrik hasten dira — aktibatu UPI / Txartela / Kreditua / Zatitu hemen berriro.
 create_backup	Sortu babeskopia
 credit_limit_heading	Kreditu-muga (hautatutako / izendatutako alderdia)
 day_close_summary	Egun-itxieraren laburpena
@@ -793,10 +793,10 @@ printers_looking	Bilatzen…
 saving_printer	Inprimagailua gehitzen…
 cancelled	Ezeztatuta
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Kentzen…
+removed	Kenduta
+updating_order	Eguneratzen…
+order_updated	Eskaera eguneratuta
 printers_tap_find	Sakatu Bilatu gailu honek erabil ditzakeen inprimagailuak zerrendatzeko.
 printers_none_found	Ez da ezer aurkitu — idatzi sistema-inprimagailuaren izena edo IP bat (adib. 192.168.1.50).
 printer_from_find	{name} gehituta
@@ -1337,7 +1337,6 @@ kot_field_table	Mahaia
 kot_field_shop	Dendaren izena
 kot_field_waiter	Langilea
 kot_field_station	Geltokia
-app_template_blurb_extra	Halaber: Jabea Zahir, Administratzailea Asif, Zerbitzaria Nawaz; FOH alboko barra; historia 4 ordu ondoren; Gaur zerrenda itzalita; KOT trinkoa.
 dishes_n	{n} plater
 recipe_ph	Errezeta (aukerakoa) — anoa batek erabiltzen du: Arroza=0.2, Paneer=0.15
 reorder_ph	Erosi gehiago hemendik
@@ -1364,3 +1363,7 @@ recent_changes	Azken aldaketak
 lane_declared_label	Zerga-faktura
 lane_owner_label	Diru-oharra
 money_lane_bill	Kontua: {lane}
+app_template_download_progress	Deskargatzen… {p}% ({d} / {t})
+app_template_download_paused	Inportatu berriro jarraitzeko — amaitutako fitxategiak gordetzen dira
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

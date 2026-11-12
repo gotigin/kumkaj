@@ -4,19 +4,24 @@
 #
 # Usage:
 #   ./apps/khaynjo/scripts/publish-catalogue.sh
-#       # sync public/items + rebuild public starters (khaynjo-starter, cafe-starter, khaynjo-items)
+#       # sync public/items + rebuild public packs (khaynjo-starter, cafe-starter, khaynjo-items)
 #   ./apps/khaynjo/scripts/publish-catalogue.sh --private-rajdhani --code=123456789012
 #
+# Every pack manifest lists each file with size + sha256 (`files`), and
+# public/items/index.json lists each photo the same way (`entries`), so
+# devices resume a broken download file by file. `bytes` everywhere is the
+# full download size. Sources: apps/khaynjo/assets/templates/<id>/template.json
+# (`shelf:` photos are copied into the pack's images/).
+#
 # Private packs → sites/khaynjo/static/v1/catalogue/private/<code>/ (gitignored).
+# bash + jq only (no Python — .cursor/rules/no-python-scripts.mdc).
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")/../../.." && pwd)"
 APP="$ROOT/apps/khaynjo"
 CDN="$ROOT/sites/khaynjo/static/v1/catalogue"
 SHELF="$APP/assets/items"
-SRC_TMPL="$APP/assets/templates/rajdhani/template.json"
-STARTER_SRC="$APP/assets/templates/khaynjo-starter/template.json"
-CAFE="$CDN/public/templates/cafe-starter"
+TEMPLATES="$APP/assets/templates"
 
 PRIVATE_CODE=""
 DO_RAJDHANI=0
@@ -26,7 +31,7 @@ for arg in "$@"; do
     --private-rajdhani) DO_RAJDHANI=1 ;;
     --code=*) PRIVATE_CODE="${arg#--code=}" ;;
     -h|--help)
-      sed -n '2,14p' "$0"
+      sed -n '2,18p' "$0"
       exit 0
       ;;
     *)
@@ -36,249 +41,199 @@ for arg in "$@"; do
   esac
 done
 
+for tool in jq rsync sha256sum stat; do
+  command -v "$tool" >/dev/null 2>&1 || { echo "error: $tool required" >&2; exit 1; }
+done
 if [[ ! -d "$SHELF" ]]; then
   echo "Missing shelf $SHELF" >&2
+  exit 1
+fi
+if [[ "$DO_RAJDHANI" -eq 1 && ! "$PRIVATE_CODE" =~ ^[0-9]{12}$ ]]; then
+  echo "--code= must be exactly 12 digits" >&2
   exit 1
 fi
 
 mkdir -p "$CDN/public/templates" "$CDN/public/items"
 
-echo "1/3 Sync public/items from assets/items …"
+# JSON array of {path, bytes, sha256} for files (relative to $1) read from stdin.
+listing_json() {
+  local base="$1"
+  (
+    cd "$base"
+    while IFS= read -r rel; do
+      [[ -n "$rel" ]] || continue
+      printf '%s\t%s\t%s\n' "$rel" "$(stat -c %s -- "$rel")" \
+        "$(sha256sum -- "$rel" | cut -d' ' -f1)"
+    done
+  ) | jq -R -s '
+    split("\n") | map(select(length > 0) | split("\t")
+      | {path: .[0], bytes: (.[1] | tonumber), sha256: .[2]})'
+}
+
+# ---------------------------------------------------------------------------
+echo "1/4 Sync public/items from assets/items …"
 rsync -a --delete --include='*/' --include='*.webp' --exclude='*' "$SHELF/" "$CDN/public/items/"
 
-# Folder + file index for shelf download / site tooling.
-python3 - "$CDN/public/items" <<'PY'
-import json, sys
-from pathlib import Path
-root = Path(sys.argv[1])
-folders = sorted(p.name for p in root.iterdir() if p.is_dir())
-files = []
-for folder in folders:
-    for f in sorted((root / folder).glob("*.webp")):
-        files.append(f"{folder}/{f.name}")
-index = {"schema": 1, "folders": folders, "files": files, "count": len(files)}
-(root / "index.json").write_text(json.dumps(index, indent=2) + "\n", encoding="utf-8")
-print(f"  items index: {len(folders)} folders, {len(files)} webps")
-PY
+(cd "$CDN/public/items" && find . -mindepth 2 -maxdepth 2 -type f -name '*.webp') \
+  | sed 's|^\./||' | LC_ALL=C sort | listing_json "$CDN/public/items" \
+  | jq '. as $entries |
+  {
+    schema: 1,
+    folders: ($entries | map(.path | split("/")[0]) | unique),
+    files: ($entries | map(.path)),
+    count: ($entries | length),
+    bytes: ($entries | map(.bytes) | add // 0),
+    entries: $entries
+  }' > "$CDN/public/items/index.json.tmp"
+mv "$CDN/public/items/index.json.tmp" "$CDN/public/items/index.json"
+ITEMS_COUNT="$(jq '.count' "$CDN/public/items/index.json")"
+ITEMS_BYTES="$(jq '.bytes' "$CDN/public/items/index.json")"
+echo "  items index: $(jq '.folders | length' "$CDN/public/items/index.json") folders, ${ITEMS_COUNT} webps, ${ITEMS_BYTES} bytes"
 
-echo "2/3 Public templates (khaynjo-starter, cafe-starter, khaynjo-items) …"
+# ---------------------------------------------------------------------------
+# build_pack <source template dir> <dest pack dir> <visibility> <shop_defaults_id>
+# Self-contained app-template pack: template.json with shelf: → images/…,
+# photos copied in, manifest with full file listing.
+build_pack() {
+  local src_dir="$1" dest="$2" visibility="$3" defaults="$4"
+  local src_tmpl="$src_dir/template.json"
+  if [[ ! -f "$src_tmpl" ]]; then
+    echo "Missing $src_tmpl" >&2
+    exit 1
+  fi
+  local id title blurb
+  id="$(jq -r '.id' "$src_tmpl")"
+  title="$(jq -r '.title' "$src_tmpl")"
+  blurb="$(jq -r '.blurb // ""' "$src_tmpl")"
 
-# Self-contained multi-cuisine app starter from staged template.json + shelf images.
-if [[ ! -f "$STARTER_SRC" ]]; then
-  echo "Missing $STARTER_SRC — generate khaynjo-starter/template.json first." >&2
-  exit 1
-fi
-python3 - "$STARTER_SRC" "$SHELF" "$CDN/public/templates/khaynjo-starter" <<'PY'
-import json, shutil, sys
-from pathlib import Path
+  rm -rf "$dest"
+  mkdir -p "$dest/images"
+  local missing=0 ref rel
+  while IFS= read -r ref; do
+    case "$ref" in
+      shelf:*)
+        rel="${ref#shelf:}"
+        if [[ ! -f "$SHELF/$rel" ]]; then
+          echo "  error: $id → missing shelf photo $rel" >&2
+          missing=$((missing + 1))
+          continue
+        fi
+        mkdir -p "$(dirname "$dest/images/$rel")"
+        cp -p "$SHELF/$rel" "$dest/images/$rel"
+        ;;
+      images/*)
+        if [[ ! -f "$src_dir/$ref" ]]; then
+          echo "  error: $id → missing pack photo $ref" >&2
+          missing=$((missing + 1))
+          continue
+        fi
+        mkdir -p "$(dirname "$dest/$ref")"
+        cp -p "$src_dir/$ref" "$dest/$ref"
+        ;;
+      *)
+        echo "  error: $id → unsupported image ref '$ref'" >&2
+        missing=$((missing + 1))
+        ;;
+    esac
+  done < <(jq -r '.categories[] | (.image, (.items[]?.image)) | select(. != null and . != "")' \
+    "$src_tmpl" | LC_ALL=C sort -u)
+  if [[ "$missing" -gt 0 ]]; then
+    echo "error: $id has $missing broken photo refs" >&2
+    exit 1
+  fi
 
-src_tmpl, shelf, dest = map(Path, sys.argv[1:4])
-dest.mkdir(parents=True, exist_ok=True)
-images = dest / "images"
-if images.exists():
-    shutil.rmtree(images)
-images.mkdir(parents=True)
-data = json.loads(src_tmpl.read_text(encoding="utf-8"))
-used = {}
-missing = []
+  jq --indent 2 '
+    def pack_ref: if (. // "") | startswith("shelf:") then "images/" + .[6:] else (. // "") end;
+    .categories |= map(.image |= pack_ref | .items |= map(.image |= pack_ref))
+  ' "$src_tmpl" > "$dest/template.json"
 
-def map_image(raw: str) -> str:
-    raw = (raw or "").strip()
-    if not raw:
-        return ""
-    if not raw.startswith("shelf:"):
-        return raw
-    rel = raw[len("shelf:"):]
-    if rel in used:
-        return used[rel]
-    src = shelf / rel
-    out_rel = f"images/{rel}"
-    out_path = dest / out_rel
-    out_path.parent.mkdir(parents=True, exist_ok=True)
-    if src.is_file():
-        shutil.copy2(src, out_path)
-    else:
-        missing.append(rel)
-    used[rel] = out_rel
-    return out_rel
-
-for cat in data.get("categories", []):
-    cat["image"] = map_image(cat.get("image", ""))
-    for item in cat.get("items", []):
-        item["image"] = map_image(item.get("image", ""))
-
-out_tmpl = dest / "template.json"
-out_tmpl.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-bytes_n = out_tmpl.stat().st_size
-manifest = {
-    "schema": 1,
-    "id": "khaynjo-starter",
-    "title": "Khaynjo starter menu",
-    "blurb": "World cuisines from the public Khaynjo shelf — edit prices after import.",
-    "kind": "app_template",
-    "visibility": "public",
-    "applies_shop_defaults": False,
-    "shop_defaults_id": "",
-    "template": "template.json",
-    "bytes": bytes_n,
+  # Listing goes through stdin — a 1,000-photo pack overflows argv.
+  (echo template.json; cd "$dest" && find images -type f | LC_ALL=C sort) \
+    | listing_json "$dest" \
+    | jq --indent 2 \
+    --arg id "$id" --arg title "$title" --arg blurb "$blurb" \
+    --arg visibility "$visibility" --arg defaults "$defaults" \
+    --arg sha "$(sha256sum "$dest/template.json" | cut -d' ' -f1)" '
+    . as $files |
+    {
+      schema: 1,
+      id: $id,
+      title: $title,
+      blurb: $blurb,
+      kind: "app_template",
+      visibility: $visibility,
+      applies_shop_defaults: ($defaults != ""),
+      shop_defaults_id: $defaults,
+      template: "template.json",
+      bytes: ($files | map(.bytes) | add // 0),
+      sha256: $sha,
+      files: $files
+    }' > "$dest/manifest.json"
+  find "$dest" -type d -empty -delete
+  echo "  $id: $(jq '.files | length' "$dest/manifest.json") files, $(jq '.bytes' "$dest/manifest.json") bytes ($visibility)"
 }
-(dest / "manifest.json").write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
-if missing:
-    print(f"  warn: {len(missing)} missing shelf images", file=sys.stderr)
-print(f"  khaynjo-starter: {len(used)} images, {bytes_n} bytes")
-PY
 
-# Café starter (small text-only pack) — keep as a second public option.
-if [[ -f "$CAFE/template.json" ]]; then
-  CAFE_BYTES=$(wc -c < "$CAFE/template.json" | tr -d ' ')
-  python3 - "$CAFE/manifest.json" "$CAFE_BYTES" <<'PY'
-import json, sys
-path, bytes_s = sys.argv[1], int(sys.argv[2])
-with open(path, encoding="utf-8") as f:
-    data = json.load(f)
-data["bytes"] = bytes_s
-data.setdefault("kind", "app_template")
-data.setdefault("visibility", "public")
-with open(path, "w", encoding="utf-8") as f:
-    json.dump(data, f, indent=2)
-    f.write("\n")
-PY
-  echo "  cafe-starter: ${CAFE_BYTES} bytes"
-fi
+echo "2/4 Public app templates (khaynjo-starter, cafe-starter) …"
+PUBLIC_PACKS=(khaynjo-starter cafe-starter)
+for id in "${PUBLIC_PACKS[@]}"; do
+  build_pack "$TEMPLATES/$id" "$CDN/public/templates/$id" public ""
+done
 
-# Khaynjo Items Template — shelf kind pointing at public/items/.
-ITEMS_COUNT=$(python3 -c "import json; print(json.load(open('$CDN/public/items/index.json'))['count'])")
-ITEMS_BYTES=$(python3 -c "import json; print(sum(__import__('os').path.getsize('$CDN/public/items/'+f) for f in json.load(open('$CDN/public/items/index.json'))['files']))")
-mkdir -p "$CDN/public/templates/khaynjo-items"
-cat > "$CDN/public/templates/khaynjo-items/manifest.json" <<EOF
-{
-  "schema": 1,
-  "id": "khaynjo-items",
-  "title": "Khaynjo Items Template",
-  "blurb": "Full public dish photo shelf (~${ITEMS_COUNT} dishes) for Import complete template.",
-  "kind": "shelf",
-  "visibility": "public",
-  "applies_shop_defaults": false,
-  "shop_defaults_id": "",
-  "template": "",
-  "items_index": "../../items/index.json",
-  "bytes": ${ITEMS_BYTES}
-}
-EOF
-# Marker so download_pack can treat this pack as a shelf pointer.
-cat > "$CDN/public/templates/khaynjo-items/template.json" <<'EOF'
-{
-  "id": "khaynjo-items",
-  "title": "Khaynjo Items Template",
-  "blurb": "Full public dish photo shelf.",
-  "categories": []
-}
-EOF
+echo "3/4 Khaynjo Items Template (shelf) + public/index.json …"
+ITEMS_PACK="$CDN/public/templates/khaynjo-items"
+mkdir -p "$ITEMS_PACK"
+jq -n --indent 2 --argjson n "$ITEMS_COUNT" --argjson bytes "$ITEMS_BYTES" '
+  {
+    schema: 1,
+    id: "khaynjo-items",
+    title: "Khaynjo Items Template",
+    blurb: "Full public dish photo shelf (~\($n) dishes) for Import complete template.",
+    kind: "shelf",
+    visibility: "public",
+    applies_shop_defaults: false,
+    shop_defaults_id: "",
+    template: "",
+    items_index: "../../items/index.json",
+    bytes: $bytes
+  }' > "$ITEMS_PACK/manifest.json"
+# Stub kept for app builds that read template.json from every pack.
+jq -n --indent 2 '
+  {
+    id: "khaynjo-items",
+    title: "Khaynjo Items Template",
+    blurb: "Full public dish photo shelf.",
+    categories: []
+  }' > "$ITEMS_PACK/template.json"
 echo "  khaynjo-items: shelf (${ITEMS_COUNT} files, ${ITEMS_BYTES} bytes)"
 
-# Public index listing (never private packs).
-STARTER_BYTES=$(wc -c < "$CDN/public/templates/khaynjo-starter/template.json" | tr -d ' ')
-CAFE_BYTES=$(wc -c < "$CAFE/template.json" 2>/dev/null | tr -d ' ' || echo 0)
-python3 - "$CDN/public/index.json" "$STARTER_BYTES" "$CAFE_BYTES" "$ITEMS_BYTES" "$ITEMS_COUNT" <<'PY'
-import json, sys
-path, starter_b, cafe_b, items_b, items_n = sys.argv[1], int(sys.argv[2]), int(sys.argv[3]), int(sys.argv[4]), int(sys.argv[5])
-templates = [
-    {
-        "id": "khaynjo-starter",
-        "title": "Khaynjo starter menu",
-        "blurb": "World cuisines from the public shelf — edit prices after import.",
-        "kind": "app_template",
-        "bytes": starter_b,
-    },
-    {
-        "id": "cafe-starter",
-        "title": "Café starter",
-        "blurb": "Tea, coffee, and a few snacks — edit prices after import.",
-        "kind": "app_template",
-        "bytes": cafe_b,
-    },
-    {
-        "id": "khaynjo-items",
-        "title": "Khaynjo Items Template",
-        "blurb": f"Full public dish photo shelf (~{items_n} dishes).",
-        "kind": "shelf",
-        "bytes": items_b,
-    },
-]
-data = {"schema": 1, "templates": templates}
-with open(path, "w", encoding="utf-8") as f:
-    json.dump(data, f, indent=2)
-    f.write("\n")
-print(f"  index.json: {len(templates)} public templates")
-PY
+# Public index listing (never private packs). Order = DeviceSetup chip order.
+INDEX_IDS=("${PUBLIC_PACKS[@]}" khaynjo-items)
+for id in "${INDEX_IDS[@]}"; do
+  jq '{id, title, blurb, kind, bytes}' "$CDN/public/templates/$id/manifest.json"
+done | jq -s --indent 2 '{schema: 1, templates: .}' > "$CDN/public/index.json"
+echo "  index.json: $(jq '.templates | length' "$CDN/public/index.json") public templates"
 
-echo "3/3 Private Rajdhani (optional) …"
+# Unlisted leftovers under public/templates would be served but never offered.
+for dir in "$CDN/public/templates"/*/; do
+  id="$(basename "$dir")"
+  if ! printf '%s\n' "${INDEX_IDS[@]}" | grep -qx "$id"; then
+    echo "  warn: public/templates/$id is not in index.json" >&2
+  fi
+done
+
+echo "4/4 Private Rajdhani (optional) …"
 if [[ "$DO_RAJDHANI" -eq 1 ]]; then
-  if [[ ! "$PRIVATE_CODE" =~ ^[0-9]{12}$ ]]; then
-    echo "--code= must be exactly 12 digits" >&2
-    exit 1
-  fi
-  if [[ ! -f "$SRC_TMPL" ]]; then
-    echo "Missing $SRC_TMPL" >&2
-    exit 1
-  fi
   DEST="$CDN/private/$PRIVATE_CODE"
-  rm -rf "$DEST"
-  mkdir -p "$DEST/images"
-  python3 - "$SRC_TMPL" "$SHELF" "$DEST" <<'PY'
-import json, shutil, sys
-from pathlib import Path
-src_tmpl, shelf, dest = map(Path, sys.argv[1:4])
-data = json.loads(src_tmpl.read_text(encoding="utf-8"))
-used = {}
-missing = []
-
-def map_image(raw: str) -> str:
-    raw = (raw or "").strip()
-    if not raw:
-        return ""
-    if not raw.startswith("shelf:"):
-        return raw
-    rel = raw[len("shelf:"):]
-    if rel in used:
-        return used[rel]
-    src = shelf / rel
-    out_rel = f"images/{rel}"
-    out_path = dest / out_rel
-    out_path.parent.mkdir(parents=True, exist_ok=True)
-    if src.is_file():
-        shutil.copy2(src, out_path)
-    else:
-        missing.append(rel)
-    used[rel] = out_rel
-    return out_rel
-
-for cat in data.get("categories", []):
-    cat["image"] = map_image(cat.get("image", ""))
-    for item in cat.get("items", []):
-        item["image"] = map_image(item.get("image", ""))
-out_tmpl = dest / "template.json"
-out_tmpl.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-if missing:
-    print(f"warn: {len(missing)} missing shelf images", file=sys.stderr)
-print(f"copied {len(used)} images")
-PY
-  BYTES=$(wc -c < "$DEST/template.json" | tr -d ' ')
-  cat > "$DEST/manifest.json" <<EOF
-{
-  "schema": 1,
-  "id": "rajdhani",
-  "title": "Rajdhani Menu Template",
-  "blurb": "Client menu + shop defaults (Zahir / Asif / Nawaz).",
-  "kind": "app_template",
-  "visibility": "private",
-  "applies_shop_defaults": true,
-  "shop_defaults_id": "rajdhani",
-  "template": "template.json",
-  "bytes": $BYTES
-}
-EOF
-  echo "Private Rajdhani pack → $DEST (code $PRIVATE_CODE — keep off public git)"
+  build_pack "$TEMPLATES/rajdhani" "$DEST" private rajdhani
+  # Owner-facing blurb names the shop-default accounts (private pack only).
+  jq --indent 2 '.blurb = "Client menu + shop defaults (Zahir / Asif / Nawaz)."' \
+    "$DEST/manifest.json" > "$DEST/manifest.json.tmp"
+  mv "$DEST/manifest.json.tmp" "$DEST/manifest.json"
+  if grep -qi rajdhani "$CDN/public/index.json"; then
+    echo "error: private pack leaked into public/index.json" >&2
+    exit 1
+  fi
+  echo "Private Rajdhani pack → $DEST (keep the code off public git / docs)"
 else
   echo "  skipped (pass --private-rajdhani --code=… to stage)"
 fi

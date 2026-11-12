@@ -182,7 +182,7 @@ snack_secs_save	Эскертүү убактысын үнөмдөңүз
 snack_secs_saved	Эскертүү убактысы сакталды — {n} секунд
 settings_sec_backup	Камдык көчүрмөнү сактоо жана калыбына келтирүү
 settings_sec_diag	Диагностика
-settings_sec_privacy	Privacy
+settings_sec_privacy	Купуялык
 diag_privacy_help	Журналдар бул түзмөктө калат. Сырлар (PIN, сырсөздөр) эч качан сакталбайт. Түзмөктөн пакетти бөлүшүү үчүн ар бир жолу сиздин ачык уруксатыңыз керек — эч качан сатылбайт же үчүнчү жактарга берилбейт.
 diag_level	Деталь деңгээли
 diag_level_error	Каталар
@@ -339,21 +339,21 @@ server_remove_pin_ph	Серверди алып салуу үчүн ээси PIN
 only_owner_remove_server	Серверди Ээси гана өчүрө алат
 owner_pin_remove_server	Бул серверди алып салуу үчүн ээси PIN талап кылынат
 device_setup_help	Сервер бул жерде бухгалтердик китепти сактайт. Кардар серверге жупташат.
-app_template_heading	Rajdhani App Template
-app_template_blurb	Rajdhani менюну жүктөйт; Ээси Zahir (захир), Админ Asif (асыф, PIN 1111), Официант Nawaz (наваз, PIN 0000); FOH каптал тилкеси; тарых 4 сааттан кийин тазаланат (жана Камдык көчүрмөдө азыр тазалоо); Бүгүн чечип алуу; компакт KOT + Тар лотоктор үчүн стандарттуу четтер. Каптал тилкесин жөндөөлөрдөн кайра күйгүзсө болот.
-app_template_apply	Rajdhani App Template
+app_template_heading	Дүкөн шаблондору
+app_template_blurb	Жалпыга ачык баштапкы менюну импорттоңуз же Khaynjo байланышыңыздан алган 12 сандуу жеке кодду киргизиңиз.
+app_template_apply	Шаблонду импорттоо
 app_template_skip	Азырынча өткөрүп жибериңиз
-app_template_status	Сервер даяр — Rajdhani App Template колдонуңуз же өткөрүп жибериңиз
+app_template_status	Сервер даяр — шаблон импорттоңуз же өткөрүп жибериңиз
 app_template_importing	{title} колдонулууда…
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	Шаблон жүктөлүүдө…
+app_template_public_hdr	Жалпы шаблондор
+app_template_private_hdr	Жеке шаблон
+app_template_public_hint	Жалпы тизмени жүктөө үчүн бул бөлүмдү ачыңыз (бир жолу интернет керек).
+app_template_code_not_found	Код табылган жок
+app_template_need_internet	Шаблондорду жүктөө үчүн интернет керек
+app_template_import_selected	Тандалганды импорттоо
+app_template_check_code	Кодду текшерүү
+app_template_import	Импорттоо
 currency	Валюта
 backup	Камдык көчүрмө
 use	Колдонуу
@@ -474,19 +474,19 @@ copy_report	Отчетту көчүрүү
 counted_cash_ph	Суурмадагы эсептелген акча
 country_tax	Өлкө жана салык
 tax_chrome	Кассадагы салык белгилери
-tax_chrome_help	Өчүк болгондо, буйрутма столу GST/салык болжолдуу сызыктарды жана GST-баадагы толтургучтарды жашырат. Салык ставкалары жана Өлкө жана салык жөндөөлөрү сакталып турат — энбелгилерди каалаган убакта кайра күйгүзүңүз. Rajdhani App Template ушул өчүрүү менен башталат.
+tax_chrome_help	Өчүк болгондо буйрутма столу GST/салык болжолу саптарын жана «баадагы GST» ордун басуучуларды жашырат. Салык чендери жана Өлкө жана салык жөндөөлөрү калат — белгилерди каалаган убакта кайра күйгүзүңүз. Кээ бир дүкөн шаблондору муну өчүк абалда баштайт.
 tax_chrome_on	Көрсөтүү
 tax_chrome_off	Жашыруу
 tax_chrome_saved_on	Кассадагы салык белгилери
 tax_chrome_saved_off	Кассада жашырылган салык белгилери
 tax_invoice_till	Салыктык эсеп-дүмүрчөк кассадагы
-tax_invoice_help	Өчүрүлгөндө, коноктордун эсептери накталай эсептик жазуу гана болуп саналат жана Салык эсеп-фактурасы / Cash мемо чиптери заказ столунда жашырылган. Rajdhani App Template ушул өчүк менен башталат — Салык эсеп-фактурасын кайра тандоо үчүн Көрсөтүүнү каалаган убакта күйгүзүңүз.
+tax_invoice_help	Өчүк болгондо эсептер накталай чек гана болот жана буйрутма столундагы Салык эсеп-фактурасы / Накталай чек баскычтары жашырылат. Кээ бир дүкөн шаблондору муну өчүк абалда баштайт — Салык эсеп-фактурасын кайра тандоо үчүн Көрсөтүүнү каалаган убакта күйгүзүңүз.
 tax_invoice_on	Көрсөтүү
 tax_invoice_off	Жашыруу
 tax_invoice_saved_on	Салыктык эсеп-дүмүрчөк кассадагы
 tax_invoice_saved_off	Салык эсеп-фактурасы жашырылган — Накталай эсеп гана
 pay_methods	Төлөм ыкмалары
-pay_methods_help	Төлөм алууда кайсы чиптер көрүнөт. Накталай акча дайыма калат. Rajdhani App Template накталай акча менен гана башталат — UPI / Карта / Эсеп / Бөлүүнү бул жерден кайра күйгүзүңүз.
+pay_methods_help	Төлөм кабыл алууда кайсы баскычтар көрүнөт. Накталай дайыма калат. Кээ бир дүкөн шаблондору Накталай менен гана башталат — бул жерде UPI / Карта / Насыя / Бөлүүнү кайра күйгүзүңүз.
 create_backup	Камдык көчүрмөнү түзүү
 credit_limit_heading	Кредиттик чек (тандалган кардар же жеткирүүчү)
 day_close_summary	Күндүн жыйынтыгы
@@ -793,10 +793,10 @@ printers_looking	Каралууда…
 saving_printer	Принтер кошулууда…
 cancelled	Жокко чыгарылды
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Өчүрүлүүдө…
+removed	Өчүрүлдү
+updating_order	Жаңыртылууда…
+order_updated	Буйрутма жаңыртылды
 printers_tap_find	Бул түзмөк колдоно ала турган принтерлерди тизмелөө үчүн Табууну таптаңыз.
 printers_none_found	Эч ким табылган жок — системанын принтеринин атын же IP дарегин териңиз (мисалы, 192.168.1.50).
 printer_from_find	{name} кошулду
@@ -1337,7 +1337,6 @@ kot_field_table	Тамактануучу стол
 kot_field_shop	Дүкөндүн аты
 kot_field_waiter	Кызматкерлер
 kot_field_station	Станция
-app_template_blurb_extra	Ошондой эле: Ээси Zahir, Админ Asif, Официант Nawaz; FOH каптал тилкеси; 4 сааттан кийин тарых; Бүгүн чечип алуу; компакт KOT.
 dishes_n	{n} тамактар
 recipe_ph	Рецепт (милдеттүү эмес) — бир порция колдонот: Rice=0.2, Paneer=0.15
 reorder_ph	Көбүрөөк сатып алыңыз
@@ -1364,3 +1363,7 @@ recent_changes	Акыркы өзгөрүүлөр
 lane_declared_label	Салык эсеп-фактурасы
 lane_owner_label	Накталай эсеп
 money_lane_bill	Коноктун эсеби: {lane}
+app_template_download_progress	Жүктөлүүдө… {p}% ({d} / {t})
+app_template_download_paused	Улантуу үчүн кайра импорттоңуз — даяр файлдар сакталат
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

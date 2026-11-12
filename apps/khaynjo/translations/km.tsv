@@ -182,7 +182,7 @@ snack_secs_save	រក្សាទុករយៈពេលជូនដំណឹ�
 snack_secs_saved	រយៈពេលជូនដំណឹងបានរក្សាទុក — {n} វិនាទី
 settings_sec_backup	ច្បាប់ចម្លង និងស្ដារ
 settings_sec_diag	ពិនិត្យបញ្ហា
-settings_sec_privacy	Privacy
+settings_sec_privacy	ឯកជនភាព
 diag_privacy_help	កំណត់ហេតុនៅលើឧបករណ៍នេះ។ អាថ៌កំបាំង (PIN ពាក្យសម្ងាត់) មិនដែលត្រូវបានរក្សាទុក។ ការយកកញ្ចប់ចេញពីឧបករណ៍ត្រូវការការអនុញ្ញាតច្បាស់របស់អ្នករាល់លើក — មិនដែលលក់ ឬឱ្យអ្នកដទៃ។
 diag_level	កម្រិតលម្អិត
 diag_level_error	កំហុស
@@ -339,21 +339,21 @@ server_remove_pin_ph	PIN ម្ចាស់ដើម្បីដក server
 only_owner_remove_server	មានតែម្ចាស់អាចដក server
 owner_pin_remove_server	ត្រូវការ PIN ម្ចាស់ដើម្បីដក server នេះ
 device_setup_help	Server រក្សាសៀវភៅនៅទីនេះ។ ម៉ាស៊ីនភ្ញៀវធ្វើសមកាលកម្មជាមួយ Server។
-app_template_heading	គំរូកម្មវិធី Rajdhani
-app_template_blurb	នាំម៉ឺនុយ Rajdhani; ម្ចាស់ Zahir (zahir) អ្នកគ្រប់គ្រង Asif (asif, PIN 1111) អ្នកបម្រើ Nawaz (nawaz, PIN 0000); របារសាល; ប្រវត្តិសម្អាតក្រោយ 4 ម៉ោង (និង សម្អាតឥឡូវ ក្នុងច្បាប់ចម្លង); របារ ថ្ងៃនេះ បិទ; KOT បង្រួម + គែមធម្មតាសម្រាប់សន្លឹកតូច។ ជំនួយរបារអាចបើកវិញពីការកំណត់។
-app_template_apply	គំរូកម្មវិធី Rajdhani
+app_template_heading	គំរូហាង
+app_template_blurb	នាំចូលម៉ឺនុយចាប់ផ្ដើមសាធារណៈ ឬបញ្ចូលលេខកូដឯកជន 12 ខ្ទង់ដែលបានពីអ្នកទំនាក់ទំនង Khaynjo របស់អ្នក។
+app_template_apply	នាំចូលគំរូ
 app_template_skip	រំលងឥឡូវ
-app_template_status	Server រួចរាល់ — អនុវត្តគំរូ Rajdhani ឬរំលង
+app_template_status	ម៉ាស៊ីនមេរួចរាល់ — នាំចូលគំរូ ឬរំលង
 app_template_importing	កំពុងអនុវត្ត {title}…
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	កំពុងទាញយកគំរូ…
+app_template_public_hdr	គំរូសាធារណៈ
+app_template_private_hdr	គំរូឯកជន
+app_template_public_hint	បើកផ្នែកនេះដើម្បីផ្ទុកបញ្ជីសាធារណៈ (ត្រូវការអ៊ីនធឺណិតម្ដង)។
+app_template_code_not_found	រកមិនឃើញលេខកូដ
+app_template_need_internet	ត្រូវការអ៊ីនធឺណិតដើម្បីទាញយកគំរូ
+app_template_import_selected	នាំចូលអ្វីដែលបានជ្រើស
+app_template_check_code	ពិនិត្យលេខកូដ
+app_template_import	នាំចូល
 currency	រូបិយប័ណ្ណ
 backup	ច្បាប់ចម្លង
 use	ប្រើ
@@ -474,19 +474,19 @@ copy_report	ចម្លងរបាយការណ៍
 counted_cash_ph	សាច់ប្រាក់ដែលបានរាប់ក្នុងថត
 country_tax	ប្រទេស និងពន្ធ
 tax_chrome	ស្លាកពន្ធនៅបញ្ជរ
-tax_chrome_help	ពេលបិទ តុការកុម្ម៉ង់លាក់បន្ទាត់ប៉ាន់ស្មាន GST/ពន្ធ និងកន្លែង GST ក្នុងតម្លៃ។ អត្រាពន្ធ និងការកំណត់ ប្រទេស និងពន្ធ នៅដដែល — បើកស្លាកវិញបានគ្រប់ពេល។ គំរូកម្មវិធី Rajdhani ចាប់ផ្ដើមបិទ។
+tax_chrome_help	ពេលបិទ តុបញ្ជាទិញលាក់បន្ទាត់ប៉ាន់ស្មាន GST/ពន្ធ និងកន្លែងដាក់ GST-ក្នុងតម្លៃ។ អត្រាពន្ធ និងការកំណត់ប្រទេស និងពន្ធនៅដដែល — បើកស្លាកវិញនៅពេលណាក៏បាន។ គំរូហាងខ្លះចាប់ផ្ដើមដោយបិទមុខងារនេះ។
 tax_chrome_on	បង្ហាញ
 tax_chrome_off	លាក់
 tax_chrome_saved_on	ស្លាកពន្ធនៅបញ្ជរ
 tax_chrome_saved_off	ស្លាកពន្ធត្រូវបានលាក់នៅបញ្ជរ
 tax_invoice_till	វិក្កយបត្រពន្ធនៅបញ្ជរ
-tax_invoice_help	ពេលបិទ វិក្កយបត្រជាកំណត់ចំណាំសាច់ប្រាក់តែប៉ុណ្ណោះ ហើយបន្ទះ វិក្កយបត្រពន្ធ / កំណត់ចំណាំសាច់ប្រាក់ ត្រូវបានលាក់នៅតុការកុម្ម៉ង់។ គំរូកម្មវិធី Rajdhani ចាប់ផ្ដើមបិទ — បើក បង្ហាញ វិញបានគ្រប់ពេលដើម្បីជ្រើសវិក្កយបត្រពន្ធម្ដងទៀត។
+tax_invoice_help	ពេលបិទ វិក្កយបត្រគឺជាកំណត់ត្រាសាច់ប្រាក់តែប៉ុណ្ណោះ ហើយប៊ូតុង វិក្កយបត្រពន្ធ / កំណត់ត្រាសាច់ប្រាក់ ត្រូវបានលាក់នៅតុបញ្ជាទិញ។ គំរូហាងខ្លះចាប់ផ្ដើមដោយបិទមុខងារនេះ — បើក បង្ហាញ នៅពេលណាក៏បាន ដើម្បីជ្រើសវិក្កយបត្រពន្ធម្ដងទៀត។
 tax_invoice_on	បង្ហាញ
 tax_invoice_off	លាក់
 tax_invoice_saved_on	វិក្កយបត្រពន្ធនៅបញ្ជរ
 tax_invoice_saved_off	វិក្កយបត្រពន្ធត្រូវបានលាក់ — កំណត់ចំណាំសាច់ប្រាក់តែប៉ុណ្ណោះ
 pay_methods	វិធីបង់
-pay_methods_help	បន្ទះណាដែលបង្ហាញនៅ ទទួលការបង់។ សាច់ប្រាក់នៅជានិច្ច។ គំរូកម្មវិធី Rajdhani ចាប់ផ្ដើមដោយសាច់ប្រាក់តែប៉ុណ្ណោះ — បើក UPI / កាត / ជំពាក់ / បែង វិញនៅទីនេះ។
+pay_methods_help	ប៊ូតុងណាខ្លះបង្ហាញលើ ទទួលការទូទាត់។ សាច់ប្រាក់នៅជានិច្ច។ គំរូហាងខ្លះចាប់ផ្ដើមដោយសាច់ប្រាក់តែប៉ុណ្ណោះ — បើក UPI / កាត / ជំពាក់ / បែងចែក វិញនៅទីនេះ។
 create_backup	បង្កើតច្បាប់ចម្លង
 credit_limit_heading	ដែនកំណត់ជំពាក់ (ភាគីដែលបានជ្រើស / ដាក់ឈ្មោះ)
 day_close_summary	សង្ខេបបិទថ្ងៃ
@@ -793,10 +793,10 @@ printers_looking	កំពុងស្វែងរក…
 saving_printer	កំពុងបន្ថែមម៉ាស៊ីន…
 cancelled	បានលុបចោល
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	កំពុងដកចេញ…
+removed	បានដកចេញ
+updating_order	កំពុងធ្វើបច្ចុប្បន្នភាព…
+order_updated	បានធ្វើបច្ចុប្បន្នភាពការបញ្ជាទិញ
 printers_tap_find	ប៉ះស្វែងរកដើម្បីរាយម៉ាស៊ីនដែលឧបករណ៍នេះប្រើបាន។
 printers_none_found	រកមិនឃើញ — វាយឈ្មោះម៉ាស៊ីនប្រព័ន្ធ ឬ IP (ឧ. 192.168.1.50)។
 printer_from_find	បានបន្ថែម {name}
@@ -1337,7 +1337,6 @@ kot_field_table	តុ
 kot_field_shop	ឈ្មោះហាង
 kot_field_waiter	បុគ្គលិក
 kot_field_station	ស្ថានីយ
-app_template_blurb_extra	ផងដែរ៖ ម្ចាស់ Zahir អ្នកគ្រប់គ្រង Asif អ្នកបម្រើ Nawaz; របារមុខ; ប្រវត្តិក្រោយ 4 ម៉ោង; របារ ថ្ងៃនេះ បិទ; KOT បង្រួម។
 dishes_n	ម្ហូប {n}
 recipe_ph	រូបមន្ត (ស្រេចចិត្ត) — មួយចំណែកប្រើ៖ អង្ករ=0.2 Paneer=0.15
 reorder_ph	ទិញបន្ថែមពេល
@@ -1364,3 +1363,7 @@ recent_changes	ការផ្លាស់ប្ដូរថ្មីៗ
 lane_declared_label	វិក្កយបត្រពន្ធ
 lane_owner_label	កំណត់ចំណាំសាច់ប្រាក់
 money_lane_bill	វិក្កយបត្រ៖ {lane}
+app_template_download_progress	កំពុងទាញយក… {p}% ({d} / {t})
+app_template_download_paused	នាំចូលម្ដងទៀតដើម្បីបន្ត — ឯកសារដែលរួចហើយត្រូវបានរក្សាទុក
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

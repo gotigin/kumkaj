@@ -182,7 +182,7 @@ snack_secs_save	Sačuvaj trajanje upozorenja
 snack_secs_saved	Trajanje upozorenja sačuvano — {n} sekundi
 settings_sec_backup	Rezervna kopija i povrat
 settings_sec_diag	Dijagnostika
-settings_sec_privacy	Privacy
+settings_sec_privacy	Privatnost
 diag_privacy_help	Zapisnici ostaju na ovom uređaju. Tajne (PIN, lozinke) se nikad ne čuvaju. Dijeljenje paketa van uređaja svaki put treba vaše izričito odobrenje — nikad se ne prodaje ni ne daje trećima.
 diag_level	Nivo detalja
 diag_level_error	Greške
@@ -339,21 +339,21 @@ server_remove_pin_ph	PIN vlasnika za uklanjanje Servera
 only_owner_remove_server	Samo Vlasnik može ukloniti Server
 owner_pin_remove_server	Za uklanjanje ovog Servera potreban je PIN vlasnika
 device_setup_help	Server drži knjige ovdje. Klijent se uparuje sa Serverom.
-app_template_heading	Šablon aplikacije Rajdhani
-app_template_blurb	Učitava meni Rajdhani; Vlasnik Zahir (zahir), Admin Asif (asif, PIN 1111), Konobar Nawaz (nawaz, PIN 0000); bočna traka FOH; historija se briše nakon 4 sata (i Očisti sada u Rezervnoj kopiji); traka Danas isključena; zbijeni KOT + Standardne margine za uske ladice. Susjede na bočnoj traci možete ponovo uključiti u Podešavanjima.
-app_template_apply	Šablon aplikacije Rajdhani
+app_template_heading	Šabloni za radnju
+app_template_blurb	Uvezite javni početni meni ili unesite privatni kod od 12 cifara od vašeg Khaynjo kontakta.
+app_template_apply	Uvezi šablon
 app_template_skip	Preskoči za sada
-app_template_status	Server spreman — primijenite šablon Rajdhani ili preskočite
+app_template_status	Server spreman — uvezite šablon ili preskočite
 app_template_importing	Primjena {title}…
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	Preuzimanje šablona…
+app_template_public_hdr	Javni šabloni
+app_template_private_hdr	Privatni šablon
+app_template_public_hint	Otvorite ovaj odjeljak da učitate javnu listu (jednom je potreban internet).
+app_template_code_not_found	Kod nije pronađen
+app_template_need_internet	Za preuzimanje šablona potreban je internet
+app_template_import_selected	Uvezi odabrano
+app_template_check_code	Provjeri kod
+app_template_import	Uvezi
 currency	Valuta
 backup	Rezervna kopija
 use	Koristi
@@ -474,19 +474,19 @@ copy_report	Kopiraj izvještaj
 counted_cash_ph	Prebrojana gotovina u ladici
 country_tax	Država i porez
 tax_chrome	Poreske oznake na kasi
-tax_chrome_help	Kad je isključeno, pult narudžbi skriva redove procjene GST/poreza i držače GST u cijeni. Poreske stope i podešavanja Država i porez ostaju — oznake možete vratiti bilo kad. Šablon Rajdhani počinje s ovim isključenim.
+tax_chrome_help	Kad je isključeno, sto za narudžbe skriva redove procjene GST/poreza i oznake GST-a u cijeni. Porezne stope i postavke zemlje i poreza ostaju — oznake uključite ponovo bilo kada. Neki šabloni za radnju počinju s ovim isključenim.
 tax_chrome_on	Prikaži
 tax_chrome_off	Sakrij
 tax_chrome_saved_on	Poreske oznake na kasi
 tax_chrome_saved_off	Poreske oznake skrivene na kasi
 tax_invoice_till	Porezni račun na kasi
-tax_invoice_help	Kad je isključeno, računi su samo gotovinski listić i čipovi Porezni račun / Gotovinski listić su skriveni na pultu. Šablon Rajdhani počinje s ovim isključenim — Prikaži vratite bilo kad da opet birate Porezni račun.
+tax_invoice_help	Kad je isključeno, računi su samo gotovinski računi, a dugmad Porezna faktura / Gotovinski račun na stolu za narudžbe su skrivena. Neki šabloni za radnju počinju s ovim isključenim — uključite Prikaži bilo kada da ponovo izaberete Poreznu fakturu.
 tax_invoice_on	Prikaži
 tax_invoice_off	Sakrij
 tax_invoice_saved_on	Porezni račun na kasi
 tax_invoice_saved_off	Porezni račun skriven — samo gotovinski listić
 pay_methods	Načini plaćanja
-pay_methods_help	Koji se čipovi vide na Naplati. Gotovina uvijek ostaje. Šablon Rajdhani počinje samo s gotovinom — UPI / Kartica / Stranke / Podijeli vratite ovdje.
+pay_methods_help	Koja dugmad se prikazuju na Primi uplatu. Gotovina uvijek ostaje. Neki šabloni za radnju počinju samo s Gotovinom — ovdje ponovo uključite UPI / Kartica / Kredit / Podjela.
 create_backup	Napravi rezervnu kopiju
 credit_limit_heading	Limit duga (odabrana / imenovana stranka)
 day_close_summary	Sažetak zaključenja dana
@@ -793,10 +793,10 @@ printers_looking	Tražim…
 saving_printer	Dodajem štampač…
 cancelled	Otkazano
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Uklanjanje…
+removed	Uklonjeno
+updating_order	Ažuriranje…
+order_updated	Narudžba ažurirana
 printers_tap_find	Dodirnite Pronađi da vidite štampače koje ovaj uređaj može koristiti.
 printers_none_found	Ništa nije pronađeno — upišite ime sistemskog štampača ili IP (npr. 192.168.1.50).
 printer_from_find	Dodato {name}
@@ -1337,7 +1337,6 @@ kot_field_table	Sto
 kot_field_shop	Ime lokala
 kot_field_waiter	Osoblje
 kot_field_station	Stanica
-app_template_blurb_extra	Također: Vlasnik Zahir, Admin Asif, Konobar Nawaz; bočna traka FOH; historija nakon 4 sata; traka Danas isključena; zbijeni KOT.
 dishes_n	{n} jela
 recipe_ph	Recept (nije obavezno) — jedna porcija troši: Rice=0.2, Paneer=0.15
 reorder_ph	Naruči još pri
@@ -1364,3 +1363,7 @@ recent_changes	Nedavne promjene
 lane_declared_label	Porezni račun
 lane_owner_label	Gotovinski listić
 money_lane_bill	Račun: {lane}
+app_template_download_progress	Preuzimanje… {p}% ({d} / {t})
+app_template_download_paused	Uvezite ponovo za nastavak — završene datoteke se čuvaju
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

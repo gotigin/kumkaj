@@ -182,7 +182,7 @@ snack_secs_save	सावधानाचो वेळ सांबाळात
 snack_secs_saved	सावधानाचो वेळ सांबाळलो — {n} सेकंद
 settings_sec_backup	बॅकअप & पुनर्स्थापना
 settings_sec_diag	निदान करप
-settings_sec_privacy	Privacy
+settings_sec_privacy	गुपितताय
 diag_privacy_help	लॉग ह्या डिव्हायसाचेर रावतात. गुपीत (पिन, पासवर्ड) केन्नाच सांठयना. डिव्हायसा भायर पॅकेज वांटपाक दर खेपे तुमची स्पश्ट मान्यताय जाय — केन्नाच विकली ना वा तिसऱ्या पक्षांक दिवंक ना.
 diag_level	तपशील पातळी
 diag_level_error	चुको जावप
@@ -339,21 +339,21 @@ server_remove_pin_ph	सर्वर काडून उडोवपाक म�
 only_owner_remove_server	फकत मालकाकच सर्वर काडून उडोवंक मेळटा
 owner_pin_remove_server	हो सर्वर काडून उडोवपाक मालक पिन जाय
 device_setup_help	सर्वर पुस्तकां हांगा दवरता. क्लायंट जोडी सर्वराक.
-app_template_heading	राजधानी अॅप टेम्पलेट
-app_template_blurb	राजधानी मेनू लोड करता; मालक जाहिर (जाहिर), एडमिन आसिफ (आसिफ, पिन 1111), वेटर नवाज (नवाज, पिन 0000); एफओएच बाजूचो पट्टी; इतिहास 4 वरां उपरांत निवळ जाता (आनी आतां बॅकअपांत निवळ करात); आयज पट्टी काडून; संकुचीत KOT + संकुचीत ट्रे खातीर मानक मार्जिन. सेटिंग्जांत सायडबार पयर परत चालू करूंक मेळटात.
-app_template_apply	राजधानी अॅप टेम्पलेट
+app_template_heading	दुकान टेम्पलेट
+app_template_blurb	एक सार्वजनीक सुरवातेचो मेन्यू आयात करात, वा तुमच्या Khaynjo संपर्का कडल्यान मेळिल्लो 12 आंकड्यांचो खाजगी कोड घालात.
+app_template_apply	टेम्पलेट आयात करात
 app_template_skip	आतां खातीर वगडावचें
-app_template_status	सर्वर तयार — राजधानी अॅप साचा लागू करचो, वा वगडावचो
+app_template_status	सर्व्हर तयार — टेम्पलेट आयात करात, वा सोडात
 app_template_importing	{title} लागू करप...
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	टेम्पलेट डाउनलोड जाता…
+app_template_public_hdr	सार्वजनीक टेम्पलेट
+app_template_private_hdr	खाजगी टेम्पलेट
+app_template_public_hint	सार्वजनीक वळेरी लोड करपाक हो विभाग उगडात (एक फावट इंटरनेट जाय).
+app_template_code_not_found	कोड मेळूंक ना
+app_template_need_internet	टेम्पलेट डाउनलोड करपाक इंटरनेट जाय
+app_template_import_selected	वेंचिल्लें आयात करात
+app_template_check_code	कोड तपासात
+app_template_import	आयात करात
 currency	चलन
 backup	बॅकअप घेवप
 use	वापर
@@ -474,19 +474,19 @@ copy_report	अहवालाची प्रत करात
 counted_cash_ph	ड्रॉअरांत रोख रक्कम मेजली
 country_tax	देश & कर
 tax_chrome	टिल्लाचेर कर लेबलां
-tax_chrome_help	बंद आसतना ऑर्डर डेस्क जीएसटी/कर अदमास लायनी आनी जीएसटी-इन-प्रायस प्लेसहोल्डर लिपयता. कर दर आनी देश & कर सेटिंग्ज रावतात — खंयच्याय वेळार लेबलां परत चालू करात. राजधानी अॅप टेम्पलेट हें बंद करून सुरू जाता.
+tax_chrome_help	बंद आसतना, ऑर्डर डेस्क GST/कराच्या अदमासाच्यो ओळी आनी मोलांत-GST प्लेसहोल्डर लिपयता. कराचे दर आनी देश आनी कर सेटिंग्स उरतात — लेबल खंयच्याय वेळार परत चालू करात. कांय दुकान टेम्पलेट हें बंद दवरून सुरू जातात.
 tax_chrome_on	दाखोवचें
 tax_chrome_off	लिपोवचें
 tax_chrome_saved_on	टिल्लाचेर कर लेबलां
 tax_chrome_saved_off	टिल्लाचेर लिपयिल्लीं कर लेबलां
 tax_invoice_till	टिल्लाचेर कर पावणी
-tax_invoice_help	बंद आसतना बिलां फकत रोख मेमो आसतात आनी कर पावणी / रोख मेमो चिप्स ऑर्डर डेस्काचेर लिपल्यात. राजधानी अॅप टेम्पलेट हें बंद करून सुरू जाता — परतून कर पावणी घेवपाक खंयच्याय वेळार परतून दाखोवचें चालू करचें.
+tax_invoice_help	बंद आसतना, बिलां फकत कॅश मेमो आसतात आनी ऑर्डर डेस्कार टॅक्स इनवॉयस / कॅश मेमो चिप लिपतात. कांय दुकान टेम्पलेट हें बंद दवरून सुरू जातात — टॅक्स इनवॉयस परत वेंचपाक दाखय खंयच्याय वेळार चालू करात.
 tax_invoice_on	दाखोवचें
 tax_invoice_off	लिपोवचें
 tax_invoice_saved_on	टिल्लाचेर कर पावणी
 tax_invoice_saved_off	कर पावणी लिपलां — फकत रोख मेमो
 pay_methods	फारीकणी पद्दती
-pay_methods_help	Take payment चेर खंयच्यो चिप्स दिसतात. रोख सदांच रावता. राजधानी अॅप टेम्पलेट फकत रोख पासून सुरू जाता — हांगा परतून UPI / कार्ड / क्रेडिट / स्प्लिट चालू करात.
+pay_methods_help	पेमेंट घेयात चेर खंयचे चिप दिसतात. रोख सदांच उरता. कांय दुकान टेम्पलेट फकत रोखीन सुरू जातात — UPI / कार्ड / उदार / वांटणी हांगा परत चालू करात.
 create_backup	बॅकअप तयार करचो
 credit_limit_heading	पतपुरवठ्याची मर्यादा (निवड केल्लो / नांव दिल्लो पक्ष)
 day_close_summary	दीस बंद सारांश
@@ -793,10 +793,10 @@ printers_looking	पळयता...
 saving_printer	प्रिंटर जोडप...
 cancelled	रद्द केलां
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	काडटा…
+removed	काडलें
+updating_order	अपडेट जाता…
+order_updated	ऑर्डर अपडेट जालो
 printers_tap_find	हें डिव्हायस वापरूं येता अशा मुद्रकांची वळेरी करपाक सोद टॅप करात.
 printers_none_found	कोणूच मेळूंक ना — प्रणाली मुद्रक नांव वा IP टाइप करात (देखीक 192.168.1.50).
 printer_from_find	जोडले {name}
@@ -1337,7 +1337,6 @@ kot_field_table	टेबल
 kot_field_shop	दुकानाचें नांव
 kot_field_waiter	कर्मचारी
 kot_field_station	स्टेशन
-app_template_blurb_extra	तशेंच मालक झहीर, अ ॅडमिन आसिफ, वेटर नवाज. एफओएच सायडबार; 4 वरां उपरांतचो इतिहास; आयज काडून उडयात. कॉम्पॅक्ट कोट.
 dishes_n	0 पदार्थ {n}
 recipe_ph	पाककृती (पर्यायी) — एक भाग वापरता: तांदूळ=0.2, पनीर=0.15
 reorder_ph	हांगा चड खरेदी करात
@@ -1364,3 +1363,7 @@ recent_changes	हालींचे बदल
 lane_declared_label	कर चलोवप
 lane_owner_label	रोख पावती
 money_lane_bill	बिल: {lane}
+app_template_download_progress	डाउनलोड जाता… {p}% ({d} / {t})
+app_template_download_paused	परत सुरू करपाक परत आयात करात — पुराय जाल्ल्यो फायली दवरतात
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

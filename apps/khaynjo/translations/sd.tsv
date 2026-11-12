@@ -182,7 +182,7 @@ snack_secs_save	خبردار وقت محفوظ ڪريو
 snack_secs_saved	خبردار وقت محفوظ ٿيو — {n} سيڪنڊ
 settings_sec_backup	بيڪ اپ ۽ بحالي
 settings_sec_diag	تشخيص
-settings_sec_privacy	Privacy
+settings_sec_privacy	رازداري
 diag_privacy_help	لاگز هن ڊوائيس تي رهندا آهن. راز (PIN، پاسورڊ) ڪڏهن به محفوظ نه ڪيا ويندا آهن. ڊوائيس کان ٻاهر پيڪيج شيئر ڪرڻ لاءِ هر وقت توهان جي واضع منظوري گهربل آهي — ڪڏهن به ٽئين پارٽين کي نه وڪيو وڃي ٿو ۽ نه ڏنو وڃي ٿو.
 diag_level	تفصيل جي سطح
 diag_level_error	غلطيون
@@ -339,21 +339,21 @@ server_remove_pin_ph	مالڪ PIN سرور هٽائڻ لاءِ
 only_owner_remove_server	رڳو مالڪ سرور هٽائي سگھي ٿو
 owner_pin_remove_server	مالڪ PIN کي هن سرور کي هٽائڻ جي ضرورت آهي
 device_setup_help	Server هتي ڪتاب رکي ٿو. Client جو جوڙو Server سان آهي.
-app_template_heading	Rajdhani ايپ ٽيمپليٽ
-app_template_blurb	Rajdhani مينيو لوڊ ڪري ٿو؛ مالڪ Zahir (ظاهر), Admin Asif (آصف, PIN 1111), ويٽر Nawaz (نواز, PIN 0000); FOH سايڊبار; تاريخ چار ڪلاڪن بعد صاف ٿئي ٿي (۽ بیک اپ ۾ هاڻي صاف ڪريو); اڄ قطار ختم ڪريو; محدود ٽريز لاءِ KOT + معياري ڪنارن سان گڏ ڪنڊيڪٽ. سايڊبار پيئرز کي سيٽنگز ۾ واپس آن ڪري سگهجي ٿو.
-app_template_apply	Rajdhani ايپ ٽيمپليٽ
+app_template_heading	دڪان جا ٽيمپليٽ
+app_template_blurb	ڪو عوامي شروعاتي مينيو درآمد ڪريو، يا پنهنجي Khaynjo رابطي کان مليل 12 انگن وارو ذاتي ڪوڊ لکو.
+app_template_apply	ٽيمپليٽ درآمد ڪريو
 app_template_skip	هاڻي لاءِ ڇڏي ڏيو
-app_template_status	Server تيار — Rajdhani ايپ ٽيمپليٽ لاڳو ڪريو، يا ڇڏي ڏيو
+app_template_status	سرور تيار — ٽيمپليٽ درآمد ڪريو، يا ڇڏي ڏيو
 app_template_importing	{title} لاڳو ٿي رهيو آهي...
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	ٽيمپليٽ ڊائونلوڊ ٿي رهيو آهي…
+app_template_public_hdr	عوامي ٽيمپليٽ
+app_template_private_hdr	ذاتي ٽيمپليٽ
+app_template_public_hint	عوامي فهرست لوڊ ڪرڻ لاءِ هي حصو کوليو (هڪ ڀيرو انٽرنيٽ گهرجي).
+app_template_code_not_found	ڪوڊ نه مليو
+app_template_need_internet	ٽيمپليٽ ڊائونلوڊ ڪرڻ لاءِ انٽرنيٽ گهرجي
+app_template_import_selected	چونڊيل درآمد ڪريو
+app_template_check_code	ڪوڊ جانچيو
+app_template_import	درآمد ڪريو
 currency	ڪرنسي
 backup	بيڪ اپ
 use	استعمال ڪريو
@@ -474,19 +474,19 @@ copy_report	رپورٽ ڪاپي ڪريو
 counted_cash_ph	درانور ۾ ڳڻيل نقد
 country_tax	ملڪ ۽ ٽيڪس
 tax_chrome	ڪيش ڪائونٽر تي ٽيڪس ليبل
-tax_chrome_help	جڏهن بند هوندو آهي، آرڊر ڊيسڪ GST/ٽيڪس تخمينو لائينز ۽ GST-ان-قیمت پلاسبولڊر لڪائي ٿو. ٽيڪس جي شرح ۽ ملڪ & ٽيڪس جون سيٽنگون قائم رهن ٿيون — ڪنهن به وقت ليبل واپس آن ڪري سگهجن ٿا. Rajdhani ايپ ٽيمپليٽ انهي سان بند ٿيل شروع ٿئي ٿو.
+tax_chrome_help	بند هجڻ تي، آرڊر ڊيسڪ GST/ٽيڪس اندازي جون سٽون ۽ قيمت ۾-GST جايون لڪائي ٿي. ٽيڪس جا ريٽ ۽ ملڪ ۽ ٽيڪس سيٽنگون رهن ٿيون — ليبل ڪنهن به وقت ٻيهر چالو ڪريو. ڪجهه دڪان جا ٽيمپليٽ هن کي بند رکي شروع ٿين ٿا.
 tax_chrome_on	ڏيکاريو
 tax_chrome_off	لڪايو
 tax_chrome_saved_on	ڪيش ڪائونٽر تي ٽيڪس ليبل
 tax_chrome_saved_off	ڪيش ڪائونٽر تي ٽيڪس ليبل لڪل آهن
 tax_invoice_till	ڪيش ڪائونٽر تي ٽيڪس انوائس
-tax_invoice_help	جڏھن بند ھجي، بل صرف نقد ميمو ھوندا آھن ۽ ٽيڪس انوائس / نقد ميمو چپس آرڊر ڊيسڪ تي لڪيل ھوندا آھن. Rajdhani ايپ ٽيمپليٽ ان سان شروع ٿئي ٿي بند — ٻيهر ٽيڪس انوائس چونڊڻ لاءِ ڪڏهن به ڏيکارڻ کي آن ڪريو.
+tax_invoice_help	بند هجڻ تي، بل صرف ڪيش ميمو هوندا آهن ۽ آرڊر ڊيسڪ تي ٽيڪس انوائس / ڪيش ميمو بٽڻ لڪيل هوندا آهن. ڪجهه دڪان جا ٽيمپليٽ هن کي بند رکي شروع ٿين ٿا — ٽيڪس انوائس ٻيهر چونڊڻ لاءِ ڏيکاريو ڪنهن به وقت چالو ڪريو.
 tax_invoice_on	ڏيکاريو
 tax_invoice_off	لڪايو
 tax_invoice_saved_on	ڪيش ڪائونٽر تي ٽيڪس انوائس
 tax_invoice_saved_off	ٽيڪس انوائس لڪل — صرف نقد ميمو
 pay_methods	ادائيگي جا طريقا
-pay_methods_help	ڪهڙا چپس ادائيگي وٺڻ تي ظاهر ٿين ٿا. نقدي هميشه رهي ٿي. Rajdhani ايپ ٽيمپليٽ فقط نقدي سان شروع ٿئي ٿي — هتي UPI / ڪارڊ / ڪريڊٽ / اسپلٽ کي واپس آن ڪريو.
+pay_methods_help	ادائيگي وٺو تي ڪهڙا بٽڻ نظر اچن ٿا. نقد هميشه رهي ٿو. ڪجهه دڪان جا ٽيمپليٽ صرف نقد سان شروع ٿين ٿا — UPI / ڪارڊ / اڌار / ورهاست هتي ٻيهر چالو ڪريو.
 create_backup	بيڪ اپ ٺاهيو
 credit_limit_heading	ڪريڊٽ حد (چونڊيل / نالي سان پارٽي)
 day_close_summary	ڏينهن جو اختتامي خلاصو
@@ -793,10 +793,10 @@ printers_looking	ڳولي رهيو آهيان...
 saving_printer	پرنٽر شامل ڪري رهيو آهيان...
 cancelled	منسوخ ٿي ويو
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	هٽائي رهيا آهيون…
+removed	هٽايو ويو
+updating_order	تازو ٿي رهيو آهي…
+order_updated	آرڊر تازو ٿيو
 printers_tap_find	ٽپ ڪريو ڳوليو ته هن ڊوائيس ڪهڙن پرنٽرز کي استعمال ڪري سگھي ٿو.
 printers_none_found	ڪوبه نه لڌو ويو — سسٽم پرنٽر جو نالو يا IP لکڻ (مثال طور 192.168.1.50).
 printer_from_find	شامل ڪيو {name}
@@ -1337,7 +1337,6 @@ kot_field_table	ٽيبل
 kot_field_shop	دڪان جو نالو
 kot_field_waiter	عملو
 kot_field_station	اسٽیشن
-app_template_blurb_extra	به: مالڪ Zahir، Admin Asif، ويٽر Nawaz؛ FOH سائڊبار؛ 4 ڪلاڪن کان پوءِ تاريخ؛ اڄ اُڇڙي ڇڏيو؛ ڪمپيڪٽ KOT.
 dishes_n	{n} ڊشز
 recipe_ph	ترڪيب (اختياري) — هڪ حصو استعمال ڪري ٿو: چانور=0.2، پنير=0.15
 reorder_ph	وڌيڪ خريد ڪريو
@@ -1364,3 +1363,7 @@ recent_changes	تازيون تبديليون
 lane_declared_label	ٽيڪس انوائس
 lane_owner_label	نقد ميمو
 money_lane_bill	بل: {lane}
+app_template_download_progress	ڊائونلوڊ ٿي رهيو آهي… {p}% ({d} / {t})
+app_template_download_paused	ٻيهر شروع ڪرڻ لاءِ ٻيهر درآمد ڪريو — مڪمل فائلون رکيون وڃن ٿيون
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

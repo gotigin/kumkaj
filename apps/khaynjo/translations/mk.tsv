@@ -182,7 +182,7 @@ snack_secs_save	Заштедете време за предупредување
 snack_secs_saved	Зачувано време на предупредување — {n} секунди
 settings_sec_backup	Бекап и обновување
 settings_sec_diag	Дијагностика
-settings_sec_privacy	Privacy
+settings_sec_privacy	Приватност
 diag_privacy_help	Дневниците остануваат на овој уред. Тајните (PIN, лозинки) никогаш не се зачувуваат. За споделување пакет надвор од уредот, потребно е вашето експлицитно одобрение секој пат - никогаш не се продава или дава на трети страни.
 diag_level	Ниво на детали
 diag_level_error	Грешки
@@ -339,21 +339,21 @@ server_remove_pin_ph	Сопственик PIN за отстранување на
 only_owner_remove_server	Само сопственикот може да отстрани сервер
 owner_pin_remove_server	Потребен е сопственикот PIN да го отстрани овој сервер
 device_setup_help	Серверот ги чува книгите овде. Паровите на клиентот на серверот.
-app_template_heading	Rajdhani App Template
-app_template_blurb	Го вчитува менито Rajdhani; Сопственик Zahir (захир), админ Asif (асиф, PIN 1111), келнер Nawaz (наваз, PIN 0000); FOH странична лента; историјата се брише по 4 часа (и Clear now in Backup); Денес соблечете се; компактен KOT + Стандардни маргини за тесни фиоки. Врсниците на страничната лента може повторно да се вклучат во Поставки.
-app_template_apply	Rajdhani App Template
+app_template_heading	Шаблони за продавница
+app_template_blurb	Увезете јавно почетно мени или внесете приватен 12-цифрен код од вашиот контакт во Khaynjo.
+app_template_apply	Увези шаблон
 app_template_skip	Засега прескокнете
-app_template_status	Серверот е подготвен - примени Rajdhani App Template или прескокнете
+app_template_status	Серверот е подготвен — увезете шаблон или прескокнете
 app_template_importing	Се применува {title}…
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	Се презема шаблонот…
+app_template_public_hdr	Јавни шаблони
+app_template_private_hdr	Приватен шаблон
+app_template_public_hint	Отворете го овој дел за да го вчитате јавниот список (потребен е интернет еднаш).
+app_template_code_not_found	Кодот не е пронајден
+app_template_need_internet	Потребен е интернет за преземање шаблони
+app_template_import_selected	Увези го избраното
+app_template_check_code	Провери код
+app_template_import	Увези
 currency	Валута
 backup	Резервна копија
 use	Користете
@@ -474,19 +474,19 @@ copy_report	Копирај извештај
 counted_cash_ph	Избројана готовина во фиока
 country_tax	Земја и данок
 tax_chrome	Даночни ознаки на каса
-tax_chrome_help	Кога е исклучено, пултот за нарачки ги крие линиите за проценка на GST/даноците и GST-во цената. Остануваат даночните стапки и поставките за земја и данок - повторно вклучете ги етикетите во секое време. Rajdhani App Template започнува со ова исклучено.
+tax_chrome_help	Кога е исклучено, бирото за нарачки ги крие редовите за проценка на GST/данок и ознаките „GST во цената“. Даночните стапки и поставките за земја и данок остануваат — вклучете ги ознаките повторно во секое време. Некои шаблони за продавница почнуваат со ова исклучено.
 tax_chrome_on	Прикажи
 tax_chrome_off	Скриј
 tax_chrome_saved_on	Даночни ознаки на каса
 tax_chrome_saved_off	Даночни ознаки скриени на каса
 tax_invoice_till	Даночна фактура на каса
-tax_invoice_help	Кога е исклучено, гостинските сметки се само готовински меморандум и чиповите за даночна фактура / белешки за готовина се скриени на пултот за нарачки. Rajdhani App Template започнува со ова исклучено - вклучете го Покажи повторно во секое време за повторно да изберете даночна фактура.
+tax_invoice_help	Кога е исклучено, сметките се само сметки за готовина, а копчињата Даночна фактура / Сметка за готовина се скриени на бирото за нарачки. Некои шаблони за продавница почнуваат со ова исклучено — вклучете Прикажи во секое време за повторно да изберете Даночна фактура.
 tax_invoice_on	Прикажи
 tax_invoice_off	Скриј
 tax_invoice_saved_on	Даночна фактура на каса
 tax_invoice_saved_off	Скриена даночна фактура — Само белешка за готовина
 pay_methods	Начини на плаќање
-pay_methods_help	Кои чипови се појавуваат на Земете плаќање. Готовината секогаш останува. Rajdhani App Template започнува само со готовина — вклучете UPI / картичка / кредит / подели овде.
+pay_methods_help	Кои копчиња се прикажуваат во Прими плаќање. Готовината секогаш останува. Некои шаблони за продавница почнуваат само со Готовина — тука повторно вклучете UPI / Картичка / Кредит / Подели.
 create_backup	Направете резервна копија
 credit_limit_heading	Кредитен лимит (избран клиент или добавувач)
 day_close_summary	Краток преглед на денот
@@ -793,10 +793,10 @@ printers_looking	Се бара…
 saving_printer	Се додава печатач…
 cancelled	Откажано
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Се отстранува…
+removed	Отстрането
+updating_order	Се ажурира…
+order_updated	Нарачката е ажурирана
 printers_tap_find	Допрете Најдете за да ги наведете печатачите што може да ги користи овој уред.
 printers_none_found	Никој не е пронајден - напишете име на системски печатач или IP (на пр. 192.168.1.50).
 printer_from_find	Додадено {name}
@@ -1337,7 +1337,6 @@ kot_field_table	Трпезариска маса
 kot_field_shop	Име на продавницата
 kot_field_waiter	Персонал
 kot_field_station	Станица
-app_template_blurb_extra	Исто така: Сопственик Zahir, Админ Asif, Келнер Nawaz; FOH странична лента; историја по 4 часа; Денес соблечете се; компактен KOT.
 dishes_n	{n} јадења
 recipe_ph	Рецепт (по избор) - една порција користи: Rice=0.2, Paneer=0.15
 reorder_ph	Купете повеќе на
@@ -1364,3 +1363,7 @@ recent_changes	Неодамнешни промени
 lane_declared_label	Даночна фактура
 lane_owner_label	Меморандум за готовина
 money_lane_bill	Гостинска сметка за гости: {lane}
+app_template_download_progress	Се презема… {p}% ({d} / {t})
+app_template_download_paused	Увезете повторно за да продолжите — завршените датотеки се чуваат
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

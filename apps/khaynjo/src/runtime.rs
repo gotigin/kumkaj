@@ -652,7 +652,7 @@ fn menu_import_job(db_path: PathBuf, kind: MenuImportKind) {
         });
 }
 
-fn catalogue_fetch_busy() -> &'static std::sync::atomic::AtomicBool {
+pub(crate) fn catalogue_fetch_busy() -> &'static std::sync::atomic::AtomicBool {
     static BUSY: std::sync::atomic::AtomicBool = std::sync::atomic::AtomicBool::new(false);
     &BUSY
 }
@@ -672,6 +672,50 @@ fn catalogue_fetch_running() -> &'static Mutex<Option<CatalogueFetchKind>> {
     SLOT.get_or_init(|| Mutex::new(None))
 }
 
+/// Last progress of the running (or last) pack / shelf download.
+fn catalogue_fetch_progress(
+) -> &'static Mutex<Option<crate::catalogue_remote::DownloadProgress>> {
+    static SLOT: OnceLock<Mutex<Option<crate::catalogue_remote::DownloadProgress>>> =
+        OnceLock::new();
+    SLOT.get_or_init(|| Mutex::new(None))
+}
+
+/// `Downloading… {p}% ({d} / {t})` — MB once the pack is big enough to
+/// matter, else file counts (legacy listings without sizes too).
+fn format_download_progress(
+    tmpl: &str,
+    p: &crate::catalogue_remote::DownloadProgress,
+) -> String {
+    let mb = |b: u64| format!("{:.1} MB", b as f64 / (1024.0 * 1024.0));
+    let (done, total) = if p.bytes_total >= 512 * 1024 {
+        (mb(p.bytes_done), mb(p.bytes_total))
+    } else {
+        (p.files_done.to_string(), p.files_total.to_string())
+    };
+    let pct = if p.bytes_total > 0 {
+        (p.bytes_done.saturating_mul(100) / p.bytes_total).min(100)
+    } else if p.files_total > 0 {
+        (p.files_done as u64 * 100 / p.files_total as u64).min(100)
+    } else {
+        0
+    };
+    tmpl.replace("{p}", &pct.to_string())
+        .replace("{d}", &done)
+        .replace("{t}", &total)
+}
+
+/// Localized download progress for the busy chrome (UI thread).
+pub(crate) fn catalogue_download_progress_text() -> Option<String> {
+    let p = (*catalogue_fetch_progress().lock().unwrap())?;
+    if p.files_total == 0 {
+        return None;
+    }
+    Some(format_download_progress(
+        &app_t("app_template_download_progress"),
+        &p,
+    ))
+}
+
 fn catalogue_fetch_job(kind: CatalogueFetchKind, data_base: PathBuf) {
     if catalogue_fetch_busy().swap(true, std::sync::atomic::Ordering::SeqCst) {
         return;
@@ -679,17 +723,47 @@ fn catalogue_fetch_job(kind: CatalogueFetchKind, data_base: PathBuf) {
     catalogue_fetch_cancel().store(false, std::sync::atomic::Ordering::SeqCst);
     *catalogue_fetch_once().lock().unwrap() = None;
     *catalogue_fetch_running().lock().unwrap() = Some(kind.clone());
+    *catalogue_fetch_progress().lock().unwrap() = None;
     let status = match &kind {
-        CatalogueFetchKind::PublicIndex => "Loading public templates…",
-        CatalogueFetchKind::PrivatePeek { .. } => "Checking private code…",
+        CatalogueFetchKind::PublicIndex => "Loading public templates…".to_string(),
+        CatalogueFetchKind::PrivatePeek { .. } => "Checking private code…".to_string(),
         CatalogueFetchKind::DownloadPublic { .. }
-        | CatalogueFetchKind::DownloadPrivate { .. } => "Downloading template…",
+        | CatalogueFetchKind::DownloadPrivate { .. } => app_t("app_template_downloading"),
     };
-    set_books_work_status(status);
+    set_books_work_status(&status);
+    // Captured here (UI thread, no app_state guard held by callers) so the
+    // worker never touches app_state.
+    let progress_tmpl = app_t("app_template_download_progress");
     let _ = std::thread::Builder::new()
         .name("khaynjo-catalogue".into())
         .spawn(move || {
             let cancel = || catalogue_fetch_cancel().load(std::sync::atomic::Ordering::SeqCst);
+            let last_pct = std::sync::atomic::AtomicU64::new(u64::MAX);
+            let last_files = std::sync::atomic::AtomicUsize::new(0);
+            let progress = |p: crate::catalogue_remote::DownloadProgress| {
+                *catalogue_fetch_progress().lock().unwrap() = Some(p);
+                if p.files_total == 0 {
+                    return;
+                }
+                let text = format_download_progress(&progress_tmpl, &p);
+                *books_work_status().lock().unwrap() = Some(text);
+                // Wake the UI on each new percent (or every 16 files) — a
+                // 1,459-photo shelf must not flood the event queue.
+                let pct = if p.bytes_total > 0 {
+                    p.bytes_done.saturating_mul(100) / p.bytes_total
+                } else {
+                    p.files_done as u64 * 100 / p.files_total.max(1) as u64
+                };
+                let prev_files = last_files.load(std::sync::atomic::Ordering::Relaxed);
+                if last_pct.swap(pct, std::sync::atomic::Ordering::Relaxed) != pct
+                    || p.files_done.saturating_sub(prev_files) >= 16
+                    || p.files_done == p.files_total
+                {
+                    last_files.store(p.files_done, std::sync::atomic::Ordering::Relaxed);
+                    makepad_widgets::makepad_platform::thread::SignalToUI::set_ui_signal();
+                }
+            };
+            let source = crate::catalogue_remote::default_source();
             let result = (|| -> Result<CatalogueFetchOk, String> {
                 match &kind {
                     CatalogueFetchKind::PublicIndex => Ok(CatalogueFetchOk::PublicIndex(
@@ -699,20 +773,24 @@ fn catalogue_fetch_job(kind: CatalogueFetchKind, data_base: PathBuf) {
                         crate::catalogue_remote::fetch_private_manifest(code)?,
                     )),
                     CatalogueFetchKind::DownloadPublic { id } => {
-                        let (pack_dir, manifest, _) = crate::catalogue_remote::download_pack(
+                        let (pack_dir, manifest, _) = crate::catalogue_remote::download_pack_from(
+                            &*source,
                             &data_base,
                             crate::catalogue_remote::CatalogueVisibility::Public,
                             id,
                             &cancel,
+                            &progress,
                         )?;
                         Ok(CatalogueFetchOk::Downloaded { pack_dir, manifest })
                     }
                     CatalogueFetchKind::DownloadPrivate { code } => {
-                        let (pack_dir, manifest, _) = crate::catalogue_remote::download_pack(
+                        let (pack_dir, manifest, _) = crate::catalogue_remote::download_pack_from(
+                            &*source,
                             &data_base,
                             crate::catalogue_remote::CatalogueVisibility::Private,
                             code,
                             &cancel,
+                            &progress,
                         )?;
                         Ok(CatalogueFetchOk::Downloaded { pack_dir, manifest })
                     }

@@ -182,7 +182,7 @@ snack_secs_save	Jimat masa makluman
 snack_secs_saved	Masa makluman disimpan — {n} saat
 settings_sec_backup	Sandaran & pulihkan
 settings_sec_diag	Diagnostik
-settings_sec_privacy	Privacy
+settings_sec_privacy	Privasi
 diag_privacy_help	Log kekal pada peranti ini. Rahsia (PIN, kata laluan) tidak pernah disimpan. Berkongsi pakej dari peranti memerlukan kelulusan eksplisit anda setiap kali — tidak pernah dijual atau diberikan kepada pihak ketiga.
 diag_level	Tahap terperinci
 diag_level_error	Kesilapan
@@ -339,20 +339,20 @@ server_remove_pin_ph	Pemilik PIN untuk mengalih keluar pelayan
 only_owner_remove_server	Hanya Pemilik boleh mengalih keluar pelayan
 owner_pin_remove_server	Pemilik PIN dikehendaki mengalih keluar pelayan ini
 device_setup_help	Pelayan menyimpan lejar di sini. Pasangan pelanggan ke Pelayan.
-app_template_heading	Rajdhani Templat Apl
-app_template_blurb	Memuatkan menu Rajdhani; Owner Zahir (zahir), Admin Asif (asif, PIN 1111), Waiter Nawaz (nawaz, PIN 0000); FOH bar sisi; sejarah dipadam selepas 4 jam (dan Kosongkan sekarang dalam Sandaran); Hari ini menanggalkan; padat KOT + margin standard untuk dulang sempit. Rakan setara bar sisi boleh dihidupkan semula dalam Tetapan.
-app_template_apply	Rajdhani Templat Apl
+app_template_heading	Templat kedai
+app_template_blurb	Import menu permulaan awam, atau masukkan kod peribadi 12 digit daripada kenalan Khaynjo anda.
+app_template_apply	Import templat
 app_template_skip	Langkau buat masa ini
-app_template_status	Pelayan sedia — gunakan Rajdhani Templat Apl, atau langkau
+app_template_status	Pelayan sedia — import templat, atau langkau
 app_template_importing	Memohon {title}…
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
+app_template_downloading	Memuat turun templat…
+app_template_public_hdr	Templat awam
+app_template_private_hdr	Templat peribadi
+app_template_public_hint	Buka bahagian ini untuk memuatkan senarai awam (perlukan internet sekali).
+app_template_code_not_found	Kod tidak ditemui
+app_template_need_internet	Perlukan internet untuk memuat turun templat
+app_template_import_selected	Import yang dipilih
+app_template_check_code	Semak kod
 app_template_import	Import
 currency	mata wang
 backup	Sandaran
@@ -474,19 +474,19 @@ copy_report	Salin laporan
 counted_cash_ph	Dikira wang tunai dalam laci
 country_tax	Negara & cukai
 tax_chrome	Label cukai pada till
-tax_chrome_help	Apabila dimatikan, meja pesanan menyembunyikan GST/garis anggaran cukai dan ruang letak GST-dalam-harga. Kadar cukai dan tetapan Negara & cukai kekal — hidupkan semula label pada bila-bila masa. Rajdhani Templat Apl bermula dengan ini.
+tax_chrome_help	Apabila dimatikan, meja pesanan menyembunyikan baris anggaran GST/cukai dan pemegang tempat GST-dalam-harga. Kadar cukai dan tetapan Negara & cukai kekal — hidupkan semula label bila-bila masa. Sesetengah templat kedai bermula dengan ini dimatikan.
 tax_chrome_on	Tunjukkan
 tax_chrome_off	Sembunyi
 tax_chrome_saved_on	Label cukai pada till
 tax_chrome_saved_off	Label cukai disembunyikan pada sehingga
 tax_invoice_till	Invois cukai pada sehingga
-tax_invoice_help	Apabila dimatikan, bil adalah memo Tunai sahaja dan invois Cukai / cip memo Tunai disembunyikan di meja pesanan. Rajdhani Templat Apl bermula dengan ini — hidupkan Tunjukkan semula pada bila-bila masa untuk memilih Invois cukai sekali lagi.
+tax_invoice_help	Apabila dimatikan, bil hanya memo tunai dan butang Invois cukai / Memo tunai disembunyikan di meja pesanan. Sesetengah templat kedai bermula dengan ini dimatikan — hidupkan Tunjuk bila-bila masa untuk memilih Invois cukai semula.
 tax_invoice_on	Tunjukkan
 tax_invoice_off	Sembunyi
 tax_invoice_saved_on	Invois cukai pada sehingga
 tax_invoice_saved_off	Invois cukai disembunyikan — Memo tunai sahaja
 pay_methods	Kaedah pembayaran
-pay_methods_help	Cip mana yang muncul pada Ambil pembayaran. Wang tunai sentiasa kekal. Rajdhani Templat Apl bermula dengan Tunai sahaja — hidupkan UPI / Kad / Kredit / Pisah kembali di sini.
+pay_methods_help	Butang mana yang muncul pada Terima bayaran. Tunai sentiasa kekal. Sesetengah templat kedai bermula dengan Tunai sahaja — hidupkan semula UPI / Kad / Kredit / Bahagi di sini.
 create_backup	Buat sandaran
 credit_limit_heading	Had kredit (pelanggan atau pembekal terpilih)
 day_close_summary	Ringkasan penutup hari
@@ -793,10 +793,10 @@ printers_looking	mencari…
 saving_printer	Menambah pencetak…
 cancelled	Dibatalkan
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Membuang…
+removed	Dibuang
+updating_order	Mengemas kini…
+order_updated	Pesanan dikemas kini
 printers_tap_find	Ketik Cari untuk menyenaraikan pencetak yang boleh digunakan oleh peranti ini.
 printers_none_found	Tiada ditemui — taip nama pencetak sistem atau IP (cth. 192.168.1.50).
 printer_from_find	Ditambah {name}
@@ -1337,7 +1337,6 @@ kot_field_table	Meja makan
 kot_field_shop	Nama kedai
 kot_field_waiter	Kakitangan
 kot_field_station	Stesen
-app_template_blurb_extra	Juga: Pemilik Zahir, Admin Asif, Pelayan Nawaz; FOH bar sisi; sejarah selepas 4 jam; Hari ini menanggalkan; padat KOT.
 dishes_n	{n} hidangan
 recipe_ph	Resipi (pilihan) — satu bahagian menggunakan: Beras=0.2, Paneer=0.15
 reorder_ph	Beli lebih banyak di
@@ -1364,3 +1363,7 @@ recent_changes	Perubahan terkini
 lane_declared_label	Invois cukai
 lane_owner_label	Memo tunai
 money_lane_bill	Bil: {lane}
+app_template_download_progress	Memuat turun… {p}% ({d} / {t})
+app_template_download_paused	Import semula untuk menyambung — fail yang siap disimpan
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

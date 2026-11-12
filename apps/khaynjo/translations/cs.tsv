@@ -182,7 +182,7 @@ snack_secs_save	Ušetřete čas upozornění
 snack_secs_saved	Uložený čas upozornění — {n} sekund
 settings_sec_backup	Zálohování a obnovení
 settings_sec_diag	Diagnostika
-settings_sec_privacy	Privacy
+settings_sec_privacy	Soukromí
 diag_privacy_help	Protokoly zůstávají na tomto zařízení. Tajemství (PIN, hesla) se nikdy neukládají. Sdílení balíčku mimo zařízení vyžaduje pokaždé váš výslovný souhlas – nikdy se neprodává ani nedává třetím stranám.
 diag_level	Úroveň detailů
 diag_level_error	Chyby
@@ -339,21 +339,21 @@ server_remove_pin_ph	Vlastník PIN pro odebrání serveru
 only_owner_remove_server	Odebrat server může pouze vlastník
 owner_pin_remove_server	K odstranění tohoto serveru je vyžadován vlastník PIN
 device_setup_help	Server uchovává knihy zde. Klient se spáruje se serverem.
-app_template_heading	Rajdhani Šablona aplikace
-app_template_blurb	Načte nabídku Rajdhani; Majitel Zahir (zahir), správce Asif (asif, PIN 1111), číšník Nawaz (nawaz, PIN 0000); FOH postranní panel; historie se vymaže po 4 hodinách (a Vymazat nyní v Zálohování); Dnes se svlékněte; kompaktní KOT + Standardní okraje pro úzké zásobníky. Protějšky postranního panelu lze znovu zapnout v Nastavení.
-app_template_apply	Rajdhani Šablona aplikace
+app_template_heading	Šablony obchodu
+app_template_blurb	Importujte veřejné úvodní menu, nebo zadejte soukromý 12místný kód od svého kontaktu Khaynjo.
+app_template_apply	Importovat šablonu
 app_template_skip	Zatím přeskočte
-app_template_status	Server je připraven – použijte Rajdhani App Template nebo přeskočte
+app_template_status	Server připraven — importujte šablonu, nebo přeskočte
 app_template_importing	Použití {title}…
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	Stahování šablony…
+app_template_public_hdr	Veřejné šablony
+app_template_private_hdr	Soukromá šablona
+app_template_public_hint	Otevřete tuto sekci pro načtení veřejného seznamu (jednou je potřeba internet).
+app_template_code_not_found	Kód nenalezen
+app_template_need_internet	Ke stažení šablon je potřeba internet
+app_template_import_selected	Importovat vybrané
+app_template_check_code	Ověřit kód
+app_template_import	Importovat
 currency	Měna
 backup	Zálohování
 use	Použijte
@@ -474,19 +474,19 @@ copy_report	Zkopírujte zprávu
 counted_cash_ph	Spočítaná hotovost v zásuvce
 country_tax	Země a daně
 tax_chrome	Daňové štítky na pokladně
-tax_chrome_help	Když je vypnuto, objednávkový pult skryje GST/daňový odhad a zástupné symboly GST v ceně. Daňové sazby a nastavení země a daní zůstávají – štítky kdykoli znovu zapněte. Rajdhani Šablona aplikace začíná s tímto vypnutým.
+tax_chrome_help	Když je vypnuto, objednávkový pult skryje řádky odhadu GST/daně a zástupné texty GST v ceně. Daňové sazby a nastavení země a daně zůstávají — popisky můžete kdykoli znovu zapnout. Některé šablony obchodu začínají s tímto vypnutým.
 tax_chrome_on	Zobrazit
 tax_chrome_off	Skrýt
 tax_chrome_saved_on	Daňové štítky na pokladně
 tax_chrome_saved_off	Daňové štítky skryté na pokladně
 tax_invoice_till	Daňový doklad na do
-tax_invoice_help	Když je vypnuto, účty jsou pouze pokladniční a čipy daňové faktury / pokladniční poukázky jsou skryty na objednávkovém stole. Rajdhani Šablona aplikace začíná s tímto vypnutým – kdykoli znovu zapněte Zobrazit znovu a vyberte daňový doklad.
+tax_invoice_help	Když je vypnuto, účty jsou jen hotovostní doklady a tlačítka Daňový doklad / Hotovostní doklad jsou na objednávkovém pultu skrytá. Některé šablony obchodu začínají s tímto vypnutým — kdykoli zapněte Zobrazit a znovu zvolte Daňový doklad.
 tax_invoice_on	Zobrazit
 tax_invoice_off	Skrýt
 tax_invoice_saved_on	Daňový doklad na do
 tax_invoice_saved_off	Daňová faktura skrytá – pouze pokladní doklad
 pay_methods	Platební metody
-pay_methods_help	Které žetony se objeví při platbě Take. Hotovost vždy zůstane. Šablona aplikace Rajdhani začíná pouze hotovostí – zde opět zapněte UPI / Karta / Kredit / Rozdělení.
+pay_methods_help	Která tlačítka se zobrazí v Přijmout platbu. Hotovost zůstává vždy. Některé šablony obchodu začínají jen s Hotovostí — zde znovu zapněte UPI / Karta / Úvěr / Rozdělit.
 create_backup	Vytvořte zálohu
 credit_limit_heading	Kreditní limit (vybraný zákazník nebo dodavatel)
 day_close_summary	Závěr dne
@@ -793,10 +793,10 @@ printers_looking	Při pohledu…
 saving_printer	Přidávání tiskárny…
 cancelled	Zrušeno
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Odebírání…
+removed	Odebráno
+updating_order	Aktualizace…
+order_updated	Objednávka aktualizována
 printers_tap_find	Klepnutím na Najít zobrazíte seznam tiskáren, které toto zařízení může používat.
 printers_none_found	Nebylo nalezeno – zadejte název systémové tiskárny nebo IP (např. 192.168.1.50).
 printer_from_find	Přidáno {name}
@@ -1337,7 +1337,6 @@ kot_field_table	Jídelní stůl
 kot_field_shop	Název obchodu
 kot_field_waiter	Zaměstnanci
 kot_field_station	stanice
-app_template_blurb_extra	Dále: majitel Zahir, správce Asif, číšník Nawaz; FOH postranní panel; historie po 4 hodinách; Dnes se svlékněte; kompaktní KOT.
 dishes_n	{n} nádobí
 recipe_ph	Recept (volitelný) — jedna porce používá: Rýže=0,2, Paneer=0,15
 reorder_ph	Koupit více na
@@ -1364,3 +1363,7 @@ recent_changes	Nedávné změny
 lane_declared_label	Daňový doklad
 lane_owner_label	Oznámení o hotovosti
 money_lane_bill	Účet: {lane}
+app_template_download_progress	Stahování… {p}% ({d} / {t})
+app_template_download_paused	Pro pokračování importujte znovu — hotové soubory zůstanou
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

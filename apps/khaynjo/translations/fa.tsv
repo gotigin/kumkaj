@@ -182,7 +182,7 @@ snack_secs_save	ذخیره زمان هشدار
 snack_secs_saved	زمان هشدار ذخیره شد — {n} ثانیه
 settings_sec_backup	پشتیبان و بازیابی
 settings_sec_diag	عیب‌یابی
-settings_sec_privacy	Privacy
+settings_sec_privacy	حریم خصوصی
 diag_privacy_help	گزارش‌ها روی همین دستگاه می‌مانند. رازها (PIN، گذرواژه) هرگز ذخیره نمی‌شوند. بردن یک بسته از دستگاه هر بار به تأیید صریح شما نیاز دارد — هرگز فروخته یا به دیگران داده نمی‌شود.
 diag_level	سطح جزئیات
 diag_level_error	خطاها
@@ -339,21 +339,21 @@ server_remove_pin_ph	PIN مالک برای برداشتن سرور
 only_owner_remove_server	فقط مالک می‌تواند سرور را بردارد
 owner_pin_remove_server	برای برداشتن این سرور PIN مالک لازم است
 device_setup_help	سرور دفترها را اینجا نگه می‌دارد. کلاینت به یک سرور جفت می‌شود.
-app_template_heading	قالب برنامه Rajdhani
-app_template_blurb	منوی Rajdhani را بار می‌کند؛ مالک Zahir (zahir)، مدیر Asif (asif، PIN 1111)، پیشخدمت Nawaz (nawaz، PIN 0000)؛ نوار کناری سالن؛ تاریخچه پس از ۴ ساعت پاک می‌شود (و پاک کردن اکنون در پشتیبان)؛ نوار امروز خاموش؛ KOT فشرده + حاشیه استاندارد برای سینی باریک. هم‌ردیف‌های نوار کناری را می‌توان دوباره در تنظیمات روشن کرد.
-app_template_apply	قالب برنامه Rajdhani
+app_template_heading	قالب‌های فروشگاه
+app_template_blurb	یک منوی شروع عمومی وارد کنید، یا کد خصوصی ۱۲ رقمی را که از رابط Khaynjo خود گرفته‌اید وارد کنید.
+app_template_apply	وارد کردن قالب
 app_template_skip	فعلاً رد شو
-app_template_status	سرور آماده است — قالب Rajdhani را اعمال کنید یا رد شوید
+app_template_status	سرور آماده است — قالبی وارد کنید یا رد شوید
 app_template_importing	در حال اعمال {title}…
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	در حال دانلود قالب…
+app_template_public_hdr	قالب‌های عمومی
+app_template_private_hdr	قالب خصوصی
+app_template_public_hint	برای بارگیری فهرست عمومی این بخش را باز کنید (یک بار اینترنت لازم است).
+app_template_code_not_found	کد پیدا نشد
+app_template_need_internet	برای دانلود قالب‌ها به اینترنت نیاز است
+app_template_import_selected	وارد کردن مورد انتخاب‌شده
+app_template_check_code	بررسی کد
+app_template_import	وارد کردن
 currency	واحد پول
 backup	پشتیبان
 use	استفاده
@@ -474,19 +474,19 @@ copy_report	رونوشت گزارش
 counted_cash_ph	نقد شمرده‌شده در کشو
 country_tax	کشور و مالیات
 tax_chrome	برچسب مالیات روی صندوق
-tax_chrome_help	وقتی خاموش است، میز سفارش خط برآورد مالیات و جای‌نگهدار مالیات در قیمت را پنهان می‌کند. نرخ مالیات و تنظیمات کشور و مالیات می‌مانند — هر وقت خواستید برچسب‌ها را روشن کنید. قالب Rajdhani با این حالت خاموش شروع می‌شود.
+tax_chrome_help	وقتی خاموش است، میز سفارش خطوط برآورد GST/مالیات و جای‌نگهدارهای «GST در قیمت» را پنهان می‌کند. نرخ‌های مالیات و تنظیمات کشور و مالیات می‌مانند — هر زمان برچسب‌ها را دوباره روشن کنید. برخی قالب‌های فروشگاه با این گزینه خاموش شروع می‌شوند.
 tax_chrome_on	نمایان
 tax_chrome_off	پنهان
 tax_chrome_saved_on	برچسب مالیات روی صندوق
 tax_chrome_saved_off	برچسب مالیات روی صندوق پنهان است
 tax_invoice_till	فاکتور مالیاتی روی صندوق
-tax_invoice_help	وقتی خاموش است، صورتحساب فقط یادداشت نقد است و دکمه‌های فاکتور مالیاتی / یادداشت نقد روی میز سفارش پنهان‌اند. قالب Rajdhani با این حالت خاموش شروع می‌شود — هر وقت خواستید نمایان را روشن کنید تا دوباره فاکتور مالیاتی را انتخاب کنید.
+tax_invoice_help	وقتی خاموش است، صورت‌حساب‌ها فقط رسید نقدی هستند و دکمه‌های فاکتور مالیاتی / رسید نقدی در میز سفارش پنهان می‌شوند. برخی قالب‌های فروشگاه با این گزینه خاموش شروع می‌شوند — هر زمان «نمایش» را روشن کنید تا دوباره فاکتور مالیاتی را انتخاب کنید.
 tax_invoice_on	نمایان
 tax_invoice_off	پنهان
 tax_invoice_saved_on	فاکتور مالیاتی روی صندوق
 tax_invoice_saved_off	فاکتور مالیاتی پنهان — فقط یادداشت نقد
 pay_methods	روش‌های پرداخت
-pay_methods_help	کدام دکمه‌ها در گرفتن پرداخت دیده شوند. نقد همیشه می‌ماند. قالب Rajdhani فقط با نقد شروع می‌شود — UPI / کارت / نسیه / تقسیم را اینجا دوباره روشن کنید.
+pay_methods_help	کدام دکمه‌ها در «دریافت پرداخت» دیده شوند. نقد همیشه می‌ماند. برخی قالب‌های فروشگاه فقط با نقد شروع می‌شوند — UPI / کارت / نسیه / تقسیم را اینجا دوباره روشن کنید.
 create_backup	ساخت پشتیبان
 credit_limit_heading	سقف نسیه (طرف انتخاب‌شده / نام‌دار)
 day_close_summary	خلاصه بستن روز
@@ -793,10 +793,10 @@ printers_looking	در حال جستجو…
 saving_printer	در حال افزودن چاپگر…
 cancelled	لغو شد
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	در حال حذف…
+removed	حذف شد
+updating_order	در حال به‌روزرسانی…
+order_updated	سفارش به‌روزرسانی شد
 printers_tap_find	پیدا کردن را بزنید تا چاپگرهایی که این دستگاه می‌تواند استفاده کند فهرست شوند.
 printers_none_found	چیزی پیدا نشد — نام چاپگر سیستم یا یک IP بنویسید (مثلاً 192.168.1.50).
 printer_from_find	{name} افزوده شد
@@ -1337,7 +1337,6 @@ kot_field_table	میز
 kot_field_shop	نام فروشگاه
 kot_field_waiter	کارکنان
 kot_field_station	ایستگاه
-app_template_blurb_extra	همچنین: مالک Zahir، مدیر سامانه Asif، پیشخدمت Nawaz؛ نوار کناری سالن؛ تاریخچه پس از ۴ ساعت؛ نوار امروز خاموش؛ KOT فشرده.
 dishes_n	{n} غذا
 recipe_ph	دستور (اختیاری) — یک پرس مصرف می‌کند: برنج=۰٫۲، Paneer=۰٫۱۵
 reorder_ph	خرید بیشتر در
@@ -1364,3 +1363,7 @@ recent_changes	تغییرهای اخیر
 lane_declared_label	فاکتور مالیاتی
 lane_owner_label	یادداشت نقد
 money_lane_bill	صورتحساب: {lane}
+app_template_download_progress	در حال دانلود… {p}% ({d} / {t})
+app_template_download_paused	برای ادامه دوباره وارد کنید — فایل‌های کامل‌شده نگه داشته می‌شوند
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

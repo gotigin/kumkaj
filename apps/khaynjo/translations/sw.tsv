@@ -182,7 +182,7 @@ snack_secs_save	Hifadhi muda wa arifa
 snack_secs_saved	Muda wa arifa umehifadhiwa — sekunde {n}
 settings_sec_backup	Backup na kurudisha tena
 settings_sec_diag	Uchunguzi
-settings_sec_privacy	Privacy
+settings_sec_privacy	Faragha
 diag_privacy_help	Rekodi zilizopo zinabaki kwenye kifaa hiki. Rahisishi (PIN, nywila) hazitajwa kabisa. Kushirika paketi nje ya kifaa kinahitaji idhini yako wazi kila wakati — hakuna uuzaji au kupeleka kwa wadau wa tatu.
 diag_level	Kiwango cha maelezo
 diag_level_error	Makosa
@@ -339,21 +339,21 @@ server_remove_pin_ph	Owner PIN kuondoa seva
 only_owner_remove_server	Owner pekee anaweza kuondoa seva
 owner_pin_remove_server	Owner PIN inahitajika kuondoa seva hii
 device_setup_help	Seva huhifadhi vitabu hapa. Mteja huoanishwa na seva.
-app_template_heading	Mfumo wa Rajdhani App Template
-app_template_blurb	Inalipa menyu ya Rajdhani; Mwenyeji Zahir (zahir), Admin Asif (asif, PIN 1111), Waiter Nawaz (nawaz, PIN 0000); upande wa FOH; historia inapunguzwa baada ya masaa 4 (na Safisha sasa kwenye Backup); Kitanda cha leo kinatoka; KOT fupi + marudio ya kawaida kwa vitambaa vidogo. Wale wanaopiga pamoja na upande wanaweza kuwekwa tena katika Mipangilio.
-app_template_apply	Mfumo wa Rajdhani App Template
+app_template_heading	Violezo vya duka
+app_template_blurb	Leta menyu ya kuanzia ya umma, au weka msimbo binafsi wa tarakimu 12 kutoka kwa mwasiliani wako wa Khaynjo.
+app_template_apply	Leta kiolezo
 app_template_skip	Piga hapo sasa
-app_template_status	Mwenyeji tayari — tumia Mfumo wa Rajdhani App Template, au piga hapo
+app_template_status	Seva iko tayari — leta kiolezo, au ruka
 app_template_importing	Inapokea {title}…
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	Inapakua kiolezo…
+app_template_public_hdr	Violezo vya umma
+app_template_private_hdr	Kiolezo binafsi
+app_template_public_hint	Fungua sehemu hii kupakia orodha ya umma (intaneti inahitajika mara moja).
+app_template_code_not_found	Msimbo haukupatikana
+app_template_need_internet	Intaneti inahitajika kupakua violezo
+app_template_import_selected	Leta kilichochaguliwa
+app_template_check_code	Kagua msimbo
+app_template_import	Leta
 currency	Sarafu
 backup	Hifadhi nakala
 use	Tumia
@@ -474,19 +474,19 @@ copy_report	Nakili ripoti
 counted_cash_ph	Taslimu iliyohesabiwa kwenye droo
 country_tax	Nchi na kodi
 tax_chrome	Vigezo vya kodi kwenye till
-tax_chrome_help	Wakati imeshindwa, meza ya utaratibu huyashinda mstari wa makadirio ya GST/kodi na nafasi za kodi-kweni-malipo. Kipimo cha nchi na mipangilio ya kodi hubaki — weka vigezo vya kodi tena wakati wowote. Mfumo wa Rajdhani App Template unapokea hiki ikishindwa.
+tax_chrome_help	Ikizimwa, meza ya oda huficha mistari ya makadirio ya GST/kodi na vishika-nafasi vya GST-ndani-ya-bei. Viwango vya kodi na mipangilio ya Nchi na kodi hubaki — washa lebo tena wakati wowote. Baadhi ya violezo vya duka huanza na hili likiwa limezimwa.
 tax_chrome_on	Onyesha
 tax_chrome_off	Ficha
 tax_chrome_saved_on	Vigezo vya kodi kwenye till
 tax_chrome_saved_off	Vigezo vya kodi vimeshindwa kwenye till
 tax_invoice_till	Faini ya kodi kwenye till
-tax_invoice_help	Wakati imeshindwa, bills ni tu Cash memo na chapa za faini ya kodi / Cash memo huzishindwa kwenye meza ya utaratibu. Mfumo wa Rajdhani App Template unapokea hiki ikishindwa — weka Onyo tena wakati wowote ili kuchagua faini ya kodi tena.
+tax_invoice_help	Ikizimwa, bili ni risiti za fedha taslimu pekee na vitufe vya Ankara ya kodi / Risiti ya fedha hufichwa kwenye meza ya oda. Baadhi ya violezo vya duka huanza na hili likiwa limezimwa — washa Onyesha wakati wowote kuchagua tena Ankara ya kodi.
 tax_invoice_on	Onyesha
 tax_invoice_off	Ficha
 tax_invoice_saved_on	Faini ya kodi kwenye till
 tax_invoice_saved_off	Faini ya kodi imeshindwa — tu Cash memo
 pay_methods	Njia za malipo
-pay_methods_help	Chapa gani hutokea kwenye Kuchukua malipo. Fedha daima hubaki. Mfumo wa Rajdhani App Template unapokea fedha pekee — weka UPI / Kadi / Credit / Gawanya tena hapa.
+pay_methods_help	Vitufe vipi huonekana kwenye Pokea malipo. Fedha taslimu hubaki daima. Baadhi ya violezo vya duka huanza na Fedha taslimu pekee — washa tena UPI / Kadi / Mkopo / Gawanya hapa.
 create_backup	Tengeneza hifadhi
 credit_limit_heading	Kikomo cha mkopo (mhusika aliyechaguliwa / aliyetajwa)
 day_close_summary	Muhtasari wa kufunga siku
@@ -793,10 +793,10 @@ printers_looking	Inatafuta printa kwenye kifaa hiki na Wi‑Fi…
 saving_printer	Inaongeza kifaa cha kuvunja…
 cancelled	Imefutwa
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Inaondoa…
+removed	Imeondolewa
+updating_order	Inasasisha…
+order_updated	Oda imesasishwa
 printers_tap_find	Gusa Tafuta ili kuorodhesha printa ambazo kifaa hiki kinaweza kutumia.
 printers_none_found	Hakuna printa zilizopatikana — andika jina la mfumo au anwani ya mtandao (k.m. 192.168.1.50).
 printer_from_find	Iliongezwa {name}
@@ -1337,7 +1337,6 @@ kot_field_table	Meza
 kot_field_shop	Jina la duka
 kot_field_waiter	Wafanyakazi
 kot_field_station	Kituo
-app_template_blurb_extra	Pia: Mwenyekiti Zahir, Admin Asif, Waiter Nawaz; upande wa kushoto wa FOH; historia baada ya masaa 4; riba ya leo itachukuliwa; KOT fupi.
 dishes_n	Vyakula {n}
 recipe_ph	Mapishi (hiari) — sahani moja hutumia: Rice=0.2, Paneer=0.15
 reorder_ph	Nunua zaidi ikifika
@@ -1364,3 +1363,7 @@ recent_changes	Mabadiliko ya karibuni
 lane_declared_label	Ankara ya kodi
 lane_owner_label	Memo ya taslimu
 money_lane_bill	Bilio: {lane}
+app_template_download_progress	Inapakua… {p}% ({d} / {t})
+app_template_download_paused	Leta tena ili kuendelea — faili zilizokamilika zinahifadhiwa
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

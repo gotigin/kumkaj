@@ -4,15 +4,18 @@
 //! Copied from sites/kumkaj, then diverged (copy-then-diverge; no shared
 //! site engine).
 //!
-//! Scroll / swipe up / tap / ↓ → PgDn Space flip chapters; ↑ ← PgUp go back;
-//! Home / End jump. The small table tiles in the top bar jump to a chapter.
+//! One scrolling page (redesign 2026-11-12; was a 10-slide deck): sticky
+//! top bar with section links and the Play CTA; sections hero · how ·
+//! features · menus · offline · pricing · faq · closing · footer.
 //!
 //! Native preview helpers (ignored in the browser):
-//! - `SITE_PREVIEW=390x844:3` opens a 390×844 window on chapter 3 (1-based).
+//! - `SITE_PREVIEW=390x844:menus` opens a 390×844 window scrolled to a
+//!   section (id, old chapter id, or nothing for the top).
 //! - `SITE_LINKS=local` sends the kumkaj.com link to the local wasm server.
 //!
-//! In the browser, `#kot` or `#3` opens that chapter; a page served from
-//! 127.0.0.1 / localhost links back to the local kumkaj.com (:8010).
+//! In the browser, `#menus` (or an old chapter link such as `#kot`) opens
+//! that section; a page served from 127.0.0.1 / localhost links back to the
+//! local kumkaj.com (:8010).
 
 pub use makepad_widgets;
 
@@ -20,6 +23,9 @@ use makepad_widgets::*;
 
 mod floor;
 use floor::Visit;
+
+mod world_shelf;
+use world_shelf::{WorldDish, WORLD};
 
 app_main!(App);
 
@@ -45,46 +51,60 @@ const DOWNLOAD_URL: &str = "https://play.google.com/store/apps/details?id=com.kh
 const WHATSAPP_NUMBER: Option<&str> = None;
 const WHATSAPP_MESSAGE: &str = "Khaynjo demo — restaurant type, tables, city";
 
-// ---- Chapters ---------------------------------------------------------
+/// Same-host legal pages (deploy-firebase.sh stages them next to the wasm).
+const PRIVACY_PATH: &str = "/privacy";
+const TERMS_PATH: &str = "/terms/";
+const PUBLIC_HOST: &str = "https://khaynjo.com";
 
-const CHAPTERS: [(&str, &str); 10] = [
-    ("rush", "Lunch rush"),
-    ("order", "Order taken"),
-    ("kot", "The KOT"),
-    ("kitchen", "Kitchen in step"),
-    ("changes", "Service changes"),
-    ("settle", "Settle"),
-    ("dayclose", "Close the day"),
-    ("menu", "Your menu"),
-    ("offline", "Internet down"),
-    ("start", "Start"),
+// ---- Sections ----------------------------------------------------------
+
+/// Page sections in order: (hash id, widget path).
+const SECTIONS: [(&str, &[LiveId]); 8] = [
+    ("top", ids!(hero)),
+    ("how", ids!(how)),
+    ("features", ids!(features)),
+    ("menus", ids!(menus)),
+    ("offline", ids!(offline)),
+    ("pricing", ids!(pricing)),
+    ("faq", ids!(faq)),
+    ("start", ids!(closing)),
 ];
 
-const SLIDES: [&[LiveId]; 10] = [
-    ids!(rush),
-    ids!(order),
-    ids!(kot),
-    ids!(kitchen),
-    ids!(changes),
-    ids!(settle),
-    ids!(dayclose),
-    ids!(menu),
-    ids!(offline),
-    ids!(start),
+/// Links from the old 10-chapter deck keep landing somewhere sensible.
+const OLD_CHAPTERS: [(&str, &str); 10] = [
+    ("rush", "top"),
+    ("order", "how"),
+    ("kot", "how"),
+    ("kitchen", "how"),
+    ("changes", "features"),
+    ("settle", "how"),
+    ("dayclose", "how"),
+    ("menu", "menus"),
+    ("offline", "offline"),
+    ("start", "start"),
 ];
 
-/// Top-bar tiles: [hit, idle, here].
-const NAV: [[&[LiveId]; 3]; 10] = [
-    [ids!(nav.n0.hit), ids!(nav.n0.idle), ids!(nav.n0.here)],
-    [ids!(nav.n1.hit), ids!(nav.n1.idle), ids!(nav.n1.here)],
-    [ids!(nav.n2.hit), ids!(nav.n2.idle), ids!(nav.n2.here)],
-    [ids!(nav.n3.hit), ids!(nav.n3.idle), ids!(nav.n3.here)],
-    [ids!(nav.n4.hit), ids!(nav.n4.idle), ids!(nav.n4.here)],
-    [ids!(nav.n5.hit), ids!(nav.n5.idle), ids!(nav.n5.here)],
-    [ids!(nav.n6.hit), ids!(nav.n6.idle), ids!(nav.n6.here)],
-    [ids!(nav.n7.hit), ids!(nav.n7.idle), ids!(nav.n7.here)],
-    [ids!(nav.n8.hit), ids!(nav.n8.idle), ids!(nav.n8.here)],
-    [ids!(nav.n9.hit), ids!(nav.n9.idle), ids!(nav.n9.here)],
+/// Top-bar links → section ids.
+const NAV_LINKS: [(&[LiveId], &str); 6] = [
+    (ids!(go_how), "how"),
+    (ids!(go_features), "features"),
+    (ids!(go_menus), "menus"),
+    (ids!(go_offline), "offline"),
+    (ids!(go_pricing), "pricing"),
+    (ids!(go_faq), "faq"),
+];
+
+/// Each band's content column; side padding / max width set per tier.
+const WRAPS: [&[LiveId]; 9] = [
+    ids!(hero_wrap),
+    ids!(how_wrap),
+    ids!(features_wrap),
+    ids!(menus_wrap),
+    ids!(offline_wrap),
+    ids!(pricing_wrap),
+    ids!(faq_wrap),
+    ids!(closing_wrap),
+    ids!(footer_wrap),
 ];
 
 /// Floor toy tables: path and example running bill (₹).
@@ -120,69 +140,137 @@ const TILE_LAYERS: [LiveId; 7] = [
 const MIN_WIDTH: f64 = 375.0;
 
 /// Rows that sit side by side only when the content column is at least
-/// this wide (px), and stack otherwise — width-based, not tier-based: a
-/// fixed prop beside a headline needs its own width plus a readable text
-/// column whatever the device.
-const ROWS: [(&[LiveId], f64); 16] = [
-    (ids!(rush.rush_row), 1024.0),
-    (ids!(rush.rush_cta.buttons), 420.0),
-    (ids!(rush.rush_world_a), 520.0),
-    (ids!(rush.rush_world_b), 520.0),
-    (ids!(order.order_row), 760.0),
-    (ids!(kot.kot_row), 758.0),
-    (ids!(kitchen.kds), 700.0),
-    (ids!(kitchen.kds_points), 760.0),
-    (ids!(changes.changes_grid), 880.0),
-    (ids!(settle.settle_row), 800.0),
-    (ids!(dayclose.close_row), 760.0),
-    // Two equal columns of 8 world lines when wide enough; else stack.
-    (ids!(menu.menu_list), 720.0),
-    (ids!(menu.menu_photos), 700.0),
-    (ids!(start.start_world), 700.0),
-    (ids!(start.close_cta.buttons), 420.0),
-    (ids!(start.footer), 480.0),
+/// this wide (px), and stack otherwise.
+const ROWS: [(&[LiveId], f64); 26] = [
+    (ids!(hero_row), 900.0),
+    (ids!(hero_cta), 420.0),
+    (ids!(visit_key), 760.0),
+    (ids!(key_r0), 0.0),
+    (ids!(step_order), 820.0),
+    (ids!(step_kot), 820.0),
+    (ids!(kitchen_head), 820.0),
+    (ids!(kds), 640.0),
+    (ids!(step_settle), 820.0),
+    (ids!(step_close), 820.0),
+    (ids!(feat_r0), 640.0),
+    (ids!(feat_r1), 640.0),
+    (ids!(feat_r2), 640.0),
+    (ids!(feat_r3), 640.0),
+    (ids!(tmpl_row), 760.0),
+    (ids!(menus.shelf_q0), SHELF_WIDE),
+    (ids!(menus.shelf_q1), SHELF_WIDE),
+    (ids!(menus.shelf_bar), 520.0),
+    (ids!(offline_row), 860.0),
+    (ids!(price_row), 720.0),
+    (ids!(faq_r0), 720.0),
+    (ids!(faq_r1), 720.0),
+    (ids!(faq_r2), 720.0),
+    (ids!(close_cta), 420.0),
+    (ids!(footer_row), 640.0),
+    (ids!(footer_links), 0.0),
 ];
 /// Fixed-width props: (path, desk width, the min width of their row).
 /// When the row stacks, the prop goes full width.
-const PROPS: [(&[LiveId], f64, f64); 4] = [
-    (ids!(rush.floor_card), 560.0, 1024.0),
-    (ids!(kot.ticket), 330.0, 758.0),
-    (ids!(order.order_card), 360.0, 760.0),
-    (ids!(settle.bill), 360.0, 800.0),
+const PROPS: [(&[LiveId], f64, f64); 6] = [
+    (ids!(floor_card), 520.0, 900.0),
+    (ids!(order_card), 380.0, 820.0),
+    (ids!(ticket), 340.0, 820.0),
+    (ids!(bill), 380.0, 820.0),
+    (ids!(drawer), 380.0, 820.0),
+    (ids!(status_card), 400.0, 860.0),
 ];
-const DETAIL_WHEN_STACKED: [&[LiveId]; 4] = [
-    ids!(order.order_points),
-    ids!(kitchen.kds_points),
-    ids!(settle.settle_points),
-    ids!(dayclose.close_points),
-];
-const DETAIL_ON_PHONE: [&[LiveId]; 9] = [
-    ids!(changes.changes_note),
-    // A phone floor shows four tables (two by two).
-    ids!(floor.t3),
-    ids!(floor.t6),
-    ids!(kot.kot_points),
-    ids!(menu.menu_note),
-    ids!(menu.menu_photos),
-    ids!(rush.floor_note),
-    ids!(rush.rush_banner),
-    ids!(start.start_world),
-];
-/// Detail a short, not-wide window (under 860 px tall and 1200 px wide,
-/// e.g. a 1024 × 768 laptop) drops so the chapter's buttons stay on
-/// screen. Wider short windows (1280 × 720, 1366 × 768) fit everything.
-const DETAIL_WHEN_SHORT: [&[LiveId]; 5] = [
-    ids!(settle.settle_free),
-    ids!(rush.rush_banner),
-    ids!(menu.menu_photos),
-    ids!(menu.menu_script),
-    ids!(rush.floor_note),
-];
-const SHORT_BELOW: f64 = 860.0;
-const SHORT_NARROWER_THAN: f64 = 1200.0;
+/// Top-bar section links need this much bar width.
+const NAV_LINKS_FROM: f64 = 1000.0;
 
 const MAX_CONTENT: f64 = 1160.0;
-const MAX_CONTENT_WIDE: f64 = 1320.0;
+const MAX_CONTENT_WIDE: f64 = 1280.0;
+
+/// Content width from which the world shelf shows 8 cards (4 × 2) a page;
+/// narrower shows 4 (2 × 2) so a phone page stays short.
+const SHELF_WIDE: f64 = 700.0;
+/// World shelf card slots, in reading order (s4–s7 live in `shelf_q1`).
+const SHELF_CARDS: [&[LiveId]; 8] = [
+    ids!(menus.s0.card),
+    ids!(menus.s1.card),
+    ids!(menus.s2.card),
+    ids!(menus.s3.card),
+    ids!(menus.s4.card),
+    ids!(menus.s5.card),
+    ids!(menus.s6.card),
+    ids!(menus.s7.card),
+];
+
+/// Countries on the shelf that have a photo.
+fn world_photo_count() -> usize {
+    WORLD.iter().filter(|d| d.photo.is_some()).count()
+}
+
+/// The shelf list for the current filter (photos only, or every country).
+fn shelf_entries(all: bool) -> Vec<&'static WorldDish> {
+    WORLD.iter().filter(|d| all || d.photo.is_some()).collect()
+}
+
+/// (never repeat the English dish twice).
+fn shelf_native_line(d: &WorldDish) -> Option<String> {
+    let mut parts = Vec::new();
+    if d.country_native != d.country {
+        parts.push(d.country_native);
+    }
+    if d.dish_native != d.dish && d.dish_native != d.country_native {
+        parts.push(d.dish_native);
+    }
+    if parts.is_empty() {
+        None
+    } else {
+        Some(parts.join(" · "))
+    }
+}
+
+
+/// (page index, page count) for the first card shown and the page size.
+fn shelf_page_of(first: usize, per_page: usize, len: usize) -> (usize, usize) {
+    let per = per_page.max(1);
+    let pages = len.div_ceil(per).max(1);
+    ((first / per).min(pages - 1), pages)
+}
+
+/// Web path of a world photo inside the Makepad package
+/// (`<base>/khaynjo_site/resources/dishes/world/<file>`), where `<base>` is
+/// the page path without a trailing file name — same rule Makepad uses for
+/// `crate_resource` so a sub-path deploy keeps working.
+#[cfg_attr(not(target_arch = "wasm32"), allow(dead_code))]
+fn world_photo_web_path(pathname: &str, file: &str) -> String {
+    let path = pathname.trim_end_matches('/');
+    let last = path.rsplit('/').next().unwrap_or_default();
+    let base = if last.contains('.') {
+        path.rsplit_once('/').map_or("", |(b, _)| b)
+    } else {
+        path
+    };
+    let base = base.trim_matches('/');
+    if base.is_empty() {
+        format!("/khaynjo_site/resources/dishes/world/{file}")
+    } else {
+        format!("/{base}/khaynjo_site/resources/dishes/world/{file}")
+    }
+}
+
+/// Section id for a URL hash: a section id, an old chapter id, or an old
+/// chapter number (`#3`). Unknown → None (stay at the top).
+fn section_from_hash(hash: &str) -> Option<&'static str> {
+    let key = hash.trim_start_matches('#').trim().to_ascii_lowercase();
+    if key.is_empty() {
+        return None;
+    }
+    if let Some((id, _)) = SECTIONS.iter().find(|(id, _)| *id == key) {
+        return Some(id);
+    }
+    if let Some((_, to)) = OLD_CHAPTERS.iter().find(|(old, _)| *old == key) {
+        return Some(to);
+    }
+    let n: usize = key.parse().ok()?;
+    OLD_CHAPTERS.get(n.checked_sub(1)?).map(|(_, to)| *to)
+}
 
 #[derive(Clone, Copy, PartialEq, Debug)]
 enum Tier {
@@ -196,7 +284,7 @@ enum Tier {
 
 impl Tier {
     fn from_size(w: f64, h: f64) -> Self {
-        let by_width = if w < 480.0 {
+        if w < 480.0 {
             Self::Phone
         } else if w < 720.0 {
             Self::Narrow
@@ -206,23 +294,6 @@ impl Tier {
             Self::Wide
         } else {
             Self::Desk
-        };
-        let steps_down = if h < 480.0 {
-            2
-        } else if h < 660.0 {
-            1
-        } else {
-            0
-        };
-        (0..steps_down).fold(by_width, |t, _| t.smaller())
-    }
-
-    fn smaller(self) -> Self {
-        match self {
-            Self::Wide => Self::Desk,
-            Self::Desk => Self::Tablet,
-            Self::Tablet => Self::Narrow,
-            _ => Self::Phone,
         }
     }
 
@@ -231,17 +302,13 @@ impl Tier {
         if self == Self::Wide { MAX_CONTENT_WIDE } else { MAX_CONTENT }
     }
 
-    fn stacked(self) -> bool {
-        matches!(self, Self::Phone | Self::Narrow)
-    }
-
     fn type_scale(self, desk_size: f32) -> f32 {
         let (display, heading, body) = match self {
-            Self::Phone => (0.6, 0.86, 0.94),
-            Self::Narrow => (0.7, 0.9, 0.97),
-            Self::Tablet => (0.84, 0.95, 1.0),
+            Self::Phone => (0.62, 0.8, 0.95),
+            Self::Narrow => (0.72, 0.86, 0.97),
+            Self::Tablet => (0.86, 0.94, 1.0),
             Self::Desk => (1.0, 1.0, 1.0),
-            Self::Wide => (1.18, 1.08, 1.04),
+            Self::Wide => (1.12, 1.06, 1.04),
         };
         if desk_size >= 40.0 {
             display
@@ -254,22 +321,14 @@ impl Tier {
         }
     }
 
-    fn spacing(self) -> (f64, f64, f64) {
+    /// (minimum side padding, vertical band padding).
+    fn spacing(self) -> (f64, f64) {
         match self {
-            Self::Phone => (16.0, 14.0, 12.0),
-            Self::Narrow => (26.0, 20.0, 14.0),
-            Self::Tablet => (40.0, 26.0, 18.0),
-            Self::Desk => (60.0, 30.0, 20.0),
-            Self::Wide => (80.0, 44.0, 26.0),
-        }
-    }
-
-    /// Floor toy tile size: two columns on a phone, three elsewhere.
-    fn tile(self) -> (f64, f64) {
-        match self {
-            Self::Phone => (150.0, 100.0),
-            Self::Wide => (160.0, 106.0),
-            _ => (160.0, 100.0),
+            Self::Phone => (18.0, 44.0),
+            Self::Narrow => (26.0, 52.0),
+            Self::Tablet => (40.0, 64.0),
+            Self::Desk => (56.0, 76.0),
+            Self::Wide => (72.0, 88.0),
         }
     }
 }
@@ -281,39 +340,64 @@ pub struct App {
     #[rust]
     laid_out: Option<(Tier, i64, i64)>,
     #[rust]
-    desk_font: Vec<Vec<f32>>,
-    #[rust]
-    chapter: usize,
+    desk_font: Vec<f32>,
     #[rust]
     tables: Option<[Visit; 6]>,
+    /// Section to scroll to once the page has a layout (hash / preview).
     #[rust]
-    focused_deck: bool,
+    pending_section: PendingSection,
+    /// Frames left to re-apply the deep-link scroll while layout settles
+    /// (a resize right after startup moves every section).
+    #[rust]
+    pending_frames: u8,
+    /// Last target y and how many frames it held still.
+    #[rust]
+    pending_last_y: f64,
+    #[rust]
+    pending_stable: u8,
+    /// World shelf: index of the first card on the page (kept across
+    /// resizes so the same countries stay in view), filter, page size.
+    #[rust]
+    shelf_first: usize,
+    #[rust]
+    shelf_all: bool,
+    #[rust]
+    shelf_per_page: usize,
+    /// World photo bytes by file (fetched once, decoded on demand) and the
+    /// HTTP requests still in flight (wasm).
+    #[rust]
+    photo_bytes: PhotoBytes,
+    #[rust]
+    photo_pending: PhotoPending,
 }
 
+/// World photo bytes by file name (the Script derive wants plain field types).
+type PhotoBytes = std::collections::HashMap<String, std::rc::Rc<Vec<u8>>>;
+/// Section to scroll to after layout (the Script derive wants plain types).
+type PendingSection = Option<&'static str>;
+/// In-flight photo fetches: (request id, file name).
+type PhotoPending = Vec<(LiveId, String)>;
+
 impl App {
-    fn slides(&self, cx: &mut Cx) -> SlidesViewRef {
-        self.ui.slides_view(cx, ids!(slides))
-    }
-
-    fn go_to(&mut self, cx: &mut Cx, chapter: usize) {
-        let chapter = chapter.min(SLIDES.len() - 1);
-        self.slides(cx).set_goal_slide(cx, chapter);
-        self.paint_chrome(cx, chapter);
-    }
-
-    fn paint_chrome(&mut self, cx: &mut Cx, chapter: usize) {
-        self.chapter = chapter;
-        self.ui
-            .widget(cx, ids!(chapter_name))
-            .set_text(cx, CHAPTERS[chapter].1);
-        self.ui
-            .widget(cx, ids!(counter))
-            .set_text(cx, &format!("{} / {}", chapter + 1, CHAPTERS.len()));
-        for (i, [_, idle, here]) in NAV.iter().enumerate() {
-            self.ui.view(cx, idle).set_visible(cx, i != chapter);
-            self.ui.view(cx, here).set_visible(cx, i == chapter);
+    /// Scroll the page so `section` sits under the top bar.
+    fn scroll_to(&mut self, cx: &mut Cx, section: &str) -> f64 {
+        let Some(&(id, path)) = SECTIONS.iter().find(|(id, _)| *id == section) else {
+            return 0.0;
+        };
+        let page = self.ui.view(cx, ids!(page));
+        let page_rect = page.area().rect(cx);
+        let target = self.ui.widget(cx, path).area().rect(cx);
+        // Offset from the first band: both rects come from the same draw, so
+        // the answer does not depend on where the page is scrolled now.
+        let top = self.ui.widget(cx, ids!(hero)).area().rect(cx);
+        if page_rect.size.y <= 0.0 {
+            self.pending_section = Some(id);
+            return 0.0;
         }
+        let y = (target.pos.y - top.pos.y).max(0.0);
+        page.set_scroll_pos(cx, dvec2(0.0, y));
         self.ui.redraw(cx);
+        y
     }
 
     /// Paint each floor tile from its visit: one colour layer, the app's word,
@@ -348,7 +432,7 @@ impl App {
     }
 
     fn set_cta_notes(&mut self, cx: &mut Cx, text: &str) {
-        for path in [ids!(rush.rush_cta.note), ids!(start.close_cta.note)] {
+        for path in [ids!(cta_note_text), ids!(close_note_text)] {
             self.ui.widget(cx, path).set_text(cx, text);
         }
         self.ui.redraw(cx);
@@ -391,32 +475,44 @@ impl App {
         "https://kumkaj.com/".to_string()
     }
 
+    /// Same-host page (privacy, terms): relative in the browser, the public
+    /// host natively.
+    fn site_url(&self, cx: &Cx, path: &str) -> String {
+        if matches!(cx.os_type(), OsType::Web(_)) {
+            path.to_string()
+        } else {
+            format!("{PUBLIC_HOST}{path}")
+        }
+    }
+
     fn apply_gates(&mut self, cx: &mut Cx) {
-        for path in [ids!(kot.kot_lan), ids!(offline.offline_lan)] {
+        for path in [ids!(kot_lan), ids!(offline_lan)] {
             self.ui.widget(cx, path).set_visible(cx, LAN_PILOT_PASSED);
         }
     }
 
-    fn chapter_from_page(&self, cx: &Cx) -> Option<usize> {
+    fn section_from_page(&self, cx: &Cx) -> Option<&'static str> {
         let OsType::Web(page) = cx.os_type() else {
             return None;
         };
-        chapter_from_hash(&page.hash)
+        section_from_hash(&page.hash)
     }
 
-    /// One pass over every optional detail: hidden when stacked (phone /
-    /// narrow), on the smallest tier, or on a short window — whichever rules
-    /// list it. Runs on every layout so the rules never overwrite each other.
-    fn paint_details(&mut self, cx: &mut Cx, tier: Tier, short: bool) {
-        let all = DETAIL_WHEN_STACKED
-            .iter()
-            .chain(DETAIL_ON_PHONE.iter())
-            .chain(DETAIL_WHEN_SHORT.iter());
-        for path in all {
-            let hide = (tier.stacked() && DETAIL_WHEN_STACKED.contains(path))
-                || (tier == Tier::Phone && DETAIL_ON_PHONE.contains(path))
-                || (short && DETAIL_WHEN_SHORT.contains(path));
-            self.ui.widget(cx, path).set_visible(cx, !hide);
+    /// Floor toy: three tiles a row when the card is wide enough, else two
+    /// (T3 / T6 drop on phones), tiles sized to the card.
+    fn layout_floor(&mut self, cx: &mut Cx, content_w: f64) {
+        let card_w = if content_w >= 900.0 { 520.0 } else { content_w };
+        let inner = card_w - 40.0;
+        let per_row = if inner >= 3.0 * 112.0 + 16.0 { 3 } else { 2 };
+        let tile_w = ((inner - (per_row as f64 - 1.0) * 8.0) / per_row as f64).clamp(100.0, 170.0);
+        for (path, _) in TABLES {
+            if let Some(mut view) = self.ui.view(cx, path).borrow_mut() {
+                view.walk.width = Size::Fixed(tile_w);
+                view.walk.height = Size::Fixed(108.0);
+            }
+        }
+        for path in [ids!(floor.t3), ids!(floor.t6)] {
+            self.ui.widget(cx, path).set_visible(cx, per_row == 3);
         }
     }
 
@@ -436,9 +532,20 @@ impl App {
         let tier_changed = self.laid_out.map(|(t, _, _)| t) != Some(tier);
         self.laid_out = Some(key);
 
-        let (min_side, pad_v, spacing) = tier.spacing();
+        let (min_side, pad_v) = tier.spacing();
         let side = min_side.max((layout_w - tier.max_content()) / 2.0);
         let content_w = layout_w - 2.0 * side;
+        for path in WRAPS {
+            if let Some(mut view) = self.ui.view(cx, path).borrow_mut() {
+                let footer = path == ids!(footer_wrap);
+                view.layout.padding = Inset {
+                    left: side,
+                    right: side,
+                    top: if footer { 32.0 } else { pad_v },
+                    bottom: if footer { 36.0 } else { pad_v },
+                };
+            }
+        }
         for (path, min_w) in ROWS {
             if let Some(mut view) = self.ui.view(cx, path).borrow_mut() {
                 view.layout.flow = if content_w >= min_w { Flow::right() } else { Flow::Down };
@@ -449,69 +556,33 @@ impl App {
                 view.walk.width = if content_w >= row_min_w { Size::Fixed(desk_w) } else { Size::fill() };
             }
         }
-        // Keep the world shelf + CTA; drop the long lede only when stacked and short.
-        let short = size.y < SHORT_BELOW && layout_w < SHORT_NARROWER_THAN;
+        self.layout_floor(cx, content_w);
+        // Top bar: section links on wide windows; tighter padding on phones.
         self.ui
-            .widget(cx, ids!(rush.rush_lede))
-            .set_visible(cx, !(tier.stacked() && short));
-        self.paint_details(cx, tier, short);
-        for path in SLIDES {
-            if let Some(mut view) = self.ui.view(cx, path).borrow_mut() {
-                view.layout.padding = Inset {
-                    left: side,
-                    right: side,
-                    top: pad_v,
-                    bottom: pad_v * 1.2 + 6.0,
-                };
-                view.layout.spacing = spacing;
-            }
-        }
-        // Top bar: tighter padding on phone so nav tiles stay on-screen.
+            .widget(cx, ids!(nav_links))
+            .set_visible(cx, layout_w >= NAV_LINKS_FROM);
         if let Some(mut bar) = self.ui.view(cx, ids!(top_bar)).borrow_mut() {
-            let pad = if tier == Tier::Phone { 10.0 } else { 24.0 };
-            bar.layout.padding = Inset {
-                left: pad,
-                right: pad.min(20.0),
-                top: 0.0,
-                bottom: 0.0,
-            };
+            let pad = if tier == Tier::Phone { 14.0 } else { 24.0 };
+            bar.layout.padding = Inset { left: pad, right: pad.min(20.0), top: 0.0, bottom: 0.0 };
+        }
+        // World shelf page size follows the width; the first card stays put.
+        let per_page = if content_w >= SHELF_WIDE { 8 } else { 4 };
+        self.ui
+            .view(cx, ids!(menus.shelf_q1))
+            .set_visible(cx, per_page == 8);
+        if per_page != self.shelf_per_page {
+            self.shelf_per_page = per_page;
+            self.paint_shelf(cx);
         }
         if tier_changed {
-            let stacked = tier.stacked();
-            let (tile_w, tile_h) = tier.tile();
-            for (path, _) in TABLES {
-                if let Some(mut view) = self.ui.view(cx, path).borrow_mut() {
-                    view.walk.width = Size::Fixed(tile_w);
-                    view.walk.height = Size::Fixed(tile_h);
-                }
+            let page = self.ui.widget(cx, ids!(page));
+            if self.desk_font.is_empty() {
+                collect_label_sizes(&page, &mut self.desk_font);
             }
-            let phone = tier == Tier::Phone;
-            self.ui.widget(cx, ids!(tagline)).set_visible(cx, !phone);
-            self.ui.widget(cx, ids!(chapter_name)).set_visible(cx, !stacked);
-            let first_pass = self.desk_font.is_empty();
-            for (i, path) in SLIDES.iter().enumerate() {
-                let slide = self.ui.widget(cx, path);
-                if first_pass {
-                    let mut sizes = Vec::new();
-                    collect_label_sizes(&slide, &mut sizes);
-                    self.desk_font.push(sizes);
-                }
-                let mut next = 0;
-                scale_labels(&slide, tier, &self.desk_font[i], &mut next);
-            }
+            let mut next = 0;
+            scale_labels(&page, tier, &self.desk_font, &mut next);
         }
         self.ui.redraw(cx);
-    }
-
-    fn focus_deck_once(&mut self, cx: &mut Cx) {
-        if self.focused_deck {
-            return;
-        }
-        let area = self.ui.widget(cx, ids!(slides)).area();
-        if area.is_valid(cx) {
-            cx.set_key_focus(area);
-            self.focused_deck = true;
-        }
     }
 
     #[cfg(not(target_arch = "wasm32"))]
@@ -519,16 +590,157 @@ impl App {
         let Ok(spec) = std::env::var("SITE_PREVIEW") else {
             return;
         };
-        let (size, chapter) = parse_preview(&spec);
+        let (size, section) = parse_preview(&spec);
         if let Some((w, h)) = size {
             self.ui
                 .window(cx, ids!(main_window))
                 .resize(cx, dvec2(w, h));
         }
-        if let Some(chapter) = chapter {
-            self.slides(cx).set_current_slide(cx, chapter);
-            self.paint_chrome(cx, chapter);
+        if section.is_some() {
+            self.pending_section = section;
+            self.pending_frames = 120;
+        self.pending_stable = 0;
         }
+    }
+
+    fn paint_shelf(&mut self, cx: &mut Cx) {
+        let list = shelf_entries(self.shelf_all);
+        let per = self.shelf_per_page.clamp(1, SHELF_CARDS.len());
+        let (page, pages) = shelf_page_of(self.shelf_first, per, list.len());
+        self.shelf_first = page * per;
+        self.ui
+            .label(cx, ids!(menus.shelf_page))
+            .set_text(cx, &format!("{} / {}", page + 1, pages));
+        let toggle = if self.shelf_all {
+            format!("Only the {} with photos", world_photo_count())
+        } else {
+            format!("Show all {} countries", WORLD.len())
+        };
+        self.ui.button(cx, ids!(menus.shelf_toggle)).set_text(cx, &toggle);
+        for (i, path) in SHELF_CARDS.iter().enumerate() {
+            let entry = (i < per).then(|| list.get(self.shelf_first + i)).flatten();
+            let card = self.ui.widget(cx, path);
+            self.ui.view(cx, path).set_visible(cx, entry.is_some());
+            let Some(d) = entry else { continue };
+            card.widget(cx, ids!(country)).set_text(cx, d.country);
+            let native = card.widget(cx, ids!(native));
+            let line = shelf_native_line(d);
+            native.set_text(cx, line.as_deref().unwrap_or(""));
+            card.view(cx, ids!(native_wrap)).set_visible(cx, line.is_some());
+            card.widget(cx, ids!(dish)).set_text(cx, d.dish);
+            let photo = card.image(cx, ids!(photo));
+            photo.set_visible(cx, d.photo.is_some());
+            let soon = card.view(cx, ids!(soon));
+            soon.set_visible(cx, d.photo.is_none());
+            if let Some(file) = d.photo {
+                self.show_world_photo(cx, &photo, file);
+            }
+        }
+        self.ui.redraw(cx);
+    }
+
+    /// Put `file` into a card's Image: decode cached bytes now, else clear
+    /// the slot (never the previous country's photo) and fetch the bytes.
+    /// Synchronous WebP decode on purpose — Makepad's async image path
+    /// decodes on a thread pool, which the `--no-threads` wasm build lacks
+    /// (cards stayed black in the browser).
+    fn show_world_photo(&mut self, cx: &mut Cx, image: &ImageRef, file: &'static str) {
+        if let Some(bytes) = self.photo_bytes.get(file).cloned() {
+            if let Err(err) = image.load_webp_from_data(cx, &bytes) {
+                log!("khaynjo-site: world photo {file}: {err:?}");
+            }
+            return;
+        }
+        image.set_texture(cx, None);
+        #[cfg(not(target_arch = "wasm32"))]
+        {
+            let path = std::path::Path::new(env!("CARGO_MANIFEST_DIR"))
+                .join("resources/dishes/world")
+                .join(file);
+            match std::fs::read(&path) {
+                Ok(bytes) => {
+                    let bytes = std::rc::Rc::new(bytes);
+                    self.photo_bytes.insert(file.to_string(), bytes.clone());
+                    let _ = image.load_webp_from_data(cx, &bytes);
+                }
+                Err(err) => log!("khaynjo-site: {}: {err}", path.display()),
+            }
+        }
+        #[cfg(target_arch = "wasm32")]
+        {
+            if self.photo_pending.iter().any(|(_, f)| f == file) {
+                return;
+            }
+            let pathname = match cx.os_type() {
+                OsType::Web(page) => page.pathname.clone(),
+                _ => String::new(),
+            };
+            let id = LiveId::unique();
+            cx.http_request(
+                id,
+                HttpRequest::new(world_photo_web_path(&pathname, file), HttpMethod::GET),
+            );
+            self.photo_pending.push((id, file.to_string()));
+        }
+    }
+
+    /// Fetched photo bytes land here; repaint the photos of the page shown.
+    fn handle_photo_responses(&mut self, cx: &mut Cx, responses: &NetworkResponsesEvent) {
+        let mut landed = false;
+        for response in responses {
+            let (request_id, body) = match response {
+                NetworkResponse::HttpResponse { request_id, response } => (
+                    *request_id,
+                    (200..300)
+                        .contains(&response.status_code)
+                        .then(|| response.body.clone())
+                        .flatten(),
+                ),
+                NetworkResponse::HttpError { request_id, .. } => (*request_id, None),
+                _ => continue,
+            };
+            let Some(pos) = self.photo_pending.iter().position(|(id, _)| *id == request_id) else {
+                continue;
+            };
+            let (_, file) = self.photo_pending.remove(pos);
+            match body {
+                Some(bytes) => {
+                    self.photo_bytes.insert(file, std::rc::Rc::new(bytes));
+                    landed = true;
+                }
+                None => log!("khaynjo-site: world photo {file} did not load"),
+            }
+        }
+        if landed {
+            self.paint_shelf(cx);
+        }
+    }
+
+    fn shelf_step(&mut self, cx: &mut Cx, forward: bool) {
+        let len = shelf_entries(self.shelf_all).len();
+        let per = self.shelf_per_page.max(1);
+        let (page, pages) = shelf_page_of(self.shelf_first, per, len);
+        // Wraps at both ends — the shelf is a carousel, not a dead end.
+        let next = if forward {
+            (page + 1) % pages
+        } else {
+            (page + pages - 1) % pages
+        };
+        self.shelf_first = next * per;
+        self.paint_shelf(cx);
+    }
+
+
+    /// Counts in the copy come from the data, never hand-typed.
+    fn paint_world_counts(&mut self, cx: &mut Cx) {
+        let n = WORLD.len();
+        let photos = world_photo_count();
+        self.ui.widget(cx, ids!(menus.menu_note_text)).set_text(
+            cx,
+            &format!(
+                "{n} countries · {photos} public-domain / CC0 photos · \u{201C}Photo coming\u{201D} where we have none yet."
+            ),
+        );
     }
 }
 
@@ -566,20 +778,9 @@ fn scale_labels(widget: &WidgetRef, tier: Tier, desk: &[f32], next: &mut usize) 
     });
 }
 
-fn chapter_from_hash(hash: &str) -> Option<usize> {
-    let key = hash.trim_start_matches('#').trim();
-    if key.is_empty() {
-        return None;
-    }
-    if let Ok(n) = key.parse::<usize>() {
-        return (1..=CHAPTERS.len()).contains(&n).then(|| n - 1);
-    }
-    CHAPTERS.iter().position(|(id, _)| *id == key)
-}
-
 #[cfg(any(test, not(target_arch = "wasm32")))]
-fn parse_preview(spec: &str) -> (Option<(f64, f64)>, Option<usize>) {
-    let (size_part, chapter_part) = match spec.split_once(':') {
+fn parse_preview(spec: &str) -> (Option<(f64, f64)>, Option<&'static str>) {
+    let (size_part, section_part) = match spec.split_once(':') {
         Some((s, c)) => (s, Some(c)),
         None if spec.contains('x') => (spec, None),
         None => ("", Some(spec)),
@@ -589,8 +790,8 @@ fn parse_preview(spec: &str) -> (Option<(f64, f64)>, Option<usize>) {
         let h = h.trim().parse::<f64>().ok()?;
         (w >= 200.0 && h >= 200.0).then_some((w, h))
     });
-    let chapter = chapter_part.and_then(chapter_from_hash);
-    (size, chapter)
+    let section = section_part.and_then(section_from_hash);
+    (size, section)
 }
 
 fn url_encode(text: &str) -> String {
@@ -630,36 +831,56 @@ impl MatchEvent for App {
     fn handle_startup(&mut self, cx: &mut Cx) {
         self.apply_gates(cx);
         self.paint_floor(cx);
-        let start = self.chapter_from_page(cx).unwrap_or(0);
-        if start > 0 {
-            self.slides(cx).set_current_slide(cx, start);
-        }
-        self.paint_chrome(cx, start);
+        self.paint_world_counts(cx);
+        self.pending_section = self.section_from_page(cx);
+        self.pending_frames = 120;
+        self.pending_stable = 0;
         #[cfg(not(target_arch = "wasm32"))]
         self.apply_native_preview(cx);
     }
 
     fn handle_actions(&mut self, cx: &mut Cx, actions: &Actions) {
-        if let Some(chapter) = self.slides(cx).flipped(actions) {
-            self.paint_chrome(cx, chapter);
-        }
-        for (i, [hit, _, _]) in NAV.iter().enumerate() {
-            if self.ui.button(cx, hit).clicked(actions) {
-                self.go_to(cx, i);
+        for (path, section) in NAV_LINKS {
+            if self.ui.button(cx, path).clicked(actions) {
+                let _ = self.scroll_to(cx, section);
             }
         }
+        if self.ui.button(cx, ids!(brand_hit)).clicked(actions) {
+            let _ = self.scroll_to(cx, "top");
+        }
         self.handle_floor(cx, actions);
-        let download = self.ui.button(cx, ids!(rush.rush_cta.download)).clicked(actions)
-            || self.ui.button(cx, ids!(start.close_cta.download)).clicked(actions);
+        if self.ui.button(cx, ids!(menus.shelf_prev)).clicked(actions) {
+            self.shelf_step(cx, false);
+        }
+        if self.ui.button(cx, ids!(menus.shelf_next)).clicked(actions) {
+            self.shelf_step(cx, true);
+        }
+        if self.ui.button(cx, ids!(menus.shelf_toggle)).clicked(actions) {
+            self.shelf_all = !self.shelf_all;
+            self.shelf_first = 0;
+            self.paint_shelf(cx);
+        }
+        let download = self.ui.button(cx, ids!(bar_cta)).clicked(actions)
+            || self.ui.button(cx, ids!(hero_cta.download)).clicked(actions)
+            || self.ui.button(cx, ids!(close_cta.download)).clicked(actions)
+            || self.ui.button(cx, ids!(to_play)).clicked(actions);
         if download {
             self.download(cx);
         }
-        let whatsapp = self.ui.button(cx, ids!(rush.rush_cta.whatsapp)).clicked(actions)
-            || self.ui.button(cx, ids!(start.close_cta.whatsapp)).clicked(actions);
+        let whatsapp = self.ui.button(cx, ids!(hero_cta.whatsapp)).clicked(actions)
+            || self.ui.button(cx, ids!(close_cta.whatsapp)).clicked(actions);
         if whatsapp {
             self.whatsapp(cx);
         }
-        if self.ui.button(cx, ids!(start.to_kumkaj)).clicked(actions) {
+        if self.ui.button(cx, ids!(to_privacy)).clicked(actions) {
+            let url = self.site_url(cx, PRIVACY_PATH);
+            open_link(cx, &url);
+        }
+        if self.ui.button(cx, ids!(to_terms)).clicked(actions) {
+            let url = self.site_url(cx, TERMS_PATH);
+            open_link(cx, &url);
+        }
+        if self.ui.button(cx, ids!(to_kumkaj)).clicked(actions) {
             let url = self.kumkaj_url(cx);
             open_link(cx, &url);
         }
@@ -673,6 +894,9 @@ impl AppMain for App {
     }
 
     fn handle_event(&mut self, cx: &mut Cx, event: &Event) {
+        if let Event::NetworkResponses(responses) = event {
+            self.handle_photo_responses(cx, responses);
+        }
         self.match_event(cx, event);
         self.ui.handle_event(cx, event, &mut Scope::empty());
         match event {
@@ -681,7 +905,24 @@ impl AppMain for App {
                 if self.laid_out.is_none() {
                     self.apply_responsive(cx);
                 }
-                self.focus_deck_once(cx);
+                // Deep link (#menus) once the page has drawn and has a size.
+                if let Some(section) = self.pending_section {
+                    let page_h = self.ui.view(cx, ids!(page)).area().rect(cx).size.y;
+                    if page_h > 0.0 {
+                        let y = self.scroll_to(cx, section);
+                        self.pending_frames = self.pending_frames.saturating_sub(1);
+                        if (y - self.pending_last_y).abs() < 0.5 {
+                            self.pending_stable += 1;
+                        } else {
+                            self.pending_stable = 0;
+                        }
+                        self.pending_last_y = y;
+                        if self.pending_frames == 0 || self.pending_stable >= 3 {
+                            self.pending_section = None;
+                        }
+                    }
+                    let _ = cx.new_next_frame();
+                }
             }
             _ => {}
         }
@@ -693,10 +934,30 @@ mod tests {
     use super::*;
 
     #[test]
-    fn hash_opens_a_chapter_by_id_or_number() {
-        assert_eq!(chapter_from_hash("#kot"), Some(2));
-        assert_eq!(chapter_from_hash("#10"), Some(9));
-        assert_eq!(chapter_from_hash("#11"), None);
+    fn hash_opens_a_section_or_an_old_chapter() {
+        assert_eq!(section_from_hash("#menus"), Some("menus"));
+        assert_eq!(section_from_hash("#FAQ"), Some("faq"));
+        // Old deck links keep working.
+        assert_eq!(section_from_hash("#kot"), Some("how"));
+        assert_eq!(section_from_hash("#menu"), Some("menus"));
+        assert_eq!(section_from_hash("#3"), Some("how"));
+        assert_eq!(section_from_hash("#10"), Some("start"));
+        assert_eq!(section_from_hash("#11"), None);
+        assert_eq!(section_from_hash(""), None);
+        // Every old chapter maps to a real section.
+        for (_, to) in OLD_CHAPTERS {
+            assert!(SECTIONS.iter().any(|(id, _)| *id == to), "{to}");
+        }
+        for (_, to) in NAV_LINKS {
+            assert!(SECTIONS.iter().any(|(id, _)| *id == to), "{to}");
+        }
+    }
+
+    #[test]
+    fn preview_spec_parses_size_and_section() {
+        assert_eq!(parse_preview("390x844:menus"), (Some((390.0, 844.0)), Some("menus")));
+        assert_eq!(parse_preview("1280x800"), (Some((1280.0, 800.0)), None));
+        assert_eq!(parse_preview("kot"), (None, Some("how")));
     }
 
     #[test]
@@ -727,5 +988,120 @@ mod tests {
             url_encode(WHATSAPP_MESSAGE),
             "Khaynjo%20demo%20%E2%80%94%20restaurant%20type%2C%20tables%2C%20city"
         );
+    }
+
+    fn workspace(rel: &str) -> std::path::PathBuf {
+        std::path::Path::new(env!("CARGO_MANIFEST_DIR")).join("../..").join(rel)
+    }
+
+    /// The Menus section quotes the public catalogue — keep the numbers true.
+    #[test]
+    fn template_cards_match_the_public_catalogue() {
+        let ui = include_str!("ui.rs");
+        let cdn = std::path::Path::new(env!("CARGO_MANIFEST_DIR")).join("static/v1/catalogue/public");
+        let index = std::fs::read_to_string(cdn.join("index.json")).unwrap();
+        for id in ["khaynjo-starter", "cafe-starter", "khaynjo-items"] {
+            assert!(index.contains(&format!("\"id\": \"{id}\"")), "{id} in public/index.json");
+        }
+        // No private pack is ever named on the public page.
+        assert!(!ui.to_lowercase().contains("rajdhani"));
+        let count = |rel: &str, needle: &str| {
+            std::fs::read_to_string(cdn.join(rel)).unwrap().matches(needle).count()
+        };
+        let starter_dishes = count("templates/khaynjo-starter/template.json", "\"price\"");
+        let starter_cats = count("templates/khaynjo-starter/template.json", "\"items\"");
+        let cafe_dishes = count("templates/cafe-starter/template.json", "\"price\"");
+        let cafe_cats = count("templates/cafe-starter/template.json", "\"items\"");
+        assert!(ui.contains(&format!("{starter_dishes} dishes · {starter_cats} categories")), "starter {starter_dishes}/{starter_cats}");
+        assert!(ui.contains(&format!("{cafe_dishes} dishes · {cafe_cats} categories")), "cafe {cafe_dishes}/{cafe_cats}");
+        // Shelf photo count comes from the items index (synced at publish).
+        if let Ok(items) = std::fs::read_to_string(cdn.join("items/index.json")) {
+            let n: usize = items
+                .split("\"count\":")
+                .nth(1)
+                .and_then(|s| s.trim_start().split(|c: char| !c.is_ascii_digit()).next())
+                .and_then(|s| s.parse().ok())
+                .unwrap();
+            let shown = format!("{},{:03} dish photos", n / 1000, n % 1000);
+            assert!(ui.contains(&shown), "shelf shows {shown}");
+        }
+    }
+
+    /// "115 languages" is the app's own catalogue size.
+    #[test]
+    fn language_count_matches_the_app() {
+        let locale = std::fs::read_to_string(workspace("apps/khaynjo/src/locale.rs")).unwrap();
+        let block = locale
+            .split("pub const LANGUAGES: &[LanguageInfo] = &[")
+            .nth(1)
+            .and_then(|s| s.split("\n];").next())
+            .unwrap();
+        let n = block.matches("LanguageInfo {").count();
+        let ui = include_str!("ui.rs");
+        assert!(ui.contains(&format!("{n} languages")), "site says {n} languages");
+    }
+
+    #[test]
+    fn world_shelf_data_is_complete_and_photos_exist() {
+        // 193 UN members + 6 extras from the research pack.
+        assert_eq!(WORLD.len(), 199);
+        let dir = std::path::Path::new(env!("CARGO_MANIFEST_DIR")).join("resources/dishes/world");
+        let mut seen = std::collections::HashSet::new();
+        for d in WORLD {
+            assert!(!d.country.trim().is_empty() && !d.dish.trim().is_empty());
+            assert!(!d.country_native.trim().is_empty() && !d.dish_native.trim().is_empty(), "{}", d.country);
+            assert!(seen.insert(d.country), "duplicate {}", d.country);
+            if let Some(file) = d.photo {
+                assert!(dir.join(file).is_file(), "{file} shipped");
+            }
+        }
+        for e in std::fs::read_dir(&dir).unwrap().flatten() {
+            let name = e.file_name().to_string_lossy().into_owned();
+            if name.ends_with(".webp") {
+                assert!(WORLD.iter().any(|d| d.photo == Some(name.as_str())), "orphan {name}");
+            }
+        }
+        assert!(world_photo_count() >= 60, "most of the shelf has photos");
+    }
+
+    #[test]
+    fn shelf_pages_cover_every_country_once() {
+        for all in [false, true] {
+            let list = shelf_entries(all);
+            for per in [4, 8] {
+                let (_, pages) = shelf_page_of(0, per, list.len());
+                let mut shown = 0;
+                for p in 0..pages {
+                    let first = p * per;
+                    assert_eq!(shelf_page_of(first, per, list.len()).0, p);
+                    shown += list.len().saturating_sub(first).min(per);
+                }
+                assert_eq!(shown, list.len());
+            }
+        }
+        assert_eq!(shelf_page_of(10_000, 8, 199), (24, 25));
+    }
+
+    #[test]
+    fn world_photo_web_path_follows_page_path() {
+        assert_eq!(
+            world_photo_web_path("/", "india.webp"),
+            "/khaynjo_site/resources/dishes/world/india.webp"
+        );
+        assert_eq!(
+            world_photo_web_path("/preview/", "india.webp"),
+            "/preview/khaynjo_site/resources/dishes/world/india.webp"
+        );
+    }
+
+    /// Icons on the page are the app's own sidebar art, shipped with the site.
+    #[test]
+    fn feature_icons_are_shipped() {
+        let ui = include_str!("ui.rs");
+        for part in ui.split("self:resources/icons/").skip(1) {
+            let file = part.split('"').next().unwrap();
+            let path = std::path::Path::new(env!("CARGO_MANIFEST_DIR")).join("resources/icons").join(file);
+            assert!(path.is_file(), "{file}");
+        }
     }
 }

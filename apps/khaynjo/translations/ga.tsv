@@ -182,7 +182,7 @@ snack_secs_save	Sábháil am foláirimh
 snack_secs_saved	Sábháladh an t — am foláirimh — {n} soicind
 settings_sec_backup	Déan cúltaca agus athchóirigh
 settings_sec_diag	Diagnóisic
-settings_sec_privacy	Privacy
+settings_sec_privacy	Príobháideacht
 diag_privacy_help	Fanann na loganna ar an bhfeiste seo. Ní stóráiltear rúnachtaí (PIN, pasfhocail) riamh. Éilíonn páipéar a roinnt as an bhfeiste do chead soiléir gach uair — ní dhíoltar ná ní thugtar dóibh tríú páirtí riamh.
 diag_level	Leibhéal sonraí
 diag_level_error	Earráidí
@@ -339,21 +339,21 @@ server_remove_pin_ph	PIN úinéara chun freastalaí a bhaint
 only_owner_remove_server	Ní féidir leis an Úinéir amháin freastalaí a bhaint
 owner_pin_remove_server	Teastaíonn PIN an úinéara chun an freastalaí seo a bhaint
 device_setup_help	Coinníonn an "Server" na leabhair anseo. Déanann an "Client" comhpháirt le "Freastalaí".
-app_template_heading	Teimpléad Aip Rajdhani
-app_template_blurb	Lódálann an roghchlár Rajdhani; Úinéir Zahir (Zahir), "Riarachán" Asif (Asif, PIN 1111), Freastalaí Nawaz (Nawaz, PIN 0000); barra taobh FOH; glantaítear stair tar éis 4 uair an chloig (agus Glan anois i nBackup); Dé-líne inniu; KOT dlúth + Margeanna Caighdeánacha do thraisí caol. Is féidir comhpháirtithe barra taobh a chur ar ais i Socruithe.
-app_template_apply	Teimpléad Aip Rajdhani
+app_template_heading	Teimpléid siopa
+app_template_blurb	Iompórtáil roghchlár tosaigh poiblí, nó cuir isteach cód príobháideach 12 dhigit ó do theagmhálaí Khaynjo.
+app_template_apply	Iompórtáil teimpléad
 app_template_skip	Sicíl anois
-app_template_status	Réidh an 'Server' — cuir Templéad Aip Rajdhani i bhfeidhm, nó scipeáil
+app_template_status	Freastalaí réidh — iompórtáil teimpléad, nó scipeáil
 app_template_importing	Ag cur i bhfeidhm {title}…
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	Teimpléad á íoslódáil…
+app_template_public_hdr	Teimpléid phoiblí
+app_template_private_hdr	Teimpléad príobháideach
+app_template_public_hint	Oscail an chuid seo chun an liosta poiblí a lódáil (teastaíonn idirlíon uair amháin).
+app_template_code_not_found	Níor aimsíodh an cód
+app_template_need_internet	Teastaíonn an t-idirlíon chun teimpléid a íoslódáil
+app_template_import_selected	Iompórtáil an rogha
+app_template_check_code	Seiceáil an cód
+app_template_import	Iompórtáil
 currency	Airgeadra
 backup	Cúltaca
 use	Bain úsáid as
@@ -474,19 +474,19 @@ copy_report	Cóipeáil tuairisc
 counted_cash_ph	Airgead tirim comhaireamh sa tarscnán
 country_tax	Tír & cáin
 tax_chrome	Lipéid cánach ar an tille
-tax_chrome_help	Nuair atá sé as, cuireann deasc na n-orduithe i bhfolach línte luachanais 'CST'/cáin agus áiteanna coinneála 'CST' sa phraghas. Fanann rátaí cánach agus socruithe Tíre & cánach — cas na lipéid ar ais am ar bith. Tosaíonn Templéad App Rajdhani é seo as.
+tax_chrome_help	Nuair atá sé múchta, folaíonn an deasc orduithe línte meastacháin GST/cánach agus coinneálaithe áite GST-sa-phraghas. Fanann rátaí cánach agus socruithe Tíre agus cánach — cas na lipéid ar ais am ar bith. Tosaíonn roinnt teimpléad siopa leis seo múchta.
 tax_chrome_on	Taispeáin
 tax_chrome_off	Folaigh
 tax_chrome_saved_on	Lipéid cánach ar an tille
 tax_chrome_saved_off	Lipéid cáin i bhfolach ar an airgeadóir
 tax_invoice_till	Sonras cánach ar an tairseach
-tax_invoice_help	Nuair atá sé as, is Cash memo amháin na billeanna agus tá na sliseanna Vóta Cánach / Cash memo folaithe ar dheasc an ordaithe. Tosaíonn Teimpléad na hAip Rajdhani leis seo as — cas Show ar ais am ar bith chun Vóta Cánach a roghnú arís.
+tax_invoice_help	Nuair atá sé múchta, is meamraim airgid amháin iad na billí agus tá cnaipí Sonrasc cánach / Meamram airgid i bhfolach ar an deasc orduithe. Tosaíonn roinnt teimpléad siopa leis seo múchta — cas Taispeáin ar ais am ar bith chun Sonrasc cánach a roghnú arís.
 tax_invoice_on	Taispeáin
 tax_invoice_off	Folaigh
 tax_invoice_saved_on	Sonras cánach ar an tairseach
 tax_invoice_saved_off	Sonras cánach i bhfolach — Tuarascáil airgid amháin
 pay_methods	Modhanna íocaíochta
-pay_methods_help	Cé na sceallóga a thaispeántar ar Glacadh íocaíochta. Fanann Airgead tirim i gcónaí. Tosaíonn Sceideal an Aip Rajdhani le Airgead tirim amháin — cas UPI / Cárta / Creidmheas / Roinn ar ais anseo.
+pay_methods_help	Na cnaipí a thaispeántar ar Glac íocaíocht. Fanann Airgead tirim i gcónaí. Tosaíonn roinnt teimpléad siopa le hAirgead tirim amháin — cas UPI / Cárta / Creidmheas / Roinn ar ais anseo.
 create_backup	Cruthaigh cúltaca
 credit_limit_heading	Teorainn creidmheasa (páirtí roghnaithe / ainmnithe)
 day_close_summary	Achoimre scoir lae
@@ -793,10 +793,10 @@ printers_looking	Ag féachaint…
 saving_printer	Ag cur priontálaí leis…
 cancelled	Cealaithe
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Á bhaint…
+removed	Bainte
+updating_order	Á nuashonrú…
+order_updated	Ordú nuashonraithe
 printers_tap_find	Tapaigh Faigh chun liosta a fháil de na printéirí is féidir leis an bhfeiste seo a úsáid.
 printers_none_found	Níor aimsíodh aon cheann — clóscríbhneoir córais nó IP a chlóscríobh (m.sh. 192.168.1.50).
 printer_from_find	Cuirtear {name}
@@ -1337,7 +1337,6 @@ kot_field_table	Bord
 kot_field_shop	Ainm an siopa
 kot_field_waiter	Foireann
 kot_field_station	Stáisiún
-app_template_blurb_extra	Freisin: Úinéir Zahir, Admin Asif, Freastalaí Nawaz; painéal taobh FOH; stair tar éis 4 huaire; Inniu scaoil amach; KOT dlúth.
 dishes_n	{n} miasa
 recipe_ph	Oideas (roghnach) — úsáidtear ceann amháin: Rís=0.2, Paneer=0.15
 reorder_ph	Ceannaigh tuilleadh ag
@@ -1364,3 +1363,7 @@ recent_changes	Athruithe le déanaí
 lane_declared_label	Sonras cánach
 lane_owner_label	Míoicíní airgid
 money_lane_bill	Billi: {lane}
+app_template_download_progress	Á íoslódáil… {p}% ({d} / {t})
+app_template_download_paused	Iompórtáil arís chun leanúint ar aghaidh — coinnítear na comhaid chríochnaithe
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

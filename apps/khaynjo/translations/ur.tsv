@@ -182,7 +182,7 @@ snack_secs_save	اطلاع کا وقت محفوظ کریں
 snack_secs_saved	اطلاع کا وقت محفوظ ہو گیا — {n} سیکنڈ
 settings_sec_backup	بیک اپ اور بحالی
 settings_sec_diag	تشخیص
-settings_sec_privacy	Privacy
+settings_sec_privacy	رازداری
 diag_privacy_help	لاگ اسی ڈیوائس پر رہتے ہیں۔ راز (PIN، پاس ورڈ) کبھی محفوظ نہیں ہوتے۔ ڈیوائس سے باہر پیکج بھیجنے کے لیے ہر بار آپ کی واضح منظوری چاہیے — کبھی بیچا یا کسی تیسرے فریق کو نہیں دیا جاتا۔
 diag_level	تفصیل کی سطح
 diag_level_error	خرابیاں
@@ -339,21 +339,21 @@ server_remove_pin_ph	سرور ہٹانے کے لیے Owner PIN
 only_owner_remove_server	صرف Owner سرور ہٹا سکتا ہے
 owner_pin_remove_server	سرور ہٹانے کے لیے Owner PIN درکار ہے
 device_setup_help	سرور کھاتے یہیں رکھتا ہے۔ کلائنٹ کسی سرور سے جڑتا ہے۔
-app_template_heading	راجدھانی ایپ ٹیمپلیٹ
-app_template_blurb	راجدھانی مینو لوڈ کرتا ہے؛ مالک ظہیر (zahir)، ایڈمن آصف (asif، PIN 1111)، ویٹر نواز (nawaz، PIN 0000)؛ FOH سائیڈ بار؛ تاریخ 4 گھنٹے بعد صاف ہوتی ہے (اور بیک اپ میں ابھی صاف کریں)؛ آج کی پٹی بند؛ تنگ ٹرے کے لیے چھوٹا KOT + معیاری حاشیے۔ سائیڈ بار کے باقی حصے سیٹنگز میں دوبارہ آن کیے جا سکتے ہیں۔
-app_template_apply	راجدھانی ایپ ٹیمپلیٹ
+app_template_heading	دکان کے ٹیمپلیٹ
+app_template_blurb	کوئی عوامی ابتدائی مینو درآمد کریں، یا اپنے Khaynjo رابطے سے ملا 12 ہندسوں کا نجی کوڈ درج کریں۔
+app_template_apply	ٹیمپلیٹ درآمد کریں
 app_template_skip	ابھی چھوڑیں
-app_template_status	سرور تیار — راجدھانی ایپ ٹیمپلیٹ لگائیں، یا چھوڑیں
+app_template_status	سرور تیار ہے — ٹیمپلیٹ درآمد کریں، یا چھوڑ دیں
 app_template_importing	{title} لگا رہے ہیں…
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	ٹیمپلیٹ ڈاؤن لوڈ ہو رہا ہے…
+app_template_public_hdr	عوامی ٹیمپلیٹ
+app_template_private_hdr	نجی ٹیمپلیٹ
+app_template_public_hint	عوامی فہرست لوڈ کرنے کے لیے یہ حصہ کھولیں (ایک بار انٹرنیٹ درکار ہے)۔
+app_template_code_not_found	کوڈ نہیں ملا
+app_template_need_internet	ٹیمپلیٹ ڈاؤن لوڈ کرنے کے لیے انٹرنیٹ درکار ہے
+app_template_import_selected	منتخب درآمد کریں
+app_template_check_code	کوڈ جانچیں
+app_template_import	درآمد کریں
 currency	کرنسی
 backup	بیک اپ
 use	استعمال کریں
@@ -474,19 +474,19 @@ copy_report	رپورٹ کاپی کریں
 counted_cash_ph	دراز میں گنی نقدی
 country_tax	ملک اور ٹیکس
 tax_chrome	ٹل پر ٹیکس لیبل
-tax_chrome_help	بند ہونے پر آرڈر ڈیسک GST/ٹیکس اندازے کی قطاریں اور قیمت-میں-GST اشارے چھپا دیتا ہے۔ ٹیکس شرحیں اور ملک و ٹیکس سیٹنگز رہتی ہیں — لیبل کبھی بھی دوبارہ آن کریں۔ راجدھانی ایپ ٹیمپلیٹ اسے بند رکھ کر شروع ہوتا ہے۔
+tax_chrome_help	بند ہونے پر، آرڈر ڈیسک GST/ٹیکس تخمینے کی لائنیں اور قیمت میں-GST کی جگہیں چھپا دیتا ہے۔ ٹیکس کی شرحیں اور ملک و ٹیکس کی ترتیبات برقرار رہتی ہیں — لیبل کسی بھی وقت دوبارہ آن کریں۔ کچھ دکان کے ٹیمپلیٹ اسے بند رکھ کر شروع ہوتے ہیں۔
 tax_chrome_on	دکھائیں
 tax_chrome_off	چھپائیں
 tax_chrome_saved_on	ٹل پر ٹیکس لیبل
 tax_chrome_saved_off	ٹل پر ٹیکس لیبل چھپے
 tax_invoice_till	ٹل پر ٹیکس انوائس
-tax_invoice_help	بند ہونے پر بل صرف کیش میمو ہوتے ہیں اور آرڈر ڈیسک پر ٹیکس انوائس / کیش میمو چپس چھپ جاتے ہیں۔ راجدھانی ایپ ٹیمپلیٹ اسے بند رکھ کر شروع ہوتا ہے — ٹیکس انوائس دوبارہ چننے کے لیے کبھی بھی دکھائیں آن کریں۔
+tax_invoice_help	بند ہونے پر، بل صرف کیش میمو ہوتے ہیں اور آرڈر ڈیسک پر ٹیکس انوائس / کیش میمو بٹن چھپ جاتے ہیں۔ کچھ دکان کے ٹیمپلیٹ اسے بند رکھ کر شروع ہوتے ہیں — ٹیکس انوائس دوبارہ چننے کے لیے دکھائیں کسی بھی وقت آن کریں۔
 tax_invoice_on	دکھائیں
 tax_invoice_off	چھپائیں
 tax_invoice_saved_on	ٹل پر ٹیکس انوائس
 tax_invoice_saved_off	ٹیکس انوائس چھپا — صرف کیش میمو
 pay_methods	ادائیگی کے طریقے
-pay_methods_help	ادائیگی لیں پر کون سے چپس نظر آئیں۔ نقد ہمیشہ رہتا ہے۔ راجدھانی ایپ ٹیمپلیٹ صرف نقد سے شروع ہوتا ہے — UPI / کارڈ / ادھار / تقسیم یہاں دوبارہ آن کریں۔
+pay_methods_help	ادائیگی لیں پر کون سے بٹن نظر آتے ہیں۔ نقد ہمیشہ رہتا ہے۔ کچھ دکان کے ٹیمپلیٹ صرف نقد سے شروع ہوتے ہیں — UPI / کارڈ / ادھار / تقسیم یہاں دوبارہ آن کریں۔
 create_backup	بیک اپ بنائیں
 credit_limit_heading	کریڈٹ حد (منتخب / نامی پارٹی)
 day_close_summary	دن بند خلاصہ
@@ -793,10 +793,10 @@ printers_looking	اس ڈیوائس اور Wi‑Fi پر پرنٹر تلاش ہو 
 saving_printer	پرنٹر شامل ہو رہا ہے…
 cancelled	منسوخ
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	ہٹایا جا رہا ہے…
+removed	ہٹا دیا گیا
+updating_order	اپ ڈیٹ ہو رہا ہے…
+order_updated	آرڈر اپ ڈیٹ ہو گیا
 printers_tap_find	اس ڈیوائس کے پرنٹر دیکھنے کے لیے تلاش کریں دبائیں۔
 printers_none_found	کوئی پرنٹر نہیں ملا — سسٹم پرنٹر کا نام یا نیٹ ورک پتہ لکھیں (جیسے 192.168.1.50)।
 printer_from_find	{name} شامل کیا
@@ -1337,7 +1337,6 @@ kot_field_table	میز
 kot_field_shop	دکان کا نام
 kot_field_waiter	عملہ
 kot_field_station	اسٹیشن
-app_template_blurb_extra	ساتھ میں: مالک ظہیر، ایڈمن آصف، ویٹر نواز؛ FOH سائیڈ بار؛ 4 گھنٹے بعد تاریخ؛ آج کی پٹی بند؛ چھوٹا KOT۔
 dishes_n	{n} ڈشیں
 recipe_ph	ترکیب (اختیاری) — ایک پلیٹ میں لگتا ہے: Rice=0.2, Paneer=0.15
 reorder_ph	اتنے پر مزید خریدیں
@@ -1364,3 +1363,7 @@ recent_changes	حالیہ تبدیلیاں
 lane_declared_label	ٹیکس انوائس
 lane_owner_label	کیش میمو
 money_lane_bill	بل: {lane}
+app_template_download_progress	ڈاؤن لوڈ ہو رہا ہے… {p}% ({d} / {t})
+app_template_download_paused	دوبارہ شروع کرنے کے لیے پھر سے درآمد کریں — مکمل فائلیں محفوظ رہتی ہیں
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

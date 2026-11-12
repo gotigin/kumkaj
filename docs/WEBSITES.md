@@ -71,6 +71,15 @@ preview loops and as an offline presenter. Chapters are a vertical
 `SlidesView`; 3D chapters (PBR props, glTF, 3D text) grow inside the
 same app later — not as a separate HTML page that hosts a canvas.
 
+**khaynjo.com is the exception (2026-11-12):** one scrolling page
+(`ScrollYView` bands + sticky top bar, section deep links) instead of a
+`SlidesView` deck — a product page with templates, pricing and FAQ outgrew
+"one chapter per screen" (phones and short laptops had to hide content).
+Rows still switch side-by-side / stacked by content width (`ROWS`, `PROPS`);
+nothing is clipped any more, so `DETAIL_*` hide lists are gone there.
+Sections are measured from the first band when scrolling to them (rects of
+one draw pass), so a deep link lands exactly once layout settles.
+
 ```text
 Browser / desktop
   └─ Makepad Window (fullpage)
@@ -183,7 +192,7 @@ sites/<site>/
 |---|---|---|---|---|
 | kumkaj.com | Navy `#041534`, terracotta `#A23E18` (clay `#E8875C` for text on navy), ink `#F9F9FC` | Fraunces (display) · IBM Plex Sans | Dots + "n / 7" | Calm house for the products; navy ground with faint ledger rules and a warm glow |
 | moklanjo.com | Desk light `#D6E0EC`, navy `#072058` / `#0A3A8C`, orange `#DF5E16` / `#C44E10`, yellow `#F7B043` | Anek Latin (display) · IBM Plex Sans · Liberation Mono (AWB, weights) | The parcel's tracking line: beads passed (yellow), here (orange), ahead (hollow) | Speed and precision; the icon's motion streaks |
-| khaynjo.com | Cream `#F9F4F0`, deep red `#9A0E10`, maroon `#69090C`, gold `#F69D2C` | Baloo 2 (display) · IBM Plex Sans · Liberation Mono (KOT) | Small table tiles in each chapter's visit colour | Warm lunch-rush energy; lamp light, a red table runner |
+| khaynjo.com | Cream `#F9F4F0`, deep red `#9A0E10`, maroon `#69090C`, gold `#F69D2C` | Baloo 2 (display) · IBM Plex Sans · Liberation Mono (KOT) · Noto scripts | Sticky red bar: section links + gold "Get it free"; visit-colour key in "How a service runs" | Warm lunch-rush energy; lamp-lit hero, cream / paper bands, deep-red offline + closing bands |
 
 Contrast follows `DESIGN.md`: dark ink on light wells, white ink only on
 deep chrome (navy / deep red), never grey-on-grey.

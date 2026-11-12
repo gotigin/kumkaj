@@ -182,7 +182,7 @@ snack_secs_save	Sparaðu viðvörunartíma
 snack_secs_saved	Viðvörunartími vistaður — {n} sekúndur
 settings_sec_backup	Afrita og endurheimta
 settings_sec_diag	Greining
-settings_sec_privacy	Privacy
+settings_sec_privacy	Persónuvernd
 diag_privacy_help	Skrár verða áfram á þessu tæki. Leyndarmál (PIN, lykilorð) eru aldrei geymd. Til að deila pakka utan tækisins þarf skýrt samþykki þitt í hvert skipti - aldrei selt eða gefið þriðja aðila.
 diag_level	Smáatriði stig
 diag_level_error	Villur
@@ -339,21 +339,21 @@ server_remove_pin_ph	Eigandi PIN til að fjarlægja netþjón
 only_owner_remove_server	Aðeins eigandinn getur fjarlægt netþjón
 owner_pin_remove_server	Eigandi PIN þarf til að fjarlægja þennan netþjón
 device_setup_help	Þjónninn heldur bókhaldinu hér. Viðskiptavinur parar við netþjón.
-app_template_heading	Rajdhani Sniðmát fyrir forrit
-app_template_blurb	Hleður Rajdhani valmyndinni; Eigandi Zahir (zahir), Admin Asif (asif, PIN 1111), þjónn Nawaz (nawaz, PIN 0000); FOH hliðarstika; sagan hreinsar eftir 4 klukkustundir (og Hreinsa núna í öryggisafriti); Í dag afklæðast; fyrirferðarlítill KOT + Staðlaðar spássíur fyrir þrönga bakka. Hægt er að kveikja aftur á hliðarstikum í stillingum.
-app_template_apply	Rajdhani Sniðmát fyrir forrit
+app_template_heading	Verslunarsniðmát
+app_template_blurb	Flyttu inn opinberan upphafsmatseðil, eða sláðu inn einkakóða með 12 tölustöfum frá Khaynjo-tengilið þínum.
+app_template_apply	Flytja inn sniðmát
 app_template_skip	Slepptu í bili
-app_template_status	Server tilbúinn - notaðu Rajdhani forritasniðmát eða slepptu því
+app_template_status	Þjónn tilbúinn — flyttu inn sniðmát, eða slepptu
 app_template_importing	Er að sækja um {title}…
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	Sæki sniðmát…
+app_template_public_hdr	Opinber sniðmát
+app_template_private_hdr	Einkasniðmát
+app_template_public_hint	Opnaðu þennan hluta til að hlaða opinbera listanum (netið þarf einu sinni).
+app_template_code_not_found	Kóði fannst ekki
+app_template_need_internet	Netið þarf til að sækja sniðmát
+app_template_import_selected	Flytja inn valið
+app_template_check_code	Athuga kóða
+app_template_import	Flytja inn
 currency	Gjaldmiðill
 backup	Afritun
 use	Notaðu
@@ -474,19 +474,19 @@ copy_report	Afrita skýrslu
 counted_cash_ph	Talið reiðufé í skúffu
 country_tax	Land & skattur
 tax_chrome	Skattmerkingar á till
-tax_chrome_help	Þegar slökkt er á því felur pöntunarborðið GST/skattáætlunarlínur og GST-í-verðs staðgengla. Skatthlutföll og land- og skattastillingar haldast — kveiktu aftur á merkimiðum hvenær sem er. Rajdhani App Sniðmát byrjar með þessu slökkt.
+tax_chrome_help	Þegar slökkt er felur pöntunarborðið GST/skattmatslínur og staðgengla fyrir GST í verði. Skatthlutföll og stillingar lands og skatts haldast — kveiktu aftur á merkjum hvenær sem er. Sum verslunarsniðmát byrja með slökkt á þessu.
 tax_chrome_on	Sýna
 tax_chrome_off	Fela
 tax_chrome_saved_on	Skattmerkingar á till
 tax_chrome_saved_off	Skattmerki falið á till
 tax_invoice_till	Skattreikningur á till
-tax_invoice_help	Þegar slökkt er á þeim eru reikningar eingöngu staðgreiðsluminningar og skattareikningur / peningaseðilspænir eru faldir á pöntunarborðinu. Rajdhani Forritssniðmát byrjar með þessu slökkt - kveiktu á Sýna aftur hvenær sem er til að velja Skattreikning aftur.
+tax_invoice_help	Þegar slökkt er eru reikningar aðeins staðgreiðslukvittanir og hnapparnir Skattreikningur / Staðgreiðslukvittun eru faldir á pöntunarborðinu. Sum verslunarsniðmát byrja með slökkt á þessu — kveiktu á Sýna hvenær sem er til að velja Skattreikning aftur.
 tax_invoice_on	Sýna
 tax_invoice_off	Fela
 tax_invoice_saved_on	Skattreikningur á till
 tax_invoice_saved_off	Skattreikningur falinn - Aðeins staðgreiðsluminning
 pay_methods	Greiðslumáta
-pay_methods_help	Hvaða franskar birtast á Taktu greiðslu. Reiðufé er alltaf eftir. Rajdhani Forritssniðmát byrjar aðeins með reiðufé — kveiktu aftur á UPI / Kort / Kredit / Skiptu hér.
+pay_methods_help	Hvaða hnappar birtast í Taka við greiðslu. Reiðufé helst alltaf. Sum verslunarsniðmát byrja eingöngu með Reiðufé — kveiktu aftur á UPI / Kort / Lán / Skipta hér.
 create_backup	Búðu til öryggisafrit
 credit_limit_heading	Lánsfjármörk (valinn viðskiptavinur eða birgir)
 day_close_summary	Dagsloka samantekt
@@ -793,10 +793,10 @@ printers_looking	Er að skoða…
 saving_printer	Bætir prentara við...
 cancelled	Hætt við
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Fjarlægi…
+removed	Fjarlægt
+updating_order	Uppfæri…
+order_updated	Pöntun uppfærð
 printers_tap_find	Pikkaðu á Finna til að skrá prentara sem þetta tæki getur notað.
 printers_none_found	Ekkert fannst — sláðu inn heiti kerfisprentara eða IP (t.d. 192.168.1.50).
 printer_from_find	Bætt við {name}
@@ -1337,7 +1337,6 @@ kot_field_table	Borðstofuborð
 kot_field_shop	Nafn verslunar
 kot_field_waiter	Starfsfólk
 kot_field_station	Stöð
-app_template_blurb_extra	Einnig: Eigandi Zahir, stjórnandi Asif, þjónn Nawaz; FOH hliðarstika; saga eftir 4 klukkustundir; Í dag afklæðast; samningur KOT.
 dishes_n	{n} réttir
 recipe_ph	Uppskrift (valfrjálst) — einn skammtur notar: Hrísgrjón=0,2, Paneer=0,15
 reorder_ph	Kaupa meira á
@@ -1364,3 +1363,7 @@ recent_changes	Nýlegar breytingar
 lane_declared_label	Skattreikningur
 lane_owner_label	Peningabréf
 money_lane_bill	Reikningur: {lane}
+app_template_download_progress	Sækir… {p}% ({d} / {t})
+app_template_download_paused	Flyttu inn aftur til að halda áfram — tilbúnar skrár eru geymdar
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

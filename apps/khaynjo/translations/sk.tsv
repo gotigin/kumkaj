@@ -182,7 +182,7 @@ snack_secs_save	Ušetrite čas upozornenia
 snack_secs_saved	Uložený čas upozornenia — {n} sekúnd
 settings_sec_backup	Zálohovanie a obnovenie
 settings_sec_diag	Diagnostika
-settings_sec_privacy	Privacy
+settings_sec_privacy	Súkromie
 diag_privacy_help	Denníky zostávajú v tomto zariadení. Tajomstvá (PIN, heslá) sa nikdy neukladajú. Zdieľanie balíka zo zariadenia vyžaduje vždy váš výslovný súhlas – nikdy ho nepredáva ani neposkytuje tretím stranám.
 diag_level	Úroveň detailov
 diag_level_error	Chyby
@@ -339,21 +339,21 @@ server_remove_pin_ph	Vlastník PIN na odstránenie servera
 only_owner_remove_server	Server môže odstrániť iba vlastník
 owner_pin_remove_server	Na odstránenie tohto servera je potrebný vlastník PIN
 device_setup_help	Server tu uchováva knihy. Klient sa spáruje so serverom.
-app_template_heading	Rajdhani Šablóna aplikácie
-app_template_blurb	Načíta ponuku Rajdhani; Majiteľ Zahir (zahir), správca Asif (asif, PIN 1111), čašník Nawaz (nawaz, PIN 0000); FOH bočný panel; história sa vymaže po 4 hodinách (a Vymazať teraz v Zálohe); Dnes sa vyzliecť; kompaktný KOT + Štandardné okraje pre úzke podnosy. Partnerov na bočnom paneli možno znova zapnúť v Nastaveniach.
-app_template_apply	Rajdhani Šablóna aplikácie
+app_template_heading	Šablóny obchodu
+app_template_blurb	Importujte verejné úvodné menu alebo zadajte súkromný 12-miestny kód od svojho kontaktu Khaynjo.
+app_template_apply	Importovať šablónu
 app_template_skip	Zatiaľ preskočiť
-app_template_status	Server pripravený — použite Rajdhani App Template alebo preskočte
+app_template_status	Server pripravený — importujte šablónu alebo preskočte
 app_template_importing	Uplatňuje sa {title}…
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	Sťahuje sa šablóna…
+app_template_public_hdr	Verejné šablóny
+app_template_private_hdr	Súkromná šablóna
+app_template_public_hint	Otvorte túto časť na načítanie verejného zoznamu (internet je potrebný raz).
+app_template_code_not_found	Kód sa nenašiel
+app_template_need_internet	Na stiahnutie šablón je potrebný internet
+app_template_import_selected	Importovať vybrané
+app_template_check_code	Overiť kód
+app_template_import	Importovať
 currency	mena
 backup	Zálohovanie
 use	Použite
@@ -474,19 +474,19 @@ copy_report	Kopírovať prehľad
 counted_cash_ph	Spočítaná hotovosť v zásuvke
 country_tax	Krajina a daň
 tax_chrome	Daňové štítky na pokladni
-tax_chrome_help	Keď je táto možnosť vypnutá, tabuľka objednávok skryje riadky odhadu dane GST a zástupné symboly GST v cene. Sadzby dane a nastavenia krajiny a daní zostanú zachované – štítky môžete kedykoľvek znova zapnúť. Rajdhani Šablóna aplikácie začína s týmto vypnutým.
+tax_chrome_help	Keď je vypnuté, objednávkový pult skryje riadky odhadu GST/dane a zástupné texty GST v cene. Daňové sadzby a nastavenia krajiny a dane zostávajú — popisy môžete kedykoľvek znova zapnúť. Niektoré šablóny obchodu začínajú s týmto vypnutým.
 tax_chrome_on	Zobraziť
 tax_chrome_off	Skryť
 tax_chrome_saved_on	Daňové štítky na pokladni
 tax_chrome_saved_off	Daňové štítky skryté na pokladni
 tax_invoice_till	Daňový doklad na do
-tax_invoice_help	Keď je táto možnosť vypnutá, účty sú len pokladničný doklad a čipy daňovej faktúry/pokladničného dokladu sú skryté na objednávkovom pulte. Rajdhani Šablóna aplikácie začína s týmto vypnutým – kedykoľvek zapnite možnosť Zobraziť, aby ste si znova vybrali daňovú faktúru.
+tax_invoice_help	Keď je vypnuté, účty sú len hotovostné doklady a tlačidlá Daňový doklad / Hotovostný doklad sú na objednávkovom pulte skryté. Niektoré šablóny obchodu začínajú s týmto vypnutým — kedykoľvek zapnite Zobraziť a znova vyberte Daňový doklad.
 tax_invoice_on	Zobraziť
 tax_invoice_off	Skryť
 tax_invoice_saved_on	Daňový doklad na do
 tax_invoice_saved_off	Daňová faktúra je skrytá – iba pokladničný doklad
 pay_methods	Spôsoby platby
-pay_methods_help	Ktoré žetóny sa objavia pri platbe Take. Hotovosť vždy zostane. Rajdhani Šablóna aplikácie začína len hotovosťou – tu znova zapnite UPI / Karta / Kredit / Rozdelenie.
+pay_methods_help	Ktoré tlačidlá sa zobrazia v Prijať platbu. Hotovosť zostáva vždy. Niektoré šablóny obchodu začínajú len s Hotovosťou — tu znova zapnite UPI / Karta / Úver / Rozdeliť.
 create_backup	Vytvorte zálohu
 credit_limit_heading	Kreditný limit (vybraný zákazník alebo dodávateľ)
 day_close_summary	Zhrnutie dňa
@@ -793,10 +793,10 @@ printers_looking	Hľadáte…
 saving_printer	Pridáva sa tlačiareň…
 cancelled	Zrušené
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Odstraňuje sa…
+removed	Odstránené
+updating_order	Aktualizuje sa…
+order_updated	Objednávka aktualizovaná
 printers_tap_find	Klepnutím na Nájsť zobrazíte zoznam tlačiarní, ktoré môže toto zariadenie používať.
 printers_none_found	Nenašlo sa žiadne – zadajte názov systémovej tlačiarne alebo IP (napr. 192.168.1.50).
 printer_from_find	Pridané {name}
@@ -1337,7 +1337,6 @@ kot_field_table	Jedálenský stôl
 kot_field_shop	Názov obchodu
 kot_field_waiter	personál
 kot_field_station	Stanica
-app_template_blurb_extra	Tiež: majiteľ Zahir, správca Asif, čašník Nawaz; FOH bočný panel; anamnéza po 4 hodinách; Dnes sa vyzliecť; kompaktný KOT.
 dishes_n	{n} riadu
 recipe_ph	Recept (voliteľné) – jedna porcia používa: Ryža=0,2, Paneer=0,15
 reorder_ph	Kúpte viac na
@@ -1364,3 +1363,7 @@ recent_changes	Najnovšie zmeny
 lane_declared_label	Daňový doklad
 lane_owner_label	Pokladničný doklad
 money_lane_bill	Účet: {lane}
+app_template_download_progress	Sťahuje sa… {p}% ({d} / {t})
+app_template_download_paused	Pre pokračovanie importujte znova — hotové súbory zostanú
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

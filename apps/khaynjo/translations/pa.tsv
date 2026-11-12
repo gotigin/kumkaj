@@ -182,7 +182,7 @@ snack_secs_save	ਸੂਚਨਾ ਸਮਾਂ ਸੰਭਾਲੋ
 snack_secs_saved	ਸੂਚਨਾ ਸਮਾਂ ਸੰਭਾਲਿਆ — {n} ਸਕਿੰਟ
 settings_sec_backup	ਬੈਕਅੱਪ ਤੇ ਬਹਾਲੀ
 settings_sec_diag	ਡਾਇਗਨੌਸਟਿਕਸ
-settings_sec_privacy	Privacy
+settings_sec_privacy	ਪਰਦੇਦਾਰੀ
 diag_privacy_help	ਲੌਗ ਇਸੇ ਡਿਵਾਈਸ 'ਤੇ ਰਹਿੰਦੇ ਹਨ। ਭੇਤ (PIN, ਪਾਸਵਰਡ) ਕਦੇ ਸਾਂਭੇ ਨਹੀਂ ਜਾਂਦੇ। ਡਿਵਾਈਸ ਤੋਂ ਬਾਹਰ ਪੈਕੇਜ ਭੇਜਣ ਲਈ ਹਰ ਵਾਰ ਤੁਹਾਡੀ ਸਾਫ਼ ਮਨਜ਼ੂਰੀ ਚਾਹੀਦੀ ਹੈ — ਕਦੇ ਵੇਚਿਆ ਜਾਂ ਕਿਸੇ ਤੀਜੀ ਧਿਰ ਨੂੰ ਨਹੀਂ ਦਿੱਤਾ ਜਾਂਦਾ।
 diag_level	ਵੇਰਵੇ ਦਾ ਪੱਧਰ
 diag_level_error	ਗਲਤੀਆਂ
@@ -339,21 +339,21 @@ server_remove_pin_ph	ਸਰਵਰ ਹਟਾਉਣ ਲਈ Owner PIN
 only_owner_remove_server	ਸਿਰਫ਼ Owner ਸਰਵਰ ਹਟਾ ਸਕਦਾ ਹੈ
 owner_pin_remove_server	ਸਰਵਰ ਹਟਾਉਣ ਲਈ Owner PIN ਚਾਹੀਦਾ ਹੈ
 device_setup_help	ਸਰਵਰ ਵਹੀ ਇੱਥੇ ਰੱਖਦਾ ਹੈ। ਕਲਾਇੰਟ ਕਿਸੇ ਸਰਵਰ ਨਾਲ ਜੁੜਦਾ ਹੈ।
-app_template_heading	ਰਾਜਧਾਨੀ ਐਪ ਟੈਂਪਲੇਟ
-app_template_blurb	ਰਾਜਧਾਨੀ ਮੀਨੂ ਲੋਡ ਕਰਦਾ ਹੈ; ਮਾਲਕ ਜ਼ਹੀਰ (zahir), ਐਡਮਿਨ ਆਸਿਫ਼ (asif, PIN 1111), ਵੇਟਰ ਨਵਾਜ਼ (nawaz, PIN 0000); FOH ਸਾਈਡਬਾਰ; ਇਤਿਹਾਸ 4 ਘੰਟੇ ਬਾਅਦ ਸਾਫ਼ ਹੁੰਦਾ ਹੈ (ਤੇ ਬੈਕਅੱਪ ਵਿੱਚ ਹੁਣੇ ਸਾਫ਼ ਕਰੋ); ਅੱਜ ਦੀ ਪੱਟੀ ਬੰਦ; ਤੰਗ ਟ੍ਰੇਆਂ ਲਈ ਛੋਟਾ KOT + ਆਮ ਹਾਸ਼ੀਏ। ਸਾਈਡਬਾਰ ਦੇ ਬਾਕੀ ਸੈਟਿੰਗਾਂ ਵਿੱਚ ਮੁੜ ਚਾਲੂ ਕੀਤੇ ਜਾ ਸਕਦੇ ਹਨ।
-app_template_apply	ਰਾਜਧਾਨੀ ਐਪ ਟੈਂਪਲੇਟ
+app_template_heading	ਦੁਕਾਨ ਟੈਂਪਲੇਟ
+app_template_blurb	ਕੋਈ ਜਨਤਕ ਸ਼ੁਰੂਆਤੀ ਮੀਨੂ ਆਯਾਤ ਕਰੋ, ਜਾਂ ਆਪਣੇ Khaynjo ਸੰਪਰਕ ਤੋਂ ਮਿਲਿਆ 12 ਅੰਕਾਂ ਦਾ ਨਿੱਜੀ ਕੋਡ ਪਾਓ।
+app_template_apply	ਟੈਂਪਲੇਟ ਆਯਾਤ ਕਰੋ
 app_template_skip	ਹੁਣ ਛੱਡੋ
-app_template_status	ਸਰਵਰ ਤਿਆਰ — ਰਾਜਧਾਨੀ ਐਪ ਟੈਂਪਲੇਟ ਲਾਓ, ਜਾਂ ਛੱਡੋ
+app_template_status	ਸਰਵਰ ਤਿਆਰ — ਟੈਂਪਲੇਟ ਆਯਾਤ ਕਰੋ, ਜਾਂ ਛੱਡੋ
 app_template_importing	{title} ਲਾ ਰਹੇ ਹਾਂ…
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	ਟੈਂਪਲੇਟ ਡਾਊਨਲੋਡ ਹੋ ਰਿਹਾ ਹੈ…
+app_template_public_hdr	ਜਨਤਕ ਟੈਂਪਲੇਟ
+app_template_private_hdr	ਨਿੱਜੀ ਟੈਂਪਲੇਟ
+app_template_public_hint	ਜਨਤਕ ਸੂਚੀ ਲੋਡ ਕਰਨ ਲਈ ਇਹ ਭਾਗ ਖੋਲ੍ਹੋ (ਇੱਕ ਵਾਰ ਇੰਟਰਨੈੱਟ ਚਾਹੀਦਾ ਹੈ)।
+app_template_code_not_found	ਕੋਡ ਨਹੀਂ ਮਿਲਿਆ
+app_template_need_internet	ਟੈਂਪਲੇਟ ਡਾਊਨਲੋਡ ਕਰਨ ਲਈ ਇੰਟਰਨੈੱਟ ਚਾਹੀਦਾ ਹੈ
+app_template_import_selected	ਚੁਣਿਆ ਆਯਾਤ ਕਰੋ
+app_template_check_code	ਕੋਡ ਜਾਂਚੋ
+app_template_import	ਆਯਾਤ ਕਰੋ
 currency	ਮੁਦਰਾ
 backup	ਬੈਕਅਪ
 use	ਵਰਤੋ
@@ -474,19 +474,19 @@ copy_report	ਰਿਪੋਰਟ ਕਾਪੀ ਕਰੋ
 counted_cash_ph	ਦਰਾਜ਼ ਵਿੱਚ ਗਿਣੀ ਨਕਦੀ
 country_tax	ਦੇਸ਼ ਤੇ ਟੈਕਸ
 tax_chrome	ਟਿੱਲ 'ਤੇ ਟੈਕਸ ਲੇਬਲ
-tax_chrome_help	ਬੰਦ ਹੋਣ 'ਤੇ ਆਰਡਰ ਡੈਸਕ GST/ਟੈਕਸ ਅੰਦਾਜ਼ੇ ਦੀਆਂ ਕਤਾਰਾਂ ਤੇ ਕੀਮਤ-ਵਿੱਚ-GST ਸੰਕੇਤ ਲੁਕਾ ਦਿੰਦਾ ਹੈ। ਟੈਕਸ ਦਰਾਂ ਤੇ ਦੇਸ਼ ਤੇ ਟੈਕਸ ਸੈਟਿੰਗਾਂ ਰਹਿੰਦੀਆਂ ਹਨ — ਲੇਬਲ ਕਦੇ ਵੀ ਮੁੜ ਚਾਲੂ ਕਰੋ। ਰਾਜਧਾਨੀ ਐਪ ਟੈਂਪਲੇਟ ਇਸ ਨੂੰ ਬੰਦ ਰੱਖ ਕੇ ਸ਼ੁਰੂ ਹੁੰਦਾ ਹੈ।
+tax_chrome_help	ਬੰਦ ਹੋਣ 'ਤੇ, ਆਰਡਰ ਡੈਸਕ GST/ਟੈਕਸ ਅਨੁਮਾਨ ਦੀਆਂ ਲਾਈਨਾਂ ਅਤੇ ਕੀਮਤ-ਵਿੱਚ-GST ਪਲੇਸਹੋਲਡਰ ਲੁਕਾਉਂਦਾ ਹੈ। ਟੈਕਸ ਦਰਾਂ ਅਤੇ ਦੇਸ਼ ਤੇ ਟੈਕਸ ਸੈਟਿੰਗਾਂ ਰਹਿੰਦੀਆਂ ਹਨ — ਲੇਬਲ ਕਦੇ ਵੀ ਮੁੜ ਚਾਲੂ ਕਰੋ। ਕੁਝ ਦੁਕਾਨ ਟੈਂਪਲੇਟ ਇਸਨੂੰ ਬੰਦ ਰੱਖ ਕੇ ਸ਼ੁਰੂ ਹੁੰਦੇ ਹਨ।
 tax_chrome_on	ਵਿਖਾਓ
 tax_chrome_off	ਲੁਕਾਓ
 tax_chrome_saved_on	ਟਿੱਲ 'ਤੇ ਟੈਕਸ ਲੇਬਲ
 tax_chrome_saved_off	ਟਿੱਲ 'ਤੇ ਟੈਕਸ ਲੇਬਲ ਲੁਕੇ
 tax_invoice_till	ਟਿੱਲ 'ਤੇ ਟੈਕਸ ਇਨਵੌਇਸ
-tax_invoice_help	ਬੰਦ ਹੋਣ 'ਤੇ ਬਿੱਲ ਸਿਰਫ਼ ਕੈਸ਼ ਮੀਮੋ ਹੁੰਦੇ ਹਨ ਤੇ ਆਰਡਰ ਡੈਸਕ 'ਤੇ ਟੈਕਸ ਇਨਵੌਇਸ / ਕੈਸ਼ ਮੀਮੋ ਚਿੱਪ ਲੁਕ ਜਾਂਦੇ ਹਨ। ਰਾਜਧਾਨੀ ਐਪ ਟੈਂਪਲੇਟ ਇਸ ਨੂੰ ਬੰਦ ਰੱਖ ਕੇ ਸ਼ੁਰੂ ਹੁੰਦਾ ਹੈ — ਟੈਕਸ ਇਨਵੌਇਸ ਮੁੜ ਚੁਣਨ ਲਈ ਕਦੇ ਵੀ ਦਿਖਾਓ ਚਾਲੂ ਕਰੋ।
+tax_invoice_help	ਬੰਦ ਹੋਣ 'ਤੇ, ਬਿੱਲ ਸਿਰਫ਼ ਕੈਸ਼ ਮੀਮੋ ਹੁੰਦੇ ਹਨ ਅਤੇ ਆਰਡਰ ਡੈਸਕ 'ਤੇ ਟੈਕਸ ਇਨਵੌਇਸ / ਕੈਸ਼ ਮੀਮੋ ਚਿੱਪ ਲੁਕੇ ਰਹਿੰਦੇ ਹਨ। ਕੁਝ ਦੁਕਾਨ ਟੈਂਪਲੇਟ ਇਸਨੂੰ ਬੰਦ ਰੱਖ ਕੇ ਸ਼ੁਰੂ ਹੁੰਦੇ ਹਨ — ਟੈਕਸ ਇਨਵੌਇਸ ਮੁੜ ਚੁਣਨ ਲਈ ਦਿਖਾਓ ਕਦੇ ਵੀ ਚਾਲੂ ਕਰੋ।
 tax_invoice_on	ਵਿਖਾਓ
 tax_invoice_off	ਲੁਕਾਓ
 tax_invoice_saved_on	ਟਿੱਲ 'ਤੇ ਟੈਕਸ ਇਨਵੌਇਸ
 tax_invoice_saved_off	ਟੈਕਸ ਇਨਵੌਇਸ ਲੁਕਿਆ — ਸਿਰਫ਼ ਕੈਸ਼ ਮੀਮੋ
 pay_methods	ਭੁਗਤਾਨ ਦੇ ਤਰੀਕੇ
-pay_methods_help	ਭੁਗਤਾਨ ਲਓ 'ਤੇ ਕਿਹੜੇ ਚਿੱਪ ਦਿਖਣ। ਨਕਦ ਹਮੇਸ਼ਾ ਰਹਿੰਦਾ ਹੈ। ਰਾਜਧਾਨੀ ਐਪ ਟੈਂਪਲੇਟ ਸਿਰਫ਼ ਨਕਦ ਨਾਲ ਸ਼ੁਰੂ ਹੁੰਦਾ ਹੈ — UPI / ਕਾਰਡ / ਉਧਾਰ / ਵੰਡ ਇੱਥੇ ਮੁੜ ਚਾਲੂ ਕਰੋ।
+pay_methods_help	ਭੁਗਤਾਨ ਲਓ 'ਤੇ ਕਿਹੜੇ ਚਿੱਪ ਦਿਸਦੇ ਹਨ। ਨਕਦ ਹਮੇਸ਼ਾਂ ਰਹਿੰਦਾ ਹੈ। ਕੁਝ ਦੁਕਾਨ ਟੈਂਪਲੇਟ ਸਿਰਫ਼ ਨਕਦ ਨਾਲ ਸ਼ੁਰੂ ਹੁੰਦੇ ਹਨ — UPI / ਕਾਰਡ / ਉਧਾਰ / ਵੰਡ ਇੱਥੇ ਮੁੜ ਚਾਲੂ ਕਰੋ।
 create_backup	ਬੈਕਅਪ ਬਣਾਓ
 credit_limit_heading	ਉਧਾਰ ਸੀਮਾ (ਚੁਣੀ / ਨਾਮ ਵਾਲੀ ਪਾਰਟੀ)
 day_close_summary	ਦਿਨ ਬੰਦ ਸਾਰ
@@ -793,10 +793,10 @@ printers_looking	ਇਸ ਡਿਵਾਈਸ ਅਤੇ Wi‑Fi ’ਤੇ ਪ੍ਰ
 saving_printer	ਪ੍ਰਿੰਟਰ ਜੋੜ ਰਹੇ ਹਾਂ…
 cancelled	ਰੱਦ
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	ਹਟਾਇਆ ਜਾ ਰਿਹਾ ਹੈ…
+removed	ਹਟਾਇਆ ਗਿਆ
+updating_order	ਅੱਪਡੇਟ ਹੋ ਰਿਹਾ ਹੈ…
+order_updated	ਆਰਡਰ ਅੱਪਡੇਟ ਹੋਇਆ
 printers_tap_find	ਇਹ ਡਿਵਾਈਸ ਵਰਤ ਸਕਣ ਵਾਲੇ ਪ੍ਰਿੰਟਰ ਦੇਖਣ ਲਈ ਲੱਭੋ 'ਤੇ ਟੈਪ ਕਰੋ।
 printers_none_found	ਕੋਈ ਪ੍ਰਿੰਟਰ ਨਹੀਂ ਮਿਲਿਆ — ਸਿਸਟਮ ਪ੍ਰਿੰਟਰ ਨਾਂ ਜਾਂ ਨੈੱਟਵਰਕ ਪਤਾ ਲਿਖੋ (ਜਿਵੇਂ 192.168.1.50)।
 printer_from_find	{name} ਜੋੜਿਆ
@@ -1337,7 +1337,6 @@ kot_field_table	ਮੇਜ਼
 kot_field_shop	ਦੁਕਾਨ ਦਾ ਨਾਂ
 kot_field_waiter	ਸਟਾਫ਼
 kot_field_station	ਸਟੇਸ਼ਨ
-app_template_blurb_extra	ਨਾਲ ਹੀ: ਮਾਲਕ ਜ਼ਹੀਰ, ਐਡਮਿਨ ਆਸਿਫ਼, ਵੇਟਰ ਨਵਾਜ਼; FOH ਸਾਈਡਬਾਰ; 4 ਘੰਟੇ ਬਾਅਦ ਇਤਿਹਾਸ; ਅੱਜ ਦੀ ਪੱਟੀ ਬੰਦ; ਛੋਟਾ KOT।
 dishes_n	{n} ਪਕਵਾਨ
 recipe_ph	ਰੈਸਿਪੀ (ਵਿਕਲਪਿਕ) — ਇੱਕ ਪਲੇਟ ਵਿੱਚ ਲੱਗਦਾ: Rice=0.2, Paneer=0.15
 reorder_ph	ਇੰਨੇ ਤੇ ਹੋਰ ਖਰੀਦੋ
@@ -1364,3 +1363,7 @@ recent_changes	ਤਾਜ਼ਾ ਬਦਲਾਅ
 lane_declared_label	ਟੈਕਸ ਇਨਵੌਇਸ
 lane_owner_label	ਕੈਸ਼ ਮੀਮੋ
 money_lane_bill	ਬਿੱਲ: {lane}
+app_template_download_progress	ਡਾਊਨਲੋਡ ਹੋ ਰਿਹਾ ਹੈ… {p}% ({d} / {t})
+app_template_download_paused	ਮੁੜ ਸ਼ੁਰੂ ਕਰਨ ਲਈ ਦੁਬਾਰਾ ਆਯਾਤ ਕਰੋ — ਪੂਰੀਆਂ ਫ਼ਾਈਲਾਂ ਰੱਖੀਆਂ ਜਾਂਦੀਆਂ ਹਨ
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

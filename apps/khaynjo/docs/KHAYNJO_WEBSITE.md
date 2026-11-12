@@ -1,5 +1,22 @@
 # khaynjo.com — website plan
 
+> **Redesign (2026-11-12):** khaynjo.com is now **one scrolling page**, not a
+> 10-slide deck: sticky red top bar (section links on wide windows, gold
+> **Get it free** CTA), then hero (headline, Play + WhatsApp CTAs, trust
+> lines, the live **floor toy** as the hero visual) → **How a service runs**
+> (5 steps with Example props in the visit colours) → **Features** (app's own
+> sidebar icons) → **Menus** (the three public catalogue templates + the
+> 199-country world shelf) → **Offline** (red band) → **Pricing** (₹0 forever;
+> Kumkaj Cloud planned, usage-based) → **FAQ** → closing CTA + footer
+> (Privacy · Terms · Google Play · kumkaj.com). Why: the deck clipped every
+> chapter to one screen (phones and short laptops lost content) and flipped
+> a whole chapter per wheel tick. Deep links: `#how`, `#features`, `#menus`,
+> `#offline`, `#pricing`, `#faq`, `#start`; old chapter links (`#kot`, `#3`)
+> map to their section. The AI marketing banners are **not** used: they show a
+> mock dashboard, and device screens must be real captures (`WEBSITES.md`
+> §5 step 6). Real captures need a neutral demo shop — every capture in
+> `assets/Screenshots/` shows the private client's menu or staff names.
+>
 > **Status:** Phase 1 live in-tree as a local demo (2026-11-07) —
 > `sites/khaynjo` (package `khaynjo-site`), copied from `sites/kumkaj`
 > and diverged: the §3 service story as 10 Makepad chapters, table tiles
@@ -97,7 +114,7 @@ it.
 | 5 | **Service changes** | Guests move: the table's order slides to another table, two tables merge; an item cancelled after the KOT prints a cancel slip in the kitchen with a reason; a complimentary dish stays on the bill at ₹0 | "Move, merge, cancel or comp — never silently. Who, when and why is kept." | `move-merge`, `kot-cancel`, `nc` |
 | 6 | **Settle** | Bill printed (table turns Bill printed). Split by seat into two bills; one pays cash + UPI (QR with the amount baked in), change to return shown, tip kept apart; the other goes on the customer's khata as Due. Only then the table turns Free | "Cash, UPI, part, Due, tip — and the table frees only when it's paid." | `split`, `settle`, `upi-qr`, `due-khata`, `free-on-pay` |
 | 7 | **Close the day** | The drawer counts against float + cash taken + cash tips − cash paid out; short/over named; shift slip prints; the day report opens by staff, hour and dish | "Day end you can trust: expected, counted, and the difference named." | `shift-close`, `day-report` |
-| 8 | **Your menu, your way** | World shelf cards: **country (English) · local-script / native name · famous dish** + photo (Japan/Rāmen, Mexico/Tacos de birria, India/बटर चिकन, …); three marketing banners use `ImageFit.Horizontal` (no squash); script strip; short codes, area prices, timed prices | "Every country at your counter — your words, your codes, your prices." | `aliases-short-codes`, `area-prices`, `menu-timings`, `languages` |
+| 8 | **Your menu, your way** | **World shelf pager** — 199 countries (193 UN + 6), one famous dish each: **country (English) · native country · native dish** + English dish; public-domain / CC0 photo or an honest "Photo coming" tile; 8 a page (4 × 2) wide, 4 (2 × 2) narrow; "Show all / Only with photos" toggle. Data + photos from `sites/khaynjo/scripts/build-world-shelf.sh`. Script strip on tall screens | "Every country at your counter." (lede: your words, your codes, your prices) | `aliases-short-codes`, `area-prices`, `menu-timings`, `languages` |
 | 9 | **Internet down? Service goes on.** | The router turns red; the counter, captains' tablets and kitchen screen keep working together on the shop Wi-Fi | "No internet needed. Your tablets and kitchen screens work on your own Wi-Fi." | `offline-lan` |
 | 10 | **Close** | The room at rest, cloche on the pass | "Free forever on your devices." → Download · WhatsApp | `free-local` |
 
@@ -218,3 +235,32 @@ enforces it.
 - **iOS / macOS** — deferred.
 - **Competitor names** — none (`WEBSITES.md` §1 rule 6); `/switch`
   describes mechanics, not brands.
+
+## 7. World shelf (chapters 1 + 8) — data, photos, honesty
+
+- **Source:** the world-food research pack under gitignored
+  `local/khaynjo/world-food-research/` (199 countries, English + native
+  names, PD / CC0 photos). The site never reads `local/`:
+  `./sites/khaynjo/scripts/build-world-shelf.sh` writes
+  `sites/khaynjo/src/world_shelf.rs` (generated table) and
+  `sites/khaynjo/resources/dishes/world/<country>.webp` (600 × 400, q80,
+  ~40 KB each) plus `SOURCES.md` (every photo's source, and every research
+  photo **not** shown with the reason).
+- **Reviewed rejects:** research photos that do not show the plated dish
+  (people, shop fronts, signs, landscapes, packaging, clip-art, raw flour)
+  or come from a sub-280 px thumbnail are dropped in the script; those
+  countries show "Photo coming". Never fill a gap with another country's
+  dish or an unrelated still.
+- **Counts in copy come from the data** (`paint_world_counts`), never
+  hand-typed ("199 countries … 81 with photos").
+- **Scripts:** chapter 8 uses its own `WorldFont` (TextFont + Armenian,
+  Ethiopic, Georgian, Khmer, Lao, Myanmar, Sinhala, Thaana, Tibetan and a
+  12 KB CJK subset) so those fonts load only when chapter 8 draws. The
+  build script fails if a Han / kana / Hangul character is missing from
+  the subset.
+- **Photos load per page** (only the cards on screen). On wasm they are
+  fetched and decoded synchronously — Makepad's async image decode needs a
+  thread pool the `--no-threads` build lacks.
+- **Chapter 1** keeps four curated stills (one row when wide, two on a
+  phone) so the Play / WhatsApp CTA stays above the fold at 1280 × 800 and
+  1024 × 768.

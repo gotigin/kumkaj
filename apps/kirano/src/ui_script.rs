@@ -1741,7 +1741,10 @@ script_mod! {
             color_empty: #x56575D
             color_empty_hover: #x56575D
             color_empty_focus: #x56575D
-            text_style +: {font_size: 16.}
+            max_lines: 1
+            text_overflow: Ellipsis
+            // 12 on phone (was 16) — long empty_text ellipsis; same fix as Khaynjo.
+            text_style +: {font_size: 12.}
         }
     }
 
@@ -2001,6 +2004,10 @@ script_mod! {
                         flow: Right
                         spacing: 8
                         align: Align{y: 0.5}
+                        // Reorder without drag (live nav drag is off): ↑ ↓ swap this
+                        // row with its neighbour. Own hit targets on top of the face.
+                        move_up := QuietFitBtn{text: "\u{2191}"}
+                        move_down := QuietFitBtn{text: "\u{2193}"}
                         always_label := Label{
                             width: Fit height: Fit
                             visible: false
@@ -2927,6 +2934,19 @@ script_mod! {
                         }
                     }
                     plus := TicketStepBtn{draw_bg.mark: 3.0}
+                }
+                stepper_busy := View{
+                    width: Fit height: Fit
+                    visible: false
+                    flow: Down spacing: 4
+                    align: Align{x: 1.0 y: 0.5}
+                    qty_busy_label := Label{
+                        width: Fit
+                        text: "Updating…"
+                        draw_text.color: #x6B4A3F
+                        draw_text.text_style.font_size: 11.
+                    }
+                    qty_busy_cancel := QuietFitBtn{text: "Cancel"}
                 }
                 line_amount := Label{
                     width: Fit

@@ -182,7 +182,7 @@ snack_secs_save	Spara aviseringstid
 snack_secs_saved	Aviseringstid sparad — {n} sekunder
 settings_sec_backup	Säkerhetskopiera och återställa
 settings_sec_diag	Diagnostik
-settings_sec_privacy	Privacy
+settings_sec_privacy	Integritet
 diag_privacy_help	Loggar stannar på den här enheten. Hemligheter (PIN, lösenord) lagras aldrig. Att dela ett paket från enheten kräver ditt uttryckliga godkännande varje gång – aldrig sålt eller ges till tredje part.
 diag_level	Detaljnivå
 diag_level_error	Fel
@@ -339,21 +339,21 @@ server_remove_pin_ph	Ägarens PIN-kod för att ta bort en server
 only_owner_remove_server	Endast ägaren kan ta bort en server
 owner_pin_remove_server	Ägarens PIN-kod krävs för att ta bort den här servern
 device_setup_help	Servern håller böckerna här. Klientpar till en server.
-app_template_heading	Rajdhani appmall
-app_template_blurb	Laddar Rajdhani-menyn; Ägare Zahir (zahir), Admin Asif (asif, PIN 1111), Waiter Nawaz (nawaz, PIN 0000); FOH sidofält; historiken rensas efter 4 timmar (och Rensa nu i säkerhetskopiering); Klä av idag; kompakt KOT + Standardmarginaler för smala brickor. Sidebar-peers kan aktiveras igen i Inställningar.
-app_template_apply	Rajdhani appmall
+app_template_heading	Butiksmallar
+app_template_blurb	Importera en offentlig startmeny, eller ange en privat 12-siffrig kod från din Khaynjo-kontakt.
+app_template_apply	Importera mall
 app_template_skip	Hoppa över nu
-app_template_status	Serverklar – använd Rajdhani App Template, eller hoppa över
+app_template_status	Servern är redo — importera en mall eller hoppa över
 app_template_importing	Ansöker {title}...
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	Hämtar mall…
+app_template_public_hdr	Offentliga mallar
+app_template_private_hdr	Privat mall
+app_template_public_hint	Öppna det här avsnittet för att läsa in den offentliga listan (internet behövs en gång).
+app_template_code_not_found	Koden hittades inte
+app_template_need_internet	Internet behövs för att hämta mallar
+app_template_import_selected	Importera valda
+app_template_check_code	Kontrollera kod
+app_template_import	Importera
 currency	Valuta
 backup	Säkerhetskopiering
 use	Använd
@@ -474,19 +474,19 @@ copy_report	Kopiera rapporten
 counted_cash_ph	Räknade kontanter i lådan
 country_tax	Land & skatt
 tax_chrome	Skattelappar på till
-tax_chrome_help	När den är avstängd döljer beställningsdisken rader för GST/skatteskatt och platshållare för GST-i-pris. Skattesatser och inställningar för land och skatt kvar – aktivera etiketter igen när som helst. Rajdhani App Template börjar med detta av.
+tax_chrome_help	När av döljer beställningsdisken rader med GST-/skatteuppskattning och platshållare för GST i priset. Skattesatser och inställningar för land och skatt finns kvar — slå på etiketter igen när som helst. Vissa butiksmallar börjar med detta avstängt.
 tax_chrome_on	Visa
 tax_chrome_off	Göm
 tax_chrome_saved_on	Skattelappar på till
 tax_chrome_saved_off	Skatteetiketter gömda på till
 tax_invoice_till	Skattefaktura på till
-tax_invoice_help	När den är avstängd är räkningar endast kontantnoteringar och skattefakturan/kontantmemomarkerna är gömda på beställningsdisken. Rajdhani-appmall börjar med detta av – aktivera Visa tillbaka när som helst för att välja skattefaktura igen.
+tax_invoice_help	När av är notor bara kontantkvitton, och knapparna Skattefaktura / Kontantkvitto döljs på beställningsdisken. Vissa butiksmallar börjar med detta avstängt — slå på Visa när som helst för att välja Skattefaktura igen.
 tax_invoice_on	Visa
 tax_invoice_off	Göm
 tax_invoice_saved_on	Skattefaktura på till
 tax_invoice_saved_off	Skattefaktura dold — Endast kontantnota
 pay_methods	Betalningsmetoder
-pay_methods_help	Vilka marker visas på Ta betalning. Kontanter finns alltid kvar. Rajdhani-appmall börjar med endast kontanter — aktivera UPI / Kort / Kredit / Split igen här.
+pay_methods_help	Vilka knappar som visas under Ta betalt. Kontant finns alltid kvar. Vissa butiksmallar börjar med bara Kontant — slå på UPI / Kort / Kredit / Dela här igen.
 create_backup	Skapa backup
 credit_limit_heading	Kreditgräns (vald / namngiven part)
 day_close_summary	Dagens stängning sammanfattning
@@ -793,10 +793,10 @@ printers_looking	Letar...
 saving_printer	Lägger till skrivare...
 cancelled	Avbruten
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Tar bort…
+removed	Borttaget
+updating_order	Uppdaterar…
+order_updated	Beställningen uppdaterad
 printers_tap_find	Tryck på Hitta för att lista skrivare som den här enheten kan använda.
 printers_none_found	Ingen hittades – skriv ett systemskrivarnamn eller en IP (t.ex. 192.168.1.50).
 printer_from_find	Lade till {name}
@@ -1337,7 +1337,6 @@ kot_field_table	Bord
 kot_field_shop	Butiksnamn
 kot_field_waiter	Personal
 kot_field_station	Station
-app_template_blurb_extra	Även: Ägare Zahir, Admin Asif, Waiter Nawaz; FOH sidofält; historia efter 4 timmar; Klä av idag; kompakt KOT.
 dishes_n	{n} rätter
 recipe_ph	Recept (valfritt) — en portion använder: Ris=0,2, Paneer=0,15
 reorder_ph	Köp fler på
@@ -1364,3 +1363,7 @@ recent_changes	Senaste ändringarna
 lane_declared_label	Skattefaktura
 lane_owner_label	Kontantmemo
 money_lane_bill	Nota: {lane}
+app_template_download_progress	Hämtar… {p}% ({d} / {t})
+app_template_download_paused	Importera igen för att fortsätta — färdiga filer sparas
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

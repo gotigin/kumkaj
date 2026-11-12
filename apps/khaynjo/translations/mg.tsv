@@ -182,7 +182,7 @@ snack_secs_save	Tehirizo ny fotoana fanairana
 snack_secs_saved	Fotoana fampandrenesana voavonjy — {n} segondra
 settings_sec_backup	Manao backup & mamerina
 settings_sec_diag	Fanaraha-maso ara-pahasalamana
-settings_sec_privacy	Privacy
+settings_sec_privacy	Fiainana manokana
 diag_privacy_help	Mijanona eo amin'ity fitaovana ity ny rakitsoratra. Tsy tehirizina mihitsy ny tsiambaratelo (PIN, tenimiafina). Ny fizarana fonosana avy amin'ny fitaovana dia mila fanomezan-dàlana mazava avy aminao isaky ny fotoana — tsy amidy na omena antoko fahatelo mihitsy.
 diag_level	Haavo antsipiriany
 diag_level_error	Lesoka
@@ -339,21 +339,21 @@ server_remove_pin_ph	Tompony PIN hanala mpizara
 only_owner_remove_server	Ny Tompony ihany no afaka manala mpizara
 owner_pin_remove_server	Tompony PIN ilaina hanalana ity mpizara ity
 device_setup_help	Server mitazona ny boky eto. Client mifandray amin'ny Server.
-app_template_heading	Modely App Rajdhani
-app_template_blurb	Mampiditra ny menio Rajdhani; Tompony Zahir (zahir), Admin Asif (asif, PIN 1111), Mpanompo Nawaz (nawaz, PIN 0000); FOH sisiny; manadio ny tantara aorian'ny 4 ora (ary Manadio izao ao amin'ny Backup); Esory ny androany; compact KOT + sisiny fenitra ho an'ny tavy manify. Afaka averina amin'ny Fikirana ny mpiara-miasa amin'ny Sidebar.
-app_template_apply	Modely App Rajdhani
+app_template_heading	Modely fivarotana
+app_template_blurb	Ampidiro ny menio fanombohana ho an'ny besinimaro, na ampidiro ny kaody manokana misy isa 12 avy amin'ny mpifandray Khaynjo anao.
+app_template_apply	Hampiditra modely
 app_template_skip	Atsaharo aloha
-app_template_status	Server vonona — ampiharo Rajdhani Modely App, na atsaharo
+app_template_status	Vonona ny mpizara — ampidiro modely, na dingano
 app_template_importing	Manaova {title}…
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	Maka ny modely…
+app_template_public_hdr	Modely ho an'ny besinimaro
+app_template_private_hdr	Modely manokana
+app_template_public_hint	Sokafy ity fizarana ity hampidirana ny lisitra ho an'ny besinimaro (ilaina indray mandeha ny aterineto).
+app_template_code_not_found	Tsy hita ny kaody
+app_template_need_internet	Ilaina ny aterineto hakana modely
+app_template_import_selected	Hampiditra ny voafidy
+app_template_check_code	Hamarino ny kaody
+app_template_import	Hampiditra
 currency	Vola
 backup	Kopia
 use	Ampiasao
@@ -474,19 +474,19 @@ copy_report	Dika mitovy amin'ny tatitra
 counted_cash_ph	Vola voisan'ny trosa ao anaty vatasary
 country_tax	Firenena sy hetra
 tax_chrome	Mari-panahevitry ny hetra eo amin'ny kaonty
-tax_chrome_help	Rehefa maty, miafina ny GST/andalan-tsafidy hetra sy GST-eo amin'ny vidiny fametrahana eo amin'ny birao baiko. Mijanona ny tahan'ny hetra sy ny firenena & ny fikirakirana hetra — azonao averina soa aman-tsara ny mari-panahevitry ny hetra amin'ny fotoana rehetra. Rajdhani Ny Modely App dia manomboka amin'ity maty ity.
+tax_chrome_help	Rehefa maty, ny latabatra kaomandy dia manafina ny andalana tombana GST/hetra sy ny toerana GST-ao-anaty-vidiny. Mijanona ny tahan'ny hetra sy ny fanovana Firenena sy hetra — velomy indray ny marika amin'ny fotoana rehetra. Misy modely fivarotana manomboka amin'ity maty ity.
 tax_chrome_on	Asehoy
 tax_chrome_off	Afeno
 tax_chrome_saved_on	Mari-panahevitry ny hetra eo amin'ny kaonty
 tax_chrome_saved_off	Mari-panahevitry ny hetra miafina eo amin'ny kaonty
 tax_invoice_till	Faktiora hetra eo amin'ny kaonty
-tax_invoice_help	Rehefa maty, ny faktiora dia Memo vola fotsiny ary miafina eo amin'ny birao baiko ny chips Faktiora hetra / Memo vola. Rajdhani Ny Modely App dia manomboka amin'ity maty ity — avereno aseho amin'ny fotoana rehetra raha te hisafidy Faktiora hetra indray.
+tax_invoice_help	Rehefa maty, ny faktiora dia taratasim-bola fotsiny ary afenina eo amin'ny latabatra kaomandy ny bokotra Faktioran'ny hetra / Taratasim-bola. Misy modely fivarotana manomboka amin'ity maty ity — velomy ny Asehoy amin'ny fotoana rehetra hifidianana indray ny Faktioran'ny hetra.
 tax_invoice_on	Asehoy
 tax_invoice_off	Afeno
 tax_invoice_saved_on	Faktiora hetra eo amin'ny kaonty
 tax_invoice_saved_off	Faktiora hetra miafina — Memo vola fotsiny
 pay_methods	Fomba fandoavana
-pay_methods_help	Iza amin'ireo chip no miseho amin'ny fandoavana Take. Mijanona foana ny vola. Rajdhani Manomboka amin'ny vola fotsiny ny App Template — avereno amin'ny UPI / Kara / Kredita / Fizarana eto indray.
+pay_methods_help	Inona avy ireo bokotra miseho amin'ny Handray fandoavana. Mijanona foana ny Vola. Misy modely fivarotana manomboka amin'ny Vola fotsiny — velomy indray eto ny UPI / Karatra / Trosa / Mizara.
 create_backup	Mametraha backup
 credit_limit_heading	Fetra amin'ny kredita (partie voafidy / voatonona)
 day_close_summary	Famintinana ny andro rehefa mifarana
@@ -793,10 +793,10 @@ printers_looking	Mitady…
 saving_printer	Manampy pirinty…
 cancelled	Natoana
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Manala…
+removed	Nesorina
+updating_order	Manavao…
+order_updated	Novaozina ny kaomandy
 printers_tap_find	Kitiho ny Tadiavo mba hanoratra ny lisitr'ireo mpanonta azon'ity fitaovana ity ampiasaina.
 printers_none_found	Tsy hita — soraty ny anaran'ny mpanonta rafitra na IP (oh: 192.168.1.50).
 printer_from_find	Nampiana {name}
@@ -1337,7 +1337,6 @@ kot_field_table	Latabatra
 kot_field_shop	Anaran'ny fivarotana
 kot_field_waiter	Mpiasa
 kot_field_station	Toerana
-app_template_blurb_extra	Hafa koa: Tompony Zahir, Admin Asif, Mpanompo Nawaz; FOH bara; tantara aorian’ny 4 ora; Esory androany; mihenjana KOT.
 dishes_n	{n} lovia
 recipe_ph	Fomba fahandro (tsy voatery) — ampiasaina amin’ny ampahany iray: Vary=0.2, Paneer=0.15
 reorder_ph	Mividiana bebe kokoa amin’ny
@@ -1364,3 +1363,7 @@ recent_changes	Fanovana farany
 lane_declared_label	Faktioran-ketra
 lane_owner_label	Faktiora amin'ny vola
 money_lane_bill	Paositra: {lane}
+app_template_download_progress	Maka… {p}% ({d} / {t})
+app_template_download_paused	Ampidiro indray mba hanohizana — voatahiry ireo rakitra vita
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

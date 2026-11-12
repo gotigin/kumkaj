@@ -182,7 +182,7 @@ snack_secs_save	表示時間を保存
 snack_secs_saved	表示時間を保存しました — {n} 秒
 settings_sec_backup	バックアップとリストア
 settings_sec_diag	診断
-settings_sec_privacy	Privacy
+settings_sec_privacy	プライバシー
 diag_privacy_help	ログはこのデバイス上に保持されます。機密情報（PIN、パスワード）は決して保存されません。パッケージをデバイスから共有する場合は、毎回明示的な承認が必要です — 第三者に販売または提供されることはありません
 diag_level	詳細レベル
 diag_level_error	エラー
@@ -339,21 +339,21 @@ server_remove_pin_ph	削除する Owner PIN
 only_owner_remove_server	サーバーを削除できるのは Owner のみ
 owner_pin_remove_server	このサーバーを削除するには Owner PIN が必要です
 device_setup_help	サーバーはここに帳簿を保存します。クライアントはサーバーとペアリングします。
-app_template_heading	Rajdhani アプリテンプレート
-app_template_blurb	Rajdhani メニューを読み込みます。所有者 Zahir (zahir)、管理者 Asif (asif, PIN 1111)、ウェイター Nawaz (nawaz, PIN 0000)；FOH サイドバー；4 時間後に履歴がクリアされます（バックアップの「今すぐクリア」も有効）；今日のストリップオフ；コンパクトな KOT + 狭いトレイ用の標準マージン。サイドバーのピアは設定で再度オンにできます。
-app_template_apply	Rajdhani アプリテンプレート
+app_template_heading	店舗テンプレート
+app_template_blurb	公開スターターメニューを取り込むか、Khaynjo の担当者から受け取った 12 桁のプライベートコードを入力してください。
+app_template_apply	テンプレートを取り込む
 app_template_skip	後ほどスキップします
-app_template_status	サーバー準備完了 — Rajdhani アプリテンプレートを適用するか、スキップしてください
+app_template_status	サーバーの準備完了 — テンプレートを取り込むか、スキップしてください
 app_template_importing	{title} を適用中…
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	テンプレートをダウンロード中…
+app_template_public_hdr	公開テンプレート
+app_template_private_hdr	プライベートテンプレート
+app_template_public_hint	公開一覧を読み込むには、このセクションを開いてください（初回のみインターネットが必要）。
+app_template_code_not_found	コードが見つかりません
+app_template_need_internet	テンプレートのダウンロードにはインターネットが必要です
+app_template_import_selected	選択したものを取り込む
+app_template_check_code	コードを確認
+app_template_import	取り込む
 currency	通貨
 backup	バックアップ
 use	使う
@@ -474,19 +474,19 @@ copy_report	レポートをコピー
 counted_cash_ph	レジ内の実査現金
 country_tax	国と税
 tax_chrome	レジの税表示ラベル
-tax_chrome_help	オフ時は、注文デスクで GST/税見積もり行と価格込み GST プレースホルダーが非表示になります。税率や国・税設定は維持されます。必要に応じていつでもラベルをオンにしてください。Rajdhani アプリテンプレートはこの機能をオフで開始します。
+tax_chrome_help	オフにすると、注文デスクで GST/税の見積もり行と税込み価格のプレースホルダーを隠します。税率と国・税の設定は残ります — ラベルはいつでも再びオンにできます。一部の店舗テンプレートはこれをオフにして始まります。
 tax_chrome_on	表示
 tax_chrome_off	非表示
 tax_chrome_saved_on	レジの税表示ラベル
 tax_chrome_saved_off	レジの税表示ラベルを非表示
 tax_invoice_till	レジの課税請求書
-tax_invoice_help	オフ時は請求書は現金メモのみとなり、注文デスクで課税請求書／現金メモチップが非表示になります。Rajdhani アプリテンプレートはこの機能をオフで開始します。「Show」をいつでもオンにして再度課税請求書を選択してください。
+tax_invoice_help	オフにすると、伝票は現金メモのみになり、注文デスクの「税請求書 / 現金メモ」ボタンが隠れます。一部の店舗テンプレートはこれをオフにして始まります — 税請求書を再び選ぶには、いつでも「表示」をオンにしてください。
 tax_invoice_on	表示
 tax_invoice_off	非表示
 tax_invoice_saved_on	レジの課税請求書
 tax_invoice_saved_off	課税請求書を非表示 — カシノメモのみ
 pay_methods	決済方法
-pay_methods_help	「Take payment」に表示されるチップはこれです。Cash は常に維持されます。Rajdhani アプリテンプレートは Cash だけで開始します。UPI / Card / Credit / Split をいつでもここでオンにしてください。
+pay_methods_help	「支払いを受ける」に表示するボタン。現金は常に残ります。一部の店舗テンプレートは現金のみで始まります — ここで UPI / カード / 掛け / 分割を再びオンにしてください。
 create_backup	バックアップ作成
 credit_limit_heading	与信限度（選択／指定の取引先）
 day_close_summary	日次締め概要
@@ -793,10 +793,10 @@ printers_looking	この端末とWi‑Fiでプリンターを検索中…
 saving_printer	プリンターの追加中…
 cancelled	取消
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	削除中…
+removed	削除しました
+updating_order	更新中…
+order_updated	注文を更新しました
 printers_tap_find	この端末で使えるプリンターを表示するには「探す」をタップします。
 printers_none_found	プリンターが見つかりません — システム名またはネットワークアドレスを入力（例: 192.168.1.50）。
 printer_from_find	{name} を追加しました
@@ -1337,7 +1337,6 @@ kot_field_table	テーブル
 kot_field_shop	店名
 kot_field_waiter	スタッフ
 kot_field_station	ステーション
-app_template_blurb_extra	または：オーナー Zahir、管理者 Asif、ウェイター Nawaz；FOH サイドバー；4 時間後の履歴；今日のストリップオフ；コンパクトな KOT
 dishes_n	{n} 品
 recipe_ph	レシピ（任意）— 1人前の使用量: Rice=0.2, Paneer=0.15
 reorder_ph	この数で補充
@@ -1364,3 +1363,7 @@ recent_changes	最近の変更
 lane_declared_label	税金請求書
 lane_owner_label	現金メモ
 money_lane_bill	請求書：{lane}
+app_template_download_progress	ダウンロード中… {p}% ({d} / {t})
+app_template_download_paused	もう一度インポートすると再開します — 完了したファイルは保持されます
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

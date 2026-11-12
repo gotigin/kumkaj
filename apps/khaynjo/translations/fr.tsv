@@ -182,7 +182,7 @@ snack_secs_save	Enregistrer la durée des alertes
 snack_secs_saved	Durée des alertes enregistrée — {n} secondes
 settings_sec_backup	Sauvegarde et restauration
 settings_sec_diag	Diagnostic
-settings_sec_privacy	Privacy
+settings_sec_privacy	Confidentialité
 diag_privacy_help	Les journaux restent sur cet appareil. Les secrets (PIN, mots de passe) ne sont jamais stockés. Le partage d'un paquet hors de l'appareil nécessite votre approbation explicite à chaque fois — jamais vendu ou donné à des tiers.
 diag_level	Niveau de détail
 diag_level_error	Erreurs
@@ -339,21 +339,21 @@ server_remove_pin_ph	Code Owner pour supprimer
 only_owner_remove_server	Seul le propriétaire peut supprimer un serveur
 owner_pin_remove_server	Code Owner requis pour supprimer ce serveur
 device_setup_help	Le serveur garde les livres ici. Le client s'appaire à un serveur.
-app_template_heading	Modèle de l'application Rajdhani
-app_template_blurb	Charge le menu Rajdhani ; Propriétaire Zahir (zahir), Admin Asif (asif, PIN 1111), Serveur Nawaz (nawaz, PIN 0000) ; barre latérale FOH ; historique effacé après 4 heures (et Effacer maintenant dans Sauvegarde) ; bandeau d'aujourd'hui supprimé ; KOT compact + marges standard pour plateaux étroits. Les pairs de la barre latérale peuvent être réactivés dans Paramètres.
-app_template_apply	Modèle de l'application Rajdhani
+app_template_heading	Modèles de boutique
+app_template_blurb	Importez un menu de départ public, ou saisissez un code privé à 12 chiffres fourni par votre contact Khaynjo.
+app_template_apply	Importer le modèle
 app_template_skip	Passer pour le moment
-app_template_status	Serveur prêt — appliquer le modèle de l'application Rajdhani, ou passer
+app_template_status	Serveur prêt — importez un modèle, ou passez
 app_template_importing	Application de {title}…
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	Téléchargement du modèle…
+app_template_public_hdr	Modèles publics
+app_template_private_hdr	Modèle privé
+app_template_public_hint	Ouvrez cette section pour charger la liste publique (internet nécessaire une fois).
+app_template_code_not_found	Code introuvable
+app_template_need_internet	Internet nécessaire pour télécharger les modèles
+app_template_import_selected	Importer la sélection
+app_template_check_code	Vérifier le code
+app_template_import	Importer
 currency	Devise
 backup	Sauvegarde
 use	Utiliser
@@ -474,19 +474,19 @@ copy_report	Copier le rapport
 counted_cash_ph	Espèces comptées en caisse
 country_tax	Pays et taxes
 tax_chrome	Étiquettes fiscales sur le till
-tax_chrome_help	Quand désactivé, le bureau de commande masque les lignes d'estimation TVA/taxe et les placeholders prix-inclus-TVA. Les taux fiscaux et les paramètres Pays & taxe restent — réactive les étiquettes à tout moment. Le modèle Rajdhani App Template commence avec cela désactivé.
+tax_chrome_help	Désactivé, le comptoir de commande masque les lignes d'estimation GST/taxe et les repères « GST inclus dans le prix ». Les taux de taxe et les réglages Pays et taxes restent — réactivez les libellés à tout moment. Certains modèles de boutique démarrent avec cette option désactivée.
 tax_chrome_on	Afficher
 tax_chrome_off	Masquer
 tax_chrome_saved_on	Étiquettes fiscales sur le till
 tax_chrome_saved_off	Étiquettes fiscales masquées sur le till
 tax_invoice_till	Facture fiscale sur le till
-tax_invoice_help	Quand désactivé, les factures sont uniquement des mémos de caisse et les puces Facture fiscale / Mémo de caisse sont masquées sur le bureau de commande. Le modèle Rajdhani App Template commence avec cela désactivé — réactive Afficher à tout moment pour choisir la facture fiscale à nouveau.
+tax_invoice_help	Désactivé, les additions sont uniquement des notes d'espèces et les boutons Facture fiscale / Note d'espèces sont masqués au comptoir de commande. Certains modèles de boutique démarrent avec cette option désactivée — réactivez Afficher à tout moment pour choisir à nouveau Facture fiscale.
 tax_invoice_on	Afficher
 tax_invoice_off	Masquer
 tax_invoice_saved_on	Facture fiscale sur le till
 tax_invoice_saved_off	Facture fiscale masquée — uniquement mémo de caisse
 pay_methods	Méthodes de paiement
-pay_methods_help	Quelles puces apparaissent sur Prendre un paiement. La Caisse reste toujours active. Le modèle Rajdhani App Template commence avec uniquement la Caisse — réactive UPI / Carte / Crédit / Partage ici à nouveau.
+pay_methods_help	Les boutons visibles dans Encaisser. Espèces reste toujours. Certains modèles de boutique démarrent avec Espèces seulement — réactivez UPI / Carte / Crédit / Partage ici.
 create_backup	Créer une sauvegarde
 credit_limit_heading	Limite de crédit (partie sélectionnée / nommée)
 day_close_summary	Résumé de clôture du jour
@@ -793,10 +793,10 @@ printers_looking	Recherche d'imprimantes sur cet appareil et le Wi‑Fi…
 saving_printer	Ajout de l'imprimante…
 cancelled	Annulé
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Retrait…
+removed	Retiré
+updating_order	Mise à jour…
+order_updated	Commande mise à jour
 printers_tap_find	Touchez Rechercher des imprimantes pour lister celles que cet appareil peut utiliser.
 printers_none_found	Aucune imprimante trouvée — saisissez un nom système ou une adresse réseau (ex. 192.168.1.50).
 printer_from_find	Ajout de {name}
@@ -1337,7 +1337,6 @@ kot_field_table	Table
 kot_field_shop	Nom du magasin
 kot_field_waiter	Personnel
 kot_field_station	Station
-app_template_blurb_extra	Également : Propriétaire Zahir, Admin Asif, Serveur Nawaz ; barre latérale FOH ; historique après 4 heures ; bandeau du jour à supprimer ; KOT compact.
 dishes_n	{n} plats
 recipe_ph	Recette (facultatif) — une portion utilise : Rice=0.2, Paneer=0.15
 reorder_ph	Racheter à
@@ -1364,3 +1363,7 @@ recent_changes	Changements récents
 lane_declared_label	Facture fiscale
 lane_owner_label	Note de caisse
 money_lane_bill	Facture : {lane}
+app_template_download_progress	Téléchargement… {p}% ({d} / {t})
+app_template_download_paused	Importez à nouveau pour reprendre — les fichiers terminés sont conservés
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

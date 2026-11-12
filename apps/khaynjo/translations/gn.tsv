@@ -182,7 +182,7 @@ snack_secs_save	Eñongatu tiempo de alerta
 snack_secs_saved	Tiempo de alerta oñeñongatúva — {n} segundos
 settings_sec_backup	Copia de seguridad & jegueru jey
 settings_sec_diag	Diagnóstico rehegua
-settings_sec_privacy	Privacy
+settings_sec_privacy	Ñemiguáva
 diag_privacy_help	Umi registro opyta ko tembipuru’ípe. Umi ñemigua (PIN, ñe’ẽñemi) araka’eve noñongatúi. Ekomparti peteĩ paquete dispositivo-gui oikotevẽ ne aprobación explícita cada vez — araka’eve noñevendéi térã noñeme’ẽi mbohapýha tapichápe.
 diag_level	Nivel de detalle rehegua
 diag_level_error	Umi jejavy
@@ -339,21 +339,21 @@ server_remove_pin_ph	Ijára PIN oipeꞌa hag̃ua peteĩ servidor
 only_owner_remove_server	Pe Ijára añoite ikatu oipe’a peteĩ servidor
 owner_pin_remove_server	Ijára PIN oñeikotevẽ ojeipe’a hag̃ua ko servidor
 device_setup_help	Servidor oñongatu umi aranduka ko’ápe. Cliente ombojoaju peteĩ Servidor-pe.
-app_template_heading	Rajdhani Plantilla Aplicación rehegua
-app_template_blurb	Okarga pe menú Rajdhani; Ijára Zahir (zahir), Admin Asif (asif, PIN 1111), Mesero Nawaz (nawaz, PIN 0000); FOH barra lateral rehegua; tembiasakue oñemopotĩ 4 aravo rire (ha Emopotĩ ko’áĝa Backup-pe); Ko árape desnuda; compacto KOT + Margen estándar umi bandeja estrecha-pe g̃uarã. Umi compañero barra lateral rehegua ikatu oñembogue jey Ñembohekorãme.
-app_template_apply	Rajdhani Plantilla Aplicación rehegua
+app_template_heading	Ñemuha ñemboguatarã
+app_template_blurb	Egueru peteĩ tembi'u rysýi ñepyrũrã opavavépe guarã, térã emoinge pe ayvu ñemi 12 papaha rehupytýva ne irũ Khaynjo-gui.
+app_template_apply	Egueru ñemboguatarã
 app_template_skip	Ojesalta ko’áĝa ĝuarã
-app_template_status	Servidor oĩma — eipuru Rajdhani Plantilla de App, térã embohasa
+app_template_status	Servidor oĩma — egueru peteĩ ñemboguatarã, térã ehasa
 app_template_importing	Ojeporu {title}...
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	Oñemboguejy ñemboguatarã…
+app_template_public_hdr	Ñemboguatarã opavavépe guarã
+app_template_private_hdr	Ñemboguatarã ñemi
+app_template_public_hint	Embojuruja ko vore emyanyhẽ hag̃ua pe lista opavavépe guarã (oñeikotevẽ internet peteĩ jey).
+app_template_code_not_found	Ndojejuhúi ayvu
+app_template_need_internet	Oñeikotevẽ internet oñemboguejy hag̃ua ñemboguatarã
+app_template_import_selected	Egueru pe eiporavóva
+app_template_check_code	Ehecha ayvu
+app_template_import	Egueru
 currency	Viru rehegua
 backup	Copia de seguridad rehegua
 use	Eipuru
@@ -474,19 +474,19 @@ copy_report	Ekopia marandu
 counted_cash_ph	Ojeipapa efectivo oĩva cajón-pe
 country_tax	Tetã & impuesto rehegua
 tax_chrome	Umi etiqueta tributaria rehegua till
-tax_chrome_help	Oñembogue jave, pe escritorio de pedido omokañy línea GST/estimación impuesto rehegua ha umi tenda’i GST-en-precio-pe. Tasa tributaria ha Tetã & impuesto ñemboheko opyta — emboguejy jey etiqueta oimeraẽ jave. Rajdhani Plantilla de App oñepyrũ kóva reheve.
+tax_chrome_help	Oñembogue jave, pe mesa jerure omokañy umi líneas GST/impuesto ñembohepy ha umi GST-repy-pype ñemoĩ. Umi impuesto tasa ha Tetã ha impuesto ñemboheko opyta — emyandy jey umi etiqueta araka'eve. Unos ñemuha ñemboguatarã oñepyrũ kóva oñembogue reheve.
 tax_chrome_on	Ohechauka
 tax_chrome_off	Oñomi
 tax_chrome_saved_on	Umi etiqueta tributaria rehegua till
 tax_chrome_saved_off	Umi etiqueta tributaria kañymby till rehe
 tax_invoice_till	Factura tributaria rehegua till
-tax_invoice_help	Oñembogue jave, umi factura ha’e Memo de Efectivo añoite ha umi chip factura Impuesto / Memo de Efectivo oñeñomi mesa de pedido-pe. Rajdhani Plantilla de App oñepyrũ kóvagui oñembogue — emboguejy jey Ehechauka oimeraẽ jave eiporavo jey hag̃ua factura Impuesto rehegua.
+tax_invoice_help	Oñembogue jave, umi cuenta ha'e nota viru añoite ha umi votõ Factura impuesto / Nota viru oñemokañy mesa jerurépe. Unos ñemuha ñemboguatarã oñepyrũ kóva oñembogue reheve — emyandy Ehechauka araka'eve reiporavo jey hag̃ua Factura impuesto.
 tax_invoice_on	Ohechauka
 tax_invoice_off	Oñomi
 tax_invoice_saved_on	Factura tributaria rehegua till
 tax_invoice_saved_off	Factura tributaria kañymby — Memo efectivo añoite
 pay_methods	Umi mba’e ojejapóva ojepaga haguã
-pay_methods_help	Mba'e chipa-pa ojekuaa Take pago-pe. Efectivo akóinte opyta. Rajdhani Plantilla de App oñepyrũ Efectivo reheve añoite — embojere UPI / Tarjeta / Crédito / División jey ko’ápe.
+pay_methods_help	Mba'e votõ ojehechauka Ehupyty pago-pe. Viru opyta tapiaite. Unos ñemuha ñemboguatarã oñepyrũ Viru añoite reheve — emyandy jey ápe UPI / Tarjeta / Crédito / Ñemboja'o.
 create_backup	Ojapo peteĩ jekopytyjoja
 credit_limit_heading	Límite de crédito (cliente térã proveedor ojeporavóva) .
 day_close_summary	Ára ñemboty resumen
@@ -793,10 +793,10 @@ printers_looking	Ojesarekóva...
 saving_printer	Oñemoĩvo impresora...
 cancelled	Oñembogue
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Oñembogue hína…
+removed	Oñembogue
+updating_order	Oñembopyahu hína…
+order_updated	Jerure oñembopyahúma
 printers_tap_find	Epoko Eheka emoĩ hag̃ua peteĩ lista impresora ikatúva oipuru ko tembipuru.
 printers_none_found	Ndaipóri ojejuhúva — ehai peteĩ impresora sistema réra térã peteĩ IP (e.g. 192.168.1.50).
 printer_from_find	Oñemoĩve {name}
@@ -1337,7 +1337,6 @@ kot_field_table	Mesa ojekaru haguã
 kot_field_shop	Tenda réra
 kot_field_waiter	Mba’apoharakuéra
 kot_field_station	Estación
-app_template_blurb_extra	Avei: Ijára Zahir, Admin Asif, Mesero Nawaz; FOH barra lateral rehegua; tembiasakue 4 aravo rire; Ko árape desnuda; compacto KOT rehegua.
 dishes_n	{n} tembi’u rehegua
 recipe_ph	Receta (opcional) — peteĩ porción oipuru: Mandyju=0,2, Paneer=0,15
 reorder_ph	Ejogua hetave ko’ápe
@@ -1364,3 +1363,7 @@ recent_changes	Umi ñemoambue nda’aréi ojejapóva
 lane_declared_label	Factura tributaria rehegua
 lane_owner_label	Memo efectivo rehegua
 money_lane_bill	Proyecto de ley: {lane} .
+app_template_download_progress	Oñemboguejy… {p}% ({d} / {t})
+app_template_download_paused	Egueru jey eñepyrũ jey hag̃ua — umi marandurenda opáva oñeñongatu
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

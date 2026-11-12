@@ -182,7 +182,7 @@ snack_secs_save	Gem beskedtid
 snack_secs_saved	Beskedtid gemt — {n} sekunder
 settings_sec_backup	Sikkerhedskopi og gendan
 settings_sec_diag	Diagnostik
-settings_sec_privacy	Privacy
+settings_sec_privacy	Privatliv
 diag_privacy_help	Logfiler bliver på denne enhed. Hemmeligheder (PIN, adgangskoder) gemmes aldrig. At dele en pakke væk fra enheden kræver din udtrykkelige godkendelse hver gang — sælges eller gives aldrig til tredjeparter.
 diag_level	Detaljeniveau
 diag_level_error	Fejl
@@ -339,21 +339,21 @@ server_remove_pin_ph	Ejer-PIN for at fjerne en server
 only_owner_remove_server	Kun ejeren kan fjerne en server
 owner_pin_remove_server	Ejer-PIN kræves for at fjerne denne server
 device_setup_help	Serveren holder bøgerne her. Klienten parres med en Server.
-app_template_heading	Rajdhani-appskabelon
-app_template_blurb	Indlæser Rajdhani-menuen; ejer Zahir (zahir), admin Asif (asif, PIN 1111), tjener Nawaz (nawaz, PIN 0000); FOH-sidepanel; historik ryddes efter 4 timer (og Ryd nu under Sikkerhedskopi); I dag-striben fra; kompakt KOT + standardmargener til smalle bakker. Sidepanel-punkter kan slås til igen under Indstillinger.
-app_template_apply	Rajdhani-appskabelon
+app_template_heading	Butiksskabeloner
+app_template_blurb	Importér en offentlig startmenu, eller indtast en privat 12-cifret kode fra din Khaynjo-kontakt.
+app_template_apply	Importér skabelon
 app_template_skip	Spring over for nu
-app_template_status	Server klar — anvend Rajdhani-appskabelon, eller spring over
+app_template_status	Server klar — importér en skabelon, eller spring over
 app_template_importing	Anvender {title}…
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	Henter skabelon…
+app_template_public_hdr	Offentlige skabeloner
+app_template_private_hdr	Privat skabelon
+app_template_public_hint	Åbn denne sektion for at indlæse den offentlige liste (kræver internet én gang).
+app_template_code_not_found	Koden blev ikke fundet
+app_template_need_internet	Kræver internet for at hente skabeloner
+app_template_import_selected	Importér valgte
+app_template_check_code	Tjek kode
+app_template_import	Importér
 currency	Valuta
 backup	Sikkerhedskopi
 use	Brug
@@ -474,19 +474,19 @@ copy_report	Kopiér rapport
 counted_cash_ph	Optalt kontant i skuffen
 country_tax	Land og skat
 tax_chrome	Skatteetiketter på kassen
-tax_chrome_help	Når den er fra, skjuler ordrebordet linjer med moms-/skat-estimat og pladsholdere for skat i prisen. Skattesatser og indstillinger for Land og skat bliver — slå etiketterne til igen når som helst. Rajdhani-appskabelonen starter med dette fra.
+tax_chrome_help	Når slået fra, skjuler ordrebordet linjer med GST/skatteoverslag og pladsholdere for GST i prisen. Skattesatser og indstillinger for land og skat bliver — slå mærkater til igen når som helst. Nogle butiksskabeloner starter med dette slået fra.
 tax_chrome_on	Vis
 tax_chrome_off	Skjul
 tax_chrome_saved_on	Skatteetiketter på kassen
 tax_chrome_saved_off	Skatteetiketter skjult på kassen
 tax_invoice_till	Skattefaktura på kassen
-tax_invoice_help	Når den er fra, er regninger kun Kontantnota, og brikkerne Skattefaktura / Kontantnota skjules på ordrebordet. Rajdhani-appskabelonen starter med dette fra — slå Vis til igen når som helst for at vælge Skattefaktura.
+tax_invoice_help	Når slået fra, er regninger kun kontantnotaer, og knapperne Skattefaktura / Kontantnota er skjult på ordrebordet. Nogle butiksskabeloner starter med dette slået fra — slå Vis til når som helst for at vælge Skattefaktura igen.
 tax_invoice_on	Vis
 tax_invoice_off	Skjul
 tax_invoice_saved_on	Skattefaktura på kassen
 tax_invoice_saved_off	Skattefaktura skjult — kun Kontantnota
 pay_methods	Betalingsmåder
-pay_methods_help	Hvilke brikker der vises ved Tag betaling. Kontant bliver altid. Rajdhani-appskabelonen starter med kun Kontant — slå UPI / Kort / Kredit / Del til igen her.
+pay_methods_help	Hvilke knapper der vises under Modtag betaling. Kontant bliver altid. Nogle butiksskabeloner starter med kun Kontant — slå UPI / Kort / Kredit / Del til igen her.
 create_backup	Opret sikkerhedskopi
 credit_limit_heading	Kreditgrænse (valgt / navngiven part)
 day_close_summary	Opsummering af dagsafslutning
@@ -793,10 +793,10 @@ printers_looking	Leder…
 saving_printer	Tilføjer printer…
 cancelled	Annulleret
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Fjerner…
+removed	Fjernet
+updating_order	Opdaterer…
+order_updated	Ordre opdateret
 printers_tap_find	Tryk Find for at vise printere som denne enhed kan bruge.
 printers_none_found	Ingen fundet — skriv et systemprinternavn eller en IP (f.eks. 192.168.1.50).
 printer_from_find	Tilføjede {name}
@@ -1337,7 +1337,6 @@ kot_field_table	Bord
 kot_field_shop	Butiksnavn
 kot_field_waiter	Personale
 kot_field_station	Station
-app_template_blurb_extra	Også: Ejer Zahir, Admin Asif, Tjener Nawaz; FOH-sidepanel; historik efter 4 timer; I dag-striben fra; kompakt KOT.
 dishes_n	{n} retter
 recipe_ph	Opskrift (valgfri) — én portion bruger: Ris=0,2, Paneer=0,15
 reorder_ph	Køb mere ved
@@ -1364,3 +1363,7 @@ recent_changes	Seneste ændringer
 lane_declared_label	Skattefaktura
 lane_owner_label	Kontantnota
 money_lane_bill	Regning: {lane}
+app_template_download_progress	Henter… {p}% ({d} / {t})
+app_template_download_paused	Importér igen for at fortsætte — færdige filer beholdes
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

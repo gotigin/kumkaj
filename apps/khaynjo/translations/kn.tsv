@@ -182,7 +182,7 @@ snack_secs_save	ಎಚ್ಚರಿಕೆ ಸಮಯ ಉಳಿಸಿ
 snack_secs_saved	ಎಚ್ಚರಿಕೆ ಸಮಯ ಉಳಿಸಲಾಗಿದೆ — {n} ಸೆಕೆಂಡುಗಳು
 settings_sec_backup	ಬ್ಯಾಕಪ್ ಮತ್ತು ಮರುಸ್ಥಾಪನೆ
 settings_sec_diag	ಡಯಾಗ್ನಾಸ್ಟಿಕ್ಸ್
-settings_sec_privacy	Privacy
+settings_sec_privacy	ಗೌಪ್ಯತೆ
 diag_privacy_help	ಲಾಗ್‌ಗಳು ಈ ಸಾಧನದಲ್ಲೇ ಉಳಿಯುತ್ತವೆ. ರಹಸ್ಯಗಳನ್ನು (PIN, ಪಾಸ್‌ವರ್ಡ್) ಎಂದಿಗೂ ಸಂಗ್ರಹಿಸುವುದಿಲ್ಲ. ಸಾಧನದ ಹೊರಗೆ ಪ್ಯಾಕೇಜ್ ಕಳುಹಿಸಲು ಪ್ರತಿ ಬಾರಿ ನಿಮ್ಮ ಸ್ಪಷ್ಟ ಒಪ್ಪಿಗೆ ಬೇಕು — ಎಂದಿಗೂ ಮಾರಾಟ ಮಾಡುವುದಿಲ್ಲ ಅಥವಾ ಮೂರನೇ ವ್ಯಕ್ತಿಗಳಿಗೆ ನೀಡುವುದಿಲ್ಲ.
 diag_level	ವಿವರದ ಮಟ್ಟ
 diag_level_error	ದೋಷಗಳು
@@ -339,21 +339,21 @@ server_remove_pin_ph	ಸರ್ವರ್ ತೆಗೆಯಲು Owner PIN
 only_owner_remove_server	Owner ಮಾತ್ರ ಸರ್ವರ್ ತೆಗೆಯಬಹುದು
 owner_pin_remove_server	ಸರ್ವರ್ ತೆಗೆಯಲು Owner PIN ಬೇಕು
 device_setup_help	ಸರ್ವರ್ ಲೆಕ್ಕಪುಸ್ತಕಗಳನ್ನು ಇಲ್ಲೇ ಇಡುತ್ತದೆ. ಕ್ಲೈಂಟ್ ಒಂದು ಸರ್ವರ್‌ಗೆ ಜೋಡಿಯಾಗುತ್ತದೆ.
-app_template_heading	ರಾಜಧಾನಿ ಆ್ಯಪ್ ಟೆಂಪ್ಲೇಟ್
-app_template_blurb	ರಾಜಧಾನಿ ಮೆನು ಲೋಡ್ ಮಾಡುತ್ತದೆ; ಮಾಲೀಕ ಜಹೀರ್ (zahir), ನಿರ್ವಾಹಕ ಆಸಿಫ್ (asif, PIN 1111), ವೇಟರ್ ನವಾಜ್ (nawaz, PIN 0000); FOH ಸೈಡ್‌ಬಾರ್; ಇತಿಹಾಸ 4 ಗಂಟೆಗಳ ನಂತರ ಅಳಿಸುತ್ತದೆ (ಬ್ಯಾಕಪ್‌ನಲ್ಲಿ ಈಗ ಅಳಿಸಿ ಕೂಡ); ಇಂದಿನ ಪಟ್ಟಿ ಆಫ್; ಕಿರಿದಾದ ಟ್ರೇಗಳಿಗೆ ಚಿಕ್ಕ KOT + ಸಾಮಾನ್ಯ ಅಂಚುಗಳು. ಸೈಡ್‌ಬಾರ್‌ನ ಉಳಿದವನ್ನು ಸೆಟ್ಟಿಂಗ್‌ಗಳಲ್ಲಿ ಮತ್ತೆ ಆನ್ ಮಾಡಬಹುದು.
-app_template_apply	ರಾಜಧಾನಿ ಆ್ಯಪ್ ಟೆಂಪ್ಲೇಟ್
+app_template_heading	ಅಂಗಡಿ ಟೆಂಪ್ಲೇಟ್‌ಗಳು
+app_template_blurb	ಸಾರ್ವಜನಿಕ ಆರಂಭಿಕ ಮೆನು ಆಮದು ಮಾಡಿ, ಅಥವಾ ನಿಮ್ಮ Khaynjo ಸಂಪರ್ಕದಿಂದ ಪಡೆದ 12 ಅಂಕಿಯ ಖಾಸಗಿ ಕೋಡ್ ನಮೂದಿಸಿ.
+app_template_apply	ಟೆಂಪ್ಲೇಟ್ ಆಮದು ಮಾಡಿ
 app_template_skip	ಈಗ ಬಿಟ್ಟುಬಿಡಿ
-app_template_status	ಸರ್ವರ್ ಸಿದ್ಧ — ರಾಜಧಾನಿ ಆ್ಯಪ್ ಟೆಂಪ್ಲೇಟ್ ಅನ್ವಯಿಸಿ, ಅಥವಾ ಬಿಟ್ಟುಬಿಡಿ
+app_template_status	ಸರ್ವರ್ ಸಿದ್ಧ — ಟೆಂಪ್ಲೇಟ್ ಆಮದು ಮಾಡಿ, ಅಥವಾ ಬಿಟ್ಟುಬಿಡಿ
 app_template_importing	{title} ಅನ್ವಯಿಸಲಾಗುತ್ತಿದೆ…
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	ಟೆಂಪ್ಲೇಟ್ ಡೌನ್‌ಲೋಡ್ ಆಗುತ್ತಿದೆ…
+app_template_public_hdr	ಸಾರ್ವಜನಿಕ ಟೆಂಪ್ಲೇಟ್‌ಗಳು
+app_template_private_hdr	ಖಾಸಗಿ ಟೆಂಪ್ಲೇಟ್
+app_template_public_hint	ಸಾರ್ವಜನಿಕ ಪಟ್ಟಿಯನ್ನು ಲೋಡ್ ಮಾಡಲು ಈ ವಿಭಾಗ ತೆರೆಯಿರಿ (ಒಮ್ಮೆ ಇಂಟರ್ನೆಟ್ ಬೇಕು).
+app_template_code_not_found	ಕೋಡ್ ಸಿಗಲಿಲ್ಲ
+app_template_need_internet	ಟೆಂಪ್ಲೇಟ್ ಡೌನ್‌ಲೋಡ್ ಮಾಡಲು ಇಂಟರ್ನೆಟ್ ಬೇಕು
+app_template_import_selected	ಆಯ್ಕೆ ಮಾಡಿದ್ದನ್ನು ಆಮದು ಮಾಡಿ
+app_template_check_code	ಕೋಡ್ ಪರಿಶೀಲಿಸಿ
+app_template_import	ಆಮದು ಮಾಡಿ
 currency	ಕರೆನ್ಸಿ
 backup	ಬ್ಯಾಕಪ್
 use	ಬಳಸಿ
@@ -474,19 +474,19 @@ copy_report	ವರದಿ ನಕಲಿಸಿ
 counted_cash_ph	ಡ್ರಾಯರ್‌ನಲ್ಲಿ ಎಣಿಸಿದ ನಗದು
 country_tax	ದೇಶ ಮತ್ತು ತೆರಿಗೆ
 tax_chrome	ಟಿಲ್‌ನಲ್ಲಿ ತೆರಿಗೆ ಲೇಬಲ್‌ಗಳು
-tax_chrome_help	ಆಫ್ ಆಗಿದ್ದಾಗ ಆರ್ಡರ್ ಡೆಸ್ಕ್ GST/ತೆರಿಗೆ ಅಂದಾಜು ಸಾಲುಗಳನ್ನು ಮತ್ತು ಬೆಲೆಯಲ್ಲಿ-GST ಸೂಚನೆಗಳನ್ನು ಮರೆಮಾಡುತ್ತದೆ. ತೆರಿಗೆ ದರಗಳು ಮತ್ತು ದೇಶ ಮತ್ತು ತೆರಿಗೆ ಸೆಟ್ಟಿಂಗ್‌ಗಳು ಉಳಿಯುತ್ತವೆ — ಲೇಬಲ್‌ಗಳನ್ನು ಯಾವಾಗ ಬೇಕಾದರೂ ಮತ್ತೆ ಆನ್ ಮಾಡಿ. ರಾಜಧಾನಿ ಆ್ಯಪ್ ಟೆಂಪ್ಲೇಟ್ ಇದನ್ನು ಆಫ್‌ನೊಂದಿಗೆ ಪ್ರಾರಂಭಿಸುತ್ತದೆ.
+tax_chrome_help	ಆಫ್ ಆಗಿದ್ದಾಗ, ಆರ್ಡರ್ ಡೆಸ್ಕ್ GST/ತೆರಿಗೆ ಅಂದಾಜು ಸಾಲುಗಳು ಮತ್ತು ಬೆಲೆಯಲ್ಲಿ-GST ಪ್ಲೇಸ್‌ಹೋಲ್ಡರ್‌ಗಳನ್ನು ಮರೆಮಾಡುತ್ತದೆ. ತೆರಿಗೆ ದರಗಳು ಮತ್ತು ದೇಶ ಮತ್ತು ತೆರಿಗೆ ಸೆಟ್ಟಿಂಗ್‌ಗಳು ಉಳಿಯುತ್ತವೆ — ಲೇಬಲ್‌ಗಳನ್ನು ಯಾವಾಗ ಬೇಕಾದರೂ ಮತ್ತೆ ಆನ್ ಮಾಡಿ. ಕೆಲವು ಅಂಗಡಿ ಟೆಂಪ್ಲೇಟ್‌ಗಳು ಇದನ್ನು ಆಫ್ ಮಾಡಿ ಆರಂಭವಾಗುತ್ತವೆ.
 tax_chrome_on	ತೋರಿಸಿ
 tax_chrome_off	ಮರೆಮಾಡಿ
 tax_chrome_saved_on	ಟಿಲ್‌ನಲ್ಲಿ ತೆರಿಗೆ ಲೇಬಲ್‌ಗಳು
 tax_chrome_saved_off	ಟಿಲ್‌ನಲ್ಲಿ ತೆರಿಗೆ ಲೇಬಲ್‌ಗಳನ್ನು ಮರೆಮಾಡಲಾಗಿದೆ
 tax_invoice_till	ಟಿಲ್‌ನಲ್ಲಿ ತೆರಿಗೆ ಇನ್‌ವಾಯ್ಸ್
-tax_invoice_help	ಆಫ್ ಆಗಿದ್ದಾಗ ಬಿಲ್‌ಗಳು ಕ್ಯಾಶ್ ಮೆಮೊ ಮಾತ್ರ, ಆರ್ಡರ್ ಡೆಸ್ಕ್‌ನಲ್ಲಿ ತೆರಿಗೆ ಇನ್‌ವಾಯ್ಸ್ / ಕ್ಯಾಶ್ ಮೆಮೊ ಚಿಪ್‌ಗಳು ಮರೆಯಾಗುತ್ತವೆ. ರಾಜಧಾನಿ ಆ್ಯಪ್ ಟೆಂಪ್ಲೇಟ್ ಇದನ್ನು ಆಫ್‌ನೊಂದಿಗೆ ಪ್ರಾರಂಭಿಸುತ್ತದೆ — ತೆರಿಗೆ ಇನ್‌ವಾಯ್ಸ್ ಮತ್ತೆ ಆಯ್ಕೆ ಮಾಡಲು ಯಾವಾಗ ಬೇಕಾದರೂ ತೋರಿಸು ಆನ್ ಮಾಡಿ.
+tax_invoice_help	ಆಫ್ ಆಗಿದ್ದಾಗ, ಬಿಲ್‌ಗಳು ಕೇವಲ ನಗದು ಮೆಮೊ ಆಗಿರುತ್ತವೆ ಮತ್ತು ಆರ್ಡರ್ ಡೆಸ್ಕ್‌ನಲ್ಲಿ ತೆರಿಗೆ ಇನ್‌ವಾಯ್ಸ್ / ನಗದು ಮೆಮೊ ಚಿಪ್‌ಗಳು ಮರೆಯಾಗಿರುತ್ತವೆ. ಕೆಲವು ಅಂಗಡಿ ಟೆಂಪ್ಲೇಟ್‌ಗಳು ಇದನ್ನು ಆಫ್ ಮಾಡಿ ಆರಂಭವಾಗುತ್ತವೆ — ತೆರಿಗೆ ಇನ್‌ವಾಯ್ಸ್ ಮತ್ತೆ ಆಯ್ಕೆ ಮಾಡಲು ತೋರಿಸು ಯಾವಾಗ ಬೇಕಾದರೂ ಆನ್ ಮಾಡಿ.
 tax_invoice_on	ತೋರಿಸಿ
 tax_invoice_off	ಮರೆಮಾಡಿ
 tax_invoice_saved_on	ಟಿಲ್‌ನಲ್ಲಿ ತೆರಿಗೆ ಇನ್‌ವಾಯ್ಸ್
 tax_invoice_saved_off	ತೆರಿಗೆ ಇನ್‌ವಾಯ್ಸ್ ಮರೆಮಾಡಲಾಗಿದೆ — ಕ್ಯಾಶ್ ಮೆಮೊ ಮಾತ್ರ
 pay_methods	ಪಾವತಿ ವಿಧಾನಗಳು
-pay_methods_help	ಪಾವತಿ ತೆಗೆದುಕೊಳ್ಳಿ ಯಲ್ಲಿ ಯಾವ ಚಿಪ್‌ಗಳು ಕಾಣಿಸಬೇಕು. ನಗದು ಯಾವಾಗಲೂ ಇರುತ್ತದೆ. ರಾಜಧಾನಿ ಆ್ಯಪ್ ಟೆಂಪ್ಲೇಟ್ ನಗದು ಮಾತ್ರದೊಂದಿಗೆ ಪ್ರಾರಂಭಿಸುತ್ತದೆ — UPI / ಕಾರ್ಡ್ / ಸಾಲ / ವಿಭಜನೆ ಇಲ್ಲಿ ಮತ್ತೆ ಆನ್ ಮಾಡಿ.
+pay_methods_help	ಪಾವತಿ ಸ್ವೀಕರಿಸಿ ಯಲ್ಲಿ ಯಾವ ಚಿಪ್‌ಗಳು ಕಾಣುತ್ತವೆ. ನಗದು ಯಾವಾಗಲೂ ಇರುತ್ತದೆ. ಕೆಲವು ಅಂಗಡಿ ಟೆಂಪ್ಲೇಟ್‌ಗಳು ಕೇವಲ ನಗದಿನಿಂದ ಆರಂಭವಾಗುತ್ತವೆ — UPI / ಕಾರ್ಡ್ / ಸಾಲ / ಹಂಚಿಕೆ ಇಲ್ಲಿ ಮತ್ತೆ ಆನ್ ಮಾಡಿ.
 create_backup	ಬ್ಯಾಕಪ್ ರಚಿಸಿ
 credit_limit_heading	ಸಾಲ ಮಿತಿ (ಆಯ್ಕೆಮಾಡಿದ / ಹೆಸರಿನ ಪಾರ್ಟಿ)
 day_close_summary	ದಿನ ಮುಗಿಸುವ ಸಾರಾಂಶ
@@ -793,10 +793,10 @@ printers_looking	ಈ ಸಾಧನ ಮತ್ತು Wi‑Fiನಲ್ಲಿ ಮು�
 saving_printer	ಮುದ್ರಕ ಸೇರಿಸಲಾಗುತ್ತಿದೆ…
 cancelled	ರದ್ದು
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	ತೆಗೆದುಹಾಕಲಾಗುತ್ತಿದೆ…
+removed	ತೆಗೆದುಹಾಕಲಾಗಿದೆ
+updating_order	ನವೀಕರಿಸಲಾಗುತ್ತಿದೆ…
+order_updated	ಆರ್ಡರ್ ನವೀಕರಿಸಲಾಗಿದೆ
 printers_tap_find	ಈ ಸಾಧನ ಬಳಸಬಹುದಾದ ಮುದ್ರಕಗಳನ್ನು ಪಟ್ಟಿ ಮಾಡಲು ಹುಡುಕಿ ಅನ್ನು ಟ್ಯಾಪ್ ಮಾಡಿ.
 printers_none_found	ಮುದ್ರಕಗಳು ಕಂಡುಬಂದಿಲ್ಲ — ಸಿಸ್ಟಂ ಮುದ್ರಕದ ಹೆಸರು ಅಥವಾ ನೆಟ್‌ವರ್ಕ್ ವಿಳಾಸ ಟೈಪ್ ಮಾಡಿ (ಉದಾ. 192.168.1.50).
 printer_from_find	{name} ಸೇರಿಸಲಾಗಿದೆ
@@ -1337,7 +1337,6 @@ kot_field_table	ಮೇಜು
 kot_field_shop	ಅಂಗಡಿ ಹೆಸರು
 kot_field_waiter	ಸಿಬ್ಬಂದಿ
 kot_field_station	ಸ್ಟೇಷನ್
-app_template_blurb_extra	ಜೊತೆಗೆ: ಮಾಲೀಕ ಜಹೀರ್, ನಿರ್ವಾಹಕ ಆಸಿಫ್, ವೇಟರ್ ನವಾಜ್; FOH ಸೈಡ್‌ಬಾರ್; 4 ಗಂಟೆಗಳ ನಂತರ ಇತಿಹಾಸ; ಇಂದಿನ ಪಟ್ಟಿ ಆಫ್; ಚಿಕ್ಕ KOT.
 dishes_n	{n} ಖಾದ್ಯಗಳು
 recipe_ph	ಪಾಕವಿಧಾನ (ಐಚ್ಛಿಕ) — ಒಂದು ಪ್ಲೇಟ್‌ಗೆ: Rice=0.2, Paneer=0.15
 reorder_ph	ಇಷ್ಟಾದಾಗ ಇನ್ನಷ್ಟು ಖರೀದಿಸಿ
@@ -1364,3 +1363,7 @@ recent_changes	ಇತ್ತೀಚಿನ ಬದಲಾವಣೆಗಳು
 lane_declared_label	ತೆರಿಗೆ ಇನ್‌ವಾಯ್ಸ್
 lane_owner_label	ಕ್ಯಾಶ್ ಮೆಮೊ
 money_lane_bill	ಬಿಲ್: {lane}
+app_template_download_progress	ಡೌನ್‌ಲೋಡ್ ಆಗುತ್ತಿದೆ… {p}% ({d} / {t})
+app_template_download_paused	ಮುಂದುವರಿಸಲು ಮತ್ತೆ ಆಮದು ಮಾಡಿ — ಮುಗಿದ ಫೈಲ್‌ಗಳು ಉಳಿಯುತ್ತವೆ
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

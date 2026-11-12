@@ -359,6 +359,7 @@ impl App {
         self.sync_chrome(cx);
         end_role_open_busy();
         self.paint_role_open_busy_chrome(cx);
+        self.kick_public_catalogue_fetch(cx);
         self.maybe_smoke_auto_unlock(cx);
     }
 
@@ -387,6 +388,7 @@ impl App {
         self.sync_chrome(cx);
         end_role_open_busy();
         self.paint_role_open_busy_chrome(cx);
+        self.kick_public_catalogue_fetch(cx);
         self.maybe_smoke_auto_unlock(cx);
     }
 
@@ -420,7 +422,9 @@ impl App {
         st.catalogue_private_title.clear();
         st.catalogue_pending_defaults.clear();
         st.catalogue_selected_public_id = None;
-        st.device_setup_sections_open = vec!["public_templates".into()];
+        // The offer lives inside "This device" — keep it open, or the owner
+        // lands on a collapsed card with the templates hidden.
+        st.device_setup_sections_open = vec!["role".into(), "public_templates".into()];
         st.pin_buffer.clear();
         st.nav_back.clear();
         st.nav_forward.clear();
@@ -485,6 +489,12 @@ impl App {
             menu_import_running().lock().unwrap().as_ref(),
             Some(MenuImportKind::AppTemplate { .. } | MenuImportKind::ShelfFromDir { .. })
         ) || catalogue_fetch_busy().load(std::sync::atomic::Ordering::SeqCst);
+        // Locks app_state (app_t) — must run before the guard below.
+        let download_text = if catalogue_fetch_busy().load(std::sync::atomic::Ordering::SeqCst) {
+            catalogue_download_progress_text()
+        } else {
+            None
+        };
         let (
             heading,
             blurb,
@@ -498,21 +508,27 @@ impl App {
             has_private,
         ) = {
             let st = app_state().lock().unwrap();
+            let downloading = catalogue_fetch_busy().load(std::sync::atomic::Ordering::SeqCst);
             let progress = if app_busy {
                 let (done, total) = *menu_import_progress().lock().unwrap();
                 if total > 0 && menu_import_busy().load(std::sync::atomic::Ordering::SeqCst) {
                     st.t("template_import_progress")
                         .replace("{d}", &done.to_string())
                         .replace("{t}", &total.to_string())
-                } else if catalogue_fetch_busy().load(std::sync::atomic::Ordering::SeqCst) {
-                    st.t("app_template_downloading")
+                } else if downloading {
+                    download_text
+                        .clone()
+                        .unwrap_or_else(|| st.t("app_template_downloading"))
                 } else {
                     st.t("app_template_importing").replace("{title}", "…")
                 }
             } else {
                 String::new()
             };
-            let blurb = if app_busy {
+            // Stable line above the live progress label.
+            let blurb = if app_busy && downloading {
+                st.t("app_template_downloading")
+            } else if app_busy {
                 progress.clone()
             } else {
                 st.t("app_template_blurb")
@@ -579,8 +595,8 @@ impl App {
             .set_visible(cx, app_busy);
         if app_busy {
             self.ui
-                .button(cx, ids!(app_template_status))
-                .set_text(cx, &progress);
+                .widget(cx, ids!(app_template_status))
+                .set_text(cx, &plain_display_text(&progress));
             self.ui
                 .button(cx, ids!(app_template_cancel))
                 .set_text(cx, &cancel);

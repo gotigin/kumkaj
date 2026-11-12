@@ -182,7 +182,7 @@ snack_secs_save	บันทึกเวลาแจ้งเตือน
 snack_secs_saved	บันทึกเวลาแจ้งเตือนแล้ว — {n} วินาที
 settings_sec_backup	สำรองข้อมูลและกู้คืน
 settings_sec_diag	การวินิจฉัย
-settings_sec_privacy	Privacy
+settings_sec_privacy	ความเป็นส่วนตัว
 diag_privacy_help	บันทึกจะอยู่บนอุปกรณ์นี้เท่านั้น ข้อมูลลับ (รหัสผ่าน, รหัสผ่าน) จะไม่ถูกเก็บไว้ การแบ่งปันแพ็กเกจออกจากอุปกรณ์ต้องการการอนุมัติของคุณทุกครั้ง — ไม่เคยขายหรือมอบให้บุคคลที่สาม
 diag_level	ระดับรายละเอียด
 diag_level_error	ข้อผิดพลาด
@@ -339,21 +339,21 @@ server_remove_pin_ph	Owner PIN เพื่อลบเซิร์ฟเวอ�
 only_owner_remove_server	เฉพาะ Owner เท่านั้นที่ลบเซิร์ฟเวอร์ได้
 owner_pin_remove_server	ต้องใช้ Owner PIN เพื่อลบเซิร์ฟเวอร์นี้
 device_setup_help	เซิร์ฟเวอร์เก็บบัญชีไว้ที่นี่ ไคลเอนต์จับคู่กับเซิร์ฟเวอร์
-app_template_heading	แม่แบบแอป Rajdhani
-app_template_blurb	โหลดเมนู Rajdhani; เจ้าของ Zahir (zahir), ผู้ดูแลระบบ Asif (asif, รหัสผ่าน 1111), พนักงานเสิร์ฟ Nawaz (nawaz, รหัสผ่าน 0000); แถบด้านข้าง FOH; ประวัติถูกล้างหลังจาก 4 ชั่วโมง (และปุ่ม ล้างตอนนี้ ในส่วนสำรองข้อมูล); แถบวันนี้ถูกปิด; KOT แบบกะทัดรัด + ขอบมาตรฐานสำหรับถาดแคบ; เพื่อนร่วมแถบด้านข้างสามารถเปิดกลับได้ในการตั้งค่า
-app_template_apply	แม่แบบแอป Rajdhani
+app_template_heading	เทมเพลตร้าน
+app_template_blurb	นำเข้าเมนูเริ่มต้นสาธารณะ หรือใส่รหัสส่วนตัว 12 หลักจากผู้ติดต่อ Khaynjo ของคุณ
+app_template_apply	นำเข้าเทมเพลต
 app_template_skip	ข้ามไปก่อน
-app_template_status	พนักงานเสิร์ฟพร้อมแล้ว — ใช้แม่แบบแอป Rajdhani หรือข้าม
+app_template_status	เซิร์ฟเวอร์พร้อมแล้ว — นำเข้าเทมเพลต หรือข้าม
 app_template_importing	กำลังใช้ {title}…
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	กำลังดาวน์โหลดเทมเพลต…
+app_template_public_hdr	เทมเพลตสาธารณะ
+app_template_private_hdr	เทมเพลตส่วนตัว
+app_template_public_hint	เปิดส่วนนี้เพื่อโหลดรายการสาธารณะ (ใช้อินเทอร์เน็ตครั้งเดียว)
+app_template_code_not_found	ไม่พบรหัส
+app_template_need_internet	ต้องใช้อินเทอร์เน็ตเพื่อดาวน์โหลดเทมเพลต
+app_template_import_selected	นำเข้ารายการที่เลือก
+app_template_check_code	ตรวจรหัส
+app_template_import	นำเข้า
 currency	สกุลเงิน
 backup	สำรองข้อมูล
 use	ใช้
@@ -474,19 +474,19 @@ copy_report	คัดลอกรายงาน
 counted_cash_ph	เงินสดที่นับในลิ้นชัก
 country_tax	ประเทศและภาษี
 tax_chrome	ป้ายภาษีที่แคชเชียร์
-tax_chrome_help	เมื่อปิด แคชเชียร์จะซ่อนบรรทัดประมาณการ GST/ภาษี และช่องว่างสำหรับราคาที่มีภาษีรวมอยู่ การตั้งค่าอัตราภาษีและประเทศและภาษียังคงอยู่ — เปิดป้ายภาษีกลับได้ทุกเมื่อ แม่แบบแอป Rajdhani เริ่มต้นด้วยการปิดนี้
+tax_chrome_help	เมื่อปิด โต๊ะสั่งอาหารจะซ่อนบรรทัดประมาณ GST/ภาษี และตัวยึด GST-ในราคา อัตราภาษีและการตั้งค่าประเทศและภาษียังคงอยู่ — เปิดป้ายกลับได้ทุกเมื่อ เทมเพลตร้านบางแบบเริ่มต้นโดยปิดตัวเลือกนี้ไว้
 tax_chrome_on	แสดง
 tax_chrome_off	ซ่อน
 tax_chrome_saved_on	ป้ายภาษีที่แคชเชียร์
 tax_chrome_saved_off	ซ่อนป้ายภาษีที่แคชเชียร์
 tax_invoice_till	ใบแจ้งหนี้ภาษีที่แคชเชียร์
-tax_invoice_help	เมื่อปิด บิลจะเป็นเพียงใบเสร็จเงินสด และชิปใบแจ้งหนี้ภาษี / ใบเสร็จเงินสดจะถูกซ่อนบนโต๊ะสั่งซื้อ แม่แบบแอป Rajdhani เริ่มต้นด้วยการปิดนี้ — เปิดปุ่มแสดงกลับได้ทุกเมื่อเพื่อเลือกใบแจ้งหนี้ภาษีอีกครั้ง
+tax_invoice_help	เมื่อปิด บิลจะเป็นบันทึกเงินสดเท่านั้น และปุ่มใบกำกับภาษี / บันทึกเงินสดบนโต๊ะสั่งอาหารจะถูกซ่อน เทมเพลตร้านบางแบบเริ่มต้นโดยปิดตัวเลือกนี้ไว้ — เปิด แสดง ได้ทุกเมื่อเพื่อเลือกใบกำกับภาษีอีกครั้ง
 tax_invoice_on	แสดง
 tax_invoice_off	ซ่อน
 tax_invoice_saved_on	ใบแจ้งหนี้ภาษีที่แคชเชียร์
 tax_invoice_saved_off	ซ่อนใบแจ้งหนี้ภาษี — เฉพาะใบเสร็จเงินสด
 pay_methods	วิธีการชำระเงิน
-pay_methods_help	ชิปใดปรากฏในการรับชำระเงิน เงินสดจะคงอยู่เสมอ แม่แบบแอป Rajdhani เริ่มต้นด้วยเฉพาะเงินสด — เปิด UPI / บัตรเครดิต / เครดิต / แบ่งกลับได้ที่นี่
+pay_methods_help	ปุ่มใดที่แสดงใน รับชำระเงิน เงินสดอยู่เสมอ เทมเพลตร้านบางแบบเริ่มต้นด้วยเงินสดอย่างเดียว — เปิด UPI / บัตร / เงินเชื่อ / แบ่งจ่าย กลับได้ที่นี่
 create_backup	สร้างข้อมูลสำรอง
 credit_limit_heading	วงเงินเครดิต (คู่ค้าที่เลือก / ระบุชื่อ)
 day_close_summary	สรุปปิดวัน
@@ -793,10 +793,10 @@ printers_looking	กำลังค้นหาเครื่องพิมพ
 saving_printer	กำลังเพิ่มเครื่องพิมพ์…
 cancelled	ยกเลิก
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	กำลังนำออก…
+removed	นำออกแล้ว
+updating_order	กำลังอัปเดต…
+order_updated	อัปเดตออร์เดอร์แล้ว
 printers_tap_find	แตะค้นหาเพื่อแสดงเครื่องพิมพ์ที่อุปกรณ์นี้ใช้ได้
 printers_none_found	ไม่พบเครื่องพิมพ์ — พิมพ์ชื่อระบบหรือที่อยู่เครือข่าย (เช่น 192.168.1.50)
 printer_from_find	เพิ่ม {name} แล้ว
@@ -1337,7 +1337,6 @@ kot_field_table	โต๊ะ
 kot_field_shop	ชื่อร้าน
 kot_field_waiter	พนักงาน
 kot_field_station	สถานี
-app_template_blurb_extra	นอกจากนี้: เจ้าของ Zahir, ผู้ดูแลระบบ Asif, พนักงานเสิร์ฟ Nawaz; แถบด้านข้าง FOH; ประวัติหลังจาก 4 ชั่วโมง; แถบวันนี้ปิด; KOT แบบกะทัดรัด
 dishes_n	{n} รายการ
 recipe_ph	สูตร (ไม่บังคับ) — หนึ่งที่ใช้: Rice=0.2, Paneer=0.15
 reorder_ph	สั่งเพิ่มเมื่อเหลือ
@@ -1364,3 +1363,7 @@ recent_changes	การเปลี่ยนแปลงล่าสุด
 lane_declared_label	ใบกำกับภาษี
 lane_owner_label	เมโมเงินสด
 money_lane_bill	ใบแจ้งหนี้: {lane}
+app_template_download_progress	กำลังดาวน์โหลด… {p}% ({d} / {t})
+app_template_download_paused	นำเข้าอีกครั้งเพื่อทำต่อ — ไฟล์ที่เสร็จแล้วจะถูกเก็บไว้
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

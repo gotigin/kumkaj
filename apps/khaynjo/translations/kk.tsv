@@ -182,7 +182,7 @@ snack_secs_save	Ескерту уақытын сақтау
 snack_secs_saved	Ескерту уақыты сақталды — {n} секунд
 settings_sec_backup	Сақтық көшірме және қалпына келтіру
 settings_sec_diag	Диагностика
-settings_sec_privacy	Privacy
+settings_sec_privacy	Құпиялық
 diag_privacy_help	Журналдар осы құрылғыда қалады. Құпиялар (PIN, құпиясөздер) ешқашан сақталмайды. Құрылғыдан тыс пакет бөлісу әр жолы сіздің анық рұқсатыңызды керек етеді — ешқашан сатылмайды және үшінші жаққа берілмейді.
 diag_level	Егжей-тегжей деңгейі
 diag_level_error	Қателер
@@ -339,21 +339,21 @@ server_remove_pin_ph	Серверді алып тастауға иенің PIN-�
 only_owner_remove_server	Серверді тек Иесі алып тастай алады
 owner_pin_remove_server	Бұл серверді алып тастауға иенің PIN-і керек
 device_setup_help	Сервер кітаптарды осында ұстайды. Клиент Серверге жұптасады.
-app_template_heading	Rajdhani қолданба үлгісі
-app_template_blurb	Rajdhani мәзірін жүктейді; Иесі Zahir (zahir), Әкімші Asif (asif, PIN 1111), Даяшы Nawaz (nawaz, PIN 0000); FOH бүйір тақтасы; тарих 4 сағаттан кейін тазарады (және Сақтық көшірмеде Қазір тазалау); Бүгін жолағы өшірулі; ықшам KOT + тар науаға стандартты жиек. Бүйір тақта серіктерін Параметрлерде қайта қосуға болады.
-app_template_apply	Rajdhani қолданба үлгісі
+app_template_heading	Дүкен үлгілері
+app_template_blurb	Жалпыға ортақ бастапқы мәзірді импорттаңыз немесе Khaynjo байланысыңыздан алған 12 таңбалы жеке кодты енгізіңіз.
+app_template_apply	Үлгіні импорттау
 app_template_skip	Әзірге өткізу
-app_template_status	Сервер дайын — Rajdhani үлгісін қолданыңыз немесе өткізіңіз
+app_template_status	Сервер дайын — үлгі импорттаңыз немесе өткізіп жіберіңіз
 app_template_importing	{title} қолданылуда…
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	Үлгі жүктелуде…
+app_template_public_hdr	Жалпы үлгілер
+app_template_private_hdr	Жеке үлгі
+app_template_public_hint	Жалпы тізімді жүктеу үшін осы бөлімді ашыңыз (бір рет интернет қажет).
+app_template_code_not_found	Код табылмады
+app_template_need_internet	Үлгілерді жүктеу үшін интернет қажет
+app_template_import_selected	Таңдалғанды импорттау
+app_template_check_code	Кодты тексеру
+app_template_import	Импорттау
 currency	Валюта
 backup	Сақтық көшірме
 use	Қолдану
@@ -474,19 +474,19 @@ copy_report	Есепті көшіру
 counted_cash_ph	Жәшіктегі санаған қолма-қол
 country_tax	Ел және салық
 tax_chrome	Кассадағы салық белгілері
-tax_chrome_help	Өшірулі кезде тапсырыс үстелі GST/салық бағалау жолдары мен бағадағы салық орындарын жасырады. Салық мөлшерлемелері мен Ел және салық параметрлері қалады — белгілерді кез келген уақытта қайта қосуға болады. Rajdhani үлгісі мұны өшірулі бастайды.
+tax_chrome_help	Өшірілгенде тапсырыс үстелі GST/салық болжамы жолдарын және «бағадағы GST» толтырғыштарын жасырады. Салық мөлшерлемелері мен Ел және салық баптаулары сақталады — белгілерді кез келген уақытта қайта қосыңыз. Кейбір дүкен үлгілері мұны өшірулі күйде бастайды.
 tax_chrome_on	Көрсету
 tax_chrome_off	Жасыру
 tax_chrome_saved_on	Салық белгілері кассада
 tax_chrome_saved_off	Салық белгілері кассада жасырылған
 tax_invoice_till	Кассадағы салық шот-фактурасы
-tax_invoice_help	Өшірулі кезде шоттар тек Кассалық жазба, ал Салық шот-фактурасы / Кассалық жазба чиптері тапсырыс үстелінде жасырылған. Rajdhani үлгісі мұны өшірулі бастайды — Салық шот-фактурасын қайта таңдау үшін Көрсетуді кез келген уақытта қосыңыз.
+tax_invoice_help	Өшірілгенде шоттар тек қолма-қол түбіртек болады, ал тапсырыс үстеліндегі Салық шот-фактурасы / Қолма-қол түбіртек түймелері жасырылады. Кейбір дүкен үлгілері мұны өшірулі күйде бастайды — Салық шот-фактурасын қайта таңдау үшін Көрсетуді кез келген уақытта қосыңыз.
 tax_invoice_on	Көрсету
 tax_invoice_off	Жасыру
 tax_invoice_saved_on	Салық шот-фактурасы кассада
 tax_invoice_saved_off	Салық шот-фактурасы жасырылған — тек Кассалық жазба
 pay_methods	Төлем тәсілдері
-pay_methods_help	Төлем алуда қай чиптер көрінеді. Қолма-қол әрқашан қалады. Rajdhani үлгісі тек Қолма-қолмен басталады — мұнда UPI / Карта / Несие / Бөлуді қайта қосыңыз.
+pay_methods_help	Төлем қабылдау бетінде қай түймелер көрінеді. Қолма-қол әрқашан қалады. Кейбір дүкен үлгілері тек Қолма-қолмен басталады — UPI / Карта / Несие / Бөлуді осында қайта қосыңыз.
 create_backup	Сақтық көшірме жасау
 credit_limit_heading	Несие шегі (таңдалған / аталған контрагент)
 day_close_summary	Күнді жабу қорытындысы
@@ -793,10 +793,10 @@ printers_looking	Іздеуде…
 saving_printer	Принтер қосылуда…
 cancelled	Бас тартылды
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Жойылуда…
+removed	Жойылды
+updating_order	Жаңартылуда…
+order_updated	Тапсырыс жаңартылды
 printers_tap_find	Осы құрылғы қолдана алатын принтерлер тізімі үшін Іздеуді түртіңіз.
 printers_none_found	Ештеңе табылмады — жүйелік принтер атын немесе IP жазыңыз (мыс. 192.168.1.50).
 printer_from_find	{name} қосылды
@@ -1337,7 +1337,6 @@ kot_field_table	Үстел
 kot_field_shop	Дүкен аты
 kot_field_waiter	Қызметкер
 kot_field_station	Станция
-app_template_blurb_extra	Сонымен: Иесі Zahir, Әкімші Asif, Даяшы Nawaz; FOH бүйір жолағы; 4 сағаттан кейінгі тарих; Бүгін жолағы өшірулі; ықшам KOT.
 dishes_n	{n} тағам
 recipe_ph	Рецепт (міндетті емес) — бір порция қолданады: Күріш=0.2, Панир=0.15
 reorder_ph	Тағы сатып алу
@@ -1364,3 +1363,7 @@ recent_changes	Соңғы өзгерістер
 lane_declared_label	Салық шот-фактурасы
 lane_owner_label	Кассалық жазба
 money_lane_bill	Шот: {lane}
+app_template_download_progress	Жүктелуде… {p}% ({d} / {t})
+app_template_download_paused	Жалғастыру үшін қайта импорттаңыз — дайын файлдар сақталады
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

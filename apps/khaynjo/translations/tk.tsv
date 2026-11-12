@@ -182,7 +182,7 @@ snack_secs_save	Duýduryş wagtyny tygşytlaň
 snack_secs_saved	Duýduryş wagty tygşytlandy - {n} sekunt
 settings_sec_backup	Uptiýaçlyk we dikeltmek
 settings_sec_diag	Diagnostika
-settings_sec_privacy	Privacy
+settings_sec_privacy	Gizlinlik
 diag_privacy_help	Bu enjamda surnallar galýar. Gizlinler (PIN, parollar) hiç wagt saklanmaýar. Enjamdan bukjany paýlaşmak her gezek aç-açan tassyklamagyňyzy talap edýär - hiç haçan satylmaýar ýa-da üçünji taraplara berilmeýär.
 diag_level	Jikme-jiklik derejesi
 diag_level_error	Rorsalňyşlyklar
@@ -339,21 +339,21 @@ server_remove_pin_ph	Serweri aýyrmak üçin eýesi PIN
 only_owner_remove_server	Serwerden diňe eýesi aýryp biler
 owner_pin_remove_server	Bu serweri aýyrmak üçin eýesi PIN talap edilýär
 device_setup_help	Serwer bu ýerde ýazgy ýazgylaryny saklaýar. Müşderi Serwere jübüt.
-app_template_heading	Rajdhani Programma şablony
-app_template_blurb	Rajdhani menýusyny ýükleýär; Eýesi Zahir (zahir), Admin Asif (asif, PIN 1111), ofisiant Nawaz (nawaz, PIN 0000); FOH gapdal paneli; taryh 4 sagatdan soň arassalanýar (we ätiýaçlyk nusgasynda indi arassalaň); Bu gün çykyň; ykjam KOT + Dar gaplar üçin standart çäkler. Gapdal deň-duşlary Sazlamalarda yzyna açylyp bilner.
-app_template_apply	Rajdhani Programma şablony
+app_template_heading	Dükan şablonlary
+app_template_blurb	Umumy başlangyç menýusyny import ediň ýa-da Khaynjo aragatnaşygyňyzdan alan 12 sanly şahsy koduňyzy giriziň.
+app_template_apply	Şablony import et
 app_template_skip	Häzirlikçe geçiň
-app_template_status	Serwer taýýar - Rajdhani Programma şablonyny ulanyň ýa-da geçiň
+app_template_status	Serwer taýýar — şablon import ediň ýa-da geçiň
 app_template_importing	{title}…
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	Şablon ýüklenýär…
+app_template_public_hdr	Umumy şablonlar
+app_template_private_hdr	Şahsy şablon
+app_template_public_hint	Umumy sanawy ýüklemek üçin bu bölümi açyň (bir gezek internet gerek).
+app_template_code_not_found	Kod tapylmady
+app_template_need_internet	Şablonlary ýüklemek üçin internet gerek
+app_template_import_selected	Saýlananyny import et
+app_template_check_code	Kody barla
+app_template_import	Import et
 currency	Walýuta
 backup	Uptiýaçlyk
 use	Ulany
@@ -474,19 +474,19 @@ copy_report	Hasabaty göçüriň
 counted_cash_ph	Çyzgyda nagt hasaplandy
 country_tax	& Urt we salgyt
 tax_chrome	Şu wagta çenli salgyt bellikleri
-tax_chrome_help	Öçürilende sargyt stoly GST / salgyt çaklama setirlerini we bahadaky GST ýer eýelerini gizleýär. Salgyt stawkalary we ýurt we salgyt sazlamalary galýar - bellikleri islän wagtyňyz yzyna öwüriň. Rajdhani Programma şablony bu öçürmek bilen başlaýar.
+tax_chrome_help	Öçürilende sargyt stoly GST/salgyt çaklama setirlerini we «bahadaky GST» orun tutujylaryny gizleýär. Salgyt derejeleri we Ýurt we salgyt sazlamalary galýar — belgileri islän wagtyňyz täzeden açyň. Käbir dükan şablonlary muny öçürilen ýagdaýda başlaýar.
 tax_chrome_on	Görkez
 tax_chrome_off	Gizle
 tax_chrome_saved_on	Şu wagta çenli salgyt bellikleri
 tax_chrome_saved_off	Salgyt bellikleri şu wagta çenli gizlenýär
 tax_invoice_till	Şu wagta çenli salgyt hasap-fakturasy
-tax_invoice_help	Öçürilen ýagdaýynda hasaplaşyklar diňe kassa ýatlamasydyr we salgyt fakturasy / kassa ýatlamalary çipleri sargyt stolunda gizlenýär. Rajdhani Programma şablony bu öçürmek bilen başlaýar - Salgyt hasap-fakturasyny saýlamak üçin islän wagtyňyz yzyna görkeziň.
+tax_invoice_help	Öçürilende hasaplar diňe nagt kwitansiýa bolýar we sargyt stolundaky Salgyt hasap-fakturasy / Nagt kwitansiýa düwmeleri gizlenýär. Käbir dükan şablonlary muny öçürilen ýagdaýda başlaýar — Salgyt hasap-fakturasyny täzeden saýlamak üçin Görkez-i islän wagtyňyz açyň.
 tax_invoice_on	Görkez
 tax_invoice_off	Gizle
 tax_invoice_saved_on	Şu wagta çenli salgyt hasap-fakturasy
 tax_invoice_saved_off	Salgyt hasap-fakturasy gizlenýär - Diňe nagt ýatlama
 pay_methods	Töleg usullary
-pay_methods_help	Töleg alyň haýsy çipler peýda bolýar. Nagt elmydama galýar. Rajdhani Programma şablony diňe nagt pul bilen başlaýar - UPI / Kart / Kredit / Bu ýere yzyna bölüň.
+pay_methods_help	Töleg kabul et-de haýsy düwmeler görünýär. Nagt hemişe galýar. Käbir dükan şablonlary diňe Nagt bilen başlaýar — UPI / Kart / Karz / Bölmek-i şu ýerde täzeden açyň.
 create_backup	Uptiýaçlyk dörediň
 credit_limit_heading	Karz çäkleri (saýlanan müşderi ýa-da üpjün ediji)
 day_close_summary	Günüň gysgaça mazmuny
@@ -793,10 +793,10 @@ printers_looking	Seredýän…
 saving_printer	Printer goşmak…
 cancelled	Atyryldy
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Aýrylýar…
+removed	Aýryldy
+updating_order	Täzelenýär…
+order_updated	Sargyt täzelendi
 printers_tap_find	Bu enjamyň ulanyp boljak printerlerini sanawlamak üçin tapyň.
 printers_none_found	Hiç kim tapylmady - ulgam printeriniň adyny ýa-da IP ýazyň (mes. 192.168.1.50).
 printer_from_find	{name} goşuldy
@@ -1337,7 +1337,6 @@ kot_field_table	Nahar saçagy
 kot_field_shop	Dükanyň ady
 kot_field_waiter	Işgärler
 kot_field_station	Wokzal
-app_template_blurb_extra	Şeýle hem: eýesi Zahir, Admin Asif, ofisiant Nawaz; FOH gapdal paneli; 4 sagatdan soň taryh; Bu gün çykyň; ykjam KOT.
 dishes_n	{n} gap-gaçlar
 recipe_ph	Resept (islege görä) - bir bölegi ulanýar: Tüwi = 0,2, Paneer = 0.15
 reorder_ph	Has köp satyn alyň
@@ -1364,3 +1363,7 @@ recent_changes	Soňky üýtgeşmeler
 lane_declared_label	Salgyt-faktura
 lane_owner_label	Nagt ýatlama
 money_lane_bill	Hasap: {lane}
+app_template_download_progress	Ýüklenýär… {p}% ({d} / {t})
+app_template_download_paused	Dowam etmek üçin täzeden import ediň — tamamlanan faýllar saklanýar
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

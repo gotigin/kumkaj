@@ -3,6 +3,30 @@ impl App {
 fn paint_import_progress_chrome(&mut self, cx: &mut Cx) {
         let (done, total) = *menu_import_progress().lock().unwrap();
         let cancel_label = app_state().lock().unwrap().t("cancel");
+        if catalogue_fetch_busy().load(std::sync::atomic::Ordering::SeqCst)
+            && !menu_import_busy().load(std::sync::atomic::Ordering::SeqCst)
+            && app_state().lock().unwrap().template_confirm
+        {
+            let (progress, need_download) = {
+                let st = app_state().lock().unwrap();
+                let progress = catalogue_download_progress_text()
+                    .unwrap_or_else(|| st.t("template_download_shelf"));
+                let need_download = st.t("template_need_download");
+                (progress, need_download)
+            };
+            let work = books_work_status().lock().unwrap().clone();
+            self.show_work_status(cx, work.unwrap_or_else(|| progress.clone()));
+            self.ui.view(cx, ids!(template_confirm)).set_visible(cx, true);
+            self.ui.button(cx, ids!(template_import)).set_visible(cx, false);
+            self.ui.button(cx, ids!(template_yes)).set_text(cx, &progress);
+            self.ui.button(cx, ids!(template_no)).set_text(cx, &cancel_label);
+            self.ui.button(cx, ids!(template_no)).set_visible(cx, true);
+            self.ui
+                .label(cx, ids!(template_info))
+                .set_text(cx, &need_download);
+            self.paint_submit_busy_chrome(cx);
+            return;
+        }
         let progress = if total > 0 {
             app_state()
                 .lock()
@@ -69,8 +93,8 @@ fn paint_import_progress_chrome(&mut self, cx: &mut Cx) {
                     .view(cx, ids!(app_template_busy))
                     .set_visible(cx, true);
                 self.ui
-                    .button(cx, ids!(app_template_status))
-                    .set_text(cx, &progress);
+                    .widget(cx, ids!(app_template_status))
+                    .set_text(cx, &plain_display_text(&progress));
                 self.ui
                     .button(cx, ids!(app_template_cancel))
                     .set_text(cx, &cancel_label);
@@ -1138,11 +1162,19 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
             // Menu template: what it holds, what is still missing from this menu.
             {
                 let shelf = menu_images::shelf();
+                let remote_shelf = menu_images::install_expects_remote_catalogue();
+                let shelf_ready = !shelf.is_empty();
                 let have: std::collections::HashSet<String> =
                     st.products.iter().map(|p| p.name.trim().to_lowercase()).collect();
                 let missing = shelf.iter().filter(|d| !have.contains(&d.name.trim().to_lowercase())).count();
                 let folders = menu_images::shelf_folders(shelf).len();
-                let info = if shelf.is_empty() {
+                let catalogue_dl = !shelf_ready
+                    && remote_shelf
+                    && catalogue_fetch_busy().load(std::sync::atomic::Ordering::SeqCst);
+                let info = if !shelf_ready && remote_shelf {
+                    catalogue_download_progress_text()
+                        .unwrap_or_else(|| st.t("template_need_download"))
+                } else if shelf.is_empty() {
                     String::new()
                 } else if missing == 0 {
                     st.t("template_done")
@@ -1153,15 +1185,21 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
                 };
                 let shelf_busy = matches!(
                     menu_import_running().lock().unwrap().as_ref(),
-                    Some(MenuImportKind::Shelf)
+                    Some(MenuImportKind::Shelf) | Some(MenuImportKind::ShelfFromDir { .. })
                 );
-                let confirming = (st.template_confirm && missing > 0) || shelf_busy;
-                self.ui.view(cx, ids!(template_card)).set_visible(cx, !shelf.is_empty());
+                let confirming = (st.template_confirm && (missing > 0 || (!shelf_ready && remote_shelf)))
+                    || shelf_busy
+                    || catalogue_dl;
+                self.ui
+                    .view(cx, ids!(template_card))
+                    .set_visible(cx, shelf_ready || remote_shelf);
                 self.ui.label(cx, ids!(template_heading)).set_text(cx, &st.t("template_heading"));
                 self.ui.label(cx, ids!(template_info)).set_text(
                     cx,
                     &if shelf_busy {
                         st.t("template_importing")
+                    } else if confirming && !shelf_ready && remote_shelf {
+                        st.t("template_need_download")
                     } else if confirming {
                         st.t("template_confirm").replace("{d}", &missing.to_string())
                     } else {
@@ -1169,9 +1207,16 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
                     },
                 );
                 self.ui.button(cx, ids!(template_import)).set_text(cx, &st.t("template_import"));
-                self.ui
-                    .button(cx, ids!(template_import))
-                    .set_visible(cx, missing > 0 && !confirming);
+                if !shelf_ready && remote_shelf {
+                    self.ui
+                        .button(cx, ids!(template_import))
+                        .set_text(cx, &st.t("template_download_shelf"));
+                }
+                self.ui.button(cx, ids!(template_import)).set_visible(
+                    cx,
+                    !confirming
+                        && ((!shelf_ready && remote_shelf) || (shelf_ready && missing > 0)),
+                );
                 self.ui.view(cx, ids!(template_confirm)).set_visible(cx, confirming);
                 let yes_label = if shelf_busy {
                     let (done, total) = *menu_import_progress().lock().unwrap();
@@ -1182,6 +1227,9 @@ fn paint_submit_busy_chrome(&mut self, cx: &mut Cx) {
                     } else {
                         st.t("template_importing")
                     }
+                } else if catalogue_dl {
+                    catalogue_download_progress_text()
+                        .unwrap_or_else(|| st.t("template_download_shelf"))
                 } else {
                     st.t("template_yes")
                 };

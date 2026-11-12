@@ -182,7 +182,7 @@ snack_secs_save	ସୂଚନା ସମୟ ସେଭ୍ କରନ୍ତୁ
 snack_secs_saved	ସୂଚନା ସମୟ ସେଭ୍ ହେଲା — {n} ସେକେଣ୍ଡ
 settings_sec_backup	ବ୍ୟାକଅପ୍ ଓ ପୁନଃସ୍ଥାପନ
 settings_sec_diag	ଡାଇଗ୍ନୋଷ୍ଟିକ୍ସ
-settings_sec_privacy	Privacy
+settings_sec_privacy	ଗୋପନୀୟତା
 diag_privacy_help	ଲଗ୍ ଏହି ଡିଭାଇସରେ ହିଁ ରହେ। ଗୁପ୍ତ ତଥ୍ୟ (PIN, ପାସୱାର୍ଡ) କେବେ ସଞ୍ଚୟ ହୁଏ ନାହିଁ। ଡିଭାଇସ ବାହାରକୁ ପ୍ୟାକେଜ ପଠାଇବାକୁ ପ୍ରତିଥର ଆପଣଙ୍କ ସ୍ପଷ୍ଟ ଅନୁମୋଦନ ଦରକାର — କେବେ ବିକ୍ରି ହୁଏ ନାହିଁ କି ତୃତୀୟ ପକ୍ଷକୁ ଦିଆଯାଏ ନାହିଁ।
 diag_level	ବିବରଣୀ ସ୍ତର
 diag_level_error	ତ୍ରୁଟି
@@ -339,21 +339,21 @@ server_remove_pin_ph	ସର୍ଭର ହଟାଇବାକୁ Owner PIN
 only_owner_remove_server	କେବଳ Owner ସର୍ଭର ହଟାଇପାରିବେ
 owner_pin_remove_server	ସର୍ଭର ହଟାଇବାକୁ Owner PIN ଦରକାର
 device_setup_help	ସର୍ଭର ଖାତା ଏଠାରେ ରଖେ। କ୍ଲାଏଣ୍ଟ ଏକ ସର୍ଭର ସହ ଯୋଡ଼ି ହୁଏ।
-app_template_heading	ରାଜଧାନୀ ଆପ୍ ଟେମ୍ପଲେଟ୍
-app_template_blurb	ରାଜଧାନୀ ମେନୁ ଲୋଡ୍ କରେ; ମାଲିକ ଜହିର (zahir), ଆଡମିନ୍ ଆସିଫ୍ (asif, PIN 1111), ୱେଟର ନୱାଜ୍ (nawaz, PIN 0000); FOH ସାଇଡବାର୍; ଇତିହାସ 4 ଘଣ୍ଟା ପରେ ସଫା ହୁଏ (ଓ ବ୍ୟାକଅପ୍‌ରେ ଏବେ ସଫା କରନ୍ତୁ); ଆଜିର ପଟି ବନ୍ଦ; ସଂକୀର୍ଣ୍ଣ ଟ୍ରେ ପାଇଁ ଛୋଟ KOT + ସାଧାରଣ ମାର୍ଜିନ୍। ସାଇଡବାରର ବାକିଗୁଡ଼ିକ ସେଟିଂରେ ପୁଣି ଚାଲୁ କରିହେବ।
-app_template_apply	ରାଜଧାନୀ ଆପ୍ ଟେମ୍ପଲେଟ୍
+app_template_heading	ଦୋକାନ ଟେମ୍ପଲେଟ
+app_template_blurb	ଏକ ସାର୍ବଜନୀନ ଆରମ୍ଭିକ ମେନୁ ଆମଦାନି କରନ୍ତୁ, କିମ୍ବା ଆପଣଙ୍କ Khaynjo ଯୋଗାଯୋଗରୁ ମିଳିଥିବା 12 ଅଙ୍କର ବ୍ୟକ୍ତିଗତ କୋଡ୍ ଦିଅନ୍ତୁ।
+app_template_apply	ଟେମ୍ପଲେଟ ଆମଦାନି କରନ୍ତୁ
 app_template_skip	ଏବେ ଛାଡ଼ନ୍ତୁ
-app_template_status	ସର୍ଭର ପ୍ରସ୍ତୁତ — ରାଜଧାନୀ ଆପ୍ ଟେମ୍ପଲେଟ୍ ଲଗାନ୍ତୁ, କିମ୍ବା ଛାଡ଼ନ୍ତୁ
+app_template_status	ସର୍ଭର ପ୍ରସ୍ତୁତ — ଏକ ଟେମ୍ପଲେଟ ଆମଦାନି କରନ୍ତୁ, କିମ୍ବା ଛାଡ଼ନ୍ତୁ
 app_template_importing	{title} ଲଗାଯାଉଛି…
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	ଟେମ୍ପଲେଟ ଡାଉନଲୋଡ୍ ହେଉଛି…
+app_template_public_hdr	ସାର୍ବଜନୀନ ଟେମ୍ପଲେଟ
+app_template_private_hdr	ବ୍ୟକ୍ତିଗତ ଟେମ୍ପଲେଟ
+app_template_public_hint	ସାର୍ବଜନୀନ ତାଲିକା ଲୋଡ୍ କରିବାକୁ ଏହି ବିଭାଗ ଖୋଲନ୍ତୁ (ଥରେ ଇଣ୍ଟରନେଟ ଦରକାର)।
+app_template_code_not_found	କୋଡ୍ ମିଳିଲା ନାହିଁ
+app_template_need_internet	ଟେମ୍ପଲେଟ ଡାଉନଲୋଡ୍ ପାଇଁ ଇଣ୍ଟରନେଟ ଦରକାର
+app_template_import_selected	ବଛାଯାଇଥିବା ଆମଦାନି କରନ୍ତୁ
+app_template_check_code	କୋଡ୍ ଯାଞ୍ଚ କରନ୍ତୁ
+app_template_import	ଆମଦାନି କରନ୍ତୁ
 currency	ମୁଦ୍ରା
 backup	ବ୍ୟାକଅପ
 use	ବ୍ୟବହାର କରନ୍ତୁ
@@ -474,19 +474,19 @@ copy_report	ରିପୋର୍ଟ କପି କରନ୍ତୁ
 counted_cash_ph	ଡ୍ରୟରରେ ଗଣା ନଗଦ
 country_tax	ଦେଶ ଏବଂ ଟିକସ
 tax_chrome	ଟିଲରେ ଟିକସ ଲେବଲ୍
-tax_chrome_help	ବନ୍ଦ ଥିଲେ ଅର୍ଡର ଡେସ୍କ GST/ଟିକସ ଆକଳନ ଧାଡ଼ି ଓ ଦାମରେ-GST ସଙ୍କେତ ଲୁଚାଏ। ଟିକସ ହାର ଓ ଦେଶ ଓ ଟିକସ ସେଟିଂ ରହେ — ଲେବଲ୍ ଯେକୌଣସି ସମୟରେ ପୁଣି ଚାଲୁ କରନ୍ତୁ। ରାଜଧାନୀ ଆପ୍ ଟେମ୍ପଲେଟ୍ ଏହାକୁ ବନ୍ଦ ରଖି ଆରମ୍ଭ ହୁଏ।
+tax_chrome_help	ବନ୍ଦ ଥିଲେ, ଅର୍ଡର ଡେସ୍କ GST/କର ଅନୁମାନ ଲାଇନ ଏବଂ ମୂଲ୍ୟରେ-GST ପ୍ଲେସହୋଲ୍ଡର ଲୁଚାଏ। କର ହାର ଏବଂ ଦେଶ ଓ କର ସେଟିଂ ରହେ — ଯେକୌଣସି ସମୟରେ ଲେବଲ ପୁଣି ଚାଲୁ କରନ୍ତୁ। କିଛି ଦୋକାନ ଟେମ୍ପଲେଟ ଏହାକୁ ବନ୍ଦ ରଖି ଆରମ୍ଭ ହୁଏ।
 tax_chrome_on	ଦେଖାନ୍ତୁ
 tax_chrome_off	ଲୁଚାନ୍ତୁ
 tax_chrome_saved_on	ଟିଲରେ ଟିକସ ଲେବଲ୍
 tax_chrome_saved_off	ଟିଲରେ ଟିକସ ଲେବଲ୍ ଲୁଚା
 tax_invoice_till	ଟିଲରେ ଟିକସ ଇନଭଏସ୍
-tax_invoice_help	ବନ୍ଦ ଥିଲେ ବିଲ କେବଳ କ୍ୟାସ୍ ମେମୋ ଏବଂ ଅର୍ଡର ଡେସ୍କରେ ଟିକସ ଇନଭଏସ୍ / କ୍ୟାସ୍ ମେମୋ ଚିପ୍ ଲୁଚିଯାଏ। ରାଜଧାନୀ ଆପ୍ ଟେମ୍ପଲେଟ୍ ଏହାକୁ ବନ୍ଦ ରଖି ଆରମ୍ଭ ହୁଏ — ଟିକସ ଇନଭଏସ୍ ପୁଣି ବାଛିବାକୁ ଯେକୌଣସି ସମୟରେ ଦେଖାନ୍ତୁ ଚାଲୁ କରନ୍ତୁ।
+tax_invoice_help	ବନ୍ଦ ଥିଲେ, ବିଲ କେବଳ ନଗଦ ମେମୋ ହୁଏ ଏବଂ ଅର୍ଡର ଡେସ୍କରେ ଟ୍ୟାକ୍ସ ଇନଭଏସ / ନଗଦ ମେମୋ ଚିପ ଲୁଚିଯାଏ। କିଛି ଦୋକାନ ଟେମ୍ପଲେଟ ଏହାକୁ ବନ୍ଦ ରଖି ଆରମ୍ଭ ହୁଏ — ଟ୍ୟାକ୍ସ ଇନଭଏସ ପୁଣି ବାଛିବାକୁ ଦେଖାନ୍ତୁ ଯେକୌଣସି ସମୟରେ ଚାଲୁ କରନ୍ତୁ।
 tax_invoice_on	ଦେଖାନ୍ତୁ
 tax_invoice_off	ଲୁଚାନ୍ତୁ
 tax_invoice_saved_on	ଟିଲରେ ଟିକସ ଇନଭଏସ୍
 tax_invoice_saved_off	ଟିକସ ଇନଭଏସ୍ ଲୁଚା — କେବଳ କ୍ୟାସ୍ ମେମୋ
 pay_methods	ପେମେଣ୍ଟ ପଦ୍ଧତି
-pay_methods_help	ପେମେଣ୍ଟ ନିଅନ୍ତୁରେ କେଉଁ ଚିପ୍ ଦେଖାଯିବ। ନଗଦ ସବୁବେଳେ ରହେ। ରାଜଧାନୀ ଆପ୍ ଟେମ୍ପଲେଟ୍ କେବଳ ନଗଦରେ ଆରମ୍ଭ ହୁଏ — UPI / କାର୍ଡ / ଉଧାର / ବିଭାଜନ ଏଠାରେ ପୁଣି ଚାଲୁ କରନ୍ତୁ।
+pay_methods_help	ପେମେଣ୍ଟ ନିଅନ୍ତୁ ରେ କେଉଁ ଚିପ ଦେଖାଯାଏ। ନଗଦ ସର୍ବଦା ରହେ। କିଛି ଦୋକାନ ଟେମ୍ପଲେଟ କେବଳ ନଗଦରେ ଆରମ୍ଭ ହୁଏ — UPI / କାର୍ଡ / ଉଧାର / ବିଭାଜନ ଏଠାରେ ପୁଣି ଚାଲୁ କରନ୍ତୁ।
 create_backup	ବ୍ୟାକଅପ୍ ତିଆରି କରନ୍ତୁ
 credit_limit_heading	କ୍ରେଡିଟ୍ ସୀମା (ବଛା / ନାମ ଥିବା ପାର୍ଟି)
 day_close_summary	ଦିନ ବନ୍ଦ ସାରାଂଶ
@@ -793,10 +793,10 @@ printers_looking	ଏହି ଡିଭାଇସ୍ ଓ Wi‑Fiରେ ପ୍ରି�
 saving_printer	ପ୍ରିଣ୍ଟର ଯୋଡ଼ାଯାଉଛି…
 cancelled	ବାତିଲ୍
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	ହଟାଯାଉଛି…
+removed	ହଟାଗଲା
+updating_order	ଅପଡେଟ୍ ହେଉଛି…
+order_updated	ଅର୍ଡର ଅପଡେଟ୍ ହେଲା
 printers_tap_find	ଏହି ଡିଭାଇସ୍ ଯେଉଁ ପ୍ରିଣ୍ଟର ବ୍ୟବହାର କରିପାରିବ ତାହା ଦେଖିବାକୁ ଖୋଜନ୍ତୁ ଦବାନ୍ତୁ।
 printers_none_found	କୌଣସି ପ୍ରିଣ୍ଟର ମିଳିଲା ନାହିଁ — ସିଷ୍ଟମ ପ୍ରିଣ୍ଟର ନାମ କିମ୍ବା ନେଟୱାର୍କ ଠିକଣା ଲେଖନ୍ତୁ (ଯଥା 192.168.1.50)।
 printer_from_find	{name} ଯୋଡ଼ାଗଲା
@@ -1337,7 +1337,6 @@ kot_field_table	ଟେବୁଲ
 kot_field_shop	ଦୋକାନ ନାମ
 kot_field_waiter	କର୍ମଚାରୀ
 kot_field_station	ଷ୍ଟେସନ୍
-app_template_blurb_extra	ସହିତ: ମାଲିକ ଜହିର, ଆଡମିନ୍ ଆସିଫ୍, ୱେଟର ନୱାଜ୍; FOH ସାଇଡବାର୍; 4 ଘଣ୍ଟା ପରେ ଇତିହାସ; ଆଜିର ପଟି ବନ୍ଦ; ଛୋଟ KOT।
 dishes_n	{n}ଟି ଖାଦ୍ୟ
 recipe_ph	ରେସିପି (ଇଚ୍ଛାଧୀନ) — ଗୋଟିଏ ପ୍ଲେଟରେ ଲାଗେ: Rice=0.2, Paneer=0.15
 reorder_ph	ଏତିକିରେ ଆହୁରି କିଣନ୍ତୁ
@@ -1364,3 +1363,7 @@ recent_changes	ସାମ୍ପ୍ରତିକ ପରିବର୍ତ୍ତନ
 lane_declared_label	ଟିକସ ଇନଭଏସ୍
 lane_owner_label	କ୍ୟାସ୍ ମେମୋ
 money_lane_bill	ବିଲ: {lane}
+app_template_download_progress	ଡାଉନଲୋଡ୍ ହେଉଛି… {p}% ({d} / {t})
+app_template_download_paused	ପୁଣି ଆରମ୍ଭ କରିବାକୁ ପୁଣି ଆମଦାନି କରନ୍ତୁ — ସମ୍ପୂର୍ଣ୍ଣ ଫାଇଲଗୁଡ଼ିକ ରଖାଯାଏ
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

@@ -182,7 +182,7 @@ snack_secs_save	Shrani čas opozorila
 snack_secs_saved	Čas opozorila shranjen — {n} sekund
 settings_sec_backup	Varnostna kopija in obnovitev
 settings_sec_diag	Diagnostika
-settings_sec_privacy	Privacy
+settings_sec_privacy	Zasebnost
 diag_privacy_help	Dnevniki ostanejo na tej napravi. Skrivnosti (PIN, gesla) se nikoli ne shranijo. Deljenje paketa zunaj naprave vsakič zahteva vaše izrecno soglasje — nikoli se ne proda in ne da tretjim.
 diag_level	Raven podrobnosti
 diag_level_error	Napake
@@ -339,21 +339,21 @@ server_remove_pin_ph	PIN lastnika za odstranitev strežnika
 only_owner_remove_server	Samo Lastnik lahko odstrani strežnik
 owner_pin_remove_server	Za odstranitev tega strežnika je potreben PIN lastnika
 device_setup_help	Strežnik knjige hrani tukaj. Odjemalec se poveže s Strežnikom.
-app_template_heading	Predloga aplikacije Rajdhani
-app_template_blurb	Naloži meni Rajdhani; Lastnik Zahir (zahir), Admin Asif (asif, PIN 1111), Natakar Nawaz (nawaz, PIN 0000); stranska vrstica FOH; zgodovina se počisti po 4 urah (in Počisti zdaj v Varnostni kopiji); trak Danes izklopljen; kompakten KOT + standardni robovi za ozke pladnje. Sosedi stranske vrstice se lahko znova vklopijo v Nastavitvah.
-app_template_apply	Predloga aplikacije Rajdhani
+app_template_heading	Predloge trgovine
+app_template_blurb	Uvozite javni začetni meni ali vnesite zasebno 12-mestno kodo od svojega stika Khaynjo.
+app_template_apply	Uvozi predlogo
 app_template_skip	Preskoči za zdaj
-app_template_status	Strežnik je pripravljen — uporabite predlogo Rajdhani ali preskočite
+app_template_status	Strežnik je pripravljen — uvozite predlogo ali preskočite
 app_template_importing	Uporablja se {title}…
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	Prenašanje predloge…
+app_template_public_hdr	Javne predloge
+app_template_private_hdr	Zasebna predloga
+app_template_public_hint	Odprite ta razdelek, da naložite javni seznam (internet je potreben enkrat).
+app_template_code_not_found	Kode ni mogoče najti
+app_template_need_internet	Za prenos predlog je potreben internet
+app_template_import_selected	Uvozi izbrano
+app_template_check_code	Preveri kodo
+app_template_import	Uvozi
 currency	Valuta
 backup	Varnostna kopija
 use	Uporabi
@@ -474,19 +474,19 @@ copy_report	Kopiraj poročilo
 counted_cash_ph	Prešteta gotovina v predalu
 country_tax	Država in davek
 tax_chrome	Davčne oznake na blagajni
-tax_chrome_help	Ko je izklopljeno, naročilni pult skrije vrstice ocene GST/davka in mesta davka v ceni. Davčne stopnje in nastavitve Država in davek ostanejo — oznake lahko kadar koli znova vklopite. Predloga Rajdhani se začne s tem izklopljenim.
+tax_chrome_help	Ko je izklopljeno, pult za naročila skrije vrstice ocene GST/davka in oznake GST v ceni. Davčne stopnje ter nastavitve države in davka ostanejo — oznake znova vklopite kadar koli. Nekatere predloge trgovine se začnejo s tem izklopljenim.
 tax_chrome_on	Pokaži
 tax_chrome_off	Skrij
 tax_chrome_saved_on	Davčne oznake na blagajni
 tax_chrome_saved_off	Davčne oznake skrite na blagajni
 tax_invoice_till	Davčni račun na blagajni
-tax_invoice_help	Ko je izklopljeno, so računi samo Blagajniški zapis, čipi Davčni račun / Blagajniški zapis pa so skriti na naročilnem pultu. Predloga Rajdhani se začne s tem izklopljenim — Pokaži kadar koli znova vklopite, da spet izberete davčni račun.
+tax_invoice_help	Ko je izklopljeno, so računi le gotovinski računi, gumba Davčni račun / Gotovinski račun pa sta na pultu za naročila skrita. Nekatere predloge trgovine se začnejo s tem izklopljenim — kadar koli vklopite Prikaži, da znova izberete Davčni račun.
 tax_invoice_on	Pokaži
 tax_invoice_off	Skrij
 tax_invoice_saved_on	Davčni račun na blagajni
 tax_invoice_saved_off	Davčni račun skrit — samo Blagajniški zapis
 pay_methods	Načini plačila
-pay_methods_help	Kateri čipi se pokažejo pri Sprejmi plačilo. Gotovina vedno ostane. Predloga Rajdhani se začne samo z Gotovino — tukaj znova vklopite UPI / Kartica / Kredit / Razdeli.
+pay_methods_help	Kateri gumbi so prikazani pri Prejmi plačilo. Gotovina ostane vedno. Nekatere predloge trgovine se začnejo le z Gotovino — tukaj znova vklopite UPI / Kartica / Kredit / Razdeli.
 create_backup	Ustvari varnostno kopijo
 credit_limit_heading	Kreditna omejitev (izbrani / imenovani partner)
 day_close_summary	Povzetek zaključka dneva
@@ -793,10 +793,10 @@ printers_looking	Iskanje…
 saving_printer	Dodajanje tiskalnika…
 cancelled	Preklicano
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Odstranjevanje…
+removed	Odstranjeno
+updating_order	Posodabljanje…
+order_updated	Naročilo posodobljeno
 printers_tap_find	Tapnite Iskanje za seznam tiskalnikov, ki jih ta naprava lahko uporablja.
 printers_none_found	Nič najdenega — vnesite ime sistemskega tiskalnika ali IP (npr. 192.168.1.50).
 printer_from_find	Dodan {name}
@@ -1337,7 +1337,6 @@ kot_field_table	Miza
 kot_field_shop	Ime lokala
 kot_field_waiter	Osebje
 kot_field_station	Postaja
-app_template_blurb_extra	Tudi: Lastnik Zahir, Administrator Asif, Natakar Nawaz; stranska vrstica FOH; zgodovina po 4 urah; trak Danes izklopljen; kompakten KOT.
 dishes_n	{n} jedi
 recipe_ph	Recept (neobvezno) — ena porcija porabi: Riž=0.2, Paneer=0.15
 reorder_ph	Kupi več pri
@@ -1364,3 +1363,7 @@ recent_changes	Nedavne spremembe
 lane_declared_label	Davčni račun
 lane_owner_label	Blagajniški zapis
 money_lane_bill	Račun: {lane}
+app_template_download_progress	Prenašanje… {p}% ({d} / {t})
+app_template_download_paused	Za nadaljevanje znova uvozite — dokončane datoteke ostanejo
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

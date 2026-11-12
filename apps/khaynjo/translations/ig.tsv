@@ -182,7 +182,7 @@ snack_secs_save	Chekwaa oge ọkwa
 snack_secs_saved	Echekwara oge ọkwa — {n} sekọnd
 settings_sec_backup	Nchekwa na nweghachi
 settings_sec_diag	Nnyocha
-settings_sec_privacy	Privacy
+settings_sec_privacy	Nzuzo
 diag_privacy_help	Ndekọ na-anọ na ngwaọrụ a. Ihe nzuzo (PIN, okwuntughe) anaghị echekwa. Ịkekọrịta ngwugwu na mpụga ngwaọrụ chọrọ nkwenye gị doro anya oge ọ bụla — anaghị ere ma ọ bụ nye ndị ọzọ.
 diag_level	Ọkwa nkọwa
 diag_level_error	Njehie
@@ -339,21 +339,21 @@ server_remove_pin_ph	PIN onye nwe iji wepụ sava
 only_owner_remove_server	Naanị Onye nwe nwere ike iwepụ sava
 owner_pin_remove_server	Achọrọ PIN onye nwe iji wepụ sava a
 device_setup_help	Sava na-edebe akwụkwọ ebe a. Ngwa njedebe na-ejikọ na Sava.
-app_template_heading	Ụdị ngwa Rajdhani
-app_template_blurb	Na-ebu ndepụta nri Rajdhani; Onye nwe Zahir (zahir), Onye nchịkwa Asif (asif, PIN 1111), Onye na-eje ozi Nawaz (nawaz, PIN 0000); ogwe akụkụ ụlọ oriri; akụkọ na-ehichapụ mgbe awa 4 gachara (na Hichapụ ugbu a na Nchekwa); eriri Taa gbanyụrụ; KOT dị mkpirikpi + oke Standard maka tre dị warara. Ndị ogwe akụkụ nwere ike ịgbanye ọzọ na Ntọala.
-app_template_apply	Ụdị ngwa Rajdhani
+app_template_heading	Ụdị ụlọ ahịa
+app_template_blurb	Bubata menu mmalite ọha, ma ọ bụ tinye koodu nzuzo nwere ọnụọgụ 12 sitere n'aka onye kọntaktị Khaynjo gị.
+app_template_apply	Bubata ụdị
 app_template_skip	Gafee ugbu a
-app_template_status	Sava dị njikere — tinye Ụdị ngwa Rajdhani, ma ọ bụ gafee
+app_template_status	Sava dị njikere — bubata ụdị, ma ọ bụ wụfee
 app_template_importing	Na-etinye {title}…
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	Na-ebudata ụdị…
+app_template_public_hdr	Ụdị ọha
+app_template_private_hdr	Ụdị nzuzo
+app_template_public_hint	Mepee akụkụ a iji bulite ndepụta ọha (ịntanetị dị mkpa otu ugboro).
+app_template_code_not_found	Ahụghị koodu
+app_template_need_internet	Ịntanetị dị mkpa iji budata ụdị
+app_template_import_selected	Bubata nke ahọrọ
+app_template_check_code	Lelee koodu
+app_template_import	Bubata
 currency	Ego
 backup	Nchekwa
 use	Jiri
@@ -474,19 +474,19 @@ copy_report	Detuo akụkọ
 counted_cash_ph	Ego aka agụrụ n'ime drawer
 country_tax	Mba na ụtụ
 tax_chrome	Akara ụtụ na kaụnta
-tax_chrome_help	Mgbe gbanyụrụ, tebụl iwu na-ezo ahịrị atụmatụ GST/ụtụ na ebe GST nọ n'ọnụahịa. Ọnụego ụtụ na ntọala Mba na ụtụ na-anọ — gbanye akara ọzọ oge ọ bụla. Ụdị ngwa Rajdhani na-amalite na nke a gbanyụrụ.
+tax_chrome_help	Mgbe ọ gbanyụrụ, tebụl iwu na-ezo ahịrị atụmatụ GST/ụtụ isi na ebe GST-n'ime-ọnụahịa. Ọnụ ụtụ isi na ntọala Mba na ụtụ isi na-anọgide — gbanyeghachi akara aha n'oge ọ bụla. Ụfọdụ ụdị ụlọ ahịa na-amalite na nke a gbanyụrụ.
 tax_chrome_on	Gosi
 tax_chrome_off	Zoo
 tax_chrome_saved_on	Akara ụtụ na kaụnta
 tax_chrome_saved_off	Ezoro akara ụtụ na kaụnta
 tax_invoice_till	Ụgwọ ụtụ na kaụnta
-tax_invoice_help	Mgbe gbanyụrụ, ụgwọ bụ naanị akwụkwọ ego aka na ibe Ụgwọ ụtụ / Akwụkwọ ego aka na-ezo na tebụl iwu. Ụdị ngwa Rajdhani na-amalite na nke a gbanyụrụ — gbanye Gosi ọzọ oge ọ bụla ka ị họrọ Ụgwọ ụtụ ọzọ.
+tax_invoice_help	Mgbe ọ gbanyụrụ, ụgwọ bụ naanị ndetu ego ma bọtịnụ Akwụkwọ ụtụ isi / Ndetu ego zoro ezo na tebụl iwu. Ụfọdụ ụdị ụlọ ahịa na-amalite na nke a gbanyụrụ — gbanye Gosi n'oge ọ bụla iji họrọ Akwụkwọ ụtụ isi ọzọ.
 tax_invoice_on	Gosi
 tax_invoice_off	Zoo
 tax_invoice_saved_on	Ụgwọ ụtụ na kaụnta
 tax_invoice_saved_off	Ezoro ụgwọ ụtụ — naanị akwụkwọ ego aka
 pay_methods	Ụzọ ịkwụ ụgwọ
-pay_methods_help	Ibe ndị na-apụta na Nakọta ụgwọ. Ego aka na-anọ mgbe niile. Ụdị ngwa Rajdhani na-amalite naanị na ego aka — gbanye UPI / Kaadị / Kredit / Kewaa ọzọ ebe a.
+pay_methods_help	Bọtịnụ ndị na-apụta na Nara ịkwụ ụgwọ. Ego na-anọgide mgbe niile. Ụfọdụ ụdị ụlọ ahịa na-amalite naanị na Ego — gbanyeghachi UPI / Kaadị / Kredit / Kewaa ebe a.
 create_backup	Mepụta nchekwa
 credit_limit_heading	Oke kredit (onye otu ahọpụtara / a kpọrọ aha)
 day_close_summary	Nchịkọta mmechi ụbọchị
@@ -793,10 +793,10 @@ printers_looking	Na-achọ…
 saving_printer	Na-etinye igwe mbipụta…
 cancelled	Akagbuola
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Na-ewepụ…
+removed	Ewepụrụ
+updating_order	Na-emelite…
+order_updated	Emelitere iwu
 printers_tap_find	Kpatụ Chọta ka ị hụ igwe mbipụta ngwaọrụ a nwere ike iji.
 printers_none_found	Ọ dịghị achọtara — dee aha igwe mbipụta sistemụ ma ọ bụ IP (dịka 192.168.1.50).
 printer_from_find	E tinyere {name}
@@ -1337,7 +1337,6 @@ kot_field_table	Tebụl
 kot_field_shop	Aha ụlọ ahịa
 kot_field_waiter	Ndị ọrụ
 kot_field_station	Ọdụ
-app_template_blurb_extra	Ọzọkwa: Onye nwe Zahir, Onye nchịkwa Asif, Onye na-eje ozi Nawaz; ogwe FOH; akụkọ mgbe awa 4 gasịrị; eriri Taa gbanyụrụ; KOT kọmpakt.
 dishes_n	nri {n}
 recipe_ph	Usoro esi nri (nhọrọ) — otu nkeji na-eji: Rice=0.2, Paneer=0.15
 reorder_ph	Zụta ọzọ na
@@ -1364,3 +1363,7 @@ recent_changes	Mgbanwe nso nso a
 lane_declared_label	Ụgwọ ụtụ
 lane_owner_label	Akwụkwọ ego aka
 money_lane_bill	Ụgwọ: {lane}
+app_template_download_progress	Na-ebudata… {p}% ({d} / {t})
+app_template_download_paused	Bubata ọzọ ka ịga n'ihu — a na-edebe faịlụ ndị gwụchara
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

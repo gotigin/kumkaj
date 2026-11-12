@@ -182,7 +182,7 @@ snack_secs_save	Uyarı süresini kaydet
 snack_secs_saved	Uyarı süresi kaydedildi — {n} saniye
 settings_sec_backup	Yedekleme ve geri yükleme
 settings_sec_diag	Tanılama
-settings_sec_privacy	Privacy
+settings_sec_privacy	Gizlilik
 diag_privacy_help	Günlükler bu cihazda kalır. Gizli bilgiler (PIN, şifreler) asla saklanmaz. Cihazdan paket paylaşımı her zaman açıkça onayınızı gerektirir — üçüncü taraflara satılmaz veya vermez.
 diag_level	Detay seviyesi
 diag_level_error	Hatalar
@@ -339,21 +339,21 @@ server_remove_pin_ph	Kaldırmak için Owner PIN
 only_owner_remove_server	Sunucuyu yalnızca Owner silebilir
 owner_pin_remove_server	Bu sunucuyu kaldırmak için Owner PIN gerekli
 device_setup_help	Sunucu defterleri burada tutar. İstemci bir sunucuyla eşleşir.
-app_template_heading	Rajdhani Uygulama Şablonu
-app_template_blurb	Rajdhani menüsü yükleniyor; Sahibi Zahir (zahir), Yönetici Asif (asif, PIN 1111), Garson Nawaz (nawaz, PIN 0000); FOH yan paneli; geçmiş 4 saat sonra temizlenir (ve Yedeklemede Şimdi Temizle); Bugün şeridi çıkar; dar tepsi için kompakt KOT + Standart marjlar. Yan panel eşleri Ayarlar'da tekrar açılabilir.
-app_template_apply	Rajdhani Uygulama Şablonu
+app_template_heading	Mağaza şablonları
+app_template_blurb	Herkese açık bir başlangıç menüsü içe aktarın veya Khaynjo bağlantınızdan aldığınız 12 haneli özel kodu girin.
+app_template_apply	Şablonu içe aktar
 app_template_skip	Şimdilik atla
-app_template_status	Sunucu hazır — Rajdhani Uygulama Şablonunu uygula veya atla
+app_template_status	Sunucu hazır — bir şablon içe aktarın veya atlayın
 app_template_importing	{title} uygulanıyor…
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	Şablon indiriliyor…
+app_template_public_hdr	Herkese açık şablonlar
+app_template_private_hdr	Özel şablon
+app_template_public_hint	Herkese açık listeyi yüklemek için bu bölümü açın (bir kez internet gerekir).
+app_template_code_not_found	Kod bulunamadı
+app_template_need_internet	Şablonları indirmek için internet gerekir
+app_template_import_selected	Seçileni içe aktar
+app_template_check_code	Kodu kontrol et
+app_template_import	İçe aktar
 currency	Para birimi
 backup	Yedek
 use	Kullan
@@ -474,19 +474,19 @@ copy_report	Raporu kopyala
 counted_cash_ph	Çekmecede sayılan nakit
 country_tax	Ülke ve vergi
 tax_chrome	Kasadaki vergi etiketleri
-tax_chrome_help	Kapalıyken, sipariş masası GST/vergi tahmini satırlarını ve GST-fiyata dahil yer tutucularını gizler. Vergi oranları ve Ülke & vergi ayarları kalır — etiketleri istediğiniz zaman tekrar açın. Rajdhani Uygulama Şablonu bunu kapalı başlar.
+tax_chrome_help	Kapalıyken sipariş masası GST/vergi tahmin satırlarını ve fiyata dahil GST yer tutucularını gizler. Vergi oranları ve Ülke ve vergi ayarları kalır — etiketleri istediğiniz zaman yeniden açın. Bazı mağaza şablonları bu kapalı olarak başlar.
 tax_chrome_on	Göster
 tax_chrome_off	Gizle
 tax_chrome_saved_on	Kasadaki vergi etiketleri
 tax_chrome_saved_off	Kasadaki vergi etiketleri gizli
 tax_invoice_till	Kasadaki vergi faturası
-tax_invoice_help	Kapalıyken, faturalar sadece Nakit hatıra olur ve sipariş masasında Vergi faturası / Nakit hatıra çipleri gizlenir. Rajdhani Uygulama Şablonu bunu kapalı başlar — Vergi faturasını tekrar seçmek için her zaman Göster'i açın.
+tax_invoice_help	Kapalıyken hesaplar yalnızca nakit fişidir ve sipariş masasındaki Vergi faturası / Nakit fişi düğmeleri gizlenir. Bazı mağaza şablonları bu kapalı olarak başlar — Vergi faturasını yeniden seçmek için Göster'i istediğiniz zaman açın.
 tax_invoice_on	Göster
 tax_invoice_off	Gizle
 tax_invoice_saved_on	Kasadaki vergi faturası
 tax_invoice_saved_off	Vergi faturası gizli — Sadece nakit hatıra
 pay_methods	Ödeme yöntemleri
-pay_methods_help	Hangi çiplerin Take ödeme'de belireceği. Nakit her zaman kalır. Rajdhani Uygulama Şablonu sadece Nakit ile başlar — burada UPI / Kart / Kredi / Bölüştürmeyi tekrar açın.
+pay_methods_help	Ödeme al ekranında hangi düğmelerin göründüğü. Nakit her zaman kalır. Bazı mağaza şablonları yalnızca Nakit ile başlar — UPI / Kart / Veresiye / Böl'ü buradan yeniden açın.
 create_backup	Yedek oluştur
 credit_limit_heading	Kredi limiti (seçili / adı geçen taraf)
 day_close_summary	Gün kapanışı özeti
@@ -793,10 +793,10 @@ printers_looking	Bu cihaz ve Wi‑Fi'de yazıcılar aranıyor…
 saving_printer	Yazıcı ekleniyor…
 cancelled	İptal
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Kaldırılıyor…
+removed	Kaldırıldı
+updating_order	Güncelleniyor…
+order_updated	Sipariş güncellendi
 printers_tap_find	Bu cihazın kullanabileceği yazıcıları listelemek için Yazıcıları bul öğesine dokunun.
 printers_none_found	Yazıcı bulunamadı — sistem adı veya ağ adresi yazın (örn. 192.168.1.50).
 printer_from_find	{name} eklendi
@@ -1337,7 +1337,6 @@ kot_field_table	Masa
 kot_field_shop	Dükkân adı
 kot_field_waiter	Personel
 kot_field_station	İstasyon
-app_template_blurb_extra	Ayrıca: Sahibi Zahir, Yönetici Asif, Garson Nawaz; FOH yan çubuğu; 4 saat sonrası geçmişi; Bugün şeridi çıkar; kompakt KOT.
 dishes_n	{n} yemek
 recipe_ph	Tarif (isteğe bağlı) — bir porsiyon kullanır: Rice=0.2, Paneer=0.15
 reorder_ph	Şu miktarda yeniden al
@@ -1364,3 +1363,7 @@ recent_changes	Son değişiklikler
 lane_declared_label	Vergi faturası
 lane_owner_label	Nakit fiş
 money_lane_bill	Fatura: {lane}
+app_template_download_progress	İndiriliyor… {p}% ({d} / {t})
+app_template_download_paused	Devam etmek için yeniden içe aktarın — tamamlanan dosyalar saklanır
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

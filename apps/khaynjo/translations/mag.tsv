@@ -182,7 +182,7 @@ snack_secs_save	सूचना समय सहेजऽ
 snack_secs_saved	सूचना समय सहेजा गेल — {n} सेकंड
 settings_sec_backup	बैकअप आउर रीस्टोर
 settings_sec_diag	निदान
-settings_sec_privacy	Privacy
+settings_sec_privacy	गोपनीयता
 diag_privacy_help	लॉग इसी डिवाइस पर रहतऽ हथ। गुप्त जानकारी (PIN, पासवर्ड) कभी सहेजी नइखे जाती। डिवाइस से बाहर पैकेज भेजने खातिर हर बार अपन साफ़ मंज़ूरी चाही — कभी बेचा भा किसी तीसरे पक्ष के नइखे दिया जाता।
 diag_level	विवरण स्तर
 diag_level_error	त्रुटियाँ
@@ -339,21 +339,21 @@ server_remove_pin_ph	सर्वर हटाने खातिर Owner PIN
 only_owner_remove_server	केवल Owner सर्वर हटा सकऽ हई
 owner_pin_remove_server	सर्वर हटाने खातिर Owner PIN चाही
 device_setup_help	सर्वर बही यहीं रखतऽ हई। क्लाइंट किसी सर्वर से जुड़तऽ हई।
-app_template_heading	राजधानी ऐप टेम्पलेट
-app_template_blurb	राजधानी मेनू लोड करतऽ हई; मालिक ज़हीर (zahir), एडमिन आसिफ़ (asif, PIN 1111), वेटर नवाज़ (nawaz, PIN 0000); FOH साइडबार; इतिहास 4 घंटे बाद साफ़ होवऽ हई (आउर बैकअप में अबहीं साफ़ करऽ); आज के पट्टी बंद; संकरी ट्रे खातिर छोटा KOT + सामान्य मार्जिन। साइडबार के बाकी हिस्से सेटिंग में फिर चालू कर सकऽ हैं।
-app_template_apply	राजधानी ऐप टेम्पलेट
+app_template_heading	दोकान टेम्पलेट
+app_template_blurb	कोनो सार्वजनिक सुरुआती मेनू आयात करऽ, या अपन Khaynjo संपर्क से मिलल 12 अंक के निजी कोड डालऽ।
+app_template_apply	टेम्पलेट आयात करऽ
 app_template_skip	अबहीं छोड़ेऽ
-app_template_status	सर्वर तैयार — राजधानी ऐप टेम्पलेट लगाऽ, भा छोड़ेऽ
+app_template_status	सर्वर तैयार हे — टेम्पलेट आयात करऽ, या छोड़ दऽ
 app_template_importing	{title} लगा रहल हथ…
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	टेम्पलेट डाउनलोड हो रहल हे…
+app_template_public_hdr	सार्वजनिक टेम्पलेट
+app_template_private_hdr	निजी टेम्पलेट
+app_template_public_hint	सार्वजनिक सूची लोड करे ला ई हिस्सा खोलऽ (एक बेर इंटरनेट चाही)।
+app_template_code_not_found	कोड न मिलल
+app_template_need_internet	टेम्पलेट डाउनलोड करे ला इंटरनेट चाही
+app_template_import_selected	चुनल आयात करऽ
+app_template_check_code	कोड जाँचऽ
+app_template_import	आयात करऽ
 currency	मुद्रा
 backup	बैकअप
 use	इस्तेमाल करऽ
@@ -474,19 +474,19 @@ copy_report	रिपोर्ट कॉपी करऽ
 counted_cash_ph	दराज़ में गिनी नकदी
 country_tax	देश आउर कर
 tax_chrome	टिल पर कर लेबल
-tax_chrome_help	बंद होने पर ऑर्डर डेस्क GST/कर अनुमान के पंक्तियाँ आउर कीमत-में-GST संकेत छिपा देतऽ हई। कर दरेऽ आउर देश आउर कर सेटिंग बनी रहती हथ — लेबल कभी ओ फिर चालू करें। राजधानी ऐप टेम्पलेट एकरा के बंद रखकर शुरू होवऽ है।
+tax_chrome_help	बंद रहे पर, ऑर्डर डेस्क GST/टैक्स अनुमान के लाइन आउ दाम-में-GST प्लेसहोल्डर छिपा दे हे। टैक्स दर आउ देस आउ टैक्स सेटिंग बनल रहऽ हे — लेबल कभियो फिन से चालू करऽ। कुछ दोकान टेम्पलेट एकरा बंद रख के सुरू होवऽ हे।
 tax_chrome_on	देखावऽ
 tax_chrome_off	छिपावऽ
 tax_chrome_saved_on	टिल पर कर लेबल
 tax_chrome_saved_off	टिल पर कर लेबल छिपे
 tax_invoice_till	टिल पर कर चालान
-tax_invoice_help	बंद होने पर बिल सिर्फ़ कैश मेमो होवऽ हथ आउर ऑर्डर डेस्क पर कर चालान / कैश मेमो चिप छिप जातऽ हथ। राजधानी ऐप टेम्पलेट एकरा के बंद रखकर शुरू होवऽ हई — कर चालान फिर चुनने खातिर कभी ओ देखावऽ चालू करें।
+tax_invoice_help	बंद रहे पर, बिल खाली कैश मेमो होवऽ हे आउ ऑर्डर डेस्क पर टैक्स इनवॉइस / कैश मेमो चिप छिप जा हे। कुछ दोकान टेम्पलेट एकरा बंद रख के सुरू होवऽ हे — टैक्स इनवॉइस फिन से चुने ला देखावऽ कभियो चालू करऽ।
 tax_invoice_on	देखावऽ
 tax_invoice_off	छिपावऽ
 tax_invoice_saved_on	टिल पर कर चालान
 tax_invoice_saved_off	कर चालान छिपा — सिर्फ़ कैश मेमो
 pay_methods	भुगतान के तरीके
-pay_methods_help	भुगतान लेऽ पर कौन-से चिप दिखें। नकद हमेशा रहतऽ हई। राजधानी ऐप टेम्पलेट सिर्फ़ नकद से शुरू होवऽ हई — UPI / कार्ड / उधार / बँटवारा हियाँ फिर चालू करें।
+pay_methods_help	भुगतान लऽ पर कउन चिप देखाई दे हे। नगद हमेसा रहऽ हे। कुछ दोकान टेम्पलेट खाली नगद से सुरू होवऽ हे — UPI / कार्ड / उधार / बँटवारा इहाँ फिन से चालू करऽ।
 create_backup	बैकअप बनावऽ
 credit_limit_heading	उधार सीमा (चुनी / नाम वाली पार्टी)
 day_close_summary	दिन बंद सारांश
@@ -793,10 +793,10 @@ printers_looking	ई डिवाइस आउर वाई‑फ़ाई प�
 saving_printer	प्रिंटर जोड़ रहल हथ…
 cancelled	रद्द
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	हटावल जा रहल हे…
+removed	हटा देल गेल
+updating_order	अपडेट हो रहल हे…
+order_updated	ऑर्डर अपडेट हो गेल
 printers_tap_find	ई डिवाइस के प्रिंटर देखने खातिर खोजऽ दबाऽ।
 printers_none_found	कोई प्रिंटर नइखे मिला — सिस्टम प्रिंटर के नाम लिखऽ, भा नेटवर्क पता (जैसे 192.168.1.50)।
 printer_from_find	{name} जोड़ा
@@ -1337,7 +1337,6 @@ kot_field_table	मेज़
 kot_field_shop	दुकान के नाम
 kot_field_waiter	कर्मचारी
 kot_field_station	स्टेशन
-app_template_blurb_extra	साथ में: मालिक ज़हीर, एडमिन आसिफ़, वेटर नवाज़; FOH साइडबार; 4 घंटे बाद इतिहास; आज के पट्टी बंद; छोटा KOT।
 dishes_n	{n} व्यंजन
 recipe_ph	रेसिपी (वैकल्पिक) — एक प्लेट में लगतऽ हई: Rice=0.2, Paneer=0.15
 reorder_ph	इतने पर आउर खरीदेऽ
@@ -1364,3 +1363,7 @@ recent_changes	हाल के बदलाव
 lane_declared_label	कर चालान
 lane_owner_label	कैश मेमो
 money_lane_bill	बिल: {lane}
+app_template_download_progress	डाउनलोड हो रहल हे… {p}% ({d} / {t})
+app_template_download_paused	फिर से चालू करे ला दोबारा आयात करऽ — पूरा फाइल रखल जा हे
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

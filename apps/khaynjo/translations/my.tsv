@@ -182,7 +182,7 @@ snack_secs_save	သတိပေးချိန်ကို သိမ်းဆည
 snack_secs_saved	သတိပေးချိန် သိမ်းဆည်းပြီး — {n} စက္ကန့်
 settings_sec_backup	မိတ္တူယူခြင်းနှင့် ပြန်လည်သုံးစွဲခြင်း
 settings_sec_diag	ရောဂါသိပ္ပံစမ်းသပ်ခြင်း
-settings_sec_privacy	Privacy
+settings_sec_privacy	ကိုယ်ရေးကိုယ်တာ
 diag_privacy_help	မှတ်တမ်းများသည် ဒီစက်ပစ္စည်းပေါ်တွင် မျှဝေရန်။ လျှို့ဝှက်ချက်များ (PIN၊ စကားဝှက်များ) မည်သည့်အချိန်မဆို သိမ်းဆည်းမထားပါ။ စက်ပစ္စည်းအပြင်ပေါ်သို့ package မျှဝေရန် သင်၏ ထူးခြားသော အတည်ပြုပြဌာန်းချက် လိုအပ်သည် — မရောင်းချခြင်းနှင့် အခြားပါတီတွေကို မပေးပါ။
 diag_level	အသေးစိတ်အဆင့်
 diag_level_error	အမှားများ
@@ -339,21 +339,21 @@ server_remove_pin_ph	စာဗာကို ဖယ်ရှားရန် မူ
 only_owner_remove_server	စာဗာကို ဖယ်ရှားနိုင်သူမှာ မူပိုင်ရှင်ပင်သာ ဖြစ်သည်
 owner_pin_remove_server	ပိုင်ရှင် PIN သည် ဒီဆာဗာကို ဖယ်ရှားရန် လိုအပ်သည်
 device_setup_help	Server သည် ဒီနေရာမှာ စာအုပ်များကို ထိန်းသိမ်းထားသည်။ Client သည် Server နှစ်ခုနှင့် ကိုက်ညီသည်။
-app_template_heading	Rajdhani အက်ပ်အစမ်း
-app_template_blurb	Rajdhani မီနူးကို အသုံးပြုသည်; ပိုင်ရှင် Zahir (ဇာဟီး), Admin Asif (အာစစ်, PIN 1111), ဝိတ်တာ Nawaz (နဝပ်ဇ်, PIN 0000); FOH ဘားဆိုက်ဘာ; သမိုင်းခရီးသည် ၄ နာရီအပြီး ရှင်းလင်းသွားသည် (နှင့် အလွယ်တကူ Backup မှာ Clear လုပ်နိုင်သည်); ဒီနေ့လှည့်ဖျက်ခြင်း; ကွက်တိအကြပ် + သေးငယ်သော tray များအတွက် စံရွေ့ပေါက်များ။ Sidebar အဖွဲ့ဝင်များကို Settings မှာ ပြန်ဖွင့်နိုင်သည်။
-app_template_apply	Rajdhani အက်ပ်အစမ်း
+app_template_heading	ဆိုင်ပုံစံများ
+app_template_blurb	အများသုံး စတင်မီနူးကို တင်သွင်းပါ၊ သို့မဟုတ် သင့် Khaynjo အဆက်အသွယ်ထံမှ ရရှိသော ဂဏန်း ၁၂ လုံး ကိုယ်ပိုင်ကုဒ်ကို ထည့်ပါ။
+app_template_apply	ပုံစံကို တင်သွင်းပါ
 app_template_skip	ယခုအချိန်တွင် ကျော်ပါ
-app_template_status	Server အသင့်ရှိသည် — Rajdhani အက်ပ်အစမ်းကို အသုံးပြုပါ၊ သို့မဟုတ် ကျော်ပါ
+app_template_status	ဆာဗာ အဆင်သင့် — ပုံစံတစ်ခု တင်သွင်းပါ၊ သို့မဟုတ် ကျော်ပါ
 app_template_importing	{title} ဖြင့် သက်ရောက်မှု လုပ်ဆောင်နေသည်…
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	ပုံစံကို ဒေါင်းလုဒ်လုပ်နေသည်…
+app_template_public_hdr	အများသုံးပုံစံများ
+app_template_private_hdr	ကိုယ်ပိုင်ပုံစံ
+app_template_public_hint	အများသုံးစာရင်းကို ဖွင့်ရန် ဤအပိုင်းကို ဖွင့်ပါ (အင်တာနက် တစ်ကြိမ်လိုသည်)။
+app_template_code_not_found	ကုဒ်ကို ရှာမတွေ့ပါ
+app_template_need_internet	ပုံစံများ ဒေါင်းလုဒ်လုပ်ရန် အင်တာနက်လိုသည်
+app_template_import_selected	ရွေးထားသည်ကို တင်သွင်းပါ
+app_template_check_code	ကုဒ်စစ်ပါ
+app_template_import	တင်သွင်းပါ
 currency	ငွေကြေး
 backup	အရန်သိမ်း
 use	အသုံးပြုပါ
@@ -474,19 +474,19 @@ copy_report	အစီရင်ခံစာကိုကူးယူပါ
 counted_cash_ph	ငွေသားရေတွက်သွားပြီးပါပြီ
 country_tax	နိုင်ငံနှင့် အခွန်
 tax_chrome	ငွေကောင်တာပေါ် အခွန်တံဆိပ်များ
-tax_chrome_help	ပိတ်ထားသည့်အခါမှာ အမှာစာဌာနသည် GST/အခွန်ခန့်မှန်းလိုင်းများနှင့် GST-စျေးနှုန်းထဲသို့ထားသည့် အစားထိုးများကိုဖျောက်ထားသည်။ အခွန်နှုန်းများနှင့်နိုင်ငံ & အခွန်ဆက်တင်များနေဆဲဖြစ်သည် — မည်သည့်အချိန်မဆို တံဆိပ်များကိုပြန်ဖွင့်နိုင်သည်။ Rajdhani အက်ပ်နမူနာကိုဤအခြေအနေမဖွင့်ထားပဲ စတင်ပါသည်။
+tax_chrome_help	ပိတ်ထားသောအခါ အော်ဒါစားပွဲသည် GST/အခွန် ခန့်မှန်းလိုင်းများနှင့် စျေးနှုန်းထဲတွင်-GST နေရာများကို ဖျောက်ထားသည်။ အခွန်နှုန်းများနှင့် နိုင်ငံနှင့် အခွန် ဆက်တင်များ ကျန်ရှိသည် — အညွှန်းများကို အချိန်မရွေး ပြန်ဖွင့်ပါ။ အချို့ဆိုင်ပုံစံများသည် ဤအရာကို ပိတ်ထားပြီး စတင်သည်။
 tax_chrome_on	ပြမည်
 tax_chrome_off	ဖျောက်မည်
 tax_chrome_saved_on	ငွေကောင်တာပေါ် အခွန်တံဆိပ်များ
 tax_chrome_saved_off	ငွေကောင်တာပေါ် အခွန်တံဆိပ်များ ဖျောက်ထားသည်
 tax_invoice_till	ငွေကောင်တာပေါ် အခွန်ပြေစာ
-tax_invoice_help	ပိတ်ထားသောအခါ၊ ဘေလ်များသည် ငွေသားမှတ်တမ်းသာဖြစ်ပြီး ငွေတောင်းခံလွှာ / ငွေသားမှတ်တမ်း ချစ်ပ်များကို အော်ဒါ ထားရာမိသားစုမှာ လျှို့ဝှက်ထားသည်။ Rajdhani အက်ပ်ပုံစံသည် ပိတ်ထားခြင်းဖြင့် စတင်သည် — Tax invoice ကို ပြန်ရွေးချယ်ရန် Show ကို မည်သည့်အချိန်ကမဆို ပြန်ဖွင့်နိုင်သည်။
+tax_invoice_help	ပိတ်ထားသောအခါ ဘောင်ချာများသည် ငွေသားမှတ်စုသာဖြစ်ပြီး အော်ဒါစားပွဲပေါ်ရှိ အခွန်ငွေတောင်းခံလွှာ / ငွေသားမှတ်စု ခလုတ်များကို ဖျောက်ထားသည်။ အချို့ဆိုင်ပုံစံများသည် ဤအရာကို ပိတ်ထားပြီး စတင်သည် — အခွန်ငွေတောင်းခံလွှာကို ပြန်ရွေးရန် ပြသရန်ကို အချိန်မရွေး ဖွင့်ပါ။
 tax_invoice_on	ပြမည်
 tax_invoice_off	ဖျောက်မည်
 tax_invoice_saved_on	ငွေကောင်တာပေါ် အခွန်ပြေစာ
 tax_invoice_saved_off	ငွေတောင်းခံလွှာ လျှို့ဝှက်ထားသည် — ငွေသားမှတ်တမ်းသာ
 pay_methods	ငွေပေးချေမှုနည်းများ
-pay_methods_help	Take payment တွင် ဘယ်ချစ်ပ်များ ပေါ်မည်ကို ရွေးနိုင်သည်။ ငွေသားသည် အမြဲနေရန်ရှိသည်။ Rajdhani အက်ပ်ပုံစံသည် ငွေသားသာဖြင့် စတင်သည် — UPI / ကတ် / ခရက်ဒစ် / ခွဲငွေ ချစ်ပ်များကို ဒီမှာပြန်ဖွင့်ပါ။
+pay_methods_help	ငွေလက်ခံရန် တွင် မည်သည့်ခလုတ်များ ပေါ်မည်။ ငွေသား အမြဲကျန်သည်။ အချို့ဆိုင်ပုံစံများသည် ငွေသားဖြင့်သာ စတင်သည် — UPI / ကတ် / အကြွေး / ခွဲဝေ ကို ဤနေရာတွင် ပြန်ဖွင့်ပါ။
 create_backup	မိတ္တူ တည်ဆောက်ရန်
 credit_limit_heading	အကြွေးအနည်းဆုံး ကန့်သတ်မှု (ရွေးပြီး / အမည်ပေးထားသောပါတီ)
 day_close_summary	နေ့အဆုံး အကျဉ်းချုပ်
@@ -793,10 +793,10 @@ printers_looking	ရှာနေသည်…
 saving_printer	ပရင်တာ ထည့်နေသည်…
 cancelled	အားပယ်လိုက်သည်
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	ဖယ်ရှားနေသည်…
+removed	ဖယ်ရှားပြီး
+updating_order	အပ်ဒိတ်လုပ်နေသည်…
+order_updated	အော်ဒါကို အပ်ဒိတ်လုပ်ပြီး
 printers_tap_find	အကိန်းမည့် ရှာဖွေပါ။ ဒီစက်မှ အသုံးပြုနိုင်သည့် ပရင်တာများကို စာရင်းပြပါ။
 printers_none_found	မတွေ့ပါ — စနစ်ပရင်တာအမည် သို့မဟုတ် IP (ဥပမာ 192.168.1.50) ရိုက်ထည့်ပါ။
 printer_from_find	ထည့်ပြီး {name}
@@ -1337,7 +1337,6 @@ kot_field_table	စားပွဲ
 kot_field_shop	ဆိုင်နာမည်
 kot_field_waiter	ဝန်ထမ်း
 kot_field_station	စတေးရှင်း
-app_template_blurb_extra	အခြား: ပိုင်ရှင် Zahir, Admin Asif, ဝန်ဆောင်မှု Nawaz; FOH ဘားဘက်; ၄ နာရီအပြီး သမိုင်း; ဒီနေ့ ရှုတ်တုံး; စုပုံ KOT.
 dishes_n	{n} အစားအစာများ
 recipe_ph	ချက်ပြုတ်နည်း (မလိုအပ်ပါ) — တစ်ပိုင်းမှာ သုံးသောအရာများ: ထမင်း=0.2, ပနီ=0.15
 reorder_ph	ပိုဝယ်ရန်
@@ -1364,3 +1363,7 @@ recent_changes	မကြာသေးမီပြောင်းလဲမှု�
 lane_declared_label	အခွန်ငွေတောင်းခံလွှာ
 lane_owner_label	ငွေသားလက်မှတ်
 money_lane_bill	ဘီးလ်: {lane}
+app_template_download_progress	ဒေါင်းလုဒ်လုပ်နေသည်… {p}% ({d} / {t})
+app_template_download_paused	ဆက်လုပ်ရန် ထပ်မံတင်သွင်းပါ — ပြီးဆုံးသောဖိုင်များ ထိန်းသိမ်းထားသည်
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

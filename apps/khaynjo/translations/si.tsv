@@ -182,7 +182,7 @@ snack_secs_save	අනතුරු ඇඟවීමේ කාලය ඉතිර�
 snack_secs_saved	අනතුරු ඇඟවීමේ කාලය ඉතිරි කර ඇත - තත්පර {n}
 settings_sec_backup	උපස්ථ සහ ප්‍රතිසාධනය
 settings_sec_diag	රෝග විනිශ්චය
-settings_sec_privacy	Privacy
+settings_sec_privacy	පෞද්ගලිකත්වය
 diag_privacy_help	ලඝු-සටහන් මෙම උපාංගයේ පවතී. රහස් (PIN, මුරපද) කිසිදා ගබඩා නොවේ. උපාංගයෙන් පිටත පැකේජයක් බෙදා ගැනීමට සෑම අවස්ථාවකදීම ඔබේ පැහැදිලි අනුමැතිය අවශ්‍ය වේ - කිසිවිටෙක විකුණනු නොලැබේ හෝ තෙවන පාර්ශවයන්ට ලබා නොදේ.
 diag_level	විස්තර මට්ටම
 diag_level_error	දෝෂ
@@ -339,21 +339,21 @@ server_remove_pin_ph	සේවාදායකයක් ඉවත් කිරී
 only_owner_remove_server	සේවාදායකයක් ඉවත් කළ හැක්කේ හිමිකරුට පමණි
 owner_pin_remove_server	මෙම සේවාදායකය ඉවත් කිරීමට හිමිකරු PIN අවශ්‍යයි
 device_setup_help	සේවාදායකය මෙහි ලෙජර් තබා ගනී. සේවාදායක යුගල සේවාදායකයකට.
-app_template_heading	Rajdhani App Template
-app_template_blurb	Rajdhani මෙනුව පූරණය කරයි; හිමිකරු Zahir (zahir), පරිපාලක Asif (asif, PIN 1111), Waiter Nawaz (nawaz, PIN 0000); FOH පැති තීරුව; පැය 4කට පසු ඉතිහාසය හිස් වේ (සහ දැන් උපස්ථයේ හිස් කරන්න); අද ගලවන්න; සංයුක්ත KOT + පටු තැටි සඳහා සම්මත මායිම්. පැති තීරු සගයන් සැකසීම් තුළ නැවත ක්‍රියාත්මක කළ හැක.
-app_template_apply	Rajdhani App Template
+app_template_heading	සාප්පු සැකිලි
+app_template_blurb	පොදු ආරම්භක මෙනුවක් ආයාත කරන්න, නැතහොත් ඔබේ Khaynjo සම්බන්ධතාවයෙන් ලැබුණු ඉලක්කම් 12ක පුද්ගලික කේතය ඇතුළත් කරන්න.
+app_template_apply	සැකිල්ල ආයාත කරන්න
 app_template_skip	දැනට මග හරින්න
-app_template_status	සේවාදායකය සූදානම් - Rajdhani App Template යොදන්න, නැතහොත් මඟ හරින්න
+app_template_status	සේවාදායකය සූදානම් — සැකිල්ලක් ආයාත කරන්න, නැතහොත් මඟ හරින්න
 app_template_importing	{title} අයදුම් කරමින්...
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	සැකිල්ල බාගත වෙමින්…
+app_template_public_hdr	පොදු සැකිලි
+app_template_private_hdr	පුද්ගලික සැකිල්ල
+app_template_public_hint	පොදු ලැයිස්තුව පූරණය කිරීමට මෙම කොටස විවෘත කරන්න (එක් වරක් අන්තර්ජාලය අවශ්‍යයි).
+app_template_code_not_found	කේතය හමු නොවීය
+app_template_need_internet	සැකිලි බාගත කිරීමට අන්තර්ජාලය අවශ්‍යයි
+app_template_import_selected	තෝරාගත් දේ ආයාත කරන්න
+app_template_check_code	කේතය පරීක්ෂා කරන්න
+app_template_import	ආයාත කරන්න
 currency	මුදල්
 backup	උපස්ථ
 use	භාවිතා කරන්න
@@ -474,19 +474,19 @@ copy_report	වාර්තාව පිටපත් කරන්න
 counted_cash_ph	ලාච්චුවේ මුදල් ගණන් කළා
 country_tax	රට සහ බදු
 tax_chrome	මුදල් ලේඛනයේ බදු ලේබල
-tax_chrome_help	ක්‍රියාවිරහිත වූ විට, ඇණවුම් මේසය GST/බදු ඇස්තමේන්තු රේඛා සහ GST-in-price placeholders සඟවයි. බදු අනුපාත සහ රට සහ බදු සැකසීම් පවතී - ඕනෑම වේලාවක ලේබල නැවත ක්‍රියාත්මක කරන්න. Rajdhani App Template ආරම්භ වන්නේ මෙය අක්‍රිය කිරීමෙනි.
+tax_chrome_help	අක්‍රිය විට, ඇණවුම් මේසය GST/බදු ඇස්තමේන්තු පේළි සහ මිලෙහි-GST ස්ථාන දරන්නන් සඟවයි. බදු අනුපාත සහ රට සහ බදු සැකසීම් පවතී — ඕනෑම වේලාවක ලේබල් නැවත සක්‍රිය කරන්න. සමහර සාප්පු සැකිලි මෙය අක්‍රියව ආරම්භ වේ.
 tax_chrome_on	පෙන්වන්න
 tax_chrome_off	සඟවන්න
 tax_chrome_saved_on	මුදල් ලේඛනයේ බදු ලේබල
 tax_chrome_saved_off	බදු ලේබල මුදල් ලේඛනයේ සඟවා ඇත
 tax_invoice_till	මුදල් ලේඛනයේ බදු ඉන්වොයිසිය
-tax_invoice_help	ක්‍රියාවිරහිත වූ විට, අමුත්තන්ගේ බිල්පත් මුදල් මතක සටහන් පමණක් වන අතර බදු ඉන්වොයිසිය / මුදල් මතක චිප් ඇණවුම් මේසය මත සඟවා ඇත. Rajdhani App Template ආරම්භ වන්නේ මෙය අක්‍රිය කිරීමෙනි - බදු ඉන්වොයිසිය නැවත තෝරා ගැනීමට ඕනෑම වේලාවක ආපසු පෙන්වන්න සක්‍රිය කරන්න.
+tax_invoice_help	අක්‍රිය විට, බිල්පත් මුදල් සටහන් පමණක් වන අතර ඇණවුම් මේසයේ බදු ඉන්වොයිසිය / මුදල් සටහන බොත්තම් සැඟවේ. සමහර සාප්පු සැකිලි මෙය අක්‍රියව ආරම්භ වේ — බදු ඉන්වොයිසිය නැවත තෝරා ගැනීමට පෙන්වන්න ඕනෑම වේලාවක සක්‍රිය කරන්න.
 tax_invoice_on	පෙන්වන්න
 tax_invoice_off	සඟවන්න
 tax_invoice_saved_on	මුදල් ලේඛනයේ බදු ඉන්වොයිසිය
 tax_invoice_saved_off	බදු ඉන්වොයිසිය සඟවා ඇත - මුදල් සංදේශය පමණි
 pay_methods	ගෙවීම් ක්රම
-pay_methods_help	Take payment මත දිස්වන චිප්ස්. මුදල් සෑම විටම පවතී. Rajdhani App Template ආරම්භ වන්නේ මුදල් වලින් පමණි — UPI / Card / Credit / Split ආපසු මෙතැනින් හරවන්න.
+pay_methods_help	ගෙවීම ලබාගන්න හි කුමන බොත්තම් පෙනේද. මුදල් සැමවිටම පවතී. සමහර සාප්පු සැකිලි මුදල් පමණක් සමඟ ආරම්භ වේ — UPI / කාඩ්පත / ණය / බෙදීම මෙතැනින් නැවත සක්‍රිය කරන්න.
 create_backup	උපස්ථ සාදන්න
 credit_limit_heading	ණය සීමාව (තෝරාගත් පාරිභෝගිකයා හෝ සැපයුම්කරු)
 day_close_summary	දින සමීප සාරාංශය
@@ -793,10 +793,10 @@ printers_looking	බලමින්…
 saving_printer	මුද්‍රණ යන්ත්‍රය එක් කරමින්...
 cancelled	අවලංගු කළා
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	ඉවත් කරමින්…
+removed	ඉවත් කළා
+updating_order	යාවත්කාලීන වෙමින්…
+order_updated	ඇණවුම යාවත්කාලීන විය
 printers_tap_find	මෙම උපාංගය භාවිත කළ හැකි මුද්‍රණ යන්ත්‍ර ලැයිස්තුගත කිරීමට සොයන්න තට්ටු කරන්න.
 printers_none_found	කිසිවක් හමු නොවීය - පද්ධති මුද්‍රණ යන්ත්‍රයේ නමක් හෝ IP එකක් ටයිප් කරන්න (උදා. 192.168.1.50).
 printer_from_find	{name} එකතු කරන ලදී
@@ -1337,7 +1337,6 @@ kot_field_table	කෑම මේසය
 kot_field_shop	සාප්පුවේ නම
 kot_field_waiter	කාර්ය මණ්ඩලය
 kot_field_station	දුම්රිය ස්ථානය
-app_template_blurb_extra	තවද: හිමිකරු Zahir, පරිපාලක Asif, වේටර් Nawaz; FOH පැති තීරුව; පැය 4 කට පසු ඉතිහාසය; අද ගලවන්න; සංයුක්ත KOT.
 dishes_n	{n} කෑම වර්ග
 recipe_ph	වට්ටෝරුව (විකල්ප) - එක් කොටසක් භාවිතා කරයි: Rice=0.2, Paneer=0.15
 reorder_ph	වැඩි මිලට ගන්න
@@ -1364,3 +1363,7 @@ recent_changes	මෑත වෙනස්කම්
 lane_declared_label	බදු ඉන්වොයිසිය
 lane_owner_label	මුදල් සංදේශය
 money_lane_bill	ආරාධිත අමුත්තන්ගේ බිල්පත: {lane}
+app_template_download_progress	බාගත වෙමින්… {p}% ({d} / {t})
+app_template_download_paused	නැවත ආරම්භ කිරීමට නැවත ආයාත කරන්න — සම්පූර්ණ ගොනු තබා ගනී
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

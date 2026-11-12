@@ -339,21 +339,21 @@ server_remove_pin_ph	PIN Owner per rimuovere
 only_owner_remove_server	Solo l'Owner può rimuovere un server
 owner_pin_remove_server	Serve il PIN Owner per rimuovere questo server
 device_setup_help	Il server tiene qui i libri. Il client si abbina a un server.
-app_template_heading	Modello di app Rajdhani
-app_template_blurb	Carica il menu Rajdhani; Proprietario Zahir (zahir), Amministratore Asif (asif, PIN 1111), Cameriere Nawaz (nawaz, PIN 0000); barra laterale FOH; la cronologia viene cancellata dopo 4 ore (e Cancellazione ora in Backup); striscia di oggi rimossa; KOT compatto + margini standard per vassoi stretti. I pari della barra laterale possono essere riattivati nelle Impostazioni.
-app_template_apply	Modello di app Rajdhani
+app_template_heading	Modelli negozio
+app_template_blurb	Importa un menu iniziale pubblico, oppure inserisci un codice privato di 12 cifre ricevuto dal tuo contatto Khaynjo.
+app_template_apply	Importa modello
 app_template_skip	Salta per ora
-app_template_status	Server pronto — applica il modello di app Rajdhani o salta
+app_template_status	Server pronto — importa un modello o salta
 app_template_importing	Applicazione di {title}…
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	Download del modello…
+app_template_public_hdr	Modelli pubblici
+app_template_private_hdr	Modello privato
+app_template_public_hint	Apri questa sezione per caricare l'elenco pubblico (serve internet una volta).
+app_template_code_not_found	Codice non trovato
+app_template_need_internet	Serve internet per scaricare i modelli
+app_template_import_selected	Importa selezionato
+app_template_check_code	Verifica codice
+app_template_import	Importa
 currency	Valuta
 backup	Backup
 use	Usa
@@ -474,19 +474,19 @@ copy_report	Copia report
 counted_cash_ph	Contanti contati in cassa
 country_tax	Paese e tasse
 tax_chrome	Etichette fiscali sulla cassa
-tax_chrome_help	Quando spento, la scrivania degli ordini nasconde le righe di stima GST/IVA e i segnaposto per l'IVA inclusa nel prezzo. Tassi fiscali e impostazioni Paese e tasse rimangono attivi — riattiva le etichette quando vuoi. Il modello Rajdhani App inizia con questa opzione spenta.
+tax_chrome_help	Quando è disattivato, il banco ordini nasconde le righe di stima GST/imposte e i segnaposto GST incluso nel prezzo. Le aliquote e le impostazioni Paese e imposte restano — riattiva le etichette quando vuoi. Alcuni modelli negozio partono con questa opzione disattivata.
 tax_chrome_on	Mostra
 tax_chrome_off	Nascondi
 tax_chrome_saved_on	Etichette fiscali sulla cassa
 tax_chrome_saved_off	Etichette fiscali nascoste sulla cassa
 tax_invoice_till	Fattura fiscale sulla cassa
-tax_invoice_help	Quando spento, le ricevute sono solo scontrino e i chip Fattura fiscale / Scontrino sono nascosti sulla scrivania degli ordini. Il modello Rajdhani App inizia con questa opzione spenta — riattiva Mostra per selezionare nuovamente la Fattura fiscale.
+tax_invoice_help	Quando è disattivato, i conti sono solo ricevute in contanti e i pulsanti Fattura fiscale / Ricevuta in contanti sono nascosti sul banco ordini. Alcuni modelli negozio partono con questa opzione disattivata — riattiva Mostra quando vuoi per scegliere di nuovo Fattura fiscale.
 tax_invoice_on	Mostra
 tax_invoice_off	Nascondi
 tax_invoice_saved_on	Fattura fiscale sulla cassa
 tax_invoice_saved_off	Fattura fiscale nascosta — solo scontrino
 pay_methods	Metodi di pagamento
-pay_methods_help	Quali chip appaiono su Preleva pagamento. Cash rimane sempre attivo. Il modello Rajdhani App inizia con solo Cash — riattiva UPI / Carta / Credito / Split qui.
+pay_methods_help	Quali pulsanti compaiono in Incassa. Il contante resta sempre. Alcuni modelli negozio partono solo con Contanti — riattiva qui UPI / Carta / Credito / Dividi.
 create_backup	Crea backup
 credit_limit_heading	Limite di credito (parte selezionata / nominata)
 day_close_summary	Riepilogo chiusura giorno
@@ -793,10 +793,10 @@ printers_looking	Ricerca stampanti su questo dispositivo e Wi‑Fi…
 saving_printer	Aggiunta stampante…
 cancelled	Annullato
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Rimozione…
+removed	Rimosso
+updating_order	Aggiornamento…
+order_updated	Ordine aggiornato
 printers_tap_find	Tocca Trova stampanti per elencare le stampanti utilizzabili su questo dispositivo.
 printers_none_found	Nessuna stampante trovata — digita un nome di sistema o un indirizzo di rete (es. 192.168.1.50).
 printer_from_find	Aggiunto {name}
@@ -1337,7 +1337,6 @@ kot_field_table	Tavolo
 kot_field_shop	Nome negozio
 kot_field_waiter	Personale
 kot_field_station	Stazione
-app_template_blurb_extra	Inoltre: Proprietario Zahir, Admin Asif, Cameriere Nawaz; barra laterale FOH; cronologia dopo 4 ore; striscia Oggi da rimuovere; KOT compatto.
 dishes_n	{n} piatti
 recipe_ph	Ricetta (facoltativa) — una porzione usa: Rice=0.2, Paneer=0.15
 reorder_ph	Riordina a
@@ -1364,3 +1363,7 @@ recent_changes	Modifiche recenti
 lane_declared_label	Fattura fiscale
 lane_owner_label	Scontrino
 money_lane_bill	Fattura: {lane}
+app_template_download_progress	Download in corso… {p}% ({d} / {t})
+app_template_download_paused	Importa di nuovo per riprendere — i file completati restano
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

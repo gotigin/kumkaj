@@ -339,21 +339,21 @@ server_remove_pin_ph	May-ari PIN para mag-alis ng server
 only_owner_remove_server	Ang May-ari lang ang makakapag-alis ng server
 owner_pin_remove_server	Kinakailangan ng may-ari PIN na alisin ang server na ito
 device_setup_help	Pinapanatili ng server ang mga ledger dito. Nagpares ang kliyente sa isang Server.
-app_template_heading	Rajdhani Template ng App
-app_template_blurb	Nilo-load ang Rajdhani menu; May-ari Zahir (zahir), Admin Asif (asif, PIN 1111), Waiter Nawaz (nawaz, PIN 0000); FOH sidebar; aalis ang kasaysayan pagkatapos ng 4 na oras (at I-clear ngayon sa Backup); Ngayon hubarin; compact KOT + Mga karaniwang margin para sa makitid na mga tray. Maaaring i-on muli ang mga sidebar peer sa Mga Setting.
-app_template_apply	Rajdhani Template ng App
+app_template_heading	Mga template ng tindahan
+app_template_blurb	Mag-import ng pampublikong panimulang menu, o ilagay ang pribadong 12-digit na code mula sa iyong Khaynjo contact.
+app_template_apply	I-import ang template
 app_template_skip	Laktawan sa ngayon
-app_template_status	Handa na ang server — ilapat ang Rajdhani Template ng App, o laktawan
+app_template_status	Handa na ang server — mag-import ng template, o laktawan
 app_template_importing	Nag-a-apply {title}…
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	Dina-download ang template…
+app_template_public_hdr	Mga pampublikong template
+app_template_private_hdr	Pribadong template
+app_template_public_hint	Buksan ang seksyong ito para i-load ang pampublikong listahan (kailangan ng internet nang isang beses).
+app_template_code_not_found	Hindi nakita ang code
+app_template_need_internet	Kailangan ng internet para mag-download ng mga template
+app_template_import_selected	I-import ang napili
+app_template_check_code	Suriin ang code
+app_template_import	I-import
 currency	Pera
 backup	Reserbang kopya
 use	Gamitin
@@ -474,19 +474,19 @@ copy_report	Kopyahin ang ulat
 counted_cash_ph	Nagbilang ng cash sa drawer
 country_tax	Bansa at buwis
 tax_chrome	Mga label ng buwis sa hanggang
-tax_chrome_help	Kapag naka-off, itinatago ng order desk ang GST/mga linya ng pagtatantya ng buwis at GST-sa-presyo na mga placeholder. Mananatili ang mga rate ng buwis at mga setting ng Bansa at buwis — ibalik ang mga label anumang oras. Rajdhani App Template ay nagsisimula dito.
+tax_chrome_help	Kapag naka-off, itinatago ng order desk ang mga linya ng tantya ng GST/buwis at ang mga placeholder ng GST-sa-presyo. Nananatili ang mga rate ng buwis at ang mga setting ng Bansa at buwis — i-on muli ang mga label anumang oras. Ang ilang template ng tindahan ay nagsisimula na naka-off ito.
 tax_chrome_on	Ipakita
 tax_chrome_off	Magtago
 tax_chrome_saved_on	Mga label ng buwis sa hanggang
 tax_chrome_saved_off	Nakatago ang mga label ng buwis sa hanggang
 tax_invoice_till	Tax invoice sa hanggang
-tax_invoice_help	Kapag off, ang mga bill ay Cash memo lang at ang Tax invoice / Cash memo chips ay nakatago sa order desk. Rajdhani App Template ay nagsisimula sa off ito — i-on ang Ipakita muli anumang oras upang pumili muli ng Tax invoice.
+tax_invoice_help	Kapag naka-off, cash memo lang ang mga bill at nakatago ang mga button na Tax invoice / Cash memo sa order desk. Ang ilang template ng tindahan ay nagsisimula na naka-off ito — i-on ang Ipakita anumang oras para piliin muli ang Tax invoice.
 tax_invoice_on	Ipakita
 tax_invoice_off	Magtago
 tax_invoice_saved_on	Tax invoice sa hanggang
 tax_invoice_saved_off	Nakatago ang invoice ng buwis — Cash memo lang
 pay_methods	Mga paraan ng pagbabayad
-pay_methods_help	Aling mga chip ang lalabas sa Take payment. Ang pera ay laging nananatili. Rajdhani App Template ay nagsisimula sa Cash lang — turn UPI / Card / Credit / Split back on dito.
+pay_methods_help	Aling mga button ang lalabas sa Tumanggap ng bayad. Laging nananatili ang Cash. Ang ilang template ng tindahan ay nagsisimula sa Cash lang — i-on muli rito ang UPI / Card / Utang / Hatiin.
 create_backup	Gumawa ng backup
 credit_limit_heading	Limitasyon sa kredito (piling customer o supplier)
 day_close_summary	Buod ng malapit na araw
@@ -793,10 +793,10 @@ printers_looking	naghahanap…
 saving_printer	Nagdaragdag ng printer…
 cancelled	Kinansela
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Inaalis…
+removed	Inalis
+updating_order	Ina-update…
+order_updated	Na-update ang order
 printers_tap_find	I-tap ang Hanapin upang ilista ang mga printer na magagamit ng device na ito.
 printers_none_found	Walang nahanap — mag-type ng pangalan ng system printer o isang IP (hal. 192.168.1.50).
 printer_from_find	Idinagdag {name}
@@ -1337,7 +1337,6 @@ kot_field_table	Dining table
 kot_field_shop	Pangalan ng tindahan
 kot_field_waiter	Mga tauhan
 kot_field_station	Istasyon
-app_template_blurb_extra	Gayundin: May-ari Zahir, Admin Asif, Waiter Nawaz; FOH sidebar; kasaysayan pagkatapos ng 4 na oras; Ngayon hubarin; siksik KOT.
 dishes_n	{n} pinggan
 recipe_ph	Recipe (opsyonal) — isang bahagi ay gumagamit ng: Rice=0.2, Paneer=0.15
 reorder_ph	Bumili ng higit pa sa
@@ -1364,3 +1363,7 @@ recent_changes	Mga kamakailang pagbabago
 lane_declared_label	Invoice ng buwis
 lane_owner_label	Resibo ng cash
 money_lane_bill	Resibo: {lane}
+app_template_download_progress	Nagda-download… {p}% ({d} / {t})
+app_template_download_paused	Mag-import ulit para ituloy — naiingatan ang mga tapos nang file
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

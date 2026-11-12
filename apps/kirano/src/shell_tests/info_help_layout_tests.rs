@@ -261,23 +261,25 @@ mod info_help_layout_tests {
         }
     }
 
-    /// SegBtn must not wrap — wrap inside squeezed cells makes irregular ovals.
+    /// SegBtn labels wrap on a Fit-height face (25fcce2) — a fixed or
+    /// no-wrap face clipped Gujarati / long labels on phone.
     #[test]
-    fn segbtn_does_not_wrap_label() {
+    fn segbtn_wraps_on_a_fit_height_face() {
         let ui = include_str!("../ui_script.rs");
-        if !ui.contains("let SegBtn = Button{") {
-            return;
-        }
         let seg = ui
             .split("let SegBtn = Button{")
             .nth(1)
             .and_then(|s| s.split("let KotRowBtn = Button{").next())
             .unwrap_or("");
         assert!(
-            !seg.contains("wrap: true"),
-            "SegBtn must use flow: Right (no wrap) so phone strips stay even"
+            seg.contains("flow: Right{wrap: true}"),
+            "SegBtn must wrap labels when squeezed"
         );
-        assert!(seg.contains("flow: Right"), "SegBtn must declare flow: Right");
+        assert!(seg.contains("height: Fit"), "SegBtn must grow with its label");
+        assert!(
+            !ui.contains("height: 40 flow: Overlay"),
+            "never clip SegBtn/ChipBtn in height:40 overlay shells"
+        );
     }
 
     /// Footer ScrollX must own whitespace lane presses (touch h-scroll).

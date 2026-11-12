@@ -182,7 +182,7 @@ snack_secs_save	Ogohlantirish vaqtini saqlash
 snack_secs_saved	Ogohlantirish vaqti saqlandi — {n} soniya
 settings_sec_backup	Zaxira nusxa va tiklash
 settings_sec_diag	Diagnostika
-settings_sec_privacy	Privacy
+settings_sec_privacy	Maxfiylik
 diag_privacy_help	Jurnallar shu qurilmada qoladi. Sirlar (PIN, parollar) hech qachon saqlanmaydi. Qurilmadan tashqariga paket ulashish har safar sizning aniq ruxsatingizni talab qiladi — hech qachon sotilmaydi va uchinchi tomonga berilmaydi.
 diag_level	Batafsillik darajasi
 diag_level_error	Xatolar
@@ -339,21 +339,21 @@ server_remove_pin_ph	Serverni olib tashlash uchun eganing PIN kodi
 only_owner_remove_server	Serverni faqat Egasi olib tashlay oladi
 owner_pin_remove_server	Bu serverni olib tashlash uchun eganing PIN kodi kerak
 device_setup_help	Server daftarlarini shu yerda saqlaydi. Mijoz Serverga juftlashadi.
-app_template_heading	Rajdhani ilova andozasi
-app_template_blurb	Rajdhani menyusini yuklaydi; Egasi Zahir (zahir), Admin Asif (asif, PIN 1111), Ofitsiant Nawaz (nawaz, PIN 0000); FOH yon paneli; tarix 4 soatdan keyin tozalanadi (va Zaxira nusxada Hozir tozalash); Bugun tasmasi oʻchiq; ixcham KOT + tor patnis uchun standart chetlar. Yon panel tengdoshlarini Sozlamalarda qayta yoqish mumkin.
-app_template_apply	Rajdhani ilova andozasi
+app_template_heading	Do'kon shablonlari
+app_template_blurb	Ommaviy boshlang'ich menyuni import qiling yoki Khaynjo kontaktingizdan olgan 12 raqamli shaxsiy kodni kiriting.
+app_template_apply	Shablonni import qilish
 app_template_skip	Hozircha oʻtkazib yuborish
-app_template_status	Server tayyor — Rajdhani andozasini qoʻllang yoki oʻtkazib yuboring
+app_template_status	Server tayyor — shablon import qiling yoki o'tkazib yuboring
 app_template_importing	{title} qoʻllanilmoqda…
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	Shablon yuklab olinmoqda…
+app_template_public_hdr	Ommaviy shablonlar
+app_template_private_hdr	Shaxsiy shablon
+app_template_public_hint	Ommaviy ro'yxatni yuklash uchun ushbu bo'limni oching (bir marta internet kerak).
+app_template_code_not_found	Kod topilmadi
+app_template_need_internet	Shablonlarni yuklab olish uchun internet kerak
+app_template_import_selected	Tanlanganni import qilish
+app_template_check_code	Kodni tekshirish
+app_template_import	Import qilish
 currency	Valyuta
 backup	Zaxira nusxa
 use	Foydalanish
@@ -474,19 +474,19 @@ copy_report	Hisobotni nusxalash
 counted_cash_ph	Tortmadagi sanalgan naqd
 country_tax	Mamlakat va soliq
 tax_chrome	Kassadagi soliq yorliqlari
-tax_chrome_help	Oʻchiq boʻlganda buyurtma kassasi GST/soliq baho qatorlari va narxdagi soliq joylarini yashiradi. Soliq stavkalari va Mamlakat va soliq sozlamalari qoladi — yorliqlarni istalgan vaqtda qayta yoqish mumkin. Rajdhani andozasi buni oʻchiq boshlaydi.
+tax_chrome_help	O'chirilganda buyurtma stoli GST/soliq taxmini qatorlarini va «narxdagi GST» joy egallovchilarini yashiradi. Soliq stavkalari hamda Mamlakat va soliq sozlamalari qoladi — yorliqlarni istalgan vaqtda qayta yoqing. Ba'zi do'kon shablonlari buni o'chirilgan holda boshlaydi.
 tax_chrome_on	Koʻrsatish
 tax_chrome_off	Yashirish
 tax_chrome_saved_on	Soliq yorliqlari kassada
 tax_chrome_saved_off	Soliq yorliqlari kassada yashirilgan
 tax_invoice_till	Kassadagi soliq hisob-fakturasi
-tax_invoice_help	Oʻchiq boʻlganda hisoblar faqat Naqd yozuv, Soliq hisob-fakturasi / Naqd yozuv chiplari buyurtma kassasida yashirin. Rajdhani andozasi buni oʻchiq boshlaydi — Soliq hisob-fakturasini qayta tanlash uchun Koʻrsatishni istalgan vaqtda yoqing.
+tax_invoice_help	O'chirilganda hisoblar faqat naqd chek bo'ladi va buyurtma stolidagi Soliq hisob-fakturasi / Naqd chek tugmalari yashiriladi. Ba'zi do'kon shablonlari buni o'chirilgan holda boshlaydi — Soliq hisob-fakturasini qayta tanlash uchun Ko'rsatishni istalgan vaqtda yoqing.
 tax_invoice_on	Koʻrsatish
 tax_invoice_off	Yashirish
 tax_invoice_saved_on	Soliq hisob-fakturasi kassada
 tax_invoice_saved_off	Soliq hisob-fakturasi yashirilgan — faqat Naqd yozuv
 pay_methods	Toʻlov usullari
-pay_methods_help	Toʻlov olishda qaysi chiplar chiqadi. Naqd har doim qoladi. Rajdhani andozasi faqat Naqd bilan boshlanadi — bu yerda UPI / Karta / Nasiya / Boʻlishni qayta yoqing.
+pay_methods_help	To'lovni qabul qilishda qaysi tugmalar ko'rinadi. Naqd har doim qoladi. Ba'zi do'kon shablonlari faqat Naqd bilan boshlanadi — UPI / Karta / Qarz / Bo'lish-ni shu yerda qayta yoqing.
 create_backup	Zaxira nusxa yaratish
 credit_limit_heading	Nasiya limiti (tanlangan / nomlangan kontragent)
 day_close_summary	Kun yopish xulosasi
@@ -793,10 +793,10 @@ printers_looking	Qidirilmoqda…
 saving_printer	Printer qoʻshilmoqda…
 cancelled	Bekor qilindi
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Olib tashlanmoqda…
+removed	Olib tashlandi
+updating_order	Yangilanmoqda…
+order_updated	Buyurtma yangilandi
 printers_tap_find	Bu qurilma ishlata oladigan printerlar roʻyxati uchun Qidiruvni bosing.
 printers_none_found	Hech narsa topilmadi — tizim printeri nomi yoki IP yozing (mas. 192.168.1.50).
 printer_from_find	{name} qoʻshildi
@@ -1337,7 +1337,6 @@ kot_field_table	Stol
 kot_field_shop	Doʻkon nomi
 kot_field_waiter	Xodim
 kot_field_station	Stansiya
-app_template_blurb_extra	Shuningdek: Egasi Zahir, Maʼmur Asif, Ofitsiant Nawaz; FOH yon paneli; 4 soatdan keyingi tarix; Bugun chizigʻi oʻchiq; ixcham KOT.
 dishes_n	{n} taom
 recipe_ph	Retsept (ixtiyoriy) — bir porsiya ishlatadi: Guruch=0.2, Paneer=0.15
 reorder_ph	Yana sotib olish
@@ -1364,3 +1363,7 @@ recent_changes	Soʻnggi oʻzgarishlar
 lane_declared_label	Soliq hisob-fakturasi
 lane_owner_label	Naqd yozuv
 money_lane_bill	Hisob: {lane}
+app_template_download_progress	Yuklab olinmoqda… {p}% ({d} / {t})
+app_template_download_paused	Davom ettirish uchun qayta import qiling — tayyor fayllar saqlanadi
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

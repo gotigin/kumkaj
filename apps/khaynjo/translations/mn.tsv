@@ -182,7 +182,7 @@ snack_secs_save	Мэдэгдлийн хугацааг хадгалах
 snack_secs_saved	Мэдэгдлийн хугацаа хадгалагдлаа — {n} секунд
 settings_sec_backup	Нөөц хуулбар ба сэргээх
 settings_sec_diag	Оношлогоо
-settings_sec_privacy	Privacy
+settings_sec_privacy	Нууцлал
 diag_privacy_help	Бүртгэл энэ төхөөрөмж дээр үлдэнэ. Нууц (PIN, нууц үг) хэзээ ч хадгалагдахгүй. Төхөөрөмжөөс гадуур багц хуваалцах бүрд таны тодорхой зөвшөөрөл хэрэгтэй — хэзээ ч зарж, гуравдагч этгээдэд өгөхгүй.
 diag_level	Дэлгэрэнгүйн түвшин
 diag_level_error	Алдаа
@@ -339,21 +339,21 @@ server_remove_pin_ph	Сервер хасахад эзэмшигчийн PIN
 only_owner_remove_server	Серверийг зөвхөн Эзэмшигч хасна
 owner_pin_remove_server	Энэ серверийг хасахад эзэмшигчийн PIN хэрэгтэй
 device_setup_help	Сервер дэвтрээ энд хадгална. Клиент Серверт хослоно.
-app_template_heading	Rajdhani аппын загвар
-app_template_blurb	Rajdhani цэсийг ачаална; Эзэмшигч Zahir (zahir), Админ Asif (asif, PIN 1111), Зөөгч Nawaz (nawaz, PIN 0000); FOH хажуугийн самбар; түүх 4 цагийн дараа цэвэрлэгдэнэ (ба Нөөц хуулбар дотор Одоо цэвэрлэх); Өнөөдөр зурвас унтраалттай; нягт KOT + нарийн тавиурт стандарт зах. Хажуугийн самбарын нөхдийг Тохиргоонд дахин асааж болно.
-app_template_apply	Rajdhani аппын загвар
+app_template_heading	Дэлгүүрийн загварууд
+app_template_blurb	Нийтийн эхлэлийн цэс импортлох, эсвэл Khaynjo-гийн холбоо барих хүнээсээ авсан 12 оронтой хувийн кодыг оруулна уу.
+app_template_apply	Загвар импортлох
 app_template_skip	Одоогоор алгасах
-app_template_status	Сервер бэлэн — Rajdhani загварыг хэрэглэх эсвэл алгасна
+app_template_status	Сервер бэлэн — загвар импортлох эсвэл алгасна уу
 app_template_importing	{title} хэрэглэж байна…
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	Загвар татаж байна…
+app_template_public_hdr	Нийтийн загварууд
+app_template_private_hdr	Хувийн загвар
+app_template_public_hint	Нийтийн жагсаалтыг ачаалахын тулд энэ хэсгийг нээнэ үү (нэг удаа интернэт хэрэгтэй).
+app_template_code_not_found	Код олдсонгүй
+app_template_need_internet	Загвар татахад интернэт хэрэгтэй
+app_template_import_selected	Сонгосныг импортлох
+app_template_check_code	Код шалгах
+app_template_import	Импортлох
 currency	Валют
 backup	Нөөц хуулбар
 use	Ашиглах
@@ -474,19 +474,19 @@ copy_report	Тайланг хуулах
 counted_cash_ph	Шүүгээнд тоолсон бэлэн
 country_tax	Улс ба татвар
 tax_chrome	Касс дээрх татварын шошго
-tax_chrome_help	Унтраалттай үед захиалгын ширээ GST/татварын тооцооны мөр ба үнэн дэх татварын байрыг нууна. Татварын хувь ба Улс ба татвар тохиргоо үлдэнэ — шошгыг хүссэн үедээ дахин асааж болно. Rajdhani загвар үүнийг унтраалттай эхэлнэ.
+tax_chrome_help	Унтраалттай үед захиалгын ширээ GST/татварын тооцооны мөрүүд болон «үнэд GST» орлуулагчийг нууна. Татварын хувь хэмжээ болон Улс ба татварын тохиргоо хэвээр үлдэнэ — шошгыг хүссэн үедээ дахин асаана уу. Зарим дэлгүүрийн загвар үүнийг унтраасан байдлаар эхэлдэг.
 tax_chrome_on	Харуулах
 tax_chrome_off	Нуух
 tax_chrome_saved_on	Татварын шошго касс дээр
 tax_chrome_saved_off	Татварын шошго касс дээр нуугдсан
 tax_invoice_till	Касс дээрх татварын нэхэмжлэл
-tax_invoice_help	Унтраалттай үед тооцоо зөвхөн Бэлэн тэмдэглэл, Татварын нэхэмжлэл / Бэлэн тэмдэглэл чипүүд захиалгын ширээн дээр нуугдана. Rajdhani загвар үүнийг унтраалттай эхэлнэ — Татварын нэхэмжлэлийг дахин сонгохын тулд Харуулахыг хүссэн үедээ асаана.
+tax_invoice_help	Унтраалттай үед тооцоо зөвхөн бэлэн мөнгөний баримт байх бөгөөд захиалгын ширээн дээрх Татварын нэхэмжлэх / Бэлэн мөнгөний баримт товчнууд нуугдана. Зарим дэлгүүрийн загвар үүнийг унтраасан байдлаар эхэлдэг — Татварын нэхэмжлэхийг дахин сонгохын тулд Харуулахыг хүссэн үедээ асаана уу.
 tax_invoice_on	Харуулах
 tax_invoice_off	Нуух
 tax_invoice_saved_on	Татварын нэхэмжлэл касс дээр
 tax_invoice_saved_off	Татварын нэхэмжлэл нуугдсан — зөвхөн Бэлэн тэмдэглэл
 pay_methods	Төлбөрийн арга
-pay_methods_help	Төлбөр авахад аль чип харагдах вэ. Бэлэн үргэлж үлдэнэ. Rajdhani загвар зөвхөн Бэлнээр эхэлнэ — энд UPI / Карт / Зээл / Хуваахыг дахин асаана.
+pay_methods_help	Төлбөр авах хэсэгт аль товчнууд харагдах вэ. Бэлэн мөнгө үргэлж үлдэнэ. Зарим дэлгүүрийн загвар зөвхөн Бэлэн мөнгөөр эхэлдэг — UPI / Карт / Зээл / Хуваах-ыг энд дахин асаана уу.
 create_backup	Нөөц хуулбар үүсгэх
 credit_limit_heading	Зээлийн хязгаар (сонгосон / нэрлэсэн харилцагч)
 day_close_summary	Өдөр хаалтын хураангуй
@@ -793,10 +793,10 @@ printers_looking	Хайж байна…
 saving_printer	Принтер нэмж байна…
 cancelled	Цуцлагдсан
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	Хасаж байна…
+removed	Хасагдлаа
+updating_order	Шинэчилж байна…
+order_updated	Захиалга шинэчлэгдлээ
 printers_tap_find	Энэ төхөөрөмж ашиглах принтерийн жагсаалтад Хайлт дээр товшино.
 printers_none_found	Юу ч олдсонгүй — системийн принтерийн нэр эсвэл IP бичнэ (ж. 192.168.1.50).
 printer_from_find	{name} нэмэгдлээ
@@ -1337,7 +1337,6 @@ kot_field_table	Ширээ
 kot_field_shop	Дэлгүүрийн нэр
 kot_field_waiter	Ажилтан
 kot_field_station	Станц
-app_template_blurb_extra	Мөн: Эзэмшигч Zahir, Админ Asif, Зөөгч Nawaz; FOH хажуу самбар; 4 цагийн дараах түүх; Өнөөдөр зурвас унтраалттай; нягт KOT.
 dishes_n	{n} хоол
 recipe_ph	Жор (заавал биш) — нэг порц хэрэглэнэ: Будаа=0.2, Панир=0.15
 reorder_ph	Дахин авах
@@ -1364,3 +1363,7 @@ recent_changes	Сүүлийн өөрчлөлт
 lane_declared_label	Татварын нэхэмжлэл
 lane_owner_label	Бэлэн тэмдэглэл
 money_lane_bill	Тооцоо: {lane}
+app_template_download_progress	Татаж байна… {p}% ({d} / {t})
+app_template_download_paused	Үргэлжлүүлэхийн тулд дахин импортлоно уу — дууссан файлууд хадгалагдана
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf

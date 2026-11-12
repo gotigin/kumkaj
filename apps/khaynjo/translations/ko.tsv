@@ -182,7 +182,7 @@ snack_secs_save	알림 시간 저장
 snack_secs_saved	알림 시간 저장됨 — {n}초
 settings_sec_backup	백업 및 복원
 settings_sec_diag	진단
-settings_sec_privacy	Privacy
+settings_sec_privacy	개인정보
 diag_privacy_help	로그는 이 장치에 유지됩니다. 비밀 정보 (PIN, 비밀번호) 는 절대 저장되지 않습니다. 장치를 벗어나 패키지를 공유할 때는 매번 명시적인 승인이 필요합니다 — 절대 판매되거나 제 3 자에게 제공되지 않습니다.
 diag_level	상세 수준
 diag_level_error	오류
@@ -339,21 +339,21 @@ server_remove_pin_ph	서버 삭제 Owner PIN
 only_owner_remove_server	Owner만 서버를 삭제할 수 있습니다
 owner_pin_remove_server	이 서버를 삭제하려면 Owner PIN이 필요합니다
 device_setup_help	서버는 장부를 여기에 보관합니다. 클라이언트는 서버와 페어링합니다.
-app_template_heading	Rajdhani 앱 템플릿
-app_template_blurb	Rajdhani 메뉴를 로드합니다. 소유자 Zahir (zahir), 관리자 Asif (asif, PIN 1111), 웨이터 Nawaz (nawaz, PIN 0000); FOH 사이드바; 4 시간 후 히스토리 초기화 (백업의 '지금 지우기' 포함); 오늘 스트립 제거; 좁은 트레이를 위한 컴팩트 KOT + 표준 여백. 사이드바 동료는 설정에서 다시 켤 수 있습니다.
-app_template_apply	Rajdhani 앱 템플릿
+app_template_heading	매장 템플릿
+app_template_blurb	공개 시작 메뉴를 가져오거나 Khaynjo 담당자에게 받은 12자리 비공개 코드를 입력하세요.
+app_template_apply	템플릿 가져오기
 app_template_skip	나중에 건너뛰기
-app_template_status	서버 준비됨 — Rajdhani 앱 템플릿을 적용하거나 건너뛰세요
+app_template_status	서버 준비 완료 — 템플릿을 가져오거나 건너뛰세요
 app_template_importing	{title} 적용 중…
-app_template_downloading	Downloading template…
-app_template_public_hdr	Public templates
-app_template_private_hdr	Private template
-app_template_public_hint	Open this section to load the public list (needs internet once).
-app_template_code_not_found	Code not found
-app_template_need_internet	Need internet to download templates
-app_template_import_selected	Import selected
-app_template_check_code	Check code
-app_template_import	Import
+app_template_downloading	템플릿 다운로드 중…
+app_template_public_hdr	공개 템플릿
+app_template_private_hdr	비공개 템플릿
+app_template_public_hint	공개 목록을 불러오려면 이 섹션을 여세요(처음 한 번 인터넷 필요).
+app_template_code_not_found	코드를 찾을 수 없습니다
+app_template_need_internet	템플릿을 다운로드하려면 인터넷이 필요합니다
+app_template_import_selected	선택 항목 가져오기
+app_template_check_code	코드 확인
+app_template_import	가져오기
 currency	통화
 backup	백업
 use	사용
@@ -474,19 +474,19 @@ copy_report	보고서 복사
 counted_cash_ph	서랍에 센 현금
 country_tax	국가와 세금
 tax_chrome	카운터의 세금 라벨
-tax_chrome_help	비활성화 시, 주문 데스크는 GST/세금 추정치 줄 및 가격 내 포함 GST 플레이스홀더를 숨깁니다. 세금 비율 및 국가 및 세금 설정은 유지되며, 언제든지 라벨을 다시 켤 수 있습니다. Rajdhani 앱 템플릿은 이 기능이 꺼진 상태로 시작합니다.
+tax_chrome_help	끄면 주문 데스크에서 GST/세금 예상 줄과 가격 포함 GST 자리 표시를 숨깁니다. 세율과 국가 및 세금 설정은 그대로 유지됩니다 — 라벨은 언제든 다시 켤 수 있습니다. 일부 매장 템플릿은 이 옵션을 끈 상태로 시작합니다.
 tax_chrome_on	표시
 tax_chrome_off	숨기기
 tax_chrome_saved_on	카운터의 세금 라벨
 tax_chrome_saved_off	카운터에서 세금 라벨 숨김
 tax_invoice_till	카운터의 세금 영수증
-tax_invoice_help	비활성화 시, 청구서는 현금 메모만 표시되며 주문 데스크에서 세금 영수증/현금 메모 칩이 숨겨집니다. Rajdhani 앱 템플릿은 이 기능이 꺼진 상태로 시작합니다 — 언제든지 '표시'를 켜서 다시 세금 영수증을 선택하세요.
+tax_invoice_help	끄면 계산서는 현금 영수증만 되고 주문 데스크의 세금계산서 / 현금 영수증 버튼이 숨겨집니다. 일부 매장 템플릿은 이 옵션을 끈 상태로 시작합니다 — 세금계산서를 다시 선택하려면 언제든 표시를 켜세요.
 tax_invoice_on	표시
 tax_invoice_off	숨기기
 tax_invoice_saved_on	카운터의 세금 영수증
 tax_invoice_saved_off	세금 영수증 숨김 — 현금 메모 전용
 pay_methods	결제 방법
-pay_methods_help	'결제 받기'에 표시되는 칩입니다. 캐시는 항상 유지됩니다. Rajdhani 앱 템플릿은 캐시 전용으로 시작합니다 — 여기에서 UPI/카드/신용/분할을 다시 켜세요.
+pay_methods_help	결제 받기에 표시할 버튼입니다. 현금은 항상 남습니다. 일부 매장 템플릿은 현금만으로 시작합니다 — 여기에서 UPI / 카드 / 외상 / 분할을 다시 켜세요.
 create_backup	백업 만들기
 credit_limit_heading	신용 한도(선택/지정한 거래처)
 day_close_summary	마감 요약
@@ -793,10 +793,10 @@ printers_looking	이 기기와 Wi‑Fi에서 프린터를 찾는 중…
 saving_printer	프린터 추가 중…
 cancelled	취소됨
 cancelling	Cancellingâ¦
-removing	Removing…
-removed	Removed
-updating_order	Updating…
-order_updated	Order updated
+removing	제거 중…
+removed	제거됨
+updating_order	업데이트 중…
+order_updated	주문이 업데이트되었습니다
 printers_tap_find	찾기를 눌러 이 기기에서 쓸 수 있는 프린터를 표시하세요.
 printers_none_found	프린터를 찾지 못함 — 시스템 이름 또는 네트워크 주소를 입력하세요(예: 192.168.1.50).
 printer_from_find	{name} 추가됨
@@ -1337,7 +1337,6 @@ kot_field_table	테이블
 kot_field_shop	매장 이름
 kot_field_waiter	직원
 kot_field_station	스테이션
-app_template_blurb_extra	또한: 소유자 Zahir, 관리자 Asif, 웨이터 Nawaz; FOH 사이드바; 4 시간 후 기록; 오늘 스트립 제거; 컴팩트 KOT.
 dishes_n	요리 {n}개
 recipe_ph	레시피(선택) — 1인분 사용량: Rice=0.2, Paneer=0.15
 reorder_ph	이 수량에서 추가 구매
@@ -1364,3 +1363,7 @@ recent_changes	최근 변경
 lane_declared_label	세금 계산서
 lane_owner_label	현금 메모
 money_lane_bill	영수증: {lane}
+app_template_download_progress	다운로드 중… {p}% ({d} / {t})
+app_template_download_paused	다시 가져오면 이어서 받습니다 — 완료된 파일은 유지됩니다
+template_need_download	Download the public dish photo shelf (~1,459 dishes), then import missing names into your menu.
+template_download_shelf	Download photo shelf
