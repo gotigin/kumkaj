@@ -12990,7 +12990,7 @@ mod kot_print_item_lines_tests {
 }
 
 /// Reverse-DNS app id from this crate's `env/development.env` or `env/production.env`
-/// (baked by `build.rs`). Dev: `com.tabiyat.debug`. Prod: `com.tabiyat`.
+/// (baked by `build.rs`). Dev: `shop.tabiyat.debug`. Prod: `shop.tabiyat`.
 pub const APP_ID: &str = env!("KUMKAJ_APP_ID");
 /// Launcher / window label from the same env file.
 pub const APP_LABEL: &str = env!("KUMKAJ_APP_LABEL");

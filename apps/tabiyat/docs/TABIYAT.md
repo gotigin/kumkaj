@@ -4,10 +4,11 @@
 > **What ships:** the Kumkaj pharmacy product — a concrete business
 > operating system for chemist / pharmacy counters, under the Kumkaj
 > brand alongside Moklanjo, Khaynjo and Kirano.
-> **Platform ids:** production `com.tabiyat` · development
-> `com.tabiyat.debug`
-> **Naming:** domain **tabiyat.shop**; id root `com.tabiyat` — not
-> `com.kumkaj.*`.
+> **Platform ids:** production `shop.tabiyat` · development
+> `shop.tabiyat.debug`
+> **Naming:** domain **tabiyat.shop**. Platform id is the reverse DNS
+> of that domain: `shop.tabiyat` / `shop.tabiyat.debug` — never
+> `com.tabiyat` and never `com.kumkaj.*`.
 > **Doctrine:** [`docs/KUMKAJ_PRODUCT_VISION_AND_REQUIREMENTS.md`](../../../docs/KUMKAJ_PRODUCT_VISION_AND_REQUIREMENTS.md)
 > §1–2. No Kumkaj core; this crate owns all pharmacy code.
 
@@ -97,6 +98,6 @@ owner-facing copy.
 
 | | Prod | Dev |
 |---|---|---|
-| App id | `com.tabiyat` | `com.tabiyat.debug` |
+| App id | `shop.tabiyat` | `shop.tabiyat.debug` |
 | Ports | TCP 7877 / UDP 7878 | same |
 | Dev | `cargo tabiyat-dev` | |

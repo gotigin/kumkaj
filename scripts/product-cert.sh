@@ -78,8 +78,8 @@ pkg_id_for() {
   case "$1" in
     khaynjo) echo com.khaynjo ;;
     moklanjo) echo com.moklanjo ;;
-    kirano) echo com.kirano ;;
-    tabiyat) echo com.tabiyat ;;
+    kirano) echo shop.kirano ;;
+    tabiyat) echo shop.tabiyat ;;
     *) return 1 ;;
   esac
 }

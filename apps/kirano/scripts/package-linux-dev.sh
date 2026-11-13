@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Build development Linux package (debug app id) + install/uninstall helpers.
 # Output: dist/kirano-linux-dev/
-# Uses debug Cargo profile + the app's env/development.env (→ com.kirano.debug)
+# Uses debug Cargo profile + the app's env/development.env (→ shop.kirano.debug)
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/../../.." && pwd)"
 cd "$ROOT"

@@ -12997,7 +12997,7 @@ mod kot_print_item_lines_tests {
 }
 
 /// Reverse-DNS app id from this crate's `env/development.env` or `env/production.env`
-/// (baked by `build.rs`). Dev: `com.kirano.debug`. Prod: `com.kirano`.
+/// (baked by `build.rs`). Dev: `shop.kirano.debug`. Prod: `shop.kirano`.
 pub const APP_ID: &str = env!("KUMKAJ_APP_ID");
 /// Launcher / window label from the same env file.
 pub const APP_LABEL: &str = env!("KUMKAJ_APP_LABEL");

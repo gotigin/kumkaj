@@ -49,12 +49,12 @@ load_identity() {
   fi
   if [[ "$MODE" == "development" ]]; then
     export KUMKAJ_ENV=development
-    export KUMKAJ_APP_ID=com.kirano.debug
+    export KUMKAJ_APP_ID=shop.kirano.debug
     export KUMKAJ_APP_LABEL="Kirano Dev"
     return 0
   fi
   export KUMKAJ_ENV=production
-  export KUMKAJ_APP_ID=com.kirano
+  export KUMKAJ_APP_ID=shop.kirano
   export KUMKAJ_APP_LABEL="Kirano"
 }
 

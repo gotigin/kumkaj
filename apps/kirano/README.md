@@ -7,7 +7,7 @@ and Kirano’s own books underneath. Local-first on Makepad 2.
 | | |
 |---|---|
 | Binary | `kumkaj-kirano` |
-| Ids | `com.kirano` · `com.kirano.debug` |
+| Ids | `shop.kirano` · `shop.kirano.debug` |
 | Domain | **kirano.shop** |
 | Venue | Counter only (no floor / kitchen / tables) |
 

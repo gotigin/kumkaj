@@ -56,13 +56,13 @@ function Resolve-Identity {
     if ($Dev) {
         return @{
             KUMKAJ_ENV = "development"
-            KUMKAJ_APP_ID = "com.tabiyat.debug"
+            KUMKAJ_APP_ID = "shop.tabiyat.debug"
             KUMKAJ_APP_LABEL = "Tabiyat Dev"
         }
     }
     return @{
         KUMKAJ_ENV = "production"
-        KUMKAJ_APP_ID = "com.tabiyat"
+        KUMKAJ_APP_ID = "shop.tabiyat"
         KUMKAJ_APP_LABEL = "Tabiyat"
     }
 }

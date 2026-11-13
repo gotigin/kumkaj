@@ -6,9 +6,9 @@ description = "Tabiyat — local-first pharmacy operating system (counter sell, 
 license = "MIT OR Apache-2.0"
 
 # Packager metadata is the production id. Dev installs use this crate's
-# env/development.env (com.tabiyat.debug) via scripts — see docs/DEV.md.
+# env/development.env (shop.tabiyat.debug) via scripts — see docs/DEV.md.
 [package.metadata.packager]
-identifier = "com.tabiyat"
+identifier = "shop.tabiyat"
 product_name = "Tabiyat"
 
 [package.metadata.makepad.android]

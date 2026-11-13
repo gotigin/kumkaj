@@ -2,7 +2,7 @@
 # Development Windows x86_64 package (debug *app id*, not Cargo debug).
 # Uses --release so the .exe stays sane (~tens of MB). Cargo debug PE with
 # Makepad was ~400MB — unusable to copy. Identity still comes from
-# development.env → com.tabiyat.debug (separate install/data from prod).
+# development.env → shop.tabiyat.debug (separate install/data from prod).
 # Makepad layout: kumkaj-tabiyat.exe + kumkaj_tabiyat/resources/ (underscores).
 #
 #   windows-dev.sh        development package  -> dist/tabiyat-windows-dev/

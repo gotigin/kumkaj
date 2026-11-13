@@ -5,8 +5,8 @@
 # install-manifest.env). Overrides: KUMKAJ_INSTALL_SLUG, KUMKAJ_BIN_NAME,
 # KUMKAJ_PROGRAMS_NAME. Defaults are Tabiyat's.
 #
-# Tabiyat prod:  com.tabiyat       · "Tabiyat"
-# Tabiyat dev:   com.tabiyat.debug · "Tabiyat Dev"
+# Tabiyat prod:  shop.tabiyat       · "Tabiyat"
+# Tabiyat dev:   shop.tabiyat.debug · "Tabiyat Dev"
 
 desktop_is_debug() {
   [[ "${KUMKAJ_APP_ID:-}" == *.debug ]] || [[ "${KUMKAJ_ENV:-}" == "development" ]]
@@ -40,7 +40,7 @@ desktop_bin_name() {
 
 # Freedesktop desktop file id (no .desktop suffix).
 desktop_entry_id() {
-  echo "${KUMKAJ_APP_ID:-com.tabiyat}"
+  echo "${KUMKAJ_APP_ID:-shop.tabiyat}"
 }
 
 # Books / SQLite data directory (same key the app uses via dirs::data_dir + APP_ID).

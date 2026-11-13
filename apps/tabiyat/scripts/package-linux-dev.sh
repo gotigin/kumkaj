@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Build development Linux package (debug app id) + install/uninstall helpers.
 # Output: dist/tabiyat-linux-dev/
-# Uses debug Cargo profile + the app's env/development.env (→ com.tabiyat.debug)
+# Uses debug Cargo profile + the app's env/development.env (→ shop.tabiyat.debug)
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/../../.." && pwd)"
 cd "$ROOT"

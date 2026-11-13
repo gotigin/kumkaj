@@ -8,7 +8,7 @@ Local-first on Makepad 2.
 | | |
 |---|---|
 | Binary | `kumkaj-tabiyat` |
-| Ids | `com.tabiyat` · `com.tabiyat.debug` |
+| Ids | `shop.tabiyat` · `shop.tabiyat.debug` |
 | Domain | **tabiyat.shop** |
 | Venue | Counter only (no floor / kitchen / tables) |
 

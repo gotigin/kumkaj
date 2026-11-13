@@ -5,8 +5,8 @@
 # install-manifest.env). Overrides: KUMKAJ_INSTALL_SLUG, KUMKAJ_BIN_NAME,
 # KUMKAJ_PROGRAMS_NAME. Defaults are Kirano's.
 #
-# Kirano prod:  com.kirano       · "Kirano"
-# Kirano dev:   com.kirano.debug · "Kirano Dev"
+# Kirano prod:  shop.kirano       · "Kirano"
+# Kirano dev:   shop.kirano.debug · "Kirano Dev"
 
 desktop_is_debug() {
   [[ "${KUMKAJ_APP_ID:-}" == *.debug ]] || [[ "${KUMKAJ_ENV:-}" == "development" ]]
@@ -40,7 +40,7 @@ desktop_bin_name() {
 
 # Freedesktop desktop file id (no .desktop suffix).
 desktop_entry_id() {
-  echo "${KUMKAJ_APP_ID:-com.kirano}"
+  echo "${KUMKAJ_APP_ID:-shop.kirano}"
 }
 
 # Books / SQLite data directory (same key the app uses via dirs::data_dir + APP_ID).

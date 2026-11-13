@@ -49,12 +49,12 @@ load_identity() {
   fi
   if [[ "$MODE" == "development" ]]; then
     export KUMKAJ_ENV=development
-    export KUMKAJ_APP_ID=com.tabiyat.debug
+    export KUMKAJ_APP_ID=shop.tabiyat.debug
     export KUMKAJ_APP_LABEL="Tabiyat Dev"
     return 0
   fi
   export KUMKAJ_ENV=production
-  export KUMKAJ_APP_ID=com.tabiyat
+  export KUMKAJ_APP_ID=shop.tabiyat
   export KUMKAJ_APP_LABEL="Tabiyat"
 }
 

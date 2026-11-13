@@ -5,14 +5,13 @@
 > **What ships:** the Kumkaj grocery product — a concrete business
 > operating system for kirana / grocery / general stores, under the
 > Kumkaj brand alongside Moklanjo, Khaynjo and Tabiyat.
-> **Platform ids:** production `com.kirano` · development
-> `com.kirano.debug`
-> **Naming:** Kirano belongs to the Kumkaj brand, but its domain is
-> its own — **kirano.shop**, not a path under kumkaj.com. Its id root is
-> simply `com.kirano` (the product *is* the brand), with `.debug` for
-> dev. Data dirs, Android application id, iOS/macOS bundle id (when
-> signed), and the desktop packager identifier all use this root. Do
-> not re-tie Kirano ids to `com.kumkaj.*`.
+> **Platform ids:** production `shop.kirano` · development
+> `shop.kirano.debug`
+> **Naming:** domain **kirano.shop** (not a path under kumkaj.com).
+> Platform id is the reverse DNS of that domain: `shop.kirano` / 
+> `shop.kirano.debug` — never `com.kirano` and never `com.kumkaj.*`.
+> Data dirs, Android application id, iOS/macOS bundle id (when signed),
+> and the desktop packager identifier all use this root.
 > **Doctrine:** [`docs/KUMKAJ_PRODUCT_VISION_AND_REQUIREMENTS.md`](../../../docs/KUMKAJ_PRODUCT_VISION_AND_REQUIREMENTS.md)
 > (concrete products in a common workspace — same Makepad 2, no Kumkaj
 > core / shared product code; local-first; free local, usage-based
@@ -134,7 +133,7 @@ off and must not appear in owner-facing copy.
 
 | | Production | Development |
 |---|---|---|
-| App id | `com.kirano` | `com.kirano.debug` |
+| App id | `shop.kirano` | `shop.kirano.debug` |
 | Domain | kirano.shop | — |
 | MSI | `apps/kirano/scripts/msi.sh` | `msi.sh dev` |
 | Dev | `cargo kirano-dev` | |

@@ -13,13 +13,13 @@ fn defaults(profile: &str) -> HashMap<&'static str, &'static str> {
     match profile {
         "production" => HashMap::from([
             ("KUMKAJ_ENV", "production"),
-            ("KUMKAJ_APP_ID", "com.kirano"),
+            ("KUMKAJ_APP_ID", "shop.kirano"),
             ("KUMKAJ_APP_LABEL", "Kirano"),
             ("KUMKAJ_SHOW_SIZE_BADGE", "0"),
         ]),
         _ => HashMap::from([
             ("KUMKAJ_ENV", "development"),
-            ("KUMKAJ_APP_ID", "com.kirano.debug"),
+            ("KUMKAJ_APP_ID", "shop.kirano.debug"),
             ("KUMKAJ_APP_LABEL", "Kirano Dev"),
             ("KUMKAJ_SHOW_SIZE_BADGE", "1"),
         ]),

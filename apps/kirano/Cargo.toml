@@ -6,9 +6,9 @@ description = "Kirano — local-first grocery / kirana shop operating system (co
 license = "MIT OR Apache-2.0"
 
 # Packager metadata is the production id. Dev installs use this crate's
-# env/development.env (com.kirano.debug) via scripts — see docs/DEV.md.
+# env/development.env (shop.kirano.debug) via scripts — see docs/DEV.md.
 [package.metadata.packager]
-identifier = "com.kirano"
+identifier = "shop.kirano"
 product_name = "Kirano"
 
 [package.metadata.makepad.android]

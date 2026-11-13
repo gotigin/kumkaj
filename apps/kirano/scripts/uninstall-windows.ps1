@@ -56,13 +56,13 @@ function Resolve-Identity {
     if ($Dev) {
         return @{
             KUMKAJ_ENV = "development"
-            KUMKAJ_APP_ID = "com.kirano.debug"
+            KUMKAJ_APP_ID = "shop.kirano.debug"
             KUMKAJ_APP_LABEL = "Kirano Dev"
         }
     }
     return @{
         KUMKAJ_ENV = "production"
-        KUMKAJ_APP_ID = "com.kirano"
+        KUMKAJ_APP_ID = "shop.kirano"
         KUMKAJ_APP_LABEL = "Kirano"
     }
 }
