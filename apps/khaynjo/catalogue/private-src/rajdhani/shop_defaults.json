@@ -1,0 +1,34 @@
+{
+  "owner_name": "Zahir",
+  "owner_login_id": "zahir",
+  "staff": [
+    {
+      "name": "Asif",
+      "role": "admin",
+      "role_title": "Admin",
+      "pin": "1111",
+      "login_id": "asif",
+      "features": "all"
+    },
+    {
+      "name": "Nawaz",
+      "role": "waiter",
+      "role_title": "Waiter",
+      "pin": "0000",
+      "login_id": "nawaz",
+      "features": "role"
+    }
+  ],
+  "deactivate_tax_rates": true,
+  "clear_product_tax": true,
+  "service_charge_bps": 0,
+  "business_day_mode": "until_day_close",
+  "history_retention": "off",
+  "history_retention_hours": "12",
+  "show_today_bar": false,
+  "show_tax_chrome": false,
+  "show_tax_invoice": false,
+  "pay_methods": "cash",
+  "nav_hidden_csv": "books,buy,menu,inventory,branches,credit,reports",
+  "kot_slip": "default"
+}

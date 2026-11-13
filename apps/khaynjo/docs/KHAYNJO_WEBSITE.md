@@ -5,8 +5,8 @@
 > **Get it free** CTA), then hero (headline, Play + WhatsApp CTAs, trust
 > lines, the live **floor toy** as the hero visual) → **How a service runs**
 > (5 steps with Example props in the visit colours) → **Features** (app's own
-> sidebar icons) → **Menus** (the three public catalogue templates + the
-> 199-country world shelf) → **Offline** (red band) → **Pricing** (₹0 forever;
+> sidebar icons) → **Menus** (optional Khaynjo Full Template + private
+> client packs + the 199-country world shelf) → **Offline** (red band) → **Pricing** (₹0 forever;
 > Kumkaj Cloud planned, usage-based) → **FAQ** → closing CTA + footer
 > (Privacy · Terms · Google Play · kumkaj.com). Why: the deck clipped every
 > chapter to one screen (phones and short laptops lost content) and flipped

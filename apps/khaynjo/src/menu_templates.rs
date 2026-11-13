@@ -3,7 +3,9 @@
 //! Separate from the big photo shelf (`menu_images`): these are concrete
 //! restaurant menus — primary `name` plus optional aliases (e.g. English),
 //! listed prices, and photos (`shelf:…` or a file under the template).
-//! Drop another folder beside `rajdhani/` and it appears in the app.
+//! Public/demo folders under `assets/templates/`. Private client packs
+//! (Rajdhani) are authored under `catalogue/private-src/` and published to
+//! the CDN — they are not discovered here.
 
 use std::path::{Path, PathBuf};
 
@@ -167,9 +169,13 @@ pub fn resolve_template_image_in(pack_dir: &Path, _template_id: &str, image: &st
 mod tests {
     use super::*;
 
+    fn rajdhani_authoring() -> PathBuf {
+        PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("catalogue/private-src/rajdhani")
+    }
+
     #[test]
     fn rajdhani_template_loads_with_priced_dishes() {
-        let tmpl = find("rajdhani").expect("rajdhani template ships with the app");
+        let tmpl = load_from_dir(&rajdhani_authoring()).expect("rajdhani authoring pack");
         assert_eq!(tmpl.title, "Rajdhani Menu Template");
         assert!(tmpl.category_count() >= 8, "{}", tmpl.category_count());
         assert!(tmpl.item_count() >= 100, "{}", tmpl.item_count());
@@ -189,13 +195,13 @@ mod tests {
         assert!(first.price > 0 || first.name.to_lowercase().contains("paplet"));
         let path = tmpl
             .resolve_image(&first.image)
-            .expect("first dish photo resolves");
+            .expect("first dish photo resolves via public shelf");
         assert!(path.extension().and_then(|e| e.to_str()) == Some("webp"));
     }
 
     #[test]
     fn every_rajdhani_image_resolves() {
-        let tmpl = find("rajdhani").unwrap();
+        let tmpl = load_from_dir(&rajdhani_authoring()).unwrap();
         for cat in &tmpl.categories {
             if !cat.image.is_empty() {
                 assert!(
@@ -217,5 +223,13 @@ mod tests {
                 );
             }
         }
+    }
+
+    #[test]
+    fn bundled_templates_exclude_private_rajdhani() {
+        assert!(
+            find("rajdhani").is_none(),
+            "Rajdhani must not ship under assets/templates"
+        );
     }
 }

@@ -1368,147 +1368,164 @@ impl Store {
         Ok(())
     }
 
-    /// Shop defaults for **Rajdhani App Template**: tax/GST off, Owner **Zahir**,
-    /// Admin **Asif**, Waiter **Nawaz**, FOH-first sidebar, history after a few
-    /// hours, Today strip off. Does not seed Hot/Cold stations or stock named
-    /// print formats (KOT / Portrait / Landscape).
-    /// Safe to call after the menu import on a fresh server (no session yet).
-    pub fn apply_rajdhani_shop_defaults(&self) -> Result<(), String> {
-        self.assert_server_writer("Rajdhani shop defaults")?;
-        // Rates stay in the books but inactive and out of the picker; items
-        // carry no tax. Service charge off.
-        self.conn
-            .execute(
-                "UPDATE tax_rates SET active = 0, picker_enabled = 0",
-                [],
-            )
-            .map_err(|e| e.to_string())?;
-        self.conn
-            .execute(
-                "UPDATE products SET tax_rate_id = '', tax_bps = 0",
-                [],
-            )
-            .map_err(|e| e.to_string())?;
-        self.set_service_charge_bps(0)?;
-        let owner = self
-            .list_staff()?
-            .into_iter()
-            .find(|s| s.is_owner())
-            .ok_or_else(|| "Owner account missing".to_string())?;
-        // Display names stay title-case; usernames are lowercase of the name.
-        self.assert_login_id_free("zahir", Some(&owner.id))?;
-        let n = self
-            .conn
-            .execute(
-                "UPDATE staff SET name = ?1, login_id = ?2 WHERE id = ?3 AND role = 'owner' AND active = 1",
-                params!["Zahir", "zahir", owner.id],
-            )
-            .map_err(|e| e.to_string())?;
-        if n == 0 {
-            return Err("Owner account missing".into());
+    /// Apply shop prefs from a pack's `shop_defaults.json` (private templates).
+    /// Nothing client-specific is hardcoded here — names, PINs, chrome flags
+    /// and KOT prefs all come from that file.
+    pub fn apply_shop_defaults_file(&self, path: &std::path::Path) -> Result<(), String> {
+        self.assert_server_writer("Apply shop defaults")?;
+        let raw = std::fs::read_to_string(path)
+            .map_err(|e| format!("Read {}: {e}", path.display()))?;
+        let d: ShopDefaultsFile = serde_json::from_str(&raw)
+            .map_err(|e| format!("shop_defaults.json: {e}"))?;
+        self.apply_shop_defaults(&d)
+    }
+
+    fn apply_shop_defaults(&self, d: &ShopDefaultsFile) -> Result<(), String> {
+        if d.deactivate_tax_rates {
+            self.conn
+                .execute(
+                    "UPDATE tax_rates SET active = 0, picker_enabled = 0",
+                    [],
+                )
+                .map_err(|e| e.to_string())?;
+        }
+        if d.clear_product_tax {
+            self.conn
+                .execute(
+                    "UPDATE products SET tax_rate_id = '', tax_bps = 0",
+                    [],
+                )
+                .map_err(|e| e.to_string())?;
+        }
+        if let Some(bps) = d.service_charge_bps {
+            self.set_service_charge_bps(bps)?;
         }
         let owner = self
             .list_staff()?
             .into_iter()
             .find(|s| s.is_owner())
             .ok_or_else(|| "Owner account missing".to_string())?;
-        // Seed Admin + Waiter once (idempotent on re-apply).
+        if let (Some(name), Some(login)) = (
+            d.owner_name.as_deref().map(str::trim).filter(|s| !s.is_empty()),
+            d.owner_login_id
+                .as_deref()
+                .map(str::trim)
+                .filter(|s| !s.is_empty()),
+        ) {
+            self.assert_login_id_free(login, Some(&owner.id))?;
+            let n = self
+                .conn
+                .execute(
+                    "UPDATE staff SET name = ?1, login_id = ?2 WHERE id = ?3 AND role = 'owner' AND active = 1",
+                    params![name, login, owner.id],
+                )
+                .map_err(|e| e.to_string())?;
+            if n == 0 {
+                return Err("Owner account missing".into());
+            }
+        }
+        let owner = self
+            .list_staff()?
+            .into_iter()
+            .find(|s| s.is_owner())
+            .ok_or_else(|| "Owner account missing".to_string())?;
         let existing = self.list_staff()?;
-        if !existing
-            .iter()
-            .any(|s| s.active && s.role == StaffRole::Admin)
-        {
-            self.add_staff_with_features(
-                &StaffHire {
-                    name: "Asif",
-                    role: StaffRole::Admin,
-                    role_title: "Admin",
-                    pin: "1111",
-                    login_id: "asif",
-                    password: "",
-                    features: StaffFeatures::all(),
-                },
-                &owner,
-            )?;
-        } else if let Some(admin) = existing
-            .iter()
-            .find(|s| s.active && s.role == StaffRole::Admin)
-        {
-            self.ensure_template_login(&admin.id, "asif")?;
+        for hire in &d.staff {
+            let role = StaffRole::parse(&hire.role)
+                .ok_or_else(|| format!("Unknown staff role '{}'", hire.role))?;
+            let features = match hire.features.trim() {
+                "all" => StaffFeatures::all(),
+                _ => StaffFeatures::for_role(role),
+            };
+            let title = if hire.role_title.trim().is_empty() {
+                role.default_title()
+            } else {
+                hire.role_title.trim()
+            };
+            let already = existing.iter().any(|s| {
+                s.active
+                    && (s.name.eq_ignore_ascii_case(hire.name.trim())
+                        || (role == StaffRole::Admin && s.role == StaffRole::Admin))
+            });
+            if !already {
+                self.add_staff_with_features(
+                    &StaffHire {
+                        name: hire.name.trim(),
+                        role,
+                        role_title: title,
+                        pin: hire.pin.trim(),
+                        login_id: hire.login_id.trim(),
+                        password: "",
+                        features,
+                    },
+                    &owner,
+                )?;
+            } else if !hire.login_id.trim().is_empty() {
+                if let Some(s) = existing.iter().find(|s| {
+                    s.active
+                        && (s.name.eq_ignore_ascii_case(hire.name.trim())
+                            || (role == StaffRole::Admin && s.role == StaffRole::Admin))
+                }) {
+                    self.ensure_template_login(&s.id, hire.login_id.trim())?;
+                }
+            }
         }
-        if !existing
-            .iter()
-            .any(|s| s.active && s.name.eq_ignore_ascii_case("Nawaz"))
+        if let Some(mode) = d.business_day_mode.as_deref().map(str::trim).filter(|s| !s.is_empty())
         {
-            self.add_staff_with_features(
-                &StaffHire {
-                    name: "Nawaz",
-                    role: StaffRole::Waiter,
-                    role_title: "Waiter",
-                    pin: "0000",
-                    login_id: "nawaz",
-                    password: "",
-                    features: StaffFeatures::for_role(StaffRole::Waiter),
-                },
-                &owner,
-            )?;
-        } else if let Some(waiter) = existing
-            .iter()
-            .find(|s| s.active && s.name.eq_ignore_ascii_case("Nawaz"))
-        {
-            self.ensure_template_login(&waiter.id, "nawaz")?;
+            self.meta_set("business_day_mode", mode)?;
         }
-        self.meta_set(
-            "business_day_mode",
-            &crate::business_day::BusinessDayMode::UntilDayClose.as_str(),
-        )?;
-        // Keep trading history by default — a 4-hour auto-wipe on every desk
-        // reload deleted mid-shift sales and khata. Owner turns clearing on
-        // from Settings → Backup when they want it.
-        self.meta_set("history_retention", "off")?;
-        self.meta_set("history_retention_hours", "12")?;
-        self.meta_set("show_today_bar", "0")?;
-        // Quiet counter: no GST labels, no Tax invoice chip; Cash only (Settings
-        // can turn each back on — features stay).
-        self.meta_set("show_tax_chrome", "0")?;
-        self.meta_set("show_tax_invoice", "0")?;
-        self.meta_set("pay_methods", "cash")?;
-        // FOH-first chrome: Floor / Kitchen / Sell / Sales / Day close stay.
-        // Back-office peers stay in the app — unhide in Settings → Sidebar.
-        self.set_nav_hidden_csv("books,buy,menu,inventory,branches,credit,reports")?;
-        let kot = crate::print_share::KotSlipFormat::rajdhani_default();
-        self.set_kot_slip_format(&kot)?;
-        // Do not seed stock named print formats (KOT / Portrait / Landscape) or
-        // Hot/Cold stations — owner creates virtual printers and stations.
+        if let Some(v) = d.history_retention.as_deref() {
+            self.meta_set("history_retention", v)?;
+        }
+        if let Some(v) = d.history_retention_hours.as_deref() {
+            self.meta_set("history_retention_hours", v)?;
+        }
+        if let Some(v) = d.show_today_bar {
+            self.meta_set("show_today_bar", if v { "1" } else { "0" })?;
+        }
+        if let Some(v) = d.show_tax_chrome {
+            self.meta_set("show_tax_chrome", if v { "1" } else { "0" })?;
+        }
+        if let Some(v) = d.show_tax_invoice {
+            self.meta_set("show_tax_invoice", if v { "1" } else { "0" })?;
+        }
+        if let Some(v) = d.pay_methods.as_deref().map(str::trim).filter(|s| !s.is_empty()) {
+            self.meta_set("pay_methods", v)?;
+        }
+        if let Some(v) = d.nav_hidden_csv.as_deref() {
+            self.set_nav_hidden_csv(v)?;
+        }
+        match d.kot_slip.as_deref().map(str::trim).filter(|s| !s.is_empty()) {
+            Some("default") | None => {
+                let kot = crate::print_share::KotSlipFormat::default().clamped();
+                self.set_kot_slip_format(&kot)?;
+            }
+            Some(other) => {
+                return Err(format!("Unknown kot_slip '{other}' in shop_defaults.json"));
+            }
+        }
         Ok(())
     }
 
-    /// Full Rajdhani App Template: menu import + shop defaults (bundled path).
-    pub fn apply_rajdhani_app_template(&self) -> Result<CatalogueImport, String> {
-        self.assert_server_writer("Apply Rajdhani App Template")?;
-        let tmpl = crate::menu_templates::find("rajdhani")
-            .ok_or_else(|| "Rajdhani menu template missing".to_string())?;
-        let summary = self.import_menu_template(tmpl)?;
-        self.apply_rajdhani_shop_defaults()?;
-        Ok(summary)
-    }
-
-    /// Apply a downloaded catalogue pack: menu import + optional shop defaults.
+    /// Apply a downloaded catalogue pack: menu import + optional
+    /// `shop_defaults.json` from that pack (no prestored client data in the app).
     pub fn apply_app_template_pack(
         &self,
         pack_dir: &std::path::Path,
-        shop_defaults_id: Option<&str>,
+        apply_shop_defaults: bool,
     ) -> Result<CatalogueImport, String> {
         self.assert_server_writer("Apply app template")?;
         let tmpl = crate::menu_templates::load_from_dir(pack_dir)
             .ok_or_else(|| format!("No template.json in {}", pack_dir.display()))?;
         let summary = self.import_menu_template_in(&tmpl, Some(pack_dir))?;
-        match shop_defaults_id.map(str::trim).filter(|s| !s.is_empty()) {
-            Some("rajdhani") => self.apply_rajdhani_shop_defaults()?,
-            Some(other) => {
-                return Err(format!("Unknown shop defaults id '{other}'"));
+        let defaults_path = pack_dir.join("shop_defaults.json");
+        if apply_shop_defaults || defaults_path.is_file() {
+            if !defaults_path.is_file() {
+                return Err(
+                    "Pack declares shop defaults but shop_defaults.json is missing".into(),
+                );
             }
-            None => {}
+            self.apply_shop_defaults_file(&defaults_path)?;
         }
         Ok(summary)
     }
@@ -13337,6 +13354,60 @@ pub struct CatalogueImport {
     pub items_kept: usize,
 }
 
+/// Pack-local shop prefs (`shop_defaults.json` next to `template.json`).
+/// Private templates (e.g. Rajdhani) ship this; the app does not hardcode names.
+#[derive(Clone, Debug, Default, serde::Deserialize)]
+struct ShopDefaultsFile {
+    #[serde(default)]
+    owner_name: Option<String>,
+    #[serde(default)]
+    owner_login_id: Option<String>,
+    #[serde(default)]
+    staff: Vec<ShopDefaultsStaff>,
+    #[serde(default)]
+    deactivate_tax_rates: bool,
+    #[serde(default)]
+    clear_product_tax: bool,
+    #[serde(default)]
+    service_charge_bps: Option<i64>,
+    #[serde(default)]
+    business_day_mode: Option<String>,
+    #[serde(default)]
+    history_retention: Option<String>,
+    #[serde(default)]
+    history_retention_hours: Option<String>,
+    #[serde(default)]
+    show_today_bar: Option<bool>,
+    #[serde(default)]
+    show_tax_chrome: Option<bool>,
+    #[serde(default)]
+    show_tax_invoice: Option<bool>,
+    #[serde(default)]
+    pay_methods: Option<String>,
+    #[serde(default)]
+    nav_hidden_csv: Option<String>,
+    /// `"default"` → [`crate::print_share::KotSlipFormat::default`].
+    #[serde(default)]
+    kot_slip: Option<String>,
+}
+
+#[derive(Clone, Debug, Default, serde::Deserialize)]
+struct ShopDefaultsStaff {
+    #[serde(default)]
+    name: String,
+    #[serde(default)]
+    role: String,
+    #[serde(default)]
+    role_title: String,
+    #[serde(default)]
+    pin: String,
+    #[serde(default)]
+    login_id: String,
+    /// `"all"` or `"role"` (default).
+    #[serde(default)]
+    features: String,
+}
+
 /// Optional progress wake for long menu imports (UI sets this from a worker).
 static IMPORT_PROGRESS_NOTIFY: std::sync::Mutex<Option<fn(usize, usize)>> =
     std::sync::Mutex::new(None);
@@ -14678,7 +14749,10 @@ mod tests {
                 .any(|r| r.active && r.bps > 0),
             "expected seeded tax rates before App Template"
         );
-        let summary = store.apply_rajdhani_app_template().unwrap();
+        // Authoring tree only — not shipped in the install; same path publish uses.
+        let pack = PathBuf::from(env!("CARGO_MANIFEST_DIR"))
+            .join("catalogue/private-src/rajdhani");
+        let summary = store.apply_app_template_pack(&pack, true).unwrap();
         assert!(summary.items_added > 0);
         assert!(
             store.list_tax_rates().unwrap().is_empty(),
@@ -14775,11 +14849,13 @@ mod tests {
     fn importing_a_named_client_template_sets_prices_and_aliases() {
         let path = temp_db();
         let store = Store::open_path(&path).unwrap();
-        let tmpl = crate::menu_templates::find("rajdhani").expect("rajdhani ships");
-        let first = store.import_menu_template(tmpl).unwrap();
+        let pack = PathBuf::from(env!("CARGO_MANIFEST_DIR"))
+            .join("catalogue/private-src/rajdhani");
+        let tmpl = crate::menu_templates::load_from_dir(&pack).expect("rajdhani authoring pack");
+        let first = store.import_menu_template_in(&tmpl, Some(&pack)).unwrap();
         assert!(first.categories_added >= 8, "{}", first.categories_added);
         assert!(first.items_added >= 100, "{}", first.items_added);
-        let again = store.import_menu_template(tmpl).unwrap();
+        let again = store.import_menu_template_in(&tmpl, Some(&pack)).unwrap();
         assert_eq!((again.categories_added, again.items_added), (0, 0));
         let products = store.list_products(false).unwrap();
         let seena = products
@@ -17959,17 +18035,14 @@ mod staged_catalogue_tests {
         )
         .unwrap_or_else(|e| panic!("{key}: download: {e}"));
         let store = Store::open_path(&data.join("books.sqlite3")).unwrap();
-        let defaults = man
-            .applies_shop_defaults
-            .then(|| man.shop_defaults_id.clone());
         let done = store
-            .apply_app_template_pack(&dir, defaults.as_deref())
+            .apply_app_template_pack(&dir, man.applies_shop_defaults)
             .unwrap_or_else(|e| panic!("{key}: import: {e}"));
         (store, done, tmpl.item_count())
     }
 
     #[test]
-    fn staged_public_app_templates_download_and_import() {
+    fn staged_public_index_is_full_template_only() {
         let Some(cdn) = staged_cdn() else {
             return;
         };
@@ -17977,17 +18050,16 @@ mod staged_catalogue_tests {
             &std::fs::read_to_string(cdn.join("public/index.json")).unwrap(),
         )
         .unwrap();
-        let mut seen = 0;
-        for entry in index.templates.iter().filter(|e| e.kind == CatalogueKind::AppTemplate) {
-            let (store, done, items) = import_pack(&cdn, CatalogueVisibility::Public, &entry.id);
-            assert!(items > 0, "{}: template has dishes", entry.id);
-            assert_eq!(done.items_added + done.items_kept, items, "{}", entry.id);
-            let products = store.list_products(false).unwrap();
-            let with_photo = products.iter().filter(|p| p.image_key.is_some()).count();
-            assert_eq!(with_photo, products.len(), "{}: every dish has its photo", entry.id);
-            seen += 1;
-        }
-        assert!(seen >= 2, "khaynjo-starter + cafe-starter listed");
+        assert_eq!(index.templates.len(), 1, "one public chip: Khaynjo Full Template");
+        let entry = &index.templates[0];
+        assert_eq!(entry.id, catalogue_remote::PUBLIC_ITEMS_TEMPLATE_ID);
+        assert_eq!(entry.kind, CatalogueKind::Shelf);
+        assert!(
+            entry.title.to_lowercase().contains("full")
+                || entry.title.to_lowercase().contains("items"),
+            "{}",
+            entry.title
+        );
     }
 
     #[test]

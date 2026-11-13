@@ -501,7 +501,7 @@ enum MenuImportKind {
     AppTemplate {
         title: String,
         pack_dir: PathBuf,
-        shop_defaults_id: Option<String>,
+        apply_shop_defaults: bool,
     },
 }
 
@@ -633,12 +633,9 @@ fn menu_import_job(db_path: PathBuf, kind: MenuImportKind) {
                     }
                     MenuImportKind::AppTemplate {
                         pack_dir,
-                        shop_defaults_id,
+                        apply_shop_defaults,
                         ..
-                    } => store.apply_app_template_pack(
-                        pack_dir,
-                        shop_defaults_id.as_deref(),
-                    ),
+                    } => store.apply_app_template_pack(pack_dir, *apply_shop_defaults),
                 }
             })();
             store::set_import_progress_notify(None);

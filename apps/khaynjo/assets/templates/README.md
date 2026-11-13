@@ -1,143 +1,41 @@
-# Client menu templates (Khaynjo)
+# Menu templates (`assets/templates/`)
 
-**Runtime:** install packages no longer ship this folder or `assets/items`
-(`assets/CATALOGUE_REMOTE`). DeviceSetup downloads from
-`https://khaynjo.com/v1/catalogue/` — served from the Makepad site static
-tree [`sites/khaynjo/static/v1/catalogue/`](../../../sites/khaynjo/static/v1/catalogue/).
-See [`docs/CATALOGUE_URLS.md`](../docs/CATALOGUE_URLS.md). Source trees here
-remain for publish / `cargo test` / `KHAYNJO_TEMPLATES_DIR`.
+Optional **public/demo** menu JSON folders for local experiments. They are
+**not** DeviceSetup chips.
 
-Each folder under `assets/templates/<id>/` is a **named menu template**
-(categories, dishes, prices, aliases, photos). Today:
+Production DeviceSetup has two optional templates only:
 
-- `khaynjo-starter/` — public world-cuisine starter (DeviceSetup list).
-- `cafe-starter/` — public café starter (tea, coffee, cold drinks, bakery,
-  snacks).
-- `rajdhani/` — **Rajdhani Menu Template**, published as a **private** pack
-  with a 12-digit code (never listed publicly).
+| | |
+|---|---|
+| **Public** | **Khaynjo Full Template** — CDN `khaynjo-items` shelf (`public/items/`) |
+| **Private** | Client packs from `catalogue/private-src/<id>/` (Rajdhani today) published with a 12-digit code |
 
-This is separate from:
+Private packs are **not** under this folder and are **not** discovered by
+`menu_templates::all()`. Publish:
 
-- the big photo shelf (`assets/items/`) — published as the public
-  **khaynjo-items** shelf at `/v1/catalogue/public/items/…`, and
-- **App template offer** — DeviceSetup after Server (before Owner PIN);
-  public list + private code; Rajdhani shop defaults when the manifest
-  sets `shop_defaults_id: "rajdhani"`.
+```bash
+./apps/khaynjo/scripts/publish-catalogue.sh
+./apps/khaynjo/scripts/publish-catalogue.sh --private-rajdhani --code=<12 digits>
+```
 
-## How to add a new client template
+See [`docs/CATALOGUE_URLS.md`](../docs/CATALOGUE_URLS.md).
 
-1. **Create a folder** `apps/khaynjo/assets/templates/<id>/`  
-   Use a short kebab id (`rajdhani`, `hotel-xyz`). The folder name should
-   match the `"id"` field in the JSON.
-
-2. **Write `template.json`** (required) — schema below.  
-   - Category / item **name** = what the owner sees first (usually English).  
-   - **aliases** = other names staff search by (e.g. Gujarati).  
-   - For Gujarati category aliases, omit a trailing `આઈટમ` (the product word).  
-   - **price** = rupees (major units). Use `0` for season rate / set later.
-
-3. **Photos (webp only where possible)**  
-   - Prefer **`shelf:<folder>/<dish>.webp`** — reuses the shared catalogue
-     under `assets/items/` (no file copy in the template folder).  
-   - If nothing on the shelf fits, put a webp under `images/` and set
-     `"image": "images/my-dish.webp"`. Note the licence/source in that
-     template folder if you fetched a free-licensed photo.  
-   - Category `image` is optional; first item’s photo is a fine default.  
-   - **Client templates (e.g. Rajdhani):** every category and item must
-     use a **distinct** image path — no shared refs inside the template
-     JSON. The live shop can still assign the same photo to two dishes
-     after import; the template itself stays unique so import never
-     dumps one photo across unrelated dishes.
-
-4. **Check**  
-   ```bash
-   cargo test -p kumkaj-khaynjo --lib menu_templates
-   ```  
-   Import path is covered by store tests that load `rajdhani`.
-
-5. **Publish + DeviceSetup**  
-   Stage with `publish-catalogue.sh` (public starters in-repo; Rajdhani via
-   `--private-rajdhani --code=…`). On Server first-run, Public / Private
-   accordions download and import. Existing dish names are left alone;
-   importing twice adds nothing new.
-
-6. **UI chips**  
-   The Menu card has three chip slots (`client_tmpl_0` … `_2`). A fourth
-   template needs another chip LiveId in `ui_script.rs` (or the card still
-   lists the first three). Prefer keeping the set small.
-
-## Layout
+## Layout (demo folders only)
 
 ```text
 assets/templates/<id>/
-  template.json          # required — see schema below
-  images/*.webp          # optional — only photos unique to this client
+  template.json
+  images/*.webp   # optional
 ```
 
-Override discovery root with `KHAYNJO_TEMPLATES_DIR` (tests / packaging).
-Dev reads `CARGO_MANIFEST_DIR/assets/templates`. **Install packages skip**
-`assets/templates` and `assets/items` when `assets/CATALOGUE_REMOTE` is
-present (`copy_app_menu_assets_if_present` / Android file list). Publish
-packs with `./apps/khaynjo/scripts/publish-catalogue.sh`; DeviceSetup
-downloads them. Menu → **Client menu** / **Import complete template** cards
-hide when those local trees are absent (remote Menu follow-up later).
+## Private authoring (Rajdhani)
 
-## `template.json` schema
-
-```json
-{
-  "id": "rajdhani",
-  "title": "Rajdhani Menu Template",
-  "blurb": "Short owner-facing line.",
-  "categories": [
-    {
-      "name": "ચીકન રોસ્ટેડ",
-      "aliases": ["Chicken Roasted"],
-      "image": "shelf:indian-mains/tandoori-chicken.webp",
-      "items": [
-        {
-          "name": "ચીકન તંદુરી સીના",
-          "aliases": ["Chicken Tandoori Seena"],
-          "price": 160,
-          "image": "shelf:indian-mains/tandoori-chicken.webp"
-        }
-      ]
-    }
-  ]
-}
+```text
+catalogue/private-src/rajdhani/
+  template.json
+  shop_defaults.json   # staff, tax chrome, pay methods, KOT — not hardcoded in the app
 ```
 
-| Field | Meaning |
-|---|---|
-| `id` | Folder name; stable import key |
-| `title` / `blurb` | Menu screen card |
-| `categories[].name` | Category display name (Rajdhani: Gujarati) |
-| `categories[].aliases` | Other names (Rajdhani: English), searched like item aliases |
-| `categories[].image` | Optional category photo |
-| `items[].name` | Dish display name (Rajdhani: Gujarati) |
-| `items[].aliases` | Other names (Rajdhani: English) |
-| `items[].price` | Rupees (major units). `0` = unpriced / season rate |
-| `image` | `shelf:<folder>/<file>.webp` **or** `images/<file>.webp` relative to this template |
-
-## Runtime behaviour
-
-- Import runs on the **Server** only (`Store::import_menu_template`).
-- Photos are copied into the shop’s `item_images` as `custom:…` so Android /
-  LAN Clients can sync them (`GET /item-image`). The shelf / template files
-  stay read-only.
-- Category aliases are applied when the category is **created**, or when an
-  existing category still has an empty aliases list.
-- Code: `apps/khaynjo/src/menu_templates.rs`.
-
-## Example: Rajdhani
-
-Built from the client menu scans under
-`local/khaynjo/clients/rajdhani/` (`menu-items-english.txt` +
-`menu-items-gujarati.txt`). All dish photos currently point at existing
-`shelf:…` webps — no unique `images/` files required.
-
-**Names (client request 2026-11-02):** drop a trailing parenthetical on the
-dish name and its English alias when the last words are in `(…)` — e.g.
-`ચીકન તંદુરી (રેડ-ગ્રીન-ગોલ્ડન)` / `Chicken Tandoori (Red-Green-Golden)` →
-`ચીકન તંદુરી` / `Chicken Tandoori`. Colour / style tags are not kept in the
-imported title.
+`shop_defaults.json` is required for private publish. The app applies that
+file from the downloaded pack; it does not ship Zahir/Asif/Nawaz or the
+Rajdhani menu inside the install.

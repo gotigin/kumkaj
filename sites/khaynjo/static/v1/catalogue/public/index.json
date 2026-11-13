@@ -2,23 +2,9 @@
   "schema": 1,
   "templates": [
     {
-      "id": "khaynjo-starter",
-      "title": "Khaynjo starter menu",
-      "blurb": "World cuisines from the public Khaynjo shelf — edit prices after import.",
-      "kind": "app_template",
-      "bytes": 1291230
-    },
-    {
-      "id": "cafe-starter",
-      "title": "Café starter",
-      "blurb": "Tea, coffee, cold drinks, bakery and a few snacks — edit prices after import.",
-      "kind": "app_template",
-      "bytes": 1434945
-    },
-    {
       "id": "khaynjo-items",
-      "title": "Khaynjo Items Template",
-      "blurb": "Full public dish photo shelf (~1459 dishes) for Import complete template.",
+      "title": "Khaynjo Full Template",
+      "blurb": "Full public dish photo shelf (~1459 dishes). Optional — Skip leaves an empty shop.",
       "kind": "shelf",
       "bytes": 134302948
     }

@@ -35,6 +35,9 @@ use crate::menu_images::SHELF_KEY_PREFIX;
 use crate::menu_templates::{self, MenuTemplate};
 
 pub const DEFAULT_CATALOGUE_BASE: &str = "https://khaynjo.com/v1/catalogue";
+/// Public full items shelf (`kind: shelf`) — DeviceSetup chip + Menu → Import
+/// complete template. Id stays `khaynjo-items` on the CDN.
+pub const PUBLIC_ITEMS_TEMPLATE_ID: &str = "khaynjo-items";
 pub const PRIVATE_CODE_LEN: usize = 12;
 const SCHEMA_V1: u32 = 1;
 /// `download.state.json` layout version — bump to discard old staging dirs.
@@ -119,8 +122,12 @@ pub struct CatalogueManifest {
     pub visibility: CatalogueVisibility,
     #[serde(default)]
     pub applies_shop_defaults: bool,
+    /// Legacy named defaults id (unused — shop prefs live in [`Self::shop_defaults`]).
     #[serde(default)]
     pub shop_defaults_id: String,
+    /// Relative path to `shop_defaults.json` inside the pack (private templates).
+    #[serde(default)]
+    pub shop_defaults: String,
     #[serde(default = "default_template_file")]
     pub template: String,
     /// Relative path to a shelf file index (for `kind: shelf`), e.g. `../../items/index.json`.
@@ -1656,6 +1663,7 @@ mod tests {
             visibility: CatalogueVisibility::Public,
             applies_shop_defaults: false,
             shop_defaults_id: String::new(),
+            shop_defaults: String::new(),
             template: "template.json".into(),
             items_index: String::new(),
             bytes: files.iter().map(|f| f.bytes).sum(),

@@ -363,22 +363,15 @@ impl App {
                                     },
                                 ));
                             }
-                            let defaults = if manifest.applies_shop_defaults {
-                                let id = manifest.shop_defaults_id.trim();
-                                if id.is_empty() {
-                                    None
-                                } else {
-                                    Some(id.to_string())
-                                }
-                            } else {
-                                None
-                            };
+                            let apply_defaults = manifest.applies_shop_defaults
+                                || !manifest.shop_defaults.trim().is_empty()
+                                || pack_dir.join("shop_defaults.json").is_file();
                             Ok((
                                 db,
                                 MenuImportKind::AppTemplate {
                                     title: manifest.title.clone(),
                                     pack_dir,
-                                    shop_defaults_id: defaults,
+                                    apply_shop_defaults: apply_defaults,
                                 },
                             ))
                         })();

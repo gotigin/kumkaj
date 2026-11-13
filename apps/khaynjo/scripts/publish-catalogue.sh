@@ -4,15 +4,17 @@
 #
 # Usage:
 #   ./apps/khaynjo/scripts/publish-catalogue.sh
-#       # sync public/items + rebuild public packs (khaynjo-starter, cafe-starter, khaynjo-items)
+#       # sync public/items + stage Khaynjo Full Template (public, optional)
 #   ./apps/khaynjo/scripts/publish-catalogue.sh --private-rajdhani --code=123456789012
 #
-# Every pack manifest lists each file with size + sha256 (`files`), and
-# public/items/index.json lists each photo the same way (`entries`), so
-# devices resume a broken download file by file. `bytes` everywhere is the
-# full download size. Sources: apps/khaynjo/assets/templates/<id>/template.json
-# (`shelf:` photos are copied into the pack's images/).
+# Two optional app-level templates:
+#   • Public  — Khaynjo Full Template (`khaynjo-items`, kind: shelf → all items)
+#   • Private — Rajdhani (menu + shop_defaults.json from catalogue/private-src/)
 #
+# Neither is forced: DeviceSetup Skip leaves an empty shop. Public starters
+# (cafe / khaynjo-starter) are not DeviceSetup chips.
+#
+# Every pack/items listing carries size + sha256 so devices resume file by file.
 # Private packs → sites/khaynjo/static/v1/catalogue/private/<code>/ (gitignored).
 # bash + jq only (no Python — .cursor/rules/no-python-scripts.mdc).
 set -euo pipefail
@@ -21,7 +23,8 @@ ROOT="$(cd "$(dirname "$0")/../../.." && pwd)"
 APP="$ROOT/apps/khaynjo"
 CDN="$ROOT/sites/khaynjo/static/v1/catalogue"
 SHELF="$APP/assets/items"
-TEMPLATES="$APP/assets/templates"
+# Authoring only — not scanned by menu_templates / not shipped in the APK.
+PRIVATE_SRC="$APP/catalogue/private-src"
 
 PRIVATE_CODE=""
 DO_RAJDHANI=0
@@ -31,7 +34,7 @@ for arg in "$@"; do
     --private-rajdhani) DO_RAJDHANI=1 ;;
     --code=*) PRIVATE_CODE="${arg#--code=}" ;;
     -h|--help)
-      sed -n '2,18p' "$0"
+      sed -n '2,20p' "$0"
       exit 0
       ;;
     *)
@@ -91,11 +94,11 @@ ITEMS_BYTES="$(jq '.bytes' "$CDN/public/items/index.json")"
 echo "  items index: $(jq '.folders | length' "$CDN/public/items/index.json") folders, ${ITEMS_COUNT} webps, ${ITEMS_BYTES} bytes"
 
 # ---------------------------------------------------------------------------
-# build_pack <source template dir> <dest pack dir> <visibility> <shop_defaults_id>
+# build_pack <source template dir> <dest pack dir> <visibility>
 # Self-contained app-template pack: template.json with shelf: → images/…,
-# photos copied in, manifest with full file listing.
+# optional shop_defaults.json, photos copied in, manifest with full file listing.
 build_pack() {
-  local src_dir="$1" dest="$2" visibility="$3" defaults="$4"
+  local src_dir="$1" dest="$2" visibility="$3"
   local src_tmpl="$src_dir/template.json"
   if [[ ! -f "$src_tmpl" ]]; then
     echo "Missing $src_tmpl" >&2
@@ -147,12 +150,21 @@ build_pack() {
     .categories |= map(.image |= pack_ref | .items |= map(.image |= pack_ref))
   ' "$src_tmpl" > "$dest/template.json"
 
+  local defaults_file=""
+  if [[ -f "$src_dir/shop_defaults.json" ]]; then
+    cp -p "$src_dir/shop_defaults.json" "$dest/shop_defaults.json"
+    defaults_file="shop_defaults.json"
+  fi
+
   # Listing goes through stdin — a 1,000-photo pack overflows argv.
-  (echo template.json; cd "$dest" && find images -type f | LC_ALL=C sort) \
-    | listing_json "$dest" \
+  (
+    echo template.json
+    [[ -n "$defaults_file" ]] && echo "$defaults_file"
+    cd "$dest" && find images -type f | LC_ALL=C sort
+  ) | listing_json "$dest" \
     | jq --indent 2 \
     --arg id "$id" --arg title "$title" --arg blurb "$blurb" \
-    --arg visibility "$visibility" --arg defaults "$defaults" \
+    --arg visibility "$visibility" --arg defaults_file "$defaults_file" \
     --arg sha "$(sha256sum "$dest/template.json" | cut -d' ' -f1)" '
     . as $files |
     {
@@ -162,8 +174,9 @@ build_pack() {
       blurb: $blurb,
       kind: "app_template",
       visibility: $visibility,
-      applies_shop_defaults: ($defaults != ""),
-      shop_defaults_id: $defaults,
+      applies_shop_defaults: ($defaults_file != ""),
+      shop_defaults_id: "",
+      shop_defaults: $defaults_file,
       template: "template.json",
       bytes: ($files | map(.bytes) | add // 0),
       sha256: $sha,
@@ -173,62 +186,64 @@ build_pack() {
   echo "  $id: $(jq '.files | length' "$dest/manifest.json") files, $(jq '.bytes' "$dest/manifest.json") bytes ($visibility)"
 }
 
-echo "2/4 Public app templates (khaynjo-starter, cafe-starter) …"
-PUBLIC_PACKS=(khaynjo-starter cafe-starter)
-for id in "${PUBLIC_PACKS[@]}"; do
-  build_pack "$TEMPLATES/$id" "$CDN/public/templates/$id" public ""
+echo "2/4 Skip legacy public starters (not DeviceSetup chips) …"
+# cafe-starter / khaynjo-starter may still exist under assets/templates for
+# experiments; they are not listed. Remove stale CDN packs if present.
+for stale in cafe-starter khaynjo-starter; do
+  if [[ -d "$CDN/public/templates/$stale" ]]; then
+    rm -rf "$CDN/public/templates/$stale"
+    echo "  removed stale public/templates/$stale"
+  fi
 done
 
-echo "3/4 Khaynjo Items Template (shelf) + public/index.json …"
+echo "3/4 Khaynjo Full Template (public items shelf) + public/index.json …"
 ITEMS_PACK="$CDN/public/templates/khaynjo-items"
 mkdir -p "$ITEMS_PACK"
 jq -n --indent 2 --argjson n "$ITEMS_COUNT" --argjson bytes "$ITEMS_BYTES" '
   {
     schema: 1,
     id: "khaynjo-items",
-    title: "Khaynjo Items Template",
-    blurb: "Full public dish photo shelf (~\($n) dishes) for Import complete template.",
+    title: "Khaynjo Full Template",
+    blurb: "Full public dish photo shelf (~\($n) dishes). Optional — Skip leaves an empty shop.",
     kind: "shelf",
     visibility: "public",
     applies_shop_defaults: false,
     shop_defaults_id: "",
+    shop_defaults: "",
     template: "",
     items_index: "../../items/index.json",
     bytes: $bytes
   }' > "$ITEMS_PACK/manifest.json"
-# Stub kept for app builds that read template.json from every pack.
 jq -n --indent 2 '
   {
     id: "khaynjo-items",
-    title: "Khaynjo Items Template",
+    title: "Khaynjo Full Template",
     blurb: "Full public dish photo shelf.",
     categories: []
   }' > "$ITEMS_PACK/template.json"
 echo "  khaynjo-items: shelf (${ITEMS_COUNT} files, ${ITEMS_BYTES} bytes)"
 
-# Public index listing (never private packs). Order = DeviceSetup chip order.
-INDEX_IDS=("${PUBLIC_PACKS[@]}" khaynjo-items)
-for id in "${INDEX_IDS[@]}"; do
-  jq '{id, title, blurb, kind, bytes}' "$CDN/public/templates/$id/manifest.json"
-done | jq -s --indent 2 '{schema: 1, templates: .}' > "$CDN/public/index.json"
-echo "  index.json: $(jq '.templates | length' "$CDN/public/index.json") public templates"
-
-# Unlisted leftovers under public/templates would be served but never offered.
-for dir in "$CDN/public/templates"/*/; do
-  id="$(basename "$dir")"
-  if ! printf '%s\n' "${INDEX_IDS[@]}" | grep -qx "$id"; then
-    echo "  warn: public/templates/$id is not in index.json" >&2
-  fi
-done
+jq --indent 2 '{id, title, blurb, kind, bytes}' "$ITEMS_PACK/manifest.json" \
+  | jq -s --indent 2 '{schema: 1, templates: .}' > "$CDN/public/index.json"
+echo "  index.json: $(jq '.templates | length' "$CDN/public/index.json") public template (Full only)"
 
 echo "4/4 Private Rajdhani (optional) …"
 if [[ "$DO_RAJDHANI" -eq 1 ]]; then
+  SRC="$PRIVATE_SRC/rajdhani"
+  if [[ ! -f "$SRC/template.json" ]]; then
+    echo "Missing $SRC/template.json (authoring tree; not shipped in the app)" >&2
+    exit 1
+  fi
+  if [[ ! -f "$SRC/shop_defaults.json" ]]; then
+    echo "Missing $SRC/shop_defaults.json — Rajdhani defaults must live in the pack" >&2
+    exit 1
+  fi
   DEST="$CDN/private/$PRIVATE_CODE"
-  build_pack "$TEMPLATES/rajdhani" "$DEST" private rajdhani
-  # Owner-facing blurb names the shop-default accounts (private pack only).
-  jq --indent 2 '.blurb = "Client menu + shop defaults (Zahir / Asif / Nawaz)."' \
+  build_pack "$SRC" "$DEST" private
+  jq --indent 2 '.blurb = "Client menu + shop defaults from this pack (optional private code)."' \
     "$DEST/manifest.json" > "$DEST/manifest.json.tmp"
   mv "$DEST/manifest.json.tmp" "$DEST/manifest.json"
+  # Recompute bytes after blurb-only edit (files unchanged).
   if grep -qi rajdhani "$CDN/public/index.json"; then
     echo "error: private pack leaked into public/index.json" >&2
     exit 1

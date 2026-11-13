@@ -2738,7 +2738,8 @@ impl MatchEvent for App {
                                     app_state().lock().unwrap().template_confirm = true;
                                     catalogue_fetch_job(
                                         CatalogueFetchKind::DownloadPublic {
-                                            id: "khaynjo-items".into(),
+                                            id: catalogue_remote::PUBLIC_ITEMS_TEMPLATE_ID
+                                                .into(),
                                         },
                                         base,
                                     );
