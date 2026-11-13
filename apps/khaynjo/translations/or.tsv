@@ -1368,3 +1368,22 @@ recent_changes	ସାମ୍ପ୍ରତିକ ପରିବର୍ତ୍ତନ
 lane_declared_label	ଟିକସ ଇନଭଏସ୍
 lane_owner_label	କ୍ୟାସ୍ ମେମୋ
 money_lane_bill	ବିଲ: {lane}
+sel_copy	କପି କରନ୍ତୁ
+sel_select_all	ସବୁ ବାଛନ୍ତୁ
+sel_copied	କପି ହେଲା
+items_tmpl_khaynjo	Khaynjo ସାମଗ୍ରୀ ଟେମ୍ପଲେଟ
+items_tmpl_named	{name} ଟେମ୍ପଲେଟ
+app_tmpl_named	{name} ଆପ୍ ଟେମ୍ପଲେଟ
+private_code_ph	12 ଅଙ୍କର କୋଡ୍
+stamp_on	ଷ୍ଟାମ୍ପ: ଫାଇଲରେ
+pay_qr_on	ପେମେଣ୍ଟ QR: ଫାଇଲରେ
+pay_qr_off	ପେମେଣ୍ଟ QR: ନାହିଁ
+items_tmpl_heading	ଆଇଟମ୍ ଟେମ୍ପଲେଟ୍
+items_tmpl_help	ଆପଣଙ୍କ ମେନୁ ପାଇଁ ବ୍ୟଞ୍ଜନ, ବର୍ଗ ଓ ଫଟୋ। ଦୋକାନ ସେଟିଂସ୍ ଓ କର୍ମଚାରୀ ଯେମିତି ଅଛନ୍ତି ସେମିତି ରହନ୍ତି।
+public_tmpl_help	ଯେକେହି ଡାଉନଲୋଡ୍ କରିପାରୁଥିବା ଆରମ୍ଭ ମେନୁ। ଥରେ ଇଣ୍ଟରନେଟ୍ ଦରକାର।
+private_tmpl_help	ଆପଣଙ୍କ Khaynjo ଯୋଗାଯୋଗଙ୍କଠାରୁ ମିଳିଥିବା 12-ଅଙ୍କ କୋଡ୍ ଦ୍ୱାରା ସୁରକ୍ଷିତ ଗ୍ରାହକ ମେନୁ।
+printers_screen_tip	ଖୋଜନ୍ତୁ ଏହି ଡିଭାଇସ୍ ବ୍ୟବହାର କରିପାରୁଥିବା ପ୍ରିଣ୍ଟରଗୁଡ଼ିକ ଦେଖାଏ ଏବଂ ଏହି ଦୋକାନ ପାଇଁ ସେଭ୍ କରେ। ବିଲ୍ ପ୍ରିଣ୍ଟର: ବିଲ୍ ଓ KOT ଫର୍ମାଟ୍ → ବିଲ୍। ରୋଷେଇ ଘର: ରୋଷେଇ ଘର → ରୋଷେଇ ଷ୍ଟେସନ୍।
+printers_found_none	କୌଣସି ପ୍ରିଣ୍ଟର ମିଳିଲା ନାହିଁ।
+kot_copy_from	ଏଥିରୁ କପି କରନ୍ତୁ
+kot_copy_from_help	ସେହି ପ୍ରକାରର ପ୍ରତ୍ୟେକ ଧାଡ଼ିର ଆକାର, ମୋଟେଇ ଓ ସଜ୍ଜା ଏଥିରେ କପି କରେ। ଏହି ପ୍ରକାର ନିଜର ବ୍ୟାନର, ଆଇଟମ ଉପସର୍ଗ ଓ କଟା ଗାର ରଖେ। ରଖିବା ପାଇଁ KOT ଫର୍ମାଟ ସେଭ କରନ୍ତୁ।
+nav_loading	ଲୋଡ୍ ହେଉଛି…

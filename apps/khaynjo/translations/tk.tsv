@@ -1368,3 +1368,22 @@ recent_changes	Soňky üýtgeşmeler
 lane_declared_label	Salgyt-faktura
 lane_owner_label	Nagt ýatlama
 money_lane_bill	Hasap: {lane}
+sel_copy	Göçür
+sel_select_all	Hemmesini saýla
+sel_copied	Göçürildi
+items_tmpl_khaynjo	Khaynjo haryt şablony
+items_tmpl_named	{name} şablony
+app_tmpl_named	{name} programma şablony
+private_code_ph	12 sanly kod
+stamp_on	Marka: faýlda
+pay_qr_on	Töleg QR: faýlda
+pay_qr_off	Töleg QR: ýok
+items_tmpl_heading	Haryt şablonlary
+items_tmpl_help	Menýuňyz üçin naharlar, kategoriýalar we suratlar. Dükan sazlamalary we işgärler bolşy ýaly galýar.
+public_tmpl_help	Islendik adamyň ýükläp bilýän başlangyç menýulary. Internet bir gezek gerek.
+private_tmpl_help	Khaynjo aragatnaşygyňyzdan gelen 12 sanly kod bilen goralýan müşderi menýulary.
+printers_screen_tip	Gözle bu enjamyň ulanyp biljek printerlerini görkezýär we olary bu dükan üçin ýatda saklaýar. Hasap printerleri: Hasap we KOT formaty → Hasap. Aşhana: Aşhana → Aşhana stansiýalary.
+printers_found_none	Printer tapylmady.
+kot_copy_from	Şundan göçür
+kot_copy_from_help	Şol görnüşiň her setiriniň ölçegini, galyňlygyny we deňleşdirilişini şu görnüşe göçürýär. Bu görnüş öz bannerini, haryt prefiksini we üstüni çyzmagyny saklaýar. Saklamak üçin KOT formatyny ýatda saklaň.
+nav_loading	Ýüklenýär…

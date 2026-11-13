@@ -1368,3 +1368,22 @@ recent_changes	Impinduka ziheruka
 lane_declared_label	Inyemezabuguzi y'umusoro
 lane_owner_label	Inyandiko y'amafaranga mu ntoki
 money_lane_bill	Inyemezabuguzi: {lane}
+sel_copy	Kopera
+sel_select_all	Hitamo byose
+sel_copied	Byakoporowe
+items_tmpl_khaynjo	Inyandikorugero y'ibintu ya Khaynjo
+items_tmpl_named	Inyandikorugero ya {name}
+app_tmpl_named	Inyandikorugero ya porogaramu ya {name}
+private_code_ph	Kode y'imibare 12
+stamp_on	Kashe: iri mu dosiye
+pay_qr_on	QR yo kwishyura: iri mu dosiye
+pay_qr_off	QR yo kwishyura: nta yo
+items_tmpl_heading	Inyandikorugero z'ibintu
+items_tmpl_help	Amafunguro, ibyiciro n'amafoto bya menu yawe. Igenamiterere ry'iduka n'abakozi bigumaho uko biri.
+public_tmpl_help	Menu zo gutangiriraho umuntu wese ashobora gukuraho. Bisaba interineti rimwe.
+private_tmpl_help	Menu z'abakiriya zifunzwe na kode y'imibare 12 iturutse ku muntu wawe wa Khaynjo.
+printers_screen_tip	Shakisha yerekana mucapyi iki gikoresho gishobora gukoresha kandi ikazibika kuri iri duka. Mucapyi za fagitire: Imiterere ya fagitire na KOT → Fagitire. Igikoni: Igikoni → Sitasiyo z'igikoni.
+printers_found_none	Nta mucapyi wabonetse.
+kot_copy_from	Koporora kuri
+kot_copy_from_help	Ikoporora ingano, ubunini n'itondekanya rya buri murongo kuva kuri ubwo bwoko ijya kuri ubu. Ubu bwoko bugumana banneri yabwo, imbanziriza y'ikintu n'umurongo ukuraho. Bika imiterere ya KOT kugira ngo bigumeho.
+nav_loading	Biriguma gufunguka…

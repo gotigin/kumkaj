@@ -184,20 +184,30 @@ mod floor_tests {
         assert_eq!(parcel, vec![2]);
     }
 
-    /// Phone: Columns dropdown + zoom must stack (not one Right of Fixed
-    /// widths that crop Auto past the edge).
+    /// One quiet row (2026-11-13): − + Auto at fixed widths, then the Columns
+    /// pick as the **last**, Fill child — it fits the 375 px floor with room to
+    /// spare. (An older Right row put a Fixed(176) Columns box first and pushed
+    /// Auto past a phone's edge; a Fill child before Fixed ones does the same.)
     #[test]
-    fn floor_cols_row_stacks_on_phone_widths() {
+    fn floor_cols_row_fits_the_phone_floor() {
         let ui = include_str!("../ui_script.rs");
         let row = ui
             .split("floor_cols_row := View{")
             .nth(1)
             .and_then(|s| s.split("floor_scroll :=").next())
             .unwrap_or("");
-        assert!(
-            row.contains("flow: Down"),
-            "floor_cols_row must Down-stack dropdown above zoom controls"
-        );
+        assert!(row.contains("flow: Right spacing: 8"), "one row");
+        let fixed: f64 = row
+            .lines()
+            .filter_map(|l| l.trim().strip_prefix("width: "))
+            .filter_map(|w| w.split_whitespace().next())
+            .filter_map(|w| w.parse::<f64>().ok())
+            .sum();
+        // 375 floor − 32 screen padding − 3 gaps of 8 − a usable Columns pick.
+        assert!(fixed + 24.0 + 100.0 <= 343.0, "fixed widths {fixed} crowd the phone floor");
+        let auto = row.find("floor_zoom_auto := SegBtn").expect("Auto zoom control must remain");
+        let pick = row.find("floor_cols_box := View{").expect("Columns pick");
+        assert!(pick > auto, "the Fill Columns pick must come after the fixed controls");
         assert!(
             !row.contains("Fixed(176.)"),
             "floor_cols_box must not be Fixed(176) in a Right strip (crops Auto)"

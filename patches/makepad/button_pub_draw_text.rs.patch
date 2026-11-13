@@ -1,6 +1,6 @@
 --- a/widgets/src/button.rs
 +++ b/widgets/src/button.rs
-@@ -468,8 +468,10 @@
+@@ -468,10 +468,12 @@
      #[redraw]
      #[live]
      draw_bg: DrawQuad,

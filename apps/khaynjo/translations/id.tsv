@@ -1368,3 +1368,22 @@ recent_changes	Perubahan terbaru
 lane_declared_label	Faktur pajak
 lane_owner_label	Memo tunai
 money_lane_bill	Tagihan: {lane}
+sel_copy	Salin
+sel_select_all	Pilih semua
+sel_copied	Disalin
+items_tmpl_khaynjo	Templat item Khaynjo
+items_tmpl_named	Templat {name}
+app_tmpl_named	Templat aplikasi {name}
+private_code_ph	Kode 12 digit
+stamp_on	Stempel: tersimpan
+pay_qr_on	QR bayar: tersimpan
+pay_qr_off	QR bayar: tidak ada
+items_tmpl_heading	Template item
+items_tmpl_help	Hidangan, kategori, dan foto untuk menu Anda. Pengaturan toko dan staf tetap seperti semula.
+public_tmpl_help	Menu awal yang bisa diunduh siapa saja. Perlu internet sekali.
+private_tmpl_help	Menu klien yang dikunci dengan kode 12 digit dari kontak Khaynjo Anda.
+printers_screen_tip	Cari menampilkan printer yang bisa dipakai perangkat ini dan menyimpannya untuk toko ini. Printer tagihan: Format Tagihan & KOT → Tagihan. Dapur: Dapur → Stasiun dapur.
+printers_found_none	Tidak ada printer yang ditemukan.
+kot_copy_from	Salin dari
+kot_copy_from_help	Menyalin ukuran, ketebalan, dan perataan setiap baris dari jenis itu ke jenis ini. Jenis ini tetap memakai banner, awalan item, dan coretannya sendiri. Simpan format KOT untuk mempertahankannya.
+nav_loading	Memuat…

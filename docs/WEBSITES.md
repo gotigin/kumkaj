@@ -117,7 +117,7 @@ workers.
 ### Vendor patches the sites rely on
 
 `vendor/makepad` is gitignored and rebuilt by `scripts/setup-makepad.sh`
-from `patches/makepad/`. The sites need three patches (tracked since
+from `patches/makepad/`. The sites need these patches (tracked since
 2026-11-07; before that they lived only in the vendor tree and would
 have vanished on the next setup):
 
@@ -126,16 +126,13 @@ have vanished on the next setup):
 | `slides_view_story_axis` | `SlidesView` `axis: Vertical`; tap / swipe / wheel flip one chapter (OS momentum ignored); presenter keys ↓ → PgDn Space, ↑ ← PgUp, Home / End; `goal_slide()` / `slide_count()` |
 | `web_init_window_order` | wasm `ToWasmInit` runs `Event::Startup` (which creates window 0) **before** applying the window geometry — without it the canvas sticks on "Loading.." with an IdPool panic |
 | `web_aux_buttons_stay` | mouse side buttons stay in-app; canvas context menu is Copy / Select all; PageUp–arrows/Space not stolen by the shell |
-| `widget_steals_document_selection` | only Button / TextInput / HtmlLink block document select (Labels/Images do not) |
-| `view_document_selection` | View document-host select (experimental; **not wired on sites**) |
-| `view_document_chrome` | PageUp/Home/End + doc key focus (pairs with document select) |
+| `text_selection` | one selection model for apps and sites: drag selects across blocks like a browser page (from a margin too on sites, `select_from_gaps`; wheel and edge auto-scroll while dragging), double-click word, long-press / 0.5 s hold on touch; `View { selection_root: true }` (the site's `page`) answers Ctrl/Cmd+A and Copy of what is highlighted; on wasm the end of a touch selection opens the same Copy / Select all menu (`FromWasmShowClipboardActions`) |
 
-**Site canvas text selection is OFF (2026-11-12).** Document-host select
-and per-Markdown gestures both left some cards live and neighbors dead
-(feature grid / KOT). Keep site Markdown `selectable: false` until one
-approach works everywhere — see [`DESIGN.md`](DESIGN.md) § Text selection
-and [`sites/khaynjo/README.md`](../sites/khaynjo/README.md) § Remaining
-(also: 14 world-shelf photos still “Photo coming”).
+**Site text selection is on (2026-11-13)** with that one model — see
+[`DESIGN.md`](DESIGN.md) § Text selection & copy. The earlier
+`widget_steals_document_selection` / `view_document_*` patches (a
+cross-block drag host that left some cards dead) are gone. Still open:
+14 world-shelf photos “Photo coming” ([`sites/khaynjo/README.md`](../sites/khaynjo/README.md) § Remaining).
 
 Two vendor behaviours the sites work around in their own DSL (vendor
 untouched, apps unaffected):

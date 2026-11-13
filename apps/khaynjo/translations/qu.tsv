@@ -1368,3 +1368,22 @@ recent_changes	Kunan pacha tikrakuykuna
 lane_declared_label	Impuesto nisqamanta factura
 lane_owner_label	Memo de efectivo nisqa
 money_lane_bill	Invitado invitado qullqi: {lane}
+sel_copy	Copiay
+sel_select_all	Llapanta akllay
+sel_copied	Copiasqañam
+items_tmpl_khaynjo	Khaynjo imakunapa plantillan
+items_tmpl_named	{name} plantilla
+app_tmpl_named	{name} app plantilla
+private_code_ph	12 yupaykunayuq código
+stamp_on	Sello: archivopi
+pay_qr_on	Pagay QR: archivopi
+pay_qr_off	Pagay QR: mana imapas
+items_tmpl_heading	Imakuna plantillakuna
+items_tmpl_help	Mikhuykuna, rakikuna, fotokunapas menuykipaq. Tiendap churakuyninkuna llamkaqkunapas kasqanmanta qhipakunku.
+public_tmpl_help	Qallariy menukuna pipas uraykachiyta atin. Huk kutilla internet necesitakun.
+private_tmpl_help	Khaynjo willaqniykimanta 12 yupay codigowan wichqasqa clientekunap menunkuna.
+printers_screen_tip	Maskay rikuchin kay equipo atinan impresorakunata, kay tiendapaqtaq waqaychan. Cuenta impresorakuna: Cuenta KOT formato → Cuenta. Yanuna wasi: Yanuna wasi → Yanuna estacionkuna.
+printers_found_none	Mana impresora tarikunchu.
+kot_copy_from	Kaymanta copiay
+kot_copy_from_help	Chay laya sapa siq'ip hatun kayninta, rakhu kayninta, churakuyninta kayman copian. Kay laya kikin bannerninta, imap prefijonta, siq'isqanta waqaychan. Waqaychanapaq KOT formatota waqaychay.
+nav_loading	Cargachkan…

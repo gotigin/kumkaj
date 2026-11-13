@@ -1368,3 +1368,22 @@ recent_changes	अलीकडील बदल
 lane_declared_label	कर चलन
 lane_owner_label	कॅश मेमो
 money_lane_bill	बिल: {lane}
+sel_copy	कॉपी करा
+sel_select_all	सर्व निवडा
+sel_copied	कॉपी झाले
+items_tmpl_khaynjo	Khaynjo वस्तू टेम्पलेट
+items_tmpl_named	{name} टेम्पलेट
+app_tmpl_named	{name} अ‍ॅप टेम्पलेट
+private_code_ph	12 अंकी कोड
+stamp_on	स्टॅम्प: फाइलवर
+pay_qr_on	पेमेंट QR: फाइलवर
+pay_qr_off	पेमेंट QR: नाही
+items_tmpl_heading	आयटम टेम्पलेट
+items_tmpl_help	तुमच्या मेनूसाठी पदार्थ, श्रेणी आणि फोटो. दुकानाची सेटिंग्ज आणि कर्मचारी आहेत तसेच राहतात.
+public_tmpl_help	कोणीही डाउनलोड करू शकेल असे सुरुवातीचे मेनू. एकदा इंटरनेट लागते.
+private_tmpl_help	तुमच्या Khaynjo संपर्काकडून मिळालेल्या 12-अंकी कोडने सुरक्षित ग्राहक मेनू.
+printers_screen_tip	शोधा हे डिव्हाइस वापरू शकेल असे प्रिंटर दाखवते आणि या दुकानासाठी जतन करते. बिल प्रिंटर: बिल व KOT फॉरमॅट → बिल. स्वयंपाकघर: स्वयंपाकघर → स्वयंपाकघर स्टेशन.
+printers_found_none	एकही प्रिंटर सापडला नाही.
+kot_copy_from	यातून कॉपी करा
+kot_copy_from_help	त्या प्रकारातील प्रत्येक ओळीचा आकार, जाडी आणि संरेखन यात कॉपी करते. हा प्रकार स्वतःचा बॅनर, आयटम उपसर्ग आणि खोडरेषा ठेवतो. ठेवण्यासाठी KOT फॉरमॅट जतन करा.
+nav_loading	लोड होत आहे…

@@ -1368,3 +1368,22 @@ recent_changes	Cambios recentes
 lane_declared_label	Factura fiscal
 lane_owner_label	Nota de efectivo
 money_lane_bill	Conta: {lane}
+sel_copy	Copiar
+sel_select_all	Seleccionar todo
+sel_copied	Copiado
+items_tmpl_khaynjo	Modelo de artigos Khaynjo
+items_tmpl_named	Modelo {name}
+app_tmpl_named	Modelo de aplicación {name}
+private_code_ph	Código de 12 díxitos
+stamp_on	Selo: no ficheiro
+pay_qr_on	QR de pagamento: no ficheiro
+pay_qr_off	QR de pagamento: ningún
+items_tmpl_heading	Modelos de artigos
+items_tmpl_help	Pratos, categorías e fotos para o teu menú. A configuración da tenda e o persoal quedan igual.
+public_tmpl_help	Menús iniciais que calquera pode descargar. Precisa internet unha vez.
+private_tmpl_help	Menús de cliente protexidos cun código de 12 díxitos do teu contacto de Khaynjo.
+printers_screen_tip	Buscar mostra as impresoras que este dispositivo pode usar e gárdaas para esta tenda. Impresoras de conta: Formato de conta e KOT → Conta. Cociña: Cociña → Estacións de cociña.
+printers_found_none	Non se atopou ningunha impresora.
+kot_copy_from	Copiar de
+kot_copy_from_help	Copia o tamaño, o grosor e o aliñamento de cada liña dese tipo a este. Este tipo conserva o seu propio báner, prefixo de artigo e riscado. Garda o formato KOT para mantelo.
+nav_loading	Cargando…

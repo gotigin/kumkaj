@@ -1368,3 +1368,22 @@ recent_changes	የቅርብ ለውጦች
 lane_declared_label	የግብር ደረሰኝ
 lane_owner_label	የጥሬ ገንዘብ ማስታወሻ
 money_lane_bill	ሂሳብ፦ {lane}
+sel_copy	ቅዳ
+sel_select_all	ሁሉንም ምረጥ
+sel_copied	ተቀድቷል
+items_tmpl_khaynjo	የKhaynjo ዕቃዎች አብነት
+items_tmpl_named	የ{name} አብነት
+app_tmpl_named	የ{name} መተግበሪያ አብነት
+private_code_ph	ባለ 12 አሃዝ ኮድ
+stamp_on	ማህተም፦ በፋይል ላይ
+pay_qr_on	የክፍያ QR፦ በፋይል ላይ
+pay_qr_off	የክፍያ QR፦ የለም
+items_tmpl_heading	የዕቃ አብነቶች
+items_tmpl_help	ለምናሌዎ ምግቦች፣ ምድቦች እና ፎቶዎች። የሱቅ ቅንብሮች እና ሰራተኞች እንዳሉ ይቆያሉ።
+public_tmpl_help	ማንም ሊያወርዳቸው የሚችሉ መነሻ ምናሌዎች። አንድ ጊዜ ኢንተርኔት ያስፈልጋል።
+private_tmpl_help	ከKhaynjo አገናኝዎ በሚመጣ ባለ 12 አሃዝ ኮድ የተቆለፉ የደንበኛ ምናሌዎች።
+printers_screen_tip	ፈልግ ይህ መሣሪያ የሚጠቀምባቸውን አታሚዎች ይዘረዝራል እና ለዚህ ሱቅ ያስቀምጣቸዋል። የሂሳብ አታሚዎች፦ የሂሳብ እና KOT ቅርጸት → ሂሳብ። ወጥ ቤት፦ ወጥ ቤት → የወጥ ቤት ጣቢያዎች።
+printers_found_none	ምንም አታሚ አልተገኘም።
+kot_copy_from	ቅዳ ከ
+kot_copy_from_help	የእያንዳንዱን መስመር መጠን፣ ውፍረት እና አሰላለፍ ከዚያ አይነት ወደዚህ ይቀዳል። ይህ አይነት የራሱን ባነር፣ የንጥል ቅድመ ቅጥያ እና መሰረዣ ይይዛል። ለማቆየት የKOT ቅርጸትን ያስቀምጡ።
+nav_loading	በመጫን ላይ…

@@ -1368,3 +1368,22 @@ recent_changes	Perubahan terkini
 lane_declared_label	Invois cukai
 lane_owner_label	Memo tunai
 money_lane_bill	Bil: {lane}
+sel_copy	Salin
+sel_select_all	Pilih semua
+sel_copied	Disalin
+items_tmpl_khaynjo	Templat item Khaynjo
+items_tmpl_named	Templat {name}
+app_tmpl_named	Templat aplikasi {name}
+private_code_ph	Kod 12 digit
+stamp_on	Setem: pada fail
+pay_qr_on	QR Pembayaran: dalam fail
+pay_qr_off	QR Pembayaran: tiada
+items_tmpl_heading	Templat item
+items_tmpl_help	Hidangan, kategori dan foto untuk menu anda. Tetapan kedai dan kakitangan kekal seperti biasa.
+public_tmpl_help	Menu permulaan yang boleh dimuat turun oleh sesiapa. Perlu internet sekali.
+private_tmpl_help	Menu pelanggan yang dikunci dengan kod 12 digit daripada kenalan Khaynjo anda.
+printers_screen_tip	Cari menyenaraikan pencetak yang boleh digunakan oleh peranti ini dan menyimpannya untuk kedai ini. Pencetak bil: Format Bil & KOT → Bil. Dapur: Dapur → Stesen dapur.
+printers_found_none	Tiada pencetak ditemui.
+kot_copy_from	Salin daripada
+kot_copy_from_help	Menyalin saiz, ketebalan dan penjajaran setiap baris daripada jenis itu ke jenis ini. Jenis ini mengekalkan sepanduk, awalan item dan coretannya sendiri. Simpan format KOT untuk mengekalkannya.
+nav_loading	Memuatkan…

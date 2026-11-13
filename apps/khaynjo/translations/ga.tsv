@@ -1368,3 +1368,22 @@ recent_changes	Athruithe le déanaí
 lane_declared_label	Sonras cánach
 lane_owner_label	Míoicíní airgid
 money_lane_bill	Billi: {lane}
+sel_copy	Cóipeáil
+sel_select_all	Roghnaigh gach rud
+sel_copied	Cóipeáilte
+items_tmpl_khaynjo	Teimpléad míreanna Khaynjo
+items_tmpl_named	Teimpléad {name}
+app_tmpl_named	Teimpléad aipe {name}
+private_code_ph	Cód 12 dhigit
+stamp_on	Stampa: ar comhad
+pay_qr_on	Íocaíocht QR: ar comhad
+pay_qr_off	Íocaíocht QR: gan
+items_tmpl_heading	Teimpléid earraí
+items_tmpl_help	Miasa, catagóirí agus grianghraif do do bhiachlár. Fanann socruithe an tsiopa agus an fhoireann mar atá.
+public_tmpl_help	Biachláir tosaigh is féidir le duine ar bith a íoslódáil. Teastaíonn an t-idirlíon uair amháin.
+private_tmpl_help	Biachláir cliant faoi ghlas le cód 12 dhigit ó do theagmhálaí Khaynjo.
+printers_screen_tip	Liostaíonn Aimsigh na printéirí is féidir leis an ngléas seo a úsáid agus sábhálann sé iad don siopa seo. Printéirí bille: Formáid bille agus KOT → Bille. Cistin: Cistin → Stáisiúin chistine.
+printers_found_none	Níor aimsíodh aon phrintéir.
+kot_copy_from	Cóipeáil ó
+kot_copy_from_help	Cóipeálann sé méid, tiús agus ailíniú gach líne ón gcineál sin isteach sa cheann seo. Coinníonn an cineál seo a mheirge, a réimír míre agus a líne tríd féin. Sábháil formáid KOT chun é a choinneáil.
+nav_loading	Á lódáil…

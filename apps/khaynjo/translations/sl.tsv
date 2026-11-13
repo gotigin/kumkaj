@@ -1368,3 +1368,22 @@ recent_changes	Nedavne spremembe
 lane_declared_label	Davčni račun
 lane_owner_label	Blagajniški zapis
 money_lane_bill	Račun: {lane}
+sel_copy	Kopiraj
+sel_select_all	Izberi vse
+sel_copied	Kopirano
+items_tmpl_khaynjo	Predloga artiklov Khaynjo
+items_tmpl_named	Predloga {name}
+app_tmpl_named	Predloga aplikacije {name}
+private_code_ph	12-mestna koda
+stamp_on	Žig: v datoteki
+pay_qr_on	QR za plačilo: v datoteki
+pay_qr_off	QR za plačilo: nič
+items_tmpl_heading	Predloge artiklov
+items_tmpl_help	Jedi, kategorije in fotografije za vaš jedilnik. Nastavitve trgovine in osebje ostanejo nespremenjeni.
+public_tmpl_help	Začetni jedilniki, ki jih lahko prenese vsakdo. Internet je potreben enkrat.
+private_tmpl_help	Jedilniki strank, zaklenjeni z 12-mestno kodo od vašega stika pri Khaynjo.
+printers_screen_tip	Iskanje prikaže tiskalnike, ki jih lahko uporablja ta naprava, in jih shrani za to trgovino. Tiskalniki računov: Oblika računa in KOT → Račun. Kuhinja: Kuhinja → Kuhinjske postaje.
+printers_found_none	Ni najdenih tiskalnikov.
+kot_copy_from	Kopiraj iz
+kot_copy_from_help	Kopira velikost, debelino in poravnavo vsake vrstice iz te vrste v to. Ta vrsta obdrži svojo pasico, predpono postavke in prečrtanje. Shranite obliko KOT, da jo obdržite.
+nav_loading	Nalaganje…

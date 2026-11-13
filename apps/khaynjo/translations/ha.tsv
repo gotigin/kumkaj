@@ -1368,3 +1368,22 @@ recent_changes	Canje-canje na baya-bayan nan
 lane_declared_label	Lissafin haraji
 lane_owner_label	Takardar tsabar kuɗi
 money_lane_bill	Lissafi: {lane}
+sel_copy	Kwafi
+sel_select_all	Zaɓi duka
+sel_copied	An kwafa
+items_tmpl_khaynjo	Samfurin kayayyakin Khaynjo
+items_tmpl_named	Samfurin {name}
+app_tmpl_named	Samfurin manhajar {name}
+private_code_ph	Lambar lambobi 12
+stamp_on	Hatimi: a fayil
+pay_qr_on	QR na biya: a fayil
+pay_qr_off	QR na biya: babu
+items_tmpl_heading	Samfuran kayayyaki
+items_tmpl_help	Abinci, rukunai da hotuna don menu ɗinku. Saitunan shago da ma'aikata suna nan yadda suke.
+public_tmpl_help	Menu na farawa da kowa zai iya saukewa. Ana buƙatar intanet sau ɗaya.
+private_tmpl_help	Menu na abokan ciniki da aka kulle da lamba mai lambobi 12 daga wakilin Khaynjo ɗinku.
+printers_screen_tip	Nema na nuna firintocin da wannan na'ura za ta iya amfani da su kuma yana adana su don wannan shago. Firintocin lissafi: Tsarin lissafi da KOT → Lissafi. Kicin: Kicin → Tashoshin kicin.
+printers_found_none	Ba a sami firinta ba.
+kot_copy_from	Kwafa daga
+kot_copy_from_help	Yana kwafa girma, kauri da daidaitawar kowane layi daga wannan nau'in zuwa wannan. Wannan nau'in yana riƙe tutarsa, prefix na abu da layin sokewa. Ajiye tsarin KOT don riƙe shi.
+nav_loading	Ana lodawa…

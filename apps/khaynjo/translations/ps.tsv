@@ -1368,3 +1368,22 @@ recent_changes	وروستي بدلونونه
 lane_declared_label	د مالیې رسید
 lane_owner_label	نغدي یادداشت
 money_lane_bill	بیل: {lane}
+sel_copy	کاپي
+sel_select_all	ټول وټاکئ
+sel_copied	کاپي شو
+items_tmpl_khaynjo	د Khaynjo توکو کينډۍ
+items_tmpl_named	د {name} کينډۍ
+app_tmpl_named	د {name} اپ کينډۍ
+private_code_ph	۱۲ عددي کوډ
+stamp_on	ه فایل کې
+pay_qr_on	QR: په فایل کې
+pay_qr_off	د تادیې QR: هیڅ نه
+items_tmpl_heading	د توکو کينډۍ
+items_tmpl_help	ستاسو د مینو لپاره خواړه، کټګورۍ او انځورونه. د هټۍ تنظیمات او کارکوونکي لکه څنګه چې دي پاتې کیږي.
+public_tmpl_help	پیل مینوګانې چې هر څوک یې ښکته کولی شي. یو ځل انټرنیټ ته اړتیا ده.
+private_tmpl_help	د پیرودونکو مینوګانې چې ستاسو د Khaynjo اړیکې له ۱۲ عددي کوډ سره خوندي دي.
+printers_screen_tip	لټون هغه پرنټرونه ښيي چې دا وسیله یې کارولی شي او د دې هټۍ لپاره یې خوندي کوي. د بل پرنټرونه: د بل او KOT بڼه ← بل. پخلنځی: پخلنځی ← د پخلنځي سټېشنونه.
+printers_found_none	هیڅ پرنټر ونه موندل شو.
+kot_copy_from	له دې څخه کاپي
+kot_copy_from_help	د هغه ډول د هرې کرښې اندازه، پنډوالی او ترتیب دې ډول ته کاپي کوي. دا ډول خپل بینر، د توکي مختاړی او کرښه وهل ساتي. د ساتلو لپاره د KOT بڼه خوندي کړئ.
+nav_loading	بارېږي…

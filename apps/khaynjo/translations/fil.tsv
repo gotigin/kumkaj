@@ -1368,3 +1368,22 @@ recent_changes	Mga kamakailang pagbabago
 lane_declared_label	Invoice ng buwis
 lane_owner_label	Resibo ng cash
 money_lane_bill	Resibo: {lane}
+sel_copy	Kopyahin
+sel_select_all	Piliin lahat
+sel_copied	Nakopya na
+items_tmpl_khaynjo	Template ng mga item ng Khaynjo
+items_tmpl_named	Template ng {name}
+app_tmpl_named	App template ng {name}
+private_code_ph	12-digit na code
+stamp_on	Stamp: sa file
+pay_qr_on	QR ng Pagbabayad: nasa file
+pay_qr_off	QR ng Pagbabayad: wala
+items_tmpl_heading	Mga template ng item
+items_tmpl_help	Mga putahe, kategorya at larawan para sa menu mo. Mananatili ang settings ng tindahan at ang staff.
+public_tmpl_help	Mga panimulang menu na puwedeng i-download ng kahit sino. Kailangan ng internet nang isang beses.
+private_tmpl_help	Mga menu ng kliyente na naka-lock sa 12-digit na code mula sa iyong Khaynjo contact.
+printers_screen_tip	Ipinapakita ng Hanapin ang mga printer na magagamit ng device na ito at sine-save ang mga ito para sa tindahang ito. Mga printer ng bill: Format ng Bill at KOT → Bill. Kusina: Kusina → Mga istasyon ng kusina.
+printers_found_none	Walang nakitang printer.
+kot_copy_from	Kopyahin mula sa
+kot_copy_from_help	Kinokopya ang laki, kapal at pagkakahanay ng bawat linya mula sa uring iyon papunta rito. Pinananatili ng uring ito ang sarili nitong banner, prefix ng item at strike. I-save ang KOT format para manatili ito.
+nav_loading	Naglo-load…

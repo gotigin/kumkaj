@@ -1368,3 +1368,22 @@ recent_changes	Mgbanwe nso nso a
 lane_declared_label	Ụgwọ ụtụ
 lane_owner_label	Akwụkwọ ego aka
 money_lane_bill	Ụgwọ: {lane}
+sel_copy	Detuo
+sel_select_all	Họrọ ihe niile
+sel_copied	E detuola
+items_tmpl_khaynjo	Ụdị ihe Khaynjo
+items_tmpl_named	Ụdị {name}
+app_tmpl_named	Ụdị ngwa {name}
+private_code_ph	Koodu ọnụọgụ 12
+stamp_on	Stampụ: dị na faịlụ
+pay_qr_on	QR ịkwụ ụgwọ: dị na faịlụ
+pay_qr_off	QR ịkwụ ụgwọ: ọ dịghị
+items_tmpl_heading	Ndebiri ihe
+items_tmpl_help	Nri, ụdị na foto maka menu gị. Ntọala ụlọ ahịa na ndị ọrụ na-anọgide otú ha dị.
+public_tmpl_help	Menu mmalite onye ọ bụla nwere ike ibudata. Achọrọ ịntanetị otu ugboro.
+private_tmpl_help	Menu ndị ahịa ejiri koodu ọnụọgụ 12 sitere n'aka onye kọntaktị Khaynjo gị kpọchie.
+printers_screen_tip	Chọọ na-egosi ndị nbipụta ngwaọrụ a nwere ike iji ma chekwaa ha maka ụlọ ahịa a. Ndị nbipụta ụgwọ: Usoro ụgwọ na KOT → Ụgwọ. Kichin: Kichin → Ọdụ kichin.
+printers_found_none	Ahụghị nbipụta ọ bụla.
+kot_copy_from	Detuo site na
+kot_copy_from_help	Ọ na-edetuo nha, ọkpụrụkpụ na nhazi nke ahịrị ọ bụla site n'ụdị ahụ banye n'nke a. Ụdị a na-edebe banner ya, prefix ihe na ọkara ya. Chekwaa usoro KOT ka ọ dịrị.
+nav_loading	Na-ebugo…

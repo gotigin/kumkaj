@@ -1368,3 +1368,22 @@ recent_changes	Viimased muudatused
 lane_declared_label	Maksuarve
 lane_owner_label	Sularaha memo
 money_lane_bill	Arve: {lane}
+sel_copy	Kopeeri
+sel_select_all	Vali kõik
+sel_copied	Kopeeritud
+items_tmpl_khaynjo	Khaynjo toodete mall
+items_tmpl_named	{name} mall
+app_tmpl_named	{name} rakenduse mall
+private_code_ph	12-kohaline kood
+stamp_on	Tempel: failis
+pay_qr_on	Makse QR: failis
+pay_qr_off	Makse QR: puudub
+items_tmpl_heading	Kaubamallid
+items_tmpl_help	Toidud, kategooriad ja fotod teie menüü jaoks. Poe seaded ja töötajad jäävad samaks.
+public_tmpl_help	Algmenüüd, mida igaüks saab alla laadida. Internetti on vaja üks kord.
+private_tmpl_help	Kliendimenüüd, mis on lukustatud teie Khaynjo kontakti 12-kohalise koodiga.
+printers_screen_tip	Otsi loetleb printerid, mida see seade saab kasutada, ja salvestab need selle poe jaoks. Arveprinterid: Arve ja KOT vorming → Arve. Köök: Köök → Köögijaamad.
+printers_found_none	Printereid ei leitud.
+kot_copy_from	Kopeeri
+kot_copy_from_help	Kopeerib selle liigi iga rea suuruse, paksuse ja joonduse sellesse. See liik säilitab oma bänneri, kauba eesliite ja läbikriipsutuse. Säilitamiseks salvesta KOT-vorming.
+nav_loading	Laadimine…

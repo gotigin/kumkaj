@@ -7,7 +7,7 @@ alwaysApply: true
 
 Canonical: `docs/DEV.md` § Press, touch and a responsive UI thread.
 Shared Makepad patches (all four apps): `press_capture_cancel`,
-`button_press_lifecycle`, `text_flow_touch_focus`, `touch_scroll_slop`,
+`button_press_lifecycle`, `text_selection`, `touch_scroll_slop`,
 `widget_tree_name_index`, `android_jni_detach_on_exit`.
 
 ## Facts

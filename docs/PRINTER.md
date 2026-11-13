@@ -15,6 +15,11 @@ Settings → **Printers** is the device list **and** each device’s send method
 
 - **Find printers** reads the OS list (system queues, then network, USB, and
   Bluetooth) and saves it to this shop’s `printers.json` and the running app.
+- **Since 2026-11-13 (owner): the screen is Find + the saved list only** —
+  names, nothing else. The per-printer send-method chips and the test-page
+  picker below are hidden; a send method saved earlier on a printer still
+  applies, new printers follow the Bill / KOT format's How; Test bill / Test
+  KOT stay under Bill & KOT format. The rest of this list is the earlier model.
 - Under **each** printer name, choose how that device is sent jobs:
   - **OS document (system spooler)** — PNG of the slip (same picture as the
     preview), given to CUPS / Windows / Android print. For system queues that

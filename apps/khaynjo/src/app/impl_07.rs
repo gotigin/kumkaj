@@ -634,7 +634,7 @@ fn confirm_line_action(&mut self, cx: &mut Cx) {
                     .replace("{c}", &st.money(Money((total - entered).max(0))))
             }
         };
-        self.ui.label(cx, ids!(buy_parts_status)).set_text(cx, &text);
+        self.ui.widget(cx, ids!(buy_parts_status)).set_text(cx, &text);
         self.ui.button(cx, ids!(buy_parts_add)).set_text(cx, &app_state().lock().unwrap().t("add_another_way"));
     }
 

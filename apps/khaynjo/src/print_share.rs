@@ -962,6 +962,26 @@ impl KotKindStyleSet {
         }
     }
 
+    /// Settings → KOT → Copy from: every line's size, weight and alignment of
+    /// `from` into `to`. `to` keeps its banner, item prefix and strike — they
+    /// are what tell the kitchen which kind of slip it is.
+    pub fn copy_line_styles(&mut self, from: KotSlipKind, to: KotSlipKind) {
+        if from == to {
+            return;
+        }
+        let src = self.get(from).clone();
+        let dst = self.get_mut(to);
+        dst.title = src.title;
+        dst.shop = src.shop;
+        dst.time = src.time;
+        dst.waiter = src.waiter;
+        dst.station = src.station;
+        dst.table = src.table;
+        dst.kot_no = src.kot_no;
+        dst.area = src.area;
+        dst.item_qty = src.item_qty;
+    }
+
     /// One-shot upgrade: fill empty banner/prefix and set product strike defaults.
     fn apply_product_chrome_defaults(&mut self) {
         for kind in KotSlipKind::ALL {
@@ -6965,6 +6985,48 @@ pub fn slip_page_png(
     Ok((buf.into_inner(), w, h))
 }
 
+/// [`slip_page_png`] as grey pixels (one byte each) for the on-screen
+/// preview: same page, same quarter turn, no PNG round trip.
+pub fn slip_page_gray(
+    text: &str,
+    metrics: &crate::receipt_raster::RasterMetrics,
+    landscape: bool,
+) -> (Vec<u8>, u32, u32) {
+    let (px, w, h) = crate::receipt_raster::gray_lines(&styled_slip_lines(text, metrics), metrics);
+    if !landscape {
+        return (px, w, h);
+    }
+    // `image`'s rotate90 (clockwise): old (x, y) lands on (h - 1 - y, x).
+    let (ow, oh) = (w as usize, h as usize);
+    let mut out = vec![255u8; px.len()];
+    for y in 0..oh {
+        let src = &px[y * ow..(y + 1) * ow];
+        for (x, &v) in src.iter().enumerate() {
+            if v != 255 {
+                out[x * oh + (oh - 1 - y)] = v;
+            }
+        }
+    }
+    (out, h, w)
+}
+
+/// Identity of one slip preview picture: same text, size, and turn → the
+/// same pixels, so the preview can skip drawing it again.
+pub fn slip_preview_key(
+    text: &str,
+    metrics: &crate::receipt_raster::RasterMetrics,
+    landscape: bool,
+    type_px: f64,
+) -> u64 {
+    use std::hash::{Hash, Hasher};
+    let mut h = std::collections::hash_map::DefaultHasher::new();
+    text.hash(&mut h);
+    format!("{metrics:?}").hash(&mut h);
+    landscape.hash(&mut h);
+    type_px.to_bits().hash(&mut h);
+    h.finish()
+}
+
 fn png_pixel_size(png: &[u8]) -> Option<(u32, u32)> {
     if png.len() < 24 {
         return None;
@@ -8377,6 +8439,50 @@ mod tests {
             stamped.windows(4).any(|w| w == *b"pHYs"),
             "OS PNG carries physical density"
         );
+    }
+
+    #[test]
+    fn kot_kind_copies_line_styles_but_keeps_its_banner() {
+        let mut set = KotKindStyleSet::default();
+        set.original.table = KotFieldStyle::light(KOT_EM_MIN);
+        set.original.banner = "MAIN".into();
+        let cancelled_before = set.cancelled.clone();
+        set.copy_line_styles(KotSlipKind::Original, KotSlipKind::Cancelled);
+        assert_eq!(set.cancelled.table, set.original.table);
+        assert_eq!(set.cancelled.item_qty, set.original.item_qty);
+        assert_eq!(set.cancelled.title, set.original.title);
+        // What marks a cancel slip stays.
+        assert_eq!(set.cancelled.banner, cancelled_before.banner);
+        assert_eq!(set.cancelled.item_prefix, cancelled_before.item_prefix);
+        assert_eq!(set.cancelled.strike_item_name, cancelled_before.strike_item_name);
+        // Any kind into any other; the source is untouched.
+        let original = set.original.clone();
+        set.copy_line_styles(KotSlipKind::Modified, KotSlipKind::Original);
+        assert_eq!(set.original.item_qty, set.modified.item_qty);
+        assert_eq!(set.original.banner, original.banner);
+        let before = set.clone();
+        set.copy_line_styles(KotSlipKind::Duplicate, KotSlipKind::Duplicate);
+        assert_eq!(set, before);
+    }
+
+    #[test]
+    fn screen_preview_pixels_are_the_printed_png() {
+        // The preview skips the PNG round trip; it must still be the print picture.
+        let mut f = PrintFormat::standard_portrait();
+        f.line = wrap_cols_for_paper_mm(80);
+        let text = "Shop\n**Bill 12**\nButter Roti\t2\nDal makhani\t1\n";
+        let metrics = f.raster_metrics();
+        for landscape in [false, true] {
+            let (png, pw, ph) = slip_page_png(text, &metrics, landscape).expect("png");
+            let (gray, gw, gh) = slip_page_gray(text, &metrics, landscape);
+            assert_eq!((gw, gh), (pw, ph), "landscape={landscape}");
+            let decoded = image::load_from_memory(&png).expect("decode").to_luma8();
+            assert_eq!(decoded.as_raw(), &gray, "landscape={landscape}");
+        }
+        let a = slip_preview_key(text, &metrics, false, 20.0);
+        assert_eq!(a, slip_preview_key(text, &metrics, false, 20.0));
+        assert_ne!(a, slip_preview_key(text, &metrics, true, 20.0));
+        assert_ne!(a, slip_preview_key("Shop\n", &metrics, false, 20.0));
     }
 
     #[test]

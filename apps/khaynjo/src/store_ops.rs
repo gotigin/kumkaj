@@ -2662,8 +2662,8 @@ mod tests {
     #[test]
     fn ensure_table_layouts_packed_assigns_nonzero() {
         let shop = shop();
-        let a = shop.store.add_table_in_area("P1", "Dine In").unwrap();
-        let b = shop.store.add_table_in_area("P2", "Dine In").unwrap();
+        let a = shop.store.add_table_in_area("L1", "Dine In").unwrap();
+        let b = shop.store.add_table_in_area("L2", "Dine In").unwrap();
         let n = shop
             .store
             .ensure_table_layouts_packed(&shop.owner)
@@ -2694,9 +2694,10 @@ mod tests {
         shop.store.set_floor_view("grid").unwrap();
         assert_eq!(shop.store.floor_view().unwrap(), "grid");
         // Columns are per area on this device (legacy whole-floor is fallback).
-        // Unset → 4 for every area (Dine In, Parcel, …).
-        assert_eq!(shop.store.floor_columns_for_area("Dine In"), 4);
-        assert_eq!(shop.store.floor_columns_for_area("Parcel"), 4);
+        // Unset → 0 = fit the screen for every area (Dine In, Parcel, …);
+        // a fixed 4 cropped tiles on phones, tablets and laptops.
+        assert_eq!(shop.store.floor_columns_for_area("Dine In"), 0);
+        assert_eq!(shop.store.floor_columns_for_area("Parcel"), 0);
         shop.store.set_floor_columns(3).unwrap();
         assert_eq!(shop.store.floor_columns_for_area("Dine In"), 3);
         shop.store.set_floor_columns_for_area("Parcel", 5).unwrap();

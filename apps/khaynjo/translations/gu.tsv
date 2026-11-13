@@ -1368,3 +1368,22 @@ recent_changes	તાજેતરના ફેરફારો
 lane_declared_label	કર ઇન્વૉઇસ
 lane_owner_label	કેશ મેમો
 money_lane_bill	બિલ: {lane}
+sel_copy	કૉપી કરો
+sel_select_all	બધું પસંદ કરો
+sel_copied	કૉપી થયું
+items_tmpl_khaynjo	Khaynjo આઇટમ ટેમ્પ્લેટ
+items_tmpl_named	{name} ટેમ્પ્લેટ
+app_tmpl_named	{name} એપ ટેમ્પ્લેટ
+private_code_ph	12 અંકનો કોડ
+stamp_on	સ્ટેમ્પ: ફાઇલ પર
+pay_qr_on	પેમેન્ટ QR: ફાઇલ પર
+pay_qr_off	પેમેન્ટ QR: નથી
+items_tmpl_heading	આઇટમ ટેમ્પ્લેટ
+items_tmpl_help	તમારા મેનૂ માટે વાનગીઓ, શ્રેણીઓ અને ફોટા. દુકાનના સેટિંગ્સ અને સ્ટાફ જેમ છે તેમ જ રહે છે.
+public_tmpl_help	કોઈ પણ ડાઉનલોડ કરી શકે તેવા શરૂઆતના મેનૂ. એક વાર ઇન્ટરનેટ જોઈએ.
+private_tmpl_help	તમારા Khaynjo સંપર્ક પાસેથી મળેલા 12-અંકના કોડથી સુરક્ષિત ગ્રાહક મેનૂ.
+printers_screen_tip	શોધો આ ઉપકરણ વાપરી શકે તેવા પ્રિન્ટર બતાવે છે અને આ દુકાન માટે સાચવે છે. બિલ પ્રિન્ટર: બિલ અને KOT ફોર્મેટ → બિલ. રસોડું: રસોડું → રસોડા સ્ટેશન.
+printers_found_none	કોઈ પ્રિન્ટર મળ્યું નથી.
+kot_copy_from	આમાંથી કૉપિ કરો
+kot_copy_from_help	તે પ્રકારની દરેક લાઇનનું કદ, જાડાઈ અને ગોઠવણી આમાં કૉપિ કરે છે. આ પ્રકાર પોતાનું બેનર, આઇટમ ઉપસર્ગ અને છેકો રાખે છે. રાખવા માટે KOT ફોર્મેટ સાચવો.
+nav_loading	લોડ થઈ રહ્યું છે…

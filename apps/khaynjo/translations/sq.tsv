@@ -1368,3 +1368,22 @@ recent_changes	Ndryshimet e fundit
 lane_declared_label	Fatura tatimore
 lane_owner_label	Dëftesë me para
 money_lane_bill	Fatura: {lane}
+sel_copy	Kopjo
+sel_select_all	Përzgjidh të gjitha
+sel_copied	U kopjua
+items_tmpl_khaynjo	Shablloni i artikujve Khaynjo
+items_tmpl_named	Shablloni {name}
+app_tmpl_named	Shablloni i aplikacionit {name}
+private_code_ph	Kod me 12 shifra
+stamp_on	Vula: në skedar
+pay_qr_on	QR e pagesës: në skedar
+pay_qr_off	QR e pagesës: asnjë
+items_tmpl_heading	Shabllone artikujsh
+items_tmpl_help	Pjata, kategori dhe foto për menunë tuaj. Cilësimet e dyqanit dhe stafi mbeten siç janë.
+public_tmpl_help	Menu fillestare që mund t'i shkarkojë kushdo. Nevojitet internet një herë.
+private_tmpl_help	Menu klientësh të kyçura me një kod 12-shifror nga kontakti juaj i Khaynjo.
+printers_screen_tip	Kërko liston printerat që mund të përdorë kjo pajisje dhe i ruan për këtë dyqan. Printerat e faturës: Formati i faturës dhe KOT → Fatura. Kuzhina: Kuzhina → Stacionet e kuzhinës.
+printers_found_none	Nuk u gjet asnjë printer.
+kot_copy_from	Kopjo nga
+kot_copy_from_help	Kopjon madhësinë, trashësinë dhe shtrirjen e çdo rreshti nga ai lloj në këtë. Ky lloj mban banerin, parashtesën e artikullit dhe vijëzimin e vet. Ruani formatin KOT për ta mbajtur.
+nav_loading	Po ngarkohet…

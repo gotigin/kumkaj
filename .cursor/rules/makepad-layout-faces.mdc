@@ -8,7 +8,9 @@ alwaysApply: false
 
 Canonical docs: `docs/DEV.md` § **Makepad 2 UI faces (agent guide)** · `docs/DESIGN.md` § Makepad 2 faces · § **Always responsive** · § **Text selection & copy**.
 
-**Responsive:** size grids from the widget turtle/walk width, not a shell estimate that ignores padding. **Text:** display copy is selectable in **apps and Makepad sites** (`WrapLabel` / `Markdown` / `ReportText`) unless it sits inside a tap target (`selectable: false` / plain `Label`).
+**Help text:** explanations go in the heading's `InfoHelp` tip (ℹ beside the label), never an inline paragraph under a heading or a line restating what a control already shows (DESIGN "Explanations live in ℹ"). Status lines carry state / results only, short.
+
+**Responsive:** size grids from the widget turtle/walk width, not a shell estimate that ignores padding. **Text:** one selection model in **apps and Makepad sites** (DESIGN § Text selection & copy, DEV § Text selection): display copy is a selectable block (`WrapLabel` / `Markdown` / `ReportText`, never a plain `Label`); each block keeps its own press; one `View { selection_root: true }` per window / page / open sheet carries a drag across blocks (wheel + edge auto-scroll), Ctrl/Cmd+A, Copy of what is highlighted and the Copy / Select all menu. `selectable: false` only for tap-target text, button faces and chrome marks — with a comment. Never take a block's press away (`selection_gestures: false` made blocks dead), no per-widget exceptions; vendor change = regenerate `text_selection.rs.patch`, never hand-edit hunks.
 
 The same app's UI ships to Linux / Windows / Android — change that app's faces in its own copy, not per OS and not in another app. Faces are duplicated per app (no Kumkaj core); fix each app's copy separately if it needs the same fix.
 

@@ -1368,3 +1368,22 @@ recent_changes	Senaste ändringarna
 lane_declared_label	Skattefaktura
 lane_owner_label	Kontantmemo
 money_lane_bill	Nota: {lane}
+sel_copy	Kopiera
+sel_select_all	Markera allt
+sel_copied	Kopierat
+items_tmpl_khaynjo	Khaynjo-varumall
+items_tmpl_named	{name}-mall
+app_tmpl_named	{name}-appmall
+private_code_ph	12-siffrig kod
+stamp_on	Stämpel: på fil
+pay_qr_on	Betalnings-QR: på fil
+pay_qr_off	Betalnings-QR: ingen
+items_tmpl_heading	Artikelmallar
+items_tmpl_help	Rätter, kategorier och bilder till din meny. Butiksinställningar och personal förblir som de är.
+public_tmpl_help	Startmenyer som vem som helst kan ladda ner. Kräver internet en gång.
+private_tmpl_help	Kundmenyer låsta med en 12-siffrig kod från din Khaynjo-kontakt.
+printers_screen_tip	Sök visar skrivarna den här enheten kan använda och sparar dem för butiken. Notaskrivare: Nota- och KOT-format → Nota. Kök: Kök → Köksstationer.
+printers_found_none	Inga skrivare hittades.
+kot_copy_from	Kopiera från
+kot_copy_from_help	Kopierar storlek, tjocklek och justering för varje rad från den typen till denna. Denna typ behåller sin egen banderoll, artikelprefix och genomstrykning. Spara KOT-format för att behålla det.
+nav_loading	Läser in…

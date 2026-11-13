@@ -1368,3 +1368,22 @@ recent_changes	Nylige endringer
 lane_declared_label	Mva-faktura
 lane_owner_label	Kontantnota
 money_lane_bill	Regning: {lane}
+sel_copy	Kopier
+sel_select_all	Velg alt
+sel_copied	Kopiert
+items_tmpl_khaynjo	Khaynjo-varemal
+items_tmpl_named	{name}-mal
+app_tmpl_named	{name}-appmal
+private_code_ph	12-sifret kode
+stamp_on	Stempel: på fil
+pay_qr_on	Betalings-QR: på fil
+pay_qr_off	Betalings-QR: ingen
+items_tmpl_heading	Varemaler
+items_tmpl_help	Retter, kategorier og bilder til menyen din. Butikkinnstillinger og ansatte forblir som de er.
+public_tmpl_help	Startmenyer som alle kan laste ned. Krever internett én gang.
+private_tmpl_help	Kundemenyer låst med en 12-sifret kode fra Khaynjo-kontakten din.
+printers_screen_tip	Søk viser skriverne denne enheten kan bruke, og lagrer dem for butikken. Regningsskrivere: Regnings- og KOT-format → Regning. Kjøkken: Kjøkken → Kjøkkenstasjoner.
+printers_found_none	Fant ingen skrivere.
+kot_copy_from	Kopier fra
+kot_copy_from_help	Kopierer størrelse, tykkelse og justering for hver linje fra den typen til denne. Denne typen beholder sitt eget banner, vareprefiks og gjennomstreking. Lagre KOT-format for å beholde det.
+nav_loading	Laster inn…

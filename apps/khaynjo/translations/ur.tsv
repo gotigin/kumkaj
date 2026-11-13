@@ -1368,3 +1368,22 @@ recent_changes	حالیہ تبدیلیاں
 lane_declared_label	ٹیکس انوائس
 lane_owner_label	کیش میمو
 money_lane_bill	بل: {lane}
+sel_copy	کاپی کریں
+sel_select_all	سب منتخب کریں
+sel_copied	کاپی ہو گیا
+items_tmpl_khaynjo	Khaynjo آئٹم ٹیمپلیٹ
+items_tmpl_named	{name} ٹیمپلیٹ
+app_tmpl_named	{name} ایپ ٹیمپلیٹ
+private_code_ph	12 ہندسوں کا کوڈ
+stamp_on	اسٹیمپ: فائل پر
+pay_qr_on	ادائیگی QR: فائل پر
+pay_qr_off	ادائیگی QR: نہیں
+items_tmpl_heading	آئٹم ٹیمپلیٹس
+items_tmpl_help	آپ کے مینو کے لیے پکوان، زمرے اور تصاویر۔ دکان کی ترتیبات اور عملہ جیسے ہیں ویسے ہی رہتے ہیں۔
+public_tmpl_help	ابتدائی مینو جنہیں کوئی بھی ڈاؤن لوڈ کر سکتا ہے۔ ایک بار انٹرنیٹ چاہیے۔
+private_tmpl_help	آپ کے Khaynjo رابطے سے ملنے والے 12 ہندسوں کے کوڈ سے محفوظ گاہک مینو۔
+printers_screen_tip	تلاش وہ پرنٹر دکھاتی ہے جو یہ ڈیوائس استعمال کر سکتی ہے اور انہیں اس دکان کے لیے محفوظ کرتی ہے۔ بل پرنٹر: بل اور KOT فارمیٹ ← بل۔ کچن: کچن ← کچن اسٹیشن۔
+printers_found_none	کوئی پرنٹر نہیں ملا۔
+kot_copy_from	اس سے کاپی کریں
+kot_copy_from_help	اس قسم کی ہر سطر کا سائز، موٹائی اور ترتیب اس میں کاپی کرتا ہے۔ یہ قسم اپنا بینر، آئٹم سابقہ اور کٹی لکیر رکھتی ہے۔ رکھنے کے لیے KOT فارمیٹ محفوظ کریں۔
+nav_loading	لوڈ ہو رہا ہے…

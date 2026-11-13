@@ -1368,3 +1368,22 @@ recent_changes	Modificări recente
 lane_declared_label	Factură fiscală
 lane_owner_label	Notă de casă
 money_lane_bill	Notă: {lane}
+sel_copy	Copiază
+sel_select_all	Selectează tot
+sel_copied	Copiat
+items_tmpl_khaynjo	Șablon de articole Khaynjo
+items_tmpl_named	Șablon {name}
+app_tmpl_named	Șablon de aplicație {name}
+private_code_ph	Cod din 12 cifre
+stamp_on	Ștampilă: în fișier
+pay_qr_on	QR de plată: în fișier
+pay_qr_off	QR de plată: niciunul
+items_tmpl_heading	Șabloane de articole
+items_tmpl_help	Preparate, categorii și fotografii pentru meniul tău. Setările magazinului și personalul rămân la fel.
+public_tmpl_help	Meniuri de început pe care le poate descărca oricine. Necesită internet o dată.
+private_tmpl_help	Meniuri de client protejate cu un cod de 12 cifre de la contactul tău Khaynjo.
+printers_screen_tip	Caută afișează imprimantele pe care le poate folosi acest dispozitiv și le salvează pentru acest magazin. Imprimante de notă: Format notă și KOT → Notă. Bucătărie: Bucătărie → Posturi de bucătărie.
+printers_found_none	Nu s-a găsit nicio imprimantă.
+kot_copy_from	Copiază din
+kot_copy_from_help	Copiază mărimea, grosimea și alinierea fiecărui rând din acel tip în acesta. Acest tip își păstrează bannerul, prefixul de articol și tăierea. Salvați formatul KOT pentru a-l păstra.
+nav_loading	Se încarcă…

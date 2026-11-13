@@ -105,6 +105,8 @@ pub fn classify(msg: &str) -> SnackKind {
         "kitchen place",
         "shop device",
         "client mode",
+        // A refusal that only asks for a different input ("already exists").
+        "already exists",
     ];
     for w in WARN {
         if m.contains(w) {
@@ -130,6 +132,13 @@ pub fn classify(msg: &str) -> SnackKind {
         "sent",
         "ok —",
         "shop ready",
+        // A thing made or changed as asked — success, even with a next step
+        // after the dash ("Station Tandoor added — attach its printers: …").
+        "added",
+        "created",
+        "removed",
+        "updated",
+        "applied",
     ];
     for w in OK {
         // Empty-route / failed-print notes must never look like success.
@@ -165,6 +174,10 @@ mod tests {
     #[test]
     fn classify_success_and_warn() {
         assert_eq!(classify("Menu order saved"), SnackKind::Success);
+        assert_eq!(
+            classify("Station Tandoor added — attach its printers: Kitchen → Kitchen stations → Printers for this station"),
+            SnackKind::Success
+        );
         assert_eq!(classify("Sale undone — cart restored"), SnackKind::Success);
         assert_eq!(classify("Read-only on this extra till"), SnackKind::Warn);
         assert_eq!(

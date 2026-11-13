@@ -1368,3 +1368,22 @@ recent_changes	ᱱᱮᱛᱟᱨ ᱨᱮᱱᱟᱜ ᱵᱚᱫᱚᱞ ᱠᱚ
 lane_declared_label	ᱴᱮᱠᱥ ᱪᱟᱞᱟᱱ
 lane_owner_label	ᱴᱟᱠᱟ ᱢᱮᱢᱳ
 money_lane_bill	ᱵᱤᱞ: {lane}
+sel_copy	ᱱᱚᱠᱚᱞ ᱢᱮ
+sel_select_all	ᱡᱚᱛᱚ ᱵᱟᱪᱷᱟᱣ ᱢᱮ
+sel_copied	ᱱᱚᱠᱚᱞ ᱮᱱᱟ
+items_tmpl_khaynjo	Khaynjo ᱡᱤᱱᱤᱥ ᱴᱮᱢᱯᱞᱮᱴ
+items_tmpl_named	{name} ᱴᱮᱢᱯᱞᱮᱴ
+app_tmpl_named	{name} ᱮᱯ ᱴᱮᱢᱯᱞᱮᱴ
+private_code_ph	12 ᱮᱞ ᱠᱳᱰ
+stamp_on	ᱥᱴᱟᱢᱯ: ᱨᱮᱫ ᱨᱮ
+pay_qr_on	ᱯᱮᱢᱮᱱᱴ QR: ᱨᱮᱫ ᱨᱮ
+pay_qr_off	ᱯᱮᱢᱮᱱᱴ QR: ᱪᱮᱫ ᱦᱚᱸ ᱵᱟᱝ
+items_tmpl_heading	ᱡᱤᱱᱤᱥ ᱴᱮᱢᱯᱞᱮᱴ
+items_tmpl_help	ᱟᱢᱟᱜ ᱢᱮᱱᱩ ᱞᱟᱹᱜᱤᱫ ᱡᱚᱢᱟᱜ, ᱛᱷᱚᱠ ᱟᱨ ᱪᱤᱛᱟᱹᱨ᱾ ᱫᱚᱠᱟᱱ ᱥᱮᱴᱤᱝ ᱟᱨ ᱠᱟᱹᱢᱤᱭᱟᱹ ᱡᱮᱞᱮᱠᱟ ᱢᱮᱱᱟᱜᱼᱟ ᱚᱱᱠᱟ ᱜᱮ ᱛᱟᱦᱮᱸᱱᱟ᱾
+public_tmpl_help	ᱡᱟᱦᱟᱸᱭ ᱦᱚᱸ ᱰᱟᱣᱱᱞᱚᱰ ᱫᱟᱲᱮᱭᱟᱜ ᱮᱛᱚᱦᱚᱵ ᱢᱮᱱᱩ᱾ ᱢᱤᱫᱴᱟᱹᱝ ᱡᱷᱚᱜ ᱤᱱᱴᱚᱨᱱᱮᱴ ᱞᱟᱹᱠᱛᱤᱭᱟ᱾
+private_tmpl_help	ᱟᱢᱟᱜ Khaynjo ᱥᱟᱹᱜᱟᱹᱭ ᱠᱷᱚᱱ ᱧᱟᱢ 12 ᱮᱞ ᱠᱳᱰ ᱛᱮ ᱨᱩᱠᱷᱤᱭᱟᱹ ᱜᱟᱦᱟᱠ ᱢᱮᱱᱩ᱾
+printers_screen_tip	ᱥᱮᱸᱫᱽᱨᱟ ᱫᱚ ᱱᱚᱶᱟ ᱰᱤᱵᱟᱭᱤᱥ ᱵᱮᱵᱷᱟᱨ ᱫᱟᱲᱮᱭᱟᱜ ᱯᱨᱤᱱᱴᱟᱨ ᱩᱫᱩᱜᱟᱭ ᱟᱨ ᱱᱚᱶᱟ ᱫᱚᱠᱟᱱ ᱞᱟᱹᱜᱤᱫ ᱥᱟᱺᱪᱟᱣ ᱮᱫᱟᱭ᱾ ᱵᱤᱞ ᱯᱨᱤᱱᱴᱟᱨ: ᱵᱤᱞ ᱟᱨ KOT ᱯᱷᱚᱨᱢᱮᱴ → ᱵᱤᱞ᱾ ᱩᱛᱩ ᱚᱲᱟᱜ: ᱩᱛᱩ ᱚᱲᱟᱜ → ᱩᱛᱩ ᱚᱲᱟᱜ ᱥᱴᱮᱥᱚᱱ᱾
+printers_found_none	ᱡᱟᱦᱟᱱ ᱯᱨᱤᱱᱴᱟᱨ ᱵᱟᱝ ᱧᱟᱢ ᱞᱮᱱᱟ᱾
+kot_copy_from	ᱱᱚᱶᱟ ᱠᱷᱚᱱ ᱠᱚᱯᱤ ᱢᱮ
+kot_copy_from_help	ᱚᱱᱟ ᱞᱮᱠᱟᱱ ᱨᱮᱭᱟᱜ ᱡᱚᱛᱚ ᱫᱷᱟᱨᱤ ᱨᱮᱭᱟᱜ ᱢᱟᱯ, ᱢᱚᱴᱟ ᱟᱨ ᱥᱟᱡᱟᱣ ᱱᱚᱶᱟ ᱨᱮ ᱠᱚᱯᱤ ᱮᱫᱟᱭ᱾ ᱱᱚᱶᱟ ᱞᱮᱠᱟᱱ ᱫᱚ ᱟᱡᱟᱜ ᱵᱮᱱᱟᱨ, ᱡᱤᱱᱤᱥ ᱢᱟᱲᱟᱝ ᱟᱨ ᱠᱟᱴ ᱫᱷᱟᱨᱤ ᱫᱚᱦᱚᱭ ᱟ᱾ ᱫᱚᱦᱚ ᱞᱟᱹᱜᱤᱫ KOT ᱯᱷᱚᱨᱢᱟᱴ ᱥᱟᱺᱪᱟᱣ ᱢᱮ᱾
+nav_loading	ᱞᱚᱰ ᱦᱩᱭ ᱠᱟᱱᱟ…

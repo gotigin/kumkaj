@@ -1368,3 +1368,22 @@ recent_changes	ਤਾਜ਼ਾ ਬਦਲਾਅ
 lane_declared_label	ਟੈਕਸ ਇਨਵੌਇਸ
 lane_owner_label	ਕੈਸ਼ ਮੀਮੋ
 money_lane_bill	ਬਿੱਲ: {lane}
+sel_copy	ਕਾਪੀ ਕਰੋ
+sel_select_all	ਸਭ ਚੁਣੋ
+sel_copied	ਕਾਪੀ ਹੋ ਗਿਆ
+items_tmpl_khaynjo	Khaynjo ਆਈਟਮ ਟੈਂਪਲੇਟ
+items_tmpl_named	{name} ਟੈਂਪਲੇਟ
+app_tmpl_named	{name} ਐਪ ਟੈਂਪਲੇਟ
+private_code_ph	12 ਅੰਕਾਂ ਦਾ ਕੋਡ
+stamp_on	ਸਟੈਂਪ: ਫਾਈਲ ’ਤੇ
+pay_qr_on	ਭੁਗਤਾਨ QR: ਫਾਈਲ ’ਤੇ
+pay_qr_off	ਭੁਗਤਾਨ QR: ਨਹੀਂ
+items_tmpl_heading	ਆਈਟਮ ਟੈਂਪਲੇਟ
+items_tmpl_help	ਤੁਹਾਡੇ ਮੀਨੂ ਲਈ ਪਕਵਾਨ, ਸ਼੍ਰੇਣੀਆਂ ਅਤੇ ਫੋਟੋਆਂ। ਦੁਕਾਨ ਦੀਆਂ ਸੈਟਿੰਗਾਂ ਅਤੇ ਸਟਾਫ਼ ਜਿਵੇਂ ਹਨ ਉਵੇਂ ਹੀ ਰਹਿੰਦੇ ਹਨ।
+public_tmpl_help	ਸ਼ੁਰੂਆਤੀ ਮੀਨੂ ਜਿਨ੍ਹਾਂ ਨੂੰ ਕੋਈ ਵੀ ਡਾਊਨਲੋਡ ਕਰ ਸਕਦਾ ਹੈ। ਇੱਕ ਵਾਰ ਇੰਟਰਨੈੱਟ ਚਾਹੀਦਾ ਹੈ।
+private_tmpl_help	ਤੁਹਾਡੇ Khaynjo ਸੰਪਰਕ ਤੋਂ ਮਿਲੇ 12-ਅੰਕਾਂ ਦੇ ਕੋਡ ਨਾਲ ਸੁਰੱਖਿਅਤ ਗਾਹਕ ਮੀਨੂ।
+printers_screen_tip	ਲੱਭੋ ਇਸ ਡਿਵਾਈਸ ਦੇ ਵਰਤਣਯੋਗ ਪ੍ਰਿੰਟਰ ਦਿਖਾਉਂਦਾ ਹੈ ਅਤੇ ਇਸ ਦੁਕਾਨ ਲਈ ਸੰਭਾਲਦਾ ਹੈ। ਬਿੱਲ ਪ੍ਰਿੰਟਰ: ਬਿੱਲ ਅਤੇ KOT ਫਾਰਮੈਟ → ਬਿੱਲ। ਰਸੋਈ: ਰਸੋਈ → ਰਸੋਈ ਸਟੇਸ਼ਨ।
+printers_found_none	ਕੋਈ ਪ੍ਰਿੰਟਰ ਨਹੀਂ ਮਿਲਿਆ।
+kot_copy_from	ਇਸ ਤੋਂ ਕਾਪੀ ਕਰੋ
+kot_copy_from_help	ਉਸ ਕਿਸਮ ਦੀ ਹਰ ਲਾਈਨ ਦਾ ਆਕਾਰ, ਮੋਟਾਈ ਅਤੇ ਇਕਸਾਰਤਾ ਇਸ ਵਿੱਚ ਕਾਪੀ ਕਰਦਾ ਹੈ। ਇਹ ਕਿਸਮ ਆਪਣਾ ਬੈਨਰ, ਆਈਟਮ ਅਗੇਤਰ ਅਤੇ ਕੱਟੀ ਲਕੀਰ ਰੱਖਦੀ ਹੈ। ਰੱਖਣ ਲਈ KOT ਫਾਰਮੈਟ ਸੇਵ ਕਰੋ।
+nav_loading	ਲੋਡ ਹੋ ਰਿਹਾ ਹੈ…

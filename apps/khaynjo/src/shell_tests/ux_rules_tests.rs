@@ -281,4 +281,74 @@ mod ux_rules_tests {
         assert_eq!(locale::t("en", "nav_items"), "Menu");
         assert_eq!(locale::t("en", "sell"), "Order");
     }
+
+    /// Settings → Areas · stations · tax rates shows names, never ids, and
+    /// every row keeps its toggle target (keys line up index for index).
+    #[test]
+    fn sibling_pickers_show_names_and_keep_their_targets() {
+        let path = std::env::temp_dir().join(format!("khaynjo-pickers-{}.sqlite3", new_id()));
+        let store = Store::open_path(&path).unwrap();
+        store.add_station("Tandoor").unwrap();
+        let rows = sibling_pickers_rows(&store, |k| locale::t("en", k));
+        let keys = sibling_picker_keys(&store);
+        assert_eq!(rows.len(), keys.len());
+        for (row, key) in rows.iter().zip(&keys) {
+            match (row, key) {
+                (ReportRow::Head(_), None) => {}
+                (ReportRow::Kv(name, _), Some(key)) => {
+                    assert!(!name.contains(':'), "id leaked into the row: {name}");
+                    assert!(
+                        key.starts_with("area:") || key.starts_with("station:") || key.starts_with("tax:"),
+                        "{key}"
+                    );
+                }
+                _ => panic!("row / key mismatch"),
+            }
+        }
+        assert!(rows.iter().any(|r| matches!(r, ReportRow::Kv(n, _) if n == "Tandoor")));
+        drop(store);
+        let _ = std::fs::remove_file(path);
+    }
+
+    /// Report lists whose rows are tapped (match_event: `ids!(row)` finger_up)
+    /// must be `tappable` — the row View hears the finger only with a cursor;
+    /// these taps were dead before (same class as the KotCard card tap).
+    #[test]
+    fn tapped_report_lists_are_tappable() {
+        let ui = include_str!("../ui_script.rs");
+        for id in ["sibling_pickers_label", "units_label"] {
+            let decl = ui
+                .split(&format!("{id} := mod.widgets.ReportText{{"))
+                .nth(1)
+                .and_then(|s| s.split('}').next())
+                .unwrap_or("");
+            assert!(decl.contains("tappable: true"), "{id} rows are tapped — set tappable: true");
+        }
+    }
+
+    /// Settings → Printers is Find + the saved printers, nothing else (owner,
+    /// 2026-11-13): no per-printer send-method chips, no test-page picker or
+    /// button, no "(none yet — tap Find)" placeholder, no idle "Tap Find…" line.
+    #[test]
+    fn printers_screen_is_find_and_the_list_only() {
+        let ui = include_str!("../ui_script.rs");
+        for decl in [
+            "printers_delivery_list := mod.widgets.PrinterDeliveryList{visible: false}",
+            "printers_test_dd := StackSecondaryBtn{text: \"Printers for a test page\" flow: Down visible: false}",
+            "printers_pool_label := mod.widgets.ReportText{visible: false}",
+        ] {
+            assert!(ui.contains(decl), "missing: {decl}");
+        }
+        let test_btn = ui
+            .split("print_test_btn := ")
+            .next()
+            .and_then(|s| s.rsplit("ActionStack{").next())
+            .unwrap_or("");
+        assert!(test_btn.contains("visible: false"), "Print a test page must stay hidden");
+        let paint = include_str!("../app/impl_03.rs");
+        assert!(paint.contains("ids!(printers_test_dd)).set_visible(cx, false)"));
+        assert!(paint.contains("ids!(print_test_btn)).set_visible(cx, false)"));
+        let empty = print_share::DevicePrinters::default();
+        assert!(printers_pool_rows(&empty, None, |k| locale::t("en", k)).is_empty());
+    }
 }

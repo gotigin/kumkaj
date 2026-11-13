@@ -1368,3 +1368,22 @@ recent_changes	Cambios recientes
 lane_declared_label	Factura fiscal
 lane_owner_label	Nota de caja
 money_lane_bill	Factura: {lane}
+sel_copy	Copiar
+sel_select_all	Seleccionar todo
+sel_copied	Copiado
+items_tmpl_khaynjo	Plantilla de artículos Khaynjo
+items_tmpl_named	Plantilla {name}
+app_tmpl_named	Plantilla de app {name}
+private_code_ph	Código de 12 dígitos
+stamp_on	Sello: en archivo
+pay_qr_on	QR de pago: en archivo
+pay_qr_off	QR de pago: ninguno
+items_tmpl_heading	Plantillas de artículos
+items_tmpl_help	Platos, categorías y fotos para tu menú. La configuración de la tienda y el personal se mantienen igual.
+public_tmpl_help	Menús iniciales que cualquiera puede descargar. Se necesita internet una vez.
+private_tmpl_help	Menús de cliente protegidos con un código de 12 dígitos de tu contacto de Khaynjo.
+printers_screen_tip	Buscar muestra las impresoras que este dispositivo puede usar y las guarda para esta tienda. Impresoras de cuenta: Formato de cuenta y KOT → Cuenta. Cocina: Cocina → Estaciones de cocina.
+printers_found_none	No se encontraron impresoras.
+kot_copy_from	Copiar de
+kot_copy_from_help	Copia el tamaño, el grosor y la alineación de cada línea de ese tipo a este. Este tipo conserva su propio banner, prefijo de artículo y tachado. Guarda el formato KOT para conservarlo.
+nav_loading	Cargando…

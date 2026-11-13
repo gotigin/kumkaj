@@ -1368,3 +1368,22 @@ recent_changes	Alterações recentes
 lane_declared_label	Fatura fiscal
 lane_owner_label	Nota de caixa
 money_lane_bill	Conta: {lane}
+sel_copy	Copiar
+sel_select_all	Selecionar tudo
+sel_copied	Copiado
+items_tmpl_khaynjo	Modelo de itens Khaynjo
+items_tmpl_named	Modelo {name}
+app_tmpl_named	Modelo do app {name}
+private_code_ph	Código de 12 dígitos
+stamp_on	Carimbo: em ficheiro
+pay_qr_on	QR de pagamento: em ficheiro
+pay_qr_off	QR de pagamento: nenhum
+items_tmpl_heading	Modelos de itens
+items_tmpl_help	Pratos, categorias e fotos para o seu cardápio. As configurações da loja e a equipe continuam como estão.
+public_tmpl_help	Cardápios iniciais que qualquer pessoa pode baixar. Precisa de internet uma vez.
+private_tmpl_help	Cardápios de cliente protegidos por um código de 12 dígitos do seu contato Khaynjo.
+printers_screen_tip	Procurar lista as impressoras que este dispositivo pode usar e as salva para esta loja. Impressoras de conta: Formato de conta e KOT → Conta. Cozinha: Cozinha → Estações de cozinha.
+printers_found_none	Nenhuma impressora encontrada.
+kot_copy_from	Copiar de
+kot_copy_from_help	Copia o tamanho, a espessura e o alinhamento de cada linha daquele tipo para este. Este tipo mantém seu próprio banner, prefixo de item e tachado. Salve o formato KOT para manter.
+nav_loading	Carregando…

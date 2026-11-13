@@ -131,16 +131,17 @@ script_mod! {
     // draw_selection.color is what TextFlow paints (not draw_block.selection_color).
     mod.widgets.TextFlow.draw_selection.color = #xCFE3FFFF
     mod.widgets.Markdown.draw_selection.color = #xCFE3FFFF
-    // Site text selection is OFF. Makepad document-host select and per-Markdown
-    // gestures both left some cards selectable and neighbors dead (feature grid
-    // right column / KOT). Uneven select is worse than none — do not re-enable
-    // until every visible Markdown selects the same way with no exceptions.
-    mod.widgets.TextFlow.selectable = false
-    mod.widgets.Markdown.selectable = false
+    // Text selection (DESIGN.md § Text selection & copy — same model as the
+    // app): every Markdown block selects on its own (drag; double-click a word;
+    // long-press on touch); the `page` root adds Ctrl/Cmd+A, Copy of all and the
+    // right-click Copy / Select all menu. Tap targets (floor tiles, buttons) and
+    // chrome marks keep `selectable: false`.
+    mod.widgets.TextFlow.selectable = true
+    mod.widgets.Markdown.selectable = true
 
     // TextFlow paints from `font_color` (not only draw_text.color) — set both.
     let Eyebrow = Markdown{
-        selectable: false
+        selectable: true
         height: Fit
         paragraph_spacing: 0.
         pre_code_spacing: 0.
@@ -158,7 +159,7 @@ script_mod! {
         }
     }
     let Headline = Markdown{
-        selectable: false
+        selectable: true
         height: Fit
         paragraph_spacing: 0.
         pre_code_spacing: 0.
@@ -176,7 +177,7 @@ script_mod! {
         }
     }
     let Lede = Markdown{
-        selectable: false
+        selectable: true
         height: Fit
         paragraph_spacing: 0.
         pre_code_spacing: 0.
@@ -193,7 +194,7 @@ script_mod! {
         }
     }
     let Body = Markdown{
-        selectable: false
+        selectable: true
         height: Fit
         paragraph_spacing: 0.
         pre_code_spacing: 0.
@@ -210,7 +211,7 @@ script_mod! {
         }
     }
     let Strong = Markdown{
-        selectable: false
+        selectable: true
         height: Fit
         paragraph_spacing: 0.
         pre_code_spacing: 0.
@@ -228,7 +229,7 @@ script_mod! {
         }
     }
     let Small = Markdown{
-        selectable: false
+        selectable: true
         height: Fit
         paragraph_spacing: 0.
         pre_code_spacing: 0.
@@ -259,7 +260,7 @@ script_mod! {
         }
     }
     let Ticket = Markdown{
-        selectable: false
+        selectable: true
         height: Fit
         paragraph_spacing: 0.
         pre_code_spacing: 0.
@@ -281,7 +282,7 @@ script_mod! {
     // ---- Section type ---------------------------------------------------
     // Section titles (H2) and card titles (H3) — Baloo, maroon on cream.
     let H2 = Markdown{
-        selectable: false
+        selectable: true
         height: Fit
         paragraph_spacing: 0.
         pre_code_spacing: 0.
@@ -299,7 +300,7 @@ script_mod! {
         }
     }
     let H3 = Markdown{
-        selectable: false
+        selectable: true
         height: Fit
         paragraph_spacing: 0.
         pre_code_spacing: 0.
@@ -332,14 +333,18 @@ script_mod! {
     let OnRedTitle = H2{
         font_color: #xFFFFFF
         draw_text +: {color: #xFFFFFF}
+        // Light ink: a dark band (light blue would hide it).
+        draw_selection +: { color: #x3D0507FF }
     }
     let OnRedBody = Body{
         font_color: #xF6DCCB
         draw_text +: {color: #xF6DCCB}
+        draw_selection +: { color: #x3D0507FF }
     }
     let OnRedEyebrow = Eyebrow{
         font_color: GoldSoft
         draw_text +: {color: GoldSoft}
+        draw_selection +: { color: #x3D0507FF }
     }
 
     // ---- Buttons ---------------------------------------------------------
@@ -574,7 +579,7 @@ script_mod! {
         padding: Inset{left: 12. right: 12. top: 6. bottom: 7.}
         draw_bg +: {color: WellWarm border_color: #xEBCDB6 border_size: 1. border_radius: 14.}
         label := Markdown{
-            selectable: false
+            selectable: true
             width: Fit height: Fit
             padding: 0.
             paragraph_spacing: 0.
@@ -597,7 +602,7 @@ script_mod! {
         align: Align{y: 0.5}
         RoundedView{width: 10 height: 10 draw_bg +: {color: BillLine border_radius: 5.}}
         label := Markdown{
-            selectable: false
+            selectable: true
             width: Fit height: Fit
             padding: 0.
             paragraph_spacing: 0.
@@ -617,7 +622,7 @@ script_mod! {
         padding: Inset{left: 10. right: 10. top: 4. bottom: 5.}
         draw_bg +: {color: WellWarm border_radius: 10.}
         Markdown{
-            selectable: false
+            selectable: true
             width: Fit height: Fit
             padding: 0.
             paragraph_spacing: 0.
@@ -637,6 +642,7 @@ script_mod! {
         align: Align{x: 0.5 y: 0.5}
         draw_bg +: {color: Red border_radius: 17.}
         num := Markdown{
+            // Step number on a red disc: a mark, not copy.
             selectable: false
             width: Fit height: Fit
             padding: 0.
@@ -688,7 +694,7 @@ script_mod! {
     }
     // Price card numbers.
     let BigPrice = Markdown{
-        selectable: false
+        selectable: true
         height: Fit
         paragraph_spacing: 0.
         pre_code_spacing: 0.
@@ -721,8 +727,8 @@ script_mod! {
             flow: Down
             spacing: 2
             padding: Inset{left: 12. right: 8. top: 8. bottom: 8.}
-            // Markdown (not Label): Ctrl+A / document select must include tiles;
-            // HitBtn on top still owns the tap.
+            // Tap target (HitBtn on top owns the tap): tile words are not copy,
+            // so they stay out of drag and Select all (DESIGN tap-target rule).
             name := Markdown{
                 selectable: false
                 width: Fit height: Fit
@@ -778,7 +784,7 @@ script_mod! {
         align: Align{y: 0.5}
         dot := RoundedView{width: 12 height: 12 draw_bg +: {color: FreeFill border_color: FreeLine border_size: 1.5 border_radius: 6.}}
         word := Markdown{
-            selectable: false
+            selectable: true
             width: Fit height: Fit
             padding: 0.
             paragraph_spacing: 0.
@@ -799,9 +805,9 @@ script_mod! {
         spacing: 2
         padding: Inset{left: 12. right: 12. top: 10. bottom: 10.}
         draw_bg +: {color: Well border_color: WellLine border_size: 1. border_radius: 12.}
-        head := Markdown{padding: 0. selectable: false height: Fit paragraph_spacing: 0. pre_code_spacing: 0. body: "KOT" font_color: Ink draw_text +: {color: Ink text_style: theme.font_bold{font_family: StrongFont font_size: 14.}} draw_selection +: { color: #xCFE3FFFF }
+        head := Markdown{padding: 0. selectable: true height: Fit paragraph_spacing: 0. pre_code_spacing: 0. body: "KOT" font_color: Ink draw_text +: {color: Ink text_style: theme.font_bold{font_family: StrongFont font_size: 14.}} draw_selection +: { color: #xCFE3FFFF }
         draw_block +: { selection_color: #xCFE3FFFF }}
-        line := Markdown{width: Fill padding: 0. selectable: false height: Fit paragraph_spacing: 0. pre_code_spacing: 0. body: "Items" font_color: Muted draw_text +: {color: Muted text_style: theme.font_regular{font_family: TextFont font_size: 13.}} draw_selection +: { color: #xCFE3FFFF }
+        line := Markdown{width: Fill padding: 0. selectable: true height: Fit paragraph_spacing: 0. pre_code_spacing: 0. body: "Items" font_color: Muted draw_text +: {color: Muted text_style: theme.font_regular{font_family: TextFont font_size: 13.}} draw_selection +: { color: #xCFE3FFFF }
         draw_block +: { selection_color: #xCFE3FFFF }}
     }
     let KdsColumn = RoundedView{
@@ -810,7 +816,7 @@ script_mod! {
         spacing: 8
         padding: Inset{left: 10. right: 10. top: 10. bottom: 12.}
         draw_bg +: {color: WellWarm border_radius: 14.}
-        title := Markdown{padding: 0. selectable: false height: Fit paragraph_spacing: 0. pre_code_spacing: 0. body: "Column" font_color: Maroon draw_text +: {color: Maroon text_style: theme.font_bold{font_family: DisplayFont font_size: 18.}} draw_selection +: { color: #xCFE3FFFF }
+        title := Markdown{padding: 0. selectable: true height: Fit paragraph_spacing: 0. pre_code_spacing: 0. body: "Column" font_color: Maroon draw_text +: {color: Maroon text_style: theme.font_bold{font_family: DisplayFont font_size: 18.}} draw_selection +: { color: #xCFE3FFFF }
         draw_block +: { selection_color: #xCFE3FFFF }}
     }
     // Row: label left, amount right (bill, drawer).
@@ -866,7 +872,7 @@ script_mod! {
         native_wrap := View{
         width: Fill height: Fit
         native := Markdown{
-            selectable: false
+            selectable: true
             height: Fit
             paragraph_spacing: 0.
             pre_code_spacing: 0.
@@ -967,8 +973,10 @@ script_mod! {
                     }
 
                     page := ScrollYView{
-                        // Site canvas select is OFF (see README § Remaining / DESIGN.md).
-                        selectable: false
+                        // Selection root: drag across blocks, Ctrl/Cmd+A, Copy, right-click
+                        // menu; on a web page a drag may start in a margin too.
+                        selection_root: true
+                        select_from_gaps: true
                         width: Fill
                         height: Fill
                         flow: Down
@@ -1341,7 +1349,7 @@ script_mod! {
                                         align: Align{y: 0.5}
                                         shelf_prev := PagerBtn{text: "‹ Prev"}
                                         shelf_page := Markdown{
-                                            selectable: false
+                                            selectable: true
                                             width: Fit height: Fit
                                             padding: 0.
                                             paragraph_spacing: 0.
@@ -1555,6 +1563,7 @@ script_mod! {
                                             width: Fill height: Fit
                                             flow: Down
                                             spacing: 2
+                                            // Footer brand mark (cream on red): chrome, not copy.
                                             Markdown{
                                                 selectable: false
                                                 width: Fit height: Fit

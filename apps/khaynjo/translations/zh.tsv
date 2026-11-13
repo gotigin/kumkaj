@@ -1368,3 +1368,22 @@ recent_changes	最近变动
 lane_declared_label	税务发票
 lane_owner_label	现金小票
 money_lane_bill	账单：{lane}
+sel_copy	复制
+sel_select_all	全选
+sel_copied	已复制
+items_tmpl_khaynjo	Khaynjo 菜品模板
+items_tmpl_named	{name} 模板
+app_tmpl_named	{name} 应用模板
+private_code_ph	12 位数代码
+stamp_on	印章：已存档
+pay_qr_on	付款二维码：已存档
+pay_qr_off	付款二维码：无
+items_tmpl_heading	品项模板
+items_tmpl_help	菜单用的菜品、分类和照片。店铺设置和员工保持不变。
+public_tmpl_help	任何人都能下载的入门菜单。需要联网一次。
+private_tmpl_help	由您的 Khaynjo 联系人提供 12 位代码保护的客户菜单。
+printers_screen_tip	搜索会列出此设备可用的打印机，并为此店铺保存。账单打印机：账单和 KOT 格式 → 账单。厨房：厨房 → 厨房工作站。
+printers_found_none	未找到打印机。
+kot_copy_from	复制自
+kot_copy_from_help	将该类型每一行的大小、粗细和对齐方式复制到此类型。此类型保留自己的横幅、菜品前缀和删除线。保存 KOT 格式即可保留。
+nav_loading	加载中…

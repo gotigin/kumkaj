@@ -337,9 +337,6 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
             onboard_step == 2,
         );
         self.ui
-            .view(cx, ids!(onboard_fresh_panel))
-            .set_visible(cx, onboard_step == 1);
-        self.ui
             .view(cx, ids!(onboard_book_panel))
             .set_visible(cx, onboard_step == 2);
         self.paint_choice_pair(
@@ -837,13 +834,20 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
         self.ui.view(cx, ids!(virtual_printer_legacy)).set_visible(cx, false);
         // One panel title only (`printers_panel_help`) — never a second "Printers".
         self.ui.widget(cx, ids!(printers_find_help)).set_visible(cx, false);
-        self.ui.widget(cx, ids!(printers_found_label)).set_visible(cx, host);
-        self.ui.widget(cx, ids!(printers_pool_label)).set_visible(cx, host);
+        // Find status shows only when it says something (show_found_printers).
+        if !host {
+            self.ui.widget(cx, ids!(printers_found_label)).set_visible(cx, false);
+        }
+        let has_printers = !app_state().lock().unwrap().printer_draft.printers.is_empty();
+        self.ui
+            .widget(cx, ids!(printers_pool_label))
+            .set_visible(cx, host && has_printers);
+        self.ui.widget(cx, ids!(printers_delivery_list)).set_visible(cx, false);
         self.ui.button(cx, ids!(printer_place_dd)).set_visible(cx, false);
         self.ui.widget(cx, ids!(printers_routes_help)).set_visible(cx, false);
         self.ui.button(cx, ids!(route_clear)).set_visible(cx, false);
-        self.ui.button(cx, ids!(printers_test_dd)).set_visible(cx, host);
-        self.ui.button(cx, ids!(print_test_btn)).set_visible(cx, host);
+        self.ui.button(cx, ids!(printers_test_dd)).set_visible(cx, false);
+        self.ui.button(cx, ids!(print_test_btn)).set_visible(cx, false);
         self.ui.button(cx, ids!(printer_wire_escpos)).set_visible(cx, false);
         self.ui.button(cx, ids!(printer_wire_escpos_on)).set_visible(cx, false);
         self.ui.widget(cx, ids!(h_profiles)).set_visible(cx, false);
@@ -998,7 +1002,6 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
         self.align_label(cx, ids!(pairing_code_value), rtl);
         self.align_label(cx, ids!(settings_tmpl_label), rtl);
         self.align_label(cx, ids!(units_label), rtl);
-        self.align_label(cx, ids!(h_onboard_layout), rtl);
         self.align_label(cx, ids!(onboard_tmpl_help), rtl);
         self.align_label(cx, ids!(day_close_label), rtl);
         self.align_label(cx, ids!(books_till_value), rtl);
@@ -1024,7 +1027,6 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
         self.align_label(cx, ids!(h_product_locked_khaynjo), rtl);
         self.align_label(cx, ids!(h_how_start), rtl);
         self.align_label(cx, ids!(h_fresh_book_khaynjo), rtl);
-        self.align_label(cx, ids!(h_fresh_selected), rtl);
         self.align_label(cx, ids!(h_later_country_pack), rtl);
         self.align_label(cx, ids!(h_connect_to_server), rtl);
         self.align_label(cx, ids!(h_money_in_sales), rtl);
@@ -1417,7 +1419,6 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
             (ids!(h_bill_format), "bill_format"),
             (ids!(h_bill_format_help), "bill_format_help"),
             (ids!(h_print_brand), "print_brand_kit"),
-            (ids!(h_onboard_layout), "onboard_layout"),
             (ids!(h_venue_icon), "app_icon"),
             (ids!(h_item_photo), "photo"),
             (ids!(h_stamp), "stamp_heading"),
@@ -1462,7 +1463,10 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
         self.ui.widget(cx, ids!(h_product_locked_khaynjo)).set_visible(cx, false);
         self.ui.widget(cx, ids!(h_how_start)).set_text(cx, &plain_display_text(&s("how_start")));
         self.ui.widget(cx, ids!(h_fresh_book_khaynjo)).set_text(cx, &plain_display_text(&s("fresh_book_khaynjo")));
-        self.ui.widget(cx, ids!(h_fresh_selected)).set_text(cx, &plain_display_text(&s("fresh_selected")));
+        self.ui
+            .widget(cx, ids!(onboard_start_help))
+            .as_info_help()
+            .set_tip(&plain_display_text(&s("fresh_book_khaynjo")));
         self.ui.widget(cx, ids!(h_later_country_pack)).set_text(cx, &plain_display_text(&s("later_country_pack")));
         self.ui.widget(cx, ids!(h_connect_to_server)).set_text(cx, &plain_display_text(&s("connect_to_server")));
         self.ui.widget(cx, ids!(h_money_in_sales)).set_text(cx, &plain_display_text(&s("money_in_sales")));
@@ -1629,7 +1633,7 @@ fn fit_inside_system_bars(&mut self, cx: &mut Cx) {
             help.set_tip(&plain_display_text(&s(if is_client {
                 "printers_host_only"
             } else {
-                "printers_help"
+                "printers_screen_tip"
             })));
         }
         {

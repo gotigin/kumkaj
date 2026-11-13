@@ -1368,3 +1368,22 @@ recent_changes	التغييرات الأخيرة
 lane_declared_label	فاتورة ضريبية
 lane_owner_label	مذكرة نقدية
 money_lane_bill	الفاتورة: {lane}
+sel_copy	نسخ
+sel_select_all	تحديد الكل
+sel_copied	تم النسخ
+items_tmpl_khaynjo	قالب أصناف Khaynjo
+items_tmpl_named	قالب {name}
+app_tmpl_named	قالب تطبيق {name}
+private_code_ph	رمز من 12 رقمًا
+stamp_on	الختم: محفوظ
+pay_qr_on	QR الدفع: محفوظ
+pay_qr_off	QR الدفع: لا يوجد
+items_tmpl_heading	قوالب الأصناف
+items_tmpl_help	أطباق وفئات وصور لقائمتك. تبقى إعدادات المتجر والموظفون كما هم.
+public_tmpl_help	قوائم بداية يمكن لأي شخص تنزيلها. تحتاج إلى الإنترنت مرة واحدة.
+private_tmpl_help	قوائم عملاء محمية برمز من 12 رقمًا من جهة اتصالك في Khaynjo.
+printers_screen_tip	يعرض البحث الطابعات التي يمكن لهذا الجهاز استخدامها ويحفظها لهذا المتجر. طابعات الفواتير: تنسيق الفاتورة وKOT ← الفاتورة. المطبخ: المطبخ ← محطات المطبخ.
+printers_found_none	لم يتم العثور على طابعات.
+kot_copy_from	نسخ من
+kot_copy_from_help	ينسخ حجم كل سطر ووزنه ومحاذاته من ذلك النوع إلى هذا النوع. يحتفظ هذا النوع بلافتته وبادئة العناصر والشطب الخاصة به. احفظ تنسيق KOT للاحتفاظ به.
+nav_loading	جارٍ التحميل…

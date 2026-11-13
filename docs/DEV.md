@@ -246,7 +246,7 @@ every OS — never gate one on the device.
    else ignores it exactly as before. App row/card taps keep using
    `finger_up_is_tap` (bug **7h**) — a cancel is not a `FingerUp`.
 5. **Copy takes focus on a tap or a long-press, not on the press**
-   (`text_flow_touch_focus`). A swipe that starts on a selectable WrapLabel
+   (`text_selection`). A swipe that starts on a selectable WrapLabel
    no longer pulls key focus off the field being typed in (that dropped the
    soft keyboard mid-scroll and the page jumped). A tap on copy still focuses
    it (so it still blurs a field); mouse is unchanged.
@@ -303,6 +303,35 @@ every OS — never gate one on the device.
     content:// URI through JNI on Android, `fs::copy` elsewhere) — ran on
     the UI thread right after the save dialog and froze the till for seconds
     on a busy shop. It now shows the same "Making backup copy…" + Cancel.
+13. **Measure the dev build too, and per tap** (2026-11-13). The owner runs
+    `khaynjo-dev --hot` (unoptimized), where the same work costs ~10× more.
+    Two freezes the release A/B never showed: Settings → Bill & KOT 1.4 s
+    (the slip preview was rendered three times per open, each a 3× page
+    PNG **encoded then decoded** on the UI thread) and 1.4 s on the first
+    actions after start (the Floor tile tap scan ran on **every** action
+    batch on every screen and built every Floor row with `item()`). Rules:
+    a picture shown on screen goes to the texture as pixels
+    (`KotSlipPreview::show_slip`, `slip_page_gray`) and is skipped when its
+    key is unchanged; an action scan over list items runs only while that
+    screen shows and only over drawn items (`get_item`, never `item()`).
+    Find such paths by sampling the main thread: run the app under
+    `gdb -batch` with a command file of `thread 1` / `bt` / `continue`
+    repeated, and `kill -INT` the app every 50 ms during the slow tap.
+    Same evening: dish photos in lists decode on Makepad's image pool
+    (`load_thumb_at` in draw → `load_image_file_by_path_async`;
+    `App::handle_thumb_decodes` commits results no hidden Image took and
+    redraws once), and the workspace builds every dependency at
+    `opt-level = 2` in dev (`[profile.dev.package."*"]`) — first + Add
+    dishes 2.2 s → 0.19 s, start-up 1.4 s → none in `khaynjo-dev`.
+14. **A slow screen switch answers the tap with a loading screen** (Khaynjo
+    `go_with`, owner 2026-11-13). Every switch is timed from `go_with_now`
+    to its first draw (`note_nav_draw`); a screen whose last switch took
+    ≥ 1 s first shows `nav_loading` for one frame and switches on the next
+    `NextFrame` (`finish_nav_veil`), so the window never sits frozen on the
+    old screen. Fast switches are untouched (no flash). Test it with
+    `KUMKAJ_NAV_VEIL_MS=1` (log: `Kumkaj nav: loading screen for …`).
+    Work that can take seconds still goes to a worker with Progress +
+    Cancel (bug **7b**) — the loading screen is for paint cost only.
 
 Manual check (finger *and* mouse): swipe a list starting on a button (no
 pressed flash, no click), tap a small button with a little jitter (clicks),
@@ -310,6 +339,78 @@ press a button and drag off it (face drops, release does nothing), drag back
 on (pressed again), tap fast (pressed flash), start typing in a field and
 swipe the page from a label (keyboard stays up), open a busy job and let it
 finish (progress line clears).
+
+## Text selection (agent guide — every app and site)
+
+Product rule: [`DESIGN.md`](DESIGN.md) § Text selection & copy. Makepad
+side: **one** patch, `patches/makepad/text_selection.rs.patch` (last in
+`PATCHES`, after everything else that touches `text_flow` / `view` /
+`text_input` / `web`). It replaced 14 piecemeal patches
+(`text_flow_selection*`, `view_document_*`, `markdown_selectable_interactive`,
+`widget_steals_document_selection`, `text_flow_touch_*`) — some of them
+hand-edited into malformed hunks, so from 2026-11-12 `setup-makepad.sh`
+could not rebuild `vendor/makepad` at all.
+
+What the patch holds:
+
+| Piece | Where |
+|---|---|
+| Per-block select: mouse drag any direction, double-click word, triple-click block; touch long-press = word, drag extends; swipe scrolls | `TextFlow::handle_event`, `word_bounds_at`, `commit_touch_selection` |
+| Touch hold timer (0.5 s) on **every** touch platform. Android's OS `Event::LongPress` reaches a block only if it still owns the finger capture — on a scrolling page it did not, and Android never selected (owner, 2026-11-13); the OS event is now a second, idempotent trigger | `TextFlow::touch_hold` |
+| Touch selection lives like Chrome's: a touch press keeps the current selection (no reset on FingerDown / FingerMove / FingerCancel for touch); a swipe keeps it even when the press moved key focus (`touch_selected`, `focus_lost_in_touch`); a tap clears it | `TextFlow` |
+| Touch knobs: after a finger selection the root draws a knob + stem under each end (`draw_sel_handle`, `SEL_HANDLE_R` 9 px, 24 px touch target); a touch on a knob is claimed by the root (`t.handled`), holds the other end as a root-owned anchor (`root_gap`) and moves this end through `selection_root_extend` with the finger→edge offset; on lift the menu comes back for the whole selection. A tap elsewhere clears the selection and the knobs; a hold that starts a new selection clears the old one everywhere | `View::selection_root_*`, `draw_selection_handles`, `selection_ends` (new widget method, forwarded by the derive) |
+| Aligned blocks: a parent that right / centre-aligns moves a block after it drew; hit tests and selection rects add `align_delta` (area now − `drawn_pos`). Before, a press on right-aligned text picked another word and the menu opened far away | `TextFlow::align_delta` |
+| Remote `/touch?k=start|move|stop|long&x=&y=` — one-finger TouchUpdate (and the OS long-press) injected like Android, so touch selection is tested on Xvfb | `remote.rs` |
+| `selection_leaf()` — a selectable TextFlow, forwarded through `#[deref]` / `#[wrap]` wrappers (WrapLabel → Markdown → TextFlow), so a root finds blocks, never a container that only delegates | `widget.rs`, `derive_widget.rs` |
+| `View { selection_root: true }`: raw Ctrl/Cmd+A (unless a TextInput owns focus) selects every visible leaf; raw `TextCopy` after Select all answers all leaves in tree order; any primary press clears it; right-click emits `TextSelectionAction::Menu` **only on text or a live selection** — never over a control (`selection_root_point_on_control`), a tile or blank page | `view.rs` (`selection_root_*`), `ViewRef::set_selection_root` |
+| Cross-block drag: while a block reports `selection_drag_anchor()` (its committed drag), the root re-hits the pointer after the children each move — block under it, else the one on the pointer's own line, else the vertically nearest — and sets the rest of the anchor block, every block between (tree order) and the part under the pointer; `TextCopy` answers that span. `select_from_gaps` (sites) starts the same drag from a margin. Wheel under a held drag scrolls the anchor block's innermost scroll view (`selection_root_scroll_by`) and re-hits two frames; pointer past the top / bottom 24 px auto-scrolls each frame (`selection_root_edge_scroll`). TextFlow keeps a drag through a wheel while a button is held (an orphan block still clears on a wheel with no button). The per-move re-hit (a tree walk) runs **only while a drag is live**: `text_flow::SELECTION_DRAG_LIVE` (set at the drag commit / touch commit, cleared on up / scroll) gates it, so plain mouse moves cost nothing. A View's scroll bars handle the event **after** its children (pre-patch order — moving them first broke chip-strip taps). | `view.rs` (`selection_root_extend`, `_hit`, `_scroll_by`, `_edge_scroll`), `widget.rs` `selection_drag_anchor`, `text_flow.rs` |
+| `TextSelectionAction::Menu { abs, touch, rect }` — right-click (root, `rect` zero-size at the pointer) or end of a touch selection / knob drag (TextFlow, root: `rect` = the whole selection; apps put a touch menu above it, centred) | `text_flow.rs`, `view.rs` |
+| Band under the ink: a block **with** a selection opens a fresh band draw call (appending let it join an older colour call under the block's own pill / card background); TextInput redraws the selected glyphs over its band, clipped to each run (its glyphs sit in an older text call) | `TextFlow::begin`, `TextInput::draw_selected_ink` |
+| UTF-8 safe ranges and empty-layout guards | `layouter.rs`, `TextFlow::get_text_for_range` |
+| X11: `UTF8_STRING` interned with create (it was only-if-exists → atom 0 on a bare X server → every Copy offered an invalid target) | `xlib_app.rs` |
+| wasm: right-click and end-of-touch-selection open the `web.js` Copy / Select all menu (`FromWasmShowClipboardActions`); Select all sends Ctrl/Cmd+A, no synthetic click | `web.js`, `web.rs`, `from_wasm.rs` |
+
+App side (each app its own copy; Khaynjo first): `src/selection_menu.rs`
+(menu widget on the overlay, open state in `AppState::sel_menu`, same
+outside-press rule as dropdowns, Copy via a `TextCopy` through the UI +
+`arboard`), `main_column` / sheet roots in `ui_script.rs`, roots cleared on
+every screen change (`sel_screen_changed`), strings `sel_copy` /
+`sel_select_all` / `sel_copied` in all packs.
+
+**Mouse drag pans in apps (regression fixed 2026-11-13):** with every block
+owning its press, a mouse drag that started on text selected it, and
+`TextFlow::is_drag_selecting()` (true from the bare press) made `WrapLabel`
+block all scrolling — the Order desk, page and chip strips stopped panning
+from text. Now `is_drag_selecting()` is true only for a committed drag, and
+apps set `text_flow::MOUSE_HOLD_TO_SELECT` at startup (Khaynjo
+`handle_startup`): a mouse drag before a 0.5 s hold pans like touch. A/B'd
+against the pre-session build (`total_word` 891 → 537 px on both).
+
+**Stale IME area (bug, fixed 2026-11-13):** Makepad sets `cx.ime_area` when a
+TextInput shows the IME and never clears it, so `cx.get_ime_area_rect()`
+keeps the last field's rect after it loses focus or its screen is hidden.
+Khaynjo's `text_field_has_focus` trusted that rect alone and `sync_chrome`
+stayed in its typing early-return: the header kept "Locked" after a PIN
+unlock, a card repainted after a button tap in a focused form never showed.
+Count the IME only while `cx.key_focus()` is the area that owns it (same
+rect — TextInput focuses and shows the IME with `draw_bg.area()`), and drop
+key focus on a screen change (`show_screen`).
+
+**Patch hygiene (do not regress):** never hand-edit hunks. Change
+`vendor/makepad`, regenerate the patch with `diff -u` against a tree built
+from every *other* patch, then rebuild into a temp `VENDOR` (sed
+`setup-makepad.sh`) and `diff -rq` it against the live tree — equal or it
+is not done.
+
+**Verify:** Linux — release build with `KUMKAJ_ENV=development` on a
+private Xvfb with `--remote`: `/k?k=press&c=KeyA&ctrl=1` (Select all),
+`/m?k=down&b=1` (right-click → menu), click Copy, read
+`xclip -o -selection clipboard`. A remote `Ctrl+C` does **not** copy (the X11
+key path that turns Ctrl+C into `TextCopy` is bypassed) — use the menu's
+Copy, which runs the same `TextCopy`. Sites — wasm in headless Chromium over
+CDP (`Input.dispatchMouseEvent` drag / right-click, `rawKeyDown` Ctrl+A,
+`Input.dispatchTouchEvent` hold / swipe). Android — long-press a block: the
+OS Copy / Select all bar.
 
 ## Desktop window size & maximize
 
@@ -338,7 +439,7 @@ Platform ops: `MaximizeWindow` / `RestoreWindow` in `linux_wayland.rs`.
 
 RTL text alignment rides on two more vendor patches: `TextFlow::paragraph_align_x` in `vendor/makepad/widgets/src/text_flow.rs` (resting paragraph alignment; open table cells still override it) and `pub TextInput::label_align` in `vendor/makepad/widgets/src/text_input.rs` (patch files `patches/makepad/text_flow_paragraph_align.rs.patch` and `patches/makepad/text_input_label_align_pub.rs.patch`, applied by `scripts/setup-makepad.sh`). Each app sets them from `apply_text_alignment` while `locale::is_rtl` is active; glyph shaping and bidi ordering are Makepad’s own (rustybuzz + unicode-bidi in `draw/src/text/shaper.rs`). The window layout is not mirrored.
 
-**Mouse cursor state** (`patches/makepad/mouse_cursor_state.rs.patch`): Wayland mapped `MouseCursor::Arrow` to the context-menu shape (focused buttons looked like a menu); it now matches Default. Widget `SetCursor` is ignored while the pointer is in the window-edge resize band so Text/Hand cannot wipe Nw/E/S/…. `View` / `Button` / `TextInput` re-assert their cursor on `FingerHoverOver` (HoverIn only fires once); focused buttons keep Hand; caption drag uses Grab. Both apps also set `ColResize` while hovering the rail divider.
+**Mouse cursor state** (`patches/makepad/mouse_cursor_state.rs.patch`): Wayland mapped `MouseCursor::Arrow` to the context-menu shape (focused buttons looked like a menu); it now matches Default. Widget `SetCursor` is ignored while the pointer is in the window-edge resize band so Text/Hand cannot wipe Nw/E/S/…. `View` / `Button` / `TextInput` re-assert their cursor on `FingerHoverOver` (HoverIn only fires once); focused buttons keep Hand; caption drag uses Grab. Both apps also set `ColResize` while hovering the rail divider. **The cursor is the shape of what is under the pointer, now (2026-11-13, owner: "stuck on its last state"):** (1) `Cx::set_cursor` — a HoverOut reset to `Default` never overrides another widget's shape set in the same dispatch (tree order used to let the old widget's reset win); (2) a `View` with `cursor` sets `Default` on HoverOut (tappable rows/tiles kept the Hand over plain page); (3) Wayland and X11 send one synthetic `MouseMove` at the pointer after the first draw that follows a MouseUp or Scroll, so a click that opens a sheet / changes the screen, or a scroll, re-hovers with the new layout without a pointer move (A/B on Xvfb via XFixes cursor name: Settings → Language row click under a still pointer was `hand2` before, `text` after). Windows / macOS still re-hover only on the next motion. All in `text_selection.rs.patch` (the consolidated last patch).
 
 **Bugs we hit (do not reintroduce)**
 
@@ -430,7 +531,7 @@ So “this tab is active” **cannot** be expressed by leaving a Button focused 
 6c. **Floor (and other heavy expand-to-content grids) freeze Android** — Same full-height PortalList rule as (6): Khaynjo Floor with ~44 tables drew every `FloorTile` (Overlay + 7 bg faces + icons) every frame, so the phone could not scroll (2026-11). **Rule:** fixed-pitch expand-to-content lists that are expensive per row use `page_window` / `floor_page_window` + `top_gap`/`list_box` (see `MenuList` / `FloorList`) so only on-screen rows draw; redraw on `Event::Scroll`. Also never put `Label{width: Fill, flow: Right{wrap: true}}` on those tiles (bug 7). Books/Inventory/Reports facet SQL must not re-run on every `sync_chrome` Signal — gate with `FACET_DIRTY` / empty text.
 6b. **Android 8.0 (API 26) boot crash / black SurfaceView** — (1) `InputDevice.isEnabled()` is API 27+ → `NoSuchMethodError` (guard `SDK_INT >= 27`). (2) Inline `WindowInsetsAnimation.Callback` in `ResizingLayout` makes old ART fail class verify (`ClassNotFoundException`) and leave a black GL surface — keep the callback in `ImeInsetsAnimationHelper.java` and attach only via `Class.forName` when `SDK_INT >= 30` (`scripts/apply-android-activity-bridge.sh`). (3) Cargo plain `dev` on phone is too slow for first paint; use `cargo *-android-dev` (`android-dev` profile). That profile must stay **opt-level 3** with only `debug = "line-tables-only"` — full DWARF (`debug = true`) made a ~400MB `libmakepad.so` whose load alone left a black SurfaceView for many seconds on Mali-T830. (4) First drawable can precede layout settling — Makepad does a few follow-up `redraw_all`s (`android_post_layout_redraw` patch) so DeviceSetup is not stuck on `pass.clear_color`. (5) On some Huawei API 26 devices `adb exec-out screencap` captures only the window background and **misses the Makepad SurfaceView** — use a system screenshot (`adb shell input keyevent 120`) to verify paint. Worse, that "background" is Makepad's **snapshot backdrop** (`mSurfaceSnapshotBackdrop`, the last PixelCopy of the surface): it looks exactly like the app, only stale — an old screen, a finished job's progress line, a missing header (AGS2, 2026-11-10). Never diagnose a "stuck" or "glitchy" screen from screencap there; `dumpsys activity <pkg>/.MakepadApp` shows whether the cover / snapshot overlays are actually VISIBLE.
 6d. **Android soft keyboard ▾ hide bounces back / retap silent** — Two related Makepad IME bugs (patches `android_ime_dismiss` + `android_ime_retap_show`; Java `SHOW_FORCED` / InsetsController via `apply-android-activity-bridge.sh`). **(▾ bounce)** System hide left the `TextInput` focused; a `ShowTextIME` already in `platform_ops` (or the next draw) called `showKeyboard` again after `last_ime_config` was cleared. Fix: on `ResizeTextIME` DidHide (no physical keyboard) call `text_ime_was_dismissed()` only (mirror iOS); skip `ShowTextIME` while `text_ime_dismissed`; never re-arm the dismiss latch in `CxKeyboard::set_key_focus` when the new area is `Empty`. **Do not** `set_key_focus(Empty)` inside DidHide — that fires KeyFocusLost → `hide_text_ime` (clears the latch) and mid-gesture focus loss wrecks Android touch-scroll (ScrollY + ScrollX / `axis_lock` / `capture_overload`). App Back / outside tap still clears focus via `dismiss_soft_keyboard`. Do **not** “fix” bounce by dropping `ime_show_requested` / retap redraw — that regresses retap. **(Retap silent)** Config-only dedupe of `ShowTextIME` left retaps no-ops when OEM dismiss kept `last_ime_config` set. Fix: `request_ime_show()` on KeyFocus / FingerDown + redraw; `ShowTextIME` calls `showKeyboard` when config changed **or** `ime_show_requested`. Never treat `!last_ime_visible` alone as show-again.
-6e. **Do not regress Android / desk touch-scroll when fixing IME** — Load-bearing Makepad patches: `scroll_axis_lock`, `drag_scroll_touch_only`, `scroll_touch_over_buttons`, `scroll_touch_orphan_unblock`, `text_flow_touch_scroll`, `text_input_touch_scroll`, `text_flow_selection`. Page `ScrollYView` and Floor `area_scroll` keep `mouse_capture_overload: true` + `axis_lock: true`. **Never** clear key focus from `ResizeTextIME` DidHide / keyboard-height callbacks (bug **6d**). **Never** “simplify” capture_overload off, drop axis_lock, or re-enable TextFlow / TextInput select-drag on touch FingerMove (that steals vertical swipe — Lock PIN and ClientPair fields need `text_input_touch_scroll`). **`WrapLabel` / site `Markdown` typography default is `selectable: true`** (every app **and** Makepad website — [`DESIGN.md`](DESIGN.md) § Text selection & copy). Set `selectable: false` **only** inside tap targets (Kitchen KotCard, cart lines, floor tiles, site nav tiles, snack bars, button faces, InfoHelp titles) — select-drag there steals the press / can freeze page swipe until FingerUp. Touch select starts on long-press (`text_flow_touch_scroll`); vertical swipe still scrolls. KitchenList (and other heavy expand-to-content lists) use `page_window` + `top_gap`/`list_box` so touch-move redraw does not draw every card (bug **6c**). When adding whitespace above a sideways Area strip (Floor Columns↔tables gap), put the pad **inside** that `ScrollXView` — parent `spacing` between Columns and `FloorList` is a dead zone for Area pan.
+6e. **Do not regress Android / desk touch-scroll when fixing IME** — Load-bearing Makepad patches: `scroll_axis_lock`, `drag_scroll_touch_only`, `scroll_touch_over_buttons`, `scroll_touch_orphan_unblock`, `text_input_touch_scroll`, `text_selection`. Page `ScrollYView` and Floor `area_scroll` keep `mouse_capture_overload: true` + `axis_lock: true`. **Never** clear key focus from `ResizeTextIME` DidHide / keyboard-height callbacks (bug **6d**). **Never** “simplify” capture_overload off, drop axis_lock, or re-enable TextFlow / TextInput select-drag on touch FingerMove (that steals vertical swipe — Lock PIN and ClientPair fields need `text_input_touch_scroll`). **`WrapLabel` / site `Markdown` typography default is `selectable: true`** (every app **and** Makepad website — [`DESIGN.md`](DESIGN.md) § Text selection & copy). Set `selectable: false` **only** inside tap targets (Kitchen KotCard, cart lines, floor tiles, site nav tiles, snack bars, button faces, InfoHelp titles) — select-drag there steals the press / can freeze page swipe until FingerUp. Touch select starts on long-press (`text_selection`: the OS long-press on Android / iOS, a 0.5 s hold elsewhere); vertical swipe still scrolls. KitchenList (and other heavy expand-to-content lists) use `page_window` + `top_gap`/`list_box` so touch-move redraw does not draw every card (bug **6c**). When adding whitespace above a sideways Area strip (Floor Columns↔tables gap), put the pad **inside** that `ScrollXView` — parent `spacing` between Columns and `FloorList` is a dead zone for Area pan.
 6f. **Android soft-keyboard field lift (focus above the IME)** — When a text
     field takes focus and the soft keyboard is open, stock Makepad
     `KeyboardView` shifts the page so the **focused field** stays visible
@@ -931,8 +1032,10 @@ Desktop stages them beside the app (`copy_app_menu_assets_if_present` in
 `scripts/windows-env.sh`; MSI via `scripts/build-msi.sh`). Android packs the
 same two folders into the APK (`apply-android-activity-bridge.sh` →
 cargo-makepad) and extracts them into the app files dir on Server open so
-`catalogue_root` / `templates_root` match desktop. Menu → **Import complete
-template** and **Client menu** disappear only if those folders are missing.
+`catalogue_root` / `templates_root` match desktop. Menu → **Item templates →
+Public templates** hides only when the shelf is neither bundled nor expected
+from the CDN; the private items template comes from the catalogue (12-digit
+code), not from these folders.
 **Shelf** / **named client** imports run on the Server and copy each photo
 into `item_images` as `custom:…`; Clients pull missing photos over LAN
 (`GET /item-image`) into a local cache. Initials show only until that fetch
@@ -1557,10 +1660,10 @@ Makepad visual traps found this way (do not reintroduce):
     press-drag on whitespace around chips (nav drag-to-swap on a chip is
     not stolen); desk panes set `scroll_bar_x.mouse_capture_overload: true`
     (Makepad patch `drag_scroll_touch_only`).
-    Selectable `WrapLabel` / TextFlow yields sideways drags to an ancestor
-    ScrollX (commits text-select only when the drag is mostly vertical —
-    `text_flow_selection`). On **touch**, vertical swipe always scrolls the
-    page; text select-drag starts on long-press only (`text_flow_touch_scroll`,
+    A mouse drag on selectable `WrapLabel` / TextFlow copy selects in any
+    direction (along a line too); desk ScrollX pans from whitespace and the
+    scrollbar, not from copy (`text_selection`). On **touch**, a swipe always
+    scrolls the page; text select starts on a long-press only (`text_selection`,
     `text_input_touch_scroll`) — otherwise WrapLabels and focused fields
     (Lock PIN, ClientPair) stole every swipe. InfoHelp titles and text
     inside tap targets stay `selectable: false`; other display WrapLabels
@@ -1997,7 +2100,7 @@ a snack when unlocked (errors/warnings also on lock). Higher priority replaces a
 lower one; dismiss ✕ or timeout clears. Module: `apps/*/src/snack.rs`.
 
 **Do not regress (Android scroll):** snack / undo snack labels must keep
-`selectable: false` (tap-target exception — bug **6e** / `text_flow_touch_scroll`).
+`selectable: false` (tap-target exception — bug **6e** / `text_selection`).
 Error snacks are the usual trigger (long text + bar appearing under a finger).
 Display text elsewhere stays selectable per [`DESIGN.md`](DESIGN.md).
 

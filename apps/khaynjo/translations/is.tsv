@@ -1368,3 +1368,22 @@ recent_changes	Nýlegar breytingar
 lane_declared_label	Skattreikningur
 lane_owner_label	Peningabréf
 money_lane_bill	Reikningur: {lane}
+sel_copy	Afrita
+sel_select_all	Velja allt
+sel_copied	Afritað
+items_tmpl_khaynjo	Vörusniðmát Khaynjo
+items_tmpl_named	{name}-sniðmát
+app_tmpl_named	{name}-forritssniðmát
+private_code_ph	12 stafa kóði
+stamp_on	Stimpill: á skrá
+pay_qr_on	Greiðslu QR: á skrá
+pay_qr_off	Greiðslu QR: engin
+items_tmpl_heading	Sniðmát vara
+items_tmpl_help	Réttir, flokkar og myndir fyrir matseðilinn þinn. Verslunarstillingar og starfsfólk haldast óbreytt.
+public_tmpl_help	Upphafsmatseðlar sem hver sem er getur sótt. Þarf internet einu sinni.
+private_tmpl_help	Matseðlar viðskiptavina læstir með 12 stafa kóða frá Khaynjo-tengilið þínum.
+printers_screen_tip	Leita sýnir prentarana sem þetta tæki getur notað og vistar þá fyrir þessa verslun. Reikningsprentarar: Snið reiknings og KOT → Reikningur. Eldhús: Eldhús → Eldhússtöðvar.
+printers_found_none	Engir prentarar fundust.
+kot_copy_from	Afrita frá
+kot_copy_from_help	Afritar stærð, þykkt og jöfnun hverrar línu úr þeirri gerð yfir í þessa. Þessi gerð heldur eigin borða, vöruforskeyti og yfirstrikun. Vistaðu KOT-snið til að halda því.
+nav_loading	Hleður…

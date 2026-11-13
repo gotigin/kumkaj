@@ -1368,3 +1368,22 @@ recent_changes	Utshintsho lwakutshanje
 lane_declared_label	I-invoyisi yerhafu
 lane_owner_label	Imemo yemali ephathekayo
 money_lane_bill	Ityala: {lane}
+sel_copy	Kopisha
+sel_select_all	Khetha konke
+sel_copied	Ikopishiwe
+items_tmpl_khaynjo	Itemplate yezinto zeKhaynjo
+items_tmpl_named	Itemplate ye-{name}
+app_tmpl_named	Itemplate yeapp ye-{name}
+private_code_ph	Ikhowudi yamanani ali-12
+stamp_on	Isitampu: sikwifayile
+pay_qr_on	I-QR yentlawulo: ikwifayile
+pay_qr_off	I-QR yentlawulo: ayikho
+items_tmpl_heading	Iitemplate zezinto
+items_tmpl_help	Izitya, iindidi neefoto zemenyu yakho. Iisetingi zevenkile nabasebenzi bahlala benjalo.
+public_tmpl_help	Iimenyu zokuqala nabani na anokuzikhuphela. Kufuneka i-intanethi kanye.
+private_tmpl_help	Iimenyu zabathengi ezitshixwe ngekhowudi yamanani ali-12 evela kumnxibelelanisi wakho weKhaynjo.
+printers_screen_tip	Khangela ibonisa iiprinta esi sixhobo esinokuzisebenzisa kwaye izigcine kule venkile. Iiprinta zebhili: Ifomathi yeBhili neKOT → Ibhili. Ikhitshi: Ikhitshi → Izikhululo zekhitshi.
+printers_found_none	Akukho printa ifunyenweyo.
+kot_copy_from	Kopa ku
+kot_copy_from_help	Ikopa ubungakanani, ubukhulu kunye nolungelelwaniso lomgca ngamnye ukusuka kolo hlobo ukuya kolu. Olu hlobo lugcina ibhena yalo, isimaphambili sento kunye nomgca wokucima. Gcina ifomathi ye-KOT ukuze uyigcine.
+nav_loading	Iyalayisha…

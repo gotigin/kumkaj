@@ -1368,3 +1368,22 @@ recent_changes	Mabadiliko ya karibuni
 lane_declared_label	Ankara ya kodi
 lane_owner_label	Memo ya taslimu
 money_lane_bill	Bilio: {lane}
+sel_copy	Nakili
+sel_select_all	Chagua zote
+sel_copied	Imenakiliwa
+items_tmpl_khaynjo	Kiolezo cha bidhaa cha Khaynjo
+items_tmpl_named	Kiolezo cha {name}
+app_tmpl_named	Kiolezo cha programu cha {name}
+private_code_ph	Msimbo wa tarakimu 12
+stamp_on	Muhuri: kwenye faili
+pay_qr_on	QR ya malipo: kwenye faili
+pay_qr_off	QR ya malipo: hakuna
+items_tmpl_heading	Violezo vya bidhaa
+items_tmpl_help	Vyakula, kategoria na picha za menyu yako. Mipangilio ya duka na wafanyakazi hubaki kama ilivyo.
+public_tmpl_help	Menyu za kuanzia ambazo yeyote anaweza kupakua. Inahitaji intaneti mara moja.
+private_tmpl_help	Menyu za wateja zilizofungwa kwa msimbo wa tarakimu 12 kutoka kwa mwakilishi wako wa Khaynjo.
+printers_screen_tip	Tafuta huonyesha printa ambazo kifaa hiki kinaweza kutumia na kuzihifadhi kwa duka hili. Printa za bili: Muundo wa Bili na KOT → Bili. Jikoni: Jikoni → Vituo vya jikoni.
+printers_found_none	Hakuna printa iliyopatikana.
+kot_copy_from	Nakili kutoka
+kot_copy_from_help	Inanakili ukubwa, unene na mpangilio wa kila mstari kutoka aina hiyo kwenda hii. Aina hii inabaki na bango lake, kiambishi cha bidhaa na mstari wa kufuta. Hifadhi muundo wa KOT ili kuubakiza.
+nav_loading	Inapakia…

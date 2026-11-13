@@ -1368,3 +1368,22 @@ recent_changes	Son dəyişikliklər
 lane_declared_label	Vergi fakturası
 lane_owner_label	Nağd qəbz
 money_lane_bill	Hesab: {lane}
+sel_copy	Köçür
+sel_select_all	Hamısını seç
+sel_copied	Köçürüldü
+items_tmpl_khaynjo	Khaynjo məhsul şablonu
+items_tmpl_named	{name} şablonu
+app_tmpl_named	{name} tətbiq şablonu
+private_code_ph	12 rəqəmli kod
+stamp_on	Möhür: faylda
+pay_qr_on	Ödəniş QR: faylda
+pay_qr_off	Ödəniş QR: yoxdur
+items_tmpl_heading	Məhsul şablonları
+items_tmpl_help	Menyunuz üçün yeməklər, kateqoriyalar və şəkillər. Mağaza ayarları və işçilər olduğu kimi qalır.
+public_tmpl_help	Hər kəsin endirə biləcəyi başlanğıc menyular. Bir dəfə internet lazımdır.
+private_tmpl_help	Khaynjo əlaqənizdən gələn 12 rəqəmli kodla qorunan müştəri menyuları.
+printers_screen_tip	Axtar bu cihazın istifadə edə biləcəyi printerləri göstərir və bu mağaza üçün saxlayır. Hesab printerləri: Hesab və KOT formatı → Hesab. Mətbəx: Mətbəx → Mətbəx stansiyaları.
+printers_found_none	Printer tapılmadı.
+kot_copy_from	Buradan kopyala
+kot_copy_from_help	O növün hər sətrinin ölçüsünü, qalınlığını və düzülüşünü bu növə köçürür. Bu növ öz bannerini, məhsul prefiksini və üstündən xətti saxlayır. Saxlamaq üçün KOT formatını yadda saxlayın.
+nav_loading	Yüklənir…

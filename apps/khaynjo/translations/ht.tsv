@@ -1368,3 +1368,22 @@ recent_changes	Chanjman resan
 lane_declared_label	Fakti taks
 lane_owner_label	Nòt kach
 money_lane_bill	Kont: {lane}
+sel_copy	Kopye
+sel_select_all	Chwazi tout
+sel_copied	Kopye fèt
+items_tmpl_khaynjo	Modèl atik Khaynjo
+items_tmpl_named	Modèl {name}
+app_tmpl_named	Modèl aplikasyon {name}
+private_code_ph	Kòd 12 chif
+stamp_on	Tenm: nan fichye
+pay_qr_on	QR peman: nan fichye
+pay_qr_off	QR peman: pa gen
+items_tmpl_heading	Modèl atik
+items_tmpl_help	Plat, kategori ak foto pou meni ou. Paramèt boutik la ak anplwaye yo rete jan yo ye a.
+public_tmpl_help	Meni pou kòmanse ke nenpòt moun ka telechaje. Bezwen entènèt yon fwa.
+private_tmpl_help	Meni kliyan ki fèmen ak yon kòd 12 chif ki soti nan kontak Khaynjo ou.
+printers_screen_tip	Chèche montre enprimant aparèy sa a ka itilize epi li sove yo pou boutik sa a. Enprimant fakti: Fòma fakti ak KOT → Fakti. Kizin: Kizin → Estasyon kizin.
+printers_found_none	Pa jwenn okenn enprimant.
+kot_copy_from	Kopye soti nan
+kot_copy_from_help	Li kopye gwosè, epesè ak aliyman chak liy soti nan kalite sa a nan sa a. Kalite sa a kenbe pwòp banyè li, prefiks atik li ak bawotaj li. Sove fòma KOT la pou kenbe l.
+nav_loading	Chajman…

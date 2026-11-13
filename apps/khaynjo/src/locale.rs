@@ -1921,6 +1921,31 @@ fn en(key: &str) -> String {
         "lane_declared_label" => "Tax invoice",
         "lane_owner_label" => "Cash memo",
         "money_lane_bill" => "Bill: {lane}",
+        // Text selection menu (selection_menu.rs).
+        "sel_copy" => "Copy",
+        "sel_select_all" => "Select all",
+        "sel_copied" => "Copied",
+        // Templates: app level at onboarding, menu-items level on Menu.
+        "items_tmpl_khaynjo" => "Khaynjo Items Template",
+        "items_tmpl_named" => "{name} Template",
+        "app_tmpl_named" => "{name} App Template",
+        "private_code_ph" => "12-digit code",
+        // Short states — what they mean is in the Stamp / Payment QR ℹ tips.
+        "stamp_on" => "Stamp: on file",
+        "pay_qr_on" => "Payment QR: on file",
+        "pay_qr_off" => "Payment QR: none",
+        // Settings → Printers is Find + the saved list only (2026-11-13).
+        "printers_screen_tip" => "Find lists the printers this device can use and saves them for this shop. Bill printers: Bill & KOT format → Bill. Kitchen: Kitchen → Kitchen stations.",
+        "printers_found_none" => "No printers found.",
+        // Settings → KOT: copy one kind's line styles from another (2026-11-13).
+        // Loading screen before a screen switch that was slow last time.
+        "nav_loading" => "Loading…",
+        "kot_copy_from" => "Copy from",
+        "kot_copy_from_help" => "Copies the size, weight and alignment of every line from that kind into this one. This kind keeps its own banner, item prefix and strike. Save KOT format to keep it.",
+        "items_tmpl_heading" => "Item templates",
+        "items_tmpl_help" => "Dishes, categories and photos for your menu. Shop settings and staff stay as they are.",
+        "public_tmpl_help" => "Starter menus anyone can download. Needs internet once.",
+        "private_tmpl_help" => "Client menus gated by a 12-digit code from your Khaynjo contact.",
         _ => key,
     }
     .into()

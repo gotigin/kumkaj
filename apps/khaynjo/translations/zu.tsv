@@ -1368,3 +1368,22 @@ recent_changes	Izinguquko zakamuva
 lane_declared_label	I-invoyisi yentela
 lane_owner_label	Imemo yemali
 money_lane_bill	Ibhili yesivakashi sesivakashi: {lane}
+sel_copy	Kopisha
+sel_select_all	Khetha konke
+sel_copied	Kukopishiwe
+items_tmpl_khaynjo	Isifanekiso sezinto zeKhaynjo
+items_tmpl_named	Isifanekiso se-{name}
+app_tmpl_named	Isifanekiso se-app se-{name}
+private_code_ph	Ikhodi yezinombolo ezingu-12
+stamp_on	Isitembu: efayelini
+pay_qr_on	I-QR yokukhokha: efayeleni
+pay_qr_off	Inkokhelo ye-QR: ayikho
+items_tmpl_heading	Izifanekiso zezinto
+items_tmpl_help	Izitsha, izigaba nezithombe zemenyu yakho. Izilungiselelo zesitolo nabasebenzi kuhlala kunjalo.
+public_tmpl_help	Amamenyu okuqala noma ubani angawalanda. Kudingeka i-inthanethi kanye.
+private_tmpl_help	Amamenyu amakhasimende akhiyiwe ngekhodi yezinombolo ezi-12 evela kuxhumana naye wakho we-Khaynjo.
+printers_screen_tip	Sesha ibonisa amaphrinta le divayisi engawasebenzisa futhi iwagcine kulesi sitolo. Amaphrinta ezikweletu: Ifomethi yesikweletu ne-KOT → Isikweletu. Ikhishi: Ikhishi → Iziteshi zekhishi.
+printers_found_none	Awekho amaphrinta atholakele.
+kot_copy_from	Kopisha ku
+kot_copy_from_help	Ikopisha usayizi, ubukhulu nokuqondaniswa komugqa ngamunye kusuka kuloho hlobo kuya kulolu. Lolu hlobo lugcina ibhanela lalo, isiqalo sento nomugqa wokucisha. Londoloza ifomethi ye-KOT ukuze uyigcine.
+nav_loading	Iyalayisha…

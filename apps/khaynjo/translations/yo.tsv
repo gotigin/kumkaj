@@ -1368,3 +1368,22 @@ recent_changes	Awọn ayipada to ṣẹṣẹ
 lane_declared_label	risiti owo-ori
 lane_owner_label	Akọsilẹ owo
 money_lane_bill	Iwe owo: {lane}
+sel_copy	Daakọ
+sel_select_all	Yan gbogbo rẹ̀
+sel_copied	A ti daakọ
+items_tmpl_khaynjo	Àdàkọ ohun Khaynjo
+items_tmpl_named	Àdàkọ {name}
+app_tmpl_named	Àdàkọ áàpù {name}
+private_code_ph	Kóòdù oní-nọ́mbà 12
+stamp_on	Ontẹ: lori faili
+pay_qr_on	Isanwo QR: lori faili
+pay_qr_off	Isanwo QR: ko si
+items_tmpl_heading	Àwọn àdàkọ ohun kan
+items_tmpl_help	Oúnjẹ, ẹ̀ka àti àwòrán fún mẹ́nù rẹ. Ètò ṣọ́ọ̀bù àti òṣìṣẹ́ máa wà bí wọ́n ṣe wà.
+public_tmpl_help	Mẹ́nù ìbẹ̀rẹ̀ tí ẹnikẹ́ni lè gbà sílẹ̀. Ó nílò íńtánẹ́ẹ̀tì lẹ́ẹ̀kan.
+private_tmpl_help	Mẹ́nù oníbàárà tí a tì pa pẹ̀lú kóòdù oní-nọ́ńbà 12 láti ọ̀dọ̀ alábàáṣepọ̀ Khaynjo rẹ.
+printers_screen_tip	Wá máa ń fi àwọn ẹ̀rọ ìtẹ̀wé tí ẹ̀rọ yìí lè lò hàn, ó sì ń fi wọ́n pamọ́ fún ṣọ́ọ̀bù yìí. Ẹ̀rọ ìtẹ̀wé owó: Ìrísí owó àti KOT → Owó. Ilé ìdáná: Ilé ìdáná → Àwọn ibùdó ilé ìdáná.
+printers_found_none	A kò rí ẹ̀rọ ìtẹ̀wé kankan.
+kot_copy_from	Daakọ lati
+kot_copy_from_help	O n daakọ iwọn, ìwúwo ati títò ìlà kọọkan lati iru yẹn sí èyí. Iru yìí ń pa àsíá rẹ̀, ìbẹ̀rẹ̀ ohun àti ìlà ìparẹ́ rẹ̀ mọ́. Fi ọna KOT pamọ́ láti pa á mọ́.
+nav_loading	Ń gbé e wọlé…

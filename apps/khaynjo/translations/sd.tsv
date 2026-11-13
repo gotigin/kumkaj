@@ -1368,3 +1368,22 @@ recent_changes	تازيون تبديليون
 lane_declared_label	ٽيڪس انوائس
 lane_owner_label	نقد ميمو
 money_lane_bill	بل: {lane}
+sel_copy	ڪاپي ڪريو
+sel_select_all	سڀ چونڊيو
+sel_copied	ڪاپي ٿي وئي
+items_tmpl_khaynjo	Khaynjo شين جو ٽيمپليٽ
+items_tmpl_named	{name} ٽيمپليٽ
+app_tmpl_named	{name} ايپ ٽيمپليٽ
+private_code_ph	12 انگن وارو ڪوڊ
+stamp_on	اسٽيمپ: فائل تي
+pay_qr_on	ادائگي QR: فائل تي
+pay_qr_off	ادائگي QR: ڪوبه ناهي
+items_tmpl_heading	شين جا سانچا
+items_tmpl_help	توهان جي مينيو لاءِ کاڌا، زمرا ۽ تصويرون. دڪان جون سيٽنگون ۽ عملو جيئن آهن تيئن ئي رهن ٿا.
+public_tmpl_help	شروعاتي مينيو جيڪي ڪو به ڊائون لوڊ ڪري سگهي ٿو. هڪ ڀيرو انٽرنيٽ گهرجي.
+private_tmpl_help	توهان جي Khaynjo رابطي کان مليل 12 انگن واري ڪوڊ سان محفوظ گراهڪ مينيو.
+printers_screen_tip	ڳوليو اهي پرنٽر ڏيکاري ٿو جيڪي هي ڊوائيس استعمال ڪري سگهي ٿي ۽ انهن کي هن دڪان لاءِ محفوظ ڪري ٿو. بل پرنٽر: بل ۽ KOT فارميٽ ← بل. رڌڻو: رڌڻو ← رڌڻي جا اسٽيشن.
+printers_found_none	ڪو به پرنٽر نه مليو.
+kot_copy_from	هتان ڪاپي ڪريو
+kot_copy_from_help	انهي قسم جي هر سٽ جي ماپ، ٿولهه ۽ ترتيب هن ۾ ڪاپي ڪري ٿو. هي قسم پنهنجو بينر، شيءِ جو اڳياڙي ۽ ڪٽ ليڪ رکي ٿو. رکڻ لاءِ KOT فارميٽ محفوظ ڪريو.
+nav_loading	لوڊ ٿي رهيو آهي…

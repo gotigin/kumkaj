@@ -1368,3 +1368,22 @@ recent_changes	Nedavne promjene
 lane_declared_label	Porezni račun
 lane_owner_label	Gotovinski listić
 money_lane_bill	Račun: {lane}
+sel_copy	Kopiraj
+sel_select_all	Odaberi sve
+sel_copied	Kopirano
+items_tmpl_khaynjo	Khaynjo šablon artikala
+items_tmpl_named	{name} šablon
+app_tmpl_named	{name} šablon aplikacije
+private_code_ph	12-cifreni kod
+stamp_on	Pečat: u fajlu
+pay_qr_on	QR plaćanja: u fajlu
+pay_qr_off	QR plaćanja: nema
+items_tmpl_heading	Šabloni stavki
+items_tmpl_help	Jela, kategorije i fotografije za vaš meni. Postavke radnje i osoblje ostaju kakvi jesu.
+public_tmpl_help	Početni meniji koje svako može preuzeti. Internet je potreban jednom.
+private_tmpl_help	Klijentski meniji zaključani 12-cifrenim kodom od vašeg Khaynjo kontakta.
+printers_screen_tip	Pretraga prikazuje printere koje ovaj uređaj može koristiti i čuva ih za ovu radnju. Printeri za račune: Format računa i KOT → Račun. Kuhinja: Kuhinja → Kuhinjske stanice.
+printers_found_none	Nije pronađen nijedan printer.
+kot_copy_from	Kopiraj iz
+kot_copy_from_help	Kopira veličinu, debljinu i poravnanje svakog reda iz te vrste u ovu. Ova vrsta zadržava svoj baner, prefiks stavke i precrtavanje. Sačuvajte KOT format da ga zadržite.
+nav_loading	Učitavanje…

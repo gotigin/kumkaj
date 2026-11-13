@@ -1368,3 +1368,22 @@ recent_changes	Ki jingkylla ba dang shen
 lane_declared_label	Ka jingkhein khajna
 lane_owner_label	Ka jingkynmaw pisa
 money_lane_bill	Ka jingsiew: {lane}
+sel_copy	Kopi
+sel_select_all	Jied baroh
+sel_copied	La kopi
+items_tmpl_khaynjo	Template ki jingkhaii Khaynjo
+items_tmpl_named	Template {name}
+app_tmpl_named	Template app {name}
+private_code_ph	Kod 12 dijit
+stamp_on	Muhor: ha ka file
+pay_qr_on	Ka jingsiew QR: ha ka file
+pay_qr_off	Ka jingsiew QR: ym don
+items_tmpl_heading	Ki template jingkhaii
+items_tmpl_help	Ki jingbam, ki kynhun bad ki dur na ka menu jong phi. Ki setting jong ka dukan bad ki nongtrei ki sah kumba ki long.
+public_tmpl_help	Ki menu jingsdang ba uno uno lah ban download. Donkam ia ka internet shisien.
+private_tmpl_help	Ki menu jong ki nongthied ba la khar da ka code 12 dijit na u nongiadei Khaynjo jong phi.
+printers_screen_tip	Wad ka pyni ia ki printer ba lah ban pyndonkam da kane ka device bad ka buh ia ki na kane ka dukan. Ki printer bill: Format Bill bad KOT → Bill. Kamra iiong: Kamra iiong → Ki station kamra iiong.
+printers_found_none	Ym shem ei ei ka printer.
+kot_copy_from	Kopi na
+kot_copy_from_help	Kopi ia ka jingkhraw, ka jingkhlaw bad ka jingpynlong jong kawei pa kawei ka laiñ na kata ka jait sha kane. Kane ka jait ka bat ia la ka banner, ka prefix jong ka jingkhaii bad ka strike. Pynneh ia ka KOT format ban bat ia ka.
+nav_loading	Dang load…

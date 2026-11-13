@@ -1,0 +1,2323 @@
+--- a/draw/src/text/layouter.rs
++++ b/draw/src/text/layouter.rs
+@@ -1160,6 +1160,9 @@
+     }
+ 
+     fn cursor_to_row_index(&self, cursor: Cursor) -> usize {
++        if self.rows.is_empty() {
++            return 0;
++        }
+         for (row_index, row) in self.rows.iter().enumerate() {
+             if cursor.index < row.text.end_in_parent() {
+                 return row_index;
+@@ -1206,6 +1209,9 @@
+     }
+ 
+     pub fn selection_rects(&self, selection: Selection) -> Vec<SelectionRect> {
++        if self.rows.is_empty() {
++            return Vec::new();
++        }
+         let CursorPosition {
+             row_index: start_row_index,
+             x_in_lpxs: start_x_in_lpxs,
+@@ -1320,7 +1326,15 @@
+                 next_glyph_group[0].origin_in_lpxs.x
+             });
+             let width_in_lpxs = end_x_in_lpxs - start_x_in_lpxs;
+-            let grapheme_count = self.text[start..end].graphemes(true).count();
++            // Cluster indices can be stale vs the row string; never slice mid-char.
++            let start = self.text.floor_char_boundary(start.min(self.text.len()));
++            let end = self
++                .text
++                .ceil_char_boundary(end.min(self.text.len()).max(start));
++            if start == end {
++                continue;
++            }
++            let grapheme_count = self.text[start..end].graphemes(true).count().max(1);
+             let grapheme_width_in_lpxs = width_in_lpxs / grapheme_count as f32;
+             let mut current_x_in_lpxs = start_x_in_lpxs;
+             for (grapheme_start, _) in self.text[start..end].grapheme_indices(true) {
+@@ -1336,6 +1350,7 @@
+     pub fn index_to_x_in_lpxs(&self, index: usize) -> f32 {
+         use {super::slice::SliceExt, unicode_segmentation::UnicodeSegmentation};
+ 
++        let index = self.text.floor_char_boundary(index.min(self.text.len()));
+         let mut glyph_groups = self
+             .glyphs
+             .group_by(|glyph_0, glyph_1| glyph_0.cluster == glyph_1.cluster)
+@@ -1354,7 +1369,14 @@
+                     next_glyph_group[0].origin_in_lpxs.x
+                 });
+             let width_in_lpxs = end_x_in_lpxs - start_x_in_lpxs;
+-            let grapheme_count = self.text[start..end].graphemes(true).count();
++            let start = self.text.floor_char_boundary(start.min(self.text.len()));
++            let end = self
++                .text
++                .ceil_char_boundary(end.min(self.text.len()).max(start));
++            if start == end {
++                continue;
++            }
++            let grapheme_count = self.text[start..end].graphemes(true).count().max(1);
+             let grapheme_width_in_lpxs = width_in_lpxs / grapheme_count as f32;
+             let mut current_x_in_lpxs = start_x_in_lpxs;
+             for (grapheme_start, _) in self.text[start..end].grapheme_indices(true) {
+--- a/platform/src/os/linux/x11/xlib_app.rs
++++ b/platform/src/os/linux/x11/xlib_app.rs
+@@ -1767,7 +1767,10 @@
+                 ),
+                 targets: x11_sys::XInternAtom(display, "TARGETS\0".as_ptr() as *const _, 0),
+                 string: x11_sys::XInternAtom(display, "STRING\0".as_ptr() as *const _, 0),
+-                utf8_string: x11_sys::XInternAtom(display, "UTF8_STRING\0".as_ptr() as *const _, 1),
++                // Create it if missing: on a bare X server no client has made
++                // UTF8_STRING yet, the atom came back 0 and every Copy offered
++                // an invalid target (clipboard empty for every reader).
++                utf8_string: x11_sys::XInternAtom(display, "UTF8_STRING\0".as_ptr() as *const _, 0),
+                 atom: x11_sys::XInternAtom(display, "ATOM\0".as_ptr() as *const _, 0),
+                 text: x11_sys::XInternAtom(display, "TEXT\0".as_ptr() as *const _, 0),
+                 text_plain: x11_sys::XInternAtom(display, "text/plain\0".as_ptr() as *const _, 0),
+--- a/platform/src/os/web/from_wasm.rs
++++ b/platform/src/os/web/from_wasm.rs
+@@ -37,6 +37,14 @@
+     pub title: String,
+ }
+ 
++/// Show the page Copy / Select all menu where a touch selection ended
++/// (Kumkaj `text_selection` patch; a canvas has no native selection bar).
++#[derive(FromWasm)]
++pub struct FromWasmShowClipboardActions {
++    pub x: f64,
++    pub y: f64,
++}
++
+ #[derive(FromWasm)]
+ pub struct FromWasmSetMouseCursor {
+     pub web_cursor: u32,
+--- a/platform/src/os/web/web.js
++++ b/platform/src/os/web/web.js
+@@ -452,6 +452,11 @@
+         this.text_copy_response = args.response
+     }
+ 
++    FromWasmShowClipboardActions(args) {
++        // End of a touch (long-press) selection: same menu as right-click.
++        if (this.show_doc_context_menu_at) this.show_doc_context_menu_at(args.x, args.y);
++    }
++
+     FromWasmShowTextIME(args) {
+         this.update_text_area_pos(args);
+     }
+@@ -1510,7 +1515,7 @@
+         // Canvas is a bitmap — the browser menu is only "Save image as…".
+         // Show a small document menu (Copy / Select all) instead; Copy uses the
+         // same ToWasmTextCopy path as Ctrl/Cmd+C. Select all synthesizes Ctrl/Cmd+A
+-        // for the selectable ScrollYView document host.
++        // for the page's View { selection_root: true }.
+         this.ensure_doc_context_menu = () => {
+             if (this.doc_ctx_menu) return this.doc_ctx_menu;
+             const menu = document.createElement("div");
+@@ -1561,20 +1566,9 @@
+                 this.hide_doc_context_menu();
+                 try {
+                     if (act === "selectall") {
+-                        // Re-assert document key focus (menu click is outside the canvas).
+-                        if (this._doc_ctx_abs) {
+-                            const m = {
+-                                x: this._doc_ctx_abs.x,
+-                                y: this._doc_ctx_abs.y,
+-                                button: 0,
+-                                time: performance.now() / 1000.0,
+-                                modifiers: 0,
+-                            };
+-                            this.to_wasm.ToWasmMouseDown({ mouse: m });
+-                            this.do_wasm_pump();
+-                            this.to_wasm.ToWasmMouseUp({ mouse: m });
+-                            this.do_wasm_pump();
+-                        }
++                        // Ctrl/Cmd+A reaches the page's selection root as a raw
++                        // key event — no focus needed, and no synthetic click
++                        // that could press a button under the pointer.
+                         const mods = (navigator.platform && /Mac|iPhone|iPad/.test(navigator.platform)) ? 8 : 2;
+                         this.to_wasm.ToWasmKeyDown({
+                             key: {
+@@ -1630,10 +1624,10 @@
+             }, true);
+             return menu;
+         };
+-        this.handlers.on_contextmenu = e => {
+-            e.preventDefault();
++        // Open the document menu at a client point. Right-click and the end of
++        // a touch selection (FromWasmShowClipboardActions) both land here.
++        this.show_doc_context_menu_at = (clientX, clientY) => {
+             try {
+-                this._doc_ctx_abs = { x: e.pageX, y: e.pageY };
+                 const menu = this.ensure_doc_context_menu();
+                 // Probe selection so Copy can stay useful; empty is fine (Select all).
+                 this.to_wasm.ToWasmTextCopy();
+@@ -1644,13 +1638,16 @@
+                     copyBtn.disabled = !has;
+                     copyBtn.style.opacity = has ? "1" : "0.45";
+                 }
+-                menu.style.left = Math.min(e.clientX, window.innerWidth - 160) + "px";
+-                menu.style.top = Math.min(e.clientY, window.innerHeight - 80) + "px";
++                menu.style.left = Math.max(4, Math.min(clientX, window.innerWidth - 160)) + "px";
++                menu.style.top = Math.max(4, Math.min(clientY, window.innerHeight - 80)) + "px";
+                 menu.style.display = "block";
+             } catch (_err) {}
++        };
++        this.handlers.on_contextmenu = e => {
++            e.preventDefault();
++            this.show_doc_context_menu_at(e.clientX, e.clientY);
+             return false;
+         }
+-
+         canvas.addEventListener('contextmenu', e => this.handlers.on_contextmenu(e))
+ 
+         function touch_to_wasm_wtouch(t, state) {
+--- a/platform/src/os/web/web.rs
++++ b/platform/src/os/web/web.rs
+@@ -920,6 +920,17 @@
+                 CxOsOp::PrepareAudioPlayback(_, _, _, _) => {}
+                 // Track selection is currently implemented on Linux GStreamer only.
+                 CxOsOp::SelectVideoTrack(_, _) | CxOsOp::SelectAudioTrack(_, _) => {}
++                // Selection UI chrome — browsers own the clipboard UI; nothing to hide.
++                CxOsOp::ShowClipboardActions { rect, .. } => {
++                    // A long-press selection ended: the same Copy / Select all
++                    // menu a right-click opens, under the selection.
++                    let window_id = CxWindowPool::id_zero();
++                    let pos = rect.pos + crate::makepad_math::dvec2(0.0, rect.size.y + 6.0);
++                    let pos = self.windows[window_id].layout_vec2d_to_native_points(pos);
++                    self.os
++                        .from_wasm(FromWasmShowClipboardActions { x: pos.x, y: pos.y });
++                }
++                CxOsOp::HideClipboardActions => {}
+                 e => {
+                     crate::error!("Not implemented on this platform: CxOsOp::{:?}", e);
+                 } /*
+@@ -1009,6 +1020,7 @@
+             FromWasmRequestAnimationFrame::to_js_code(),
+             FromWasmSetDocumentTitle::to_js_code(),
+             FromWasmSetMouseCursor::to_js_code(),
++            FromWasmShowClipboardActions::to_js_code(),
+             FromWasmTextCopyResponse::to_js_code(),
+             FromWasmShowTextIME::to_js_code(),
+             FromWasmHideTextIME::to_js_code(),
+--- a/widgets/derive_widget/src/derive_widget.rs
++++ b/widgets/derive_widget/src/derive_widget.rs
+@@ -211,6 +211,15 @@
+             tb.add("    fn selection_get_full_text(&self) -> String { self.")
+                 .ident(wrap_field)
+                 .add(".selection_get_full_text() }");
++            tb.add("    fn selection_leaf(&self) -> bool { self.")
++                .ident(wrap_field)
++                .add(".selection_leaf() }");
++            tb.add("    fn selection_drag_anchor(&self) -> Option<usize> { self.")
++                .ident(wrap_field)
++                .add(".selection_drag_anchor() }");
++            tb.add("    fn selection_ends(&self, cx: &Cx) -> Option<(usize, usize, Rect, Rect)> { self.")
++                .ident(wrap_field)
++                .add(".selection_ends(cx) }");
+         } else {
+             if let Some(visible_field) = &visible_field {
+                 tb.add("    fn visible(&self)->bool{ self.")
+@@ -386,6 +395,15 @@
+                 tb.add("    fn selection_get_full_text(&self) -> String { self.")
+                     .ident(deref_field)
+                     .add(".selection_get_full_text() }");
++                tb.add("    fn selection_leaf(&self) -> bool { self.")
++                    .ident(deref_field)
++                    .add(".selection_leaf() }");
++                tb.add("    fn selection_drag_anchor(&self) -> Option<usize> { self.")
++                    .ident(deref_field)
++                    .add(".selection_drag_anchor() }");
++                tb.add("    fn selection_ends(&self, cx: &Cx) -> Option<(usize, usize, Rect, Rect)> { self.")
++                    .ident(deref_field)
++                    .add(".selection_ends(cx) }");
+             }
+         }
+         tb.add("}");
+--- a/widgets/src/widget.rs
++++ b/widgets/src/widget.rs
+@@ -208,6 +208,23 @@
+     fn selection_get_full_text(&self) -> String {
+         String::new()
+     }
++    /// True for a selectable text block (TextFlow / Markdown / wrappers that
++    /// deref to one). A `View { selection_root: true }` walks to these leaves
++    /// for Select all / Copy; containers answer false and are walked through.
++    fn selection_leaf(&self) -> bool {
++        false
++    }
++    /// While a drag-selection is live in this block: its anchor char index.
++    /// A selection root uses it to carry the drag across blocks.
++    fn selection_drag_anchor(&self) -> Option<usize> {
++        None
++    }
++    /// This block's current selection: (start, end, rect of its first run,
++    /// rect of its last run) in window coordinates. A selection root puts the
++    /// touch handles at the two ends.
++    fn selection_ends(&self, _cx: &Cx) -> Option<(usize, usize, Rect, Rect)> {
++        None
++    }
+ 
+     fn script_call_live(
+         &mut self,
+@@ -251,6 +268,14 @@
+         true
+     }
+ 
++    /// When true, a parent `View { selectable: true }` will not start document
++    /// text selection on a press over this widget. Default false — Labels and
++    /// Images stay `is_interactive` for hit search but must not block page
++    /// select. Buttons, text fields, and links override to true.
++    fn steals_document_selection(&self) -> bool {
++        false
++    }
++
+     fn widget(&self, cx: &Cx, path: &[LiveId]) -> WidgetRef {
+         let tree = cx.widget_tree();
+         let uid = self.widget_uid();
+@@ -929,6 +954,14 @@
+         }
+     }
+ 
++    pub fn steals_document_selection(&self) -> bool {
++        if let Some(inner) = self.0.borrow().as_ref() {
++            inner.widget.steals_document_selection()
++        } else {
++            false
++        }
++    }
++
+     pub fn selection_text_len(&self) -> usize {
+         if let Some(inner) = self.0.borrow().as_ref() {
+             inner.widget.selection_text_len()
+@@ -979,6 +1012,30 @@
+         }
+     }
+ 
++    pub fn selection_leaf(&self) -> bool {
++        if let Some(inner) = self.0.borrow().as_ref() {
++            inner.widget.selection_leaf()
++        } else {
++            false
++        }
++    }
++
++    pub fn selection_drag_anchor(&self) -> Option<usize> {
++        if let Some(inner) = self.0.borrow().as_ref() {
++            inner.widget.selection_drag_anchor()
++        } else {
++            None
++        }
++    }
++
++    pub fn selection_ends(&self, cx: &Cx) -> Option<(usize, usize, Rect, Rect)> {
++        if let Some(inner) = self.0.borrow().as_ref() {
++            inner.widget.selection_ends(cx)
++        } else {
++            None
++        }
++    }
++
+     pub fn child_by_path(&self, path: &[LiveId]) -> WidgetRef {
+         if let Ok(inner) = self.0.try_borrow() {
+             if let Some(inner) = inner.as_ref() {
+--- a/widgets/src/button.rs
++++ b/widgets/src/button.rs
+@@ -614,6 +614,10 @@
+ }
+ 
+ impl Widget for Button {
++    fn steals_document_selection(&self) -> bool {
++        true
++    }
++
+     fn script_call(
+         &mut self,
+         vm: &mut ScriptVm,
+--- a/widgets/src/html.rs
++++ b/widgets/src/html.rs
+@@ -1112,6 +1112,10 @@
+ }
+ 
+ impl Widget for HtmlLink {
++    fn steals_document_selection(&self) -> bool {
++        true
++    }
++
+     fn handle_event(&mut self, cx: &mut Cx, event: &Event, scope: &mut Scope) {
+         if let Event::ClearHover = event {
+             self.animator_cut(cx, ids!(hover.off));
+--- a/widgets/src/text_input.rs
++++ b/widgets/src/text_input.rs
+@@ -1229,6 +1229,42 @@
+         self.draw_selection.end_many_instances(cx);
+     }
+ 
++    /// Ink over the band (Kumkaj `text_selection` patch). Draw-call batching
++    /// puts this field's glyphs in a text call made earlier in the frame, so
++    /// an opaque band drawn after them hid the selected text. Draw the glyphs
++    /// once more on top, clipped to each selected run: outside the band the
++    /// text is drawn once, inside it the first pass is fully under the band.
++    fn draw_selected_ink(&mut self, cx: &mut Cx2d, text_rect: Rect) {
++        if self.text.is_empty() || self.selection.start() == self.selection.end() {
++            return;
++        }
++        let Some(laidout_text) = self.laidout_text.clone() else {
++            return;
++        };
++        let runs: Vec<Rect> = laidout_text
++            .selection_rects(self.selection_to_password_selection(self.selection))
++            .iter()
++            .map(|SelectionRect { rect_in_lpxs, .. }| {
++                rect(
++                    text_rect.pos.x + (rect_in_lpxs.origin.x * self.draw_text.font_scale) as f64,
++                    text_rect.pos.y + (rect_in_lpxs.origin.y * self.draw_text.font_scale) as f64,
++                    (rect_in_lpxs.size.width * self.draw_text.font_scale) as f64,
++                    (rect_in_lpxs.size.height * self.draw_text.font_scale) as f64,
++                )
++            })
++            .collect();
++        let walk = Walk {
++            abs_pos: Some(text_rect.pos),
++            margin: Inset::default(),
++            ..self.inner_walk()
++        };
++        for run in runs {
++            cx.push_clip_rect(run);
++            self.draw_text.draw_walk_laidout(cx, walk, &laidout_text);
++            cx.pop_clip_rect();
++        }
++    }
++
+     /// Calculate the bounding rectangle of the current text selection in screen coordinates
+     /// We use the draw_bg area which should give us the actual drawn position
+     fn get_selection_rect(&self, cx: &Cx) -> Rect {
+@@ -2227,6 +2263,10 @@
+ }
+ 
+ impl Widget for TextInput {
++    fn steals_document_selection(&self) -> bool {
++        true
++    }
++
+     fn script_call(
+         &mut self,
+         vm: &mut ScriptVm,
+@@ -2308,6 +2348,7 @@
+         let text_rect = self.draw_text(cx);
+         let cursor_rect = self.draw_cursor(cx, text_rect);
+         self.draw_selection(cx, text_rect);
++        self.draw_selected_ink(cx, text_rect);
+         self.draw_composition_underline(cx, text_rect);
+         self.scroll_to_cursor(cx, content_clip_index);
+         cx.pop_clip_rect();
+--- a/widgets/src/markdown.rs
++++ b/widgets/src/markdown.rs
+@@ -235,7 +235,8 @@
+ 
+ impl Widget for Markdown {
+     fn is_interactive(&self) -> bool {
+-        false
++        // Selectable Markdown must participate in hit-testing (sites + WrapLabel).
++        self.text_flow.selectable
+     }
+ 
+     fn handle_event(&mut self, cx: &mut Cx, event: &Event, scope: &mut Scope) {
+--- a/widgets/src/text_flow.rs
++++ b/widgets/src/text_flow.rs
+@@ -26,7 +26,7 @@
+         code_color: #333
+         quote_bg_color: #222
+         quote_fg_color: #aaa
+-        selection_color: #FF5C3966
++        selection_color: #3d6fd9FF
+         table_header_bg_color: #FFFFFF22
+         table_border_color: #666
+ 
+@@ -69,7 +69,9 @@
+                     return sdf.result
+                 }
+                 FlowBlockType.Selection => {
+-                    return vec4(self.selection_color.rgb * self.selection_color.a, self.selection_color.a)
++                    // Solid band. Premultiply+low alpha washed into the page
++                    // (light-on-light). Always paint opaque RGB.
++                    return vec4(self.selection_color.xyz, 1.0)
+                 }
+                 FlowBlockType.TableCell => {
+                     sdf.rect(0. 0. self.rect_size.x self.rect_size.y)
+@@ -243,6 +245,37 @@
+     }
+ }
+ 
++/// Set while any selectable block has a committed drag-select (cleared when
++/// it ends). A selection root only walks its blocks on a pointer move while
++/// this is set — ordinary scrolling and dragging cost nothing.
++pub static SELECTION_DRAG_LIVE: std::sync::atomic::AtomicBool = std::sync::atomic::AtomicBool::new(false);
++
++/// Apps whose pages pan with a mouse press-drag (Khaynjo's Order desk, chip
++/// strips, page scroll) set this: a mouse drag on copy then pans like touch,
++/// and mouse selection starts after a 0.5 s still hold (or double / triple
++/// click, Ctrl/Cmd+A, the right-click menu). Sites leave it off — a mouse
++/// drag on text selects, as in a browser.
++pub static MOUSE_HOLD_TO_SELECT: std::sync::atomic::AtomicBool = std::sync::atomic::AtomicBool::new(false);
++
++fn mouse_holds_to_select() -> bool {
++    MOUSE_HOLD_TO_SELECT.load(std::sync::atomic::Ordering::Relaxed)
++}
++
++/// Selection chrome request (Kumkaj `text_selection` patch). A selectable
++/// TextFlow emits `Menu { touch: true }` when a long-press selection ends; a
++/// `View { selection_root: true }` emits `Menu { touch: false }` on a
++/// right-click inside it. The app draws its own translated Copy / Select all
++/// menu (Android / iOS already show the OS bar for touch).
++#[derive(Clone, Debug, Default)]
++pub enum TextSelectionAction {
++    #[default]
++    None,
++    /// `abs`: where a pointer menu opens; `rect`: the selection it is for
++    /// (a touch menu sits above it, as in a browser; zero-size for a
++    /// right-click).
++    Menu { abs: DVec2, touch: bool, rect: Rect },
++}
++
+ #[derive(Script, ScriptHook)]
+ #[repr(u32)]
+ pub enum FlowBlockType {
+@@ -537,6 +570,13 @@
+     /// Get all selection rects for the given character range
+     pub fn selection_rects(&self, start: usize, end: usize) -> Vec<Rect> {
+         let mut rects = Vec::new();
++        // Document hosts may pass byte offsets that are not char-aligned
++        // (mixed leaf lengths / stale hit tests). Clamp before LaidoutText
++        // slices — mid-char indices panic with slice_error_fail on wasm.
++        let start = self.text.floor_char_boundary(start.min(self.text.len()));
++        let end = self
++            .text
++            .ceil_char_boundary(end.min(self.text.len()).max(start));
+ 
+         for segment in &self.segments {
+             match segment {
+@@ -553,9 +593,11 @@
+                         continue;
+                     }
+ 
+-                    // Clamp selection to segment bounds
+-                    let sel_start = start.saturating_sub(*text_start);
+-                    let sel_end = (end - text_start).min(laidout_text.text.len());
++                    // Clamp selection to segment bounds on char boundaries.
++                    let seg = laidout_text.text.as_str();
++                    let sel_start = seg.floor_char_boundary(start.saturating_sub(*text_start));
++                    let sel_end =
++                        seg.ceil_char_boundary((end - text_start).min(seg.len()).max(sel_start));
+ 
+                     let selection = Selection {
+                         anchor: Cursor {
+@@ -779,6 +821,27 @@
+     #[live(false)]
+     pub selectable: bool,
+ 
++    /// Where this block's area was when it drew. A parent that aligns its
++    /// children (right / center) moves the area afterwards; the selection
++    /// geometry recorded while drawing does not move with it, so hit tests and
++    /// the selection rect are offset by `area now - drawn_pos`
++    /// (`align_delta`). Without it a press on right-aligned text picked a word
++    /// further right and the Copy menu opened far from the selection.
++    #[rust]
++    drawn_pos: DVec2,
++
++    /// The selection was made with a finger. It then lives like a browser's:
++    /// a swipe (even one that moves key focus to a row it starts on) keeps
++    /// it, a tap clears it.
++    #[rust]
++    touch_selected: bool,
++    /// A finger is down somewhere (raw touch), and where it went down.
++    #[rust]
++    touch_down_at: Option<DVec2>,
++    /// Key focus left during that touch: decide on lift (tap → clear).
++    #[rust]
++    focus_lost_in_touch: bool,
++
+     /// Selection anchor (start) character index
+     #[rust]
+     selection_anchor: usize,
+@@ -787,6 +850,12 @@
+     #[rust]
+     selection_cursor: usize,
+ 
++    /// Sticky full-select: survive redraw. Tracker is cleared in `begin()` and
++    /// refilled while drawing — without this, Select all that ran before/between
++    /// draws left `cursor == 0` and whole tickets/cards stayed unhighlighted.
++    #[rust]
++    selection_all_sticky: bool,
++
+     /// Selection tracker (only populated when selectable)
+     #[rust]
+     selection_tracker: SelectionTracker,
+@@ -799,6 +868,19 @@
+     /// Whether currently dragging to select
+     #[rust]
+     is_selecting: bool,
++    /// Finger position at selection FingerDown — used to decide text-select
++    /// vs sideways pan (ancestor ScrollX) before we block scrolling.
++    #[rust]
++    select_down_abs: DVec2,
++    /// True once the drag is committed as text selection (not a horizontal pan).
++    #[rust]
++    selection_committed: bool,
++    /// Touch hold where the OS sends no long-press (Linux / Windows touch
++    /// screens, mobile browsers): commits the word like a long-press would.
++    #[rust]
++    touch_hold: Timer,
++    #[rust]
++    touch_hold_armed: bool,
+ 
+     // Streaming text animation fields
+     #[rust]
+@@ -1125,7 +1207,7 @@
+         self.text_len()
+     }
+     fn selection_point_to_char_index(&self, cx: &Cx, abs: DVec2) -> Option<usize> {
+-        self.selection_tracker.point_to_index(cx, abs)
++        self.selection_tracker.point_to_index(cx, abs - self.align_delta(cx))
+     }
+     fn selection_set(&mut self, anchor: usize, cursor: usize) {
+         self.set_selection(anchor, cursor)
+@@ -1142,11 +1224,37 @@
+     fn selection_get_full_text(&self) -> String {
+         self.get_full_text()
+     }
++    fn selection_leaf(&self) -> bool {
++        self.selectable
++    }
++    fn selection_drag_anchor(&self) -> Option<usize> {
++        (self.selectable && self.is_selecting && self.selection_committed)
++            .then_some(self.selection_anchor)
++    }
++    fn selection_ends(&self, cx: &Cx) -> Option<(usize, usize, Rect, Rect)> {
++        if !self.has_selection() {
++            return None;
++        }
++        let start = self.selection_anchor.min(self.selection_cursor);
++        let end = self.selection_anchor.max(self.selection_cursor);
++        let delta = self.align_delta(cx);
++        let rects = self.selection_tracker.selection_rects(start, end);
++        let first = rects.first()?;
++        let last = rects.last()?;
++        Some((
++            start,
++            end,
++            Rect { pos: first.pos + delta, size: first.size },
++            Rect { pos: last.pos + delta, size: last.size },
++        ))
++    }
+ }
+ 
+ impl Widget for TextFlow {
+     fn is_interactive(&self) -> bool {
+-        false
++        // Selectable copy must participate in hit-testing; otherwise the
++        // parent ScrollYView owns every drag and selection never starts.
++        self.selectable
+     }
+ 
+     fn draw_walk(&mut self, cx: &mut Cx2d, _scope: &mut Scope, walk: Walk) -> DrawStep {
+@@ -1218,12 +1326,65 @@
+             }
+         }
+ 
+-        // Handle selection events when selectable (standalone mode only)
+-        // When inside a selectable PortalList, PortalList handles events directly
++        // Every selectable block owns its own drag / long-press selection. A
++        // `View { selection_root: true }` above it only adds Select all / Copy
++        // across blocks and the right-click menu.
+         if !self.selectable {
+             return;
+         }
+ 
++        if self.touch_hold_armed && self.touch_hold.is_event(event).is_some() {
++            self.touch_hold_armed = false;
++            let at = self.select_down_abs;
++            self.commit_touch_selection(cx, at);
++            return;
++        }
++
++        // Select-drag calls `block_scrolling_except_within(Empty)`. If that
++        // block is left set, mouse wheel dies everywhere (scrollbar thumb
++        // drag still works). Clear it on any MouseUp / Scroll — Hit::FingerUp
++        // alone is not enough under remote input or after navigation.
++        match event {
++            // A wheel with the button still held is a drag-select scrolling
++            // the page (the selection root moves it): the drag goes on. Only an
++            // orphan block (no button held) is cleared on a wheel.
++            Event::Scroll(_) if cx.fingers.first_mouse_button.is_some() => {}
++            Event::MouseUp(_) | Event::Scroll(_) => {
++                SELECTION_DRAG_LIVE.store(false, std::sync::atomic::Ordering::Relaxed);
++                if self.selection_committed {
++                    cx.unblock_scrolling();
++                }
++                if self.is_selecting || self.selection_committed {
++                    self.is_selecting = false;
++                    self.selection_committed = false;
++                }
++            }
++            _ => {}
++        }
++
++        if self.touch_selected {
++            if let Event::TouchUpdate(te) = event {
++                for t in &te.touches {
++                    match t.state {
++                        crate::event::TouchState::Start => {
++                            self.touch_down_at = Some(t.abs);
++                            self.focus_lost_in_touch = false;
++                        }
++                        crate::event::TouchState::Stop => {
++                            let start = self.touch_down_at.take();
++                            if std::mem::take(&mut self.focus_lost_in_touch)
++                                && start.is_some_and(|s| (t.abs - s).length() <= 12.0)
++                            {
++                                self.clear_selection();
++                                self.redraw(cx);
++                            }
++                        }
++                        _ => {}
++                    }
++                }
++            }
++        }
++
+         match event.hits(cx, self.area) {
+             Hit::FingerHoverIn(_) => {
+                 cx.set_cursor(MouseCursor::Text);
+@@ -1232,19 +1393,101 @@
+                 cx.set_cursor(MouseCursor::Default);
+             }
+             Hit::FingerDown(fe) if fe.is_primary_hit() => {
+-                cx.set_key_focus(self.area);
++                // Touch: focus on a tap (FingerUp) or a long-press select, not
++                // on the press — a swipe that starts on copy must scroll the
++                // page without taking focus from the field being typed in
++                // (that hid the soft keyboard mid-scroll and the page jumped).
++                if !fe.device.is_touch() {
++                    cx.set_key_focus(self.area);
++                }
+                 if fe.device.is_touch() {
+                     cx.hide_clipboard_actions();
+                 }
+-                if let Some(idx) = self.selection_tracker.point_to_index(cx, fe.abs) {
+-                    self.selection_anchor = idx;
+-                    self.selection_cursor = idx;
++                if let Some(idx) = self.selection_tracker.point_to_index(cx, fe.abs - self.align_delta(cx)) {
++                    // Touch keeps what is selected: a swipe that starts on
++                    // copy scrolls with the selection (browser); a hold
++                    // replaces it and a tap clears it (the selection root).
++                    if !fe.device.is_touch() {
++                        self.touch_selected = false;
++                        self.selection_all_sticky = false;
++                        self.selection_anchor = idx;
++                        self.selection_cursor = idx;
++                    }
+                     self.is_selecting = true;
++                    self.selection_committed = false;
++                    self.select_down_abs = fe.abs;
++                    // A 0.5 s hold commits the word on every touch platform.
++                    // Android / iOS also send an OS Event::LongPress, but it
++                    // only reaches a block that still owns the finger capture;
++                    // on a scrolling page it usually did not, and touch
++                    // selection never started on Android (2026-11-13). The OS
++                    // event stays a second trigger (commit is idempotent).
++                    if fe.device.is_touch()
++                        || (!fe.device.is_touch() && mouse_holds_to_select() && fe.tap_count < 2)
++                    {
++                        self.disarm_touch_hold(cx);
++                        self.touch_hold = cx.start_timeout(0.5);
++                        self.touch_hold_armed = true;
++                    }
++                    // Mouse double-click = word, triple-click = this block —
++                    // the desktop convention every OS shares.
++                    if !fe.device.is_touch() && fe.tap_count >= 2 {
++                        if fe.tap_count == 2 {
++                            let (a, b) = self.word_bounds_at(idx);
++                            self.selection_anchor = a;
++                            self.selection_cursor = b;
++                        } else {
++                            self.selection_anchor = 0;
++                            self.selection_cursor = self.selection_tracker.total_len();
++                        }
++                        self.is_selecting = false;
++                        self.propagate_selection_to_children();
++                        self.redraw(cx);
++                        return;
++                    }
++                    // Do not block / promote yet. Mouse commits on the first
++                    // meaningful move in any direction (horizontal is how you
++                    // select along a line on sites and display copy). Touch
++                    // waits for long-press so a swipe can still scroll the page
++                    // (selectable WrapLabels cover most of DeviceSetup / help).
+                     self.redraw(cx);
+                 }
+             }
++            Hit::FingerLongPress(lp) => {
++                // Touch select-drag starts on long-press only — otherwise every
++                // vertical swipe over copy steals the page ScrollYView.
++                self.commit_touch_selection(cx, lp.abs);
++            }
+             Hit::FingerMove(fe) if self.is_selecting => {
+-                if let Some(idx) = self.selection_tracker.point_to_index(cx, fe.abs) {
++                let delta = fe.abs - self.select_down_abs;
++                if !self.selection_committed {
++                    if delta.x.abs() <= 6.0 && delta.y.abs() <= 6.0 {
++                        return;
++                    }
++                    // Touch: swipe scrolls the page. Long-press (above) is what
++                    // commits touch selection. Mouse: any direction past slop
++                    // selects — including along the line. Desk ScrollX pans from
++                    // whitespace / the scrollbar, not from selectable copy.
++                    // Hold-to-select apps: a mouse drag before the hold pans
++                    // the page / desk too (the scroll view's capture overload
++                    // takes it) — never a selection that blocks the pan.
++                    if fe.device.is_touch() || mouse_holds_to_select() {
++                        self.is_selecting = false;
++                        if !fe.device.is_touch() {
++                            self.selection_cursor = self.selection_anchor;
++                        }
++                        self.disarm_touch_hold(cx);
++                        self.redraw(cx);
++                        return;
++                    }
++                    self.selection_committed = true;
++                    SELECTION_DRAG_LIVE.store(true, std::sync::atomic::Ordering::Relaxed);
++                }
++                // Own the gesture: block page drag-scroll and take capture
++                // so ScrollBar capture_overload cannot promote over us.
++                cx.block_scrolling_except_within(Area::Empty);
++                let _ = cx.promote_finger_capture_over(self.area);
++                if let Some(idx) = self.selection_tracker.point_to_index(cx, fe.abs - self.align_delta(cx)) {
+                     if self.selection_cursor != idx {
+                         self.selection_cursor = idx;
+                         // Propagate selection to child widgets (e.g., CodeView)
+@@ -1253,19 +1496,64 @@
+                     }
+                 }
+             }
++            Hit::FingerCancel(fe) => {
++                // A scroll took the swipe that started on this copy.
++                self.disarm_touch_hold(cx);
++                if self.is_selecting && !self.selection_committed {
++                    self.is_selecting = false;
++                    if !fe.device.is_touch() {
++                        self.selection_cursor = self.selection_anchor;
++                    }
++                    self.redraw(cx);
++                }
++            }
+             Hit::FingerUp(fe) => {
++                self.disarm_touch_hold(cx);
++                SELECTION_DRAG_LIVE.store(false, std::sync::atomic::Ordering::Relaxed);
++                if fe.device.is_touch() && fe.is_over && fe.was_tap() && !self.selection_committed {
++                    // A tap on copy behaves as it always did: focus here
++                    // (blurs a field, so the soft keyboard goes away).
++                    cx.set_key_focus(self.area);
++                }
++                let was_committed = self.selection_committed;
+                 self.is_selecting = false;
++                self.selection_committed = false;
++                // Always clear a prior block — FingerUp can be lost under
++                // remote input; unblock is cheap and idempotent.
++                if was_committed {
++                    cx.unblock_scrolling();
++                }
+                 if fe.device.is_touch() {
+                     let has_selection = self.has_selection();
+-                    if has_selection {
++                    if has_selection && was_committed {
+                         let selection_rect = self.selection_clipboard_rect(cx);
++                        // Android / iOS: the OS Copy / Select all bar. Every
++                        // platform also gets the action so an app can show its
++                        // own menu where the OS has none (desktop touch).
+                         cx.show_clipboard_actions(true, selection_rect, cx.keyboard_shift);
++                        cx.widget_action(
++                            self.widget_uid(),
++                            TextSelectionAction::Menu {
++                                abs: selection_rect.pos,
++                                touch: true,
++                                rect: selection_rect,
++                            },
++                        );
+                     } else {
+                         cx.hide_clipboard_actions();
+                     }
+                 }
+             }
+             Hit::KeyFocusLost(_) => {
++                if self.selection_committed {
++                    cx.unblock_scrolling();
++                }
++                // A finger selection outlives a focus change made by a touch
++                // that turns out to be a swipe (see `touch_selected`).
++                if self.touch_selected && self.touch_down_at.is_some() {
++                    self.focus_lost_in_touch = true;
++                    return;
++                }
+                 self.clear_selection();
+                 cx.hide_clipboard_actions();
+                 self.redraw(cx);
+@@ -1300,6 +1588,16 @@
+         cx.begin_turtle(walk, self.layout);
+         self.draw_state.set(DrawState::Drawing);
+         self.draw_block.append_to_draw_call(cx);
++        // Seed the band behind the glyphs. With a selection to show, open a
++        // fresh band call here: appending let the band join an older colour
++        // call drawn *under* this block's own card or pill background, so a
++        // selected pill / tag showed no band at all. Without a selection the
++        // cheap append is enough (no extra draw call per block).
++        if self.selectable && (self.has_selection() || self.selection_all_sticky) {
++            self.draw_selection.new_draw_call(cx);
++        } else {
++            self.draw_selection.append_to_draw_call(cx);
++        }
+         self.draw_text.begin_deferred_slug_flush();
+         self.clear_stacks();
+         self.lines_drawn = 0;
+@@ -1399,12 +1697,20 @@
+     }
+ 
+     pub fn end(&mut self, cx: &mut Cx2d) {
+-        self.draw_text.end_deferred_slug_flush(cx);
+-
+-        // Draw selection highlight before finishing the turtle
++        // Re-expand sticky Select all now that the tracker has this frame's
++        // glyphs — natural, not host-driven per-widget bookkeeping.
++        if self.selectable && self.selection_all_sticky {
++            self.selection_anchor = 0;
++            self.selection_cursor = self.selection_tracker.total_len();
++            self.propagate_selection_to_children();
++        }
++        // Band first, then flush glyphs — keeps opaque selection under ink
++        // even if the seeded draw-call batch does not win the append.
+         self.draw_selection_rects(cx);
++        self.draw_text.end_deferred_slug_flush(cx);
+ 
+         cx.end_turtle_with_area(&mut self.area);
++        self.drawn_pos = self.area.rect(cx).pos;
+         self.items.as_mut().unwrap().retain_visible();
+ 
+         // Update streaming animation state after drawing (also while fading out)
+@@ -1469,15 +1775,23 @@
+         if !self.selectable {
+             return String::new();
+         }
+-        let start = self.selection_anchor.min(self.selection_cursor);
+-        let end = self.selection_anchor.max(self.selection_cursor);
++        let text = &self.selection_tracker.text;
++        let start = text.floor_char_boundary(
++            self.selection_anchor
++                .min(self.selection_cursor)
++                .min(text.len()),
++        );
++        let end = text.ceil_char_boundary(
++            self.selection_anchor
++                .max(self.selection_cursor)
++                .min(text.len())
++                .max(start),
++        );
+         if start == end {
+             return String::new();
+         }
+         // Filter out object replacement characters from gaps
+-        self.selection_tracker
+-            .text
+-            .get(start..end)
++        text.get(start..end)
+             .unwrap_or("")
+             .chars()
+             .filter(|c| *c != '\u{FFFC}')
+@@ -1486,38 +1800,148 @@
+ 
+     /// Select all text in this TextFlow
+     pub fn select_all(&mut self) {
+-        if self.selectable {
+-            self.selection_anchor = 0;
+-            self.selection_cursor = self.selection_tracker.total_len();
+-            for (widget, _, _) in &self.widget_text_entries {
+-                widget.selection_select_all();
+-            }
++        // Only text you could select by hand: a tap-target face (`selectable:
++        // false`) stays out of a page-wide Select all too.
++        if !self.selectable {
++            return;
++        }
++        self.selection_all_sticky = true;
++        self.selection_anchor = 0;
++        self.selection_cursor = self.selection_tracker.total_len();
++        for (widget, _, _) in &self.widget_text_entries {
++            widget.selection_select_all();
+         }
+     }
+ 
+     /// Clear selection
+     pub fn clear_selection(&mut self) {
++        self.touch_selected = false;
++        self.focus_lost_in_touch = false;
++        self.selection_all_sticky = false;
+         self.selection_anchor = 0;
+         self.selection_cursor = 0;
+         self.is_selecting = false;
++        self.selection_committed = false;
+         for (widget, _, _) in &self.widget_text_entries {
+             widget.selection_clear();
+         }
+     }
+ 
+     /// Check if there is a selection
++    /// Touch: the long-press (OS event, or the hold timer where the OS sends
++    /// none) commits a selection of the word under the finger (Android / iOS
++    /// convention); a drag that follows extends from it.
++    fn commit_touch_selection(&mut self, cx: &mut Cx, abs: DVec2) {
++        self.disarm_touch_hold(cx);
++        if !self.is_selecting || self.selection_committed {
++            return;
++        }
++        self.selection_committed = true;
++        self.selection_all_sticky = false;
++        self.touch_selected = true;
++        SELECTION_DRAG_LIVE.store(true, std::sync::atomic::Ordering::Relaxed);
++        // Copy goes to the key-focused area.
++        cx.set_key_focus(self.area);
++        cx.block_scrolling_except_within(Area::Empty);
++        let _ = cx.promote_finger_capture_over(self.area);
++        if let Some(idx) = self.selection_tracker.point_to_index(cx, abs - self.align_delta(cx)) {
++            let (a, b) = self.word_bounds_at(idx);
++            self.selection_anchor = a;
++            self.selection_cursor = b;
++            self.propagate_selection_to_children();
++        }
++        self.redraw(cx);
++    }
++
++    fn disarm_touch_hold(&mut self, cx: &mut Cx) {
++        if self.touch_hold_armed {
++            cx.stop_timer(self.touch_hold);
++            self.touch_hold_armed = false;
++        }
++    }
++
++    /// Byte range of the word around `idx` in the tracker text (letters,
++    /// digits, marks, `_`, and the money/number joiners `.` `,` between digits).
++    /// Falls back to the single character under `idx` on punctuation.
++    fn word_bounds_at(&self, idx: usize) -> (usize, usize) {
++        let text = &self.selection_tracker.text;
++        let idx = text.floor_char_boundary(idx.min(text.len()));
++        let is_word = |c: char| c.is_alphanumeric() || c == '_' || c == '\u{20B9}';
++        let chars: Vec<(usize, char)> = text.char_indices().collect();
++        let Some(pos) = chars.iter().position(|(i, _)| *i >= idx).or_else(|| chars.len().checked_sub(1))
++        else {
++            return (0, 0);
++        };
++        let word_at = |p: usize| -> bool {
++            let c = chars[p].1;
++            if is_word(c) {
++                return true;
++            }
++            // 1,250.00 stays one word: a joiner between two digits.
++            (c == '.' || c == ',')
++                && p > 0
++                && p + 1 < chars.len()
++                && chars[p - 1].1.is_ascii_digit()
++                && chars[p + 1].1.is_ascii_digit()
++        };
++        // A press lands on a boundary: just past a word's last letter the hit
++        // is the ")" / space after it. Like a browser, take the word the
++        // finger is touching — the one before, else the one after — and only
++        // fall back to the single character between two non-words.
++        let pos = if word_at(pos) {
++            pos
++        } else if pos > 0 && word_at(pos - 1) {
++            pos - 1
++        } else if pos + 1 < chars.len() && word_at(pos + 1) {
++            pos + 1
++        } else {
++            let end = chars.get(pos + 1).map(|(i, _)| *i).unwrap_or(text.len());
++            return (chars[pos].0, end);
++        };
++        let mut a = pos;
++        while a > 0 && word_at(a - 1) {
++            a -= 1;
++        }
++        let mut b = pos;
++        while b + 1 < chars.len() && word_at(b + 1) {
++            b += 1;
++        }
++        let end = chars.get(b + 1).map(|(i, _)| *i).unwrap_or(text.len());
++        (chars[a].0, end)
++    }
++
++    /// How far the area moved after drawing (see `drawn_pos`).
++    fn align_delta(&self, cx: &Cx) -> DVec2 {
++        if self.area.is_valid(cx) {
++            self.area.rect(cx).pos - self.drawn_pos
++        } else {
++            DVec2::default()
++        }
++    }
++
+     pub fn has_selection(&self) -> bool {
+         self.selectable && self.selection_anchor != self.selection_cursor
+     }
+ 
++    /// True while the pointer is dragging to extend a selection.
++    /// A selection drag has started (past slop / long-press), so the page must
++    /// not scroll under it. A bare press is not one: callers that block
++    /// scrolling on this (WrapLabel draw) used to freeze every pan that began
++    /// on copy — the Order desk, page drag, chip strips.
++    pub fn is_drag_selecting(&self) -> bool {
++        self.is_selecting && self.selection_committed
++    }
++
+     /// Selection anchor rect for clipboard/action popups.
+     fn selection_clipboard_rect(&self, cx: &Cx) -> Rect {
+         let start = self.selection_anchor.min(self.selection_cursor);
+         let end = self.selection_anchor.max(self.selection_cursor);
++        let delta = self.align_delta(cx);
+         let rects = self.selection_tracker.selection_rects(start, end);
+ 
+         let mut out: Option<Rect> = None;
+-        for rect in rects {
++        for mut rect in rects {
++            rect.pos += delta;
+             out = Some(if let Some(acc) = out {
+                 let x0 = acc.pos.x.min(rect.pos.x);
+                 let y0 = acc.pos.y.min(rect.pos.y);
+@@ -1539,8 +1963,12 @@
+     /// Propagates sub-ranges to child WidgetText widgets so they draw their own selection.
+     pub fn set_selection(&mut self, anchor: usize, cursor: usize) {
+         if self.selectable {
+-            self.selection_anchor = anchor;
+-            self.selection_cursor = cursor;
++            // Partial range from a document host — not sticky full-select.
++            self.selection_all_sticky = false;
++            let text = &self.selection_tracker.text;
++            let len = text.len();
++            self.selection_anchor = text.floor_char_boundary(anchor.min(len));
++            self.selection_cursor = text.ceil_char_boundary(cursor.min(len));
+             self.propagate_selection_to_children();
+         }
+     }
+@@ -1573,11 +2001,14 @@
+             .collect()
+     }
+ 
+-    /// Get text for a specific character range (for cross-boundary copy)
++    /// Get text for a specific character range (for cross-boundary copy).
++    /// Indices are byte offsets into the tracker string; clamp to char
++    /// boundaries so a stale or mixed index cannot panic on UTF-8.
+     pub fn get_text_for_range(&self, start: usize, end: usize) -> String {
+-        self.selection_tracker
+-            .text
+-            .get(start..end)
++        let text = &self.selection_tracker.text;
++        let start = text.floor_char_boundary(start.min(text.len()));
++        let end = text.ceil_char_boundary(end.min(text.len()).max(start));
++        text.get(start..end)
+             .unwrap_or("")
+             .chars()
+             .filter(|c| *c != '\u{FFFC}')
+--- a/widgets/src/view.rs
++++ b/widgets/src/view.rs
+@@ -6,6 +6,8 @@
+         makepad_draw::*,
+         makepad_script::ScriptFnRef,
+         scroll_bars::ScrollBars,
++        text_flow::TextSelectionAction,
++        text_input::TextInput,
+         widget::*,
+         widget_async::{
+             CxWidgetToScriptCallExt, ScriptAsyncCalls, ScriptAsyncId, ScriptAsyncResult,
+@@ -17,7 +19,21 @@
+ script_mod! {
+     use mod.prelude.widgets_internal.*
+ 
+-    mod.widgets.ViewBase = set_type_default() do #(View::register_widget(vm))
++    mod.widgets.ViewBase = set_type_default() do #(View::register_widget(vm)){
++        // Touch selection handle (selection roots only): a knob under each
++        // end of a finger selection and its stem — one rounded box (a square
++        // rect is a circle, a 2 px wide one a bar). Apps recolour it.
++        draw_sel_handle +: {
++            color: #x1A73E8
++            pixel: fn(){
++                let sdf = Sdf2d.viewport(self.pos * self.rect_size)
++                let r = min(self.rect_size.x, self.rect_size.y) * 0.5
++                sdf.box(0., 0., self.rect_size.x, self.rect_size.y, r)
++                sdf.fill(self.color)
++                return sdf.result
++            }
++        }
++    }
+ }
+ 
+ // maybe we should put an enum on the bools like
+@@ -115,6 +131,20 @@
+     #[live]
+     scroll_bars: ScriptObjectRef,
+ 
++    /// Selection root (Kumkaj `text_selection` patch). One per screen / page:
++    /// every selectable TextFlow/Markdown under it keeps its own drag /
++    /// long-press selection; the root adds what spans blocks — Ctrl/Cmd+A
++    /// selects every selectable block it shows, Copy then returns all of
++    /// them in reading order, a primary press anywhere inside clears that,
++    /// and a right-click emits `TextSelectionAction::Menu` for the app menu.
++    #[live(false)]
++    pub selection_root: bool,
++    /// Selection root on a web page: a press-drag that starts in a margin or
++    /// gap (not on text, not on a control) selects too, as in a browser.
++    /// Apps leave it off: there a drag on whitespace scrolls the page.
++    #[live(false)]
++    pub select_from_gaps: bool,
++
+     #[live(false)]
+     design_mode: bool,
+ 
+@@ -155,6 +185,53 @@
+     pub children: SmallVec<[(LiveId, WidgetRef); 2]>,
+     #[rust]
+     live_update_order: SmallVec<[LiveId; 1]>,
++    /// Selection root: Ctrl+A ran and nothing has cleared it yet.
++    #[rust]
++    root_select_all: bool,
++    /// Selection root: a drag that left its block — every block it covers
++    /// with the range the root gave it (reading order), for Copy and clear.
++    #[rust]
++    root_cross: Vec<(WidgetRef, usize, usize)>,
++    /// Last pointer of a live drag (re-applied after a wheel step).
++    #[rust]
++    root_drag_abs: Option<DVec2>,
++    /// A drag the root itself started in a gap: anchor block, char index,
++    /// press point, committed (moved past the slop).
++    #[rust]
++    root_gap: Option<(WidgetRef, usize, DVec2, bool)>,
++    /// Touch selection handles (Chrome on Android). After a finger selection
++    /// the root draws a knob under each end; dragging one moves that end
++    /// across blocks (the other end is held like a gap drag's anchor).
++    #[live]
++    pub draw_sel_handle: DrawColor,
++    #[rust]
++    root_handles: bool,
++    /// Touch targets of the start / end knob, from the last draw.
++    #[rust]
++    root_handle_hits: Option<(Rect, Rect)>,
++    /// While a knob is dragged: finger → the text point the end follows.
++    #[rust]
++    root_handle_offset: Option<DVec2>,
++    /// A finger selection was live in the touch that is ending.
++    #[rust]
++    root_touch_sel: bool,
++    /// Where the current touch started (a tap clears the selection, a
++    /// scroll keeps it — as in a browser).
++    #[rust]
++    root_touch_start: Option<DVec2>,
++    /// A hold in this touch started a new selection; the old one elsewhere
++    /// has been cleared.
++    #[rust]
++    root_touch_replaced: bool,
++    /// Wheel / edge auto-scroll under a live drag: next-frame tick and speed.
++    #[rust]
++    root_tick: NextFrame,
++    #[rust]
++    root_autoscroll: f64,
++    /// Frames left to re-hit the pointer after a wheel step (layout settles
++    /// one frame after the scroll).
++    #[rust]
++    root_reextend: u8,
+ 
+     #[apply_default]
+     animator: Animator,
+@@ -322,6 +399,32 @@
+ }
+ 
+ impl ViewRef {
++    /// Selection root: select every selectable block it shows (menu Select all).
++    pub fn selection_root_select_all(&self, cx: &mut Cx) {
++        if let Some(mut inner) = self.borrow_mut() {
++            inner.selection_root_select_all(cx);
++        }
++    }
++
++    /// Selection root: drop a page-wide Select all (screen change, Escape).
++    pub fn selection_root_clear(&self, cx: &mut Cx) {
++        if let Some(mut inner) = self.borrow_mut() {
++            inner.selection_root_clear(cx);
++        }
++    }
++
++    pub fn selection_root_is_all(&self) -> bool {
++        self.borrow().map(|v| v.selection_root_is_all()).unwrap_or(false)
++    }
++
++    /// Turn the root role on or off (a page stands down while a sheet over
++    /// it is the surface Ctrl+A belongs to).
++    pub fn set_selection_root(&self, on: bool) {
++        if let Some(mut inner) = self.borrow_mut() {
++            inner.selection_root = on;
++        }
++    }
++
+     pub fn set_debug_dump(&self, cx: &mut Cx, debug: bool) {
+         if let Some(mut inner) = self.borrow_mut() {
+             inner.set_debug_dump(cx, debug);
+@@ -860,18 +963,20 @@
+                 self.animator_play(cx, ids!(down.off));
+             }
+         }
++        // Selection root: clear a page-wide Select all on any primary press,
++        // answer Ctrl/Cmd+A, and report a right-click — before children see
++        // the press, so the leaf under it starts a fresh selection.
++        if self.selection_root {
++            self.selection_root_before_children(cx, event);
++        }
+         // A press that catches an in-progress momentum fling stops the scroll and is consumed:
+         // it must not also activate a child widget under the finger, as on iOS, Android, and
+         // macOS. So when the scroll bars report a caught fling, skip dispatching this press to
+         // children. This runs before the child loop below, since children would otherwise
+         // capture the press first.
+         let mut fling_caught = false;
++        // Peek: a fling-catch still has to suppress child activation.
+         if let Some(scroll_bars) = &mut self.scroll_bars_obj {
+-            let mut actions = Vec::new();
+-            scroll_bars.handle_main_event(cx, event, scope, &mut actions);
+-            if actions.len() > 0 {
+-                cx.redraw_area_and_children(self.area);
+-            };
+             fling_caught = scroll_bars.catch_fling_on_press(cx, event);
+         }
+ 
+@@ -899,6 +1004,24 @@
+             }
+         }
+ 
++        // Children first so buttons and links take hover + press; the scroll
++        // bars come after them (the order every app shipped with since
++        // 2026-11-12 — kept so drags inside strips and pages behave the same).
++        if !fling_caught {
++            if let Some(scroll_bars) = &mut self.scroll_bars_obj {
++                let mut actions = Vec::new();
++                scroll_bars.handle_main_event(cx, event, scope, &mut actions);
++                if actions.len() > 0 {
++                    cx.redraw_area_and_children(self.area);
++                };
++            }
++        }
++        // After children: a focused leaf has answered Copy with its own part;
++        // a page-wide Select all replaces that with every block's text.
++        if self.selection_root {
++            self.selection_root_after_children(cx, event);
++        }
++
+         event.hit_tweak_ray(self.area(), self.widget_uid());
+ 
+         // Also skip this View's own press-driven hit handling when a fling was caught, so the
+@@ -948,6 +1071,12 @@
+                 }
+                 Hit::FingerHoverOut(e) => {
+                     cx.widget_action(uid, ViewAction::FingerHoverOut(e));
++                    // A View that set a cursor (tappable row / tile) gives it
++                    // back on leave — it used to keep the Hand over plain
++                    // page until some other widget set a shape.
++                    if self.cursor.is_some() {
++                        cx.set_cursor(MouseCursor::Default);
++                    }
+                     if self.animator.is_defined {
+                         self.animator_play(cx, ids!(hover.off));
+                     }
+@@ -1111,6 +1240,9 @@
+                 }
+                 self.draw_state.set(DrawState::DeferWalk(step + 1));
+             } else {
++                if self.selection_root && self.root_handles {
++                    self.draw_selection_handles(cx);
++                }
+                 if let Some(scroll_bars) = &mut self.scroll_bars_obj {
+                     scroll_bars.draw_scroll_bars(cx);
+                 };
+@@ -1189,6 +1321,737 @@
+     }
+ }
+ 
++/// Selection root (Kumkaj `text_selection` patch; DESIGN.md § Text selection
++/// & copy). Blocks keep their own pointer selection; the root only owns what
++/// spans blocks. No cross-block drag: that host left some cards dead before.
++impl View {
++    fn selection_root_contains(&self, cx: &Cx, abs: DVec2) -> bool {
++        self.visible && self.area.is_valid(cx) && self.area.clipped_rect(cx).contains(abs)
++    }
++
++    fn collect_selection_leaves_into(w: &WidgetRef, out: &mut Vec<WidgetRef>) {
++        if !w.visible() {
++            return;
++        }
++        if w.selection_leaf() {
++            out.push(w.clone());
++            return;
++        }
++        // Buttons / fields / links: their faces are not copy.
++        if w.steals_document_selection() {
++            return;
++        }
++        w.children(&mut |_id, child| Self::collect_selection_leaves_into(&child, out));
++    }
++
++    /// Selectable text blocks on screen under this root, in tree (reading)
++    /// order. Hidden subtrees and blocks not drawn in the last frame are out.
++    pub fn selection_root_leaves(&self, cx: &Cx) -> Vec<WidgetRef> {
++        let mut out = Vec::new();
++        for (_id, child) in &self.children {
++            Self::collect_selection_leaves_into(child, &mut out);
++        }
++        out.retain(|w| w.area().is_valid(cx));
++        out
++    }
++
++    /// Ctrl/Cmd+A: every selectable block this root shows.
++    pub fn selection_root_select_all(&mut self, cx: &mut Cx) {
++        for leaf in self.selection_root_leaves(cx) {
++            leaf.selection_select_all();
++            leaf.redraw(cx);
++        }
++        self.root_select_all = true;
++    }
++
++    /// Drop a page-wide Select all or a drag that spanned blocks (a block's
++    /// own single-block selection clears with its key focus).
++    pub fn selection_root_clear(&mut self, cx: &mut Cx) {
++        for (leaf, _, _) in self.root_cross.drain(..) {
++            leaf.selection_clear();
++            leaf.redraw(cx);
++        }
++        if !self.root_select_all {
++            return;
++        }
++        self.root_select_all = false;
++        let mut leaves = Vec::new();
++        for (_id, child) in &self.children {
++            Self::collect_selection_leaves_into(child, &mut leaves);
++        }
++        for leaf in leaves {
++            leaf.selection_clear();
++            leaf.redraw(cx);
++        }
++    }
++
++    pub fn selection_root_is_all(&self) -> bool {
++        self.root_select_all
++    }
++
++    /// Every selected block's text after Select all, blocks joined by newlines.
++    pub fn selection_root_all_text(&self, cx: &Cx) -> String {
++        let mut out = String::new();
++        for leaf in self.selection_root_leaves(cx) {
++            let t = leaf.selection_get_full_text();
++            let t = t.trim();
++            if t.is_empty() {
++                continue;
++            }
++            if !out.is_empty() {
++                out.push('\n');
++            }
++            out.push_str(t);
++        }
++        out
++    }
++
++    /// A text field (under this root or anywhere: the IME rect follows the
++    /// focused field) owns Ctrl+A / Copy — the root leaves them alone.
++    fn selection_root_field_owns_keys(&self, cx: &Cx) -> bool {
++        let focus = cx.key_focus();
++        if focus == Area::Empty {
++            return false;
++        }
++        let ime = cx.get_ime_area_rect();
++        if ime.size.y > 0.0 && focus.is_valid(cx) && focus.rect(cx) == ime {
++            return true;
++        }
++        fn visit(w: &WidgetRef, cx: &Cx, owns: &mut bool) {
++            if *owns || !w.visible() {
++                return;
++            }
++            if w.borrow::<TextInput>().is_some() && w.key_focus(cx) {
++                *owns = true;
++                return;
++            }
++            w.children(&mut |_, child| visit(&child, cx, owns));
++        }
++        let mut owns = false;
++        for (_id, child) in &self.children {
++            visit(child, cx, &mut owns);
++        }
++        owns
++    }
++
++    fn selection_root_before_children(&mut self, cx: &mut Cx, event: &Event) {
++        if !self.visible {
++            return;
++        }
++        match event {
++            Event::MouseDown(me) if self.selection_root_contains(cx, me.abs) => {
++                if self.root_handles {
++                    self.root_handles = false;
++                    self.redraw(cx);
++                }
++                if me.button.is_secondary() {
++                    // Copy / Select all on text, or anywhere while a page-wide or
++                    // cross-block selection is up — never for a right-click on a
++                    // button, field or tappable card (that is not about copy).
++                    let on_text = self
++                        .selection_root_leaves(cx)
++                        .iter()
++                        .any(|l| l.area().clipped_rect(cx).contains(me.abs));
++                    let has_page_selection = self.root_select_all || !self.root_cross.is_empty();
++                    if !self.selection_root_point_on_control(cx, me.abs)
++                        && (on_text || has_page_selection)
++                    {
++                        cx.widget_action(
++                            self.widget_uid(),
++                            TextSelectionAction::Menu {
++                                abs: me.abs,
++                                touch: false,
++                                rect: Rect { pos: me.abs, size: DVec2::default() },
++                            },
++                        );
++                    }
++                } else {
++                    // Any primary press clears a page-wide Select all or a
++                    // cross-block drag (the block under the press starts anew).
++                    self.selection_root_clear(cx);
++                    self.root_gap = None;
++                    self.root_autoscroll = 0.0;
++                    // Web page: a press in a margin / gap starts a selection
++                    // from the nearest text, as a browser does.
++                    if self.select_from_gaps && me.button.is_primary() {
++                        let leaves = self.selection_root_leaves(cx);
++                        let on_text = leaves.iter().any(|l| l.area().rect(cx).contains(me.abs));
++                        if !on_text && !self.selection_root_point_on_control(cx, me.abs) {
++                            if let Some((i, idx)) = Self::selection_root_hit(cx, &leaves, me.abs) {
++                                self.root_gap = Some((leaves[i].clone(), idx, me.abs, false));
++                            }
++                        }
++                    }
++                }
++            }
++            Event::MouseMove(me) => {
++                if let Some((_, _, down, committed)) = &mut self.root_gap {
++                    if !*committed && (me.abs - *down).length() > 6.0 {
++                        *committed = true;
++                        // Own the drag like a block does: no page drag-scroll.
++                        cx.block_scrolling_except_within(Area::Empty);
++                    }
++                }
++            }
++            Event::MouseUp(_) => {
++                if let Some((_, _, _, committed)) = self.root_gap.take() {
++                    if committed {
++                        cx.unblock_scrolling();
++                    }
++                }
++                self.root_autoscroll = 0.0;
++            }
++            // Wheel under a held drag-select scrolls the page the drag is in
++            // (the drag blocks normal scrolling), then the selection follows.
++            Event::Scroll(se) if self.root_drag_abs.is_some() => {
++                if self.selection_root_scroll_by(cx, se.scroll.y) {
++                    se.handled_x.set(true);
++                    se.handled_y.set(true);
++                    self.root_reextend = 2;
++                    self.root_tick = cx.new_next_frame();
++                }
++            }
++            Event::NextFrame(_) if self.root_tick.is_event(event).is_some() => {
++                if let Some(abs) = self.root_drag_abs {
++                    if self.root_autoscroll != 0.0 {
++                        self.selection_root_scroll_by(cx, self.root_autoscroll);
++                    }
++                    self.selection_root_extend(cx, abs);
++                    if self.root_reextend > 0 {
++                        self.root_reextend -= 1;
++                    }
++                    if self.root_autoscroll != 0.0 || self.root_reextend > 0 {
++                        self.root_tick = cx.new_next_frame();
++                    }
++                }
++            }
++            Event::TouchUpdate(te) => {
++                for t in &te.touches {
++                    match t.state {
++                        crate::event::TouchState::Start if self.selection_root_contains(cx, t.abs) => {
++                            self.root_touch_sel = false;
++                            // A knob: drag that end; nothing under it sees the touch.
++                            if self.root_handles && self.selection_root_grab_handle(cx, t.abs) {
++                                t.handled.set(self.area);
++                                continue;
++                            }
++                            self.root_touch_start = Some(t.abs);
++                            self.root_touch_replaced = false;
++                        }
++                        crate::event::TouchState::Stop => {
++                            // Read before the block's FingerUp clears it.
++                            if crate::text_flow::SELECTION_DRAG_LIVE
++                                .load(std::sync::atomic::Ordering::Relaxed)
++                            {
++                                self.root_touch_sel = true;
++                            }
++                        }
++                        _ => {}
++                    }
++                }
++            }
++            Event::KeyDown(ke)
++                if ke.key_code == KeyCode::KeyA
++                    && ke.modifiers.is_primary()
++                    && !ke.modifiers.shift
++                    && self.area.is_valid(cx)
++                    && !self.selection_root_field_owns_keys(cx) =>
++            {
++                self.selection_root_select_all(cx);
++            }
++            Event::KeyDown(ke) if ke.key_code == KeyCode::Escape && self.root_select_all => {
++                self.selection_root_clear(cx);
++            }
++            _ => {}
++        }
++    }
++
++    fn selection_root_after_children(&mut self, cx: &mut Cx, event: &Event) {
++        if !self.visible {
++            return;
++        }
++        // A finger hold just committed a new selection (timer or OS
++        // long-press): it replaces the old one everywhere else, knobs too.
++        if self.root_touch_start.is_some()
++            && !self.root_touch_replaced
++            && crate::text_flow::SELECTION_DRAG_LIVE.load(std::sync::atomic::Ordering::Relaxed)
++        {
++            self.root_touch_replaced = true;
++            self.root_touch_start = None;
++            self.root_select_all = false;
++            self.root_cross.clear();
++            for leaf in self.selection_root_leaves(cx) {
++                if leaf.selection_drag_anchor().is_none() && leaf.selection_ends(cx).is_some() {
++                    leaf.selection_clear();
++                    leaf.redraw(cx);
++                }
++            }
++            if self.root_handles {
++                self.root_handles = false;
++                self.redraw(cx);
++            }
++        }
++        match event {
++            // A drag-select in any block follows the pointer across blocks,
++            // like a browser page. After the children so the root's ranges win
++            // over the anchor block's own nearest-index guess this event.
++            Event::MouseMove(me) => self.selection_root_extend(cx, me.abs),
++            Event::TouchUpdate(te) => {
++                if let Some(t) = te
++                    .touches
++                    .iter()
++                    .find(|t| matches!(t.state, crate::event::TouchState::Move))
++                {
++                    // A dragged knob moves the end it sits under, not the
++                    // text below the finger.
++                    let at = t.abs + self.root_handle_offset.unwrap_or_default();
++                    self.selection_root_extend(cx, at);
++                }
++                if let Some(t) = te
++                    .touches
++                    .iter()
++                    .find(|t| matches!(t.state, crate::event::TouchState::Stop))
++                {
++                    self.root_drag_abs = None;
++                    self.selection_root_touch_end(cx, t.abs);
++                }
++            }
++            Event::MouseUp(_) => self.root_drag_abs = None,
++            // The wheel moved the page under a held drag: re-hit the pointer.
++            Event::Scroll(_) => {
++                if let Some(abs) = self.root_drag_abs {
++                    self.selection_root_extend(cx, abs);
++                }
++            }
++            Event::TextCopy(e) | Event::TextCut(e) => {
++                if self.selection_root_field_owns_keys(cx) {
++                    return;
++                }
++                let text = if self.root_select_all {
++                    self.selection_root_all_text(cx)
++                } else if !self.root_cross.is_empty() {
++                    self.selection_root_cross_text()
++                } else {
++                    return;
++                };
++                if !text.is_empty() {
++                    *e.response.borrow_mut() = Some(text);
++                }
++            }
++            _ => {}
++        }
++    }
++
++    /// Block under the pointer, or the nearest one, with a char index: inside
++    /// a block its own hit test; in a gap, the start of a block below / right
++    /// of the pointer and the end of one above / left of it.
++    fn selection_root_hit(cx: &Cx, leaves: &[WidgetRef], abs: DVec2) -> Option<(usize, usize)> {
++        // Nearest by text logic, not straight-line distance: a block on the
++        // pointer's own line first (smallest sideways gap), else the block
++        // vertically nearest. Euclidean picked a line above over the short
++        // line the pointer was beside.
++        let mut best: Option<(usize, f64, f64)> = None;
++        for (i, leaf) in leaves.iter().enumerate() {
++            let r = leaf.area().rect(cx);
++            if r.size.x <= 0.5 || r.size.y <= 0.5 {
++                continue;
++            }
++            if r.contains(abs) {
++                let idx = leaf.selection_point_to_char_index(cx, abs).unwrap_or(0);
++                return Some((i, idx));
++            }
++            let dx = (r.pos.x - abs.x).max(abs.x - (r.pos.x + r.size.x)).max(0.0);
++            let dy = (r.pos.y - abs.y).max(abs.y - (r.pos.y + r.size.y)).max(0.0);
++            let better = match best {
++                None => true,
++                Some((_, bdy, bdx)) => dy < bdy || (dy == bdy && dx < bdx),
++            };
++            if better {
++                best = Some((i, dy, dx));
++            }
++        }
++        let (i, dy, _) = best?;
++        let leaf = &leaves[i];
++        let r = leaf.area().rect(cx);
++        if dy == 0.0 {
++            // Beside the block on its own line: that line's start or end.
++            return leaf
++                .selection_point_to_char_index(cx, abs)
++                .map(|idx| (i, idx))
++                .or(Some((i, if abs.x < r.pos.x { 0 } else { leaf.selection_text_len() })));
++        }
++        let before = abs.y < r.pos.y;
++        Some((i, if before { 0 } else { leaf.selection_text_len() }))
++    }
++
++    /// Carry a live drag-select across blocks: the rest of the start block,
++    /// every block between (reading order), and the part of the block under
++    /// the pointer. Back inside the start block, it is that block's own again.
++    /// Knob radius and stem width (logical px); the touch target is larger.
++    const SEL_HANDLE_R: f64 = 9.0;
++    const SEL_HANDLE_HIT: f64 = 24.0;
++
++    /// The selection's two ends across this root's blocks, in reading order:
++    /// (block, char index, rect of the run at that end).
++    fn selection_root_ends(&self, cx: &Cx) -> Option<((WidgetRef, usize, Rect), (WidgetRef, usize, Rect))> {
++        let mut first = None;
++        let mut last = None;
++        for leaf in self.selection_root_leaves(cx) {
++            if let Some((start, end, r0, r1)) = leaf.selection_ends(cx) {
++                if first.is_none() {
++                    first = Some((leaf.clone(), start, r0));
++                }
++                last = Some((leaf, end, r1));
++            }
++        }
++        Some((first?, last?))
++    }
++
++    /// Text point each end sits on: the start's left edge and the end's right
++    /// edge, at mid line height.
++    fn selection_handle_points(r0: Rect, r1: Rect) -> (DVec2, DVec2) {
++        (
++            dvec2(r0.pos.x, r0.pos.y + r0.size.y * 0.5),
++            dvec2(r1.pos.x + r1.size.x, r1.pos.y + r1.size.y * 0.5),
++        )
++    }
++
++    fn draw_selection_handles(&mut self, cx: &mut Cx2d) {
++        let Some(((_, _, r0), (_, _, r1))) = self.selection_root_ends(cx) else {
++            self.root_handle_hits = None;
++            return;
++        };
++        let r = Self::SEL_HANDLE_R;
++        let mut hits = [Rect::default(); 2];
++        for (i, (x, top, bottom)) in [
++            (r0.pos.x, r0.pos.y, r0.pos.y + r0.size.y),
++            (r1.pos.x + r1.size.x, r1.pos.y, r1.pos.y + r1.size.y),
++        ]
++        .into_iter()
++        .enumerate()
++        {
++            // Stem along the selection edge, knob hanging under the line.
++            self.draw_sel_handle.draw_abs(
++                cx,
++                Rect { pos: dvec2(x - 1.0, top), size: dvec2(2.0, bottom - top + r) },
++            );
++            let knob = dvec2(x, bottom + r);
++            self.draw_sel_handle.draw_abs(
++                cx,
++                Rect { pos: dvec2(knob.x - r, knob.y - r), size: dvec2(2.0 * r, 2.0 * r) },
++            );
++            let h = Self::SEL_HANDLE_HIT;
++            hits[i] = Rect { pos: dvec2(knob.x - h, knob.y - h), size: dvec2(2.0 * h, 2.0 * h) };
++        }
++        self.root_handle_hits = Some((hits[0], hits[1]));
++    }
++
++    /// A finger on a knob: hold the other end and let this one follow.
++    fn selection_root_grab_handle(&mut self, cx: &mut Cx, abs: DVec2) -> bool {
++        let Some((h0, h1)) = self.root_handle_hits else {
++            return false;
++        };
++        let start_knob = h0.contains(abs);
++        if !start_knob && !h1.contains(abs) {
++            return false;
++        }
++        let Some(((l0, i0, r0), (l1, i1, r1))) = self.selection_root_ends(cx) else {
++            return false;
++        };
++        let (p0, p1) = Self::selection_handle_points(r0, r1);
++        let (anchor_leaf, anchor_idx, moving_point) = if start_knob {
++            (l1, i1, p0)
++        } else {
++            (l0, i0, p1)
++        };
++        // The other blocks' parts are rebuilt by the drag.
++        self.root_cross.clear();
++        self.root_gap = Some((anchor_leaf, anchor_idx, abs, true));
++        self.root_handle_offset = Some(moving_point - abs);
++        self.root_touch_start = None;
++        cx.block_scrolling_except_within(Area::Empty);
++        cx.hide_clipboard_actions();
++        true
++    }
++
++    /// End of a touch inside this root: finish a knob drag (menu again), show
++    /// the knobs after a finger selection, or clear everything on a tap.
++    fn selection_root_touch_end(&mut self, cx: &mut Cx, abs: DVec2) {
++        if self.root_handle_offset.take().is_some() {
++            if let Some((_, _, _, committed)) = self.root_gap.take() {
++                if committed {
++                    cx.unblock_scrolling();
++                }
++            }
++            self.selection_root_touch_menu(cx);
++            self.redraw(cx);
++            return;
++        }
++        if std::mem::take(&mut self.root_touch_sel) {
++            self.root_handles = true;
++            // The whole selection (it may run across blocks), not just the
++            // block the finger lifted in.
++            self.selection_root_touch_menu(cx);
++            self.redraw(cx);
++            return;
++        }
++        let Some(start) = self.root_touch_start.take() else {
++            return;
++        };
++        // A tap (not a scroll) anywhere else clears the selection, as in a
++        // browser; a swipe scrolls with the selection kept.
++        if (abs - start).length() <= 12.0 {
++            let had = self.root_handles || !self.root_cross.is_empty() || self.root_select_all;
++            self.selection_root_clear(cx);
++            if had {
++                for leaf in self.selection_root_leaves(cx) {
++                    if leaf.selection_ends(cx).is_some() {
++                        leaf.selection_clear();
++                        leaf.redraw(cx);
++                    }
++                }
++            }
++            if self.root_handles {
++                self.root_handles = false;
++                self.redraw(cx);
++            }
++        }
++    }
++
++    /// Copy / Select all for the selection after a knob drag: the OS bar on
++    /// Android / iOS, the app's own menu elsewhere (`TextSelectionAction`).
++    fn selection_root_touch_menu(&mut self, cx: &mut Cx) {
++        let Some(((_, _, r0), (_, _, r1))) = self.selection_root_ends(cx) else {
++            return;
++        };
++        let x0 = r0.pos.x.min(r1.pos.x);
++        let y0 = r0.pos.y.min(r1.pos.y);
++        let x1 = (r0.pos.x + r0.size.x).max(r1.pos.x + r1.size.x);
++        let y1 = (r0.pos.y + r0.size.y).max(r1.pos.y + r1.size.y);
++        let rect = Rect { pos: dvec2(x0, y0), size: dvec2(x1 - x0, y1 - y0) };
++        cx.show_clipboard_actions(true, rect, cx.keyboard_shift);
++        cx.widget_action(
++            self.widget_uid(),
++            TextSelectionAction::Menu { abs: rect.pos, touch: true, rect },
++        );
++    }
++
++    fn selection_root_extend(&mut self, cx: &mut Cx, abs: DVec2) {
++        // No live text drag anywhere: an ordinary move / scroll costs nothing
++        // (no walk over the blocks on every pointer event).
++        let gap_live = matches!(self.root_gap, Some((_, _, _, true)));
++        if !gap_live
++            && !crate::text_flow::SELECTION_DRAG_LIVE.load(std::sync::atomic::Ordering::Relaxed)
++        {
++            self.root_drag_abs = None;
++            self.root_autoscroll = 0.0;
++            return;
++        }
++        let leaves = self.selection_root_leaves(cx);
++        // The anchor: a block's own live drag, or a drag the root started in
++        // a gap (web pages). Gap drags are the root's from the first block.
++        let gap = match &self.root_gap {
++            Some((leaf, idx, _, true)) => leaves
++                .iter()
++                .position(|l| l.widget_uid() == leaf.widget_uid())
++                .map(|i| (i, *idx)),
++            _ => None,
++        };
++        let Some((from, anchor, own)) = gap.map(|(i, a)| (i, a, true)).or_else(|| {
++            leaves
++                .iter()
++                .enumerate()
++                .find_map(|(i, l)| l.selection_drag_anchor().map(|a| (i, a, false)))
++        }) else {
++            self.root_drag_abs = None;
++            self.root_autoscroll = 0.0;
++            return;
++        };
++        self.root_drag_abs = Some(abs);
++        self.selection_root_edge_scroll(cx, &leaves[from], abs);
++        let Some((to, idx)) = Self::selection_root_hit(cx, &leaves, abs) else {
++            return;
++        };
++        let mut next: Vec<(WidgetRef, usize, usize)> = Vec::new();
++        if to != from || own {
++            let (lo, hi) = if to > from { (from, to) } else { (to, from) };
++            for i in lo..=hi {
++                let leaf = &leaves[i];
++                let len = leaf.selection_text_len();
++                let (a, b) = if i == from && i == to {
++                    (anchor, idx)
++                } else if i == from {
++                    // Anchor block: keep its anchor first so its own drag goes on.
++                    if to > from { (anchor, len) } else { (anchor, 0) }
++                } else if i == to {
++                    if to > from { (0, idx) } else { (len, idx) }
++                } else {
++                    (0, len)
++                };
++                next.push((leaf.clone(), a, b));
++            }
++        }
++        // Blocks the span no longer covers (a block's own drag keeps its own).
++        for (old, _, _) in &self.root_cross {
++            let uid = old.widget_uid();
++            let still = next.iter().any(|(l, _, _)| l.widget_uid() == uid);
++            if !still && (own || leaves[from].widget_uid() != uid) {
++                old.selection_clear();
++                old.redraw(cx);
++            }
++        }
++        for (leaf, a, b) in &next {
++            leaf.selection_set(*a, *b);
++            leaf.redraw(cx);
++        }
++        self.root_cross = next
++            .into_iter()
++            .map(|(l, a, b)| (l, a.min(b), a.max(b)))
++            .collect();
++    }
++
++    /// Innermost scrolling View (ScrollYView, …) under this root that holds
++    /// `target`; `None` when only the root itself (or nothing) scrolls it.
++    fn selection_root_scroller_of(w: &WidgetRef, target: WidgetUid, stack: &mut Vec<WidgetRef>) -> Option<WidgetRef> {
++        if w.widget_uid() == target {
++            return stack.last().cloned();
++        }
++        let scrolls = w.borrow::<View>().is_some_and(|v| v.scroll_bars_obj.is_some());
++        if scrolls {
++            stack.push(w.clone());
++        }
++        let mut found = None;
++        w.children(&mut |_, child| {
++            if found.is_none() {
++                found = Self::selection_root_scroller_of(&child, target, stack);
++            }
++        });
++        if scrolls {
++            stack.pop();
++        }
++        found
++    }
++
++    fn selection_root_drag_leaf(&self, cx: &Cx) -> Option<WidgetRef> {
++        if let Some((leaf, _, _, true)) = &self.root_gap {
++            return Some(leaf.clone());
++        }
++        self.selection_root_leaves(cx)
++            .into_iter()
++            .find(|l| l.selection_drag_anchor().is_some())
++    }
++
++    /// Scroll the view the live drag is in by `dy` (wheel / edge auto-scroll).
++    fn selection_root_scroll_by(&mut self, cx: &mut Cx, dy: f64) -> bool {
++        if dy == 0.0 {
++            return false;
++        }
++        let Some(leaf) = self.selection_root_drag_leaf(cx) else {
++            return false;
++        };
++        let target = leaf.widget_uid();
++        let mut scroller = None;
++        for (_id, child) in &self.children {
++            scroller = Self::selection_root_scroller_of(child, target, &mut Vec::new());
++            if scroller.is_some() {
++                break;
++            }
++        }
++        let changed = if let Some(w) = scroller {
++            let changed = if let Some(mut v) = w.borrow_mut::<View>() {
++                match v.scroll_bars_obj.as_mut() {
++                    Some(sb) => {
++                        let pos = sb.get_scroll_pos();
++                        sb.set_scroll_pos(cx, pos + dvec2(0.0, dy))
++                    }
++                    None => false,
++                }
++            } else {
++                false
++            };
++            w.redraw(cx);
++            changed
++        } else if let Some(sb) = self.scroll_bars_obj.as_mut() {
++            let pos = sb.get_scroll_pos();
++            let changed = sb.set_scroll_pos(cx, pos + dvec2(0.0, dy));
++            cx.redraw_area_and_children(self.area);
++            changed
++        } else {
++            false
++        };
++        changed
++    }
++
++    /// Pointer past the top / bottom of the scroll view the drag is in: keep
++    /// scrolling a little every frame (faster the further out), like a browser.
++    fn selection_root_edge_scroll(&mut self, cx: &mut Cx, leaf: &WidgetRef, abs: DVec2) {
++        let target = leaf.widget_uid();
++        let mut rect = None;
++        for (_id, child) in &self.children {
++            if let Some(w) = Self::selection_root_scroller_of(child, target, &mut Vec::new()) {
++                rect = Some(w.area().clipped_rect(cx));
++                break;
++            }
++        }
++        let rect = match rect {
++            Some(r) => r,
++            None if self.scroll_bars_obj.is_some() => self.area.clipped_rect(cx),
++            None => {
++                self.root_autoscroll = 0.0;
++                return;
++            }
++        };
++        const EDGE: f64 = 24.0;
++        let top = rect.pos.y + EDGE;
++        let bottom = rect.pos.y + rect.size.y - EDGE;
++        let speed = if abs.y < top {
++            -((top - abs.y) * 0.5).clamp(2.0, 40.0)
++        } else if abs.y > bottom {
++            ((abs.y - bottom) * 0.5).clamp(2.0, 40.0)
++        } else {
++            0.0
++        };
++        let was = self.root_autoscroll;
++        self.root_autoscroll = speed;
++        if speed != 0.0 && was == 0.0 {
++            self.root_tick = cx.new_next_frame();
++        }
++    }
++
++    /// A button, field or link under the pointer (they never start a gap drag).
++    fn selection_root_point_on_control(&self, cx: &Cx, abs: DVec2) -> bool {
++        let mut hit = false;
++        for (_id, child) in &self.children {
++            child.find_widgets_from_point(cx, abs, &mut |w| {
++                if w.steals_document_selection() {
++                    hit = true;
++                }
++            });
++            if hit {
++                break;
++            }
++        }
++        hit
++    }
++
++    /// Text of a drag that spanned blocks, one block per line.
++    fn selection_root_cross_text(&self) -> String {
++        let mut out = String::new();
++        for (leaf, a, b) in &self.root_cross {
++            let t = leaf.selection_get_text_for_range(*a, *b);
++            let t = t.trim();
++            if t.is_empty() {
++                continue;
++            }
++            if !out.is_empty() {
++                out.push('\n');
++            }
++            out.push_str(t);
++        }
++        out
++    }
++}
++
+ #[derive(Clone)]
+ enum DrawState {
+     Drawing(usize, bool),
+--- a/platform/src/cx_api.rs
++++ b/platform/src/cx_api.rs
+@@ -1296,6 +1296,14 @@
+             CxOsOp::SetCursor(_) => true,
+             _ => false,
+         }) {
++            // One pointer move can carry the old widget's HoverOut (reset to
++            // Default) after the new widget's HoverIn (Hand / Text) — tree
++            // order decides. The reset must not win: the pointer is over the
++            // widget that asked for a shape, so the cursor stuck on the arrow
++            // (or kept the old shape) until the next move.
++            if cursor == MouseCursor::Default && !matches!(p, CxOsOp::SetCursor(MouseCursor::Default)) {
++                return;
++            }
+             *p = CxOsOp::SetCursor(cursor)
+         } else {
+             self.platform_ops.push_back(CxOsOp::SetCursor(cursor))
+--- a/platform/src/os/linux/wayland/linux_wayland.rs
++++ b/platform/src/os/linux/wayland/linux_wayland.rs
+@@ -24,6 +24,14 @@
+ use crate::wayland::xkb_sys;
+ use crate::x11::xlib_event::XlibEvent;
+ use crate::WindowId;
++
++/// A click or scroll can move what is under a pointer that does not move
++/// (a sheet opens, the screen changes, the list slides). Browsers then show
++/// the new element's cursor at once; here hover only ran on the next motion,
++/// so the old Hand / I-beam stayed. Set on MouseUp / Scroll; the next Paint
++/// that draws sends one MouseMove at the last pointer position.
++static REHOVER_AFTER_DRAW: std::sync::atomic::AtomicBool =
++    std::sync::atomic::AtomicBool::new(false);
+ use crate::{
+     cx::{LinuxWindowParams, OsType},
+     egl_sys,
+@@ -288,6 +296,27 @@
+                         cx.call_draw_event(time_now);
+                         cx.os.opengl_cx.as_ref().unwrap().make_current();
+                         cx.opengl_compile_shaders();
++                        // Re-hover with the new layout (see REHOVER_AFTER_DRAW).
++                        if REHOVER_AFTER_DRAW.swap(false, std::sync::atomic::Ordering::Relaxed)
++                            && cx.fingers.first_mouse_button.is_none()
++                        {
++                            if let Some(window_id) = state.pointer_window {
++                                let mut abs = state.last_mouse_pos;
++                                cx.dpi_override_scale(&mut abs, window_id);
++                                cx.call_event_handler(&Event::MouseMove(
++                                    crate::event::MouseMoveEvent {
++                                        abs,
++                                        lock_delta: Default::default(),
++                                        window_id,
++                                        modifiers: state.modifiers,
++                                        time: time_now,
++                                        handled: Cell::new(crate::Area::Empty),
++                                    },
++                                ));
++                                cx.fingers.cycle_hover_area(live_id!(mouse).into());
++                                cx.fingers.switch_captures();
++                            }
++                        }
+                     }
+                 }
+                 // ok here we send out to all our childprocesses
+@@ -382,11 +411,13 @@
+                 cx.call_event_handler(&Event::MouseUp(e.into()));
+                 cx.fingers.mouse_up(button);
+                 cx.fingers.cycle_hover_area(live_id!(mouse).into());
++                REHOVER_AFTER_DRAW.store(true, std::sync::atomic::Ordering::Relaxed);
+             }
+             XlibEvent::Scroll(mut e) => {
+                 let mut cx = self.cx.borrow_mut();
+                 cx.dpi_override_scale(&mut e.abs, e.window_id);
+-                cx.call_event_handler(&Event::Scroll(e.into()))
++                cx.call_event_handler(&Event::Scroll(e.into()));
++                REHOVER_AFTER_DRAW.store(true, std::sync::atomic::Ordering::Relaxed);
+             }
+             XlibEvent::WindowDragQuery(mut e) => {
+                 let mut cx = self.cx.borrow_mut();
+--- a/platform/src/os/linux/x11/linux_x11.rs
++++ b/platform/src/os/linux/x11/linux_x11.rs
+@@ -36,6 +36,14 @@
+     std::sync::{Arc, Mutex},
+ };
+ 
++/// A click or scroll can move what is under a pointer that does not move
++/// (a sheet opens, the screen changes, the list slides). Browsers then show
++/// the new element's cursor at once; here hover only ran on the next motion,
++/// so the old Hand / I-beam stayed. MouseUp / Scroll remember where the
++/// pointer is; the next Paint that draws sends one MouseMove there.
++static REHOVER_AFTER_DRAW: std::sync::Mutex<Option<(crate::WindowId, crate::makepad_math::Vec2d, crate::event::KeyModifiers)>> =
++    std::sync::Mutex::new(None);
++
+ fn log_linux_backdrop_unsupported_once() {
+     static LOG_ONCE: std::sync::Once = std::sync::Once::new();
+     LOG_ONCE.call_once(|| {
+@@ -190,6 +198,24 @@
+                         cx.call_draw_event(time_now);
+                         cx.os.opengl_cx.as_ref().unwrap().make_current();
+                         cx.opengl_compile_shaders();
++                        // Re-hover with the new layout (see REHOVER_AFTER_DRAW).
++                        let rehover = REHOVER_AFTER_DRAW.lock().unwrap().take();
++                        if let Some((window_id, abs, modifiers)) = rehover {
++                            if cx.fingers.first_mouse_button.is_none() {
++                                cx.call_event_handler(&Event::MouseMove(
++                                    crate::event::MouseMoveEvent {
++                                        abs,
++                                        lock_delta: Default::default(),
++                                        window_id,
++                                        modifiers,
++                                        time: time_now,
++                                        handled: std::cell::Cell::new(crate::Area::Empty),
++                                    },
++                                ));
++                                cx.fingers.cycle_hover_area(live_id!(mouse).into());
++                                cx.fingers.switch_captures();
++                            }
++                        }
+                     }
+                 }
+                 // ok here we send out to all our childprocesses
+@@ -267,9 +293,11 @@
+                 let button = e.button;
+                 let abs = e.abs;
+                 let modifiers = e.modifiers;
++                let window_id = e.window_id;
+                 cx.call_event_handler(&Event::MouseUp(e.into()));
+                 cx.fingers.mouse_up(button);
+                 cx.fingers.cycle_hover_area(live_id!(mouse).into());
++                *REHOVER_AFTER_DRAW.lock().unwrap() = Some((window_id, abs, modifiers));
+                 if button == MouseButton::PRIMARY {
+                     if let Some(items) = self.internal_drag_items.take() {
+                         cx.call_event_handler(&Event::Drop(DropEvent {
+@@ -287,7 +315,9 @@
+             XlibEvent::Scroll(mut e) => {
+                 let mut cx = self.cx.borrow_mut();
+                 cx.dpi_override_scale(&mut e.abs, e.window_id);
+-                cx.call_event_handler(&Event::Scroll(e.into()))
++                let rehover = (e.window_id, e.abs, e.modifiers);
++                cx.call_event_handler(&Event::Scroll(e.into()));
++                *REHOVER_AFTER_DRAW.lock().unwrap() = Some(rehover);
+             }
+             XlibEvent::WindowDragQuery(mut e) => {
+                 let mut cx = self.cx.borrow_mut();
+--- a/platform/src/remote.rs
++++ b/platform/src/remote.rs
+@@ -199,6 +199,23 @@
+             mods: RemoteKeyModifiers,
+         },
+         Text(String),
++        /// `/touch?k=start|move|stop|long&x=&y=&uid=` — one finger, the
++        /// same TouchUpdate path Android / iOS take (`long` is the OS
++        /// long-press event Android sends after its long-click timeout).
++        Touch {
++            kind: TouchKind,
++            x: f64,
++            y: f64,
++            uid: u64,
++        },
++    }
++
++    #[derive(Clone, Copy, PartialEq)]
++    enum TouchKind {
++        Start,
++        Move,
++        Stop,
++        Long,
+     }
+ 
+     #[derive(Clone, Copy, PartialEq)]
+@@ -742,7 +759,45 @@
+                         }
+                         continue;
+                     }
++                    if let Input::Touch { kind, x, y, uid } = input {
++                        let abs = dvec2(x, y);
++                        if kind == TouchKind::Long {
++                            cx.call_event_handler(&crate::event::Event::LongPress(
++                                crate::event::LongPressEvent { window_id, abs, uid, time },
++                            ));
++                            continue;
++                        }
++                        let state = match kind {
++                            TouchKind::Start => crate::event::TouchState::Start,
++                            TouchKind::Move => crate::event::TouchState::Move,
++                            _ => crate::event::TouchState::Stop,
++                        };
++                        let touches = vec![crate::event::TouchPoint {
++                            state,
++                            abs,
++                            time,
++                            uid,
++                            rotation_angle: 0.0,
++                            force: 1.0,
++                            radius: dvec2(4.0, 4.0),
++                            handled: std::cell::Cell::new(crate::area::Area::Empty),
++                            sweep_lock: std::cell::Cell::new(crate::area::Area::Empty),
++                        }];
++                        cx.fingers.process_touch_update_start(time, &touches);
++                        let e = crate::event::Event::TouchUpdate(crate::event::TouchUpdateEvent {
++                            time,
++                            window_id,
++                            modifiers: Default::default(),
++                            touches,
++                        });
++                        cx.call_event_handler(&e);
++                        if let crate::event::Event::TouchUpdate(e) = e {
++                            cx.fingers.process_touch_update_end(&e.touches);
++                        }
++                        continue;
++                    }
+                     let msg = match input {
++                        Input::Touch { .. } => unreachable!(),
+                         Input::Mouse {
+                             kind,
+                             x,
+@@ -1123,6 +1178,7 @@
+             "/gq" => route_grab_quit(p),
+             "/m" | "/mouse" => route_mouse(p, None),
+             "/click" => route_mouse(p, Some("click")),
++            "/touch" => route_touch(p),
+             "/k" | "/key" => route_key(p),
+             "/t" | "/text" => route_text(p),
+             "/log" => route_log(p),
+@@ -1447,6 +1503,21 @@
+         send_input(window, inputs, p.flag(&["wait"]))
+     }
+ 
++    fn route_touch(p: &Params) -> Out {
++        let window = p.window();
++        let kind = match p.get(&["k", "kind"]).unwrap_or("start") {
++            "start" | "down" => TouchKind::Start,
++            "move" => TouchKind::Move,
++            "stop" | "up" | "end" => TouchKind::Stop,
++            "long" | "longpress" => TouchKind::Long,
++            other => return err(&format!("bad touch kind {other}")),
++        };
++        let x = p.f64(&["x"], 0.0);
++        let y = p.f64(&["y"], 0.0);
++        let uid = p.f64(&["uid", "id"], 1.0).max(0.0) as u64;
++        send_input(window, vec![Input::Touch { kind, x, y, uid }], p.flag(&["wait"]))
++    }
++
+     fn route_key(p: &Params) -> Out {
+         let window = p.window();
+         let mods = p.mods();

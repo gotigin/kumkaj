@@ -1368,3 +1368,22 @@ recent_changes	Thay đổi gần đây
 lane_declared_label	Hóa đơn thuế
 lane_owner_label	Phiếu tiền mặt
 money_lane_bill	Bill: {lane}
+sel_copy	Sao chép
+sel_select_all	Chọn tất cả
+sel_copied	Đã sao chép
+items_tmpl_khaynjo	Mẫu món Khaynjo
+items_tmpl_named	Mẫu {name}
+app_tmpl_named	Mẫu ứng dụng {name}
+private_code_ph	Mã 12 chữ số
+stamp_on	Tem: đã lưu
+pay_qr_on	QR thanh toán: đã lưu
+pay_qr_off	QR thanh toán: không
+items_tmpl_heading	Mẫu món
+items_tmpl_help	Món ăn, danh mục và ảnh cho thực đơn của bạn. Cài đặt cửa hàng và nhân viên vẫn giữ nguyên.
+public_tmpl_help	Thực đơn khởi đầu mà ai cũng tải được. Cần internet một lần.
+private_tmpl_help	Thực đơn khách hàng được khóa bằng mã 12 chữ số từ người liên hệ Khaynjo của bạn.
+printers_screen_tip	Tìm sẽ liệt kê các máy in thiết bị này dùng được và lưu chúng cho cửa hàng này. Máy in hóa đơn: Định dạng hóa đơn & KOT → Hóa đơn. Bếp: Bếp → Trạm bếp.
+printers_found_none	Không tìm thấy máy in nào.
+kot_copy_from	Sao chép từ
+kot_copy_from_help	Sao chép cỡ chữ, độ đậm và căn lề của mọi dòng từ loại đó sang loại này. Loại này giữ biểu ngữ, tiền tố món và gạch ngang của riêng nó. Lưu định dạng KOT để giữ lại.
+nav_loading	Đang tải…

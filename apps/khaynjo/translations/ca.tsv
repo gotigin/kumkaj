@@ -1368,3 +1368,22 @@ recent_changes	Canvis recents
 lane_declared_label	Factura fiscal
 lane_owner_label	Nota d'efectiu
 money_lane_bill	Compte: {lane}
+sel_copy	Copia
+sel_select_all	Selecciona-ho tot
+sel_copied	Copiat
+items_tmpl_khaynjo	Plantilla d'articles Khaynjo
+items_tmpl_named	Plantilla {name}
+app_tmpl_named	Plantilla d'aplicació {name}
+private_code_ph	Codi de 12 xifres
+stamp_on	Segell: al fitxer
+pay_qr_on	QR de pagament: al fitxer
+pay_qr_off	QR de pagament: cap
+items_tmpl_heading	Plantilles d'articles
+items_tmpl_help	Plats, categories i fotos per al teu menú. La configuració de la botiga i el personal es mantenen igual.
+public_tmpl_help	Menús inicials que tothom pot baixar. Cal internet una vegada.
+private_tmpl_help	Menús de client protegits amb un codi de 12 dígits del teu contacte de Khaynjo.
+printers_screen_tip	Cerca mostra les impressores que aquest dispositiu pot fer servir i les desa per a aquesta botiga. Impressores de tiquets: Format de tiquet i KOT → Tiquet. Cuina: Cuina → Estacions de cuina.
+printers_found_none	No s'ha trobat cap impressora.
+kot_copy_from	Copia de
+kot_copy_from_help	Copia la mida, el gruix i l'alineació de cada línia d'aquest tipus a aquest. Aquest tipus conserva el seu bàner, el prefix d'article i el ratllat. Desa el format KOT per conservar-ho.
+nav_loading	S'està carregant…

@@ -409,14 +409,15 @@ fn printers_found_line(t: impl Fn(&str) -> String) -> String {
         return t("printers_looking");
     }
     if !print_share::printers_find_finished() {
-        return t("printers_tap_find");
+        // Idle: the Find button and the ℹ say it — no "Tap Find…" line.
+        return String::new();
     }
     let found = print_share::found_printers();
     if found.is_empty() {
         if print_share::find_printers_was_cancelled() {
             t("cancelled")
         } else {
-            t("printers_none_found")
+            t("printers_found_none")
         }
     } else {
         // Names are the vertical pool below. This line must not repeat them.
@@ -465,9 +466,7 @@ fn printers_pool_rows(
     _selected: Option<&str>,
     t: impl Fn(&str) -> String,
 ) -> Vec<ReportRow> {
-    if draft.printers.is_empty() {
-        return vec![ReportRow::Line(t("printers_pool_empty"))];
-    }
+    // Empty → no rows; the list is hidden (no "(none yet — tap Find)" box).
     draft
         .printers
         .iter()
@@ -539,26 +538,40 @@ fn sibling_pickers_rows(store: &Store, t: impl Fn(&str) -> String) -> Vec<Report
             format!("○ {}", t("unit_picker_off"))
         }
     };
+    // Names only — ids are internal (the rows used to read "tax:<uuid> · GST 5%").
+    // `sibling_picker_keys` gives the tap handler its target per row.
     let mut rows = Vec::new();
     rows.push(ReportRow::Head("Areas".into()));
     for (name, on) in store.list_picker_areas().unwrap_or_default() {
-        rows.push(ReportRow::Kv(format!("area:{name}"), on_off(on)));
+        rows.push(ReportRow::Kv(name, on_off(on)));
     }
     rows.push(ReportRow::Head("Stations".into()));
     for s in store.list_stations().unwrap_or_default() {
-        rows.push(ReportRow::Kv(
-            format!("station:{} · {}", s.id, s.name),
-            on_off(s.picker_enabled),
-        ));
+        rows.push(ReportRow::Kv(s.name, on_off(s.picker_enabled)));
     }
     rows.push(ReportRow::Head("Tax rates".into()));
     for r in store.list_tax_rates().unwrap_or_default() {
-        rows.push(ReportRow::Kv(
-            format!("tax:{} · {}", r.id, r.name),
-            on_off(r.picker_enabled),
-        ));
+        rows.push(ReportRow::Kv(r.name, on_off(r.picker_enabled)));
     }
     rows
+}
+
+/// What each `sibling_pickers_rows` row toggles, index for index (None for
+/// the headings): `area:<name>`, `station:<id>`, `tax:<id>`.
+fn sibling_picker_keys(store: &Store) -> Vec<Option<String>> {
+    let mut keys = vec![None];
+    for (name, _) in store.list_picker_areas().unwrap_or_default() {
+        keys.push(Some(format!("area:{name}")));
+    }
+    keys.push(None);
+    for s in store.list_stations().unwrap_or_default() {
+        keys.push(Some(format!("station:{}", s.id)));
+    }
+    keys.push(None);
+    for r in store.list_tax_rates().unwrap_or_default() {
+        keys.push(Some(format!("tax:{}", r.id)));
+    }
+    keys
 }
 
 /// Settings → Units as rows: each family's units from smallest to largest

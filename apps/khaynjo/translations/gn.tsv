@@ -1368,3 +1368,22 @@ recent_changes	Umi ñemoambue nda’aréi ojejapóva
 lane_declared_label	Factura tributaria rehegua
 lane_owner_label	Memo efectivo rehegua
 money_lane_bill	Proyecto de ley: {lane} .
+sel_copy	Ekopia
+sel_select_all	Eiporavo opavave
+sel_copied	Okopiáma
+items_tmpl_khaynjo	Khaynjo mba'e ñemboguatarã
+items_tmpl_named	{name} ñemboguatarã
+app_tmpl_named	{name} app ñemboguatarã
+private_code_ph	Código 12 papapy
+stamp_on	Sello: archivo-pe
+pay_qr_on	QR de pago: archivo-pe
+pay_qr_off	Pago QR: ndaipóri
+items_tmpl_heading	Mba'e techaukaha
+items_tmpl_help	Tembi'u, mba'e jehaipy ha ta'anga ne menu-pe guarã. Tenda ñemboheko ha mba'apoharakuéra opyta ojeguáicha.
+public_tmpl_help	Menu ñepyrũrã oimeraẽva ikatúva omboguejy. Oikotevẽ internet peteĩ jey.
+private_tmpl_help	Cliente menu oñeñongatúva 12 papapy código rehe ne Khaynjo kuatiápe guive.
+printers_screen_tip	Jeheka ohechauka umi impresora ko mba'e ikatúva oipuru ha oñongatu ko tendápe guarã. Impresora cuenta-pe guarã: Cuenta ha KOT formato → Cuenta. Tembiapoha: Tembiapoha → Tembiapoha estación.
+printers_found_none	Ndojejuhúi impresora.
+kot_copy_from	Kopia ko'águi
+kot_copy_from_help	Okopia peteĩteĩ línea tuichakue, ipohyikue ha iñembohysýi upe tipo-gui ko'ápe. Ko tipo oñongatu ijehegui banner, prefijo ha tachado. Eñongatu formato KOT reñongatu hag̃ua.
+nav_loading	Henyhẽhína…

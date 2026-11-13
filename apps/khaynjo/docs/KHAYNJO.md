@@ -227,8 +227,8 @@ internet (vision §20).
 | Type or pick, everywhere | **Done** — every field that names something the shop has (table, area, station, unit, tax rate, dish group, stock item, supplier, party, staff, branch, country) opens a list on a tap and narrows as you type; an outside press, a pick, Back or leaving the screen closes it (mouse or finger, `docs/DEV.md` § Dropdowns); filled fields keep a small label | `suggest.rs`, `SuggestList`, `popup.rs`, Makepad patch `text_input_float_caption` |
 | Reports on screen | **Done** — day close, books, settings summaries render as headings + label/value rows in a card, never one run-on paragraph. **2026-10-26:** every list that was still one paragraph is a card too — Units (by family, smallest first, then conversions), printers and where things print, printers found, audit, a sale's history, open bills, bank reconciliation, notes & attachments, a party's recent ledger, shift handover, the country pack being browsed, a tablet's waiting queue and servers found; run-on figure lines ("Cash ₹120 · UPI ₹0") split into rows. Right-to-left languages mirror the card (label right, value left) | `ReportText` (`set_text` → `parse_report`; lists built in code → `set_rows`) |
 | Import the complete menu template | **Done 2026-10-24** — every catalogue folder becomes a category (with its photo) and every dish a menu item in it (price ₹0 for the owner to set; photo materialised into `item_images` as `custom:…` so Clients can sync). On Menu only ("Import complete template", with a confirm) — **not** first-run setup. Dishes the shop already has (same name) are kept; importing twice adds nothing. Big menus stay fast: the menu window's dish grid and the Menu list draw only the rows on screen; the Menu list has "Find in your menu". **2026-11-02:** desktop packages (Windows MSI / portable, Linux) ship `assets/items` — cards were missing on Windows when packaging omitted the shelf | `Store::import_catalogue`, `menu_images::shelf_key`, `MENU_LIST_MAX_HEIGHT`, `copy_app_menu_assets_if_present` |
-| Named client menu templates | **Done 2026-11-01** — per-restaurant menus under `assets/templates/<id>/` (today **Rajdhani Menu Template**). Gujarati names with English aliases, listed prices, webp photos (`shelf:…` or `images/`). **Each template row uses a unique image path** (shop can still share photos later). **2026-11-02:** Rajdhani titles drop trailing `(…)` colour/style tags on name + English alias; desktop packages ship `assets/templates` (same Windows + Linux path as the shelf). Menu → **Client menu**; import runs on a worker with progress. How to add: [`assets/templates/README.md`](../assets/templates/README.md) | `menu_templates`, `Store::import_menu_template`, category `aliases_json` |
-| Rajdhani App Template | **Done 2026-11-04; extended 2026-11-05; till chrome 2026-11-10** — DeviceSetup after first Server create, before Owner PIN. Apply = menu + Owner **Zahir** (`zahir`) + Admin **Asif** (`asif`, PIN 1111) + Waiter **Nawaz** (`nawaz`, PIN 0000) + tax rates off + **no GST/tax labels on the order desk** (`show_tax_chrome=0`) + **no Tax invoice chip** (`show_tax_invoice=0`, Cash memo only) + **Cash-only pay chips** (`pay_methods=cash`) + cash-memo + `until_day_close` + history retention off + FOH sidebar hide + Today strip off + compact KOT; Owner re-enables tax labels / Tax invoice / UPI·Card·Credit·Split in Settings → Country & tax (features stay). Skip → PIN without marking done (unfinished shops re-offer). Meta `rajdhani_app_template_done` only after Apply. Menu-only re-import: Menu → Client menu | `apply_rajdhani_app_template`, `MenuImportKind::AppTemplate` |
+| Item templates on Menu (public + private) | **Done 2026-11-01; mirrors onboarding 2026-11-13** — Menu → **Item templates** (ℹ) is the onboarding **Shop templates** pattern at menu-items level: **PUBLIC TEMPLATES** (ℹ = what the shelf holds / what is missing) with the **Khaynjo Items Template** chip → **Import selected**; **PRIVATE TEMPLATE** (ℹ) — 12-digit code from the Khaynjo contact → **Check code** → "**Rajdhani Template**" → **Import**. Busy: progress line + **Cancel**. Menu imports add **menu items only** (`apply_app_template_pack(.., false)` — the pack's owner, staff, pay methods and hidden sections stay out even though its `shop_defaults.json` is there); the app stays on Menu. Naming: app level = "{name} **App** Template" (onboarding), menu level = "{name} Template" (`template_client_name` strips the published title's level words). The demo folders under `assets/templates/` are not offered. | `paint_menu_public_card`, `paint_menu_private_card`, `CatalogueFetchKind::PrivatePeek` / `DownloadPrivate`, `menu_priv_origin`, `Store::apply_app_template_pack` |
+| Rajdhani App Template | **Done 2026-11-04; extended 2026-11-05; till chrome 2026-11-10** — DeviceSetup after first Server create, before Owner PIN. Apply = menu + Owner **Zahir** (`zahir`) + Admin **Asif** (`asif`, PIN 1111) + Waiter **Nawaz** (`nawaz`, PIN 0000) + tax rates off + **no GST/tax labels on the order desk** (`show_tax_chrome=0`) + **no Tax invoice chip** (`show_tax_invoice=0`, Cash memo only) + **Cash-only pay chips** (`pay_methods=cash`) + cash-memo + `until_day_close` + history retention off + FOH sidebar hide + Today strip off + compact KOT; Owner re-enables tax labels / Tax invoice / UPI·Card·Credit·Split in Settings → Country & tax (features stay). Skip → PIN without marking done (unfinished shops re-offer). Meta `rajdhani_app_template_done` only after Apply. Menu-only re-import: Menu → Item templates → Private template (menu items only) | `apply_rajdhani_app_template`, `MenuImportKind::AppTemplate` |
 | Team: rename + copy setup | **Done 2026-11-04** — Owner renames display name (id stays). Hire: optional copy role/title/rights from an existing person (new id + name + PIN). Edit: copy another person's setup onto the selected staff (name/PIN/id unchanged). Owner role cannot be created or overwritten this way | `rename_staff`, `apply_staff_config`, Team copy fields |
 | Favorites screen | **Removed 2026-10-24** — duplicated the order desk and confused staff | — |
 | Order screen: the menu in its own window (owner's request, 2026-10-25) | **Done** — one **+ Add dishes** button opens a window over the order: search (name, alias / short code, dish group; a short code typed exactly comes first), the category tabs (All items + the shop's categories, ‹ › when they overflow) and the dishes as cards, as many per row as fit and **never fewer than two**. **Card (redesigned 2026-10-27):** the dish's photo fills the whole card (cut to the card's shape off the UI thread, `thumbs::ThumbKind::Card`); with no photo, a red card with the initials on a frosted plate. A dark wash at the foot carries the name (up to 2 lines) and the price, always on the same line on every card. A tap anywhere on the card adds one; once the dish is on the order a **− n +** pill shows at the top and the card gets a gold edge (− never takes back what the kitchen already has — that stays a reasoned cancel on the ticket). Sold out: dimmed, "Unavailable" in place of the price, taps add nothing. Rows sit 14 px apart. The window stays open for the next dish and says "On this order: 3 dishes · ₹180" under its title. Typing looks through every category (a tab tapped afterwards narrows the results); Done, Escape, Back or a tap outside closes it and the next opening starts fresh. What is on the order shows only on the ticket (the separate "On this order" tiles were removed: they repeated the ticket) | `menu_modal`, `ProductList`, `visible_products`, `open_menu_window` |
@@ -346,10 +346,11 @@ input fields (vendor patch: `TextFlow::paragraph_align_x`,
    by default (`allow_zero_sales`).    The shelf itself is **bundled,
    read-only art**: the app never writes, moves or deletes it, so
    a dish can always be found and added again.
-   *Client menu templates (2026-11-01):* separate from the big shelf —
-   concrete restaurant menus in `assets/templates/<id>/template.json`
-   (names, aliases, prices, photos; today **Rajdhani Menu Template**).
-   Import on Menu → **Client menu** (`Store::import_menu_template`).
+   *Client menu templates (2026-11-01; private catalogue since):* separate
+   from the big shelf — concrete restaurant menus published as private
+   catalogue packs (12-digit code; Rajdhani today). On Menu they import as
+   **items only** via Item templates → Private template (2026-11-13); the
+   demo folders in `assets/templates/` are for local experiments only.
    Prefer `shelf:folder/dish.webp` for photos; optional `images/*.webp`
    only when the shelf has no match. Add another client by dropping a
    new folder — see [`assets/templates/README.md`](../assets/templates/README.md).
@@ -448,10 +449,12 @@ Generic layout/interaction law for all Kumkaj apps is canonical in
 rules) — not restated here. Below is only the restaurant instantiation
 the first build broke and must not break again:
 
-- **Order desk stack:** order-type chips and **+ Add dishes** stay
-  pinned above; cart lines scroll in the middle; **Counter** (payment)
-  is fixed at the foot of the ticket column (part of the same ticket,
-  not a separate tab/chip). Always one column.
+- **Order desk:** order-type chips stay pinned above; **Order** (title,
+  total, table pick, + Add dishes, cart lines) and **Counter** (Total,
+  tenders, Take payment) sit side by side, broad (mins 600 | 520); when
+  they do not fit the desk pans sideways — mouse press-drag from anywhere
+  (text included) or a swipe. No jump buttons; a narrower trial was
+  reverted (2026-11-13). Waiters without settle rights see the Order pane only.
 
 - **Order context lives on the ticket**: order-type chips (short
   labels only), table label, **Send KOT**, totals, tenders — one
@@ -505,8 +508,12 @@ the first build broke and must not break again:
   Fit screen scales them (`floor_tile_wh`). **Areas are tabs**
   (`floor_area_strip` + ‹ ›); the selected tab’s body has that area’s
   **Columns** (`ui_floor_columns_by_area` JSON on this device; legacy
-  `ui_floor_columns` is the fallback) — default **4** when unset
-  (Dine In / Parcel / new areas); *Fit screen* (0) or ≥ 1 when chosen.
+  `ui_floor_columns` is the fallback) — default **Fit screen (0)** when
+  unset (2026-11-13; a fixed 4 cropped tiles on phones, tablets and 1280 px
+  laptops); ≥ 1 when the owner chooses. Tile size − + Auto and the Columns
+  pick share **one** quiet row (`floor_cols_row`). A cached viewport
+  (`floor_hviewport`, `page_viewport`) that changes redraws its list —
+  after a resize the Floor drew once at the old width and stayed cropped.
   Fit uses the Floor list’s turtle width (`floor_columns_for`). Only the
   selected area’s tables draw; sideways viewport columns use
   `floor_col_window` / `floor_first_col`.
@@ -514,8 +521,11 @@ the first build broke and must not break again:
   under Columns is `area_scroll` top pad so Area press-drag works there
   (`docs/DEV.md` bug **6e** / native input Floor note).
 - **Display text is selectable** (`WrapLabel` / `ReportText`); only
-  tap targets keep `selectable: false` / plain `Label` (DESIGN § Text
-  selection).
+  tap targets and chrome marks keep `selectable: false` / plain `Label`
+  (DESIGN § Text selection). `main_column` is the selection root (a drag
+  runs across blocks with wheel / edge auto-scroll, Ctrl/Cmd+A, Copy); Add dishes and UPI QR sheets are their own roots while open;
+  right-click / desktop touch opens the translated Copy / Select all menu
+  (`src/selection_menu.rs`).
 - Side rail (≥720): **‹** collapses to zero width, **›** in the header
   restores (`rail_collapsed`); bottom tabs unchanged.
 - Khaynjo's state-guard check: `apps/khaynjo/scripts/check-lock-guards.sh`

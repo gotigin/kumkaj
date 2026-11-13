@@ -1368,3 +1368,22 @@ recent_changes	최근 변경
 lane_declared_label	세금 계산서
 lane_owner_label	현금 메모
 money_lane_bill	영수증: {lane}
+sel_copy	복사
+sel_select_all	모두 선택
+sel_copied	복사됨
+items_tmpl_khaynjo	Khaynjo 품목 템플릿
+items_tmpl_named	{name} 템플릿
+app_tmpl_named	{name} 앱 템플릿
+private_code_ph	12자리 코드
+stamp_on	스탬프: 저장됨
+pay_qr_on	결제 QR: 저장됨
+pay_qr_off	결제 QR: 없음
+items_tmpl_heading	품목 템플릿
+items_tmpl_help	메뉴에 넣을 요리, 카테고리, 사진. 매장 설정과 직원은 그대로 유지됩니다.
+public_tmpl_help	누구나 내려받을 수 있는 시작 메뉴. 인터넷이 한 번 필요합니다.
+private_tmpl_help	Khaynjo 담당자가 준 12자리 코드로 잠긴 고객 메뉴.
+printers_screen_tip	찾기는 이 기기에서 쓸 수 있는 프린터를 보여 주고 이 매장용으로 저장합니다. 계산서 프린터: 계산서 및 KOT 형식 → 계산서. 주방: 주방 → 주방 스테이션.
+printers_found_none	프린터를 찾지 못했습니다.
+kot_copy_from	복사 원본
+kot_copy_from_help	그 종류의 각 줄 크기, 굵기, 정렬을 이 종류로 복사합니다. 이 종류의 배너, 품목 접두사, 취소선은 그대로 유지됩니다. 유지하려면 KOT 형식을 저장하세요.
+nav_loading	불러오는 중…

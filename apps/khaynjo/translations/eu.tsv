@@ -1368,3 +1368,22 @@ recent_changes	Azken aldaketak
 lane_declared_label	Zerga-faktura
 lane_owner_label	Diru-oharra
 money_lane_bill	Kontua: {lane}
+sel_copy	Kopiatu
+sel_select_all	Hautatu guztiak
+sel_copied	Kopiatuta
+items_tmpl_khaynjo	Khaynjo artikuluen txantiloia
+items_tmpl_named	{name} txantiloia
+app_tmpl_named	{name} aplikazioaren txantiloia
+private_code_ph	12 digituko kodea
+stamp_on	Zigilua: fitxategian
+pay_qr_on	Ordainketa QR: fitxategian
+pay_qr_off	Ordainketa QR: bat ere ez
+items_tmpl_heading	Elementu txantiloiak
+items_tmpl_help	Platerak, kategoriak eta argazkiak zure menurako. Dendaren ezarpenak eta langileak dauden bezala geratzen dira.
+public_tmpl_help	Edonork deskarga ditzakeen hasierako menuak. Behin internet behar da.
+private_tmpl_help	Zure Khaynjo kontaktuaren 12 digituko kode batekin babestutako bezero-menuak.
+printers_screen_tip	Bilatu-k gailu honek erabil ditzakeen inprimagailuak erakusten ditu eta denda honetarako gordetzen ditu. Faktura-inprimagailuak: Faktura eta KOT formatua → Faktura. Sukaldea: Sukaldea → Sukaldeko estazioak.
+printers_found_none	Ez da inprimagailurik aurkitu.
+kot_copy_from	Kopiatu hemendik
+kot_copy_from_help	Mota horretako lerro bakoitzaren tamaina, lodiera eta lerrokadura honetara kopiatzen ditu. Mota honek bere bandera, elementu-aurrizkia eta marratua gordetzen ditu. Gordetzeko, gorde KOT formatua.
+nav_loading	Kargatzen…

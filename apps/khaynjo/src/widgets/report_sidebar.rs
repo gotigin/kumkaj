@@ -278,6 +278,12 @@ struct ReportText {
     measured: f64,
     #[rust]
     settle: NextFrame,
+    /// Rows are tap targets (Settings → Areas · stations · tax rates, Units,
+    /// printer pool): the row takes the press (a View emits FingerUp only
+    /// with a cursor — without one these taps never fired) and its text is
+    /// not selectable (DESIGN § Text selection: text inside a tap target).
+    #[live]
+    tappable: bool,
 }
 
 impl Widget for ReportText {
@@ -341,6 +347,16 @@ impl Widget for ReportText {
                                 v.clone()
                             };
                             set_report_label(cx, &item, ids!(row.v), &shown, align_x);
+                            if self.tappable {
+                                if let Some(mut r) = item.view(cx, ids!(row)).borrow_mut() {
+                                    r.cursor = Some(MouseCursor::Hand);
+                                }
+                                for id in [ids!(row.k), ids!(row.v)] {
+                                    if let Some(mut l) = item.widget(cx, id).borrow_mut::<WrapLabel>() {
+                                        l.markdown.text_flow.selectable = false;
+                                    }
+                                }
+                            }
                             item
                         }
                         ReportRow::Line(t) => {
@@ -739,6 +755,10 @@ struct KotSlipPreview {
     /// Last column width that laid out. Used when this frame's width is not ready yet.
     #[rust]
     page_width: f64,
+    /// `slip_preview_key` of the picture on screen (0 = none). Bill & KOT
+    /// repaints run several times per tap; the same picture is not redrawn.
+    #[rust]
+    page_key: u64,
 }
 
 fn preview_viewport(cx: &Cx) -> f64 {
@@ -906,25 +926,47 @@ impl KotSlipPreview {
             self.rows = rows;
             self.measured = 0.0;
             self.page = false;
+            self.page_key = 0;
             self.view.redraw(cx);
         }
     }
 
-    /// Show the print picture. One scale, chosen on draw, keeps the print's
-    /// ratio: big enough to read, and fitted to the screen when that still is.
-    /// `type_px` is the body-type height in the picture.
-    pub fn set_page(&mut self, cx: &mut Cx, png: &[u8], png_w: u32, png_h: u32, type_px: f64) {
-        let img = self.view.image(cx, ids!(slip));
-        if img.load_png_from_data(cx, png).is_err() {
+    /// Show the print picture of `text`. One scale, chosen on draw, keeps the
+    /// print's ratio: big enough to read, and fitted to the screen when that
+    /// still is. The same picture as last time is not drawn again, and it goes
+    /// to the screen as pixels (no PNG encode / decode on the UI thread).
+    pub fn show_slip(
+        &mut self,
+        cx: &mut Cx,
+        text: &str,
+        metrics: &receipt_raster::RasterMetrics,
+        landscape: bool,
+        size_em: f32,
+    ) {
+        let type_px = print_share::preview_type_px(size_em, metrics.page_dots());
+        let key = print_share::slip_preview_key(text, metrics, landscape, type_px);
+        if self.page && self.page_key == key {
             return;
         }
+        let (gray, w, h) = print_share::slip_page_gray(text, metrics, landscape);
+        let Ok(buf) = makepad_widgets::makepad_draw::image_cache::ImageBuffer::new(
+            &gray,
+            w as usize,
+            h as usize,
+        ) else {
+            return;
+        };
+        let img = self.view.image(cx, ids!(slip));
+        let texture = buf.into_new_texture(cx);
+        img.set_texture(cx, Some(texture));
         if let Some(mut inner) = img.borrow_mut() {
             inner.walk.width = Size::fill();
             inner.walk.height = Size::fill();
             inner.redraw(cx);
         }
         self.page = true;
-        self.page_px = (png_w.max(1) as f64, png_h.max(1) as f64);
+        self.page_key = key;
+        self.page_px = (w.max(1) as f64, h.max(1) as f64);
         self.type_px = type_px.max(1.0);
         self.rows.clear();
         self.walk.width = Size::fill();

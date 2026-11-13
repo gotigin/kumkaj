@@ -1368,3 +1368,22 @@ recent_changes	Letzte Änderungen
 lane_declared_label	Steuerrechnung
 lane_owner_label	Kassenbon
 money_lane_bill	Rechnung: {lane}
+sel_copy	Kopieren
+sel_select_all	Alles auswählen
+sel_copied	Kopiert
+items_tmpl_khaynjo	Khaynjo-Artikelvorlage
+items_tmpl_named	Vorlage {name}
+app_tmpl_named	App-Vorlage {name}
+private_code_ph	12-stelliger Code
+stamp_on	Stempel: gespeichert
+pay_qr_on	Zahlungs-QR: gespeichert
+pay_qr_off	Zahlungs-QR: keiner
+items_tmpl_heading	Artikelvorlagen
+items_tmpl_help	Gerichte, Kategorien und Fotos für Ihre Speisekarte. Shop-Einstellungen und Personal bleiben unverändert.
+public_tmpl_help	Startmenüs, die jeder herunterladen kann. Einmal Internet nötig.
+private_tmpl_help	Kundenmenüs, geschützt durch einen 12-stelligen Code von Ihrem Khaynjo-Kontakt.
+printers_screen_tip	Suchen listet die Drucker auf, die dieses Gerät nutzen kann, und speichert sie für diesen Shop. Rechnungsdrucker: Rechnungs- & KOT-Format → Rechnung. Küche: Küche → Küchenstationen.
+printers_found_none	Keine Drucker gefunden.
+kot_copy_from	Kopieren von
+kot_copy_from_help	Kopiert Größe, Stärke und Ausrichtung jeder Zeile von dieser Art in diese. Diese Art behält ihr eigenes Banner, Artikelpräfix und Durchstreichen. KOT-Format speichern, um es zu behalten.
+nav_loading	Wird geladen…

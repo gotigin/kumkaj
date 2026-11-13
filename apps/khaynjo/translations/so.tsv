@@ -1368,3 +1368,22 @@ recent_changes	Isbeddelladii dhawaa
 lane_declared_label	Faaturo canshuur
 lane_owner_label	Warqadda lacagta caddaanka
 money_lane_bill	Biil: {lane}
+sel_copy	Koobi
+sel_select_all	Dooro dhammaan
+sel_copied	Waa la koobiyeeyay
+items_tmpl_khaynjo	Qaabka alaabta Khaynjo
+items_tmpl_named	Qaabka {name}
+app_tmpl_named	Qaabka app-ka {name}
+private_code_ph	Koodh 12 lambar ah
+stamp_on	Shaabad: fayl ayaa ku jira
+pay_qr_on	QR bixin: fayl ayaa ku jira
+pay_qr_off	QR bixin: midna
+items_tmpl_heading	Qaababka alaabta
+items_tmpl_help	Cuntooyin, qaybo iyo sawirro loogu talagalay menu-gaaga. Dejinta dukaanka iyo shaqaaluhu sidooda ayay ahaanayaan.
+public_tmpl_help	Menu bilow ah oo qof walba soo dejin karo. Internet ayaa loo baahan yahay hal mar.
+private_tmpl_help	Menu macaamiil oo lagu xiray koodh 12 god ah oo ka yimid xiriirkaaga Khaynjo.
+printers_screen_tip	Raadi waxay tusaysaa daabacayaasha qalabkani isticmaali karo waxayna u kaydisaa dukaankan. Daabacayaasha biilka: Qaabka biilka iyo KOT → Biil. Jikada: Jikada → Saldhigyada jikada.
+printers_found_none	Lama helin daabacayaal.
+kot_copy_from	Ka koobi
+kot_copy_from_help	Wuxuu koobiyeeyaa cabbirka, culeyska iyo toosinta sadar kasta oo ka yimid noocaas una gudbiyaa kan. Noocan wuxuu hayaa calankiisa, horgalaha shayga iyo xariiqda tirtirka. Kaydi qaabka KOT si uu u sii jiro.
+nav_loading	Waa la soo shubayaa…

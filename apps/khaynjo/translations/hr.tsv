@@ -1368,3 +1368,22 @@ recent_changes	Nedavne promjene
 lane_declared_label	Porezni račun
 lane_owner_label	Gotovinski listić
 money_lane_bill	Račun: {lane}
+sel_copy	Kopiraj
+sel_select_all	Odaberi sve
+sel_copied	Kopirano
+items_tmpl_khaynjo	Khaynjo predložak artikala
+items_tmpl_named	Predložak {name}
+app_tmpl_named	Predložak aplikacije {name}
+private_code_ph	12-znamenkasti kod
+stamp_on	Pečat: u datoteci
+pay_qr_on	QR plaćanja: u datoteci
+pay_qr_off	QR plaćanja: nema
+items_tmpl_heading	Predlošci stavki
+items_tmpl_help	Jela, kategorije i fotografije za vaš jelovnik. Postavke trgovine i osoblje ostaju nepromijenjeni.
+public_tmpl_help	Početni jelovnici koje svatko može preuzeti. Internet je potreban jednom.
+private_tmpl_help	Klijentski jelovnici zaključani 12-znamenkastim kodom od vašeg Khaynjo kontakta.
+printers_screen_tip	Traži prikazuje pisače koje ovaj uređaj može koristiti i sprema ih za ovu trgovinu. Pisači za račune: Format računa i KOT → Račun. Kuhinja: Kuhinja → Kuhinjske stanice.
+printers_found_none	Nije pronađen nijedan pisač.
+kot_copy_from	Kopiraj iz
+kot_copy_from_help	Kopira veličinu, debljinu i poravnanje svakog retka iz te vrste u ovu. Ova vrsta zadržava svoj natpis, prefiks stavke i precrtavanje. Spremite KOT format da ga zadržite.
+nav_loading	Učitavanje…

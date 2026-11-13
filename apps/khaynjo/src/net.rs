@@ -1309,10 +1309,35 @@ pub fn reprint_selected_kots(
     let mut dish_n = 0usize;
     let mut table_label = String::new();
     for (kot_id, line_ids) in &by_kot {
-        let (sid, kot_no, stored_table, items) =
+        let (sid, kot_no, stored_table, mut items) =
             store.kot_reprint_payload(kot_id, line_ids)?;
+        if items.is_empty() && !line_ids.is_empty() {
+            // Counter tickets keep their dishes only on the stored ticket (no
+            // running_lines, the cart's line id is a placeholder), so the
+            // picked ids match nothing. Print the picked dishes from the
+            // ticket's own list by name — still the Server's stored KOT.
+            let all = store.kot_reprint_payload(kot_id, &[])?.3;
+            let mut used = vec![false; all.len()];
+            for want in req.lines.iter().filter(|l| l.kot_id.trim() == kot_id) {
+                let name = want.name.trim();
+                if name.is_empty() {
+                    continue;
+                }
+                let hit = all.iter().enumerate().position(|(i, item)| {
+                    let label = item.split('|').next().unwrap_or("").trim();
+                    !used[i]
+                        && (label == name
+                            || label.starts_with(&format!("{name} ("))
+                            || label.starts_with(&format!("{name} [")))
+                });
+                if let Some(i) = hit {
+                    used[i] = true;
+                    items.push(all[i].clone());
+                }
+            }
+        }
         if items.is_empty() {
-            return Err(format!("KOT has no dishes to print: {kot_id}"));
+            return Err(format!("KOT {kot_no} has no dishes to print"));
         }
         if table_label.is_empty() && !stored_table.trim().is_empty() {
             table_label = stored_table;
@@ -4022,7 +4047,8 @@ mod tests {
         let draft = cart.to_kot_draft().unwrap();
         let tablets: Vec<(String, String, String)> = (0..TABLETS)
             .map(|n| {
-                let table = format!("T{n}");
+                // Names unique on the floor (tables are told apart by name).
+                let table = format!("Tablet{n}");
                 store.add_table_in_area(&table, "Dine In").unwrap();
                 let (device, session) = paired_phone(&path, &store, &guard, "Wasim", "2222");
                 (device, session, table)
@@ -4380,6 +4406,64 @@ mod tests {
     /// means no paper. "Kitchen (no station)" never spools while the shop has
     /// kitchens. Checked against captured jobs — the OS printer is never
     /// touched by tests.
+    /// Counter tickets have no running_lines (the cart's line id is the
+    /// "counter" placeholder): Print selected again used to answer "KOT has
+    /// no dishes to print" for a ticket full of dishes. The picked dishes now
+    /// come from the stored ticket by name.
+    #[test]
+    fn counter_kot_reprints_the_picked_dishes() {
+        let path = std::env::temp_dir().join(format!("khaynjo-ctrreprint-{}.sqlite3", new_id()));
+        let store = Store::open_path(&path).unwrap();
+        let owner = store.list_staff().unwrap().into_iter().next().unwrap();
+        let tandoor = store.add_station("Tandoor").unwrap();
+        for (name, rs) in [("Butter Naan", 45), ("Paneer Tikka", 220)] {
+            let mut p = Product::new_basic(new_id(), name, Money::from_rupees(rs));
+            p.station_id = tandoor.id.clone();
+            store.upsert_product(&p).unwrap();
+        }
+        let mut cart = Cart::default();
+        for p in store.list_products(false).unwrap() {
+            cart.add_or_bump(&p);
+        }
+        let ids = store.send_kot(&cart.to_kot_draft().unwrap(), None, &owner).unwrap();
+        assert_eq!(ids.len(), 1);
+        let line = |name: &str| RemoteKotReprintLine {
+            kot_id: ids[0].clone(),
+            line_id: "counter".into(),
+            name: name.into(),
+            qty: 1,
+            qty_milli: 1000,
+            unit_label: String::new(),
+            note: String::new(),
+            applied_modifiers: Vec::new(),
+            station_id: tandoor.id.clone(),
+        };
+        let mut printers = crate::print_share::DevicePrinters::default();
+        let kitchen = printers.add_printer("Kitchen", "192.168.1.50");
+        *printers.route_mut(crate::print_share::RouteKey::Kot {
+            station_id: &tandoor.id,
+        }) = vec![kitchen];
+        crate::print_share::with_test_printers(printers, || {
+            let _ = crate::print_share::take_captured();
+            let req = RemoteKotReprintRequest {
+                table_name: None,
+                table_id: None,
+                lines: vec![line("Butter Naan")],
+            };
+            let (dishes, _, _, errors) = reprint_selected_kots(&store, &owner, &req).unwrap();
+            assert_eq!(dishes, 1, "{errors:?}");
+            let jobs = crate::print_share::take_captured();
+            let paper = jobs
+                .iter()
+                .map(|j| crate::print_share::strip_kot_style_marks(&j.text))
+                .collect::<Vec<_>>()
+                .join("\n");
+            assert!(paper.contains("Butter Naan") && !paper.contains("Paneer Tikka"), "{paper}");
+        });
+        drop(store);
+        let _ = std::fs::remove_file(path);
+    }
+
     #[test]
     fn sent_kots_print_one_paper_per_station_without_prices() {
         let path = std::env::temp_dir().join(format!("khaynjo-kotprint-{}.sqlite3", new_id()));

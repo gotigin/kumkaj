@@ -1368,3 +1368,22 @@ recent_changes	Fanovana farany
 lane_declared_label	Faktioran-ketra
 lane_owner_label	Faktiora amin'ny vola
 money_lane_bill	Paositra: {lane}
+sel_copy	Adikao
+sel_select_all	Fidio daholo
+sel_copied	Voadika
+items_tmpl_khaynjo	Modelin'ny entana Khaynjo
+items_tmpl_named	Modely {name}
+app_tmpl_named	Modelin'ny app {name}
+private_code_ph	Kaody 12 isa
+stamp_on	Tombo-kase: ao amin'ny rakitra
+pay_qr_on	Fandoavam-bola QR: ao amin'ny rakitra
+pay_qr_off	Fandoavam-bola QR: tsy misy
+items_tmpl_heading	Modely entana
+items_tmpl_help	Sakafo, sokajy ary sary ho an'ny menu-nao. Mijanona toy ny teo ny fikirakirana fivarotana sy ny mpiasa.
+public_tmpl_help	Menu fanombohana azon'ny rehetra alaina. Mila internet indray mandeha.
+private_tmpl_help	Menu mpanjifa voahidy amin'ny kaody 12 isa avy amin'ny mpifandray Khaynjo anao.
+printers_screen_tip	Ny Mitady dia mampiseho ireo mpanonta azon'ity fitaovana ity ampiasaina ary mitahiry azy ireo ho an'ity fivarotana ity. Mpanonta faktiora: Endrika faktiora sy KOT → Faktiora. Lakozia: Lakozia → Toeram-piasan'ny lakozia.
+printers_found_none	Tsy nahitana mpanonta.
+kot_copy_from	Adikao avy amin'ny
+kot_copy_from_help	Mandika ny haben'ny, ny hateviny ary ny filaharan'ny andalana tsirairay avy amin'io karazana io ho amin'ity. Mitazona ny sora-baventy, ny tovona entana ary ny tsipika fanafoanana azy ity karazana ity. Tehirizo ny endrika KOT mba hitazomana azy.
+nav_loading	Mampiditra…

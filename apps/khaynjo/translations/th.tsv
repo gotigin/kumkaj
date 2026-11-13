@@ -1368,3 +1368,22 @@ recent_changes	การเปลี่ยนแปลงล่าสุด
 lane_declared_label	ใบกำกับภาษี
 lane_owner_label	เมโมเงินสด
 money_lane_bill	ใบแจ้งหนี้: {lane}
+sel_copy	คัดลอก
+sel_select_all	เลือกทั้งหมด
+sel_copied	คัดลอกแล้ว
+items_tmpl_khaynjo	เทมเพลตรายการ Khaynjo
+items_tmpl_named	เทมเพลต {name}
+app_tmpl_named	เทมเพลตแอป {name}
+private_code_ph	รหัส 12 หลัก
+stamp_on	ตรา: มีไฟล์
+pay_qr_on	QR ชำระ: มีไฟล์
+pay_qr_off	QR ชำระ: ไม่มี
+items_tmpl_heading	เทมเพลตรายการ
+items_tmpl_help	อาหาร หมวดหมู่ และรูปภาพสำหรับเมนูของคุณ การตั้งค่าร้านและพนักงานยังคงเหมือนเดิม
+public_tmpl_help	เมนูเริ่มต้นที่ใครก็ดาวน์โหลดได้ ต้องใช้อินเทอร์เน็ตครั้งเดียว
+private_tmpl_help	เมนูลูกค้าที่ล็อกด้วยรหัส 12 หลักจากผู้ติดต่อ Khaynjo ของคุณ
+printers_screen_tip	ค้นหาจะแสดงเครื่องพิมพ์ที่อุปกรณ์นี้ใช้ได้และบันทึกไว้สำหรับร้านนี้ เครื่องพิมพ์บิล: รูปแบบบิลและ KOT → บิล ครัว: ครัว → สถานีครัว
+printers_found_none	ไม่พบเครื่องพิมพ์
+kot_copy_from	คัดลอกจาก
+kot_copy_from_help	คัดลอกขนาด ความหนา และการจัดแนวของทุกบรรทัดจากประเภทนั้นมาที่ประเภทนี้ ประเภทนี้ยังคงใช้แบนเนอร์ คำนำหน้ารายการ และขีดฆ่าของตัวเอง บันทึกรูปแบบ KOT เพื่อเก็บไว้
+nav_loading	กำลังโหลด…

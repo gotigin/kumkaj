@@ -1368,3 +1368,22 @@ recent_changes	তাবুকনি সুলাইজাকমা
 lane_declared_label	তাক্ষ নি রাং
 lane_owner_label	রাং নি মেম
 money_lane_bill	বিল: {lane}
+sel_copy	চপয় খাইদি
+sel_select_all	জত বাছায় খাইদি
+sel_copied	চপয় খাইখা
+items_tmpl_khaynjo	Khaynjo জিনিস টেম্পলেট
+items_tmpl_named	{name} টেম্পলেট
+app_tmpl_named	{name} এপ টেম্পলেট
+private_code_ph	12 অংকনি কোড
+stamp_on	সতামপ: ফিলে-ও
+pay_qr_on	রাং রুমানি QR: ফিলে-ও
+pay_qr_off	রাং রুমানি QR: কুরুই
+items_tmpl_heading	Item template rog
+items_tmpl_help	Nini menu bai chakhwi, category tei photo rog. Dokan ni setting tei staff rog jesa tongo osa tongnai.
+public_tmpl_help	Sabo bo download khlainai pha phaiwi menu rog. Kaisa internet nangnai.
+private_tmpl_help	Nini Khaynjo contact ni bisingo mani 12 digit code bai rakha khlaiwi customer menu rog.
+printers_screen_tip	Nai ni bai hono device ni haikhlai mani printer rog na tongnai tei hono dokan ni bagwi tongnai. Bill printer rog: Bill tei KOT format → Bill. Ochaksa: Ochaksa → Ochaksa station rog.
+printers_found_none	Printer kaisa mani mano.
+kot_copy_from	Oro thani copy khlai
+kot_copy_from_help	Ade bwsa line bwsa size, thickness bai alignment oro copy khlaio. Ao bwsa bini banner, item prefix bai strike rwkhaio. Rwkhaini bagwi KOT format save khlai.
+nav_loading	Load khlaiwi tongo…

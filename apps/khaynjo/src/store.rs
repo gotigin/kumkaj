@@ -1509,6 +1509,9 @@ impl Store {
 
     /// Apply a downloaded catalogue pack: menu import + optional
     /// `shop_defaults.json` from that pack (no prestored client data in the app).
+    /// `apply_shop_defaults: false` imports the menu items only (Menu screen →
+    /// Private template): the pack's owner, staff, pay methods and hidden
+    /// sections stay out even when its `shop_defaults.json` is present.
     pub fn apply_app_template_pack(
         &self,
         pack_dir: &std::path::Path,
@@ -1519,7 +1522,7 @@ impl Store {
             .ok_or_else(|| format!("No template.json in {}", pack_dir.display()))?;
         let summary = self.import_menu_template_in(&tmpl, Some(pack_dir))?;
         let defaults_path = pack_dir.join("shop_defaults.json");
-        if apply_shop_defaults || defaults_path.is_file() {
+        if apply_shop_defaults {
             if !defaults_path.is_file() {
                 return Err(
                     "Pack declares shop defaults but shop_defaults.json is missing".into(),
@@ -2997,11 +3000,43 @@ impl Store {
         }
     }
 
+    /// True when another row of `table` in this branch already has `name`
+    /// (any case; `except_id` is the row being renamed). Ids stay the key
+    /// everywhere, but kitchen stations and dining tables are told apart **by
+    /// name** — on KOT papers, the Floor, bills and pickers — so two with one
+    /// name would confuse people (owner, 2026-11-13).
+    fn name_taken(&self, table: &str, name: &str, except_id: &str) -> Result<bool, String> {
+        debug_assert!(matches!(table, "kitchen_stations" | "tables_dining"));
+        // Exact (case-sensitive) after trimming: "Tandoor" and "tandoor" are
+        // two names the owner chose on purpose; "Tandoor " is the same one.
+        let wanted = name.trim();
+        let branch_id = self.active_branch_id()?;
+        let mut stmt = self
+            .conn
+            .prepare(&format!("SELECT id, name FROM {table} WHERE branch_id = ?1"))
+            .map_err(|e| e.to_string())?;
+        let rows = stmt
+            .query_map(params![branch_id], |r| {
+                Ok((r.get::<_, String>(0)?, r.get::<_, String>(1)?))
+            })
+            .map_err(|e| e.to_string())?;
+        for row in rows {
+            let (id, n) = row.map_err(|e| e.to_string())?;
+            if id != except_id && n.trim() == wanted {
+                return Ok(true);
+            }
+        }
+        Ok(false)
+    }
+
     pub fn add_table(&self, name: &str) -> Result<DiningTable, String> {
         self.assert_server_writer("Add tables")?;
         let name = name.trim();
         if name.is_empty() {
             return Err("Table name required".into());
+        }
+        if self.name_taken("tables_dining", name, "")? {
+            return Err(format!("A table named {name} already exists"));
         }
         let id = new_id();
         self.conn
@@ -3039,6 +3074,9 @@ impl Store {
         let name = name.trim();
         if name.is_empty() {
             return Err("Table name required".into());
+        }
+        if self.name_taken("tables_dining", name, table_id)? {
+            return Err(format!("A table named {name} already exists"));
         }
         let n = self
             .conn
@@ -3577,14 +3615,15 @@ impl Store {
     /// most kitchens still run).
     /// Legacy whole-floor columns (this device only). Prefer
     /// [`floor_columns_for_area`] — kept as the default when an area has
-    /// no entry yet. Unset → **4** (Dine In / Parcel and any new area).
-    /// Explicit `0` still means fit the screen.
+    /// no entry yet. Unset → **0 = fit the screen** (redesign 2026-11-13: a
+    /// fixed 4 cropped tiles off every phone, tablet and 1280 px laptop with
+    /// the rail). A number the owner chose is kept.
     pub fn floor_columns(&self) -> usize {
         self.meta_get("ui_floor_columns")
             .ok()
             .flatten()
             .and_then(|v| v.trim().parse().ok())
-            .unwrap_or(4)
+            .unwrap_or(0)
     }
 
     pub fn set_floor_columns(&self, cols: usize) -> Result<(), String> {
@@ -7037,6 +7076,12 @@ impl Store {
             return Err("Station name required".into());
         }
         let branch_id = self.active_branch_id()?;
+        // One name, one kitchen: two "Tandoor"s cannot be told apart on KOTs,
+        // printers or the Kitchen tabs. Case-insensitive, same branch.
+        let taken = self.name_taken("kitchen_stations", name, "")?;
+        if taken {
+            return Err(format!("A kitchen station named {name} already exists"));
+        }
         let next: i64 = self
             .conn
             .query_row(
@@ -14846,6 +14891,25 @@ mod tests {
     }
 
     #[test]
+    fn menu_level_pack_import_keeps_staff_and_shop_settings() {
+        let path = temp_db();
+        let store = Store::open_path(&path).unwrap();
+        let staff_before = store.list_staff().unwrap().len();
+        let pay_before = store.pay_methods_csv().unwrap();
+        let tax_chrome_before = store.show_tax_chrome().unwrap();
+        let pack = PathBuf::from(env!("CARGO_MANIFEST_DIR"))
+            .join("catalogue/private-src/rajdhani");
+        assert!(pack.join("shop_defaults.json").is_file());
+        // Menu screen → Private template: items only.
+        let summary = store.apply_app_template_pack(&pack, false).unwrap();
+        assert!(summary.items_added > 0);
+        assert_eq!(store.list_staff().unwrap().len(), staff_before);
+        assert_eq!(store.pay_methods_csv().unwrap(), pay_before);
+        assert_eq!(store.show_tax_chrome().unwrap(), tax_chrome_before);
+        let _ = std::fs::remove_file(path);
+    }
+
+    #[test]
     fn importing_a_named_client_template_sets_prices_and_aliases() {
         let path = temp_db();
         let store = Store::open_path(&path).unwrap();
@@ -16771,6 +16835,18 @@ mod tests {
         let tandoor = store.add_station("Tandoor").unwrap();
         assert!(store.add_category("  ").is_err());
         assert!(store.add_station("").is_err());
+        // The same name twice would be two kitchens nobody can tell apart.
+        // Case-sensitive: only surrounding spaces are ignored.
+        assert!(store.add_station("Tandoor").is_err());
+        assert!(store.add_station("  Tandoor ").is_err());
+        // Tables too: KOTs, bills and the Floor name them.
+        let d1 = store.add_table("D1").unwrap();
+        let d2 = store.add_table("D2").unwrap();
+        assert!(store.add_table(" D1 ").is_err());
+        assert!(store.rename_table(&d2.id, "D1").is_err());
+        store.rename_table(&d1.id, "D1").unwrap();
+        // A different case is a different name.
+        store.add_table("d1").unwrap();
 
         let mut p = test_product("Paneer tikka", 220);
         p.category_id = starters.id.clone();

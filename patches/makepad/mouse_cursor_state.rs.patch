@@ -62,7 +62,7 @@
                      from: {all: Forward {duration: 0.0}}
                      apply: {
                          draw_bg: {focus: 1.0}
-@@ -648,6 +648,14 @@
+@@ -648,6 +648,16 @@
                  } else {
                      cx.set_cursor(MouseCursor::NotAllowed);
                  }

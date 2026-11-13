@@ -1368,3 +1368,22 @@ recent_changes	שינויים אחרונים
 lane_declared_label	חשבונית מס
 lane_owner_label	תזכיר מזומן
 money_lane_bill	חשבון: {lane}
+sel_copy	העתק
+sel_select_all	בחר הכול
+sel_copied	הועתק
+items_tmpl_khaynjo	תבנית פריטים של Khaynjo
+items_tmpl_named	תבנית {name}
+app_tmpl_named	תבנית אפליקציה של {name}
+private_code_ph	קוד בן 12 ספרות
+stamp_on	חותמת: בקובץ
+pay_qr_on	QR תשלום: בקובץ
+pay_qr_off	QR תשלום: אין
+items_tmpl_heading	תבניות פריטים
+items_tmpl_help	מנות, קטגוריות ותמונות לתפריט שלך. הגדרות החנות והצוות נשארים כפי שהם.
+public_tmpl_help	תפריטי פתיחה שכל אחד יכול להוריד. נדרש אינטרנט פעם אחת.
+private_tmpl_help	תפריטי לקוח הנעולים בקוד בן 12 ספרות מאיש הקשר שלך ב-Khaynjo.
+printers_screen_tip	חיפוש מציג את המדפסות שהמכשיר הזה יכול להשתמש בהן ושומר אותן לחנות הזו. מדפסות חשבון: תבנית חשבון ו-KOT ← חשבון. מטבח: מטבח ← עמדות מטבח.
+printers_found_none	לא נמצאו מדפסות.
+kot_copy_from	העתק מ
+kot_copy_from_help	מעתיק את הגודל, העובי והיישור של כל שורה מאותו סוג לסוג הזה. הסוג הזה שומר על הבאנר, קידומת הפריט והקו החוצה שלו. שמור את תבנית ה-KOT כדי לשמור.
+nav_loading	טוען…

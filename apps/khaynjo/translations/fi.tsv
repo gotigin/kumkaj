@@ -1368,3 +1368,22 @@ recent_changes	Viimeisimmät muutokset
 lane_declared_label	Verolasku
 lane_owner_label	Käteiskuitti
 money_lane_bill	Lasku: {lane}
+sel_copy	Kopioi
+sel_select_all	Valitse kaikki
+sel_copied	Kopioitu
+items_tmpl_khaynjo	Khaynjo-tuotepohja
+items_tmpl_named	{name}-pohja
+app_tmpl_named	{name}-sovelluspohja
+private_code_ph	12-numeroinen koodi
+stamp_on	Leima: tiedostossa
+pay_qr_on	Maksu-QR: tiedostossa
+pay_qr_off	Maksu-QR: ei ole
+items_tmpl_heading	Tuotemallit
+items_tmpl_help	Ruoat, kategoriat ja kuvat ruokalistallesi. Myymälän asetukset ja henkilökunta pysyvät ennallaan.
+public_tmpl_help	Aloitusruokalistat, jotka kuka tahansa voi ladata. Internet tarvitaan kerran.
+private_tmpl_help	Asiakasruokalistat, jotka avataan Khaynjo-yhteyshenkilösi 12-numeroisella koodilla.
+printers_screen_tip	Etsi näyttää tulostimet, joita tämä laite voi käyttää, ja tallentaa ne tälle myymälälle. Laskutulostimet: Laskun ja KOT:n muoto → Lasku. Keittiö: Keittiö → Keittiöasemat.
+printers_found_none	Tulostimia ei löytynyt.
+kot_copy_from	Kopioi lajista
+kot_copy_from_help	Kopioi kunkin rivin koon, paksuuden ja tasauksen siitä lajista tähän. Tämä laji säilyttää oman bannerinsa, tuote-etuliitteensä ja yliviivauksensa. Tallenna KOT-muoto, jotta muutos säilyy.
+nav_loading	Ladataan…

@@ -1,0 +1,53 @@
+--- a/widgets/src/keyboard_view.rs
++++ b/widgets/src/keyboard_view.rs
+@@ -209,21 +209,32 @@
+         }
+         if let Event::VirtualKeyboard(vk) = event {
+             match vk {
++                // Android always follows with DidShow and a post-draw reconcile;
++                // animating on WillShow too fights that snap and flickers.
++                // Other platforms keep the WillShow ease (field switch may snap).
++                #[cfg(target_os = "android")]
++                VirtualKeyboardEvent::WillShow { height, .. } => {
++                    self.keyboard_height = *height;
++                    self.redraw(cx);
++                }
++                #[cfg(not(target_os = "android"))]
+                 VirtualKeyboardEvent::WillShow {
+                     time,
+                     height,
+                     ease,
+                     duration,
+                 } => {
+-                    // "Animate to a keyboard of `height` pts." Used for both
+-                    // initial show and any mid-flight height change: keyboard
+-                    // language switch, predictive bar toggle, or rotation while
+-                    // the keyboard is up. The platform layer can re-fire
+-                    // WillShow with the new height instead of needing a separate
+-                    // event variant.
+                     self.keyboard_height = *height;
+-                    let target = self.compute_target_shift(*height, cx);
+-                    self.animate_to_shift(cx, *time, target, *duration, *ease);
++                    if matches!(self.anim_state, AnimState::Open)
++                        && self.keyboard_shift > KEYBOARD_SHIFT_EPSILON
++                        && cx.get_ime_area_rect().size.y > 0.0
++                    {
++                        let target = self.compute_target_shift(*height, cx);
++                        self.set_keyboard_shift(cx, target);
++                    } else {
++                        let target = self.compute_target_shift(*height, cx);
++                        self.animate_to_shift(cx, *time, target, *duration, *ease);
++                    }
+                 }
+                 VirtualKeyboardEvent::WillHide { .. } => {
+                     self.snap_closed(cx);
+@@ -329,7 +340,8 @@
+                     // Once the height has settled, a later target change is a
+                     // one-off correction (the focused field's measured rect
+                     // settling a beat later); ease that so it is not jarring.
+-                    let duration = if height_changed {
++                    let delta = (new_target - self.keyboard_shift).abs();
++                    let duration = if height_changed || delta < 24.0 {
+                         0.0
+                     } else {
+                         KEYBOARD_RECONCILE_DURATION

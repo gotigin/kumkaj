@@ -1368,3 +1368,22 @@ recent_changes	Seneste ændringer
 lane_declared_label	Skattefaktura
 lane_owner_label	Kontantnota
 money_lane_bill	Regning: {lane}
+sel_copy	Kopiér
+sel_select_all	Vælg alt
+sel_copied	Kopieret
+items_tmpl_khaynjo	Khaynjo-vareskabelon
+items_tmpl_named	{name}-skabelon
+app_tmpl_named	{name}-appskabelon
+private_code_ph	12-cifret kode
+stamp_on	Stempel: på fil
+pay_qr_on	Betalings-QR: på fil
+pay_qr_off	Betalings-QR: ingen
+items_tmpl_heading	Vareskabeloner
+items_tmpl_help	Retter, kategorier og billeder til dit menukort. Butiksindstillinger og personale forbliver som de er.
+public_tmpl_help	Startmenuer som alle kan hente. Kræver internet én gang.
+private_tmpl_help	Kundemenuer låst med en 12-cifret kode fra din Khaynjo-kontakt.
+printers_screen_tip	Søg viser de printere, denne enhed kan bruge, og gemmer dem for butikken. Regningsprintere: Regnings- og KOT-format → Regning. Køkken: Køkken → Køkkenstationer.
+printers_found_none	Ingen printere fundet.
+kot_copy_from	Kopiér fra
+kot_copy_from_help	Kopierer størrelse, tykkelse og justering for hver linje fra den type til denne. Denne type beholder sit eget banner, varepræfiks og gennemstregning. Gem KOT-format for at beholde det.
+nav_loading	Indlæser…

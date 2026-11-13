@@ -1368,3 +1368,22 @@ recent_changes	Bidliet riċenti
 lane_declared_label	Fattura tat-taxxa
 lane_owner_label	Memo ta' flus
 money_lane_bill	Kont: {lane}
+sel_copy	Ikkopja
+sel_select_all	Agħżel kollox
+sel_copied	Ikkupjat
+items_tmpl_khaynjo	Mudell ta' oġġetti Khaynjo
+items_tmpl_named	Mudell {name}
+app_tmpl_named	Mudell tal-app {name}
+private_code_ph	Kodiċi ta' 12-il ċifra
+stamp_on	Stamp: fil-fajl
+pay_qr_on	QR tal-Pagament: fuq il-fajl
+pay_qr_off	QR tal-Ħlas: xejn
+items_tmpl_heading	Mudelli tal-oġġetti
+items_tmpl_help	Platti, kategoriji u ritratti għall-menu tiegħek. Is-settings tal-ħanut u l-persunal jibqgħu kif inhuma.
+public_tmpl_help	Menus tal-bidu li kulħadd jista' jniżżel. Jeħtieġ l-internet darba.
+private_tmpl_help	Menus tal-klijenti msakkra b'kodiċi ta' 12-il ċifra mill-kuntatt Khaynjo tiegħek.
+printers_screen_tip	Fittex juri l-printers li jista' juża dan it-tagħmir u jsalvahom għal dan il-ħanut. Printers tal-kont: Format tal-kont u KOT → Kont. Kċina: Kċina → Stazzjonijiet tal-kċina.
+printers_found_none	Ma nstabu l-ebda printers.
+kot_copy_from	Ikkopja minn
+kot_copy_from_help	Jikkopja d-daqs, il-ħxuna u l-allinjament ta' kull linja minn dak it-tip għal dan. Dan it-tip iżomm il-banner, il-prefiss tal-oġġett u l-ingassar tiegħu. Issejvja l-format KOT biex iżżommu.
+nav_loading	Qed jitgħabba…

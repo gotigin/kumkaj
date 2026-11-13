@@ -514,6 +514,14 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
 
     fn show_screen(&mut self, cx: &mut Cx, screen: Screen) {
         let _span = stall_span("show_screen");
+        if sel_screen_changed(screen) {
+            self.clear_page_selection(cx);
+            // A field on the screen we left keeps key focus while hidden:
+            // `text_field_has_focus` then holds sync_chrome in its typing
+            // early-return, so the header kept "Locked" after a PIN unlock
+            // (the hidden Lock PIN field) until some other screen repainted.
+            cx.set_key_focus(Area::Empty);
+        }
         let pairs = [
             (ids!(device_setup_screen), screen == Screen::DeviceSetup),
             (ids!(lock_screen), screen == Screen::Lock),
@@ -575,6 +583,8 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
     fn apply_shell_layout(&mut self, cx: &mut Cx, unlocked: bool) {
         const DESIGN_DESKTOP_W: f64 = store::DEFAULT_DESKTOP_WINDOW_W;
         const DIVIDER_W: f64 = 6.0;
+        // Order | Counter stay broad (owner, 2026-11-13: a 340 | 380 trial made
+        // both panes cramped — the wide panes + sideways pan are the design).
         const DESK_LEFT_MIN: f64 = 600.0;
         const DESK_RIGHT_MIN: f64 = 520.0;
         const DESK_GAP: f64 = 16.0;
@@ -1043,13 +1053,13 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
                 })
                 .unwrap_or((false, false));
             (
-                locale::t(&lang, if stamp { "stamp_set" } else { "stamp_none" }),
+                locale::t(&lang, if stamp { "stamp_on" } else { "stamp_none" }),
                 locale::t(
                     &lang,
                     if qr {
-                        "payment_qr_set"
+                        "pay_qr_on"
                     } else {
-                        "payment_qr_none"
+                        "pay_qr_off"
                     },
                 ),
             )
@@ -1251,6 +1261,7 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         }
         // Every screen change (peer tab, drill-down, Back, Forward) closes an
         // open list: the next screen never inherits one (popup.rs).
+        st.sel_menu = None;
         st.suggest_open = None;
         st.dish_picker_open = false;
         st.category_picker_open = false;
@@ -1275,7 +1286,41 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
 
     /// `is_peer`: chrome tab jump (clear in-screen layers). Both paths record
     /// visit history when `screen_keeps_history` allows.
+    ///
+    /// A switch to a screen that took ≥ 1 s last time (slow device, big
+    /// shop) first paints the loading screen and runs on the next frame, so
+    /// the tap is answered at once (owner, 2026-11-13).
     fn go_with(&mut self, cx: &mut Cx, screen: Screen, is_peer: bool) {
+        let elsewhere = app_state().lock().unwrap().screen != screen;
+        if elsewhere && nav_was_slow(screen) {
+            self.ui
+                .widget(cx, ids!(nav_loading_label))
+                .set_text(cx, &app_t("nav_loading"));
+            self.ui.view(cx, ids!(nav_loading)).set_visible(cx, true);
+            self.ui.redraw(cx);
+            *nav_veil_pending().lock().unwrap() = Some((cx.new_next_frame(), screen, is_peer));
+            return;
+        }
+        self.go_with_now(cx, screen, is_peer);
+    }
+
+    /// The loading screen's frame has painted: switch now, then take it down.
+    fn finish_nav_veil(&mut self, cx: &mut Cx, e: &NextFrameEvent) {
+        let due = {
+            let mut pending = nav_veil_pending().lock().unwrap();
+            match pending.as_ref() {
+                Some((frame, _, _)) if e.set.contains(frame) => pending.take(),
+                _ => None,
+            }
+        };
+        if let Some((_, screen, is_peer)) = due {
+            self.go_with_now(cx, screen, is_peer);
+            self.ui.view(cx, ids!(nav_loading)).set_visible(cx, false);
+            self.ui.redraw(cx);
+        }
+    }
+
+    fn go_with_now(&mut self, cx: &mut Cx, screen: Screen, is_peer: bool) {
         {
             let mut st = app_state().lock().unwrap();
             // Pick-table mode is set only by `pick_table_for_order` after go.
@@ -1375,6 +1420,9 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             if is_peer { "go_peer" } else { "go" },
             format!("{screen:?}"),
         );
+        // Time this switch up to its first draw (`note_nav_draw`).
+        let landed = app_state().lock().unwrap().screen;
+        *nav_measure().lock().unwrap() = Some((landed, Instant::now()));
         self.sync_chrome(cx);
     }
 
@@ -1550,8 +1598,9 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         if panel == Some("bill") {
             // Fresh open lands on Bill tab (KOT is one tap away).
             app_state().lock().unwrap().bill_kot_tab_kot = false;
+            // Ends with sync_bill_kot_tabs — a second call here only redrew
+            // the same previews again.
             self.fill_bill_format_fields(cx);
-            self.sync_bill_kot_tabs(cx);
         }
         if panel == Some("printers") {
             self.paint_printers_panel(cx);
@@ -1878,14 +1927,14 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
                 return;
             };
             let stamp_hint = if store.print_stamp_path().ok().flatten().is_some() {
-                locale::t(&lang, "stamp_set")
+                locale::t(&lang, "stamp_on")
             } else {
                 locale::t(&lang, "stamp_none")
             };
             let pay_qr_hint = if store.payment_qr_path().ok().flatten().is_some() {
-                locale::t(&lang, "payment_qr_set")
+                locale::t(&lang, "pay_qr_on")
             } else {
-                locale::t(&lang, "payment_qr_none")
+                locale::t(&lang, "pay_qr_off")
             };
             (
                 store.bill_header_lines().unwrap_or_default()
@@ -1965,10 +2014,12 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
         self.ui
             .view(cx, ids!(kitchen_panel_stations))
             .set_visible(cx, stations);
-        // Stations tab owns the body — keep it open (accordion not needed).
-        if stations {
-            self.ui.view(cx, ids!(stations_body)).set_visible(cx, true);
-        }
+        // The accordion state is the one truth for the stations body: the tab
+        // used to force the body visible while the state said closed, so the
+        // first full repaint (first tap into its form) collapsed it and the
+        // page jumped to the top. Opening the tab opens the section once
+        // (match_event); after that its header toggles it like any accordion.
+        self.sync_floor_sections(cx);
     }
 
     /// Settings → Bill & KOT format: Bill vs KOT tab under the section header.
@@ -2808,15 +2859,12 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             (mm, base.landscape, base)
         };
         let metrics = print_share::metrics_at_content_mm(&base, mm);
-        if let Ok((png, pw, ph)) = print_share::slip_page_png(&preview, &metrics, landscape) {
-            let type_px = print_share::preview_type_px(style.size_em as f32, metrics.page_dots());
-            if let Some(mut slip) = self
-                .ui
-                .widget(cx, ids!(bill_format_preview))
-                .borrow_mut::<KotSlipPreview>()
-            {
-                slip.set_page(cx, &png, pw, ph, type_px);
-            }
+        if let Some(mut slip) = self
+            .ui
+            .widget(cx, ids!(bill_format_preview))
+            .borrow_mut::<KotSlipPreview>()
+        {
+            slip.show_slip(cx, &preview, &metrics, landscape, style.size_em as f32);
         }
         self.ui.view(cx, ids!(bill_format_preview_card)).redraw(cx);
     }
@@ -3148,6 +3196,24 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             ids!(kot_kind_cancelled_on),
             edit_kind == print_share::KotSlipKind::Cancelled,
         );
+        // Copy from: the other three kinds (this kind hides its own button).
+        self.ui
+            .widget(cx, ids!(h_kot_copy_from))
+            .set_text(cx, &plain_display_text(&s("kot_copy_from")));
+        self.ui
+            .widget(cx, ids!(kot_copy_from_help))
+            .as_info_help()
+            .set_tip(&plain_display_text(&s("kot_copy_from_help")));
+        for (id, kind, label) in [
+            (ids!(kot_copy_original), print_share::KotSlipKind::Original, "kot_kind_original"),
+            (ids!(kot_copy_duplicate), print_share::KotSlipKind::Duplicate, "kot_kind_duplicate"),
+            (ids!(kot_copy_modified), print_share::KotSlipKind::Modified, "kot_kind_modified"),
+            (ids!(kot_copy_cancelled), print_share::KotSlipKind::Cancelled, "kot_kind_cancelled"),
+        ] {
+            let btn = self.ui.button(cx, id);
+            btn.set_text(cx, &s(label));
+            btn.set_visible(cx, kind != edit_kind);
+        }
         let kind_chrome = draft.kind_styles.get(edit_kind);
         self.ui
             .widget(cx, ids!(h_kot_banner))
@@ -3390,16 +3456,12 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             (mm, base.landscape, base)
         };
         let metrics = print_share::metrics_at_content_mm(&base, mm);
-        if let Ok((png, pw, ph)) = print_share::slip_page_png(&preview, &metrics, landscape) {
-            let type_px =
-                print_share::preview_type_px(field_style.size_em as f32, metrics.page_dots());
-            if let Some(mut slip) = self
-                .ui
-                .widget(cx, ids!(kot_format_preview))
-                .borrow_mut::<KotSlipPreview>()
-            {
-                slip.set_page(cx, &png, pw, ph, type_px);
-            }
+        if let Some(mut slip) = self
+            .ui
+            .widget(cx, ids!(kot_format_preview))
+            .borrow_mut::<KotSlipPreview>()
+        {
+            slip.show_slip(cx, &preview, &metrics, landscape, field_style.size_em as f32);
         }
         self.ui
             .view(cx, ids!(kot_format_preview_card))
@@ -3549,3 +3611,62 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
     }
 }
 
+/// A screen switch that took at least this long (tap → first draw) shows the
+/// loading screen first next time.
+const NAV_VEIL_MS: f64 = 1000.0;
+
+/// Last measured switch cost per screen (ms).
+fn nav_costs() -> &'static Mutex<Vec<(Screen, f64)>> {
+    static COSTS: OnceLock<Mutex<Vec<(Screen, f64)>>> = OnceLock::new();
+    COSTS.get_or_init(|| Mutex::new(Vec::new()))
+}
+
+/// The switch being timed: target screen and when it started.
+fn nav_measure() -> &'static Mutex<Option<(Screen, Instant)>> {
+    static M: Mutex<Option<(Screen, Instant)>> = Mutex::new(None);
+    &M
+}
+
+/// A deferred switch waiting for the loading screen's frame.
+fn nav_veil_pending() -> &'static Mutex<Option<(NextFrame, Screen, bool)>> {
+    static P: Mutex<Option<(NextFrame, Screen, bool)>> = Mutex::new(None);
+    &P
+}
+
+fn nav_was_slow(screen: Screen) -> bool {
+    // `KUMKAJ_NAV_VEIL_MS` lowers the bar to test the loading screen on a
+    // fast machine.
+    static LIMIT: OnceLock<f64> = OnceLock::new();
+    let limit = *LIMIT.get_or_init(|| {
+        std::env::var("KUMKAJ_NAV_VEIL_MS")
+            .ok()
+            .and_then(|v| v.parse().ok())
+            .unwrap_or(NAV_VEIL_MS)
+    });
+    let last = nav_costs()
+        .lock()
+        .unwrap()
+        .iter()
+        .find(|(s, _)| *s == screen)
+        .map(|(_, ms)| *ms);
+    match last {
+        Some(ms) if ms >= limit => {
+            makepad_widgets::log!("Kumkaj nav: loading screen for {screen:?} (last switch {ms:.0} ms)");
+            true
+        }
+        _ => false,
+    }
+}
+
+/// After a draw: if a screen switch was being timed, record what it cost.
+fn note_nav_draw() {
+    let Some((screen, started)) = nav_measure().lock().unwrap().take() else {
+        return;
+    };
+    let ms = started.elapsed().as_secs_f64() * 1000.0;
+    let mut costs = nav_costs().lock().unwrap();
+    match costs.iter_mut().find(|(s, _)| *s == screen) {
+        Some(entry) => entry.1 = ms,
+        None => costs.push((screen, ms)),
+    }
+}

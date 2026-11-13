@@ -1368,3 +1368,22 @@ recent_changes	সাম্প্রতিক পরিবর্তন
 lane_declared_label	কর চালান
 lane_owner_label	ক্যাশ মেমো
 money_lane_bill	বিল: {lane}
+sel_copy	কপি করুন
+sel_select_all	সব নির্বাচন করুন
+sel_copied	কপি হয়েছে
+items_tmpl_khaynjo	Khaynjo আইটেম টেমপ্লেট
+items_tmpl_named	{name} টেমপ্লেট
+app_tmpl_named	{name} অ্যাপ টেমপ্লেট
+private_code_ph	১২-সংখ্যার কোড
+stamp_on	স্ট্যাম্প: ফাইলে
+pay_qr_on	পেমেন্ট QR: ফাইলে
+pay_qr_off	পেমেন্ট QR: নেই
+items_tmpl_heading	আইটেম টেমপ্লেট
+items_tmpl_help	আপনার মেনুর জন্য খাবার, বিভাগ ও ছবি। দোকানের সেটিংস ও কর্মীরা যেমন আছে তেমনই থাকে।
+public_tmpl_help	যে কেউ ডাউনলোড করতে পারে এমন শুরুর মেনু। একবার ইন্টারনেট লাগবে।
+private_tmpl_help	আপনার Khaynjo যোগাযোগের দেওয়া ১২-সংখ্যার কোড দিয়ে সুরক্ষিত গ্রাহক মেনু।
+printers_screen_tip	খুঁজুন এই ডিভাইস যে প্রিন্টারগুলো ব্যবহার করতে পারে তা দেখায় এবং এই দোকানের জন্য সেভ করে। বিল প্রিন্টার: বিল ও KOT ফরম্যাট → বিল। রান্নাঘর: রান্নাঘর → রান্নাঘর স্টেশন।
+printers_found_none	কোনো প্রিন্টার পাওয়া যায়নি।
+kot_copy_from	এখান থেকে কপি করুন
+kot_copy_from_help	সেই ধরনের প্রতিটি লাইনের আকার, পুরুত্ব ও সারিবিন্যাস এতে কপি করে। এই ধরন নিজের ব্যানার, আইটেম উপসর্গ ও কাটা দাগ রাখে। রাখতে KOT ফরম্যাট সংরক্ষণ করুন।
+nav_loading	লোড হচ্ছে…

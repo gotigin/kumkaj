@@ -1368,3 +1368,22 @@ recent_changes	हाल के बदलाव
 lane_declared_label	कर चालान
 lane_owner_label	कैश मेमो
 money_lane_bill	बिल: {lane}
+sel_copy	कॉपी करीं
+sel_select_all	सभ चुनीं
+sel_copied	कॉपी हो गइल
+items_tmpl_khaynjo	Khaynjo आइटम टेम्पलेट
+items_tmpl_named	{name} टेम्पलेट
+app_tmpl_named	{name} ऐप टेम्पलेट
+private_code_ph	12 अंक के कोड
+stamp_on	मोहर: फाइल में बा
+pay_qr_on	भुगतान QR: फाइल में बा
+pay_qr_off	भुगतान QR: ना
+items_tmpl_heading	आइटम टेम्पलेट
+items_tmpl_help	रउआ मेनू खातिर पकवान, श्रेणी आ फोटो। दोकान के सेटिंग आ स्टाफ जइसन बा ओइसने रहेला।
+public_tmpl_help	सुरुआती मेनू जेकरा के केहू डाउनलोड कर सकेला। एक बेर इंटरनेट चाहीं।
+private_tmpl_help	रउआ Khaynjo संपर्क से मिलल 12 अंक के कोड से खुले वाला ग्राहक मेनू।
+printers_screen_tip	खोजीं एह डिवाइस के इस्तेमाल लायक प्रिंटर देखावेला आ एह दोकान खातिर सहेजेला। बिल प्रिंटर: बिल आ KOT फॉर्मेट → बिल। रसोई: रसोई → रसोई स्टेशन।
+printers_found_none	कवनो प्रिंटर ना मिलल।
+kot_copy_from	एहसे कॉपी करीं
+kot_copy_from_help	ओह किसिम के हर लाइन के आकार, मोटाई आ संरेखण एह में कॉपी करेला। ई किसिम आपन बैनर, आइटम उपसर्ग आ काट-रेखा राखेला। राखे खातिर KOT फॉर्मेट सहेजीं।
+nav_loading	लोड हो रहल बा…

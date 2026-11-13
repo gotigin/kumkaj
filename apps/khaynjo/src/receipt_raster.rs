@@ -626,6 +626,36 @@ fn png_pixel_scale(page: usize) -> u32 {
     scale.max(1)
 }
 
+/// The same pixels as [`png_lines`], one grey byte each (0 ink, 255 paper),
+/// for the on-screen preview. A PNG encode then decode of a 3× page cost the
+/// UI thread ~1 s per Bill & KOT open in dev builds (2026-11-13).
+pub fn gray_lines(lines: &[StyledLine], m: &RasterMetrics) -> (Vec<u8>, u32, u32) {
+    let (rows, height) = draw_lines(lines, m);
+    gray_from_dots(&rows, height, m.page_dots())
+}
+
+fn gray_from_dots(rows: &[u8], height: usize, page: usize) -> (Vec<u8>, u32, u32) {
+    let scale = png_pixel_scale(page);
+    let w = (page as u32).saturating_mul(scale);
+    let h = (height as u32).saturating_mul(scale).max(scale);
+    let (wu, s) = (w as usize, scale as usize);
+    let row_bytes = page / 8;
+    let mut px = vec![255u8; wu * h as usize];
+    for y in 0..height {
+        let top = y * s * wu;
+        for x in 0..page {
+            if rows[y * row_bytes + x / 8] & (0x80 >> (x % 8)) != 0 {
+                px[top + x * s..top + x * s + s].fill(0);
+            }
+        }
+        // The other rows of this dot row are copies of the first.
+        for dy in 1..s {
+            px.copy_within(top..top + wu, top + dy * wu);
+        }
+    }
+    (px, w, h)
+}
+
 fn png_from_dots(rows: &[u8], height: usize, page: usize) -> Result<Vec<u8>, String> {
     let scale = png_pixel_scale(page);
     let w = (page as u32).saturating_mul(scale);

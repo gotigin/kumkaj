@@ -1,5 +1,10 @@
 impl MatchEvent for App {
     fn handle_startup(&mut self, cx: &mut Cx) {
+        // Pages and the Order desk pan with a mouse press-drag (as before the
+        // selection model): a drag on copy pans; mouse selection starts on a
+        // 0.5 s still hold, double / triple click, Ctrl+A or right-click.
+        makepad_widgets::text_flow::MOUSE_HOLD_TO_SELECT
+            .store(true, std::sync::atomic::Ordering::Relaxed);
         app_state().lock().unwrap().live_timer = cx.start_interval(LIVE_REFRESH_SECS);
         self.sync_chrome(cx);
     }
@@ -118,9 +123,11 @@ impl MatchEvent for App {
 
     fn handle_actions(&mut self, cx: &mut Cx, actions: &Actions) {
         let _span = stall_span("handle_actions");
+        self.handle_thumb_decodes(cx, actions);
         self.refresh_form_tab_anchor(cx);
         let form_returned_advanced = self.handle_form_field_returned(cx, actions);
         self.tab_chevron_clicks(cx, actions);
+        self.handle_selection_actions(cx, actions);
         for action in actions.iter() {
             if let Some(fd) = action.downcast_ref::<FileDialogAction>() {
                 match fd {
@@ -2676,17 +2683,25 @@ impl MatchEvent for App {
                 self.sync_chrome(cx);
             }
         }
-        if self.ui.button(cx, ids!(template_import)).clicked(actions) {
+        // Menu → Item templates: accordions + the public chip (onboarding pattern).
+        for (hdr, key) in [
+            (ids!(menu_public_tmpl_hdr), "menu_public_tmpl"),
+            (ids!(menu_public_tmpl_hdr_ext), "menu_public_tmpl"),
+            (ids!(menu_private_tmpl_hdr), "menu_private_tmpl"),
+            (ids!(menu_private_tmpl_hdr_ext), "menu_private_tmpl"),
+        ] {
+            if self.ui.button(cx, hdr).clicked(actions) {
+                self.toggle_menu_tmpl_section(cx, key);
+            }
+        }
+        if self.ui.button(cx, ids!(template_chip)).clicked(actions)
+            || self.ui.button(cx, ids!(template_chip_on)).clicked(actions)
+        {
             {
                 let mut st = app_state().lock().unwrap();
-                st.template_confirm = true;
-                st.client_template_confirm = None;
+                st.template_pick = !st.template_pick;
             }
-            if menu_images::shelf().is_empty() && menu_images::install_expects_remote_catalogue() {
-                self.paint_import_progress_chrome(cx);
-            } else {
-                self.sync_chrome(cx);
-            }
+            self.paint_menu_public_card(cx);
         }
         if self.ui.button(cx, ids!(template_no)).clicked(actions) {
             if menu_import_busy().load(std::sync::atomic::Ordering::SeqCst)
@@ -2694,16 +2709,13 @@ impl MatchEvent for App {
             {
                 request_books_job_cancel();
                 self.paint_import_progress_chrome(cx);
-            } else {
-                app_state().lock().unwrap().template_confirm = false;
-                self.sync_chrome(cx);
             }
         }
-        if self.ui.button(cx, ids!(template_yes)).clicked(actions) {
-            if menu_import_busy().load(std::sync::atomic::Ordering::SeqCst) {
-                // Progress button — ignore re-taps while the worker runs.
-            } else if catalogue_fetch_busy().load(std::sync::atomic::Ordering::SeqCst) {
-                // Shelf download in flight — Cancel is on template_no.
+        if self.ui.button(cx, ids!(template_import)).clicked(actions) {
+            if menu_import_busy().load(std::sync::atomic::Ordering::SeqCst)
+                || catalogue_fetch_busy().load(std::sync::atomic::Ordering::SeqCst)
+            {
+                // A job is running — its Cancel is on screen.
             } else {
                 let job = (|| -> Result<Option<PathBuf>, String> {
                     let mut st = app_state().lock().unwrap();
@@ -2766,105 +2778,77 @@ impl MatchEvent for App {
                 }
             }
         }
-        // Named client templates (assets/templates/<id>/).
-        {
-            let named = menu_templates::all();
-            let chip_slots = [
-                (ids!(client_tmpl_0), ids!(client_tmpl_0_on)),
-                (ids!(client_tmpl_1), ids!(client_tmpl_1_on)),
-                (ids!(client_tmpl_2), ids!(client_tmpl_2_on)),
-            ];
-            for (i, (idle, on)) in chip_slots.iter().enumerate() {
-                if named.get(i).is_some()
-                    && self.choice_chip_clicked(cx, actions, *idle, *on)
-                {
-                    {
-                        let mut st = app_state().lock().unwrap();
-                        st.client_template_id = named[i].id.clone();
-                        st.client_template_confirm = None;
-                        st.template_confirm = false;
-                    }
-                    self.sync_chrome(cx);
-                    break;
-                }
-            }
-        }
-        if self.ui.button(cx, ids!(client_template_import)).clicked(actions) {
-            {
-                let mut st = app_state().lock().unwrap();
-                let id = st.client_template_id.clone();
-                if !id.is_empty() {
-                    st.client_template_confirm = Some(id);
-                    st.template_confirm = false;
-                }
-            }
-            self.sync_chrome(cx);
-        }
-        if self.ui.button(cx, ids!(client_template_no)).clicked(actions) {
-            if menu_import_busy().load(std::sync::atomic::Ordering::SeqCst) {
-                request_books_job_cancel();
-                self.paint_import_progress_chrome(cx);
-            } else {
-                app_state().lock().unwrap().client_template_confirm = None;
-                self.sync_chrome(cx);
-            }
-        }
-        if self.ui.button(cx, ids!(client_template_yes)).clicked(actions) {
-            if menu_import_busy().load(std::sync::atomic::Ordering::SeqCst) {
-                // Progress button — ignore re-taps while the worker runs.
-            } else {
-                let job = (|| -> Result<Option<(PathBuf, String, String)>, String> {
-                    let mut st = app_state().lock().unwrap();
-                    let id = st
-                        .client_template_confirm
-                        .clone()
-                        .unwrap_or_else(|| st.client_template_id.clone());
-                    if id.is_empty() {
-                        return Err("Pick a client menu first".into());
-                    }
+        // Menu → Private template: the onboarding private-template flow at
+        // menu-items level (Check code → its name → Import → menu only).
+        if self.ui.button(cx, ids!(menu_priv_check)).clicked(actions) {
+            if !catalogue_fetch_busy().load(std::sync::atomic::Ordering::SeqCst) {
+                let code = self.ui.text_input(cx, ids!(menu_priv_code)).text();
+                let job = (|| -> Result<(PathBuf, String), String> {
+                    let code = catalogue_remote::normalize_private_code(&code)?;
+                    let st = app_state().lock().unwrap();
                     let actor = st.actor()?;
                     if !actor.is_owner() && !actor.can_access_items() {
                         return Err("Not allowed to manage items".into());
                     }
-                    let tmpl = menu_templates::find(&id)
-                        .ok_or_else(|| format!("Unknown menu template '{id}'"))?;
-                    if st.device_role == DeviceRole::Client {
-                        st.books_op(BooksOp::ImportClientTemplate {
-                            template_id: tmpl.id.clone(),
-                        })?;
-                        st.client_template_confirm = None;
-                        st.template_confirm = false;
-                        return Ok(None);
-                    }
-                    let db = st
-                        .store
-                        .as_ref()
-                        .ok_or_else(|| "No store".to_string())?
-                        .db_path()
-                        .to_path_buf();
-                    Ok(Some((db, tmpl.id.clone(), tmpl.title.clone())))
+                    let base = st
+                        .data_base
+                        .clone()
+                        .or_else(|| store::data_dir().ok())
+                        .ok_or_else(|| "No data directory".to_string())?;
+                    Ok((base, code))
                 })();
                 match job {
-                    Ok(None) => {
-                        self.set_status(cx, "Importing a menu template on the shop device…");
-                        self.sync_chrome(cx);
-                    }
-                    Ok(Some((db, id, title))) => {
+                    Ok((base, code)) => {
                         {
                             let mut st = app_state().lock().unwrap();
-                            st.client_template_confirm = Some(id.clone());
-                            st.template_confirm = false;
+                            st.menu_priv_code.clear();
+                            st.menu_priv_title.clear();
+                            st.menu_priv_origin = true;
                         }
-                        menu_import_job(db, MenuImportKind::Client { id, title });
-                        // Progress only — do not sync_chrome (SQLite) while the worker runs.
-                        self.paint_import_progress_chrome(cx);
+                        catalogue_fetch_job(CatalogueFetchKind::PrivatePeek { code }, base);
+                        self.paint_menu_private_progress(cx);
                     }
-                    Err(e) => {
-                        app_state().lock().unwrap().client_template_confirm = None;
-                        self.set_status(cx, e);
-                        self.sync_chrome(cx);
-                    }
+                    Err(e) => self.set_status(cx, e),
                 }
+            }
+        }
+        if self.ui.button(cx, ids!(menu_priv_import)).clicked(actions) {
+            if !menu_import_busy().load(std::sync::atomic::Ordering::SeqCst)
+                && !catalogue_fetch_busy().load(std::sync::atomic::Ordering::SeqCst)
+            {
+                let job = (|| -> Result<(PathBuf, String), String> {
+                    let st = app_state().lock().unwrap();
+                    let actor = st.actor()?;
+                    if !actor.is_owner() && !actor.can_access_items() {
+                        return Err("Not allowed to manage items".into());
+                    }
+                    // The Server is the sole writer: import there.
+                    st.require_server_host(&st.t("app_template_import"))?;
+                    if st.menu_priv_code.is_empty() || st.menu_priv_title.is_empty() {
+                        return Err(st.t("app_template_check_code"));
+                    }
+                    let base = st
+                        .data_base
+                        .clone()
+                        .or_else(|| store::data_dir().ok())
+                        .ok_or_else(|| "No data directory".to_string())?;
+                    Ok((base, st.menu_priv_code.clone()))
+                })();
+                match job {
+                    Ok((base, code)) => {
+                        app_state().lock().unwrap().menu_priv_origin = true;
+                        catalogue_fetch_job(CatalogueFetchKind::DownloadPrivate { code }, base);
+                        self.paint_menu_private_progress(cx);
+                    }
+                    Err(e) => self.set_status(cx, e),
+                }
+            }
+        }
+        if self.ui.button(cx, ids!(menu_priv_cancel)).clicked(actions) {
+            if menu_import_busy().load(std::sync::atomic::Ordering::SeqCst)
+                || catalogue_fetch_busy().load(std::sync::atomic::Ordering::SeqCst)
+            {
+                request_books_job_cancel();
             }
         }
         if self.ui.button(cx, ids!(table_pick_btn)).clicked(actions) {
@@ -3712,7 +3696,13 @@ impl MatchEvent for App {
         }
         // Floor grid: tap a tile to open (or seat) that table; its small
         // action asks for the bill (running) or marks it ready (paid).
-        if !app_state().lock().unwrap().floor_view_layout {
+        // Only while the Floor shows: off it no tile can be tapped, and the
+        // walk below cost ~1.4 s of the first actions after start (dev build).
+        let floor_grid_live = {
+            let st = app_state().lock().unwrap();
+            st.screen == Screen::Floor && !st.floor_view_layout
+        };
+        if floor_grid_live {
             let widget = self.ui.widget(cx, ids!(floor_list));
             let list = widget.portal_list(cx, ids!(list));
             // One selected area tab — idxs into the filtered table list.
@@ -3738,8 +3728,10 @@ impl MatchEvent for App {
             // matches. Walk the single area item + every row slot directly
             // (same as FloorLayoutList) — button/finger_up key off uid.
             let mut tapped: Option<(usize, &'static str)> = None;
-            if !idxs.is_empty() {
-                let item = list.item(cx, 0, id!(Item));
+            // Only rows already on screen: a row that was never drawn cannot
+            // have been tapped, and `item()` would build it here.
+            let drawn_area = list.get_item(0).map(|(_, w)| w);
+            if let (false, Some(item)) = (idxs.is_empty(), drawn_area) {
                 let scroll = item.view(cx, ids!(area_scroll));
                 let scroll_x = scroll.get_scroll_pos().x;
                 let area_vp_w = {
@@ -3763,7 +3755,9 @@ impl MatchEvent for App {
                 let rows_list = item.portal_list(cx, ids!(area_rows));
                 let n_rows = idxs.chunks(cols.max(1)).count().max(1);
                 for row_id in 0..n_rows {
-                    let row_item = rows_list.item(cx, row_id, id!(Item));
+                    let Some((_, row_item)) = rows_list.get_item(row_id) else {
+                        continue;
+                    };
                     let chunk_start = row_id * cols.max(1);
                     for (slot, path) in FLOOR_SLOT_IDS.iter().enumerate() {
                         let Some(&table_idx) = idxs.get(chunk_start + first_col + slot) else {
@@ -6471,7 +6465,17 @@ impl MatchEvent for App {
                 tab = Some(KitchenPanel::Stations);
             }
             if let Some(panel) = tab {
-                app_state().lock().unwrap().kitchen_panel = panel;
+                {
+                    let mut st = app_state().lock().unwrap();
+                    st.kitchen_panel = panel;
+                    // Choosing Stations shows its section open (same state the
+                    // accordion header toggles — never a forced-visible body).
+                    if panel == KitchenPanel::Stations
+                        && !st.floor_sections_open.iter().any(|k| k == "stations")
+                    {
+                        st.floor_sections_open.push("stations".into());
+                    }
+                }
                 self.sync_kitchen_panels(cx);
                 self.ui.redraw(cx);
             }
@@ -6529,6 +6533,27 @@ impl MatchEvent for App {
             ] {
                 if self.choice_chip_clicked(cx, actions, idle, on) {
                     app_state().lock().unwrap().kot_edit_kind = kind;
+                    slip_changed = true;
+                    break;
+                }
+            }
+            // Copy from another kind: line styles only (banner, prefix and
+            // strike stay this kind's). Kept in the draft until Save.
+            for (btn, from) in [
+                (ids!(kot_copy_original), print_share::KotSlipKind::Original),
+                (ids!(kot_copy_duplicate), print_share::KotSlipKind::Duplicate),
+                (ids!(kot_copy_modified), print_share::KotSlipKind::Modified),
+                (ids!(kot_copy_cancelled), print_share::KotSlipKind::Cancelled),
+            ] {
+                if self.ui.button(cx, btn).clicked(actions) {
+                    let mut st = app_state().lock().unwrap();
+                    let to = st.kot_edit_kind;
+                    st.kot_slip_draft.kind_styles.copy_line_styles(from, to);
+                    // Same rule as editing the Item / Qty. size by hand.
+                    let qty_em = st.kot_slip_draft.kind_styles.get(to).item_qty.size_em;
+                    st.kot_slip_draft.em = qty_em;
+                    drop(st);
+                    style_changed = true;
                     slip_changed = true;
                     break;
                 }
@@ -9236,9 +9261,8 @@ impl MatchEvent for App {
                 let result = (|| -> Result<(), String> {
                     let mut st = app_state().lock().unwrap();
                     let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                    let rows = sibling_pickers_rows(store, |k| st.t(k));
-                    let key = match rows.get(item_id) {
-                        Some(ReportRow::Kv(k, _)) => k.clone(),
+                    let key = match sibling_picker_keys(store).get(item_id) {
+                        Some(Some(k)) => k.clone(),
                         _ => return Err("Not a picker row".into()),
                     };
                     let msg = if let Some(name) = key.strip_prefix("area:") {
@@ -9254,7 +9278,7 @@ impl MatchEvent for App {
                             enabled: !on,
                         })?
                     } else if let Some(rest) = key.strip_prefix("station:") {
-                        let id = rest.split(" · ").next().unwrap_or("").trim().to_string();
+                        let id = rest.trim().to_string();
                         let on = store
                             .list_stations()?
                             .into_iter()
@@ -9266,7 +9290,7 @@ impl MatchEvent for App {
                             enabled: !on,
                         })?
                     } else if let Some(rest) = key.strip_prefix("tax:") {
-                        let id = rest.split(" · ").next().unwrap_or("").trim().to_string();
+                        let id = rest.trim().to_string();
                         let on = store
                             .list_tax_rates()?
                             .into_iter()
@@ -9501,33 +9525,6 @@ impl MatchEvent for App {
                 }
                 self.paint_printers_panel(cx);
                 self.ui.widget(cx, ids!(printers_delivery_list)).redraw(cx);
-            }
-        }
-        // Legacy pool ReportText (hidden) — keep id for hot-reload.
-        {
-            let widget = self.ui.widget(cx, ids!(printers_pool_label));
-            let list = widget.portal_list(cx, ids!(list));
-            let mut tapped: Option<usize> = None;
-            for (item_id, item) in list.items_with_actions(actions) {
-                if item
-                    .view(cx, ids!(row))
-                    .finger_up(actions)
-                    .is_some_and(finger_up_is_tap)
-                {
-                    tapped = Some(item_id);
-                }
-            }
-            if let Some(item_id) = tapped {
-                let mut st = app_state().lock().unwrap();
-                if st.device_role != DeviceRole::Client {
-                    if let Some(p) = st.printer_draft.printers.get(item_id).cloned() {
-                        st.printer_selected_id = Some(p.id.clone());
-                        let name = printer_display_name(&p, |k| st.t(k));
-                        st.status = st.t("real_printer_selected").replace("{name}", &name);
-                    }
-                }
-                drop(st);
-                self.paint_printers_panel(cx);
             }
         }
         // Find auto-merges discoveries into the pool — no tap-to-add on the

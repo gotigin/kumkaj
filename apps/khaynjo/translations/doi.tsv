@@ -1368,3 +1368,22 @@ recent_changes	हाल दे बदलाव
 lane_declared_label	कर चालान दा
 lane_owner_label	नकद ज्ञापन
 money_lane_bill	बिल: {lane} ऐ।
+sel_copy	नकल करो
+sel_select_all	सब चुनो
+sel_copied	नकल होई गेई
+items_tmpl_khaynjo	Khaynjo आइटम टेम्पलेट
+items_tmpl_named	{name} टेम्पलेट
+app_tmpl_named	{name} ऐप टेम्पलेट
+private_code_ph	12 अंकें दा कोड
+stamp_on	डाक टिकट: फाइल पर
+pay_qr_on	भुगतान QR: फाइल पर
+pay_qr_off	भुगतान क्यूआर: कोई बी नेईं
+items_tmpl_heading	आइटम टेम्पलेट
+items_tmpl_help	तुंदे मेनू आस्तै पकवान, श्रेणियां ते फोटो। दुकान दियां सेटिंगां ते स्टाफ जि'यां न उ'आं गै रौंह्दे न।
+public_tmpl_help	शुरुआती मेनू जेह्ड़े कोई बी डाउनलोड करी सकदा ऐ। इक बारी इंटरनेट चाहिदा।
+private_tmpl_help	तुंदे Khaynjo संपर्क थमां मिले दे 12 अंकें दे कोड कन्नै सुरक्षत ग्राहक मेनू।
+printers_screen_tip	लब्भो इस डिवाइस आसेआ बरतने जोग प्रिंटर दस्सदा ऐ ते इस दुकान आस्तै सांभदा ऐ। बिल प्रिंटर: बिल ते KOT फॉर्मेट → बिल। रसोई: रसोई → रसोई स्टेशन।
+printers_found_none	कोई प्रिंटर नेईं लब्भा।
+kot_copy_from	इस थमां कापी करो
+kot_copy_from_help	उस किस्म दी हर लाइन दा अकार, मोटाई ते संरेखण इस च कापी करदा ऐ। एह् किस्म अपना बैनर, आइटम उपसर्ग ते कट्टी लाइन रखदी ऐ। रक्खने आस्तै KOT फार्मेट सेव करो।
+nav_loading	लोड होआ करदा ऐ…

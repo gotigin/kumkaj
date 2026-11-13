@@ -327,7 +327,16 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
     /// **not** treat bare key_focus as a field — Buttons also call
     /// `set_key_focus`, which would stall `sync_chrome`.
     fn text_field_has_focus(&mut self, cx: &mut Cx) -> bool {
-        if cx.get_ime_area_rect().size.y > 0.0 {
+        // Makepad never clears its IME area: after a field loses focus (or its
+        // screen is gone) `get_ime_area_rect` still returns that field's last
+        // rect, and every sync_chrome took the typing early-return — the
+        // header kept "Locked" after a PIN unlock, the Menu private-template
+        // card never repainted. Count the IME only while the focused area is
+        // the field that owns it (TextInput focuses and shows the IME with
+        // the same draw_bg area).
+        let ime = cx.get_ime_area_rect();
+        let focus = cx.key_focus();
+        if ime.size.y > 0.0 && !focus.is_empty() && focus.rect(cx) == ime {
             return true;
         }
         // Before the first IME rect / DidShow: known FieldInputs + cart lines.
@@ -1125,6 +1134,8 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
             "role" => Some(ids!(setup_role_body)),
             "public_templates" => Some(ids!(setup_public_tmpl_body)),
             "private_template" => Some(ids!(setup_private_tmpl_body)),
+            "menu_public_tmpl" => Some(ids!(menu_public_tmpl_body)),
+            "menu_private_tmpl" => Some(ids!(menu_private_tmpl_body)),
             _ => None,
         }
     }
@@ -1509,6 +1520,65 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
                 v.walk.height = Size::fit();
             }
         }
+    }
+
+    /// Menu → Item templates accordions (the onboarding Shop templates pattern).
+    fn sync_menu_tmpl_sections(&mut self, cx: &mut Cx) {
+        let (open, public_cap, private_cap) = {
+            let st = app_state().lock().unwrap();
+            (
+                st.menu_tmpl_open.clone(),
+                st.t("app_template_public_hdr").to_uppercase(),
+                st.t("app_template_private_hdr").to_uppercase(),
+            )
+        };
+        let animating = accordion_anims().lock().unwrap();
+        for (key, hdr, body, caption) in [
+            (
+                "menu_public_tmpl",
+                ids!(menu_public_tmpl_hdr),
+                ids!(menu_public_tmpl_body),
+                public_cap,
+            ),
+            (
+                "menu_private_tmpl",
+                ids!(menu_private_tmpl_hdr),
+                ids!(menu_private_tmpl_body),
+                private_cap,
+            ),
+        ] {
+            let is_open = open.iter().any(|k| k == key);
+            let mark = if is_open {
+                ACCORDION_MARK_OPEN
+            } else {
+                ACCORDION_MARK_CLOSED
+            };
+            self.ui
+                .button(cx, hdr)
+                .set_text(cx, &format!("{mark}  {caption}"));
+            if animating.contains_key(key) {
+                continue;
+            }
+            self.ui.view(cx, body).set_visible(cx, is_open);
+            if let Some(mut v) = self.ui.view(cx, body).borrow_mut() {
+                v.walk.height = Size::fit();
+            }
+        }
+    }
+
+    fn toggle_menu_tmpl_section(&mut self, cx: &mut Cx, key: &str) {
+        let will_open = {
+            let mut st = app_state().lock().unwrap();
+            if let Some(i) = st.menu_tmpl_open.iter().position(|k| k == key) {
+                st.menu_tmpl_open.remove(i);
+                false
+            } else {
+                st.menu_tmpl_open.push(key.to_string());
+                true
+            }
+        };
+        self.start_section_height_anim(cx, key, will_open);
+        self.sync_menu_tmpl_sections(cx);
     }
 
     fn toggle_device_setup_section(&mut self, cx: &mut Cx, key: &str) {

@@ -1368,3 +1368,22 @@ recent_changes	Nedávné změny
 lane_declared_label	Daňový doklad
 lane_owner_label	Oznámení o hotovosti
 money_lane_bill	Účet: {lane}
+sel_copy	Kopírovat
+sel_select_all	Vybrat vše
+sel_copied	Zkopírováno
+items_tmpl_khaynjo	Šablona položek Khaynjo
+items_tmpl_named	Šablona {name}
+app_tmpl_named	Šablona aplikace {name}
+private_code_ph	12místný kód
+stamp_on	Razítko: v evidenci
+pay_qr_on	Platba QR: v evidenci
+pay_qr_off	Platba QR: žádná
+items_tmpl_heading	Šablony položek
+items_tmpl_help	Jídla, kategorie a fotky pro vaše menu. Nastavení obchodu a personál zůstávají beze změny.
+public_tmpl_help	Startovní menu, která si může stáhnout kdokoli. Internet je potřeba jednou.
+private_tmpl_help	Klientská menu chráněná 12místným kódem od vašeho kontaktu Khaynjo.
+printers_screen_tip	Hledat vypíše tiskárny, které toto zařízení může použít, a uloží je pro tento obchod. Tiskárny účtů: Formát účtu a KOT → Účet. Kuchyně: Kuchyně → Kuchyňská stanoviště.
+printers_found_none	Nenalezeny žádné tiskárny.
+kot_copy_from	Kopírovat z
+kot_copy_from_help	Zkopíruje velikost, tloušťku a zarovnání každého řádku z daného druhu do tohoto. Tento druh si ponechá vlastní banner, předponu položek a přeškrtnutí. Pro zachování uložte formát KOT.
+nav_loading	Načítání…

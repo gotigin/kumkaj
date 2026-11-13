@@ -1368,3 +1368,22 @@ recent_changes	Recente wijzigingen
 lane_declared_label	Belastingfactuur
 lane_owner_label	Kassabon
 money_lane_bill	Factuur: {lane}
+sel_copy	Kopiëren
+sel_select_all	Alles selecteren
+sel_copied	Gekopieerd
+items_tmpl_khaynjo	Khaynjo-artikelsjabloon
+items_tmpl_named	{name}-sjabloon
+app_tmpl_named	{name}-appsjabloon
+private_code_ph	12-cijferige code
+stamp_on	Stempel: opgeslagen
+pay_qr_on	Betaal-QR: opgeslagen
+pay_qr_off	Betaal-QR: geen
+items_tmpl_heading	Artikelsjablonen
+items_tmpl_help	Gerechten, categorieën en foto's voor je menu. Winkelinstellingen en personeel blijven zoals ze zijn.
+public_tmpl_help	Startmenu's die iedereen kan downloaden. Eenmaal internet nodig.
+private_tmpl_help	Klantmenu's afgeschermd met een 12-cijferige code van je Khaynjo-contactpersoon.
+printers_screen_tip	Zoeken toont de printers die dit apparaat kan gebruiken en bewaart ze voor deze winkel. Rekeningprinters: Rekening- en KOT-opmaak → Rekening. Keuken: Keuken → Keukenstations.
+printers_found_none	Geen printers gevonden.
+kot_copy_from	Kopiëren van
+kot_copy_from_help	Kopieert de grootte, dikte en uitlijning van elke regel van die soort naar deze. Deze soort houdt zijn eigen banner, artikelvoorvoegsel en doorhaling. Sla het KOT-formaat op om het te behouden.
+nav_loading	Laden…

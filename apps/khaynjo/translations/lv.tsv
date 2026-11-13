@@ -1368,3 +1368,22 @@ recent_changes	Nesenās izmaiņas
 lane_declared_label	Nodokļa rēķins
 lane_owner_label	Skaidrās naudas kvīts
 money_lane_bill	Rēķins: {lane}
+sel_copy	Kopēt
+sel_select_all	Atlasīt visu
+sel_copied	Nokopēts
+items_tmpl_khaynjo	Khaynjo preču veidne
+items_tmpl_named	{name} veidne
+app_tmpl_named	{name} lietotnes veidne
+private_code_ph	12 ciparu kods
+stamp_on	Zīmogs: failā
+pay_qr_on	Maksājuma QR: failā
+pay_qr_off	Maksājuma QR: nav
+items_tmpl_heading	Preču veidnes
+items_tmpl_help	Ēdieni, kategorijas un fotoattēli jūsu ēdienkartei. Veikala iestatījumi un darbinieki paliek nemainīgi.
+public_tmpl_help	Sākuma ēdienkartes, ko var lejupielādēt ikviens. Internets vajadzīgs vienreiz.
+private_tmpl_help	Klientu ēdienkartes, kas aizslēgtas ar 12 ciparu kodu no jūsu Khaynjo kontakta.
+printers_screen_tip	Meklēt parāda printerus, ko šī ierīce var izmantot, un saglabā tos šim veikalam. Rēķinu printeri: Rēķina un KOT formāts → Rēķins. Virtuve: Virtuve → Virtuves stacijas.
+printers_found_none	Printeri netika atrasti.
+kot_copy_from	Kopēt no
+kot_copy_from_help	Kopē katras rindas izmēru, biezumu un līdzinājumu no tā veida uz šo. Šis veids saglabā savu baneri, preces prefiksu un pārsvītrojumu. Lai paturētu, saglabājiet KOT formātu.
+nav_loading	Ielādē…

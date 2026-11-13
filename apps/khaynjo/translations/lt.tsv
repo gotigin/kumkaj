@@ -1368,3 +1368,22 @@ recent_changes	Naujausi pakeitimai
 lane_declared_label	Mokesčių sąskaita faktūra
 lane_owner_label	Kasos memorandumas
 money_lane_bill	Sąskaita: {lane}
+sel_copy	Kopijuoti
+sel_select_all	Pažymėti viską
+sel_copied	Nukopijuota
+items_tmpl_khaynjo	Khaynjo prekių šablonas
+items_tmpl_named	{name} šablonas
+app_tmpl_named	{name} programėlės šablonas
+private_code_ph	12 skaitmenų kodas
+stamp_on	Antspaudas: faile
+pay_qr_on	Mokėjimo QR: faile
+pay_qr_off	Mokėjimo QR: nėra
+items_tmpl_heading	Prekių šablonai
+items_tmpl_help	Patiekalai, kategorijos ir nuotraukos jūsų meniu. Parduotuvės nustatymai ir darbuotojai lieka tokie patys.
+public_tmpl_help	Pradiniai meniu, kuriuos gali atsisiųsti bet kas. Internetas reikalingas kartą.
+private_tmpl_help	Klientų meniu, užrakinti 12 skaitmenų kodu iš jūsų Khaynjo kontakto.
+printers_screen_tip	Ieškoti parodo spausdintuvus, kuriuos gali naudoti šis įrenginys, ir išsaugo juos šiai parduotuvei. Sąskaitų spausdintuvai: Sąskaitos ir KOT formatas → Sąskaita. Virtuvė: Virtuvė → Virtuvės stotys.
+printers_found_none	Spausdintuvų nerasta.
+kot_copy_from	Kopijuoti iš
+kot_copy_from_help	Nukopijuoja kiekvienos eilutės dydį, storį ir lygiavimą iš tos rūšies į šią. Ši rūšis išlaiko savo reklaminę juostą, prekės priešdėlį ir perbraukimą. Kad išliktų, išsaugokite KOT formatą.
+nav_loading	Įkeliama…

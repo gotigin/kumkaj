@@ -85,18 +85,39 @@ impl App {
             let screen = app_state().lock().unwrap().screen;
             let path = Self::screen_scroll_view(screen);
             let r = self.ui.view(cx, path).area().rect(cx);
-            if r.size.y > 1.0 {
-                *page_viewport().lock().unwrap() = (r.pos.y, r.size.y);
+            let page = if r.size.y > 1.0 {
+                (r.pos.y, r.size.y)
             } else {
                 let r = self.ui.view(cx, ids!(body_stack)).area().rect(cx);
-                *page_viewport().lock().unwrap() = (r.pos.y, r.size.y);
+                (r.pos.y, r.size.y)
+            };
+            // These caches are read while drawing, but come from the last draw:
+            // after a resize (window, rail, rotation) the screen drew once with
+            // the old size and nothing drew it again — a one-column Floor stayed
+            // wider than a phone with its icons cut off. Redraw on a change.
+            let page_moved = {
+                let mut pv = page_viewport().lock().unwrap();
+                let moved = (pv.1 - page.1).abs() > 0.5;
+                *pv = page;
+                moved
+            };
+            if page_moved {
+                self.ui.view(cx, path).redraw(cx);
             }
             // The Floor tables scroll sideways in `floor_scroll`: its box is
             // the viewport the grid draws its visible columns for.
             if screen == Screen::Floor {
                 let r = self.ui.view(cx, ids!(floor_scroll)).area().rect(cx);
                 if r.size.x > 1.0 {
-                    *floor_hviewport().lock().unwrap() = (r.pos.x, r.size.x);
+                    let moved = {
+                        let mut vp = floor_hviewport().lock().unwrap();
+                        let moved = (vp.1 - r.size.x).abs() > 0.5;
+                        *vp = (r.pos.x, r.size.x);
+                        moved
+                    };
+                    if moved {
+                        self.ui.widget(cx, ids!(floor_list)).redraw(cx);
+                    }
                 }
             }
         }
@@ -325,6 +346,19 @@ impl App {
                         }
                         self.paint_app_template_chrome(cx, true);
                     }
+                    Ok(CatalogueFetchOk::PrivatePeek(man)) if app_state().lock().unwrap().menu_priv_origin => {
+                        // Menu → Private template: remember the code + pack, menu level.
+                        {
+                            let mut st = app_state().lock().unwrap();
+                            if let CatalogueFetchKind::PrivatePeek { code } = &outcome.kind {
+                                st.menu_priv_code = code.clone();
+                            }
+                            st.menu_priv_title = man.title.clone();
+                            st.menu_priv_origin = false;
+                        }
+                        self.paint_menu_private_card(cx);
+                        self.sync_chrome(cx);
+                    }
                     Ok(CatalogueFetchOk::PrivatePeek(man)) => {
                         {
                             let mut st = app_state().lock().unwrap();
@@ -339,7 +373,10 @@ impl App {
                             };
                             st.catalogue_selected_public_id = None;
                         }
-                        self.set_status(cx, man.title);
+                        // The pack's name shows under Check code — no second
+                        // copy in the status line (it read "Rajdhani App
+                        // Template" twice).
+                        self.set_status(cx, String::new());
                         self.paint_app_template_chrome(cx, true);
                     }
                     Ok(CatalogueFetchOk::Downloaded { pack_dir, manifest }) => {
@@ -363,13 +400,23 @@ impl App {
                                     },
                                 ));
                             }
-                            let apply_defaults = manifest.applies_shop_defaults
-                                || !manifest.shop_defaults.trim().is_empty()
-                                || pack_dir.join("shop_defaults.json").is_file();
+                            // Menu → Private template imports menu items only; the
+                            // onboarding App template also applies the shop settings.
+                            let menu_level = st.menu_priv_origin;
+                            let apply_defaults = !menu_level
+                                && (manifest.applies_shop_defaults
+                                    || !manifest.shop_defaults.trim().is_empty()
+                                    || pack_dir.join("shop_defaults.json").is_file());
+                            let name = template_client_name(&manifest.title);
+                            let title = if menu_level {
+                                st.t("items_tmpl_named").replace("{name}", &name)
+                            } else {
+                                st.t("app_tmpl_named").replace("{name}", &name)
+                            };
                             Ok((
                                 db,
                                 MenuImportKind::AppTemplate {
-                                    title: manifest.title.clone(),
+                                    title,
                                     pack_dir,
                                     apply_shop_defaults: apply_defaults,
                                 },
@@ -417,17 +464,27 @@ impl App {
                         if matches!(outcome.kind, CatalogueFetchKind::PublicIndex) {
                             app_state().lock().unwrap().catalogue_public_error = msg.clone();
                         }
+                        // A Menu-started public download that failed is over.
+                        app_state().lock().unwrap().template_confirm = false;
                         self.set_status(cx, msg);
                         self.paint_app_template_chrome(cx, true);
+                        let menu = std::mem::take(&mut app_state().lock().unwrap().menu_priv_origin);
+                        if menu {
+                            self.paint_menu_private_card(cx);
+                            self.sync_chrome(cx);
+                        }
                     }
                 }
             }
             // Menu import completion (progress is painted above while busy).
             if let Some(outcome) = menu_import_once().lock().unwrap().take() {
+                // Only the onboarding offer finishes to Lock; the same imports started
+                // from the Menu screen (public shelf download, private items template)
+                // stay on Menu.
                 let was_app_template = matches!(
                     &outcome.kind,
                     MenuImportKind::AppTemplate { .. } | MenuImportKind::ShelfFromDir { .. }
-                );
+                ) && app_state().lock().unwrap().awaiting_app_template;
                 let msg = match outcome.result {
                     Ok(done) => {
                         let reload = app_state().lock().unwrap().reload_all();
@@ -441,7 +498,6 @@ impl App {
                                     .replace("{d}", &done.items_added.to_string())
                                     .replace("{c}", &done.categories_added.to_string()),
                                 MenuImportKind::ShelfFromDir { title, .. }
-                                | MenuImportKind::Client { title, .. }
                                 | MenuImportKind::AppTemplate { title, .. } => st
                                     .t("client_template_imported")
                                     .replace("{d}", &done.items_added.to_string())
@@ -452,10 +508,23 @@ impl App {
                     }
                     Err(e) => Err(e),
                 };
-                {
+                let menu_priv = {
                     let mut st = app_state().lock().unwrap();
                     st.template_confirm = false;
-                    st.client_template_confirm = None;
+                    st.template_pick = false;
+                    let menu_priv = std::mem::take(&mut st.menu_priv_origin);
+                    if menu_priv && msg.is_ok() {
+                        // Imported: the card goes back to a fresh code entry.
+                        st.menu_priv_title.clear();
+                        st.menu_priv_code.clear();
+                    }
+                    menu_priv
+                };
+                if menu_priv {
+                    if msg.is_ok() {
+                        self.ui.text_input(cx, ids!(menu_priv_code)).set_text(cx, "");
+                    }
+                    self.paint_menu_private_card(cx);
                 }
                 match msg {
                     Ok(m) => {
@@ -532,7 +601,7 @@ impl App {
                     let sync_msg = if !cancelled && print_share::printers_find_finished() {
                         let mut st = app_state().lock().unwrap();
                         match sync_found_printers_into_pool(&mut st) {
-                            Ok((0, 0)) if !finding => Some(st.t("printers_none_found")),
+                            Ok((0, 0)) if !finding => Some(st.t("printers_found_none")),
                             Ok((new, n)) if was_finding && !finding => Some(
                                 st.t("printers_find_synced")
                                     .replace("{n}", &n.to_string())
@@ -628,7 +697,11 @@ impl App {
         }
         self.apply_pending_menu_pick_tab(cx);
         self.match_event(cx, event);
+        if let Event::Draw(_) = event {
+            note_nav_draw();
+        }
         if let Event::NextFrame(e) = event {
+            self.finish_nav_veil(cx, e);
             let floor_ours = floor_area_autoscroll_frame()
                 .lock()
                 .unwrap()
@@ -696,6 +769,8 @@ impl App {
         // used to carry an open list onto the next screen. The press itself
         // still reaches whatever is under it.
         self.route_popup_input(cx, event);
+        // Copy / Select all menu: same outside-press rule (selection_menu.rs).
+        self.route_selection_menu_input(cx, event);
         // A sheet over the window (Add dishes, UPI QR) owns every press: the
         // nav tabs, Floor area tabs, sidebar list, and printer rows behind it
         // must not start a drag under the dishes the finger is scrolling.
@@ -740,6 +815,11 @@ impl App {
                 }
             }
         }
+        // One selection root at a time (selection_menu.rs): a sheet over the
+        // page owns Ctrl/Cmd+A and Copy while it is open.
+        self.ui
+            .view(cx, ids!(main_column))
+            .set_selection_root(!sheet_open);
         self.ui.handle_event(cx, event, &mut Scope::empty());
         // A control in the 48 px edge strip (Done, pay, send, a sideways tab
         // strip) took this press: the control wins, the edge swipe disarms.

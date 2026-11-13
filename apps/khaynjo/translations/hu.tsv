@@ -1368,3 +1368,22 @@ recent_changes	Legutóbbi változások
 lane_declared_label	Adószámla
 lane_owner_label	Készpénzes feljegyzés
 money_lane_bill	Számla: {lane}
+sel_copy	Másolás
+sel_select_all	Az összes kijelölése
+sel_copied	Másolva
+items_tmpl_khaynjo	Khaynjo tételsablon
+items_tmpl_named	{name} sablon
+app_tmpl_named	{name} alkalmazássablon
+private_code_ph	12 jegyű kód
+stamp_on	Bélyegző: az iratokon
+pay_qr_on	Fizetési QR: fájlban
+pay_qr_off	Fizetési QR: nincs
+items_tmpl_heading	Tételsablonok
+items_tmpl_help	Ételek, kategóriák és fotók az étlapjához. Az üzlet beállításai és a személyzet változatlanok maradnak.
+public_tmpl_help	Kezdő étlapok, amelyeket bárki letölthet. Egyszer kell hozzá internet.
+private_tmpl_help	Ügyfél-étlapok, amelyeket a Khaynjo-kapcsolattartójától kapott 12 jegyű kód nyit meg.
+printers_screen_tip	A Keresés felsorolja a nyomtatókat, amelyeket ez az eszköz használhat, és elmenti őket ehhez az üzlethez. Számlanyomtatók: Számla- és KOT-formátum → Számla. Konyha: Konyha → Konyhai állomások.
+printers_found_none	Nem található nyomtató.
+kot_copy_from	Másolás innen
+kot_copy_from_help	Átmásolja annak a fajtának minden sora méretét, vastagságát és igazítását ebbe. Ez a fajta megtartja saját szalagcímét, tételelőtagját és áthúzását. A megtartáshoz mentse a KOT formátumot.
+nav_loading	Betöltés…

@@ -269,6 +269,21 @@ struct AppState {
     /// only). `None` = first Choose a table (seat unsent desk punches).
     picking_from_table_id: Option<String>,
     /// The field whose "type or pick" list is open, and its rows.
+    /// Menu screen private items template (12-digit code): the code checked,
+    /// the pack title it opened, and whether the running catalogue fetch /
+    /// import was started from the Menu screen (menu items only, no shop
+    /// settings or staff — those are the onboarding App template).
+    menu_priv_code: String,
+    menu_priv_title: String,
+    menu_priv_origin: bool,
+    /// Menu → Item templates accordions that are open ("menu_public_tmpl",
+    /// "menu_private_tmpl"). Closed by default — headers + ℹ only.
+    menu_tmpl_open: Vec<String>,
+    /// Menu → Public templates: the Khaynjo Items Template chip is selected
+    /// (shows Import selected), as the onboarding public chips do.
+    template_pick: bool,
+    /// Open Copy / Select all menu (selection_menu.rs), read at draw time.
+    sel_menu: Option<SelMenuOpen>,
     suggest_open: Option<SuggestField>,
     suggest_rows: Vec<suggest::SuggestRow>,
     /// Bumped on every refresh so the list scrolls back to the top.
@@ -297,10 +312,6 @@ struct AppState {
     pay_choice: PayChoice,
     /// Menu: "Import complete template" (full shelf) was tapped; asking to confirm.
     template_confirm: bool,
-    /// Menu: a named client template id pending confirm (`rajdhani`, …).
-    client_template_confirm: Option<String>,
-    /// Which named client template the Menu card is showing (first if empty).
-    client_template_id: String,
     /// Menu screen: the list's search ("Find in your menu").
     menu_list_filter: String,
     /// Menu screen: list only the dishes still at no price (the template

@@ -1368,3 +1368,22 @@ recent_changes	ꯍꯧꯖꯤꯛꯀꯤ ꯍꯣꯡꯗꯣꯛꯄ
 lane_declared_label	ꯀꯔꯒꯤ ꯕꯤꯜ
 lane_owner_label	ꯁꯦꯟꯒꯤ ꯋꯥꯍꯩ
 money_lane_bill	ꯕꯤꯜ: {lane}
+sel_copy	ꯀꯣꯄꯤ ꯇꯧ
+sel_select_all	ꯄꯨꯝꯅꯃꯛ ꯈꯟꯕ
+sel_copied	ꯀꯣꯄꯤ ꯇꯧꯔꯦ
+items_tmpl_khaynjo	Khaynjo ꯄꯣꯠꯂꯝꯒꯤ ꯇꯦꯝꯄ꯭ꯂꯦꯠ
+items_tmpl_named	{name} ꯇꯦꯝꯄ꯭ꯂꯦꯠ
+app_tmpl_named	{name} ꯑꯦꯞ ꯇꯦꯝꯄ꯭ꯂꯦꯠ
+private_code_ph	ꯃꯁꯤꯡ 12ꯒꯤ ꯀꯣꯗ
+stamp_on	ꯁꯤꯜ: ꯐꯥꯏꯜꯗ ꯂꯩ
+pay_qr_on	ꯄꯤꯕ QR: ꯐꯥꯏꯜꯗ ꯂꯩ
+pay_qr_off	ꯄꯤꯕ QR: ꯂꯩꯇꯦ
+items_tmpl_heading	ꯑꯥꯏꯇꯦꯝ ꯇꯦꯝꯞꯂꯦꯠ
+items_tmpl_help	ꯅꯍꯥꯛꯀꯤ ꯃꯦꯅꯨꯒꯤꯗꯃꯛ ꯆꯥꯛꯆꯥ, ꯃꯈꯜ ꯑꯃꯁꯨꯡ ꯐꯣꯇꯣ। ꯗꯣꯀꯥꯅꯒꯤ ꯁꯦꯇꯤꯡ ꯑꯃꯁꯨꯡ ꯁ꯭ꯇꯥꯐ ꯂꯩꯔꯤꯕꯒꯨꯝꯅꯥ ꯂꯩꯒꯅꯤ।
+public_tmpl_help	ꯀꯅꯥꯒꯨꯝꯕꯥ ꯑꯃꯅꯥ ꯗꯥꯎꯅꯂꯣꯗ ꯇꯧꯕꯥ ꯌꯥꯕꯥ ꯍꯧꯔꯛꯐꯝ ꯃꯦꯅꯨ। ꯑꯃꯨꯛ ꯏꯟꯇꯔꯅꯦꯠ ꯃꯊꯧ ꯇꯩ।
+private_tmpl_help	ꯅꯍꯥꯛꯀꯤ Khaynjo ꯊꯥꯖꯤꯟꯅꯕꯗꯒꯤ ꯐꯪꯂꯛꯄꯥ ꯃꯁꯤꯡ 12 ꯂꯩꯕꯥ ꯀꯣꯗꯅꯥ ꯉꯥꯛꯊꯣꯛꯂꯕꯥ ꯀꯁ꯭ꯇꯃꯔ ꯃꯦꯅꯨ।
+printers_screen_tip	ꯊꯤꯕꯅꯥ ꯗꯤꯚꯥꯏꯁ ꯑꯁꯤꯅꯥ ꯁꯤꯖꯤꯟꯅꯕꯥ ꯌꯥꯕꯥ ꯄ꯭ꯔꯤꯟꯇꯔꯁꯤꯡ ꯎꯠꯂꯤ ꯑꯃꯁꯨꯡ ꯗꯣꯀꯥꯟ ꯑꯁꯤꯒꯤꯗꯃꯛ ꯊꯃꯖꯤꯜꯂꯤ꯫ ꯕꯤꯜ ꯄ꯭ꯔꯤꯟꯇꯔ: ꯕꯤꯜ ꯑꯃꯁꯨꯡ KOT ꯐꯣꯔꯃꯦꯠ → ꯕꯤꯜ꯫ ꯆꯥꯛꯆꯥ-ꯌꯨꯝ: ꯆꯥꯛꯆꯥ-ꯌꯨꯝ → ꯆꯥꯛꯆꯥ-ꯌꯨꯝꯒꯤ ꯁ꯭ꯇꯦꯁꯟ꯫
+printers_found_none	ꯄ꯭ꯔꯤꯟꯇꯔ ꯑꯃꯠꯇꯥ ꯐꯪꯗꯦ꯫
+kot_copy_from	মসিদগী কোপি তৌ
+kot_copy_from_help	মখল অদুগী লাইন খুদিংমগী চাউরবা, অচাউবা অমসুং লৈতেংনবা মসিদা কোপি তৌই। মখল অসিনা মশাগী বেনর, আইতেম প্রিফিক্স অমসুং স্ত্রাইক থম্লি। থম্নবা KOT ফোর্মেত সেভ তৌ।
+nav_loading	লোড তৌরি…

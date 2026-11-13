@@ -496,7 +496,6 @@ enum MenuImportKind {
     Shelf,
     /// Import the photo shelf scanned from a downloaded `catalogue/public/items` tree.
     ShelfFromDir { root: PathBuf, title: String },
-    Client { id: String, title: String },
     /// Post-create DeviceSetup offer — import from a downloaded/cached pack dir.
     AppTemplate {
         title: String,
@@ -584,15 +583,6 @@ fn menu_import_job(db_path: PathBuf, kind: MenuImportKind) {
     let known_total = match &kind {
         MenuImportKind::Shelf => menu_images::shelf().len().max(1),
         MenuImportKind::ShelfFromDir { root, .. } => menu_images::load_shelf(root).len().max(1),
-        MenuImportKind::Client { id, .. } => menu_templates::find(id)
-            .map(|t| {
-                t.categories
-                    .iter()
-                    .map(|c| c.items.len().saturating_add(1))
-                    .sum::<usize>()
-                    .max(1)
-            })
-            .unwrap_or(1),
         MenuImportKind::AppTemplate { pack_dir, .. } => menu_templates::load_from_dir(pack_dir)
             .map(|t| {
                 t.categories
@@ -625,11 +615,6 @@ fn menu_import_job(db_path: PathBuf, kind: MenuImportKind) {
                             return Err("Downloaded shelf is empty".into());
                         }
                         store.import_catalogue(&dishes)
-                    }
-                    MenuImportKind::Client { id, .. } => {
-                        let tmpl = menu_templates::find(id)
-                            .ok_or_else(|| format!("Unknown menu template '{id}'"))?;
-                        store.import_menu_template(tmpl)
                     }
                     MenuImportKind::AppTemplate {
                         pack_dir,
@@ -700,16 +685,16 @@ fn format_download_progress(
         .replace("{t}", &total)
 }
 
-/// Localized download progress for the busy chrome (UI thread).
-pub(crate) fn catalogue_download_progress_text() -> Option<String> {
+/// Localized download progress for the busy chrome (UI thread). `tmpl` is
+/// `t("app_template_download_progress")` from the caller — this never locks
+/// `app_state`, so it is safe while the caller holds the guard (it used to
+/// call `app_t` and deadlocked the Menu template downloads).
+pub(crate) fn catalogue_download_progress_text(tmpl: &str) -> Option<String> {
     let p = (*catalogue_fetch_progress().lock().unwrap())?;
     if p.files_total == 0 {
         return None;
     }
-    Some(format_download_progress(
-        &app_t("app_template_download_progress"),
-        &p,
-    ))
+    Some(format_download_progress(tmpl, &p))
 }
 
 fn catalogue_fetch_job(kind: CatalogueFetchKind, data_base: PathBuf) {
@@ -1550,6 +1535,8 @@ fn accordion_estimate_h(key: &str) -> f64 {
         "role" => 160.0,
         "public_templates" => 220.0,
         "private_template" => 200.0,
+        "menu_public_tmpl" => 120.0,
+        "menu_private_tmpl" => 160.0,
         _ => 100.0,
     }
 }

@@ -1368,3 +1368,22 @@ recent_changes	Son değişiklikler
 lane_declared_label	Vergi faturası
 lane_owner_label	Nakit fiş
 money_lane_bill	Fatura: {lane}
+sel_copy	Kopyala
+sel_select_all	Tümünü seç
+sel_copied	Kopyalandı
+items_tmpl_khaynjo	Khaynjo ürün şablonu
+items_tmpl_named	{name} şablonu
+app_tmpl_named	{name} uygulama şablonu
+private_code_ph	12 haneli kod
+stamp_on	Damga: dosyada
+pay_qr_on	Ödeme QR: dosyada
+pay_qr_off	Ödeme QR: yok
+items_tmpl_heading	Ürün şablonları
+items_tmpl_help	Menünüz için yemekler, kategoriler ve fotoğraflar. Mağaza ayarları ve personel olduğu gibi kalır.
+public_tmpl_help	Herkesin indirebileceği başlangıç menüleri. Bir kez internet gerekir.
+private_tmpl_help	Khaynjo bağlantınızdan gelen 12 haneli kodla korunan müşteri menüleri.
+printers_screen_tip	Ara, bu cihazın kullanabileceği yazıcıları listeler ve bu mağaza için kaydeder. Hesap yazıcıları: Hesap ve KOT biçimi → Hesap. Mutfak: Mutfak → Mutfak istasyonları.
+printers_found_none	Yazıcı bulunamadı.
+kot_copy_from	Şuradan kopyala
+kot_copy_from_help	O türdeki her satırın boyutunu, kalınlığını ve hizalamasını bu türe kopyalar. Bu tür kendi başlığını, ürün önekini ve üstü çizgisini korur. Korumak için KOT biçimini kaydedin.
+nav_loading	Yükleniyor…

@@ -1368,3 +1368,22 @@ recent_changes	Onlangse veranderinge
 lane_declared_label	Belastingfaktuur
 lane_owner_label	Kasnota
 money_lane_bill	Faktuur: {lane}
+sel_copy	Kopieer
+sel_select_all	Kies alles
+sel_copied	Gekopieer
+items_tmpl_khaynjo	Khaynjo-itemsjabloon
+items_tmpl_named	{name}-sjabloon
+app_tmpl_named	{name}-toepassingsjabloon
+private_code_ph	12-syferkode
+stamp_on	Stempel: op lêer
+pay_qr_on	Betalings-QR: op lêer
+pay_qr_off	Betalings-QR: geen
+items_tmpl_heading	Itemsjablone
+items_tmpl_help	Geregte, kategorieë en foto's vir jou spyskaart. Winkelinstellings en personeel bly soos hulle is.
+public_tmpl_help	Beginspyskaarte wat enigiemand kan aflaai. Benodig een keer internet.
+private_tmpl_help	Kliëntspyskaarte agter 'n 12-syferkode van jou Khaynjo-kontak.
+printers_screen_tip	Soek lys die drukkers wat hierdie toestel kan gebruik en stoor hulle vir hierdie winkel. Rekeningdrukkers: Rekening- en KOT-formaat → Rekening. Kombuis: Kombuis → Kombuisstasies.
+printers_found_none	Geen drukkers gevind nie.
+kot_copy_from	Kopieer van
+kot_copy_from_help	Kopieer die grootte, gewig en belyning van elke reël van daardie soort na hierdie een. Hierdie soort behou sy eie banier, itemvoorvoegsel en deurhaal. Stoor KOT-formaat om dit te hou.
+nav_loading	Laai tans…

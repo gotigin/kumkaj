@@ -1368,3 +1368,22 @@ recent_changes	दाबाव सोलायनाय
 lane_declared_label	कर इनभइस
 lane_owner_label	नगद मेमो
 money_lane_bill	बिल: {lane}
+sel_copy	कपि खालाम
+sel_select_all	गासैखौ सायख
+sel_copied	कपि जादों
+items_tmpl_khaynjo	Khaynjo आइटेम टेम्प्लेट
+items_tmpl_named	{name} टेम्प्लेट
+app_tmpl_named	{name} एप टेम्प्लेट
+private_code_ph	12 अनजिमानि क'ड
+stamp_on	स्टाम्प: फाइलआव
+pay_qr_on	पैसा QR: फाइलआव
+pay_qr_off	पैसा QR: गैया
+items_tmpl_heading	मुवा टेम्प्लेट
+items_tmpl_help	नोंथांनि मेनुनि थाखाय जाखांनाय, थाखो आरो सावगारि। दुकाननि सेटिं आरो हाबफारियाफोर जेरै दं बैबादिनो थायो।
+public_tmpl_help	सोरबानोबो डाउनल'ड खालामनो हानाय जागायनाय मेनु। मोनसेबां इन्टारनेट नांगौ।
+private_tmpl_help	नोंथांनि Khaynjo सोमोन्दोनिफ्राय मोननाय 12 अनजिमानि कʼडजों रैखाथि खालामनाय गाहाक मेनु।
+printers_screen_tip	नागिरनाया बे डिभाइसआ बाहायनो हानाय प्रिन्टारफोरखौ दिन्थियो आरो बे दुकाननि थाखाय थिना दोनो। बिल प्रिन्टार: बिल आरो KOT फरमेट → बिल। इसिं: इसिं → इसिं स्टेसन।
+printers_found_none	जेबो प्रिन्टार मोनाखै।
+kot_copy_from	इफोरनिफ्राय कपि खालाम
+kot_copy_from_help	बे रोखोमनि गासै सारिनि महर, गोसो आरो सारि बेआव कपि खालामो। बे रोखोमा गावनि बेनार, मुवा सिगां दाजाबदा आरो सुथुर दोनथायो। दोननो KOT फरमेट थिना दोन।
+nav_loading	लड जागासिनो दं…

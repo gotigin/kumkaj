@@ -1368,3 +1368,22 @@ recent_changes	最近の変更
 lane_declared_label	税金請求書
 lane_owner_label	現金メモ
 money_lane_bill	請求書：{lane}
+sel_copy	コピー
+sel_select_all	すべて選択
+sel_copied	コピーしました
+items_tmpl_khaynjo	Khaynjo 商品テンプレート
+items_tmpl_named	{name} テンプレート
+app_tmpl_named	{name} アプリテンプレート
+private_code_ph	12桁のコード
+stamp_on	スタンプ：保存済み
+pay_qr_on	支払いQR：保存済み
+pay_qr_off	支払いQR：なし
+items_tmpl_heading	商品テンプレート
+items_tmpl_help	メニュー用の料理・カテゴリー・写真。店舗の設定とスタッフはそのままです。
+public_tmpl_help	誰でもダウンロードできるスターターメニュー。インターネットが一度必要です。
+private_tmpl_help	Khaynjo担当者から届く12桁のコードで保護された顧客用メニュー。
+printers_screen_tip	検索で、この端末で使えるプリンターを一覧にして、この店舗用に保存します。会計伝票のプリンター：伝票とKOTの書式 → 伝票。キッチン：キッチン → キッチンステーション。
+printers_found_none	プリンターが見つかりません。
+kot_copy_from	コピー元
+kot_copy_from_help	その種類の各行のサイズ・太さ・配置をこの種類にコピーします。この種類のバナー、品目の接頭辞、取り消し線はそのままです。保持するには KOT 形式を保存してください。
+nav_loading	読み込み中…

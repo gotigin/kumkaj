@@ -1368,3 +1368,22 @@ recent_changes	শেহতীয়া সলনি
 lane_declared_label	কৰ চালান
 lane_owner_label	কেশ মেমো
 money_lane_bill	বিল: {lane}
+sel_copy	কপি কৰক
+sel_select_all	সকলো বাছনি কৰক
+sel_copied	কপি কৰা হ'ল
+items_tmpl_khaynjo	Khaynjo সামগ্ৰী টেমপ্লেট
+items_tmpl_named	{name} টেমপ্লেট
+app_tmpl_named	{name} এপ টেমপ্লেট
+private_code_ph	১২-অংকৰ ক'ড
+stamp_on	ষ্টাম্প: ফাইলত
+pay_qr_on	পেমেণ্ট QR: ফাইলত
+pay_qr_off	পেমেণ্ট QR: নাই
+items_tmpl_heading	সামগ্ৰী টেমপ্লেট
+items_tmpl_help	আপোনাৰ মেনুৰ বাবে ব্যঞ্জন, শ্ৰেণী আৰু ফটো। দোকানৰ ছেটিং আৰু কৰ্মচাৰী যিদৰে আছে তেনেদৰেই থাকে।
+public_tmpl_help	যিকোনো লোকে ডাউনলোড কৰিব পৰা আৰম্ভণি মেনু। এবাৰ ইণ্টাৰনেট লাগে।
+private_tmpl_help	আপোনাৰ Khaynjo যোগাযোগৰ পৰা পোৱা ১২-অংকৰ ক'ডেৰে সুৰক্ষিত গ্ৰাহক মেনু।
+printers_screen_tip	বিচাৰক এই ডিভাইচে ব্যৱহাৰ কৰিব পৰা প্ৰিণ্টাৰবোৰ দেখুৱায় আৰু এই দোকানৰ বাবে সাঁচি ৰাখে। বিল প্ৰিণ্টাৰ: বিল আৰু KOT ফৰ্মেট → বিল। পাকঘৰ: পাকঘৰ → পাকঘৰ ষ্টেচন।
+printers_found_none	কোনো প্ৰিণ্টাৰ পোৱা নগ'ল।
+kot_copy_from	ইয়াৰ পৰা কপি কৰক
+kot_copy_from_help	সেই প্ৰকাৰৰ প্ৰতিটো শাৰীৰ আকাৰ, ওজন আৰু সজ্জা ইয়ালৈ কপি কৰে। এই প্ৰকাৰে নিজৰ বেনাৰ, বস্তুৰ উপসৰ্গ আৰু কাটি দিয়া ৰাখে। ৰাখিবলৈ KOT ফৰ্মেট সাঁচক।
+nav_loading	ল'ড হৈ আছে…

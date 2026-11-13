@@ -1368,3 +1368,22 @@ recent_changes	Newidiadau diweddar
 lane_declared_label	Anfoneb dreth
 lane_owner_label	Memo arian
 money_lane_bill	Bil: {lane}
+sel_copy	Copïo
+sel_select_all	Dewis y cyfan
+sel_copied	Wedi copïo
+items_tmpl_khaynjo	Templed eitemau Khaynjo
+items_tmpl_named	Templed {name}
+app_tmpl_named	Templed ap {name}
+private_code_ph	Cod 12 digid
+stamp_on	Sêl: ar ffeil
+pay_qr_on	QR talu: ar ffeil
+pay_qr_off	QR talu: dim
+items_tmpl_heading	Templedi eitemau
+items_tmpl_help	Prydau, categorïau a lluniau ar gyfer eich bwydlen. Mae gosodiadau'r siop a'r staff yn aros fel y maen nhw.
+public_tmpl_help	Bwydlenni cychwynnol y gall unrhyw un eu lawrlwytho. Angen y rhyngrwyd unwaith.
+private_tmpl_help	Bwydlenni cleientiaid wedi'u cloi â chod 12 digid gan eich cyswllt Khaynjo.
+printers_screen_tip	Mae Chwilio'n rhestru'r argraffwyr y gall y ddyfais hon eu defnyddio ac yn eu cadw ar gyfer y siop hon. Argraffwyr biliau: Fformat bil a KOT → Bil. Cegin: Cegin → Gorsafoedd cegin.
+printers_found_none	Heb ganfod argraffwyr.
+kot_copy_from	Copïo o
+kot_copy_from_help	Yn copïo maint, trwch ac aliniad pob llinell o'r math hwnnw i hwn. Mae'r math hwn yn cadw ei faner, rhagddodiad eitem a llinell drwodd ei hun. Cadwch fformat KOT i'w gadw.
+nav_loading	Yn llwytho…

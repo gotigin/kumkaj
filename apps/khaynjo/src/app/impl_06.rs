@@ -493,9 +493,8 @@ impl App {
             menu_import_running().lock().unwrap().as_ref(),
             Some(MenuImportKind::AppTemplate { .. } | MenuImportKind::ShelfFromDir { .. })
         ) || catalogue_fetch_busy().load(std::sync::atomic::Ordering::SeqCst);
-        // Locks app_state (app_t) — must run before the guard below.
         let download_text = if catalogue_fetch_busy().load(std::sync::atomic::Ordering::SeqCst) {
-            catalogue_download_progress_text()
+            catalogue_download_progress_text(&app_t("app_template_download_progress"))
         } else {
             None
         };
@@ -551,7 +550,13 @@ impl App {
                 st.t("cancel"),
                 progress,
                 pub_status,
-                st.catalogue_private_title.clone(),
+                // App level: the private pack applies menu + shop settings.
+                if st.catalogue_private_title.is_empty() {
+                    String::new()
+                } else {
+                    st.t("app_tmpl_named")
+                        .replace("{name}", &template_client_name(&st.catalogue_private_title))
+                },
                 st.catalogue_selected_public_id.clone(),
                 st.catalogue_public.clone(),
                 !st.catalogue_private_title.is_empty(),
@@ -560,15 +565,42 @@ impl App {
         self.ui
             .widget(cx, ids!(app_template_heading))
             .set_text(cx, &plain_display_text(&heading));
-        self.ui
-            .widget(cx, ids!(app_template_blurb))
-            .set_text(cx, &plain_display_text(&blurb));
+        // Idle: the explanation is the heading's ℹ tip; busy: the stable
+        // "Downloading template…" line above the live progress.
+        let blurb_w = self.ui.widget(cx, ids!(app_template_blurb));
+        blurb_w.set_visible(cx, app_busy);
+        if app_busy {
+            blurb_w.set_text(cx, &plain_display_text(&blurb));
+        }
+        {
+            let (help, public_help, private_help) = {
+                let st = app_state().lock().unwrap();
+                (
+                    st.t("app_template_blurb"),
+                    st.t("public_tmpl_help"),
+                    st.t("private_tmpl_help"),
+                )
+            };
+            for (id, tip) in [
+                (ids!(app_template_help), help),
+                (ids!(setup_public_tmpl_help), public_help),
+                (ids!(setup_private_tmpl_help), private_help),
+            ] {
+                self.ui
+                    .widget(cx, id)
+                    .as_info_help()
+                    .set_tip(&plain_display_text(&tip));
+            }
+        }
         self.ui
             .widget(cx, ids!(setup_public_tmpl_status))
             .set_text(cx, &plain_display_text(&pub_status));
         self.ui
             .widget(cx, ids!(private_tmpl_title))
             .set_text(cx, &plain_display_text(&priv_title));
+        self.ui
+            .text_input(cx, ids!(private_tmpl_code))
+            .set_empty_text(cx, app_t("private_code_ph"));
         self.ui
             .button(cx, ids!(private_tmpl_import))
             .set_visible(cx, has_private && !app_busy);
@@ -2198,6 +2230,25 @@ impl App {
         self.sync_chrome(cx);
     }
 
+    /// Thumbnail decodes finished on the image pool (`load_thumb_at`). Commit
+    /// any result no Image widget took (a tile whose initials are showing has
+    /// its Image hidden and sees no events), then redraw once so every list
+    /// that asked picks its texture up from the cache.
+    fn handle_thumb_decodes(&mut self, cx: &mut Cx, actions: &Actions) {
+        let mut landed = false;
+        for action in actions.iter() {
+            if let Some(AsyncImageLoad { image_path, result }) = action.downcast_ref() {
+                if let Some(result) = result.borrow_mut().take() {
+                    process_async_image_load(cx, image_path, result);
+                }
+                landed = true;
+            }
+        }
+        if landed {
+            self.ui.redraw(cx);
+        }
+    }
+
     /// A sheet covers the window (Add dishes or the UPI QR). While one is
     /// open, nothing behind it may start a gesture: nav tabs, the rail
     /// divider, Floor area tabs, the sidebar list, printer rows, edge swipes.
@@ -2336,10 +2387,10 @@ impl App {
             (no_match || frequent_empty || added_empty, empty_msg)
         };
         self.ui
-            .label(cx, ids!(menu_no_match))
+            .widget(cx, ids!(menu_no_match))
             .set_visible(cx, show_empty);
         if show_empty {
-            self.ui.label(cx, ids!(menu_no_match)).set_text(cx, &empty_msg);
+            self.ui.widget(cx, ids!(menu_no_match)).set_text(cx, &empty_msg);
         }
         self.ui.widget(cx, ids!(product_list)).redraw(cx);
         self.snap_menu_pick_scroll_to_category(cx);
@@ -2951,7 +3002,7 @@ impl App {
                 .store
                 .as_ref()
                 .map(|s| s.floor_columns_for_area(&area))
-                .unwrap_or(4);
+                .unwrap_or(0);
         }
         self.sync_floor_columns_field(cx, true);
         // Same as category chips: paint idle/active faces from state now —
@@ -2998,7 +3049,7 @@ impl App {
                     .store
                     .as_ref()
                     .map(|s| s.floor_columns_for_area(&st.floor_area_tab))
-                    .unwrap_or(4);
+                    .unwrap_or(0);
                 cols_changed = st.floor_columns != cols;
                 st.floor_columns = cols;
             }

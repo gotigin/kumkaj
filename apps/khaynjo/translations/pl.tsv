@@ -1368,3 +1368,22 @@ recent_changes	Ostatnie zmiany
 lane_declared_label	Faktura VAT
 lane_owner_label	Notatka gotówkowa
 money_lane_bill	Rachunek: {lane}
+sel_copy	Kopiuj
+sel_select_all	Zaznacz wszystko
+sel_copied	Skopiowano
+items_tmpl_khaynjo	Szablon pozycji Khaynjo
+items_tmpl_named	Szablon {name}
+app_tmpl_named	Szablon aplikacji {name}
+private_code_ph	12-cyfrowy kod
+stamp_on	Znaczek: w aktach
+pay_qr_on	QR płatności: w pliku
+pay_qr_off	QR płatności: brak
+items_tmpl_heading	Szablony pozycji
+items_tmpl_help	Dania, kategorie i zdjęcia do Twojego menu. Ustawienia sklepu i personel pozostają bez zmian.
+public_tmpl_help	Menu startowe, które każdy może pobrać. Internet potrzebny raz.
+private_tmpl_help	Menu klientów zablokowane 12-cyfrowym kodem od Twojego kontaktu w Khaynjo.
+printers_screen_tip	Szukaj pokazuje drukarki, których to urządzenie może używać, i zapisuje je dla tego sklepu. Drukarki rachunków: Format rachunku i KOT → Rachunek. Kuchnia: Kuchnia → Stanowiska kuchni.
+printers_found_none	Nie znaleziono drukarek.
+kot_copy_from	Kopiuj z
+kot_copy_from_help	Kopiuje rozmiar, grubość i wyrównanie każdego wiersza z tego rodzaju do tego. Ten rodzaj zachowuje własny baner, prefiks pozycji i przekreślenie. Zapisz format KOT, aby to zachować.
+nav_loading	Wczytywanie…

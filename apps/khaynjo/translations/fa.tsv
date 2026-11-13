@@ -1368,3 +1368,22 @@ recent_changes	تغییرهای اخیر
 lane_declared_label	فاکتور مالیاتی
 lane_owner_label	یادداشت نقد
 money_lane_bill	صورتحساب: {lane}
+sel_copy	رونوشت
+sel_select_all	انتخاب همه
+sel_copied	رونوشت شد
+items_tmpl_khaynjo	قالب اقلام Khaynjo
+items_tmpl_named	قالب {name}
+app_tmpl_named	قالب برنامه {name}
+private_code_ph	کد ۱۲ رقمی
+stamp_on	مهر: در پرونده
+pay_qr_on	QR پرداخت: در پرونده
+pay_qr_off	QR پرداخت: هیچ
+items_tmpl_heading	قالب‌های اقلام
+items_tmpl_help	غذاها، دسته‌ها و عکس‌ها برای منوی شما. تنظیمات فروشگاه و کارکنان همان‌طور که هستند می‌مانند.
+public_tmpl_help	منوهای آغازین که همه می‌توانند دانلود کنند. یک بار اینترنت لازم است.
+private_tmpl_help	منوهای مشتری که با کد ۱۲ رقمی از رابط Khaynjo شما قفل شده‌اند.
+printers_screen_tip	جستجو چاپگرهایی را که این دستگاه می‌تواند استفاده کند نشان می‌دهد و برای این فروشگاه ذخیره می‌کند. چاپگرهای صورت‌حساب: قالب صورت‌حساب و KOT ← صورت‌حساب. آشپزخانه: آشپزخانه ← ایستگاه‌های آشپزخانه.
+printers_found_none	چاپگری پیدا نشد.
+kot_copy_from	کپی از
+kot_copy_from_help	اندازه، ضخامت و ترازبندی هر خط را از آن نوع به این نوع کپی می‌کند. این نوع بنر، پیشوند اقلام و خط‌خوردگی خودش را نگه می‌دارد. برای نگه داشتن، قالب KOT را ذخیره کنید.
+nav_loading	در حال بارگیری…

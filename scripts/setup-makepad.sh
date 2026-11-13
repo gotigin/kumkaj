@@ -73,11 +73,6 @@ PATCHES=(
   view_scroll_pos_getters           # ViewRef scroll position getters (keyboard scroll)
   text_flow_paragraph_align         # RTL prose alignment
   text_input_label_align_pub        # RTL input alignment
-  text_flow_selection               # selectable text: opaque band, owns the drag
-  text_flow_selection_utf8_range    # get_text_for_range clamps to UTF-8 char boundaries
-  text_flow_selection_gestures      # leaf can defer gestures to document-selectable View
-  markdown_selectable_interactive  # Markdown is_interactive when selectable (sites + WrapLabel hits)
-  text_flow_touch_scroll            # Android/touch: swipe scrolls; long-press selects (WrapLabel)
   text_input_touch_scroll           # Android/touch: swipe over fields scrolls page; long-press selects (PIN / pair)
   text_input_caret_and_placeholder  # caret blinks and is visible; wrapped placeholder not clipped
   button_label_center               # fixed-width buttons centre their label; wrap CTAs keep Fit label (Fill+wrap freezes UI)
@@ -122,20 +117,18 @@ PATCHES=(
   # Press / touch / UI-thread doctrine (docs/DEV.md § Press, touch and a responsive UI thread).
   press_capture_cancel              # a press a scroll view takes over gets Hit::FingerCancel (never a click); TOUCH_SCROLL_SLOP
   button_press_lifecycle            # pressed face follows the finger: 80 ms touch delay, drag-off, cancel, heal when orphaned
-  text_flow_touch_focus             # copy takes focus on tap / long-press, not on press (swipe keeps the soft keyboard)
   touch_scroll_slop                 # scroll views + PortalList take a finger only past 8 px (2 px / 5 px cancelled taps)
   widget_tree_name_index            # cold path lookups via a name index; remembered answers re-validated (no tree walk per lookup)
   android_jni_detach_on_exit        # Android: a native thread attach_jni_env attached detaches at exit (ART aborted on worker exit)
-  widget_steals_document_selection  # Button/TextInput/HtmlLink block page select; Labels/Images do not
-  # After every other view.rs patch (press_capture_cancel, mouse_cursor_state, …).
-  view_document_selection           # ScrollYView selectable: continuous select across Markdown islands
-  view_document_chrome              # PageUp/Down/Home/End/Space + context-menu focus; Button-only select steal
-  view_document_column_lock         # Drag-select locks to the start leaf's x-band (side cards / section bands)
-  view_document_column_lock_narrow_only # Column-lock only narrow side props — not feature/FAQ grid cards
-  view_document_select_all_leaves   # Select all: Markdown own-text leaves (not View-delegated card roots)
-  view_document_wheel_during_select # Mouse drag-select: Empty blocks page-drag; wheel applied manually
-  text_flow_selection_all_sticky    # Select all sticks across redraw (tracker refill in end())
   button_pub_draw_text              # Button.draw_text public for host recolour (sticky nav active)
+  # Text selection, one model (docs/DESIGN.md § Text selection & copy) — after
+  # every other patch that touches text_flow / view / text_input / web. Replaces the
+  # 14 piecemeal text_flow_selection* / view_document_* / markdown_* patches.
+  # Per-block select (mouse drag, double/triple-click, touch long-press word),
+  # View{selection_root} Ctrl/Cmd+A + Copy of all + right-click menu action,
+  # TextInput ink over its band, UTF-8 safe ranges, X11 UTF8_STRING atom.
+  text_selection
+  keyboard_view_android_willshow    # Android: WillShow snaps (DidShow reconciles); small target change snaps
 )
 for name in "${PATCHES[@]}"; do
   patch -p1 --forward --no-backup-if-mismatch --quiet -d "$VENDOR" \

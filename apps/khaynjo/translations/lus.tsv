@@ -1368,3 +1368,22 @@ recent_changes	Thlak hnai
 lane_declared_label	Chhiah bill
 lane_owner_label	Sum lehkha
 money_lane_bill	Bill: {lane}
+sel_copy	Copy rawh
+sel_select_all	A zavaia thlang rawh
+sel_copied	Copy a ni ta
+items_tmpl_khaynjo	Khaynjo thil template
+items_tmpl_named	{name} template
+app_tmpl_named	{name} app template
+private_code_ph	Code number 12
+stamp_on	Seal: file-ah awm
+pay_qr_on	Pek QR: file-ah awm
+pay_qr_off	Pek QR: awm lo
+items_tmpl_heading	Item template-te
+items_tmpl_help	I menu atan chaw chi hrang hrang, category leh thlalak. Dawr setting leh hnathawktute chu an awm angin an awm reng ang.
+public_tmpl_help	Tu pawhin an download theih menu tirhna. Internet vawi khat a ngai.
+private_tmpl_help	I Khaynjo inbiakpawhna atanga code digit 12 hmanga humhalh customer menu-te.
+printers_screen_tip	Zawng hian he device-in a hman theih printer-te a lantir a, he dawr atan a dahṭha ṭhin. Bill printer-te: Bill leh KOT format → Bill. Chawhmeh: Chawhmeh → Chawhmeh station-te.
+printers_found_none	Printer hmuh a ni lo.
+kot_copy_from	Hei atang hian copy rawh
+kot_copy_from_help	Chu kind atanga line tinte size, thickness leh alignment hi heta copy a ni. He kind hian a banner, item prefix leh strike a vawng tlat. Vawn tlat nan KOT format save rawh.
+nav_loading	Load mek mek a ni…
