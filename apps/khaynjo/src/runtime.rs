@@ -499,7 +499,6 @@ enum MenuImportKind {
     Client { id: String, title: String },
     /// Post-create DeviceSetup offer — import from a downloaded/cached pack dir.
     AppTemplate {
-        id: String,
         title: String,
         pack_dir: PathBuf,
         shop_defaults_id: Option<String>,

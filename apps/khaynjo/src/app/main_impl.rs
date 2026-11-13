@@ -376,7 +376,6 @@ impl App {
                             Ok((
                                 db,
                                 MenuImportKind::AppTemplate {
-                                    id: manifest.id.clone(),
                                     title: manifest.title.clone(),
                                     pack_dir,
                                     shop_defaults_id: defaults,

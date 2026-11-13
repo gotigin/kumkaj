@@ -4642,9 +4642,11 @@ fn device_printers_from_value(value: serde_json::Value) -> DevicePrinters {
                 .printers
                 .into_iter()
                 .map(|r| {
-                    // One-shot undo of target-kind delivery invention
-                    // (Named→OS document, USB/BT/net→ESC/POS). After the flag
-                    // is set, an explicit approach the owner picks is kept.
+                    // One-shot: clear only the Named/Default → OS document
+                    // stamp that broke working ESC/POS. Do **not** clear
+                    // USB/BT/:9100 ESC/POS — with Bill format still on OS
+                    // document (built-in default), emptying those left direct
+                    // heads unable to print (OS on USB is refused).
                     let mut delivery = r.delivery;
                     let target = r.target;
                     if heal {
@@ -4653,16 +4655,11 @@ fn device_printers_from_value(value: serde_json::Value) -> DevicePrinters {
                         } else {
                             normalize_delivery(&delivery)
                         };
-                        let invented = match parse_target(&target) {
-                            PrinterTarget::Named(_) | PrinterTarget::Default => {
-                                norm == DELIVERY_SYSTEM_SPOOLER
-                            }
-                            PrinterTarget::Usb(_)
-                            | PrinterTarget::Bluetooth(_)
-                            | PrinterTarget::Network(_) => norm == DELIVERY_ESCPOS,
-                            _ => false,
-                        };
-                        if invented {
+                        if matches!(
+                            parse_target(&target),
+                            PrinterTarget::Named(_) | PrinterTarget::Default
+                        ) && norm == DELIVERY_SYSTEM_SPOOLER
+                        {
                             delivery.clear();
                         }
                     }
@@ -5186,13 +5183,9 @@ impl DevicePrinters {
         }
     }
 
-    /// Portrait/landscape and delivery for the bill (`standard`) or the kitchen ticket.
+    /// Portrait/landscape and How for the bill (`standard`) or the kitchen ticket.
     pub fn set_job_drive(&mut self, standard: bool, landscape: bool, delivery: &str) {
-        let delivery = if delivery.trim().is_empty() {
-            DELIVERY_SYSTEM_SPOOLER
-        } else {
-            delivery.trim()
-        };
+        let delivery = normalize_delivery(delivery);
         let document = delivery == DELIVERY_SYSTEM_SPOOLER;
         for f in self.formats.iter_mut() {
             let hit = if standard {
@@ -5202,7 +5195,7 @@ impl DevicePrinters {
             };
             if hit {
                 f.landscape = landscape;
-                f.delivery = delivery.to_string();
+                f.delivery = delivery.clone();
                 f.document = document;
             }
         }
@@ -5796,13 +5789,13 @@ pub enum PrinterTarget {
     AndroidPrint,
 }
 
-/// One place to send a job: address/name, slip look (format), and this
-/// printer's delivery (how bytes are handed over).
+/// One place to send a job: address/name, slip look (format), and How
+/// (printer override if set, else place format — see [`delivery_for_printer`]).
 #[derive(Clone, Debug, PartialEq)]
 pub struct PrintDest {
     pub target: PrinterTarget,
     pub format: PrintFormat,
-    /// `DELIVERY_*` from the named printer (not from the Bill/KOT format).
+    /// Resolved `DELIVERY_*` (never invented from printer target kind).
     pub delivery: String,
 }
 
@@ -5855,23 +5848,69 @@ pub fn can_print_format(target: &PrinterTarget, format: &PrintFormat) -> bool {
 }
 
 /// Whether this device can send to `target` with the chosen delivery.
+/// Does not invent a different How — OS document on a direct device is false.
 pub fn can_print_delivery(target: &PrinterTarget, delivery: &str) -> bool {
+    matches!(
+        classify_send(target, delivery),
+        SendKind::EscPos | SendKind::Raw | SendKind::OsDocument
+    )
+}
+
+/// What [`send_to_printer`] will do for this target + How (for tests / UI).
+#[derive(Clone, Debug, PartialEq, Eq)]
+pub enum SendKind {
+    /// Thermal ESC/POS payload via raw spool or direct write.
+    EscPos,
+    /// Same thermal payload as ESC/POS, raw spool / direct write only.
+    Raw,
+    /// PNG of the slip via the system spooler / Android print.
+    OsDocument,
+    /// Owner chose a How this target cannot do — clear error, no silent swap.
+    Unsupported(&'static str),
+}
+
+/// Classify How × target. Never swaps OS document → ESC/POS.
+pub fn classify_send(target: &PrinterTarget, delivery: &str) -> SendKind {
     let delivery = normalize_delivery(delivery);
-    match target {
-        PrinterTarget::Network(_) | PrinterTarget::Bluetooth(_) | PrinterTarget::Usb(_) => {
-            // Direct devices always take ESC/POS / raw bytes. OS document is
-            // not a spooler path here — the worker falls back to ESC/POS.
-            true
-        }
-        PrinterTarget::AndroidPrint => {
-            cfg!(target_os = "android")
-                && (delivery == DELIVERY_SYSTEM_SPOOLER || delivery == DELIVERY_ESCPOS)
-        }
-        PrinterTarget::Default | PrinterTarget::Named(_) => {
-            if cfg!(target_os = "android") {
-                delivery == DELIVERY_SYSTEM_SPOOLER
-            } else {
-                true
+    match delivery.as_str() {
+        DELIVERY_SYSTEM_SPOOLER => match target {
+            PrinterTarget::Network(_) | PrinterTarget::Bluetooth(_) | PrinterTarget::Usb(_) => {
+                SendKind::Unsupported(
+                    "OS document needs a system print queue — this is a direct device. Pick ESC/POS or Raw, or use a named queue.",
+                )
+            }
+            PrinterTarget::AndroidPrint => {
+                if cfg!(target_os = "android") {
+                    SendKind::OsDocument
+                } else {
+                    SendKind::Unsupported("Android print service is only on Android")
+                }
+            }
+            PrinterTarget::Default | PrinterTarget::Named(_) => SendKind::OsDocument,
+        },
+        DELIVERY_RAW_DEVICE => match target {
+            PrinterTarget::AndroidPrint => SendKind::Unsupported(
+                "Raw bytes need Network, Bluetooth, USB, or a named queue — Android print is for OS document",
+            ),
+            PrinterTarget::Default | PrinterTarget::Named(_) if cfg!(target_os = "android") => {
+                SendKind::Unsupported(
+                    "Raw bytes on Android need Network, Bluetooth, or USB",
+                )
+            }
+            _ => SendKind::Raw,
+        },
+        _ => {
+            // ESC/POS (and unknown → normalized ESC/POS)
+            match target {
+                PrinterTarget::AndroidPrint => SendKind::Unsupported(
+                    "ESC/POS needs Network, Bluetooth, USB, or a named queue — Android print is for OS document",
+                ),
+                PrinterTarget::Default | PrinterTarget::Named(_) if cfg!(target_os = "android") => {
+                    SendKind::Unsupported(
+                        "ESC/POS on Android needs Network, Bluetooth, or USB",
+                    )
+                }
+                _ => SendKind::EscPos,
             }
         }
     }
@@ -6106,8 +6145,9 @@ pub fn print_text(kind: PrintKind, text: &str, app_files: Option<&Path>) -> Resu
     print_route(kind, default_route_for(kind), text, app_files)
 }
 
-/// Settings → Printers → Print a test page: one selected device only.
-/// Uses the Bill place format for layout/delivery. Never fans out to every
+/// Settings → Printers → Print a test page, or Bill/KOT format → Test:
+/// one selected device only. Look + How fallback come from `kind`
+/// (Bill format vs KOT format) — not always Bill. Never fans out to every
 /// printer on a place — that was the "all or none" trap on the pool screen.
 pub fn print_one_printer(
     cfg: &DevicePrinters,
@@ -6123,7 +6163,7 @@ pub fn print_one_printer(
             opened: false,
         });
     };
-    let format = cfg.format_for(RouteKey::Bill);
+    let format = cfg.format_for(default_route_for(kind));
     let delivery = delivery_for_printer(&p.delivery, &format);
     let dest = PrintDest {
         target: parse_target(&p.target),
@@ -6132,10 +6172,12 @@ pub fn print_one_printer(
     };
     let opened = match sink() {
         PrintSink::Os => {
-            if !can_print_delivery(&dest.target, &dest.delivery) {
-                false
-            } else {
-                match queue(Job {
+            match classify_send(&dest.target, &dest.delivery) {
+                SendKind::Unsupported(msg) => {
+                    note_problem(format!("{}: {msg}", describe(&dest.target)));
+                    false
+                }
+                _ => match queue(Job {
                     dests: vec![dest],
                     mode: RoutePrintMode::First,
                     path: path.clone(),
@@ -6148,7 +6190,7 @@ pub fn print_one_printer(
                         note_problem(e);
                         false
                     }
-                }
+                },
             }
         }
         PrintSink::Capture => {
@@ -6212,16 +6254,22 @@ pub fn print_route_using(
     let copies = copies.max(1);
     let opened = match sink() {
         PrintSink::Os => {
-            let dests: Vec<PrintDest> = cfg
-                .destinations_for(route)
-                .into_iter()
+            let all = cfg.destinations_for(route);
+            // Always name Unsupported How (e.g. OS on USB) — even when another
+            // printer on the route still works. Silent skip hid broken heads.
+            for d in &all {
+                if let SendKind::Unsupported(msg) = classify_send(&d.target, &d.delivery) {
+                    note_problem(format!("{}: {msg}", describe(&d.target)));
+                }
+            }
+            let dests: Vec<PrintDest> = all
+                .iter()
                 .filter(|d| can_print_delivery(&d.target, &d.delivery))
+                .cloned()
                 .collect();
             if dests.is_empty() {
-                if kind == PrintKind::Kot {
-                    note_problem(
-                        NO_KOT_PRINTER.into(),
-                    );
+                if all.is_empty() && kind == PrintKind::Kot {
+                    note_problem(NO_KOT_PRINTER.into());
                 }
                 false
             } else {
@@ -6507,69 +6555,60 @@ fn send_to_printer(
     copies: u32,
 ) -> Result<(), String> {
     let copies = copies.max(1);
-    // Delivery is the **printer's** choice. Format owns look (width, type,
-    // fields). Bill and KOT may both use any printer.
-    let delivery = normalize_delivery(delivery);
-    let thermal = || replicate_escpos_copies(&escpos_job_format(format, text), copies);
-    let as_os_document = delivery == DELIVERY_SYSTEM_SPOOLER;
-
-    // Direct thermal transports: always write ESC/POS / raw job bytes.
-    // "OS document" on these falls back to ESC/POS (same picture the preview
-    // uses) so assigning a Brother to KOT or a USB head to Bill still works.
-    let write_direct = |bytes: &[u8]| -> Result<(), String> {
-        match target {
-            PrinterTarget::Network(addr) => print_network_bytes(addr, bytes),
-            PrinterTarget::Bluetooth(mac) => crate::print_bt::write_bytes(mac, bytes),
-            PrinterTarget::Usb(id) => crate::print_usb::write_bytes(id, bytes),
-            _ => Err("not a direct device".into()),
+    // Look = format. How = resolved delivery. Never invent or silently swap.
+    match classify_send(target, delivery) {
+        SendKind::Unsupported(msg) => Err(msg.into()),
+        SendKind::OsDocument => send_os_document(format, target, path, text, copies),
+        SendKind::Raw | SendKind::EscPos => {
+            // Same thermal payload; both go through raw spool / direct write.
+            // ESC/POS Named → print_system_raw is the path that already worked.
+            let bytes = replicate_escpos_copies(&escpos_job_format(format, text), copies);
+            send_thermal_bytes(target, &bytes)
         }
-    };
+    }
+}
 
+fn send_os_document(
+    format: &PrintFormat,
+    target: &PrinterTarget,
+    path: &Path,
+    text: &str,
+    copies: u32,
+) -> Result<(), String> {
     match target {
-        PrinterTarget::Network(_) | PrinterTarget::Bluetooth(_) | PrinterTarget::Usb(_) => {
-            write_direct(&thermal())
-        }
         PrinterTarget::AndroidPrint => {
-            // Same gate as before: Android print service is the OS document path.
-            if !as_os_document {
-                return Err(format!(
-                    "\"{}\" needs Network, Bluetooth, or USB — Android print is for OS document",
-                    format.label
-                ));
-            }
             for _ in 0..copies {
                 print_android_document(text, format, format.landscape)?;
             }
             Ok(())
         }
         PrinterTarget::Default => {
-            // ESC/POS / Raw → raw thermal bytes (identical to the old
-            // `document == false` path). OS document → PNG via spooler.
-            if as_os_document {
-                print_system_standard(None, path, text, format, format.landscape, copies)
-            } else if cfg!(target_os = "android") {
-                Err(format!(
-                    "\"{}\" on Android needs OS document, or Network / Bluetooth / USB",
-                    format.label
-                ))
-            } else {
-                print_system_raw(None, &thermal())
-            }
+            print_system_standard(None, path, text, format, format.landscape, copies)
         }
         PrinterTarget::Named(name) => {
-            // Do not change the ESC/POS raw path — this is what worked for
-            // CUPS-named thermal heads (80Series2, etc.).
-            if as_os_document {
-                print_system_standard(Some(name), path, text, format, format.landscape, copies)
-            } else if cfg!(target_os = "android") {
-                Err(format!(
-                    "\"{}\" on Android needs OS document, or Network / Bluetooth / USB",
-                    format.label
-                ))
-            } else {
-                print_system_raw(Some(name), &thermal())
-            }
+            print_system_standard(Some(name), path, text, format, format.landscape, copies)
         }
+        PrinterTarget::Network(_) | PrinterTarget::Bluetooth(_) | PrinterTarget::Usb(_) => {
+            Err(
+                "OS document needs a system print queue — this is a direct device. Pick ESC/POS or Raw, or use a named queue."
+                    .into(),
+            )
+        }
+    }
+}
+
+/// ESC/POS or Raw: thermal bytes to the device / raw queue.
+fn send_thermal_bytes(target: &PrinterTarget, bytes: &[u8]) -> Result<(), String> {
+    match target {
+        PrinterTarget::Network(addr) => print_network_bytes(addr, bytes),
+        PrinterTarget::Bluetooth(mac) => crate::print_bt::write_bytes(mac, bytes),
+        PrinterTarget::Usb(id) => crate::print_usb::write_bytes(id, bytes),
+        PrinterTarget::Default => print_system_raw(None, bytes),
+        PrinterTarget::Named(name) => print_system_raw(Some(name), bytes),
+        PrinterTarget::AndroidPrint => Err(
+            "thermal bytes need Network, Bluetooth, USB, or a named queue — Android print is for OS document"
+                .into(),
+        ),
     }
 }
 
@@ -6587,28 +6626,50 @@ fn replicate_escpos_copies(one: &[u8], copies: u32) -> Vec<u8> {
 }
 
 fn print_android_document(text: &str, format: &PrintFormat, landscape: bool) -> Result<(), String> {
-    // Same Noto PNG as desktop. Kitchen marks keep size, weight, and alignment
-    // across the content width. A bill uses the format's type size and width.
-    let metrics = format.raster_metrics();
-    let png = if text.contains(KOT_STYLE_MARK) {
-        crate::receipt_raster::png_lines(&styled_slip_lines(text, &metrics), &metrics)?
-    } else {
-        crate::receipt_raster::png_metrics(text, &metrics)?
-    };
+    let (png, _, _) = build_os_document_png(text, format, landscape, true)?;
     #[cfg(target_os = "android")]
     {
-        crate::print_android::print_png("Khaynjo", &png, landscape)
+        // Orientation is already in the PNG — do not rotate again.
+        crate::print_android::print_png("Khaynjo", &png, false)
     }
     #[cfg(not(target_os = "android"))]
     {
-        let _ = (png, landscape);
+        let _ = png;
         Err("Android print service is only on Android".into())
     }
 }
 
-/// Standard (document) jobs: always render with bundled Noto fonts to a PNG,
-/// then hand that image to the OS printer. Plain UTF-8 text depended on each
-/// driver's fonts (Gujarati/Hindi became □ before qty on Brother etc.).
+/// Build the OS-document PNG.
+///
+/// - `embed_on_page`: place the slip on a 210 mm canvas at content/210 (CUPS +
+///   Android PrintManager fit the *page*, so 150 mm ≠ 210 mm).
+/// - Without embed (Windows): draw the slip alone; the GDI path sizes by mm.
+fn build_os_document_png(
+    text: &str,
+    format: &PrintFormat,
+    landscape: bool,
+    embed_on_page: bool,
+) -> Result<(Vec<u8>, u32, bool), String> {
+    let metrics = format.raster_metrics();
+    let (png, _, _) = slip_page_png(text, &metrics, landscape)?;
+    let mm = content_mm_for_format(format);
+    let along_width = !landscape;
+    if embed_on_page {
+        const PAGE_MM: u32 = 210;
+        let png = embed_slip_on_page_png(&png, mm, PAGE_MM, along_width)?;
+        let (pw, ph) = png_pixel_size(&png).unwrap_or((1, 1));
+        let page_edge = if along_width { pw } else { ph }.max(1);
+        let ppm = ((page_edge as f64) * 1000.0 / f64::from(PAGE_MM)).round() as u32;
+        Ok((png_with_density(png, ppm), PAGE_MM, along_width))
+    } else {
+        let content_px = metrics.page_dots().max(1);
+        let ppm = ((content_px as f64) * 1000.0 / f64::from(mm.max(1))).round() as u32;
+        Ok((png_with_density(png, ppm), mm, along_width))
+    }
+}
+
+/// OS document: same slip picture as the preview, then the system spooler.
+/// Plain UTF-8 text depended on each driver's fonts (Indic became □).
 fn print_system_standard(
     name: Option<&str>,
     path: &Path,
@@ -6617,35 +6678,74 @@ fn print_system_standard(
     landscape: bool,
     copies: u32,
 ) -> Result<(), String> {
-    let metrics = format.raster_metrics();
-    // A kitchen ticket carries a size, a weight, and Start/Center/End on each
-    // line. Drawing the stripped text left-aligned threw those away, so the
-    // chips did nothing on an OS-document printer. Bills have no marks and
-    // still use this format's type size and content width.
-    let png = if text.contains(KOT_STYLE_MARK) {
-        crate::receipt_raster::png_lines(&styled_slip_lines(text, &metrics), &metrics)?
-    } else {
-        crate::receipt_raster::png_metrics(text, &metrics)?
-    };
-    let mm = content_mm_for_dots(metrics.page_dots());
-    let px = png_pixel_size(&png).unwrap_or((1, 1)).0.max(1);
-    let ppm = ((px as f64) * 1000.0 / mm.max(1) as f64).round() as u32;
-    let png = png_with_density(png, ppm);
-    let png_path = path.with_extension("png");
-    fs::write(&png_path, &png).map_err(|e| e.to_string())?;
     #[cfg(target_os = "android")]
     {
-        let _ = name;
+        let _ = (name, path);
+        let (png, _, _) = build_os_document_png(text, format, landscape, true)?;
         for _ in 0..copies.max(1) {
-            crate::print_android::print_png("Khaynjo", &png, landscape)?;
+            crate::print_android::print_png("Khaynjo", &png, false)?;
         }
         Ok(())
     }
-    #[cfg(not(target_os = "android"))]
+    #[cfg(target_os = "windows")]
     {
-        let mm = content_mm_for_dots(format.raster_metrics().page_dots());
-        print_system_image(name, &png_path, landscape, copies.max(1), mm)
+        // GDI draws at content_mm — no page embed needed.
+        let (png, mm, along_width) = build_os_document_png(text, format, landscape, false)?;
+        let png_path = path.with_extension("png");
+        fs::write(&png_path, &png).map_err(|e| e.to_string())?;
+        print_system_image(name, &png_path, along_width, copies.max(1), mm)
     }
+    #[cfg(all(not(target_os = "android"), not(target_os = "windows")))]
+    {
+        // CUPS fit-to-page needs the 210 mm embed or every width fills A4.
+        let (png, page_mm, along_width) = build_os_document_png(text, format, landscape, true)?;
+        let png_path = path.with_extension("png");
+        fs::write(&png_path, &png).map_err(|e| e.to_string())?;
+        print_system_image(name, &png_path, along_width, copies.max(1), page_mm)
+    }
+}
+
+/// Put a content-width slip on a wider page canvas so spooler "fit to page"
+/// still preserves the owner's mm (150 mm ≠ 210 mm on A4).
+///
+/// `content_along_width`: portrait slip (content is PNG width). After a
+/// landscape bake, content is PNG height — pass false.
+pub fn embed_slip_on_page_png(
+    slip_png: &[u8],
+    content_mm: u32,
+    page_mm: u32,
+    content_along_width: bool,
+) -> Result<Vec<u8>, String> {
+    let content_mm = content_mm.clamp(40, 210);
+    let page_mm = page_mm.max(content_mm).clamp(40, 210);
+    if content_mm >= page_mm {
+        return Ok(slip_png.to_vec());
+    }
+    let img = image::load_from_memory(slip_png)
+        .map_err(|e| e.to_string())?
+        .to_rgba8();
+    let sw = img.width().max(1);
+    let sh = img.height().max(1);
+    let page = if content_along_width {
+        let page_w = ((u64::from(sw) * u64::from(page_mm) + u64::from(content_mm) / 2)
+            / u64::from(content_mm)) as u32;
+        let page_w = page_w.max(sw);
+        let mut page = image::RgbaImage::from_pixel(page_w, sh, image::Rgba([255, 255, 255, 255]));
+        image::imageops::overlay(&mut page, &img, 0, 0);
+        page
+    } else {
+        let page_h = ((u64::from(sh) * u64::from(page_mm) + u64::from(content_mm) / 2)
+            / u64::from(content_mm)) as u32;
+        let page_h = page_h.max(sh);
+        let mut page = image::RgbaImage::from_pixel(sw, page_h, image::Rgba([255, 255, 255, 255]));
+        image::imageops::overlay(&mut page, &img, 0, 0);
+        page
+    };
+    let mut buf = std::io::Cursor::new(Vec::new());
+    image::DynamicImage::ImageRgba8(page)
+        .write_to(&mut buf, image::ImageFormat::Png)
+        .map_err(|e| e.to_string())?;
+    Ok(buf.into_inner())
 }
 
 /// Network `:9100` — ESC/POS slip (KOT metrics by default).
@@ -6833,6 +6933,15 @@ pub fn content_mm_for_dots(dots: usize) -> u32 {
     }
 }
 
+/// Content width in mm from the format's wrap columns (inverse of
+/// [`wrap_cols_for_paper_mm`]). Used so OS document physical size matches
+/// the owner’s content width — not a coarse 58/80 bucket.
+pub fn content_mm_for_format(format: &PrintFormat) -> u32 {
+    let cols = format.line.clamp(KOT_CHARS_MIN, KOT_CHARS_MAX);
+    let mm = ((cols as f32) / 0.55).round() as u32;
+    mm.clamp(40, 210)
+}
+
 /// The slip picture the preview and the document printer both use.
 /// Landscape turns that picture so the content width is the vertical side.
 pub fn slip_page_png(
@@ -6953,9 +7062,9 @@ pub fn metrics_at_content_mm(
     mm: u32,
 ) -> crate::receipt_raster::RasterMetrics {
     let mut m = base.raster_metrics();
-    // Same dot width the printer uses for this millimetre setting, so the
-    // preview is a scale of the printed slip rather than a second layout.
-    m.width_dots = paper_width_dots(mm);
+    // Same dots as print: `line = wrap_cols(mm)` then `paper_dots_for_wrap_cols`.
+    // Using `paper_width_dots(mm)` directly disagreed at 112 / 150 mm.
+    m.width_dots = paper_dots_for_wrap_cols(wrap_cols_for_paper_mm(mm));
     m.baseline = m.em * 0.92;
     m
 }
@@ -7156,11 +7265,14 @@ pub fn escpos_text(text: &str) -> Vec<u8> {
 }
 
 /// Print a Standard bill **image** (PNG from Noto raster) on the OS printer.
+/// `content_along_width`: portrait (content = PNG width); false after landscape
+/// bake (content = PNG height). Do not infer from image aspect — short
+/// landscape slips are taller than wide after rotate90.
 #[cfg(not(target_os = "android"))]
 fn print_system_image(
     name: Option<&str>,
     path: &Path,
-    landscape: bool,
+    content_along_width: bool,
     copies: u32,
     content_mm: u32,
 ) -> Result<(), String> {
@@ -7175,29 +7287,15 @@ fn print_system_image(
         if copies > 1 {
             cmd.args(["-n", &copies.to_string()]);
         }
-        // A slip stays its own width. A page (about A4) is fitted onto the
-        // sheet so the whole bill is on the paper, not a clipped corner of
-        // two rules. The PNG carries the same density in pHYs.
-        let px = png_pixel_size(&std::fs::read(path).unwrap_or_default()).unwrap_or((1, 1)).0;
-        let ppi = ((px as f64) * 25.4 / content_mm as f64)
+        let png_bytes = std::fs::read(path).unwrap_or_default();
+        let (pw, ph) = png_pixel_size(&png_bytes).unwrap_or((1, 1));
+        let edge = if content_along_width { pw } else { ph }.max(1);
+        let ppi = ((edge as f64) * 25.4 / f64::from(content_mm))
             .round()
             .clamp(72.0, 1200.0) as u32;
-        let scaling = if content_mm >= 180 {
-            "print-scaling=fit"
-        } else {
-            "print-scaling=none"
-        };
-        cmd.args(["-o", scaling]);
+        cmd.args(["-o", "print-scaling=fit"]);
         cmd.args(["-o", &format!("ppi={ppi}")]);
-        // 3 = portrait, 4 = landscape (IPP orientation-requested).
-        cmd.args([
-            "-o",
-            if landscape {
-                "orientation-requested=4"
-            } else {
-                "orientation-requested=3"
-            },
-        ]);
+        cmd.args(["-o", "orientation-requested=3"]);
         cmd.arg("--").arg(path);
         match cmd.output() {
             Ok(out) if out.status.success() => cups_confirm_after_lp(name, &out.stdout),
@@ -7215,17 +7313,15 @@ fn print_system_image(
         const CREATE_NO_WINDOW: u32 = 0x0800_0000;
         let quote = |s: &str| s.replace('\'', "''");
         let path_q = quote(&path.display().to_string());
-        let land = if landscape { "$true" } else { "$false" };
-        // Draw the PNG with System.Drawing — Out-Printer on UTF-8 text had no
-        // Indic fonts; the image already has our Noto glyphs.
+        let along_w = if content_along_width { "$true" } else { "$false" };
         let mut script = format!(
             "Add-Type -AssemblyName System.Drawing; \
              $img = [System.Drawing.Image]::FromFile('{path_q}'); \
              $doc = New-Object System.Drawing.Printing.PrintDocument; \
              $doc.DocumentName = 'Khaynjo'; \
-             $doc.DefaultPageSettings.Landscape = {land}; \
+             $doc.DefaultPageSettings.Landscape = $false; \
              $doc.PrinterSettings.Copies = [int16]{copies}; \
-             $doc.DefaultPageSettings.Margins = New-Object System.Drawing.Printing.Margins(20,20,20,20);"
+             $doc.DefaultPageSettings.Margins = New-Object System.Drawing.Printing.Margins(0,0,0,0);"
         );
         if let Some(name) = name {
             script.push_str(&format!(
@@ -7235,12 +7331,19 @@ fn print_system_image(
         }
         script.push_str(&format!(
             "$script:img = $img; \
+             $alongW = {along_w}; \
              $doc.add_PrintPage({{ param($s,$e) \
-               $b = $e.MarginBounds; \
+               $b = $e.PageBounds; \
                $want = [int]({content_mm} / 25.4 * 100); \
-               $w = [Math]::Min($want, $b.Width); \
-               $h = [int]($w * $script:img.Height / $script:img.Width); \
-               if ($h -gt $b.Height) {{ $h = $b.Height; $w = [int]($h * $script:img.Width / $script:img.Height) }}; \
+               if ($alongW) {{ \
+                 $w = [Math]::Min($want, $b.Width); \
+                 $h = [int]($w * $script:img.Height / $script:img.Width); \
+                 if ($h -gt $b.Height) {{ $h = $b.Height; $w = [int]($h * $script:img.Width / $script:img.Height) }} \
+               }} else {{ \
+                 $h = [Math]::Min($want, $b.Height); \
+                 $w = [int]($h * $script:img.Width / $script:img.Height); \
+                 if ($w -gt $b.Width) {{ $w = $b.Width; $h = [int]($w * $script:img.Height / $script:img.Width) }} \
+               }}; \
                $e.Graphics.DrawImage($script:img, $b.Left, $b.Top, $w, $h); \
                $e.HasMorePages = $false }}); \
              $doc.Print(); \
@@ -7260,7 +7363,7 @@ fn print_system_image(
     }
     #[cfg(not(any(target_os = "linux", target_os = "macos", target_os = "windows")))]
     {
-        let _ = (name, path);
+        let _ = (name, path, content_along_width);
         Err("printing is not supported on this system".into())
     }
 }
@@ -8152,12 +8255,20 @@ mod tests {
     #[test]
     fn load_clears_wrong_named_os_document_stamp() {
         let raw = serde_json::json!({
-            "printers": [{
-                "id": "p1",
-                "label": "80Series2",
-                "target": "80Series2",
-                "delivery": "system_spooler"
-            }],
+            "printers": [
+                {
+                    "id": "p1",
+                    "label": "80Series2",
+                    "target": "80Series2",
+                    "delivery": "system_spooler"
+                },
+                {
+                    "id": "p2",
+                    "label": "USB",
+                    "target": "usb:0fe6:811e:abc",
+                    "delivery": "escpos"
+                }
+            ],
             "routes": { "bill": ["p1"] }
         });
         let mut cfg = device_printers_from_value(raw);
@@ -8165,11 +8276,205 @@ mod tests {
             cfg.printer_by_id("p1").unwrap().delivery.trim().is_empty(),
             "heal Named OS stamp so format approach works again"
         );
+        assert_eq!(
+            cfg.printer_by_id("p2").unwrap().delivery,
+            DELIVERY_ESCPOS,
+            "must not clear USB ESC/POS — Bill format default OS would leave USB unprintable"
+        );
         cfg.set_job_drive(true, false, DELIVERY_ESCPOS);
         assert_eq!(
             cfg.destinations_for(RouteKey::Bill)[0].delivery,
             DELIVERY_ESCPOS
         );
+    }
+
+    #[test]
+    fn classify_send_honours_how_without_swapping() {
+        let named = PrinterTarget::Named("80Series2".into());
+        let usb = PrinterTarget::Usb("usb:0fe6:811e".into());
+        let net = PrinterTarget::Network("192.168.1.10:9100".into());
+        assert_eq!(classify_send(&named, DELIVERY_ESCPOS), SendKind::EscPos);
+        assert_eq!(classify_send(&named, DELIVERY_RAW_DEVICE), SendKind::Raw);
+        assert_eq!(
+            classify_send(&named, DELIVERY_SYSTEM_SPOOLER),
+            SendKind::OsDocument
+        );
+        assert_eq!(classify_send(&usb, DELIVERY_ESCPOS), SendKind::EscPos);
+        assert_eq!(classify_send(&usb, DELIVERY_RAW_DEVICE), SendKind::Raw);
+        assert!(matches!(
+            classify_send(&usb, DELIVERY_SYSTEM_SPOOLER),
+            SendKind::Unsupported(_)
+        ));
+        assert!(matches!(
+            classify_send(&net, DELIVERY_SYSTEM_SPOOLER),
+            SendKind::Unsupported(_)
+        ));
+        assert!(!can_print_delivery(&usb, DELIVERY_SYSTEM_SPOOLER));
+        assert!(can_print_delivery(&named, DELIVERY_RAW_DEVICE));
+    }
+
+    #[test]
+    fn printer_raw_override_beats_format_os() {
+        let mut cfg = DevicePrinters::default();
+        let p = cfg.add_printer("80Series2", "80Series2");
+        cfg.set_job_drive(true, false, DELIVERY_SYSTEM_SPOOLER);
+        assert!(cfg.set_printer_delivery(&p, DELIVERY_RAW_DEVICE));
+        cfg.routes.bill = vec![p];
+        let d = &cfg.destinations_for(RouteKey::Bill)[0];
+        assert_eq!(d.delivery, DELIVERY_RAW_DEVICE);
+        assert_eq!(classify_send(&d.target, &d.delivery), SendKind::Raw);
+    }
+
+    #[test]
+    fn printer_os_override_beats_format_escpos() {
+        let mut cfg = DevicePrinters::default();
+        let p = cfg.add_printer("Brother", "Brother_DCP");
+        cfg.set_job_drive(true, false, DELIVERY_ESCPOS);
+        assert!(cfg.set_printer_delivery(&p, DELIVERY_SYSTEM_SPOOLER));
+        cfg.routes.bill = vec![p];
+        let d = &cfg.destinations_for(RouteKey::Bill)[0];
+        assert_eq!(d.delivery, DELIVERY_SYSTEM_SPOOLER);
+        assert_eq!(classify_send(&d.target, &d.delivery), SendKind::OsDocument);
+    }
+
+    #[test]
+    fn find_leaves_delivery_empty() {
+        let mut cfg = DevicePrinters::default();
+        let named = cfg.add_printer("80Series2", "80Series2");
+        let usb = cfg.add_printer("USB", "usb:0fe6:811e:abc");
+        assert!(cfg.printer_by_id(&named).unwrap().delivery.trim().is_empty());
+        assert!(cfg.printer_by_id(&usb).unwrap().delivery.trim().is_empty());
+    }
+
+    #[test]
+    fn content_mm_for_format_roundtrips_owner_width() {
+        for mm in [40u32, 56, 58, 80, 112, 210] {
+            let mut f = PrintFormat::kot();
+            f.line = wrap_cols_for_paper_mm(mm);
+            let got = content_mm_for_format(&f);
+            assert!(
+                (got as i32 - mm as i32).abs() <= 1,
+                "owner mm {mm} → cols → {got}"
+            );
+        }
+    }
+
+    #[test]
+    fn os_document_uses_same_slip_picture_as_preview() {
+        let mut f = PrintFormat::standard_portrait();
+        f.line = wrap_cols_for_paper_mm(80);
+        let text = "Shop\nButter Roti\t2\n";
+        let metrics = f.raster_metrics();
+        let (preview, pw, ph) = slip_page_png(text, &metrics, false).expect("preview");
+        let (os, ow, oh) = slip_page_png(text, &metrics, false).expect("os");
+        assert_eq!((pw, ph), (ow, oh));
+        assert_eq!(preview, os, "OS document must draw the preview picture");
+        assert_eq!(content_mm_for_format(&f), 80);
+        // Density stamp uses content-edge dots ↔ owner mm.
+        let ppm = ((metrics.page_dots() as f64) * 1000.0 / 80.0).round() as u32;
+        let stamped = png_with_density(os, ppm);
+        assert!(
+            stamped.windows(4).any(|w| w == *b"pHYs"),
+            "OS PNG carries physical density"
+        );
+    }
+
+    #[test]
+    fn preview_and_print_share_dots_at_112_and_150() {
+        for mm in [112u32, 150] {
+            let mut f = PrintFormat::standard_portrait();
+            f.line = wrap_cols_for_paper_mm(mm);
+            let preview = metrics_at_content_mm(&f, mm).page_dots();
+            let print = f.raster_metrics().page_dots();
+            assert_eq!(
+                preview, print,
+                "{mm} mm: preview dots {preview} != print dots {print}"
+            );
+        }
+    }
+
+    #[test]
+    fn kot_test_uses_kot_format_not_bill() {
+        let mut cfg = DevicePrinters::default();
+        let p = cfg.add_printer("Kitchen", "80Series2");
+        cfg.set_job_drive(true, false, DELIVERY_SYSTEM_SPOOLER);
+        cfg.set_job_drive(false, false, DELIVERY_ESCPOS);
+        cfg.set_kot_content_line(wrap_cols_for_paper_mm(80));
+        cfg.set_bill_content_line(wrap_cols_for_paper_mm(210));
+        assert!(cfg.printer_by_id(&p).unwrap().delivery.trim().is_empty());
+        let bill = cfg.format_for(RouteKey::Bill);
+        let kot = cfg.format_for(RouteKey::Kot { station_id: "" });
+        assert_eq!(delivery_for_printer("", &bill), DELIVERY_SYSTEM_SPOOLER);
+        assert_eq!(delivery_for_printer("", &kot), DELIVERY_ESCPOS);
+        assert_ne!(
+            bill.line, kot.line,
+            "Bill 210 and KOT 80 must stay different widths"
+        );
+        // print_one_printer(kind=Kot) must resolve KOT How, not Bill OS.
+        assert_eq!(
+            classify_send(
+                &PrinterTarget::Named("80Series2".into()),
+                &delivery_for_printer("", &kot)
+            ),
+            SendKind::EscPos
+        );
+    }
+
+    #[test]
+    fn embed_on_page_keeps_150_narrower_than_210() {
+        let mut f = PrintFormat::standard_portrait();
+        f.line = wrap_cols_for_paper_mm(150);
+        let text = "Shop\nTotal 100\n";
+        let (slip, sw, sh) =
+            slip_page_png(text, &f.raster_metrics(), false).expect("slip");
+        let page = embed_slip_on_page_png(&slip, 150, 210, true).expect("embed");
+        let (pw, ph) = png_pixel_size(&page).unwrap();
+        assert_eq!(ph, sh, "height unchanged");
+        assert!(pw > sw, "150 mm sits on a wider 210 mm page");
+        let ratio = pw as f64 / sw as f64;
+        assert!(
+            (ratio - 210.0 / 150.0).abs() < 0.02,
+            "page/slip width should be 210/150, got {ratio}"
+        );
+        let full = embed_slip_on_page_png(&slip, 210, 210, true).expect("full");
+        assert_eq!(
+            png_pixel_size(&full).unwrap().0,
+            sw,
+            "210 mm content is already full page — no pad"
+        );
+    }
+
+    #[test]
+    fn os_document_build_embed_differs_150_from_210() {
+        let text = "Shop\nTotal 100\n";
+        let mut narrow = PrintFormat::standard_portrait();
+        narrow.line = wrap_cols_for_paper_mm(150);
+        let mut wide = PrintFormat::standard_portrait();
+        wide.line = wrap_cols_for_paper_mm(210);
+        assert!(
+            narrow.raster_metrics().page_dots() < wide.raster_metrics().page_dots(),
+            "150 mm has fewer content dots than 210"
+        );
+        let (png150, page_mm, along) =
+            build_os_document_png(text, &narrow, false, true).expect("150");
+        let (png210, _, _) = build_os_document_png(text, &wide, false, true).expect("210");
+        assert_eq!(page_mm, 210);
+        assert!(along);
+        let (slip150, s150, _) =
+            slip_page_png(text, &narrow.raster_metrics(), false).unwrap();
+        let (slip210, s210, _) =
+            slip_page_png(text, &wide.raster_metrics(), false).unwrap();
+        // Embedded pages are both ~210 mm wide; slip ink is a larger share at 210.
+        let w150 = png_pixel_size(&png150).unwrap().0;
+        let w210 = png_pixel_size(&png210).unwrap().0;
+        assert!(w150 >= s150 && w210 >= s210);
+        let frac150 = s150 as f64 / w150 as f64;
+        let frac210 = s210 as f64 / w210 as f64;
+        assert!(
+            frac150 < frac210,
+            "150 mm ink share {frac150} should be less than 210 mm {frac210}"
+        );
+        assert_ne!(slip150, slip210);
     }
 
     #[test]
@@ -8229,9 +8534,19 @@ mod tests {
             &PrinterTarget::Bluetooth("bt:AA:BB:CC:DD:EE:FF".into()),
             PrinterMode::Kot
         ));
+        // USB takes thermal How (ESC/POS / Raw). Standard's built-in How is
+        // OS document — refused on direct devices (no silent swap).
         assert!(can_print_mode(
             &PrinterTarget::Usb("usb:04b8:0e15".into()),
+            PrinterMode::Kot
+        ));
+        assert!(!can_print_mode(
+            &PrinterTarget::Usb("usb:04b8:0e15".into()),
             PrinterMode::Standard
+        ));
+        assert!(can_print_delivery(
+            &PrinterTarget::Usb("usb:04b8:0e15".into()),
+            DELIVERY_ESCPOS
         ));
     }
 
