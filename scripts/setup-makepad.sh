@@ -114,6 +114,7 @@ PATCHES=(
   web_init_window_order             # sites (wasm): Startup creates window 0 before the init geom is applied (else IdPool panic, stuck on Loading)
   web_aux_buttons_stay              # wasm: mouse side buttons do not navigate the browser away from the app
   d3d11_warp_fallback               # Windows: no usable adapter 0 (VMs, broken DXGI) → CPU WARP device instead of a panic
+  windows_end_session               # Windows: WM_ENDSESSION closes the window like the close button (shutdown / Restart Manager; WACK)
   # Press / touch / UI-thread doctrine (docs/DEV.md § Press, touch and a responsive UI thread).
   press_capture_cancel              # a press a scroll view takes over gets Hit::FingerCancel (never a click); TOUCH_SCROLL_SLOP
   button_press_lifecycle            # pressed face follows the finger: 80 ms touch delay, drag-off, cancel, heal when orphaned

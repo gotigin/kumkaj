@@ -834,3 +834,7 @@ role_help_supplier	Hlutverk: Birgir - AP fyrir innkaup.
 lane_declared_label	Bókun reiknings
 lane_owner_label	Bókun í reiðufé
 money_lane_bill	Reikningur: {lane}
+sel_copy	Afrita
+sel_select_all	Velja allt
+sel_copied	Afritað
+nav_loading	Hleður…

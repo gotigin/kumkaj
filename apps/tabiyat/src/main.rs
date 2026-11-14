@@ -12,13 +12,13 @@ pub use makepad_widgets;
 #[cfg(target_os = "android")]
 use crate::{
     books_op, business_day, diag, domain, entity_template, fiscal, locale, local_servers,
-    lan_images, menu_images, menu_templates, net, notify, phone, precise, print_share, schemes,
+    lan_images, menu_images, menu_templates, net, notify, phone, precise, print_share, receipt_raster, schemes,
     snack, startup, store, suggest, thumbs, upi_qr,
 };
 #[cfg(not(target_os = "android"))]
 use kumkaj_tabiyat::{
     books_op, business_day, diag, domain, entity_template, fiscal, locale, local_servers,
-    lan_images, menu_images, menu_templates, net, notify, phone, precise, print_share, schemes,
+    lan_images, menu_images, menu_templates, net, notify, phone, precise, print_share, receipt_raster, schemes,
     snack, startup, store, suggest, thumbs, uninstall_wipe, upi_qr,
 };
 use snack::SnackKind;
@@ -100,6 +100,7 @@ include!("app_state_impl.rs");
 include!("ui_script.rs");
 include!("helpers.rs");
 include!("popup.rs");
+include!("selection_menu.rs");
 include!("focus_chain.rs");
 include!("widgets/product_menu_floor.rs");
 include!("widgets/report_sidebar.rs");

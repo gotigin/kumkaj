@@ -834,3 +834,7 @@ role_help_supplier	Vai trò: Nhà cung cấp - AP để mua hàng.
 lane_declared_label	Đặt tài khoản
 lane_owner_label	Đặt phòng bằng tiền mặt
 money_lane_bill	Bill: {lane}
+sel_copy	Sao chép
+sel_select_all	Chọn tất cả
+sel_copied	Đã sao chép
+nav_loading	Đang tải…

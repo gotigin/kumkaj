@@ -834,3 +834,7 @@ role_help_supplier	Үүрэг: Нийлүүлэгч — Худалдан ава�
 lane_declared_label	Дансны захиалга
 lane_owner_label	Бэлэн мөнгөний захиалга
 money_lane_bill	Тооцоо: {lane}
+sel_copy	Хуулах
+sel_select_all	Бүгдийг сонгох
+sel_copied	Хуулагдлаа
+nav_loading	Ачаалж байна…

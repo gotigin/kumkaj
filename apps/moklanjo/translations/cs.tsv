@@ -834,3 +834,7 @@ role_help_supplier	Role: Dodavatel — AP pro nákupy.
 lane_declared_label	Rezervace účtu
 lane_owner_label	Hotovostní rezervace
 money_lane_bill	Účet: {lane}
+sel_copy	Kopírovat
+sel_select_all	Vybrat vše
+sel_copied	Zkopírováno
+nav_loading	Načítání…

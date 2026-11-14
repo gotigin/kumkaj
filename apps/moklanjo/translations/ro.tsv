@@ -834,3 +834,7 @@ role_help_supplier	Rol: Furnizor — AP pentru achiziții.
 lane_declared_label	Expediere în cont
 lane_owner_label	Expediere cu numerar
 money_lane_bill	Notă: {lane}
+sel_copy	Copiază
+sel_select_all	Selectează tot
+sel_copied	Copiat
+nav_loading	Se încarcă…

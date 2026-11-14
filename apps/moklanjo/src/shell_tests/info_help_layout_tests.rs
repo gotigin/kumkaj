@@ -1,5 +1,7 @@
 #[cfg(test)]
 mod info_help_layout_tests {
+    use super::*;
+
     /// InfoHelp root stays Fill so the trail can absorb leftover row width.
     #[test]
     fn infohelp_default_is_fill_so_trail_absorbs() {
@@ -183,5 +185,115 @@ mod info_help_layout_tests {
             .map(|i| start + i)
             .unwrap_or(ui.len());
         &ui[start..end]
+    }
+
+    /// Brand title+id must be Fill Down stacks — Fit+Fit Right cropped
+    /// "Khaynjo (2282(" on phone chrome (header / Lock / DeviceSetup).
+    #[test]
+    fn brand_title_stacks_are_fill_not_fit_right_pairs() {
+        let ui = include_str!("../ui_script.rs");
+        for id in [
+            "brand_title := WrapLabel{",
+            "lock_brand_title := WrapLabel{",
+            "setup_brand_title := WrapLabel{",
+        ] {
+            let block = ui
+                .split(id)
+                .nth(1)
+                .and_then(|s| s.split('}').next())
+                .unwrap_or("");
+            assert!(
+                block.contains("width: Fill"),
+                "{id} must be Fill so long shop names wrap, got {block:?}"
+            );
+            assert!(
+                !block.lines().take(6).any(|l| l.trim() == "width: Fit"),
+                "{id} must not be Fit beside a peer id (crops on 375)"
+            );
+        }
+        // No nested Fit+Fit Right row wrapping brand_title again.
+        assert!(
+            !ui.contains("brand_title := WrapLabel{\n                                                    width: Fit"),
+            "brand_title must not sit Fit in a Right peer row"
+        );
+    }
+
+    /// Word buttons must grow with ink — fixed 34/40px faces clip Gujarati / phone.
+    #[test]
+    fn text_chip_and_seg_buttons_use_fit_height() {
+        let ui = include_str!("../ui_script.rs");
+        let chip = ui
+            .split("let ChipBtn = Button{")
+            .nth(1)
+            .and_then(|s| s.split("let ChipBtnActive").next())
+            .unwrap_or("");
+        assert!(
+            chip.contains("height: Fit"),
+            "ChipBtn must use Fit height"
+        );
+        assert!(
+            !chip.contains("height: 34"),
+            "ChipBtn must not pin height 34"
+        );
+        // SegBtn: Moklanjo keeps one-line segments (segbtn_does_not_wrap_label).
+        assert!(
+            !ui.contains("height: 40 flow: Overlay"),
+            "never clip SegBtn/ChipBtn in height:40 overlay shells"
+        );
+    }
+
+    /// Form ScrollX under headings gets vertical margin; ChipStrip does not
+    /// (Overlay Lock tabs would float).
+    #[test]
+    fn form_scroll_x_has_vertical_margin_chipstrip_does_not() {
+        let ui = include_str!("../ui_script.rs");
+        let form = ui
+            .split("let FormScrollX = ScrollXView{")
+            .nth(1)
+            .and_then(|s| s.split("let ").next())
+            .unwrap_or("");
+        assert!(
+            form.contains("top: 8.") && form.contains("bottom: 8."),
+            "FormScrollX must pad top/bottom 8 so strips are not flush"
+        );
+        let chip = ui
+            .split("let ChipStrip = ScrollXView{")
+            .nth(1)
+            .and_then(|s| s.split("let ").next())
+            .unwrap_or("");
+        assert!(
+            !chip.contains("margin:"),
+            "ChipStrip must stay marginless (Overlay chevrons)"
+        );
+        // Moklanjo has no FormScrollX strip yet; the shared definition stays
+        // ready (Kirano / Tabiyat used it undefined until 2026-11-14).
+        assert!(ui.contains("let FormScrollX = ScrollXView{"), "FormScrollX must be defined");
+    }
+
+    /// Run-on figure lines split into rows; section titles and the words
+    /// over figures become headings; a closing sentence stays a line.
+    #[test]
+    fn report_figures_never_run_on() {
+        let rows = parse_report(
+            "Cash ₹120.00 · UPI ₹0.00 · Card ₹5.00\nExpenses ₹50.00 (2)\n\nParty outstanding (aging)\nNo balances.\n\nAssets\nBank ₹0.00\nRavi · Customer · ₹500.00 · 3d · current\n\nNo day close recorded yet.",
+        );
+        assert_eq!(
+            rows,
+            vec![
+                ReportRow::Kv("Cash".into(), "₹120.00".into()),
+                ReportRow::Kv("UPI".into(), "₹0.00".into()),
+                ReportRow::Kv("Card".into(), "₹5.00".into()),
+                ReportRow::Kv("Expenses".into(), "₹50.00 (2)".into()),
+                ReportRow::Gap,
+                ReportRow::Head("Party outstanding (aging)".into()),
+                ReportRow::Line("No balances.".into()),
+                ReportRow::Gap,
+                ReportRow::Head("Assets".into()),
+                ReportRow::Kv("Bank".into(), "₹0.00".into()),
+                ReportRow::Line("Ravi · Customer · ₹500.00 · 3d · current".into()),
+                ReportRow::Gap,
+                ReportRow::Line("No day close recorded yet.".into()),
+            ]
+        );
     }
 }

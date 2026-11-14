@@ -834,3 +834,7 @@ role_help_supplier	Role: Supplier — AP for purchases.
 lane_declared_label	རྩིས་ཐོ་སྔོན་མངག་བྱས་པ།
 lane_owner_label	དངུལ་སྨར་སྔོན་མངག་བྱས་པ།
 money_lane_bill	བིལ་: {lane}
+sel_copy	འདྲ་བཤུས།
+sel_select_all	ཚང་མ་འདེམས།
+sel_copied	འདྲ་བཤུས་ཟིན།
+nav_loading	ནང་འཇུག་བྱེད་བཞིན་པ…

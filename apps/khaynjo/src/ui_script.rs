@@ -11895,10 +11895,6 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 16.}
                     // backdrop is overridden transparent and its content
                     // fills the window, so the ghost's abs_pos is in window
                     // coordinates and nothing else is visible.
-                    // Floor Columns pick list: floats under floor_cols_box
-                    // (PopupAnchor "floor_cols") so the open menu never
-                    // stretches floor_cols_row or shoves the tables, and
-                    // follows the field while the Floor scrolls (popup.rs).
                     // Loading screen: a screen switch that took ≥ 1 s last time
                     // shows this for one frame first (go_with → NextFrame), so a
                     // tap is answered at once instead of by a frozen window.
@@ -11923,6 +11919,10 @@ h_backup := WrapLabel{body: "Backup" font_color: #x260B08 font_size: 16.}
                             sel_menu_all := StackLightBtn{text: "Select all" grab_key_focus: false}
                         }
                     }
+                    // Floor Columns pick list: floats under floor_cols_box
+                    // (PopupAnchor "floor_cols") so the open menu never
+                    // stretches floor_cols_row or shoves the tables, and
+                    // follows the field while the Floor scrolls (popup.rs).
                     floor_cols_popup := mod.widgets.AnchoredPopup{
                         key: "floor_cols"
                         min_width: 176.

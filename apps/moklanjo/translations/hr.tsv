@@ -834,3 +834,7 @@ role_help_supplier	Uloga: dobavljač — AP za nabave.
 lane_declared_label	Bukiranje na račun
 lane_owner_label	Gotovinsko bukiranje
 money_lane_bill	Račun: {lane}
+sel_copy	Kopiraj
+sel_select_all	Odaberi sve
+sel_copied	Kopirano
+nav_loading	Učitavanje…

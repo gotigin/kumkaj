@@ -59,6 +59,16 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
 
     /// True when a seller text field (not a button) holds key focus / soft keyboard.
     fn text_field_has_focus(&mut self, cx: &mut Cx) -> bool {
+        // Makepad never clears its IME area: after a field loses focus (or its
+        // screen is gone) `get_ime_area_rect` still returns that field's last
+        // rect. Count the IME only while the focused area is the field that
+        // owns it (TextInput focuses and shows the IME with the same draw_bg
+        // area) — Khaynjo's header kept "Locked" after a PIN unlock otherwise.
+        let ime = cx.get_ime_area_rect();
+        let focus = cx.key_focus();
+        if ime.size.y > 0.0 && !focus.is_empty() && focus.rect(cx) == ime {
+            return true;
+        }
         let top_level = [
             ids!(cart_total_input),
             ids!(customer_name_input),
@@ -132,7 +142,11 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
             let host = self.ui.widget(cx, list_path);
             let list = host.portal_list(cx, ids!(list));
             for i in 0..n {
-                let item = list.item(cx, i, live_id!(Item));
+                // Only rows that exist can hold focus: `item` built every
+                // cart line on each call (sync_chrome runs this often).
+                let Some((_, item)) = list.get_item(i) else {
+                    continue;
+                };
                 for field_id in [ids!(unit_price), ids!(line_total), ids!(note)] {
                     let field = item.text_input(cx, field_id);
                     let area = field.area();

@@ -834,3 +834,7 @@ role_help_supplier	Rôle : Fournisseur — AP des achats.
 lane_declared_label	Envoi en compte
 lane_owner_label	Envoi au comptant
 money_lane_bill	Facture : {lane}
+sel_copy	Copier
+sel_select_all	Tout sélectionner
+sel_copied	Copié
+nav_loading	Chargement…

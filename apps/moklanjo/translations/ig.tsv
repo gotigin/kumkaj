@@ -834,3 +834,7 @@ role_help_supplier	Ọrụ: Onye na-ebubata ihe - AP maka ịzụrụ ihe.
 lane_declared_label	Ndokwa akaụntụ
 lane_owner_label	Ndokwa ego
 money_lane_bill	Ụgwọ: {lane}
+sel_copy	Detuo
+sel_select_all	Họrọ ihe niile
+sel_copied	E detuola
+nav_loading	Na-ebugo…

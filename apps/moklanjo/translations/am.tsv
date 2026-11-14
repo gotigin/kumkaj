@@ -834,3 +834,7 @@ role_help_supplier	Role: Supplier — AP for purchases.
 lane_declared_label	የሂሳብ ቦታ ማስያዝ
 lane_owner_label	በጥሬ ገንዘብ ማስያዝ
 money_lane_bill	ሂሳብ፦ {lane}
+sel_copy	ቅዳ
+sel_select_all	ሁሉንም ምረጥ
+sel_copied	ተቀድቷል
+nav_loading	በመጫን ላይ…

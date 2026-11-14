@@ -834,3 +834,7 @@ role_help_supplier	Tungkulin: Supplier — AP para sa mga pagbili.
 lane_declared_label	Pagbu-book ng account
 lane_owner_label	Cash booking
 money_lane_bill	Resibo: {lane}
+sel_copy	Kopyahin
+sel_select_all	Piliin lahat
+sel_copied	Nakopya na
+nav_loading	Naglo-load…

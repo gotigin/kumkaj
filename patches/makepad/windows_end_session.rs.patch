@@ -1,0 +1,39 @@
+--- a/platform/src/os/windows/win32_window.rs
++++ b/platform/src/os/windows/win32_window.rs
+@@ -259,6 +259,10 @@
+     ime_saved_himc: HIMC,
+ }
+ 
++
++/// WM_ENDSESSION (winuser.h); not in the trimmed vendored `windows` crate.
++const WM_ENDSESSION: u32 = 0x0016;
++
+ impl Win32Window {
+     pub fn set_title(&self, title: &str) {
+         let title = encode_wide(title);
+@@ -1246,6 +1250,25 @@
+                     DestroyWindow(hwnd).unwrap();
+                 }
+             }
++            // Windows is ending the session (shut down, sign out, or the
++            // Restart Manager closing the app for an update / installer):
++            // close the window the normal way so the app saves and exits.
++            // An app that keeps running fails the Windows App Certification
++            // Kit "restart manager messages" test. The close cannot be
++            // refused here (WM_QUERYENDSESSION already said yes via
++            // DefWindowProc).
++            WM_ENDSESSION => {
++                if wparam.0 != 0 {
++                    window.do_callback(Win32Event::WindowCloseRequested(
++                        WindowCloseRequestedEvent {
++                            window_id: window.window_id,
++                            accept_close: Rc::new(Cell::new(true)),
++                        },
++                    ));
++                    let _ = DestroyWindow(hwnd);
++                }
++                return LRESULT(0);
++            }
+             WM_DESTROY => {
+                 // window actively destroyed
+                 SetWindowLongPtrW(hwnd, GWLP_USERDATA, 0);

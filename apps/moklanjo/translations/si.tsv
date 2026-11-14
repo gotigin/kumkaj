@@ -834,3 +834,7 @@ role_help_supplier	භූමිකාව: සැපයුම්කරු - ම�
 lane_declared_label	ගිණුම් වෙන්කරවා ගැනීම
 lane_owner_label	මුදල් වෙන්කරවා ගැනීම
 money_lane_bill	ආරාධිත අමුත්තන්ගේ බිල්පත: {lane}
+sel_copy	පිටපත් කරන්න
+sel_select_all	සියල්ල තෝරන්න
+sel_copied	පිටපත් කළා
+nav_loading	පූරණය වෙමින්…

@@ -834,3 +834,7 @@ role_help_supplier	نقش: تامین کننده - AP برای خرید.
 lane_declared_label	رزرو حساب
 lane_owner_label	رزرو نقدی
 money_lane_bill	صورتحساب: {lane}
+sel_copy	رونوشت
+sel_select_all	انتخاب همه
+sel_copied	رونوشت شد
+nav_loading	در حال بارگیری…

@@ -834,3 +834,7 @@ role_help_supplier	Ka bynta: U nongsam — AP na ka bynta ki jingthied.
 lane_declared_label	Ka jingbuh jingkhein
 lane_owner_label	Ka jingbuh pisa
 money_lane_bill	Ka jingsiew: {lane}
+sel_copy	Kopi
+sel_select_all	Jied baroh
+sel_copied	La kopi
+nav_loading	Dang load…

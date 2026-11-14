@@ -1,5 +1,11 @@
 impl MatchEvent for App {
     fn handle_startup(&mut self, cx: &mut Cx) {
+        // Pages and work desks pan with a mouse press-drag: a drag on copy
+        // pans; mouse selection starts on a 0.5 s still hold, double / triple
+        // click, Ctrl+A or right-click (Khaynjo lesson, 2026-11-13 — without
+        // this a drag that started on text selected instead of panning).
+        makepad_widgets::text_flow::MOUSE_HOLD_TO_SELECT
+            .store(true, std::sync::atomic::Ordering::Relaxed);
         app_state().lock().unwrap().live_timer = cx.start_interval(LIVE_REFRESH_SECS);
         self.sync_chrome(cx);
     }
@@ -118,8 +124,10 @@ impl MatchEvent for App {
 
     fn handle_actions(&mut self, cx: &mut Cx, actions: &Actions) {
         let _span = stall_span("handle_actions");
+        self.handle_thumb_decodes(cx, actions);
         self.refresh_form_tab_anchor(cx);
         let form_returned_advanced = self.handle_form_field_returned(cx, actions);
+        self.handle_selection_actions(cx, actions);
         self.tab_chevron_clicks(cx, actions);
         for action in actions.iter() {
             if let Some(fd) = action.downcast_ref::<FileDialogAction>() {
@@ -3582,7 +3590,13 @@ impl MatchEvent for App {
         }
         // Floor grid: tap a tile to open (or seat) that table; its small
         // action asks for the bill (running) or marks it ready (paid).
-        if !app_state().lock().unwrap().floor_view_layout {
+        // Only while the Floor shows: off it no tile can be tapped, and this
+        // walk cost Khaynjo ~1.4 s of the first actions after start (dev build).
+        let floor_grid_live = {
+            let st = app_state().lock().unwrap();
+            st.screen == Screen::Floor && !st.floor_view_layout
+        };
+        if floor_grid_live {
             let widget = self.ui.widget(cx, ids!(floor_list));
             let list = widget.portal_list(cx, ids!(list));
             // One selected area tab — idxs into the filtered table list.
@@ -3608,8 +3622,10 @@ impl MatchEvent for App {
             // matches. Walk the single area item + every row slot directly
             // (same as FloorLayoutList) — button/finger_up key off uid.
             let mut tapped: Option<(usize, &'static str)> = None;
-            if !idxs.is_empty() {
-                let item = list.item(cx, 0, id!(Item));
+            // Only rows already on screen: a row that was never drawn cannot
+            // have been tapped, and `item()` would build it here.
+            let drawn_area = list.get_item(0).map(|(_, w)| w);
+            if let (false, Some(item)) = (idxs.is_empty(), drawn_area) {
                 let scroll = item.view(cx, ids!(area_scroll));
                 let scroll_x = scroll.get_scroll_pos().x;
                 let area_vp_w = {
@@ -3633,7 +3649,9 @@ impl MatchEvent for App {
                 let rows_list = item.portal_list(cx, ids!(area_rows));
                 let n_rows = idxs.chunks(cols.max(1)).count().max(1);
                 for row_id in 0..n_rows {
-                    let row_item = rows_list.item(cx, row_id, id!(Item));
+                    let Some((_, row_item)) = rows_list.get_item(row_id) else {
+                        continue;
+                    };
                     let chunk_start = row_id * cols.max(1);
                     for (slot, path) in FLOOR_SLOT_IDS.iter().enumerate() {
                         let Some(&table_idx) = idxs.get(chunk_start + first_col + slot) else {
@@ -8826,9 +8844,8 @@ impl MatchEvent for App {
                 let result = (|| -> Result<(), String> {
                     let mut st = app_state().lock().unwrap();
                     let store = st.store.as_ref().ok_or_else(|| "No store".to_string())?;
-                    let rows = sibling_pickers_rows(store, |k| st.t(k));
-                    let key = match rows.get(item_id) {
-                        Some(ReportRow::Kv(k, _)) => k.clone(),
+                    let key = match sibling_picker_keys(store).get(item_id) {
+                        Some(Some(k)) => k.clone(),
                         _ => return Err("Not a picker row".into()),
                     };
                     let msg = if let Some(name) = key.strip_prefix("area:") {

@@ -834,3 +834,7 @@ role_help_supplier	บทบาท: ผู้จัดส่ง — เจ้า
 lane_declared_label	จองเข้าบัญชี
 lane_owner_label	จองเงินสด
 money_lane_bill	ใบแจ้งหนี้: {lane}
+sel_copy	คัดลอก
+sel_select_all	เลือกทั้งหมด
+sel_copied	คัดลอกแล้ว
+nav_loading	กำลังโหลด…

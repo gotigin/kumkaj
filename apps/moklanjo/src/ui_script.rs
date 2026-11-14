@@ -371,7 +371,7 @@ script_mod! {
     let NavBtn = Button{
         width: Fill height: Fit
         margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
-        padding: Inset{left: 16. right: 16. top: 12. bottom: 12.}
+        padding: Inset{left: 14. right: 14. top: 10. bottom: 10.}
         align: Align{x: 0.5 y: 0.5}
         flow: Right{wrap: true}
         label_walk: Walk{
@@ -405,7 +405,7 @@ script_mod! {
             color_focus: #x0B1220
             color_disabled: #x6B7F9A
             ink_centered: true
-            text_style +: {font_size: 15.}
+            text_style +: {font_size: 14.}
         }
     }
 
@@ -771,7 +771,7 @@ script_mod! {
     let RowSecondaryBtn = Button{
         width: Fill height: Fit
         margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
-        padding: Inset{left: 16. right: 16. top: 12. bottom: 12.}
+        padding: Inset{left: 14. right: 14. top: 10. bottom: 10.}
         align: Align{x: 0.5 y: 0.5}
         flow: Right{wrap: true}
         label_walk: Walk{
@@ -799,7 +799,7 @@ script_mod! {
             color_down: #xffffff
             color_focus: #x0B1220
             ink_centered: true
-            text_style +: {font_size: 15.}
+            text_style +: {font_size: 14.}
         }
     }
     // Icon-only eye next to a money figure (or the screen-level header eye).
@@ -1074,7 +1074,7 @@ script_mod! {
     let StackPrimaryBtn = Button{
         width: Fill height: Fit
         margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
-        padding: Inset{left: 16. right: 16. top: 12. bottom: 12.}
+        padding: Inset{left: 16. right: 16. top: 14. bottom: 14.}
         align: Align{x: 0.5 y: 0.5}
         flow: Right{wrap: true}
         label_walk: Walk{
@@ -1108,7 +1108,7 @@ script_mod! {
     let StackSecondaryBtn = Button{
         width: Fill height: Fit
         margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
-        padding: Inset{left: 16. right: 16. top: 12. bottom: 12.}
+        padding: Inset{left: 16. right: 16. top: 14. bottom: 14.}
         align: Align{x: 0.5 y: 0.5}
         flow: Right{wrap: true}
         label_walk: Walk{
@@ -1140,13 +1140,52 @@ script_mod! {
         }
     }
 
+    // MENU ROW — one row of a small floating menu (Copy / Select all):
+    // white, navy text, light hover. Not a page CTA.
+    let MenuRowBtn = Button{
+        width: Fill height: Fit
+        margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
+        padding: Inset{left: 14. right: 14. top: 10. bottom: 10.}
+        align: Align{x: 0.5 y: 0.5}
+        flow: Right{wrap: true}
+        label_walk: Walk{
+            width: Fit
+            height: Fit
+            margin: Inset{left: 2. right: 2.}
+        }
+        icon_walk: Walk{width: 0. height: 0.}
+        draw_bg +: {
+            color: #xffffff
+            color_hover: #xE0E8F0
+            color_down: #xC8D3E0
+            color_focus: #xffffff
+            color_2: #xffffff
+            color_2_hover: #xE0E8F0
+            color_2_down: #xC8D3E0
+            color_2_focus: #xffffff
+            border_color: #xA8B4C4
+            border_radius: 8.
+            border_size: 1.
+        }
+        draw_text +: {
+            color: #x072058
+            color_hover: #x072058
+            color_down: #x072058
+            color_focus: #x072058
+            ink_centered: true
+            text_style +: {font_size: 13.}
+        }
+    }
+
     // FILTER CHIP — Fit width in a ChipStrip (scroll sideways for long labels).
     // Soft tag, not a page tab (DeskTab) and not a radio segment (SegBtn).
     // Never cap/ellipsis — full label. NEVER use for multi-word CTAs.
     let ChipBtn = Button{
-        width: Fit height: 34
+        // Fit, never a pinned 34: with 8 px padding a fixed height clipped
+        // taller scripts (Khaynjo lesson, shell test text_chip_and_seg_buttons_use_fit_height).
+        width: Fit height: Fit
         margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
-        padding: Inset{left: 12. right: 12. top: 6. bottom: 6.}
+        padding: Inset{left: 12. right: 12. top: 8. bottom: 8.}
         align: Center
         label_walk: Walk{
             width: Fit
@@ -1277,9 +1316,11 @@ script_mod! {
     // Selected filter chip (pair with ChipBtn via Overlay) — same soft pill
     // shape as ChipBtn, filled so it still reads as a chip not a SegBtn.
     let ChipBtnActive = Button{
-        width: Fit height: 34
+        // Fit, never a pinned 34: with 8 px padding a fixed height clipped
+        // taller scripts (Khaynjo lesson, shell test text_chip_and_seg_buttons_use_fit_height).
+        width: Fit height: Fit
         margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
-        padding: Inset{left: 12. right: 12. top: 6. bottom: 6.}
+        padding: Inset{left: 12. right: 12. top: 8. bottom: 8.}
         align: Center
         label_walk: Walk{
             width: Fit
@@ -1578,14 +1619,39 @@ script_mod! {
         }
     }
 
+    // A press-drag that starts ON a chip scrolls the strip too, with a mouse
+    // as with a finger (mouse_capture_overload); a press that does not travel
+    // past the slop stays the chip's tap.
     let ChipStrip = ScrollXView{
         width: Fill height: 52
+        scroll_bars: mod.widgets.ScrollBars {
+            show_scroll_x: true show_scroll_y: false
+            scroll_bar_x.drag_scrolling: true
+            scroll_bar_x.mouse_capture_overload: true
+            scroll_bar_x.axis_lock: true
+            scroll_bar_x.bar_size: 4.
+        }
+    }
+    // Form/settings horizontal strips under a heading. Vertical margin so the
+    // strip is not flush with siblings. Never put this margin on ChipStrip —
+    // Overlay tabs (Lock roles) would float away from the chevrons.
+    let FormScrollX = ScrollXView{
+        width: Fill height: Fit
+        margin: Inset{left: 0. right: 0. top: 8. bottom: 8.}
+        // Same as ChipStrip: a press-drag from a chip scrolls (mouse + touch).
+        scroll_bars: mod.widgets.ScrollBars {
+            show_scroll_x: true show_scroll_y: false
+            scroll_bar_x.drag_scrolling: true
+            scroll_bar_x.mouse_capture_overload: true
+            scroll_bar_x.axis_lock: true
+            scroll_bar_x.bar_size: 4.
+        }
     }
 
     let RoleChip = Button{
         width: Fill height: Fit
         margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
-        padding: Inset{left: 14. right: 14. top: 8. bottom: 8.}
+        padding: Inset{left: 10. right: 10. top: 8. bottom: 8.}
         align: Align{x: 0.5 y: 0.5}
         flow: Right{wrap: true}
         label_walk: Walk{
@@ -1620,7 +1686,7 @@ script_mod! {
     let RoleChipActive = Button{
         width: Fill height: Fit
         margin: Inset{left: 0. right: 0. top: 0. bottom: 0.}
-        padding: Inset{left: 14. right: 14. top: 8. bottom: 8.}
+        padding: Inset{left: 10. right: 10. top: 8. bottom: 8.}
         align: Align{x: 0.5 y: 0.5}
         flow: Right{wrap: true}
         label_walk: Walk{
@@ -2403,7 +2469,7 @@ script_mod! {
     // it, the amount at the right — not one run-on line.
     let SaleRow = RoundedView{
         width: Fill height: Fit
-        padding: Inset{left: 12. right: 12. top: 10. bottom: 10.}
+        padding: Inset{left: 16. right: 16. top: 10. bottom: 10.}
         flow: Down spacing: 8
         draw_bg.color: #xffffff
         draw_bg.border_radius: 14.
@@ -2600,7 +2666,7 @@ script_mod! {
     // Optional ThumbAvatar for party logo (initials when none).
     let CustomerRow = RoundedView{
         width: Fill height: Fit
-        padding: Inset{left: 12. right: 12. top: 10. bottom: 10.}
+        padding: Inset{left: 16. right: 12. top: 12. bottom: 12.}
         flow: Right spacing: 12
         align: Align{y: 0.5}
         draw_bg.color: #xffffff
@@ -3241,6 +3307,21 @@ script_mod! {
     // headings, "label  value" rows with the value at the right, and plain
     // lines — in a white card like the Day book's, never one run-on
     // paragraph. Fed with the same text that prints, or with rows.
+    // Copy / Select all menu (selection_menu.rs): floats at the pointer on
+    // the overlay, open state in AppState::sel_menu. Never a Modal. Rows never
+    // take key focus, so the block whose selection Copy reads keeps it.
+    mod.widgets.SelectionMenuBase = #(SelectionMenu::register_widget(vm))
+    mod.widgets.SelectionMenu = set_type_default() do mod.widgets.SelectionMenuBase{
+        content := RoundedView{
+            width: Fill height: Fit
+            padding: Inset{left: 6. right: 6. top: 6. bottom: 6.}
+            flow: Down spacing: 4
+            draw_bg.color: #xFFFFFF
+            draw_bg.border_radius: 10.
+            draw_bg.border_size: 1.
+            draw_bg.border_color: #xA8B4C4
+        }
+    }
     mod.widgets.ReportTextBase = #(ReportText::register_widget(vm))
     mod.widgets.ReportText = set_type_default() do mod.widgets.ReportTextBase{
         width: Fill height: Fit
@@ -3740,6 +3821,9 @@ script_mod! {
                         draw_bg.color: #x072058
                     }
                     main_column := View{
+                        // One selection root for every screen (selection_menu.rs):
+                        // Ctrl/Cmd+A selects every selectable block shown here.
+                        selection_root: true
                         width: Fill height: Fill
                         flow: Down spacing: 0
 
@@ -3805,27 +3889,28 @@ script_mod! {
                             View{
                                 width: Fill height: Fit
                                 flow: Down spacing: 2
-                                View{
-                                    width: Fill height: Fit
-                                    flow: Right spacing: 6
-                                    align: Align{y: 0.5}
-                                    // Selectable WrapLabel — font_color stays white on navy.
-                                    brand_title := WrapLabel{
-                                        width: Fit
-                                        body: "Moklanjo"
-                                        font_color: #xffffff
-                                        font_size: 18.
-                                    }
-                                    // Short server id — smaller than the shop name.
-                                    brand_server_id := WrapLabel{
-                                        width: Fit
-                                        body: ""
-                                        font_color: #x8392b7
-                                        font_size: 11.
-                                        visible: false
-                                    }
+                                brand_title := WrapLabel{
+                                    // Light ink on chrome: a mark, not copy (a light band would hide it).
+                                    selectable: false
+                                    width: Fill
+                                    body: "Moklanjo"
+                                    font_color: #xffffff
+                                    font_size: 18.
+                                }
+                                // Short server id — smaller than the shop name.
+                                brand_server_id := WrapLabel{
+                                    // Light ink on chrome: a mark, not copy (a light band would hide it).
+                                    selectable: false
+                                    width: Fill
+                                    body: ""
+                                    font_color: #x8392b7
+                                    font_size: 11.
+                                    visible: false
                                 }
                                 session_label := WrapLabel{
+                                    // Light ink on chrome: a mark, not copy (a light band would hide it).
+                                    selectable: false
+                                    width: Fill
                                     body: "Sell"
                                     font_color: #x8392b7
                                     font_size: 11.
@@ -3931,23 +4016,18 @@ script_mod! {
                                             View{
                                                 width: Fill height: Fit
                                                 flow: Down spacing: 4
-                                                View{
-                                                    width: Fill height: Fit
-                                                    flow: Right spacing: 6
-                                                    align: Align{y: 0.5}
-                                                    setup_brand_title := WrapLabel{
-                                                        width: Fit
-                                                        body: "Your shop"
-                                                        font_color: #x02030B
-                                                        font_size: 18.
-                                                    }
-                                                    setup_brand_server_id := WrapLabel{
-                                                        width: Fit
-                                                        body: ""
-                                                        font_color: #x3A4554
-                                                        font_size: 11.
-                                                        visible: false
-                                                    }
+                                                setup_brand_title := WrapLabel{
+                                                    width: Fill
+                                                    body: "Your shop"
+                                                    font_color: #x02030B
+                                                    font_size: 18.
+                                                }
+                                                setup_brand_server_id := WrapLabel{
+                                                    width: Fill
+                                                    body: ""
+                                                    font_color: #x3A4554
+                                                    font_size: 11.
+                                                    visible: false
                                                 }
                                                 device_use_question := WrapLabel{
                                                     body: ""
@@ -4141,23 +4221,18 @@ script_mod! {
                                             View{
                                                 width: Fill height: Fit
                                                 flow: Down spacing: 4
-                                                View{
-                                                    width: Fill height: Fit
-                                                    flow: Right spacing: 6
-                                                    align: Align{y: 0.5}
-                                                    lock_brand_title := WrapLabel{
-                                                        width: Fit
-                                                        body: "Your shop"
-                                                        font_color: #x02030B
-                                                        font_size: 18.
-                                                    }
-                                                    lock_brand_server_id := WrapLabel{
-                                                        width: Fit
-                                                        body: ""
-                                                        font_color: #x3A4554
-                                                        font_size: 11.
-                                                        visible: false
-                                                    }
+                                                lock_brand_title := WrapLabel{
+                                                    width: Fill
+                                                    body: "Your shop"
+                                                    font_color: #x02030B
+                                                    font_size: 18.
+                                                }
+                                                lock_brand_server_id := WrapLabel{
+                                                    width: Fill
+                                                    body: ""
+                                                    font_color: #x3A4554
+                                                    font_size: 11.
+                                                    visible: false
                                                 }
                                                 h_counter_locked := WrapLabel{
                                                     body: "Counter 01 · Locked"
@@ -7643,6 +7718,31 @@ script_mod! {
                     } // main_column
                     } // app_shell
                     } // app_hscroll
+
+                    // Loading screen: a screen switch that took ≥ 1 s last time
+                    // shows this for one frame first (go_with → NextFrame), so a
+                    // tap is answered at once instead of by a frozen window.
+                    nav_loading := SolidView{
+                        visible: false
+                        width: Fill height: Fill
+                        align: Align{x: 0.5 y: 0.5}
+                        draw_bg.color: #xD6E0EC
+                        nav_loading_label := WrapLabel{
+                            width: Fit
+                            body: "Loading…"
+                            font_color: #x0B1220
+                            font_size: 16.
+                            // Status, not copy.
+                            selectable: false
+                        }
+                    }
+                    // Right-click / touch-selection menu: Copy, Select all.
+                    sel_menu := mod.widgets.SelectionMenu{
+                        content +: {
+                            sel_menu_copy := MenuRowBtn{text: "Copy" grab_key_focus: false}
+                            sel_menu_all := MenuRowBtn{text: "Select all" grab_key_focus: false}
+                        }
+                    }
 
                     // Floating chip that follows the pointer while a nav item
                     // is dragged to another slot (see pointer_nav_drag). It

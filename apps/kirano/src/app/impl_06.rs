@@ -1,4 +1,24 @@
 impl App {
+    /// Dish / product photos decoded on Makepad's image pool (`load_thumb_at`
+    /// during draw) land here: commit each to the image cache, then one
+    /// redraw so every list row that asked for it — pooled ones included —
+    /// paints the photo on the next frame (Khaynjo lesson: sync decodes in
+    /// draw froze the first open of a photo list for seconds on dev builds).
+    fn handle_thumb_decodes(&mut self, cx: &mut Cx, actions: &Actions) {
+        let mut landed = false;
+        for action in actions.iter() {
+            if let Some(AsyncImageLoad { image_path, result }) = action.downcast_ref() {
+                if let Some(result) = result.borrow_mut().take() {
+                    process_async_image_load(cx, image_path, result);
+                }
+                landed = true;
+            }
+        }
+        if landed {
+            self.ui.redraw(cx);
+        }
+    }
+
     /// Resolve Team type-or-pick text to one active person.
     /// Prefer id → unique username → lock_label → unique display name.
     /// Never guess among duplicate names (that mistargeted rights/PIN).

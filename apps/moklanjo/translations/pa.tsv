@@ -834,3 +834,7 @@ role_help_supplier	ਭੂਮਿਕਾ: ਸਪਲਾਇਰ — ਖਰੀਦ ਲ�
 lane_declared_label	ਖਾਤਾ ਬੁਕਿੰਗ
 lane_owner_label	ਨਕਦ ਬੁਕਿੰਗ
 money_lane_bill	ਬਿੱਲ: {lane}
+sel_copy	ਕਾਪੀ ਕਰੋ
+sel_select_all	ਸਭ ਚੁਣੋ
+sel_copied	ਕਾਪੀ ਹੋ ਗਿਆ
+nav_loading	ਲੋਡ ਹੋ ਰਿਹਾ ਹੈ…

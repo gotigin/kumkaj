@@ -834,3 +834,7 @@ role_help_supplier	Função: Fornecedor — AP para compras.
 lane_declared_label	Reserva de conta
 lane_owner_label	Reserva em dinheiro
 money_lane_bill	Conta: {lane}
+sel_copy	Copiar
+sel_select_all	Selecionar tudo
+sel_copied	Copiado
+nav_loading	Carregando…

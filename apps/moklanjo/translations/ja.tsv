@@ -834,3 +834,7 @@ role_help_supplier	役割: サプライヤー — 購入用の AP。
 lane_declared_label	アカウント予約
 lane_owner_label	現金予約
 money_lane_bill	請求書：{lane}
+sel_copy	コピー
+sel_select_all	すべて選択
+sel_copied	コピーしました
+nav_loading	読み込み中…

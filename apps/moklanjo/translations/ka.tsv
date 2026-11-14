@@ -834,3 +834,7 @@ role_help_supplier	როლი: მიმწოდებელი — შეს
 lane_declared_label	ანგარიშის დაჯავშნა
 lane_owner_label	ნაღდი ფულის დაჯავშნა
 money_lane_bill	სტუმრის ანგარიში: {lane}
+sel_copy	კოპირება
+sel_select_all	ყველაფრის მონიშვნა
+sel_copied	დაკოპირდა
+nav_loading	იტვირთება…

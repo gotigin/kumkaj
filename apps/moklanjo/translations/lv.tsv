@@ -834,3 +834,7 @@ role_help_supplier	Loma: piegādātājs — AP pirkumiem.
 lane_declared_label	Konta rezervēšana
 lane_owner_label	Skaidras naudas rezervēšana
 money_lane_bill	Rēķins: {lane}
+sel_copy	Kopēt
+sel_select_all	Atlasīt visu
+sel_copied	Nokopēts
+nav_loading	Ielādē…

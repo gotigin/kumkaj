@@ -834,3 +834,7 @@ role_help_supplier	Դերը՝ Մատակարար — Գնումների համա
 lane_declared_label	Հաշվի ամրագրում
 lane_owner_label	Կանխիկ ամրագրում
 money_lane_bill	Հաշիվ՝ {lane}
+sel_copy	Պատճենել
+sel_select_all	Ընտրել բոլորը
+sel_copied	Պատճենվեց
+nav_loading	Բեռնվում է…

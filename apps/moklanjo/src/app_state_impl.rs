@@ -139,6 +139,7 @@ impl AppState {
             ops_reason: None,
             books_report_kind: BooksReportKind::Today,
             suggest_open: None,
+            sel_menu: None,
             suggest_rows: Vec::new(),
             suggest_rev: 0,
         };

@@ -834,3 +834,7 @@ role_help_supplier	Jukumu: Mtoa huduma - AP kwa ununuzi.
 lane_declared_label	Kuhifadhi akaunti
 lane_owner_label	Uhifadhi wa pesa
 money_lane_bill	Bilio: {lane}
+sel_copy	Nakili
+sel_select_all	Chagua zote
+sel_copied	Imenakiliwa
+nav_loading	Inapakia…

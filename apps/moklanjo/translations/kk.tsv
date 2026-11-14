@@ -834,3 +834,7 @@ role_help_supplier	Рөл: Жеткізуші — сатып алулар үші
 lane_declared_label	Есептік жазбаны брондау
 lane_owner_label	Қолма-қол ақшаны брондау
 money_lane_bill	Шот: {lane}
+sel_copy	Көшіру
+sel_select_all	Барлығын таңдау
+sel_copied	Көшірілді
+nav_loading	Жүктелуде…

@@ -834,3 +834,7 @@ role_help_supplier	Vaidmuo: Tiekėjas – AP pirkiniams.
 lane_declared_label	Sąskaitos užsakymas
 lane_owner_label	Užsakymas grynaisiais
 money_lane_bill	Sąskaita: {lane}
+sel_copy	Kopijuoti
+sel_select_all	Pažymėti viską
+sel_copied	Nukopijuota
+nav_loading	Įkeliama…

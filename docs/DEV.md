@@ -358,6 +358,9 @@ What the patch holds:
 | Per-block select: mouse drag any direction, double-click word, triple-click block; touch long-press = word, drag extends; swipe scrolls | `TextFlow::handle_event`, `word_bounds_at`, `commit_touch_selection` |
 | Touch hold timer (0.5 s) on **every** touch platform. Android's OS `Event::LongPress` reaches a block only if it still owns the finger capture — on a scrolling page it did not, and Android never selected (owner, 2026-11-13); the OS event is now a second, idempotent trigger | `TextFlow::touch_hold` |
 | Touch selection lives like Chrome's: a touch press keeps the current selection (no reset on FingerDown / FingerMove / FingerCancel for touch); a swipe keeps it even when the press moved key focus (`touch_selected`, `focus_lost_in_touch`); a tap clears it | `TextFlow` |
+| Held word stays: a finger moving on after the hold grows the selection by **whole words** on the side it went and never cuts the held word (`touch_word`, `touch_word_extend`). Before, the first finger jitter set the end to the finger and "Khaynjo" became "Kha" (AGS2, 2026-11-14 — Xvfb `/touch` never jitters) | `TextFlow` |
+| Android OS bar for read-only copy: `cx.show_read_only_clipboard_actions` (op field `read_only`) → **Copy / Select all** only (Cut only copied, Paste did nothing). Java side via `apply-android-activity-bridge.sh`: `showClipboardActions(…, boolean readOnly)` (`KUMKAJ_CLIP_BAR_READ_ONLY`, JNI `(ZIIIIIZ)V` — an unbridged activity crashes on the first touch selection) and the show/finish order fix (`KUMKAJ_CLIP_BAR_RACE`: the block and the root both ask for the bar after a hold; `finish()` of the first reset `mHasSelection`, so the bar opened as Paste / Select all with no Copy). Copy on the bar clears a finger selection (Android only — other platforms query the copy text with the same `TextCopy` when opening their own menu); Select all from a finger selection's bar / menu brings the bar back | `cx_api.rs`, `android.rs`, `android_jni.rs`, `view.rs` (`selection_root_touch_clear`, `selection_root_select_all`) |
+| Verify on a real Android device, not only Xvfb: `adb shell input swipe x y x y 900` = hold, `input swipe` from a knob = knob drag, read the clipboard with `service call clipboard 2 s16 com.android.shell` (API 26; decode the item String16 after `text/plain`), and `screencap` (AGS2 shows the live frame again since 2026-11-14) | — |
 | Touch knobs: after a finger selection the root draws a knob + stem under each end (`draw_sel_handle`, `SEL_HANDLE_R` 9 px, 24 px touch target); a touch on a knob is claimed by the root (`t.handled`), holds the other end as a root-owned anchor (`root_gap`) and moves this end through `selection_root_extend` with the finger→edge offset; on lift the menu comes back for the whole selection. A tap elsewhere clears the selection and the knobs; a hold that starts a new selection clears the old one everywhere | `View::selection_root_*`, `draw_selection_handles`, `selection_ends` (new widget method, forwarded by the derive) |
 | Aligned blocks: a parent that right / centre-aligns moves a block after it drew; hit tests and selection rects add `align_delta` (area now − `drawn_pos`). Before, a press on right-aligned text picked another word and the menu opened far away | `TextFlow::align_delta` |
 | Remote `/touch?k=start|move|stop|long&x=&y=` — one-finger TouchUpdate (and the OS long-press) injected like Android, so touch selection is tested on Xvfb | `remote.rs` |
@@ -996,6 +999,49 @@ apps/khaynjo/scripts/msi.sh        # Khaynjo prod MSI → dist/Khaynjo-*.msi (ms
 Linker is set in [`.cargo/config.toml`](../.cargo/config.toml) (`x86_64-w64-mingw32-gcc`). Day-to-day UI work stays on `cargo moklanjo-dev` (Linux); Windows scripts only produce `.exe` packages to test on a real Windows box (or Wine if you choose).
 
 **On a Windows machine with Rust:** the same scripts pick `x86_64-pc-windows-msvc` when available and build natively.
+
+### Windows App Certification Kit (WACK)
+
+All four apps are built to pass Microsoft's Windows App Certification Kit —
+the Store runs the same checks on every upload. Two steps:
+
+**1. On Linux (every build, automated)** — `./scripts/product-cert.sh --tier=wack [app…]`
+(also part of `--tier=store`) cross-builds the production `.exe` and runs
+`scripts/windows/wack-precheck.sh <exe> [<msix>]`:
+
+| Check | Why WACK cares | Where it comes from |
+|---|---|---|
+| PE32+ x64, GUI subsystem | platform-appropriate files | Rust `x86_64-pc-windows-gnu`, `kumkaj_hide_console` (production) |
+| `DYNAMIC_BASE`, `HIGH_ENTROPY_VA`, `NX_COMPAT` | binary analyzer (ASLR / DEP) | mingw linker defaults |
+| Application manifest: `asInvoker`, Windows 10/11 `supportedOS`, PerMonitorV2 | UAC, OS-version, high-DPI tests | `scripts/windows/win_resources.rs` via each `apps/<app>/build.rs` (`windres`) |
+| Version info (CompanyName, ProductName, File/ProductVersion, OriginalFilename) and the icon | file-version / branding checks, Explorer | same; version from `Cargo.toml`, name from `KUMKAJ_APP_LABEL`, icon `resources/icon.ico` |
+| MSIX: Identity + Publisher CN, `runFullTrust`, `Windows.Desktop` MinVersion 10.x, every logo present, BlockMap, no `.pdb` | package sanity, manifest resources, branding | `scripts/build-msix.sh` / `scripts/msix/pack_msix.sh` |
+
+**2. On Windows (before a Store submission)** — copy `dist/` and `scripts/windows/` to
+the Windows machine (or share the workspace folder with it), open
+an **elevated** PowerShell and run:
+
+```powershell
+.\scripts\windows\run-wack.ps1 -Package Z:\dist\Khaynjo-1.0.9.msix   # Store path
+.\scripts\windows\run-wack.ps1 -Package Z:\dist\Khaynjo-1.0.9.msi    # sideload path
+.\scripts\windows\run-wack.ps1 -Cleanup                               # remove the test cert
+```
+
+Needs the Windows SDK components *Windows App Certification Kit* and *Signing
+Tools for Desktop Apps*. For an `.msix` the script reads the Publisher from
+the package, makes a throw-away test certificate with that subject, trusts it
+in `LocalMachine\TrustedPeople`, signs a **copy** (the original stays the
+unsigned Store upload), removes any installed copy of the same identity, then
+runs `appcert.exe test -appxpackagepath …`. For an `.msi` it runs WACK's
+desktop-app tests with `msiexec /i … /qn` and `/x … /qn`. It prints the
+report path, the overall result and every test that did not pass; exit 1 on
+FAIL.
+
+Known, expected results: an unsigned `.msi` / `.exe` fails *Digitally signed
+files* (needs a real code-signing certificate — the Store path does not, the
+Store signs the package). Shutdown / restart-manager: Makepad now closes the
+window on `WM_ENDSESSION` like the close button (patch `windows_end_session`),
+so the app exits when Windows ends the session or an installer asks it to.
 
 ### Receipts, printing and files on Android
 

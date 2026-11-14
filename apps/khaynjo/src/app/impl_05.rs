@@ -559,7 +559,11 @@ fn print_or_share_receipt(&mut self, cx: &mut Cx, text: &str) {
             let host = self.ui.widget(cx, list_path);
             let list = host.portal_list(cx, ids!(list));
             for i in 0..n {
-                let item = list.item(cx, i, live_id!(Item));
+                // Only rows that exist can hold focus: `item` built every
+                // cart line on each call (sync_chrome runs this often).
+                let Some((_, item)) = list.get_item(i) else {
+                    continue;
+                };
                 for field_id in [ids!(unit_price), ids!(line_total), ids!(note)] {
                     let field = item.text_input(cx, field_id);
                     let area = field.area();

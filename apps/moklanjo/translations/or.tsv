@@ -834,3 +834,7 @@ role_help_supplier	ଭୂମିକା: ଯୋଗାଣକାରୀ — କିଣ
 lane_declared_label	ଖାତା ବୁକିଂ
 lane_owner_label	ନଗଦ ବୁକିଂ
 money_lane_bill	ବିଲ: {lane}
+sel_copy	କପି କରନ୍ତୁ
+sel_select_all	ସବୁ ବାଛନ୍ତୁ
+sel_copied	କପି ହେଲା
+nav_loading	ଲୋଡ୍ ହେଉଛି…

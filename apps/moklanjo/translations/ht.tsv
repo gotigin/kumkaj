@@ -834,3 +834,7 @@ role_help_supplier	Wòl: Founisè - AP pou acha.
 lane_declared_label	Kont anrjistreman
 lane_owner_label	Anrjistreman lajan kach
 money_lane_bill	Kont: {lane}
+sel_copy	Kopye
+sel_select_all	Chwazi tout
+sel_copied	Kopye fèt
+nav_loading	Chajman…

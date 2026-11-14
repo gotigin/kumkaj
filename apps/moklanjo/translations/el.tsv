@@ -834,3 +834,7 @@ role_help_supplier	Ρόλος: Προμηθευτής — AP για αγορές
 lane_declared_label	Κράτηση λογαριασμού
 lane_owner_label	Κράτηση με μετρητά
 money_lane_bill	Λογαριασμός: {lane}
+sel_copy	Αντιγραφή
+sel_select_all	Επιλογή όλων
+sel_copied	Αντιγράφηκε
+nav_loading	Φόρτωση…

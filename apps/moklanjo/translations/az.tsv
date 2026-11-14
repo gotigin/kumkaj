@@ -834,3 +834,7 @@ role_help_supplier	Rol: Təchizatçı — alışlar üçün AP.
 lane_declared_label	Hesab bronlaşdırması
 lane_owner_label	Nəğd rezervasiya
 money_lane_bill	Hesab: {lane}
+sel_copy	Köçür
+sel_select_all	Hamısını seç
+sel_copied	Köçürüldü
+nav_loading	Yüklənir…

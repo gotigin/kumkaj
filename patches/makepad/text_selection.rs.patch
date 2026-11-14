@@ -513,7 +513,7 @@
  
                      let selection = Selection {
                          anchor: Cursor {
-@@ -779,6 +821,27 @@
+@@ -779,6 +821,34 @@
      #[live(false)]
      pub selectable: bool,
  
@@ -537,11 +537,18 @@
 +    /// Key focus left during that touch: decide on lift (tap → clear).
 +    #[rust]
 +    focus_lost_in_touch: bool,
++    /// The word a finger hold selected, while that finger is still down.
++    /// Moving on from the hold grows the selection by whole words and never
++    /// below this word (Chrome on Android). Without it the first finger
++    /// jitter cut the held word to the letters before the finger ("Kha" of
++    /// "Khaynjo" on the AGS2, 2026-11-14).
++    #[rust]
++    touch_word: Option<(usize, usize)>,
 +
      /// Selection anchor (start) character index
      #[rust]
      selection_anchor: usize,
-@@ -787,6 +850,12 @@
+@@ -787,6 +857,12 @@
      #[rust]
      selection_cursor: usize,
  
@@ -554,7 +561,7 @@
      /// Selection tracker (only populated when selectable)
      #[rust]
      selection_tracker: SelectionTracker,
-@@ -799,6 +868,19 @@
+@@ -799,6 +875,19 @@
      /// Whether currently dragging to select
      #[rust]
      is_selecting: bool,
@@ -574,7 +581,7 @@
  
      // Streaming text animation fields
      #[rust]
-@@ -1125,7 +1207,7 @@
+@@ -1125,7 +1214,7 @@
          self.text_len()
      }
      fn selection_point_to_char_index(&self, cx: &Cx, abs: DVec2) -> Option<usize> {
@@ -583,7 +590,7 @@
      }
      fn selection_set(&mut self, anchor: usize, cursor: usize) {
          self.set_selection(anchor, cursor)
-@@ -1142,11 +1224,37 @@
+@@ -1142,11 +1231,37 @@
      fn selection_get_full_text(&self) -> String {
          self.get_full_text()
      }
@@ -622,7 +629,7 @@
      }
  
      fn draw_walk(&mut self, cx: &mut Cx2d, _scope: &mut Scope, walk: Walk) -> DrawStep {
-@@ -1218,12 +1326,65 @@
+@@ -1218,12 +1333,65 @@
              }
          }
  
@@ -690,7 +697,7 @@
          match event.hits(cx, self.area) {
              Hit::FingerHoverIn(_) => {
                  cx.set_cursor(MouseCursor::Text);
-@@ -1232,19 +1393,101 @@
+@@ -1232,20 +1400,108 @@
                  cx.set_cursor(MouseCursor::Default);
              }
              Hit::FingerDown(fe) if fe.is_primary_hit() => {
@@ -712,6 +719,7 @@
 +                    // Touch keeps what is selected: a swipe that starts on
 +                    // copy scrolls with the selection (browser); a hold
 +                    // replaces it and a tap clears it (the selection root).
++                    self.touch_word = None;
 +                    if !fe.device.is_touch() {
 +                        self.touch_selected = false;
 +                        self.selection_all_sticky = false;
@@ -765,6 +773,7 @@
 +            }
              Hit::FingerMove(fe) if self.is_selecting => {
 -                if let Some(idx) = self.selection_tracker.point_to_index(cx, fe.abs) {
+-                    if self.selection_cursor != idx {
 +                let delta = fe.abs - self.select_down_abs;
 +                if !self.selection_committed {
 +                    if delta.x.abs() <= 6.0 && delta.y.abs() <= 6.0 {
@@ -794,10 +803,16 @@
 +                cx.block_scrolling_except_within(Area::Empty);
 +                let _ = cx.promote_finger_capture_over(self.area);
 +                if let Some(idx) = self.selection_tracker.point_to_index(cx, fe.abs - self.align_delta(cx)) {
-                     if self.selection_cursor != idx {
++                    let (anchor, idx) = match self.touch_word {
++                        Some(word) if fe.device.is_touch() => self.touch_word_extend(word, idx),
++                        _ => (self.selection_anchor, idx),
++                    };
++                    if self.selection_cursor != idx || self.selection_anchor != anchor {
++                        self.selection_anchor = anchor;
                          self.selection_cursor = idx;
                          // Propagate selection to child widgets (e.g., CodeView)
-@@ -1253,19 +1496,64 @@
+                         self.propagate_selection_to_children();
+@@ -1253,19 +1509,64 @@
                      }
                  }
              }
@@ -833,10 +848,11 @@
 -                    if has_selection {
 +                    if has_selection && was_committed {
                          let selection_rect = self.selection_clipboard_rect(cx);
+-                        cx.show_clipboard_actions(true, selection_rect, cx.keyboard_shift);
 +                        // Android / iOS: the OS Copy / Select all bar. Every
 +                        // platform also gets the action so an app can show its
 +                        // own menu where the OS has none (desktop touch).
-                         cx.show_clipboard_actions(true, selection_rect, cx.keyboard_shift);
++                        cx.show_read_only_clipboard_actions(selection_rect, cx.keyboard_shift);
 +                        cx.widget_action(
 +                            self.widget_uid(),
 +                            TextSelectionAction::Menu {
@@ -863,7 +879,7 @@
                  self.clear_selection();
                  cx.hide_clipboard_actions();
                  self.redraw(cx);
-@@ -1300,6 +1588,16 @@
+@@ -1300,6 +1601,16 @@
          cx.begin_turtle(walk, self.layout);
          self.draw_state.set(DrawState::Drawing);
          self.draw_block.append_to_draw_call(cx);
@@ -880,7 +896,7 @@
          self.draw_text.begin_deferred_slug_flush();
          self.clear_stacks();
          self.lines_drawn = 0;
-@@ -1399,12 +1697,20 @@
+@@ -1399,12 +1710,20 @@
      }
  
      pub fn end(&mut self, cx: &mut Cx2d) {
@@ -904,7 +920,7 @@
          self.items.as_mut().unwrap().retain_visible();
  
          // Update streaming animation state after drawing (also while fading out)
-@@ -1469,15 +1775,23 @@
+@@ -1469,15 +1788,23 @@
          if !self.selectable {
              return String::new();
          }
@@ -933,7 +949,7 @@
              .unwrap_or("")
              .chars()
              .filter(|c| *c != '\u{FFFC}')
-@@ -1486,38 +1800,148 @@
+@@ -1486,38 +1813,164 @@
  
      /// Select all text in this TextFlow
      pub fn select_all(&mut self) {
@@ -960,6 +976,7 @@
      pub fn clear_selection(&mut self) {
 +        self.touch_selected = false;
 +        self.focus_lost_in_touch = false;
++        self.touch_word = None;
 +        self.selection_all_sticky = false;
          self.selection_anchor = 0;
          self.selection_cursor = 0;
@@ -991,9 +1008,24 @@
 +            let (a, b) = self.word_bounds_at(idx);
 +            self.selection_anchor = a;
 +            self.selection_cursor = b;
++            self.touch_word = Some((a, b));
 +            self.propagate_selection_to_children();
 +        }
 +        self.redraw(cx);
++    }
++
++    /// Finger moved on after a hold selected `word`: keep the word, grow
++    /// to whole words on the side the finger went (the anchor flips to the
++    /// word's far end, so a drag into another block keeps the word too).
++    fn touch_word_extend(&self, word: (usize, usize), idx: usize) -> (usize, usize) {
++        let (wa, wb) = word;
++        if idx >= wb {
++            (wa, self.word_bounds_at(idx).1.max(wb))
++        } else if idx < wa {
++            (wb, self.word_bounds_at(idx).0.min(wa))
++        } else {
++            (wa, wb)
++        }
 +    }
 +
 +    fn disarm_touch_hold(&mut self, cx: &mut Cx) {
@@ -1089,7 +1121,7 @@
              out = Some(if let Some(acc) = out {
                  let x0 = acc.pos.x.min(rect.pos.x);
                  let y0 = acc.pos.y.min(rect.pos.y);
-@@ -1539,8 +1963,12 @@
+@@ -1539,8 +1992,12 @@
      /// Propagates sub-ranges to child WidgetText widgets so they draw their own selection.
      pub fn set_selection(&mut self, anchor: usize, cursor: usize) {
          if self.selectable {
@@ -1104,7 +1136,7 @@
              self.propagate_selection_to_children();
          }
      }
-@@ -1573,11 +2001,14 @@
+@@ -1573,11 +2030,14 @@
              .collect()
      }
  
@@ -1339,7 +1371,7 @@
                  if let Some(scroll_bars) = &mut self.scroll_bars_obj {
                      scroll_bars.draw_scroll_bars(cx);
                  };
-@@ -1189,6 +1321,737 @@
+@@ -1189,6 +1321,758 @@
      }
  }
  
@@ -1384,6 +1416,13 @@
 +            leaf.redraw(cx);
 +        }
 +        self.root_select_all = true;
++        // From a finger selection's bar / menu: it comes back over the new
++        // selection so Copy stays one tap away (Chrome keeps its bar). It
++        // used to close and leave Select all with no way to copy by touch.
++        if self.root_handles {
++            self.redraw(cx);
++            self.selection_root_touch_menu(cx);
++        }
 +    }
 +
 +    /// Drop a page-wide Select all or a drag that spanned blocks (a block's
@@ -1654,10 +1693,19 @@
 +                } else if !self.root_cross.is_empty() {
 +                    self.selection_root_cross_text()
 +                } else {
-+                    return;
++                    String::new()
 +                };
 +                if !text.is_empty() {
 +                    *e.response.borrow_mut() = Some(text);
++                }
++                // Android: Copy on the OS bar ends a finger selection, as in
++                // Chrome (the text is already in the response; the blocks
++                // answered before this, after-children pass). Only there:
++                // elsewhere apps query the copy text with this same event
++                // when they open their own menu.
++                #[cfg(target_os = "android")]
++                if self.root_handles && e.response.borrow().is_some() {
++                    self.selection_root_touch_clear(cx);
 +                }
 +            }
 +            _ => {}
@@ -1823,20 +1871,25 @@
 +        // A tap (not a scroll) anywhere else clears the selection, as in a
 +        // browser; a swipe scrolls with the selection kept.
 +        if (abs - start).length() <= 12.0 {
-+            let had = self.root_handles || !self.root_cross.is_empty() || self.root_select_all;
-+            self.selection_root_clear(cx);
-+            if had {
-+                for leaf in self.selection_root_leaves(cx) {
-+                    if leaf.selection_ends(cx).is_some() {
-+                        leaf.selection_clear();
-+                        leaf.redraw(cx);
-+                    }
++            self.selection_root_touch_clear(cx);
++        }
++    }
++
++    /// Drop a finger selection everywhere: the blocks' parts and the knobs.
++    fn selection_root_touch_clear(&mut self, cx: &mut Cx) {
++        let had = self.root_handles || !self.root_cross.is_empty() || self.root_select_all;
++        self.selection_root_clear(cx);
++        if had {
++            for leaf in self.selection_root_leaves(cx) {
++                if leaf.selection_ends(cx).is_some() {
++                    leaf.selection_clear();
++                    leaf.redraw(cx);
 +                }
 +            }
-+            if self.root_handles {
-+                self.root_handles = false;
-+                self.redraw(cx);
-+            }
++        }
++        if self.root_handles {
++            self.root_handles = false;
++            self.redraw(cx);
 +        }
 +    }
 +
@@ -1851,7 +1904,7 @@
 +        let x1 = (r0.pos.x + r0.size.x).max(r1.pos.x + r1.size.x);
 +        let y1 = (r0.pos.y + r0.size.y).max(r1.pos.y + r1.size.y);
 +        let rect = Rect { pos: dvec2(x0, y0), size: dvec2(x1 - x0, y1 - y0) };
-+        cx.show_clipboard_actions(true, rect, cx.keyboard_shift);
++        cx.show_read_only_clipboard_actions(rect, cx.keyboard_shift);
 +        cx.widget_action(
 +            self.widget_uid(),
 +            TextSelectionAction::Menu { abs: rect.pos, touch: true, rect },
@@ -2079,7 +2132,36 @@
      Drawing(usize, bool),
 --- a/platform/src/cx_api.rs
 +++ b/platform/src/cx_api.rs
-@@ -1296,6 +1296,14 @@
+@@ -328,6 +328,9 @@
+         has_selection: bool,
+         rect: Rect,
+         keyboard_shift: f64,
++        /// Selected copy that cannot be edited (labels, pages): Copy and
++        /// Select all only — no Cut / Paste (Chrome on Android).
++        read_only: bool,
+     },
+     HideClipboardActions,
+     CopyToClipboard(String),
+@@ -1155,6 +1158,18 @@
+             has_selection,
+             rect,
+             keyboard_shift,
++            read_only: false,
++        });
++    }
++
++    /// The bar for a selection in copy that cannot be edited: Copy and
++    /// Select all, never Cut / Paste (they did nothing useful there).
++    pub fn show_read_only_clipboard_actions(&mut self, rect: Rect, keyboard_shift: f64) {
++        self.platform_ops.push_back(CxOsOp::ShowClipboardActions {
++            has_selection: true,
++            rect,
++            keyboard_shift,
++            read_only: true,
+         });
+     }
+ 
+@@ -1296,6 +1311,14 @@
              CxOsOp::SetCursor(_) => true,
              _ => false,
          }) {
@@ -2321,3 +2403,60 @@
      fn route_key(p: &Params) -> Out {
          let window = p.window();
          let mods = p.mods();
+--- a/platform/src/os/linux/android/android.rs
++++ b/platform/src/os/linux/android/android.rs
+@@ -2623,6 +2623,7 @@
+                     has_selection,
+                     rect,
+                     keyboard_shift,
++                    read_only,
+                 } => unsafe {
+                     let dpi_factor = self.windows[CxWindowPool::id_zero()].effective_dpi_factor();
+                     android_jni::to_java_show_clipboard_actions(
+@@ -2630,6 +2631,7 @@
+                         rect,
+                         keyboard_shift,
+                         dpi_factor,
++                        read_only,
+                     );
+                 },
+                 CxOsOp::HideClipboardActions => unsafe {
+--- a/platform/src/os/linux/android/android_jni.rs
++++ b/platform/src/os/linux/android/android_jni.rs
+@@ -1802,6 +1802,7 @@
+     rect: crate::makepad_math::Rect,
+     keyboard_shift: f64,
+     dpi_factor: f64,
++    read_only: bool,
+ ) {
+     let env = attach_jni_env();
+     // Convert Makepad layout points to Android physical pixels.
+@@ -1814,13 +1815,16 @@
+         env,
+         get_activity(),
+         "showClipboardActions",
+-        "(ZIIIII)V",
++        // The trailing Z (read-only) comes from Kumkaj's
++        // apply-android-activity-bridge.sh (KUMKAJ_CLIP_BAR_READ_ONLY).
++        "(ZIIIIIZ)V",
+         has_selection as jni_sys::jboolean as std::ffi::c_uint,
+         left,
+         top,
+         right,
+         bottom,
+-        shift
++        shift,
++        read_only as jni_sys::jboolean as std::ffi::c_uint
+     );
+ }
+ 
+--- a/platform/src/os/apple/ios/ios.rs
++++ b/platform/src/os/apple/ios/ios.rs
+@@ -1180,6 +1180,7 @@
+                     has_selection,
+                     rect,
+                     keyboard_shift,
++                    ..
+                 } => {
+                     let window_id = CxWindowPool::id_zero();
+                     let window = &self.windows[window_id];

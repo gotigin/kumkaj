@@ -834,3 +834,7 @@ role_help_supplier	ڪردار: فراهم ڪندڙ - خريداري لاءِ ا�
 lane_declared_label	حساب ڪتاب
 lane_owner_label	ڪيش بکنگ
 money_lane_bill	بل: {lane}
+sel_copy	ڪاپي ڪريو
+sel_select_all	سڀ چونڊيو
+sel_copied	ڪاپي ٿي وئي
+nav_loading	لوڊ ٿي رهيو آهي…

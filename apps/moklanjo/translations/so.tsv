@@ -834,3 +834,7 @@ role_help_supplier	Doorka: Alaab-qeybiye — AP wax iibsiga.
 lane_declared_label	Xisaabinta xisaabaadka
 lane_owner_label	Boos lacag caddaan ah
 money_lane_bill	Biil: {lane}
+sel_copy	Koobi
+sel_select_all	Dooro dhammaan
+sel_copied	Waa la koobiyeeyay
+nav_loading	Waa la soo shubayaa…

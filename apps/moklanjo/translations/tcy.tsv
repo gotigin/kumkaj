@@ -834,3 +834,7 @@ role_help_supplier	ಪಾತ್ರ: ಪೂರೈಕೆದಾರ — ಖರೀದ
 lane_declared_label	ಖಾತೆ ಬುಕ್ಕಿಂಗ್
 lane_owner_label	ನಗದು ಬುಕ್ಕಿಂಗ್
 money_lane_bill	ಬಿಲ್: {lane}
+sel_copy	ನಕಲ್ ಮಲ್ಪುಲೆ
+sel_select_all	ಮಾತಾ ಆಯ್ಕೆ ಮಲ್ಪುಲೆ
+sel_copied	ನಕಲ್ ಆಂಡ್
+nav_loading	ಲೋಡ್ ಆವೊಂದುಂಡು…

@@ -1602,8 +1602,34 @@ script_mod! {
         }
     }
 
+    // A press-drag that starts ON a chip scrolls the strip too, with a mouse
+    // as with a finger (mouse_capture_overload); a press that does not travel
+    // past the slop stays the chip's tap. Only Floor area tabs (drag a tab to
+    // swap) keep the whitespace-only mouse drag — see floor_area_strip.
     let ChipStrip = ScrollXView{
         width: Fill height: 52
+        scroll_bars: mod.widgets.ScrollBars {
+            show_scroll_x: true show_scroll_y: false
+            scroll_bar_x.drag_scrolling: true
+            scroll_bar_x.mouse_capture_overload: true
+            scroll_bar_x.axis_lock: true
+            scroll_bar_x.bar_size: 4.
+        }
+    }
+    // Form/settings horizontal strips under a heading. Vertical margin so the
+    // strip is not flush with siblings. Never put this margin on ChipStrip —
+    // Overlay tabs (Lock roles) would float away from the chevrons.
+    let FormScrollX = ScrollXView{
+        width: Fill height: Fit
+        margin: Inset{left: 0. right: 0. top: 8. bottom: 8.}
+        // Same as ChipStrip: a press-drag from a chip scrolls (mouse + touch).
+        scroll_bars: mod.widgets.ScrollBars {
+            show_scroll_x: true show_scroll_y: false
+            scroll_bar_x.drag_scrolling: true
+            scroll_bar_x.mouse_capture_overload: true
+            scroll_bar_x.axis_lock: true
+            scroll_bar_x.bar_size: 4.
+        }
     }
 
     // Fill chips in a row: wrap (no ellipsis) so translated labels stay whole.
@@ -4330,6 +4356,22 @@ script_mod! {
             draw_bg.border_color: #xE3D3C8
         }
     }
+    // Copy / Select all menu (selection_menu.rs): floats at the pointer on
+    // the overlay, open state in AppState::sel_menu. Never a Modal (same
+    // reason as AnchoredPopup). Rows never take key focus, so the block whose
+    // selection Copy reads keeps it.
+    mod.widgets.SelectionMenuBase = #(SelectionMenu::register_widget(vm))
+    mod.widgets.SelectionMenu = set_type_default() do mod.widgets.SelectionMenuBase{
+        content := RoundedView{
+            width: Fill height: Fit
+            padding: Inset{left: 6. right: 6. top: 6. bottom: 6.}
+            flow: Down spacing: 4
+            draw_bg.color: #xFFF8F3
+            draw_bg.border_radius: 12.
+            draw_bg.border_size: 1.
+            draw_bg.border_color: #xE3D3C8
+        }
+    }
     mod.widgets.StationCheckListBase = #(StationCheckList::register_widget(vm))
     mod.widgets.StationCheckList = set_type_default() do mod.widgets.StationCheckListBase{
         width: Fill height: Fit
@@ -4639,8 +4681,8 @@ script_mod! {
                             draw_bg +: {
                                 size: 4. border_radius: 2.
                                 color: #xC9AFA2
-                                color_hover: #x9A0E10
-                                color_drag: #x69090C
+                                color_hover: #xCD380E
+                                color_drag: #xA32E0A
                             }
                         }
                     }
@@ -5071,6 +5113,9 @@ script_mod! {
                         draw_bg.color: #xCD380E
                     }
                     main_column := View{
+                        // One selection root for every screen (selection_menu.rs):
+                        // Ctrl/Cmd+A selects every selectable block shown here.
+                        selection_root: true
                         width: Fill height: Fill
                         flow: Down spacing: 0
 
@@ -5137,27 +5182,28 @@ script_mod! {
                             View{
                                 width: Fill height: Fit
                                 flow: Down spacing: 2
-                                View{
-                                    width: Fill height: Fit
-                                    flow: Right spacing: 6
-                                    align: Align{y: 0.5}
-                                    // Selectable WrapLabel — font_color stays white on maroon.
-                                    brand_title := WrapLabel{
-                                        width: Fit
-                                        body: "Kirano"
-                                        font_color: #xffffff
-                                        font_size: 18.
-                                    }
-                                    // Short server id — smaller than the shop name.
-                                    brand_server_id := WrapLabel{
-                                        width: Fit
-                                        body: ""
-                                        font_color: #xE8C4B0
-                                        font_size: 11.
-                                        visible: false
-                                    }
+                                brand_title := WrapLabel{
+                                    // Light ink on chrome: a mark, not copy (a light band would hide it).
+                                    selectable: false
+                                    width: Fill
+                                    body: "Kirano"
+                                    font_color: #xffffff
+                                    font_size: 18.
+                                }
+                                // Short server id — smaller than the shop name.
+                                brand_server_id := WrapLabel{
+                                    // Light ink on chrome: a mark, not copy (a light band would hide it).
+                                    selectable: false
+                                    width: Fill
+                                    body: ""
+                                    font_color: #xE8C4B0
+                                    font_size: 11.
+                                    visible: false
                                 }
                                 session_label := WrapLabel{
+                                    // Light ink on chrome: a mark, not copy (a light band would hide it).
+                                    selectable: false
+                                    width: Fill
                                     body: "Sell"
                                     font_color: #xC4A18C
                                     font_size: 11.
@@ -5263,23 +5309,18 @@ script_mod! {
                                             View{
                                                 width: Fill height: Fit
                                                 flow: Down spacing: 4
-                                                View{
-                                                    width: Fill height: Fit
-                                                    flow: Right spacing: 6
-                                                    align: Align{y: 0.5}
-                                                    setup_brand_title := WrapLabel{
-                                                        width: Fit
-                                                        body: "Your shop"
-                                                        font_color: #xA32E0A
-                                                        font_size: 18.
-                                                    }
-                                                    setup_brand_server_id := WrapLabel{
-                                                        width: Fit
-                                                        body: ""
-                                                        font_color: #x1C460E
-                                                        font_size: 11.
-                                                        visible: false
-                                                    }
+                                                setup_brand_title := WrapLabel{
+                                                    width: Fill
+                                                    body: "Your shop"
+                                                    font_color: #xA32E0A
+                                                    font_size: 18.
+                                                }
+                                                setup_brand_server_id := WrapLabel{
+                                                    width: Fill
+                                                    body: ""
+                                                    font_color: #x1C460E
+                                                    font_size: 11.
+                                                    visible: false
                                                 }
                                                 device_use_question := WrapLabel{
                                                     body: ""
@@ -5499,23 +5540,18 @@ script_mod! {
                                             View{
                                                 width: Fill height: Fit
                                                 flow: Down spacing: 4
-                                                View{
-                                                    width: Fill height: Fit
-                                                    flow: Right spacing: 6
-                                                    align: Align{y: 0.5}
-                                                    lock_brand_title := WrapLabel{
-                                                        width: Fit
-                                                        body: "Your shop"
-                                                        font_color: #xA32E0A
-                                                        font_size: 18.
-                                                    }
-                                                    lock_brand_server_id := WrapLabel{
-                                                        width: Fit
-                                                        body: ""
-                                                        font_color: #x1C460E
-                                                        font_size: 11.
-                                                        visible: false
-                                                    }
+                                                lock_brand_title := WrapLabel{
+                                                    width: Fill
+                                                    body: "Your shop"
+                                                    font_color: #xA32E0A
+                                                    font_size: 18.
+                                                }
+                                                lock_brand_server_id := WrapLabel{
+                                                    width: Fill
+                                                    body: ""
+                                                    font_color: #x1C460E
+                                                    font_size: 11.
+                                                    visible: false
                                                 }
                                                 h_counter_locked := WrapLabel{
                                                     body: "Counter 01 · Locked"
@@ -6660,29 +6696,52 @@ script_mod! {
                                         visible: false
                                     }
                                     // How they pay: one tap. A single method takes the
-                                    // whole bill; Split opens the amounts.
-                                    View{
-                                        width: Fill height: Fit
-                                        flow: Right spacing: 4
-                                        View{width: Fill height: Fit flow: Overlay
-                                            pm_cash := SegBtn{text: "Cash"}
-                                            pm_cash_on := SegBtnOn{text: "Cash" visible: false}
+                                    // whole bill; Split opens the amounts. Fixed chips in a
+                                    // sideways strip, never Fill segments: five Fill
+                                    // SegBtns crammed / clipped Split on a phone
+                                    // (Khaynjo owner decision, guarded by a shell test).
+                                    till_pay_scroll := FormScrollX{
+                                        scroll_bars: mod.widgets.ScrollBars {
+                                            show_scroll_x: true show_scroll_y: false
+                                            scroll_bar_x: mod.widgets.ScrollBar{
+                                                drag_scrolling: true
+                                                mouse_capture_overload: true
+                                                axis_lock: true
+                                                bounce_at_start: false
+                                                bounce_at_end: false
+                                                bar_size: 6.
+                                                min_handle_size: 24.
+                                                draw_bg +: {
+                                                    size: 4. border_radius: 2.
+                                                    color: #xC9AFA2
+                                                    color_hover: #xCD380E
+                                                    color_drag: #xA32E0A
+                                                }
+                                            }
                                         }
-                                        View{width: Fill height: Fit flow: Overlay
-                                            pm_upi := SegBtn{text: "UPI"}
-                                            pm_upi_on := SegBtnOn{text: "UPI" visible: false}
-                                        }
-                                        View{width: Fill height: Fit flow: Overlay
-                                            pm_card := SegBtn{text: "Card"}
-                                            pm_card_on := SegBtnOn{text: "Card" visible: false}
-                                        }
-                                        View{width: Fill height: Fit flow: Overlay
-                                            pm_credit := SegBtn{text: "Credit"}
-                                            pm_credit_on := SegBtnOn{text: "Credit" visible: false}
-                                        }
-                                        View{width: Fill height: Fit flow: Overlay
-                                            pm_split := SegBtn{text: "Split"}
-                                            pm_split_on := SegBtnOn{text: "Split" visible: false}
+                                        till_pay_strip := View{
+                                            width: Fit height: Fit
+                                            flow: Right spacing: 4
+                                            pm_cash_wrap := View{width: Fixed(76.) height: Fit flow: Overlay
+                                                pm_cash := SegBtn{text: "Cash"}
+                                                pm_cash_on := SegBtnOn{text: "Cash" visible: false}
+                                            }
+                                            pm_upi_wrap := View{width: Fixed(76.) height: Fit flow: Overlay
+                                                pm_upi := SegBtn{text: "UPI"}
+                                                pm_upi_on := SegBtnOn{text: "UPI" visible: false}
+                                            }
+                                            pm_card_wrap := View{width: Fixed(76.) height: Fit flow: Overlay
+                                                pm_card := SegBtn{text: "Card"}
+                                                pm_card_on := SegBtnOn{text: "Card" visible: false}
+                                            }
+                                            pm_credit_wrap := View{width: Fixed(88.) height: Fit flow: Overlay
+                                                pm_credit := SegBtn{text: "Credit"}
+                                                pm_credit_on := SegBtnOn{text: "Credit" visible: false}
+                                            }
+                                            pm_split_wrap := View{width: Fixed(76.) height: Fit flow: Overlay
+                                                pm_split := SegBtn{text: "Split"}
+                                                pm_split_on := SegBtnOn{text: "Split" visible: false}
+                                            }
                                         }
                                     }
                                     split_panel := View{
@@ -7759,8 +7818,8 @@ script_mod! {
                                                 draw_bg +: {
                                                     size: 4. border_radius: 2.
                                                     color: #xC9AFA2
-                                                    color_hover: #x9A0E10
-                                                    color_drag: #x69090C
+                                                    color_hover: #xCD380E
+                                                    color_drag: #xA32E0A
                                                 }
                                             }
                                         }
@@ -8858,7 +8917,7 @@ h_units_heading := WrapLabel{body: "Units" font_color: #x031303 font_size: 20.}
                                     font_size: 12.
                                     visible: false
                                 }
-                                units_label := mod.widgets.ReportText{}
+                                units_label := mod.widgets.ReportText{tappable: true}
                                 FormFieldRow{
                                     unit_code_input := FieldInput{empty_text: "Code (bag)"}
                                     unit_name_input := FieldInput{empty_text: "Name (Bag)"}
@@ -8890,7 +8949,7 @@ sibling_pickers_heading := WrapLabel{body: "Areas · sections · tax rates" font
                                     font_size: 12.
                                     visible: false
                                 }
-                                sibling_pickers_label := mod.widgets.ReportText{}
+                                sibling_pickers_label := mod.widgets.ReportText{tappable: true}
                                 FormCard{
                                 station_manage_heading := WrapLabel{
                                     body: "Add or remove a shop section"
@@ -11203,6 +11262,30 @@ h_backup := WrapLabel{body: "Backup" font_color: #x031303 font_size: 20.}
                     // backdrop is overridden transparent and its content
                     // fills the window, so the ghost's abs_pos is in window
                     // coordinates and nothing else is visible.
+                    // Loading screen: a screen switch that took ≥ 1 s last time
+                    // shows this for one frame first (go_with → NextFrame), so a
+                    // tap is answered at once instead of by a frozen window.
+                    nav_loading := SolidView{
+                        visible: false
+                        width: Fill height: Fill
+                        align: Align{x: 0.5 y: 0.5}
+                        draw_bg.color: #xFDF7EA
+                        nav_loading_label := WrapLabel{
+                            width: Fit
+                            body: "Loading…"
+                            font_color: #x6B4A2E
+                            font_size: 16.
+                            // Status, not copy.
+                            selectable: false
+                        }
+                    }
+                    // Right-click / touch-selection menu: Copy, Select all.
+                    sel_menu := mod.widgets.SelectionMenu{
+                        content +: {
+                            sel_menu_copy := StackLightBtn{text: "Copy" grab_key_focus: false}
+                            sel_menu_all := StackLightBtn{text: "Select all" grab_key_focus: false}
+                        }
+                    }
                     // Floor Columns pick list: floats under floor_cols_box
                     // (PopupAnchor "floor_cols") so the open menu never
                     // stretches floor_cols_row or shoves the tables, and
@@ -11304,6 +11387,8 @@ h_backup := WrapLabel{body: "Backup" font_color: #x031303 font_size: 20.}
                             // modal (content fills the window, so Makepad's own
                             // outside test never fires — see `sheet_press`).
                             upi_qr_sheet := RoundedView{
+                                // An open sheet is the selection root (main_column stands down).
+                                selection_root: true
                                 width: Fill{max: 420.} height: Fit
                                 flow: Down spacing: 12
                                 padding: Inset{left: 20. right: 20. top: 18. bottom: 18.}
@@ -11343,6 +11428,8 @@ h_backup := WrapLabel{body: "Backup" font_color: #x031303 font_size: 20.}
                             align: Align{x: 0.5 y: 0.5}
                             padding: Inset{left: 16. right: 16. top: 20. bottom: 20.}
                                 menu_panel := RoundedView{
+                                    // An open sheet is the selection root (main_column stands down).
+                                    selection_root: true
                                 width: Fill{max: 980.} height: Fill
                                 flow: Down spacing: 10
                                 // Header (Done) is tested before the search and the

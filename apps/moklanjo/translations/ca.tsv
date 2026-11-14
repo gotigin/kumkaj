@@ -834,3 +834,7 @@ role_help_supplier	Funció: Proveïdor — AP per a compres.
 lane_declared_label	Reserves de compte
 lane_owner_label	Reserva en efectiu
 money_lane_bill	Compte: {lane}
+sel_copy	Copia
+sel_select_all	Selecciona-ho tot
+sel_copied	Copiat
+nav_loading	S'està carregant…

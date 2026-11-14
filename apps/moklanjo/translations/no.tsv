@@ -834,3 +834,7 @@ role_help_supplier	Rolle: Leverandør — AP for kjøp.
 lane_declared_label	Kontobestilling
 lane_owner_label	Kontantbestilling
 money_lane_bill	Regning: {lane}
+sel_copy	Kopier
+sel_select_all	Velg alt
+sel_copied	Kopiert
+nav_loading	Laster inn…

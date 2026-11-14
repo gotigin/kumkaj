@@ -834,3 +834,7 @@ role_help_supplier	角色：供應商－採購 AP。
 lane_declared_label	帳戶預訂
 lane_owner_label	現金預訂
 money_lane_bill	帳單：{lane}
+sel_copy	複製
+sel_select_all	全選
+sel_copied	已複製
+nav_loading	載入中…

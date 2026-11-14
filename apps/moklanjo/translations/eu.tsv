@@ -834,3 +834,7 @@ role_help_supplier	Rola: hornitzailea — erosketetarako AP.
 lane_declared_label	Kontuaren erreserba
 lane_owner_label	Eskudirutan erreserba
 money_lane_bill	Kontua: {lane}
+sel_copy	Kopiatu
+sel_select_all	Hautatu guztiak
+sel_copied	Kopiatuta
+nav_loading	Kargatzen…

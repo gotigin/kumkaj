@@ -834,3 +834,7 @@ role_help_supplier	Vloga: Dobavitelj — AP za nakupe.
 lane_declared_label	Rezervacija računa
 lane_owner_label	Rezervacija gotovine
 money_lane_bill	Račun: {lane}
+sel_copy	Kopiraj
+sel_select_all	Izberi vse
+sel_copied	Kopirano
+nav_loading	Nalaganje…

@@ -834,3 +834,7 @@ role_help_supplier	Rôl: Cyflenwr — AP ar gyfer pryniannau.
 lane_declared_label	Archebu ar gyfrif
 lane_owner_label	Archebu ag arian parod
 money_lane_bill	Bil: {lane}
+sel_copy	Copïo
+sel_select_all	Dewis y cyfan
+sel_copied	Wedi copïo
+nav_loading	Yn llwytho…

@@ -834,3 +834,7 @@ role_help_supplier	Uruhare: Utanga isoko - AP yo kugura.
 lane_declared_label	Kubika konti
 lane_owner_label	Kubika amafaranga
 money_lane_bill	Inyemezabuguzi: {lane}
+sel_copy	Kopera
+sel_select_all	Hitamo byose
+sel_copied	Byakoporowe
+nav_loading	Biriguma gufunguka…

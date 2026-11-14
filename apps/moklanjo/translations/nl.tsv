@@ -834,3 +834,7 @@ role_help_supplier	Rol: Leverancier — crediteuren voor inkopen.
 lane_declared_label	Rekeningboeking
 lane_owner_label	Contante boeking
 money_lane_bill	Factuur: {lane}
+sel_copy	Kopiëren
+sel_select_all	Alles selecteren
+sel_copied	Gekopieerd
+nav_loading	Laden…

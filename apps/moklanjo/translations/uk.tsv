@@ -834,3 +834,7 @@ role_help_supplier	Роль: Постачальник — AP для закупі
 lane_declared_label	Бронювання рахунку
 lane_owner_label	Бронювання готівки
 money_lane_bill	Рахунок: {lane}
+sel_copy	Копіювати
+sel_select_all	Виділити все
+sel_copied	Скопійовано
+nav_loading	Завантаження…

@@ -834,3 +834,7 @@ role_help_supplier	Улога: Добавувач - АП за купувања.
 lane_declared_label	Резервација на сметка
 lane_owner_label	Резервација во готовина
 money_lane_bill	Гостинска сметка за гости: {lane}
+sel_copy	Копирај
+sel_select_all	Избери сè
+sel_copied	Копирано
+nav_loading	Се вчитува…

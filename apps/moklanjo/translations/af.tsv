@@ -834,3 +834,7 @@ role_help_supplier	Role: Supplier — AP for purchases.
 lane_declared_label	Rekeningbespreking
 lane_owner_label	Kontantbespreking
 money_lane_bill	Faktuur: {lane}
+sel_copy	Kopieer
+sel_select_all	Kies alles
+sel_copied	Gekopieer
+nav_loading	Laai tans…

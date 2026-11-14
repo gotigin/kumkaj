@@ -834,3 +834,7 @@ role_help_supplier	Matsayi: Mai bayarwa - AP don sayayya.
 lane_declared_label	Yin ajiyar asusu
 lane_owner_label	Yin ajiyar kuɗi
 money_lane_bill	Lissafi: {lane}
+sel_copy	Kwafi
+sel_select_all	Zaɓi duka
+sel_copied	An kwafa
+nav_loading	Ana lodawa…

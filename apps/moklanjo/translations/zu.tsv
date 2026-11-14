@@ -834,3 +834,7 @@ role_help_supplier	Iqhaza: Umhlinzeki - AP yokuthenga.
 lane_declared_label	Ukubhukha i-akhawunti
 lane_owner_label	Ukubhukha imali
 money_lane_bill	Ibhili yesivakashi sesivakashi: {lane}
+sel_copy	Kopisha
+sel_select_all	Khetha konke
+sel_copied	Kukopishiwe
+nav_loading	Iyalayisha…

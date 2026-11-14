@@ -834,3 +834,7 @@ role_help_supplier	역할: 공급업체 - 구매 AP.
 lane_declared_label	계정 예약
 lane_owner_label	현금 예약
 money_lane_bill	영수증: {lane}
+sel_copy	복사
+sel_select_all	모두 선택
+sel_copied	복사됨
+nav_loading	불러오는 중…

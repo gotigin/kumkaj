@@ -234,6 +234,8 @@ struct AppState {
     menu_filter: String,
     /// Order desk: the menu dropdown under the search box is open.
     menu_pick_open: bool,
+    /// Open Copy / Select all menu (selection_menu.rs), read at draw time.
+    sel_menu: Option<SelMenuOpen>,
     /// Bumped when the dropdown's rows change, so it scrolls back to the top.
     menu_pick_rev: u64,
     /// The sent line the ticket's action panel is working on, and what to do

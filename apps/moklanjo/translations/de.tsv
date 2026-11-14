@@ -834,3 +834,7 @@ role_help_supplier	Rolle: Lieferant — Verbindlichkeiten für Einkäufe.
 lane_declared_label	Kontobuchung
 lane_owner_label	Barbuchung
 money_lane_bill	Rechnung: {lane}
+sel_copy	Kopieren
+sel_select_all	Alles auswählen
+sel_copied	Kopiert
+nav_loading	Wird geladen…

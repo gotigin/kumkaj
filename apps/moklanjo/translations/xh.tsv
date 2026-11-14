@@ -834,3 +834,7 @@ role_help_supplier	Indima: Umthengisi - AP yokuthenga.
 lane_declared_label	Ukubhukisha iakhawunti
 lane_owner_label	Ukubhukisha imali
 money_lane_bill	Ityala: {lane}
+sel_copy	Kopisha
+sel_select_all	Khetha konke
+sel_copied	Ikopishiwe
+nav_loading	Iyalayisha…

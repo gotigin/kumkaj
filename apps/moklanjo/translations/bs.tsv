@@ -834,3 +834,7 @@ role_help_supplier	Uloga: dobavljač — AP za nabavke.
 lane_declared_label	Rezervacija računa
 lane_owner_label	Gotovinsko rezervisanje
 money_lane_bill	Račun: {lane}
+sel_copy	Kopiraj
+sel_select_all	Odaberi sve
+sel_copied	Kopirano
+nav_loading	Učitavanje…

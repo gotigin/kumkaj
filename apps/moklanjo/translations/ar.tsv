@@ -834,3 +834,7 @@ role_help_supplier	الدور: المورد - AP للمشتريات.
 lane_declared_label	حجز الحساب
 lane_owner_label	الحجز النقدي
 money_lane_bill	الفاتورة: {lane}
+sel_copy	نسخ
+sel_select_all	تحديد الكل
+sel_copied	تم النسخ
+nav_loading	جارٍ التحميل…

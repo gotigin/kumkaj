@@ -834,3 +834,7 @@ role_help_supplier	Peranan: Pembekal — AP untuk pembelian.
 lane_declared_label	Tempahan akaun
 lane_owner_label	Tempahan tunai
 money_lane_bill	Bil: {lane}
+sel_copy	Salin
+sel_select_all	Pilih semua
+sel_copied	Disalin
+nav_loading	Memuatkan…

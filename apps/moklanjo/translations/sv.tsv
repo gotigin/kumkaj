@@ -834,3 +834,7 @@ role_help_supplier	Roll: Leverantör — AP för inköp.
 lane_declared_label	Kontobokning
 lane_owner_label	Kontantbokning
 money_lane_bill	Nota: {lane}
+sel_copy	Kopiera
+sel_select_all	Markera allt
+sel_copied	Kopierat
+nav_loading	Läser in…

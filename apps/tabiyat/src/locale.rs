@@ -1893,6 +1893,12 @@ fn en(key: &str) -> String {
         "lane_declared_label" => "Tax invoice",
         "lane_owner_label" => "Cash memo",
         "money_lane_bill" => "Bill: {lane}",
+        // Copy / Select all menu (selection_menu.rs).
+        "sel_copy" => "Copy",
+        "sel_select_all" => "Select all",
+        "sel_copied" => "Copied",
+        // Loading screen before a screen switch that was slow last time.
+        "nav_loading" => "Loading…",
         _ => key,
     }
     .into()

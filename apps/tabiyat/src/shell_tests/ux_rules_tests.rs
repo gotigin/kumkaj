@@ -196,4 +196,48 @@ mod ux_rules_tests {
         assert_eq!(locale::t("en", "nav_items"), "Medicines");
         assert_eq!(locale::t("en", "sell"), "Sell");
     }
+
+    /// Report lists whose rows are tapped (match_event: `ids!(row)` finger_up)
+    /// must be `tappable` — the row View hears the finger only with a cursor;
+    /// these taps were dead before (same class as the KotCard card tap).
+    #[test]
+    fn tapped_report_lists_are_tappable() {
+        let ui = include_str!("../ui_script.rs");
+        for id in ["sibling_pickers_label", "units_label"] {
+            let decl = ui
+                .split(&format!("{id} := mod.widgets.ReportText{{"))
+                .nth(1)
+                .and_then(|s| s.split('}').next())
+                .unwrap_or("");
+            assert!(decl.contains("tappable: true"), "{id} rows are tapped — set tappable: true");
+        }
+    }
+
+    /// Settings → Areas · stations · tax rates shows names, never ids, and
+    /// every row keeps its toggle target (keys line up index for index).
+    #[test]
+    fn sibling_pickers_show_names_and_keep_their_targets() {
+        let path = std::env::temp_dir().join(format!("khaynjo-pickers-{}.sqlite3", new_id()));
+        let store = Store::open_path(&path).unwrap();
+        store.add_station("Tandoor").unwrap();
+        let rows = sibling_pickers_rows(&store, |k| locale::t("en", k));
+        let keys = sibling_picker_keys(&store);
+        assert_eq!(rows.len(), keys.len());
+        for (row, key) in rows.iter().zip(&keys) {
+            match (row, key) {
+                (ReportRow::Head(_), None) => {}
+                (ReportRow::Kv(name, _), Some(key)) => {
+                    assert!(!name.contains(':'), "id leaked into the row: {name}");
+                    assert!(
+                        key.starts_with("area:") || key.starts_with("station:") || key.starts_with("tax:"),
+                        "{key}"
+                    );
+                }
+                _ => panic!("row / key mismatch"),
+            }
+        }
+        assert!(rows.iter().any(|r| matches!(r, ReportRow::Kv(n, _) if n == "Tandoor")));
+        drop(store);
+        let _ = std::fs::remove_file(path);
+    }
 }

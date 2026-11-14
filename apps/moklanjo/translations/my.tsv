@@ -834,3 +834,7 @@ role_help_supplier	အခန်းကဏ္ဍ- ပေးသွင်းသူ �
 lane_declared_label	အကောင့်ကြိုတင်စာရင်းသွင်းခြင်း။
 lane_owner_label	ငွေသားကြိုတင်စာရင်းသွင်းခြင်း။
 money_lane_bill	ဘီးလ်: {lane}
+sel_copy	ကူးယူရန်
+sel_select_all	အားလုံးရွေးရန်
+sel_copied	ကူးယူပြီး
+nav_loading	ဖွင့်နေသည်…

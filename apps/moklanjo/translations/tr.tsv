@@ -834,3 +834,7 @@ role_help_supplier	Rol: Tedarikçi — Satın almalar için AP.
 lane_declared_label	Hesap rezervasyonu
 lane_owner_label	Nakit rezervasyon
 money_lane_bill	Fatura: {lane}
+sel_copy	Kopyala
+sel_select_all	Tümünü seç
+sel_copied	Kopyalandı
+nav_loading	Yükleniyor…

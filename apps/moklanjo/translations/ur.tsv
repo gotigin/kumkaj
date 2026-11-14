@@ -834,3 +834,7 @@ role_help_supplier	کردار: سپلائر — خریداری کے لیے AP۔
 lane_declared_label	اکاؤنٹ بکنگ
 lane_owner_label	نقد بکنگ
 money_lane_bill	بل: {lane}
+sel_copy	کاپی کریں
+sel_select_all	سب منتخب کریں
+sel_copied	کاپی ہو گیا
+nav_loading	لوڈ ہو رہا ہے…

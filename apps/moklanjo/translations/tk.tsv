@@ -834,3 +834,7 @@ role_help_supplier	Rol: Üpjün ediji - Satyn almak üçin AP.
 lane_declared_label	Hasap bronlamak
 lane_owner_label	Nagt bronlamak
 money_lane_bill	Hasap: {lane}
+sel_copy	Göçür
+sel_select_all	Hemmesini saýla
+sel_copied	Göçürildi
+nav_loading	Ýüklenýär…

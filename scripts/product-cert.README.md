@@ -15,6 +15,7 @@
 | **resilience** | soak peer thrash; fail on panic / `[E]` |
 | **xcomp** | Play `version_code` rules; package scripts present |
 | **linux** | Short Xvfb launch of `dist/<app>-linux` binary (`CERT_BUILD_LINUX=1` to package) |
+| **wack** | Production `x86_64-pc-windows-gnu` build + `scripts/windows/wack-precheck.sh` (PE flags, manifest, version info, icon, newest `dist/<Label>-*.msix`); the real WACK run is `scripts/windows/run-wack.ps1` on Windows |
 | **android** | `adb` install+launch when a device/emulator is present (`CERT_REQUIRE_ADB=1` to require) |
 | **store** | AAB+symbols (Khaynjo), fonts, MSIX identity docs, UI tier must be green; runs linux+android |
 

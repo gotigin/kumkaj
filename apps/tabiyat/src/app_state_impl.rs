@@ -131,6 +131,7 @@ impl AppState {
             form_category_auto: false,
             menu_filter: String::new(),
             menu_pick_open: false,
+            sel_menu: None,
             menu_pick_rev: 0,
             line_action: None,
             open_cart_line: None,

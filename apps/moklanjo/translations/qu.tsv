@@ -834,3 +834,7 @@ role_help_supplier	Ruway: Suministrador — AP rantiykunapaq.
 lane_declared_label	Cuentakuna reservay
 lane_owner_label	Qullqiwan reservakuy
 money_lane_bill	Invitado invitado qullqi: {lane}
+sel_copy	Copiay
+sel_select_all	Llapanta akllay
+sel_copied	Copiasqañam
+nav_loading	Cargachkan…

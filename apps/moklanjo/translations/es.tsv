@@ -834,3 +834,7 @@ role_help_supplier	Rol: Proveedor — AP de compras.
 lane_declared_label	Envío a cuenta
 lane_owner_label	Envío al contado
 money_lane_bill	Factura: {lane}
+sel_copy	Copiar
+sel_select_all	Seleccionar todo
+sel_copied	Copiado
+nav_loading	Cargando…

@@ -834,3 +834,7 @@ role_help_supplier	Rwol: Fornitur — AP għax-xiri.
 lane_declared_label	Prenotazzjoni tal-kont
 lane_owner_label	Prenotazzjoni ta' flus kontanti
 money_lane_bill	Kont: {lane}
+sel_copy	Ikkopja
+sel_select_all	Agħżel kollox
+sel_copied	Ikkupjat
+nav_loading	Qed jitgħabba…

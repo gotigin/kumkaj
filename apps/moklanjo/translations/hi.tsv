@@ -834,3 +834,7 @@ role_help_supplier	भूमिका: सप्लायर — खरीद �
 lane_declared_label	खाता बुकिंग
 lane_owner_label	नकद बुकिंग
 money_lane_bill	बिल: {lane}
+sel_copy	कॉपी करें
+sel_select_all	सब चुनें
+sel_copied	कॉपी हो गया
+nav_loading	लोड हो रहा है…

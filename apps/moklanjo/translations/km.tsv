@@ -834,3 +834,7 @@ role_help_supplier	តួនាទី៖ អ្នកផ្គត់ផ្គង
 lane_declared_label	ការកក់គណនី
 lane_owner_label	ការកក់សាច់ប្រាក់
 money_lane_bill	វិក្កយបត្រ៖ {lane}
+sel_copy	ចម្លង
+sel_select_all	ជ្រើសរើសទាំងអស់
+sel_copied	បានចម្លង
+nav_loading	កំពុងផ្ទុក…

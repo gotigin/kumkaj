@@ -238,6 +238,8 @@ struct AppState {
     books_report_kind: BooksReportKind,
     /// The field whose "type or pick" list is open, and its rows.
     suggest_open: Option<SuggestField>,
+    /// Open Copy / Select all menu (selection_menu.rs), read at draw time.
+    sel_menu: Option<SelMenuOpen>,
     suggest_rows: Vec<suggest::SuggestRow>,
     /// Bumped on every refresh so the list scrolls back to the top.
     suggest_rev: u64,

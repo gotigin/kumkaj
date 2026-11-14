@@ -542,23 +542,37 @@ fn sibling_pickers_rows(store: &Store, t: impl Fn(&str) -> String) -> Vec<Report
     let mut rows = Vec::new();
     rows.push(ReportRow::Head("Areas".into()));
     for (name, on) in store.list_picker_areas().unwrap_or_default() {
-        rows.push(ReportRow::Kv(format!("area:{name}"), on_off(on)));
+        rows.push(ReportRow::Kv(name, on_off(on)));
     }
     rows.push(ReportRow::Head("Stations".into()));
     for s in store.list_stations().unwrap_or_default() {
-        rows.push(ReportRow::Kv(
-            format!("station:{} · {}", s.id, s.name),
-            on_off(s.picker_enabled),
-        ));
+        rows.push(ReportRow::Kv(s.name, on_off(s.picker_enabled)));
     }
     rows.push(ReportRow::Head("Tax rates".into()));
     for r in store.list_tax_rates().unwrap_or_default() {
-        rows.push(ReportRow::Kv(
-            format!("tax:{} · {}", r.id, r.name),
-            on_off(r.picker_enabled),
-        ));
+        rows.push(ReportRow::Kv(r.name, on_off(r.picker_enabled)));
     }
     rows
+}
+
+/// What each `sibling_pickers_rows` row toggles, index for index (None for
+/// the headings): `area:<name>`, `station:<id>`, `tax:<id>`. The rows show
+/// names only — they used to read "tax:<uuid> · GST 5%" so the tap handler
+/// could parse its target back out of the text.
+fn sibling_picker_keys(store: &Store) -> Vec<Option<String>> {
+    let mut keys = vec![None];
+    for (name, _) in store.list_picker_areas().unwrap_or_default() {
+        keys.push(Some(format!("area:{name}")));
+    }
+    keys.push(None);
+    for s in store.list_stations().unwrap_or_default() {
+        keys.push(Some(format!("station:{}", s.id)));
+    }
+    keys.push(None);
+    for r in store.list_tax_rates().unwrap_or_default() {
+        keys.push(Some(format!("tax:{}", r.id)));
+    }
+    keys
 }
 
 /// Settings → Units as rows: each family's units from smallest to largest

@@ -834,3 +834,7 @@ role_help_supplier	Rol: Yetkazib beruvchi — xaridlar uchun AP.
 lane_declared_label	Hisobni bron qilish
 lane_owner_label	Naqd pul bron qilish
 money_lane_bill	Hisob: {lane}
+sel_copy	Nusxalash
+sel_select_all	Hammasini tanlash
+sel_copied	Nusxalandi
+nav_loading	Yuklanmoqda…

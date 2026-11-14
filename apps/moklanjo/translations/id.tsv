@@ -834,3 +834,7 @@ role_help_supplier	Peran: Pemasok — AP untuk pembelian.
 lane_declared_label	Pemesanan akun
 lane_owner_label	Pemesanan tunai
 money_lane_bill	Tagihan: {lane}
+sel_copy	Salin
+sel_select_all	Pilih semua
+sel_copied	Disalin
+nav_loading	Memuat…

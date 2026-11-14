@@ -834,3 +834,7 @@ role_help_supplier	Szerep: Szállító – AP a vásárlásokhoz.
 lane_declared_label	Számlafoglalás
 lane_owner_label	Készpénzes foglalás
 money_lane_bill	Számla: {lane}
+sel_copy	Másolás
+sel_select_all	Az összes kijelölése
+sel_copied	Másolva
+nav_loading	Betöltés…

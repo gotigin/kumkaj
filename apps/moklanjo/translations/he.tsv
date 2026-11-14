@@ -834,3 +834,7 @@ role_help_supplier	תפקיד: ספק - AP לרכישות.
 lane_declared_label	הזמנת חשבון
 lane_owner_label	הזמנה במזומן
 money_lane_bill	חשבון: {lane}
+sel_copy	העתק
+sel_select_all	בחר הכול
+sel_copied	הועתק
+nav_loading	טוען…

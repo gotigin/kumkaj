@@ -834,3 +834,7 @@ role_help_supplier	Роль: Поставщик — кредиторка по з
 lane_declared_label	Отправка в счёт
 lane_owner_label	Отправка за наличные
 money_lane_bill	Билл: {lane}
+sel_copy	Копировать
+sel_select_all	Выделить всё
+sel_copied	Скопировано
+nav_loading	Загрузка…

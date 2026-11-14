@@ -834,3 +834,7 @@ role_help_supplier	भूमिका: आपूर्तिकर्ता — 
 lane_declared_label	खातप्रेषणम्
 lane_owner_label	नगदप्रेषणम्
 money_lane_bill	विधेयकः {lane} .
+sel_copy	प्रतिलिख्यताम्
+sel_select_all	सर्वं चीयताम्
+sel_copied	प्रतिलिखितम्
+nav_loading	आरोप्यते…

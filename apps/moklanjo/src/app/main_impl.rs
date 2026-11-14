@@ -361,7 +361,11 @@ impl App {
             }
         }
         self.match_event(cx, event);
+        if let Event::Draw(_) = event {
+            note_nav_draw();
+        }
         if let Event::NextFrame(e) = event {
+            self.finish_nav_veil(cx, e);
             let accordion_ours = accordion_frame()
                 .lock()
                 .unwrap()
@@ -386,6 +390,8 @@ impl App {
         // handler below — some return early (a nav-tab tap). The press
         // itself still reaches whatever is under it.
         self.route_popup_input(cx, event);
+        // Copy / Select all menu: same outside-press rule (selection_menu.rs).
+        self.route_selection_menu_input(cx, event);
         if self.pointer_navigates(cx, event) {
             return;
         }

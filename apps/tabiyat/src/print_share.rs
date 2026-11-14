@@ -6699,6 +6699,48 @@ pub fn slip_page_png(
     Ok((buf.into_inner(), w, h))
 }
 
+/// [`slip_page_png`] as grey pixels (one byte each) for the on-screen
+/// preview: same page, same quarter turn, no PNG round trip.
+pub fn slip_page_gray(
+    text: &str,
+    metrics: &crate::receipt_raster::RasterMetrics,
+    landscape: bool,
+) -> (Vec<u8>, u32, u32) {
+    let (px, w, h) = crate::receipt_raster::gray_lines(&styled_slip_lines(text, metrics), metrics);
+    if !landscape {
+        return (px, w, h);
+    }
+    // `image`'s rotate90 (clockwise): old (x, y) lands on (h - 1 - y, x).
+    let (ow, oh) = (w as usize, h as usize);
+    let mut out = vec![255u8; px.len()];
+    for y in 0..oh {
+        let src = &px[y * ow..(y + 1) * ow];
+        for (x, &v) in src.iter().enumerate() {
+            if v != 255 {
+                out[x * oh + (oh - 1 - y)] = v;
+            }
+        }
+    }
+    (out, h, w)
+}
+
+/// Identity of one slip preview picture: same text, size, and turn → the
+/// same pixels, so the preview can skip drawing it again.
+pub fn slip_preview_key(
+    text: &str,
+    metrics: &crate::receipt_raster::RasterMetrics,
+    landscape: bool,
+    type_px: f64,
+) -> u64 {
+    use std::hash::{Hash, Hasher};
+    let mut h = std::collections::hash_map::DefaultHasher::new();
+    text.hash(&mut h);
+    format!("{metrics:?}").hash(&mut h);
+    landscape.hash(&mut h);
+    type_px.to_bits().hash(&mut h);
+    h.finish()
+}
+
 fn png_pixel_size(png: &[u8]) -> Option<(u32, u32)> {
     if png.len() < 24 {
         return None;
@@ -7760,6 +7802,26 @@ pub fn with_test_printers<R>(cfg: DevicePrinters, f: impl FnOnce() -> R) -> R {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn screen_preview_pixels_are_the_printed_png() {
+        // The preview skips the PNG round trip; it must still be the print picture.
+        let mut f = PrintFormat::standard_portrait();
+        f.line = wrap_cols_for_paper_mm(80);
+        let text = "Shop\n**Bill 12**\nButter Roti\t2\nDal makhani\t1\n";
+        let metrics = f.raster_metrics();
+        for landscape in [false, true] {
+            let (png, pw, ph) = slip_page_png(text, &metrics, landscape).expect("png");
+            let (gray, gw, gh) = slip_page_gray(text, &metrics, landscape);
+            assert_eq!((gw, gh), (pw, ph), "landscape={landscape}");
+            let decoded = image::load_from_memory(&png).expect("decode").to_luma8();
+            assert_eq!(decoded.as_raw(), &gray, "landscape={landscape}");
+        }
+        let a = slip_preview_key(text, &metrics, false, 20.0);
+        assert_eq!(a, slip_preview_key(text, &metrics, false, 20.0));
+        assert_ne!(a, slip_preview_key(text, &metrics, true, 20.0));
+        assert_ne!(a, slip_preview_key("Shop\n", &metrics, false, 20.0));
+    }
 
     #[test]
     fn unit_tests_never_reach_the_os_printer() {

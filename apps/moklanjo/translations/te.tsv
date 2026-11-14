@@ -834,3 +834,7 @@ role_help_supplier	పాత్ర: సరఫరాదారు — కొను
 lane_declared_label	ఖాతా బుకింగ్
 lane_owner_label	నగదు బుకింగ్
 money_lane_bill	బిల్లు: {lane}
+sel_copy	కాపీ
+sel_select_all	అన్నీ ఎంచుకోండి
+sel_copied	కాపీ అయింది
+nav_loading	లోడ్ అవుతోంది…

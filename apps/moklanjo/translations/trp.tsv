@@ -834,3 +834,7 @@ role_help_supplier	রোলে: ফাইমানি — AP নি বাগ�
 lane_declared_label	খাতা বোক খাইমানি
 lane_owner_label	রাং বোক খাইমানি
 money_lane_bill	বিল: {lane}
+sel_copy	চপয় খাইদি
+sel_select_all	জত বাছায় খাইদি
+sel_copied	চপয় খাইখা
+nav_loading	Load khlaiwi tongo…

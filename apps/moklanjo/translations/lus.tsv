@@ -834,3 +834,7 @@ role_help_supplier	Role: Supplier — thil lei tur AP.
 lane_declared_label	Account booking tih a ni
 lane_owner_label	Cash booking a awm bawk
 money_lane_bill	Bill: {lane}
+sel_copy	Copy rawh
+sel_select_all	A zavaia thlang rawh
+sel_copied	Copy a ni ta
+nav_loading	Load mek mek a ni…

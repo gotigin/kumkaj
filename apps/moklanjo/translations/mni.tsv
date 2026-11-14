@@ -834,3 +834,7 @@ role_help_supplier	ꯊꯧꯗꯥꯡ: ꯁꯞꯂꯥꯏꯌꯔ — ꯄꯔꯆꯦꯖꯁ
 lane_declared_label	ꯑꯦꯀꯥꯎꯟꯇ ꯕꯨꯀꯤꯡ ꯇꯧꯕꯥ꯫
 lane_owner_label	ꯀꯦꯁ ꯕꯨꯀꯤꯡ ꯇꯧꯕꯥ꯫
 money_lane_bill	ꯕꯤꯜ: {lane}
+sel_copy	ꯀꯣꯄꯤ ꯇꯧ
+sel_select_all	ꯄꯨꯝꯅꯃꯛ ꯈꯟꯕ
+sel_copied	ꯀꯣꯄꯤ ꯇꯧꯔꯦ
+nav_loading	লোড তৌরি…

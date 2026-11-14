@@ -834,3 +834,7 @@ role_help_supplier	Рол: Жабдуучу — сатып алуулар үчү
 lane_declared_label	Эсепти ээлөө
 lane_owner_label	Накталай акча брондоо
 money_lane_bill	Коноктун эсеби: {lane}
+sel_copy	Көчүрүү
+sel_select_all	Баарын тандоо
+sel_copied	Көчүрүлдү
+nav_loading	Жүктөлүүдө…

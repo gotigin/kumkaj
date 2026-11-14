@@ -834,3 +834,7 @@ role_help_supplier	Roli: Furnizuesi - AP për blerjet.
 lane_declared_label	Rezervimi i llogarisë
 lane_owner_label	Rezervimi me para në dorë
 money_lane_bill	Fatura: {lane}
+sel_copy	Kopjo
+sel_select_all	Përzgjidh të gjitha
+sel_copied	U kopjua
+nav_loading	Po ngarkohet…

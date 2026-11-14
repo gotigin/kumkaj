@@ -834,3 +834,7 @@ role_help_supplier	ພາລະບົດບາດ: ຜູ້ສະຫນອງ �
 lane_declared_label	ການຈອງບັນຊີ
 lane_owner_label	ການຈອງເງິນສົດ
 money_lane_bill	ໃບບິນ: {lane}
+sel_copy	ສຳເນົາ
+sel_select_all	ເລືອກທັງໝົດ
+sel_copied	ສຳເນົາແລ້ວ
+nav_loading	ກຳລັງໂຫຼດ…

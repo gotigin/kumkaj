@@ -834,3 +834,7 @@ role_help_supplier	Anjara: Mpamatsy - AP amin'ny fividianana.
 lane_declared_label	Famandrihana kaonty
 lane_owner_label	Famandrihana vola
 money_lane_bill	Paositra: {lane}
+sel_copy	Adikao
+sel_select_all	Fidio daholo
+sel_copied	Voadika
+nav_loading	Mampiditra…

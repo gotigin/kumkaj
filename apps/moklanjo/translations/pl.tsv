@@ -834,3 +834,7 @@ role_help_supplier	Rola: Dostawca — AP dla zakupów.
 lane_declared_label	Rezerwacja konta
 lane_owner_label	Rezerwacja gotówkowa
 money_lane_bill	Rachunek: {lane}
+sel_copy	Kopiuj
+sel_select_all	Zaznacz wszystko
+sel_copied	Skopiowano
+nav_loading	Wczytywanie…

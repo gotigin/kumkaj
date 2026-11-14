@@ -834,3 +834,7 @@ role_help_supplier	ভূমিকা: যোগানকাৰী — ক্ৰ
 lane_declared_label	একাউণ্ট বুকিং
 lane_owner_label	নগদ বুকিং
 money_lane_bill	বিল: {lane}
+sel_copy	কপি কৰক
+sel_select_all	সকলো বাছনি কৰক
+sel_copied	কপি কৰা হ'ল
+nav_loading	ল'ড হৈ আছে…

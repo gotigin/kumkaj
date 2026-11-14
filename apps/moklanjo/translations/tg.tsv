@@ -834,3 +834,7 @@ role_help_supplier	Нақш: Таъминкунанда - AP барои хари
 lane_declared_label	Бронкунии ҳисоб
 lane_owner_label	Бронкунии пули нақд
 money_lane_bill	Ҳисоб: {lane}
+sel_copy	Нусха бардоштан
+sel_select_all	Ҳамаро интихоб кардан
+sel_copied	Нусха бардошта шуд
+nav_loading	Боркунӣ…

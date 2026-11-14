@@ -834,3 +834,7 @@ role_help_supplier	Rooli: Toimittaja – AP ostoille.
 lane_declared_label	Tilin varaus
 lane_owner_label	Varaus käteisellä
 money_lane_bill	Lasku: {lane}
+sel_copy	Kopioi
+sel_select_all	Valitse kaikki
+sel_copied	Kopioitu
+nav_loading	Ladataan…

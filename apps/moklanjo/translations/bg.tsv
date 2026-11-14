@@ -834,3 +834,7 @@ role_help_supplier	Роля: Доставчик — задължения за п
 lane_declared_label	Резервация по акаунт
 lane_owner_label	Кеш резервация
 money_lane_bill	Сметка: {lane}
+sel_copy	Копирай
+sel_select_all	Избери всичко
+sel_copied	Копирано
+nav_loading	Зареждане…

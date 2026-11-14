@@ -571,6 +571,13 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
 
     fn show_screen(&mut self, cx: &mut Cx, screen: Screen) {
         let _span = stall_span("show_screen");
+        if sel_screen_changed(screen) {
+            self.clear_page_selection(cx);
+            // A field on the screen we left keeps key focus while hidden:
+            // `text_field_has_focus` then holds sync_chrome in its typing
+            // early-return (Khaynjo's header kept "Locked" after a PIN unlock).
+            cx.set_key_focus(Area::Empty);
+        }
         let pairs = [
             (ids!(device_setup_screen), screen == Screen::DeviceSetup),
             (ids!(lock_screen), screen == Screen::Lock),
@@ -1550,7 +1557,40 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
 
     /// `is_peer`: chrome tab jump (clear in-screen layers). Both paths record
     /// visit history when `screen_keeps_history` allows.
+    /// A switch to a screen that took ≥ 1 s last time (slow device, big
+    /// shop) first paints the loading screen and runs on the next frame, so
+    /// the tap is answered at once (owner, 2026-11-13).
     fn go_with(&mut self, cx: &mut Cx, screen: Screen, is_peer: bool) {
+        let elsewhere = app_state().lock().unwrap().screen != screen;
+        if elsewhere && nav_was_slow(screen) {
+            self.ui
+                .widget(cx, ids!(nav_loading_label))
+                .set_text(cx, &app_t("nav_loading"));
+            self.ui.view(cx, ids!(nav_loading)).set_visible(cx, true);
+            self.ui.redraw(cx);
+            *nav_veil_pending().lock().unwrap() = Some((cx.new_next_frame(), screen, is_peer));
+            return;
+        }
+        self.go_with_now(cx, screen, is_peer);
+    }
+
+    /// The loading screen's frame has painted: switch now, then take it down.
+    fn finish_nav_veil(&mut self, cx: &mut Cx, e: &NextFrameEvent) {
+        let due = {
+            let mut pending = nav_veil_pending().lock().unwrap();
+            match pending.as_ref() {
+                Some((frame, _, _)) if e.set.contains(frame) => pending.take(),
+                _ => None,
+            }
+        };
+        if let Some((_, screen, is_peer)) = due {
+            self.go_with_now(cx, screen, is_peer);
+            self.ui.view(cx, ids!(nav_loading)).set_visible(cx, false);
+            self.ui.redraw(cx);
+        }
+    }
+
+    fn go_with_now(&mut self, cx: &mut Cx, screen: Screen, is_peer: bool) {
         // More hub removed — its destinations are chrome peers.
         let screen = if screen == Screen::More {
             Screen::Menu
@@ -1609,6 +1649,9 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             if is_peer { "go_peer" } else { "go" },
             format!("{screen:?}"),
         );
+        // Time this switch up to its first draw (`note_nav_draw`).
+        let landed = app_state().lock().unwrap().screen;
+        *nav_measure().lock().unwrap() = Some((landed, Instant::now()));
         self.sync_chrome(cx);
     }
 
@@ -1858,6 +1901,16 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
 
     /// True when a seller text field (not a button) holds key focus / soft keyboard.
     fn text_field_has_focus(&mut self, cx: &mut Cx) -> bool {
+        // Makepad never clears its IME area: after a field loses focus (or its
+        // screen is gone) `get_ime_area_rect` still returns that field's last
+        // rect. Count the IME only while the focused area is the field that
+        // owns it (TextInput focuses and shows the IME with the same draw_bg
+        // area) — Khaynjo's header kept "Locked" after a PIN unlock otherwise.
+        let ime = cx.get_ime_area_rect();
+        let focus = cx.key_focus();
+        if ime.size.y > 0.0 && !focus.is_empty() && focus.rect(cx) == ime {
+            return true;
+        }
         let top_level = [
             ids!(cart_total_input),
             ids!(customer_name_input),
@@ -1919,7 +1972,11 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             let host = self.ui.widget(cx, list_path);
             let list = host.portal_list(cx, ids!(list));
             for i in 0..n {
-                let item = list.item(cx, i, live_id!(Item));
+                // Only rows that exist can hold focus: `item` built every
+                // cart line on each call (sync_chrome runs this often).
+                let Some((_, item)) = list.get_item(i) else {
+                    continue;
+                };
                 for field_id in [ids!(unit_price), ids!(line_total), ids!(note)] {
                     let field = item.text_input(cx, field_id);
                     let area = field.area();
@@ -1930,5 +1987,65 @@ fn paint_chrome(&mut self, cx: &mut Cx) {
             }
         }
         false
+    }
+}
+
+/// A screen switch that took at least this long (tap → first draw) shows the
+/// loading screen first next time.
+const NAV_VEIL_MS: f64 = 1000.0;
+
+/// Last measured switch cost per screen (ms).
+fn nav_costs() -> &'static Mutex<Vec<(Screen, f64)>> {
+    static COSTS: OnceLock<Mutex<Vec<(Screen, f64)>>> = OnceLock::new();
+    COSTS.get_or_init(|| Mutex::new(Vec::new()))
+}
+
+/// The switch being timed: target screen and when it started.
+fn nav_measure() -> &'static Mutex<Option<(Screen, Instant)>> {
+    static M: Mutex<Option<(Screen, Instant)>> = Mutex::new(None);
+    &M
+}
+
+/// A deferred switch waiting for the loading screen's frame.
+fn nav_veil_pending() -> &'static Mutex<Option<(NextFrame, Screen, bool)>> {
+    static P: Mutex<Option<(NextFrame, Screen, bool)>> = Mutex::new(None);
+    &P
+}
+
+fn nav_was_slow(screen: Screen) -> bool {
+    // `KUMKAJ_NAV_VEIL_MS` lowers the bar to test the loading screen on a
+    // fast machine.
+    static LIMIT: OnceLock<f64> = OnceLock::new();
+    let limit = *LIMIT.get_or_init(|| {
+        std::env::var("KUMKAJ_NAV_VEIL_MS")
+            .ok()
+            .and_then(|v| v.parse().ok())
+            .unwrap_or(NAV_VEIL_MS)
+    });
+    let last = nav_costs()
+        .lock()
+        .unwrap()
+        .iter()
+        .find(|(s, _)| *s == screen)
+        .map(|(_, ms)| *ms);
+    match last {
+        Some(ms) if ms >= limit => {
+            makepad_widgets::log!("Kumkaj nav: loading screen for {screen:?} (last switch {ms:.0} ms)");
+            true
+        }
+        _ => false,
+    }
+}
+
+/// After a draw: if a screen switch was being timed, record what it cost.
+fn note_nav_draw() {
+    let Some((screen, started)) = nav_measure().lock().unwrap().take() else {
+        return;
+    };
+    let ms = started.elapsed().as_secs_f64() * 1000.0;
+    let mut costs = nav_costs().lock().unwrap();
+    match costs.iter_mut().find(|(s, _)| *s == screen) {
+        Some(entry) => entry.1 = ms,
+        None => costs.push((screen, ms)),
     }
 }

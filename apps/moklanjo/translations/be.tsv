@@ -834,3 +834,7 @@ role_help_supplier	Role: Supplier — AP for purchases.
 lane_declared_label	Брань рахунку
 lane_owner_label	Наяўная браня
 money_lane_bill	Рахунак: {lane}
+sel_copy	Капіяваць
+sel_select_all	Вылучыць усё
+sel_copied	Скапіявана
+nav_loading	Загрузка…

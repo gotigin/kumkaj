@@ -834,3 +834,7 @@ role_help_supplier	Ról: Soláthraí - AP le haghaidh ceannacháin.
 lane_declared_label	Áirithint cuntais
 lane_owner_label	Airgead a chur in áirithe
 money_lane_bill	Billi: {lane}
+sel_copy	Cóipeáil
+sel_select_all	Roghnaigh gach rud
+sel_copied	Cóipeáilte
+nav_loading	Á lódáil…

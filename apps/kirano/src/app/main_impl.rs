@@ -85,18 +85,39 @@ impl App {
             let screen = app_state().lock().unwrap().screen;
             let path = Self::screen_scroll_view(screen);
             let r = self.ui.view(cx, path).area().rect(cx);
-            if r.size.y > 1.0 {
-                *page_viewport().lock().unwrap() = (r.pos.y, r.size.y);
+            let page = if r.size.y > 1.0 {
+                (r.pos.y, r.size.y)
             } else {
                 let r = self.ui.view(cx, ids!(body_stack)).area().rect(cx);
-                *page_viewport().lock().unwrap() = (r.pos.y, r.size.y);
+                (r.pos.y, r.size.y)
+            };
+            // These caches are read while drawing, but come from the last draw:
+            // after a resize (window, rail, rotation) the screen drew once with
+            // the old size and nothing drew it again — a one-column Floor stayed
+            // wider than a phone with its icons cut off. Redraw on a change.
+            let page_moved = {
+                let mut pv = page_viewport().lock().unwrap();
+                let moved = (pv.1 - page.1).abs() > 0.5;
+                *pv = page;
+                moved
+            };
+            if page_moved {
+                self.ui.view(cx, path).redraw(cx);
             }
             // The Floor tables scroll sideways in `floor_scroll`: its box is
             // the viewport the grid draws its visible columns for.
             if screen == Screen::Floor {
                 let r = self.ui.view(cx, ids!(floor_scroll)).area().rect(cx);
                 if r.size.x > 1.0 {
-                    *floor_hviewport().lock().unwrap() = (r.pos.x, r.size.x);
+                    let moved = {
+                        let mut vp = floor_hviewport().lock().unwrap();
+                        let moved = (vp.1 - r.size.x).abs() > 0.5;
+                        *vp = (r.pos.x, r.size.x);
+                        moved
+                    };
+                    if moved {
+                        self.ui.widget(cx, ids!(floor_list)).redraw(cx);
+                    }
                 }
             }
         }
@@ -504,7 +525,11 @@ impl App {
         }
         self.apply_pending_menu_pick_tab(cx);
         self.match_event(cx, event);
+        if let Event::Draw(_) = event {
+            note_nav_draw();
+        }
         if let Event::NextFrame(e) = event {
+            self.finish_nav_veil(cx, e);
             let floor_ours = floor_area_autoscroll_frame()
                 .lock()
                 .unwrap()
@@ -546,6 +571,8 @@ impl App {
         // used to carry an open list onto the next screen. The press itself
         // still reaches whatever is under it.
         self.route_popup_input(cx, event);
+        // Copy / Select all menu: same outside-press rule (selection_menu.rs).
+        self.route_selection_menu_input(cx, event);
         // A sheet over the window (Add dishes, UPI QR) owns every press: the
         // nav tabs, Floor area tabs, sidebar list, and printer rows behind it
         // must not start a drag under the dishes the finger is scrolling.
@@ -590,6 +617,11 @@ impl App {
                 }
             }
         }
+        // One selection root at a time (selection_menu.rs): a sheet over the
+        // page owns Ctrl/Cmd+A and Copy while it is open.
+        self.ui
+            .view(cx, ids!(main_column))
+            .set_selection_root(!sheet_open);
         self.ui.handle_event(cx, event, &mut Scope::empty());
         // A control in the 48 px edge strip (Done, pay, send, a sideways tab
         // strip) took this press: the control wins, the edge swipe disarms.

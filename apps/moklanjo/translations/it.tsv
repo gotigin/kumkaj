@@ -834,3 +834,7 @@ role_help_supplier	Ruolo: Fornitore — AP degli acquisti.
 lane_declared_label	Spedizione in conto
 lane_owner_label	Spedizione in contanti
 money_lane_bill	Fattura: {lane}
+sel_copy	Copia
+sel_select_all	Seleziona tutto
+sel_copied	Copiato
+nav_loading	Caricamento…

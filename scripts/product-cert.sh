@@ -46,6 +46,7 @@ want_xcomp=0
 want_store=0
 want_linux=0
 want_android=0
+want_wack=0
 
 case "$TIER" in
   fast) want_fast=1 ;;
@@ -55,13 +56,14 @@ case "$TIER" in
   full) want_fast=1; want_ui=1; want_visual=1; want_resilience=1; want_linux=1 ;;
   linux) want_linux=1 ;;
   android) want_android=1 ;;
+  wack|windows) want_wack=1 ;;
   store|package)
     want_fast=1; want_ui=1; want_visual=1; want_resilience=1; want_xcomp=1; want_store=1
-    want_linux=1; want_android=1
+    want_linux=1; want_android=1; want_wack=1
     export CERT_MULTI_SIZE="${CERT_MULTI_SIZE:-1}"
     ;;
   default) want_fast=1; want_ui=1; want_visual=1; want_resilience=1 ;;
-  *) echo "unknown tier: $TIER (fast|ui|visual|resilience|full|store|default|linux|android)" >&2; exit 2 ;;
+  *) echo "unknown tier: $TIER (fast|ui|visual|resilience|full|store|default|linux|android|wack)" >&2; exit 2 ;;
 esac
 
 bin_name_for() {
@@ -447,6 +449,35 @@ run_xcomp() {
   pass_tier "$app" xcomp
 }
 
+# ---------- Windows App Certification Kit pre-check ----------
+# Production-env x86_64 Windows build (mingw cross), then the static checks
+# WACK makes on the .exe (and the newest dist/<Label>-*.msix when present):
+# scripts/windows/wack-precheck.sh. The real WACK run is on Windows —
+# scripts/windows/run-wack.ps1, DEV.md § Windows App Certification Kit.
+run_wack() {
+  local app="$1" out rc crate exe msix label
+  out="$OUT/wack"
+  mkdir -p "$out"
+  crate="$(bin_name_for "$app")"
+  set +e
+  (
+    set -euo pipefail
+    cd "$ROOT"
+    KUMKAJ_ENV=production cargo build --release --target x86_64-pc-windows-gnu -p "$crate"
+    exe="${CARGO_TARGET_DIR:-$ROOT/target}/x86_64-pc-windows-gnu/release/$crate.exe"
+    label="$(grep -m1 '^KUMKAJ_APP_LABEL=' "apps/$app/env/production.env" | cut -d= -f2 | tr -d '"')"
+    msix="$(ls -t dist/"$label"-*.msix 2>/dev/null | head -1 || true)"
+    bash scripts/windows/wack-precheck.sh "$exe" ${msix:+"$msix"}
+  ) >"$out/log.txt" 2>&1
+  rc=$?
+  set -e
+  if [[ "$rc" -ne 0 ]]; then
+    fail_tier "$app" wack "see $out/log.txt"
+    return 1
+  fi
+  pass_tier "$app" wack
+}
+
 # ---------- Linux packaged binary short Xvfb launch ----------
 run_linux_pkg() {
   local app="$1" out bin_name pkg_dir exe disp_num disp xvfb_pid app_pid log
@@ -830,6 +861,9 @@ for app in "${APPS[@]}"; do
   fi
   if [[ "$ok" -eq 1 && "$want_android" -eq 1 ]]; then
     run_android_device "$app" || ok=0
+  fi
+  if [[ "$ok" -eq 1 && "$want_wack" -eq 1 ]]; then
+    run_wack "$app" || ok=0
   fi
   if [[ "$ok" -eq 1 && "$want_store" -eq 1 ]]; then
     run_store "$app" || ok=0

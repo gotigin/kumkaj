@@ -834,3 +834,7 @@ role_help_supplier	Papel: Provedor - AP para compras.
 lane_declared_label	Reserva de conta
 lane_owner_label	Reserva en efectivo
 money_lane_bill	Conta: {lane}
+sel_copy	Copiar
+sel_select_all	Seleccionar todo
+sel_copied	Copiado
+nav_loading	Cargando…

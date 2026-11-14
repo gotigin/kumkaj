@@ -834,3 +834,7 @@ role_help_supplier	رول: عرضه کوونکی - د پیرود لپاره AP.
 lane_declared_label	حساب کتاب کول
 lane_owner_label	د نغدو پیسو اخیستل
 money_lane_bill	بیل: {lane}
+sel_copy	کاپي
+sel_select_all	ټول وټاکئ
+sel_copied	کاپي شو
+nav_loading	بارېږي…
